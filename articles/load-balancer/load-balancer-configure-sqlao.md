@@ -1,9 +1,9 @@
 ---
 title: "Konfigurieren des Lastenausgleichs für SQL-AlwaysOn | Microsoft Docs"
-description: "Konfigurieren des Load Balancers für SQL-Always On und Verwenden von PowerShell zum Erstellen des Load Balancers für die SQL-Implementierung"
+description: "Konfigurieren von Lastenausgleich für SQL-AlwaysOn und Verwenden von Powershell zum Erstellen des Lastenausgleichs für die SQL-Implementierung"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 ms.assetid: d7bc3790-47d3-4e95-887c-c533011e4afd
 ms.service: load-balancer
@@ -11,15 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 68aad6253f185d53fdd7f11c8660c7287ef12655
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3ebbf1c4009d89b1f18b2ff8ff5dd243c456dff8
+ms.contentlocale: de-de
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="configure-load-balancer-for-sql-always-on"></a>Konfigurieren des Lastenausgleichs für SQL-AlwaysOn 
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 SQL Server-AlwaysOn-Verfügbarkeitsgruppen können nun mit ILB ausgeführt werden. Verfügbarkeitsgruppen sind eine führende SQL Server-Lösung für hohe Verfügbarkeit und Notfallwiederherstellung. Der Verfügbarkeitsgruppenlistener ermöglicht Clientanwendungen eine nahtlose Verbindung mit dem primären Replikat unabhängig von der Anzahl der Replikate in der Konfiguration.
 
@@ -65,9 +69,4 @@ Weitere Informationen zu SQL AlwaysOn finden Sie unter [Konfigurieren eines inte
 [Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

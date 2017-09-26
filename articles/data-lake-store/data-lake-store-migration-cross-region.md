@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a0eecbb50b001325c91d1d721bf8de7244f04674
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 7292e1954418186d8820529c54d4d781c79e1ae4
+ms.contentlocale: de-de
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>Regionsübergreifende Migration in Azure Data Lake Store
@@ -29,7 +29,7 @@ Wenn Azure Data Lake Store in neuen Regionen verfügbar wird, möchten Sie viell
 
 * **Ein Azure-Abonnement**. Weitere Informationen finden Sie unter [Erstellen Sie noch heute Ihr kostenloses Azure-Konto](https://azure.microsoft.com/pricing/free-trial/).
 * **Ein Azure Data Lake Store-Konto in zwei verschiedenen Regionen**. Weitere Informationen finden Sie unter [Erste Schritte mit Data Lake Store mithilfe des Azure-Portals](data-lake-store-get-started-portal.md).
-* **Azure Data Factory** Weitere Informationen finden Sie unter [Einführung in Azure Data Factory](../data-factory/data-factory-introduction.md).
+* **Azure Data Factory** Weitere Informationen finden Sie unter [Einführung in Azure Data Factory](../data-factory/introduction.md).
 
 
 ## <a name="migration-considerations"></a>Überlegungen zur Migration
@@ -44,7 +44,7 @@ Weitere wichtige Details, die beim Planen der Migration zu berücksichtigen sind
 
 * **Name des Data Lake Store-Kontos**. Der neue Kontoname in der neuen Region muss global eindeutig sein. Beispielsweise könnte der Name Ihres alten Data Lake Store-Kontos in der Region „USA, Osten 2“ contosoeastus2.azuredatalakestore.net sein. Sie könnten Ihr neues Data Lake Store-Konto in der Region „EU, Norden“ contosonortheu.azuredatalakestore.net nennen.
 
-* **Tools**. Es wird empfohlen, die [Kopieraktivität von Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) zu verwenden, um Data Lake Store-Dateien zu kopieren. Data Factory unterstützt das Verschieben von Daten mit hoher Leistung und Zuverlässigkeit. Bedenken Sie, dass Data Factory nur die Ordnerhierarchie und den Inhalt der Dateien kopiert. Sie müssen manuell alle Zugriffssteuerungslisten (access control lists, ACLs), die Sie im alten Konto verwenden, auf das neue Konto anwenden. Weitere Informationen, einschließlich der Leistungsziele für die günstigsten Szenarios, finden Sie unter [Handbuch zur Leistung und Optimierung der Kopieraktivität](../data-factory/data-factory-copy-activity-performance.md). Wenn Sie Daten schneller kopieren möchten, müssen Sie möglicherweise zusätzliche Einheiten für Clouddatenverschiebungen verwenden. Einige andere Tools, z.B. AdlCopy, unterstützen kein Kopieren von Daten zwischen Regionen.  
+* **Tools**. Es wird empfohlen, die [Kopieraktivität von Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) zu verwenden, um Data Lake Store-Dateien zu kopieren. Data Factory unterstützt das Verschieben von Daten mit hoher Leistung und Zuverlässigkeit. Bedenken Sie, dass Data Factory nur die Ordnerhierarchie und den Inhalt der Dateien kopiert. Sie müssen manuell alle Zugriffssteuerungslisten (access control lists, ACLs), die Sie im alten Konto verwenden, auf das neue Konto anwenden. Weitere Informationen, einschließlich der Leistungsziele für die günstigsten Szenarios, finden Sie unter [Handbuch zur Leistung und Optimierung der Kopieraktivität](../data-factory/copy-activity-performance.md). Wenn Sie Daten schneller kopieren möchten, müssen Sie möglicherweise zusätzliche Einheiten für Clouddatenverschiebungen verwenden. Einige andere Tools, z.B. AdlCopy, unterstützen kein Kopieren von Daten zwischen Regionen.  
 
 * **Bandbreitengebühren**. [Bandbreitengebühren](https://azure.microsoft.com/en-us/pricing/details/bandwidth/) werden geltend gemacht, da Daten aus einer Azure-Region hinaus übertragen werden.
 

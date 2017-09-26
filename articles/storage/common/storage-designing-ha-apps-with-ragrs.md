@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 9/06/2017
 ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 2889faf7bfa86f40eb38c50f146bd59ecfb6001f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 57f458770ea5d57b4c155adf4fa793867f392c3b
 ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS
@@ -44,7 +44,7 @@ Berücksichtigen Sie diese wichtigen Punkte beim Entwerfen Ihrer Anwendung für 
 
 * Die schreibgeschützte Kopie ist [letztendlich konsistent](https://en.wikipedia.org/wiki/Eventual_consistency) mit den Daten in der primären Region.
 
-* Für Blobs, Tabellen und Warteschlangen können Sie den Wert für den *Zeitpunkt der letzten Synchronisierung* von der sekundären Region abfragen, der anzeigt, wann die letzte Replikation von der primären zur sekundären Region ausgeführt wurde. (Dies wird für Azure File Storage nicht unterstützt, da RA-GRS-Redundanz derzeit nicht verfügbar ist.)
+* Für Blobs, Tabellen und Warteschlangen können Sie den Wert für den *Zeitpunkt der letzten Synchronisierung* von der sekundären Region abfragen, der anzeigt, wann die letzte Replikation von der primären zur sekundären Region ausgeführt wurde. (Dies wird für Azure Files nicht unterstützt, da RA-GRS-Redundanz zum aktuellen Zeitpunkt dort nicht verfügbar ist.)
 
 * Sie können die Speicherclientbibliothek für die Interaktion mit den Daten in der primären oder sekundären Region verwenden. Sie können Anforderungen auch automatisch an die sekundäre Region leiten, wenn bei einer Leseanforderung an die primäre Region eine Zeitüberschreitung auftritt.
 

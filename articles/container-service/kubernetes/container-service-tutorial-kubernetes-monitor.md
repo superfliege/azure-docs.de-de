@@ -18,10 +18,10 @@ ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 65556049d33c84848f015a095acf9c1f69348c6d
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ebf35877dcd6f980af75f46b437070a6a29b7c54
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -140,7 +140,7 @@ Suchen Sie im OMS-Portal die Zusammenfassungskachel **Container** auf dem OMS-Da
 
 Im Azure-Portal navigieren Sie zu **Log Analytics** und wählen den Namen Ihres Arbeitsbereichs aus. Klicken Sie zum Anzeigen der Zusammenfassungskachel **Container** auf **Lösungen** > **Container**. Klicken Sie auf die Kachel, um Details anzuzeigen.
 
-Ausführliche Anweisungen zum Abfragen und Analysieren von Überwachungsdaten finden Sie in der [Dokumentation zu Azure Log Analytics](../../log-analytics/index.md).
+Ausführliche Anweisungen zum Abfragen und Analysieren von Überwachungsdaten finden Sie in der [Dokumentation zu Azure Log Analytics](../../log-analytics/index.yml).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

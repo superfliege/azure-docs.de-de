@@ -16,16 +16,16 @@ ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 12a35213e07ff16bdc1c27be106792bcc032ac80
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 6399f1a3390119685c1c9fd7332937e0cdb6f9ea
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>Laden von Daten in SQL Data Warehouse mit Data Factory
 
-Mit Azure Data Factory können Sie Daten aus allen [unterstützten Quelldatenspeichern](../data-factory/data-factory-data-movement-activities.md#supported-data-stores-and-formats) in Azure SQL Data Warehouse laden. Beispielsweise können Sie Daten aus einer Azure SQL-Datenbank oder einer Oracle-Datenbank mithilfe von Data Factory in ein SQL Data Warehouse laden. Das Tutorial in diesem Artikel zeigt, wie Daten aus einer lokalen SQL Server-Datenbank in ein SQL Data Warehouse geladen werden.
+Mit Azure Data Factory können Sie Daten aus allen [unterstützten Quelldatenspeichern](../data-factory/copy-activity-overview.md) in Azure SQL Data Warehouse laden. Beispielsweise können Sie Daten aus einer Azure SQL-Datenbank oder einer Oracle-Datenbank mithilfe von Data Factory in ein SQL Data Warehouse laden. Das Tutorial in diesem Artikel zeigt, wie Daten aus einer lokalen SQL Server-Datenbank in ein SQL Data Warehouse geladen werden.
 
 **Geschätzte Zeit**: Dieses Tutorial dauert ca. 10 bis 15 Minuten, sobald Sie die Voraussetzungen eingerichtet haben.
 
@@ -72,7 +72,7 @@ Jetzt können Sie Data Factory über die lokale SQL Server-Datenbank informieren
     > [!NOTE]
     > Wenn der Quelldatenspeicher lokal vorliegt oder sich auf einem virtuellen Azure IaaS-Computer befindet, ist ein Datenverwaltungsgateway erforderlich. Für ein Gateway besteht eine 1:1-Beziehung mit einer Data Factory. Es kann nicht in einer anderen Data Factory verwendet werden, die Verwendung durch mehrere Datenladeaufgaben in derselben Data Factory ist jedoch möglich. Ein Gateway kann beim Ausführen von Datenladeaufgaben zum Herstellen von Verbindungen mit mehreren Datenspeichern verwendet werden.
     >
-    > Ausführliche Informationen zum Gateway finden Sie im Artikel [Datenverwaltungsgateway](../data-factory/data-factory-data-management-gateway.md).
+    > Ausführliche Informationen zum Gateway finden Sie im Artikel [Datenverwaltungsgateway](../data-factory/v1/data-factory-data-management-gateway.md).
 
 3. Ein Dialogfeld **Gateway erstellen** wird angezeigt. Geben Sie **GatewayForDWLoading** als Namen ein, und klicken Sie auf **Erstellen**.
 
@@ -155,9 +155,9 @@ Informationen zur Migration Ihrer Datenbank zu SQL Data Warehouse finden Sie unt
 
 Weitere Informationen zu Azure Data Factory und den zugehörigen Funktionen für die Datenverschiebung finden Sie in den folgenden Artikeln:
 
-- [Einführung in den Azure Data Factory-Dienst](../data-factory/data-factory-introduction.md)
-- [Verschieben von Daten mit der Kopieraktivität](../data-factory/data-factory-data-movement-activities.md)
-- [Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory](../data-factory/data-factory-azure-sql-data-warehouse-connector.md)
+- [Einführung in den Azure Data Factory-Dienst](../data-factory/introduction.md)
+- [Verschieben von Daten mit der Kopieraktivität](../data-factory/copy-activity-overview.md)
+- [Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory](../data-factory/connector-azure-sql-data-warehouse.md)
 
 Informationen zum Untersuchen Ihrer Daten in SQL Data Warehouse finden Sie in den folgenden Artikeln:
 

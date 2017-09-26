@@ -18,14 +18,14 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 600a70c74a16e2601a874f804ac2e8382c8bfa90
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 709541a88b2b15924b93c630693ad7a3f276e29c
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Verwenden des zeitbasierten Oozie-Koordinators mit Hadoop in HDInsight zum Definieren von Workflows und Koordinieren von Aufträgen
-In diesem Artikel erfahren Sie, wie Workflows und Koordinatoren definiert und die Koordinatoraufgaben zeitabhängig ausgelöst werden. Vor der Lektüre dieses Artikels empfiehlt es sich, das Thema [Verwenden von Oozie mit HDInsight durchzuarbeiten][hdinsight-use-oozie]. Neben Oozie können Sie auch Azure Data Factory zum Planen von Aufträgen verwenden. Informationen zu Azure Data Factory finden Sie unter [Verwenden von Pig und Hive mit Data Factory](../data-factory/data-factory-data-transformation-activities.md).
+In diesem Artikel erfahren Sie, wie Workflows und Koordinatoren definiert und die Koordinatoraufgaben zeitabhängig ausgelöst werden. Vor der Lektüre dieses Artikels empfiehlt es sich, das Thema [Verwenden von Oozie mit HDInsight durchzuarbeiten][hdinsight-use-oozie]. Neben Oozie können Sie auch Azure Data Factory zum Planen von Aufträgen verwenden. Informationen zu Azure Data Factory finden Sie unter [Verwenden von Pig und Hive mit Data Factory](../data-factory/transform-data.md).
 
 > [!NOTE]
 > Dieser Artikel erfordert einen Windows-basierten HDInsight-Cluster. Informationen zum Verwenden von Oozie, einschließlich zeitbasierter Aufträge, auf einem Linux-basierten Cluster finden Sie unter [Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem HDInsight](hdinsight-use-oozie-linux-mac.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ad2c6d585eef5450f7f0912ffa4753fe80d86b37
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 21229ad7277ce03e5276fe965d73b5e5eba12424
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Massenverwaltung von IoT Hub-Geräteidentitäten
@@ -71,7 +71,7 @@ while(true)
 
 ## <a name="export-devices"></a>Exportieren von Geräten
 
-Verwenden Sie die **ExportDevicesAsync**-Methode, um die gesamte IoT Hub-Identitätsregistrierung mithilfe einer [Shared Access Signature](../storage/common/storage-security-guide.md#data-plane-security) in einen [Azure Storage](../storage/index.md)-Blobcontainer zu exportieren.
+Verwenden Sie die **ExportDevicesAsync**-Methode, um die gesamte IoT Hub-Identitätsregistrierung mithilfe einer [Shared Access Signature](../storage/common/storage-security-guide.md#data-plane-security) in einen [Azure Storage](../storage/index.yml)-Blobcontainer zu exportieren.
 
 Mit dieser Methode können Sie zuverlässige Sicherungen Ihrer Geräte-Informationen in einem Blobcontainer erstellen, den Sie steuern.
 
@@ -196,7 +196,7 @@ Nutzen Sie die **ImportDevicesAsync**-Methode umsichtig, damit mit ihr nicht nur
 
 Die **ImportDevicesAsync** -Methode erfordert zwei Parameter:
 
-* Eine *Zeichenfolge*, die einen URI eines [Azure Storage](../storage/index.md)-Blobcontainers als *Eingabe* in den Auftrag enthält. Dieser URI muss ein SAS-Token enthalten, das Lesezugriff auf den Container gewährt. Dieser Container muss ein Blob mit dem Namen **devices.txt** enthalten, das die serialisierten Gerätedaten enthält, die in Ihre Identitätsregistrierung importiert werden sollen. Die importierten Daten müssen Geräteinformationen im gleichen JSON-Format enthalten, das vom **ExportImportDevice**-Auftrag verwendet wird, wenn er das Blob **devices.txt** erstellt. Das SAS-Token muss diese Berechtigungen enthalten:
+* Eine *Zeichenfolge*, die einen URI eines [Azure Storage](../storage/index.yml)-Blobcontainers als *Eingabe* in den Auftrag enthält. Dieser URI muss ein SAS-Token enthalten, das Lesezugriff auf den Container gewährt. Dieser Container muss ein Blob mit dem Namen **devices.txt** enthalten, das die serialisierten Gerätedaten enthält, die in Ihre Identitätsregistrierung importiert werden sollen. Die importierten Daten müssen Geräteinformationen im gleichen JSON-Format enthalten, das vom **ExportImportDevice**-Auftrag verwendet wird, wenn er das Blob **devices.txt** erstellt. Das SAS-Token muss diese Berechtigungen enthalten:
 
    ```csharp
    SharedAccessBlobPermissions.Read

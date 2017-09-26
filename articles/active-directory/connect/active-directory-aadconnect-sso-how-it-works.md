@@ -12,22 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: f0bcbdb03fbb70ff91ac3a56974a88eb1b26c245
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 38b107513e72635fd034bb86d0d866bcb0fcb8e4
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory: Nahtloses einmaliges Anmelden: Technische Einblicke
 
 In diesem Artikel finden Sie technische Details zur Funktionsweise des nahtlosen einmaligen Anmeldens in Azure Active Directory (Seamless SSO).
-
->[!IMPORTANT]
->Das nahtlose einmalige Anmelden ist aktuell in der Vorschauversion verfügbar.
 
 ## <a name="how-does-seamless-sso-work"></a>Wie funktioniert das nahtlose einmalige Anmelden?
 
@@ -38,15 +35,15 @@ Dieser Abschnitt enthält zwei Teile:
 ### <a name="how-does-set-up-work"></a>Wie funktioniert die Einrichtung?
 
 Das nahtlose einmalige Anmelden wird mithilfe von Azure AD Connect wie [hier](active-directory-aadconnect-sso-quick-start.md) gezeigt aktiviert. Während der Aktivierung des Features laufen die folgenden Schritte ab:
-- Ein Computerkonto namens `AZUREADSSOACCT` (das Azure AD darstellt) wird in Ihrem lokalen Active Directory (AD) erstellt.
+- Ein Computerkonto namens `AZUREADSSOACC` (das Azure AD darstellt) wird in Ihrem lokalen Active Directory (AD) erstellt.
 - Der Kerberos-Entschlüsselungsschlüssel des Computerkontos wird sicher für Azure AD freigegeben.
 - Darüber hinaus werden zwei Kerberos-Dienstprinzipalnamen (SPNs) erstellt, um die zwei URLs darzustellen, die während der Azure AD-Anmeldung verwendet werden.
 
 >[!NOTE]
-> In jeder AD-Gesamtstruktur, die Sie mit Azure AD (über Azure AD Connect) synchronisieren und für deren Benutzer Sie das nahtlose einmalige Anmelden aktivieren möchten, werden das Computerkonto und die Kerberos-SPNs erstellt. Verschieben das `AZUREADSSOACCT`-Computerkonto zu einer Organisationseinheit (Organization Unit, OU), in der andere Computerkonten gespeichert sind, um sicherzustellen, dass es auf die gleiche Weise verwaltet und nicht gelöscht wird.
+> In jeder AD-Gesamtstruktur, die Sie mit Azure AD (über Azure AD Connect) synchronisieren und für deren Benutzer Sie das nahtlose einmalige Anmelden aktivieren möchten, werden das Computerkonto und die Kerberos-SPNs erstellt. Verschieben das `AZUREADSSOACC`-Computerkonto zu einer Organisationseinheit (Organization Unit, OU), in der andere Computerkonten gespeichert sind, um sicherzustellen, dass es auf die gleiche Weise verwaltet und nicht gelöscht wird.
 
 >[!IMPORTANT]
->Es wird dringend empfohlen, den [Rollover des Kerberos-Entschlüsselungsschlüssels](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacct-computer-account) für das Computerkonto `AZUREADSSOACCT` mindestens alle 30 Tage durchzuführen.
+>Es wird dringend empfohlen, den [Rollover des Kerberos-Entschlüsselungsschlüssels](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) für das Computerkonto `AZUREADSSOACC` mindestens alle 30 Tage durchzuführen.
 
 ### <a name="how-does-sign-in-with-seamless-sso-work"></a>Wie funktioniert die Anmeldung mit dem nahtlosen einmaligen Anmelden?
 
@@ -60,7 +57,7 @@ Nach der Einrichtung funktioniert das nahtlose einmalige Anmelden genauso wie je
 
 3. Der Benutzer gibt auf der Azure AD-Anmeldeseite seinen Benutzernamen ein.
 4. Wenn JavaScript im Hintergrund verwendet wird, fordert Azure AD den Browser über eine „401 – Nicht autorisiert“-Antwort auf, ein Kerberos-Ticket bereitzustellen.
-5. Der Browser fordert wiederum ein Ticket von Active Directory für das `AZUREADSSOACCT`-Computerkonto an (das Azure AD darstellt).
+5. Der Browser fordert wiederum ein Ticket von Active Directory für das `AZUREADSSOACC`-Computerkonto an (das Azure AD darstellt).
 6. Active Directory sucht das Computerkonto und gibt ein Kerberos-Ticket an den Browser zurück, das mit dem Geheimnis des Computerkontos verschlüsselt ist.
 7. Der Browser leitet das Kerberos-Ticket aus Active Directory an Azure AD weiter (zu einer der [Azure AD-URLs, die zuvor den Browsereinstellungen für Intranetzonen hinzugefügt wurden](active-directory-aadconnect-sso-quick-start.md#step-3-roll-out-the-feature)).
 8. Azure AD entschlüsselt das Kerberos-Ticket, das die Identität des auf dem unternehmenseigenen Gerät angemeldeten Benutzers enthält, mithilfe des zuvor freigegebenen Schlüssels.

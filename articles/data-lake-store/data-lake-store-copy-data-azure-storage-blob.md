@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 00b2f08ef40266ad4b99adfa9c8632bd817f9a81
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ee8e282feacfb6b5db2f746b468fe2cd26cb0a52
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-data-lake-store"></a>Kopieren von Daten aus Azure Storage-Blobs in den Data Lake-Speicher
@@ -175,7 +174,7 @@ In diesem Abschnitt erfahren Sie, wie Sie AdlCopy verwenden, um Daten mithilfe d
 
 ## <a name="performance-considerations-for-using-adlcopy"></a>Überlegungen zur Leistung bei Verwendung von AdlCopy
 
-AdlCopy unterstützt das Kopieren von Daten mit Tausenden von Dateien und Ordnern. Sollten beim Kopieren eines großen Datasets jedoch Probleme auftreten, können Sie die Dateien/Ordner auf kleinere Unterordner verteilen. AdlCopy wurde für Ad-hoc-Kopien konzipiert. Wenn Sie wiederholt Daten kopieren möchten, sollten Sie die Verwendung von [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) in Betracht ziehen, da diese Lösung eine umfassende Verwaltung rund um Kopiervorgänge bietet.
+AdlCopy unterstützt das Kopieren von Daten mit Tausenden von Dateien und Ordnern. Sollten beim Kopieren eines großen Datasets jedoch Probleme auftreten, können Sie die Dateien/Ordner auf kleinere Unterordner verteilen. AdlCopy wurde für Ad-hoc-Kopien konzipiert. Wenn Sie wiederholt Daten kopieren möchten, sollten Sie die Verwendung von [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) in Betracht ziehen, da diese Lösung eine umfassende Verwaltung rund um Kopiervorgänge bietet.
 
 ## <a name="release-notes"></a>Versionshinweise
 * 1.0.13: Wenn Sie Daten über mehrere Adlcopy-Befehle auf dasselbe Azure Data Lake Store-Konto kopieren möchten, müssen Sie Ihre Anmeldeinformationen nicht mehr für jede Ausführung neu eingeben. Diese Informationen werden nun von Adlcopy über mehrere Ausführungen zwischengespeichert.

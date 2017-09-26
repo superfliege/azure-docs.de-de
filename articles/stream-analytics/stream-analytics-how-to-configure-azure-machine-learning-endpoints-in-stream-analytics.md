@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: d0771509dfa6ca4fc005edfdbc7c0a9cb5ca0e9e
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 65ba6deaf5391b013c5337e00c80099e81aa4bea
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Machine Learning-Integration in Stream Analytics
@@ -33,7 +33,7 @@ Microsoft Azure Machine Learning ist ein Drag & Drop-Tool für die Zusammenarb
 * **Endpunkt**: Bei *Endpunkten* handelt es sich um das Azure Machine Learning-Objekt, das zum Verwenden von Features als Eingabe, Anwenden eines angegebenen Machine Learning-Modells und Zurückgeben der erzielten Ausgabe eingesetzt wird.
 * **Bewertungswebdienst**: Ein *Bewertungswebdienst* ist eine Sammlung von Endpunkten (wie oben beschrieben).
 
-Jeder Endpunkt verfügt über APIs für die Batchausführung und synchrone Ausführung. Für Stream Analytics wird die synchrone Ausführung verwendet. Der entsprechende Dienst wird in AzureML Studio als [Anforderung/Antwort-Dienst](../machine-learning/machine-learning-consume-web-services.md) bezeichnet.
+Jeder Endpunkt verfügt über APIs für die Batchausführung und synchrone Ausführung. Für Stream Analytics wird die synchrone Ausführung verwendet. Der entsprechende Dienst wird in AzureML Studio als [Anforderung/Antwort-Dienst](../machine-learning/studio/consume-web-services.md) bezeichnet.
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Für Stream Analytics-Aufträge erforderliche Machine Learning-Ressourcen
 Bei der Verarbeitung von Stream Analytics-Aufträgen sind für eine erfolgreiche Ausführung ein Anforderung/Antwort-Endpunkt, ein [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md)und eine Swagger-Definition erforderlich. Stream Analytics verfügt über einen zusätzlichen Endpunkt, der die URL für den Swagger-Endpunkt erstellt, nach der Schnittstelle sucht und eine UDF-Standarddefinition für den Benutzer zurückgibt.

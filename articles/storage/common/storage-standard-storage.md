@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: yuemlu
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b7cc8bc2b39e544a5807a2f6f9ff86ba73c54564
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b432426cb5cc5401fa2e8f7aaa6bc0955aff0931
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Kostengünstiger Standardspeicher und verwaltete/nicht verwaltete Azure-VM-Datenträger
@@ -48,7 +48,7 @@ Informationen zum Erstellen eines virtuellen Computers mit Managed Disks finden 
 
 In diesem Abschnitt werden einige der Features von Standardspeicher erläutert. Ausführlichere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](../storage-introduction.md).
 
-**Standardspeicher:** Azure-Standardspeicher unterstützt Azure-Datenträger, Azure-Blobs, Azure File Storage, Azure-Tabellen und Azure-Warteschlangen. Wenn Sie Standardspeicherdienste verwenden möchten, beginnen Sie mit der [Erstellung eines Azure Storage-Kontos](storage-create-storage-account.md#create-a-storage-account).
+**Standardspeicher:** Azure-Standardspeicher unterstützt Azure-Datenträger, Azure-Blobs, Azure-Dateien, Azure-Tabellen und Azure-Warteschlangen. Wenn Sie Standardspeicherdienste verwenden möchten, beginnen Sie mit der [Erstellung eines Azure Storage-Kontos](storage-create-storage-account.md#create-a-storage-account).
 
 **Standardspeicher-Datenträger:** Standardspeicher-Datenträger können an beliebige virtuelle Azure-Computer angefügt werden. Dies schließt auch virtuelle Computer aus Größenserien mit Storage Premium (beispielsweise die DSv2- und die GS-Serie) mit ein. Ein Standardspeicher-Datenträger kann nur an einen einzelnen virtuellen Computer angefügt werden. An einen virtuellen Computer können allerdings mehrere dieser Datenträger angefügt werden (bis zur maximalen, für die VM-Größe definierten Datenträgeranzahl). Die Spezifikationen werden im folgenden Abschnitt zu Skalierbarkeits- und Leistungszielen für Standardspeicher ausführlicher beschrieben. 
 

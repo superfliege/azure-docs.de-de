@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/17/2017
 ms.author: kraigb
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 0abc33bb5b0ffe46397baa5a2d53637bc3f2984c
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: bd8957f1257a5fdd867658be9c708bbdc8717f36
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>Erste Schritte mit dem Speicher-Explorer (Vorschau)
@@ -68,7 +68,7 @@ Darüber hinaus können Sie mit Speicherkonten in Azure (global und national) ar
 
 ## <a name="connect-to-an-azure-stack-subscription"></a>Herstellen einer Verbindung mit einem Azure Stack-Abonnement
 
-Informationen zum Herstellen der Verbindung mit einem Azure Stack-Abonnement finden Sie unter [Connect Storage Explorer to an Azure Stack subscription](azure-stack/azure-stack-storage-connect-se.md) (Verbinden des Speicher-Explorers mit einem Azure Stack-Abonnement).
+Informationen zum Herstellen der Verbindung mit einem Azure Stack-Abonnement finden Sie unter [Connect Storage Explorer to an Azure Stack subscription](azure-stack/user/azure-stack-storage-connect-se.md) (Verbinden des Speicher-Explorers mit einem Azure Stack-Abonnement).
 
 ## <a name="work-with-local-development-storage"></a>Verwenden von lokalem Entwicklungsspeicher
 Mit dem Speicher-Explorer (Vorschau) können Sie unter Verwendung des Azure-Speicheremulators Schritte für den lokalen Speicher ausführen. Dadurch können Sie Code für Speicher schreiben und Speicher testen, ohne dass unbedingt ein Speicherkonto in Azure bereitgestellt werden muss, da das Speicherkonto vom Azure-Speicheremulator emuliert wird.

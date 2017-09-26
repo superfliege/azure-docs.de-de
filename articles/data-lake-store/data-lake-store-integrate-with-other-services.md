@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 0230ec0e4fc4ff7fe98a7c3e82f252bd8dd66d16
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: de7aff6b31d937576da65498c5fcce2ae9abdbf1
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="integrating-data-lake-store-with-other-azure-services"></a>Integrieren von Data Lake-Speicher in andere Azure-Dienste
@@ -41,7 +41,7 @@ Anleitung zum Verwenden von Data Lake Analytics mit Data Lake-Speicher finden Si
 ## <a name="use-data-lake-store-with-azure-data-factory"></a>Verwenden von Data Lake-Speicher mit Azure Data Factory
 Sie können [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) zum Erfassen von Daten aus Azure-Tabellen, Azure SQL-Datenbank, Azure SQL Data Warehouse, Azure Storage-Blobs und lokalen Datenbanken verwenden. Als wichtige Komponente im Azure-Ökosystem kann Azure Data Factory auch zum Orchestrieren der Erfassung von Daten aus diesen Quelle in Azure Data Lake-Speicher verwendet werden.
 
-Anleitungen zum Verwenden von Azure Data Factory mit Data Lake-Speicher finden Sie unter [Verschieben von Daten in und aus Data Lake-Speicher mit Data Factory](../data-factory/data-factory-azure-datalake-connector.md).
+Anleitungen zum Verwenden von Azure Data Factory mit Data Lake-Speicher finden Sie unter [Verschieben von Daten in und aus Data Lake-Speicher mit Data Factory](../data-factory/connector-azure-data-lake-store.md).
 
 ## <a name="copy-data-from-azure-storage-blobs-into-data-lake-store"></a>Kopieren von Daten aus Azure Storage-Blobs in den Data Lake-Speicher
 Azure Data Lake-Speicher bietet ein Befehlszeilentool namens AdlCopy, mit dem Sie Daten aus Azure Blob Storage in ein Data Lake-Speicherkonto kopieren können. Weitere Informationen finden Sie unter [Kopieren von Daten aus Azure Storage-Blobs in den Data Lake-Speicher](data-lake-store-copy-data-azure-storage-blob.md).

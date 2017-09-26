@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c88bf04f904d6784b882f524ac8737ca70003c91
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: a9f61ec7c051ccdd867aec94121347db19b059b5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>Einführung in R Server und Open-Source-R-Funktionen in HDInsight
@@ -32,7 +32,7 @@ R Server in HDInsight bietet die neuesten Funktionen für die R-basierte Analyse
 
 Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts. Mit einem Edgeknoten haben Sie die Möglichkeit, die parallelisierten verteilten Funktionen von ScaleR in allen Kernen der Edgeknotenserver auszuführen. Außerdem können Sie sie in allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von ScaleR oder Spark-Rechenkontexte verwenden.
 
-Die Modelle oder Vorhersagen, die sich aus den Analysen ergeben, können für die lokale Verwendung heruntergeladen werden. Sie können auch an anderer Stelle in Azure operationalisiert werden, insbesondere über den [Azure Machine Learning Studio](http://studio.azureml.net)-[Webdienst](../machine-learning/machine-learning-publish-a-machine-learning-web-service.md).
+Die Modelle oder Vorhersagen, die sich aus den Analysen ergeben, können für die lokale Verwendung heruntergeladen werden. Sie können auch an anderer Stelle in Azure operationalisiert werden, insbesondere über den [Azure Machine Learning Studio](http://studio.azureml.net)-[Webdienst](../machine-learning/studio/publish-a-machine-learning-web-service.md).
 
 ## <a name="get-started-with-r-on-hdinsight"></a>Erste Schritte mit R in HDInsight
 Für die Einbeziehung von R Server in einen HDInsight-Cluster müssen Sie beim Erstellen eines HDInsight-Clusters mit dem Azure-Portal den Typ des R Server-Clusters auswählen. Der Typ des R Server-Clusters bezieht R Server auf den Datenknoten des Clusters und auf einem Edgeknoten ein, der als Landezone für R Server-basierte Analysen dient. Eine Anleitung zum Erstellen eines Clusters finden Sie unter [Erste Schritte mit R Server in HDInsight](hdinsight-hadoop-r-server-get-started.md).

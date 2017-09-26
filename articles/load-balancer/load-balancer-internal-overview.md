@@ -3,7 +3,7 @@ title: "Übersicht über internen Lastenausgleich | Microsoft Docs"
 description: "Übersicht über den internen Lastenausgleich und seine Funktionen. Funktionsweise eines Lastenausgleichs für Azure und mögliche Szenarios zum Konfigurieren interner Endpunkte"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: tysonn
 ms.assetid: 36065bfe-0ef1-46f9-a9e1-80b229105c85
@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: d324aaf8ec2c8766d5cf11452158d14c19cba4d9
-ms.lasthandoff: 04/13/2017
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ec07c77119c2da408da21fbdc7877d0b43d16556
+ms.contentlocale: de-de
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="internal-load-balancer-overview"></a>Interner Lastenausgleich (Übersicht)
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Im Gegensatz zum Load Balancer mit Internetzugriff leitet der interne Load Balancer (ILB) Datenverkehr nur an Ressourcen innerhalb des Clouddiensts oder an Ressourcen weiter, die per VPN auf die Azure-Infrastruktur zugreifen. Die Infrastruktur schränkt den Zugriff auf die virtuellen IP-Adressen mit Lastenausgleich eines Clouddiensts oder eines virtuellen Netzwerks ein, sodass diese nie direkt für einen Internetendpunkt verfügbar gemacht werden. Dies ermöglicht die Ausführung interner Branchenanwendungen (LOB-Anwendungen) in Azure und den Zugriff auf diese Anwendungen in der Cloud oder über lokale Ressourcen.
 

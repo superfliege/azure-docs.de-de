@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/04/2017
 ms.author: elioda
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: b45d85d0d77cf47f36cb793bc8c0dbe2d5c12634
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: f0be85d661807f36890fc79090c3f820ae8c376d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub unter Verwendung von .NET
@@ -37,7 +37,7 @@ Die Tutorials [Erste Schritte mit IoT Hub](iot-hub-csharp-csharp-getstarted.md) 
 * Vibrationsdaten, die mit hoher Häufigkeit als Stichproben erfasst werden
 * Eine Form vorverarbeiteter Daten
 
-Diese Dateien werden normalerweise als Batch in der Cloud mit Tools wie [Azure Data Factory](../data-factory/index.md) oder dem [Hadoop](../hdinsight/index.md)-Stapel verarbeitet. Wenn Sie Dateien von einem Gerät hochladen müssen, können Sie weiterhin die Sicherheit und Zuverlässigkeit des IoT Hub nutzen.
+Diese Dateien werden normalerweise als Batch in der Cloud mit Tools wie [Azure Data Factory](../data-factory/introduction.md) oder dem [Hadoop](../hdinsight/index.md)-Stapel verarbeitet. Wenn Sie Dateien von einem Gerät hochladen müssen, können Sie weiterhin die Sicherheit und Zuverlässigkeit des IoT Hub nutzen.
 
 Am Ende dieses Tutorials führen Sie zwei .NET-Konsolen-Apps aus:
 
@@ -196,7 +196,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
 
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[NuGet-Paket mit dem SDK des Azure IoT-Diensts]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
+[NuGet-Paket mit dem Azure IoT-Dienst-SDK]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [lnk-create-hub]: iot-hub-rm-template-powershell.md

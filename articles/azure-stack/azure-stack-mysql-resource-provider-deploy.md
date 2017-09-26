@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: JeffGo
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 4e9da524ef9dfa2d5b7150bc6a888536a1435dfd
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: 45c7edcc645e82107805b3e62d87655a830fb22a
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -49,13 +49,13 @@ In diesem Release wird keine MySQL-Instanz mehr erstellt. Sie müssen diese erst
 
 4. Das Azure Stack-Stammzertifikat wird abgerufen, und im Rahmen dieses Prozesses wird ein selbstsigniertes Zertifikat erstellt. 
 
-    __Optional:__ Wenn Sie eigene Zertifikate bereitstellen müssen, bereiten Sie diese vor und kopieren sie in ein lokales Verzeichnis, wenn Sie die Zertifikate (die an das Installationsskript übergeben werden) anpassen möchten. Sie benötigen Folgendes:
+    __Optional:__ Wenn Sie eigene Zertifikate bereitstellen müssen, bereiten Sie diese vor, und kopieren Sie sie in ein lokales Verzeichnis, wenn Sie die Zertifikate (die an das Installationsskript übergeben werden) anpassen möchten. Sie benötigen Folgendes:
 
-    a. Ein Platzhalterzertifikat für *.dbadapter.\<Region\>.\<external fqdn\>. Diesem Zertifikat muss so vertraut werden, als würde es z.B. von einer Zertifizierungsstelle ausgestellt werden (d.h. die Vertrauenskette muss vorhanden sein, ohne dass Zwischenzertifikate erforderlich sind). (Ein einzelnes Sitezertifikat kann mit dem expliziten Namen des virtuellen Computers verwendet werden, den Sie während der Installation bereitstellen.)
+    a. Ein Platzhalterzertifikat für *.dbadapter.\<Region\>.\<external fqdn\>. Diesem Zertifikat muss so vertraut werden, als würde es z.B. von einer Zertifizierungsstelle ausgestellt werden (d.h. die Vertrauenskette muss vorhanden sein, ohne dass Zwischenzertifikate erforderlich sind). Ein einzelnes Sitezertifikat kann mit dem expliziten Namen des virtuellen Computers verwendet werden, den Sie während der Installation bereitstellen.
 
     b. Das von Azure Resource Manager für Ihre Azure Stack-Instanz verwendete Stammzertifikat. Wenn es nicht gefunden wird, wird das Stammzertifikat abgerufen.
 
-5. Öffnen Sie eine **neue** PowerShell-Konsole mit erhöhten Rechten, und wechseln Sie zum Verzeichnis, in dem Sie die Dateien extrahiert haben. Verwenden Sie ein neues Fenster, um Probleme aufgrund von falschen PowerShell-Modulen, die bereits in Ihrem System geladen sind, zu vermeiden.
+5. Öffnen Sie eine **neue** PowerShell-Konsole mit erhöhten Rechten, und wechseln Sie zu dem Verzeichnis, in dem Sie die Dateien extrahiert haben. Verwenden Sie ein neues Fenster, um Probleme aufgrund von falschen PowerShell-Modulen, die bereits in Ihrem System geladen sind, zu vermeiden.
 
 6. Wenn Sie andere Versionen der AzureRm- oder AzureStack-PowerShell-Module als 1.2.9 oder 1.2.10 installiert haben, werden Sie aufgefordert, diese zu entfernen, ansonsten wird die Installation nicht fortgesetzt. Dies schließt Versionen ab 1.3 ein.
 
@@ -158,8 +158,6 @@ Je nach Systemleistung und Downloadgeschwindigkeiten kann die Installation zwisc
 
 4. Wenn Sie Server hinzufügen, müssen Sie diese einer neuen oder vorhandenen SKU hinzufügen, um die Differenzierung von Dienstangeboten zu ermöglichen. Beispielsweise können Sie über eine Enterprise-Instanz verfügen, die Datenbankkapazität und automatische Sicherung bereitstellt, Hochleistungsserver für einzelne Abteilungen reservieren usw. Der SKU-Name muss die Eigenschaften beschreiben, damit Mandanten ihre Datenbanken entsprechend platzieren können, und alle Hostserver in einer SKU müssen denselben Funktionsumfang aufweisen.
 
-    ![Erstellen einer MySQL-SKU](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
-
 
 >[!NOTE]
 Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Sie können erst eine Datenbank erstellen, wenn die SKU erstellt wurde.
@@ -181,8 +179,6 @@ Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Sie kö
     ![SKU auswählen](./media/azure-stack-mysql-rp-deploy/mysql-select-a-sku.png)
 
 5. Erstellen Sie eine Einstellung für die Anmeldung. Als Einstellung für die Anmeldung kann eine vorhandene wiederverwendet oder eine neue erstellt werden. Sie enthält den Benutzernamen und das Kennwort für die Datenbank.
-
-    ![Neue Datenbankanmeldung erstellen](./media/azure-stack-mysql-rp-deploy/create-new-login.png)
 
     Die Verbindungszeichenfolge enthält den echten Namen des Datenbankservers. Kopieren Sie ihn aus dem Portal.
 

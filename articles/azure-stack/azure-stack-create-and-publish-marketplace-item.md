@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/21/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: f1a04567e86ebea722a7de6a86117a49d1205966
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: e0df5b4c4ce23a746e60b491193e5a69df5ffdbd
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Erstellen und Veröffentlichen eines Marketplace-Elements
@@ -69,7 +69,7 @@ ms.lasthandoff: 09/15/2017
 
 ## <a name="publish-a-marketplace-item"></a>Veröffentlichen von Marketplace-Elementen
 1. Verwenden Sie PowerShell oder Azure Storage-Explorer, um Ihr Marketplace-Element (.azpkg) in Azure Blob Storage hochzuladen. Sie können es in Azure Stack-Speicher oder Azure Storage hochladen. (Es handelt sich um einen temporären Speicherort für das Paket.) Stellen Sie sicher, dass das Blob öffentlich zugänglich ist.
-2. Stellen Sie auf dem virtuellen Clientcomputer in der Microsoft Azure Stack-Umgebung sicher, dass Ihre PowerShell-Sitzung mit Ihren Dienstadministrator-Anmeldeinformationen eingerichtet ist. Eine Anleitung zum Authentifizieren von PowerShell in Azure Stack finden Sie unter [Deploy templates in Azure Stack using PowerShell](azure-stack-deploy-template-powershell.md) (Bereitstellen von Vorlagen in Azure Stack mit PowerShell).
+2. Stellen Sie auf dem virtuellen Clientcomputer in der Microsoft Azure Stack-Umgebung sicher, dass Ihre PowerShell-Sitzung mit Ihren Dienstadministrator-Anmeldeinformationen eingerichtet ist. Eine Anleitung zum Authentifizieren von PowerShell in Azure Stack finden Sie unter [Deploy templates in Azure Stack using PowerShell](user/azure-stack-deploy-template-powershell.md) (Bereitstellen von Vorlagen in Azure Stack mit PowerShell).
 3. Verwenden Sie das PowerShell-Cmdlet **Add-AzureRMGalleryItem**, um das Marketplace-Element in Azure Stack zu veröffentlichen. Beispiel:
    
        Add-AzureRMGalleryItem -GalleryItemUri `

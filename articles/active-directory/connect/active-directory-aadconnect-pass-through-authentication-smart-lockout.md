@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: c84b2406e6373701c83c509342129bd6d7d4034b
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 9a33e83c7453d5b80043599acca3ac4310446562
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -79,7 +79,7 @@ Um die Smart Lockout-Werte Ihres Mandanten festzulegen, führen Sie die folgende
 1. Melden Sie sich bei Graph Explorer als globaler Administrator für Ihren Mandanten an. Wenn Sie dazu aufgefordert werden, gewähren Sie Zugriff für die angeforderten Berechtigungen.
 2. Klicken Sie auf „Berechtigungen ändern“, und wählen Sie die Berechtigung „Directory.ReadWrite.All“ aus.
 3. Konfigurieren Sie die Graph-API wie folgt: Legen Sie die Version auf „BETA“, den Anforderungstyp auf „POST“ und die URL auf `https://graph.microsoft.com/beta/<your-tenant-domain>/settings` fest.
-4. Kopieren Sie die folgende JSON-Anforderung in das Feld „Anforderungstext“. Ändern Sie die Smart Lockout-Werte geeignet, und verwenden Sie eine zufällige GUID als `templateId`.
+4. Kopieren Sie die folgende JSON-Anforderung in das Feld „Anforderungstext“.
 5. Klicken Sie auf „Abfrage ausführen“, um die Smart Lockout-Werte Ihres Mandanten anzuzeigen.
 
 ```
