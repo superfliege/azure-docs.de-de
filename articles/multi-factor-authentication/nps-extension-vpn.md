@@ -209,7 +209,7 @@ In diesem Abschnitt konfigurieren Sie die VPN-Server zur Verwendung der RADIUS-A
 
  ![Routing und RAS](./media/nps-extension-vpn/image14.png)
  
-4. Klicken Sie im Dialogfeld**[Servername] (Lokal) Eigenschaften** auf die Registerkarte **Sicherheit**. 
+4. Klicken Sie im Dialogfeld**[Servername} (Lokal) Eigenschaften** auf die Registerkarte **Sicherheit**. 
 5. Klicken Sie auf der Registerkarte **Sicherheit** unter „Authentifizierungsanbieter“ auf **RADIUS-Authentifizierung** und dann auf **Konfigurieren**.
 
  ![RADIUS-Authentifizierung](./media/nps-extension-vpn/image15.png)
