@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2017
 ms.author: cherylmc,yushwang
 ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
-ms.openlocfilehash: 9f7eb8e63f30d0f3450ad913620e59cd461b75bc
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 6a66289ee52eca02a7ab416f5bcf55e6cff8b720
 ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
@@ -113,9 +113,9 @@ Für die Authentifizierung können nur vorinstallierte Schlüssel (Pre-Shared Ke
 * Azure-Portal: Navigieren Sie zum klassischen virtuellen Netzwerk und dann zu „VPN-Verbindungen“ > „Standort-zu-Standort-VPN-Verbindungen“ > „Name des lokalen Standorts“ > „Lokaler Standort“ > „Clientadressraum“. 
 * Klassisches Portal: Fügen Sie die einzelnen Bereiche, die über das Gateway für Ihr virtuelles Netzwerk gesendet werden sollen, auf der Seite „Netzwerke“ unter „Lokale Netzwerke“ hinzu. 
 
-### <a name="can-i-configure-forced-tunneling"></a>Kann ich eine erzwungene Tunnelung konfigurieren?
+### <a name="can-i-configure-force-tunneling"></a>Kann ich Tunnelerzwingung konfigurieren?
 
-Ja. Weitere Informationen finden Sie unter [Konfigurieren der Tunnelerzwingung](vpn-gateway-about-forced-tunneling.md).
+Ja. Informationen finden Sie unter [Konfigurieren der Tunnelerzwingung mit dem klassischen Bereitstellungsmodell](vpn-gateway-about-forced-tunneling.md).
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>Kann ich in Azure einen eigenen VPN-Server einrichten und damit eine Verbindung mit meinem lokalen Netzwerk herstellen?
 
@@ -159,9 +159,13 @@ Für die standortübergreifende Standort-zu-Standort-Konfiguration werden Routin
 
 Auch andere VPN-Softwarelösungen können mit unserem Gateway verwendet werden, sofern sie über branchenübliche IPsec-Implementierungen verfügen. Konfigurations- und Supportinformationen erhalten Sie vom Anbieter der Software.
 
-## <a name="P2S"></a>Point-to-Site-Verbindungen
+## <a name="P2S"></a>Point-to-Site – native Azure-Zertifikatauthentifizierung
 
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-point-to-site-include.md)]
+[!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
+
+## <a name="point-to-site---radius-authentication"></a>Point-to-Site – RADIUS-Authentifizierung
+
+[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
 ## <a name="V2VMulti"></a>VNet-zu-VNet- und Multi-Site-Verbindungen
 
