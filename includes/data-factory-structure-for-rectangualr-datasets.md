@@ -28,7 +28,7 @@ Befolgen Sie die folgenden Angaben dazu, wann der Abschnitt **structure** mit we
     Wie bereits erwähnt, ist die Information "type" im Abschnitt "structure" optional. Für strukturierte Datenquellen steht die Information "type" bereits als Teil der Datasetdefinition im Datenspeicher zur Verfügung, weshalb Sie Typinformationen nicht dem Abschnitt "structure" hinzufügen müssen.
 * **Für das Schema von Lesedatenquellen (insbesondere Azure-Blob)** können Sie Daten speichern, ohne Schema- oder Typinformationen mit den Daten zu speichern. Bei diesen Typen von Datenquellen sollten Sie den Abschnitt "structure" in den beiden folgenden Fällen hinzufügen:
   * Sie wünschen eine Spaltenzuordnung.
-  * Wenn das Dataset eine Quelle in einer Kopieraktivität ist, können Sie Typinformationen in "structure" bereitstellen. Data Factory verwendet diese Typinformationen für die Konvertierung in systemeigene Typen für die Senke. Weitere Informationen finden Sie im Artikel [Verschieben von Daten in einen und aus einem Azure-Blob](../articles/data-factory/data-factory-azure-blob-connector.md).
+  * Wenn das Dataset eine Quelle in einer Kopieraktivität ist, können Sie Typinformationen in "structure" bereitstellen. Data Factory verwendet diese Typinformationen für die Konvertierung in systemeigene Typen für die Senke. Weitere Informationen finden Sie im Artikel [Verschieben von Daten in einen und aus einem Azure-Blob](../articles/data-factory/v1/data-factory-azure-blob-connector.md).
 
 ### <a name="supported-net-based-types"></a>Unterstützte .NET-basierte Typen
 Data Factory unterstützt die folgenden CLS-konformen auf .NET basierenden Typwerte für die Bereitstellung von Typinformationen in "structure" für das Schema von Lesedatenquellen wie Azure-Blob.

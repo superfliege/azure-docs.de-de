@@ -20,7 +20,7 @@
    7. Aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie Folgendes verstanden haben: Die auf dem Cloudgerät gespeicherten Daten werden in einem Microsoft-Datencenter gehostet.
        * Wenn Sie lediglich ein physisches Gerät verwenden, wird der Verschlüsselungsschlüssel auf Ihrem Gerät beibehalten. Daher kann Microsoft dieses nicht entschlüsseln.
 
-       * Wenn Sie ein Cloudgerät verwenden, werden die Ver- und Entschlüsselungsschlüssel in Microsoft Azure gespeichert. Weitere Informationen finden Sie unter den [Sicherheitsüberlegungen bei der Verwendung eines Cloudgeräts](../articles/storsimple/storsimple-security.md#storsimple-virtual-device-security).
+       * Wenn Sie ein Cloudgerät verwenden, werden die Ver- und Entschlüsselungsschlüssel in Microsoft Azure gespeichert. Weitere Informationen finden Sie unter den [Sicherheitsüberlegungen bei der Verwendung eines Cloudgeräts](../articles/storsimple/storsimple-security.md).
    8. Klicken Sie auf **Erstellen**, um das Cloudgerät bereitzustellen. Die Bereitstellung des Geräts kann etwa 30 Minuten dauern. Sie erhalten eine Benachrichtigung, nachdem das Cloudgerät erfolgreich erstellt wurde. Navigieren Sie zum Blatt „Geräte“. Die Liste mit den Geräten wird aktualisiert, um das Cloudgerät anzuzeigen. Der Status des Geräts lautet **Zur Einrichtung bereit**.
       
       ![StorSimple Cloud Appliance – Zur Einrichtung bereit](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)

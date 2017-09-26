@@ -12,7 +12,7 @@
 
 * Möglicherweise müssen Sie das Kernnutzungskontingent (pro Region) in Ihrem Azure-Abonnement sowie das separate Kontingent für NC- oder NV-Kerne erhöhen. In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../articles/azure-supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern. Standardgrenzwerte variieren unter Umständen je nach Abonnementkategorie.
 
-* Ein VM-Image, das Sie für virtuelle Computer der N-Serie bereitstellen können, ist der [virtuelle Azure-Computer für Data Science](../articles/machine-learning/machine-learning-data-science-virtual-machine-overview.md). Beim virtuellen Azure-Computer für Data Science sind viele beliebte Data Science- und Deep Learning-Tools bereits installiert und konfiguriert. NVIDIA Tesla GPU-Treiber für NC-Instanzen sind ebenfalls bereits vorinstalliert.
+* Ein VM-Image, das Sie für virtuelle Computer der N-Serie bereitstellen können, ist der [virtuelle Azure-Computer für Data Science](../articles/machine-learning/data-science-virtual-machine/overview.md). Beim virtuellen Azure-Computer für Data Science sind viele beliebte Data Science- und Deep Learning-Tools bereits installiert und konfiguriert. NVIDIA Tesla GPU-Treiber für NC-Instanzen sind ebenfalls bereits vorinstalliert.
 
 
 

@@ -1,0 +1,11 @@
+Bei lokal redundantem Speicher (LRS) werden Ihre Daten dreimal in einer Speicherskalierungseinheit repliziert, die in einem Datencenter in der Region gehostet wird, in der Sie Ihr Speicherkonto erstellt haben. Eine Schreibanforderung wird nur einmal erfolgreich zurückgegeben, nachdem sie in alle drei Replikate geschrieben wurde. Diese drei Replikate befinden sich in separaten Fehler- und Upgradedomänen innerhalb einer Speicherskalierungseinheit.
+
+Eine Speicherskalierungseinheit ist eine Sammlung von Speicherknotengestellen (Racks). Eine Fehlerdomäne (FD) ist eine Gruppe von Knoten, die eine physische Fehlereinheit darstellen und als Knoten angesehen werden können, die zum gleichen physischen Gestell gehören. Eine Upgradedomäne (UD) ist eine Gruppe von Knoten, die während des Vorgangs eines Dienstupgrades (Rollouts) gemeinsam aktualisiert werden. Die drei Replikate sind auf UDs und FDs in einer Speicherskalierungseinheit verteilt, um sicherzustellen, dass Daten verfügbar sind, auch wenn ein Hardwarefehler sich auf ein einzelnes Gestell auswirkt oder wenn Knoten während eines Rollouts aktualisiert werden.
+
+LRS ist die kostengünstigste Option und bietet im Vergleich mit anderen Optionen die geringste Dauerhaftigkeit. Bei einem Katastrophenfall auf Datencenterebene (Feuer, Überschwemmung usw.) gehen alle drei Replikate unter Umständen verloren oder können nicht mehr wiederhergestellt werden. Zur Verringerung dieses Risikos ist für die meisten Anwendungen der georedundante Speicher (GRS) zu empfehlen.
+
+Lokal redundanter Speicher kann für bestimmte Szenarien aber trotzdem geeignet sein:
+
+* Er bietet die höchste maximale Bandbreite von Azure Storage-Replikationsoptionen.
+* Wenn Ihre Anwendung Daten speichert, die problemlos wiederhergestellt werden können, können Sie sich für LRS entscheiden.
+* Einige Anwendungen sind aufgrund von Datenvorschriften auf die Replikation von Daten innerhalb eines Lands beschränkt. Eine gepaarte Region könnte sich beispielsweise in einem anderen Land befinden. Weitere Informationen zu Regionspaarungen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).

@@ -1,0 +1,3 @@
+* Windows: Drücken Sie `Ctrl-insert` zum Kopieren und `Shift-insert` zum Einfügen. Das Kopieren und Einfügen ist auch durch Öffnen der Dropdownliste mittels Rechtsklick möglich.
+  * FireFox/IE unterstützen die Berechtigungen für die Zwischenablage möglicherweise nicht ordnungsgemäß.
+* Mac OS: Drücken Sie `Cmd-c` zum Kopieren und `Cmd-v` zum Einfügen. Das Kopieren und Einfügen ist auch durch Öffnen der Dropdownliste mittels Rechtsklick möglich.

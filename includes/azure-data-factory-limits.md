@@ -16,7 +16,7 @@ Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimi
 
 <sup>2</sup> Bedarfsgesteuerte HDInsight-Kerne werden über das Abonnement zugewiesen, das die Data Factory enthält. Daher ist das obige Limit das von der Data Factory erzwungene Kernlimit für bedarfsgesteuerte HDInsight-Kerne und unterscheidet sich vom Kernlimit, das für Ihr Azure-Abonnement gilt.
 
-<sup>3</sup> Die Einheit für Clouddatenverschiebungen wird in einem Cloud-zu-Cloud-Kopiervorgang verwendet. Sie ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Data Factory. Durch die Nutzung von weitere DMUs für einige Szenarios können Sie einen höheren Durchsatz erreichen. Weitere Informationen finden Sie unter [Einheiten für Clouddatenverschiebungen](../articles/data-factory/data-factory-copy-activity-performance.md#cloud-data-movement-units).
+<sup>3</sup> Die Einheit für Clouddatenverschiebungen wird in einem Cloud-zu-Cloud-Kopiervorgang verwendet. Sie ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Data Factory. Durch die Nutzung von weitere DMUs für einige Szenarios können Sie einen höheren Durchsatz erreichen. Weitere Informationen finden Sie unter [Einheiten für Clouddatenverschiebungen](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units).
 
 | **Ressource** | **Unteres Standardlimit** | **Minimales Limit** |
 | --- | --- | --- |

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/01/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
-ms.openlocfilehash: ff03ce6463176bad8e8d89985441d23c7d76b183
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 8b3a538fc0fe34d0b7af8a99510cfb19abd32d55
 ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
@@ -39,7 +39,7 @@ Azure Analysis Services ist mit zahlreichen praktischen Features kompatibel, die
 Tabellarische Modelle ermöglichen eine schnelle Entwicklung und sind hochgradig anpassbar. Für Entwickler enthalten tabellarische Modelle das Tabellenobjektmodell (TOM) zur Beschreibung von Modellobjekten. TOM wird in JSON über die [Skriptsprache für Tabellenmodelle (Tabular Model Scripting Language, TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) und die AMO-Datendefinitionssprache über den Namespace [Microsoft.AnalysisServices.Tabular](https://msdn.microsoft.com/library/microsoft.analysisservices.tabular.aspx) verfügbar gemacht.
 
 ## <a name="better-with-azure"></a>Besser mit Azure
-Azure Analysis Services arbeitet mit vielen Azure-Diensten zusammen und ermöglicht so die Erstellung komplexer Analyselösungen. Die Integration in [Azure Active Directory](../active-directory/active-directory-whatis.md) bietet sicheren, rollenbasierten Zugriff auf wichtige Daten. Auch eine Integration in [Azure Data Factory](../data-factory/data-factory-introduction.md)-Pipelines ist möglich. Hierzu muss lediglich eine Aktivität hinzugefügt werden, die Daten in das Modell lädt. Für einfache Modellorchestrierungsaufgaben mit benutzerdefiniertem Code können [Azure Automation](../automation/automation-intro.md) und [Azure Functions](../azure-functions/functions-overview.md) verwendet werden.
+Azure Analysis Services arbeitet mit vielen Azure-Diensten zusammen und ermöglicht so die Erstellung komplexer Analyselösungen. Die Integration in [Azure Active Directory](../active-directory/active-directory-whatis.md) bietet sicheren, rollenbasierten Zugriff auf wichtige Daten. Auch eine Integration in [Azure Data Factory](../data-factory/introduction.md)-Pipelines ist möglich. Hierzu muss lediglich eine Aktivität hinzugefügt werden, die Daten in das Modell lädt. Für einfache Modellorchestrierungsaufgaben mit benutzerdefiniertem Code können [Azure Automation](../automation/automation-intro.md) und [Azure Functions](../azure-functions/functions-overview.md) verwendet werden.
 
 ## <a name="get-up-and-running-quickly"></a>Schnelle Betriebsbereitschaft
 Über das Azure-Portal können Sie innerhalb weniger Minuten [einen Server erstellen](analysis-services-create-server.md). Und mit Azure Resource Manager-[Vorlagen](../azure-resource-manager/resource-manager-create-first-template.md) und PowerShell lassen sich Server unter Verwendung einer deklarativen Vorlage bereitstellen. Mit einer einzelnen Vorlage können Sie mehrere Dienste sowie andere Azure-Komponenten (beispielsweise Speicherkonten und Azure Functions) bereitstellen. 

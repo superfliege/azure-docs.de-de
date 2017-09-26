@@ -21,7 +21,7 @@
       > 
    7. Klicken Sie auf das Häkchen, um zu bestätigen, dass die auf dem virtuellen Gerät gespeicherten Daten in einem Microsoft-Datencenter gehostet werden. Wenn Sie lediglich ein physisches Gerät verwenden, wird der Verschlüsselungsschlüssel auf Ihrem Gerät beibehalten. Daher kann Microsoft dieses nicht entschlüsseln. 
       
-       Wenn Sie ein virtuelles Gerät verwenden, werden die Ver- und Entschlüsselungsschlüssel in Microsoft Azure gespeichert. Weitere Informationen finden Sie unter [Sicherheitsüberlegungen bei der Verwendung eines virtuellen Geräts](../articles/storsimple/storsimple-security.md#storsimple-virtual-device-security).
+       Wenn Sie ein virtuelles Gerät verwenden, werden die Ver- und Entschlüsselungsschlüssel in Microsoft Azure gespeichert. Weitere Informationen finden Sie unter [Sicherheitsüberlegungen bei der Verwendung eines virtuellen Geräts](../articles/storsimple/storsimple-security.md).
    8. Aktivieren Sie das Kontrollkästchen, um das virtuelle Gerät zu erstellen. Die Bereitstellung des Geräts kann etwa 30 Minuten dauern.
       
       ![StorSimple – virtuelles Gerät in Erstellungsphase](./media/storsimple-create-virtual-device-u2/StorSimple_VirtualDeviceCreating1M.png)

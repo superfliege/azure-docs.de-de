@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 04/07/2017
 ms.author: ralfwi
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 8375ea064ee602af22bb0b46677c840f696bb8a6
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 497e5fa57e3d6703a0fcea3b3fa7a58b35f8175a
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="azure-germany-storage-services"></a>Speicherdienste von Azure Deutschland
 ## <a name="storage"></a>Storage
-Einzelheiten zu Azure Storage und seiner Verwendung finden Sie in der [globalen Dokumentation zu Storage](../storage/index.md).
+Einzelheiten zu Azure Storage und seiner Verwendung finden Sie in der [globalen Dokumentation zu Storage](../storage/index.yml).
 
 Die in Azure Storage gespeicherten Daten werden repliziert, um eine hohe Verfügbarkeit sicherzustellen. Bei georedundanten Speichern und georedundanten Speichern mit Lesezugriff repliziert Azure Daten zwischen den *Regionspaaren*. Bei Azure Deutschland sind folgende Regionspaare verfügbar:
 
@@ -42,9 +42,9 @@ Die Speicherdienstverschlüsselung schützt ruhende Daten in Azure Storage-Konte
 | Dienst | Deutschland, Mitte | Deutschland, Nordosten |
 | --- | --- | --- | --- |
 | [Blob Storage](../storage/common/storage-introduction.md#blob-storage) |Allgemein verfügbar |Allgemein verfügbar |
+| [Azure Files](../storage/common/storage-introduction.md#azure-files) | Allgemein verfügbar | Allgemein verfügbar |
 | [Table Storage](../storage/common/storage-introduction.md#table-storage) |Allgemein verfügbar  |Allgemein verfügbar |
 | [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |Allgemein verfügbar | Allgemein verfügbar |
-| [File Storage](../storage/common/storage-introduction.md#file-storage) |Allgemein verfügbar |Allgemein verfügbar |
 | [Hot/Cold Blob Storage](../storage/blobs/storage-blob-storage-tiers.md) |Allgemein verfügbar |Allgemein verfügbar |
 | [Storage Service Encryption](../storage/common/storage-service-encryption.md) |Allgemein verfügbar |Allgemein verfügbar |
 | [Storage Premium](../storage/common/storage-premium-storage.md) |Allgemein verfügbar |Allgemein verfügbar |
@@ -57,9 +57,9 @@ Die URLs für Speicherkonten in Azure Deutschland unterscheiden sich von denen i
 | Dienstart | Globale Azure-Umgebung | Azure Deutschland |
 | --- | --- | --- |
 | Blob Storage | *.blob.core.windows.net | *.blob.core.cloudapi.de |
+| Azure Files | *.file.core.windows.net | *.file.core.cloudapi.de | 
 | Queue Storage | *.queue.core.windows.net | *.queue.core.cloudapi.de |
 | Table Storage | *.table.core.windows.net | *.table.core.cloudapi.de |
-| File Storage | *.file.core.windows.net | *.file.core.cloudapi.de | 
 
 > [!NOTE]
 > Ihre gesamten Skripts und Ihr Code müssen die passenden Endpunkte berücksichtigen. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../storage/common/storage-configure-connection-string.md). 
