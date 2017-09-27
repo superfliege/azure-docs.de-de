@@ -151,8 +151,8 @@ Wir haben jetzt eine Azure Function erstellt, die aus einer Service Bus-Wartesch
     private static Lazy<ConnectionMultiplexer> lazyConnection = 
         new Lazy<ConnectionMultiplexer>(() =>
             {
-                var cnn = ConfigurationManager.ConnectionStrings["CONN NAME"].ConnectionString
-                return ConnectionMultiplexer.Connect();
+                var cnn = ConfigurationManager.ConnectionStrings["CONN NAME"].ConnectionString;
+                return ConnectionMultiplexer.Connect(cnn);
             });
 
     public static ConnectionMultiplexer Connection

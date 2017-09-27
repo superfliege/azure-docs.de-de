@@ -146,7 +146,8 @@ Sie müssen eine U-SQL-Datei oder einen entsprechenden Ordner öffnen, um mit U-
                       D( DepID, DepName );
          
         OUTPUT @departments
-            TO “/Output/departments.csv”
+            TO "/Output/departments.csv"
+        USING Outputters.Csv();
 
     Das Skript erstellt eine Datei mit dem Namen „departments.csv“ mit einigen Daten im Ordner „/Output“.
 
