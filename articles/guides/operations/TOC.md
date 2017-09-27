@@ -33,8 +33,8 @@
 
 ### Schnelles Erstellen eines virtuellen Windows-Computers
 #### [Verwenden der Azure-Befehlszeilenschnittstelle](../../virtual-machines/windows/quick-create-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [Verwenden des Portals](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [Verwenden von PowerShell](../../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Verwenden des Azure-Portals](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Verwenden von Azure PowerShell](../../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Tutorials zu virtuellen Windows-Computern
 #### [Erstellen/Verwalten eines virtuellen Computers](../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Erstellen/Verwalten von Datenträgern](../../virtual-machines/windows/tutorial-manage-data-disk.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -51,8 +51,8 @@
 
 ### Schnelles Erstellen eines virtuellen Linux-Computers
 #### [Verwenden der Azure-Befehlszeilenschnittstelle](../../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [Verwenden des Portals](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [Verwenden von PowerShell](../../virtual-machines/linux/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Verwenden des Azure-Portals](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Verwenden von Azure PowerShell](../../virtual-machines/linux/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Tutorials zu virtuellen Linux-Computern
 #### [Erstellen/Verwalten von virtuellen Computern](../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Erstellen/Verwalten von Datenträgern](../../virtual-machines/linux/tutorial-manage-disks.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -89,7 +89,7 @@
 
 ## [Virtuelle Netzwerke](azure-operations-guide.md#azure-virtual-network)
 ### [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Erstellen eines virtuellen Netzwerks über PowerShell](../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Erstellen eines virtuellen Netzwerks über Azure PowerShell](../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Tutorials für virtuelle Netzwerke

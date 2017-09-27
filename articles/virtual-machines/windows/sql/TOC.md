@@ -16,8 +16,8 @@
 #### [Automatisch – mit Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 #### [Manuell – Voraussetzungen](virtual-machines-windows-portal-sql-availability-group-prereq.md)
 #### [Manuell – Tutorial](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [Lastenausgleich – Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-#### [Lastenausgleich – PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [Load balancer – Azure portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md) (Load Balancer – Azure-Portal)
+#### [Load balancer – Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) (Load Balancer – Azure-PowerShell)
 #### [Mehrere Regionen](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### Failoverclusterinstanz
 #### [Konfigurieren](virtual-machines-windows-portal-sql-create-failover-cluster.md)
@@ -36,8 +36,8 @@
 ## [Anwendungsmuster](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
 # Referenz
-## [PowerShell](/powershell/azure/overview)
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/)
+## [Azure PowerShell](/powershell/azure/overview)
+## [Azure-CLI](/cli/azure/)
 ## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
 ## [SQL Server-Treiber](https://msdn.microsoft.com/library/mt654049.aspx)
 ## [REST](/rest/api/)

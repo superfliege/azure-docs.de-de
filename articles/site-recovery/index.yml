@@ -1,0 +1,68 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Site Recovery-Dokumentation
+metadata:
+  title: 'Dokumentation für Azure Site Recovery – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
+  services: site-recovery
+  author: czeumault
+  manager: carolz
+  ms.service: site-recovery
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/23/2017
+  ms.author: carolz
+abstract:
+  description: 'Azure Site Recovery orchestriert und verwaltet die Wiederherstellung im Notfall für Azure-VMs sowie lokale virtuelle Computer und physische Server. Erfahren Sie mit unseren Schnellstarts und Tutorials, wie Sie Replikationen, Failover und Failbacks durchführen.'
+sections:
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: Schnelle Einrichtung der Wiederherstellung im Notfall für eine Azure-VM
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/site-recovery/media/index/portal.svg
+            text: Azure-Portal
+            href: /azure/site-recovery/azure-to-azure-quickstart
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: Informationen zum Einrichten der Notfallwiederherstellung für virtuelle Computer und physische Server.
+      - type: text
+        html: <h3>Azure zu Azure</h3>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="azure-to-azure-tutorial-enable-replication">Einrichten der Notfallwiederherstellung</a>
+          - html: <a href="azure-to-azure-tutorial-dr-drill">Durchführen eines Notfallwiederherstellungsverfahrens</a>
+          - html: <a href="azure-to-azure-tutorial-failover-failback">Run failover and failback</a> (Ausführen von Failover und Failback)
+      - type: text
+        html: <h3>VMware</h3>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-azure">Prepare Azure</a> (Vorbereiten von Azure)
+          - html: <a href="tutorial-prepare-on-premises-vmware">Prepare on-premises VMware</a> (Lokales Vorbereiten von VMware)
+          - html: <a href="tutorial-vmware-to-azure">Set-up disaster recovery</a> (Einrichten der Notfallwiederherstellung)
+          - html: <a href="tutorial-dr-drill-azure">Durchführen eines Notfallwiederherstellungsverfahrens</a>
+          - html: <a href="tutorial-vmware-to-azure-failover-failback">Run failover and failback</a> (Ausführen von Failover und Failback)
+      - type: text
+        html: <h3>Migrieren zu Azure</h3>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-azure">Prepare Azure</a> (Vorbereiten von Azure)
+          - html: <a href="tutorial-migrate-on-premises-to-azure">Migrate on-premises machines</a> (Migrieren von lokalen Computern) oder <a href="tutorial-migrate-aws-to-azure">AWS Instances to Azure</a> (AWS-Instanzen zu Azure)
+  - title: Referenz
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Befehlszeile
+            html: <p><a href="/powershell/module/azurerm.siterecovery/?view=azurermps-4.3.1">Azure PowerShell</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/site-recovery/">REST-API-Referenz</a></p>

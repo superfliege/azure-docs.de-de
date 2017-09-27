@@ -4,6 +4,8 @@
   items:
     - name: Informationen zur Textanalyse
       href: overview.md
+    - name: Unterstützte Sprachen
+      href: text-analytics-supported-languages.md
 - name: Schnellstarts
   items:
     - name: 'C#'

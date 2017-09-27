@@ -5,7 +5,7 @@
 ## [Häufig gestellte Fragen](faq.md)
 
 # Erste Schritte
-## [Erstellen eines virtuellen Linux-Computers mithilfe des Portals](createportal.md)
+## [Erstellen eines virtuellen Linux-Computers mithilfe des Azure-Portals](createportal.md)
 ## [Installieren der Azure-Befehlszeilenschnittstelle](../../../cli-install-nodejs.md)
 ## [Erstellen von SSH-Schlüsseln](../mac-create-ssh-keys.md)
 
@@ -22,7 +22,7 @@
 ### [Zurücksetzen von Linux-Kennwörtern oder -Schlüsseln, Beheben von SSH-Problemen und Überprüfen der Datenträger](reset-access.md)
 ### [Wartung](planned-maintenance-schedule.md)
 ### [Erstellen eines Docker-Hosts mithilfe der Befehlszeilenschnittstelle](cli-use-docker.md)
-### [Erstellen eines Docker-Hosts mithilfe des Portals](portal-use-docker.md)
+### [Erstellen eines Docker-Hosts mithilfe des Azure-Portals](portal-use-docker.md)
 ### [Verwenden von Docker mit Swarm](../../virtual-machines-linux-docker-swarm.md)
 
 ## Verwenden von Azure Storage
@@ -67,8 +67,8 @@
 ### [Anfügen einer virtuellen Festplatte an den virtuellen Problembehandlungscomputer](troubleshoot-recovery-disks-portal.md)
 
 # Referenz
-## [PowerShell](/powershell/azure/overview)
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/vm)
+## [Azure PowerShell](/powershell/azure/overview)
+## [Azure-CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [Erstellen von Resource Manager-Vorlagen](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [Communityvorlagen](https://azure.microsoft.com/documentation/templates)

@@ -21,7 +21,7 @@
 ### [Ausgehende Authentifizierung](scheduler-outbound-authentication.md)
 
 # Referenz
-## [PowerShell](/powershell/module/azurerm.scheduler)
+## [Azure PowerShell](/powershell/module/azurerm.scheduler)
 ## [REST](/rest/api/scheduler)
 
 # Ressourcen

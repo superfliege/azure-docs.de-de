@@ -1,0 +1,31 @@
+- name: Übersicht
+  items:
+    - name: Übersicht zu Azure-Richtlinien
+      href: azure-policy-introduction.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Zuweisen einer Richtlinie – Portal
+      href: assign-policy-definition.md
+    - name: Zuweisen einer Richtlinie – PowerShell
+      href: assign-policy-definition-ps.md
+    - name: Zuweisen einer Richtlinie – Azure CLI
+      href: assign-policy-definition-cli.md
+- name: Lernprogramme
+  items:
+    - name: Erstellen und Verwalten einer Azure-Richtlinie
+      href: create-manage-policy.md
+- name: Referenz
+  items:
+    - name: Azure-Befehlszeilenschnittstelle
+      href: 'https://docs.microsoft.com/cli/azure/policy?view=azure-cli-latest'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-4.3.1'
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/azure-policy/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'

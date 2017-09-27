@@ -1,0 +1,68 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation zu Azure Backup
+metadata:
+  title: 'Dokumentation für Azure Backup – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  description: 'Mit Azure Backup können Sie die Daten für lokale Server, virtuelle Computer, virtualisierte Workloads, SQL-Server, SharePoint-Server usw. sichern. In unseren Schnellstarts, Tutorials und Beispielen wird beschrieben, wie Sie Ihre Daten sichern und wiederherstellen.'
+  services: backup
+  author: czeumault
+  manager: carolz
+  ms.service: backup
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/11/2017
+  ms.author: carolz
+abstract:
+  description: 'Mit Azure Backup können Sie die Daten für lokale Server, virtuelle Computer, virtualisierte Workloads, SQL-Server, SharePoint-Server usw. sichern. In unseren Schnellstarts, Tutorials und Beispielen wird beschrieben, wie Sie Ihre Daten sichern und wiederherstellen.'
+sections:
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: 'Es wird beschrieben, wie Sie in Azure einen virtuellen Azure-Computer sichern.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg'
+            text: Azure-Portal
+            href: quick-backup-vm-portal
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: quick-backup-vm-powershell
+          - image:
+              src: 'https://docs.microsoft.com/media/common/cli.svg'
+            text: Azure-Befehlszeilenschnittstelle
+            href: quick-backup-vm-cli
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Es wird beschrieben, wie Sie virtuelle Computer in Azure oder unter Windows Server sichern und wiederherstellen.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-backup-vm-at-scale">Sichern von mehreren Azure-VMs</a>
+          - html: <a href="tutorial-restore-disk">Wiederherstellen eines Datenträgers und Erstellen einer wiederhergestellten VM</a>
+          - html: <a href="tutorial-restore-files">Wiederherstellen von Dateien auf einem virtuellen Computer in Azure</a>
+          - html: <a href="tutorial-backup-windows-server-to-azure">Sichern einer Windows Server-Instanz in Azure</a>
+          - html: <a href="tutorial-backup-restore-files-windows-server">Wiederherstellen von Dateien aus Azure auf einer Windows Server-Instanz</a>
+  - title: Beispiele
+    items:
+      - type: paragraph
+        text: 'Verwenden Sie die folgenden Beispiele, um Ihre Daten in Azure zu schützen.'
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/backup/powershell-backup-samples">Azure PowerShell</a>
+  - title: Referenz
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Befehlszeile
+            html: <p><a href="/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup">Azure PowerShell</a></p>
+          - title: Sprachen
+            html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>

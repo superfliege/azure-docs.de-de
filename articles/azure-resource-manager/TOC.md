@@ -12,7 +12,7 @@
 
 # Beispiele
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
-## PowerShell
+## Azure PowerShell
 ### [Bereitstellen der Vorlage](resource-manager-samples-powershell-deploy.md)
 
 ## Azure-Befehlszeilenschnittstelle
@@ -35,7 +35,7 @@
 
 
 ## Bereitstellen
-### PowerShell
+### Azure PowerShell
 #### [Bereitstellen der Vorlage](resource-group-template-deploy.md)
 #### [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-powershell-sas-token.md)
 #### [Exportieren der Vorlage und erneutes Bereitstellen](resource-manager-export-template-powershell.md)
@@ -43,7 +43,7 @@
 #### [Bereitstellen der Vorlage](resource-group-template-deploy-cli.md)
 #### [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-cli-sas-token.md)
 #### [Exportieren der Vorlage und erneutes Bereitstellen](resource-manager-export-template-cli.md)
-### Portal
+### Azure-Portal
 #### [Bereitstellen von Ressourcen](resource-group-template-deploy-portal.md)
 #### [Exportieren der Vorlage](resource-manager-export-template.md)
 ### [REST-API](resource-group-template-deploy-rest.md)
@@ -52,9 +52,9 @@
 ### [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md)
 
 ## Verwalten
-### [PowerShell](powershell-azure-resource-manager.md)
-### [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
-### [Portal](resource-group-portal.md)
+### [Azure PowerShell](powershell-azure-resource-manager.md)
+### [Azure-CLI](xplat-cli-azure-resource-manager.md)
+### [Azure-Portal](resource-group-portal.md)
 ### [REST-API](resource-manager-rest-api.md)
 ### [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md)
 ### [Verschieben von Ressourcen in neue Gruppen oder Abonnements](resource-group-move-resources.md)
@@ -62,16 +62,16 @@
 
 ## Steuern des Zugriffs
 ### Erstellen eines Dienstprinzipals
-#### [PowerShell](resource-group-authenticate-service-principal.md)
-#### [Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+#### [Azure PowerShell](resource-group-authenticate-service-principal.md)
+#### [Azure-CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [Azure CLI 1.0](resource-group-authenticate-service-principal-cli.md)
-#### [Portal](resource-group-create-service-principal-portal.md)
+#### [Azure-Portal](resource-group-create-service-principal-portal.md)
 ### [Authentifizierungs-API für den Zugriff auf Abonnements](resource-manager-api-authentication.md)
 ### [Sperren von Ressourcen](resource-group-lock-resources.md)
 
 ## Festlegen von Ressourcenrichtlinien
 ### [Was sind Ressourcenrichtlinien?](resource-manager-policy.md)
-### [Zuweisen von Richtlinien über das Portal](resource-manager-policy-portal.md)
+### [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md)
 ### [Zuweisen von Richtlinien über Skripts](resource-manager-policy-create-assign.md)
 ### Beispiele
 #### [Tags](resource-manager-policy-tags.md)

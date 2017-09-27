@@ -65,23 +65,26 @@ sections:
           - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">Verwalten der Sicherheit auf virtuellen Computern</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">Erstellen einer Continuous Integration-Pipeline mit Visual Studio</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-secure-web-server">Sichern eines Webservers mit SSL</a>
-  - title: Kostenloses PluralSight-Videotraining
+  - title: Kostenloses Pluralsight-Videotraining
     items:
       - type: list
         style: cards
-        className: cardsW
+        className: cardsFTitle
         items:
-          - html: '<p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Verwalten der Infrastruktur</a></p>'
+          - title: Verwalten der Infrastruktur
+            href: 'https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
             image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-infrastructure.png'
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
               href: 'https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-          - html: '<p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Erste Schritte mit virtuellen Computern</a></p>'
+          - title: Erste Schritte mit virtuellen Computern
+            href: 'https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
             image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-vms.png'
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
               href: 'https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-          - html: '<p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Erste Schritte mit IaaS-Überwachung</a></p>'
+          - title: Erste Schritte mit IaaS-Überwachung
+            href: 'https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
             image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-iaas-monitoring.png'
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
               href: 'https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
   - title: Beispiele
     items:

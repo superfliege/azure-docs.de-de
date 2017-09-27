@@ -1,0 +1,52 @@
+- name: Dokumentation zu virtuellen Computern für Data Science
+  items: null
+- name: Übersicht
+  items:
+    - name: Was ist die Data Science-VM?
+      href: overview.md
+    - name: Was ist die Deep Learning-VM?
+      href: deep-learning-dsvm-overview.md
+- name: Erste Schritte
+  items:
+    - name: Erstellen einer Data Science-VM für Windows
+      href: provision-vm.md
+    - name: Erstellen einer Data Science-VM für Ubuntu
+      href: dsvm-ubuntu-intro.md
+    - name: Erstellen einer Data Science-VM für CentOS
+      href: linux-dsvm-intro.md
+    - name: Erstellen einer Deep Learning-VM
+      href: provision-deep-learning-dsvm.md
+- name: Anleitung
+  items:
+    - name: Verwenden einer Data Science-VM für Windows
+      href: vm-do-ten-things.md
+    - name: Verwenden einer Data Science-VM für Linux
+      href: linux-dsvm-walkthrough.md
+    - name: Verwenden einer Deep Learning-VM
+      href: use-deep-learning-dsvm.md
+- name: Referenz
+  items:
+    - name: Deep Learning und AI-Frameworks
+      href: dsvm-deep-learning-ai-frameworks.md
+    - name: ML- und Data Science-Tools
+      href: dsvm-ml-data-science-tools.md
+    - name: Sprachen
+      href: dsvm-languages.md
+    - name: Entwicklungstools
+      href: dsvm-tools-development.md
+    - name: Datenerfassungstools
+      href: dsvm-tools-ingestion.md
+    - name: Tools zum Durchsuchen und Visualisieren von Daten
+      href: dsvm-tools-explore-and-visualize.md
+    - name: Datenplattformen
+      href: dsvm-data-platforms.md
+    - name: Beispiele und exemplarische Vorgehensweisen
+      href: dsvm-samples-and-walkthroughs.md
+- name: Ressourcen
+  items:
+    - name: Blog
+      href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
+    - name: MSDN-Forum
+      href: 'https://social.microsoft.com/Forums/en-US/home?forum=dsvm'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=dsvm'

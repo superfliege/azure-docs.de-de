@@ -2,9 +2,13 @@
 ## [Virtuelle Netzwerke](virtual-networks-overview.md)
 ## [Benutzerdefinierte Routen und IP-Weiterleitung](virtual-networks-udr-overview.md)
 ## [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md)
+## [Virtual network service endpoints](virtual-network-service-endpoints-overview.md) (Virtuelles Netzwerk – Dienstendpunkte)
+## [Virtual network for Azure services](virtual-network-for-azure-services.md) (Dienste für virtuelle Netzwerke in Azure)
+## [Sicherheit](security-overview.md)
 ## [Geschäftskontinuität](virtual-network-disaster-recovery-guidance.md)
 ## [HÄUFIG GESTELLTE FRAGEN](virtual-networks-faq.md)
 ## [IP-Adressierung](virtual-network-ip-addresses-overview-arm.md)
+## [DDoS-Schutz](ddos-protection-overview.md)
 ## Klassisch
 ### [IP-Adressierung](virtual-network-ip-addresses-overview-classic.md)
 ### [Zugriffssteuerungslisten](virtual-networks-acl.md)
@@ -19,26 +23,27 @@
 
 ## Bereitstellen
 ### [Virtuelle Netzwerke](virtual-networks-create-vnet-arm-pportal.md)
-#### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-#### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-arm-cli.md)
+#### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
+#### [Azure-CLI](virtual-networks-create-vnet-arm-cli.md)
 #### [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
 
 ### Netzwerksicherheitsgruppen
-#### [Portal](virtual-networks-create-nsg-arm-pportal.md)
-#### [PowerShell](virtual-networks-create-nsg-arm-ps.md)
-#### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-nsg-arm-cli.md)
+#### [Azure-Portal](virtual-networks-create-nsg-arm-pportal.md)
+#### [Azure PowerShell](virtual-networks-create-nsg-arm-ps.md)
+#### [Azure-CLI](virtual-networks-create-nsg-arm-cli.md)
 #### [Vorlage](virtual-networks-create-nsg-arm-template.md)
+#### [Application security groups](create-network-security-group-preview.md) (Anwendungssicherheitsgruppen)
 #### Klassisch
-##### [PowerShell](virtual-networks-create-nsg-classic-ps.md)
-##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-nsg-classic-cli.md)
+##### [Azure PowerShell](virtual-networks-create-nsg-classic-ps.md)
+##### [Azure-CLI](virtual-networks-create-nsg-classic-cli.md)
 
 ### Benutzerdefinierte Routen
-#### [PowerShell](virtual-network-create-udr-arm-ps.md)
-#### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-network-create-udr-arm-cli.md)
+#### [Azure PowerShell](virtual-network-create-udr-arm-ps.md)
+#### [Azure-CLI](virtual-network-create-udr-arm-cli.md)
 #### [Vorlage](virtual-network-create-udr-arm-template.md)
 #### Klassisch
-##### [PowerShell](virtual-network-create-udr-classic-ps.md)
-##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-network-create-udr-classic-cli.md)
+##### [Azure PowerShell](virtual-network-create-udr-classic-ps.md)
+##### [Azure-CLI](virtual-network-create-udr-classic-cli.md)
 
 ### Peering in virtuellen Netzwerken
 #### [Gleiches Bereitstellungsmodell – gleiches Abonnement](virtual-network-create-peering.md)
@@ -46,35 +51,42 @@
 #### [Andere Bereitstellungsmodelle – gleiches Abonnement](create-peering-different-deployment-models.md)
 #### [Andere Bereitstellungsmodelle – andere Abonnements](create-peering-different-deployment-models-subscriptions.md)
 
+### [Virtual network service endpoints](virtual-network-service-endpoints-configure.md) (Virtuelles Netzwerk – Dienstendpunkte)
+
+### Öffentliche IP-Adresse – Verfügbarkeitszone
+#### [Azure-Portal](create-public-ip-availability-zone-portal.md)
+#### [Azure-Befehlszeilenschnittstelle](create-public-ip-availability-zone-cli.md)
+#### [PowerShell](create-public-ip-availability-zone-powershell.md)
+
 ### Virtuelle Computer
 #### Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse
-##### [Portal](virtual-network-deploy-static-pip-arm-portal.md)
-##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-network-deploy-static-pip-arm-cli.md)
+##### [Azure-Portal](virtual-network-deploy-static-pip-arm-portal.md)
+##### [Azure PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
+##### [Azure-CLI](virtual-network-deploy-static-pip-arm-cli.md)
 ##### [Vorlage](virtual-network-deploy-static-pip-arm-template.md)
 ##### Klassisch
-###### [PowerShell](virtual-networks-reserved-public-ip.md)
+###### [Azure PowerShell](virtual-networks-reserved-public-ip.md)
 
 #### Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse
-##### [Portal](virtual-networks-static-private-ip-arm-pportal.md)
-##### [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
-##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-static-private-ip-arm-cli.md)
+##### [Azure-Portal](virtual-networks-static-private-ip-arm-pportal.md)
+##### [Azure PowerShell](virtual-networks-static-private-ip-arm-ps.md)
+##### [Azure-CLI](virtual-networks-static-private-ip-arm-cli.md)
 ##### Klassisch
-###### [Portal](virtual-networks-static-private-ip-classic-pportal.md)
-###### [PowerShell](virtual-networks-static-private-ip-classic-ps.md)
-###### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-static-private-ip-classic-cli.md)
+###### [Azure-Portal](virtual-networks-static-private-ip-classic-pportal.md)
+###### [Azure PowerShell](virtual-networks-static-private-ip-classic-ps.md)
+###### [Azure-CLI](virtual-networks-static-private-ip-classic-cli.md)
 
 #### Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellen
-##### [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure-CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### Klassisch
-###### [PowerShell](virtual-network-deploy-multinic-classic-ps.md)
-###### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-network-deploy-multinic-classic-cli.md)
+###### [Azure PowerShell](virtual-network-deploy-multinic-classic-ps.md)
+###### [Azure-CLI](virtual-network-deploy-multinic-classic-cli.md)
 
 #### Erstellen eines virtuellen Computers mit mehreren IP-Adressen
 ##### [Azure-Portal](virtual-network-multiple-ip-addresses-portal.md)
-##### [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-network-multiple-ip-addresses-cli.md)
+##### [Azure PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+##### [Azure-CLI](virtual-network-multiple-ip-addresses-cli.md)
 ##### [Vorlage](virtual-network-multiple-ip-addresses-template.md)
 
 #### [Erstellen eines virtuellen Computers mit beschleunigten Netzwerken](virtual-network-create-vm-accelerated-networking.md)
@@ -97,9 +109,9 @@
 
 ### Klassisch
 #### [Virtuelles Netzwerk](create-virtual-network-classic.md)
-##### [Portal](virtual-networks-create-vnet-classic-pportal.md)
-##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
-##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-classic-cli.md)
+##### [Azure-Portal](virtual-networks-create-vnet-classic-pportal.md)
+##### [Azure PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
+##### [Azure-CLI](virtual-networks-create-vnet-classic-cli.md)
 
 ## Konfigurieren
 ### Virtuelle Computer
@@ -109,8 +121,8 @@
 #### [Anzeigen und Ändern von Hostnamen](virtual-networks-viewing-and-modifying-hostnames.md)
 ### Klassisch
 #### Zugriffssteuerungslisten
-##### [Portal](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [PowerShell](virtual-networks-acl-powershell.md)
+##### [Azure-Portal](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure PowerShell](virtual-networks-acl-powershell.md)
 
 ## Verwalten
 ### [Virtuelle Netzwerke](virtual-network-manage-network.md)
@@ -120,9 +132,9 @@
 ##### [Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md)
 ##### [Migrieren von einer Affinitätsgruppe in eine Region](virtual-networks-migrate-to-regional-vnet.md)
 ### Netzwerksicherheitsgruppen
-#### [Portal](virtual-network-manage-nsg-arm-portal.md)
-#### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
-#### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-network-manage-nsg-arm-cli.md)
+#### [Azure-Portal](virtual-network-manage-nsg-arm-portal.md)
+#### [Azure PowerShell](virtual-network-manage-nsg-arm-ps.md)
+#### [Azure-CLI](virtual-network-manage-nsg-arm-cli.md)
 #### [Protokolle](virtual-network-nsg-manage-log.md)
 ### Netzwerkschnittstellen (NICs)
 #### [Erstellen, Ändern oder Löschen von NICs](virtual-network-network-interface.md)
@@ -130,23 +142,26 @@
 ### Virtuelle Computer
 #### [Verschieben einer VM in ein anderes Subnetz](virtual-networks-move-vm-role-to-subnet.md)
 ### [Öffentliche IP-Adressen](virtual-network-public-ip-address.md)
+### DDoS-Schutz
+#### [Azure-Portal](ddos-protection-manage-portal.md)
+#### [Azure PowerShell](ddos-protection-manage-ps.md)
 
 ## Problembehandlung
 ### Netzwerksicherheitsgruppen
-#### [Portal](virtual-network-nsg-troubleshoot-portal.md)
-#### [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
+#### [Azure-Portal](virtual-network-nsg-troubleshoot-portal.md)
+#### [Azure PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
 ### Routen
-#### [Portal](virtual-network-routes-troubleshoot-portal.md)
-#### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
+#### [Azure-Portal](virtual-network-routes-troubleshoot-portal.md)
+#### [Azure PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 ### [Durchsatztests](virtual-network-bandwidth-testing.md)
 ### [Löschen virtueller Netzwerke nicht möglich](virtual-network-troubleshoot-cannot-delete-vnet.md)
 ### [Konnektivitätsprobleme zwischen virtuellen Computern](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
 
 # Referenz
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
-## [PowerShell (Resource Manager)](/powershell/module/azurerm.network)
-## [PowerShell (klassisch)](/powershell/module/azure/)
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/network)
+## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.network)
+## [Azure PowerShell (Classic)](/powershell/module/azure/) (Azure PowerShell [klassisch])
+## [Azure-CLI](/cli/azure/network)
 ## [Java](/java/api/)
 ## [REST (Resource Manager)](https://msdn.microsoft.com/library/mt163658.aspx)
 ## [REST (klassisch)](https://msdn.microsoft.com/library/jj157182.aspx)

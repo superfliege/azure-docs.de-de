@@ -1,0 +1,51 @@
+- name: Azure-Containerregistrierung
+  href: ./index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zur Containerregistrierung
+      href: container-registry-intro.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Containerregistrierung – CLI
+      href: container-registry-get-started-azure-cli.md
+    - name: Containerregistrierung – Portal
+      href: container-registry-get-started-portal.md
+    - name: Containerregistrierung – PowerShell
+      href: container-registry-get-started-powershell.md
+- name: Lernprogramme
+  items:
+    - name: Azure Container Instances
+      href: ../container-instances/container-instances-tutorial-prepare-app.md
+    - name: Azure Container Service
+      href: ../container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app.md
+- name: Anleitungen
+  items:
+    - name: Push- und Pull-Vorgänge für Images
+      href: container-registry-get-started-docker-cli.md
+    - name: Anzeigen von Repositorys
+      href: container-registry-repositories.md
+    - name: Erstellen eines Dienstprinzipals
+      href: ../azure-resource-manager/resource-group-create-service-principal-portal.md?toc=%2fazure%2fcontainer-registry%2ftoc.json
+    - name: Authentifizieren mit einer Registrierung
+      href: container-registry-authentication.md
+    - name: Verwenden von ACR-Webhooks
+      href: ./container-registry-webhook.md
+- name: Referenz
+  items:
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/acr
+    - name: REST
+      href: /rest/api/containerregistry
+    - name: PowerShell
+      href: /powershell/module/azurerm.containerregistry
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/container-registry/'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-registry'

@@ -60,13 +60,14 @@
 #### [Erstellen einer Autorisierungsregel für Namespace und Warteschlange](service-bus-resource-manager-namespace-auth-rule.md)
 #### [Erstellen eines Namespace mit Thema, Abonnement und Regel](service-bus-resource-manager-namespace-topic-with-rule.md)
 #### 
-### [Verwenden von PowerShell zur Bereitstellung von Entitäten](service-bus-manage-with-ps.md)
+### [Verwenden von Azure PowerShell zur Bereitstellung von Entitäten](service-bus-manage-with-ps.md)
 
 # Referenz
 ## .NET
 ### [Microsoft.ServiceBus.Messaging (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.ServiceBus (.NET Standard)](/dotnet/api/microsoft.azure.servicebus)
-## [PowerShell](/powershell/module/azurerm.servicebus)
+## [Java](/java/api/overview/azure/servicebus)
+## [Azure PowerShell](/powershell/module/azurerm.servicebus)
 ## [REST](/rest/api/servicebus)
 ## [Exceptions](service-bus-messaging-exceptions.md)
 ## [Kontingente](service-bus-quotas.md)

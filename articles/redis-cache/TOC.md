@@ -24,7 +24,7 @@
 ###[Schützen Ihres Caches mit einem virtuellen Netzwerk](cache-how-to-premium-vnet.md)
 ###[Verteilen Ihres Caches mit Clustering](cache-how-to-premium-clustering.md)
 ## Automatisieren
-###[Bereitstellen und Verwalten mithilfe von PowerShell](cache-howto-manage-redis-cache-powershell.md)
+###[Bereitstellen und Verwalten mithilfe von Azure PowerShell](cache-howto-manage-redis-cache-powershell.md)
 ###[Bereitstellen und Verwalten mithilfe der Azure-Befehlszeilenschnittstelle](cli-samples.md)
 ###[Bereitstellen einer Redis Cache-Instanz](cache-redis-cache-arm-provision.md)
 ###[Bereitstellen einer Web-App mit Redis Cache](cache-web-app-arm-with-redis-cache-provision.md)
@@ -32,13 +32,13 @@
 ###[Sitzungszustandsanbieter](cache-aspnet-session-state-provider.md)
 ###[Ausgabecacheanbieter](cache-aspnet-output-cache-provider.md)
 ## Verwalten
-###[Konfigurieren im Portal](cache-configure.md)
+###[Configure in Azure portal](cache-configure.md) (Konfigurieren im Azure-Portal)
 ###[Konfigurieren der Georeplikation](cache-how-to-geo-replication.md)
 ###[Importieren/Exportieren von Daten](cache-how-to-import-export-data.md)
 ###[Neustart](cache-administration.md#reboot)
 ###[Planen von Updates](cache-administration.md#schedule-updates)
 ## Überwachen und Behandeln von Problemen
-###[Überwachen im Portal](cache-how-to-monitor.md)
+###[Monitor in Azure portal](cache-how-to-monitor.md) (Überwachen im Azure-Portal)
 ###[Behandeln von Cacheproblemen](cache-how-to-troubleshoot.md)
 ###[Festlegen von Warnungen für Ausnahmen](cache-how-to-monitor.md#operations-and-alerts)
 ## Skalieren
@@ -49,8 +49,8 @@
 
 # Referenz
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=redis-cache)
-## [PowerShell](/powershell/module/azurerm.rediscache)
-## [Azure CLI 2.0 (Vorschau)](/cli/azure/redis)
+## [Azure PowerShell](/powershell/module/azurerm.rediscache)
+## [Azure CLI Preview](/cli/azure/redis) (Azure CLI-Vorschau)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)
 ## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)
 ## [Redis-Clients](http://redis.io/clients)

@@ -19,8 +19,19 @@
 ### [Verarbeiten von Nachrichten als Stapel](logic-apps-batch-process-send-receive-messages.md)
 ### [Erstellen von Logik-App-Definitionen](logic-apps-author-definitions.md)
 ### [Aufrufen, Auslösen oder Schachteln von Logik-Apps](logic-apps-http-endpoint.md)
-### [Erstellen einer benutzerdefinierten API zur Verwendung mit Logik-Apps](logic-apps-create-api-app.md)
-### [Aufrufen benutzerdefinierter APIs für Logik-Apps](logic-apps-custom-hosted-api.md)
+### Entwickeln benutzerdefinierter Connectors
+#### [Custom connectors overview](custom-connector-overview.md) (Übersicht über benutzerdefinierte Connectors)
+#### [Create connectors from Web APIs](custom-connector-build-web-api-app-tutorial.md) (Erstellen von Connectors aus Web-APIs)
+#### [Secure connectors with Azure AD](custom-connector-azure-active-directory-authentication.md) (Sichere Connectors mit Azure AD)
+#### [Describe APIs with Postman](custom-connector-api-postman-collection.md) (Beschreiben von APIs mit Postman)
+#### [Extend OpenAPI for custom connectors](custom-connector-openapi-extensions.md) (Erweitern von OpenAPI für benutzerdefinierte Connectors)
+#### [Register your connector](logic-apps-custom-connector-register.md) (Registrieren Ihres Connectors)
+#### [Certify your connector](custom-connector-submit-certification.md) (Zertifizieren Ihres Connectors)
+#### [FAQ for custom connectors](custom-connector-faq.md) (FAQ für benutzerdefinierte Connectors)
+### Entwickeln von benutzerdefinierten APIs
+#### [Erstellen einer benutzerdefinierten API zur Verwendung mit Logik-Apps](logic-apps-create-api-app.md)
+#### [Secure calls to custom APIs](logic-apps-custom-api-authentication.md) (Sichere Aufrufe benutzerdefinierter APIs)
+#### [Deploy and call custom APIs](logic-apps-custom-api-host-deploy-call.md) (Bereitstellen und Aufrufen benutzerdefinierter APIs)
 ### [Behandeln von Fehlern und Ausnahmen](logic-apps-exception-handling.md)
 ### [Behandeln von Inhaltstypen](logic-apps-content-type.md)
 ### [Sichern Ihrer Logik-Apps](logic-apps-securing-a-logic-app.md)
@@ -73,8 +84,7 @@
 #### [X12-Nachverfolgungsschema](logic-apps-track-integration-account-x12-tracking-schema.md)
 #### [Benutzerdefinierte Nachverfolgungsschemas](logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## Beispiele, Szenarien und exemplarische Vorgehensweisen
-### [Übersicht](logic-apps-examples-and-scenarios.md)
+## [Beispiele, Szenarien und exemplarische Vorgehensweisen](logic-apps-examples-and-scenarios.md)
 ### [Erstellen eines serverlosen sozialen Dashboards](logic-apps-scenario-social-serverless.md)
 ### [Aufrufen von Logik-Apps mit Azure Functions](logic-apps-scenario-function-sb-trigger.md)
 ### [Hinzufügen der Fehler- und Ausnahmebehandlung](logic-apps-scenario-error-and-exception-handling.md)
@@ -98,7 +108,7 @@
 ## [Definitionssprache für Workflows](logic-apps-workflow-definition-language.md)
 ## [Workflow-Aktionen und -Trigger](logic-apps-workflow-actions-triggers.md)
 ## [REST-API](/rest/api/logic/)
-## [PowerShell](/powershell/module/azurerm.logicapp)
+## [Azure PowerShell](/powershell/module/azurerm.logicapp)
 ## Connectors: Detaillierte Themen
 ### [AS2](logic-apps-enterprise-integration-as2.md)
 ### [Azure Blob Storage](../connectors/connectors-create-api-azureblobstorage.md)

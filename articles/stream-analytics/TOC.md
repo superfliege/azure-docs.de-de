@@ -54,11 +54,11 @@
 ## Automatisieren
 ### [Tools für Visual Studio](stream-analytics-tools-for-visual-studio.md)
 ### [Verwenden des .NET-Verwaltungs SDK](stream-analytics-dotnet-management-sdk.md)
-### [PowerShell mit einem Klick](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
+### [One-click Azure PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick) (One-Click-Azure PowerShell)
 
 # Referenz
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=stream-analytics)
-## [PowerShell](/powershell/module/azurerm.streamanalytics)
+## [Azure PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998)
 ## [REST](/rest/api/streamanalytics)

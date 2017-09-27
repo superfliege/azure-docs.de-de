@@ -1,0 +1,38 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure-Kostenverwaltung – Dokumentation
+metadata:
+  title: 'Dokumentation für Kostenverwaltung – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  description: 'Azure-Kostenverwaltung von Cloudyn ist eine Multi-Cloud-Kostenverwaltungslösung, die Ihnen das Verwenden von Azure und anderen Cloudressourcen erleichtert. Erfahren Sie, wie Sie Verbrauch und Kosten überprüfen, aktiv Kosten verwalten, Ausgaben vorhersagen und Kosten mit unseren Schnellstarts und Tutorials optimieren.'
+  services: cost-management
+  author: czeumault
+  manager: carolz
+  ms.service: cost-management
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/18/2017
+  ms.author: carolz
+abstract:
+  description: 'Azure-Kostenverwaltung von Cloudyn ist eine Multi-Cloud-Kostenverwaltungslösung, die Ihnen das optimale Verwenden und Verwalten von Azure und anderen Cloudressourcen erleichtert. Erfahren Sie, wie Sie Verbrauch und Kosten überprüfen, aktiv Kosten verwalten, Ausgaben vorhersagen und Kosten mit unseren Schnellstarts und Tutorials optimieren.'
+sections:
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie Ihre Azure-Vereinbarungs- oder Abonnementinformationen bei der Kostenverwaltung registrieren und beginnen, die Kostendaten anzuzeigen.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Anzeigen von Kostendaten
+            href: quick-register-azure-sub
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie Verbrauch und Kosten überprüfen, aktiv Kosten verwalten, Ausgaben vorhersagen und Kosten mit der Kostenverwaltung optimieren.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-review-usage">Review usage and costs to detect anomalies and efficiencies</a> (Überprüfen von Verbrauch und Kosten zum Erkennen von Anomalien und Effizienz)
+          - html: <a href="tutorial-user-access">Assign access to Cost Management data</a> (Zuweisen des Zugriffs auf die Kostenverwaltungsdaten)

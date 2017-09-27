@@ -1,0 +1,239 @@
+- name: Machine Learning Studio-Dokumentation
+  href: index.md
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Was ist Machine Learning?
+      href: what-is-machine-learning.md
+    - name: Machine Learning Studio
+      href: what-is-ml-studio.md
+    - name: ML Studio-Funktionen
+      href: studio-overview-diagram.md
+    - name: Grundlagen von ML Studio (Infografik)
+      href: basics-infographic-with-algorithm-examples.md
+    - name: Häufig gestellte Fragen
+      href: faq.md
+    - name: Neuerungen
+      href: whats-new.md
+- name: Erste Schritte
+  items:
+    - name: Erstellen Ihres ersten Experiments
+      href: create-experiment.md
+    - name: Exemplarische Vorgehensweise
+      items:
+        - name: Erstellen einer prädiktiven Lösung
+          href: walkthrough-develop-predictive-solution.md
+        - name: 1 – Erstellen eines Arbeitsbereichs
+          href: walkthrough-1-create-ml-workspace.md
+        - name: 2 – Hochladen von Daten
+          href: walkthrough-2-upload-data.md
+        - name: 3 – Lernprogramm zum Erstellen eines Experiments
+          href: walkthrough-3-create-new-experiment.md
+        - name: 4 – Trainieren und Bewerten
+          href: walkthrough-4-train-and-evaluate-models.md
+        - name: 5 – Bereitstellen des Webdiensts
+          href: walkthrough-5-publish-web-service.md
+        - name: 6 – Zugreifen auf den Webdienst
+          href: walkthrough-6-access-web-service.md
+    - name: Data Science für Einsteiger
+      items:
+        - name: 1 – Fünf Fragen
+          href: data-science-for-beginners-the-5-questions-data-science-answers.md
+        - name: 2 – Sind Ihre Daten bereit?
+          href: data-science-for-beginners-is-your-data-ready-for-data-science.md
+        - name: 3 – Stellen Sie die richtige Frage
+          href: data-science-for-beginners-ask-a-question-you-can-answer-with-data.md
+        - name: 4 – Treffen Sie eine Vorhersage über die Antwort
+          href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
+        - name: 5 – Kopieren der Arbeit anderer Personen
+          href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
+    - name: R-Schnellstart
+      href: r-quickstart.md
+- name: Anleitung
+  items:
+    - name: Einrichten von Tools und Hilfsprogrammen
+      items:
+        - name: Verwalten eines Arbeitsbereichs
+          items:
+            - name: Erstellen
+              href: create-workspace.md
+            - name: Verwalten
+              href: manage-workspace.md
+            - name: Problembehandlung
+              href: troubleshooting-creating-ml-workspace.md
+            - name: Bereitstellen mithilfe von ARM
+              href: deploy-with-resource-manager-template.md
+            - name: Erstellen in einer anderen Region
+              href: multi-geo.md
+    - name: Abrufen und Verstehen von Daten
+      items:
+        - name: Importieren von Trainingsdaten
+          items:
+            - name: Übersicht
+              href: import-data.md
+            - name: Aus einer lokalen Datei
+              href: import-data-from-local-file.md
+            - name: Aus Onlinequellen
+              href: import-data-from-online-sources.md
+            - name: Aus einem Experiment
+              href: import-data-from-an-experiment.md
+            - name: Verwenden von lokaler SQL
+              href: use-data-from-an-on-premises-sql-server.md
+    - name: Entwickeln von Modellen
+      items:
+        - name: Erstellen und Trainieren von Modellen
+          items:
+            - name: Experiment-Lebenszyklusverwaltung
+              href: version-control.md
+            - name: Verwalten von Experimentiterationen
+              href: manage-experiment-iterations.md
+            - name: Verwenden von PowerShell zum Erstellen von Modellen
+              href: create-models-and-endpoints-with-powershell.md
+            - name: Auswählen von Algorithmen
+              items:
+                - name: Auswählen von Algorithmen
+                  href: algorithm-choice.md
+                - name: Spickzettel zu Algorithmen
+                  href: algorithm-cheat-sheet.md
+                - name: Verwenden der linearen Regression
+                  href: linear-regression-in-azure.md
+                - name: Verwenden der Textanalyse
+                  href: text-analytics-module-tutorial.md
+            - name: Auswerten und Interpretieren von Ergebnissen
+              items:
+                - name: Auswerten der Leistung
+                  href: evaluate-model-performance.md
+                - name: Optimieren von Parametern
+                  href: algorithm-parameters-optimize.md
+                - name: Interpretieren von Ergebnissen
+                  href: interpret-model-results.md
+                - name: Debuggen
+                  href: debug-models.md
+            - name: Verwenden von R und Python
+              items:
+                - name: Ausführen von R-Skripts
+                  href: extend-your-experiment-with-r.md
+                - name: Erstellen benutzerdefinierter R-Module
+                  href: custom-r-modules.md
+                - name: Ausführen von Python-Skripts
+                  href: execute-python-scripts.md
+    - name: Operationalisieren von Modellen
+      items:
+        - name: Übersicht
+          href: deploy-consume-web-service-guide.md
+        - name: Bereitstellen von Modellen
+          items:
+            - name: Bereitstellen eines Webdiensts
+              href: publish-a-machine-learning-web-service.md
+            - name: So funktioniert's
+              href: model-progression-experiment-to-web-service.md
+            - name: Vorbereiten der Bereitstellung
+              href: convert-training-experiment-to-scoring-experiment.md
+            - name: Verwenden externer Daten
+              href: web-services-that-use-import-export-modules.md
+            - name: Bereitstellen in mehreren Regionen
+              href: how-to-deploy-to-multiple-regions.md
+            - name: Verwenden von Webdienstparametern
+              href: web-service-parameters.md
+            - name: Aktivieren der Protokollierung
+              href: web-services-logging.md
+        - name: Verwalten von Webdiensten
+          items:
+            - name: Verwenden des Web Services-Portals
+              href: manage-new-webservice.md
+            - name: Verwalten mit APIs
+              href: manage-web-service-endpoints-using-api-management.md
+            - name: Erstellen von Endpunkten
+              href: create-endpoint.md
+            - name: Skalieren
+              href: scaling-webservice.md
+        - name: Erneutes Trainieren von Modellen
+          items:
+            - name: Übersicht
+              href: retrain-machine-learning-model.md
+            - name: Programmgesteuertes erneutes Trainieren
+              href: retrain-models-programmatically.md
+            - name: Erneutes Trainieren eines klassischen Webdiensts
+              href: retrain-a-classic-web-service.md
+            - name: Erneutes Trainieren mit PowerShell
+              href: retrain-new-web-service-using-powershell.md
+            - name: Erneutes Trainieren eines bestehenden Webdiensts
+              href: retrain-existing-resource-manager-based-web-service.md
+            - name: Problembehandlung
+              href: troubleshooting-retraining-models.md
+        - name: Nutzen von Modellen
+          items:
+            - name: Übersicht
+              href: consume-web-services.md
+            - name: Verwenden von Excel
+              href: consuming-from-excel.md
+            - name: Verwenden des Excel-Add-Ins
+              href: excel-add-in-for-web-services.md
+            - name: Verwenden einer Web-App-Vorlage
+              href: consume-web-service-with-web-app-template.md
+            - name: Verwenden eines Batch-Pools
+              href: dedicated-capacity-for-bes-jobs.md
+    - name: Beispiele
+      items:
+        - name: Beispielexperimente
+          href: sample-experiments.md
+        - name: Beispieldatasets
+          href: use-sample-datasets.md
+        - name: Beispiel für Kundenabwanderung
+          href: azure-ml-customer-churn-scenario.md
+- name: Referenz
+  items:
+    - name: Azure PowerShell-Modul (Neu)
+      href: /powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning
+    - name: Azure PowerShell-Modul (Klassisch)
+      href: powershell-module.md
+    - name: Algorithmen und Module – Referenz
+      href: 'https://msdn.microsoft.com/library/azure/dn905974.aspx'
+    - name: REST-Verwaltungs-APIs
+      href: /rest/api/machinelearning
+    - name: Webdienst-Fehlercodes
+      href: web-service-error-codes.md
+- name: Verwandte Themen
+  items:
+    - name: Cortana Intelligence Gallery
+      items:
+        - name: Übersicht
+          href: gallery-how-to-use-contribute-publish.md
+        - name: Branchen
+          href: gallery-industries.md
+        - name: Lösungen
+          href: gallery-solutions.md
+        - name: Experimente
+          href: gallery-experiments.md
+        - name: Jupyter-Notebooks
+          href: gallery-jupyter-notebooks.md
+        - name: Wettbewerbe
+          href: gallery-competitions.md
+        - name: Häufig gestellte Fragen zu Wettbewerben
+          href: competition-faq.md
+        - name: Lernprogramme
+          href: gallery-tutorials.md
+        - name: Sammlungen
+          href: gallery-collections.md
+        - name: Benutzerdefinierte Module
+          href: gallery-custom-modules.md
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 'Net#-Spezifikationssprache für neuronale Netzwerke'
+      href: azure-ml-netsharp-reference-guide.md
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=machine-learning'
+    - name: Blog
+      href: 'http://blogs.technet.com/b/machinelearning/'
+    - name: MSDN-Forum
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-machine-learning'
+    - name: Videos
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
+    - name: Hilfe über den Livechat
+      href: live-chat.md

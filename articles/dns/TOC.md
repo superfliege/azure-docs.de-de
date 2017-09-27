@@ -4,31 +4,34 @@
 ## [DNS-Zonen und -Einträge](dns-zones-records.md)
 ## [DNS-Delegierung mit Azure DNS](dns-domain-delegation.md)
 ## [Häufig gestellte Fragen zu DNS](dns-faq.md)
+## [Using private DNS zones](private-dns-overview.md) (Verwenden privater DNS-Zonen)
 
 # Erste Schritte
 
 ## Erstellen einer DNS-Zone und eines Eintrags
-### [Portal](dns-getstarted-portal.md)
-### [PowerShell](dns-getstarted-powershell.md)
+### [Azure-Portal](dns-getstarted-portal.md)
+### [Azure PowerShell](dns-getstarted-powershell.md)
 ### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
-### [Azure CLI 2.0](dns-getstarted-cli.md)
+### [Azure-CLI](dns-getstarted-cli.md)
 
+## Erstellen einer privaten DNS-Zone und eines Eintrags
+### [PowerShell](private-dns-getstarted-powershell.md)
 ## [Delegieren einer Domäne an Azure DNS](dns-delegate-domain-azure-dns.md)
 ## [Erstellen von benutzerdefinierten DNS-Einträgen für eine Web-App](dns-web-sites-custom-domain.md)
 
 # Anleitung
 
 ## Verwalten von DNS-Zonen
-### [Portal](dns-operations-dnszones-portal.md)
-### [PowerShell](dns-operations-dnszones.md)
+### [Azure-Portal](dns-operations-dnszones-portal.md)
+### [Azure PowerShell](dns-operations-dnszones.md)
 ### [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
-### [Azure CLI 2.0](dns-operations-dnszones-cli.md)
+### [Azure-CLI](dns-operations-dnszones-cli.md)
 
 ## Verwalten von DNS-Einträgen
-### [Portal](dns-operations-recordsets-portal.md)
-### [PowerShell](dns-operations-recordsets.md)
+### [Azure-Portal](dns-operations-recordsets-portal.md)
+### [Azure PowerShell](dns-operations-recordsets.md)
 ### [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
-### [Azure CLI 2.0](dns-operations-recordsets-cli.md)
+### [Azure-CLI](dns-operations-recordsets-cli.md)
 
 ## Verwalten von Reverse-DNS
 ### [Übersicht](dns-reverse-dns-overview.md)
@@ -46,8 +49,8 @@
 
 # Referenz
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=dns)
-## [PowerShell](/powershell/module/azurerm.dns)
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/network/dns)
+## [Azure PowerShell](/powershell/module/azurerm.dns)
+## [Azure-CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
 ## [Java](/java/api/com.microsoft.azure.management.dns)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/)

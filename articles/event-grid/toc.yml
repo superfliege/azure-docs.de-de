@@ -12,6 +12,8 @@
   items:
     - name: Überwachen von Änderungen an virtuellen Computern mit Logik-Apps
       href: monitor-virtual-machine-changes-event-grid-logic-app.md
+    - name: Ändern der Größe von hochgeladenen Bildern
+      href: resize-images-on-storage-blob-upload-event.md
 - name: Konzepte
   items:
     - name: Event Grid-Konzepte

@@ -7,7 +7,7 @@
 ## [Container](../../virtual-machines-windows-containers.md)
 
 # Erste Schritte
-## [Erstellen eines virtuellen Computers über das Portal](tutorial.md)
+## [Create a VM using Azure portal](tutorial.md) (Erstellen eines virtuellen Computers über das Azure-Portal)
 ## [Anmelden an einer VM](connect-logon.md)
 ## [Installieren von Azure PowerShell](/powershell/azure/overview)
 ## [Installieren der Azure-Befehlszeilenschnittstelle](../../../cli-install-nodejs.md)
@@ -85,8 +85,8 @@
 ### [Anfügen einer virtuellen Festplatte an den virtuellen Problembehandlungscomputer](troubleshoot-recovery-disks-portal.md)
 
 # Referenz
-## [PowerShell](/powershell/azure/overview)
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/vm)
+## [Azure PowerShell](/powershell/azure/overview)
+## [Azure-CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [Erstellen von Resource Manager-Vorlagen](../../../resource-group-authoring-templates.md)

@@ -1,0 +1,82 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation für Azure Storage
+metadata:
+  title: 'Dokumentation für Azure Storage – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  description: 'Microsoft Azure Storage ist ein von Microsoft verwalteter Clouddienst, über den hoch verfügbarer, sicherer, stabiler, skalierbarer und redundanter Speicher bereitgestellt wird. Azure Storage besteht aus Blob Storage, File Storage und Queue Storage.'
+  services: storage
+  author: czeumault
+  manager: carolz
+  ms.service: storage
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/20/2017
+  ms.author: carolz
+abstract:
+  description: 'Microsoft Azure Storage ist ein von Microsoft verwalteter Clouddienst, über den hoch verfügbarer, sicherer, stabiler, skalierbarer und redundanter Speicher bereitgestellt wird. Azure Storage besteht aus Blob Storage, File Storage und Queue Storage.  Erfahren Sie mithilfe unserer Schnellstarts und Tutorials, wie Sie Azure Storage in Ihren Anwendungen nutzen.'
+sections:
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: 'Erstellen Sie einen eindeutigen Namespace, um auf Ihre Azure Storage-Datenobjekte zuzugreifen und sie zu speichern.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/powershell.svg'
+            text: Azure Powershell
+            href: /azure/storage/common/storage-quickstart-create-storage-account-powershell
+          - image:
+              src: /azure/virtual-machines/linux/media/index/cli.svg
+            text: Azure-Befehlszeilenschnittstelle
+            href: /azure/storage/common/storage-quickstart-create-storage-account-cli
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: Informationen zum Hochladen und Verarbeiten von Imagedaten in der Cloud.
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/storage/blobs/storage-upload-process-images">Upload and retrieve image data in the cloud</a> (Hochladen und Abrufen von Imagedaten in der Cloud)
+          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Trigger Azure Functions to process blobs</a> (Auslösen von Azure-Funktionen zum Verarbeiten von Blobs)
+          - html: <a href="/azure/storage/blobs/storage-secure-access-application">Secure application data</a> (Schützen von Anwendungsdaten)
+          - html: <a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Monitor and troubleshoot storage</a> (Überwachung und Problembehandlung bei Speicher)
+  - title: Beispiele
+    items:
+      - type: paragraph
+        text: Suchen Sie Skripts für allgemeine Verwaltungsaufgaben.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
+          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure-CLI</a>
+  - title: Kostenloses PluralSight-Videotraining
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Entwickeln mit .NET in Azure
+            href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
+          - title: Entwickeln mit Node.js in Azure
+            href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
+  - title: Referenz
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Befehlszeile
+            html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure-Befehlszeilenschnittstelle</a></p>
+          - title: Sprachen
+            html: '<p><a href="/java/api/">Java</a></p><p><a href="http://azure.github.io/azure-storage-node">Node.js</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>'
+          - title: REST
+            html: '<p><a href="/rest/api/storageservices/azure-storage-services-rest-api-reference">Blobs, Warteschlangen, Tabellen und Dateien</a></p><p><a href="/rest/api/storagerp">Ressourcenanbieter</a></p><p><a href="/rest/api/storageimportexport">Import/Export</a></p><p><a href="/rest/api/storageservices">Speicherdaten-REST-API</a></p>'

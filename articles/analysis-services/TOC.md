@@ -8,7 +8,7 @@
 
 # Erste Schritte
 ## [Erstellen eines Servers im Azure-Portal](analysis-services-create-server.md)
-## [Erstellen eines Servers mit PowerShell](analysis-services-create-powershell.md)
+## [Erstellen eines Azure Analysis Services-Servers mithilfe von Azure PowerShell](analysis-services-create-powershell.md)
 ## [Bereitstellen eines Modells mithilfe von Visual Studio](analysis-services-deploy.md)
 ## [Erstellen eines Modells im Azure-Portal (Vorschau)](analysis-services-create-model-portal.md)
 
@@ -43,7 +43,7 @@
 ### [Ergänzende Lektion – Unregelmäßige Hierarchien](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
 # Referenz
-## [PowerShell](analysis-services-powershell.md)
+## [Azure PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)

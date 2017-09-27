@@ -1,0 +1,72 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Monitor-Dokumentation
+metadata:
+  title: 'Azure Monitor-Dokumentation – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  description: 'Azure Monitor ist Teil der Gesamtüberwachungslösung von Microsoft Azure. Azure Monitor dient zum Nachverfolgen der Leistung, Aufrechterhalten der Sicherheit und Identifizieren von Trends. In unseren Schnellstarts und Tutorials wird beschrieben, wie Sie Überprüfungen durchführen, Warnungen erstellen und Daten archivieren.'
+  services: monitoring-and-diagnostics
+  author: czeumault
+  manager: carolz
+  ms.service: monitoring-and-diagnostics
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/18/2017
+  ms.author: carolz
+abstract:
+  description: 'Azure Monitor ist Teil der Gesamtüberwachungslösung von Microsoft Azure. Azure Monitor dient zum Nachverfolgen der Leistung, Aufrechterhalten der Sicherheit und Identifizieren von Trends. In unseren Schnellstarts und Tutorials wird beschrieben, wie Sie Überprüfungen durchführen, Warnungen erstellen und Daten archivieren.'
+sections:
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: 'Es wird beschrieben, wie Sie Benachrichtigungen erhalten, wenn in Ihrer Azure-Anwendung bestimmte Bedingungen erfüllt sind.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/Chart.svg'
+            text: Überwachen von Metriken
+            href: monitor-quick-resource-metric-alert-portal
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_alert.svg'
+            text: Abonnements – Überprüfung und Warnungen
+            href: monitor-quick-audit-notify-action-in-subscription
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Es wird beschrieben, wie Sie die automatische Skalierung durchführen und Ihre Überwachungsdaten archivieren.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="monitor-tutorial-autoscale-performance-schedule">Durchführen der automatischen Skalierung basierend auf einem Zeitplan oder der Anwendungsleistung</a>
+          - html: <a href="monitor-tutorial-archive-monitoring-data">Archivieren von Überwachungsdaten</a>
+  - title: Kostenloses Pluralsight-Videotraining
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Erste Schritte mit IaaS-Überwachung
+            href: 'https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents'
+          - title: Verwalten der Infrastruktur in Microsoft Azure
+            href: 'https://app.pluralsight.com/library/courses/managing-infrastructure-microsoft-azure-getting-started'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/managing-infrastructure-microsoft-azure-getting-started'
+  - title: Referenz
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Befehlszeile
+            html: <p><a href="/cli/azure/monitor?view=azure-cli-latest">CLI 2.0</a></p><p><a href="/powershell/module/azurem.insights">Azure PowerShell</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/monitor/">REST</a></p>
+          - title: Überwachung
+            html: '<p><a href="monitoring-supported-metrics">Unterstützte Metriken</a></p><p><a href="monitoring-diagnostic-logs-schema">Diagnoseprotokolle – Dienste, Kategorien und Schemas</a></p><p><a href="monitoring-activity-log-schema">Schema für Aktivitätsprotokollereignisse</a></p>'
+          - title: Diagnose
+            html: <p><a href="azure-diagnostics-schema">Erweiterungsschema der Azure-Diagnose</a></p>

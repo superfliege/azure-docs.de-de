@@ -74,6 +74,7 @@
 
 ## Schutzmaßnahmen für die Cloud
 ### [Bedarfsabhängiger Zugriff](security-center-just-in-time.md)
+### [Adaptive Anwendungssteuerungen](security-center-adaptive-application.md)
 
 ## Automatisierung und Orchestrierung
 ### [Playbooks](security-center-playbooks.md)

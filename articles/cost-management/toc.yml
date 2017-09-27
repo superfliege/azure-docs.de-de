@@ -1,0 +1,29 @@
+- name: Azure-Kostenverwaltung – Dokumentation
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was ist Kostenverwaltung?
+      href: overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Anzeigen von Kostendaten
+      href: quick-register-azure-sub.md
+    - name: Anzeigen von Kostendaten – EA
+      href: quick-register-ea.md
+    - name: Anzeigen von Kostendaten – CSP
+      href: quick-register-csp.md
+- name: Lernprogramme
+  items:
+    - name: 1 – Nachverfolgen der Nutzung und der Kosten
+      href: tutorial-review-usage.md
+    - name: 2 – Steuern des Zugriffs auf Daten
+      href: tutorial-user-access.md
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cost-management'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure-staging.microsoft.com/en-us/regions/services/'
