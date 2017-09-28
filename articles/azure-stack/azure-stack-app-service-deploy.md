@@ -1,6 +1,6 @@
 ---
-title: 'Deploy App Services: Azure Stack | Microsoft Docs'
-description: Detailed guidance for deploying App Service in Azure Stack
+title: 'Bereitstellen von App Service: Azure Stack | Microsoft-Dokumentation'
+description: Detaillierte Anleitung zum Bereitstellen von App Service in Azure Stack
 services: azure-stack
 documentationcenter: 
 author: apwestgarth
@@ -18,327 +18,331 @@ ms.translationtype: HT
 ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 4b4f978f008dbcd8a7424f285198535cf133d7e2
 ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Add an App Service resource provider to Azure Stack
+# <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Hinzufügen eines App Service-Ressourcenanbieters zu Azure Stack
 
-If you want to enable your tenants to create web, mobile, and API applications with their Azure Stack subscription, you must add an [Azure App Service resource provider](azure-stack-app-service-overview.md) to your Azure Stack deployment. Follow the steps in this article.
+Wenn Sie es Ihren Mandanten ermöglichen möchten, mit ihren Azure Stack-Abonnements mobile, Web- und API-Anwendungen zu erstellen, müssen Sie Ihrer Azure Stack-Bereitstellung einen [Azure App Service-Ressourcenanbieter](azure-stack-app-service-overview.md) hinzufügen. Führen Sie die Schritte in diesem Artikel aus.
 
-## <a name="download-the-required-components"></a>Download the required components
+## <a name="download-the-required-components"></a>Herunterladen der erforderlichen Komponenten
 
-1. Download the [App Service on Azure Stack preview installer](http://aka.ms/appsvconmasrc1installer).
+1. Laden Sie das [Installationsprogramm für die Vorschauversion von App Service in Azure Stack](http://aka.ms/appsvconmasrc1installer) herunter.
 
-2. Download the [App Service on Azure Stack deployment helper scripts](http://aka.ms/appsvconmasrc1helper).
+2. Laden Sie die [Hilfsskripts für die Bereitstellung von App Service in Azure Stack](http://aka.ms/appsvconmasrc1helper) herunter.
 
-3. Extract the files from the helper scripts zip file. The following files and folder structure appear:
+3. Extrahieren Sie die Dateien aus der ZIP-Datei der Hilfsskripts. Die folgende Datei- und Ordnerstruktur wird entpackt:
 
    - Create-AppServiceCerts.ps1
    - Create-IdentityApp.ps1
-   - Modules
+   - Module
       - AzureStack.Identity.psm1
       - GraphAPI.psm1
    
-## <a name="create-certificates-required-by-app-service-on-azure-stack"></a>Create certificates required by App Service on Azure Stack
+## <a name="create-certificates-required-by-app-service-on-azure-stack"></a>Erstellen der für App Service in Azure Stack erforderlichen Zertifikate
 
-This first script works with the Azure Stack certificate authority to create three certificates that are needed by App Service. Run the script on the Azure Stack host and ensure that you're running PowerShell as azurestack\AzureStackAdmin.
+Dieses erste Skript erstellt zusammen mit der Azure Stack-Zertifizierungsstelle drei Zertifikate, die App Service benötigt. Führen Sie das Skript auf dem Azure Stack-Host aus, und stellen Sie sicher, dass Sie PowerShell als azurestack\AzureStackAdmin ausführen.
 
-1. In a PowerShell session running as azurestack\AzureStackAdmin, execute the **Create-AppServiceCerts.ps1** script from the folder where you extracted the helper scripts. The script creates three certificates in the same folder as the create certificates script that App Service needs.
+1. Führen Sie in einer als azurestack\AzureStackAdmin ausgeführten PowerShell-Sitzung das Skript **Create-AppServiceCerts.ps1** in dem Ordner aus, in den Sie die Hilfsskripts extrahiert haben. Das Skript erstellt im selben Ordner, der vom Skript zum Erstellen der von App Service benötigten Zertifikate verwendet wird, drei Zertifikate.
 
-2. Enter a password to secure the .pfx files, and make a note of it. You will need to enter it in the App Service on Azure Stack installer.
+2. Geben Sie ein Kennwort ein, um die PFX-Dateien zu schützen, und notieren Sie das Kennwort. Sie müssen es im Installationsprogramm für App Service in Azure Stack eingeben.
 
-### <a name="create-appservicecertsps1-parameters"></a>Create-AppServiceCerts.ps1 parameters
+### <a name="create-appservicecertsps1-parameters"></a>Create-AppServiceCerts.ps1 – Parameter
 
-| Parameter | Required/optional | Default value | Description |
+| Parameter | Erforderlich/optional | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
-| pfxPassword | Required | Null | Password used to protect the certificate private key |
-| DomainName | Required | local.azurestack.external | Azure Stack region and domain suffix |
-| CertificateAuthority | Required | AzS-CA01.azurestack.local | Certificate authority endpoint |
+| pfxPassword | Erforderlich | Null | Kennwort zum Schutz des privaten Zertifikatschlüssels |
+| DomainName | Erforderlich | local.azurestack.external | Azure Stack-Region und Domänensuffix |
+| CertificateAuthority | Erforderlich | AzS-CA01.azurestack.local | Endpunkt der Zertifizierungsstelle |
 
-## <a name="use-the-installer-to-download-and-install-app-service-on-azure-stack"></a>Use the installer to download and install App Service on Azure Stack
+## <a name="use-the-installer-to-download-and-install-app-service-on-azure-stack"></a>Verwenden des Installationsprogramms zum Herunterladen und Installieren von App Service in Azure Stack
 
-The appservice.exe installer will:
+Das Installationsprogramm appservice.exe führt folgende Aktionen aus:
 
-* Prompt you to accept the Microsoft and third-party Software License Terms.
-* Collect Azure Stack deployment information.
-* Create a blob container in the specified Azure Stack storage account.
-* Download the files needed to install the App Service resource provider.
-* Prepare the installation to deploy the App Service resource provider in the Azure Stack environment.
-* Upload the files to the App Service storage account.
-* Deploy the App Service resource provider.
-* Create a DNS zone and entries for App Service.
-* Register the App Service resource provider.
-* Register the App Service gallery items.
+* Es fordert Sie auf, die Softwarelizenzbedingungen von Microsoft und Drittanbietern zu akzeptieren.
+* Es sammelt Informationen über die Azure Stack-Bereitstellung.
+* Es erstellt im angegebenen Azure Stack-Speicherkonto einen Blobcontainer.
+* Es lädt die Dateien herunter, die zum Installieren des App Service-Ressourcenanbieters erforderlich sind.
+* Es bereitet die Installation auf die Bereitstellung des App Service-Ressourcenanbieters in der Azure Stack-Umgebung vor.
+* Es lädt die Dateien in das App Service-Speicherkonto hoch.
+* Es stellt den App Service-Ressourcenanbieter bereit.
+* Es erstellt eine DNS-Zone und DNS-Einträge für App Service.
+* Es registriert den App Service-Ressourcenanbieter.
+* Es registriert die App Service-Katalogelemente.
 
-The following steps guide you through the installation stages.
+Die folgenden Schritte leiten Sie durch die Installationsphasen.
 
 > [!NOTE]
-> You *must* use an elevated account (local or domain administrator) to run the installer. If you sign in as azurestack\azurestackuser, you're prompted for elevated credentials.
+> Sie *müssen* ein Konto mit erhöhten Rechten (lokaler oder Domänenadministrator) verwenden, um das Installationsprogramm auszuführen. Wenn Sie sich als azurestack\azurestackuser anmelden, werden Sie aufgefordert, Anmeldeinformationen für ein Konto mit erhöhten Rechten einzugeben.
 
-1. Run appservice.exe as azurestack\AzureStackAdmin.
+1. Führen Sie appservice.exe als azurestack\AzureStackAdmin aus.
 
-2. Click **Deploy App Service on your Azure Stack cloud**.
+2. Klicken Sie auf **Bereitstellung von App Service in Ihrer Azure Stack-Cloud**.
 
-    ![App Service on Azure Stack installer][1]
+    ![App Service in Azure Stack – Installationsprogramm][1]
 
-3. Review and accept the Microsoft Software Prerelease License Terms, and click **Next**.
+3. Lesen und akzeptieren Sie die Lizenzbedingungen für Vorabversionen von Microsoft-Software, und klicken Sie auf **Weiter**.
 
-4. Review and accept the third-party license terms, and click **Next**.
+4. Lesen und akzeptieren Sie die Drittanbieter-Lizenzbedingungen, und klicken Sie auf **Weiter**.
 
-5. Review the App Service cloud configuration information, and click **Next**.
+5. Lesen Sie die Informationen zur App Service-Cloudkonfiguration, und klicken Sie auf **Weiter**.
 
-    ![App Service on Azure Stack App Service cloud configuration][2]
-
-    > [!NOTE]
-    > The App Service on Azure Stack installer provides the default values for a one-node Azure Stack installation. If you customized options when you deployed Azure Stack (for example, the domain suffix), you need to edit the values in this window accordingly. For example, if you use the domain suffix mycloud.com, your admin Azure Resource Manager endpoint needs to change to adminmanagement.[region].mycloud.com.
-
-6. Click the **Connect** button next to the **Azure Stack Subscriptions** box.
-
-   - If you're using Azure Active Directory (Azure AD), you must enter your Azure AD admin account and password. Click **Sign In**. You *must* enter the Azure AD account that you provided when you deployed Azure Stack.
-   - If you're using Active Directory Federation Services (AD FS), you must provide your admin account, for example, azurestackadmin@azurestack.local. Enter your password, and click **Sign In**.
-
-7. Select your subscription in the **Azure Stack Subscriptions** box.
-
-8. In the **Azure Stack Locations** box, select the location that corresponds to the region you're deploying. For example, select **local**. Click **Next**.
-
-    ![App Service on Azure Stack subscription selection][3]
-
-9. Enter the **Resource Group Name** for your App Service deployment. By default, it's set to **APPSERVICE-LOCAL**.
-
-10. Enter the **Storage Account Name** you want App Service to create as part of the installation. By default, it's set to **appsvclocalstor**.
-
-11. Enter the SQL Server details for the instance that's used to host the App Service resource provider databases. Click **Next**, and the installer validates the SQL connection properties.
-
-    ![App Service on Azure Stack Resource Group, storage, and SQL Server information][4]
-
-12. Click the **Browse** button next to the **App Service default SSL certificate file** box. Go to the **_.appservice.local.AzureStack.external** certificate [created earlier](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps). If you specified a different location and domain suffix when you created the certificate, select the corresponding certificate.
-
-13. Enter the certificate password that you set when you created the certificate.
-
-14. Click the **Browse** button next to the **Resource provider SSL certificate file** box. Go to the **api.appservice.local.AzureStack.external** certificate [created earlier](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps). If you specified a different location and domain suffix when you created certificates, select the corresponding certificate.
-
-15. Enter the certificate password that you set when you created the certificate.
-
-16. Click the **Browse** button next to the **Resource provider root certificate file** box. Go to the **AzureStackCertificationAuthority** certificate [created earlier](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps).
-
-17. Click **Next**. The installer verifies the certificate password provided.
-
-    ![App Service on Azure Stack certificate details][5]
-
-18. Review the App Service role configuration. The defaults are populated with the minimum recommended instance SKUs for each role. A summary of core and memory requirements is provided to help plan your deployment. After you make your selections, click **Next**.
-
-    - **Controller**: By default, one Standard A1 instance is selected. This is the minimum we recommend. The Controller role is responsible for managing and maintaining the health of the App Service cloud.
-    - **Management**: By default, one Standard A2 instance is selected. To provide failover, we recommend two instances. The Management role is responsible for the App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service.
-    - **Publisher**: By default, one Standard A1 instance is selected. This is the minimum we recommend. The Publisher role is responsible for publishing content via FTP and web deployment.
-    - **FrontEnd**: By default, one Standard A1 instance is selected. This is the minimum we recommend. The FrontEnd role is responsible for routing requests to App Service applications.
-    - **Shared Worker**: By default, one Standard A1 instance is selected, but you might want to add more. As an administrator, you can define your offering and choose any SKU tier. The tiers must have a minimum of one core. The Shared Worker role is responsible for hosting web, mobile, or API applications and Azure Functions apps.
-
-    ![App Service on Azure Stack role configuration][6]
+    ![App Service in Azure Stack – App Service-Cloudkonfiguration][2]
 
     > [!NOTE]
-    > In the technical previews, the App Service resource provider installer also deploys a Standard A1 instance to operate as a simple file server to support Azure Resource Manager. This remains for a single-node development kit. For production workloads, at general availability the App Service installer enables the use of a high-availability file server.
+    > Das Installationsprogramm für App Service in Azure Stack gibt die Standardwerte für eine Azure Stack-Installation auf einem Knoten an. Wenn Sie bei der Bereitstellung von Azure Stack die Optionen (z.B. das Domänensuffix) angepasst haben, müssen Sie die Werte in diesem Fenster entsprechend bearbeiten. Wenn Sie beispielsweise das Domänensuffix „mycloud.com“ verwenden, muss der Azure Resource Manager-Endpunkt zu „adminmanagement.[region].mycloud.com“ geändert werden.
 
-19. Choose your deployment **Windows Server 2016** VM image from those available in the compute resource provider for the App Service cloud. Click **Next**.
+6. Klicken Sie neben dem Feld **Azure Stack-Abonnements** auf die Schaltfläche **Verbinden**.
 
-    ![App Service on Azure Stack VM image selection][7]
+   - Wenn Sie Azure Active Directory (Azure AD) verwenden, müssen Sie Ihr Azure AD-Administratorkonto und das zugehörige Kennwort eingeben. Klicken Sie auf **Anmelden**. Sie *müssen* das Azure AD-Konto eingeben, das Sie bei der Bereitstellung von Azure Stack angegeben haben.
+   - Wenn Sie Active Directory Federation Services (AD FS) verwenden, müssen Sie Ihr Administratorkonto angeben, z.B. azurestackadmin@azurestack.local. Geben Sie Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
 
-20. Enter a user name and password for the Worker roles configured in the App Service cloud. Enter a user name and password for all other App Service roles. Click **Next**.
+7. Wählen Sie im Feld **Azure Stack-Abonnements** Ihr Abonnement aus.
 
-    ![App Service on Azure Stack credential entry][8]
+8. Wählen Sie im Feld **Azure Stack-Standorte** den Standort aus, der der Region entspricht, in der die Bereitstellung erfolgen soll. Wählen Sie z.B. **lokal** aus. Klicken Sie auf **Weiter**.
 
-21. On the summary screen, verify the selections you made. To make changes, go back through the screens and modify your selections. If the configuration is how you want it, select the check box. To start the deployment, click **Next**.
 
-    ![App Service on Azure Stack selection summary][9]
+    ![App Service in Azure Stack – Abonnementauswahl][3]
 
-22. Track the installation progress. App Service on Azure Stack takes about 45 to 60 minutes to deploy based on the default selections.
+9. Geben Sie den **Ressourcengruppennamen** für Ihre App Service-Bereitstellung ein. Dieser ist standardmäßig auf **APPSERVICE-LOCAL** festgelegt.
 
-    ![App Service on Azure Stack installation progress][10]
+10. Geben Sie den **Speicherkontonamen** ein, den App Service während der Installation erstellen soll. Dieser ist standardmäßig auf **appsvclocalstor** festgelegt.
 
-23. After the installer successfully finishes, click **Exit**.
+11. Geben Sie die SQL Server-Informationen für die Instanz ein, in der die Datenbanken des App Service-Ressourcenanbieters gehostet werden sollen. Klicken Sie auf **Weiter**. Das Installationsprogramm überprüft die SQL-Verbindungseigenschaften.
 
-## <a name="validate-the-app-service-on-azure-stack-installation"></a>Validate the App Service on Azure Stack installation
+    ![App Service in Azure Stack – Informationen zu Ressourcengruppe, Speicher und SQL Server][4]
 
-1. In the Azure Stack admin portal, browse to the resource group created by the installer. By default, this group is **APPSERVICE-LOCAL**.
+12. Klicken Sie neben dem Feld **Standard-SSL-Zertifikatdatei für App Service** auf die Schaltfläche **Durchsuchen**. Wechseln Sie zum [zuvor erstellten](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps) Zertifikat **_.appservice.local.AzureStack.external**. Wenn Sie beim Erstellen des Zertifikats einen anderen Speicherort und ein anderes Domänensuffix angegeben haben, wählen Sie das entsprechende Zertifikat aus.
 
-2. Locate **CN0-VM**. To connect to the VM, click **Connect** on the **Virtual Machine** blade.
+13. Geben Sie das Zertifikatkennwort ein, das Sie beim Erstellen des Zertifikats festgelegt haben.
 
-3. On the desktop of this VM, double-click **Web Cloud Management Console**.
+14. Klicken Sie neben dem Feld **SSL-Zertifikatdatei des Ressourcenanbieters** auf die Schaltfläche **Durchsuchen**. Wechseln Sie zum [zuvor erstellten](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps) Zertifikat **api.appservice.local.AzureStack.external**. Wenn Sie beim Erstellen der Zertifikate einen anderen Speicherort und ein anderes Domänensuffix angegeben haben, wählen Sie das entsprechende Zertifikat aus.
 
-4. Go to **Managed Servers**.
+15. Geben Sie das Zertifikatkennwort ein, das Sie beim Erstellen des Zertifikats festgelegt haben.
 
-5. When all the machines display **Ready** for one or more Workers, proceed to step 6.
+16. Klicken Sie neben dem Feld **Stammzertifikatdatei des Ressourcenanbieters** auf die Schaltfläche **Durchsuchen**. Wechseln Sie zum [zuvor erstellten](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps) Zertifikat **AzureStackCertificationAuthority**.
 
-6. Close the remote desktop machine, and return to the machine where you executed the App Service installer.
+17. Klicken Sie auf **Weiter**.
+ Das Installationsprogramm überprüft das angegebene Zertifikatkennwort.
+
+    ![App Service in Azure Stack – Zertifikatdetails][5]
+
+18. Überprüfen Sie die App Service-Rollenkonfiguration. Die Standardwerte werden mit den als Minimum empfohlenen Instanz-SKUs für jede Rolle aufgefüllt. Eine Übersicht über die Kern- und Arbeitsspeichervoraussetzungen wird angezeigt, um Sie bei der Bereitstellung zu unterstützen. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Weiter**.
+
+    - **Controller**: Standardmäßig ist eine Standard-A1-Instanz ausgewählt. Dies ist das empfohlene Minimum. Die Controllerrolle ist für die Verwaltung und Wartung der Integrität der App Service-Cloud zuständig.
+    - **Verwaltung**: Standardmäßig ist eine Standard-A2-Instanz ausgewählt. Um Failoverfunktionen bereitzustellen, werden zwei Instanzen empfohlen. Die Verwaltungsrolle ist für die Azure Resource Manager- und API-Endpunkte, die Portalerweiterungen (Administrator-, Mandanten, Functions-Portal) und den Datendienst von App Service zuständig.
+    - **Herausgeber**: Standardmäßig ist eine Standard-A1-Instanz ausgewählt. Dies ist das empfohlene Minimum. Die Herausgeberrolle ist für die Veröffentlichung von Inhalten über FTP- und Webbereitstellungen zuständig.
+    - **FrontEnd**: Standardmäßig ist eine Standard-A1-Instanz ausgewählt. Dies ist das empfohlene Minimum. Die FrontEnd-Rolle ist für das Routen von Anforderungen an App Service-Anwendungen zuständig.
+    - **Freigegebener Worker**: Standardmäßig ist eine Standard-A1-Instanz ausgewählt, es empfiehlt sich jedoch möglicherweise, weitere Worker hinzuzufügen. Als Administrator können Sie Ihr Angebot definieren und eine SKU-Ebene auswählen. Die Ebenen müssen mindestens einen Kern aufweisen. Die Rolle „Freigegebener Worker“ ist für das Hosten von mobilen, Web- oder API-Anwendungen sowie Azure Functions-Apps zuständig.
+
+    ![App Service in Azure Stack – Rollenkonfiguration][6]
 
     > [!NOTE]
-    > You don't need to wait for one or more Workers to display **Ready** to complete the installation of App Service on Azure Stack. However, you need a minimum of one Worker that's ready to deploy a web, mobile, or API app or Azure Functions.
+    > In den Technical Previews stellt das Installationsprogramm des App Service-Ressourcenanbieters auch eine Standard-A1-Instanz bereit, die als einfacher Dateiserver zur Unterstützung von Azure Resource Manager fungiert. Dies wird in SDKs mit einem Knoten beibehalten. Bei allgemeiner Verfügbarkeit ermöglicht das App Service-Installationsprogramm die Verwendung eines hochverfügbaren Dateiservers für Produktionsworkloads.
 
-    ![App Service on Azure Stack Managed Servers status][11]
+19. Wählen Sie aus den VM-Images, die im Computeressourcenanbieter für die App Service-Cloud verfügbar sind, Ihr VM-Bereitstellungsimage für **Windows Server 2016** aus. Klicken Sie auf **Weiter**.
 
-## <a name="configure-an-azure-ad-service-principal-for-virtual-machine-scale-set-integration-on-worker-tiers-and-sso-for-the-azure-functions-portal-and-advanced-developer-tools"></a>Configure an Azure AD service principal for virtual machine scale set integration on Worker tiers and SSO for the Azure Functions portal and advanced developer tools
+
+    ![App Service in Azure Stack – Auswahl des VM-Images][7]
+
+20. Geben Sie einen Benutzernamen und ein Kennwort für die in der App Service-Cloud konfigurierten Workerrollen ein. Geben Sie einen Benutzernamen und ein Kennwort für alle weiteren App Service-Rollen ein. Klicken Sie auf **Weiter**.
+
+
+    ![App Service in Azure Stack – Eingabe von Anmeldeinformationen][8]
+
+21. Überprüfen Sie auf dem Bildschirm mit der Zusammenfassung die von Ihnen ausgewählten Optionen. Um Angaben zu ändern, wechseln Sie durch die Bildschirme zurück, und nehmen Sie die entsprechenden Änderungen vor. Wenn die Konfiguration Ihren Wünschen entspricht, aktivieren Sie das Kontrollkästchen. Um die Bereitstellung zu starten, klicken Sie auf **Weiter**.
+
+    ![App Service in Azure Stack – Zusammenfassung der Auswahl][9]
+
+22. Verfolgen Sie den Installationsstatus nach. Bei Auswahl der Standardoptionen dauert die Bereitstellung von App Service in Azure Stack ca. 45 bis 60 Minuten.
+
+    ![App Service in Azure Stack – Installationsstatus][10]
+
+23. Klicken Sie nach erfolgreichem Abschluss des Installationsprogramms auf **Beenden**.
+
+## <a name="validate-the-app-service-on-azure-stack-installation"></a>Überprüfen der Installation von App Service in Azure Stack
+
+1. Navigieren Sie im Azure Stack-Administratorportal zu der Ressourcengruppe, die vom Installationsprogramm erstellt wurde. Diese Gruppe lautet standardmäßig **APPSERVICE-LOCAL**.
+
+2. Suchen Sie **CN0-VM**. Um eine Verbindung mit dem virtuellen Computer herzustellen, klicken Sie auf dem Blatt **Virtueller Computer** auf **Verbinden**.
+
+3. Doppelklicken Sie auf dem Desktop dieses virtuellen Computers auf **Webcloud-Verwaltungskonsole**.
+
+4. Wechseln Sie zu **Verwaltete Server**.
+
+5. Wenn bei allen Computern für einen oder mehrere Worker der Status **Bereit** angezeigt wird, fahren Sie mit Schritt 6 fort.
+
+6. Schließen Sie den Remotedesktopcomputer, und kehren Sie zu dem Computer zurück, auf dem Sie das App Service-Installationsprogramm ausgeführt haben.
+
+    > [!NOTE]
+    > Sie müssen nicht warten, bis für einen oder mehrere Worker der Status **Bereit** angezeigt wird, um die Installation von App Service in Azure Stack abzuschließen. Sie benötigen jedoch mindestens einen Worker, der bereit ist, um eine mobile, Web- oder API-App oder Azure Functions bereitzustellen.
+
+    ![App Service in Azure Stack – Status der verwalteten Server][11]
+
+## <a name="configure-an-azure-ad-service-principal-for-virtual-machine-scale-set-integration-on-worker-tiers-and-sso-for-the-azure-functions-portal-and-advanced-developer-tools"></a>Konfigurieren eines Azure AD-Dienstprinzipals für die Integration von VM-Skalierungsgruppen auf Workerebenen sowie von SSO für das Azure Functions-Portal und erweiterte Entwicklertools
 
 >[!NOTE]
-> These steps apply to Azure AD secured Azure Stack environments only.
+> Diese Schritte gelten nur für durch Azure AD gesicherte Azure Stack-Umgebungen.
 
-Administrators need to configure SSO to:
+Administratoren müssen SSO zu folgenden Zwecken konfigurieren:
 
-* Enable the advanced developer tools within App Service (Kudu).
-* Enable the use of the Azure Functions portal experience.
+* Aktivieren der erweiterten Entwicklertools in App Service (Kudu)
+* Aktivieren der Verwendung des Azure Functions-Portals
 
-Follow these steps:
+Folgen Sie diesen Schritten:
 
-1. Open a PowerShell instance as azurestack\azurestackadmin.
+1. Öffnen Sie eine PowerShell-Instanz als azurestack\azurestackadmin.
 
-2. Go to the location of the scripts downloaded and extracted in the [prerequisite step](#Download-Required-Components).
+2. Wechseln Sie zum Speicherort der Skripts, die im [Vorbereitungsschritt](#Download-Required-Components) heruntergeladen und extrahiert wurden.
 
-3. [Install](azure-stack-powershell-install.md) and [configure an Azure Stack PowerShell environment](azure-stack-powershell-configure-admin.md).
+3. [Installieren](azure-stack-powershell-install.md) und [konfigurieren Sie eine Azure Stack-PowerShell-Umgebung](azure-stack-powershell-configure-admin.md).
 
-4. In the same PowerShell session, run the **CreateIdentityApp.ps1** script. When you're prompted for your Azure AD tenant ID, enter the Azure AD tenant ID you're using for your Azure Stack deployment, for example, myazurestack.onmicrosoft.com.
+4. Führen Sie in der gleichen PowerShell-Sitzung das Skript **CreateIdentityApp.ps1** aus. Wenn Sie zur Eingabe Ihrer Azure AD-Mandanten-ID aufgefordert werden, geben Sie die Azure AD-Mandanten-ID ein, die Sie für Ihre Azure Stack-Bereitstellung verwenden, z.B.: myazurestack.onmicrosoft.com.
 
-5. In the **Credential** window, enter your Azure AD service admin account and password. Click **OK**.
+5. Geben Sie im Fenster **Anmeldeinformationen** das Administratorkonto und -kennwort Ihres Azure AD-Diensts ein. Klicken Sie auf **OK**.
 
-6. Enter the certificate file path and certificate password for the [certificate created earlier](# Create certificates to be used by App Service on Azure Stack). The certificate created for this step by default is sso.appservice.local.azurestack.external.pfx.
+6. Geben Sie den Zertifikatdateipfad und das Zertifikatkennwort für das [zuvor erstellte Zertifikat](# Create certificates to be used by App Service on Azure Stack) ein. Das für diesen Schritt standardmäßig erstellte Zertifikat lautet sso.appservice.local.azurestack.external.pfx.
 
-7. The script creates a new application in the tenant Azure AD and generates a new PowerShell script named **UpdateConfigOnController.ps1**.
-
-    >[!NOTE]
-    > Make note of the **Application ID** that's returned in the PowerShell output. You need this information to search for it in step 12.
-
-8. Copy the identity app certificate file and the generated script to **CN0-VM** by using a remote desktop session.
-
-9. Open a new browser window, and sign in to the Azure portal (portal.azure.com) as the **Azure Active Directory Service Admin**.
-
-10. Open the Azure AD resource provider.
-
-11. Click **App Registrations**.
-
-12. Search for the **Application ID** returned as part of step 7. An App Service application is listed.
-
-13. Click **Application** in the list, and open the **Keys** blade.
-
-14. Add a new key with **Description - Functions Portal**, and set the **Expiration Date** to **Never Expires**.
-
-15. Click **Save**, and then copy the key that was generated.
+7. Das Skript erstellt eine neue Anwendung im Azure AD des Mandanten und generiert ein neues PowerShell-Skript namens **UpdateConfigOnController.ps1**.
 
     >[!NOTE]
-    > Be sure to note or copy the key when it's generated. After it's saved, it can't be viewed again, and you need to regenerate a new key.
+    > Notieren Sie sich die **Anwendungs-ID**, die in der PowerShell-Ausgabe zurückgegeben wird. Sie benötigen diese Informationen, um in Schritt 12 danach suchen zu können.
 
-    ![App Service on Azure Stack application keys][12]
+8. Kopieren Sie die Zertifikatdatei und das generierte Skript für die Identitäts-App mithilfe einer Remotedesktopsitzung auf den virtuellen Computer **CN0-VM**.
 
-16. Return to the **Application Registration** in Azure AD.
+9. Öffnen Sie ein neues Browserfenster, und melden Sie sich als **Azure Active Directory-Dienstadministrator** beim Azure-Portal (portal.azure.com) an.
 
-17. Click **Required Permissions** > **Grant Permissions** > **Yes**.
+10. Öffnen Sie den Azure AD-Ressourcenanbieter.
 
-    ![App Service on Azure Stack SSO grant][13]
+11. Klicken Sie auf **App-Registrierungen**.
 
-18. Return to **CN0-VM**, and open the **Web Cloud Management Console** once more.
+12. Suchen Sie nach der **Anwendungs-ID**, die in Schritt 7 zurückgegeben wurde. Es wird eine App Service-Anwendung aufgeführt.
 
-19. Select the **Settings** node on the left pane, and look for the **ApplicationClientSecret** setting.
+13. Klicken Sie in der Liste auf **Anwendung**, und öffnen Sie das Blatt **Schlüssel**.
 
-20. Right-click and select **Edit**. Paste the key generated in step 15, and click **OK**.
+14. Fügen Sie einen neuen Schlüssel mit **Beschreibung – Functions-Portal** hinzu, und legen Sie das **Ablaufdatum** auf **Läuft nie ab** fest.
 
-    ![App Service on Azure Stack application keys][14]
+15. Klicken Sie auf **Speichern**, und kopieren Sie dann den Schlüssel, der generiert wurde.
 
-21. Open an administrator PowerShell window. Browse to the directory where the script file and certificate were copied in step 7.
+    >[!NOTE]
+    > Stellen Sie sicher, dass Sie den Schlüssel kopieren oder sich notieren, nachdem er generiert wurde. Nach dem Speichern können Sie den Schlüssel nicht mehr anzeigen und müssen einen neuen generieren.
 
-22. Run the script file. This script file enters the properties in the App Service on Azure Stack configuration and initiates a repair operation on all FrontEnd and Management roles.
+    ![App Service in Azure Stack – Anwendungsschlüssel][12]
 
-| Parameter | Required/optional | Default value | Description |
+16. Kehren Sie zur **Anwendungsregistrierung** in Azure AD zurück.
+
+17. Klicken Sie auf **Erforderliche Berechtigungen** > **Berechtigungen erteilen** > **Ja**.
+
+    ![App Service in Azure Stack – SSO gewähren][13]
+
+18. Kehren Sie zu **CN0-VM** zurück, und öffnen Sie noch einmal die **Webcloud-Verwaltungskonsole**.
+
+19. Wählen Sie im linken Bereich den Knoten **Einstellungen** aus, und suchen Sie die Einstellung **ApplicationClientSecret**.
+
+20. Klicken Sie mit der rechten Maustaste, und wählen Sie **Bearbeiten** aus. Fügen Sie den in Schritt 15 generierten Schlüssel ein, und klicken Sie auf **OK**.
+
+    ![App Service in Azure Stack – Anwendungsschlüssel][14]
+
+21. Öffnen Sie ein PowerShell-Administratorfenster. Navigieren Sie zu dem Verzeichnis, in das in Schritt 7 die Skriptdatei und das Zertifikat kopiert wurden.
+
+22. Führen Sie die Skriptdatei aus. Diese Skriptdatei gibt die Eigenschaften in die Konfiguration von App Service in Azure Stack ein und initiiert einen Reparaturvorgang auf allen FrontEnd- und Verwaltungsrollen.
+
+| Parameter | Erforderlich/optional | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
-| DirectoryTenantName | Mandatory | Null | Azure AD tenant ID. Provide the GUID or string, for example, myazureaaddirectory.onmicrosoft.com |
-| TenantAzure Resource ManagerEndpoint | Mandatory | management.local.azurestack.external | The tenant Azure Resource Manager endpoint |
-| AzureStackCredential | Mandatory | Null | Azure AD administrator |
-| CertificateFilePath | Mandatory | Null | Path to the identity application certificate file generated earlier |
-| CertificatePassword | Mandatory | Null | Password used to protect the certificate private key |
-| DomainName | Required | local.azurestack.external | Azure Stack region and domain suffix |
-| AdfsMachineName | Optional | Ignore in the case of Azure AD deployment, but required in AD FS deployment. AD FS machine name, for example, AzS-ADFS01.azurestack.local |
+| DirectoryTenantName | Erforderlich | Null | Azure AD-Mandanten-ID; GUID oder Zeichenfolge angeben, z.B.: myazureaaddirectory.onmicrosoft.com |
+| TenantAzure Resource ManagerEndpoint | Erforderlich | management.local.azurestack.external | Der Azure Resource Manager-Endpunkt des Mandanten |
+| AzureStackCredential | Erforderlich | Null | Azure AD-Administrator |
+| CertificateFilePath | Erforderlich | Null | Pfad zur zuvor generierten Zertifikatdatei für die Identitätsanwendung |
+| CertificatePassword | Erforderlich | Null | Kennwort zum Schutz des privaten Zertifikatschlüssels |
+| DomainName | Erforderlich | local.azurestack.external | Azure Stack-Region und Domänensuffix |
+| AdfsMachineName | Optional | In einer Azure AD-Bereitstellung ignorierbar, in einer AD FS-Bereitstellung aber erforderlich; Name des AD FS-Computers, z.B.: AzS-ADFS01.azurestack.local |
 
-## <a name="configure-an-ad-fs-service-principal-for-virtual-machine-scale-set-integration-on-worker-tiers-and-sso-for-the-azure-functions-portal-and-advanced-developer-tools"></a>Configure an AD FS service principal for virtual machine scale set integration on Worker tiers and SSO for the Azure Functions portal and advanced developer tools
+## <a name="configure-an-ad-fs-service-principal-for-virtual-machine-scale-set-integration-on-worker-tiers-and-sso-for-the-azure-functions-portal-and-advanced-developer-tools"></a>Konfigurieren eines AD FS-Dienstprinzipals für die Integration von VM-Skalierungsgruppen auf Workerebenen sowie von SSO für das Azure Functions-Portal und erweiterte Entwicklertools
 
 >[!NOTE]
-> These steps apply to AD FS secured Azure Stack environments only.
+> Diese Schritte gelten nur für durch AD FS gesicherte Azure Stack-Umgebungen.
 
-Administrators need to configure SSO to:
+Administratoren müssen SSO zu folgenden Zwecken konfigurieren:
 
-* Configure a service principal for virtual machine scale set integration on Worker tiers.
-* Enable the advanced developer tools within App Service (Kudu).
-* Enable the use of the Azure Functions portal experience. 
+* Konfigurieren eines Dienstprinzipals für die Integration von VM-Skalierungsgruppen auf Workerebenen
+* Aktivieren der erweiterten Entwicklertools in App Service (Kudu)
+* Aktivieren der Verwendung des Azure Functions-Portals 
 
-Follow these steps:
+Folgen Sie diesen Schritten:
 
-1. Open a PowerShell instance as azurestack\azurestackadmin.
+1. Öffnen Sie eine PowerShell-Instanz als azurestack\azurestackadmin.
 
-2. Go to the location of the scripts downloaded and extracted in the [prerequisite step](#Download-Required-Components).
+2. Wechseln Sie zum Speicherort der Skripts, die im [Vorbereitungsschritt](#Download-Required-Components) heruntergeladen und extrahiert wurden.
 
-3. [Install](azure-stack-powershell-install.md) and [configure an Azure Stack PowerShell environment](azure-stack-powershell-configure-admin.md).
+3. [Installieren](azure-stack-powershell-install.md) und [konfigurieren Sie eine Azure Stack-PowerShell-Umgebung](azure-stack-powershell-configure-admin.md).
 
-4. In the same PowerShell session, run the **CreateIdentityApp.ps1** script. When you're prompted for your Azure AD tenant ID, enter **ADFS**.
+4. Führen Sie in der gleichen PowerShell-Sitzung das Skript **CreateIdentityApp.ps1** aus. Wenn Sie zur Eingabe Ihrer Azure AD-Mandanten-ID aufgefordert werden, geben Sie **ADFS** ein.
 
-5. In the **Credential** window, enter your AD FS service admin account and password. Click **OK**.
+5. Geben Sie im Fenster **Anmeldeinformationen** das Administratorkonto und -kennwort Ihres AD FS-Diensts ein. Klicken Sie auf **OK**.
 
-6. Provide the certificate file path and certificate password for the [certificate created earlier](# Create certificates to be used by App Service on Azure Stack). The certificate created for this step by default is sso.appservice.local.azurestack.external.pfx.
+6. Geben Sie den Zertifikatdateipfad und das Zertifikatkennwort für das [zuvor erstellte Zertifikat](# Create certificates to be used by App Service on Azure Stack) ein. Das für diesen Schritt standardmäßig erstellte Zertifikat lautet sso.appservice.local.azurestack.external.pfx.
 
-7. The script creates a new application in the tenant Azure AD and generates a new PowerShell script named **UpdateConfigOnController.ps1**.
+7. Das Skript erstellt eine neue Anwendung im Azure AD des Mandanten und generiert ein neues PowerShell-Skript namens **UpdateConfigOnController.ps1**.
 
-8. Copy the identity app certificate file and the generated script to the **CN0-VM** by using a remote desktop session.
+8. Kopieren Sie die Zertifikatdatei und das generierte Skript für die Identitäts-App mithilfe einer Remotedesktopsitzung auf den virtuellen Computer **CN0-VM**.
 
-9. Return to **CN0-VM**.
+9. Kehren Sie zu **CN0-VM** zurück.
 
-10. Open an administrator PowerShell window, and browse to the directory where the script file and certificate were copied in step 7.
+10. Öffnen Sie ein PowerShell-Administratorfenster, und navigieren Sie zu dem Verzeichnis, in das in Schritt 7 die Skriptdatei und das Zertifikat kopiert wurden.
 
-11. Run the script file. This script file enters the properties in the App Service on Azure Stack configuration and initiates a repair operation on all FrontEnd and Management roles.
+11. Führen Sie die Skriptdatei aus. Diese Skriptdatei gibt die Eigenschaften in die Konfiguration von App Service in Azure Stack ein und initiiert einen Reparaturvorgang auf allen FrontEnd- und Verwaltungsrollen.
 
-| Parameter | Required/optional | Default value | Description |
+| Parameter | Erforderlich/optional | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
-| DirectoryTenantName | Mandatory | Null | Use **ADFS** for the AD FS environment |
-| TenantAzure Resource ManagerEndpoint | Mandatory | management.local.azurestack.external | The tenant Azure Resource Manager endpoint |
-| AzureStackCredential | Mandatory | Null | The AD FS service admin account |
-| CertificateFilePath | Mandatory | Null | Path to the identity application certificate file generated earlier |
-| CertificatePassword | Mandatory | Null | Password used to protect the certificate private key |
-| DomainName | Required | local.azurestack.external | Azure Stack region and domain suffix |
-| AdfsMachineName | Optional | AD FS machine name, for example, AzS-ADFS01.azurestack.local |
+| DirectoryTenantName | Erforderlich | Null | **ADFS** für die AD FS-Umgebung verwenden |
+| TenantAzure Resource ManagerEndpoint | Erforderlich | management.local.azurestack.external | Der Azure Resource Manager-Endpunkt des Mandanten |
+| AzureStackCredential | Erforderlich | Null | Das Administratorkonto des AD FS-Diensts |
+| CertificateFilePath | Erforderlich | Null | Pfad zur zuvor generierten Zertifikatdatei für die Identitätsanwendung |
+| CertificatePassword | Erforderlich | Null | Kennwort zum Schutz des privaten Zertifikatschlüssels |
+| DomainName | Erforderlich | local.azurestack.external | Azure Stack-Region und Domänensuffix |
+| AdfsMachineName | Optional | Name des AD FS-Computers, z.B.: AzS-ADFS01.azurestack.local |
 
-## <a name="test-drive-app-service-on-azure-stack"></a>Test drive App Service on Azure Stack
+## <a name="test-drive-app-service-on-azure-stack"></a>Testen von App Service in Azure Stack
 
-After you deploy and register the App Service resource provider, test it to make sure that tenants can deploy web, mobile, and API apps.
+Nachdem Sie den App Service-Ressourcenanbieter bereitgestellt und registriert haben, testen Sie ihn, um sicherzustellen, dass Mandanten mobile, Web- und API-Apps bereitstellen können.
 
 > [!NOTE]
-> You need to create an offer that has the Microsoft.Web namespace within the plan. Then you need to have a tenant subscription that subscribes to this offer. For more information, see [Create offer](azure-stack-create-offer.md) and [Create plan](azure-stack-create-plan.md).
+> Sie müssen ein Angebot erstellen, das den Namespace „Microsoft.Web“ im Plan enthält. Danach benötigen Sie ein Mandantenabonnement, das dieses Angebot abonniert. Weitere Informationen finden Sie unter [Erstellen eines Angebots](azure-stack-create-offer.md) und [Erstellen eines Plans](azure-stack-create-plan.md).
 >
-You *must* have a tenant subscription to create applications that use App Service on Azure Stack. The only capabilities that a service admin can complete within the admin portal are related to the resource provider administration of App Service. These capabilities include adding capacity, configuring deployment sources, and adding Worker tiers and SKUs.
+Sie *müssen* über ein Mandantenabonnement verfügen, um Anwendungen zu erstellen, die App Service in Azure Stack verwenden. Ein Dienstadministrator kann nur solche Funktionen im Administratorportal ausführen, die mit der Ressourcenanbieterverwaltung von App Service zu tun haben. Hierzu gehören das Hinzufügen von Kapazitäten, das Konfigurieren von Bereitstellungsquellen und das Hinzufügen von Workerebenen und SKUs.
 >
-As of the third technical preview, to create web, mobile, API, and Azure Functions apps, you must use the tenant portal and have a tenant subscription. 
+Seit der dritten Technical Preview müssen Sie das Mandantenportal verwenden und über ein Mandantenabonnement verfügen, um mobile, Web-, API- und Azure Functions-Apps zu erstellen. 
 
-1. In the Azure Stack tenant portal, click **New** > **Web + Mobile** > **Web App**.
+1. Klicken Sie im Azure Stack-Mandantenportal auf **Neu** > **Web und mobil** > **Web-App**.
 
-2. On the **Web App** blade, type a name in the **Web app** box.
+2. Geben Sie auf dem Blatt **Web-App** einen Namen in das Feld **Web-App** ein.
 
-3. Under **Resource Group**, click **New**. Type a name in the **Resource Group** box.
+3. Klicken Sie unter **Ressourcengruppe** auf **Neu**. Geben Sie einen Namen in das Feld **Ressourcengruppe** ein.
 
-4. Click **App Service plan/Location** > **Create New**.
+4. Klicken Sie auf **App Service-Plan/Standort** > **Neu erstellen**.
 
-5. On the **App Service plan** blade, type a name in the **App Service plan** box.
+5. Geben Sie auf dem Blatt **App Service-Plan** einen Namen in das Feld **App Service-Plan** ein.
 
-6. Click **Pricing tier** > **Free-Shared** or **Shared-Shared** > **Select** > **OK** > **Create**.
+6. Klicken Sie auf **Tarif** > **Free-Shared** oder **Shared-Shared** > **Auswählen** > **OK** > **Erstellen**.
 
-7. In under a minute, a tile for the new web app appears on the dashboard. Click the tile.
+7. Nach weniger als einer Minute wird auf dem Dashboard eine Kachel für die neue Web-App angezeigt. Klicken Sie auf die Kachel.
 
-8. On the **Web App** blade, click **Browse** to view the default website for this app.
+8. Klicken Sie auf dem Blatt **Web-App** auf **Durchsuchen**, um die Standardwebsite für diese App anzuzeigen.
 
-## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>Deploy a WordPress, DNN, or Django website (optional)
+## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>Bereitstellen einer WordPress-, DNN- oder Django-Website (optional)
 
-1. In the Azure Stack tenant portal, click **+**, go to the Azure Marketplace, deploy a Django website, and wait for successful completion. The Django web platform uses a file system-based database. It doesn’t require any additional resource providers, such as SQL or MySQL.
+1. Klicken Sie im Azure Stack-Mandantenportal auf **+**, wechseln Sie zum Azure Marketplace, stellen Sie eine Django-Website bereit, und warten Sie, bis der Vorgang erfolgreich abgeschlossen ist. Die Django-Webplattform verwendet eine dateisystembasierte Datenbank. Sie erfordert keine zusätzlichen Ressourcenanbieter wie SQL oder MySQL.
 
-2. If you also deployed a MySQL resource provider, you can deploy a WordPress website from the Marketplace. When you're prompted for database parameters, enter the user name as *User1@Server1*, with the user name and server name of your choice.
+2. Wenn Sie auch einen MySQL-Ressourcenanbieter bereitgestellt haben, können Sie über den Marketplace eine WordPress-Website bereitstellen. Wenn Sie zur Angabe der Datenbankparameter aufgefordert werden, geben Sie den Benutzernamen im Format *User1@Server1* ein. Sie können einen Benutzer- und Servernamen Ihrer Wahl eingeben.
 
-3. If you also deployed a SQL Server resource provider, you can deploy a DNN website from the Marketplace. When you're prompted for database parameters, choose a database in the computer running SQL Server that's connected to your resource provider.
+3. Wenn Sie auch einen SQL Server-Ressourcenanbieter bereitgestellt haben, können Sie über den Marketplace eine DNN-Website bereitstellen. Wenn Sie zur Angabe der Datenbankparameter aufgefordert werden, wählen Sie auf dem SQL Server-Computer, der mit Ihrem Ressourcenanbieter verbunden ist, eine Datenbank aus.
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-You can also try out other [platform as a service (PaaS) services](azure-stack-tools-paas-services.md).
+Sie können auch weitere [PaaS-Dienste (Platform-as-a-Service)](azure-stack-tools-paas-services.md) ausprobieren.
 
-- [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md)
-- [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md)
+- [SQL Server-Ressourcenanbieter](azure-stack-sql-resource-provider-deploy.md)
+- [MySQL-Ressourcenanbieter](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-deploy/app-service-exe-start.png

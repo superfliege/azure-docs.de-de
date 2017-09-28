@@ -1,6 +1,6 @@
 ---
-title: Tools and PaaS services for Azure Stack | Microsoft Docs
-description: Learn how to get started with PaaS services in Azure Stack.
+title: "Tools und PaaS-Dienste für Azure Stack | Microsoft-Dokumentation"
+description: "Erfahren Sie etwas über die ersten Schritte mit PaaS-Diensten in Azure Stack."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -18,19 +18,18 @@ ms.translationtype: HT
 ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
 ms.openlocfilehash: a3866a91bf2656990c40ead20cedb67fc47a87fd
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="paas-services-for-azure-stack"></a>PaaS services for Azure Stack
+# <a name="paas-services-for-azure-stack"></a>PaaS-Dienste für Azure Stack
 
-You can deploy [Platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) services for Azure Stack from Microsoft and other 3rd party providers. If you want to be notified of new services, follow #AzureStack on Twitter.
+Sie können [PaaS-Dienste](https://azure.microsoft.com/overview/what-is-paas/) (Platform-as-a-Service) von Microsoft und anderen Drittanbietern für Azure Stack bereitstellen. Wenn Sie über neue Dienste benachrichtigt werden möchten, folgen Sie #AzureStack auf Twitter.
 
-[Add an App Service resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-overview)
+[Hinzufügen eines App Service-Ressourcenanbieters zu Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-overview)
 
-[Add a SQL Server resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
+[Hinzufügen eines SQL Server-Ressourcenanbieters zu Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
 
-[Add a MySQL Server resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)
+[Hinzufügen eines MySQL Server-Ressourcenanbieters zu Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)
 
 
 

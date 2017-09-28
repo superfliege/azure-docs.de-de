@@ -349,7 +349,7 @@ In der folgenden *function.json*-Datei wird beispielsweise eine Eigenschaft name
       "name": "info",
       "type": "httpTrigger",
       "direction": "in",
-      "webHookType": "genericJson",
+      "webHookType": "genericJson"
     },
     {
       "name": "blobContents",

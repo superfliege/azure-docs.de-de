@@ -1,6 +1,6 @@
 ---
-title: Use the Marketplace toolkit to create and publish marketplace items | Microsoft Docs
-description: Learn how to quickly create marketplace items with the publishing Toolkit
+title: "Erstellen und Veröffentlichen von Marketplace-Elementen mithilfe des Marketplace-Toolkits | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mithilfe des Veröffentlichungstoolkits in kurzer Zeit Marketplace-Elemente erstellen."
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -18,83 +18,83 @@ ms.translationtype: HT
 ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 5b2c04d2cbc06e1572dc2e40712f6cf9d886aa1e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
-#  <a name="add-marketplace-items-using-publishing-tool"></a>Add marketplace items using publishing tool
-Adding your content to the [Azure Stack Marketplace](azure-stack-marketplace.md) makes your solutions available to you and your tenants for deployment.  The Marketplace Toolkit creates Azure Marketplace Packages (.azpkg) files based on your IaaS Azure Resource Manager templates or VM Extensions.  You can also use the Marketplace Toolkit to publish .azpkg files, either created with the tool or using [manual](azure-stack-create-and-publish-marketplace-item.md) steps.  This topic guides you through downloading the tool, creating a marketplace item based on a VM template, and then publishing that item to the Azure Stack Marketplace.     
+#  <a name="add-marketplace-items-using-publishing-tool"></a>Hinzufügen von Marketplace-Elementen mithilfe des Veröffentlichungstools
+Durch Hinzufügen Ihrer Inhalte zum [Azure Stack-Marketplace](azure-stack-marketplace.md) werden Ihre Lösungen für Sie und Ihre Mandanten für die Bereitstellung verfügbar.  Das Marketplace-Toolkit erstellt Azure Marketplace-Paketdateien (AZPKG-Dateien) auf der Grundlage Ihrer IaaS-Azure Resource Manager-Vorlagen oder VM-Erweiterungen.  Darüber hinaus können Sie mit dem Marketplace-Toolkit AZPKG-Dateien veröffentlichen, die entweder mit dem Tool oder [manuell](azure-stack-create-and-publish-marketplace-item.md) erstellt wurden.  In diesem Thema erfahren Sie, wie Sie das Tool herunterladen, ein Marketplace-Element auf der Grundlage einer VM-Vorlage erstellen und das Element anschließend im Azure Stack-Marketplace veröffentlichen.     
 
 
-## <a name="prerequisites"></a>Prerequisites
- - You must run the toolkit on the Azure Stack host or have [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) connectivity from the machine where you run the tool.
+## <a name="prerequisites"></a>Voraussetzungen
+ - Das Toolkit muss auf dem Azure Stack-Host ausgeführt werden oder auf dem Computer, auf dem es ausgeführt wird, über [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)-Konnektivität verfügen.
 
- - Download the [Azure Stack Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) and extract.
+ - Laden Sie die [Azure Stack-Schnellstartvorlagen](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) herunter, und extrahieren Sie sie.
 
- - Download the [Azure Gallery Packaging tool](http://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe). 
+ - Laden Sie das [Azure Gallery Packaging-Tool](http://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe) herunter. 
 
- - Publishing to the marketplace requires icons and a thumbnail file.  You can use your own, or save the [sample](azure-stack-marketplace-publisher.md#support-files) files locally for this example.
+ - Für die Veröffentlichung in Marketplace werden Symbole und eine Miniaturansichtsdatei benötigt.  Sie können entweder eigene Inhalte verwenden oder die [Beispieldateien](azure-stack-marketplace-publisher.md#support-files) für dieses Beispiel lokal speichern.
 
-## <a name="download-the-tool"></a>Download the tool
-The Marketplace Toolkit can be [downloaded from the Azure Stack Tools repo](azure-stack-powershell-download.md).
+## <a name="download-the-tool"></a>Herunterladen des Tools
+Das Marketplace-Toolkit kann aus dem [Repository für Azure Stack-Tools](azure-stack-powershell-download.md) heruntergeladen werden.
 
 
-##  <a name="create-marketplace-items"></a>Create marketplace items
-In this section, you use the Marketplace Toolkit to create a marketplace item package in .azpkg format.  
+##  <a name="create-marketplace-items"></a>Erstellen von Marketplace-Elementen
+In diesem Abschnitt erstellen Sie mithilfe des Marketplace-Toolkits ein Marketplace-Elementpaket im AZPKG-Format.  
 
-### <a name="provide-marketplace-information-with-wizard"></a>Provide marketplace information with wizard
-1. Run the Marketplace Toolkit from a PowerShell session:
+### <a name="provide-marketplace-information-with-wizard"></a>Angeben von Marketplace-Informationen mithilfe des Assistenten
+1. Führen Sie das Marketplace-Toolkit über eine PowerShell-Sitzung aus:
 ```PowerShell
     .\MarketplaceToolkit.ps1
 ```
 
-2. Click the **Solution** tab.  This screen accepts information about your marketplace item. Enter information about your item as you want it to appear in the marketplace.  You can also specify a [parameters file](azure-stack-marketplace-publisher.md#use-a-parameters-file) to prepopulate the form.  
+2. Klicken Sie auf die Registerkarte **Lösung**.  Auf diesem Bildschirm können Sie Informationen zu Ihrem Marketplace-Element angeben. Geben Sie die Informationen zu Ihrem Element so ein, wie Sie im Marketplace angezeigt werden sollen.  Sie können auch eine [Parameterdatei](azure-stack-marketplace-publisher.md#use-a-parameters-file) angeben, um das Formular vorab aufzufüllen.  
     
-    ![screenshot of Marketplace Toolkit first screen](./media/azure-stack-marketplace-publisher/image7.png)
-3. Click **Browse** and select an image file for each icon and screenshot field.  You can use your own icons, or the sample icons in the [support files](azure-stack-marketplace-publisher.md#support-files) section.
-4. Once all fields are populated, select "Preview Solution" for a preview of the solution within the Marketplace.  You can revise and edit the text, images, and screenshot before clicking **Next**.  
+    ![Screenshot des ersten Bildschirms des Marketplace-Toolkits](./media/azure-stack-marketplace-publisher/image7.png)
+3. Klicken Sie auf **Durchsuchen**, und wählen Sie für die Symbol- und Screenshotfelder jeweils eine Bilddatei aus.  Verwenden Sie entweder eigene Symbole oder die Beispielsymbole aus dem Abschnitt [Unterstützungsdateien](azure-stack-marketplace-publisher.md#support-files).
+4. Füllen Sie alle Felder aus, und wählen Sie anschließend „Preview Solution“ (Lösungsvorschau anzeigen) aus, um eine Vorschau der Lösung im Marketplace anzuzeigen.  Sie können den Text, die Bilder und den Screenshot anpassen und bearbeiten, bevor Sie auf **Weiter** klicken.  
 
-### <a name="import-template-and-create-package"></a>Import template and create package
-In this section, you import the template and work with input for your solution.
+### <a name="import-template-and-create-package"></a>Importieren der Vorlage und Erstellen des Pakets
+In diesem Abschnitt importieren Sie die Vorlage und verwenden Eingaben für Ihre Lösung.
 
-1.  Click **Browse** and select the *azuredeploy.json* from the 101-Simple-Windows-VM folder in the downloaded templates.
+1.  Klicken Sie auf **Durchsuchen**, und wählen Sie die Datei *azuredeploy.json* aus dem Ordner „101-Simple-Windows-VM“ in den heruntergeladenen Vorlagen aus.
 
-    ![screenshot of Marketplace Toolkit second screen](./media/azure-stack-marketplace-publisher/image8.png)
-2.  The Deployment Wizard is populated with a *Basic* step and input items for each parameter specified in the template.  You can add additional steps and move inputs between steps.  As an example, you may want "Front-End Configuration" and "Back-End Configuration" steps for your solution.
-3.  Specify the path to AzureGalleryPackager.exe.  
-4.  Click **Create** and the Marketplace Toolkit packages your solution into an .azpkg file.  Once complete, the wizard displays the path to your solution file and give you the option to continue publishing your package to Azure Stack.
+    ![Screenshot des zweiten Bildschirms des Marketplace-Toolkits](./media/azure-stack-marketplace-publisher/image8.png)
+2.  Der Bereitstellungs-Assistent wird mit einem* *einfachen Schritt und Eingabeelementen für die einzelnen Parameter aus der Vorlage aufgefüllt.  Sie können zusätzliche Schritte hinzufügen und Eingaben zwischen Schritten verschieben.  So können Sie beispielsweise die Schritte „Front-End-Konfiguration“ und „Back-End-Konfiguration“ für Ihre Lösung hinzufügen.
+3.  Geben Sie den Pfad zur Datei „AzureGalleryPackager.exe“ an.  
+4.  Klicken Sie auf **Erstellen**. Daraufhin wird Ihre Lösung vom Marketplace-Toolkit in eine AZPKG-Datei gepackt.  Nach Abschluss des Vorgangs zeigt der Assistent den Pfad zu Ihrer Lösungsdatei an und gibt Ihnen die Möglichkeit, mit der Veröffentlichung Ihres Pakets in Azure Stack fortzufahren.
 
 
-## <a name="publish-marketplace-items"></a>Publish marketplace items
-In this section, you publish the marketplace item to your Azure Stack Marketplace.
+## <a name="publish-marketplace-items"></a>Veröffentlichen von Marketplace-Elementen
+In diesem Abschnitt veröffentlichen Sie das Marketplace-Element in Ihrem Azure Stack-Marketplace.
 
-![screenshot of Marketplace Toolkit first screen](./media/azure-stack-marketplace-publisher/image9.png)
+![Screenshot des ersten Bildschirms des Marketplace-Toolkits](./media/azure-stack-marketplace-publisher/image9.png)
 
-1.  The wizard requires information to publish your solution:
+1.  Der Assistent benötigt Informationen, um Ihre Lösung veröffentlichen zu können:
     
-    |Field|Description|
+    |Feld|Beschreibung|
     |-----|-----|
-    | Service Admin Name | Service Administrator account.  Example:  ServiceAdmin@mydomain.onmicrosoft.com |
-    | Password | Password for Service Administrator account. |
-    | API Endpoint | Azure Stack Azure Resource Manager endpoint.  Example: management.local.azurestack.external |
-2.  Click **Publish** and the publishing log is displayed.
-3.  You are now able to deploy your published item via the Azure Stack portal.
+    | Service Admin Name (Dienstadministratorname) | Das Dienstadministratorkonto.  Beispiel: ServiceAdmin@mydomain.onmicrosoft.com |
+    | Kennwort | Das Kennwort für das Dienstadministratorkonto. |
+    | API-Endpunkt | Der Azure Stack-Azure Resource Manager-Endpunkt.  Beispiel: management.local.azurestack.external |
+2.  Klicken Sie auf **Veröffentlichen**. Das Veröffentlichungsprotokoll wird angezeigt.
+3.  Nun können Sie Ihr veröffentlichtes Element über das Azure Stack-Portal bereitstellen.
 
 
-## <a name="use-a-parameters-file"></a>Use a parameters file
-You can also use a parameters file to complete the marketplace item information.  
+## <a name="use-a-parameters-file"></a>Verwenden einer Parameterdatei
+Die Informationen zum Marketplace-Element können auch mithilfe einer Parameterdatei angegeben werden.  
 
-The Marketplace Toolkit includes a *solution.parameters.ps1* you can use to create your own parameters file.
+Das Marketplace-Toolkit enthält die Datei *solution.parameters.ps1*, mit der Sie Ihre eigene Parameterdatei erstellen können.
 
 
-## <a name="support-files"></a>Support files
-| Description | Sample |
+## <a name="support-files"></a>Unterstützungsdateien
+| Beschreibung | Beispiel |
 | ----- | ----- |
-| 40x40 .png icon | ![](./media/azure-stack-marketplace-publisher/image1.png) |
-| 90x90 .png icon | ![](./media/azure-stack-marketplace-publisher/image2.png) |
-| 115x115 .png icon | ![](./media/azure-stack-marketplace-publisher/image3.png) |
-| 255x115 .png icon | ![](./media/azure-stack-marketplace-publisher/image4.png) |
-| 533x324 .png thumbnail | ![](./media/azure-stack-marketplace-publisher/image5.png) |
+| PNG-Symbol (40 x 40) | ![](./media/azure-stack-marketplace-publisher/image1.png) |
+| PNG-Symbol (90 x 90) | ![](./media/azure-stack-marketplace-publisher/image2.png) |
+| PNG-Symbol (115 x 115) | ![](./media/azure-stack-marketplace-publisher/image3.png) |
+| PNG-Symbol (255 x 115) | ![](./media/azure-stack-marketplace-publisher/image4.png) |
+| PNG-Miniaturansicht (533 x 324) | ![](./media/azure-stack-marketplace-publisher/image5.png) |
 
 
 

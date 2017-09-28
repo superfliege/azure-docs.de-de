@@ -19,7 +19,6 @@ ms.openlocfilehash: 77b5fb94cdfa5722081198aabc59fbf86229c2b0
 ms.contentlocale: de-de
 ms.lasthandoff: 06/22/2017
 
-
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>Tutorial: Azure Active Directory-Integration in Cerner Central
 
@@ -115,19 +114,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | |
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
-    | `https://<instancename>.sandboxcerner.com/session-api/protocol/saml2/metadata` |
     | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
-    | `https://sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
-    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
+    
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL nach einem der folgenden Muster ein: 
     | |
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
-    | `https://cernercentral.com/<instasncename>` |
-    | `https://sandboxcernercentral.com/<instancename>` |
-    | `https://sandboxcernercentral.com/<instancename>` |
-    | `https://<subdomain>.sandboxcernercentral.com/<instancename>` |
+    | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso` |
+    
 
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Cerner Central Supportteam](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations), um diese Werte abzurufen.
