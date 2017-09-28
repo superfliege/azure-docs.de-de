@@ -57,7 +57,7 @@
 ### [Was ist die Lösung?](storsimple-overview.md)
 ### [StorSimple-Lernpfad](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [Sicherheitshinweise](storsimple-8000-security.md)
-### [FAQ: Move to Azure portal](storsimple-8000-move-azure-portal-faq.md) (FAQ: Verschieben zum Azure-Portal)
+### [FAQ: Verschieben zum Azure-Portal](storsimple-8000-move-azure-portal-faq.md)
 
 ## Erste Schritte
 
