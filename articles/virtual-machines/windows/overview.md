@@ -17,15 +17,15 @@ ms.date: 07/17/2017
 ms.author: davidmu
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 52113e1240b81299ae3338f35b2934891017adbf
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 2944021cbaf777137512f4bfe0eb4cf5e6f996dc
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Übersicht über virtuelle Windows-Computer in Azure
 
-Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren [bedarfsgesteuerten, skalierbaren Computerressourcen](../../app-service-web/choose-web-site-cloud-service-vm.md), die von Azure angeboten werden. Virtuelle Computer werden in der Regel verwendet, wenn Sie mehr Kontrolle über Ihre Computerumgebung benötigen als bei den anderen Optionen zur Verfügung steht. In diesem Artikel erfahren Sie, was Sie vor der Erstellung eines virtuellen Computers berücksichtigen sollten und wie Sie ihn erstellen und verwalten.
+Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren [bedarfsgesteuerten, skalierbaren Computerressourcen](../../app-service/choose-web-site-cloud-service-vm.md), die von Azure angeboten werden. Virtuelle Computer werden in der Regel verwendet, wenn Sie mehr Kontrolle über Ihre Computerumgebung benötigen als bei den anderen Optionen zur Verfügung steht. In diesem Artikel erfahren Sie, was Sie vor der Erstellung eines virtuellen Computers berücksichtigen sollten und wie Sie ihn erstellen und verwalten.
 
 Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und die Verwaltung der Hardware aufwenden zu müssen, mit der der virtuelle Computer betrieben wird. Der virtuelle Computer muss allerdings weiterhin verwaltet werden – beispielsweise durch Konfigurieren, Patchen und Verwalten der darauf ausgeführten Software.
 
@@ -38,7 +38,7 @@ Virtuelle Azure-Computer können auf vielfältige Weise genutzt werden. Hier ein
 Die Anzahl virtueller Computer, die von Ihrer Anwendung genutzt werden, kann zentral oder horizontal hochskaliert werden, um Ihren jeweiligen Anforderungen gerecht zu werden.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Was muss ich vor dem Erstellen eines virtuellen Computers berücksichtigen?
-Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche [Designaspekte](/architecture/reference-architectures/virtual-machines-linux?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) berücksichtigt werden. Machen Sie sich daher zunächst Gedanken über Folgendes:
+Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche [Designaspekte](/azure/architecture/reference-architectures/virtual-machines-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) berücksichtigt werden. Machen Sie sich daher zunächst Gedanken über Folgendes:
 
 * Die Namen Ihrer Anwendungsressourcen
 * Den Speicherort der Ressourcen
@@ -49,7 +49,7 @@ Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche 
 * Die zugehörigen Ressourcen, die der virtuelle Computer benötigt
 
 ### <a name="naming"></a>Benennung
-Einem virtuellen Computer wird ein [Name](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zugewiesen, und im Zusammenhang mit dem Betriebssystem wird ein Computername konfiguriert. Der Name eines virtuellen Computers kann bis zu 15 Zeichen lang sein.
+Einem virtuellen Computer wird ein [Name](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zugewiesen, und im Zusammenhang mit dem Betriebssystem wird ein Computername konfiguriert. Der Name eines virtuellen Computers kann bis zu 15 Zeichen lang sein.
 
 Wenn Sie den Betriebssystem-Datenträger mithilfe von Azure erstellen, sind der Computername und der Name des virtuellen Computers identisch. Wenn Sie [ein eigenes Image hochladen und verwenden](upload-generalized-managed.md), das ein vorab konfiguriertes Betriebssystem enthält, und auf dessen Grundlage einen virtuellen Computer erstellen, können die Namen unterschiedlich sein. Beim Hochladen einer eigenen Imagedatei empfiehlt es sich, für den Computernamen im Betriebssystem und für den Namen des virtuellen Computers den gleichen Namen zu verwenden.
 
