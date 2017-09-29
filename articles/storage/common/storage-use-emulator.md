@@ -3,7 +3,7 @@ title: "Verwenden des Azure-Speicheremulators für Entwicklung und Tests | Micro
 description: "Der Azure-Speicheremulator bietet eine kostenlose lokale Entwicklungsumgebung zum Entwickeln und Testen Ihrer Azure Storage-Anwendungen. Hier erhalten Sie Informationen zur Authentifizierung von Anforderungen, zum Herstellen einer Verbindung mit dem Emulator über eine Anwendung und zum Verwenden des Befehlszeilentools."
 services: storage
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: f480b059-df8a-4a63-b05a-7f2f5d1f5c2a
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
-ms.author: marsma
+ms.author: tamram
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: eef0ff164b2857172fc24d8a0af7beddb29b262c

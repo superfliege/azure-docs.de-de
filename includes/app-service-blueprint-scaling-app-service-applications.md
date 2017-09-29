@@ -1,4 +1,4 @@
-* [Skalieren von Azure App Service](../articles/app-service-web/web-sites-scale.md)
+* [Skalieren von Azure App Service](../articles/app-service/web-sites-scale.md)
   
   * Grundlegendes zu Redundanz und Zuverlässigkeit
   * Zustandsbehaftete und zustandslose Anwendungen

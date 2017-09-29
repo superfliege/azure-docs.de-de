@@ -3,7 +3,7 @@ title: "Konfigurieren einer Verbindungszeichenfolge für Azure Storage | Microso
 description: "Konfigurieren Sie eine Verbindungszeichenfolge für ein Azure Storage-Konto. Eine Verbindungszeichenfolge enthält die erforderlichen Informationen zum Authentifizieren des Zugriffs auf ein Speicherkonto aus Ihrer Anwendung zur Laufzeit."
 services: storage
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: ecb0acb5-90a9-4eb2-93e6-e9860eda5e53
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: marsma
+ms.author: tamram
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 4b21e75fde55f195362809ce486a2615954ff93c

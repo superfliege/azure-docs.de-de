@@ -3,7 +3,7 @@ title: "Übersicht über mehrinstanzenfähige Back-Ends mit Azure Application Ga
 description: "Diese Seite bietet eine Übersicht über die Application Gateway-Unterstützung für mehrinstanzenfähige Back-Ends."
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: 
 ms.service: application-gateway
@@ -12,18 +12,18 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
-ms.author: gwallace
+ms.author: davidmu
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: d944904db5b0bf176b214249ad59611e2b794ae0
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: f02b95a3d6020a77fdfcd096a3c11f5cae5aa49c
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>Application Gateway-Unterstützung für mehrinstanzenfähige Back-Ends
 
-Azure Application Gateway unterstützt VM-Skalierungsgruppen, Netzwerkschnittstellen, öffentliche/private IP-Adressen oder vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDNs) im Rahmen von Back-End-Pools. Der vom Client eingehende HTTP-Hostheader wird von Application Gateway standardmäßig nicht geändert und in der vorliegenden Form an das Back-End gesendet. Viele Dienste wie [Azure Web Apps](../app-service-web/app-service-web-overview.md) und [API Management](../api-management/api-management-key-concepts.md) sind mehrinstanzenfähig und benötigen für die Auflösung zum korrekten Endpunkt einen bestimmten Hostheader oder eine SNI-Erweiterung. Application Gateway ermöglicht Benutzern nun die Überschreibung des eingehenden HTTP-Hostheaders auf der Grundlage der Back-End-HTTP-Einstellungen. Dies ermöglicht die Unterstützung mehrinstanzenfähiger Back-Ends für Azure Web Apps und API Management. Die Funktion ist sowohl für die Standard- als auch für die WAF-SKU verfügbar. Die Unterstützung mehrinstanzenfähiger Back-Ends kann auch in SSL-Beendigungs- und End-to-End-SSL-Szenarien verwendet werden.
+Azure Application Gateway unterstützt VM-Skalierungsgruppen, Netzwerkschnittstellen, öffentliche/private IP-Adressen oder vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDNs) im Rahmen von Back-End-Pools. Der vom Client eingehende HTTP-Hostheader wird von Application Gateway standardmäßig nicht geändert und in der vorliegenden Form an das Back-End gesendet. Viele Dienste wie [Azure Web Apps](../app-service/app-service-web-overview.md) und [API Management](../api-management/api-management-key-concepts.md) sind mehrinstanzenfähig und benötigen für die Auflösung zum korrekten Endpunkt einen bestimmten Hostheader oder eine SNI-Erweiterung. Application Gateway ermöglicht Benutzern nun die Überschreibung des eingehenden HTTP-Hostheaders auf der Grundlage der Back-End-HTTP-Einstellungen. Dies ermöglicht die Unterstützung mehrinstanzenfähiger Back-Ends für Azure Web Apps und API Management. Die Funktion ist sowohl für die Standard- als auch für die WAF-SKU verfügbar. Die Unterstützung mehrinstanzenfähiger Back-Ends kann auch in SSL-Beendigungs- und End-to-End-SSL-Szenarien verwendet werden.
 
 ![Web-App-Szenario](./media/application-gateway-web-app-overview/scenario.png)
 

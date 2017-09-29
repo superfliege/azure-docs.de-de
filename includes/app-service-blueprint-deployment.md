@@ -1,6 +1,6 @@
-* [Bereitstellung einer App in Azure App Service](../articles/app-service-web/web-sites-deploy.md)
-* [Konfigurieren von Quellcodeverwaltung und Continuous Integration](../articles/app-service-web/app-service-continuous-deployment.md)
-* [Staging-Bereitstellungen mit Bereitstellungsslots](../articles/app-service-web/web-sites-staged-publishing.md)
+* [Bereitstellung einer App in Azure App Service](../articles/app-service/app-service-deploy-local-git.md)
+* [Konfigurieren von Quellcodeverwaltung und Continuous Integration](../articles/app-service/app-service-continuous-deployment.md)
+* [Staging-Bereitstellungen mit Bereitstellungsslots](../articles/app-service/web-sites-staged-publishing.md)
 * [Veröffentlichung und rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC)](https://azure.microsoft.com/blog/rbac-and-azure-websites-publishing/)
 
 ## <a name="videos"></a>Videos

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 09/20/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 18ae6a970455646b7a25170f5abefa52a98b0ba2
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: 9c3a9a7255bbbdab8f4c356eb07022d7f1d242d7
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Adaptive Anwendungssteuerungen in Azure Security Center (Vorschauversion)
@@ -33,6 +33,9 @@ Mit adaptiven Anwendungssteuerungen lässt sich steuern, welche Anwendungen auf 
 - Vermeidung der Ausführung veralteter oder nicht unterstützter Apps
 - Verhinderung der Verwendung bestimmter Softwaretools, die in Ihrer Organisation nicht zulässig sind
 - Steuerung des Zugriffs auf sensible Daten im Rahmen der App-Nutzung durch die IT-Abteilung
+
+> [!NOTE]
+> Adaptive Anwendungssteuerungen stehen für Azure Security Center Standard-Kunden als eingeschränkte öffentliche Vorschauversion zur Verfügung. Wenn Sie die Vorschauversion ausprobieren möchten, senden Sie uns eine [E-Mail](mailto:ASC_appcontrol@microsoft.com) mit Ihren Abonnement-IDs.
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Aktivieren adaptiver Anwendungssteuerungen
 Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen definieren, deren Ausführung in konfigurierten Ressourcengruppen zulässig ist. Dieses Feature steht nur für Windows-Computer (alle Versionen; klassisch oder Azure Resource Manager) zur Verfügung. Gehen Sie wie folgt vor, um das Anwendungswhitelisting in Security Center zu konfigurieren:
@@ -112,7 +115,7 @@ Diese Liste enthält:
     - **ViolationsBlocked**: Tritt auf, wenn sich die Lösung im Erzwingungsmodus befindet und versucht wird, eine Anwendung auszuführen, die nicht in der Whitelist enthalten ist.
     - **ViolationsAudited**: Tritt auf, wenn sich die Lösung im Überwachungsmodus befindet und eine Anwendung ausgeführt wird, die nicht in der Whitelist enthalten ist.
     - **RulesViolatedManually**: Tritt auf, wenn ein Benutzer versucht hat, Regeln auf den virtuellen Computern manuell (und nicht über das ASC-Verwaltungsportal) zu konfigurieren.
-- **NO. OF VMS** (ANZAHL VIRTUELLER COMPUTER): Die Anzahl virtueller Computer mit diesem Problemtyp.
+- **Anzahl OF VMS** (ANZAHL VIRTUELLER COMPUTER): Die Anzahl virtueller Computer mit diesem Problemtyp.
 
 Durch Klicken auf die einzelnen Zeilen gelangen Sie zur Seite [Azure-Aktivitätsprotokoll](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Hier finden Sie Informationen zu allen virtuellen Computern mit dieser Art von Verstoß. Wenn Sie auf die drei Punkte am Zeilenende klicken, können Sie den entsprechenden Eintrag löschen. Der Abschnitt **Configured virtual machines** (Konfigurierte virtuelle Computer) enthält die virtuellen Computer, für die diese Regeln gelten. 
 
@@ -144,10 +147,6 @@ Security Center empfiehlt das Anwendungswhitelisting nur für virtuelle Computer
 Die Liste enthält Folgendes:
 - **NAME**: Der Name des Abonnements und der Ressourcengruppe.
 - **VMs**: Die Anzahl virtueller Computer in der Ressourcengruppe.
-
-## <a name="preview-registration"></a>Vorschauregistrierung
-
-Adaptive Anwendungssteuerungen stehen für Azure Security Center Standard-Kunden als eingeschränkte öffentliche Vorschauversion zur Verfügung. Wenn Sie die Vorschauversion ausprobieren möchten, senden Sie uns eine [E-Mail](mailto:ASC_appcontrol@microsoft.com) mit Ihren Abonnement-IDs.
 
 ## <a name="see-also"></a>Weitere Informationen
 In diesem Dokument haben Sie erfahren, wie Sie Anwendungen, die auf virtuellen Azure-Computern ausgeführt werden, mithilfe der adaptiven Anwendungssteuerung in Azure Security Center einer Whitelist hinzufügen. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:

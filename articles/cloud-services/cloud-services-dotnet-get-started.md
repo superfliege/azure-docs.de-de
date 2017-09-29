@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: d2c197db73477d06d86d1c4faa8c4a2f58c7b391
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: bb5897a392e500de685421769c414441ddfeb6a3
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Erste Schritte mit Azure-Clouddiensten und ASP.NET
@@ -36,7 +36,7 @@ Bei dieser Anwendung handelt es sich um ein Bulletin Board für Werbung. Benutze
 Die Anwendung verwendet das [warteschlangenorientierte Arbeitsmuster](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) , um die CPU-intensive Last der Erstellung von Miniaturbildern an einen Back-End-Prozess auszulagern.
 
 ## <a name="alternative-architecture-websites-and-webjobs"></a>Alternative Architektur: Websites und WebJobs
-In diesem Tutorial erfahren Sie, wie Sie Front-End und Back-End in einem Azure-Clouddienst ausführen können. Alternativ können Sie das Front-End in einer [Azure-Website](/services/web-sites/) ausführen und die [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226)-Funktion (momentan in der Vorschauphase) für das Back-End verwenden. Ein Lernprogramm zu WebJobs finden Sie unter [Erste Schritte mit dem Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md). Informationen zur Auswahl der optimalen Dienste für Ihr Szenario finden Sie unter [Vergleich von Websites, Clouddiensten und virtuellen Computern in Azure](../app-service-web/choose-web-site-cloud-service-vm.md).
+In diesem Tutorial erfahren Sie, wie Sie Front-End und Back-End in einem Azure-Clouddienst ausführen können. Alternativ können Sie das Front-End in einer [Azure-Website](/services/web-sites/) ausführen und die [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226)-Funktion (momentan in der Vorschauphase) für das Back-End verwenden. Ein Lernprogramm zu WebJobs finden Sie unter [Erste Schritte mit dem Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki). Informationen zur Auswahl der optimalen Dienste für Ihr Szenario finden Sie unter [Vergleich von Websites, Clouddiensten und virtuellen Computern in Azure](../app-service/choose-web-site-cloud-service-vm.md).
 
 ## <a name="what-youll-learn"></a>Sie lernen Folgendes
 * Ermöglichen der Azure-Entwicklung auf Ihrem Computer durch Installieren des Azure SDK

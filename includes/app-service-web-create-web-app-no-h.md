@@ -1,4 +1,4 @@
-Erstellen Sie eine [Web-App](../articles/app-service-web/app-service-web-overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp#create). 
+Erstellen Sie in der Cloud Shell im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp#create) eine [Web-App](../articles/app-service/app-service-web-overview.md). 
 
 Die Web-App bietet Ihnen eine Hostingumgebung für Ihren Code sowie eine URL, unter der Sie sich die bereitgestellte App ansehen können.
 

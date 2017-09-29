@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 09/28/2017
 ms.author: markgal
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
 ms.translationtype: HT
@@ -27,8 +27,6 @@ ms.lasthandoff: 09/22/2017
 # <a name="overview-of-availability-zones-in-azure-preview"></a>Übersicht über Verfügbarkeitszonen in Azure (Vorschauversion)
 
 Verfügbarkeitszonen tragen zum Schutz vor Fehlern auf Datencenterebene bei. Sie befinden sich in einer Azure-Region und verfügen jeweils über eine eigene unabhängige Stromversorgung, Kühlung und Netzwerkumgebung. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische und logische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt Anwendungen und Daten vor Fehlern auf Zonenebene. 
-
-[!INCLUDE [Availability Zones preview statement](../../includes/availability-zones-preview-statement.md)]
 
 ![Konzeptionelle Ansicht einer Zone, die in einer Region ausfällt](./media/az-overview/az-graphic-two.png)
 

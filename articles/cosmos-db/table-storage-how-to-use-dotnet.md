@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 04/10/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ab77fe512d275a92da19bb5dc03da347922238a5
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: fadad88be94552dd1db061146d8dfab86d797f61
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>Erste Schritte mit Azure Table Storage mit .NET
@@ -469,7 +469,7 @@ Nachdem Sie sich nun mit den Grundlagen des Tabellenspeichers vertraut gemacht h
 * In der Referenzdokumentation für den Tabellenspeicherdienst finden Sie alle Details zu verfügbaren APIs:
 * [Referenz zur Storage-Clientbibliothek für .NET](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 * [REST-API-Referenz](http://msdn.microsoft.com/library/azure/dd179355)
-* Erfahren Sie, wie Sie mithilfe des [Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md)
+* Erfahren Sie, wie Sie mithilfe des [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)
 * Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in Azure finden Sie in den anderen Featureleitfäden.
 * [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) zum Speichern unstrukturierter Daten
 * Informationen zum Speichern relationaler Daten finden Sie unter [Herstellen von Verbindungen mit SQL-Datenbank mithilfe von .NET (C#)](../sql-database/sql-database-develop-dotnet-simple.md).

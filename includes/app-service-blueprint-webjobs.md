@@ -1,20 +1,12 @@
 
 ## <a name="resources"></a>Ressourcen
-* [Vollständige WebJobs-Ressourcenliste](../articles/app-service-web/websites-webjobs-resources.md)
-* [Erste Schritte mit dem Azure WebJobs SDK](../articles/app-service-web/websites-dotnet-webjobs-sdk-get-started.md)
-* [Verwenden von Azure-Warteschlangenspeicher mit dem WebJobs-SDK](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
-* [Verwenden von Azure-Blobspeicher mit dem WebJobs-SDK](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
-* [Verwenden von Azure-Tabellenspeicher mit dem WebJobs-SDK](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md)
-* [Verwenden von Azure Service Bus mit dem Webaufträge-SDK](../articles/app-service-web/websites-dotnet-webjobs-sdk-service-bus.md)
+* [Erste Schritte mit dem Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)
 * [Dokumentation zu WebJobs-Einstellungen in GitHub](https://github.com/projectkudu/kudu/wiki/Web-jobs)
-* [Bereitstellen von Azure WebJobs mit Visual Studio](../articles/app-service-web/websites-dotnet-deploy-webjobs.md)
-* [Bereitstellen von WebJobs mithilfe des Azure-Verwaltungsportals](../articles/app-service-web/web-sites-create-web-jobs.md)
-* [Das Dialogfeld "Azure-Webauftrag hinzufügen"](../articles/app-service-web/websites-dotnet-deploy-webjobs.md#configure)
-* [Erstellen geplanter WebJobs im Azure-Verwaltungsportal](../articles/app-service-web/web-sites-create-web-jobs.md#CreateScheduledCRON)
+* [Bereitstellen von Azure WebJobs mit Visual Studio](../articles/app-service/websites-dotnet-deploy-webjobs.md)
+* [Bereitstellen von WebJobs mithilfe des Azure-Verwaltungsportals](../articles/app-service/web-sites-create-web-jobs.md)
+* [Das Dialogfeld "Azure-Webauftrag hinzufügen"](../articles/app-service/websites-dotnet-deploy-webjobs.md#configure)
+* [Erstellen geplanter WebJobs im Azure-Verwaltungsportal](../articles/app-service/web-sites-create-web-jobs.md#CreateScheduledCRON)
 * [Scheduling Azure WebJobs with cron expressions (Planen von Azure WebJobs mit Cron-Ausdrücken, in englischer Sprache)](http://blog.amitapple.com/post/2015/06/scheduling-azure-webjobs/)
-* [Anzeigen des Webauftrags-Dashboards](../articles/app-service-web/websites-dotnet-webjobs-sdk-get-started.md#view-the-webjobs-sdk-dashboard)
-* [Schreiben von Protokollen mit dem WebJobs-SDK und Anzeigen im Dashboard](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)
-* [Remotedebuggen von WebJobs](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebugwj)
 
 ## <a name="videos"></a>Videos
 * [WebJobs und das WebJobs-SDK](http://channel9.msdn.com/Shows/Cloud+Cover/Episode-153-WebJobs-with-Pranav-Rastogi?utm_source=dlvr.it&utm_medium=twitter)
