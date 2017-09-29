@@ -82,6 +82,8 @@
   items:
     - name: Notfallwiederherstellung
       items:
+        - name: In Azure für virtuelle VMware-Computer mit Unterstützung mehrerer Mandanten
+          href: site-recovery-multi-tenant-support-vmware-using-csp.md
         - name: In Azure für Hyper-V-VMs
           href: tutorial-hyper-v-to-azure.md
         - name: In Azure für physische Server

@@ -172,22 +172,34 @@
           href: control-flow-expression-language-functions.md
         - name: Systemvariablen
           href: control-flow-system-variables.md
-    - name: Speichern von Anmeldeinformationen im Schlüsseltresor
-      href: store-credentials-in-key-vault.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitshinweise für die Datenverschiebung
+          href: data-movement-security-considerations.md
+        - name: Speichern von Anmeldeinformationen in Azure Key Vault
+          href: store-credentials-in-key-vault.md
+        - name: Verschlüsseln der Anmeldeinformationen für die selbstgehostete Integrationslaufzeit
+          href: encrypt-credentials-self-hosted-integration-runtime.md
     - name: Überwachen und Verwalten
       items:
         - name: Verwenden von .NET
           href: 'quickstart-create-data-factory-dot-net.md#monitor-pipeline-run'
         - name: Verwenden von Azure Monitor
           href: monitor-using-azure-monitor.md
+        - name: Verwalten der Azure SSIS-Integrationslaufzeit
+          href: manage-azure-ssis-integration-runtime.md
+        - name: Überwachen der Azure-Integrationslaufzeit
+          href: monitor-integration-runtime.md
     - name: Erstellen von Integrationslaufzeit
       items:
         - name: Azure-Integrationslaufzeit
           href: create-azure-integration-runtime.md
-        - name: Azure SSIS-Integrationslaufzeit
-          href: create-azure-ssis-integration-runtime.md
         - name: Selbstgehostete Integrationslaufzeit
           href: create-self-hosted-integration-runtime.md
+        - name: Azure SSIS-Integrationslaufzeit
+          href: create-azure-ssis-integration-runtime.md
+        - name: Einbinden einer Azure SSIS-Integrationslaufzeit in ein VNET
+          href: join-azure-ssis-integration-runtime-virtual-network.md
 - name: Referenz
   items:
     - name: .NET
@@ -200,6 +212,8 @@
       href: /python/api/overview/azure/datafactory?view=azure-python
 - name: Ressourcen
   items:
+    - name: Häufig gestellte Fragen
+      href: frequently-asked-questions.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: Preise

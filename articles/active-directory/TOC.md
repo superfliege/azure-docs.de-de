@@ -42,7 +42,6 @@
 #### [Bestimmen und Beheben von Lizenzproblemen in einer Gruppe](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung](active-directory-licensing-group-migration-azure-portal.md)
 #### [Zusätzliche Szenarien für die Gruppenbasierte Lizenzierung](active-directory-licensing-group-advanced.md)
-#### [Angeben von Nutzungsbedingungen für Benutzer und Apps](active-directory-tou.md)
 #### [Azure PowerShell-Beispiele für die gruppenbasierte Lizenzierung](active-directory-licensing-ps-examples.md)
 ### [Verwalten von Benutzerprofilen](active-directory-users-profile-azure-portal.md)
 ### [Zurücksetzen eines Kennworts](active-directory-users-reset-password-azure-portal.md)
@@ -153,7 +152,7 @@
 #### [Set up steps](cloudappdiscovery-get-started.md) (Setupschritte)
 #### [Create snapshot reports](cloudappdiscovery-set-up-snapshots.md) (Erstellen von Momentaufnahmenberichten)
 #### [Konfigurieren des automatischen Uploads von Protokollen für kontinuierliche Berichte](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [Use a custom log parser](https://docs.microsoft.comcommit/cloud-app-security/custom-log-parser) (Verwenden eines benutzerdefinierten Protokollparsers)
+#### [Use a custom log parser](https://docs.microsoft.com/cloud-app-security/custom-log-parser) (Verwenden eines benutzerdefinierten Protokollparsers)
 #### [Aktualisieren von Registrierungseinstellungen](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [Grundlegendes zu Sicherheit und Datenschutz](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
@@ -300,6 +299,7 @@
 #### Aufgaben
 ##### [Einrichten des gerätebasierten bedingten Zugriffs](active-directory-conditional-access-policy-connected-applications.md)
 ##### [Einrichten des App-basierten bedingten Zugriffs](active-directory-conditional-access-mam.md)
+##### [Angeben von Nutzungsbedingungen für Benutzer und Apps](active-directory-tou.md)
 ##### [Einrichten der VPN-Konnektivität](active-directory-conditional-access-vpn-connectivity-windows10.md)
 ##### [Einrichten von SharePoint und Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [Problembehandlung](active-directory-conditional-access-device-remediation.md)

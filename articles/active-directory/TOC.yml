@@ -1,3 +1,5 @@
+- name: Übersicht über die Zugriffsverwaltung
+  href: manage-access-to-azure-resources.md
 - name: Zugriff auf Ressourcen in Azure
   href: active-directory-understanding-resource-access.md
 - name: 'Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)'

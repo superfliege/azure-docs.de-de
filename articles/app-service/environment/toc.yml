@@ -3,25 +3,19 @@
   items:
     - name: Informationen zu App Service-Umgebungen
       href: intro.md
-    - name: Vergleich von Hostingoptionen
-      href: ../choose-web-site-cloud-service-vm.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen einer App in einer App Service-Umgebung
+    - name: Erstellen einer externen ASE
       href: create-external-ase.md
-    - name: Erstellen über eine Vorlage
-      href: create-from-template.md
+    - name: Erstellen einer internen ASE
+      href: create-ilb-ase.md
 - name: Lernprogramme
   items:
-    - name: Erstellen eines isolierten Netzwerks
-      href: create-ilb-ase.md
-    - name: Integrieren in ein WAP
+    - name: Integrieren in ein WAF
       href: app-service-app-service-environment-web-application-firewall.md
-    - name: Steuern des eingehenden Datenverkehrs für eine öffentliche App
-      href: app-service-app-service-environment-control-inbound-traffic.md
-    - name: Horizontales Hochskalieren einer App in ASE
-      href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
+    - name: Konfigurieren von TLS
+      href: app-service-app-service-environment-custom-settings.md
 - name: Beispiele
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -32,50 +26,49 @@
   items:
     - name: Netzwerkarchitektur
       href: network-info.md
-    - name: Verwaltungsadressen
-      href: management-addresses.md
     - name: Geografisch verteilte Skalierung
       href: app-service-app-service-environment-geo-distributed-scale.md
     - name: ASEv1
-      items:
-        - name: Einführung in ASEv1
-          href: app-service-app-service-environment-intro.md
-        - name: Netzwerkarchitektur
-          href: app-service-app-service-environment-network-architecture-overview.md
+      href: app-service-app-service-environment-intro.md
 - name: Anleitungen
   items:
-    - name: Konfigurieren einer ASE
+    - name: Verwenden einer ASE
+      href: using-an-ase.md
+    - name: Erstellen einer ASE aus einer Vorlage
+      href: create-from-template.md
+- name: Referenz
+  items:
+    - name: Verwaltungsadressen
+      href: management-addresses.md
+    - name: ASEv1-Dokumentation
       items:
-        - name: Verwenden einer ASE
-          href: using-an-ase.md
-        - name: Herstellen einer Verbindung mit dem Back-End
+        - name: Erstellen von ASEv1
+          href: app-service-web-how-to-create-an-app-service-environment.md
+        - name: Konfigurieren von ASEv1
+          href: app-service-web-configure-an-app-service-environment.md
+        - name: Erstellen einer internen ASEv1
+          href: app-service-environment-with-internal-load-balancer.md
+        - name: Erstellen einer internen ASEv1 aus einer Vorlage
+          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
+        - name: Konfigurieren der automatischen Skalierung in ASEv1
+          href: app-service-environment-auto-scale.md
+        - name: Horizontales Hochskalieren einer App in ASEv1
+          href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
+        - name: Netzwerkarchitektur
+          href: app-service-app-service-environment-network-architecture-overview.md
+        - name: Erstellen einer Web-App in ASEv1
+          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
+        - name: High Density-Hosting
+          href: app-service-high-density-hosting.md
+        - name: Herstellen einer Verbindung mit einem Back-End
           href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
         - name: Konfigurieren von ExpressRoute
           href: app-service-app-service-environment-network-configuration-expressroute.md
-    - name: Schützen der ASE
-      items:
-        - name: Konfigurieren von TLS
-          href: app-service-app-service-environment-custom-settings.md
+        - name: Steuern des eingehenden Datenverkehrs für eine öffentliche App
+          href: app-service-app-service-environment-control-inbound-traffic.md
         - name: Verwenden der mehrstufigen Sicherheit
           href: app-service-app-service-environment-layered-security.md
-    - name: Überwachen einer ASE
-      items:
-        - name: Überwachen im Portal
-          href: app-service-web-configure-an-app-service-environment.md
-    - name: Verwenden von ASE1
-      items:
-        - name: Konfigurieren der automatischen Skalierung
-          href: app-service-environment-auto-scale.md
-        - name: Erstellen von ASEv1
-          href: app-service-web-how-to-create-an-app-service-environment.md
-        - name: Erstellen einer Web-App in ASEv1
-          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
-        - name: Erstellen einer internen App in ASEv1
-          href: app-service-environment-with-internal-load-balancer.md
-        - name: Erstellen einer internen App mithilfe einer Vorlage
-          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
-        - name: High Density-Hosting
-          href: app-service-high-density-hosting.md
+    - name: CLI 2.0
 - name: Referenz
   items:
     - name: Azure-Befehlszeilenschnittstelle

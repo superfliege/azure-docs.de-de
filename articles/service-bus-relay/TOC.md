@@ -9,6 +9,8 @@
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)
 ### [Knoten](relay-hybrid-connections-node-get-started.md)
 ## [WCF-Relay](relay-wcf-dotnet-get-started.md)
+## [Tutorial zu WCF Relay](service-bus-relay-tutorial.md)
+## [Tutorial zu WCF-Relay/REST](service-bus-relay-rest-tutorial.md)
 
 # Anleitung
 ## Planen und Entwerfen

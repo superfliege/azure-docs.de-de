@@ -24,8 +24,7 @@
 ### Konfigurieren von sicherem LDAP für eine verwaltete Domäne
 #### [Aufgabe 1: Erwerben eines Zertifikats für sicheres LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [Aufgabe 2: Exportieren des Zertifikats für sicheres LDAP](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
-#### [Aufgabe 3: Aktivieren von sicherem LDAP für die verwaltete Domäne über das klassische Azure-Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps-classic.md)
-#### [Aufgabe 3: Aktivieren von sicherem LDAP für die verwaltete Domäne über das Azure-Portal (Vorschauversion)](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+#### [Aufgabe 3: Aktivieren von sicherem LDAP für die verwaltete Domäne über das Azure-Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 
 ### [Erstellen einer Organisationseinheit für eine verwaltete Domäne](active-directory-ds-admin-guide-create-ou.md)
 ### [Verwalten von Gruppenrichtlinien für eine verwaltete Domäne](active-directory-ds-admin-guide-administer-group-policy.md)

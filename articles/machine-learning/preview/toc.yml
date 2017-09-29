@@ -141,6 +141,8 @@
       items:
         - name: Ausführungskonfiguration
           href: experiment-execution-configuration-reference.md
+        - name: Protokollierungs-API
+          href: reference-logging-api.md
     - name: Modellverwaltung
       items:
         - name: Modellverwaltungs-API

@@ -23,7 +23,7 @@
       href: powershell-samples.md
 - name: Konzepte
   items:
-    - name: Häufig gestellte Fragen
+    - name: Häufig gestellte Fragen zu Log Analytics
       href: log-analytics-faq.md
     - name: Nutzung der Daten
       href: log-analytics-usage.md
@@ -31,6 +31,14 @@
       href: log-analytics-manage-access.md
     - name: Features für Dienstanbieter
       href: log-analytics-service-providers.md
+    - name: Protokollsuche
+      items:
+        - name: Häufig gestellte Fragen zur Protokollsuche
+          href: log-analytics-log-search-faq.md
+        - name: Übersicht über Protokollsuchvorgänge
+          href: log-analytics-log-search-new.md
+        - name: Portale für die Protokollsuche
+          href: log-analytics-log-search-portals.md
 - name: Anleitung
   items:
     - name: Sammeln von Daten
@@ -92,15 +100,6 @@
       items:
         - name: Upgraden Ihres Arbeitsbereichs
           href: log-analytics-log-search-upgrade.md
-        - name: Häufig gestellte Fragen
-          href: log-analytics-log-search-faq.md
-        - name: Übersicht über Protokollsuchvorgänge
-          href: log-analytics-log-search-new.md
-        - name: Portale für die Protokollsuche
-          href: log-analytics-log-search-portals.md
-          items:
-            - name: Verwenden des Portals für die Protokollsuche
-              href: log-analytics-log-search-log-search-portal.md
         - name: Wechsel von der Legacysprache
           href: log-analytics-log-search-transition.md
         - name: Flow-Connector

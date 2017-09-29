@@ -43,6 +43,7 @@
 ### [Warteschlangen für unzustellbare Nachrichten](service-bus-dead-letter-queues.md)
 ### [Transaktionsverarbeitung](service-bus-transactions.md)
 ### [Diagnoseprotokolle](service-bus-diagnostic-logs.md)
+### [Implementierung von gekoppelten Namespaces](service-bus-paired-namespaces.md)
 ### AMQP
 #### [Übersicht über AMQP](service-bus-amqp-overview.md)
 #### [.NET](service-bus-amqp-dotnet.md)
