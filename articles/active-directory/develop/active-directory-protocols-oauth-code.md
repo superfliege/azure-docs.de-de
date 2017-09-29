@@ -16,10 +16,10 @@ ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 35132eae4d6a7f85b19a7a49ad4034e795d7df13
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 916652f2d6336da625be91431c3771a730204a73
 ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory
@@ -207,7 +207,7 @@ Der Parameter `id_token` umfasst die folgenden Anspruchstypen:
 | Anspruchstyp | Beschreibung |
 | --- | --- |
 | aud |Zielgruppe des Tokens. Wenn das Token für eine Clientanwendung ausgestellt wird, ist die Zielgruppe die `client_id` des Clients. |
-| exp |Ablaufzeit. Die Uhrzeit, zu der das Token abläuft. Damit das Token gültig ist, darf das aktuelle Datum/die aktuelle Uhrzeit nicht größer sein als der Wert `exp`. Die Zeit wird als Anzahl der Sekunden ab dem 1. Januar 1970 (1970-01-01T0:0:0Z) (UTC) bis zur Zeit der Ausstellung des Tokens dargestellt. |
+| exp |Ablaufzeit. Die Uhrzeit, zu der das Token abläuft. Damit das Token gültig ist, darf das aktuelle Datum/die aktuelle Uhrzeit nicht größer sein als der Wert `exp`. Die Zeit wird als Anzahl der Sekunden ab dem 1. Januar 1970 (1970-01-01T0:0:0Z) UTC bis zum Zeitpunkt dargestellt, an dem die Gültigkeit des Tokens abläuft.|
 | family_name |Nachname des Benutzers. Die Anwendung kann diesen Wert anzeigen. |
 | given_name |Vorname des Benutzers. Die Anwendung kann diesen Wert anzeigen. |
 | iat |„Issued at time“ (Ausgestellt um). Der Zeitpunkt, zu dem das JWT ausgestellt wurde. Die Zeit wird als Anzahl der Sekunden ab dem 1. Januar 1970 (1970-01-01T0:0:0Z) (UTC) bis zur Zeit der Ausstellung des Tokens dargestellt. |

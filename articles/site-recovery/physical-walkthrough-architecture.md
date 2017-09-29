@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 843c3f1b54f50fe50b162ed242deab717a080830
+ms.translationtype: HT
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 697fbcdb4c5d5a900deb980db7cca9cf2f9fa36d
 ms.contentlocale: de-de
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -57,7 +57,7 @@ Die Tabelle fasst die Komponenten zusammen, die Sie benötigen.
     - Der Konfigurationsserver orchestriert die Replikationsverwaltung mit Azure über Port HTTPS 443 für ausgehenden Datenverkehr.
     - Der Prozessserver empfängt Daten von Quellcomputern, optimiert und verschlüsselt sie und sendet sie über Port 443 für ausgehenden Datenverkehr an den Azure-Speicher.
     - Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Replikationsgruppe über Port 20004 miteinander. Multi-VM wird verwendet, wenn Sie mehrere Computer in Replikationsgruppen zusammenfassen, für die bei einem Failover gemeinsame ausfallsichere und anwendungskonsistente Wiederherstellungspunkte verwendet werden. Dies ist hilfreich, wenn auf Computern dieselbe Workload ausgeführt wird und die Computer einheitlich sein müssen.
-5. Der Datenverkehr wird auf öffentlichen Endpunkten des Azure-Speichers über das Internet repliziert. Alternativ hierzu können Sie das [öffentliche Peering](../expressroute/expressroute-circuit-peerings.md#public-peering) von Azure ExpressRoute verwenden. Das Replizieren von Datenverkehr über ein Site-to-Site-VPN von einem lokalen Standort nach Azure wird nicht unterstützt.
+5. Der Datenverkehr wird auf öffentlichen Endpunkten des Azure-Speichers über das Internet repliziert. Alternativ hierzu können Sie das [öffentliche Peering](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) von Azure ExpressRoute verwenden. Das Replizieren von Datenverkehr über ein Site-to-Site-VPN von einem lokalen Standort nach Azure wird nicht unterstützt.
 
 **Abbildung 2: Replikation für physische Server in Azure**
 

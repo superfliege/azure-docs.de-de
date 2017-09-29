@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/30/2017
 ms.author: nberdy
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: 9bf02ff15d973ea2c9f00815558507c66c049159
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 76f1d32b4afeacae1488b4cf28be6c8cf7f4ea37
 ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="use-direct-methods-netnode"></a>Verwenden direkter Methoden (.NET/Node)
@@ -37,7 +37,7 @@ In diesem Tutorial entwickeln wir eine .NET- und eine Node.js-Konsolen-App:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Visual Studio 2015 oder Visual Studio 2017
-* Node.js, Version 0.10.x oder höher.
+* Node.js Version 4.0.x oder höher
 * Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]

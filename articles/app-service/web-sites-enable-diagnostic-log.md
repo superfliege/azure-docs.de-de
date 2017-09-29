@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7b125aeb9c0ee1dcbb199da98b0ce079820ea85c
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 42644bd97443e827b523503989b0b25d3d48028c
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service
@@ -275,7 +275,7 @@ Webserverprotokolle werden im [erweiterten W3C-Protokolldateiformat](http://msdn
 >
 
 ## <a name="nextsteps"></a> Nächste Schritte
-* [Überwachen von Web-Apps](http://docs.microsoft.com/en-us/azure/app-service-web/web-sites-monitor)
+* [Überwachen von Web-Apps](web-sites-monitor.md)
 * [Problembehandlung von Azure-Web-Apps in Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md)
 * [Analyse von Web-App-Protokollen in HDInsight](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 

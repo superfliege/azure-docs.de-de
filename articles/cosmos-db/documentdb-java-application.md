@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 08/22/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 78cf118dfb9759e1cdbdc023ccad65238853122e
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 7b1053a7ec879294cb2240c9d6b4cd32f923ef9c
 ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-documentdb-api"></a>Erstellen einer Java-Webanwendung mithilfe von Azure Cosmos DB und der DocumentDB-API
@@ -54,7 +54,7 @@ Bevor Sie mit diesem Lernprogramm zur Anwendungsentwicklung beginnen, benötigen
 
 * [Java Development Kit (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 * [Eclipse IDE für Java EE-Entwickler.](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
-* [Eine Azure-Website mit aktivierter Java-Laufzeitumgebung (z.B. Tomcat oder Jetty).](../app-service-web/web-sites-java-get-started.md)
+* [Eine Azure-Website mit aktivierter Java-Laufzeitumgebung (z.B. Tomcat oder Jetty).](../app-service/app-service-web-get-started-java.md)
 
 Wenn Sie diese Tools zum ersten Mal installieren, finden Sie unter coreservlets.com im Abschnitt „Schnellstart“  eine schrittweise Anleitung im Artikel [Lernprogramm: TomCat7 installieren und mit Eclipse verwenden](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) .
 

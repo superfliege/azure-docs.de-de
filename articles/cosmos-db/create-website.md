@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 633b88761de4d2c99cfd196cfac8e664fc83c546
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 67c11277142d6616fe77179e03b55ed08993b818
 ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Bereitstellen von Azure Cosmos DB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure Resource Managers
@@ -135,8 +135,7 @@ Glückwunsch! Sie haben Azure Cosmos DB, eine App Service-Web-App und eine Beisp
 * Weitere Informationen zu Vorlagen des Azure-Ressourcen-Managers erhalten Sie, indem Sie [hier](https://msdn.microsoft.com/library/azure/dn790549.aspx)klicken.
 
 ## <a name="whats-changed"></a>Änderungen
-* Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714)
-* Hinweise zu den Veränderungen des neuen Portals gegenüber dem alten finden Sie unter [Referenz zur Navigation im klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715)
+* Hinweise zu den Veränderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.

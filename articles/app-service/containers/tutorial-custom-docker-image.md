@@ -17,10 +17,10 @@ ms.date: 09/03/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 2a14c9539e46bffbe3e11ff372f37190a562e199
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 10795d59b019d7c683abfeea611d5909b88891ec
 ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="use-a-custom-docker-image-for-azure-web-app-for-containers"></a>Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps für Container
@@ -529,16 +529,16 @@ Der Befehl zeigt zwei Kennwörter, die mit dem Benutzernamen verwendet werden k�
 }
 ```
 
-Nun verfügen Sie über die erforderlichen Anmeldeinformationen und können sich mit dem `docker login`-Befehl bei der Azure Container Registry anmelden. Die URL für die Registrierung ist zur Anmeldung erforderlich. Verwenden Sie das Format `http://{azure-container-registry-name>.azureacr.io`.
+Nun verfügen Sie über die erforderlichen Anmeldeinformationen und können sich mit dem `docker login`-Befehl bei der Azure Container Registry anmelden. Die URL für die Registrierung ist zur Anmeldung erforderlich. Verwenden Sie das Format `http://{azure-container-registry-name>.azurecr.io`.
 
 ```bash
-docker login <azure-container-registry-name>.azureacr.io --username <azure-container-registry-name> --password <password> 
+docker login <azure-container-registry-name>.azurecr.io --username <azure-container-registry-name> --password <password> 
 ```
 
 Vergewissern Sie sich, dass die Anmeldung erfolgreich war. Senden Sie das Image mithilfe des `docker push`-Befehls per Pushübertragung, und kennzeichnen Sie das Image mit der vollständigen URL der Registrierung, gefolgt von Name und Tag des Images.
 
 ```bash
-docker push http://<azure-container-registry-name>.azureacr.io/mydockerimage:v1.0.0
+docker push http://<azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
 
 Überprüfen Sie durch Auflisten der ACR-Repositorys, ob die Pushübertragung der Registrierung erfolgreich einen Container hinzugefügt hat. 

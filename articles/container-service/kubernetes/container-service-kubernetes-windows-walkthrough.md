@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 9211b28debc2f0df194eded564e2a4d52303f3e6
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 6a03f668c6b9e18bf80cb04ea9feddeef4b6bd9e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -110,7 +110,7 @@ Sie können einen Docker-Container in einem Kubernetes-*Pod* ausführen, der ein
 
 In diesem einfachen Beispiel wird mithilfe einer JSON-Datei ein Microsoft-Internetinformationsdienst-Container (IIS) angegeben und dann mit dem Befehl `kubctl apply` der Pod erstellt. 
 
-Erstellen Sie eine lokale Datei mit dem Namen `iis.json`, und kopieren Sie den folgenden Text. Diese Datei weist Kubernetes an, IIS unter Windows Server 2016 Nano Server mithilfe eines öffentlichen Containerimages von [Docker Hub](https://hub.docker.com/r/nanoserver/iis/) auszuführen. Der Container verwendet Port 80. Zunächst kann auf ihn aber nur innerhalb des Clusternetzwerks zugegriffen werden.
+Erstellen Sie eine lokale Datei mit dem Namen `iis.json`, und kopieren Sie den folgenden Text. Diese Datei weist Kubernetes an, IIS unter Windows Server 2016 Nano Server mithilfe eines öffentlichen Containerimages von [Docker Hub](https://hub.docker.com/r/microsoft/iis/) auszuführen. Der Container verwendet Port 80. Zunächst kann auf ihn aber nur innerhalb des Clusternetzwerks zugegriffen werden.
 
  ```JSON
  {
@@ -126,7 +126,7 @@ Erstellen Sie eine lokale Datei mit dem Namen `iis.json`, und kopieren Sie den f
     "containers": [
       {
         "name": "iis",
-        "image": "nanoserver/iis",
+        "image": "microsoft/iis:nanoserver",
         "ports": [
           {
           "containerPort": 80

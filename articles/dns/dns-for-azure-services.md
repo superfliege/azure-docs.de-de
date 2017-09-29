@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 5b95d5455c08d09a088c740e9df9605d3d7f719b
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: a286508fe445208b6bb348d07434b5722cc3f11e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Funktionsweise von Azure DNS mit anderen Azure-Diensten
@@ -38,7 +38,7 @@ Die folgende Tabelle enthält die unterstützten Eintragstypen, die für verschi
 | Lastenausgleichsmodul |[Öffentliche IP-Adresse des Front-Ends](dns-custom-domain.md#public-ip-address)  |Sie können einen DNS A- oder CNAME-Eintrag erstellen. Der Load Balancer kann eine öffentliche IPv6-Adresse haben, die dynamisch zugewiesen wird. Daher müssen Sie einen CNAME-Eintrag für eine IPv6-Adresse erstellen. |
 | Traffic Manager |Öffentlicher Name |Sie können nur einen CNAME-Eintrag erstellen, der dem „trafficmanager.net“-Namen des Traffic Manager-Profils zugewiesen ist. Weitere Informationen finden Sie unter [Funktionsweise von Traffic Manager](../traffic-manager/traffic-manager-overview.md#traffic-manager-example). |
 | Clouddienst |[Öffentliche IP-Adresse](dns-custom-domain.md#public-ip-address) |Für statisch zugewiesene IP-Adressen können Sie einen DNS A-Eintrag erstellen. Für dynamisch zugewiesenen IP-Adressen müssen Sie einen CNAME-Eintrag erstellen, der dem *cloudapp.net* -Namen zugeordnet ist. Diese Regel gilt für virtuelle Computer, die im klassischen Portal erstellt werden, da sie als Clouddienst bereitgestellt werden. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens in Cloud Services](../cloud-services/cloud-services-custom-domain-name-portal.md). |
-| App Service | [Externe IP-Adresse](dns-custom-domain.md#app-service-web-apps) |Für externe IP-Adressen können Sie einen DNS A-Eintrag erstellen. Andernfalls müssen Sie einen CNAME-Eintrag erstellen, der dem „azurewebsites.net“-Namen zugeordnet ist. Weitere Informationen finden Sie unter [Zuordnen eines benutzerdefinierten Domänennamens zu einer Azure-App](../app-service-web/web-sites-custom-domain-name.md) |
+| App Service | [Externe IP-Adresse](dns-custom-domain.md#app-service-web-apps) |Für externe IP-Adressen können Sie einen DNS A-Eintrag erstellen. Andernfalls müssen Sie einen CNAME-Eintrag erstellen, der dem „azurewebsites.net“-Namen zugeordnet ist. Weitere Informationen finden Sie unter [Zuordnen eines benutzerdefinierten Domänennamens zu einer Azure-App](../app-service/app-service-web-tutorial-custom-domain.md) |
 | Resource Manager-VMs |[Öffentliche IP-Adresse](dns-custom-domain.md#public-ip-address) |Resource Manager-VMs können öffentliche IP-Adressen haben. Eine VM mit einer öffentlichen IP-Adresse befindet sich möglicherweise hinter einem Load Balancer. Sie können einen DNS A- oder CNAME-Eintrag für die öffentliche IP-Adresse erstellen. Dieser benutzerdefinierte Name kann verwendet werden, um die VIP-Adresse des Lastenausgleichs zu umgehen. |
 | Klassische virtuelle Computer |[Öffentliche IP-Adresse](dns-custom-domain.md#public-ip-address) |Mithilfe von PowerShell oder der CLI erstellte klassische VMs können mit einer dynamischen oder statischen (reservierten) virtuellen IP-Adresse konfiguriert werden. Sie können einen DNS-Eintrag des Typs „CNAME“ oder „A“ erstellen. |
 

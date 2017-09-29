@@ -15,11 +15,10 @@ ms.workload: na
 ms.date: 07/10/2017
 ms.author: juanpere
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: a8f4f34aa99c4a9966957cac213ec9170de80a46
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 1f335b8b04821e1c0ab26af3df20c3318e9c26cd
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="schedule-and-broadcast-jobs-netnodejs"></a>Planen und Übertragen von Aufträgen für (.NET/Node.js)
@@ -53,7 +52,7 @@ Am Ende dieses Tutorials verfügen Sie über eine Node.js-Konsolen-Geräte-App u
 Für dieses Lernprogramm benötigen Sie Folgendes:
 
 * Visual Studio 2015 oder Visual Studio 2017
-* Node.js Version 0.12.x oder höher. Im Artikel [Vorbereiten Ihrer Entwicklungsumgebung][lnk-dev-setup] wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
+* Node.js Version 4.0.x oder höher Im Artikel [Vorbereiten Ihrer Entwicklungsumgebung][lnk-dev-setup] wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
 * Ein aktives Azure-Konto. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]

@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 05/22/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 2bdec82891bbd61e3526bd4498f802a0de068f87
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 95e31d0ca5983e0946ad6fb993e7a89a6a63d2c3
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Site Recovery
@@ -113,7 +113,7 @@ Für virtuelle Computer und physische Server wird bei der Replikation zwischen l
 Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Replikation erfolgt nicht über ein Site-to-Site-VPN. Sie können ein Site-to-Site-VPN mit einem virtuellen Azure-Netzwerk erstellen. Die Site Recovery-Replikation wird dadurch nicht beeinträchtigt.
 
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Kann ich virtuelle Computer mithilfe von ExpressRoute zu Azure replizieren?
-Ja, ExpressRoute kann zum Replizieren virtueller Computer zu Azure verwendet werden. Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#public-peering) einrichten. Nachdem für die virtuellen Computer ein Failover auf ein virtuelles Azure-Netzwerk ausgeführt wurde, können Sie mithilfe der Einrichtung des [privaten Peering](../expressroute/expressroute-circuit-peerings.md#private-peering) für das virtuelle Azure-Netzwerk darauf zugreifen.
+Ja, ExpressRoute kann zum Replizieren virtueller Computer zu Azure verwendet werden. Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) einrichten. Nachdem für die virtuellen Computer ein Failover auf ein virtuelles Azure-Netzwerk ausgeführt wurde, können Sie mithilfe der Einrichtung des [privaten Peering](../expressroute/expressroute-circuit-peerings.md#azure-private-peering) für das virtuelle Azure-Netzwerk darauf zugreifen.
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>Gelten Voraussetzungen für die Replikation von virtuellen Computern in Azure?
 Virtuelle Computer, die Sie in Azure replizieren möchten, sollten den [Azure-Anforderungen](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)entsprechen.

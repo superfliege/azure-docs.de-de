@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/30/2017
 ms.author: juanpere
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 940be2b50fb08d5ed8fb709d979e609152628645
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 157f112869f0042e330e6b281367632ca015e890
 ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnode"></a>Initiieren eines Firmwareupdates mithilfe der Geräteverwaltung (.NET/Node)
@@ -39,8 +39,8 @@ Am Ende dieses Tutorials verfügen Sie über eine Node.js-Konsolen-Geräte-App u
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Visual Studio 2015 oder Visual Studio 2017.
-* Node.js Version 0.12.x oder höher, <br/>  Unter [Prepare your development environment][lnk-dev-setup] (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
+* Visual Studio 2015 oder Visual Studio 2017
+* Node.js Version 4.0.x oder höher, <br/>  Unter [Prepare your development environment][lnk-dev-setup] (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
 * Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
 Befolgen Sie die Schritte im Artikel [Erste Schritte mit der Geräteverwaltung](iot-hub-csharp-node-device-management-get-started.md), um Ihren IoT Hub zu erstellen und die IoT Hub-Verbindungszeichenfolge abzurufen.

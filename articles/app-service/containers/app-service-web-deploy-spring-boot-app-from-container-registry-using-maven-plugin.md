@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: robmcm;kevinzha
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: f47ee59d72ea49d62be2cb435ebaf8bc841e4198
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: b087003b3a1e236e4a306678904107b8bf99395e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -79,7 +79,7 @@ In diesem Abschnitt klonen Sie eine containerbasierte Spring Boot-Anwendung und 
    mvn clean package
    ```
 
-1. Starten Sie nach der Erstellung der Web-App diese mithilfe von Maven. Beispiel:
+1. Starten Sie die Web-App nach der Erstellung mithilfe von Maven. Beispiel:
    ```shell
    mvn spring-boot:run
    ```
@@ -382,7 +382,7 @@ Weitere Informationen zu den verschiedenen in diesem Artikel besprochenen Techno
 [Azure-Portal]: https://portal.azure.com/
 [Maven-Plug-In für Azure-Web-Apps]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin (Maven-Plug-In für Azure-Web-Apps)
 [Create a private Docker container registry using the Azure portal]: /azure/container-registry/container-registry-get-started-portal
-[Using a custom Docker image for Azure Web App on Linux]: /azure/app-service-web/app-service-linux-using-custom-docker-image
+[Using a custom Docker image for Azure Web App on Linux]: tutorial-custom-docker-image.md
 [Docker]: https://www.docker.com/
 [Docker plugin for Maven]: https://github.com/spotify/docker-maven-plugin (Docker-Plug-In für Maven)
 [kostenloses Azure-Konto]: https://azure.microsoft.com/pricing/free-trial/

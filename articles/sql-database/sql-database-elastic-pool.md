@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: 4e4483ce7473070591128375960daa2b2c26a55d
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 2af5be1c2250c3ec363b97c21bc3fa05c8ace984
 ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
@@ -375,7 +375,7 @@ Verwenden Sie zum Erstellen und Verwalten von SQL-Datenbank-Pools für elastisch
 |[Datenbanken – Auflisten nach Pool für elastische Datenbanken](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem elastischen Pool zurück.|
 |[Datenbanken – Auflisten nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/listbyrecommendedelasticpool)|Gibt eine Liste von Datenbanken in einem empfohlenen Pool für elastische Datenbanken zurück|
 |[Datenbanken – Auflisten nach Server](/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
-|[Datenbanken – Aktualisieren](/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank|
+|[Datenbanken – Aktualisieren](/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

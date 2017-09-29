@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: juanpere
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 7de541ac45fd277f3cfc91d598c654c24af187fc
+ms.translationtype: HT
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: edb86f73f637e3e1722c5027e3dcea531b19af53
 ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="get-started-with-device-management-node"></a>Erste Schritte mit der Geräteverwaltung (Node)
@@ -39,7 +39,7 @@ Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolen-Apps:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Node.js Version 0.12.x oder höher, <br/>  Unter [Prepare your development environment][lnk-dev-setup] (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
+* Node.js Version 4.0.x oder höher, <br/>  Unter [Prepare your development environment][lnk-dev-setup] (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
 * Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]

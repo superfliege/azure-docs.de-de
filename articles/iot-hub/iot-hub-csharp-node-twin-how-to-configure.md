@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: elioda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: ca5ee2733df51faa5025c4d8eb687c81df4a3b4f
+ms.translationtype: HT
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 8f9626fc47e7d32cb104b960bea9b7de9efa6f3e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="use-desired-properties-to-configure-devices"></a>Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten
@@ -37,7 +37,7 @@ Am Ende dieses Tutorials verfügen Sie über zwei Konsolen-Apps:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Visual Studio 2015 oder Visual Studio 2017
-* Node.js, Version 0.10.x oder höher.
+* Node.js Version 4.0.x oder höher
 * Ein aktives Azure-Konto. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.
 
 Wenn Sie das Tutorial [Erste Schritte mit Gerätezwillingen][lnk-twin-tutorial] ausgeführt haben, haben Sie bereits einen IoT Hub und die Geräteidentität **myDeviceId**. In diesem Fall können Sie den Abschnitt [Erstellen der simulierten Geräte-App][lnk-how-to-configure-createapp] überspringen.

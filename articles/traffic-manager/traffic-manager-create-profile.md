@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 58194b71b22b63f7d4a2a6bf0f4e66f456a96d03
-ms.lasthandoff: 03/22/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: e9ff7947e7801a9f352a7a947b09893b8f615d88
+ms.contentlocale: de-de
+ms.lasthandoff: 09/29/2017
 
 ---
 
@@ -25,7 +26,7 @@ ms.lasthandoff: 03/22/2017
 
 Dieser Artikel beschreibt, wie ein Profil mit dem Routingtyp **Priorität** erstellt werden kann, um Benutzer an zwei Azure-Web-Apps-Endpunkte zu routen. Mithilfe des Routingtyps **Priorität** wird der gesamte Datenverkehr an den ersten Endpunkt geroutet, während der zweite als Backup dient. Das hat zur Folge, dass Benutzer an den zweiten Endpunkt geroutet werden können, wenn die Integrität des ersten Endpunkts nicht intakt ist.
 
-In diesem Artikel werden diesem neu erstellten Traffic Manager-Profil zwei zuvor erstellte Azure-Web-App-Endpunkte zugeordnet. Weitere Informationen zum Erstellen von Azure-Web-App-Endpunkten finden Sie auf der [Azure-Web-Apps-Dokumentationsseite](https://docs.microsoft.com/azure/app-service-web/). Sie können jeden Endpunkt hinzufügen, der über einen DNS-Namen verfügt und über das öffentliche Internet erreichbar ist; wir verwenden beispielhaft Azure-Web-Apps-Endpunkte.
+In diesem Artikel werden diesem neu erstellten Traffic Manager-Profil zwei zuvor erstellte Azure-Web-App-Endpunkte zugeordnet. Weitere Informationen zum Erstellen von Azure-Web-App-Endpunkten finden Sie auf der [Azure-Web-Apps-Dokumentationsseite](https://docs.microsoft.com/azure/app-service/). Sie können jeden Endpunkt hinzufügen, der über einen DNS-Namen verfügt und über das öffentliche Internet erreichbar ist; wir verwenden beispielhaft Azure-Web-Apps-Endpunkte.
 
 ### <a name="create-a-traffic-manager-profile"></a>Erstellen eines Traffic Manager-Profils
 1. Melden Sie sich über einen Browser beim [Azure-Portal](http://portal.azure.com) an. Wenn Sie noch nicht über ein Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free/) registrieren. 
@@ -54,13 +55,13 @@ In diesem Artikel werden diesem neu erstellten Traffic Manager-Profil zwei zuvor
     5. Legen Sie als **Priorität** den Wert **1** fest. Dies bewirkt, dass der gesamte Datenverkehr an diesen Endpunkt geleitet wird, sofern sein Status intakt ist.
     6. Lassen Sie **Als deaktiviert hinzufügen** deaktiviert.
     7. Klicken Sie auf **OK**
-5.    Wiederholen Sie die Schritte 3 und 4 für den nächsten Azure-Web-Apps-Endpunkt. Achten Sie darauf, ihn mit einem auf **2** festgelegten Wert für **Priorität** hinzuzufügen.
-6.    Wenn Sie das Hinzufügen beider Endpunkte abgeschlossen haben, werden diese auf dem Blatt **Traffic Manager-Profil** zusammen mit ihrem Überwachungsstatus als **Online** angezeigt.
+5.  Wiederholen Sie die Schritte 3 und 4 für den nächsten Azure-Web-Apps-Endpunkt. Achten Sie darauf, ihn mit einem auf **2** festgelegten Wert für **Priorität** hinzuzufügen.
+6.  Wenn Sie das Hinzufügen beider Endpunkte abgeschlossen haben, werden diese auf dem Blatt **Traffic Manager-Profil** zusammen mit ihrem Überwachungsstatus als **Online** angezeigt.
 
     ![Hinzufügen eines Traffic Manager-Endpunkts](./media/traffic-manager-create-profile/add-traffic-manager-endpoint.png)
 
 ## <a name="use-the-traffic-manager-profile"></a>Verwenden des Traffic Manager-Profils
-1.    Suchen Sie in der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie im vorhergehenden Abschnitt erstellt haben. Klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
+1.  Suchen Sie in der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie im vorhergehenden Abschnitt erstellt haben. Klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
 2. Klicken Sie auf dem Blatt **Traffic Manager-Profil** auf **Übersicht**.
 3. Auf dem Blatt **Traffic Manager-Profil** wird der DNS-Name Ihres neu erstellten Traffic Manager-Profils angezeigt. Dieser kann von beliebigen Clients (etwa durch Navigation in einem Webbrowser) für das Routing zum richtigen Endpunkt nach Maßgabe des Routingtyps verwendet werden. In diesem Fall werden alle Anforderungen an den ersten Endpunkt weitergeleitet. Wenn dieser in Traffic Manager als fehlerhaft erkannt wird, wird für den Datenverkehr automatisch ein Failover auf den nächsten Endpunkt durchgeführt.
 

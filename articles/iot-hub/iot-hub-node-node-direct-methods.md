@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c76870c49f5c8e51f521fd4be920d976e4cdbcef
-ms.openlocfilehash: 7100856b02935fba7bbf1427d86859ddb7a2b5f3
+ms.translationtype: HT
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 9a73c25724a239e56c3ea62a8452bb7c3a2b51be
 ms.contentlocale: de-de
-ms.lasthandoff: 03/02/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="use-direct-methods-on-your-iot-device-with-nodejs"></a>Verwenden direkter Methoden auf Ihrem IoT-Gerät mit Node.js
@@ -37,7 +37,7 @@ Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolen-Apps:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Node.js, Version 0.10.x oder höher.
+* Node.js Version 4.0.x oder höher
 * Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]

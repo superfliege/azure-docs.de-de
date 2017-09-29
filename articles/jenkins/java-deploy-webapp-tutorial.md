@@ -12,16 +12,16 @@ ms.date: 08/02/2017
 ms.author: routlaw
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 22288cd1468b410df77b27721ccda32c3d033e47
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: dcc60feb4c0b3a961689f3d365d49ac1690696a6
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Einrichten von Continuous Integration und Continuous Deployment in Azure App Service mit Jenkins
 
-Dieses Tutorial richtet Continuous Integration und Continuous Deployment (CI/CD) einer Java-Beispiel-Web-App, die mit dem [Spring Boot](http://projects.spring.io/spring-boot/)-Framework entwickelt wurde, mithilfe von Jenkins in einer [Azure App Service-Web-App unter Linux](/azure/app-service-web/app-service-linux-intro) ein.
+Dieses Tutorial richtet Continuous Integration und Continuous Deployment (CI/CD) einer Java-Beispiel-Web-App, die mit dem [Spring Boot](http://projects.spring.io/spring-boot/)-Framework entwickelt wurde, mithilfe von Jenkins in einer [Azure App Service-Web-App unter Linux](/azure/app-service/containers/app-service-linux-intro) ein.
 
 In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 
@@ -83,7 +83,7 @@ Richten Sie Jenkins so ein, dass [GitHub-Webhooks](https://developer.github.com/
 
 ## <a name="configure-azure-app-service"></a>Konfigurieren von Azure App Service 
 
-1. Erstellen Sie mithilfe der Azure CLI oder der [Cloud Shell](/azure/cloud-shell/overview) eine neue [Web-App unter Linux](/azure/app-service-web/app-service-linux-intro). In diesem Tutorial lautete der Name der Web-App `myJavaApp`, für Ihre eigene App müssen Sie allerdings einen eigenen eindeutigen Namen verwenden.
+1. Erstellen Sie mithilfe der Azure CLI oder der [Cloud Shell](/azure/cloud-shell/overview) eine neue [Web-App unter Linux](/azure/app-service/containers/app-service-linux-intro). In diesem Tutorial lautete der Name der Web-App `myJavaApp`, für Ihre eigene App müssen Sie allerdings einen eigenen eindeutigen Namen verwenden.
    
     ```azurecli-interactive
     az group create --name myResourceGroupJenkins --location westus

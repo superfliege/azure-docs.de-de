@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 5347bf85cad32b59677369d51a1f36529aef6662
+ms.translationtype: HT
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 0298a93da0d8cd0b1f2e15146a708c8dd6ecb8e6
 ms.contentlocale: de-de
-ms.lasthandoff: 06/05/2017
-
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Tutorial zu Azure WCF Relay
@@ -695,13 +694,11 @@ namespace Microsoft.ServiceBus.Samples
 
     Im Folgenden wird eine Beispielausgabe des Konsolenfensters gezeigt. Beachten Sie, dass die hier bereitgestellten Werte nur Beispiele sind.
 
-    `Your Service Namespace: myNamespace`
-    `Your SAS Key: <SAS key value>`
+    `Your Service Namespace: myNamespace` `Your SAS Key: <SAS key value>`
 
     Die Dienstanwendung gibt die Adresse, an der sie lauscht, wie im folgenden Beispiel gezeigt im Konsolenfenster aus:
 
-    `Service address: sb://mynamespace.servicebus.windows.net/EchoService/`
-    `Press [Enter] to exit`
+    `Service address: sb://mynamespace.servicebus.windows.net/EchoService/` `Press [Enter] to exit`
 10. Geben Sie im Konsolenfenster **EchoClient** die gleichen Informationen wie für die Dienstanwendung ein. Geben Sie anhand der vorherigen Schritte die gleichen Dienstnamespace- und SAS-Schlüsselwerte für die Clientanwendung ein.
 11. Nachdem Sie diese Werte eingegeben haben, öffnet der Client einen Kanal zum Dienst und fordert Sie auf, Text einzugeben, wie im folgenden Beispiel für die Konsolenausgabe gezeigt.
 
@@ -725,8 +722,6 @@ Weitere Informationen zu Azure Relay finden Sie in den folgenden Themen:
 * [Übersicht über die Architektur von Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#relays)
 * [Übersicht über Azure Relay](relay-what-is-it.md)
 * [Verwenden des WCF-Relaydiensts mit .NET](relay-wcf-dotnet-get-started.md)
-
-[Azure classic portal]: http://manage.windowsazure.com
 
 [2]: ./media/service-bus-relay-tutorial/create-console-app.png
 [3]: ./media/service-bus-relay-tutorial/install-nuget.png
