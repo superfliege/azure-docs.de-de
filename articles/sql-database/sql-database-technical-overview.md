@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 06/30/2017
+ms.date: 09/20/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 28aa6d79f999fe9b247d9bb2c61a149a21e72a4a
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 07c4b4cb920dca7d95caa2fc5f98b0d33ea51dff
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbankdienst? 
@@ -85,16 +85,20 @@ Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rech
 
 SQL-Datenbanken stellt integrierte Logik bereit, die Ihnen hilft, den Aufwand für die Ausführung und Verwaltung von Datenbanken erheblich zu senken und die Leistung und Sicherheit Ihrer Anwendung zu maximieren. Bei der Ausführung von Millionen von Kundenworkloads rund um die Uhr sammelt und verarbeitet SQL-Datenbank eine riesige Menge an Telemetriedaten. Dabei bleiben die Kundendaten im Hintergrund jedoch permanent geschützt. Verschiedene Algorithmen werten fortlaufend die Telemetriedaten aus, damit der Dienst mit Ihrer Anwendung lernen und sich anpassen kann. Auf Grundlage dieser Analyse schlägt der Dienst Empfehlungen zur Verbesserung der Leistung vor, die auf Ihre Workload zugeschnitten sind. 
 
-### <a name="automatic-performance-tuning"></a>Automatische Leistungsoptimierung
+### <a name="automatic-performance-monitoring-and-tuning"></a>Automatische Leistungsüberwachung und -optimierung
 
-SQL-Datenbank bietet detaillierte Einblicke in die Abfragen, die Sie überwachen sollten. SQL-Datenbank erlernt Ihre Datenbankmuster und ermöglicht Ihnen das Anpassen Ihres Datenbankschemas an Ihre Workload. SQL-Datenbank stellt mithilfe von [SQL Database Advisor](sql-database-advisor.md) Empfehlungen zur Leistungsoptimierung bereit, mit denen Sie Optimierungsschritte überprüfen und anwenden können. Eine kontinuierliche Überwachung der Datenbank ist jedoch eine schwierige und aufwendige Aufgabe, insbesondere bei sehr vielen Datenbanken. Das Verwalten einer großen Anzahl von Datenbanken ist eventuell nicht möglich, selbst mit allen verfügbaren Tools und Berichten, die SQL-Datenbank und das Azure-Portal bereitstellen. Anstelle der manuellen Überwachung und Optimierung der Datenbank sollten Sie erwägen, einige der Überwachungs- und Optimierungsaktionen mithilfe des Features zur automatischen Optimierung an SQL-Datenbank zu delegieren. SQL-Datenbank wendet Empfehlungen automatisch an und testet und überprüft jede der Optimierungsaktionen, um sicherzustellen, dass sich die Leistung auch wirklich verbessert. Auf diese Weise passt sich SQL-Datenbank automatisch auf kontrollierte und sichere Weise an Ihre Workload an. Die automatische Optimierung bedeutet, dass die Leistung Ihrer Datenbank vor und nach jeder Optimierungsaktion sorgfältig überwacht und verglichen wird – und wenn sich die Leistung nicht verbessert, wird die Optimierungsaktion zurückgesetzt.
+SQL-Datenbank bietet detaillierte Einblicke in die Abfragen, die Sie überwachen sollten. SQL-Datenbank erlernt Ihre Datenbankmuster und ermöglicht Ihnen das Anpassen Ihres Datenbankschemas an Ihre Workload. SQL-Datenbank stellt [Empfehlungen zur Leistungsoptimierung](sql-database-advisor.md) bereit, mit denen Sie Optimierungsschritte überprüfen und anwenden können. 
+
+Eine kontinuierliche Überwachung der Datenbank ist jedoch eine schwierige und aufwendige Aufgabe, insbesondere bei sehr vielen Datenbanken. [Intelligent Insights](sql-database-intelligent-insights.md) übernimmt diese Aufgabe für Sie, indem die skalierbare Leistung von SQL-Datenbank überwacht wird. Sie werden zudem über Probleme mit der Leistungsminderung informiert. Außerdem wird die Grundursache des Problems identifiziert, und Empfehlungen zur Leistungsverbesserung werden nach Möglichkeit bereitgestellt.
+
+Das Verwalten einer großen Anzahl von Datenbanken ist eventuell nicht möglich, selbst mit allen verfügbaren Tools und Berichten, die SQL-Datenbank und das Azure-Portal bereitstellen. Anstelle der manuellen Überwachung und Optimierung der Datenbank sollten Sie erwägen, einige der Überwachungs- und Optimierungsaktionen mithilfe der [automatischen Optimierung](sql-database-automatic-tuning.md) an SQL-Datenbank zu delegieren. SQL-Datenbank wendet Empfehlungen automatisch an und testet und überprüft jede der Optimierungsaktionen, um sicherzustellen, dass sich die Leistung auch wirklich verbessert. Auf diese Weise passt sich SQL-Datenbank automatisch auf kontrollierte und sichere Weise an Ihre Workload an. Die automatische Optimierung bedeutet, dass die Leistung Ihrer Datenbank vor und nach jeder Optimierungsaktion sorgfältig überwacht und verglichen wird – und wenn sich die Leistung nicht verbessert, wird die Optimierungsaktion zurückgesetzt.
 
 Bereits heute verlassen sich viele unserer Partner, die [mehrinstanzenfähige SaaS-Apps](sql-database-design-patterns-multi-tenancy-saas-applications.md) auf Grundlage von SQL-Datenbank ausführen, auf die automatische Leistungsoptimierung, um sicherzustellen, dass ihre Anwendungen immer eine stabile und zuverlässige Leistung zeigen. Für sie verringert dieses Feature das Risiko, dass mitten in der Nacht ein Leistungsproblem auftritt, enorm. Da darüber hinaus auch ein Teil ihrer Kundenbasis SQL Server verwendet, wenden sie dieselben Indizierungsempfehlungen von SQL-Datenbank an, um ihre SQL Server-Kunden zu unterstützen.
 
-Es gibt zwei Aspekte der automatischen Optimierung, die in SQL-Datenbank verfügbar sind:
+Es gibt zwei Aspekte der automatischen Optimierung, die [in SQL-Datenbank verfügbar](sql-database-automatic-tuning.md) sind:
 
-- **[Automatische Indexverwaltung:](sql-database-automatic-tuning.md#automatic-index-management)** Diese Funktion identifiziert Indizes, die der Datenbank hinzugefügt, und solche, die entfernt werden sollten.
-- **[Automatische Plankorrektur:](sql-database-automatic-tuning.md#automatic-plan-choice-correction)** Diese Funktion erkennt problematische Pläne und korrigiert Leistungsprobleme mit SQL-Plänen (in Kürze, in SQL Server 2017 bereits verfügbar).
+- **Automatische Indexverwaltung**: Diese Funktion identifiziert Indizes, die der Datenbank hinzugefügt oder von dieser entfernt werden sollten.
+- **Automatische Plankorrektur**: Diese Funktion erkennt problematische Pläne und korrigiert Leistungsprobleme mit SQL-Plänen (in Kürze, in SQL Server 2017 bereits verfügbar).
 
 ### <a name="adaptive-query-processing"></a>Adaptive Abfrageverarbeitung
 
@@ -114,7 +118,7 @@ Die [SQL-Datenbank-Überprüfung](sql-database-auditing.md) verfolgt Datenbanker
 
 ### <a name="data-encryption-at-rest"></a>Datenverschlüsselung ruhender Daten
 
-Die [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database) von SQL-Datenbank bietet Schutz vor der Bedrohung durch böswillige Aktivitäten. Hierzu werden die Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit ver- und entschlüsselt, ohne dass Änderungen an der Anwendung erforderlich sind. Ab Mai 2017 werden alle neu erstellten Azure SQL-Datenbank-Instanzen automatisch mit Transparent Data Encryption (TDE) geschützt. TDE ist die bewährte SQL-Verschlüsselungstechnologie für ruhende Daten, die für viele Konformitätsstandards zum Schutz vor Diebstahl von Speichermedien erforderlich ist. Kunden können die TDE-Verschlüsselungsschlüssel und andere Geheimnisse auf sichere und konforme Weise mit Azure Key Vault verwalten.
+Die [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) von SQL-Datenbank bietet Schutz vor der Bedrohung durch böswillige Aktivitäten. Hierzu werden die Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit ver- und entschlüsselt, ohne dass Änderungen an der Anwendung erforderlich sind. Ab Mai 2017 werden alle neu erstellten Azure SQL-Datenbank-Instanzen automatisch mit Transparent Data Encryption (TDE) geschützt. TDE ist die bewährte SQL-Verschlüsselungstechnologie für ruhende Daten, die für viele Konformitätsstandards zum Schutz vor Diebstahl von Speichermedien erforderlich ist. Kunden können die TDE-Verschlüsselungsschlüssel und andere Geheimnisse auf sichere und konforme Weise mit Azure Key Vault verwalten.
 
 ### <a name="data-encryption-in-motion"></a>Datenverschlüsselung in Aktion
 

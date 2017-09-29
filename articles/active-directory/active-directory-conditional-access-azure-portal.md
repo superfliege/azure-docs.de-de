@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/10/2017
+ms.date: 09/27/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 19bc7abbbf7e133018b234399d91604dfdbfe73f
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 4cf30130907151ade9eaf9db28748b8141dac8e7
 ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Bedingter Zugriff in Azure Active Directory
@@ -46,7 +46,7 @@ Die obige Richtlinienanweisung verdeutlicht die Nützlichkeit des bedingten Zugr
 
 Im Zusammenhang mit dem bedingten Zugriff per Azure Active Directory gilt Folgendes:
 
-- „**When this happens**“ wird als **Bedingungsanweisung ** bezeichnet.
+- „**When this happens**“ wird als **Bedingungsanweisung**  bezeichnet.
 - „**Then do this**“ wird als **Kontrolle** bezeichnet.
 
 ![Kontrolle](./media/active-directory-conditional-access-azure-portal/11.png)
@@ -67,7 +67,7 @@ Es gibt zwei Arten von Kontrollen:
 - **Gewährungssteuerelemente**: Mit Gewährungssteuerelementen steuern Sie, ob ein Benutzer die Authentifizierung durchführen und auf die Ressource zugreifen kann, bei der er sich anmelden möchte. Wenn Sie mehrere Steuerelemente ausgewählt haben, können Sie konfigurieren, ob bei der Verarbeitung der Richtlinie alle erforderlich sind.
 Bei der aktuellen Implementierung von Azure Active Directory können Sie die folgenden Anforderungen für Gewährungssteuerelemente konfigurieren:
 
-    ![Kontrolle](./media/active-directory-conditional-access-azure-portal/05.png)
+    ![Kontrolle](./media/active-directory-conditional-access-azure-portal/73.png)
 
 - **Sitzungssteuerelemente**: Sitzungssteuerelemente ermöglichen das Einschränken der Benutzeroberfläche innerhalb einer Cloud-App. Die Sitzungssteuerelemente werden von Cloud-Apps erzwungen und verlassen sich auf zusätzliche Informationen über die Sitzung, die der App von Azure AD bereitgestellt werden.
 
@@ -108,7 +108,7 @@ Eine vollständige Liste der Cloud-Apps, die Sie in der Richtlinie für bedingte
 
 Solange der Zugriff auf Ihre Apps unter Bedingungen erfolgt, die Sie kontrollieren können, ist es ggf. nicht erforderlich, weitere Kontrollen für den Zugriff auf Cloud-Apps durch Ihre Benutzer einzubauen. Es sieht aber schon anders aus, wenn der Zugriff auf Ihre Cloud-Apps beispielsweise über Netzwerke, die nicht vertrauenswürdig sind, oder über nicht konforme Geräte erfolgt. In einer Bedingungsanweisung können Sie bestimmte Zugriffsbedingungen definieren, für die zusätzliche Anforderungen in Bezug auf die Durchführung des Zugriffs auf Ihre Apps gelten.
 
-![Bedingungen](./media/active-directory-conditional-access-azure-portal/21.png)
+![Bedingungen](./media/active-directory-conditional-access-azure-portal/01.png)
 
 
 ## <a name="conditions"></a>Bedingungen
@@ -120,7 +120,8 @@ In der aktuellen Implementierung von Azure Active Directory können Sie Bedingun
 - Standorte
 - Client-Apps
 
-![Bedingungen](./media/active-directory-conditional-access-azure-portal/21.png)
+
+![Bedingungen](./media/active-directory-conditional-access-azure-portal/01.png)
 
 ### <a name="sign-in-risk"></a>Anmelderisiko
 
@@ -147,22 +148,35 @@ Sie können die Geräteplattformen angeben, die in eine Richtlinie einbezogen bz
 
 ### <a name="locations"></a>Standorte
 
-Der Standort wird durch die IP-Adresse des Clients identifiziert, den Sie verwendet haben, um eine Verbindung mit Azure Active Directory herzustellen. Diese Bedingung erfordert, dass Sie sich mit **benannten Orten** und **durch MFA bestätigten IPs** auskennen.  
+Mit Standorten haben Sie die Möglichkeit Bedingungen zu definieren, je nachdem wo ein Verbindungsversuch initiiert wurde. Die Einträge in der Liste der Speicherorte sind entweder **benannte Orte** oder **MFA trusted IPs (Vertrauenswürdige IPs in MFA)**.  
 
-**Benannte Orte** ist ein Feature von Azure Active Directory, das Ihnen ermöglicht, in Ihrer Organisation vertrauenswürdige IP-Adressbereiche zu bezeichnen. Sie können in Ihrer Umgebung benannte Orte sowohl im Kontext der Erkennung von [Risikoereignissen](active-directory-reporting-risk-events.md) als auch für bedingten Zugriff verwenden. Weitere Informationen zum Konfigurieren von benannten Orten in Azure Active Directory finden Sie unter [Benannte Orte in Azure Active Directory](active-directory-named-locations.md).
+**Benannte Orte** ist ein Feature von Azure Active Directory, mit dem Sie Bezeichnungen für die Speicherorte definieren können, von denen aus Verbindungsversuche vorgenommen wurden. Um einen Speicherort zu definieren, können Sie entweder einen IP-Adressbereich konfigurieren, oder Sie wählen ein Land/eine Region aus.  
 
-Die Anzahl von Orten, die Sie konfigurieren können, wird durch die Größe des verbundenen Objekts in Azure AD eingeschränkt. Sie können Folgendes konfigurieren:
+![Bedingungen](./media/active-directory-conditional-access-azure-portal/42.png)
+
+Darüber hinaus können Sie einen benannten Ort als vertrauenswürdigen Speicherort markieren. Für eine Richtlinie für bedingten Zugriff ist der vertrauenswürdige Speicherort eine andere Filteroption, die Ihnen ermöglicht *All trusted locations* (Alle vertrauenswürdigen Speicherorte) in Ihren Speicherortbedingungen auszuwählen.
+Benannte Orte sind auch im Zusammenhang mit der Erkennung von [Risikoereignissen](active-directory-reporting-risk-events.md) wichtig, um die Anzahl der gemeldeten falsch positiven Ergebnisse für das Risikoereignis „Unmöglicher Ortswechsel zu atypischen Orten“ zu reduzieren. 
+
+Die Anzahl von benannten Orten, die Sie konfigurieren können, wird durch die Größe des zugehörigen Objekts in Azure AD eingeschränkt. Sie können Folgendes konfigurieren:
  
  - Einen benannten Ort mit bis zu 500 IP-Adressbereichen
  - Maximal 60 benannte Orte (Vorschau), wobei jedem ein IP-Adressbereich zugewiesen wird. 
 
-
-**Durch MFA bestätigte IPs** ist ein Feature der Multi-Factor Authentication, mit dem Sie Bereiche mit vertrauenswürdigen IP-Adressen definieren können, die für das lokale Intranet Ihrer Organisation stehen. Beim Konfigurieren der Bedingungen eines Standorts können Sie mit der Option „Vertrauenswürdige IPs“ zwischen Verbindungen, die über das Netzwerk Ihrer Organisation hergestellt werden, und allen anderen Standorten unterscheiden. Weitere Informationen finden Sie unter [Vertrauenswürdige IP-Adressen](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).  
-
+Weitere Informationen finden Sie unter [Benannte Orte von Azure Active Directory](active-directory-named-locations.md).
 
 
-Sie können entweder alle Standorte oder alle vertrauenswürdigen IPs einbinden, und Sie können alle vertrauenswürdigen IPs ausschließen.
+**Durch MFA bestätigte IPs** ist ein Feature der Multi-Factor Authentication, mit dem Sie Bereiche mit vertrauenswürdigen IP-Adressen definieren können, die für das lokale Intranet Ihrer Organisation stehen. Beim Konfigurieren der Bedingungen eines Standorts können Sie mit der Option „Vertrauenswürdige IPs“ zwischen Verbindungen, die über das Netzwerk Ihrer Organisation hergestellt werden, und allen anderen Standorten unterscheiden. Weitere Informationen finden Sie unter [vertrauenswürdige IPs](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).  
 
+In Ihrer Richtlinie für den bedingten Zugriff können Sie:
+
+- Include
+    - Jeden beliebigen Speicherort
+    - Alle vertrauenswürdigen Speicherorte
+    - Ausgewählte Speicherorte
+- Exclude
+    - Alle vertrauenswürdigen Speicherorte
+    - Ausgewählte Speicherorte
+     
 ![Bedingungen](./media/active-directory-conditional-access-azure-portal/03.png)
 
 
@@ -175,6 +189,7 @@ Die Legacyauthentifizierung bezieht sich auf Clients, für die eine einfache Aut
 
 
 Eine vollständige Liste der Client-Apps, die Sie in der Richtlinie für bedingten Zugriff verwenden können, bietet Ihnen die [Technische Referenz zum bedingten Azure Active Directory-Zugriff](active-directory-conditional-access-technical-reference.md#client-apps-condition).
+
 
 
 

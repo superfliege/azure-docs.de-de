@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 07/19/2017
+ms.date: 09/13/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: 4585be186554d5d7aa9bc79029b6f8506b278701
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 2ad643d5f099457018d02a43252db4c259f5b613
 ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
@@ -134,6 +134,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule)|Ruft Firewallregeln für einen Server ab|
 |[Set-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/set-azurermsqlserverfirewallrule)|Ändert eine Firewallregel auf einem Server|
 |[Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule)|Löscht eine Firewallregel von einem Server|
+| New-AzureRmSqlServerVirtualNetworkRule | Erstellt eine [*virtuelle Netzwerkregel*](sql-database-vnet-service-endpoint-rule-overview.md), die auf einem Subnetz basiert, das einen Dienstendpunkt für ein virtuelles Netzwerk darstellt. |
 
 > [!TIP]
 > Ein Schnellstart-Tutorial zu PowerShell finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe von PowerShell](sql-database-get-started-portal.md). PowerShell-Beispielskripts finden Sie unter [Erstellen einer einzelnen Azure SQL-­Datenbank und Konfigurieren einer Firewallregel mithilfe von PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
@@ -219,7 +220,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[Datenbanken – Auflisten nach Pool für elastische Datenbanken](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem elastischen Pool zurück.|
 |[Datenbanken – Auflisten nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/listbyrecommendedelasticpool)|Gibt eine Liste von Datenbanken in einem empfohlenen Pool für elastische Datenbanken zurück|
 |[Datenbanken – Auflisten nach Server](/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
-|[Datenbanken – Aktualisieren](/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank.|
+|[Datenbanken – Aktualisieren](/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank.|
 |[Firewall Rules - Create Or Update](/rest/api/sql/firewallrules/createorupdate)|Erstellt oder aktualisiert eine Firewallregel.|
 |[Firewall Rules - Delete](/rest/api/sql/firewallrules/delete)|Löscht eine Firewallregel.|
 |[Firewall Rules - Get](/rest/api/sql/firewallrules/get)|Ruft eine Firewallregel ab.|
@@ -231,4 +232,3 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 - Informationen über den Azure SQL-Datenbank-Dienst finden Sie unter [Was ist SQL-Datenbank?](sql-database-technical-overview.md).
 - Weitere Informationen zum Migrieren einer SQL Server-Datenbank zu Azure finden Sie unter [Migrieren zu Azure SQL-Datenbank](sql-database-cloud-migrate.md).
 - Informationen zu unterstützten Funktionen finden Sie unter [Features (Funktionen)](sql-database-features.md).
-
