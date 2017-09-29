@@ -148,13 +148,14 @@
 ### [Erste Schritte](active-directory-integrating-applications-getting-started.md)
 ### [Tutorials für die Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
 ### [Cloud App Discovery](cloudappdiscovery-overview.md)
-#### [What is Cloud App Discovery?](active-directory-cloudappdiscovery-whatis.md) (Was ist Cloud App Discovery?)
-#### [Set up steps](cloudappdiscovery-get-started.md) (Setupschritte)
-#### [Create snapshot reports](cloudappdiscovery-set-up-snapshots.md) (Erstellen von Momentaufnahmenberichten)
+#### [Einrichten der Ermittlung ohne Agents](cloudappdiscovery-get-started.md)
+#### [Erstellen von Momentaufnahmenberichten](cloudappdiscovery-set-up-snapshots.md)
 #### [Konfigurieren des automatischen Uploads von Protokollen für kontinuierliche Berichte](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [Use a custom log parser](https://docs.microsoft.com/cloud-app-security/custom-log-parser) (Verwenden eines benutzerdefinierten Protokollparsers)
-#### [Aktualisieren von Registrierungseinstellungen](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-#### [Grundlegendes zu Sicherheit und Datenschutz](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
+#### [Verwenden eines benutzerdefinierten Protokollparsers](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
+#### Agent-basierte Ermittlung
+##### [Was ist Cloud App Discovery?](active-directory-cloudappdiscovery-whatis.md)
+##### [Aktualisieren von Registrierungseinstellungen](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
+##### [Grundlegendes zu Sicherheit und Datenschutz](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
 
 ### [Remotezugriff auf Apps mit dem Anwendungsproxy](active-directory-application-proxy-get-started.md)
@@ -247,7 +248,7 @@
 #### [Administratoren, die B2B-Benutzer hinzufügen](active-directory-b2b-admin-add-users.md)
 #### [Information-Worker, die B2B-Benutzer hinzufügen](active-directory-b2b-iw-add-users.md)
 #### [API und Anpassung](active-directory-b2b-api.md)
-#### [Code and Azure PowerShell samples](active-directory-b2b-code-samples.md) (Code- und Azure PowerShell-Beispiele)
+#### [Code- und Azure PowerShell-Beispiele](active-directory-b2b-code-samples.md)
 #### [Beispiel für Self-Service-Registrierungsportal](active-directory-b2b-self-service-portal.md)
 #### [Einladungs-E-Mail](active-directory-b2b-invitation-email.md)
 #### [Einlösen der Einladung](active-directory-b2b-redemption-experience.md)
@@ -329,8 +330,8 @@
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
-## [Integrate other services with Azure AD]() (Integrieren anderer Dienste in Azure AD)
-### [Enable LinkedIn integration](linkedin-integration.md) (Aktivieren der LinkedIn-Integration)
+## [Integrieren anderer Dienste in Azure AD]()
+### [Aktivieren der LinkedIn-Integration](linkedin-integration.md)
 
 ## [Bereitstellen von AD DS auf virtuellen Azure-Computern](virtual-networks-windows-server-active-directory-virtual-machines.md)
 ### [Windows Server Active Directory auf Azure-VMs](active-directory-deploying-ws-ad-guidelines.md)
