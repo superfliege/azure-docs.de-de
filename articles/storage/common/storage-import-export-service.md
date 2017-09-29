@@ -12,17 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 09/14/2017
 ms.author: muralikk
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 5696c99b719fb1c5ca9c3da7dbf23d365cc64a2e
+ms.sourcegitcommit: e05028ad46ef6ec2584cd2d3f4843cf38bb54f9e
+ms.openlocfilehash: d96c2f565e6462716ccf702188bdac03dcde9dce
 ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/16/2017
 
 ---
-# <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-blob-storage"></a>Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Blob Storage
-Mit dem Import/Export-Dienst von Azure können Sie große Datenmengen auf sichere Weise in Azure Blob Storage übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage auf Festplattenlaufwerke und zum Versand an Ihren lokalen Standort nutzen. Dieser Dienst eignet sich für Situationen, in denen Sie mehrere TB an Daten an oder von Azure übertragen möchten und in denen das Hoch- oder Herunterladen über das Netzwerk aufgrund der eingeschränkten Bandbreite oder hoher Netzwerkkosten nicht möglich ist.
+# <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Azure-Speicher
+Mit dem Import/Export-Dienst von Azure können Sie große Datenmengen auf sichere Weise in Azure-Speicher übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure-Speicher auf Festplattenlaufwerke und zum Versand an Ihren lokalen Standort nutzen. Dieser Dienst eignet sich für Situationen, in denen Sie mehrere TB an Daten an oder von Azure übertragen möchten und in denen das Hoch- oder Herunterladen über das Netzwerk aufgrund der eingeschränkten Bandbreite oder hoher Netzwerkkosten nicht möglich ist.
 
 Für den Dienst ist es erforderlich, dass Festplattenlaufwerke über eine BitLocker-Verschlüsselung verfügen, damit für die Sicherheit Ihrer Daten gesorgt ist. Der Dienst unterstützt klassische und Azure Resource Manager-Speicherkonten (standardmäßige und kalte Ebene), die in allen Regionen des öffentlichen Azure vorhanden sind. Schicken Sie die Festplattenlaufwerke an einen der unterstützten Standorte, die weiter unten in diesem Artikel angegeben sind.
 
@@ -36,7 +36,7 @@ Sie können diesen Dienst in folgenden Szenarien verwenden:
 * Migrieren von Daten zur Cloud: Verschieben Sie große Datenmengen schnell und kostengünstig nach Azure.
 * Inhaltsverteilung: Schicken Sie Daten schnell an Ihre Kundenstandorte.
 * Sicherung: Erstellen Sie Sicherungen Ihrer lokalen Daten für die Speicherung in Azure Blob Storage.
-* Datenwiederherstellung: Stellen Sie große Datenmengen wieder her, die in Blob Storage gespeichert sind, und lassen Sie sie an Ihren lokalen Standort schicken.
+* Datenwiederherstellung: Stellen Sie große Datenmengen wieder her, die im Speicher gespeichert sind, und lassen Sie sie an Ihren lokalen Standort schicken.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Abschnitt werden die Voraussetzungen zur Nutzung dieses Diensts aufgeführt. Lesen Sie sich diese Informationen sorgfältig durch, bevor Sie Ihre Laufwerke verschicken.
@@ -44,11 +44,11 @@ In diesem Abschnitt werden die Voraussetzungen zur Nutzung dieses Diensts aufgef
 ### <a name="storage-account"></a>Speicherkonto
 Sie müssen über ein Azure-Abonnement und ein oder mehrere Speicherkonten verfügen, um den Import/Export-Dienst nutzen zu können. Bei jedem Auftrag können lediglich Daten auf ein oder von einem Speicherkonto übertragen werden. Anders ausgedrückt: Ein einzelner Import/Export-Auftrag kann nicht mehrere Speicherkonten umfassen. Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
 
-### <a name="blob-types"></a>Blobtypen
-Sie können den Import/Export-Dienst von Azure verwenden, um Daten in **Blockblobs** oder **Seitenblobs** zu kopieren. Umgekehrt können Sie mit diesem Dienst nur **Blockblobs**, **Seitenblobs** oder **Anfügeblobs** aus dem Azure-Speicher exportieren.
+### <a name="data-types"></a>Datentypen
+Sie können den Import/Export-Dienst von Azure verwenden, um Daten in **Blockblobs**, **Seitenblobs** oder **Dateien** zu kopieren. Umgekehrt können Sie mit diesem Dienst nur **Blockblobs**, **Seitenblobs** oder **Anfügeblobs** aus dem Azure-Speicher exportieren. Der Dienst unterstützt den Export von Azure-Dateien nicht. Er kann nur Dateien in Azure-Speicher importieren.
 
 ### <a name="job"></a>Auftrag
-Zunächst erstellen Sie einen Auftrag, um mit dem Importieren oder Exportieren von Blob-Speicher zu beginnen. Ein Auftrag kann ein Importauftrag oder ein Exportauftrag sein:
+Zunächst erstellen Sie einen Auftrag, um mit dem Importieren oder Exportieren in den bzw. aus dem Speicher zu beginnen. Ein Auftrag kann ein Importauftrag oder ein Exportauftrag sein:
 
 * Erstellen Sie einen Importauftrag, wenn Sie lokal gespeicherte Daten auf Blobs in Ihrem Azure-Speicherkonto übertragen möchten.
 * Erstellen Sie einen Exportauftrag, wenn Sie Daten, die aktuell als Blobs in Ihrem Speicherkonto gespeichert sind, auf Festplatten übertragen möchten, die dann an Sie geschickt werden. Wenn Sie einen Auftrag erstellen, benachrichtigen Sie den Import-/Export-Dienst, dass Sie eine oder mehrere Festplatten an ein Azure-Rechenzentrum schicken werden.
@@ -154,7 +154,7 @@ Beim Versand Ihrer Pakete müssen Sie die Nutzungsbedingungen unter [Microsoft A
 > 
 
 ## <a name="how-does-the-azure-importexport-service-work"></a>Wie funktioniert der Azure Import/Export-Dienst?
-Sie können Daten zwischen Ihrem lokalen Standort und Azure Blob Storage übertragen, indem Sie den Azure Import/Export-Dienst nutzen. Sie erstellen Aufträge und versenden Festplattenlaufwerke an ein Azure-Rechenzentrum. Jedes Festplattenlaufwerk, das Sie verschicken, ist einem einzelnen Auftrag zugeordnet. Jeder Auftrag ist einem einzelnen Speicherkonto zugeordnet. Lesen Sie sich den [Abschnitt zu den Voraussetzungen](#pre-requisites) sorgfältig durch, um sich über die Besonderheiten dieses Diensts zu informieren, z.B. unterstützte Blobtypen, Datenträgertypen, Standorte und Versand.
+Sie können Daten mithilfe des Azure Import/Export-Diensts zwischen Ihrem lokalen Standort und Azure-Speicher übertragen. Erstellen Sie dazu Aufträge, und versenden Sie Festplattenlaufwerke an ein Azure-Rechenzentrum. Jedes Festplattenlaufwerk, das Sie verschicken, ist einem einzelnen Auftrag zugeordnet. Jeder Auftrag ist einem einzelnen Speicherkonto zugeordnet. Lesen Sie sich den [Abschnitt zu den Voraussetzungen](#pre-requisites) sorgfältig durch, um sich über die Besonderheiten dieses Diensts (etwa unterstützte Datentypen, Datenträgertypen, Standorte und Versand) zu informieren.
 
 In diesem Abschnitt werden die allgemeinen Schritte beschrieben, die für Import- und Exportaufträge ausgeführt werden müssen. Weiter unten im [Abschnitt „Schnellstart“](#quick-start)finden Sie eine Schrittanleitung zum Erstellen eines Import- und Exportauftrags.
 
@@ -162,7 +162,7 @@ In diesem Abschnitt werden die allgemeinen Schritte beschrieben, die für Import
 Ein Importauftrag umfasst im Allgemeinen die folgenden Schritte:
 
 * Bestimmen Sie die zu importierenden Daten und die Anzahl der benötigten Festplatten.
-* Geben Sie die Zielblobspeicherorte für Ihre Daten in Blob Storage an.
+* Geben Sie den Zielblob- oder Zieldateispeicherort für Ihre Daten im Azure-Speicher an.
 * Verwenden Sie das the WAImportExport-Tool, um die Daten auf eine oder mehrere Festplatten zu kopieren und per BitLocker zu verschlüsseln.
 * Erstellen Sie einen Importauftrag in Ihrem Zielspeicherkonto mit dem Azure-Portal oder der Import/Export-REST-API. Laden Sie bei Verwendung des Azure-Portals die Laufwerkjournaldateien hoch.
 * Geben Sie die Rücksendeadresse und die Nummer Ihres Kontos beim Kurierdienst an, die für das Zurücksenden der Festplatten verwendet werden können.
@@ -174,6 +174,12 @@ Ein Importauftrag umfasst im Allgemeinen die folgenden Schritte:
     ![Abbildung 1: Ablauf eines Importauftrags](./media/storage-import-export-service/importjob.png)
 
 ### <a name="inside-an-export-job"></a>Exportaufträge
+> [!IMPORTANT]
+79 Der Dienst unterstützt nur den Export von Azure-Blobs, nicht den Export von Azure-Dateien.
+> 80
+> 
+81
+> 
 Ein Exportauftrag umfasst im Allgemeinen die folgenden Schritte:
 
 * Bestimmen Sie die zu exportierenden Daten und die Anzahl der benötigten Festplatten.
@@ -267,15 +273,22 @@ Der erste Schritt beim Importieren von Daten mit dem Azure Import/Export-Dienst 
     
     **Dataset-CSV-Datei**
     
-    Im Folgenden sehen Sie ein Beispiel für eine Dataset CSV-Datei:
+  Nachfolgend sehen Sie ein CSV-Dateibeispiel für ein Beispieldataset zum Importieren von Daten als Azure-Blobs:
     
     ```
-    BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
+    BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
     "F:\50M_original\100M_1.csv.txt","containername/100M_1.csv.txt",BlockBlob,rename,"None",None
     "F:\50M_original\","containername/",BlockBlob,rename,"None",None 
     ```
-   
-    Im Beispiel oben wird 100M_1.csv.txt in das Stammverzeichnis des Containers mit dem Namen „Containername“ kopiert. Wenn der Container „Containername“ nicht vorhanden ist, wird er erstellt. Alle Dateien und Ordner in 50M_original werden rekursiv in „Containername“ kopiert. Die Ordnerstruktur wird beibehalten.
+  
+  Nachfolgend sehen Sie ein CSV-Dateibeispiel für ein Beispieldataset zum Importieren von Daten als Azure-Dateien:
+  
+    ```
+    BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
+    "F:\50M_original\100M_1.csv.txt","fileshare/100M_1.csv.txt",file,rename,"None",None
+    "F:\50M_original\","fileshare/",file,rename,"None",None 
+    ```
+   Im Beispiel oben wird „100M_1.csv.txt“ in das Stammverzeichnis des Containers mit dem Namen „containername“ oder „fileshare“ kopiert. Wenn der Container namens „containername“ oder „fileshare“ nicht vorhanden ist, wird er erstellt. Alle Dateien und Ordner in „50M_original“ werden rekursiv in „containername“ oder „fileshare“ kopiert. Die Ordnerstruktur wird beibehalten.
 
     Erfahren Sie mehr über das [Vorbereiten der Dataset-CSV-Datei](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
     
@@ -431,7 +444,7 @@ Sehen Sie sich unten den Abschnitt mit den häufig gestellten Fragen an. Darin w
 
 **Kann ich den Azure Import/Export-Dienst verwenden, um Azure File Storage zu kopieren?**
 
-Nein. Der Azure Import/Export-Dienst unterstützt nur Blockblobs und Seitenblobs. Alle andere Speichertypen, z.B. Azure File Storage, Table Storage und Queue Storage, werden nicht unterstützt.
+Ja. Der Azure Import/Export-Dienst unterstützt den Import in Azure File Storge. Derzeit wird der Export von Azure-Dateien nicht unterstützt.
 
 **Ist der Azure Import/Export-Dienst für CSP-Abonnements verfügbar?**
 

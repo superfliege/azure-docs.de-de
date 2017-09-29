@@ -6,30 +6,30 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 09/18/2017
 ms.author: babanisa
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 6736c6a60021b51db612f0a596086a9e988d7aef
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: a61357b6ba75566e0ad4d3300cc602333ece0563
 ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
-# <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
+# <a name="azure-event-grid-event-schema"></a>Azure Event Grid-Ereignisschema
 
-In diesem Artikel werden die Eigenschaften und das Schema für Ereignisse beschrieben. Ereignisse bestehen aus einer Gruppe von fünf erforderlichen Zeichenfolgeneigenschaften und einem erforderlichen **data**-Objekt. Die Eigenschaften gelten für alle Ereignisse von jedem Herausgeber. Das **data**-Objekt enthält Eigenschaften, die für den einzelnen Herausgeber spezifisch sind. Bei Systemthemen sind diese Eigenschaften spezifisch für den Ressourcenanbieter, z.B. Storage oder Event Hubs.
+In diesem Artikel werden die Eigenschaften und das Schema für Ereignisse beschrieben. Ereignisse bestehen aus einer Gruppe von fünf erforderlichen Zeichenfolgeneigenschaften und einem erforderlichen Datenobjekt. Die Eigenschaften gelten für alle Ereignisse von jedem Herausgeber. Das Datenobjekt enthält Eigenschaften, die für die einzelnen Herausgeber spezifisch sind. Bei Systemthemen sind diese Eigenschaften spezifisch für den Ressourcenanbieter, z.B. Azure Storage oder Azure Event Hubs.
 
-Ereignisse werden an Azure Event Grid in einem Array gesendet, das mehrere Ereignisobjekte enthalten kann. Bei nur einem einzelnen Ereignis hat das Array die Länge 1. 
+Ereignisse werden an Azure Event Grid in einem Array gesendet, das mehrere Ereignisobjekte enthalten kann. Bei nur einem einzelnen Ereignis hat das Array die Länge 1. Das Array kann eine Gesamtgröße von bis zu 1 MB haben. Jedes Ereignis im Array ist auf 64 KB beschränkt.
  
 ## <a name="event-properties"></a>Ereigniseigenschaften
 
-Alle Ereignisse enthalten die gleichen folgenden Daten der obersten Ebene.
+Alle Ereignisse enthalten die gleichen folgenden Daten der obersten Ebene:
 
 | Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | Thema | string | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. |
-| subject | string | Vom Herausgeber definierter Pfad zu dem Ereignisbetreff. |
+| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
 | id | string | Eindeutiger Bezeichner für das Ereignis. |
@@ -46,7 +46,7 @@ Die folgenden Ereignisquellen veröffentlichen Ereignisse zur Nutzung über Even
 
 ## <a name="azure-subscriptions"></a>Azure-Abonnements
 
-Azure-Abonnements können jetzt Verwaltungsereignisse von Azure Resource Manager ausgeben, z.B. wenn ein virtueller Computer erstellt oder ein Speicherkonto gelöscht wird.
+Azure-Abonnements können jetzt Verwaltungsereignisse von Azure Resource Manager ausgeben, beispielsweise wenn ein virtueller Computer erstellt oder ein Speicherkonto gelöscht wird.
 
 ### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
@@ -55,7 +55,7 @@ Azure-Abonnements können jetzt Verwaltungsereignisse von Azure Resource Manager
 - **Microsoft.Resources.ResourceWriteCancel:** wird ausgelöst, wenn der Erstellungs- oder Aktualisierungsvorgang einer Ressource abgebrochen wird.  
 - **Microsoft.Resources.ResourceDeleteSuccess:** wird ausgelöst, wenn der Löschvorgang einer Ressource erfolgreich durchgeführt wird.  
 - **Microsoft.Resources.ResourceDeleteFailure:** wird ausgelöst, wenn beim Löschvorgang einer Ressource ein Fehler auftritt.  
-- **Microsoft.Resources.ResourceDeleteCancel:** wird ausgelöst, wenn der Löschvorgang einer Ressource abgebrochen wird. Dies erfolgt, wenn die Vorlagenbereitstellung abgebrochen wird.
+- **Microsoft.Resources.ResourceDeleteCancel:** wird ausgelöst, wenn der Löschvorgang einer Ressource abgebrochen wird. Dies geschieht, wenn eine Vorlagenbereitstellung abgebrochen wird.
 
 ### <a name="example-event-schema"></a>Beispielereignisschema
 
@@ -87,7 +87,7 @@ Azure-Abonnements können jetzt Verwaltungsereignisse von Azure Resource Manager
 
 ## <a name="resource-groups"></a>Ressourcengruppen
 
-Ressourcengruppen können jetzt Verwaltungsereignisse von Azure Resource Manager ausgeben, z.B. wenn ein virtueller Computer erstellt oder ein Speicherkonto gelöscht wird.
+Ressourcengruppen können jetzt Verwaltungsereignisse von Azure Resource Manager ausgeben, beispielsweise wenn ein virtueller Computer erstellt oder ein Speicherkonto gelöscht wird.
 
 ### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
@@ -96,7 +96,7 @@ Ressourcengruppen können jetzt Verwaltungsereignisse von Azure Resource Manager
 - **Microsoft.Resources.ResourceWriteCancel:** wird ausgelöst, wenn der Erstellungs- oder Aktualisierungsvorgang einer Ressource abgebrochen wird.  
 - **Microsoft.Resources.ResourceDeleteSuccess:** wird ausgelöst, wenn der Löschvorgang einer Ressource erfolgreich durchgeführt wird.  
 - **Microsoft.Resources.ResourceDeleteFailure:** wird ausgelöst, wenn beim Löschvorgang einer Ressource ein Fehler auftritt.  
-- **Microsoft.Resources.ResourceDeleteCancel:** wird ausgelöst, wenn der Löschvorgang einer Ressource abgebrochen wird. Dies erfolgt, wenn die Vorlagenbereitstellung abgebrochen wird.
+- **Microsoft.Resources.ResourceDeleteCancel:** wird ausgelöst, wenn der Löschvorgang einer Ressource abgebrochen wird. Dies geschieht, wenn eine Vorlagenbereitstellung abgebrochen wird.
 
 ### <a name="example-event"></a>Beispielereignis
 
@@ -136,7 +136,7 @@ Event Hubs-Ereignisse werden derzeit nur ausgegeben, wenn eine Datei über die F
 
 ### <a name="example-event"></a>Beispielereignis
 
-In diesem Beispielereignis ist das Schema eines Event Hubs-Ereignisses dargestellt, das ausgelöst wird, wenn eine Datei über „Erfassen“ gespeichert wird. 
+In diesem Beispielereignis ist das Schema eines Event Hubs-Ereignisses dargestellt, das ausgelöst wird, wenn eine Datei über das Feature „Erfassen“ gespeichert wird: 
 
 ```json
 [
@@ -163,10 +163,11 @@ In diesem Beispielereignis ist das Schema eines Event Hubs-Ereignisses dargestel
 ```
 
 
+## <a name="azure-blob-storage"></a>Azure-Blobspeicher
 
-## <a name="azure-blob-storage"></a>Azure Blob Storage
+>[!IMPORTANT]
+>Für die Verwendung von Blobspeicherereignissen müssen Sie für die Vorschauversion von Blob Storage-Ereignissen registriert sein. Weitere Informationen zum Vorschauprogramm finden Sie unter [Reaktion auf Blob Storage-Ereignisse (Vorschau)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview#join-the-preview).  
 
-Azure Blob Storage in privater Vorschau mit Registrierung für die Integration in Event Grid.
 
 ### <a name="available-event-types"></a>Verfügbare Ereignistypen
 
@@ -175,7 +176,7 @@ Azure Blob Storage in privater Vorschau mit Registrierung für die Integration i
 
 ### <a name="example-event"></a>Beispielereignis
 
-In diesem Beispielereignis ist das Schema eines Speicherereignisses dargestellt, das beim Erstellen eines Blob ausgelöst wird. 
+In diesem Beispielereignis ist das Schema eines Speicherereignisses dargestellt, das beim Erstellen eines Blob ausgelöst wird: 
 
 ```json
 [
@@ -208,7 +209,7 @@ In diesem Beispielereignis ist das Schema eines Speicherereignisses dargestellt,
 
 ## <a name="custom-topics"></a>Benutzerdefinierte Themen
 
-Die Datennutzlast Ihrer benutzerdefinierten Ereignisse wird von Ihnen definiert und kann in jeglichem richtig formatierten JSON-Code vorliegen. Die Daten der obersten Ebene müssen die gleichen Felder wie über Standardressourcen definierte Ereignisse enthalten. Beim Veröffentlichen von Ereignissen in benutzerdefinierten Themen sollten Sie erwägen, den Betreff zur Unterstützung der Weiterleitung und Filterung zu modellieren.
+Die Datennutzlast Ihrer benutzerdefinierten Ereignisse wird von Ihnen definiert und kann in jeglichem richtig formatierten JSON-Objekt vorliegen. Die Daten der obersten Ebene müssen die gleichen Felder wie über Standardressourcen definierte Ereignisse enthalten. Beim Veröffentlichen von Ereignissen in benutzerdefinierten Themen sollten Sie erwägen, den Betreff zur Unterstützung der Weiterleitung und Filterung zu modellieren.
 
 ### <a name="example-event"></a>Beispielereignis
 
@@ -232,6 +233,6 @@ Im folgenden Beispiel ist ein Ereignis für ein benutzerdefiniertes Thema darges
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Einführung zu Event Grid finden Sie unter [Informationen zu Event Grid](overview.md).
-* Informationen zum Erstellen eines Event Grid-Abonnements finden Sie unter [Event Grid-Abonnementschema](subscription-creation-schema.md).
+* Eine Einführung zu Azure Event Grid finden Sie unter [Einführung in Azure Event Grid](overview.md).
+* Weitere Informationen zum Erstellen eines Azure Event Grid-Abonnements finden Sie unter [Event Grid-Abonnementschema](subscription-creation-schema.md).
 

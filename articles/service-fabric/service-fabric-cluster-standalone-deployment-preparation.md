@@ -3,7 +3,7 @@ title: "Vorbereiten der Bereitstellung eines eigenständigen Azure Service Fabri
 description: "Diese Dokumentation erläutert die Vorbereitung der Umgebung und Erstellung der Clusterkonfiguration. Diese Aktionen müssen vor der Bereitstellung eines Clusters durchgeführt werden, der eine Produktionsworkload verarbeiten soll."
 services: service-fabric
 documentationcenter: .net
-author: maburlik
+author: dkkapur
 manager: timlt
 editor: 
 ms.service: service-fabric
@@ -11,44 +11,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/17/2017
-ms.author: maburlik;chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: f332193f9a53260173a1010b8bf9f08726bea427
-ms.lasthandoff: 03/31/2017
-
+ms.date: 9/12/2017
+ms.author: dekapur;maburlik;chackdan
+ms.translationtype: HT
+ms.sourcegitcommit: e05028ad46ef6ec2584cd2d3f4843cf38bb54f9e
+ms.openlocfilehash: e5d582431b53aafb977e219ecf3bc882232efaaa
+ms.contentlocale: de-de
+ms.lasthandoff: 09/16/2017
 
 ---
 
 <a id="preparemachines"></a>
 
-## <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planen und Vorbereiten der Bereitstellung eines eigenständigen Service Fabric-Clusters
+# <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planen und Vorbereiten der Bereitstellung eines eigenständigen Service Fabric-Clusters
 Führen Sie die folgenden Schritte aus, bevor Sie den Cluster erstellen.
 
-### <a name="step-1-plan-your-cluster-infrastructure"></a>Schritt 1: Planen der Clusterinfrastruktur
-Da Sie im Begriff sind, auf Ihren Computern einen Service Fabric-Cluster zu erstellen, können Sie entscheiden, welche Arten von Fehlern der Cluster überstehen soll. Benötigen Sie beispielsweise separate Stromversorgungsleitungen oder Internetverbindungen zur Versorgung dieser Computer? Berücksichtigen Sie darüber hinaus auch die physische Sicherheit der Computer. Wo befinden sich die Computer, und wer benötigt Zugang zu ihnen? Nachdem Sie diese Entscheidungen getroffen haben, können Sie die Computer logisch den verschiedenen Fehlerdomänen zuordnen (siehe Schritt 4). Die Infrastrukturplanung für Produktionscluster ist komplizierter als für Testcluster.
+## <a name="plan-your-cluster-infrastructure"></a>Planen der Clusterinfrastruktur
+Da Sie im Begriff sind, auf Ihren eigenen Computern einen Service Fabric-Cluster zu erstellen, können Sie entscheiden, welche Arten von Fehlern der Cluster überstehen soll. Benötigen Sie beispielsweise separate Stromversorgungsleitungen oder Internetverbindungen zur Versorgung dieser Computer? Berücksichtigen Sie darüber hinaus auch die physische Sicherheit der Computer. Wo befinden sich die Computer, und wer benötigt Zugang zu ihnen? Nachdem Sie diese Entscheidungen getroffen haben, können Sie die Computer logisch den verschiedenen Fehlerdomänen zuordnen (siehe nächster Schritt). Die Infrastrukturplanung für Produktionscluster ist komplizierter als für Testcluster.
 
-### <a name="step-2-prepare-the-machines-to-meet-the-prerequisites"></a>Schritt 2: Vorbereiten der Computer, um die Voraussetzungen zu erfüllen
-Voraussetzungen für jeden Computer, den Sie dem Cluster hinzufügen möchten:
-
-* Mindestens 16 GB RAM empfohlen.
-* Mindestens 40 GB verfügbarer Speicherplatz empfohlen.
-* CPU mit mindestens vier Kernen empfohlen.
-* Verbindung mit einem sicheren Netzwerk oder Netzwerken für alle Computer.
-* Windows Server 2012 R2 oder Windows Server 2016. 
-* [.NET Framework 4.5.1 oder höher](https://www.microsoft.com/download/details.aspx?id=40773), vollständig installiert.
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell).
-* Der [„RemoteRegistry“-Dienst](https://technet.microsoft.com/library/cc754820) muss auf allen Computern ausgeführt werden.
-
-Der Clusteradministrator, der den Cluster bereitstellt und konfiguriert, muss auf jedem Computer [Administratorrechte](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) besitzen. Service Fabric kann nicht auf einem Domänencontroller installiert werden.
-
-### <a name="step-3-determine-the-initial-cluster-size"></a>Schritt 3: Bestimmen der anfänglichen Clustergröße
-Für jeden Knoten in einem eigenständigen Service Fabric-Cluster wird die Service Fabric-Laufzeit bereitgestellt und ist Mitglied des Clusters. In einer gängigen Produktionsbereitstellung ist ein Knoten pro Betriebssysteminstanz (physisch oder virtuell) vorhanden. Die Clustergröße wird durch Ihre Geschäftsanforderungen bestimmt. Sie benötigen jedoch eine minimale Clustergröße von drei Knoten (auf physischen oder virtuellen Computern).
-Für Entwicklungszwecke können Sie über mehrere Knoten auf einem bestimmten Computer verfügen. In einer Produktionsumgebung unterstützt Service Fabric nur einen Knoten pro physischen oder virtuellen Computer.
-
-### <a name="step-4-determine-the-number-of-fault-domains-and-upgrade-domains"></a>Schritt 4: Bestimmen der Anzahl von Fehlerdomänen und Upgradedomänen
-Eine *Fehlerdomäne* (fault domain; FD) ist eine physische Fehlereinheit, die in direktem Zusammenhang mit der physischen Infrastruktur von Rechenzentren steht. Eine Fehlerdomäne besteht aus Hardwarekomponenten (Computer, Switches, Netzwerken usw.), die sich eine einzelne Fehlerquelle teilen. Obwohl es keine 1:1-Zuordnung zwischen Fehlerdomänen und Racks gibt, kann praktisch jedes Rack als Fehlerdomäne betrachtet werden. Bei der Berücksichtigung der Knoten in Ihrem Cluster sollten Sie die Knoten unbedingt auf mindestens drei Fehlerdomänen verteilen.
+## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Bestimmen der Anzahl von Fehlerdomänen und Upgradedomänen
+Eine [*Fehlerdomäne* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) ist eine physische Fehlereinheit, die in direktem Zusammenhang mit der physischen Infrastruktur von Rechenzentren steht. Eine Fehlerdomäne besteht aus Hardwarekomponenten (Computer, Switches, Netzwerken usw.), die sich eine einzelne Fehlerquelle teilen. Obwohl es keine 1:1-Zuordnung zwischen Fehlerdomänen und Racks gibt, kann praktisch jedes Rack als Fehlerdomäne betrachtet werden.
 
 Beim Angeben von FDs in „ClusterConfig.json“ können Sie jeweils den Namen der FD wählen. Service Fabric unterstützt hierarchische FDs, damit sie Ihre Infrastrukturtopologie reflektieren können.  Beispielsweise sind die folgenden Fehlerdomänen zulässig:
 
@@ -67,12 +49,35 @@ Beim Angeben von UDs in „ClusterConfig.json“ können Sie jeweils den Namen d
 * „upgradeDomain“: „DomainRed“
 * „upgradeDomain“: „Blue“
 
-Ausführlichere Informationen zu Upgrade- und Fehlerdomänen finden Sie im Artikel [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
+Ausführlichere Informationen zu FDs und UDs finden Sie im Artikel [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
 
-### <a name="step-5-download-the-service-fabric-standalone-package-for-windows-server"></a>Schritt 5: Herunterladen des eigenständigen Service Fabric-Pakets für Windows Server
+Wenn Sie die vollständige Kontrolle über die Wartung und Verwaltung der Knoten haben, d.h. wenn Sie für das Aktualisieren und Ersetzen von Computern zuständig sind, sollte sich ein Cluster in der Produktion über mindestens drei FDs erstrecken, damit er in einer Produktionsumgebung unterstützt wird. Für Cluster in Umgebungen (d.h. VM-Instanzen mit Amazon Web Services), in denen Sie nicht die vollständige Kontrolle über die Computer haben, sollten mindestens fünf FDs in Ihrem Cluster vorhanden sein. Jede FD kann mehrere Knoten enthalten. Dadurch sollen Probleme verhindert werden, die von Computerupgrades und -updates verursacht werden, die abhängig vom Zeitpunkt die Ausführung von Anwendungen und Diensten in Clustern beeinträchtigen können.
+
+## <a name="determine-the-initial-cluster-size"></a>Bestimmen der anfänglichen Clustergröße
+
+Im Allgemeinen wird die Anzahl von Knoten im Cluster durch Ihre Geschäftsanforderungen bestimmt, d.h. durch die Anzahl der auszuführenden Dienste und Container im Cluster und die Anzahl der für Ihre Workloads benötigten Ressourcen. Für Produktionscluster werden mindestens fünf Knoten im Cluster mit fünf FDs empfohlen. Wie oben beschrieben gilt jedoch Folgendes: Wenn Sie die vollständige Kontrolle über Ihre Knoten haben und drei FDs vorhanden sind, sollten auch drei Knoten ausreichen.
+
+Testcluster, die zustandsbehaftete Workloads ausführen, müssen drei Knoten enthalten. Testcluster, die nur zustandslose Workloads ausführen, benötigen hingegen nur einen Knoten. Beachten Sie, dass Sie für Entwicklungszwecke über mehrere Knoten auf einem bestimmten Computer verfügen können. In einer Produktionsumgebung unterstützt Service Fabric jedoch nur einen Knoten pro physischem oder virtuellem Computer.
+
+## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>Vorbereiten der Computer, die als Knoten dienen
+
+Hier sind einige empfohlene Spezifikationen für jeden Computer aufgeführt, den Sie dem Cluster hinzufügen möchten:
+
+* Mindestens 16 GB RAM
+* Mindestens 40 GB verfügbarer Speicherplatz
+* CPU mit mindestens vier Kernen
+* Verbindung mit einem sicheren Netzwerk oder sicheren Netzwerken für alle Computer
+* Windows Server 2012 R2 oder Windows Server 2016
+* [.NET Framework 4.5.1 oder höher](https://www.microsoft.com/download/details.aspx?id=40773), vollständig installiert
+* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
+* Der [RemoteRegistry-Dienst](https://technet.microsoft.com/library/cc754820) muss auf allen Computern ausgeführt werden.
+
+Der Clusteradministrator, der den Cluster bereitstellt und konfiguriert, muss auf jedem Computer [Administratorrechte](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) besitzen. Service Fabric kann nicht auf einem Domänencontroller installiert werden.
+
+## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Herunterladen des eigenständigen Service Fabric-Pakets für Windows Server
 [Downloadlink: Service Fabric Standalone Package – Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690). Laden Sie das Paket herunter, und entpacken Sie es entweder auf einem Bereitstellungscomputer, der nicht Teil des Clusters ist, oder auf einem der Computer, die Teil des Clusters sein werden.
 
-### <a name="step-6-modify-cluster-configuration"></a>Schritt 6: Ändern der Clusterkonfiguration
+## <a name="modify-cluster-configuration"></a>Ändern der Clusterkonfiguration
 Um einen eigenständigen Cluster zu erstellen, müssen Sie eine ClusterConfig.json-Datei für die Konfiguration des eigenständigen Clusters erstellen, die die Spezifikation des Clusters beschreibt. Als Grundlage für die Konfigurationsdatei können Sie die Vorlagen verwenden, die Sie unter dem nachfolgenden Link finden. <br>
 [Standalone Cluster Configurations](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
@@ -88,7 +93,7 @@ Wenn in der Clusterkonfiguration alle Einstellungen für die Umgebung konfigurie
 
 <a id="environmentsetup"></a>
 
-### <a name="step-7-environment-setup"></a>Schritt 7. Einrichten der Umgebung
+## <a name="environment-setup"></a>Einrichten der Umgebung
 
 Wenn ein Clusteradministrator einen eigenständigen Service Fabric-Cluster konfiguriert, muss die Umgebung mit den folgenden Kriterien eingerichtet werden: <br>
 1. Der Benutzer, der den Cluster erstellt, muss über Administratorberechtigungen auf allen Computern verfügen, die in der Clusterkonfigurationsdatei als Knoten aufgeführt sind.
@@ -104,8 +109,8 @@ Wenn ein Clusteradministrator einen eigenständigen Service Fabric-Cluster konfi
 3. Keiner der Clusterknotencomputer darf ein Domänencontroller sein.
 4. Wenn es sich bei dem bereitzustellenden Cluster um einen sicheren Cluster handelt, überprüfen Sie, ob die Sicherheitsvoraussetzungen erfüllt und ordnungsgemäß konfiguriert sind.
 5. Wenn die Clustercomputer nicht über das Internet erreichbar sind, legen Sie in der Clusterkonfiguration Folgendes fest:
-* Telemetrie deaktivieren: Legen Sie unter *properties* die Option   *"enableTelemetry": false* fest.
-* Automatisches Herunterladen von Fabric-Versionen und Benachrichtigungen zum nahenden Supportende der aktuellen Clusterversion deaktivieren: Legen Sie unter *properties* die Option   *"fabricClusterAutoupgradeEnabled": false* fest.
+* Telemetrie deaktivieren: Legen Sie unter *properties* die Option *"enableTelemetry": false* fest.
+* Automatisches Herunterladen von Fabric-Versionen und Benachrichtigungen zum nahenden Supportende der aktuellen Clusterversion deaktivieren: Legen Sie unter *properties* die Option *"fabricClusterAutoupgradeEnabled": false* fest.
 * Selbst wenn der Netzwerk-/Internetzugriff auf die in der Whitelist aufgelisteten Domänen beschränkt ist, sind die unten stehenden Domänen für ein automatisches Upgrade erforderlich:   go.microsoft.com   download.microsoft.com
 
 6. Legen Sie geeignete Service Fabric-Virenschutzausschlüsse fest:
@@ -131,7 +136,7 @@ Wenn ein Clusteradministrator einen eigenständigen Service Fabric-Cluster konfi
 | FabricRM.exe |
 | FileStoreService.exe |
 
-### <a name="step-8-validate-environment-using-testconfiguration-script"></a>Schritt 8: Überprüfen der Umgebung anhand des TestConfiguration-Skripts
+## <a name="validate-environment-using-testconfiguration-script"></a>Überprüfen der Umgebung anhand des TestConfiguration-Skripts
 Das Skript „TestConfiguration.ps1“ befindet sich im eigenständigen Paket. Es wird als Best Practices Analyzer verwendet, um einige der oben genannten Kriterien zu überprüfen. Es dient zur Überprüfung der Integrität, um zu ermitteln, ob ein Cluster in einer bestimmten Umgebung bereitgestellt werden kann. Wenn ein Fehler vorliegt, finden Sie Maßnahmen zur Problembehandlung in der Liste unter [Einrichten der Umgebung](service-fabric-cluster-standalone-deployment-preparation.md). 
 
 Dieses Skript kann auf jedem Computer ausgeführt werden, der Administratorzugriffsrechte auf alle Computer hat, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind. Der Computer, auf dem dieses Skript ausgeführt wird, muss nicht Teil des Clusters sein.
