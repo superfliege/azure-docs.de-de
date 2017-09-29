@@ -3,7 +3,7 @@ title: "Azure-Abrechnungs-APIs für Unternehmen – PriceSheet | Microsoft-Dokum
 description: "Erhalten Sie Informationen zu den Berichterstellungs-APIs, mit denen Azure-Unternehmenskunden Verbrauchsdaten programmgesteuert abrufen können."
 services: 
 documentationcenter: 
-author: aedwin
+author: cwatson-cat
 manager: aedwin
 editor: 
 tags: billing
