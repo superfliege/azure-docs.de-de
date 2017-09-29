@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 17ddb30c87d757176ce9428264135252c02bf713
+ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
+ms.openlocfilehash: 254d5d43f0f665f64ddfe276fe31702f66f16758
 ms.contentlocale: de-de
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -189,6 +189,13 @@ Sie können der sekundären IP-Konfiguration einer Netzwerkschnittstelle null od
 > Sie können über das Portal zwar eine Netzwerkschnittstelle mit einer IPv6-Adresse erstellen, es ist jedoch nicht möglich, einem neuen oder vorhandenen virtuellen Computer über das Portal eine vorhandene Netzwerkschnittstelle hinzuzufügen. Verwenden Sie PowerShell oder Azure CLI 2.0, um eine Netzwerkschnittstelle mit einer privaten IPv6-Adresse zu erstellen, und fügen Sie die Netzwerkschnittstelle dann beim Erstellen eines virtuellen Computers an. Eine Netzwerkschnittstelle mit einer zugewiesenen privaten IPv6-Adresse kann nicht einem vorhandenen virtuellen Computer angefügt werden. Sie können einer IP-Konfiguration für eine beliebige Netzwerkschnittstelle eines virtuellen Computers keine private IPv6-Adresse hinzufügen (egal ob mit Portal, CLI oder PowerShell).
 
 Sie können eine öffentliche IPv6-Adresse nicht einer primären oder sekundären IP-Konfiguration zuweisen.
+
+## <a name="skus"></a>SKUs
+
+Es wird eine öffentliche IP-Adresse mit der Basic- oder Standard-SKU erstellt.  Weitere Informationen zu den Unterschieden zwischen SKUs finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md).
+
+> [!NOTE]
+> Wenn Sie der Netzwerkschnittstelle eines virtuellen Computers eine öffentliche IP-Adresse für eine Standard-SKU zuweisen, müssen Sie den geplanten Datenverkehr explizit mit einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) zulassen. Die Kommunikation mit der Ressource schlägt fehl, bis Sie eine Netzwerksicherheitsgruppe erstellen und zuordnen und den gewünschten Datenverkehr explizit zulassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Um einen virtuellen Computer mit unterschiedlichen IP-Konfigurationen zu erstellen, lesen Sie die folgenden Artikel:

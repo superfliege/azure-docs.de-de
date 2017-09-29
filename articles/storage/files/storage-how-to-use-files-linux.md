@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Azure File Storage mit Linux | Microsoft-Dokumentation
+title: Verwenden von Azure Files mit Linux | Microsoft-Dokumentation
 description: "Hier erfahren Sie, wie Sie unter Linux eine Azure-Dateifreigabe über SMB einbinden."
 services: storage
 documentationcenter: na
@@ -12,17 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/8/2017
+ms.date: 09/19/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: d8987082c559a374b8d19fd69e20cf5e81cb25ef
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 6c80c6814dacf90a0a50dab691899c3a8cc2bf82
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="use-azure-file-storage-with-linux"></a>Verwenden von Azure File Storage unter Linux
-[Azure File Storage](../storage-dotnet-how-to-use-files.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Linux-Distributionen mithilfe des Pakets [cifs-utils](https://wiki.samba.org/index.php/LinuxCIFS_utils) aus dem [Samba-Projekt](https://www.samba.org/) eingebunden werden. Dieser Artikel veranschaulicht zwei Möglichkeiten zum Einbinden einer Azure-Dateifreigabe: bei Bedarf mit dem Befehl `mount` oder beim Start durch Erstellen eines Eintrags in `/etc/fstab`.
+# <a name="use-azure-files-with-linux"></a>Verwenden von Azure Files mit Linux
+[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Linux-Distributionen mithilfe des Pakets [cifs-utils](https://wiki.samba.org/index.php/LinuxCIFS_utils) aus dem [Samba-Projekt](https://www.samba.org/) eingebunden werden. Dieser Artikel veranschaulicht zwei Möglichkeiten zum Einbinden einer Azure-Dateifreigabe: bei Bedarf mit dem Befehl `mount` oder beim Start durch Erstellen eines Eintrags in `/etc/fstab`.
 
 > [!NOTE]  
 > Wenn Sie eine Azure-Dateifreigabe außerhalb der Azure-Region einbinden möchten, in der sie gehostet wird (beispielsweise lokal oder in einer anderen Azure-Region), muss das Betriebssystem die Verschlüsselungsfunktionen von SMB 3.0 unterstützen. Die Verschlüsselungsfunktionen für SMB 3.0 für Linux wurden im Kernel 4.11 eingeführt. Diese Funktionen ermöglichen das Einbinden einer Azure-Dateifreigabe aus einer lokalen oder anderen Azure-Region. Zum Zeitpunkt der Veröffentlichung wurden diese Funktionen zu Ubuntu 16.04 und höher zurückportiert.
@@ -108,10 +108,10 @@ ms.lasthandoff: 08/24/2017
 ## <a name="feedback"></a>Feedback
 Linux-Benutzer, wir möchten von Ihnen hören!
 
-Der Gruppe "Azure File Storage for Linux users" bietet ein Forum, in dem Sie Ihr Feedback zu File Storage für Linux geben können. Senden Sie eine E-Mail an [Azure File Storage for Linux Users](mailto:azurefileslinuxusers@microsoft.com), um der Benutzergruppe beizutreten.
+Die Benutzergruppe „Azure Files for Linux“ bietet ein Forum, in dem Sie Ihr Feedback zu File Storage für Linux geben können. Senden Sie eine E-Mail an [Azure Files Linux Users](mailto:azurefileslinuxusers@microsoft.com), um der Benutzergruppe beizutreten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
+Weitere Informationen zu Azure Files erhalten Sie über die folgenden Links.
 * [Referenz zur REST-API des Dateidiensts](http://msdn.microsoft.com/library/azure/dn167006.aspx)
 * [Verwenden von AzCopy mit Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Verwenden der Azure CLI mit Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)

@@ -1,6 +1,6 @@
 ---
-title: Behandlung von Problemen in Azure File Storage in Windows | Microsoft-Dokumentation
-description: Behandlung von Problemen in Azure File Storage in Windows
+title: Behandeln von Azure Files-Problemen unter Windows | Microsoft-Dokumentation
+description: Behandeln von Azure Files-Problemen unter Windows
 services: storage
 documentationcenter: 
 author: genlin
@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 09/19/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: 0e3bbf5ad2ae9cda72876af6bdf880e3aa4f63ac
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 5aacc8a920c9343c5efa89128aabb1505fc2d9aa
 ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="troubleshoot-azure-file-storage-problems-in-windows"></a>Behandlung von Problemen in Azure File Storage in Windows
+# <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
-Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure File Storage, wenn Sie eine Verbindung von Windows-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie auch [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) verwenden, um sicherzustellen, dass die Windows-Clientumgebung über richtige erforderliche Komponenten verfügt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der Symptome, die in diesem Artikel erwähnt werden und hilft, Ihre Umgebung einzurichten, um eine optimale Leistung zu erzielen. Sie erhalten diese Informationen auch unter [Problembehandlung für Azure-Dateifreigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Hier finden Sie Schritte zum Beheben von Problemen mit dem Verbinden, Zuordnen und Einbinden von Azure-Dateifreigaben.
+Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Windows-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie auch [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) verwenden, um sicherzustellen, dass die Windows-Clientumgebung über richtige erforderliche Komponenten verfügt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der Symptome, die in diesem Artikel erwähnt werden und hilft, Ihre Umgebung einzurichten, um eine optimale Leistung zu erzielen. Sie erhalten diese Informationen auch unter [Problembehandlung für Azure-Dateifreigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Hier finden Sie Schritte zum Beheben von Problemen mit dem Verbinden, Zuordnen und Einbinden von Azure-Dateifreigaben.
 
 
 <a id="error53-67-87"></a>
@@ -50,7 +50,7 @@ Stellen Sie eine Verbindung von einem Client her, der einen der folgenden Punkte
 
 ### <a name="cause-2-port-445-is-blocked"></a>Ursache 2: Port 445 ist gesperrt
 
-„Systemfehler 53“ oder „Systemfehler 67“ können auftreten, wenn die von Port 445 ausgehende Kommunikation zu einem Azure File Storage-Datencenter blockiert ist. Um eine Zusammenfassung der ISPs anzuzeigen, die den Zugang von Port 445 aus zulassen oder verweigern, gehen Sie auf [TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
+„Systemfehler 53“ und „Systemfehler 67“ können auftreten, wenn die von Port 445 ausgehende Kommunikation zu einem Azure Files-Datencenter blockiert ist. Um eine Zusammenfassung der ISPs anzuzeigen, die den Zugang von Port 445 aus zulassen oder verweigern, gehen Sie auf [TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
 Um zu verstehen, ob dies der Grund für die Meldung „Systemfehler 53“ ist, können Sie Portqry verwenden, um den Endpunkt TCP:445 abzufragen. Wenn der Endpunkt TCP:445 als gefiltert angezeigt wird, wird der TCP-Port blockiert. Dies ist eine Beispielabfrage:
 
@@ -68,7 +68,7 @@ Arbeiten Sie mit Ihrer IT-Abteilung zusammen, um den Port 445-Ausgang zu [Azure-
 
 ### <a name="cause-3-ntlmv1-is-enabled"></a>Ursache 3: NTLMv1 ist aktiviert
 
-„Systemfehler 53“ oder „Systemfehler 87“ können auftreten, wenn die NTLMv1-Kommunikation auf dem Client aktiviert ist. Azure File Storage unterstützt nur die NTLMv2-Authentifizierung. Wenn NTLMv1 aktiviert ist, ist der Client weniger sicher. Aus diesem Grund wird die Kommunikation für Azure File Storage blockiert. 
+„Systemfehler 53“ oder „Systemfehler 87“ können auftreten, wenn die NTLMv1-Kommunikation auf dem Client aktiviert ist. Azure Files unterstützt nur die NTLMv2-Authentifizierung. Wenn NTLMv1 aktiviert ist, ist der Client weniger sicher. Aus diesem Grund wird die Kommunikation für Azure Files blockiert. 
 
 Um zu bestimmen, ob dies die Ursache des Fehlers ist, überprüfen Sie, ob der folgende Registrierungsunterschlüssel auf den Wert 3 festgelegt ist:
 
@@ -94,7 +94,7 @@ Der Fehler 1816 tritt auf, wenn Sie die Obergrenze der parallelen offenen Handle
 Reduzieren Sie die Anzahl der gleichzeitig geöffneten Handles, indem Sie einige Handles schließen und es anschließend erneut versuchen. Weitere Informationen finden Sie unter [Checkliste zur Leistung und Skalierbarkeit von Microsoft Azure Storage](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 <a id="slowfilecopying"></a>
-## <a name="slow-file-copying-to-and-from-azure-file-storage-in-windows"></a>Langsames Kopieren von Dateien in und aus Azure File Storage unter Windows
+## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Langsames Kopieren von Dateien in und aus Azure Files unter Windows
 
 Die Leistung ist möglicherweise langsam, wenn Sie versuchen, Dateien in den Azure-Dateidienst zu übertragen.
 
@@ -153,7 +153,7 @@ Sie können eine der folgenden Methoden verwenden, um dieses Problem zu umgehen:
 - Setzen Sie den Schlüssel in doppelte Anführungszeichen, um dieses Problem zu umgehen, es sei denn, der Schrägstich ist das erste Zeichen. Wenn dies der Fall ist, verwenden Sie den interaktiven Modus, und geben Sie Ihr Kennwort separat ein, oder generieren Sie Ihre Schlüssel neu, um einen Schlüssel zu erhalten, der nicht mit einem Schrägstrich beginnt.
 
 <a id="cannotaccess"></a>
-## <a name="application-or-service-cannot-access-a-mounted-azure-file-storage-drive"></a>Die Anwendung oder der Dienst können auf keinen bereitgestellten Azure File Storage-Laufwerk zugreifen.
+## <a name="application-or-service-cannot-access-a-mounted-azure-files-drive"></a>Die Anwendung oder der Dienst kann auf kein bereitgestelltes Azure Files-Laufwerk zugreifen.
 
 ### <a name="cause"></a>Ursache
 
@@ -174,7 +174,7 @@ Nachdem Sie die erforderlichen Schritte der Anleitung durchgeführt haben, erhal
 Wenn eine Datei über das Netzwerk kopiert wird, wird die Datei auf dem Quellcomputer entschlüsselt, in Klartext übermittelt und am Ziel erneut verschlüsselt. Jedoch erscheint möglicherweise der folgende Fehler, wenn Sie versuchen, eine verschlüsselte Datei zu kopieren: „Die Datei wird an ein Ziel kopiert, das keine Verschlüsselung unterstützt.“
 
 ### <a name="cause"></a>Ursache
-Dieses Problem kann auftreten, wenn Sie ein verschlüsselndes Dateisystem (EFS, Encrypting File System) verwenden. Mit BitLocker verschlüsselte Dateien können in Azure File Storage kopiert werden. Azure File Storage unterstützt NTFS EFS jedoch nicht.
+Dieses Problem kann auftreten, wenn Sie ein verschlüsselndes Dateisystem (EFS, Encrypting File System) verwenden. Mit BitLocker verschlüsselte Dateien können in Azure Files kopiert werden. Azure Files unterstützt NTFS EFS jedoch nicht.
 
 ### <a name="workaround"></a>Problemumgehung
 Um eine Datei über das Netzwerk zu kopieren, müssen Sie sie zunächst entschlüsseln. Verwenden Sie eine der folgenden Methoden an:

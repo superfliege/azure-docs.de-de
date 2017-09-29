@@ -1,6 +1,6 @@
 ---
-title: "Entwickeln für Azure File Storage mit C++ | Microsoft-Dokumentation"
-description: Hier erfahren Sie, wie Sie C++-Anwendungen und -Dienste entwickeln, die Azure File Storage zum Speichern von Dateidaten verwenden.
+title: "Entwickeln für Azure Files mit C++ | Microsoft-Dokumentation"
+description: Hier erfahren Sie, wie Sie C++-Anwendungen und -Dienste entwickeln, die Azure Files zum Speichern von Dateidaten verwenden.
 services: storage
 documentationcenter: .net
 author: renashahmsft
@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renashahmsft
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 86c3714327074f5576e535f67a0a2a8e761ffb46
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: d2f55b5ca6348ba8e190c65ec9a72c6f730d869e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="develop-for-azure-file-storage-with-c"></a>Entwickeln für Azure File Storage mit C++
+# <a name="develop-for-azure-files-with-c"></a>Entwickeln für Azure Files mit C++
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
 
-In diesem Tutorial erfahren Sie, wie Sie grundlegende Vorgänge in Azure File Storage ausführen. Anhand von in C++ geschriebenen Beispielen lernen Sie, wie Sie Freigaben und Verzeichnisse erstellen sowie Dateien hochladen, auflisten und löschen. Wenn Sie noch nicht mit Azure File Storage vertraut sind, helfen die in den folgenden Abschnitten erläuterten Konzepte, die Beispiele besser zu verstehen.
+In diesem Tutorial erfahren Sie, wie Sie grundlegende Vorgänge in Azure Files ausführen. Anhand von in C++ geschriebenen Beispielen lernen Sie, wie Sie Freigaben und Verzeichnisse erstellen sowie Dateien hochladen, auflisten und löschen. Wenn Sie noch nicht mit Azure Files vertraut sind, helfen die in den folgenden Abschnitten erläuterten Konzepte, die Beispiele besser zu verstehen.
 
 
 * Erstellen und Löschen von Azure-Dateifreigaben
@@ -40,7 +40,7 @@ In diesem Tutorial erfahren Sie, wie Sie grundlegende Vorgänge in Azure File St
 * Erstellen eines SAS-Schlüssels (Shared Access Signature) für eine Datei, die eine für die Freigabe definierte SAS-Richtlinie verwendet
 
 > [!Note]  
-> Da auf Azure File Storage über SMB zugegriffen werden kann, können Sie unter Verwendung der standardmäßigen C++-Klassen und -Funktionen für die Ein- und Ausgabe einfache Anwendungen mit Zugriff auf die Azure-Dateifreigabe schreiben. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage C++ SDK verwenden, das über die [Azure File Storage-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure File Storage kommuniziert.
+> Da auf Azure Files über SMB zugegriffen werden kann, können Sie unter Verwendung der standardmäßigen C++-Klassen und -Funktionen für die Ein- und Ausgabe einfache Anwendungen mit Zugriff auf die Azure-Dateifreigabe schreiben. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage C++ SDK verwenden, das über die [Datei-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure Files kommuniziert.
 
 ## <a name="create-a-c-application"></a>Erstellen einer C++-Anwendung
 Zum Erstellen der Beispiele müssen Sie die Azure Storage-Clientbibliothek 2.4.0 für C++ installieren. Sie sollten auch ein Azure-Speicherkonto erstellt haben.
@@ -54,8 +54,8 @@ Zum Installieren der Azure Storage-Clientbibliothek 2.4.0 für C++ können Sie e
 Install-Package wastorage
 ```
 
-## <a name="set-up-your-application-to-use-azure-file-storage"></a>Einrichten der Anwendung für das Verwenden von Azure File Storage
-Fügen Sie die folgenden „include“-Anweisungen an den Stellen am Anfang der C++-Quelldatei hinzu, an denen Sie Azure File Storage bearbeiten möchten:
+## <a name="set-up-your-application-to-use-azure-files"></a>Einrichten der Anwendung für die Verwendung von Azure Files
+Fügen Sie die folgenden „include“-Anweisungen an den Stellen am Anfang der C++-Quelldatei hinzu, an denen Sie Azure Files bearbeiten möchten:
 
 ```cpp
 #include <was/storage_account.h>
@@ -81,15 +81,15 @@ azure::storage::cloud_storage_account storage_account =
 ```
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
-Alle Dateien und Verzeichnisse in Azure File Storage befinden sich in einem Container mit dem Namen **Freigabe**. Das Speicherkonto kann über so viele Freigaben verfügen, wie es die Kapazität des Kontos zulässt. Für den Zugriff auf eine Freigabe und ihren Inhalt muss ein Azure File Storage-Client verwendet werden.
+Alle Dateien und Verzeichnisse in einer Azure-Dateifreigabe befinden sich in einem Container mit dem Namen **Freigabe**. Das Speicherkonto kann über so viele Freigaben verfügen, wie es die Kapazität des Kontos zulässt. Für den Zugriff auf eine Freigabe und ihren Inhalt muss ein Azure Files-Client verwendet werden.
 
 ```cpp
-// Create the Azure File storage client.
+// Create the Azure Files client.
 azure::storage::cloud_file_client file_client = 
   storage_account.create_cloud_file_client();
 ```
 
-Mit dem Azure File Storage-Client können Sie dann einen Verweis auf die Freigabe abrufen.
+Mit dem Azure Files-Client können Sie dann einen Verweis auf die Freigabe abrufen.
 
 ```cpp
 // Get a reference to the file share
@@ -120,7 +120,7 @@ share.delete_share_if_exists();
 ```
 
 ## <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
-Sie können den Speicher organisieren, indem Sie Dateien in Unterverzeichnissen ablegen, anstatt alle Dateien im Stammverzeichnis zu speichern. Mit Azure File Storage können Sie so viele Verzeichnisse erstellen wie in Ihrem Konto zugelassen. Der unten stehende Code erstellt ein Verzeichnis namens **my-sample-directory** im Stammverzeichnis sowie ein Unterverzeichnis namens **my-sample-subdirectory**.
+Sie können den Speicher organisieren, indem Sie Dateien in Unterverzeichnissen ablegen, anstatt alle Dateien im Stammverzeichnis zu speichern. Mit Azure Files können Sie so viele Verzeichnisse erstellen wie für Ihr Konto zulässig. Der unten stehende Code erstellt ein Verzeichnis namens **my-sample-directory** im Stammverzeichnis sowie ein Unterverzeichnis namens **my-sample-subdirectory**.
 
 ```cpp
 // Retrieve a reference to a directory
@@ -241,7 +241,7 @@ outfile.close();
 ```
 
 ## <a name="delete-a-file"></a>Löschen von Dateien
-Ein weiterer häufiger Azure File Storage-Vorgang ist das Löschen von Dateien. Der folgende Code löscht eine Datei namens „my-sample-file-3“, die im Stammverzeichnis gespeichert ist.
+Ein weiterer häufiger Azure Files-Vorgang ist das Löschen von Dateien. Der folgende Code löscht eine Datei namens „my-sample-file-3“, die im Stammverzeichnis gespeichert ist.
 
 ```cpp
 // Get a reference to the root directory for the share.    

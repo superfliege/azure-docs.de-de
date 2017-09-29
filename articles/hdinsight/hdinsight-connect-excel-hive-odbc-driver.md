@@ -18,10 +18,10 @@ ms.workload: big-data
 ms.date: 08/22/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 7818093e42c34ee671a035cde783a6622fb2a798
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: a0563af9a7fc62fe3923562dd352d756f4945287
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Verbinden von Excel mit Hadoop in Azure HDInsight mithilfe des Microsoft Hive ODBC-Treibers
@@ -104,9 +104,12 @@ In den folgenden Schritten wird beschrieben, wie Sie mithilfe der ODBC-Datenquel
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie den Microsoft Hive ODBC-Treiber verwenden, um Daten aus dem HDInsight-Dienst nach Excel zu übertragen. Ebenso können Sie Daten aus dem HDInsight-Dienst in eine SQL-Datenbank übertragen. Es ist außerdem möglich, Daten in einen HDInsight-Dienst hochzuladen. Weitere Informationen finden Sie unter:
 
-* [Analysieren von Daten zu Flugverspätungen mit HDInsight][hdinsight-analyze-flight-data]
-* [Hochladen von Daten in HDInsight][hdinsight-upload-data]
-* [Verwenden von Sqoop mit HDInsight][hdinsight-use-sqoop]
+* [Visualize Hive data with Microsoft Power BI in Azure HDInsight (Visualisieren von Hive-Daten mit Microsoft Power BI in Azure HDInsight)](./hdinsight-connect-hive-power-bi.md).
+* [Use Zeppelin to run Hive queries in Azure HDInsight (Verwenden von Zeppelin zum Ausführen von Hive-Abfragen in Azure HDInsight)](./hdinsight-connect-hive-zeppelin.md).
+* [Verbinden von Excel mit Hadoop mithilfe von Power Query](./hdinsight-connect-excel-power-query.md).
+* [Connect to Azure HDInsight and run Hive queries using Data Lake Tools for Visual Studio (Verbinden mit Azure HDInsight und Ausführen von Hive-Abfragen mithilfe von Data Lake-Tools für Visual Studio)](./hdinsight-hadoop-visual-studio-tools-get-started.md).
+* [Use Visual Studio Code for Hive, LLAP or pySpark (Verwenden von Visual Studio für Hive, LLAP oder pySpark)](hdinsight-for-vscode.md).
+* [Upload data to HDInsight (Hochladen von Daten in HDInsight)](./hdinsight-upload-data.md).
 
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md
 [hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md

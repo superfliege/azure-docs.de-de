@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: 745a9c016bd037f1051025a2c5a468c3935e4550
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3e09c145d35665ec1c2467b60f06191ac51a5c16
+ms.contentlocale: de-de
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="create-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal
@@ -30,12 +30,12 @@ ms.lasthandoff: 03/31/2017
 >
 
 ## <a name="overview"></a>Übersicht
-In diesem Artikel erfahren Sie, wie Sie Metrikwarnungen über das Azure-Portal einrichten können.   
+In diesem Artikel erfahren Sie, wie Sie Metrikwarnungen über das Azure-Portal einrichten können. 
 
 Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services oder von Ereignissen, die bei diesen auftreten, eine Warnung empfangen.
 
 * **Metrikwerte** : Die Warnung wird ausgelöst, wenn der Wert einer angegebenen Metrik einen von Ihnen festgelegten Schwellenwert in beliebiger Richtung überschreitet. Das Auslösen erfolgt sowohl, wenn die Bedingung erstmals erfüllt wird, als auch danach, wenn diese Bedingung nicht mehr erfüllt wird.    
-* **Aktivitätsprotokollereignisse**: Eine Warnung kann für *jedes* Ereignis oder nur dann ausgelöst werden, wenn ein bestimmtes Ereignis auftritt. [Klicken Sie hier](monitoring-activity-log-alerts.md), um weitere Informationen zu Aktivitätsprotokollwarnungen zu erhalten.
+* **Aktivitätsprotokollereignisse**: Eine Warnung kann für *jedes* Ereignis oder nur dann ausgelöst werden, wenn bestimmte Ereignisse auftreten. Erfahren Sie mehr über [Aktivitätsprotokollwarnungen](monitoring-activity-log-alerts.md).
 
 Sie können konfigurieren, dass bei einer Metrikwarnung Folgendes erfolgt, wenn sie ausgelöst wird:
 
@@ -43,6 +43,11 @@ Sie können konfigurieren, dass bei einer Metrikwarnung Folgendes erfolgt, wenn 
 * Senden von E-Mal an weitere von Ihnen angegebene Adressen
 * Aufrufen eines Webhooks
 * Starten der Ausführung eines Azure-Runbooks (nur über das Azure-Portal)
+
+> [!NOTE]
+> Azure Monitor unterstützt nun in der öffentlichen Vorschau Metrikwarnungen, die nahezu in Echtzeit stattfinden. Diese verwenden Aktionsgruppen. Erfahren Sie mehr über [Metrikwarnungen, die nahezu in Echtzeit stattfinden](monitoring-near-real-time-metric-alerts.md).
+>
+>
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Metrikwarnregeln und Abrufen zugehöriger Informationen:
 
@@ -64,7 +69,7 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Metrikwarnregeln und Abr
 
 4. **Benennen** Sie Ihre Warnungsregel, und wählen Sie eine **Beschreibung** aus, die auch in Benachrichtigungs-E-Mails angezeigt wird.
 
-5. Wählen Sie die **Metrik** aus, die Sie überwachen möchten, und dann je einen Wert für **Bedingung** und **Schwellenwert** für die Metrik aus. Wählen Sie auch den **Zeitraum** der Metrikregel aus, der erfüllt sein muss, ehe die Warnung ausgelöst wird. Wenn Sie z.B. den Zeitraum „PT5M“ wählen und die Warnung nach einer CPU-Auslastung von über 80% sucht, wird die Warnung ausgelöst, wenn die CPU-Auslastung 5 Minuten durchgängig über 80% lag. Nachdem der erste Trigger ausgelöst wurde, erfolgt ein erneutes Auslösen, wenn die CPU-Auslastung 5 Minuten unter 80% bleibt. Die CPU-Messung erfolgt minütlich.   
+5. Wählen Sie die **Metrik** aus, die Sie überwachen möchten, und dann je einen Wert für **Bedingung** und **Schwellenwert** für die Metrik aus. Wählen Sie auch den **Zeitraum** der Metrikregel aus, der erfüllt sein muss, ehe die Warnung ausgelöst wird. Wenn Sie z.B. den Zeitraum „In den letzten 5 Minuten“ auswählen und die Warnung nach einer CPU-Auslastung von über 80 % sucht, wird die Warnung ausgelöst, wenn die CPU-Auslastung 5 Minuten durchgängig über 80 % lag. Nachdem der erste Trigger ausgelöst wurde, erfolgt ein erneutes Auslösen, wenn die CPU-Auslastung 5 Minuten unter 80% bleibt. Die Messung der CPU-Metrik erfolgt minütlich.
 
 6. Aktivieren Sie **E-Mail-Besitzer...** , wenn Sie möchten, dass Administratoren und Co-Administratoren per E-Mail benachrichtigt werden, wenn die Warnung ausgelöst wird.
 
@@ -87,6 +92,7 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über die Azure-Überwachung](monitoring-overview.md) , einschließlich der Typen von Informationen, die Sie sammeln und überwachen können.
+* Erfahren Sie mehr über die neuen [Metrikwarnungen, die nahezu in Echtzeit stattfinden (Vorschau)](monitoring-near-real-time-metric-alerts.md).
 * Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](insights-webhooks-alerts.md).
 * Erfahren Sie mehr über das [Konfigurieren von Warnungen zu Aktivitätsprotokollereignissen](monitoring-activity-log-alerts.md).
 * Erfahren Sie mehr zu [Azure Automation-Runbooks](../automation/automation-starting-a-runbook.md).

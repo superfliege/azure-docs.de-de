@@ -15,18 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 09/12/2017
+ms.date: 09/15/2017
 ms.author: rickbyh
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 6ba04cd62aff587e56308bb332e31b2da75398cb
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 445689cb067d33b0da45d63730e5e755bc799909
 ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Firewallregeln auf Server- und Datenbankebene für Azure SQL-Datenbank 
 
 Die Microsoft Azure SQL-Datenbank bietet einen relationalen Datenbankdienst für Azure und andere internetbasierte Anwendungen. Zum Schutz Ihrer Daten verhindern Firewalls jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Datenbankzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
+
+#### <a name="virtual-netowrk-rules-as-alternatives-to-ip-rules"></a>Virtuelle Netzwerkregeln als Alternative zu IP-Regeln
+
+Zusätzlich zu den IP-Regeln verwaltet die Firewall ebenfalls *virtuelle Netzwerkregeln*. Virtuelle Netzwerkregeln basieren auf den virtuellen Netzwerkdienstendpunkten. Virtuelle Netzwerkregeln sollten den IP-Regeln in manchen Fällen vorgezogen werden. Weitere Informationen finden Sie unter [Virtual Network service endpoints and rules for Azure SQL Database (Virtuelle Netzwerkdienstendpunkte und -regeln für Azure SQL)](sql-database-vnet-service-endpoint-rule-overview.md).
 
 ## <a name="overview"></a>Übersicht
 
@@ -223,4 +227,3 @@ Wenn der Zugriff auf den Microsoft Azure SQL-Datenbankdienst nicht das erwartete
 
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
-

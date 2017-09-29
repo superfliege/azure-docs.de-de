@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/06/2017
+ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 8d7f397145bbecf0c651872f04b81cf44e25dbff
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 8517c09d4dc4bd7907fc6e5260de119fbdd8f5e9
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Erfahren Sie, wie Sie Cluster in HDInsight mit Hadoop, Spark, Kafka, Interactive Hive, HBase, R Server oder Storm einrichten und konfigurieren. Darüber hinaus lernen Sie Cluster anzupassen und Sicherheit hinzuzufügen, indem Sie sie mit einer Domäne verknüpfen.
+Erfahren Sie, wie Sie Cluster in HDInsight mit Hadoop, Spark, Kafka, Interactive Query, HBase, R Server oder Storm einrichten und konfigurieren. Darüber hinaus lernen Sie Cluster anzupassen und Sicherheit hinzuzufügen, indem Sie sie mit einer Domäne verknüpfen.
 
 Ein Hadoop-Cluster besteht aus mehreren virtuellen Computern (Knoten), die zur verteilten Verarbeitung von Aufgaben verwendet werden. Azure HDInsight verwaltet die Implementierungsdetails der Installation und Konfiguration einzelner Knoten, sodass Sie nur allgemeine Konfigurationsinformationen bereitstellen müssen. 
 
@@ -83,7 +83,7 @@ Azure HDInsight bietet derzeit die folgenden Typen von Clustern mit je einer Rei
 | [Spark](hdinsight-apache-spark-overview.md) |Arbeitsspeicherinterne Verarbeitung, interaktive Abfragen, Microbatch-Datenstromverarbeitung |
 | [Kafka (Vorschau)](hdinsight-apache-kafka-introduction.md) | Dies ist eine verteilte Open-Source-Streamingplattform, die zum Erstellen von Datenpipelines und Anwendungen mit Echtzeitstreaming verwendet werden kann. |
 | [R Server](hdinsight-hadoop-r-server-overview.md) |Verschiedene Funktionen für Big Data-Statistiken, Vorhersagemodellierung und Machine Learning |
-| [Interactive Hive (Vorschau)](hdinsight-hadoop-use-interactive-hive.md) |Interaktive und schnellere Hive-Abfragen durch speicherinternes Caching |
+| [Interactive Query](hdinsight-hadoop-use-interactive-hive.md) |Interaktive und schnellere Hive-Abfragen durch speicherinternes Caching |
 
 ### <a name="number-of-nodes-for-each-cluster-type"></a>Anzahl der Knoten für jeden Clustertyp
 Jeder Clustertyp verfügt über eine eigene Anzahl von Knoten, Terminologie für Knoten und eine VM-Standardgröße. In der folgenden Tabelle ist die Anzahl von Knoten für jeden Knotentyp jeweils in Klammern angegeben.

@@ -3,7 +3,7 @@ title: Verwenden von Azure PowerShell mit Azure Storage | Microsoft Docs
 description: "Erfahren Sie, wie Sie Azure-PowerShell-Cmdlets für Azure Storage zum Erstellen und Verwalten von Speicherkonten, zum Arbeiten mit Blobs, Tabellen, Warteschlangen und Dateien, zum Konfigurieren und Abfragen von Speicheranalysen und zum Erstellen von SAS verwenden."
 services: storage
 documentationcenter: na
-author: robinsh
+author: tamram
 manager: timlt
 ms.assetid: f4704f58-abc6-4f89-8b6d-1b1659746f5a
 ms.service: storage
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2017
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 87a116111d085fe2913bf6f5f8751c3ff5f3c076
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 8306ae5d4a943b9246da1d941725150c60026ca5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -689,9 +689,9 @@ $Queue.CloudQueue.DeleteMessage($QueueMessage)
 ```
 
 ## <a name="how-to-manage-azure-file-shares-and-files"></a>Verwalten von Azure-Dateifreigaben und Dateien
-Der Azure-Dateispeicher bietet einen gemeinsam genutzten Speicher für Anwendungen und verwendet dabei das SMB-Protokoll. Microsoft Azure Virtual Machines und Cloud Services können Dateidaten in verschiedenen Anwendungskomponenten über eingebundene Freigaben teilen, und lokale Anwendungen können über die Dateispeicher-API oder Azure PowerShell auf freigegebene Dateien zugreifen.
+Azure Files bietet einen gemeinsam genutzten Speicher für Anwendungen und verwendet das Standardprotokoll SMB. Microsoft Azure Virtual Machines und Cloud Services können Dateidaten in verschiedenen Anwendungskomponenten über eingebundene Freigaben teilen, und lokale Anwendungen können über die Dateispeicher-API oder Azure PowerShell auf freigegebene Dateien zugreifen.
 
-Weitere Informationen zu Azure File Storage finden Sie unter [Erste Schritte mit Azure File Storage unter Windows](../storage-dotnet-how-to-use-files.md) und [Dateidienst-REST-API](http://msdn.microsoft.com/library/azure/dn167006.aspx).
+Weitere Informationen zu Azure Files finden Sie unter [Erste Schritte mit Azure Files unter Windows](../files/storage-files-introduction.md) und [Dateidienst-REST-API](http://msdn.microsoft.com/library/azure/dn167006.aspx).
 
 ## <a name="how-to-set-and-query-storage-analytics"></a>Festlegen und Abfragen von Speicheranalysen
 Mithilfe der [Azure Storage-Analyselösung](../storage-analytics.md) können Sie Metriken von Ihren Azure-Speicherkonten und Protokolldaten zu Anforderungen erfassen, die an Ihr Speicherkonto gesendet wurden. Mithilfe von Speichermetriken können Sie die Integrität eines Speicherkontos überwachen. Mithilfe der Speicherprotokollierung können Sie Probleme mit dem Speicherkonto diagnostizieren und beheben. Sie können die Überwachung mithilfe des Azure-Portals, über Windows PowerShell oder programmgesteuert mithilfe der Speicherclientbibliothek aktivieren. Die Speicherprotokollierung erfolgt serverseitig, und sie ermöglicht es Ihnen, Details für erfolgreiche und fehlerhafte Anforderungen in Ihrem Speicherkonto aufzuzeichnen. Anhand dieser Protokolle können Sie Details zu Lese-, Schreib- und Löschvorgängen für Ihre Tabellen, Warteschlangen und Blobs sowie die Gründe für fehlerhafte Anforderungen anzeigen.

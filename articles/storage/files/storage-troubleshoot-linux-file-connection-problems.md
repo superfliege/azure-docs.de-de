@@ -1,6 +1,6 @@
 ---
-title: Beheben von Problemen mit Azure File Storage unter Linux | Microsoft-Dokumentation
-description: Beheben von Problemen mit Azure File Storage unter Linux
+title: Beheben von Problemen mit Azure Files unter Linux | Microsoft-Dokumentation
+description: Behandeln von Azure Files-Problemen unter Linux
 services: storage
 documentationcenter: 
 author: genlin
@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 09/19/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: dc32a57bf49d20faa2e0c241f99b1af7d02b586f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: c4f46c0ee94cbeb39bc7b28874cd41f1faf5deb5
 ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="troubleshoot-azure-file-storage-problems-in-linux"></a>Beheben von Problemen mit Azure File Storage unter Linux
+# <a name="troubleshoot-azure-files-problems-in-linux"></a>Behandeln von Azure Files-Problemen unter Linux
 
-Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure File Storage, wenn Sie eine Verbindung von Linux-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt.
+Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Linux-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt.
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>„[Zugriff verweigert] Datenträgerkontingent überschritten“, wenn Sie versuchen, eine Datei zu öffnen
@@ -38,10 +38,10 @@ Sie haben die obere Grenze der gleichzeitig geöffneten Handles erreicht, die f�
 
 ### <a name="solution"></a>Lösung
 
-Reduzieren Sie die Anzahl der gleichzeitig geöffneten Handles, indem Sie einige Handles schließen und es anschließend erneut versuchen. Weitere Informationen finden Sie unter [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+Reduzieren Sie die Anzahl der gleichzeitig geöffneten Handles, indem Sie einige Handles schließen und es anschließend erneut versuchen. Weitere Informationen finden Sie unter [Checkliste zur Leistung und Skalierbarkeit von Microsoft Azure Storage](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 <a id="slowfilecopying"></a>
-## <a name="slow-file-copying-to-and-from-azure-file-storage-in-linux"></a>Unter Linux langsame Datei in und aus Azure File Storage kopieren
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Langsames Kopieren von Dateien in und aus Azure Files unter Linux
 
 -   Wenn Sie keine bestimmte Anforderung für die Mindest-E/A-Größe haben, empfehlen wir Ihnen für eine optimale Leistung die Verwendung von 1 MB als E/A-Größe.
 -   Wenn Sie die endgültige Größe einer Datei kennen, die Sie durch die Verwendung von Schreibvorgängen erweitern, und Ihre Software keine Kompatibilitätsprobleme aufweist, wenn das ungeschriebene Fragment in der Datei Nullen enthält, legen Sie die Dateigröße im Voraus fest, anstatt aus jedem Schreibvorgang einen Erweiterungsschreibvorgang zu machen.
@@ -79,15 +79,15 @@ Sie können dieses Problem umgehen, indem Sie eine ständige Bereitstellung fest
 Wenn Sie kein Upgrade auf die neuesten Kernelversionen vornehmen können, können Sie dieses Problem umgehen, indem Sie eine Datei in der Azure-Dateifreigabe speichern, in die Sie alle 30 Sekunden oder früher schreiben. Dabei muss es sich um einen Schreibvorgang handeln, wie z.B. die Umschreibung des Erstellungs- oder Änderungsdatums in der Datei. Andernfalls erhalten Sie möglicherweise zwischengespeicherte Ergebnisse, und Ihr Vorgang kann die Verbindungswiederherstellung möglicherweise nicht auslösen.
 
 <a id="error115"></a>
-## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-file-storage-by-using-smb-30"></a>„Bereitstellungsfehler (115): Vorgang wird ausgeführt“, beim Bereitstellen von Azure File Storage mit SMB 3.0
+## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>„Bereitstellungsfehler (115): Vorgang wird ausgeführt“, beim Bereitstellen von Azure Files mit SMB 3.0
 
 ### <a name="cause"></a>Ursache
 
-Bei einigen Linux-Distributionen, die noch nicht die Verschlüsselungsfunktionen in SMB 3.0 unterstützen, können Benutzer die Fehlermeldung „115“ aufgrund einer fehlenden Funktion erhalten, wenn sie versuchen, Azure File Storage mithilfe von SMB 3.0 einzubinden.
+Bei einigen Linux-Distributionen, die noch nicht die Verschlüsselungsfunktionen in SMB 3.0 unterstützen, können Benutzer die Fehlermeldung „115“ aufgrund einer fehlenden Funktion erhalten, wenn sie versuchen, Azure Files mithilfe von SMB 3.0 einzubinden.
 
 ### <a name="solution"></a>Lösung
 
-Die Verschlüsselungsfunktionen für SMB 3.0 für Linux wurden im Kernel 4.11 eingeführt. Diese Funktionen ermöglichen das Einbinden einer Azure-Dateifreigabe aus einer lokalen oder anderen Azure-Region. Zum Zeitpunkt der Veröffentlichung wurden diese Funktionen zu Ubuntu 17.04 und Ubuntu 16.10 zurückportiert. Wenn Ihr Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure File Storage mithilfe von SMB 2.1 von einer Azure Linux-VM aus ein, die sich im gleichen Rechenzentrum wie das File Storage-Konto befindet.
+Die Verschlüsselungsfunktionen für SMB 3.0 für Linux wurden im Kernel 4.11 eingeführt. Diese Funktionen ermöglichen das Einbinden einer Azure-Dateifreigabe aus einer lokalen oder anderen Azure-Region. Zum Zeitpunkt der Veröffentlichung wurden diese Funktionen zu Ubuntu 17.04 und Ubuntu 16.10 zurückportiert. Wenn Ihr Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure Files mithilfe von SMB 2.1 von einer Azure Linux-VM aus ein, die sich im gleichen Rechenzentrum wie das File Storage-Konto befindet.
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Langsame Leistung in einer Azure-Dateifreigabe, die in einer Linux-VM bereit gestellt ist
@@ -110,7 +110,7 @@ Sie können auch überprüfen, ob die richtigen Optionen verwendet werden, indem
 
 `//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
-Wenn die Optionen **cache=strict** oder **serverino** nicht vorhanden sind, heben Sie die Bereitstellung von Azure File Storage auf, und stellen Sie sie wieder her, indem Sie den „mount“-Befehl aus der [Dokumentation](../storage-how-to-use-files-linux.md) ausführen. Überprüfen Sie dann erneut, ob der **/etc/fstab**-Eintrag die richtigen Optionen hat.
+Wenn die Optionen **cache=strict** oder **serverino** nicht vorhanden sind, heben Sie die Bereitstellung von Azure Files auf, und stellen Sie sie wieder her, indem Sie den „mount“-Befehl aus der [Dokumentation](../storage-how-to-use-files-linux.md) ausführen. Überprüfen Sie dann erneut, ob der **/etc/fstab**-Eintrag die richtigen Optionen hat.
 
 <a id="timestampslost"></a>
 ## <a name="time-stamps-were-lost-in-copying-files-from-windows-to-linux"></a>Zeitstempel gingen beim Kopieren von Dateien von Windows auf Linux verloren

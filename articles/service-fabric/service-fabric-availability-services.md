@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: b0d4615a9b8ab566f69b27e4879b6e2d597b4990
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3e46b4bdcf7b55c31afe5e7bc84a1fb95ad98701
 ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -37,16 +37,9 @@ Einem zustandsbehafteten Dienst ist ein Zustand zugeordnet. In Service Fabric is
 
 Es kann nur ein primäres Replikat geben, aber es können mehrere aktive sekundäre Replikate vorhanden sein. Die Anzahl der aktiven sekundären Replikate ist konfigurierbar. Eine höhere Anzahl von Replikaten kann eine höhere Anzahl von gleichzeitigen Software- und Hardwarefehlern tolerieren.
 
-Wenn das primäre Replikat ausfällt, macht Service Fabric eines der aktiven sekundären Replikate zum neuen primären Replikat. Dieses aktive sekundäre Replikat verfügt bereits über die aktualisierte Version des Zustands (durch *Replikation*) und kann die Verarbeitung von Lese- und Schreibvorgängen fortsetzen.
+Wenn das primäre Replikat ausfällt, macht Service Fabric eines der aktiven sekundären Replikate zum neuen primären Replikat. Dieses aktive sekundäre Replikat verfügt bereits über die aktualisierte Version des Zustands (durch *Replikation*) und kann die Verarbeitung von Lese- und Schreibvorgängen fortsetzen. Dieser Prozess wird als Neukonfiguration bezeichnet und unter [Neukonfiguration](service-fabric-concepts-reconfiguration.md) ausführlich beschrieben.
 
-Dieses Konzept, bei dem ein Replikat ein primäres oder ein aktives sekundäres Replikat ist, wird Replikatrolle genannt.
-
-### <a name="replica-roles"></a>Replikatrollen
-Die Rolle eines Replikats wird zum Verwalten des Lebenszyklus des Zustands verwendet, der von diesem Replikat verwaltet wird. Ein Replikat mit der Rolle eines primären Replikats verarbeitet Leseanforderungen. Das primäre Replikat verarbeitet auch alle Schreibanforderungen, indem es seinen Status aktualisiert und die Änderungen repliziert. Diese Änderungen werden auf den aktiven sekundären Replikaten in der Replikatgruppe übernommen. Die Aufgabe eines aktiven sekundären Replikats ist es, die vom primären Replikat replizierten Zustandsänderungen zu empfangen und den eigenen Zustand entsprechend zu aktualisieren.
-
-> [!NOTE]
-> In komplexen Programmiermodellen, wie z.B. [Reliable Actors](service-fabric-reliable-actors-introduction.md) und [Reliable Services](service-fabric-reliable-services-introduction.md), ist das Konzept der Replikatrolle vor den Entwicklern verborgen. Bei „Reliable Actors“ sind Rollen unnötig, während sie in „Reliable Services“ in den meisten Szenarien stark vereinfacht sind.
->
+Dieses Konzept, bei dem ein Replikat ein primäres oder ein aktives sekundäres Replikat ist, wird Replikatrolle genannt. Dies wird unter [Replikate und Instanzen](service-fabric-concepts-replica-lifecycle.md) ausführlich beschrieben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Service Fabric-Konzepten finden Sie in den folgenden Artikeln:

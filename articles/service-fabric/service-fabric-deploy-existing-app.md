@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: a1db3dda674ffe43587333d88f3816549af3019c
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: a8579c66cbfb0968a3659316aa5f03b798f4e332
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="deploy-a-guest-executable-to-service-fabric"></a>Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric
@@ -101,7 +100,7 @@ In Visual Studio wird eine Service Fabric-Dienstvorlage bereitgestellt, um Sie b
 6. Sie können die Aktion zum Packen und Veröffentlichen jetzt für Ihren lokalen Cluster verwenden, indem Sie die Projektmappe in Visual Studio debuggen. Wenn Sie bereit sind, können Sie die Anwendung in einem Remotecluster veröffentlichen oder die Projektmappe in die Quellcodeverwaltung einchecken.
 7. Am Ende dieses Artikels wird beschrieben, wie Sie die ausführbare Gastdatei für den Dienst anzeigen, der im Service Fabric Explorer ausgeführt wird.
 
-## <a name="use-yoeman-to-package-and-deploy-an-existing-executable-on-linux"></a>Verwenden von Yeoman zum Verpacken und Bereitstellen einer vorhandenen ausführbaren Datei unter Linux
+## <a name="use-yeoman-to-package-and-deploy-an-existing-executable-on-linux"></a>Verwenden von Yeoman zum Verpacken und Bereitstellen einer vorhandenen ausführbaren Datei unter Linux
 
 Zum Erstellen und Bereitstellen einer ausführbaren Gastanwendungsdatei unter Linux wird das gleiche Verfahren verwendet wie beim Bereitstellen einer CSharp- oder Java-Anwendung.
 

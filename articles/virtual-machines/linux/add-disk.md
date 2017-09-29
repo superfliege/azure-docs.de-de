@@ -17,60 +17,31 @@ ms.devlang: azurecli
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7a989ffd72dd3636419dfb91f696f0e38f9271c2
+ms.translationtype: HT
+ms.sourcegitcommit: 9d16d16f0e57fab9f1827c37f181e579c627b3d9
+ms.openlocfilehash: 9db7d300b745001906bdc38769dcbe6e4d7c7b83
 ms.contentlocale: de-de
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-<a id="add-a-disk-to-a-linux-vm" class="xliff"></a>
-
-# Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
-In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an den virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. 
-
-<a id="quick-commands" class="xliff"></a>
-
-## Schnellbefehle
-Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` angefügt.
-
-Für verwaltete Datenträger:
-
-```azurecli
-az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
-  --new --size-gb 50
-```
-
-Für nicht verwaltete Datenträger:
-
-```azurecli
-az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM \
-  --new --size-gb 50
-```
-
-<a id="attach-a-managed-disk" class="xliff"></a>
-
-## Anfügen eines verwalteten Datenträgers
-
-Durch die Verwendung von verwalteten Datenträgern können Sie sich auf Ihre virtuellen Computer und die zugehörigen Datenträger konzentrieren und müssen sich nicht um Azure Storage-Konten kümmern. Sie können einen verwalteten Datenträger schnell erstellen und an einen virtuellen Computer anfügen, indem Sie die gleiche Azure-Ressourcengruppe verwenden. Alternativ dazu können Sie eine beliebige Anzahl von Datenträgern erstellen und diese dann anfügen.
+# <a name="add-a-disk-to-a-linux-vm"></a>Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
+In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an Ihren virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. 
 
 
-<a id="attach-a-new-disk-to-a-vm" class="xliff"></a>
+## <a name="use-managed-disks"></a>Verwenden von verwalteten Datenträgern
+Azure Managed Disks vereinfacht die Datenträgerverwaltung für Azure-VMs, indem die Speicherkonten verwaltet werden, die den VM-Datenträgern zugeordnet sind. Sie müssen nur die Art (Premium oder Standard) und die Größe des von Ihnen benötigten Datenträgers angeben. Azure erstellt und verwaltet den Datenträger dann für Sie. Weitere Informationen finden Sie in der [Managed Disks overview (Übersicht über verwaltete Datenträger)](managed-disks-overview.md).
 
-### Anfügen eines neuen Datenträgers an einen virtuellen Computer
 
-Wenn Sie nur einen neuen Datenträger für Ihren virtuellen Computer benötigen, können Sie den Befehl `az vm disk attach` verwenden.
+### <a name="attach-a-new-disk-to-a-vm"></a>Anfügen eines neuen Datenträgers an einen virtuellen Computer
+Wenn Sie nur einen neuen Datenträger für Ihren virtuellen Computer benötigen, verwenden Sie den Befehl [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) mit dem `--new`-Parameter. Wenn Ihr virtueller Computer in einer Verfügbarkeitszone ist, wird der Datenträger automatisch in derselben Zone wie der virtuelle Computer erstellt. Weitere Informationen finden Sie in der [Overview of Availability Zones (Übersicht über Verfügbarkeitszonen)](../../availability-zones/az-overview.md). Das folgende Beispiel erstellt einen Datenträger mit dem Namen *myDataDisk* mit einer Größe von *50* GB:
 
 ```azurecli
 az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
   --new --size-gb 50
 ```
 
-<a id="attach-an-existing-disk" class="xliff"></a>
-
-### Anfügen eines vorhandenen Datenträgers 
-
-In vielen Fällen fügen Sie Datenträger an, die bereits erstellt wurden. Hierbei müssen Sie zunächst die Datenträger-ID suchen und diese an den Befehl `az vm disk attach` übergeben. Im folgenden Beispiel wird ein Datenträger verwendet, der mit `az disk create -g myResourceGroup -n myDataDisk --size-gb 50` erstellt wurde.
+### <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers 
+In vielen Fällen fügen Sie Datenträger an, die bereits erstellt wurden. Um einen vorhandenen Datenträger anzufügen, suchen Sie die Datenträger-ID, und übergeben Sie die ID an den Befehl [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach). Das folgende Beispiel fragt einen Datenträger mit dem Namen *MyDataDisk* in *MyResourceGroup* ab, und fügt ihn dann dem virtuellen Computer mit dem Namen *myVM* hinzu:
 
 ```azurecli
 # find the disk id
@@ -106,74 +77,29 @@ Die Ausgabe sieht in etwa wie folgt aus (Sie können die Option `-o table` bei j
 ```
 
 
-<a id="attach-an-unmanaged-disk" class="xliff"></a>
-
-## Anfügen eines nicht verwalteten Datenträgers
-
-Das Anfügen eines neuen Datenträgers lässt sich schnell erledigen, wenn Sie den Datenträger im gleichen Speicherkonto erstellen können, in dem sich auch Ihr virtueller Computer befindet. Geben Sie `azure vm disk attach-new` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Wenn Sie kein Speicherkonto explizit angeben, werden alle von Ihnen erstellten Datenträger im gleichen Speicherkonto platziert, in dem sich auch der Betriebssystemdatenträger befindet. Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` angefügt.
+## <a name="use-unmanaged-disks"></a>Verwenden von nicht verwalteten Datenträgern
+Nicht verwaltete Datenträger bedürfen eines Mehraufwands, um die zugrundeliegenden Speicherkonten zu erstellen und zu verwalten. Nicht verwaltete Datenträger werden im gleichen Speicherkonto wie Ihr Betriebssystemdatenträger erstellt. Verwenden Sie zum Erstellen und Anfügen eines nicht verwalteten Datenträgers den Befehl [az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk?view=azure-cli-latest#az_vm_unmanaged_disk_attach). Im folgenden Beispiel wird ein *50* GB großer nicht verwalteter Datenträger dem virtuellen Computer mit dem Namen *myVM* in der Ressourcengruppe mit dem Namen *myResourceGroup* hinzugefügt:
 
 ```azurecli
 az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM \
   --new --size-gb 50
 ```
 
-<a id="connect-to-the-linux-vm-to-mount-the-new-disk" class="xliff"></a>
 
-## Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers
-> [!NOTE]
-> In diesem Thema wird mit Benutzernamen und Kennwörtern eine Verbindung mit einer VM hergestellt. Informationen zur Verwendung von öffentlichen und privaten Schlüsselpaaren für die Kommunikation mit Ihrer VM finden Sie unter [Verwenden von SSH mit Linux in Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
-> 
-> 
-
-Sie benötigen SSH für Ihren virtuellen Azure-Computer, um den neuen Datenträger zu partitionieren, zu formatieren und bereitzustellen, damit er von Ihrem virtuellen Linux-Computer verwendet werden kann. Falls Sie mit dem Herstellen einer Verbindung über **SSH** nicht vertraut sind: Der Befehl hat das Format `ssh <username>@<FQDNofAzureVM> -p <the ssh port>` und sieht wie folgt aus:
+## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers
+Sie benötigen SSH für Ihren virtuellen Azure-Computer, um den neuen Datenträger zu partitionieren, zu formatieren und bereitzustellen, damit er von Ihrem virtuellen Linux-Computer verwendet werden kann. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux auf Azure](mac-create-ssh-keys.md). Im folgenden Beispiel wird eine Verbindung mit einem virtuellen Computer mit dem öffentlichen DNS-Eintrag von *mypublicdns.westus.cloudapp.azure.com* mit dem Benutzernamen *azureuser* erstellt: 
 
 ```bash
-ssh ops@mypublicdns.westus.cloudapp.azure.com -p 22
+ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-Ausgabe
-
-```bash
-The authenticity of host 'mypublicdns.westus.cloudapp.azure.com (191.239.51.1)' can't be established.
-ECDSA key fingerprint is bx:xx:xx:xx:xx:xx:xx:xx:xx:x:x:x:x:x:x:xx.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'mypublicdns.westus.cloudapp.azure.com,191.239.51.1' (ECDSA) to the list of known hosts.
-ops@mypublicdns.westus.cloudapp.azure.com's password:
-Welcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.16.0-37-generic x86_64)
-
-* Documentation:  https://help.ubuntu.com/
-
-System information as of Fri May 22 21:02:32 UTC 2015
-
-System load: 0.37              Memory usage: 2%   Processes:       207
-Usage of /:  41.4% of 1.94GB   Swap usage:   0%   Users logged in: 0
-
-Graph this data and manage this system at:
-  https://landscape.canonical.com/
-
-Get cloud support with Ubuntu Advantage Cloud Guest:
-  http://www.ubuntu.com/business/services/cloud
-
-0 packages can be updated.
-0 updates are security updates.
-
-The programs included with the Ubuntu system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
-
-Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
-applicable law.
-
-ops@myVM:~$
-```
-
-Nachdem Sie die Verbindung zu Ihrem virtuellen Computer hergestellt haben, können Sie einen Datenträger anfügen.  Suchen Sie zunächst den Datenträger mithilfe von `dmesg | grep SCSI` (die Methode zum Ermitteln Ihres neuen Datenträgers kann anders sein). In diesem Fall sieht er in etwa so aus:
+Nachdem Sie die Verbindung zu Ihrem virtuellen Computer hergestellt haben, können Sie einen Datenträger anfügen. Suchen Sie zunächst den Datenträger mithilfe von `dmesg` (die Methode, die Sie zum Ermitteln Ihres neuen Datenträgers verwenden, kann möglicherweise anders sein). Im folgenden Beispiel wird „dmesg“ zum Filtern auf *SCSI*-Datenträgern verwendet:
 
 ```bash
 dmesg | grep SCSI
 ```
 
-Ausgabe
+Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
 ```bash
 [    0.294784] SCSI subsystem initialized
@@ -183,13 +109,13 @@ Ausgabe
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Wir verwenden den Datenträger `sdc`. Partitionieren Sie nun den Datenträger mit `sudo fdisk /dev/sdc` – wir gehen davon aus, dass der Datenträger `sdc` war. Legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte.
+Hier ist *sdc* der Datenträger, den wir möchten. Partitionieren Sie nun den Datenträger mit `fdisk`, legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte. Das folgende Beispiel startet den `fdisk` -Prozess auf */dev/sdc*:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Ausgabe
+Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -211,7 +137,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Erstellen Sie die Partition durch Eingabe von `p` an der Eingabeaufforderung:
+Erstellen Sie die Partition durch Eingabe von `p` bei der Eingabeaufforderung wie folgt:
 
 ```bash
 Command (m for help): p
@@ -233,13 +159,13 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-Schreiben Sie zudem mithilfe des Befehls **mkfs** ein Dateisystem für die Partition. Geben Sie dabei Ihren Dateisystemtyp und den Gerätenamen an. In diesem Thema verwenden wir `ext4` und `/dev/sdc1` von oben:
+Schreiben Sie jetzt mit dem Befehl `mkfs` ein Dateisystem auf die Partition: Geben Sie Ihren Dateisystemtyp und den Gerätenamen an. Das folgende Beispiel erstellt ein *ext4*-Dateisystem auf der */dev/sdc1*-Partition, die in den vorherigen Schritten erstellt wurde:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
 ```
 
-Ausgabe
+Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
 ```bash
 mke2fs 1.42.9 (4-Feb-2014)
@@ -264,38 +190,25 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-Erstellen Sie mit `mkdir`ein Verzeichnis zum Bereitstellen des neuen Dateisystems.
+Erstellen Sie jetzt mit `mkdir` ein Verzeichnis zum Bereitstellen des neuen Dateisystems. Im folgenden Beispiel wird ein Verzeichnis mit dem Namen */datadrive* erstellt:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Stellen Sie das Verzeichnis mit `mount`bereit:
+Verwenden Sie `mount`, um anschließend das Dateisystem bereitzustellen. Im folgenden Beispiel wird die */dev/sdc1*-Partition im */datadrive*-Einbindungspunkt eingebunden:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Der Datenträger kann nun als `/datadrive`verwendet werden.
-
-```bash
-ls
-```
-
-Ausgabe
-
-```bash
-bin   datadrive  etc   initrd.img  lib64       media  opt   root  sbin  sys  usr  vmlinuz
-boot  dev        home  lib         lost+found  mnt    proc  run   srv   tmp  var
-```
-
-Um sicherzustellen, dass das Laufwerk nach einem Neustart automatisch wieder eingebunden wird, muss es der Datei „/etc/fstab“ hinzugefügt werden. Außerdem wird dringend empfohlen, den UUID (Universally Unique IDentifier) in „/etc/fstab“ zu verwenden, um auf das Laufwerk und nicht auf den Gerätenamen (z.B. `/dev/sdc1`) zu verweisen. Wenn das Betriebssystem während des Starts einen Datenträgerfehler erkennt, wird durch den UUID verhindert, dass an einem bestimmten Ort der falsche Datenträger bereitgestellt wird. Die verbleibenden Datenträger werden dann diesen Geräte-IDs zugewiesen. Verwenden Sie das Hilfsprogramm **blkid**, um den UUID des neuen Laufwerks herauszufinden:
+Um sicherzustellen, dass das Laufwerk nach einem Neustart automatisch wieder eingebunden wird, muss es der Datei */etc/fstab* hinzugefügt werden. Außerdem wird dringend empfohlen, den UUID (Universally Unique IDentifier) in */etc/fstab* zu verwenden, um auf das Laufwerk und nicht auf den Gerätenamen (z.B. */dev/sdc1*) zu verweisen. Wenn das Betriebssystem während des Starts einen Datenträgerfehler erkennt, wird durch den UUID verhindert, dass an einem bestimmten Ort der falsche Datenträger bereitgestellt wird. Die verbleibenden Datenträger werden dann diesen Geräte-IDs zugewiesen. Verwenden Sie das Hilfsprogramm `blkid`, um den UUID des neuen Laufwerks herauszufinden:
 
 ```bash
 sudo -i blkid
 ```
 
-Die Ausgabe sieht in etwa wie folgt aus:
+Die Ausgabe sieht in etwa wie im folgenden Beispiel aus:
 
 ```bash
 /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -305,39 +218,35 @@ Die Ausgabe sieht in etwa wie folgt aus:
 
 > [!NOTE]
 > Eine falsche Bearbeitung der Datei **/etc/fstab** könnte zu einem nicht startfähigen System führen. Wenn Sie sich nicht sicher sind, helfen Ihnen die Informationen zur richtigen Bearbeitung dieser Datei in der Dokumentation weiter. Außerdem wird empfohlen, ein Backup der Datei /etc/fstab zu erstellen, bevor Sie sie bearbeiten.
-> 
-> 
 
-Öffnen Sie als Nächstes die Datei **/etc/fstab** in einem Text-Editor:
+Öffnen Sie anschließend die Datei */etc/fstab* in einem Text-Editor wie folgt:
 
 ```bash
 sudo vi /etc/fstab
 ```
 
-In diesem Beispiel verwenden wir den UUID-Wert für das neue Gerät **/dev/sdc1**, das in den vorherigen Schritten erstellt wurde, und den Bereitstellungspunkt **/datadrive**. Fügen Sie am Ende der Datei **/etc/fstab** die folgende Zeile hinzu:
+In diesem Beispiel verwenden wir den UUID-Wert für das Gerät */dev/sdc1*, das in den vorherigen Schritten erstellt wurde, und den Einbindungspunkt */datadrive*. Fügen Sie am Ende der Datei */etc/fstab* die folgende Zeile hinzu:
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
 > [!NOTE]
-> Wenn Sie später einen Datenträger entfernen, ohne „fstab“ zu bearbeiten, kann der Start des virtuellen Computers fehlschlagen. Bei den meisten Distributionen wird entweder die fstab-Option `nofail` oder `nobootwait` bereitgestellt (bzw. auch beide). Mit diesen Optionen kann ein System auch dann starten, wenn der Datenträger beim Start nicht bereitgestellt wird. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution.
+> Wenn Sie später einen Datenträger entfernen, ohne „fstab“ zu bearbeiten, kann der Start des virtuellen Computers fehlschlagen. Die meisten Verteilungen stellen entweder die „fstab“-Optionen *nofail* und/oder *nobootwait* zur Verfügung. Mit diesen Optionen kann ein System auch dann starten, wenn der Datenträger beim Start nicht bereitgestellt wird. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution.
 > 
-> Die **nofail**-Option stellt sicher, dass der virtuelle Computer gestartet wird, selbst wenn das Dateisystem beschädigt oder der Datenträger zur Startzeit nicht vorhanden ist. Ohne diese Option können Verhalten auftreten, die unter [Cannot SSH to Linux VM due to FSTAB errors](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) (Aufgrund von FSTAB-Fehler keine SSH-Verbindung mit Linux-VM möglich) beschrieben sind.
+> Die *nofail*-Option stellt sicher, dass der virtuelle Computer gestartet wird, selbst wenn das Dateisystem beschädigt oder der Datenträger zur Startzeit nicht vorhanden ist. Ohne diese Option können Verhalten auftreten, die unter [Cannot SSH to Linux VM due to FSTAB errors](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) (Aufgrund von FSTAB-Fehler keine SSH-Verbindung mit Linux-VM möglich) beschrieben sind.
 
-<a id="trimunmap-support-for-linux-in-azure" class="xliff"></a>
-
-### TRIM/UNMAP-Unterstützung für Linux in Azure
-Einige Linux-Kernels unterstützen TRIM/UNMAP-Vorgänge, um ungenutzte Blöcke auf dem Datenträger zu verwerfen. Dies ist in erster Linie für Standardspeicher nützlich, um Azure darüber zu informieren, dass gelöschte Seiten nicht mehr gültig sind und verworfen werden können. Dies kann Kosten sparen, wenn Sie große Dateien erstellen und diese dann löschen.
+### <a name="trimunmap-support-for-linux-in-azure"></a>TRIM/UNMAP-Unterstützung für Linux in Azure
+Einige Linux-Kernels unterstützen TRIM/UNMAP-Vorgänge, um ungenutzte Blöcke auf dem Datenträger zu verwerfen. Dies ist in erster Linie für Standardspeicher nützlich, um Azure darüber zu informieren, dass gelöschte Seiten nicht mehr gültig sind und verworfen werden können. Dies kann auch Kosten sparen, wenn Sie große Dateien erstellen und sie dann löschen.
 
 Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer zu aktivieren. Den empfohlenen Ansatz finden Sie wie üblich in Ihrer Distribution:
 
-* Verwenden Sie die Bereitstellungsoption `discard` in `/etc/fstab`, z.B.:
+* Verwenden Sie die Bereitstellungsoption `discard` in */etc/fstab*, z.B.:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* In einigen Fällen kann sich die Option `discard` auf die Leistung auswirken. Alternativ können Sie den Befehl `fstrim` manuell über die Befehlszeile ausführen oder ihn „crontab“ hinzufügen, um eine regelmäßige Ausführung zu erzielen:
+* In einigen Fällen kann sich die Option `discard` möglicherweise auf die Leistung auswirken. Alternativ können Sie den Befehl `fstrim` manuell über die Befehlszeile ausführen oder ihn „crontab“ hinzufügen, um eine regelmäßige Ausführung zu erzielen:
   
     **Ubuntu**
   
@@ -353,16 +262,12 @@ Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer z
     sudo fstrim /datadrive
     ```
 
-<a id="troubleshooting" class="xliff"></a>
-
-## Problembehandlung
+## <a name="troubleshooting"></a>Problembehandlung
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Beachten Sie, dass der neue Datenträger bei einem Neustart nicht für den virtuellen Computer zur Verfügung steht, sofern Sie diese Informationen nicht in Ihre [fstab-Datei](http://en.wikipedia.org/wiki/Fstab) geschrieben haben.
-* Lesen Sie die Empfehlungen unter [Optimieren virtueller Linux-Computer in Azure](optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
-* Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [konfigurieren Sie RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) für zusätzliche Leistung.
+* Lesen Sie die Empfehlungen unter [Optimieren virtueller Linux-Computer in Azure](optimization.md) , um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
+* Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [konfigurieren Sie RAID](configure-raid.md) für zusätzliche Leistung.
 
 

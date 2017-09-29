@@ -3,7 +3,7 @@ title: "Azure Storage Service Encryption für ruhende Daten | Microsoft Docs"
 description: "Verwenden Sie Azure Storage Service Encryption, um Ihren Azure-Blobspeicher auf der Dienstseite zu verschlüsseln, wenn die Daten gespeichert werden, und beim Abrufen der Daten zu entschlüsseln."
 services: storage
 documentationcenter: .net
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: bac7b3292f21aa97d02a18dd58f79a4f10485b7d
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: f3486ca87a1797c312caa3fe27f692037c80b747
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption für ruhende Daten
@@ -84,7 +84,7 @@ AzCopy ist ein Windows Befehlszeilenprogramm, das zum Kopieren von Daten zu und 
 Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
 #### <a name="using-smb"></a>Verwendung von SMB
-Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Sie können eine Dateifreigabe auf einem Client lokal oder in Azure bereitstellen. Nach der Bereitstellung können Tools wie Robocopy zum Kopieren von Dateien auf Azure-Dateifreigaben verwendet werden. Weitere Informationen finden Sie unter [Bereitstellen der Azure-Dateifreigabe unter Windows](../files/storage-how-to-use-files-windows.md) und [Bereitstellen der Azure-Dateifreigabe unter Linux](../storage-how-to-use-files-linux.md).
+Azure Files bietet Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Sie können eine Dateifreigabe auf einem Client lokal oder in Azure bereitstellen. Nach der Bereitstellung können Tools wie Robocopy zum Kopieren von Dateien auf Azure-Dateifreigaben verwendet werden. Weitere Informationen finden Sie unter [Bereitstellen der Azure-Dateifreigabe unter Windows](../files/storage-how-to-use-files-windows.md) und [Bereitstellen der Azure-Dateifreigabe unter Linux](../files/storage-how-to-use-files-linux.md).
 
 
 #### <a name="using-the-storage-client-libraries"></a>Verwenden von Speicherclientbibliotheken

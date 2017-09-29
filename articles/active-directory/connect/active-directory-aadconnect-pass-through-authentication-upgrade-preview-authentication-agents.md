@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 940cb4466ef5d730c42d04d0107f6901f55eb155
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 0a7293f2b3a366b25e780ee75601dfbb2b35ddaa
 ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -67,7 +67,7 @@ Sie müssen Azure AD Connect aktualisieren, bevor Sie ein Upgrade des Authentifi
 
 1. **Aktualisieren Sie Azure AD Connect**: Befolgen Sie die Anweisungen in diesem [Artikel](./active-directory-aadconnect-upgrade-previous-version.md), und führen Sie ein Upgrade auf die neueste Azure AD Connect-Version durch.
 2. **Deinstallieren Sie die Vorschauversion der Authentifizierungs-Agents**: Laden Sie [dieses PowerShell-Skript](https://aka.ms/rmpreviewagent) herunter, und führen Sie es als Administrator auf dem Server aus.
-3. **Laden Sie die neueste Version des Authentifizierungs-Agents (Versionen 1.5.193.0 oder höher) herunter**: Melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory-Admin Center](https://aad.portal.azure.com) an. Wählen Sie **Azure Active Directory -> Azure AD Connect -> Passthrough-Authentifizierung -> Agent herunterladen** aus. Akzeptieren Sie die Nutzungsbedingungen des Diensts, und laden Sie die neueste Version des Authentifizierungs-Agents herunter.
+3. **Laden Sie die neueste Version des Authentifizierungs-Agents (Versionen 1.5.193.0 oder höher) herunter**: Melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory-Admin Center](https://aad.portal.azure.com) an. Wählen Sie **Azure Active Directory -> Azure AD Connect -> Passthrough-Authentifizierung -> Agent herunterladen** aus. Akzeptieren Sie die [Nutzungsbedingungen](https://aka.ms/authagenteula), und laden Sie die neueste Version des Authentifizierungs-Agents herunter. Sie können den Authentifizierungs-Agent auch [hier](https://aka.ms/getauthagent) herunterladen.
 4. **Installieren Sie die neueste Version des Authentifizierungs-Agents**: Führen Sie die in Schritt 3 heruntergeladene ausführbare Datei aus. Stellen Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten bereit, wenn Sie dazu aufgefordert werden.
 5. **Überprüfen Sie, ob die neueste Version installiert wurde**: Wie oben gezeigt, wechseln Sie zu **Systemsteuerung -> Programme -> Programme und Funktionen**, und überprüfen Sie, ob ein Eintrag für **Microsoft Azure AD Connect-Authentifizierungs-Agent** vorhanden ist.
 

@@ -3,7 +3,7 @@ title: Datenreplikation in Azure Storage | Microsoft-Dokumentation
 description: "Die Daten in Ihrem Microsoft Azure Storage-Konto werden stets repliziert, um Beständigkeit und hohe Verfügbarkeit sicherzustellen. Die Redundanzoptionen umfassen den lokal redundanten Speicher (LRS), den zonenredundanten Speicher (ZRS), den georedundanten Speicher (GRS) und den georedundanten Speicher mit Lesezugriff (RA-GRS)."
 services: storage
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 86bdb6d4-da59-4337-8375-2527b6bdf73f
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
-ms.author: marsma
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c35f53c5c80a67cb33b457e9e3235d0e745536cf
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 09c6f525bb608d95c60ba7907aae4b4e70923544
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="azure-storage-replication"></a>Azure Storage-Replikation
 
+# <a name="azure-storage-replication"></a>Azure Storage-Replikation
 Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Beständigkeit und hohe Verfügbarkeit sicherzustellen. Bei der Replikation werden Ihre Daten kopiert, und zwar entweder innerhalb desselben Rechenzentrums, oder in ein zweites Rechenzentrum. Dies hängt davon ab, welche Replikationsoption Sie wählen. Mit der Replikation werden Ihre Daten geschützt, und die Betriebszeit der Anwendung wird hoch gehalten, falls es zu vorübergehenden Hardwareausfällen kommt. Wenn Ihre Daten in einem zweiten Rechenzentrum repliziert werden, sind Ihre Daten vor einem Ausfall aufgrund einer Katastrophe am primären Standort geschützt.
 
 Mit der Replikation wird sichergestellt, dass Ihr Speicherkonto auch bei Ausfällen die [Servicelevelvereinbarung (SLA) für Storage](https://azure.microsoft.com/support/legal/sla/storage/) erfüllt. Die Servicelevelvereinbarung enthält Informationen zu Azure Storage-Garantien in Bezug auf Dauerhaftigkeit und Verfügbarkeit.
@@ -51,17 +51,7 @@ Informationen zu den Preisen für die verschiedenen Redundanzoptionen finden Sie
 >
 
 ## <a name="locally-redundant-storage"></a>Lokal redundanter Speicher
-Bei lokal redundantem Speicher (LRS) werden Ihre Daten dreimal in einer Speicherskalierungseinheit repliziert, die in einem Datencenter in der Region gehostet wird, in der Sie Ihr Speicherkonto erstellt haben. Eine Schreibanforderung wird nur einmal erfolgreich zurückgegeben, nachdem sie in alle drei Replikate geschrieben wurde. Diese drei Replikate befinden sich in separaten Fehler- und Upgradedomänen innerhalb einer Speicherskalierungseinheit.
-
-Eine Speicherskalierungseinheit ist eine Sammlung von Speicherknotengestellen (Racks). Eine Fehlerdomäne (FD) ist eine Gruppe von Knoten, die eine physische Fehlereinheit darstellen und als Knoten angesehen werden können, die zum gleichen physischen Gestell gehören. Eine Upgradedomäne (UD) ist eine Gruppe von Knoten, die während des Vorgangs eines Dienstupgrades (Rollouts) gemeinsam aktualisiert werden. Die drei Replikate sind auf UDs und FDs in einer Speicherskalierungseinheit verteilt, um sicherzustellen, dass Daten verfügbar sind, auch wenn ein Hardwarefehler sich auf ein einzelnes Gestell auswirkt oder wenn Knoten während eines Rollouts aktualisiert werden.
-
-LRS ist die kostengünstigste Option und bietet im Vergleich mit anderen Optionen die geringste Dauerhaftigkeit. Bei einem Katastrophenfall auf Datencenterebene (Feuer, Überschwemmung usw.) gehen alle drei Replikate unter Umständen verloren oder können nicht mehr wiederhergestellt werden. Zur Verringerung dieses Risikos ist für die meisten Anwendungen der georedundante Speicher (GRS) zu empfehlen.
-
-Lokal redundanter Speicher kann für bestimmte Szenarien aber trotzdem geeignet sein:
-
-* Er bietet die höchste maximale Bandbreite von Azure Storage-Replikationsoptionen.
-* Wenn Ihre Anwendung Daten speichert, die problemlos wiederhergestellt werden können, können Sie sich für LRS entscheiden.
-* Einige Anwendungen sind aufgrund von Datenvorschriften auf die Replikation von Daten innerhalb eines Lands beschränkt. Eine gepaarte Region könnte sich beispielsweise in einem anderen Land befinden. Weitere Informationen zu Regionspaarungen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
+[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
 
 ## <a name="zone-redundant-storage"></a>Zonenredundanter Speicher
 Beim zonenredundanten Speicher (ZRS) werden Ihre Daten zusätzlich zur Speicherung von drei Replikaten (ähnlich wie bei LRS) asynchron in Datencentern in einer oder zwei Regionen repliziert. Dies führt zu einer höheren Dauerhaftigkeit als bei LRS. Per ZRS gespeicherte Daten bleiben auch dann dauerhaft vorhanden, wenn das primäre Datencenter nicht verfügbar oder nicht mehr wiederherstellbar ist.
@@ -74,61 +64,7 @@ Kunden, die die Verwendung von ZRS planen, sollten Folgendes beachten:
 * ZRS-Konten verfügen nicht über Metriken oder eine Protokollierungsfunktion.
 
 ## <a name="geo-redundant-storage"></a>Georedundanter Speicher
-Georedundanter Speicher (GRS) repliziert Ihre Daten in eine sekundäre Region, die Hunderte von Kilometern von der primären Region entfernt ist. Wenn für Ihr Speicherkonto GRS aktiviert ist, sind Ihre Daten beständig gespeichert, selbst bei einem regionalen Komplettausfall oder einem Notfall, nach dem die primäre Region nicht mehr wiederherstellbar ist.
-
-Bei ein Speicherkonto mit aktiviertem GRS wird für ein Update zuerst ein Commit in der primären Region ausgeführt, in der es drei Mal repliziert wird. Anschließend wird das Update asynchron in der sekundären Region repliziert, wo es ebenfalls dreimal repliziert wird.
-
-Bei GRS werden Replikate sowohl in der primären als auch der sekundären Region über separate Fehlerdomänen und Upgradedomänen hinweg in einer Speicherskalierungseinheit verwaltet (wie bei LRS beschrieben).
-
-Überlegungen:
-
-* Da eine asynchrone Replikation eine Verzögerung einschließt, gehen bei einem regionalen Notfall Änderungen, die noch nicht in der sekundären Region repliziert wurden, unter Umständen verloren, wenn die Daten nicht aus der primären Region wiederhergestellt werden können.
-* Das Replikat ist nicht verfügbar, sofern von Microsoft kein Failover in die sekundäre Region initiiert wird. Wenn Microsoft ein Failover auf die sekundäre Region initiiert, erhalten Sie nach Abschluss des Failovers Lese- und Schreibzugriff auf diese Daten. Weitere Informationen finden Sie im [Leitfaden zur Notfallwiederherstellung](../storage-disaster-recovery-guidance.md). 
-* Wenn eine Anwendung Daten aus der sekundären Region lesen können soll, muss der Benutzer RA-GRS aktivieren.
-
-Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das Konto aus. Die sekundäre Region wird basierend auf der primären Region bestimmt und kann nicht geändert werden. In der folgenden Tabelle werden die Paare primärer und sekundärer Regionen gezeigt:
-
-| Primär | Sekundär |
-| --- | --- |
-| USA (Mitte/Norden) |USA, Süden-Mitte |
-| USA, Süden-Mitte |USA (Mitte/Norden) |
-| USA (Ost) |USA (West) |
-| USA (West) |USA (Ost) |
-| USA (Ost 2) |USA (Mitte) |
-| USA (Mitte) |USA (Ost 2) |
-| Nordeuropa |Europa, Westen |
-| Europa, Westen |Nordeuropa |
-| Südostasien |Ostasien |
-| Ostasien |Südostasien |
-| Ostchina |Nordchina |
-| Nordchina |Ostchina |
-| Japan Ost |Japan (Westen) |
-| Japan (Westen) |Japan Ost |
-| Brasilien Süd |USA, Süden-Mitte |
-| Australien (Osten) |Australien, Südosten |
-| Australien, Südosten |Australien (Osten) |
-| Indien, Süden |Indien, Mitte |
-| Indien, Mitte |Indien, Süden |
-| Indien, Westen |Indien, Süden |
-| US Government, Iowa |US Government, Virginia |
-| US Government, Virginia |US Gov Texas |
-| US Gov Texas |US Gov Arizona |
-| US Gov Arizona |US Gov Texas |
-| Kanada, Mitte |Kanada, Osten |
-| Kanada, Osten |Kanada, Mitte |
-| UK, Westen |UK, Süden |
-| UK, Süden |UK, Westen |
-| Deutschland, Mitte |Deutschland, Nordosten |
-| Deutschland, Nordosten |Deutschland, Mitte |
-| USA, Westen 2 |USA, Westen-Mitte |
-| USA, Westen-Mitte |USA, Westen 2 |
-
-Aktuelle Informationen zu von Azure unterstützten Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
-
->[!NOTE]  
-> Die sekundäre Region von „USA Gov Virginia“ ist „USA Gov Texas“. Bisher wurde „USA Gov Iowa“ als sekundäre Region von „USA Gov Virginia“ verwendet. Speicherkonten, für die noch „USA Gov Iowa“ als sekundäre Region verwendet wird, werden auf die Verwendung von „USA Gov Texas“ als sekundäre Region umgestellt. 
-> 
-> 
+[!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="read-access-geo-redundant-storage"></a>Georedundanter Speicher mit Lesezugriff
 Georedundanter Speicher mit Lesezugriff (RA-GRS) maximiert die Verfügbarkeit für das Speicherkonto, indem ein schreibgeschützter Zugriff auf Daten am sekundären Standort zusätzlich zur von GRS gebotenen Replikation in zwei Regionen bereitgestellt wird.

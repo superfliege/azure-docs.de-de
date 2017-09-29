@@ -3,7 +3,7 @@ title: Azure Storage-Sicherheitsleitfaden | Microsoft Docs
 description: "Details der vielen Methoden zum Schützen von Azure Storage, einschließlich, aber nicht beschränkt auf RBAC, Storage Service Encryption, clientseitige Verschlüsselung, SMB 3.0 und Azure Disk Encryption."
 services: storage
 documentationcenter: .net
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 6f931d94-ef5a-44c6-b1d9-8a3c9c327fb2
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e71d9baf36ea7acb8dc8fa1daf9ddde3a2856f85
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: c4a0b047ce5c6706b51e96e8cc160c610625869e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
@@ -157,11 +157,14 @@ Hinweis: Sie sollten nur jeweils einen der Schlüssel gleichzeitig in allen Ihre
   Dieser Artikel zeigt die Verwendung von Active Directory zur Steuerung des Zugriffs auf Ihre Azure Storage-Schlüssel in Azure Key Vault. Es wird auch die Verwendung eines Azure Automation-Auftrags zum erneuten Generieren der Schlüssel auf stündlicher Basis gezeigt.
 
 ## <a name="data-plane-security"></a>Sicherheit auf Datenebene
-Sicherheit auf Datenebene bezieht sich auf die Methoden zum Schützen der in Azure Storage gespeicherten Datenobjekte – Blobs, Warteschlangen, Tabellen und Dateien. Wir haben Methoden zum Verschlüsseln der Daten und die Sicherheit bei der Übertragung der Daten kennengelernt, aber wie ermöglichen Sie den Zugriff auf die Objekte?
+Sicherheit auf Datenebene bezieht sich auf die Methoden zum Schützen der in Azure Storage gespeicherten Datenobjekte – Blobs, Warteschlangen, Tabellen und Dateien. Wir haben Methoden zum Verschlüsseln der Daten und die Sicherheit bei der Übertragung der Daten kennengelernt, aber wie steuern Sie den Zugriff auf die Objekte?
 
-Es gibt im Grunde zwei Methoden, den Zugriff auf die Datenobjekte selbst zu steuern. Die erste ist die Steuerung des Zugriffs auf die Schlüssel des Speicherkontos und die zweite die Verwendung von Shared Access Signatures, um den Zugriff auf bestimmte Datenobjekte für einen bestimmten Zeitraum zu gewähren.
+Es gibt zwei Methoden, um den Zugriff auf die Datenobjekte selbst zu autorisieren. Hierzu gehören die Steuerung des Zugriffs auf die Schlüssel des Speicherkontos und die Verwendung von Shared Access Signatures, um den Zugriff auf bestimmte Datenobjekte für einen bestimmten Zeitraum zu gewähren.
 
-Beachten Sie die Ausnahme, dass Sie öffentlichen Zugriff auf Ihre Blobs erlauben können, indem Sie die Zugriffsebene für den Container, der die Blobs enthält, entsprechend festlegen. Wenn Sie den Zugriff für einen Container auf Blob oder Container festlegen, entspricht dies öffentlichem Lesezugriff auf die Blobs im Container. Dies bedeutet, dass jeder Benutzer, dessen URL auf ein Blob in diesem Container zeigt, es in einem Browser öffnen kann, ohne eine SAS zu verwenden oder über die Schlüssel des Speicherkontos zu verfügen.
+Für Blob Storage können Sie öffentlichen Zugriff auf Ihre Blobs zulassen, indem Sie die Zugriffsebene für den Container, der die Blobs enthält, entsprechend festlegen. Wenn Sie den Zugriff für einen Container auf Blob oder Container festlegen, entspricht dies öffentlichem Lesezugriff auf die Blobs im Container. Dies bedeutet, dass jeder Benutzer, dessen URL auf ein Blob in diesem Container zeigt, es in einem Browser öffnen kann, ohne eine SAS zu verwenden oder über die Schlüssel des Speicherkontos zu verfügen.
+
+Zusätzlich zum Beschränken des Zugriffs durch Autorisierung können Sie auch [Firewalls und virtuelle Netzwerke](storage-network-security.md) verwenden, um den Zugriff auf das Speicherkonto basierend auf Netzwerkregeln einzuschränken.  Mit diesem Ansatz können Sie den Zugriff auf öffentlichen Internetdatenverkehr verweigern und nur den Zugriff auf bestimmte virtuelle Azure-Netzwerke oder IP-Adressbereiche im öffentlichen Internet gewähren.
+
 
 ### <a name="storage-account-keys"></a>Speicherkontoschlüssel
 Speicherkontoschlüssel sind von Azure erstellte 512-Bit-Zeichenfolgen, die zusammen mit dem Speicherkontonamen für den Zugriff auf die im Speicherkonto gespeicherten Datenobjekte verwendet werden können.
@@ -243,15 +246,7 @@ Weitere ausführliche Informationen zur Verwendung von SAS und gespeicherten Zug
   * [Shared Access Signatures, Teil 2: Erstellen und Verwenden einer SAS mit dem Blobdienst](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 
     Dieser Artikel enthält eine Erläuterung des SAS-Modells, Beispiele für SAS und Empfehlungen bewährter Methoden für die SAS-Verwendung. Auch der Widerruf der Berechtigung wird hier erörtert.
-* Einschränken des Zugriffs nach IP-Adresse (IP-ACLs)
 
-  * [Was ist eine Endpunkt-Zugriffssteuerungsliste (Access Control List, ACL)?](../../virtual-network/virtual-networks-acl.md)
-  * [Constructing a Service SAS (Erstellen einer Dienstebenen-SAS)](https://msdn.microsoft.com/library/azure/dn140255.aspx)
-
-    Dies ist der Referenzartikel für die Dienstebenen-SAS. Er enthält ein Beispiel für den Einsatz von IP-Zugriffssteuerungslisten.
-  * [Constructing an Account SAS (Erstellen einer Kontoebenen-SAS)](https://msdn.microsoft.com/library/azure/mt584140.aspx)
-
-    Dies ist der Referenzartikel für die Kontoebenen-SAS. Er enthält ein Beispiel für den Einsatz von IP-Zugriffssteuerungslisten.
 * Authentifizierung
 
   * [Authentifizierung für Azure Storage-Dienste](https://msdn.microsoft.com/library/azure/dd179428.aspx)
@@ -268,22 +263,21 @@ Beim Abrufen von REST-APIs oder Zugreifen auf Objekte im Speicher sollten Sie im
 Sie können die Verwendung von HTTPS beim Aufruf von REST-APIs für den Zugriff auf Objekte in Speicherkonten erzwingen, indem Sie die Option [Sichere Übertragung erforderlich](../storage-require-secure-transfer.md) aktivieren. Sobald diese Option aktiviert ist, werden Verbindungen über HTTP abgelehnt.
 
 ### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Verwenden der Verschlüsselung während der Übertragung mit Azure-Dateifreigaben
-Azure File Storage unterstützt HTTPS bei Verwendung der REST-API, wird jedoch häufiger als SMB-Dateifreigabe verwendet, die einer VM angefügt ist. SMB 2.1 unterstützt keine Verschlüsselung, sodass Verbindungen nur innerhalb der gleichen Region in Azure zulässig sind. Allerdings unterstützt SMB 3.0 die Verschlüsselung und ist in Windows Server 2012 R2, Windows 8, Windows 8.1 und Windows 10 verfügbar, sodass regionsübergreifender Zugriff und sogar Zugriff auf dem Desktop möglich ist.
+Azure Files unterstützt HTTPS bei Verwendung der REST-API, wird jedoch häufiger als SMB-Dateifreigabe verwendet, die einem virtuellen Computer angefügt ist. SMB 2.1 unterstützt keine Verschlüsselung, sodass Verbindungen nur innerhalb der gleichen Region in Azure zulässig sind. Allerdings unterstützt SMB 3.0 die Verschlüsselung und ist in Windows Server 2012 R2, Windows 8, Windows 8.1 und Windows 10 verfügbar, sodass regionsübergreifender Zugriff und sogar Zugriff auf dem Desktop möglich ist.
 
 Beachten Sie: Azure-Dateifreigaben können zwar mit Unix verwendet werden, doch der Linux-SMB-Client unterstützt die Verschlüsselung noch nicht, sodass der Zugriff nur innerhalb einer Azure-Region zulässig ist. Allerdings arbeiten die Linux-Entwickler, die für die SMB-Funktionalität verantwortlich sind, an der Verschlüsselungsunterstützung für Linux. Wenn sie die Verschlüsselung ermöglichen, können Sie unter Linux genauso auf eine Azure-Dateifreigabe zugreifen wie unter Windows.
 
 Sie können die Verwendung der Verschlüsselung mit dem Dienst Azure Files erzwingen, indem Sie [Sichere Übertragung erforderlich](../storage-require-secure-transfer.md) für das Speicherkonto aktivieren. Wenn Sie REST-APIs verwenden, ist HTTPs erforderlich. Bei SMB können nur SMB-Verbindungen erfolgreich eine Verbindung herstellen, die die Verschlüsselung unterstützen.
 
 #### <a name="resources"></a>Ressourcen
-* [Verwenden des Azure-Dateispeichers unter Linux](../storage-how-to-use-files-linux.md)
+* [Einführung in Azure Files](../files/storage-files-introduction.md)
+* [Erste Schritte mit Azure Files unter Windows](../files/storage-how-to-use-files-windows.md)
+
+  Dieser Artikel bietet eine Übersicht über Azure-Dateifreigaben sowie das Bereitstellen und Verwenden in Windows.
+
+* [Verwenden von Azure Files mit Linux](../files/storage-how-to-use-files-linux.md)
 
   Dieser Artikel beschreibt das Einbinden einer Azure-Dateifreigabe in Linux-Systeme und das Hoch- und Herunterladen von Dateien.
-* [Erste Schritte mit Azure File Storage unter Windows](../storage-dotnet-how-to-use-files.md)
-
-  Dieser Artikel bietet eine Übersicht über Azure-Dateifreigaben sowie ihr Einbinden und Verwenden mithilfe von PowerShell und .NET.
-* [Inside Azure File Storage](https://azure.microsoft.com/blog/inside-azure-file-storage/) (Informationen zu Azure File Storage)
-
-  Dieser Artikel stellt die allgemeine Verfügbarkeit von Azure File Storage vor und bietet weitere technische Informationen zur SMB 3.0-Verschlüsselung.
 
 ### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>Verwenden der clientseitigen Verschlüsselung zum Schützen von Daten, die Sie an den Speicher senden
 Eine weitere Option, die Ihnen hilft, zu gewährleisten, dass Ihre Daten beim Übertragen zwischen einer Clientanwendung und dem Speicher sicher sind, ist die clientseitige Verschlüsselung. Die Daten werden verschlüsselt, bevor sie in Azure Storage übertragen werden. Beim Abrufen der Daten aus Azure Storage werden die Daten entschlüsselt, nachdem der Client sie empfangen hat. Obwohl die Daten verschlüsselt gesendet werden, sollten Sie wegen der integrierten Datenintegritätsprüfung HTTPS verwenden, um das Risiko zu reduzieren, dass Netzwerkfehler die Integrität der Daten beeinträchtigen.
@@ -350,7 +344,7 @@ Die Lösung unterstützt nicht die folgenden Szenarien, Features und Technologie
 * Deaktivieren der Verschlüsselung auf Betriebssystemlaufwerken für virtuelle Linux-IaaS-Computer
 * Virtuelle IaaS-Computer, die mithilfe der klassischen Methode zum Erstellen von virtuellen Computern erstellt werden
 * Integration in den lokalen Schlüsselverwaltungsdienst
-* Azure File Storage (freigegebenes Dateisystem), Network File System (NFS), dynamische Volumes und virtuelle Windows-Computer, die mit softwarebasierten RAID-Systemen konfiguriert sind
+* Azure Files (freigegebenes Dateisystem), Network File System (NFS), dynamische Volumes und virtuelle Windows-Computer, die mit softwarebasierten RAID-Systemen konfiguriert sind
 
 
 > [!NOTE]

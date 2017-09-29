@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: da517c096357bb8db4334715fa46aa209c273f22
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 1d580ae43925bfb2cbe0fd9461cfb7e207fa56ec
 ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect-Optionen für die Benutzeranmeldung
@@ -26,14 +26,14 @@ Mit Azure Active Directory Connect (Azure AD) können sich Ihre Benutzer sowohl 
 
 Wenn Sie mit dem Azure AD-Identitätsmodell bereits vertraut sind und mehr über ein bestimmtes Modell erfahren möchten, finden Sie Informationen unter dem folgenden Link.
 
-* [Kennwortsynchronisierung](#password-synchronization) mit [einmaliger Anmeldung (Single Sign-On (SSO))](active-directory-aadconnect-sso.md)
-* [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md)
+* [Kennworthashsynchronisierung](#password-synchronization) mit [einmaliger Anmeldung (Single Sign-On, SSO)](active-directory-aadconnect-sso.md)
+* [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md) mit [einmaliger Anmeldung (Single Sign-On, SSO)](active-directory-aadconnect-sso.md)
 * [Verbund-SSO (mit Active Directory Federation Services (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
 
 ## <a name="choosing-the-user-sign-in-method-for-your-organization"></a>Auswählen einer Benutzeranmeldemethode für Ihre Organisation
-Für die meisten Organisationen, die lediglich die Benutzeranmeldung für Office 365, SaaS-Anwendungen und andere Azure AD-basierte Ressourcen aktivieren möchten, empfiehlt sich Standardoption für die Kennwortsynchronisierung. Einige Organisationen haben jedoch bestimmte Gründe, weshalb sie diese Option nicht verwenden können. Sie können entweder eine Verbundanmeldeoption wie AD FS verwenden oder die Passthrough-Authentifizierung. Sie können die folgende Tabelle verwenden, die Ihnen bei der Entscheidungsfindung hilft.
+Für die meisten Organisationen, die lediglich die Benutzeranmeldung für Office 365, SaaS-Anwendungen und andere Azure AD-basierte Ressourcen aktivieren möchten, empfiehlt sich die Standardoption für die Kennworthashsynchronisierung. Einige Organisationen haben jedoch bestimmte Gründe, weshalb sie diese Option nicht verwenden können. Sie können entweder eine Verbundanmeldeoption wie AD FS verwenden oder die Passthrough-Authentifizierung. Sie können die folgende Tabelle verwenden, die Ihnen bei der Entscheidungsfindung hilft.
 
-Ziel | PS mit SSO| PA mit SSO| AD FS |
+Ziel | PHS mit SSO| PTA mit SSO| AD FS |
  --- | --- | --- | --- |
 Automatisches Synchronisieren neuer Benutzer-, Kontakt- und Gruppenkonten in meiner lokalen Active Directory-Instanz in die Cloud|x|x|x|
 Einrichten meines Mandanten für Office 365-Hybridszenarios|x|x|x|
@@ -42,19 +42,16 @@ Implementieren des einmaligen Anmeldens mit Anmeldeinformationen des Unternehmen
 Sicherstellen, dass keine Kennwörter in der Cloud gespeichert werden||x*|x|
 Aktivieren der lokalen Multi-Factor Authentication-Lösungen|||x|
 
-*Per einfachem Connector.
+*Per einfachem Agent.
 
->[!NOTE]
-> Für die Passthrough-Authentifizierung gelten in Bezug auf Rich Clients derzeit einige Einschränkungen. Weitere Informationen finden Sie unter [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md).
+### <a name="password-hash-synchronization"></a>Kennworthashsynchronisierung
+Mit der Kennworthashsynchronisierung werden Benutzerkennworthashes aus Ihrem lokalen Active Directory mit Azure AD synchronisiert. Werden Kennwörter geändert oder lokal zurückgesetzt, werden die neuen Kennworthashes sofort mit Azure AD synchronisiert, damit Ihre Benutzer für Cloudressourcen und lokale Ressourcen dasselbe Kennwort verwenden können. Die Kennwörter werden weder an Azure AD übermittelt noch als Klartext in Azure AD gespeichert. Sie können die Kennworthashsynchronisierung mit der Kennwortrückschreibung kombinieren, um es den Benutzern zu ermöglichen, ihre Kennwörter in Azure AD selbst zurückzusetzen.
 
-### <a name="password-synchronization"></a>Kennwortsynchronisierung
-Mit der Kennwortsynchronisierung werden Benutzerkennworthashes aus Ihrem lokalen Active Directory mit Azure AD synchronisiert. Werden Kennwörter geändert oder lokal zurückgesetzt, werden die neuen Kennwörter sofort mit Azure AD synchronisiert, damit Ihre Benutzer für Cloudressourcen und lokale Ressourcen dasselbe Kennwort verwenden können. Die Kennwörter werden weder an Azure AD übermittelt noch als Klartext in Azure AD gespeichert. Sie können die Kennwortsynchronisierung mit der Kennwortrückschreibung kombinieren, um es den Benutzern zu ermöglichen, ihre Kennwörter in Azure AD selbst zurückzusetzen.
+Darüber hinaus können Sie auch das [nahtlose einmalige Anmelden](active-directory-aadconnect-sso.md) für Benutzer auf in die Domäne eingebundenen Computern aktivieren, die sich im Unternehmensnetzwerk befinden. Beim einmaligen Anmelden müssen aktivierte Benutzer nur einen Benutzernamen eingeben, um sicher auf die Cloudressourcen zuzugreifen.
 
-Darüber hinaus können Sie auch [SSO](active-directory-aadconnect-sso.md) für Benutzer auf in die Domäne eingebundenen Computern aktivieren, die sich im Unternehmensnetzwerk befinden. Beim einmaligen Anmelden müssen aktivierte Benutzer nur einen Benutzernamen eingeben, um sicher auf die Cloudressourcen zuzugreifen.
+![Kennworthashsynchronisierung](./media/active-directory-aadconnect-user-signin/passwordhash.png)
 
-![Kennwortsynchronisierung](./media/active-directory-aadconnect-user-signin/passwordhash.png)
-
-Weitere Informationen finden Sie im Artikel über das [Implementieren der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md).
+Weitere Informationen finden Sie im Artikel [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md).
 
 ### <a name="pass-through-authentication"></a>Passthrough-Authentifizierung
 Bei der Passthrough-Authentifizierung wird das Kennwort des Benutzers anhand des lokalen Active Directory-Controllers überprüft. Das Kennwort muss in Azure AD nicht hinterlegt sein. So können lokale Richtlinien, z.B. Einschränkungen der Anmeldestunden, während der Authentifizierung für Clouddienste ausgewertet werden.
@@ -140,7 +137,7 @@ Es ist wichtig, die Beziehung zwischen den benutzerdefinierten Zustandswerten f�
 
 Nehmen wir für die folgenden Informationen einmal an, dass wir mit dem UPN-Suffix „contoso.com“ arbeiten, das zum Beispiel im lokalen Verzeichnis als Teil des UPN verwendet wird. Beispiel: user@contoso.com.
 
-###### <a name="express-settingspassword-synchronization"></a>Express-Einstellungen / Kennwortsynchronisierung
+###### <a name="express-settingspassword-hash-synchronization"></a>Express-Einstellungen/Kennworthashsynchronisierung
 | Zustand | Auswirkung auf die Azure-Benutzeranmeldung |
 |:---:|:--- |
 | Nicht hinzugefügt |In diesem Fall wurde keine benutzerdefinierte Domäne für „contoso.com“ im Azure AD-Verzeichnis hinzugefügt. Benutzer mit lokalem UPN und dem Suffix „@contoso.com“ können nicht ihren lokalen UPN zur Azure-Anmeldung verwenden. Sie müssen stattdessen einen neuen, von Azure AD bereitgestellten UPN verwenden, indem Sie das Suffix für das Azure AD-Standardverzeichnis hinzufügen. Wenn Sie beispielsweise Benutzer mit dem Azure AD-Verzeichnis „azurecontoso.onmicrosoft.com“ synchronisieren, erhält der lokale Benutzer user@contoso.com den UPN user@azurecontoso.onmicrosoft.com. |
@@ -159,7 +156,7 @@ Wenn Sie die Benutzeranmeldeoption **Verbund mit AD FS** ausgewählt haben, müs
 | Überprüft |In diesem Fall können Sie ohne weitere Aktionen direkt mit der Konfiguration fortfahren. |
 
 ## <a name="changing-the-user-sign-in-method"></a>Ändern der Benutzeranmeldungsmethode
-Nach der Erstkonfiguration von Azure AD Connect durch den Assistenten können Sie mit den verfügbaren Aufgaben in Azure AD Connect die Anmeldemethode für den Benutzer von „Verbund“ in „Kennwortsynchronisierung“ oder „Passthrough-Authentifizierung“ ändern. Führen Sie den Azure AD Connect-Assistenten erneut aus. Es wird eine Liste mit Aufgaben angezeigt, die Sie durchführen können. Wählen Sie **Ändern der Benutzeranmeldung** aus der Liste der Aufgaben.
+Nach der Erstkonfiguration von Azure AD Connect durch den Assistenten können Sie mit den verfügbaren Aufgaben in Azure AD Connect die Benutzeranmeldemethoden „Verbund“, „Kennworthashsynchronisierung“ oder „Passthrough-Authentifizierung“ ändern. Führen Sie den Azure AD Connect-Assistenten erneut aus. Es wird eine Liste mit Aufgaben angezeigt, die Sie durchführen können. Wählen Sie **Ändern der Benutzeranmeldung** aus der Liste der Aufgaben.
 
 ![Benutzeranmeldung ändern](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
@@ -172,7 +169,7 @@ Wählen Sie auf der Seite **Benutzeranmeldung** die gewünschte Benutzeranmeldun
 ![Stellen Sie eine Verbindung mit Azure AD her.](./media/active-directory-aadconnect-user-signin/changeusersignin2a.png)
 
 > [!NOTE]
-> Wenn Sie nur vorübergehend zur Kennwortsynchronisierung wechseln, wählen Sie das Kontrollkästchen **Benutzerkonten nicht konvertieren** aus. Ist diese Option nicht aktiviert, werden alle Benutzer zu Verbundbenutzern konvertiert. Dieser Vorgang kann mehrere Stunden dauern.
+> Wenn Sie nur vorübergehend zur Kennworthashsynchronisierung wechseln, wählen Sie das Kontrollkästchen **Benutzerkonten nicht konvertieren** aus. Ist diese Option nicht aktiviert, werden alle Benutzer zu Verbundbenutzern konvertiert. Dieser Vorgang kann mehrere Stunden dauern.
 >
 >
 

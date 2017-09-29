@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 09/18/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 5a390208f4b7c22e96d7888bcbbd14d8b27667eb
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: dd619ddf62b079ecc06bdf3699e3e32c35313284
 ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -28,12 +28,14 @@ ms.lasthandoff: 08/07/2017
 
 Die nahtlose einmalige Anmeldung mit Azure Active Directory (nahtlose SSO mit Azure AD) meldet Benutzer automatisch auf ihren Unternehmensgeräten an, die mit dem Unternehmensnetzwerk verbunden sind. Wenn diese Funktion aktiviert ist, müssen Benutzer zur Anmeldung bei Azure AD nicht ihr Kennwort und in der Regel nicht einmal ihren Benutzernamen eingeben. Diese Funktion ermöglicht Ihren Benutzern einen einfachen Zugriff auf Ihre cloudbasierten Anwendungen, ohne dass zusätzliche lokale Komponenten erforderlich sind.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PyeAC85Gm7w" frameborder="0" allowfullscreen></iframe>
+
 Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) oder [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md) kombiniert werden.
 
 ![Nahtloses einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso1.png)
 
 >[!IMPORTANT]
->Die nahtlose einmalige Anmeldung ist aktuell in der Vorschauversion verfügbar. Diese Funktion ist _nicht_ auf Active Directory-Verbunddienste (AD FS) anwendbar.
+>Die nahtlose einmalige Anmeldung ist _nicht_ auf Active Directory-Verbunddienste (AD FS) anwendbar.
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
@@ -64,9 +66,6 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](act
 |Mac OS X|–|–|Ja\*|Ja\*|Ja\*
 
 \*Erfordert [zusätzliche Konfigurationsschritte](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
-
->[!IMPORTANT]
->Wir haben vor Kurzem ein Rollback für den Support für Edge ausgeführt, um von Kunden gemeldete Probleme zu untersuchen.
 
 >[!NOTE]
 >Bei Windows 10 wird empfohlen, [Azure AD Join](../active-directory-azureadjoin-overview.md) zu verwenden, um eine optimale Funktionsweise der nahtlosen SSO mit Azure AD sicherzustellen.

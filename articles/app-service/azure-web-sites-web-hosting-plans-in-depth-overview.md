@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: byvinyal
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: f97be571d104e3cc1c6ee732886fa7133ba0dc83
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 688f57de662fec6a04227c35d6578097c795c6da
 ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-app-service-plans-in-depth-overview"></a>Azure App Service-Pläne – Detaillierte Übersicht
@@ -31,22 +31,36 @@ In App Service-Plänen wird Folgendes definiert:
 - Region („USA, Westen“, „USA, Osten“ usw.)
 - Skalierung (Instanzenanzahl)
 - Instanzgröße (klein, mittel, groß)
-- SKU (Free, Shared, Basic, Standard, Premium)
+- SKU (Free, Shared, Basic, Standard, Premium, PremiumV2, Isolated)
 
 Web-Apps, Mobile Apps, API-Apps und Funktionen-Apps (bzw. Funktionen) in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) werden jeweils unter einem App Service-Plan ausgeführt.  Apps im gleichen Abonnement und in der gleichen Region können den gleichen App Service-Plan nutzen. 
 
 Alle einem **App Service-Plan** zugewiesenen Anwendungen teilen sich die durch den Plan definierten Ressourcen. Es spart Kosten, wenn Sie mehrere Apps in einem einzelnen App Service-Plan hosten.
 
-Ihr **App Service-Plan** kann von den SKUs **Free** und **Shared** auf die SKUs **Basic**, **Standard** und **Premium** skaliert werden, um Zugriff auf weitere Ressourcen und Features zu erhalten.
+Für Ihren **App Service-Plan** stehen die Ebenen **Free**, **Shared**, **Basic**, **Standard**,  **Premium** und **Isolated** zur Verfügung. Je höher die Ebene, desto mehr Zugriff auf weitere Ressourcen und Funktionen erhalten Sie.
 
-Wenn Ihr App Service-Plan mindestens auf **Basic** festgelegt ist, können Sie die **Größe** und die Skalierung der virtuellen Computer steuern.
+Wenn Sie den App Service-Plan **Basic** haben, können Sie die **Größe** und Skalierung der VMs steuern.
 
-Wenn Ihr Plan also etwa für die Verwendung von zwei kleinen Instanzen der Standarddienstebene konfiguriert ist, werden alle Apps, die diesem Plan zugeordnet sind, unter beiden Instanzen ausgeführt. Außerdem haben die Apps Zugriff auf die Features der Standarddienstebene. Planinstanzen, auf denen Apps ausgeführt werden, sind vollständig verwaltbar und hochverfügbar.
+Wenn Ihr Plan also etwa für die Verwendung von zwei kleinen Instanzen der Ebene **Standard** konfiguriert ist, werden alle Apps in diesem Plan auf beiden Instanzen ausgeführt. Außerdem haben die Apps Zugriff auf die Features der **Standard**-Ebene. Planinstanzen, auf denen Apps ausgeführt werden, sind vollständig verwaltbar und hochverfügbar.
 
 > [!IMPORTANT]
-> **SKU** und **Skalierung** des App Service-Plans haben Einfluss auf die Kosten (nicht auf die Anzahl gehosteter Apps).
+> Der Tarif (SKU) des App Service-Plans, nicht die Anzahl der gehosteten Apps beeinflusst die Kosten.
 
-Dieser Artikel beschäftigt sich mit zentralen Aspekten wie Tarif und Umfang eines App Service-Plans und deren Bedeutung für die App-Verwaltung.
+Dieser Artikel beschäftigt sich mit zentralen Aspekten eines App Service-Plans wie dem Tarif und der Skalierung und deren Bedeutung für die App-Verwaltung.
+
+## <a name="new-pricing-tier-premiumv2"></a>Neuer Tarif: PremiumV2
+
+Der neue **PremiumV2**-Tarif bietet [VMs der Dv2-Serie](../virtual-machines/windows/sizes-general.md#dv2-series) mit schnelleren Prozessoren, SSD-Speicher und einem doppelt so großen Arbeitsspeicher-zu-Kern-Verhältnis gegenüber dem **Standard**-Tarif. **PremiumV2** bietet die gleichen erweiterten Funktionen wie der Standard-Plan, unterstützt aber dank einer höheren Anzahl von Instanzen eine größere Skalierung. Alle im vorhandenen **Premium**-Tarif verfügbaren Funktionen sind in **PremiumV2** enthalten.
+
+Ähnlich wie bei anderen dedizierten Tarifen sind drei VM-Größen für diese Ebene verfügbar:
+
+- Klein (1 CPU-Kern, 3,5 GiB Arbeitsspeicher) 
+- Mittel (2 CPU-Kerne, 7 GiB Arbeitsspeicher) 
+- Groß (4 CPU-Kerne, 14 GiB Arbeitsspeicher)  
+
+Weitere Informationen zum **PremiumV2**-Tarif finden Sie unter [App Service – Preise](/pricing/details/app-service/).
+
+Informationen zu den ersten Schritten mit dem neuen **PremiumV2**-Tarif finden Sie unter [Configure PremiumV2 tier for Azure App Service (Konfigurieren des PremiumV2-Tarifs für App Service)](app-service-configure-premium-tier.md).
 
 ## <a name="apps-and-app-service-plans"></a>Apps und App Service-Pläne
 
@@ -64,9 +78,7 @@ Eine hoch verfügbare Anwendung in zwei Regionen umfasst beispielsweise mindeste
 
 ## <a name="create-an-app-service-plan-or-use-existing-one"></a>Erstellen eines App Service-Plans oder Verwenden eines vorhandenen Plans
 
-Wenn Sie eine App erstellen, empfiehlt sich unter Umständen die Erstellung einer Ressourcengruppe. Wenn es sich bei der App um eine Komponente einer größeren Anwendung handelt, muss sie allerdings in der Ressourcengruppe erstellt werden, die der größeren Anwendung zugeordnet ist.
-
-Zum Hosten der App können Sie einen vorhandenen Plan verwenden oder einen neuen erstellen. Das gilt sowohl für neue Anwendungen als auch für Apps, die Teil einer größeren Anwendung sind. Dies ist eher eine Frage der Kapazität und erwarteten Auslastung.
+Beim Erstellen einer neuen Web-App im App Service können Sie Hosting-Ressourcen freigeben, indem Sie die App in einem vorhandenen App Service-Plan platzieren. Um zu bestimmen, ob die neue App künftig über die erforderlichen Ressourcen verfügt, müssen Sie die Kapazität des vorhandenen App Service-Plans und die erwartete Auslastung für die neue Anwendung verstehen. Übermäßige Zuweisung von Ressourcen kann Ausfallzeiten für Ihre neuen und vorhandenen Apps hervorrufen.
 
 In folgenden Fällen empfiehlt es sich, die App in einem neuen App Service-Plan zu isolieren:
 
@@ -79,9 +91,9 @@ Dadurch können Sie einen neuen Satz von Ressourcen für die App zuordnen und Ih
 ## <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 
 > [!TIP]
-> Wenn Sie eine App Service-Umgebung verwenden, helfen Ihnen die Informationen im folgenden Artikel weiter: [Erstellen eines App Service-Plans in einer App Service-Umgebung](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan).
+> Falls Sie eine App Service-Umgebung haben, finden Sie Informationen dazu im Abschnitt [Create an App Service plan (Erstellen eines App Service-Plans)](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan).
 
-Sie können einen leeren App Service-Plan über die Browseroberfläche für App Service-Pläne oder im Rahmen der App-Erstellung erstellen.
+Sie können einen App Service-Plan eigenständig oder zusammen mit einer Web-App erstellen.
 
 Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Neu** > **Web und mobil**, und wählen Sie dann die Option **Web-App** oder eine andere Art von App Service-App aus.
 
@@ -95,7 +107,7 @@ Klicken Sie zum Erstellen eines App Service-Plans auf **[+] Neu erstellen**, geb
 
 ## <a name="move-an-app-to-a-different-app-service-plan"></a>Wie kann ich eine App in einen anderen App Service-Plan verschieben?
 
-Eine App kann über das [Azure-Portal](https://portal.azure.com) in einen anderen App Service-Plan verschoben werden. Das Verschieben von Apps zwischen Plänen ist möglich, wenn sich die Pläne in der gleichen Ressourcengruppe und geografischen Region befinden.
+Eine App kann über das [Azure-Portal](https://portal.azure.com) in einen anderen App Service-Plan verschoben werden. Das Verschieben von Apps zwischen Plänen ist möglich, wenn sich die Pläne in _derselben Ressourcengruppe und geografischen Region_ befinden.
 
 So verschieben Sie eine App in einen anderen Plan
 
@@ -103,16 +115,7 @@ So verschieben Sie eine App in einen anderen Plan
 - Wechseln Sie im **Menü** zum Abschnitt **App Service-Plan**.
 - Wählen Sie **App Service-Plan ändern**, um den Vorgang zu starten.
 
-Mit **App Service-Plan ändern** wird die Auswahlfunktion für den **App Service-Plan** geöffnet. Sie können nun einen vorhandenen Plan auswählen, in den diese App verschoben werden soll.
-
-> [!IMPORTANT]
-> Die Benutzeroberfläche des ausgewählten App Service-Plans wird anhand der folgenden Kriterien gefiltert:
-> - In derselben Ressourcengruppe vorhanden
-> - In derselben geografischen Region vorhanden
-> - Im selben Webspace vorhanden
->
-> Ein Webspace ist ein logisches Konstrukt in App Service, das eine Gruppierung von Serverressourcen definiert. Eine geografische Region (z.B. „USA, Westen“) enthält viele Webspaces, um Kunden mithilfe von App Service zuzuordnen. Derzeit können App Service-Ressourcen nicht zwischen Webspaces verschoben werden.
->
+Mit **App Service-Plan ändern** wird die Auswahlfunktion für den **App Service-Plan** geöffnet. Sie können nun einen vorhandenen Plan auswählen, in den diese App verschoben werden soll. Es werden nur Pläne in derselben Ressourcengruppe und Region angezeigt.
 
 ![Auswahlelement für App Service-Pläne][change]
 
@@ -125,7 +128,7 @@ Wenn Sie die App in eine andere Region verschieben möchten, ist das Klonen der 
 Sie finden **App klonen** im Abschnitt **Entwicklungstools** des Menüs.
 
 > [!IMPORTANT]
-> Beim Klonen gelten einige Einschränkungen, über die Sie sich unter [Klonen der Azure App Service-App über das Azure-Portal](../app-service-web/app-service-web-app-cloning-portal.md)informieren können.
+> Beim Klonen gelten einige Einschränkungen, über die Sie sich unter [Klonen der Azure App Service-App](app-service-web-app-cloning.md) informieren können.
 
 ## <a name="scale-an-app-service-plan"></a>Skalieren eines App Service-Plans
 
@@ -144,7 +147,7 @@ Sie können den Tarif und die Instanzgröße ändern, indem Sie für die App ode
 > [!IMPORTANT]
 > Für **App Service-Pläne**, denen keine Apps zugeordnet sind, fallen trotzdem Gebühren an, da die Computekapazität weiterhin reserviert wird.
 
-Um nach dem Löschen der letzten App, die unter einem App Service-Plan gehostet wird, die Berechnung von unerwarteten Gebühren zu vermeiden, wird der sich ergebende leere App Service-Plan ebenfalls gelöscht.
+Um nach dem Löschen der letzten App, die unter einem App Service-Plan gehostet wird, die Berechnung von unerwarteten Gebühren zu vermeiden, wird der sich ergebende leere App Service-Plan ebenfalls standardmäßig gelöscht.
 
 ## <a name="summary"></a>Zusammenfassung
 

@@ -3,7 +3,7 @@ title: Verwenden der Azure CLI 2.0 mit Azure Storage | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle 2.0 (Azure CLI) mit Azure Storage verwenden, um Speicherkonten zu erstellen und zu verwalten sowie mit Azure-Blobs und -Dateien zu arbeiten. Die Azure CLI 2.0 ist ein plattformübergreifendes, in Python geschriebenes Tool."
 services: storage
 documentationcenter: na
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
-ms.author: marsma
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 8dfa91de25eadb93186d994095f0a0107fe1a9d0
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b1f192a935dbf234936690b0d36b6ce708d38b14
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Verwenden der Azure CLI 2.0 mit Azure Storage
@@ -317,7 +317,7 @@ az storage blob delete --container-name <container_name> --name <blob_name>
 ```
 
 ## <a name="create-and-manage-file-shares"></a>Erstellen und Verwalten von Dateifreigaben
-Azure File Storage bietet einen gemeinsam genutzten Speicher für Anwendungen und verwendet dabei das SMB-Protokoll (Server Message Block). Microsoft Azure Virtual Machines und Clouddienste können wie lokale Anwendungen Dateidaten mithilfe bereitgestellter Freigaben teilen. Dateifreigaben und Dateidaten können über die Azure-Befehlszeilenschnittstelle verwaltet werden. Weitere Informationen zum Azure-Dateispeicher finden Sie unter [Erste Schritte mit Azure File Storage unter Windows](../storage-dotnet-how-to-use-files.md) und [Verwenden des Azure-Dateispeichers unter Linux](../storage-how-to-use-files-linux.md).
+Azure Files bietet einen gemeinsam genutzten Speicher für Anwendungen und verwendet dabei das SMB-Protokoll (Server Message Block). Microsoft Azure Virtual Machines und Clouddienste können wie lokale Anwendungen Dateidaten mithilfe bereitgestellter Freigaben teilen. Dateifreigaben und Dateidaten können über die Azure-Befehlszeilenschnittstelle verwaltet werden. Weitere Informationen zu Azure Files finden Sie unter [Einführung in Azure Files](../files/storage-files-introduction.md).
 
 ### <a name="create-a-file-share"></a>Erstellen einer Dateifreigabe
 Eine Azure-Dateifreigabe ist eine SMB-Dateifreigabe in Azure. Alle Verzeichnisse und Dateien müssen in einer Dateifreigabe erstellt werden. Ein Konto kann eine unbegrenzte Anzahl von Freigaben enthalten, und eine Freigabe kann eine unbegrenzte Anzahl von Dateien speichern, bis die Kapazitätsgrenze des Speicherkontos erreicht ist. Im folgenden Beispiel wird eine Dateifreigabe namens **myshare**erstellt.

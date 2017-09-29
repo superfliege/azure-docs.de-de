@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/13/2017
+ms.date: 09/18/2017
 ms.author: ryanwi
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 80c5a2a43302e1cc8ec3b4298eb393a1861252d3
+ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
+ms.openlocfilehash: 86c01a55304c5f5179e0e94d67f318e42075fd48
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="create-a-secure-cluster-on-azure-using-powershell"></a>Erstellen eines sicheren Clusters in Azure mithilfe von PowerShell
-Dieses Tutorial zeigt Ihnen, wie Sie einen Service Fabric-Cluster (Windows oder Linux) erstellen können, der in Azure ausgeführt wird. Wenn Sie fertig sind, verfügen Sie über einen Cluster, der in der Cloud ausgeführt wird und für den Sie Anwendungen bereitstellen können.
+# <a name="create-a-windows-cluster-in-azure-using-powershell"></a>Erstellen eines Windows-Clusters in Azure mithilfe von PowerShell
+Dieses Tutorial zeigt Ihnen, wie Sie einen Windows Service Fabric-Cluster erstellen können, der in Azure ausgeführt wird. Wenn Sie fertig sind, verfügen Sie über einen Cluster, der in der Cloud ausgeführt wird und für den Sie Anwendungen bereitstellen können.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -46,7 +46,7 @@ Zum Berechnen der Kosten, die durch das Ausführen eines Service Fabric-Clusters
 Weitere Informationen zum Erstellen von Service Fabric-Clustern finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
 
 ## <a name="create-the-cluster-using-azure-powershell"></a>Erstellen des Clusters mithilfe von Azure PowerShell
-1. Laden Sie eine lokale Kopie der Azure Resource Manager-Vorlage und die Parameterdatei aus folgendem GitHub-Repository herunter: [Azure Resource Manager template for Service Fabric (Azure Resource Manager-Vorlage für Service Fabric)](https://aka.ms/securepreviewonelineclustertemplate).  *azuredeploy.json* ist die Azure Resource Manager-Vorlage, die einen Service Fabric-Cluster definiert. *azuredeploy.parameters.json* ist eine Parameterdatei, mit der Sie die Bereitstellung des Clusters anpassen können.
+1. Laden Sie eine lokale Kopie der Azure Resource Manager-Vorlage und die Parameterdatei aus folgendem GitHub-Repository herunter: [Azure Resource Manager template for Service Fabric (Azure Resource Manager-Vorlage für Service Fabric)](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial).  *azuredeploy.json* ist die Azure Resource Manager-Vorlage, die einen Service Fabric-Cluster definiert. *azuredeploy.parameters.json* ist eine Parameterdatei, mit der Sie die Bereitstellung des Clusters anpassen können.
 
 2. Passen Sie die folgenden Parameter in der Parameterdatei *azuredeploy.parameters.json* an:
 
@@ -56,7 +56,7 @@ Weitere Informationen zum Erstellen von Service Fabric-Clustern finden Sie unter
    | clusterName     | Der Name des Clusters, den Sie erstellen möchten. | *Beispielsweise bobs-sfpreviewcluster* |
    | adminUserName   | Das lokale Administratorkonto auf dem virtuellen Clustercomputer. | *Alle gültigen Windows Server-Benutzernamen* |
    | adminPassword   | Das Kennwort des lokalen Administratorkontos auf dem virtuellen Clustercomputer. | *Alle gültigen Windows Server-Kennwörter* |
-   | clusterCodeVersion | Die auszuführende Service Fabric-Version. (255.255.X.255 sind Vorschauversionen.) | **255.255.5718.255** |
+   | clusterCodeVersion | Die auszuführende Service Fabric-Version. (255.255.X.255 sind Vorschauversionen.) | **5.7.198.9494** |
    | vmInstanceCount | Die Anzahl der virtuellen Computer in Ihrem Cluster (kann 1 oder 3-99 sein). | **1** | *Geben Sie bei einem Vorschaucluster nur einen einzelnen virtuellen Computer an.* |
 
 3. Öffnen Sie eine PowerShell-Konsole, melden Sie sich bei Azure an, und wählen Sie das Abonnement aus, in dem Sie den Cluster bereitstellen möchten:

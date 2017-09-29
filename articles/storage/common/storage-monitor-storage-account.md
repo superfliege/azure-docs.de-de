@@ -3,7 +3,7 @@ title: "Überwachen eines Azure Storage-Kontos | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie ein Speicherkonto in Azure mithilfe des Azure-Portals überwacht wird."
 services: storage
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: b83cba7b-4627-4ba7-b5d0-f1039fe30e78
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: marsma
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e8fbc4ecdffe62806019f494e1412cfedbccf71f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: bb2d019a751131e031f244e09b524227348bc190
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/21/2017
 > [!NOTE]
 > Für die Untersuchung von Überwachungsdaten im Azure-Portal fallen Kosten an. Weitere Informationen finden Sie unter [Speicheranalyse und Speicheranalysekosten](/rest/api/storageservices/Storage-Analytics-and-Billing).
 >
-> Der Azure-Dateispeicher unterstützt derzeit Metriken der Speicheranalyse, allerdings noch keine Protokollierung.
+> Azure Files unterstützt derzeit Storage Analytics-Metriken, allerdings noch keine Protokollierung.
 >
 > Für Speicherkonten mit dem Replikationstyp „Zonenredundanter Speicher (ZRS)“ ist die Metrik- oder Protokollierungsfunktion derzeit nicht aktiviert.
 > 
@@ -138,7 +138,7 @@ Nachdem Sie Ihrem Dashboard Diagramme hinzugefügt haben, können Sie sie weiter
 Sie können Azure Storage anweisen, Diagnoseprotokolle für Lese-, Schreib- und Löschanforderungen für die Blob-, Tabellen- und Warteschlangendienste zu speichern. Die Datenaufbewahrungsrichtlinie, die Sie festlegen, gilt auch für diese Protokolle.
 
 > [!NOTE]
-> Der Azure-Dateispeicher unterstützt derzeit Metriken der Speicheranalyse, allerdings noch keine Protokollierung.
+> Azure Files unterstützt derzeit Storage Analytics-Metriken, allerdings noch keine Protokollierung.
 >
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) **Speicherkonten** und dann den Speicherkontonamen, um das Speicherkontoblatt zu öffnen.

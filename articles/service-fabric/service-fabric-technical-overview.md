@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/30/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: 2d90baf42d067ad8476995fba524a46f0815b6d5
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 204c415a6dc77af1be78f8b28a1a5cbcd2fa7883
 ms.contentlocale: de-de
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="service-fabric-terminology-overview"></a>Übersicht über Service Fabric-Terminologie
@@ -48,6 +48,10 @@ Es gibt zwei Arten von Diensten:
 
 * **Zustandslos:** Verwenden Sie einen zustandslosen Dienst, wenn der persistente Zustand des Diensts in einem externen Speicherdienst wie Azure Storage, Azure SQL-Datenbank oder Azure Cosmos DB gespeichert ist. Wenn der Dienst über keinen persistenten Speicher verfügt, verwenden Sie einen zustandslosen Dienst. Ein Beispiel hierfür ist ein Rechnerdienst, in dem Werte an den Dienst übergeben werden und eine Berechnung unter Verwendung dieser Werte ausgeführt und ein Ergebnis zurückgegeben wird.
 * **Zustandsbehaftet:** Verwenden Sie einen zustandsbehafteten Dienst, wenn Service Fabric zur Verwaltung des Dienstzustands Programmiermodelle mit Reliable Collections oder Reliable Actors verwenden soll. Geben Sie (für die Skalierbarkeit) an, über wie viele Partitionen Sie Ihren Zustand verteilen möchten, wenn Sie einen benannten Dienst erstellen. Geben Sie auch (für die Zuverlässigkeit) an, wie viele Male Ihr Zustand über Knoten repliziert werden soll. Jeder benannte Dienst verfügt über ein einzelnes primäres Replikat und mehrere sekundäre Replikate. Sie ändern den Zustand Ihres benannten Diensts, indem Sie in das primäre Replikat schreiben. Service Fabric repliziert dann diesen Zustand an alle sekundären Replikate und hält so Ihren Zustand synchron. Service Fabric erkennt automatisch, wenn ein Fehler bei einem primären Replikat auftritt, und stuft ein vorhandenes sekundäres Replikat zum primären Replikat hoch. Service Fabric erstellt dann ein neues sekundäres Replikat.  
+
+**Replikate oder Instanzen** beziehen sich auf Code (und den Zustand bei zustandsbehafteten Diensten) eines Diensts, der bereitgestellt und ausgeführt wird. Siehe [Replikate und Instanzen](service-fabric-concepts-replica-lifecycle.md).
+
+**Neukonfiguration** bezieht sich auf alle Änderungsvorgänge in der Replikatgruppe eines Diensts. Siehe [Neukonfiguration](service-fabric-concepts-reconfiguration.md).
 
 **Dienstpaket:** Ein Datenträgerverzeichnis mit der Datei `ServiceManifest.xml` des Diensttyps. Diese Datei verweist auf den Code, die statischen Daten und die Konfigurationspakete für den Diensttyp. Auf die Dateien im Dienstpaketverzeichnis wird in der Datei `ApplicationManifest.xml` des Anwendungstyps verwiesen. Ein Dienstpaket kann beispielsweise auf den Code, die statischen Daten und die Konfigurationspakete verweisen, die zusammen einen Datenbankdienst bilden.
 
@@ -80,6 +84,8 @@ Weitere Informationen zu Client- und Dienstkommunikations-APIs, die mit Naming S
 Weitere Informationen zum Imagespeicherdienst finden Sie unter [Grundlegendes zur ImageStoreConnectionString-Einstellung](service-fabric-image-store-connection-string.md).
 
 Weitere Informationen zum Bereitstellen von Anwendungen an den Imagespeicherdienst finden Sie unter [Bereitstellen von Anwendungen](service-fabric-deploy-remove-applications.md) .
+
+**Failover-Manager-Dienst (FM):** Jeder Service Fabric-Cluster verfügt über einen Failover-Manager-Dienst, der zum Ausführen von Funktionen in Bezug auf die Hochverfügbarkeit und Konsistenz von Diensten sowie der Orchestrierung von Anwendungs- und Clusterupgrades und der Interaktion mit anderen Systemkomponenten dient.
 
 ## <a name="built-in-programming-models"></a>Integrierte Programmiermodelle
 Zum Erstellen von Service Fabric-Diensten stehen .NET Framework-Programmiermodelle zur Verfügung:

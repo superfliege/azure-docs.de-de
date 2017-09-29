@@ -1,8 +1,8 @@
 ---
-title: Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory | Microsoft-Dokumentation
+title: Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory
 description: "Enthält eine Beschreibung der Beziehung zwischen Anwendungsobjekten und Dienstprinzipalobjekten in Azure Active Directory."
 documentationcenter: dev-center-name
-author: dstrockis
+author: bryanla
 manager: mbaldwin
 services: active-directory
 editor: 
@@ -12,19 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/28/2016
-ms.author: dastrock
+ms.date: 09/26/2017
+ms.author: bryanla
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 6ee0c0b5e606b1fd9fc9eecc877d2718b7079ecb
+ms.translationtype: HT
+ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
+ms.openlocfilehash: 53ab4c04901994982b451149c4a82a5b72c9fc82
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory (Azure AD)
-In einigen Fällen kann der Begriff „Anwendung“ im Kontext von Azure AD falsch verstanden werden. Das Ziel dieses Artikels besteht darin, dies zu verdeutlichen. Hierzu werden die konzeptuellen und konkreten Aspekte der Azure AD-Anwendungsintegration veranschaulicht, gefolgt von einer Erläuterung der Registrierung und Zustimmung zu einer [mehrinstanzenfähigen Anwendung](active-directory-dev-glossary.md#multi-tenant-application).
+In einigen Fällen kann der Begriff „Anwendung“ im Kontext von Azure AD falsch verstanden werden. Das Ziel dieses Artikels ist die Veranschaulichung der konzeptuellen und konkreten Aspekte der Azure AD-Anwendungsintegration, gefolgt von einer Erläuterung der Registrierung und Zustimmung zu einer [mehrinstanzenfähigen Anwendung](active-directory-dev-glossary.md#multi-tenant-application).
 
 ## <a name="overview"></a>Übersicht
 Eine Anwendung, die in Azure AD integriert ist, hat Auswirkungen über die Software hinaus. „Anwendung“ wird häufig als konzeptioneller Begriff verwendet und bezieht sich nicht nur auf die Anwendungssoftware, sondern auch auf die Azure AD-Registrierung und die Rolle bei „Konversationen“ zur Authentifizierung/Autorisierung zur Laufzeit. Der Definition nach kann eine Anwendung in einer [Client](active-directory-dev-glossary.md#client-application)rolle (Nutzung einer Ressource), einer [Ressourcenserver](active-directory-dev-glossary.md#resource-server)rolle (APIs werden für Clients verfügbar gemacht) oder beiden Rollen funktionieren. Das Konversationsprotokoll ist durch einen [Ablauf zur Erteilung einer OAuth 2.0-Autorisierung](active-directory-dev-glossary.md#authorization-grant) definiert und ermöglicht dem Client bzw. der Ressource das Zugreifen auf bzw. das Schützen von Daten einer Ressource. Nun gehen wir eine Ebene tiefer und sehen uns an, wie das Azure AD-Anwendungsmodell eine Anwendung beim Entwurf und zur Laufzeit darstellt. 
@@ -41,7 +40,7 @@ Das Dienstprinzipalobjekt definiert die Richtlinie und Berechtigungen für den E
 #### <a name="application-and-service-principal-relationship"></a>Beziehung zwischen Anwendung und Dienstprinzipal
 Stellen Sie sich das Anwendungsobjekt als *globale* Darstellung Ihrer Anwendung zur Verwendung über alle Mandanten hinweg und den Dienstprinzipal als *lokale* Darstellung zur Verwendung in einem bestimmten Mandanten vor. Das Anwendungsobjekt fungiert als Vorlage, aus der allgemeine und Standardeigenschaften zur Verwendung im entsprechenden Dienstprinzipal *abgeleitet* werden. Für ein Anwendungsobjekt bestehen daher eine 1:1-Beziehung mit der Softwareanwendung und eine 1:viele-Beziehung mit den entsprechenden Dienstprinzipalobjekten.
 
-Ein Dienstprinzipal muss in jedem Mandanten erstellt werden, in dem die Anwendung verwendet wird. Er ermöglicht, eine Identität für die Anmeldung und/oder den Zugriff auf vom Mandanten gesicherte Ressourcen einzurichten. Eine Einzelmandantenanwendung weist nur einen Dienstprinzipal (im eigenen Heimmandanten) auf, der normalerweise während der Anwendungsregistrierung erstellt und für die Verwendung autorisiert wird. Für eine Webanwendung/API mit mehreren Mandanten muss außerdem in jedem Mandanten ein Dienstprinzipal erstellt werden, in dem ein Benutzer aus diesem Mandanten der Verwendung zugestimmt hat.  
+Ein Dienstprinzipal muss in jedem Mandanten erstellt werden, in dem die Anwendung verwendet wird. Er ermöglicht, eine Identität für die Anmeldung und/oder den Zugriff auf vom Mandanten gesicherte Ressourcen einzurichten. Eine Einzelmandantenanwendung weist nur einen Dienstprinzipal (im eigenen Heimmandanten) auf, der während der Anwendungsregistrierung erstellt und für die Verwendung autorisiert wird. Für eine Webanwendung/API mit mehreren Mandanten muss außerdem in jedem Mandanten ein Dienstprinzipal erstellt werden, in dem ein Benutzer aus diesem Mandanten der Verwendung zugestimmt hat.  
 
 > [!NOTE]
 > Alle Änderungen, die Sie an Ihrem Anwendungsobjekt vornehmen, werden auch in seinem Dienstprinzipalobjekt ausschließlich im Home-Mandanten der Anwendung widergespiegelt (der Mandant, für den die Registrierung durchgeführt wurde). Bei mehrinstanzenfähigen Anwendungen werden Änderungen am Anwendungsobjekt erst dann in den Dienstprinzipalobjekten von Endkundenmandanten übernommen, wenn der Zugriff über den [Anwendungszugriffsbereich](https://myapps.microsoft.com) entfernt und wieder gewährt wird.

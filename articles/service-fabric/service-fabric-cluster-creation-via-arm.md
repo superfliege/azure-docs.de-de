@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: chackdan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8d876a0f2168ee9375a3905d5d5a562ab1194cf3
-ms.openlocfilehash: 9159f40fed17e52e6576efa1ea7e8a2dee98728e
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 47152d05eb7e31e7fe1f35e33a10fe8e903e21e2
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager
@@ -591,7 +591,7 @@ CertificateThumbprint: 0xfffffffffffffffffffffffffffffffffffffffff
 
 Der Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die Sie auf den Service Fabric-Cluster zugreifen. Dies ist erforderlich, damit SSL für die HTTPS-Verwaltungsendpunkte des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne `.cloudapp.azure.com` können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
 
-Diese Antragstellernamen sind die Einträge, die Sie zum Erstellen eines sicheren Service Fabric-Clusters (ohne Azure AD) benötigen, wie unter [Konfigurieren von Resource Manager-Vorlagenparametern](#configure-arm)beschrieben. Eine Anleitung zum Herstellen einer Verbindung mit dem sicheren Cluster finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md). Linux-Vorschaucluster unterstützen keine Azure AD-Authentifizierung. Administrator- und Clientrollen können wie im Abschnitt [Zuweisen von Benutzern zu Rollen](#assign-roles) beschrieben zugewiesen werden. Bei der Angabe von Administrator- und Clientrollen für einen Linux-Vorschaucluster müssen Zertifikatfingerabdrücke für die Authentifizierung angegeben werden. (Der Name des Antragstellers wird nicht angegeben, da in dieser Vorschauversion keine Überprüfung oder Sperrung der Zertifikatkette stattfindet.)
+Diese Antragstellernamen sind die Einträge, die Sie zum Erstellen eines sicheren Service Fabric-Clusters (ohne Azure AD) benötigen, wie unter [Konfigurieren von Resource Manager-Vorlagenparametern](#configure-arm)beschrieben. Eine Anleitung zum Herstellen einer Verbindung mit dem sicheren Cluster finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md). Linux-Cluster unterstützen keine Azure AD-Authentifizierung. Administrator- und Clientrollen können wie im Abschnitt [Zuweisen von Benutzern zu Rollen](#assign-roles) beschrieben zugewiesen werden. Bei der Angabe von Administrator- und Clientrollen für einen Linux-Cluster müssen Zertifikatfingerabdrücke für die Authentifizierung angegeben werden. Der Name des Antragstellers wird nicht angegeben, da keine Überprüfung oder Sperrung der Zertifikatkette stattfindet.
 
 Falls Sie zu Testzwecken ein selbstsigniertes Zertifikat verwenden möchten, können Sie mithilfe des gleichen Skripts eines generieren. Dieses können Sie dann in Ihren Schlüsseltresor hochladen, indem Sie anstelle von Zertifikatpfad und -name das Flag `ss` angeben. Mit dem folgenden Beispielbefehl wird ein selbstsigniertes Zertifikat erstellt und hochgeladen:
 

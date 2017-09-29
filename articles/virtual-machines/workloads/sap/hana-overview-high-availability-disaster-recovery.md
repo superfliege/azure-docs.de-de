@@ -3,7 +3,7 @@ title: "Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (
 description: "Bereitstellen von Hochverfügbarkeit und Planen der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)"
 services: virtual-machines-linux
 documentationcenter: 
-author: RicksterCDN
+author: saghorpa
 manager: timlt
 editor: 
 ms.service: virtual-machines-linux
@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/11/2016
-ms.author: rclaus
+ms.date: 09/15/2016
+ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 87ea8b808c0b7e5fe79a5bee038a3d34ed59a1e6
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 293ac7a275398f05e3abe815413403efeaadc6e0
 ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA (große Instanzen) in Azure 
@@ -41,9 +41,9 @@ Die folgende Tabelle gibt Aufschluss über die derzeit unterstützten Hochverfü
 | Automatisches Hostfailover: N + M<br /> einschließlich 1 + 1 | Möglich durch Übernahme der aktiven Rolle durch den Standbyknoten.<br /> Steuerung des Rollenwechsels durch HANA. | Dedizierte Notfallwiederherstellungseinrichtung.<br /> Mehrzweck-Notfallwiederherstellungseinrichtung.<br /> Synchronisierung der Notfallwiederherstellung mithilfe der Speicherreplikation. | An alle Knoten (N + M) angefügte HANA-Volumesätze.<br /> Standort für die Notfallwiederherstellung muss über gleiche Anzahl von Knoten verfügen. |
 | HANA-Systemreplikation | Möglich mit Primär-/Sekundäreinrichtung.<br /> Bei einem Failover übernimmt das sekundäre Replikat die Rolle des primären Replikats.<br /> Failoversteuerung durch HANA-Systemreplikation und Betriebssystem. | Dedizierte Notfallwiederherstellungseinrichtung.<br /> Mehrzweck-Notfallwiederherstellungseinrichtung.<br /> Synchronisierung der Notfallwiederherstellung mithilfe der Speicherreplikation.<br /> Die Notfallwiederherstellung mithilfe der HANA-Systemreplikation ist noch nicht ohne Drittanbieterkomponenten möglich. | Separater Satz angefügter Datenträgervolumes für die einzelnen Knoten.<br /> Nur Datenträgervolumes des sekundären Replikats am Produktionsstandort werden am Standort für die Notfallwiederherstellung repliziert.<br /> Am Standort für die Notfallwiederherstellung wird ein einzelner Volumesatz benötigt. | 
 
-Eine dedizierte Notfallwiederherstellungseinrichtung ist eine Einrichtung, bei der die große HANA-Instanzeinheit am Standort für die Notfallwiederherstellung nicht zum Ausführen einer anderen Workload oder eines produktionsfremden Systems verwendet wird. Die Einheit ist passiv und wird nur dann bereitgestellt, wenn eine Notfallwiederherstellung ausgeführt wird. Bislang haben wir noch keinen Kunden mit dieser Konfiguration.
+Eine dedizierte Notfallwiederherstellungseinrichtung ist eine Einrichtung, bei der die große HANA-Instanzeinheit am Standort für die Notfallwiederherstellung nicht zum Ausführen einer anderen Workload oder eines produktionsfremden Systems verwendet wird. Die Einheit ist passiv und wird nur dann bereitgestellt, wenn eine Notfallwiederherstellung ausgeführt wird. Für viele Kunden stellt dies jedoch nicht die bevorzugte Option dar.
 
-Eine Mehrzweck-Notfallwiederherstellungseinrichtung ist eine Einrichtung, bei der die große HANA-Instanzeinheit am Standort für die Notfallwiederherstellung eine produktionsfremde Workload ausführt. Bei einem Notfall fahren Sie das produktionsfremde System herunter, binden die speicherreplizierten (zusätzlichen) Volumesätze ein und starten dann die HANA-Produktionsinstanz. Bislang kommt bei allen Kunden, die die Notfallwiederherstellung von HANA (große Instanzen) nutzen, diese Konfigurationsalternative zum Einsatz. 
+Eine Mehrzweck-Notfallwiederherstellungseinrichtung ist eine Einrichtung, bei der die große HANA-Instanzeinheit am Standort für die Notfallwiederherstellung eine produktionsfremde Workload ausführt. Bei einem Notfall fahren Sie das produktionsfremde System herunter, binden die speicherreplizierten (zusätzlichen) Volumesätze ein und starten dann die HANA-Produktionsinstanz. Bei den meisten Kunden, die die Notfallwiederherstellung von HANA (große Instanzen) nutzen, kommt diese Konfiguration zum Einsatz. 
 
 
 Weitere Informationen zur Hochverfügbarkeit von SAP HANA finden Sie in den folgenden SAP-Artikeln: 
@@ -221,7 +221,15 @@ In diesem Schritt autorisieren Sie das von Ihnen erstellte SAP HANA-Benutzerkont
 
 Geben Sie den Befehl `hdbuserstore` wie folgt ein:
 
-![Eingeben des Befehls „hdbuserstore“](./media/hana-overview-high-availability-disaster-recovery/image4-hdbuserstore-command.png)
+**Für HANA-Setup ohne MDC**
+```
+hdbuserstore set <key> <host><3[instance]15> <user> <password>
+```
+
+**Für HANA-Setup mit MDC**
+```
+hdbuserstore set <key> <host><3[instance]13> <user> <password>
+```
 
 Im folgenden Beispiel lautet der Benutzer **SCADMIN01**, der Hostname **lhanad01** und die Instanznummer **01**:
 ```
@@ -231,8 +239,8 @@ Bei einer SAP HANA-Konfiguration für horizontales Hochskalieren müssen sämtli
 
 ```
 hdbuserstore set SCADMIN01 lhanad01:30115 SCADMIN <password>
-hdbuserstore set SCADMIN02 lhanad02:30215 SCADMIN <password>
-hdbuserstore set SCADMIN03 lhanad03:30315 SCADMIN <password>
+hdbuserstore set SCADMIN01 lhanad02:30115 SCADMIN <password>
+hdbuserstore set SCADMIN01 lhanad03:30115 SCADMIN <password>
 ```
 
 ### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>Schritt 6: Abrufen der Momentaufnahmeskripts, Konfigurieren der Momentaufnahmen und Testen der Konfiguration und Konnektivität
@@ -285,7 +293,7 @@ Storage IP Address: 10.240.20.31
 #hdbuserstore utility.
 Node 1 IP Address: 
 Node 1 HANA instance number:
-Node 1 HANA Backup Name:
+Node 1 HANA userstore Name:
 ```
 
 >[!NOTE]
@@ -376,28 +384,28 @@ Wenn die Testmomentaufnahme erfolgreich mit dem Skript erstellt wurde, können S
 Nach Abschluss der Vorbereitungsschritte können Sie damit beginnen, die eigentlichen Speichermomentaufnahmen zu konfigurieren. Das zu planende Skript kann für SAP HANA-Konfigurationen mit zentralem und horizontalem Hochskalieren verwendet werden. Die Planung der Skriptausführung sollte über Cron erfolgen. 
 
 Es können drei Typen von Momentaufnahmesicherungen erstellt werden:
-- **HANA**: Kombinierte Momentaufnahmesicherung, bei der die Volumes mit „/hana/data“, „/hana/log“ und „/hana/shared“ (einschließlich „/usr/sap“) durch die koordinierte Momentaufnahme abgedeckt sind. Auf der Grundlage dieser Momentaufnahme können einzelne Dateien wiederhergestellt werden.
+- **HANA**: Kombinierte Momentaufnahmesicherung, bei der die Volumes mit „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) durch die koordinierte Momentaufnahme abgedeckt sind. Auf der Grundlage dieser Momentaufnahme können einzelne Dateien wiederhergestellt werden.
 - **Protokolle**: Momentaufnahmesicherung des Volumes „/hana/logbackups“. Zur Erstellung dieser Speichermomentaufnahme wird keine HANA-Momentaufnahme ausgelöst. Dieses Speichervolume ist das Volume, das die SAP HANA-Transaktionsprotokollsicherungen enthalten soll. SAP HANA-Transaktionsprotokollsicherungen werden häufiger ausgeführt, um die Protokollvergrößerung einzuschränken und potenzielle Datenverluste zu verhindern. Auf der Grundlage dieser Momentaufnahme können einzelne Dateien wiederhergestellt werden. Die Häufigkeit sollte mindestens fünf Minuten betragen.
 - **Start**: Momentaufnahme des Volumes mit der Start-LUN (Logical Unit Number, logische Gerätenummer) der großen HANA-Instanz. Diese Momentaufnahmesicherung steht nur für Typ I-SKUs großer HANA-Instanzen zur Verfügung. Auf der Grundlage der Momentaufnahme des Volumes mit der Start-LUN können keine einzelnen Dateien wiederhergestellt werden.  
 
 
 Die Aufrufsyntax für die drei unterschiedlichen Arten von Momentaufnahmen sieht wie folgt aus:
 ```
-HANA backup covering /hana/data, /hana/log, /hana/shared (includes/usr/sap)
+HANA backup covering /hana/data and /hana/shared (includes/usr/sap)
 ./azure_hana_backup.pl hana <HANA SID> manual 30
 
 For /hana/logbackups snapshot
 ./azure_hana_backup.pl logs <HANA SID> manual 30
 
 For snapshot of the volume storing the boot LUN
-./azure_hana_backup.pl boot manual 30
+./azure_hana_backup.pl boot none manual 30
 
 ```
 
 Festzulegende Parameter:
 
 - Der erste Parameter gibt die Art der Momentaufnahmesicherung an. Die zulässige Werte lauten **hana**, **logs** und **boot**. 
-- Der zweite Wert ist die HANA-SID (beispielsweise „HM3“). Bei einer Sicherung des Startvolumes wird dieser Parameter nicht benötigt.
+- Der zweite Parameter ist **HANA SID** (wie HM3) oder **keiner**. Wenn der bereitgestellte Wert der ersten Parameters **hana** oder **logs** ist, lautet der Wert dieses Parameters **HANA SID** (wie HM3). Ansonsten ist der Wert für die Sicherung des Startvolumes **keiner**. 
 - Beim dritten Parameter handelt es sich um eine Momentaufnahme- oder Sicherungsbezeichnung für die Art der Momentaufnahme. Sie hat zwei Funktionen. Zum einen dient sie als Namensvorschlag, damit Sie wissen, worum es sich bei diesen Momentaufnahmen handelt. Zum anderen dient sie dazu, dem Skript „azure\_hana\_backup.pl“ die Ermittlung der Anzahl von Speichermomentaufnahmen zu ermöglichen, die unter dieser bestimmten Bezeichnung beibehalten werden. Wenn Sie zwei Speichermomentaufnahme-Sicherungen desselben Typs (z.B. **hana**) mit zwei unterschiedlichen Bezeichnungen planen und definieren, dass 30 Momentaufnahmen pro Sicherung beibehalten werden sollen, erhalten Sie letztlich 60 Speichermomentaufnahmen der betroffenen Volumes. 
 - Der vierte Parameter definiert, wie viele Momentaufnahmen mit dem gleichen Momentaufnahmepräfix (Bezeichnung) gespeichert werden sollen – und damit indirekt die Aufbewahrung der Momentaufnahmen. Dieser Parameter ist für die geplante Ausführung über Cron wichtig. 
 
@@ -428,7 +436,7 @@ Bei den folgenden Überlegungen und Empfehlungen wird davon ausgegangen, dass Si
 - Die Anzahl von Momentaufnahmen ist pro Volume auf 255 beschränkt.
 
 
-Bei Kunden, die die Notfallwiederherstellung von HANA (große Instanzen) nicht verwenden, ist der Momentaufnahmezeitraum kürzer. In solchen Fällen führen Kunden die kombinierten Momentaufnahmen für „/hana/data“, „/hana/log“ und „/hana/shared“ (einschließlich „/usr/sap“) in einem Intervall von 12 oder 24 Stunden durch und speichern diese Momentaufnahmen, um einen ganzen Monat abzudecken. Gleiches gilt für die Momentaufnahmen des Protokollsicherungsvolumes. Im Gegensatz dazu werden SAP HANA-Transaktionsprotokollsicherungen für das Protokollsicherungsvolume in einem Intervall von fünf bis 15 Minuten ausgeführt.
+Bei Kunden, die die Notfallwiederherstellung von HANA (große Instanzen) nicht verwenden, ist der Momentaufnahmezeitraum kürzer. In solchen Fällen führen Kunden die kombinierten Momentaufnahmen für „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) in einem Intervall von 12 oder 24 Stunden durch und speichern diese Momentaufnahmen, um einen ganzen Monat abzudecken. Gleiches gilt für die Momentaufnahmen des Protokollsicherungsvolumes. Im Gegensatz dazu werden SAP HANA-Transaktionsprotokollsicherungen für das Protokollsicherungsvolume in einem Intervall von fünf bis 15 Minuten ausgeführt.
 
 Es wird empfohlen, geplante Speichermomentaufnahmen mithilfe von Cron durchzuführen. Außerdem wird empfohlen, dasselbe Skript für alle Sicherungs- und Notfallwiederherstellungsanforderungen zu verwenden. Sie müssen die Skripteingaben so ändern, dass sie den verschiedenen angeforderten Sicherungszeiten entsprechen. Diese Momentaufnahmen werden in Cron abhängig von ihrer Ausführungszeit jeweils unterschiedlich geplant: stündlich, alle 12 Stunden, täglich oder wöchentlich. 
 
@@ -440,9 +448,9 @@ Im Anschluss sehen Sie ein Beispiel für einen Cron-Zeitplan in „/etc/crontab�
 22 12 * * *  ./azure_hana_backup.pl log HM3 dailylogback 28
 30 00 * * *  ./azure_hana_backup.pl boot dailyboot 28
 ```
-Das vorherige Beispiel enthält eine stündliche kombinierte Momentaufnahme, die die Volumes mit den Speicherorten „/hana/data“, „/hana/log“ und „/hana/shared“ (einschließlich „/usr/sap“) abdeckt. Diese Art von Momentaufnahme wird für eine schnellere Zeitpunktwiederherstellung der letzten zwei Tage verwendet. Darüber hinaus wird eine tägliche Momentaufnahme für diese Volumes erstellt. Somit verfügen Sie über stündliche Momentaufnahmen für einen Zeitraum von zwei Tagen sowie über tägliche Momentaufnahmen für einen Zeitraum von vier Wochen. Das Volume für die Transaktionsprotokollsicherung wird außerdem täglich gesichert. Diese Sicherungen werden ebenfalls vier Wochen aufbewahrt. In der dritten Zeile von „crontab“ sehen Sie, dass für die Sicherung des HANA-Transaktionsprotokolls ein Ausführungsintervall von fünf Minuten geplant ist. Die Startminuten der verschiedenen Cron-Aufträge zur Erstellung von Speichermomentaufnahmen sind gestaffelt, damit die Momentaufnahmen nicht alle gleichzeitig zu einem bestimmten Zeitpunkt ausgeführt werden. 
+Das vorherige Beispiel enthält eine stündliche kombinierte Momentaufnahme, die die Volumes mit den Speicherorten „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) abdeckt. Diese Art von Momentaufnahme wird für eine schnellere Zeitpunktwiederherstellung der letzten zwei Tage verwendet. Darüber hinaus wird eine tägliche Momentaufnahme für diese Volumes erstellt. Somit verfügen Sie über stündliche Momentaufnahmen für einen Zeitraum von zwei Tagen sowie über tägliche Momentaufnahmen für einen Zeitraum von vier Wochen. Das Volume für die Transaktionsprotokollsicherung wird außerdem täglich gesichert. Diese Sicherungen werden ebenfalls vier Wochen aufbewahrt. In der dritten Zeile von „crontab“ sehen Sie, dass für die Sicherung des HANA-Transaktionsprotokolls ein Ausführungsintervall von fünf Minuten geplant ist. Die Startminuten der verschiedenen Cron-Aufträge zur Erstellung von Speichermomentaufnahmen sind gestaffelt, damit die Momentaufnahmen nicht alle gleichzeitig zu einem bestimmten Zeitpunkt ausgeführt werden. 
 
-Im folgenden Beispiel führen Sie stündlich eine kombinierte Momentaufnahme durch, die die Volumes mit den Speicherorten „/hana/data“, „/hana/log“ und „/hana/shared“ (einschließlich „/usr/sap“) abdeckt. Diese Momentaufnahmen werden zwei Tage lang aufbewahrt. Die Momentaufnahmen der Volumes mit der Transaktionsprotokollsicherung werden alle fünf Minuten ausgeführt und vier Stunden lang aufbewahrt. Das Ausführungsintervall für die Sicherung der HANA-Transaktionsprotokolldatei ist wie zuvor auf fünf Minuten festgelegt. Die Momentaufnahme des Volumes mit der Transaktionsprotokollsicherung wird jeweils zwei Minuten nach dem Start der Transaktionsprotokollsicherung erstellt. Nach diesen zwei Minuten sollte die Sicherung des SAP HANA-Transaktionsprotokolls für gewöhnlich abgeschlossen sein. Das Volume mit der Start-LUN wird wie zuvor jeweils einmal pro Tag durch eine Speichermomentaufnahme gesichert und vier Wochen lang aufbewahrt.
+Im folgenden Beispiel führen Sie stündlich eine kombinierte Momentaufnahme durch, die die Volumes mit den Speicherorten „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) abdeckt. Diese Momentaufnahmen werden zwei Tage lang aufbewahrt. Die Momentaufnahmen der Volumes mit der Transaktionsprotokollsicherung werden alle fünf Minuten ausgeführt und vier Stunden lang aufbewahrt. Das Ausführungsintervall für die Sicherung der HANA-Transaktionsprotokolldatei ist wie zuvor auf fünf Minuten festgelegt. Die Momentaufnahme des Volumes mit der Transaktionsprotokollsicherung wird jeweils zwei Minuten nach dem Start der Transaktionsprotokollsicherung erstellt. Nach diesen zwei Minuten sollte die Sicherung des SAP HANA-Transaktionsprotokolls für gewöhnlich abgeschlossen sein. Das Volume mit der Start-LUN wird wie zuvor jeweils einmal pro Tag durch eine Speichermomentaufnahme gesichert und vier Wochen lang aufbewahrt.
 
 ```
 10 0-23 * * * ./azure_hana_backup.pl hana HM3 hourlyhana 48
@@ -453,9 +461,9 @@ Im folgenden Beispiel führen Sie stündlich eine kombinierte Momentaufnahme dur
 
 Die folgende Grafik veranschaulicht die Sequenzen des vorherigen Beispiels ausgenommen der Start-LUN:
 
-![Beziehung zwischen Sicherungen und Momentaufnahmen](./media/hana-overview-high-availability-disaster-recovery/backup_snapshot.PNG)
+![Beziehung zwischen Sicherungen und Momentaufnahmen](./media/hana-overview-high-availability-disaster-recovery/backup_snapshot_updated0921.PNG)
 
-SAP HANA führt regelmäßig Schreibvorgänge für das Volume „/hana/log“ aus, um die Datenbankänderungen, für die ein Commit ausgeführt wurde, zu dokumentieren. In regelmäßigen Abständen schreibt SAP HANA einen Sicherungspunkt auf das Volume „/hana/data“. Wie in „crontab“ angegeben wird alle fünf Minuten eine SAP HANA-Transaktionsprotokollsicherung ausgeführt. Aufgrund der Auslösung einer kombinierten Speichermomentaufnahme für die Volumes „/hana/data“, „/hana/log“ und „/hana/shared“ wird zudem stündlich eine SAP HANA-Momentaufnahme ausgeführt. Nach erfolgreicher Ausführung der HANA-Momentaufnahme wird die kombinierte Speichermomentaufnahme ausgeführt. Gemäß Angabe in „crontab“ wird alle fünf Minuten (etwa zwei Minuten nach der HANA-Transaktionsprotokollsicherung) die Speichermomentaufnahme des Volumes „/hana/logbackup“ ausgeführt.
+SAP HANA führt regelmäßig Schreibvorgänge für das Volume „/hana/log“ aus, um die Datenbankänderungen, für die ein Commit ausgeführt wurde, zu dokumentieren. In regelmäßigen Abständen schreibt SAP HANA einen Sicherungspunkt auf das Volume „/hana/data“. Wie in „crontab“ angegeben wird alle fünf Minuten eine SAP HANA-Transaktionsprotokollsicherung ausgeführt. Aufgrund der Auslösung einer kombinierten Speichermomentaufnahme für die Volumes „/hana/data“ und „/hana/shared“ wird zudem stündlich eine SAP HANA-Momentaufnahme ausgeführt. Nach erfolgreicher Ausführung der HANA-Momentaufnahme wird die kombinierte Speichermomentaufnahme ausgeführt. Gemäß Angabe in „crontab“ wird alle fünf Minuten (etwa zwei Minuten nach der HANA-Transaktionsprotokollsicherung) die Speichermomentaufnahme des Volumes „/hana/logbackup“ ausgeführt.
 
 
 >[!IMPORTANT]
@@ -463,7 +471,7 @@ SAP HANA führt regelmäßig Schreibvorgänge für das Volume „/hana/log“ au
 
 Sie benötigen Folgendes, wenn Sie für Benutzer eine Zeitpunktwiederherstellung für einen Zeitraum von 30 Tagen zugesagt haben:
 
-- In Extremfällen müssen Sie über die Möglichkeit verfügen, auf eine kombinierte Speichermomentaufnahme für „/hana/data“, „/hana/log“ und „/hana/shared“ zuzugreifen, die 30 Tage alt ist.
+- In Extremfällen müssen Sie über die Möglichkeit verfügen, auf eine kombinierte Speichermomentaufnahme für „/hana/data“ und „/hana/shared“ zuzugreifen, die 30 Tage alt ist.
 - Sie benötigen lückenlose Transaktionsprotokollsicherungen, die die Zeit zwischen den kombinierten Speichermomentaufnahmen abdecken. Die älteste Momentaufnahme des Volumes mit der Transaktionsprotokollsicherung muss also 30 Tage alt sein. Dies gilt nicht, wenn Sie die Transaktionsprotokollsicherungen in eine andere NFS-Freigabe in Azure Storage kopieren. In diesem Fall können Sie ältere Transaktionsprotokollsicherungen von dieser NFS-Freigabe abrufen.
 
 Um die Vorteile der Speichermomentaufnahmen und letztendlich der Speicherreplikation von Transaktionsprotokollsicherungen nutzen zu können, müssen Sie den Speicherort ändern, in den SAP HANA die Transaktionsprotokollsicherungen schreibt. Sie können diese Änderung in HANA Studio vornehmen. SAP HANA sichert zwar automatisch vollständige Protokollsegmente, trotzdem sollten Sie ein deterministisches Protokollsicherungsintervall angeben. Dies empfiehlt sich insbesondere bei Verwendung der Notfallwiederherstellungsoption, da Sie in der Regel Protokollsicherungen mit einem deterministischen Intervall ausführen. Im folgenden Fall wurde ein 15-minütiges Protokollsicherungsintervall verwendet.

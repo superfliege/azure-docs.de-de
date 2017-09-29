@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 07063ea53e96c6467e40e8a7ca70e5c03ce53284
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b0327b37b56987d52557f3f4e305f27eb2e5296d
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 08/24/2017
 Mit der Azure AD-Passthrough-Authentifizierung (Azure Active Directory) können sich Benutzer mit denselben Kennwörtern sowohl an lokalen als auch an cloudbasierten Anwendungen anmelden. Benutzer werden angemeldet, indem sie ihre Kennwörter für Ihre lokale Active Directory-Instanz direkt angeben.
 
 >[!IMPORTANT]
->Die Azure AD-Passthrough-Authentifizierung befindet sich derzeit in der Vorschauphase. Wenn Sie dieses Feature bereits in der Vorschau verwendet haben, sollten Sie sicherstellen, dass Sie die Vorschauversionen der Authentifizierungs-Agents mithilfe der [hier](./active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md) bereitgestellten Anweisungen aktualisieren.
+>Wenn Sie dieses Feature bereits in der Vorschau verwendet haben, sollten Sie sicherstellen, dass Sie die Vorschauversionen der Authentifizierungs-Agents mithilfe der [hier](./active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md) bereitgestellten Anweisungen aktualisieren.
 
 Befolgen Sie diese Anweisungen, um die Passthrough-Authentifizierung bereitzustellen:
 
@@ -130,8 +130,8 @@ Wenn Sie die Bereitstellung der Passthrough-Authentifizierung in einer Produktio
 >Sie können den Authentifizierungs-Agent auch [hier](https://aka.ms/getauthagent) herunterladen. _Ehe_ Sie den Authentifizierungs-Agent installieren, müssen Sie die [Nutzungsbedingungen](https://aka.ms/authagenteula) lesen und akzeptieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [**Aktuelle Einschränkungen**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Diese Funktion befindet sich derzeit in der Vorschauphase. Informieren Sie sich darüber, welche Szenarien unterstützt werden.
-- [**Ausführliche technische Betrachtung:**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) Informieren Sie sich über die Funktionsweise dieses Features.
+- [**Aktuelle Einschränkungen**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarios
+- [**Technische Einzelheiten**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) – Funktionsweise dieses Features verstehen
 - [**Häufig gestellte Fragen**](active-directory-aadconnect-pass-through-authentication-faq.md) – Antworten auf häufig gestellte Fragen
 - [**Problembehandlung**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Beheben häufig auftretender Probleme mit dieser Funktion
 - [**Nahtlose SSO mit Azure AD**](active-directory-aadconnect-sso.md): Informationen zu dieser Ergänzungsfunktion

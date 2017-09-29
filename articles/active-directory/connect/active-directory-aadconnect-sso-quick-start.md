@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 977108687734a5eb7f7a30419de2a6bdef184d0e
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 75c361cca556c797fd3ea5480cacbbc14799aca8
 ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -27,9 +27,6 @@ ms.lasthandoff: 08/07/2017
 ## <a name="how-to-deploy-seamless-sso"></a>Bereitstellen der nahtlosen einmaligen Anmeldung (SSO)
 
 Mit dem nahtlosen einmaligen Anmelden von Azure Active Directory (Azure AD Seamless Single Sign-On) werden Benutzer automatisch im Unternehmensnetzwerk angemeldet, wenn Sie an ihren Unternehmens-Desktops arbeiten. Dieses Feature ermöglicht Ihren Benutzern einen einfachen Zugriff auf Ihre cloudbasierten Dienste, ohne dass zusätzliche lokale Komponenten erforderlich sind.
-
->[!IMPORTANT]
->Das nahtlose einmalige Anmelden ist aktuell in der Vorschauversion verfügbar.
 
 Um die nahtlose einmalige Anmeldung bereitzustellen, führen Sie die folgenden Schritte aus:
 
@@ -73,7 +70,7 @@ Befolgen Sie diese Anweisungen, um zu überprüfen, ob die nahtlose SSO ordnungs
 
 ## <a name="step-3-roll-out-the-feature"></a>Schritt 3: Ausrollen des Features
 
-Um das Feature für Ihre Benutzer auszurollen, müssen Sie den Einstellungen für Intranetzonen der Benutzer über Gruppenrichtlinien in Active Directory zwei Azure AD-URLs hinzufügen: https://autologon.microsoftazuread-sso.com und https://aadg.windows.net.nsatc.net.
+Zum Ausrollen der Funktion müssen Sie den Intranetzoneneinstellungen Ihrer Benutzer mithilfe der Gruppenrichtlinie in Active Directory einige Azure AD-URLs hinzufügen.
 
 >[!NOTE]
 > Die folgenden Anweisungen funktionieren nur für Internet Explorer und Google Chrome unter Windows (wenn ein Satz von URLs vertrauenswürdiger Websites wie für Internet Explorer freigegeben wird). Lesen Sie im nächsten Abschnitt die Anweisungen zum Einrichten von Mozilla Firefox und Google Chrome auf Mac.
@@ -122,7 +119,7 @@ Informationen dazu, wie Sie in Google Chrome unter Mac OS und anderen nicht Wind
 
 Das Ausrollen der Azure AD-URLs für Firefox und Google Chrome unter macOS mithilfe von Active Directory-Gruppenrichtlinienerweiterungen von Drittanbietern kann in diesem Artikel nicht behandelt werden.
 
-#### <a name="known-limitations"></a>Bekannte Einschränkungen
+#### <a name="known-browser-limitations"></a>Bekannte Browsereinschränkungen
 
 Das nahtlose einmalige Anmelden funktioniert in Firefox- und Edge-Browsern nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten Schutzmodus ausgeführt wird.
 
@@ -146,7 +143,7 @@ So testen Sie das Szenario, wenn der Benutzer weder den Benutzernamen noch das K
 
 ## <a name="step-5-roll-over-keys"></a>Schritt 5: Durchführen des Rollovers für Schlüssel
 
-In Schritt 2 erstellt Azure AD Connect Computerkonten (die Azure AD repräsentieren) in allen AD-Gesamtstrukturen, für die Sie das nahtlose einmalige Anmelden aktiviert haben. Ausführliche Informationen hierzu finden Sie [hier](active-directory-aadconnect-sso-how-it-works.md). Zur Erhöhung der Sicherheit wird empfohlen, für die Kerberos-Entschlüsselungsschlüssel dieser Computerkonten häufig ein Rollover durchzuführen.
+In Schritt 2 erstellt Azure AD Connect Computerkonten (die Azure AD repräsentieren) in allen AD-Gesamtstrukturen, für die Sie das nahtlose einmalige Anmelden aktiviert haben. Ausführliche Informationen hierzu finden Sie [hier](active-directory-aadconnect-sso-how-it-works.md). Zur Erhöhung der Sicherheit wird empfohlen, für die Kerberos-Entschlüsselungsschlüssel dieser Computerkonten regelmäßig ein Rollover durchzuführen. Die Anweisungen für das Rollover finden Sie [hier](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account).
 
 >[!IMPORTANT]
 >Sie müssen diesen Schritt nicht _sofort_ nach der Aktivierung des Features ausführen. Führen Sie für die Kerberos-Entschlüsselungsschlüssel mindestens alle 30 Tage ein Rollover durch.

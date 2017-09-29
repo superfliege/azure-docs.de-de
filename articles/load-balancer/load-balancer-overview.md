@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 617da1cf41db08d319d6fe9fa7bc96b794a0001e
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ecf1fc38d2b9fd54fe5b00db616224a0848179fe
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="azure-load-balancer-overview"></a>Übersicht über Azure Load Balancer
 
 Der Azure Load Balancer bietet hohe Verfügbarkeit und Netzwerkleistung für Ihre Anwendungen. Es ist ein Layer-4-Lastenausgleichsmodul (TCP, UDP), das eingehenden Datenverkehr auf funktionierende Dienstinstanzen verteilt, die in einer Lastenausgleichsgruppe definiert sind.
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Load Balancer kann für Folgendes konfiguriert werden:
 
@@ -33,38 +35,6 @@ Azure Load Balancer kann für Folgendes konfiguriert werden:
 * Weiterleiten von externem Datenverkehr an eine bestimmte Instanz eines virtuellen Computers.
 
 Alle Ressourcen in der Cloud benötigen eine öffentliche IP-Adresse, damit sie im Internet erreichbar sind. Die Cloudinfrastruktur in Azure verwendet für ihre Ressourcen nicht routingfähige IP-Adressen. Für die Kommunikation mit dem Internet verwendet Azure die Netzwerkadressübersetzung (Network Address Translation, NAT) mit öffentlichen IP-Adressen.
-
-## <a name="azure-deployment-models"></a>Azure-Bereitstellungsmodelle
-
-Es ist wichtig, die Unterschiede zwischen dem [klassischen Bereitstellungsmodell und dem Azure Resource Manager-Bereitstellungsmodell](../azure-resource-manager/resource-manager-deployment-model.md)zu verstehen. Azure Load Balancer wird in den beiden Modellen unterschiedlich konfiguriert.
-
-### <a name="azure-classic-deployment-model"></a>Klassisches Azure-Bereitstellungsmodell
-
-In einem Clouddienst bereitgestellte virtuelle Computer können gruppiert werden, um einen Lastenausgleich zu verwenden. Bei diesem Modell werden einem Clouddienst eine öffentliche IP-Adresse und ein vollqualifizierter Domänenname (Fully Qualified Domain Name, FQDN) zugewiesen. Das Lastenausgleichsmodul übernimmt die Portübersetzung und den Lastenausgleich des Netzwerkdatenverkehrs unter Verwendung der öffentlichen IP-Adresse für den Clouddienst.
-
-Datenverkehr mit Lastenausgleich wird durch die Endpunkte definiert. Die Endpunkte der Portübersetzung bilden eine 1:1-Beziehung zwischen dem öffentlichen zugewiesenen Port der öffentlichen IP-Adresse und dem lokalen Port, der dem Dienst auf einem bestimmten virtuellen Computer zugewiesen wurde. Lastenausgleichs-Endpunkte bilden eine 1:n-Beziehung zwischen der öffentlichen IP-Adresse und den lokalen Ports, die den Diensten auf den virtuellen Computern im Clouddienst zugewiesen sind.
-
-![Azure Load Balancer im klassischen Bereitstellungsmodell](./media/load-balancer-overview/asm-lb.png)
-
-Abbildung 1: Azure Load Balancer im klassischen Bereitstellungsmodell
-
-Die Domänenbezeichnung für die öffentliche IP-Adresse, die der Lastenausgleich für dieses Bereitstellungsmodell verwendet, lautet „\<Clouddienstname\>.cloudapp.net“. Die folgende Grafik zeigt Azure Load Balancer in diesem Modell:
-
-### <a name="azure-resource-manager-deployment-model"></a>Azure Resource Manager-Bereitstellungsmodell
-
-Im Resource Manager-Bereitstellungsmodell ist es nicht notwendig, einen Clouddienst zu erstellen. Der Lastenausgleich wird zur expliziten Weiterleitung von Datenverkehr zwischen virtuellen Computern erstellt.
-
-Eine öffentliche IP-Adresse ist eine einzelne Ressource mit einer Domänenbezeichnung (DNS-Name). Die öffentliche IP-Adresse ist der Lastenausgleichsressource zugeordnet. Lastenausgleichsregeln und eingehende NAT-Regeln verwenden die öffentliche IP-Adresse als Internetendpunkt für die Ressourcen, die Netzwerkverkehr mit Lastenausgleich empfangen.
-
-Eine private oder öffentliche IP-Adresse wird der Netzwerkschnittstellen-Ressource eines virtuellen Computers zugewiesen. Nachdem eine Netzwerkschnittstelle dem Back-End-IP-Adresspool eines Lastenausgleichsmoduls hinzugefügt wurde, kann der Lastenausgleich basierend auf den erstellten Lastenausgleichsregeln Netzwerkdatenverkehr mit Lastenausgleich senden.
-
-Die folgende Grafik zeigt Azure Load Balancer in diesem Modell:
-
-![Azure Load Balancer in Resource Manager](./media/load-balancer-overview/arm-lb.png)
-
-Abbildung 2: Azure Load Balancer in Resource Manager
-
-Der Lastenausgleich kann mithilfe von Resource Manager-basierten Vorlagen, APIs und Tools verwaltet werden. Weitere Informationen zu Resource Manager finden Sie unter [Übersicht über Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 ## <a name="load-balancer-features"></a>Lastenausgleichsfunktionen
 
@@ -76,7 +46,7 @@ Der Lastenausgleich kann mithilfe von Resource Manager-basierten Vorlagen, APIs 
 
     ![Hashbasierte Verteilung](./media/load-balancer-overview/load-balancer-distribution.png)
 
-    Abbildung 3: Hashbasierte Verteilung
+    Abbildung: Hashbasierte Verteilung
 
 * Portweiterleitung
 

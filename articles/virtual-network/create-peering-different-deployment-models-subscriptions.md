@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/17/2017
-ms.author: jdial;narayan;annahar
+ms.date: 09/15/2017
+ms.author: jdial;anavin
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 93d5676e9188e67f1f6a9bba1d4d30a93b3883d8
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: c7d2333c90f6ceca93b3eb702c3a010c37a0f70b
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Erstellen eines Peerings virtueller Netzwerke mithilfe verschiedener Bereitstellungsmodelle und Abonnements
 
-In diesem Tutorial erfahren Sie, wie Sie ein Peering zwischen virtuellen Netzwerken erstellen, die in verschiedenen Bereitstellungsmodellen eingerichtet wurden. Die virtuellen Netzwerke befinden sich in unterschiedlichen Abonnements. Das Peering zweier virtueller Netzwerke ermöglicht es Ressourcen, in verschiedenen virtuellen Netzwerken untereinander mit derselben Bandbreite und Latenz zu kommunizieren, als befänden sie sich im selben virtuellen Netzwerk. Weitere Informationen hierzu finden Sie unter [Peering virtueller Netzwerke](virtual-network-peering-overview.md). 
+In diesem Tutorial erfahren Sie, wie Sie ein Peering zwischen virtuellen Netzwerken erstellen, die in verschiedenen Bereitstellungsmodellen eingerichtet wurden. Die virtuellen Netzwerke befinden sich in unterschiedlichen Abonnements. Das Peering zweier virtueller Netzwerke ermöglicht es Ressourcen, in verschiedenen virtuellen Netzwerken untereinander mit derselben Bandbreite und Latenz zu kommunizieren, als befänden sie sich im selben virtuellen Netzwerk. Weitere Informationen hierzu finden Sie unter [Peering virtueller Netzwerke](virtual-network-peering-overview.md).
 
 Die Schritte zum Erstellen eines Peerings virtueller Netzwerke sind je nachdem unterschiedlich, ob sich die virtuellen Netzwerke im selben oder unterschiedlichen Abonnements befinden und mit welchem [Azure-Bereitstellungsmodell](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) die virtuellen Netzwerke erstellt werden. Erfahren Sie, wie Sie ein Peering virtueller Netzwerke in anderen Szenarien erstellen, indem Sie in der folgenden Tabelle auf das gewünschte Szenario klicken:
 
@@ -34,36 +34,48 @@ Die Schritte zum Erstellen eines Peerings virtueller Netzwerke sind je nachdem u
 |[Beide mit Resource Manager](create-peering-different-subscriptions.md) |Unterschiedlich|
 |[Eines mit Resource Manager, das andere klassisch](create-peering-different-deployment-models.md) |Identisch|
 
-Ein Peering zweier virtueller Netzwerke, die über das klassische Bereitstellungsmodell bereitgestellt wurden, ist nicht möglich. Ein Peering kann nur zwischen zwei virtuellen Netzwerken erstellt werden, die sich in derselben Azure-Region befinden. Bei Erstellen eines Peerings virtueller Netzwerke in verschiedenen Abonnements müssen die Abonnements demselben Azure Active Directory-Mandanten zugeordnet sein. Wenn Sie noch keinen Azure Active Directory-Mandanten haben, können Sie [schnell einen erstellen](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#start-from-scratch). Wenn Sie virtuelle Netzwerke verbinden müssen, die beide mit dem klassischen Bereitstellungsmodell erstellt wurden, sich in verschiedenen Azure-Regionen befinden oder in Abonnements vorhanden sind, die verschiedenen Azure Active Directory-Mandanten zugeordnet sind, können Sie ein Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwenden. 
+Ein Peering zweier virtueller Netzwerke, die über das klassische Bereitstellungsmodell bereitgestellt wurden, ist nicht möglich. Ein Peering kann nur zwischen zwei virtuellen Netzwerken erstellt werden, die sich in derselben Azure-Region befinden. 
 
-> [!WARNING]
-> Das Erstellen eines Peerings zwischen virtuellen Netzwerken, die mithilfe unterschiedlicher Azure--Bereitstellungsmodelle in unterschiedlichen Azure-Abonnements erstellt wurden, ist derzeit eine Vorschauversionsfunktion. Peerings virtueller Netzwerke, die in diesem Szenario erstellt wurden, bieten ggf. nicht denselben Grad an Verfügbarkeit und Zuverlässigkeit wie Peerings virtueller Netzwerke in Versionen mit allgemeiner Verfügbarkeit. Für in diesem Szenario erstellte Peerings virtueller Netzwerke wird kein Support geboten. Sie weisen eingeschränkte Funktionen auf und stehen ggf. nicht in allen Azure-Regionen zur Verfügung. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network) .
+  > [!WARNING]
+  > Das Erstellen eines Peerings zwischen virtuellen Netzwerken in verschiedenen Regionen befindet sich derzeit in der Vorschauversion. Im Folgenden können Sie Ihr Abonnement für die Vorschauversion registrieren. Peerings virtueller Netzwerke, die in diesem Szenario erstellt wurden, bieten ggf. nicht denselben Grad an Verfügbarkeit und Zuverlässigkeit wie Peerings virtueller Netzwerke in Versionen mit allgemeiner Verfügbarkeit. Für in diesem Szenario erstellte Peerings virtueller Netzwerke wird kein Support geboten. Sie weisen eingeschränkte Funktionen auf und stehen ggf. nicht in allen Azure-Regionen zur Verfügung. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network) .
+
+Bei Erstellen eines Peerings virtueller Netzwerke in verschiedenen Abonnements müssen die Abonnements demselben Azure Active Directory-Mandanten zugeordnet sein. Wenn Sie noch keinen Azure Active Directory-Mandanten haben, können Sie [schnell einen erstellen](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#start-from-scratch). Wenn Sie virtuelle Netzwerke verbinden müssen, die beide mit dem klassischen Bereitstellungsmodell erstellt wurden, sich in verschiedenen Azure-Regionen befinden oder in Abonnements vorhanden sind, die verschiedenen Azure Active Directory-Mandanten zugeordnet sind, können Sie ein Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwenden.
 
 Zum Erstellen eines Peerings virtueller Netzwerke können Sie das [Azure-Portal](#portal), die [Azure CLI](#cli) (Befehlszeilenschnittstelle) oder [Azure PowerShell](#powershell) verwenden. Klicken Sie auf einen der vorherigen Tool-Links. So gelangen Sie direkt zu den Anleitungen zum Erstellen von Peerings in virtuellen Netzwerken mit dem Tool Ihrer Wahl.
 
-## <a name="register"></a>Registrieren für die Vorschauversion
+## <a name="register"></a>Registrieren für die globale Vorschauversion für das Peering für virtuelle Netzwerke
 
-Um sich für die Vorschauversion zu registrieren, führen Sie die folgenden Schritte für beide Abonnements aus, in denen sich die virtuellen Netzwerke für das Peering befinden. PowerShell wird das einzige Tool, das Sie zum Registrieren für die Vorschauversion verwenden können.
+Registrieren Sie sich für das regionsübergreifende Peering für virtuelle Netzwerke für die Vorschauversion, und führen Sie die folgenden Schritte für beide Abonnements aus, in denen sich die virtuellen Netzwerke für das Peering befinden. PowerShell wird das einzige Tool, das Sie zum Registrieren für die Vorschauversion verwenden können.
 
 1. Installieren Sie die neueste Version des PowerShell-Moduls [AzureRm](https://www.powershellgallery.com/packages/AzureRM/). Wenn Sie noch nicht mit Azure PowerShell vertraut sind, lesen Sie die [Übersicht über Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. Starten Sie eine PowerShell-Sitzung, und melden Sie sich mit dem Befehl `login-azurermaccount` bei Azure an.
+2. Starten Sie eine PowerShell-Sitzung, und melden Sie sich mit dem Befehl `Login-AzureRmAccount` bei Azure an.
 3. Registrieren Sie Ihr Abonnement für die Vorschauversion, indem Sie die folgenden Befehle eingeben:
 
     ```powershell
     Register-AzureRmProviderFeature `
+      -FeatureName AllowGlobalVnetPeering `
+      -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmProviderFeature `
       -FeatureName AllowClassicCrossSubscriptionPeering `
       -ProviderNamespace Microsoft.Network
-    
+
     Register-AzureRmResourceProvider `
       -ProviderNamespace Microsoft.Network
     ```
     Führen Sie die Schritte in den Abschnitten in diesem Artikel zum Portal, zur Azure CLI oder zu PowerShell erst durch, sobald die Ausgabe von **RegistrationState**, die Sie nach Eingabe des folgenden Befehls erhalten, für beide Abonnements **Registered** lautet:
 
-    ```powershell    
+    ```powershell
     Get-AzureRmProviderFeature `
-      -FeatureName AllowClassicCrossSubscriptionPeering `
+      -FeatureName AllowGlobalVnetPeering `
+      -ProviderNamespace Microsoft.Network
+    
+    Get-AzureRmProviderFeature `
+      -FeatureName AllowGlobalVnetPeering `
       -ProviderNamespace Microsoft.Network
     ```
+  > [!WARNING]
+  > Das Erstellen eines Peerings zwischen virtuellen Netzwerken in verschiedenen Regionen befindet sich derzeit in der Vorschauversion. Die in diesem Szenario erstellten Peerings virtueller Netzwerke weisen eingeschränkte Funktionen auf und stehen ggf. nicht in allen Azure-Regionen zur Verfügung. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network) .
 
 ## <a name="portal"></a>Erstellen eines Peerings: Azure-Portal
 

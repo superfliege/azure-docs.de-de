@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: bc4ff9125553c8918df3a1f84041560a5b7d4cd8
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4d96f96d6b9d6808d6a7c7ad8d720c2c2773d7d5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -28,12 +28,14 @@ In diesem Artikel finden Sie Informationen zur Problembehandlung bei bekannten P
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
+- Die Aktivierung der nahtlosen einmaligen Anmeldung kann in seltenen Fällen bis zu 30 Minuten dauern.
+- Edge-Browser wird nicht unterstützt.
+- Bei der Lizenzaktivierung für Office-Clients, insbesondere in Szenarios mit freigegebenen Computern, werden Benutzer zur erneuten Anmeldung aufgefordert.
+- Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus. und 
+- Dies gilt auch für den Internet Explorer, wenn der erweiterte Schutzmodus aktiviert ist.
+- Das nahtlose einmalige Anmelden funktioniert nicht in mobilen Browsern unter iOS und Android.
 - Wenn Sie 30 und mehr AD-Gesamtstrukturen synchronisieren, kann die nahtlose einmalige Anmeldung nicht mit Azure AD Connect aktiviert werden. Zur Problembehebung können Sie die Funktion auf Ihrem Mandanten [manuell aktivieren](#manual-reset-of-azure-ad-seamless-sso).
 - Wenn Sie Dienst-URLs von Azure AD (https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net) statt zur Zone „Lokales Intranet“ zur Zone „Vertrauenswürdige Sites“ hinzufügen, **können sich Benutzer nicht anmelden**.
-- Das nahtlose einmalige Anmelden funktioniert in Firefox- und Edge-Browsern nicht im privaten Modus. Dies gilt auch für den Internet Explorer, wenn der erweiterte Schutzmodus aktiviert ist.
-
->[!IMPORTANT]
->Wir haben vor kurzem den Support für Edge zurückgesetzt, um von Kunden gemeldete Probleme zu untersuchen.
 
 ## <a name="check-status-of-the-feature"></a>Überprüfen des Status des Features
 

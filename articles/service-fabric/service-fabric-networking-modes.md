@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 8ca04ac79665d5ecc639addd48939f71825f2024
+ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
+ms.openlocfilehash: 1ecded3af6396f50e67dc5d2a9ef8337699046ea
 ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="service-fabric-container-networking-modes"></a>Netzwerkmodi für Service Fabric-Container
@@ -79,7 +79,7 @@ Die Ermittlung von Diensten anhand der dynamisch zugewiesenen IP-Adresse ist nic
             ],
     ```
 
-2. Richten Sie den Netzwerkprofilabschnitt so ein, dass für jeden Knoten des Clusters mehrere IP-Adressen konfiguriert werden können. Im folgenden Beispiel werden für einen Windows-basierten Service Fabric-Cluster fünf IP-Adressen pro Knoten eingerichtet. (Pro Knoten können also fünf Dienstinstanzen am Port lauschen.)
+2. Richten Sie den Netzwerkprofilabschnitt so ein, dass für jeden Knoten des Clusters mehrere IP-Adressen konfiguriert werden können. Im folgenden Beispiel werden für einen Windows/Linux-basierten Service Fabric-Cluster fünf IP-Adressen pro Knoten eingerichtet. (Pro Knoten können also fünf Dienstinstanzen am Port lauschen.)
 
     ```json
     "variables": {
@@ -174,124 +174,8 @@ Die Ermittlung von Diensten anhand der dynamisch zugewiesenen IP-Adresse ist nic
                   }
                 ]
               }
-    ```
-
-    Für Linux-Cluster wird eine zusätzliche öffentliche IP-Konfiguration hinzugefügt, um ausgehende Konnektivität zu ermöglichen. Der folgende Codeausschnitt richtet für einen Linux-Cluster fünf IP-Adressen pro Knoten ein:
-
-    ```json
-    "networkProfile": {
-                "networkInterfaceConfigurations": [
-                  {
-                    "name": "[concat(parameters('nicName'), '-0')]",
-                    "properties": {
-                      "ipConfigurations": [
-                        {
-                          "name": "[concat(parameters('nicName'),'-',0)]",
-                          "properties": {
-                            "primary": "true",
-                            "publicipaddressconfiguration": {
-                              "name": "devpub",
-                              "properties": {
-                                "idleTimeoutInMinutes": 15
-                              }
-                            },
-                            "loadBalancerBackendAddressPools": [
-                              {
-                                "id": "[variables('lbPoolID0')]"
-                              }
-                            ],
-                            "loadBalancerInboundNatPools": [
-                              {
-                                "id": "[variables('lbNatPoolID0')]"
-                              }
-                            ],
-                            "subnet": {
-                              "id": "[variables('subnet0Ref')]"
-                            }
-                          }
-                        },
-                        {
-                          "name": "[concat(parameters('nicName'),'-', 1)]",
-                          "properties": {
-                            "primary": "false",
-                            "publicipaddressconfiguration": {
-                              "name": "[concat('devpub', 1)]",
-                              "properties": {
-                                "idleTimeoutInMinutes": 15
-                              }
-                            },
-                            "subnet": {
-                              "id": "[variables('subnet0Ref')]"
-                            }
-                          }
-                        },
-                        {
-                          "name": "[concat(parameters('nicName'),'-', 2)]",
-                          "properties": {
-                            "primary": "false",
-                            "publicipaddressconfiguration": {
-                              "name": "[concat('devpub', 2)]",
-                              "properties": {
-                                "idleTimeoutInMinutes": 15
-                              }
-                            },
-                            "subnet": {
-                              "id": "[variables('subnet0Ref')]"
-                            }
-                          }
-                        },
-                        {
-                          "name": "[concat(parameters('nicName'),'-', 3)]",
-                          "properties": {
-                            "primary": "false",
-                            "publicipaddressconfiguration": {
-                              "name": "[concat('devpub', 3)]",
-                              "properties": {
-                                "idleTimeoutInMinutes": 15
-                              }
-                            },
-                            "subnet": {
-                              "id": "[variables('subnet0Ref')]"
-                            }
-                          }
-                        },
-                        {
-                          "name": "[concat(parameters('nicName'),'-', 4)]",
-                          "properties": {
-                            "primary": "false",
-                            "publicipaddressconfiguration": {
-                              "name": "[concat('devpub', 4)]",
-                              "properties": {
-                                "idleTimeoutInMinutes": 15
-                              }
-                            },
-                            "subnet": {
-                              "id": "[variables('subnet0Ref')]"
-                            }
-                          }
-                        },
-                        {
-                          "name": "[concat(parameters('nicName'),'-', 5)]",
-                          "properties": {
-                            "primary": "false",
-                            "publicipaddressconfiguration": {
-                              "name": "[concat('devpub', 5)]",
-                              "properties": {
-                                "idleTimeoutInMinutes": 15
-                              }
-                            },
-                            "subnet": {
-                              "id": "[variables('subnet0Ref')]"
-                            }
-                          }
-                        }
-                      ],
-                      "primary": true
-                    }
-                  }
-                ]
-              }
-    ```
+   ```
+ 
 
 3. Richten Sie für Windows-Cluster eine NSG-Regel ein, um den Port „UDP/53“ für das VNET zu öffnen. Verwenden Sie dazu folgende Werte:
 
@@ -337,7 +221,7 @@ Sie können verschiedene Netzwerkmodi dienstübergreifend in einer Anwendung fü
 In diesem Artikel wurden Netzwerkmodi von Service Fabric behandelt.  
 
 * [Service Fabric-Anwendungsmodell](service-fabric-application-model.md)
-* [Angeben von Ressourcen in einem Dienstmanifest](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-manifest-resources)
+* [Service Fabric service manifest resources](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-manifest-resources) (Service Fabric-Dienstmanifestressourcen)
 * [Bereitstellen eines Windows-Containers in Service Fabric unter Windows Server 2016](service-fabric-get-started-containers.md)
 * [Bereitstellen eines Docker-Containers in Service Fabric unter Linux](service-fabric-get-started-containers-linux.md)
 

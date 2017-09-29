@@ -1,9 +1,9 @@
 ---
-title: "Entwickeln für Azure File Storage mit Java | Microsoft-Dokumentation"
-description: Hier erfahren Sie, wie Sie Java-Anwendungen und -Dienste entwickeln, die Azure File Storage zum Speichern von Dateidaten verwenden.
+title: "Entwickeln für Azure Files mit Java | Microsoft-Dokumentation"
+description: Hier erfahren Sie, wie Sie Java-Anwendungen und -Dienste entwickeln, die Azure Files zum Speichern von Dateidaten verwenden.
 services: storage
 documentationcenter: java
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 3bfbfa7f-d378-4fb4-8df3-e0b6fcea5b27
@@ -12,23 +12,23 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 05/27/2017
-ms.author: robinsh
+ms.date: 09/19/2017
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ce38944b9d5e663505c5808864ba61a5e2284f3b
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 192c4b5b89feca2a2e39c5e0670d05cc8868eb03
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="develop-for-azure-file-storage-with-java"></a>Entwickeln für Azure File Storage mit Java
+# <a name="develop-for-azure-files-with-java"></a>Entwickeln für Azure Files mit Java
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
-## <a name="about-this-tutorial"></a>Informationen zu diesem Tutorial
-Dieses Tutorial veranschaulicht die grundlegende Verwendung von Java bei der Entwicklung von Anwendungen oder Diensten, die Azure File Storage zum Speichern von Dateidaten verwenden. In diesem Tutorial erstellen wir eine einfache Konsolenanwendung und zeigen Ihnen, wie Sie grundlegende Aktionen mit Java und Azure File Storage ausführen:
+## <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
+Dieses Tutorial veranschaulicht die grundlegende Verwendung von Java bei der Entwicklung von Anwendungen oder Diensten, die Azure Files zum Speichern von Dateidaten verwenden. In diesem Tutorial erstellen wir eine einfache Konsolenanwendung und zeigen Ihnen, wie Sie grundlegende Aktionen mit Java und Azure Files ausführen:
 
 * Erstellen und Löschen von Azure-Dateifreigaben
 * Erstellen und Löschen von Verzeichnissen
@@ -36,12 +36,12 @@ Dieses Tutorial veranschaulicht die grundlegende Verwendung von Java bei der Ent
 * Hochladen, Herunterladen und Löschen einer Datei
 
 > [!Note]  
-> Da auf Azure File Storage über SMB zugegriffen werden kann, können Sie unter Verwendung der standardmäßigen Java-E/A-Klassen einfache Anwendungen mit Zugriff auf die Azure-Dateifreigabe schreiben. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage Java SDK verwenden, das über die [Azure File Storage-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure File Storage kommuniziert.
+> Da auf Azure Files über SMB zugegriffen werden kann, können Sie unter Verwendung der standardmäßigen Java-E/A-Klassen einfache Anwendungen mit Zugriff auf die Azure-Dateifreigabe schreiben. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage Java SDK verwenden, das über die [Azure File Storage-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure Files kommuniziert.
 
 ## <a name="create-a-java-application"></a>Erstellen einer Java-Anwendung
 Zum Erstellen der Beispiele benötigen Sie das Java Development Kit (JDK) und das [Azure Storage-SDK für Java][]. Sie sollten auch ein Azure-Speicherkonto erstellt haben.
 
-## <a name="setup-your-application-to-use-azure-file-storage"></a>Einrichten der Anwendung für das Verwenden von Azure File Storage
+## <a name="set-up-your-application-to-use-azure-files"></a>Einrichten der Anwendung für die Verwendung von Azure Files
 Um die Azure-Speicher-APIs zu verwenden, fügen Sie die folgende Anweisung am Anfang der Java-Datei dort ein, wo der Zugriff auf den Speicherdienst erfolgen soll.
 
 ```java
@@ -50,8 +50,8 @@ import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.file.*;
 ```
 
-## <a name="setup-an-azure-storage-connection-string"></a>Einrichten einer Azure-Speicherverbindungszeichenfolge
-Zur Verwendung von Azure File Storage müssen Sie eine Verbindung mit Ihrem Azure-Speicherkonto herstellen. Im ersten Schritt muss eine Verbindungszeichenfolge konfiguriert werden, über die die Verbindung mit dem Speicherkonto hergestellt wird. Definieren Sie dazu eine statische Variable.
+## <a name="set-up-an-azure-storage-connection-string"></a>Einrichten einer Azure-Speicherverbindungszeichenfolge
+Zum Verwenden von Azure Files müssen Sie eine Verbindung mit Ihrem Azure Storage-Konto herstellen. Im ersten Schritt muss eine Verbindungszeichenfolge konfiguriert werden, mit der die Verbindung mit dem Speicherkonto hergestellt wird. Definieren Sie dazu eine statische Variable.
 
 ```java
 // Configure the connection-string with your values
@@ -81,14 +81,14 @@ try {
 **CloudStorageAccount.parse** löst eine InvalidKeyException aus, daher müssen Sie sie in einem try/catch-Block platzieren.
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
-Alle Dateien und Verzeichnisse in Azure File Storage befinden sich in einem Container mit dem Namen **Freigabe**. Das Speicherkonto kann so viele Freigaben aufweisen, wie es die Kapazität des Kontos zulässt. Für den Zugriff auf eine Freigabe und ihren Inhalt muss ein Azure File Storage-Client verwendet werden.
+Alle Dateien und Verzeichnisse in Azure Files befinden sich in einem Container mit dem Namen **Freigabe**. Das Speicherkonto kann über so viele Freigaben verfügen, wie es die Kapazität des Kontos zulässt. Für den Zugriff auf eine Freigabe und ihren Inhalt muss ein Azure Files-Client verwendet werden.
 
 ```java
-// Create the Azure File storage client.
+// Create the Azure Files client.
 CloudFileClient fileClient = storageAccount.createCloudFileClient();
 ```
 
-Mit dem Azure File Storage-Client können Sie dann einen Verweis auf die Freigabe abrufen.
+Mit dem Azure Files-Client können Sie dann einen Verweis auf die Freigabe abrufen.
 
 ```java
 // Get a reference to the file share
@@ -129,7 +129,7 @@ try
 ```
 
 ## <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
-Sie können zudem den Speicher organisieren, indem Sie Dateien in Unterverzeichnissen ablegen, anstatt alle Dateien im Stammverzeichnis zu speichern. Mit Azure File Storage können Sie so viele Verzeichnisse erstellen wie in Ihrem Konto zugelassen. Mit dem folgenden Code wird ein Unterverzeichnis mit dem Namen **sampledir** im Stammverzeichnis erstellt.
+Sie können zudem den Speicher organisieren, indem Sie Dateien in Unterverzeichnissen ablegen, anstatt alle Dateien im Stammverzeichnis zu speichern. Mit Azure Files können Sie so viele Verzeichnisse erstellen wie für Ihr Konto zulässig. Mit dem folgenden Code wird ein Unterverzeichnis mit dem Namen **sampledir** im Stammverzeichnis erstellt.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -194,7 +194,7 @@ Da Sie nun einen Verweis auf das Stammverzeichnis der Freigabe erstellt haben, k
 ```
 
 ## <a name="download-a-file"></a>Herunterladen einer Datei
-Ein Vorgang, den Sie in Bezug auf Azure File Storage häufiger durchführen werden, ist das Herunterladen von Dateien. Im folgenden Beispiel wird mit dem Code die Datei "SampleFile.txt" heruntergeladen und ihr Inhalt angezeigt.
+Ein Vorgang, den Sie in Bezug auf Azure Files häufiger durchführen werden, ist das Herunterladen von Dateien. Im folgenden Beispiel wird mit dem Code die Datei "SampleFile.txt" heruntergeladen und ihr Inhalt angezeigt.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -211,7 +211,7 @@ System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>Löschen von Dateien
-Ein weiterer häufiger Azure File Storage-Vorgang ist das Löschen von Dateien. Mit dem folgenden Code wird die Datei "SampleFile.txt" gelöscht, die im Verzeichnis **sampledir**gespeichert ist.
+Ein weiterer häufiger Azure Files-Vorgang ist das Löschen von Dateien. Mit dem folgenden Code wird die Datei "SampleFile.txt" gelöscht, die im Verzeichnis **sampledir**gespeichert ist.
 
 ```java
 // Get a reference to the root directory for the share.
@@ -238,5 +238,5 @@ Folgen Sie diesen Links, wenn Sie mehr über andere Azure-Speicher-APIs erfahren
 * [Referenz für Azure Storage-Client-SDKs](http://dl.windowsazure.com/storage/javadoc/)
 * [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Storage-Teamblog](http://blogs.msdn.com/b/windowsazurestorage/)
-* [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../common/storage-use-azcopy.md* [Troubleshooting Azure File storage problems - Windows](storage-troubleshoot-windows-file-connection-problems.md)
-)
+* [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../common/storage-use-azcopy.md)
+* [Behandeln von Azure Files-Problemen unter Windows](storage-troubleshoot-windows-file-connection-problems.md)

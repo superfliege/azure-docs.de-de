@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 09/25/2017
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 86e025f9211a1d7ed07e831b7ce4c21be351513b
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: fbfb3d026540b45a28751d6c3ab0f8dce444e0cd
 ms.contentlocale: de-de
-ms.lasthandoff: 03/09/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -43,6 +43,7 @@ Metriken weisen folgende Merkmale auf:
 * Sämtliche Metriken werden im **1-Minuten-Takt** erfasst. Jede Minute erhalten Sie von Ihrer Ressource einen Metrikwert, der Ihnen einen Überblick über den Zustand und die Integrität Ihrer Ressource nahezu in Echtzeit bietet.
 * Metriken sind **sofort verfügbar**. Sie müssen sie nicht aktivieren oder zusätzliche Diagnosen einrichten.
 * Sie haben **30 Tage lang Zugriff auf den Verlauf** jeder Metrik. Sie können schnell den aktuellen und monatlichen Trend für die Leistung oder Integrität Ihrer Ressource überblicken.
+* Einige Metriken können über Attribute für Name/Wert-Paare verfügen, die als **Dimensionen** bezeichnet werden. Dadurch können Sie eine Metrik auf sinnvollere Weise weiter segmentieren und untersuchen.
 
 Weitere Funktionen:
 
@@ -85,14 +86,16 @@ Es folgt eine kurze exemplarische Vorgehensweise zum Erstellen eines Metrikdiagr
 >
 >
 
+Azure Monitor verfügt über eine neue Darstellung der Metriken in Diagrammen, die in der Vorschauversion verfügbar ist. Dadurch wird es Benutzern ermöglicht, Metriken aus mehreren Ressourcen in einem Diagramm zu überlagern. Die Benutzer können mehrdimensionale Metriken ebenfalls darstellen, segmentieren und filtern, indem Sie die neuen Diagramme für Metriken verwenden. Klicken Sie [hier](https://aka.ms/azuremonitor/new-metrics-charts), um weitere Informationen zu erhalten.
+
 ## <a name="access-metrics-via-the-rest-api"></a>Zugreifen auf Metriken über die REST-API
 Auf Azure-Metriken kann über Azure Monitor-APIs zugegriffen werden. Es gibt zwei APIs, mit denen Sie Metriken ermitteln und darauf zugreifen können:
 
-* Verwenden Sie die [Azure Monitor-REST-API für Metrikdefinitionen](https://msdn.microsoft.com/library/mt743621.aspx) für den Zugriff auf die Liste von Metriken, die für einen Dienst verfügbar sind.
-* Verwenden Sie die [Azure Monitor-REST-API für Metriken](https://msdn.microsoft.com/library/mt743622.aspx) für den Zugriff auf die eigentlichen Metrikdaten.
+* Verwenden Sie die [Azure Monitor-REST-API für Metrikdefinitionen](https://docs.microsoft.com/en-us/rest/api/monitor/metricdefinitions) für den Zugriff auf die Liste von Metriken und Dimensionen, die für einen Dienst verfügbar sind.
+* Verwenden Sie die [Azure Monitor-REST-API für Metriken](https://docs.microsoft.com/en-us/rest/api/monitor/metrics), um die tatsächlichen Metrikdaten zu segmentieren, zu filtern und auf diese zuzugreifen.
 
 > [!NOTE]
-> In diesem Artikel geht es um die Metriken, die über die [neue API für Metriken](https://msdn.microsoft.com/library/dn931930.aspx) für Azure-Ressourcen abgerufen werden können. Die aktuelle API-Version für die neue Metrikdefinitions-API lautet 2016-03-01, die Version für die Metrik-API lautet 2016-09-01. Auf die Legacy-Metrikdefinitionen und -Metriken kann über die API-Version 2014-04-01 zugegriffen werden.
+> In diesem Artikel geht es um die Metriken, die über die [neue API für Metriken](https://docs.microsoft.com/en-us/rest/api/monitor/) für Azure-Ressourcen abgerufen werden können. Die API-Version für die neuen Metrikdefinitionen und Metrik-APIs lautet 2017-05-01-preview. Auf die Legacy-Metrikdefinitionen und -Metriken kann über die API-Version 2014-04-01 zugegriffen werden.
 >
 >
 
@@ -109,9 +112,14 @@ Dies können Sie über Resource Manager-Vorlagen, [PowerShell](insights-powershe
 Um Benachrichtigungen zu empfangen oder aufgrund von Metrikdaten automatisierte Aktionen auszuführen, können Sie Warnungsregeln oder Einstellungen für die automatische Skalierung konfigurieren.
 
 ### <a name="configure-alert-rules"></a>Konfigurieren von Warnungsregeln
-Sie können Warnungsregeln zu Metriken konfigurieren. Diese Warnungsregeln können überprüfen, ob eine Metrik einen bestimmten Schwellenwert überschritten hat. Sie können Sie dann per E-Mail benachrichtigen oder einen Webhook auslösen, der zum Ausführen eines benutzerdefinierten Skripts genutzt werden kann. Außerdem können Sie mit dem Webhook Integrationen von Drittanbieterprodukten konfigurieren.
+Sie können Warnungsregeln zu Metriken konfigurieren. Diese Warnungsregeln können überprüfen, ob eine Metrik einen bestimmten Schwellenwert überschritten hat. Es gibt zwei Funktionen für Metrikwarnungen, die von Azure Monitor bereitgestellt werden.
+
+Metrikwarnungen: Diese können Sie per E-Mail benachrichtigen oder einen Webhook auslösen, der zum Ausführen eines benutzerdefinierten Skripts genutzt werden kann. Außerdem können Sie mit dem Webhook Integrationen von Drittanbieterprodukten konfigurieren.
 
  ![Metriken und Warnungsregeln in Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview4.png)
+
+Warnungen nahezu in Echtzeit (Vorschau): Diese können mehrere Metriken und Schwellenwerte für eine Ressource überwachen und Sie dann über eine [Aktionsgruppe](/monitoring-action-groups.md) benachrichtigen. Weitere Informationen zu [Metrikwarnungen, die nahezu in Echtzeit stattfinden, finden Sie hier](https://aka.ms/azuremonitor/near-real-time-alerts).
+
 
 ### <a name="autoscale-your-azure-resources"></a>Automatische Skalierung Ihrer Azure-Ressourcen
 Einige Azure-Ressourcen unterstützen das horizontale Hoch- oder Herunterskalieren mehrerer Instanzen, um Ihre Workloads zu bewältigen. Die automatische Skalierungsfunktion steht für App Services (Web-Apps), VM-Skalierungsgruppen und klassische Azure Cloud Services zur Verfügung. Sie können Regeln zur automatischen Skalierung konfigurieren, damit horizontal hoch- oder herunterskaliert wird, sobald eine bestimmte, für Ihre Workload relevante Metrik einen von Ihnen festgelegten Schwellenwert überschreitet. Weitere Informationen finden Sie in der [Übersicht über die automatische Skalierung](monitoring-overview-autoscale.md).

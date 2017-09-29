@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 5ff4d86082c03dcd7098743a984a97aa70232d1d
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: c7b4d0e7d7d95f2e3f8c5a97b78c60c52cc862a0
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Verwenden des Blobspeichers mit Xamarin
@@ -245,10 +245,9 @@ Wenn Sie Ihre App ausführen, erstellt sie den Container `mycontainer` in Ihrem 
 In diesem Tutorial haben Sie gelernt, wie eine plattformübergreifende Anwendung in Xamarin erstellt wird, die Azure Storage verwendet und besonders auf ein Szenario in Blob Storage fokussiert ist. Allerdings können Sie sie nicht nur auf Blob Storage, sondern auch auf Table Storage, File Storage und Queue Storage anwenden. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md)
+* [Einführung in Azure Files](../files/storage-files-introduction.md)
+* [Entwickeln für Azure Files mit .NET](../files/storage-dotnet-how-to-use-files.md)
 * [Erste Schritte mit Azure Table Storage mit .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [Erste Schritte mit Azure Queue Storage mit .NET](../queues/storage-dotnet-how-to-use-queues.md)
-* [Erste Schritte mit Azure File Storage unter Windows](../files/storage-dotnet-how-to-use-files.md)
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
-
-

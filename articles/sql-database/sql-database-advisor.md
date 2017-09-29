@@ -13,22 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 07/05/2017
+ms.date: 09/20/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 357a25a665894c86ddb0f93beeb4dd59d8837489
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 53bfbd602c2c395d510529eacd5b8075b20437ab
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="performance-recommendations"></a>Empfehlungen zur Leistung
 
 Azure SQL-Datenbank lernt mit Ihrer Anwendung und passt sich daran an. Darüber hinaus bietet der Dienst benutzerdefinierte Empfehlungen, mit denen Sie die Leistung Ihrer SQL-Datenbanken maximieren können. Die Leistung kann kontinuierlich durch die Analyse Ihres Nutzungsverlauf von SQL-Datenbank bewertet werden. Die Empfehlungen, die gegeben werden, basieren auf einem für die Datenbank eindeutigen Workloadmuster und tragen zur Verbesserung der Leistung bei.
 
-> [!NOTE]
-> Es wird empfohlen, die Empfehlungen durch das Aktivieren von „Automatische Optimierung“ in Ihrer Datenbank zu verwenden. Weitere Informationen finden Sie unter [Automatic tuning (Automatische Optimierung)](sql-database-automatic-tuning.md).
+> [!TIP]
+> Die [automatische Optimierung](sql-database-automatic-tuning.md) ist die empfohlene Methode zur Leistungsoptimierung. [Intelligent Insights](sql-database-intelligent-insights.md) ist die empfohlene Methode zum Überwachen der Leistung. 
 >
 
 ## <a name="create-index-recommendations"></a>Empfehlungen zum Erstellen eines Index
@@ -78,12 +77,10 @@ Empfehlungen zum Beheben von Schemaproblemen werden angezeigt, wenn der Azure SQ
 ## <a name="next-steps"></a>Nächste Schritte
 Überwachen Sie Ihre Empfehlungen, und wenden Sie sie weiterhin an, um die Leistung zu optimieren. Datenbankworkloads sind dynamisch und ändern sich ständig. Der SQL Database Advisor setzt die Überwachung fort und bietet Empfehlungen, mit denen sich die Leistung Ihrer Datenbank erhöhen lässt. 
 
+* Weitere Informationen zur automatischen Optimierung von Datenbankindizes und Abfrageausführungsplänen finden Sie unter [Automatische Optimierung der Azure SQL-Datenbank](sql-database-automatic-tuning.md).
+* Weitere Informationen zum automatischen Überwachen der Datenbankleistung mit der automatisierten Diagnose und der Ursachenanalyse von Leistungsproblemen finden Sie unter [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md).
 * Weiter Informationen zur Verwendung von Leistungsempfehlungen im Azure-Portal finden Sie unter [Performance recommendations in the Azure portal (Leistungsempfehlungen im Azure-Portal)](sql-database-advisor-portal.md).
 * Unter [Query Performance Insight](sql-database-query-performance.md) erfahren Sie, wie Sie die Auswirkungen Ihrer wichtigsten Abfragen auf die Leistung anzeigen und untersuchen können.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx)
-* [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md)
 
 
