@@ -24,6 +24,8 @@
   items:
     - name: Textanalyse mit Power BI
       href: Tutorials/tutorial-power-bi-key-phrases.md
+    - name: Textanalyse in Power Apps
+      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
 - name: Anleitungen
   items:
     - name: Registrieren

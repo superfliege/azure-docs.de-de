@@ -33,6 +33,7 @@
 
 ## Debuggen von U-SQL-Programmen
 ### [Überwachung und Problembehandlung von Aufträgen](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+### [Problembehandlung für einen nicht normalen periodischen Auftrag](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
 ### [Debuggen von C#-Code in U-SQL](data-lake-analytics-debug-u-sql-jobs.md)
 ### [Verwenden von Job Browser und der Auftragsansicht](data-lake-analytics-data-lake-tools-view-jobs.md)
 ### [Verwenden der Scheitelpunktausführungsansicht](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)

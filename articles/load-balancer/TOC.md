@@ -4,7 +4,7 @@
 ## [Internet Load Balancer](load-balancer-internet-overview.md)
 ## [Interner Load Balancer](load-balancer-internal-overview.md)
 ## [Load Balancer-Tests](load-balancer-custom-probe-overview.md)
-## [Understand High Availability Ports](load-balancer-ha-ports-overview.md) (Grundlegendes zu Hochverfügbarkeitsports)
+## [Grundlegendes zu Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md)
 ## [Support für Azure Resource Manager](load-balancer-arm.md)
 ## [IPv6-Unterstützung](load-balancer-ipv6-overview.md)
 ## [Mehrere VIPs](load-balancer-multivip-overview.md)
@@ -26,18 +26,17 @@
 ### [Konfigurieren des Load Balancers mit Internetzugriff (CLI)](load-balancer-get-started-internet-arm-cli.md)
 ### [Konfigurieren des Load Balancers mit Internetzugriff (Vorlage)](load-balancer-get-started-internet-arm-template.md)
 
-## [Konfigurieren des Load Balancers mit Internetzugriff (klassisches Portal)](load-balancer-get-started-internet-classic-portal.md)
+## [Konfigurieren des Load Balancers mit Internetzugriff (klassisches PowerShell)](load-balancer-get-started-internet-classic-ps.md)
 ### [Konfigurieren des Load Balancers mit Internetzugriff (klassische Cloud)](load-balancer-get-started-internet-classic-cloud.md)
-### [Konfigurieren des Load Balancers mit Internetzugriff (klassische PS)](load-balancer-get-started-internet-classic-ps.md)
 ### [Konfigurieren des Load Balancers mit Internetzugriff (klassische CLI)](load-balancer-get-started-internet-classic-cli.md)
 
 ## [Erstellen eines Load Balancers mit Internetzugriff und IPv6](load-balancer-ipv6-internet-ps.md)
 ### [Erstellen eines Load Balancers mit Internetzugriff und IPv6 (CLI)](load-balancer-ipv6-internet-cli.md)
 ### [Erstellen eines Load Balancers mit Internetzugriff und IPv6 (Vorlage)](load-balancer-ipv6-internet-template.md)
 
-## [Create a zone redundant Public Load Balancer Standard](load-balancer-get-started-internet-az-portal.md) (Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer)
-### [Create a zone redundant Public Load Balancer Standard (PowerShell)](load-balancer-get-started-internet-az-powershell.md) (Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer [PowerShell])
-### [Create a zone redundant Public Load Balancer Standard (CLI)](load-balancer-get-started-internet-az-cli.md) (Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer [CLI])
+## [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer](load-balancer-get-started-internet-az-portal.md)
+### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer [PowerShell]](load-balancer-get-started-internet-az-powershell.md)
+### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer [CLI]](load-balancer-get-started-internet-az-cli.md)
 
 # Anleitung
 ## [Konfigurieren des TCP-Leerlauftimeouts für den Load Balancer](load-balancer-tcp-idle-timeout.md)
@@ -50,10 +49,10 @@
 ### [Verwenden mehrerer IP-Konfigurationen (PowerShell)](load-balancer-multiple-ip-powershell.md)
 ## [Log Analytics für den Azure Load Balancer](load-balancer-monitor-log.md)
 ## [Konfigurieren von DHCPv6 für virtuelle Linux-Computer](load-balancer-ipv6-for-linux.md)
-## [Configure High Availability Ports for Internal Load Balancer](load-balancer-configure-ha-ports.md) (Konfigurieren von Hochverfügbarkeitsports für internen Lastenausgleich)
-## [Create a public IP address in an availability zone](../virtual-network/create-public-ip-availability-zone-portal.md) (Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone)
-## [Create a public IP address in an availability zone (PowerShell)](../virtual-network/create-public-ip-availability-zone-powershell.md) (Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone [PowerShell])
-## [Create a public IP address in an availability zone (CLI)](../virtual-network/create-public-ip-availability-zone-cli.md) (Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone [CLI])
+## [Konfigurieren von Hochverfügbarkeitsports für internen Lastenausgleich](load-balancer-configure-ha-ports.md)
+## [Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone](../virtual-network/create-public-ip-availability-zone-portal.md)
+## [Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone [PowerShell]](../virtual-network/create-public-ip-availability-zone-powershell.md)
+## [Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone [CLI]](../virtual-network/create-public-ip-availability-zone-cli.md)
 ## Problembehandlung
 ### [Beheben von Problemen mit Azure Load Balancer](load-balancer-troubleshoot.md)
 

@@ -4,7 +4,7 @@
 ## [DNS-Zonen und -Einträge](dns-zones-records.md)
 ## [DNS-Delegierung mit Azure DNS](dns-domain-delegation.md)
 ## [Häufig gestellte Fragen zu DNS](dns-faq.md)
-## [Using private DNS zones](private-dns-overview.md) (Verwenden privater DNS-Zonen)
+## [Verwenden privater DNS-Zonen](private-dns-overview.md)
 
 # Erste Schritte
 
@@ -64,7 +64,7 @@
 ## [Virtueller Computer](/azure/virtual-machines/)
 ## [Load Balancer](/azure/load-balancer/)
 ## [Traffic Manager](/azure/traffic-manager/)
-## [Web-Apps](/azure/app-service-web/)
+## [Web-Apps](/azure/app-service/)
 
 # Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=networking)
