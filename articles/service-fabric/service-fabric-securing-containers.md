@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: a262730aec6ce5a1c6f3b7d2d41056a6e6edfbe0
+ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
+ms.openlocfilehash: 3e41e293cc5340c0e32cf2cc6ef7ab7534330884
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -28,7 +28,7 @@ Service Fabric bietet einen Mechanismus, über den Dienste innerhalb eines Conta
 
 ## <a name="certificate-management-for-containers"></a>Zertifikatverwaltung für Container
 
-Containerdienste können durch Angabe eines Zertifikats geschützt werden. Das Zertifikat muss auf den Knoten des Clusters installiert werden. Die Zertifikatinformationen werden im Anwendungsmanifest unter dem Tag `ContainerHostPolicies` angegeben, wie im folgenden Codeausschnitt zu sehen:
+Containerdienste können durch Angabe eines Zertifikats geschützt werden. Das Zertifikat muss in LocalMachine auf allen Knoten des Clusters installiert werden. Die Zertifikatinformationen werden im Anwendungsmanifest unter dem Tag `ContainerHostPolicies` angegeben, wie im folgenden Codeausschnitt zu sehen:
 
 ```xml
   <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
@@ -36,16 +36,28 @@ Containerdienste können durch Angabe eines Zertifikats geschützt werden. Das Z
     <CertificateRef Name="MyCert2" X509FindValue="[Thumbprint2]"/>
  ```
 
-Beim Start der Anwendung liest die Laufzeit die Zertifikate und generiert eine PFX-Datei und ein Kennwort für jedes Zertifikat. Auf diese PFX-Datei und das Kennwort kann innerhalb des Containers über folgende Umgebungsvariablen zugegriffen werden: 
+Für Windows-Cluster liest die Laufzeit beim Start der Anwendung die Zertifikate und generiert eine PFX-Datei und ein Kennwort für jedes Zertifikat. Auf diese PFX-Datei und das Kennwort kann innerhalb des Containers über folgende Umgebungsvariablen zugegriffen werden: 
 
-* **Certificate_[Name des Codepakets]_[Zertifikatname]_PFX**
-* **Certificate_[Name des Codepakets]_[Zertifikatname]_Password**
+* **Certificate_ServicePackageName_CodePackageName_CertName_PFX**
+* **Certificate_ServicePackageName_CodePackageName_CertName_Password**
 
-Die PFX-Datei wird vom Containerdienst oder -prozess in den Container importiert. Für den Zertifikatimport können Sie Skripts vom Typ `setupentrypoint.sh` verwenden oder benutzerdefinierten Code innerhalb des Containers ausführen. C#-Beispielcode zum Importieren der PFX-Datei:
+Für Linux-Cluster werden die Zertifikate (PEM) einfach aus dem durch X509StoreName angegebenen Speicher in den Container kopiert. Die entsprechenden Linux-Umgebungsvariablen sind:
+
+* **Certificate_ServicePackageName_CodePackageName_CertName_PEM**
+* **Certificate_ServicePackageName_CodePackageName_CertName_PrivateKey**
+
+Wenn Sie bereits über die Zertifikate im erforderlichen Format verfügen und einfach innerhalb des Containers darauf zugreifen möchten, können Sie alternativ ein Datenpaket innerhalb des App-Pakets erstellen und Folgendes in Ihrem Anwendungsmanifest angeben:
+
+```xml
+  <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
+   <CertificateRef Name="MyCert1" DataPackageRef="[DataPackageName]" DataPackageVersion="[Version]" RelativePath="[Relative Path to certificate inside DataPackage]" Password="[password]" IsPasswordEncrypted="[true/false]"/>
+ ```
+
+Die Zertifikatdateien werden vom Containerdienst oder -prozess in den Container importiert. Für den Zertifikatimport können Sie Skripts vom Typ `setupentrypoint.sh` verwenden oder benutzerdefinierten Code innerhalb des Containers ausführen. C#-Beispielcode zum Importieren der PFX-Datei:
 
 ```c#
-    string certificateFilePath = Environment.GetEnvironmentVariable("Certificate_NodeContainerService.Code_MyCert1_PFX");
-    string passwordFilePath = Environment.GetEnvironmentVariable("Certificate_NodeContainerService.Code_MyCert1_Password");
+    string certificateFilePath = Environment.GetEnvironmentVariable("Certificate_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");
+    string passwordFilePath = Environment.GetEnvironmentVariable("Certificate_MyServicePackage_NodeContainerService.Code_MyCert1_Password");
     X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
     string password = File.ReadAllLines(passwordFilePath, Encoding.Default)[0];
     password = password.Replace("\0", string.Empty);
@@ -54,7 +66,7 @@ Die PFX-Datei wird vom Containerdienst oder -prozess in den Container importiert
     store.Add(cert);
     store.Close();
 ```
-Dieses PFX-Zertifikat kann verwendet werden, um die Anwendung oder den Dienst zu authentifizieren oder um die Kommunikation mit anderen Diensten zu schützen.
+Dieses PFX-Zertifikat kann verwendet werden, um die Anwendung oder den Dienst zu authentifizieren oder die Kommunikation mit anderen Diensten zu schützen. Standardmäßig ist der Zugriff auf die Dateien nur über das Konto SYSTEM möglich. Wenn der Dienst es erfordert, können Sie den Zugriff über andere Konten einrichten.
 
 
 ## <a name="set-up-gmsa-for-windows-containers"></a>Einrichten von gMSA für Windows-Container

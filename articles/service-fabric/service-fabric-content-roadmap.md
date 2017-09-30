@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/30/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: 1db13c30e2ec1de62d5103f85b4181a5750403c5
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: bbad2e501acf024fb5b7f5c62ebe5fa81e19cce7
 ms.contentlocale: de-de
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Sie möchten sich über Service Fabric informieren?
@@ -139,9 +139,9 @@ Das Ausführen von Service Fabric-Clustern unter Azure ermöglicht die Integrati
 
 Sie können einen Cluster über das [Azure-Portal](service-fabric-cluster-creation-via-portal.md), mithilfe einer [Vorlage](service-fabric-cluster-creation-via-arm.md) oder mit [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md) in Azure erstellen.
 
-Die Vorschauversion von Service Fabric unter Linux ermöglicht Ihnen, hoch verfügbare und skalierbare Anwendungen unter Linux (genauso wie unter Windows) zu erstellen, bereitzustellen und zu verwalten. Neben C# (.NET Core) stehen Service Fabric-Frameworks (Reliable Services und Reliable Actors) in Java unter Linux zur Verfügung. Sie können auch [ausführbare Gastdienste](service-fabric-deploy-existing-app.md) mit jeder beliebigen Sprache und jedem beliebigen Framework erstellen. Die Vorschau unterstützt darüber hinaus das Orchestrieren von Docker-Containern. Docker-Container können ausführbare Gastanwendungsdateien oder native Service Fabric-Dienste ausführen, die die Service Fabric-Frameworks nutzen. Weitere Informationen finden Sie unter [Service Fabric unter Linux](service-fabric-linux-overview.md).
+Service Fabric unter Linux ermöglicht Ihnen, hoch verfügbare und skalierbare Anwendungen unter Linux (genauso wie unter Windows) zu erstellen, bereitzustellen und zu verwalten. Neben C# (.NET Core) stehen Service Fabric-Frameworks (Reliable Services und Reliable Actors) in Java unter Linux zur Verfügung. Sie können auch [ausführbare Gastdienste](service-fabric-deploy-existing-app.md) mit jeder beliebigen Sprache und jedem beliebigen Framework erstellen. Orchestrierung von Docker-Containern wird ebenfalls unterstützt. Docker-Container können ausführbare Gastanwendungsdateien oder native Service Fabric-Dienste ausführen, die die Service Fabric-Frameworks nutzen. Weitere Informationen finden Sie unter [Service Fabric unter Linux](service-fabric-deploy-anywhere.md).
 
-Da es sich bei Service Fabric unter Linux um eine Vorschauversion handelt, werden einige Features zwar unter Windows unterstützt, aber nicht unter Linux. Weitere Informationen finden Sie unter [Unterschiede zwischen Service Fabric unter Linux und Windows](service-fabric-linux-windows-differences.md).
+Einige Features werden unter Windows unterstützt, aber nicht unter Linux. Weitere Informationen finden Sie unter [Unterschiede zwischen Service Fabric unter Linux und Windows](service-fabric-linux-windows-differences.md).
 
 ### <a name="standalone-clusters"></a>Eigenständige Cluster
 Service Fabric verfügt über ein Installationspaket, mit dem Sie eigenständige Service Fabric-Cluster lokal oder bei einem Cloudanbieter erstellen können. Eigenständige Cluster bieten Ihnen die Möglichkeit zum Hosten von Clustern an beliebigen Orten. Wenn Ihre Daten der Konformität oder gesetzlichen Einschränkungen unterliegen oder Sie Ihre Daten lokal speichern möchten, können Sie Ihre eigenen Cluster und Anwendungen hosten. Service Fabric-Anwendungen können ohne Änderungen in mehreren Hostumgebungen ausgeführt werden. Daher lassen sich Ihre Kenntnisse über das Erstellen von Anwendungen von einer Hostumgebung in die andere übertragen. 

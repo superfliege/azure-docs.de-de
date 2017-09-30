@@ -3,7 +3,7 @@ title: Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen in Azure | M
 description: "Lastenausgleich in Konfigurationen mit primären und sekundären IP-Adressen"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: na
 ms.assetid: 244907cd-b275-4494-aaf7-dcfc4d93edfe
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: cf1e68c7b37b2506de007bdf24eea63a27187a33
-ms.lasthandoff: 03/22/2017
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 8c0fc8d11a872b99fee2efa3a32a9e1ccce67f3c
+ms.contentlocale: de-de
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -27,6 +28,8 @@ ms.lasthandoff: 03/22/2017
 > * [Portal](load-balancer-multiple-ip.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](load-balancer-multiple-ip-cli.md)
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Dieser Artikel beschreibt die Verwendung von Azure Load Balancer mit mehreren IP-Adressen an einer sekundären Netzwerkschnittstelle (NIC). In diesem Szenario verwenden wir zwei virtuelle Computer mit Windows, von denen jeder eine primäre und eine sekundäre NIC aufweist. Die sekundären NICs haben jeweils zwei IP-Konfigurationen. Jeder virtuelle Computer hostet die beiden Websites „contoso.com“ und „fabrikam.com“. Jede Website ist an eine der IP-Konfigurationen der sekundären NIC gebunden. Wir verwenden Azure Load Balancer, um zwei Front-End-IP-Adressen verfügbar zu machen (jeweils eine für jede Website), damit der Datenverkehr an die entsprechende IP-Konfiguration für die Website verteilt werden kann. Dieses Szenario verwendet die gleiche Portnummer auf beiden Front-Ends sowie beide Back-End-Pool-IP-Adressen.
 
@@ -39,7 +42,7 @@ In diesem Beispiel wird angenommen, dass Sie über eine Ressourcengruppe mit dem
 
 ## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Schritte für den Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen
 
-Führen Sie die Schritte unten aus, um das in diesem Artikel beschriebene Szenario umzusetzen:
+Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Szenario umzusetzen:
 
 ### <a name="step-1-configure-the-secondary-nics-for-each-vm"></a>SCHRITT 1: Konfigurieren der sekundären NICs für jeden virtuellen Computer
 
@@ -64,7 +67,7 @@ Erstellen Sie wie folgt einen Load Balancer:
 2. Klicken Sie oben links auf dem Bildschirm auf **Neu** > **Netzwerk** > **Load Balancer**. Klicken Sie dann auf **Erstellen**.
 3. Geben Sie auf dem Blatt **Load Balancer erstellen** einen Namen für den Load Balancer ein. In diesem Fall heißt er *meinlb*.
 4. Erstellen Sie unter „Öffentliche IP-Adresse“ eine neue öffentliche IP-Adresse mit dem Namen **ÖffentlicheIP1**.
-5. Wählen Sie unter „Ressourcengruppe“ die vorhandene Ressourcengruppe Ihrer virtuellen Computer aus (z.B. *contosofabrikam*). Wählen Sie einen geeigneten Speicherort aus, und klicken Sie dann auf **OK**. Die Bereitstellung des Load Balancers wird dann gestartet und wird einige Minuten dauern.
+5. Wählen Sie unter „Ressourcengruppe“ die vorhandene Ressourcengruppe Ihrer virtuellen Computer aus (z.B. *contosofabrikam*). Wählen Sie einen geeigneten Speicherort aus, und klicken Sie dann auf **OK**. Die Bereitstellung des Load Balancers wird dann gestartet und kann einige Minuten dauern.
 6. Nach der Bereitstellung wird der Load Balancer in Ihrer Ressourcengruppe als Ressource angezeigt.
 
 ### <a name="step-3-configure-the-frontend-ip-pool"></a>SCHRITT 3: Konfigurieren des Front-End-IP-Adresspools
@@ -81,7 +84,7 @@ Konfigurieren Sie den Front-End-IP-Adresspool für jede Website (Contoso und Fab
 3. Klicken Sie im Portal auf **Weitere Dienste**, geben Sie im Filterfeld **Load Balancer** ein, und klicken Sie dann auf **Load Balancer**.  
 4. Wählen Sie den Load Balancer (*meinlb*) aus, dem Sie den Front-End-IP-Pool hinzufügen möchten.
 5. Wählen Sie unter **Einstellungen** **Front-End-Pools** aus. Klicken Sie im oberen Bereich des angezeigten Blatts auf **Hinzufügen**.
-6. Geben Sie einen Namen für Ihre Front-End-IP-Adresse ein (*farbikamfe* oder **contosofe*).
+6. Geben Sie einen Namen für Ihre Front-End-IP-Adresse ein (*farbikamfe* oder *contosofe*).
 7. Klicken Sie auf **IP-Adresse**, und wählen Sie auf dem Blatt **Öffentliche IP-Adresse auswählen** die IP-Adressen für Ihr Front-End aus (*ÖffentlicheIP1* oder *ÖffentlicheIP2*).
 8. Wiederholen Sie die Schritte 3 bis 7 in diesem Abschnitt, um die zweite Front-End-IP-Adresse zu erstellen.
 9. Wenn die Konfiguration des Front-End-IP-Pools abgeschlossen ist, werden beide Front-End-IP-Adressen auf dem Blatt **Front-End-IP-Pool** Ihres Load Balancers angezeigt. 
@@ -119,7 +122,7 @@ Konfigurieren Sie wie folgt Lastenausgleichsregeln (*HTTPc* und *HTTPf*) für je
 4. Behalten Sie für **Port** und **Back-End-Port** den Standardwert **80** bei.
 5. Klicken Sie für **Floating IP (Direct Server Return)** auf **Aktiviert**.
 6. Klicken Sie auf **OK**.
-7. Wiederholen Sie die Schritte 1 bis 6 in diesem Abschnitt, um die zweite Lastenausgleichsregel zu erstellen.
+7. Wiederholen Sie die Schritte 1 bis 6 in diesem Abschnitt, um die zweite Load Balancer-Regel zu erstellen.
 8. Wenn die Konfiguration der Lastenausgleichsregeln abgeschlossen ist, werden beide Regeln (*HTTPc* und *HTTPf*) auf dem Blatt **Lastenausgleichsregeln** Ihres Load Balancers angezeigt.
 
 ### <a name="step-7-configure-dns-records"></a>SCHRITT 7: Konfigurieren von DNS-Einträgen
@@ -127,5 +130,5 @@ Abschließend müssen Sie DNS-Ressourceneinträge konfigurieren, um auf die ents
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie in [Verwenden von Lastenausgleichsdiensten in Azure](../traffic-manager/traffic-manager-load-balancing-azure.md), wie Sie Lastenausgleichsdienste in Azure kombinieren.
-- Erfahren Sie in [Log Analytics für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md), wie Sie in Azure verschiedene Protokolltypen verwenden, um den Load Balancer zu verwalten und eventuelle Fehler zu beheben.
+- Erfahren Sie in [Log Analytics für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md), wie Sie verschiedene Protokolltypen verwenden, um den Load Balancer zu verwalten und eventuelle Fehler zu beheben.
 

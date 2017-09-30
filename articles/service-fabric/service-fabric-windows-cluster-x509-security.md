@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: dekapur
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: ebac24385560377bac27a8b8c425323c57392bd2
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: e37a68fcf645cf1056b70e520545fb3ce7c22946
 ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="secure-a-standalone-cluster-on-windows-using-x509-certificates"></a>Schützen eines eigenständigen Windows-Clusters mithilfe von X.509-Zertifikaten
@@ -43,7 +43,8 @@ Laden Sie als Erstes das [Paket mit dem eigenständigen Cluster](service-fabric-
         "ClusterCertificateCommonNames": {
             "CommonNames": [
             {
-                "CertificateCommonName": "[CertificateCommonName]"
+                "CertificateCommonName": "[CertificateCommonName]",
+                "CertificateIssuerThumbprint": "[Thumbprint1,Thumbprint2,Thumbprint3,...]"
             }
             ],
             "X509StoreName": "My"
@@ -56,7 +57,8 @@ Laden Sie als Erstes das [Paket mit dem eigenständigen Cluster](service-fabric-
         "ServerCertificateCommonNames": {
             "CommonNames": [
             {
-                "CertificateCommonName": "[CertificateCommonName]"
+                "CertificateCommonName": "[CertificateCommonName]",
+                "CertificateIssuerThumbprint": "[Thumbprint1,Thumbprint2,Thumbprint3,...]"
             }
             ],
             "X509StoreName": "My"
@@ -108,9 +110,9 @@ In der folgenden Tabelle sind die Zertifikate aufgeführt, die Sie für die Einr
 | **CertificateInformation-Einstellung** | **Beschreibung** |
 | --- | --- |
 | ClusterCertificate |Empfohlen für die Testumgebung. Dieses Zertifikat ist erforderlich, um die Kommunikation zwischen den Knoten in einem Cluster zu schützen. Sie können zwei verschiedene Zertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades. Legen Sie den Fingerabdruck des primären Zertifikats im Abschnitt **Thumbprint** und den Fingerabdruck des sekundären Zertifikats in den Variablen unter **ThumbprintSecondary** fest. |
-| ClusterCertificateCommonNames |Empfohlen für die Produktionsumgebung. Dieses Zertifikat ist erforderlich, um die Kommunikation zwischen den Knoten in einem Cluster zu schützen. Sie können einen oder zwei allgemeine Clusterzertifikatnamen verwenden. |
+| ClusterCertificateCommonNames |Empfohlen für die Produktionsumgebung. Dieses Zertifikat ist erforderlich, um die Kommunikation zwischen den Knoten in einem Cluster zu schützen. Sie können einen oder zwei allgemeine Clusterzertifikatnamen verwenden. **CertificateIssuerThumbprint** entspricht dem Fingerabdruck des Ausstellers dieses Zertifikats. Sie können mehrere Ausstellerfingerabdrücke angeben, wenn mehrere Zertifikate mit dem gleichen allgemeinen Namen verwendet werden.|
 | ServerCertificate |Empfohlen für die Testumgebung. Dieses Zertifikat wird dem Client angezeigt, wenn versucht wird, eine Verbindung mit diesem Cluster herzustellen. Der Einfachheit halber können Sie für *ClusterCertificate* und *ServerCertificate* dasselbe Zertifikat auswählen. Sie können zwei verschiedene Serverzertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades. Legen Sie den Fingerabdruck des primären Zertifikats im Abschnitt **Thumbprint** und den Fingerabdruck des sekundären Zertifikats in den Variablen unter **ThumbprintSecondary** fest. |
-| ServerCertificateCommonNames |Empfohlen für die Produktionsumgebung. Dieses Zertifikat wird dem Client angezeigt, wenn versucht wird, eine Verbindung mit diesem Cluster herzustellen. Der Einfachheit halber können Sie für *ClusterCertificateCommonNames* und *ServerCertificateCommonNames* das gleiche Zertifikat auswählen. Sie können einen oder zwei allgemeine Serverzertifikatnamen verwenden. |
+| ServerCertificateCommonNames |Empfohlen für die Produktionsumgebung. Dieses Zertifikat wird dem Client angezeigt, wenn versucht wird, eine Verbindung mit diesem Cluster herzustellen. **CertificateIssuerThumbprint** entspricht dem Fingerabdruck des Ausstellers dieses Zertifikats. Sie können mehrere Ausstellerfingerabdrücke angeben, wenn mehrere Zertifikate mit dem gleichen allgemeinen Namen verwendet werden. Der Einfachheit halber können Sie für *ClusterCertificateCommonNames* und *ServerCertificateCommonNames* das gleiche Zertifikat auswählen. Sie können einen oder zwei allgemeine Serverzertifikatnamen verwenden. |
 | ClientCertificateThumbprints |Dies ist eine Gruppe von Zertifikaten, die auf den authentifizierten Clients installiert werden sollen. Auf den Computern, denen Sie Zugriff auf den Cluster gewähren möchten, können Sie verschiedene Clientzertifikate installieren. Legen Sie den Fingerabdruck eines Zertifikats jeweils in der Variablen **CertificateThumbprint** fest. Wenn Sie **IsAdmin** auf *true*festlegen, kann der Client, auf dem dieses Zertifikat installiert ist, Administratorverwaltungsaktivitäten für den Cluster durchführen. Wenn **IsAdmin** auf *false*festgelegt ist, kann der Client mit diesem Zertifikat nur Aktionen durchführen, die für Benutzerzugriffsrechte zulässig sind. (Hierbei handelt es sich in der Regel um schreibgeschützten Zugriff.) Weitere Informationen zu Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac) |
 | ClientCertificateCommonNames |Legen Sie den allgemeinen Namen des ersten Clientzertifikats für **CertificateCommonName**fest. **CertificateIssuerThumbprint** ist der Fingerabdruck für den Aussteller dieses Zertifikats. Weitere Informationen zu allgemeinen Namen und zum Aussteller finden Sie unter [Verwenden von Zertifikaten](https://msdn.microsoft.com/library/ms731899.aspx) . |
 | ReverseProxyCertificate |Empfohlen für die Testumgebung. Hierbei handelt es sich um ein optionales Zertifikat, das zum Schutz des [Reverseproxys](service-fabric-reverseproxy.md) angegeben werden kann. Stellen Sie bei Verwendung dieses Zertifikats sicher, dass „reverseProxyEndpointPort“ unter „nodeTypes“ festgelegt ist. |
@@ -161,7 +163,8 @@ Im Anschluss sehen Sie ein Beispiel für eine Clusterkonfiguration mit Cluster-,
                 "ClusterCertificateCommonNames": {
                   "CommonNames": [
                     {
-                      "CertificateCommonName": "myClusterCertCommonName"
+                      "CertificateCommonName": "myClusterCertCommonName",
+                      "CertificateIssuerThumbprint": "7c fc 91 97 13 66 8d 9f a8 ee 71 2b a2 f4 37 62 00 03 49 0d"
                     }
                   ],
                   "X509StoreName": "My"
@@ -169,7 +172,8 @@ Im Anschluss sehen Sie ein Beispiel für eine Clusterkonfiguration mit Cluster-,
                 "ServerCertificateCommonNames": {
                   "CommonNames": [
                     {
-                      "CertificateCommonName": "myServerCertCommonName"
+                      "CertificateCommonName": "myServerCertCommonName",
+                      "CertificateIssuerThumbprint": "7c fc 91 97 13 16 8d ff a8 ee 71 2b a2 f4 62 62 00 03 49 0d"
                     }
                   ],
                   "X509StoreName": "My"
@@ -218,7 +222,7 @@ Im Anschluss sehen Sie ein Beispiel für eine Clusterkonfiguration mit Cluster-,
 
 ## <a name="certificate-roll-over"></a>Zertifikatrollover
 Wenn Sie anstelle des Fingerabdrucks den allgemeinen Namen des Zertifikats verwenden, ist für das Zertifikatrollover kein Upgrade der Clusterkonfiguration erforderlich.
-Wenn im Rahmen des Zertifikatrollovers auch ein Ausstellerrollover erfolgen soll, bewahren Sie das alte Ausstellerzertifikat nach der Installation des neuen Ausstellerzertifikats noch mindestens zwei Stunden im Zertifikatspeicher auf.
+Stellen Sie bei Upgrades der Ausstellerfingerabdrücke sicher, dass die neue Fingerabdruckliste und die alte Liste eine Schnittmenge haben. Sie müssen zuerst ein Konfigurationsupgrade mit den neuen Ausstellerfingerabdrücken durchführen und dann die neuen Zertifikate (Cluster-/Serverzertifikate und Ausstellerzertifikate) im Speicher installieren. Bewahren Sie das alte Ausstellerzertifikat nach der Installation des neuen Ausstellerzertifikats noch mindestens zwei Stunden im Zertifikatspeicher auf.
 
 ## <a name="acquire-the-x509-certificates"></a>Erwerben der X.509-Zertifikate
 Zum Schutz der Kommunikation zwischen Clustern müssen Sie zuerst X.509-Zertifikate für die Clusterknoten abrufen. Um die Verbindungsherstellung für diesen Cluster auf autorisierte Computer und Benutzer zu beschränken, müssen Sie Zertifikate für die Clientcomputer abrufen und installieren.

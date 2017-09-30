@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 0f27db7018e398f71a8d7bd0b86e643367b15875
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 34f4af31773097eafe2613eb7f3400655c387a84
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>Grundlegendes zu Protokollsuchvorgängen in Log Analytics
@@ -77,6 +77,13 @@ Ein anderes Beispiel ist ein Liniendiagramm mit der Prozessorauslastung für jed
     | render timechart    
 
 Durch diese kurzen Beispiele können Sie sehen, dass unabhängig von der Art der Daten, die denen Sie arbeiten, die Struktur der Abfrage ähnlich ist.  Sie können sie in abgegrenzte Schritte unterteilen, bei denen die resultierenden Daten eines Befehls über die Pipeline an den nächsten Befehl gesendet werden.
+
+Sie können Daten auch Log Analytics-Arbeitsbereiche übergreifend in Ihrem Abonnement abfragen.
+
+    union Update, workspace("contoso-workspace").Update
+    | where TimeGenerated >= ago(1h)
+    | summarize dcount(Computer) by Classification 
+
 
 Eine vollständige Dokumentation der Azure Log Analytics-Abfragesprache, einschließlich Tutorials und Sprachreferenz, finden Sie in der [Dokumentation der Azure Log Analytics-Abfragesprache](https://docs.loganalytics.io/).
 

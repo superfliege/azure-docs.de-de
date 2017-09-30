@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 425c7a733a0a2383f01d2122e7155d3e3a9071be
+ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
+ms.openlocfilehash: f52988f2a67f2cafe93a7e0a358c599658d068b2
 ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -92,7 +92,7 @@ In diesem Artikel werden die erforderlichen Schritte zum Einrichten der Containe
 
 Stellen Sie zum Einrichten der Container-Lösung in Ihrem Arbeitsbereich sicher, dass der OMS-Agent auf den Knoten Ihres Clusters bereitgestellt ist. Führen Sie dazu die oben genannten Schritte aus. Nachdem der Cluster eingerichtet wurde, können Sie einen Container in ihm bereitstellen. Bedenken Sie, dass es bei der ersten Bereitstellung eines Containerimages in einem Cluster mehrere Minuten dauern kann, bis das Image heruntergeladen wurde. Dies hängt von der Größe des Images ab.
 
-Suchen Sie im Azure Marketplace nach *Container*, und erstellen Sie eine Containerressource (in der Kategorie „Überwachung und Verwaltung“).
+Suchen Sie in Azure Marketplace nach *Container Monitoring Solution* (Containerüberwachungslösung), und erstellen Sie das Ergebnis **Container Monitoring Solution**, das angezeigt werden sollte, unter der Kategorie „Überwachung + Verwaltung“.
 
 ![Hinzufügen der Containerlösung](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 12db22d1444dc07a45db430c01407f9398e13bad
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 1a9c9354b665294778886441cc6d7f02adb1163f
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
@@ -30,7 +30,7 @@ Diagnose und Problembehandlung können in einer verteilten Anwendung, die in ein
 Um solche Anwendungen erfolgreich zu verwalten, sollten Sie sie proaktiv überwachen und verstehen, wie die Diagnose und Problembehandlung aller Anwendungsaspekte und ihrer abhängigen Technologien durchzuführen sind. Als Nutzer des Azure-Speicherdiensts sollten Sie ständig die von Ihrer Anwendung verwendeten Speicherdienste überwachen, um unerwartete Verhaltensveränderungen zu erkennen (beispielsweise langsamere Antwortzeiten als üblich), und Protokollierung verwenden, um detailliertere Daten zu sammeln und ein Problem in der Tiefe zu analysieren. Die Diagnoseinformationen, die Sie sowohl aus der Überwachung als auch der Protokollierung erhalten, werden Ihnen helfen, die Ursache des Problems, das bei Ihrer Anwendung auftritt, zu bestimmen. Dann können Sie das Problem behandeln und die entsprechenden Schritte, die Sie für seine Beseitigung ergreifen können, festlegen. Azure-Speicher ist ein Kerndienst von Azure und ein wichtiger Bestandteil der meisten Lösungen, die Kunden auf der Azure-Infrastruktur bereitstellen. Azure-Speicher beinhaltet Funktionen zur vereinfachten Überwachung, Diagnose und Problembehandlung von Speicherproblemen in Ihren cloudbasierten Anwendungen.
 
 > [!NOTE]
-> Azure File Storage unterstützt derzeit keine Protokollierung.
+> Azure Files unterstützt derzeit keine Protokollierung.
 > 
 
 Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speicheranwendungen finden Sie unter [End-to-End-Problembehandlung mit Azure-Speichermetriken und -Protokollierung, AzCopy und Message Analyzer](../storage-e2e-troubleshooting.md).
@@ -71,8 +71,8 @@ Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speiche
   * [Ihre Probleme entstehen aus der Verwendung des Speicheremulators für Entwicklung oder Test]
   * [Sie stoßen bei der Installation von Azure SDK für .NET auf Probleme]
   * [Sie haben ein anderes Problem mit einem Speicherdienst]
-  * [Behandeln von Problemen mit Azure File Storage unter Windows](../files/storage-troubleshoot-windows-file-connection-problems.md)   
-  * [Behandeln von Problemen mit Azure File Storage unter Linux](../files/storage-troubleshoot-linux-file-connection-problems.md)
+  * [Behandlung von Problemen in Azure Files in Windows](../files/storage-troubleshoot-windows-file-connection-problems.md)   
+  * [Beheben von Problemen mit Azure Files unter Linux](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [Anhängen]
   * [Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr]
   * [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr]
@@ -236,29 +236,29 @@ In vielen Fällen reichen die Protokollierungsdaten aus der Speicherprotokollier
 Durchgängige Verfolgung unter Verwendung einer Vielzahl von Protokollierungsdateien ist eine nützliche Technik für die Untersuchung möglicher Probleme. Sie können die Datums-/Zeitinformationen aus Ihren Metrikdaten als Hinweis darauf verwenden, wo Sie in den Protokollierungsdateien nach den detaillierteren Informationen suchen müssen, die Ihnen bei der Fehlerbehebung helfen.
 
 ### <a name="correlating-log-data"></a>Korrelation von Protokollierungsdaten
-Bei der Anzeige von Protokollen aus Clientanwendungen, Netzwerkverfolgungen und serverseitiger Speicherprotokollierung ist es entscheidend, Anfragen über die verschiedenen Protokollierungsdateien korrelieren zu können. Die Protokollierungsdateien enthalten eine Reihe von unterschiedlichen Feldern, die als Korrelationskennungen von Bedeutung sind. Die Clientanfrage-ID ist das nützlichste Feld, das für die Korrelation von Einträgen in den verschiedenen Protokollierungen zu verwenden ist. Dennoch kann es manchmal nützlich sein, entweder die Serveranfrage-ID oder Zeitstempel zu verwenden. Die folgenden Abschnitte stellen weitere Informationen zu diesen Optionen bereit.
+Bei der Anzeige von Protokollen aus Clientanwendungen, Netzwerkverfolgungen und serverseitiger Speicherprotokollierung ist es entscheidend, Anfragen über die verschiedenen Protokollierungsdateien korrelieren zu können. Die Protokollierungsdateien enthalten eine Reihe von unterschiedlichen Feldern, die als Korrelationskennungen von Bedeutung sind. Die Clientanforderungs-ID ist das nützlichste Feld, das für die Korrelation von Einträgen in den verschiedenen Protokollen verwendet werden kann. Dennoch kann es manchmal nützlich sein, entweder die Serveranforderungs-ID oder Zeitstempel zu verwenden. Die folgenden Abschnitte stellen weitere Informationen zu diesen Optionen bereit.
 
 ### <a name="client-request-id"></a>Clientanfrage-ID
-Die Speicher-Clientbibliothek erzeugt automatisch eine eindeutige Clientanfrage-ID für jede Anfrage.
+Die Speicherclientbibliothek erzeugt automatisch eine eindeutige Clientanforderungs-ID für jede Anforderung.
 
-* Bei der clientseitigen Protokollierung, die die Speicher-Clientbibliothek erstellt, wird die Clientanfrage-ID im Feld **Client Request ID** in jedem auf die Anfrage bezogenen Protokolleintrag angezeigt.
-* In einer Netzwerkverfolgung wie mit Fiddler wird die Clientanfrage-ID in Anforderungsnachrichten wie dem HTTP-Headerwert **x-ms-client-request-id** angezeigt.
-* Bei der serverseitigen Speicherprotokollierung wird die Clientanfrage-ID in der Spalte "Client request ID“ angezeigt.
+* Für das clientseitige Protokoll, das die Speicherclientbibliothek erstellt, wird die Clientanforderungs-ID im Feld **Client Request ID** in jedem auf die Anforderung bezogenen Protokolleintrag angezeigt.
+* In einer Netzwerkablaufverfolgung wie mit Fiddler wird die Clientanforderungs-ID in Anforderungsnachrichten als HTTP-Headerwert **x-ms-client-request-id** angezeigt.
+* Im Protokoll der serverseitigen Speicherprotokollierung wird die Clientanforderungs-ID in der Spalte „Client request ID“ angezeigt.
 
 > [!NOTE]
-> Für mehrere Anfragen ist es möglich, die gleiche Clientanfrage-ID zu teilen, weil der Client diesen Wert zuteilen kann (obwohl die Speicher-Clientbibliothek automatisch einenneuen Wert zuteilt). Bei Wiederholungsversuchen seitens des Client teilen alle Versuche die gleiche Clientanfrage-ID. Bei einem vom Client gesendeten Batch verfügt der Batch über eine eigene Clientanfrage-ID.
+> Mehrere Anforderungen können die gleiche Clientanforderungs-ID besitzen, da dieser Wert vom Client zugewiesen werden kann (obwohl die Speicherclientbibliothek automatisch einen neuen Wert zuweist). Bei Wiederholungsversuchen seitens des Clients nutzen alle Versuche die gleiche Clientanforderungs-ID. Bei einem vom Client gesendeten Batch verfügt der Batch über eine einzelne Clientanforderungs-ID.
 > 
 > 
 
 ### <a name="server-request-id"></a>Serveranfrage-ID
 Der Speicherdienst generiert automatisch Serveranfrage-IDs.
 
-* Bei der serverseitigen Speicherprotokollierung wird die Serveranfrage-ID in der Spalte **Request ID header** angezeigt.
-* In einer Netzwerkverfolgung wie mit Fiddler wird die Serveranfrage-ID in Antwortnachrichten wie dem HTTP-Headerwert **x-ms-request-id** angezeigt.
-* Bei der clientseitigen Protokollierung, die die Speicher-Clientbibliothek erstellt, wird die Clientanfrage-ID in der Spalte **Operation Text** für die Serverantwort angezeigt.
+* Im Protokoll der serverseitigen Speicherprotokollierung wird die Serveranforderungs-ID in der Spalte **Request ID header** angezeigt.
+* In einer Netzwerkablaufverfolgung wie mit Fiddler wird die Serveranforderungs-ID in Antwortnachrichten als HTTP-Headerwert **x-ms-request-id** angezeigt.
+* Im Protokoll der clientseitigen Protokollierung, das die Speicherclientbibliothek erstellt, wird die Serveranforderungs-ID in der Spalte **Operation Text** für den Protokolleintrag mit Details der Serverantwort angezeigt.
 
 > [!NOTE]
-> Der Speicherdienst teilt jeder empfangenen Anfrage immer eine eindeutige Serveranfrage-ID zu, sodass jeder Wiederholungsversuch vom Client und jeder in einem Batch enthaltene Vorgang eine eindeutige Serveranfrage-ID hat.
+> Der Speicherdienst teilt jeder empfangenen Anforderung immer eine eindeutige Serveranforderungs-ID zu, sodass jeder Wiederholungsversuch vom Client und jeder in einem Batch enthaltene Vorgang eine eindeutige Serveranforderungs-ID hat.
 > 
 > 
 
@@ -574,7 +574,7 @@ Die folgende Tabelle zeigt eine Muster-Serverprotokollierungsnachricht aus der S
 | Authentifizierungsart| SAS                          |
 | Dienstart       | Blob                         |
 | Anfrage-URL        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
-| nbsp;              |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
+| &nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
 | Request ID header  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | Clientanfrage-ID  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 
@@ -653,7 +653,7 @@ Es ist wichtig zu beachten, dass diese Vorgänge erfolgreich abgeschlossen wurde
 Eine Liste bekannter REST API-Fehlercodes, die von den Speicherdiensten zurückgegeben werden, finden Sie auf der Seite [Bekannte REST API-Fehlercodes](http://msdn.microsoft.com/library/azure/dd179357.aspx).
 
 ### <a name="capacity-metrics-show-an-unexpected-increase"></a>Kapazitätsmetriken zeigen einen unerwarteten Anstieg der Speicherkapazitätsauslastung an
-Wenn Sie plötzliche, unerwartete Änderungen in der Kapazitätsauslastung Ihres Speicherkontos feststellen, können Sie die Gründe untersuchen, indem Sie zuerst einen Blick auf Ihre Verfügbarkeitsmetriken werfen. Zum Beispiel könnte eine Erhöhung der Anzahl fehlgeschlagener Löschanfragen, die Sie als anwendungsspezifische Bereinigungsvorgänge verwenden, nicht wie erwartet Platz freimachen (zum Beispiel, weil die für die Bereinigung verwendeten SAS-Token abgelaufen sind) und zu einem Anstieg der Blob-Speichergröße führen.
+Wenn Sie plötzliche, unerwartete Änderungen in der Kapazitätsauslastung Ihres Speicherkontos feststellen, können Sie die Gründe untersuchen, indem Sie zuerst einen Blick auf Ihre Verfügbarkeitsmetriken werfen. Zum Beispiel könnte eine Erhöhung der Anzahl fehlgeschlagener Löschanforderungen, die Sie als anwendungsspezifische Bereinigungsvorgänge verwenden, nicht wie erwartet Platz freimachen (zum Beispiel, weil die für die Bereinigung verwendeten SAS-Token abgelaufen sind) und zu einem Anstieg der Blob-Speichergröße führen.
 
 ### <a name="you-are-experiencing-unexpected-reboots"></a>Sie stoßen auf unerwartete Neustarts von virtuellen Azure-Computern, die über eine große Anzahl angeschlossener virtueller VHDs verfügen
 Wenn ein virtueller Azure-Computer über eine große Anzahl von angeschlossenen VHDs verfügt, die sich im gleichen Speicherkonto befinden, können die Skalierbarkeitsziele für ein einzelnes Speicherkonto überschritten werden. Dies führt zu einem Ausfall des virtuellen Computers. Sie sollten die Minutenmetriken für das Speicherkonto (**TotalRequests**/**TotalIngress**/**TotalEgress**) auf Spitzen überprüfen, die die Skalierbarkeitsziele für ein Speicherkonto überschreiten. Unterstützung bei der Ermittlung, ob in Ihrem Speicherkonto eine Drosselung stattgefunden hat, erhalten Sie im Abschnitt [Metriken zeigen Anstieg bei PercentThrottlingError an].
@@ -674,7 +674,7 @@ Der Speicheremulator unterstützt nicht alle Funktionen des Azure-Speicherdienst
 Für die nicht vom Speicheremulator unterstützten Funktionen verwenden Sie den Azure-Speicherdienst in der Cloud.
 
 #### <a name="error-HTTP-header-not-correct-format"></a>Fehler „Der Wert einer der HTTP-Header verfügt nicht über das korrekte Format" bei der Verwendung des Speicheremulators
-Sie testen Ihre die Speicher-Clientbibliothek verwendende Anwendung mit dem lokalen Speicheremulator, und Methodenaufrufe wie **CreateIfNotExists** scheitern mit der Fehlernachricht "Der Wert einer der HTTP-Header verfügt nicht über das korrekte Format". Dies weist darauf hin, dass die von Ihnen verwendete Version des Speicheremulators die Version Ihrer Speicher-Clientbibliothek nicht unterstützt. Die Speicher-Clientbibliothek fügt den Header **x-ms-version** zu allen getätigten Anfragen hinzu. Wenn der Speicheremulator den Wert im **x-ms-version** -Header nicht erkennt, lehnt er die Anfrage ab.
+Sie testen Ihre die Speicherclientbibliothek verwendende Anwendung mit dem lokalen Speicheremulator, und Methodenaufrufe wie **CreateIfNotExists** scheitern mit der Fehlermeldung „Der Wert einer der HTTP-Header verfügt nicht über das korrekte Format“. Dies weist darauf hin, dass die von Ihnen verwendete Version des Speicheremulators die Version Ihrer Speicher-Clientbibliothek nicht unterstützt. Die Speicher-Clientbibliothek fügt den Header **x-ms-version** zu allen getätigten Anfragen hinzu. Wenn der Speicheremulator den Wert im **x-ms-version** -Header nicht erkennt, lehnt er die Anfrage ab.
 
 Sie können die Speicher-Clientbibliothek-Protokollierung verwenden, um den Wert des gesendeten **x-ms-version-Headers** anzuzeigen. Sie können den Wert des **x-ms-version-Headers** auch anzeigen, wenn Sie Fiddler verwenden, um die Anfragen Ihrer Clientanwendung zu verfolgen.
 
@@ -756,7 +756,7 @@ WireShark wird alle aufgetretenen Fehler im Fenster **Packetlist** markieren. Si
 
 ![][7]
 
-Sie können die TCP-Daten auch so anzeigen, wie sie in der Anwendungsschicht vorliegen, indem Sie mit der rechten Maustaste auf die TCP-Daten klicken und **Follow TCP Stream**auswählen. Dies ist besonders nützlich, wenn Sie Ihren Dump ohne Erfassungsfilter erfassen. Weitere Informationen finden Sie in unter [Following TCP-Streams](http://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
+Sie können die TCP-Daten auch so anzeigen, wie sie in der Anwendungsschicht vorliegen, indem Sie mit der rechten Maustaste auf die TCP-Daten klicken und **Follow TCP Stream** auswählen. Dies ist besonders nützlich, wenn Sie Ihren Dump ohne Erfassungsfilter erfassen. Weitere Informationen finden Sie in unter [Following TCP-Streams](http://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
 
 ![][8]
 
@@ -816,7 +816,7 @@ Sie können die Application Insights-Funktion für Visual Studio Team Services a
 * Sicherstellen, dass Ihr Webdienst verfügbar und reaktionsschnell ist. Ob Ihre Anwendung eine Website ist, die einen Webdienst verwendet, oder eine Geräteanwendung: Sie kann Ihre URL alle paar Minuten von Standorten auf der ganzen Welt testen, und Ihnen mitteilen, ob es ein Problem gibt.
 * Leistungsprobleme oder Ausnahmen in Ihrem Webdienst schnell diagnostizieren. Finden Sie heraus, ob CPU oder andere Ressourcen gestretched werden, gewinnen Sie Stack-Traces aus Ausnahmen, und durchsuchen Sie Protokolltraces leicht. Wenn die Leistung der Anwendung unter akzeptable Grenzen fällt, können wir Ihnen eine E-Mail senden. Sie können sowohl .NET- als auch Java-Webdienste überwachen.
 
-Weitere Informationen finden Sie unter [Was ist Application Insights?](../../application-insights/app-insights-overview.md).
+Weitere Informationen finden Sie unter [Was ist Application Insights](../../application-insights/app-insights-overview.md).
 
 <!--Anchors-->
 [Einführung]: #introduction

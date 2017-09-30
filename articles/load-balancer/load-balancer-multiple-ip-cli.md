@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2017
+ms.date: 09/25/2017
 ms.author: annahar
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: bd15713752ea01ad403d8e3dcfed0c9a7adcc7fa
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 1d88c53784cec302f5e67b9d50f84780bbec37db
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="load-balancing-on-multiple-ip-configurations"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen
@@ -29,6 +28,8 @@ ms.lasthandoff: 07/10/2017
 > * [Portal](load-balancer-multiple-ip.md)
 > * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 In diesem Artikel wird beschrieben, wie Sie Azure Load Balancer mit mehreren IP-Adressen an einer sekundären Netzwerkschnittstellenkarte (Network Interface Card, NIC) verwenden. In diesem Szenario verwenden wir zwei virtuelle Computer unter Windows mit jeweils einer primären und einer sekundären NIC. Die sekundären NICs haben jeweils zwei IP-Konfigurationen. Jeder virtuelle Computer hostet die beiden Websites „contoso.com“ und „fabrikam.com“. Jede Website ist an eine der IP-Konfigurationen der sekundären NIC gebunden. Wir verwenden Azure Load Balancer, um zwei Front-End-IP-Adressen verfügbar zu machen (jeweils eine für jede Website), damit der Datenverkehr an die entsprechende IP-Konfiguration für die Website verteilt werden kann. Dieses Szenario verwendet die gleiche Portnummer auf beiden Front-Ends sowie beide Back-End-Pool-IP-Adressen.
 
@@ -39,7 +40,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure Load Balancer mit mehreren IP-
 Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Szenario umzusetzen:
 
 1. [Installieren und konfigurieren Sie die Azure CLI anhand der Schritte im verlinkten Artikel](../cli-install-nodejs.md), und melden Sie sich dann an Ihrem Azure-Konto an.
-2. [Erstellen Sie eine Ressourcengruppe](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) mit dem Namen *contosofabrikam*, wie oben beschrieben.
+2. [Erstellen Sie eine Ressourcengruppe](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) mit dem Namen *contosofabrikam* wie folgt:
 
     ```azurecli
     azure group create contosofabrikam westcentralus
@@ -98,7 +99,7 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
     azure network lb show --resource-group contosofabrikam --name mylb
     ```
 
-10. [Erstellen Sie die öffentliche IP](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address), *myPublicIp* und das [Speicherkonto](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json), *mystorageaccont1* für den ersten virtuellen Computer VM1. Dies ist hier dargestellt:
+10. [Erstellen Sie die öffentliche IP](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address), *myPublicIp* und das [Speicherkonto](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json), *mystorageaccont1* für den ersten virtuellen Computer VM1 wie folgt:
 
     ```azurecli
     azure network public-ip create --resource-group contosofabrikam --location westcentralus --name myPublicIP --domain-name-label mypublicdns345 --allocation-method Dynamic
@@ -106,7 +107,7 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
     azure storage account create --location westcentralus --resource-group contosofabrikam --kind Storage --sku-name GRS mystorageaccount1
     ```
 
-11. [Erstellen Sie die Netzwerkschnittstellen](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) für VM1, fügen Sie eine zweite IP-Konfiguration (*VM1-ipconfig2*) hinzu, und [erstellen Sie den virtuellen Computer](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms) wie unten gezeigt:
+11. [Erstellen Sie die Netzwerkschnittstellen](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) für VM1, fügen Sie eine zweite IP-Konfiguration (*VM1-ipconfig2*) hinzu, und [erstellen Sie den virtuellen Computer](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms) wie folgt:
 
     ```azurecli
     azure network nic create --resource-group contosofabrikam --location westcentralus --subnet-vnet-name myVnet --subnet-name mySubnet --name VM1Nic1 --ip-config-name NIC1-ipconfig1

@@ -1,6 +1,6 @@
 ---
-title: "Überwachen virtueller Linux-Computer in Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie etwas zum Überwachen der Startdiagnose und von Leistungsmetriken für einen virtuellen Linux-Computer in Azure."
+title: "Überwachen und Aktualisieren virtueller Linux-Computer in Azure | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie auf einem virtuellen Linux-Computer in Azure Startdiagnose und Leistungsmetriken überwachen und Paketupdates verwalten."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: davidmu1
@@ -17,15 +17,15 @@ ms.date: 05/08/2017
 ms.author: davidmu
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: c5eab88f1b2311d52e582a0aa1121c8001437376
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 70c17d9a8f7bf6d9106efcb56eee7cd996460c18
 ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="how-to-monitor-a-linux-virtual-machine-in-azure"></a>Überwachen eines virtuellen Linux-Computers in Azure
+# <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Überwachen und Aktualisieren eines virtuellen Linux-Computers in Azure
 
-Um sicherzustellen, dass die virtuellen Computer (VMs) in Azure ordnungsgemäß ausgeführt werden, können Sie die Startdiagnose und Leistungsmetriken überprüfen. In diesem Tutorial lernen Sie Folgendes:
+Um sicherzustellen, dass die virtuellen Computer (VMs) in Azure ordnungsgemäß ausgeführt werden, können Sie Startdiagnose und Leistungsmetriken überprüfen sowie Paketupdates verwalten. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Aktivieren der Startdiagnose auf dem virtuellen Computer
@@ -34,6 +34,7 @@ Um sicherzustellen, dass die virtuellen Computer (VMs) in Azure ordnungsgemäß 
 > * Aktivieren der Diagnoseerweiterung auf dem virtuellen Computer
 > * Anzeigen von Metriken des virtuellen Computers
 > * Erstellen von Benachrichtigungen basierend auf Diagnosemetriken
+> * Verwalten von Paketupdates
 > * Einrichten der erweiterten Überwachung
 
 
@@ -163,6 +164,92 @@ Das folgende Beispiel erstellt eine Warnung für die durchschnittliche CPU-Ausla
 6. Aktivieren Sie optional das Kontrollkästchen *E-Mail-Besitzer, Mitwirkende und Leser*, um E-Mail-Benachrichtigungen zu senden. Als Standardaktion wird im Portal eine Benachrichtigung angezeigt.
 7. Klicken Sie auf die Schaltfläche **OK**.
 
+## <a name="manage-package-updates"></a>Verwalten von Paketupdates
+
+Mithilfe der Updateverwaltung können Sie Paketupdates und Patches für Ihre Azure-Linux-VMs verwalten. Direkt von Ihrem virtuellen Computer aus können Sie schnell den Status der verfügbaren Updates bewerten, die Installation der erforderlichen Updates planen und Bereitstellungsergebnisse, überprüfen, um sicherzustellen, dass Updates erfolgreich auf den virtuellen Computer angewendet wurden.
+
+Informationen zur Preisgestaltung finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
+
+### <a name="enable-update-management-preview"></a>Aktivieren der Updateverwaltung (Vorschau)
+
+Aktivieren der Updateverwaltung für Ihre VM
+
+1. Wählen Sie auf der linken Seite des Bildschirms **Virtuelle Computer**.
+1. Wählen Sie einen virtuellen Computer in der Liste aus.
+1. Klicken Sie auf dem VM-Bildschirm im Abschnitt **Vorgänge** auf **Updateverwaltung**. Der Bildschirm **Updateverwaltung aktivieren** wird geöffnet.
+
+Eine Überprüfung wird ausgeführt, um festzustellen, ob die Updateverwaltung für diesen virtuellen Computer aktiviert ist. Die Überprüfung umfasst Prüfungen für einen Log Analytics-Arbeitsbereich und ein verknüpftes Automation-Konto, und ob die Lösung im Arbeitsbereich vorhanden ist.
+
+Mit einem Log Analytics-Arbeitsbereich werden Daten gesammelt, die von Features und Diensten wie der Updateverwaltung generiert werden. Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen. Um weitere Aktionen auf virtuellen Computern auszuführen, die Updates erfordern, können Sie mit Azure Automation Skripts für virtuelle Computer ausführen, um z.B. Updates herunterzuladen und anzuwenden.
+
+Der Überprüfungsprozess prüft auch, ob der virtuelle Computer mit dem Microsoft Monitoring Agent (MMA) und Hybrid Worker bereitgestellt wird. Dieser Agent wird verwendet, um mit dem virtuellen Computer zu kommunizieren und Informationen zum Updatestatus abzurufen. 
+
+Wenn diese Voraussetzungen nicht erfüllt sind, wird ein Banner angezeigt, das Ihnen die Möglichkeit bietet, die Lösung zu aktivieren.
+
+![Integriertes Banner zur Konfiguration der Updateverwaltung](./media/tutorial-monitoring/manage-updates-onboard-solution-banner.png)
+
+Klicken Sie auf das Banner, um die Lösung zu aktivieren. Wenn bei der Überprüfung festgestellt wird, dass eine der folgenden Voraussetzungen fehlt, wird sie automatisch hinzugefügt:
+
+* [Log Analytics](../../log-analytics/log-analytics-overview.md)-Arbeitsbereich
+* [Automation](../../automation/automation-offering-get-started.md)
+* Ein [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) ist auf dem virtuellen Computer aktiviert.
+
+Der Bildschirm **Updateverwaltung aktivieren** wird geöffnet. Konfigurieren Sie die Einstellungen, und klicken Sie auf **Aktivieren**.
+
+![Aktivieren der Updateverwaltungslösung](./media/tutorial-monitoring/manage-updates-update-enable.png)
+
+Das Aktivieren der Lösung kann bis zu 15 Minuten dauern, und während dieser Zeit sollten Sie das Browserfenster nicht schließen. Nachdem die Lösung aktiviert wurde, fließen Informationen zu fehlenden Updates vom Paketmanager auf dem virtuellen Computer zu Log Analytics.
+Es kann zwischen 30 Minuten und 6 Stunden dauern, bis die Daten für die Analyse verfügbar sind.
+
+### <a name="view-update-assessment"></a>Anzeigen der Updatebewertung
+
+Sobald die Lösung **Updateverwaltung** aktiviert ist, wird der Bildschirm **Updateverwaltung** angezeigt. Auf der Registerkarte **Fehlende Updates** wird eine Liste der fehlenden Updates angezeigt.
+
+![Anzeigen des Updatestatus](./media/tutorial-monitoring/manage-updates-view-status-linux.png)
+
+### <a name="schedule-an-update-deployment"></a>Planen einer Updatebereitstellung
+
+Planen Sie zum Installieren von Updates eine Bereitstellung, die Ihrem Releasezeitplan und Wartungsfenster entspricht.
+
+Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicken Sie auf **Updatebereitstellung planen** am oberen Rand des Bildschirms **Updateverwaltung**. Geben Sie im Bildschirm **Neue Updatebereitstellung** die folgenden Informationen ein:
+
+* **Name**: eindeutiger Name zum Identifizieren der Updatebereitstellung.
+* **Auszuschließende Updates**: Wählen Sie diese Option, um die Namen von Paketen einzugeben, die vom Update ausgeschlossen werden sollen.
+* **Zeitplaneinstellungen**: Sie können entweder Standarddatum und Standarduhrzeit (30 Minuten nach der aktuellen Zeit) akzeptieren oder einen anderen Zeitpunkt angeben. Sie können auch angeben, ob die Bereitstellung einmalig erfolgt, oder einen sich wiederholenden Zeitplan einrichten. Klicken Sie unter „Wiederholung“ auf die Option „Wiederholt“, um einen sich wiederholenden Zeitplan einzurichten.
+
+  ![Bildschirm für Updatezeitplan-Einstellungen](./media/tutorial-monitoring/manage-updates-schedule-linux.png)
+
+* **Wartungsfenster (Minuten)**: Geben Sie den Zeitraum an, in dem die Updatebereitstellung stattfinden soll.  So wird sichergestellt, dass Änderungen in dem von Ihnen festgelegten Wartungsfenster ausgeführt werden. 
+
+Nachdem Sie die Konfiguration des Zeitplans abgeschlossen haben, klicken Sie auf die Schaltfläche **Erstellen**, sodass Sie zum Statusdashboard zurückkehren.
+Beachten Sie, dass die Tabelle **Geplant** den von Ihnen erstellten Bereitstellungszeitplan anzeigt.
+
+> [!WARNING]
+> Der virtuelle Computer wird nach Installation der Updates automatisch neu gestartet, wenn ausreichend Zeit im Wartungsfenster vorhanden ist.
+
+Die Updateverwaltung verwendet den auf Ihrem virtuellen Computer vorhandenen Paket-Manager, um Pakete zu installieren.
+
+### <a name="view-results-of-an-update-deployment"></a>Anzeigen der Ergebnisse einer Updatebereitstellung
+
+Nach dem Start der geplanten Bereitstellung sehen Sie den Status der Bereitstellung auf der Registerkarte **Updatebereitstellungen** auf dem Bildschirm **Updateverwaltung**.
+Wenn sie aktuell ausgeführt wird, wird der Status **Vorgang wird ausgeführt** angezeigt. Nach erfolgreichem Abschluss ändert sich die Anzeige in **Erfolgreich**.
+Wenn bei einem oder mehreren Updates in der Bereitstellung ein Fehler auftritt, wird der Status **Fehler** angezeigt.
+Klicken Sie auf die abgeschlossene Updatebereitstellung, um das Dashboard für diese Updatebereitstellung anzuzeigen.
+
+![Updatebereitstellungs-Statusdashboard für bestimmte Bereitstellung](./media/tutorial-monitoring/manage-updates-view-results.png)
+
+Die Kachel **Updateergebnisse** enthält eine Zusammenfassung der Gesamtzahl der Updates und die Ergebnisse der Bereitstellung auf dem virtuellen Computer.
+Die Tabelle rechts enthält eine detaillierte Analyse der einzelnen Updates und die Installationsergebnisse, wobei jeweils einer der folgenden Werte infrage kommt:
+
+* **Kein Versuch erfolgt**: Das Update wurde nicht installiert, da aufgrund des definierten Wartungsfensters nicht genügend Zeit zur Verfügung stand.
+* **Erfolgreich**: Das Update wurde erfolgreich heruntergeladen und auf dem virtuellen Computer installiert.
+* **Fehler**: Das Update konnte nicht heruntergeladen oder nicht auf dem virtuellen Computer installiert werden.
+
+Klicken Sie auf **Alle Protokolle**, um alle von der Bereitstellung erstellten Protokolleinträge anzuzeigen.
+
+Klicken Sie auf die Kachel **Ausgabe**, um den Auftragsdatenstrom des Runbooks anzuzeigen, dass für die Verwaltung der Updatebereitstellung auf der Ziel-VM verantwortlich ist.
+
+Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern aus der Bereitstellung anzuzeigen.
 
 ## <a name="advanced-monitoring"></a>Erweiterte Überwachung 
 
@@ -187,7 +274,7 @@ Auf dem Blatt „Protokollsuche“ im OMS-Portal sehen Sie *myVM* wie in der fol
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie virtuelle Computer mit Azure Security Center konfiguriert und überprüft. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie Updates für einen virtuellen Computer konfiguriert, überprüft und verwaltet. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
 > * Aktivieren der Startdiagnose auf dem virtuellen Computer
@@ -196,9 +283,11 @@ In diesem Tutorial haben Sie virtuelle Computer mit Azure Security Center konfig
 > * Aktivieren der Diagnoseerweiterung auf dem virtuellen Computer
 > * Anzeigen von Metriken des virtuellen Computers
 > * Erstellen von Benachrichtigungen basierend auf Diagnosemetriken
+> * Verwalten von Paketupdates
 > * Einrichten der erweiterten Überwachung
 
 Im nächsten Tutorial erhalten Sie Informationen zu Azure Security Center.
 
 > [!div class="nextstepaction"]
 > [Verwalten der VM-Sicherheit](./tutorial-azure-security.md)
+

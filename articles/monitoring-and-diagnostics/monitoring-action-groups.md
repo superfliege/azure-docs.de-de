@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: ancav
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: ea15705bf02d9773507c6cb59f2da4c1dd0f9d77
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 7347be8520e643cd166851d3f525a9a0726b40c8
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
@@ -30,8 +30,8 @@ Sie können eine Liste von Aktionen mit Aktionsgruppen konfigurieren. Diese Grup
 Eine Aktivitätsgruppe kann bis zu zehn Aktionen jedes Aktionstyps enthalten. Jede Aktion besteht aus den folgenden Eigenschaften:
 
 * **Name:** ein eindeutiger Bezeichner innerhalb der Aktionsgruppe.  
-* **Aktionstyp**: Senden einer SMS, einer E-Mail oder Aufrufen eines Webhooks.  
-* **Details**: entsprechende Telefonnummer, E-Mail-Adresse oder entsprechender Webhook-URI.
+* **Aktionstyp**: Senden Sie eine SMS, eine E-Mail oder Daten an ein ITSM-Tool, oder rufen Sie einen Webhook auf.
+* **Details**: Die entsprechende Telefonnummer oder E-Mail-Adresse, die entsprechenden Details zur ITSM-Verbindung oder der entsprechende Webhook-URI.
 
 Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konfigurierung von Aktionsgruppen finden Sie unter [Aktionsgruppen-Resource Manager-Vorlagen](monitoring-create-action-group-with-resource-manager-template.md).
 
@@ -57,9 +57,14 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 
     a. **Name**: Geben Sie einen eindeutigen Bezeichner für diese Aktion an.
 
-    b. **Aktionstyp**: Wählen Sie SMS, E-Mail oder Webhook.
+    b. **Aktionstyp**: Wählen Sie „SMS“, „E-Mail“, „Webhook“ oder „ITSM“ aus.
 
-    c. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse oder einen Webhook-URI an.
+    c. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, Details zur ITSM-Verbindung oder einen Webhook-URI an. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt. 
+
+> [!NOTE]
+> Für eine ITSM-Aktion muss eine ITSM-Verbindung hergestellt werden. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](../log-analytics/log-analytics-itsmc-overview.md). ITSM-Aktionen können zurzeit nur für Aktivitätsprotokollwarnungen durchgeführt werden. Für andere Warnungstypen ist diese Aktion zurzeit nicht verfügbar.
+>
+>
 
 8. Wählen Sie **OK**, um die Aktionsgruppe zu erstellen.
 
@@ -70,8 +75,9 @@ Nachdem Sie eine Aktionsgruppe erstellt haben, wird diese im Abschnitt **Aktions
 * Löschen der Aktionsgruppe.
 
 ## <a name="next-steps"></a>Nächste Schritte ##
-* Weitere Informationen zum [Verhalten von SMS-Warnungen](monitoring-sms-alert-behavior.md).  
+* Erfahren Sie mehr über das [SMS-Warnungsverhalten in Aktionsgruppen](monitoring-sms-alert-behavior.md).  
 * Erweitern Sie Ihr [Verständnis des Webhookschemas für Aktivitätsprotokollwarnungen](monitoring-activity-log-alerts-webhook.md).  
+* Erfahren Sie mehr über den [ITSM-Connector](../log-analytics/log-analytics-itsmc-overview.md).
 * Weitere Informationen zu [Ratenlimits](monitoring-alerts-rate-limiting.md) für Warnungen. 
 * Verschaffen Sie sich eine [Übersicht über Aktivitätsprotokollwarnungen](monitoring-overview-alerts.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
 * Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](monitoring-activity-log-alerts-on-service-notifications.md).

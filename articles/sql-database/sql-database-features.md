@@ -16,12 +16,13 @@ ms.workload: data-management
 ms.date: 09/22/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 75575fec0047dd653dca86df1daf234676859600
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 59bb9778c89142212708b660fb200de3f0f1f9d4
 ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
+
 # <a name="azure-sql-database-features"></a>Funktionen von Azure SQL-Datenbank
 
 Azure SQL-Datenbank verwendet die gleiche Codebasis wie SQL Server und unterstützt auf der Datenbankebene größtenteils die gleichen Features. Die Features von Azure SQL-Datenbank und SQL Server unterscheiden sich hauptsächlich auf der Instanzebene. 
@@ -93,7 +94,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nein |
 | [Richtlinienbasierte Verwaltung](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nein |
 | [Prädikate](https://docs.microsoft.com/sql/t-sql/queries/predicates) | Die meisten (siehe einzelne Prädikate) |
-| [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Nein |
+| [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Vorschauversion. Siehe [Neuerungen beim Machine Learning](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  |
 | [Ressourcenkontrolle](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Nein |
 | [RESTORE-Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Nein | 
 | [Wiederherstellen einer Datenbank aus der Sicherung](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Nur auf der Grundlage integrierter Sicherungen (siehe [SQL-Datenbank-Wiederherstellung](sql-database-recovery-using-backups.md)) |

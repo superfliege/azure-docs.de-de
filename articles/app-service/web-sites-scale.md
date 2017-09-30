@@ -15,18 +15,23 @@ ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: c7989c3639e0fe3fd1f59dca98e5614f412e9593
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 248b96cc97367ca2cb3fd82c9824d43dfee43c0a
 ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="scale-up-an-app-in-azure"></a>Zentrales Hochskalieren einer App in Azure
+
+> [!NOTE]
+> Der neue Tarif **PremiumV2** bietet Ihnen schnellere CPUs, SSD-Speicher und eine Verdopplung des Verhältnisses von Speicher zu Kern im Vergleich mit vorhandenen Tarifen. Informationen zum zentralen Hochskalieren auf den Tarif **PremiumV2** finden Sie unter [Konfigurieren der PremiumV2-Ebene für App Service](app-service-configure-premium-tier.md).
+>
+
 In diesem Artikel wird die Vorgehensweise beim Skalieren Ihrer App in Azure App Service beschrieben. Es gibt zwei Workflows für die Skalierung: zentrales Hochskalieren und horizontales Hochskalieren. Dieser Artikel befasst sich mit dem Workflow zum zentralen Hochskalieren.
 
 * [Zentrales Hochskalieren:](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)Bei dieser Methode erhalten Sie mehr CPUs, mehr Arbeitsspeicher und mehr Speicherplatz sowie zusätzliche Features wie dedizierte virtuelle Computer, benutzerdefinierte Domänen und Zertifikate, Stagingslots, automatische Skalierung und mehr. Zum zentralen Hochskalieren muss der Tarif des App Service-Plans geändert werden, zu dem die App gehört.
 * [Horizontales Hochskalieren:](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling) Bei dieser Methode wird die Anzahl von VM-Instanzen erhöht, die Ihre App ausführen.
-  Die Instanzenanzahl kann je nach Tarif auf bis zu 20 erhöht werden. [App Service-Umgebungen](environment/intro.md) im Tarif **Premium** erhöhen die Anzahl der Instanzen bei horizontalem Hochskalieren weiter auf 50. Weitere Informationen zum horizontalen Hochskalieren finden Sie unter [Scale instance count manually or automatically](../monitoring-and-diagnostics/insights-how-to-scale.md) (Manuelles oder automatisches Skalieren der Instanzanzahl). Dort erfahren Sie, wie Sie die automatische Skalierung verwenden, d.h. das automatische Skalieren der Instanzenzahl basierend auf vordefinierten Regeln und Zeitplänen.
+  Die Instanzenanzahl kann je nach Tarif auf bis zu 20 erhöht werden. [App Service-Umgebungen](environment/intro.md) im Tarif **Isolated** erhöhen die Anzahl der Instanzen beim horizontalen Hochskalieren weiter auf 100. Weitere Informationen zum horizontalen Hochskalieren finden Sie unter [Scale instance count manually or automatically](../monitoring-and-diagnostics/insights-how-to-scale.md) (Manuelles oder automatisches Skalieren der Instanzanzahl). Dort erfahren Sie, wie Sie die automatische Skalierung verwenden, d.h. das automatische Skalieren der Instanzenzahl basierend auf vordefinierten Regeln und Zeitplänen.
 
 Diese Skalierungseinstellungen werden innerhalb von Sekunden angewendet und wirken sich auf alle Apps im [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)aus.
 Dazu müssen Sie weder Ihren Code ändern noch Ihre Anwendung erneut bereitstellen.
@@ -43,7 +48,7 @@ Informationen zur Preisgestaltung und zu den Funktionen der einzelnen App Servic
 
 ## <a name="scale-up-your-pricing-tier"></a>Zentrales Hochskalieren Ihres Tarifs
 1. Öffnen Sie das [Azure-Portal][portal] in Ihrem Browser.
-2. Klicken Sie auf dem Blatt Ihrer App auf **Alle Einstellungen** und anschließend auf **Zentral hochskalieren**.
+2. Klicken Sie auf der Seite Ihrer App Service-App auf **Alle Einstellungen** und anschließend auf **Zentral hochskalieren**.
    
     ![Navigieren Sie, um Ihre Azure-App zentral hochzuskalieren.][ChooseWHP]
 3. Wählen Sie Ihren Tarif, und klicken Sie auf **Auswählen**.
@@ -53,14 +58,14 @@ Informationen zur Preisgestaltung und zu den Funktionen der einzelnen App Servic
 <a name="ScalingSQLServer"></a>
 
 ## <a name="scale-related-resources"></a>Skalieren zugehöriger Ressourcen
-Wenn Ihre App von anderen Diensten abhängt, beispielsweise von Azure SQL-Datenbank oder Azure Storage, können Sie diese Ressourcen basierend auf Ihren Anforderungen ebenfalls zentral hochskalieren. Diese Ressourcen werden nicht mit dem App Service-Plan skaliert, sondern müssen separat skaliert werden.
+Wenn Ihre App von anderen Diensten abhängt, beispielsweise von Azure SQL-Datenbank oder Azure Storage, können Sie diese Ressourcen gesondert zentral hochskalieren. Diese Ressourcen werden vom App Service-Plan nicht verwaltet.
 
 1. Klicken Sie in **Grundlegende Informationen** auf den Link **Ressourcengruppe**.
    
     ![Zentrales Hochskalieren der zugehörigen Ressourcen Ihrer Azure-App](./media/web-sites-scale/RGEssentialsLink.png)
-2. Klicken Sie im Bereich **Zusammenfassung** des Blatts **Ressourcengruppe** auf eine Ressource, die Sie skalieren möchten. Der folgende Screenshot zeigt eine SQL-Datenbank-Ressource und eine Azure Storage-Ressource.
+2. Klicken Sie im Bereich **Zusammenfassung** der Seite **Ressourcengruppe** auf eine Ressource, die Sie skalieren möchten. Der folgende Screenshot zeigt eine SQL-Datenbank-Ressource und eine Azure Storage-Ressource.
    
-    ![Navigieren zum Blatt „Ressourcengruppe“, um Ihre Azure-App zentral hochzuskalieren](./media/web-sites-scale/ResourceGroup.png)
+    ![Navigieren zur Seite „Ressourcengruppe“, um Ihre Azure-App zentral hochzuskalieren](./media/web-sites-scale/ResourceGroup.png)
 3. Klicken Sie für eine SQL-Datenbank-Ressource auf **Einstellungen** > **Tarif**, um den Tarif zu skalieren.
    
     ![Zentrales Hochskalieren des SQL-Datenbank-Back-Ends für Ihre Azure-App](./media/web-sites-scale/ScaleDatabase.png)
@@ -71,23 +76,12 @@ Wenn Ihre App von anderen Diensten abhängt, beispielsweise von Azure SQL-Datenb
    
     ![Zentrales Hochskalieren des Azure Storage-Kontos, das von Ihrer Azure-App verwendet wird](./media/web-sites-scale/ScaleStorage.png)
 
+<a name="OtherFeatures"></a>
 <a name="devfeatures"></a>
 
-## <a name="learn-about-developer-features"></a>Informationen zu Entwicklerfunktionen
-Je nach Preisstufe stehen die folgenden entwicklungsbezogenen Funktionen zur Verfügung:
-
-### <a name="bitness"></a>Bitness
-* Die Preisstufen **Basic**, **Standard** und **Premium** unterstützen 64-Bit- und 32-Bit-Anwendungen.
-* Die Preisstufen **Free** und **Shared** unterstützen nur 32-Bit-Anwendungen.
-
-### <a name="debugger-support"></a>Debugger-Support
-* Debugger-Support ist für die Modi **Free**, **Shared** und **Basic** bei einer Verbindung pro App Service-Plan verfügbar.
-* Debugger-Support ist für die Modi **Standard** und **Premium** bei fünf gleichzeitigen Verbindungen pro App Service-Plan verfügbar.
-
-<a name="OtherFeatures"></a>
-
-## <a name="learn-about-other-features"></a>Informationen zu anderen Features
-* Ausführliche Informationen zu allen weiteren Funktionen in den App Service-Plänen, einschließlich Preisgestaltung und allgemein interessanten Funktionen (auch für Entwickler) finden Sie in den [App Service – Preisdetails](https://azure.microsoft.com/pricing/details/web-sites/).
+## <a name="compare-pricing-tiers"></a>Vergleichen von Tarifen
+Ausführliche Informationen, z.B. VM-Größen für jeden Tarif, finden Sie unter [App Service-Preisdetails](https://azure.microsoft.com/pricing/details/web-sites/).
+Eine Tabelle der Dienstbeschränkungen, Kontingente und Einschränkungen sowie unterstützte Features in jedem Tarif finden Sie unter [App Service-Grenzwerte](../azure-subscription-service-limits.md#app-service-limits).
 
 > [!NOTE]
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte und keine Verpflichtungen erforderlich.
@@ -97,7 +91,6 @@ Je nach Preisstufe stehen die folgenden entwicklungsbezogenen Funktionen zur Ver
 <a name="Next Steps"></a>
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zu den ersten Schritten mit Azure finden Sie unter [Kostenlose Microsoft Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * Informationen zu Preisen, Support und SLAs erhalten Sie unter den folgenden Links:
   
     [Preisdetails zur Datenübertragung](https://azure.microsoft.com/pricing/details/data-transfers/)
@@ -110,9 +103,6 @@ Je nach Preisstufe stehen die folgenden entwicklungsbezogenen Funktionen zur Ver
   
     [Größen virtueller Computer und Clouddienste für Microsoft Azure][vmsizes]
   
-    [App-Service-Preisdetails](https://azure.microsoft.com/pricing/details/app-service/)
-  
-    [App-Service-Preisdetails - SSL-Verbindungen](https://azure.microsoft.com/pricing/details/web-sites/#ssl-connections)
 * Informationen zu den Best Practices für Azure App Service, einschließlich dem Aufbau einer skalierbaren, robusten Architektur, finden Sie unter [Best Practices: Azure App Service-Web-Apps](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx).
 * Videos zum Skalieren von App Service-Apps finden Sie in den folgenden Ressourcen:
   

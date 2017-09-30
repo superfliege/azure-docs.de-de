@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/06/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 507136beef9718dc6a7f42a4b84f8030d4a60563
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 85d4f9bc11de18f171b923b4ae55950fb0a360c0
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -130,6 +130,9 @@ Die Lösung [Integrität für Geräte](https://docs.microsoft.com/windows/deploy
 
 ### <a name="known-issue-application-insights-connector"></a>Bekanntes Problem: Application Insights-Connector
 In einem aktualisierten Arbeitsbereich werden Perspektiven in der Lösung [Application Insights-Connector](log-analytics-app-insights-connector.md) derzeit nicht unterstützt.  Eine Korrektur für dieses Problem wird derzeit untersucht.
+
+### <a name="known-issue-backup-solution"></a>Bekanntes Problem: Sicherungslösung
+Die Sicherungslösung sammelt in einem aktualisierten Arbeitsbereich keine Daten. Eine neue Sicherungslösung, die mit dem aktualisierten Arbeitsbereich funktioniert, wird in Kürze angekündigt.
 
 ## <a name="upgrade-process"></a>Upgradeprozess
 

@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: NA
-ms.date: 06/05/2016
+ms.date: 09/19/2016
 ms.author: vvasic
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: b391b1f7aa37c5a06fc320ce892534187deb4959
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 378e5a6a8cea80a551666c3692f8aa650620f66d
 ms.contentlocale: de-de
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="enable-automatic-tuning"></a>Aktivieren der automatischen Optimierung
@@ -43,7 +42,7 @@ Die Optionen für die automatische Optimierung des Servers werden auf alle Daten
 > Es empfiehlt sich im Allgemeinen, die automatische Optimierung auf der Serverebene zu verwalten, damit für jede Datenbank automatisch die gleichen Konfigurationseinstellungen angewendet werden können. Konfigurieren Sie die automatische Optimierung für eine einzelne Datenbank, wenn diese sich von anderen Datenbanken auf dem gleichen Server unterscheidet.
 >
 
-Wenn Sie die automatische Optimierung für eine einzelne Datenbank aktivieren möchten, navigieren Sie im Azure-Portal zur entsprechenden Datenbank, und wählen Sie **Automatische Optimierung** aus. Durch Aktivieren des Kontrollkästchens können Sie eine einzelne Datenbank so konfigurieren, dass sie die Einstellungen der Datenbank übernimmt. Sie können aber auch eine individuelle Konfiguration für eine Datenbank angeben.
+Wenn Sie die automatische Optimierung für eine einzelne Datenbank aktivieren möchten, navigieren Sie im Azure-Portal zur entsprechenden Datenbank, und wählen Sie **Automatische Optimierung** aus. Durch Aktivieren der Option können Sie eine einzelne Datenbank so konfigurieren, dass sie die Einstellungen des Servers übernimmt. Sie können aber auch eine individuelle Konfiguration für eine Datenbank angeben.
 
 ![Datenbank](./media/sql-database-automatic-tuning-enable/database.png)
 
@@ -53,4 +52,3 @@ Klicken Sie nach der Wahl der passenden Konfiguration auf **Übernehmen**.
 * Weitere Informationen zur automatischen Optimierung sowie zu ihrer Rolle bei der Verbesserung der Leistung finden Sie in [diesem Artikel](sql-database-automatic-tuning.md).
 * Eine Übersicht über die Leistungsempfehlungen von Azure SQL-Datenbank finden Sie [hier](sql-database-advisor.md).
 * Unter [Query Performance Insight](sql-database-query-performance.md) erfahren Sie, wie Sie die Auswirkungen Ihrer wichtigsten Abfragen auf die Leistung untersuchen können.
-

@@ -3,7 +3,7 @@ title: Erfassen von Protokollen und Metrikdaten mithilfe der Azure-Speicheranaly
 description: "Mit der Speicheranalyse können Sie Metrikdaten für alle Speicherdienste nachverfolgen und Protokolle für Blob-, Warteschlangen- und Tabellenspeicher erfassen."
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 7894993b-ca42-4125-8f17-8f6dfe3dca76
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: a477c1eaf2388f31d4fd36b90f9a830c782873d3
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 61e4f599d17417c11d7ff79489300b82df0bc9c8
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="storage-analytics"></a>Speicheranalyse
@@ -38,7 +38,7 @@ Die Speicheranalyse protokolliert ausführliche Informationen zu erfolgreichen u
 
 Protokolleinträge werden nur bei einer Speicherdienstaktivität erstellt. Wenn beispielsweise ein Speicherkonto Aktivität im BLOB-Dienst, jedoch nicht im Tabellen- oder Warteschlangendienst aufweist, werden nur Protokolle für den BLOB-Dienst erstellt.
 
-Die Protokollierung der Speicheranalyse ist für Azure File Storage nicht verfügbar.
+Die Storage Analytics-Protokollierung ist für Azure Files nicht verfügbar.
 
 ### <a name="logging-authenticated-requests"></a>Protokollierung authentifizierter Anforderungen
 Die folgenden Typen authentifizierter Anforderungen werden protokolliert:

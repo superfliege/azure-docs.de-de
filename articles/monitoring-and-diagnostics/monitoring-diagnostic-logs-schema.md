@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 09/25/2017
 ms.author: johnkem
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: aa4fa6e0310b2725005dfa34e3225c89fb4282d6
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 23da12e518d88109fd7271fd363b6c1f099c5ab6
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle
@@ -40,15 +40,19 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 | Data Lake Analytics |[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake-Speicher |[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Event Hubs |[Azure Event Hubs-Diagnoseprotokolle](../event-hubs/event-hubs-diagnostic-logs.md) |
+| IoT Hub Device Provisioning-Dienst | Schema nicht verfügbar. |
 | Schlüsseltresor |[Azure-Schlüsseltresor-Protokollierung](../key-vault/key-vault-logging.md) |
 | Lastenausgleichsmodul |[Log Analytics für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) |
 | Logik-Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md) |
+| DDoS-Schutz öffentlicher IP-Adressen | Schema nicht verfügbar. |
 | Recovery Services | Schema nicht verfügbar.|
 | Suche |[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](../search/search-traffic-analytics.md) |
 | Server Management | Schema nicht verfügbar. |
 | SERVICE BUS |[Azure Service Bus Diagnoseprotokolle](../service-bus-messaging/service-bus-diagnostic-logs.md) |
+| SQL-Datenbank | [Azure SQL-Datenbank-Diagnoseprotokollierung](../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Auftragsdiagnoseprotokolle](../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| Virtuelle Netzwerke | Schema nicht verfügbar. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Unterstützte Protokollkategorien pro Ressourcentyp
 |Ressourcentyp|Kategorie|Anzeigename der Kategorie|
@@ -64,6 +68,8 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.DataLakeAnalytics/accounts|Requests|Anforderungsprotokolle|
 |Microsoft.DataLakeStore/accounts|Audit|Überwachungsprotokolle|
 |Microsoft.DataLakeStore/accounts|Requests|Anforderungsprotokolle|
+|Microsoft.Devices/provisioningServices|DeviceOperations|Gerätevorgänge|
+|Microsoft.Devices/provisioningServices|ServiceOperations|Dienstoperationen|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
 |Microsoft.EventHub/namespaces|ArchiveLogs|Archivprotokolle|
 |Microsoft.EventHub/namespaces|OperationalLogs|Betriebsprotokolle|
@@ -75,6 +81,8 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Regelzähler der Netzwerksicherheitsgruppe|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Load Balancer-Warnereignisse|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Integritätsstatus der Load Balancer-Stichprobe|
+|Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS-Schutz-Benachrichtigungen|
+|Microsoft.Network/virtualNetworks|VMProtectionAlerts|VM-Schutz-Warnungen|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Application Gateway-Zugriffsprotokoll|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway-Leistungsprotokoll|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Application Gateway-Firewallprotokoll|
@@ -82,8 +90,18 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery-Aufträge|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery-Ereignisse|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicatedItems|Replizierte Azure Site Recovery-Elemente|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationStats|Azure Site Recovery-Replikationsstatistiken|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery-Wiederherstellungspunkte|
 |Microsoft.Search/searchServices|OperationLogs|Vorgangsprotokolle|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Betriebsprotokolle|
+|Microsoft.Sql/servers/databases|QueryStore|Abfragespeicher|
+|Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|Laufzeitstatistik des Abfragespeichers|
+|Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|Wartestatistik des Abfragespeichers|
+|Microsoft.Sql/servers/databases|Errors|Errors|
+|Microsoft.Sql/servers/databases|DatabaseWaitStatistics|Wartestatistik der Datenbank|
+|Microsoft.Sql/servers/databases|Timeouts|Timeouts|
+|Microsoft.Sql/servers/databases|Blocks|Blöcke|
+|Microsoft.Sql/servers/databases|SQLInsights|SQL-Informationen|
 |Microsoft.StreamAnalytics/streamingjobs|Ausführung|Ausführung|
 |Microsoft.StreamAnalytics/streamingjobs|Erstellen|Erstellen|
 

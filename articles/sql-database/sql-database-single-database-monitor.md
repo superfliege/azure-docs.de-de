@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/10/2017
+ms.date: 09/20/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: e11ed3275413b428523eef78a5a89b537f6a4afc
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 50d635191ff65f8b892595c954673b2820b22ecb
 ms.contentlocale: de-de
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Überwachen der Datenbankleistung mithilfe von Azure SQL-Datenbank
 Die Überwachung der Leistung einer SQL-Datenbank in Azure beginnt mit der Überwachung der Ressourcennutzung relativ zur gewählten Datenbankleistung. Dank der Überwachung können Sie ermitteln, ob Ihre Datenbank über Zusatzkapazität verfügt, oder ob Probleme infolge ausgeschöpfter Kapazität auftreten. Anschließend können Sie entscheiden, ob die Leistungsstufe und [Dienstebene](sql-database-service-tiers.md) Ihrer Datenbank angepasst werden müssen. Sie können die Datenbank mithilfe grafischer Tools im [Azure-Portal](https://portal.azure.com) oder mithilfe [dynamischer Verwaltungssichten](https://msdn.microsoft.com/library/ms188754.aspx) in SQL überwachen.
+
+> [!TIP]
+> Mit [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) können Sie die Leistung Ihrer Datenbank automatisch überwachen. Bei Erkennung eines Leistungsproblems wird ein Diagnoseprotokoll mit Details und einer Fehlerursachenanalyse des Problems generiert. Empfehlungen zur Verbesserung der Leistung werden nach Möglichkeit bereitgestellt.
+>
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Überwachen von Datenbanken über das Azure-Portal
 Im [Azure-Portal](https://portal.azure.com/)können Sie die Nutzung einer Einzeldatenbank überwachen, indem Sie die Datenbank auswählen und auf das Diagramm **Überwachung** klicken. Dadurch wird das Fenster **Metrik** geöffnet, in dem Sie durch Klicken auf die Schaltfläche **Diagramm bearbeiten** Änderungen vornehmen können. Fügen Sie die folgenden Metriken hinzu:
@@ -209,4 +212,9 @@ Um die Anzahl aktueller aktiver Sitzungen anzuzeigen, führen Sie in der SQL-Dat
 Diese Abfragen geben wieder eine Anzahl zu einem bestimmten Zeitpunkt zurück. Wenn Sie im Laufe der Zeit mehrere Beispielwerte sammeln, können Sie sich am besten über Ihre Sitzungsnutzung informieren.
 
 Für die SQL-Datenbankanalyse können Sie Verlaufsstatistiken für Sitzungen abrufen, indem Sie [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) abfragen und die Spalte **active_session_count** überprüfen. 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Automatische Optimierung von Datenbankindizes und Abfrageausführungsplänen mithilfe der [automatischen Optimierung von Azure SQL-Datenbank](sql-database-automatic-tuning.md).
+- Automatische Überwachung der Datenbankleistung mit [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md). Diese Funktion bietet Diagnoseinformationen und eine Fehlerursachenanalyse bei Leistungsproblemen.
 
