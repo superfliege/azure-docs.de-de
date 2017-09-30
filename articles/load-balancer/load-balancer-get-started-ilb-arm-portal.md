@@ -3,7 +3,7 @@ title: "Erstellen eines internen Lastenausgleichs – Azure-Portal | Microsoft-D
 description: Erfahren Sie, wie Sie in Resource Manager mit dem Azure-Portal einen internen Lastenausgleich erstellen.
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-service-management
@@ -13,11 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 8fbe9d5d04d745de51e0e41516d6c12683c98637
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3be595b03f667cf9700d2f17eb2080aa74f41dd9
+ms.contentlocale: de-de
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -28,6 +30,9 @@ ms.openlocfilehash: 8fbe9d5d04d745de51e0e41516d6c12683c98637
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Vorlage](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
+
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
@@ -61,18 +66,18 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen internen
 ## <a name="configure-load-balancing-rules"></a>Konfigurieren von Lastenausgleichsregeln
 
 Navigieren Sie nach der Erstellung des Lastenausgleichs zur Lastenausgleichsressource, um sie zu konfigurieren.
-Sie müssen zuerst einen Back-End-Adresspool und einen Test konfigurieren, bevor Sie eine Lastenausgleichsregel konfigurieren.
+Konfigurieren Sie einen Back-End-Adresspool und einen Test, bevor Sie eine Lastenausgleichsregel konfigurieren.
 
-### <a name="step-1-configure-a-back-end-pool"></a>Schritt 1: Konfigurieren eines Back-End-Pools
+### <a name="step-1-configure-a-backend-pool"></a>Schritt 1: Konfigurieren eines Back-End-Pools
 
-1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
+1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule** und dann auf den zuvor erstellten Lastenausgleich.
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Back-End-Pools**.
 3. Klicken Sie auf dem Blatt **Back-End-Adresspools** auf **Hinzufügen**.
 4. Geben Sie auf dem Blatt **Back-End-Pool hinzufügen** einen **Namen** für den Back-End-Pool ein, und klicken Sie dann auf **OK**.
 
 ### <a name="step-2-configure-a-probe"></a>Schritt 2: Konfigurieren eines Tests
 
-1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
+1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule** und dann auf den zuvor erstellten Lastenausgleich.
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Tests**.
 3. Klicken Sie auf dem Blatt **Tests** auf **Hinzufügen**.
 4. Geben Sie auf dem Blatt **Test hinzufügen** einen **Namen** für den Test ein.
@@ -85,14 +90,14 @@ Sie müssen zuerst einen Back-End-Adresspool und einen Test konfigurieren, bevor
 
 ### <a name="step-3-configure-load-balancing-rules"></a>Schritt 3: Konfigurieren von Lastenausgleichsregeln
 
-1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
+1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule** und dann auf den zuvor erstellten Lastenausgleich.
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Lastenausgleichsregeln**.
 3. Klicken Sie auf dem Blatt **Lastenausgleichsregeln** auf **Hinzufügen**.
 4. Geben Sie auf dem Blatt **Lastenausgleichsregel hinzufügen** einen **Namen** für die Regel ein.
 5. Wählen Sie unter **Protokoll** entweder **HTTP** (für Websites) oder **TCP** (für andere TCP-basierte Anwendungen) aus.
 6. Geben Sie unter **Port** den Port an, mit dem Clients im Lastenausgleich eine Verbindung herstellen.
 7. Geben Sie unter **Back-End-Port**den Port an, der im Back-End-Pool verwendet werden soll (in der Regel sind der Lastenausgleichsport und der Back-End-Port identisch).
-8. Wählen Sie unter **Back-End-Pool**den Back-End-Pool aus, den Sie soeben erstellt haben.
+8. Wählen Sie unter **Back-End-Pool** den Back-End-Pool aus, den Sie zuvor erstellt haben.
 9. Wählen Sie unter **Sitzungspersistenz** aus, wie Sitzungen beibehalten werden sollen.
 10. Geben Sie unter **Leerlauftimeout (Minuten)**das Leerlauftimeout an.
 11. Klicken Sie unter **Floating IP (Direct Server Return)** auf **Deaktiviert** oder **Aktiviert**.
@@ -103,10 +108,5 @@ Sie müssen zuerst einen Back-End-Adresspool und einen Test konfigurieren, bevor
 [Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

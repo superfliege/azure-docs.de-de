@@ -1,4 +1,4 @@
-## <a name="add-function-apps-to-your-portal-favorites"></a>Hinzufügen von Function Apps zu Ihren Favoriten 
+## <a name="favorite-functions-in-the-portal"></a>Bevorzugte Funktionen im Portal 
 
 Wenn Sie dies nicht bereits gemacht haben, fügen Sie Function Apps zu Ihren Favoriten im Azure-Portal hinzu. So können Sie Ihre Funktionen-Apps leichter finden. Wenn Sie dies bereits getan haben, gehen Sie direkt zum nächsten Abschnitt. 
 

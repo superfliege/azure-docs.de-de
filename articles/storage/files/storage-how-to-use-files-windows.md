@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: a8e4900bee81763300d976f0c966d7d20662ca27
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 111b925de9ca2155e2d3631979272170ed614816
 ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows
-[Azure File Storage](../storage-dotnet-how-to-use-files.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und in Windows Server eingebunden werden. Dieser Artikel zeigt drei verschiedene Methoden zum Einbinden einer Azure-Dateifreigabe unter Windows: über die Benutzeroberfläche des Explorers, mithilfe von PowerShell und über die Eingabeaufforderung. 
+[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und in Windows Server eingebunden werden. Dieser Artikel zeigt drei verschiedene Methoden zum Einbinden einer Azure-Dateifreigabe unter Windows: über die Benutzeroberfläche des Explorers, mithilfe von PowerShell und über die Eingabeaufforderung. 
 
 Wenn Sie eine Azure-Dateifreigabe außerhalb der Azure-Region einbinden möchten, in der sie gehostet wird (beispielsweise lokal oder in einer anderen Azure-Region), muss das Betriebssystem SMB 3.0 unterstützen. 
 
@@ -39,7 +39,7 @@ Sie können Azure-Dateifreigaben unter einer Windows-Installation einbinden, die
 | Windows 7              | SMB 2.1     | Ja                   | Nein                   |
 | Windows Server 2008 R2 | SMB 2.1     | Ja                   | Nein                   |
 
-<sup>1</sup>Windows 10, Versionen 1507, 1511, 1607 und 1703
+<sup>1</sup>Windows 10, Versionen 1507, 1511, 1607, 1703 und 1709
 
 > [!Note]  
 > Es empfiehlt sich, immer die neueste KB für Ihre Windows-Version zu verwenden.
@@ -49,7 +49,7 @@ Sie können Azure-Dateifreigaben unter einer Windows-Installation einbinden, die
 
 * **Speicherkontoschlüssel:** Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den primären (oder sekundären) Speicherschlüssel. SAS-Schlüssel können derzeit nicht zum Einbinden verwendet werden.
 
-* **Sicherstellen, dass Port 445 geöffnet ist:** Azure File Storage verwendet das SMB-Protokoll. SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird.
+* **Sicherstellen, dass Port 445 geöffnet ist:** Azure Files verwendet das SMB-Protokoll. SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird.
 
 ## <a name="mount-the-azure-file-share-with-file-explorer"></a>Einbinden der Azure-Dateifreigabe über den Explorer
 > [!Note]  
@@ -63,7 +63,7 @@ Sie können Azure-Dateifreigaben unter einer Windows-Installation einbinden, die
 
 3. **Kopieren Sie im Azure-Portal den UNC-Pfad aus dem Bereich „Verbinden“:** Falls Sie nicht genau wissen, wie Sie diese Information finden, lesen Sie [hier](storage-how-to-use-files-portal.md#connect-to-file-share) weiter.
 
-    ![UNC-Pfad aus dem Verbindungsbereich von Azure File Storage](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
+    ![UNC-Pfad aus dem Verbindungsbereich von Azure Files](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 
 4. **Wählen Sie den Laufwerkbuchstaben aus, und geben Sie den UNC-Pfad ein.** 
     
@@ -121,24 +121,24 @@ Sie können Azure-Dateifreigaben unter einer Windows-Installation einbinden, die
 >   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
+Weitere Informationen zu Azure Files erhalten Sie über diese Links:
 
 * [Häufig gestellte Fragen](../storage-files-faq.md)
 * [Troubleshoot Azure File storage problems in Windows](storage-troubleshoot-windows-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Windows)      
 
 ### <a name="conceptual-articles-and-videos"></a>Konzeptionelle Artikel und Videos
-* [Azure File Storage: ein reibungsloses Cloud-SMB-Dateisystem für Windows und Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Verwenden des Azure-Dateispeichers unter Linux](../storage-how-to-use-files-linux.md)
+* [Azure Files: ein reibungsloses Cloud-SMB-Dateisystem für Windows und Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
+* [Verwenden von Azure Files mit Linux](../storage-how-to-use-files-linux.md)
 
-### <a name="tooling-support-for-azure-file-storage"></a>Toolunterstützung für Azure File Storage
+### <a name="tooling-support-for-azure-files"></a>Toolunterstützung für Azure Files
 * [Verwenden von AzCopy mit Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
-* [Troubleshoot Azure File storage problems in Windows](storage-troubleshoot-windows-file-connection-problems.md) (Behandeln von Problemen in Azure File Storage unter Windows)
-* [Troubleshoot Azure File storage problems in Linux](storage-troubleshoot-linux-file-connection-problems.md) (Behandeln von Problemen in Azure File Storage unter Linux)
+* [Troubleshooting Azure Files problems – Windows](storage-troubleshoot-windows-file-connection-problems.md) (Behandeln von Azure Files-Problemen – Windows)
+* [Troubleshooting Azure Files problems – Linux](storage-troubleshoot-linux-file-connection-problems.md) (Behandeln von Azure Files-Problemen – Linux)
 
 ### <a name="blog-posts"></a>Blogbeiträge
-* [Azure-Dateispeicher ist jetzt allgemein verfügbar](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [Inside Azure File Storage](https://azure.microsoft.com/blog/inside-azure-file-storage/) (Informationen zu Azure File Storage)
+* [Azure Files is now generally available](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/) (Azure Files ist jetzt allgemein verfügbar)
+* [Inside Azure Files](https://azure.microsoft.com/blog/inside-azure-file-storage/) (Einblick in Azure Files)
 * [Einführung in den Microsoft Azure-Dateidienst](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [Migrating Data to Microsoft Azure Files](https://azure.microsoft.com/blog/migrating-data-to-microsoft-azure-files/) (Migrieren von Daten zu Microsoft Azure Files)
 

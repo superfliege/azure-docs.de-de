@@ -3,7 +3,7 @@ title: "Erstellen eines internen Lastenausgleichs – Azure CLI (klassisch) | Mi
 description: Erfahren Sie, wie Sie einen internen Load Balancer im klassischen Bereitstellungsmodell mithilfe der Azure-Befehlszeilenschnittstelle erstellen.
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-service-management
@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: d24b95f75b5ffd1116b07cf9f8bac33767a9c835
-ms.lasthandoff: 03/21/2017
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: f740633230b2479f77d7d09a31dbbf3f72ffb174
+ms.contentlocale: de-de
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -40,9 +41,9 @@ ms.lasthandoff: 03/21/2017
 
 Zum Erstellen einer internen Load Balancer-Gruppe und der Server, die den Datenverkehr an diese Gruppe senden, müssen Sie Folgendes ausführen:
 
-1. Erstellen Sie eine ILB-Instanz, die als Endpunkt für den eingehenden Datenverkehr dient, für den Lastenausgleich zwischen den Servern einer Lastenausgleichsgruppe durchgeführt wird.
-2. Fügen Sie Endpunkte für die virtuellen Computer hinzu, die den eingehenden Datenverkehr empfangen.
-3. Konfigurieren Sie die Server, die den Datenverkehr für den Lastenausgleich senden, so, dass der Datenverkehr an die virtuelle IP-Adresse (VIP) der ILB-Instanz gesendet wird.
+1. Erstellen Sie eine ILB-Instanz, die als Endpunkt für den eingehenden Datenverkehr dient, für den ein Lastenausgleich zwischen den Servern einer Lastenausgleichsgruppe durchgeführt wird.
+2. Fügen Sie Endpunkte für die virtuellen Computer hinzu, die den eingehenden Datenverkehr empfangen können.
+3. Konfigurieren Sie die Server für das Senden ihres Datenverkehrs an die virtuelle IP-Adresse (VIP) der ILB-Instanz.
 
 ## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>Schritte zum Erstellen eines internen Load Balancers mit der Befehlszeilenschnittstelle
 
@@ -63,7 +64,7 @@ Anhand der folgenden Anleitung erstellen Sie auf der Grundlage des oben beschrie
 
 Das Szenario setzt die virtuellen Computer „DB1“ und „DB2“ in einem Clouddienst namens „mytestcloud“ voraus. Beide virtuelle Computer verwenden ein virtuelles Netzwerk namens „my testvnet“ mit dem Subnetz „subnet-1“.
 
-Dieses Handbuch erstellt eine interne Load Balancer-Gruppe, die Port 1433 als privaten Port und Port 1433 als lokalen Port verwendet.
+Mit dieser Anleitung wird eine interne Load Balancer-Gruppe erstellt, die Port 1433 als privaten Port und Port 1433 als lokalen Port verwendet.
 
 Dies ist ein häufiges Szenario, bei dem sich die virtuellen SQL-Computer im Back-End befinden und über einen internen Load Balancer sichergestellt wird, dass die Datenbankserver nicht direkt über eine öffentliche IP-Adresse offen gelegt werden.
 
@@ -92,7 +93,7 @@ Dies ist ein Beispiel für die Ausgabe:
 
 ### <a name="step-2"></a>Schritt 2
 
-Sie konfigurieren die interne Load Balancer-Gruppe, wenn Sie den ersten Endpunkt hinzufügen. Sie ordnen den Endpunkt, den virtuellen Computer und den Testport der internen Load Balancer-Gruppe in diesem Schritt zu.
+Sie konfigurieren die interne Load Balancer-Gruppe, wenn Sie den ersten Endpunkt hinzufügen. In diesem Schritt können Sie den Endpunkt, den virtuellen Computer und den Testport der internen Load Balancer-Gruppe zuordnen.
 
 ```azurecli
 azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 1433 --probe-protocol tcp --probe-interval 300 --probe-timeout 600 --internal-load-balancer-name ilbset
@@ -106,7 +107,7 @@ azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 
 azure vm show DB1
 ```
 
-Ausgabe:
+Die Ausgabe lautet wie folgt:
 
     azure vm show DB1
     info:    Executing command vm show

@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: bc3d67745afb8bbffe7ec3462e995104daff9632
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 6e71a13f99160fdd310be1e9a59717c9fecbf35d
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Einbinden einer Azure-Dateifreigabe über SMB mit macOS
-[Azure File Storage](../storage-dotnet-how-to-use-files.md) ist ein Dienst von Microsoft zum Erstellen und Verwenden branchenstandardkonformer Netzwerkdateifreigaben in Azure. Azure-Dateifreigaben können in macOS Sierra (10.12) und El Capitan (10.11) eingebunden werden. In diesem Artikel werden zwei Methoden zum Einbinden einer Azure-Dateifreigabe unter macOS behandelt: über die Finder-Benutzeroberfläche unter Verwendung des Terminals.
+[Azure Files](storage-files-introduction.md) ist ein Dienst von Microsoft zum Erstellen und Verwenden von branchenstandardkonformen Netzwerkdateifreigaben in Azure. Azure-Dateifreigaben können in macOS Sierra (10.12) und El Capitan (10.11) eingebunden werden. In diesem Artikel werden zwei Methoden zum Einbinden einer Azure-Dateifreigabe unter macOS behandelt: über die Finder-Benutzeroberfläche unter Verwendung des Terminals.
 
 > [!Note]  
 > Vor dem Einbinden einer Azure-Dateifreigabe über SMB sollten Sie die SMB-Paketsignatur deaktivieren. Andernfalls leidet unter Umständen die Leistung beim Zugriff auf die Azure-Dateifreigabe über macOS. Da die SMB-Verbindung verschlüsselt wird, hat dies keine Auswirkungen auf die Verbindungssicherheit. Über das Terminal können Sie die SMB-Paketsignatur mithilfe folgender Befehle deaktivieren, wie unter [Paketsignaturen für SMB 2- und SMB 3-Verbindungen deaktivieren](https://support.apple.com/HT205926) beschrieben:  
@@ -65,7 +65,7 @@ ms.lasthandoff: 08/21/2017
     ![Momentaufnahme der eingebundenen Azure-Dateifreigabe](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
+Weitere Informationen zu Azure Files erhalten Sie über diese Links:
 
 * [Auf dem Mac eine Verbindung über die Dateifreigabe herstellen](https://support.apple.com/HT204445)
 * [Häufig gestellte Fragen](../storage-files-faq.md)

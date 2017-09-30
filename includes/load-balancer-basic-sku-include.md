@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+Azure Load Balancer unterstützt zwei verschiedene Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Der Load Balancer vom Typ „Basic“ ist allgemein verfügbar, und der Load Balancer vom Typ „Standard“ befindet sich derzeit in der öffentlichen Vorschauphase (Public Preview). Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Azure Load Balancer Standard overview (Preview)](https://aka.ms/AzureLoadBalancerStandard) (Azure Load Balancer „Standard“ – Übersicht (Vorschauversion)).

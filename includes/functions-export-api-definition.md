@@ -16,7 +16,7 @@ Sie verfügen über eine OpenAPI-Definition für Ihre Funktion (aus [Erstellen e
 
     |Einstellung|Beschreibung|
     |--------|------------|
-    |**Exportmodus**|Wählen Sie **Express** aus, um die benutzerdefinierte API automatisch zu generieren. Bei Verwendung von **Manuell** wird die API-Definition zwar exportiert, muss dann aber manuell in PowerApps und Microsoft Flow importiert werden. Weitere Informationen finden Sie unter [Export in PowerApps und Microsoft Flow](https://docs.microsoft.com/azure/app-service/app-service-export-api-to-powerapps-and-flow?toc=%2fazure%2fazure-functions%2ftoc.json).|
+    |**Exportmodus**|Wählen Sie **Express** aus, um die benutzerdefinierte API automatisch zu generieren. Bei Verwendung von **Manuell** wird die API-Definition zwar exportiert, muss dann aber manuell in PowerApps und Microsoft Flow importiert werden. Weitere Informationen finden Sie unter [Export in PowerApps und Microsoft Flow](../articles/azure-functions/app-service-export-api-to-powerapps-and-flow.md).|
     |**Umgebung**|Wählen Sie die Umgebung aus, in der die benutzerdefinierte API gespeichert werden soll. Weitere Informationen finden Sie unter [Umgebungen – Übersicht (PowerApps)](https://powerapps.microsoft.com/tutorials/environments-overview/) oder [Umgebungen – Übersicht (Microsoft Flow)](https://us.flow.microsoft.com/documentation/environments-overview-admin/).|
     |**Name der benutzerdefinierten API**|Geben Sie einen Namen ein (beispielsweise `Turbine Repair`).|
     |**API-Schlüsselname**|Geben Sie den Namen ein, der App- und Flow-Erstellern auf der Benutzeroberfläche der benutzerdefinierten API angezeigt werden soll. Wie Sie sehen, enthält das Beispiel hilfreiche Informationen.|

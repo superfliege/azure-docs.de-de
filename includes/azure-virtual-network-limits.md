@@ -22,27 +22,36 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| Virtuelle Netzwerke |50 |500 |
-| Subnetze pro virtuellem Netzwerk |1.000 |an den Support wenden |
+| Virtuelle Netzwerke |50 |1000 |
+| Subnetze pro virtuellem Netzwerk |1000 |10000 |
+| VNET-Peerings pro virtuellem Netzwerk |10 |50 |
 | DNS-Server pro virtuellem Netzwerk |9 |25 |
 | Private IP-Adressen pro virtuellem Netzwerk |4096 |8192 |
-| Private IP-Adressen pro Netzwerkschnittstelle |50 |Support kontaktieren |
+| Private IP-Adressen pro Netzwerkschnittstelle |256 |1024 |
 | Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500K |500K |
-| Netzwerkschnittstellen |300 |10000 |
-| Netzwerksicherheitsgruppen |100 |400 |
+| Netzwerkschnittstellen |350 |20000 |
+| Netzwerksicherheitsgruppen |100 |5.000 |
 | NSG-Regeln pro NSG |200 |500 |
+| Angegebene IP-Adressen und -Bereiche für die Quelle oder das Ziel in einer Sicherheitsregel |2000 |4000 |
+| Anwendungssicherheitsgruppen |200 |500 |
+| Anwendungssicherheitsgruppen pro IP-Konfiguration pro NIC |10 |20 |
+| IP-Konfigurationen pro Anwendungssicherheitsgruppe |1000 |4000 |
+| Anwendungssicherheitsgruppen, die in allen Sicherheitsregeln einer Netzwerksicherheitsgruppe angegeben werden können |50 |100 |
 | Benutzerdefinierte Routentabellen |100 |200 |
 | Benutzerdefinierte Routen pro Routentabelle |100 |400 |
-| Öffentliche IP-Adressen (dynamisch) |60 |Support kontaktieren |
-| Öffentliche IP-Adressen (statisch) |20 |Support kontaktieren |
-| Lastenausgleichsmodule (intern und Internet) |100 |Support kontaktieren |
-| Load Balancer-Regeln pro Lastenausgleichsmodul |150 |150 |
-| Load Balancer-Regeln pro IP-Konfiguration |299 |299 |
-| Öffentliche Front-End-IP pro Load Balancer |10 |30 |
-| Private Front-End-IP pro Load Balancer |10 |Support kontaktieren |
-| VNets Peerings pro Virtual Network-Instanz |10 |50 |
+| Öffentliche IP-Adressen – dynamisch |(Basic) |60 |Support kontaktieren |
+| Öffentliche IP-Adressen – statisch |(Basic) 20 |Support kontaktieren |
+| Öffentliche IP-Adressen – statisch |(Standard) 20 |Support kontaktieren |
+| Load Balancers (intern und mit Internetzugriff, Basic und Standard) |100 |1000 |
+| Load Balancer-Regeln (Basic) pro Lastenausgleichsmodul |150 |250 |
+| Load Balancer-Regeln (Standard) pro Lastenausgleichsmodul | 1250 | 1500|
+| Load Balancer-Regeln (Basic) pro IP-Konfiguration |250 |250 |
+| Öffentliche Front-End-IP pro Load Balancer (Basic) |10 |30 |
+| Öffentliche Front-End-IP pro Load Balancer (Standard) | 10 | 600 |
+| Private Front-End-IP pro Load Balancer (Basic) |10 |Support kontaktieren |
+| Private Front-End-IP pro Load Balancer (Standard) | 10 | 600 |
 | Punkt-zu-Standort-Stammzertifikate pro VPN Gateway |20 |20 |
-| Sekundäre IP-Konfigurationen pro virtuellem Netzwerk |1000 |an den Support wenden |
+
 
 [Wenden Sie sich an den Support](../articles/azure-supportability/resource-manager-core-quotas-request.md ), falls Sie Limits der Standardwerte erhöhen müssen.
 

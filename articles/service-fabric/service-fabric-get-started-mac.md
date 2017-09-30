@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/21/2017
 ms.author: saysa
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 8b4fc0ab9034263418cac42ced203035e0a8fcad
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 28424d139499b797b09664f73657a7f73361e3bc
 ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Einrichten Ihrer Entwicklungsumgebung unter Mac OS X
@@ -44,19 +44,19 @@ Service Fabric wird nicht nativ unter OS X ausgeführt. Für die Verwendung eine
 ## <a name="create-the-local-vm"></a>Erstellen des lokalen virtuellen Computers
 Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit einem Service Fabric-Cluster mit fünf Knoten zu erstellen:
 
-1. Klonen des Repositorys `Vagrantfile`
+1. Klonen Sie das Repository `Vagrantfile`.
 
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
-    Mit diesen Schritten wird die Datei `Vagrantfile` mit der VM-Konfiguration und dem Downloadort der VM bereitgestellt.
+    Mit diesen Schritten wird die Datei `Vagrantfile` mit der VM-Konfiguration und dem Downloadort der VM bereitgestellt.  Die Datei verweist auf ein vorhandenes Ubuntu-Image. 
 
-2. Navigieren Sie zum lokalen Klon des Repositorys:
+2. Navigieren Sie zum lokalen Klon des Repositorys.
 
     ```bash
     cd service-fabric-linux-vagrant-onebox
     ```
-3. Optional: Ändern Sie die Standardeinstellungen des virtuellen Computers
+3. Optional: Ändern Sie die Standardeinstellungen des virtuellen Computers.
 
     Der lokale virtuelle Computer ist standardmäßig wie folgt konfiguriert:
 
@@ -64,15 +64,30 @@ Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit e
    * Privates Hostnetzwerk (konfiguriert mit der IP-Adresse 192.168.50.50, um Pass-Through-Datenverkehr des Mac-Hosts zu ermöglichen)
 
      Sie können diese Einstellungen ändern oder die Konfiguration des virtuellen Computers über `Vagrantfile` ergänzen. Eine Liste mit allen Konfigurationsoptionen finden Sie in der [Vagrant-Dokumentation](http://www.vagrantup.com/docs) .
-4. Erstellen des virtuellen Computers
+4. Erstellen Sie den virtuellen Computer.
 
     ```bash
     vagrant up
     ```
 
-   In diesem Schritt wird das vorkonfigurierte VM-Image heruntergeladen und lokal gestartet. Anschließend wird auf dem virtuellen Computer ein lokaler Service Fabric-Cluster eingerichtet. Dieser Vorgang dauert ein paar Minuten. Wenn die Einrichtung erfolgreich war, erscheint in der Ausgabe eine Meldung mit dem Hinweis, dass der Cluster gestartet wird.
 
-    ![Start der Clustereinrichtung nach Bereitstellung des virtuellen Computers][cluster-setup-script]
+5. Melden Sie sich an der VM an, und installieren Sie das Service Fabric SDK.
+
+    ```bash
+    vagrant ssh
+    ```
+   
+   Installieren Sie das SDK wie unter [SDK-Installation](service-fabric-get-started-linux.md) beschrieben.  Das Skript unten soll Ihnen als Hilfe beim Installieren der Service Fabric-Runtime und des allgemeinen Service Fabric SDK zusammen mit der sfctl-CLI dienen. Für die Ausführung des Skripts wird vorausgesetzt, dass Sie die Lizenzen für die gesamte zu installierende Software gelesen und ihnen zugestimmt haben.
+
+    ```bash
+    sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
+    ```
+
+5.  Starten Sie den Service Fabric-Cluster.
+
+    ```bash
+    sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
+    ```
 
     >[!TIP]
     > Falls der Download der VM sehr lange dauert, können Sie sie per wget oder curl oder über einen Browser herunterladen, indem Sie zu dem Link navigieren, der unter **config.vm.box_url** in der Datei `Vagrantfile` angegeben ist. Nachdem Sie den Download an den lokalen Speicherort durchgeführt haben, können Sie die Datei `Vagrantfile` so bearbeiten, dass darin auf den lokalen Pfad verwiesen wird, an den Sie das Image heruntergeladen haben. Wenn Sie das Image beispielsweise nach „/home/users/test/azureservicefabric.tp8.box“ heruntergeladen haben, legen Sie **config.vm.box_url** auf diesen Pfad fest.
@@ -106,6 +121,10 @@ Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen einer Se
   npm install -g generator-azuresfcontainer  # for Service Fabric Container Applications
   ```
 4. Zur Erstellung einer Service Fabric-Java-Anwendung auf einem Mac müssen JDK 1.8 und Gradle auf dem Computer installiert sein.
+
+## <a name="set-up-net-core-20-development"></a>Einrichten der .NET Core 2.0-Entwicklung
+
+Installieren Sie das [.NET Core 2.0 SDK für Mac](https://www.microsoft.com/net/core#macos), um mit dem [Erstellen von Service Fabric-C#-Anwendungen](service-fabric-create-your-first-linux-application-with-csharp.md) zu beginnen. Pakete für Service Fabric-Anwendungen mit .NET Core 2.0 werden auf NuGet.org gehostet (derzeit in der Vorschauphase).
 
 
 ## <a name="install-the-service-fabric-plugin-for-eclipse-neon"></a>Installieren des Service Fabric-Plug-Ins für Eclipse Neon

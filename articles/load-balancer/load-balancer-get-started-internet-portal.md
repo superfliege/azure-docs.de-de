@@ -13,11 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 09/25/2017
 ms.author: annahar
-translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: db7c328b2ba7008b9d34275341fa4bad9522b028
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 922c33f712e160835256ad9ad040e523dfbf76db
+ms.contentlocale: de-de
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -29,11 +31,13 @@ ms.openlocfilehash: db7c328b2ba7008b9d34275341fa4bad9522b028
 > * [Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [Vorlage](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Hier erfahren Sie auch, wie Sie [mithilfe der klassischen Bereitstellung einen Load Balancer mit Internetzugriff erstellen](load-balancer-get-started-internet-classic-portal.md)
+Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell.
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -61,7 +65,7 @@ Unter [Unterstützung von Azure Resource Manager für den Load Balancer](load-ba
 3. Geben Sie auf dem Blatt **Load Balancer erstellen** einen Namen für den Load Balancer ein. Hier nennen wir ihn **myLoadBalancer**.
 4. Wählen Sie unter **Typ** die Option **Öffentlich** aus.
 5. Erstellen Sie unter **Öffentliche IP-Adresse** eine neue öffentliche IP mit dem Namen **myPublicIP**.
-6. Wählen Sie unter Ressourcengruppe **myRG**. Wählen Sie einen geeigneten **Speicherort** aus, und klicken Sie dann auf **OK**. Die Bereitstellung des Load Balancers wird dann gestartet und wird einige Minuten dauern.
+6. Wählen Sie unter Ressourcengruppe **myRG**. Wählen Sie einen geeigneten **Speicherort** aus, und klicken Sie dann auf **OK**. Die Bereitstellung des Load Balancers wird dann gestartet und dauert einige Minuten.
 
     ![Aktualisieren der Ressourcengruppe eines Load Balancers](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
 
@@ -81,7 +85,7 @@ Unter [Unterstützung von Azure Resource Manager für den Load Balancer](load-ba
     Wählen Sie in den Einstellungen Ihres Load Balancers den Punkt „Tests“. Klicken Sie dann oben auf dem Blatt auf **Hinzufügen** .
 
     Es gibt zwei Möglichkeiten, einen Test zu konfigurieren: über HTTP oder TCP. Dieses Beispiel zeigt die Konfiguration über HTTP, die Konfiguration per TCP erfolgt auf ähnliche Weise.
-    Aktualisieren Sie die notwendigen Informationen. Wie bereits erwähnt, nimmt **myLoadBalancer** einen Lastenausgleich in Port 80 vor. Der ausgewählte Pfad lautet „HealthProbe.aspx“, das Intervall beträgt 15 Sekunden, und der Fehlerschwellenwert liegt bei 2. Nach der Fertigstellung klicken Sie zum Erstellen des Tests auf **OK** .
+    Aktualisieren Sie die notwendigen Informationen. Wie bereits erwähnt, führt **myLoadBalancer** an Port 80 einen Lastenausgleich für den Datenverkehr durch. Der ausgewählte Pfad lautet „HealthProbe.aspx“, das Intervall beträgt 15 Sekunden, und der Fehlerschwellenwert liegt bei 2. Nach der Fertigstellung klicken Sie zum Erstellen des Tests auf **OK** .
 
     Um weitere Informationen zu den einzelnen Konfigurationen und dazu zu erhalten, wie diese verändert werden können, um Ihre Anforderungen zu erfüllen, bewegen Sie den Mauszeiger über das Symbol „i“.
 
@@ -112,9 +116,4 @@ Zum Löschen eines Load Balancers wählen Sie den Load Balancer aus, den Sie ent
 [Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
