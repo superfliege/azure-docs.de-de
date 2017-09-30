@@ -206,12 +206,15 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, mit der eine **lock
    
     ```
     var twinPatch = {
-        etag: '*',
-        desired: {
-            building: '43',
-            floor: 3
-        }
+       etag: '*', 
+       properties: {
+           desired: {
+               building: '43', 
+               floor: 3
+           }
+       }
     };
+   
    
     var twinJobId = uuid.v4();
    
