@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2017
 ms.author: asmalser
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: f9cc94ca1fc44d10af19debab49435b265bf6e7c
+ms.translationtype: HT
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 86f5591cd2d67d7f734b7148b79c8ee388336283
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-with-on-premises-active-directory-and-azure-active-directory"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung in lokalem Active Directory und Azure Active Directory
@@ -63,9 +62,6 @@ Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über 
 * Für die Benutzerbereitstellung in Active Directory einen der Domäne beigetretenen Server mit mindestens Windows Server 2012 zum Hosten des [lokalen Synchronisierungs-Agents](https://go.microsoft.com/fwlink/?linkid=847801)
 * [Azure AD Connect](connect/active-directory-aadconnect.md) für die Synchronisierung zwischen Active Directory und Azure AD
 
-> [!NOTE]
-> Wenn sich Ihr Azure AD-Mandant in Europa befindet, lesen Sie den Abschnitt [Bekannte Probleme](#known-issues) weiter unten.
-
 
 ### <a name="solution-architecture"></a>Lösungsarchitektur
 
@@ -85,7 +81,7 @@ Sobald Sie die Antworten auf diese Fragen kennen, können Sie Ihre Workday-Berei
 
 Azure Active Directory unterstützt vorintegrierte Bereitstellungsconnectors für Workday und eine große Anzahl von SaaS-Anwendungen. 
 
-Ein einzelner Bereitstellungsconnector kommuniziert mit der API eines einzelnen Quellsystems und hilft bei der Bereitstellung von Daten in einem einzelnen Zielsystem. Die meisten Bereitstellungsconnectors, die Azure AD unterstützt, sind für ein einzelnes Quell- und Zielsystem gedacht (z.B. Azure AD zu ServiceNow), und können einfach eingerichtet werden, indem die betreffende App (z.B. ServiceNow) aus dem Azure AD-App-Katalog hinzugefügt wird. 
+Ein einzelner Bereitstellungsconnector kommuniziert mit der API eines einzelnen Quellsystems und hilft bei der Bereitstellung von Daten in einem einzelnen Zielsystem. Die meisten Bereitstellungsconnectors, die Azure AD unterstützt, sind für ein einzelnes Quell- und Zielsystem vorgesehen (beispielsweise Azure AD zu ServiceNow) und können eingerichtet werden, indem die betreffende App (etwa ServiceNow) aus dem Azure AD-App-Katalog hinzugefügt wird. 
 
 Es gibt eine direkte Beziehung zwischen Bereitstellungsconnectorinstanzen und App-Instanzen in Azure AD:
 
@@ -340,7 +336,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 | **Fax**      | facsimileTelephoneNumber     |     |    Erstellen und aktualisieren |
 | **Vorname**   | givenName       |     |    Erstellen und aktualisieren |
 | **Switch(\[Active\], , "0", "True", "1",)** |  accountDisabled      |     | Erstellen und aktualisieren |
-| **Mobile**  |    mobile       |     |       Wird nur bei der Erstellung geschrieben |
+| **Mobile**  |    mobile       |     |       Erstellen und aktualisieren |
 | **EmailAddress**    | mail    |     |     Erstellen und aktualisieren |
 | **ManagerReference**   | manager  |     |  Erstellen und aktualisieren |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Erstellen und aktualisieren |
@@ -350,7 +346,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 | **Nachname**   |   sn   |     |  Erstellen und aktualisieren |
 | **CountryRegionReference** |  st     |     | Erstellen und aktualisieren |
 | **AddressLineData**    |  streetAddress  |     |   Erstellen und aktualisieren |
-| **PrimaryWorkTelephone**  |  telephoneNumber   |     | Wird nur bei der Erstellung geschrieben |
+| **PrimaryWorkTelephone**  |  telephoneNumber   |     | Erstellen und aktualisieren |
 | **BusinessTitle**   |  title     |     |  Erstellen und aktualisieren |
 | **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , ), "contoso.com")**   | userPrincipalName     |     | Erstellen und aktualisieren                                                   
 | **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  Erstellen und aktualisieren |
@@ -382,6 +378,10 @@ Führen Sie nach der Installation des Agents die folgenden PowerShell-Befehle zu
 
 * Eingabe: Benutzername und Kennwort des globalen Administrators für Ihren Azure AD-Mandanten
 
+>[!IMPORTANT]
+>Es gibt derzeit ein bekanntes Problem, das dazu führt, dass globale Administratoranmeldeinformationen bei Verwendung einer benutzerdefinierten Domäne nicht funktionieren (Beispiel: admin@contoso.com). Erstellen und verwenden Sie zur Umgehung dieses Problems ein globales Administratorkonto mit einer onmicrosoft.com-Domäne (Beispiel: admin@contoso.onmicrosoft.com).
+
+
 **Befehl 4**
 
 > Get-AdSyncAgentProvisioningTasks
@@ -410,8 +410,39 @@ Führen Sie nach der Installation des Agents die folgenden PowerShell-Befehle zu
 
 > net start aadsyncagent
 
+>[!TIP]
+>Neben den net-Befehlen in PowerShell kann der Synchronisierungs-Agent-Dienst auch über **Services.msc** gestartet und beendet werden. Sollte beim Ausführen der PowerShell-Befehle ein Fehler auftreten, vergewissern Sie sich unter **Services.msc**, dass **Microsoft Azure AD Connect Provisioning Agent** ausgeführt wird.
+
+![Dienste](./media/active-directory-saas-workday-inbound-tutorial/Services.png)  
+
+**Zusätzliche Konfiguration für Kunden in der Europäischen Union**
+
+Falls sich Ihr Azure Active Directory-Mandant in einem der europäischen Datencenter befindet, führen Sie die folgenden Zusatzschritte aus.
+
+1. Öffnen Sie **Services.msc**, und beenden Sie den Dienst **Microsoft Azure AD Connect Provisioning Agent**.
+2. Wechseln Sie zum Agent-Installationsordner (Beispiel: C:\Programme\Microsoft Azure AD Connect Provisioning Agent).
+3. Öffnen Sie **SyncAgnt.exe.config** in einem Text-Editor.
+4. Ersetzen Sie https://manage.hub.syncfabric.windowsazure.com/Management durch **https://eu.manage.hub.syncfabric.windowsazure.com/Management**.
+5. Ersetzen Sie https://provision.hub.syncfabric.windowsazure.com/Provisioning durch **https://eu.provision.hub.syncfabric.windowsazure.com/Provisioning**.
+6. Speichern Sie die Datei **SyncAgnt.exe.config**.
+7. Öffnen Sie **Services.msc**, und starten Sie den Dienst **Microsoft Azure AD Connect Provisioning Agent**.
+
+**Behandeln von Problemen mit dem Agent**
+
+Das [Windows-Ereignisprotokoll](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx) auf dem Windows Server-Computer, der als Host für den Agent fungiert, enthält Ereignisse für alle Vorgänge, die der Agent ausgeführt hat. So zeigen Sie diese Ereignisse an:
+    
+1. Öffnen Sie **Eventvwr.msc**.
+2. Klicken Sie auf **Windows-Protokolle > Anwendung**.
+3. Sehen Sie sich alle Ereignisse an, die unter der Quelle **AADSyncAgent** protokolliert wurden. 
+4. Suchen Sie nach Fehlern und Warnungen.
+
+Im Falle eines Berechtigungsproblems mit den Active Directory- oder Azure Active Directory-Anmeldeinformationen aus den PowerShell-Befehlen wird ein Fehler wie der folgende angezeigt: 
+    
+![Ereignisprotokolle](./media/active-directory-saas-workday-inbound-tutorial/Windows_Event_Logs.png) 
+
+
 ### <a name="part-4-start-the-service"></a>Teil 4: Starten des Diensts
-Sobald Sie die Teile 1 bis 3 abgeschlossen haben, können Sie im Azure-Verwaltungsportal den Bereitstellungsdienst starten.
+Nach Abschluss der Teile 1 bis 3 können Sie im Azure-Portal den Bereitstellungsdienst starten.
 
 1.  Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
 
@@ -419,11 +450,12 @@ Sobald Sie die Teile 1 bis 3 abgeschlossen haben, können Sie im Azure-Verwaltun
 
 3. Dadurch wird die erste Synchronisierung gestartet, die abhängig von der Anzahl der Benutzer in Workday eine variable Anzahl von Stunden dauern kann.
 
-4. Auf der Registerkarte **Überwachungsprotokolle** können einzelne Synchronisierungsereignisse angezeigt werden, z.B. welche Benutzer aus Workday ausgelesen und anschließend Active Directory hinzugefügt oder darin aktualisiert werden. **[Ausführliche Anweisungen zum Lesen der Überwachungsprotokolle finden Sie in der Anleitung zur Erstellung von Bereitstellungsberichten.](active-directory-saas-provisioning-reporting.md)**
+4. Im Azure-Portal können Sie sich auf der Registerkarte **Überwachungsprotokolle** jederzeit ansehen, welche Aktionen der Bereitstellungsdienst ausgeführt hat. Die Überwachungsprotokolle enthalten alle einzelnen Synchronisierungsereignisse des Bereitstellungsdiensts – beispielsweise, welche Benutzer in Workday gelesen und anschließend Active Directory hinzugefügt oder dort aktualisiert wurden. **[Ausführliche Anweisungen zum Lesen der Überwachungsprotokolle finden Sie in der Anleitung zur Erstellung von Bereitstellungsberichten.](active-directory-saas-provisioning-reporting.md)**
 
-5.  Das Windows-Protokoll „Anwendung“ auf dem Agent-Computer zeigt alle Vorgänge, die mittels des Agents ausgeführt werden.
+5.  Prüfen Sie im [Windows-Ereignisprotokoll](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx) auf dem Windows Server-Computer, der als Host für den Agent fungiert, ob neue Fehler oder Warnungen vorliegen. Starten Sie zum Anzeigen dieser Ereignisse **Eventvwr.msc** auf dem Server, und klicken Sie auf **Windows-Protokolle > Anwendung**. Alle bereitstellungsbezogenen Meldungen werden unter der Quelle **AADSyncAgent** protokolliert. 
+    
 
-6. Nach Abschluss wird auf der Registerkarte  **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben.
+6. Anschließend wird auf der Registerkarte **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben:
 
 ![Azure-Portal](./media/active-directory-saas-workday-inbound-tutorial/WD_3.PNG)
 
@@ -468,7 +500,7 @@ In den folgenden Abschnitten wird das Einrichten einer Verbindung zwischen Workd
 
    * **Administratorkennwort**: Geben Sie das Kennwort des Workday-Systemintegrationskontos ein.
 
-   * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Diese sollte wie folgt lauten: https://wd3-impl-services1.workday.com/ccx/service/contoso4. Dabei wird „contoso4“ durch den Namen Ihres Mandanten und „wd3-impl“ (bei Bedarf) durch die ordnungsgemäße Umgebungszeichenfolge ersetzt.
+   * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Diese sollte wie folgt lauten: https://wd3-impl-services1.workday.com/ccx/service/contoso4. Dabei wird „contoso4“ durch den Namen Ihres Mandanten und „wd3-impl“ durch die ordnungsgemäße Umgebungszeichenfolge ersetzt. Ist diese URL nicht bekannt, erkundigen Sie sich bei Ihrem Workday-Integrationspartner oder bei einem Supportmitarbeiter nach der korrekten URL.
 
    * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
 
@@ -543,7 +575,7 @@ Sobald Sie die Teile 1 und 2 abgeschlossen haben, können Sie den Bereitstellung
 
 4. Einzelne Synchronisierungsereignisse können auf der Registerkarte **Überwachungsprotokolle** angezeigt werden. **[Ausführliche Anweisungen zum Lesen der Überwachungsprotokolle finden Sie in der Anleitung zur Erstellung von Bereitstellungsberichten.](active-directory-saas-provisioning-reporting.md)**
 
-5. Nach Abschluss wird auf der Registerkarte  **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben.
+5. Anschließend wird auf der Registerkarte **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben:
 
 
 ## <a name="configuring-writeback-of-email-addresses-to-workday"></a>Konfigurieren des Zurückschreibens von E-Mail-Adressen in Workday
@@ -604,11 +636,13 @@ Sobald Sie die Teile 1 und 2 abgeschlossen haben, können Sie den Bereitstellung
 
 4. Einzelne Synchronisierungsereignisse können auf der Registerkarte **Überwachungsprotokolle** angezeigt werden. **[Ausführliche Anweisungen zum Lesen der Überwachungsprotokolle finden Sie in der Anleitung zur Erstellung von Bereitstellungsberichten.](active-directory-saas-provisioning-reporting.md)**
 
-5. Nach Abschluss wird auf der Registerkarte  **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben.
+5. Anschließend wird auf der Registerkarte **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben:
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-* **Überwachungsprotokolle in europäischen Gebietsschemas**: Seit Veröffentlichung dieser Technical Preview-Version gibt es ein bekanntes Problem mit den [Überwachungsprotokollen](active-directory-saas-provisioning-reporting.md) für Workday-Connector-Apps, die nicht im [Azure-Portal](https://portal.azure.com) angezeigt werden, wenn sich der Azure AD-Mandant in einem europäischen Rechenzentrum befindet. Eine Lösung für dieses Problem ist in Kürze verfügbar. Überprüfen Sie dieses Thema in naher Zukunft erneut auf neue Informationen dazu. 
+* Beim Ausführen des PowerShell-Befehls **Add-ADSyncAgentAzureActiveDirectoryConfiguration** gibt es derzeit ein bekanntes Problem, das dazu führt, dass globale Administratoranmeldeinformationen bei Verwendung einer benutzerdefinierten Domäne nicht funktionieren (Beispiel: admin@contoso.com). Erstellen und verwenden Sie zur Umgehung dieses Problems in Azure AD ein globales Administratorkonto mit einer onmicrosoft.com-Domäne (Beispiel: admin@contoso.onmicrosoft.com).
+
+* Ein anderes Problem, das dazu führte, dass Überwachungsprotokolle bei Azure AD-Mandanten in der Europäischen Union nicht angezeigt wurden, ist inzwischen behoben. Für Azure AD-Mandanten in der EU müssen jedoch zusätzliche Agent-Konfigurationsschritte ausgeführt werden. Ausführlichere Informationen finden Sie in [Teil 3: Konfigurieren des lokalen Synchronisierungs-Agents](#Part 3: Configure the on-premises synchronization agent).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Tutorial: Konfigurieren des einmaligen Anmeldens zwischen Workday und Azure Active Directory](active-directory-saas-workday-tutorial.md)
@@ -617,5 +651,5 @@ Sobald Sie die Teile 1 und 2 abgeschlossen haben, können Sie den Bereitstellung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
 
