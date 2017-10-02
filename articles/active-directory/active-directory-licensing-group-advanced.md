@@ -17,10 +17,10 @@ ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 87cc66752dae1f4bd0903607d8a8ae9bd9125b11
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 75cafa6868d54f9d8a7e0dbe9f2a9e85ed43f16f
 ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -199,6 +199,16 @@ Diese Beispielausgabe zeigt den Start der Verarbeitung, alle sich ergebenden Ben
 
 >[!TIP]
 > Wenn Sie auf die Elemente von *Change user license* (Benutzerlizenz ändern) klicken, werden Details für Lizenzänderungen angezeigt, die auf die einzelnen Benutzer angewendet wurden.
+
+## <a name="deleting-a-group-with-an-assigned-license"></a>Löschen einer Gruppe mit einer zugewiesenen Lizenz
+
+Es ist nicht möglich, eine Gruppe mit einer aktiven zugewiesenen Lizenz zu löschen. Ein Administrator könnte andernfalls eine Gruppe löschen und nicht bemerken, dass hierdurch Lizenzen von Benutzern entfernt werden. Aus diesem Grund ist es erforderlich, dass Lizenzen zuerst aus der Gruppe entfernt werden, bevor sie gelöscht werden kann.
+
+Beim Versuch, eine Gruppe im Azure-Portal zu löschen, kann eine Fehlerbenachrichtigung wie die folgende angezeigt werden: ![Screenshot „Fehler beim Löschen der Gruppe“](media/active-directory-licensing-group-advanced/groupdeletionfailed.png).
+
+Wechseln Sie auf die Registerkarte **Lizenzen** für die Gruppe, und stellen Sie fest, ob Lizenzen zugewiesen sind. Wenn dies der Fall ist, entfernen Sie diese Lizenzen, und versuchen Sie dann erneut, die Gruppe zu löschen.
+
+Ähnliche Fehler können beim Löschen der Gruppe über PowerShell oder die Graph-API angezeigt werden. Wenn Sie eine Gruppe verwenden, die lokal synchronisiert wird, kann Azure AD Connect ebenfalls Fehler melden, wenn die Gruppe in Azure AD nicht gelöscht werden kann. In allen diesen Fällen müssen Sie überprüfen, ob der Gruppe Lizenzen zugewiesen sind und diese zuerst entfernen.
 
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
 

@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: bryanla
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 78a6164e76f6ceab936874e68bd38bb4eb387e00
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 03fb9cc6633f81e284ae299f7b2ba4018d19cc73
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 09/14/2017
 
 Eine verwaltete Dienstidentität stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
 
-In diesem Artikel erfahren Sie, wie Sie MSI für einen virtuellen Azure-Windows-Computer mit der Azure-CLI aktivieren und entfernen.
+In diesem Artikel erfahren Sie, wie Sie MSI für einen virtuellen Azure-Computer mit der Azure CLI aktivieren und entfernen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,7 +43,7 @@ Um die CLI-Skriptbeispiele auszuführen, haben Sie drei Möglichkeiten:
 
 ## <a name="enable-msi-during-creation-of-an-azure-vm"></a>Aktivieren von MSI beim Erstellen eines virtuellen Azure-Computers
 
-Eine neue, für MSI aktivierte virtuelle Windows-Computerressource wird in einer neuen Ressourcengruppe mit den angegebenen Konfigurationsparametern erstellt. Beachten Sie, dass viele dieser Funktionen unter Umständen mehrere Sekunden bzw. Minuten ausgeführt werden, bevor ein Ergebnis zurückgegeben wird.
+So erstellen Sie einen MSI-fähigen virtuellen Computer:
 
 1. Wenn Sie nicht Azure Cloud Shell aus dem Azure-Portal verwenden, melden Sie sich zunächst mit [az login](/cli/azure/#login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, unter dem Sie den virtuellen Computer bereitstellen möchten:
 
@@ -67,7 +67,7 @@ Eine neue, für MSI aktivierte virtuelle Windows-Computerressource wird in einer
 
 Wenn Sie MSI auf einem vorhandenen virtuellen Computer aktivieren möchten, gehen Sie wie folgt vor:
 
-1. Wenn Sie nicht Azure Cloud Shell aus dem Azure-Portal verwenden, melden Sie sich zunächst mit [az login](/cli/azure/#login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, unter dem Sie den virtuellen Computer bereitstellen möchten:
+1. Wenn Sie nicht Azure Cloud Shell aus dem Azure-Portal verwenden, melden Sie sich zunächst mit [az login](/cli/azure/#login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, die Ihnen Schreibberechtigungen auf dem virtuellen Computer erteilt, z. B. „Mitwirkender für virtuelle Computer“:
 
    ```azurecli-interactive
    az login
@@ -83,13 +83,13 @@ Wenn Sie MSI auf einem vorhandenen virtuellen Computer aktivieren möchten, gehe
 
 Wenn MSI auf einem virtuellen Computer nicht mehr benötigt wird, gehen Sie wie folgt vor:
 
-1. Wenn Sie nicht Azure Cloud Shell aus dem Azure-Portal verwenden, melden Sie sich zunächst mit [az login](/cli/azure/#login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, unter dem Sie den virtuellen Computer bereitstellen möchten:
+1. Wenn Sie nicht Azure Cloud Shell aus dem Azure-Portal verwenden, melden Sie sich zunächst mit [az login](/cli/azure/#login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, die Ihnen Schreibberechtigungen auf dem virtuellen Computer erteilt, z. B. „Mitwirkender für virtuelle Computer“:
 
    ```azurecli-interactive
    az login
    ```
 
-2. Verwenden Sie den `-n ManagedIdentityExtensionForWindows`-Switch mit [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/#assign-identity), um die MSI zu entfernen:
+2. Verwenden Sie den Schalter `-n ManagedIdentityExtensionForWindows` oder `-n ManagedIdentityExtensionForLinux` (abhängig vom Typ des virtuellen Computers) mit [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/#assign-identity), um die MSI zu entfernen:
 
    ```azurecli-interactive
    az vm extension delete --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -98,7 +98,10 @@ Wenn MSI auf einem virtuellen Computer nicht mehr benötigt wird, gehen Sie wie 
 ## <a name="related-content"></a>Verwandte Inhalte
 
 - [Übersicht über verwaltete Dienstidentitäten](msi-overview.md)
-- Dieser Artikel basiert auf dem Schnellstart [Erstellen eines virtuellen Windows-Computers mit CLI](../virtual-machines/windows/quick-create-cli.md) und wurde durch MSI-spezifische Anweisungen ergänzt. 
+- Die vollständigen Schnellstarts zum Erstellen virtueller Azure-Computer finden Sie unter: 
+
+  - [Erstellen eines virtuellen Windows-Computers mit der CLI](../virtual-machines/windows/quick-create-cli.md)  
+  - [Erstellen eines virtuellen Linux-Computers mit der CLI](../virtual-machines/linux/quick-create-cli.md) 
 
 Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.
 

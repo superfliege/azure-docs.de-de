@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/14/2017
 ms.author: seguler
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: 242b6e5f2f1a67f78f5dba4a5b5beb68abdd6111
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 1a4c52babe76e59eacb30e8be91ed934cdbe305b
 ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Übertragen von Daten mit AzCopy unter Windows
@@ -299,7 +299,7 @@ AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/ /Dest:C:\myf
 
 Beachten Sie, dass leere Ordner nicht heruntergeladen werden.
 
-## <a name="upload-files-to-file-storage"></a>Hochladen von Dateien in den Dateispeicher
+## <a name="upload-files-to-an-azure-file-share"></a>Hochladen von Dateien auf eine Azure-Dateifreigabe
 
 Betrachten wir nun mehrere Möglichkeiten, Dateien mithilfe von AzCopy hochzuladen.
 

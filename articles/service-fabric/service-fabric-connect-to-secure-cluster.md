@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 09/29/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: d6a13ceb8ccd9207ecacc166247535d496d5dec7
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 76606189e7bed1a5179c7486d7c10f3c253884b5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="connect-to-a-secure-cluster"></a>Herstellen einer Verbindung mit einem sicheren Cluster
@@ -312,6 +312,8 @@ Um [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) für ei
 `http://<your-cluster-endpoint>:19080/Explorer`
 
 Die vollständige URL steht auch im Cluster Essentials-Bereich des Azure-Portal zur Verfügung.
+
+Zum Herstellen einer Verbindung mit einem sicheren Cluster unter Windows oder OS X können Sie das Clientzertifikat importieren. Der Browser fordert Sie dann auf, das Zertifikat anzugeben, das zum Herstellen einer Verbindung mit dem Cluster verwendet werden soll.  Auf Linux-Computern muss das Zertifikat mithilfe von erweiterten Browsereinstellungen (jedem Browser verfügt über unterschiedliche Mechanismen) importiert werden. Er muss auf den Speicherort des Zertifikats auf dem Datenträger verweisen.
 
 ### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Herstellen einer Verbindung mit einem sicheren Cluster mit Azure Active Directory
 

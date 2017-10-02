@@ -13,17 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/21/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 60d35b230534ca5721a49a770ea81cc79d52ec02
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: d33e516628c56a7aa038e37b4498461de17f8433
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/22/2017
 
 ---
-
 # <a name="how-to-troubleshoot-self-service-password-reset"></a>Problembehandlung für die Self-Service-Kennwortzurücksetzung
 
 Wenn Probleme mit der Self-Service-Kennwortzurücksetzung auftreten, helfen Ihnen die folgenden Punkte möglicherweise dabei, die Probleme schnell zu beseitigen.
@@ -152,17 +151,21 @@ Eine bewährte Methode bei der Problembehandlung für die Kennwortrückschreibun
 | 33008| ADPasswordPolicyError| Dieses Ereignis tritt auf, wenn der Dienst für die Kennwortrückschreibung versucht, ein Kennwort für Ihr lokales Verzeichnis festzulegen, das die in der Domäne geltenden Anforderungen im Hinblick auf Alter, Verlauf, Komplexität oder Filterung für Kennwörter nicht erfüllt. <br> <br> Wenn Sie ein Mindestkennwortalter festgelegt habe und das Kennwort kürzlich geändert wurde, können Sie das Kennwort erst wieder ändern, wenn es das für Ihre Domäne festgelegte Kennwortalter erreicht hat. Zu Testzwecken sollte das Mindestalter auf 0 festgelegt werden. <br> <br> Wenn Sie Anforderungen für den Kennwortverlauf festgelegt haben, müssen Sie ein Kennwort auswählen, das die letzten n Male nicht verwendet wurde, wobei "n" für die Einstellung des Kennwortverlaufs steht. Wenn Sie ein Kennwort auswählen, das die letzten n Male verwendet wurde, wird dieser Fehler angezeigt. Zu Testzwecken sollte der Verlauf auf 0 festgelegt werden. <br> <br> Wenn Anforderungen an die Kennwortkomplexität gelten, werden diese erzwungen, wenn der Benutzer versucht, ein Kennwort zu ändern oder zurückzusetzen. <br> <br> Wenn Sie Kennwortfilter aktiviert haben und ein Benutzer versucht, ein Kennwort auszuwählen, das nicht den Filterkriterien entspricht, tritt bei der Kennwortänderung oder -zurücksetzung ein Fehler auf.|
 | 33009| ADConfigurationError| Dieses Ereignis weist darauf hin, dass beim Zurückschreiben eines Kennworts in das lokale Verzeichnis aufgrund eines Konfigurationsproblems in Active Directory ein Fehler aufgetreten ist. Überprüfen Sie das Anwendungsereignisprotokoll für den Azure AD Connect-Computer auf Meldungen vom ADSync-Dienst, um weitere Informationen zur Fehlerursache zu erhalten.|
 
-
 ## <a name="troubleshoot-password-writeback-connectivity"></a>Problembehandlung: Konnektivität bei der Kennwortrückschreibung
 
 Wenn es bei Verwendung der Azure AD Connect-Komponente für die Kennwortrückschreibung zu Dienstunterbrechungen kommt, können Sie die folgenden Schritte für eine schnelle Problemlösung einsetzen:
 
+* [Bestätigen der Netzwerkkonnektivität](#confirm-network-connectivity)
 * [Neustarten des Azure AD Connect-Synchronisierungsdiensts](#restart-the-azure-ad-connect-sync-service)
 * [Deaktivieren und erneutes Aktivieren der Funktion für die Kennwortrückschreibung](#disable-and-re-enable-the-password-writeback-feature)
 * [Installieren der aktuellen Azure AD Connect-Version](#install-the-latest-azure-ad-connect-release)
 * [Problembehandlung: Kennwortrückschreibung](#troubleshoot-password-writeback)
 
 Im Allgemeinen wird empfohlen, diese Schritte in der oben genannten Reihenfolge auszuführen, um Ihren Dienst schnellstmöglich wiederherzustellen.
+
+### <a name="confirm-network-connectivity"></a>Bestätigen der Netzwerkkonnektivität
+
+Die häufigste Fehlerursache besteht darin, dass die Firewall und/oder Proxyports sowie Leerlauftimeouts falsch konfiguriert sind. Lesen Sie die Netzwerkanforderungen im Artikel [Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD](active-directory-passwords-how-it-works.md#network-requirements), um weitere Informationen zu erhalten.
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Neustarten des Azure AD Connect-Synchronisierungsdiensts
 

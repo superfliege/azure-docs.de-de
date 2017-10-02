@@ -16,10 +16,10 @@ ms.date: 08/22/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: a26c40351c6b982fd90acb4bf06220ef3f79f399
+ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
+ms.openlocfilehash: a57edd30975ec0e943fd84b2c66137d328a89b8b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Konfigurieren von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory
@@ -57,7 +57,9 @@ Sie können in einer Richtlinie für den gerätebasierten bedingten Zugriff erzw
 Geräte können durch folgende Instanzen im Verzeichnis als konform gekennzeichnet werden:
 
 - Intune 
-- Ein Drittanbieter-Verwaltungssystem für mobile Geräte, das in Azure AD integriert ist  
+- Ein durch ein Mobilgerät eines Drittanbieters verwaltetes System, das Windows 10-Geräte über Azure AD-Integration verwaltet. 
+ 
+  
 
 Nur Geräte, die mit Azure AD verbunden sind, können als konform gekennzeichnet werden. Für das Verbinden eines Geräts mit Azure Active Directory haben Sie die folgenden Möglichkeiten: 
 

@@ -1,6 +1,6 @@
 ---
-title: "Verwalten von Web-Apps für Container mithilfe der Azure CLI 2.0 | Microsoft-Dokumentation"
-description: "Verwalten von Web-Apps für Container mithilfe der Azure CLI"
+title: "Verwalten von Web-App für Container mithilfe der Azure CLI 2.0 | Microsoft-Docs"
+description: "Verwalten von Web-App für Container mithilfe der Azure CLI."
 keywords: Azure App Service, Web-App, CLI, Linux, OSS
 services: app-service
 documentationCenter: 
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: d58fab0b423b7bc1382a82f4bf308b6ad7286296
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 5213bec66095d50ef29cc3bec0a7b6307614dc92
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-# <a name="manage-web-apps-for-containers-using-azure-cli"></a>Verwalten von Web-Apps für Container mithilfe der Azure CLI
+# <a name="manage-web-app-for-containers-using-azure-cli"></a>Verwalten von Web-App für Container mithilfe der Azure CLI
 
 Mit den Befehlen in diesem Artikel können Sie eine Web-App für Container mit der Azure CLI 2.0 erstellen und verwalten.
 Sie können die neue Version der Befehlszeilenschnittstelle auf zwei Arten einrichten:
@@ -54,7 +54,7 @@ Um die Protokollierung von Docker-Containern zu aktivieren, können Sie den folg
 az webapp log config -n sname -g rgname --web-server-logging filesystem
 ```
 
-## <a name="change-the-custom-docker-container-for-an-existing-web-apps-for-containers-app"></a>Ändern des benutzerdefinierten Docker-Containers für eine vorhandene Web-App für Container
+## <a name="change-the-custom-docker-container-for-an-existing-web-app-for-containers-app"></a>Ändern des benutzerdefinierten Docker-Containers für eine vorhandene Web-App für Container-App
 
 Wenn Sie eine bereits erstellte App vom aktuellen Docker-Image auf ein neues Image umstellen möchten, können Sie den folgenden Befehl verwenden:
 
@@ -78,15 +78,15 @@ Mit dem folgenden Befehl aktivieren Sie die CD-Funktion und rufen die Webhook-UR
 az webapp deployment container config -n sname -g rgname -e true
 ```
 
-## <a name="create-a-web-apps-for-containers-app-using-one-of-our-built-in-runtime-frameworks"></a>Erstellen einer Web-App für Container mit einem integrierten Laufzeitframework
+## <a name="create-a-web-app-for-containers-app-using-one-of-our-built-in-runtime-frameworks"></a>Erstellen einer Web-App für Container mit einem unserer integrierten Laufzeitframeworks
 
-Verwenden Sie zum Erstellen einer Web-App für Container mit PHP 5.6 den folgenden Befehl.
+Verwenden Sie zum Erstellen einer Web-App für Container-App mit PHP 5.6 den folgenden Befehl.
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -r "php|5.6"
 ```
 
-## <a name="change-framework-version-for-an-existing-web-apps-for-containers-app"></a>Ändern der Frameworkversion für eine vorhandene Web-App für Container
+## <a name="change-framework-version-for-an-existing-web-app-for-containers-app"></a>Ändern der Frameworkversion für eine vorhandene Web-App für Container-App
 
 Wenn Sie eine bereits erstellte App von der aktuellen Frameworkversion auf Node.js 6.11 umstellen möchten, können Sie den folgenden Befehl verwenden:
 
@@ -107,6 +107,6 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 * [Was sind Azure-Web-Apps für Container?](app-service-linux-intro.md)
 * [Installieren der Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 * [Azure Cloud Shell (Vorschau)](../../cloud-shell/overview.md)
-* [Einrichten von Stagingumgebungen in Azure App Service](../../app-service-web/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Einrichten von Stagingumgebungen in Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Continuous Deployment mit Azure-Web-Apps für Container](app-service-linux-ci-cd.md)
 

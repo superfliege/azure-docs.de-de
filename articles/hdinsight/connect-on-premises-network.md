@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/21/2017
+ms.date: 09/21/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 6fc863010cc59e20e7d86ea9344489e574be75f2
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 27a5d0e69ec9c47feab2b23d7c79fe2547edfc08
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 
@@ -34,9 +34,6 @@ Erfahren Sie, wie Sie HDInsight mit Ihrem lokalen Netzwerk verbinden, indem Sie 
 * Ports, die von HDInsight im virtuellen Netzwerk bereitgestellt werden
 
 ## <a name="create-the-virtual-network-configuration"></a>Erstellen der Konfiguration des virtuellen Netzwerks
-
-> [!IMPORTANT]
-> Eine ausführliche Anleitung zum Herstellen einer Verbindung von HDInsight mit Ihrem lokalen Netzwerk mithilfe eines virtuellen Azure-Netzwerks finden Sie im Dokument [Verbinden von HDInsight mit Ihrem lokalen Netzwerk](connect-on-premises-network.md).
 
 In den folgenden Dokumenten erfahren Sie, wie Sie ein virtuelles Azure-Netzwerk erstellen, das mit Ihrem lokalen Netzwerk verbunden wird:
     
@@ -74,7 +71,10 @@ Im folgenden Diagramm werden Anforderungen für Ressourcen, die auf das DNS-Suff
 Führen Sie die folgenden Schritte aus, um eine Linux-VM zu erstellen, die die DNS-Software [Bind](https://www.isc.org/downloads/bind/) verwendet:
 
 > [!NOTE]
-> Die nachfolgend aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Computers über das [Azure-Portal](https://portal.azure.com). Informationen zu anderen Möglichkeiten zum Erstellen eines virtuellen Computers finden Sie in den Dokumenten [Erstellen eines virtuellen Computers – Azure CLI](../virtual-machines/linux/quick-create-cli.md) und [Erstellen eines virtuellen Computers – Azure PowerShell](../virtual-machines/linux/quick-create-portal.md).
+> Die nachfolgend aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Computers über das [Azure-Portal](https://portal.azure.com). Weitere Möglichkeiten zum Erstellen eines virtuellen Computers finden Sie in den folgenden Dokumenten:
+>
+> * [Erstellen eines virtuellen Computers – Azure CLI](../virtual-machines/linux/quick-create-cli.md)
+> * [Erstellen eines virtuellen Computers – Azure PowerShell](../virtual-machines/linux/quick-create-portal.md)
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf __+__, __Compute__ und dann auf __Ubuntu Server 16.04 LTS__.
 
@@ -300,6 +300,8 @@ Folgen Sie den Anweisungen im Dokument [Erstellen von Linux-basierten Clustern i
 ## <a name="connecting-to-hdinsight"></a>Verbindungsherstellung mit HDInsight
 
 In der Dokumentation zu HDInsight wird in den meisten Fällen vorausgesetzt, dass Sie über das Internet auf den Cluster zugreifen können. Dies würde z.B. bedeuten, dass Sie eine Verbindung mit dem Cluster unter https://CLUSTERNAME.azurehdinsight.net herstellen können. Diese Adresse verwendet das öffentliche Gateway, das nicht verfügbar ist, wenn Sie über NSGs oder benutzerdefinierte Routen den Zugriff aus dem Internet beschränken.
+
+Einigen Dokumente verweisen auch auf `headnodehost` beim Herstellen einer Verbindung mit dem Cluster über eine SSH-Sitzung. Diese Adresse ist nur von Knoten innerhalb eines Clusters verfügbar und kann nicht auf Clients verwendet werden, die über das virtuelle Netzwerk verbunden sind.
 
 Zur direkten Verbindung mit HDInsight über das virtuelle Netzwerk führen Sie die folgenden Schritte aus:
 

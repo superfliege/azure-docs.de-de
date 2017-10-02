@@ -1,6 +1,6 @@
 ---
-title: "Einführung in Azure-Web-Apps für Container | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über Azure-Web-Apps für Container."
+title: "Einführung in Azure-Web-App für Container | Microsoft-Docs"
+description: "Erfahren Sie mehr über Azure-Web-App für Container."
 keywords: Azure App Service, Linux, OSS
 services: app-service
 documentationcenter: 
@@ -12,19 +12,20 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 02/16/2017
-ms.author: naziml;wesmc
+ms.author: wesmc
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: f46f59a69d13a4e702eccded810cf3c7a8b30904
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: bc1658fa49677386c8e4697221f7269ceec3533d
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-# <a name="introduction-to-azure-web-apps-for-containers"></a>Einführung in Azure-Web-Apps für Container
+# <a name="introduction-to-azure-web-app-for-containers"></a>Einführung in Azure-Web-App für Container
 
-Bei einer [Web-App](../../app-service-web/app-service-web-overview.md) handelt es sich um eine vollständig verwaltete Computeplattform, die für das Hosten von Websites und Webanwendungen optimiert ist. Kunden können Web-Apps für Container verwenden, um Web-Apps für unterstützte Anwendungsstapel nativ unter Linux zu hosten. In den folgenden Abschnitten sind die Anwendungsstapel aufgeführt, die derzeit unterstützt werden.
+Bei einer [Web-App](../app-service-web-overview.md) handelt es sich um eine vollständig verwaltete Computeplattform, die für das Hosten von Websites und Webanwendungen optimiert ist. Kunden können Web-App für Container verwenden, um Web-Apps für unterstützte Anwendungsstapel nativ unter Linux zu hosten. In den folgenden Abschnitten sind die Anwendungsstapel aufgeführt, die derzeit unterstützt werden.
 
 ## <a name="languages"></a>Sprachen
 
@@ -63,13 +64,13 @@ Bei einer [Web-App](../../app-service-web/app-service-web-overview.md) handelt e
 
 ## <a name="limitations"></a>Einschränkungen
 
-Im Azure-Portal werden nur Features angezeigt, die derzeit für Web-Apps für Container funktionieren. Sobald wir weitere Features aktivieren, werden sie im Portal angezeigt.
+Im Azure-Portal werden nur Features angezeigt, die derzeit für Web-App für Container funktionieren. Sobald wir weitere Features aktivieren, werden sie im Portal angezeigt.
 
 Einige Features, z.B. die Integration virtueller Netzwerke, Azure Active Directory-/Drittanbieterauthentifizierung oder Kudu-Websiteerweiterungen, sind noch nicht verfügbar. Sobald diese Features verfügbar sind, aktualisieren wir die Dokumentation entsprechend und veröffentlichen Blog-Beiträge zu den Änderungen.
 
-Web-Apps für Container werden nur in den App Service-Plänen [Basic und Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) unterstützt und verfügen nicht über einen [Free- oder Shared](https://azure.microsoft.com/pricing/details/app-service/plans/)-Tarif. Im Folgenden sind auch wichtige Einschränkungen für Web-Apps für Container aufgeführt:
+Web-App für Container wird nur in den App Service-Plänen [Basic und Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) unterstützt und verfügt nicht über einen [Free- oder Shared](https://azure.microsoft.com/pricing/details/app-service/plans/)-Tarif. Im Folgenden werden auch wichtige Einschränkungen für Web-App für Container aufgeführt:
 
-* Sie können keine Web-Apps für Container in einem App Service-Plan erstellen, in dem bereits Web-Apps unter anderen Betriebssystemen als Linux gehostet werden.
+* Sie können keine Web-App für Container in einem App Service-Plan erstellen, in dem bereits Web-Apps unter anderen Betriebssystemen als Linux gehostet werden.
 * Beim Erstellen einer Web-App für Container in einer Ressourcengruppe mit Web-Apps unter anderen Betriebssystemen als Linux müssen Sie einen App Service-Plan in einer anderen Region als der Region des vorhandenen App Service-Plans erstellen.
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -87,13 +88,13 @@ Sie können auf die SCM-Website über die Option **Erweiterte Tools** im Menü *
 
 Unter den folgenden Links erhalten Sie Informationen zu den ersten Schritten mit App Service unter Linux. In [unserem Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview) können Sie Fragen stellen und Antworten auf Probleme erhalten.
 
-* [Informationen zum Verwenden eines benutzerdefinierten Docker-Image für Azure-Web-Apps für Container](quickstart-custom-docker-image.md)
-* [Verwendung von .NET Core in Azure App Service-Web-Apps für Container](quickstart-dotnetcore.md)
-* [Verwendung von Ruby in Azure App Service-Web-Apps für Container](quickstart-ruby.md)
-* [Azure App Service-Web-Apps für Container – FAQs](app-service-linux-faq.md)
-* [SSH-Unterstützung bei Azure-Web-Apps für Container](app-service-linux-ssh-support.md)
-* [Einrichten von Stagingumgebungen in Azure App Service](../../app-service-web/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Continuous Deployment von Docker-Hubs mit Azure-Web-Apps für Container](./app-service-linux-ci-cd.md)
+* [Informationen zum Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps für Container](quickstart-custom-docker-image.md)
+* [Verwenden von .NET Core in Azure App Service-Web-App für Container](quickstart-dotnetcore.md)
+* [Verwendung von Ruby in Azure App Service-Web-App für Container](quickstart-ruby.md)
+* [Azure App Service-Web-App für Container – FAQs](app-service-linux-faq.md)
+* [SSH-Unterstützung für Azure-Web-App für Container](app-service-linux-ssh-support.md)
+* [Einrichten von Stagingumgebungen in Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Continuous Deployment von Docker-Hubs mit Azure-Web-App für Container](./app-service-linux-ci-cd.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: aelnably;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 69eb021014c2ae04fc71a03cd27c0e113a2b062b
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 27a2c95c09197b3439d3fac7c74d253df2b32b1c
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="continuous-deployment-with-azure-web-app-for-containers"></a>Continuous Deployment mit Azure-Web-App für Container
@@ -88,9 +88,9 @@ Wenn das Image aktualisiert wird, wird die Web-App automatisch mit dem neuen Ima
 
 * [Was sind Azure-Web-Apps für Container?](./app-service-linux-intro.md)
 * [Azure Container Registry](https://azure.microsoft.com/en-us/services/container-registry/)
-* [Verwenden von .NET Core in Azure-Web-Apps für Container](quickstart-dotnetcore.md)
-* [Verwenden von Ruby in Azure-Web-Apps für Container](quickstart-ruby.md)
-* [Informationen zum Verwenden eines benutzerdefinierten Docker-Image für Azure-Web-Apps für Container](quickstart-custom-docker-image.md)
-* [Azure App Service-Web-Apps für Container – FAQs](./app-service-linux-faq.md) 
-* [Verwalten von Web-Apps für Container mithilfe der Azure CLI 2.0](./app-service-linux-cli.md)
+* [Verwenden von .NET Core in Azure-Web-App für Container](quickstart-dotnetcore.md)
+* [Verwenden von Ruby in Azure-Web-App für Container](quickstart-ruby.md)
+* [Informationen zum Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps für Container](quickstart-custom-docker-image.md)
+* [Azure App Service-Web-App für Container – FAQs](./app-service-linux-faq.md) 
+* [Verwalten von Web-App für Container mithilfe der Azure CLI 2.0](./app-service-linux-cli.md)
 

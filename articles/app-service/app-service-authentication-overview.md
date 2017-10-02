@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: ea1666007b88cdf45017b0bd91e100dc1218fb2b
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: b67f95847ac3228aa1d04d89af7e9fe4eeff3220
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authentifizierung und Autorisierung in Azure App Service
@@ -69,9 +69,9 @@ Neben der Gewährung des Benutzerzugriffs auf Ihre Anwendung können Sie auch ei
 > 
 > 
 
-In Dienst-zu-Dienst-Szenarien kann App Service Ihre Anwendung mithilfe von Azure Active Directory schützen. Die aufrufende Anwendung muss lediglich ein Azure Active Directory-Dienstprinzipal-Autorisierungstoken bereitstellen, das unter Angabe von Client-ID und geheimem Clientschlüssel von Azure Active Directory abgerufen wurde. Ein Beispiel für dieses Szenario unter Verwendung von ASP.NET-API-Apps finden Sie im Tutorial [Dienstprinzipalauthentifizierung für API-Apps in Azure App Service][apia-service].
+In Dienst-zu-Dienst-Szenarien kann App Service Ihre Anwendung mithilfe von Azure Active Directory schützen. Die aufrufende Anwendung muss lediglich ein Azure Active Directory-Dienstprinzipal-Autorisierungstoken bereitstellen, das unter Angabe von Client-ID und geheimem Clientschlüssel von Azure Active Directory abgerufen wurde. Ein Beispiel für dieses Szenario unter Verwendung von ASP.NET-API-Apps finden Sie im Tutorial [Dienstprinzipalauthentifizierung für API-Apps][apia-service].
 
-Wenn Sie ein Dienst-zu-Dienst-Szenario mit App Service-Authentifizierung verwenden möchten, können Sie Clientzertifikate oder die Standardauthentifizierung verwenden. Informationen zu Clientzertifikaten in Azure finden Sie unter [Konfigurieren von gegenseitiger TLS-Authentifizierung für Web-Apps](../app-service-web/app-service-web-configure-tls-mutual-auth.md). Informationen zur Standardauthentifizierung in ASP.NET finden Sie unter [Authentication Filters in ASP.NET Web API 2](http://www.asp.net/web-api/overview/security/authentication-filters)(Authentifizierungsfilter in ASP.NET-Web-API 2).
+Wenn Sie ein Dienst-zu-Dienst-Szenario mit App Service-Authentifizierung verwenden möchten, können Sie Clientzertifikate oder die Standardauthentifizierung verwenden. Informationen zu Clientzertifikaten in Azure finden Sie unter [Konfigurieren von gegenseitiger TLS-Authentifizierung für Web-Apps](app-service-web-configure-tls-mutual-auth.md). Informationen zur Standardauthentifizierung in ASP.NET finden Sie unter [Authentication Filters in ASP.NET Web API 2](http://www.asp.net/web-api/overview/security/authentication-filters)(Authentifizierungsfilter in ASP.NET-Web-API 2).
 
 Die Dienstkontoauthentifizierung zwischen einer App Service-Logik-App und einer API-App ist ein Sonderfall, der in [Verwenden der in App Service gehosteten benutzerdefinierten API mit Logik-Apps](../logic-apps/logic-apps-custom-hosted-api.md)erklärt wird.
 
@@ -156,9 +156,6 @@ In den folgenden Tutorials erfahren Sie, wie Sie Ihre API-Apps schützen können
 * [Benutzerauthentifizierung für API-Apps in Azure App Service][apia-user]
 * [Dienstprinzipalauthentifizierung für API-Apps in Azure App Service][apia-service]
 
-[apia-user]: ../app-service-api/app-service-api-dotnet-user-principal-auth.md
-[apia-service]: ../app-service-api/app-service-api-dotnet-service-principal-auth.md
-
 [iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
 [Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
 [Xamarin.iOS]: ../app-service-mobile/app-service-mobile-xamarin-ios-get-started-users.md
@@ -167,11 +164,11 @@ In den folgenden Tutorials erfahren Sie, wie Sie Ihre API-Apps schützen können
 [Windows]: ../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-users.md
 [Cordova]: ../app-service-mobile/app-service-mobile-cordova-get-started-users.md
 
-[AAD]: ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md
-[Facebook]: ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md
-[Google]: ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md
-[MSA]: ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Twitter]: ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md
+[AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
+[Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md
+[Google]: app-service-mobile-how-to-configure-google-authentication.md
+[MSA]: app-service-mobile-how-to-configure-microsoft-authentication.md
+[Twitter]: app-service-mobile-how-to-configure-twitter-authentication.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 

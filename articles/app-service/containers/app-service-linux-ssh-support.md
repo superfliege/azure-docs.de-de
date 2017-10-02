@@ -1,6 +1,6 @@
 ---
-title: "SSH-Unterstützung bei Azure App Service-Web-Apps für Container | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über die Verwendung von SSH mit Azure-Web-Apps für Container."
+title: "SSH-Unterstützung bei Azure App Service-Web-App für Container | Microsoft-Docs"
+description: "Erfahren Sie mehr über die Verwendung von SSH mit Azure-Web-App für Container."
 keywords: Azure App Service, Web-App, Linux, OSS
 services: app-service
 documentationcenter: 
@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 7cbdbc65bac97aef5d4215fd6b188830795a86f2
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 7ce9b23e8925d4c79827c7c4e8bec63067ce33e0
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-# <a name="ssh-support-for-azure-web-apps-for-containers"></a>SSH-Unterstützung bei Azure-Web-Apps für Container
+# <a name="ssh-support-for-azure-web-app-for-containers"></a>SSH-Unterstützung für Azure-Web-App für Container
 
 [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) ist ein kryptografisches Netzwerkprotokoll für die sichere Verwendung von Netzwerkdiensten. Es wird am häufigsten für Remoteanmeldungen bei einem System mithilfe einer Befehlszeile und für die Remoteausführung von Verwaltungsbefehlen verwendet.
 
-Web-Apps für Container bieten SSH-Unterstützung im App-Container für jedes der integrierten Docker-Images, die für den Laufzeitstapel neuer Web-Apps verwendet werden. 
+Web-App für Container bietet SSH-Unterstützung im App-Container für jedes der integrierten Docker-Images, die für den Laufzeitstapel neuer Web-Apps verwendet werden. 
 
 ![Laufzeitstapel](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
 
@@ -67,7 +67,7 @@ Diese Schritte werden im Azure App Service-Repository [hier](https://github.com/
         && echo "root:Docker!" | chpasswd
     ```
 
-1. Fügen Sie der Dockerfile-Datei eine [`COPY`-Anweisung](https://docs.docker.com/engine/reference/builder/#copy) hinzu, mit der eine [sshd_config](http://man.openbsd.org/sshd_config)-Datei in das Verzeichnis */etc/ssh/* kopiert wird. Die Konfigurationsdatei sollte auf [dieser](https://github.com/Azure-App-Service/node/blob/master/6.11/sshd_config) Datei „sshd_config“ im Azure-App-Service-GitHub-Repository basieren.
+1. Fügen Sie der Dockerfile-Datei eine [`COPY`-Anweisung](https://docs.docker.com/engine/reference/builder/#copy) hinzu, mit der eine [sshd_config](http://man.openbsd.org/sshd_config)-Datei in das Verzeichnis */etc/ssh/* kopiert wird. Die Konfigurationsdatei sollte auf [dieser](https://github.com/Azure-App-Service/node/blob/master/6.11.0/sshd_config) Datei „sshd_config“ im Azure-App-Service-GitHub-Repository basieren.
 
     > [!NOTE]
     > Die Datei *sshd_config* muss Folgendes enthalten, da andernfalls ein Verbindungsfehler auftritt: 
@@ -103,9 +103,9 @@ Die Dockerfile-Datei verwendet die [`CMD`-Anweisung](https://docs.docker.com/eng
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Unter den folgenden Links finden Sie weitere Informationen zu Web-Apps für Container. In [unserem Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview) können Sie Fragen stellen und Antworten auf Probleme erhalten.
+Unter den folgenden Links finden Sie weitere Informationen zu Web-App für Container. In [unserem Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview) können Sie Fragen stellen und Antworten auf Probleme erhalten.
 
-* [Informationen zum Verwenden eines benutzerdefinierten Docker-Image für Azure-Web-Apps für Container](quickstart-custom-docker-image.md)
-* [Verwenden von .NET Core in Azure-Web-Apps für Container](quickstart-dotnetcore.md)
-* [Verwenden von Ruby in Azure-Web-Apps für Container](quickstart-ruby.md)
-* [Azure App Service-Web-Apps für Container – FAQs](app-service-linux-faq.md)
+* [Informationen zum Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps für Container](quickstart-custom-docker-image.md)
+* [Verwenden von .NET Core in Azure-Web-App für Container](quickstart-dotnetcore.md)
+* [Verwenden von Ruby in Azure-Web-App für Container](quickstart-ruby.md)
+* [Azure App Service-Web-App für Container – FAQs](app-service-linux-faq.md)

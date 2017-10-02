@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 7aaf611a562d373a8cc1dad33963050d246b2882
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 6e1fa23bffc03a8a77c0c9e3342609c042fc4a5b
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -103,12 +103,13 @@ Zum Abrufen eines Tokens in App Service und Azure Functions ist ein einfaches RE
 
 Bei .NET-Anwendungen und -Funktionen stellt die einfachste Methode für die Arbeit mit einer verwalteten Dienstidentität das Microsoft.Azure.Services.AppAuthentication-Paket dar. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus der [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) oder der integrierten Active Directory-Authentifizierung. In diesem Abschnitt werden die ersten Schritte mit der Bibliothek erläutert.
 
-1. Fügen Sie einen Verweis auf das NuGet-Paket [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) zu Ihrer Anwendung hinzu.
+1. Fügen Sie Ihrer Anwendung einen Verweis auf die NuGet-Pakete [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) und [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) hinzu.
 
 2.  Fügen Sie Ihrer Anwendung den folgenden Code hinzu:
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;
+using Microsoft.Azure.KeyVault;
 // ...
 var azureServiceTokenProvider = new AzureServiceTokenProvider();
 string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://management.azure.com/");

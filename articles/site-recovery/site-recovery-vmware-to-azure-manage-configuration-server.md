@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 36da8c7d0f3ace194522e5288f26069cf46d470e
+ms.translationtype: HT
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: bf62fb21dfac99038e3b3759d9e78c6870f52f9e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 
@@ -26,15 +26,19 @@ ms.lasthandoff: 06/30/2017
 
 Der Konfigurationsserver fungiert als Koordinator zwischen den Site Recovery-Diensten und Ihrer lokalen Infrastruktur. In diesem Artikel wird beschrieben, wie Sie den Konfigurationsserver einrichten, konfigurieren und verwalten können.
 
-## <a name="prerequisites"></a>Voraussetzungen
-Im Folgenden werden die minimalen Hardware-, Software- und Netzwerkanforderungen zum Einrichten eines Konfigurationsservers aufgeführt.
-
 > [!NOTE]
 > [Kapazitätsplanung](site-recovery-capacity-planner.md) ist ein wichtiger Schritt, um sicherzustellen, dass Sie den Konfigurationsserver mit einer Konfiguration bereitstellen, die Ihren Lastanforderungen entspricht. Lesen Sie hier mehr über [Anforderungen an die Größenanpassung für einen Konfigurationsserver](#sizing-requirements-for-a-configuration-server).
+
+
+## <a name="prerequisites"></a>Voraussetzungen
+Im Folgenden werden die minimalen Hardware-, Software- und Netzwerkanforderungen zum Einrichten eines Konfigurationsservers aufgeführt.
+> [!IMPORTANT]
+> Wenn Sie einen Konfigurationsserver für den Schutz von virtuellen VMware-Computern bereitstellen, wird empfohlen, diesen als virtuellen **Hochverfügbarkeitscomputer (HA)** bereitzustellen.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 ## <a name="downloading-the-configuration-server-software"></a>Herunterladen der Konfigurationsserversoftware
+
 1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu Ihrem Recovery Services-Tresor.
 2. Navigieren Sie zu **Site Recovery-Infrastruktur** > **Konfigurationsserver** (unter „Für VMware und physische Computer“).
 
@@ -131,10 +135,10 @@ ProxyPassword="Password"
 1. Melden Sie sich beim Konfigurationsserver an.
 2. Führen Sie an einer Eingabeaufforderung mit Administratorrechten folgenden Befehl aus:
 
-```
-reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
-net stop dra
-```
+    ```
+    reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
+    net stop dra
+    ```
 3. Starten Sie die Datei „cspsconfigtool.exe“ über die Verknüpfung auf Ihrem Desktop.
 4. Klicken Sie auf die Registerkarte **Tresorregistrierung**.
 5. Laden Sie eine neue Registrierungsdatei vom Portal herunter und geben Sie sie als Eingabe für das Tool an.
@@ -149,6 +153,17 @@ net stop dra
     net stop obengine
     net start obengine
     ```
+
+## <a name="updating-a-configuration-server"></a>Aktualisieren eines Konfigurationsservers
+
+> [!WARNING]
+> Updates werden nur bis zur N-4. Version unterstützt. Wenn die neueste Version auf dem Markt z. B. 9.11 ist, können Sie aus Version 9.10, 9.9, 9.8 oder 9.7 ein direktes Update auf 9.11 ausführen. Wenn Sie aber eine beliebige Version kleiner oder gleich 9.6 verwenden, müssen Sie ein Update mindestens auf Version 9.7 ausführen, bevor Sie die neuesten Updates auf Ihren Konfigurationsserver anwenden können. Downloadlinks für frühere Versionen finden Sie unter [Updates für den Azure Site Recovery-Dienst](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+
+1. Laden Sie den Update-Installer auf Ihren Konfigurationsserver herunter.
+2. Starten Sie den Installer durch Doppelklicken auf den Installer.
+3. Der Installer erkennt die Version der Site Recovery-Komponenten, die auf Computer vorhanden sind und fordert zu einer Bestätigung auf. 
+4. Klicken Sie auf die Schaltfläche „OK“, um die Angabe zu bestätigen, und fahren Sie dann mit dem Upgrade fort.
+
 
 ## <a name="decommissioning-a-configuration-server"></a>Außerbetriebnahme eines Konfigurationsservers
 Überprüfen Sie Folgendes vor der Außerbetriebnahme Ihres Konfigurationsservers.

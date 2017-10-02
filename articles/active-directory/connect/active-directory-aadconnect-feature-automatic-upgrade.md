@@ -14,19 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9541cd195e8afa6e692a5a0214b0d614e429c33b
-ms.openlocfilehash: 234f06a858987b03ec2ed0bbe0899423d8f0bcdd
+ms.translationtype: HT
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 57cd81a92817171a23ffd0f607eb127005bc1e0d
 ms.contentlocale: de-de
-ms.lasthandoff: 12/20/2016
+ms.lasthandoff: 09/22/2017
 
 ---
-# Azure AD Connect: Automatisches Upgrade
-<a id="azure-ad-connect-automatic-upgrade" class="xliff"></a>
+# <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatisches Upgrade
 Diese Funktion wurde mit Build 1.1.105.0 eingeführt (veröffentlicht im Februar 2016).
 
-## Übersicht
-<a id="overview" class="xliff"></a>
+## <a name="overview"></a>Übersicht
 Noch nie konnten Sie so leicht sicherstellen, dass Ihre Azure AD Connect-Installation immer auf dem neuesten Stand ist  – mit dem **automatischen Upgradefeature** . Dieses Feature ist standardmäßig für Express-Installationen und DirSync-Upgrades aktiviert. Wenn eine neue Version veröffentlicht wird, erfolgt ein automatisches Upgrade Ihrer Installation.
 
 Das automatische Upgrade ist in folgenden Fällen standardmäßig aktiviert:
@@ -50,8 +48,7 @@ Das automatische Upgrade verwendet Azure AD Connect Health als Upgrade-Infrastru
 
 Wenn auf dem Server die **Synchronization Service Manager** -Benutzeroberfläche geöffnet ist, wird das Upgrade angehalten, bis die Benutzeroberfläche geschlossen wird.
 
-## Problembehandlung
-<a id="troubleshooting" class="xliff"></a>
+## <a name="troubleshooting"></a>Problembehandlung
 Wenn das automatische Upgrade Ihrer Connect-Installation nicht wie erwartet funktioniert, befolgen Sie diese Schritte, um herauszufinden, wo der Fehler liegen könnte.
 
 Ein automatisches Upgrade wird voraussichtlich nicht direkt am Erscheinungstag einer neuen Version versucht. Upgrades unterliegen einer beabsichtigten Zufälligkeit – Sie müssen sich also keine Sorgen machen, wenn Ihre Installation nicht sofort aktualisiert wird.
@@ -90,6 +87,7 @@ Im Folgenden finden Sie eine Liste der Meldungen, die am häufigsten angezeigt w
 | UpgradeAbortedSyncExeInUse |Die [Synchronization Service Manager-Benutzeroberfläche](active-directory-aadconnectsync-service-manager-ui.md) ist auf dem Server geöffnet. |
 | UpgradeAbortedSyncOrConfigurationInProgress |Der Installations-Assistent wird ausgeführt, oder es wurde eine Synchronisierung außerhalb des Schedulers geplant. |
 | **UpgradeNotSupported** | |
+| UpgradeNotSupportedAdfsSignInMethod | Sie haben AD FS als Anmeldemethode ausgewählt. | 
 | UpgradeNotSupportedCustomizedSyncRules |Sie haben der Konfiguration eigene benutzerdefinierte Regeln hinzugefügt. |
 | UpgradeNotSupportedDeviceWritebackEnabled |Sie haben das Feature [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md) aktiviert. |
 | UpgradeNotSupportedGroupWritebackEnabled |Sie haben das Feature [Gruppenrückschreiben](active-directory-aadconnect-feature-preview.md#group-writeback) aktiviert. |
@@ -98,10 +96,11 @@ Im Folgenden finden Sie eine Liste der Meldungen, die am häufigsten angezeigt w
 | UpgradeNotSupportedMultiForestSetup |Sie stellen Verbindungen mit mehr als einer Gesamtstruktur her. Beim Express-Setup wird nur eine Verbindung mit einer Gesamtstruktur hergestellt. |
 | UpgradeNotSupportedNonLocalDbInstall |Sie verwenden keine SQL Server Express LocalDB-Datenbank. |
 | UpgradeNotSupportedNonMsolAccount |Das [AD-Connector-Konto](active-directory-aadconnect-accounts-permissions.md#active-directory-account) ist nicht mehr das Standardkonto vom Typ „MSOL_“. |
+| UpgradeNotSupportedNotConfiguredSignInMethod | Sie haben *Nicht konfigurieren* als Anmeldemethode ausgewählt. | 
+| UpgradeNotSupportedPtaSignInMethod | Sie haben Pass-Through-Authentifizierung als Anmeldemethode ausgewählt. |
 | UpgradeNotSupportedStagingModeEnabled |Der Server ist auf den [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode)festgelegt. |
 | UpgradeNotSupportedUserWritebackEnabled |Sie haben das Feature [Benutzerrückschreiben](active-directory-aadconnect-feature-preview.md#user-writeback) aktiviert. |
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
-ms.openlocfilehash: 9f72a4900f20282827ff939aa41bc4f306e547a3
+ms.translationtype: HT
+ms.sourcegitcommit: e05028ad46ef6ec2584cd2d3f4843cf38bb54f9e
+ms.openlocfilehash: de2d41d8c2787ffdc80daddf959487f6031da87d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/20/2017
+ms.lasthandoff: 09/16/2017
 
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>Self-Service-Kennwortzurücksetzung in Azure AD für IT-Experten
@@ -56,7 +56,7 @@ Wenn Sie bereit sind, können Sie mithilfe unserer [Schnellstartanleitung](activ
 Die Self-Service-Kennwortzurücksetzung in Azure AD ist in drei Tarifen abhängig von Ihrem Abonnement verfügbar.
 
 * **Azure AD Free**: Cloudadministratoren können ihre eigenen Kennwörter zurücksetzen.
-* **Azure AD Basic** oder ein beliebiges **kostenpflichtiges Office 365-Abonnement**: Cloudbenutzer und Cloudadministratoren können ihre eigenen Kennwörter zurücksetzen.
+* **Azure AD Basic** oder ein beliebiges **kostenpflichtiges Office 365-Abonnement**: Cloudbenutzer können ihre eigenen Kennwörter ändern, und Cloudadministratoren können ihre eigenen Kennwörter zurücksetzen.
 * **Azure AD Premium**: Alle Benutzer und alle Administratoren können ihre eigenen Kennwörter zurücksetzen, dazu gehören Cloudbenutzer, Verbundbenutzer und Benutzer mit Kennwortsynchronisierung. Für lokale Kennwörter muss das Kennwortrückschreiben aktiviert sein.
 
 ## <a name="azure-ad-self-service-password-reset-a-sum-of-the-parts"></a>Self-Service-Kennwortzurücksetzung in Azure AD – Komponenten

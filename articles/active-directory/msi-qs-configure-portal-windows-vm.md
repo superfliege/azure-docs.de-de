@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/19/2017
 ms.author: bryanla
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 9406ba2bbbea41f4677cd0d5aaddf16b0f4f26c8
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 169417530da21e0c8c58cbf770fd1d26660387f7
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 09/14/2017
 
 Eine verwaltete Dienstidentität stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
 
-In diesem Artikel erfahren Sie, wie Sie MSI für einen virtuellen Azure-Windows-Computer über das Azure-Portal aktivieren und entfernen.
+In diesem Artikel erfahren Sie, wie Sie MSI für einen virtuellen Azure-Computer über das Azure-Portal aktivieren und entfernen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,13 +35,18 @@ In diesem Artikel erfahren Sie, wie Sie MSI für einen virtuellen Azure-Windows-
 
 ## <a name="enable-msi-during-creation-of-an-azure-vm"></a>Aktivieren von MSI beim Erstellen eines virtuellen Azure-Computers
 
-Zum Zeitpunkt der Erstellung dieses Dokuments wird das Aktivieren von MSI während der Erstellung eines virtuellen Computers im Azure-Portal nicht unterstützt. Informationen zum Erstellen eines virtuellen Computers finden Sie stattdessen im Schnellstart [Erstellen einer Windows-VM im Azure-Portal](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine). Fahren Sie dann mit dem nächsten Abschnitt fort, um weitere Details zum Aktivieren von MSI zu erhalten.
+Zum Zeitpunkt der Erstellung dieses Dokuments wird das Aktivieren von MSI während der Erstellung eines virtuellen Computers im Azure-Portal nicht unterstützt. Verwenden Sie stattdessen einen der folgenden Schnellstartartikel zur Erstellung virtueller Computer, um erstmals einen virtuellen Computer zu erstellen:
+
+- [Erstellen eines virtuellen Windows-Computers mit dem Azure-Portal](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [Erstellen Sie eines virtuellen Linux-Computers mit dem Azure-Portal](../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)  
+
+Fahren Sie dann mit dem nächsten Abschnitt fort, um weitere Details zum Aktivieren von MSI auf dem virtuellen Computer zu erhalten.
 
 ## <a name="enable-msi-on-an-existing-azure-vm"></a>Aktivieren von MSI auf einem vorhandenen virtuellen Azure-Computer
 
 Gehen Sie für einen virtuellen Computer, der ursprünglich ohne MSI bereitgestellt wurde, wie folgt vor:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, unter dem Sie den virtuellen Computer bereitstellen möchten.
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, die Ihnen Schreibberechtigungen auf dem virtuellen Computer erteilt, z. B. „Mitwirkender für virtuelle Computer“.
 
 2. Navigieren Sie zum gewünschten virtuellen Computer.
 
@@ -53,7 +58,7 @@ Gehen Sie für einen virtuellen Computer, der ursprünglich ohne MSI bereitgeste
 
 Wenn MSI auf einem virtuellen Computer nicht mehr benötigt wird, gehen Sie wie folgt vor:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, unter dem Sie den virtuellen Computer bereitstellen möchten.
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, die Ihnen Schreibberechtigungen auf dem virtuellen Computer erteilt, z. B. „Mitwirkender für virtuelle Computer“.
 
 2. Navigieren Sie zum gewünschten virtuellen Computer.
 
@@ -64,7 +69,6 @@ Wenn MSI auf einem virtuellen Computer nicht mehr benötigt wird, gehen Sie wie 
 ## <a name="related-content"></a>Verwandte Inhalte
 
 - Einen Überblick über MSI finden Sie unter [Übersicht über verwaltete Dienstidentitäten](msi-overview.md).
-- Dieser Artikel basiert auf dem Schnellstart [Erstellen einer Windows-VM im Azure-Portal](../virtual-machines/windows/quick-create-portal.md) und wurde durch MSI-spezifische Anweisungen ergänzt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
