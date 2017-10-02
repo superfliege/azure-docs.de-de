@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 2c5842822e347113e388d570f6ae603a313944d6
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: bcd1d13265350d8ac96250c5cd5b4b2880e1c146
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 
@@ -274,6 +274,17 @@ Die App für die Patchorchestrierung macht eine REST-API verfügbar, um dem Benu
   ...
 ]
 ```
+
+Felder des JSON werden unten beschrieben.
+
+Feld | Werte | Details
+-- | -- | --
+OperationResult | 0: Erfolgreich<br> 1: Erfolgreich mit Fehlern<br> 2: Fehlgeschlagen<br> 3 : Abgebrochen<br> 4: Abgebrochen mit Timeout | Gibt das Ergebnis des Gesamtvorgangs an (schließt normalerweise die Installation eines oder mehrerer Updates ein).
+ResultCode | Das Gleiche wie bei OperationResult | Diese Feld gibt das Ergebnis eines Installationsvorgangs für ein einzelnes Update an.
+OperationType | 1: Installation<br> 0: Suchen und Herunterladen| Die Installation ist der einzige OperationType, der standardmäßig in den Ergebnissen angezeigt werden würde.
+WindowsUpdateQuery | Der Standardwert ist „IsInstalled=0“. |Windows Update-Abfrage, welche für die Suche nach Updates verwendet wurde. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
+RebootRequired | TRUE: Neustart war erforderlich<br> FALSE: Neustart war nicht erforderlich | Gibt an, ob ein Neustart erforderlich war, um die Installation des Updates abzuschließen.
+
 Wenn noch keine Aktualisierung geplant ist, ist die JSON-Ausgabe leer.
 
 Melden Sie sich beim Cluster an, um Windows Update-Ergebnisse abzufragen. Ermitteln Sie dann die Replikatadresse des primären Knotens für den Koordinatordienst, und öffnen Sie diese URL im Browser: http://&lt;REPLIKAT-IP&gt;:&lt;Anwendungsport&gt;/PatchOrchestrationApplication/v1/GetWindowsUpdateResults.
@@ -403,7 +414,7 @@ Ein fehlerhaftes Windows Update kann die Integrität einer Anwendung oder eines 
 
 Ein Administrator muss eingreifen und ermitteln, weshalb die Integrität der Anwendung oder des Clusters aufgrund von Windows Update beeinträchtigt wurde.
 
-## <a name="release-notes-"></a>Versionshinweise:
+## <a name="release-notes"></a>Versionsinformationen
 
 ### <a name="version-110"></a>Version 1.1.0
 - Öffentliche Version

@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 09/18/2017
 ms.author: babanisa
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 83b9b2c7bb4134e1d9bdf857449bfb85884333d0
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 5b69478bf00284594b984fde452f6bed4e73859b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 
@@ -22,7 +22,7 @@ Zu den zentralen Begriffen in Azure Event Grid zählen Folgende:
 
 ## <a name="events"></a>Ereignisse
 
-Ein Ereignis ist die kleinste Informationsmenge, die einen Vorgang im System umfassend beschreibt.  Jedes Ereignis enthält allgemeine Informationen wie Quelle des Ereignisses, Zeitpunkt, an dem das Ereignis aufgetreten ist, und den eindeutigen Bezeichner.  Jedes Ereignis enthält auch spezielle Informationen, die nur für das jeweilige Ereignis relevant sind. Beispielsweise enthält ein Ereignis zu einer neuen Datei, die in Azure Storage erstellt wird, Details über die Datei, z.B. den Wert von „lastTimeModified“. Alternativ enthält ein Ereignis zum Neustart eines virtuellen Computers den Namen des virtuellen Computers und den Grund für den Neustart.
+Ein Ereignis ist die kleinste Informationsmenge, die einen Vorgang im System umfassend beschreibt.  Jedes Ereignis enthält allgemeine Informationen wie Quelle des Ereignisses, Zeitpunkt, an dem das Ereignis aufgetreten ist, und den eindeutigen Bezeichner.  Jedes Ereignis enthält auch spezielle Informationen, die nur für das jeweilige Ereignis relevant sind. Beispielsweise enthält ein Ereignis zu einer neuen Datei, die in Azure Storage erstellt wird, Details über die Datei, z.B. den Wert von „lastTimeModified“. Alternativ enthält ein Ereignis zum Neustart eines virtuellen Computers den Namen des virtuellen Computers und den Grund für den Neustart. Jedes Ereignis ist auf 64 KB Daten begrenzt.
 
 ## <a name="event-sourcespublishers"></a>Ereignisquellen/-herausgeber
 

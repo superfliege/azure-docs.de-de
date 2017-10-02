@@ -11,28 +11,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/19/2017
 ms.author: elkuzmen
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 86d88e3d44f442171f69d0baea5e7d689b963277
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 09d4f81b190329421fc9fd2ebf98b941cb033a08
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
-# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-storage"></a>Verwenden einer Windows-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) für den Zugriff auf Azure Storage
+# <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage"></a>Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Storage
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität (Managed Service Identity, MSI) für einen virtuellen Linux-Computer aktivieren und diese Identität anschließend verwenden, um auf Speicherschlüssel zuzugreifen. Sie können Speicherschlüssel wie gewohnt bei Speichervorgängen verwenden, z.B. bei der Verwendung von Storage SDK. Für dieses Tutorial werden Blobs mithilfe der Azure-CLI hoch- und heruntergeladen. Sie lernen Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität (Managed Service Identity, MSI) für einen virtuellen Windows-Computer aktivieren und mit dieser Identität anschließend auf Speicherschlüssel zugreifen. Sie können Speicherschlüssel wie gewohnt bei Speichervorgängen verwenden, z.B. bei der Verwendung von Storage SDK. Für dieses Tutorial werden Blobs mithilfe von Azure Storage PowerShell hoch- und heruntergeladen. Sie lernen Folgendes:
 
 
 > [!div class="checklist"]
 > * Aktivieren von MSI auf einem virtuellen Windows-Computer 
-> * Erstellen eines neuen Speicherkontos
-> * Gewähren des Speicherzugriffs für den virtuellen Computer 
-> * Abrufen eines Zugriffstokens für Ihr Speicherkonto durch Verwendung der VM-Identität 
+> * Gewähren des Zugriffs auf Speicherschlüssel in Azure Resource Manager für Ihren virtuellen Computer 
+> * Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens zum Aufrufen von Speicherschlüsseln aus Resource Manager 
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -58,31 +57,44 @@ In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt. Sie kön
 
 Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Im Hintergrund werden durch das Aktivieren von MSI zwei Vorgänge ausgelöst: Auf dem virtuellen Computer wird die MSI-VM-Erweiterung installiert, und MSI wird für den virtuellen Computer aktiviert.  
 
-1. Wählen Sie den **virtuellen Computer** aus, auf dem Sie MSI aktivieren möchten.
-2. Klicken Sie in der links angezeigten Navigationsleiste auf **Konfiguration**.
-3. Die Option **Verwaltete Dienstidenität** wird angezeigt. Wählen Sie zum Registrieren und Aktivieren von MSI die Option **Ja** oder zum Deaktivieren „Nein“.
+1. Navigieren Sie zu der Ressourcengruppe des neuen virtuellen Computers, und wählen Sie den virtuellen Computer aus, den Sie im vorherigen Schritt erstellt haben.
+2. Klicken Sie in der VM-Einstellung links auf **Konfiguration**.
+3. Wählen Sie zum Registrieren und Aktivieren von MSI die Option **Ja** oder zum Deaktivieren „Nein“.
 4. Achten Sie darauf, zum Speichern der Konfiguration auf **Speichern** zu klicken.
 
     ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. Wenn Sie überprüfen möchten, welche Erweiterungen sich auf diesem **virtuellen Windows-Computer** befinden, klicken Sie auf **Erweiterungen**. Wenn MSI aktiviert ist, wird **ManagedIdentityExtensionforWindows** in der Liste angezeigt.
+5. Wenn Sie überprüfen möchten, welche Erweiterungen sich auf der VM befinden, klicken Sie auf **Erweiterungen**. Wenn die MSI aktiviert ist, wird **ManagedIdentityExtensionforWindows** in der Liste angezeigt.
 
     ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
-## <a name="create-a-new-storage-account"></a>Erstellen eines neuen Speicherkontos 
+## <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos 
 
-Sie können Speicherschlüssel wie gewohnt bei Speichervorgängen verwenden. In diesem Beispiel liegt der Schwerpunkt auf dem Hochladen und Herunterladen von Blobs mithilfe der Azure-CLI. 
+Erstellen Sie ein Speicherkonto, sofern Sie über keines verfügen. Sie können diesen Schritt auch überspringen und VM-MSI Zugriff auf die Schlüssel eines vorhandenen Speicherkontos gewähren. 
 
-1. Wechseln Sie in die Seitenleiste, und wählen Sie **Speicher**.  
-2. Erstellen Sie ein neues **Speicherkonto**.  
-3. Wechseln Sie im **Bereitstellungsmodell** zum **Resource Manager**, und geben Sie als **Kontoart** die Option **Allgemein** an.  
-4. Achten Sie darauf, das **Abonnement** und die **Ressourcengruppe** zu verwenden, die Sie beim Erstellen des **virtuellen Linux-Computers** im vorangegangenen Schritt auch verwendet haben.
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+2. Klicken Sie auf **Speicher**, dann auf **Speicherkonto**, und anschließend wird ein neuer Bereich namens „Speicherkonto erstellen“ angezeigt.
+3. Geben Sie einen Namen für das Speicherkonto ein, das Sie später verwenden werden.  
+4. **Bereitstellungsmodell** und **Kontoart** sollten jeweils auf „Resource Manager“ und „Allgemein“ festgelegt werden. 
+5. Stellen Sie sicher, dass **Abonnement** und **Ressourcengruppe** dem entsprechen, was Sie bei der Erstellung Ihrer VM im vorherigen Schritt angegeben haben.
+6. Klicken Sie auf **Erstellen**.
 
-    ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Erstellen eines neuen Speicherkontos](media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+
+## <a name="create-a-blob-container-in-the-storage-account"></a>Erstellen eines Blob-Containers im Speicherkonto
+
+Später werden wir eine Datei in das neue Speicherkonto hoch- und daraus herunterladen. Da Dateien Blob-Speicher erfordern, müssen wir einen Blob-Container erstellen, in dem die Datei gespeichert wird.
+
+1. Navigieren Sie zurück zum neu erstellten Speicherkonto.
+2. Klicken Sie auf der linken Navigationsleiste unter „Blob-Dienst“ auf den Link **Container**.
+3. Klicken Sie oben auf der Seite auf **+ Container**, und ein Bereich namens „Neuer Container“ wird geöffnet.
+4. Geben Sie dem Container einen Namen, wählen Sie eine Zugriffsebene aus, und klicken Sie dann auf **OK**. Der angegebene Name wird später in diesem Tutorial verwendet. 
+
+    ![Erstellen eines Speichercontainers](media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 ## <a name="grant-your-vm-identity-access-to-use-storage-keys"></a>Gewähren des Zugriffs für die Verwendung von Speicherschlüsseln für die VM-Identität 
 
-Mithilfe von MSI kann der Code Zugriffstoken zur Authentifizierung von Ressourcen abrufen, die die Azure AD-Authentifizierung unterstützen.   
+Azure Storage unterstützt die Azure AD-Authentifizierung nicht nativ.  Sie können MSI jedoch zum Abrufen von Speicherschlüsseln aus dem Resource Manager verwenden und mithilfe dieser Schlüssel auf den Speicher zugreifen.  In diesem Schritt erteilen Sie VM-MSI Zugriff auf die Schlüssel für Ihr Speicherkonto.   
 
 1. Wechseln Sie zur Registerkarte für **Speicher**.  
 2. Wählen Sie das zuvor erstellte **Speicherkonto** aus.   
@@ -96,7 +108,7 @@ Mithilfe von MSI kann der Code Zugriffstoken zur Authentifizierung von Ressource
 
 ## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-call-azure-resource-manager"></a>Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens zum Aufrufen von Azure Resource Manager 
 
-In diesem Abschnitt müssen Sie **PowerShell** verwenden.  Wenn Sie PowerShell nicht installiert haben, können Sie es [hier](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1) herunterladen. 
+In diesem Abschnitt müssen Sie Azure Resource Manager **PowerShell** verwenden.  Wenn Sie das Programm nicht installiert haben, [laden Sie die neuesten Version herunter](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1), bevor Sie fortfahren.
 
 1. Navigieren Sie im Portal zu **Virtuelle Computer**, wechseln Sie dann zu Ihrem virtuellen Windows-Computer, und klicken Sie in der **Übersicht** auf **Verbinden**. 
 2. Geben Sie Ihren **Benutzernamen** und Ihr **Kennwort** ein, das Sie beim Erstellen des virtuellen Windows-Computers hinzugefügt haben. 
@@ -104,7 +116,7 @@ In diesem Abschnitt müssen Sie **PowerShell** verwenden.  Wenn Sie PowerShell n
 4. Erstellen Sie mithilfe des PowerShell-Befehls „Invoke-WebRequest“ eine Anforderung an den lokalen MSI-Endpunkt, um ein Zugriffstoken für Azure Resource Manager zu erhalten.
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://localhost/50342/oauth2/token -Method GET -Body @resource="https://management.azure.com/"} -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]
@@ -113,53 +125,43 @@ In diesem Abschnitt müssen Sie **PowerShell** verwenden.  Wenn Sie PowerShell n
     Extrahieren Sie als Nächstes die vollständige Antwort, die als JSON-formatierte Zeichenfolge (JavaScript Object Notation) im „$response“-Objekt gespeichert ist. 
     
     ```powershell
-    $content = $repsonse.Content | ConvertFrom-Json
+    $content = $response.Content | ConvertFrom-Json
     ```
     Extrahieren Sie dann das Zugriffstoken aus der Antwort.
     
     ```powershell
     $ArmToken = $content.access_token
     ```
-    
-    Rufen Sie abschließend Azure Resource Manager mit dem Zugriffstoken auf. In diesem Beispiel wird auch der PowerShell-Befehl „Invoke-WebRequest“ für den Aufruf von Azure Resource Manager und das Einschließen des Zugriffstokens im Autorisierungsheader verwendet.
-    
-    ```powershell
-    (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $ArmToken"}).content
-    ```
-    > [!NOTE]
-    > Bei der URL wird die Groß-/Kleinschreibung beachtet. Achten Sie daher darauf, dieselbe Groß- und Kleinschreibung zu verwenden wie zuvor beim Benennen der Ressourcengruppe und den Großbuchstaben „G“ in „resourceGroup“ zu beachten.
-    
-## <a name="get-the-storage-keys-from-azure-resource-manager"></a>Abrufen der Speicherschlüssel aus Azure Resource Manager 
+ 
+## <a name="get-storage-keys-from-azure-resource-manager-to-make-storage-calls"></a>Abrufen von Speicherschlüsseln aus Azure Resource Manager für Speicheraufrufe 
+
+Jetzt rufen wir mit PowerShell und dem Zugriffstoken, das im vorherigen Abschnitt abgerufen wurde, Azure Resource Manager auf, um den Speicherzugriffsschlüssel abzurufen. Sobald wir den Speicherzugriffsschlüssel haben, können wir Vorgänge zum Up- und Download von Speicher aufrufen.
 
 ```powershell
-PS C:\> $keysResponse = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/97f51385-2edc-4b69-bed8-7778dd4cb761/resourceGroups/SKwan_Test/providers/Microsoft.Storage/storageAccounts/skwanteststorage/listKeys/?api-version=2016-12-01 -Method POST$ -Headers @{Authorization="Bearer $ARMToken"}
+PS C:\> $keysResponse = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE-ACCOUNT>/listKeys/?api-version=2016-12-01 -Method POST -Headers @{Authorization="Bearer $ARMToken"}
 ```
+> [!NOTE] 
+> Bei der URL wird die Groß-/Kleinschreibung beachtet. Achten Sie daher darauf, dieselbe Groß- und Kleinschreibung zu verwenden wie zuvor beim Benennen der Ressourcengruppe, einschließlich des Großbuchstaben „G“ in „resourceGroups“. 
 
 ```powershell
 PS C:\> $keysContent = $keysResponse.Content | ConvertFrom-Json
-```
-
-```powershell
 PS C:\> $key = $keysContent.keys[0].value
 ```
 
-**Erstellen einer Datei, die mit der Azure-CLI hochgeladen werden soll**
+Als Nächstes erstellen wir eine Datei namens „test.txt“. Führen Sie dann mithilfe des Speicherschlüssels die Authentifizierung mit Azure Storage PowerShell aus, und laden Sie die Datei in unseren Blob-Container hoch und anschließend wieder herunter.
 
 ```bash
 echo "This is a test text file." > test.txt
 ```
 
-**Hochladen der Datei mithilfe der Azure-CLI und Authentifizieren der Datei mit dem Speicherschlüssel**
-
 > [!NOTE]
 > Denken Sie zuerst daran, die Azure Storage-Cmdlets „Install-Module Azure.Storage“ zu installieren. 
 
-PowerShell-Anforderung:
-
+Sie können das Blob, das Sie soeben erstellt haben, mit dem PowerShell-Cmdlet `Set-AzureStorageBlobContent` hochladen:
 
 ```powershell
-PS C:\> $ctx = New-AzureStorageContext -StorageAccountName skwanteststorage -StorageAccountKey $key
-PS C:\> Set-AzureStorageBlobContent -File test.txt -Container testcontainer -Blob testblob -Context $ctx
+PS C:\> $ctx = New-AzureStorageContext -StorageAccountName <STORAGE-ACCOUNT> -StorageAccountKey $key
+PS C:\> Set-AzureStorageBlobContent -File test.txt -Container <CONTAINER-NAME> -Blob testblob -Context $ctx
 ```
 
 Antwort:
@@ -176,12 +178,10 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-**Herunterladen der Datei mithilfe der Azure-CLI und Authentifizieren der Datei mit dem Speicherschlüssel**
-
-PowerShell-Anforderung:
+Sie können das Blob, das Sie soeben erstellt haben, auch mit dem PowerShell-Cmdlet `Get-AzureStorageBlobContent` herunterladen:
 
 ```powershell
-PS C:\> Get-AzureStorageBlobContent -Blob <blob name> -Container <container name> -Destination <file> -Context $ctx
+PS C:\> Get-AzureStorageBlobContent -Blob <blob name> -Container <CONTAINER-NAME> -Destination test2.txt -Context $ctx
 ```
 
 Antwort:

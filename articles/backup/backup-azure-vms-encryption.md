@@ -12,29 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/27/2017
+ms.date: 09/18/2017
 ms.author: pajosh;markgal;trinadhk
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 89492cda8eff23509bee7693bb5f7e6ab5eb10d1
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 3c0c13aebbf325bc1f03a39a456c8eef1551c64a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="how-to-back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup
 In diesem Artikel werden die Schritte zum Sichern und Wiederherstellen von virtuellen Computern mit Azure Backup beschrieben. Außerdem enthält er Details zu den unterstützten Szenarien, Voraussetzungen und Problembehandlungsschritten für Fehler.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
-> [!NOTE]
-> * Die Sicherung und Wiederherstellung von verschlüsselten VMs wird nur für virtuelle Computer unterstützt, die mit Resource Manager bereitgestellt wurden. Für klassisch bereitgestellte virtuelle Computer ist keine Unterstützung vorhanden. <br>
-> * Das Feature wird für virtuelle Windows- und Linux-Computer mit Azure Disk Encryption unterstützt, wobei die Datenträger mithilfe des BitLocker-Features von Windows (Branchenstandard) bzw. mithilfe des DM-Crypt-Features von Linux verschlüsselt werden. <br>
-> * Unterstützung besteht nur für virtuelle Computer, die sowohl per BitLocker-Verschlüsselungsschlüssel als auch per Schlüsselverschlüsselungsschlüssel verschlüsselt wurden. Es ist keine Unterstützung für virtuelle Computer vorhanden, die nur per BitLocker-Verschlüsselungsschlüssel verschlüsselt wurden. <br>
->
->
+
+ * Die Sicherung und Wiederherstellung von verschlüsselten VMs wird nur für virtuelle Computer unterstützt, die mit Resource Manager bereitgestellt wurden. Für klassisch bereitgestellte virtuelle Computer ist keine Unterstützung vorhanden. <br>
+ * Das Feature wird für virtuelle Windows- und Linux-Computer mit Azure Disk Encryption unterstützt, wobei die Datenträger mithilfe des BitLocker-Features von Windows (Branchenstandard) bzw. mithilfe des DM-Crypt-Features von Linux verschlüsselt werden. <br>
+ * Die folgende Tabelle listet unterstützte Szenarios für verschlüsselte VMs nur mit BitLocker-Verschlüsselungsschlüssel (BEK) und mit Schlüsselverschlüsselungsschlüssel (KEK) auf.
+ 
+ 
+   |  | BEK- + KEK-VMs | Nur BEK-VMs |
+   | --- | --- | --- |
+   | **Nicht verwaltete VMs**  | Ja | Ja  |
+   | **Verwaltete VMs**  | Ja | Nein  |
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. Der virtuelle Computer wurde per [Azure Disk Encryption](../security/azure-security-disk-encryption.md) verschlüsselt. Er sollte sowohl per BitLocker-Verschlüsselungsschlüssel als auch per Schlüsselverschlüsselungsschlüssel verschlüsselt werden.
+1. Der virtuelle Computer wurde per [Azure Disk Encryption](../security/azure-security-disk-encryption.md) verschlüsselt. 
 2. Der Recovery Services-Tresor wurde erstellt, und die Speicherreplikation wurde eingerichtet, indem die Schritte im Artikel zum Thema [Vorbereiten der Umgebung für die Sicherung](backup-azure-arm-vms-prepare.md) ausgeführt wurden.
 3. Azure Backup wurden die [Berechtigungen zum Zugriff auf den Schlüsseltresor](#provide-permissions-to-azure-backup) mit Schlüsseln und Geheimnissen für verschlüsselte virtuelle Computer gewährt.
 
@@ -52,18 +56,18 @@ Verwenden Sie die folgenden Schritte zum Festlegen des Sicherungsziels, Definier
      Die Liste mit den Recovery Services-Tresoren wird angezeigt. Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus.
 
      Das ausgewählte Tresor-Dashboard wird geöffnet.
-2. Klicken Sie in der Liste mit den Elementen, die im Tresor angezeigt werden, auf **Sicherung**, um das Blatt „Sicherung“ zu öffnen.
+2. Klicken Sie in der Liste mit den Elementen, die im Tresor angezeigt werden, auf **Sicherung**, um die Sicherung von verschlüsselten VMs zu beginnen.
 
       ![Blatt „Sicherung“ öffnen](./media/backup-azure-vms-encryption/select-backup.png)
-3. Klicken Sie auf dem Blatt „Sicherung“ auf **Sicherungsziel**, um das gleichnamige Blatt zu öffnen.
+3. Klicken Sie als Erstes auf **Sicherungsziel**, um das Sicherungsziel auszuwählen.
 
       ![Blatt „Szenario“ öffnen](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
-4. Legen Sie auf dem Blatt für das Sicherungsziel die Option **Wo wird Ihre Workload ausgeführt?** auf „Azure“ und die Option **Was möchten Sie sichern?** auf „Virtueller Computer“ fest, und klicken Sie anschließend auf **OK**.
+4. Legen Sie dabei die Option **Wo wird Ihre Workload ausgeführt?** auf „Azure“ und die Option **What do you want to backup** (Was möchten Sie sichern?) auf „Virtueller Computer“ fest, und klicken Sie anschließend auf **OK**.
 
-   Das Blatt für das Sicherungsziel wird geschlossen, und das Blatt „Sicherungsrichtlinie“ wird geöffnet.
+   Wählen Sie als Nächstes die Sicherungsrichtlinie aus.
 
    ![Blatt „Szenario“ öffnen](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
-5. Wählen Sie auf dem Blatt „Sicherungsrichtlinie“ die Sicherungsrichtlinie aus, die Sie auf den Tresor anwenden möchten, und klicken Sie auf **OK**.
+5. Wählen Sie dabei die Sicherungsrichtlinie aus, die Sie auf den Tresor anwenden möchten, und klicken Sie auf **OK**.
 
       ![Sicherungsrichtlinie auswählen](./media/backup-azure-vms-encryption/setting-rs-backup-policy-new.png)
 
@@ -77,7 +81,7 @@ Verwenden Sie die folgenden Schritte zum Festlegen des Sicherungsziels, Definier
 
       ![Meldung zu verschlüsselten VMs](./media/backup-azure-vms-encryption/encrypted-vm-warning-message.png)
 
-      Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, klicken Sie unten auf dem Blatt „Sicherung“ auf „Sicherung aktivieren“. Mit „Sicherung aktivieren“ wird die Richtlinie im Tresor und auf den VMs bereitgestellt.
+      Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, klicken Sie unten auf „Sicherung aktivieren“. Mit „Sicherung aktivieren“ wird die Richtlinie im Tresor und auf den VMs bereitgestellt.
 8. Die nächste Phase der Vorbereitung ist die Installation des VM-Agents, bzw. sicherzustellen, dass der VM-Agent installiert ist. Führen Sie hierzu die Schritte aus, die im Artikel zum Thema [Vorbereiten der Umgebung für die Sicherung](backup-azure-arm-vms-prepare.md) beschrieben sind.
 
 ### <a name="triggering-backup-job"></a>Auslösen des Sicherungsauftrags
@@ -108,11 +112,11 @@ Gehen Sie anhand der folgenden Schritte vor, um Azure Backup die erforderlichen 
 
     ![Sicherungsdienst auswählen](./media/backup-azure-vms-encryption/select-backup-service.png)
     
-6. Wählen Sie in der Dropdownliste „Anhand einer Vorlage konfigurieren (optional)“ die Option **Azure Backup** aus. In den Dropdownlisten „Schlüsselberechtigungen“ und „Berechtigungen für Geheimnis“ sind bereits die erforderlichen Berechtigungen angegeben. 
+6. Wählen Sie in der Dropdownliste „Anhand einer Vorlage konfigurieren (optional)“ die Option **Azure Backup** aus. In den Dropdownlisten „Schlüsselberechtigungen“ und „Berechtigungen für Geheimnis“ sind bereits die erforderlichen Berechtigungen angegeben. Wenn Ihre VM mithilfe von **nur BEK** verschlüsselt ist, sind Berechtigungen nur für Geheimnisse erforderlich, sodass Sie die Auswahl für Schlüsselberechtigungen entfernen müssen.
 
     ![Azure Backup auswählen](./media/backup-azure-vms-encryption/select-backup-template.png)
     
-7. Klicken Sie auf **OK**. Beachten Sie, dass der Sicherungsverwaltungsdienst auf dem Blatt „Zugriffsrichtlinien“ hinzugefügt wird. 
+7. Klicken Sie auf **OK**. Beachten Sie, dass der Sicherungsverwaltungsdienst zu den Zugriffsrichtlinien hinzugefügt wird. 
 
     ![Zugriffsrichtlinie für Sicherungsdienst](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
     
@@ -130,9 +134,10 @@ Stellen Sie zum Wiederherstellen verschlüsselter virtueller Computer zunächst 
 ## <a name="troubleshooting-errors"></a>Problembehandlung
 | Vorgang | Fehlerdetails | Lösung |
 | --- | --- | --- |
-| Sicherung |Bei der Überprüfung ist ein Fehler aufgetreten, da der virtuelle Computer nur per BEK verschlüsselt wurde. Sicherungen können nur für virtuelle Computer aktiviert werden, die per BEK und KEK verschlüsselt wurden. |Der virtuelle Computer sollte per BEK und KEK verschlüsselt werden. Entschlüsseln Sie zunächst den virtuellen Computer, und verschlüsseln Sie ihn dann mit BEK und KEK. Aktivieren Sie die Sicherung, sobald die VM mit BEK und KEK verschlüsselt wurde. Erfahren Sie mehr über das [Entschlüsseln und Verschlüsseln des virtuellen Computers](../security/azure-security-disk-encryption.md).  |
+|Backup  | Der Azure Backup-Dienst weist nicht genügend Berechtigungen für den Schlüsseltresor auf, um verschlüsselte virtuelle Computer zu sichern. | Der virtuelle Computer muss sowohl per BitLocker-Verschlüsselungsschlüssel als auch per Schlüsselverschlüsselungsschlüssel verschlüsselt werden. Anschließend sollte die Sicherung aktiviert werden.  Dem Sicherungsdienst müssen diese Berechtigungen [anhand der Schritte im Abschnitt oben](#provide-permissions-to-azure-backup) oder mittels PowerShell über die Schritte im Abschnitt **Aktivieren des Schutzes** in der PowerShell-Dokumentation unter [Verwenden von AzureRM.RecoveryServices.Backup-Cmdlets zum Sichern virtueller Computer](backup-azure-vms-automation.md#back-up-azure-vms) erteilt werden. |  
+| Backup  |Bei der Überprüfung ist ein Fehler aufgetreten, da der virtuelle Computer nur per BEK verschlüsselt wurde. Sicherungen können nur für virtuelle Computer aktiviert werden, die per BEK und KEK verschlüsselt wurden. |Der virtuelle Computer sollte per BEK und KEK verschlüsselt werden. Entschlüsseln Sie zunächst den virtuellen Computer, und verschlüsseln Sie ihn dann mit BEK und KEK. Aktivieren Sie die Sicherung, sobald die VM mit BEK und KEK verschlüsselt wurde. Erfahren Sie mehr über das [Entschlüsseln und Verschlüsseln des virtuellen Computers](../security/azure-security-disk-encryption.md).  |
 | Wiederherstellen |Sie können diese verschlüsselte VM nicht wiederherstellen, da der Schlüsseltresor, der dieser VM zugeordnet ist, nicht vorhanden ist. |Erstellen Sie den Schlüsseltresor anhand der Vorgehensweise unter [Erste Schritte mit dem Azure-Schlüsseltresor](../key-vault/key-vault-get-started.md). Verwenden Sie die Informationen im Artikel zum Thema [Wiederherstellen des Schlüssels und Geheimnisses für den Schlüsseltresor per Azure Backup](backup-azure-restore-key-secret.md), um den Schlüssel und das Geheimnis wiederherzustellen, falls diese Angaben nicht schon vorhanden sind. |
 | Wiederherstellen |Sie können diese verschlüsselte VM nicht wiederherstellen, da der Schlüssel und das Geheimnis für diese VM nicht vorhanden sind. |Verwenden Sie die Informationen im Artikel zum Thema [Wiederherstellen des Schlüssels und Geheimnisses für den Schlüsseltresor per Azure Backup](backup-azure-restore-key-secret.md), um den Schlüssel und das Geheimnis wiederherzustellen, falls diese Angaben nicht schon vorhanden sind. |
 | Wiederherstellen |Der Speicherdienst ist nicht zum Zugreifen auf Ressourcen in Ihrem Abonnement autorisiert. |Stellen Sie wie weiter oben bereits erläutert zunächst Datenträger gemäß den Schritten des Abschnitts **Wiederherstellen von gesicherten Datenträgern** (unter [Auswählen einer Konfiguration für die VM-Wiederherstellung](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)) wieder her. Verwenden Sie anschließend PowerShell zum [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). |
-|Sicherung | Der Azure Backup-Dienst weist nicht genügend Berechtigungen für den Schlüsseltresor auf, um verschlüsselte virtuelle Computer zu sichern. | Der virtuelle Computer muss sowohl per BitLocker-Verschlüsselungsschlüssel als auch per Schlüsselverschlüsselungsschlüssel verschlüsselt werden. Anschließend sollte die Sicherung aktiviert werden.  Dem Sicherungsdienst müssen diese Berechtigungen [anhand der Schritte im Abschnitt oben](#provide-permissions-to-azure-backup) oder mittels PowerShell über die Schritte im Abschnitt **Aktivieren des Schutzes** in der PowerShell-Dokumentation unter [Verwenden von AzureRM.RecoveryServices.Backup-Cmdlets zum Sichern virtueller Computer](backup-azure-vms-automation.md#back-up-azure-vms) erteilt werden. |  
+
 

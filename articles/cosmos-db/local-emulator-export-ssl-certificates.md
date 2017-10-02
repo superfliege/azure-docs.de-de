@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 4add5028d50972316902cecd8c399781c012cb77
+ms.translationtype: HT
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: bafbd43d65a0f46f87a13cea4a2a6299d3bf43ef
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -105,8 +104,8 @@ In diesem Tutorial haben Sie die folgenden Aufgaben ausgeführt:
 > * Exportieren des SSL-Zertifikats
 > * Erlernen der Verwendung des Zertifikats in Java, Python und Node.js
 
-Sie können jetzt mit dem Abschnitt „Konzepte“ fortfahren, um weitere Informationen zu Cosmos DB zu erhalten.
+Sie können nun mit dem Tutorial zum Erstellen eines Azure Functions-HTTP-Triggers mit einer Azure Cosmos DB-Eingabebindung fortfahren.
 
 > [!div class="nextstepaction"]
-> [Globale Verteilung](distribute-data-globally.md) 
+> [Erstellen eines Azure Functions-HTTP-Triggers mit einer Azure Cosmos DB-Eingabebindung](tutorial-functions-http-trigger.md) 
 

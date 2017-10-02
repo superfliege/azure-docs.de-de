@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: bb058b11d211c4c41ff8f8c3849a4630886c78d5
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: d555f7a93a980a35c6b50d480c43de6bdc5c86df
 ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Problembehandlung bei der Sicherung virtueller Azure-Computer
@@ -32,9 +32,13 @@ Sie können die Problembehandlung für Fehler, die beim Verwenden von Azure Back
 
 ## <a name="backup"></a>Backup 
 
-## <a name="error-the-specified-disk-configuration-is-not-supported"></a>Fehler: Die angegebene Datenträgerkonfiguration wird nicht unterstützt.
+### <a name="error-the-specified-disk-configuration-is-not-supported"></a>Fehler: Die angegebene Datenträgerkonfiguration wird nicht unterstützt.
 
-Azure Backup unterstützt derzeit keine Datenträgergrößen von mehr als 1.023 GB. Stellen Sie sicher, dass die Datenträger kleiner als der Grenzwert sind, indem Sie die Datenträger teilen. Um Datenträger zu teilen, müssen Sie Daten von Datenträgern, die größer als 1.023 GB sind, in neu erstellte Datenträger mit einer Größe von weniger als 1.023 GB kopieren.
+Azure Backup unterstützt derzeit keine Datenträgergrößen, die [größer als 1.023 GB](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm) sind. 
+- Wenn Sie Datenträger haben, die größer als 1 TB sind, [fügen Sie neue Datenträger an](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal), welche kleiner als 1 TB sind. <br>
+- Kopieren Sie anschließend die Daten von dem Datenträger, der größer als 1 TB ist, in die neu erstellten Datenträger mit einer Größe unter 1 TB. <br>
+- Stellen Sie sicher, dass alle Daten kopiert wurden, und entfernen Sie die Datenträger, die größer als 1 TB sind.
+- Initiieren Sie die Sicherung.
 
 | Fehlerdetails | Problemumgehung |
 | --- | --- |

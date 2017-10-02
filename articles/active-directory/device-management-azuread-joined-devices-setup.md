@@ -16,49 +16,37 @@ ms.date: 08/29/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: f548833cca27debb67cb155be0791299470f28dd
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
+ms.openlocfilehash: 415086809efe779c6bcae32719d8be1b48764905
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Einrichten von in Azure Active Directory eingebundenen Geräten
 
 Mit der Geräteverwaltung in Azure Active Directory (Azure AD) können Sie sicherstellen, dass Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen. Weitere Informationen finden Sie unter [Einführung in die Geräteverwaltung in Azure Active Directory](device-management-introduction.md).
 
-Sie können Windows 10-Geräte, die im Besitz Ihres Unternehmens sind, als in [Azure AD eingebundene Geräte](device-management-introduction.md#azure-ad-joined-devices) der Kontrolle von Azure AD unterstellen. Diese Geräte dürfen nicht bereits [in ein lokales AD eingebunden](device-management-introduction.md#hybrid-azure-ad-joined-devices) sein.
+Wenn Sie unternehmenseigene Windows 10-Geräte über Azure AD steuern möchten, können Sie dazu in Azure AD eingebundene Geräte konfigurieren. Die entsprechenden Schritte werden in diesem Thema beschrieben. 
 
-Dieses Thema enthält Anweisungen zum Registrieren von Windows 10-Geräten bei Azure AD. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie beginnen, sollten Sie überprüfen, ob Folgendes zutrifft:
-
-- Sie verfügen über Berechtigungen zum Einbinden von Geräten in Azure AD.
-
-    ![Verbunden](./media/device-management-azuread-joined-devices-setup/21.png)
-
-- Die maximale Anzahl von Geräten pro Benutzer wurde noch nicht überschritten. 
-
-    ![Verbunden](./media/device-management-azuread-joined-devices-setup/22.png)
-
-
-Weitere Informationen finden Sie unter [Configure device settings](device-management-azure-portal.md#configure-device-settings) (Konfigurieren von Geräteeinstellungen).
+Um ein Windows 10-Gerät einzubinden, muss der Geräteregistrierungsdienst so konfiguriert sein, dass Sie Geräte registrieren können. Sie benötigen Berechtigungen zum Einbinden von Geräten in den Azure AD-Mandanten. Darüber hinaus müssen weniger Geräte registriert sein als die konfigurierte maximale Anzahl. Weitere Informationen finden Sie unter [Configure device settings](device-management-azure-portal.md#configure-device-settings) (Konfigurieren von Geräteeinstellungen).
 
 
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
 
 
-- Windows registriert das Gerät im Organisationsverzeichnis in Azure AD.
+- Windows bindet das Gerät im Organisationsverzeichnis in Azure AD ein.
 
-- Unter Umständen werden Sie zur mehrstufigen Authentifizierung aufgefordert. Diese kann vom IT-Administrator eingerichtet werden.
+- Unter Umständen werden Sie zur mehrstufigen Authentifizierung aufgefordert. Diese Aufforderung kann vom IT-Administrator konfiguriert werden.
 
-- Azure AD überprüft, ob ein Gerät bei der mobilen Geräteverwaltung registriert werden muss. Das Gerät wird ggf. von Azure AD registriert.
+- Azure AD prüft, ob eine Registrierung des Geräts in der Mobilgeräteverwaltung erforderlich ist, und registriert es ggf.
 
-- Windows leitet verwaltete Benutzer über die automatische Anmeldung zum Desktop weiter.
+- Wenn Sie ein verwalteter Benutzer sind, führt Windows Sie über die automatische Anmeldung auf den Desktop.
 
-- Verbundbenutzer werden zu einer Windows-Anmeldeseite weitergeleitet, um Anmeldeinformationen einzugeben.
+- Wenn Sie ein Verbundbenutzer sind, müssen Sie sich mit Ihren Anmeldeinformationen anmelden.
 
 
 ## <a name="joining-a-device"></a>Einbinden eines Geräts
@@ -135,9 +123,8 @@ Weitere Informationen finden Sie unter [Locate devices](device-management-azure-
 Weitere Informationen finden Sie unter: 
 
 - [Einführung in die Geräteverwaltung in Azure Active Directory](device-management-introduction.md)
-
 - [Verwalten von Geräten mithilfe des Azure-Portals – Vorschau](device-management-azure-portal.md)
-
+- 
 
 
 

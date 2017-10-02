@@ -1,6 +1,6 @@
 ---
-title: "Einrichten von bei Azure Active Directory registrierten Windows 10-Geräten | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie bei Azure Active Directory registrierte Windows 10-Geräte einrichten."
+title: "Einrichten von bei Azure Active Directory registrierten Geräten | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie bei Azure Active Directory registrierte Geräte einrichten."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,121 +12,102 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2017
+ms.date: 08/27/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: e2554450bdb426cff50f302132158f39f5630ee3
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
+ms.openlocfilehash: 427bf9a0487c771e57ac53a9bb0b7d7e2f6bdca2
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-
 # <a name="set-up-azure-active-directory-registered-windows-10-devices"></a>Einrichten von bei Azure Active Directory registrierten Windows 10-Geräten
 
 Mit der Geräteverwaltung in Azure Active Directory (Azure AD) können Sie sicherstellen, dass Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen. Weitere Informationen finden Sie unter [Einführung in die Geräteverwaltung in Azure Active Directory](device-management-introduction.md).
 
-Mit bei [Azure AD registrierten Geräten](device-management-introduction.md#azure-ad-registered-devices) ermöglichen Sie das **Bring Your Own Device (BYOD)**-Szenario, in dem die Benutzer mit Geräten in ihrem privaten Besitz auf Ressourcen Ihrer Organisation zugreifen können.  
-
-In Azure AD können Sie bei Azure AD registrierte Geräte mit folgenden Betriebssystemen einrichten:
-
-- Windows 10
-- iOS
-- Android
-- macOS  
-
-Dieses Thema enthält Anweisungen zum Registrieren von Windows 10-Geräten bei Azure AD. 
+Wenn Sie **Bring Your Own Device (BYOD)** ermöglichen möchten, konfigurieren Sie dazu bei Azure AD registrierte Geräte. In Azure AD können Sie bei Azure AD registrierte Geräte für Windows 10, iOS, Android und macOS konfigurieren. Die entsprechenden Schritte für Windows 10-Geräte werden in diesem Thema beschrieben. 
 
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Voraussetzungen
 
-Bevor Sie beginnen, sollten Sie überprüfen, ob Folgendes zutrifft:
-
-- Sie verfügen über die Berechtigungen zum Registrieren von Geräten. 
-
-    ![Registrieren](./media/device-management-azuread-registered-devices-windows10-setup/21.png)
-
-- Die maximale Anzahl von Geräten pro Benutzer wurde noch nicht überschritten. 
-
-    ![Registrieren](./media/device-management-azuread-registered-devices-windows10-setup/22.png)
-
-Weitere Informationen finden Sie unter [Konfigurieren der Geräteeinstellungen](device-management-azure-portal.md#configure-device-settings).
+Um ein Windows 10-Gerät zu registrieren, muss der Geräteregistrierungsdienst so konfiguriert sein, dass Sie Geräte registrieren können. Sie benötigen Berechtigungen zum Registrieren von Geräten beim Azure AD-Mandanten. Darüber hinaus müssen weniger Geräte registriert sein als die konfigurierte maximale Anzahl. Weitere Informationen finden Sie unter [Configure device settings](device-management-azure-portal.md#configure-device-settings) (Konfigurieren von Geräteeinstellungen).
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
 
-Wenn Sie ein Gerät registrieren, beachten Sie Folgendes:
+Berücksichtigen Sie beim Registrieren eines Geräts Folgendes:
 
 - Windows registriert das Gerät im Organisationsverzeichnis in Azure AD.
 
-- Unter Umständen werden Sie zur mehrstufigen Authentifizierung aufgefordert. Diese kann vom IT-Administrator eingerichtet werden.
+- Unter Umständen werden Sie zur mehrstufigen Authentifizierung aufgefordert. Diese Aufforderung kann vom IT-Administrator konfiguriert werden.
 
-- Azure AD überprüft, ob ein Gerät bei der mobilen Geräteverwaltung registriert werden muss. Das Gerät wird ggf. von Azure AD registriert.
+- Azure AD prüft, ob eine Registrierung des Geräts in der Mobilgeräteverwaltung erforderlich ist, und registriert es ggf.
 
-- Windows leitet verwaltete Benutzer über die automatische Anmeldung zum Desktop weiter.
+- Wenn Sie ein verwalteter Benutzer sind, führt Windows Sie über die automatische Anmeldung auf den Desktop.
 
-- Verbundbenutzer werden zu einer Windows-Anmeldeseite weitergeleitet, um Anmeldeinformationen einzugeben.
+- Wenn Sie ein Partnerbenutzer sind, werden Sie zu einem Windows-Anmeldebildschirm geführt und müssen Ihre Anmeldeinformationen eingeben.
 
 
-## <a name="register-a-device"></a>Registrieren eines Geräts
+## <a name="registering-a-device"></a>Registrieren eines Geräts
 
-Führen Sie die folgenden Schritte aus, um Ihr Windows 10-Gerät bei Azure AD zu registrieren. Wenn Sie Ihr Gerät bei Azure AD registriert haben, wird auf der Seite **Auf Arbeits- oder Schulkonto zugreifen** der Eintrag **Geschäfts-, Schul- oder Unikonto** angezeigt.
+Dieser Abschnitt enthält die Schritte zum Registrieren Ihres Windows 10-Geräts bei Azure AD. Wenn Sie Ihr Gerät in Azure AD registriert haben, wird im Dialogfeld **Auf Arbeits- oder Schulkonto zugreifen** der Eintrag **Geschäfts-, Schul- oder Unikonto** angezeigt.
 
 ![Registrieren](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
 
 
-So registrieren Sie Ihr Windows 10-Gerät:
+**So registrieren Sie Ihr Windows 10-Gerät:**
 
 1. Klicken Sie im Menü **Start** auf **Einstellungen**.
 
-    ![„Einstellungen“ auswählen](./media/device-management-azuread-registered-devices-windows10-setup/01.png)
+    ![Einstellungen](./media/device-management-azuread-registered-devices-windows10-setup/01.png)
 
 2. Klicken Sie auf **Konten**.
 
-    ![„Konten“ auswählen](./media/device-management-azuread-registered-devices-windows10-setup/02.png)
+    ![Konten](./media/device-management-azuread-registered-devices-windows10-setup/02.png)
 
 
 3. Klicken Sie auf **Auf Arbeits- oder Schulkonto zugreifen**.
 
-    ![„Auf Arbeits- oder Schulkonto zugreifen“ auswählen](./media/device-management-azuread-registered-devices-windows10-setup/03.png)
+    ![Auf Arbeits- oder Schulkonto zugreifen](./media/device-management-azuread-registered-devices-windows10-setup/03.png)
 
-4. Klicken Sie auf der Seite **Auf Arbeits- oder Schulkonto zugreifen** auf **Verbinden**.
+4. Klicken Sie im Dialogfenster **Auf Arbeits- oder Schulkonto zugreifen** auf **Verbinden**.
 
-    ![Seite „Auf Arbeits- oder Schulkonto zugreifen“](./media/device-management-azuread-registered-devices-windows10-setup/04.png)
-
-
-5. Geben Sie auf der Seite **Geschäfts-, Schul- oder Unikonto einrichten** den Namen Ihres Kontos (z.B. someone@example.com) ein, und klicken Sie auf **Weiter**.
-
-    ![Seite „Geschäfts-, Schul- oder Unikonto einrichten“](./media/device-management-azuread-registered-devices-windows10-setup/06.png)
+    ![Verbinden](./media/device-management-azuread-registered-devices-windows10-setup/04.png)
 
 
-6. Geben Sie auf der Seite **Kennwort eingeben** Ihr Kennwort ein, und klicken Sie dann auf **Weiter**.
+5. Geben Sie im Dialogfenster **Geschäfts-, Schul- oder Unikonto einrichten** den Kontonamen (z.B. someone@example.com) ein, und klicken Sie auf **Weiter**.
 
-    ![Kennwort eingeben](./media/device-management-azuread-registered-devices-windows10-setup/05.png)
+    ![Verbinden](./media/device-management-azuread-registered-devices-windows10-setup/06.png)
 
 
-7. Klicken Sie auf der Seite **Alles erledigt** auf **Fertig**.
+6. Geben Sie im Dialogfenster **Kennwort eingeben** Ihr Kennwort ein, und klicken Sie dann auf **Weiter**.
 
-    ![Seite „Alles erledigt“](./media/device-management-azuread-registered-devices-windows10-setup/07.png)
+    ![Verbinden](./media/device-management-azuread-registered-devices-windows10-setup/05.png)
+
+
+7. Klicken Sie im Dialogfenster **Alles erledigt** auf **Fertig**.
+
+    ![Verbinden](./media/device-management-azuread-registered-devices-windows10-setup/07.png)
 
 ## <a name="verification"></a>Überprüfung
 
-Ob ein Gerät in Azure AD eingebunden wurde, können Sie auf der Seite **Auf Arbeits- oder Schulkonto zugreifen** Ihres Geräts überprüfen.
+Ob ein Gerät in eine Azure AD-Instanz eingebunden wurde, können Sie im Dialogfenster **Auf Arbeits- oder Schulkonto zugreifen** Ihres Geräts überprüfen.
 
-![Status „Geschäfts- oder Schulkonto“](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
+![Registrieren](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
 
-Alternativ können Sie die Geräteeinstellungen im Azure AD-Portal überprüfen.
+Alternativ können Sie die Geräteeinstellungen auch im Azure AD-Portal überprüfen.
 
-![Bei Azure AD registrierte Geräte](./media/device-management-azuread-registered-devices-windows10-setup/09.png)
+![Registrieren](./media/device-management-azuread-registered-devices-windows10-setup/09.png)
+
+
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter: 
+- Weitere Informationen finden Sie unter [Einführung in die Geräteverwaltung in Azure Active Directory](device-management-introduction.md).
 
-- [Einführung in die Geräteverwaltung in Azure Active Directory](device-management-introduction.md)
-
-- [Verwalten von Geräten mithilfe des Azure-Portals – Vorschau](device-management-azure-portal.md)
+- Ausführliche Informationen zum Verwalten von Geräten im Azure AD-Portal finden Sie unter [Verwalten von Geräten mithilfe des Azure-Portals – Vorschau](device-management-azure-portal.md).
 
 
 

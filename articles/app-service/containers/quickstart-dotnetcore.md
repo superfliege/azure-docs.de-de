@@ -14,12 +14,13 @@ ms.tgt_pltfrm: linux
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/30/2017
-ms.author: aelnably;wesmc;mikono;rachelap;cephalin;cfowler
+ms.author: cfowler
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 5d84e558e2fd998df31725b71d1474c0a774490b
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 3ae0f28272d70a63b74a9f249566ae789f07aad5
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="create-a-net-core-web-app-in-a-linux-container-in-azure"></a>Erstellen einer .NET Core-Web-App in einem Linux-Container in Azure
@@ -63,7 +64,7 @@ dotnet restore
 dotnet run
 ```
 
-Öffnen Sie einen Webbrowser, und navigieren Sie zur App unter „http://localhost:5000“.
+Öffnen Sie einen Webbrowser, und navigieren Sie zu der App auf `http://localhost:5000`.
 
 Auf der Seite wird die Nachricht **Hello World** aus der Beispiel-App angezeigt.
 
@@ -87,9 +88,9 @@ git commit -m "first commit"
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 
-Erstellen Sie eine [Web-App](../../app-service-web/app-service-web-overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp#create). Vergessen Sie nicht, `<app name>` durch einen eindeutigen App-Namen zu ersetzen.
+Erstellen Sie eine [Web-App](../app-service-web-overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp#create). Vergessen Sie nicht, `<app name>` durch einen eindeutigen App-Namen zu ersetzen.
 
-Die Laufzeit im folgenden Befehl ist auf `DOTNETCORE|1.1` festgelegt. Führen Sie zum Anzeigen aller unterstützten Laufzeiten den Befehl [az webapp list-runtimes](/cli/azure/webapp#list-runtimes) aus.
+Die Runtime im folgenden Befehl ist auf `DOTNETCORE|1.1` festgelegt. Führen Sie zum Anzeigen aller unterstützten Runtimes den Befehl [az webapp list-runtimes](/cli/azure/webapp#list-runtimes) aus.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --runtime "DOTNETCORE|1.1" --deployment-local-git

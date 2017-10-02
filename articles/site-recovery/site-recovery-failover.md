@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/04/2017
 ms.author: pratshar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: ef586191f0b89dca89810644d45503fe42538635
+ms.translationtype: HT
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 8be405f01d919e9581afca9101d811a045f4469a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 09/19/2017
 
 ---
 # <a name="failover-in-site-recovery"></a>Failover in Site Recovery
@@ -28,6 +27,13 @@ In diesem Artikel wird beschrieben, wie Sie für virtuelle Computer und physisch
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Führen Sie vor einem Failover ein [Testfailover](site-recovery-test-failover-to-azure.md) durch, um sicherzustellen, dass alles wie erwartet funktioniert.
 1. [Bereiten Sie das Netzwerk am Zielspeicherort vor](site-recovery-network-design.md), bevor Sie ein Failover durchführen.  
+
+Verwenden Sie folgende Tabelle, um mehr über die Failoveroptionen zu erfahren, die von Azure Site Recovery für verschiedene Failoverszenarios bereitgestellt werden.
+
+| Szenario | Anforderungen für die Anwendungswiederherstellung | Workflow für Hyper-V | Workflow für VMware
+|---|--|--|--|
+|Geplantes Failover aufgrund einer bevorstehenden Ausfallzeit des Datencenters| Kein Datenverlust für die Anwendung, wenn eine geplante Aktivität ausgeführt wird| Für Hyper-V repliziert ASR Daten mit einer vom Benutzer angegebenen Kopierfrequenz. Ein geplantes Failover wird verwendet, um die Frequenz zu überschreiben und die letzten Änderungen zu replizieren, bevor ein Failover initiiert wird. <br/> <br/> 1.    Planen Sie ein Wartungsfenster gemäß des Change-Management-Prozesses Ihres Unternehmens. <br/><br/> 2. Informieren Sie die Benutzer über bevorstehende Ausfallzeiten. <br/><br/> 3. Schalten Sie die benutzerseitige Anwendung offline.<br/><br/>4. Initiieren Sie das geplante Failover mithilfe des ASR-Portals. Der lokale virtuelle Computer wird automatisch heruntergefahren.<br/><br/>Effektiver Datenverlust der Anwendung = 0 <br/><br/>Ein Journal der Wiederherstellungspunkte wird in einem Aufbewahrungsfenster bereitgestellt, falls ein Benutzer einen älteren Wiederherstellungspunkt verwenden möchte. (Vermerkdauer: 24 Stunden für Hyper-V)| Für VMware repliziert ASR kontinuierlich Daten mithilfe von CDP. Ein Failover ermöglicht es dem Benutzer, ein Failover auf die neuesten Daten auszuführen (auch nach Herunterfahren der Anwendung).<br/><br/> 1. Planen Sie ein Wartungsfenster gemäß des Change-Management-Prozesses. <br/><br/>2. Informieren Sie die Benutzer über bevorstehende Ausfallzeiten. <br/><br/>3.  Schalten Sie die benutzerseitige Anwendung offline. <br/><br/>4.  Sobald die Anwendung offline ist, initiieren Sie mithilfe des ASR-Portals ein geplantes Failover zum letzten Punkt. Verwenden Sie im Portal die Option „Ungeplantes Failover“, und wählen Sie den letzten Punkt für das Failover aus. Der lokale virtuelle Computer wird automatisch heruntergefahren.<br/><br/>Effektiver Datenverlust der Anwendung = 0 <br/><br/>Ein Journal der Wiederherstellungspunkte wird in einem Aufbewahrungsfenster bereitgestellt, falls ein Kunde einen älteren Wiederherstellungspunkt verwenden möchte. (Vermerkdauer: 72 Stunden für VMware)
+|Failover aufgrund einer ungeplanten Ausfallzeit des Datencenters (natürlich oder IT-Notfall) | Minimaler Datenverlust für die Anwendung | 1. Initiieren Sie den BCP-Plan der Organisation. <br/><br/>2. Initiieren Sie ein ungeplantes Failover zum letzten Punkt oder zu einem Punkt im Aufbewahrungsfenster (Journal) mithilfe des ASR-Portals.| 1. Initiieren Sie den BCP-Plan der Organisation. <br/><br/>2.  Initiieren Sie ein ungeplantes Failover zum letzten Punkt oder zu einem Punkt im Aufbewahrungsfenster (Journal) mithilfe des ASR-Portals.
 
 
 ## <a name="run-a-failover"></a>Ausführen eines Failovers
@@ -65,7 +71,7 @@ Hier erfahren Sie, wie Sie ein Failover für einen [Wiederherstellungsplan](site
 1. Nachdem Sie mit dem virtuellen Computer, für den das Failover durchgeführt wurde, zufrieden sind, können Sie für das Failover die Option **Commit** wählen. Alle verfügbaren Wiederherstellungspunkte des Diensts werden gelöscht, und die Option **Wiederherstellungspunkt ändern** ist nicht mehr verfügbar.
 
 ## <a name="planned-failover"></a>Geplantes Failover
-Zusätzlich zum Failover wird für virtuelle Hyper-V-Computer, die mit Site Recovery geschützt sind, auch das **geplante Failover** unterstützt. Dies ist eine Failoveroption ohne jeglichen Datenverlust. Bei Auslösung eines geplanten Failovers werden zuerst die virtuellen Quellcomputer heruntergefahren, die noch zu synchronisierenden Daten synchronisiert, und dann wird ein Failover ausgelöst.
+Virtuelle Computer/physische Server, die mit Site Recovery geschützt sind, unterstützen auch das **geplante Failover**. Dies ist eine Failoveroption ohne jeglichen Datenverlust. Bei Auslösung eines geplanten Failovers werden zuerst die virtuellen Quellcomputer heruntergefahren, die noch zu synchronisierenden Daten synchronisiert, und dann wird ein Failover ausgelöst.
 
 > [!NOTE]
 > Wenn Sie für virtuelle Hyper-V-Computer ein Failover von einem lokalen Standort zu einem anderen lokalen Standort durchführen, müssen Sie wie folgt vorgehen, um zurück zum primären lokalen Standort zu gelangen: Wählen Sie zuerst die Option **Umgekehrt replizieren**, um die Daten des virtuellen Computers zurück an den primären Standort zu replizieren, und lösen Sie dann ein Failover aus. Wenn der primäre virtuelle Computer nicht verfügbar ist, müssen Sie den virtuellen Computer vor Beginn des Vorgangs **Umgekehrt replizieren** aus einer Sicherung wiederherstellen.   

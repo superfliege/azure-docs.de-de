@@ -1,6 +1,6 @@
 ---
-title: "Ausführen eines benutzerdefinierten Image von Docker-Hubs in Azure-Web-Apps für Container | Microsoft-Dokumentation"
-description: "Informationen zum Verwenden eines benutzerdefinierten Docker-Image für Azure-Web-Apps für Container"
+title: "Ausführen eines benutzerdefinierten Images von Docker-Hubs in Azure-Web-Apps für Container | Microsoft-Dokumentation"
+description: "Informationen zum Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps für Container."
 keywords: Azure App Service, Web-App, Linux, Docker, Container
 services: app-service
 documentationcenter: 
@@ -12,18 +12,19 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/05/2017
-ms.author: naziml;wesmc
+ms.author: wesmc
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 47eec572272eb22cd6cd881874d7ecb87d7e08ad
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: da47bc9dd6fd980a37e2fdb57485858c2f1b2a73
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
-# <a name="run-a-custom-docker-hub-image-in-azure-web-apps-for-containers"></a>Ausführen eines benutzerdefinierten Image von Docker-Hubs in Azure-Web-Apps für Container #
+# <a name="run-a-custom-docker-hub-image-in-azure-web-app-for-containers"></a>Ausführen eines benutzerdefinierten Images von Docker-Hubs in Azure-Web-Apps für Container #
 
 App Service stellt vordefinierte Anwendungsstapel unter Linux mit Unterstützung für bestimmte Versionen bereit, z.B. PHP 7.0 und Node.js 4.5. Sie können auch ein benutzerdefiniertes Docker-Image verwenden, um Ihre Web-App in einem Anwendungsstapel bereitzustellen, der nicht bereits in Azure definiert ist. In diesem Schnellstartartikel wird erläutert, wie eine Web-App erstellt und ein Python-Image für diese bereitgestellt wird. Sie erstellen die Web-App mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
@@ -37,7 +38,7 @@ App Service stellt vordefinierte Anwendungsstapel unter Linux mit Unterstützung
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 
-Erstellen Sie eine [Web-App](../../app-service-web/app-service-web-overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp#create). Vergessen Sie nicht, `<app name>` durch einen eindeutigen App-Namen zu ersetzen.
+Erstellen Sie eine [Web-App](../app-service-web-overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp#create). Vergessen Sie nicht, `<app name>` durch einen eindeutigen App-Namen zu ersetzen.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name elnably/dockerimagetest

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: douglasl
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 2d0f9d7f32ad79f49d58165d734b9df4af862835
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 1943e87ffd991d099ab655af5a7d16d7f1608d22
 ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="getting-started-with-azure-sql-data-sync-preview"></a>Erste Schritte mit Azure SQL-Datensynchronisierung (Vorschauversion)
@@ -63,7 +63,7 @@ Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchroni
     2.  Wählen Sie im Abschnitt **Datenbank für Synchronisierungsmetadaten** aus, ob Sie eine neue Datenbank erstellen (empfohlen) oder eine vorhandene verwenden möchten.
 
         > [!NOTE]
-        > Es wird empfohlen, dass Sie eine neue, leere Datenbank als Datenbank für Synchronisierungsmetadaten erstellen. Durch die Datensynchronisierung werden Tabellen in Datenbanken erstellt und eine häufige Workload ausgeführt. Diese Datenbank wird automatisch als Datenbank für Synchronisierungsmetadaten für alle Synchronisierungsgruppen in der ausgewählten Region freigegeben. Sie können die Datenbank für Synchronisierungsmetadaten, ihren Namen und ihren Servicelevel nicht ändern, ohne sie zu löschen.
+        > Es wird empfohlen, dass Sie eine neue, leere Datenbank als Datenbank für Synchronisierungsmetadaten erstellen. Durch die Datensynchronisierung werden Tabellen in Datenbanken erstellt und eine häufige Workload ausgeführt. Diese Datenbank wird automatisch als Datenbank für Synchronisierungsmetadaten für alle Synchronisierungsgruppen in der ausgewählten Region freigegeben. Sie können die Datenbank für Synchronisierungsmetadaten oder ihren Namen nicht ändern, ohne sie zu löschen.
 
         Wenn Sie auf **Neue Datenbank** geklickt haben, klicken Sie auf **Neue Datenbank erstellen**. Das Blatt für die **SQL-Datenbank** wird geöffnet. Benennen und konfigurieren Sie die neue Datenbank auf dem Blatt **SQL-Datenbank**. Wählen Sie dann **OK**aus.
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
 ms.translationtype: HT
-ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
-ms.openlocfilehash: 53c142217c67465d29fa413f4edb4f96fcb4c6cc
+ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
+ms.openlocfilehash: d90b8c41d130526607adb035c5c6d4c02c5f7c4f
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen
@@ -156,7 +156,7 @@ Ein wichtiger Ansatz in Service Fabric ist das Wiederverwenden von vorhandenem C
 
 ![Migration zu Microservices][Image3]
 
-Es ist wichtig, erneut zu betonen, dass Sie **mit jeder beliebigen Phase beginnen und aufhören** können. Sie müssen nicht alle Phasen durchführen. Schauen wir uns nun Beispiele für jede dieser Phasen an.
+Es ist wichtig, darauf hinzuweisen, dass Sie **mit jeder dieser Phasen beginnen und aufhören** können. Sie müssen nicht mit der nächsten Phase fortfahren. Schauen wir uns nun Beispiele für jede dieser Phasen an.
 
 **Lift and Shift**: Sehr viele Unternehmen verschieben Anwendungen mit der „Lift and Shift“-Methode in Container. Dafür gibt es zwei Gründe:
 

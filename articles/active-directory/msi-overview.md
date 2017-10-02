@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/15/2017
 ms.author: skwan
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 891a895419a4fe882e01495231f33a1d79eb42a9
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: c18fd5d5b528dfbafa456b3702996b80c3a60a02
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 
@@ -57,7 +57,6 @@ Die folgenden Azure-Dienste unterstützen verwaltete Dienstidentitäten.
 | Dienst | Status | Date |
 | --- | --- | --- |
 | Azure Virtual Machines | Vorschau | September 2017 |
-| Skalierungsgruppen für virtuelle Azure-Computer | Vorschau | September 2017 |
 | Azure App Service | Vorschau | September 2017 |
 | Azure-Funktionen | Vorschau | September 2017 |
 
@@ -69,7 +68,6 @@ Die folgenden Dienste unterstützen die Azure AD-Authentifizierung und wurden mi
 | --- | --- | --- | --- |
 | Azure Resource Manager | https://management.azure.com/ | Verfügbar | September 2017 |
 | Azure Key Vault | https://vault.azure.net/ | Verfügbar | September 2017 |
-| Azure SQL | https://database.windows.net/ | Verfügbar | September 2017 |
 | Azure Data Lake | https://datalake.azure.net/ | Verfügbar | September 2017 |
 
 ## <a name="how-much-does-managed-service-identity-cost"></a>Wie viel kosten verwaltete Dienstidentitäten?
@@ -85,28 +83,35 @@ Wir freuen uns darauf, von Ihnen zu hören.
 
 ## <a name="try-managed-service-identity"></a>Verwaltete Dienstidentitäten testen
 
-Nachdem Sie die Grundlagen nun kennen, können Sie sich in einem Tutorial zu verwalteten Dienstidentitäten darüber informieren, wie Sie auf andere Azure-Ressourcen zugreifen.
+Testen Sie ein Tutorial für verwaltete Dienstidentitäten, um mehr über End-to-End-Szenarios für den Zugriff auf verschiedene Azure-Ressourcen zu erfahren:
 
-- [Zugreifen auf Azure Resource Manager mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-arm.md)
-- [Zugreifen auf Azure Resource Manager mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-arm.md)
-- [Zugreifen auf Azure Storage mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-storage.md)
-- [Zugreifen auf Azure Storage mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-storage.md)
-- [Zugreifen auf eine Nicht-Azure-Ressource mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-nonaad.md)
-- [Zugreifen auf eine Nicht-Azure-Ressource mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-nonaad.md)
-- [Verwaltete Dienstidentitäten mit Azure App Service oder Azure Functions](/azure/app-service/app-service-managed-service-identity)
+| Für MSI aktivierte Ressourcen | Lernen Sie Folgendes: |
+| ------- | -------- |
+| Azure-VM (Windows) | [Zugreifen auf Azure Resource Manager mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-arm.md) |
+|                    | [Zugreifen auf Azure Storage mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-storage.md) |
+|                    | [Access a non-Azure AD resource with a Windows VM Managed Service Identity and Azure Key Vault (Zugreifen auf eine Nicht-Azure-Ressource mit einer Windows-VM-MSI und Azure Key Vault)](msi-tutorial-windows-vm-access-nonaad.md) |
+| Azure-VM (Linux)   | [Zugreifen auf Azure Resource Manager mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-arm.md) |
+|                    | [Zugreifen auf Azure Storage mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-storage.md) |
+|                    | [Zugreifen auf eine Nicht-Azure-Ressource mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-nonaad.md) |
+| Azure App Service  | [Use Managed Service Identity with Azure App Service or Azure Functions (Verwenden von verwalteten Dienstidentitäten mit Azure App Service oder Azure Functions)](/azure/app-service/app-service-managed-service-identity) |
+| Azure Function     | [Use Managed Service Identity with Azure App Service or Azure Functions (Verwenden von verwalteten Dienstidentitäten mit Azure App Service oder Azure Functions)](/azure/app-service/app-service-managed-service-identity) |
 
+Wenn Sie nur die Grundlagen der Aktivierung von MSI für eine Azure-Ressource erlernen möchten:
 
+| Für Azure-Ressourcen | Aktivieren/Löschen von MSI mithilfe von: |
+| ------------------ | ------------------------------------ |
+| Azure-VM (Windows) | [Azure-Portal](msi-qs-configure-portal-windows-vm.md) |
+|                    | [PowerShell](msi-qs-configure-powershell-windows-vm.md) |
+|                    | [Azure-CLI](msi-qs-configure-cli-windows-vm.md)|
+|                    | [Azure-Ressourcen-Manager-Vorlagen](msi-qs-configure-template-windows-vm.md) |
 
+Erfahren Sie mehr über die Verwendung der rollenbasierten Zugriffssteuerung, um eine MSI-Berechtigung für den Zugriff auf andere Azure-Ressourcen zu erteilen:
 
-
-
-
-
-
-
-
-
-
+| Für MSI aktivierte Ressourcen | Zugriff auf andere Azure-Ressourcen zuweisen mithilfe von: |
+| ------------------------ | ---------------------------------------------------------- |
+| Azure-VM (Windows) | [Azure-Portal](msi-howto-assign-access-portal.md) |
+|                    | [PowerShell](msi-howto-assign-access-powershell.md) |
+|                    | [Azure-Befehlszeilenschnittstelle](msi-howto-assign-access-CLI.md) |
 
 
 

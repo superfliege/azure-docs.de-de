@@ -12,81 +12,54 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2017
+ms.date: 09/19/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 0ca652d31d6c50124f87916b4486d8279075f106
+ms.translationtype: HT
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: 2e5cce26bc8bebbe6b9f8ba3c3d03e8c3db8c87c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 09/21/2017
 
 ---
-# <a name="monitor-azure-cosmos-db-requests-usage-and-storage"></a>Überwachen von Anforderungen, Nutzung und Speicher in Azure Cosmos DB
-Sie können Ihre Azure Cosmos DB-Konten im [Azure-Portal](https://portal.azure.com/) überwachen. Für jedes Azure Cosmos DB-Konto sind sowohl Leistungsmetriken (wie Anforderungen und Serverfehler) als auch Nutzungsmetriken (wie belegter Speicher) verfügbar.
+# <a name="monitor-azure-cosmos-db"></a>Überwachen von Microsoft Azure Cosmos DB
+Sie können Ihre Azure Cosmos DB-Konten im [Azure-Portal](https://portal.azure.com/) überwachen. Für jedes Konto in Azure Cosmos DB ist eine vollständige Sammlung von Metriken verfügbar, mit der der Durchsatz, der Speicher, die Verfügbarkeit, die Latenz und die Konsistenz überwacht werden kann.
 
-Metriken können auf dem Blatt „Konto“, dem Blatt mit neuen Metriken oder in Azure Monitor überprüft werden.
+Metriken können auf der Seite „Konto“, der neuen Seite „Metriken“ oder in Azure Monitor überprüft werden.
 
-## <a name="view-performance-metrics-on-the-metrics-blade"></a>Anzeigen von Leistungsmetriken auf dem Blatt „Metriken“
+## <a name="view-performance-metrics-on-the-metrics-page"></a>Anzeigen von Leistungsmetriken auf der Seite „Metriken“
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, klicken Sie auf **Azure Cosmos DB** und dann auf den Namen des Azure Cosmos DB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
-2. Klicken Sie im Ressourcenmenü unter **Überwachung** auf **Metriken**.
+2. Wenn die neue Seite geladen wird, klicken Sie im Ressourcenmenü unter **Überwachung** auf **Metriken**.
+3. Wenn sich die Seite „Metriken“ öffnet, wählen Sie aus der Dropdownliste **Sammlung(en)** die Sammlung aus, die überprüft werden soll.
 
-Das Blatt „Metriken“ wird geöffnet, und Sie können die zu überprüfende Sammlung auswählen. Sie können die Metriken „Verfügbarkeit“, „Anforderungen“, „Durchsatz“ und „Speicher“ überprüfen und sie mit den Azure Cosmos DB-SLAs vergleichen.
+   Im Azure-Portal werden die verfügbaren Sammlungsmetriken angezeigt. Beachten Sie, dass Durchsatz-, Speicher-, Verfügbarkeits-, Latenz- und Konsistenzmetriken auf separaten Registerkarten bereitgestellt werden. Um zusätzliche Informationen zu den bereitgestellten Metriken zu erhalten, klicken Sie auf den Doppelpfeil oben rechts im Bereich „Metriken“.
+
+   ![Screenshot des Fokus „Überwachung“, in dem die Sammlung von Metriken angezeigt wird](./media/monitor-accounts/metrics-suite.png)
 
 ## <a name="view-performance-metrics-by-using-azure-monitoring"></a>Anzeigen von Leistungsmetriken mithilfe der Azure-Überwachung
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der Navigationsleiste auf **Überwachen**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der linken Leiste auf **Überwachen**.
 2. Klicken Sie im Ressourcenmenü auf **Metriken**.
-3. Wählen Sie im Fenster **Überwachung – Metriken** im Dropdownmenü **Ressourcengruppe** die Ressourcengruppe aus, die dem Azure Cosmos DB-Konto zugeordnet ist, das Sie überwachen möchten. 
+3. Wählen Sie im Fenster **Monitor - Metrics** (Überwachung – Metriken) im Dropdownmenü **Ressourcengruppe** die Ressourcengruppe aus, die dem Azure Cosmos DB-Konto zugeordnet ist, das Sie überwachen möchten. 
 4. Wählen Sie im Dropdownmenü **Ressource** das zu überwachende Datenbankkonto aus.
 5. Wählen Sie in der Liste mit **verfügbaren Metriken** die anzuzeigenden Metriken aus. Verwenden Sie die STRG-TASTE, um mehrere Metriken auszuwählen. 
 
-    Die Metriken werden im Fenster **Diagrammausgabe** angezeigt. 
-
-## <a name="view-performance-metrics-on-the-account-blade"></a>Anzeigen von Leistungsmetriken auf dem Blatt „Konto“
+## <a name="view-performance-metrics-on-the-account-page"></a>Anzeigen von Leistungsmetriken auf der Seite „Konto“
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, klicken Sie auf **Azure Cosmos DB** und dann auf den Namen des Azure Cosmos DB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
 2. Der Fokus **Überwachung** zeigt standardmäßig folgende Kacheln an:
    
    * Gesamtanforderungen des aktuellen Tags.
    * Verwendeter Speicher.
    
-   Wenn die Tabelle **Keine Daten verfügbar** anzeigt, und Sie glauben, dass Ihre Datenbank Daten enthält, nutzen Sie den Abschnitt [Problembehandlung](#troubleshooting) .
-   
    ![Screenshot des Fokus „Überwachung“, in dem die Gesamtzahl der Anforderungen und die Speichernutzung angezeigt werden](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
-3. Wenn Sie auf die Kachel **Anforderungen** oder **Nutzungskontingent** klicken, wird das detaillierte Blatt **Metrik** geöffnet.
-4. Das Blatt **Metrik** zeigt Details zu den ausgewählten Metriken.  Im oberen Bereich des Blatts befindet sich ein Diagramm der pro Stunde erfassten Anforderungen. Darunter befindet sich eine Tabelle, die Aggregierungswerte für gedrosselte Anforderungen und Anforderungen gesamt zeigt.  Das Fenster „Metrik“ zeigt auch eine Liste von Warnung, die definiert wurden. Sie ist gefiltert nach den im aktuellen Fenster „Metrik“ anzeigten Metriken (wenn Sie eine Reihe von Warnungen haben, dann werden auf diese Weise hier nur die relevanten gezeigt).   
-   
-   ![Screenshot des Blatts „Metrik“ mit gedrosselten Anforderungen](./media/monitor-accounts/documentdb-metric-blade.png)
-
-## <a name="customize-performance-metric-views-in-the-portal"></a>Anpassen von Leistungsmetrikansichten im Portal
-1. Klicken Sie zum Anpassen der in einem bestimmten Diagramm angezeigten Metriken mit der rechten Maustaste auf das Diagramm, um es auf dem Blatt **Metrik** zu öffnen, und klicken Sie dann auf **Diagramm bearbeiten**.  
-   ![Screenshot der Steuerelemente auf dem Blatt „Metrik“ mit hervorgehobener Option „Diagramm bearbeiten“](./media/monitor-accounts/madocdb3.png)
-2. Das Blatt **Diagramm bearbeiten** bietet Optionen zum Ändern der in diesem Diagramm angezeigten Metriken sowie des zugehörigen Zeitraums.  
-   ![Screenshot des Blatts "Diagramm bearbeiten"](./media/monitor-accounts/madocdb4.png)
-3. Sie können die im Detail angezeigten Metriken ändern, indem Sie einfach die verfügbaren Leistungsmetriken auswählen oder löschen und dann unten auf dem Blatt auf **OK** klicken.  
-4. Zum Ändern des Zeitraums wählen Sie einen anderen Zeitraum (z.B. **Benutzerdefiniert**) und klicken unten auf dem Blatt auf **OK**.  
-   
-   ![Screenshot des Details "Zeitraum" auf dem Blatt "Diagramm bearbeiten" mit Eingabe eines benutzerdefinierten Zeitraums](./media/monitor-accounts/madocdb5.png)
-
-## <a name="create-side-by-side-charts-in-the-portal"></a>Erstellen von nebeneinander stehenden Diagrammen im Portal
-Im Azure-Portal können Sie nebeneinander stehende Metrikdiagramme erstellen.  
-
-1. Klicken Sie zuerst mit der rechten Maustaste auf das Diagramm, das Sie kopieren möchten, und wählen Sie **Anpassen**aus.
-   
-   ![Screenshot des Diagramms "Anforderungen insgesamt" mit hervorgehobener Option "Anpassen"](./media/monitor-accounts/madocdb6.png)
-2. Klicken Sie im Menü auf **Klonen**, um das Detail zu kopieren, und klicken Sie dann auf **Anpassung fertig**.
-   
-   ![Screenshot des Diagramms "Anforderungen insgesamt" mit hervorgehobenen Optionen "Klonen" und "Anpassung fertig"](./media/monitor-accounts/madocdb7.png)  
-
-Sie können diesen Bereich jetzt wie jeden anderen Metrikbereich behandeln und ihn sowie die dort angezeigte Zeitspanne anpassen.  Auf diese Weise können Sie zwei verschiedene Metrikdiagramme gleichzeitig nebeneinander anzeigen.  
-    ![Screenshot des Diagramms "Anforderungen insgesamt" und des Diagramms "Anforderungen insgesamt – letzte Stunde"](./media/monitor-accounts/madocdb8.png)  
+3. Durch Klicken auf den Doppelpfeil in der oberen rechten Ecke der Kachel **Anforderungen** öffnet sich eine Detailseite namens **Metrik**.
+4. Auf der Seite **Metrik** werden die Details zur Gesamtzahl der Anforderungen angezeigt. 
 
 ## <a name="set-up-alerts-in-the-portal"></a>Einrichten von Warnungen im Portal
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, dann auf **Azure Cosmos DB** und anschließend auf den Namen des Azure Cosmos DB-Kontos, für das Sie Warnungen zu Leistungsmetriken einrichten möchten.
-2. Klicken Sie im Ressourcenmenü auf **Warnungsregeln** , um das Blatt „Warnungsregeln“ zu öffnen.  
+2. Klicken Sie im Ressourcenmenü auf **Warnungsregeln**, um die Seite „Warnungsregeln“ zu öffnen.  
    ![Screenshot des ausgewählten Warnungsregelnteils](./media/monitor-accounts/madocdb10.5.png)
-3. Klicken Sie auf dem Blatt **Warnungsregeln** auf **Warnung hinzufügen**.  
-   ![Screenshot des Blatts "Warnungsregeln" mit hervorgehobener Schaltfläche "Warnung hinzufügen"](./media/monitor-accounts/madocdb11.png)
-4. Legen Sie im Fenster **Warnungsregel hinzufügen** Folgendes fest:
+3. Klicken Sie auf der Seite **Warnungsregeln** auf **Warnung hinzufügen**.  
+   ![Screenshot der Seite „Warnungsregeln“ mit hervorgehobener Schaltfläche „Warnung hinzufügen“](./media/monitor-accounts/madocdb11.png)
+4. Geben Sie im Fenster **Warnungsregel hinzufügen** Folgendes an:
    
    * Den Namen der Warnungsregel, die Sie einrichten möchten.
    * Eine Beschreibung der neuen Warnungsregel.
@@ -94,9 +67,9 @@ Sie können diesen Bereich jetzt wie jeden anderen Metrikbereich behandeln und i
    * Bedingung, Schwellenwert und Zeitraum die festlegen, wann die Warnung aktiviert wird. Zum Beispiel mehr als 5 Serverfehler im Verlauf der letzten 15 Minuten.
    * Ob der Dienstadministrator oder Coadministratoren bei Auslösung der Warnung eine E-Mail erhalten.
    * Weitere E-Mail-Adressen für Warnbenachrichtigungen.  
-     ![Screenshot des Blatts "Warnungsregel hinzufügen"](./media/monitor-accounts/madocdb12.png)
+     ![Screenshot der Seite „Warnungsregel hinzufügen“](./media/monitor-accounts/madocdb12.png)
 
-## <a name="monitor-azure-cosmos-db-programatically"></a>Programmgesteuertes Überwachen von Azure Cosmos DB
+## <a name="monitor-azure-cosmos-db-programmatically"></a>Programmgesteuertes Überwachen von Azure Cosmos DB
 Die im Portal für Konten verfügbaren Metriken, z. B. für die Speichernutzung von Konten und die Gesamtzahl der Anforderungen, stehen über die DocumentDB-APIs nicht zur Verfügung. Sie können jedoch mithilfe der DocumentDB-APIs die Nutzungsdaten auf Sammlungsebene abrufen. Gehen Sie zum Abrufen von Daten auf Sammlungsebene wie folgt vor:
 
 * Führen Sie zur Verwendung der REST-API [einen GET-Befehl für die Sammlung](https://msdn.microsoft.com/library/mt489073.aspx)aus. Die Kontingent- und Nutzungsinformationen für die Sammlung werden in den Headern „x-ms-resource-quota“ und „x-ms-resource-usage“ in der Antwort zurückgegeben.
@@ -110,18 +83,7 @@ Abfragen zum Abrufen einzelner Metriken verwenden das folgende Format:
 
     https://management.azure.com/subscriptions/{SubecriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metrics?api-version=2015-04-08&$filter=%28name.value%20eq%20%27Total%20Requests%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202016-06-03T03%3A26%3A00.0000000Z%20and%20endTime%20eq%202016-06-10T03%3A26%3A00.0000000Z
 
-Weitere Informationen finden Sie unter [Retrieving Resource Metrics via the Azure Monitor REST API](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/02/23/retrieving-resource-metrics-via-the-azure-insights-api/)(Abrufen von Ressourcenmetriken über die Azure Monitor-REST-API). Beachten Sie, dass „Azure Inights“ in „Azure Monitor“ umbenannt wurde.  In diesem Blogbeitrag wird der ältere Name verwendet.
-
-## <a name="troubleshooting"></a>Problembehandlung
-Wenn in den Überwachungskacheln die Meldung **Keine Daten verfügbar** angezeigt wird, und Sie unlängst in der Datenbank Anforderungen durchgeführt oder Daten hinzugefügt haben, können Sie die Kacheln so ändern, dass die letzte Nutzung angezeigt wird.
-
-### <a name="edit-a-tile-to-refresh-current-data"></a>Bearbeiten einer Kachel zum Aktualisieren der aktuellen Daten
-1. Klicken Sie zum Anpassen der in einem bestimmten Detail angezeigten Metriken mit der rechten Maustaste auf das Diagramm, um das Blatt **Metrik** zu öffnen, und klicken Sie dann auf **Diagramm bearbeiten**.  
-   ![Screenshot der Steuerelemente auf dem Blatt „Metrik“ mit hervorgehobener Option „Diagramm bearbeiten“](./media/monitor-accounts/madocdb3.png)
-2. Klicken Sie auf dem Blatt **Diagramm bearbeiten** im Abschnitt **Zeitbereich** auf **letzte Stunde** und dann auf **OK**.  
-   ![Screenshot des Blatts „Diagramm bearbeiten“ mit ausgewählter Option „letzte Stunde“](./media/monitor-accounts/documentdb-no-available-data-past-hour.png)
-3. In der aktualisierten Kachel sollten nun die aktuellen Daten und Angaben zur Nutzung angezeigt werden.  
-   ![Screenshot der aktualisierten Kachel „Anforderungen insgesamt – letzte Stunde“](./media/monitor-accounts/documentdb-no-available-data-fixed.png)
+Weitere Informationen finden Sie unter [Retrieving Resource Metrics via the Azure Monitor REST API](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/02/23/retrieving-resource-metrics-via-the-azure-insights-api/)(Abrufen von Ressourcenmetriken über die Azure Monitor-REST-API). Beachten Sie, dass „Azure Insights“ in „Azure Monitor“ umbenannt wurde.  In diesem Blogbeitrag wird der ältere Name verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Kapazitätsplanung für Azure Cosmos DB finden Sie unter [Azure Cosmos DB capacity planner calculator](https://www.documentdb.com/capacityplanner) (Azure Cosmos DB Capacity Planner-Rechner).

@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/19/2017
 ms.author: elkuzmen
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 9fec51528d1203a7107558408ced42fa2b2b884a
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 8e4b3466143dc8b19df399913baca864b0af9bc0
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
 
-# <a name="use-managed-service-identity-msi-with-a-linux-vm-to-access-storage-credentials"></a>Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) mit einer Linux-VM für den Zugriff auf Speicheranmeldeinformationen
+# <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage"></a>Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Storage
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
 
@@ -31,9 +31,8 @@ In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität (Manag
 
 > [!div class="checklist"]
 > * Aktivieren von MSI auf einem virtuellen Linux-Computer 
-> * Erstellen eines neuen Speicherkontos
-> * Gewähren des Speicherzugriffs für den virtuellen Computer
-> * Abrufen eines Zugriffstokens für Ihr Speicherkonto durch Verwendung der VM-Identität zum Zugriff auf Speicherschlüssel 
+> * Gewähren des Zugriffs auf Speicherschlüssel in Azure Resource Manager für Ihren virtuellen Computer
+> * Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens zum Aufrufen von Speicherschlüsseln aus Resource Manager 
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -60,67 +59,80 @@ In diesem Tutorial wird ein neuer virtueller Linux-Computer erstellt. Sie könne
 
 Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Im Hintergrund werden durch das Aktivieren von MSI zwei Vorgänge ausgelöst: Auf dem virtuellen Computer wird die MSI-VM-Erweiterung installiert, und MSI wird für den virtuellen Computer aktiviert.  
 
-1. Wählen Sie den **virtuellen Computer** aus, auf dem Sie MSI aktivieren möchten.
-2. Klicken Sie in der links angezeigten Navigationsleiste auf **Konfiguration**.
-3. Die Option **Verwaltete Dienstidenität** wird angezeigt. Wählen Sie zum Registrieren und Aktivieren von MSI die Option **Ja** oder zum Deaktivieren „Nein“.
+1. Navigieren Sie zu der Ressourcengruppe des neuen virtuellen Computers, und wählen Sie den virtuellen Computer aus, den Sie im vorherigen Schritt erstellt haben.
+2. Klicken Sie in der VM-Einstellung links auf **Konfiguration**.
+3. Wählen Sie zum Registrieren und Aktivieren von MSI die Option **Ja** oder zum Deaktivieren „Nein“.
 4. Achten Sie darauf, zum Speichern der Konfiguration auf **Speichern** zu klicken.
 
     ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. Wenn Sie überprüfen möchten, welche Erweiterungen sich auf diesem **virtuellen Linux-Computer** befinden, klicken Sie auf **Erweiterungen**. Wenn MSI aktiviert ist, wird **ManagedIdentityExtensionforLinux** in der Liste angezeigt.
+5. Wenn Sie überprüfen möchten, welche Erweiterungen sich auf der VM befinden, klicken Sie auf **Erweiterungen**. Wenn MSI aktiviert ist, wird **ManagedIdentityExtensionforLinux** in der Liste angezeigt.
 
     ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
+## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto. 
 
-## <a name="create-a-new-storage-account"></a>Erstellen eines neuen Speicherkontos 
+Erstellen Sie ein Speicherkonto, sofern Sie über keines verfügen.  Sie können diesen Schritt auch überspringen und VM-MSI Zugriff auf die Schlüssel eines vorhandenen Speicherkontos gewähren. 
 
-Sie können Speicherschlüssel wie gewohnt bei Speichervorgängen verwenden. In diesem Beispiel liegt der Schwerpunkt auf dem Hochladen und Herunterladen von Blobs mithilfe der Azure-CLI. 
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+2. Klicken Sie auf **Speicher**, dann auf **Speicherkonto**, und anschließend wird ein neuer Bereich namens „Speicherkonto erstellen“ angezeigt.
+3. Geben Sie einen **Namen** für das Speicherkonto ein, das Sie später verwenden werden.  
+4. **Bereitstellungsmodell** und **Kontoart** sollten jeweils auf „Resource Manager“ und „Allgemein“ festgelegt werden. 
+5. Stellen Sie sicher, dass **Abonnement** und **Ressourcengruppe** dem entsprechen, was Sie bei der Erstellung Ihrer VM im vorherigen Schritt angegeben haben.
+6. Klicken Sie auf **Erstellen**.
 
-1. Wechseln Sie in die Seitenleiste, und wählen Sie **Speicher**.  
-2. Erstellen Sie ein neues **Speicherkonto**.  
-3. Wechseln Sie im **Bereitstellungsmodell** zum **Resource Manager**, und geben Sie als **Kontoart** die Option **Allgemein** an.  
-4. Achten Sie darauf, das **Abonnement** und die **Ressourcengruppe** zu verwenden, die Sie beim Erstellen des **virtuellen Linux-Computers** im vorangegangenen Schritt auch verwendet haben.
+    ![Erstellen eines neuen Speicherkontos](media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-    ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+## <a name="create-a-blob-container-in-the-storage-account"></a>Erstellen eines Blob-Containers im Speicherkonto
 
-## <a name="grant-your-vm-identity-access-to-use-storage-keys"></a>Gewähren des Zugriffs für die Verwendung von Speicherschlüsseln für die VM-Identität 
+Später werden wir eine Datei in das neue Speicherkonto hoch- und daraus herunterladen. Da Dateien Blob-Speicher erfordern, müssen wir einen Blob-Container erstellen, in dem die Datei gespeichert wird.
 
-Mithilfe von MSI kann der Code Zugriffstoken zur Authentifizierung von Ressourcen abrufen, die die Azure AD-Authentifizierung unterstützen.   
+1. Navigieren Sie zurück zum neu erstellten Speicherkonto.
+2. Klicken Sie auf der linken Navigationsleiste unter „Blob-Dienst“ auf den Link **Container**.
+3. Klicken Sie oben auf der Seite auf **+ Container**, und ein Bereich namens „Neuer Container“ wird geöffnet.
+4. Geben Sie dem Container einen Namen, wählen Sie eine Zugriffsebene aus, und klicken Sie dann auf **OK**. Der angegebene Name wird später in diesem Tutorial verwendet. 
+
+    ![Erstellen eines Speichercontainers](media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+
+## <a name="grant-your-vms-identity-access-to-use-storage-keys"></a>Gewähren des Zugriffs für die Verwendung von Speicherschlüsseln für die VM-Identität 
+
+Azure Storage unterstützt die Azure AD-Authentifizierung nicht nativ.  Sie können MSI jedoch zum Abrufen von Speicherschlüsseln aus dem Resource Manager verwenden und mithilfe dieser Schlüssel auf den Speicher zugreifen.  In diesem Schritt erteilen Sie VM-MSI Zugriff auf die Schlüssel für Ihr Speicherkonto.   
 
 1. Wechseln Sie zur Registerkarte für **Speicher**.  
 2. Wählen Sie das zuvor erstellte **Speicherkonto** aus.   
-3. Wechseln Sie linken Bereich zu **Zugriffssteuerung (IAM)**.  
+3. Wechseln Sie im linken Bereich zu **Zugriffssteuerung (IAM)**.  
 4. Klicken Sie dann auf **Hinzufügen**, um dem virtuellen Computer eine neue Rollenzuweisung hinzuzufügen, und wählen Sie unter **Rolle** die **Dienstrolle „Speicherkonto-Schlüsseloperator“**.  
 5. Wählen Sie in der nächsten Dropdownliste für die Option **Zugriff zuweisen zu** die Ressource **Virtueller Computer** aus.  
 6. Stellen Sie dann sicher, dass in der Dropdownliste **Abonnement** das richtige Abonnement aufgeführt wird. Wählen Sie unter **Ressourcengruppe** die Option **Alle Ressourcengruppen**.  
 7. Wählen Sie schließlich unter **Auswählen** in der Dropdownliste Ihren virtuellen Linux-Computer aus, und klicken Sie auf **Speichern**. 
     ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
 
-## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-call-azure-resource-manager"></a>Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens zum Aufrufen von Azure Resource Manager
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens zum Aufrufen von Azure Resource Manager
 
-Hierfür benötigen Sie das Bash-Terminal. [Hier](https://msdn.microsoft.com/commandline/wsl/install_guide) können Sie eine Linux-Distribution auswählen und herunterladen.
-
+Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client. Wenn Sie Windows verwenden, können Sie den SSH-Client im [Windows-Subsystem für Linux](https://msdn.microsoft.com/commandline/wsl/install_guide) verwenden.
 
 1. Navigieren Sie im Portal zu Ihrem virtuellen Linux-Computer, und klicken Sie in der **Übersicht** auf **Verbinden**. Sie werden aufgefordert, Bash zu verwenden. Notieren Sie sich die in der Benachrichtigung angegebene SSH und VM-IP. 
 2. Öffnen Sie Bash, und stellen Sie eine Verbindung her.  
 3. Geben Sie im Terminal Ihre **SSH** und den **virtuellen Computer** ein, mit dem Sie eine Verbindung herstellen möchten, zum Beispiel: „ssh admin@12.61.219.35“.  
 4. Als Nächstes werden Sie aufgefordert, Ihr **Kennwort** einzugeben, das Sie hinzugefügt haben, als Sie den **virtuellen Linux-Computer** erstellt haben. Anschließend sollten Sie erfolgreich angemeldet werden.  
-5. Dann können Sie mit CURL eine Anforderung erstellen, um das Autorisierungstoken für den virtuellen Linux-Computer abzurufen, bei dem Sie angemeldet sind. Der **Azure Resource Manager**-Endpunkt lautet https://management.azure.com.  
+5. Verwenden Sie CURL, um ein Zugriffstoken für Azure Resource Manager abzurufen.  
 
     Die CURL-Anforderung für das Zugriffstoken finden Sie weiter unten:
     
     ```bash
-    curl --data "authority= https://login.microsoftonline.com/<TENANT ID>&&resource=https://management.azure.com/"  -H Metadata:true http://localhost:50432/oauth2/token   
+    curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true    
     ```
     
     > [!NOTE]
-    > Stellen Sie sicher, dass die URL der Ressource, für die Sie den Zugriff anfordern, ordnungsgemäß mit einem Schrägstrich am Ende formatiert ist. Beispiel: https:<RESOURCE>/
+    > Der Wert des „resource“-Parameters muss exakt mit dem von Azure AD erwarteten Wert übereinstimmen. Wenn Sie die Azure Resource Manager-Ressourcen-ID verwenden, müssen Sie den nachgestellten Schrägstrich im URI verwenden.
     
-    ```powershell
+    ```bash
     {"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkhIQnlLVS0wRHFBcU1aaDZaRlBkMlZXYU90ZyIsImtpZCI6IkhIQnlLVS0wRHFBcU1aaDZaRlBkMlZXYU90ZyJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3LyIsImlhdCI6MTUwNDEyNjYyNywibmJmIjoxNTA0MTI2NjI3LCJleHAiOjE1MDQxMzA1MjcsImFpbyI6IlkyRmdZTGg2dENWSzRkSDlGWGtuZzgyQ21ZNVdBZ0E9IiwiYXBwaWQiOiI2ZjJmNmU2OS04MGExLTQ3NmEtOGRjZi1mOTgzZDZkMjUxYjgiLCJhcHBpZGFjciI6IjIiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwib2lkIjoiMTEyODJiZDgtMDNlMi00NGVhLTlmYjctZTQ1YjVmM2JmNzJlIiwic3ViIjoiMTEyODJiZDgtMDNlMi00NGVhLTlmYjctZTQ1YjVmM2JmNzJlIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidXRpIjoib0U5T3JVZFJMMHVKSEw4UFdvOEJBQSIsInZlciI6IjEuMCJ9.J6KS7b9kFgDkegJ-Vfff19LMnu3Cfps4dL2uNGucb5M76rgDM5f73VO-19wZSRhQPxWmZLETzN3SljnIMQMkYWncp79MVdBud_xqXYyLdQpGkNinpKVJhTo1j1dY27U_Cjl4yvvpBTrtH3OX9gG0GtQs7PBFTTLznqcH3JR9f-bTSEN4wUhalaIPHPciVDtJI9I24_vvMfVqxkXOo6gkL0mEP"}
      ```
     
-## <a name="the-curl-request-to-get-storage-keys-from-azure-resource-manager"></a>Die CURL-Anforderung zum Abrufen von Speicherschlüsseln aus Azure Resource Manager  
+## <a name="use-curl-to-get-storage-keys-from-azure-resource-manager"></a>Verwenden von CURL zum Abrufen von Speicherschlüsseln aus Azure Resource Manager  
+
+Jetzt rufen wir mit CURL und dem Zugriffstoken, das im vorherigen Abschnitt abgerufen wurde, Azure Resource Manager auf, um den Speicherzugriffsschlüssel abzurufen. Sobald wir den Speicherzugriffsschlüssel haben, können wir Vorgänge zum Up- und Download von Speicher aufrufen.
 
 > [!NOTE]
 > Bei dem Text in der URL wird die Groß-/Kleinschreibung beachtet. Wenn Sie also für Ihre Ressourcengruppen Groß- und Kleinschreibung verwenden, achten Sie darauf, diese Schreibung richtig widerzuspiegeln. Wichtig ist darüber hinaus die Tatsache, dass es sich um eine POST-Anforderung und nicht um eine GET-Anforderung handelt. Stellen Sie sicher, dass Sie mit -d einen Wert zum Erfassen einer Längenbeschränkung übergeben, der NULL sein kann.  
@@ -136,14 +148,13 @@ Die CURL-Antwort stellt die Liste der Schlüssel bereit:
 ```
 
 
-Erstellen Sie eine Datei, die hochgeladen werden soll. Dies ist eine Blob-Beispieldatei, die Sie in Ihrem Speicherkonto im erstellten Container mit Ihren Speicherschlüsseln hochladen können. 
-
-Dies ist auf einem virtuellen Linux-Computer mit dem folgenden Befehl möglich. 
+Erstellen Sie eine Beispiel-Blob-Datei, die in den Blob-Speichercontainer hochgeladen wird. Dies ist auf einem virtuellen Linux-Computer mit dem folgenden Befehl möglich. 
 
 ```bash
 echo "This is a test file." > test.txt
 ```
- Dann können Sie die Datei mithilfe der Azure-CLI hochladen und mit dem Speicherschlüssel authentifizieren.
+
+Als Nächstes laden Sie die Datei mithilfe der Azure-CLI hoch, und authentifizieren Sie die Datei mit dem Speicherschlüssel.
  
 
 ```azurecli-interactive

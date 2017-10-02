@@ -16,10 +16,10 @@ ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 6624d683edb548a65d07ab4012c599faaf940ed0
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: 5766ef2097b0da295d42e7c5909efc524049f418
 ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 
@@ -36,6 +36,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * [Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)
 > * Bereitstellen der Anwendung in einem Remotecluster
 > * [Konfigurieren von CI/CD mit Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [Set up monitoring and diagnostics for the application (Einrichten der Überwachung und Diagnose für die Anwendung)](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
@@ -54,6 +55,8 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. Kostenlos!
 
 Um Zugriff auf einen Partycluster zu erhalten, navigieren Sie zu dieser Website: http://aka.ms/tryservicefabric und befolgen Sie die Anweisungen. Sie benötigen ein Facebook- oder GitHub-Konto für den Zugriff auf einen Partycluster.
+
+Sie können einen eigenen Cluster statt des Partyclusters verwenden, wenn Sie möchten.  Das Web-Front-End von ASP.NET Core verwendet den Reverseproxy, um mit dem zustandsbehafteten Dienst-Back-End zu kommunizieren.  Für Partycluster und lokale Bereitstellungscluster ist der Reverseproxy standardmäßig aktiviert.  Wenn Sie die Beispielanwendung „Voting“ für Ihren eigenen Cluster bereitstellen, müssen Sie [den Reverseproxy im Cluster aktivieren](service-fabric-reverseproxy.md#setup-and-configuration).
 
 > [!NOTE]
 > Partycluster werden nicht gesichert, sodass Ihre Anwendungen und Daten, die Sie in diesem abgelegt haben, möglicherweise für andere Personen sichtbar sind. Stellen Sie nichts bereit, das nicht von anderen gesehen werden soll. Lesen Sie die Nutzungsbedingungen für alle weiteren Details.

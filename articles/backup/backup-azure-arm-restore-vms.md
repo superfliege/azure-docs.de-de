@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/15/2017
+ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: e1fe2b94d462a30f09cb23ab905542aa121ba46b
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: d234d9c97064e22a0ea882f199da326b0aae0674
 ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="use-azure-portal-to-restore-virtual-machines"></a>Wiederherstellen virtueller Computer über das Azure-Portal
@@ -164,7 +164,7 @@ Um den Vorgang während seiner Verarbeitung oder nach seinem Abschluss anzuzeige
 Sobald [das Wiederherstellen von Datenträgern abgeschlossen ist](#Track-the-restore-operation), können Sie die Vorlage verwenden, die im Rahmen des Wiederherstellungsvorgangs generiert wurde, um einen neuen virtuellen Computer mit einer anderen Konfiguration als der Sicherungskonfiguration zu erstellen oder um Namen von Ressourcen anzupassen, die beim Erstellen eines neuen virtuellen Computers über den Wiederherstellungspunkt erstellt wurden. 
 
 > [!NOTE]
-> Vorlagen werden als Teil der Wiederherstellung von Datenträgern für Wiederherstellungspunkte hinzugefügt, die nach dem 1. März 2017 erstellt werden. Sie gelten für nicht verschlüsselte virtuelle Computer und solche mit nicht verwalteten Datenträgern. Unterstützung für verschlüsselte virtuelle Computer und solche mit verwalteten Datenträgern wird in zukünftigen Versionen bereitgestellt. 
+> Vorlagen werden als Teil der Wiederherstellung von Datenträgern für Wiederherstellungspunkte hinzugefügt, die nach dem 1. März 2017 erstellt werden. Sie gelten für nicht verwaltete Datenträger-VMs. Die Unterstützung für verwaltete Datenträger-VMs wird in zukünftigen Versionen bereitgestellt. 
 >
 >
 

@@ -16,10 +16,10 @@ ms.date: 08/09/2017
 ms.author: ryanwi
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 07e55117d92e2780ea0c2ec24af04832f3f704a7
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: d0f67b1a63c36e878ed5f7c9aa1c45267e5b156c
 ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -39,6 +39,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * [Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)
 > * [Bereitstellen der Anwendung in einem Remotecluster](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * Konfigurieren von CI/CD mit Visual Studio Team Services
+> * [Set up monitoring and diagnostics for the application (Einrichten der Überwachung und Diagnose für die Anwendung)](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
@@ -159,10 +160,9 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen einer Releasedefinition
 > * Automatisches Bereitstellen und Durchführen von Upgrades einer Anwendung
 
-Nachdem Sie jetzt eine Anwendung bereitgestellt und Continuous Integration konfiguriert haben, können Sie folgende Aufgaben ausführen:
-- [Ausführen des Upgrades einer App](service-fabric-application-upgrade.md)
-- [Testen einer App](service-fabric-testability-overview.md) 
-- [Überwachen und Diagnostizieren](service-fabric-diagnostics-overview.md)
+Fahren Sie mit dem nächsten Tutorial fort:
+> [!div class="nextstepaction"]
+> [Set up monitoring and diagnostics for the application (Einrichten der Überwachung und Diagnose für die Anwendung)](service-fabric-tutorial-monitoring-aspnet.md) 
 
 
 <!-- Image References -->

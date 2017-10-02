@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
-ms.author: markgal;arunak;trinadhk;
+ms.author: markgal;arunak;trinadhk;sogup;
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: a765aeffbaa7fd94aa0ef8e3885c03e5b5098c6e
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 94b649d7949b6fbc2ec734afc955dabbfc84fc4d
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Fragen zum Azure Backup-Dienst
@@ -47,7 +47,7 @@ Nein. Der Tresor wird auf einer Abonnementebene erstellt und kann nach seiner Er
 Alle vorhandenen Sicherungstresore im [klassischen Portal](https://manage.windowsazure.com) werden weiterhin unterstützt. Sie können das klassische Portal aber nicht mehr nutzen, um neue Sicherungstresore bereitzustellen. Microsoft empfiehlt die Verwendung von Recovery Services-Tresoren für alle Bereitstellungen, da zukünftige Verbesserungen nur für Recovery Services-Tresore gelten. Wenn Sie versuchen, einen Sicherungstresor im klassischen Portal zu erstellen, werden Sie an das [Azure-Portal](https://portal.azure.com) weitergeleitet.
 
 ### <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>Kann ich einen Backup-Tresor zu einem Recovery Services-Tresor migrieren? <br/>
-Nein, leider nicht. Der Inhalt eines Backup-Tresors kann nicht zu einem Recovery Services-Tresor migriert werden. Wir arbeiten daran, diese Funktion hinzuzufügen, aber sie steht noch nicht zur Verfügung.
+Ja, Sie können nun ein Upgrade für Ihren Sicherungstresor auf einen Recovery Services-Tresor durchführen. Ausführliche Informationen finden Sie im Artikel [Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md).
 
 ### <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Ich habe meine klassischen virtuellen Computer in einem Sicherungstresor gesichert. Kann ich meine virtuellen Computer vom klassischen Modus in den Resource Manager-Modus migrieren und diese in einem Recovery Services-Tresor schützen?
 Klassische VM-Wiederherstellungspunkte in einem Sicherungstresor migrieren nicht automatisch zu Recovery Services-Tresoren, wenn Sie die virtuellen Computer vom klassischen Modus zum Resource Manager-Modus migrieren. Führen Sie die folgenden Schritte aus, um Ihre VM-Sicherungen zu übertragen:

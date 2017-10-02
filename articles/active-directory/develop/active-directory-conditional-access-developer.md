@@ -15,10 +15,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: b8fac1b258535fd668b45acbe2c1c8580fb8a340
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: ea4421f7b22cf60b2c3e42b59057162ad56f412e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -34,7 +34,7 @@ Weitere Informationen über alle Funktionen des bedingten Zugriffs finden Sie un
 
 In diesem Artikel konzentrieren wir uns auf die Bedeutung des bedingten Zugriffs für Entwickler, die Apps für Azure AD erstellen.  Dabei werden Kenntnisse über [einzel](active-directory-integrating-applications.md)- und [mehrinstanzenfähige](active-directory-devhowto-multi-tenant-overview.md) Apps sowie über [allgemeine Authentifizierungsmuster](active-directory-authentication-scenarios.md) vorausgesetzt.
 
-Wir analysieren dabei die Auswirkungen des Zugriffs auf Ressourcen, über die Sie keine Kontrolle haben, auf die aber Richtlinien für den bedingten Zugriff angewendet werden.  Darüber hinaus untersuchen wir die Auswirkungen des bedingten Zugriffs auf den „Im Auftrag von“-Ablauf, auf Web-Apps, auf den Zugriff auf die Microsoft Graph und auf das Aufrufen von APIs.
+Wir analysieren dabei die Auswirkungen des Zugriffs auf Ressourcen, über die Sie keine Kontrolle haben, auf die aber Richtlinien für den bedingten Zugriff angewendet werden.  Darüber hinaus untersuchen wir die Auswirkungen des bedingten Zugriffs auf den „Im Auftrag von“-Ablauf, auf Web-Apps, auf den Zugriff auf Microsoft Graph und auf das Aufrufen von APIs.
 
 ## <a name="how-does-conditional-access-impact-an-app"></a>Welche Auswirkungen hat der bedingte Zugriff auf eine App?
 
@@ -73,7 +73,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 Entwickler können diese Anforderung annehmen und an eine neue Anforderung an Azure AD anfügen.  Beim Durchlaufen dieses Zustands werden die Endbenutzer zum Ausführen aller erforderlichen Aktionen zur Einhaltung der Richtlinie für den bedingten Zugriff aufgefordert. In den folgenden Szenarien werden Einzelheiten des Fehlers und das Extrahieren des Parameters erläutert. 
 
-## <a name="scenarios"></a>Szenarios
+## <a name="scenarios"></a>Szenarien
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -90,7 +90,7 @@ Die folgenden Informationen gelten nur in diesen speziellen Szenarien:
 
 In den folgenden Abschnitten werden häufiger auftretende Szenarien behandelt, die etwas komplexer sind.  Das grundlegende Prinzip dabei ist, dass Richtlinien für den bedingten Zugriff zu dem Zeitpunkt ausgewertet werden, zu dem das Token für einen Dienst mit einer Richtlinie für den bedingten Zugriff angefordert wird. Dies gilt jedoch nicht, wenn der Zugriff über Microsoft Graph erfolgt.
 
-### <a name="scenario-app-accessing-the-microsoft-graph"></a>Szenario: Apps mit Zugriff auf Microsoft Graph
+### <a name="scenario-app-accessing-microsoft-graph"></a>Szenario: Apps mit Zugriff auf Microsoft Graph
 
 In diesem Szenario wird der Fall behandelt, bei dem eine Web-App Zugriff auf Microsoft Graph anfordert. In diesem Fall könnte die Richtlinie für den bedingten Zugriff SharePoint, Exchange oder einem anderen Dienst, auf den als Workload über Microsoft Graph zugegriffen wird, zugewiesen sein.  In diesem Beispiel nehmen wir an, dass es eine Richtlinie für den bedingten Zugriff auf SharePoint Online ist.
 

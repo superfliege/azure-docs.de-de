@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: a2fabc56463c8cbf0b8a76b7a84369ed8e535486
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 49cc01e54158b68e440f1efbfe2f8b0d076a5692
 ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 
@@ -37,7 +37,11 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes bereits erstellt ha
 - Einen virtuellen Computer, auf dem der Konfigurationsserver installiert wird
 
 ## <a name="configuration-server-minimum-requirements"></a>Mindestanforderungen für den Konfigurationsserver
-Die Konfigurationsserversoftware muss auf einem hoch verfügbaren virtuellen VMware-Computer bereitgestellt werden. Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanforderungen für einen Konfigurationsserver.
+Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanforderungen für einen Konfigurationsserver.
+
+> [!IMPORTANT]
+> Wenn Sie einen Konfigurationsserver für den Schutz von virtuellen VMware-Computern bereitstellen, wird empfohlen, diesen als virtuellen **Hochverfügbarkeitscomputer (HA)** bereitzustellen.
+
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 > [!NOTE]

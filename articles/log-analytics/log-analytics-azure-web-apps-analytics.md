@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 90d0b7e3f49daa33ab8c617d07ba9098cdda751f
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 9ef26d4b6bfd92925a70b7bbdf8979e287c73445
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Anzeigen von Analysedaten für Metriken über alle Azure-Web-App-Ressourcen
 
 ![Symbol für Web-Apps](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
-Die Lösung Azure-Web-Apps-Analyse (Vorschau) bietet Erkenntnisse über Ihre [Azure-Web-Apps](../app-service-web/app-service-web-overview.md), indem verschiedene Metriken über alle Azure-Web-App-Ressourcen gesammelt werden. Mit der Lösung können Sie Metrikdaten für Web-App-Ressourcen analysieren und nach diesen suchen.
+Die Lösung Azure-Web-Apps-Analyse (Vorschau) bietet Erkenntnisse über Ihre [Azure-Web-Apps](../app-service/app-service-web-overview.md), indem verschiedene Metriken über alle Azure-Web-App-Ressourcen gesammelt werden. Mit der Lösung können Sie Metrikdaten für Web-App-Ressourcen analysieren und nach diesen suchen.
 
 Mit der Lösung können Sie Folgendes anzeigen:
 
@@ -98,8 +98,8 @@ Klicken Sie auf die Kachel **Azure-Web-Apps-Analyse**, um das Dashboard **Azure-
 | --- | --- |
 | Azure-Web-Apps |   |
 | Anforderungstrends für Web-Apps | Zeigt ein Liniendiagramm des Anforderungstrends für Web-Apps für den ausgewählten Datumsbereich sowie eine Liste der häufigsten zehn Webanforderungen. Klicken Sie auf das Liniendiagramm, um eine Protokollsuche nach <code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* (MetricName=Requests OR MetricName=Http*) &#124; measure avg(Average) by MetricName interval 1HOUR</code> auszuführen. <br>Klicken Sie auf ein Webanforderungselement, um eine Protokollsuche nach dem Webanforderungs-Metriktrend dieser Anforderung auszuführen. |
-| Web-Apps-Antwortzeit | Zeigt ein Liniendiagramm der Web-Apps-Antwortzeit für den ausgewählten Datumsbereich. Zeigt außerdem eine Liste der ersten zehn Web-Apps-Antwortzeiten an. Klicken Sie auf das Diagramm, um eine Protokollsuche nach <code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* MetricName="AverageResponseTime" &#124; measure avg(Average) by Resource interval 1HOUR</code> auszuführen.<br> Klicken Sie auf eine Web-App, um eine Protokollsuche auszuführen, bei der die Antwortzeiten für die Web-App zurückgegeben werden. |
-| Web-Apps-Datenverkehr | Zeigt ein Liniendiagramm für Web Apps-Datenverkehr in MB an, und listet den Datenverkehr der obersten Web-Apps auf. Klicken Sie auf das Diagramm, um eine Protokollsuche nach <code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"*  MetricName=BytesSent OR BytesReceived &#124; measure sum(Average) by Resource interval 1HOUR</code> auszuführen.<br> Dabei werden alle Web-Apps mit Datenverkehr während der letzten Minute angezeigt. Klicken Sie auf eine Web-App, um eine Protokollsuche auszuführen, die die empfangenen und gesendeten Bytes für die Web-App anzeigt. |
+| Web-Apps-Antwortzeit | Zeigt ein Liniendiagramm der Web-Apps-Antwortzeit für den ausgewählten Datumsbereich. Zeigt außerdem eine Liste der ersten zehn Web-Apps-Antwortzeiten an. Klicken Sie auf das Diagramm, um eine Protokollsuche nach <code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* MetricName="AverageResponseTime" &#124; measure avg(Average) by Resource interval 1HOUR</code> durchzuführen.<br> Klicken Sie auf eine Web-App, um eine Protokollsuche auszuführen, bei der die Antwortzeiten für die Web-App zurückgegeben werden. |
+| Web-Apps-Datenverkehr | Zeigt ein Liniendiagramm für Web Apps-Datenverkehr in MB an, und listet den Datenverkehr der obersten Web-Apps auf. Klicken Sie auf das Diagramm, um eine Protokollsuche nach <code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"*  MetricName=BytesSent OR BytesReceived &#124; measure sum(Average) by Resource interval 1HOUR</code> durchzuführen.<br> Dabei werden alle Web-Apps mit Datenverkehr während der letzten Minute angezeigt. Klicken Sie auf eine Web-App, um eine Protokollsuche auszuführen, die die empfangenen und gesendeten Bytes für die Web-App anzeigt. |
 | Azure App Service-Pläne |   |
 | App Service-Pläne mit CPU-Auslastung &gt; 80 % | Zeigt die Gesamtanzahl der App Service-Pläne an, die eine CPU-Auslastung über 80 % aufweisen, und listet die obersten zehn App Service-Pläne nach CPU-Auslastung auf. Klicken Sie auf den Gesamtbereich, um eine Protokollsuche nach <code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SERVERFARMS/"* MetricName=CpuPercentage &#124; measure Avg(Average) by Resource</code> auszuführen.<br> Dabei wird eine Liste Ihrer App Service-Pläne mit ihrer durchschnittlichen CPU-Auslastung angezeigt. Klicken Sie auf einen App Service-Plan, um eine Protokollsuche auszuführen, die dessen durchschnittliche CPU-Auslastung anzeigt. |
 | App Service-Pläne mit Speicherauslastung &gt; 80 % | Zeigt die Gesamtanzahl der App Service-Pläne an, die eine Speicherauslastung über 80 % aufweisen, und listet die obersten zehn App Service-Pläne nach Speicherauslastung auf. Klicken Sie auf den Gesamtbereich, um eine Protokollsuche nach <code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SERVERFARMS/"* MetricName=MemoryPercentage &#124; measure Avg(Average) by Resource</code> auszuführen.<br> Dabei wird eine Liste Ihrer App Service-Pläne mit ihrer durchschnittlichen Speicherauslastung angezeigt. Klicken Sie auf einen App Service-Plan, um eine Protokollsuche auszuführen, die dessen durchschnittliche Speicherauslastung anzeigt. |
