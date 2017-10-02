@@ -3,8 +3,8 @@ title: Erste Schritte mit Azure AD Privileged Identity Management | Microsoft Do
 description: "Erfahren Sie, wie Sie mit der Anwendung Azure Active Directory Privileged Identity Management privilegierte Identitäten im Azure-Portal verwalten."
 services: active-directory
 documentationcenter: 
-author: billmath
-manager: femila
+author: barclayn
+manager: mbaldwin
 editor: 
 ms.assetid: 2299db7d-bee7-40d0-b3c6-8d628ac61071
 ms.service: active-directory
@@ -12,22 +12,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
-ms.author: billmath
-ms.custom: pim ; H1Hack27Feb2017
+ms.date: 09/17/2017
+ms.author: barclayn
+ms.custom: pim
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 17cdff033cc3dbb199d11c3b8ac1acbc92499877
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 0f9f09ca8fb30d494433ed8d26b808d1b5d4d0b1
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 # <a name="start-using-azure-ad-privileged-identity-management"></a>Erste Schritte mit Azure AD Privileged Identity Management
-Mit Azure Active Directory (AD) Privileged Identity Management können Sie den Zugriff innerhalb Ihrer Organisation verwalten, steuern und überwachen. Dazu zählt der Zugriff auf Ressourcen in Azure AD und anderen Microsoft-Onlinediensten wie Office 365 oder Microsoft Intune.
+
+Mit Azure Active Directory (AD) Privileged Identity Management können Sie den Zugriff innerhalb Ihrer Organisation verwalten, steuern und überwachen. Dazu zählt der Zugriff auf Azure-Ressourcen, Azure AD und andere Microsoft-Onlinedienste wie Office 365 oder Microsoft Intune.
 
 Dieser Artikel beschreibt, wie Sie die Azure AD PIM-App zu Ihrem Azure-Portaldashboard hinzufügen.
 
 ## <a name="add-the-privileged-identity-management-application"></a>Hinzufügen der Anwendung Privileged Identity Management
+
 Bevor Sie Azure AD Privileged Identity Management verwenden können, müssen Sie die Anwendung zum Dashboard in Ihrem Azure-Portal hinzufügen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Verzeichnisses an.
@@ -35,18 +37,20 @@ Bevor Sie Azure AD Privileged Identity Management verwenden können, müssen Sie
 3. Wählen Sie **Weitere Dienste** aus, und verwenden Sie das Textfeld „Filter“, um nach **Azure AD Privileged Identity Management** zu suchen.
 4. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie dann auf **Erstellen**. Die Anwendung Privileged Identity Management wird geöffnet.
 
-Wenn Sie die erste Person sind, die Azure AD Privileged Identity Management in Ihrem Verzeichnis verwendet, werden Ihnen automatisch die Rollen **Sicherheitsadministrator** und **Administrator für privilegierte Rollen** im Verzeichnis zugewiesen. Nur Administratoren für privilegierte Rollen können Rollenzuweisungen von Benutzern verwalten. Darüber hinaus können Sie den [Sicherheits-Assistenten](active-directory-privileged-identity-management-security-wizard.md) ausführen. Dieser Assistent führt Sie durch die Erstermittlung und -zuweisung.
+Wenn Sie die erste Person sind, die Azure AD Privileged Identity Management in Ihrem Verzeichnis verwendet, werden Ihnen automatisch die Rollen **Sicherheitsadministrator** und **Administrator für privilegierte Rollen** im Verzeichnis zugewiesen. Nur Administratoren für privilegierte Rollen können Azure AD-Verzeichnisrollenzuweisungen von Benutzern verwalten. Darüber hinaus können Sie den [Sicherheits-Assistenten](active-directory-privileged-identity-management-security-wizard.md) ausführen. Dieser Assistent führt Sie durch die Erstermittlung und -zuweisung.
 
 ## <a name="navigate-to-your-tasks"></a>Navigieren zu Ihren Aufgaben
+
 Nachdem Azure AD Privileged Identity Management eingerichtet wurde, wird beim Öffnen der Anwendung immer das Blatt für die Navigation angezeigt. Verwenden Sie dieses Blatt für Ihre Aufgaben der Identitätsverwaltung.
 
 ![Aufgaben der obersten Ebene für PIM – Screenshot](./media/active-directory-privileged-identity-management-getting-started/PIM_Tasks_New.png)
 
-* Über **Meine Rollen** gelangen Sie zu einer Liste mit Rollen, die Ihnen zugewiesen sind. In diesem Abschnitt aktivieren Sie alle Rollen, zu deren Nutzung Sie berechtigt sind.
-* **Anforderungen genehmigen** (Vorschau) zeigt eine Liste mit ausstehenden Aktivierungsanforderungen von Benutzern in Ihrem Verzeichnis. [Weitere Informationen.](./privileged-identity-management/azure-ad-pim-approval-workflow.md)
-* **Ausstehende Anforderungen** (Vorschau) zeigt alle aktuellen Anforderungen an, die noch aktiviert werden müssen.
-* Über **Zugriff überprüfen** gelangen Sie zu ausstehenden Zugriffsüberprüfungen, die durchgeführt werden müssen. Dabei spielt es keine Rolle, ob Sie den Zugriff für sich selbst oder für eine andere Person überprüfen.
-* Bei **Azure AD-Verzeichnisrollen** (unter dem Abschnitt „Verwalten“) handelt es sich um das Dashboard für Administratoren für privilegierte Rollen. Es dient unter anderem zum Verwalten von Rollenzuweisungen, Ändern der Einstellungen für die Rollenaktivierung und zum Starten von Zugriffsüberprüfungen. Die Optionen in diesem Dashboard sind für alle Benutzer deaktiviert, die keine privilegierten Rollenadministratoren sind.
+- Unter **My Roles** (Meine Rollen) wird eine Liste mit berechtigten und aktiven Rollen angezeigt, die Ihnen zugewiesen sind. Hier können Sie zugewiesene berechtigte Rollen aktivieren.
+- **Anforderungen genehmigen (Vorschauversion)** zeigt eine Liste mit Anforderungen zum Aktivieren berechtigter Azure AD-Verzeichnisrollen nach Benutzern in Ihrem Verzeichnis an, für deren Genehmigung Sie zuständig sind. [Weitere Informationen.](./privileged-identity-management/azure-ad-pim-approval-workflow.md)
+- **Ausstehende Anforderungen (Vorschauversion)** zeigt Ihre ausstehenden Anforderungen zum Aktivieren berechtigter Rollenzuweisungen an.
+- Unter **Zugriff überprüfen** wird eine Liste mit aktiven Zugriffsüberprüfungen angezeigt, die Ihnen zugewiesen sind. Dabei spielt es keine Rolle, ob Sie den Zugriff für sich selbst oder für eine andere Person überprüfen.
+- Im Verwaltungsabschnitt des linken Navigationsmenüs befindet sich unter **Azure AD-Verzeichnisrollen** das Dashboard für Administratoren für privilegierte Rollen. Es dient unter anderem zum Verwalten von Rollenzuweisungen, zum Ändern der Einstellungen für die Rollenaktivierung sowie zum Starten von Zugriffsüberprüfungen. Für Benutzer, die kein Administrator für privilegierte Rollen sind, ist dieses Dashboard deaktiviert. Diese Benutzer haben Zugriff auf ein spezielles Dashboard namens „Meine Ansicht“. Auf dem Dashboard „Meine Ansicht“ werden nur Informationen zu dem Benutzer angezeigt, der auf das Dashboard zugreift (also keine Informationen für den gesamten Mandanten).
+- Im Verwaltungsabschnitt des linken Navigationsmenüs wird unter **Azure Resource roles** (Azure-Ressourcenrollen) (Vorschauversion) eine Liste mit Ihren ausgewählten Abonnementressourcen angezeigt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Die Übersicht über [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md) enthält weitere Details zur Verwaltung des administrativen Zugriffs in Ihrer Organisation.

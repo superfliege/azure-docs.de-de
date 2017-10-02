@@ -5,7 +5,7 @@ Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal
 
 [![Cloud Shell](./media/cloud-shell-try-it/cloud-shell-menu.png)](https://portal.azure.com)
 
-Die Schaltfläche öffnet eine interaktive Shell, die Sie verwenden können, um alle Schritte in diesem Thema auszuführen:
+Die Schaltfläche öffnet eine interaktive Shell, mit der Sie alle Schritte in diesem Thema ausführen können:
 
 [![Screenshot des Fensters „Cloud Shell“ im Portal](./media/cloud-shell-try-it/cloud-shell-safari.png)](https://portal.azure.com)
 

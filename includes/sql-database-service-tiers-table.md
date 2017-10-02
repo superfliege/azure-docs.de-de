@@ -19,7 +19,7 @@ sql-database-single-database-resources.md
 ### <a name="standard-service-tier"></a>Standard-Dienstebene
 | **Leistungsstufe** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|---:|
-| Max. DTU-Anzahl | 10 | 20 | 50 | 100 |
+| Max. DTU-Anzahl** | 10 | 20 | 50 | 100 |
 | Inbegriffener Speicher (GB) | 250 | 250 | 250 | 250 |
 | Max. Speicherlösungen (GB)* | 250 | 250 | 250 | 250, 500, 750, 1024 |
 | Max. In-Memory-OLTP-Speicher (GB) | N/V | N/V | N/V | N/V |
@@ -31,7 +31,7 @@ sql-database-single-database-resources.md
 ### <a name="standard-service-tier-continued"></a>Standard-Dienstebene (Fortsetzung)
 | **Leistungsstufe** | **S4** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|---:|
-| Max. DTU-Anzahl | 200 | 400 | 800 | 1600 | 3000 |
+| Max. DTU-Anzahl** | 200 | 400 | 800 | 1600 | 3000 |
 | Inbegriffener Speicher (GB) | 250 | 250 | 250 | 250 | 250 |
 | Max. Speicherlösungen (GB)* | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
 | Max. In-Memory-OLTP-Speicher (GB) | N/V | N/V | N/V | N/V |N/V |
@@ -67,5 +67,7 @@ sql-database-single-database-resources.md
 > [!IMPORTANT]
 > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
 >
->\* Im Premium-Tarif ist eine Speicherkapazität von mehr als 1 TB folgenden Regionen verfügbar: „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“, „Europa, Westen“, „Deutschland, Mitte“, „Asien, Südosten“, „Japan, Osten“, „Australien, Osten“, „Kanada, Mitte“ und „Kanada, Osten“. Siehe [P11-P15: Aktuelle Einschränkungen](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+>\* Im Premium-Tarif ist eine Speicherkapazität von mehr als 1 TB in folgenden Regionen verfügbar: „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“, „Europa, Westen“, „Deutschland, Mitte“, „Asien, Südosten“, „Japan, Osten“, „Australien, Osten“, „Kanada, Mitte“ und „Kanada, Osten“. Siehe [Aktuelle Einschränkungen für P11–P15](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > 
+>\*\* Die maximale Anzahl von eDTUs pro Datenbank beginnt im Standard-Tarif ab 200 eDTUs und befindet sich in der Vorschauphase.
+>

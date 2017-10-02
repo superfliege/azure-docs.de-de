@@ -8,6 +8,8 @@ Auf dieser Seite erfahren Sie, wie Microsoft Azure die beiden Wartungsarten durc
 
 Auf einem virtuellen Computer ausgeführte Anwendungen können Informationen zu anstehenden Updates mithilfe des Azure-Metadatendiensts für [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) oder [Linux] (../articles/virtual-machines/linux/instance-metadata-service.md) sammeln.
 
+Weitere Informationen zum Verwalten der geplanten Wartung finden Sie unter „Behandlung von Benachrichtigungen der geplanten Wartung“ für [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) oder [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
+
 ## <a name="in-place-vm-migration"></a>Direkte Migration virtueller Computer
 
 Wenn Updates keinen vollständigen Neustart erfordern, wird eine direkte Livemigration verwendet. Während des Updates wird der virtuelle Computer für etwa 30 Sekunden angehalten. Dabei bleibt der Speicher im Arbeitsspeicher erhalten, während in der Hostumgebung die erforderlichen Updates und Patches angewendet werden. Danach wird die Ausführung des virtuellen Computers fortgesetzt, und die Uhr des virtuellen Computers wird automatisch synchronisiert.

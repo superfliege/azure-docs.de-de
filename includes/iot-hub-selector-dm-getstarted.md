@@ -1,6 +1,7 @@
 > [!div class="op_single_selector"]
 > * [Device: Node.js Service: Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
 > * [Device: Node.js Service: C#](../articles/iot-hub/iot-hub-csharp-node-device-management-get-started.md)
+> * [Gerät: C#-Dienst: C#](../articles/iot-hub/iot-hub-csharp-csharp-device-management-get-started.md)
 > * [Gerät: Java Dienst: Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
 
 Back-End-Apps können Azure IoT Hub-Grundtypen (etwa [Gerätezwillingsmethode][lnk-devtwin] und [direkte Methode][lnk-c2dmethod]) verwenden, um Geräteverwaltungsaktionen auf Geräten remote zu starten und zu überwachen. In diesem Tutorial wird veranschaulicht, wie eine Back-End-App und eine Gerät-App zusammen verwendet werden können, um einen Remoteneustart des Geräts mit IoT Hub zu initiieren und zu überwachen.
