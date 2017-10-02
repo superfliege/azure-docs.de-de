@@ -16,10 +16,10 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: b1390ba45f52473129dce6b904690b040af8f7e2
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 85e24587f07a4dc65a2f116499f3f7e00c3ac2b8
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="manage-your-azure-ad-directory"></a>Verwalten Ihres Azure AD-Verzeichnisses
@@ -59,12 +59,14 @@ Falls Sie noch nicht über ein Abonnement für einen Microsoft-Clouddienst verf�
 
 ### <a name="how-to-change-the-default-directory-for-a-subscription"></a>Ändern des Standardverzeichnisses für ein Abonnement
 
-1. Melden Sie sich beim [Azure-Kontocenter](https://account.windowsazure.com/Home/Index) mit einem Konto an, bei dem es sich um den Kontoadministrator für das Abonnement handelt, um den Abonnementbesitz zu übertragen.
+1. Melden Sie sich beim [Azure-Kontocenter](https://account.azure.com/Subscriptions) mit einem Konto an, bei dem es sich um den Kontoadministrator für das Abonnement handelt, um den Abonnementbesitz zu übertragen.
 2. Achten Sie darauf, dass sich der Benutzer, der als der neue Abonnementbesitzer fungieren soll, im entsprechenden Verzeichnis befindet.
 3. Klicken Sie auf **Abonnement übertragen**.
 4. Geben Sie den Empfänger an. Der Empfänger erhält automatisch eine E-Mail mit einem Link für den Vorgang zum Akzeptieren.
 5. Der Empfänger klickt auf den Link und folgt den Anweisungen. Außerdem gibt er seine Zahlungsinformationen ein. Wenn der Empfänger erfolgreich ist, wird das Abonnement übertragen. 
 6. Wenn die Übertragung des Abonnementbesitzes erfolgreich ist, wird das Standardverzeichnis des Abonnements wird in das Verzeichnis geändert, in dem sich der Benutzer befindet.
+
+Weitere Informationen finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md).
 
 ### <a name="manage-the-default-directory-in-azure"></a>Verwalten des Standardverzeichnisses in Azure
 Wenn Sie sich für Azure registrieren, wird Ihrem Abonnement Azure AD-Standardverzeichnis zugeordnet. Für die Verwendung von Azure AD fallen keine Kosten an, und bei Ihren Verzeichnissen handelt es sich um eine kostenlose Ressource. Es stehen auch kostenpflichtige Azure AD-Dienste zur Verfügung. Diese werden jedoch separat lizenziert und bieten zusätzliche Funktionen wie Unternehmensbranding bei der Anmeldung oder eine Self-Service-Kennwortzurücksetzung. Anstelle der Standarddomäne „*.onmicrosoft.com“ kann auch eine benutzerdefinierte Domäne mit einem DNS-Namen erstellt werden.

@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 283c9903501a1e497e4dde81146d21edb869e9e2
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 081cf2bde44a0b55508cc7f0197fa7f8e378189b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="how-azure-subscriptions-are-associated-with-azure-active-directory"></a>Beziehung zwischen Azure-Abonnements und Azure Active Directory
@@ -48,13 +48,14 @@ Den Azure AD-Dienst erhalten Sie kostenlos, wenn Sie sich für einen dieser Clou
 ## <a name="to-add-an-existing-subscription-to-your-azure-ad-directory"></a>So fügen Sie Ihrem Azure AD-Verzeichnis ein vorhandenes Abonnement hinzu
 Sie müssen sich mit einem Konto anmelden, das sowohl in dem aktuellen Verzeichnis, dem das Abonnement zugeordnet ist, und in dem Verzeichnis, das Sie hinzufügen möchten, vorhanden ist. 
 
-1. Melden Sie sich beim [Azure-Kontocenter](https://account.windowsazure.com/Home/Index) mit einem Konto an, bei dem es sich um den Kontoadministrator für das Abonnement handelt, dessen Abonnementbesitz Sie übertragen möchten.
+1. Melden Sie sich beim [Azure-Kontocenter](https://account.azure.com/Subscriptions) mit einem Konto an, bei dem es sich um den Kontoadministrator für das Abonnement handelt, dessen Abonnementbesitz Sie übertragen möchten.
 2. Achten Sie darauf, dass sich der Benutzer, der als der neue Abonnementbesitzer fungieren soll, im entsprechenden Verzeichnis befindet.
 3. Klicken Sie auf **Abonnement übertragen**.
 4. Geben Sie den Empfänger an. Der Empfänger erhält automatisch eine E-Mail mit einem Link für den Vorgang zum Akzeptieren.
 5. Der Empfänger klickt auf den Link und folgt den Anweisungen. Außerdem gibt er seine Zahlungsinformationen ein. Wenn der Empfänger erfolgreich ist, wird das Abonnement übertragen. 
 6. Das Standardverzeichnis des Abonnements wird in das Verzeichnis geändert, in dem sich der Benutzer befindet.
 
+Weitere Informationen finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md).
 
 ## <a name="suggestions-to-manage-both-a-subscription-and-a-directory"></a>Vorschläge für die Verwaltung eines Abonnements und eines Verzeichnisses
 Die Administratorrollen für ein Azure-Abonnement verwalten Ressourcen, die an das Azure-Abonnement gebunden sind. In diesem Abschnitt werden die Unterschiede zwischen Azure-Abonnementadministratoren und Azure AD-Verzeichnisadministratoren erläutert. Informationen zu Administratorrollen sowie weitere Vorschläge für die Verwaltung Ihres Abonnements mithilfe dieser Rollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles.md).
