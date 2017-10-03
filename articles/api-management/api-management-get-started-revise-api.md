@@ -56,7 +56,7 @@ In dieser exemplarischen Vorgehensweise fügen wir eine neue Revision hinzu, fü
 
 3. Klicken Sie auf **+ Vorgang hinzufügen**.
 4. Legen Sie den neuen Vorgang auf **POST** und Name und Anzeigename des Vorgangs auf **Feedback** fest.
-5. Speichern** **Sie Ihren neuen Vorgang.
+5. **Speichern** Sie Ihren neuen Vorgang.
 6. Sie haben nun eine Änderung an **Revision 2** vorgenommen. Wechseln Sie mithilfe der **Revisionsauswahl** im oberen Seitenbereich zu **Revision 1** zurück.
 7. Wie Sie sehen, ist der neue Vorgang in **Revision 1** nicht vorhanden. 
 

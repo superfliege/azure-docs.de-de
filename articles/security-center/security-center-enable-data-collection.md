@@ -101,7 +101,7 @@ Im Anschluss finden Sie eine vollständige Aufschlüsselung der Sicherheits- und
    ![Ereignis-IDs][4]
 
 So wählen Sie Ihre Filterrichtlinie:
-1. Wählen Sie auf dem Blatt mit der Sicherheitsrichtlinie und den Einstellungen** **unter **Sicherheitsereignisse** Ihre Filterrichtlinie aus.
+1. Wählen Sie auf dem Blatt mit der **Sicherheitsrichtlinie und den Einstellungen** unter **Sicherheitsereignisse** Ihre Filterrichtlinie aus.
 2. Wählen Sie **Speichern** aus.
 
    ![Auswählen der Filterrichtlinie][5]

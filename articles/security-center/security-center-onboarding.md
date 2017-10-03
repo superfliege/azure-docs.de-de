@@ -87,7 +87,7 @@ Security Center kann den Sicherheitsstatus Ihrer Azure-fremden Computer überwac
 
   ![Hinzufügen eines Azure-fremden Computers][3]
 
-Gegebenenfalls bereits vorhandene Arbeitsbereiche werden unter **Add new Non-Azure computers** (Neue Azure-fremde Computer hinzufügen) aufgeführt. Sie können Computer einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich erstellen. Klicken Sie zum Erstellen eines neuen Arbeitsbereichs auf den Link** **zum Hinzufügen eines neuen Arbeitsbereichs.
+Gegebenenfalls bereits vorhandene Arbeitsbereiche werden unter **Add new Non-Azure computers** (Neue Azure-fremde Computer hinzufügen) aufgeführt. Sie können Computer einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich erstellen. Klicken Sie zum Erstellen eines neuen Arbeitsbereichs auf den Link zum **Hinzufügen eines neuen Arbeitsbereichs**.
 
 Beide Methoden werden hier Schritt für Schritt erläutert:
 
@@ -96,7 +96,7 @@ Beide Methoden werden hier Schritt für Schritt erläutert:
 
 **Erstellen eines neuen Arbeitsbereichs und Hinzufügen eines Computers**
 
-1. Klicken Sie unter **Add new non-Azure computers** (Neue Azure-fremde Computer hinzufügen) auf den Link** **zum Hinzufügen eines neuen Arbeitsbereichs.
+1. Klicken Sie unter **Add new non-Azure computers** (Neue Azure-fremde Computer hinzufügen) auf den Link zum **Hinzufügen eines neuen Arbeitsbereichs**.
 
    ![Hinzufügen eines neuen Arbeitsbereichs][4]
 

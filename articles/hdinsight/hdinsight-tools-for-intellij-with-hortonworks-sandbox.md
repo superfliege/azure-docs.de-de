@@ -130,7 +130,7 @@ Sie müssen über eine vorhandene IntelliJ-Anwendung verfügen, bevor Sie einen 
 So richten Sie einen Link zu einem Emulator ein:
 
 1. Öffnen Sie das Projekt in IntelliJ.
-2. Wählen Sie im Menü **View ** (Ansicht) die Option **Tool Windows** (Toolfenster) und dann **Azure Explorer** aus.
+2. Wählen Sie im Menü **View** (Ansicht) die Option **Tool Windows** (Toolfenster) und dann **Azure Explorer** aus.
 3. Erweitern Sie **Azure**, klicken Sie mit der rechten Maustaste auf **HDInsight**, und klicken Sie dann auf **Link an Emulator** (Mit einem Emulator verknüpfen).
 4. Geben Sie im Dialogfeld **Link A New Emulator** (Verknüpfung mit neuem Emulator herstellen) das Kennwort ein, das Sie für das Stammkonto der Hortonworks Sandbox festgelegt haben. Geben Sie anschließend ähnliche Werte ein wie die im folgenden Screenshot verwendeten. Wählen Sie anschließend **OK** aus. 
 

@@ -139,7 +139,7 @@ Ihr Notification Hub ist jetzt für die Zusammenarbeit mit WNS konfiguriert. Sie
    
     Dadurch wird gewährleistet, dass der Kanal-URI bei jedem Start der Anwendung beim Notification Hub registriert wird.
 
-6. Drücken Sie**** F5, um die App auszuführen. Ein Dialogfeld mit dem Registrierungsschlüssel wird angezeigt.
+6. Drücken Sie **F5** , um die App auszuführen. Ein Dialogfeld mit dem Registrierungsschlüssel wird angezeigt.
 
 Ihre App kann jetzt Popupbenachrichtigungen empfangen.
 
@@ -207,7 +207,7 @@ Gehen Sie wie folgt vor, um Benachrichtigungen unter Verwendung einer .NET-Konso
          SendNotificationAsync();
          Console.ReadLine();
 
-7. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Konsolenanwendungsprojekt, und wählen Sie **Als Startprojekt festlegen** aus, um es als Startprojekt festzulegen. Drücken Sie dann**** F5, um die Anwendung auszuführen.
+7. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Konsolenanwendungsprojekt, und wählen Sie **Als Startprojekt festlegen** aus, um es als Startprojekt festzulegen. Drücken Sie dann **F5** , um die Anwendung auszuführen.
    
     Sie erhalten eine Popupbenachrichtigung auf allen registrierten Geräten. Durch Auswählen des Popupbanners wird die App geladen.
 
