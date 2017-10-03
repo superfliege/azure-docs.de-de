@@ -52,7 +52,7 @@ Der zweite Befehl entfernt den Datenträger DataDisk3 vom virtuellen Computer.
 
 Der letzte Befehl aktualisiert den Status des virtuellen Computers und schließt dadurch das Entfernen des Datenträgers ab.
 
-```powershell
+```azurepowershell-interactive
 $VirtualMachine = Get-AzureRmVM -ResourceGroupName "RG11" -Name "MyVM07"
 Remove-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk3"
 Update-AzureRmVM -ResourceGroupName "RG11" -Name "MyVM07" -VM $VirtualMachine

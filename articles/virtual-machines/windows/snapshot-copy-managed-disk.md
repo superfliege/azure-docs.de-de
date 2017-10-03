@@ -54,7 +54,7 @@ Die folgenden Schritte veranschaulichen das Abrufen des zu kopierenden VHD-Daten
 
 1. Legen Sie einige Parameter fest. 
 
- ```powershell
+ ```azurepowershell-interactive
 $resourceGroupName = 'myResourceGroup' 
 $location = 'southeastasia' 
 $dataDiskName = 'ContosoMD_datadisk1' 
@@ -68,17 +68,17 @@ $snapshotName = 'ContosoMD_datadisk1_snapshot1'
 
 2. Rufen Sie den VHD-Datenträger ab, der kopiert werden soll.
 
- ```powershell
+ ```azurepowershell-interactive
 $disk = Get-AzureRmDisk -ResourceGroupName $resourceGroupName -DiskName $dataDiskName 
 ```
 3. Erstellen Sie die Momentaufnahmenkonfigurationen. 
 
- ```powershell
+ ```azurepowershell-interactive
 $snapshot =  New-AzureRmSnapshotConfig -SourceUri $disk.Id -CreateOption Copy -Location $location 
 ```
 4. Erstellen Sie die Momentaufnahme.
 
- ```powershell
+ ```azurepowershell-interactive
 New-AzureRmSnapshot -Snapshot $snapshot -SnapshotName $snapshotName -ResourceGroupName $resourceGroupName 
 ```
 Wenn Sie vorhaben, die Momentaufnahme zum Erstellen eines verwalteten Datenträgers zu nutzen und sie an eine VM anzufügen, die hohe Leistung benötigt, verwenden Sie mit dem Cmdlet „New-AzureRmSnapshot“ den Parameter `-AccountType Premium_LRS`. Der Parameter erstellt die Momentaufnahme so, dass sie als verwalteter Premium-Datenträger gespeichert wird. Verwaltete Premium-Datenträger sind teurer als die Standardvariante. Vergewissern Sie sich daher, dass Sie Premium benötigen, ehe Sie diesen Parameter angeben.
