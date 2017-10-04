@@ -108,7 +108,6 @@ Dieses erste Skript erstellt zusammen mit der Azure Stack-Zertifizierungsstelle 
 
 9. Wählen Sie im Feld **Azure Stack-Standorte** den Standort aus, der der Region entspricht, in der die Bereitstellung erfolgen soll. Wählen Sie z.B. **lokal** aus. Klicken Sie auf **Weiter**.
 
-
     ![App Service in Azure Stack – Abonnementauswahl][6]
 
 10. Geben Sie den **Ressourcengruppennamen** für Ihre App Service-Bereitstellung ein. Dieser ist standardmäßig auf **APPSERVICE-LOCAL** festgelegt.
