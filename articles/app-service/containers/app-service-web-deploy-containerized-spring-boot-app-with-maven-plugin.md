@@ -222,7 +222,7 @@ Für das Maven-Plug-In können mehrere Werte angepasst werden. Eine ausführlich
 
 Element | Beschreibung
 ---|---|---
-`<version>` | Gibt die Version des [Maven-Plug-Ins für Azure-Web-Apps] an. Überprüfen Sie die im [zentralen Maven-Respository](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22) angegebene Version, um sicherzustellen, dass Sie die neueste Version verwenden.
+`<version>` | Gibt die Version des [Maven-Plug-In für Azure-Web-Apps] an. Überprüfen Sie die im [zentralen Maven-Respository](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22) angegebene Version, um sicherzustellen, dass Sie die neueste Version verwenden.
 `<authentication>` | Gibt die Authentifizierungsinformationen für Azure an, die in diesem Beispiel ein `<serverId>`-Element enthalten, das `azure-auth` enthält. Maven nutzt diesen Wert, um die Azure-Dienstprinzipalwerte in Ihrer Maven-Datei *settings.xml* abzurufen, die Sie weiter oben in diesem Artikel festgelegt haben.
 `<resourceGroup>` | Gibt die Zielressourcengruppe an (in diesem Beispiel: `maven-plugin`). Wenn die Ressourcengruppe nicht bereits vorhanden ist, wird sie während der Bereitstellung erstellt.
 `<appName>` | Gibt den Zielnamen für Ihre Web-App an. In diesem Beispiel lautet der Zielname `maven-linux-app-${maven.build.timestamp}`. Dabei wird das Suffix `${maven.build.timestamp}` angehängt, um Konflikte zu vermeiden. (Der Zeitstempel ist optional. Sie können eine beliebige eindeutige Zeichenfolge für den App-Namen angeben.)
@@ -305,7 +305,7 @@ The embedded Tomcat server in the sample Spring Boot application is configured t
 
 Weitere Informationen zu den verschiedenen in diesem Artikel besprochenen Technologien finden Sie in den folgenden Artikeln:
 
-* [Maven Plugin for Azure Web Apps] (Maven-Plug-In für Azure-Web-Apps)
+* [Maven-Plug-In für Azure-Web-Apps] (Maven-Plug-In für Azure-Web-Apps)
 
 * [Anmelden bei Azure über die Azure-Befehlszeilenschnittstelle (CLI)](/azure/xplat-cli-connect)
 
@@ -315,25 +315,25 @@ Weitere Informationen zu den verschiedenen in diesem Artikel besprochenen Techno
 
 * [Maven Settings Reference](https://maven.apache.org/settings.html) (Referenz zu Maven-Einstellungen)
 
-* [Docker plugin for Maven] (Docker-Plug-In für Maven)
+* [Docker-Plug-In für Maven] (Docker-Plug-In für Maven)
 
 <!-- URL List -->
 
-[Azure CLI (Command-Line Interface, Befehlszeilenschnittstelle)]: /cli/azure/overview
+[Azure-Befehlszeilenschnittstelle (CLI)]: /cli/azure/overview
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 [Azure-Portal]: https://portal.azure.com/
 [Docker]: https://www.docker.com/
-[Docker plugin for Maven]: https://github.com/spotify/docker-maven-plugin (Docker-Plug-In für Maven)
-[Kostenloses Azure-Konto]: https://azure.microsoft.com/pricing/free-trial/
-[Git]: https://github.com/
+[Docker-Plug-In für Maven]: https://github.com/spotify/docker-maven-plugin (Docker-Plug-In für Maven)
+[kostenloses Azure-Konto]: https://azure.microsoft.com/pricing/free-trial/
+[Git-Client]: https://github.com/
 [Java Developer Kit (JDK)]: http://www.oracle.com/technetwork/java/javase/downloads/
 [Java Tools for Visual Studio Team Services]: https://java.visualstudio.com/
 [Maven]: http://maven.apache.org/
-[Vorteile für MSDN-Abonnenten]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
+[MSDN-Abonnentenvorteile]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [Spring Boot]: http://projects.spring.io/spring-boot/
-[Spring Boot on Docker Getting Started]: https://github.com/spring-guides/gs-spring-boot-docker (Erste Schritte mit Spring Boot in Docker)
+[Erste Schritte mit Spring Boot in Docker]: https://github.com/spring-guides/gs-spring-boot-docker (Erste Schritte mit Spring Boot in Docker)
 [Spring Framework]: https://spring.io/
-[Maven Plugin for Azure Web Apps]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin (Maven-Plug-In für Azure-Web-Apps)
+[Maven-Plug-In für Azure-Web-Apps]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin (Maven-Plug-In für Azure-Web-Apps)
 
 <!-- IMG List -->
 

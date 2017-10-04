@@ -214,18 +214,18 @@ Weitere Informationen zum Konfigurieren zusätzlicher Einstellungen für Ihre We
 
 [Azure App Service]: https://azure.microsoft.com/services/app-service/
 [Azure Container Service]: https://azure.microsoft.com/services/container-service/
-[Azure Developer Center für Java]: https://azure.microsoft.com/develop/java/
+[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 [Azure-Portal]: https://portal.azure.com/
 [Konfigurieren von Web-Apps in Azure App Service]: /azure/app-service/web-sites-configure
 [Bereitstellen der App in Azure App Service mithilfe von FTP/S]: https://docs.microsoft.com/azure/app-service/app-service-deploy-ftp
-[Kostenloses Azure-Konto]: https://azure.microsoft.com/pricing/free-trial/
-[Git]: https://github.com/
+[kostenloses Azure-Konto]: https://azure.microsoft.com/pricing/free-trial/
+[Git-Client]: https://github.com/
 [Java Developer Kit (JDK)]: http://www.oracle.com/technetwork/java/javase/downloads/
 [Java-Tools für Visual Studio Team Services]: https://java.visualstudio.com/
 [Maven]: http://maven.apache.org/
-[Vorteile für MSDN-Abonnenten]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
+[MSDN-Abonnentenvorteile]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [Spring Boot]: http://projects.spring.io/spring-boot/
-[Erste Schritte mit Spring Boot]: https://github.com/spring-guides/gs-spring-boot
+[Spring Boot Getting Started]: https://github.com/spring-guides/gs-spring-boot
 [Spring-Framework]: https://spring.io/
 
 <!-- IMG List -->

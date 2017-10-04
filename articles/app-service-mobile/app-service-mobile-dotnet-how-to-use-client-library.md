@@ -628,7 +628,7 @@ Zwei Authentifizierungsflüsse werden unterstützt: *vom Client verwalteter* und
 > [!NOTE]
 > In Ihren Produktions-Apps sollten Sie einen vom Client verwalteten Fluss nutzen.
 
-Zum Einrichten der Authentifizierung müssen Sie Ihre App bei mindestens einem Identitätsanbieter registrieren.  Der Identitätsanbieter generiert eine Client-ID und einen geheimen Clientschlüssel für Ihre App.  Diese Werte werden in Ihrem Back-End festgelegt, um die Authentifizierung/Autorisierung über Azure App Service zu aktivieren.  Weitere Informationen finden Sie in den detaillierten Anweisungen im Tutorial [Hinzufügen von Authentifizierung zu Ihrer App].
+Zum Einrichten der Authentifizierung müssen Sie Ihre App bei mindestens einem Identitätsanbieter registrieren.  Der Identitätsanbieter generiert eine Client-ID und einen geheimen Clientschlüssel für Ihre App.  Diese Werte werden in Ihrem Back-End festgelegt, um die Authentifizierung/Autorisierung über Azure App Service zu aktivieren.  Weitere Informationen finden Sie in den detaillierten Anweisungen im Tutorial [Authentifizierung zu Ihrer App hinzufügen].
 
 In diesem Abschnitt werden die folgenden Themen behandelt:
 
@@ -1093,11 +1093,11 @@ public class MyHandler : DelegatingHandler
 [11]: http://www.symbolsource.org/Public/Wiki/Using
 [12]: https://msdn.microsoft.com/en-us/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
-[Hinzufügen von Authentifizierung zur App]: app-service-mobile-windows-store-dotnet-get-started-users.md
-[Offlinedatensynchronisierung in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
-[Hinzufügen von Pushbenachrichtigungen zur App]: app-service-mobile-windows-store-dotnet-get-started-push.md
+[Authentifizierung zu Ihrer App hinzufügen]: app-service-mobile-windows-store-dotnet-get-started-users.md
+[Synchronisieren von Offlinedaten in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
+[Hinzufügen von Pushbenachrichtigungen zu Ihrer App]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Registrieren Ihrer App für die Verwendung einer Microsoft-Kontoanmeldung]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Konfigurieren von App Service für eine Active Directory-Anmeldung]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[So konfigurieren Sie Ihre App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
 
 <!-- Microsoft URLs. -->
 [MobileServiceCollection]: https://msdn.microsoft.com/en-us/library/azure/dn250636(v=azure.10).aspx
