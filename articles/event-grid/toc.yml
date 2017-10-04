@@ -32,6 +32,8 @@
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/eventgrid
+    - name: PowerShell
+      href: /powershell/module/azurerm.eventgrid
     - name: REST
       href: /rest/api/eventgrid
     - name: Abonnementschema

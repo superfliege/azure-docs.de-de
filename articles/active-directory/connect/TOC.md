@@ -43,7 +43,7 @@
 ##### [Smart Lockout](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [Häufig gestellte Fragen](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [Problembehandlung](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
-##### [Ausführliche Informationen zur Sicherheit](active-directory-aadconnect-pta-security-deep-dive.md)
+##### [Ausführliche Informationen zur Sicherheit](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)
 ### [Unterstützung mehrerer Domänen für den Verbund](active-directory-aadconnect-multiple-domains.md)
 ### [Automatisches Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [Verwenden eines SAML 2.0-Identitätsanbieters für einmaliges Anmelden](active-directory-aadconnect-federation-saml-idp.md)

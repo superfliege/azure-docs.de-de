@@ -248,12 +248,12 @@ Das folgende Beispiel zeigt, wie „float“ zum Übergeben von Parametern an ei
     "properties": {
         ...
         "parameters": {
-        "custom1": {
-            "value": "[float('3.0')]"
-        },
-        "custom2": {
-            "value": "[float(3)]"
-        },
+            "custom1": {
+                "value": "[float('3.0')]"
+            },
+            "custom2": {
+                "value": "[float(3)]"
+            },
 ```
 
 <a id="int" />

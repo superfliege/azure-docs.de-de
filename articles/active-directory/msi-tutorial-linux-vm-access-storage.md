@@ -138,7 +138,7 @@ Jetzt rufen wir mit CURL und dem Zugriffstoken, das im vorherigen Abschnitt abge
 > Bei dem Text in der URL wird die Groß-/Kleinschreibung beachtet. Wenn Sie also für Ihre Ressourcengruppen Groß- und Kleinschreibung verwenden, achten Sie darauf, diese Schreibung richtig widerzuspiegeln. Wichtig ist darüber hinaus die Tatsache, dass es sich um eine POST-Anforderung und nicht um eine GET-Anforderung handelt. Stellen Sie sicher, dass Sie mit -d einen Wert zum Erfassen einer Längenbeschränkung übergeben, der NULL sein kann.  
 
 ```bash 
-curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/listKeys?api-version=2016-12-01 –request POST -d"" -H "Authorization: Bearer <ACCESS TOKEN>" 
+curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/listKeys?api-version=2016-12-01 –-request POST -d "" -H "Authorization: Bearer <ACCESS TOKEN>" 
 ```
 
 Die CURL-Antwort stellt die Liste der Schlüssel bereit:  
@@ -158,11 +158,7 @@ Als Nächstes laden Sie die Datei mithilfe der Azure-CLI hoch, und authentifizie
  
 
 ```azurecli-interactive
- az storage blob upload --container-name 
-                        --file 
-                        --name 
-                        [--account-name] 
-                        [--account-key] 
+az storage blob upload -c <CONTAINER NAME> -n test.txt -f test.txt --account-name <STORAGE ACCOUNT NAME> --account-key <STORAGE ACCOUNT KEY>
 ```
 
 Antwort: 
@@ -180,11 +176,7 @@ Zudem können Sie die Datei mithilfe der Azure-CLI herunterladen und mit dem Spe
 Anforderung: 
 
 ```azurecli-interactive
-az storage blob download --container-name
-                         --file 
-                         --name 
-                         [--account-name]
-                         [--account-key]  
+az storage blob download -c <CONTAINER NAME> -n test.txt -f test-download.txt --account-name <STORAGE ACCOUNT NAME> --account-key <STORAGE ACCOUNT KEY>
 ```
 
 Antwort: 
@@ -193,18 +185,18 @@ Antwort:
 {
   "content": null,
   "metadata": {},
-  "name": "testblob",
+  "name": "test.txt",
   "properties": {
     "appendBlobCommittedBlockCount": null,
     "blobType": "BlockBlob",
-    "contentLength": 16,
-    "contentRange": "bytes 0-15/16",
+    "contentLength": 21,
+    "contentRange": "bytes 0-20/21",
     "contentSettings": {
       "cacheControl": null,
       "contentDisposition": null,
       "contentEncoding": null,
       "contentLanguage": null,
-      "contentMd5": "Aryr///Rb+D8JQ8IytleDA==",
+      "contentMd5": "LSghAvpnElYyfUdn7CO8aw==",
       "contentType": "text/plain"
     },
     "copy": {
@@ -215,8 +207,8 @@ Antwort:
       "status": null,
       "statusDescription": null
     },
-    "etag": "\"0x8D4F9929765C139\"",
-    "lastModified": "2017-09-12T03:58:56+00:00",
+    "etag": "\"0x8D5067F30D0C283\"",
+    "lastModified": "2017-09-28T14:42:49+00:00",
     "lease": {
       "duration": null,
       "state": "available",

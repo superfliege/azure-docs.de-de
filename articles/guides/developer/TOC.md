@@ -1,11 +1,5 @@
 # Übersicht
 ## [Entwicklerhandbuch](azure-developer-guide.md) 
-### [Was ist Azure?](azure-developer-guide.md#what-is-azure)
-### [Wo beginne ich?](azure-developer-guide.md#where-do-i-start)
-### [Azure-Regionen](azure-developer-guide.md#azure-regions)
-### [Wie verwalte ich meine Anwendungen und Projekte?](azure-developer-guide.md#how-do-i-manage-my-applications-and-projects)
-### [Grundlegendes zu Konten, Abonnements und Abrechnung](azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)
-
 ## [Übersicht über Azure-Dienste](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
 ## [Portalübersicht](https://docs.microsoft.com/azure/azure-portal-overview?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
 ## [SDKs und Tools](https://docs.microsoft.com/azure/index#pivot=sdkstools)
@@ -108,7 +102,7 @@
 ### [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/)
 ### [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README)
 ## Befehlszeilenschnittstellen
-### [Azure-CLI](https://docs.microsoft.com/cli/azure/)
+### [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/)
 ### [Azure PowerShell](https://docs.microsoft.com/powershell/)
 ## [Abrechnung](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview)
 
