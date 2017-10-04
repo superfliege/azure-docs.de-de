@@ -151,7 +151,7 @@ In diesem Abschnitt verwenden Sie die Werte Ihres Azure-Dienstprinzipals zum Kon
    `<client>` | Enthält den Wert `appId` aus dem Dienstprinzipal.
    `<tenant>` | Enthält den Wert `tenant` aus dem Dienstprinzipal.
    `<key>` | Enthält den Wert `password` aus dem Dienstprinzipal.
-   `<environment>` | Definiert die Azure-Zielcloudumgebung (in diesem Beispiel: `AZURE`). (Eine vollständige Liste der Umgebungen finden Sie in der Dokumentation zum [Maven-Plug-In für Azure-Web-Apps].)
+   `<environment>` | Definiert die Azure-Zielcloudumgebung (in diesem Beispiel: `AZURE`). (Eine vollständige Liste der Umgebungen finden Sie in der Dokumentation zum [Maven-Plug-Ins für Azure-Web-Apps].)
 
 1. Speichern und schließen Sie die Datei *settings.xml*.
 
@@ -193,7 +193,7 @@ In diesem Abschnitt verwenden Sie die Werte Ihres Azure-Dienstprinzipals zum Kon
    </plugin>
    ```
 
-Für das Maven-Plug-In können mehrere Werte angepasst werden. Eine ausführliche Beschreibung der einzelnen Elemente finden Sie in der Dokumentation zum [Maven-Plug-In für Azure-Web-Apps]. Für diesen Artikel sind jedoch besonders folgende Werte hervorzuheben:
+Für das Maven-Plug-In können mehrere Werte angepasst werden. Eine ausführliche Beschreibung der einzelnen Elemente finden Sie in der Dokumentation zum [Maven-Plug-Ins für Azure-Web-Apps]. Für diesen Artikel sind jedoch besonders folgende Werte hervorzuheben:
 
 Element | Beschreibung
 ---|---|---
@@ -201,8 +201,8 @@ Element | Beschreibung
 `<authentication>` | Gibt die Authentifizierungsinformationen für Azure an, die in diesem Beispiel ein `<serverId>`-Element enthalten, das `azure-auth` enthält. Maven nutzt diesen Wert, um die Azure-Dienstprinzipalwerte in Ihrer Maven-Datei *settings.xml* abzurufen, die Sie weiter oben in diesem Artikel festgelegt haben.
 `<resourceGroup>` | Gibt die Zielressourcengruppe an (in diesem Beispiel: `maven-plugin`). Wenn die Ressourcengruppe nicht bereits vorhanden ist, wird sie während der Bereitstellung erstellt.
 `<appName>` | Gibt den Zielnamen für Ihre Web-App an. In diesem Beispiel lautet der Zielname `maven-web-app-${maven.build.timestamp}`. Dabei wird das Suffix `${maven.build.timestamp}` angehängt, um Konflikte zu vermeiden. (Der Zeitstempel ist optional. Sie können eine beliebige eindeutige Zeichenfolge für den App-Namen angeben.)
-`<region>` | Gibt die Zielregion an (in diesem Beispiel: `westus`). (Eine vollständige Liste finden Sie in der Dokumentation zum [Maven-Plug-In für Azure-Web-Apps].)
-`<javaVersion>` | Gibt die Java Runtime-Version für Ihre Web-App an. (Eine vollständige Liste finden Sie in der Dokumentation zum [Maven-Plug-In für Azure-Web-Apps].)
+`<region>` | Gibt die Zielregion an (in diesem Beispiel: `westus`). (Eine vollständige Liste finden Sie in der Dokumentation zum [Maven-Plug-Ins für Azure-Web-Apps].)
+`<javaVersion>` | Gibt die Java Runtime-Version für Ihre Web-App an. (Eine vollständige Liste finden Sie in der Dokumentation zum [Maven-Plug-Ins für Azure-Web-Apps].)
 `<deploymentType>` | Gibt den Bereitstellungstyp für Ihre Web-App an. Derzeit wird nur `ftp` unterstützt. An der Unterstützung anderer Bereitstellungstypen wird jedoch bereits gearbeitet.
 `<resources>` | Gibt Ressourcen und Ziele an, die von Maven bei der Bereitstellung Ihrer Web-App in Azure verwendet werden. In diesem Beispiel geben zwei `<resource>`-Elemente an, dass Maven die JAR-Datei für Ihre Web-App und die Datei *web.config* aus dem Spring Boot-Projekt bereitstellt.
 
@@ -257,7 +257,7 @@ The embedded Tomcat server in the sample Spring Boot application is configured t
 
 Weitere Informationen zu den verschiedenen in diesem Artikel besprochenen Technologien finden Sie in den folgenden Artikeln:
 
-* [Maven Plugin for Azure Web Apps] (Maven-Plug-In für Azure-Web-Apps)
+* [Maven-Plug-Ins für Azure-Web-Apps] (Maven-Plug-In für Azure-Web-Apps)
 
 * [Anmelden bei Azure über die Azure-Befehlszeilenschnittstelle (CLI)](/azure/xplat-cli-connect)
 
@@ -269,19 +269,19 @@ Weitere Informationen zu den verschiedenen in diesem Artikel besprochenen Techno
 
 <!-- URL List -->
 
-[Azure CLI (Command-Line Interface, Befehlszeilenschnittstelle)]: /cli/azure/overview
+[Azure-Befehlszeilenschnittstelle (CLI)]: /cli/azure/overview
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 [Azure-Portal]: https://portal.azure.com/
-[Kostenloses Azure-Konto]: https://azure.microsoft.com/pricing/free-trial/
-[Git]: https://github.com/
+[kostenloses Azure-Konto]: https://azure.microsoft.com/pricing/free-trial/
+[Git-Client]: https://github.com/
 [Java Developer Kit (JDK)]: http://www.oracle.com/technetwork/java/javase/downloads/
 [Java Tools for Visual Studio Team Services]: https://java.visualstudio.com/
 [Maven]: http://maven.apache.org/
-[Vorteile für MSDN-Abonnenten]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
+[MSDN-Abonnentenvorteile]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [Spring Boot]: http://projects.spring.io/spring-boot/
-[Erste Schritte mit Spring Boot]: https://github.com/microsoft/gs-spring-boot
+[Spring Boot Getting Started]: https://github.com/microsoft/gs-spring-boot
 [Spring Framework]: https://spring.io/
-[Maven Plugin for Azure Web Apps]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin (Maven-Plug-In für Azure-Web-Apps)
+[Maven-Plug-Ins für Azure-Web-Apps]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin (Maven-Plug-In für Azure-Web-Apps)
 
 <!-- IMG List -->
 
