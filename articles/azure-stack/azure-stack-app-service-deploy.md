@@ -101,7 +101,6 @@ Die folgenden Schritte leiten Sie durch die Installationsphasen.
 
 8. Wählen Sie im Feld **Azure Stack-Standorte** den Standort aus, der der Region entspricht, in der die Bereitstellung erfolgen soll. Wählen Sie z.B. **lokal** aus. Klicken Sie auf **Weiter**.
 
-
     ![App Service in Azure Stack – Abonnementauswahl][3]
 
 9. Geben Sie den **Ressourcengruppennamen** für Ihre App Service-Bereitstellung ein. Dieser ist standardmäßig auf **APPSERVICE-LOCAL** festgelegt.
@@ -122,8 +121,7 @@ Die folgenden Schritte leiten Sie durch die Installationsphasen.
 
 16. Klicken Sie neben dem Feld **Stammzertifikatdatei des Ressourcenanbieters** auf die Schaltfläche **Durchsuchen**. Wechseln Sie zum [zuvor erstellten](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps) Zertifikat **AzureStackCertificationAuthority**.
 
-17. Klicken Sie auf **Weiter**.
- Das Installationsprogramm überprüft das angegebene Zertifikatkennwort.
+17. Klicken Sie auf **Weiter**. Das Installationsprogramm überprüft das angegebene Zertifikatkennwort.
 
     ![App Service in Azure Stack – Zertifikatdetails][5]
 
@@ -142,11 +140,9 @@ Die folgenden Schritte leiten Sie durch die Installationsphasen.
 
 19. Wählen Sie aus den VM-Images, die im Computeressourcenanbieter für die App Service-Cloud verfügbar sind, Ihr VM-Bereitstellungsimage für **Windows Server 2016** aus. Klicken Sie auf **Weiter**.
 
-
     ![App Service in Azure Stack – Auswahl des VM-Images][7]
 
 20. Geben Sie einen Benutzernamen und ein Kennwort für die in der App Service-Cloud konfigurierten Workerrollen ein. Geben Sie einen Benutzernamen und ein Kennwort für alle weiteren App Service-Rollen ein. Klicken Sie auf **Weiter**.
-
 
     ![App Service in Azure Stack – Eingabe von Anmeldeinformationen][8]
 
