@@ -184,10 +184,10 @@ Eine Option zum Aktualisieren des Webdiensts ist das programmgesteuerte erneute 
 
 <!-- internal links -->
 [Erstellen eines Trainingsexperiments]: #create-a-training-experiment
-[Konvertierten in ein Vorhersageexperiment]: #convert-the-training-experiment-to-a-predictive-experiment
-[Bereitstellen des Experiments als Webdienst]: #deploy-it-as-a-web-service
+[Konvertieren in ein Vorhersageexperiment]: #convert-the-training-experiment-to-a-predictive-experiment
+[Bereitstellen als Webdienst:]: #deploy-it-as-a-web-service
 [neuen]: #deploy-the-predictive-experiment-as-a-new-Web-service
-[Klassisch]: #deploy-the-predictive-experiment-as-a-new-Web-service
+[klassischen]: #deploy-the-predictive-experiment-as-a-new-Web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
 [Update]: #update-the-Web-service
