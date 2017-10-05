@@ -1,44 +1,42 @@
 # Übersicht
-## [Was ist Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
-## [Neuerungen in Power BI Embedded](power-bi-embedded-whats-new.md)
+## [Was ist Power BI Embedded?](what-is-power-bi-embedded.md)
 
 # Erste Schritte
-## [Erste Schritte mit Power BI Embedded](power-bi-embedded-get-started.md)
-## [Erste Schritte mit einem Beispiel](power-bi-embedded-get-started-sample.md)
-## [Häufig gestellte Fragen](power-bi-embedded-faq.md)
+## [Erste Schritte mit Power BI Embedded](get-started.md)
+## [Erste Schritte mit einem Beispiel](https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/)
 
 # Anleitung
-## Planen und Entwerfen
-### [Gängige Szenarios](power-bi-embedded-scenarios.md)
+## Verwalten der Kapazität
+### [Erstellen der Kapazität](create-capacity.md)
+### [Skalieren der Kapazität](scale-capacity.md)
+### [Anhalten und Starten der Kapazität](pause-start.md)
+## [Registrieren einer Azure AD-App](https://powerbi.microsoft.com/documentation/powerbi-developer-register-app/)
+## [Einbetten von Power BI-Inhalten](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/)
 
-## Verwalten
-### [Herstellen einer Verbindung mit einer Datenquelle](power-bi-embedded-connect-datasource.md)
-### [Einbetten eines Power BI-Berichts](power-bi-embedded-embed-report.md)
-### [Interagieren mit Berichten](power-bi-embedded-interact-with-reports.md)
-### [Erstellen eines neuen Berichts aus einem Dataset](power-bi-embedded-create-report-from-dataset.md)
-### [Speichern von Berichten](power-bi-embedded-save-reports.md)
-### [Wechseln zwischen Anzeigen und Bearbeiten](power-bi-embedded-toggle-mode.md)
+## Migrieren
+### [Migrieren von Power BI-Arbeitsbereichssammlungen](migrate-from-power-bi-workspace-collections.md)
+### [Migrationstool](migrate-tool.md)
+### [Migrationscodeausschnitte](migrate-code-snippets.md)
 
-## Schützen
-### [Authentifizierung und Autorisierung](power-bi-embedded-app-token-flow.md)
-### [Sicherheit auf Zeilenebene in Power BI Embedded](power-bi-embedded-rls.md)
+# Beispiele
+## [Codebeispiele](https://github.com/Microsoft/PowerBI-Developer-Samples)
+## [Exemplarische Vorgehensweise](https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/)
 
 # Referenz
-## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=power-bi-embedded)
-## [Azure PowerShell](/powershell/module/azurerm.powerbiembedded)
-## [.NET Azure Resource Manager](/dotnet/api/microsoft.azure.management.powerbiembedded)
-## [.NET SDK-Download](https://www.nuget.org/profiles/powerbi)
-## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript/wiki)
-## [REST-APIs für die Verwaltung](/rest/api/powerbiembedded/)
-## [REST-APIs](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-
+## APIs
+### [REST-APIs für Azure-Ressourcenverwaltung](/rest/api/powerbiembedded/)
+### [REST-APIs](https://msdn.microsoft.com/en-us/library/mt147898.aspx)
+## SDKs
+### [.NET SDK-Download](https://www.nuget.org/packages/Microsoft.PowerBI.Api/)
+### [JavaScript SDK-Download](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)
 
 # Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [JavaScript-Einbettungsbeispiel](https://microsoft.github.io/PowerBI-JavaScript/demo/)
-## [JavaScript-Git-Repository](https://github.com/Microsoft/PowerBI-JavaScript)
-## [Git-Repository für Power BI (C#)](https://github.com/Microsoft/PowerBI-CSharp)
-## [Power BI-Community](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+## [Apiary](http://docs.powerbi.apiary.io/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
-## [Beispielanwendung](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)
+## GitHub-Repositorys
+### [.NET](https://github.com/Microsoft/PowerBI-CSharp)
+### [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
+## [Power BI-Community](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+

@@ -1,13 +1,13 @@
-- name: ACS mit Kubernetes
+- name: Kubernetes in Azure
   href: ./index.yml
 - name: Übersicht
   items:
-    - name: Informationen zu Container Service
+    - name: Kubernetes in Azure
       href: container-service-intro-kubernetes.md
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Kubernetes – Linux
+    - name: Kubernetes in Azure
       href: container-service-kubernetes-walkthrough.md
 - name: Lernprogramme
   items:
@@ -25,14 +25,8 @@
       href: container-service-tutorial-kubernetes-app-update.md
     - name: 7. Überwachen mit OMS
       href: container-service-tutorial-kubernetes-monitor.md
-- name: Beispiele
-  items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: cli-samples.md
 - name: Konzepte
   items:
-    - name: Sichere Container
-      href: container-service-security.md
     - name: Dienstprinzipal – Kubernetes
       href: container-service-kubernetes-service-principal.md
 - name: Anleitungen
@@ -41,18 +35,14 @@
       href: container-service-kubernetes-windows-walkthrough.md
     - name: Kubernetes-Weboberfläche
       href: container-service-kubernetes-ui.md
-    - name: Bereitstellen von Helm-Diagrammen
+    - name: Verwenden von Helm-Diagrammen
       href: container-service-kubernetes-helm.md
-    - name: Jenkins und ACS Kubernetes
+    - name: Verwenden von Jenkins mit ACS
       href: container-service-kubernetes-jenkins.md
-    - name: Verwenden von Draft mit ACR und ACS
+    - name: Verwenden von Draft mit ACS
       href: container-service-draft-up.md
-    - name: Herstellen einer Verbindung mit ACS-Clustern
-      href: container-service-connect.md
-    - name: Skalieren eines ACS-Clusters
+    - name: Skalieren von Clustern
       href: container-service-scale.md
-    - name: Vornehmen eines Lastausgleichs für einen Kubernetes-ACS-Cluster
-      href: container-service-kubernetes-load-balancing.md
     - name: Überwachen
       items:
         - name: Überwachen mit OMS
@@ -73,10 +63,10 @@
           href: container-service-deploy-spring-boot-app-using-fabric8-maven-plugin.md
 - name: Referenz
   items:
-    - name: Azure CLI 2.0
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/acs
     - name: REST
-      href: /rest/api/container-services
+      href: /rest/api/container-service
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

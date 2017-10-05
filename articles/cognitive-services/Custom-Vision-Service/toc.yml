@@ -1,36 +1,35 @@
-
-- name: Custom Vision Documentation
+- name: Dokumentation für benutzerdefiniertes maschinelles Sehen
   href: ../index.md
-- name: Overview
+- name: Übersicht
   href: home.md
-- name: Quickstarts
+- name: Schnellstarts
   expanded: true
-  items: 
-  - name: Build a classifier
-    href: getting-started-build-a-classifier.md
-  - name: Improve your classifier
-    href: getting-started-improving-your-classifier.md
-  - name: Test your model
-    href: test-your-model.md
-  - name: Use the prediction API
-    href: use-prediction-api.md
-- name: Tutorials
   items:
-  - name: 'C# Tutorial'
-    href: csharp-tutorial.md
-- name: Reference
+    - name: Erstellen einer Klassifizierung
+      href: getting-started-build-a-classifier.md
+    - name: Verbessern der Klassifizierung
+      href: getting-started-improving-your-classifier.md
+    - name: Testen des Modells
+      href: test-your-model.md
+    - name: Verwenden der Vorhersage-API
+      href: use-prediction-api.md
+    - name: Exportieren des Modells auf Mobilgeräte
+      href: export-your-model.md
+- name: Lernprogramme
   items:
-  - name: Custom Vision Prediction API Reference
- 
-    href: https://southcentralus.dev.cognitive.microsoft.com/docs/services/eb68250e4e954d9bae0c2650db79c653/operations/58acd3c1ef062f0344a42814 
-  - name: Custom Vision Training API Reference
-  
-    href: https://southcentralus.dev.cognitive.microsoft.com/docs/services/d9a10a4a5f8549599f1ecafc435119fa/operations/58d5835bc8cb231380095be3
-  - name: Glossary
-    href: glossary-of-terms.md
-  - name: SDK
-    href: http://github.com/Microsoft/Cognitive-CustomVision-Windows/
-- name: Resources
+    - name: 'C#-Tutorial'
+      href: csharp-tutorial.md
+- name: Referenz
   items:
-  - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/
+    - name: Referenz zur Vorhersage-API für benutzerdefiniertes maschinelles Sehen
+      href: 'https://southcentralus.dev.cognitive.microsoft.com/docs/services/eb68250e4e954d9bae0c2650db79c653/operations/58acd3c1ef062f0344a42814'
+    - name: Referenz zur Schulungs-API für benutzerdefiniertes maschinelles Sehen
+      href: 'https://southcentralus.dev.cognitive.microsoft.com/docs/services/d9a10a4a5f8549599f1ecafc435119fa/operations/58d5835bc8cb231380095be3'
+    - name: Glossar
+      href: glossary-of-terms.md
+    - name: SDK
+      href: 'http://github.com/Microsoft/Cognitive-CustomVision-Windows/'
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'

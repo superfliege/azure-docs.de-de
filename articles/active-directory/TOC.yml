@@ -35,11 +35,13 @@
       href: role-based-access-control-resource-provider-operations.md
 - name: Privileged Identity Management (PIM) für RBAC
   href: pim-azure-resource.md
-- name: Bedingter Zugriff für Azure-Verwaltung
+- name: Bedingter Zugriff für die Azure-Verwaltung
   href: conditional-access-azure-management.md
 - name: Verwaltete Dienstidentität
   href: msi-overview.md
   items:
+    - name: Anmelden oder Abrufen eines Token
+      href: msi-how-to-get-access-token-using-msi.md
     - name: Konfigurieren des MSI für eine Azure-VM
       items:
         - name: Über das Azure-Portal
@@ -50,6 +52,8 @@
           href: msi-qs-configure-cli-windows-vm.md
         - name: Mit einer Azure Resource Manager-Vorlage
           href: msi-qs-configure-template-windows-vm.md
+        - name: Mit einem Azure SDK
+          href: msi-qs-configure-sdk-windows-vm.md
     - name: Zuweisen von MSI-Zugriff zu einer Azure-Ressource
       items:
         - name: Über das Azure-Portal

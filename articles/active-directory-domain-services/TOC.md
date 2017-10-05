@@ -16,8 +16,9 @@
 # Anleitung
 ## Beitreten zu einer verwalteten Domäne
 ### [Verbinden einer Windows Server-VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [Verbinden einer Windows Server-VM mit Azure PowerShell](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
-### [Verbinden einer Linux-VM](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+### [ mithilfe von PowerShell](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
+### [Red Hat Enterprise Linux](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
 ## Verwalten einer verwalteten Domäne
 ### [Verwalten einer verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 ### [Verwalten des DNS in einer verwalteten Domäne](active-directory-ds-admin-guide-administer-dns.md)
@@ -36,7 +37,6 @@
 ## Problembehandlung
 ### [Häufig gestellte Fragen](active-directory-ds-faqs.md)
 ### [Handbuch zur Problembehandlung](active-directory-ds-troubleshooting.md)
-### [Aktivieren der Azure-Portal-Benutzeroberfläche (Vorschauversion)](active-directory-ds-azure-portal-enable-preview-access.md)
 ### [Beheben von Fehlern durch nicht übereinstimmende Mandanten](active-directory-ds-mismatched-tenant-error.md)
 
 # Referenz

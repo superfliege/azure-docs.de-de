@@ -39,6 +39,8 @@
           href: backup-azure-vm-backup-faq.md
         - name: Häufig gestellte Fragen zur Sicherung von Dateien/Ordnern mit dem Azure Backup-Agent
           href: backup-azure-file-folder-backup-faq.md
+        - name: Häufig gestellte Fragen zum automatischen Upgrade des Sicherungstresors
+          href: backup-upgrade-backup-vault.md
     - name: Rollenbasierte Access Control
       href: backup-rbac-rs-vault.md
     - name: Sicherheit für Hybrid-Sicherungen

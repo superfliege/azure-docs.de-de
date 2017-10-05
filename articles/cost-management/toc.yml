@@ -19,6 +19,8 @@
       href: tutorial-review-usage.md
     - name: 2 – Steuern des Zugriffs auf Daten
       href: tutorial-user-access.md
+    - name: 3 – Vorhersage der Ausgaben
+      href: tutorial-forecast-spending.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap
