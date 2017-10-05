@@ -262,7 +262,7 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples](in englisch
 [Notification Hubs Samples]: https://github.com/Azure/azure-notificationhubs-samples
 [Azure Mobile Service]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[WindowsAzure.ServiceBus]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Verwenden von Service Bus-Themen und -Abonnements]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure WebJob]: ../app-service/web-sites-create-web-jobs.md
 [Erste Schritte mit Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [klassischen Azure-Portal]: https://manage.windowsazure.com/
