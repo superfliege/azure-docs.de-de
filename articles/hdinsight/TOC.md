@@ -12,6 +12,7 @@
 ### [Archivieren](hdinsight-release-notes-archive.md)
 
 # Erste Schritte
+## [Planen der HDInsight-Clusterkapazität](hdinsight-capacity-planning.md)
 ## [Einstieg in Hadoop](hdinsight-hadoop-linux-tutorial-get-started.md)
 ## Einstieg in Spark
 ### [Erstellen eines Spark-Clusters](hdinsight-apache-spark-jupyter-spark-sql.md)
@@ -117,7 +118,7 @@
 ### [Verwenden mit Spark (DStream)](hdinsight-apache-spark-with-kafka.md)
 ### [Verwenden mit Storm](hdinsight-apache-storm-with-kafka.md)
 ## Verwenden der interaktiven Abfrage
-### [Use Zeppelin to run Hive queries](hdinsight-connect-hive-zeppelin.md) (Verwenden von Zeppelin zum Ausführen von Hive-Abfragen)
+### [Use Zeppelin to run Hive queries (Verwenden von Zeppelin zum Ausführen von Hive-Abfragen)](hdinsight-connect-hive-zeppelin.md)
 ## Entwickeln
 ### [Entwickeln von C#-MapReduce-Streamingprogrammen](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
 ### [Entwickeln von Java MapReduce-Programmen](hdinsight-develop-deploy-java-mapreduce-linux.md)
@@ -131,10 +132,10 @@
 ### [Verwenden von benutzerdefinierten C#-Funktionen](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
 ### [Verwenden von Python mit Hive und Pig](hdinsight-python.md)
 ### [Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung](hdinsight-create-non-interactive-authentication-dotnet-applications.md)
-### [Use HDInsight VSCode tool](hdinsight-for-vscode.md) (Verwenden des HDInsight-VSCode-Tools)
+### [Use HDInsight VSCode tool (Verwenden des HDInsight-VSCode-Tools)](hdinsight-for-vscode.md)
 ## Analysieren von Big Data
 ### [Analysieren mit Power Query](hdinsight-connect-excel-power-query.md)
-### [Connect Power BI to Hadoop](hdinsight-connect-hive-power-bi.md) (Herstellen einer Verbindung von Power BI mit Hadoop)
+### [Connect Power BI to Hadoop (Herstellen einer Verbindung von Power BI mit Hadoop)](hdinsight-connect-hive-power-bi.md)
 ### [Verbinden von Excel mit Hadoop](hdinsight-connect-excel-hive-odbc-driver.md)
 ### [Herstellen einer Verbindung mit dem Hive-JDBC-Treiber](hdinsight-connect-hive-jdbc-driver.md)
 ### [Analysieren gespeicherter Sensordaten](hdinsight-hive-analyze-sensor-data.md)
@@ -167,6 +168,8 @@
 ### [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
 ### [Verwenden von SSH-Tunneln](hdinsight-linux-ambari-ssh-tunnel.md)
 ### [Beschränken des Zugriffs auf Daten](hdinsight-storage-sharedaccesssignature-permissions.md)
+### [Autorisieren von Benutzern für Ambari-Ansichten](hdinsight-authorize-users-to-ambari.md)
+### [Verwalten von Benutzerberechtigungen auf Datei- und Ordnerebene](hdinsight-add-acls-at-file-folder-levels.md)
 ## Verwalten
 ### [Erstellen von Linux-Clustern](hdinsight-hadoop-provision-linux-clusters.md)
 #### [Verwenden von Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -188,7 +191,7 @@
 #### [Verbinden mit SSH](hdinsight-use-sqoop-mac-linux.md)
 #### [Ausführen mithilfe von cURL](hdinsight-hadoop-use-sqoop-curl.md)
 #### [Ausführen mithilfe des .NET SDKs](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
-#### [Run using Azure PowerShell](hdinsight-hadoop-use-sqoop-powershell.md) (Ausführen mit Azure PowerShell)
+#### [Run using Azure PowerShell (Ausführen mit Azure PowerShell)](hdinsight-hadoop-use-sqoop-powershell.md)
 ### [Verwenden von Oozie für Workflows](hdinsight-use-oozie-linux-mac.md)
 ### [Verwenden des zeitbasierten Oozie-Koordinators](hdinsight-use-oozie-coordinator-time.md)
 ### [Cluster- und Dienstports und URIs](hdinsight-hadoop-port-settings-for-services.md)
@@ -200,6 +203,7 @@
 ### [Verwenden von Azure Log Analytics](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 ### [Clusterspezifische Dashboards](hdinsight-hadoop-oms-log-analytics-management-solutions.md)
 ### [Verwenden von Abfragen mit Log Analytics](hdinsight-hadoop-oms-log-analytics-use-queries.md)
+### [Überwachen der Clusterleistung](hdinsight-key-scenarios-to-monitor.md)
 ## [Problembehandlung](hdinsight-troubleshoot-guide.md)
 ### [Problembehandlung bei HBASE](hdinsight-troubleshoot-hbase.md)
 ### [Problembehandlung bei HDFS](hdinsight-troubleshoot-hdfs.md)

@@ -17,18 +17,18 @@
 ## Packen einer vorhandenen .NET-App in Container
 ### [1 – Erstellen eines sicheren Clusters in Azure](service-fabric-tutorial-create-cluster-azure-ps.md)
 ### [2 – Bereitstellen einer .NET-App mit Docker Compose](service-fabric-host-app-in-a-container.md)
-### [3 – Monitor your container](service-fabric-tutorial-monitoring-wincontainers.md) (3 – Überwachen Ihres Containers)
+### [3 – Monitor your container (3 – Überwachen Ihres Containers)](service-fabric-tutorial-monitoring-wincontainers.md)
 
 ## Erstellen einer Linux-Container-App
 ### [1 – Erstellen von Containerimages](service-fabric-tutorial-create-container-images.md)
-### [2 – Package and deploy containers](service-fabric-tutorial-package-containers.md) (2 – Packen und Bereitstellen von Containern)
-### [3- Fail over and scale](service-fabric-tutorial-containers-failover.md) (3 – Failover und Skalieren)
+### [2 – Package and deploy containers (2 – Packen und Bereitstellen von Containern)](service-fabric-tutorial-package-containers.md)
+### [3- Fail over and scale (3 – Failover und Skalieren)](service-fabric-tutorial-containers-failover.md)
 
 ## Erstellen und Verwalten eines Clusters
 ### 1 – Erstellen eines Clusters in Azure
-#### [1a – Erstellen eines sicheren Windows-Clusters in Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-#### [1b – Erstellen eines sicheren Linux-Clusters in Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
-### [2 – Deploy API Management with Service Fabric](service-fabric-tutorial-deploy-api-management.md) (2 – Bereitstellen von API Management mit Service Fabric)
+#### [1a – Erstellen eines Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+#### [1b – Erstellen eines Linus-Clusters](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+### [2 – Deploy API Management with Service Fabric (2 – Bereitstellen von API Management mit Service Fabric)](service-fabric-tutorial-deploy-api-management.md)
 
 # Beispiele
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=service-fabric)
@@ -80,8 +80,8 @@
 #### [Dienststatus](service-fabric-concepts-state.md)
 #### [Dienstpartitionierung](service-fabric-concepts-partitioning.md)
 #### [Verfügbarkeit von Diensten](service-fabric-availability-services.md)
-#### [Replicas and instances](service-fabric-concepts-replica-lifecycle.md) (Replikate und Instanzen)
-#### [Reconfiguration](service-fabric-concepts-reconfiguration.md) (Neukonfiguration)
+#### [Replicas and instances (Replikate und Instanzen)](service-fabric-concepts-replica-lifecycle.md)
+#### [Reconfiguration (Neukonfiguration)](service-fabric-concepts-reconfiguration.md)
 #### Dienstkommunikation
 ##### [Übersicht](service-fabric-connect-and-communicate-with-services.md)
 ##### [DNS-Dienst](service-fabric-dnsservice.md)
@@ -198,7 +198,6 @@
 ### Erstellen eines Reliable Actors-Diensts
 #### Erste Schritte
 ##### [C# unter Windows](service-fabric-reliable-actors-get-started.md)
-##### [Java unter Linux](service-fabric-reliable-actors-get-started-java.md)
 ##### [Java-Akteur unter Linux](service-fabric-create-your-first-linux-application-with-java.md)
 #### [Senden von Benachrichtigungen](service-fabric-reliable-actors-events.md)
 #### [Festlegen von Timern und Erinnerungen](service-fabric-reliable-actors-timers-reminders.md)
@@ -342,7 +341,7 @@
 # Referenz
 ## [Azure PowerShell](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)
-## [Azure-CLI](/cli/azure/sf)
+## [Azure-Befehlszeilenschnittstelle](/cli/azure/sf)
 ## [Service Fabric-Befehlszeilenschnittstelle](service-fabric-sfctl.md)
 ### [sfctl application](service-fabric-sfctl-application.md)
 ### [sfctl chaos](service-fabric-sfctl-chaos.md)
