@@ -3,7 +3,7 @@ title: Mein erstes PowerShell-Workflow-Runbook in Azure Automation | Microsoft D
 description: "Tutorial, in dem Sie sich mit dem Erstellen, Testen und Veröffentlichen eines einfachen Textrunbooks unter Verwendung eines PowerShell-Workflows vertraut machen können."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "PowerShell-Workflow, Beispiele für Powershell-Workflows, Workflow PowerShell"

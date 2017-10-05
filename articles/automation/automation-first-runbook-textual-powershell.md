@@ -3,7 +3,7 @@ title: Mein erstes PowerShell-Runbook in Azure Automation | Microsoft Docs
 description: "Tutorial, in dem Sie sich mit dem Erstellen, Testen und Veröffentlichen eines einfachen PowerShell-Runbooks vertraut machen können."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: Azure PowerShell, Tutorial zu PowerShell-Skripts, PowerShell-Automation

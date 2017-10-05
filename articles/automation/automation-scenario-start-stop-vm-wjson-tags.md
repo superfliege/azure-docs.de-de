@@ -3,7 +3,7 @@ title: Verwenden von JSON-formatierten Tags zum Planen des Azure-VM-Status | Mic
 description: "Dieser Artikel beschreibt die Verwendung von JSON-Zeichenfolgen für Tags zum Automatisieren der Planung des Startens und Herunterfahrens virtueller Computer."
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 6afed5d2-e939-4749-8b2c-9312b4c16fb2
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: magoedte;paulomarquesc
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: af0bc6b24a403bd09092ac0a099c500d651d15b7
+ms.contentlocale: de-de
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="azure-automation-scenario-using-json-formatted-tags-to-create-a-schedule-for-azure-vm-startup-and-shutdown"></a>Azure Automation-Szenario: Erstellen eines Zeitplans für das Starten und Herunterfahren virtueller Azure-Computer mithilfe von Tags im JSON-Format

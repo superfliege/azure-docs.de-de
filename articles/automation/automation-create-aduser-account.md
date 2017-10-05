@@ -3,7 +3,7 @@ title: Erstellen eines Azure AD-Benutzerkontos | Microsoft-Dokumentation
 description: "In diesem Artikel wird beschrieben, wie Sie Azure AD-Benutzerkonto-Anmeldeinformationen für Runbooks in Azure Automation zum Authentifizieren für Azure und klassisches Azure erstellen."
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 keywords: Azure Active Directory-Benutzer, Azure Service Management, Azure AD-Benutzerkonto

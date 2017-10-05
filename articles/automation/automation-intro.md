@@ -3,7 +3,7 @@ title: Was ist Azure Automation? | Microsoft Docs
 description: "Sie erfahren, welchen Nutzen Azure Automation hat, und erhalten Antworten auf häufig gestellte Fragen, damit Sie mit dem Erstellen und Verwenden von Runbooks und Azure Automation DSC beginnen können."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: was ist Automation, Azure Automation, Azure Automation Beispiele
@@ -20,7 +20,6 @@ ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 6b1fb9e7ae810df21cbcd592fef2b43309e2269c
 ms.contentlocale: de-de
 ms.lasthandoff: 07/10/2017
-
 
 ---
 # <a name="azure-automation-overview"></a>Azure Automation – Übersicht

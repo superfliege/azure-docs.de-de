@@ -3,7 +3,7 @@ title: Integration der Azure Automation-Quellcodeverwaltung mit GitHub Enterpris
 description: Beschreibt die Details zum Konfigurieren der Integration der Quellcodeverwaltung von Automation-Runbooks mit GitHub Enterprise.
 services: automation
 documentationCenter: 
-authors: mgoedtel
+authors: eslesar
 manager: jwhit
 editor: 
 ms.assetid: e01d817c-7d38-421c-adf5-647a4b526eb4

@@ -3,7 +3,7 @@ title: "Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] |
 description: "Mit den Lösungen für die VM-Verwaltung werden Ihre virtuellen Azure Resource Manager-Computer nach einem Zeitplan gestartet und beendet und mit Log Analytics proaktiv überwacht."
 services: automation
 documentationCenter: 
-authors: mgoedtel
+authors: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883

@@ -3,7 +3,7 @@ title: Runbookeinstellungen | Microsoft Docs
 description: "Beschreibt die Konfigurationseinstellungen für ein Runbook in Azure Automation und stellt Informationen dazu bereit, wie diese Einstellungen mit dem Azure-Verwaltungsportal und Windows PowerShell geändert werden können."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: stevenka
 editor: tysonn
 ms.assetid: a726f20c-a952-48b8-88ee-36d76aa3ac61
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ac8b5372aa06eac8c9a701f0621dbb675fbb565c
 ms.openlocfilehash: 20ecbc270e61d234e026e6ba2634c7aad63b3355
-
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="runbook-settings"></a>Runbookeinstellungen
@@ -58,10 +59,5 @@ Die folgenden Beispielbefehle zeigen, wie Sie die Eigenschaften für ein Runbook
 ## <a name="next-steps"></a>Nächste Schritte
 * Unter [Runbookausgabe und -meldungen](automation-runbook-output-and-messages.md) erfahren Sie, wie Sie Ausgabe- und Fehlermeldungen erstellen und diese von Runbooks abrufen. 
 * Grundlegendes zum Hinzufügen eines Runbooks, das bereits von der Community oder einer anderen Quelle entwickelt wurde, oder zum Erstellen eigener Runbooks finden Sie unter [Erstellen oder Importieren eines Runbooks](automation-creating-importing-runbook.md) 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

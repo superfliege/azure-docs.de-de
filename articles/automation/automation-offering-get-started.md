@@ -3,7 +3,7 @@ title: Erste Schritte mit Azure Automation | Microsoft-Dokumentation
 description: "Dieser Artikel enthält eine Übersicht über den Azure Automation-Dienst, und es werden das Design und die Implementierungsdetails beschrieben, die als Vorbereitung für die Nutzung des Angebots über Azure Marketplace erforderlich sind."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 

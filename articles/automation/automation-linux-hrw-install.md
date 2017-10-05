@@ -3,7 +3,7 @@ title: Azure Automation-Hybrid Runbook Worker (Linux) | Microsoft-Dokumentation
 description: "Dieser Artikel enthält Informationen zum Installieren eines Azure Automation-Hybrid Runbook Workers, mit dem Sie Runbooks auf Linux-basierten Computern in Ihrem lokalen Datencenter oder einer Cloudumgebung ausführen können."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 

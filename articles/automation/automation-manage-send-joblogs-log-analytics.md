@@ -3,7 +3,7 @@ title: Weiterleiten von Azure Automation-Auftragsdaten an OMS Log Analytics | Mi
 description: "In diesem Artikel wird erläutert, wie Auftragsstatus und Runbookauftragsdatenströme an Microsoft Operations Management Suite Log Analytics gesendet werden, um zusätzliche Einblicke und Verwaltungsoptionen zu erhalten."
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: c12724c6-01a9-4b55-80ae-d8b7b99bd436

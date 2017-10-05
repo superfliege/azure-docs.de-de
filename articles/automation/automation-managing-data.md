@@ -1,9 +1,9 @@
 ---
 title: Verwalten von Azure Automation-Daten | Microsoft Docs
-description: "Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Automation-Umgebung.  Er enthält derzeit die Themen &quot;Datenaufbewahrung&quot;, &quot;Sichern von Azure Automation&quot; und &quot;Notfallwiederherstellung in Azure Automation&quot;."
+description: "Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Automation-Umgebung.  Er enthält derzeit die Themen \"Datenaufbewahrung\", \"Sichern von Azure Automation\" und \"Notfallwiederherstellung in Azure Automation\"."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: stevenka
 editor: tysonn
 ms.assetid: 2896f129-82e3-43ce-b9ee-a3860be0423a
@@ -19,7 +19,6 @@ ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
 ms.openlocfilehash: 92893edc4e02de148f6585e83c6861fd751401bb
 ms.contentlocale: de-de
 ms.lasthandoff: 06/03/2017
-
 
 ---
 # <a name="managing-azure-automation-data"></a>Verwalten von Azure Automation-Daten

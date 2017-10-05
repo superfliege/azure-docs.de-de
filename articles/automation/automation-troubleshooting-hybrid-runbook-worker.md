@@ -3,7 +3,7 @@ title: "Problembehandlung für Hybrid Runbook Worker in Azure Automation | Micro
 description: "Hier werden die Symptome, Ursachen und Lösungen für die häufigsten Hybrid Runbook Worker-Probleme in Azure Automation beschrieben."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 02c6606e-8924-4328-a196-45630c2255e9

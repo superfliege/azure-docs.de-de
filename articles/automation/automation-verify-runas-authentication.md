@@ -3,7 +3,7 @@ title: "Überprüfen der Konfiguration des Azure Automation-Kontos | Microsoft-D
 description: "In diesem Artikel wird beschrieben, wie Sie überprüfen, ob die Konfiguration Ihres Automation-Kontos richtig eingerichtet ist."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
