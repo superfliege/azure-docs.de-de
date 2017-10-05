@@ -35,7 +35,7 @@ In diesem Beispiel werden die folgenden Daten in ein Azure-Speicherkonto namens 
 |H:\Video\ |Eine Sammlung von Videos|12TB|
 |H:\Photo\ |Eine Sammlung von Fotos|30 GB|
 |K:\Temp\FavoriteMovie.ISO|Ein Blu-ray™-Datenträgerimage|25 GB|
-|\\\bigshare\john\music\|Eine Sammlung von Musikdateien auf einer Netzwerkfreigabe|10 GB|
+|\\\bigshare\john\music\ |Eine Sammlung von Musikdateien auf einer Netzwerkfreigabe|10 GB|
 
 ## <a name="storage-account-destinations"></a>Speicherkontoziele
 
