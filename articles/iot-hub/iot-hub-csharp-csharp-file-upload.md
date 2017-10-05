@@ -196,7 +196,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
 
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[NuGet-Paket mit dem Azure IoT-Dienst-SDK]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
+[NuGet-Paket mit dem SDK des Azure IoT-Diensts]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [lnk-create-hub]: iot-hub-rm-template-powershell.md
