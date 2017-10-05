@@ -76,7 +76,7 @@ Sie können nun Azure Active Directory für die Authentifizierung in Ihrer App v
 ## <a name="optional-configure-a-native-client-application"></a>(Optional) Konfigurieren Sie eine systemeigene Clientanwendung
 Mit Azure Active Directory können Sie auch systemeigene Clients registrieren. So haben Sie noch mehr Kontrolle bei der Zuordnung von Berechtigungen. Dies ist erforderlich, wenn Sie mit einer Bibliothek, etwa der **Active Directory-Authentifizierungsbibliothek**, Anmeldungen durchführen möchten.
 
-1. Navigieren Sie im **klassischen Azure-Verwaltungsportal** zu [Active Directory].
+1. Navigieren Sie im **klassischen Azure-Verwaltungsportal** zu [Klassischen Azure-Portal].
 2. Wählen Sie Ihr Verzeichnis und anschließend die Registerkarte **Anwendungen** im oberen Bereich aus. Klicken Sie im unteren Bereich auf **HINZUFÜGEN** , um eine neue App-Registrierung zu erstellen.
 3. Klicken Sie auf **Add an application my organization is developing**.
 4. Geben Sie im Assistenten zum Hinzufügen von Anwendungen einen **Namen** für Ihre Anwendung ein, und klicken Sie auf den Typ **Systemeigene Clientanwendung**. Klicken Sie dann auf Continue.
@@ -101,6 +101,6 @@ Sie haben nun eine systemeigene Clientanwendung mit Zugriff auf Ihre App Service
 <!-- URLs. -->
 
 [Azure-Portal]: https://portal.azure.com/
-[Klassisches Azure-Portal]: https://manage.windowsazure.com/
+[Klassischen Azure-Portal]: https://manage.windowsazure.com/
 [alternative method]:#advanced
 
