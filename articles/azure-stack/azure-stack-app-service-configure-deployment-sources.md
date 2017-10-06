@@ -84,7 +84,7 @@ App Service in Azure Stack unterstützt die bedarfsgesteuerte Bereitstellung aus
 > [!NOTE]
 > OneDrive for Business-Konten werden zurzeit nicht unterstützt.  Sie benötigen für diese Aufgabe ein mit einem OneDrive-Konto verknüpftes Microsoft-Konto.  Möglicherweise möchten Sie lieber ein Konto für Ihre Organisation anstelle eines persönlichen Kontos verwenden.
 
-1. Navigieren Sie zu „https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm“, und melden Sie sich mit Ihrem Microsoft-Konto an.
+1. Navigieren Sie zu https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm , und melden Sie sich mit Ihrem Microsoft-Konto an.
 2. Klicken Sie unter **Meine Anwendungen**
 ![OneDrive-Anwendungen][10] auf **Eine App hinzufügen**.
 3. Geben Sie für „Registrierung einer neuen Anwendung“ einen **Namen** wie **App Service in Azure Stack** ein, und klicken Sie auf **Anwendung erstellen**.
