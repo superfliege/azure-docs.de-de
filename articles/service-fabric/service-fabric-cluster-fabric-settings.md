@@ -16,26 +16,26 @@ ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: d71fdcf2a054a9b9ac1d74ddd3a6b43d151fa87d
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: cedfba78d8d1186618cf4f61154c5d88a00eb12b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie
-In diesem Dokument erfahren Sie, wie Sie die verschiedenen Fabric-Einstellungen und die Fabric-Upgraderichtlinie für Ihren Service Fabric-Cluster anpassen. Die Anpassungen können im Portal oder mithilfe einer Azure Resource Manager-Vorlage vorgenommen werden.
+In diesem Dokument erfahren Sie, wie Sie die verschiedenen Fabric-Einstellungen und die Fabric-Upgraderichtlinie für Ihren Service Fabric-Cluster anpassen. Die Anpassungen können über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage vorgenommen werden.
 
 > [!NOTE]
-> Möglicherweise sind nicht alle Einstellungen über das Portal verfügbar. Falls eine der unten aufgeführten Einstellungen nicht über das Portal verfügbar sein sollte, passen Sie dies mithilfe einer Azure Resource Manager-Vorlage an.
+> Im Portal sind nicht alle Einstellungen verfügbar. Falls eine der unten aufgeführten Einstellungen nicht über das Portal verfügbar sein sollte, passen Sie dies mithilfe einer Azure Resource Manager-Vorlage an.
 > 
 
-## <a name="customizing-service-fabric-cluster-settings-using-azure-resource-manager-templates"></a>Anpassen von Service Fabric-Clustereinstellungen mithilfe von Azure Resource Manager-Vorlagen
+## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Anpassen von Clustereinstellungen mithilfe von Resource Manager-Vorlagen
 In den folgenden Schritten wird beschrieben, wie die neue Einstellung *MaxDiskQuotaInMB* zum Abschnitt *Diagnose* hinzugefügt wird.
 
 1. Rufen Sie die Seite https://resources.azure.com auf.
-2. Navigieren Sie zu Ihrem Abonnement, indem Sie „Abonnements“ > „Ressourcengruppen“ > „Microsoft.ServiceFabric“ > Ihr Clustername erweitern.
-3. Wählen Sie in der oberen rechten Ecke „Lesen/Schreiben“.
-4. Wählen Sie „Bearbeiten“, aktualisieren Sie das JSON-Element `fabricSettings` und fügen Sie ein neues Element hinzu.
+2. Navigieren Sie zu Ihrem Abonnement, indem Sie **Abonnements** -> **Ressourcengruppen** -> **Microsoft.ServiceFabric** -> **\<Ihr Clustername** erweitern.
+3. Wählen Sie in der oberen rechten Ecke **Lesen/Schreiben** aus.
+4. Wählen Sie **Bearbeiten** aus, aktualisieren Sie das JSON-Element `fabricSettings`, und fügen Sie ein neues Element hinzu:
 
 ```
       {
@@ -49,10 +49,9 @@ In den folgenden Schritten wird beschrieben, wie die neue Einstellung *MaxDiskQu
       }
 ```
 
-## <a name="fabric-settings-that-you-can-customize"></a>Fabric-Einstellungen, die Sie anpassen können
-Es folgen die Fabric-Einstellungen, die Sie anpassen können:
+In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstellungen aufgeführt, die Sie anpassen können.
 
-### <a name="section-name-diagnostics"></a>Name des Abschnitts: Diagnostics
+## <a name="diagnostics"></a>Diagnose
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | ConsumerInstances |String |Die Liste der DCA-Consumerinstanzen. |
@@ -66,12 +65,12 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | EnableTelemetry |Boolesch, Standardwert „true“ |Damit werden Telemetriedaten aktiviert oder deaktiviert. |
 | EnableCircularTraceSession |Boolesch, Standardwert „false“ |Das Flag gibt an, ob zirkuläre Ablaufverfolgungssitzungen verwendet werden sollen. |
 
-### <a name="section-name-traceetw"></a>Name des Abschnitts: Trace/Etw
+## <a name="traceetw"></a>Trace/Etw
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | Ebene |Ganze Zahl, Standardwert 4 |Die Trace/Etw-Ebene kann die Werte 1, 2, 3 oder 4 annehmen. Zur Unterstützung muss die Trace-Ebene 4 beibehalten werden. |
 
-### <a name="section-name-performancecounterlocalstore"></a>Name des Abschnitts: PerformanceCounterLocalStore
+## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | IsEnabled |Boolesch, Standardwert „true“ |Das Flag gibt an, ob die Erfassung von Leistungsindikatoren für den lokalen Knoten aktiviert ist. |
@@ -80,7 +79,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | MaxCounterBinaryFileSizeInMB |Ganze Zahl, Standardwert 1 |Maximale Größe (in MB) für jede Leistungsindikator-Binärdatei. |
 | NewCounterBinaryFileCreationIntervalInMinutes |Ganze Zahl, Standardwert 10 |Maximales Intervall (in Sekunden), nach dem eine neue Leistungsindikator-Binärdatei erstellt wird. |
 
-### <a name="section-name-setup"></a>Name des Abschnitts: Setup
+## <a name="setup"></a>Einrichtung
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | FabricDataRoot |String |Das Service Fabric-Datenstammverzeichnis. Standardwert für Azure ist „d:\svcfab“. |
@@ -89,7 +88,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | ServiceStartupType |String |Der Starttyp des Fabric-Hostdiensts. |
 | SkipFirewallConfiguration |Boolesch, Standardwert „false“ |Gibt an, ob Firewalleinstellungen vom System festgelegt werden müssen oder nicht. Dies gilt nur, wenn Sie die Windows-Firewall verwenden. Wenn Sie Firewalls von Drittanbietern verwenden, müssen Sie die Ports für das System und die zu verwendenden Anwendungen öffnen. |
 
-### <a name="section-name-transactionalreplicator"></a>Name des Abschnitts: TransactionalReplicator
+## <a name="transactionalreplicator"></a>TransactionalReplicator
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | MaxCopyQueueSize |Uint, Standardwert 16384 |Dies ist der maximale Wert. Er definiert die Anfangsgröße für die Warteschlange, die Replikationsvorgänge verwaltet. Beachten Sie, dass der Wert eine Potenz von 2 sein muss. Wenn während der Laufzeit die Warteschlange auf diese Größe anwächst, werden Vorgänge zwischen den primären und sekundären Replikatoren gedrosselt. |
@@ -113,7 +112,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | SlowApiMonitoringDuration |Zeit in Sekunden, Standardwert 300 | Geben Sie für die API eine Dauer an, bevor eine Warnung zu einem Integritätsereignis ausgelöst wird.|
 | MinLogSizeInMB |Ganze Zahl, Standardwert 0 |Die minimale Größe des Transaktionsprotokolls. Das Protokoll kann auf keine Größe unterhalb dieser Einstellung gekürzt werden. 0 gibt an, dass die minimale Protokollgröße durch den Replikator anhand anderer Einstellungen bestimmt wird. Bei einem höheren Wert erhöht sich die Möglichkeit zur Erstellung von Teilkopien und inkrementellen Sicherungen, da sich dadurch das Risiko verringert, dass relevante Protokolldatensätze abgeschnitten werden. |
 
-### <a name="section-name-fabricclient"></a>Name des Abschnitts: FabricClient
+## <a name="fabricclient"></a>FabricClient
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | NodeAddresses |string, Standardwert "" |Eine Sammlung von Adressen (Verbindungszeichenfolgen) auf unterschiedlichen Knoten, die für die Kommunikation mit dem Naming Service verwendet werden können. Anfangs stellt der Client eine Verbindung her, indem er eine der Adressen nach dem Zufallsprinzip auswählt. Wenn mehr als eine Verbindungszeichenfolge angegeben wird und eine Verbindung aufgrund eines Kommunikations- oder Timeoutfehlers nicht hergestellt werden kann, wechselt der Client zur nächsten Adresse in der Reihe. Details zur Semantik von Wiederholungsversuchen finden Sie im Abschnitt zu Wiederholungsversuchen für Naming Service-Adressen. |
@@ -127,38 +126,38 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | RetryBackoffInterval |Zeit in Sekunden, Standardwert 3 |Geben Sie die Zeitspanne in Sekunden an. Das Backoffintervall vor der Wiederholung des Vorgangs. |
 | MaxFileSenderThreads |Uint, Standardwert 10 |Die maximale Anzahl von Dateien, die gleichzeitig übertragen werden. |
 
-### <a name="section-name-common"></a>Name des Abschnitts: Common
+## <a name="common"></a>Common
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | PerfMonitorInterval |Zeit in Sekunden, Standardwert 1 |Geben Sie die Zeitspanne in Sekunden an. Intervall für die Leistungsüberwachung. Mit 0 oder einem negativen Wert wird die Überwachung deaktiviert. |
 
-### <a name="section-name-healthmanager"></a>Name des Abschnitts: HealthManager
+## <a name="healthmanager"></a>HealthManager
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | EnableApplicationTypeHealthEvaluation |Boolesch, Standardwert „false“ |Evaluierungsrichtlinie für die Clusterintegrität, wird für die Integritätsevaluierung pro Anwendungstyp aktiviert. |
 
-### <a name="section-name-fabricnode"></a>Name des Abschnitts: FabricNode
+## <a name="fabricnode"></a>FabricNode
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | StateTraceInterval |Zeit in Sekunden, Standardwert 300 |Geben Sie die Zeitspanne in Sekunden an. Das Intervall für die Ablaufverfolgung des Knotenstatus auf allen Knoten und aktiven Knoten in FM/FMM. |
 
-### <a name="section-name-nodedomainids"></a>Name des Abschnitts: NodeDomainIds
+## <a name="nodedomainids"></a>NodeDomainIds
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | UpgradeDomainId |string, Standardwert "" |Beschreibt die Upgradedomäne, zu der ein Knoten gehört. |
 | PropertyGroup |NodeFaultDomainIdCollection |Beschreibt die Fehlerdomäne, zu der ein Knoten gehört. Die Fehlerdomäne wird durch einen URI definiert, der die Position des Knotens im Datencenter beschreibt.  Fehlerdomänen-URIs weisen das Format fd:/fd/ gefolgt von einem URI-Pfadsegment auf.|
 
-### <a name="section-name-nodeproperties"></a>Name des Abschnitts: NodeProperties
+## <a name="nodeproperties"></a>NodeProperties
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | PropertyGroup |NodePropertyCollectionMap |Eine Sammlung der Zeichenfolgen von Schlüssel-Wert-Paaren für Knoteneigenschaften. |
 
-### <a name="section-name-nodecapacities"></a>Name des Abschnitts: NodeCapacities
+## <a name="nodecapacities"></a>NodeCapacities
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | PropertyGroup |NodeCapacityCollectionMap |Eine Sammlung von Knotenkapazitäten für verschiedene Metriken. |
 
-### <a name="section-name-fabricnode"></a>Name des Abschnitts: FabricNode
+## <a name="fabricnode"></a>FabricNode
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | StartApplicationPortRange |Ganze Zahl, Standardwert 0 |Start der Anwendungsports, die vom Hostingsubsystem verwaltet werden. Erforderlich, wenn EndpointFilteringEnabled beim Hosting „true“ ist. |
@@ -180,12 +179,12 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | UserRoleClientX509FindValue |string, Standardwert "" |Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Benutzerrolle verwendet wird. |
 | UserRoleClientX509FindValueSecondary |string, Standardwert "" |Suchfilterwert, der zum Suchen des Zertifikats für die standardmäßige FabricClient-Benutzerrolle verwendet wird. |
 
-### <a name="section-name-paas"></a>Name des Abschnitts: Paas
+## <a name="paas"></a>Paas
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | ClusterId |string, Standardwert "" |X509-Zertifikatspeicher, der vom Fabric für den Konfigurationsschutz verwendet. |
 
-### <a name="section-name-fabrichost"></a>Name des Abschnitts: FabricHost
+## <a name="fabrichost"></a>FabricHost
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | StopTimeout |Zeit in Sekunden, Standardwert 300 |Geben Sie die Zeitspanne in Sekunden an. Das Timeout für die Aktivierung, Deaktivierung und Aktualisierung des gehosteten Diensts. |
@@ -198,7 +197,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | EnableRestartManagement |Boolesch, Standardwert „false“ |Hiermit wird der Neustart des Servers aktiviert. |
 
 
-### <a name="section-name-failovermanager"></a>Name des Abschnitts: FailoverManager
+## <a name="failovermanager"></a>FailoverManager
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | UserReplicaRestartWaitDuration |Zeit in Sekunden, Standardwert 60,0 * 30 |Geben Sie die Zeitspanne in Sekunden an. Wenn ein dauerhaftes Replikat ausfällt, wartet Windows Fabric für diese Zeitspanne darauf, dass das Replikat wieder aktiviert wird, bevor neue Ersatzreplikate (die eine Kopie des Zustands erfordern würden) erstellt werden. |
@@ -206,7 +205,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | UserStandByReplicaKeepDuration |Zeit in Sekunden, Standardwert 3600,0 * 24 * 7 |Geben Sie die Zeitspanne in Sekunden an. Wenn ein dauerhaftes Replikat nach einem Ausfall wieder aktiv ist, wurde es möglicherweise bereits ersetzt. Dieser Timer bestimmt, wie lange FM das Reservereplikat beibehält, bevor es verworfen wird. |
 | UserMaxStandByReplicaCount |Ganze Zahl, Standardwert 1 |Die standardmäßige maximale Anzahl von Reservereplikaten, die das System für Benutzerdienste speichert. |
 
-### <a name="section-name-namingservice"></a>Name des Abschnitts: NamingService
+## <a name="namingservice"></a>NamingService
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | TargetReplicaSetSize |Ganze Zahl, Standardwert 7 |Die Anzahl von Replikatgruppen für jede Partition des Naming Service-Speichers. Das Erhöhen der Anzahl von Replikatgruppen erhöht den Grad an Zuverlässigkeit der Informationen im Naming Service-Speicher. Durch eine Verringerung der Änderung gehen Informationen als Ergebnis von Knotenfehlern verloren. Es entsteht eine erhöhte Last für Windows Fabric, und die Zeitspanne zum Durchführen von Aktualisierungen an den Benennungsdaten wird verlängert.|
@@ -228,35 +227,35 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | GatewayServiceDescriptionCacheLimit |Ganze Zahl, Standardwert 0 |Die maximale Anzahl von Einträgen, die im LRU-Dienstbeschreibungscache im Naming Gateway beibehalten werden (bei 0 gilt keine Begrenzung). |
 | PartitionCount |Ganze Zahl, Standardwert 3 |Die Anzahl der zu erstellenden Partitionen des Naming Service-Speichers. Jede Partition besitzt einen einzelnen Partitionsschlüssel, der dessen Index entspricht. Daher sind Partitionsschlüssel [0; PartitionCount) vorhanden. Durch Erhöhen der Anzahl von Naming Service-Partitionen kann der Naming Service in größerem Maßstab ausgeführt werden, indem die durchschnittliche Menge von Daten verringert wird, die von sichernden Replikatgruppen gespeichert werden. Dies erhöht jedoch die Auslastung von Ressourcen (da Dienstreplikate im Umfang von PartitionCount × ReplicaSetSize beibehalten werden müssen).|
 
-### <a name="section-name-runas"></a>Name des Abschnitts: RunAs
+## <a name="runas"></a>RunAs
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | RunAsAccountName |string, Standardwert "" |Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder „user@domain“. |
 |RunAsAccountType|string, Standardwert "" |Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind DomainUser/NetworkService/ManagedServiceAccount /LocalSystem.|
 |RunAsPassword|string, Standardwert "" |Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
-### <a name="section-name-runasfabric"></a>Name des Abschnitts: RunAs_Fabric
+## <a name="runasfabric"></a>RunAs_Fabric
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | RunAsAccountName |string, Standardwert "" |Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder „user@domain“. |
 |RunAsAccountType|string, Standardwert "" |Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem. |
 |RunAsPassword|string, Standardwert "" |Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
-### <a name="section-name-runashttpgateway"></a>Name des Abschnitts: RunAs_HttpGateway
+## <a name="runashttpgateway"></a>RunAs_HttpGateway
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | RunAsAccountName |string, Standardwert "" |Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder „user@domain“. |
 |RunAsAccountType|string, Standardwert "" |Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem. |
 |RunAsPassword|string, Standardwert "" |Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
-### <a name="section-name-runasdca"></a>Name des Abschnitts: RunAs_DCA
+## <a name="runasdca"></a>RunAs_DCA
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | RunAsAccountName |string, Standardwert "" |Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder „user@domain“. |
 |RunAsAccountType|string, Standardwert "" |Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem. |
 |RunAsPassword|string, Standardwert "" |Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
-### <a name="section-name-httpgateway"></a>Name des Abschnitts: HttpGateway
+## <a name="httpgateway"></a>HttpGateway
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 |IsEnabled|Boolesch, Standardwert „false“ | Aktiviert bzw. deaktiviert httpgateway. Httpgateway ist standardmäßig deaktiviert, und diese Konfiguration muss zur Aktivierung festgelegt werden. |
@@ -264,7 +263,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |MaxEntityBodySize |Uint, Standardwert 4194304 |  Gibt die maximale Größe des Texts an, der von einer HTTP-Anforderung erwartet werden kann. Der Standardwert ist 4 MB. Httpgateway erzeugt für eine Anforderung einen Fehler, wenn der Text größer als dieser Wert ist. Die minimale Blockgröße beim Lesen beträgt 4096 Bytes. Der Wert muss also größer oder gleich 4096. |
 |HttpGatewayHealthReportSendInterval |Zeit in Sekunden, Standardwert 30 | Geben Sie die Zeitspanne in Sekunden an. Das Intervall, in dem das HTTP-Gateway kumulierte Integritätsberichte an den Integritätsdienst sendet. |
 
-### <a name="section-name-ktllogger"></a>Name des Abschnitts: KtlLogger
+## <a name="ktllogger"></a>KtlLogger
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 |AutomaticMemoryConfiguration |Ganze Zahl, Standardwert 1 | Flag, das angibt, ob die Einstellungen für den Arbeitsspeicher automatisch und dynamisch konfiguriert werden sollen. Bei 0 werden die Konfigurationseinstellungen für den Arbeitsspeicher direkt verwendet und nicht basierend auf Systembedingungen geändert. Bei 1 werden die Einstellungen für den Arbeitsspeicher automatisch konfiguriert und können basierend auf Systembedingungen geändert werden. |
@@ -275,7 +274,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |SharedLogId |string, Standardwert "" |Eindeutige GUID für den freigegebenen Protokollcontainer. Verwenden Sie "", wenn Sie den Standardpfad im Fabricdatenstamm nutzen. |
 |SharedLogSizeInMB |Ganze Zahl, Standardwert 8192 | Die Anzahl an MB, die für den freigegebenen Protokollcontainer reserviert wird. |
 
-### <a name="section-name-applicationgatewayhttp"></a>Name des Abschnitts: ApplicationGateway/Http
+## <a name="applicationgatewayhttp"></a>ApplicationGateway/Http
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 |IsEnabled |Boolesch, Standardwert „false“ | Aktiviert bzw. deaktiviert HttpApplicationGateway. HttpApplicationGateway ist standardmäßig deaktiviert, und diese Konfiguration muss zur Aktivierung festgelegt werden. |
@@ -289,7 +288,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |GatewayX509CertificateFindValue | string, Standardwert "" | Suchfilterwert, der zum Suchen des HTTP-App-Gatewayzertifikats verwendet wird. Dieses Zertifikat ist für den HTTPS-Endpunkt konfiguriert und kann bei Bedarf auch von den Diensten zum Überprüfen der Identität der App verwendet werden. Nach FindValue wird zuerst gesucht. Wenn er nicht vorhanden ist, wird nach FindValueSecondary gesucht. |
 |GatewayX509CertificateFindValueSecondary | string, Standardwert "" |Suchfilterwert, der zum Suchen des HTTP-App-Gatewayzertifikats verwendet wird. Dieses Zertifikat ist für den HTTPS-Endpunkt konfiguriert und kann bei Bedarf auch von den Diensten zum Überprüfen der Identität der App verwendet werden. Nach FindValue wird zuerst gesucht. Wenn er nicht vorhanden ist, wird nach FindValueSecondary gesucht.|
 
-### <a name="section-name-management"></a>Name des Abschnitts: Management
+## <a name="management"></a>Verwaltung
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | ImageStoreConnectionString |SecureString | Die Verbindungszeichenfolge für das Stammverzeichnis für ImageStore. |
@@ -301,7 +300,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |DisableChecksumValidation | Boolesch, Standardwert „false“ | Diese Konfiguration ermöglicht es, die Prüfsummenüberprüfung während der Anwendungsbereitstellung zu aktivieren oder zu deaktivieren. |
 |DisableServerSideCopy | Boolesch, Standardwert „false“ | Diese Konfiguration aktiviert oder deaktiviert serverseitiges Kopieren des Anwendungspakets in ImageStore während der Anwendungsbereitstellung. |
 
-### <a name="section-name-healthmanagerclusterhealthpolicy"></a>Name des Abschnitts: HealthManager/ClusterHealthPolicy
+## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | ConsiderWarningAsError |Boolesch, Standardwert „false“ |Evaluierungsrichtlinie für die Clusterintegrität: Warnungen werden als Fehler behandelt. |
@@ -310,7 +309,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |MaxPercentDeltaUnhealthyNodes | Ganze Zahl, Standardwert 10 |Evaluierungsrichtlinie für die Clusterupgradeintegrität: Maximaler Prozentsatz des Deltas fehlerhafter Knoten, die für einen als fehlerfrei geltenden Cluster zulässig sind. |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes | Ganze Zahl, Standardwert 15 |Evaluierungsrichtlinie für die Clusterupgradeintegrität: Maximaler Prozentsatz des Deltas fehlerhafter Knoten in einer Upgradedomäne, die für einen als fehlerfrei geltenden Cluster zulässig sind.|
 
-### <a name="section-name-faultanalysisservice"></a>Name des Abschnitts: FaultAnalysisService
+## <a name="faultanalysisservice"></a>FaultAnalysisService
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | TargetReplicaSetSize |Ganze Zahl, Standardwert 0 |NOT_PLATFORM_UNIX_START, TargetReplicaSetSize für FaultAnalysisService. |
@@ -323,7 +322,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | CompletedActionKeepDurationInSeconds | Ganze Zahl, Standardwert 604800 | Ungefähr für diese Dauer sollten Aktionen gespeichert werden, die in einem Endzustand sind.  Dies hängt auch von StoredActionCleanupIntervalInSeconds ab, da die Bereinigung nur in diesem Intervall erfolgt. 604800 sind 7 Tage. |
 | StoredChaosEventCleanupIntervalInSeconds | Ganze Zahl, Standardwert 3600 |Mit dieser Häufigkeit wird der Speicher auf Bereinigungen überwacht. Wenn die Anzahl der Ereignisse größer als 30000 ist, wird die Bereinigung gestartet. |
 
-### <a name="section-name-filestoreservice"></a>Name des Abschnitts: FileStoreService
+## <a name="filestoreservice"></a>FileStoreService
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | NamingOperationTimeout |Zeit in Sekunden, Standardwert 60 |Geben Sie die Zeitspanne in Sekunden an. Das Timeout für die Durchführung des Benennungsvorgangs. |
@@ -349,7 +348,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | SecondaryAccountNTLMX509StoreName | string, Standardwert „MY“ |Der Speichername des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
 | SecondaryAccountNTLMX509Thumbprint | string, Standardwert ""| Der Fingerabdruck des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
 
-### <a name="section-name-imagestoreservice"></a>Name des Abschnitts: ImageStoreService
+## <a name="imagestoreservice"></a>ImageStoreService
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | Aktiviert |Boolesch, Standardwert „false“ |Das Flag „Enabled“ für ImageStoreService. |
@@ -365,7 +364,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | ClientListTimeout | Zeit in Sekunden, Standardwert 600 | Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die Listenanforderung der obersten Ebene an den Imagespeicherdienst. |
 | ClientDefaultTimeout | Zeit in Sekunden, Standardwert 180 | Geben Sie die Zeitspanne in Sekunden an. Timeoutwert für alle anderen Anforderungen außer Upload- oder Downloadanforderungen (z.B. Vorhanden, Löschen) an den Imagespeicherdienst. |
 
-### <a name="section-name-imagestoreclient"></a>Name des Abschnitts: ImageStoreClient
+## <a name="imagestoreclient"></a>ImageStoreClient
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | ClientUploadTimeout |Zeit in Sekunden, Standardwert 1800 | Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die Uploadanforderung der obersten Ebene an den Imagespeicherdienst. |
@@ -374,12 +373,12 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |ClientListTimeout | Zeit in Sekunden, Standardwert 600 |Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die Listenanforderung der obersten Ebene an den Imagespeicherdienst. |
 |ClientDefaultTimeout | Zeit in Sekunden, Standardwert 180 | Geben Sie die Zeitspanne in Sekunden an. Timeoutwert für alle anderen Anforderungen außer Upload- oder Downloadanforderungen (z.B. Vorhanden, Löschen) an den Imagespeicherdienst. |
 
-### <a name="section-name-tokenvalidationservice"></a>Name des Abschnitts: TokenValidationService
+## <a name="tokenvalidationservice"></a>TokenValidationService
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | Anbieter |string, Standardwert „DSTS“ |Durch Trennzeichen getrennte Liste von zu aktivierenden Tokenvalidierungsanbietern (gültige Anbieter sind: DSTS, AAD). Derzeit kann immer nur ein einzelnen Anbieter aktiviert werden. |
 
-### <a name="section-name-upgradeorchestrationservice"></a>Name des Abschnitts: UpgradeOrchestrationService
+## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | TargetReplicaSetSize |Ganze Zahl, Standardwert 0 |TargetReplicaSetSize für UpgradeOrchestrationService. |
@@ -391,7 +390,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | AutoupgradeEnabled | Boolesch, Standardwert „true“ | Automatische Abruf- und Aktualisierungsaktion basierend auf einer Datei für den Zielzustand. |
 | UpgradeApprovalRequired | Boolesch, Standardwert „false“ | Einstellung, damit bei der Codeaktualisierung die Genehmigung durch den Administrator erforderlich ist, bevor fortgefahren werden kann. |
 
-### <a name="section-name-upgradeservice"></a>Name des Abschnitts: UpgradeService
+## <a name="upgradeservice"></a>UpgradeService
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | PlacementConstraints |string, Standardwert "" |PlacementConstraints für den Aktualisierungsdienst. |
@@ -408,7 +407,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | OnlyBaseUpgrade | Boolesch, Standardwert „false“ | OnlyBaseUpgrade für UpgradeService. |
 | TestCabFolder | string, Standardwert "" | TestCabFolder für UpgradeService. |
 
-### <a name="section-name-securityclientaccess"></a>Name des Abschnitts: Security/ClientAccess
+## <a name="securityclientaccess"></a>Security/ClientAccess
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | CreateName |string, Standardwert „Admin“ |Sicherheitskonfiguration für die Erstellung des Benennungs-URI. |
@@ -495,7 +494,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | GetClusterConfigurationUpgradeStatus | string, Standardwert „Admin\“|\|Benutzer" | Löst GetClusterConfigurationUpgradeStatus auf einer Partition aus. |
 | GetClusterConfiguration | string, Standardwert „Admin\“|\|Benutzer" | Löst GetClusterConfiguration auf einer Partition aus. |
 
-### <a name="section-name-reconfigurationagent"></a>Name des Abschnitts: ReconfigurationAgent
+## <a name="reconfigurationagent"></a>ReconfigurationAgent
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | ApplicationUpgradeMaxReplicaCloseDuration | Zeit in Sekunden, Standardwert 900 |Geben Sie die Zeitspanne in Sekunden an. Die Dauer, die das System wartet, bevor Diensthosts beendet werden, deren Replikate nicht geöffnet werden können. |
@@ -506,7 +505,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | FabricUpgradeMaxReplicaCloseDuration | Zeit in Sekunden, Standardwert 900 | Geben Sie die Zeitspanne in Sekunden an. Die maximale Dauer, die RA wartet, bevor der Diensthost des Replikats beendet wird, das nicht geschlossen wird. |
 | IsDeactivationInfoEnabled | Boolesch, Standardwert „true“ | Bestimmt, ob RA Deaktivierungsinformationen zum Ausführen der primären erneuten Auswahl nutzt. Bei neuen Clustern sollte diese Konfiguration auf „true“ festgelegt werden. Für vorhandene Cluster, die aktualisiert werden, finden Sie in den Anmerkungen zur Version Informationen zur Aktivierung. |
 
-### <a name="section-name-placementandloadbalancing"></a>Name des Abschnitts: PlacementAndLoadBalancing
+## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | TraceCRMReasons |Boolesch, Standardwert „true“ |Gibt an, ob Gründe für von CRM ausgegebene Datenverschiebungen zum Kanal für Betriebsereignisse verfolgt werden sollen. |
@@ -558,12 +557,12 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |PartiallyPlaceServices | Boolesch, Standardwert „true“ | Bestimmt, ob alle Dienstreplikate im Cluster „ganz oder gar nicht“ platziert werden, wenn nur beschränkt geeignete Knoten vorhanden sind.|
 |InterruptBalancingForAllFailoverUnitUpdates | Boolesch, Standardwert „false“ | Bestimmt, ob jede Art von Aktualisierung der Failovereinheiten schnelle oder langsame Lastenausgleiche unterbrechen soll. Bei „false“ werden Lastenausgleiche unterbrochen, wenn die Failovereinheit erstellt/gelöscht wird, ihr Replikate fehlen bzw. sie einen geänderten Speicherort für das primäre Replikat oder eine geänderte Anzahl von Replikaten aufweist. Lastenausgleiche werden in anderen Fällen NICHT unterbrochen: wenn die Failovereinheit über zusätzliche Replikate verfügt, ein Replikatflag geändert wurde, nur die Partitionsversion geändert wurde oder in anderen Fällen. |
 
-### <a name="section-name-security"></a>Name des Abschnitts: Security
+## <a name="security"></a>Sicherheit
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | ClusterProtectionLevel |„None“ oder „EncryptAndSign“ |„None“ (Standard) für unsichere Cluster, „EncryptAndSign“ für sichere Cluster. |
 
-### <a name="section-name-hosting"></a>Name des Abschnitts: Hosting
+## <a name="hosting"></a>Hosting
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | ServiceTypeRegistrationTimeout |Zeit in Sekunden, Standardwert 300 |Die maximale Zeit, die der Diensttyp beim Fabric registriert sein darf |
@@ -572,18 +571,18 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | ActivationMaxRetryInterval |Zeit in Sekunden, Standardwert 300 |Bei jedem fortlaufenden Aktivierungsfehler wiederholt das System die Aktivierung bis zum Wert von „ActivationMaxFailureCount“. „ActivationMaxRetryInterval“ gibt die Wartezeit nach jedem Aktivierungsfehler vor der Wiederholung an |
 | ActivationMaxFailureCount |Ganze Zahl, Standardeinstellung 10 |Die maximale Anzahl der Wiederholungsversuche nach misslungener Aktivierung, ehe die Versuche eingestellt werden |
 
-### <a name="section-name-failovermanager"></a>Name des Abschnitts: FailoverManager
+## <a name="failovermanager"></a>FailoverManager
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | PeriodicLoadPersistInterval |Zeit in Sekunden, Standardwert 10 |Hiermit wird bestimmt, wie oft der FM eine Überprüfung auf neue Auslastungsberichte durchführt |
 
-### <a name="section-name-federation"></a>Name des Abschnitts: Federation
+## <a name="federation"></a>Verbund
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | LeaseDuration |Zeit in Sekunden, Standardwert 30 |Dauer einer Lease zwischen einem Knoten und seinen Nachbarn. |
 | LeaseDurationAcrossFaultDomain |Zeit in Sekunden, Standardwert 30 |Dauer einer fehlerdomänenübergreifenden Lease zwischen einem Knoten und seinen Nachbarn. |
 
-### <a name="section-name-clustermanager"></a>Name des Abschnitts: ClusterManager
+## <a name="clustermanager"></a>ClusterManager
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 | UpgradeStatusPollInterval |Zeit in Sekunden, Standardwert 60 |Die Häufigkeit des Abrufs des Upgradestatus der Anwendung. Dieser Wert bestimmt die Aktualisierungsrate für Aufrufe von „GetApplicationUpgradeProgress“ |

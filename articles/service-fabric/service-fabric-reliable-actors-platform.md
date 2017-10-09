@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 09/20/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 0a12da52b6e74c721cd25f89e7cde3c07153a396
-ms.lasthandoff: 04/14/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 43b3f758fe7017c0ec949ba6e28b76438cf1bc13
+ms.contentlocale: de-de
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Verwendung der Service Fabric-Plattform durch Reliable Actors
@@ -31,7 +31,7 @@ In diesem Artikel wird die Funktionsweise von Reliable Actors auf der Azure Serv
 Diese Komponenten bilden zusammen das Reliable Actors-Framework.
 
 ## <a name="service-layering"></a>Dienstebenen
-Da der Akteurdienst selbst einer der Reliable Services ist, gelten alle Konzepte für Reliable Services wie [Anwendungsmodell](service-fabric-application-model.md), Lebenszyklus, [Verpackung](service-fabric-package-apps.md), [Bereitstellung](service-fabric-deploy-remove-applications.md), Upgrade und Skalierung auch für Akteurdienste. 
+Da der Akteurdienst selbst einer der Reliable Services ist, gelten alle Konzepte für Reliable Services wie [Anwendungsmodell](service-fabric-application-model.md), Lebenszyklus, [Verpackung](service-fabric-package-apps.md), [Bereitstellung](service-fabric-deploy-remove-applications.md), Upgrade und Skalierung auch für Akteurdienste.
 
 ![Akteurdienstebenen][1]
 
@@ -372,6 +372,35 @@ ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
 Bei Verwendung von GUIDs/UUIDs und Zeichenfolgen werden für die Werte Int64-Hashwerte erstellt. Allerdings wird bei der expliziten Bereitstellung eines Int64-Werts für eine `ActorId` der Int64-Wert direkt einer Partition zugeordnet, ohne dass ein weiteres Hashing erfolgt. Sie können dieses Verfahren verwenden, um zu steuern, in welcher Partition die Akteure platziert werden.
+
+## <a name="actor-using-remoting-v2-stack"></a>Akteur (Actor), der den Remoting V2-Stapel verwendet
+Ab dem 2.8-NuGet-Paket können Benutzer den Remoting V2-Stapel verwenden, der leistungsfähiger ist und Funktionalität wie etwa benutzerdefinierte Serialisierung bietet. Remoting V2 ist nicht abwärtskompatibel mit vorhandenen dem Remotingstapel (dieser wird jetzt als V1-Remotingstapel bezeichnet).
+
+Folgende Änderungen sind erforderlich, um den Remoting V2-Stapel verwenden zu können.
+ 1. Fügen Sie das folgende Assembly-Attribut zu Actor-Schnittstellen hinzu.
+   ```csharp
+   [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
+   ```
+
+ 2. Erstellen und aktualisieren Sie ActorService- und Akteurclient-Projekte, sodass in ihnen der V2-Stapel verwendet wird.
+
+### <a name="actor-service-upgrade-to-remoting-v2-stack-without-impacting-service-availability"></a>ActorService-Upgrade auf den Remoting V2-Stapel, ohne dass die Dienstverfügbarkeit beeinträchtigt wird
+Diese Änderung ist ein Upgrade in 2 Schritten. Führen Sie die Schritte in der Reihenfolge aus, in der sie aufgeführt sind.
+
+1.  Fügen Sie das folgende Assembly-Attribut zu Actor-Schnittstellen hinzu. Mit diesem Attribut werden zwei Listener für ActorService gestartet, V1- (vorhandener) und V2-Listener. Aktualisieren Sie ActorService mit dieser Änderung.
+
+  ```csharp
+  [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.CompatListener,RemotingClient = RemotingClient.V2Client)]
+  ```
+
+2. Aktualisieren Sie ActorClients (Akteurclients), nachdem Sie das vorgenannte Upgrade abgeschlossen haben.
+Mit diesem Schritt wird sichergestellt, dass der Akteur-Proxy den Remoting V2-Stapel verwendet.
+
+3. Dieser Schritt ist optional. Ändern Sie das oben aufgeführte Attribut, um den V1-Listener zu entfernen.
+
+    ```csharp
+    [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
