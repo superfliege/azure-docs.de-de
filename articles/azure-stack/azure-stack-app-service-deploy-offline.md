@@ -126,8 +126,7 @@ Dieses erste Skript erstellt zusammen mit der Azure Stack-Zertifizierungsstelle 
 
 17. Klicken Sie neben dem Feld **Stammzertifikatdatei des Ressourcenanbieters** auf die Schaltfläche **Durchsuchen**. Wechseln Sie zum [zuvor erstellten](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps) Zertifikat **AzureStackCertificationAuthority**.
 
-18. Klicken Sie auf **Weiter**.
- Das Installationsprogramm überprüft das angegebene Zertifikatkennwort.
+18. Klicken Sie auf **Weiter**. Das Installationsprogramm überprüft das angegebene Zertifikatkennwort.
 
     ![App Service in Azure Stack – Zertifikatdetails][8]
 
@@ -144,13 +143,11 @@ Dieses erste Skript erstellt zusammen mit der Azure Stack-Zertifizierungsstelle 
     > [!NOTE]
     > In den Technical Previews stellt das Installationsprogramm des App Service-Ressourcenanbieters auch eine Standard-A1-Instanz bereit, die als einfacher Dateiserver zur Unterstützung von Azure Resource Manager fungiert. Dies wird für Konfigurationen mit einem Knoten als zentraler Kontaktpunkt beibehalten. Bei allgemeiner Verfügbarkeit ermöglicht das App Service-Installationsprogramm die Verwendung eines hochverfügbaren Dateiservers für Produktionsworkloads.
 
-20. Wählen Sie aus den VM-Images, die im Computeressourcenanbieter für die App Service-Cloud verfügbar sind, Ihr VM-Bereitstellungsimage für **Windows Server 2016** aus. Klicken Sie auf **Weiter**.
- 
+20. Wählen Sie aus den VM-Images, die im Computeressourcenanbieter für die App Service-Cloud verfügbar sind, Ihr VM-Bereitstellungsimage für **Windows Server 2016** aus. Klicken Sie auf **Weiter**. 
 
     ![App Service in Azure Stack – Auswahl des VM-Images][10]
 
 21. Geben Sie einen Benutzernamen und ein Kennwort für die in der App Service-Cloud konfigurierten Workerrollen ein. Geben Sie einen Benutzernamen und ein Kennwort für alle weiteren App Service-Rollen ein. Klicken Sie auf **Weiter**.
-
 
     ![App Service in Azure Stack – Eingabe von Anmeldeinformationen][11]
 
