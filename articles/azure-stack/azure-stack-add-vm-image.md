@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: sngun
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: e726ef05632c7983a45fae191bb0a2ad18fc2553
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: de8540397b63093457382cf427a65ea0e48b93e0
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Verfügbarmachen eines benutzerdefinierten VM-Images in Azure Stack
+
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure Stack ermöglicht Betreibern die Bereitstellung benutzerdefinierter VM-Images für ihre Benutzer. Auf diese Images kann von Azure Resource Manager-Vorlagen verwiesen werden, oder die Images können der Azure Marketplace-Benutzeroberfläche bei der Erstellung eines Marketplace-Elements hinzugefügt werden. 
 
@@ -50,19 +52,25 @@ Führen Sie nun die folgenden Schritte aus, um das Image dem Azure Stack-Marketp
    Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
    ``` 
 
-2. Melden Sie sich bei Ihrer Azure Stack-Umgebung an. Führen Sie abhängig davon, ob die Azure Stack-Umgebung mit AAD oder AD FS bereitgestellt wird, das entsprechende Skript aus, und ersetzen Sie dabei den AAD-Mandantennamen: 
+2. Melden Sie sich bei Ihrer Azure Stack-Umgebung an. Führen Sie eines der folgenden Skripts aus – je nachdem, ob Ihre Azure Stack-Umgebung über AAD oder AD FS bereitgestellt wurde (ersetzen Sie die AAD-Werte „tenantName“, „GraphAudience“ und „ArmEndpoint“ durch die für Ihre Umgebungskonfiguration zutreffenden Werte): 
 
    a. Verwenden Sie für **Azure Active Directory** das folgende Cmdlet:
 
    ```PowerShell
-   # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
+   # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+   # For Azure Stack development kit, this value is set to https://graph.windows.net/. To get this value for Azure Stack integrated systems, contact your service provider.
+   $GraphAudience = "<GraphAuidence endpoint for your environment>"
+
+   #Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
    Add-AzureRMEnvironment `
      -Name "AzureStackAdmin" `
-     -ArmEndpoint "https://adminmanagement.local.azurestack.external" 
+     -ArmEndpoint $ArmEndpoint 
 
    Set-AzureRmEnvironment `
     -Name "AzureStackAdmin" `
-    -GraphAudience "https://graph.windows.net/"
+    -GraphAudience $GraphAudience
 
    $TenantID = Get-AzsDirectoryTenantId `
      -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
@@ -76,14 +84,20 @@ Führen Sie nun die folgenden Schritte aus, um das Image dem Azure Stack-Marketp
    b. Verwenden Sie für **Active Directory-Verbunddienste (AD FS)** das folgende Cmdlet:
     
    ```PowerShell
+   # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+   # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+   $GraphAudience = "<GraphAuidence endpoint for your environment>"
+
    # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
    Add-AzureRMEnvironment `
      -Name "AzureStackAdmin" `
-     -ArmEndpoint "https://adminmanagement.local.azurestack.external"
+     -ArmEndpoint $ArmEndpoint
 
    Set-AzureRmEnvironment `
      -Name "AzureStackAdmin" `
-     -GraphAudience "https://graph.local.azurestack.external/" `
+     -GraphAudience $GraphAudience `
      -EnableAdfsAuthentication:$true
 
    $TenantID = Get-AzsDirectoryTenantId `

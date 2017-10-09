@@ -12,17 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 09/25/2017
 ms.author: sngun
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: b6767969084d91950d20ca8f1623c8ab24f951f0
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 5555ee022e74b5d4791c5826ef80b166c4990a61
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="install-powershell-for-azure-stack"></a>Installieren von PowerShell für Azure Stack  
+
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Für die Verwendung von Azure Stack sind mit Azure Stack kompatible Azure PowerShell-Module erforderlich. In diesem Handbuch werden die Schritte erläutert, die zum Installieren von PowerShell für Azure Stack erforderlich sind. Führen Sie die in diesem Artikel beschriebenen Schritte entweder über das Azure Stack Development Kit oder über einen Windows-basierten externen Client aus, wenn eine Verbindung über VPN besteht.
 
@@ -131,7 +133,7 @@ In einem nicht verbundenen Szenario müssen Sie zuerst die PowerShell-Module auf
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Herunterladen von Azure Stack-Tools von GitHub](azure-stack-powershell-download.md)
-* [Konfigurieren der PowerShell-Umgebung des Azure Stack-Benutzers](azure-stack-powershell-configure-user.md)  
+* [Konfigurieren der PowerShell-Umgebung des Azure Stack-Benutzers](user/azure-stack-powershell-configure-user.md)  
 * [Konfigurieren der PowerShell-Umgebung des Azure Stack-Betreibers](azure-stack-powershell-configure-admin.md) 
 * [Verwalten von API-Versionsprofilen in Azure Stack](azure-stack-version-profiles.md)  
 

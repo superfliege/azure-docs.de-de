@@ -1,5 +1,5 @@
 ---
-title: "Erstellen einer Funktion in Azure, die durch Warteschlangenmeldungen ausgelöst wird | Microsoft-Dokumentation"
+title: "Hinzufügen von Meldungen in die Warteschlange von Azure Storage mithilfe von Functions | Microsoft-Dokumentation"
 description: Erstellen Sie mithilfe von Azure Functions eine serverlose Funktion, die durch eine Meldung an eine Warteschlange von Azure Storage aufgerufen wird.
 services: azure-functions
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/17/2017
+ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 57c59273a9da55f3e357764c522b444ae2d73cb5
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 822879861ee8189cdd413f0061f26fb91819d88d
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Hinzufügen von Meldungen in die Warteschlange von Azure Storage mithilfe von Functions

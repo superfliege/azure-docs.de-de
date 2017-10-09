@@ -1,10 +1,10 @@
 ---
-title: Monitor health and alerts in Azure Stack | Microsoft Docs
-description: Learn how to monitor health and alerts in Azure Stack.
+title: "Überwachen von Integrität und Warnungen in Azure Stack | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie die Integrität und Warnungen in Azure Stack überwacht werden."
 services: azure-stack
 documentationcenter: 
-author: chasat-MS
-manager: dsavage
+author: twooley
+manager: byronr
 editor: 
 ms.assetid: 69901c7b-4673-4bd8-acf2-8c6bdd9d1546
 ms.service: azure-stack
@@ -12,68 +12,68 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
-ms.author: chasat
+ms.date: 09/25/2017
+ms.author: twooley
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 93835eabcf9622735aada0f5dfa46028553c25bd
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b2ba7ec922341464ea7160d08e475999c941c42a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="monitor-health-and-alerts-in-azure-stack"></a>Monitor health and alerts in Azure Stack
+# <a name="monitor-health-and-alerts-in-azure-stack"></a>Überwachen von Integrität und Warnungen in Azure Stack
 
-Azure Stack includes infrastructure monitoring capabilities that enable a cloud operator to view health and alerts for an Azure Stack region.
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Azure Stack has a set of region management capabilities available in the **Region management** tile. This tile, pinned by default in the administrator portal for the Default Provider Subscription, lists all the deployed regions of Azure Stack. It also shows the count of active critical and warning alerts for each region. This tile is your entry point into the health and alert functionality of Azure Stack.
+Azure Stack umfasst Funktionen zur Infrastrukturüberwachung, mit denen Sie Informationen zu Integrität und Warnungen für eine Azure Stack-Region anzeigen können. Auf der Kachel **Regionsverwaltung**, die standardmäßig im Administratorportal für das Standardanbieterabonnement angeheftet ist, werden alle bereitgestellten Regionen von Azure Stack aufgelistet. Die Kachel enthält die Anzahl aktiver kritischer Warnungen und Warnbenachrichtigungen für jede Region und ist Ihr Einstiegspunkt in die Integritäts- und Warnfunktion von Azure Stack.
 
- ![The Region Management tile](media/azure-stack-monitor-health/image1.png)
+ ![Kachel „Regionsverwaltung“](media/azure-stack-monitor-health/image1.png)
 
- ## <a name="understand-health-in-azure-stack"></a>Understand health in Azure Stack
+ ## <a name="understand-health-in-azure-stack"></a>Grundlegendes zur Integrität in Azure Stack
 
- Health and alerts are managed in Azure Stack by the Health resource provider. Azure Stack infrastructure components register with the Health resource provider during Azure Stack deployment and configuration. This registration enables the display of health and alerts for each component. Health in Azure Stack is a simple concept. If alerts for a registered instance of a component exist, the health state of that component reflects the worst active alert severity; warning, or critical.
+ Die Integrität und Warnungen werden vom Integritätsressourcenanbieter verwaltet. Azure Stack-Infrastrukturkomponenten werden bei der Bereitstellung und Konfiguration von Azure Stack beim Integritätsressourcenanbieter registriert. Nach der Registrierung können die Integrität und Warnungen für jede Komponente angezeigt werden. Die Integrität in Azure Stack basiert auf einem einfachen Konzept. Wenn Warnungen für eine registrierte Instanz einer Komponente vorhanden sind, gibt der Integritätsstatus dieser Komponente den schlechtesten aktiven Warnungsschweregrad an, nämlich „Warnung“ oder „Kritisch“.
  
- ## <a name="view-and-manage-component-health-state"></a>View and manage component health state
+ ## <a name="view-and-manage-component-health-state"></a>Anzeigen und Verwalten des Integritätsstatus von Komponenten
  
- You can view the health state of components in both the Azure Stack administrator portal and through Rest API and PowerShell.
+ Als Azure Stack-Betreiber können Sie den Integritätsstatus der Komponenten im Administratorportal und über die Rest-API und PowerShell anzeigen.
  
-To view the health state in the portal, click the region that you want to view in the **Region management** tile. You can view the health state of infrastructure roles and of resource providers. Note that in this release, the Compute resource provider does not report health state.
+Um den Integritätsstatus im Portal anzuzeigen, klicken Sie auf die Region, die in der Kachel **Regionsverwaltung** angezeigt werden soll. Sie können den Integritätsstatus der Infrastrukturrollen und der Ressourcenanbieter anzeigen. Der Computeressourcenanbieter meldet in dieser Version nicht den Integritätsstatus.
 
-![List of infrastructure roles](media/azure-stack-monitor-health/image2.png)
+![Liste von Infrastrukturrollen](media/azure-stack-monitor-health/image2.png)
 
-You can click a resource provider or infrastructure role to view more detailed information.
+Um ausführlichere Informationen anzuzeigen, klicken Sie auf einen Ressourcenanbieter oder eine Infrastrukturrolle.
 
 > [!WARNING]
->If you click an infrastructure role, and then click the role instance, there are options in the **Role instance** blade to Start, Restart, or Shutdown. Do **not** use these options in an Azure Stack Development Kit environment. These options are designed only for a multi-node environment, where there is more than one role instance per infrastructure role. Restarting a role instance (especially AzS-Xrp01) in the development kit causes system instability. For troubleshooting assistance, please post your issue to the [Azure Stack forum](https://aka.ms/azurestackforum).
+>Wenn Sie auf eine Infrastrukturrolle und dann auf die Rolleninstanz klicken, werden Optionen zum Starten, Neustarten oder Herunterfahren angezeigt. Verwenden Sie diese Aktionen nicht beim Anwenden von Updates auf ein integriertes System. Verwenden Sie diese Optionen außerdem **nicht** in einer Azure Stack Development Kit-Umgebung. Diese Optionen sind nur für eine Umgebung mit integrierten Systemen konzipiert, in denen es mehr als eine Rolleninstanz pro Infrastrukturrolle gibt. Der Neustart einer Rolleninstanz (insbesondere „AzS-Xrp01“) im Development Kit führt zur Instabilität des Systems. Um Unterstützung bei der Problembehandlung zu erhalten, veröffentlichen Sie Ihr Problem im [Azure Stack-Forum](https://aka.ms/azurestackforum).
 >
  
-## <a name="view-alerts"></a>View alerts
+## <a name="view-alerts"></a>Anzeigen von Warnungen
 
-The list of active alerts for each Azure Stack region is available directly from the **Region management** blade. The first tile in the default configuration is the **Alerts** tile, which displays a summary of the critical and warning alerts for the region. You can pin the Alerts tile, like any other tile on this blade, to the dashboard for quick access.   
+Die Liste der aktiven Warnungen für jede Azure Stack-Region kann direkt über das Blatt **Regionsverwaltung** abgerufen werden. Die erste Kachel in der Standardkonfiguration ist die Kachel **Warnungen**, in der eine Zusammenfassung der Benachrichtigungen mit den Schweregraden „Kritisch“ und „Warnung“ für die Region angezeigt werden. Sie können die Kachel „Warnungen“ wie alle anderen Kacheln auf diesem Blatt für den Schnellzugriff an das Dashboard anheften.   
 
-![Alerts tile that shows a warning](media/azure-stack-monitor-health/image3.png)
+![Kachel „Warnungen“ mit einer Warnung](media/azure-stack-monitor-health/image3.png)
 
-By selecting the top portion of the **Alerts** tile, you navigate to the list of all active alerts for the region. If you select either the **Critical** or **Warning** line item within the tile, you navigate to a filtered list of alerts (Critical or Warning). 
+Durch Auswahl des oberen Teils der Kachel **Warnungen** navigieren Sie zur Liste aller aktiven Warnungen für die Region. Wenn Sie in der Kachel das Zeilenelement **Kritisch** oder **Warnung** auswählen, navigieren Sie zu einer gefilterten Liste von Warnungen („Kritisch“ oder „Warnung“). 
 
-![Filtered warning alerts](media/azure-stack-monitor-health/image4.png)
+![Nach „Warnung“ gefilterte Benachrichtigungen](media/azure-stack-monitor-health/image4.png)
   
-The **Alerts** blade supports the ability to filter both on status (Active or Closed) and severity (Critical or Warning). The default view displays all Active alerts. All closed alerts are removed from the system after seven days.
+Auf dem Blatt **Warnungen** können Benachrichtigungen nach Status („Aktiv“ oder „Geschlossen“) oder Schweregrad („Kritisch“ oder „Warnung“) gefiltert werden. Die Standardansicht zeigt alle aktiven Warnungen an. Alle geschlossene Warnungen werden nach sieben Tagen aus dem System entfernt.
 
-![Filter pane to filter by critical or warning status](media/azure-stack-monitor-health/image5.png)
+![Filterbereich zum Filtern nach dem Status „Kritisch“ oder „Warnung“](media/azure-stack-monitor-health/image5.png)
 
-The Alerts blade also exposes the **View API** action, which displays the Rest API that was used to generate the list view. This action provides a quick way to become familiar with the Rest API syntax that you can use to query alerts. You can use this API in automation or for integration with your existing datacenter monitoring, reporting, and ticketing solutions. 
+Die Aktion **API anzeigen** zeigt die zum Generieren der Listenansicht verwendete REST-API an. Anhand dieser Aktion können Sie sich schnell mit der REST-API-Syntax vertraut machen, die Sie zum Abfragen von Warnungen verwenden können. Sie können diese API bei der Automatisierung oder Integration in Ihre vorhandenen Rechenzentrumslösungen für die Überwachung, Berichterstattung und Ticketausstellung verwenden. 
 
-![The View API option that shows the Rest API](media/azure-stack-monitor-health/image6.png)
+![Option „API anzeigen“ mit Anzeige der REST-API](media/azure-stack-monitor-health/image6.png)
 
-From the Alerts blade, you can select an alert to navigate to the **Alert details** blade. This blade displays all fields that are associated with the alert, and enables quick navigation to the affected component and source of the alert. For example, the following alert occurs if one of the infrastructure role instances goes offline or is not accessible.  
+Sie können auf eine bestimmte Warnung klicken, um die Warnungsdetails anzuzeigen. In den Warnungsdetails werden alle Felder angezeigt, die der Warnung zugeordnet sind. Zudem ermöglichen sie eine schnelle Navigation zur betroffenen Komponente und Quelle der Warnung. Beispielsweise tritt die folgende Warnung auf, wenn eine der Infrastrukturrolleninstanzen offline geschaltet wird oder nicht aufrufbar ist.  
 
-![The Alert Details blade](media/azure-stack-monitor-health/image7.png)
+![Blatt „Warnungsdetails“](media/azure-stack-monitor-health/image7.png)
 
-After the infrastructure role instance is back online, this alert automatically closes.
+Nachdem die Infrastrukturrolleninstanz wieder online geschaltet wurde, wird diese Warnung automatisch geschlossen. Nicht alle, aber viele Warnungen werden automatisch geschlossen, wenn das zugrunde liegende Problem behoben wird. Es wird empfohlen, nach dem Ausführen der Schritte zur Behebung auf **Close Alert** (Warnung schließen) zu klicken. Wenn das Problem weiterhin auftritt, erstellt Azure Stack eine neue Warnung. Wenn Sie das Problem behoben haben, bleibt die Warnung geschlossen und erfordert keine weitere Aktion.
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-[Manage updates in Azure Stack](azure-stack-updates.md)
+[Verwalten von Updates in Azure Stack](azure-stack-updates.md)
 
-[Region management in Azure Stack](azure-stack-region-management.md)
+[Regionsverwaltung in Azure Stack](azure-stack-region-management.md)
 

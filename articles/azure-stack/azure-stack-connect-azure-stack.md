@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/22/2017
+ms.date: 09/25/2017
 ms.author: sngun
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: b5a1cd57106895fdd04f0281f0f81c0be0aca428
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 09c626e97832821009ce2da360ceea2b54273ffa
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="connect-to-azure-stack"></a>Herstellen einer Verbindung mit Azure Stack
+
+*Gilt für: Azure Stack Development Kit*
 
 Zum Verwalten von Ressourcen müssen Sie eine Verbindung mit dem Azure Stack Development Kit herstellen. Dieses Thema enthält Informationen zu den Schritten, die zum Herstellen einer Verbindung mit dem Development Kit erforderlich sind. Sie können eine der folgenden Verbindungsoptionen verwenden:
 
@@ -47,7 +49,7 @@ Sie können eine VPN-Verbindung vom Typ „Geteilter Tunnel“ mit einem Azure S
 ### <a name="prerequisites"></a>Voraussetzungen
 
 * Installieren Sie auf Ihrem lokalen Computer das [Azure Stack-kompatible Azure PowerShell-Modul](azure-stack-powershell-install.md).  
-* Laden Sie die [Tools herunter, die zum Arbeiten mit Azure Stack erforderlich sind](azure-stack-powershell-download.md). 
+* Laden Sie die [Tools herunter, die für die Arbeit mit Azure Stack benötigt werden](azure-stack-powershell-download.md). 
 
 ### <a name="configure-vpn-connectivity"></a>Konfigurieren von VPN-Konnektivität
 

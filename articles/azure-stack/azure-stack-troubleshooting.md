@@ -12,16 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: a7309693d8f7971e42768a13d12fa0a8bd81925a
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3b40a657ee8eb391d14a38cb95acc0729a8dda21
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Problembehandlung für Microsoft Azure Stack
+
+*Gilt für: Azure Stack Development Kit*
+
 Dieses Dokument enthält allgemeine Informationen zur Problembehandlung für Azure Stack. 
 
 Da das Technical Development Kit für Azure Stack als Auswertungsumgebung angeboten wird, ist kein offizieller Support vom Microsoft-Kundensupport verfügbar.  Suchen Sie im [MSDN-Forum für Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) nach weiterer Unterstützung und Informationen, falls Sie feststellen, dass ein Problem nicht dokumentiert ist.  

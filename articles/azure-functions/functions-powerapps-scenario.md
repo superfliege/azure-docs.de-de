@@ -17,10 +17,10 @@ ms.date: 08/25/2017
 ms.author: mblythe
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 0fd127293edfaf7eb19a4561ab8d0a19f993bcad
+ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
+ms.openlocfilehash: 1e262fde37b68bcfcee3c974deb91bd07965de19
 ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -30,6 +30,8 @@ Die Plattform [PowerApps](https://powerapps.microsoft.com) ermöglicht Fachleute
 In diesem Thema erstellen Sie eine App auf der Grundlage eines Wartungsszenarios für Windturbinen. Sie erfahren, wie Sie die Funktion aufrufen, die Sie in [Erstellen einer OpenAPI-Definition für eine Funktion](functions-openapi-definition.md) definiert haben. Die Funktion bestimmt, ob die Notfallreparatur einer Windturbine kosteneffizient ist.
 
 ![Fertige App in PowerApps](media/functions-powerapps-scenario/finished-app.png)
+
+Informationen zum Aufrufen derselben Funktion aus Microsoft Flow finden Sie unter [Call a function from Microsoft Flow](functions-flow-scenario.md) (Aufrufen einer Funktion aus Microsoft Flow).
 
 In diesem Thema lernen Sie Folgendes:
 
@@ -251,4 +253,4 @@ In diesem Thema wurde Folgendes vermittelt:
 
 Weitere Informationen zu PowerApps finden Sie in der [Einführung in PowerApps](https://powerapps.microsoft.com/tutorials/getting-started/).
 
-Ein weiteres interessantes Szenario mit Azure Functions finden Sie unter [Erstellen einer Funktion, die in Azure Logic Apps integriert ist](functions-twitter-email.md).
+Ein weiteres interessantes Szenario mit Azure Functions finden Sie unter [Call a function from Microsoft Flow](functions-flow-scenario.md) (Aufrufen einer Funktion aus Microsoft Flow) und [Erstellen einer Funktion, die in Azure Logic Apps integriert ist](functions-twitter-email.md).

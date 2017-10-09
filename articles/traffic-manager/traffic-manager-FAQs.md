@@ -3,7 +3,7 @@ title: "Azure Traffic Manager – Häufig gestellte Fragen (FAQs) | Microsoft-Do
 description: "Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Traffic Manager"
 services: traffic-manager
 documentationcenter: 
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/15/2017
+ms.date: 09/18/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 44762864e0a5adf568fcd4928b48661196f05b9e
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 868d3ee973a03aca82c9775371d9832b7a063e9a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 06/16/2017
 
 Traffic Manager arbeitet, wie unter [Funktionsweise von Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works) erläutert, auf der DNS-Ebene. Clients werden mithilfe von DNS-Antworten an den geeigneten Dienstendpunkt umgeleitet. Anschließend stellen Clients dann eine direkte Verbindung mit dem Dienstendpunkt her (nicht über Traffic Manager).
 
-Traffic Manager bietet daher keinen Endpunkt und keine IP-Adresse für die Verbindungsherstellung von Clients. Wenn also für einen Dienst eine statische IP-Adresse benötigt wird, muss diese im Dienst und nicht in Traffic Manager konfiguriert werden.
+Traffic Manager bietet daher keinen Endpunkt und keine IP-Adresse für die Verbindungsherstellung von Clients. Wenn für einen Dienst eine statische IP-Adresse benötigt wird, muss diese im Dienst und nicht in Traffic Manager konfiguriert werden.
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Unterstützt Traffic Manager persistente Sitzungen?
 
@@ -44,7 +44,7 @@ Traffic Manager arbeitet, wie unter [Funktionsweise von Traffic Manager](../traf
 
 Konzentrieren Sie sich daher bei der weiteren Untersuchung auf die Anwendung.
 
-Der vom Browser des Clients gesendete HTTP-Hostheader ist die häufigste Ursache für Probleme. Konfigurieren Sie die Anwendung so, dass der richtige Hostheader für den verwendeten Domänennamen akzeptiert wird. Informationen zu Endpunkten, die den Azure App Service nutzen, finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Services, der Traffic Manager verwendet](../app-service-web/web-sites-traffic-manager-custom-domain-name.md).
+Der vom Browser des Clients gesendete HTTP-Hostheader ist die häufigste Ursache für Probleme. Konfigurieren Sie die Anwendung so, dass der richtige Hostheader für den verwendeten Domänennamen akzeptiert wird. Informationen zu Endpunkten, die den Azure App Service nutzen, finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Services, der Traffic Manager verwendet](../app-service/web-sites-traffic-manager-custom-domain-name.md).
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Wie wirkt sich die Verwendung von Traffic Manager auf die Leistung aus?
 
@@ -69,9 +69,8 @@ Um dieses Problem zu umgehen, wird empfohlen, eine HTTP-Umleitung zu verwenden, 
 Die uneingeschränkte Unterstützung von Naked-Domänen in Traffic Manager ist Teil unseres Feature-Backlogs. Sie können die Unterstützung für diese Funktionsanforderung registrieren, indem Sie [auf unserer Community-Feedbackwebsite dafür abstimmen](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Berücksichtigt Traffic Manager beim Verarbeiten von DNS-Abfragen die Clientsubnetzadresse? 
-Nein, momentan berücksichtigt Traffic Manager beim Ausführen von Suchen mithilfe der geografischen und der leistungsbezogenen Routingmethode nur die Quell-IP-Adresse der empfangenen DNS-Abfrage, bei der es sich in den meisten Fällen um die IP-Adresse des DNS-Resolvers handelt.  
-Insbesondere [RFC 7871 – Client Subnet in DNS Queries](https://tools.ietf.org/html/rfc7871), über den ein [Extension Mechanism for DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) bereitgestellt wird, der die Clientsubnetzadresse vom unterstützenden Resolver an die DNS-Server ermöglicht, wird in Traffic Manager zurzeit nicht unterstützt. Sie können auf der [Community-Feedbackwebsite](https://feedback.azure.com/forums/217313-networking) für die Unterstützung für diese Funktionsanforderung abstimmen.
-
+Ja. Zusätzlich zur empfangenen IP-Quelladresse der DNS-Abfrage (normalerweise die IP-Adresse des DNS-Resolvers) berücksichtigt Traffic Manager beim Durchführen von Suchvorgängen für geografische und leistungsbezogene Routingmethoden auch die Clientsubnetzadresse, sofern sie vom Resolver, der die Anforderung im Namen des Endbenutzers durchführt, in die Abfrage eingebunden wird.  
+Insbesondere [RFC 7871 – Client Subnet in DNS Queries](https://tools.ietf.org/html/rfc7871), über den ein [Extension Mechanism for DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) bereitgestellt wird, der die Clientsubnetzadresse von unterstützenden Resolvern weitergeben kann.
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Was ist DNS TTL, und wie wirkt DNS TTL sich auf meine Benutzer aus?
 
@@ -118,13 +117,119 @@ Allen Endpunkten in einem Profil mit geografischem Routing muss mindestens eine 
 
 ###  <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Warum wird es Kunden dringend empfohlen, in einem Profil mit aktiviertem geografischem Routing geschachtelte Profile anstelle von Endpunkten zu erstellen? 
 
-Beim geografischen Routingtyp kann eine Region nur einem Endpunkt innerhalb eines Profils zugeordnet sein. Wenn der betreffende Endpunkt kein geschachtelter Typ mit zugeordnetem untergeordnetem Profil ist, fährt Traffic Manager auch bei nicht intaktem Integritätsstatus des betreffenden Endpunkts fort, Verkehr an den Endpunkt zu senden, da die Alternative, gar keinen Verkehr zu senden, nicht besser ist. Traffic Manager führt kein Failover zu einem anderen Endpunkt aus, selbst wenn die zugeordnete Region dem nicht mehr intakten Endpunkt „übergeordnet“ ist (z.B. erfolgt kein Failover auf einen anderen Endpunkt mit der Region „Europa“, wenn ein Endpunkt mit der Region „Spanien“ nicht mehr intakt ist). Dies erfolgt, um sicherzustellen, dass Traffic Manager die geografischen Grenzen beachtet, die Kunden in ihren Profilen konfiguriert haben. Um den Vorzug des Failovers auf einen anderen Endpunkt nutzen zu können, wenn die Integrität eines Endpunkts nicht mehr intakt ist, wird empfohlen, dass geografische Regionen geschachtelten Profilen, die mehrere Endpunkte enthalten, anstelle von einzelnen Endpunkten zugeordnet werden. Wenn ein Endpunkt innerhalb des untergeordneten Profils ausfällt, kann auf diese Weise ein Failover des Datenverkehrs auf einen anderen Endpunkt innerhalb des gleichen geschachtelten untergeordneten Profils erfolgen.
+Beim geografischen Routingtyp kann eine Region nur einem Endpunkt innerhalb eines Profils zugeordnet sein. Wenn der betreffende Endpunkt kein geschachtelter Typ mit zugeordnetem untergeordnetem Profil ist, fährt Traffic Manager auch bei nicht intaktem Integritätsstatus des betreffenden Endpunkts fort, Verkehr an den Endpunkt zu senden, da die Alternative, gar keinen Verkehr zu senden, nicht besser ist. Traffic Manager führt auch dann kein Failover zu einem anderen Endpunkt aus, wenn die zugeordnete Region dem nicht mehr intakten Endpunkt „übergeordnet“ ist (z.B. erfolgt kein Failover auf einen anderen Endpunkt mit der Region „Europa“, wenn ein Endpunkt mit der Region „Spanien“ nicht mehr intakt ist). Dies erfolgt, um sicherzustellen, dass Traffic Manager die geografischen Grenzen beachtet, die Kunden in ihren Profilen konfiguriert haben. Um den Vorzug des Failovers auf einen anderen Endpunkt nutzen zu können, wenn die Integrität eines Endpunkts nicht mehr intakt ist, wird empfohlen, dass geografische Regionen geschachtelten Profilen, die mehrere Endpunkte enthalten, anstelle von einzelnen Endpunkten zugeordnet werden. Wenn ein Endpunkt innerhalb des untergeordneten Profils ausfällt, kann auf diese Weise ein Failover des Datenverkehrs auf einen anderen Endpunkt innerhalb des gleichen geschachtelten untergeordneten Profils erfolgen.
 
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Gibt es Einschränkungen hinsichtlich der API-Version, die diesen Routingtyp unterstützt?
 
 Ja, nur die API-Version 2017-03-01 und höhere Versionen unterstützen den geografischen Routingtyp. Ältere API-Versionen können nicht zum Erstellen von Profilen vom geografischen Routingtyp oder zum Zuweisen von geografischen Regionen zu Endpunkten verwendet werden. Wenn eine ältere API-Version zum Abrufen von Profilen aus einem Azure-Abonnement verwendet wird, werden keine Profile mit dem geografischen Routingtyp zurückgegeben. Darüber hinaus wird bei Verwendung älterer API-Versionen für zurückgegebene Profile, die Endpunkte mit einer geografischen Regionszuweisung aufweisen, die geografische Regionszuweisung nicht angezeigt.
 
+## <a name="real-user-measurements"></a>Benutzer-Realmessungen
 
+>[!NOTE]
+>Das Feature „Benutzer-Realmessungen“ in Traffic Manager befindet sich in der öffentlichen Vorschauphase (Public Preview) und ist unter Umständen nicht so verfügbar und zuverlässig wie Features in Versionen mit allgemeiner Verfügbarkeit. Das Feature wird nicht unterstützt, bietet möglicherweise eingeschränkte Funktionen und ist vielleicht nicht an allen Azure-Standorten verfügbar. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite mit den [Azure-Updates](https://azure.microsoft.com/updates/?product=traffic-manager).
+
+### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Welche Vorteile hat die Verwendung von Benutzer-Realmessungen?
+Wenn Sie die Routingmethode „Leistung“ verwenden, wählt Traffic Manager für Ihre Endbenutzer die beste Azure-Region aus, mit der eine Verbindung hergestellt werden kann. Hierzu werden die Quell-IP und das EDNS-Clientsubnetz (falls übergeben) untersucht und mit den Intelligence-Daten zur Netzwerklatenz des Diensts abgeglichen. Mithilfe von Benutzer-Realmessungen wird dies für Ihre Endbenutzer verbessert, indem deren Erfahrungen zu dieser Latenztabelle einen Beitrag leisten. Außerdem wird sichergestellt, dass diese Tabelle in adäquater Weise die Endbenutzernetzwerke widerspiegelt, aus denen die Endbenutzer Verbindungen mit Azure herstellen. Dies führt zu einer höheren Genauigkeit beim Routing für Ihre Endbenutzer.
+
+### <a name="can-i-use-real-user-measurements-with-non-azure-regions"></a>Kann ich Benutzer-Realmessungen auch für andere Regionen als Azure-Regionen verwenden?
+Bei Benutzer-Realmessungen wird nur die Latenz bei der Erreichung von Azure-Regionen gemessen und gemeldet. Wenn Sie das leistungsbasierte Routing für Endpunkte verwenden, die in anderen Regionen als Azure-Regionen gehostet werden, können Sie trotzdem von diesem Feature profitieren. Sie verfügen so nämlich über mehr Latenzinformationen zur repräsentativen Azure-Region, die Sie für die Zuordnung zu diesem Endpunkt ausgewählt haben.
+
+### <a name="which-routing-method-benefits-from-real-user-measurements"></a>Welche Routingmethode profitiert von Benutzer-Realmessungen?
+Die zusätzlichen Informationen, die mit Benutzer-Realmessungen ermittelt werden, gelten nur für Profile, für die die Routingmethode „Leistung“ verwendet wird. Beachten Sie, dass der Link für „Benutzer-Realmessungen“ für alle Profile verfügbar ist, wenn Sie das Azure-Portal zum Anzeigen verwenden.
+
+### <a name="do-i-need-to-enable-real-user-measurements-each-profile-separately"></a>Muss ich Benutzer-Realmessungen für jedes Profil separat aktivieren?
+Nein. Sie müssen sie nur einmal pro Abonnement aktivieren. Alle gemessenen und gemeldeten Latenzinformationen sind dann für alle Profile verfügbar.
+
+### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Wie deaktiviere ich Benutzer-Realmessungen für mein Abonnement?
+Sie können die Berechnung von Gebühren für Benutzer-Realmessungen beenden, wenn Sie aufhören, über Ihre Clientanwendung Latenzmessungen zu sammeln und einzusenden. Wenn JavaScript-Code für die Messung beispielsweise in Webseiten eingebettet ist, können Sie die Nutzung dieses Features beenden, indem Sie den JavaScript-Code entfernen oder das Aufrufen beim Rendern der Seite deaktivieren.
+Eine weitere Möglichkeit zum Deaktivieren von Benutzer-Realmessungen ist das Löschen Ihres Schlüssels. Wenn Sie die Deaktivierung durchführen, werden alle Messungen verworfen, die über diesen Schlüssel an Traffic Manager gesendet werden.
+
+### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Kann ich Benutzer-Realmessungen mit anderen Anwendungen als Webseiten nutzen?
+Ja. Benutzer-Realmessungen sind so konzipiert, dass Daten erfasst werden können, die über unterschiedliche Arten von Endbenutzerclients gesammelt werden. Diese häufig gestellten Fragen werden aktualisiert, wenn neue Arten von Clientanwendungen unterstützt werden.
+
+### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>Wie viele Messungen werden jeweils durchgeführt, wenn meine Webseite mit aktivierten Benutzer-Realmessungen gerendert wird?
+Wenn Benutzer-Realmessungen mit dem angegebenen JavaScript-Code für Messungen verwendet werden, führt jeder Renderingvorgang der Seite dazu, dass sechs Messungen durchgeführt werden. Diese werden dann an den Traffic Manager-Dienst gemeldet. Beachten Sie, dass Ihnen dieses Feature basierend auf der Anzahl von Messungen berechnet wird, die an den Traffic Manager-Dienst gemeldet werden. Wenn der Benutzer beispielsweise von Ihrer Webseite weg navigiert, während die Messungen durchgeführt werden, und dies vor dem Melden der Ergebnisse geschieht, werden diese Messungen nicht für die Abrechnung herangezogen.
+
+### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>Kommt es zu einer Verzögerung, bevor das Skript für Benutzer-Realmessungen auf meiner Webseite ausgeführt wird?
+Nein. Vor dem Aufrufen des Skripts kommt es nicht zu einer programmierten Verzögerung.
+
+### <a name="can-i-use-configure-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Kann ich Benutzer-Realmessungen nur für die Azure-Regionen verwenden, für die ich Messungen durchführen möchte?
+Nein. Bei jedem Aufruf wird mit dem Skript für Benutzer-Realmessungen eine Gruppe von sechs Azure-Regionen gemessen, die vom Dienst bestimmt wird. Diese Gruppe ändert sich zwischen den einzelnen Aufrufen, und wenn eine große Zahl dieser Aufrufe erfolgt, werden durch die Messungen unterschiedliche Azure-Regionen abgedeckt.
+
+### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Kann ich die Anzahl von durchgeführten Messungen auf einen bestimmten Wert beschränken?
+Der JavaScript-Code für die Messung ist in Ihre Webseite eingebettet, und Sie haben die vollständige Kontrolle darüber, wann Sie den Vorgang starten und beenden. Solange der Traffic Manager-Dienst eine Anforderung zum Messen einer Liste mit Azure-Regionen erhält, wird eine Gruppe von Regionen zurückgegeben. Beachten Sie auch, dass Ihnen während der Vorschauphase keine Messungen, die an Traffic Manager gemeldet werden, berechnet werden.
+
+### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Kann ich die Messungen, die von meiner Clientanwendung durchgeführt werden, als Teil der Benutzer-Realmessungen anzeigen?
+Da die Messlogik über Ihre Clientanwendung ausgeführt wird, haben Sie die vollständige Kontrolle über die Abläufe, also auch über die Anzeige der Latenzmessungen. Traffic Manager stellt keine Aggregatansicht der Messungen bereit, die über den mit Ihrem Abonnement verknüpften Schlüssel eingehen.
+
+### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Kann ich das von Traffic Manager bereitgestellte Skript für die Messungen ändern?
+Sie können zwar steuern, was auf Ihrer Webseite eingebettet ist, aber wir raten dringend davon ab, Änderungen am Skript für die Messungen vorzunehmen. So ist sichergestellt, dass die Latenzen richtig gemessen und gemeldet werden.
+
+### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>Können andere Personen den Schlüssel sehen, den ich für Benutzer-Realmessungen verwende?
+Wenn Sie das Skript für die Messungen in eine Webseite einbetten, können andere Personen das Skript und Ihren Schlüssel für Benutzer-Realmessungen (Real User Measurements, RUM) anzeigen. Folgender Hinweis ist hierbei wichtig: Dieser Schlüssel unterscheidet sich von der Abonnement-ID und wird von Traffic Manager nur für diesen Zweck generiert. Wenn Ihr RUM-Schlüssel anderen Personen bekannt ist, bedeutet dies also nicht, dass die Sicherheit Ihres Azure-Kontos kompromittiert ist.
+
+### <a name="can-others-abuse-my-rum-key"></a>Können andere Personen meinen RUM-Schlüssel für schädliche Zwecke missbrauchen?
+Es ist zwar möglich, dass Ihr Schlüssel von anderen Personen genutzt wird, um falsche Informationen an Azure zu senden. Durch einige falsche Messergebnisse ändert sich aber nicht das Routing, da diese zusammen mit allen anderen Messungen, die wir erhalten, berücksichtigt werden. Falls Sie Ihre Schlüssel ändern müssen, können Sie einen Schlüssel neu generieren. Der alte Schlüssel wird dann verworfen.
+
+###  <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>Muss ich den JavaScript-Code für die Messungen auf allen meinen Webseiten einfügen?
+Je höher die Anzahl von Messungen ist, desto größer ist der Nutzen von Benutzer-Realmessungen. Es ist aber Ihre Entscheidung, ob Sie den Code auf allen Webseiten oder nur auf ausgewählten Webseiten einfügen möchten. Wir raten Ihnen, den Code zuerst auf Ihrer meistbesuchten Seite einzufügen, auf der Benutzer normalerweise mindestens fünf Sekunden lang verweilen.
+
+### <a name="can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements"></a>Können Informationen zu meinen Endbenutzern von Traffic Manager identifiziert werden, wenn ich Benutzer-Realmessungen verwende?
+Wenn der bereitgestellte JavaScript-Code für Messungen verwendet wird, sind für Traffic Manager die Client-IP-Adresse des Endbenutzers und die Quell-IP-Adresse der genutzten lokalen DNS-Auflösung sichtbar. Die Client-IP-Adresse wird von Traffic Manager erst verwendet, nachdem diese abgeschnitten wurde. Auf diese Weise ist es nicht möglich, den jeweiligen Endbenutzer zu identifizieren, der die Messungen gesendet hat. 
+
+### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>Muss für die Webseite, für die Benutzer-Realmessungen durchgeführt werden, Traffic Manager zu Routingzwecken eingesetzt werden?
+Nein. Die Verwendung von Traffic Manager ist nicht erforderlich. Der Routingbereich von Traffic Manager ist vom Bereich für die Benutzer-Realmessungen getrennt, und es ist zwar hilfreich, wenn beide unter derselben Webeigenschaft angeordnet sind, aber dies muss nicht zwingend der Fall sein.
+
+### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>Muss ich für die Verwendung mit Benutzer-Realmessungen einen Dienst in den Azure-Regionen hosten?
+Nein. Es ist nicht erforderlich, serverseitige Komponenten in Azure zu hosten, damit Benutzer-Realmessungen funktionieren. Das Bild mit dem einzelnen Pixel, das vom JavaScript für die Messungen heruntergeladen wird, und der Dienst, der in den verschiedenen Azure-Regionen ausgeführt wird, wird von Azure gehostet und verwaltet. 
+
+### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Erhöht sich meine Azure-Bandbreitenauslastung, wenn ich Benutzer-Realmessungen verwende?
+Wie schon in der vorherigen Antwort erwähnt: Die serverseitigen Komponenten von Benutzer-Realmessungen befinden sich im Besitz von Azure und werden auch von Azure verwaltet. Dies bedeutet, dass sich Ihre Azure-Bandbreitenauslastung nicht erhöht, wenn Sie Benutzer-Realmessungen verwenden. Beachten Sie, dass dies nicht für die Bandbreitenauslastung außerhalb der abgerechneten Gebühren von Azure gilt. Wir verringern die Bandbreite, indem wir ein Bild mit nur einem Pixel herunterladen, um die Latenz einer Azure-Region zu messen. 
+
+## <a name="traffic-view"></a>Datenverkehrsansicht
+
+>[!NOTE]
+>Das Feature „Datenverkehrsansicht“ in Traffic Manager befindet sich in der öffentlichen Vorschauphase (Public Preview) und ist unter Umständen nicht so verfügbar und zuverlässig wie Features in Versionen mit allgemeiner Verfügbarkeit. Das Feature wird nicht unterstützt, bietet möglicherweise eingeschränkte Funktionen und ist vielleicht nicht an allen Azure-Standorten verfügbar. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite mit den [Azure-Updates](https://azure.microsoft.com/updates/?product=traffic-manager).
+
+### <a name="what-does-traffic-view-do"></a>Wozu dient die Datenverkehrsansicht?
+Die Datenverkehrsansicht ist ein Feature von Traffic Manager, mit dem Sie mehr Informationen zu Ihren Benutzern und zur Benutzerfreundlichkeit erhalten. Mithilfe der Abfragen von Traffic Manager und den Tabellen mit den Intelligence-Daten zur Netzwerklatenz, die vom Dienst gepflegt werden, werden folgende Informationen für Sie bereitgestellt:
+- Die Regionen, aus denen Ihre Benutzer eine Verbindung mit Ihren Endpunkten in Azure herstellen.
+- Die Menge an Benutzern, die aus diesen Regionen Verbindungen herstellen.
+- Die Azure-Regionen, an die die Benutzer weitergeleitet werden.
+- Die Latenzdaten der Benutzer für diese Azure-Regionen.
+
+Diese Informationen können Sie im Portal in einer Tabellenansicht nutzen und außerdem als Rohdaten herunterladen.
+
+### <a name="how-can-i-benefit-from-using-traffic-view"></a>Welche Vorteile ergeben sich für mich durch die Verwendung der Datenverkehrsansicht?
+
+Die Datenverkehrsansicht ermöglicht Ihnen eine Gesamtübersicht über den Datenverkehr, der bei Ihren Traffic Manager-Profilen eingeht. Sie dient vor allem dem besseren Verständnis, von wo aus Ihre Benutzer Verbindungen herstellen und – was genauso wichtig ist – welche durchschnittliche Latenz dabei zu beobachten ist. Sie können diese Informationen dann nutzen, um Bereiche zu identifizieren, die Ihre besondere Aufmerksamkeit erfordern. Beispielsweise können Sie Ihre Azure-Abdeckung auf eine Region erweitern, in der die Latenz für diese Benutzer geringer ist. Eine weiterer Vorteil bei Verwendung der Datenverkehrsansicht ist die Verfolgung von Datenverkehrsmustern für verschiedene Regionen. Diese Informationen können hilfreich für das Treffen der Entscheidung sein, ob Sie die Anstrengungen für diese Regionen erhöhen oder verringern sollten.
+
+### <a name="how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor"></a>Inwiefern unterscheidet sich die Datenverkehrsansicht von den Traffic Manager-Metriken, die über Azure Monitor verfügbar sind?
+
+Azure Monitor kann genutzt werden, um den Datenverkehr, der von Ihrem Profil und dessen Endpunkten eingeht, auf Aggregatebene zu verstehen. Außerdem können Sie den Integritätsstatus der Endpunkte nachverfolgen, indem Sie die Ergebnisse der Integritätsprüfung verfügbar machen. Wenn Ihre Anforderungen höher sind und Sie verstehen möchten, wie sich die Verbindungsherstellung mit Azure auf regionaler Ebene für Benutzer gestaltet, können Sie dies mithilfe der Datenverkehrsansicht erreichen.
+
+### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Werden für die Datenverkehrsansicht EDNS-Clientsubnetz-Informationen verwendet?
+
+Von der Datenverkehrsansicht werden beim Erstellen der Ausgabe keine EDNS-Clientsubnetz-Informationen verwendet. Sie nutzt die IP-Adresse des lokalen DNS-Resolvers Ihrer Benutzer, um die Gruppierung durchzuführen.
+
+### <a name="how-many-days-of-data-does-traffic-view-use"></a>Wie viele Tage mit Daten werden von der Datenverkehrsansicht genutzt?
+
+Die Datenverkehrsansicht erstellt ihre Ausgabe, indem die Daten der letzten sieben Tage vor dem Tag verwendet werden, an dem Sie die Informationen anzeigen. Hierbei handelt es sich um ein bewegliches Fenster, und es werden jeweils die neuesten Daten verwendet, wenn Sie das Feature nutzen.
+
+### <a name="how-does-traffic-view-handle-external-endpoints"></a>Wie werden externe Endpunkte von der Datenverkehrsansicht behandelt?
+
+Bei Verwendung von externen Endpunkten, die außerhalb von Azure-Regionen gehostet werden, in einem Traffic Manager-Profil können Sie die Zuordnung zu einer Azure-Region wählen, die dann quasi als Proxy für die Latenzmerkmale dient (dies ist erforderlich, wenn Sie die Routingmethode „Leistung“ verwenden). Wenn diese Zuordnung zu einer Azure-Region vorhanden ist, werden beim Erstellen der Ausgabe für die Datenverkehrsansicht die Latenzmetriken dieser Azure-Region genutzt. Falls keine Azure-Region angegeben ist, sind die Latenzinformationen in den Daten für diese externen Endpunkte leer.
+
+### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>Muss ich die Datenverkehrsansicht für jedes Profil meines Abonnements aktivieren?
+Während der Vorschauphase wird die Datenverkehrsansicht auf Abonnementebene aktiviert und ist für alle Traffic Manager-Profile des Abonnements verfügbar.
+
+### <a name="how-can-i-turn-off-traffic-view"></a>Wie kann ich die Datenverkehrsansicht deaktivieren?
+Während der Vorschauphase ist es erforderlich, dass Sie ein Supportticket erstellen, um die Datenverkehrsansicht für Ihr Abonnement zu deaktivieren.
+
+### <a name="how-does-traffic-view-billing-work"></a>Wie funktioniert die Abrechnung für die Datenverkehrsansicht?
+
+Die Preise für die Datenverkehrsansicht basieren auf der Anzahl von Datenpunkten, die zum Erstellen der Ausgabe verwendet werden. Derzeit werden als Datentyp nur die Abfragen unterstützt, die von Ihrem Profil empfangen werden. Außerdem wird Ihnen nur die Verarbeitung berechnet, die durchgeführt wurde, als Sie die Datenverkehrsansicht aktiviert hatten. Dies bedeutet Folgendes: Wenn Sie die Datenverkehrsansicht während eines Monats einige Zeit aktivieren und dann wieder deaktivieren, werden nur die Datenpunkte, die bei aktiviertem Feature verarbeitet wurden, zur Abrechnung herangezogen.
+Während der Vorschauphase werden Ihnen für die Nutzung der Datenverkehrsansicht keine Gebühren berechnet.
 
 ## <a name="traffic-manager-endpoints"></a>Traffic Manager-Endpunkte
 
@@ -236,6 +341,16 @@ Die folgende Liste enthält die IP-Adressen, aus denen Traffic Manager-Integrit�
 * 13.75.152.253
 * 104.41.187.209
 * 104.41.190.203
+* 52.173.90.107
+* 52.173.250.232
+* 104.45.149.110
+* 40.114.5.197
+* 52.240.151.125
+* 52.240.144.45
+* 13.65.95.152
+* 13.65.92.252
+* 40.78.67.110
+* 104.42.192.195
 
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Wie viele Integritätsprüfungen meines Endpunkts kann ich von Traffic Manager erwarten?
 

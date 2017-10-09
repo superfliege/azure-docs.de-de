@@ -1,6 +1,6 @@
 ---
-title: Register Azure Stack | Microsoft Docs
-description: Register Azure Stack with your Azure subscription.
+title: Registrieren von Azure Stack | Microsoft-Dokumentation
+description: Registrieren Sie Azure Stack in Ihrem Azure-Abonnement.
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -12,72 +12,74 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: f71ec571fee8e59ea9061cd619914b81a5bf701a
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4a2ab892df6e18e87ba9a33b8b67a3b433ab8a56
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="register-azure-stack-with-your-azure-subscription"></a>Register Azure Stack with your Azure Subscription
+# <a name="register-azure-stack-with-your-azure-subscription"></a>Registrieren Sie Azure Stack in Ihrem Azure-Abonnement.
 
-For Azure Active Directory deployments, you can register Azure Stack with Azure to download marketplace items from Azure and to set up commerce data reporting back to Microsoft. 
+*Gilt für: Azure Stack Development Kit*
+
+Für Azure Active Directory-Bereitstellungen können Sie [Azure Stack](azure-stack-poc.md) in Azure registrieren, um Marketplace-Elemente aus Azure herunterzuladen, und um das Senden von Berichten zu Geschäftsdaten an Microsoft einzurichten. 
 
 > [!NOTE]
->Registration is recommended because it enables you to test important Azure Stack functionality, like marketplace syndication and usage reporting. After you register Azure Stack, usage is reported to Azure commerce. You can see it under the subscription you used for registration. Azure Stack Development Kit users will not be charged for any usage they report.
+>Die Registrierung wird empfohlen, da sie dadurch wichtige Azure Stack-Funktionen testen können, wie z.B. die Marketplace-Syndikation oder Nutzungsberichte. Nachdem Sie Azure Stack registrieren, wird Ihre Nutzung an den Azure-Commerce übermittelt. Dies wird im Abonnement angezeigt, das Sie zur Registrierung verwendet haben. Die übermittelte Nutzung von Benutzern des Azure Stack Development Kits wird diesen nicht in Rechnung gestellt.
 >
 
 
-## <a name="get-azure-subscription"></a>Get Azure subscription
+## <a name="get-azure-subscription"></a>Abschließen eines Azure-Abonnements
 
-Before registering Azure Stack with Azure, you must have:
+Vor der Registrierung von Azure Stack in Azure müssen Sie folgende Bedingungen erfüllen:
 
-- The subscription ID for an Azure subscription. To get the ID, sign in to Azure, click **More services** > **Subscriptions**, click the subscription you want to use, and under **Essentials** you can find the **Subscription ID**. China, Germany, and US government cloud subscriptions are not currently supported.
-- The username and password for an account that is an owner for the subscription (MSA/2FA accounts are supported)
-- The Azure Active Directory for the Azure subscription. You can find this directory in Azure by hovering over your avatar at the top right corner of the Azure portal. 
-- Registered the Azure Stack resource provider (see the **Register Azure Stack Resource Provider** section below for details)
+- Sie müssen über eine Abonnement-ID eines Azure-Abonnements verfügen. Die ID erhalten Sie, indem Sie sich bei Azure anmelden und auf **Weitere Dienste** > **Abonnements** und dann auf das Abonnement klicken, das Sie verwenden möchten. Unter **Essentials** (Zusammenfassung) sehen Sie nun die **Abonnement-ID**. Abonnements der Government-Clouds von China, Deutschland und den USA werden aktuell nicht unterstützt.
+- Sie müssen über den Benutzernamen und das Kennwort eines Kontos verfügen, das der Besitzer eines Abonnements ist (Konten mit MSA/2FA werden unterstützt)
+- Sie müssen wissen, welches Azure Active Directory-Verzeichnis für das Azure-Abonnement verwendet wird. Dieses Verzeichnis können Sie in Azure finden, indem Sie mit der Maus auf Ihr Profilbild zeigen, das sich in der oberen rechten Ecke im Azure-Portal befindet. 
+- Sie müssen den Azure Stack-Ressourcenanbieter registriert haben (weitere Informationen finden Sie weiter unten im Abschnitt **Registrieren des Azure Stack-Ressourcenanbieters**).
 
-If you don’t have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/en-us/free/?b=17.06). Registering Azure Stack incurs no cost on your Azure subscription.
+Wenn Ihr Azure-Abonnement diese Anforderungen nicht erfüllt, können Sie [hier kostenlos ein neues Azure-Konto erstellen](https://azure.microsoft.com/en-us/free/?b=17.06). Durch das Registrieren von Azure Stack fallen keine zusätzlichen Kosten in Ihrem Azure-Abonnement an.
 
 
 
-## <a name="register-azure-stack-resource-provider-in-azure"></a>Register Azure Stack resource provider in Azure
+## <a name="register-azure-stack-resource-provider-in-azure"></a>Registrieren des Azure Stack-Ressourcenanbieters in Azure
 > [!NOTE] 
-> This step only needs to be completed once in an Azure Stack environment.
+> Diesen Schritt müssen Sie nur ausführen, wenn Sie sich in einer Azure Stack-Umgebung befinden.
 >
 
-1. Start Powershell ISE as an administrator.
-2. Log in to the Azure account that is an owner of the Azure subscription with -EnvironmentName parameter set to "AzureCloud".
-3. Register the Azure resource provider "Microsoft.AzureStack".
+1. Starten Sie die PowerShell ISE als Administrator.
+2. Melden Sie sich bei Ihrem Azure-Konto an, das ein Azure-Abonnement besitzt, bei dem der Parameter „-EnvironmentName“ auf „AzureCloud“ festgelegt ist.
+3. Registrieren Sie den Azure-Ressourcenanbieter „Microsoft.AzureStack“.
 
-Example: 
+Beispiel: 
 ```Powershell
 Login-AzureRmAccount -EnvironmentName "AzureCloud"
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack -Force
 ```
 
 
-## <a name="register-azure-stack-with-azure"></a>Register Azure Stack with Azure
+## <a name="register-azure-stack-with-azure"></a>Registrieren von Azure Stack in Azure
 
 > [!NOTE]
->All these steps must be completed on the host computer.
+>Diese Schritte müssen auf dem Hostcomputer durchgeführt werden.
 >
 
-1. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md). 
-2. Copy the [RegisterWithAzure.ps1 script](https://go.microsoft.com/fwlink/?linkid=842959) to a folder (such as C:\Temp).
-3. Start PowerShell ISE as an administrator.    
-4. Run the RegisterWithAzure.ps1 script, replacing the following placeholders:
-    - *YourAccountName* is the owner of the Azure subscription
-    - *YourID* is the Azure subscription ID that you want to use to register Azure Stack
-    - *YourDirectory* is the name of your Azure Active Directory tenant that your Azure subscription is a part of.
+1. [Installieren Sie PowerShell für Azure Stack](azure-stack-powershell-install.md). 
+2. Kopieren Sie das [Skript „RegisterWithAzure.ps1“](https://go.microsoft.com/fwlink/?linkid=842959) in einen Ordner (z.B. C:\Temp).
+3. Starten Sie PowerShell ISE als Administrator.    
+4. Führen Sie das Skript „“ aus, nachdem Sie die folgenden Platzhalter ersetzt haben:
+    - *YourAccountName* (IhrKontoname) ist der Besitzer des Azure-Abonnements
+    - *YourID* (IhreID) ist die ID des Azure-Abonnements, das Sie zur Registrierung von Azure Stack verwenden möchten
+    - *YourDirectory* (IhrVerzeichnis) ist der Name Ihres Azure AD-Mandanten, zu dem Ihr Azure-Abonnement gehört
 
     ```powershell
     RegisterWithAzure.ps1 -azureSubscriptionId YourID -azureDirectoryTenantName YourDirectory -azureAccountId YourAccountName
     ```
     
-    For example:
+    Beispiel:
     
     ```powershell
     C:\temp\RegisterWithAzure.ps1 -azureSubscriptionId "5e0ae55d-0b7a-47a3-afbc-8b372650abd3" `
@@ -85,17 +87,17 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack -Force
     -azureAccountId serviceadmin@contoso.onmicrosoft.com
     ```
     
-5. At the two prompts, press Enter.
-6. In the pop-up login window, enter your Azure subscription credentials.
+5. Drücken Sie bei beiden Aufforderungen die EINGABETASTE.
+6. Geben Sie im Popup-Anmeldefenster die Anmeldeinformationen Ihres Azure-Abonnements ein.
 
-## <a name="verify-the-registration"></a>Verify the registration
+## <a name="verify-the-registration"></a>Überprüfen der Registrierung
 
-1. Sign in to the administrator portal (https://adminportal.local.azurestack.external).
-2. Click **More Services** > **Marketplace Management** > **Add from Azure**.
-3. If you see a list of items available from Azure (such as WordPress), your activation was successful.
+1. Melden Sie sich im Administratorportal (https://adminportal.local.azurestack.external) an.
+2. Klicken Sie auf **Weitere Dienste** > **Marketplace Management** (Marketplace-Verwaltung) > **Add from Azure** (Aus Azure hinzufügen).
+3. Wenn Sie eine Liste der in Azure verfügbaren Elemente sehen (z.B. WordPress), war die Aktivierung erfolgreich.
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-[Connect to Azure Stack](azure-stack-connect-azure-stack.md)
+[Herstellen einer Verbindung mit Azure Stack](azure-stack-connect-azure-stack.md)
 
 

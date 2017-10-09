@@ -1,9 +1,9 @@
 ---
-title: Speichern von unstrukturierten Daten mit Azure Functions und Cosmos DB
+title: Speichern von unstrukturierten Daten mit Azure Cosmos DB und Functions | Microsoft-Dokumentation
 description: Speichern von unstrukturierten Daten mit Azure Functions und Cosmos DB
 services: functions
 documentationcenter: functions
-author: rachelappel
+author: ggailey777
 manager: cfowler
 editor: 
 tags: 
@@ -14,17 +14,17 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/03/2017
+ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 00e9a76fed5743d7d74bafd333b87edf59a4f8bb
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b64d994dbc8f53418981e33a1dcd3cf513838b92
 ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="store-unstructured-data-using-azure-functions-and-cosmos-db"></a>Speichern von unstrukturierten Daten mit Azure Functions und Cosmos DB
+# <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Speichern von unstrukturierten Daten mit Azure Functions und Azure Cosmos DB
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) eignet sich hervorragend zum Speichern von unstrukturierten Daten und JSON-Daten. In Kombination mit Azure Functions ermöglicht Cosmos DB das schnelle und einfache Speichern von Daten. Dabei ist viel weniger Code erforderlich als beim Speichern von Daten in einer relationalen Datenbank.
 
@@ -54,10 +54,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
     | ------------ | ---------------- | ------------------------------------------ |
     | **Dokumentparametername** | taskDocument | Name, der auf das Cosmos DB-Objekt im Code verweist |
     | **Datenbankname** | taskDatabase | Name der Datenbank zum Speichern von Dokumenten |
-    | **Sammlungsname** | TaskCollection | Name der Sammlung von Cosmos DB-Datenbanken |
+    | **Sammlungsname** | TaskCollection | Name der Datenbanksammlung. |
     | **If true, creates the Cosmos DB database and collection** (Erstellt die Cosmos DB-Datenbank und -Sammlung, falls zutreffend) | Aktiviert | Die Sammlung ist noch nicht vorhanden und muss erstellt werden. |
 
-4. Wählen Sie neben **Cosmos DB document connection** (Cosmos DB-Dokumentverbindung) die Option **Neu** und anschließend **+ Neu erstellen** aus. 
+4. Wählen Sie neben **Azure Cosmos DB-Dokumentverbindung** die Option **Neu** und anschließend **+ Neu erstellen** aus. 
 
 5. Verwenden Sie die Einstellungen für **Neues Konto**, wie in der folgenden Tabelle angegeben: 
 
@@ -65,13 +65,13 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
     | Einstellung      | Empfohlener Wert  | Beschreibung                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **ID** | Name der Datenbank | Eindeutige ID für die Cosmos DB-Datenbank  |
+    | **ID** | Name der Datenbank | Eindeutige ID für die Azure Cosmos DB-Datenbank  |
     | **API** | SQL (DocumentDB) | Wählen Sie die Dokumentdatenbank-API aus.  |
     | **Abonnement** | Azure-Abonnement | Azure-Abonnement  |
     | **Ressourcengruppe** | myResourceGroup |  Verwenden Sie die vorhandene Ressourcengruppe, die Ihre Funktions-App enthält. |
     | **Standort**  | Europa, Westen | Wählen Sie einen Standort in der Nähe Ihrer Funktions-App oder in der Nähe anderer Apps aus, die die gespeicherten Dokumente verwenden.  |
 
-6. Klicken Sie auf **OK**, um die Datenbank zu erstellen. Die Datenbankerstellung dauert unter Umständen einige Minuten. Nach Abschluss der Datenbankerstellung wird die Datenbankverbindungszeichenfolge als Einstellung der Funktions-App gespeichert. Der Name dieser App-Einstellung wird in **Cosmos DB account connection** (Cosmos DB-Kontoverbindung) eingefügt. 
+6. Klicken Sie auf **OK**, um die Datenbank zu erstellen. Die Datenbankerstellung dauert unter Umständen einige Minuten. Nach Abschluss der Datenbankerstellung wird die Datenbankverbindungszeichenfolge als Einstellung der Funktions-App gespeichert. Der Name dieser App-Einstellung wird in **Azure Cosmos DB-Kontoverbindung** eingefügt. 
  
 8. Wählen Sie nach dem Festlegen der Verbindungszeichenfolge **Speichern** aus, um die Bindung zu erstellen.
 
@@ -129,11 +129,13 @@ Dieses Codebeispiel liest die Abfragezeichenfolgen der HTTP-Anforderung und weis
 
     ![Suchen nach dem Cosmos DB-Dienst](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png)
 
-2. Wählen Sie die erstellte Datenbank und anschließend **Daten-Explorer** aus. Erweitern Sie die Knoten unter **Sammlungen**, wählen Sie das neue Dokument aus, und vergewissern Sie sich, dass es Ihre Abfragezeichenfolgen-Werte sowie einige zusätzliche Metadaten enthält. 
+2. Wählen Sie Ihr Azure Cosmos DB-Konto aus, und wählen Sie dann den **Daten-Explorer**. 
+
+3. Erweitern Sie die Knoten unter **Sammlungen**, wählen Sie das neue Dokument aus, und vergewissern Sie sich, dass es Ihre Abfragezeichenfolgen-Werte sowie einige zusätzliche Metadaten enthält. 
 
     ![Überprüfen des Cosmos DB-Eintrags](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-verify-cosmosdb-output.png)
 
-Sie haben Ihrem HTTP-Trigger erfolgreich eine Bindung hinzugefügt, die unstrukturierte Daten in einer Cosmos DB-Datenbank speichert.
+Sie haben Ihrem HTTP-Trigger erfolgreich eine Bindung hinzugefügt, die unstrukturierte Daten in einer Azure Cosmos DB speichert.
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

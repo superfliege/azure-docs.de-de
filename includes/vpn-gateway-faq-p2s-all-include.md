@@ -20,13 +20,9 @@ Wir unterstützen bis zu 128 gleichzeitige VPN-Clientverbindungen mit einem virt
 
 Azure unterstützt zwei Arten von P2S-VPN-Optionen:
 
-* Secure Sockets Tunneling Protocol (SSTP)
+* Secure Sockets Tunneling Protocol (SSTP). SSTP ist eine Microsoft-eigene SSL-basierte Lösung, die Firewalls durchdringen kann, da die meisten Firewalls den von SSL verwendeten TCP-Port 443 öffnen.
 
-  SSTP ist eine Microsoft-eigene SSL-basierte Lösung, die Firewalls durchdringen kann, da die meisten Firewalls den von SSL verwendeten TCP-Port 443 öffnen.
-
-* IKEv2-VPN
-
-  IKEv2-VPN ist eine standardbasierte IPsec-VPN-Lösung, die UDP-Port 500 und 4500 und IP-Protokollnummer 50 verwendet. Firewalls öffnen nicht immer diese Ports, daher kann IKEv2-VPN unter Umständen Proxys und Firewalls nicht überwinden.
+* IKEv2-VPN. IKEv2-VPN ist eine standardbasierte IPsec-VPN-Lösung, die UDP-Port 500 und 4500 und IP-Protokollnummer 50 verwendet. Firewalls öffnen nicht immer diese Ports, daher kann IKEv2-VPN unter Umständen Proxys und Firewalls nicht überwinden.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Wird die VPN-Verbindung eines für „Punkt zu Standort“ konfigurierten Clientcomputers nach einem Neustart automatisch wiederhergestellt?
 
@@ -51,3 +47,21 @@ Der genaue Durchsatz der VPN-Tunnel lässt sich nur schwer ermitteln. IPsec und 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Kann ich für Point-to-Site-Verbindungen einen beliebigen VPN-Softwareclient mit SSTP- und/oder IKEv2-Unterstützung verwenden?
 
 Nein. Sie können nur den nativen VPN-Client unter Windows für SSTP und den nativen VPN-Client unter Mac für IKEv2 verwenden. Informationen finden Sie in der Liste der unterstützten Clientbetriebssysteme.
+
+### <a name="can-i-access-the-internet-when-i-am-connected-over-p2s-vpn"></a>Kann ich auf das Internet zugreifen, wenn ich über P2S-VPN verbunden bin?
+
+Ja, Sie können bei einem P2S-VPN auf das Internet zugreifen.
+
+### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Unterstützt Azure IKEv2-VPN unter Windows?
+
+Benutzer können mithilfe des integrierten Windows-VPN-Clients, der IKEv2 unterstützt, eine Verbindung mit Azure herstellen. IKEv2-Verbindungen von einem Windows-Gerät funktionieren jedoch in dem folgenden Szenario nicht:
+
+  Wenn das Gerät des Benutzers eine große Anzahl von vertrauenswürdigen Stammzertifikaten enthält, ist die Größe der Nachrichtennutzlast während des IKE-Austauschs groß und führt zur Fragmentierung der IP-Schicht. Die Fragmente werden von Azure zurückgewiesen, was zu einem Fehler bei der Verbindung führt. Die genaue Zertifikatsanzahl, bei der dieses Problem auftritt, ist schwer einzuschätzen. Daher ist nicht gewährleistet, dass IKEv2-Verbindungen von Windows-Geräten funktionieren. Wenn Sie sowohl SSTP als auch IKEv2 in einer gemischten Umgebung konfigurieren (bestehend aus Windows- und Mac-Geräten), versucht es das Windows-VPN-Profil immer zuerst mit dem IKEv2-Tunnel. Wenn es aufgrund des hier beschriebenen Problems fehlschlägt, greift es auf SSTP zurück.
+
+### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>Welche anderen Plattformen, außer Windows und Mac, werden von Azure für P2S-VPN unterstützt?
+
+Azure unterstützt nur Windows und Mac für P2S-VPN.
+
+### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enabled-radius-andor-ikev2-vpn-on-it"></a>Ich verfüge bereits über ein bereitgestelltes Azure-VPN-Gateway. Kann ich RADIUS und/oder IKEv2-VPN darauf aktivieren?
+
+Ja, Sie können diese neuen Features für bereits bereitgestellte Gateways aktivieren, sowohl über PowerShell als auch über das Azure-Portal.

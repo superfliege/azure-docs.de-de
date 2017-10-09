@@ -12,16 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 09/25/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c361d5b47a22689e7bf6749067a39e12df25c84a
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4d5dc523886ea1b03fdb2d1cafce4dcf3fef2576
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Wichtige Features und Konzepte in Azure Stack
+
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+
 Wenn Sie mit Microsoft Azure Stack noch nicht vertraut sind, können diese Begriffe und Featurebeschreibungen möglicherweise hilfreich sein.
 
 ## <a name="personas"></a>Personas
@@ -77,7 +80,7 @@ Beim Erstellen eines Angebots kann der Dienstadministrator einen **Basisplan** a
 Der Dienstadministrator kann auch **Add-On-Pläne** in ein Angebot einfügen. Add-On-Pläne sind nicht standardmäßig im Abonnement enthalten. Add-On-Pläne sind zusätzliche Pläne (Kontingente) in einem Angebot, die ein Abonnementbesitzer seinem Abonnement hinzufügen kann.
 
 ### <a name="offers"></a>Angebote
-Angebote sind Gruppen von einem oder mehreren Plänen, die Anbieter Mandanten zum Erwerb (Abonnieren) anbieten. Beispielsweise könnte Angebot „Alpha“ den Plan A mit einem Satz von Computediensten und Plan B mit einem Satz von Speicher- und Netzwerkdiensten enthalten.
+Angebote sind Gruppen von einem oder mehreren Plänen, die Anbieter Mandanten zum Erwerb (Abonnieren) anbieten. Beispielsweise kann Angebot „Alpha“ den Plan A mit einem Satz von Computediensten und Plan B mit einem Satz von Speicher- und Netzwerkdiensten enthalten.
 
 Ein Angebot enthält einen Satz von Basisplänen, und Dienstadministratoren können Add-On-Pläne erstellen, die Mandanten ihrem Abonnement hinzufügen können.
 
@@ -112,7 +115,7 @@ Der Netzwerkressourcenanbieter (NRP) bietet eine Reihe von SDN (Software Defined
 Der Speicherressourcenanbieter bietet vier mit Azure konsistente Speicherdienste: Blob, Tabelle, Warteschlange und Kontoverwaltung. Er bietet außerdem einen Speichercloud-Verwaltungsdienst, um die Dienstanbieterverwaltung von mit Azure konsistenten Speicherdiensten zu vereinfachen. Azure Storage bietet die Flexibilität zum Speichern und Abrufen großer Mengen von unstrukturierten Daten, z.B. Dokumente und Mediendateien mit Azure-Blobs und strukturierte NoSQL-basierte Daten mit Azure-Tabellen. Weitere Informationen zu Azure Storage finden Sie unter [Einführung in Microsoft Azure Storage](../storage/common/storage-introduction.md).
 
 #### <a name="blob-storage"></a>Blob Storage
-Der Blob-Speicher speichert beliebige DataSets. Bei einem Blob kann es sich um einen beliebigen Text- oder Binärdatentyp handeln – also beispielsweise um ein Dokument, eine Mediendatei oder einen Anwendungs-Installer. Der Tabellenspeicher speichert strukturierte DataSets. Table Storage ist ein Schlüssel-/Attribut-basierter NoSQL-Datenspeicher, der eine rasche Entwicklung und schnellen Zugriff auf große Datenmengen erlaubt. Der Warteschlangenspeicher bietet zuverlässiges Messaging für die Workflowverarbeitung und für die Kommunikation zwischen Komponenten von Clouddiensten.
+Der Blob-Speicher speichert beliebige DataSets. Bei einem Blob kann es sich um einen beliebigen Text- oder Binärdatentyp handeln – also beispielsweise um ein Dokument, eine Mediendatei oder einen Anwendungs-Installer. Table Storage speichert strukturierte Datasets. Table Storage ist ein Schlüssel-/Attribut-basierter NoSQL-Datenspeicher, der eine rasche Entwicklung und schnellen Zugriff auf große Datenmengen erlaubt. Queue Storage bietet zuverlässiges Messaging für die Workflowverarbeitung und für die Kommunikation zwischen Komponenten von Clouddiensten.
 
 Jedes Blob ist unter einem Container organisiert. Container sind auch eine praktische Möglichkeit, um Gruppen von Objekten Sicherheitsrichtlinien zuzuordnen. Ein Speicherkonto kann eine beliebige Anzahl von Containern enthalten, und ein Container kann eine beliebige Anzahl von Blobs enthalten. Die Speicherkapazität eines Speicherkontos beträgt maximal 500 TB. Blob Storage bietet drei Arten von Blobs: Blockblobs, Anfügeblobs und Seitenblobs (Festplatten). Blockblobs sind für das Streamen und Speichern von Cloudobjekten optimiert und eine gute Wahl für die Speicherung von Dokumenten, Mediendateien, Sicherungskopien und Ähnlichem. Anfügeblobs ähneln Blockblobs, sind aber für Anfügevorgänge optimiert. Zum Aktualisieren eines Anfügeblobs muss an dessen Ende ein neuer Block hinzugefügt werden. Somit eignen sich Anfügeblobs sehr gut für Szenarien wie die Protokollierung, da hier neue Daten nur am Ende des Blobs geschrieben werden müssen. Seitenblobs sind für die Darstellung von IaaS-Festplatten und für die Unterstützung zufallsgesteuerter Schreibzugriffe optimiert und können bis zu 1 TB groß sein. Bei einer mit dem Netzwerk für virtuelle Azure-Computer verbundenen IaaS-Festplatte handelt es sich um eine als Seitenblob gespeicherte virtuelle Festplatte.
 

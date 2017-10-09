@@ -15,18 +15,19 @@ ms.topic: article
 ms.date: 08/25/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 785acbeba7eebea5a0414ac8bb9942410bf4252e
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 7a54771d99f2719fcc345496b152a5d3acc02121
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>Übersicht über das Anbieten von Diensten in Azure Stack
 
-Microsoft Azure Stack ist eine Hybrid Cloud-Plattform, die das Bereitstellen von Diensten aus Ihrem Datencenter ermöglicht. Als Dienstanbieter können Sie Dienste für Ihre Mandanten anbieten. Innerhalb eines Unternehmens oder einer Behörde ist es möglich, den Mitarbeitern lokale Dienste anzubieten. Die Dienste, die Sie bereitstellen können umfassen u.a.:
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+
+[Microsoft Azure Stack](azure-stack-poc.md) ist eine Hybrid-Cloudplattform, die das Bereitstellen von Diensten aus Ihrem Datencenter ermöglicht. Als Dienstanbieter können Sie Dienste für Ihre Mandanten anbieten. Innerhalb eines Unternehmens oder einer Behörde ist es möglich, den Mitarbeitern lokale Dienste anzubieten. Die Dienste, die Sie bereitstellen können umfassen u.a.:
 
 - PaaS-Dienste (Platform-as-a-Service) wie App Services, Mobile Apps, API-Apps, API-Funktionen, SQL, MySQL.
-- SaaS-Dienste (Software-as-a-Service) wie Sharepoint.
 
 Sie können auch Dienste kombinieren, um komplexe Lösungen für verschiedene Benutzer zu integrieren und zu erstellen.
 

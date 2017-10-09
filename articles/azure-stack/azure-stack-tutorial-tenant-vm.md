@@ -11,18 +11,21 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 8/22/2017
+ms.topic: tutorial
+ms.date: 9/25/2017
 ms.author: victorh
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: d2f38bc1c0b97e408f619f3ea2f704725e3bb460
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: afeec92c40262903e6cfd3c6d75a595fead616e3
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Verfügbarmachen von virtuellen Computern für Ihre Azure Stack-Benutzer
+
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+
 Als Azure Stack-Cloudadministrator können Sie Angebote erstellen, die von Ihren Benutzern (ggf. auch als Mandanten bezeichnet) abonniert werden können. Mit ihrem Abonnement können Benutzer dann Azure Stack-Dienste nutzen.
 
 In diesem Artikel wird veranschaulicht, wie Sie ein Angebot erstellen und anschließend testen. Für den Test melden Sie sich im Portal als Benutzer an, abonnieren das Angebot und erstellen mit dem Abonnement dann einen virtuellen Computer.
@@ -112,7 +115,9 @@ Nachdem Sie ein Angebot erstellt haben, können Sie es testen. Melden Sie sich a
 
    Sie können sich jetzt als Benutzer am Portal anmelden, um ein Angebot zu abonnieren.
 
-   a. Melden Sie sich auf dem Azure Stack Deployment Kit-Computer unter `https://portal.local.azurestack.external` als Benutzer an, und klicken Sie auf **Get a Subscription** (Abonnement erwerben).
+   a. Melden Sie sich beim Benutzerportal als Benutzer an, und klicken Sie auf **Abonnement erwerben**.
+   - Für ein integriertes System variiert die URL basierend auf der Region Ihres Operators und dem externen Domänenamen und hat das Format https://portal.&lt;*Region*&gt;.&lt; *FQDN*&gt;.
+   - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse „https://portal.local.azurestack.external“.
 
    ![Erwerben eines Abonnements](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 
@@ -128,7 +133,9 @@ Nachdem Sie ein Angebot erstellt haben, können Sie es testen. Melden Sie sich a
 
    Sie können sich jetzt als Benutzer am Portal anmelden, um mit dem Abonnement einen virtuellen Computer bereitzustellen. 
 
-   a. Melden Sie sich auf dem Azure Stack Deployment Kit-Computer als Benutzer unter `https://portal.local.azurestack.external` an, und klicken Sie dann auf **Neu** > **Compute** > **Windows Server 2016 Datacenter Eval**.  
+   a. Melden Sie sich beim Portal als Benutzer an, und klicken Sie dann auf **Neu** > **Compute** > **Windows Server 2016 Datacenter Eval**.
+      - Für ein integriertes System variiert die URL basierend auf der Region Ihres Operators und dem externen Domänenamen und hat das Format https://portal.&lt;*Region*&gt;.&lt; *FQDN*&gt;.
+   - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse „https://portal.local.azurestack.external“.
 
    b. Geben Sie im Abschnitt **Grundlagen** einen **Namen**, **Benutzernamen** und ein **Kennwort** ein. Wählen Sie unter **VM-Datenträgertyp** die Option **HDD**. Wählen Sie ein **Abonnement**aus. Erstellen Sie eine **Ressourcengruppe**, oder wählen Sie eine vorhandene aus, und klicken Sie anschließend auf **OK**.  
 

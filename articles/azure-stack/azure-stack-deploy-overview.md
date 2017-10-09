@@ -11,18 +11,20 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: erikje
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 81b6282addd1e88e4146367c4dd9a2ee7b8c84bf
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 54d16b57526241544ae50c9b8e10a8add667916b
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-stack-development-kit-deployment-quickstart"></a>Schnellstart für die Azure Stack Development Kit-Bereitstellung
+
+*Gilt für: Azure Stack Development Kit*
 
 Das [Azure Stack Development Kit](azure-stack-poc.md) ist eine Test- und Entwicklungsumgebung, die sie zum Evaluieren und Demonstrieren von Azure Stack-Funktionen und -Diensten bereitstellen können. Um sie einsatzbereit zu machen, müssen Sie die Umgebungshardware vorbereiten und einige Skripts ausführen (dies nimmt mehrere Stunden in Anspruch). Anschließend können Sie sich bei den Administrator- und Mandantenportalen anmelden, um Azure Stack zu verwalten und Angebote zu testen. 
 

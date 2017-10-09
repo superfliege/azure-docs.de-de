@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 9/25/2017
 ms.author: adshar
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 70004cfd83360ac4c66fd4c90632d341709d2e6f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: d8f39d921222a3642e3da6e288b4ca11ae1ccaeb
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-Diagnosetools
+
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
  
 Bei Azure Stack handelt es sich um eine große Sammlung von Komponenten, die zusammenarbeiten und miteinander interagieren. Alle diese Komponenten generieren ihre eigenen eindeutigen Protokolle. Dies bedeutet, dass das Diagnostizieren von Problemen schnell zu einer anspruchsvollen Aufgabe werden kann (besonders für Fehler, die von mehreren interagierenden Azure Stack-Komponenten stammen). 
 
@@ -92,7 +94,7 @@ Wir sammeln derzeit die folgenden Protokolltypen:
  
 Verwenden Sie die `<Logs>`-Tags in der Datei für die Kundenkonfiguration unter `C:\EceStore\<Guid>\<GuidWithMaxFileSize>`, um alle Protokolle zu identifizieren, die für die Komponenten gesammelt werden.
  
-### <a name="to-run-get-azurestacklog"></a>So führen Sie Get-AzureStackLog aus
+**So führen Sie Get-AzureStackLog aus**
 1.  Melden Sie sich auf dem Host als „AzureStack\AzureStackAdmin“ an.
 2.  Öffnen Sie ein PowerShell-Fenster als Administrator.
 3.  Führen Sie `Get-AzureStackLog`aus.  
@@ -149,8 +151,18 @@ Im Folgenden einige Hinweise, die Sie beachten sollten:
 * Ausführliche Informationen finden Sie in der Datei für die Kundenkonfiguration. Untersuchen Sie die `<Logs>`-Tags für die unterschiedlichen Rollen.
 
 > [!NOTE]
-> Wir erzwingen Größen- und Altersgrenzwerte für die gesammelten Protokolle, da es sehr wichtig ist, für eine effiziente Nutzung Ihres Speicherplatzes zu sorgen. So wird sichergestellt, dass keine übermäßig hohe Zahl von Protokollen gespeichert wird. Andererseits gilt Folgendes: Beim Diagnostizieren eines Problems benötigen Sie häufig Protokolle, die unter Umständen nicht mehr vorhanden sind, weil diese Grenzwerte erzwungen werden. Daher wird **dringend empfohlen**, Ihre Protokolle alle acht bis zwölf Stunden in einen externen Speicher zu verlagern (Speicherkonto auf öffentlicher Azure-Instanz, zusätzliches lokales Speichergerät usw.) und je nach Ihren Anforderungen dort ein bis drei Monate lang aufzubewahren.
+> Wir erzwingen Größen- und Altersgrenzwerte für die gesammelten Protokolle, da es sehr wichtig ist, für eine effiziente Nutzung Ihres Speicherplatzes zu sorgen. So wird sichergestellt, dass keine übermäßig hohe Zahl von Protokollen gespeichert wird. Andererseits gilt Folgendes: Beim Diagnostizieren eines Problems benötigen Sie häufig Protokolle, die unter Umständen nicht mehr vorhanden sind, weil diese Grenzwerte erzwungen werden. Daher wird **dringend empfohlen**, Ihre Protokolle alle acht bis zwölf Stunden in einen externen Speicher zu verlagern (Speicherkonto in Azure, zusätzliches lokales Speichergerät usw.) und je nach Ihren Anforderungen dort ein bis drei Monate lang aufzubewahren.
 
+### <a name="multi-node-considerations"></a>Überlegungen bei mehreren Knoten
+Wenn Sie Protokolle in einer Umgebung mit mehreren Knoten sammeln möchten, beachten Sie die folgenden Unterschiede:
+* Die Funktion `get-date` ist bei Umgebungen mit mehreren Knoten nicht in der Whitelist enthalten. Daher müssen Sie explizit ein Datum angeben. Beispiel:
+
+   `-FromDate "Friday, August 18, 2017 6:34:48 AM" -ToDate "Friday, August 18, 2017 7:35:25 AM"`
+* Geben Sie einen UNC-Pfad für die Ausgabe in einem freigegebenen Ordner auf dem Hardwarelebenszyklushost oder einem anderen freigegebenen Ordner an, auf den Sie zugreifen können. Beispiel:
+
+   `Get-AzureStackLog -OutputSharePath \\10.193.128.250\logs -OutputShareCredential $sharecred`
+
+   Der Parameter `-OutputShareCredential` fordert Sie zur Eingabe von Anmeldeinformationen für den Zugriff auf den freigegebenen Ordner auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Microsoft Azure Stack troubleshooting (Problembehandlung für Microsoft Azure Stack)](azure-stack-troubleshooting.md)

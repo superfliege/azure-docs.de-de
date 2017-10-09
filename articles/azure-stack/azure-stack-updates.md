@@ -1,6 +1,6 @@
 ---
-title: Manage updates in Azure Stack | Microsoft Docs
-description: Learn how to manage updates in Azure Stack
+title: "Übersicht zum Verwalten von Updates in Azure Stack | Microsoft-Dokumentation"
+description: "Informationen zur Updateverwaltung für integrierte Azure Stack-Systeme."
 services: azure-stack
 documentationcenter: 
 author: twooley
@@ -12,34 +12,59 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: twooley
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 1462079c1aac9031e8ea195282555c0707480ec8
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3d0d5ea6cc3f3cc7bc0550b83dabbf0ae6af8a27
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="manage-updates-in-azure-stack"></a>Manage updates in Azure Stack
+# <a name="manage-updates-in-azure-stack-overview"></a>Übersicht zum Verwalten von Updates in Azure Stack
 
-In the Azure Stack Development Kit, you can preview the experience for managing Azure Stack updates in a multi-node environment. Because virtual machines are not highly available in the development kit, you cannot apply updates through the **Updates** tile.
+*Gilt für: integrierte Azure Stack-Systeme*
 
-In the Azure Stack administrator portal, you can determine the current version (or build number) of Azure Stack.
+Microsoft wird in regelmäßigen Abständen Updatepakete für integrierte Azure Stack-Systeme veröffentlichen. Jedes Release von Microsoft-Softwareupdates ist in einem einzelnen Updatepaket gebündelt. Als Azure Stack-Operator können Sie problemlos über das Administratorportal diese Updatepakete importieren, installieren und ihren Installationsstatus überwachen. 
 
-## <a name="determine-the-current-version"></a>Determine the current version
+Ihr Originalgerätehersteller-Hardwareanbieter (Original Equipment Manufacturer, OEM) veröffentlicht auch Updates, z.B. Treiber- und Firmwareupdates. Diese Updates werden als separate Pakete von Ihrem OEM-Hardwareanbieter bereitgestellt und von Microsoft-Updates getrennt verwaltet.
 
-To determine the current version of Azure Stack, do either of the following in the administrator portal:
+Um den Support für Ihr System aufrechtzuerhalten, müssen Sie sicherstellen, dass Azure Stack stets bis zu einer bestimmten Version aktualisiert ist. Machen Sie sich unbedingt mit der [Azure Stack servicing policy](azure-stack-servicing-policy.md) (Azure Stack-Wartungsrichtlinie) vertraut.
 
-- On the dashboard, view the current version in the **Updates** tile.
-- On the **Region management** tile, click the region name (such as **local**). View the current version in the **Updates** tile.
+> [!NOTE]
+> Sie können Azure Stack-Updatepakete nicht auf Azure Stack Development Kit anwenden. Die Updatepakete sind für integrierte Systeme vorgesehen.
 
-   ![Updates tile on default dashboard](./media/azure-stack-updates/image1.png)
+## <a name="the-update-resource-provider"></a>Der Updateressourcenanbieter
 
-## <a name="next-steps"></a>Next steps
+Azure Stack umfasst einen Updateressourcenanbieter, der die Anwendung von Microsoft-Softwareupdates orchestriert. Dieser Ressourcenanbieter stellt sicher, dass Updates alle physischen Hosts, Service Fabric-Anwendungen und Laufzeiten sowie alle virtuellen Computer der Infrastruktur und die ihnen zugeordneten Dienste übergreifend angewandt werden.
 
-* [Region management in Azure Stack](azure-stack-region-management.md)     
+Bei der Installation der Updates können Sie einfach den allgemeinen Status anzeigen, während der Updateprozess die verschiedenen Subsysteme in Azure Stack (z.B. physische Hosts und virtuelle Computer der Infrastruktur) erfasst.
+
+## <a name="plan-for-updates"></a>Planen für Updates
+
+Es wird dringend empfohlen, dass Sie die Benutzer über alle Wartungsvorgänge unterrichten und normale Wartungsfenster so weit wie möglich außerhalb der Geschäftszeiten planen. Wartungsvorgänge können sowohl Mandantenworkloads als auch Portalvorgänge beeinträchtigen.
+
+## <a name="using-the-update-tile-to-manage-updates"></a>Verwenden der Update-Kachel zum Verwalten von Updates
+Das Verwalten von Updates über das Administratorportal ist ein einfacher Vorgang. Ein Azure Stack-Operator kann zu folgenden Zwecken zur Update-Kachel im Dashboard navigieren:
+
+- Anzeigen wichtiger Informationen wie z.B. der aktuellen Version.
+- Installieren von Updates und Überwachen des Status.
+- Überprüfen des Updateverlaufs der zuvor installierten Updates.
+ 
+## <a name="determine-the-current-version"></a>Bestimmen der aktuellen Version
+
+Die Update-Kachel zeigt die aktuelle Version von Azure Stack. Sie gelangen mithilfe einer der folgenden Methoden zum Administratorportal:
+
+- Zeigen Sie auf dem Dashboard die aktuelle Version auf der **Update**-Kachel an.
+ 
+   ![Kachel „Updates“ auf dem Standarddashboard](./media/azure-stack-updates/image1.png)
+ 
+- Klicken Sie auf der Kachel **Regionsverwaltung** auf den Namen der Region. Zeigen Sie die aktuelle Version auf der **Update**-Kachel an.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Azure Stack-Wartungsrichtlinie](azure-stack-servicing-policy.md) 
+- [Regionsverwaltung in Azure Stack](azure-stack-region-management.md)     
 
 
 

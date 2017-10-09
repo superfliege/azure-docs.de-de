@@ -12,22 +12,22 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 09/25/2017
 ms.author: juluk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 191a5d12fa899db48bbb751409ce3a732a56095e
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: eddbc6e977b52e3a068a1b55792512b966a58c18
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="pricing"></a>Preise
 
 ## <a name="compute-cost"></a>Computekosten
-Azure Cloud Shell wird auf einem kostenlos bereitgestellten Computer ausgeführt, erfordert aber die Verwendung einer angefügten Azure-Dateifreigabe. 
+Azure Cloud Shell wird auf einem kostenlos von Azure bereitgestellten Computer ausgeführt, erfordert aber die Verwendung einer Azure-Dateifreigabe. 
 
 ## <a name="storage-cost"></a>Speicherkosten
-Cloud Shell erstellt ein standardmäßiges, 5 GB großes Image in Ihrer Dateifreigabe, um Ihr $Home-Verzeichnis beizubehalten. Für Azure-Dateifreigaben fallen die regulären Kosten an.
+Cloud Shell erfordert die Einbindung einer neuen oder vorhandenen Azure-Dateifreigabe, damit Dateien sitzungsübergreifend erhalten bleiben. Bei der Speicherung fallen laufende Kosten an.
 
 Klicken Sie [hier, um Informationen zu den Kosten für Azure Files zu erhalten](https://azure.microsoft.com/pricing/details/storage/files/). 

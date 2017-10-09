@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: b70d2340c0f1286fa355a78a4cd0cb1ce37cbc39
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b320581011c27a2efc49fa784f184a37bdb7f6fe
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/25/2017
 
 [Draft](https://aka.ms/draft) ist ein neues Open-Source-Tool, mit dem containerbasierte Anwendungen auf einfache Weise entwickelt und in Kubernetes-Clustern bereitgestellt werden können, ohne dass umfassende Kenntnisse über Docker und Kubernetes erforderlich sind oder diese installiert werden müssen. Durch Verwendung von Tools wie Draft können Sie und Ihre Teams sich auf die Erstellung der Anwendung mit Kubernetes konzentrieren und der Infrastruktur dabei etwas weniger Beachtung schenken.
 
-Sie können Draft mit sämtlichen Docker-Imageregistrierungen und sämtlichen Kubernetes-Clustern – und auch lokal – verwenden. In diesem Tutorial wird erläutert, wie Sie unter Verwendung von ACS mit Kubernetes, ACR und Azure DNS eine Live-CI/CD-Entwicklerpipeline mithilfe von Draft erstellen.
+Sie können Draft mit sämtlichen Docker-Imageregistrierungen und sämtlichen Kubernetes-Clustern – und auch lokal – verwenden. Dieses Tutorial zeigt, wie Sie ACS mit Kubernetes und ACR verwenden, um eine aktive, aber sichere Entwicklerpipeline in Kubernetes mit Draft zu erstellen, und wie Sie Azure DNS verwenden können, um diese Entwicklerpipeline für andere Benutzer in einer Domäne verfügbar zu machen.
 
 
 ## <a name="create-an-azure-container-registry"></a>Erstellen einer Azure-Containerregistrierung
@@ -39,9 +39,9 @@ Sie können [eine neue Azure Container Registry-Instanz](../../container-registr
       az group create --name draft --location eastus
       ```
 
-2. Erstellen Sie mit [az acr create](/cli/azure/acr#create) eine ACR-Imageregistrierung.
+2. Erstellen Sie eine ACR-Imageregistrierung mit [az acr create](/cli/azure/acr#create), und stellen Sie sicher, dass die Option `--admin-enabled` auf `true` festgelegt ist.
       ```azurecli
-      az acr create -g draft -n draftacs --sku Basic --admin-enabled true -l eastus
+      az acr create --resource-group draft --name draftacs --sku Basic --admin-enabled true 
       ```
 
 
@@ -49,7 +49,7 @@ Sie können [eine neue Azure Container Registry-Instanz](../../container-registr
 
 Nun können Sie mit [az acs create](/cli/azure/acs#create) einen ACS-Cluster mit „Kubernetes“ als Wert für `--orchestrator-type` erstellen.
 ```azurecli
-az acs create --resource-group draft --name draft-kube-acs --dns-prefix draft-cluster --orchestrator-type kubernetes
+az acs create --resource-group draft --name draft-kube-acs --dns-prefix draft-cluster --orchestrator-type kubernetes --generate-ssh-keys
 ```
 
 > [!NOTE]
@@ -104,31 +104,110 @@ waiting for AAD role to propagate.done
 Damit verfügen Sie über einen Cluster und können nun mit dem Befehl [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) die Anmeldeinformationen importieren. Damit verfügen Sie über eine lokale Konfigurationsdatei für den Cluster. Diese ist erforderlich, damit Helm und Draft ausgeführt werden können.
 
 ## <a name="install-and-configure-draft"></a>Installieren und Konfigurieren von Draft
-Die Installationsanweisungen für Draft finden Sie im [Draft-Repository](https://github.com/Azure/draft/blob/master/docs/install.md). Diese sind relativ einfach, erfordern dennoch einige Konfigurationsschritte, da [Helm](https://aka.ms/helm) für die Erstellung und Bereitstellung eines Helm-Diagramms im Kubernetes-Cluster erforderlich ist.
 
-1. [Laden Sie Helm herunter, und installieren Sie das Tool](https://aka.ms/helm#install).
-2. Verwenden Sie Helm zum Suchen und Installieren von `stable/traefik` und einen Eingangscontroller, um eingehende Anforderungen für Ihre Builds zu ermöglichen.
-    ```bash
-    $ helm search traefik
-    NAME            VERSION DESCRIPTION
-    stable/traefik  1.3.0   A Traefik based Kubernetes ingress controller w...
 
-    $ helm install stable/traefik --name ingress
-    ```
-    Legen Sie eine Überwachung für den `ingress`-Controller fest, um bei dessen Bereitstellung den externen IP-Wert zu erfassen. Bei dieser IP-Adresse handelt es sich um die Adresse, die im nächsten Abschnitt [Ihrer Bereitstellungsdomäne zugeordnet wird](#wire-up-deployment-domain).
+1. Laden Sie Draft für Ihre Umgebung von „https://github.com/Azure/draft/releases“ herunter, und installieren Sie Draft in PATH, damit der Befehl verwendet werden kann.
+2. Laden Sie Helm für Ihre Umgebung von „https://github.com/kubernetes/helm/releases“ herunter, und [installieren Sie Helm in PATH, damit der Befehl verwendet werden kann](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
+3. Konfigurieren Sie Draft so, dass Ihre Registrierung verwendet wird und für jedes erstellte Helm-Diagramm Unterdomänen erstellt werden. Für die Konfiguration von Draft benötigen Sie Folgendes:
+  - Ihren Azure Container Registry-Namen (in diesem Beispiel `draftacsdemo`)
+  - Ihren Registrierungsschlüssel oder Ihr Kennwort aus `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`
 
-    ```bash
-    kubectl get svc -w
-    NAME                          CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
-    ingress-traefik               10.0.248.104   13.64.108.240   80:31046/TCP,443:32556/TCP   1h
-    kubernetes                    10.0.0.1       <none>          443/TCP                      7h
-    ```
+  Rufen Sie `draft init` auf. Bei der Konfiguration werden Sie aufgefordert, die oben genannten Werte anzugeben. Beachten Sie, dass das URL-Format für die Registrierungs-URL der Registrierungsname (in diesem Beispiel `draftacsdemo`) plus `.azurecr.io` ist. Ihr Benutzername ist ein eigener Registrierungsname. Der Prozess sieht bei der ersten Ausführung etwa wie folgt aus:
+ ```bash
+    $ draft init
+    Creating /home/ralph/.draft 
+    Creating /home/ralph/.draft/plugins 
+    Creating /home/ralph/.draft/packs 
+    Creating pack go...
+    Creating pack python...
+    Creating pack ruby...
+    Creating pack javascript...
+    Creating pack gradle...
+    Creating pack java...
+    Creating pack php...
+    Creating pack csharp...
+    $DRAFT_HOME has been configured at /home/ralph/.draft.
 
-    In diesem Fall lautet die externe IP für die Bereitstellungsdomäne `13.64.108.240`. Sie können nun Ihre Domäne dieser IP zuordnen.
+    In order to configure Draft, we need a bit more information...
 
-## <a name="wire-up-deployment-domain"></a>Einrichten der Bereitstellungsdomäne
+    1. Enter your Docker registry URL (e.g. docker.io/myuser, quay.io/myuser, myregistry.azurecr.io): draftacsdemo.azurecr.io
+    2. Enter your username: draftacsdemo
+    3. Enter your password: 
+    Draft has been installed into your Kubernetes Cluster.
+    Happy Sailing!
+```
 
-Draft erstellt eine Version für jedes erstellte Helm-Diagramm, d.h. jede Anwendung, an der Sie arbeiten. Jeder wird ein generierter Name zugewiesen, der in Draft als _Unterdomäne_ verwendet wird, zusätzlich zu der von Ihnen gesteuerten _Stammbereitstellungsdomäne_. (In diesem Beispiel wird `squillace.io` als Bereitstellungsdomäne verwendet.) Um dieses Unterdomänenverhalten zu ermöglichen, müssen Sie einen A-Datensatz für `'*'` in den DNS-Einträgen für die Bereitstellungsdomäne erstellen, sodass jede generierte Unterdomäne an den Eingangscontroller des Kubernetes-Clusters weitergeleitet wird.
+Nun können Sie eine Anwendung bereitstellen.
+
+
+## <a name="build-and-deploy-an-application"></a>Erstellen und Bereitstellen einer Anwendung
+
+Das Draft-Repository enthält [sechs einfache Beispielanwendungen](https://github.com/Azure/draft/tree/master/examples). Klonen Sie das Repository, und verwenden Sie das [Java-Beispiel](https://github.com/Azure/draft/tree/master/examples/java). Wechseln Sie in das Verzeichnis „examples/java“, und geben Sie `draft create` ein, um die Anwendung zu erstellen. Sie sollte wie das folgende Beispiel aussehen.
+```bash
+$ draft create
+--> Draft detected the primary language as Java with 91.228814% certainty.
+--> Ready to sail
+```
+
+Die Ausgabe enthält eine Dockerfile-Datei und ein Helm-Diagramm. Für die Erstellung und Bereitstellung geben Sie einfach `draft up` ein. Die Ausgabe ist umfangreich und sollte wie im folgenden Beispiel aussehen.
+```bash
+$ draft up
+Draft Up Started: 'handy-labradoodle'
+handy-labradoodle: Building Docker Image: SUCCESS ⚓  (35.0232s)
+handy-labradoodle: Pushing Docker Image: SUCCESS ⚓  (17.0062s)
+handy-labradoodle: Releasing Application: SUCCESS ⚓  (3.8903s)
+handy-labradoodle: Build ID: 01BT0ZJ87NWCD7BBPK4Y3BTTPB
+```
+
+## <a name="securely-view-your-application"></a>Sicheres Anzeigen der Anwendung
+
+Der Container wird jetzt in ACS ausgeführt. Verwenden Sie zum Anzeigen den Befehl `draft connect`, der eine sichere Verbindung mit der Cluster-IP mit einem bestimmten Port für Ihre Anwendung erstellt, sodass Sie sie lokal anzeigen können. Ist die Erstellung erfolgreich, suchen Sie in der ersten Zeile neben dem Indikator **SUCCESS** nach der URL für die Verbindung mit Ihrer App.
+
+> [!NOTE]
+> Wenn eine Meldung angezeigt wird, die besagt, dass keine Pods bereit waren, warten Sie einen Moment, und wiederholen Sie den Vorgang. Sie können auch mit `kubectl get pods -w` überwachen, wie die Pods in den Bereitschaftszustand versetzt werden, und anschließend den Vorgang wiederholen.
+
+```bash
+draft connect
+Connecting to your app...SUCCESS...Connect to your app on localhost:46143
+Starting log streaming...
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+== Spark has ignited ...
+>> Listening on 0.0.0.0:4567
+```
+
+Im vorherigen Beispiel könnten Sie `curl -s http://localhost:46143` eingeben, um die Antwort `Hello World, I'm Java!` zu empfangen. Wenn Sie STRG+ oder CMD+C (je nach Betriebssystemumgebung) drücken, wird der sichere Tunnel abgebrochen, und Sie können die Iterationen fortsetzen.
+
+## <a name="sharing-your-application-by-configuring-a-deployment-domain-with-azure-dns"></a>Freigeben der Anwendung durch das Konfigurieren einer Bereitstellungsdomäne mit Azure DNS
+
+Sie haben bereits die Entwickleriterationsschleife ausgeführt, die Draft in den vorherigen Schritten erstellt hat. Sie können Ihre Anwendung aber auch mit folgenden Schritten über das Internet freigeben:
+1. Installieren eines Eingangs in Ihrem ACS-Cluster (um für die Anzeige der App eine öffentliche IP-Adresse bereitzustellen)
+2. Delegieren Ihrer benutzerdefinierten Domäne an Azure DNS und Zuordnen Ihrer Domäne zur IP-Adresse, die ACS dem Eingangscontroller zuweist
+
+### <a name="use-helm-to-install-the-ingress-controller"></a>Verwenden Sie Helm, um den Eingangscontroller zu installieren.
+Verwenden Sie **Helm** zum Suchen und Installieren von `stable/traefik` (ein Eingangscontroller), um eingehende Anforderungen für Ihre Builds zu ermöglichen.
+```bash
+$ helm search traefik
+NAME            VERSION DESCRIPTION
+stable/traefik  1.3.0   A Traefik based Kubernetes ingress controller w...
+
+$ helm install stable/traefik --name ingress
+```
+Legen Sie eine Überwachung für den `ingress`-Controller fest, um bei dessen Bereitstellung den externen IP-Wert zu erfassen. Bei dieser IP-Adresse handelt es sich um die Adresse, die im nächsten Abschnitt [Ihrer Bereitstellungsdomäne zugeordnet wird](#wire-up-deployment-domain).
+
+```bash
+kubectl get svc -w
+NAME                          CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
+ingress-traefik               10.0.248.104   13.64.108.240   80:31046/TCP,443:32556/TCP   1h
+kubernetes                    10.0.0.1       <none>          443/TCP                      7h
+```
+
+In diesem Fall lautet die externe IP für die Bereitstellungsdomäne `13.64.108.240`. Sie können nun Ihre Domäne dieser IP zuordnen.
+
+### <a name="map-the-ingress-ip-to-a-custom-subdomain"></a>Zuordnen der Eingangs-IP-Adresse zu einer benutzerdefinierten Unterdomäne
+
+Draft erstellt eine Version für jedes erstellte Helm-Diagramm, d.h. jede Anwendung, an der Sie arbeiten. Jeder wird ein generierter Name zugewiesen, der in **Draft** als _Unterdomäne_ verwendet wird, zusätzlich zu der von Ihnen gesteuerten _Stammbereitstellungsdomäne_. (In diesem Beispiel wird `squillace.io` als Bereitstellungsdomäne verwendet.) Um dieses Unterdomänenverhalten zu ermöglichen, müssen Sie einen A-Datensatz für `'*.draft'` in den DNS-Einträgen für die Bereitstellungsdomäne erstellen, sodass jede generierte Unterdomäne an den Eingangscontroller des Kubernetes-Clusters weitergeleitet wird. 
 
 Ihr Domänenanbieter weist DNS-Server auf eigene Weise zu. Um [Ihre Domänennamenserver an Azure DNS zu delegieren](../../dns/dns-delegate-domain-azure-dns.md), gehen Sie wie folgt vor:
 
@@ -169,98 +248,44 @@ Verwenden Sie den Befehl [az network dns zone create](/cli/azure/network/dns/zon
       "type": "Microsoft.Network/dnszones"
     }
     ```
-3. Fügen Sie die abgerufenen DNS-Server dem Domänenanbieter für Ihre Bereitstellungsdomäne hinzu. So können Sie mithilfe von Azure DNS Ihre Domäne nach Wunsch umleiten.
-4. Erstellen Sie einen A-Datensatzeintrag für Ihre Bereitstellungsdomäne, der der `ingress`-IP aus Schritt 2 des vorherigen Abschnitts zugeordnet ist.
-    ```azurecli
-    az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*' -g squillace.io -z squillace.io
-    ```
+3. Fügen Sie die abgerufenen DNS-Server dem Domänenanbieter für Ihre Bereitstellungsdomäne hinzu. So können Sie mithilfe von Azure DNS Ihre Domäne nach Wunsch umleiten. Ihre Vorgehensweise hängt vom Domänenanbieter ab. [Delegieren von Domänen an Azure DNS](../../dns/dns-delegate-domain-azure-dns.md) enthält einige Details, die Sie kennen sollten. 
+4. Sobald die Domäne an Azure DNS delegiert wurde, erstellen Sie einen A-Datensatzeintrag für Ihre Bereitstellungsdomäne, der der `ingress`-IP aus Schritt 2 des vorherigen Abschnitts zugeordnet ist.
+  ```azurecli
+  az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*.draft' -g squillace.io -z squillace.io
+  ```
 Die Ausgabe sieht in etwa wie folgt aus:
-    ```json
-    {
-      "arecords": [
-        {
-          "ipv4Address": "13.64.108.240"
-        }
-      ],
-      "etag": "<guid>",
-      "id": "/subscriptions/<guid>/resourceGroups/squillace.io/providers/Microsoft.Network/dnszones/squillace.io/A/*",
-      "metadata": null,
-      "name": "*",
-      "resourceGroup": "squillace.io",
-      "ttl": 3600,
-      "type": "Microsoft.Network/dnszones/A"
-    }
+  ```json
+  {
+    "arecords": [
+      {
+        "ipv4Address": "13.64.108.240"
+      }
+    ],
+    "etag": "<guid>",
+    "id": "/subscriptions/<guid>/resourceGroups/squillace.io/providers/Microsoft.Network/dnszones/squillace.io/A/*",
+    "metadata": null,
+    "name": "*.draft",
+    "resourceGroup": "squillace.io",
+    "ttl": 3600,
+    "type": "Microsoft.Network/dnszones/A"
+  }
+  ```
+5. Installieren Sie **Draft** neu.
+  1. Entfernen Sie **Draft** aus dem Cluster, indem Sie `helm delete --purge draft` eingeben. 
+  2. Installieren Sie **Draft** mit dem gleichen `draft-init`-Befehl neu, jedoch mit der Option `--ingress-enabled`:
+    ```bash
+    draft init --ingress-enabled
     ```
-
-5. Konfigurieren Sie Draft so, dass Ihre Registrierung verwendet wird und für jedes erstellte Helm-Diagramm Unterdomänen erstellt werden. Für die Konfiguration von Draft benötigen Sie Folgendes:
-  - Ihren Azure Container Registry-Namen (in diesem Beispiel `draft`)
-  - Ihren Registrierungsschlüssel oder Ihr Kennwort aus `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`
-  - die Stammbereitstellungsdomäne, die Sie für die Zuordnung zur externen IP-Adresse des Kubernetes-Eingangs konfiguriert haben (in diesem Fall `squillace.io`)
-
-  Rufen Sie `draft init` auf. Beim Konfigurationsvorgang werden Sie zur Eingabe der oben genannten Werte aufgefordert. Der Prozess sieht bei der ersten Ausführung etwa wie folgt aus:
- ```bash
-    $ draft init
-    Creating pack ruby...
-    Creating pack node...
-    Creating pack gradle...
-    Creating pack maven...
-    Creating pack php...
-    Creating pack python...
-    Creating pack dotnetcore...
-    Creating pack golang...
-    $DRAFT_HOME has been configured at /Users/ralphsquillace/.draft.
-
-    In order to install Draft, we need a bit more information...
-
-    1. Enter your Docker registry URL (e.g. docker.io, quay.io, myregistry.azurecr.io): draft.azurecr.io
-    2. Enter your username: draft
-    3. Enter your password:
-    4. Enter your org where Draft will push images [draft]: draft
-    5. Enter your top-level domain for ingress (e.g. draft.example.com): squillace.io
-    Draft has been installed into your Kubernetes Cluster.
-    Happy Sailing!
-    ```
-
-Nun können Sie eine Anwendung bereitstellen.
-
-
-## <a name="build-and-deploy-an-application"></a>Erstellen und Bereitstellen einer Anwendung
-
-Das Draft-Repository enthält [sechs einfache Beispielanwendungen](https://github.com/Azure/draft/tree/master/examples). Klonen Sie das Repository, und verwenden Sie das [Python-Beispiel](https://github.com/Azure/draft/tree/master/examples/python). Wechseln Sie in das Verzeichnis „examples/Python“, und geben Sie `draft create` ein, um die Anwendung zu erstellen. Sie sollte wie das folgende Beispiel aussehen.
+Reagieren Sie auf die Eingabeaufforderungen wie zuvor. Allerdings müssen Sie eine weitere Frage beantworten. Verwenden Sie den vollständigen Domänenpfad, den Sie mit Azure DNS konfiguriert haben.
 ```bash
-$ draft create
---> Python app detected
---> Ready to sail
+4. Enter your top-level domain for ingress (e.g. draft.example.com): draft.squillace.io
+```
+5. Wenn Sie `draft up` dieses Mal aufrufen, wird Ihre Anwendung an der URL in der Form `<appname>.draft.<domain>.<top-level-domain>` angezeigt (oder Sie können `curl` verwenden). In diesem Beispiel: `http://handy-labradoodle.draft.squillace.io`. 
+```bash
+curl -s http://handy-labradoodle.draft.squillace.io
+Hello World, I'm Java!
 ```
 
-Die Ausgabe enthält eine Dockerfile-Datei und ein Helm-Diagramm. Für die Erstellung und Bereitstellung geben Sie einfach `draft up` ein. Die Ausgabe ist umfangreich und beginnt wie im folgenden Beispiel.
-```bash
-$ draft up
---> Building Dockerfile
-Step 1 : FROM python:onbuild
-onbuild: Pulling from library/python
-10a267c67f42: Pulling fs layer
-fb5937da9414: Pulling fs layer
-9021b2326a1e: Pulling fs layer
-dbed9b09434e: Pulling fs layer
-ea8a37f15161: Pulling fs layer
-<snip>
-```
-
-Bei erfolgreichem Abschluss, endet sie in etwa wie das folgende Beispiel.
-```bash
-ab68189731eb: Pushed
-53c0ab0341bee12d01be3d3c192fbd63562af7f1: digest: sha256:bb0450ec37acf67ed461c1512ef21f58a500ff9326ce3ec623ce1e4427df9765 size: 2841
---> Deploying to Kubernetes
---> Status: DEPLOYED
---> Notes:
-
-  http://gangly-bronco.squillace.io to access your application
-
-Watching local files for changes...
-```
-
-Unabhängig vom Namen des Diagramms erhalten Sie mit `curl http://gangly-bronco.squillace.io` nun die Antwort `Hello World!`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

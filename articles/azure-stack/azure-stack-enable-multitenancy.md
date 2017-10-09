@@ -1,6 +1,6 @@
 ---
-title: Enable multi-tenancy in Azure Stack | Microsoft Docs
-description: Learn how to support multiple Azure Active Directory directories in Azure Stack
+title: "Aktivieren der Mehrinstanzenfähigkeit in Azure Stack | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie mehrere Azure Active Directory-Verzeichnisse in Azure Stack unterstützen."
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -11,44 +11,46 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 09/25/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: ed1d9d20c06ea0478a439775020fd35941b3d640
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3a90057b43e3f2074e72f3d0f896b35b4884368b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="enable-multi-tenancy-in-azure-stack"></a>Enable multi-tenancy in Azure Stack
+# <a name="enable-multi-tenancy-in-azure-stack"></a>Aktivieren der Mehrinstanzenfähigkeit in Azure Stack
 
-You can configure Azure Stack to support users from multiple Azure Active Directory (Azure AD) tenants to use services in Azure Stack. As an example, consider the following scenario:
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
- - You are the Service Administrator of contoso.onmicrosoft.com, where Azure Stack is installed.
- - Mary is the Directory Administrator of fabrikam.onmicrosoft.com, where guest users are located. 
- - Mary's company receives IaaS and PaaS services from your company, and needs to allow users from the guest directory (fabrikam.onmicrosoft.com) to sign in and use Azure Stack resources in contoso.onmicrosoft.com.
+Sie können Azure Stack so konfigurieren, dass Benutzer aus mehreren Azure Active Directory-Mandanten (Azure AD) Dienste in Azure Stack verwenden können. Betrachten Sie beispielsweise das folgende Szenario:
 
-This guide provides the steps required, in the context of this scenario, to configure multi-tenancy in Azure Stack.  In this scenario, you and Mary must complete steps to enable users from Fabrikam to sign in and consume services from the Azure Stack deployment in Contoso.  
+ - Sie sind Dienstadministrator von contoso.onmicrosoft.com, wo Azure Stack installiert ist.
+ - Mary ist Verzeichnisadministrator von fabrikam.onmicrosoft.com, wo sich Gastbenutzer befinden. 
+ - Marys Unternehmen bezieht IaaS- und PaaS-Dienste von Ihrem Unternehmen und muss es Benutzern aus dem Gastverzeichnis (fabrikam.onmicrosoft.com) ermöglichen, sich bei Azure Stack-Ressourcen in contoso.onmicrosoft.com anzumelden und diese zu verwenden.
 
-## <a name="before-you-begin"></a>Before you begin
-There are a few pre-requisites to account for before you configure multi-tenancy in Azure Stack:
+Der vorliegende Leitfaden beschreibt die erforderlichen Schritte – im Kontext dieses Szenarios –, um die Mehrinstanzenfähigkeit in Azure Stack zu konfigurieren.  In diesem Szenario müssen sowohl Sie als auch Mary einige Schritte ausführen, um es Benutzern von Fabrikam zu ermöglichen, sich bei der Azure Stack-Bereitstellung in Contoso anzumelden und dort Dienste zu nutzen.  
+
+## <a name="before-you-begin"></a>Voraussetzungen
+Bevor Sie die Mehrinstanzenfähigkeit in Azure Stack konfigurieren können, müssen einige Voraussetzungen erfüllt werden:
   
- - You and Mary must coordinate administrative steps across both the directory Azure Stack is installed in (Contoso), and the guest directory (Fabrikam).  
- - Make sure you've [installed](azure-stack-powershell-install.md) and [configured](azure-stack-powershell-configure-admin.md) PowerShell for Azure Stack.
- - [Download the Azure Stack Tools](azure-stack-powershell-download.md), and import the Connect and Identity modules:
+ - Mary und Sie müssen Verwaltungsschritte sowohl in dem Verzeichnis, in dem Azure Stack installiert ist (Contoso), als auch im Gastverzeichnis (Fabrikam) koordinieren.  
+ - Stellen Sie sicher, dass Sie die PowerShell für Azure Stack [installiert](azure-stack-powershell-install.md) und [konfiguriert](azure-stack-powershell-configure-admin.md) haben.
+ - [Laden Sie die Azure Stack-Tools](azure-stack-powershell-download.md) herunter, und importieren Sie die Module „Connect“ und „Identity“:
 
     ````PowerShell
         Import-Module .\Connect\AzureStack.Connect.psm1
         Import-Module .\Identity\AzureStack.Identity.psm1
     ```` 
- - Mary will require [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) access to Azure Stack. 
+ - Mary benötigt [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)-Zugriff auf Azure Stack. 
 
-## <a name="configure-azure-stack-directory"></a>Configure Azure Stack directory
-In this section, you configure Azure Stack to allow sign-ins from Fabrikam Azure AD directory tenants.
+## <a name="configure-azure-stack-directory"></a>Konfigurieren des Azure Stack-Verzeichnisses
+In diesem Abschnitt konfigurieren Sie Azure Stack so, dass Anmeldungen aus Fabrikam-Azure AD-Verzeichnismandanten zugelassen werden.
 
-### <a name="onboard-guest-directory-tenant"></a>Onboard guest directory tenant
-Next, onboard the Guest Directory Tenant (Fabrikam) to Azure Stack.  This step configures Azure Resource Manager to accept users and service principals from the guest directory tenant.
+### <a name="onboard-guest-directory-tenant"></a>Integrieren des Gastverzeichnismandanten
+Als nächstes integrieren Sie den Gastverzeichnismandanten (Fabrikam) in Azure Stack.  Dieser Schritt konfiguriert Azure Resource Manager so, dass Benutzer und Dienstprinzipale aus dem Gastverzeichnismandanten akzeptiert werden.
 
 ````PowerShell
 $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
@@ -67,11 +69,11 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
 
 
 
-## <a name="configure-guest-directory"></a>Configure guest directory
-After you complete steps in the Azure Stack directory, Mary must provide consent to Azure Stack accessing the guest directory and register Azure Stack with the guest directory. 
+## <a name="configure-guest-directory"></a>Konfigurieren des Gastverzeichnisses
+Nachdem Sie die Schritte im Azure Stack-Verzeichnis abgeschlossen haben, muss Mary zustimmen, dass Azure Stack auf das Gastverzeichnis zugreift, und Azure Stack beim Gastverzeichnis registrieren. 
 
-### <a name="registering-azure-stack-with-the-guest-directory"></a>Registering Azure Stack with the guest directory
-Once the guest directory administrator has provided consent for Azure Stack to access Fabrikam's directory, they must register Azure Stack with Fabrikam's directory tenant.
+### <a name="registering-azure-stack-with-the-guest-directory"></a>Registrieren von Azure Stack beim Gastverzeichnis
+Sobald Mary als Administrator des Gastverzeichnisses dem Zugriff auf das Verzeichnis von Fabrikam durch Azure Stack zugestimmt hat, muss sie Azure Stack beim Fabrikam-Verzeichnismandanten registrieren.
 
 ````PowerShell
 $tenantARMEndpoint = "https://management.local.azurestack.external"
@@ -84,13 +86,13 @@ Register-AzSWithMyDirectoryTenant `
  -DirectoryTenantName $guestDirectoryTenantName ` 
  -Verbose 
 ````
-## <a name="direct-users-to-sign-in"></a>Direct users to sign in
-Now that you and Mary have completed the steps to onboard Mary's directory, Mary can direct Fabrikam users to sign in.  Fabrikam users (that is, users with the fabrikam.onmicrosoft.com suffix) sign in by visiting https://portal.local.azurestack.external.  
+## <a name="direct-users-to-sign-in"></a>Weiterleiten von Benutzern zur Anmeldung
+Nachdem Mary und Sie die Schritte zum Integrieren von Marys Verzeichnis abgeschlossen haben, kann Mary Fabrikam-Benutzer zur Anmeldung weiterleiten.  Fabrikam-Benutzer (also Benutzer mit dem Suffix „fabrikam.onmicrosoft.com“) melden sich hier an: https://portal.local.azurestack.external.  
 
-Mary will direct any [foreign principals](../active-directory/active-directory-understanding-resource-access.md) in the Fabrikam directory (that is, users in the Fabrikam directory without the suffix of fabrikam.onmicrosoft.com) to sign in using https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  If they do not use this URL, they are sent to their default directory (Fabrikam) and receive an error that says their admin has not consented.
+Mary leitet alle [fremden Prinzipale](../active-directory/active-directory-understanding-resource-access.md) im Fabrikam-Verzeichnis (also Benutzer im Fabrikam-Verzeichnis ohne das Suffix „fabrikam.onmicrosoft.com“) zur Anmeldung bei dieser Adresse weiter: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Wenn diese Benutzer diese URL nicht verwenden, werden sie an ihr Standardverzeichnis (Fabrikam) weitergeleitet und erhalten eine Fehlermeldung, die besagt, dass ihr Administrator nicht zugestimmt hat.
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Manage delegated providers](azure-stack-delegated-provider.md)
-- [Azure Stack key concepts](azure-stack-key-features.md)
+- [Verwalten delegierter Anbieter](azure-stack-delegated-provider.md)
+- [Schlüsselkonzepte für Azure Stack](azure-stack-key-features.md)
 

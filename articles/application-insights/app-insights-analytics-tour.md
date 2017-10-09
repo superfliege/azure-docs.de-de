@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/06/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: edcf294856582569c00f7cf49beb3a481e28d7d8
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ccea92dda99c3b76cbb7d37b20ce810b210a8217
 ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Einführung in Analytics in Application Insights
@@ -58,6 +58,16 @@ Erweitern Sie ein Element, um die Details anzuzeigen:
 > Klicken Sie auf den Anfang einer Spalte, um die im Webbrowser zur Verfügung stehenden Ergebnisse neu zu ordnen. Beachten Sie aber, dass die Anzahl von in den Browser heruntergeladen Zeilen bei einem großen Resultset beschränkt ist. Diese Sortierung zeigt Ihnen nicht unbedingt die tatsächlichen höchsten oder niedrigsten Elemente an. Verwenden Sie den Operator `top` oder `sort`, um die Elemente zuverlässig zu sortieren.
 >
 >
+
+## <a name="query-across-applications"></a>Anwendungsübergreifende Abfragen
+Wenn Sie Daten aus mehreren Application Insights-Anwendungen kombinieren möchten, geben Sie mithilfe des Schlüsselworts **app** die Anwendung zusammen mit dem Tabellennamen an.  Diese Abfrage kombiniert die Anforderungen von zwei verschiedenen Anwendungen mit dem Befehl **union**.
+
+
+```AIQL
+
+    union app('fabrikamstage').requests, app('fabrikamprod').requests
+    
+```
 
 ## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[Top](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) und [Sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
 `take` ist hilfreich, um schnell eine Stichprobe abzurufen. Die Zeilen aus der Tabelle werden aber nicht in einer bestimmten Reihenfolge angezeigt. Verwenden Sie für eine sortierte Ansicht `top` (für eine Stichprobe) oder `sort` (für die gesamte Tabelle).

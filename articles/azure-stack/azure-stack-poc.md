@@ -1,6 +1,6 @@
 ---
-title: What is Azure Stack? | Microsoft Docs
-description: Azure Stack Development Kit is an environment for evaluating Azure Stack features and scenarios.
+title: Was ist Azure Stack? | Microsoft Docs
+description: "Azure Stack ermöglicht die Ausführung von Azure-Diensten in Ihrem Datencenter."
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -11,35 +11,35 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 7/10/2017
+ms.topic: overview
+ms.date: 09/25/2017
 ms.author: helaw
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 65278e7b352df5651f04151210ccc34a58dd321a
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 950ba44c0b7eb80c9b0a3c69a9fca03cd244576d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="what-is-azure-stack"></a>What is Azure Stack?
+# <a name="what-is-azure-stack"></a>Was ist Azure Stack?
 
-Microsoft Azure Stack is a hybrid cloud platform that lets you deliver Azure services from your organization’s datacenter.  Azure Stack is designed to help you in key scenarios, like meeting security and compliance requirements, or where you need to access Azure resources without internet connectivity.  
+Microsoft Azure Stack ist eine Hybrid Cloud-Plattform, mit der Sie Azure-Dienste über das Rechenzentrum Ihrer Organisation bereitstellen können.  Azure Stack soll in gängigen Szenarien (etwa in Edge-Umgebungen und getrennten Umgebungen) neue Möglichkeiten für Ihre modernen Anwendungen eröffnen und zur Erfüllung spezifischer Sicherheits- und Konformitätsanforderungen beitragen.  Azure Stack wird in zwei auf Ihre Anforderungen abgestimmten Bereitstellungsoptionen angeboten.
+
+## <a name="azure-stack-integrated-systems"></a>Integrierte Azure Stack-Systeme
+Integrierte Azure Stack-Systeme werden im Rahmen einer Partnerschaft zwischen Microsoft und [Hardwarepartnern](https://azure.microsoft.com/overview/azure-stack/integrated-systems/) angeboten. Dadurch entsteht eine ausgewogene Lösung mit cloudbasierten Innovationen und komfortabler Verwaltung.  Bei Azure Stack handelt es sich um ein integriertes System mit Hardware und Software. Somit bietet die Plattform genau das richtige Maß an Flexibilität und Kontrolle bei gleichzeitiger Bereitstellung von cloudbasierten Innovationen.  Integrierte Azure Stack-Systeme haben eine Größe von vier bis zwölf Knoten, und der Support wird vom Hardwarepartner und von Microsoft gemeinsam bereitgestellt.  Mit integrierten Azure Stack-Systemen ermöglichen Sie neue Szenarien für Ihre Produktionsworkloads.    
 
 ## <a name="azure-stack-development-kit"></a>Azure Stack Development Kit
-Microsoft Azure Stack Development Kit is a single-node version of Azure Stack, which you can use to evaluate and learn about Azure Stack.  You can also use Azure Stack Development Kit as a developer environment, where you can develop using consistent APIs and tooling.  
+Microsoft Azure Stack Development Kit ist eine Einzelknotenbereitstellung von Azure Stack, mit der Sie Azure Stack auswerten und näher kennenlernen können.  Sie können auch Azure Stack Development Kit als Entwicklerumgebung verwenden, in der Sie anhand von mit Azure konsistenten APIs und Tools Entwicklungsarbeiten durchführen können.  Azure Stack Development Kit ist nicht für die Verwendung als Produktionsumgebung konzipiert.
 
-You should be aware of these points with Azure Stack Development Kit:
+Für das Azure Stack Development Kit gelten die folgenden Einschränkungen:
+* Das Azure Stack Development Kit ist einem einzigen Azure Active Directory- oder AD FS-Identitätsanbieter (Active Directory Federation Services, Active Directory-Verbunddienste) zugeordnet. Sie können mehrere Benutzer in diesem Verzeichnis erstellen und jedem Benutzer Abonnements zuweisen.
+* Da alle Komponenten auf einem einzigen Computer bereitgestellt werden, stehen für Mandantenressourcen nur begrenzte physische Ressourcen zur Verfügung. Diese Konfiguration ist nicht für die Beurteilung von Skalierung oder Leistung vorgesehen.
+* Netzwerkszenarios sind aufgrund der Anforderungen an einen einzelnen Host mit einer NIC beschränkt.  
 
-* Azure Stack Development Kit must not be used as a production environment and should only be used for testing, evaluation, and demonstration.  
-* Your deployment of Azure Stack is associated with a single Azure Active Directory or Active Directory Federation Services identity provider. You can create multiple users in this directory and assign subscriptions to each user.
-* With all components deployed on the single machine, there are limited physical resources available for tenant resources. This configuration is not intended for scale or performance evaluation.
-* Networking scenarios are limited due to the single host/NIC requirement.
+## <a name="next-steps"></a>Nächste Schritte
+[Wichtige Features und Konzepte](azure-stack-key-features.md)
 
-## <a name="next-steps"></a>Next steps
-[Key features and concepts](azure-stack-key-features.md)
-
-[Hybrid Application innovation with Azure and Azure Stack (pdf)](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)
+[Azure Stack: Eine Erweiterung von Azure (pdf)](https://azure.microsoft.com/en-us/resources/azure-stack-an-extension-of-azure/)
 
 

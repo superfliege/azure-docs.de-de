@@ -1,6 +1,6 @@
 ---
 title: "Vorschreiben einer sicheren Übertragung in Azure Storage | Microsoft-Dokumentation"
-description: "Hier erhalten Sie Informationen zur Funktion „Sichere Übertragung erforderlich“ für Azure Storage; zudem wird beschrieben, wie die Funktion aktiviert wird."
+description: "Hier erhalten Sie Informationen zum Feature „Sichere Übertragung erforderlich“ für Azure Storage. Zudem wird beschrieben, wie das Feature aktiviert wird."
 services: storage
 documentationcenter: na
 author: fhryo-msft
@@ -15,17 +15,17 @@ ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 96c641672ce6515fad3abc3fc0b8a6af037de346
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 5ec50ca23d9f7c92365492dfab42dc14a38699e2
 ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/28/2017
 
 ---
-# <a name="require-secure-transfer"></a>Vorschreiben einer sicheren Übertragung
+# <a name="require-secure-transfer-in-azure-storage"></a>Vorschreiben einer sicheren Übertragung in Azure Storage
 
-Die Funktion „Sichere Übertragung erforderlich“ steigert die Sicherheit Ihres Speicherkontos, da Anforderungen an das Speicherkonto von sicheren Verbindungen zugelassen werden. Beim Aufrufen von REST-APIs zum Zugreifen auf das Speicherkonto müssen Sie beispielsweise eine Verbindung über HTTPS herstellen. Wenn „Sichere Übertragung erforderlich“ aktiviert ist, werden alle Anforderungen über HTTP zurückgewiesen.
+Die Funktion „Sichere Übertragung erforderlich“ steigert die Sicherheit Ihres Speicherkontos, da Anforderungen an das Konto von sicheren Verbindungen zugelassen werden. Beim Aufrufen von REST-APIs zum Zugreifen auf das Speicherkonto müssen Sie beispielsweise eine Verbindung über HTTPS herstellen. „Sichere Übertragung erforderlich“ lehnt Anforderungen ab, die HTTP verwenden.
 
-Wenn Sie den Azure Files-Dienst verwenden, schlägt jede Verbindung ohne Verschlüsselung fehl, wenn „Sichere Übertragung erforderlich“ aktiviert ist. Hierzu zählen Szenarien, in denen SMB 2.1, SMB 3.0 ohne Verschlüsselung und einige Varianten des Linux SMB-Clients verwendet werden. 
+Wenn Sie den Azure Files-Dienst verwenden, schlägt jede Verbindung ohne Verschlüsselung fehl, wenn „Sichere Übertragung erforderlich“ aktiviert ist. Hierzu zählen Szenarien, in denen SMB 2.1, SMB 3.0 ohne Verschlüsselung und einige Versionen des Linux SMB-Clients verwendet werden. 
 
 In der Standardeinstellung ist die Option „Sichere Übertragung erforderlich“ deaktiviert.
 
@@ -34,26 +34,26 @@ In der Standardeinstellung ist die Option „Sichere Übertragung erforderlich�
 
 ## <a name="enable-secure-transfer-required-in-the-azure-portal"></a>Aktivieren von „Sichere Übertragung erforderlich“ im Azure-Portal
 
-Sie können die Einstellung „Sichere Übertragung erforderlich“ beim Erstellen eines Speicherkontos im [Azure-Portal](https://portal.azure.com) sowie für vorhandene Speicherkonten aktivieren.
+Sie können die Einstellung „Sichere Übertragung erforderlich“ beim Erstellen eines Speicherkontos im [Azure-Portal](https://portal.azure.com) aktivieren. Sie können sie aber auch für vorhandene Speicherkonten aktivieren.
 
-### <a name="require-secure-transfer-when-you-create-a-storage-account"></a>Vorschreiben einer sicheren Übertragung beim Erstellen eines Speicherkontos
+### <a name="require-secure-transfer-for-a-new-storage-account"></a>Vorschreiben einer sicheren Übertragung für ein neues Speicherkonto
 
-1. Öffnen Sie das Blatt **Speicherkonto erstellen** im Azure-Portal.
+1. Öffnen Sie den Bereich **Speicherkonto erstellen** im Azure-Portal.
 1. Wählen Sie unter **Sichere Übertragung erforderlich** die Option **Aktiviert** aus.
 
-  ![Screenshot](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
+  ![Blatt „Speicherkonto erstellen“](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
 ### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Vorschreiben einer sicheren Übertragung für ein vorhandenes Speicherkonto
 
 1. Wählen Sie ein vorhandenes Speicherkonto im Azure-Portal aus.
-1. Wählen Sie im Menüblatt des Speicherkontos unter **EINSTELLUNGEN** die Option **Konfiguration** aus.
+1. Wählen Sie im Menübereich des Speicherkontos unter **EINSTELLUNGEN** die Option **Konfiguration** aus.
 1. Wählen Sie unter **Sichere Übertragung erforderlich** die Option **Aktiviert** aus.
 
-  ![Screenshot](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
+  ![Menübereich „Speicherkonto“](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
 ## <a name="enable-secure-transfer-required-programmatically"></a>Programmgesteuertes Aktivieren der Einstellung „Sichere Übertragung erforderlich“
 
-Der Einstellungsname lautet in Speicherkontoeigenschaften _supportsHttpsTrafficOnly_. Sie können ihn mit der REST-API, mit Tools oder Bibliotheken aktivieren:
+Um die sichere Übertragung programmgesteuert zu erfordern, verwenden Sie die Einstellung _supportsHttpsTrafficOnly_ in den Eigenschaften des Speicherkontos mit REST-API, Tools oder Bibliotheken:
 
 * [REST-API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts) (Version: 2016-12-01)
 * [PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0) (Version: 4.1.0)
@@ -65,9 +65,9 @@ Der Einstellungsname lautet in Speicherkontoeigenschaften _supportsHttpsTrafficO
 
 ### <a name="enable-secure-transfer-required-setting-with-rest-api"></a>Aktivieren der Einstellung „Sichere Übertragung erforderlich“ mit der REST-API
 
-Um die Tests mit der REST-API zu vereinfachen, können Sie anhand von [ArmClient](https://github.com/projectkudu/ARMClient) einen Aufruf über die Befehlszeile durchführen.
+Um die Tests mit der REST-API zu vereinfachen, können Sie mithilfe von [ArmClient](https://github.com/projectkudu/ARMClient) einen Aufruf über die Befehlszeile durchführen.
 
- Anhand der nachfolgenden Befehlszeile können Sie die Einstellung mit der REST-API überprüfen:
+ Verwenden Sie die folgende Befehlszeile, um die Einstellung mit der REST-API zu überprüfen:
 
 ```
 # Login Azure and proceed with your credentials
@@ -93,7 +93,7 @@ In der Antwort finden Sie die Einstellung _supportsHttpsTrafficOnly_. Beispiel:
 
 ```
 
-Anhand der nachfolgenden Befehlszeile können Sie die Einstellung mit der REST-API aktivieren:
+Verwenden Sie die folgende Befehlszeile, um die Einstellung mit der REST-API zu aktivieren:
 
 ```
 
@@ -104,7 +104,7 @@ Anhand der nachfolgenden Befehlszeile können Sie die Einstellung mit der REST-A
 
 ```
 
-Beispiel für Input.json:
+Im Anschluss finden Sie ein Beispiel für „Input.json“:
 ```Json
 
 {

@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 4401de010dec808f080f5460298bb738ddd39312
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 91d1c52c0abf14656e08b511e4f6c8041e319020
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
+
+*Gilt für: Azure Stack Development Kit*
+
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Hinzufügen neuer Azure Stack-Mandantenkonten in Azure Active Directory
 Nach dem [Bereitstellen des Azure Stack Development Kits](azure-stack-run-powershell-script.md) benötigen Sie ein Mandantenbenutzerkonto, damit Sie das Portal durchsuchen und Ihre Angebote und Pläne testen können. Sie können ein Mandantenkonto mithilfe des [Azure-Portals](#create-an-azure-stack-tenant-account-using-the-azure-portal) oder mithilfe von [PowerShell](#create-an-azure-stack-tenant-account-using-powershell) erstellen.
 

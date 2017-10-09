@@ -6,7 +6,7 @@
 # Erste Schritte
 ## [Entwicklerhandbuch](germany-developer-guide.md)
 ## [Anmelden beim Azure Deutschland-Portal ](germany-get-started-connect-with-portal.md)
-## [Herstellen einer Verbindung mit PowerShell](germany-get-started-connect-with-ps.md)
+## [Herstellen einer Verbindung mithilfe von Azure PowerShell](germany-get-started-connect-with-ps.md)
 ## [Herstellen einer Verbindung mit der CLI](germany-get-started-connect-with-cli.md)
 ## [Visual Studio für Azure Deutschland einrichten](germany-get-started-connect-with-vs.md)
 ## [Web-App bereitstellen](germany-howto-deploy-webandmobile.md)

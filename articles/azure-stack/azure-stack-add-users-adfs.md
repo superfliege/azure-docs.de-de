@@ -11,16 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 5ff45235cffead8c665d5c8610edca3c787ac267
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 2cad56caa182a9abdca02944000b1506953af3f4
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="add-users-in-the-azure-stack-development-kit"></a>Hinzufügen von Benutzern im Azure Stack Development Kit
+
+*Gilt für: Azure Stack Development Kit*
 
 Damit Sie zusätzliche Benutzer zur Development Kit-Bereitstellung hinzufügen können, müssen Sie sie mithilfe der Microsoft Management Console auf dem Azure Stack-Hostcomputer zum Azure Stack Development Kit-Verzeichnis hinzufügen.
 1.  Öffnen Sie auf dem Azure Stack-Hostcomputer die Microsoft Management Console.

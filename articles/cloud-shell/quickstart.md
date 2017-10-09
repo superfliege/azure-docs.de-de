@@ -1,6 +1,6 @@
 ---
-title: "Schnellstart für Azure Cloud Shell (Vorschau) | Microsoft-Dokumentation"
-description: "Schnellstart für Azure Cloud Shell"
+title: "Schnellstart für Bash in Azure Cloud Shell (Vorschau) | Microsoft-Dokumentation"
+description: "Schnellstart für Bash in Cloud Shell"
 services: 
 documentationcenter: 
 author: jluk
@@ -12,28 +12,36 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 75676eb0ab784e2adbfd27b170c1dee5599b74ac
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: bbad2735acf06ebefda020410731fb307c4ec614
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="quickstart-for-using-the-azure-cloud-shell"></a>Schnellstart für Azure Cloud Shell
+# <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Schnellstart für Bash in Azure Cloud Shell
 
-Dieses Dokument erläutert die Verwendung von Azure Cloud Shell im [Azure-Portal](https://ms.portal.azure.com/).
+Dieses Dokument erläutert die Verwendung von Bash in Azure Cloud Shell im [Azure-Portal](https://ms.portal.azure.com/).
+
+> [!NOTE]
+> Ein Schnellstart zu [PowerShell in Azure Cloud Shell](quickstart-powershell.md) ist ebenfalls verfügbar.
 
 ## <a name="start-cloud-shell"></a>Starten von Cloud Shell
 1. Starten Sie **Cloud Shell** aus dem oberen Navigationsbereich im Azure-Portal. <br>
-![](media/shell-icon.png)
+![](media/quickstart/shell-icon.png)
 2. Wählen Sie ein Abonnement aus, in dem ein Speicherkonto und eine Azure-Dateifreigabe erstellt werden sollen.
 3. Wählen Sie „Speicher erstellen“ aus.
 
 > [!TIP]
 > Sie werden in jeder Sitzung automatisch bei der Azure CLI 2.0 authentifiziert.
+
+### <a name="select-the-bash-environment"></a>Auswählen der Bash-Umgebung
+1. Wählen Sie auf der linken Seite des Shell-Fensters im Dropdownmenü die Umgebung aus. <br>
+![](media/quickstart/env-selector.png)
+2. Wählen Sie „Bash“ aus.
 
 ### <a name="set-your-subscription"></a>Festlegen des Abonnements
 1. Führen Sie die Abonnements auf, auf die Sie Zugriff haben: <br>
@@ -61,16 +69,16 @@ Ihr Benutzername auf diesem virtuellen Computer ist der Benutzername, der in Clo
 1. Suchen Sie über die Suchleiste des Azure-Portals nach dem Namen Ihres virtuellen Computers.
 2. Klicken Sie auf „Verbinden“ und führen Sie `ssh username@ipaddress` aus.
 
-![](media/sshcmd-copy.png)
+![](media/quickstart/sshcmd-copy.png)
 
-Nach dem Herstellen der SSH-Verbindung sollte der Willkommensbildschirm von Ubuntu angezeigt werden.
-![](media/ubuntu-welcome.png)
+Nach dem Herstellen der SSH-Verbindung sollte der Willkommensbildschirm von Ubuntu angezeigt werden. <br>
+![](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Bereinigen 
 Löschen Sie Ihre Ressourcengruppe und alle darin befindlichen Ressourcen: <br>
 Führen Sie `az group delete -n MyRG` aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erfahren Sie mehr über das Beibehalten von Speicher in Cloud Shell](persisting-shell-storage.md). <br>
+[Erfahren Sie mehr über das Beibehalten von Dateien für Bash in Cloud Shell](persisting-shell-storage.md) <br>
 [Erfahren Sie mehr über Azure CLI 2.0](https://docs.microsoft.com/cli/azure/). <br>
 [Erfahren Sie mehr über Azure File Storage](../storage/files/storage-files-introduction.md). <br>
