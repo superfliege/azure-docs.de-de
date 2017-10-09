@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 622604dc3ce69085feff6705168d58ad9938c429
+ms.translationtype: HT
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 1ca34b262a51b694cb9541750588bbea139eeae1
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Failback von Azure zu einem lokalen Standort
@@ -27,7 +26,7 @@ ms.lasthandoff: 06/16/2017
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Azure-Computer ein Failback von Azure Virtual Machines auf den lokalen Standort durchführen. Befolgen Sie die Anweisungen in diesem Artikel, um Ihre virtuellen VMware-Computer oder Ihre physischen Windows-/Linux-Server nach einem Failover vom lokalen Standort auf Azure (beschrieben im Tutorial [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-vmware-to-azure-classic.md)) per Failback wieder auf den lokalen Standort zurückzuführen.
 
 > [!WARNING]
-> Wenn Sie die [Migration abgeschlossen](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben, ist danach kein Failback möglich.
+> Wenn Sie entweder die [Migration abgeschlossen](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben, ist danach kein Failback möglich. Wenn Sie den Schutz des virtuellen Computers deaktivieren, ist kein Failback möglich.
 
 > [!NOTE]
 > Wenn für VMware-VMs ein Failover erfolgt ist, ist kein Failback auf einen Hyper-V-Host möglich.
@@ -65,9 +64,9 @@ Wenn Sie ein Failback zum ursprünglichen virtuellen Computer durchführen, sind
 Wenn der lokale virtuelle Computer vor dem erneuten Schützen des virtuellen Computers nicht vorhanden ist, handelt es sich um ein Szenario mit Wiederherstellung an einem alternativen Speicherort. Mit dem Workflow zum erneuten Schützen wird der lokale virtuelle Computer neu erstellt. Außerdem wird ein vollständiger Download der Daten durchgeführt.
 
 * Wenn Sie ein Failback an einem alternativen Speicherort des virtuellen Computers ausführen, erfolgt die Wiederherstellung auf demselben ESX-Host, auf dem der Masterzielserver bereitgestellt ist. Der zum Erstellen des Datenträgers verwendete Datenspeicher ist derselbe Datenspeicher, der beim erneuten Schützen des virtuellen Computers ausgewählt wurde.
-* Sie können nur ein Failback nur auf einen VMFS-Datenspeicher (Dateisystem für virtuelle Computer) ausführen. Bei vSAN oder RDM funktionieren das erneute Schützen und das Failback nicht.
+* Sie können nur ein Failback nur auf einen VMFS- (Dateisystem für virtuelle Computer) oder vSAN-Datenspeicher ausführen. Bei RDM funktionieren das erneute Schützen und das Failback nicht.
 * Das erneute Schützen umfasst eine große anfängliche Datenübertragung gefolgt von den Änderungen. Dieser Prozess ist vorhanden, da der virtuelle Computer lokal nicht vorhanden ist. Die vollständigen Daten müssen zurückrepliziert werden. Dieser erneute Schutz dauert außerdem länger als die Wiederherstellung am ursprünglichen Speicherort.
-* Ein Failback auf vSAN- oder RDM-basierte Datenträger ist nicht möglich. Nur neue virtuelle Datenträger (VMDKs) können in einem VMFS-Datenspeicher erstellt werden.
+* Ein Failback auf RDM-basierte Datenträger ist nicht möglich. Nur neue virtuelle Datenträger (VMDKs) können in einem VMFS-/vSAN-Datenspeicher erstellt werden.
 
 Für einen physischen Computer kann beim Failover auf Azure nur ein Failback als virtueller VMware-Computer (auch als P2A2V bezeichnet) ausgeführt werden. Dieser Flow fällt unter Wiederherstellung an einem alternativen Speicherort.
 
@@ -79,8 +78,11 @@ Führen Sie vor dem Fortfahren alle Schritte für das erneute Schützen aus, dam
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Konfigurationsserver ist lokal erforderlich, wenn Sie ein Failback durchführen. Während des Failbacks muss der virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein, ansonsten schlägt das Failback fehl. Stellen Sie daher sicher, dass Sie die regelmäßigen geplanten Sicherungen des Servers ausführen. Im Notfall müssen Sie den Server mit der gleichen IP-Adresse wiederherstellen, damit das Failback funktioniert.
-* Der Masterzielserver sollte vor dem Auslösen des Failbacks keine Momentaufnahmen enthalten.
+> [!IMPORTANT]
+> Beim Failover zu Azure ist der lokale Standort möglicherweise nicht verfügbar und daher kann der Konfigurationsserver nicht verfügbar oder heruntergefahren sein. Während des erneuten Schützens und des Failbacks sollte der lokale Konfigurationsserver ausgeführt werden und einen fehlerfreien verbundenen Zustand aufweisen.
+
+* Ein Konfigurationsserver ist lokal erforderlich, wenn Sie ein Failback durchführen. Der Server muss aktiv und mit dem Dienst verbunden sein, damit eine ordnungsgemäße Integrität vorliegt. Während des Failbacks muss der virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein, ansonsten schlägt das Failback fehl. Stellen Sie daher sicher, dass Sie die regelmäßigen geplanten Sicherungen des Servers ausführen. Im Notfall müssen Sie den Server mit der gleichen IP-Adresse wiederherstellen, damit das Failback funktioniert.
+* Der Masterzielserver sollte vor dem Auslösen des erneuten Schützens/Failbacks keine Momentaufnahmen enthalten.
 
 ## <a name="steps-to-fail-back"></a>Schritte für das Failback
 

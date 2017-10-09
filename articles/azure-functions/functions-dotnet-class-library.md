@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 06/09/2017
 ms.author: donnam
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 0613bb96d3afb85ff7e684246b128e4eef518d23
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: f45b3f705ba3d11dd20221e3a7a465796d7a86a1
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>Verwenden von .NET-Klassenbibliotheken mit Azure Functions
@@ -36,7 +36,7 @@ Für diesen Artikel ist Folgendes erforderlich:
 
 ## <a name="functions-class-library-project"></a>Funktionsklassenbibliotheks-Projekt
 
-Erstellen Sie in Visual Studio ein Azure Functions-Projekt. Die neue Projektvorlage erstellt die Dateien *host.json* und *local.settings.json*. Sie können [Azure Functions-Laufzeiteinstellungen in „host.json“ anpassen](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json). 
+Erstellen Sie in Visual Studio ein Azure Functions-Projekt. Die neue Projektvorlage erstellt die Dateien *host.json* und *local.settings.json*. Sie können [Azure Functions-Laufzeiteinstellungen in „host.json“ anpassen](functions-host-json.md). 
 
 Die Datei *local.settings.json* speichert App-Einstellungen, Verbindungszeichenfolgen und Einstellungen für Azure Functions Core Tools. Weitere Informationen zu ihrer Struktur finden Sie unter [Lokales Codieren und Testen von Azure-Funktionen](functions-run-local.md#local-settings).
 
@@ -46,7 +46,7 @@ Das Attribut [`FunctionNameAttribute`](https://github.com/Azure/azure-webjobs-sd
 
 ### <a name="conversion-to-functionjson"></a>Konvertierung in „function.json“
 
-Beim Erstellen eines Azure Functions-Projekts wird eine Datei `function.json` in dem Verzeichnis erzeugt, das dem in `[FunctionName]` definierten Funktionsnamen entspricht. Sie gibt Trigger, Bindungen und Punkte für die Projektassemblydatei an.
+Beim Erstellen eines Azure Functions-Projekts wird eine *function.json*-Datei im Verzeichnis der Funktion erstellt. Der Verzeichnisname ist identisch mit dem Funktionsnamen, der vom `[FunctionName]`-Attribut angegeben ist. Die Datei *function.json* enthält Trigger, Bindungen und Punkte für die Projektassemblydatei.
 
 Das NuGet-Paket [Microsoft\.NET\.Sdk\.Functions](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) führt diese Konvertierung aus. Die Quelle ist im GitHub-Repository [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk) verfügbar.
 

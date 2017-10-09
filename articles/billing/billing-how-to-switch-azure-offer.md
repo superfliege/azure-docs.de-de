@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 08/30/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 354eec1b0850edc1b2039e0c736b129936a27381
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 48f5f4db60c104778a6c391d254e0bc0c4c95cee
 ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Ändern Ihres Azure-Abonnements mit nutzungsbasierter Bezahlung in ein anderes Angebot
@@ -106,7 +106,7 @@ An dem Tag, an dem Sie das Angebot wechseln, wird für alle ausstehenden Gebühr
 
 ### <a name="can-i-migrate-from-pay-as-you-go-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Kann ich von der nutzungsbasierten Bezahlung zu [Cloudlösungsanbieter](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (Cloud Solution Provider, CSP) oder [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA) migrieren?
 
-* Informationen zum Migrieren zu CSP finden Sie unter [Azure Subscription Migration to CSP](https://blogs.technet.microsoft.com/hybridcloudbp/2016/08/26/azure-subscription-migration-to-csp/) (Azure-Abonnementmigration zu CSP).
+* Informationen zum Migrieren zu CSP finden Sie unter [Azure Pas-As-You-Go Subscription Migration to CSP](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/migration/migration-from-payg-to-csp) (Azure-PAYG-Abonnementmigration zu CSP).
 * Um zu EA zu migrieren, muss Ihr Registrierungsadministrator Ihr Konto in EA hinzufügen. Führen Sie die Anweisungen in der Einladungs-E-Mail aus, um Ihre Abonnements in die EA-Registrierung zu verschieben. Weitere Informationen finden Sie unter [Associate an Existing Account](https://ea.azure.com/helpdocs/associateExistingAccount) (Zuordnen eines vorhandenen Kontos) im EA-Portal.
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Kann ich Daten und Dienste in ein neues Abonnement migrieren?
@@ -117,3 +117,4 @@ An dem Tag, an dem Sie das Angebot wechseln, wird für alle ausstehenden Gebühr
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 
 Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+

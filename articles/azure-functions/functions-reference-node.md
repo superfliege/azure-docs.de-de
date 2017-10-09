@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 641afd78aae145c5e1b16a08567a22c1aafe59a8
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: a20f6db8bbbc9b7936cf102e8cd2ff1b2a995fb2
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
@@ -202,7 +202,7 @@ Mit Functions können Sie den Ablaufverfolgungsebenen-Schwellenwert zum Schreibe
 }  
 ```
 
-Die Werte von **consoleLevel** entsprechen den Namen der `context.log`-Methoden. Um die gesamte Ablaufverfolgungsprotokollierung in der Konsole zu deaktivieren, setzen Sie **consoleLevel** auf _off_. Weitere Informationen über die host.json-Datei finden Sie im [host.json-Referenzthema](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
+Die Werte von **consoleLevel** entsprechen den Namen der `context.log`-Methoden. Um die gesamte Ablaufverfolgungsprotokollierung in der Konsole zu deaktivieren, setzen Sie **consoleLevel** auf _off_. Weitere Informationen finden Sie in der [host.json-Referenz](functions-host-json.md).
 
 ## <a name="http-triggers-and-bindings"></a>HTTP: Trigger und Bindungen
 

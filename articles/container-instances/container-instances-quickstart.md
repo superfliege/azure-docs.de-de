@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
+ms.date: 09/26/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 012a48410bb08cb54f42a4f87e952f67ad18c112
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 71a16c71a18b63efe039d3a47ab6f2ce7244caba
 ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -41,7 +41,7 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
 
 Azure Container Instances-Instanzen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengruppe (eine logische Sammlung für die Bereitstellung und Verwaltung von Azure-Ressourcen) platziert werden.
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe.
+Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourcengruppe.
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
@@ -51,13 +51,13 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
-Zum Erstellen eines Containers müssen Sie einen Namen, ein Docker-Image und eine Azure-Ressourcengruppe angeben. Der Container kann außerdem mit einer öffentlichen IP-Adresse über das Internet verfügbar gemacht werden, dies ist jedoch optional. In diesem Fall verwenden wir einen Container, der eine sehr einfache, in [Node.js](http://nodejs.org) geschriebene Web-App hostet.
+Zum Erstellen eines Containers müssen Sie einen Namen, ein Docker-Image und eine Azure-Ressourcengruppe für den Befehl [az container create][az-container-create] angeben. Der Container kann außerdem mit einer öffentlichen IP-Adresse über das Internet verfügbar gemacht werden, dies ist jedoch optional. In diesem Fall verwenden wir einen Container, der eine sehr einfache, in [Node.js](http://nodejs.org) geschriebene Web-App hostet.
 
 ```azurecli-interactive
 az container create --name mycontainer --image microsoft/aci-helloworld --resource-group myResourceGroup --ip-address public
 ```
 
-Innerhalb weniger Sekunden erhalten Sie eine Antwort auf Ihre Anforderung. Der Container befindet sich zunächst im Zustand **Wird erstellt...**, wird aber innerhalb weniger Sekunden gestartet. Sie können den Status mit dem Befehl `show` überprüfen:
+Innerhalb weniger Sekunden erhalten Sie eine Antwort auf Ihre Anforderung. Der Container befindet sich zunächst im Zustand **Wird erstellt...**, wird aber innerhalb weniger Sekunden gestartet. Sie können den Status mit dem Befehl [az container show][az-container-show] überprüfen:
 
 ```azurecli-interactive
 az container show --name mycontainer --resource-group myResourceGroup
@@ -87,7 +87,7 @@ Sobald sich der Container im Zustand **Erfolgreich** befindet, ist er über den 
 
 ## <a name="pull-the-container-logs"></a>Herunterladen der Containerprotokolle
 
-Die Protokolle für den erstellten Container können mithilfe des Befehls `logs` abgerufen werden:
+Die Protokolle für den erstellten Container können mithilfe des Befehls [az container logs][az-container-logs] abgerufen werden:
 
 ```azurecli-interactive
 az container logs --name mycontainer --resource-group myResourceGroup
@@ -103,7 +103,7 @@ listening on port 80
 
 ## <a name="delete-the-container"></a>Löschen des Containers
 
-Wenn Sie den Container nicht mehr benötigen, können Sie ihn mithilfe des Befehls `delete` entfernen:
+Wenn Sie den Container nicht mehr benötigen, können Sie ihn mithilfe des Befehls [az container delete][az-container-delete] entfernen:
 
 ```azurecli-interactive
 az container delete --name mycontainer --resource-group myResourceGroup
@@ -119,6 +119,13 @@ Den gesamten Code für den Container aus dieser Schnellstartanleitung sowie die 
 
 <!-- LINKS -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git
+[az-group-create]: /cli/azure/group?view=azure-cli-latest#az_group_create
+[az-container-create]: /cli/azure/container?view=azure-cli-latest#az_container_create
+[az-container-delete]: /cli/azure/container?view=azure-cli-latest#az_container_delete
+[az-container-list]: /cli/azure/container?view=azure-cli-latest#az_container_list
+[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az_container_logs
+[az-container-show]: /cli/azure/container?view=azure-cli-latest#az_container_show
+
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png

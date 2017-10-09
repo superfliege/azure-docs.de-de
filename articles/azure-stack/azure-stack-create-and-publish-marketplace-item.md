@@ -15,13 +15,16 @@ ms.topic: article
 ms.date: 08/21/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: e0df5b4c4ce23a746e60b491193e5a69df5ffdbd
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 64203ce186665aada98fbe8daed971164a650399
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Erstellen und Veröffentlichen eines Marketplace-Elements
+
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+
 ## <a name="create-a-marketplace-item"></a>Erstellen von Marketplace-Elementen
 1. Laden Sie das [Paketerstellungstool des Azure-Katalogs](http://www.aka.ms/azurestackmarketplaceitem) und das Azure Stack Marketplace-Beispielelement herunter.
 2. Öffnen Sie das Marketplace-Beispielelement, und benennen Sie den Ordner **SimpleVMTemplate** um. (Verwenden Sie den gleichen Namen wie für das Marketplace-Element, etwa **Contoso.TodoList**.) Der Ordner enthält Folgendes:
@@ -80,7 +83,7 @@ ms.lasthandoff: 09/25/2017
    | SubscriptionID |Azure-Abonnement-ID. Sie kann mithilfe von PowerShell abgerufen werden. Wenn Sie sie lieber im Portal abrufen möchten, navigieren Sie zum Anbieterabonnement, und kopieren Sie die Abonnement-ID. |
    | GalleryItemUri |Blob-URI für das Katalogpaket, das bereits in den Speicher hochgeladen wurde |
    | Apiversion |Festgelegt auf **2015-04-01** |
-4. Rufen Sie das Portal auf. Sie können jetzt das Marketplace-Element im Portal – als Administrator und als Mandant – anzeigen.
+4. Rufen Sie das Portal auf. Sie können jetzt das Marketplace-Element im Portal – als Operator oder als Benutzer – anzeigen.
    
    > [!NOTE]
    > Es kann ein paar Minuten dauern, bis das Paket angezeigt wird.

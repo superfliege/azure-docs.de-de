@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: bryanla
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 03fb9cc6633f81e284ae299f7b2ba4018d19cc73
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: fe276fe802eceb1f062ed8bda685dd44a1e3d175
 ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
@@ -45,7 +45,7 @@ Um die CLI-Skriptbeispiele auszuführen, haben Sie drei Möglichkeiten:
 
 So erstellen Sie einen MSI-fähigen virtuellen Computer:
 
-1. Wenn Sie nicht Azure Cloud Shell aus dem Azure-Portal verwenden, melden Sie sich zunächst mit [az login](/cli/azure/#login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, unter dem Sie den virtuellen Computer bereitstellen möchten:
+1. Melden Sie sich bei Verwendung der Azure CLI in einer lokalen Konsole zunächst mit [az login](/cli/azure/#login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, unter dem Sie den virtuellen Computer bereitstellen möchten:
 
    ```azurecli-interactive
    az login
@@ -67,7 +67,7 @@ So erstellen Sie einen MSI-fähigen virtuellen Computer:
 
 Wenn Sie MSI auf einem vorhandenen virtuellen Computer aktivieren möchten, gehen Sie wie folgt vor:
 
-1. Wenn Sie nicht Azure Cloud Shell aus dem Azure-Portal verwenden, melden Sie sich zunächst mit [az login](/cli/azure/#login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, die Ihnen Schreibberechtigungen auf dem virtuellen Computer erteilt, z. B. „Mitwirkender für virtuelle Computer“:
+1. Melden Sie sich bei Verwendung der Azure CLI in einer lokalen Konsole zunächst mit [az login](/cli/azure/#login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, die Ihnen Schreibberechtigungen auf dem virtuellen Computer erteilt, z. B. „Mitwirkender für virtuelle Computer“:
 
    ```azurecli-interactive
    az login
@@ -83,7 +83,7 @@ Wenn Sie MSI auf einem vorhandenen virtuellen Computer aktivieren möchten, gehe
 
 Wenn MSI auf einem virtuellen Computer nicht mehr benötigt wird, gehen Sie wie folgt vor:
 
-1. Wenn Sie nicht Azure Cloud Shell aus dem Azure-Portal verwenden, melden Sie sich zunächst mit [az login](/cli/azure/#login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, die Ihnen Schreibberechtigungen auf dem virtuellen Computer erteilt, z. B. „Mitwirkender für virtuelle Computer“:
+1. Melden Sie sich bei Verwendung der Azure CLI in einer lokalen Konsole zunächst mit [az login](/cli/azure/#login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, die Ihnen Schreibberechtigungen auf dem virtuellen Computer erteilt, z. B. „Mitwirkender für virtuelle Computer“:
 
    ```azurecli-interactive
    az login

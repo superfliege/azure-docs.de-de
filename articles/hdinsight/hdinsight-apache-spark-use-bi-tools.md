@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 07/21/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 49dd161049ac442081fe6d26cf8bd3a56a2e0687
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 869a000909813e607620c47ef802b4043e37dfa9
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="apache-spark-bi-using-data-visualization-tools-with-azure-hdinsight"></a>Apache Spark BI mit Datenvisualisierungstools unter Azure HDInsight
@@ -146,7 +146,7 @@ Nachdem Sie die Daten als Tabelle gespeichert haben, können Sie Power BI verwen
 
       ![Liste der Tabellen im Apache Spark BI-Dashboard](./media/hdinsight-apache-spark-use-bi-tools/apache-spark-bi-display-tables.png "Liste der Tabellen im Apache Spark BI-Dashboard")
 
-8. Erstellen Sie eine Visualisierung, um die Abweichung zwischen Zieltemperatur und Ist-Temperatur für jedes Gebäude anzuzeigen. Wählen Sie die Option **Flächendiagramm** (rot umrandet dargestellt), um Ihre Daten zu visualisieren. Zum Definieren der Achse verschieben Sie das Feld **BuildingID** per Drag & Drop unter **Achse** und die Felder **ActualTemp**/**TargetTemp** unter **Wert**.
+8. Erstellen Sie eine Visualisierung, um die Abweichung zwischen Zieltemperatur und Ist-Temperatur für jedes Gebäude anzuzeigen. Wählen Sie **Area Chart** (rot umrandet dargestellt) aus, um Ihre Daten zu visualisieren. Zum Definieren der Achse verschieben Sie das Feld **BuildingID** per Drag & Drop unter **Achse** und die Felder **ActualTemp**/**TargetTemp** unter **Wert**.
 
     ![Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI](./media/hdinsight-apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI")
 

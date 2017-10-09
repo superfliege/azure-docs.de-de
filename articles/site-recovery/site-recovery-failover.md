@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/04/2017
+ms.date: 09/25/2017
 ms.author: pratshar
 ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
-ms.openlocfilehash: 8be405f01d919e9581afca9101d811a045f4469a
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 9c00cf88fa8b754c92cfd0f01be61a596d04d7c6
 ms.contentlocale: de-de
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="failover-in-site-recovery"></a>Failover in Site Recovery
@@ -28,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Sie für virtuelle Computer und physisch
 1. Führen Sie vor einem Failover ein [Testfailover](site-recovery-test-failover-to-azure.md) durch, um sicherzustellen, dass alles wie erwartet funktioniert.
 1. [Bereiten Sie das Netzwerk am Zielspeicherort vor](site-recovery-network-design.md), bevor Sie ein Failover durchführen.  
 
-Verwenden Sie folgende Tabelle, um mehr über die Failoveroptionen zu erfahren, die von Azure Site Recovery für verschiedene Failoverszenarios bereitgestellt werden.
+Verwenden Sie folgende Tabelle, um mehr über die Failoveroptionen zu erfahren, die von Azure Site Recovery bereitgestellt werden. Diese Optionen werden auch für andere Failoverszenarien aufgeführt.
 
 | Szenario | Anforderungen für die Anwendungswiederherstellung | Workflow für Hyper-V | Workflow für VMware
 |---|--|--|--|
@@ -44,7 +44,7 @@ Hier erfahren Sie, wie Sie ein Failover für einen [Wiederherstellungsplan](site
 
 1. Wählen Sie **Wiederherstellungspläne** > *Name des Wiederherstellungsplans* aus. Klicken Sie auf **Failover**.
 2. Wählen Sie auf dem Bildschirm **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
-    1.  **Latest** (Neueste) (Standardeinstellung): Diese Option verarbeitet zuerst alle Daten, die an einen Site Recovery-Dienst gesendet wurden, um vor dem Failover einen Wiederherstellungspunkt für jeden virtuellen Computer zu erstellen. Die Option verfügt über die niedrigste RPO (Recovery Point Objective), da der nach dem Failover erstellte virtuelle Computer über alle Daten verfügt, die bei Auslösung des Failovers im Site Recovery-Dienst repliziert wurden.
+    1.  **Latest** (Neueste)(Standard): Diese Option startet den Auftrag, indem zunächst alle Daten verarbeitet werden, die an den Site Recovery-Dienst gesendet wurden. Durch die Verarbeitung der Daten wird einen Wiederherstellungspunkt für die einzelnen virtuellen Computer erstellt. Dieser Wiederherstellungspunkt wird während des Failovers vom virtuellen Computer verwendet. Die Option verfügt über die niedrigste RPO (Recovery Point Objective), da der nach dem Failover erstellte virtuelle Computer über alle Daten verfügt, die bei Auslösung des Failovers im Site Recovery-Dienst repliziert wurden.
     1.  **Latest processed** (Zuletzt verarbeitet): Diese Option führt ein Failover für alle virtuellen Computer des Wiederherstellungsplans auf den letzten Wiederherstellungspunkt durch, der bereits vom Site Recovery-Dienst verarbeitet wurde. Wenn Sie das Testfailover für einen virtuellen Computer durchführen, wird zusätzlich der Zeitstempel des zuletzt verarbeiteten Wiederherstellungspunkts angezeigt. Wenn Sie das Failover eines Wiederherstellungsplans durchführen, können Sie zu einzelnen virtuellen Computern wechseln und die Kachel **Neueste Wiederherstellungspunkte** anzeigen, um die entsprechenden Informationen abzurufen. Da keine Zeit mit der Verarbeitung nicht verarbeiteter Daten verbracht wird, bietet diese Option die Möglichkeit zum Failover mit geringem RTO-Wert (Recovery Time Objective, angestrebte Wiederherstellungszeit).
     1.  **Latest app-consistent** (Neueste anwendungskonsistente Elemente): Diese Option führt ein Failover für alle virtuellen Computer des Wiederherstellungsplans auf den letzten anwendungskonsistenten Wiederherstellungspunkt durch, der bereits von Site Recovery verarbeitet wurde. Wenn Sie das Testfailover für einen virtuellen Computer ausführen, wird zusätzlich der Zeitstempel des letzten anwendungskonsistenten Wiederherstellungspunkts angezeigt. Wenn Sie das Failover eines Wiederherstellungsplans durchführen, können Sie zu einzelnen virtuellen Computern wechseln und die Kachel **Neueste Wiederherstellungspunkte** anzeigen, um die entsprechenden Informationen abzurufen.
     1.  **Latest multi-VM processed** (Zuletzt verarbeitet, Multi-VM): Diese Option steht nur für Wiederherstellungspläne zur Verfügung, bei denen für mindestens einen virtuellen Computer die Multi-VM-Konsistenz aktiviert ist. Virtuelle Computer, die Teil einer Replikationsgruppe sind, führen ein Failover auf den neuesten allgemeinen Wiederherstellungspunkt mit Multi-VM-Konsistenz durch. Andere virtuelle Computer führen ein Failover auf ihren neuesten verarbeiteten Wiederherstellungspunkt durch.  
@@ -62,16 +62,16 @@ Hier erfahren Sie, wie Sie ein Failover für einen [Wiederherstellungsplan](site
 1. Klicken Sie auf **Der Computer wird vor Beginn des Failovers heruntergefahren**, wenn Site Recovery versuchen soll, virtuelle Quellcomputer herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist.  
 
     > [!NOTE]
-    > Bei virtuellen Hyper-V-Computern wird mit dieser Option vor dem Auslösen des Failovers auch versucht, die lokalen Daten zu synchronisieren, die noch nicht an den Dienst gesendet wurden.
+    > Wenn virtuelle Hyper-V-Computer geschützt sind, versucht die Option zum Herunterfahren vor dem Auslösen des Failovers ebenfalls, die lokalen Daten zu synchronisieren, die noch nicht an den Dienst gesendet wurden.
     >
     >
 
 1. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt. Der Wiederherstellungsplan wird bei einem nicht geplanten Failover auch dann bis zum Abschluss ausgeführt, wenn Fehler auftreten.
 1. Überprüfen Sie den virtuellen Computer nach Abschluss des Failovers, indem Sie sich am Computer anmelden. Falls Sie einen anderen Wiederherstellungspunkt für den virtuellen Computer verwenden möchten, können Sie die Option **Wiederherstellungspunkt ändern** wählen.
-1. Nachdem Sie mit dem virtuellen Computer, für den das Failover durchgeführt wurde, zufrieden sind, können Sie für das Failover die Option **Commit** wählen. Alle verfügbaren Wiederherstellungspunkte des Diensts werden gelöscht, und die Option **Wiederherstellungspunkt ändern** ist nicht mehr verfügbar.
+1. Nachdem Sie mit dem virtuellen Computer, für den das Failover durchgeführt wurde, zufrieden sind, können Sie für das Failover die Option **Commit** wählen. Die Option „Commit“ löscht alle verfügbaren Wiederherstellungspunkte des Diensts, und die Option **Wiederherstellungspunkt ändern** ist nicht mehr verfügbar.
 
 ## <a name="planned-failover"></a>Geplantes Failover
-Virtuelle Computer/physische Server, die mit Site Recovery geschützt sind, unterstützen auch das **geplante Failover**. Dies ist eine Failoveroption ohne jeglichen Datenverlust. Bei Auslösung eines geplanten Failovers werden zuerst die virtuellen Quellcomputer heruntergefahren, die noch zu synchronisierenden Daten synchronisiert, und dann wird ein Failover ausgelöst.
+Virtuelle Computer/physische Server, die mit Site Recovery geschützt sind, unterstützen auch das **geplante Failover**. Der geplante Failover ist eine Failoveroption ohne jeglichen Datenverlust. Bei Auslösung eines geplanten Failovers werden zuerst die virtuellen Quellcomputer heruntergefahren, die noch zu synchronisierenden Daten synchronisiert, und dann wird ein Failover ausgelöst.
 
 > [!NOTE]
 > Wenn Sie für virtuelle Hyper-V-Computer ein Failover von einem lokalen Standort zu einem anderen lokalen Standort durchführen, müssen Sie wie folgt vorgehen, um zurück zum primären lokalen Standort zu gelangen: Wählen Sie zuerst die Option **Umgekehrt replizieren**, um die Daten des virtuellen Computers zurück an den primären Standort zu replizieren, und lösen Sie dann ein Failover aus. Wenn der primäre virtuelle Computer nicht verfügbar ist, müssen Sie den virtuellen Computer vor Beginn des Vorgangs **Umgekehrt replizieren** aus einer Sicherung wiederherstellen.   
@@ -95,7 +95,7 @@ Die Auslösung eines Failovers ist mit den folgenden Schritten verbunden:
 
 ## <a name="time-taken-for-failover-to-azure"></a>Zeitaufwand für das Failover in Azure
 
-In bestimmten Fällen erfordert das Failover virtueller Computer einen zusätzliche Zwischenschritt, der in der Regel ca. 8 bis 10 Minuten dauert. Das gilt für die folgenden Fälle:
+In bestimmten Fällen erfordert das Failover virtueller Computer einen zusätzliche Zwischenschritt, der in der Regel ca. 8 bis 10 Minuten dauert. In den folgenden Fällen dauert die Zeit für den Failover länger als normal:
 
 * VMware-VMs mit Mobility Service-Version niedriger als 9.8
 * Physische Server 
@@ -124,7 +124,9 @@ Es kann ratsam sein, bei einem Failover bestimmte Aktionen zu automatisieren. Hi
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie das Failover für virtuelle Computer durchgeführt haben und das lokale Datencenter verfügbar ist, sollten Sie virtuelle VMware-Computer im lokalen Datencenter [**erneut schützen**](site-recovery-how-to-reprotect.md).
+
+> [!WARNING]
+> Nachdem Sie das Failover für virtuelle Computer durchgeführt haben und das lokale Rechenzentrum verfügbar ist, sollten Sie virtuelle VMware-Computer im lokalen Rechenzentrum [**erneut schützen**](site-recovery-how-to-reprotect.md).
 
 Verwenden Sie die Option [**Geplantes Failover**](site-recovery-failback-from-azure-to-hyper-v.md), um für virtuelle Hyper-V-Computer ein **Failback** von Azure zum lokalen Standort durchzuführen.
 

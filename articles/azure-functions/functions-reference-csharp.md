@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 06/07/2017
 ms.author: donnam
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 25c5f72be8dc79d8b33a598c7be494bd955eb850
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: c9dfd3e3b9c155255959f76fd9b58b6935888db2
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="azure-functions-c-script-developer-reference"></a>C#-Skriptentwicklerreferenz zu Azure Functions
@@ -96,7 +96,7 @@ public static void Run(ICollector<string> myQueueItem, TraceWriter log)
 ## <a name="logging"></a>Protokollierung
 Um eine Ausgabe in C# in Ihren Streamingprotokollen zu dokumentieren, fügen Sie ein Argument vom Typ `TraceWriter` ein. Verwenden Sie hierzu am besten den Namen `log`. Vermeiden Sie die Verwendung von `Console.Write` in Azure Functions. 
 
-`TraceWriter` ist im [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs) definiert. Die Protokollebene für `TraceWriter` kann in [host\.json] konfiguriert werden.
+`TraceWriter` ist im [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs) definiert. Die Protokollebene für `TraceWriter` kann in [host.json](functions-host-json.md) konfiguriert werden.
 
 ```csharp
 public static void Run(string myBlob, TraceWriter log)
@@ -198,7 +198,7 @@ Informationen zum Hochladen von Dateien in Ihren Funktionenordner finden Sie im 
 
 ### <a name="watched-directories"></a>Überwachte Verzeichnisse
 
-Das Verzeichnis, das die Skriptdatei für die Funktion enthält, wird automatisch im Hinblick auf Änderungen an Assemblys überwacht. Um Änderungen an Assemblys in anderen Verzeichnissen zu überwachen, fügen Sie sie der Liste `watchDirectories` in der Datei [host\.json] hinzu.
+Das Verzeichnis, das die Skriptdatei für die Funktion enthält, wird automatisch im Hinblick auf Änderungen an Assemblys überwacht. Um Änderungen an Assemblys in anderen Verzeichnissen zu überwachen, fügen Sie sie der Liste `watchDirectories` in der Datei [host.json](functions-host-json.md) hinzu.
 
 ## <a name="using-nuget-packages"></a>Verwenden von NuGet-Paketen
 Um NuGet-Pakete in einer C#-Funktion zu verwenden, laden Sie die Datei *project.json* in den Ordner der Funktion im Dateisystem der Funktionen-App hoch. Hier sehen Sie ein Beispiel der Datei *project.json* , die einen Verweis auf Microsoft.ProjectOxford.Face (Version 1.1.0) hinzufügt:
@@ -443,6 +443,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [F#-Entwicklerreferenz zu Azure Functions](functions-reference-fsharp.md)
 * [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
-
-[host\.json]: https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json
 

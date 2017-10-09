@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f7351f310752803b910eef69e71d081ddc923c5e
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 279838150c94ab04eaea08dc30ee8b0f9f7ee3d5
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -30,7 +30,7 @@ So führen Sie diesen Schnellstart durch:
 
 - Sie benötigen ein Azure-Abonnement und eine vorhandene Node.js-Webanwendung.
 
-Wenn Sie noch nicht über eine Node.js-Webanwendung verfügen, können Sie mithilfe der Schnellstartanleitung unter [Erstellen einer Node.js-Web-App](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-nodejs) eine erstellen.
+Wenn Sie noch nicht über eine Node.js-Webanwendung verfügen, können Sie mithilfe der Schnellstartanleitung unter [Erstellen einer Node.js-Web-App](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs) eine erstellen.
  
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -53,7 +53,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
    | **Anwendungstyp** | Node.js-Anwendung | Der Typ der zu überwachenden App. |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. |
-   | **Location** | USA (Ost) | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
+   | **Standort** | USA (Ost) | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
 2. Klicken Sie auf **Erstellen**.
 
@@ -69,7 +69,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
    npm install applicationinsights --save
    ```
 
-3. Bearbeiten Sie die erste JS-Datei Ihrer App, und fügen Sie dem obersten Teil Ihres Skripts die beiden unten stehenden Zeilen hinzu. Wenn Sie die [Node.js-Schnellstart-App](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-nodejs) verwenden, bearbeiten Sie die Datei „index.js“. 
+3. Bearbeiten Sie die erste JS-Datei Ihrer App, und fügen Sie dem obersten Teil Ihres Skripts die beiden unten stehenden Zeilen hinzu. Wenn Sie die [Node.js-Schnellstart-App](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs) verwenden, bearbeiten Sie die Datei „index.js“. 
 
    ```JavaScript
    const appInsights = require('applicationinsights');

@@ -1,6 +1,6 @@
 ---
 title: "Veröffentlichen von benutzerdefinierten Marketplace-Elementen in Azure Stack (Cloudbetreiber) | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie als Cloudbetreiber ein benutzerdefiniertes Marketplace-Element in Azure Stack veröffentlichen."
+description: "Erfahren Sie, wie Sie als Azure Stack-Betreiber ein benutzerdefiniertes Marketplace-Element in Azure Stack veröffentlichen."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -15,16 +15,19 @@ ms.topic: article
 ms.date: 08/25/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: be61e746d97fbce166f44262fcc33e2f7118fd82
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 7b5f976eb2d51eb86761a2bd0be6adb45ca87681
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Der Azure Stack-Marketplace – Übersicht
+
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+
 Der Marketplace ist eine Sammlung von Diensten, Anwendungen und Ressourcen, die für die Azure Stack angepasst wurden, wie Netzwerke, virtuelle Computer, Speicher usw. Benutzer nutzen den Marketplace zum Erstellen neuer Ressourcen sowie zum Bereitstellen neuer Anwendungen. In gewisser Weise ist er ein Katalog, in dem Benutzer die gewünschten Elemente suchen und auswählen können. Benutzer müssen ein Angebot abonnieren, das ihnen Zugriff auf das Marketplace-Element gewährt, um dieses zu verwenden.
 
-Als Cloudbetreiber entscheiden Sie, welche Elemente Sie zum Marketplace hinzufügen (veröffentlichen). Sie können z.B. Datenbanken, App Services usw. veröffentlichen. Dadurch sind sie für alle Benutzer sichtbar. Sie können die von Ihnen erstellten benutzerdefinierten Elemente veröffentlichen. Oder Sie veröffentlichen Elemente aus einer immer größer werdenden [Liste von Azure Marketplace-Elementen](azure-stack-marketplace-azure-items.md). Wenn Sie ein Element im Marketplace veröffentlichen, wird es Benutzern innerhalb von fünf Minuten angezeigt.
+Als Azure Stack-Betreiber entscheiden Sie, welche Elemente Sie zum Marketplace hinzufügen (veröffentlichen). Sie können z.B. Datenbanken, App Services usw. veröffentlichen. Dadurch sind sie für alle Benutzer sichtbar. Sie können die von Ihnen erstellten benutzerdefinierten Elemente veröffentlichen. Oder Sie veröffentlichen Elemente aus einer immer größer werdenden [Liste von Azure Marketplace-Elementen](azure-stack-marketplace-azure-items.md). Wenn Sie ein Element im Marketplace veröffentlichen, wird es Benutzern innerhalb von fünf Minuten angezeigt.
 
 Klicken Sie zum Öffnen des Marketplace auf **Neu**.
 

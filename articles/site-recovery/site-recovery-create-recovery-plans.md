@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/23/2017
+ms.date: 09/25/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 1b0d64cd592c4738311797b826e490639340f92a
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 81d8a6e3015ddc4241cce8e888d51d6e2b2cb173
 ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="create-recovery-plans"></a>Erstellen von Wiederherstellungsplänen
@@ -77,10 +77,13 @@ Wenn Sie VMM in Ihrer Bereitstellung verwenden:
 * Stellen Sie sicher, dass Ihre VMM-Bereitstellung mindestens einen Bibliothekserver enthält. Standardmäßig befindet sich der Bibliotheksfreigabepfad für einen VMM-Server lokal auf dem VMM-Server mit dem Ordnernamen „MSCVMMLibrary“.
     * Wenn Ihr Bibliotheksfreigabepfad remote vorhanden ist (oder lokal, aber nicht für „MSCVMMLibrary“ freigegeben), konfigurieren Sie die Freigabe wie folgt (hier dient „\\libserver2.contoso.com\share\“ als Beispiel):
       * Öffnen Sie den Registrierungseditor, und navigieren Sie zu **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**.
-      * Bearbeiten Sie den Wert **ScriptLibraryPath**, indem Sie dafür \\libserver2.contoso.com\share\. festlegen. Geben Sie den vollqualifizierten Domänennamen vollständig ein. Geben Sie die Berechtigungen für den Speicherort der Freigabe an.
+      * Bearbeiten Sie den Wert **ScriptLibraryPath**, indem Sie dafür \\libserver2.contoso.com\share\. festlegen. Geben Sie den vollqualifizierten Domänennamen vollständig ein. Geben Sie die Berechtigungen für den Speicherort der Freigabe an. Beachten Sie, dass dies der Stammknoten der Freigabe ist. **Sie können die Bibliothek im Stammknoten in VMM öffnen, um dies zu überprüfen. Der Pfad, der geöffnet wird, ist der Stamm des Pfads, den Sie in der Variablen verwenden müssen**.
       * Stellen Sie sicher, dass Sie das Skript mit einem Benutzerkonto testen, das über dieselben Berechtigungen wie das VMM-Dienstkonto verfügt. Damit wird überprüft, ob eigenständige getestete Skripts auf dieselbe Weise wie in Wiederherstellungsplänen ausgeführt werden. Legen Sie für die Ausführungsrichtlinie auf dem VMM-Server wie folgt eine Umleitung fest:
-        * Öffnen Sie die Windows PowerShell-Konsole (64 Bit) mit erweiterten Berechtigungen.
-        * Geben Sie Folgendes ein: **Set-executionpolicy bypass**. [detaillierte Kapazitätsplanung](https://technet.microsoft.com/library/ee176961.aspx)
+        * Öffnen Sie die **Windows PowerShell-Konsole (64 Bit)** mit erweiterten Berechtigungen.
+        * Geben Sie Folgendes ein: **Set-executionpolicy bypass**. [Weitere Informationen](https://technet.microsoft.com/library/ee176961.aspx)
+
+> [!IMPORTANT]
+> Sie sollten nur für 64-Bit-PowerShell für die Ausführungsrichtlinie „Bypass“ festlegen. Wenn dies für das 32-Bit-PowerShell festgelegt wurde, werden die Skripts nicht ausgeführt.
 
 ## <a name="add-a-script-or-manual-action-to-a-plan"></a>Hinzufügen eines Skripts oder einer manuellen Aktion zu einem Plan
 

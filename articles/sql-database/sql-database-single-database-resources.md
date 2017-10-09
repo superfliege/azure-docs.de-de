@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 08/25/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 12bf76deebda27cdc7e7611e0585dc0bf92bde2f
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 3af597d7af13daaf80cd750b230675c8475033e1
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank
@@ -95,14 +95,14 @@ Verwenden Sie diese REST-API-Anforderungen, um Dienstebenen, Leistungsstufen und
 
 | Befehl | Beschreibung |
 | --- | --- |
-|[Databases - Create Or Update](/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank.|
-|[Databases - Get](/rest/api/sql/databases/get)|Ruft eine Datenbank ab.|
-|[Databases - Get By Elastic Pool](/rest/api/sql/databases/getbyelasticpool)|Ruft eine Datenbank in einem Pool für elastische Datenbanken ab.|
-|[Databases - Get By Recommended Elastic Pool](/rest/api/sql/databases/getbyrecommendedelasticpool)|Ruft eine Datenbank in einem empfohlenen Pool für elastische Datenbanken ab.|
-|[Databases - List By Elastic Pool](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem elastischen Pool zurück.|
-|[Databases - List By Recommended Elastic Pool](/rest/api/sql/databases/listbyrecommendedelasticpool)|Gibt eine Liste von Datenbanken in einem empfohlenen Pool für elastische Datenbanken zurück.|
-|[Databases - List By Server](/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück.|
-|[Databases - Update](/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank.|
+|[Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
+|[Datenbanken – Abrufen](/rest/api/sql/databases/get)|Ruft eine Datenbank ab|
+|[Datenbanken – Abrufen nach Pool für elastische Datenbanken](/rest/api/sql/databases/getbyelasticpool)|Ruft eine Datenbank in einem Pool für elastische Datenbanken ab|
+|[Datenbanken – Abrufen nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/getbyrecommendedelasticpool)|Ruft eine Datenbank in einem empfohlenen Pool für elastische Datenbanken ab|
+|[Datenbanken – Auflisten nach Pool für elastische Datenbanken](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem elastischen Pool zurück.|
+|[Datenbanken – Auflisten nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/listbyrecommendedelasticpool)|Gibt eine Liste von Datenbanken in einem empfohlenen Pool für elastische Datenbanken zurück|
+|[Datenbanken – Auflisten nach Server](/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
+|[Datenbanken - Update]((/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank|
 
 
 

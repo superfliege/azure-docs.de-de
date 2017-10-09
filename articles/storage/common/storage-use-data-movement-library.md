@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 09/27/2017
 ms.author: seguler
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7db1761a9a3b8a74a39b2d441849fb89d44cd42b
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 7890159574de0db58dd2e7d1b6a19305381d29d6
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Übertragen von Daten mit der Microsoft Azure Storage Data Movement-Bibliothek
@@ -50,45 +50,30 @@ In diesem Dokument wird erläutert, wie eine .NET Core-Konsolenanwendung erstell
 ## <a name="setup"></a>Einrichtung  
 
 1. Rufen Sie die [.NET Core-Installationsanleitung](https://www.microsoft.com/net/core) auf, um .NET Core zu installieren. Wählen Sie bei der Auswahl Ihrer Umgebung die Befehlszeilenoption. 
-2. Erstellen Sie über die Befehlszeile ein Verzeichnis für das Projekt. Navigieren Sie zu diesem Verzeichnis, und geben Sie dann `dotnet new` ein, um ein C#-Konsolenprojekt zu erstellen.
-3. Öffnen Sie dieses Verzeichnis in Visual Studio Code. Dieser Schritt kann schnell über die Befehlszeile ausgeführt werden, indem Sie `code .` eingeben.  
+2. Erstellen Sie über die Befehlszeile ein Verzeichnis für das Projekt. Navigieren Sie zu diesem Verzeichnis, und geben Sie dann `dotnet new console -o <sample-project-name>` ein, um ein C#-Konsolenprojekt zu erstellen.
+3. Öffnen Sie dieses Verzeichnis in Visual Studio Code. Dieser Schritt kann schnell über die Befehlszeile ausgeführt werden, indem Sie `code .` in Windows eingeben.  
 4. Installieren Sie die [C#-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) über Visual Studio Code Marketplace. Starten Sie Visual Studio Code neu. 
 5. An diesem Punkt sehen Sie zwei Eingabeaufforderungen. Eine dient zum Hinzufügen von „erforderlichen Ressourcen zum Erstellen und Debuggen“. Klicken Sie auf „Ja“. Eine andere Eingabeaufforderung dient zum Wiederherstellen nicht aufgelöster Abhängigkeiten. Klicken Sie auf „Wiederherstellen“.
-6. Die Anwendung muss jetzt eine `launch.json`-Datei unter dem `.vscode`-Verzeichnis enthalten. Ändern Sie in dieser Datei den `externalConsole`-Wert in `true`.
+6. Ändern Sie `launch.json` unter `.vscode`, um ein externes Terminal als Konsole zu verwenden. Diese Einstellung sollte als ` "console": "externalTerminal"` gelesen werden.
 7. Mit Visual Studio Code können Sie .NET Core-Anwendungen debuggen. Klicken Sie auf `F5`, um die Anwendung auszuführen, und stellen Sie sicher, dass das Setup funktioniert. „Hello World!“ muss auf der Konsole ausgegeben werden. 
 
 ## <a name="add-data-movement-library-to-your-project"></a>Hinzufügen der Data Movement-Bibliothek zu Ihrem Projekt
 
-1. Fügen Sie die neueste Version der Data Movement-Bibliothek zum `dependencies`-Abschnitt Ihrer `project.json`-Datei hinzu. Zum Zeitpunkt des Verfassens wäre diese Version `"Microsoft.Azure.Storage.DataMovement": "0.5.0"`. 
-2. Fügen Sie `"portable-net45+win8"` dem `imports`-Abschnitt hinzu. 
-3. Eine Eingabeaufforderung muss angezeigt werden, um das Projekt wiederherzustellen. Klicken Sie auf die Schaltfläche „Wiederherstellen“. Sie können das Projekt auch über die Befehlszeile wiederherstellen, indem Sie den Befehl `dotnet restore` in das Stammverzeichnis des Projekts eingeben.
+1. Fügen Sie die neueste Version der Data Movement-Bibliothek zum `dependencies`-Abschnitt Ihrer `<project-name>.csproj`-Datei hinzu. Zum Zeitpunkt des Verfassens wäre diese Version `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`. 
+2. Eine Eingabeaufforderung muss angezeigt werden, um das Projekt wiederherzustellen. Klicken Sie auf die Schaltfläche „Wiederherstellen“. Sie können das Projekt auch über die Befehlszeile wiederherstellen, indem Sie den Befehl `dotnet restore` in das Stammverzeichnis des Projekts eingeben.
 
-Ändern Sie `project.json`:
+Ändern Sie `<project-name>.csproj`:
 
-    {
-      "version": "1.0.0-*",
-      "buildOptions": {
-        "debugType": "portable",
-        "emitEntryPoint": true
-      },
-      "dependencies": {
-        "Microsoft.Azure.Storage.DataMovement": "0.5.0"
-      },
-      "frameworks": {
-        "netcoreapp1.1": {
-          "dependencies": {
-            "Microsoft.NETCore.App": {
-              "type": "platform",
-              "version": "1.1.0"
-            }
-          },
-          "imports": [
-            "dnxcore50",
-            "portable-net45+win8"
-          ]
-        }
-      }
-    }
+    <Project Sdk="Microsoft.NET.Sdk">
+
+        <PropertyGroup>
+            <OutputType>Exe</OutputType>
+            <TargetFramework>netcoreapp2.0</TargetFramework>
+        </PropertyGroup>
+        <ItemGroup>
+            <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.6.2" />
+            </ItemGroup>
+        </Project>
 
 ## <a name="set-up-the-skeleton-of-your-application"></a>Einrichten des Grundgerüsts Ihrer Anwendung
 Zuerst richten wir den grundlegenden Code der Anwendung ein. Dieser Code verlangt einen Speicherkontonamen und Kontoschlüssel und verwendet diese Anmeldeinformationen zum Erstellen eines `CloudStorageAccount`-Objekts. Dieses Objekt wird verwendet, um in allen Szenarien der Übertragung mit unserem Speicherkonto zu interagieren. Der Code fordert uns auch auf, den Typ des auszuführenden Übertragungsvorgangs zu wählen. 
@@ -98,6 +83,7 @@ Zuerst richten wir den grundlegenden Code der Anwendung ein. Dieser Code verlang
 ```csharp
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Diagnostics;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;

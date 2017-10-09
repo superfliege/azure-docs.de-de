@@ -15,13 +15,15 @@ ms.topic: article
 ms.date: 8/11/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: aec0c8a7d5d0c219e5550e0a8aa9ecfa936ab051
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: ad65d0fe93a0b67772521c9020c288d0698a8cf0
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Für Azure Stack verfügbare Azure Marketplace-Elemente
+
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Microsoft Azure Stack unterstützt die folgenden Azure Marketplace-Elemente:
 
@@ -80,7 +82,7 @@ Microsoft Azure Stack unterstützt die folgenden Azure Marketplace-Elemente:
 | ![](media/azure-stack-marketplace-azure-items/mattermostteamedition.png) | [Mattermost Team Edition](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mattermost?tab=Overview) | Arbeitsplatz-Messaginglösung (Open Source) | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/mautic.png) | [Mautic](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mautic?tab=Overview) | Open-Source-Automatisierungsplattform für Unternehmensmarketing | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/mean.png) | [MEAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mean?tab=Overview) | Beliebte Entwicklungsumgebung für MongoDB und Node.js | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/mediawiki.png) | [MediaWiki](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mediawiki?tab=Overview) | Sehr leistungsstarke, skalierbare Wiki-Implementierung | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/mediawiki.png) | [MediaWiki](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mediawiki?tab=Overview) | Leistungsstarke, skalierbare Wiki-Implementierung | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/memcached.png) | [Memcached](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.memcached?tab=Overview) | System für verteiltes Arbeitsspeicherobjekt-Caching mit hoher Leistung | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/modx.png) | [MODX](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.modx?tab=Overview) | Intuitives Web-CMS | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/mongodb.png) | [MongoDB](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mongodb?tab=Overview) | Open-Source-NoSQL-Datenbank (in C++) mit hoher Leistung | Bitnami |
@@ -116,9 +118,9 @@ Microsoft Azure Stack unterstützt die folgenden Azure Marketplace-Elemente:
 | ![](media/azure-stack-marketplace-azure-items/reportserver.png) | [ReportServer Community](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.reportserver?tab=Overview) | Open-Source-Plattform für Business Intelligence | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/reportserverenterprise.png) | [ReportServer Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.reportserverenterprise?tab=Overview) | Unternehmensplattform für Business Intelligence | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/resourcespace.png) | [ResourceSpace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.resourcespace?tab=Overview) | Digital Asset Management-System zur Verbesserung der Kollaboration | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/roundcube.png) | [Roundcube](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.roundcube?tab=Overview) | Browserbasierter IMAP-Client mit verschiedenen Funktionen, z.B. MIME-Unterstützung | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/roundcube.png) | [Roundcube](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.roundcube?tab=Overview) | Browserbasierter IMAP-Client mit verschiedenen Funktionen, z. B. MIME-Unterstützung | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/ruby.png) | [Ruby](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.rubystack?tab=Overview) | Einfach zu verwendende Entwicklungsumgebung für Ruby on Rails | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/seopanel.png) | [SEO Panel](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.seopanel?tab=Overview) | Open-Source-SEO-Verwaltungsanwendung zum Nachverfolgen von mehreren Webabläufen | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/seopanel.png) | [SEO Panel](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.seopanel?tab=Overview) | Open-Source-SEO-Verwaltungsanwendung zum Nachverfolgen von mehreren Websites | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/shopware.png) | [Shopware](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.shopware?tab=Overview) | Open-Source-E-Commerce-Plattform | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/simplemachinesforum.png) | [Simple Machines Forum](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.simplemachinesforum?tab=Overview) | Einfache Forumssoftware zum Erstellen Ihrer eigenen Onlinecommunity | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/spree.png) | [Spree](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.spree?tab=Overview) | Einfach zu verwendende E-Commerce-Plattform | Bitnami |

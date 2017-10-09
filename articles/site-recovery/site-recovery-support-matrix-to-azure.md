@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 07/04/2017
 ms.author: rajanaki
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 30ccdc62e68ff86d693b9eb3477c65e4e6a1fe3f
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 103643ace17961cd4e2e37313f75c775e3dcd8cd
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren vom lokalen Standort in Azure
@@ -47,7 +47,7 @@ In diesem Artikel werden die unterstützten Konfigurationen und Komponenten für
 
   >[!Note]
   > Eine System Center Virtual Machine Manager 2016-Cloud mit einer Mischung aus Windows Server 2016- und Windows Server 2012 R2-Hosts wird derzeit nicht unterstützt.
-
+  > Konfigurationen, die ein Upgrade von einem vorhandenen SCVMM 2012 R2 auf 2016 einbeziehen, werden derzeit nicht unterstützt.
 ### <a name="host-servers"></a>Hostserver
 
 **Bereitstellung** | **Unterstützung**

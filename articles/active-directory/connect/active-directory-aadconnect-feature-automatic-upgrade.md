@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 57cd81a92817171a23ffd0f607eb127005bc1e0d
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 894e387b4b83ed859139b4aecb3d8bb5df9ab56f
 ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatisches Upgrade
@@ -26,7 +26,6 @@ Diese Funktion wurde mit Build 1.1.105.0 eingeführt (veröffentlicht im Februar
 
 ## <a name="overview"></a>Übersicht
 Noch nie konnten Sie so leicht sicherstellen, dass Ihre Azure AD Connect-Installation immer auf dem neuesten Stand ist  – mit dem **automatischen Upgradefeature** . Dieses Feature ist standardmäßig für Express-Installationen und DirSync-Upgrades aktiviert. Wenn eine neue Version veröffentlicht wird, erfolgt ein automatisches Upgrade Ihrer Installation.
-
 Das automatische Upgrade ist in folgenden Fällen standardmäßig aktiviert:
 
 * Installationen mit Express-Einstellungen und DirSync-Upgrades.
@@ -45,6 +44,7 @@ Der aktuelle Zustand des automatischen Upgrades kann über das PowerShell-Cmdlet
 Mit `Set-ADSyncAutoUpgrade` können Sie zwischen **aktiviert** und **deaktiviert** wechseln. Nur das System sollte den Zustand **Ausgesetzt**festlegen.
 
 Das automatische Upgrade verwendet Azure AD Connect Health als Upgrade-Infrastruktur. Damit das automatische Upgrade funktioniert, müssen die URLs im Proxy für **Azure AD Connect Health** wie unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)beschrieben geöffnet sein.
+
 
 Wenn auf dem Server die **Synchronization Service Manager** -Benutzeroberfläche geöffnet ist, wird das Upgrade angehalten, bis die Benutzeroberfläche geschlossen wird.
 
@@ -96,7 +96,7 @@ Im Folgenden finden Sie eine Liste der Meldungen, die am häufigsten angezeigt w
 | UpgradeNotSupportedMultiForestSetup |Sie stellen Verbindungen mit mehr als einer Gesamtstruktur her. Beim Express-Setup wird nur eine Verbindung mit einer Gesamtstruktur hergestellt. |
 | UpgradeNotSupportedNonLocalDbInstall |Sie verwenden keine SQL Server Express LocalDB-Datenbank. |
 | UpgradeNotSupportedNonMsolAccount |Das [AD-Connector-Konto](active-directory-aadconnect-accounts-permissions.md#active-directory-account) ist nicht mehr das Standardkonto vom Typ „MSOL_“. |
-| UpgradeNotSupportedNotConfiguredSignInMethod | Sie haben *Nicht konfigurieren* als Anmeldemethode ausgewählt. | 
+| UpgradeNotSupportedNotConfiguredSignInMethod | Beim Einrichten von AAD Connect haben Sie *Nicht konfigurieren* beim Auswählen der Anmeldemethode gewählt. | 
 | UpgradeNotSupportedPtaSignInMethod | Sie haben Pass-Through-Authentifizierung als Anmeldemethode ausgewählt. |
 | UpgradeNotSupportedStagingModeEnabled |Der Server ist auf den [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode)festgelegt. |
 | UpgradeNotSupportedUserWritebackEnabled |Sie haben das Feature [Benutzerrückschreiben](active-directory-aadconnect-feature-preview.md#user-writeback) aktiviert. |

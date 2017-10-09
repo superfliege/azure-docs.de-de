@@ -3,7 +3,7 @@ title: "Einführung in Azure Blob Storage | Microsoft-Dokumentation"
 description: "Einführung in Azure Blob Storage"
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 
@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: robinsh
+ms.date: 09/28/2017
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 051f1b37eab254d4ab4f806166ac8d0b8cab944d
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 7fe3db3d31dc7212c47a0f8dd48c86c98fb498c1
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="introduction-to-blob-storage"></a>Einführung in Blob Storage
@@ -47,7 +47,7 @@ Der BLOB-Dienst umfasst die folgenden Komponenten:
   
     *Blockblobs* eignen sich ideal zum Speichern von Text- oder Binärdateien, z.B. Dokumente und Mediendateien. *Anfügeblobs* ähneln Blockblobs dahingehend, dass sie aus Blöcken bestehen. Allerdings sind sie für Anfügevorgänge optimiert, sodass sie für Protokollierungsszenarien nützlich sind. Ein einzelnes Blockblob kann bis zu 50.000 Blöcke mit jeweils bis zu 100 MB enthalten; dies ergibt eine Gesamtgröße von etwas mehr als 4,75 TB (100 MB X 50.000). Ein einzelnes Anfügeblob kann bis zu 50.000 Blöcke mit jeweils bis zu 4 MB enthalten; dies ergibt eine Gesamtgröße von etwas mehr als 195 GB (4 MB X 50.000).
   
-    *Seitenblobs* können bis zu 1 TB groß sein und sind besonders für häufige Lese-und Schreibvorgänge effizient. Virtuelle Azure-Computer verwenden Seitenblobs als Betriebssystem und Datenträger.
+    *Seitenblobs* können bis zu 8 TB groß sein und sind besonders für häufige Lese-und Schreibvorgänge effizient. Virtuelle Azure-Computer verwenden Seitenblobs als Betriebssystem und Datenträger.
   
     Ausführliche Informationen zum Benennen von Containern und Blobs finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)(Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).
 
@@ -55,3 +55,4 @@ Der BLOB-Dienst umfasst die folgenden Komponenten:
 
 * [Erstellen eines Speicherkontos](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md)
+

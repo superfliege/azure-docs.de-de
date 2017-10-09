@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/29/2017
+ms.date: 09/27/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: e69d96e5f18b4334a63445b08979c457d241e818
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 7af2657b01b954c3f43a687dedebad7e4a814e6a
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -340,7 +340,7 @@ Titel: Hohe Verfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (
 
 Zusammenfassung: Hohe Verfügbarkeit und Notfallwiederherstellung sind wichtige Aspekte bei der Ausführung Ihrer unternehmenskritischen SAP HANA auf Azure-Servern (große Instanzen). Wichtig ist, dass Sie mit SAP, Ihrem Systemintegrator und/oder Microsoft zusammenarbeiten, um die richtige Strategie für hohe Verfügbarkeit/Notfallwiederherstellung zu bestimmen und umzusetzen. Dabei müssen wichtige Aspekte wie Recovery Point Objective (RPO) und Recovery Time Objective (RTO) für Ihre Umgebung berücksichtigt werden.  Dieses Dokument erläutert die Optionen, die Ihnen für die Aktivierung Ihrer bevorzugten Funktionen für hohe Verfügbarkeit und Notfallwiederherstellung zur Verfügung stehen.
 
-Aktualisiert: Dezember 2016
+Aktualisierung: September 2017
 
 [Dieses Dokument finden Sie hier.](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
