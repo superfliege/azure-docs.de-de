@@ -15,13 +15,15 @@ ms.topic: get-started-article
 ms.date: 07/03/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 4baa1b675d2930cd111b5b8368ac081dc2b77841
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 4d7c335a3c68cc9bb8cb0c823883716a3dd6620a
 ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Herunterladen von Marketplace-Elementen von Azure in Azure Stack
+
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Wenn Sie entscheiden, welche Inhalte in Ihrem Azure Stack-Marketplace enthalten sein sollen, berücksichtigen Sie auch die im Azure-Marketplace verfügbaren Inhalte. Zum Herunterladen steht Ihnen eine Aufstellung ausgewählter Marketplace-Elemente zur Verfügung, deren Ausführung unter Azure Stack vorab getestet wurde. Dieser Liste werden regelmäßig neue Elemente hinzugefügt. Prüfen Sie daher, ob neue Inhalte verfügbar sind.
 
@@ -45,7 +47,7 @@ Zum Herunterladen von Marketplace-Elementen müssen Sie zunächst [Azure Stack b
 
     ![](media/azure-stack-download-azure-marketplace-item/image04.png)
 
-6. Wenn der Download abgeschlossen ist, können Sie Ihr neues Marketplace-Element entweder als Cloudbetreiber oder als Mandantenbenutzer bereitstellen. Klicken Sie auf **+ Neu**, suchen Sie das neue Marketplace-Element in den Kategorien, und wählen Sie das Element aus.
+6. Wenn der Download abgeschlossen ist, können Sie Ihr neues Marketplace-Element entweder als Azure Stack-Betreiber oder -benutzer bereitstellen. Klicken Sie auf **+ Neu**, suchen Sie das neue Marketplace-Element in den Kategorien, und wählen Sie das Element aus.
 7. Klicken Sie auf **Erstellen** , um die Erstellungsoberfläche für das neu heruntergeladenen Element zu öffnen. Führen Sie die schrittweisen Anweisungen aus, um Ihr Element bereitzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -53,9 +53,9 @@ Heben Sie nach der Behebung aller Fehler die Bereitstellung auf, und trennen Sie
 
 ## <a name="create-a-vm-from-the-original-hard-disk"></a>Erstellen eines virtuellen Computers auf der Grundlage der ursprünglichen Festplatte
 
-Verwenden Sie das [klassische Azure-Portal](https://manage.windowsazure.com), um einen virtuellen Computers auf der Grundlage der ursprünglichen Festplatte zu erstellen.
+Verwenden Sie das [Azure-Portal](https://portal.azure.com), um einen virtuellen Computers auf der Grundlage der ursprünglichen Festplatte zu erstellen.
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
-2. Wählen Sie am unteren Rand des Portals **Neu** > **Compute** > **Virtueller Computer** > **Aus Katalog** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+2. Wählen Sie am oberen linken Rand des Portals **Neu** > **Compute** > **Virtueller Computer** > **Aus Katalog** aus.
 3. Wählen Sie im Abschnitt **Image auswählen** die Option für Ihre **eigenen Datenträger** und anschließend die ursprüngliche virtuelle Festplatte aus. Überprüfen Sie den Standort. Hierbei handelt es sich um die Region, in der der virtuelle Computer bereitgestellt werden muss. Wählen Sie „Weiter“ aus.
 4. Geben Sie im Abschnitt **Konfiguration des virtuellen Computers** den Namen des virtuellen Computers ein, und wählen Sie eine Größe für den virtuellen Computer aus.

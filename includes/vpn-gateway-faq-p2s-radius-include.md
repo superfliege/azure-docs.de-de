@@ -28,4 +28,8 @@ Die maximale Anzahl von SSTP-Verbindungen, die für ein Gateway mit RADIUS-Authe
 
 Bei der RADIUS-Zertifikatauthentifizierung wird die Authentifizierungsanforderung an einen RADIUS-Server weitergeleitet, der die tatsächliche Zertifikatüberprüfung durchführt. Diese Option ist nützlich für die Integration in eine bereits vorhandene Zertifikatauthentifizierungsinfrastruktur über RADIUS.
   
-Bei Verwendung von Azure für die Zertifikatauthentifizierung führt das Azure-VPN-Gateway die Überprüfung des Zertifikats durch. Sie müssen den öffentlichen Schlüssel des Zertifikats in das Gateway hochladen. Sie können auch eine Liste gesperrter Zertifikate angeben, für die die Verbindung nicht zugelassen werden soll.  
+Bei Verwendung von Azure für die Zertifikatauthentifizierung führt das Azure-VPN-Gateway die Überprüfung des Zertifikats durch. Sie müssen den öffentlichen Schlüssel des Zertifikats in das Gateway hochladen. Sie können auch eine Liste gesperrter Zertifikate angeben, für die die Verbindung nicht zugelassen werden soll.
+
+### <a name="does-radius-authentication-work-with-both-ikev2-and-sstp-vpn"></a>Funktioniert die RADIUS-Authentifizierung mit IKEv2 und SSTP VPN?
+
+Ja, die RADIUS-Authentifizierung funktioniert mit IKEv2 und SSTP VPN?  
