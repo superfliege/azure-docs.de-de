@@ -17,10 +17,10 @@ ms.date: 07/05/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: af8a7bbc4bf007dfa5bef7ceb9cf940ad752239a
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 5f9d4e580b0d4d7c3ea39c53b1bf4067a59d4d52
 ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="troubleshoot-sign-up-issues-for-azure"></a>Registrierungsprobleme für Azure behandeln
@@ -30,8 +30,8 @@ Wenn Sie sich nicht für Azure registrieren können, verwenden Sie die in diesem
 
 Gehen Sie folgendermaßen vor, um das Problem zu beheben:
 
-1. Melden Sie sich mit den Anmeldeinformationen des Kontoadministrators beim [Azure-Kontocenter](https://account.azure.com) an. 
-2. Klicken Sie auf **Profil** und dann auf **Details bearbeiten**.
+1. Melden Sie sich mit den Anmeldeinformationen des Kontoadministrators beim [Azure-Kontocenter](https://account.azure.com/Profile) an. 
+2. Klicken Sie auf **Details bearbeiten**.
 3. Stellen Sie sicher, dass alle Adressfelder ausgefüllt und gültig sind. 
 4. Vergewissern Sie sich bei der Registrierung des Azure-Abonnements, dass die beim Registrieren der Kreditkarte eingegebene Rechnungsadresse mit den Angaben der Bank übereinstimmt.
 

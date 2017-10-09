@@ -1,5 +1,5 @@
 ---
-title: "Hinzufügen oder Ändern von Azure-Abonnementadministratorrollen | Microsoft Docs"
+title: "Hinzufügen oder Ändern von Azure-Abonnementadministratorrollen | Microsoft-Dokumentation"
 description: "Informationen zum Hinzufügen oder Ändern des Co-Administrators, Dienstadministrators und Kontoadministrators in Azure"
 services: 
 documentationcenter: 
@@ -12,19 +12,19 @@ ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/12/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 29fee079bd8b2775d7b45fa37cadb73635a2eb60
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 38742fd84dafc3fb68829a55ab7be0827ad0b451
 ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten
 
-Sie können den Azure-Administrator ändern, der Ihr Azure-Abonnement oder die in Ihrem Abonnement verwendeten Azure-Dienste verwaltet. Um die Azure-Abrechnungsinformationen anzuzeigen und die Abonnements zu verwalten, müssen Sie sich im [Kontocenter](https://account.windowsazure.com/Home/Index) als Kontoadministrator anmelden. 
+Sie können den Azure-Administrator ändern, der Ihr Azure-Abonnement oder die in Ihrem Abonnement verwendeten Azure-Dienste verwaltet. Um Azure-Abrechnungsinformationen anzuzeigen und Abonnements zu verwalten, müssen Sie sich im Kontocenter als Kontoadministrator anmelden. 
 
 <a name="add-an-admin-for-a-subscription"></a>
 
@@ -101,7 +101,7 @@ Informationen zum Ändern des Kontoadministrators für ein Abonnement finden Sie
 
 | Administratorrolle | Begrenzung | Beschreibung |
 | --- | --- | --- |
-| Kontoadministrator (AA) |1 pro Azure-Konto |Dies ist die Person, die sich für Azure-Abonnements angemeldet oder diese erworben hat und die für den Zugriff auf das [Kontocenter](https://account.windowsazure.com/Home/Index) und zum Ausführen verschiedener Verwaltungsaufgaben berechtigt ist. Dazu gehört z. B. die Möglichkeit zum Erstellen von Abonnements, Kündigen von Abonnements, Ändern der Abrechnung für ein Abonnement und Ändern des Dienstadministrators. |
+| Kontoadministrator (AA) |1 pro Azure-Konto |Dies ist die Person, die sich für Azure-Abonnements angemeldet oder diese erworben hat und die für den Zugriff auf das [Kontocenter](https://account.azure.com/Subscriptions) und zum Ausführen verschiedener Verwaltungsaufgaben berechtigt ist. Dazu gehört z. B. die Möglichkeit zum Erstellen von Abonnements, Kündigen von Abonnements, Ändern der Abrechnung für ein Abonnement und Ändern des Dienstadministrators. |
 | Dienstadministrator (SA) |1 pro Azure-Abonnement |Diese Rolle ist zum Verwalten von Diensten im [Azure-Portal](https://portal.azure.com)berechtigt. Standardmäßig ist der Kontoadministrator für ein neues Abonnement gleichzeitig auch der Dienstadministrator. |
 | Co-Administrator (CA) im [klassischen Azure-Portal](https://manage.windowsazure.com) |200 pro Abonnement |Diese Rolle verfügt über die gleichen Zugriffsrechte wie der Dienstadministrator, kann jedoch die Zuordnung von Abonnements zu Azure-Verzeichnissen nicht ändern. |
 
