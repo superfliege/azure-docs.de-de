@@ -1,5 +1,5 @@
 ---
-title: "Aktivieren von Azure Application Insights Profiler für eine Cloud Services-Ressource | Microsoft-Dokumentation"
+title: "Aktivieren von Azure Application Insights Profiler für Azure-Compute-Ressourcen | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie den Profiler in einer ASP.NET-Anwendung einrichten, die von einer Azure Cloud Services-Ressource gehostet wird.
 services: application-insights
 documentationcenter: 
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: c2cae6129386260f2bf35f75d44fa001f7541d40
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: 65ba755f35df7bd09dd652ac6fccf96a878c6ca9
 ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 
@@ -113,13 +113,15 @@ Eine Anwendung kann auf unterschiedliche Weise für einen virtuellen Azure-Compu
 
 
 ## <a name="enable-the-profiler"></a>Aktivieren des Profilers
-1. Navigieren Sie zum Application Insights-Blatt **Leistung**, und wählen Sie **Konfigurieren** aus.
-   
-   ![Symbol „Konfigurieren“](./media/enable-profiler-compute/enableprofiler1.png)
- 
+
+1. Wechseln Sie zum Application Insights-Blatt **Leistung**, und klicken Sie zum Konfigurieren in der rechten oberen Ecke auf **Profiler**.
+
+   ![Schaltfläche „Profiler konfigurieren“](./media/enable-profiler-compute/PerformanceTriageViewPofilerButton.png)
+
 2. Wählen Sie **Profiler aktivieren** aus.
-   
-   ![Symbol „Profiler aktivieren“](./media/enable-profiler-compute/enableprofiler2.png)
+
+   ![Schaltfläche „Profiler aktivieren“](./media/enable-profiler-compute/enableprofiler2.png)
+
 
 ## <a name="add-a-performance-test-to-your-application"></a>Hinzufügen eines Leistungstests zu der Anwendung
 Führen Sie die folgenden Schritte aus, um einige Beispieldaten zu erhalten, die in Application Insights Profiler angezeigt werden:
@@ -134,9 +136,15 @@ Führen Sie die folgenden Schritte aus, um einige Beispieldaten zu erhalten, die
 
 1. Geben Sie dem Profiler 10 bis 15 Minuten Zeit für die Sammlung und Analyse der Daten. 
 
-2. Sehen Sie sich anschließend auf dem Blatt **Leistung** für Ihre Application Insights-Ressource an, wie Ihre Anwendung unter Last ausgeführt wird.
+2. Sehen Sie sich anschließend auf dem Blatt **Leistung** für Ihre Application Insights-Ressource an, wie Ihre Anwendung unter Last ausgeführt wird. Sortieren Sie das Vorgangsraster nach der Spalte „Anzahl“, um sich auf langsame Vorgänge mit genügend Nutzung zu konzentrieren. Sehen Sie sich die Profiler-Zeile oberhalb der Verteilung der Werte für die Dauer an, um zu ermitteln, welche Bereiche für die Dauer Profiler-Ablaufverfolgungen enthalten. Je länger Sie Ihre Anwendung überwachen, desto mehr Ablaufverfolgungen sammelt Profiler und ein umso größerer Teil der Verteilung wird in den von den Profiler-Ablaufverfolgungen unterstützten Beispielen auf Rich-Code-Ebene erfasst. 
 
-   ![Anzeigen der Leistung](./media/enable-profiler-compute/aiperformance.png)
+   ![Profiler-Ablaufverfolgungen in der Ansicht der Leistungsselektierung](./media/enable-profiler-compute/PerformanceTriageViewProfilerTraces.png)
+
+    Sie können Details zum gewünschten Bereich für die Dauer anzeigen, beispielsweise zum dritten Spitzenwert beim 95. Perzentil. Dadurch wird die Anzahl von Stichproben und Profiler-Ablaufverfolgungen in den Schaltflächen unter „Aktion ausführen“ begrenzt. 
+
+    ![Details zum Bereich für die Dauer anzeigen](./media/enable-profiler-compute/DurationRangeZoomedTo95th.png)
+
+    Klicken Sie jetzt auf die Schaltfläche **Profiler-Ablaufverfolgungen**, um Profiler mit der geeigneten Ablaufverfolgung zu öffnen.
 
 3. Wählen Sie das Symbol unter **Beispiele** aus, um das Blatt **Ablaufverfolgungsansicht** zu öffnen.
 

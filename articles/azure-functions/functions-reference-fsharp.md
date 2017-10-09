@@ -1,5 +1,5 @@
 ---
-title: F#-Entwicklerreferenz zu Azure Functions | Microsoft Docs
+title: F#-Entwicklerreferenz zu Azure Functions | Microsoft-Dokumentation
 description: "Es wird beschrieben, wie die Azure Functions-Entwicklung mit F# durchgeführt wird."
 services: functions
 documentationcenter: fsharp
@@ -7,7 +7,7 @@ author: sylvanc
 manager: jbronsk
 editor: 
 tags: 
-keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur, F#
+keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Computing, serverlose Architektur, F#
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: functions
 ms.devlang: fsharp
@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-translationtype: Human Translation
-ms.sourcegitcommit: 4544629c47326d448cd99b5d96d79666a56f0274
-ms.openlocfilehash: 1691d378263f6b4ce5072f5c621d8db02f774b5f
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: acb6052343acc34eb2365017ac2a49f9a4af51a2
+ms.contentlocale: de-de
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-functions-f-developer-reference"></a>F#-Entwicklerreferenz zu Azure Functions
@@ -79,7 +80,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Protokollierung
-Zum Protokollieren der Ausgabe in Ihren [Streamingprotokollen](../app-service-web/web-sites-streaming-logs-and-console.md) in F# sollte Ihre Funktion ein Argument vom Typ `TraceWriter` verwenden. Der Einheitlichkeit halber empfehlen wir Ihnen, diesem Argument den Namen `log`zu geben. Beispiel:
+Zum Protokollieren der Ausgabe in Ihren [Streamingprotokollen](../app-service/web-sites-enable-diagnostic-log.md) in F# sollte Ihre Funktion ein Argument vom Typ `TraceWriter` verwenden. Der Einheitlichkeit halber empfehlen wir Ihnen, diesem Argument den Namen `log`zu geben. Beispiel:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: TraceWriter) =
@@ -280,10 +281,5 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 * [Azure Functions-Tests](functions-test-a-function.md)
 * [Azure Functions-Skalierung](functions-scale.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/25/2015
+ms.date: 09/20/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 69ead621c179bf49f17ed3274be4b625fc587556
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: 9efe10fa35c6a7c84e0d448bbe53127d16d20870
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 # <a name="monitor-performance-in-web-applications"></a>Leistung in Webanwendungen überwachen
@@ -117,9 +117,38 @@ Im Folgenden finden Sie einige Tipps zum Feststellen und Diagnostizieren von Lei
 * Überwachen Sie den Betrieb Ihrer Web-App mithilfe von [Live Metrics Stream][livestream].
 * Erfassen Sie den Zustand Ihrer .NET-Anwendung mithilfe des [Momentaufnahmedebuggers][snapshot].
 
-## <a name="find-and-fix-performance-bottlenecks-with-an-interactive-performance-investigation"></a>Auffinden und Beseitigen von Leistungsengpässen mithilfe der interaktiven Leistungsuntersuchung
+>[!Note]
+> Zurzeit wird die Application Insights-Leistungsuntersuchung in eine interaktive Vollbildansicht überführt. Die folgende Dokumentation behandelt zunächst die neue Benutzeroberfläche und rekapituliert anschließend die vorherige Oberfläche, falls Sie auf diese zugreifen müssen, solange sie in der Übergangsphase noch verfügbar ist.
 
-Mithilfe der neuen interaktiven Application Insights-Leistungsuntersuchung können Sie Bereiche in Ihrer Web-App mit schwacher Gesamtleistung bestimmen. Sie können schnell bestimmte Seiten finden, die Sie ausbremsen, und mithilfe des [Tools für die Profilerstellung](app-insights-profiler.md) prüfen, ob es eine Korrelation zwischen diesen Seiten gibt.
+## <a name="find-and-fix-performance-bottlenecks-with-an-interactive-full-screen-performance-investigation"></a>Auffinden und Beseitigen von Leistungsengpässen mithilfe der interaktiven Leistungsuntersuchung in der Vollbildansicht
+
+Mithilfe der neuen interaktiven Application Insights-Leistungsuntersuchung können Sie Vorgänge in Ihrer Web-App überprüfen, die eine schwache Leistung zeigen. Sie können schnell einen bestimmten Vorgang auswählen und [Profiler](app-insights-profiler.md) verwenden, um die Ursache für die geringe Leistung bis zum Code nachzuverfolgen. Mit der neuen Ansicht der Verteilung der Dauer, die für den ausgewählten Vorgang angezeigt wird, können Sie auf einen Blick bewerten, wie schlecht das Benutzererlebnis für Ihre Kunden tatsächlich ist. Sie können für jeden langsamen Vorgang anzeigen, wie viele Benutzerinteraktionen betroffen sind. Im folgenden Beispiel betrachten wir das Benutzererlebnis für den Vorgang „GET Customers/Details“. In der Verteilung der Dauer sehen wir drei Spitzenwerte. Der Wert ganz links beträgt ca. 400 ms und stellt eine sehr gute Reaktion dar. Der mittlere Wert liegt bei etwa 1,2 s und steht für ein mittelmäßiges Benutzererlebnis. Bei 3,6 s stellen wir eine weitere kleine Spitze fest, die das Benutzererlebnis im 99. Perzentil repräsentiert. Dieser Wert wird wahrscheinlich dazu führen, dass Ihre Kunden Ihre App enttäuscht verlassen. Diese Reaktion ist zehnmal langsamer als die sehr gute Reaktion für den gleichen Vorgang. 
+
+![Drei Spitzenwerte für die Dauer von „GET Customers/Details“](./media/app-insights-web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
+
+Um ein besseres Gefühl für das Benutzererlebnis bei diesem Vorgang zu entwickeln, können wir einen größeren Zeitbereich auswählen. Wir können die Auswahl dann auch auf ein bestimmtes Zeitfenster begrenzen, in dem der Vorgang besonders langsam ausgeführt wurde. Im folgenden Beispiel haben wir den Zeitbereich von 24 Stunden (Standardeinstellung) auf 7 Tage geändert und dann das Zeitfenster von 21:47 bis 00:47 zwischen Dienstag, dem 12., und Mittwoch, dem 13., ausgewählt. Beachten Sie, dass auf der rechten Seite sowohl die Verteilung der Dauer als auch die Anzahl von Stichproben und Profiler-Ablaufverfolgungen aktualisiert wurden.
+
+![Drei Spitzenwerte für die Dauer von „GET Customers/Details“ im 7-Tage-Zeitbereich mit einem Zeitfenster](./media/app-insights-web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+
+Um die Ansicht auf die langsamen Reaktionen einzugrenzen, zeigen wir als Nächstes die Werte für die Dauer an, die zwischen dem 95. und dem 99. Perzentil liegen. Diese Werte repräsentieren die 4 % Benutzerinteraktionen, die eine besonders langsame Reaktion aufwiesen.
+
+![Drei Spitzenwerte für die Dauer von „GET Customers/Details“ im 7-Tage-Zeitbereich mit einem Zeitfenster](./media/app-insights-web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+
+Nun können wir uns entweder die repräsentativen Stichproben ansehen, indem wir auf die Schaltfläche „Stichproben“ klicken, oder die repräsentativen Profiler-Ablaufverfolgungen anzeigen, indem wir auf die Schaltfläche „Profiler-Ablaufverfolgungen“ klicken. Dieses Beispiel enthält vier Ablaufverfolgungen, die für „GET Customers/Details“ in dem Zeitfenster und dem Bereich der Dauer gesammelt wurden, das bzw. der von Interesse ist.
+
+In einigen Fällen liegt das Problem nicht in Ihrem Code, sondern in einer Abhängigkeit, die von Ihrem Code aufgerufen wird. Sie können in der Ansicht der Leistungsselektierung zur Registerkarte „Abhängigkeiten“ wechseln, um solche Abhängigkeiten mit langsamer Reaktion zu untersuchen. Beachten Sie, dass die Leistungsansicht standardmäßig durchschnittliche Trends anzeigt. Von größerem Interesse ist aber das 95. Perzentil (oder das 99., wenn Sie einen sehr ausgereiften Dienst überwachen). Im folgenden Beispiel konzentrieren wir uns auf die langsame Abhängigkeit eines Azure-Blobs, in dem wir „PUT fabrikamaccount“ aufrufen. Die guten Erlebnisse bewegen sich um 40 ms herum. Die langsamen Aufrufe der gleichen Abhängigkeit sind jedoch dreimal langsamer und bewegen sich um 120 ms herum. Es müssen sich nicht viele dieser Aufrufe summieren, um zu bewirken, dass der entsprechende Vorgang sich erheblich verlangsamt. Sie können – ebenso wie auf der Registerkarte „Vorgänge“ – Details der repräsentativen Stichproben und Profiler-Ablaufverfolgungen anzeigen.
+
+![Drei Spitzenwerte für die Dauer von „GET Customers/Details“ im 7-Tage-Zeitbereich mit einem Zeitfenster](./media/app-insights-web-monitor-performance/SlowDependencies95thTrend.png)
+
+Ein weiteres sehr leistungsstarkes Feature, das in der interaktiven Leistungsuntersuchung in der Vollbildansicht neu eingeführt wurde, ist die Integration in Insights. Application Insights kann Regressionen der Reaktionsfähigkeit erkennen und anzeigen und Ihnen dabei helfen, gemeinsame Eigenschaften in dem Stichprobensatz zu ermitteln, auf den Sie den Fokus gelegt haben. Die beste Methode, alle verfügbaren Einblicke anzuzeigen, besteht darin, zu einem 30-Tage-Zeitbereich zu wechseln und dann die Option „Gesamt“ auszuwählen, um Einblicke in alle Vorgänge des vergangenen Monats zu erhalten.
+
+![Drei Spitzenwerte für die Dauer von „GET Customers/Details“ im 7-Tage-Zeitbereich mit einem Zeitfenster](./media/app-insights-web-monitor-performance/Performance30DayOveralllnsights.png)
+
+Application Insights in der neuen Ansicht der Leistungsselektierung kann Ihnen im wahrsten Sinne des Wortes dabei helfen, die Nadeln im Heuhaufen zu finden, die zu negativen Erlebnissen für Ihre Web-App-Benutzer führen.
+
+## <a name="deprecated-find-and-fix-performance-bottlenecks-with-a-narrow-bladed-legacy-performance-investigation"></a>Veraltet: Auffinden und Beseitigen von Leistungsengpässen mithilfe der älteren Leistungsuntersuchung auf Blättern
+
+Mithilfe der älteren Application Insights-Leistungsuntersuchung auf Blättern können Sie Bereiche in Ihrer Web-App bestimmen, die die Gesamtleistung verlangsamen. Sie können bestimmte Seiten finden, die eine Verlangsamung verursachen, und [Profiler](app-insights-profiler.md) verwenden, um die Ursache dieser Probleme bis zum Code nachzuverfolgen. 
 
 ### <a name="create-a-list-of-slow-performing-pages"></a>Erstellen einer Liste der langsamen Seiten 
 

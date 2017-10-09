@@ -1,5 +1,5 @@
 ---
-title: Diagnostizieren von Fehlern und Ausnahmen in Web-Apps mit Azure Application Insights | Microsoft Docs
+title: Diagnostizieren von Fehlern und Ausnahmen in Web-Apps mit Azure Application Insights | Microsoft-Dokumentation
 description: Erfassen von Ausnahmen von ASP.NET-Apps zusammen mit der Anforderungstelemetrie.
 services: application-insights
 documentationcenter: .net
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 09/19/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 8c73344b07e07cc89a18a10648b1a9c82c4b361a
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: 6baffb1fb14a3b7ede5a754029b9efbaf543ea07
 ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights
@@ -58,15 +58,19 @@ Beachten Sie, dass CodeLens im Code Daten zu den Ausnahmen anzeigt:
 ![CodeLens-Benachrichtigung über Ausnahmen.](./media/app-insights-asp-net-exceptions/35.png)
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>Diagnostizieren von Fehlern im Azure-Portal
-In der Application Insights-Übersicht Ihrer App zeigt die Kachel „Fehler“ Ihnen Diagramme mit Ausnahmen und Fehlern bei HTTP-Anforderungen zusammen mit einer Liste der Anforderungs-URLs an, die die häufigsten Fehler verursachen.
+Application Insights umfasst eine kuratierte APM-Benutzeroberfläche, die Sie beim Diagnostizieren von Fehlern in Ihren überwachten Anwendungen unterstützt. Klicken Sie zum Starten auf die Option „Fehler“ im Application Insights-Ressourcenmenü, das Sie im Abschnitt „Untersuchen“ finden. Daraufhin wird eine Vollbildansicht geöffnet, die die Fehlerratentrends für Ihre Anforderungen anzeigt und Informationen dazu bietet, bei wie vielen Anforderungen Fehler auftreten und wie viele Benutzer betroffen sind. Auf der rechten Seite sehen Sie einige der nützlichsten Verteilungen für den ausgewählten fehlerhaften Vorgang, einschließlich der Top-3-Antwortcodes, der Top-3-Ausnahmetypen und der Top-3-Abhängigkeitstypen mit Fehlern. 
 
-![Wählen Sie „Einstellungen > Fehler“ aus.](./media/app-insights-asp-net-exceptions/012-start.png)
+![Ansicht der Fehlerselektierung (Registerkarte mit Vorgängen)](./media/app-insights-asp-net-exceptions/FailuresTriageView.png)
 
-Klicken Sie in der Liste auf einen der Ausnahmetypen mit Fehlern, um zu den einzelnen Vorkommen der Ausnahme zu gelangen. Dort können Sie die Details und die Stapelüberwachung einsehen:
+Mit nur einem Klick können Sie dann repräsentative Stichproben für jede dieser Vorgangsteilmengen überprüfen. Um Ausnahmen zu diagnostizieren, können Sie auf die Anzahl einer bestimmten Ausnahme klicken. Daraufhin wird ein Blatt mit Ausnahmedetails angezeigt, wie z.B. das folgende:
 
-![Wählen Sie eine Instanz einer fehlerhaften Anforderung aus, und rufen Sie unter Ausnahmedetails die Instanzen der Ausnahme ab.](./media/app-insights-asp-net-exceptions/030-req-drill.png)
+![Blatt mit Ausnahmedetails](./media/app-insights-asp-net-exceptions/ExceptionDetailsBlade.png)
 
-**Alternativ** können Sie in der Liste der Anforderungen beginnen und nach zugehörigen Ausnahmen suchen.
+Anstatt Ausnahmen eines bestimmten Vorgangs mit Fehlern anzuzeigen, können Sie **alternativ dazu** in der Gesamtübersicht der Ausnahmen beginnen, indem Sie zur Registerkarte „Ausnahmen“ wechseln:
+
+![Ansicht der Fehlerselektierung (Registerkarte mit Ausnahmen)](./media/app-insights-asp-net-exceptions/FailuresTriageView_Exceptions.png)
+
+Hier können Sie alle Ausnahmen anzeigen, die für Ihre überwachte App erfasst wurden.
 
 *Es werden keine Ausnahmen angezeigt? Informationen hierzu finden Sie unter [Erfassen von Ausnahmen](#exceptions).*
 
@@ -431,7 +435,7 @@ Wenn Sie den [Application Insights-Agent auf Ihrem Server installiert haben](app
 
 .NET Framework berechnet die Rate, indem die Anzahl von Ausnahmen innerhalb eines Intervalls gezählt und diese durch die Länge des Intervalls geteilt wird.
 
-Beachten Sie, dass sich der Wert von der Anzahl der "Ausnahmen" unterscheidet, die vom Application Insights-Portal durch Zählen von TrackException-Meldungen berechnet wird. Die Samplingintervalle sind unterschiedlich, und das SDK sendet keine TrackException-Meldungen für alle behandelten und nicht behandelten Ausnahmen.
+Dieser Wert unterscheidet sich von der Anzahl der „Ausnahmen“, die vom Application Insights-Portal durch Zählen von TrackException-Meldungen berechnet wird. Die Samplingintervalle sind unterschiedlich, und das SDK sendet keine TrackException-Meldungen für alle behandelten und nicht behandelten Ausnahmen.
 
 ## <a name="video"></a>Video
 

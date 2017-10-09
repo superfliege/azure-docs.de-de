@@ -1,9 +1,25 @@
-Titel: Senden von Benutzerkontext-IDs zur Nutzung in Azure Application Insights | Microsoft-Dokumentation Beschreibung: Verfolgen Sie nach, welche Vorgänge Benutzer in Ihrem Dienst durchführen, indem Sie ihnen eine eindeutige, persistente ID-Zeichenfolge in Application Insights zuweisen.
-services: application-insights documentationcenter: '' author: abgreg manager: carmonm
-
-ms.service: application-insights ms.workload: tbd ms.tgt_pltfrm: ibiza ms.devlang: csharp ms.topic: article ms.date: 08/02/2017 ms.author: bwren
+---
+title: Senden von Benutzerkontext-IDs zur Aktivierung der Nutzung in Azure Application Insights | Microsoft-Dokumentation
+description: "Verfolgen Sie nach, welche Vorgänge Benutzer in Ihrem Dienst ausführen, indem Sie ihnen in Application Insights eine eindeutige, persistente ID-Zeichenfolge zuweisen."
+services: application-insights
+documentationcenter: 
+author: abgreg
+manager: carmonm
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: csharp
+ms.topic: article
+ms.date: 08/02/2017
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e16866501fd34f0b998ba929771a423866759b55
+ms.contentlocale: de-de
+ms.lasthandoff: 09/20/2017
 
 ---
+
 #  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Senden von Benutzerkontext-IDs zur Nutzung in Azure Application Insights
 
 ## <a name="tracking-users"></a>Nachverfolgen von Benutzern
@@ -81,3 +97,4 @@ In diesem Beispiel wird die Benutzer-ID auf einen Bezeichner festgelegt, der nac
     * [Trichter](usage-funnels.md)
     * [Aufbewahrung](app-insights-usage-retention.md)
     * [Arbeitsmappen](app-insights-usage-workbooks.md)
+

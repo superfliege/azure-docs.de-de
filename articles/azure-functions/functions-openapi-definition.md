@@ -17,10 +17,10 @@ ms.date: 08/25/2017
 ms.author: mblythe; glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: be871b1c5f131b0ff6de1f74ed3e6f12b7a482ce
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 5aed57e69924f03221fc0d9909889358d80df9a4
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -113,7 +113,7 @@ Sie haben jetzt eine Funktion, die die Kosteneffizienz von Notfallreparaturen er
 
 ## <a name="generate-the-openapi-definition"></a>Generieren der OpenAPI-Definition
 
-Jetzt können Sie die OpenAPI-Definition generieren. Diese Definition kann von anderen Microsoft-Technologien verwendet werden, beispielsweise von [API-Apps](../app-service-api/app-service-api-dotnet-get-started.md), [PowerApps](functions-powerapps-scenario.md) und [Microsoft Flow](../app-service/app-service-export-api-to-powerapps-and-flow.md) sowie von Entwicklertools von Drittanbietern wie [Postman](https://www.getpostman.com/docs/importing_swagger) und [vielen weiteren Paketen](http://swagger.io/tools/).
+Jetzt können Sie die OpenAPI-Definition generieren. Diese Definition kann von anderen Microsoft-Technologien verwendet werden, beispielsweise von API-Apps, [PowerApps](functions-powerapps-scenario.md) und [Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md) sowie von Entwicklertools von Drittanbietern wie [Postman](https://www.getpostman.com/docs/importing_swagger) und [vielen weiteren Paketen](http://swagger.io/tools/).
 
 1. Wählen Sie nur die *Verben* aus, die von Ihrer API (in diesem Fall POST) unterstützt werden. Dadurch wird die generierte API-Definition übersichtlicher.
 
@@ -175,20 +175,9 @@ Jetzt können Sie die OpenAPI-Definition generieren. Diese Definition kann von a
     Diese Definition wird als _Vorlage_ beschrieben, da für eine vollständige OpenAPI-Definition weitere Metadaten erforderlich sind. Sie ändern die Definition im nächsten Schritt.
 
 ## <a name="modify-the-openapi-definition"></a>Ändern der OpenAPI-Definition
-Nun ändern Sie die generierte Vorlagendefinition, um zusätzliche Metadaten über die API-Vorgänge und Datenstrukturen bereitzustellen. Für die Zwecke dieses Tutorials können Sie einfach die geänderte Definition unten in den Bereich **API-Definition** einfügen und auf **Speichern** klicken.
+Nun ändern Sie die generierte Vorlagendefinition, um zusätzliche Metadaten über die API-Vorgänge und Datenstrukturen bereitzustellen. Löschen Sie in der **API-Definition** die generierte Definition von `post` bis zum Ende der Definition, fügen Sie den unten stehenden Inhalt ein, und klicken Sie auf **Speichern**.
 
 ```yaml
-swagger: '2.0'
-info:
-  title: Turbine Repair
-  version: 1.0.0
-host: function-demo-energy.azurewebsites.net
-basePath: /
-schemes:
-  - https
-  - http
-paths:
-  /api/TurbineRepair:
     post:
       operationId: CalculateCosts
       description: Determines if a technician should be sent for repair
@@ -248,7 +237,7 @@ securityDefinitions:
     in: query
 ```
 
-Es ist wichtig, dass Sie die Änderungen verstehen, die wir an der Standardvorlage vorgenommen haben:
+In diesem Fall konnten Sie einfach die aktualisierten Metadaten einfügen, es ist jedoch wichtig, dass Sie die Änderungen verstehen, die wir an der Standardvorlage vorgenommen haben:
 
 + Wir haben angegeben, dass die API Daten in einem JSON-Format erzeugt und verwendet.
 

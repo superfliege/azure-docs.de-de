@@ -13,12 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: eslesar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 7aaede3e93938553ee6d372478e3516e72885057
+ms.translationtype: HT
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 581bee11729e6fef5dbe7e752962f7ab9896066b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 09/19/2017
 
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Integrieren von Computern für die Verwaltung durch Azure Automation DSC
@@ -36,6 +35,10 @@ Azure Automation DSC kann verwendet werden, um eine Vielzahl von Computern zu ve
 * Physische/virtuelle Linux-Computer, lokal, in Azure oder in einer anderen Cloud als Azure
 
 Wenn Sie noch nicht zum Verwalten von Computerkonfigurationen in der Cloud bereit sind, kann Azure Automation DSC auch ausschließlich als Endpunkt für Berichte verwendet werden. Dadurch können Sie die gewünschte Konfiguration über DSC lokal festlegen und umfassende Berichtsdetails zur Kompatibilität von Knoten mit dem gewünschten Zustand in Azure Automation anzeigen.
+
+> [!NOTE]
+> Die Verwaltung virtueller Computer mit DSC ist kostenlos inbegriffen, wenn die installierte DSC-Erweiterung für die virtuellen Computer eine höhere Version als 2.7 aufweist.  Weitere Informationen finden Sie auf der [**Preisseite für Automation**](https://azure.microsoft.com/en-us/pricing/details/automation/).
+
 
 In den folgenden Abschnitten wird beschrieben, wie Sie jeden Computertyp in Azure Automation DSC integrieren können.
 
@@ -123,13 +126,13 @@ Mit Azure Automation DSC können Sie problemlos virtuelle Azure-Computer für di
 
 Wechseln Sie im [Azure-Portal](https://portal.azure.com/)zu dem Azure Automation-Konto, in das Sie virtuelle Computer integrieren möchten. Klicken Sie im Dashboard des Automation-Kontos auf **DSC-Knoten** -> **Azure-VM hinzufügen**.
 
-Wählen Sie unter **Virtuelle Computer für die Integration auswählen**die virtuellen Azure-Computer aus, die Sie integrieren möchten.
+Wählen Sie einen virtuellen Azure-Computer aus, der integriert werden soll.
 
-![](./media/automation-dsc-onboarding/DSC_Onboarding_2.png)
+Wenn auf dem Computer nicht die PowerShell-Erweiterung für Konfiguration des gewünschten Zustands installiert ist und der Energiezustand ausgeführt wird, klicken Sie auf **Verbinden**.
 
-Geben Sie unter **Registrierungsdaten konfigurieren**die Werte des [lokalen Konfigurations-Managers von PowerShell DSC](https://msdn.microsoft.com/powershell/dsc/metaconfig4) , die für Ihren Anwendungsfall erforderlich sind, und optional eine Knotenkonfiguration, die dem virtuellen Computer zugewiesen werden soll, ein.
+Geben Sie unter **Registrierung**die Werte des [lokalen Konfigurations-Managers von PowerShell DSC](https://msdn.microsoft.com/powershell/dsc/metaconfig4) ein, die für Ihren Anwendungsfall erforderlich sind, und geben Sie optional eine Knotenkonfiguration an, die dem virtuellen Computer zugewiesen werden soll.
 
-![](./media/automation-dsc-onboarding/DSC_Onboarding_3.png)
+![](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 
