@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: cfc95726c535aa49add98d700740b24bde5ea0f7
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 79d2f5265c05a1e5f83325295d3d750e1796e1cc
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -97,11 +97,11 @@ Wenn AD FS als Anmeldemethode _außerhalb_ des Azure AD Connect-Assistenten konf
 
 Ja. Umgebungen mit mehreren Gesamtstrukturen werden unterstützt, wenn Gesamtstruktur-Vertrauensstellungen zwischen Ihren AD-Gesamtstrukturen bestehen und das Namensuffixrouting ordnungsgemäß konfiguriert ist.
 
-## <a name="do-pass-through-authentication-agents-provide-load-balancing-capability"></a>Stellen die Passthrough-Authentifizierungs-Agents Lastenausgleichsfunktionen bereit?
+## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>Wie viele Passthrough-Authentifizierungs-Agents muss ich installieren?
 
-Nein. Die Installation von mehreren Passthrough-Authentifizierungs-Agents stellt eine [hohe Verfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) sicher, jedoch nicht den Lastenausgleich. Letztlich verarbeiten möglicherweise ein oder zwei Authentifizierungs-Agents den Großteil der Anmeldeanforderungen.
+Mit der Installation von mehreren Passthrough-Authentifizierungs-Agents wird für [Hochverfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) gesorgt. Es wird aber kein Lastenausgleich bereitgestellt. Letztlich verarbeiten möglicherweise ein oder zwei Authentifizierungs-Agents den Großteil der Anmeldeanforderungen.
 
-Die Anforderungen zur Kennwortüberprüfung, die die Authentifizierungs-Agents verarbeiten müssen, sind einfach. Die maximale und durchschnittliche Last wird für die meisten Kunden daher problemlos von insgesamt zwei oder drei Authentifizierungs-Agents bewältigt.
+Berücksichtigen Sie die Spitzenlast und durchschnittliche Last in Bezug auf die Anmeldeanforderungen, die Sie für Ihren Mandanten erwarten. Als Richtwert gilt, dass ein einzelner Authentifizierungs-Agent auf einem Standardserver mit einer CPU mit vier Cores und 16 GB RAM pro Sekunde 300.000 bis 400.000 Authentifizierungen verarbeiten kann. Für die meisten Kunden reichen zwei oder drei Authentifizierungs-Agents insgesamt aus, um Hochverfügbarkeit und genügend Kapazität zu erzielen.
 
 Es wird empfohlen, die Authentifizierungs-Agents in der Nähe Ihres Domänencontrollers zu installieren, um die Anmeldungslatenz zu verbessern.
 
@@ -130,7 +130,7 @@ Durch die Deinstallation eines Passthrough-Authentifizierungs-Agent von einem Se
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [**Aktuelle Einschränkungen**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarios
-- [**Schnellstartanleitung:**](active-directory-aadconnect-pass-through-authentication-quick-start.md) Richten Sie die Azure AD-Passthrough-Authentifizierung ein.
+- [**Schnellstart**](active-directory-aadconnect-pass-through-authentication-quick-start.md): Einrichten und Ausführen der Passthrough-Authentifizierung mit Azure AD
 - [**Ausführliche technische Informationen**](active-directory-aadconnect-pass-through-authentication-how-it-works.md): Informationen zur Funktionsweise dieser Funktion
 - [**Problembehandlung**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Beheben häufig auftretender Probleme mit dieser Funktion
 - [**Nahtlose SSO mit Azure AD**](active-directory-aadconnect-sso.md): Informationen zu dieser Ergänzungsfunktion

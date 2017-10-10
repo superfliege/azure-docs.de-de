@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 09/26/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 9a33e83c7453d5b80043599acca3ac4310446562
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 7e05c469260a445578c80cdf77fab2d5ffb48022
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -56,7 +56,7 @@ Gehen Sie folgendermaßen vor, um Ihre AD-Kontosperrungsrichtlinien zu überprü
 
 ![AD-Kontosperrungsrichtlinien](./media/active-directory-aadconnect-pass-through-authentication/pta5.png)
 
-## <a name="use-the-graph-api-to-manage-your-tenants-smart-lockout-values"></a>Verwenden der Graph-API, um die Smart Lockout-Werte Ihres Mandanten zu verwalten
+## <a name="use-the-graph-api-to-manage-your-tenants-smart-lockout-values-needs-premium-license"></a>Verwenden der Graph-API, um die Smart Lockout-Werte Ihres Mandanten zu verwalten (Premium-Lizenz erforderlich)
 
 >[!IMPORTANT]
 >Das Verändern der AD-Sperrschwelle und der Sperrdauer mit der Graph-API ist eine Azure AD Premium P2-Funktion. Sie müssen dafür auch der globale Administrator Ihres Mandanten sein.

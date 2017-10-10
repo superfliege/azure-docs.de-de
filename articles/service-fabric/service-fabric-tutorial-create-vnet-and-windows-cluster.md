@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Service Fabric-Clusters in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie einen Windows-Cluster in Azure mithilfe einer Vorlage erstellen.
+title: Erstellen eines Service Fabric-Windows-Clusters in Azure | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe der PowerShell einen Service Fabric-Windows-Cluster in einem vorhandenen virtuellen Azure-Netzwerk bereitstellen.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,32 +12,32 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/06/2017
+ms.date: 09/26/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 5d56fd468998ee4b1253b47aa133812e0141062b
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 7cee4f8d68062dcfd2b6f61d55319160a2a80a98
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
-# <a name="deploy-a-secure-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Bereitstellen eines sicheren Service Fabric-Windows-Clusters in einem virtuellen Azure-Netzwerk
-Dieses Tutorial ist der erste Teil einer Serie. Hier wird beschrieben, wie Sie einen Service Fabric-Cluster (Windows), der in Azure ausgeführt wird, erstellen und ihn in einem vorhandenen virtuellen Netzwerk (VNET) und Subnetz bereitstellen. Wenn Sie fertig sind, verfügen Sie über einen Cluster, der in der Cloud ausgeführt wird und für den Sie Anwendungen bereitstellen können.  Informationen zum Erstellen eines Linux-Clusters finden Sie unter [Bereitstellen eines sicheren Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+# <a name="deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Bereitstellen eines Service Fabric-Windows-Clusters in einem virtuellen Azure-Netzwerk
+Dieses Tutorial ist der erste Teil einer Serie. Hier erfahren Sie, wie Sie mithilfe der PowerShell einen Service Fabric-Windows-Cluster in einem vorhandenen virtuellen Azure-Netzwerk (VNET) und Subnetz bereitstellen. Wenn Sie fertig sind, verfügen Sie über einen Cluster, der in der Cloud ausgeführt wird und für den Sie Anwendungen bereitstellen können.  Informationen zum Erstellen eines Linux-Clusters per Azure CLI finden Sie unter [Erstellen eines sicheren Linux-Clusters in Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines VNET in Azure mithilfe einer Vorlage
+> * Erstellen eines VNET in Azure mithilfe von PowerShell
 > * Erstellen eines Schlüsseltresors und Hochladen eines Zertifikats
-> * Erstellen eines sicheren Service Fabric-Clusters in Azure mithilfe einer Vorlage
+> * Erstellen eines sicheren Service Fabric-Clusters in Azure PowerShell
 > * Sichern des Clusters mit einem X.509-Zertifikat
 > * Herstellen einer Verbindung mit dem Cluster über PowerShell
 > * Entfernen eines Clusters
 
 In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
-> * Erstellen eines sicheren Clusters in Azure mithilfe einer Vorlage
+> * Erstellen eines sicheren Clusters in Azure
 > * [Bereitstellen von API Management mit Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -46,10 +46,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 - Installieren Sie das [Service Fabric SDK und das PowerShell-Modul](service-fabric-get-started.md).
 - Installieren Sie das [Azure PowerShell-Modul Version 4.1 oder höher](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
 
-Mit den folgenden Verfahren wird ein Service Fabric-Cluster mit fünf Knoten erstellt. Der Cluster wird durch ein selbstsigniertes Zertifikat gesichert, das in einem Schlüsseltresor platziert wird. 
-
-Zum Berechnen der Kosten, die durch das Ausführen eines Service Fabric-Clusters in Azure anfallen, verwenden Sie den [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/).
-Weitere Informationen zum Erstellen von Service Fabric-Clustern finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
+Mit den folgenden Verfahren wird ein Service Fabric-Cluster mit fünf Knoten erstellt. Zum Berechnen der Kosten, die durch das Ausführen eines Service Fabric-Clusters in Azure anfallen, verwenden Sie den [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/).
 
 ## <a name="sign-in-to-azure-and-select-your-subscription"></a>Anmelden bei Azure und Auswählen Ihres Abonnements
 In dieser Anleitung wird Azure PowerShell verwendet. Wenn Sie eine neue PowerShell-Sitzung starten, melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus, bevor Sie Azure-Befehle ausführen.
@@ -181,33 +178,17 @@ Write-Host "Certificate Thumbprint: " $output.CertificateThumbprint
 ```
 
 ## <a name="deploy-the-service-fabric-cluster"></a>Bereitstellen des Service Fabric-Clusters
-Nachdem die Bereitstellung der Netzwerkressourcen abgeschlossen ist und Sie ein Zertifikat in einen Schlüsseltresor hochgeladen haben, muss im nächsten Schritt ein Service Fabric-Cluster für das VNET im Subnetz und in der NSG, die für den Service Fabric-Cluster festgelegt wurden, bereitgestellt werden. Für dieses Tutorial ist die Service Fabric-Resource Manager-Vorlage so vorkonfiguriert, dass die Namen des VNET, des Subnetzes und der NSG verwendet werden, die in einem vorherigen Schritt eingerichtet wurden.
-
-Laden Sie die folgende Resource Manager-Vorlage und -Parameterdatei herunter:
+Nachdem die Bereitstellung der Netzwerkressourcen abgeschlossen ist, besteht der nächste Schritt in der Bereitstellung von Service Fabric-Clustern für das VNET im Subnetzt und in der NSG, die für den Service Fabric-Cluster angegeben wurden. Für die Bereitstellung eines Clusters in einem vorhandenen VNET und Subnetz (weiter oben in diesem Artikel bereitgestellt) ist eine Resource Manager-Vorlage erforderlich.  Weitere Informationen finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Für diese Tutorialreihe ist die Vorlage so vorkonfiguriert, dass die Namen des VNET, des Subnetzes und der NSG verwendet werden, die in einem vorherigen Schritt eingerichtet wurden.  Laden Sie die folgende Resource Manager-Vorlage und -Parameterdatei herunter:
 - [cluster.json][cluster-arm]
 - [cluster.parameters.json][cluster-parameters-arm]
 
-Geben Sie die Parameter für Ihre Bereitsellung einschließlich der [Key Vault-Informationen](service-fabric-cluster-creation-via-arm.md#set-up-a-key-vault) für das Clusterzertifikat an den entsprechenden Stellen in der `cluster.parameters.json`-Datei ein.
+Fügen Sie in der Datei *cluster.parameters.json* für Ihre Bereitstellung die leeren Parameter **clusterName**, **adminUserName**, **adminPassword**, **certificateThumbprint**, **certificateUrlValue** und **sourceVaultValue** ein.  Wenn Sie über ein vorhandenes Zertifikat verfügen, das zuvor in einen Schlüsseltresor hochgeladen wurde, können Sie die Werte **certificateThumbprint**, **certificateUrlValue** und **sourceVaultValue** für dieses Zertifikat einfügen.
 
 Verwenden Sie den folgenden PowerShell-Befehl, um die Resource Manager-Vorlagen- und -Parameterdateien zum Erstellen des Service Fabric-Clusters bereitzustellen:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile .\cluster.json -TemplateParameterFile .\cluster.parameters.json -Verbose
 ```
-
-## <a name="modify-the-certificate--access-service-fabric-explorer"></a>Ändern des Zertifikats und Zugreifen auf Service Fabric Explorer 
-
-1. Doppelklicken Sie auf das Zertifikat, um den Zertifikatimport-Assistenten zu öffnen.
-
-2. Verwenden Sie die Standardeinstellungen, aktivieren Sie jedoch das Kontrollkästchen **Schlüssel als exportierbar markieren.** im Schritt **Schutz für den privaten Schlüssel**. Bei der Konfiguration von Azure Container Registry für die Authentifizierung des Service Fabric-Clusters im weiteren Verlauf des Tutorials muss das Zertifikat in Visual Studio exportiert werden.
-
-3. Sie können nun Service Fabric Explorer in einem Browser öffnen. Navigieren Sie hierzu in einem Webbrowser zur **ManagementEndpoint**-URL für Ihren Cluster, und wählen Sie das auf Ihrem Computer gespeicherte Zertifikat aus.
-
->[!NOTE]
->Beim Öffnen von Service Fabric Explorer wird ein Zertifikatfehler angezeigt, da Sie ein selbstsigniertes Zertifikat verwenden. In Edge müssen Sie auf *Details* und dann auf den Link *Webseite trotzdem laden* klicken. In Chrome müssen Sie auf *Advanced* (Erweitert) und dann auf den Link *proceed* (Fortfahren) klicken.
-
->[!NOTE]
->Wenn bei der Clustererstellung ein Fehler auftritt, können Sie den Befehl, mit dem die bereits bereitgestellten Ressourcen aktualisiert werden, erneut ausführen. Wenn ein Zertifikat als Teil der fehlerhaften Bereitstellung erstellt wurde, wird ein neues generiert. Informationen zum Beheben von Fehlern bei der Clustererstellung finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
 
 ## <a name="connect-to-the-secure-cluster"></a>Herstellen einer Verbindung mit dem sicheren Cluster
 Stellen Sie mithilfe des Service Fabric-PowerShell-Moduls, das zusammen mit dem Service Fabric SDK installiert wird, eine Verbindung mit dem Cluster her.  Zunächst installieren Sie das Zertifikat im persönlichen Speicher des aktuellen Benutzers auf Ihrem Computer.  Führen Sie den folgenden PowerShell-Befehl aus:
@@ -237,13 +218,8 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster.southcentralus.clou
 Get-ServiceFabricClusterHealth
 ```
 
-```azurecli
-sfctl cluster health
-```
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Ein Cluster besteht neben der Clusterressource selbst noch aus weiteren Azure-Ressourcen. Die einfachste Möglichkeit zum Löschen des Clusters und aller darin genutzten Ressourcen besteht darin, die Ressourcengruppe zu löschen.
+In den anderen Artikeln dieser Tutorialreihe wird der soeben erstellte Cluster verwendet. Wenn Sie nicht direkt mit dem nächsten Artikel fortfahren, kann es ratsam sein, den Cluster zu löschen, um anfallende Gebühren zu vermeiden. Die einfachste Möglichkeit zum Löschen des Clusters und aller darin genutzten Ressourcen besteht darin, die Ressourcengruppe zu löschen.
 
 Melden Sie sich bei Azure an, und wählen Sie die Abonnement-ID aus, mit der Sie den Cluster entfernen möchten.  Sie finden Ihre Abonnement-ID, indem Sie sich beim [Azure-Portal](http://portal.azure.com) anmelden. Löschen Sie die Ressourcengruppe und alle Clusterressourcen mithilfe des Cmdlets [Remove-AzureRMResourceGroup](/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup).
 
@@ -259,14 +235,14 @@ Remove-AzureRmResourceGroup -Name $ResourceGroupName -Force
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Erstellen eines VNET in Azure mithilfe einer Vorlage
+> * Erstellen eines VNET in Azure mithilfe von PowerShell
 > * Erstellen eines Schlüsseltresors und Hochladen eines Zertifikats
-> * Erstellen eines sicheren Service Fabric-Clusters in Azure mithilfe einer Vorlage
+> * Erstellen eines sicheren Service Fabric-Clusters in Azure mithilfe von PowerShell
 > * Sichern des Clusters mit einem X.509-Zertifikat
 > * Herstellen einer Verbindung mit dem Cluster über PowerShell
 > * Entfernen eines Clusters
 
-Als Nächstes fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie eine vorhandene Anwendung bereitstellen.
+Als Nächstes fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie API Management mit Service Fabric bereitstellen.
 > [!div class="nextstepaction"]
 > [Bereitstellen von API Management](service-fabric-tutorial-deploy-api-management.md)
 

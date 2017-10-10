@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 09/26/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 310dcb176c2e1556af4ed0e0f50ea77c4644ec98
+ms.translationtype: HT
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 7af8fadca15e07e178f12db27fec2467f43c5d36
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Aktivieren des Geräterückschreibens
@@ -44,19 +44,27 @@ Dies bietet zusätzliche Sicherheit und die Gewissheit, dass nur vertrauenswürd
 Gehen Sie folgendermaßen vor, um die Verwendung des Geräterückschreibens vorzubereiten.
 
 1. Starten Sie auf dem Computer, auf dem Azure AD Connect installiert ist, PowerShell im erweiterten Modus.
-2. Wenn das Active Directory-PowerShell-Modul nicht installiert ist, installieren Sie es mit dem folgenden Befehl:
-   
-   `Add-WindowsFeature RSAT-AD-PowerShell`
-3. Wenn das Azure Active Directory-Modul für PowerShell nicht installiert ist, laden Sie es unter [Azure Active Directory-Modul für Windows PowerShell (64-Bit-Version)](http://go.microsoft.com/fwlink/p/?linkid=236297)herunter und installieren es. Diese Komponente weist eine Abhängigkeit von Anmelde-Assistenten auf, der mit Azure AD Connect installiert wird.
+2. Wenn das Active Directory PowerShell-Modul NICHT installiert ist, sollten Sie die Remoteserver-Verwaltungstools installieren. Sie enthalten das AD PowerShell-Modul und die Datei „dsacls.exe“, die zum Ausführen des Skripts erforderlich ist.  Führen Sie den folgenden Befehl aus:
+  
+   ``` powershell
+   Add-WindowsFeature RSAT-AD-Tools
+   ```
+
+3. Wenn das Azure Active Directory-Modul für PowerShell nicht installiert ist, laden Sie es unter [Azure Active Directory-Modul für Windows PowerShell (64-Bit-Version)](http://go.microsoft.com/fwlink/p/?linkid=236297)herunter und installieren es. Diese Komponente weist eine Abhängigkeit von Anmelde-Assistenten auf, der mit Azure AD Connect installiert wird.  
 4. Führen Sie mit Enterprise-Administratoranmeldeinformationen die folgenden Befehle aus, und beenden Sie dann PowerShell.
    
-   `Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'`
-   
-   `Initialize-ADSyncDeviceWriteback {Optional:–DomainName [name] Optional:-AdConnectorAccount [account]}`
+   ``` powershell
+   Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'
+   ```
+
+   ``` powershell
+   Initialize-ADSyncDeviceWriteback {Optional:–DomainName [name] Optional:-AdConnectorAccount [account]}
+   ```
 
 Enterprise-Administratoranmeldeinfos werden benötigt, da Änderungen an der Namespacekonfiguration erforderlich sind. Ein Domänenadministrator verfügt nicht über ausreichende Berechtigungen.
 
 ![PowerShell zum Aktivieren des Geräterückschreibens](./media/active-directory-aadconnect-feature-device-writeback/powershell.png)
+
 
 Beschreibung:
 

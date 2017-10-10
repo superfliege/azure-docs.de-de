@@ -1,5 +1,4 @@
 ---
-
 title: "Beheben von Lizenzproblemen für eine Gruppe in Azure Active Directory | Microsoft-Dokumentation"
 description: Vorgehensweise zum Identifizieren und Beheben von Lizenzzuweisungsproblemen bei Verwendung der gruppenbasierten Lizenzierung mit Azure Active Directory
 services: active-directory
@@ -17,12 +16,11 @@ ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: bfa951a897c9b383072c0d29c9a4266c163fe753
+ms.translationtype: HT
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 955efc9e6b209195935d1f7c13f96c6a42536b2a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -108,6 +106,35 @@ Sie können einer Gruppe mehr als eine Produktlizenz zuweisen. Beispielsweise k�
 Azure AD versucht, den einzelnen Benutzern alle in der Gruppe angegebenen Lizenzen zuzuweisen. Wenn Azure AD eines der Produkte nicht zuweisen kann, weil Probleme mit der Geschäftslogik vorliegen (z.B. wenn die Lizenzen nicht ausreichen oder wenn Konflikte mit anderen Diensten bestehen, die vom Benutzer aktiviert wurden), werden die anderen Lizenzen in der Gruppe auch nicht zugewiesen.
 
 Sie können die Benutzer anzeigen, für die die Zuweisung fehlgeschlagen ist, und prüfen, welche Produkte davon betroffen sind.
+
+## <a name="how-to-manage-licenses-for-products-with-prerequisites"></a>Wie werden Lizenzen für Produkte verwaltet, für die bestimmte Voraussetzungen gelten?
+
+Bei einigen Ihrer Microsoft Online-Produkte handelt es sich unter Umständen um „Add-Ons“. Hierfür muss für einen Benutzer oder eine Gruppe ein Dienstplan mit Voraussetzungen aktiviert werden, bevor diese zugewiesen werden können. Bei der gruppenbasierten Lizenzierung ist es für das System erforderlich, dass der Dienstplan mit den Voraussetzungen und der Add-On-Dienstplan in derselben Gruppe enthalten sind. Hierdurch wird sichergestellt, dass alle Benutzer, die der Gruppe hinzugefügt werden, das voll funktionsfähige Produkt erhalten können. Betrachten Sie das folgende Beispiel:
+
+*Microsoft Workplace Analytics* ist ein Add-On-Produkt. Es enthält einen einzelnen Dienstplan mit demselben Namen. Dieser Dienstplan kann einem Benutzer oder einer Gruppe nur dann zugewiesen werden, wenn auch eine der folgenden Voraussetzungen zugewiesen ist:
+- *Exchange Online (Plan 1)*
+- oder *Exchange Online (Plan 2)*
+
+Wenn wir versuchen, dieses Produkt allein einer Gruppe zuzuweisen, gibt das Portal einen Fehler zurück. Die folgenden Details werden angezeigt, wenn Sie auf die Fehlerbenachrichtigung klicken:
+
+![Gruppe mit fehlender Voraussetzung](media/active-directory-licensing-group-problem-resolution-azure-portal/group-prerequisite-required.png)
+
+Wenn Sie auf die Details klicken, wird die folgende Fehlermeldung angezeigt:
+
+*Fehler bei Lizenzvorgang. Stellen Sie sicher, dass die Gruppe die notwendigen Dienste besitzt, bevor Sie einen abhängigen Dienst hinzufügen oder entfernen. **Für den Dienst „Microsoft Workplace Analytics“ muss auch „Exchange Online (Plan 2)“ aktiviert werden.***
+
+Um diese Add-On-Lizenz einer Gruppe zuzuweisen, müssen wir sicherstellen, dass die Gruppe auch den Dienstplan mit der Voraussetzung enthält. Wir können beispielsweise eine vorhandene Gruppe aktualisieren, die bereits das vollständige Produkt *Office 365 E3* enthält, und das Add-On-Produkt hinzufügen.
+
+Es ist auch möglich, eine eigenständige Gruppe zu erstellen, die nur die mindestens erforderlichen Produkte für die Funktionsfähigkeit des Add-Ons enthält. Sie kann verwendet werden, um nur die ausgewählten Benutzer für das Add-On-Produkt zu lizenzieren. In diesem Beispiel haben wir die folgenden Produkte derselben Gruppe zugewiesen:
+- *Office 365 Enterprise E3*, wobei nur der Dienstplan *Exchange Online (Plan 2)* aktiviert ist
+- *Microsoft Workplace Analytics*
+
+![Gruppe mit enthaltener Voraussetzung](media/active-directory-licensing-group-problem-resolution-azure-portal/group-addon-with-prerequisite.png)
+
+Ab jetzt nutzen alle Benutzer, die dieser Gruppe hinzugefügt werden, eine Lizenz des E3-Produkts und eine Lizenz des Workplace Analytics-Produkts. Diese Benutzer können gleichzeitig Mitglieder einer anderen Gruppe sein, über die sie das vollständige E3-Produkt erhalten, und sie nutzen hierbei weiterhin nur eine Lizenz für das Produkt.
+
+> [!TIP]
+> Sie können für jeden Dienstplan mit Voraussetzungen mehrere Gruppen erstellen. Wenn Sie für Ihre Benutzer sowohl *Office 365 Enterprise **E1*** als auch *Office 365 Enterprise **E3*** verwenden, können Sie zwei Gruppen erstellen, um *Microsoft Workplace Analytics* zu lizenzieren: eine mit E1 als Voraussetzung und die andere mit E3. So können Sie das Add-On auf E1- und E3-Benutzer verteilen, ohne zusätzliche Lizenzen zu verbrauchen.
 
 ## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>Die Lizenzzuweisung zu einem Benutzer schlägt ohne Fehlermeldung fehl wegen doppelter Proxyadressen in Exchange Online
 

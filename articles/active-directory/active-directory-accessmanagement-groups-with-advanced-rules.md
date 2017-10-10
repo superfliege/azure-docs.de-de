@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: b136d3841243ad7aa88786f76b2d31e5dfae9079
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: f2541b906a2c3a5bbdd384476ce99cad766a6c09
 ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -239,7 +239,8 @@ Beispiel für eine Regel, die ein benutzerdefiniertes Attribut verwendet:
 
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
 
-Den Namen des benutzerdefinierten Attributs finden Sie im Verzeichnis. Fragen Sie dazu das Attribut eines Benutzers mithilfe des Graph-Explorers ab, und suchen Sie nach dem Attributnamen. Wir unterstützen derzeit keine mehrwertigen Attribute, die aus lokalem Active Directory synchronisiert werden. 
+Den Namen des benutzerdefinierten Attributs finden Sie im Verzeichnis. Fragen Sie dazu das Attribut eines Benutzers mithilfe des Graph-Explorers ab, und suchen Sie nach dem Attributnamen.
+Wir unterstützen derzeit keine mehrwertigen Attribute, die aus lokalem Active Directory synchronisiert werden.
 
 ## <a name="direct-reports-rule"></a>Mitarbeiterregel
 Sie können eine Gruppe erstellen, die alle einem Manager direkt unterstellten Mitarbeiter enthält. Wenn sich die direkt unterstellten Mitarbeiter eines Managers in der Zukunft ändern, wird die Mitgliedschaft in der Gruppe automatisch angepasst.
@@ -287,6 +288,19 @@ Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaf
 > Diese Geräteregeln können nicht mithilfe der Dropdownliste mit einfachen Regeln im klassischen Azure-Portal erstellt werden.
 >
 >
+
+## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>Ändern der dynamischen Mitgliedschaft in statisch (und umgekehrt)
+Sie können ändern, wie die Mitgliedschaft in einer Gruppe verwaltet wird. Dies ist hilfreich, wenn Sie im System den gleichen Gruppennamen und die dazugehörige ID beibehalten möchten, damit alle vorhandenen Verweise auf die Gruppe weiterhin gültig sind. Wenn eine neue Gruppe erstellt wird, müssen diese Verweise aktualisiert werden.
+
+> [!WARNING]
+> Wenn Sie eine vorhandene statische Gruppe in eine dynamische Gruppe ändern, werden alle vorhandenen Mitglieder aus der Gruppe entfernt, und anschließend wird die Mitgliedsschaftsregel verarbeitet, um neue Mitglieder hinzuzufügen. Wenn die Gruppe verwendet wird, um den Zugriff auf Apps oder Ressourcen zu steuern, haben die ursprünglichen Mitglieder unter Umständen erst wieder Zugriff, wenn die Mitgliedsschaftsregel vollständig verarbeitet wurde.
+>
+> Es ist empfehlenswert, die neue Mitgliedsschaftsregel vorher zu testen, um sicherzustellen, dass sich die neue Mitgliedschaft in der Gruppe wie erwartet verhält.
+
+1. Öffnen Sie die Gruppe im [klassischen Azure-Portal](https://manage.windowsazure.com).
+2. Wählen Sie die Registerkarte **Konfigurieren**, um den aktuellen Status der dynamischen Mitgliedschaft anzuzeigen.
+3. Sie können eine Gruppe zu einer statischen Gruppe machen, indem Sie einfach die Einstellung **Dynamische Mitgliedschaften aktivieren** auf **NEIN** festlegen. Klicken Sie in der darunter angezeigten Symbolleiste zur Bestätigung auf die Schaltfläche **Speichern**. Vorhandene Mitglieder werden in der Gruppe beibehalten, und die Mitgliedsschaftsregel wird nicht mehr verarbeitet.
+4. Sie können eine Gruppe zu einer dynamischen Gruppe machen, indem Sie die Einstellung **JA** wählen, die gewünschte Mitgliedsschaftsregel angeben und dann auf **Speichern** klicken. Vorhandene Mitglieder werden entfernt, und die neue Regel wird verarbeitet, um neue Mitglieder hinzuzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
