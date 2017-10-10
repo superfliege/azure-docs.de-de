@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 09/27/2017
 ms.author: mimig
 ms.custom: cda
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: 947920783be3e2a8cd299cdcc667456adf140b57
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: fccf0e3d8cb5d0f0adfb53a06b95aa1090451915
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -140,6 +140,24 @@ Tipp 15: Erstellen Sie ein neues Azure #CosmosDB-Konto, ohne @code zu verlassen.
 > [!VIDEO https://www.youtube.com/embed/w8HyW8AHHZQ]
 
 [![Auf Twitter retweeten](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/912384598486679557)   [![Freigabe auf LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318150514613850112)
+
+
+## <a name="tip-16-functions-and-twilio-demo"></a>Tipp 16: Demo zu Functions und Twilio
+
+Tipp 16: Großartige Demo! Integrieren Sie Azure #cosmosDB, Funktionen und @twilio, um bei jeder Datenbankänderung eine SMS zu senden. Informationen dazu finden Sie in der Dokumentation unter [https://aka.ms/Kjkc2d](https://aka.ms/Kjkc2d). 
+
+> [!VIDEO https://www.youtube.com/embed/3Q7WffTeaKY]
+
+[![Auf Twitter retweeten](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/912703755988160512)   [![Freigabe auf LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318469696291246081)
+
+
+## <a name="tip-17-using-mongoose-discriminators"></a>Tipp 17: Verwenden von Mongoose-Diskriminatoren
+
+Tipp 17: Optimieren von Kosten durch die Verwendung von Mongoose-Diskriminatoren zum Speichern mehrerer Entitäten in einer einzelnen #CosmosDB-Auflistung [https://aka.ms/M488jm](https://aka.ms/M488jm)
+
+Blog: [„Using Mongoose Discriminators to Store Multiple Entities in a Single Cosmos DB Collection“ (Verwenden von Mongoose-Diskriminatoren zum Speichern mehrerer Entitäten in einer einzelnen #CosmosDB-Auflistung) von Anthony Chu](https://aka.ms/M488jm)
+
+[![Auf Twitter retweeten](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913076502429933569)   [![Freigabe auf LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318842474928443393)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

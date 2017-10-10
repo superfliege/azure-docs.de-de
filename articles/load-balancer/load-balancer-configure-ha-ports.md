@@ -13,19 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2017
+ms.date: 09/26/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 17fee798661b7db4f9933684fceefbfed51409cd
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 7256548b988812c64ca9a9f8a84fec377646635d
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
 # <a name="how-to-configure-high-availability-ports-for-internal-load-balancer"></a>Konfigurieren von Hochverfügbarkeitsports für einen internen Lastenausgleich
 
 Dieser Artikel beinhaltet eine Beispielbereitstellung von Hochverfügbarkeitsports (High Availability, HA) auf einem internen Lastenausgleich. Für virtuelle Netzwerkgeräte spezifische Konfigurationen finden Sie auf den entsprechenden Anbieterwebsites.
+
+>[!NOTE]
+> Das Feature für Hochverfügbarkeitsports ist derzeit als Vorschauversion verfügbar. Während der Vorschauphase ist das Feature unter Umständen nicht so verfügbar und zuverlässig wie Features in Versionen mit allgemeiner Verfügbarkeit. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Abbildung 1 zeigt die folgende Konfiguration des in diesem Artikel beschriebenen Bereitstellungsbeispiels:
 - Die Netzwerkgeräte werden im Back-End-Pool eines internen Lastenausgleichs hinter der Konfiguration der Hochverfügbarkeitsports bereitgestellt. 
@@ -37,6 +40,22 @@ Abbildung 1 zeigt die folgende Konfiguration des in diesem Artikel beschriebenen
 ![Hochverfügbarkeitsports Beispielbereitstellung](./media/load-balancer-configure-ha-ports/haports.png)
 
 Abbildung 1: Netzwerkgeräte, die hinter einem internen Lastenausgleich mit Hochverfügbarkeitsports bereitgestellt sind 
+
+## <a name="preview-sign-up"></a>Registrierung für die Vorschauversion
+
+Für die Teilnahme an der Vorschau des Features für HA-Ports in der Load Balancer Standard-SKU registrieren Sie Ihr Abonnement mithilfe von PowerShell oder Azure CLI 2.0, um Zugriff zu erhalten.
+
+- Registrierung mithilfe von PowerShell
+
+   ```powershell
+   Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
+    ```
+
+- Registrierung mithilfe von Azure CLI 2.0
+
+    ```cli
+  az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network  
+    ```
 
 ## <a name="configuring-ha-ports"></a>Konfigurieren von Hochverfügbarkeitsports
 

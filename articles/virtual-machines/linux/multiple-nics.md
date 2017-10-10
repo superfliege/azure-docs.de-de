@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie mithilfe von Azure CLI 2.0 oder mithilfe von
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/11/2017
+ms.date: 09/26/2017
 ms.author: iainfou
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: ff3e3121102eedaa1f439e517570d0a97cf07c22
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 61d50f0abce0fb5c8d0b82652b488d9b79978ca8
 ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten
@@ -102,7 +102,7 @@ az vm create \
 ```
 
 ## <a name="add-a-nic-to-a-vm"></a>Hinzufügen einer Netzwerkkarte zu einem virtuellen Computer
-In den vorangegangenen Schritten wurde ein virtueller Computer mit mehreren Netzwerkkarten erstellt. Sie können mit Azure CLI 2.0 auch einem vorhandenen virtuellen Computer Netzwerkkarten hinzufügen. 
+In den vorangegangenen Schritten wurde ein virtueller Computer mit mehreren Netzwerkkarten erstellt. Sie können mit Azure CLI 2.0 auch einem vorhandenen virtuellen Computer Netzwerkkarten hinzufügen. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an. Bei Bedarf können Sie die [Größe eines virtuellen Computers ändern](change-vm-size.md).
 
 Erstellen Sie mit [az network nic create](/cli/azure/network/nic#create) eine weitere Netzwerkkarte. Das folgende Beispiel erstellt die Netzwerkkarte *myNic3*, die mit dem Back-End-Subnetz und der Netzwerksicherheitsgruppe verbunden ist, die in den vorherigen Schritten erstellt wurden:
 
@@ -149,7 +149,7 @@ Entfernen Sie die Netzwerkkarte mit [az vm nic remove](/cli/azure/vm/nic#remove)
 ```azurecli
 az vm nic remove \
     --resource-group myResourceGroup \
-    --vm-name myVM 
+    --vm-name myVM \
     --nics myNic3
 ```
 
@@ -180,25 +180,20 @@ Sie können auch `copyIndex()` verwenden und eine Zahl an einen Ressourcennamen 
 
 Ein vollständiges Beispiel finden Sie unter [Erstellen von mehreren Netzwerkkarten mithilfe von Resource Manager-Vorlagen](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
+
 ## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurieren von Gastbetriebssystem für mehrere Netzwerkadapter
+Wenn Sie einem virtuellen Linux-Computer mehrere NICs hinzufügen, müssen Sie Routingregeln erstellen. Diese Regeln ermöglichen den virtuellen Computer das Senden und Empfangen von Datenverkehr, der zu einer bestimmten NIC gehört. Andernfalls kann Datenverkehr, der beispielsweise zu *eth1* gehört, von der definierten Standardroute nicht ordnungsgemäß verarbeitet werden.
 
-Beim Erstellen mehrerer Netzwerkadapter für eine VM, die auf einem Linux-Gastbetriebssystem basiert, müssen zusätzliche Routingregeln erstellt werden, die das Senden und Empfangen ausschließlich von Datenverkehr ermöglichen, der zu einem bestimmten Netzwerkadapter gehört. Andernfalls kann der zu „eth1“ gehörende Datenverkehr aufgrund der definierten Standardroute nicht korrekt verarbeitet werden.  
-
-
-### <a name="solution"></a>Lösung
-
-Fügen Sie zunächst der Datei „/etc/iproute2/rt_tables“ zwei Routingtabellen hinzu.
+Fügen Sie zum Beheben dieses Problems */etc/iproute2/rt_tables* zuerst zwei Routingtabellen hinzu. Gehen Sie hierzu wie folgt vor:
 
 ```bash
 echo "200 eth0-rt" >> /etc/iproute2/rt_tables
 echo "201 eth1-rt" >> /etc/iproute2/rt_tables
 ```
 
-Damit die Änderung dauerhaft ist und während der Netzwerkstapelaktivierung angewendet wird, müssen die Dateien */etc/sysconfig/network-scipts/ifcfg-eth0* und */etc/sysconfig/network-scipts/ifcfg-eth1* geändert werden.
-Ändern Sie die Zeile *NM_CONTROLLED=yes* in *NM_CONTROLLED=no*.
-Ohne diesen Schritt sind die hinzugefügten zusätzlichen Regeln und das hinzugefügte zusätzliche Routing unwirksam.
+Damit die Änderung dauerhaft ist und während der Netzwerkstapelaktivierung angewendet wird, bearbeiten Sie */etc/sysconfig/network-scipts/ifcfg-eth0* und */etc/sysconfig/network-scipts/ifcfg-eth1*. Ändern Sie die Zeile *NM_CONTROLLED=yes* in *NM_CONTROLLED=no*. Ohne diesen Schritt werden die zusätzlichen Regeln/das Routing nicht automatisch angewendet.
  
-Als Nächstes werden die Routingtabellen erweitert. Damit die nächsten Schritte anschaulicher sind, setzen wir das folgende Setup voraus.
+Als Nächstes werden die Routingtabellen erweitert. Wir gehen von der folgenden Einrichtung aus:
 
 *Routing*
 
@@ -209,7 +204,7 @@ default via 10.0.1.1 dev eth0 proto static metric 100
 168.63.129.16 via 10.0.1.1 dev eth0 proto dhcp metric 100
 169.254.169.254 via 10.0.1.1 dev eth0 proto dhcp metric 100
 ```
-    
+
 *Schnittstellen*
 
 ```bash
@@ -217,37 +212,45 @@ lo: inet 127.0.0.1/8 scope host lo
 eth0: inet 10.0.1.4/24 brd 10.0.1.255 scope global eth0    
 eth1: inet 10.0.1.5/24 brd 10.0.1.255 scope global eth1
 ```
-    
-    
-Mit den obigen Informationen können die folgenden zusätzlichen Dateien als Stamm erstellt werden.
 
-*   /etc/sysconfig/network-scripts/rule-eth0
-*   /etc/sysconfig/network-scripts/route-eth0
-*   /etc/sysconfig/network-scripts/rule-eth1
-*   /etc/sysconfig/network-scripts/route-eth1
+Sie würden dann die folgenden Dateien erstellen und ihnen jeweils die entsprechenden Regeln und Routen hinzufügen:
 
-Der Inhalt der einzelnen Dateien lautet wie folgt:
+- */etc/sysconfig/network-scripts/rule-eth0*
+
+    ```bash
+    from 10.0.1.4/32 table eth0-rt
+    to 10.0.1.4/32 table eth0-rt
+    ```
+
+- */etc/sysconfig/network-scripts/route-eth0*
+
+    ```bash
+    10.0.1.0/24 dev eth0 table eth0-rt
+    default via 10.0.1.1 dev eth0 table eth0-rt
+    ```
+
+- */etc/sysconfig/network-scripts/rule-eth1*
+
+    ```bash
+    from 10.0.1.5/32 table eth1-rt
+    to 10.0.1.5/32 table eth1-rt
+    ```
+
+- */etc/sysconfig/network-scripts/route-eth1*
+
+    ```bash
+    10.0.1.0/24 dev eth1 table eth1-rt
+    default via 10.0.1.1 dev eth1 table eth1-rt
+    ```
+
+Zum Übernehmen der Änderungen starten Sie den *Netzwerkdienst* wie folgt neu:
+
 ```bash
-cat /etc/sysconfig/network-scripts/rule-eth0
-from 10.0.1.4/32 table eth0-rt
-to 10.0.1.4/32 table eth0-rt
-
-cat /etc/sysconfig/network-scripts/route-eth0
-10.0.1.0/24 dev eth0 table eth0-rt
-default via 10.0.1.1 dev eth0 table eth0-rt
-
-cat /etc/sysconfig/network-scripts/rule-eth1
-from 10.0.1.5/32 table eth1-rt
-to 10.0.1.5/32 table eth1-rt
-
-cat /etc/sysconfig/network-scripts/route-eth1
-10.0.1.0/24 dev eth1 table eth1-rt
-default via 10.0.1.1 dev eth1 table eth1-rt
+systemctl restart network
 ```
 
-Nachdem die Dateien erstellt und gefüllt worden sind, muss der Netzwerkdienst neu gestartet werden (`systemctl restart network`).
+Die Routingregeln sind jetzt ordnungsgemäß eingerichtet, und Sie können je nach Bedarf mit beiden Schnittstellen eine Verbindung herstellen.
 
-Das Herstellen einer Verbindung von außen mit „eth0“ oder „eth1“ ist jetzt möglich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die [Linux-VM-Größen](sizes.md), wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird. 

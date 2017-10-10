@@ -13,19 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2017
+ms.date: 09/26/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 2e41c70b982b97c6aab7b6c0322c193c61370a26
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 2219aeb725b207fd92ff3e7603d7ee9c78f2844c
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
-# <a name="high-availability-ports-overview"></a>Übersicht über Hochverfügbarkeitsports
+# <a name="high-availability-ports-overview-preview"></a>Übersicht über Hochverfügbarkeitsports (Vorschauversion)
 
 Die Standard-SKU von Azure Load Balancer enthält Hochverfügbarkeitsports (High Availability, HA) – eine Funktion, mit der der Datenverkehr von allen Ports und für alle unterstützten Protokolle verteilt werden kann. Beim Konfigurieren eines internen Load Balancers können Benutzer eine Regel für Hochverfügbarkeitsports konfigurieren, die die Front-End- und Back-End-Ports auf **0** und die Protokolle auf **all** festlegt. So kann der gesamte Datenverkehr den internen Load Balancer passieren.
+
+>[!NOTE]
+> Das Feature für Hochverfügbarkeitsports ist derzeit als Vorschauversion verfügbar. Während der Vorschauphase ist das Feature unter Umständen nicht so verfügbar und zuverlässig wie Features in Versionen mit allgemeiner Verfügbarkeit. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Der Algorithmus für den Lastenausgleich bleibt unverändert, und das Ziel wird auf Grundlage des 5-Tupels <IP-Quelladresse, Quellport, IP-Zieladresse, Zielport, Protokoll> ausgewählt. Diese Konfiguration ermöglicht es einer einzelnen Lastenausgleichsregel, den gesamten verfügbaren Datenverkehr zu verarbeiten. Außerdem werden die Komplexität der Konfiguration und die Beschränkungen reduziert, die durch die maximale Anzahl von hinzufügbaren Lastenausgleichsregeln festgelegt werden können.
 
@@ -43,6 +46,32 @@ Im folgenden Beispiel wird eine Hub-and-Spoke-Bereitstellung eines virtuellen Ne
 
 Abbildung 1: Ein virtuelles Hub-and-Spoke-Netzwerk mit NVAs, die im Hochverfügbarkeitsmodus bereitgestellt wurden
 
+
+## <a name="region-availability"></a>Regionale Verfügbarkeit
+
+Die Funktion für HA-Ports ist derzeit in den folgenden Regionen verfügbar:
+- USA (Ost) 2
+- USA (Mitte)
+- Nordeuropa
+- USA, Westen-Mitte
+- Europa, Westen
+- Asien, Südosten 
+
+## <a name="preview-sign-up"></a>Registrierung für die Vorschauversion
+
+Für die Teilnahme an der Vorschau des Features für HA-Ports in der Load Balancer Standard-SKU registrieren Sie Ihr Abonnement mithilfe von PowerShell oder Azure CLI 2.0, um Zugriff zu erhalten.
+
+- Registrierung mithilfe von PowerShell
+
+    ```powershell
+    Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
+    ```
+
+- Registrierung mithilfe von Azure CLI 2.0
+
+    ```cli
+    az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network 
+    ```
 ## <a name="caveats"></a>Einschränkungen
 
 Hier finden Sie die unterstützten Konfigurationen oder Ausnahmen für Hochverfügbarkeitsports:

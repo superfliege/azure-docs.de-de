@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 09/05/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 601cfb136530d2595cded0dd147703d6b272c3ce
+ms.sourcegitcommit: d07d5d59632791a52bcb3a2f54bebe194cc76a54
+ms.openlocfilehash: 44eaaae123490934bc62b4ea30968656900d48fc
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 10/04/2017
 
 ---
 
@@ -64,7 +64,7 @@ Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Erstellen I
 >
 
 ### <a name="deploy-the-application-manifests"></a>Bereitstellen der Anwendungsmanifeste 
-Installieren der Service Fabric-Befehlszeile (sfctl) in Ihrer CLI-Umgebung
+Installieren der [Service Fabric-Befehlszeilenschnittstelle (sfctl)](service-fabric-cli.md) in Ihrer CLI-Umgebung
 
 ```azurecli-interactive
 pip3 install --user sfctl 
@@ -82,7 +82,7 @@ Verwenden Sie das bereitgestellte Installationsskript, um die Definition der Abs
 ./install.sh
 ```
 
-Öffnen Sie einen Browser, und navigieren Sie zum Service Fabric Explorer unter „http://\<my-azure-service-fabric-cluster-url>:80“, z.B. `http://linh1x87d1d.westus.cloudapp.azure.com:80`. Erweitern Sie den Knoten „Anwendungen“, um zu prüfen, ob nun ein Eintrag für den Abstimmungsanwendungstyp und die von Ihnen erstellte Instanz vorhanden ist.
+Öffnen Sie einen Browser, und navigieren Sie zum Service Fabric Explorer unter http://\<URL meines Azure Service Fabric-Clusters>:19080/Explorer, z.B. `http://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`. Erweitern Sie den Knoten „Anwendungen“, um zu prüfen, ob nun ein Eintrag für den Abstimmungsanwendungstyp und die von Ihnen erstellte Instanz vorhanden ist.
 
 ![Service Fabric Explorer][sfx]
 
@@ -95,7 +95,7 @@ Mit Service Fabric wird sichergestellt, dass Ihre Containerinstanzen automatisch
 
 Führen Sie die folgenden Schritte aus, um für den Front-End-Container ein Failover durchzuführen:
 
-1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://linh1x87d1d.westus.cloudapp.azure.com:19080`.
+1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`.
 2. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront**, und erweitern Sie den Partitionsknoten (durch eine GUID dargestellt). Beachten Sie den Knotennamen in der Strukturansicht. Hier werden die Knoten angezeigt, auf denen der Container derzeit ausgeführt wird, z.B. `_nodetype_4`.
 3. Erweitern Sie in der Strukturansicht den Knoten **Knoten**. Klicken Sie auf die Auslassungspunkte (drei Punkte) neben dem Knoten, auf dem der Container ausgeführt wird.
 4. Wählen Sie **Neu starten**, um den Knoten neu zu starten, und bestätigen Sie die Neustartaktion. Der Neustart bewirkt, dass für den Container ein Failover auf einen anderen Knoten im Cluster durchgeführt wird.

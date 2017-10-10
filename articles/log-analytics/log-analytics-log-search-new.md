@@ -1,5 +1,5 @@
 ---
-title: Protokollsuchen in OMS Log Analytics | Microsoft-Dokumentation
+title: Protokollsuchen in Azure Log Analytics | Microsoft-Dokumentation
 description: "Sie benötigen eine Protokollsuche zum Abrufen von Daten aus Log Analytics.  In diesem Artikel wird beschrieben, wie neue Protokollsuchen in Log Analytics verwendet werden. Er enthält Konzepte, die Ihnen vor dem Erstellen bekannt sein sollten."
 services: log-analytics
 documentationcenter: 
@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 09/26/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 34f4af31773097eafe2613eb7f3400655c387a84
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: db271f5157fee29a5cc0c4534768bdb3c769ba74
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>Grundlegendes zu Protokollsuchvorgängen in Log Analytics
@@ -33,9 +33,9 @@ Sie benötigen eine Protokollsuche zum Abrufen von Daten aus Log Analytics.  Wen
 
 Zu den verschiedenen Möglichkeiten, wie Sie Protokollsuchen in Log Analytics verwenden können, gehören die folgenden:
 
-- **Portale.** Sie können interaktive Analysen von Daten im Repository über das [Protokollsuchportal](log-analytics-log-search-log-search-portal.md) oder das [Advanced Analytics-Portal](https://go.microsoft.com/fwlink/?linkid=856587) durchführen.  Dadurch können Sie Ihre Abfrage bearbeiten und die Ergebnisse in einer Vielzahl von Formaten und Visualisierungen analysieren.  Die meisten Abfragen, die Sie erstellen, beginnen in einem der Portale und werden anschließend kopiert, nachdem Sie sich vergewissert haben, dass sie erwartungsgemäß funktionieren.
+- **Portale.** Sie können interaktive Analysen von Daten im Repository über das Azure-Portal oder das [Advanced Analytics-Portal](https://go.microsoft.com/fwlink/?linkid=856587) durchführen.  Dadurch können Sie Ihre Abfrage bearbeiten und die Ergebnisse in einer Vielzahl von Formaten und Visualisierungen analysieren.  Die meisten Abfragen, die Sie erstellen, beginnen in einem der Portale und werden anschließend kopiert, nachdem Sie sich vergewissert haben, dass sie erwartungsgemäß funktionieren.
 - **Warnungsregeln.** [Warnungsregeln](log-analytics-alerts.md) identifizieren proaktiv Probleme durch die Daten in Ihrem Arbeitsbereich.  Jede Warnungsregel basiert auf einer Protokollsuche, die in regelmäßigen Abständen automatisch ausgeführt wird.  Die Ergebnisse werden überprüft, um zu ermitteln, ob eine Warnung erstellt werden soll.
-- **Ansichten.**  Sie können mit [Ansicht-Designer](log-analytics-view-designer.md) Visualisierungen von Daten erstellen, die in Benutzerdashboards einbezogen werden sollen.  Protokollsuchen stellen die von [Kacheln](log-analytics-view-designer-tiles.md) und [Visualisierungsteilen](log-analytics-view-designer-parts.md) in jeder Ansicht verwendeten Daten bereit.  Sie können von den Visualisierungsteilen einen Drilldown in das Protokollsuchportal ausführen, um die Daten weitergehend zu analysieren.
+- **Ansichten.**  Sie können mit [Ansicht-Designer](log-analytics-view-designer.md) Visualisierungen von Daten erstellen, die in Benutzerdashboards einbezogen werden sollen.  Protokollsuchen stellen die von [Kacheln](log-analytics-view-designer-tiles.md) und [Visualisierungsteilen](log-analytics-view-designer-parts.md) in jeder Ansicht verwendeten Daten bereit.  Sie können von den Visualisierungsteilen einen Drilldown in die Protokollsuchseite ausführen, um die Daten weiter zu analysieren.
 - **Export:**  Wenn Sie Daten vom Log Analytics-Arbeitsbereich nach Excel oder [Power BI](log-analytics-powerbi.md) exportieren, erstellen Sie eine Protokollsuche, um die zu exportierenden Daten zu definieren.
 - **PowerShell.** Sie können ein PowerShell-Skript über eine Befehlszeile oder ein Azure Automation-Runbook ausführen, das Daten mithilfe von [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) von Log Analytics abruft.  Dieses Cmdlet erfordert eine Abfrage, um die abzurufenden Daten festzulegen.
 - **Log Analytics-API.**  Die [Log Analytics-Protokollsuch-API](log-analytics-log-search-api.md) ermöglicht einem beliebigen REST-API-Client, Daten aus einem Arbeitsbereich abzurufen.  Die API-Anforderung enthält eine Abfrage, die für Log Analytics ausgeführt wird, um die abzurufenden Daten zu ermitteln.
@@ -43,7 +43,7 @@ Zu den verschiedenen Möglichkeiten, wie Sie Protokollsuchen in Log Analytics ve
 ![Protokollsuchvorgänge](media/log-analytics-log-search-new/log-search-overview.png)
 
 ## <a name="how-log-analytics-data-is-organized"></a>Aufbau von Log Analytics-Daten
-Wenn Sie eine Abfrage erstellen, legen Sie zuerst fest, welche Tabellen die gesuchten Daten aufweisen. Jede [Datenquelle](log-analytics-data-sources.md) und [Lösung](../operations-management-suite/operations-management-suite-solutions.md) speichert ihre Daten in dedizierten Tabellen im Log Analytics-Arbeitsbereich.  Die Dokumentation für jede Datenquelle und Lösung enthält den Namen des Datentyps, die sie erstellt, und eine Beschreibung ihrer einzelnen Eigenschaften.     Für viele Abfragen werden nur Daten aus einer einzelnen Tabellen benötigt, andere greifen jedoch möglicherweise verschiedene Optionen zurück, um Daten aus mehreren Tabellen einzuschließen.
+Wenn Sie eine Abfrage erstellen, legen Sie zuerst fest, welche Tabellen die gesuchten Daten aufweisen. Jede [Datenquelle](log-analytics-data-sources.md) und [Lösung](../operations-management-suite/operations-management-suite-solutions.md) speichert ihre Daten in dedizierten Tabellen im Log Analytics-Arbeitsbereich.  Die Dokumentation für jede Datenquelle und Lösung enthält den Namen des Datentyps, die sie erstellt, und eine Beschreibung ihrer einzelnen Eigenschaften.  Für viele Abfragen werden nur Daten aus einer einzelnen Tabellen benötigt, andere greifen jedoch möglicherweise verschiedene Optionen zurück, um Daten aus mehreren Tabellen einzuschließen.
 
 ![Tabellen](media/log-analytics-log-search-new/queries-tables.png)
 
@@ -90,5 +90,5 @@ Eine vollständige Dokumentation der Azure Log Analytics-Abfragesprache, einschl
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die [Portale, die Sie zum Erstellen und Bearbeiten von Protokollsuchen verwenden](log-analytics-log-search-portals.md).
-- Sehen Sie sich ein [Tutorial zum Schreiben von Abfragen](https://go.microsoft.com/fwlink/?linkid=856078) mit der neuen Abfragesprache an.
+- Sehen Sie sich ein [Tutorial zum Schreiben von Abfragen](log-analytics-tutorial-viewdata.md) mit der neuen Abfragesprache an.
 

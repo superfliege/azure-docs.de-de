@@ -16,17 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 2b55341a9d5107376557147913f4fb6cb3966bae
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 5c599b4cc867dbc9a081af3a081195b998f63954
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Verwalten des Azure DDoS-Schutzstandards mithilfe des Azure-Portals
 
 >[!IMPORTANT]
->Der Azure DDoS-Schutzstandard (DDoS-Schutz) befindet sich derzeit in der Vorschauversion. Der DDoS-Schutz wird von einer begrenzten Anzahl von Azure-Ressourcen und in ausgewählten Regionen unterstützt. Sie müssen sich während der eingeschränkten Vorschau [für den Dienst registrieren](http://aka.ms/ddosprotection), um den DDoS-Schutz für Ihr Abonnement zu aktivieren. Nach der Registrierung setzt sich das DDoS-Team von Azure mit Ihnen in Verbindung, um Sie durch den Aktivierungsprozess zu leiten. Der DDoS-Schutz ist in den Regionen „USA, Osten“, „USA, Westen“ und „USA, Mitte“ verfügbar. Während der Vorschauphase entstehen für Sie für die Nutzung des Diensts keine Kosten.
+>Der Azure DDoS-Schutzstandard (DDoS-Schutz) befindet sich derzeit in der Vorschauversion. Der DDoS-Schutz wird von einer begrenzten Anzahl von Azure-Ressourcen und in ausgewählten Regionen unterstützt. Sie müssen sich während der eingeschränkten Vorschau [für den Dienst registrieren](http://aka.ms/ddosprotection), um den DDoS-Schutz für Ihr Abonnement zu aktivieren. Nach der Registrierung setzt sich das DDoS-Team von Azure mit Ihnen in Verbindung, um Sie durch den Aktivierungsprozess zu leiten. Der DDoS-Schutz ist in den Regionen „USA, Osten“, „USA, Westen“ und „USA, Westen-Mitte“ verfügbar. Während der Vorschauphase entstehen für Sie für die Nutzung des Diensts keine Kosten.
 
 In diesem Artikel erfahren Sie, wie Sie das Azure-Portal für die Aktivierung und Deaktivierung des DDoS-Schutzes und für die Nutzung der Telemetrie zur Entschärfung eines Angriffs verwenden. 
 

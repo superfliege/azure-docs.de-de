@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 09/27/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: 95f14f2b77565b53c6e270f6afbf9873cdac606a
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 4abfdcc0a50c229555088dff0ac2c00c15f49218
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Erstellen und Installieren von VPN-Clientkonfigurationsdateien für P2S-Konfigurationen mit nativer Azure-Zertifikatauthentifizierung
@@ -27,7 +27,7 @@ ms.lasthandoff: 09/25/2017
 VPN-Clientkonfigurationsdateien sind in einer ZIP-Datei enthalten. Konfigurationsdateien enthalten die Einstellungen, die zum Herstellen von P2S-Verbindungen mit nativer Azure-Zertifikatauthentifizierung zwischen einem nativen Windows- oder Mac-IKEv2-VPN-Client und einem VNET erforderlich sind.
 
 >[!NOTE]
->IKEv2 für P2S befindet sich derzeit in der Vorschauversion.
+>IKEv2 für P2S befindet sich derzeit in der Vorschauphase.
 >
 
 ### <a name="workflow"></a>P2S-Workflow
@@ -45,26 +45,29 @@ VPN-Clientkonfigurationsdateien sind in einer ZIP-Datei enthalten. Konfiguration
 
 Stellen Sie zunächst sicher, dass für alle Benutzer, die eine Verbindung herstellen, ein gültiges Zertifikat auf den Benutzergeräten installiert ist. Weitere Informationen zum Installieren eines Clientzertifikats finden Sie unter [Install a client certificate for Point-to-Site Azure certificate authentication connections](point-to-site-how-to-vpn-client-install-azure-cert.md) (Installieren eines Clientzertifikats für Verbindungen für die P2S-Azure-Zertifikatauthentifizierung).
 
+Sie können Clientkonfigurationsdateien mithilfe von PowerShell oder mithilfe des Azure-Portals erstellen. Mit beiden Methoden wird die gleiche ZIP-Datei zurückgegeben. Entzippen Sie die Datei, um die folgenden Ordner anzuzeigen:
+
+  * **WindowsAmd64** und **WindowsX86**. Diese Ordner enthalten das Windows-32-Bit- bzw. das 64-Bit-Installer-Paket. Das Installer-Paket **WindowsAmd64** gilt nicht nur für Amd, sondern für alle unterstützten 64-Bit-Windows-Clients.
+  * **Allgemein**: Dieser Ordner enthält allgemeine Informationen zum Erstellen Ihrer eigenen VPN-Clientkonfiguration. Ignorieren Sie diesen Ordner. Der Ordner „Allgemein“ wird bereitgestellt, wenn für das Gateway IKEv2 oder SSTP und IKEv2 konfiguriert wurde. Wenn nur SSTP konfiguriert ist, ist der Ordner „Allgemein“ nicht vorhanden.
+
+### <a name="zipportal"></a>Erstellen von Dateien über das Azure-Portal
+
+1. Navigieren Sie im Azure-Portal zum Gateway für das virtuelle Netzwerk, mit dem Sie eine Verbindung herstellen möchten.
+2. Klicken Sie auf der Seite mit dem Gateway für virtuelle Netzwerke auf **Point-to-Site-Konfiguration**.
+3. Klicken Sie oben auf der Seite „Point-to-Site-Konfiguration“ auf **VPN-Client herunterladen**. Es dauert einige Minuten, bis das Clientkonfigurationspaket generiert wird.
+4. In Ihrem Browser wird ein Hinweis angezeigt, dass eine Clientkonfigurationsdatei im ZIP-Format verfügbar ist. Sie hat den gleichen Namen wie das Gateway. Entzippen Sie die Datei, um die Ordner anzuzeigen.
+
+### <a name="zipps"></a>Generieren von Dateien mithilfe von PowerShell
+
 1. Beim Generieren von VPN-Clientkonfigurationsdateien ist für „-AuthenticationMethod“ der Wert „EapTls“ angegeben. Erstellen Sie die VPN-Clientkonfigurationsdateien mit dem folgenden Befehl:
 
   ```powershell
-  New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW" -AuthenticationMethod "EapTls"
+  $profile=New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls"
+
+  $profile.VPNProfileSASUrl
   ```
-2. Der vorherige Befehl gibt einen Link zurück, über den Sie die Clientkonfigurationsdateien herunterladen. Kopieren Sie den Link, und fügen Sie ihn in einen Webbrowser ein, um die Datei „VpnClientConfiguration.zip“ herunterzuladen. Entzippen Sie die Datei, um die folgenden Ordner anzuzeigen:
+2. Kopieren Sie die URL in Ihren Browser, um die ZIP-Datei herunterzuladen. Entzippen Sie dann die Datei, um die Ordner anzuzeigen.
 
-  * **WindowsAmd64** und **WindowsX86**. Diese Ordner enthalten das Windows-32-Bit- bzw. das 64-Bit-Installer-Paket. Das Installer-Paket **WindowsAmd64** gilt nicht nur für Amd, sondern für alle unterstützten 64-Bit-Windows-Clients.
-  * **Allgemein**: Dieser Ordner enthält allgemeine Informationen zum Erstellen Ihrer eigenen VPN-Clientkonfiguration. Ignorieren Sie diesen Ordner. Der Ordner „Allgemein“ wird nur bereitgestellt, wenn für das Gateway IKEv2 oder SSTP und IKEv2 konfiguriert wurde. Wenn nur SSTP konfiguriert ist, ist der Ordner „Allgemein“ nicht vorhanden.
-
-### <a name="to-retrieve-client-configuration-files"></a>So rufen Sie die Clientkonfigurationsdateien ab
-
-Wenn Sie die Clientkonfigurationsdateien bereits erstellt haben und sie nur abrufen müssen, können Sie das Cmdlet „Get-AzureRmVpnClientConfiguration“ verwenden. Das Cmdlet „Get-AzureRmVpnClientConfiguration“ gibt eine URL (Link) zurück, über die Sie die Datei „VpnClientConfiguration.zip“ herunterladen können. Wenn Sie Änderungen an der P2S-VPN-Konfiguration (beispielsweise am VPN-Protokolltyp oder -Authentifizierungstyp) vorgenommen haben, wird die Konfiguration nicht automatisch aktualisiert. Sie müssen stattdessen das Cmdlet „New-AzureRmVpnClientConfiguration“ ausführen, um die Konfiguration neu zu erstellen.
-
-Um zuvor generierte Clientkonfigurationsdateien abzurufen, verwenden Sie das folgende Beispiel:
-
-```powershell
-Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW"
-```
- 
 ## <a name="installwin"></a>Installieren eines Windows-VPN-Clientkonfigurationspakets
 
 Sie können auf jedem Windows-Clientcomputer das gleiche VPN-Clientkonfigurationspaket verwenden – vorausgesetzt, es handelt sich dabei um die passende Version für die Architektur des jeweiligen Clients. Die Liste mit den unterstützten Clientbetriebssystemen finden Sie im Abschnitt [Point-to-Site-Verbindungen](vpn-gateway-vpn-faq.md#P2S) der häufig gestellten Fragen zu VPN Gateway.
@@ -77,7 +80,7 @@ Führen Sie die folgenden Schritte aus, um den nativen Windows-VPN-Client für d
 
 ## <a name="installmac"></a>Installieren einer Mac-VPN-Clientkonfiguration (OSX)
 
-Für jedes Mac-Gerät, das eine Verbindung mit dem Azure-VNET herstellt, muss eine separate VPN-Clientkonfiguration erstellt werden. Sie können die gleichen Konfigurationsdateien für mehrere Mac-Geräte verwenden. Das liegt daran, dass für diese Geräte das Benutzerzertifikat in den VPN-Clientkonfigurationsdateien angegeben werden muss. Der Ordner **Allgemein** enthält alle zum Erstellen einer VPN-Clientkonfiguration notwendigen Informationen. Der Ordner „Allgemein“ enthält die folgenden Dateien:
+Für jedes Mac-Gerät, das eine Verbindung mit dem Azure-VNET herstellt, muss eine separate VPN-Clientkonfiguration erstellt werden. Sie können die gleichen Konfigurationsdateien für mehrere Mac-Geräte verwenden. Das liegt daran, dass für diese Geräte das Benutzerzertifikat in den VPN-Clientkonfigurationsdateien angegeben werden muss. Der Ordner **Allgemein** enthält alle zum Erstellen einer VPN-Clientkonfiguration notwendigen Informationen. Enthält der Download nicht den Ordner „Allgemein“, wurde als Tunneltyp wahrscheinlich nicht IKEv2 ausgewählt. Wählen Sie IKEv2 aus, und generieren Sie anschließend die ZIP-Datei erneut, um den Ordner „Allgemein“ abzurufen. Der Ordner „Allgemein“ enthält die folgenden Dateien:
 
 * **VpnSettings.xml**. Diese Datei enthält wichtige Einstellungen wie Serveradresse und Tunneltyp. 
 * **VpnServerRoot.cer**. Diese Datei enthält das Stammzertifikat, das zum Überprüfen des Azure-VPN-Gateways während der P2S-Verbindungseinrichtung erforderlich ist.
@@ -105,7 +108,7 @@ Klicken Sie zum Importieren auf **Hinzufügen**.
 6. Unter **Choose An Identity** (Identität auswählen) wird eine Liste mit Zertifikaten zur Auswahl angezeigt. Wählen Sie das richtige Zertifikat aus, und klicken Sie auf **Weiter**.
 
   ![Identität](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
-7. Geben Sie im Feld **Local ID** (Lokale ID) den Namen des Zertifikats (aus Schritt 5) ein. In diesem Beispiel lautet er „ikev2Client.com“. Klicken Sie auf die Schaltfläche **Übernehmen**, um die Änderungen zu speichern.
+7. Geben Sie im Feld **Local ID** (Lokale ID) den Namen des Zertifikats (aus Schritt 6) ein. In diesem Beispiel lautet er „ikev2Client.com“. Klicken Sie auf die Schaltfläche **Übernehmen**, um die Änderungen zu speichern.
 
   ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 8. Klicken Sie im Dialogfeld **Netzwerk** auf **Übernehmen**, um alle Änderungen zu speichern. Klicken Sie auf **Verbinden**, um die P2S-Verbindung mit dem Azure-VNET zu starten.
@@ -113,3 +116,4 @@ Klicken Sie zum Importieren auf **Hinzufügen**.
 ## <a name="next-steps"></a>Nächste Schritte
 
 Rufen Sie erneut den Artikel zum [Abschließen Ihrer P2S-Konfiguration](vpn-gateway-howto-point-to-site-rm-ps.md) auf.
+

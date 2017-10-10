@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2017
 ms.author: nepeters
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: a6f417ea6575b81258998ae3b31c10e9df59b603
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 45b3e2a493fd6fab54f193f8ea9bbeae1d7470ac
 ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
@@ -32,7 +32,7 @@ In diesem Dokument erfahren Sie, wie Sie die benutzerdefinierte Skripterweiterun
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die benutzerdefinierte Skripterweiterung für Windows ist für Windows Server 2008 R2, 2012, 2012 R2 und 2016 geeignet.
+Die benutzerdefinierte Skripterweiterung für Windows ist für Windows 10-Client, Windows Server 2008 R2, 2012, 2012 R2 und 2016 geeignet.
 
 ### <a name="script-location"></a>Speicherort des Skripts
 
@@ -49,7 +49,7 @@ Der folgende JSON-Code zeigt das Schema für die benutzerdefinierte Skripterweit
 ```json
 {
     "apiVersion": "2015-06-15",
-    "type": "extensions",
+    "type": "Microsoft.Compute/virtualMachines/extensions",
     "name": "config-app",
     "location": "[resourceGroup().location]",
     "dependsOn": [

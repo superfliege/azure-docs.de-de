@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/18/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: f22bd42302b96118dba0d4e5e387c6798a0b8777
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 45953b4512cb2f602edbd837e62b9344c4211d03
 ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights 
@@ -87,9 +87,9 @@ Dieses Szenario führt eine besondere Leistungsindikatorerfassung zusammen mit e
 | IOPS         | Datenanforderungen/s             |
 |              | Leseanforderungen/s             |
 |              | Schreibanforderungen/s            |
-| Latenz      | Durchschn. s/Datenanforderung         |
-|              | Durchschn. s/Lesen                 |
-|              | Durchschn. s/Schreiben                |
+| Latenz      | Durchschn. Sek./Datenanforderung         |
+|              | Durchschn. Sek./Lesevorgang                 |
+|              | Durchschn. Sek./Schreibvorgang                |
 | E/A-Größe      | Durchschn. Bytes/Datenanforderung       |
 |              | Durchschn. Bytes/Lesen               |
 |              | Durchschn. Bytes/Schreiben              |
@@ -110,7 +110,7 @@ Wenn Sie eine benutzerdefinierte Konfiguration ausführen, führen Sie alle Abla
 
 ## <a name="what-kind-of-information-is-collected-by-the-script"></a>Welche Informationen werden vom Skript gesammelt?
 
-Informationen zu Windows-VM, Datenträger- oder Speicherpoolskonfiguration, Leistungsindikatoren, Protokollen und verschiedenen Ablaufverfolgungen werden je nach verwendetem Leistungsszenario erfasst:
+Informationen zu Windows-VM, Datenträger- oder Speicherpoolkonfiguration, Leistungsindikatoren, Protokollen und verschiedenen Ablaufverfolgungen werden je nach verwendetem Leistungsszenario erfasst:
 
 |Gesammelte Daten                              |  |  | Leistungsszenarien |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
@@ -299,7 +299,7 @@ Der Abschnitt **Übersicht** zeigt unterschiedliche Ansichten der Speicherkonfig
 
 Die Abschnitte **DiskMap** und **VolumeMap** beschreiben aus jeweiliger Perspektive, wie logische Volumes und physische Datenträger miteinander verknüpft werden.
 
-In der Perspektive PhysicalDisk (DiskMap) zeigt die Tabelle alle logischen Volumes, die auf dem Datenträger ausgeführt werden. Im folgenden Beispiel führt PhysicalDrive2 2 logische Volumes aus, die auf mehreren Partitionen („J“ und „H“) erstellt werden:
+In der Perspektive PhysicalDisk (DiskMap) zeigt die Tabelle alle logischen Volumes, die auf dem Datenträger ausgeführt werden. Im folgenden Beispiel führt PhysicalDrive2 zwei logische Volumes aus, die auf mehreren Partitionen („J“ und „H“) erstellt werden:
 
 ![Registerkarte „Daten“](media/how-to-use-perfInsights/disktab.png)
 
@@ -309,7 +309,7 @@ In der Volume-Perspektive (*VolumeMap*) zeigen die Tabellen alle physischen Date
 
 ### <a name="sql-server-tab"></a>Registerkarte „SQL Server“
 
-Wenn die Ziel-VM SQL Server-Instanzen hostet, sehen Sie im Bericht eine zusätzliche Registerkarte mit dem Namen **SQL Server**:
+Wenn der virtuelle Zielcomputer SQL Server-Instanzen hostet, sehen Sie im Bericht eine zusätzliche Registerkarte mit dem Namen **SQL Server**:
 
 ![Registerkarte „SQL“](media/how-to-use-perfInsights/sqltab.png)
 

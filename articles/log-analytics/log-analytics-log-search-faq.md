@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 09/26/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 85d4f9bc11de18f171b923b4ae55950fb0a360c0
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 0ced7a128003402f74b847cc71e1c3ed21982651
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
@@ -58,6 +58,18 @@ Sie können den das Tool zum Konvertieren der Sprache auf der Seite der Protokol
 
 ### <a name="question-why-are-my-query-results-not-sorted"></a>Frage: Warum sind meine Abfrageergebnisse nicht sortiert?
 Ergebnisse werden in der neuen Abfragesprache standardmäßig nicht sortiert.  Verwenden Sie den [sort-Operator](https://go.microsoft.com/fwlink/?linkid=856079), um die Ergebnisse nach einer oder mehreren Eigenschaften zu sortieren.
+
+### <a name="question-where-did-minify-go-after-i-upgraded"></a>Frage: Wo befindet sich „Minimieren“ nach dem Upgrade?
+„Minimieren“ ist ein Feature, mit dem eine Übersicht über Ihre Suchergebnisse angezeigt werden kann.  Nach dem Upgrade wird die Option „Minimieren“ nicht mehr im Portal für die Protokollsuche angezeigt.  Eine ähnliche Funktionalität erhalten Sie mit der neuen Suchsprache unter Verwendung von [reduce](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/reduce-operator) oder [autocluster_v2](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/evaluate-operator/autocluster). 
+
+    Event
+    | where TimeGenerated > ago(10h)
+    | reduce by RenderedDescription
+
+    Event
+    | where TimeGenerated > ago(10h)
+    | evaluate autocluster_v2()
+
 
 ### <a name="known-issue-search-results-in-a-list-may-include-properties-with-no-data"></a>Bekanntes Problem: Suchergebnisse in einer Liste können Eigenschaften ohne Daten enthalten.
 In den Suchergebnissen in einer Liste können Eigenschaften ohne Daten angezeigt werden.  Vor dem Upgrade wären solche Eigenschaften nicht enthalten gewesen.  Dieses Problem wird behoben, damit leere Eigenschaften nicht angezeigt werden.
@@ -124,9 +136,6 @@ Alle Lösungen bleiben in einem aktualisierten Arbeitsbereich weiterhin funktion
 
 ### <a name="known-issue-capacity-and-performance-solution"></a>Bekanntes Problem: Lösung „Kapazität und Leistung“
 Einige der Teile in der Ansicht [Kapazität und Leistung](log-analytics-capacity.md) sind eventuell leer.  Eine Korrektur für dieses Problem wird in Kürze verfügbar sein.
-
-### <a name="known-issue-device-health-solution"></a>Bekanntes Problem: Lösung „Integrität für Geräte“
-Die Lösung [Integrität für Geräte](https://docs.microsoft.com/windows/deployment/update/device-health-monitor) sammelt in einem aktualisierten Arbeitsbereich keine Daten.  Eine Korrektur für dieses Problem wird in Kürze verfügbar sein.
 
 ### <a name="known-issue-application-insights-connector"></a>Bekanntes Problem: Application Insights-Connector
 In einem aktualisierten Arbeitsbereich werden Perspektiven in der Lösung [Application Insights-Connector](log-analytics-app-insights-connector.md) derzeit nicht unterstützt.  Eine Korrektur für dieses Problem wird derzeit untersucht.

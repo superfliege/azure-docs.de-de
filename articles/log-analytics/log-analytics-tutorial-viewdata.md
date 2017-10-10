@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/20/2017
+ms.date: 09/26/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ac702c356f0adc172674b2a3669de2a8d5dfd6ed
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: c9c57beeb9c62e69f3bae5675717fff0ef43f22c
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten
@@ -30,6 +30,10 @@ In Log Analytics können Sie Protokollsuchen nutzen, indem Sie Abfragen zum Anal
 > * Lernen, mit Leistungsdaten zu arbeiten
 
 Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein, der [mit dem Log Analytics-Arbeitsbereich verbunden](log-analytics-quick-collect-azurevm.md) ist.  
+
+Für die Erstellung und Bearbeitung von Abfragen sowie die interaktive Verwendung zurückgegebener Daten stehen zwei Methoden zur Verfügung.  Verwenden Sie für einfache Abfragen die Seite „Protokollsuche“ im Azure-Portal. Für erweiterte Abfragen können Sie das Advanced Analytics-Portal nutzen. Weitere Informationen zu den Unterschieden zwischen den beiden Portalen in Bezug auf die Funktionalität finden Sie unter [Portale zum Erstellen und Bearbeiten von Protokollabfragen in Azure Log Analytics](log-analytics-log-search-portals.md).
+
+In diesem Tutorial arbeiten wir mit der Protokollsuche im Azure-Portal. 
 
 ## <a name="log-in-to-azure-portal"></a>Anmelden beim Azure-Portal
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) im Azure-Portal an. 
@@ -44,7 +48,7 @@ Am oberen Rand der Log Analytics-Ressourcenseite im Portal wird Ihnen ein Banner
 
 Log Analytics hat kürzlich eine neue Abfragesprache eingeführt, die das Erstellen von Abfragen, Korrelieren von Daten aus verschiedenen Quellen und Analysieren zur schnellen Identifikation von Trends oder Problemen vereinfacht.
 
-Das Upgrade ist einfach.  Starten Sie den Prozess, indem Sie auf das lilafarbene Banner **Weitere Informationen und Upgrade** klicken.  Lesen Sie die zusätzlichen Informationen auf der Seite „Upgradeinformationen“, und klicken Sie dann auf **Jetzt aktualisieren**.
+Das Upgrade ist einfach.  Starten Sie den Prozess, indem Sie auf das Banner **Weitere Informationen und Upgrade** klicken.  Lesen Sie die zusätzlichen Informationen auf der Seite „Upgradeinformationen“, und klicken Sie dann auf **Jetzt aktualisieren**.
 
 Dieser Vorgang dauert einige Minuten, und während dieser Zeit können Sie den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen. Weitere Informationen über die Vorzüge der neuen Sprache finden Sie unter [Warum gibt es eine neue Sprache?](log-analytics-log-search-upgrade.md#why-the-new-language).
 

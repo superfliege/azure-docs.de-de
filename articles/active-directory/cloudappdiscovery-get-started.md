@@ -16,16 +16,16 @@ ms.date: 09/25/2017
 ms.author: curtand
 ms.reviewer: nigu
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: 2943e0b119726b31dd6e6507d279f6c8f74df98b
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: af54b77dc985f2ca6abeab29165278dfa598f5e2
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
-# <a name="get-started-using-cloud-app-discovery-in-azure-ad"></a>Erste Schritte mit Cloud App Discovery in Azure AD
+# <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Einrichten von Cloud App Discovery in Azure AD
 
-Die öffentliche Vorschauversion von Verbesserungen an Cloud App Discovery in Azure AD ist jetzt mit einer Azure Active Directory Premium P1-Lizenz verfügbar. Diese Verbesserungen basieren auf der Integration mit Microsoft Cloud App Security. Cloud App Discovery vergleicht Ihre Datenverkehrsprotokolle mit dem Cloud App Security-Katalog, in dem mehr als 15.000 Cloud-Apps enthalten sind, um stets Informationen zur Cloud-Verwendung und Schatten-IT für Sie bereitzustellen. 
+Die neuen Cloud App Discovery-Verbesserungen in Azure AD sind jetzt mit einer Azure Active Directory Premium P1-Lizenz verfügbar. Diese Verbesserungen basieren auf der Integration mit Microsoft Cloud App Security. Cloud App Discovery vergleicht Ihre Datenverkehrsprotokolle mit dem Cloud App Security-Katalog, in dem mehr als 15.000 Cloud-Apps enthalten sind, um stets Informationen zur Cloud-Verwendung und Schatten-IT für Sie bereitzustellen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,14 +33,14 @@ Ihre Organisation muss eine Azure AD Premium P1-Lizenz haben, um dieses Produkt 
 
 Um Cloud App Discovery einzurichten, müssen Sie ein globaler Administrator oder ein Benutzer mit Leseberechtigung für Sicherheitsfunktionen in Azure Active Directory sein. Ein Benutzer mit einer Administratorrolle verfügt in allen Diensten, die Ihre Organisation abonniert hat, über die gleichen Berechtigungen.
 
-## <a name="snapshot-and-continuous-reports"></a>Momentaufnahme und fortlaufende Berichte
+## <a name="setup-steps"></a>Einrichtungsschritte
 
-Sie können zwei Berichtstypen erstellen:
+1. [Richten Sie Momentaufnahmeberichte ein](cloudappdiscovery-set-up-snapshots.md), um das Protokollformat zu überprüfen und sicherzustellen, dass Ihre Protokolle Cloud App Discovery verwendbare Informationen bereitstellen. Sie können auch für Ad-hoc-Einsicht in Datenverkehrsprotokolle sorgen, die Sie manuell von Firewalls und Proxyservern hochladen.
 
-* **Momentaufnahme-Berichte** sorgen für Ad-hoc-Einsicht in Datenverkehrsprotokolle, die Sie manuell von Firewalls und Proxyservern hochladen. Damit können Sie sicherstellen, dass Ihre Protokolle Cloud App Discovery verwendbare Informationen bereitstellen.
+2. [Richten Sie fortlaufende Berichte ein](https://docs.microsoft.com/cloud-app-security/discovery-docker), um alle Protokolle zu analysieren, die über Ihr Netzwerk mithilfe des Cloud App Security-Protokollsammlers weitergeleitet werden. Damit können Sie neue Apps und Nutzungstrends identifizieren.
 
-* **Fortlaufende Berichten** analysieren alle Protokolle, die über Ihr Netzwerk mithilfe des [Cloud App Security-Protokollsammlers](https://docs.microsoft.com/cloud-app-security/discovery-docker) weitergeleitet werden. Damit können Sie neue Apps und Nutzungstrends identifizieren.
-
+3. Wenn Ihre Protokolle derzeit nicht unterstützt werden, [richten Sie einen benutzerdefinierten Protokollparser ein](https://docs.microsoft.com/en-us/cloud-app-security/custom-log-parser), um die Analyse durch Cloud App Discovery zu ermöglichen.
+  
 ## <a name="log-processing-flow"></a>Protokollverarbeitungsfluss
 
 Je nach Datenmenge kann es ein paar Minuten oder bis zu mehreren Stunden dauern, bis Berichte erstellt werden. Folgendes wird analysiert:
@@ -134,8 +134,8 @@ Wenn Ihr Protokoll nicht unterstützt wird, wählen Sie **Other** (Andere) als *
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Setzen Sie mit den folgenden Links die Einrichtung des erweiterten Cloud App Discovery in Azure AD fort.
+Setzen Sie mit den folgenden Links die Einrichtung von Cloud App Discovery in Azure AD fort:
 
-* [Create snapshot Cloud App Discovery reports (Erstellen von Cloud App Discovery-Berichten mit Momentaufnahmen)](cloudappdiscovery-set-up-snapshots.md)
+* [Erstellen von Momentaufnahmenberichten](cloudappdiscovery-set-up-snapshots.md)
 * [Konfigurieren des automatischen Uploads von Protokollen für kontinuierliche Berichte](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-* [Use a custom log parser](https://docs.microsoft.comcommit/cloud-app-security/custom-log-parser) (Verwenden eines benutzerdefinierten Protokollparsers)
+* [Verwenden eines benutzerdefinierten Protokollparsers](https://docs.microsoft.comcommit/cloud-app-security/custom-log-parser)

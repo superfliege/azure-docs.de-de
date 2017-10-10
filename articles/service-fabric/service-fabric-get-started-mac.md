@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/21/2017
+ms.date: 09/26/2017
 ms.author: saysa
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 28424d139499b797b09664f73657a7f73361e3bc
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: c447a92e076bacc9b208b837493400b70cd067e1
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Einrichten Ihrer Entwicklungsumgebung unter Mac OS X
@@ -44,19 +44,19 @@ Service Fabric wird nicht nativ unter OS X ausgeführt. Für die Verwendung eine
 ## <a name="create-the-local-vm"></a>Erstellen des lokalen virtuellen Computers
 Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit einem Service Fabric-Cluster mit fünf Knoten zu erstellen:
 
-1. Klonen Sie das Repository `Vagrantfile`.
+1. Klonen des Repositorys `Vagrantfile`
 
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
-    Mit diesen Schritten wird die Datei `Vagrantfile` mit der VM-Konfiguration und dem Downloadort der VM bereitgestellt.  Die Datei verweist auf ein vorhandenes Ubuntu-Image. 
+    Mit diesen Schritten wird die Datei `Vagrantfile` mit der VM-Konfiguration und dem Downloadort der VM bereitgestellt.  Die Datei verweist auf ein vorhandenes Ubuntu-Image.
 
-2. Navigieren Sie zum lokalen Klon des Repositorys.
+2. Navigieren Sie zum lokalen Klon des Repositorys:
 
     ```bash
     cd service-fabric-linux-vagrant-onebox
     ```
-3. Optional: Ändern Sie die Standardeinstellungen des virtuellen Computers.
+3. Optional: Ändern Sie die Standardeinstellungen des virtuellen Computers
 
     Der lokale virtuelle Computer ist standardmäßig wie folgt konfiguriert:
 
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit e
    * Privates Hostnetzwerk (konfiguriert mit der IP-Adresse 192.168.50.50, um Pass-Through-Datenverkehr des Mac-Hosts zu ermöglichen)
 
      Sie können diese Einstellungen ändern oder die Konfiguration des virtuellen Computers über `Vagrantfile` ergänzen. Eine Liste mit allen Konfigurationsoptionen finden Sie in der [Vagrant-Dokumentation](http://www.vagrantup.com/docs) .
-4. Erstellen Sie den virtuellen Computer.
+4. Erstellen des virtuellen Computers
 
     ```bash
     vagrant up
@@ -76,7 +76,7 @@ Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit e
     ```bash
     vagrant ssh
     ```
-   
+
    Installieren Sie das SDK wie unter [SDK-Installation](service-fabric-get-started-linux.md) beschrieben.  Das Skript unten soll Ihnen als Hilfe beim Installieren der Service Fabric-Runtime und des allgemeinen Service Fabric SDK zusammen mit der sfctl-CLI dienen. Für die Ausführung des Skripts wird vorausgesetzt, dass Sie die Lizenzen für die gesamte zu installierende Software gelesen und ihnen zugestimmt haben.
 
     ```bash
@@ -97,6 +97,23 @@ Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit e
 
     ![Service Fabric Explorer auf dem Host-Mac][sfx-mac]
 
+## <a name="install-the-necessary-java-artifacts-on-vagrant-to-use-service-fabric-java-programming-model"></a>Installieren des erforderlichen Java-Artefakts unter Vagrant für die Verwendung des Service Fabric-Java-Programmiermodells
+
+Stellen Sie sicher, dass JDK 1.8 zusammen mit Gradle (für die Ausführung von Buildaufgaben) installiert ist, um Service Fabric-Dienste mit Java zu erstellen. Mit dem folgenden Codeausschnitt wird Open JDK 1.8 zusammen mit Gradle installiert. Die Service Fabric-Java-Bibliotheken werden aus Maven abgerufen.
+
+  ```bash
+  vagrant ssh
+  sudo apt-get install openjdk-8-jdk-headless
+  sudo apt-get install gradle
+```
+
+## <a name="set-up-the-service-fabric-cli"></a>Einrichten der Service Fabric-Befehlszeilenschnittstelle
+
+Die [Service Fabric CLI](service-fabric-cli.md) enthält Befehle für die Interaktion mit Service Fabric-Entitäten, etwa Clustern und Anwendungen. Sie basiert auf Python. Vergewissern Sie sich also, dass Python und pip installiert sind, bevor Sie mit dem folgenden Befehl fortfahren:
+
+```bash
+pip install sfctl
+```
 
 ## <a name="create-application-on-mac-using-yeoman"></a>Erstellen einer Anwendung auf einem Mac mit Yeoman
 Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen einer Service Fabric-Anwendung über das Terminal unter Verwendung des Yeoman-Vorlagengenerators. Führen Sie die folgenden Schritte aus, um sicherzustellen, dass der Service Fabric-Yeoman-Vorlagengenerator auf dem Computer verwendet werden kann.
@@ -141,6 +158,7 @@ Service Fabric umfasst ein Plug-In für die **Eclipse Neon-IDE für Java**, das 
 * [Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal](service-fabric-cluster-creation-via-portal.md)
 * [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 * [Modellieren von Anwendungen in Service Fabric](service-fabric-application-model.md)
+* [Verwalten von Anwendungen mit der Service Fabric-Befehlszeilenschnittstelle](service-fabric-application-lifecycle-sfctl.md)
 
 <!-- Images -->
 [cluster-setup-script]: ./media/service-fabric-get-started-mac/cluster-setup-mac.png

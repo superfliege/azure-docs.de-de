@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c4f46c0ee94cbeb39bc7b28874cd41f1faf5deb5
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: bef3e7bf8b1fd9199d0c8a083d94660b8eed3365
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Behandeln von Azure Files-Problemen unter Linux
@@ -129,6 +129,32 @@ Verwenden Sie das Speicherbenutzerkonto, um die Dateien zu kopieren:
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
+
+## <a name="cannot-connect-or-mount-an-azure-file-share"></a>Azure-Dateifreigabe kann nicht verbunden oder bereitgestellt werden
+
+### <a name="cause"></a>Ursache
+
+Häufige Ursachen für dieses Problem sind:
+
+
+- Sie verwenden einen nicht kompatiblen Linux-Distributionsclient. Es wird empfohlen, die folgenden Linux-Distributionen zum Herstellen einer Verbindung mit Azure-Dateifreigaben zu verwenden:
+
+    - Ubuntu Server 14.04+ 
+    - RHEL 7+ 
+    - CentOS 7+ 
+    - Debian 8 
+    - openSUSE 13.2+ 
+    - SUSE Linux Enterprise Server 12
+
+- CIFS-Utils sind auf dem Client nicht installiert.
+- Die mindestens erforderliche SMB-/CIFS-Version 2.1 ist nicht auf dem Client installiert.
+- SMB 3.0-Verschlüsselung wird auf dem Client nicht unterstützt. SMB 3.0-Verschlüsselung ist in Ubuntu ab Version 16.4 und SUSE ab Version 12.3 verfügbar. Andere Distributionen erfordern Kernel 4.11 oder eine höhere Version.
+- Sie versuchen, eine Verbindung mit einem Speicherkonto über TCP-Port 445 herstellen, der nicht unterstützt wird.
+- Sie versuchen, auf einem virtuellen Computer eine Verbindung mit der Azure-Dateifreigabe herzustellen, und der virtuelle Computer befindet sich nicht in derselben Region wie das Speicherkonto.
+
+### <a name="solution"></a>Lösung
+
+Um das Problem zu beheben, verwenden Sie das [Problembehandlungstool für Azure Files-Bereitstellungsfehlern unter Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). Mit diesem Tool können Sie die Clientausführungsumgebung überprüfen und die nicht kompatible Clientkonfiguration erkennen, die zu einem Zugriffsfehler für Azure Files führen würde. Zudem stellt das Tool Anleitungen zur Selbsthilfe bereit und erfasst die Diagnoseablaufverfolgungen.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 

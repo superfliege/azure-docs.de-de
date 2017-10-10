@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 09/27/2017
 ms.author: curtand
 ms.reviewer: nigu
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 46d21ac6fe0992ebe6dca93e8ebd381931e49962
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 59af2a5de5936d15456058aaeacfc334b9b34d4c
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="cloud-app-discovery-enhancements-in-azure-active-directory"></a>Verbesserungen an Cloud App Discovery mit Azure Active Directory 
@@ -34,7 +34,12 @@ Mehr als 80 % der Arbeitnehmer geben an, nicht genehmigte SaaS-Apps für Arbeits
 
 Wenn Sie nicht Active Directory Premium haben, finden Sie weitere Informationen unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="next-steps"></a>Nächste Schritte
-
 Mit diesem Link können Sie die [neue Cloud App Discovery-Umgebung in Azure AD](https://portal.cloudappsecurity.com) kennenlernen.
 
+## <a name="next-steps"></a>Nächste Schritte
+Richten Sie mit den folgenden Links Cloud App Discovery in Azure AD ein.
+
+* [Erste Schritte mit Cloud App Discovery](cloudappdiscovery-get-started.md)
+* [Erstellen von Momentaufnahmenberichten](cloudappdiscovery-set-up-snapshots.md)
+* [Konfigurieren des automatischen Uploads von Protokollen für kontinuierliche Berichte](https://docs.microsoft.com/cloud-app-security/discovery-docker)
+* [Verwenden eines benutzerdefinierten Protokollparsers](https://docs.microsoft.comcommit/cloud-app-security/custom-log-parser)

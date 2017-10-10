@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 09/26/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ad47c3b6d7f44815208741e686f11675c81eca8b
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 17fac0327c3c454a8ea5c4d91b2d3e23de71f4ce
 ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Verwenden von Interactive Query mit HDInsight
@@ -82,7 +82,7 @@ So suchen Sie die Verbindungszeichenfolge für die Java Database Connectivity (J
 * Erfahren Sie, wie Sie [Big Data mit Power BI in Azure HDInsight visualisieren](./hdinsight-connect-hive-power-bi.md).
 * Erfahren Sie, wie Sie [Zeppelin zum Ausführen von Hive-Abfragen in Azure HDInsight verwenden](./hdinsight-connect-hive-zeppelin.md).
 * Erfahren Sie, wie Sie [Hive-Abfragen mit Data Lake-Tools für Visual Studio ausführen](./hdinsight-hadoop-visual-studio-tools-get-started.md#run-a-hive-query).
-* Erfahren Sie, wie Sie [Visual Studio Code für Hive, LLAP oder pySpark verwenden](hdinsight-for-vscode.md).
+* Erfahren Sie, wie Sie [HDInsight-Tools für Visual Studio Code verwenden](hdinsight-for-vscode.md).
 * Erfahren Sie, wie Sie [die Hive-Ansicht mit Hadoop in HDInsight verwenden](hdinsight-hadoop-use-hive-ambari-view.md).
 * Erfahren Sie, wie Sie den [Beeline-Client mit Apache Hive verwenden](hdinsight-hadoop-use-hive-beeline.md).
 * Erfahren Sie, wie Sie [Excel mithilfe des Microsoft Hive ODBC-Treibers mit Hadoop in Azure HDInsight verbinden](hdinsight-connect-excel-hive-odbc-driver.md).

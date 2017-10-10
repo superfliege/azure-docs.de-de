@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: ae17a712b0b2a6ba0b9cdf4749fe2aa8b7f535fb
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: daecef7962ddee2f5e4b6a36c418619285f3ba5a
 ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Bereitstellung von Web-Apps in Azure
@@ -46,7 +46,7 @@ Um diesen Fehler zu beheben, führen Sie eine Aktualisierung auf das [neueste SD
 ## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Wie stelle ich eine ASP.NET-Anwendung über Visual Studio in App Service bereit?
 <a id="deployasp"></a>
 
-Im Tutorial [Erstellen Ihrer ersten ASP.NET-Web-App in Azure in fünf Minuten](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-get-started/) erfahren Sie, wie Sie eine ASP.NET-Webanwendung mithilfe von Visual Studio 2015 in einer Web-App in App Service bereitstellen.
+Im Tutorial [Erstellen Ihrer ersten ASP.NET-Web-App in Azure in fünf Minuten](app-service-web-get-started-dotnet.md) erfahren Sie, wie Sie eine ASP.NET-Webanwendung mithilfe von Visual Studio 2017 in einer Web-App in App Service bereitstellen.
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>Welche verschiedenen Typen von Anmeldeinformationen für die Bereitstellung gibt es?
 

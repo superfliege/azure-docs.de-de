@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/07/2017
+ms.date: 09/28/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: ad930ca023a36fa5874483873c82fdba11d117c7
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: c7a911474d6fb90f45565c90a72bfd407898ceba
 ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Solr in HDInsight Hadoop-Clustern
@@ -59,7 +59,7 @@ Ein Beispielskript zum Installieren von Solr in einem HDInsight-Cluster ist an f
 
 Zum Erstellen eines Clusters, in dem Solr installiert ist, führen Sie die im Artikel [Erstellen von HDInsight-Clustern](hdinsight-hadoop-create-linux-clusters-portal.md) beschriebenen Schritte aus. Während des Erstellungsvorgangs installieren Sie Solr mithilfe der folgenden Schritte:
 
-1. Wählen Sie auf dem Blatt __Clusterübersicht__ die Option „Erweiterte Einstellungen“ und dann __Skriptaktionen__ aus. Verwenden Sie die folgenden Informationen zum Füllen des Formulars:
+1. Wählen Sie im Abschnitt __Clusterübersicht__ die Option „Erweiterte Einstellungen“ und dann __Skriptaktionen__ aus. Verwenden Sie die folgenden Informationen zum Füllen des Formulars:
 
    * **NAME**: Geben Sie einen Anzeigenamen für die Skriptaktion ein.
    * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
@@ -68,7 +68,7 @@ Zum Erstellen eines Clusters, in dem Solr installiert ist, führen Sie die im Ar
    * **ZOOKEEPER**: Aktivieren Sie diese Option für die Installation auf dem Zookeeper-Knoten.
    * **PARAMETERS**: Lassen Sie dieses Feld leer.
 
-2. Verwenden Sie am unteren Rand des Blatts **Skriptaktionen** die Schaltfläche **Auswählen**, um die Konfiguration zu speichern. Kehren Sie abschließend mit der Schaltfläche **Weiter** zur __Clusterübersicht__ zurück.
+2. Verwenden Sie am unteren Rand des Abschnitts **Skriptaktionen** die Schaltfläche **Auswählen**, um die Konfiguration zu speichern. Kehren Sie abschließend mit der Schaltfläche **Weiter** zur __Clusterübersicht__ zurück.
 
 3. Wählen Sie auf der Seite __Clusterübersicht__ die Option __Erstellen__ aus, um den Cluster zu erstellen.
 
