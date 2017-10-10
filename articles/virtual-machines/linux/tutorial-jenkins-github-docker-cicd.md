@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2017
+ms.date: 09/25/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: d9849b5e061dd7f2ae0744a3522dc2eb1fb37035
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 84bddd0cb6e53786d3aafb3f7acde34b7e19f83b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -120,22 +120,22 @@ Sollte die Datei noch nicht verfügbar sein, warten Sie noch einige Minuten, bis
 Öffnen Sie anschließend einen Webbrowser, und gehen Sie zu `http://<publicIps>:8080`. Schließen Sie das anfängliche Jenkins-Setup wie folgt ab:
 
 - Geben Sie das *anfängliche Administratorkennwort* ein, das Sie im vorherigen Schritt von der VM abgerufen haben.
-- Klicken Sie auf **Select plugins to install** (Zu installierende Plugins auswählen)
-- Suchen Sie nach *GitHub* über das Textfeld am oberen Rand, wählen Sie *GitHub-Plugin* aus, und klicken Sie anschließend auf **Installieren**
+- Wählen Sie **Select plugins to install** (Zu installierende Plug-Ins auswählen).
+- Suchen Sie nach *GitHub* über das Textfeld am oberen Rand, wählen Sie *GitHub-Plugin* und anschließend **Installieren** aus.
 - Füllen Sie das Formular wie gewünscht aus, um ein Jenkins-Benutzerkonto zu erstellen. Es ist sicherer, diesen ersten Jenkins-Benutzer zu erstellen, statt mit dem Standardadministratorkonto fortzufahren.
-- Wenn der Vorgang abgeschlossen ist, klicken Sie auf **Start using Jenkins** (Jenkins verwenden)
+- Wenn der Vorgang abgeschlossen ist, wählen Sie **Start using Jenkins** (Jenkins verwenden) aus.
 
 
 ## <a name="create-github-webhook"></a>Erstellen eines GitHub-Webhooks
-Öffnen Sie die [node.js-Beispielapp „Hello World“](https://github.com/Azure-Samples/nodejs-docs-hello-world) aus dem Azure-Beispielrepository, um die Integration in GitHub zu konfigurieren. Klicken Sie auf die Schaltfläche **Fork** (Verzweigen) in der rechten oberen Ecke, um das Repository in Ihr GitHub-Konto zu verzweigen.
+Öffnen Sie die [node.js-Beispielapp „Hello World“](https://github.com/Azure-Samples/nodejs-docs-hello-world) aus dem Azure-Beispielrepository, um die Integration in GitHub zu konfigurieren. Wählen Sie die Schaltfläche **Fork** (Verzweigen) in der rechten oberen Ecke aus, um das Repository in Ihr GitHub-Konto zu verzweigen.
 
 Erstellen eines Webhooks in der von Ihnen erstellten Verzweigung:
 
-- Klicken Sie auf **Einstellungen**, und wählen Sie anschließend **Integrations & Services** (Integrationen und Dienste) auf der linken Seite.
-- Klicken Sie auf **Add service** (Dienst hinzufügen), und geben Sie anschließend *Jenkins* in das Filterfeld ein.
+- Wählen Sie **Einstellungen** und anschließend **Integrations & Services** (Integrationen und Dienste) auf der linken Seite aus.
+- Wählen Sie **Add service** (Dienst hinzufügen) aus, und geben Sie anschließend *Jenkins* in das Filterfeld ein.
 - Wählen Sie *Jenkins (GitHub-Plugin)* aus
 - Geben Sie für die **Jenkins-Hook-URL** `http://<publicIps>:8080/github-webhook/` ein. Stellen Sie sicher, dass Sie den nachstehenden Schrägstrich (/) hinzufügen
-- Klicken Sie auf **Dienst hinzufügen**
+- Wählen Sie **Dienst hinzufügen** aus.
 
 ![Hinzufügen eines GitHub-Webhooks in Ihr verzweigtes Repository](media/tutorial-jenkins-github-docker-cicd/github_webhook.png)
 
@@ -150,21 +150,21 @@ Klicken Sie auf Ihrer Jenkins-Website auf der Startseite auf **Create new jobs**
 - Wählen Sie im Bereich **Quellcodeverwaltung** **Git** aus, und geben Sie die *git*-URL Ihres verzweigten Repositorys ein. Eine derartige URL kann z.B. so aussehen: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*
 - Wählen Sie im Bereich **Build Triggers** (Trigger erstellen) die Option **GitHub hook trigger for GITScm polling** (GitHub-Hooktrigger für GITScm-Abruf) aus.
 - Wählen Sie im Abschnitt **Build** die Option **Buildschritt hinzufügen** aus. Wählen Sie **Execute shell** (Shell ausführen) aus, und geben Sie anschließend `echo "Testing"` im Befehlsfenster ein.
-- Klicken Sie unten auf der Auftragsseite auf **Speichern** .
+- Wählen Sie unten auf der Auftragsseite **Speichern** aus.
 
 
 ## <a name="test-github-integration"></a>Testen der GitHub-Integration
 Übernehmen Sie eine Änderung in Ihrer Verzweigung, um die GitHub-Integration mit Jenkins zu testen. 
 
-Kehren Sie zur GitHub-Web-UI zurück, und wählen Sie Ihr verzweigtes Repository aus. Klicken Sie anschließend auf die Datei **index.js**. Klicken Sie auf das Stiftsymbol, um diese Datei zu bearbeiten, sodass in der sechsten Zeile Folgendes steht:
+Kehren Sie zur GitHub-Web-UI zurück, und wählen Sie Ihr verzweigtes Repository aus. Wählen Sie anschließend die Datei **index.js** aus. Wählen Sie das Stiftsymbol, um diese Datei zu bearbeiten, sodass in der sechsten Zeile Folgendes steht:
 
 ```nodejs
 response.end("Hello World!");
 ```
 
-Klicken Sie auf die Schaltfläche **Commit Changes** (Änderungen übernehmen) am unteren Rand, um die Änderungen zu übernehmen.
+Wählen Sie die Schaltfläche **Commit Changes** (Änderungen übernehmen) am unteren Rand aus, um die Änderungen zu übernehmen.
 
-In Jenkins können Sie mit einem neuen Build im Bereich **Build history** (Buildverlauf) in der unteren linken Ecke der Auftragsseite beginnen. Klicken Sie auf den Link der Buildnummer, und wählen Sie auf der linken Seite **Konsolenausgabe** aus. Sie können sich die von Jenkins durchgeführten Schritte anschauen, während ein Pullvorgang für Ihren Code aus GitHub durchgeführt wird. Der Buildvorgang gibt die Meldung `Testing` an die Konsole aus. Jedes Mal, wenn ein Commit in GitHub durchgeführt wird, wendet sich der Webhook an Jenkins und löst so einen neuen Build aus.
+In Jenkins können Sie mit einem neuen Build im Bereich **Build history** (Buildverlauf) in der unteren linken Ecke der Auftragsseite beginnen. Wählen Sie den Link der Buildnummer und dann auf der linken Seite **Konsolenausgabe** aus. Sie können sich die von Jenkins durchgeführten Schritte anschauen, während ein Pullvorgang für Ihren Code aus GitHub durchgeführt wird. Der Buildvorgang gibt die Meldung `Testing` an die Konsole aus. Jedes Mal, wenn ein Commit in GitHub durchgeführt wird, wendet sich der Webhook an Jenkins und löst so einen neuen Build aus.
 
 
 ## <a name="define-docker-build-image"></a>Definieren eines Docker-Buildimages
@@ -195,10 +195,10 @@ Diese Dockerfile-Datei verwendet das node.js-Basisimage mithilfe von Alpine Linu
 ## <a name="create-jenkins-build-rules"></a>Erstellen von Jenkins-Buildregeln
 Sie haben in einem vorherigen Schritt eine einfache Jenkins-Buildregel erstellt, die eine Meldung an die Konsole ausgegeben hat. Erstellen Sie die Buildschritte, mit denen Sie die Dockerfile-Datei verwenden und die Anwendung ausführen können.
 
-Kehren Sie zu Ihrer Jenkins-Instanz zurück, und wählen Sie den Auftrag aus, den Sie in einem vorherigen Schritt erstellt haben. Klicken Sie links auf **Configure** (Konfigurieren), und scrollen Sie nach unten zum Bereich **Build**:
+Kehren Sie zu Ihrer Jenkins-Instanz zurück, und wählen Sie den Auftrag aus, den Sie in einem vorherigen Schritt erstellt haben. Wählen Sie links **Configure** (Konfigurieren), und scrollen Sie nach unten zum Bereich **Build**:
 
-- Entfernen Sie den vorhandenen Buildschritt `echo "Test"`. Klicken Sie dazu auf das rote Kreuz in der oberen rechten Ecke des Felds des vorhandenen Buildschritts.
-- Klicken Sie auf **Add build step** (Buildschritt hinzufügen), und wählen Sie anschließend **Execute shell** (Shell ausführen)
+- Entfernen Sie den vorhandenen Buildschritt `echo "Test"`. Wählen Sie dazu das rote Kreuz in der oberen rechten Ecke des Felds des vorhandenen Buildschritts aus.
+- Wählen Sie **Add build step** (Buildschritt hinzufügen) und anschließend **Execute shell** (Shell ausführen) aus.
 - Geben Sie im Feld **Befehl** die folgenden Docker-Befehle ein, und wählen Sie anschließend **Speichern** aus:
 
   ```bash
@@ -211,7 +211,7 @@ Die Docker-Buildschritte erstellen ein Image und markieren es mit der Jenkins-Bu
 
 
 ## <a name="test-your-pipeline"></a>Testen Ihrer Pipeline
-Bearbeiten Sie erneut die Datei *index.js* in Ihrem verzweigten GitHub-Repository, und klicken Sie auf **Änderungen übernehmen**. In Jenkins wird ein neuer Auftrag auf Grundlage des Webhooks für GitHub gestartet. Das Erstellen des Docker-Images und das Starten Ihrer Anwendung in einem neuen Container nimmt einige Sekunden in Anspruch.
+Bearbeiten Sie erneut die Datei *index.js* in Ihrem verzweigten GitHub-Repository, und wählen Sie **Änderungen übernehmen** aus. In Jenkins wird ein neuer Auftrag auf Grundlage des Webhooks für GitHub gestartet. Das Erstellen des Docker-Images und das Starten Ihrer Anwendung in einem neuen Container nimmt einige Sekunden in Anspruch.
 
 Falls dies vonnöten ist, können Sie die öffentliche IP-Adresse Ihrer VM erneut abrufen:
 

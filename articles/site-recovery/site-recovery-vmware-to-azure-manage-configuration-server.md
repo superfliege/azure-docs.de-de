@@ -15,10 +15,10 @@ ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: bf62fb21dfac99038e3b3759d9e78c6870f52f9e
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: ba236ad1327a7f3419d7c8cf7effc889a90dde61
 ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -92,7 +92,7 @@ ProxyUserName="UserName"
 ProxyPassword="Password"
 ```
 ## <a name="modifying-proxy-settings-for-configuration-server"></a>Ändern der Proxyeinstellungen des Konfigurationsservers
-1. Melden Sie sich beim Konfigurationsserver an.
+1. Melden Sie sich am Konfigurationsserver an.
 2. Starten Sie die Datei „cspsconfigtool.exe“ über die Verknüpfung auf Ihrem Desktop.
 3. Klicken Sie auf die Registerkarte **Tresorregistrierung**.
 4. Laden Sie eine neue Tresorregistrierungsdatei vom Portal herunter, und geben Sie sie als Eingabe für das Tool an.
@@ -111,8 +111,19 @@ ProxyPassword="Password"
   >[!WARNING]
   Wenn Sie Prozessserver für horizontales Hochskalieren mit diesem Konfigurationsserver verbunden haben, müssen Sie [die Proxyeinstellungen auf allen Prozessservern für horizontales Hochskalieren](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#modifying-proxy-settings-for-scale-out-process-server) in Ihrer Bereitstellung korrigieren.
 
+## <a name="modify-user-accounts-and-passwords"></a>Ändern von Benutzerkonten und Kennwörtern
+
+„CSPSConfigTool.exe“ wird dazu verwendet, um Benutzerkonten zu verwalten, die für die **automatische Ermittlung von virtuellen VMware-Computern** und zum Durchführen der **Pushinstallation des Mobility Service auf geschützten Computern** verwendet werden. 
+
+1. Melden Sie sich am Konfigurationsserver an.
+2. Starten Sie „CSPSConfigtool.exe“, indem Sie auf dem Desktop auf die Verknüpfung klicken.
+3. Klicken Sie auf die Registerkarte **Konten verwalten**.
+4. Wählen Sie das Konto aus, für das das Kennwort geändert werden muss, und klicken Sie auf die Schaltfläche **Bearbeiten**.
+5. Geben Sie das neue Kennwort ein, und klicken Sie auf **OK**.
+
+
 ## <a name="re-register-a-configuration-server-with-the-same-recovery-services-vault"></a>Erneutes Registrieren eines Konfigurationsservers beim gleichen Recovery Services-Tresor
-  1. Melden Sie sich beim Konfigurationsserver an.
+  1. Melden Sie sich am Konfigurationsserver an.
   2. Starten Sie die Datei „cspsconfigtool.exe“ über die Verknüpfung auf Ihrem Desktop.
   3. Klicken Sie auf die Registerkarte **Tresorregistrierung**.
   4. Laden Sie eine neue Registrierungsdatei vom Portal herunter und geben Sie sie als Eingabe für das Tool an.
@@ -132,7 +143,11 @@ ProxyPassword="Password"
   Wenn mit diesem Konfigurationsserver Prozessserver für horizontales Hochskalieren verbunden sind, müssen Sie in Ihrer Bereitstellung [alle Prozessserver für horizontales Hochskalieren erneut registrieren](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#re-registering-a-scale-out-process-server).
 
 ## <a name="registering-a-configuration-server-with-a-different-recovery-services-vault"></a>Registrieren eines Konfigurationsservers bei einem anderen Recovery Services-Tresor
-1. Melden Sie sich beim Konfigurationsserver an.
+
+> [!WARNING]
+> Die nachfolgenden Schritte trennen die Konfiguration vom aktuellen Tresor, und die Replikation aller geschützten virtuellen Computer unter dem Konfigurationsserver wird beendet.
+
+1. Melden Sie sich am Konfigurationsserver an.
 2. Führen Sie an einer Eingabeaufforderung mit Administratorrechten folgenden Befehl aus:
 
     ```
@@ -227,6 +242,17 @@ Für alle Installationen, die vor dem Mai 2016 durchgeführt wurden, wurde die G
 
   >[!TIP]
   Möglicherweise wird anstelle der Schaltfläche **Jetzt verlängern** die Schaltfläche **Upgrade jetzt ausführen** angezeigt. Dies bedeutet, dass für einige Komponenten in Ihrer Umgebung noch kein Upgrade auf 9.4.xxxx.x oder höhere Versionen ausgeführt wurde.
+
+## <a name="revive-a-configuration-server-if-the-secure-socket-layer-ssl-certificate-expired"></a>Erneutes Aktivieren eines Konfigurationsservers bei abgelaufenem SSL-Zertifikat (Secure Socket Layer)
+
+1. Aktualisieren Sie Ihren Konfigurationsserver auf die [neueste Version](http://aka.ms/unifiedinstaller).
+2. Wenn Sie über Prozessserver für horizontales Hochskalieren, Failback-Masterzielserver und Prozessserver für Failback verfügen, aktualisieren Sie sie auf die neueste Version.
+3. Aktualisieren Sie den Mobility Service auf allen geschützten virtuellen Computern auf die neueste Version.
+4. Melden Sie sich beim Konfigurationsserver an, und öffnen Sie eine Eingabeaufforderung mit Administratorberechtigungen.
+5. Navigieren Sie zum Ordner „%ProgramData%\ASR\home\svsystems\bin“.
+6. Führen Sie „RenewCerts.exe“ aus, um das SSL-Zertifikat auf dem Konfigurationsserver zu verlängern.
+7. Wenn der Vorgang erfolgreich durchgeführt wurde, sollte eine Meldung zur erfolgreichen Verlängerung des Zertifikats angezeigt werden.
+
 
 ## <a name="sizing-requirements-for-a-configuration-server"></a>Anforderungen an die Größenanpassung für einen Konfigurationsserver
 

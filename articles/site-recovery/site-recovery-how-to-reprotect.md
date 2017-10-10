@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 3365bc81b17e0225652504a71d3aff42a399ce67
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 3644b41c3e3293a263bd9ff996d4e3d26417aeed
 ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Erneutes Schützen von Azure zu einem lokalen Standort
@@ -29,10 +29,13 @@ ms.lasthandoff: 09/02/2017
 In diesem Artikel wird beschrieben, wie Sie virtuelle Azure-Computer aus Azure an einem lokalen Standort erneut schützen. Befolgen Sie die Anweisungen in diesem Artikel, wenn alles bereit ist, um Ihre virtuellen VMware-Computer oder Ihre physischen Windows-/Linux-Server nach einem Failover vom lokalen Standort zu Azure per Failback wieder an den lokalen Standort zurückzuführen (wie unter [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-failover.md) beschrieben).
 
 > [!WARNING]
-> Sie können kein Failback ausführen, nachdem Sie die [Migration abgeschlossen](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben.
+> Wenn Sie entweder die [Migration abgeschlossen](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben, ist danach kein Failback möglich. Wenn Sie den Schutz des virtuellen Computers deaktivieren, ist kein Failback möglich.
 
 
 Wenn der Schutz wiederhergestellt wurde und die geschützten virtuellen Computer repliziert werden, können Sie ein Failback für die virtuellen Computer initiieren, um sie an den lokalen Standort zu übertragen.
+
+> [!NOTE]
+> Erneuter Schutz und Failback sind nur auf einem ESXi-Host möglich. Ein Failback des virtuellen Computers auf einem Hyper-V-Host oder auf VMware-Arbeitsstationen bzw. auf einer anderen Virtualisierungsplattform ist nicht möglich.
 
 Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) veröffentlichen.
 
@@ -41,6 +44,11 @@ Sehen Sie sich das folgende Video zum Failover von Azure zu einem lokalen Stando
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+> [!IMPORTANT]
+> Beim Failover zu Azure ist der lokale Standort möglicherweise nicht verfügbar und daher kann der Konfigurationsserver nicht verfügbar oder heruntergefahren sein. Während des erneuten Schützens und des Failbacks sollte der lokale Konfigurationsserver ausgeführt werden und einen fehlerfreien verbundenen Zustand aufweisen.
+
+
 Unternehmen oder erwägen Sie die folgenden erforderlichen Aktionen, wenn Sie den erneuten Schutz virtueller Computer vorbereiten:
 
 * Wenn die virtuellen Computer, für die Sie das Failback durchführen möchten, von einem vCenter-Server verwaltet werden, stellen Sie sicher, dass auf den vCenter-Servern die [erforderlichen Berechtigungen](site-recovery-vmware-to-azure-classic.md) für die Ermittlung von virtuellen Computern vorhanden sind.
@@ -93,13 +101,15 @@ Wenn Sie dagegen nur über ein S2S-VPN verfügen, empfiehlt es sich, den Prozess
  ![Architekturdiagramm für VPN](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
 
 
-Beachten Sie, dass die Replikation nur über das S2S-VPN oder über das private Peering Ihres ExpressRoute-Netzwerks erfolgt. Vergewissern Sie sich, dass für diesen Netzwerkkanal genügend Bandbreite zur Verfügung steht.
+Beachten Sie, dass die Replikation von Azure zu einer lokalen Option nur über das S2S-VPN oder über das private Peering Ihres ExpressRoute-Netzwerks erfolgen kann. Vergewissern Sie sich, dass für diesen Netzwerkkanal genügend Bandbreite zur Verfügung steht.
 
 Informationen zum Installieren eines Azure-basierten Prozessservers finden Sie unter [Verwalten eines in Azure ausgeführten Prozessservers ](site-recovery-vmware-setup-azure-ps-resource-manager.md).
 
 > [!TIP]
 > Es empfiehlt sich, beim Failback einen Azure-basierten Prozessserver zu verwenden. Die Replikationsleistung ist höher, wenn der Prozessserver sich näher beim replizierenden virtuellen Computer (dem Computer in Azure, für den das Failover durchgeführt wurde) befindet. Während des Proof of Concept (POC) oder bei Demos können Sie jedoch den lokalen Prozessserver zusammen mit ExpressRoute mit privatem Peering verwenden, um den POC schneller abzuschließen.
 
+> [!NOTE]
+> Die Replikation von einer lokalen Option zu Azure kann nur mit privatem Peering über Internet oder ExpressRoute erfolgen. Die Replikation von Azure zu einer lokalen Option kann nur mit privatem Peering über S2S-VPN oder ExpressRoute erfolgen.
 
 
 #### <a name="what-ports-should-i-open-on-different-components-so-that-reprotection-can-work"></a>Welche Ports müssen auf den verschiedenen Komponenten geöffnet sein, damit das erneute Schützen funktioniert?
@@ -248,7 +258,7 @@ Das kann zwei Ursachen haben:
 1. Der virtuelle Computer, den Sie erneut schützen möchten, verwendet Windows Server 2016. Dieses Betriebssystem wird erst in Kürze für Failbacks unterstützt.
 2. Auf dem Masterzielserver für das Failback ist bereits ein virtueller Computer mit dem gleichen Namen vorhanden.
 
-In diesem Fall können Sie einen anderen Masterzielserver auf einem anderen Host auswählen, sodass der Computer beim erneuten Schützen auf einem anderen Host erstellt und der Namenskonflikt somit vermieden wird. Sie können das Masterziel auch mithilfe von vMotion auf einen anderen Host übertragen, auf dem der Namenskonflikt nicht auftritt.
+In diesem Fall können Sie einen anderen Masterzielserver auf einem anderen Host auswählen, sodass der Computer beim erneuten Schützen auf einem anderen Host erstellt und der Namenskonflikt somit vermieden wird. Sie können das Masterziel auch mithilfe von vMotion auf einen anderen Host übertragen, auf dem der Namenskonflikt nicht auftritt. Wenn der vorhandene virtuelle Computer ein vereinzelter Computer ist, können Sie ihn einfach umbenennen, damit der neue virtuelle Computer auf demselben ESXi-Host erstellt werden kann.
 
 ### <a name="error-code-78093"></a>Fehlercode 78093
 
@@ -256,6 +266,10 @@ In diesem Fall können Sie einen anderen Masterzielserver auf einem anderen Host
 
 Um einen virtuellen Computer nach einem Failback auf die lokale Umgebung erneut schützen zu können, muss der virtuelle Azure-Computer ausgeführt werden. Dies ist erforderlich, damit sich der Mobility Service beim Konfigurationsserver lokal registriert und mit der Replikation beginnen kann, indem er mit dem Prozessserver kommuniziert. Wenn sich der Computer in einem falschen Netzwerk befindet oder nicht ausgeführt wird (also nicht reagiert oder heruntergefahren ist), kann der Konfigurationsserver den Mobility Service auf dem virtuellen Computer nicht erreichen und den Schutz nicht erneut aktivieren. Sie können den virtuellen Computer neu starten, damit er wieder mit der lokalen Umgebung kommunizieren kann. Starten Sie nach dem Neustart des virtuellen Azure-Computers den Auftrag für erneutes Schützen neu.
 
+### <a name="error-code-8061"></a>Fehlercode 8061
 
+*Der Datenspeicher ist über den ESXi-Host nicht zugänglich.*
+
+Informationen zum Failback finden Sie in den [Voraussetzungen des Masterziels](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server) und in den [unterstützen Datenspeichern](site-recovery-how-to-reprotect.md#what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback).
 
 

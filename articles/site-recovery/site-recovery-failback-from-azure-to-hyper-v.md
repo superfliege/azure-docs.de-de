@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: ruturajd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 3116e2c15242ea7be8eeb77281b40bc4b38b846e
+ms.translationtype: HT
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 7f478a61ee448d2d18b3ac7bc0a579b6e341c30d
 ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -38,6 +38,9 @@ Beim Initiieren eines Failovers enthält das Blatt Informationen zu Richtung des
 ## <a name="why-is-there-only-a-planned-failover-gesture-to-failback"></a>Warum ist nur eine Geste für ein geplantes Failover zum Ausführen eines Failbacks vorhanden?
 Azure ist eine hoch verfügbare Umgebung und Ihre virtuellen Computer sind immer verfügbar. Ein Failback ist eine geplante Aktivität, bei der eine geringfügige Ausfallzeit auftritt, damit die Workloads wieder lokal ausgeführt werden können. Dabei wird kein Datenverlust erwartet. Daher ist nur eine Geste für ein geplantes Failover verfügbar, mit der die virtuellen Computer in Azure deaktiviert und die aktuellen Änderungen heruntergeladen werden und sichergestellt wird, dass kein Datenverlust auftritt.
 
+## <a name="do-i-need-a-process-server-in-azure-to-failback-to-hyper-v"></a>Benötige ich für ein Failback auf Hyper-V einen Prozessserver in Azure?
+Nein, ein Prozessserver ist nur erforderlich, wenn virtuelle VMware-Computer geschützt werden. Es müssen keine zusätzlichen Komponenten für den Schutz bzw. das Failback von virtuellen Hyper-V-Computern bereitgestellt werden.
+
 ## <a name="initiate-failback"></a>Initiieren des Failbacks
 Nach dem Failover vom primären zum sekundären Standort sind die virtuellen Replikatcomputer nicht durch Site Recovery geschützt, und der sekundäre Standort fungiert nun als der aktive Standort. Gehen Sie wie folgt vor, um ein Failback zum ursprünglichen primären Standort durchzuführen. Hier erfahren Sie, wie Sie ein geplantes Failover für einen Wiederherstellungsplan durchführen. Alternativ können Sie das Failover über die Registerkarte **Virtuelle Computer** auch für einen einzelnen virtuellen Computer durchführen.
 
@@ -53,10 +56,6 @@ Nach dem Failover vom primären zum sekundären Standort sind die virtuellen Rep
 
     >[!NOTE]
     >Es wird empfohlen, diese Option zu verwenden, wenn Sie Azure bereits seit einer Weile nutzen (mindestens einen Monat) oder wenn der lokale virtuelle Computer gelöscht wurde. Mit dieser Option werden keine Prüfsummenberechnungen durchgeführt.
-    >
-    >
-
-
 
 
 4. Wenn die Datenverschlüsselung für die Cloud aktiviert ist, wählen Sie unter **Verschlüsselungsschlüssel** das Zertifikat aus, das beim Aktivieren der Datenverschlüsselung im Rahmen der Anbieterinstallation auf dem VMM-Server ausgestellt wurde.
@@ -85,9 +84,13 @@ Wenn Sie den Schutz zwischen einem [Hyper-V-Standort und Azure](site-recovery-hy
 
     > [!NOTE]
     > Wenn Sie den Failbackauftrag während der Datensynchronisierung abbrechen, wird der lokale virtuelle Computer als beschädigt angezeigt. Das liegt daran, dass bei der Datensynchronisierung die aktuellen Daten von den Datenträgern virtueller Azure-Computer auf die lokalen Datenträger kopiert werden. Bis zum Abschluss der Synchronisierung befinden sich die Datenträgerdaten unter Umständen nicht in einem konsistenten Zustand. Wenn der lokale virtuelle Computer nach dem Abbruch der Datensynchronisierung gestartet wird, ist das Starten unter Umständen nicht möglich. Lösen Sie zum Abschließen der Datensynchronisierung das Failover erneut aus.
-    >
-    >
 
+## <a name="time-taken-to-failback"></a>Failbackdauer
+Die zum Abschließen der Datensynchronisierung und zum Starten des virtuellen Computers erforderliche Zeit, hängt von verschiedenen Faktoren ab. Sie erhalten eine Erläuterung zum Ablauf während der Datensynchronisierung, um einen Einblick hinsichtlich der Dauer zu erhalten.
+
+Die Datensynchronisierung erstellt eine Momentaufnahme der Datenträger des virtuellen Computers und beginnt mit der blockweisen Überprüfung und berechnet dann die Prüfsumme. Diese berechnete Prüfsumme wird an einen lokalen Standort gesendet, um sie mit der lokalen Prüfsumme desselben Blocks zu vergleichen. Wenn die Prüfsummen übereinstimmen, wird der Datenblock nicht übertragen. Wenn sie nicht übereinstimmen, wird der Datenblock an den lokalen Standort übertragen. Diese Übertragungszeit hängt von der verfügbaren Bandbreite ab. Die Geschwindigkeit bei der Prüfsummenberechnung beträgt einige GB pro Minute. 
+
+Um das Herunterladen von Daten zu beschleunigen, können Sie Ihren MARS-Agent konfigurieren, um mehr Threads zu verwenden, um den Download zu parallelisieren. Informationen zum Ändern der Downloadthreads im Agent finden Sie in [diesem Dokument](https://support.microsoft.com/en-us/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
