@@ -51,7 +51,7 @@ Möglich wäre auch ein Runbook, das versucht, einen virtuellen Computer zu star
 1. Er sendet eine Benachrichtigung zu diesem Problem.
 2. Er startet ein anderes Runbook, mit dem automatisch ein neuer virtueller Computer als Ersatz bereitgestellt wird.
 
-Eine Lösung besteht darin, einen Fehlerlink zu verwenden, der auf eine Aktivität zur Behandlung von Schritt&1; zeigt. Sie könnten z. B. das **Write-Warning**-Cmdlet, mit einer Aktivität für Schritt&2; verbinden, z. B. das **Start-AzureRmAutomationRunbook**-Cmdlet.
+Eine Lösung besteht darin, einen Fehlerlink zu verwenden, der auf eine Aktivität zur Behandlung von Schritt 1 zeigt. Sie könnten z. B. das **Write-Warning**-Cmdlet, mit einer Aktivität für Schritt 2 verbinden, z. B. das **Start-AzureRmAutomationRunbook**-Cmdlet.
 
 Sie können dieses Verhalten auch für die Verwendung in vielen Runbooks verallgemeinern, indem Sie diese beiden Aktivitäten in ein separates Runbook für die Fehlerbehandlung einfügen und die zuvor beschriebenen Anweisungen befolgen. Vor dem Aufrufen dieses Runbooks für die Fehlerbehandlung können Sie beispielsweise aus den Daten im Originalrunbook eine benutzerdefinierte Nachricht erstellen und diese dann als Parameter an das Runbook für die Fehlerbehandlung übergeben.
 
