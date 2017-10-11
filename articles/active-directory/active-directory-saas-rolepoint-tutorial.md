@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: fcde562484f4401e9f936614b9978f839f4aa290
-ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Tutorial: Azure Active Directory-Integration mit RolePoint
 
@@ -114,7 +112,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.rolepoint.com/login`.
     
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein:  `https://app.rolepoint.com/<instancename>`
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://app.rolepoint.com/<instancename>`
 
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Hier empfehlen wir Ihnen, den eindeutigen Zeichenfolgenwert als Bezeichner zu verwenden. Den Wert erhalten Sie vom [RolePoint-Supportteam](mailto:info@rolepoint.com). 
@@ -225,5 +223,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „RolePoint“ klicken, sollten Sie 
 [201]: ./media/active-directory-saas-rolepoint-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-rolepoint-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-rolepoint-tutorial/tutorial_general_203.png
-
 

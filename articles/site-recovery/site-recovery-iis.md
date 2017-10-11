@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: nisoneji
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: b23624fc7e82af1cb593a1aedd138ae0d6637ae7
-ms.contentlocale: de-de
-ms.lasthandoff: 03/28/2017
-
+ms.openlocfilehash: 4ac79df703de00ac009d9845772d8be740e74f29
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application-using-azure-site-recovery"></a>Replizieren einer IIS-basierten Webanwendung mit mehreren Ebenen mit Azure Site Recovery
 
@@ -166,4 +165,3 @@ Befolgen Sie [diese Anleitung](site-recovery-failover.md), wenn Sie ein Failover
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich weiter über das [Replizieren anderer Anwendungen](site-recovery-workload.md) mit Site Recovery.
-

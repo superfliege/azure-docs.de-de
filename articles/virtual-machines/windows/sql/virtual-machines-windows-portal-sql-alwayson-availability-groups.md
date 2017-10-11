@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: d430febee23081b26eee0a68d4beb43228549f52
-ms.lasthandoff: 04/11/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatisches Konfigurieren einer AlwaysOn-Verfügbarkeitsgruppe in Azure Virtual Machines: Resource Manager
 
@@ -212,4 +211,3 @@ Gehen Sie folgendermaßen vor, um eine RDP-Verbindung mit einer SQL Server-Insta
 7. Mit **Remotedesktop** werden Sie möglicherweise darauf hingewiesen, dass der Remotecomputer aufgrund von Problemen mit dem Sicherheitszertifikat nicht authentifiziert werden konnte. Der Name des Sicherheitszertifikats wird angezeigt. Wenn Sie gemäß dem Tutorial vorgegangen sind, lautet der Name **sqlserver-0.contoso.com**. Klicken Sie auf **Ja**.
 
 Sie sind jetzt über eine RDP-Verbindung mit dem virtuellen Computer mit SQL Server verbunden. Sie können jetzt SQL Server-Management Studio öffnen, eine Verbindung mit der Standardinstanz von SQL Server herstellen und prüfen, ob die Verfügbarkeitsgruppe konfiguriert ist.
-

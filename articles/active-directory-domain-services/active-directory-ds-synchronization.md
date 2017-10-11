@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
 ms.openlocfilehash: 0c9a9a56e1489ee91fcc332beeef36cdc9c93dc1
-ms.lasthandoff: 03/07/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Synchronisierung in einer durch Azure AD Domain Services verwalteten Domäne
 In der folgenden Abbildung ist die Synchronisierung in durch Azure AD Domain Services verwalteten Domänen dargestellt.
@@ -122,4 +121,3 @@ Wie in einem vorherigen Abschnitt dieses Artikels beschrieben wurde, erfolgt kei
 * [Bereitstellungsszenarios: Azure AD Domain Services](active-directory-ds-scenarios.md)
 * [Netzwerkaspekte für Azure AD Domain Services](active-directory-ds-networking.md)
 * [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)
-

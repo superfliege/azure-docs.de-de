@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: ac67838344bbd10384299c086ff096fbe5dec6a9
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="handle-content-types-in-logic-apps"></a>Behandeln von Inhaltstypen in Logik-Apps
 
@@ -112,5 +110,4 @@ Da die Eingabe der Anforderung nicht im Nur-Text- oder JSON-Format erfolgt ist, 
 ```
 
 Derzeit gibt es keine native Funktion für Formulardaten. Daher können Sie diese Daten innerhalb eines Workflows verwenden. Greifen Sie dazu manuell mit einer Funktion wie `@string(body('formdataAction'))` auf die Daten zu. Wenn die ausgehende Anforderung auch den Inhaltstypheader `application/x-www-url-formencoded` haben soll, können Sie die Anforderung einfach im Aktionstext hinzufügen, ohne eine Umwandlung wie `@body('formdataAction')` durchzuführen. Diese Methode funktioniert jedoch nur, wenn der Text der einzige Parameter der `body`-Eingabe ist. Wenn Sie versuchen, `@body('formdataAction')` in einer `application/json`-Anforderung zu verwenden, erhalten Sie einen Laufzeitfehler, da der codierte Text gesendet wird.
-
 

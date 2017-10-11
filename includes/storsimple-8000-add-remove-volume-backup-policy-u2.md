@@ -1,25 +1,25 @@
 <!--author=alkohli last changed: 01/02/17-->
 
 
-#### <a name="to-add-or-remove-a-volume"></a>Hinzufügen oder Entfernen eines Volumes
+#### <a name="to-add-or-remove-a-volume"></a>Hinzufügen oder Entfernen eines Datenträgers
 
-1. Wechseln Sie zu Ihrem StorSimple-Gerät, und klicken Sie auf **Sicherungsrichtlinie**.
+1. Wechseln Sie zu Ihrer StorSimple-Gerät, und klicken Sie auf **Sicherungsrichtlinie**.
 
-2. Klicken Sie in der tabellarischen Auflistung der Richtlinien auf die Richtlinie, die Sie ändern möchten. Rufen Sie mit der rechten Maustaste das Kontextmenü auf, und wählen Sie dann **Volume hinzufügen/entfernen**.
+2. Wählen Sie in der Tabellenliste der Richtlinien aus, und klicken Sie auf die Richtlinie, die Sie ändern möchten. Mit der rechten Maustaste, um das Kontextmenü aufzurufen, und wählen Sie dann **hinzufügen/entfernen Volume**.
 
-    ![Zeitpläne verwalten](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol1.png)
+    ![Verwalten von Zeitplänen](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol1.png)
 
-3. Aktivieren oder deaktivieren Sie auf dem Blatt **Volume hinzufügen/entfernen** das bzw. die Kontrollkästchen zum Hinzufügen oder Entfernen des Volumes. Mehrere Volumes werden durch Aktivieren oder Deaktivieren der entsprechenden Kontrollkästchen aktiviert/deaktiviert.
+3. In der **hinzufügen/entfernen Volume** Blatt aktivieren oder deaktivieren Sie das Kontrollkästchen zum Hinzufügen oder entfernen das Volume. Mehrere Volumes sind durch Aktivieren oder deaktivieren die entsprechenden Kontrollkästchen aktiviert/deaktiviert.
 
-    ![Zeitpläne verwalten](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol3.png)
+    ![Verwalten von Zeitplänen](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol3.png)
 
-    Wenn Sie einer Sicherungsrichtlinie Volumes aus verschiedenen Volumecontainern zuweisen, müssen Sie ein gemeinsames Failover für diese Volumecontainer durchführen. Eine entsprechende Warnung wird angezeigt.
+    Wenn Sie eine Sicherungsrichtlinie Volumes aus verschiedenen volumecontainern zuweisen, müssen Sie denken Sie daran, die zusammen ein Failover die volumecontainer. Sehen Sie eine Warnung, die sich auf ein.
 
-    ![Zeitpläne verwalten](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol2.png)
+    ![Verwalten von Zeitplänen](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol2.png)
 
-4. Sie werden benachrichtigt, wenn die Sicherungsrichtlinie geändert wird. Die Liste der Sicherungsrichtlinien wird ebenfalls aktualisiert.
+4. Sie werden benachrichtigt, wenn die Sicherungsrichtlinie geändert wird. Die Liste der Sicherungsrichtlinie wird ebenfalls aktualisiert.
 
-    ![Zeitpläne verwalten](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol6.png)
+    ![Verwalten von Zeitplänen](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol6.png)
 
 
 

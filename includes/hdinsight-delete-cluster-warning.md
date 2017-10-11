@@ -1,7 +1,7 @@
 
 
 > [!WARNING]
-> Die Abrechnung für die HDInsight-Cluster erfolgt anteilsmäßig auf Minutenbasis und ist unabhängig von der Verwendung. Daher sollten Sie Ihren Cluster nach der Verwendung unbedingt wieder löschen. Weitere Informationen zum Löschen eines HDInsight-Clusters finden Sie [hier](../articles/hdinsight/hdinsight-delete-cluster.md).
+> Die Abrechnung für HDInsight-Cluster ist pro Minute, anteilig, ob Sie diese oder nicht verwenden. Achten Sie darauf, dass Sie Ihren Cluster zu löschen, nachdem Sie ihn nicht mehr benötigen. Weitere Informationen finden Sie unter [Vorgehensweise: Löschen ein HDInsight-Clusters](../articles/hdinsight/hdinsight-delete-cluster.md).
 > 
 > 
 

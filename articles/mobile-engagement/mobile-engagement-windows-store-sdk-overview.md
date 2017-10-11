@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 51858d6daca27a75e7f87af507600c7a193c874f
 ms.openlocfilehash: d616ad58156a19e89b3e106639a38df67cbd0abb
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-universal-sdk-integration-for-azure-mobile-engagement"></a>Windows Universal-SDK-Integration für Azure Mobile Engagement
 In diesem Dokument werden alle für das Windows Universal-SDK für Azure Mobile Engagement verfügbaren Integrations- und Konfigurationsoptionen beschrieben.
@@ -73,10 +73,4 @@ Während der Aktualisierung auf die neue Version des SDK können Sie auswählen,
 
 ### <a name="upgrade-from-older-versions"></a>Upgrade von älteren Versionen
 Siehe [Upgrade-Verfahren](mobile-engagement-windows-store-upgrade-procedure.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

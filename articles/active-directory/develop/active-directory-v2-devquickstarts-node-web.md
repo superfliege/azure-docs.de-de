@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: 6d49c742f72440e22830915c90de009d9188db2a
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-sign-in-to-a-nodejs-web-app"></a>Hinzufügen der Anmeldung zu einer Node.js-Web-App
 
@@ -423,5 +421,4 @@ Hier sind einige zusätzlichen Ressourcen:
 
 ### <a name="get-security-updates-for-our-products"></a>Abrufen von Sicherheitsupdates für unsere Produkte
 Wir empfehlen Ihnen, sich zu registrieren, um bei Auftreten von Sicherheitsvorfällen benachrichtigt zu werden. Abonnieren Sie auf der Seite [Technische Sicherheitsbenachrichtigungen von Microsoft](https://technet.microsoft.com/security/dd252948) den Microsoft-Sicherheitsnewsletter.
-
 

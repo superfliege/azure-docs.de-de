@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 8fae7bb357f8e5e8eff249edfe3a2aaafe04283c
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Verwenden des StorSimple-Diagnosetools für die Behandlung von Problemen mit Geräten der 8000-Serie
 
@@ -443,4 +442,3 @@ In der Tabelle unten wird beschrieben, wie die verschiedenen Windows PowerShell-
 * Informieren Sie sich über die [Syntax des Invoke-HcsDiagnostics-Cmdlets](https://technet.microsoft.com/library/mt795371.aspx).
 
 * Lesen Sie sich weitere Informationen dazu durch, wie Sie die [Behandlung von Bereitstellungsproblemen](storsimple-troubleshoot-deployment.md) auf Ihrem StorSimple-Gerät durchführen.
-

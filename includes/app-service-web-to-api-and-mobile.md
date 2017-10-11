@@ -1,5 +1,5 @@
 > [!NOTE]
-> Obwohl sich dieser Artikel auf Web-Apps bezieht, gilt er auch für API-Apps und mobile Apps.
+> Obwohl in diesem Artikel auf Web-apps verweist, gilt dies auch für API-apps und mobile apps.
 > 
 > 
 

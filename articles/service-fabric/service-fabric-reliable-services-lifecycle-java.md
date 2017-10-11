@@ -13,14 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa;
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 80eb68346dd05c256c60725eb082aa0651fe7cbd
-ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="reliable-services-lifecycle-overview"></a>Übersicht über den Lebenszyklus von Reliable Services
 > [!div class="op_single_selector"]
 > * [C# unter Windows](service-fabric-reliable-services-lifecycle.md)
@@ -80,4 +78,3 @@ Beim Herunterfahren eines zustandslosen Diensts wird dasselbe Muster in umgekehr
 * [Einführung in Reliable Services](service-fabric-reliable-services-introduction.md)
 * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
 * [Erweiterte Verwendung von Reliable Services](service-fabric-reliable-services-advanced-usage.md)
-

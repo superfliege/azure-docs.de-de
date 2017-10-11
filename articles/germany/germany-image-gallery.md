@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: eb9a33228611c7f525fa1d28ac31af327d9dd873
-ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-germany-images"></a>Azure Deutschland-Images
 ## <a name="overview"></a>Übersicht
 Kunden können beim Bereitstellen neuer virtueller Server in Azure Deutschland wahlweise vorgefertigte Images von Microsoft verwenden oder ihre eigenen VHDs hochladen. So erhalten Sie die Flexibilität, bei Bedarf Ihre eigenen standardisierten Images verwenden zu können.
@@ -247,7 +245,6 @@ Weitere Informationen zur Bereitstellung aus dem Marketplace oder zum Erstellen 
 * [Erstellen einer Windows-VM im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Häufig gestellte Fragen zu virtuellen Windows-Computern](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Erfassen eines klassischen virtuellen Linux-Computers als Image](../virtual-machines/linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-
 
 
 

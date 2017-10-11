@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: mcoskun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
 ms.openlocfilehash: d607449a16e886337ab1bd96213fbb4231124353
-ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-service-fabric-reliable-state-manager-and-reliable-collection-internals"></a>Ausführliche Informationen über Service Fabric Reliable State Manager und Reliable Collection
 In diesem Dokument werden ausführliche Informationen über den Reliable State Manager und über Reliable Collections gegeben. Es wird beschrieben, wie die wichtigsten Komponenten im Hintergrund funktionieren.
 
@@ -56,5 +53,4 @@ Reliable Collection dagegen prüft nur die aktuellste Version der einzelnen Schl
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Transaktionen und Sperren](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-
 

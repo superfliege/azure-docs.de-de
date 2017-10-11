@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: alkohli;anbacker
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 6b0e763769564eaa191c78df05c008150c9a363f
 ms.openlocfilehash: cecc2566b432e897b5eff0c12e66598f0518ed80
-ms.lasthandoff: 03/01/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="contact-microsoft-support-for-your-storsimple"></a>Wenden Sie sich an den Microsoft Support für StorSimple
 Wenn Probleme mit Ihrer Microsoft Azure StorSimple-Lösung auftreten, können Sie eine Serviceanfrage für den technischen Support erstellen. In einer Onlinesitzung mit dem Supporttechniker müssen Sie darüber hinaus eine Supportsitzung auf Ihrem StorSimple-Gerät starten. In diesem Artikel wird Folgendes beschrieben:
@@ -50,7 +49,8 @@ Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
    2. Wählen Sie aus der Dropdownliste ein **Abonnement** aus.
    3. Wählen Sie aus der Dropdownliste **Dienst** den Eintrag **StorSimple** aus. 
    4. Wählen Sie aus der Dropdownliste einen **Supportplan** aus. Sie benötigen einen kostenpflichtigen Supportplan, um technischen Support zu erhalten.
-4. Klicken Sie auf **Next**. Das Dialogfeld **Problem** wird angezeigt.
+4. Klicken Sie auf **Weiter**.
+ Das Dialogfeld **Problem** wird angezeigt.
    
     ![Neue Supportanfrage (Bereich)](./media/storsimple-contact-microsoft-support/Ibiza5a.png) 
 5. Führen Sie im Dialogfeld **Problem** Folgendes aus:
@@ -62,7 +62,8 @@ Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
    5. Geben Sie im Feld **Zeitraum** das Datum, die Uhrzeit und die Zeitzone an, die dem letzten Auftreten von Ihrem Problem entsprechen.
    6. Klicken Sie unter **Dateiupload**auf das Ordnersymbol, um Ihr Supportpaket zu suchen.
    7. Aktivieren Sie das Kontrollkästchen **Diagnoseinformationen freigeben** .
-6. Klicken Sie auf **Next**. Das Dialogfeld **Kontaktinformationen** wird angezeigt.
+6. Klicken Sie auf **Weiter**.
+ Das Dialogfeld **Kontaktinformationen** wird angezeigt.
    
     ![Neue Supportanfrage (Bereich)](./media/storsimple-contact-microsoft-support/Ibiza6a.png) 
 7. Geben Sie Ihre Kontaktinformationen ein, und wählen Sie eine Kontaktmethode (Telefon oder E-Mail) aus. 
@@ -93,5 +94,4 @@ Führen Sie zum Starten einer Supportsitzung die folgenden Schritte aus:
 > Sie können den Supportzugriff deaktivieren, indem Sie `Disable-HcsSupportAccess` deaktivieren. Das StorSimple-Gerät versucht acht Stunden nach dem Initiieren der Sitzung ebenfalls, den Supportzugriff zu deaktivieren. Es wird empfohlen, die Anmeldeinformationen für das StorSimple-Gerät nach dem Initiieren einer Supportsitzung zu ändern.
 > 
 > 
-
 

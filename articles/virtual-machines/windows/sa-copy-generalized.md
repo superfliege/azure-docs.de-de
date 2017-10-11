@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: d7f4a9558175835eba9096e6845726f21c7459d3
-ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Erstellen nicht verwalteter VM-Images aus virtuellen Azure-Computern
 
 In diesem Artikel wird die Verwendung von Speicherkonten behandelt. Es wird empfohlen, anstelle eines Speicherkontos verwaltete Datenträger und verwaltete Images zu verwenden. Weitere Informationen finden Sie unter [Erstellen verwalteter Images generalisierter virtueller Computer in Azure](capture-image-resource.md).
@@ -255,6 +253,5 @@ Anschließend müsste der neu erstellte virtuelle Computer im [Azure-Portal](htt
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
 
 

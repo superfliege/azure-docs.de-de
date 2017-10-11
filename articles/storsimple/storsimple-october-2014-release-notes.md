@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 4dfd3973593a94adfc15a6e15d69c697e13998af
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="storsimple-8000-series-update-01-release-notes--october-2014"></a>Versionsanmerkungen zu Update 0.1 der StorSimple 8000-Serie – Oktober 2014
 ## <a name="overview"></a>Übersicht
@@ -96,5 +94,4 @@ Diese Version wendet auch ein kumulatives Firmwareupdate zur Behebung von Zuverl
 
 ## <a name="virtual-device-updates-in-the-october-release"></a>Updates für das virtuelle Gerät in der Oktober-Version
 Diese Version enthält keine Updates für das virtuelle Gerät. Durch die Installation des Updates ändert sich die Softwareversion des virtuellen Geräts nicht.
-
 

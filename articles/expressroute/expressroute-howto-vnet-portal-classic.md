@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/20/2016
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1206d7444f32216597a6f546c71131b2de0ec3f8
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: f62254b2a7df50aa55a2a49009702848a9aecebd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-virtual-network-for-expressroute-in-the-classic-portal"></a>Erstellen eines virtuellen Netzwerks für ExpressRoute im klassischen Portal
 In diesem Artikel werden Sie Schritt für Schritt durch die Konfiguration eines virtuellen Netzwerks und eines Gateways für virtuelle Netzwerke zur Verwendung mit ExpressRoute geführt. Dabei werden das klassische Bereitstellungsmodell und das klassische Portal verwendet.
@@ -76,5 +75,4 @@ Wenn Sie bereits über ein klassisches VNet verfügen, können Sie es im klassis
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Hinzufügen virtueller Computer zu Ihrem virtuellen Netzwerk finden Sie unter [Virtual Machines-Lernpfade](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/).
 * Weitere Informationen zu ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](expressroute-introduction.md).
-
 

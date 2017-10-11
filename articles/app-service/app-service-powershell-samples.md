@@ -16,12 +16,11 @@ ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: e35cea1a057b9c5f86325bfb6cf6e0e27f4ce203
-ms.contentlocale: de-de
-ms.lasthandoff: 04/06/2017
-
+ms.openlocfilehash: 3254fdd57cfcd170f22374c1e3b058e6081d8e8e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell-Beispiele
 
@@ -47,4 +46,3 @@ Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe von Azure Powe
 |**Überwachen der App**||
 | [Überwachen einer Web-App mit Webserverprotokollen](./scripts/app-service-powershell-monitor.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine Azure-Web-App, aktiviert die Protokollierung für die App und lädt die Protokolle auf Ihren lokalen Computer herunter. |
 | | |
-

@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: magoedte;bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 4a3ee3c4d1fa9b626a51f24997603adceed8311f
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="upgrade-your-azure-log-analytics-workspace-to-new-log-search"></a>Upgrade des Azure Log Analytics-Arbeitsbereichs auf die neue Protokollsuche
 
 > [!NOTE]
@@ -84,4 +82,3 @@ Geben Sie einfach die Abfrage in der alten Sprache ein, und klicken Sie dann auf
 - Sehen Sie sich ein [Tutorial zur neuen Sprache](https://go.microsoft.com/fwlink/?linkid=856078) an.
 - Durchlaufen Sie ein [Tutorial zur Verwendung des Portals der Protokollsuche](log-analytics-log-search-log-search-portal.md) mit der neuen Abfragesprache.
 - Sehen Sie sich eine Einführung in das neue [Advanced Analytics-Portal](https://go.microsoft.com/fwlink/?linkid=856587) an.
-

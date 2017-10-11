@@ -15,12 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: 041a8835a1dd185739b23d4073fd5811bb4490b5
-ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 Dieser Artikel beschreibt das Datenmodell, das für die Pushübertragung von Berichtsdaten an Log Analytics verwendet wird. Mit diesem Datenmodell können Sie benutzerdefinierte Abfragen und Dashboards erstellen und in OMS verwenden. 
@@ -288,4 +287,3 @@ Diese Tabelle enthält Details zu tresorbezogenen Feldern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie das Datenmodell zum Erstellen von Azure Backup-Berichten überprüft haben, können Sie mit dem [Erstellen von Dashboards](../log-analytics/log-analytics-dashboards.md) in Log Analytics und OMS beginnen.
-

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: e03d17992ee0b12049636e40188950bcc4a6f31e
-ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="step-4-set-up-a-vault-for-azure-to-azure-replication"></a>Schritt 4: Einrichten eines Tresors für die Replikation zwischen Azure-Regionen
 
 Verwenden Sie nach dem [Planen von Netzwerken](azure-to-azure-walkthrough-network.md) diesen Artikel zum Einrichten eines Tresors, um virtuelle Azure-Computer (VMs) mit dem [Azure Site Recovery](site-recovery-overview.md)-Dienst im Azure-Portal in einer anderen Azure-Region zu replizieren.
@@ -50,4 +48,3 @@ Verwenden Sie nach dem [Planen von Netzwerken](azure-to-azure-walkthrough-networ
 ## <a name="next-steps"></a>Nächste Schritte
 
 Gehen Sie zu [Schritt 5: Aktivieren der Replikation](azure-to-azure-walkthrough-enable-replication.md).
-

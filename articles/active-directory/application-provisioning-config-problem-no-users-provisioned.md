@@ -13,16 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
 ms.openlocfilehash: 30db71c0706de1dcc0d48fb72fa5d62475a14ba7
-ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
-
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt
 
 Nachdem die automatische Bereitstellung für eine Anwendung konfiguriert wurde (einschließlich der Überprüfung, ob die Anmeldeinformationen für die App gültig sind, die Azure AD bereitgestellt wurden, um die Verbindung mit der Anwendung herzustellen). Anschließend wird durch Folgendes bestimmt, ob Benutzer und/oder Gruppen für die App bereitgestellt wurden:
@@ -69,5 +65,4 @@ Wenn ein Benutzer in den Überwachungsprotokollen als „übersprungen“ angeze
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning.md)
-
 

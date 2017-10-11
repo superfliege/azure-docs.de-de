@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: 8babb0d016729f318442af93596d206c38d91206
-ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="step-6-run-a-test-failover-for-azure-vm-replication"></a>Schritt 6: Ausführen eines Testfailovers für die Replikation virtueller Azure-Computer
 
 Nachdem Sie die Replikation für virtuelle Azure-Computer (Virtual Machines, VMs) aktiviert haben, befolgen Sie die Schritte in diesem Artikel, um mithilfe des [Azure Site Recovery](site-recovery-overview.md)-Diensts im Azure-Portal ein Testfailover aus einer Azure-Region in eine andere auszuführen.
@@ -66,5 +64,4 @@ Nachdem Sie das Failover getestet haben, ist diese exemplarische Vorgehensweise 
 - Erfahren Sie mehr über das Failover mehrerer VMs [mithilfe eines Wiederherstellungsplans](site-recovery-create-recovery-plans.md).
 - Erfahren Sie mehr über die [Verwendung von Wiederherstellungsplänen](site-recovery-create-recovery-plans.md).
 - Erfahren Sie mehr über das [erneute Schützen von virtuellen Azure-Computern](site-recovery-how-to-reprotect.md) nach einem Failover.
-
 

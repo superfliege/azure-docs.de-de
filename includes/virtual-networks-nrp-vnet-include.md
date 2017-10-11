@@ -1,32 +1,32 @@
 ## <a name="virtual-network"></a>Virtuelles Netzwerk
-Mit virtuellen Netzwerken (VNET) und Subnetzressourcen können Sie eine Sicherheitsbegrenzung für in Azure ausgeführte Workloads definieren. Ein VNet ist durch eine Auflistung von Adressräumen gekennzeichnet, die als CIDR-Blöcke bezeichnet werden. 
+Virtuelle Netzwerke (VNETS) und die Subnetze Ressourcen helfen definieren eine Sicherheitsgrenze für arbeitsauslastungen, die in Azure ausgeführt wird. Eine VNet wird durch eine Auflistung von Adressräume, definiert als CIDR-Blöcke gekennzeichnet. 
 
 > [!NOTE]
-> Netzwerkadministratoren sind mit der CIDR-Notation vertraut. Wenn Sie CIDR nicht kennen, [erfahren Sie hier mehr darüber](http://whatismyipaddress.com/cidr).
+> Netzwerkadministratoren sind mit CIDR-Notation vertraut. Wenn Sie nicht mit CIDR-WERTS vertraut sind [erfahren Sie mehr über diese](http://whatismyipaddress.com/cidr).
 > 
 > 
 
 ![VNet mit mehreren Subnetzen](./media/resource-groups-networking/Figure4.png)
 
-VNets umfassen die folgenden Eigenschaften:
+VNets werden die folgenden Eigenschaften enthalten.
 
 | Eigenschaft | Beschreibung | Beispielwerte |
 | --- | --- | --- |
-| **addressSpace** |Auflistung der Adresspräfixe, aus denen das VNet besteht, in CIDR-Notation |192.168.0.0/16 |
-| **Subnetze** |Auflistung von Subnetzen, aus denen das VNet besteht |siehe unten unter [Subnetze](#Subnets) |
-| **ipAddress** |Die dem Objekt zugewiesene IP-Adresse. Dies ist eine schreibgeschützte Eigenschaft. |104.42.233.77 |
+| **addressSpace** |Auflistung von-Adresspräfixen, die denen des virtuellen Netzwerks in CIDR-Notation besteht |192.168.0.0/16 |
+| **Subnetze** |Eine Auflistung von Subnetzen, die das VNet bilden |finden Sie unter [Subnetze](#Subnets) unten. |
+| **IP-Adresse** |IP-Adresse zu einem Objekt zugewiesen ist. Dies ist eine schreibgeschützte Eigenschaft. |104.42.233.77 |
 
 ### <a name="subnets"></a>Subnetze
-Ein Subnetz ist eine untergeordnete Ressource eines VNet und hilft, die Segmente von Adressräumen innerhalb eines CIDR-Blocks mithilfe von IP-Adressenpräfixen zu definieren. NICs können zu Subnetzen hinzugefügt und mit virtuellen Computern verbunden werden, sodass sie Konnektivität für verschiedene Workloads bereitstellen.
+Ein Subnetz ist eine untergeordnete Ressource von einem VNet, und hilft definieren Segmente in einem CIDR-Block, mit der IP-Adresspräfixen Adressräume. NICs können Subnetze hinzugefügt, und auf virtuellen Computern, die Konnektivität bereitgestellt wird, für verschiedene Arbeitslasten verbunden werden.
 
-Subnetze umfassen die folgenden Eigenschaften: 
+Subnetze enthalten die folgenden Eigenschaften. 
 
 | Eigenschaft | Beschreibung | Beispielwerte |
 | --- | --- | --- |
-| **addressPrefix** |Einzelnes Adresspräfix für das Subnetz in CIDR-Notation |192.168.1.0/24 |
-| **networkSecurityGroup** |Auf das Subnetz angewendete NSG |siehe [NSGs](#Network-Security-Group) |
-| **routeTable** |Auf das Subnetz angewendete Routentabelle |siehe [UDR](#Route-table) |
-| **ipConfigurations** |Auflistung von IP-Konfigurationsobjekten, die von mit dem Subnetz verbundenen NICs verwendet werden |siehe [UDR](#Route-table) |
+| **addressPrefix** |Einzelne Adresspräfix, aus denen das Subnetz im CIDR-Notation besteht |192.168.1.0/24 |
+| **networkSecurityGroup** |NSG dem Subnetz angewendet |finden Sie unter [Netzwerksicherheitsgruppen](#Network-Security-Group) |
+| **routeTable** |Routentabelle angewendet, die dem Subnetz |finden Sie unter [UDR](#Route-table) |
+| **IP-Konfigurationen** |Sammlung von IP-bei-Objekten verwendet, die für das Subnetz mit verbundenen NICs. |finden Sie unter [UDR](#Route-table) |
 
 Beispiel-VNet im JSON-Format:
 
@@ -73,7 +73,7 @@ Beispiel-VNet im JSON-Format:
     }
 
 ### <a name="additional-resources"></a>Zusätzliche Ressourcen
-* Weitere Informationen zu [VNet](../articles/virtual-network/virtual-networks-overview.md).
-* Lesen Sie die [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163650.aspx) für Informationen zu VNets.
-* Lesen Sie die [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163618.aspx) für Informationen zu Subnetzen.
+* Weitere Informationen zu erhalten [VNet](../articles/virtual-network/virtual-networks-overview.md).
+* Lesen der [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163650.aspx) für VNets.
+* Lesen der [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163618.aspx) für Subnetze.
 

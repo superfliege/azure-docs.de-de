@@ -12,15 +12,12 @@ ms.devlang: na
 ms.topic: landing - page
 ms.date: 7/06/2017
 ms.author: arijitt
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: f246c6d1355220314a2f56aa91634625ec352c69
-ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
-
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Problembehandlung mit Azure HDInsight
 
 | Apache-Workload | Wichtige Fragen |
@@ -38,6 +35,5 @@ ms.lasthandoff: 08/23/2017
 | --- | --- |
 | HDInsight unter Linux und Optimierung | - [Informationen zur Verwendung von HDInsight unter Linux](hdinsight-hadoop-linux-information.md)<br>- [Behandlung von Hadoop-Arbeitsspeicher- und Leistungsproblemen](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Leistung von Hive-Abfragen](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
 | Protokolle und Speicherabbilder | - [Zugriff auf Hadoop YARN-Anwendungsprotokolle unter Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [Aktivieren von Heapdumps für Hadoop-Dienste unter Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>- [Analysieren von HDInsight-Protokollen](hdinsight-debug-jobs.md)|
-| Fehler | - [Verstehen und Beheben von WebHCat-Fehlern](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [Hive-Einstellungen zum Beheben von OutofMemory-Fehlern](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
+| Errors | - [Verstehen und Beheben von WebHCat-Fehlern](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [Hive-Einstellungen zum Beheben von OutofMemory-Fehlern](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | Tools | - [Debuggen von Tez-Aufträgen mithilfe von Ambari-Ansichten](hdinsight-debug-ambari-tez-view.md)<br>- [Optimieren von Hive-Abfragen](hdinsight-hadoop-optimize-hive-query.md) |
-

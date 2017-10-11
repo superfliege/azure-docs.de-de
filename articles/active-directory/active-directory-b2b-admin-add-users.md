@@ -1,5 +1,4 @@
 ---
-
 title: "Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu? | Microsoft Docs"
 description: "Ein Administrator kann Ihrer Azure AD-Instanz Gastbenutzer über eine Partnerorganisation unter Verwendung der Azure Active Directory B2B-Zusammenarbeit hinzufügen."
 services: active-directory
@@ -16,15 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
 ms.openlocfilehash: 7f33165141f31c1b495313f2da0d6e4681bdf8f2
-ms.lasthandoff: 03/17/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
-
 # <a name="how-do-azure-active-directory-admins-add-b2b-collaboration-users"></a>Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?
 
 Globale Administratoren und Administratoren mit eingeschränkten Berechtigungen können das [Azure-Portal](https://portal.azure.com) verwenden, um B2B-Zusammenarbeitsbenutzer zum Verzeichnis oder einer beliebigen Gruppe oder Anwendung einzuladen.
@@ -70,4 +66,3 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 * [Azure Active Directory B2B-Zusammenarbeit: API und Anpassung](active-directory-b2b-api.md)
 * [Hinzufügen von Benutzern der B2B-Zusammenarbeit ohne Einladung](active-directory-b2b-add-user-without-invite.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-

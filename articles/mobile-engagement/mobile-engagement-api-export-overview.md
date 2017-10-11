@@ -1,4 +1,3 @@
-
 ---
 title: "Übersicht über die Mobile Engagement-Export-API"
 description: "Erfahren Sie die Grundlagen zum Exportieren der Rohdaten, die von den Geräten Ihrer Benutzer generiert werden. So können Sie diese Daten in Ihren eigenen Tools nutzen."
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 04/26/2016
 ms.author: kapiteir
-translationtype: Human Translation
-ms.sourcegitcommit: b1e2ddb613e713972820621d0fa836c41eb61f91
 ms.openlocfilehash: 346e0e480ff84ee849f135a7605d27df9e32f966
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="mobile-engagement-export-api-overview"></a>Übersicht über die Mobile Engagement-Export-API
 ## <a name="introduction"></a>Einführung
@@ -73,10 +72,4 @@ Beachten Sie, dass es möglicherweise einige Minuten dauert, bis der Auftrag ges
 Sobald der Auftrag erstellt wurde, kann sein Status überprüft werden, um festzustellen, ob er noch ausgeführt wird oder ob er abgeschlossen wurde.
 
 Sobald der Auftrag ERFOLGREICH abgeschlossen ist, steht die resultierende Datendatei im bereitgestellten Speichercontainer zur Verfügung.
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

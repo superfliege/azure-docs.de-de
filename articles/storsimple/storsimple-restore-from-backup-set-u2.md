@@ -1,6 +1,6 @@
 ---
 title: Wiederherstellen eines StorSimple-Volumes aus einer Sicherung | Microsoft Docs
-description: "Erläutert, wie Sie die Seite &quot;Sicherungskatalog&quot; des StorSimple Manager-Diensts zum Wiederherstellen eines StorSimple-Volumes aus einem Sicherungssatz verwenden."
+description: "Erläutert, wie Sie die Seite \"Sicherungskatalog\" des StorSimple Manager-Diensts zum Wiederherstellen eines StorSimple-Volumes aus einem Sicherungssatz verwenden."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/22/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 99b76e3bc2939c65654cbf606fda6f8a45e0c44b
-ms.contentlocale: de-de
-ms.lasthandoff: 04/20/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set-update-2"></a>Wiederherstellen eines StorSimple-Volumes aus einem Sicherungssatz (Update 2)
 [!INCLUDE [storsimple-version-selector-restore-from-backup](../../includes/storsimple-version-selector-restore-from-backup.md)]
@@ -54,7 +52,7 @@ Für Geräte, auf denen Update 4 oder höher ausgeführt wird, wird eine Heatmap
 Die Heatmap-basierte Erfassung ist nur für mehrstufige Volumes aktiviert. Lokale Volumes werden nicht unterstützt. Auch beim Klonen eines Volumes auf einem anderen Gerät wird die Heatmap-basierte Wiederherstellung nicht unterstützt. Wenn bei einer direkten Wiederherstellung auf dem Gerät eine lokale Momentaufnahme für das wiederherzustellende Volume vorhanden ist, wird keine Aktivierung durchgeführt (da die Daten bereits lokal verfügbar sind). Standardmäßig werden bei der Wiederherstellung die Aktivierungsaufträge initiiert, mit denen Daten basierend auf der Heatmap proaktiv aktiviert werden. In Update 4 können Windows PowerShell-Cmdlets zum Abfragen der ausgeführten Aktivierungsaufträge, zum Abbrechen eines Aktivierungsauftrags und zum Abrufen des Status des Aktivierungsvorgangs verwendet werden.
 
 * `Get-HcsRehydrationJob`: Mit diesem Cmdlet wird der Status des Aktivierungsauftrags abgerufen. Für ein Volume wird jeweils ein Aktivierungsauftrag ausgelöst.
-* `Set-HcsRehydrationJob`: Mit diesem Cmdlet können Sie den Aktivierungsauftrag unterbrechen, beenden und wiederaufnehmen, wenn die Aktivierung ausgeführt wird.    
+* `Set-HcsRehydrationJob`: Mit diesem Cmdlet können Sie den Aktivierungsauftrag unterbrechen, beenden und wiederaufnehmen, wenn die Aktivierung ausgeführt wird. 
 
 Weitere Informationen zu den Cmdlets für die Aktivierung finden Sie in der [Cmdlet-Referenz für Windows PowerShell für StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 
@@ -69,7 +67,7 @@ Die Seite **Sicherungskatalog** bietet eine Abfrage, mit der Sie die Auswahl der
 
 Die gefilterten Sicherungssätze werden dann basierend auf den folgenden Attributen in Tabellenform angezeigt:
 
-* **Name** – der Name der Sicherungsrichtlinie oder des Volumes, der oder dem dieser Sicherungssatz zugeordnet ist.
+* **Name**: Name der Sicherungsrichtlinie oder des Volumes, der oder dem dieser Sicherungssatz zugeordnet ist.
 * **Größe** – die tatsächliche Größe des Sicherungssatzes.
 * **Erstellt am** – das Datum und die Uhrzeit der Erstellung der Sicherungen. 
 * **Typ** – Sicherungssätze können lokale Momentaufnahmen oder Cloudmomentaufnahmen sein. Eine lokale Momentaufnahme ist eine Sicherung aller Volumedaten, die lokal auf dem Gerät gespeichert sind. Die Sicherung von Volumedaten in der Cloud wird dagegen als Cloudmomentaufnahme bezeichnet. Lokale Momentaufnahmen bieten schnelleren Zugriff, während Cloudmomentaufnahmen für Datenstabilität ausgewählt werden.
@@ -121,5 +119,4 @@ Um den Wiederherstellungsvorgang erfolgreich abzuschließen, schalten Sie das Vo
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [StorSimple-Volumes verwalten](storsimple-manage-volumes-u2.md).
 * Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple Manager-Diensts verwalten](storsimple-manager-service-administration.md).
-
 

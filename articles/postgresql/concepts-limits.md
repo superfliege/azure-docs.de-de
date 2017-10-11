@@ -10,12 +10,11 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/01/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: a4ddb9d4f672de6cf1ebe137bf06e5e2c8b7796f
-ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.openlocfilehash: 38988fc5c0dc05331ea078534cd1a05e9eca2493
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Einschränkungen in Azure-Datenbank für PostgreSQL
 Der Azure-Datenbank für PostgreSQL-Dienst ist in der öffentlichen Vorschau verfügbar. In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben.
@@ -64,4 +63,3 @@ Wenn die max. Anzahl von Verbindungen erreicht wird, wird möglicherweise folgen
 - Thema [Informationen zu den verfügbaren Funktionen in jedem Tarif](concepts-service-tiers.md) lesen
 - Thema [Unterstützte PostgreSQL-Datenbankversionen ](concepts-supported-versions.md) lesen
 - Thema [Sichern und Wiederherstellen eines Servers in Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals](howto-restore-server-portal.md) durchgehen
-

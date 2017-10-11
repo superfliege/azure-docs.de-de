@@ -1,6 +1,6 @@
 ---
-title: Tutorial zur Microsoft Azure StorSimple Virtual Array-Sicherung | Microsoft Docs
-description: Beschreibt das Sichern von StorSimple Virtual Array-Freigaben und -Volumes.
+title: Microsoft Azure StorSimple Virtual Array-backup-Lernprogramm | Microsoft Docs
+description: Beschreibt, wie Sie StorSimple Virtual Array-Freigaben und Volumes sichern.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,104 +15,103 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: ed759edbf4548bc0d6c041ca825ddb392430795b
 ms.openlocfilehash: c926f0c80ce56cac3106ad97ec3ec2e18a8e2cc6
-ms.lasthandoff: 03/01/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Sichern von Freigaben oder Volumes in Ihrem StorSimple Virtual Array
+# <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Sichern Sie Freigaben oder Volumes für Ihr virtuelles StorSimple-Array
 
 ## <a name="overview"></a>Übersicht
 
-Das StorSimple Virtual Array ist ein lokales virtuelles Cloudspeichergerät, das als Dateiserver oder iSCSI-Server konfiguriert werden kann. Das Virtual Array ermöglicht dem Benutzer, geplante und manuelle Sicherungen aller Freigaben oder Volumes auf dem Gerät zu erstellen. Wenn als Dateiserver konfiguriert ist, ermöglicht es auch die Wiederherstellung auf Elementebene. In diesem Tutorial wird beschrieben, wie geplante und manuelle Sicherungen erstellt werden können, und die Wiederherstellung auf Elementebene durchgeführt werden kann, um eine gelöschte Datei auf Ihrem virtuellen Array wiederherzustellen.
+Das virtuelle StorSimple-Array ist ein Hybrid Cloud-Speicher auf lokale virtuelle Gerät, das als einen Dateiserver oder iSCSI-Server konfiguriert werden können. Die virtual Array kann der Benutzer zum Erstellen von geplanter und manueller Sicherungen aller Freigaben oder Volumes auf dem Gerät. Wenn als Dateiserver konfiguriert ist, können sie auch Wiederherstellung auf Elementebene aus. In diesem Lernprogramm wird beschrieben, wie geplante und manuelle Sicherungen erstellen und Ausführen der Wiederherstellung auf Elementebene zum Wiederherstellen einer gelöschten Datei auf Ihrem virtuellen Arrays ermöglicht wird.
 
-Dieses Tutorial gilt nur für StorSimple Virtual Array. Informationen zur 8000-Serie finden Sie unter [Erstellen eines Backups für Geräte der 8000-Serie](storsimple-manage-backup-policies-u2.md)
+Dieses Tutorial bezieht sich auf das virtuelle StorSimple-Arrays nur. Informationen zu 8000-Serie, wechseln Sie zu [erstellen Sie eine Sicherung für Gerät der 8000-Serie](storsimple-manage-backup-policies-u2.md)
 
-## <a name="back-up-shares-and-volumes"></a>Sichern von Freigaben und Volumes
+## <a name="back-up-shares-and-volumes"></a>Sichern von Freigaben und volumes
 
-Sicherungen stellen Zeitpunktschutz zur Verfügung und verbessern die Wiederherstellbarkeit bei gleichzeitiger Minimierung der Wiederherstellungszeiten für Freigaben und Volumes. Für das Sichern einer Freigabe oder eines Volumes auf dem StorSimple-Gerät sind zwei Methoden möglich: **geplant** oder **manuell**. Diese Methoden werden in den folgenden Abschnitten erläutert.
+Sicherungen Point-in-Time-Schutz bieten, verbessern die wiederherstellbarkeit und Minimierung der Wiederherstellungszeiten für Freigaben und Volumes. Sie können eine Freigabe oder ein Volume auf Sichern Ihres StorSimple-Geräts auf zwei Arten: **geplante** oder **manuell**. Jede der Methoden wird in den folgenden Abschnitten erläutert.
 
-## <a name="change-the-backup-start-time"></a>Ändern der Startzeit der Sicherung
+## <a name="change-the-backup-start-time"></a>Ändern Sie die backup-Startzeit
 
 > [!NOTE]
-> In dieser Version werden geplante Sicherungen durch eine Standardrichtlinie erstellt, die täglich zu einer bestimmten Uhrzeit ausgeführt wird und alle Freigaben oder Volumes auf dem Gerät sichert. Derzeit können für geplante Sicherungen keine benutzerdefinierten Richtlinien erstellt werden.
+> In dieser Version werden geplante Sicherungen durch eine Standardrichtlinie erstellt, die täglich zu einem bestimmten Zeitpunkt ausgeführt wird und sichert alle Freigaben oder Volumes auf dem Gerät. Es ist nicht möglich, benutzerdefinierte Richtlinien für geplante Sicherungen zu diesem Zeitpunkt zu erstellen.
 
 
-Ihr StorSimple Virtual Array verfügt über eine Standard-Sicherungsrichtlinie, die zu einer angegebenen Uhrzeit (22:30) beginnt, und alle Freigaben oder Volumes auf dem Gerät einmal pro Tag sichert. Sie können die Zeit ändern, zu der die Sicherung gestartet wird, die Häufigkeit und Vermerkdauer (Anzahl der beizubehaltenden Sicherungen) können nicht geändert werden. Während dieser Sicherung wird das gesamte virtuelle Gerät gesichert. Dies kann möglicherweise Auswirkungen auf die Leistung des Geräts haben, und die auf diesem Gerät bereitgestellten Workloads betreffen. Aus diesem Grund empfehlen wir, deren Ausführung außerhalb der Spitzenzeiten einzuplanen.
+Das virtuelle StorSimple-Array verfügt über eine Standard-backup-Richtlinie, die beginnt an einer angegebenen Uhrzeit (22:30) und sichert alle Freigaben oder Volumes auf dem Gerät einmal pro Tag. Sie können die Zeit ändern, an der die Sicherung gestartet wurde, aber die Häufigkeit und die Beibehaltungsdauer (die die Anzahl der Sicherungen beibehalten angibt) geändert werden können. Bei diesen Sicherungen wird das gesamte virtuelle Gerät gesichert. Dies kann potenziell Auswirkungen auf die Leistung des Geräts und Auswirkungen auf die arbeitsauslastungen auf dem Gerät bereitgestellt. Aus diesem Grund wird empfohlen, diese Sicherungen Spitzenzeiten zu planen.
 
- Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) aus, um die Standardstartzeit für die Sicherung zu ändern.
+ Um die Sicherung Standardstartzeit zu ändern, führen Sie die folgenden Schritte aus, in der [Azure-Portal](https://portal.azure.com/).
 
-#### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>So ändern Sie die Startzeit für die Standard-Sicherungsrichtlinie
+#### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>So ändern Sie die Startzeit für die Sicherung Standardrichtlinie
 
-1. Wechseln Sie zu **Geräte**. Daraufhin wird die Liste der Geräte, die bei Ihrem StorSimple-Geräte-Manager-Dienst registriert sind, angezeigt. 
+1. Wechseln Sie zu **Geräte**. Die Liste der Geräte bei Ihrem StorSimple-Geräte-Manager-Dienst registriert wird, werden angezeigt. 
    
-    ![navigieren zu Geräte](./media/storsimple-virtual-array-backup/changebuschedule1.png)
+    ![Navigieren Sie zu Geräten](./media/storsimple-virtual-array-backup/changebuschedule1.png)
 
-2. Wählen Sie Ihr Gerät aus, und klicken Sie darauf. Das Blatt **Einstellungen** wird angezeigt. Gehen Sie zu **Verwalten > Sicherungsrichtlinien**.
+2. Wählen Sie aus, und klicken Sie auf Ihrem Gerät. Die **Einstellungen** Blatt wird angezeigt. Wechseln Sie zu **verwalten > Sicherungsrichtlinien**.
    
-    ![Auswahl Ihres Geräts](./media/storsimple-virtual-array-backup/changebuschedule2.png)
+    ![Wählen Sie Ihr Gerät](./media/storsimple-virtual-array-backup/changebuschedule2.png)
 
-3. Auf dem Blatt **Sicherungsrichtlinien**, ist die angegebene Standardstartzeit 22:30 Uhr. Sie können in „Zeitzone des Geräts“ eine neue Startzeit für den täglichen Zeitplan angeben.
+3. In der **Sicherungsrichtlinien** Blatt die Standardstartzeit ist 22:30 Uhr fortgeführt. Sie können die neue Startzeit für den täglichen Zeitplan in der Zeitzone des Geräts angeben.
    
-    ![Navigieren zu Sicherungsrichtlinien](./media/storsimple-virtual-array-backup/changebuschedule5.png)
+    ![Navigieren Sie zu backup-Richtlinien](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
 4. Klicken Sie auf **Speichern**.
 
 ### <a name="take-a-manual-backup"></a>Erstellen einer manuellen Sicherung
 
-Neben geplanten Sicherungen können Sie jederzeit eine manuelle (bedarfsgesteuerte) Sicherung von Gerätedaten vornehmen.
+Zusätzlich zu geplanten Sicherungen können Sie eine manuelle (bedarfsgesteuerten) Sicherung der Gerätedaten zu einem beliebigen Zeitpunkt ausführen.
 
-#### <a name="to-create-a-manual-backup"></a>So erstellen Sie eine manuelle Sicherung
+#### <a name="to-create-a-manual-backup"></a>Zum Erstellen einer manuellen Sicherung
 
-1. Wechseln Sie zu **Geräte**. Wählen Sie Ihr Gerät aus, und klicken Sie mit der rechten Maustaste auf der rechten Seite der ausgewählten Reihe auf **...**. Wählen Sie im Kontextmenü **Sicherung anlegen** aus.
+1. Wechseln Sie zu **Geräte**. Wählen Sie das Gerät, mit der Maustaste **...**  ganz rechts in der ausgewählten Zeile. Wählen Sie im Kontextmenü der **Sicherung**.
    
-    ![Navigieren zu Sicherung anlegen](./media/storsimple-virtual-array-backup/takebackup1m.png)
+    ![Navigieren Sie zu der Sicherung erstellen](./media/storsimple-virtual-array-backup/takebackup1m.png)
 
-2. Klicken Sie auf dem Blatt **Sicherung anlegen** auf **Sicherung anlegen**. Dadurch werden alle Freigaben auf dem Dateiserver oder alle Volumes auf Ihrem iSCSI-Server gesichert. 
+2. In der **Sicherung** Blatt, klicken Sie auf **Sicherung**. Auf diese Weise alle Freigaben auf dem Dateiserver oder alle Volumes auf dem iSCSI-Server sichern. 
    
-    ![Sicherung wird gestartet](./media/storsimple-virtual-array-backup/takebackup2m.png)
+    ![Sicherung starten](./media/storsimple-virtual-array-backup/takebackup2m.png)
    
-    Eine On-Demand-Sicherung wird gestartet. Dadurch sehen Sie, dass ein Sicherungsauftrag gestartet wurde.
+    Startet eine bedarfsgesteuerte Sicherung, und Sie sehen, dass ein Sicherungsauftrag gestartet wurde.
    
-    ![Sicherung wird gestartet](./media/storsimple-virtual-array-backup/takebackup3m.png) 
+    ![Sicherung starten](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
-    Sobald der Auftrag erfolgreich abgeschlossen wurde, erhalten Sie erneut eine Benachrichtigung. Anschließend Startet der Sicherungsvorgang.
+    Wenn der Auftrag erfolgreich abgeschlossen wurde, werden Sie erneut benachrichtigt. Anschließend wird der Sicherungsvorgang gestartet.
    
-    ![Sicherungsauftrag erstellt](./media/storsimple-virtual-array-backup/takebackup4m.png)
+    ![Der Sicherungsauftrag wurde erstellt](./media/storsimple-virtual-array-backup/takebackup4m.png)
 
-3. Klicken Sie zum Überwachen des Fortschritts der Sicherung und zum Anzeigen der Auftragsdetails auf die Benachrichtigung. Dadurch gelangen Sie zu **Auftragsdetails**.
+3. Zum Überwachen des Status von Sicherungen, und sehen Sie sich die Auftragsdetails, klicken Sie auf die Benachrichtigung. Dadurch gelangen Sie zu **Projektdetails**.
    
-     ![Auftragsdetails zur Sicherung](./media/storsimple-virtual-array-backup/takebackup5m.png)
+     ![Details des Sicherungsauftrags](./media/storsimple-virtual-array-backup/takebackup5m.png)
 
-4. Nachdem die Sicherung abgeschlossen ist, gehen Sie zu **Verwaltung > Sicherungskatalog**. Es wird eine Cloud-Momentaufnahme aller Freigaben (oder Volumes) auf Ihrem Gerät angezeigt.
+4. Nachdem die Sicherung abgeschlossen ist, navigieren Sie zu **Management > Sicherungskatalog**. Sie sehen eine Cloud-Momentaufnahme aller Freigaben (oder Datenträger) auf Ihrem Gerät.
    
-    ![Sicherung abgeschlossen](./media/storsimple-virtual-array-backup/takebackup19m.png) 
+    ![Vollständige Sicherung](./media/storsimple-virtual-array-backup/takebackup19m.png) 
 
-## <a name="view-existing-backups"></a>Anzeigen von vorhandenen Backups
-Führen Sie die folgenden Schritte im Azure-Portal aus, um vorhandene Sicherungen anzuzeigen.
+## <a name="view-existing-backups"></a>Zeigen Sie vorhandene Sicherungen an.
+Um die vorhandenen Sicherungen anzuzeigen, führen Sie die folgenden Schritte im Azure-Portal ein.
 
 #### <a name="to-view-existing-backups"></a>So zeigen Sie vorhandene Sicherungen an
 
-1. Wechseln Sie auf das Blatt**Geräte**. Wählen Sie Ihr Gerät aus, und klicken Sie darauf. Gehen Sie auf dem Blatt **Einstellungen** zu **Verwaltung > Sicherungskatalog**.
+1. Wechseln Sie zu **Geräte** Blatt. Wählen Sie aus, und klicken Sie auf Ihrem Gerät. In der **Einstellungen** wechseln Sie zum Blatt **Management > Sicherungskatalog**.
    
-    ![Navigieren zum Sicherungskatalog](./media/storsimple-virtual-array-backup/viewbackups1.png)
-2. Geben Sie die folgenden Kriterien an, die für die Filterung verwendet werden sollen:
+    ![Navigieren Sie zu Sicherungskatalog](./media/storsimple-virtual-array-backup/viewbackups1.png)
+2. Geben Sie die folgenden Kriterien zum Filtern verwendet werden:
    
-    - **Zeitbereich** – kann auf **Letzte Stunde**, **Letzte 24 Stunden**, **Letzte 7 Tage**, **Letzte 30 Tage**,**Letztes Jahr** und **Benutzerdefinierter Datumsbereich** festgelegt werden.
+    - **Zeitraum** – kann **letzten 1 Stunde**, **vergangenen 24 Stunden**, **letzte 7 Tage**, **in den letzten 30 Tagen**, **vergangenen Jahre**, und **benutzerdefiniertes Datum**.
     
-    - **Geräte** – Wählen Sie aus der Liste der Dateiserver oder iSCSI-Server aus, die bei Ihrem StorSimple-Geräte-Manager-Dienst registriert sind.
+    - **Geräte** – wählen Sie aus der Liste der Dateiserver oder iSCSI-Servern, die bei Ihrem StorSimple-Geräte-Manager-Dienst registriert.
    
-    - **Initiiert** – kann automatisch auf **Geplant** (durch eine Sicherungsrichtlinie) oder **Manuell** initiiert werden (durch Sie).
+    - **Initiiert** – kann automatisch **geplante** (indem Sie eine Sicherungsrichtlinie) oder **manuell** initiiert (von Ihnen).
    
     ![Filtern von Sicherungen](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. Klicken Sie auf **Übernehmen**. Die gefilterte Liste der Sicherungen wird auf dem Blatt **Sicherungskatalog** angezeigt. Beachten Sie, dass nur 100 Sicherungselemente zu einem bestimmten Zeitpunkt angezeigt werden können.
+3. Klicken Sie auf **Übernehmen**. Die gefilterte Liste von Sicherungen wird angezeigt, der **Sicherungskatalog** Blatt. Hinweis nur 100 backup Elemente können zu einem bestimmten Zeitpunkt angezeigt werden.
    
-    ![Aktualisierter Sicherungskatalog](./media/storsimple-virtual-array-backup/viewbackups3.png)
+    ![Aktualisierte Sicherungskatalog](./media/storsimple-virtual-array-backup/viewbackups3.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie [StorSimple Virtual Array verwalten](storsimple-ova-web-ui-admin.md).
-
+Erfahren Sie mehr über [verwalten Ihr virtuelles StorSimple-Array](storsimple-ova-web-ui-admin.md).
 

@@ -15,21 +15,20 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f48df694e6ac20a11f92faebeeec273745fbfaed
-ms.openlocfilehash: 12370f2c3367b69217d17228723b26b6a14d09ce
-ms.contentlocale: de-de
-ms.lasthandoff: 02/09/2017
-
+ms.openlocfilehash: f41402fc2cb282975b93071d998365fdb0a21941
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="single-sign-on-saml-protocol"></a>SAML-Protokoll für einmaliges Anmelden
+# SAML-Protokoll für einmaliges Anmelden
 In diesem Artikel werden die SAML 2.0-Authentifizierungsanforderungen und -antworten erläutert, die Azure Active Directory (Azure AD) für das einmalige Anmelden unterstützt.
 
 Das folgende Protokolldiagramm beschreibt den Ablauf für das einmalige Anmelden. Der Clouddienst (der Dienstanbieter) verwendet eine HTTP-Umleitungsbindung, um eine Authentifizierungsanforderung ( `AuthnRequest` ) an Azure AD (den Identitätsanbieter) zu übergeben. Azure AD verwendet daraufhin eine HTTP Post-Bindung, um ein `Response` -Element an den Clouddienst zu senden.
 
 ![Workflow für einmaliges Anmelden](media/active-directory-single-sign-on-protocol-reference/active-directory-saml-single-sign-on-workflow.png)
 
-## <a name="authnrequest"></a>AuthnRequest
+## AuthnRequest
 Clouddienste senden ein `AuthnRequest` -Element an Azure AD, um eine Benutzerauthentifizierung anzufordern. Beispielanforderung ( `AuthnRequest` ) für SAML 2.0:
 
 ```
@@ -56,7 +55,7 @@ Alle anderen `AuthnRequest` -Attribute (wie „Consent“, „Destination“, �
 
 Azure AD ignoriert auch das `Conditions`-Element in `AuthnRequest`.
 
-### <a name="issuer"></a>Issuer (Aussteller)
+### Issuer (Aussteller)
 Das `Issuer`-Element in einem `AuthnRequest`-Element muss mit einem der **ServicePrincipalNames**-Werte im Clouddienst von Azure AD exakt übereinstimmen. Normalerweise ist es auf den **App-ID-URI** festgelegt, der bei der Anwendungsregistrierung angegeben wird.
 
 Im Anschluss finden Sie einen SAML-Beispielausschnitt, der das `Issuer` -Element enthält:
@@ -65,7 +64,7 @@ Im Anschluss finden Sie einen SAML-Beispielausschnitt, der das `Issuer` -Element
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://www.contoso.com</Issuer>
 ```
 
-### <a name="nameidpolicy"></a>NameIDPolicy
+### NameIDPolicy
 Dieses Element erfordert in der Antwort ein bestimmtes Namens-ID-Format und ist bei an Azure AD gesendeten `AuthnRequest` -Elementen optional.
 
 Beispiel für ein `NameIdPolicy`-Element:
@@ -83,21 +82,21 @@ Wenn `NameIDPolicy` angegeben ist, können Sie sein optionales `Format`-Attribut
 
 Das `AllowCreate` -Attribut wird von Azure AD ignoriert.
 
-### <a name="requestauthncontext"></a>RequestAuthnContext
+### RequestAuthnContext
 Das `RequestedAuthnContext` -Element gibt die gewünschten Authentifizierungsmethoden an. In `AuthnRequest` -Elementen, die an Azure AD gesendet werden, ist es optional. Azure AD unterstützt nur den folgenden `AuthnContextClassRef`-Wert: `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`.
 
-### <a name="scoping"></a>Bereichsdefinition
+### Bereichsdefinition
 Das `Scoping`-Element enthält eine Liste mit Identitätsanbietern und ist bei `AuthnRequest`-Elementen, die an Azure AD gesendet werden, optional.
 
 Wenn Sie sich für die Angabe entscheiden, schließen Sie das `ProxyCount`-Attribut, `IDPListOption` und das `RequesterID`-Element nicht ein, da diese nicht unterstützt werden.
 
-### <a name="signature"></a>Signatur
+### Signatur
 Schließen Sie in `AuthnRequest`-Elemente kein `Signature`-Element ein, da Azure AD signierte Authentifizierungsanfragen nicht unterstützt.
 
-### <a name="subject"></a>Subject (Antragsteller)
+### Subject (Antragsteller)
 Azure AD ignoriert das `Subject`-Element von `AuthnRequest`-Elementen.
 
-## <a name="response"></a>Antwort
+## Antwort
 Wenn eine angeforderte Anmeldung erfolgreich abgeschlossen wird, sendet Azure AD eine Antwort an den Clouddienst. Ein Beispiel für eine Antwort auf einen erfolgreichen Anmeldeversuch sieht folgendermaßen aus:
 
 ```
@@ -143,13 +142,13 @@ Wenn eine angeforderte Anmeldung erfolgreich abgeschlossen wird, sendet Azure AD
 </samlp:Response>
 ```
 
-### <a name="response"></a>Antwort
+### Antwort
 Das `Response` -Element enthält das Ergebnis der Autorisierungsanforderung. Azure AD legt die Werte `ID`, `Version` und `IssueInstant` im `Response`-Element fest. Außerdem legt es die folgenden Attribute fest:
 
 * `Destination`: Wird nach erfolgreichem Abschluss der Anmeldung auf den `RedirectUri` des Dienstanbieters (Clouddienst) festgelegt.
 * `InResponseTo`: Wird auf das `ID`-Attribut des `AuthnRequest`-Elements festgelegt, das die Antwort initiiert hat.
 
-### <a name="issuer"></a>Issuer (Aussteller)
+### Issuer (Aussteller)
 Azure AD legt das `Issuer`-Element auf `https://login.microsoftonline.com/<TenantIDGUID>/` fest, wobei <TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
 
 Eine Beispiel für eine Antwort mit einem Issuer-Element sieht beispielsweise wie folgt aus:
@@ -158,7 +157,7 @@ Eine Beispiel für eine Antwort mit einem Issuer-Element sieht beispielsweise wi
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-### <a name="status"></a>Status
+### Status
 Das `Status` -Element gibt an, ob die Anmeldung erfolgreich war. Es enthält das `StatusCode` -Element, das einen Code oder mehrere geschachtelte Codes enthält, die den Status der Anforderung darstellen. Außerdem enthält es das `StatusMessage` -Element mit spezifischen, während der Anmeldung generierten Fehlermeldungen.
 
 <!-- TODO: Add a authentication protocol error reference -->
@@ -178,17 +177,17 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
   </samlp:Status>
 ```
 
-### <a name="assertion"></a>Assertion
+### Assertion
 Zusätzlich zu `ID`, `IssueInstant` und `Version` legt Azure AD im `Assertion`-Element der Antwort die folgenden Elemente fest.
 
-#### <a name="issuer"></a>Issuer (Aussteller)
+#### Issuer (Aussteller)
 Ist auf `https://sts.windows.net/<TenantIDGUID>/` festgelegt, wobei <TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
 
 ```
 <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-#### <a name="signature"></a>Signatur
+#### Signatur
 Azure AD signiert die Assertion als Antwort auf eine erfolgreiche Anmeldung. Das `Signature` -Element enthält eine digitale Signatur, die vom Clouddienst zum Authentifizieren der Quelle und zum Überprüfen der Integrität der Assertion verwendet werden kann.
 
 Azure AD verwendet den im `IDPSSODescriptor` -Element des Metadatendokuments festgelegten Signaturschlüssel, um diese digitale Signatur zu generieren.
@@ -199,7 +198,7 @@ Azure AD verwendet den im `IDPSSODescriptor` -Element des Metadatendokuments fes
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Subject (Antragsteller)
+#### Subject (Antragsteller)
 Legt den Prinzipal fest, der Betreff der Anweisungen in der Assertion ist. Er enthält ein `NameID`-Element, das den authentifizierten Benutzer darstellt. Der `NameID`-Wert ist ein gezielter Bezeichner, der nur an den Dienstanbieter gerichtet ist, welcher die Zielgruppe für das Token darstellt. Er ist persistent – er kann widerrufen werden, eine erneute Zuweisung ist jedoch nicht mehr möglich. Er ist zudem nicht transparent, d.h. Informationen über den Benutzer werden nicht preisgegeben, und er kann nicht als Bezeichner für Attributabfragen verwendet werden.
 
 Das `Method`-Attribut des `SubjectConfirmation`-Elements ist immer auf `urn:oasis:names:tc:SAML:2.0:cm:bearer` festgelegt.
@@ -213,7 +212,7 @@ Das `Method`-Attribut des `SubjectConfirmation`-Elements ist immer auf `urn:oasi
 </Subject>
 ```
 
-#### <a name="conditions"></a>Conditions (Bedingungen)
+#### Conditions (Bedingungen)
 Dieses Element legt die Bedingungen fest, die die akzeptable Verwendung von SAML-Assertions definieren.
 
 ```
@@ -229,7 +228,7 @@ Die Attribute `NotBefore` und `NotOnOrAfter` legen das Intervall fest, in dem di
 * Der Wert des `NotBefore`-Attributs entspricht dem Wert des `IssueInstant`-Attributs des `Assertion`-Elements oder ist etwas (weniger als einer Sekunde) höher. Azure AD berücksichtigt keine Zeitunterschiede zwischen sich selbst und dem Clouddienst (Dienstanbieter) und fügt dieser Zeit keinen Puffer hinzu.
 * Der Wert des `NotOnOrAfter`-Attributs liegt 70 Minuten nach dem Wert des `NotBefore`-Attributs.
 
-#### <a name="audience"></a>Audience (Zielgruppe)
+#### Audience (Zielgruppe)
 Dieses Element enthält einen URI, der die beabsichtigte Zielgruppe identifiziert. Azure AD legt den Wert dieses Elements auf den Wert des `Issuer`-Elements der `AuthnRequest` fest, die die Anmeldung initiiert hat. Verwenden Sie zum Auswerten des Werts `Audience` den Wert von `App ID URI`, der bei der Anwendungsregistrierung angegeben wurde.
 
 ```
@@ -240,7 +239,7 @@ Dieses Element enthält einen URI, der die beabsichtigte Zielgruppe identifizier
 
 Genau wie der `Issuer`-Wert muss auch der `Audience`-Wert genau mit einem der Dienstprinzipalnamen des Clouddiensts in Azure AD übereinstimmen. Falls es sich beim Wert des `Issuer`-Elements allerdings nicht um einen URI-Wert handelt, entspricht der `Audience`-Wert in der Antwort dem `Issuer`-Wert mit dem Präfix `spn:`.
 
-#### <a name="attributestatement"></a>AttributeStatement
+#### AttributeStatement
 Enthält Ansprüche bezüglich des Antragstellers oder des Benutzers. Der folgende Auszug enthält ein `AttributeStatement` -Beispielelement. Die Auslassungszeichen weisen darauf hin, dass das Element mehrere Attribute und Attributwerte enthalten kann.
 
 ```
@@ -258,7 +257,7 @@ Enthält Ansprüche bezüglich des Antragstellers oder des Benutzers. Der folgen
 * **Name-Anspruch**: Der Wert des `Name`-Attributs (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`) ist der Benutzerprinzipalname des authentifizierten Benutzers (etwa `testuser@managedtenant.com`).
 * **ObjectIdentifier-Anspruch**: Der Wert des `ObjectIdentifier`-Attributs (`http://schemas.microsoft.com/identity/claims/objectidentifier`) ist das `ObjectId`-Element des Verzeichnisobjekts, das den authentifizierten Benutzer in Azure AD darstellt. `ObjectId` ist ein unveränderlicher, global eindeutiger und sicher wiederverwendbarer Bezeichner des authentifizierten Benutzers.
 
-#### <a name="authnstatement"></a>AuthnStatement
+#### AuthnStatement
 Dieses Element bestätigt, dass das Assertion-Subjekt mit einer bestimmten Methode zu einem bestimmten Zeitpunkt authentifiziert wurde.
 
 * Das `AuthnInstant` -Attribut gibt die Uhrzeit an, zu der der Benutzer mit Azure AD authentifiziert wurde.

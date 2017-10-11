@@ -15,14 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 4795f5728d4ce6ff21b97bc3fefd6a53e0c6a11b
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps
 
 Nachdem Sie [eine Logik-App erstellt und ausgeführt haben](../logic-apps/logic-apps-create-a-logic-app.md), können Sie dafür den Ausführungsverlauf, den Triggerverlauf, den Status und die Leistung überprüfen. Für die Echtzeit-Ereignisüberwachung und die Durchführung eines umfassenderen Debuggens können Sie die [Diagnoseprotokollierung](#azure-diagnostics) für Ihre Logik-App einrichten. Auf diese Weise können Sie [nach Ereignissen suchen und diese anzeigen](#find-events), z.B. Triggerereignisse, Ausführungsereignisse und Aktionsereignisse. Sie können diese [Diagnosedaten auch mit anderen Diensten verwenden](#extend-diagnostic-data), z.B. Azure Storage und Azure Event Hubs. 

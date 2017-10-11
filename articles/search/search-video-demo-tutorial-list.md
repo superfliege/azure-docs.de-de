@@ -15,13 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 06/06/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
-ms.contentlocale: de-de
-ms.lasthandoff: 06/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-search-code-samples-demos-videos-and-tutorials"></a>Azure Search: Codebeispiele, Demos, Videos und Tutorials
 Finden Sie mit den folgenden Videos, Demos, Tutorials und Beispiel-Apps einen schnelleren Einstieg.
@@ -102,5 +100,4 @@ Mehrteilige Demos und Übungseinheiten für Azure Search.
 | [How to Add Suggestions to your Search Applications](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/) |Hier erfahren Sie, wie Sie Vorschläge implementieren. Dies wird häufig auch als automatisches Vervollständigen bezeichnet. Diese Demo führt Sie durch eine Reihe von Themen, z.B. das Erstellen einer MVC4-Anwendung, die Azure Search-Vorschläge nutzt, das Verwenden einer „typeahead.js“-Bibliothek für Twitter zum Erstellen einer effektiven JavaScript-Komponente für automatische Vorschläge sowie das Verwenden von Fuzzyvorschlägen, mit deren Hilfe auch dann Vorschläge angezeigt werden, wenn der Benutzer das Wort falsch geschrieben hat. |
 | [TechNet Virtual Lab: Building a Microsoft Azure Search Application](http://go.microsoft.com/?linkid=9874663) |Virtuelle Übungseinheit, die eine Entwicklungsumgebung, Tools, Dokumentation und Daten bereitstellt. Zur Durchführung der Übung benötigen Sie ein Azure-Konto, entweder ein Testabonnement oder Ihr persönliches Azure-Abonnement. |
 | [Synchronize SQL Server Data with Azure Search](https://azure.microsoft.com/blog/2014/11/10/how-to-sync-sql-server-data-with-azure-search/) |Blogbeitrag mit Erläuterungen zum Laden von Daten aus relationalen SQL Server-Datenbanken in einen Azure Search-Index. |
-
 

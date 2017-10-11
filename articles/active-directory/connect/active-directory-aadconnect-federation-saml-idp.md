@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
 ms.openlocfilehash: 048697f87383662506fb851bb3ea510c2cddf043
-ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Verwenden eines SAML 2.0-Identitätsanbieters (IdP, Identity Provider) für einmaliges Anmelden
 
 Dieses Thema enthält Informationen zur Verwendung des mit dem SP-Lite-Profil kompatiblen SAML 2.0-Identitätsanbieters als bevorzugter Sicherheitstokendienst (STS) bzw. Identitätsanbieter. Dies ist hilfreich, wenn Sie bereits lokal über einen Speicher für das Benutzerverzeichnis und Kennwort verfügen, auf den mithilfe von SAML 2.0 zugegriffen werden kann. Dieses vorhandene Benutzerverzeichnis kann für die Anmeldung bei Office 365 und anderen mit Azure AD gesicherten Ressourcen verwendet werden. Das SAML 2.0-SP-Lite-Profil basiert auf dem häufig verwendeten Verbund-Identitätsstandard Security Assertion Markup Language (SAML), um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
@@ -172,9 +170,9 @@ Sie führen eine Reihe von Cmdlets in der Windows PowerShell-Befehlszeilenschnit
 
 Jede Azure Active Directory-Domäne, für die Sie einen Verbund mithilfe Ihres SAML 2.0-Identitätsanbieters erstellen möchten, muss entweder als eine Domäne für einmaliges Anmelden hinzugefügt oder als Domäne für einmaliges Anmelden von einer Standarddomäne konvertiert werden. Durch das Hinzufügen oder Konvertieren einer Domäne wird eine Vertrauensstellung zwischen Ihrem SAML 2.0-Identitätsanbieter und Azure AD eingerichtet.
 
-Das folgende Verfahren führt Sie durch das Konvertieren einer vorhandenen Standarddomäne zu einer Verbunddomäne mithilfe von SAML 2.0 SP-Lite. Beachten Sie, dass wenn Sie diese Schritte durchführen, es in Ihrer Domäne möglicherweise zu einem Ausfall kommen kann, der Benutzer bis zu zwei Stunden lang betreffen kann.
+Das folgende Verfahren führt Sie durch das Konvertieren einer vorhandenen Standarddomäne zu einer Verbunddomäne mithilfe von SAML 2.0 SP-Lite. Beachten Sie, dass Ihre Domäne ein Ausfall, die Benutzer auftritt ggf. Sie wirkt sich auf die zu 2 Stunden nach dem Ausführen dieses Schritts.
 
-## <a name="configuring-a-domain-in-your-azure-ad-directory-for-federation"></a>Konfigurieren einer Domäne in Azure AD Directory für den Verbund
+## <a name="configuring-a-domain-in-your-azure-ad-directory-for-federation"></a>Konfigurieren einer Domäne in Ihrem Azure AD-Verzeichnis für den Verbund
 
 
 1. Stellen Sie eine Verbindung mit Azure Active Directory als Mandantenadministrator her: Connect-MsolService.
@@ -271,4 +269,3 @@ Um zu überprüfen, dass einmaliges Anmelden ordnungsgemäß eingerichtet wurde,
 - [Verwaltung der Active Directory-Verbunddienste und Anpassung mit Azure AD Connect](active-directory-aadconnect-federation-management.md)
 - [Azure AD-Verbund – Kompatibilitätsliste](active-directory-aadconnect-federation-compatibility.md)
 - [Azure AD Connect – Benutzerdefinierte Installation](active-directory-aadconnect-get-started-custom.md)
-

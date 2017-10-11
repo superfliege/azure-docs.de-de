@@ -13,13 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/15/2017
 ms.author: markgal;arunak
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
 ms.openlocfilehash: 19e2aafe3de106be32f3d90c63c0ea03c626f272
-ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="recovery-services-vaults-overview"></a>Übersicht über Recovery Services-Tresore
 
@@ -78,4 +76,3 @@ In den folgenden Artikeln erhalten Sie weitere Informationen:</br>
 [Sichern einer IaaS-VM](backup-azure-arm-vms-prepare.md)</br>
 [Sichern von Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>
 [Sichern von Windows Server](backup-configure-vault.md)
-

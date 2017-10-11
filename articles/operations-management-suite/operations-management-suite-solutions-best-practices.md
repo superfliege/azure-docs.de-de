@@ -14,14 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: b3d07ad3164609a5628c0d9805de55a32870ab94
-ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="best-practices-for-creating-management-solutions-in-operations-management-suite-oms-preview"></a>Bewährte Methoden für das Erstellen von Verwaltungslösungen in der Operations Management Suite (OMS) (Vorschau)
 > [!NOTE]
@@ -57,5 +54,4 @@ Dieser Artikel enthält bewährte Methoden für das [Erstellen einer Verwaltungs
 * [Hinzufügen gespeicherter Suchvorgänge und Warnungen](operations-management-suite-solutions-resources-searches-alerts.md) zu Ihrer Verwaltungslösung
 * [Hinzufügen von Ansichten](operations-management-suite-solutions-resources-views.md) zu Ihrer Verwaltungslösung
 * [Hinzufügen von Automation-Runbooks und anderen Ressourcen](operations-management-suite-solutions-resources-automation.md) zu Ihrer Verwaltungslösung
-
 

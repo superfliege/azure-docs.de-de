@@ -1,8 +1,8 @@
 <!--alkohli 02/21/2017 cloud appliance security-->
 
-Beachten Sie bei der Verwendung der StorSimple Cloud Appliance die folgenden Sicherheitsaspekte:
+Bedenken Sie die folgenden Sicherheitsaspekte bei der Verwendung der StorSimple-Appliance Cloud:
 
-* Das Cloudgerät wird über das Microsoft Azure-Abonnement geschützt. Wenn Sie daher das Cloudgerät verwenden und Ihr Azure-Abonnement beeinträchtigt ist, sind auch die auf dem Cloudgerät gespeicherten Daten anfällig.
-* Der öffentliche Schlüssel des Zertifikats zum Verschlüsseln von in StorSimple gespeicherten Daten wird im Azure-Portal sicher zur Verfügung gestellt, und der private Schlüssel wird auf der StorSimple Cloud Appliance aufbewahrt. Auf der StorSimple Cloud Appliance werden die öffentlichen und privaten Schlüssel in Azure gespeichert.
-* Das Cloudgerät wird im Microsoft Azure-Datencenter gehostet.
+* Die Cloud-Anwendung wird über Ihr Microsoft Azure-Abonnement gesichert. Dies bedeutet, dass wenn Sie die Cloud-Anwendung und Ihrem Azure-Abonnement gefährdet ist, die auf Ihre Cloud-Einheit gespeicherten Daten auch anfällig sind.
+* Der öffentliche Schlüssel des Zertifikats, das zum Verschlüsseln von Daten in StorSimple sicher Azure-Portal zur Verfügung gestellt wird, und der private Schlüssel wird mit dem StorSimple-Appliance Cloud beibehalten. Auf dem StorSimple-Cloud-Anwendung werden die öffentlichen und privaten Schlüssel in Azure gespeichert.
+* Die Cloud-Anwendung wird in der Microsoft Azure-Datencenter gehostet.
 

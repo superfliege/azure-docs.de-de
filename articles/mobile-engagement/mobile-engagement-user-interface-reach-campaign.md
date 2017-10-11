@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: d5110a33e13802fd6e5e0f075c7d3ddd521a1ef9
-ms.lasthandoff: 02/16/2017
-
-
+ms.openlocfilehash: fc88db8db11d1ed12fa95c2087c9a32b21bf4de5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-create-and-manage-push-notification-campaigns"></a>Erstellen und Verwalten von Kampagnen für Pushbenachrichtigungen
 Sie können auf der Benutzeroberfläche im Abschnitt "Reichweite" eine neue Pushkampagne mit einer komplexen Formel erstellen, indem Sie alle Informationen angeben, die Sie zum Senden einer Pushbenachrichtigung benötigen. Die Optionen einer Pushkampagne variieren geringfügig abhängig von den vier Kampagnentypen: Ankündigungen, Umfragen, Datenpushes und Kacheln (nur Windows Phone).
@@ -267,5 +266,4 @@ Sie können im Abschnitt "Test" diesen Pushvorgang an Ihr eigenes Testgerät sen
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
-
 

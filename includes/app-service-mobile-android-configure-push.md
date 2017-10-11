@@ -1,8 +1,8 @@
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Alle durchsuchen** > **App Services** und anschließend auf Ihr Mobile Apps-Back-End. Klicken Sie unter **Einstellungen** auf **App Service Push** (App Service-Push) und dann auf den Namen Ihres Benachrichtigungs-Hubs.
-2. Wechseln Sie zu **Google (GCM)**, geben Sie den FCM-Serverschlüssel ein, den Sie über die Firebase-Konsole abgerufen haben, und klicken Sie dann auf **Speichern**.
+1. In der [Azure-Portal](https://portal.azure.com/), klicken Sie auf **alle Durchsuchen** > **Anwendungsdienste**, und klicken Sie auf Ihre Mobile Apps-Back-End. Klicken Sie unter **Einstellungen**, klicken Sie auf **App Service-Push**, und klicken Sie dann auf Notification Hub-Name.
+2. Wechseln Sie zu **Google (GCM)**, geben Sie den FCM Server-Schlüssel, die Sie über die Konsole Firebase erworben haben, und klicken Sie dann auf **speichern**.
 
-Ihr Dienst ist jetzt für die Nutzung von Firebase Cloud Messaging konfiguriert.
+Der Dienst ist jetzt für die Zusammenarbeit mit Firebase Cloud Messaging konfiguriert.
 
 <!-- URLs. -->
 

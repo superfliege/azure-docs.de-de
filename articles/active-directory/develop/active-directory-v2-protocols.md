@@ -15,15 +15,13 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 3750f975600575349e5ea9de249cf4521636fd2f
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0-Protokolle – OAuth 2.0 und OpenID Connect
+# v2.0-Protokolle – OAuth 2.0 und OpenID Connect
 Der v2.0-Endpunkt kann Azure AD als Identity-as-a-Service-Lösung mit den Industriestandardprotokollen OpenID Connect und OAuth 2.0 verwenden.  Auch wenn der Dienst den Standard entspricht, kann es feine Unterschiede zwischen zwei Implementierungen dieser Protokolle geben.  Die hier bereitgestellten Informationen sind nützlich, wenn Sie Code direkt durch Senden und Verarbeiten von HTTP-Anforderungen schreiben oder eine Open Source-Bibliothek eines Drittanbieters verwenden, anstatt eine unserer Open Source-Bibliotheken zu nutzen.
 <!-- TODO: Need link to libraries above -->
 
@@ -32,7 +30,7 @@ Der v2.0-Endpunkt kann Azure AD als Identity-as-a-Service-Lösung mit den Indus
 >
 >
 
-## <a name="the-basics"></a>Die Grundlagen
+## Die Grundlagen
 In fast allen OAuth- und OpenID Connect-Vorgängen sind vier Beteiligte am Austausch involviert:
 
 ![OAuth 2.0-Rollen](../../media/active-directory-v2-flows/protocols_roles.png)
@@ -42,7 +40,7 @@ In fast allen OAuth- und OpenID Connect-Vorgängen sind vier Beteiligte am Austa
 * Der **OAuth-Client** ist Ihre App, die durch ihre Anwendungs-ID identifiziert wird.  Dies ist normalerweise der Beteiligte, mit dem der Endbenutzer interagiert, und der Token vom Autorisierungsserver anfordert.  Der Client muss vom Besitzer der Ressource die Berechtigung zum Zugriff darauf erhalten.
 * Der **Ressourcenserver** ist der Ort, an dem die Ressource oder die Daten abgelegt sind.  Er vertraut dem Autorisierungsserver, dass der OAuth-Client sicher authentifiziert und autorisiert wird, und verwendet Bearerzugriffstoken, um sicherzustellen, dass der Zugriff auf eine Ressource gewährt werden kann.
 
-## <a name="app-registration"></a>App-Registrierung
+## App-Registrierung
 Jede App, die den v2.0-Endpunkt nutzt, muss vor der Interaktion mit OAuth oder OpenID Connect unter [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) registriert werden.  Der Registrierungsprozess für die App sammelt einige Werte und weist ihr einige Werte zu:
 
 * Eine **Anwendungs-ID** , die Ihre Anwendung eindeutig identifiziert.
@@ -51,7 +49,7 @@ Jede App, die den v2.0-Endpunkt nutzt, muss vor der Interaktion mit OAuth oder O
 
 Weitere Informationen finden Sie im Artikel zum [Registrieren von Apps](active-directory-v2-app-registration.md).
 
-## <a name="endpoints"></a>Endpunkte
+## Endpunkte
 Nach dem Registrieren kommuniziert eine App mit Azure AD, indem Anforderungen an den v2.0-Endpunkt gesendet werden:
 
 ```
@@ -70,12 +68,12 @@ Dabei ist für `{tenant}` einer von vier verschiedenen Werten möglich:
 
 Um weitere Informationen zur Interaktion mit diesen Endpunkten zu erhalten, wählen Sie unten einen bestimmten App-Typ aus.
 
-## <a name="tokens"></a>Token
+## Token
 Die v2.0-Implementierung von OAuth 2.0 und OpenID Connect macht ausgiebig Gebrauch von Bearertoken (auch in Form von JWTs). Ein Trägertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. In diesem Kontext ist der „Träger“ jede beliebige Partei, die das Token vorweisen kann. Um das Trägertoken zu erhalten, muss sich die Partei zwar zunächst bei Azure AD authentifizieren, falls jedoch keine Maßnahmen ergriffen werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer fremden Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine unbefugte Verwendung durch nicht autorisierte Parteien verhindert. Trägertoken besitzen dagegen keinen solchen Mechanismus und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden. Wird ein Trägertoken als Klartext gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abfangen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert. Weitere Sicherheitsüberlegungen zu Bearertoken finden Sie unter [RFC 6750, Abschnitt 5](http://tools.ietf.org/html/rfc6750).
 
 Weitere Informationen zu verschiedenen Tokentypen, die im v2.0-Endpunkt verwendet werden, finden Sie in der [Tokenreferenz zum v2.0-Endpunkt](active-directory-v2-tokens.md).
 
-## <a name="protocols"></a>Protokolle
+## Protokolle
 Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der folgenden Lernprogramme.  Jedes Lernprogramm entspricht einem bestimmten Szenario.  Wenn Sie Hilfe bei der Bestimmung des richtigen Arbeitsablaufs benötigen, informieren Sie sich über die [App-Typen, die mit dem v2.0-Endpunkt erstellt werden können](active-directory-v2-flows.md).
 
 * [Erstellen von mobilen und systemeigenen Anwendungen mit OAuth 2.0](active-directory-v2-protocols-oauth-code.md)
@@ -83,4 +81,3 @@ Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der
 * [Erstellen von Apps mit einer einzigen Seite mit dem impliziten OAuth 2.0-Fluss](active-directory-v2-protocols-implicit.md)
 * [Erstellen von Daemons oder serverseitigen Prozessen mit dem OAuth 2.0-Clientanmeldeinformations-Flow](active-directory-v2-protocols-oauth-client-creds.md)
 * [Abrufen von Token in einer Web-API mit dem „Im Namen von“-Fluss von OAuth 2.0](active-directory-v2-protocols-oauth-on-behalf-of.md)
-

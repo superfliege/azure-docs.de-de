@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b2be03e12b2deaecb352f8703650cf23cdefdebd
-ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 48f439a566a8067e153aab4fb789937d2f91268d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Verwenden der MMC-Menüaktionen im StorSimple Snapshot Manager
 
@@ -54,7 +52,7 @@ Sie können mit der Option **Ansicht** die Anzeige im Bereich **Ergebnisse** und
 
 #### <a name="to-change-the-console-window-view"></a>So ändern Sie die Ansicht des Konsolenfensters
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
-2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf einen beliebigen Knoten, klicken Sie auf **Ansicht** und dann auf  **Anpassen**. Das Dialogfeld **Anpassen** wird angezeigt.
+2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf einen beliebigen Knoten, klicken Sie auf **Ansicht** und dann auf **Anpassen**. Das Dialogfeld **Anpassen** wird angezeigt.
    
     ![Anpassen des Konsolenfensters](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
 3. Aktivieren oder deaktivieren Sie die Kontrollkästchen, um die jeweiligen Elemente im Konsolenfenster ein- oder auszublenden. Wenn Sie mit der Auswahl fertig sind, klicken Sie auf **OK**.
@@ -102,5 +100,4 @@ Mit der Aktion **Liste exportieren** können Sie eine Liste in einer Datei mit k
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen über die [Benutzeroberfläche des StorSimple Snapshot Managers](storsimple-use-snapshot-manager.md).
 * Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
-
 

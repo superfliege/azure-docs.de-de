@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/22/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
-ms.openlocfilehash: 3566534a18af5211222e973616cbdd712d1080ee
-
-
+ms.openlocfilehash: 28f0542dbe87bb34c83a7852db7c3a9fef055ce9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Tutorial: Azure Active Directory-Integration mit TOPdesk - Secure
 In diesem Tutorial wird die Integration von Azure und TOPdesk - Secure erläutert.  
@@ -104,7 +104,7 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Secure müssen Si
 
 6. Melden Sie sich in einem anderen Webbrowserfenster beim **klassischen Azure-Portal** als Administrator an.
 
-7. Klicken Sie auf der Anwendungsintegrationsseite für **TOPdesk - Secure** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+7. Auf der **TOPdesk – Secure** anwendungsintegrationsseite klicken Sie auf **einmaliges Anmelden konfigurieren** So öffnen die ** einmaliges Anmelden konfigurieren für ** Dialogfeld.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790602.png "Einmaliges Anmelden konfigurieren")
 
@@ -121,6 +121,7 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Secure müssen Si
     b. Fügen Sie in das Textfeld **TOPdesk - Public-Antwort-URL** die **TOPdesk - Secure-AssertionConsumerService-URL** ein (z.B.: *https://qssolutions.topdesk.net/tas/public/login/saml*).
    
     c. Klicken Sie auf **Weiter**.
+
 
 10. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für TOPdesk - Secure** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.
     
@@ -205,7 +206,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ### <a name="to-assign-users-to-topdesk---secure-perform-the-following-steps"></a>So weisen Sie  TOPdesk - Secure Benutzer zu
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
-2. Klicken Sie auf der Anwendungsintegrationsseite für **TOPdesk - Secure** auf **Benutzer zuweisen**.
+2. Auf der ** TOPdesk – Secure ** anwendungsintegrationsseite, klicken Sie auf **Zuweisen von Benutzern**.
    
     ![Zuweisen von Benutzern](./media/active-directory-saas-topdesk-secure-tutorial/IC790612.png "Zuweisen von Benutzern")
 
@@ -214,10 +215,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
     ![Ja](./media/active-directory-saas-topdesk-secure-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

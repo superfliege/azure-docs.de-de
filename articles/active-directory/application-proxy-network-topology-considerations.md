@@ -15,14 +15,12 @@ ms.date: 07/28/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
 ms.openlocfilehash: 11244e0044eef8441e3a37ab8aeff0da30dacdb8
-ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys
 
 In diesem Artikel geht es darum, welche Aspekte der Netzwerktopologie wichtig sind, wenn der Azure Active Directory-Anwendungsproxy (Azure AD) für die Veröffentlichung und den Zugriff auf Ihre Anwendungen per Remotezugriff verwendet wird.
@@ -178,4 +176,3 @@ In dieser Situation können Sie auch eine andere Variante verwenden. Wenn sich d
 - [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
 - [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
 - [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
-

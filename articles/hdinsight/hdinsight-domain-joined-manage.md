@@ -1,6 +1,6 @@
 ---
-title: "Verwalten von in die Domäne eingebundenen HDInsight-Clustern – Azure | Microsoft-Dokumentation"
-description: "Informationen zum Verwalten von in die Domäne eingebundenen HDInsight-Clustern"
+title: "Verwalten der Domäne HDInsight-Cluster - Azure | Microsoft Docs"
+description: "Informationen Sie zum Verwalten der Domäne HDInsight-Cluster"
 services: hdinsight
 documentationcenter: 
 author: saurinsh
@@ -16,100 +16,97 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
 ms.openlocfilehash: 9b56ce6cc5bdd3b8d48d047751e978cad08598e1
-ms.contentlocale: de-de
-ms.lasthandoff: 06/13/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="manage-domain-joined-hdinsight-clusters-preview"></a>Verwalten von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)
-Hier erhalten Sie Informationen zu den Benutzern und den Rollen in HDInsight mit Domänenverknüpfung sowie zum Verwalten von in die Domäne eingebundenen HDInsight-Clustern.
+# <a name="manage-domain-joined-hdinsight-clusters-preview"></a>Verwalten der Domäne HDInsight-Cluster (Vorschau)
+Erfahren Sie, die Benutzer und Rollen im HDInsight Domäne und zum Verwalten von HDInsight-Cluster Domäne angehören.
 
-## <a name="users-of-domain-joined-hdinsight-clusters"></a>Benutzer von in die Domäne eingebundenen HDInsight-Clustern
-Ein HDInsight-Cluster, der nicht in die Domäne eingebunden ist, verfügt über zwei Benutzerkonten, die während der Clustererstellung erstellt werden:
+## <a name="users-of-domain-joined-hdinsight-clusters"></a>Benutzer der Domäne HDInsight-Cluster
+Ein HDInsight-Cluster, der keine Domäne eingebunden ist, hat zwei Benutzerkonten, die während der Erstellung des Clusters erstellt werden:
 
-* **Ambari-Administrator:** Dieses Konto wird auch als *Hadoop-Benutzer* oder *HTTP-Benutzer* bezeichnet. Dieses Konto kann für die Anmeldung bei Ambari unter https://&lt;Clustername>.azurehdinsight.net verwendet werden. Es kann auch zum Ausführen von Abfragen für Ambari-Ansichten, zum Ausführen von Aufträgen über externe Tools (z.B. PowerShell, Templeton, Visual Studio) und für die Authentifizierung mit dem Hive ODBC-Treiber und BI-Tools (z.B. Excel, Power BI oder Tableau) verwendet werden.
-* **SSH-Benutzer:** Dieses Konto kann mit SSH und zum Ausführen von sudo-Befehlen verwendet werden. Es verfügt über Rootberechtigungen für die virtuellen Linux-Computer.
+* **Ambari Admin**: dieses Konto wird auch bezeichnet als *Hadoop-Benutzer* oder *HTTP-Benutzer*. Dieses Konto verwendet werden kann, am https:// Ambari anmelden&lt;Clustername >. azurehdinsight.net. Sie können auch verwendet werden, Ambari Ansichten Abfragen ausführen, führen Sie Aufträge über externe Tools (z. B. PowerShell, Templeton, Visual Studio) und mit dem Hive-ODBC-Treiber und BI-Tools (z. B. Excel, Power BI oder Tableau) zu authentifizieren.
+* **SSH-Benutzer**: dieses Konto mit SSH verwendet werden kann, und führen Sie die Befehle "sudo". Es wurde die Stamm-Berechtigungen, um die virtuelle Linux-Computer.
 
-Ein in die Domäne eingebundener HDInsight-Cluster verfügt neben Ambari-Administrator und SSH-Benutzer über drei neue Benutzer.
+Ein Domäne HDInsight-Cluster verfügt über drei neue Benutzer zusätzlich zu den Ambari Admin und SSH.
 
-* **Ranger-Administrator:** Dieses Konto ist das lokale Apache Ranger-Administratorkonto. Es handelt sich um keinen Active Directory-Domänenbenutzer. Dieses Konto kann verwendet werden, um Richtlinien einzurichten und andere Benutzer als Administratoren oder delegierte Administratoren festzulegen (sodass diese Benutzer Richtlinien verwalten können). Der Benutzername lautet standardmäßig *admin*, und das Kennwort ist identisch mit dem Ambari-Administratorkennwort. Das Kennwort kann auf der Seite „Settings“ (Einstellungen) in Ranger aktualisiert werden.
-* **Domänenbenutzer des Clusteradministrators:** Dieses Konto ist ein Active Directory-Domänenbenutzer, der als Hadoop-Clusteradministrator (einschließlich Ambari und Ranger) festgelegt ist. Sie müssen die Anmeldeinformationen dieses Benutzers während der Clustererstellung angeben. Dieser Benutzer verfügt über die folgenden Berechtigungen:
+* **Rangers Admin**: dieses Konto ist das lokale Administratorkonto für die Apache Rangers. Es ist nicht die Domäne active Directory-Benutzer. Dieses Konto dient zum Einrichten von Richtlinien und stellen andere Benutzer Administratoren oder delegierten Administratoren (sodass die Benutzer Richtlinien verwalten können). Standardmäßig ist der Benutzername *Admin* und das Kennwort ist identisch mit Ambari-Administratorkennwort. Das Kennwort kann mithilfe der Seite "Einstellungen" in Rangers aktualisiert werden.
+* **Cluster-Admin-Domänenbenutzer**: dieses Konto ist ein active Directory-Domänenbenutzer als Administrator des Hadoop-Cluster einschließlich Ambari und Rangers festgelegt. Sie müssen die Anmeldeinformationen des Benutzers während der Clustererstellung angeben. Dieser Benutzer hat die folgenden Berechtigungen:
 
-  * Einbinden von Computern in die Domäne und Platzieren dieser Computer in der Organisationseinheit, die Sie während der Clustererstellung angeben.
-  * Erstellen von Dienstprinzipalen in der Organisationseinheit, die Sie während der Clustererstellung angeben.
-  * Erstellen von Reverse-DNS-Einträgen.
+  * Hinzufügen von Computern zur Domäne, und setzen Sie sie in der Organisationseinheit, die Sie bei der Erstellung des Clusters angeben.
+  * Erstellen Sie die Dienstprinzipale innerhalb der Organisationseinheit, die Sie während der Clustererstellung angeben.
+  * Reverse-DNS-Einträge zu erstellen.
 
-    Beachten Sie, dass die anderen AD-Benutzer auch über diese Berechtigungen verfügen.
+    Beachten Sie, dass der AD-Benutzer auch dieser Berechtigungen verfügen.
 
-    Es gibt einige Endpunkte innerhalb des Clusters (z.B. Templeton), die nicht von Ranger verwaltet werden und daher nicht sicher sind. Diese Endpunkte sind für alle Benutzer außer dem Domänenbenutzer des Clusteradministrators gesperrt.
-* **Normal:** Während der Clustererstellung können Sie mehrere Active Directory-Gruppen angeben. Die Benutzer in diesen Gruppen werden mit Ranger und Ambari synchronisiert. Diese Benutzer sind Domänenbenutzer und haben nur Zugriff auf über Ranger verwaltete Endpunkte (z.B. Hiveserver2). Alle RBAC-Richtlinien und die Überwachung gelten für diese Benutzer.
+    Es gibt einige Endpunkte innerhalb des Clusters (z. B. Templeton), die nicht von Rangers verwaltet werden und sind daher nicht sicher. Diese Endpunkte sind für alle Benutzer außer den Cluster Admin Domänenbenutzer gesperrt.
+* **Reguläre**: während der Clustererstellung, Sie können mehrere active Directory-Gruppen bereitstellen. Die Benutzer in diesen Gruppen werden Rangers und Ambari synchronisiert werden. Diese Benutzer Domänenbenutzer sind und haben Zugriff auf nur Rangers verwalteten Endpunkte (z. B. Hiveserver2). Die RBAC-Richtlinien und die Überwachung wird auf diesen Benutzer angewendet werden.
 
-## <a name="roles-of-domain-joined-hdinsight-clusters"></a>Rollen von in die Domäne eingebundenen HDInsight-Clustern
-In die Domäne eingebundene HDInsight-Cluster weisen die folgenden Rollen auf:
+## <a name="roles-of-domain-joined-hdinsight-clusters"></a>Rollen von Domäne HDInsight-Cluster
+HDInsight Domäne haben die folgenden Rollen:
 
-* Clusteradministrator
-* Clusteroperator
+* Clusterverwaltung
+* Cluster-Operator
 * Dienstadministrator
-* Dienstoperator
+* Dienst-Operator
 * Clusterbenutzer
 
-**So zeigen Sie die Berechtigungen dieser Rollen an**
+**Um die Berechtigungen dieser Rollen finden Sie unter**
 
-1. Öffnen Sie die Ambari-Verwaltungsoberfläche.  Informationen hierzu finden Sie unter [Öffnen der Ambari-Verwaltungsoberfläche](#open-the-ambari-management-ui).
-2. Klicken Sie im linken Menü auf **Roles** (Rollen).
-3. Klicken Sie auf das blaue Fragezeichen, um die Berechtigungen anzuzeigen:
+1. Öffnen Sie die Ambari-Benutzeroberfläche.  Finden Sie unter [öffnen Sie die Ambari-Benutzeroberfläche](#open-the-ambari-management-ui).
+2. Klicken Sie im linken Menü auf **Rollen**.
+3. Klicken Sie auf das blaue Fragezeichen klicken, um die Berechtigungen finden Sie unter:
 
-    ![Berechtigungen für Rollen von in die Domäne eingebundenen HDInsight-Clustern](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
+    ![Domäne HDInsight Rollen und Berechtigungen](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
 
-## <a name="open-the-ambari-management-ui"></a>Öffnen der Ambari-Verwaltungsoberfläche
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Öffnen Sie Ihren HDInsight-Cluster auf einem Blatt. Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](hdinsight-administer-use-management-portal.md#list-and-show-clusters).
-3. Klicken Sie im Hauptmenü auf **Dashboard**, um Ambari zu öffnen.
-4. Melden Sie sich mit dem Domänenbenutzernamen und dem Kennwort des Clusteradministrators bei Ambari an.
-5. Klicken Sie oben rechts auf das Dropdownmenü **Admin** und dann auf **Manage Ambari** (Ambari verwalten).
+## <a name="open-the-ambari-management-ui"></a>Öffnen Sie die Ambari-Benutzeroberfläche
+1. Melden Sie sich auf die [Azure-Portal](https://portal.azure.com).
+2. Öffnen Sie Ihren HDInsight-Cluster in einem Blatt. Finden Sie unter [Liste handelt, und zeigt Cluster](hdinsight-administer-use-management-portal.md#list-and-show-clusters).
+3. Klicken Sie auf **Dashboard** in der oberen Menüleiste Ambari zu öffnen.
+4. Melden Sie sich auf den Cluster Administrator Domänenbenutzernamen und das Kennwort mit Ambari an.
+5. Klicken Sie auf die **Admin** Dropdown-Menü aus der oberen rechten Ecke, und klicken Sie dann auf **Ambari verwalten**.
 
-    ![HDInsight mit Domänenverknüpfung – Verwalten von Ambari](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    ![Ambari zum Verwalten von HDInsight Domäne](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
-    Die Benutzeroberfläche sieht wie folgt aus:
+    Die Benutzeroberfläche sieht wie folgt:
 
-    ![HDInsight mit Domänenverknüpfung – Ambari-Verwaltungsoberfläche](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    ![Domäne HDInsight Ambari-Benutzeroberfläche](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
 
-## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Auflisten der über Active Directory synchronisierten Domänenbenutzer
-1. Öffnen Sie die Ambari-Verwaltungsoberfläche.  Informationen hierzu finden Sie unter [Öffnen der Ambari-Verwaltungsoberfläche](#open-the-ambari-management-ui).
-2. Klicken Sie im linken Menü auf **Benutzer**. Es werden alle Benutzer angezeigt, die über Active Directory mit dem HDInsight-Cluster synchronisiert wurden.
+## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Liste der Domänen-Benutzer aus Ihrem Active Directory synchronisiert werden
+1. Öffnen Sie die Ambari-Benutzeroberfläche.  Finden Sie unter [öffnen Sie die Ambari-Benutzeroberfläche](#open-the-ambari-management-ui).
+2. Klicken Sie im linken Menü auf **Benutzer**. Sie sehen, dass alle Benutzer, die mit dem HDInsight-Cluster aus dem Active Directory synchronisiert.
 
-    ![HDInsight mit Domänenverknüpfung – Ambari-Verwaltungsoberfläche – Auflisten der Benutzer](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
+    ![Domäne HDInsight Ambari Management UI Benutzer auflisten](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
 
-## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>Auflisten der über Active Directory synchronisierten Domänengruppen
-1. Öffnen Sie die Ambari-Verwaltungsoberfläche.  Informationen hierzu finden Sie unter [Öffnen der Ambari-Verwaltungsoberfläche](#open-the-ambari-management-ui).
-2. Klicken Sie im linken Menü auf **Groups** (Gruppen). Es werden alle Gruppen angezeigt, die über Active Directory mit dem HDInsight-Cluster synchronisiert wurden.
+## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>Liste der Gruppen der Domäne aus Ihrem Active Directory synchronisiert werden
+1. Öffnen Sie die Ambari-Benutzeroberfläche.  Finden Sie unter [öffnen Sie die Ambari-Benutzeroberfläche](#open-the-ambari-management-ui).
+2. Klicken Sie im linken Menü auf **Gruppen**. Sie sehen, dass alle Gruppen, die mit dem HDInsight-Cluster aus dem Active Directory synchronisiert.
 
-    ![HDInsight mit Domänenverknüpfung – Ambari-Verwaltungsoberfläche – Auflisten der Gruppen](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
+    ![Domäne HDInsight Ambari-UI Liste Verwaltungsgruppen](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
 
 ## <a name="configure-hive-views-permissions"></a>Konfigurieren von Berechtigungen für Hive-Ansichten
-1. Öffnen Sie die Ambari-Verwaltungsoberfläche.  Informationen hierzu finden Sie unter [Öffnen der Ambari-Verwaltungsoberfläche](#open-the-ambari-management-ui).
-2. Klicken Sie im linken Menü auf **Views** (Ansichten).
-3. Klicken Sie auf **HIVE**, um die Details anzuzeigen.
+1. Öffnen Sie die Ambari-Benutzeroberfläche.  Finden Sie unter [öffnen Sie die Ambari-Benutzeroberfläche](#open-the-ambari-management-ui).
+2. Klicken Sie im linken Menü auf **Ansichten**.
+3. Klicken Sie auf **HIVE** um die Details anzuzeigen.
 
-    ![HDInsight mit Domänenverknüpfung – Ambari-Verwaltungsoberfläche – Hive-Ansichten](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
-4. Klicken Sie auf den Link **Hive View** (Hive-Ansicht), um Hive-Ansichten zu konfigurieren.
-5. Scrollen Sie nach unten zum Abschnitt **Permissions** (Berechtigungen).
+    ![Domäne HDInsight Ambari Management UI Hive-Ansichten](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
+4. Klicken Sie auf die **Hive-Ansicht** Link zur Konfiguration von Hive-Ansichten.
+5. Führen Sie einen Bildlauf nach unten, um die **Berechtigungen** Abschnitt.
 
-    ![HDInsight mit Domänenverknüpfung – Ambari-Verwaltungsoberfläche – Hive-Ansichten – Konfigurieren von Berechtigungen](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
-6. Klicken Sie auf **Add User** (Benutzer hinzufügen) oder **Add Group** (Gruppe hinzufügen), und geben Sie dann die Benutzer oder Gruppen an, die Hive-Ansichten verwenden können.
+    ![Domäne HDInsight Ambari Management UI Hive-Ansichten Konfigurieren von Berechtigungen](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
+6. Klicken Sie auf **Add User** oder **Gruppe hinzufügen**, und geben Sie dann die Benutzer oder Gruppen, die Hive-Ansichten verwenden können.
 
 ## <a name="configure-users-for-the-roles"></a>Konfigurieren von Benutzern für die Rollen
- Eine Aufstellung der Rollen und der zugehörigen Berechtigungen finden Sie unter [Rollen von in die Domäne eingebundenen HDInsight-Clustern](#roles-of-domain---joined-hdinsight-clusters).
+ Eine Liste der Rollen und deren Berechtigungen finden Sie unter [Rollen der Domäne HDInsight-Cluster](#roles-of-domain---joined-hdinsight-clusters).
 
-1. Öffnen Sie die Ambari-Verwaltungsoberfläche.  Informationen hierzu finden Sie unter [Öffnen der Ambari-Verwaltungsoberfläche](#open-the-ambari-management-ui).
-2. Klicken Sie im linken Menü auf **Roles** (Rollen).
-3. Klicken Sie auf **Add User** (Benutzer hinzufügen) oder **Add Group** (Gruppe hinzufügen), um Benutzer und Gruppen zu verschiedenen Rollen zuzuweisen.
+1. Öffnen Sie die Ambari-Benutzeroberfläche.  Finden Sie unter [öffnen Sie die Ambari-Benutzeroberfläche](#open-the-ambari-management-ui).
+2. Klicken Sie im linken Menü auf **Rollen**.
+3. Klicken Sie auf **Add User** oder **Gruppe hinzufügen** , Benutzer und Gruppen unterschiedliche Rollen zuzuweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Konfigurieren eines in die Domäne eingebundenen HDInsight-Clusters finden Sie unter [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)](hdinsight-domain-joined-configure.md).
-* Informationen zum Konfigurieren von Hive-Richtlinien und zum Ausführen von Hive-Abfragen finden Sie unter [Configure Hive policies in Domain-joined HDInsight (Preview)](hdinsight-domain-joined-run-hive.md) (Konfigurieren von Hive-Richtlinien für in die Domäne eingebundene HDInsight-Cluster).
-* Informationen zum Ausführen von Hive-Abfragen per SSH für in die Domäne eingebundene HDInsight-Cluster finden Sie unter [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
-
+* Konfigurieren einen Domäne HDInsight-Cluster, finden Sie unter [konfigurieren Domäne HDInsight-Cluster](hdinsight-domain-joined-configure.md).
+* Konfigurieren die Hive-Richtlinien und Hive-Abfragen ausführen, finden Sie unter [Hive-Konfigurieren von Richtlinien für die Domäne HDInsight-Cluster](hdinsight-domain-joined-run-hive.md).
+* Zum Ausführen von Hive-Abfragen mithilfe von SSH auf Domäne HDInsight-Clustern finden Sie unter [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

@@ -15,14 +15,12 @@ ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 1deb3d91049d45fe26791783e13bd23e0a7d9f95
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Wie stellt der Azure AD-Anwendungsproxy das einmalige Anmelden bereit?
 
 Die einmalige Anmeldung ist ein wichtiges Element des Azure AD-Anwendungsproxys.  Sie ermöglicht die höchste Benutzerfreundlichkeit, weil sich Ihre Benutzer nur an Azure Active Directory in der Cloud anmelden müssen. Nach der Authentifizierung bei Azure Active Directory übernimmt der Anwendungsproxy die Authentifizierung bei der lokalen Anwendung. Die Back-End-Anwendung kann keinen Unterschied zwischen einem Remotebenutzer, der sich über den Anwendungsproxy anmeldet, und einem regulären Benutzer auf einem in die Domäne eingebundenen Gerät feststellen. 
@@ -81,4 +79,3 @@ Informationen zum Einrichten der headerbasierten Authentifizierung finden Sie un
 - [Ermöglichen des einmaligen Anmeldens mit dem Azure AD-Anwendungsproxy – Public Preview](application-proxy-sso-azure-portal.md)
 - [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
 - [Veröffentlichen von Anwendungen, die die headerbasierte Authentifizierung mit Azure AD-Anwendungsproxy und PingAccess unterstützen](application-proxy-ping-access.md) 
-

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 3ef7a4054be80547b0d91ad1f13777d915005f8b
-ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>Nachverfolgen der B2B-Kommunikation in Microsoft Operations Management Suite (OMS)
 
 Nach dem Einrichten der B2B-Kommunikation zwischen zwei laufenden Geschäftsprozessen oder -anwendungen über Ihr Integrationskonto können diese Entitäten Nachrichten miteinander austauschen. Um zu überprüfen, ob diese Nachrichten richtig verarbeitet werden, können Sie AS2-, X12- und EDIFACT-Nachrichten mit [Azure Log Analytics](../log-analytics/log-analytics-overview.md) in der [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) nachverfolgen. Beispielsweise können Sie diese webbasierten Nachverfolgungsfunktionen nutzen, um Nachrichten nachzuverfolgen:
@@ -41,7 +39,7 @@ Nach dem Einrichten der B2B-Kommunikation zwischen zwei laufenden Geschäftsproz
 * [Veröffentlichen Sie Diagnosedaten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) in OMS, falls Sie dies noch nicht getan haben.
 
 > [!NOTE]
-> Nachdem Sie die vorherigen Anforderungen erfüllt haben, sollten Sie über einen Arbeitsbereich in der [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) verfügen. Sie sollten denselben OMS-Arbeitsbereich für die Nachverfolgung Ihrer B2B-Kommunikation in OMS nutzen. 
+> Nachdem Sie die vorherigen Anforderungen erfüllt haben, sollten Sie über einen Arbeitsbereich in der [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) verfügen. Es empfiehlt sich, für die Nachverfolgung der B2B-Kommunikation in der OMS den gleichen OMS-Arbeitsbereich zu verwenden. 
 >  
 > Falls Sie keinen OMS-Arbeitsbereich haben, können Sie sich unter [Erste Schritte mit einem Log Analytics-Arbeitsbereich](../log-analytics/log-analytics-get-started.md) über die Erstellung informieren.
 
@@ -49,15 +47,15 @@ Nach dem Einrichten der B2B-Kommunikation zwischen zwei laufenden Geschäftsproz
 
 Damit OMS für Ihre Logik-App B2B-Nachrichten nachverfolgt, müssen Sie die Lösung **B2B-Logik-App-Verwaltung** dem OMS-Portal hinzufügen. Informieren Sie sich über das [Hinzufügen von Lösungen zu OMS](../log-analytics/log-analytics-get-started.md).
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Weitere Dienste**. Suchen Sie nach „log analytics“, und wählen Sie wie hier gezeigt die Option **Log Analytics**:
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Weitere Dienste**. Suchen Sie nach „Log Analytics“, und wählen Sie die Option **Log Analytics** aus, wie hier zu sehen:
 
    ![Suchen nach Log Analytics](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 
-2. Wählen Sie unter **Log Analytics** Ihren OMS-Arbeitsbereich aus. 
+2. Suchen Sie unter **Log Analytics** nach Ihrem OMS-Arbeitsbereich, und wählen Sie ihn aus. 
 
    ![Auswählen Ihres OMS-Arbeitsbereichs](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. Wählen Sie unter **Verwaltung** die Option **OMS-Portal**.
+3. Wählen Sie unter **Verwaltung** die Option **OMS-Portal** aus.
 
    ![Auswählen des OMS-Portals](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 

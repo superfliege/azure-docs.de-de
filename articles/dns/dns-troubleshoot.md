@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: bae6cf7f5025936deba301dc4fd05f6fd5fd8fa6
 ms.openlocfilehash: 1d9bb681a864bdc3e5a2f9c9a531d9566b16ada4
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS – Handbuch zur Problembehandlung
 
 Diese Seite enthält Informationen zur Problembehandlung für häufige Fragen zu Azure DNS.
@@ -49,7 +49,7 @@ Probieren Sie zum Beheben allgemeiner Probleme die folgenden Schritte aus:
 
 1.  Bestimmen Sie mithilfe der Azure DNS-Überwachungsprotokolle die Fehlerursache.
 2.  Ist der Eintragssatz bereits vorhanden?  Azure DNS verwaltet Einträge als *Eintragssätze*; dabei handelt es sich um die Sammlung von Einträgen mit dem gleichen Namen und dem gleichen Typ. Wenn ein Eintrag mit dem gleichen Namen und Typ bereits vorhanden ist, müssen Sie zum Hinzufügen eines weiteren solchen Eintrags den vorhandenen Eintragssatz bearbeiten.
-3.  Versuchen Sie, einen Eintrag an der DNS-Zonenspitze (den „Stamm“ der Zone) zu erstellen? In diesem Fall sieht die DNS-Konvention die Verwendung des ‘@’-Zeichens als Eintragsnamen vor. Beachten Sie außerdem, dass die DNS-Standards keine CNAME-Einträge an der Zonenspitze zulassen.
+3.  Versuchen Sie, einen Eintrag an der DNS-Zonenspitze (den „Stamm“ der Zone) zu erstellen? In diesem Fall sieht die DNS-Konvention die Verwendung des @-Zeichens als Eintragsname vor. Beachten Sie außerdem, dass die DNS-Standards keine CNAME-Einträge an der Zonenspitze zulassen.
 4.  Liegt ein CNAME-Konflikt vor?  Die DNS-Standards lassen keinen CNAME-Eintrag mit dem gleichen Namen wie ein Eintrag von einem anderen Typ zu. Wenn bereits ein CNAME-Eintrag vorhanden ist, schlägt das Erstellen eines Eintrags von einem anderem Typ mit gleichem Namen fehl.  Ebenso schlägt das Erstellen eines CNAME-Eintrags fehl, wenn der Name mit dem eines vorhandenen Datensatzes von einem anderen Typ übereinstimmt. Beheben Sie den Konflikt durch Entfernen des anderen Eintrags oder durch Auswählen eines anderen Eintragsnamens.
 5.  Haben Sie die Beschränkung für die zulässige Anzahl von Eintragssätzen in einer DNS-Zone erreicht? Die aktuelle sowie die maximale Anzahl von Eintragssätzen werden im Azure-Portal unter den Eigenschaften für die jeweilige Zone angezeigt. Wenn Sie diese Beschränkung erreicht haben, löschen Sie entweder einige Eintragssätze, oder wenden Sie sich an den Azure-Support, um die Eintragssatzbeschränkung für diese Zone zu erhöhen; versuchen Sie es anschließend erneut. 
 
@@ -104,10 +104,4 @@ Beispiele für SRV-Eintragsnamen (Dienstname „sip“, Protokoll „tcp“):
 * Informationen zu [Azure DNS-Zonen und -Einträgen](dns-zones-records.md)
 * Lernen Sie, wie Sie [eine DNS-Zone erstellen](dns-getstarted-create-dnszone-portal.md) und [DNS-Einträge erstellen](dns-getstarted-create-recordset-portal.md), um mit der Verwendung von Azure DNS zu beginnen.
 * Um eine vorhandene DNS-Zone zu migrieren, sollten Sie sich zuerst darüber informieren, wie Sie [eine DNS-Zonendatei importieren und exportieren](dns-import-export.md).
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

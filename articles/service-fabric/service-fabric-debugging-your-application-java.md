@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2017
 ms.author: vturecek;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 3d122720c834de672d5cb512c7bad2dc5ed3ea58
-ms.openlocfilehash: aa608d6ab76792234e6607160bb17cff520b5665
-
-
+ms.openlocfilehash: f3bcee3794de35005bd387ecfae7e6707f3cb5ee
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Debuggen der Service Fabric-Anwendung in Java mithilfe von Eclipse
 > [!div class="op_single_selector"]
@@ -51,9 +51,3 @@ Wenn die Anwendung abstürzt, können Sie auch Coredumps aktivieren. Führen Sie
 
 * [Sammeln von Protokollen mit Azure-Diagnose unter Linux](service-fabric-diagnostics-how-to-setup-lad.md)
 * [Lokales Überwachen und Diagnostizieren von Diensten](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
-

@@ -12,14 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 4e7ca1f4b3ca7734b00f4d9ce60b466ecf2aeb3f
-ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
-
+ms.openlocfilehash: 75028b4fbda43d90f56690a33c7eb624fce049c8
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="investigate-and-share-usage-data-with-interactive-workbooks-in-application-insights"></a>Untersuchen und Freigeben von Nutzungsdaten mit interaktiven Arbeitsmappen in Application Insights
 
 Mit Arbeitsmappen werden [Azure Application Insights](app-insights-overview.md)-Datenvisualisierungen, [Analytics-Abfragen](app-insights-analytics.md) und Text in interaktiven Dokumenten kombiniert. Arbeitsmappen können von anderen Teammitgliedern bearbeitet werden, die Zugriff auf dieselbe Azure-Ressource haben. Dies bedeutet, dass die Abfragen und Steuerelemente zum Erstellen einer Arbeitsmappe für andere Benutzer verfügbar sind, die die Arbeitsmappe lesen. Auf diese Weise können sie leicht untersucht, erweitert und auf Fehler geprüft werden.
@@ -127,4 +125,3 @@ Gehen Sie wie folgt vor, um in einem Azure-Dashboard einen Link zu einer Arbeits
     - [Benutzerabläufe](app-insights-usage-flows.md)
     - [Hinzufügen von Benutzerkontext](app-insights-usage-send-user-context.md)
     
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d59fcba3467e1739c1782a896fc9b5542422e884
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: ef6f34404b97a6972fc136262920a1bdbc4117b0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshooting-guide-for-push-and-reach-issues"></a>Handbuch zur Problembehandlung bei Push und Reach
 Im Folgenden finden Sie mögliche Probleme, die beim Senden von Informationen durch Azure Mobile Engagement an die Benutzer auftreten können.
@@ -100,5 +99,4 @@ Im Folgenden finden Sie mögliche Probleme, die beim Senden von Informationen du
 * Das gleichzeitige Starten mehrerer Kampagnen kann dazu führen, dass der Scanvorgang der Benutzerbasis länger dauert (versuchen Sie, maximal vier Kampagnen jeweils zeitversetzt zu starten, und beziehen Sie nur aktive Benutzer ein, sodass ältere Benutzer nicht gescannt werden müssen).
 * Wenn Sie im Abschnitt "Kampagne" einer Reach-Kampagne die Option "Zielgruppe ignorieren, Push wird über die API an Benutzer gesendet" verwenden, wird die Kampagne NICHT automatisch gesendet. Sie müssen die Kampagne manuell über die Reach-API senden.
 * Wenn Sie in Reach eine benutzerdefinierte Kategorie zur Anzeige interner Benachrichtigungen der App verwenden, müssen Sie dem richtigen Lebenszyklus einer Benachrichtigung folgen. Ansonsten wird die Benachrichtigung möglicherweise nicht gelöscht, wenn der Benutzer sie schließt.
-
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-translationtype: Human Translation
-ms.sourcegitcommit: 125d4d4bc916883e3bb53b9b3b4bf46bbb4bf139
 ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-microsoft-developer-account"></a>Erstellen eines Microsoft-Entwicklerkontos
 In diesem Artikel werden die Schritte zur Erstellung und Registrierung eines Kontos erläutert, die notwendig sind, um anerkannter Microsoft-Entwickler im Azure Marketplace zu werden.
@@ -161,11 +161,13 @@ Wenn Sie Ihre Steuer- und Bankdaten später aktualisieren möchten, können Sie 
    >
 4. Klicken Sie auf **Weiter**.
 
+
 **Steuerinformationen**
 
 1. Melden Sie mit Ihrem Microsoft-Konto am [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) an (falls erforderlich).
 2. Klicken Sie im Menü auf der linken Seite auf **Steuerprofil** .
 3. Wählen Sie auf der Seite **Richten Sie Ihr Steuerformular ein** das Land oder die Region aus, in dem bzw. der sich Ihr ständiger Wohnsitz befindet. Wählen Sie anschließend das Land oder die Region aus, dessen bzw. deren erste Staatsbürgerschaft Sie besitzen. Klicken Sie auf **Weiter**.
+
 4. Geben Sie Ihre Steuerdaten ein, und klicken Sie auf **Weiter**.
 
 > [!WARNING]
@@ -258,9 +260,3 @@ Nach der Erstellung und Registrierung Ihres Kontos sollten Sie nun sicherstellen
 [link-devsvc]:marketplace-publishing-dev-service-creation.md
 [link-devsvc-prereq]:marketplace-publishing-dev-service-creation-prerequisites.md
 [link-pushstaging]:marketplace-publishing-push-to-staging.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-

@@ -9,12 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
 ms.openlocfilehash: 525d706bd709ae72f2dca1c21e06db533ccf32b4
-ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -705,4 +704,3 @@ In der entsprechenden [EventHubs-Dokumentation](../../event-hubs/event-hubs-what
 * Erstellen Sie Metrikwarnungen in [Azure Monitor](../../monitoring-and-diagnostics/insights-alerts-portal.md) für die von Ihnen erfassten Metriken.
 * Erstellen Sie [Überwachungsdiagramme](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) für Ihre Metriken.
 * Erfahren Sie, wie Sie mithilfe Ihrer Metriken [eine VM-Skalierungsgruppe](/azure/virtual-machines/linux/tutorial-create-vmss) erstellen, um die automatische Skalierung zu steuern.
-

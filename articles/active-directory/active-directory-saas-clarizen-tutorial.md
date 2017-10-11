@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 3908c354a8551d7b16c759a48ef3e5316bfa11fa
 ms.openlocfilehash: 574c6877bddac8be7d6d541bfabbdc10f6be3101
-ms.lasthandoff: 02/21/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Lernprogramm: Azure Active Directory-Integration mit Clarizen
 
@@ -106,7 +105,7 @@ Aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Verwaltungsportal, u
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
 
-    ![Klicken auf „Neues Zertifikat erstellen“](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_03.png)     
+    ![Klicken auf „Neues Zertifikat erstellen“](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_03.png)  
 
 5. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein Ablaufdatum aus. Klicken Sie anschließend auf **Speichern**.
 
@@ -259,4 +258,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Clarizen“ klicken, sollten Sie a
 [201]: ./media/active-directory-saas-clarizen-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-clarizen-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-clarizen-tutorial/tutorial_general_203.png
-

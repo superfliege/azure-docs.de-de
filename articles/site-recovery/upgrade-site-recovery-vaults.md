@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/31/2017
 ms.author: rajani-janaki-ram
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: fdb33ea0d08353b491f2934fcf885fcb6910b9a2
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="upgrade-a-site-recovery-vault-to-an-azure-resource-manager-based-recovery-services-vault"></a>Durchführen eines Upgrades des Site Recovery-Tresors auf einen Azure Resource Manager-basierten Recovery Services-Tresor
 
@@ -186,4 +185,3 @@ Die folgende Abbildung zeigt den Workflow zum Anzeigen der replizierten Elemente
 Im Site Recovery-Tresor ist jede Schutzgruppe mit Kopierhäufigkeit, Aufbewahrung für Wiederherstellungspunkte, Häufigkeit der Momentaufnahmen für Anwendungskonsistenz und anderen Replikationseinstellungen konfiguriert. Im Recovery Services-Tresor sind diese Einstellungen als Replikationsrichtlinie konfiguriert. Der Name der Richtlinie ist der Name der Schutzgruppe oder *primarycloud_Policy*.
 
 Weitere Informationen zur Replikationsrichtlinie finden Sie unter [Verwalten der Replikationsrichtlinie für VMware in Azure](site-recovery-setup-replication-settings-vmware.md).
-

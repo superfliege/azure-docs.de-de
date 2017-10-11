@@ -1,12 +1,12 @@
 > [!IMPORTANT] 
-> Das Erstellen neuer ExpressRoute-Verbindungen im klassischen Bereitstellungsmodell ist ab dem 1. März 2017 nicht mehr möglich.
+> Ab dem 1. März 2017 können nicht Sie neue ExpressRoute-Verbindungen in dem klassischen Bereitstellungsmodell erstellen.
 > 
-> - Sie können eine vorhandene ExpressRoute-Verbindung vom klassischen Bereitstellungsmodell ohne Konnektivitätsausfallzeiten auf das Resource Manager-Bereitstellungsmodell umstellen. Weitere Informationen finden Sie unter [Verschieben einer vorhandenen Verbindung](../articles/expressroute/expressroute-move.md).
-> - Sie können im klassischen Bereitstellungsmodell Verbindungen mit virtuellen Netzwerken herstellen, indem Sie **allowClassicOperations** auf TRUE festlegen.
+> - Sie können eine vorhandene ExpressRoute-Verbindung aus dem klassischen Bereitstellungsmodell, dem Ressourcen-Manager-Bereitstellungsmodell verschieben, ohne Konnektivität Ausfallzeiten auftreten. Weitere Informationen finden Sie unter [verschieben eine vorhandene Leitung](../articles/expressroute/expressroute-move.md).
+> - Sie können mit virtuellen Netzwerken, in dem klassischen Bereitstellungsmodell verbinden, indem **AllowClassicOperations** auf "true".
 > 
-> Verwenden Sie die folgenden Links zum Erstellen und Verwalten von ExpressRoute-Verbindungen im Resource Manager-Bereitstellungsmodell:
+> Verwenden Sie die folgenden Links zum Erstellen und Verwalten von ExpressRoute-Verbindungen im Ressourcen-Manager-Bereitstellungsmodell:
 
 > - [Erstellen und Verwalten von ExpressRoute-Verbindungen](../articles/expressroute/expressroute-howto-circuit-portal-resource-manager.md)<br>
-> - [Konfigurieren des Routings (Peering) für ExpressRoute-Verbindungen](../articles/expressroute/expressroute-howto-routing-portal-resource-manager.md)
+> - [Konfigurieren Sie routing (peering) für ExpressRoute-Verbindungen](../articles/expressroute/expressroute-howto-routing-portal-resource-manager.md)
 >
 >

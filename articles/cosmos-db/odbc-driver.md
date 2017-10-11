@@ -15,15 +15,12 @@ ms.devlang: rest-api
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 2df792c00b7a789dbefa64bfe0245f1ad73c3faa
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
 
 Mit dem Azure Cosmos DB-ODBC-Treiber können Sie eine Verbindung mit Azure Cosmos DB über die BI-Analysetools herstellen, z. B. SQL Server Integration Services, Power BI Desktop und Tableau, um Visualisierungen Ihrer Azure Cosmos DB-Daten in diesen Lösungen zu analysieren und zu erstellen.
@@ -152,4 +149,3 @@ Stellen Sie beim Auftreten des folgenden Fehlers sicher, dass die Werte für **H
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure Cosmos DB finden Sie unter [Was ist Azure Cosmos DB?](introduction.md).
-

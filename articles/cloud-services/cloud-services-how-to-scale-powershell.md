@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: mmccrory
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4acea8e7f4714754e6b3e54e9aaa622219ca9f7f
-ms.openlocfilehash: f16d981a0dc33295c1981d9c282beb1d3243d9ef
-ms.contentlocale: de-de
-ms.lasthandoff: 12/03/2016
-
-
+ms.openlocfilehash: a7ae8ff202d403dff19b8c9a6a09492235db27ac
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-scale-a-cloud-service-in-powershell"></a>Skalieren eines Clouddiensts in PowerShell
 
@@ -81,4 +79,3 @@ Sie können eine Rolle auf die gleiche Weise horizontal herunterskalieren, indem
 ## <a name="next-steps"></a>Nächste Schritte
 
 Die automatische Skalierung für Clouddienste kann über PowerShell nicht konfiguriert werden. Informationen zum automatischen Skalieren eines Clouddiensts finden Sie [hier](cloud-services-how-to-scale-portal.md).
-

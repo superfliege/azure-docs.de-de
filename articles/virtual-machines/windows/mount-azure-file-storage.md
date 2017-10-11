@@ -13,14 +13,12 @@ ms.devlang:
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 6ffb2d2da1e2439df6f5da543411e3c2c68d3435
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="use-azure-file-shares-with-windows-vms"></a>Verwenden von Azure-Dateifreigaben mit virtuellen Windows-Computern 
 
 Sie können Azure-Dateifreigaben verwenden, um Dateien über den virtuellen Computer zu speichern und darauf zuzugreifen. Sie können beispielsweise ein Skript oder eine Anwendungskonfigurationsdatei speichern, das bzw. die für alle virtuellen Computer freigegeben werden soll. In diesem Abschnitt erfahren Sie, wie eine Azure-Dateifreigabe erstellt und bereitgestellt wird und wie Dateien hoch- und heruntergeladen werden.
@@ -76,4 +74,3 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits über eine Dateifre
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie können Dateifreigaben auch mit PowerShell erstellen und verwalten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure File Storage unter Windows](../../storage/files/storage-dotnet-how-to-use-files.md).
-

@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 18ed891a9bba2b4011d3492722a2366d96fb3c01
-ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Versionshinweise für Azure BizTalk Services
 
@@ -97,7 +95,7 @@ Wenn Sie den Qualifizierer einer Identität ändern möchten, löschen Sie die V
 Anlagen für AS2-Nachrichten werden beim Senden oder Empfangen nicht unterstützt. Anlagen werden vielmehr ignoriert, und der Nachrichtentext wird als normale AS2-Nachricht verarbeitet.  
 
 ### <a name="resources-remembering-path"></a>Ressourcen: Speichern des Pfads
-Beim Hinzufügen von **Ressourcen** wird der Pfad, der zuvor zum Hinzufügen einer Ressource verwendet wurde, unter Umständen nicht im Dialogfeld gespeichert. Fügen Sie die Website des BizTalk Services-Portals in Internet Explorer den **vertrauenswürdigen Sites** hinzu, damit der zuvor verwendete Pfad gespeichert wird.  
+Beim Hinzufügen von Ressourcen ****wird der Pfad, der zuvor zum Hinzufügen einer Ressource verwendet wurde, unter Umständen nicht im Dialogfeld gespeichert. Fügen Sie die Website des BizTalk Services-Portals in Internet Explorer den vertrauenswürdigen Sites **** hinzu, damit der zuvor verwendete Pfad gespeichert wird.  
 
 ### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Wenn Sie den Entitätsnamen einer Bridge ändern und das Projekt ohne Speichern der Änderungen schließen, tritt beim erneuten Öffnen der Entität ein Fehler auf
 Szenario mit Schritten in der angegebenen Reihenfolge:  
@@ -223,5 +221,4 @@ In diesem Dokument werden die Begriffe „Pipelines“ und „Bridges“ synonym
 
 ### <a name="concepts"></a>Konzepte
 [BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
-
 

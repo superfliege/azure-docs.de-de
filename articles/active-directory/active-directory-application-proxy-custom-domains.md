@@ -15,14 +15,12 @@ ms.date: 08/01/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
 ms.openlocfilehash: 1dde300780c8d1f7ea9eee4c92de06bcf70a1f12
-ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy
 
 Wenn Sie eine Anwendung über den Azure Active Directory-Anwendungsproxy veröffentlichen, erstellen Sie eine externe URL, die Ihre Benutzer bei der Remotearbeit verwenden können. Mit dieser URL wird die Standarddomäne *yourtenant.msappproxy.net* aufgerufen. Wenn Sie z.B. eine App mit dem Namen „Expenses“ veröffentlichen, und ihr Mandant „Contoso“ heißt, ist die externe URL https://expenses-contoso.msappproxy.net. Konfigurieren Sie eine benutzerdefinierte Domäne für Ihre Anwendung, wenn Sie Ihren eigenen Domänennamen verwenden möchten. 
@@ -88,6 +86,5 @@ Derzeit wird die gesamte Zertifikatverwaltung über einzelne Anwendungsseiten du
 * [Aktivieren des einmaligen Anmeldens](active-directory-application-proxy-sso-using-kcd.md) bei Ihren veröffentlichten Apps mithilfe der Azure AD-Authentifizierung.
 * [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md) auf Ihre veröffentlichten Apps.
 * [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-domains-add-azure-portal.md)
-
 
 

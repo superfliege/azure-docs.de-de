@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 5d46f376d46b8bbf3f93de57a7d4e31abdbcdb2f
-ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne
 
@@ -96,4 +94,3 @@ Gehen Sie folgendermaßen vor, um das Zertifikat für sicheres LDAP (LDAPS) in e
 
 ## <a name="next-step"></a>Nächster Schritt
 [Aufgabe 3: Aktivieren von sicherem LDAP für die verwaltete Domäne](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
-

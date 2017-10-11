@@ -1,7 +1,7 @@
-#### <a name="to-get-the-storsimple-service-registration-key"></a>So rufen Sie den StorSimple-Dienstregistrierungsschlüssel ab
+#### <a name="to-get-the-storsimple-service-registration-key"></a>Den StorSimple-Dienstregistrierungsschlüssel abrufen
 
-1.  Klicken Sie auf der Seite **StorSimple-Geräte-Manager** auf den Dienst, den Sie erstellt haben. Dies öffnet auf der rechten Seite ein neues Blatt.
+1.  Auf der **StorSimple-Geräte-Manager** Blatt, klicken Sie auf den Dienst, die Sie erstellt haben. Dies öffnet ein neues Blatt auf der rechten Seite.
 
-2.  Klicken Sie im neu geöffneten Blatt auf **Verwalten&gt;** **Schlüssel**.
+2.  Klicken Sie in der geöffneten Blatt auf **verwalten &gt;**  **Schlüssel**.
 
-3.  Klicken Sie auf das Kopiersymbol, um den Dienstregistrierungsschlüssel zu kopieren und für die spätere Verwendung zu speichern.
+3.  Klicken Sie auf das Symbol "Kopieren", um den Schlüssel kopieren und für die spätere Verwendung speichern.

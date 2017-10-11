@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 72f69e334172ad69bedb9c8fc4d270a607d1598f
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 0738f33df94d14fbb393bfaaf09e94c6560213cc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-phone-silverlight-reach-sdk-integration"></a>Integration von Windows Phone Silverlight Reach-SDK
 Bevor Sie dieser Anleitung folgen, müssen Sie das unter [Integration des Windows Phone Silverlight Engagement-SDK](mobile-engagement-windows-phone-integrate-engagement.md) beschriebene Integrationsverfahren befolgen.
@@ -283,5 +282,4 @@ Sie können den Rückruf in der `Application_Launching`-Methode der Datei `App.x
 [Anwendungsrichtlinien]:http://msdn.microsoft.com/library/windows/apps/hh184841(v=vs.105).aspx
 [Content Policies]:http://msdn.microsoft.com/library/windows/apps/hh184842(v=vs.105).aspx
 [zusätzlichen Anforderungen für bestimmte Anwendungstypen]:http://msdn.microsoft.com/library/windows/apps/hh184838(v=vs.105).aspx
-
 

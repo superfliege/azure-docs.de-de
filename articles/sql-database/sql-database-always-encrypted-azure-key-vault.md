@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 15db9db72a80dc95c615e52b889f6470b2e6eed0
-ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 61bfd420425b4740f6d4ebc01a403a88ff351382
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted – Schützen von vertraulichen Daten in SQL-Datenbank und Speichern der Verschlüsselungsschlüssel in Azure Key Vault
 
@@ -154,6 +153,7 @@ Verschlüsseln Sie für jeden Patienten die Daten **SSN** (US-Sozialversicherung
 
 Legen Sie als **Verschlüsselungstyp** für die Spalte „SSN“ **Deterministisch** und für die Spalte „BirthDate“ **Zufällig** fest. Klicken Sie auf **Weiter**.
 
+
 ![Spalten verschlüsseln](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
 
 ### <a name="master-key-configuration"></a>Hauptschlüsselkonfiguration
@@ -164,6 +164,7 @@ Dieses Tutorial zeigt, wie Sie Ihre Schlüssel in Azure Key Vault speichern.
 1. Wählen Sie **Azure Key Vault**aus.
 2. Wählen Sie in der Dropdownliste den gewünschten Schlüsseltresor aus.
 3. Klicken Sie auf **Weiter**.
+
 
 ![Hauptschlüsselkonfiguration](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
@@ -641,5 +642,4 @@ Nach dem Erstellen einer Datenbank, für die Always Encrypted verwendet wird, so
 * [SQL Server-Verschlüsselung](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted-Assistent](https://msdn.microsoft.com/library/mt459280.aspx)
 * [Always Encrypted-Blog](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
-
 

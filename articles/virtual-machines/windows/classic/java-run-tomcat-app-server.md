@@ -15,12 +15,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: 6e02f42613808bcb13c0057e9f8fcc1c02273e77
-ms.lasthandoff: 03/25/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>Ausführen eines Java-Anwendungsservers auf einem virtuellen Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde
 > [!IMPORTANT]
@@ -56,6 +55,7 @@ Die abgeschlossene Installation hat zum Ergebnis, dass Tomcat auf einem virtuell
    5. Klicken Sie für die **Ressourcengruppe** auf **Neu erstellen**, und geben Sie den Namen einer neuen Ressourcengruppe ein. Oder klicken Sie auf **Vorhandene verwenden**, und wählen Sie eine der verfügbaren Ressourcengruppen aus.
    6. Wählen Sie einen Standort aus, an sich dem der virtuelle Computer befindet, etwa **USA, Süden-Mitte**.
 6. Klicken Sie auf **Weiter**.
+
 7. Wählen Sie auf dem Blatt **VM-Imagegröße** die Option **A1 Standard** oder ein anderes geeignetes Image aus.
 8. Klicken Sie auf **Auswählen**.
 
@@ -121,7 +121,7 @@ Um von externen Computern aus festzustellen, ob Tomcat ausgeführt wird, müssen
 10. Geben Sie im Bildschirm **Name** einen Namen für die Regel an, beispielsweise **HttpIn** (der Name der Regel muss jedoch nicht mit dem Namen des Endpunkts übereinstimmen). Klicken Sie anschließend auf **Fertig stellen**.  
     ![Neue eingehende Regel – Name][NewRuleName]
 
-An diesem Punkt sollte Ihre Tomcat-Website in einem externen Browser angezeigt werden. Geben Sie in die Adressleiste des Browsers eine URL in der Form **http://*Ihr\_DNS\_Name*.cloudapp.net**ein, wobei***Ihr\_DNS\_Name*** der DNS-Name ist, den Sie beim Erstellen des virtuellen Computers angegeben haben.
+An diesem Punkt sollte Ihre Tomcat-Website in einem externen Browser angezeigt werden. Geben Sie im Fenster "Adresse" den Browser, eine URL im Format  **http://*Ihrer\_DNS\_Namen*. cloudapp.net**, in denen ***Ihrer\_DNS\_Namen*** der DNS-Namen, die Sie beim Erstellen der virtuellen Maschine angegeben wird.
 
 ## <a name="application-lifecycle-considerations"></a>Überlegungen zum Lebenszyklus von Anwendungen
 * Sie können Ihr eigenes Archiv für Web-Anwendungen (WAR) erstellen und im Ordner **webapps** hinzufügen. Erstellen Sie z. B. ein elementares dynamisches JSP-Webprojekt (Java Service Page), und exportieren Sie das Projekt als WAR-Datei. Kopieren Sie die WAR-Datei im nächsten Schritt in den Apache Tomcat-Ordner **ebapps** auf dem virtuellen Computer, und führen Sie die Datei dann in einem Browser aus.
@@ -159,4 +159,3 @@ Sie können sich mit den anderen Diensten beschäftigen (beispielsweise Azure St
 6. In the **Add endpoint** dialog box, ensure **Add standalone endpoint** is selected, and then click **Next**.
 7. In the **New endpoint details** dialog box:
 -->
-

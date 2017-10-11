@@ -1,6 +1,6 @@
 ---
-title: "Azure AD v2 – ASP.NET-Webserver: Erste Schritte – Verwendung | Microsoft-Dokumentation"
-description: "Informationen zum Implementieren einer Microsoft-Anmeldung in einer ASP.NET-Projektmappe mittels einer herkömmlichen webbrowserbasierten Anwendung unter Verwendung des Standards OpenID Connect"
+title: 'Azure AD v2 ASP.NET-Web Server erste verwenden wurde gestartet: | Microsoft Docs'
+description: "Implementieren von Microsoft anmelden in einer ASP.NET-Projektmappe mit einer herkömmlichen Web browserbasierte Anwendung, die mit standardmäßigen OpenID Connect"
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -15,23 +15,21 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 3b7d29e48c91f40e8782a5e32a52998b815fe331
-ms.contentlocale: de-de
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
+## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Fügen Sie einen Controller zum an- und Abmelde Anforderungen zu verarbeiten
 
-## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Hinzufügen eines Controllers zum Verarbeiten von An- und Abmeldeanforderungen
+Dieser Schritt veranschaulicht das Erstellen eines neuen Controllers zum an- und Abmelde Methoden verfügbar zu machen.
 
-Dieser Schritt veranschaulicht das Erstellen eines neuen Controllers, um An- und Abmeldeverfahren verfügbar zu machen.
-
-1.    Klicken Sie mit der rechten Maustaste auf den Ordner `Controllers`, und wählen Sie `Add` > `Controller` aus.
-2.    Wählen Sie `MVC (.NET version) Controller – Empty` aus.
-3.    Klicken Sie auf *Hinzufügen*.
-4.    Vergeben Sie den Namen `HomeController`, und klicken Sie auf *Hinzufügen*.
-5.    Fügen Sie der Klasse *OWIN*-Verweise hinzu:
+1.  Klicken Sie mit der rechten Maustaste auf die `Controllers` Ordner, und wählen`Add` > `Controller`
+2.  Wählen Sie `MVC (.NET version) Controller – Empty`.
+3.  Klicken Sie auf *hinzufügen*
+4.  Nennen Sie sie `HomeController` , und klicken Sie auf *hinzufügen*
+5.  Hinzufügen *OWIN* Verweise auf die Klasse:
 
 ```csharp
 using Microsoft.Owin.Security;
@@ -41,7 +39,7 @@ using Microsoft.Owin.Security.OpenIdConnect;
 <!-- Workaround for Docs conversion bug -->
 <ol start="6">
 <li>
-Fügen Sie die beiden nachstehenden Methoden hinzu, um die An- und Abmeldung bei Ihrem Controller zu verarbeiten, indem Sie eine Authentifizierungsaufforderung per Code auslösen:
+Fügen Sie die beiden Methoden aus, um die Anmeldeseite zu behandeln und Abmeldung initiiert wird, eine authentifizierungsaufforderung über Code an den Controller hinzu:
 </li>
 </ol>
 
@@ -71,13 +69,13 @@ public void SignOut()
 }
 ```
 
-## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Erstellen der Startseite der App zum Anmelden von Benutzern über eine Anmeldeschaltfläche
+## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Erstellen Sie die app-Startseite zur Anmeldung der Benutzer über eine Schaltfläche "Anmelden"
 
-Erstellen Sie in Visual Studio eine neue Ansicht, um die Schaltfläche „Anmelden“ hinzufügen und Benutzerinformationen nach der Authentifizierung anzuzeigen:
+Erstellen Sie in Visual Studio eine neue Ansicht, um die Schaltfläche "Anmelden" hinzufügen und Anzeigen von Benutzerinformationen nach der Authentifizierung:
 
-1.    Klicken Sie mit der rechten Maustaste auf den Ordner `Views\Home`, und wählen Sie `Add View` aus.
-2.    Geben Sie dem Projekt den Namen `Index`.
-3.    Fügen Sie der Datei den folgenden HTML-Code hinzu, der die Schaltfläche „Anmelden“ enthält:
+1.  Klicken Sie mit der rechten Maustaste auf die `Views\Home` Ordner, und wählen`Add View`
+2.  Nennen Sie sie `Index`.
+3.  Fügen Sie folgenden HTML-Code, der die Schaltfläche "Anmelden" enthält, in die Datei ein:
 
 ```html
 <html>
@@ -118,17 +116,17 @@ else
 ```
 <!--start-collapse-->
 ### <a name="more-information"></a>Weitere Informationen
-> Auf dieser Seite wird eine Anmeldeschaltfläche im SVG-Format mit schwarzem Hintergrund hinzugefügt:<br/>![Mit Microsoft anmelden](media/active-directory-serversidewebapp-aspnetwebappowin-use/aspnetsigninbuttonsample.png)<br/> Weitere Anmeldeschaltflächen finden Sie auf [dieser Seite](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Branding guidelines").
+> Auf dieser Seite wird eine Anmeldeschaltfläche in SVG-Format mit schwarzem Hintergrund hinzugefügt:<br/>![Melden Sie sich mit Microsoft](media/active-directory-serversidewebapp-aspnetwebappowin-use/aspnetsigninbuttonsample.png)<br/> Weitere Anmeldeschaltflächen, wechseln Sie zu der [auf dieser Seite](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Branding guidelines").
 <!--end-collapse-->
 
-## <a name="add-a-controller-to-display-users-claims"></a>Hinzufügen eines Controllers zum Anzeigen von Ansprüchen des Benutzers
-Dieser Controller veranschaulicht die Verwendungen des `[Authorize]`-Attributs, um einen Controller zu schützen. Dieses Attribut beschränkt den Zugriff auf den Controller, indem nur authentifizierte Benutzer zugelassen werden. Der folgende Code verwendet das Attribut zum Anzeigen von Benutzeransprüchen, die als Teil der Anmeldung abgerufen wurden.
+## <a name="add-a-controller-to-display-users-claims"></a>Fügen Sie einen Controller zum Anzeigen von Ansprüchen des Benutzers
+Dieser Controller veranschaulicht die Verwendungen der der `[Authorize]` Attribut einen Controller zu schützen. Dieses Attribut beschränkt den Zugriff auf den Controller nur zulassen, dass authentifizierte Benutzer. Der folgende Code verwendet das Attribut Benutzeransprüche, die abgerufen wurden als Teil der Anmeldeseite angezeigt wird.
 
-1.    Klicken Sie mit der rechten Maustaste auf den Ordner `Controllers`, und wählen Sie `Add` > `Controller` aus.
-2.    Wählen Sie `MVC {version} Controller – Empty` aus.
-3.    Klicken Sie auf *Hinzufügen*.
-4.    Vergeben Sie den Namen `ClaimsController`.
-5.    Ersetzen Sie den Code Ihrer „Controller“-Klasse durch den folgenden Code. Dadurch wird das `[Authorize]`-Attribut der Klasse hinzugefügt:
+1.  Klicken Sie mit der rechten Maustaste auf die `Controllers` Ordner:`Add` > `Controller`
+2.  Wählen Sie `MVC {version} Controller – Empty`.
+3.  Klicken Sie auf *hinzufügen*
+4.  Nennen Sie Sie`ClaimsController`
+5.  Ersetzen Sie den Code Ihrer Controller-Klasse mit den folgenden - Code Dies fügt die `[Authorize]` -Attribut der Klasse:
 
 ```csharp
 [Authorize]
@@ -160,16 +158,16 @@ public class ClaimsController : Controller
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Weitere Informationen
-> Aufgrund der Verwendung des `[Authorize]`-Attributs können alle Methoden dieses Controllers nur ausgeführt werden, wenn der Benutzer authentifiziert ist. Wenn der Benutzer nicht authentifiziert ist und versucht, auf den Controller zuzugreifen, löst OWIN eine Authentifizierungsaufforderung aus und zwingt den Benutzer, sich zu authentifizieren. Der vorherige Code untersucht die Anspruchssammlung der `ClaimsPrincipal.Current`-Instanz auf bestimmte Benutzerattribute, die im Token des Benutzers enthalten sind. Diesen Attribute enthalten den vollständigen Namen des Benutzers und den Benutzername sowie die GUID des Antragstellers. Sie enthalten auch die *Mandanten-ID*, die die ID der Organisation des Benutzers darstellt. 
+> Aufgrund der Verwendung von der `[Authorize]` alle Methoden dieses Controllers-Attribut kann nur ausgeführt werden, wenn der Benutzer authentifiziert ist. Wenn der Benutzer nicht authentifiziert ist und versucht, den Controller zugreifen, wird OWIN initiieren eine authentifizierungsaufforderung und Authentifizierung des Benutzers zu erzwingen. Der Code oben untersucht die Auflistung der Ansprüche von der `ClaimsPrincipal.Current` Instanz für bestimmte Benutzerattribute, die in das Zugriffstoken des Benutzers enthalten. Diese Attribute enthalten die vollständigen Namen des Benutzers und Benutzername als auch den Betreff der globale User-Bezeichner. Es enthält auch die *Mandanten-ID*, der die ID für die Organisation des Benutzers darstellt. 
 <!--end-collapse-->
 
-## <a name="create-a-view-to-display-the-users-claims"></a>Erstellen einer Ansicht zum Anzeigen der Ansprüche des Benutzers
+## <a name="create-a-view-to-display-the-users-claims"></a>Erstellen Sie eine Ansicht zum Anzeigen von den Ansprüchen des Benutzers
 
-Erstellen Sie in Visual Studio eine neue Ansicht zum Anzeigen der Ansprüche des Benutzers auf einer Webseite:
+Erstellen Sie in Visual Studio eine neue Ansicht zum Anzeigen von den Ansprüchen des Benutzers auf einer Webseite ein:
 
-1.    Klicken Sie mit der rechten Maustaste auf den Ordner `Views\Claims`, und wählen Sie `Add View` aus.
-2.    Vergeben Sie den Namen `Index`.
-3.    Fügen Sie der Datei den folgenden HTML-Code hinzu:
+1.  Klicken Sie mit der rechten Maustaste auf die `Views\Claims` Ordner und:`Add View`
+2.  Nennen Sie sie `Index`.
+3.  Fügen Sie folgenden HTML-Code in die Datei ein:
 
 ```html
 <html>
@@ -200,4 +198,3 @@ Erstellen Sie in Visual Studio eine neue Ansicht zum Anzeigen der Ansprüche des
 </body>
 </html>
 ```
-

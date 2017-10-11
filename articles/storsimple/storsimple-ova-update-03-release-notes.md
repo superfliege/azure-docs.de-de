@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: fe9d4f6b232e9abcf1fe9fc5657044b6c72fedb8
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>Versionsanmerkungen zu Update 0.3 für StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht
@@ -41,8 +41,8 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser V
 
 | Nein. | Funktion | Problem |
 | --- | --- | --- |
-| 1 |Backups |In der vorherigen Version wurde das Problem festgestellt, dass die Sicherungen für eine Dateifreigabe nicht abgeschlossen werden konnten. In diesem Fall trat beim Sicherungsauftrag ein Fehler auf, und im StorSimple Manager-Dienst wurde eine kritische Warnung ausgelöst, um den Benutzer zu benachrichtigen. Das Problem wirkte sich nicht auf die Daten auf den Freigaben oder den Zugriff auf die Daten aus. Die Ursache wurde identifiziert und in dieser Version beseitigt. <br></br>  Die Korrektur gilt nicht rückwirkend für Freigaben, bei denen dieses Problem bereits aufgetreten ist. Kunden, bei denen dieses Problem auftritt, sollten zuerst Update 0.3 anwenden und sich dann an den Microsoft-Support wenden, um zur Behebung des Problems eine vollständige Systemsicherung durchführen zu lassen. Anstatt den Microsoft-Support zu kontaktieren, können Kunden auch für die betroffenen Freigaben eine Wiederherstellung einer fehlerfreien Sicherung in einer neuen Freigabe ausführen. |
-| 2 |iSCSI |In der vorherigen Version wurde ein Problem festgestellt, bei dem Volumes verschwanden, wenn Daten auf ein Volume des StorSimple Virtual Arrays kopiert wurden. Dieses Problem wurde in dieser Version behoben. <br></br>  Die Korrekturen gelten nur für neu erstellte Volumes. Sie gelten nicht rückwirkend für Volumes, bei denen dieses Problem bereits aufgetreten ist. Kunden sollten die betroffenen Datenträger über das klassische Azure-Portal online schalten, eine Sicherung für diese Volumes durchführen und diese Volumes dann auf neuen Volumes wiederherstellen. |
+| 1 |Backups |In der vorherigen Version wurde das Problem festgestellt, dass die Sicherungen für eine Dateifreigabe nicht abgeschlossen werden konnten. In diesem Fall trat beim Sicherungsauftrag ein Fehler auf, und im StorSimple Manager-Dienst wurde eine kritische Warnung ausgelöst, um den Benutzer zu benachrichtigen. Das Problem wirkte sich nicht auf die Daten auf den Freigaben oder den Zugriff auf die Daten aus. Die Ursache wurde identifiziert und in dieser Version beseitigt. <br></br> Die Korrektur gilt nicht rückwirkend für Freigaben, bei denen dieses Problem bereits aufgetreten ist. Kunden, bei denen dieses Problem auftritt, sollten zuerst Update 0.3 anwenden und sich dann an den Microsoft-Support wenden, um zur Behebung des Problems eine vollständige Systemsicherung durchführen zu lassen. Anstatt den Microsoft-Support zu kontaktieren, können Kunden auch für die betroffenen Freigaben eine Wiederherstellung einer fehlerfreien Sicherung in einer neuen Freigabe ausführen. |
+| 2 |iSCSI |In der vorherigen Version wurde ein Problem festgestellt, bei dem Volumes verschwanden, wenn Daten auf ein Volume des StorSimple Virtual Arrays kopiert wurden. Dieses Problem wurde in dieser Version behoben. <br></br> Die Korrekturen gelten nur für neu erstellte Volumes. Sie gelten nicht rückwirkend für Volumes, bei denen dieses Problem bereits aufgetreten ist. Kunden sollten die betroffenen Datenträger über das klassische Azure-Portal online schalten, eine Sicherung für diese Volumes durchführen und diese Volumes dann auf neuen Volumes wiederherstellen. |
 
 ## <a name="known-issues-in-the-update-03"></a>Bekannte Probleme in Update 0.3
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für StorSimple Virtual Array sowie die Probleme aus früheren Versionsinformationen. 
@@ -72,10 +72,4 @@ Suchen Sie nach älteren Versionsanmerkungen? Wechseln Sie zu:
 
 * [Versionsanmerkungen zu Update 0.1 und Update 0.2 für das StorSimple Virtual Array](storsimple-ova-update-01-release-notes.md)
 * [StorSimple Virtual Array – Version mit allgemeiner Verfügbarkeit – Versionsanmerkungen](storsimple-ova-pp-release-notes.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

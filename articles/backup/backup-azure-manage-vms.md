@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 35a21cb99ca4bad124a9f764cef9da453e1fe47f
-ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Verwalten der Sicherung virtueller Computer
 > [!div class="op_single_selector"]
@@ -172,7 +170,7 @@ So beenden Sie den Schutz für einen virtuellen Computer
 
     Falls Sie unsicher sind, wie der Name lautet, können Sie mit der Maus auf das Ausrufezeichen zeigen, um den Namen anzuzeigen. Der Name des Elements ist auch am oberen Rand des Blatts unter **Sicherung beenden** angegeben.
 4. Geben Sie optional einen **Grund** oder einen **Kommentar** ein.
-5. Klicken Sie auf die Schaltfläche  ![Sicherung beenden](./media/backup-azure-manage-vms/stop-backup-button-blue.png), um den Sicherungsauftrag für das aktuelle Element zu beenden.
+5. Um den Sicherungsauftrag für das aktuelle Element zu beenden, klicken Sie auf ![backup Schaltfläche "Beenden"](./media/backup-azure-manage-vms/stop-backup-button-blue.png)
 
     Sie werden mit einer Benachrichtigung darüber informiert, dass die Sicherungsaufträge beendet wurden.
 
@@ -221,10 +219,9 @@ So löschen Sie Sicherungsdaten auf einem virtuellen Computer mit *deaktivierter
 
     Falls Sie unsicher sind, wie der Name lautet, können Sie mit der Maus auf das Ausrufezeichen zeigen, um den Namen anzuzeigen. Der Name des Elements ist auch oben auf dem Blatt unter **Sicherungsdaten löschen** angegeben.
 3. Geben Sie optional einen **Grund** oder einen **Kommentar** ein.
-4. Klicken Sie auf die Schaltfläche  ![Sicherung beenden](./media/backup-azure-manage-vms/delete-button.png), um die Sicherungsdaten für das aktuelle Element zu löschen.
+4. Um die zu sichernden Daten für das aktuelle Element zu löschen, klicken Sie auf ![backup Schaltfläche "Beenden"](./media/backup-azure-manage-vms/delete-button.png)
 
     Sie werden mit einer Benachrichtigung darüber informiert, dass die Sicherungsdaten gelöscht wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Neuerstellen eines virtuellen Computers über einen Wiederherstellungspunkt finden Sie unter [Wiederherstellen virtueller Azure-Computer](backup-azure-restore-vms.md). Informationen zum Schutz Ihrer virtuellen Computer finden Sie unter [Einführung: Schützen von Azure-VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md). Informationen zum Überwachen von Ereignissen finden Sie unter [Überwachen von Warnungen für Sicherungen von virtuellen Azure-Computern](backup-azure-monitor-vms.md).
-

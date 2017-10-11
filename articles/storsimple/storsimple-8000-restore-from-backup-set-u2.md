@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: aff0710ead4f76bb80c38e2d88fe9cd3ce6a7b48
-ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Wiederherstellen eines StorSimple-Volumes aus einem Sicherungssatz
 
@@ -115,7 +113,7 @@ Sie können Ihr StorSimple-Volume auf dem Blatt **Sicherungskatalog** aus einer 
    
     ![Liste der Sicherungssätze](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
-3. Erweitern Sie einen Sicherungssatz, um die zugehörigen Volumes anzuzeigen. Diese Volumes müssen auf dem Host und dem Gerät offline geschaltet werden, bevor sie wiederhergestellt werden können. Greifen Sie auf dem Blatt **Volumes** für Ihr Gerät auf die Volumes zu, und führen Sie dann die Schritte in [Offlineschalten eines Volumes](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) durch, um diese offline zu schalten.
+3. Erweitern Sie einen Sicherungssatz, um die zugehörigen Volumes anzuzeigen. Diese Volumes müssen auf dem Host und dem Gerät offline geschaltet werden, bevor sie wiederhergestellt werden können. Greifen Sie auf dem Blatt **Volumes** auf Ihr Gerät zu, und führen Sie dann die Schritte in [Offlineschalten eines Volumes](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) durch, um diese offline zu schalten.
    
    > [!IMPORTANT]
    > Vergewissern Sie sich, dass die Volumes auf dem Host offline sind, bevor Sie diese auf dem Gerät offline schalten. Wenn Sie die Volumes auf dem Host nicht offline schalten, kann es zur Beschädigung von Daten kommen.
@@ -144,5 +142,4 @@ Um den Wiederherstellungsvorgang erfolgreich abzuschließen, schalten Sie das Vo
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [StorSimple-Volumes verwalten](storsimple-8000-manage-volumes-u2.md).
 * Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple-Geräte-Manager-Diensts verwalten](storsimple-8000-manager-service-administration.md).
-
 

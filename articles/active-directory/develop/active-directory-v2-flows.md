@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 9d59e7f0e8f326c40be86e199d7712f6c565cc13
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>App-Typen für den Azure Active Directory v2.0-Endpunkt
 Der Azure Active Directory (Azure AD) v2.0-Endpunkt unterstützt die Authentifizierung für eine Vielzahl moderner App-Architekturen, die alle auf den branchenüblichen Standardprotokollen [OAuth 2.0 oder OpenID Connect](active-directory-v2-protocols.md) basieren. Dieser Artikel beschreibt die App-Typen, die Sie unabhängig von der bevorzugten Sprache oder Plattform mithilfe von Azure AD v2.0 erstellen können. Die Informationen in diesem Artikel dienen Ihrem Verständnis der allgemeinen Szenarios, bevor Sie [mit Code arbeiten](active-directory-appmodel-v2-overview.md#getting-started).
@@ -123,4 +121,3 @@ Bei diesem Ablauf erhält die App Token durch die direkte Interaktion mit dem `/
 ![Authentifizierungsablauf für Daemon-Apps](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
 Informationen zum Erstellen einer Daemon-App finden Sie in der Dokumentation zu Clientanmeldeinformationen im Abschnitt [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started). Zudem können Sie auch eine [.NET-Beispiel-App](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2) testen.
-

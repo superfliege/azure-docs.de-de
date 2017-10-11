@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 41f978750ddef9f7e878c65b0017e909720154aa
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Verwenden von Notification Hubs von Java aus
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -271,7 +271,7 @@ Das Benachrichtigungsobjekt ist lediglich ein Text mit Headern. Einige Dienstpro
 
 Beim Ausführen des Java-Codes sollte jetzt eine Benachrichtigung erstellt werden, die auf dem Zielgerät angezeigt wird.
 
-## <a name="a-namenext-stepsanext-steps"></a><a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 In diesem Thema haben wir gezeigt, wie Sie einen einfachen Java REST-Client für Notification Hubs erstellen. Mögliche nächste Schritte:
 
 * Laden Sie das vollständige [Java-SDK]herunter, das den gesamten SDK-Code enthält. 
@@ -283,17 +283,11 @@ In diesem Thema haben wir gezeigt, wie Sie einen einfachen Java REST-Client für
   * [Senden plattformübergreifender Benachrichtigungen an authentifizierte Benutzer]
 
 [Java-SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
-[Lernprogramm zu den ersten Schritten]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[Get started tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Erste Schritte mit Notification Hubs]: http://www.windowsazure.com/manage/services/notification-hubs/getting-started-windows-dotnet/
 [Senden aktueller Nachrichten]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-dotnet/
 [Senden lokalisierter aktueller Nachrichten]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-localized-dotnet/
 [Senden von Benachrichtigungen an authentifizierte Benutzer]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users/
 [Senden plattformübergreifender Benachrichtigungen an authentifizierte Benutzer]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users-xplat-mobile-services/
 [Maven]: http://maven.apache.org/
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

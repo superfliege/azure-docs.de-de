@@ -13,12 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/07/2016
 ms.author: nateko
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
 ms.openlocfilehash: 739a0ad77c68ea74ec25bc80c7539ac8b3f18201
-ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="synonyms-in-azure-search-preview"></a>Synonyme in Azure Search (Vorschau)
 
@@ -166,4 +165,3 @@ Die Synonymerweiterungen gelten nicht für Platzhaltersuchbegriffe. Präfix-, Fu
 - Wenn Sie über einen vorhandenen Index in einer Entwicklungsumgebung (nicht Produktionsumgebung) verfügen, experimentieren Sie mit einem kleinen Wörterbuch, um zu prüfen, wie sich das Hinzufügen von Synonymen auf die Suche auswirkt, einschließlich der Auswirkungen auf Bewertungsprofile, Treffermarkierungen und Vorschläge.
 
 - [Aktivieren Sie die Datenverkehrsanalyse für Suchen](search-traffic-analytics.md), und verwenden Sie den vordefinierten Power BI-Bericht, um zu erfahren, welche Begriffe am meisten verwendet werden und welche Begriffe keine Dokumente zurückgeben. Überarbeiten Sie das Wörterbuch unter Einbeziehung dieser Erkenntnisse, um Synonyme für unproduktive Abfragen einzubeziehen, die zu Dokumenten in Ihrem Index führen sollten.
-

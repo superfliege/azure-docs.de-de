@@ -1,5 +1,4 @@
 ---
-
 title: "Support für Azure Active Directory B2B-Zusammenarbeit | Microsoft-Dokumentation"
 description: "Wie erhalten Sie Support für die Azure Active Directory B2B-Zusammenarbeit?"
 services: active-directory
@@ -16,16 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/26/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: ce4731966baefa76b72e5a1a065c06379fac065d
-ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
-
 # <a name="getting-support-for-b2b-collaboration"></a>Support für die B2B-Zusammenarbeit
 
 Obwohl Sie die Dokumentation gelesen und die Anweisungen befolgt haben, funktioniert etwas nicht. Öffnen Sie in diesem Fall ein Supportticket (hierzu ist ein Supportplan erforderlich):
@@ -47,4 +42,3 @@ Obwohl Sie die Dokumentation gelesen und die Anweisungen befolgt haben, funktion
   ![Supportticket, Problembeschreibung](media/active-directory-b2b-support/problem-description.png)
 
 3. Geben Sie Ihre Kontaktinformationen an, damit Sie ein Supportmitarbeiter zur Problembehandlung kontaktieren kann.
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: da10b213bc2543942b5ac77cf5c5d8547c00220c
-ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="replicate-hyper-v-virtual-machines-without-vmm-to-azure"></a>Replizieren von Hyper-V-VMs (ohne VMM) in Azure 
 
 > [!div class="op_single_selector"]
@@ -62,7 +60,7 @@ Gehen Sie zu [Schritt 3: Planen der Kapazität](hyper-v-site-walkthrough-capacit
 
 ## <a name="step-4-plan-networking"></a>Schritt 4: Planen von Netzwerken
 
-Sie müssen einige Netzwerke planen, um sicherzustellen, dass Azure-VMs nach dem Auftreten von Failover mit Netzwerken verbunden sind und die richtigen IP-Adressen besitzen.
+Sie müssen einige Netzwerke planen, um sicherzustellen, dass Azure-VMs mit Netzwerken verbunden sind, nachdem es ein Failover gab, und dass sie die richtige IP-Adressen besitzen.
 
 Gehen Sie zu [Schritt 4: Planen von Netzwerken](hyper-v-site-walkthrough-network.md).
 
@@ -109,4 +107,3 @@ Gehen Sie zu [Schritt 10: Aktivieren der Replikation](hyper-v-site-walkthrough-e
 Nachdem die erste Replikation abgeschlossen wurde und die Deltareplikation ausgeführt wird, können Sie ein Testfailover ausführen, um sicherzustellen, dass alles wie erwartet funktioniert.
 
 Gehen Sie zu [Schritt 11: Ausführen eines Testfailovers](hyper-v-site-walkthrough-test-failover.md).
-

@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6f08fcdb4ec6dd124760cff54c522d998d5a0327
-ms.contentlocale: de-de
-ms.lasthandoff: 12/28/2016
-
-
+ms.openlocfilehash: 58943e1e29755c983e55c675dd4fe7b75ac47b34
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>Aktivieren von Windows Hello for Business in Ihrer Organisation
 Nach der [Verknüpfung von in die Domäne eingebundenen Windows 10-Geräten mit Azure Active Directory](active-directory-azureadjoin-devices-group-policy.md) gehen Sie wie folgt vor, um Windows Hello for Business in Ihrer Organisation zu aktivieren:
@@ -79,6 +77,7 @@ Das Verwenden von System Center Configuration Manager ist die bevorzugte Methode
     a. Geben Sie im Textfeld **Name** einen Namen für Ihr Profil ein, z. B. **Mein WHfB-Profil**.
    
     b. Klicken Sie auf **Weiter**.
+
 4. Wählen Sie im Dialogfeld **Unterstützte Plattformen** die Plattformen aus, die mit diesem Windows Hello for Business-Profil bereitgestellt werden, und klicken Sie auf **Weiter**.
    
     ![Konfigurieren von Windows Hello for Business](./media/active-directory-azureadjoin-passport-deployment/04.png)
@@ -93,6 +92,7 @@ Das Verwenden von System Center Configuration Manager ist die bevorzugte Methode
     c. Wählen Sie als **Authentifizierungsmethode** die Einstellung **Zertifikatbasiert** aus.
    
     d. Klicken Sie auf **Weiter**.
+
 6. Klicken Sie im Dialogfeld **Zusammenfassung** auf **Weiter**.
 7. Klicken Sie im Dialogfeld **Abschluss** auf **Schließen**.
 8. Klicken Sie auf der Symbolleiste oben auf **Bereitstellen**.
@@ -114,5 +114,4 @@ Wählen Sie auf der Seite **SCEP-Registrierung** für das Zertifikatprofil als *
 * [Weitere Informationen zu Verwendungsszenarios für Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Benutzererfahrungen beim Verknüpfen von in die Domäne eingebundenen Windows 10-Geräten mit Azure AD](active-directory-azureadjoin-devices-group-policy.md)
 * [Einrichten von Azure AD Join](active-directory-azureadjoin-setup.md)
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: dcb58fb00cfaa891825930cf5c34c9dab1c15dec
-ms.contentlocale: de-de
-ms.lasthandoff: 03/04/2017
-
+ms.openlocfilehash: faf66f19ab1fe5c38273b22c1ff8aeff4d26f1ea
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="sync-service-manager-metaverse-search"></a>Synchronization Service Manager – Metaverse Search
 
@@ -33,4 +32,3 @@ Wählen Sie in den Suchergebnissen ein Objekt und **Eigenschaften** aus, um die 
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-

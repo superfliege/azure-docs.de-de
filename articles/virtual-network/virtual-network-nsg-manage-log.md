@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
 ms.openlocfilehash: 552f37dd704de25159bc0f0ad34fdae9ed8b73f5
-ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="log-analytics-for-network-security-groups-nsgs"></a>Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)
 
@@ -124,4 +123,3 @@ Dieses Protokoll enthält Informationen über jede Regel, die auf Ressourcen ang
 ## <a name="view-and-analyze-logs"></a>Anzeigen und Analysieren von Protokollen
 
 Lesen Sie den Artikel [Overview of the Azure Activity Log](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) (Übersicht zum Azure-Aktivitätsprotokoll), um zu erfahren, wie Sie Aktivitätsprotokolldaten anzeigen. Lesen Sie den Artikel [Overview of Azure Diagnostic Logs](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) (Übersicht zu Azure-Diagnoseprotokollen), um zu erfahren, wie Sie Diagnoseprotokolldaten anzeigen. Wenn Sie Diagnosedaten an Log Analytics senden, können Sie mithilfe der Verwaltungslösung für die [Azure-Netzwerksicherheitsgruppen-Analyse](../log-analytics/log-analytics-azure-networking-analytics.md) (Vorschau) verbesserte Einblicke erhalten. 
-

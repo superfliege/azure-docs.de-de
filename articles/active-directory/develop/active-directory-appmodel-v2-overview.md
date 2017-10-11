@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 4a9bf4193017313f532b398880a84966367f0b58
-ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
-
-
+ms.openlocfilehash: 1e286044fb1a1b367fcac2dc14c47f68d5ed120d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sign-in-microsoft-account--azure-ad-users-in-a-single-app"></a>Anmelden von Benutzern mit Microsoft-Konto und aus Azure AD bei einer einzelnen Anwendung
 In der Vergangenheit musste ein App-Entwickler, der sowohl Unterstützung für persönliche Microsoft-Konten als auch Geschäftskonten über Azure Active Directory benötigte, die Integration für zwei separate Systeme bereitstellen.  Für den **Azure AD v2.0-Endpunkt** wurde eine neue Authentifizierungs-API-Version eingeführt, über die Sie Anmeldungen mit beiden Arten von Konten durch eine einfache Integration bereitstellen können.  Apps, die den v2.0-Endpunkt verwenden, können auch REST-APIs aus [Microsoft Graph](https://graph.microsoft.io) mit beiden Kontotypen nutzen.
@@ -60,5 +58,4 @@ Hier sind die besten Hilferessourcen für die Entwicklung mit Azure Active Direc
 
 > [!NOTE]
 > Wenn Sie nur Geschäfts- und Schulkonten aus Azure Active Directory anmelden müssen, sollten Sie für den Einstieg unser [Azure AD-Entwicklerhandbuch](active-directory-developers-guide.md) lesen.  Der v2.0-Endpunkt ist für die Verwendung durch Entwickler vorgesehen, die sich explizit bei persönlichen Microsoft-Konten anmelden müssen.
-
 

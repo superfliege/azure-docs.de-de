@@ -1,4 +1,3 @@
-
 ---
 title: Verwenden von Zertifikaten mit dem Enterprise Integration Pack | Microsoft-Dokumentation
 description: Informationen zum Verwenden von Zertifikaten mit Enterprise Integration Pack | Azure Logic Apps
@@ -15,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c8cfe5fb933cf9056b971d3e524f3c9ebc910215
-ms.openlocfilehash: b494d5abfdd4045776b408cbb8ec99ee3905cf72
-ms.contentlocale: de-de
-ms.lasthandoff: 02/04/2017
-
-
+ms.openlocfilehash: 0570aab14283b38f9efcc50636f0c0c1c8e3ed13
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="learn-about-certificates-and-enterprise-integration-pack"></a>Informationen zu Zertifikaten und Enterprise Integration Pack
 ## <a name="overview"></a>Übersicht
@@ -99,5 +96,4 @@ Hier finden Sie die einzelnen Schritte, mit denen Sie Ihre privaten Zertifikate 
 
 * [Erstellen einer B2B-Vereinbarung](logic-apps-enterprise-integration-agreements.md)  
 * [Weitere Informationen zum Schlüsseltresor](../key-vault/key-vault-get-started.md "Informationen zu Key Vault")  
-
 

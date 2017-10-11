@@ -1,6 +1,6 @@
-## <a name="displaying-the-azure-explorer-tool-window"></a>Anzeigen des Azure-Explorer-Toolfensters
+## <a name="displaying-the-azure-explorer-tool-window"></a>Anzeigen von Azure-Explorer-Toolfenster
 
-Wenn das **Azure Explorer**-Toolfenster in IntelliJ nicht angezeigt wird, klicken Sie auf **Ansicht**, auf **Toolfenster** und dann auf **Azure Explorer**.
+Wenn die **Azure Explorer** Toolfenster "ist nicht im IntelliJ sichtbar, klicken Sie auf **Ansicht**, klicken Sie dann auf **Toolfenster**, und klicken Sie dann auf **Azure Explorer**.
 
-![Anzeigen des Azure-Explorer-Toolfensters](./media/azure-toolkit-for-intellij-show-azure-explorer/show-az-exp-01.png)
+![Anzeigen von Azure-Explorer-Toolfenster](./media/azure-toolkit-for-intellij-show-azure-explorer/show-az-exp-01.png)
 

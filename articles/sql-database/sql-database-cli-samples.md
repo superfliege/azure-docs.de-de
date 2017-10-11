@@ -16,14 +16,12 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 91b02d1099dc1683abb1042b3dc65cbee5aeae5b
-ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure CLI-Beispiele für Azure SQL-Datenbank
 
 Die folgende Tabelle enthält Links zu Azure CLI-Skriptbeispielen für Azure SQL-Datenbank.
@@ -37,4 +35,3 @@ Die folgende Tabelle enthält Links zu Azure CLI-Skriptbeispielen für Azure SQL
 | [Monitor and scale a single SQL database using PowerShell](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) (Überwachen und Skalieren einer einzelnen SQL-Datenbank mit PowerShell) | In diesem CLI-Skriptbeispiel wird eine einzelne Azure SQL-Datenbank nach Abfrage der Größeninformationen für die Datenbank auf eine andere Leistungsstufe skaliert. |
 | [Monitor and scale a SQL Database elastic pool using PowerShell](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) (Überwachen und Skalieren eines Pools für elastische SQL-Datenbanken mit PowerShell) | In diesem CLI-Skriptbeispiel wird ein elastischer SQL-Pool auf eine andere Leistungsstufe skaliert.  |
 |||
-

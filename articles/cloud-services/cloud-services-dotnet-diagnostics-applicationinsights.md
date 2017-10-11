@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2017
 ms.author: saurabh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 4001ca908ff00b1a40829d687589080e9b07b18a
-ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-cloud-services-using-application-insights"></a>Problembehandlung bei Clouddiensten mit Application Insights
 Mit [Azure SDK 2.8](https://azure.microsoft.com/downloads/) und Azure-Diagnose-Erweiterung 1.5 können Azure-Diagnose-Daten für Ihren Clouddienst direkt an Application Insights senden. Die Protokolle, die von der Azure-Diagnose &mdash;einschließlich Anwendungsprotokolle, Windows-Ereignisprotokolle, ETW-Protokolle und Leistungsindikatoren&mdash; gesammelt wurden, können an Application Insights gesendet werden. Sie können dann diese Informationen auf der Benutzeroberfläche des Application Insights-Portals visuell darstellen. Sie können das Application Insights SDK verwenden, um Einblicke in die Metriken und Protokolle von der Anwendung sowie in die Daten der System- und Infrastrukturebene von Azure-Diagnose zu erhalten.
@@ -81,4 +79,3 @@ Führen Sie einen der folgenden Schritte aus, um Azure-Diagnosedaten in Applicat
 [4]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/role-designer-appinsights-serviceconfig.png
 [5]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/metrics-explorer-custom-metrics.png
 [6]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/search-windowseventlog-error.png
-

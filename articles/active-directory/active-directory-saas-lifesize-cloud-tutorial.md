@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
 ms.openlocfilehash: 7542360f9c75786bf400553090ba0a891d9c2fcc
-ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Tutorial: Azure Active Directory-Integration mit Lifesize Cloud
 
@@ -270,5 +268,4 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_general_203.png
-
 

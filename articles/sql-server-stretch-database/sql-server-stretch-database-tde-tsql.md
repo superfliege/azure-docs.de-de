@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: anvang
-translationtype: Human Translation
-ms.sourcegitcommit: bcb0a66425439522e0c9a353798ac70505b91e39
-ms.openlocfilehash: fe6a6bfb02dc5d83bd67fdfe59ed87660c364835
-
-
+ms.openlocfilehash: ed26c2b386e08b76f78b4a05e12c46d2b97c20f2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Aktivieren von Transparent Data Encryption (TDE) für eine Stretch-Datenbank in Azure (Transact-SQL)
 > [!div class="op_single_selector"]
@@ -74,9 +74,3 @@ Das Ergebnis ```1``` steht für eine verschlüsselte Datenbank, und mit ```0``` 
 <!--Image references-->
 
 <!--Link references-->
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-

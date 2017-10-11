@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: yanacai
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>Skalieren der lokalen Ausführung und Tests von U-SQL mit Azure Data Lake U-SQL SDK
 
 Beim Entwickeln von U-SQL-Skript führt man das U-SQL-Skript normalerweise lokal aus und testet es, bevor man es an die Cloud übermittelt. Azure Data Lake stellt ein NuGet-Paket namens „Azure Data Lake U-SQL SDK“ für dieses Szenario zur Verfügung, mit dem Sie U-SQL ganz einfach lokal ausführen und testen können. Es ist auch möglich, diesen U-SQL-Test mit einem CI-System (Continuous Integration) zu integrieren, um das Kompilieren und den Test zu automatisieren.
@@ -398,4 +395,3 @@ E_CSC_SYSTEM_INTERNAL: Internal error! Could not load file or assembly 'ScopeEng
 * Eine komplexere Abfrage finden Sie unter [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
 * Informationen zum Anzeigen von Auftragsdetails finden Sie unter [Verwenden des Auftragsbrowsers und der Auftragsansicht für Azure Data Lake Analytics-Aufträge](data-lake-analytics-data-lake-tools-view-jobs.md).
 * Weitere Informationen zur Verwendung der Scheitelpunktausführungsansicht finden Sie unter [Verwenden der Scheitelpunktausführungsansicht in Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
-

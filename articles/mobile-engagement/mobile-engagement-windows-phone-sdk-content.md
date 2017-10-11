@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff04a56d377725d344cf75c7b84af1cb211d4723
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: ce323880100706accf0c08c9929d20908c6198cb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-phone-silverlight-sdk-content"></a>Windows Phone Silverlight SDK-Inhalt
 In diesem Dokument wird aufgelistet und beschrieben, was durch das SDK in der Anwendung bereitgestellt wird.
@@ -33,5 +32,4 @@ Dieser Ordner enthält alle von Mobile Engagement benötigten Ressourcen. Sie k�
 * `EngagementIconCloseLight.png` : Das Symbol „Schließen“ der Reichweitenbenachrichtigung von Mobile Engagement für Windows Phone, helles Design.
 * `EngagementIconCloseDark.png` : Das Symbol „Schließen“ der Reichweitenbenachrichtigung von Engagement für Windows Phone, dunkles Design.
 * `EngagementConfiguration.xml` : Die Konfigurationsdatei von Mobile Engagement, hier können Sie Engagement-Einstellungen (Engagement-Verbindungszeichenfolge, Absturzberichte...) anpassen.
-
 

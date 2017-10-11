@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: fe2b84aac718ff5eddd4d73b5dc2120362952c1e
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>Erste Schritte mit Azure Data Lake Analytics mithilfe von Azure CLI 2.0
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -200,7 +199,7 @@ az dls fs downlod --account "myadlsaccount" --source-path "/Output/SearchLog-fro
 
 **Abrufen von Informationen zu Pipelines und Wiederholungen**
 
-Verwenden Sie die Befehle `az dla job pipeline`, um die Pipelineinformationen für zuvor übermittelte Aufträge anzuzeigen.
+Verwenden der `az dla job pipeline` Befehle, um die Pipelineinformationen von zuvor gesendeten Aufträge anzuzeigen.
 
 ```
 az dla job pipeline list --account "<Data Lake Analytics Account Name>"
@@ -208,7 +207,7 @@ az dla job pipeline list --account "<Data Lake Analytics Account Name>"
 az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeline-identity "<Pipeline ID>"
 ```
 
-Verwenden Sie die Befehle `az dla job recurrence`, um die Wiederholungsinformationen für zuvor übermittelte Aufträge anzuzeigen.
+Verwenden der `az dla job recurrence` Befehle aus, um die Wiederholungsinformationen für zuvor finden Sie unter übermittelten Aufträge.
 
 ```
 az dla job recurrence list --account "<Data Lake Analytics Account Name>"
@@ -221,4 +220,3 @@ az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recu
 * Ein Referenzdokument zu Data Lake Analytics CLI 2.0 finden Sie unter [Data Lake Analytics](https://docs.microsoft.com/cli/azure/dla).
 * Ein Referenzdokument zu Data Lake Store CLI 2.0 finden Sie unter [Data Lake Store](https://docs.microsoft.com/cli/azure/dls).
 * Eine komplexere Abfrage finden Sie unter [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-

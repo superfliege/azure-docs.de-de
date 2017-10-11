@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 354648461adf77ccf753cf24721ab7dd82b34d3c
-ms.openlocfilehash: ab4f6cf29f03491b117bcf752cb16dc6d48a08c8
-
-
+ms.openlocfilehash: efb0cfa4b7950a2d9418282965a23498a67cbffc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="security-architecture-overview"></a>Übersicht über die Sicherheitsarchitektur
 Eine solide Architekturgrundlage ist einer der Schlüssel zum Erfolg, wenn es um sichere Lösungsbereitstellungen in Azure geht. Mit diesem Wissen lernen Sie Ihre Anforderungen besser kennen, denn Sie können die richtigen Fragen stellen und sind eher in der Lage, die richtigen Antworten auf Ihre Fragen zu erkennen. Richtige Antworten auf richtige Fragen zu erhalten ist ein großer Schritt, die Sicherheit Ihrer Bereitstellungen zu optimieren.
@@ -28,10 +28,4 @@ In diesem Abschnitt finden Sie Artikel zur Azure-Sicherheitsarchitektur, mit den
 * [Datenklassifizierung für Azure](azure-security-data-classification.md)
 * [Anwendungsarchitektur in Microsoft Azure](security-application-architecture-on-azure.md)
 * [Sicherheit in Azure – bewährte Methoden und Muster](security-best-practices-and-patterns.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

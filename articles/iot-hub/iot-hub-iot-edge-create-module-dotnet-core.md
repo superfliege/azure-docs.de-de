@@ -12,12 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: jcline
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 91ff3c96e4d7928131eba83c0e8c1951782447be
-ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.openlocfilehash: 7175ffc8de2c043593d61143b402484d33e4a8cc
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-cx23"></a>Erstellen eines Azure IoT Edge-Moduls mit C&#x23;
 
@@ -386,5 +385,4 @@ Sehen Sie sich dieses [kurze Videotutorial](https://channel9.msdn.com/Blogs/dotn
 
 >[!IMPORTANT]
 Es ist nicht ratsam, `Ctrl` + `C` zum Beenden der `IoT Edge`-Gatewayanwendung zu verwenden (also **gw.exe**). Es kann nämlich sein, dass der Prozess dadurch unplanmäßig beendet wird.
-
 

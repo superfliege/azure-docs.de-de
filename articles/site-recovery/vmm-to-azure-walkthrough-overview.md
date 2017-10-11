@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: af68d21184c137b2b0f1bb4c1afb9bf507e8332d
-ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>Replizieren von virtuellen Hyper-V-Computern in VMM-Clouds in Azure per Site Recovery im Azure-Portal
 > [!div class="op_single_selector"]
@@ -83,7 +82,7 @@ Richten Sie einen Recovery Services-Tresor ein. Der Tresor enthält Konfiguratio
 
 ## <a name="step-8-configure-source-and-target-settings"></a>Schritt 8: Konfigurieren von Quell- und Zieleinstellungen
 
-Richten Sie die Quell- und Zielstandorte für die Replikation ein. Fügen Sie den VMM-Server zum Tresor hinzu, und laden Sie die Installationsdateien für Site Recovery-Komponenten herunter. Führen Sie das Setup für den Azure Site Recovery-Anbieter auf dem VMM-Server aus. Setup installiert den Azure Site Recovery-Anbieter auf dem VMM-Server installiert und registriert den Server im Tresor. Sie installieren den Microsoft Recovery Services-Agent auf jedem Hyper-V-Host.
+Richten Sie die Quell- und Zielstandorte für die Replikation ein. Fügen Sie den VMM-Server zum Tresor hinzu, und laden Sie die Installationsdateien für Site Recovery-Komponenten herunter. Führen Sie das Setup für den Azure Site Recovery-Anbieter auf dem VMM-Server aus. Mit dem Setup wird der Azure Site Recovery-Anbieter auf dem VMM-Server installiert und der Server im Tresor registriert. Sie installieren den Microsoft Recovery Services-Agent auf jedem Hyper-V-Host.
 
 Gehen Sie zu [Schritt 8: Konfigurieren von Quell- und Zieleinstellungen](vmm-to-azure-walkthrough-source-target.md).
 
@@ -113,6 +112,5 @@ Gehen Sie zu [Schritt 11: Aktivieren der Replikation](vmm-to-azure-walkthrough-e
 Führen Sie ein Testfailover aus, um sicherzustellen, dass alles wie erwartet funktioniert.
 
 Gehen Sie zu [Schritt 12: Ausführen eines Testfailovers](vmm-to-azure-walkthrough-test-failover.md).
-
 
 

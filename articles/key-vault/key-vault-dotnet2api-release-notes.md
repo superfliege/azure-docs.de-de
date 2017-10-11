@@ -13,13 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/02/2017
 ms.author: bruceper
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: 21b34e30a7e07b37ccae3f101f2ab4dfadfad9bf
-ms.contentlocale: de-de
-ms.lasthandoff: 04/29/2017
-
-
+ms.openlocfilehash: c5b5fd7f16faf17d16ecc82269fb1264adf4dd06
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 – Versionshinweise und Migrationshandbuch
 Die folgenden Hinweise und Anweisungen richten sich an Entwickler, die die .NET-/C#-Bibliothek für Azure Key Vault verwenden. Beim Übergang von Version 1.0 zu Version 2.0 wurde eine Reihe von Updates vorgenommen, die Migrationsschritte in Ihrem Code erforderlich machen, damit Sie von den verbesserten und zusätzlichen Funktionen (etwa der Unterstützung von **Key Vault-Zertifikaten**) profitieren.
@@ -108,5 +106,4 @@ Bei der Verarbeitung einer Abhängigkeit für Key Vault durch einen Client wurde
 ## <a name="microsoftazurekeyvaultextensions-nuget"></a>Microsoft.Azure.KeyVault.Extensions NuGet
 
 * Für Kryptografievorgänge wurde das Paket in **Microsoft.Azure.KeyVault.Extensions** und **Microsoft.Azure.KeyVault.Cryptography** unterteilt.
-
 

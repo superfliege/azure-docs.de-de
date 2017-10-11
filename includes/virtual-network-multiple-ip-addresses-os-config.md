@@ -1,67 +1,67 @@
 ## <a name="os-config"></a>Hinzufügen von IP-Adressen zu einem VM-Betriebssystem
 
-Stellen Sie eine Verbindung mit einem virtuellen Computer her, den Sie mit mehreren privaten IP-Adresse erstellt haben, und melden Sie sich an. Alle dem virtuellen Computer hinzugefügten privaten IP-Adressen müssen manuell hinzugefügt werden. (Das gilt auch für die primäre Adresse.) Führen Sie für das Betriebssystem Ihres virtuellen Computers folgende Schritte aus:
+Verbinden und Adressen der Anmeldung mit einem virtuellen Computer, die Sie mit mehreren privaten IP-Adresse erstellt haben. Sie müssen manuell hinzufügen alle die private IP-Adressen (einschließlich der primären), die Sie mit dem virtuellen Computer hinzugefügt. Die folgenden Schritte für Ihr Betriebssystem des virtuellen Computers:
 
 ### <a name="windows"></a>Windows
 
-1. Geben Sie an einer Eingabeaufforderung den Befehl *ipconfig /all*ein.  Sie können nur die *primäre* private Adresse anzeigen (über DHCP).
-2. Geben Sie an der Eingabeaufforderung *ncpa.cpl* ein, um das Fenster **Netzwerkverbindungen** zu öffnen.
+1. Geben Sie an einer Eingabeaufforderung *Ipconfig/all*.  Nur die *primären* private IP-Adresse (über DHCP).
+2. Typ *ncpa.cpl* in der Befehlszeile zum Öffnen der **Netzwerkverbindungen** Fenster.
 3. Öffnen Sie die Eigenschaften für den entsprechenden Adapter: **LAN-Verbindung**.
-4. Doppelklicken Sie auf „Internetprotokoll, Version 4“ (IPv4).
-5. Wählen Sie **Folgende IP-Adresse verwenden** aus, und geben Sie die folgenden Werte ein:
+4. Doppelklicken Sie auf Internetprotokoll Version 4 (IPv4).
+5. Wählen Sie **verwenden Sie die folgenden IP-Adresse** , und geben Sie die folgenden Werte:
 
-    * **IP-Adresse:**Geben Sie die *primäre* private IP-Adresse ein.
-    * **Subnetzmaske:**wird basierend auf dem Subnetz festgelegt. Wenn das Subnetz beispielsweise ein /24-Subnetz ist, lautet die Subnetzmaske „255.255.255.0“.
-    * **Standardgateway:**die erste IP-Adresse im Subnetz. Wenn das Subnetz „10.0.0.1/24“ ist, lautet die Gateway-IP-Adresse „10.0.0.0/24“.
-    * Klicken Sie auf **Folgende DNS-Serveradressen verwenden** , und geben Sie die folgenden Werte ein:
-        * **Bevorzugter DNS-Server:** Geben Sie „168.63.129.16“ ein, falls Sie nicht Ihren eigenen DNS-Server verwenden.  Wenn Sie Ihren eigenen DNS-Server verwenden, geben Sie die IP-Adresse für Ihren Server ein.
-    * Klicken Sie auf die Schaltfläche **Erweitert** , und fügen Sie zusätzliche IP-Adressen hinzu. Fügen Sie jede der in Schritt 8 aufgeführten sekundären privaten IP-Adressen der NIC mit dem gleichen Subnetz hinzu, das für die primäre IP-Adresse angegeben ist.
+    * **IP-Adresse**: Geben Sie die *primären* private IP-Adresse
+    * **Die Netzwerksubnetz-Maske**: Satz basierend auf dem Subnetz. Wenn das Subnetz/24 wird beispielsweise ist Subnetz klicken Sie dann die Subnetzmaske 255.255.255.0.
+    * **Standardgateway**: die erste IP-Adresse im Subnetz. Wenn Ihr Subnetz 10.0.0.0/24 ist, ist die Gateway IP-Adresse 10.0.0.1.
+    * Klicken Sie auf **die folgenden DNS-Serveradressen verwenden** , und geben Sie die folgenden Werte:
+        * **Bevorzugter DNS-Server**: Wenn Sie einen eigenen DNS-Server nicht verwenden, geben Sie 168.63.129.16.  Wenn Sie einen eigenen DNS-Server verwenden, geben Sie die IP-Adresse für Ihren Server ein.
+    * Klicken Sie auf die **erweitert** Schaltfläche, und fügen Sie zusätzliche IP-Adressen hinzu. Fügen Sie jede der sekundären privaten IP-Adressen in Schritt 8 an die NIC mit dem gleichen Subnetz, die für die primäre IP-Adresse angegeben.
         >[!WARNING] 
-        >Wenn Sie die oben genannten Schritte nicht ordnungsgemäß befolgen, verlieren Sie möglicherweise Konnektivität mit Ihren virtuellen Computer. Vergewissern Sie sich, dass die für Schritt 5 eingegebenen Informationen korrekt sind, ehe Sie fortfahren.
+        >Wenn Sie die oben genannten Schritte nicht ordnungsgemäß befolgen, verlieren Sie möglicherweise Konnektivität mit Ihren virtuellen Computer. Stellen Sie sicher, dass die Informationen für Schritt 5 eingegebene pausieren exakt ist.
 
-    * Klicken Sie auf **OK**, um die TCP/IP-Einstellungen zu schließen, und dann erneut auf **OK**, um die Adaptereinstellungen zu schließen. Die RDP-Verbindung wird wiederhergestellt.
+    * Klicken Sie auf **OK** um die TCP/IP-Einstellungen zu schließen und dann **OK** erneut aus, um die adaptereinstellungen zu schließen. Die RDP-Verbindung wird erneut hergestellt.
 
-6. Geben Sie an einer Eingabeaufforderung den Befehl *ipconfig /all*ein. Alle hinzugefügten IP-Adressen werden angezeigt, und DHCP ist deaktiviert.
+6. Geben Sie an einer Eingabeaufforderung *Ipconfig/all*. Alle IP-Adressen, die Sie hinzugefügt werden und DHCP ist deaktiviert.
 
 
 ### <a name="validation-windows"></a>Überprüfung (Windows)
 
-Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ihr zugeordneten öffentlichen IP-Adresse eine Verbindung mit dem Internet herstellen können, sobald Sie sie anhand der oben beschriebenen Schritte ordnungsgemäß hinzugefügt haben, verwenden den folgenden Befehl:
+Um sicherzustellen, dass Sie über die sekundäre IP-Adresse mit dem Internet herstellen können Konfiguration haben Sie über die öffentliche IP-Adresse zugewiesen, sobald Sie die oben beschriebenen Schritte anhand hinzugefügt haben, verwenden den folgenden Befehl:
 
 ```bash
 ping -S 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
+>Für sekundäre IP-Konfigurationen können Sie nur mit dem Internet ping, wenn die Konfiguration eine öffentliche IP-Adresse zugeordnet wurde. Für die primäre IP-Konfigurationen ist eine öffentliche IP-Adresse nicht erforderlich, um mit dem Internet zu pingen.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
-1. Öffnen Sie ein Terminalfenster.
-2. Stellen Sie sicher, dass Sie der root-Benutzer sind. Geben Sie andernfalls den folgenden Befehl ein:
+1. Öffnen Sie ein terminal-Fenster.
+2. Stellen Sie sicher, dass Sie die Root-Benutzer sind. Wenn Sie nicht sind, geben Sie den folgenden Befehl ein:
 
     ```bash
     sudo -i
     ```
 
-3. Aktualisieren Sie die Konfigurationsdatei der Netzwerkschnittstelle (es wird von „eth0“ ausgegangen).
+3. Aktualisieren Sie die Konfigurationsdatei der Netzwerkschnittstelle (vorausgesetzt "eth0").
 
-    * Behalten Sie den vorhandenen Eintrag für DHCP bei. Die Konfiguration der primären IP-Adresse bleibt unverändert.
-    * Fügen Sie mit den folgenden Befehlen eine Konfiguration für eine weitere statische IP-Adresse hinzu:
+    * Behalten Sie das vorhandene Zeilenelement für Dhcp. Die primäre IP-Adresse bleibt konfigurierten wie zuvor.
+    * Fügen Sie eine Konfiguration für eine weitere statische IP-Adresse mithilfe der folgenden Befehle ein:
 
         ```bash
         cd /etc/network/interfaces.d/
         ls
         ```
 
-    Es sollte eine CFG-Datei angezeigt werden.
-4. Öffnen Sie die Datei. Am Ende der Datei sollten die folgenden Zeilen angezeigt werden:
+    Daraufhin sollte eine cfg-Datei.
+4. Öffnen Sie die Datei an. Die folgenden Zeilen am Ende der Datei sollte angezeigt werden:
 
     ```bash
     auto eth0
     iface eth0 inet dhcp
     ```
 
-5. Fügen Sie nach den vorhandenen Zeilen in dieser Datei die folgenden Zeilen ein:
+5. Fügen Sie nach den vorhandenen Zeilen, die in dieser Datei die folgenden Zeilen hinzu:
 
     ```bash
     iface eth0 inet static
@@ -69,66 +69,66 @@ ping -S 10.0.0.5 hotmail.com
     netmask <your subnet mask>
     ```
 
-6. Speichern Sie die Datei mit dem folgenden Befehl:
+6. Speichern Sie die Datei mit dem folgenden Befehl ein:
 
     ```bash
     :wq
     ```
 
-7. Setzen Sie die Netzwerkschnittstelle mit dem folgenden Befehl zurück:
+7. Zurücksetzen der Netzwerkschnittstelle mit den folgenden Befehl aus:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
 
     > [!IMPORTANT]
-    > Führen Sie bei Verwendung einer Remoteverbindung „ifdown“ und „ifup“ in der gleichen Zeile aus.
+    > Führen Sie Ifdown und Ifup in der gleichen Zeile, wenn eine Remoteverbindung zu verwenden.
     >
 
-8. Geben Sie den folgenden Befehl ein, um zu überprüfen, ob die IP-Adresse der Netzwerkschnittstelle hinzugefügt wurde:
+8. Stellen Sie sicher, dass die Netzwerkschnittstelle mit dem folgenden Befehl die IP-Adresse hinzugefügt wird:
 
     ```bash
     ip addr list eth0
     ```
 
-    Es sollte die IP-Adresse angezeigt werden, die Sie als Teil der Liste hinzugefügt haben.
+    Daraufhin sollte die IP-Adresse, die Sie als Teil der Liste hinzugefügt.
 
-### <a name="linux-redhat-centos-and-others"></a>Linux (Redhat, CentOS u.a.)
+### <a name="linux-redhat-centos-and-others"></a>Linux (Redhat, CentOS usw.)
 
-1. Öffnen Sie ein Terminalfenster.
-2. Stellen Sie sicher, dass Sie der root-Benutzer sind. Geben Sie andernfalls den folgenden Befehl ein:
+1. Öffnen Sie ein terminal-Fenster.
+2. Stellen Sie sicher, dass Sie die Root-Benutzer sind. Wenn Sie nicht sind, geben Sie den folgenden Befehl ein:
 
     ```bash
     sudo -i
     ```
 
-3. Geben Sie Ihr Kennwort ein, und befolgen Sie die entsprechenden Anweisungen. Nachdem Sie der root-Benutzer sind, navigieren Sie mit dem folgenden Befehl zum Ordner der Netzwerkskripts:
+3. Geben Sie Ihr Kennwort ein, und befolgen Sie die Anweisungen, wie Sie dazu aufgefordert werden. Sobald Sie die Root-Benutzer sind, navigieren Sie zu den Skripts Netzwerkordner mit den folgenden Befehl aus:
 
     ```bash
     cd /etc/sysconfig/network-scripts
     ```
 
-4. Listen Sie die zugehörigen ifcfg-Dateien mit dem folgenden Befehl auf:
+4. Liste der verwandten Ifcfg-Dateien, die mit dem folgenden Befehl:
 
     ```bash
     ls ifcfg-*
     ```
 
-    Unter den Dateien sollte die Datei *ifcfg-eth0* angezeigt werden.
+    Daraufhin sollte *Ifcfg eth0* als eine der Dateien.
 
-5. Erstellen Sie zum Hinzufügen einer IP-Adresse eine entsprechende Konfigurationsdatei, wie weiter unten gezeigt. Beachten Sie, dass für jede IP-Konfiguration eine Datei erstellt werden muss.
+5. Um eine IP-Adresse hinzuzufügen, erstellen Sie eine Konfigurationsdatei dafür, wie unten dargestellt. Beachten Sie, dass eine Datei für jede IP-Konfiguration erstellt werden muss.
 
     ```bash
     touch ifcfg-eth0:0
     ```
 
-6. Öffnen Sie die Datei *ifcfg-eth0:0* mithilfe des folgenden Befehls:
+6. Öffnen der *Ifcfg-Eth0:0* -Datei mit den folgenden Befehl aus:
 
     ```bash
     vi ifcfg-eth0:0
     ```
 
-7. Fügen Sie der Datei mithilfe des folgenden Befehls Inhalt hinzu (in diesem Fall: *Eth0:0*). Aktualisieren Sie die Informationen auf der Grundlage Ihrer IP-Adresse.
+7. Hinzufügen von Inhalt in die Datei *Eth0:0* in diesem Fall mit dem folgenden Befehl. Achten Sie darauf, dass Sie Informationen, die auf Basis Ihrer IP-Adresse zu aktualisieren.
 
     ```bash
     DEVICE=eth0:0
@@ -138,32 +138,32 @@ ping -S 10.0.0.5 hotmail.com
     NETMASK=255.255.255.0
     ```
 
-8. Speichern Sie die Datei mit dem folgenden Befehl:
+8. Speichern Sie die Datei mit dem folgenden Befehl ein:
 
     ```bash
     :wq
     ```
 
-9. Starten Sie die Netzwerkdienste neu, und stellen Sie sicher, dass die Änderungen übernommen wurden. Führen Sie dazu die folgenden Befehle aus:
+9. Die Netzwerkdienste neu, und stellen Sie sicher, dass die Änderungen erfolgreich sind, indem Sie die folgenden Befehle ausführen:
 
     ```bash
     /etc/init.d/network restart
     ifconfig
     ```
 
-    In der zurückgegebenen Liste sollte die hinzugefügte IP-Adresse *eth0:0*angezeigt werden.
+    Sie sollten die IP-Adresse, die Sie hinzugefügt haben, finden Sie unter *Eth0:0*, in der Liste zurückgegeben.
 
 ### <a name="validation-linux"></a>Überprüfung (Linux)
 
-Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ihr zugeordneten öffentlichen IP-Adresse eine Verbindung mit dem Internet herstellen können, verwenden den folgenden Befehl:
+Um sicherzustellen, dass Sie von Ihrem sekundäre IP-Konfiguration über die öffentliche IP-Adresse eine Verbindung mit dem Internet können zugeordnet, verwenden Sie den folgenden Befehl:
 
 ```bash
 ping -I 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
+>Für sekundäre IP-Konfigurationen können Sie nur mit dem Internet ping, wenn die Konfiguration eine öffentliche IP-Adresse zugeordnet wurde. Für die primäre IP-Konfigurationen ist eine öffentliche IP-Adresse nicht erforderlich, um mit dem Internet zu pingen.
 
-Wenn Sie ausgehende Verbindungen von einem sekundären NIC für virtuelle Linux-Computer überprüfen möchten, müssen Sie möglicherweise entsprechende Routen hinzufügen. Dazu gibt es zahlreiche Möglichkeiten. Weitere Informationen für Ihre Linux-Distribution finden Sie in der entsprechenden Dokumentation. Nachfolgend finden Sie eine der möglichen Methoden:
+Für virtuelle Linux-Computer, wenn ausgehende Verbindungen von einem sekundären NIC überprüfen möchten müssen Sie möglicherweise den entsprechende Routen hinzufügen. Es gibt viele Methoden dafür aus. Weitere Informationen finden Sie entsprechende Dokumentation für Ihre Linux-Distributionen. Im folgenden finden eine Methode, um dies zu erreichen:
 
 ```bash
 echo 150 custom >> /etc/iproute2/rt_tables 
@@ -172,7 +172,7 @@ ip rule add from 10.0.0.5 lookup custom
 ip route add default via 10.0.0.1 dev eth2 table custom
 
 ```
-- Achten Sie darauf, folgende Ersetzungen vorzunehmen:
-    - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
-    - **10.0.0.1** durch Ihr Standardgateway
-    - **eth2** durch dem Namen Ihrer sekundären NIC
+- Achten Sie darauf, dass Sie ersetzen:
+    - **10.0.0.5** mit der privaten IP-Adresse, die über eine öffentliche IP-Adresse zugeordnet ist
+    - **10.0.0.1** mit dem Standardgateway
+    - **eth2 ändern** auf den Namen der sekundären NIC

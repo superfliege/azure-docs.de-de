@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
 ms.openlocfilehash: cd314049a536ad4a95e243eac26aa044c90c8164
-ms.contentlocale: de-de
-ms.lasthandoff: 07/17/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-cosmos-db-documentdb-api-sql-query-cheat-sheet-pdf"></a>Azure Cosmos DB: PDF-Datei mit dem SQL-Abfragespickzettel für die DocumentDB-API
 Mit dem **Azure Cosmos DB: SQL-Abfragespickzettel für die DocumentDB-API** können Sie schnell Abfragen für DocumentDB-API-Daten schreiben, da dort allgemeine Datenbankabfragen, Schlüsselwörter, integrierte Funktionen und Operatoren auf einem leicht zu druckenden PDF-Referenzblatt dargestellt werden. 
@@ -43,5 +42,4 @@ Schreiben Sie Ihre Abfragen schneller, indem Sie den SQL-Abfragespickzettel heru
 
 ## <a name="release-notes"></a>Versionshinweise
 Aktualisiert am 29.7.2016, um „TOP“ hinzuzufügen.
-
 

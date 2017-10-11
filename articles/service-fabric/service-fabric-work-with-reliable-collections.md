@@ -1,6 +1,6 @@
 ---
-title: Arbeiten mit Reliable Collections | Microsoft Docs
-description: "Lernen Sie die bewährten Methoden für die Arbeit mit Reliable Collections kennen."
+title: "Arbeiten mit zuverlässigen Auflistungen | Microsoft Docs"
+description: "Lernen Sie die bewährten Methoden zum Arbeiten mit zuverlässigen Auflistungen."
 services: service-fabric
 documentationcenter: .net
 author: rajak
@@ -14,15 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2017
 ms.author: rajak
-translationtype: Human Translation
-ms.sourcegitcommit: 407f2631044fb836930093a774f5b718c91f711d
-ms.openlocfilehash: 822941aa3f745e51f653b4274bf0add9c44ff0c8
-ms.lasthandoff: 02/22/2017
-
-
+ms.openlocfilehash: f53f13e4fb83b1cd370ec673e86e5311cd93055f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="working-with-reliable-collections"></a>Arbeiten mit Reliable Collections
-Service Fabric bietet .NET-Entwicklern über Reliable Collections ein zustandsbehaftetes Programmiermodell. Service Fabric umfasst z. B. Reliable Dictionary- und Reliable Queue-Klassen. Wenn Sie diese Klassen verwenden, wird Ihr Zustand partitioniert (für Skalierbarkeit), repliziert (für Verfügbarkeit) und innerhalb einer Partition durchgeführt (für ACID-Semantik). Sehen wir uns nun die typische Nutzung eines Reliable Dictionary-Objekts an.
+# <a name="working-with-reliable-collections"></a>Arbeiten mit zuverlässigen Auflistungen
+Service Fabric bietet .NET Entwickler über zuverlässige Sammlungen ein zustandsbehaftetes Programmiermodell verfügbar. Insbesondere marshallt Service Fabric zuverlässige Wörterbuch und zuverlässige Warteschlangeklassen. Wenn Sie diese Klassen verwenden, ist Ihren Zustand (für die Skalierbarkeit) partitioniert repliziert (für Verfügbarkeit) und transaktive innerhalb einer Partition (für ACID-Semantik). Wir sehen uns typisch für eine zuverlässige Dictionary-Objekt, und finden Sie, welche die tatsächlich ausführen.
 
 ```csharp
 
@@ -49,20 +48,20 @@ catch (TimeoutException) {
 }
 ```
 
-Alle Vorgänge für Reliable Dictionary-Objekte (mit Ausnahme von ClearAsync, das nicht annullierbar ist), benötigen ein ITransaction-Objekt. Diesem Objekt sind sämtliche Änderungen zugeordnet, die Sie an Reliable Dictionary- und/oder Reliable Queue-Objekten innerhalb einer einzelnen Partition vornehmen möchten. Sie erhalten ein ITransaction-Objekt, indem Sie die CreateTransaction-Methode des Zustands-Managers der Partition aufrufen.
+Alle Vorgänge auf zuverlässige Wörterbuchobjekten (mit Ausnahme von ClearAsync, die nicht rückgängig gemacht werden kann), erfordert ein ITransaction-Objekt. Dieses Objekt verfügt über zugeordnete mit ihm alle und alle Änderungen, die Sie stellen eine zuverlässige Wörterbuch und/oder zuverlässige Warteschlange Objekte innerhalb einer einzelnen Partition. Sie erhalten eine ITransaction des Objekts durch Aufrufen der Partitions StateManagers CreateTransaction-Methode.
 
-Im obigen Code wird das ITransaction-Objekt an eine AddAsync-Methode eines Reliable Dictionarys übergeben. Dictionary-Methoden, die einen Schlüssel akzeptieren, wenden intern eine dem Schlüssel zugeordnete Lese-/Schreibsperre an. Wenn die Methode den Wert des Schlüssels ändert, nimmt die Methode eine Schreibsperre für den Schlüssel vor. Wenn die Methode nur aus dem Wert des Schlüssels liest, wird eine Lesesperre für den Schlüssel vorgenommen. Da AddAsync den Wert des Schlüssels auf den neuen, übergebenen Wert ändert, wird die Schreibsperre des Schlüssels aktiviert. Wenn also 2 (oder mehr) Threads gleichzeitig versuchen, Werte mit demselben Schlüssel hinzuzufügen, aktiviert ein Thread die Schreibsperre und blockiert die anderen Threads. In der Standardeinstellung blockieren Methoden bis zu 4 Sekunden zum Aktivieren der Sperre. Nach 4 Sekunden lösen die Methoden eine TimeoutException aus. Methodenüberladungen ermöglichen Ihnen, auf Wunsch einen expliziten Timeout-Wert festzulegen.
+Im obigen Code wird das ITransaction-Objekt an ein zuverlässiges Wörterbuch AddAsync-Methode übergeben. Wörterbuchmethoden, die einen Schlüssel akzeptiert dauern intern eine Reader/Writer-Sperre, die dem Schlüssel zugeordnet. Wenn die Methode den Wert des Schlüssels geändert wird, akzeptiert die Methode eine Schreibsperre für den Schlüssel, und wenn die Methode nur aus den Wert des Schlüssels liest, klicken Sie dann eine Lesesperre auf den Schlüssel erstellt. Da AddAsync des Werts des Schlüssels auf den neuen, übergebenen Wert ändert, wird der Schlüssel Schreibsperre angewendet. Also wenn 2 (oder mehr) Threads versuchen, Werte mit demselben Schlüssel gleichzeitig hinzuzufügen, ein Thread die Schreibsperre abgerufen werden, und anderen Threads blockiert. Standardmäßig werden Methoden für bis zu 4 Sekunden auf die Sperre blockiert; Klicken Sie nach 4 Sekunden lösen die Methoden eine TimeoutException. Überladungen der Methode vorhanden sein, sodass Sie einen explizites Timeout-Wert übergeben wird, wenn Sie lieber.
 
-In der Regel schreiben Sie Ihren Code, um auf eine TimeoutException zu reagieren, indem Sie diese abfangen und den gesamten Vorgang wiederholen (wie im obigen Code gezeigt). In meinem einfachen Code gebe ich für Task.Delay stets 100 Millisekunden ein. In der Praxis ist jedoch eine exponentielle Backoffverzögerung eher zu empfehlen.
+In der Regel ist, Schreiben Sie den Code, um eine TimeoutException reagieren, indem abfangen und den gesamten Vorgang wiederholen, (wie im obigen Code gezeigt). In meinem Code einfacher bin ich nur Task.Delay übergeben 100 Millisekunden bei jedem aufrufen. Aber in der Praxis können Sie möglicherweise besser, verwenden Sie stattdessen eine Art von exponentiellen Backoff-Verzögerung.
 
-Sobald die Sperre abgerufen wurde, fügt AddAsync die Schlüssel- und Wertobjektverweise einem internen, temporären Dictionary hinzu, das dem ITransaction-Objekt zugeordnet ist. Dies geschieht, um Sie Ihnen eine Semantik zum Lesen eigener Schreibvorgänge bereitzustellen. Nach dem Aufrufen von AddAsync wird durch Aufrufen von TryGetValueAsync (mit dem gleichen ITransaction-Objekt) der Wert zurückgegeben, auch wenn Sie noch keinen Commit für die Transaktion ausgeführt haben. Als Nächstes serialisiert AddAsync Ihre Schlüssel- und Wertobjekte zu Bytearrays und wendet diese Bytearrays auf eine Protokolldatei auf dem lokalen Knoten an. Schließlich sendet AddAsync Bytearrays an alle sekundären Replikate, sodass diese die gleichen Schlüssel-/Wertinformationen aufweisen. Obwohl die Schlüssel-/Wertinformationen in eine Protokolldatei geschrieben wurden, werden die Informationen erst als Teil des Dictionarys erachtet, wenn ein Commit für die ihnen zugeordnete Transaktion ausgeführt wurde.
+Sobald die Sperre abgerufen wurde, fügt AddAsync Objektverweise Schlüssel und Wert auf eine interne temporäre Wörterbuch ITransaction-Objekt zugeordnet. Dies erfolgt, um Sie mit Ihren-Besitzer-Lese-Semantik bereitstellen. D. h. nach dem Aufruf von AddAsync wird ein späteren Aufrufs von TryGetValueAsync (mit dem gleichen ITransaction-Objekt) den Wert zurück, selbst wenn die Transaktion noch nicht gespeichert haben. Als Nächstes AddAsync serialisiert Ihren Schlüssel und Wert Bytearrays-Objekte und fügt diese Bytearrays in eine Protokolldatei auf dem lokalen Knoten. Schließlich sendet AddAsync Byte-Arrays an die sekundären Replikate müssen die gleichen Schlüssel/Wert-Informationen. Obwohl die Schlüssel/Wert-Informationen in eine Protokolldatei geschrieben wurde, die Informationen nicht als Teil des Wörterbuchs, bis die Transaktion, der sie zugeordnet sind ein Commit ausgeführt wurde.
 
-Im obigen Code wird durch den Aufruf von CommitAsync ein Commit für alle Vorgänge der Transaktion ausgeführt. Dabei werden Commit-Informationen an die Protokolldatei auf dem lokalen Knoten angehängt und der Commit-Datensatz außerdem an alle sekundären Replikate gesendet. Nachdem ein Quorum (Mehrheit) der Replikate geantwortet hat, werden alle Datenänderungen als dauerhaft erachtet, und alle Sperren, die mit über das ITransaction-Objekt bearbeiteten Schlüsseln verknüpft sind, werden aufgehoben. So können andere Threads/Transaktionen dieselben Schlüssel und deren Werte bearbeiten.
+Im obigen Code führt einen Commit für der Aufruf von CommitAsync alle Vorgänge für die Transaktion. Insbesondere Commit-Informationen in die Protokolldatei auf dem lokalen Knoten angehängt, und auch den Commitdatensatz an alle sekundären Replikate gesendet wird. Sobald ein Quorum (Mehrheit) von den Replikaten beantwortet hat, gelten alle datenänderungen permanent, und alle Schlüssel, die über das Objekt ITransaction bearbeitet wurden zugeordneten Sperren werden freigegeben, damit andere Threads/Transaktionen auf den gleichen Schlüsseln und deren Werte bearbeiten können.
 
-Wird CommitAsync (in der Regel aufgrund einer ausgelösten Ausnahme) nicht aufgerufen, wird das ITransaction-Objekt verworfen. Wenn ein ITransaction-Objekt ohne ausgeführten Commit verworfen wird, fügt Service Fabric der Protokolldatei des lokalen Knotens Abort-Informationen hinzu, und nichts muss an die sekundären Replikate gesendet werden. Dann werden alle Sperren aufgehoben, die mit über die Transaktion bearbeiteten Schlüsseln verknüpft sind.
+Wenn CommitAsync (in der Regel aufgrund einer Ausnahme, die ausgelöst wird) nicht aufgerufen wird, ruft das ITransaction-Objekt freigegeben. Wenn ein ohne Commit ITransaction-Objekt zu verwerfen, fügt Service Fabric Abort Informationen zur Protokolldatei für den lokalen Knoten, und keine Aktionen erforderlich, um ein sekundäres Replikat gesendet werden. Ein, und klicken Sie dann alle Schlüssel, die über die Transaktion bearbeitet wurden zugeordneten Sperren werden aufgehoben.
 
-## <a name="common-pitfalls-and-how-to-avoid-them"></a>Häufige Probleme und deren Vermeidung
-Nachdem Sie nun wissen, wie Reliable Collections intern funktionieren, sehen wir einige Fälle von missbräuchlicher Verwendung an. Sehen Sie den folgenden Code an:
+## <a name="common-pitfalls-and-how-to-avoid-them"></a>Häufige Probleme und zum vermeiden
+Nun, dass Sie verstehen, wie die zuverlässige Sammlungen intern arbeiten, werfen wir einen Blick auf einige allgemeine falsch davon. Finden Sie unter den folgenden Code:
 
 ```csharp
 using (ITransaction tx = StateManager.CreateTransaction()) {
@@ -78,9 +77,9 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ```
 
-Bei der Arbeit mit einem regulären .NET-Dictionary können Sie dem Dictionary einen Schlüssel/Wert hinzufügen und dann den Wert einer Eigenschaft ändern (z. B. LastLogin). Dieser Code funktioniert jedoch mit einem Reliable Dictionary nicht ordnungsgemäß . Wir erinnern uns: Der Aufruf von AddAsync serialisiert die Schlüssel-/Wertobjekte in Bytearrays, speichert dann die Arrays in einer lokalen Datei und sendet diese an die sekundären Replikate. Wenn Sie später eine Eigenschaft ändern, wird der Wert der Eigenschaft nur im Speicher geändert. Die Änderung wirkt sich nicht auf die lokale Datei oder die an die Replikaten gesendeten Daten aus. Wenn der Prozess abstürzt, wird alles im Speicher verworfen. Wenn ein neuer Prozess gestartet oder ein anderes Replikat zum primären Element wird, ist der alte Wert der Eigenschaft verfügbar.
+Bei der Arbeit mit einem regulären .NET Wörterbuch können Sie dem Wörterbuch einen Schlüssel-Wert hinzufügen und ändern Sie den Wert einer Eigenschaft (z. B. LastLogin). Allerdings ist dieser Code nicht mit einem zuverlässigen Wörterbuch funktionsfähig. Denken Sie daran, aus der früheren Diskussion der Aufruf von AddAsync serialisiert die Schlüssel/Wert-Objekte in Bytearrays und speichert dann die Arrays in eine lokale Datei und sendet diese auch an die sekundären Replikate. Wenn Sie später eine Eigenschaft ändern, ändert dieser den Wert der Eigenschaft nur im Speicher; Er wirkt sich nicht auf die lokale Datei oder die Daten gesendet werden, auf die Replikate aus. Bei einem Prozessabbruch, was im Arbeitsspeicher ist sofort ausgelöst. Wenn ein neuer Prozess gestartet wird oder einem anderen Replikat das primäre Element wird, wird der alte Wert der Eigenschaft zur Verfügung steht.
 
-Der oben gezeigte Fehler kann Benutzern wirklich unglaublich schnell unterlaufen. Noch dazu bemerken Sie den Fehler erst dann, wenn bzw. falls der Prozess ausfällt. Die richtige Vorgehensweise zum Schreiben des Codes besteht darin, die beiden Zeilen umzukehren:
+Ich kann nicht genug wie einfach es ist, stellen die Art der oben gezeigten Fehler zu belasten. Und Sie werden nur erfahren Sie mehr über den Fehler bei, dass der Prozess ausfällt. Die korrekte Methode zum Schreiben des Codes besteht darin, zwei Zeilen umkehren:
 
 
 ```csharp
@@ -92,7 +91,7 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ```
 
-Hier sehen Sie ein weiteres Beispiel für einen häufigen Fehler:
+Hier ist ein weiteres Beispiel: einen häufiger Fehler angezeigt:
 
 ```csharp
 
@@ -111,11 +110,11 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ```
 
-Auch hier funktioniert der Code mit regulären .NET-Dictionarys und entspricht einem gängigen Muster: Der Entwickler verwendet einen Schlüssel, um einen Wert zu suchen. Wenn der Wert vorhanden ist, ändert der Entwickler den Wert einer Eigenschaft. In Reliable Collections weist der Code jedoch dasselbe Problem auf wie zuvor beschrieben: **Sie dürfen ein Objekt in einer Reliable Collection NICHT ändern.**
+Erneut mit regulären .NET Wörterbücher, der obige Code funktioniert einwandfrei, und ist ein allgemeines Muster: der Entwickler verwendet einen Schlüssel, um einen Wert zu suchen. Wenn der Wert vorhanden ist, ändert der Entwickler den Wert einer Eigenschaft an. Dieser Code weist jedoch mit zuverlässigen Sammlungen das gleiche Problem wie bereits erläutert: **müssen Sie ein Objekt nicht ändern, nachdem Sie es für eine zuverlässige Sammlung erhalten haben.**
 
-Um einen Wert in einer Reliable Collection ordnungsgemäß zu aktualisieren, rufen Sie einen Verweis auf den vorhandenen Wert ab und betrachten das Objekt als unveränderlich. Anschließend erstellen Sie ein neues Objekt, das eine exakte Kopie des ursprünglichen Objekts ist. Nun können Sie den Status des neuen Objekts ändern und das neue Objekt in die Auflistung schreiben, damit es in Bytearrays serialisiert, an die lokale Datei angefügt und an die Replikate gesendet wird. Nach dem Commit der Änderung(en) weisen die Objekte im Arbeitsspeicher, in der lokalen Datei und in allen Replikaten genau denselben Zustand auf. Alles in Ordnung!
+Die richtige Methode, die einen Wert in einer zuverlässigen Sammlung aktualisieren wird zum Abrufen eines Verweises auf den vorhandenen Wert und betrachten das Objekt verweist auf diesen Verweis unveränderlich. Anschließend erstellen Sie ein neues Objekt, das eine genaue Kopie des ursprünglichen Objekts ist. Jetzt, Sie ändern den Status für das neue Objekt und schreiben können das neue Objekt in der Auflistung, damit es in Bytearrays, serialisiert werden an die lokale Datei angehängt und gesendet, um die Replikate. Nach dem Commit der Änderung, aufweisen die in-Memory-Objekte, die lokale Datei und alle Replikate genau denselben Bundesstaat. Alles in Ordnung ist.
 
-Der folgende Code zeigt die richtige Methode, um einen Wert in einer Reliable Collection zu aktualisieren:
+Der folgende Code zeigt die richtige Methode, die einen Wert in einer zuverlässigen Sammlung zu aktualisieren:
 
 ```csharp
 
@@ -142,10 +141,10 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ```
 
-## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Definieren von unveränderlichen Datentypen, um Programmierfehler zu verhindern
-Im Idealfall sollte der Compiler Fehler melden, wenn Sie versehentlich Code erzeugen, der den Zustand eines Objekts ändert, das nicht geändert werden darf. Leider ist dies mit dem C#-Compiler nicht möglich. Um potenzielle Programmierfehler zu vermeiden, raten wir Ihnen dringend dazu, die mit Reliable Collections verwendeten Typen als unveränderliche Typen zu definieren. Dazu halten Sie sich an Hauptwerttypen (z. B. Zahlen [Int32, UInt64 usw.], DateTime, Guid, TimeSpan und ähnliche Werte). Natürlich können sie auch String verwenden. Vermeiden Sie im Idealfall Auflistungseigenschaften, da deren Serialisierung und Deserialisierung die Leistung beeinträchtigen kann. Wenn Sie jedoch Sammlungseigenschaften verwenden möchten, raten wir dringend dazu, die .NET-Bibliothek mit unveränderlichen Sammlungen ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)) zu verwenden. Diese Bibliothek können Sie hier herunterladen: http://nuget.org. Zudem empfehlen wir nach Möglichkeit, Klassen zu versiegeln und schreibgeschützte Felder zu verwenden.
+## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Definieren Sie unveränderliche Datentypen Programmierer Fehler vermeiden
+Im Idealfall möchten wir den Compiler, um Fehler zu melden, wenn Sie versehentlich Code erzeugen, der Zustand eines Objekts ändert, die Sie unveränderlich berücksichtigen. Aber der C#-Compiler keinen die Möglichkeit dazu. Also, um potenzielle Programmierer Fehler zu vermeiden, wird dringend, dass Sie die Typen definieren Sie mit zuverlässigen Auflistungen verwenden, um die unveränderlichen Typen sein. Insbesondere bedeutet dies, dass Sie Core Werttypen (z. B. Zahlen [Int32, UInt64 usw.], "DateTime", Guid, TimeSpan und Like) verwenden. Und natürlich können Sie auch Zeichenfolge. Am besten vermeiden Sammlungseigenschaften als Serialisierung und Deserialisierung kann häufig kann die Leistung beeinträchtigen. Wenn Sie die Eigenschaften der Sammlung verwenden möchten, empfehlen wir jedoch hoch die Verwendung von. Unveränderliche Auflistungen der Netzwerkbibliothek ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). Diese Bibliothek ist zum Download von http://nuget.org zur Verfügung. Es wird empfohlen, versiegeln Klassen und Felder schreibgeschützt machen, wann immer möglich ist.
 
-Der folgende UserInfo-Typ veranschaulicht die Definition eines unveränderlichen Typs mithilfe der oben genannten Empfehlungen.
+Welche UserInfo veranschaulicht, wie einen unveränderlichen Typ, der Nutzen der bereits erwähnten Empfehlungen zu definieren.
 
 ```csharp
 
@@ -181,7 +180,7 @@ public sealed class UserInfo {
 }
 ```
 
-Der ItemID-Typ ist ebenfalls ein unveränderlicher Typ, wie hier gezeigt:
+Der Element-ID-Typ ist ein unveränderlicher Typ auch, wie hier gezeigt:
 
 ```csharp
 
@@ -197,24 +196,23 @@ public struct ItemId {
 }
 ```
 
-## <a name="schema-versioning-upgrades"></a>Schema-Versionsverwaltung (Upgrades)
-Intern serialisieren die Reliable Collections Ihre Objekte mit dem .NET DataContractSerializer. Die serialisierten Objekte werden auf der lokalen Festplatte des primären Replikats übernommen und auch an die sekundären Replikate übermittelt. Im Zuge der Entwicklung Ihres Dienstes möchten Sie möglicherweise die Art der erforderlichen Daten (Schema) ändern. Lassen Sie bei der Versionsverwaltung Ihrer Daten große Vorsicht walten. Höchste Priorität hat, dass Sie stets in der Lage sein müssen, alte Daten zu deserialisieren. Ihr Deserialisierungscode muss daher unendlich abwärtskompatibel sein: Version 333 Ihres Dienstcodes muss mit Daten arbeiten können, die vor 5 Jahren mit der Version 1 Ihres Dienstcodes zu einer Reliable Collection hinzugefügt wurden.
+## <a name="schema-versioning-upgrades"></a>Versionsverwaltung des Schemas (Upgrades)
+Intern serialisieren zuverlässige Sammlungen Objekte mithilfe. NET "DataContractSerializer". Die serialisierte Objekte auf dem primären Replikat lokalem Datenträger beibehalten werden und auch an die sekundären Replikate gesendet werden. Bei fortschreitender Ihr Dienst ist es wahrscheinlich ist, sollten Sie die Art der Daten (Schema) zu ändern, die Ihr Dienst erfordert. Sie müssen die versionsverwaltung Ihrer Daten mit großer Umsicht annähern. Zunächst müssen Sie immer zum Deserialisieren von alter Daten sein. Dies bedeutet insbesondere, deserialisierungscodes muss unbegrenzt abwärts kompatibel sein: 333 der Version des Codes Dienst muss in der Lage, Daten platziert in einer zuverlässigen Sammlung von Version 1 der Dienstcode 5 Jahre vor bearbeitet werden.
 
-Zudem wird der Dienstcode auf jeder Upgradedomäne einzeln aktualisiert. Während der Aktualisierung müssen also zwei verschiedene Versionen Ihres Dienstcodes gleichzeitig ausgeführt werden. Sie müssen vermeiden, dass die neue Version Ihres Dienstcodes das neue Schema wie alte Versionen Ihres Dienstcodes verwendet, da dieser das neue Schema möglicherweise nicht verarbeiten kann. Nach Möglichkeit sollten Sie jede Version des Diensts um 1 Version aufwärtskompatibel entwickeln. Insbesondere bedeutet dies, dass V1 des Dienstcodes einfach alle Elemente des Schemas ignorieren sollte, die sie nicht explizit behandelt. Allerdings muss sie alle Daten, die ihr nicht explizit bekannt sind, speichern und einfach zurückschreiben können, wenn ein Dictionary-Schlüssel oder -Wert aktualisiert wird.
+Darüber hinaus ist Dienstcode aktualisierten einer upgradedomäne zu einem Zeitpunkt. Während eines Upgrades müssen Sie daher zwei unterschiedliche Versionen des Code Ihres Diensts, die gleichzeitig ausgeführt werden. Sie müssen vermeiden, dass die neue Version des Codes Service das neue Schema verwenden, wie alte Versionen von Code Ihres Diensts möglicherweise nicht das neue Schema zu behandeln. Wenn möglich, sollten Sie jede Version des Diensts bei aufwärtskompatibel mit Version 1 werden entwerfen. Insbesondere bedeutet dies, dass der Code Ihres Diensts V1 können ignoriert alle Schemaelemente, die explizit nicht verarbeiten kann. Allerdings muss er sein um alle Daten, denen sie explizit nicht bekannt ist und einfach Zurückschreiben bei der Aktualisierung ein Wörterbuchschlüssel oder Wert zu speichern.
 
 > [!WARNING]
-> Sie können Sie das Schema eines Schlüssels ändern, müssen jedoch sicherstellen, dass die Hashcode- und Gleichungsalgorithmen Ihres Schlüssels stabil sind. Wenn Sie die Funktionsweise der folgenden Algorithmen ändern, können Sie den Schlüssel nicht mehr im Reliable Dictionary abfragen.
+> Während Sie das Schema eines Schlüssels ändern können, müssen Sie sicherstellen, dass Hashcode des Schlüssels und Equals-Algorithmen stabil sind. Wenn Sie ändern, wie eine der folgenden Algorithmen funktionieren, werden Sie nicht den Schlüssel im Wörterbuch zuverlässige jemals erneut zu suchen können.
 >
 >
 
-Alternativ können Sie einen Vorgang ausführen, der als 2-Phasen-Upgrade bezeichnet wird. Mit einem 2-Phasen-Upgrade aktualisieren Sie den Dienst aus V1 auf V2: V2 enthält den Code, der mit der neuen Schemaänderung umzugehen weiß, aber dieser Code wird nicht ausgeführt. Wenn der V2-Code V1-Daten liest, verwendet und schreibt er V1-Daten. Wenn das Upgrade auf allen Upgradedomänen abgeschlossen ist, können Sie den laufenden V2-Instanzen signalisieren, dass das Upgrade abgeschlossen ist. (Eine Möglichkeit, dies zu signalisieren, besteht darin, ein Konfigurationsupgrade durchzuführen. Daher wird dieser Vorgang als 2-Phasen-Upgrade bezeichnet.) Jetzt können die V2-Instanzen V1-Daten lesen, in V2-Daten konvertieren, diese verwenden und als V2-Daten schreiben. Wenn andere Instanzen V2-Daten lesen, müssen sie diese nicht konvertieren. Sie verwenden sie einfach und schreiben V2-Daten.
+Alternativ können Sie ausführen, in der Regel als "ein 2-Phasen-Upgrade" bezeichnet wird. Mit einem 2-Phasen-Upgrade upgrade Ihren Dienst V1, V2: V2 enthält den Code, der weiß, wie für den Umgang mit dem neuen Schema ändern, aber dieser Code nicht ausgeführt werden. Wenn der Code V2 V1 Daten liest, darauf arbeitet und schreibt V1-Daten. Klicken Sie dann nach das Upgrade alle upgradedomänen abgeschlossen ist, können Sie irgendeine der ausgeführten V2-Instanzen zu signalisieren, dass das Upgrade abgeschlossen ist. (Eine Möglichkeit zum Signal sieht eine konfigurationsaktualisierung Rollout; Dies wird dadurch eine 2-Phasen-Upgrade wird). Jetzt können die V2-Instanzen V1 Daten lesen, konvertieren Sie ihn in V2-Daten verarbeiten und schreibt sie als V2-Daten. Wenn andere Instanzen V2-Daten gelesen, sie ist nicht erforderlich, die sie konvertieren, nur verarbeiten, V2 Daten ausgeschrieben werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Erstellen von aufwärtskompatiblen Datenverträgen finden Sie unter [Aufwärtskompatible Datenverträge](https://msdn.microsoft.com/library/ms731083.aspx).
+Zum Erstellen von Vorwärts kompatiblen Datenverträgen finden Sie unter [aufwärtskompatible Datenverträge](https://msdn.microsoft.com/library/ms731083.aspx).
 
-Bewährte Methoden zur Versionsverwaltung von Datenverträgen finden Sie unter [Datenvertragsversionsverwaltung](https://msdn.microsoft.com/library/ms731138.aspx).
+Bewährte Methoden zur versionsverwaltung von Datenverträgen finden Sie unter [Datenvertragsversionsverwaltung](https://msdn.microsoft.com/library/ms731138.aspx).
 
-Informationen zum Implementieren von versionstoleranten Datenverträgen finden Sie unter [Versionstolerante Serialisierungsrückrufe](https://msdn.microsoft.com/library/ms733734.aspx).
+Gewusst wie: Implementieren Sie fehlertolerante Datenverträge Version finden Sie unter [versionstolerante Serialisierungsrückrufe](https://msdn.microsoft.com/library/ms733734.aspx).
 
-Weitere Informationen zum Erstellen einer Datenstruktur, zum Interagieren über mehrere Versionen finden Sie unter [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx).
-
+Um zu erfahren, wie eine Datenstruktur bereitstellen, die über mehrere Versionen hinweg zusammenarbeiten können, finden Sie unter [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx).

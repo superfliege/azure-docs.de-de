@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2017
 ms.author: LADocs; padmavc
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: 3fea93f558d5a4ef62550fd1f6486903cb812930
-ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="connect-to-an-on-premises-sap-system-from-logic-apps-with-the-sap-connector"></a>Herstellen einer Verbindung mit einem lokalen SAP-System in Logik-Apps mit dem SAP-Connector 
 
 Das lokale Datengateway ermöglicht das Verwalten von Daten und den sicheren Zugriff auf lokale Ressourcen. In diesem Thema wird gezeigt, wie Sie eine Verbindung zwischen Logik-Apps und einem lokalen SAP-System herstellen können. In diesem Beispiel wird mit der Logik-App ein IDoc über HTTP angefordert und die Antwort zurückgesendet.    
@@ -92,4 +90,3 @@ Zur Optimierung von Azure Logic Apps und Connectors können Sie auf der [Benutze
 
 - Erfahren Sie, wie Sie die Überprüfung, Transformation und andere BizTalk-ähnliche Aufgaben im [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) ausführen. 
 - [Herstellen einer Verbindung mit lokalen Daten für Logik-Apps](../logic-apps/logic-apps-gateway-connection.md)
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: jarrettr
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: ba390a5973ad33405f1d4217d60d7989f04db3b4
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Verschieben von Daten in und aus Azure Storage
 Wenn Sie lokale Daten in Azure Storage verschieben möchten (oder umgekehrt), steht Ihnen eine Vielzahl von Methoden zur Verfügung. Es hängt vom jeweiligen Szenario ab, welche Methode für Sie am besten geeignet ist. Dieser Artikel bietet eine kurze Übersicht über die verschiedenen Szenarien und die jeweiligen Angebote.
@@ -78,4 +77,3 @@ Weitere Informationen finden Sie unter [Azure Site Recovery](../../site-recovery
 ### <a name="moving-data-faq"></a>Häufig gestellte Fragen zum Verschieben von Daten:
 ## <a name="can-i-migrate-vhds-from-one-region-to-another-without-copying"></a>Kann ich VHDs ohne Kopiervorgang aus einer Region in eine andere migrieren?
 Die einzige Möglichkeit zum Kopieren von VHDs von einer Region in eine andere ist das Kopieren der Daten zwischen Speicherkonten in den jeweiligen Regionen. Sie können AZCopy dafür verwenden. Weitere Informationen finden Sie unter „Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy“. Für sehr große Datenmengen können Sie auch Azure Import/Export einsetzen. Weitere Informationen finden Sie unter [Azure Import/Export](https://docs.microsoft.com/en-us/azure/storage/storage-import-export-service) .
-

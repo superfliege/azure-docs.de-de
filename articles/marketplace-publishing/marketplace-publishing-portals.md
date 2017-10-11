@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8087f27a692e1e2d0f2d9434b065ddb902de0d57
-
-
+ms.openlocfilehash: 093d3ee3ecce89c86a12e7e216072ece57f82f9d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="portals-you-will-need"></a>Portale, die Sie benötigen
 Bevor Sie mit der Veröffentlichung eines Angebots beginnen, sollten Sie sich mit den verschiedenen Portalen vertraut machen, die Sie dazu benötigen. Im Anschluss folgt eine kurze Zusammenfassung der Portale (Developer Center, Azure-Veröffentlichungsportal und Azure-Portal) in der Reihenfolge, in der Sie mit ihnen interagieren.                                                                            
@@ -35,7 +35,7 @@ Das Erstellen Ihres Microsoft Developer Center-Kontos ist eine einmalige Aufgabe
 > 
 
 ### <a name="identityaccount-used"></a>Verwendete Identität/Verwendetes Konto
-Im Idealfall ist dies eine Verteilerliste oder Sicherheitsgruppe (z.B. azurepublishing@*partnercompany*.com). Diese Verteilerliste oder Sicherheitsgruppe **muss** als Microsoft-Konto registriert sein.
+Idealerweise ist dies eine Verteilerliste oder Sicherheitsgruppe (z. B. Azurepublishing @*Partnercompany*".com"). Diese Verteilerliste oder Sicherheitsgruppe **muss** als Microsoft-Konto registriert sein.
 
 > [!TIP]
 > Wir empfehlen die Verwendung einer Verteilerliste oder Sicherheitsgruppe, um die Abhängigkeit von einer Einzelperson zu vermeiden. Es kann jedoch auch ein einzelnes Konto verwendet werden.
@@ -62,10 +62,4 @@ Beim Bereitstellen des Angebots über das Veröffentlichungsportal muss eine Abo
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -15,12 +15,11 @@ ms.date: 06/14/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017, it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
-ms.openlocfilehash: ea0853929cd8670b6458a546e7fb1b3a229c09d7
-ms.contentlocale: de-de
-ms.lasthandoff: 02/28/2017
-
+ms.openlocfilehash: a05219398aefa158321ae63934743dd43841e33f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Konfigurieren des Azure Multi-Factor Authentication-Servers zur Verwendung von AD FS 2.0
 Dieser Artikel richtet sich an Organisationen, die sind in einem Azure Active Directory-Verbund befinden und lokale Ressourcen oder Ressourcen in der Cloud schützen möchten. Schützen Sie Ihre Ressourcen mithilfe des Azure Multi-Factor Authentication-Servers, und konfigurieren Sie ihn für die Verwendung von AD FS, damit für wichtige Endpunkte die Überprüfung in zwei Schritten ausgelöst wird.
@@ -117,4 +116,3 @@ Stellen Sie sicher, dass Benutzer aus Active Directory in den Server importiert 
 4. Geben Sie die IP-Adresse, den IP-Adressbereich oder das Subnetz für die Positivliste ein. Wählen Sie im Falle eines Subnetzes die entsprechende Netzmaske aus, und klicken Sie auf die Schaltfläche **OK**. Die vertrauenswürdige IP wurde hinzugefügt.
 
 <center>![Einrichtung](./media/multi-factor-authentication-get-started-adfs-adfs2/trusted.png)</center>
-

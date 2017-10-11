@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: osamam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
 ms.openlocfilehash: 8568c13d2834a0643e15ab1814a35c92123837d1
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Asymmetrisches Routing mit mehreren Netzwerkpfaden
 In diesem Artikel erfahren Sie, wie ausgehender und eingehender Netzwerkdatenverkehr über unterschiedliche Routen abgewickelt werden kann, wenn zwischen Netzwerkquelle und -ziel mehrere Pfade verfügbar sind.
@@ -73,5 +71,4 @@ Eine weitere Möglichkeit zur Behandlung von Problemen durch asymmetrisches Rout
 
 ## <a name="asymmetric-routing-detection"></a>Erkennung von asymmetrischem Routing
 Wenn Sie sich vergewissern möchten, dass der Netzwerkdatenverkehr den erwarteten Pfad durchläuft, verwenden Sie am besten Traceroute. Soll an Microsoft gerichteter Datenverkehr von Ihrem lokalen SMTP-Server über den Internetpfad abgewickelt werden, verläuft die erwartete Traceroute zwischen SMTP-Server und Office 365. Das Ergebnis gibt Aufschluss darüber, ob der Datenverkehr Ihr Netzwerk tatsächlich in Richtung Internet (und nicht Richtung ExpressRoute) verlässt.
-
 

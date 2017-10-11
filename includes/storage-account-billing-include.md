@@ -1,11 +1,11 @@
-Die Rechnungsstellung für Azure-Speicher basiert auf Ihrem Speicherkonto. Speicherkosten basieren auf den folgenden Faktoren: Region/Standort, Kontotyp, Speicherkapazität, Replikationsschema, Speichertransaktionen und Datenausgang.
+Sie sind für Azure-Speicher-Nutzung auf Ihr Speicherkonto Basis in Rechnung gestellt. Speicherkosten werden basierend auf den folgenden Faktoren ab: Region/Speicherort, Kontotyp, Speicherkapazität, Replikationsschema, Speichertransaktionen und ausgehende Daten.
 
-* „Region“ bezieht sich auf die geografische Region, in der sich Ihr Konto befindet.
-* „Kontotyp“ bezieht sich darauf, ob Sie ein allgemeines Speicherkonto oder ein BLOB-Speicherkonto verwenden. Bei einem BLOB-Speicherkonto bestimmt der Zugriffstarif darüber hinaus das Abrechnungsmodell für das Konto.
-* Speicherkapazität bezieht sich darauf, wie viel von Ihrer Speicherkontozuweisung zum Speichern von Daten verwendet wird.
-* Die Replikation bestimmt, wie viele Kopien Ihrer Daten jeweils an welchen Standorten unterhalten werden.
-* Transaktionen beziehen sich auf alle Lese- und Schreibvorgänge im Azure-Speicher.
-* Datenausgang bezieht sich auf Daten, die aus einer Azure-Region übertragen werden. Wenn eine Anwendung, die nicht in der gleichen Region ausgeführt wird, auf die Daten in Ihrem Speicherkonto zugreift, fallen Gebühren für den Datenausgang an. (Für Azure-Dienste können Sie Maßnahmen durchführen, um Daten und Dienste in den gleichen Rechenzentren zu gruppieren und so Datenausgangsgebühren zu reduzieren oder zu eliminieren.)
+* Bereich bezieht sich auf die geografische Region, in der sich Ihr Konto basiert.
+* Kontotyp bezieht sich auf, ob Sie ein allgemeines Storage-Konto oder ein Blob-Speicherkonto verwenden. Mit einem Blob-Speicherkonto bestimmt der zugriffstarifs auch das Abrechnungsmodell für das Konto.
+* Speicherkapazität verweist, wie viel der Zuteilung Ihrer Storage-Konto Sie zum Speichern von Daten verwenden.
+* Die Replikation bestimmt, wie viele Kopien Ihrer Daten gleichzeitig und in welchen Standorten verwaltet werden.
+* Transaktionen verweisen, um alle Lese- und Schreibvorgänge in den Azure-Speicher.
+* Ausgehende Daten bezieht sich auf Daten aus einer Azure-Region übertragen. Wenn die Daten in Ihrem Speicherkonto von einer Anwendung zugegriffen werden, die nicht in derselben Region ausgeführt wird, werden Sie ausgehende Daten in Rechnung gestellt. (Für Azure-Dienste können Sie Schritte zum Gruppieren der Daten und Dienste in der gleichen Rechenzentren, reduziert oder zunichte Gebühren für den Datentransfer.)
 
-Die Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/) bietet detaillierte Preisinformationen basierend auf Kontotyp, Speicherkapazität, Replikation und Transaktionen. In der [Datenübertragungs-Preisübersicht](https://azure.microsoft.com/pricing/details/data-transfers/) finden Sie detaillierte Preisinformationen für den Datenausgang. Sie können den [Azure Storage-Preisrechner](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) verwenden, um Ihre Kosten zu bestimmen.
+Die [Preisdetails für Azure Storage](https://azure.microsoft.com/pricing/details/storage/) Seite enthält detaillierte Preisinformationen basierend auf den Kontotyp, Speicherkapazität, Replikation und Transaktionen. Die [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/) bietet Ausführliche Preisinformationen für ausgehende Daten. Können Sie die [Azure Storage-Preisrechner](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) helfen bei der kostenschätzung.
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-translationtype: Human Translation
-ms.sourcegitcommit: 649cc1a78f3a9f343533cb18fb7d763e4f9ea196
 ms.openlocfilehash: 89fa04a1107b6abb49aefd68066443717ac9b731
-ms.lasthandoff: 02/04/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="troubleshoot-visual-studio-docker-development"></a>Problembehandlung bei der Docker-Entwicklung in Visual Studio
 
 Bei der Arbeit mit Visual Studio-Tools für Docker Preview können Probleme auftreten, die für Previews typisch sind.
@@ -147,4 +145,3 @@ Nach dem Deinstallieren und Installieren von Erweiterungen kann der MEF-Cache (M
     ```
 1. Öffnen Sie Visual Studio.
 1. Wiederholen Sie das Szenario.
-

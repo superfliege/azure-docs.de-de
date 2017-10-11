@@ -1,13 +1,13 @@
-Im Azure-Portal können Sie zur gewünschten Verbindung navigieren und den Verbindungsstatus für eine klassische VNet-VPN Gateway-Instanz anzeigen. Die folgenden Schritte zeigen eine Möglichkeit, zu Ihrer Verbindung zu navigieren und sie zu überprüfen.
+Im Azure-Portal können Sie den Verbindungsstatus für klassische VNet-VPN-Gateway anzeigen, navigieren Sie zur Verbindung. Die folgenden Schritte zeigen eine Möglichkeit, navigieren zu Ihrer Verbindung, und vergewissern Sie sich an.
 
-1. Klicken Sie im [Azure-Portal](http://portal.azure.com) auf **All resources** (Alle Ressourcen), und navigieren Sie zum klassischen virtuellen Netzwerk.
-2. Klicken Sie auf dem Blatt für das virtuelle Netzwerk auf **Übersicht**, um auf den Abschnitt **VPN-Verbindungen** des Blatts zuzugreifen.
-3. Klicken Sie in der Grafik mit den VPN-Verbindungen auf den Standort.
+1. In der [Azure-Portal](http://portal.azure.com), klicken Sie auf **alle Ressourcen** und navigieren Sie zu dem klassischen virtuellen Netzwerk.
+2. Klicken Sie auf dem Blatt "virtuelles Netzwerk" auf **Übersicht** für den Zugriff auf die **VPN-Verbindungen** Abschnitt des Blatts.
+3. Klicken Sie auf die VPN-Verbindungen Grafik auf der Website.
 
-    ![Lokaler Standort](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "Lokaler Standort")
-4. Zeigen Sie auf dem Blatt **Standort-zu-Standort-VPN-Verbindungen** die Informationen zu Ihrem Standort an.
+    ![Lokaler Standort](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "lokalen Standort")
+4. Auf der **Standort-zu-Standort-VPN-Verbindungen** Blatt, das Informationen zu Ihrer Website anzeigen.
 
     ![Verbindungsstatus](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "Verbindungsstatus")
-5. Klicken Sie zum Anzeigen von weiteren Informationen zur Verbindung auf den Namen der Verbindung, um das Blatt **Standort-zu-Standort-VPN-Verbindungen** zu öffnen.
+5. Klicken Sie auf den Namen der Verbindung zu öffnen, um weitere Informationen zur Verbindung anzuzeigen, die **Standort-zu-Standort-VPN-Verbindung** Blatt.
 
-    ![Verbindungsstatus – Weitere Informationen](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Verbindungsstatus – Weitere Informationen")
+    ![Verbindungsstatus weitere](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Verbindungsstatus Weitere Informationen")

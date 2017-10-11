@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 87246de343f5c810bf765b467ba0d131934f8526
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 88f7e5b2144daee7bf1c8e7312ba98e6fa967899
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>Erstellen von Netzwerksicherheitsgruppen mithilfe einer Azure Resource Manager-Vorlage
 
@@ -190,5 +189,4 @@ Führen Sie zum Bereitstellen der ARM-Vorlage mithilfe der Azure-Befehlszeilensc
    * **-l (oder --location)**. Azure-Region, in der die Ressourcengruppe erstellt wird.
    * **-f (oder --template-file)**. Pfad zu Ihrer ARM-Vorlagendatei.
    * **-e (oder --parameters-file)**. Pfad zu Ihrer ARM-Parameterdatei.
-
 

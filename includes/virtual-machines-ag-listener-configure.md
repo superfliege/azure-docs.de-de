@@ -1,79 +1,79 @@
-Der Verfügbarkeitsgruppenlistener umfasst eine IP-Adresse und einen Netzwerknamen, über die die SQL Server-Verfügbarkeitsgruppe lauscht. Gehen Sie wie folgt vor, um den Verfügbarkeitsgruppenlistener zu erstellen:
+Der verfügbarkeitsgruppenlistener wird einen IP-Adresse und die Namen, dem Gruppe der SQL Server-Verfügbarkeit überwacht. Um die verfügbarkeitsgruppenlistener zu erstellen, führen Sie folgende Schritte aus:
 
-1. <a name="getnet"></a>Rufen Sie den Namen der Clusternetzwerk-Ressource ab.
+1. <a name="getnet"></a>Ruft den Namen der Netzwerk-Clusterressource.
 
-    a. Stellen Sie eine RDP-Verbindung mit dem virtuellen Azure-Computer her, der das primäre Replikat hostet. 
+    a. Verwenden Sie RDP Verbindung mit virtuellen Azure-Computer, die das primäre Replikat hostet. 
 
-    b. Öffnen Sie den Failovercluster-Manager.
+    b. Failovercluster-Manager zu öffnen.
 
-    c. Wählen Sie den Knoten **Netzwerke** aus, und notieren Sie den Netzwerknamen des Clusters. Verwenden Sie diesen Namen im PowerShell-Skript in der Variablen `$ClusterNetworkName` . In der folgenden Abbildung lautet der Name des Clusternetzwerks **Cluster Network 1**:
+    c. Wählen Sie die **Netzwerke** Knoten, und notieren Sie den Clusternetzwerknamen. Verwenden Sie diesen Namen in der `$ClusterNetworkName` Variable im PowerShell-Skript. In der folgenden Abbildung ist der Netzwerkname des **Clusternetzwerk 1**:
 
-   ![Name des Clusternetzwerks](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
+   ![Netzwerkname](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
 
-2. <a name="addcap"></a>Fügen Sie den Clientzugriffspunkt hinzu.  
-    Der Clientzugriffspunkt ist der Netzwerkname, der von den Anwendungen zum Herstellen der Verbindung mit den Datenbanken einer Verfügbarkeitsgruppe verwendet wird. Erstellen Sie den Clientzugriffspunkt im Failovercluster-Manager.
+2. <a name="addcap"></a>Fügen Sie den Clientzugriffspunkt.  
+    Der Client Access Point ist der Netzwerkname, der Anwendungen verwenden, um mit den Datenbanken in einer verfügbarkeitsgruppe herstellen. Der Client Access Point im Failovercluster-Manager zu erstellen.
 
     a. Erweitern Sie den Clusternamen, und klicken Sie dann auf **Rollen**.
 
-    b. Klicken Sie im Bereich **Rollen** mit der rechten Maustaste auf den Verfügbarkeitsgruppennamen, und wählen Sie dann **Ressource hinzufügen** > **Clientzugriffspunkt** aus.
+    b. In der **Rollen** Bereich mit der rechten Maustaste in des Namens der verfügbarkeitsgruppe, und wählen Sie dann **Ressource hinzufügen** > **Clientzugriffspunkt**.
 
    ![Clientzugriffspunkt](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
-    c. Erstellen Sie im Feld **Name** einen Namen für diesen neuen Listener. 
-   Der Name für den neuen Listener ist der Netzwerkname, den Anwendungen beim Herstellen einer Verbindung mit Datenbanken in der SQL Server-Verfügbarkeitsgruppe verwenden.
+    c. In der **Namen** Feld, erstellen Sie einen Namen für den neuen Listener. 
+   Der Name für den neuen Listener ist der Netzwerkname, der Anwendungen verwenden, um die Verbindung mit Datenbanken in der SQL Server-verfügbarkeitsgruppe.
    
-    d. Klicken Sie zum Abschließen der Listenererstellung zweimal auf **Weiter** und dann auf **Fertig stellen**. Schalten Sie den Listener oder die Ressource jetzt noch nicht online.
+    d. Zum Erstellen des Listeners fertig sind, klicken Sie auf **Weiter** zweimal, und klicken Sie dann auf **Fertig stellen**. Schalten Sie den Listener oder die Ressource online zu diesem Zeitpunkt.
 
-3. <a name="congroup"></a>Konfigurieren Sie die IP-Ressource für die Verfügbarkeitsgruppe.
+3. <a name="congroup"></a>Konfigurieren Sie die IP-Adressressource für die verfügbarkeitsgruppe dienen.
 
-    a. Klicken Sie auf die Registerkarte **Ressourcen**, und erweitern Sie dann den erstellten Clientzugriffspunkt.  
+    a. Klicken Sie auf die **Ressourcen** Registerkarte, und erweitern Sie dann den Clientzugriffspunkt, die Sie erstellt haben.  
     Der Clientzugriffspunkt ist offline.
 
    ![Clientzugriffspunkt](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-    b. Klicken Sie mit der rechten Maustaste auf die IP-Ressource, und klicken Sie dann auf „Eigenschaften“. Notieren Sie den Namen der IP-Adresse, und verwenden Sie ihn in der Variablen `$IPResourceName` im PowerShell-Skript.
+    b. Mit der rechten Maustaste in die IP-Adressressource, und klicken Sie dann auf Eigenschaften. Notieren Sie den Namen der IP-Adresse ein, und verwenden sie in der `$IPResourceName` Variable im PowerShell-Skript.
 
-    c. Klicken Sie unter **IP-Adresse** auf **Statische IP-Adresse**. Legen Sie die IP-Adresse auf die gleiche Adresse fest, die Sie beim Festlegen der Adresse für den Lastenausgleich im Azure-Portal verwendet haben.
+    c. Klicken Sie unter **IP-Adresse**, klicken Sie auf **statische IP-Adresse**. Legen Sie die IP-Adresse als die Adresse, die Sie verwendet werden, wenn Sie die Adresse des Lastenausgleichsmoduls auf dem Azure-Portal festgelegt.
 
-   ![IP-Ressource](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
+   ![Die IP-Ressource](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
-    <!------------Diese Option wird auf Server 2016 nicht angezeigt
-    1. Deaktivieren Sie NetBIOS für diese Adresse, und klicken Sie auf **OK**. Wiederholen Sie diesen Schritt für jede IP-Ressource, wenn die Lösung mehrere Azure-VNets umfasst. 
+    <!-----------------------I don't see this option on server 2016
+    1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
     ------------------------->
 
-4. <a name = "dependencyGroup"></a>Richten Sie die Abhängigkeit der SQL Server-Verfügbarkeitsgruppenressource vom Clientzugriffspunkt ein.
+4. <a name = "dependencyGroup"></a>Stellen Sie die SQL Server-verfügbarkeitsgruppenressource abhängig von den Clientzugriffspunkt.
 
-    a. Klicken Sie im Failovercluster-Manager auf **Rollen** und dann auf Ihre Verfügbarkeitsgruppe.
+    a. Klicken Sie im Failovercluster-Manager auf **Rollen**, und klicken Sie dann auf die verfügbarkeitsgruppe.
 
-    b. Klicken Sie auf der Registerkarte **Ressourcen** unter **Sonstige Ressourcen** mit der rechten Maustaste auf die Verfügbarkeitsressourcengruppe, und klicken Sie dann auf **Eigenschaften**. 
+    b. Auf der **Ressourcen** Registerkarte **sonstige Ressourcen**mit der rechten Maustaste auf die verfügbarkeitsgruppe für die Ressource, und klicken Sie dann auf **Eigenschaften**. 
 
-    c. Fügen Sie auf der Registerkarte „Abhängigkeiten“ den Namen der Clientzugriffspunkt-Ressource (Listener) hinzu.
+    c. Fügen Sie auf der Registerkarte "Abhängigkeiten" den Namen der Ressource Client Access Point (Listener).
 
-   ![IP-Ressource](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
+   ![Die IP-Ressource](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
     d. Klicken Sie auf **OK**.
 
-5. <a name="listname"></a>Legen Sie fest, dass die Clientzugriffspunkt-Ressource von der IP-Adresse abhängig ist.
+5. <a name="listname"></a>Stellen Sie die Client Access Point Ressource abhängig von der IP-Adresse.
 
-    a. Klicken Sie im Failovercluster-Manager auf **Rollen** und dann auf Ihre Verfügbarkeitsgruppe. 
+    a. Klicken Sie im Failovercluster-Manager auf **Rollen**, und klicken Sie dann auf die verfügbarkeitsgruppe. 
 
-    b. Klicken Sie auf der Registerkarte **Ressourcen** unter **Servername** mit der rechten Maustaste auf den Clientzugriffspunkt, und klicken Sie dann auf **Eigenschaften**. 
+    b. Auf der **Ressourcen** Registerkarte der rechten Maustaste auf die Client Access Point-Ressource unter **Servernamen**, und klicken Sie dann auf **Eigenschaften**. 
 
-   ![IP-Ressource](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
+   ![Die IP-Ressource](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. Klicken Sie auf die Registerkarte **Abhängigkeiten** . Stellen Sie sicher, dass die IP-Adresse eine Abhängigkeit ist. Wenn dies nicht der Fall ist, legen Sie eine Abhängigkeit für die IP-Adresse fest. Wenn mehrere Ressourcen aufgeführt sind, überprüfen Sie, ob die IP-Adressen OR-Abhängigkeiten aufweisen (statt AND-Abhängigkeiten). Klicken Sie auf **OK**. 
+    c. Klicken Sie auf die **Abhängigkeiten** Registerkarte. Stellen Sie sicher, dass die IP-Adresse abhängig ist. Wenn es nicht der Fall ist, legen Sie eine Abhängigkeit auf die IP-Adresse. Wenn es mehrere Ressourcen aufgeführt sind, überprüfen Sie, ob die IP-Adressen OR, not AND-Abhängigkeiten. Klicken Sie auf **OK**. 
 
-   ![IP-Ressource](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
+   ![Die IP-Ressource](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
-    d. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie dann auf **Online schalten**. 
+    d. Maustaste auf den Listenernamen, und klicken Sie dann auf **Online schalten**. 
 
     >[!TIP]
-    >Sie können überprüfen, ob die Abhängigkeiten ordnungsgemäß konfiguriert sind. Wechseln Sie im Failovercluster-Manager zu „Rollen“, klicken Sie mit der rechten Maustaste auf die Verfügbarkeitsgruppe, klicken Sie auf **Weitere Aktionen**, und klicken Sie dann auf **Abhängigkeitsbericht anzeigen**. Wenn die Abhängigkeiten ordnungsgemäß konfiguriert sind, ist die Verfügbarkeitsgruppe vom Netzwerknamen und der Netzwerkname von der IP-Adresse abhängig. 
+    >Sie können überprüfen, dass die Abhängigkeiten ordnungsgemäß konfiguriert sind. Wechseln Sie im Failovercluster-Manager, Rollen, Maustaste auf die verfügbarkeitsgruppe, und klicken Sie auf **Weitere Aktionen**, und klicken Sie dann auf **Abhängigkeitsbericht**. Wenn die Abhängigkeiten ordnungsgemäß konfiguriert sind, die verfügbarkeitsgruppe ist abhängig von den Namen des Netzwerks und der Netzwerkname ist abhängig von der IP-Adresse. 
 
 
-6. <a name="setparam"></a>Legen Sie die Clusterparameter in PowerShell fest.
+6. <a name="setparam"></a>Legen Sie die Clusterparameter in PowerShell aus.
     
-    a. Kopieren Sie das folgende PowerShell-Skript in eine Ihrer SQL Server-Instanzen. Aktualisieren Sie die Variablen für Ihre Umgebung.     
+    a. Kopieren Sie das folgende PowerShell-Skript in einen der SQL Server-Instanzen. Aktualisieren Sie die Variablen für Ihre Umgebung.     
     
     ```PowerShell
     $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -86,7 +86,7 @@ Der Verfügbarkeitsgruppenlistener umfasst eine IP-Adresse und einen Netzwerknam
     Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
     ```
 
-    b. Legen Sie die Clusterparameter fest, indem Sie das PowerShell-Skript auf einem der Clusterknoten ausführen.  
+    b. Legen Sie die Clusterparameter, durch das PowerShell-Skript auf einem Clusterknoten ausgeführt wird.  
 
     > [!NOTE]
-    > Falls sich Ihre SQL Server-Instanzen in unterschiedlichen Regionen befinden, muss das PowerShell-Skript zweimal ausgeführt werden. Verwenden Sie beim ersten Mal die Elemente `$ILBIP` und `$ProbePort` der ersten Region. Verwenden Sie beim zweiten Mal die Elemente `$ILBIP` und `$ProbePort` der zweiten Region. Der Name des Clusternetzwerks und der Cluster-IP-Ressourcenname sind identisch. 
+    > Wenn die SQL Server-Instanzen in separate Bereiche befinden, müssen Sie das PowerShell-Skript zweimal ausführen. Das erste Mal verwenden die `$ILBIP` und `$ProbePort` aus dem ersten Bereich. Verwenden Sie das zweite Mal die `$ILBIP` und `$ProbePort` aus dem zweiten Bereich. Netzwerkname des Clusters und der Cluster-IP-Ressourcenname sind identisch. 

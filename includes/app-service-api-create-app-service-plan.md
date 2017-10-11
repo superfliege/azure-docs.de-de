@@ -1,14 +1,14 @@
-Erstellen Sie mit dem Befehl [az appservice plan create](/cli/azure/appservice/plan#create) einen App Service-Plan.
+Erstellen Sie einen App Service-Plan mit der [az Appservice-Plan erstellen](/cli/azure/appservice/plan#create) Befehl.
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 
-Im folgenden Beispiel wird ein App Service-Plan namens `myAppServicePlan` mit dem Tarif **Free** erstellt:
+Das folgende Beispiel erstellt einen App Service-Plan mit dem Namen `myAppServicePlan` in der **frei** Tarif:
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
 ```
 
-Nach Erstellung des App Service-Plans zeigt die Azure-Befehlszeilenschnittstelle Informationen wie im folgenden Beispiel an:
+Wenn die App Service-Plan erstellt wurde, zeigt der Azure-CLI Informationen ähnlich wie im folgenden Beispiel:
 
 ```json
 { 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 23f38693939ef0dc893ef77267811b176d3083d1
-ms.contentlocale: de-de
-ms.lasthandoff: 06/05/2017
-
+ms.openlocfilehash: 8c319d0dcbe8b95af11b8be2368a9348b260446c
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Speichern von Suchen und Anheften von Datenobjekten in Azure Data Catalog
 ## <a name="introduction"></a>Einführung
@@ -85,4 +84,3 @@ Die Startseite des Data Catalog-Portals enthält den Bereich **Meine Ressourcen*
 
 ## <a name="summary"></a>Zusammenfassung
 Azure Data Catalog bietet Funktionen, mit deren Hilfe Sie und andere Organisationsmitglieder die benötigten Datenquellen einfacher finden können, damit das Suchen nach Daten schneller erfolgt und mehr Zeit für das Arbeiten mit den Daten bleibt. Gespeicherte Suchvorgänge und angeheftete Datenobjekte funktionieren auf Grundlage dieser Funktionen, damit Benutzer häufig benötigte Datenquellen schnell bestimmen können.
-

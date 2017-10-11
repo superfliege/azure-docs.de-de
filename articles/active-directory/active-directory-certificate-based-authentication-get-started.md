@@ -13,12 +13,11 @@ ms.workload: identity
 ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 8ebc6f2dd7502fd75ffdd4d5d68338382cb1a46b
-ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory
 
@@ -223,5 +222,4 @@ Sie können ein EAS-Profil über eine MDM-Lösung (Mobile Device Management, mob
 
 1. Konfigurieren Sie ein EAS-Profil in der Anwendung, das die oben beschriebenen Anforderungen erfüllt.  
 2. Öffnen Sie die Anwendung, und stellen Sie sicher, dass die E-Mail synchronisiert wird. 
-
 

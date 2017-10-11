@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
 ms.openlocfilehash: a8835da0947ce2a365b57356960541cb997e73b3
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="microsoft-trust-center"></a>Microsoft Trust Center
 Die Website für Informationen zur Azure-Sicherheit auf „Azure.com“ enthält die Angaben, die Sie zum sicheren Planen, Entwerfen, Bereitstellen, Konfigurieren und Verwalten Ihrer Cloudlösungen benötigen. Im Microsoft Trust Center finden Sie darüber hinaus die Informationen, mit denen Sie sicherstellen können, dass die Azure-Plattform, auf der Sie Ihre Dienste ausführen, auch sicher ist.
@@ -39,9 +39,3 @@ Im Microsoft Trust Center finden Sie Folgendes:
 * [Ressourcen:](https://aka.ms/tcresources) Hier finden Sie Whitepapers, Videos und Fallstudien zur Vertrauenswürdigkeit der Microsoft Cloud.
 
 Im [Microsoft Trust Center](https://www.microsoft.com/trustcenter) finden Sie alle Informationen, die Sie benötigen, um zu verstehen, wie wir die Microsoft Cloud sichern.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-

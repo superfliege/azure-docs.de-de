@@ -1,5 +1,5 @@
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie mit Azure App Service beginnen, bevor Sie sich für ein Azure-Konto anmelden möchten, wechseln Sie zu [wiederholen Sie den Anwendungsdienst](https://azure.microsoft.com/try/app-service/), in dem Sie eine kurzlebige Starter-Web-app sofort im App-Dienst erstellen können. Keine Kreditkarten erforderlich; keine Verpflichtung.
 > 
 > 
 

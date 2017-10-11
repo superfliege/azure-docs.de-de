@@ -11,14 +11,12 @@ ms.service: logic-apps
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: LADocs; estfan
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 4d4c16860dbec10162797a13c8f9f57106abd17f
-ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Überwachen von Änderungen an einem virtuellen Computer mit Azure Event Grid und Logic Apps
 
 Wenn bestimmte Ereignisse in Azure- oder Drittanbieterressourcen auftreten, können Sie einen automatisierten [Logik-App-Workflow](../logic-apps/logic-apps-what-are-logic-apps.md) starten. Diese Ressourcen können derartige Ereignisse in einem [Azure-Ereignisraster](../event-grid/overview.md) veröffentlichen. Das Ereignisraster überträgt diese Ereignisse wiederum mithilfe von Push an Abonnenten, die als Endpunkte Warteschlangen, Webhooks, oder [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) aufweisen. Als Abonnent kann Ihre Logik-App auf diese Ereignisse vom Ereignisraster warten, bevor automatisierte Workflows zur Durchführung von Aufgaben ausgeführt werden – ohne dass Sie entsprechenden Code schreiben müssen.
@@ -51,7 +49,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Erstellen Sie zuerst eine Logik-App, und fügen Sie einen Ereignisrastertrigger hinzu, der die Ressourcengruppe für Ihren virtuellen Computer überwacht. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. 
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an. 
 
 2. Wählen Sie im Azure-Hauptmenü in der linken oberen Ecke **Neu** > **Unternehmensintegration** > **Logik-App**.
 

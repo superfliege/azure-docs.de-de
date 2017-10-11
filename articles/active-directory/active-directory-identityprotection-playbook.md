@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 77031b3bbe2372bf2cac34bac45368ac40911641
-ms.openlocfilehash: 87070d7680a6d48e94099b47f9dc336a75332f6c
-ms.contentlocale: de-de
-ms.lasthandoff: 12/28/2016
-
+ms.openlocfilehash: 2ecd07faed785fa6aa179ac1cca35a70d965e1dc
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection-Playbook
 Dieses Playbook hilft Ihnen:
@@ -53,8 +52,8 @@ Beim Risiko vom Typ „Unbekannter Standort“ handelt es sich um ein Verfahren 
 
 Azure Active Directory Identity Protection:  
 
-*  benötigt einen anfänglichen Lernzeitraum von 14 Tagen, in dem neue Standorte nicht als unbekannte Orte gekennzeichnet werden.
-*  ignoriert Anmeldungen von vertrauten Geräten und von Standorten aus, die geografisch nahe an einem vorhandenen bekannten Speicherort liegen.
+* benötigt einen anfänglichen Lernzeitraum von 14 Tagen, in dem neue Standorte nicht als unbekannte Orte gekennzeichnet werden.
+* ignoriert Anmeldungen von vertrauten Geräten und von Standorten aus, die geografisch nahe an einem vorhandenen bekannten Speicherort liegen.
 
 Um unbekannte Standorte zu simulieren, müssen Sie sich von einem Ort und mit einem Gerät anmelden, der bzw. das für das Konto noch nicht verwendet wurde. 
 
@@ -81,7 +80,7 @@ Das Simulieren des unmöglichen Ortswechsels ist schwierig, da der Algorithmus e
 5. Melden Sie sich unter [https://myapps.microsoft.com](https://myapps.microsoft.com) mit den gleichen Anmeldeinformationen wie vorher und innerhalb von wenigen Minuten nach der vorherigen Anmeldung an.
 
 Die Anmeldung wird im Identity Protection Dashboard innerhalb der nächsten 2 bis 4 Stunden angezeigt.<br>
-Aufgrund der beteiligten komplexen Machine Learning-Modelle ist es auch möglich, dass dieser Vorgang nicht erfasst wird.<br>  Eventuell möchten Sie, diese Schritte für mehrere Azure AD-Konten replizieren.
+Aufgrund der beteiligten komplexen Machine Learning-Modelle ist es auch möglich, dass dieser Vorgang nicht erfasst wird.<br> Eventuell möchten Sie, diese Schritte für mehrere Azure AD-Konten replizieren.
 
 ## <a name="simulating-vulnerabilities"></a>Simulieren von Sicherheitsrisiken
 Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem Angreifer ausgenutzt werden können. Derzeit werden in Azure AD Identity Protection drei Arten von Sicherheitsrisiken erfasst, für die andere Features von Azure AD genutzt werden. Diese Sicherheitsrisiken werden im Identity Protection Dashboard automatisch angezeigt, nachdem diese Features eingerichtet wurden.
@@ -120,7 +119,7 @@ Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem
 2. Navigieren Sie zu **Identity Protection**.
 3. Klicken Sie auf dem Hauptblatt von **Azure AD Identity Protection** auf **Einstellungen**. 
 4. Klicken Sie auf dem Blatt **Portaleinstellungen** unter **Sicherheitsregeln** auf **Anmelderisiko**.
-5. Wählen Sie auf dem Blatt **Anmelderisiko** unter **Regel aktivieren** die Option **Ein**. 
+5. Auf der ** Risiko anmelden ** Blatt select **auf** unter **Enable Rule**. 
 6. Wählen Sie eine der folgenden Optionen:
    
    a. Wählen Sie unter **Anmeldung blockieren** die Option **Mittel**, um die Blockierung durchzuführen.
@@ -137,5 +136,4 @@ Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem
 
 ## <a name="see-also"></a>Siehe auch
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
 

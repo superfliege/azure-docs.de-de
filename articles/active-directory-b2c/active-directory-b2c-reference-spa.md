@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: 44ff168599e9078506e1afdd0f1dc4657ef0964d
-ms.contentlocale: de-de
-ms.lasthandoff: 06/24/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Anmeldung über einseitige Apps mithilfe des impliziten OAuth 2.0-Flusses
 
@@ -104,9 +102,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | p |Erforderlich |Die auszuführende Richtlinie. Dies ist der Name einer Richtlinie, die in Ihrem Azure AD B2C-Mandanten erstellt wird. Der Wert für den Richtliniennamen muss mit **b2c\_1\_** beginnen. Weitere Informationen finden Sie unter [Integrierte Azure AD B2C-Richtlinien](active-directory-b2c-reference-policies.md). |
 | Eingabeaufforderung |Optional |Der Typ der erforderlichen Benutzerinteraktion. Derzeit ist `login` der einzige gültige Wert. Dadurch wird der Benutzer dazu gezwungen, die Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden wird nicht verwendet. |
 
-An diesem Punkt wird der Benutzer aufgefordert, den Workflow der Richtlinie abzuschließen. Dafür muss der Benutzer z.B. den Benutzernamen und das Kennwort angeben, sich mit der Identität eines sozialen Netzwerks anmelden, sich für das Verzeichnis registrieren oder andere Schritte ausführen. Benutzeraktionen hängen davon ab, wie die Richtlinie definiert ist.
+An diesem Punkt wird der Benutzer aufgefordert, den Workflow der Richtlinie durchzuführen. Dafür muss der Benutzer z.B. den Benutzernamen und das Kennwort angeben, sich mit der Identität eines sozialen Netzwerks anmelden, sich für das Verzeichnis registrieren oder andere Schritte ausführen. Die Benutzeraktionen hängen davon ab, wie die Richtlinie definiert ist.
 
-Nachdem der Benutzer die Richtlinie abgeschlossen hat, gibt Azure AD in Ihrer App unter dem für `redirect_uri` verwendeten Wert eine Antwort zurück. Hierzu wird die im Parameter `response_mode` angegebene Methode verwendet. Die Antwort ist in den oben aufgeführten Benutzeraktionsszenarios, unabhängig von der ausgeführten Richtlinie, immer gleich.
+Nachdem der Benutzer die Richtlinie abgeschlossen hat, gibt Azure AD an Ihre App unter dem für `redirect_uri` verwendeten Wert eine Antwort zurück. Hierzu wird die im Parameter `response_mode` angegebene Methode verwendet. Die Antwort ist in den oben aufgeführten Benutzeraktionsszenarios, unabhängig von der ausgeführten Richtlinie, immer gleich.
 
 ### <a name="successful-response"></a>Erfolgreiche Antwort
 Eine erfolgreiche Antwort mithilfe von `response_mode=fragment` und `response_type=id_token+token` sieht wie folgt aus, wobei die Zeilenumbrüche der Lesbarkeit dienen:
@@ -289,5 +287,4 @@ Führen Sie die folgenden drei Schritte aus, um diese Anforderungen selbst zu te
 
 * [Erstellen einer einseitigen App mithilfe von Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
 * [Erstellen einer einseitigen App mithilfe von .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
-
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: a74d767d57eb5ce2b3a716f9ba908a451f25f538
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="event-hubs-features-overview"></a>Event Hubs-Features im Überblick
 
 Azure Event Hubs ist ein skalierbarer Ereignisverarbeitungsdienst, der große Mengen von Ereignissen und Daten mit kurzer Wartezeit und hoher Zuverlässigkeit erfasst und verarbeitet. Unter [Was ist Event Hubs?](event-hubs-what-is-event-hubs.md) finden Sie einen allgemeinen Überblick über den Dienst.
@@ -54,7 +52,7 @@ Sie müssen Herausgebernamen nicht im Voraus erstellen, jedoch müssen diese mit
 
 ## <a name="capture"></a>Erfassen
 
-Mit [Event Hubs Capture](event-hubs-capture-overview.md) lassen sich die Streamingdaten automatisch in Event Hubs aufzeichnen und in einem Blob Storage-Konto oder einem Azure Data Lake-Dienstkonto speichern. Sie können Event Hubs Capture im Azure-Portal aktivieren und eine Mindestgröße sowie ein Mindestzeitfenster für die Aufzeichnung angeben. Mit Event Hubs Capture legen Sie zum Speichern der aufgezeichneten Daten ein eigenes Azure Blob Storage-Konto und einen Container bzw. ein Azure Data Lake-Dienstkonto fest. Die aufgezeichneten Daten werden im Apache Avro-Format geschrieben.
+[Event Hubs erfassen](event-hubs-capture-overview.md) können Sie automatisch das streaming von Daten in Event Hubs zu erfassen und speichern Sie sie in Ihrer Wahl ein Blob Storage-Konto oder ein Azure Data Lake-Dienstkonto. Sie können Event Hubs Capture im Azure-Portal aktivieren und eine Mindestgröße sowie ein Mindestzeitfenster für die Aufzeichnung angeben. Verwenden die Ereignis-Hubs erfassen, geben Sie Ihren eigenen Azure Blob Storage-Konto und der Container oder der Azure Data Lake-Service-Konto, die verwendet wird, um die aufgezeichneten Daten zu speichern. Die aufgezeichneten Daten werden im Apache Avro-Format geschrieben.
 
 ## <a name="partitions"></a>Partitionen
 
@@ -173,4 +171,3 @@ Weitere Informationen zu Event Hubs erhalten Sie unter den folgenden Links:
 
 [Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
 [Event Hubs-Beispiele]: https://github.com/Azure/azure-event-hubs/tree/master/samples
-

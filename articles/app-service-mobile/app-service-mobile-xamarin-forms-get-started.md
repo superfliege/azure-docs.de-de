@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: ee12caaad4095cff6dae3282f747ae804f93db81
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-a-xamarinforms-app"></a>Erstellen einer Xamarin.Forms-App
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -52,7 +51,7 @@ Gehen Sie wie folgt vor, um das Serverprojekt für die Verwendung des Node.js- o
 
 [!INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-xamarinforms-solution"></a>Herunterladen und Ausführen der Xamarin.Forms-Projektmappe
+## <a name="download-and-run-the-xamarinforms-solution"></a>Herunterladen und Ausführen der Xamarin.Forms-Lösung
 
 Die Projektmappe kann auf zwei Arten heruntergeladen werden. Sie können die Projektmappe entweder auf einen Mac herunterladen und in Xamarin Studio öffnen oder sie auf einen Windows-Computer herunterladen und in Visual Studio öffnen. Verwenden Sie in letzterem Fall einen vernetzten Mac zum Erstellen der iOS-App. Weitere Informationen finden Sie auf der Seite [Setup und Installation](https://msdn.microsoft.com/library/mt613162.aspx) für Visual Studio und Xamarin.
 
@@ -96,7 +95,7 @@ In diesem Abschnitt führen Sie das Xamarin iOS-Projekt für iOS-Geräte aus. We
 
     ![][10]
 
-    Dadurch wird eine post-Anforderung an das neue, in Azure gehostete Mobile Apps-Back-End gesendet. Daten von der Anforderung werden in die TodoItem-Tabelle eingefügt. In der Tabelle gespeicherte Einträge werden vom Mobile Apps-Back-End zurückgegeben, und die Daten werden in der Liste angezeigt.
+    Dadurch wird eine POST-Anforderung an das neue, in Azure gehostete Mobile Apps-Back-End gesendet. Daten von der Anforderung werden in die TodoItem-Tabelle eingefügt. In der Tabelle gespeicherte Einträge werden vom Mobile Apps-Back-End zurückgegeben, und die Daten werden in der Liste angezeigt.
 
     > [!NOTE]
     > Den Code, der auf Ihr Mobile Apps-Back-End zugreift, finden Sie in der C#-Datei „TodoItemManager.cs“ des Portable Class Library-Projekts Ihrer Projektmappe.
@@ -131,7 +130,7 @@ In diesem Abschnitt führen Sie das Xamarin-Droid-Projekt für Android aus. Wenn
 
     ![][11]
     
-    Dadurch wird eine post-Anforderung an das neue, in Azure gehostete Mobile Apps-Back-End gesendet. Daten von der Anforderung werden in die TodoItem-Tabelle eingefügt. In der Tabelle gespeicherte Einträge werden vom Mobile Apps-Back-End zurückgegeben, und die Daten werden in der Liste angezeigt.
+    Dadurch wird eine POST-Anforderung an das neue, in Azure gehostete Mobile Apps-Back-End gesendet. Daten von der Anforderung werden in die TodoItem-Tabelle eingefügt. In der Tabelle gespeicherte Einträge werden vom Mobile Apps-Back-End zurückgegeben, und die Daten werden in der Liste angezeigt.
     
     > [!NOTE]
     > Den Code, der auf Ihr Mobile Apps-Back-End zugreift, finden Sie in der C#-Datei „TodoItemManager.cs“ des Portable Class Library-Projekts Ihrer Projektmappe.
@@ -201,4 +200,3 @@ In diesem Abschnitt führen Sie das Xamarin-WinApp-Projekt für Windows-Geräte 
 [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure-Portal]: https://portal.azure.com/
-

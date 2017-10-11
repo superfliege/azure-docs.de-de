@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
 ms.openlocfilehash: b95bcb38664718bf25ec6981c803415790c6da3d
-ms.lasthandoff: 02/28/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-vm-with-multiple-nics-using-the-azure-cli-10"></a>Erstellen einer VM mit mehreren Netzwerkkarten mithilfe der Azure CLI 1.0
 
@@ -58,9 +57,9 @@ Die Back-End-VMs sind auf die Erstellung der folgenden Ressourcen angewiesen:
 * **Verfügbarkeitsgruppe**. Alle Datenbankserver werden einer einzigen Verfügbarkeitsgruppe hinzugefügt, damit sichergestellt ist, dass mindestens ein virtueller Computer während der Wartung ausgeführt wird.
 
 ### <a name="step-1---start-your-script"></a>Schritt 1: Starten des Skripts
-Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-cli.sh) herunterladen. Gehen Sie folgendermaßen vor, um das Skript an Ihre Arbeitsumgebung anzupassen.
+Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-cli.sh)herunterladen. Gehen Sie folgendermaßen vor, um das Skript an Ihre Arbeitsumgebung anzupassen.
 
-1. Ändern Sie die Werte der nachstehenden Variablen basierend auf der im obigen Abschnitt [Voraussetzungen](#Prerequisites) bereitgestellten Ressourcengruppe.
+1. Ändern Sie die Werte der nachstehenden Variablen basierend auf der im obigen Abschnitt [Voraussetzungen](#Prerequisites)bereitgestellten Ressourcengruppe.
 
     ```azurecli
     existingRGName="IaaSStory"
@@ -104,7 +103,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
    > Der erste Befehl oben verwendet [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) und die [Zeichenkettenmanipulation](http://tldp.org/LDP/abs/html/string-manipulation.html), insbesondere Substringentfernung.
    >
 
-4. Rufen Sie die ID für die `NSG-RemoteAccess`-NSG ab. Dieser Schritt ist erforderlich, da sich die mit dieser NSG verknüpften Netzwerkschnittstellenkarten in einer anderen Ressourcengruppe befinden.
+4. Rufen Sie die ID für die `NSG-RemoteAccess` -NSG ab. Dieser Schritt ist erforderlich, da sich die mit dieser NSG verknüpften Netzwerkschnittstellenkarten in einer anderen Ressourcengruppe befinden.
 
     ```azurecli
     nsgId="$(azure network nsg show --resource-group $existingRGName \
@@ -139,7 +138,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
 
 ### <a name="step-3---create-the-nics-and-back-end-vms"></a>Schritt 3: Erstellen der Netzwerkschnittstellenkarten und Back-End-VMs
 
-1. Erstellen Sie mithilfe einer Schleife mehrere virtuelle Computer auf Grundlage der `numberOfVMs`-Variablen.
+1. Erstellen Sie mithilfe einer Schleife mehrere virtuelle Computer auf Grundlage der `numberOfVMs` -Variablen.
 
     ```azurecli
     for ((suffixNumber=1;suffixNumber<=numberOfVMs;suffixNumber++));
@@ -159,7 +158,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
         --subnet-id $subnetId
     ```
 
-3. Erstellen Sie für jeden virtuellen Computer eine Netzwerkschnittstellenkarte für den Remotezugriff. Achten Sie auf den `--network-security-group`-Parameter, über den die NIC der NSG zugeordnet wird.
+3. Erstellen Sie für jeden virtuellen Computer eine Netzwerkschnittstellenkarte für den Remotezugriff. Achten Sie auf den `--network-security-group` -Parameter, über den die NIC der NSG zugeordnet wird.
 
     ```azurecli
     nic2Name=$nicNamePrefix$suffixNumber-RA
@@ -192,7 +191,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
         --admin-password $password
     ```
 
-5. Erstellen Sie für jeden virtuellen Computer zwei Datenträger, und beenden Sie die Schleife mit dem `done`-Befehl.
+5. Erstellen Sie für jeden virtuellen Computer zwei Datenträger, und beenden Sie die Schleife mit dem `done` -Befehl.
 
     ```azurecli
     azure vm disk attach-new --resource-group $backendRGName \
@@ -216,7 +215,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
 ### <a name="step-4---run-the-script"></a>Schritt 4: Ausführen des Skripts
 Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, um die Back-End-VMs mit mehreren Netzwerkkarten zu erstellen.
 
-1. Speichern Sie Ihr Skript, und führen Sie es im **Bash**-Terminal aus. Anfänglich wird die folgende Ausgabe angezeigt.
+1. Speichern Sie Ihr Skript, und führen Sie es im **Bash** -Terminal aus. Anfänglich wird die folgende Ausgabe angezeigt.
    
         info:    Executing command group create
         info:    Getting resource group IaaSStory-Backend
@@ -358,5 +357,4 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
         info:    New data disk location: https://wtestvnetstorageprm.blob.core.windows.net/vhds/datadisk2-2.vhd
         info:    Updating VM "DB2"
         info:    vm disk attach-new command OK
-
 

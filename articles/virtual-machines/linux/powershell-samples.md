@@ -1,6 +1,6 @@
 ---
-title: "Virtueller Azure-Computer – PowerShell-Beispiele | Microsoft-Dokumentation"
-description: "Virtueller Azure-Computer – PowerShell-Beispiele"
+title: Azure VM-PowerShell-Beispiele | Microsoft Docs
+description: Azure VM-PowerShell-Beispiele
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -15,25 +15,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 799a017a241ed3d37bb95344de7d50e1be7d559c
-ms.lasthandoff: 04/12/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="azure-virtual-machine-powershell-samples"></a>Virtueller Azure-Computer – PowerShell-Beispiele
+# <a name="azure-virtual-machine-powershell-samples"></a>Azure Virtual Machine-PowerShell-Beispiele
 
-Die folgende Tabelle enthält Links zu Beispielen von PowerShell-Skripts, die virtuelle Linux-Computer erstellen und verwalten.
+Die folgende Tabelle enthält Links zu Beispielen von PowerShell-Skripts, die erstellen und Verwalten von virtuellen Linux-Computern.
 
 | | |
 |---|---|
 |**Erstellen von virtuellen Computern**||
-| [Erstellen einer vollständig konfigurierten VM](./../scripts/virtual-machines-linux-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine Ressourcengruppe, einen virtuellen Computer und alle zugehörigen Ressourcen.|
-| [Erstellen eines virtuellen Computers mit Docker](./../scripts/virtual-machines-linux-powershell-sample-create-docker-host.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt einen virtuellen Computer, konfiguriert diesen virtuellen Computer als Docker-Host und führt einen NGINX-Container aus. |
-| [Erstellen einer VM und Ausführen eines Konfigurationsskripts](./../scripts/virtual-machines-linux-powershell-sample-create-vm-nginx.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt einen virtuellen Computer und verwendet die benutzerdefinierte Azure-Skripterweiterung zum Installieren von NGINX. |
-| [Erstellen eines virtuellen Computers mit WordPress](./../scripts/virtual-machines-linux-powershell-sample-create-vm-wordpress.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt einen virtuellen Computer und verwendet die benutzerdefinierte Azure-Skripterweiterung zum Installieren von WordPress. |
-|**Überwachen virtueller Computer**||
-| [Überwachen einer VM mit der Operations Management Suite](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt einen virtuellen Computer, installiert den OMS-Agent (Operations Management Suite) und registriert die VM in einem OMS-Arbeitsbereich.  |
+| [Erstellen Sie einen vollständig konfigurierten virtueller Computer](./../scripts/virtual-machines-linux-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine Ressourcengruppe, virtuelle Computer und alle zugehörigen Ressourcen.|
+| [Erstellen Sie einen virtuellen Computer mit Docker aktiviert](./../scripts/virtual-machines-linux-powershell-sample-create-docker-host.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Eine virtuelle Maschine erstellt, konfiguriert dieses virtuellen Computers als Docker-Host und einen NGINX-Container ausführt. |
+| [Einen virtuellen Computer erstellen und ausführen](./../scripts/virtual-machines-linux-powershell-sample-create-vm-nginx.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Eine virtuelle Maschine erstellt und verwendet die Azure benutzerdefinierte skripterweiterung NGINX zu installieren. |
+| [Erstellen Sie einen virtuellen Computer mit installierten WordPress](./../scripts/virtual-machines-linux-powershell-sample-create-vm-wordpress.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt einen virtuellen Computer, und Installieren von WordPress mithilfe der Azure Custom Script-Erweiterung. |
+|**Monitor-VMs**||
+| [Überwachen von einem virtuellen Computer mit Operations Management Suite](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Eine virtuelle Maschine erstellt, wird der Operations Management Suite-Agent installiert und registriert den virtuellen Computer in einem OMS-Arbeitsbereich.  |
 | | |
-

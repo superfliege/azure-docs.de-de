@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: DouglasL
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 33f23d324a843165d7fe6016ee626e369acfc958
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Alle Themen für den SQL Server Stretch-Datenbankdienst
 Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Server Stretch-Datenbankdienst** von Azure auf. Sie können auf dieser Webseite mit **STRG+F**nach Schlüsselwörtern suchen, um aktuell interessante Themen zu finden.
@@ -57,10 +57,4 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Server Stretch-Date
 | ---:|:--- |:--- |
 | 14 |[Sichern von Stretch-fähigen Datenbanken](sql-server-stretch-database-backup.md) |Erfahren Sie mehr über das Sichern von Stretch\-fähigen Datenbanken. |
 | 15 |[Wiederherstellen von Stretch-fähigen Datenbanken](sql-server-stretch-database-restore.md) |Erfahren Sie mehr über das Wiederherstellen von Stretch\-fähigen Datenbanken. |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

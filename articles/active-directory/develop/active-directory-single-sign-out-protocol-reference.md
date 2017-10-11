@@ -15,21 +15,20 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f48df694e6ac20a11f92faebeeec273745fbfaed
-ms.openlocfilehash: 7be96ed59a148f7c622551eaa66279a94e2c83f1
-ms.contentlocale: de-de
-ms.lasthandoff: 02/09/2017
-
+ms.openlocfilehash: 45e4705f53d80b5fe852c484b5e64d18a8e24f09
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="single-sign-out-saml-protocol"></a>SAML-Protokoll für einmaliges Abmelden
+# SAML-Protokoll für einmaliges Abmelden
 Azure Active Directory (Azure AD) unterstützt das SAML 2.0-Webbrowserprofil für einmaliges Abmelden. Damit die einmalige Abmeldung ordnungsgemäß funktioniert, muss die **LogoutURL** der Anwendung bei der Anwendungsregistrierung explizit in Azure AD registriert worden sein. Azure AD verwendet die LogoutURL zur Umleitung von Benutzern nach deren Abmeldung.
 
 In diesem Diagramm ist der Workflow des Azure AD-Prozesses für das einmalige Abmelden dargestellt.
 
 ![Workflow für einmaliges Abmelden](media/active-directory-single-sign-out-protocol-reference/active-directory-saml-single-sign-out-workflow.png)
 
-## <a name="logoutrequest"></a>LogoutRequest
+## LogoutRequest
 Der Clouddienst sendet eine `LogoutRequest` -Nachricht an Azure AD, um anzugeben, dass eine Sitzung beendet wurde. Der folgende Auszug enthält ein `LogoutRequest` -Beispielelement.
 
 ```
@@ -39,20 +38,20 @@ Der Clouddienst sendet eine `LogoutRequest` -Nachricht an Azure AD, um anzugeben
 </samlp:LogoutRequest>
 ```
 
-### <a name="logoutrequest"></a>LogoutRequest
+### LogoutRequest
 Für das an Azure AD gesendete `LogoutRequest` -Element sind die folgenden Attribute erforderlich:
 
 * `ID` : Dient zum Identifizieren der Abmeldeanforderung. Der Wert von `ID` darf nicht mit einer Zahl beginnen. Die übliche Vorgehensweise besteht darin, **id** an die Zeichenfolgendarstellung einer GUID anzufügen.
 * `Version` : Legen Sie den Wert dieses Elements auf **2.0**fest. Dieser Wert ist erforderlich.
 * `IssueInstant`: Eine `DateTime`-Zeichenfolge mit einem UTC-Wert (Coordinated Universal Time) und [Roundtrip-Format („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen Wert dieses Typs, aber der Wert wird nicht erzwungen.
 
-### <a name="issuer"></a>Issuer (Aussteller)
+### Issuer (Aussteller)
 Das `Issuer`-Element in einem `LogoutRequest`-Element muss mit einem der **ServicePrincipalNames**-Werte im Clouddienst von Azure AD exakt übereinstimmen. Normalerweise ist es auf den **App-ID-URI** festgelegt, der bei der Anwendungsregistrierung angegeben wird.
 
-### <a name="nameid"></a>NameID
+### NameID
 Der Wert des `NameID`-Elements muss genau mit `NameID` des Benutzers übereinstimmen, der abgemeldet wird.
 
-## <a name="logoutresponse"></a>LogoutResponse
+## LogoutResponse
 Azure AD sendet als Antwort auf ein `LogoutRequest`-Element ein `LogoutResponse`-Element. Der folgende Auszug enthält ein Beispiel für `LogoutResponse`.
 
 ```
@@ -64,13 +63,13 @@ Azure AD sendet als Antwort auf ein `LogoutRequest`-Element ein `LogoutResponse`
 </samlp:LogoutResponse>
 ```
 
-### <a name="logoutresponse"></a>LogoutResponse
+### LogoutResponse
 Azure AD legt die Werte `ID`, `Version` und `IssueInstant` im `LogoutResponse`-Element fest. Außerdem wird das `InResponseTo`-Element auf den Wert des `ID`-Attributs des `LogoutRequest`-Elements festgelegt, von dem die Antwort stammt.
 
-### <a name="issuer"></a>Issuer (Aussteller)
+### Issuer (Aussteller)
 Azure AD legt diesen Wert auf `https://login.microsoftonline.com/<TenantIdGUID>/` fest, wobei <TenantIdGUID> die Mandanten-ID des Azure AD-Mandanten ist.
 
 Verwenden Sie zum Auswerten des Werts für das `Issuer` -Element den Wert für **App-ID-URI** , der bei der Anwendungsregistrierung angegeben wurde.
 
-### <a name="status"></a>Status
+### Status
 Azure AD verwendet das `StatusCode`-Element im `Status`-Element, um anzugeben, ob die Abmeldung erfolgreich war. Wenn beim Abmelden ein Fehler auftritt, kann das `StatusCode` -Element auch benutzerdefinierte Fehlermeldungen enthalten.

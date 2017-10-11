@@ -2,21 +2,21 @@
 | Ressource | Standardlimit |
 | --- | --- |
 | Sammlungen pro Benutzer |1 |
-| Veröffentlichte Apps pro Sammlung |100 |
+| Veröffentlichte apps pro Sammlung |100 |
 | Kostenpflichtige Sammlungen |3 |
-| Kostenpflichtige Vorlagenimages |25 |
-| Benutzer – Basic-Tarif |Maximal 800 |
-| Benutzer – Standard-Tarif |Maximal 500 |
-| Benutzer – Premium-Tarif |Maximal 100 |
-| Benutzer – Premium Plus-Tarif |Maximal 50 |
-| Speicherung von Benutzerdaten pro Benutzer pro Sammlung |50 GB |
+| Kostenpflichtige vorlagenimages |25 |
+| Benutzer - Basisebene |Maximale 800 |
+| Benutzer - standard-Ebene |maximal 500 |
+| Benutzer-Premium-Ebene |maximal 100 |
+| Benutzer - plus Premium-Dienstebene |maximal 50 |
+| Benutzer-Datenspeicher (UPD) pro Benutzer pro Sammlung |50 GB |
 | Leerlauftimeout |4 Stunden |
-| Timeout nach Trennung |4 Stunden |
+| Nicht verbundene timeout |4 Stunden |
 
-Die Anzahl der Benutzer wird durch die Anzahl der für die Sammlung verwendeten virtuellen Computer bestimmt:
+Die Anzahl der Benutzer richtet sich nach der Anzahl der VMs für Ihre Sammlung verwendet:
 
-* Basic = 16 Benutzer pro VM
-* Standard = 10 Benutzer pro VM
-* Premium = 4 Benutzer pro VM
-* Premium Plus = 2 Benutzer pro VM
+* Grundlegende = 16 Benutzer pro virtueller Maschine
+* Standard = 10 Benutzer pro virtueller Maschine
+* Premium = 4 Users pro virtueller Maschine
+* Premium plus = 2 Benutzer pro virtueller Maschine
 

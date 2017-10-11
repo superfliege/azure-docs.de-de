@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo;ricksal
-ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
 ms.openlocfilehash: 35935e911f1f17989beb71978396c6d1b7d601d6
-ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="android-sdk-integration-for-azure-mobile-engagement"></a>Integration des Android SDK für Azure Mobile Engagement
 > [!div class="op_single_selector"]
@@ -61,12 +60,11 @@ Sie können die folgenden Funktionen hinzufügen:
 * Android 8-Unterstützung (frühere Versionen des SDK funktionieren nicht auf Android 8).
 * Keine Abhängigkeit von der Support-Bibliothek mehr.
 * Entfernen der `EngagementFragmentActivity`-Klasse.
-* Wegen der [Einschränkungen von Ausführungen im Hintergrund](https://developer.android.com/preview/features/background.html) auf Android 8 können Protokolle im Hintergrund verzögert werden, bis der Benutzer mit dem Gerät interagiert. Dies wirkt sich auf die Statistiken der Pushkampagnen **Delivered** (Übermittelt) und **System notification displayed** (Systembenachrichtigung angezeigt) aus, die verzögert werden, wenn sich das Gerät im Ruhezustand befindet (die Benachrichtigung wird dennoch angezeigt und löst in Echtzeit ohne Probleme ein Klingeln und Vibrieren aus).
+* Wegen der [Einschränkungen von Ausführungen im Hintergrund](https://developer.android.com/preview/features/background.html) auf Android 8 können Protokolle im Hintergrund verzögert werden, bis der Benutzer mit dem Gerät interagiert. Dies wirkt sich auf die Statistiken der Pushkampagnen **Delivered** (Übermittelt) und **System notification displayed** (Systembenachrichtigung angezeigt) aus, die verzögert werden, wenn sich das Gerät im Ruhezustand befindet (die Benachrichtigung wird dennoch angezeigt und in Echtzeit ohne Probleme klingeln und vibrieren).
 * Wegen der [Einschränkungen des Standorts im Hintergrund](https://developer.android.com/preview/features/background-location-limits.html) wird der Speicherort im Hintergrund auf Android 8 nicht in Echtzeit regelmäßig aktualisiert.
 
 Alle Versionen finden Sie unter [Vollständige Versionshinweise](mobile-engagement-android-release-notes.md).
 
 ## <a name="upgrade-procedures"></a>Upgrade-Verfahren
 Wenn Sie bereits eine ältere Version unseres SDK in die Anwendung integriert haben, finden Sie Informationen dazu in [Upgrade-Verfahren](mobile-engagement-android-upgrade-procedure.md).
-
 

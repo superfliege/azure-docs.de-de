@@ -1,6 +1,6 @@
 ---
 title: Hochladen von Dateien in ein Azure Media Services-Konto mithilfe von Aspera | Microsoft-Dokumentation
-description: "In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie in Azure mithilfe des Diensts **Aspera Server On Demand** Dateien in ein Speicherkonto hochladen, das einem Media Services-Konto zugeordnet ist."
+description: "Dieses Lernprogramm führt Sie durch die Schritte zum Hochladen von Dateien in ein Speicherkonto, das ein Media Services-Konto mit zugeordnet ist die ** Aspera Server auf Anforderung **-Dienst in Azure."
 services: media-services
 documentationcenter: 
 author: johndeu
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/17/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 86cb6a979d3aa429c0f501a5ebf37db4bff8ba99
-ms.contentlocale: de-de
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: e3090da9b2c5b8f99545a1f7f9601bfd8d5221f1
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Hochladen von Dateien in ein Media Services-Konto mithilfe des Diensts „Aspera Server On Demand“ in Azure
 
@@ -137,5 +136,4 @@ Jetzt können Sie [Blobs aus einem Speicherkonto in ein AMS-Konto kopieren](medi
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

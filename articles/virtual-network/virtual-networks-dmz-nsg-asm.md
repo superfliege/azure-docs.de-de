@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-translationtype: Human Translation
-ms.sourcegitcommit: cb2e480a45871ad0c956dc976de955ca48ecdfd0
 ms.openlocfilehash: ed172d552e1e4c9ee27c58abcd7ad2d98df21579
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>Beispiel 1 – Erstellen einer einfachen DMZ unter Verwendung von Netzwerksicherheitsgruppen mit klassischem PowerShell
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
@@ -138,9 +138,9 @@ Jede Regel wird im Folgenden detailliert beschrieben (**Hinweis:** Jedes Element
         Set-AzureNetworkSecurityRule -Name "Enable $VMName[1] to $VMName[2]" `
         -Type Inbound -Priority 130 -Action Allow `
         -SourceAddressPrefix $VMIP[1] -SourcePortRange '*' `
-         -DestinationAddressPrefix $VMIP[2] `
-         -DestinationPortRange '*' `
-         -Protocol *
+        -DestinationAddressPrefix $VMIP[2] `
+        -DestinationPortRange '*' `
+        -Protocol *
     ```
 
 6. Dies Regel lehnt Datenverkehr aus dem Internet an alle Server im Netzwerk ab. Mit den Regeln mit Priorität 110 und 120 wird nur eingehender Datenverkehr aus dem Internet an die Firewall- und RDP-Ports von Servern zugelassen, jeglicher anderer Datenverkehr wird blockiert. Diese Regel ist eine „Fail-safe“-Regel, die alle unerwarteten Datenflüsse blockiert.
@@ -589,10 +589,4 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
-
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

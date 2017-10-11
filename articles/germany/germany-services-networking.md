@@ -1,6 +1,6 @@
 ---
-title: Netzwerkdienste von Azure Deutschland | Microsoft-Dokumentation
-description: "Vergleich der Features sowie Anleitungen für private Anbindung mit Azure Deutschland"
+title: Azure Deutschland Netzwerkdienste | Microsoft Docs
+description: "Bietet einen Vergleich der Features und Richtlinien für private Verbindungen auf Azure-Deutschland"
 services: germany
 cloud: na
 documentationcenter: na
@@ -14,61 +14,58 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: dca424bd7f894ae3d3e343fde7fc13469ab62729
-ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
+# <a name="azure-germany-networking-services"></a>Azure Deutschland Netzwerkdienste
+## <a name="expressroute-private-connectivity"></a>ExpressRoute (private Verbindungen)
+Azure ExpressRoute ist im Allgemeinen in Azure Deutschland verfügbar. Weitere Informationen (einschließlich von Partnern und Speicherorte peering) finden Sie unter der [globale ExpressRoute-Dokumentation](../expressroute/index.md).
 
-# <a name="azure-germany-networking-services"></a>Netzwerkdienste von Azure Deutschland
-## <a name="expressroute-private-connectivity"></a>ExpressRoute (private Verbindung)
-Azure ExpressRoute ist in Azure Deutschland allgemein verfügbar. Weitere Informationen (u.a. zu Partnern und Peeringstandorten) finden Sie in der [globalen Dokumentation zu ExpressRoute](../expressroute/index.md).
+### <a name="variations"></a>Variationen
 
-### <a name="variations"></a>Abweichungen
+* Kunden von Azure Deutschland Verbinden mit einer physisch isoliertes Kapazität über eine dedizierte Azure Deutschland ExpressRoute-Verbindung.
+* Azure Deutschland bietet eine erhöhte Verfügbarkeit und Dauerhaftigkeit mit mehrere Paare von Region befindet sich mindestens 400 km auseinander. 
+* Standardmäßig alle Azure Deutschland ExpressRoute-Verbindung als aktiv / aktiv-redundante mit Unterstützung für die Erweiterung konfiguriert ist, und bietet bis zu 10G Circuit Kapazität.
+* Azure ExpressRoute Deutschland für Ortsangaben bereitstellen optimierte Pfade zur Verfügung (einschließlich kürzeste Hops, niedrige Latenz und hoher Leistung) für Kunden und geografisch redundanten Deutschland Azure-Regionen.
+* Die private Azure Deutschland ExpressRoute-Verbindung nicht, durchlaufen, oder richten sich nach dem Internet.
+* Die physische und logische Infrastruktur von Azure Deutschland wird physisch dediziert und aus dem internationalen Microsoft Cloud-Netzwerk getrennt.
+* Azure ExpressRoute für Deutschland enthält private Verbindungen in Microsoft Azure Cloud Services, aber nicht auf Office 365 oder Dynamics 365 Clouddienste.
 
-* Azure Deutschland-Kunden nutzen eine physisch isolierte Instanz über eine dedizierte Azure Deutschland ExpressRoute-Verbindung.
-* Azure Deutschland bietet hohe lokale Verfügbarkeit und Stabilität, indem mehrere Regionspaare genutzt werden, die mindestens 400 km voneinander entfernt sind. 
-* Die Azure Deutschland ExpressRoute-Anbindung wird standardmäßig aktiv/aktiv-redundant und mit Unterstützung für Bursting und einer Übertragungsrate von bis zu 10 GBit/s bereitgestellt.
-* Azure Deutschland ExpressRoute-Standorte bieten optimierte Pfade (u.a. kürzeste Hops, niedrige Latenz und hohe Bandbreite) für Kunden und georedundante Azure Deutschland-Regionen.
-* Weder nutzt die private Verbindung von Azure Deutschland ExpressRoute das Internet, noch ist sie darauf angewiesen.
-* Die physische und logische Infrastruktur von Azure Deutschland ist physisch dediziert und vom internationalen Microsoft-Cloudnetzwerk getrennt.
-* Azure Deutschland ExpressRoute stellt private Verbindungen zu Microsoft Azure Cloud Services bereit, jedoch nicht zu Office 365- oder Dynamics 365-Clouddiensten.
+### <a name="considerations"></a>Weitere Überlegungen
+Zwei grundlegende Dienste stellen Sie die VPN-Konnektivität Azure Deutschland: ExpressRoute und ein VPN (Site-to-Site für eine typische Organisation).
 
-### <a name="considerations"></a>Überlegungen
-Es gibt zwei grundlegende Dienste, die private Netzwerkverbindungen für Azure Deutschland bereitstellen: ExpressRoute und VPN (in der Regel ein Site-to-Site-VPN).
+Sie können ExpressRoute zum Erstellen privater Verbindungen zwischen Azure-Deutschland-Datencentern und Ihrer lokalen Infrastruktur oder in einer Colocation-Umgebung verwenden. ExpressRoute-Verbindungen gehen Sie nicht über das öffentliche Internet. Sie bieten mehr Zuverlässigkeit, schnellere Geschwindigkeiten und geringere Wartezeiten als normale Internet-Verbindungen. In einigen Fällen verwenden ExpressRoute-Verbindungen zum Übertragen von Daten zwischen lokalen und Azure ergibt, die erhebliche Kosten Vorteile.   
 
-Mit ExpressRoute können Sie private Verbindungen zu den Azure Deutschland-Rechenzentren und Ihrer lokalen Infrastruktur oder einer Housingumgebung herstellen. ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet. Sie bieten mehr Zuverlässigkeit, höhere Geschwindigkeiten und niedrigere Latenzen als konventionelle Internetverbindungen. In bestimmten Fällen lassen sich durch die Verwendung von ExpressRoute-Verbindungen zum Übertragen von Daten zwischen lokalen Systemen und Azure erhebliche Kosteneinsparungen erzielen.   
+Mit ExpressRoute können einrichten Sie Verbindungen mit Azure an ExpressRoute-Standorten, z. B. eine ExpressRoute-Exchange-Anbieterstandort. Oder Sie direkt eine Verbindung herstellen mit Azure aus Ihrem vorhandenen WAN wie z. B. ein Multiprotokoll bezeichnen switching (MPLS)-VPN, die von einem Netzwerkdienstanbieter bereitgestellt wird.
 
-Mit ExpressRoute stellen Sie an einem ExpressRoute-Standort, z.B. einer Einrichtung eines ExpressRoute-Exchange-Anbieters, Verbindungen mit Azure Deutschland her. Alternativ stellen Sie direkt aus Ihrem vorhandenen WAN eine Verbindung mit Azure Deutschland her, z.B. ein MPLS-VPN (Multi-Protocol Label Switching), das von einem Netzwerkdienstanbieter bereitgestellt wird.
+Netzwerkdienste, Lösungen und Azure Deutschland kundenanwendungen zu unterstützen wird dringend empfohlen, dass Sie ExpressRoute (private Connectivity) zur Verbindung mit Azure Deutschland implementieren. Wenn Sie VPN-Verbindungen verwenden, beachten Sie Folgendes:
 
-Damit Netzwerkdienste Azure Deutschland-Kundenanwendungen und -lösungen unterstützen, wird dringend empfohlen, die private ExpressRoute-Anbindung für Verbindungen mit Azure Deutschland zu implementieren. Wenn Sie VPN-Verbindungen verwenden, beachten Sie Folgendes:
+* Wenden Sie sich an Ihre autorisieren offiziellen/Versender zu bestimmen, ob Sie private Verbindungen oder einen anderen Mechanismus für die sichere Verbindung benötigen und keine zusätzlichen Einschränkungen zu erkennen.
+* Entscheiden Sie, ob festlegen, dass der Standort-zu-Standort-VPN über eine private Verbindungen Zone weitergeleitet wird.
+* Rufen Sie eine MPLS-Verbindung oder ein VPN mit einer lizenzierten privaten Zugriff Verbindungsanbieter an.
 
-* Wenden Sie sich an die zuständige Person oder Stelle in Ihrem Unternehmen, um herauszufinden, ob Sie eine private Anbindung oder einen anderen sicheren Verbindungsmechanismus benötigen, und weitere mögliche Beschränkungen zu identifizieren.
-* Entscheiden Sie, ob z.B. das Site-to-Site-VPN über eine Zone für private Verbindungen weitergeleitet werden soll.
-* Bestellen Sie bei einem zugelassenen Netzwerkanbieter eine MPLS-Verbindung oder ein VPN.
+Wenn Sie eine private Verbindungen-Architektur verwenden, überprüfen Sie, dass eine geeignete Implementierung eingerichtet und werden, für die Verbindung zum Gateway Netzwerk/Internet verwaltet (GN / I) edge Router Abgrenzung Punkt für Azure-Deutschland. Auf ähnliche Weise muss Ihre Organisation-Netzwerkkonnektivität zwischen Ihrer lokalen Umgebung und Gateway Netzwerk/Kundennummer (GN/C) Edge Router Abgrenzung Punkt für Deutschland Azure herstellen.
 
-Wenn Sie eine Architektur mit privaten Verbindungen nutzen, überprüfen Sie, ob die Anbindung an den Demarkationspunkt zum GN/I-Edgerouter-Demarkationspunkt (Gateway Network/Internet) für Azure Deutschland wie erforderlich implementiert wurde und gewartet wird. Dementsprechend muss Ihre Organisation die Netzwerkverbindung zwischen Ihrer lokalen Umgebung und dem GN/C-Edgerouter-Demarkationspunkt (Gateway Network/Customer) für Azure Deutschland einrichten.
+Wenn Sie mit Microsoft über ExpressRoute auf jedem peering Speicherort in Azure (Deutschland)-Region herstellen, müssen Sie den Zugriff auf alle Microsoft Azure-Cloud-Dienste in allen Regionen innerhalb der Begrenzung des Deutsch. Z. B. Wenn Sie an Microsoft in Berlin über ExpressRoute eine Verbindung herstellen, haben Sie Zugriff auf alle Microsoft-Cloud-Dienste, die in Deutschland von Azure gehostet.
 
-Wenn Sie an einem Peeringstandort innerhalb der Azure Deutschland-Region per ExpressRoute eine Verbindung mit Microsoft herstellen, haben Sie Zugriff auf sämtliche Microsoft Azure-Clouddienste in allen Regionen innerhalb der deutschen Grenzen. Wenn Sie beispielsweise in Berlin per ExpressRoute eine Verbindung mit Microsoft Azure Deutschland herstellen, haben Sie Zugriff auf alle Microsoft-Clouddienste, die in Azure Deutschland gehostet werden.
+Ausführliche Informationen zu Speicherorten Partnern und eine detaillierte Liste der ExpressRoute für Azure Deutschland peering Speicherorte, finden Sie unter der **Übersicht über** Registerkarte die [globale ExpressRoute-Dokumentation](../expressroute/index.md).
 
-Ausführliche Informationen zu Standorten und Partnern sowie eine detaillierte Liste mit ExpressRoute-Peeringstandorten für Azure Deutschland finden Sie auf der Registerkarte **Übersicht** in der [globalen Dokumentation zu ExpressRoute](../expressroute/index.md).
+Sie können mehrere ExpressRoute-Leitung erwerben. Mehrere Verbindungen bietet erhebliche Vorteile für hohe Verfügbarkeit aufgrund Geo-Redundanz. In Fällen, in denen mehrere ExpressRoute-Verbindungen haben, erhalten Sie den gleichen Satz von Präfixen, die von Microsoft auf die public peering Pfade angekündigt. Dies bedeutet, dass mehrere Pfade zwischen Ihrem Netzwerk müssen Sie die Microsoft. Diese Situation kann dazu führen, nicht optimalen Routingentscheidungen in Ihrem Netzwerk vorgenommen werden. Daher möglicherweise nicht optimal Konnektivität Erfahrungen mit anderen Diensten angezeigt. Weitere Informationen finden Sie unter der **Einstieg in die** Registerkarte der [globale ExpressRoute-Dokumentation](../expressroute/index.md) , und wählen Sie **optimieren routing**.
 
-Sie können mehrere ExpressRoute-Verbindungen erwerben. Wenn Sie über mehrere Verbindungen verfügen, ergeben sich für Sie aufgrund der Georedundanz daraus erhebliche Vorteile in Bezug auf hohe Verfügbarkeit. Bei Verwendung mehrerer ExpressRoute-Verbindungen erhalten Sie dieselben Präfixe, die von Microsoft für die öffentlichen Peeringpfade bekannt gegeben werden. Dies bedeutet, dass Sie mehrere Pfade aus dem Netzwerk zu Microsoft nutzen können. Diese Situation kann unter Umständen dazu führen, dass in Ihrem Netzwerk suboptimale Routingentscheidungen getroffen werden. Daraus können sich für verschiedene Dienste suboptimale Konnektivitätsleistungen ergeben. Um weitere Informationen zu erhalten, wechseln Sie in der **globalen Dokumentation zu ExpressRoute** zur Registerkarte [Erste Schritte](../expressroute/index.md) und wählen **Routing optimieren**.
+## <a name="support-for-load-balancer"></a>Unterstützung für den Lastenausgleich
+Azure-Lastenausgleich ist in der Regel in Azure Deutschland verfügbar. Weitere Informationen finden Sie unter der [Dokumentation für den Load Balancer globalen](../load-balancer/load-balancer-overview.md). 
 
-## <a name="support-for-load-balancer"></a>Load Balancer-Unterstützung
-Azure Load Balancer ist in Azure Deutschland allgemein verfügbar. Weitere Informationen finden Sie in der [globalen Dokumentation zu Load Balancer](../load-balancer/load-balancer-overview.md). 
+## <a name="support-for-traffic-manager"></a>Unterstützung für Traffic Manager
+Azure Traffic Manager steht in der Regel in Azure Deutschland. Weitere Informationen finden Sie unter der [global Traffic Manager-Dokumentation](../traffic-manager/traffic-manager-overview.md). 
 
-## <a name="support-for-traffic-manager"></a>Unterstützung für den Traffic Manager
-Der Azure Traffic Manager ist in Azure Deutschland allgemein verfügbar. Weitere Informationen finden Sie in der [globalen Dokumentation zu Traffic Manager](../traffic-manager/traffic-manager-overview.md). 
+## <a name="support-for-virtual-network-peering"></a>Unterstützung für das virtuelle Netzwerk peering 
+Virtuelles Netzwerk peering ist im Allgemeinen in Azure Deutschland verfügbar. Weitere Informationen finden Sie unter der [virtuellen Netzwerk peering Dokumentation für den globalen](../virtual-network/virtual-network-peering-overview.md). 
 
-## <a name="support-for-virtual-network-peering"></a>Unterstützung für das Peering virtueller Netzwerke 
-Das Peering von virtuellen Netzwerken ist in Azure Deutschland allgemein verfügbar. Weitere Informationen finden Sie in der [globalen Dokumentation zum Peering von virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md). 
-
-## <a name="support-for-vpn-gateway"></a>VPN Gateway-Unterstützung 
-Azure VPN Gateway ist in Azure Deutschland allgemein verfügbar. Weitere Informationen finden Sie in der [globalen Dokumentation zu VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md). 
+## <a name="support-for-vpn-gateway"></a>Unterstützung für VPN-Gateway 
+Azure-VPN-Gateway ist im Allgemeinen in Azure Deutschland verfügbar. Weitere Informationen finden Sie unter der [Dokumentation für VPN-Gateway den globalen](../vpn-gateway/vpn-gateway-about-vpngateways.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
-
+Zusätzliche Informationen und Updates, abonnieren Sie die [Deutschland Azure Blog](https://blogs.msdn.microsoft.com/azuregermany/).

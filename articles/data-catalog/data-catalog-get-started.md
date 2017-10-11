@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/03/2017
 ms.author: spelluru
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 5a3445aee7722579405b67830ca49ef8c0b29d0e
-ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Erste Schritte mit Azure Data Catalog
 Azure Data Catalog ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenassets von Unternehmen dient. Eine ausführliche Übersicht finden Sie unter [Was ist Azure Data Catalog?](data-catalog-what-is-data-catalog.md).
@@ -363,5 +362,4 @@ In diesem Tutorial haben Sie wichtige Funktionen von Azure Data Catalog kennen g
 * [Dokumentieren von Datenassets](data-catalog-how-to-documentation.md)
 * [Herstellen einer Verbindung mit Datenassets](data-catalog-how-to-connect.md)
 * [Verwalten von Datenassets](data-catalog-how-to-manage.md)
-
 

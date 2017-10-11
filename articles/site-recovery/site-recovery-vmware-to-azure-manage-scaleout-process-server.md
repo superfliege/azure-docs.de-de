@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: e5c01de19917235c34c035415df86291b9152bf0
-ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="manage-a-scale-out-process-server"></a>Verwalten eines Prozessservers für horizontales Hochskalieren
 
 Der Prozessserver für horizontales Hochskalieren fungiert als Koordinator für die Datenübertragung zwischen den Site Recovery-Diensten und Ihrer lokalen Infrastruktur. In diesem Artikel wird beschrieben, wie Sie einen Prozessserver für horizontales Hochskalieren einrichten, konfigurieren und verwalten können.
@@ -148,4 +146,3 @@ Es kann bis zu 15 Minuten dauern, bis die Löschung des Prozessservers im Azure-
 |4 vCPUs (2 Sockets * 2 Kerne mit 2,5GHz), 8GB Arbeitsspeicher |300 GB |250 GB oder weniger |Bis zu 85 Computer replizieren. |
 |8 vCPUs (2 Sockets * 4 Kerne mit 2,5GHz), 12GB Arbeitsspeicher |600 GB |250 GB bis 1 TB |Zwischen 85 und 150 Computer replizieren. |
 |12 vCPUs (2 Sockets * 6 Kerne mit 2,5GHz), 24GB Arbeitsspeicher |1 TB |1 TB bis 2 TB |Zwischen 150 und 225 Computer replizieren. |
-

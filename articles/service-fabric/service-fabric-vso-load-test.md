@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/18/2016
 ms.author: cawa
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: e8e270ce865d4da3ee219958b308db2c1c89b11b
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="load-test-your-application-by-using-visual-studio-team-services"></a>Durchführen von Auslastungstests für Anwendungen mithilfe von Visual Studio Team Services
 In diesem Artikel wird erläutert, wie Sie die Microsoft Visual Studio-Funktionen für Auslastungstests verwenden, um Belastungstests für eine Anwendung durchzuführen. Es wird ein Azure Service Fabric-Back-End für zustandsbehaftete Dienste und ein Web-Front-End für zustandslose Dienste verwendet. Bei der hier verwendeten Beispielanwendung handelt es sich um einen Standortsimulator für Flugzeuge. Sie geben Flugzeugkennung, Abflugzeit und Flugziel an. Das Back-End der Anwendung verarbeitet die Anforderungen, und das Front-End zeigt auf einer Karte das Flugzeug an, das die Kriterien erfüllt.
@@ -125,9 +125,3 @@ Visual Studio Team Services-Auslastungstests stellen APIs bereit, die Sie in ein
 [7]: ./media/service-fabric-vso-load-test/RunTest.png
 [8]: ./media/service-fabric-vso-load-test/RunTest2.png
 [9]: ./media/service-fabric-vso-load-test/Graph.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-

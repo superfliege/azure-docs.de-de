@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: d421cee0becabdf81d865036d0c98b12b077152b
-ms.lasthandoff: 03/27/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="about-images-for-windows-virtual-machines"></a>Informationen zu Images für virtuelle Windows-Computer
 > [!IMPORTANT]
@@ -36,7 +35,7 @@ Hier sind einige Beispiele, bei denen das Azure PowerShell-Modul verwendet wird.
 
 * **Abrufen aller Images:** `Get-AzureVMImage` gibt eine Liste aller in Ihrem aktuellen Abonnement verfügbaren Images zurück, und zwar sowohl Ihrer eigenen Images als auch der von Azure oder Partnern bereitgestellten Images. Die Ergebnisliste kann sehr groß sein. Die nächsten Beispiele zeigen, wie eine kürzere Liste abgerufen wird.
 * **Abrufen von Imagefamilien**: `Get-AzureVMImage | select ImageFamily` ruft eine Liste der Imagefamilien ab, indem Zeichenfolgen mit der **ImageFamily**-Eigenschaft angezeigt werden.
-* **Abrufen aller Images in einer bestimmten Familie**: `Get-AzureVMImage | Where-Object {$_.ImageFamily -eq $family}`
+* **Abrufen aller Images in einer bestimmten Familie** : `Get-AzureVMImage | Where-Object {$_.ImageFamily -eq $family}`
 * **Suchen nach VM-Images:** `Get-AzureVMImage | where {(gm –InputObject $_ -Name DataDiskConfigurations) -ne $null} | Select -Property Label, ImageName`. Dieses Cmdlet filtert nach der DataDiskConfiguration-Eigenschaft, die nur für VM-Images gilt. Bei diesem Beispiel wird die Ausgabe auch nur nach der Bezeichnung und dem Namen des Images gefiltert.
 * **Speichern eines generalisierten Images**: `Save-AzureVMImage –ServiceName "myServiceName" –Name "MyVMtoCapture" –OSState "Generalized" –ImageName "MyVmImage" –ImageLabel "This is my generalized image"`
 * **Speichern eines spezialisierten Images**: `Save-AzureVMImage –ServiceName "mySvc2" –Name "MyVMToCapture2" –ImageName "myFirstVMImageSP" –OSState "Specialized" -Verbose`
@@ -48,4 +47,3 @@ Hier sind einige Beispiele, bei denen das Azure PowerShell-Modul verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können auch [einen Windows-Computer mit dem Azure-Portal erstellen](tutorial.md).
-

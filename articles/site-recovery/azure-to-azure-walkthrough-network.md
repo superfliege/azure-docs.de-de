@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/01/2017
 ms.author: sujayt
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: 7b37e853f6b97ba313111f9201f877846a28fae9
-ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="step-3-plan-networking-for-azure-vm-replication"></a>Schritt 3: Planen des Netzwerks für die Replikation von Azure-VMs
 
@@ -153,5 +152,4 @@ Wenn eine ExpressRoute- oder VPN-Verbindung zwischen Ihrem lokalen Standort und 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Gehen Sie zu [Schritt 4: Erstellen eines Tresors](azure-to-azure-walkthrough-vault.md).
-
 

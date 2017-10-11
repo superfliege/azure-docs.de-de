@@ -14,13 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/16/2017
 ms.author: vidarmsft
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 9691408bcd80afb6eba534f26749b76dd3bfe315
-ms.lasthandoff: 03/21/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="use-azure-automation-to-trigger-a-job-private-preview"></a>Verwenden von Azure Automation, um einen Auftrag auszulösen (private Vorschau)
 
 In diesem Artikel wird beschrieben, wie Azure Automation verwendet werden kann, um einen StorSimple Data Manager-Auftrag auszulösen.
@@ -29,12 +28,12 @@ In diesem Artikel wird beschrieben, wie Azure Automation verwendet werden kann, 
 
 Bevor Sie beginnen stellen Sie sicher, dass Sie über Folgendes verfügen:
 
-*    Azure PowerShell ist installiert. [Azure PowerShell herunterladen](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-*    Konfigurationseinstellungen für das Initiieren des Datentransformationsauftrags (in diesem Dokument finden Sie Anweisungen, wie Sie diese Einstellungen erhalten).
-*    Eine Auftragsdefinition, die korrekt in einer Ressource für Hybriddaten innerhalb einer Ressourcengruppe konfiguriert wurde.
-*    Laden Sie die [zip](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip)-Datei `DataTransformationApp.zip` aus dem GitHub-Repository herunter.
-*    Laden Sie die [Skript](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Get-ConfigurationParams.ps1)-Datei `Get-ConfigurationParams.ps1` aus dem GitHub-Repository herunter.
-*    Laden Sie die [Skript](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1)-Datei `Trigger-DataTransformation-Job.ps1` aus dem GitHub-Repository herunter.
+*   Azure PowerShell ist installiert. [Azure PowerShell herunterladen](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+*   Konfigurationseinstellungen für das Initiieren des Datentransformationsauftrags (in diesem Dokument finden Sie Anweisungen, wie Sie diese Einstellungen erhalten).
+*   Eine Auftragsdefinition, die korrekt in einer Ressource für Hybriddaten innerhalb einer Ressourcengruppe konfiguriert wurde.
+*   Laden Sie die [zip](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip)-Datei `DataTransformationApp.zip` aus dem GitHub-Repository herunter.
+*   Laden Sie die [Skript](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Get-ConfigurationParams.ps1)-Datei `Get-ConfigurationParams.ps1` aus dem GitHub-Repository herunter.
+*   Laden Sie die [Skript](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1)-Datei `Trigger-DataTransformation-Job.ps1` aus dem GitHub-Repository herunter.
 
 ## <a name="step-by-step"></a>Schrittweise Anleitung
 

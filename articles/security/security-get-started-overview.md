@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 1303815755584e912891d501018b257b96e5f063
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-security-overview"></a>Azure-Sicherheitsübersicht
 Auf der Microsoft-Website für Informationen zur Azure-Sicherheit auf Azure.com finden Sie technische Antworten auf Ihre Fragen zur Azure-Sicherheit. Informationen zur Compliance von Azure und zur eigenständigen Sicherung der Azure-Infrastruktur finden Sie im [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).
@@ -53,4 +51,3 @@ Die Website für Informationen zur Azure-Sicherheit umfasst derzeit die folgende
 >
 
 Wir freuen uns über Ihr Feedback! Wenn weitere Kategorien hinzugefügt werden sollen, lassen Sie es uns wissen! Teilen Sie uns auch mit, wenn Artikel in einer vorhandenen Kategorie hinzugefügt werden sollen. Dazu können Sie den Bereich „Kommentare“ unten verwenden oder uns unter [azsecinfosite@microsoft.com](mailto:azsecinfosite@microsoft.com) eine E-Mail schreiben. Wir werden Ihre Vorschläge dann in unsere Planung aufnehmen.
-

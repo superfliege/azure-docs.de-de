@@ -15,12 +15,11 @@ ms.date: 06/23/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: e9b8504d4a59cf0fae69a4e975d6f834028066d5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Verwalten von Benutzereinstellungen mit Azure Multi-Factor Authentication (MFA) in der Cloud
 Als Administrator können Sie die folgenden Einstellungen für Benutzer und Geräte verwalten:
@@ -80,4 +79,3 @@ Die Einstellung **Mehrstufige Authentifizierung für alle gespeicherten Geräte 
 - Erfahren Sie mehr über das [Konfigurieren der Einstellungen von Azure Multi-Factor Authentication](multi-factor-authentication-whats-next.md).
 
 - Wenn Ihre Benutzer Hilfe benötigen, verweisen Sie sie auf das [Benutzerhandbuch für die Überprüfung in zwei Schritten](./end-user/multi-factor-authentication-end-user.md).
-

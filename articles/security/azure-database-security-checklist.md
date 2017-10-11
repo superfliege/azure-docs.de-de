@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 5047635555a6b4592c0714677c2b942e50bad344
-ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="azure-database-security-checklist"></a>Checkliste für die Sicherheit der Azure-Datenbank
 
 Um die Sicherheit zu verbessern, umfasst die Azure-Datenbank eine Reihe von integrierten Sicherheitsfunktionen, mit denen Sie den Zugriff begrenzen und kontrollieren können.
@@ -57,7 +55,7 @@ Es wird empfohlen, den Artikel [Azure Database Security Best Practices (Bewährt
 |<br>Azure Security Center| <ul><li>Die [Überwachung der Daten](https://docs.microsoft.com/en-us/azure/security-center/security-center-enable-auditing-on-sql-databases) verwendet Azure Security Center als eine zentralisierte Sicherheitsüberwachungslösung für SQL und anderen Azure-Dienste.</li></ul>|     
 
 ## <a name="conclusion"></a>Zusammenfassung
-Die Azure-Datenbank ist eine robuste Datenbankplattform mit einem vollständigen Umfang an Sicherheitsfunktionen, die viele Anforderungen des Unternehmens sowie behördliche Vorschriften erfüllen. Sie können Daten problemlos schützen, indem Sie den physischen Zugriff auf Ihre Daten steuern und eine Vielzahl von Optionen für die Datensicherheit auf der Datei-, Spalten- oder Zeilenebene mit Transparent Data Encryption, der Verschlüsselung auf Zellenebene oder Sicherheit auf Zeilenebene verwenden. Always Encrypted kann auch Vorgänge für verschlüsselte Daten vereinfachen, da der Prozess der Anwendungsaktualisierungen vereinfacht wird. Andererseits gibt Ihnen der Zugriff auf Überwachungsprotokolle der SQL-Datenbankaktivität Informationen, sodass Sie wissen, wie und wann auf die Daten zugegriffen wird.
+Die Azure-Datenbank ist eine robuste Datenbankplattform mit einem vollständigen Umfang an Sicherheitsfunktionen, die viele Anforderungen des Unternehmens sowie behördliche Vorschriften erfüllen. Sie können Daten problemlos schützen, indem Sie den physischen Zugriff auf Ihre Daten steuern und eine Vielzahl von Optionen für die Datensicherheit auf der Datei-, Spalten- oder Zeilenebene mit Transparent Data Encryption, der Verschlüsselung auf Zellenebene oder Sicherheit auf Zeilenebene verwenden. Always Encrypted kann auch Vorgänge für verschlüsselte Daten vereinfachen, da der Prozess der Anwendungsaktualisierungen vereinfacht wird. Durch den Zugriff auf Überwachungsprotokolle der SQL-Datenbankaktivität erhalten sie zudem Informationen dazu, wie und wann auf die Daten zugegriffen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können den Schutz Ihrer Datenbank vor schädlichen Benutzern oder nicht autorisiertem Zugriff mit wenigen einfachen Schritten verbessern. In diesem Tutorial lernen Sie Folgendes:
@@ -65,5 +63,4 @@ Sie können den Schutz Ihrer Datenbank vor schädlichen Benutzern oder nicht aut
 - Einrichten von [Firewallregeln](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-configure) für den Server oder die Datenbank.
 - Schützen von Daten durch [Verschlüsselung](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/sql-server-encryption).
 - Aktivieren der [SQL-Datenbanküberwachung](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing).
-
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d8f6da61b02a1289be0fa3444fd4dcfbe487068f
-
-
+ms.openlocfilehash: 0659ab9d304dbfcce72e8c3c79edad68e70b9630
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-device"></a>Austauschen eines Festplattenlaufwerks im StorSimple-Gerät
 ## <a name="overview"></a>Übersicht
@@ -55,7 +55,7 @@ In dieser Vorgehensweise wird erläutert, wie die Zugangssperren eines StorSimpl
 2. Drehen Sie den Schlüssel gegen den Uhrzeigersinn, bis das rote Kennzeichen nicht mehr in der Öffnung über dem Schlüssel zu sehen ist.
 3. Entfernen Sie den Schlüssel.
    
-    ![ Entriegeltes Laufwerk](./media/storsimple-disk-drive-replacement/IC741057.png)
+    ![Entriegeltes Laufwerk](./media/storsimple-disk-drive-replacement/IC741057.png)
    
     **Abbildung 2** Entriegeltes Laufwerk
 4. Das Laufwerk kann nun ausgebaut werden.
@@ -114,10 +114,4 @@ Nachdem ein Laufwerk in einem StorSimple-Gerät ausgefallen ist und Sie es entfe
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 08/28/2017
 ms.author: nisoneji
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 60b0641076c2fa8ed2feb5c64e7b119519f46cf4
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
 Dieser Artikel ist der Leitfaden zum Deployment Planner (Bereitstellungsplaner) von Azure Site Recovery für Bereitstellungen von „VMware zu Azure“ in der Produktion.
@@ -612,4 +611,3 @@ Die öffentliche Vorschauversion des Azure Site Recovery Deployment Planner 1.0 
 * Das Tool funktioniert nur für Szenarien vom Typ „VMware zu Azure“ und nicht für Bereitstellungen vom Typ „Hyper-V zu Azure“. Verwenden Sie für Szenarien vom Typ „Hyper-V zu Azure“ das [Hyper-V Capacity Planner-Tool](./site-recovery-capacity-planning-for-hyper-v-replication.md).
 * Der GetThroughput-Vorgang wird für die Microsoft Azure-Regionen „US Government“ und „China“ nicht unterstützt.
 * Das Tool kann keine Profile für VMs erstellen, wenn der vCenter-Server über zwei oder mehr VMs mit dem gleichen Namen oder der gleichen IP-Adresse für verschiedene ESXi-Hosts verfügt. In dieser Version überspringt das Tool die Profilerstellung für doppelte Namen und IP-Adressen von VMs in der VMListFile. Die Problemumgehung besteht darin, die Profilerstellung für die VMs nicht mit dem vCenter-Server durchzuführen, sondern mit einem ESXi-Host. Sie müssen für jeden ESXi-Host eine Instanz ausführen.
-

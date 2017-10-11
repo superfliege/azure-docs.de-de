@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: cea4531175df2cc39790497dc049d27e23ffa0c6
-ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Automatisches Erstellen oder Ändern von Labs mit Azure Resource Manager-Vorlagen und PowerShell
 
 DevTest Labs stellen eine Vielzahl von Azure Resource Manager-Vorlagen und PowerShell-Skripts bereit, mit denen Sie schnell und automatisch neue Labs erstellen oder vorhandene Labs ändern und diese Ressourcen dann bereitstellen können.
@@ -52,4 +49,3 @@ Es gibt zahlreiche andere allgemeine Aufgaben, die mithilfe von PowerShell autom
 ### <a name="next-steps"></a>Nächste Schritte
 * Hier finden Sie Informationen zum Erstellen eines [privaten Git-Repositorys](devtest-lab-add-artifact-repo.md), in dem Sie Ihre angepassten Vorlagen oder Skripts speichern können.
 * Sehen Sie sich die [Azure Resource Manager-Vorlagen aus dem Katalog mit Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) an.
-

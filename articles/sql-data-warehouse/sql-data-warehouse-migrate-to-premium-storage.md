@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 11/29/2016
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e66f808da8d301e0adc393ba0ae67ab8618ce814
-ms.openlocfilehash: e73e52665dd22e33054745907613c269b6d57915
-ms.contentlocale: de-de
-ms.lasthandoff: 12/16/2016
-
-
+ms.openlocfilehash: 860e50b532b4b0a21d3be54f087730070b0e56bb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Migrieren eines Data Warehouse zu Storage Premium
 Für Azure SQL Data Warehouse wurde vor Kurzem [Storage Premium eingeführt, um die Leistung besser vorhersagen zu können][premium storage for greater performance predictability]. Vorhandene Data Warehouses mit derzeit Standardspeicher können nun zu Storage Premium migriert werden. Sie können die automatische Migration nutzen. Wenn Sie aber den Migrationszeitpunkt bestimmen möchten (was eine gewisse Ausfallzeit mit sich bringt), können Sie die Migration selbst vornehmen.
@@ -103,7 +101,7 @@ Zwei Datenbanken auf demselben logischen Server können nicht den gleichen Namen
 
 Beispiel: Ihr vorhandenes Data Warehouse mit Standardspeicher hat derzeit den Namen „MyDW“.
 
-1. Benennen Sie "MyDW" mithilfe des folgenden ALTER DATABASE-Befehls um. (In diesem Beispiel erfolgt eine Umbenennung in „MyDW_BeforeMigration“.) Dieser Befehl beendet alle vorhandenen Transaktionen und muss in der Masterdatenbank ausgeführt werden, um erfolgreich zu sein.
+1. Benennen Sie "MyDW" mithilfe des folgenden ALTER DATABASE-Befehls um. (In diesem Beispiel fügen wir es "MyDW_BeforeMigration." umbenennen)  Mit diesem Befehl alle bestehende Transaktionen beendet und muss in der master-Datenbank erfolgreich ausgeführt werden.
    ```
    ALTER DATABASE CurrentDatabasename MODIFY NAME = NewDatabaseName;
    ```
@@ -118,7 +116,7 @@ Mit dem Wechsel zu Storage Premium haben wir auch die Anzahl von Datenbank-Blobd
 **Voraussetzungen:**
 
 - Das Data Warehouse sollte mit 1.000 Data Warehouse-Einheiten oder mehr ausgeführt werden (siehe [Skalieren von Computeleistung][scale compute power]).
-- Der Benutzer, der das Skript ausführt, muss die [Rolle „mediumrc“][mediumrc role] oder höher haben. Führen Sie Folgendes aus, um dieser Rolle einen Benutzer hinzuzufügen:     ````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
+- Der Benutzer, der das Skript ausführt, muss die [Rolle „mediumrc“][mediumrc role] oder höher haben. Führen Sie Folgendes aus, um dieser Rolle einen Benutzer hinzuzufügen: ````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
 
 ````sql
 -------------------------------------------------------------------------------
@@ -184,4 +182,3 @@ Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket
 <!--Other Web references-->
 [Premium Storage for greater performance predictability]: https://azure.microsoft.com/en-us/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 [Azure Portal]: https://portal.azure.com
-

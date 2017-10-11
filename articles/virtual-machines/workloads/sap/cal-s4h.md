@@ -16,13 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 4788fa14a6c49d39b5a3096a69b6738f4a5d8cca
-ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Bereitstellen von SAP S/4HANA oder BW/4HANA in Azure
 In diesem Artikel wird beschrieben, wie Sie S/4HANA über die SAP Cloud Appliance Library (SAP CAL) 3.0 in Azure bereitstellen. Zum Bereitstellen anderer SAP HANA-basierter Lösungen, z.B. BW/4HANA, befolgen Sie dieselben Schritte.
@@ -44,14 +42,14 @@ Die Seite **Lösungen** zeigt einige der SAP CAL HANA-basierten Lösungen, die i
 ### <a name="create-an-account-in-the-sap-cal"></a>Erstellen eines Kontos in der SAP CAL
 1. Um sich erstmals bei der SAP CAL anzumelden, verwenden Sie Ihren SAP S-Benutzer oder einen anderen bei SAP registrierten Benutzer. Anschließend definieren Sie ein SAP CAL-Konto, das von der SAP CAL zum Bereitstellen von Appliances in Azure verwendet wird. Bei der Definition des Kontos müssen Sie die folgenden Schritte ausführen:
 
-    a. Wählen Sie das Bereitstellungsmodell in Azure aus: Ressourcen-Manager oder Klassisch.
+    a. Wählen Sie das Bereitstellungsmodell in Azure aus (Resource Manager oder klassisch).
 
     b. Geben Sie Ihr Azure-Abonnement ein. Ein SAP CAL-Konto kann nur einem Abonnement zugewiesen werden. Wenn Sie mehrere Abonnements benötigen, müssen Sie ein weiteres SAP CAL-Konto erstellen.
 
     c. Erteilen Sie der SAP CAL die Berechtigung zur Bereitstellung in Ihrem Azure-Abonnement.
 
     > [!NOTE]
-    Die nächsten Schritte zeigen, wie Sie ein SAP CAL-Konto für Ressourcen-Manager-Bereitstellungen erstellen. Wenn Sie bereits über ein SAP CAL-Konto verfügen, das mit dem klassischen Bereitstellungsmodell verknüpft ist, *müssen* Sie folgende Schritte zum Erstellen eines neuen SAP CAL-Kontos ausführen. Das neue SAP CAL-Konto muss im Ressourcen-Manager-Modell bereitgestellt werden.
+    Die nächsten Schritte zeigen, wie Sie ein SAP CAL-Konto für Resource Manager-Bereitstellungen erstellen. Wenn Sie bereits über ein SAP CAL-Konto verfügen, das mit dem klassischen Bereitstellungsmodell verknüpft ist, *müssen* Sie folgende Schritte zum Erstellen eines neuen SAP CAL-Kontos ausführen. Das neue SAP CAL-Konto muss im Ressourcen-Manager-Modell bereitgestellt werden.
 
 2. Erstellen Sie ein neues SAP CAL-Konto. Die Seite **Konten** zeigt drei Optionen für Azure: 
 
@@ -73,17 +71,17 @@ Die Seite **Lösungen** zeigt einige der SAP CAL HANA-basierten Lösungen, die i
 
    ![Anmeldung beim Clouddienst in Internet Explorer](./media/cal-s4h/s4h-pic4c.png)
 
-5. Wenn mehrere Benutzer aufgeführt sind, wählen Sie das Microsoft-Konto, das als Co-Administrator mit dem Azure-Abonnement verknüpft ist, das Sie ausgewählt haben. Die folgende Seite wird auf der Browserregisterkarte angezeigt:
+5. Wenn mehrere Benutzer aufgeführt sind, wählen Sie das Microsoft-Konto, das als Co-Administrator mit dem ausgewählten Azure-Abonnement verknüpft ist. Die folgende Seite wird auf der Browserregisterkarte angezeigt:
 
    ![Bestätigung für Clouddienste in Internet Explorer](./media/cal-s4h/s4h-pic5a.png)
 
 6. Klicken Sie auf **Annehmen**. Wenn die Autorisierung erfolgreich ist, wird die Definition des SAP CAL-Kontos erneut angezeigt. Nach kurzer Zeit bestätigt eine Meldung, dass die Autorisierung erfolgreich war.
 
-7. Um das neu erstellte SAP CAL-Konto Ihrem Benutzer zuzuweisen, geben Sie Ihre **Benutzer-ID** in das Textfeld rechts ein und klicken dann auf **Hinzufügen**.
+7. Um Ihrem Benutzer das neu erstellte SAP CAL-Konto zuzuweisen, geben Sie Ihre **Benutzer-ID** in das Textfeld rechts ein, und klicken dann auf **Add** (Hinzufügen).
 
-   ![Zuordnung des Kontos zum Benutzer](./media/cal-s4h/s4h-pic8a.png)
+   ![Zuordnen des Kontos zum Benutzer](./media/cal-s4h/s4h-pic8a.png)
 
-8. Um Ihr Konto dem Benutzer zuzuordnen, der sich bei der SAP CAL anmeldet, klicken Sie auf **Überprüfen**. 
+8. Um Ihr Konto dem Benutzer zuzuordnen, der sich bei der SAP CAL anmeldet, klicken Sie auf **Review** (Überprüfen). 
  
 9. Um die Zuordnung zwischen dem Benutzer und dem neu erstellten SAP CAL-Konto zu erstellen, klicken Sie auf **Erstellen**.
 
@@ -149,7 +147,7 @@ Wir veranschaulichen nun die grundlegende Vorgehensweise zur Bereitstellung.
 
    ![Herstellen einer Verbindung mit der Instanz](./media/cal-s4h/connect_to_solution.png)
 
-    Die Dokumentation nennt die Benutzer für jede der Verbindungsmethoden. Die Kennwörter für diese Benutzer sind auf das Masterkennwort festgelegt, das Sie am Anfang des Bereitstellungsprozesses definiert haben. In der Dokumentation werden andere funktionsbezogenere Benutzer mit ihren Kennwörtern aufgeführt, die Sie zum Anmelden beim bereitgestellten System verwenden können. 
+    Die Dokumentation nennt die Benutzer für jede der Verbindungsmethoden. Die Kennwörter für diese Benutzer sind auf das Masterkennwort festgelegt, das Sie am Anfang des Bereitstellungsprozesses festgelegt haben. In der Dokumentation werden andere funktionsbezogenere Benutzer mit ihren Kennwörtern aufgeführt, die Sie zum Anmelden beim bereitgestellten System verwenden können. 
 
     Wenn Sie beispielsweise die SAP GUI verwenden, die auf dem Windows-Remotedesktop-Computer vorinstalliert ist, sieht das S/4-System in etwa so aus:
 
@@ -162,7 +160,6 @@ Wir veranschaulichen nun die grundlegende Vorgehensweise zur Bereitstellung.
 Innerhalb weniger Stunden wird eine fehlerfreie S/4 SAP-Appliance in Azure bereitgestellt.
 
 Wenn Sie ein SAP CAL-Abonnement erworben haben, werden Bereitstellungen über die SAP CAL in Azure vollständig von SAP unterstützt. Die Supportwarteschlange heißt BC-VCM-CAL.
-
 
 
 

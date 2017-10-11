@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: c4b5b8bc05365ddc63b0d7a6a3c63eaee31af957
 ms.openlocfilehash: 37c7f133d079186f828d58cabce0d2a259efd085
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="upgrade-procedures"></a>Upgrade-Verfahren
 Wenn Sie bereits eine ältere Version von Engagement in Ihre Anwendung integriert haben, müssen Sie die folgenden Punkte beim Aktualisieren des SDK beachten.
@@ -214,10 +214,4 @@ Beispiele:
 * Die Klasse `CapptainTableViewController` wird umbenannt in `EngagementTableViewController`.
 * Die Klasse `CapptainUtils` wird umbenannt in `EngagementUtils`.
 * Die Klasse `CapptainViewController` wird umbenannt in `EngagementViewController`.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 10f33898fb86bd2449994a153d99cb59dc6078d6
-ms.contentlocale: de-de
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 3e4eca174209eeb9cbce1d45111d1e5cc30af8b0
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>SMS-Warnungsverhalten in Aktionsgruppen
 ## <a name="overview"></a>Übersicht ##
@@ -75,4 +74,3 @@ Der Benutzer erhält eine Antwort mit einem Link zu diesem Artikel.
 Verschaffen Sie sich einen [Überblick über Aktivitätsprotokollwarnungen](monitoring-overview-alerts.md), und erfahren Sie, wie Sie gewarnt werden können.  
 Erfahren Sie mehr über die [SMS-Rateneinschränkung](monitoring-alerts-rate-limiting.md).  
 Erfahren Sie mehr über [Aktionsgruppen](monitoring-action-groups.md).
-

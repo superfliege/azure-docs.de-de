@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: c04cfea4c6c0a8211db2579eccc0c05a93cc0a35
-ms.contentlocale: de-de
-ms.lasthandoff: 04/17/2017
-
+ms.openlocfilehash: a8cd93256f79ece268ec3411dfbdf590f4b24447
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="error-on-an-applications-page-after-signing-in"></a>Fehler auf der Seite einer Anwendung nach dem Anmelden
 
 In diesem Szenario hat Azure AD den Benutzer angemeldet, die Anwendung zeigt jedoch einen Fehler an, durch den der Benutzer den Anmeldevorgang nicht ordnungsgemäß abschließen kann. Bei diesem Szenario liegt das Problem darin, dass die Anwendung die Antwort von Azure AD nicht annimmt.
@@ -159,4 +157,3 @@ Bei der nächsten Anmeldung des Benutzers bei der Anwendung signiert Azure AD da
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)
-

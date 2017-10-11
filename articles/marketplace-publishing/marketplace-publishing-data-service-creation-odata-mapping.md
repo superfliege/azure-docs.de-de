@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a853b4dbd1952ba4ea8ee68ea3ca98f588bb71a2
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="mapping-an-existing-web-service-to-odata-through-csdl"></a>Zuordnen eines vorhandenen Webdiensts zu OData über CSDL
 > [!IMPORTANT]
@@ -47,7 +47,7 @@ Der **Datenfluss** verläuft in entgegengesetzter Richtung:
 
 Hintergrundinformationen zum Atom-, Atom Pub- und OData-Protokoll, auf dem die Azure Marketplace-Erweiterungen basieren, finden Sie unter [http://msdn.microsoft.com/library/ff478141.aspx](http://msdn.microsoft.com/library/ff478141.aspx)
 
-Auszug aus dem vorangehenden Link:       *"Der Zweck von Open Data Protocol (nachstehend OData) ist die Bereitstellung eines REST-basierten Protokolls für CRUD-Vorgänge (Create, Read, Update und Delete) für Ressourcen, die als Datendienste verfügbar gemacht werden. Ein "Datendienst" ist ein Endpunkt, an dem Daten aus mindestens einer "Sammlung" verfügbar gemacht werden. Jede dieser Sammlungen enthält 0 oder mehr "Einträge" bestehend aus typisierten Name-Wert-Paaren. OData wird von Microsoft im Rahmen der OASIS (Organization for die Advancement of Structured Information Standards)-Standards veröffentlicht. Jeder interessierte Benutzer kann also Server, Clients oder Tools ohne Lizenzgebühren oder Einschränkungen erstellen."*
+Auszug aus dem vorangehenden Link: *"Der Zweck von Open Data Protocol (nachstehend OData) ist die Bereitstellung eines REST-basierten Protokolls für CRUD-Vorgänge (Create, Read, Update und Delete) für Ressourcen, die als Datendienste verfügbar gemacht werden. Ein "Datendienst" ist ein Endpunkt, an dem Daten aus mindestens einer "Sammlung" verfügbar gemacht werden. Jede dieser Sammlungen enthält 0 oder mehr "Einträge" bestehend aus typisierten Name-Wert-Paaren. OData wird von Microsoft im Rahmen der OASIS (Organization for die Advancement of Structured Information Standards)-Standards veröffentlicht. Jeder interessierte Benutzer kann also Server, Clients oder Tools ohne Lizenzgebühren oder Einschränkungen erstellen."*
 
 ### <a name="three-critical-pieces-that-have-to-be-defined-by-the-csdl-are"></a>Die folgenden drei wichtigen Elemente müssen von der CSDL definiert werden:
 * Der **Endpunkt** des Dienstanbieters. Die Webadresse (URI) des Diensts.
@@ -140,8 +140,7 @@ Im Folgenden ein CSDL-Beispiel: (Kopieren Sie die folgende Beispiel-CSDL, fügen
 * „MyCompany“ auf der PPUI bezieht sich auf den **Anzeigenamen des Herausgebers** auf der [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) -UI.
 * API bezieht sich auf einen Web- oder Datendienst (einen Plan in der PPUI).
 
-**Hierarchie**
-: Ein Unternehmen (Inhaltsanbieter) besitzt Angebote mit Plänen. Dabei handelt es sich um Dienste, die in einer API aufgeführt sind.
+**Hierarchie:** ein Unternehmens (Inhaltsanbieter) besitzt Angebot(e) Plänen aufweisen, nämlich Konto, welche Zeile nach oben über eine API.
 
 ### <a name="webservice-csdl-example"></a>CSDL-Beispiel "WebService"
 Stellt eine Verbindung mit einem Dienst her, der den Endpunkt einer Webanwendung (z. B. eine C#-Anwendung) verfügbar macht.
@@ -317,10 +316,4 @@ Stellt eine Verbindung mit einem Dienst her, der eine Datenbanktabelle oder -sic
 * Wenn Sie mehr über bestimmte Knoten und ihre Parameter erfahren möchten, lesen Sie den Artikel [OData-Zuordnungsknoten für Datendienste](marketplace-publishing-data-service-creation-odata-mapping-nodes.md). Dort finden Sie Definitionen und Erläuterungen, Beispiele und Kontext für Anwendungsfälle.
 * Wenn Sie an Beispielen interessiert sind, lesen Sie den Artikel [Beispiele für die OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping-examples.md) , um Beispielcode kennen zu lernen und Codesyntax und Kontext zu verstehen.
 * Um zum vorgeschriebenen Pfad für die Veröffentlichung eines Datendiensts im Azure Marketplace zurückzukehren, lesen Sie den Artikel [Leitfaden zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 638e3e59f91202d55347c830542801ccead1b90f
 ms.openlocfilehash: a74a160eae88a2d03460a1346479c333d8f9d524
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>Verwalten des StorSimple Virtual Array mithilfe des StorSimple Geräte-Manager-Diensts
 ![Setup-Prozessablauf](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -76,10 +77,4 @@ Klicken Sie auf die Verfahren in der Tabelle, um weitere Informationen zu den ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur Webbenutzeroberfläche und ihrer Verwendung finden Sie unter [Verwalten des StorSimple Virtual Arrays über die StorSimple-Webbenutzeroberfläche](storsimple-ova-web-ui-admin.md).
-
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

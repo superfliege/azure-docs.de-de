@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f05f188633e2d5103e29ae4501f7ea9a832acba
-ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: cd36e46821eb85db523a5c84ec44895f68cc60e1
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Ausführen von Aufgaben zur statischen Paketerstellung mithilfe von Azure Media Packager
 > [!NOTE]
@@ -702,7 +701,7 @@ Wenn Sie Ihre HLS-Inhalte mit AES-128 verschlüsseln möchten, können Sie wahlw
 > [!NOTE]
 > Zum Konvertieren Ihrer Inhalte in HLS müssen Sie zunächst Ihre Inhalte in Smooth Streaming konvertieren bzw. codieren.
 > Damit HLS-Inhalte mit AES verschlüsselt werden, müssen Sie zudem sicherstellen, dass die folgenden Eigenschaften in der Datei "MediaPackager_SmoothToHLS.xml" festgelegt sind. Legen Sie die "encrypt"-Eigenschaft auf "true" fest, und legen Sie die Werte "key" und "keyuri" so fest, dass sie auf Ihren Authentifizierungs- oder Autorisierungsserver verweisen.
-> Media Services erstellt eine Schlüsseldatei und legt sie im Assetcontainer ab. Sie müssen die Datei „/asset-containerguid/*.key“ auf Ihren Server kopieren (oder Ihre eigene Schlüsseldatei erstellen) und die *.key-Datei anschließend im Medienobjektcontainer löschen.
+> Media Services erstellt eine Schlüsseldatei und legt sie im Assetcontainer ab. Sie sollten die /asset-containerguid/*.key-Datei auf den Server kopieren (oder Ihre eigene Schlüsseldatei erstellen) und löschen Sie dann die *.Key-Datei aus dem Container des Medienobjekts ab.
 > 
 > 
 
@@ -1459,5 +1458,4 @@ Media Services bietet jetzt einen Dienst für die Bereitstellung von Microsoft P
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

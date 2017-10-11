@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: a9cffa275ae6b9315b821d3160b17a997a1523f7
-ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="install-net-on-azure-cloud-services-roles"></a>Installieren von .NET in Rollen in Azure Cloud Services
 Dieser Artikel beschreibt die Installation von .NET Framework-Versionen, die nicht im Funktionsumfang des Azure-Gastbetriebssystems vorhanden sind. Sie können .NET im Gastbetriebssystem zum Konfigurieren Ihrer Clouddienstweb- und -workerrollen nutzen.
 
@@ -32,7 +30,7 @@ Sie können .NET 4.6.1 für die Gastbetriebssystemfamilie 4 installieren, die in
 
 Zum Installieren von .NET für Ihre Web- und Workerrollen fügen Sie Ihrem Clouddienstprojekt den .NET-Webinstaller hinzu. Starten Sie den Installer im Rahmen der Startaufgaben der Rolle. 
 
-## <a name="add-the-net-installer-to-your-project"></a>Hinzufügen des .NET-Installers zu Ihrem Projekt
+## <a name="add-the-net-installer-to-your-project"></a>Das Installationsprogramm für .NET zu Ihrem Projekt hinzufügen
 Laden Sie den Webinstaller der .NET Framework-Version herunter, die Sie installieren möchten:
 
 * [Webinstaller für .NET 4.7](http://go.microsoft.com/fwlink/?LinkId=825298)
@@ -40,10 +38,10 @@ Laden Sie den Webinstaller der .NET Framework-Version herunter, die Sie installi
 
 So fügen Sie den Installer für eine *Webrolle* hinzu
   1. Klicken Sie im **Projektmappen-Explorer** im Clouddienstprojekt unter **Rollen** mit der rechten Maustaste auf Ihre *Webrolle*, und wählen Sie **Hinzufügen** > **Neuer Ordner** aus. Erstellen Sie einen Ordner mit dem Namen **bin**.
-  2. Klicken Sie mit der rechten Maustaste auf den Ordner „bin“, und wählen Sie **Hinzufügen** > **Vorhandenes Element** aus. Wählen Sie den .NET-Installer aus, und fügen Sie ihn dem Ordner „bin“ hinzu.
+  2. Klicken Sie mit der rechten Maustaste auf den Ordner „bin“, und wählen Sie **Hinzufügen** > **Vorhandenes Element** aus. Wählen Sie das Installationsprogramm für .NET aus und fügen Sie es dem Ordner "Bin" hinzu.
   
 So fügen Sie den Installer für eine *Workerrolle* hinzu
-* Klicken Sie mit der rechten Maustaste auf Ihre *Workerrolle*, und wählen Sie **Hinzufügen** > **Vorhandenes Element** aus. Wählen Sie den .NET-Installer aus, aus und fügen Sie ihn zur Rolle hinzu. 
+* Klicken Sie mit der rechten Maustaste auf Ihre *Workerrolle*, und wählen Sie **Hinzufügen** > **Vorhandenes Element** aus. Wählen Sie das Installationsprogramm für .NET aus und fügen Sie zur Rolle hinzu. 
 
 Wenn Dateien auf diese Weise dem Inhaltsordner für die Rolle hinzugefügt werden, werden sie automatisch Ihrem Clouddienstpaket hinzugefügt. Die Dateien werden dann in einem einheitlichen Speicherort auf dem virtuellen Computer bereitgestellt. Wiederholen Sie diesen Vorgang für alle Web- und Workerrollen in Ihrem Clouddienst, sodass alle Rollen über eine Kopie des Installers verfügen.
 
@@ -223,4 +221,3 @@ Wenn Sie Ihren Clouddienst bereitstellen, installieren die Startaufgaben .NET Fr
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
 [2]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithallfiles.png
-

@@ -1,7 +1,7 @@
-In der folgenden Tabelle sind die möglichen Upload- und Erfassungskombinationen von generalisierten (gen.) und spezialisierten (spez.) Windows-Betriebssystem-Images aufgeführt. Die Kombinationen, die ohne Fehler verarbeitet werden, sind durch ein „J“ gekennzeichnet, und die Kombinationen, bei denen Fehler ausgelöst werden, durch ein „N“. Die Ursachen und Lösungen für die verschiedenen auftretenden Fehler werden unterhalb der Tabelle beschrieben.
+Die folgende Tabelle enthält die möglichen hochladen und Erfassung Kombinationen von Windows (Feld) generalisiert und spezialisiert (Spezifikation). Betriebssystemimages. Die Kombinationen, die ohne Fehler verarbeitet werden durch einen Y angegeben, und solche, die Fehler auslöst, werden durch ein n angegeben Die Ursachen und Lösungen für die unterschiedlichen Fehler in ausführen, werden unterhalb der Tabelle angegeben.
 
-| Betriebssystem | Upload (spez.) | Upload (gen.) | Erfassung (spez.) | Erfassung (gen.) |
+| OS | Laden Sie die Spezifikation hoch. | Hochladen Sie, Gen. | Spezifikation zu erfassen. | Gen zu erfassen. |
 | --- | --- | --- | --- | --- |
-| Windows (gen.) |N<sup>1</sup> |J |N<sup>3</sup> |J |
-| Windows (spez.) |J |N<sup>2</sup> |J |N<sup>4</sup> |
+| Windows-Gen. |N<sup>1</sup> |J |N<sup>3</sup> |J |
+| Windows-Spezifikation. |J |N<sup>2</sup> |J |N<sup>4</sup> |
 

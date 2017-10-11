@@ -14,12 +14,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: magoedte;eslesar
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 2a6daccdc70ff285a6993da0b2fdcfbe85e635cf
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 8a10d961ad7c107c68b57c64ee6c88544ff8832b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Erste Schritte mit Azure Automation DSC
 In diesem Thema wird erläutert, wie die gängigsten Aufgaben mit Azure Automation Desired State Configuration (DSC) ausgeführt werden, z.B. Erstellen, Importieren und Kompilieren von Konfigurationen, Hinzufügen zu verwaltender Computer und Anzeigen von Berichten. Eine Übersicht über Azure Automation DSC finden Sie unter [Azure Automation DSC – Übersicht](automation-dsc-overview.md). Die DSC-Dokumentation finden Sie unter [Windows PowerShell DSC – Übersicht](https://msdn.microsoft.com/PowerShell/dsc/overview).
@@ -219,5 +218,4 @@ Wenn ein Knoten nicht mehr von Azure Automation DSC verwaltet werden soll, könn
 * [Windows PowerShell DSC – Übersicht](https://msdn.microsoft.com/powershell/dsc/overview)
 * [Azure Automation DSC-Cmdlets](/powershell/module/azurerm.automation/#automation)
 * [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/)
-
 

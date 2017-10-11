@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: a347eedbf5511dc83e1bc7721667441cfb87cb59
-ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-user-provisioning"></a>Tutorial: Konfigurieren von Workplace by Facebook für die Benutzerbereitstellung
 
@@ -29,7 +28,7 @@ Dieses Tutorial veranschaulicht die erforderlichen Schritte zur automatischen Be
 Für das Konfigurieren der Azure AD-Integration mit Workplace by Facebook benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Workplace by Facebook-Abonnement mit aktiviertem einmaligen Anmelden
+- Ein Workplace by Facebook-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
 Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlungen:
 
@@ -92,5 +91,4 @@ Sie können nun ein Testkonto erstellen. Warten Sie bis zu 20 Minuten, um zu üb
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 * [Konfigurieren von einmaligem Anmelden](active-directory-saas-facebook-at-work-tutorial.md)
-
 

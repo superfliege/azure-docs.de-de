@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 47f4441612be4f363ba82cc22b09786a6f3bfdc3
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>Rechenkontextoptionen für R Server in HDInsight
 
@@ -86,5 +85,4 @@ In diesem Artikel haben Sie die Optionen kennengelernt, mit denen festgelegt wer
 * [Erste Schritte mit R Server für Hadoop](hdinsight-hadoop-r-server-get-started.md)
 * [Hinzufügen von RStudio Server zu HDInsight (falls nicht bereits während der Clustererstellung hinzugefügt)](hdinsight-hadoop-r-server-install-r-studio.md)
 * [Azure Storage-Optionen für R Server in HDInsight](hdinsight-hadoop-r-server-storage.md)
-
 

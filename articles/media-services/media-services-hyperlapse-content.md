@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: adsolank
-translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
 ms.openlocfilehash: 02f634c2af04b6b372642ab0e6a17a5d29f16450
-ms.lasthandoff: 03/03/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Hyperlapsing von Mediendateien mit Azure Media Hyperlapse
 Azure Media Hyperlapse ist ein Medienprozessor, der ruckelfreie Zeitraffervideos aus der Ich-Perspektive oder Action-Kamera-Inhalten erzeugt.  Als cloudbasiertes Pendant zu [Desktop Hyperlapse Pro von Microsoft Research und dem smartphonebasierten Hyperlapse Mobile](http://aka.ms/hyperlapse)nutzt Microsoft Hyperlapse für Azure Media Services die umfassende Skalierbarkeit der Medienverarbeitungsplattform von Azure Media Services zum horizontalen Skalieren und Parallelisieren der Hyperlapse-Massenverarbeitung.
@@ -36,7 +35,7 @@ Die neuesten Informationen zu Azure Media Hyperlapse finden Sie in den [Media Se
 ## <a name="hyperlapse-an-asset"></a>Hyperlapsing eines Medienobjekts
 Zuerst müssen Sie die gewünschte Eingabedatei in Azure Media Services hochladen.  Weitere Informationen zu den Konzepten zum Hochladen und Verwalten von Inhalten finden Sie im [Content Management-Artikel](media-services-portal-vod-get-started.md).
 
-### <a name="a-idconfigurationaconfiguration-preset-for-hyperlapse"></a><a id="configuration"></a>Konfigurationsvoreinstellung für Hyperlapse
+### <a id="configuration"></a>Konfigurationsvoreinstellung für Hyperlapse
 Sobald Ihre Inhalte sich in Ihrem Media Services-Konto befinden, müssen Sie die Konfigurationsvoreinstellung festlegen.  Die folgende Tabelle erläutert die benutzerdefinierten Felder:
 
 | Feld | Beschreibung |
@@ -75,7 +74,7 @@ Es folgt ein Beispiel einer geeigneten Konfigurationsdatei in XML und JSON:
         }
     }
 
-### <a name="a-idsamplecodea-microsoft-hyperlapse-with-the-ams-net-sdk"></a><a id="sample_code"></a> Microsoft Hyperlapse mit dem AMS .NET SDK
+### <a id="sample_code"></a> Microsoft Hyperlapse mit dem AMS .NET SDK
 Mit der folgenden Methode werden eine Mediendatei als Asset hochgeladen und ein Auftrag mit dem Azure Media Hyperlapse-Medienprozessor erstellt.
 
 > [!NOTE]
@@ -199,7 +198,7 @@ Mit der folgenden Methode werden eine Mediendatei als Asset hochgeladen und ein 
         return processor;
     }
 
-### <a name="a-idfiletypesasupported-file-types"></a><a id="file_types"></a>Unterstützte Dateitypen
+### <a id="file_types"></a>Unterstützte Dateitypen
 * MP4
 * MOV
 * WMV
@@ -214,5 +213,4 @@ Mit der folgenden Methode werden eine Mediendatei als Asset hochgeladen und ein 
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
 

@@ -14,15 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 9847bcfcc139a769847678c1cca6a8b9c3a30e93
-ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Grundlegendes zu den benutzerdefinierten Azure AD B2C-Richtlinien des Starter Packs
 
 In diesem Abschnitt sind alle Kernelemente der Richtlinie „B2C_1A_base“ aufgeführt, die im **Starter Pack** enthalten sind und zum Erstellen Ihrer eigenen Richtlinien per Vererbung durch die *Richtlinie „B2C_1A_base_extensions“* genutzt werden.
@@ -40,9 +37,9 @@ Die Kernelemente der *Richtlinie „B2C_1A_base“* sind Anspruchstypen, Anspruc
 
 Diese Anspruchsschemas sind in drei Abschnitte unterteilt:
 
-1.    Im ersten Abschnitt sind die mindestens erforderlichen Ansprüche aufgeführt, die erforderlich sind, damit die User Journeys richtig funktionieren.
-2.    Im zweiten Abschnitt sind die Ansprüche aufgeführt, die für Abfragezeichenfolgen-Parameter und andere spezielle Parameter erforderlich sind und an andere Anspruchsanbieter übergeben werden, z.B. an „login.microsoftonline.com“ zur Authentifizierung. **Ändern Sie diese Ansprüche bitte nicht**.
-3.    Im dritten Abschnitt sind alle weiteren optionalen Ansprüche aufgeführt, die vom Benutzer erfasst, im Verzeichnis gespeichert und bei der Anmeldung in Token gesendet werden können. In diesem Abschnitt können neue Anspruchstypen, die vom Benutzer erfasst bzw. per Token gesendet werden sollen, hinzugefügt werden.
+1.  Im ersten Abschnitt sind die mindestens erforderlichen Ansprüche aufgeführt, die erforderlich sind, damit die User Journeys richtig funktionieren.
+2.  Im zweiten Abschnitt sind die Ansprüche aufgeführt, die für Abfragezeichenfolgen-Parameter und andere spezielle Parameter erforderlich sind und an andere Anspruchsanbieter übergeben werden, z.B. an „login.microsoftonline.com“ zur Authentifizierung. **Ändern Sie diese Ansprüche bitte nicht**.
+3.  Im dritten Abschnitt sind alle weiteren optionalen Ansprüche aufgeführt, die vom Benutzer erfasst, im Verzeichnis gespeichert und bei der Anmeldung in Token gesendet werden können. In diesem Abschnitt können neue Anspruchstypen, die vom Benutzer erfasst bzw. per Token gesendet werden sollen, hinzugefügt werden.
 
 > [!IMPORTANT]
 > Das Anspruchsschema enthält Einschränkungen zu bestimmten Ansprüchen, z.B. Kennwörter und Benutzernamen. Mit der TF-Richtlinie (Trust Framework, Vertrauensframework) wird Azure AD wie jeder andere Anspruchsanbieter behandelt, und alle Einschränkungen sind in der Premium-Richtlinie modelliert. Eine Richtlinie kann geändert werden, um weitere Einschränkungen hinzuzufügen, oder verwenden Sie einen anderen Anspruchsanbieter zum Speichern von Anmeldeinformationen, der über eigene Einschränkungen verfügt.
@@ -220,4 +217,3 @@ In diesem Abschnitt sind die User Journeys aufgeführt, die in der Richtlinie *B
 | *SignUpOrSignIn* | |
 | *EditProfile* | |
 | *PasswordReset* | |
-

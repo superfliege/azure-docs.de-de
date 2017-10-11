@@ -1,6 +1,6 @@
-## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
+## <a name="clean-up-deployment"></a>Bereitstellung bereinigen
 
-Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe und alle damit verbundenen Ressourcen entfernt werden.
+Nachdem Sie das Beispielskript ausgeführt wurde, kann der folgende Befehl verwendet werden, die Ressourcengruppe und alle zugeordneten Ressourcen entfernen.
 
 ```azurecli
 az group delete --name myResourceGroup

@@ -10,28 +10,28 @@ articles/sql-database/sql-database-configure-firewall-settings
 articles/sql-data-warehouse-get-started-provision.md
 
 -->
-### <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Erstellen einer Firewallregel auf Serverebene im Azure-Portal
+### <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Erstellen Sie eine Firewallregel auf Serverebene im Azure-portal
 
-1. Klicken Sie auf dem Blatt „SQL Server“ unter „Einstellungen“ auf **Firewall**, um das Blatt „Firewall“ für den SQL-Server zu öffnen.
+1. Klicken Sie auf der SQL Server-Blade unter "Einstellungen" auf **Firewall** um das Blatt für die Firewall für den SQLServer zu öffnen.
 
     <!-- ![sql server firewall](../articles/sql-database/media/sql-database-get-started/sql-server-firewall.png) -->
 
-2. Überprüfen Sie die angezeigte Client-IP-Adresse, und vergewissern Sie sich, dass dies Ihre IP-Adresse für das Internet ist, indem Sie einen Browser Ihrer Wahl verwenden (Frage: „Wie lautet meine IP-Adresse“). Es kann vorkommen, dass diese Adressen aus unterschiedlichen Gründen nicht übereinstimmen.
+2. Überprüfen Sie die Client-IP-Adresse angezeigt, und überprüfen Sie, dass dies die IP-Adresse über das Internet mit einem Browser Ihrer Wahl (Fragen "Was ist eigene IP-Adresse). Gelegentlich führen Sie eine aus verschiedenen Gründen nicht überein.
 
     <!-- ![your IP address](../articles/sql-database/media/sql-database-get-started/your-ip-address.png) -->
 
-3. Wenn die IP-Adressen übereinstimmen, können Sie in der Symbolleiste auf **Client-IP-Adresse hinzufügen** klicken.
+3. Vorausgesetzt, dass die IP-Übereinstimmung Adressen, klicken Sie auf **Client-IP hinzufügen** auf der Symbolleiste.
 
-    ![Hinzufügen der Client-IP-Adresse](../articles/sql-data-warehouse/media/sql-data-warehouse-get-started-provision/add-client-ip.png)
+    ![Client-IP hinzufügen](../articles/sql-data-warehouse/media/sql-data-warehouse-get-started-provision/add-client-ip.png)
 
     > [!NOTE]
-    > Sie können die SQL-Datenbank-Firewall auf dem Server für eine einzelne IP-Adresse oder einen gesamten Adressbereich öffnen. Mit dem Öffnen der Firewall wird es SQL-Administratoren und Benutzern ermöglicht, sich auf dem Server an allen Datenbanken anzumelden, für die sie über gültige Anmeldeinformationen verfügen.
+    > Sie können die SQL-Datenbank-Firewall auf dem Server eine einzelne IP-Adresse oder einen gesamten Bereich der Adressen öffnen. Öffnen die Firewall aktiviert, SQL-Administratoren und Benutzer für die Anmeldung, die auf einer beliebigen Datenbank auf dem Server, der sie gültige Anmeldeinformationen haben.
     >
 
-4. Klicken Sie in der Symbolleiste auf **Speichern**, um diese Firewallregel auf Serverebene zu speichern, und klicken Sie dann auf **OK**.
+4. Klicken Sie auf **speichern** auf der Symbolleiste, um diese Firewallregel auf Serverebene zu speichern, und klicken Sie dann auf **OK**.
 
-    ![Hinzufügen der Client-IP-Adresse](../articles/sql-database/media/sql-database-get-started-portal/server-firewall-rule.png)
+    ![Client-IP hinzufügen](../articles/sql-database/media/sql-database-get-started-portal/server-firewall-rule.png)
 
 > [!Tip]
-> Ein Tutorial finden Sie unter [SQL-Datenbank-Tutorial: Erstellen eines Servers, einer Firewallregel auf Serverebene, einer Beispieldatenbank und einer Firewallregel auf Datenbankebene und Herstellen der Verbindung mit SQL Server Management Studio](../articles/sql-database/sql-database-get-started.md).    
+> Ein Lernprogramm finden Sie unter [SQL-Datenbank-Lernprogramm: Erstellen eines Servers, einer Firewallregel auf Serverebene, eine Beispieldatenbank, eine Firewallregel auf Datenbankebene und Herstellen einer Verbindung mit SQL Server](../articles/sql-database/sql-database-get-started.md).    
 >

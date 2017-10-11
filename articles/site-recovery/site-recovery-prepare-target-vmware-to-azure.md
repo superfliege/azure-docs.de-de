@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 5/31/2017
 ms.author: bsiva
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: c84a775564769ddc796aa9d75add019ef1003175
-ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="prepare-target-vmware-to-azure"></a>Vorbereiten des Ziels (VMware nach Azure)
 > [!div class="op_single_selector"]
 > * [VMware zu Azure](./site-recovery-prepare-target-vmware-to-azure.md)
@@ -52,4 +50,3 @@ Falls Sie über kein kompatibles Resource Manager-Speicherkonto oder kein virtue
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Konfigurieren der Replikationseinstellungen](./site-recovery-setup-replication-settings-vmware.md).
-

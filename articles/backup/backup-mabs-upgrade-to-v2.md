@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: masaran;markgal
-ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
 ms.openlocfilehash: 1bbb16afef7940933b4c3ae23873f212770137e0
-ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="install-azure-backup-server-v2"></a>Installieren von Azure Backup Server v2
 
 Azure Backup Server schützt Ihre virtuellen Computer (VMs), Workloads, Dateien und Ordner und vieles mehr. Azure Backup Server v2 baut auf Azure Backup Server v1 auf und bietet neue Funktionen, die in v1 nicht verfügbar sind. Einen Vergleich der Funktionen von v1 und v2 finden Sie unter [Azure Backup Server-Schutzmatrix](backup-mabs-protection-matrix.md). 
@@ -288,5 +286,4 @@ Erfahren Sie, wie Sie Ihren Server vorbereiten oder mit dem Schutz einer Workloa
 - [Sichern eines VMware-Servers mit Backup Server](backup-azure-backup-server-vmware.md)
 - [Sichern von SQL Server mit Backup Server](backup-azure-sql-mabs.md)
 - [Verwenden von Modern Backup Storage mit Backup Server](backup-mabs-add-storage.md)
-
 

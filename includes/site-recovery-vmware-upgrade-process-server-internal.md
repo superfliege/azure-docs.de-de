@@ -1,4 +1,4 @@
-1. Melden Sie sich als Administrator bei dem Prozessserver an.
-2. Laden Sie die neueste Version des [einheitlichen Setups](http://aka.ms/unifiedinstaller) herunter.
-3. Doppelklicken Sie auf das Installationsprogramm, um den Updateprozess zu starten.
-4. Das Installationsprogramm ermittelt die verschiedenen installierten Komponenten und aktualisiert sie auf die neueste Version.
+1. Melden Sie sich die Process-Server als Administrator.
+2. Herunterladen der neuesten Version von den [Unified Setup](http://aka.ms/unifiedinstaller).
+3. Doppelklicken Sie auf das Installationsprogramm aus, um die Aktualisierung zu starten.
+4. Das Installationsprogramm erkennt die verschiedenen Komponenten, die installiert sind und auf die neueste Version zu aktualisieren.

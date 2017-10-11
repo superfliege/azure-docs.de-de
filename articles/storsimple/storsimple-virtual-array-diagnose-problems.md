@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: a75e68c84a50977b162ca4d3a4a02936ca78cb6b
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Behandeln von Problemen mit dem StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht
@@ -42,10 +43,4 @@ Sie können einige der häufigsten Probleme mit dem StorSimple Virtual Array anz
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie, wie Sie [eine Supportanfrage erstellen](storsimple-virtual-array-log-support-ticket.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

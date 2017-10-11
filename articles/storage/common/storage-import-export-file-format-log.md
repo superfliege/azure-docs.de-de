@@ -1,5 +1,4 @@
 ---
-
 title: Format der Protokolldateien von Azure Import/Export | Microsoft Docs
 description: "Erfahren Sie mehr über das Format der Protokolldateien, die erstellt werden, wenn Schritte für einen Auftrag des Import/Export-Diensts ausgeführt werden."
 author: muralikk
@@ -15,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
 ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
-ms.lasthandoff: 03/30/2017
-
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Format der Protokolldateien des Azure Import/Export-Diensts
 Wenn der Microsoft Azure Import/Export-Dienst als Teil eines Import- oder Exportauftrags eine Aktion auf einem Laufwerk durchführt, werden Protokolle in Blockblobs in dem Speicherkonto geschrieben, das dem Auftrag zugeordnet ist.  
@@ -361,4 +359,3 @@ Das folgende Fehlerprotokoll für einen Exportauftrag gibt an, dass der Blobinha
 ## <a name="next-steps"></a>Nächste Schritte
  
 * [Storage Import/Export-REST-API](/rest/api/storageimportexport/)
-

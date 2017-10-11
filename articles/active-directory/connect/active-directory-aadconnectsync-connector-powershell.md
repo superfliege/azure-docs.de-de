@@ -14,16 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
-ms.openlocfilehash: 65e5e6938ce67b6ba9751e38d23715f3512c4b93
-ms.contentlocale: de-de
-ms.lasthandoff: 02/06/2017
-
+ms.openlocfilehash: 0e5ccf5a38072e31d85bbc63eb0c608b0c34cfc2
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-<a id="windows-powershell-connector-technical-reference" class="xliff"></a>
-
-# Technische Referenz für den Windows PowerShell-Connector
+# <a name="windows-powershell-connector-technical-reference"></a>Technische Referenz für den Windows PowerShell-Connector
 Dieser Artikel beschreibt den Windows PowerShell-Connector. Der Artikel bezieht sich auf folgende Produkte:
 
 * Microsoft Identity Manager 2016 (MIM2016)
@@ -32,14 +29,10 @@ Dieser Artikel beschreibt den Windows PowerShell-Connector. Der Artikel bezieht
 
 Der Connector steht für MIM2016 und FIM2010R2 im [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=717495)zum Download bereit.
 
-<a id="overview-of-the-powershell-connector" class="xliff"></a>
-
-## Übersicht über den PowerShell-Connector
+## <a name="overview-of-the-powershell-connector"></a>Übersicht über den PowerShell-Connector
 Der PowerShell-Connector ermöglicht die Integration des Synchronisierungsdiensts in externe Systeme mit Windows PowerShell-basierten APIs. Der Connector stellt eine Brücke zwischen den Funktionen des aufrufbasierten ECMA2-Frameworks und Windows PowerShell dar. Weitere Informationen zum ECMA-Framework finden Sie unter [Referenz für den Extensible Connectivity 2.2 Management-Agent](https://msdn.microsoft.com/library/windows/desktop/hh859557.aspx).
 
-<a id="prerequisites" class="xliff"></a>
-
-### Voraussetzungen
+### <a name="prerequisites"></a>Voraussetzungen
 Zur Verwendung des Connectors muss auf dem Synchronisierungsserver Folgendes vorhanden sein:
 
 * Microsoft .NET 4.5.2 Framework oder eine höhere Version
@@ -48,9 +41,7 @@ Zur Verwendung des Connectors muss auf dem Synchronisierungsserver Folgendes vor
 Die Ausführungsrichtlinie auf dem Synchronisierungsdienst-Server muss so konfiguriert sein, dass der Connector Windows PowerShell-Skripts ausführen kann. Falls die vom Connector ausgeführten Skripts nicht digital signiert sind, konfigurieren Sie die Ausführungsrichtlinie durch Ausführen des folgenden Befehls:   
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 
-<a id="create-a-new-connector" class="xliff"></a>
-
-## Erstellen eines neuen Connectors
+## <a name="create-a-new-connector"></a>Erstellen eines neuen Connectors
 Zur Erstellung eines Windows PowerShell-Connectors im Synchronisierungsdienst müssen Sie eine Reihe von Windows PowerShell-Skripts bereitstellen, die die vom Synchronisierungsdienst angeforderten Schritte ausführen. Die Skripts sind abhängig von der Datenquelle, mit der Sie eine Verbindung herstellen, sowie von den benötigten Funktionen. Dieser Abschnitt informiert über die einzelnen implementierbaren Skripts sowie darüber, wann sie jeweils benötigt werden.
 
 Der Windows PowerShell-Connector speichert die einzelnen Skripts in der Datenbank des Synchronisierungsdiensts. Zwar können auch im Dateisystem gespeicherte Skripts ausgeführt werden, es ist jedoch einfacher, den Text der jeweiligen Skripts direkt in die Konfiguration des Connectors einzufügen.
@@ -59,9 +50,7 @@ Wählen Sie zum Erstellen eines PowerShell-Connectors im **Synchronisierungsdien
 
 ![Connectorerstellung](./media/active-directory-aadconnectsync-connector-powershell/createconnector.png)
 
-<a id="connectivity" class="xliff"></a>
-
-### Konnektivität
+### <a name="connectivity"></a>Konnektivität
 Geben Sie Konfigurationsparameter für die Verbindung mit einem Remotesystem an. Diese Werte werden vom Synchronisierungsdienst sicher gespeichert und beim Ausführen des Connectors für Ihre Windows PowerShell-Skripts verfügbar gemacht.
 
 ![Konnektivität](./media/active-directory-aadconnectsync-connector-powershell/connectivity.png)
@@ -126,9 +115,7 @@ Trennen Sie beim Angeben benutzerdefinierter Konfigurationseinstellungen die Nam
 
 Wenn Sie über ein Skript auf benutzerdefinierte Konfigurationseinstellungen zugreifen möchten, müssen Sie einen Unterstrich (\_) und den Geltungsbereich des Parameters („Global“, „Partition“ oder „RunStep“) an den Namen anfügen. Mit dem folgenden Codeausschnitt können Sie beispielsweise auf den globalen FileName-Parameter zugreifen: `$ConfigurationParameters["FileName_Global"].Value`
 
-<a id="capabilities" class="xliff"></a>
-
-### Funktionen
+### <a name="capabilities"></a>Funktionen
 Die Registerkarte „Funktionen“ des Verwaltungs-Agent-Designers dient zum Definieren des Verhaltens und der Funktionen des Connectors. Die auf dieser Registerkarte ausgewählten Optionen können nach der Erstellung des Connectors nicht mehr geändert werden. In dieser Tabelle werden die Funktionseinstellungen aufgeführt.
 
 ![Funktionen](./media/active-directory-aadconnectsync-connector-powershell/capabilities.png)
@@ -153,9 +140,7 @@ Die Registerkarte „Funktionen“ des Verwaltungs-Agent-Designers dient zum Def
 | Kennwortvorgänge aktivieren |Ist diese Option aktiviert, werden Kennwortsynchronisierungsskripts unterstützt. |
 | Kennwortexport im ersten Durchlauf aktivieren |Ist diese Option aktiviert, werden während der Bereitstellung festgelegte Kennwörter bei der Objekterstellung exportiert. |
 
-<a id="global-parameters" class="xliff"></a>
-
-### Globale Parameter
+### <a name="global-parameters"></a>Globale Parameter
 Auf der Registerkarte „Globale Parameter“ des Verwaltungs-Agent-Designers können Sie die vom Connector ausgeführten Windows PowerShell-Skripts konfigurieren. Zudem können Sie globale Werte für benutzerdefinierte Konfigurationseinstellungen konfigurieren, die auf der Registerkarte „Konnektivität“ definiert wurden.
 
 **Partitionsermittlung**  
@@ -183,9 +168,7 @@ Das Hierarchieermittlungsskript erhält vom Connector folgende Parameter:
 
 Das Skript muss entweder ein einzelnes untergeordnetes HierarchyNode-Objekt oder eine Liste (List[T]) mit untergeordneten HierarchyNode-Objekten an die Pipeline zurückgeben.
 
-<a id="import" class="xliff"></a>
-
-#### Import
+#### <a name="import"></a>Import
 Connectors, die Importvorgänge unterstützen, müssen drei Skripts implementieren:
 
 **Import starten**  
@@ -231,9 +214,7 @@ Das Skript „Import beenden“ erhält vom Connector folgende Parameter:
 
 Das Skript muss ein einzelnes Objekt vom Typ [CloseImportConnectionResults][cicres] an die Pipeline zurückgeben, z.B.: `Write-Output (New-Object Microsoft.MetadirectoryServices.CloseImportConnectionResults)`
 
-<a id="export" class="xliff"></a>
-
-#### Export
+#### <a name="export"></a>Export
 Analog zur Importarchitektur müssen Connectors mit Exportunterstützung drei Skripts implementieren:
 
 **Export starten**  
@@ -279,9 +260,7 @@ Das Skript „Export beenden“ erhält vom Connector folgende Parameter:
 
 Das Skript darf keine Ausgabe an die Pipeline zurückgeben.
 
-<a id="password-synchronization" class="xliff"></a>
-
-#### Kennwortsynchronisierung
+#### <a name="password-synchronization"></a>Kennwortsynchronisierung
 Windows PowerShell-Connectors können als Ziel für Kennwortänderungen/-zurücksetzungen verwendet werden.
 
 Das Kennwortskript erhält vom Connector folgende Parameter:
@@ -303,17 +282,11 @@ Vom Kennwortskript wird keine Ergebnisrückgabe an die Windows PowerShell-Pipel
 * [PasswordIllFormedException][pwdex2]: Wird ausgelöst, wenn das Kennwort für das verbundene System nicht zulässig ist.
 * [PasswordExtension][pwdex3]: Wird für alle anderen Fehler im Kennwortskript ausgelöst.
 
-<a id="sample-connectors" class="xliff"></a>
-
-## Beispielconnectors
+## <a name="sample-connectors"></a>Beispielconnectors
 Eine vollständige Übersicht über die verfügbaren Beispielconnectors finden Sie unter [Windows PowerShell Connector Sample Connector Collection][samp] (Windows PowerShell-Connectors – Sammlung mit Beispielconnectors).
 
-<a id="other-notes" class="xliff"></a>
-
-## Sonstige Hinweise
-<a id="additional-configuration-for-impersonation" class="xliff"></a>
-
-### Zusätzliche Konfiguration für den Identitätswechsel
+## <a name="other-notes"></a>Sonstige Hinweise
+### <a name="additional-configuration-for-impersonation"></a>Zusätzliche Konfiguration für den Identitätswechsel
 Gewähren Sie dem Benutzer, dessen Identität angenommen wird, auf dem Synchronisierungsdienst-Server die folgenden Berechtigungen:
 
 Lesezugriff auf die folgenden Registrierungsschlüssel:
@@ -336,9 +309,7 @@ Lesezugriff auf die folgenden Dateisystemordner:
 
 Ersetzen Sie den Platzhalter {ConnectorName} durch den Namen des Windows PowerShell-Connectors.
 
-<a id="troubleshooting" class="xliff"></a>
-
-## Problembehandlung
+## <a name="troubleshooting"></a>Problembehandlung
 * Informationen zum Aktivieren der Protokollierung für die Behandlung von Connectorproblemen finden Sie unter [Vorgehensweise: Aktivieren der ETW-Ablaufverfolgung für Connectors](http://go.microsoft.com/fwlink/?LinkId=335731).
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
@@ -371,4 +342,3 @@ Ersetzen Sie den Platzhalter {ConnectorName} durch den Namen des Windows PowerS
 [pwdex2]: https://msdn.microsoft.com/library/windows/desktop/microsoft.metadirectoryservices.passwordillformedexception.aspx
 [pwdex3]: https://msdn.microsoft.com/library/windows/desktop/microsoft.metadirectoryservices.passwordextensionexception.aspx
 [samp]: http://go.microsoft.com/fwlink/?LinkId=394291
-

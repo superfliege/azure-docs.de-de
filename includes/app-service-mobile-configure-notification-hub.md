@@ -1,11 +1,11 @@
-Das Mobile Apps-Feature von Azure App Service verwendet [Azure Notification Hubs] für den Versand von Pushbenachrichtigungen. Deshalb müssen Sie einen Benachrichtigungs-Hub für Ihre mobile App konfigurieren.
+Die Mobile Apps-Funktion von Azure App Service verwendet [Azure Notification Hubs] Push-Vorgänge, senden, damit Sie einen benachrichtigungs-Hub für die mobile app konfigurieren.
 
-1. Navigieren Sie im [Azure-Portal] zu **App Services**, und klicken Sie dann auf Ihr App-Back-End. Klicken Sie unter **Einstellungen** auf **Push**.
-2. Klicken Sie auf **Verbinden**, um der App eine Notification Hub-Ressource hinzuzufügen. Sie können einen Hub erstellen oder einen vorhandenen Hub verwenden.
+1. In der [Azure-Portal], wechseln Sie zu **Anwendungsdienste**, und klicken Sie dann auf Ihre app-Back-End. Klicken Sie unter **Einstellungen**, klicken Sie auf **Push**.
+2. Klicken Sie auf **verbinden** der app einen Notification Hub-Ressource hinzu. Sie können entweder erstellen Sie einen Hub oder zum Verbinden mit einer vorhandenen Arbeitsaufgabe.
 
     ![](./media/app-service-mobile-create-notification-hub/configure-hub-flow.png)
 
-Sie haben nun einen Benachrichtigungs-Hub mit Ihrem Mobile Apps-Back-End-Projekt verbunden. Später konfigurieren Sie diesen Notification Hub so, dass eine Verbindung mit einem Plattformbenachrichtigungssystem (Platform Notification System, PNS) hergestellt wird, um Pushbenachrichtigungen an Geräte zu senden.
+Sie haben nun einen benachrichtigungs-Hub zu Ihrem Mobile Apps-Back-End-Projekt verbunden. Konfigurieren Sie später dieser Notification Hub zur Verbindung mit einem plattformbenachrichtigungssystem (PNS) mithilfe von Push auf Geräte übertragen.
 
 [Azure-Portal]: https://portal.azure.com/
 [Azure Notification Hubs]: https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-push-notification-overview/

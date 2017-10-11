@@ -13,12 +13,11 @@ ms.workload: identity
 ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 45a6f63bd920c9a70c25b8dfae084ea030256cf4
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal
 
@@ -52,7 +51,7 @@ Die Granularitätsebene von Berichten kann für die einzelnen Editionen aber var
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – Free und Basic Edition
 
-In den Azure Active Directory-Editionen Free und Basic wird Ihnen eine Liste mit riskanten Anmeldungen zur Verfügung gestellt, die für Ihre Benutzer erkannt wurden. Folgendes finden Sie im Bericht:
+In den Azure Active Directory-Editionen Free und Basic wird Ihnen eine Liste mit riskanten Anmeldungen zur Verfügung gestellt, die für Ihre Benutzer erkannt wurden. In diesem Bericht werden:
 
 - **Benutzer**: Der Name des Benutzers, der während des Anmeldevorgangs verwendet wurde
 - **IP**: Die IP-Adresse des Geräts, die für die Verbindung mit Azure Active Directory verwendet wurde
@@ -74,9 +73,9 @@ Basierend auf Ihrer Untersuchung der riskanten Anmeldung können Sie Azure Activ
 
 Ausführlichere Informationen finden Sie unter [Manuelles Schließen von Risikoereignissen](active-directory-identityprotection.md#closing-risk-events-manually).
 
-In diesem Bericht stehen Ihnen folgende Optionen zur Verfügung:
+Dieser Bericht enthält eine Option aus, um Szenarien:
 
-- Suchen von Ressourcen
+- Ihren Ressourcen
 - Herunterladen der Berichtsdaten
 
 
@@ -135,5 +134,4 @@ Das Blatt **Details** wird für das Risikoereignis geöffnet. Auf dem Blatt **De
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu Azure Active Directory Identity Protection finden Sie unter [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
-
 

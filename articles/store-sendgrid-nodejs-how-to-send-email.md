@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 327cea3a24cc47a9cc463b37cc2346ebc475ef7f
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Senden von E-Mails mit SendGrid aus Node.js
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem E-Mail-Dienst SendGrid in Azure. Die Beispiele sind in C# geschrieben und verwenden die Node.js-API. Die behandelten Szenarien umfassen das **Erstellen einer E-Mail**, **Senden einer E-Mail**, **Hinzufügen von Anhängen**, **Verwenden von Filtern** und **Aktualisieren von Eigenschaften**. Weitere Informationen zu SendGrid und zum Senden von E-Mails erhalten Sie im Abschnitt [Nächste Schritte](#next-steps) .
@@ -66,7 +66,7 @@ Sie können auch eine HTML-Nachricht für Clients festlegen, bei denen dies durc
 
 Wenn die Text- und die HTML-Option ausgewählt sind, wird die Nachricht auf Clients, die keine HTML-Nachrichten unterstützen, im Textformat angezeigt.
 
-Weitere Informationen zu allen von der Funktion „Email“ unterstützten Eigenschaften finden Sie unter [sendgrid-nodejs][sendgrid-nodejs].
+Weitere Informationen zu allen Eigenschaften, die von der e-Mail-Funktion unterstützt, finden Sie unter [Sendgrid-Nodejs][sendgrid-nodejs].
 
 ## <a name="how-to-send-an-email"></a>Senden von E-Mails
 Nach der Erstellung einer E-Mail mithilfe der E-Mail-Funktion können Sie diese über die von SendGrid bereitgestellte Web-API senden. 
@@ -117,7 +117,7 @@ Anhänge können einer Nachricht hinzugefügt werden, indem die entsprechenden D
 > 
 
 ## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>Verwenden von Filtern zur Aktivierung von Fußzeilen und zur Nachverfolgung
-SendGrid bietet zusätzliche E-Mail-Funktionen durch die Verwendung von Filtern. Hierbei handelt es sich um Einstellungen, die zu einer E-Mail-Nachricht hinzugefügt werden können, um spezifische Funktionen wie etwa Aktivierung von Klickprotokollierung, Google Analytics, Abonnement-Tracking usw. zu ermöglichen. Eine vollständige Liste der verfügbaren Filter finden Sie unter [Filtereinstellungen][Filtereinstellungen].
+SendGrid bietet zusätzliche E-Mail-Funktionen durch die Verwendung von Filtern. Hierbei handelt es sich um Einstellungen, die zu einer E-Mail-Nachricht hinzugefügt werden können, um spezifische Funktionen wie etwa Aktivierung von Klickprotokollierung, Google Analytics, Abonnement-Tracking usw. zu ermöglichen. Eine vollständige Liste der Filter finden Sie unter [Filtereinstellungen][Filter Settings].
 
 Filter können mithilfe der Eigenschaft **filters** auf eine Nachricht angewendet werden.
 Jeder Filter wird durch einen Hash mit filterspezifischen Einstellungen festgelegt.
@@ -161,7 +161,7 @@ Die folgenden Beispiele veranschaulichen die Filter für die Fußzeile und die K
     sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>Aktualisieren von E-Mail-Eigenschaften
-Einige E-Mail-Eigenschaften können mit **set*Eigenschaft*** überschrieben oder mit **add*Eigenschaft*** angefügt werden. Sie können z. B. zusätzliche Empfänger hinzufügen:
+Einige e-Mail-Eigenschaften können überschrieben werden, mithilfe von  **festgelegt*Eigenschaft*** mit angehängt oder  **hinzufügen*Eigenschaft***. Sie können z. B. zusätzliche Empfänger hinzufügen:
 
     email.addTo('jeff@contoso.com');
 
@@ -170,27 +170,21 @@ oder einen Filter setzen:
     email.addFilter('footer', 'enable', 1);
     email.addFilter('footer', 'text/html', '<strong>boo</strong>');
 
-Weitere Informationen finden Sie unter [sendgrid-nodejs][sendgrid-nodejs].
+Weitere Informationen finden Sie unter [Sendgrid-Nodejs][sendgrid-nodejs].
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>Verwenden zusätzlicher SendGrid-Dienste
-SendGrid bietet webbasierte APIs, die Sie zur Nutzung zusätzlicher SendGrid-Funktionen aus Ihrer Azure-Anwendung einsetzen können. Ausführliche Informationen finden Sie in der [SendGrid-API-Dokumentation][SendGrid-API-Dokumentation].
+SendGrid bietet webbasierte APIs, die Sie zur Nutzung zusätzlicher SendGrid-Funktionen aus Ihrer Azure-Anwendung einsetzen können. Ausführliche Informationen finden Sie in der [SendGrid-API-Dokumentation][SendGrid API documentation].
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des E-Mail-Dienstes SendGrid vertraut sind, finden Sie unter diesen Links weitere Informationen.
 
-* Repository für das SendGrid-Node.js-Modul: [sendgrid-nodejs][sendgrid-nodejs]
+* SendGrid-Node.js modulrepository: [Sendgrid-Nodejs][sendgrid-nodejs]
 * SendGrid-API-Dokumentation: <https://sendgrid.com/docs>
 * Spezielles SendGrid-Angebot für Azure-Kunden: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 
-[spezielles Angebot ]: https://sendgrid.com/windowsazure.html
+[special offer]: https://sendgrid.com/windowsazure.html
 [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs
-[Filtereinstellungen]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
-[SendGrid-API-Dokumentation]: https://sendgrid.com/docs
+[Filter Settings]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
+[SendGrid API documentation]: https://sendgrid.com/docs
 [cloudbasierter E-Mail-Dienst]: https://sendgrid.com/email-solutions
 [transaktionale E-Mail-Übermittlung]: https://sendgrid.com/transactional-email
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

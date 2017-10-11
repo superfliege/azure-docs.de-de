@@ -1,6 +1,6 @@
 ---
-title: "Überwachung auf Azure Service Fabric-Anwendungsebene | Microsoft-Dokumentation"
-description: "In diesem Artikel erfahren Sie mehr über Ereignisse und Protokolle auf Anwendungs- und Dienstebene, die zum Überwachen und Diagnostizieren von Azure Service Fabric-Clustern verwendet werden."
+title: "Azure Service Fabric-Anwendungsebene Überwachung | Microsoft Docs"
+description: "Informationen Sie zur Anwendung und Dienstereignisse und Protokolle, die zum Überwachen und Analysieren von Azure Service Fabric-Cluster verwendet."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,29 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 3c472904641108b7383cd0f1416c47460f8de11a
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
+# <a name="application-and-service-level-event-and-log-generation"></a>Anwendung und Servicelevel-Ereignis und Protokolldateien generation
 
-# <a name="application-and-service-level-event-and-log-generation"></a>Ereignis- und Protokollgenerierung auf Anwendungs- und Dienstebene
+## <a name="instrumenting-the-code-with-custom-events"></a>Instrumentieren den Code mit benutzerdefinierten Ereignissen
 
-## <a name="instrumenting-the-code-with-custom-events"></a>Instrumentieren des Codes mit benutzerdefinierten Ereignissen
+Instrumentieren des Codes ist die Grundlage für die meisten anderen Aspekte bei der Überwachung Ihrer Dienste. Instrumentation ist die einzige Möglichkeit, Sie können davon ausgehen, dass etwas falsch und diagnostizieren, was behoben werden muss. Zwar technisch möglich, einen Debugger an einen Produktionsdienst zu verbinden, ist es nicht üblich. Ausführliche Instrumentationsdaten ist deshalb wichtig.
 
-Das Instrumentieren des Codes ist die Grundlage für die meisten anderen Aspekte bei der Überwachung Ihrer Dienste. Die Instrumentierung ist die einzige Möglichkeit, wie Sie Fehler erkennen und die Diagnose zur Fehlerbehebung stellen können. Es ist zwar technisch möglich, einen Debugger mit einem Produktionsdienst zu verbinden, aber dies ist keine gängige Vorgehensweise. Es ist also wichtig, dass Sie über ausführliche Instrumentierungsdaten verfügen.
+Einige Produkte Instrumentieren automatisch Code. Obwohl diese Lösungen gut funktionieren können, ist manueller Instrumentation fast immer erforderlich. Letztlich benötigen Sie ausreichende Informationen forensisch Debuggen die Anwendung. Dieses Dokument beschreibt verschiedene Ansätze zum Instrumentieren des Codes und wann ein Vergleich mit anderen kennen von beiden Ansätzen.
 
-Bei einigen Produkten wird Ihr Code automatisch instrumentiert. Obwohl diese Lösungen ggf. gut funktionieren, ist fast immer eine manuelle Instrumentierung erforderlich. Letztlich benötigen Sie ausreichend Informationen für das genaue Debuggen der Anwendung. In diesem Dokument werden die verschiedenen Verfahren für das Instrumentieren des Codes und die jeweiligen Vor- und Nachteile für bestimmte Fälle beschrieben.
+## <a name="eventsource"></a>eventSource
+Bei der Erstellung einer Service Fabric-Lösung aus einer Vorlage in Visual Studio ein **EventSource**-Klasse (**ServiceEventSource** oder **ActorEventSource**) wird generiert. Eine Vorlage wird erstellt, in dem Sie Ereignisse für Ihre Anwendung oder Dienst hinzufügen können. Die **EventSource** Namen **müssen** eindeutig sein und sollte aus der Vorlagenzeichenfolge "Standard" - "MyCompany" umbenannt werden&lt;Lösung&gt;-&lt;Projekt&gt;. Mehrere **EventSource** Definitionen, die den gleichen Namen verwenden bewirkt, dass ein Problem bei der Ausführung. Jedes benutzerdefinierte Ereignis muss einen eindeutigen Bezeichner verfügen. Wenn ein Bezeichner nicht eindeutig ist, ein Common Language Runtime-Fehler auftritt ist. Einige Organisationen Konfigurationsparameter im Voraus zuweisen Wertebereiche für Bezeichner zur Vermeidung von Konflikten zwischen separaten Entwicklungsteams. Weitere Informationen finden Sie unter [Vances Blog](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) oder [MSDN-Dokumentation](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
 
-## <a name="eventsource"></a>EventSource
-Wenn Sie eine Service Fabric-Lösung aus einer Vorlage in Visual Studio erstellen, wird eine von **EventSource** abgeleitete Klasse (**ServiceEventSource** oder **ActorEventSource**) generiert. Es wird eine Vorlage erstellt, in der Sie Ereignisse für Ihre Anwendung oder Ihren Dienst hinzufügen können. Der **EventSource**-Name **muss** eindeutig sein. Er sollte auf der Standardvorlage „MyCompany-&lt;Projektmappe&gt;-&lt;Projekt&gt;“ basieren und entsprechend umbenannt werden. Mehrere **EventSource**-Definitionen mit dem gleichen Namen führen zur Laufzeit zu Problemen. Jedes definierte Ereignis muss über einen eindeutigen Bezeichner verfügen. Wenn ein Bezeichner nicht eindeutig ist, tritt ein Laufzeitfehler auf. In einigen Organisationen werden Wertebereiche vorab Bezeichnern zugewiesen, um Konflikte zwischen separaten Entwicklungsteams zu vermeiden. Weitere Informationen finden Sie im [Blog von Vance](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) oder in der [MSDN-Dokumentation](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
+### <a name="using-structured-eventsource-events"></a>Verwendung von strukturierter EventSource-Ereignissen
 
-### <a name="using-structured-eventsource-events"></a>Verwenden strukturierter EventSource-Ereignisse
-
-Alle Ereignisse in den Codebeispielen in diesem Abschnitt wurden für einen bestimmten Fall definiert, z.B. für die Registrierung eines Diensttyps. Wenn Sie Meldungen nach Anwendungsfall definieren, können Daten zusammen mit dem Text des Fehlers verpackt werden, und Sie können anhand der Namen oder Werte der angegebenen Eigenschaften leichter Such- und Filtervorgänge durchführen. Durch Strukturieren der Instrumentierungsausgabe wird eine Nutzung einfacher, jedoch sind für das Definieren eines neuen Ereignisses für jeden Verwendungsfall mehr Überlegungen und Zeit notwendig. Einige Ereignisdefinitionen können über die gesamte Anwendung hinweg gemeinsam genutzt werden. Beispielweise kann ein Start- oder Stoppereignis einer Methode für viele Dienste in einer Anwendung wiederverwendet werden. Ein domänenspezifischer Dienst, z.B. ein Auftragssystem, kann ein **CreateOrder**-Ereignis mit einem eigenen eindeutigen Ereignis aufweisen. Bei diesem Ansatz werden ggf. viele Ereignisse generiert, sodass unter Umständen die Koordinierung von Bezeichnern über Projektteams hinweg erforderlich wird. 
+Jedes der Ereignisse in den Codebeispielen in diesem Abschnitt werden für einen bestimmten Fall z. B. beim definiert ein Diensttyp registriert ist. Wenn Sie Nachrichten definieren, indem Sie Anwendungsfall-, Daten können mit dem Text des Fehlers verpackt werden, können Sie weitere problemlos suchen und Filter basierend auf den Namen oder die Werte der angegebenen Eigenschaften. Strukturieren der Instrumentation Ausgabe macht erfordern es einfacher, nutzen, jedoch mehr, um herauszufinden, und mehr Zeit ein neues Ereignis für jeden Verwendungsfall definieren. Bestimmte Ereignisdefinitionen können in der gesamten Anwendung freigegeben werden. Ereignis würde über viele Dienste innerhalb einer Anwendung wiederverwendet werden, z. B. eine Methode starten oder beenden. Domänenspezifische Dienst, wie ein System, möglicherweise eine **CreateOrder** -Ereignis, das einen eigenen eindeutigen des Ereignisses. Dieser Ansatz kann viele Ereignisse generieren und möglicherweise über Projektteams für Bezeichner koordiniert werden müssen. 
 
 ```csharp
     [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -66,9 +63,9 @@ Alle Ereignisse in den Codebeispielen in diesem Abschnitt wurden für einen best
         }
 ```
 
-### <a name="using-eventsource-generically"></a>Generisches Verwenden von EventSource
+### <a name="using-eventsource-generically"></a>Verwenden von EventSource generisch
 
-Da das Definieren bestimmter Ereignisse schwierig sein kann, werden häufig nur einige Ereignisse mit einem gemeinsamen Satz von Parametern definiert, die ihre Informationen in der Regel als Zeichenfolge ausgeben. Dadurch geht ein großer Teil der Strukturierung verloren, sodass es schwieriger ist, die Ergebnisse zu durchsuchen und zu filtern. Bei diesem Ansatz werden einige Ereignisse definiert, die in der Regel den Protokolliergraden entsprechen. Mit dem folgenden Codeausschnitt wird eine Debug- und Fehlermeldung definiert:
+Da bestimmte Ereignisse definieren schwierig sein kann, definieren Sie viele Personen einige Ereignisse mit einem gemeinsamen Satz von Parametern, die in der Regel ihre Informationen als Zeichenfolge ausgegeben. Ein großer Teil der strukturierten Aspekt ist verloren, und es ist schwieriger zu durchsuchen und Filtern der Ergebnisse. Bei diesem Ansatz werden einige Ereignisse, die in der Regel die Protokolliergrade entsprechen definiert. Im folgenden Codeausschnitt wird eine Nachricht Debug- und Fehler definiert:
 
 ```csharp
     [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -96,16 +93,16 @@ Da das Definieren bestimmter Ereignisse schwierig sein kann, werden häufig nur 
         }
 ```
 
-Auch die Nutzung einer Hybridlösung mit strukturierter und generischer Instrumentierung kann gut funktionieren. Die strukturierte Instrumentierung wird zum Melden von Fehlern und Metriken verwendet. Generische Ereignisse können für die ausführliche Protokollierung verwendet werden, die von Technikern für die Problembehandlung genutzt wird.
+Verwenden eine hybridlösung von strukturierten und generische Instrumentation kann auch funktionieren gut. Strukturierte Instrumentation wird verwendet, für die Berichterstattung von Fehlern und Metriken. Generische Ereignisse können für die ausführliche Protokollierung verwendet werden, die für die Problembehandlung von Engineers verarbeitet wird.
 
-## <a name="aspnet-core-logging"></a>ASP.NET Core-Protokollierung
+## <a name="aspnet-core-logging"></a>ASP.NET Core Protokollierung
 
-Es ist wichtig, dass Sie sorgfältig planen, wie Sie Ihren Code instrumentieren. Mit dem richtigen Instrumentierungsplan können Sie ggf. verhindern, dass Ihre Codebasis destabilisiert wird und eine erneute Instrumentierung des Codes erforderlich wird. Zur Reduzierung des Risikos können Sie eine Instrumentierungsbibliothek wie [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) wählen, die Teil von Microsoft ASP.NET Core ist. ASP.NET Core verfügt über eine [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger)-Schnittstelle, die Sie zusammen mit dem Anbieter Ihrer Wahl nutzen können, während gleichzeitig die Auswirkungen auf den vorhandenen Code minimiert werden. Sie können den Code in ASP.NET Core unter Windows und Linux und im vollständigen .NET Framework verwenden, damit Ihr Instrumentierungscode standardisiert ist. Dies wird im Folgenden weiter erörtert:
+Es ist wichtig, sorgfältig planen, wie Sie Ihren Code instrumentiert werden. Der richtige Instrumentation Plan helfen Ihnen die potenziell zur Destabilisierung der Codebasis und müssen dann den Code reinstrument vermeiden. Um das Risiko zu reduzieren, können Sie auswählen, wie ein instrumentationsbibliothek [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/), Bestandteil von Microsoft ASP.NET Core. ASP.NET Core verfügt über eine [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) Schnittstelle, die Sie mit dem Anbieter Ihrer Wahl verwenden können, und minimiert gleichzeitig die Auswirkungen auf vorhandenem Code. Verwenden Sie den Code in ASP.NET Core unter Windows und Linux, und im vollständigen .NET Framework, also Codes Instrumentation standardisiert ist. Dies wird weiter unten untersucht:
 
 ### <a name="using-microsoftextensionslogging-in-service-fabric"></a>Verwenden von Microsoft.Extensions.Logging in Service Fabric
 
-1. Fügen Sie das NuGet-Paket „Microsoft.Extensions.Logging“ dem Projekt hinzu, das Sie instrumentieren möchten. Fügen Sie außerdem alle Anbieterpakete hinzu (ein Drittanbieterpaket finden Sie im folgenden Beispiel). Weitere Informationen finden Sie unter [Logging in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging) (Protokollierung in ASP.NET Core).
-2. Fügen Sie der Dienstdatei eine **using**-Direktive für Microsoft.Extensions.Logging hinzu.
+1. Fügen Sie das Microsoft.Extensions.Logging NuGet-Paket für das Projekt zu instrumentieren. Fügen Sie alle Pakete, die Anbieter zusätzlich hinzu (eines Pakets von Drittanbietern finden Sie im folgende Beispiel). Weitere Informationen finden Sie unter [Protokollierung in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+2. Hinzufügen einer **mit** -Direktive für Microsoft.Extensions.Logging auf die Dienstdatei.
 3. Definieren Sie eine private Variable innerhalb Ihrer Dienstklasse.
 
   ```csharp
@@ -118,7 +115,7 @@ Es ist wichtig, dass Sie sorgfältig planen, wie Sie Ihren Code instrumentieren.
   _logger = new LoggerFactory().CreateLogger<Stateless>();
 
   ```
-5. Beginnen Sie in den Methoden, den Code zu instrumentieren. Es folgen einige Beispiele:
+5. Starten Sie in den Methoden Code zu instrumentieren. Hier sind einige Beispiele:
 
   ```csharp
   _logger.LogDebug("Debug-level event from Microsoft.Logging");
@@ -130,24 +127,24 @@ Es ist wichtig, dass Sie sorgfältig planen, wie Sie Ihren Code instrumentieren.
 
   ```
 
-## <a name="using-other-logging-providers"></a>Verwenden anderer Protokollierungsanbieter
+## <a name="using-other-logging-providers"></a>Mithilfe von anderen Anbietern Protokollierung
 
-Einige Drittanbieter verwenden den im obigen Abschnitt beschriebenen Ansatz, einschließlich [Serilog](https://serilog.net/), [NLog](http://nlog-project.org/) und [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Sie können diese Elemente in die ASP.NET Core-Protokollierung einbetten oder separat verwenden. Serilog enthält ein Feature zur Erweiterung aller Nachrichten, die von einem Protokollierungstool gesendet werden. Dieses Feature kann nützlich sein, um den Dienstnamen, den Typ und die Partitionsinformationen auszugeben. Führen Sie diese Schritte aus, um diese Funktion in der ASP.NET Core-Infrastruktur zu verwenden:
+Einige Drittanbieter verwenden des Ansatzes im vorherigen Abschnitt beschriebenen einschließlich [Serilog](https://serilog.net/), [NLog](http://nlog-project.org/), und [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Schließen Sie jede dieser in ASP.NET Core Protokollierung oder können Sie sie einzeln verwenden. Serilog verfügt über eine Funktion, die alle Nachrichten von einer Protokollierung zu verbessern. Diese Funktion kann nützlich, um den Dienstnamen, den Typ und die Partitionsinformationen ausgegeben wird. Um diese Funktion in der Kerninfrastruktur von ASP.NET verwenden, führen Sie folgende Schritte aus:
 
-1. Fügen Sie dem Projekt die NuGet-Pakete Serilog, Serilog.Extensions.Logging und Serilog.Sinks.Observable hinzu. Fügen Sie für das nächste Beispiel außerdem Serilog.Sinks.Literate hinzu. Ein besserer Ansatz ist weiter unten in diesem Artikel dargestellt.
-2. Erstellen Sie in Serilog ein LoggerConfiguration-Element und die Instanz des Protokollierungstools.
+1. Fügen Sie die Serilog Serilog.Extensions.Logging und Serilog.Sinks.Observable NuGet-Pakete zum Projekt hinzu. Fügen Sie für das nächste Beispiel auch Serilog.Sinks.Literate hinzu. Ein besserer Ansatz ist weiter unten in diesem Artikel dargestellt.
+2. Erstellen Sie in Serilog eine LoggerConfiguration und die Protokollierungsinstanz.
 
   ```csharp
   Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
   ```
 
-3. Fügen Sie dem Dienstkonstruktor ein Serilog.ILogger-Argument hinzu, und übergeben Sie das neu erstellte Protokollierungstool.
+3. Der Dienstkonstruktor ein Serilog.ILogger-Argument hinzu, und übergeben Sie die neu erstellte Protokollierung.
 
   ```csharp
   ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
   ```
 
-4. Fügen Sie im Dienstkonstruktor folgenden Code ein, mit dem die Eigenschaften **ServiceTypeName**, **ServiceName**, **PartitionId** und **InstanceId** des Diensts erweitert werden. Außerdem wird der ASP.NET Core-Protokollierungsfactory eine Eigenschaftserweiterung hinzugefügt, sodass Sie Microsoft.Extensions.Logging.ILogger in Ihrem Code verwenden können.
+4. Im Dienstkonstruktor, fügen Sie den folgenden Code, der die Eigenschaft Enrichers für erstellt die **ServiceTypeName**, **ServiceName**, **PartitionId**, und **InstanceId** Eigenschaften des Diensts. Außerdem hinzugefügt eine Eigenschaft Enricher mit der ASP.NET Core Protokollierung Factory, damit Sie Microsoft.Extensions.Logging.ILogger in Ihrem Code verwenden können.
 
   ```csharp
   public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)
@@ -167,16 +164,15 @@ Einige Drittanbieter verwenden den im obigen Abschnitt beschriebenen Ansatz, ein
   }
   ```
 
-5. Instrumentieren Sie den Code so wie bei der Verwendung von ASP.NET Core ohne SeriLog.
+5. Instrumentieren des Codes die gleiche wie bei Verwendung von ASP.NET Core ohne Serilog wurden.
 
   >[!NOTE]
-  >Wir empfehlen Ihnen, den statischen Log.Logger nicht für das vorherige Beispiel zu verwenden. Service Fabric kann mehrere Instanzen mit dem gleichen Diensttyp innerhalb eines Prozesses hosten. Wenn Sie den statischen Log.Logger nutzen, zeigt der letzte Writer der Eigenschaftserweiterungen Werte für alle ausgeführten Instanzen an. Dies ist ein Grund dafür, dass die _logger-Variable eine private Membervariable der Dienstklasse ist. Darüber hinaus müssen Sie „_logger“ für den allgemeinen Code verfügbar machen, der ggf. dienstübergreifend verwendet wird.
+  >Es wird empfohlen, dass Sie nicht die statische Log.Logger das vorangehende Beispiel verwenden. Service Fabric können mehrere Instanzen des gleichen Diensttyps innerhalb eines einzelnen Prozesses gehostet werden. Wenn Sie die statische Log.Logger verwenden, wird der letzte Writer, der die Eigenschaft Enrichers Werte für alle Instanzen angezeigt, die ausgeführt werden. Dies ist ein Grund, warum die _logger-Variable für eine Private Membervariable der Dienstklasse ist. Darüber hinaus müssen Sie die _logger gemeinsamer Code zur Verfügung stellen, die in Diensten verwendet werden kann.
 
-## <a name="choosing-a-logging-provider"></a>Auswählen eines Protokollierungsanbieters
+## <a name="choosing-a-logging-provider"></a>Auswählen einer-Protokollierungsanbieter
 
-Wenn Sie für Ihre Anwendung eine hohe Leistung benötigen, ist **EventSource** normalerweise ein geeigneter Ansatz. Für **EventSource** werden *im Allgemeinen* weniger Ressourcen verwendet, und es wird eine bessere Leistung als mit der ASP.NET Core-Protokollierung oder den erhältlichen Drittanbieterlösungen erzielt.  Dies ist für zahlreiche Dienste kein Problem, aber wenn Ihr Dienst leistungsorientiert ist, kann **EventSource** die bessere Wahl sein. Um die gleichen Vorteile wie bei der strukturierten Protokollierung zu erhalten, fällt für Ihre Entwickler bei **EventSource** jedoch ein höherer Aufwand an. Wenn möglich, führen Sie eine schnelle „Prototyperstellung“ für einige Protokollierungsoptionen durch, und wählen Sie dann die Option aus, die für Ihre Anforderungen am besten geeignet ist.
+Wenn Ihre Anwendung hohe Leistung, benötigt **EventSource** ist normalerweise ein guter Ansatz. **EventSource** *im allgemeinen* weniger Ressourcen beansprucht und bietet eine bessere Leistung als ASP.NET Core Protokollierung und keines der verfügbaren Drittanbieter-Lösungen.  Dies ist ein Problem für zahlreiche Dienste, aber wenn Sie Ihren Dienst Leistung-orientierten mit nicht **EventSource** möglicherweise die bessere Wahl sein. Jedoch folgende Vorteile des abzurufenden strukturiert Protokollierung **EventSource** erfordert eine größere Investition von engineering-Team. Wenn möglich, führen Sie einen schnellen Prototyp des einige Optionen für die Protokollierung, und wählen Sie dann das Projekt, das Ihren Anforderungen am besten entspricht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie den Protokollanbieter zum Instrumentieren Ihrer Anwendungen und Dienste ausgewählt haben, müssen Ihre Protokolle und Ereignisse aggregiert werden, bevor sie an eine Analyseplattform gesendet werden können. Lesen Sie die Artikel zu [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) und [WAD](service-fabric-diagnostics-event-aggregation-wad.md), um einige der empfohlenen Optionen besser zu verstehen.
-
+Sobald Sie Ihren Protokollierungsanbieter für die zum Instrumentieren von Anwendungen und Dienste ausgewählt haben, müssen die Protokolle und Ereignisse aggregiert werden, bevor sie an einer beliebigen Plattform Analysis gesendet werden können. Erfahren Sie, [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) und [WAD](service-fabric-diagnostics-event-aggregation-wad.md) um einige der empfohlenen Optionen besser zu verstehen.

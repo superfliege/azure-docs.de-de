@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
-ms.openlocfilehash: d42b96b0fb02b6c2df364d5e19f3345991ee03b1
-ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
-
-
+ms.openlocfilehash: 94e945a52b9df7c495de1611baa08083357670c9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="secure-a-web-api-by-using-nodejs"></a>Schützen einer Web-API mit Node.js
 > [!NOTE]
@@ -41,7 +39,7 @@ Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickS
 Die fertige Anwendung wird Ihnen zudem am Ende dieses Tutorials bereitgestellt.
 
 ## <a name="1-register-an-app"></a>1. Registrieren einer App
-Erstellen Sie eine neue App auf [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), oder führen Sie die folgenden [ausführlichen Schritte](active-directory-v2-app-registration.md) aus, um eine App zu registrieren. Stellen Sie sicher, dass Sie:
+Erstellen Sie eine neue App auf [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), oder führen Sie die folgenden [detaillierten Schritte](active-directory-v2-app-registration.md) aus, um eine App zu registrieren. Stellen Sie sicher, dass Sie:
 
 * die **Anwendungs-ID** kopieren, die Ihrer App zugewiesen ist. Sie benötigen sie für dieses Tutorial.
 * Fügen Sie die **Mobile** -Plattform Ihrer App hinzu.
@@ -846,5 +844,4 @@ Hier sind einige zusätzliche Ressourcen:
 
 ### <a name="get-security-updates-for-our-products"></a>Abrufen von Sicherheitsupdates für unsere Produkte
 Wir empfehlen Ihnen, sich zu registrieren, um bei Auftreten von Sicherheitsvorfällen benachrichtigt zu werden. Abonnieren Sie auf der Seite [Technische Sicherheitsbenachrichtigungen von Microsoft](https://technet.microsoft.com/security/dd252948) den Microsoft-Sicherheitsnewsletter.
-
 

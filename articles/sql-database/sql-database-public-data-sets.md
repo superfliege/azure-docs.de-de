@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 03/20/2017
 ms.author: douglasl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 53ae23dba61cf835c6a4826b528772b1cd2e1622
-ms.contentlocale: de-de
-ms.lasthandoff: 03/28/2017
-
+ms.openlocfilehash: b6f8d327123fc0ebe13790cbb3760f6eba90f5b5
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Öffentliche Datasets zum Testen und Erstellen von Prototypen
 
@@ -60,4 +59,3 @@ Durchsuchen Sie diese Liste mit öffentlichen Datasets nach Daten, mit denen Sie
 | [GitHub-Archiv](https://www.githubarchive.org/) | „GitHub Archive ist ein Projekt zum Erfassen und Archivieren der öffentlichen GitHub-Zeitachse [von Ereignissen], auf die zur weiteren Analyse einfach zugegriffen werden kann.“ | Laden Sie JSON-verschlüsselte Archive im GZ-Format (Gzip) über einen Webclient herunter. |
 | [GitHub-Aktivitätsdaten aus dem GHTorrent-Projekt](http://ghtorrent.org/) | „Das GHTorrent-Projekt dient zum Erstellen eines skalierbaren, abfragbaren Offlinedatenspiegels, der über die GitHub-REST-API zur Verfügung gestellt wird. GHTorrent überwacht die GitHub-Zeitachse für öffentliche Ereignisse. Für jedes Ereignis werden der Inhalt und die zugehörigen Abhängigkeiten abgerufen.“ | MySQL-Datenbanksicherungen liegen im CSV-Format vor. |
 | [Stack Overflow-Datensicherungen](https://archive.org/details/stackexchange) | „Hierbei handelt es sich um eine anonymisierte Sicherung aller von Benutzern bereitgestellten Inhalte im Stack Exchange-Netzwerk [einschließlich Stack Overflow].“ | „Jede Website [etwa Stack Overflow] ist als ein separates Archiv formatiert, das aus mit 7-zip gezippten XML-Dateien mit bzip2-Komprimierung besteht. Jedes Websitearchive enthält Beiträge, Benutzer, Stimmen, Kommentare, Beitragsverlauf und Beitragslinks.“ |
-

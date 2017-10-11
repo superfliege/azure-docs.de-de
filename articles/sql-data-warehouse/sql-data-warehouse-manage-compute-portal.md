@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
-ms.openlocfilehash: a86b041424ce1757fd45c7a39350f4c4e66ee265
-ms.contentlocale: de-de
-ms.lasthandoff: 01/20/2017
-
-
+ms.openlocfilehash: 63888d5dd103b585cf18e4787d3e779810163e3d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-azure-portal"></a>Verwalten von Computeleistung in Azure SQL Data Warehouse (Azure-Portal)
 > [!div class="op_single_selector"]
@@ -109,4 +107,3 @@ Weitere Informationen finden Sie unter [Verwaltungsübersicht][Management overvi
 <!--Other Web references-->
 
 [Azure portal]: http://portal.azure.com/
-

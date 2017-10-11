@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: d38adc6104337aa6cea9ee0f8042c22434624c9a
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 2f503aa60fdd9b7cf66ef482a1041e34c88e5c01
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-an-azure-resource-manager-template"></a>Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe einer Azure Resource Manager-Vorlage
 
@@ -205,5 +204,4 @@ Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnit
         data:    Tags: null
         data:
         info:    group create command OK
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: a1f3f6e6cba074647195e2b0cbcdc7b4f3dec475
-ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="step-3-plan-networking-for-hyper-v-vm-replication-to-a-secondary-vmm-site"></a>Schritt 3: Planen des Netzwerks für die Replikation virtueller Hyper-V-Computer an einem sekundären VMM-Standort
 
@@ -217,6 +216,5 @@ Sehen wir uns ein Szenario an, in dem Sie verschiedene IP-Adressen für den prim
 ## <a name="next-steps"></a>Nächste Schritte
 
 Gehen Sie zu [Schritt 4: Vorbereiten von VMM und Hyper-V](vmm-to-vmm-walkthrough-vmm-hyper-v.md).
-
 
 

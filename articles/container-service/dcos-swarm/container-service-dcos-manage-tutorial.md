@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 07/17/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: e93f782c26c32f97749e817ec59ee3c2ecb7e119
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Tutorial für Azure Containerdienst – DC/OS verwalten
 
 DC/OS bietet eine verteilte Plattform für das Ausführen moderner und containerbasierter Anwendungen. Mit dem Azure Container Service ist die Bereitstellung eines produktionsbereiten DC/OS-Clusters schnell und einfach. In diesem Schnellstart werden die notwendigen grundlegenden Schritte zum Bereitstellen eines DC/OS-Clusters und zur Ausführung eines einfachen Workloads aufgeführt.

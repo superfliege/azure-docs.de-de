@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 122fa997ea11b369aae3c59edf0043ab19d21aea
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Anpassen der Azure AD B2C-Benutzeroberfläche (UI)
 
@@ -36,7 +35,7 @@ In diesem Artikel werden die folgenden Themen behandelt:
 * Die von Azure AD B2C verwendeten Benutzeroberflächenelemente, die Sie mithilfe von Cascading Stylesheets (CSS) anpassen können.
 * Bewährte Methoden beim Üben des Umgangs mit diesem Feature.
 
-## <a name="the-page-ui-customization-feature"></a>Das Feature „Seite für die Benutzeroberflächenanpassung“
+## <a name="the-page-ui-customization-feature"></a>Das Anpassungsfeature für die Seiten-UI
 
 Sie können das Aussehen und Verhalten der Seiten für die Registrierung, Anmeldung, Kennwortzurücksetzung und Profilbearbeitung von Kunden (durch Konfigurieren von [Richtlinien](active-directory-b2c-reference-policies.md)) anpassen. Beim Navigieren zwischen der Anwendung und den Seiten, die von Azure AD B2C bereitgestellt werden, wird Kunden eine nahtlose Benutzeroberfläche geboten.
 
@@ -348,4 +347,3 @@ Wenn Sie das Anpassungsfeature für die Seiten-UI verwenden möchten, beachten S
   * Eingeschränkte Unterstützung für Internet Explorer 9, 8
   * Google Chrome 42.0 und höher
   * Mozilla Firefox 38.0 und höher
-

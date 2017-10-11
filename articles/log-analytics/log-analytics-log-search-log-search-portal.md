@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 6fc556ceb34cde26d5f3789a2397cdaa34b0b84d
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Erstellen von Protokollsuchvorgängen in Azure Log Analytics mit dem Portal für die Protokollsuche
 
@@ -165,4 +164,3 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 
 - Weitere Informationen zur Log Analytics-Abfragesprache finden Sie unter [Erste Schritte mit dem Analytics-Portal](https://go.microsoft.com/fwlink/?linkid=856079).
 - Arbeiten Sie das Tutorial für das [Advanced Analytics-Portal](https://go.microsoft.com/fwlink/?linkid=856587) durch, mit dem Sie die gleichen Abfragen ausführen und die gleichen Daten wie im Portal für die Protokollsuche abrufen können.
-

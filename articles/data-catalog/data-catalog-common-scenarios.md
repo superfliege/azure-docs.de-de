@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 63f951fbfc9ab5adad8f9225c2827abcbdb7f784
-ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: e01e6fa3b9871541bf9573963ced05848a3726e3
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Häufige Szenarien mit Azure Data Catalog
 In diesem Artikel werden übliche Szenarien vorgestellt, bei denen Azure Data Catalog Organisationen unterstützt, mehr Nutzen aus ihren vorhandenen Datenquellen zu ziehen.
@@ -68,4 +67,3 @@ Diese ständige Weitergabe vorhandenen Wissens ist in großen und kleinen Untern
 Datenexperten dokumentieren ihr Wissen üblicherweise und teilen es per E-Mail oder in Word-Dokumenten auf einer SharePoint-Teamwebsite mit anderen. Diese Vorgehensweise ist zwar hilfreich, aber damit werden gleichzeitig neue Ermittlungsprobleme geschaffen: Woher wissen Mitarbeiter, welche Dokumentation vorhanden ist und wo sie sich befindet?
 
 Mit Azure Data Catalog verfügt Ihre Organisation über einen zentralen Speicherort zum Speichern und Freigeben dieses vorhandenen Wissens, in dem es einfach gefunden werden kann. In Data Catalog können Datenexperten Datenobjekte mit Anmerkungen versehen und Links zur vorhandenen Dokumentation einfügen. Wenn Mitglieder der Organisation den Katalog nutzen, um eine Datenquelle zu ermitteln, finden sie nicht nur die Quelle selbst, sondern auch das Wissen, dass zuvor nur in den Köpfen der Experten in Ihrer Organisation vorhanden war.
-

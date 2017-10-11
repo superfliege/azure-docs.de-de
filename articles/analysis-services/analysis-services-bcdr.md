@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 0a9bdf3afba87ba1e7a1047907ab9eeb0ef8a842
-ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 84b4c59bac1feeb8611b3a8d783d093ba073e532
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="analysis-services-high-availability"></a>Hohe Verfügbarkeit für Analysis Services
 In diesem Artikel wird die Sicherstellung einer hohen Verfügbarkeit für Azure Analysis Services-Server beschrieben. 
 
@@ -40,5 +38,4 @@ In beiden Fällen müssen Sie, wenn auf dem primären Server ein Ausfall auftrit
 ## <a name="related-information"></a>Verwandte Informationen
 [Sichern und Wiederherstellen](analysis-services-backup.md)   
 [Verwalten von Azure Analysis Services](analysis-services-manage.md) 
-
 

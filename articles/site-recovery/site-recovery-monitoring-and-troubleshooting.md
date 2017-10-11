@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: rajanaki
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 664a1bd9df9ace4993a8389dbeb049e721932082
-ms.contentlocale: de-de
-ms.lasthandoff: 03/06/2017
-
-
+ms.openlocfilehash: 5bcb5dcb6afc3909e34dde31f845e014e7c539e3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="monitor-and-troubleshoot-protection-for-virtual-machines-and-physical-servers"></a>Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern
 In diesem Leitfaden zur Überwachung und Problembehandlung wird beschrieben, wie Sie die Replikationsintegrität nachverfolgen und die Problembehandlung für Azure Site Recovery durchführen.
@@ -196,4 +194,3 @@ Im Folgenden sind häufige Fehler und die dazugehörigen Lösungen aufgeführt. 
 Wenn die Schaltfläche **Verbinden** im Portal ausgeblendet ist und keine ExpressRoute- oder Site-to-Site-VPN-Verbindung mit Azure besteht, müssen Sie eine öffentliche IP-Adresse erstellen und dem virtuellen Computer zuweisen, damit Sie Remotedesktop/Shared Shell nutzen können. Anschließend können Sie der Netzwerkschnittstelle des virtuellen Computers eine öffentliche IP hinzufügen.  
 
 ![Hinzufügen einer öffentlichen IP-Adresse an der Netzwerkschnittstelle des virtuellen Computers, für den ein Failover ausgeführt wurde](media/site-recovery-monitoring-and-troubleshooting/createpublicip.gif)
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 7897a30bf1774609ca8e6037dabcd5fbf4151271
-ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="step-2-review-the-prerequisites-and-limitations-for-hyper-v-vm-replication-to-a-secondary-vmm-site"></a>Schritt 2: Überprüfen der Voraussetzungen und Einschränkungen für die Replikation virtueller Hyper-V-Computer an einem sekundären VMM-Standort
 
@@ -44,4 +43,3 @@ Kommentare können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wechseln Sie zu [Schritt 3: Planen von Netzwerken](vmm-to-vmm-walkthrough-network.md).
-

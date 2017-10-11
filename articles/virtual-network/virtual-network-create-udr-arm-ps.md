@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
 ms.openlocfilehash: 3ab24f193c74449ae7414b4ea0675c0aae0211f4
-ms.lasthandoff: 03/22/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-user-defined-routes-udr-using-powershell"></a>Erstellen von benutzerdefinierten Routen (UDR) mit einer Vorlage
 
@@ -273,5 +272,4 @@ Führen Sie zum Aktivieren der IP-Weiterleitung in der von **FW1**verwendeten Ne
         EnableIPForwarding   : True
         NetworkSecurityGroup : null
         Primary              : True
-
 

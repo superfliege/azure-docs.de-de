@@ -1,9 +1,9 @@
-In diesem Artikel wird Folgendes vorausgesetzt:
+In diesem Artikel wird vorausgesetzt, dass
 
-1. Sie haben zwischen Ihrem lokalen Netzwerk und Azure Virtual Network bereits eine **Site-to-Site-VPN**- oder **ExpressRoute**-Verbindung eingerichtet.
-2. Ihr Benutzerkonto verfügt über die erforderlichen Berechtigungen, um einen neuen virtuellen Computer in dem Azure-Abonnement zu erstellen, auf das das Failover der virtuellen Computer erfolgt ist.
-3. Ihr Abonnement hat über mindestens vier verfügbare Kerne, um einen neuen virtuellen Prozessservercomputer zu starten.
-4. Sie haben die **Passphrase des Konfigurationsservers** zur Hand.
+1. Ein **Standort-zu-Standort-VPNs** oder ein **Expressroute** Verbindung zwischen Ihrem lokalen Netzwerk und Azure Virtual Network bereits eingerichtet wurde.
+2. Ihr Benutzerkonto berechtigt ist, zu eine neue virtuellen Maschine in der Azure-Abonnement erstellen, die die virtuellen Computer in ein Failover ausgeführt wurde haben.
+3. Ihr Abonnement verfügt über mindestens 4 Kerne verfügbar, um einen neuen Prozessserver virtuellen Computer zu starten.
+4. Sie haben die **Passphrase des Konfigurationsservers** verfügbar.
 
 > [!TIP]
-> Vergewissern Sie sich, dass Sie über die Azure Virtual Network-Instanz, an die das Failover der virtuellen Computer erfolgt ist, eine Verbindung mit Port 443 des (lokal ausgeführten) Konfigurationsservers herstellen können.
+> Stellen Sie sicher, dass Sie Port 443 des Konfigurationsservers (lokal ausgeführten) aus dem virtuellen Azure-Netzwerk herstellen, die die virtuellen Computer in ein Failover ausgeführt wurde haben können.

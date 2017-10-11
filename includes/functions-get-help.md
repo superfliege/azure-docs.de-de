@@ -1,5 +1,5 @@
 ### <a name="need-some-help"></a>Benötigen Sie Hilfe?
-Posten Sie Fragen in den Azure-Foren. – [MSDN besuchen](http://go.microsoft.com/fwlink/?LinkId=780719)
+Stellen Sie Fragen in den Azure-Foren. - [Finden Sie auf MSDN](http://go.microsoft.com/fwlink/?LinkId=780719)
 
-Markieren Sie Fragen mit dem Schlüsselwort `azure-functions`. – [Stack Overflow besuchen](http://stackoverflow.com/questions/tagged/azure-functions)
+Kennzeichnen von Fragen mit dem Schlüsselwort `azure-functions`. - [Besuchen Sie Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-functions)
 

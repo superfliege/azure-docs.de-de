@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: anandy
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: 87807a203d71b3abfe3e93132eb7d0b82b14b4ee
-ms.contentlocale: de-de
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
 ms.lasthandoff: 08/03/2017
-
----    
-
+---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualisieren des SSL-Zertifikats für eine Active Directory-Verbunddienste-Farm (AD FS)
 
 ## <a name="overview"></a>Übersicht
@@ -108,4 +106,3 @@ Nachdem die Konfiguration abgeschlossen ist, zeigt Azure AD Connect die Meldung 
 
 - [Azure AD Connect und Verbund](active-directory-aadconnectfed-whatis.md)
 - [Verwaltung der Active Directory-Verbunddienste und Anpassung mit Azure AD Connect](active-directory-aadconnect-federation-management.md)
-

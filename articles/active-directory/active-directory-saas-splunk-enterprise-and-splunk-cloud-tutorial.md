@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/09/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: b78e9b7161207a74880e912241d5e965b353d1c5
-ms.lasthandoff: 03/28/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Tutorial: Azure Active Directory-Integration mit Splunk Enterprise und Splunk Cloud
 
 In diesem Tutorial erfahren Sie, wie Sie Splunk Enterprise und Splunk Cloud in Azure Active Directory (Azure AD) integrieren.
@@ -128,12 +126,14 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) von Azure AD im 
   2. Geben Sie im Textfeld **Bezeichner** die URL Ihres Splunk-Servers ein.
   3. Geben Sie im Textfeld **Antwort-URL** die URL nach folgendem Muster ein: `https://<splunkserver>/saml/acs`
   4. Klicken Sie auf **Weiter**.
+
  
 4. Führen Sie auf der Seite **Einmaliges Anmelden bei Splunk Enterprise und Splunk Cloud konfigurieren** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_05.png)
   1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
   2. Klicken Sie auf **Weiter**.
+
 
 5. Wenden Sie sich an das Supportteam von Splunk Enterprise und Splunk Cloud, um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
 
@@ -254,4 +254,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Splunk Enterprise und Splunk Cloud
 [203]: ./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_general_205.png
-

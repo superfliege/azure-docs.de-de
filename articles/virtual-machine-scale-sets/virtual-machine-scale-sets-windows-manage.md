@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 88541f6054df1476866d68fdc1c9690a73ada83c
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: d09a020b903e5f43afe03b86c675bcc1eb536cbc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-virtual-machines-in-a-virtual-machine-scale-set"></a>Verwalten virtueller Computer in einer VM-Skalierungsgruppe
 Verwalten Sie mit den in diesem Artikel beschriebenen Aufgaben VMs in Ihrer VM-Skalierungsgruppe.
@@ -213,5 +212,4 @@ Sie können virtuelle Computer hinzufügen oder entfernen, indem Sie die Kapazit
     Update-AzureRmVmss -ResourceGroupName "resource group name" -Name "scale set name" -VirtualMachineScaleSet $vmss 
 
 Wenn Sie virtuelle Computer aus der Skalierungsgruppe entfernen, werden die virtuellen Computer mit den höchsten IDs zuerst entfernt.
-
 

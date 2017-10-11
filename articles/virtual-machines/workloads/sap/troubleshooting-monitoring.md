@@ -14,12 +14,11 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: ee5be707b443cbe42bf4a492d79390e534d4b91f
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>Problembehandlung und Überwachung von SAP HANA in Azure (große Instanzen)
 
@@ -116,10 +115,10 @@ Auf der Website [SAP HANA Troubleshooting: Memory Problems](http://help.sap.com/
 Führen Sie die Schritte zur Behandlung von Netzwerkproblemen aus, die in [SAP Note #2081065 – Troubleshooting SAP HANA Network](https://launchpad.support.sap.com/#/notes/2081065) beschrieben werden.
 
 1. Analysieren Sie die Roundtripzeit zwischen Server und Client.
-  A: Führen Sie das SQL-Skript [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700)_aus._
+  A: Führen Sie das SQL-Skript [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700) _aus._
   
 2. Analysieren Sie die Kommunikation zwischen Knoten.
-  A: Führen Sie das SQL-Skript [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700)_aus._
+  A: Führen Sie das SQL-Skript [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) _aus._
 
 3. Führen Sie den Linux-Befehl **ifconfig** aus (die Ausgabe zeigt, ob Paketverluste auftreten).
 4. Führen Sie den Linux-Befehl **tcpdump** aus.
@@ -189,5 +188,4 @@ Beispielausgaben:
 **HANA\_Configuration\_Parameters\_Rev70+** für eine Überprüfung von SAP HANA-Parametern.
 
 ![HANA\_Configuration\_Parameters\_Rev70+ für eine Überprüfung von SAP HANA-Parametern](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
-
 

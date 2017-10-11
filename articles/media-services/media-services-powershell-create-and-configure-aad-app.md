@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: f1d7ad94686d633b6353f39cef91d1cb1efab773
-ms.contentlocale: de-de
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: eea0f3a03dd77ce56484f32b192299bd97c05300
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Erstellen einer Azure AD-App mithilfe von PowerShell für die Verwendung mit der Azure Media Services-API
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe eines PowerShell-Skripts eine Azure AD-Anwendung (Azure Active Directory) und einen Dienstprinzipal erstellen, um auf Azure Media Services-Ressourcen zuzugreifen.  
@@ -62,5 +60,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erste Schritte mit dem [Hochladen von Dateien in Ihr Konto](media-services-portal-upload-files.md)
-
+Erste Schritte mit dem [Hochladen von Dateien in Ihr Konto](media-services-portal-upload-files.md).

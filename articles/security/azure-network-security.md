@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2017
 ms.author: TomSh
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 6ab59dd02391287a1effc0b51502bb7eb90db319
-ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
-
 # <a name="azure-network-security"></a>Azure-Netzwerksicherheit
 
 Wir wissen, dass Sicherheit in der Cloud an erster Stelle steht und wie wichtig es ist, dass Sie präzise und zeitnahe Informationen zur Azure-Sicherheit finden. Eines der schlagkräftigsten Argumente für die Verwendung von Azure für Anwendungen und Dienste ist die Vielzahl an Sicherheitstools und -funktionen von Azure. Diese Tools und Funktionen ermöglichen die Erstellung sicherer Lösungen auf Grundlage der Azure-Plattform.
@@ -78,7 +75,7 @@ In diesem Dokument werden die folgenden Unternehmensfunktionen für Azure-Netzwe
 
 ### <a name="basic-network-connectivity"></a>Grundlegende Netzwerkkonnektivität
 
-Mit dem Dienst [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) können Sie Azure-Ressourcen über virtuelle Netzwerke (VNets) sicher miteinander verbinden. Ein VNet ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Es handelt sich hierbei um eine logische Isolation der Azure-Netzwerkinfrastruktur für Ihr Abonnement. Sie können VNETs auch miteinander und mit Ihren lokalen Netzwerken verbinden, indem Sie Site-to-Site-VPN-Verbindungen und dedizierte [WAN-Verbindungen](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) verwenden.
+Mit dem Dienst [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) können Sie Azure-Ressourcen über virtuelle Netzwerke (VNets) sicher miteinander verbinden. Ein VNet ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Es handelt sich hierbei um eine logische Isolation der Azure-Netzwerkinfrastruktur für Ihr Abonnement. Sie können auch eine Verbindung herstellen VNets miteinander und mit Ihren lokalen Netzwerken mit Standort-zu-Standort-VPNs und dedizierte [WAN-Links](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
 
 ![Grundlegende Netzwerkkonnektivität](media/azure-network-security/azure-network-security-fig-2.png)
 
@@ -314,7 +311,7 @@ Dieser Kommunikationsfluss ist möglich, weil Azure eine Reihe von Systemrouten 
 
 -   Aus einem VNet in ein lokales Netzwerk über ein VPN-Gateway.
 
-In vielen Unternehmen gelten strenge Sicherheits- und Konformitätsanforderungen, für die eine lokale Untersuchung aller Netzwerkpakete zur Durchsetzung bestimmter Richtlinien erforderlich ist. Azure verfügt über den Mechanismus der [Tunnelerzwingung](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling). Hierbei wird Datenverkehr von den VMs zum lokalen Standort geleitet, indem eine benutzerdefinierte Route erstellt wird oder [BGP](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp)-Ankündigungen (Border Gateway Protocol) per ExpressRoute oder VPN genutzt werden.
+In vielen Unternehmen gelten strenge Sicherheits- und Konformitätsanforderungen, für die eine lokale Untersuchung aller Netzwerkpakete zur Durchsetzung bestimmter Richtlinien erforderlich ist. Azure verfügt über den Mechanismus der [Tunnelerzwingung](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling). Hierbei wird Datenverkehr von den VMs zum lokalen Standort geleitet, indem eine benutzerdefinierte Route erstellt wird oder [BGP](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp)-Ankündigungen (Border Gateway Protocol)
 
 Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen Netzwerk konfiguriert. Das Umleiten von Datenverkehr an einen lokalen Standort wird als eine Standardroute zum Azure-VPN-Gateway umgesetzt.
 
@@ -665,4 +662,3 @@ Informieren Sie sich weiter über die Sicherheit, indem Sie einige unserer weite
 -   [How Microsoft builds its fast and reliable global network](https://azure.microsoft.com/blog/how-microsoft-builds-its-fast-and-reliable-global-network/) (Wie Microsoft sein schnelles und zuverlässiges globales Netzwerk aufbaut)
 
 -   [Lighting up network innovation](https://azure.microsoft.com/blog/lighting-up-network-innovation/) (Förderung von Netzwerkinnovationen)
-

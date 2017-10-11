@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2014
 ms.author: support@blitline.com
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f8b7e8dd557ddeeaa295a9849d471d74259941c2
-
-
+ms.openlocfilehash: 1d90599e028b3407a513b04b878e3aefc39928a2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-use-blitline-with-azure-and-azure-storage"></a>Verwenden von Blitline mit Azure und Azure Storage
 Dieser Leitfaden erläutert den Zugriff auf Blitline-Dienste und das Übertragen von Jobs zu Blitline.
@@ -124,10 +124,4 @@ Besuchen Sie "blitline.com", um Informationen zu allen anderen Funktionen zu erh
 * Blitline-API-Funktionen <http://www.blitline.com/docs/functions>
 * Blitline-API-Beispiele <http://www.blitline.com/docs/examples>
 * Drittanbieter-NuGet-Bibliothek <http://nuget.org/packages/Blitline.Net>
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

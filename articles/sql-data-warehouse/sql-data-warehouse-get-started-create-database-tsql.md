@@ -16,13 +16,11 @@ ms.workload: data-services
 ms.custom: create
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
-ms.openlocfilehash: 836d72e32e54ecef9691b55214766a1fc3ff9701
-ms.contentlocale: de-de
-ms.lasthandoff: 12/06/2016
-
-
+ms.openlocfilehash: 10d8aa2b3ab8d7d8a9b91e95ffccf03faa89d237
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-sql-data-warehouse-database-by-using-transact-sql-tsql"></a>Erstellen einer SQL Data Warehouse-Datenbank mithilfe von Transact-SQL (TSQL)
 > [!div class="op_single_selector"]
@@ -38,7 +36,7 @@ In diesem Artikel erfahren Sie, wie Sie eine SQL Data Warehouse-Instanz mithilfe
 Zunächst benötigen Sie Folgendes:
 
 * **Azure-Konto:** Lesen Sie zum Erstellen eines Kontos die Informationen unter [Kostenlose Azure-Testversion][Azure Free Trial] oder [MSDN-Azure-Gutschriften][MSDN Azure Credits].
-* **Azure SQL Server:** Ausführliche Informationen finden Sie unter [Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal][Create an Azure SQL Database logical server with the Azure Portal] oder [Erstellen eines logischen Servers mit Azure SQL-Datenbank mithilfe von PowerShell][Create an Azure SQL Database logical server with PowerShell].
+* **Azure SQL-Server**: finden Sie unter [erstellen Sie einen logischen Server mit Azure SQL-Datenbank mit dem Azure-Portal] [erstellen Sie einen logischen Server mit Azure SQL-Datenbank mit dem Azure-Portal] oder [erstellen Sie einen Azure SQL-Datenbank logischen Server mit PowerShell] [erstellen Sie einen Azure SQL-Datenbank logischen Server mit PowerShell] Weitere Details.
 * **Ressourcengruppe:**Verwenden Sie entweder die gleiche Ressourcengruppe wie Ihre Azure SQL Server-Instanz, oder lesen Sie die Informationen zum [Erstellen einer neuen Ressourcengruppe][how to create a resource group].
 * **Umgebung für die Ausführung von T-SQL:** Zum Ausführen von T-SQL können Sie [Visual Studio][Installing Visual Studio and SSDT], [sqlcmd][sqlcmd] oder [SSMS][SSMS] verwenden.
 
@@ -89,4 +87,3 @@ Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][loa
 [SQL Data Warehouse pricing]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Azure Free Trial]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure Credits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: e1da8bce96078a43c656f84005cefc8bbe81c9e3
-ms.contentlocale: de-de
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
 ms.lasthandoff: 08/03/2017
-
 ---
 # <a name="back-up-azure-virtual-machines-classic-portal"></a>Sichern von virtuellen Azure-Computern (Klassisches Portal)
 > [!div class="op_single_selector"]
@@ -200,4 +199,3 @@ Wenn beim Sichern des virtuellen Computers Probleme auftreten, finden Sie Hilfe 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwalten und Überwachen Ihrer virtuellen Computer](backup-azure-manage-vms.md)
 * [Wiederherstellen virtueller Computer](backup-azure-restore-vms.md)
-

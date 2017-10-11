@@ -1,5 +1,5 @@
-### <a name="app-service-plan"></a>App Service-Plan
-Erstellt den Dienstplan zum Hosten der Web-App. Geben Sie den Namen des Plans über den **hostingPlanName** -Parameter an. Der Speicherort des Plans ist mit demjenigen für die Ressourcengruppe identisch. Der Tarif und die Workergröße werden in den Parametern **sku** und **workerSize** angegeben.
+### <a name="app-service-plan"></a>App Service-plan
+Erstellt den Service-Plan für das Hosten von Web-app. Geben Sie den Namen des Plans durch die **HostingPlanName** Parameter. Der Speicherort des Plans ist der Ort, für die Ressourcengruppe verwendet. Tarif Ebene und Workerrollen Größe werden angegeben, der **Sku** und **WorkerSize** Parameter
 
     {
       "apiVersion": "2015-08-01",

@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: f8a20b45b50f71631122e574b634818c1912f12e
-ms.contentlocale: de-de
-ms.lasthandoff: 06/29/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="step-4-plan-networking-for-physical-server-replication-to-azure"></a>Schritt 4: Planen von Netzwerken für die Replikation physischer Server in Azure
 
 Dieser Artikel fasst die Überlegungen zur Netzwerkplanung beim Replizieren von lokalen physischen Servern auf Azure mithilfe des [Azure Site Recovery](site-recovery-overview.md)-Diensts zusammen.
@@ -35,18 +32,18 @@ Kommentare können Sie am Ende dieses Artikels senden oder im [Forum zu Azure Re
 Bei der Planung der Replikation und Failoverstrategie ist eine der wichtigsten Fragen, wie eine Verbindung zum virtuellen Azure-Computer nach einem Failover hergestellt werden kann. Es gibt verschiedene Auswahlmöglichkeiten beim Entwerfen der Netzwerkstrategie für die virtuellen Azure-Replikatcomputer:
 
 - **Verwenden einer anderen IP-Adresse**: Sie können wählen, einen anderen IP-Adressbereich für das replizierte Netzwerk des virtuellen Azure-Computers zu verwenden. In diesem Szenario erhält der Computer nach einem Failover eine neue IP-Adresse. Dazu ist eine DNS-Aktualisierung erforderlich.
-- **Verwenden derselben IP-Adresse**: Sie möchten möglicherweise für das Azure-Netzwerk nach dem Failover denselben IP-Adressbereich verwenden wie an Ihrem lokalen Primärstandort. Das Verwenden derselben IP-Adressen vereinfacht die Wiederherstellung, indem Probleme im Zusammenhang mit dem Netzwerk nach dem Failover reduziert werden. Wenn Sie zu Azure replizieren, müssen Sie Routen jedoch mit dem neuen Speicherort der IP-Adressen nach dem Failover aktualisieren.
+- **Verwenden derselben IP-Adresse**: Sie möchten möglicherweise für das Azure-Netzwerk nach dem Failover denselben IP-Adressbereich verwenden wie an Ihrem lokalen Primärstandort. Das Verwenden derselben IP-Adressen vereinfacht die Wiederherstellung, indem Probleme im Zusammenhang mit dem Netzwerk nach dem Failover reduziert werden. Wenn Sie in Azure replizieren, müssen Sie Routen mit dem neuen Speicherort der IP-Adressen nach dem Failover aktualisieren.
 
 ## <a name="retain-ip-addresses"></a>IP-Adressen beibehalten
 
-Site Recovery bietet die Möglichkeit, feste IP-Adressen beizubehalten, wenn ein Failover zu Azure mit einem Subnetzfailover erfolgt.
+Site Recovery bietet die Möglichkeit, feste IP-Adressen beizubehalten, wenn ein Failover in Azure mit einem Subnetzfailover erfolgt.
 Mit einem Subnetzfailover existiert ein bestimmtes Subnetz an Standort 1 oder 2, jedoch nie gleichzeitig an beiden Standorten. Um den IP-Adressraum im Falle eines Failovers beizubehalten, sorgen Sie programmgesteuert dafür, dass die Routerinfrastruktur die Subnetze von einem Standort an einen anderen verschiebt. Die Subnetze verschieben sich während des Failovers mit den zugeordneten geschützten virtuellen Computern. Der größte Nachteil ist, dass Sie im Fall eines Fehlers das gesamte Subnetz verschieben müssen.
 
-### <a name="failover-example"></a>Failover-Beispiel
+### <a name="failover-example"></a>Beispiel für ein Failover
 
-Sehen wir uns ein Beispiel für das Failover auf Azure an.
+Sehen wir uns ein Beispiel für ein Failover auf Azure an.
 
-- Ein fiktives Unternehmen, Woodgrove Bank, verfügt über eine lokale Infrastruktur, die deren Geschäftsanwendungen hostet. Ihre mobilen Anwendungen werden in Azure gehostet.
+- Ein fiktives Unternehmen, Woodgrove Bank, verfügt über eine lokale Infrastruktur, die ihre Geschäftsanwendungen hostet. Ihre mobilen Anwendungen werden in Azure gehostet.
 - Konnektivität zwischen virtuellen Computern der Woodgrove Bank in Azure und auf lokalen Servern wird durch eine Standort-zu-Standort-Verbindung (VPN) zwischen dem lokalen Umkreisnetzwerk und dem virtuellen Azure-Netzwerk bereitgestellt.
 - Dieses VPN bedeutet, dass das virtuelle Netzwerk des Unternehmens in Azure als Erweiterung seines lokalen Netzwerks erscheint.
 - Woodgrove möchte Site Recovery verwenden, um die lokalen Workloads zu Azure zu replizieren.
@@ -81,9 +78,8 @@ Wenn Sie kein Azure-Netzwerk wie das oben dargestellte haben, können Sie nach d
 
 ## <a name="change-ip-addresses"></a>Ändern der IP-Adressen
 
-In diesem [Blogbeitrag](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) wird erläutert, wie die Azure-Netzwerkinfrastruktur festgelegt wird, wenn Sie IP-Adressen nach dem Failover nicht beibehalten müssen. Zunächst wird eine Anwendung beschrieben, danach wird die Erstellung eines lokalen Netzwerks in Azure erklärt, und schließlich finden Sie Informationen zum Ausführen von Failoverszenarien.  
+In diesem [Blogbeitrag](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) wird erläutert, wie die Azure-Netzwerkinfrastruktur festgelegt wird, wenn Sie IP-Adressen nach dem Failover nicht beibehalten müssen. Es wird mit der Beschreibung einer Anwendung begonnen, danach wird die Erstellung eines lokalen Netzwerks in Azure erklärt, und schließlich finden Sie Informationen zum Ausführen von Failoverszenarios.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fahren Sie mit [Schritt 5: Vorbereiten von Azure](physical-walkthrough-prepare-azure.md) fort.
-
+Gehen Sie zu [Schritt 5: Vorbereiten von Azure](physical-walkthrough-prepare-azure.md).

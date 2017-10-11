@@ -15,14 +15,13 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: f2d197264f066a23468db80686444bd24f6d796f
 ms.openlocfilehash: ae37f49916445a9486457af61aa9bf8bc1d7eb87
-ms.lasthandoff: 02/28/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Ersetzen einer Hardwarekomponente auf Geräten der StorSimple 8000-Serie
+# <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Austauschen von Hardwarekomponenten auf Geräten der StorSimple 8000-Serie
 
 ## <a name="overview"></a>Übersicht
 In den Tutorials zum Austausch von Hardwarekomponenten werden die Hardwarekomponenten Ihres Microsoft Azure StorSimple-Gerät der Serie 8000 sowie die erforderlichen Schritte zum Ausbauen und Austauschen dieser Komponenten erläutert. Dieser Artikel beschreibt die Sicherheitssymbole und enthält Verweise auf die ausführlichen Tutorials. Darüber hinaus sind die austauschbaren Komponenten aufgeführt.
@@ -66,11 +65,11 @@ Ihr StorSimple-Gerät der Serie 8000 besteht aus mehreren Steckmodulen im prim�
 
 Die wesentlichen Hardwarekomponenten des Geräts sind in der folgenden Tabelle zusammengefasst. Klicken Sie in der Spalte **Austauschverfahren** auf den Link, um zum dazugehörigen Tutorial zu gelangen.
 
-| Komponenten | # Anzahl | Steckmodul | Austauschverfahren |
+| Komponenten | Vorhandene Anzahl | Steckmodul | Austauschverfahren |
 |:--- |:--- |:--- |:--- |
 | Gehäuse |1 |Nein |[Austauschen des Gehäuses des StorSimple-Geräts](storsimple-chassis-replacement.md) |
 | Primäre Controller |2 |Ja |[Austauschen eines Controllermoduls eines StorSimple-Geräts](storsimple-controller-replacement.md) |
-| Module für Stromversorgung und Kühlung (PCMs) mit&764; W |2 |Ja |[Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts](storsimple-power-cooling-module-replacement.md) |
+| Module für Stromversorgung und Kühlung (PCMs) mit 764 W |2 |Ja |[Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts](storsimple-power-cooling-module-replacement.md) |
 | Pufferbatterie |2 |Ja |[Austauschen des Pufferbatteriemoduls eines StorSimple-Geräts](storsimple-battery-replacement.md) |
 | Festplattenlaufwerke |12 |Ja |[Austauschen eines Festplattenlaufwerks im StorSimple-Gerät](storsimple-disk-drive-replacement.md) |
 
@@ -78,11 +77,11 @@ Die wesentlichen Hardwarekomponenten des Geräts sind in der folgenden Tabelle z
 
 Das primäre Gehäuse und das EBOD-Gehäuse unterscheiden sich bei den E/A-Modulen. Außerdem haben die PCMs unterschiedliche Wattzahlen. Die PCMs im primären Gehäuse haben 764 W, wogegen die PCMs im EBOD-Gehäuse 580 W haben. Zusätzlich enthalten die PCMs im primären Gehäuse ein Pufferbatteriemodul.
 
-| Komponenten | # Anzahl | Steckmodul | Austauschverfahren |
+| Komponenten | Vorhandene Anzahl | Steckmodul | Austauschverfahren |
 |:--- |:--- |:--- |:--- |
 | Gehäuse |1 |Nein |[Austauschen des Gehäuses des StorSimple-Geräts](storsimple-chassis-replacement.md) |
 | EBOD-Controller |2 |Ja |[Austauschen des EBOD-Controllers eines StorSimple-Geräts](storsimple-ebod-controller-replacement.md) |
-| Module für Stromversorgung und Kühlung (PCMs) mit&580; W |2 |Ja |[Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts](storsimple-power-cooling-module-replacement.md) |
+| Module für Stromversorgung und Kühlung (PCMs) mit 580 W |2 |Ja |[Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts](storsimple-power-cooling-module-replacement.md) |
 | Festplattenlaufwerke |12 |Ja |[Austauschen eines Festplattenlaufwerks im StorSimple-Gerät](storsimple-disk-drive-replacement.md) |
 
 **Tabelle 2** Hardwarekomponenten im EBOD-Gehäuse
@@ -125,8 +124,8 @@ Sowohl das primäre Gehäuse als auch das EBOD-Gehäuse haben Laufwerksträgermo
 Die folgenden FRUs (Field Replaceable Units) sind für Ihr StorSimple-Gerät verfügbar:
 
 * Gehäuse (einschließlich des integrierten Bedienfelds)
-* PCM mit&764; W, Wechselstrom
-* PCM mit&580; W, Wechselstrom
+* PCM mit 764 W, Wechselstrom
+* PCM mit 580 W, Wechselstrom
 * Festplattenlaufwerk mit Laufwerkträgermodul
 * Controllermodul
 * EBOD-Controllermodul
@@ -137,5 +136,4 @@ Die folgenden FRUs (Field Replaceable Units) sind für Ihr StorSimple-Gerät ver
 
 ## <a name="next-steps"></a>Nächste Schritte
 Lesen Sie die [Sicherheitsinformationen](storsimple-safety.md) vollständig, bevor Sie versuchen, eine StorSimple-Hardwarekomponente auszutauschen.
-
 

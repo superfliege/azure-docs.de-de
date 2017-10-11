@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 6abad7d9d501a1fdead83a1a678f1b053ee70a25
-ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
-
+ms.openlocfilehash: fcfa277cdd0f3cebc0fbbb23e771fb23ffbe2ca6
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-elk"></a>Überwachen eines Azure Container Service-Clusters mit ELK
 In diesem Artikel wird erläutert, wie Sie den ELK-Stapel (Elasticsearch, Logstash, Kibana) in einem DC/OS-Cluster in Azure Container Service bereitstellen. 
@@ -70,5 +69,4 @@ Zum Zugreifen auf das Kibana-Dashboard (bereitgestellt an Port 5601) müssen Sie
 * Weitere Informationen zum Filtern von Protokollen finden Sie unter [Filtern von Protokollen mit ELK](https://docs.mesosphere.com/1.8/administration/logging/filter-elk/). 
 
  
-
 

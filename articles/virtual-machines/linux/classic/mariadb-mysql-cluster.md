@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 53e9bf18b26338212411ea7c4f260eb308486738
-ms.lasthandoff: 03/27/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="mariadb-mysql-cluster-azure-tutorial"></a>MariaDB (MySQL)-Cluster: Azure-Tutorial
 > [!IMPORTANT]
@@ -282,7 +281,7 @@ Erstellen Sie drei virtuelle Computer anhand der Vorlage, die Sie gerade erstell
 
         sudo vi /etc/my.cnf.d/server.cnf
 
-    Heben Sie die Auskommentierung von **`wsrep_cluster_name`** und **`wsrep_cluster_address`** durch Entfernen von **#** am Anfang der Zeile auf.
+    Heben Sie die Auskommentierung von  **`wsrep_cluster_name`**  und  **`wsrep_cluster_address`**  durch Entfernen von **#** am Anfang der Zeile auf.
     Ersetzen Sie außerdem **`<ServerIP>`** in **`wsrep_node_address`** und **`<NodeName>`** in **`wsrep_node_name`** durch die IP-Adresse bzw. den Namen des virtuellen Computers, und kommentieren Sie auch diese Zeilen aus.
 5. Starten Sie den Cluster auf MariaDB1, und führen Sie ihn beim Start aus.
 
@@ -365,4 +364,3 @@ Es empfiehlt sich unter Umständen, sich über [eine weitere Möglichkeit zur Er
 [MariaDBs]:https://mariadb.org/en/about/
 [SSH-Schlüssel für die Authentifizierung erstellen]:http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/
 [issue #1268 in the Azure CLI]:https://github.com/Azure/azure-xplat-cli/issues/1268
-

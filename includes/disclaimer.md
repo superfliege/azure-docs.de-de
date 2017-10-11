@@ -1,2 +1,2 @@
-Melden Sie sich für die [kostenlose Vorschau](https://account.windowsazure.com/PreviewFeatures)an, um diese und weitere Azure-Funktionen zu verwenden.
+Um dieses Feature und andere neuen Funktionen von Azure verwenden möchten, registrieren Sie sich für die [kostenlose Preview-Version](https://account.windowsazure.com/PreviewFeatures).
 

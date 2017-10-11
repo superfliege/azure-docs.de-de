@@ -14,12 +14,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/27/2017
 ms.author: ruturajd
-ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
 ms.openlocfilehash: dde0bb6b4f6bc10afdd7d40adc6689d42b37de81
-ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>Failback von virtuellen VMware-Computern und physischen Servern zum lokalen Standort
 
@@ -245,4 +244,3 @@ Ein Failback kann über eine VPN- oder eine ExpressRoute-Verbindung ausgeführt 
 
 * Die ExpressRoute-Verbindung muss in dem virtuellen Azure-Netzwerk eingerichtet werden, zu dem das Failover der Quellcomputer durchgeführt wird und in dem sich die virtuellen Azure-Computer nach dem Failover befinden.
 * Die Daten werden zu einem Azure-Speicherkonto auf einem öffentlichen Endpunkt repliziert. Zu Verwendung einer ExpressRoute-Verbindung richten Sie in ExpressRoute ein öffentliches Peering mit dem Zieldatencenter für die Site Recovery-Replikation ein.
-

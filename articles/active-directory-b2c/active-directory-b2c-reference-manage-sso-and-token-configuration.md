@@ -12,13 +12,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 05/02/2017
 ms.author: sama
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 068adc72976ec8429312f1909d0fd65460b73e98
-ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
-
-
+ms.openlocfilehash: 8f5703d15766f221517cd89352d41685652d32d6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Azure Active Directory B2C: Verwalten von SSO und der Tokenanpassung mit benutzerdefinierten Richtlinien
 Bei Verwendung von benutzerdefinierten Richtlinien haben Sie die gleiche Kontrolle über Ihre Konfigurationen für die Bereiche für Token, Sitzung und einmaliges Anmelden (Single Sign-On, SSO) wie mit integrierten Richtlinien.  Informationen zu den einzelnen Einstellungen finden Sie in [dieser Dokumentation](#active-directory-b2c-token-session-sso).
@@ -93,4 +91,3 @@ Zum Ändern Ihres Sitzungsverhaltens und der SSO-Konfigurationen ist es erforder
 **Web app session lifetime (minutes) (Lebensdauer der Web-App-Sitzung (Minuten))** Zum Ändern der Lebensdauer der Web-App-Sitzung müssen Sie den Wert des `<SessionExpiryInSeconds>`-Elements ändern.  Der Standardwert von integrierten Richtlinien beträgt 86.400 Sekunden (1.440 Minuten).
 
 **Web app session timeout (Timeout für Web-App-Sitzung)** Zum Ändern des Timeouts für Web-App-Sitzung müssen Sie den Wert von `<SessionExpiryType>` anpassen.  Die gültigen Werte sind `Absolute` und `Rolling`.
-

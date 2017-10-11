@@ -16,12 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: 8e58a2290e5034ef393f65cbcddb86e18cf4a6ec
-ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="back-up-windows-virtual-machines-in-azure"></a>Sichern virtueller Windows-Computern in Azure
 
@@ -106,7 +105,6 @@ Im nächsten Tutorial erhalten Sie Informationen zur Überwachung virtueller Com
 
 > [!div class="nextstepaction"]
 > [Überwachen virtueller Computer](tutorial-monitoring.md)
-
 
 
 

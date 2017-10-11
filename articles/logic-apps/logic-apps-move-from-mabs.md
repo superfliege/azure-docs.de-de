@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: ladocs; jonfan; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: e58c6950d1d9420f32fc98ca917216dc5fae4fc3
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="move-from-biztalk-services-to-logic-apps"></a>Verschieben von BizTalk Services nach Logic Apps
 
 Microsoft Azure BizTalk Services (MABS) läuft demnächst aus. Verwenden Sie die Informationen in diesem Thema, um Ihre MABS-Integrationslösungen nach Azure Logic Apps zu verschieben. 
@@ -31,8 +28,8 @@ Microsoft Azure BizTalk Services (MABS) läuft demnächst aus. Verwenden Sie die
 
 BizTalk Services besteht aus zwei untergeordneten Diensten:
 
-1.    Microsoft BizTalk Services Hybrid Connections
-2.    Auf EAI- und EDI-Bridge basierende Integration
+1.  Microsoft BizTalk Services Hybrid Connections
+2.  Auf EAI- und EDI-Bridge basierende Integration
 
 Wenn Sie Hybridverbindungen verschieben möchten, finden Sie in [Azure App Service-Hybridverbindungen](../app-service/app-service-hybrid-connections.md) Informationen zu den Änderungen und Features dieses Diensts. Azure Hybrid Connections ersetzt BizTalk Services Hybrid Connections. Azure Hybrid Connections ist über Azure App Service verfügbar und wird im Azure-Portal angeboten. Azure Hybrid Connections bietet auch einen neuen Hybrid Connection Manager zum Verwalten vorhandener BizTalk Services-Hybridverbindungen und neuer Hybridverbindungen, die Sie im Portal erstellen. Azure App Service Hybrid Connections ist allgemein verfügbar (GA).
 
@@ -132,4 +129,3 @@ Um in BizTalk Services eine hohe Verfügbarkeit zu erzielen, verwenden Sie mehre
 * [Was sind Logik-Apps?](logic-apps-what-are-logic-apps.md)
 * [Erstellen Ihres ersten Logik-App-Workflows zur Automatisierung von Prozessen zwischen Cloud-Apps und Cloud-Diensten](logic-apps-create-a-logic-app.md) oder [Konfigurieren eines Workflows mithilfe einer vorgefertigten Vorlage oder eines Musters für den schnellen Einstieg](logic-apps-use-logic-app-templates.md)  
 * [Liste mit den Connectors](../connectors/apis-list.md), die Sie in einer Logik-App verwenden können
-

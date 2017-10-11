@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: a507bf1866952cb79fa6334fed80c88cd207cd0a
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten von Volumes auf dem StorSimple Virtual Array
 
@@ -138,10 +139,4 @@ Führen Sie die folgenden Schritte durch, um ein Volume zu löschen.
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie ein [StorSimple-Volume klonen](storsimple-virtual-array-clone.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

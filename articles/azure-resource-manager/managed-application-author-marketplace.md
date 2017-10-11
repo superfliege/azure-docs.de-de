@@ -10,14 +10,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/09/2017
 ms.author: gauravbh; tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: 58ac7665abf7e75a43bb0b92bdf6f41005c3efe8
-ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="azure-managed-applications-in-the-marketplace"></a>Verwaltete Azure-Anwendungen im Marketplace
 
  MSPs, ISVs und Systemintegratoren (SIs) können ihre Lösungen mithilfe von verwalteten Azure-Anwendungen für alle Azure Marketplace-Kunden anbieten. Solche Lösungen reduzieren den Verwaltungs- und Wartungs-Mehraufwand für Kunden. Herausgeber können Infrastruktur und Software über den Marketplace verkaufen. Sie können für verwaltete Anwendungen Dienste und Support für den Betrieb hinzufügen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Anwendungen](managed-application-overview.md).
@@ -279,4 +277,3 @@ Nachdem Sie alle Abschnitte ausgefüllt haben, wählen Sie **Veröffentlichen**,
 * Informationen zur Nutzung einer verwalteten Anwendung aus dem Marketplace finden Sie unter [Nutzen verwalteter Azure-Anwendungen im Marketplace](managed-application-consume-marketplace.md).
 * Informationen zum Veröffentlichen einer verwalteten Dienstkataloganwendung finden Sie unter [Erstellen und Veröffentlichen einer verwalteten Dienstkataloganwendung](managed-application-publishing.md).
 * Informationen zum Nutzen einer verwalteten Dienstkataloganwendung, finden Sie unter [Nutzen einer verwalteten Dienstkataloganwendung](managed-application-consumption.md).
-

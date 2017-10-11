@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: rasquill
 "\"/": 
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 31efab60690b54faf7992251fcd01e307c4464f2
-ms.lasthandoff: 03/21/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="log-in-to-azure-from-the-azure-cli"></a>Anmelden bei Azure über die Azure-Befehlszeilenschnittstelle (CLI)
 Die Azure-Befehlszeilenschnittstelle umfasst eine Reihe von plattformübergreifenden Open Source-Befehlen für die Arbeit mit Azure-Ressourcen. Dieser Artikel beschreibt verschiedene Möglichkeiten zum Angeben der Anmeldeinformationen für Ihr Azure-Konto, um für die Azure-Befehlszeilenschnittstelle eine Verbindung mit Ihrem Azure-Abonnement herzustellen:
@@ -166,4 +165,3 @@ Wenn die mit dem Konto verknüpften Abonnements nur über Active Directory authe
 * Informationen zum Verwenden von Befehlen der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure-CLI-Befehle im Resource Manager-Modus](virtual-machines/azure-cli-arm-commands.md) und unter [Befehle der Azure-Befehlszeilenschnittstelle im Dienstverwaltungsmodus](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 * Wenn Sie weitere Informationen zur Azure-Befehlszeilenschnittstelle erhalten, den Quellcode herunterladen, Probleme melden oder etwas zum Projekt beitragen möchten, besuchen Sie die Webseite [GitHub repository for the Azure CLI](https://github.com/azure/azure-xplat-cli).
 * Wenn Sie Probleme bei der Verwendung der Azure-Befehlszeilenschnittstelle oder Azure haben, besuchen Sie die [Azure-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting).
-

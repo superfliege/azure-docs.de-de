@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 72591111f417267c1daaf13a40a499da42a2c303
-ms.contentlocale: de-de
-ms.lasthandoff: 04/17/2017
-
+ms.openlocfilehash: a9da67373465cebbdbecae5c8fb8bd0a0ee3c171
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Konfigurieren einer Anwendungsproxyanwendung zum Verwenden von PingAccess
 
 Unsere Zusammenarbeit mit PingAccess ermöglicht es Ihnen jetzt, die Vorteile des Anwendungsproxys für Anwendungen mithilfe der headerbasierten Authentifizierung auszuweiten. Wenn Ihre Anwendungen keine Header verwenden, finden Sie weitere Informationen und andere Optionen in unserer [Dokumentation zum einmaligen Anmelden](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd).
@@ -38,4 +36,3 @@ Es sind vier Schritte erforderlich, um eine Anwendung mit PingAccess zu konfigur
 4.  Konfigurieren von Anwendungen in PingAccess
 
 Ausführliche Informationen zu den einzelnen Schritten finden Sie in unserer [Dokumentation zum einmaligen Anmelden mit Headern](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access).
-

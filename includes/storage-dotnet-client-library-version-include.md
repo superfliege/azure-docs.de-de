@@ -1,7 +1,7 @@
 > [!NOTE]
-> Es wird empfohlen, die neueste Version der Azure-Speicher-Clientbibliothek für .NET zu verwenden, um dieses Tutorial abzuschließen. Sie können die aktuelle Version von der [NuGet](https://www.nuget.org/packages/WindowsAzure.Storage/)-Website herunterladen. Der Quellcode für die Clientbibliothek ist auf [GitHub](https://github.com/Azure/azure-storage-net) verfügbar.
+> Es wird empfohlen, dass Sie die neueste Version von der Azure-Speicherclientbibliothek für .NET verwenden, um dieses Lernprogramm abzuschließen. Sie können die neueste Version für den Download finden Sie auf [NuGet](https://www.nuget.org/packages/WindowsAzure.Storage/). Der Quellcode für die Clientbibliothek finden Sie [GitHub](https://github.com/Azure/azure-storage-net).
 > 
-> In der [Infodatei der Clientbibliothek](https://github.com/Azure/azure-storage-net/blob/master/README.md) finden Sie Informationen zu den Versionsanforderungen, die hilfreich sind, wenn Sie den Speicheremulator nutzen. Wenn Sie die Speicher-Clientbibliothek für .NET mit dem Speicheremulator verwenden möchten, muss eine entsprechende Mindestversion des Azure-Speicheremulators eingesetzt werden.
+> Wenn Sie den Speicheremulator verwenden, finden Sie unter der [-Clientbibliothek Infodatei](https://github.com/Azure/azure-storage-net/blob/master/README.md) für versionsanforderungen. Um die Storage Client Library für .NET mit dem Speicheremulator verwenden zu können, muss eine entsprechende Mindestversion von Azure-Speicheremulator verwendet werden.
 > 
 > 
 

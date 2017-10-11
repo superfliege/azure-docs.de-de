@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: TomSh
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
 ms.openlocfilehash: 036ce3dce28e7951bb39754c4351661fae85f06c
-ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="azure-database-security-overview"></a>Übersicht über die Sicherheit der Azure-Datenbank
 
 Sicherheit ist einer der wichtigsten Aspekte bei der Datenbankverwaltung und hat auch bei Azure SQL-Datenbank höchste Priorität. Azure SQL-Datenbank unterstützt Verbindungssicherheit mit Firewallregeln und Verbindungsverschlüsselung. Die Lösung unterstützt sowohl die Authentifizierung mit Benutzername und Kennwort als auch die Azure Active Directory-Authentifizierung mit Identitäten, die von Azure Active Directory verwaltet werden. Für die Autorisierung wird eine rollenbasierte Zugriffssteuerung verwendet.
@@ -219,4 +217,3 @@ Von dieser zentralen und einheitlichen Plattform für Microsoft Azure-Partner pr
 - Ausführlichere Informationen zu Azure Security Center und Azure SQL-Datenbank finden Sie [hier](https://docs.microsoft.com/azure/security-center/security-center-sql-database).
 - Ausführlichere Informationen zur Bedrohungserkennung finden Sie [hier](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection).
 - Ausführlichere Informationen zur Optimierung der Leistung von SQL-Datenbank finden Sie [hier](https://docs.microsoft.com/azure/sql-database/sql-database-performance-tutorial). 
-

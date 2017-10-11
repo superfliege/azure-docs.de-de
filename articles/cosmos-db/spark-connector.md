@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: denlee
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 8ecbb478c81cde25bbd0d1c9ee07ae02b07f8cc7
-ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>Beschleunigen der Big Data-Echtzeitanalyse mit dem Spark-Connector für Azure Cosmos DB
 
 Mit dem Spark-Connector für Azure Cosmos DB kann Azure Cosmos DB als Eingabequelle oder Ausgabesenke für Apache Spark-Aufträge fungieren. Durch die Verbindung von [Spark](http://spark.apache.org/) mit [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) haben Sie die Möglichkeit, plötzlich auftretende Data Science-Probleme rasch zu lösen, indem Sie Azure Cosmos DB verwenden, um Daten schnell zu speichern und abzufragen. Der Spark-Connector für Azure Cosmos DB nutzt die nativen verwalteten Azure Cosmos DB-Indizes effizient. Die Indizes aktivieren aktualisierbare Spalten, wenn Sie Analysen durchführen und Pushdown-Prädikatfilter für sich schnell ändernde global verteilte Daten verwenden. Dies kann das Internet der Dinge (IoT), Data Science und Analyseszenarien umfassen.
@@ -354,4 +352,3 @@ Laden Sie – falls noch nicht geschehen – den Spark-Connector für Azure Cosm
 * [Beispielskripts und Notebooks](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
 Es kann auch ratsam sein, die Informationen unter [Apache Spark SQL, DataFrames, and Datasets Guide](http://spark.apache.org/docs/latest/sql-programming-guide.html) (Leitfaden zu Apache Spark SQL, DataFrames und Datasets) und den Artikel [Apache Spark on Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) zu lesen.
-

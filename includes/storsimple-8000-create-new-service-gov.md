@@ -1,17 +1,17 @@
 <!--author=SharS last changed: 9/17/15-->
 
 
-#### <a name="to-create-a-new-service"></a>So erstellen Sie einen neuen Dienst
-1. Melden Sie sich mithilfe Ihrer Microsoft-Kontoanmeldeinformationen beim [Microsoft Azure-Behördenportal](https://portal.azure.us/)an.
-2. Klicken Sie im Behördenportal auf **+** und dann im Marketplace auf **Alle anzeigen**. Suchen Sie nach _physisches Storsimple_. Wählen Sie **Physische StorSimple-Geräteserie** aus, klicken Sie darauf und dann auf **Erstellen**. Alternativ können Sie im Behördenportal auf **+** und dann unter **Speicher** auf **Physische StorSimple-Geräteserie** klicken.
-3. Führen Sie auf dem Blatt **StorSimple-Geräte-Manager** die folgenden Schritte aus:
+#### <a name="to-create-a-new-service"></a>Zum Erstellen eines neuen Diensts
+1. Verwenden Sie die Anmeldeinformationen für Ihr Microsoft-Konto anmelden, um die [Microsoft Azure Government-Portal](https://portal.azure.us/).
+2. Klicken Sie in das Portal Regierung auf  **+**  , und klicken Sie dann auf dem Markt auf **alle**. Suchen Sie nach _physischen Storsimple-_. Wählen Sie aus, und klicken Sie auf **physischen StorSimple-Geräteserien** , und klicken Sie dann auf **erstellen**. Klicken Sie alternativ im Portal Regierung auf  **+**  , und klicken Sie dann unter **Speicher**, klicken Sie auf **physischen StorSimple-Geräteserien**.
+3. In der **StorSimple-Geräte-Manager** Blatt die folgenden Schritte aus:
    
-   1. Geben Sie einen eindeutigen **Ressourcennamen** für Ihren Dienst an. Dies ist ein Anzeigename, der zum Identifizieren des Diensts verwendet werden kann. Der Name kann zwischen 2 und 50 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.
-   2. Wählen Sie ein **Abonnement** aus der Dropdownliste aus. Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. Dieses Feld wird nicht angezeigt, wenn Sie nur ein Abonnement besitzen.
-   3. Wählen Sie für **Ressourcengruppe** die Option **Vorhandene verwenden** oder **Neu erstellen** aus. Weitere Informationen finden Sie unter [Azure resource groups (Azure-Ressourcengruppen)](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
-   4. Geben Sie einen **Standort** für Ihren Dienst an. Der Standort bezieht sich auf die geografische Region, in der Ihr Gerät bereitgestellt werden soll. Wählen Sie **US Govt Iowa** oder **US Govt Virgina** aus.
-   5. Aktivieren Sie **Neues Speicherkonto erstellen** , um automatisch ein Speicherkonto mit dem Dienst zu erstellen. Geben Sie einen Namen für dieses Speicherkonto an. Wenn Ihre Daten an einem anderen Speicherort gespeichert werden sollen, deaktivieren Sie dieses Kontrollkästchen.
-   6. Überprüfen Sie **An Dashboard anheften**, wenn Sie einen Quicklink zu diesem Dienst auf Ihrem Dashboard erstellen möchten.
-   7. Klicken Sie auf **Erstellen**, um den StorSimple-Geräte-Manager zu erstellen. Die Diensterstellung dauert einige Minuten. Nachdem der Dienst erfolgreich erstellt wurde, wird eine Benachrichtigung angezeigt, und das Blatt des neuen Dienstes wird geöffnet.
+   1. Geben Sie einen eindeutigen **Ressourcenname** für Ihren Dienst. Dieser Name ist ein Anzeigename, der zum Identifizieren des Diensts verwendet werden kann. Der Name kann zwischen 2 und 50 Zeichen sein, die Buchstaben, Zahlen und Bindestriche sein können. Der Name muss beginnen und mit einem Buchstaben oder einer Ziffer enden.
+   2. Wählen Sie eine **Abonnement** aus der Dropdown-Liste. Das Abonnement wird mit Ihrem Abrechnungskonto verknüpft. Dieses Feld ist nicht vorhanden, wenn Sie nur ein Abonnement verfügen.
+   3. Für **Ressourcengruppe**, **vorhandene verwenden** oder **neu erstellen** Gruppe. Weitere Informationen finden Sie unter [Azure-Ressourcengruppen](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+   4. Geben Sie einen **Speicherort** für Ihren Dienst. Standort bezieht sich auf die geografische Region, in dem das Gerät bereitgestellt werden soll. Wählen Sie **USA Regierungsstellen Iowa** oder **USA Regierungsstellen Virgina**.
+   5. Wählen Sie **Erstellen eines neuen Speicherkontos** automatisch ein Speicherkonto mit dem Dienst erstellen. Geben Sie einen Namen für dieses Speicherkonto an. Wenn Sie Ihre Daten in einem anderen Speicherort benötigen, deaktivieren Sie dieses Kontrollkästchen.
+   6. Überprüfen Sie **an Dashboard anheften** Wunsch einen schnellen Link auf diesen Dienst auf dem Dashboard.
+   7. Klicken Sie auf **erstellen** StorSimple-Geräte-Manager zu erstellen. Die diensterstellung dauert einige Minuten. Nachdem der Dienst erfolgreich erstellt wurde, sehen Sie eine Benachrichtigung, und der neue Dienst Blatt wird geöffnet.
 
 

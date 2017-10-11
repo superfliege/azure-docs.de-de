@@ -1,0 +1,62 @@
+---
+title: "Linux-virtuelle Maschinen (Übersicht) | Microsoft Docs"
+description: "Hilfeinhalt für Linux-virtuelle Maschinen (Übersicht) in Azure-portal"
+services: virtual-machines-linux
+author: sewatson
+manager: lwelicki
+ms.service: virtual-machines-linux
+ms.topic: article
+ms.date: 04/27/2017
+ms.author: sewatson
+ms.openlocfilehash: 0de3fc4cab53564d7d131666e4a8c0ace8a64fb8
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
+---
+# <a name="linux-virtual-machines-documentation"></a>Dokumentation zu Linux-VMs
+
+Azure Linux Virtual Machines bietet eine auf Red Hat, Ubuntu oder der von Ihnen gewünschten Linux-Verteilung basierende sichere, virtuelle On-Demand-Infrastruktur mit umfangreicher Skalierung. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie virtuelle Linux-Computer erstellen, konfigurieren, verwalten und skalieren.
+
+## <a name="5-minute-quickstarts"></a>Fünfminütige Schnellstarts
+
+Erfahren Sie, wie Sie einen NGINX-Webserver auf einem virtuellen Computer unter Ubuntu bereitstellen:
+
+- [Azure-Portal](/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure PowerShell](/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure-Befehlszeilenschnittstelle](/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+## <a name="step-by-step-tutorials"></a>Schritt-für-Schritt-Tutorials
+
+Informationen Sie zum Bereitstellen, verwalten und Skalieren von Linux-VMs in Azure.
+
+- [Erstellen und Verwalten von virtuellen Linux-Computern](/azure/virtual-machines/linux/tutorial-manage-vm)
+- [Erstellen und Verwalten von VM-Datenträgern](/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Automatisieren der VM-Konfiguration](/azure/virtual-machines/linux/tutorial-automate-vm-deployment)
+- [Erstellen von benutzerdefinierten VM-Images](/azure/virtual-machines/linux/tutorial-custom-images)
+- [Erstellen eines hoch verfügbaren virtuellen Computers](/azure/virtual-machines/linux/tutorial-availability-sets)
+- [Erstellen einer VM-Skalierungsgruppe](/azure/virtual-machines/linux/tutorial-create-vmss)
+- [Lastenausgleich für virtuelle Computer](/azure/virtual-machines/linux/tutorial-load-balancer)
+- [Verwalten virtueller Computer und virtueller Netzwerke](/azure/virtual-machines/linux/tutorial-virtual-network)
+- [Sichern virtueller Computer](/azure/virtual-machines/linux/tutorial-backup-vms)
+- [Überwachen virtueller Computer](/azure/virtual-machines/linux/tutorial-monitoring)
+- [Verwalten der Sicherheit auf virtuellen Computern](/azure/virtual-machines/linux/tutorial-azure-security)
+- [Erstellen einer CI/CD-Infrastruktur mit Jenkins, Docker und GitHub](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)
+
+## <a name="free-pluralsight-video-training"></a>Kostenloses PluralSight-Videotraining
+
+- [Verwalten der Infrastruktur](https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
+- [Erste Schritte mit virtuellen Computern](https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
+- [Erste Schritte mit IaaS-Überwachung](https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02")
+
+## <a name="samples"></a>Beispiele 
+
+Stellen Sie Ihre erste Anwendung in Azure bereit.
+
+- [Azure-Befehlszeilenschnittstelle](/azure/virtual-machines/virtual-machines-linux-cli-samples)
+- [Azure PowerShell](/azure/virtual-machines/virtual-machines-linux-powershell-samples)
+
+## <a name="more"></a>Weitere Informationen
+
+- [Besuchen Sie die Dokumentation, um mehr zu erfahren](/azure/virtual-machines/linux/index)
+- [Erfahren Sie mehr über alle Azure-Dienste](https://aka.ms/j3wr7y)

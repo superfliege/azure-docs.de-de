@@ -17,14 +17,12 @@ ms.date: 07/31/2017
 ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 6f6baf5e1538fb280a899065c64ca5688473c04a
-ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Apps, Berechtigungen und Zustimmung in Azure Active Directory
 In Azure Active Directory können Sie Ihrem Verzeichnis Anwendungen hinzufügen.  Die Anwendungen können je nach Art der Anwendung variieren.  Wählen Sie ein Verzeichnis und dann die Anwendungen aus, um sie im klassischen Portal anzuzeigen.
 
@@ -220,5 +218,4 @@ Für FabrikamMail sieht dies wie folgt aus:
 (**ClientId** ist die Dienstprinzipalobjekt-ID von FabrikamMail (gerade erstellt), **PrincipalId** ist die Benutzerobjekt-ID (des Benutzers, der die Zustimmung erteilt hat), **ResourceId** ist die Dienstprinzipalobjekt-ID von Exchange, und „Scope“ ist die Berechtigung in Exchange, für die die Zustimmung erteilt wurde.)
 
 Falls das Erteilen der Zustimmung für Benutzer nicht zulässig ist, wird ein Hinweis angezeigt, dass die Berechtigung erforderlich ist.
-
 

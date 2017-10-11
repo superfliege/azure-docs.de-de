@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/01/2017
 ms.author: andret
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: a399d35358ecf188070e699f4d975a415bd4649d
-ms.contentlocale: de-de
-
+ms.openlocfilehash: fc9f88cc8d23abcfa8ea30e346192732b422ffa2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Einrichten Ihres Webservers oder Projekts
 
@@ -91,4 +91,3 @@ Die Anweisungen in diesem Leitfaden basieren auf Python und Visual Studio 2017. 
 </body>
 </html>
 ````
-

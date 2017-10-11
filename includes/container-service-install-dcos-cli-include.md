@@ -1,13 +1,13 @@
 ---
-title: Installieren der DC/OS-CLI | Microsoft Docs
-description: Installieren Sie die DC/OS-CLI.
+title: Installieren Sie den DC/OS CLI | Microsoft Docs
+description: Installieren Sie den DC/OS CLI.
 services: container-service
 documentationcenter: 
 author: rgardler
 manager: timlt
 editor: 
 tags: acs, azure-container-service
-keywords: Container, Microservices, DC/OS, Azure
+keywords: Container "," Micro-Dienste, DC/OS, Azure
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/10/2016
 ms.author: rogardle
-translationtype: Human Translation
-ms.sourcegitcommit: e664ce9426a2852a35dfdade5d41a9ce8b37a3b7
 ms.openlocfilehash: a8ea47f158c0d666340815d2e039995c7483257f
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 > [!NOTE]
-> Diese Anleitung ist für die Verwendung von DC/OS-basierten ACS-Clustern bestimmt. Sie ist für Swarm-basierte ACS-Cluster nicht erforderlich.
+> Dies ist für die Arbeit mit ACS DC/OS-basierten Clustern. Es ist nicht erforderlich für ACS Punktschwarms-basierten Cluster dazu.
 > 
 > 
 
-[Stellen Sie zuerst eine Verbindung mit Ihrem DC/OS-basierten ACS-Cluster her](../articles/container-service/container-service-connect.md). Anschließend können Sie die DC/OS-CLI mit den folgenden Befehlen auf Ihrem Clientcomputer installieren:
+Erstens [mit Ihrem DC/OS-basierten ACS-Cluster verbinden](../articles/container-service/container-service-connect.md). Sobald Sie dies getan haben, können Sie den DC/OS-CLI auf dem Clientcomputer mithilfe der unten aufgeführten Befehle installieren:
 
 ```bash
 sudo pip install virtualenv
@@ -36,9 +36,9 @@ chmod +x install-optout-dcos-cli.sh
 ./install-optout-dcos-cli.sh . http://localhost --add-path yes
 ```
 
-Wenn Sie eine alte Version von Python verwenden, kann es sein, dass Warnungen vom Typ „InsecurePlatformWarnings“ auftreten. Sie können dies ignorieren.
+Wenn Sie eine alte Version von Python verwenden, wird Sie möglicherweise einige "InsecurePlatformWarnings" fest. Sie können diese ignorieren.
 
-Führen Sie Folgendes aus, um zu beginnen, ohne die Shell neu zu starten:
+Führen Sie zum Einstieg ohne Neustart der Shell:
 
 ```bash
 source ~/.bashrc
@@ -46,7 +46,7 @@ source ~/.bashrc
 
 Dieser Schritt ist nicht erforderlich, wenn Sie neue Shells starten.
 
-Jetzt können Sie überprüfen, ob die CLI installiert wurde:
+Jetzt können Sie sicherstellen, dass die CLI installiert ist:
 
 ```bash
 dcos --help

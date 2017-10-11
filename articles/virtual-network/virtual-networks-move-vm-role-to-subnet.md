@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
 ms.openlocfilehash: b094f8338394ef2e84cad3070936d715411326a4
-ms.lasthandoff: 02/28/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>Verschieben eines virtuellen Computers (klassisch) oder einer Cloud Services-Rolleninstanz in ein anderes Subnetz mithilfe von PowerShell
 Sie können PowerShell verwenden, um Ihre virtuellen Computer (klassisch) zwischen Subnetzen im gleichen virtuellen Netzwerk (VNet) zu verschieben. Rolleninstanzen können anstatt mit PowerShell auch durch Bearbeiten der CSCFG-Datei verschoben werden.
@@ -59,4 +58,3 @@ Bearbeiten Sie zum Verschieben einer Rolleninstanz die CSCFG-Datei. Im folgenden
            </InstanceAddress>
         </AddressAssignments>
     </NetworkConfiguration> 
-
