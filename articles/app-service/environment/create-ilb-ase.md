@@ -69,7 +69,7 @@ So erstellen Sie eine ILB-ASE:
 
     * Skalieren Sie auf bis zu 100 Instanzen, profitieren Sie jedoch von einer schnelleren Front-End-Skalierung.
 
-6. Wählen Sie **Virtuelles Netzwerk/Speicherort** > ** Konfigurationen virtueller Netzwerke**. Legen Sie den **VIP-Typ** auf **Intern** fest.
+6. Wählen Sie **Virtuelles Netzwerk/Speicherort** > **Konfigurationen virtueller Netzwerke**. Legen Sie den **VIP-Typ** auf **Intern** fest.
 
 7. Geben Sie einen Domänennamen ein. Diese Domäne wird für Apps verwendet, die in dieser ASE erstellt werden. Es gelten einige Einschränkungen. Der Domänenname darf nicht folgendermaßen lauten:
 

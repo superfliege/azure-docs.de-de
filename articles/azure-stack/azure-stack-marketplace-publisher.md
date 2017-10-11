@@ -60,7 +60,7 @@ In diesem Abschnitt importieren Sie die Vorlage und verwenden Eingaben für Ihre
 1.  Klicken Sie auf **Durchsuchen**, und wählen Sie die Datei *azuredeploy.json* aus dem Ordner „101-Simple-Windows-VM“ in den heruntergeladenen Vorlagen aus.
 
     ![Screenshot des zweiten Bildschirms des Marketplace-Toolkits](./media/azure-stack-marketplace-publisher/image8.png)
-2.  Der Bereitstellungs-Assistent wird mit einem* *einfachen Schritt und Eingabeelementen für die einzelnen Parameter aus der Vorlage aufgefüllt.  Sie können zusätzliche Schritte hinzufügen und Eingaben zwischen Schritten verschieben.  So können Sie beispielsweise die Schritte „Front-End-Konfiguration“ und „Back-End-Konfiguration“ für Ihre Lösung hinzufügen.
+2.  Der Bereitstellungs-Assistent wird mit *einem* einfachen Schritt und Eingabeelementen für die einzelnen Parameter aus der Vorlage aufgefüllt.  Sie können zusätzliche Schritte hinzufügen und Eingaben zwischen Schritten verschieben.  So können Sie beispielsweise die Schritte „Front-End-Konfiguration“ und „Back-End-Konfiguration“ für Ihre Lösung hinzufügen.
 3.  Geben Sie den Pfad zur Datei „AzureGalleryPackager.exe“ an.  
 4.  Klicken Sie auf **Erstellen**. Daraufhin wird Ihre Lösung vom Marketplace-Toolkit in eine AZPKG-Datei gepackt.  Nach Abschluss des Vorgangs zeigt der Assistent den Pfad zu Ihrer Lösungsdatei an und gibt Ihnen die Möglichkeit, mit der Veröffentlichung Ihres Pakets in Azure Stack fortzufahren.
 

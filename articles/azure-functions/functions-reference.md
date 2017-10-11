@@ -83,7 +83,7 @@ Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-A
 
 #### <a name="to-use-app-service-editor"></a>So verwenden Sie den App Service-Editor
 1. Klicken Sie im Azure Functions-Portal auf **Funktionen-App-Einstellungen**.
-2. Klicken Sie im Abschnitt** Erweiterte Einstellungen** auf **Zu App Service-Einstellungen** wechseln.
+2. Klicken Sie im Abschnitt **Erweiterte Einstellungen** auf **Zu App Service-Einstellungen** wechseln.
 3. Klicken Sie im App-Menü „Nav“ unter **ENTWICKLUNGSTOOLS** auf **App Service-Editor**.
 4. Klicken Sie auf **Start**.
    

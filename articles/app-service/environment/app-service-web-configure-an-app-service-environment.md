@@ -161,7 +161,7 @@ Um den Skalierungsvorgang auf dem Blatt „App Service-Umgebung“ zu verwenden,
 
 ![Benutzeroberfläche „Skalieren“][6]
 
-Wenn Sie die Funktionen für die manuelle oder die automatische Skalierung in einem bestimmten Ressourcenpool verwenden möchten, wechseln Sie zu **Einstellungen** > **Front-End-Pool** / ** Workerpools**. Öffnen Sie anschließend den Pool, den Sie ändern möchten. Wählen Sie **Einstellungen** > **Horizontal hochskalieren** bzw. **Einstellungen** > **Zentral hochskalieren**. Auf dem Blatt **Horizontal hochskalieren** können Sie die Anzahl von Instanzen steuern. **Zentral hochskalieren** ermöglicht die Festlegung der Ressourcengröße.  
+Wenn Sie die Funktionen für die manuelle oder die automatische Skalierung in einem bestimmten Ressourcenpool verwenden möchten, wechseln Sie zu **Einstellungen** > **Front-End-Pool** / **Workerpools**. Öffnen Sie anschließend den Pool, den Sie ändern möchten. Wählen Sie **Einstellungen** > **Horizontal hochskalieren** bzw. **Einstellungen** > **Zentral hochskalieren**. Auf dem Blatt **Horizontal hochskalieren** können Sie die Anzahl von Instanzen steuern. **Zentral hochskalieren** ermöglicht die Festlegung der Ressourcengröße.  
 
 ![Benutzeroberfläche „Skalierungseinstellungen“][7]
 
