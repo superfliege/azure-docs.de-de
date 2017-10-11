@@ -79,7 +79,7 @@ Den Wert für *&#60;DNS-Name_des_virtuellen Computers>* finden Sie im klassische
 
 ![Arbeitsbereich erstellen][19]
 
-Es wird eine Warnung mit dem Text* Es besteht ein Problem mit dem Sicherheitszertifikat der Website (Internet Explorer)* oder *Dies ist keine sichere Verbindung (Chrome)* angezeigt, wie nachstehend gezeigt. Klicken Sie zum Fortfahren auf **Laden dieser Website fortsetzen (nicht empfohlen) (Internet Explorer)** oder auf **Erweitert** und dann auf **Weiter zu &#60;*DNS-Name*> (unsicher)** (Chrome). Geben Sie dann das Kennwort ein, das Sie zuvor für den Zugriff auf IPython Notebooks festgelegt haben.
+Es wird eine Warnung mit dem Text *Es besteht ein Problem mit dem Sicherheitszertifikat der Website (Internet Explorer)* oder *Dies ist keine sichere Verbindung (Chrome)* angezeigt, wie nachstehend gezeigt. Klicken Sie zum Fortfahren auf **Laden dieser Website fortsetzen (nicht empfohlen) (Internet Explorer)** oder auf **Erweitert** und dann auf **Weiter zu &#60;*DNS-Name*> (unsicher)** (Chrome). Geben Sie dann das Kennwort ein, das Sie zuvor für den Zugriff auf IPython Notebooks festgelegt haben.
 
 **InternetExplorer:**
 ![Arbeitsbereich erstellen][20]

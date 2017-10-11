@@ -120,7 +120,7 @@ Erstellen eines **Azure Batch-Pools** mit mindestens 2 Computeknoten.
 
    ![](./media/data-factory-data-processing-using-batch/image4.png)
 
-   Wenn Sie **Azure Storage Explorer** verwenden, laden Sie die Datei **file.txt** auf **mycontainer** hoch. Klicken Sie in der Symbolleiste auf **Kopieren**, um eine Kopie des Blobs zu erstellen. Ändern Sie im Dialogfeld **Blob kopieren ** den **Namen des Zielblobs** in `inputfolder/2015-11-16-00/file.txt`. Wiederholen Sie diesen Schritt zum Erstellen von `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt` usw. Mit dieser Aktion werden die Ordner automatisch erstellt.
+   Wenn Sie **Azure Storage Explorer** verwenden, laden Sie die Datei **file.txt** auf **mycontainer** hoch. Klicken Sie in der Symbolleiste auf **Kopieren**, um eine Kopie des Blobs zu erstellen. Ändern Sie im Dialogfeld **Blob kopieren** den **Namen des Zielblobs** in `inputfolder/2015-11-16-00/file.txt`. Wiederholen Sie diesen Schritt zum Erstellen von `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt` usw. Mit dieser Aktion werden die Ordner automatisch erstellt.
 5. Erstellen Sie einen weiteren Container mit dem Namen `customactivitycontainer`. Sie laden die benutzerdefinierte Aktivität als Zip-Datei in diesen Container hoch.
 
 #### <a name="visual-studio"></a>Visual Studio
@@ -527,7 +527,7 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst für Ihr **Azure Batch
 
    1. Ersetzen Sie **Kontoname** mit dem Namen Ihres Azure Batch-Kontos.
    2. Ersetzen Sie **Zugriffsschlüssel** durch den Zugriffsschlüssel des Azure Batch-Kontos.
-   3. Geben Sie die ID des Pools für die **poolName**-Eigenschaft** ein.** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
+   3. Geben Sie die ID des Pools für die **poolName** - Eigenschaft ein**.** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
    4. Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein.
 
       > [!IMPORTANT]

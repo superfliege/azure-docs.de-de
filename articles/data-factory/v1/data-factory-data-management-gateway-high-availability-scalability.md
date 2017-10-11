@@ -62,7 +62,7 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie die beiden folgenden Artike
 > [!NOTE]
 > Bevor Sie ein Datenverwaltungsgateway auf einem lokalen Windows-Computer installieren, sollten Sie sich mit den Voraussetzungen im [Hauptartikel](data-factory-data-management-gateway.md#prerequisites) vertraut machen.
 
-1. Aktivieren Sie in der [exemplarischen Vorgehensweise](data-factory-move-data-between-onprem-and-cloud.md#create-gateway) beim Erstellen eines logischen Gateways das Feature **Hohe Verfügbarkeit und Skalierbarkeit **. 
+1. Aktivieren Sie in der [exemplarischen Vorgehensweise](data-factory-move-data-between-onprem-and-cloud.md#create-gateway) beim Erstellen eines logischen Gateways das Feature **Hohe Verfügbarkeit und Skalierbarkeit**. 
 
     ![Datenverwaltungsgateway – Aktivieren der hohen Verfügbarkeit und Skalierbarkeit](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-enable-high-availability-scalability.png)
 2. Verwenden Sie auf der Seite **Konfigurieren** entweder den Link **Express-Setup** oder **Manuelles Setup**, um auf dem ersten Knoten (lokaler Windows-Computer) ein Gateway zu installieren.
