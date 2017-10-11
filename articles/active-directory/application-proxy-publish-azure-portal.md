@@ -15,15 +15,12 @@ ms.date: 07/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: e00a939f2b20ab8e0a2ddf0ff91e59db440213ac
-ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
-
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy
 
 > [!div class="op_single_selector"]
@@ -106,4 +103,3 @@ Navigieren Sie in Ihrem Browser zur externen URL, die Sie beim Veröffentlichen 
 - [Laden Sie Connectors herunter](active-directory-application-proxy-enable.md), und [erstellen Sie Connectorgruppen](active-directory-application-proxy-connectors-azure-portal.md), um Anwendungen in getrennten Netzwerken und Standorten zu veröffentlichen.
 
 - [Richten Sie einmaliges Anmelden](application-proxy-sso-azure-portal.md) für Ihre neu veröffentlichte App ein.
-

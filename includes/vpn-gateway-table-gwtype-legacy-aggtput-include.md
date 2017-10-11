@@ -1,24 +1,24 @@
-In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefasste Durchsatz nach Gateway-SKU angegeben. Diese Tabelle betrifft sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell. 
+Die folgende Tabelle zeigt die gatewaytypen und die geschätzte aggregierten Durchsatz vom Gateway-SKU. Diese Tabelle gilt für den Ressourcen-Manager und dem klassischen Bereitstellungsmodelle. 
 
-Für die einzelnen Gateway-SKUs gelten unterschiedliche Preise. Weitere Informationen finden Sie unter [VPN-Gateway: Preise](https://azure.microsoft.com/pricing/details/vpn-gateway).
+Preise unterscheidet sich zwischen Gateway-SKUs. Weitere Informationen finden Sie unter [VPN-Gateway – Preise](https://azure.microsoft.com/pricing/details/vpn-gateway).
 
-Beachten Sie, dass die UltraPerformance-Gateway-SKU nicht in dieser Tabelle enthalten ist. Informationen zur UltraPerformance-SKU finden Sie in der Dokumentation zu [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md).
+Beachten Sie, dass das UltraPerformance-Gateway-SKU nicht in dieser Tabelle dargestellt wird. Informationen über die UltraPerformance SKU finden Sie unter der [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) Dokumentation.
 
-|  | **VPN Gateway-Durchsatz (1)** | **Max. IPsec-Tunnel für VPN Gateway (2)** | **ExpressRoute-Gateway-Durchsatz** | **Gemeinsame Verwendung von VPN-Gateway und ExpressRoute** |
+|  | **VPN-Gateway-Durchsatz (1)** | **VPN-Gateway-max-IPsec-Tunnel (2)** | **ExpressRoute-Gateway-Durchsatz** | **VPN-Gateway und ExpressRoute gleichzeitig vorhanden sein** |
 | --- | --- | --- | --- | --- |
-| **Basic-SKU (3)(5)(6)** |100 MBit/s |10 |500 MBit/s (6) |Nein |
-| **Standard-SKU (4)(5)** |100 MBit/s |10 |1.000 MBit/s |Ja |
-| **High-Performance-SKU (4)** |200 MBit/s |30 |2.000 MBit/s |Ja |
+| **Grundlegende SKU (3)(5)(6)** |100 Mbit/s |10 |500 Mbit/s (6) |Nein |
+| **Standard-SKU (4)(5)** |100 Mbit/s |10 |1000 Mbit/s |Ja |
+| **Hohe Leistung SKU (4)** |200 Mbit/s |30 |2000 Mbit/s |Ja |
 
 
-(1) Der VPN-Durchsatz ist eine grobe Schätzung, die auf Messungen zwischen den VNets einer Azure-Region basiert. Es ist kein garantierter Durchsatz für standortübergreifende Verbindungen über das Internet. Hierbei wird der maximal mögliche Durchsatz gemessen.
+(1) der VPN-Durchsatz ist eine grobe Schätzung, die auf der Grundlage der Messungen zwischen VNets in derselben Azure-Region. Es ist keinen garantierten Durchsatz für standortübergreifende Verbindungen über das Internet. Es ist die maximal mögliche Durchsatz Messung.
 
-(2) Die Tunnelanzahl bezieht sich auf routenbasierte VPNs. Ein richtlinienbasiertes VPN kann nur einen Site-to-Site-VPN-Tunnel unterstützen.
+(2) die Anzahl der Tunnel finden Sie in VPNs als routebased festgelegt. Ein PolicyBased VPN kann nur ein Standort-zu-Standort-VPN-Tunnel unterstützen.
 
-(3) BGP wird für die Basic-SKU nicht unterstützt.
+(3) BGP wird für die grundlegende SKU nicht unterstützt.
 
-(4) Richtlinienbasierte VPNs werden für diese SKU nicht unterstützt. Sie werden nur für die Basic-SKU unterstützt.
+(4) PolicyBased-VPNs werden für dieser SKU nicht unterstützt. Sie werden nur die grundlegenden SKU unterstützt.
 
-(5) Aktiv-Aktiv-S2S-VPN-Gatewayverbindungen werden für diese SKU nicht unterstützt. Aktiv-Aktiv wird nur in der HighPerformance-SKU unterstützt.
+(5) aktiv / aktiv-S2S-VPN-Gateway-Verbindungen sind für dieser SKU nicht unterstützt. Aktiv / aktiv wird in der HighPerformance-SKU unterstützt.
 
-(6) Die Basic-SKU ist für die Verwendung mit ExpressRoute veraltet.
+(6) grundlegende SKU ist für die Verwendung mit ExpressRoute veraltet.

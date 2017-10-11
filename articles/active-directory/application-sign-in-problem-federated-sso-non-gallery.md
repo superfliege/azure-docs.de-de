@@ -13,15 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
 ms.openlocfilehash: 3afc7bca878caef424d3fa3c64aa17df0fda7de5
-ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
-
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Probleme beim Anmelden bei einer nicht im Katalog enthaltenen Anwendung, die für einmaliges Anmelden im Verbund konfiguriert ist
 
 Um das Problem zu beheben, müssen Sie die Anwendungskonfiguration in Azure AD wie folgt überprüfen:
@@ -96,7 +93,7 @@ Stellen Sie sicher, dass der AssertionConsumerServiceURL-Wert in der SAML-Anford
 
   * Wird das Textfeld für die Antwort-URL nicht angezeigt, aktivieren Sie das Kontrollkästchen **Erweiterte URL-Einstellungen anzeigen**. 
 
-Nachdem Sie den Wert der Antwort-URL in Azure AD aktualisiert haben und er mit dem von der Anwendung in der SAML-Anforderung gesendeten Wert übereinstimmt, sollten Sie in der Lage sein, sich bei der Anwendung anzumelden.
+Nachdem Sie den Wert der Antwort-URL in Azure AD aktualisiert haben und er mit dem von der Anwendung in der SAML-Anforderung gesendeten Wert übereinstimmt, sollten Sie sich bei der Anwendung anmelden können.
 
 ## <a name="user-not-assigned-a-role"></a>Benutzer wurde keine Rolle zugewiesen
 
@@ -242,4 +239,3 @@ Weitere Informationen zum Anpassen der SAML-Attributansprüche, die an Ihre Anwe
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Anforderungen des SAML-Protokolls für einmaliges Anmelden bei Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
-

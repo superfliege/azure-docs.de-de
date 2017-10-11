@@ -15,14 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 12/19/2016
 ms.author: LADocs; klam
-ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
 ms.openlocfilehash: a5bf24de1a7a2b6d4c1ae6416c95d83ef7506da3
-ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="manage-your-logic-apps-with-visual-studio-cloud-explorer"></a>Verwalten von Logik-Apps mit dem Cloud-Explorer von Visual Studio
 
 Das [Azure-Portal](https://portal.azure.com/) bietet Ihnen zwar eine hervorragende Möglichkeit zum Entwerfen und zum Verwalten von Azure Logic Apps, aber Sie können den Cloud-Explorer von Visual Studio nutzen, um viele Azure-Ressourcen zu verwalten, z.B. Logik-Apps. Mit dem Cloud-Explorer von Visual Studio können Sie veröffentlichte Logik-Apps durchsuchen, verwalten, bearbeiten und herunterladen. Zu den Verwaltungsaufgaben zählt auch das Aktivieren, Deaktivieren und Anzeigen des Ausführungsverlaufs. 
@@ -92,4 +90,3 @@ Um den Ausführungsverlauf für eine Instanz und damit die Ausführungsergebniss
 * [Anzeigen allgemeiner Beispiele und Szenarien](logic-apps-examples-and-scenarios.md)
 * [Video: Automatisieren von Geschäftsprozessen mit Azure Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694)
 * [Video: Integrieren Ihrer Systeme in Azure Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)
-

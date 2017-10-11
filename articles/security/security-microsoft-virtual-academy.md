@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: baf6476c6dfc0db29d51d5b0b1643b1ff099a808
-
-
+ms.openlocfilehash: c5ebc3cb13359d824f022859078e4feb2b6869a0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Azure-Sicherheitskurse der Microsoft Virtual Academy
 In der Microsoft Virtual Academy werden kostenlose Onlineschulungen angeboten, damit Entwickler, IT- und Datenspezialisten und Studenten immer auf dem neuesten Stand der Technologie bleiben, ihre Kompetenzen und Kenntnisse vertiefen und sich weiterentwickeln können.
@@ -64,9 +64,3 @@ Lernen Sie Azure Resource Manager mit einem Team aus internationalen Experten ke
 [Azure Rights Management Services Core Skills (Wichtige Fähigkeiten für Azure Rights Management-Dienste)](https://mva.microsoft.com/en-us/training-courses/azure-rights-management-services-core-skills-10500?l=QLoxMwuCB_1805094681)
 
 In diesem Kurs wird erläutert, weshalb Information Protection ein Muss in Ihrer Organisation ist und wie das geistige Eigentum Ihrer Organisation auf allen Geräten und in der Cloud durch die Rechteverwaltung geschützt wird. Microsoft-Experten vermitteln Ihnen entsprechende praktische Kenntnisse und technisches Know-how.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

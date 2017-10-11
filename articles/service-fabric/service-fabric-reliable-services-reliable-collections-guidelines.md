@@ -1,6 +1,6 @@
 ---
-title: "Richtlinien und Empfehlungen für Reliable Collections in Azure Service Fabric | Microsoft-Dokumentation"
-description: "Richtlinien und Empfehlungen für die Verwendung von Reliable Collections in Service Fabric"
+title: "Richtlinien und Empfehlungen für die zuverlässige Sammlungen in Azure Service Fabric | Microsoft Docs"
+description: "Richtlinien und Empfehlungen für die Verwendung von zuverlässigen Service Fabric-Auflistungen"
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,54 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/3/2017
 ms.author: mcoskun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
 ms.openlocfilehash: 053a7bca76362035e428fc11806b3e4f83d00946
-ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-<a id="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric" class="xliff"></a>
-# Richtlinien und Empfehlungen für Reliable Collections in Azure Service Fabric
-Dieser Abschnitt enthält Richtlinien für die Verwendung von Reliable State Manager und Reliable Collections. Er soll Benutzern helfen, häufige Fehlerquellen zu vermeiden.
+# <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Richtlinien und Empfehlungen für die zuverlässige Sammlungen in Azure Service Fabric
+Dieser Abschnitt enthält Richtlinien für die Verwendung von zuverlässigen Status-Manager und zuverlässige Sammlungen. Das Ziel ist, damit Benutzer häufige Fehlerquellen vermeiden können.
 
-Die **Richtlinien** werden als **einfache Empfehlungen präsentiert**.
+Die Richtlinien werden als einfache Empfehlungen, die mit den Begriffen vorangestellt organisiert *führen*, *ggf.*, *vermeiden* und *nicht*.
 
-* Ändern Sie kein benutzerdefiniertes Objekt, das von Lesevorgängen (z.B. `TryPeekAsync` oder `TryGetValueAsync`) zurückgegeben wurde. Zuverlässige Auflistungen geben ebenso wie gleichzeitige Auflistungen anstelle einer Kopie einen Verweis auf die Objekte zurück.
-* Tiefenkopieren Sie zurückgegebene benutzerdefinierte Objekte, bevor Sie diese ändern. Da bei Strukturen und integrierten Typen eine Wertübergabe erfolgt, ist hier keine Tiefenkopie erforderlich.
-* Verwenden Sie `TimeSpan.MaxValue` nicht für Timeouts. Timeouts sollten verwendet werden, um Deadlocks zu erkennen.
-* Verwenden Sie keine Transaktion, nachdem für sie ein Commit ausgeführt bzw. sie verworfen oder abgebrochen wurde.
-* Verwenden Sie eine Enumeration nicht außerhalb des Transaktionsbereichs, in dem sie erstellt wurde.
-* Erstellen Sie keine Transaktion innerhalb der `using` -Anweisung einer anderen Transaktion, da dies zu Deadlocks führen kann.
-* Stellen Sie sicher, dass Ihre `IComparable<TKey>` -Implementierung richtig ist. `IComparable<TKey>` ist erforderlich, damit das System Prüfpunkte und Zeilen zusammenfügen kann.
-* Verwenden Sie Aktualisierungssperren beim Lesen eines Elements, das aktualisiert werden soll, um eine bestimmte Klasse von Deadlocks zu vermeiden.
-* Sie sollten auch erwägen, Ihre Elemente (z.B. TKey + TValue für das Reliable Dictionary) unter 80 KB zu halten: je kleiner, desto besser. Damit verringern Sie die Nutzung großer Objektheaps sowie die Anforderungen an Datenträger und Netzwerk-E/A. Häufig wird damit auch die Replikation doppelter Daten reduziert, wenn nur ein kleiner Teil des Werts aktualisiert wird. Um dies im zuverlässigen Wörterbuch zu erreichen, werden häufig einzelne Zeilen in mehrere Zeilen aufgeteilt.
-* Sie sollten zwecks Notfallwiederherstellung die Verwendung der Funktionen „Backup“ und „Wiederherstellung“ in Betracht ziehen.
-* Verwenden Sie Vorgänge mit einer einzigen Entität und Vorgänge mit mehreren Entitäten (z.B. `GetCountAsync` und `CreateEnumerableAsync`) aufgrund der unterschiedlichen Isolationsstufen nicht in der gleichen Transaktion.
-* Behandeln Sie „InvalidOperationException“. Benutzertransaktionen können aus verschiedenen Gründen vom System abgebrochen werden, z.B. wenn der Reliable State Manager seine primäre Rolle ändert, oder wenn eine Transaktion mit langer Laufzeit das Abschneiden des Transaktionsprotokolls einschränkt. In solchen Fällen erhalten die Benutzer möglicherweise eine InvalidOperationException, die angibt, dass ihre Transaktion bereits beendet wurde. Vorausgesetzt, das Beenden der Transaktion wurde nicht durch den Benutzer angefordert, ist der beste Weg, diese Ausnahme zu behandeln, die Transaktion zu beenden und zu überprüfen, ob das Abbruchtoken signalisiert wurde (oder ob sich die Rolle des Replikats geändert hat). Falls dies nicht der Fall ist, erstellen Sie eine neue Transaktion und versuchen Sie es erneut.  
+* Verändern sich nicht auf ein Objekt des benutzerdefinierten Typs zurückgegeben, die für Lesevorgänge (z. B. `TryPeekAsync` oder `TryGetValueAsync`). Zuverlässige Auflistungen, wie gleichzeitige Sammlungen geben einen Verweis auf die Objekte und keine Kopie zurück.
+* Führen Sie Tiefenkopie das zurückgegebene Objekt eines benutzerdefinierten Typs, bevor Sie Sie ändern. Da Strukturen und integrierte Typen Übergabe nach Wert sind, müssen Sie keine tiefe Kopie davon zu tun.
+* Verwenden Sie keine `TimeSpan.MaxValue` für Timeouts. Timeouts sollte verwendet werden, damit Deadlocks erkannt werden.
+* Verwenden Sie keine Transaktion, nachdem sie ein Commit ausgeführt, wurde abgebrochen, oder freigegeben wurde.
+* Verwenden Sie eine Enumeration nicht außerhalb der Geltungsbereich der Transaktion, in der Sie erstellt wurde.
+* Erstellen Sie eine Transaktion in einer anderen Transaktion nicht `using` Anweisung, da es zu Deadlocks führen kann.
+* Stellen Sie sicher, die Ihre `IComparable<TKey>` Implementierung richtig ist. Das System nimmt Abhängigkeit `IComparable<TKey>` für das Zusammenführen von Prüfpunkten und Zeilen.
+* Verwenden Sie updatesperre beim Lesen eines Elements mit einer Absicht zum Aktualisieren eine bestimmten Form von Deadlocks zu vermeiden.
+* Berücksichtigen Sie Ihre Elemente (z. B. TKey + TValue für zuverlässige Wörterbuch) unter 80 KB: kleinere, desto besser. Dies reduziert den großen Objektheap Nutzung sowie die Datenträger- und Netzwerkvorgänge-e/a-Anforderungen. Häufig, verringert sich doppelte Daten replizieren, wenn nur ein kleiner Teil der Wert aktualisiert wird. Üblicherweise wird dies im zuverlässige Wörterbuch zu erreichen ist um Ihre Zeilen auf mehrere Zeilen.
+* Sicherung in Betracht, und Wiederherstellungsfunktionalität, um die Wiederherstellung im Notfall zu verfügen.
+* Vermeiden Sie das Mischen von Einheit Vorgänge und Vorgänge für mehrere Entitäten (z. B. `GetCountAsync`, `CreateEnumerableAsync`) in der gleichen Transaktion aufgrund von den einzelnen Isolationsstufen möglich.
+* Behandeln Sie InvalidOperationException. Benutzertransaktionen, die vom System für aus verschiedenen Gründen abgebrochen werden können. Beispielsweise wird Wenn zuverlässige Status-Manager seine Rolle außerhalb des primären geändert wird oder wenn eine lang andauernde Transaktion durch Abschneiden des Transaktionsprotokolls blockiert. In solchen Fällen erhalten Benutzer, die InvalidOperationException gibt an, dass die Transaktion wurde bereits beendet. Vorausgesetzt, die Beendigung der Transaktion wurde nicht vom Benutzer angefordert wird, am besten zur Behandlung dieser Ausnahme ist, verwerfen die Transaktion, überprüfen Sie, ob das Abbruchtoken, das signalisiert wurde (oder die Rolle des Replikats wurde geändert) und, wenn eine neue Transaktion und wiederholen Sie den Vorgang nicht erstellen.  
 
-Hier folgen einige Punkte, die es zu beachten gilt:
+Hier sind einige Dinge zu bedenken:
 
-* Das Standardtimeout beträgt 4 Sekunden für alle Reliable Collections-APIs. Die meisten Benutzer sollten das Standardtimeout verwenden.
-* Das Standardabbruchtoken ist `CancellationToken.None` in allen APIs für zuverlässige Auflistungen.
-* Der Schlüsseltyp-Parameter (*TKey*) für Reliable Dictionary muss `GetHashCode()` und `Equals()` ordnungsgemäß implementieren. Schlüssel müssen unveränderlich sein.
-* Zum Erreichen einer hohen Verfügbarkeit der zuverlässigen Auflistungen sollte jeder Dienst mindestens ein Ziel und eine Mindestgröße von 3 bei der Replikatgruppe haben.
-* Lesevorgänge auf dem sekundären Replikat dürfen Versionen lesen, die nicht im Quorum committet wurden.
-  Dies bedeutet, dass Datenversionen, die von einem einzelnen sekundären Replikat gelesen werden, falsch weiterverarbeitet werden können.
-  Da Lesevorgänge von primären Replikaten immer stabil sind, können hier nie fehlerhafte Versionen auftreten.
+* Das Standardzeitlimit beträgt vier Sekunden für die zuverlässige Auflistung-APIs. Die meisten Benutzer sollten das Standardtimeout verwenden.
+* Wird das Standardabbruchtoken `CancellationToken.None` in allen zuverlässige Sammlungen-APIs.
+* Der Typ des Schlüssels-Parameter (*TKey*) für eine zuverlässige Wörterbuch, ordnungsgemäß implementieren muss `GetHashCode()` und `Equals()`. Schlüssel müssen unveränderlich sein.
+* Um hohe Verfügbarkeit für die zuverlässige Auflistungen zu erreichen, müssen jeden Dienst mindestens ein Ziel und die Mindestgröße des Replikatsatzes Größe von 3 festgelegt.
+* Lesevorgänge auf dem sekundären darf Versionen lesen, die nicht Quorum, die ein Commit ausgeführt werden.
+  Dies bedeutet, dass eine Version der Daten, die von einem einzelnen sekundären gelesen wird "false" ausgeführt werden kann.
+  Liest vom primären Server sind immer stabilen: kann nie werden "false" fortgeschritten.
 
-<a id="next-steps" class="xliff"></a>
-### Nächste Schritte
-* [Arbeiten mit Reliable Collections](service-fabric-work-with-reliable-collections.md)
+### <a name="next-steps"></a>Nächste Schritte
+* [Arbeiten mit zuverlässigen Auflistungen](service-fabric-work-with-reliable-collections.md)
 * [Transaktionen und Sperren](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-* [Reliable State Manager und Reliable Collection – ausführliche Informationen](service-fabric-reliable-services-reliable-collections-internals.md)
+* [Zuverlässige Status-Manager und Auflistung Besonderheiten](service-fabric-reliable-services-reliable-collections-internals.md)
 * Verwalten von Daten
   * [Sichern und Wiederherstellen](service-fabric-reliable-services-backup-restore.md)
-  * [Notifications](service-fabric-reliable-services-notifications.md)
+  * [Benachrichtigungen](service-fabric-reliable-services-notifications.md)
   * [Serialisierung und Upgrade](service-fabric-application-upgrade-data-serialization.md)
-  * [Konfigurieren des Reliable State Managers](service-fabric-reliable-services-configuration.md)
-* Andere
-  * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
-  * [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-
+  * [Zuverlässige Zustands-Manager](service-fabric-reliable-services-configuration.md)
+* Andere Benutzer
+  * [Zuverlässige Services-Schnellstart](service-fabric-reliable-services-quick-start.md)
+  * [Entwicklerreferenz für zuverlässige Sammlungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

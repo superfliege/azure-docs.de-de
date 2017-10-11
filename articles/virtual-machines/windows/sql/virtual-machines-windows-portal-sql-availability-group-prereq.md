@@ -16,14 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 3d508877928e033f24dae62c1042745ea7250033
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines
 
 In diesem Tutorial erfahren Sie, wie Sie die Voraussetzungen zum Erstellen einer [SQL Server AlwaysOn-Verfügbarkeitsgruppe in Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-tutorial.md) erfüllen. Wenn die Voraussetzungen erfüllt sind, verfügen Sie über einen Domänencontroller, zwei SQL Server-VMs und einen Zeugenserver in einer einzigen Ressourcengruppe.
@@ -333,7 +331,7 @@ Führen Sie zum Erstellen jedes Kontos die folgenden Schritte aus.
 6. Wiederholen Sie die vorherigen Schritte für jedes der drei Konten.
 
 ### <a name="grant-the-required-permissions-to-the-installation-account"></a>Erteilen der erforderlichen Berechtigungen für das Installationskonto
-1. Wählen Sie im **Active Directory-Verwaltungscenter** im linken Bereich die Option **corp (lokal)** aus. Klicken Sie dann rechts im **Aufgabenbereich** auf **Eigenschaften**.
+1. Wählen Sie im **Active Directory-Verwaltungscenter** im linken Bereich die Option **corp (lokal)** aus. Klicken Sie dann rechts im Aufgabenbereich**** auf **Eigenschaften**.
 
     ![CORP-Benutzereigenschaften](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/31-addcproperties.png)
 2. Wählen Sie **Erweiterungen** aus, und klicken Sie auf der Registerkarte **Sicherheit** auf die Schaltfläche **Erweitert**.
@@ -469,11 +467,11 @@ Wiederholen Sie diese Schritte auf dem anderen virtuellen SQL Server-Computer.
 Für die Lösung müssen die folgenden TCP-Ports in der Firewall geöffnet sein:
 
 - **SQL Server-VM**:<br/>
-   Port 1433 für eine Standardinstanz von SQL Server
+   Port 1433 für eine Standardinstanz von SQL Server.
 - **Azure-Lastenausgleichstest**:<br/>
-   Ein beliebiger verfügbarer Port. Für Beispiele wird häufig 59999 verwendet.
+   Jeden verfügbaren Port. Für Beispiele wird häufig 59999 verwendet.
 - **Datenbankspiegelungs-Endpunkt**: <br/>
-   Ein beliebiger verfügbarer Port. Für Beispiele wird häufig 5022 verwendet.
+   Jeden verfügbaren Port. Für Beispiele wird häufig 5022 verwendet.
 
 Die Firewallports müssen auf beiden virtuellen SQL-Server-Computern geöffnet sein.
 
@@ -499,4 +497,3 @@ Wiederholen Sie diese Schritte auf dem zweiten virtuellen SQL Server-Computer.
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen einer SQL Server AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-

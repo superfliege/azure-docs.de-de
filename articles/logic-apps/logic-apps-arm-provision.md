@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
-ms.openlocfilehash: 1305fdc4cf87905eef701ec5471d6329006c2b5f
-ms.contentlocale: de-de
-ms.lasthandoff: 01/31/2017
-
-
+ms.openlocfilehash: 161adeacd6da2b15225c8a4ddae171e19e539967
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-logic-app-using-a-template"></a>Erstellen einer Logik-App mithilfe einer Vorlage
 Mit Vorlagen können Sie einfach verschiedene Connectors in einer Logik-App verwenden. Logic Apps enthält Azure Resource Manager-Vorlagen, mit denen Sie eine Logik-App erstellen können, die zum Definieren von Geschäftsworkflows verwendet werden kann. Sie können festlegen, welche Ressourcen bereitgestellt werden und wie Sie Parameter beim Bereitstellen der Logik-App definieren. Sie können diese Vorlage für Ihre eigenen Unternehmensszenarien verwenden oder Ihren Anforderungen entsprechend anpassen.
@@ -109,7 +107,6 @@ Diese spezifische Definition wird einmal pro Stunde ausgeführt und pingt den im
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
-
 
 
 

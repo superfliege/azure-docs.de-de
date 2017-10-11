@@ -1,33 +1,33 @@
 <!--author=alkohli last changed: 01/20/17-->
 
 
-#### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>So fügen Sie Anmeldeinformationen für ein Speicherkonto hinzu, das zum gleichen Azure-Abonnement wie der StorSimple-Geräte-Manager-Dienst gehört
+#### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>Hinzufügen von Speicherkonto-Anmeldeinformationen im gleichen Azure-Abonnement wie der StorSimple-Geräte-Manager-Dienst
 
-1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst. Klicken Sie im Abschnitt **Konfiguration** auf **Anmeldeinformationen des Speicherkontos**.
+1. Wechseln Sie zu Ihrer StorSimple-Geräte-Manager-Dienst. In der **Konfiguration** auf **speicherkontoanmeldeinformationen**.
 
-    ![Anmeldeinformationen des Speicherkontos](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct1.png)
+    ![Anmeldeinformationen für das Speicherkonto](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct1.png)
 
-2. Klicken Sie auf dem Blatt **Anmeldeinformationen des Speicherkontos** auf **+ Hinzufügen**.
+2. Auf der **speicherkontoanmeldeinformationen** Blatt, klicken Sie auf **+ Add**.
 
-    ![Hinzufügen von Anmeldeinformationen eines Speicherkontos](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct2.png)
+    ![Hinzufügen von Speicherkonto-Anmeldeinformationen](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct2.png)
 
-3. Führen Sie auf dem Blatt **Anmeldeinformationen des Speicherkontos hinzufügen** folgende Schritte aus:
+3. In der **Hinzufügen von Speicherkonto-Anmeldeinformationen** Blatt die folgenden Schritte aus:
 
-    1. Da Sie Anmeldeinformationen für ein Speicherkonto im gleichen Azure-Abonnement wie Ihr Dienst hinzufügen, stellen Sie sicher, dass **Aktuell** ausgewählt ist.
+    1. Wie Sie Speicherkonto-Anmeldeinformationen im gleichen Azure-Abonnement als Ihren Dienst hinzufügen, stellen Sie sicher, dass **aktuelle** ausgewählt ist.
 
-    2. Wählen Sie in der Dropdownliste **Speicherkonto** ein vorhandenes Speicherkonto aus.
+    2. Aus der **Speicherkonto** Dropdown Liste, wählen Sie ein vorhandenes Speicherkonto.
 
-    3. Basierend auf dem ausgewählten Speicherkonto wird der **Speicherort** angezeigt (abgeblendet und kann hier nicht geändert werden).
+    3. Basierend auf das Speicherkonto ausgewählt, die **Speicherort** angezeigt (abgeblendet und hier nicht geändert werden).
 
-    4. Aktivieren Sie **SSL-Modus aktivieren** , um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem Gerät und der Cloud zu erstellen. Deaktivieren Sie **SSL aktivieren** nur dann, wenn Sie in einer Private Cloud arbeiten.
+    4. Wählen Sie **SSL-Modus aktivieren** um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem Gerät und der Cloud zu erstellen. Deaktivieren Sie **SSL aktivieren** nur, wenn Sie in einer privaten Cloud ausgeführt werden.
 
-        ![Hinzufügen des Blatts „Anmeldeinformationen des Speicherkontos“](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct3.png)
+        ![Blatt "Anmeldeinformationen" der Speicher-Konto hinzufügen](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct3.png)
 
-    5. Klicken Sie auf **Hinzufügen**, um die Auftragserstellung für die Anmeldeinformationen des Speicherkontos zu starten. Sie werden benachrichtigt, nachdem die Anmeldeinformationen des Speicherkontos erfolgreich erstellt wurden.
+    5. Klicken Sie auf **hinzufügen** die auftragserstellung für das Speicherkonto-Anmeldeinformationen gestartet. Sie werden benachrichtigt, nachdem das Speicherkonto-Anmeldeinformationen erfolgreich erstellt wurde.
 
-        ![Erfolgsbenachrichtigung für Anmeldeinformationen des Speicherkontos](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct5.png)
+        ![Erfolgsmeldung für Anmeldeinformationen für das Speicherkonto](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct5.png)
 
-Die neu erstellten Anmeldeinformationen des Speicherkontos werden unter der Liste der **Anmeldeinformationen für Speicherkonten** angezeigt.
+Die neu erstellte Speicherkonto-Anmeldeinformationen wird angezeigt, unter der Liste der **speicherkontoanmeldeinformationen**.
 
-![Liste der Anmeldeinformationen für Speicherkonten](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct6.png)
+![Liste von Speicherkonto-Anmeldedaten](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct6.png)
 

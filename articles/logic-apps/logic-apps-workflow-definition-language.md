@@ -14,14 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
 ms.openlocfilehash: 6befc5b26f2b01113f1aa813125b33eb66ad6f6a
-ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Schema der Definitionssprache für Workflows für Azure Logic Apps
 
 Eine Workflowdefinition enthält die eigentliche Logik, die im Rahmen Ihrer Logik-App ausgeführt wird. Diese Definition enthält mindestens einen Trigger zum Starten der Logik-App sowie mindestens eine Aktion, die von der Logik-App ausgeführt werden soll.  
@@ -338,4 +336,3 @@ Mit diesen Funktionen können Sie zur Laufzeit Informationen zum eigentlichen Wo
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Workflowaktionen und -trigger](logic-apps-workflow-actions-triggers.md)
-

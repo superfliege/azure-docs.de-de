@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 3a6a69bf555c7267d3fbeb03ff6c03054991960f
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -186,7 +186,7 @@ Der erste Schritt besteht daraus, Benutzeroberflächenelemente zur vorhandenen H
     Diese Klasse verwendet den isolierten Speicher, um Nachrichtenkategorien zu speichern, die das Gerät empfangen soll. Sie enthält außerdem Methoden zum Registrieren dieser Kategorien mithilfe einer [Vorlagenbenachrichtigungsregistrierung](notification-hubs-templates-cross-platform-push-messages.md) .
 
 
-1. Fügen Sie in der Datei „App.xaml.cs“ folgende Eigenschaft zur Klasse **App** hinzu. Ersetzen Sie die Platzhalter `<connection string with listen access>` und * durch den Namen Ihres Notification Hubs und die Verbindungszeichenfolge für `<hub name>`DefaultListenSharedAccessSignature*, die Sie zuvor abgerufen haben.
+1. Fügen Sie in der Datei „App.xaml.cs“ folgende Eigenschaft zur Klasse **App** hinzu. Ersetzen Sie die Platzhalter `<connection string with listen access>` und  *durch den Namen Ihres Notification Hubs und die Verbindungszeichenfolge für `<hub name>`DefaultListenSharedAccessSignature*, die Sie zuvor abgerufen haben.
    
         public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
    
@@ -293,10 +293,10 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 -->
 
 <!-- Anchors. -->
-[Hinzufügen der Kategorieauswahl zur App]: #adding-categories
-[Registrieren für Benachrichtigungen]: #register
-[Senden von Benachrichtigungen vom Back-End]: #send
-[Ausführen der App und Erzeugen von Benachrichtigungen]: #test-app
+[Add category selection to the app]: #adding-categories
+[Register for notifications]: #register
+[Send notifications from your back-end]: #send
+[Run the app and generate notifications]: #test-app
 [Next Steps]: #next-steps
 
 <!-- Images. -->
@@ -308,15 +308,9 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
 <!-- URLs.-->
 [Erste Schritte mit Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-wp8/
-[Verwenden von Notification Hubs zum Übermitteln von lokalisierten aktuellen Nachrichten]: ../breakingnews-localized-wp8.md
-[Benachrichtigen von Benutzern mit Notification Hubs]: /manage/services/notification-hubs/notify-users/
+[Use Notification Hubs to broadcast localized breaking news]: ../breakingnews-localized-wp8.md
+[Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users/
 [Mobile Service]: /develop/mobile/tutorials/get-started
-[Notification Hubs-Leitfaden]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs – Anleitungen für Windows Phone]: ??
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for Windows Phone]: ??
 

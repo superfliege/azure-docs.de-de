@@ -1,16 +1,16 @@
 
 | EBENE: | FREI | BASIC | STANDARD |
 | --- | --- | --- | --- |
-| API-Aufrufe |500.000 |1,5 Mio. pro Einheit |15 Mio. pro Einheit |
+| API-Aufrufe |500 KB |1.5 M / Einheit |15 M / Einheit |
 | Aktive Geräte |500 |Unbegrenzt |Unbegrenzt |
 | Skalieren |N/V |Bis zu 6 Einheiten |Unbegrenzte Einheiten |
-| Pushbenachrichtigungen |Free-Tarif für Notification Hubs enthalten, bis zu 1 Mio. Push-Vorgänge |Basic-Tarif für Notification Hubs enthalten, bis zu 10 Mio. Push-Vorgänge |Standard-Tarif für Notification Hubs enthalten, bis zu 10 Mio. Push-Vorgänge |
-| Echtzeitmessaging/<br/>Websockets |Eingeschränkt |350 pro mobilem Dienst |Unbegrenzt |
-| Offlinesynchronisierung |Eingeschränkt |Included |Included |
-| Geplante Aufträge |Eingeschränkt |Included |Included |
-| SQL-Datenbank (erforderlich)  <br/>Für zusätzliche Kapazität gelten Standardtarife |20 MB enthalten |20 MB enthalten |20 MB enthalten |
-| CPU-Kapazität |60 Minuten pro Tag |Unbegrenzt |Unbegrenzt |
-| Übertragung ausgehender Daten |165 MB pro Tag (tägliche Rollover) |Included |Included |
+| Pushbenachrichtigungen |Notification Hubs Free-Tarif enthalten, wird bis zu 1 Mio. |Notification Hubs Basisebene enthalten, wird bis zu 10 M |Notification Hubs Standard-Ebene enthalten, wird bis zu 10 M |
+| Real-Time messaging /<br/>WebSockets |Limited |350 / mobilen service |Unbegrenzt |
+| Offline Synchronisierungen |Limited |Enthalten |Enthalten |
+| Geplante Aufträge |Limited |Enthalten |Enthalten |
+| SQL-Datenbank (erforderlich) <br/>Gelten die Standardtarife für zusätzliche Kapazität |20 MB enthalten |20 MB enthalten |20 MB enthalten |
+| CPU-Kapazität |60 Minuten/Tag |Unbegrenzt |Unbegrenzt |
+| Ausgehende Datenübertragungen |165 MB pro Tag (tägliche Rollover) |Enthalten |Enthalten |
 
-Weitere Informationen zu diesen Einschränkungen und zu Preisen finden Sie unter [Mobile Services Preise](https://azure.microsoft.com/pricing/details/mobile-services/). 
+Weitere Details zu dieser Grenzwerte sowie Informationen zur Preisgestaltung finden Sie unter [Mobile Services-Preisen](https://azure.microsoft.com/pricing/details/mobile-services/). 
 

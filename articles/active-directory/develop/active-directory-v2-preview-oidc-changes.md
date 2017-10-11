@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: ce60eb0586b4756aabab0bad830e7fc3ca506097
-ms.contentlocale: de-de
-ms.lasthandoff: 03/29/2017
-
-
+ms.openlocfilehash: ae73833a68db14804dc40eaf07ff7d3effaa9052
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="important-updates-to-the-v20-authentication-protocols"></a>Wichtige Updates für die v2.0-Authentifizierungsprotokolle
 Entwickler aufgepasst! In den nächsten zwei Wochen werden wir einige Updates an unseren v2.0-Authentifizierungsprotokollen vornehmen. Dies kann zu beeinträchtigenden Änderungen für Apps führen, die Sie während des Vorschauzeitraums geschrieben haben.  
@@ -238,5 +236,4 @@ Abschließend möchten wir Ihnen dafür danken, dass Sie während der Vorschauph
 Viel Spaß beim Programmieren!
 
 Microsoft Identity Division
-
 

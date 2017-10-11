@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: ef87cd82b021e40f0da05142878daff245cd9c62
-ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/29/2017
 ---
-
 # <a name="step-4-plan-networking-for-hyper-v-with-vmm-to-azure-replication"></a>Schritt 4: Planen von Netzwerken für die Hyper-V-Replikation (mit VMM) in Azure
 
 Nach dem Durchführen der [Kapazitätsplanung](vmm-to-azure-walkthrough-capacity.md) (bei einer vollständigen Bereitstellung) finden Sie in diesem Artikel Überlegungen zur Netzwerkplanung beim Replizieren von lokalen virtuellen Hyper-V-Computern in System Center Virtual Machine Manager-Clouds (VMM) in Azure mithilfe des [Azure Site Recovery](site-recovery-overview.md)-Diensts.
@@ -114,4 +112,3 @@ In diesem [Blogbeitrag](http://azure.microsoft.com/blog/2014/09/04/networking-in
 ## <a name="next-steps"></a>Nächste Schritte
 
 Gehen Sie zu [Schritt 5: Vorbereiten von Azure](vmm-to-azure-walkthrough-prepare-azure.md).
-

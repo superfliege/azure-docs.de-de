@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 85ba6ef3e51c339a77eb9b4198c4f87e2a64cf09
-ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke
 
@@ -109,4 +108,3 @@ Sie können ein Subnetz erst löschen, wenn es keine Ressourcen mehr enthält. F
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Sie einen virtuellen Computer in einem Subnetz erstellen möchten, lesen Sie unter [Erstellen eines virtuellen Netzwerks und Bereitstellen von virtuellen Computern im Subnetz](virtual-network-get-started-vnet-subnet.md#create-vms) nach.
-

@@ -15,33 +15,30 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/22/2017
 ms.author: rclaus
-ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 9bd9ff35cebc2aeaf0558dcf1a37887050682f0a
-ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
-
+ms.openlocfilehash: 1af7e1d40a0eb129875dd6a30ac899f2025bee13
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
-
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 
 ## <a name="assumptions"></a>Annahmen
 
 - Sie planen die Migration einer Oracle-Datenbank von einem lokalen Standort zu Azure.
-- Sie haben den Überblick über verschiedene Metriken von Oracle-AWR-Berichten.
+- Sie kennen die verschiedene Metriken in Oracle-AWR-Berichten.
 - Sie besitzen Grundkenntnisse über Anwendungsleistung und Plattformnutzung.
 
 ## <a name="goals"></a>Ziele
 
 - Sie möchten wissen, wie Sie Ihre Oracle-Bereitstellung in Azure optimieren können.
-- Entdecken der Optionen zur Leistungsoptimierung einer Oracle-Datenbank in einer Azure-Umgebung.
+- Sie möchten die Optionen zur Leistungsoptimierung einer Oracle-Datenbank in einer Azure-Umgebung untersuchen.
 
-## <a name="the-differences-between-an-on-premises-and-azure-implementation"></a>Die Unterschiede zwischen einer lokalen und Azure-Implementierung 
+## <a name="the-differences-between-an-on-premises-and-azure-implementation"></a>Die Unterschiede zwischen einer lokalen und einer Azure-Implementierung 
 
-Im Folgenden sind einige wichtige Aspekte aufgeführt, die Sie beachten müssen, wenn Sie lokale Anwendungen in Azure migrieren. 
+Im Folgenden sind einige wichtige Aspekte aufgeführt, die Sie beachten müssen, wenn Sie lokale Anwendungen zu Azure migrieren. 
 
-Ein wichtiger Unterschied besteht darin, dass in einer Azure-Implementierung Ressourcen wie virtuelle Computer, Festplatten und virtuelle Netzwerke für andere Clients freigegeben werden. Darüber hinaus können Ressourcen je nach Anforderungen gedrosselt werden. Anstatt sich auf das Vermeiden von Ausfällen zu konzentrieren (MTBF), ist Azure eher darauf ausgerichtet, Ausfälle zu überstehen (MTTR).
+Ein wichtiger Unterschied besteht darin, dass in einer Azure-Implementierung Ressourcen wie virtuelle Computer, Datenträger und virtuelle Netzwerke für andere Clients freigegeben werden. Darüber hinaus können Ressourcen je nach Anforderungen gedrosselt werden. Anstatt sich auf das Vermeiden von Ausfällen zu konzentrieren (MTBF), ist Azure eher darauf ausgerichtet, Ausfälle zu überstehen (MTTR).
 
 Die folgende Tabelle enthält einige der Unterschiede zwischen einer lokalen Implementierung und einer Azure-Implementierung von Oracle-Datenbanken.
 
@@ -53,7 +50,7 @@ Die folgende Tabelle enthält einige der Unterschiede zwischen einer lokalen Imp
 > | **Resilienz** |MTBF (Mean Time Between Failure, mittlere Betriebsdauer zwischen Ausfällen) |MTTR (Mean Time To Recover, mittlere Reparaturzeit)|
 > | **Geplante Wartung** |Patchen/Upgrades|[Verfügbarkeitsgruppen](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (Patchen/Upgrades werden von Azure verwaltet) |
 > | **Ressource** |Dediziert  |Für andere Clients freigegeben|
-> | **Regionen** |Datencenter |[Regionspaare](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
+> | **Regionen** |Rechenzentren |[Regionspaare](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
 > | **Speicher** |SAN-/Physische Datenträger |[Von Azure verwalteter Speicher](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Skalieren** |Vertikale Skalierung |Horizontale Skalierung|
 
@@ -74,9 +71,9 @@ Es gibt vier mögliche Bereiche, die Sie optimieren können, um die Leistung in 
 
 ### <a name="generate-an-awr-report"></a>Generieren eines AWR-Berichts
 
-Wenn Sie über eine Oracle-Datenbank verfügen und die Migration in Azure planen, können Sie zwischen mehreren Optionen wählen. Sie können den Oracle-AWR Bericht zum Abrufen der Metriken (IOPS, Mbit/s, GiB/Sek. usw.) ausführen. Wählen Sie dann die VM auf Basis der Metriken aus, die Sie erfasst haben. Sie können sich aber auch an Ihr Infrastrukturteam wenden, um ähnliche Informationen zu erhalten.
+Wenn Sie über eine Oracle-Datenbank verfügen und die Migration in Azure planen, können Sie zwischen mehreren Optionen wählen. Sie können den Oracle-AWR Bericht zum Abrufen der Metriken (IOPS, MBit/s, GiB usw.) ausführen. Wählen Sie dann die VM auf Basis der Metriken aus, die Sie erfasst haben. Sie können sich aber auch an Ihr Infrastrukturteam wenden, um ähnliche Informationen zu erhalten.
 
-Sie können den AWR-Bericht auch während der regulären und der maximalen Workload ausführen, sodass Sie die Ergebnisse vergleichen können. Anhand dieser Berichte können Sie die Größe der VMs dann entweder nach der durchschnittlichen oder maximalen Workload auswählen.
+Sie können den AWR-Bericht auch für reguläre und maximale Workloads ausführen und die Ergebnisse nachfolgend vergleichen. Anhand dieser Berichte können Sie die Größe der VMs dann entweder nach der durchschnittlichen oder maximalen Workload auswählen.
 
 Im folgenden Beispiel wird gezeigt, wie ein AWR-Bericht generiert wird:
 
@@ -108,11 +105,11 @@ Folgende Metriken können Sie aus dem AWR-Bericht abrufen:
 
 Sie können sich unter anderem die fünf wichtigsten zeitgesteuerten Vordergrundereignisse ansehen, die auf die Engpässe im System hinweisen.
 
-In der folgenden Abbildung ist die Protokolldateisynchronisierung z.B. oben. Die Anzahl von Wartevorgängen wird angezeigt, die erforderlich sind, bevor LGWR den Protokollpuffer in die Redo-Protokolldatei schreibt. Diese Ergebnisse zeigen, dass ein leistungsfähigerer Speicher oder leistungsfähigere Datenträger erforderlich sind. Darüber hinaus werden auch die Anzahl von CPUs (Kernen) und die Speichermenge im Diagramm angezeigt.
+In der folgenden Abbildung steht die Protokolldateisynchronisierung z.B. ganz oben. Die Anzahl von Wartevorgängen wird angezeigt, die erforderlich sind, bevor LGWR den Protokollpuffer in die Redo-Protokolldatei schreibt. Diese Ergebnisse zeigen, dass ein leistungsfähigerer Speicher oder leistungsfähigere Datenträger erforderlich sind. Darüber hinaus werden auch die Anzahl von CPUs (Kernen) und die Speichermenge im Diagramm angezeigt.
 
 ![Screenshot der AWR-Berichtsseite](./media/oracle-design/cpu_memory_info.png)
 
-Die folgenden Diagramme zeigen das gesamte E/A-Volumen der Lese- und Schreibvorgänge. Während der Berichtszeit wurden 59 GB gelesen und 247,3 GB geschrieben.
+Die folgenden Diagramme zeigen das gesamte E/A-Volumen der Lese- und Schreibvorgänge. Während der Berichtsausführung wurden 59 GB gelesen und 247,3 GB geschrieben.
 
 ![Screenshot der AWR-Berichtsseite](./media/oracle-design/io_info.png)
 
@@ -134,7 +131,7 @@ Die folgende Abbildung zeigt die Beziehung zwischen Durchsatz und IOPS:
 
 Der gesamte Netzwerkdurchsatz wird anhand der folgenden Informationen geschätzt:
 - SQL*Net-Datenverkehr
-- MBit/s x Anzahl von Servern (ausgehender Datenstrom wie z.B. Oracle Data Guard)
+- MBit/s × Anzahl von Servern (ausgehender Datenstrom wie z.B. Oracle Data Guard)
 - Andere Faktoren wie z.B. Anwendungsreplikation
 
 ![Screenshot des SQL*Net-Durchsatzes](./media/oracle-design/sqlnet_info.png)
@@ -144,7 +141,7 @@ Je nach Ihren Anforderungen an die Netzwerkbandbreite können Sie aus verschiede
 **Empfehlungen**
 
 - Die Netzwerklatenz ist höher als bei einer lokalen Bereitstellung. Eine Verringerung der Netzwerkroundtrips kann die Leistung deutlich verbessern.
-- Um Roundtrips zu reduzieren, konsolidieren Sie Anwendungen mit hohen Transaktionen oder auf dem gleichen virtuellen Computer häufig ausgeführte Apps.
+- Zur Reduzierung von Roundtrips sollten Anwendungen, die ein hohes Transaktionsaufkommen aufweisen oder kommunikationsintensiv sind, auf demselben virtuellen Computer konsolidiert werden.
 
 ### <a name="disk-types-and-configurations"></a>Datenträgertypen und -konfigurationen
 
@@ -162,7 +159,7 @@ Wenn Sie einen neuen verwalteten Datenträger aus dem Portal erstellen, können 
 
 Weitere Informationen finden Sie unter [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](https://docs.microsoft.com/azure/storage/storage-premium-storage).
 
-Sobald Sie Ihren Speicher auf einer VM konfiguriert haben, möchten Sie eventuell einen Auslastungstest für die Datenträger ausführen, bevor Sie eine Datenbank erstellen. Wenn Sie die E/A-Rate im Hinblick auf Latenz und Durchsatz kennen, können Sie damit besser bestimmen, ob die VMs den erwarteten Durchsatz mit Latenzzielen unterstützen.
+Nachdem Sie Ihren Speicher auf einer VM konfiguriert haben, sollten Sie vor dem Erstellen einer Datenbank einen Auslastungstest für die Datenträger ausführen. Wenn Sie die E/A-Rate im Hinblick auf Latenz und Durchsatz kennen, können Sie damit besser bestimmen, ob die VMs den erwarteten Durchsatz mit Latenzzielen unterstützen.
 
 Es gibt eine Reihe von Tools für den Auslastungstest einer Anwendung wie z.B. Oracle Orion, Sysbench und Fio.
 
@@ -175,7 +172,7 @@ Die IOPS-Rate kann aus dem AWR-Bericht abgerufen werden. Sie wird durch das Redo
 ![Screenshot der AWR-Berichtsseite](./media/oracle-design/awr_report.png)
 
 Beispiel: Die Größe des Redo-Protokolls beträgt 12.200.000 Bytes pro Sekunde, was 11,63 MBit/s entspricht.
-Die IOPS-Rate beträgt 12.200.000/2.358 = 5,174.
+Die IOPS-Rate beträgt 12.200.000 : 2.358 = 5.174.
 
 Sobald Sie eine genaue Vorstellung von den E/A-Anforderungen haben, können Sie eine Kombination von Laufwerken auswählen, die für diese Anforderungen am besten geeignet ist.
 
@@ -183,18 +180,18 @@ Sobald Sie eine genaue Vorstellung von den E/A-Anforderungen haben, können Sie 
 
 - Verteilen Sie die E/A-Workload für den DATA-Tabellenbereich mit verwaltetem Speicher oder Oracle ASM auf mehrere Datenträger.
 - Wenn die E/A-Blöcke bei lese- und schreibintensiven Vorgängen größer werden, fügen Sie weitere Datenträger hinzu.
-- Erhöhen Sie die Blockgröße für hohe sequenzielle Verarbeitung.
+- Erhöhen Sie die Blockgröße für umfangreiche sequenzielle Prozesse.
 - Reduzieren Sie die E/A mit Datenkomprimierung (für Daten und Indizes).
 - Trennen Sie Redo-Protokolle, SYSTEM- und TEMP- sowie UNDO-Tabellenbereiche durch separate Datenträger.
 - Speichern Sie keine Anwendungsdateien auf dem standardmäßigen Betriebssystemdatenträger (/dev/sda). Diese Datenträger sind für schnelle VM-Startzeiten optimiert und erbringen für Ihre Anwendung möglicherweise keine gute Leistung.
 
 ### <a name="disk-cache-settings"></a>Cacheeinstellungen von Datenträgern
 
-Es gibt drei Möglichkeiten für das Hostzwischenspeichern:
+Es gibt drei Optionen für die Hostzwischenspeicherung:
 
 - *Schreibgeschützt*: Alle Anfragen werden für zukünftige Lesevorgänge zwischengespeichert. Alle Schreibvorgänge werden direkt in Azure Blob Storage gespeichert.
 
-- *Lese-/Schreibzugriff*: Dies ist ein „Vorauslese“-Algorithmus. Die Lese- und Schreibvorgänge werden für zukünftige Lesevorgänge zwischengespeichert. Schreibvorgänge ohne Durchschreiben werden zuerst im lokalen Cache gespeichert. Für SQL Server werden Schreibvorgänge in Azure Storage gespeichert, da Durchschreiben verwendet wird. Darüber hinaus bietet dies die niedrigste Datenträgerlatenz für leichte Workloads.
+- *Lese-/Schreibzugriff*: Dies ist ein „Vorauslese“-Algorithmus. Die Lese- und Schreibvorgänge werden für zukünftige Lesevorgänge zwischengespeichert. Schreibvorgänge ohne Durchschreiben werden zuerst im lokalen Cache gespeichert. Für SQL Server werden Schreibvorgänge in Azure Storage gespeichert, da Durchschreiben verwendet wird. Darüber hinaus bietet dies die niedrigste Datenträgerlatenz für schlanke Workloads.
 
 - *Keine* (deaktiviert): Mit dieser Option können Sie den Cache umgehen. Alle Daten werden auf den Datenträger übertragen und in Azure Storage gespeichert. Diese Methode bietet Ihnen die höchste E/A-Rate für E/A-intensive Workloads. Sie müssen auch die „Transaktionskosten“ berücksichtigen.
 
@@ -210,14 +207,14 @@ Weitere Informationen finden Sie unter [Storage Premium für virtuelle Linux-Com
 - Wählen Sie für SYSTEM, TEMP und UNDO bei Zwischenspeichern **Kein** aus.
 - Verwenden Sie für DATA bei Zwischenspeichern **Kein**. Wenn Ihre Datenbank aber schreibgeschützt oder leseintensiv ist, verwenden Sie für Zwischenspeichern die Option **Schreibgeschützt**.
 
-Nachdem Ihre Einstellung für den Datenträger gespeichert wurde, können Sie die Einstellung für das Hostzwischenspeichern nicht ändern, bis Sie die Bereitstellung des Laufwerks auf Betriebssystemebene aufheben und es nach der Änderung wieder bereitstellen.
+Nachdem Ihre Einstellung für den Datenträger gespeichert wurde, können Sie die Einstellung für das Hostzwischenspeichern nur ändern, wenn Sie die Einbindung des Laufwerks auf Betriebssystemebene aufheben. Nach Vornahme der Änderung müssen Sie das Laufwerk dann wieder einbinden.
 
 
 ## <a name="security"></a>Sicherheit
 
 Nachdem Sie Ihre Azure-Umgebung eingerichtet und konfiguriert haben, besteht der nächste Schritt im Sichern des Netzwerks. Hier sind einige Empfehlungen dafür:
 
-- *NSG-Richtlinie*: NSG kann von einem Subnetz oder NIC definiert werden. Es ist einfacher, den Zugriff auf der Ebene des Subnetzes zu steuern, sowohl für die Sicherheit als auch für das Erzwingen von Routing wie z.B. bei der Firewall einer Anwendung.
+- *NSG-Richtlinie*: Die NSG kann nach Subnetz oder Netzwerkadapter definiert werden. Für Anwendungsfirewalls etwa vereinfacht die Zugriffssteuerung auf Subnetzebene Sicherheitsimplementierung und Zwangsrouting.
 
 - *Jumpbox*: Damit der Zugriff noch sicherer wird, sollten Administratoren keine direkte Verbindung zum Anwendungsdienst oder zur Datenbank herstellen. Eine Jumpbox wird als Medium zwischen dem Administratorcomputer und Azure-Ressourcen verwendet.
 ![Screenshot der Jumpbox-Topologieseite](./media/oracle-design/jumpbox.png)
@@ -238,4 +235,3 @@ Nachdem Sie Ihre Azure-Umgebung eingerichtet und konfiguriert haben, besteht der
 
 - [Tutorial: Erstellen eines hoch verfügbaren virtuellen Computers](../../linux/create-cli-complete.md)
 - [Erkunden der Azure-CLI-Beispiele für die Bereitstellung virtueller Computer](../../linux/cli-samples.md)
-

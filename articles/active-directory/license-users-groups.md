@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeffgilb
 custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: c4509cdb003687083d0456c1957b19cf35ee056a
-ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="quickstart-license-users-in-azure-active-directory"></a>Schnellstart: Lizenzbenutzer in Azure Active Directory
 Bei lizenzbasierten Azure AD-Diensten wird ein Azure Active Directory-Abonnement (Azure AD) in Ihrem Azure-Mandanten aktiviert. Nach Aktivierung des Abonnements werden Dienstfunktionen von Azure AD-Administratoren verwaltet und von lizenzierten Benutzern verwendet. Wenn Sie Enterprise Mobility + Security, Azure AD Premium oder Azure AD Basic erwerben, wird Ihr Mandant mit dem Abonnement aktualisiert, einschließlich der Gültigkeitsdauer und der vorausbezahlten Lizenzen. Ihre Abonnementinformationen (einschließlich der Anzahl zugewiesener oder verfügbarer Lizenzen) stehen über das Azure-Portal unter **Azure Active Directory** zur Verfügung, indem Sie die Kachel **Lizenzen** öffnen. Das Blatt **Lizenzen** ist auch der beste Ort für die Verwaltung Ihrer Lizenzzuweisungen.

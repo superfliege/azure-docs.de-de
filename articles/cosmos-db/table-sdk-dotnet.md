@@ -14,13 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ab8163cd7056d61b5e8af15c9941a76327877107
-ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
-
+ms.openlocfilehash: 7d641d4089f8bce86633b7c476f10617bc642e2b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB-Tabellen-.NET-API: Herunterladen und Versionshinweise
 
@@ -30,12 +28,12 @@ ms.lasthandoff: 05/10/2017
 |**SDK-Download**|[NuGet](https://aka.ms/acdbtablenuget)|
 |**API-Dokumentation**|[.NET API-Referenzdokumentation](https://aka.ms/acdbtableapiref)|
 |**Schnellstart**|[Azure Cosmos DB: Build a .NET application using the Table API](https://aka.ms/acdbtnetqs) (Azure Cosmos DB: Erstellen einer .NET-Anwendung mit der Tabellen-API)|
-|**Tutorial**|[Azure Cosmos DB: Develop with the Graph API in .NET](tutorial-develop-graph-dotnet.md) (Azure Cosmos DB: Entwickeln mit der Graph-API in .NET)|
+|**Tutorial**|[Azure CosmosDB: Erstellen eines Containers mit der Graph-API](tutorial-develop-graph-dotnet.md)|
 |**Aktuelles unterstütztes Framework**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>Versionshinweise
 
-* Anfängliche Vorschauversion.
+* Erste Vorschauversion
 
 ## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
 Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.

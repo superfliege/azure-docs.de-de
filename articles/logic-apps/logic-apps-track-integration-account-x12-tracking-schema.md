@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
-ms.openlocfilehash: c8c7642a28f1dc386a73d014abe13ec36c6cbe69
-ms.contentlocale: de-de
-ms.lasthandoff: 03/01/2017
-
-
+ms.openlocfilehash: 3782c0a76ea8728a146b3d73774f74c31187cbfd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>Starten oder Aktivieren der Nachverfolgung von X12-Nachrichten für die Überwachung von Erfolgs-, Fehler- und Nachrichteneigenschaften
 Sie können diese X12-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto als Unterstützung bei der Überwachung von B2B-Transaktionen (Business-to-Business) verwenden:
@@ -358,4 +356,3 @@ Sie können diese X12-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto al
 * Weitere Informationen zu [benutzerdefinierten B2B-Nachverfolgungsschemas](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md).
 * Weitere Informationen zum [Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 * Weitere Informationen zum [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)  
-

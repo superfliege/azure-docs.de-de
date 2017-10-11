@@ -1,16 +1,16 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="to-add-a-new-storage-account-in-storsimple-release-version-ga"></a>So fügen Sie ein neues Speicherkonto in der StorSimple-Version (GA) hinzu
-1. Wählen Sie auf der StorSimple-Manager-Dienst-Startseite Ihren Dienst aus, und doppelklicken Sie dann darauf. Damit gelangen Sie auf die Seite **Schnellstart** . Wählen Sie die Seite **Konfigurieren** aus.
+#### <a name="to-add-a-new-storage-account-in-storsimple-release-version-ga"></a>So fügen Sie ein neues Speicherkonto in Version von StorSimple-Version (GA) hinzu
+1. Klicken Sie auf der Zielseite StorSimple Manager-Dienst wählen Sie den Dienst, und doppelklicken Sie darauf. Dadurch gelangen Sie zu der **Schnellstart** Seite. Wählen Sie die **konfigurieren** Seite.
 2. Klicken Sie auf **Speicherkonto hinzufügen/bearbeiten**.
-3. Gehen Sie im Dialogfeld **Speicherkonten hinzufügen/bearbeiten** folgendermaßen vor:
+3. In der **Speicherkonto hinzufügen/bearbeiten** Dialogfeld Feld, gehen Sie folgendermaßen vor:
    
-   1. Klicken Sie auf **Neues hinzufügen**.
-   2. Geben Sie einen Namen für Ihr Speicherkonto an.
-   3. Geben Sie den primären **Zugriffsschlüssel** für Ihr Microsoft Azure-Speicherkonto an.
-   4. Aktivieren Sie **SSL-Modus aktivieren** , um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem Gerät und der Cloud zu erstellen. Deaktivieren Sie das Kontrollkästchen **SSL-Modus aktivieren** nur, wenn der Betrieb in einer privaten Cloud stattfindet.
-   5. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). Sie werden benachrichtigt, nachdem das Speicherkonto erfolgreich erstellt wurde.
+   1. Klicken Sie auf **Add new**.
+   2. Geben Sie einen Namen für Ihr Speicherkonto.
+   3. Geben Sie den primären **Zugriffsschlüssel** für Ihr Microsoft Azure-Speicherkonto.
+   4. Wählen Sie **SSL-Modus aktivieren** um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem Gerät und der Cloud zu erstellen. Deaktivieren der **SSL-Modus aktivieren** Kontrollkästchen nur, wenn Sie in einer privaten Cloud ausgeführt werden.
+   5. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). Sie werden benachrichtigt, nachdem das Speicherkonto erfolgreich erstellt wurde.
       
-      ![Hinzufügen von Speicherkonten](./media/storsimple-configure-new-storage-account/HCS_AddStorageAccount-include.png)
-4. Das neu erstellte Speicherkonto wird auf der Seite **Konfigurieren** unter **Speicherkonten** angezeigt. Klicken Sie auf **Speichern** , um das neu erstellte Speicherkonto zu speichern. Klicken Sie auf **OK** , wenn Sie zur Bestätigung aufgefordert werden.
+      ![Hinzufügen eines Speicherkontos](./media/storsimple-configure-new-storage-account/HCS_AddStorageAccount-include.png)
+4. Das neu erstellte Speicherkonto wird angezeigt, auf die **konfigurieren** Seite **Speicherkonten**. Klicken Sie auf **speichern** das neu erstellte Speicherkonto zu speichern. Klicken Sie auf **OK** Wenn zur Bestätigung aufgefordert.
 

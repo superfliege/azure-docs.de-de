@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: e4bc03c624c9930d7a9b0bef22d3179633de3365
-ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
-
+ms.openlocfilehash: b5616aa9f8b15ab576d914fbae89a56f64c27f4a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 #  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Verwenden von Azure Media Encoder Standard zum automatischen Generieren einer Reihe von Bitraten
 
@@ -201,5 +200,4 @@ Die Quelle mit der Höhe „360“ und der Bildrate „29,970“ produziert 3 Vi
 
 ## <a name="see-also"></a>Weitere Informationen
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
-
 

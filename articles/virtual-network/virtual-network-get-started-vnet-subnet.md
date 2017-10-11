@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: e653764d7cb514d50b44fadd0cc5963dd404d99e
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="create-your-first-virtual-network"></a>Erstellen Ihres ersten virtuellen Netzwerks
 
 Hier erfahren Sie, wie Sie ein virtuelles Netzwerk (VNet) mit zwei Subnetzen sowie zwei virtuelle Computer (Virtual Machines, VMs) erstellen und jeden der virtuellen Computer mit einem der Subnetze verbinden, wie in der folgenden Abbildung zu sehen:
@@ -253,4 +251,3 @@ In dieser Übung haben Sie ein VNet und zwei virtuelle Computer erstellt. Bei de
 - [Netzwerkschnittstellen](virtual-network-network-interface.md)
 - [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
 - [Virtuelle Computer](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-

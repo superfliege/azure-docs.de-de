@@ -1,10 +1,10 @@
 > [!IMPORTANT]
-> Microsoft Azure BizTalk Services (MABS) wird eingestellt und durch Azure Logic Apps ersetzt. Falls Sie MABS derzeit nutzen, lesen Sie [Move from BizTalk Services to Logic Apps](../articles/logic-apps/logic-apps-move-from-mabs.md) (Migrieren von BizTalk Services zu Logic Apps). Dieser Artikel enthält Anweisungen zum Migrieren Ihrer Integrationslösungen zu Logic Apps. 
+> Microsoft Azure BizTalk Services (MABS) wird außer Kraft gesetzt und durch Azure-Logik-Apps ersetzt. Wenn Sie derzeit MABS, Sie dann verwenden [Verschieben von BizTalk-Dienste in der Logik-Apps](../articles/logic-apps/logic-apps-move-from-mabs.md) enthält hilfreiche Informationen zum Verschieben von integrationslösungen in Logik-Apps. 
 > 
-> Falls Sie noch keine Erfahrung mit Logic Apps haben, empfehlen wir zum Einstieg die folgenden Artikel: 
+> Wenn Sie noch gar keine Logik-Apps vertraut sind, empfehlen wir hier Einstieg: 
 > 
-> - [Was sind Logik-Apps?](../articles/logic-apps/logic-apps-what-are-logic-apps.md)  
+> - [Was sind die Logik-Apps](../articles/logic-apps/logic-apps-what-are-logic-apps.md)  
 > 
-> - [Erstellen Ihres ersten Logik-App-Workflows zur Automatisierung von Prozessen zwischen Cloud-Apps und Cloud-Diensten](../articles/logic-apps/logic-apps-create-a-logic-app.md) oder [Konfigurieren eines Workflows mithilfe einer vorgefertigten Vorlage oder eines Musters für den schnellen Einstieg](../articles/logic-apps/logic-apps-use-logic-app-templates.md)  
+> - [Erstellen Ihrer ersten Logik-app](../articles/logic-apps/logic-apps-create-a-logic-app.md), oder schnell erste Schritte mit einem [vorgefertigten Vorlage](../articles/logic-apps/logic-apps-use-logic-app-templates.md)  
 > 
-> - [Liste mit den Connectors](../articles/connectors/apis-list.md), die Sie in einer Logik-App verwenden können
+> - [Anzeigen der verfügbaren Connectors](../articles/connectors/apis-list.md) können Sie in einer Logik-app

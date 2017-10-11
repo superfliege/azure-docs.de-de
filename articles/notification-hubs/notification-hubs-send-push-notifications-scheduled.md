@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: efac6e1ecc00359f1622d380333140bc055c83e0
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-send-scheduled-notifications"></a>Gewusst wie: Senden von geplanten Benachrichtigungen
 ## <a name="overview"></a>Übersicht
@@ -35,10 +35,4 @@ Sie können eine zuvor geplante Benachrichtigung auch abbrechen, indem Sie die e
     await hub.CancelNotificationAsync(scheduled.ScheduledNotificationId);
 
 Es gibt keine Beschränkung der Anzahl von geplanten Benachrichtigungen, die Sie senden können.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

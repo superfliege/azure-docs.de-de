@@ -1,28 +1,28 @@
-## <a name="azure-dns"></a>Azure DNS
-Azure DNS ist ein Hostingdienst für DNS-Domänen, der die  Namensauflösung mithilfe der Microsoft Azure-Infrastruktur durchführt.
+## <a name="azure-dns"></a>Azure-DNS
+Azure-DNS-ist einem Hostingdienst für Domänen mit DNS-namensauflösung mithilfe des Microsoft Azure-Infrastruktur bereitstellen.
 
 | Eigenschaft | Beschreibung | Beispielwert |
 | --- | --- | --- |
-| **DNSzones** |Domänenzoneninformationen zum Hosten von DNS-Einträgen einer bestimmten Domäne |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com“ |
+| **DNSzones** |Domäne Zeitzoneninformationen zu DNS-Hosteinträge einer bestimmten Domäne |/ subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com " |
 
-### <a name="dns-record-sets"></a>DNS-Ressourceneintragssätze
-DNS-Zonen haben ein als Datensatzgruppe bezeichnetes untergeordnetes Objekt. Datensatzgruppen sind eine nach Typ geordnete Sammlung von Hostdatensätzen für eine DNS-Zone. Datensatztypen sind A, AAAA, CNAME, MX, NS, SOA, SRV und TXT.
+### <a name="dns-record-sets"></a>DNS-Datensatzgruppen
+DNS-Zonen haben kein untergeordnetes Objekt mit dem Namen Ressourceneintragssatz. Datensatzgruppen sind eine Auflistung von Hosteinträgen nach Typ für eine DNS-Zone. Datensatztypen sind A, AAAA, CNAME, MX, NS, SOA, SRV und TXT.
 
 | Eigenschaft | Beschreibung | Beispielwert |
 | --- | --- | --- |
-| A |IPv4-Datensatztyp |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/A/www |
-| AAAA |IPv6-Datensatztyp |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/AAAA/hostrecord |
-| CNAME |Datensatztyp kanonischen Namens <sup>1</sup> |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/CNAME/www |
-| MX |Maildatensatztyp |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/MX/mail |
-| NS |Namenserver-Datensatztyp |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/NS/ |
-| SOA |Autoritätsursprung-Datensatztyp <sup>2</sup> |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/SOA |
-| SRV |Dienstdatensatztyp |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/SRV |
+| A |IPv4-Datensatztyp |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/A/www |
+| AAAA |IPv6-Datensatztyp |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/AAAA/hostrecord |
+| CNAME |Datensatztyp kanonischen Namen <sup>1</sup> |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/CNAME/www |
+| MX |e-Mail-Datensatztyp |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/MX/Mail |
+| NOTIFICATION SERVICES |Server-Datensatztyp Name |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/NS/ |
+| SOA |Beginn der Autorität für die Datensatztyp <sup>2</sup> |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/SOA |
+| SRV |Dienst-Datensatztyp |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/SRV |
 
-<sup>1</sup> lässt nur einen Wert pro Datensatz zu.
+<sup>1</sup> lässt nur einen Wert pro Datensatz.
 
-<sup>2</sup> lässt nur einen Autoritätsursprung-Datensatztyp (SOA, Start of Authority) pro DNS-Zone zu. 
+<sup>2</sup> lässt nur einen Datensatztyp SOA pro DNS-Zone. 
 
-DNS-Zonenbeispiel im Json-Format:
+Beispiel-DNS-Zone im Json-Format:
 
     {
       "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
@@ -77,8 +77,8 @@ DNS-Zonenbeispiel im Json-Format:
           ]
     }
 
-## <a name="additional-resources"></a>Weitere Ressourcen
-Lesen Sie die [REST-API-Dokumentation für DNS-Zonen ](https://msdn.microsoft.com/library/azure/mt130626.aspx) , um weitere Informationen zu erhalten.
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+Lesen der [REST-API-Dokumentation für DNS-Zonen ](https://msdn.microsoft.com/library/azure/mt130626.aspx) für Weitere Informationen.
 
-Weitere Informationen erhalten Sie in der [REST-API-Dokumentation für DNS-Ressourceneintragssätze](https://msdn.microsoft.com/library/azure/mt130627.aspx) .
+Lesen der [REST-API-Dokumentation für DNS-Datensatzgruppen](https://msdn.microsoft.com/library/azure/mt130627.aspx) für Weitere Informationen.
 

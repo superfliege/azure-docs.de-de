@@ -11,12 +11,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: junyi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 682feb4d889ecd881abe1a70d36e0a5a4df3d910
-ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.openlocfilehash: 0c430272225d79737baec2be15ed7c93991cdeac
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-java"></a>Erstellen eines Azure IoT Edge-Moduls mit Java
 
@@ -124,7 +123,7 @@ Wir müssen die Datei „pom.xml“ aktualisieren, indem wir die erforderlichen 
 
 Ein Azure IoT Edge-Modul kann als Datenverarbeitungskomponente betrachtet werden, deren Aufgabe es ist, Eingaben zu empfangen, diese zu verarbeiten und Ausgaben zu erzeugen.
 
-Bei den Eingaben kann es sich um Daten von Hardware (z.B. einem Bewegungsmelder), eine Meldung von anderen Modulen oder sonstige Eingaben (z.B. eine in regelmäßigen Abständen generierte Zufallszahl von einem Timer) handeln.
+Bei den Eingaben kann es sich um Daten von Hardware (z.B. eines Bewegungsmelders), eine Nachricht von anderen Modulen oder sonstige Eingaben (z.B. eine in regelmäßigen Abständen generierte Zufallszahl von einem Timer) handeln.
 
 Die Ausgabe ist mit der Eingabe vergleichbar, da sie ein bestimmtes Hardwareverhalten (z.B. eine blinkende LED), eine Meldung an andere Module oder sonstige Ausgaben (z.B. die Ausgabe über die Konsole) auslösen kann.
 
@@ -299,5 +298,4 @@ Wenn Sie die Anwendung beenden möchten, drücken Sie die Taste `<Enter>`.
 
 > [!IMPORTANT]
 > Es wird davon abgeraten, die IoT Edge-Gatewayanwendung mit STRG+C zu beenden. Denn auf diese Weise kann der Prozess unplanmäßig beendet werden.
-
 

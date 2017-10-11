@@ -1,6 +1,6 @@
 ---
-title: Arbeiten mit Geodaten in Azure Cosmos DB | Microsoft-Dokumentation
-description: "Grundlegendes zum Erstellen, Indizieren und Abfragen räumlicher Objekte mit Azure Cosmos DB und der DocumentDB-API."
+title: Arbeiten mit Geodaten in Azure-Cosmos-Datenbank | Microsoft Docs
+description: "Grundlegendes zum Erstellen, index und Abfrage räumliche Objekte mit Azure-Cosmos-Datenbank und die DocumentDB-API."
 services: cosmos-db
 documentationcenter: 
 author: arramac
@@ -15,33 +15,31 @@ ms.workload: data-services
 ms.date: 05/22/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
 ms.openlocfilehash: d5785c81fb597e7d30eb7d3a880e7194d8358ed5
-ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Arbeiten mit Geodaten und GeoJSON-Standortdaten in Azure Cosmos DB
-Dieser Artikel bietet eine Einführung in die Funktionalität für Geodaten in [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
+# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Arbeiten mit Geodaten und GeoJSON-Standortdaten in der Azure-Cosmos-DB
+Dieser Artikel ist eine Einführung in die Geospatial-Funktionalität in [Azure Cosmos-DB](https://azure.microsoft.com/services/cosmos-db/). Nach dem Lesen, werden Sie die folgenden Fragen beantworten können:
 
-* Wie werden Geodaten in Azure Cosmos DB gespeichert?
-* Wie kann ich Geodaten in Azure Cosmos DB in SQL und LINQ abfragen?
-* Wie aktiviere oder deaktiviere ich die räumliche Indizierung in Azure Cosmos DB?
+* Wie werden räumliche Daten in Azure-Cosmos-Datenbank werden gespeichert?
+* Wie kann ich Geodaten in Azure Cosmos-Datenbanken in SQL und LINQ-Abfragen ausführen?
+* Wie ich aktivieren oder deaktivieren Sie die räumliche Indizierung in Azure-Cosmos-Datenbank?
 
-In diesem Artikel wird die Arbeit mit räumlichen Daten mit der DocumentDB-API veranschaulicht. In diesem [GitHub-Projekt](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) finden Sie Codebeispiele.
+In diesem Artikel wird die Arbeit mit räumlichen Daten mit der DocumentDB-API veranschaulicht. Finden Sie in der [GitHub Projekt](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) Codebeispiele.
 
-## <a name="introduction-to-spatial-data"></a>Einführung in räumliche Daten
-Räumliche Daten beschreiben die Position und Form von Objekten im Raum. In den meisten Fällen entsprechen diese Daten Objekten auf der Erde und werden deshalb Geodaten genannt. Räumliche Daten dienen zur Darstellung des Orts einer Person, einer Sehenswürdigkeit, der Umgrenzung einer Stadt oder eines Sees. Gängige Anwendungsfälle sind Abfragen der Entfernung, z.B. „alle Cafés in der Nähe meines aktuellen Standorts suchen“. 
+## <a name="introduction-to-spatial-data"></a>Einführung in die räumlichen Daten
+Räumliche Daten beschreibt die Position und die Form der Objekte im Raum. In den meisten Anwendungen entsprechen diese Objekte auf der Erde dar, d. h. Geodaten. Räumliche Daten können verwendet werden, um den Speicherort einer Person, einen Ort, von Interesse sind oder die Begrenzung einer Stadt oder einen See darzustellen. Einsatzbereiche umfassen häufig NEAR-Abfragen für "gefunden werden z. B. alle in Cafés meine aktuelle Position in der Nähe von". 
 
 ### <a name="geojson"></a>GeoJSON
-Azure Cosmos DB unterstützt eine Volltextindizierung und Abfrage von Geopunktdaten, die mithilfe der [GeoJSON-Spezifikation](https://tools.ietf.org/html/rfc7946) dargestellt werden. GeoJSON-Datenstrukturen sind stets gültige JSON-Objekte, weshalb sie mit Azure Cosmos DB gespeichert und ohne spezielle Tools oder Bibliotheken abgefragt werden können. Die Azure Cosmos DB SDKs bieten Hilfsklassen und Methoden, die das Arbeiten mit räumlichen Daten erleichtern. 
+Azure Cosmos-Datenbank unterstützt, Indizierung und Abfragen von Geodaten Verwaltungspunkt-Daten, die mit dargestellt, hat die [GeoJSON-Spezifikation](https://tools.ietf.org/html/rfc7946). GeoJSON-Datenstrukturen sind immer gültige JSON-Objekte, damit sie mithilfe der Azure-Cosmos-Datenbank ohne spezielle Tools und Bibliotheken abgefragt und gespeichert werden können. Die Azure-Cosmos-DB-SDKs bieten Hilfsklassen und Methoden, die zum Arbeiten mit räumlichen Daten zu erleichtern. 
 
 ### <a name="points-linestrings-and-polygons"></a>Punkte, LineStrings und Polygone
-Ein **Punkt** kennzeichnet eine einzelne Position im Raum. In Geodaten stellt ein Punkt den exakten Ort dar, der die Adresse eines Lebensmittelgeschäfts, ein Kiosk, ein Auto oder eine Stadt sein kann.  Ein Punkt wird in GeoJSON (und Azure Cosmos DB) mithilfe seines Koordinatenpaares oder Längen- und Breitengrads dargestellt. Hier ist eine Beispiel-JSON für einen Punkt.
+Ein **Punkt** kennzeichnet eine einzelne Position im Raum. In Geodaten stellt ein Punkt den exakten Speicherort, der eine Anschrift an einem Lebensmittelladen, öffentlich zugängliche Kioskcomputer, ein Auto oder eine Stadt sein könnte.  Ein Punkt wird im GeoJSON (und Azure-Cosmos-Datenbank) mit ihrer Koordinate Paar oder Längen- und Breitengrad dargestellt. Hier ist ein Beispiel für JSON für einen Punkt.
 
-**Punkte in Azure Cosmos DB**
+**Punkte in Azure-Cosmos-DB**
 
 ```json
 {
@@ -51,15 +49,15 @@ Ein **Punkt** kennzeichnet eine einzelne Position im Raum. In Geodaten stellt ei
 ```
 
 > [!NOTE]
-> Die GeoJSON-Spezifikation gibt zuerst den Längengrad und dann den Breitengrad an. Wie in anderen Kartenprogrammen sind Längen- und Breitengrade Winkel, die in Grad dargestellt werden. Längengradwerte werden ab dem Nullmeridian gemessen und betragen von -180 bis +180 Grad. Breitengradwerte werden ab dem Äquator gemessen und betragen von -90,0 bis +90,0 Grad. 
+> GeoJSON-Spezifikation gibt Längengrad First und Breitengrad zweiten. Wie in anderen Anwendungen Zuordnung Längen- und Breitengrad sind Winkel und Grad errechnet. Längengradwerte werden aus dem Nullmeridian gemessen und zwischen-180 und 180.0 Grad und Breitengrad sind Werte werden vom Äquator gemessen und sind im Bereich zwischen-90.0 und 90.0 Grad liegen. 
 > 
-> Azure Cosmos DB interpretiert Koordinaten gemäß der Darstellung durch das WGS 84-Referenzsystem. Nachstehend finden Sie weitere Informationen zu Koordinatenreferenzsystemen.
+> Azure Cosmos-DB interpretiert Koordinaten pro die Referenzsystem WGS 84 dargestellt. Nachstehen finden Sie ausführliche Informationen zur-Koordinate Referenzsysteme.
 > 
 > 
 
-Ein solches System kann in ein Azure Cosmos DB-Dokument eingebettet werden, was dieses Beispiel eines Benutzerprofils mit Standortdaten veranschaulicht:
+Dies kann in einem Azure-Cosmos-DB-Dokument eingebettet werden, wie in diesem Beispiel für ein Benutzerprofil mit Standortdaten dargestellt:
 
-**Verwenden eines Profils mit in Azure Cosmos DB gespeichertem Standort**
+**Verwenden Sie Profil mit dem Speicherort gespeichert, in der Azure-Cosmos-Datenbank**
 
 ```json
 {
@@ -74,7 +72,7 @@ Ein solches System kann in ein Azure Cosmos DB-Dokument eingebettet werden, was 
 }
 ```
 
-Zusätzlich zu Punkten unterstützt GeoJSON auch LineStrings und Polygone. **LineStrings** stellen eine Reihe von zwei oder mehr Punkten im Raum sowie die Liniensegmente dar, die diese verbinden. In Geodaten werden LineStrings häufig zum Darstellen von Straßen oder Flüssen verwendet. Ein **Polygon** ist eine Umgrenzung miteinander verbundener Punkte, die eine geschlossene LineString bilden. Polygone dienen meist zum Darstellen natürlicher Gebilde wie Seen oder geopolitischer Gebilde wie Städte und Staaten. Hier ist ein Beispiel für ein Polygon in Azure Cosmos DB. 
+Zusätzlich zu den Punkten unterstützt GeoJSON auch LineStrings und Polygone. **LineStrings** eine Reihe von zwei oder mehr Punkten als auch der Liniensegmente, die diese verbinden darstellen. In Geodaten sind LineStrings häufig zur Darstellung von Autobahnen oder Flüsse verwendet. Ein **Polygon** ist eine Begrenzung der miteinander verbundenen Punkten, die eine geschlossene LineString bildet. Polygone werden häufig zur Darstellung von natürlichen Formaten wie Seen oder politische Gerichtsbarkeiten wie Städte und Bundesstaaten verwendet. Hier ist ein Beispiel eines Vielecks, das in der Azure-Cosmos-Datenbank. 
 
 **Polygone in GeoJSON**
 
@@ -92,23 +90,23 @@ Zusätzlich zu Punkten unterstützt GeoJSON auch LineStrings und Polygone. **Lin
 ```
 
 > [!NOTE]
-> Die GeoJSON-Spezifikation erfordert, dass für gültige Polygone das letzte angegebene Koordinatenpaar mit dem ersten identisch sein muss, um eine geschlossene Form zu bilden.
+> GeoJSON-Spezifikation erfordert, dass für gültige Polygone, die letzte Koordinatenpaar angegebene identisch mit der ersten eine geschlossene Form zu erstellen.
 > 
-> Punkte innerhalb eines Polygons müssen gegen den Uhrzeigersinn nacheinander angegeben werden. Ein Polygon, das im Uhrzeigersinn angegeben wird, stellt die Umkehrung der darin enthaltenen Region dar.
+> Punkte innerhalb eines Polygons müssen gegen den Uhrzeigersinn Reihenfolge angegeben werden. Ein Polygon im Uhrzeigersinn angegeben stellt die Umkehrung der Region darin dar.
 > 
 > 
 
-Zusätzlich zu Punkten, LineStrings und Polygonen gibt GeoJSON auch das Darstellen der Gruppierung mehrerer Geodatenstandorte sowie das Zuweisen beliebiger Eigenschaften mit Geolocation als **Feature**an. Da diese Objekte gültige JSON sind, können sie alle in Azure Cosmos DB gespeichert und verarbeitet werden. Azure Cosmos DB unterstützt jedoch nur die automatische Indizierung von Punkten.
+Zusätzlich zur Point, LineString und Polygon, gibt GeoJSON auch die Darstellung für mehrere geografische Standorte gruppieren sowie zum Zuordnen von beliebiger Eigenschaften zu geografischen Standort wie einer **Feature**. Da diese Objekte gültiges JSON-Format sind, können sie alle gespeichert und verarbeitet werden im Azure-Cosmos-Datenbank. Azure-Cosmos-Datenbank unterstützt jedoch nur die automatische Indizierung von Punkten.
 
-### <a name="coordinate-reference-systems"></a>Koordinatenreferenzsysteme
-Da die Form der Erde unregelmäßig ist, werden Koordinaten von Geodaten in zahlreichen Koordinatenreferenzsystemen (KRS) abgebildet, die jeweils eigene Bezugsrahmen und Maßeinheiten aufweisen. Das "National Grid of Britain" ist beispielsweise ein Referenzsystem, das sehr genau für Großbritannien ist, außerhalb davon hingegen nicht. 
+### <a name="coordinate-reference-systems"></a>Koordinatensysteme Verweis
+Da die Form der Erde dar, auf unregelmäßiger festgelegt ist, wird Koordinaten von Geodaten in vielen-Koordinate Referenzsysteme (CR), jeweils mit ihren eigenen Frames als Referenz und Maßeinheiten dargestellt. Die "National Raster von Großbritannien" ist z. B. eine Referenzsystem ist sehr genau für Großbritannien, aber nicht außerhalb davon. 
 
-Das am häufigsten verwendete KRS ist derzeit das World Geodetic System [WGS-84](http://earth-info.nga.mil/GandG/wgs84/). GPS-Geräte und viele Kartendienste einschließlich Google Maps- und Bing Maps-APIs verwenden WGS-84. Azure Cosmos DB unterstützt ausschließlich die Indizierung und Abfrage von Geodaten mit dem Koordinatenreferenzsystem WGS-84. 
+Die am häufigsten verwendeten CRS verwendet ist heute die World Geodetic System [WGS 84](http://earth-info.nga.mil/GandG/wgs84/). Verwenden WGS 84 GPS-Geräten und viele Zuordnungsdienste einschließlich Google Maps und Bing Maps-APIs. Azure Cosmos-Datenbank unterstützt die Volltextindizierung und-Abfrage mithilfe der WGS 84 CRS nur Geodaten. 
 
 ## <a name="creating-documents-with-spatial-data"></a>Erstellen von Dokumenten mit räumlichen Daten
-Beim Erstellen von Dokumenten, die GeoJSON-Werte enthalten, werden diese automatisch mit einem räumlichen Index in Übereinstimmung mit der Richtlinie für die Indizierung der Sammlung indiziert. Wenn Sie mit einem Azure Cosmos DB SDK in einer dynamisch typisierten Sprache wie Python oder Node.js arbeiten, müssen Sie gültige GeoJSON erstellen.
+Wenn Sie Dokumente, die GeoJSON-Werte enthalten erstellen, werden sie automatisch mit einem räumlichen Index unter Verwendung von Gerätepixeln die indizierungsrichtlinie der Auflistung indiziert. Wenn Sie ein Azure-Cosmos DB SDK in einer dynamisch typisierte Sprache wie z. B. Python oder Node.js arbeiten, müssen Sie gültige GeoJSON erstellen.
 
-**Erstellen von Dokumenten mit Geodaten in Node.js**
+**Erstellen von Dokument mit Geodaten in Node.js**
 
 ```json
 var userProfileDocument = {
@@ -124,9 +122,9 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-Wenn Sie mit dem DocumentDB-APIs arbeiten, können Sie die `Point`- und `Polygon`-Klassen im Namespace `Microsoft.Azure.Documents.Spatial` verwenden, um Standortinformationen in Ihre Anwendungsobjekte einzubetten. Diese Klassen vereinfachen die Serialisierung und Deserialisierung räumlicher Daten in GeoJSON.
+Wenn Sie die DocumentDB-APIs arbeiten, können Sie mithilfe der `Point` und `Polygon` Klassen innerhalb der `Microsoft.Azure.Documents.Spatial` Namespace So betten Sie Standortinformationen in Ihrer Anwendungsobjekte ein. Diese Klassen vereinfachen, die Serialisierung und Deserialisierung von räumlichen Daten in GeoJSON.
 
-**Erstellen von Dokumenten mit Geodaten in .NET**
+**Erstellen von Dokument mit Geodaten in .NET**
 
 ```json
 using Microsoft.Azure.Documents.Spatial;
@@ -151,13 +149,13 @@ await client.CreateDocumentAsync(
     });
 ```
 
-Wenn Sie die Informationen zu Breiten- und Längengrad nicht haben, aber über die physischen Adressen und Standortnamen wie Stadt oder Land verfügen, können Sie die tatsächlichen Koordinaten mithilfe eines Geocodierungsdiensts wie Bing Maps REST Services nachschlagen. [Hier](https://msdn.microsoft.com/library/ff701713.aspx)erfahren Sie mehr zur Bing Maps-Geocodierung.
+Wenn Sie nicht die Breiten- und Längengrad Informationen haben, aber die physischen Adressen oder den Standortnamen wie Stadt und Land haben, können Sie die aktuellen Koordinaten nachschlagen, unter Verwendung eines Diensts geocodierung wie Bing Maps-REST-Dienste. Erfahren Sie mehr über die Bing Maps-geocodierung [hier](https://msdn.microsoft.com/library/ff701713.aspx).
 
-## <a name="querying-spatial-types"></a>Abfragen räumlicher Datentypen
-Nachdem wir einen Blick auf das Einfügen von Geodaten geworfen haben, wollen wir uns nun das Abfragen dieser Daten mithilfe von Azure Cosmos DB sowie SQL und LINQ ansehen.
+## <a name="querying-spatial-types"></a>Abfragen von räumliche Typen
+Nun, dass wir einen Blick auf die einzufügende Geodaten übernommen haben, werfen wir einen Blick auf diese Daten mithilfe von Azure-Cosmos-Datenbank mithilfe von SQL- und LINQ-Abfragen.
 
-### <a name="spatial-sql-built-in-functions"></a>Integrierte räumliche SQL-Funktionen
-Azure Cosmos DB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospatial Consortium ) für das Abfragen von Geodaten. Weitere Informationen zu sämtlichen integrierten Funktionen in der SQL-Sprache finden Sie unter [Abfragen von Azure Cosmos DB](documentdb-sql-query.md).
+### <a name="spatial-sql-built-in-functions"></a>Räumliche integrierte SQL-Funktionen
+Azure Cosmos-Datenbank unterstützt die folgenden integrierten Open Geospatial Consortium (OGC)-Funktionen für Geospatial Abfragen. Weitere Informationen zu den vollständigen Satz von integrierten Funktionen in der SQL-Sprache, finden Sie in [Abfrage Azure Cosmos-DB](documentdb-sql-query.md).
 
 <table>
 <tr>
@@ -165,30 +163,30 @@ Azure Cosmos DB unterstützt die folgenden integrierten OGC-Funktionen (Open Geo
   <td><strong>Beschreibung</strong></td>
 </tr>
 <tr>
-  <td>ST_DISTANCE (spatial_expr, spatial_expr)</td>
-  <td>Gibt den Abstand zwischen den beiden GeoJSON-Punkt-, Polygon- oder LineString-Ausdrücken zurück.</td>
+  <td>ST_DISTANCE (Spatial_expr, Spatial_expr)</td>
+  <td>Gibt den Abstand zwischen den beiden GeoJSON Punkt-, Polygon oder LineString Ausdrücken zurück.</td>
 </tr>
 <tr>
-  <td>ST_WITHIN (spatial_expr, spatial_expr)</td>
-  <td>Gibt einen booleschen Ausdruck zurück, der angibt, ob das erste GeoJSON-Objekt (Punkt, Polygon oder LineString) innerhalb des zweiten GeoJSON-Objekts (Punkt, Polygon oder LineString) enthalten ist.</td>
+  <td>ST_WITHIN (Spatial_expr, Spatial_expr)</td>
+  <td>Gibt einen booleschen Ausdruck, der angibt, ob das erste GeoJSON-Objekt (Punkt-, Polygon oder LineString) innerhalb des zweiten GeoJSON-Objekts (Punkt-, Polygon oder LineString) ist.</td>
 </tr>
 <tr>
-  <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
-  <td>Gibt einen booleschen Ausdruck, der angibt, ob die beiden angegebenen GeoJSON-Objekte (Punkt, Polygon oder LineString) sich überschneiden.</td>
+  <td>ST_INTERSECTS (Spatial_expr, Spatial_expr)</td>
+  <td>Gibt einen booleschen Ausdruck, der angibt, ob die beiden angegebenen GeoJSON-Objekte (Punkt-, Polygon oder LineString) überschneiden.</td>
 </tr>
 <tr>
   <td>ST_ISVALID</td>
-  <td>Gibt einen booleschen Wert zurück, der angibt, ob der/das angegebene GeoJSON-Punkt, -Polygon, oder -LineString gültig ist.</td>
+  <td>Gibt einen booleschen Wert, der angibt, ob der angegebene GeoJSON Punkt-, Polygon oder LineString-Ausdruck gültig ist.</td>
 </tr>
 <tr>
   <td>ST_ISVALIDDETAILED</td>
-  <td>Gibt einen JSON-Wert mit einem booleschen Wert zurück, wenn der angegebene GeoJSON-Punkt-, -Polygon- oder -LineString-Ausdruck gültig ist. Falls ungültig, wird außerdem der Grund als Zeichenfolge zurückgegeben.</td>
+  <td>Gibt ein JSON-Wert, der einen booleschen Wert enthält Wert, wenn der angegebene GeoJSON Punkt-, Polygon oder LineString-Ausdruck gültig ist, und wenn ungültige, außerdem den Grund als Zeichenfolge zurück.</td>
 </tr>
 </table>
 
-Räumliche Funktionen können verwendet werden, um Entfernungsabfragen auf räumliche Daten anzuwenden. Hier ist z. B. eine Abfrage, die alle Familiendokumente zurückgibt, die sich innerhalb von 30 km von der angegebenen Position befinden. Dazu wird die integrierte ST_DISTANCE-Funktion verwendet. 
+Räumliche Funktionen können verwendet werden, um NEAR-Abfragen für räumliche Daten auszuführen. Hier ist z. B. eine Abfrage, die alle Familie Dokumente zurückgibt, die innerhalb von 30 km von der angegebenen Position, die mit der integrierten ST_DISTANCE-Funktion sind. 
 
-**Abfragen**
+**Abfrage**
 
     SELECT f.id 
     FROM Families f 
@@ -200,13 +198,13 @@ Räumliche Funktionen können verwendet werden, um Entfernungsabfragen auf räum
       "id": "WakefieldFamily"
     }]
 
-Wenn Sie die räumliche Indizierung in Ihre Indizierungsrichtlinie einschließen, werden "Entfernungsabfragen" effizient über den Index beantwortet. Weitere Informationen zur räumliche Indizierung finden Sie im Abschnitt weiter unten. Wenn Sie keinen räumlichen Index für die angegebenen Pfade haben, können Sie dennoch raumbezogene Abfragen ausführen, indem Sie den `x-ms-documentdb-query-enable-scan` -Anforderungsheader mit auf „True“ festgelegtem Wert angeben. In .NET erfolgt dies durch Übergeben des optionalen **FeedOptions** -Arguments an Abfragen mit auf „True“ festgelegter [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) -Einstellung. 
+Wenn Sie die räumliche Indizierung in Ihre indexrichtlinie angeben, werden "Abstand Abfragen" effizient über den Index bedient. Weitere Informationen zu räumlichen Indizierung finden Sie unter weiter unten im Abschnitt. Wenn Sie einen räumlichen Index für die angegebenen Pfade nicht haben, können Sie Abfragen nach räumliche Daten weiterhin ausführen, durch Angabe `x-ms-documentdb-query-enable-scan` Anforderungsheader mit der festgelegte Wert auf "True". In .NET hierzu übergeben Sie das optionale **FeedOptions** Argument zu Abfragen mit [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) auf "true" festgelegt ist. 
 
-ST_WITHIN kann verwendet werden, um zu prüfen, ob ein Punkt innerhalb eines Polygons liegt. Polygone werden häufig verwendet, um Umgrenzungen wie Postleitzahlenbereiche, Staatsgrenzen oder natürliche Gebilde darzustellen. Wenn Sie wiederum die räumliche Indizierung in Ihre Indizierungsrichtlinie einschließen, werden Abfragen nach enthaltenen Elementen effizient über den Index beantwortet. 
+ST_WITHIN kann verwendet werden, zum Überprüfen, ob ein Punkt innerhalb eines Polygons liegt. Häufig sind Polygone verwendet, um die Grenzen wie Postleitzahlen, Status Grenzen oder natürliche Formaten darstellen. Erneut, wenn Sie die räumliche Indizierung in Ihre indexrichtlinie angeben, werden dann "within" Abfragen effizient über den Index bedient. 
 
-Polygonargumente in ST_WITHIN dürfen nur einen einzigen Ring enthalten, d.h. die Polygone dürfen keine Löcher aufweisen. 
+Polygon-Argumente in ST_WITHIN können nur einen einzelnen Ring enthalten, d. h. die Polygone müssen Löcher darin nicht enthalten. 
 
-**Abfragen**
+**Abfrage**
 
     SELECT * 
     FROM Families f 
@@ -222,13 +220,13 @@ Polygonargumente in ST_WITHIN dürfen nur einen einzigen Ring enthalten, d.h. di
     }]
 
 > [!NOTE]
-> Wenn (ähnlich wie bei der Funktionsweise nicht übereinstimmender Typen in Azure Cosmos DB-Abfragen) der in einem der Argumente angegebene Standortwert falsch formatiert oder ungültig ist, wird dieser als **undefiniert** ausgewertet, und die ausgewerteten Dokumente werden aus den Abfrageergebnissen entfernt. Wenn Ihre Abfrage keine Ergebnisse zurückgibt, führen Sie ST_ISVALIDDETAILED aus, um herauszufinden, warum der räumliche Typ ungültig ist.     
+> Ähnlich wie nicht übereinstimmende Typen funktioniert in Azure-Cosmos-DB-Abfrage in der Location-Wert angegeben, entweder Argument ist falsch formatiert oder ungültig, und es ergeben, **undefined** und die ausgewerteten Dokument aus den Abfrageergebnissen übersprungen werden soll. Wenn die Abfrage keine Ergebnisse zurückgibt, führen Sie ST_ISVALIDDETAILED,-Debug-Warum Spatail Typ ungültig ist.     
 > 
 > 
 
-Azure Cosmos DB unterstützt auch inverse Abfragen, d. h. Sie indizieren Polygone oder Linien in Azure Cosmos DB und führen dann Abfragen für die Bereiche durch, die einen bestimmten Punkt enthalten. Dieses Muster wird häufig in der Logistik verwendet, um beispielsweise zu ermitteln, wann ein LKW in einen bestimmten Bereich einfährt oder ihn verlässt. 
+Azure Cosmos-Datenbank unterstützt auch die inverse Abfragen ausführen, d. h. Sie indizieren Polygone oder Linien in Azure-Cosmos-Datenbank und anschließend Abfragen für die Bereiche, die einen bestimmten Punkt enthalten. Dieses Muster wird häufig in Logistik verwendet, um zu identifizieren, z. B., wenn ein LKW eingibt oder einen bestimmten Bereich verlässt. 
 
-**Abfragen**
+**Abfrage**
 
     SELECT * 
     FROM Areas a 
@@ -245,9 +243,9 @@ Azure Cosmos DB unterstützt auch inverse Abfragen, d. h. Sie indizieren Polygo
       }
     }]
 
-ST_ISVALID und ST_ISVALIDDETAILED können verwendet werden, um zu prüfen, ob ein räumliches Objekt gültig ist. Die folgende Abfrage untersucht z. B. die Gültigkeit eines Punkts mit einem Längengradwert außerhalb des Gültigkeitsbereichs (-132,8). ST_ISVALID gibt nur einen booleschen Wert zurück. ST_ISVALIDDETAILED gibt den booleschen Wert und eine Zeichenfolge mit dem Grund zurück, warum das Argument als ungültig eingestuft wird.
+ST_ISVALID und ST_ISVALIDDETAILED kann verwendet werden, zu überprüfen, ob ein räumliches Objekt ungültig ist. Die folgende Abfrage wird z. B. die Gültigkeit eines Punkts mit einem Wert außerhalb des Gültigkeitsbereichs Breitengrad (-132.8) überprüft. ST_ISVALID nur einen booleschen Wert zurückgibt und ST_ISVALIDDETAILED gibt den booleschen Wert und eine Zeichenfolge, enthält den Grund, warum sie ungültig betrachtet wird.
 
-** Abfrage **
+** Fragen **
 
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 
@@ -257,9 +255,9 @@ ST_ISVALID und ST_ISVALIDDETAILED können verwendet werden, um zu prüfen, ob ei
       "$1": false
     }]
 
-Diese Funktionen können auch verwendet werden, um Polygone zu überprüfen. Beispielsweise verwenden wir hier ST_ISVALIDDETAILED, um ein Polygon zu überprüfen, das nicht geschlossen ist. 
+Diese Funktionen können auch verwendet werden, um Polygone zu überprüfen. Beispielsweise verwenden Sie hier wir ST_ISVALIDDETAILED ein Polygon zu überprüfen, die nicht geschlossen ist. 
 
-**Abfragen**
+**Abfrage**
 
     SELECT ST_ISVALIDDETAILED({ "type": "Polygon", "coordinates": [[ 
         [ 31.8, -5 ], [ 31.8, -4.7 ], [ 32, -4.7 ], [ 32, -5 ] 
@@ -275,11 +273,11 @@ Diese Funktionen können auch verwendet werden, um Polygone zu überprüfen. Bei
     }]
 
 ### <a name="linq-querying-in-the-net-sdk"></a>LINQ-Abfragen im .NET SDK
-Das .NET SDK für DocumentDB stellt auch die Stub-Methoden `Distance()` und `Within()` für die Verwendung in LINQ-Ausdrücken bereit. Der LINQ-Anbieter für DocumentDB übersetzt diese Methodenaufrufe in entsprechende integrierte SQL-Funktionsaufrufe (ST_DISTANCE bzw. ST_WITHIN). 
+Das DocumentDB .NET SDK auch Anbieter stub-Methoden `Distance()` und `Within()` für die Verwendung in LINQ-Ausdrücke. Die DocumentDB-LINQ-Anbieter übersetzt diese Methodenaufrufe in die entsprechende SQL-integrierten Funktionsaufrufe (ST_DISTANCE und ST_WITHIN bzw.). 
 
-Hier ist ein Beispiel einer LINQ-Abfrage, die alle Dokumente in der Azure Cosmos DB-Sammlung findet, deren Wert „location“ sich in einem Radius von 30 km um den angegebenen Punkt befindet.
+Hier ist ein Beispiel für eine LINQ-Abfrage, die alle Dokumente in der Azure-Cosmos-DB-Auflistung, deren Wert "Location" ist in einem Umkreis von 30km des angegebenen zeigen Sie mithilfe von LINQ, findet.
 
-**LINQ-Abfrage der Entfernung**
+**LINQ-Abfrage für Abstand**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
         .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
@@ -287,9 +285,9 @@ Hier ist ein Beispiel einer LINQ-Abfrage, die alle Dokumente in der Azure Cosmos
         Console.WriteLine("\t" + user);
     }
 
-Und hier ist eine Abfrage für die Suche nach allen Dokumenten, deren Position sich im angegebenen Feld/Polygon befindet. 
+Hier ist auf ähnliche Weise eine Abfrage für die Suche nach alle Dokumente, deren "Location" in das angegebene Feld/Polygon ist. 
 
-**LINQ-Abfrage nach enthaltenen Elementen**
+**LINQ-Abfragen für in**
 
     Polygon rectangularArea = new Polygon(
         new[]
@@ -310,23 +308,23 @@ Und hier ist eine Abfrage für die Suche nach allen Dokumenten, deren Position s
     }
 
 
-Nachdem wir einen Blick auf das Abfragen von Dokumenten mithilfe von LINQ und SQL geworfen haben, lassen Sie uns nun untersuchen, wie Azure Cosmos DB für die räumliche Indizierung konfiguriert wird.
+Nun, dass wir einen Blick auf zum Abfragen von Dokumenten mithilfe von LINQ und SQL übernommen haben, werfen wir einen Blick auf Azure-Cosmos-Datenbank für die räumliche Indizierung konfigurieren.
 
 ## <a name="indexing"></a>Indizierung
-Wie im Dokument zur [vom Schema unabhängigen Indizierung mit Azure Cosmos DB](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) beschrieben, haben wir das Azure Cosmos DB-Datenbankmodul so entworfen, dass es wirklich vom Schema unabhängig ist und erstklassige Unterstützung für JSON bietet. Das für Schreibvorgänge optimierte Datenbankmodul von Azure Cosmos DB versteht systemeigen räumliche Daten (Punkte, Polygone und Linien), die gemäß dem Standard GeoJSON dargestellt sind.
+Wie in beschrieben der [Schema agnostisch Indizierung mit Azure-Cosmos-DB](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) Papier, wir entworfen Azure Cosmos DB Datenbankmodul werden tatsächlich Schema agnostisch, und geben Sie erstklassige Unterstützung für JSON. Datenbankmodul Schreibvorgänge optimiert der Azure-Cosmos-DB versteht systemintern räumliche Daten (Punkte, Polygone und Linien), die im GeoJSON-Standard dargestellt.
 
-Kurz gesagt, die Geometrie wird von geodätischen Koordinaten auf eine 2D-Ebene projiziert und dann schrittweise mithilfe eines **Quadtrees**in Zellen unterteilt. Diese Zellen werden zu 1D basierend auf der Position der Zelle auf einer **raumfüllenden Hilbert-Kurve**zugeordnet, die die Lage von Punkten beibehält. Wenn Positionsdaten darüber hinaus indiziert werden, durchlaufen sie einen als **Mosaikarbeit** bezeichneten Prozess, bei dem alle Zellen, die eine Position schneiden, im Azure Cosmos DB-Index als Schlüssel indiziert und gespeichert werden. Zur Abfragezeit werden Argumente wie Punkte und Polygone auch in den Mosaikprozess einbezogen, um die entsprechenden Zellen-ID-Bereiche zu extrahieren, und dann zum Abrufen von Daten aus dem Index verwendet.
+Kurz gesagt, die Geometrie mit geodätische Koordinaten auf einer 2D-Ebene projiziert wird progressiv in Zellen mit unterteilt eine **Quadtree**. Diese Zellen werden zugeordnet, und 1D basierend auf den Speicherort der Zelle innerhalb einer **Raum füllenden Hilbert Kurve**, durch die Positionierung von Punkten beibehalten. Darüber hinaus beim Standortdaten indiziert ist, erfolgt über genannten **Mosaik**, d. h. alle Zellen, die einen Ort schneiden identifiziert und als Schlüssel im Index Azure-Cosmos-Datenbank gespeichert sind. Zur Abfragezeit werden Argumente wie Punkten und Polygonen auch im Mosaikprozess berücksichtigt, um die entsprechende Zelle ID-Bereiche zu extrahieren und dann zum Abrufen von Daten aus dem Index verwendet.
 
-Wenn Sie eine Indizierungsrichtlinie angeben, die einen räumlichen Index für "/*" (alle Pfade) enthält, werden alle in der Sammlung gefundenen Punkte für effiziente räumliche Abfragen (ST_WITHIN und ST_DISTANCE) indiziert. Räumliche Indizes haben keinen Genauigkeitswert und verwenden stets einen Standardwert für die Genauigkeit.
+Wenn Sie eine indizierungsrichtlinie angeben, die räumlichen Index für / * (alle Pfade), und klicken Sie dann alle Punkte in der Auflistung gefunden für effiziente Abfragen nach räumlichen Daten (ST_WITHIN und ST_DISTANCE) indiziert werden. Räumliche Indizes nicht über einen Genauigkeitswert mit einfacher verfügen, und verwenden Sie immer einen Standardwert für die Genauigkeit.
 
 > [!NOTE]
-> Azure Cosmos DB unterstützt die automatische Indizierung von Punkten, Polygonen und LineStrings.
+> Azure Cosmos-Datenbank unterstützt die automatische Indizierung aus Punkten, Polygone und LineStrings
 > 
 > 
 
-Der folgende JSON-Ausschnitt zeigt eine Indizierungsrichtlinie mit aktivierter räumlicher Indizierung, d. h. dass alle in Dokumenten für räumliche Abfragen gefundenen GeoJSON-Punkte indiziert werden. Wenn Sie die Indizierungsrichtlinie im Azure-Portal ändern, können Sie die folgende JSON für die Indizierungsrichtlinie angeben, um die räumliche Indizierung für Ihre Sammlung zu aktivieren.
+Der folgende JSON-Codeausschnitt zeigt ein indizierungsrichtlinie mit räumliche Indizierung aktiviert, d. h. index einen beliebigen GeoJSON Punkt innerhalb von Dokumenten für räumliche Abfragen gefunden. Wenn Sie die indizierungsrichtlinie über das Azure-Portal ändern, können Sie die folgenden JSON für indizierungsrichtlinie räumliche Indizierung für Ihre Sammlung aktivieren angeben.
 
-**JSON-Sammlungsindizierungsrichtlinie mit aktivierter räumlicher Indizierung für Punkte und Polygone**
+**Auflistung indizieren von JSON mit räumlich für Punkten und Polygonen aktiviert Richtlinie**
 
     {
        "automatic":true,
@@ -360,17 +358,17 @@ Der folgende JSON-Ausschnitt zeigt eine Indizierungsrichtlinie mit aktivierter r
        ]
     }
 
-Hier ist ein Codeausschnitt in .NET, der veranschaulicht, wie eine Sammlung mit aktivierter räumlicher Indizierung für alle Pfade mit enthaltenen Punkten erstellt wird. 
+Hier ist ein Codeausschnitt in .NET, das zum Erstellen einer Sammlung mit räumliche Indizierung für alle Pfade mit Punkten eingeschaltet veranschaulicht. 
 
-**Erstellen einer Sammlung mit räumlicher Indizierung**
+**Erstellen Sie eine Sammlung mit räumliche Indizierung**
 
     DocumentCollection spatialData = new DocumentCollection()
     spatialData.IndexingPolicy = new IndexingPolicy(new SpatialIndex(DataType.Point)); //override to turn spatial on by default
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), spatialData);
 
-Hier wird gezeigt, wie Sie eine vorhandene Sammlung so ändern können, dass die räumliche Indizierung für Punkte verwendet wird, die in Dokumenten gespeichert sind.
+Und hier ist zum Ändern einer vorhandenen Sammlung zum Nutzen der räumlichen Indizierung über keine Punkte, die in den Dokumenten gespeichert werden.
 
-**Ändern einer vorhandenen Sammlung mit räumlicher Indizierung**
+**Ändern einer vorhandenen Sammlung mit räumliche Indizierung**
 
     Console.WriteLine("Updating collection with spatial indexing enabled in indexing policy...");
     collection.IndexingPolicy = new IndexingPolicy(new SpatialIndex(DataType.Point));
@@ -387,18 +385,17 @@ Hier wird gezeigt, wie Sie eine vorhandene Sammlung so ändern können, dass die
     }
 
 > [!NOTE]
-> Wenn der GeoJSON-Wert "location" innerhalb des Dokuments fehlerhaft oder ungültig ist, wird er nicht für räumliche Abfragen indiziert. Sie können Werte von "location" mit ST_ISVALID und ST_ISVALIDDETAILED überprüfen.
+> Wenn der Speicherort GeoJSON Wert innerhalb des Dokuments falsch formatiert oder ungültig ist, wird dann er nicht für räumliche Abfragen indiziert abrufen. Sie können die Werte für mit ST_ISVALID und ST_ISVALIDDETAILED überprüfen.
 > 
-> Enthält Ihre Sammlungsdefinition einen Partitionsschlüssel, wird der Fortschritt der Indextransformation nicht gemeldet. 
+> Enthält die Auflistungsdefinition einen Partitionsschlüssel eingeben, wird der Fortschritt der Transformation für die Indizierung nicht gemeldet. 
 > 
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie die ersten Schritte mit räumlichen Daten in Azure Cosmos DB ausgeführt haben, haben Sie folgende Möglichkeiten:
+Nun, da Sie Informationen zum Einstieg in Geospatial-Unterstützung in Azure-Cosmos-DB gelernt haben, können Sie folgende Schritte ausführen:
 
-* Beginnen Sie die Codierung mit den [.NET-Codebeispielen auf GitHub für räumliche Daten](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs).
-* Praktisches Arbeiten mit Abfragen von Geodaten im [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial)
-* Weitere Informationen zur [Azure Cosmos DB-Abfrage](documentdb-sql-query.md)
-* Weitere Informationen zu den [Indizierungsrichtlinien von Azure Cosmos DB](indexing-policies.md)
-
+* Codieren mit beginnen die [Geospatial .NET Codebeispiele auf GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
+* Abrufen von Hände auf Geospatial für Abfragen an die [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial)
+* Erfahren Sie mehr über [Azure Cosmos-DB-Abfrage](documentdb-sql-query.md)
+* Erfahren Sie mehr über [Azure Cosmos DB Indizierung Richtlinien](indexing-policies.md)
 

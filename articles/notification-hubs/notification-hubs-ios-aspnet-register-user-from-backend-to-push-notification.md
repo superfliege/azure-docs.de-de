@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Registrieren des aktuellen Benutzers für Pushbenachrichtigungen mit ASP.NET
 > [!div class="op_single_selector"]
@@ -111,7 +111,7 @@ In diesem Artikel erfahren Sie, wie Sie Pushbenachrichtigungs-Registrierungen mi
    > 
 8. Fügen Sie in der Datei PushToUserAppDelegate.m die folgende Handlermethode hinzu:
    
-   * (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {   NSLog(@"%@", userInfo);   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:                         [userInfo objectForKey:@"inAppMessage"] delegate:nil cancelButtonTitle:                         @"OK" otherButtonTitles:nil, nil];   [alert show]; }
+   * (void) Anwendung:(UIApplication *) Anwendung DidReceiveRemoteNotification:(NSDictionary *) UserInfo {NSLog (@"% @", UserInfo);   UIAlertView * Warnung = [[UIAlertView Alloc] initWithTitle:@"Notification" Meldung: [UserInfo objectForKey:@"inAppMessage"] Delegaten: Nil CancelButtonTitle: @ OtherButtonTitles:nil "OK", "Nil"];   [Warnung anzeigen]; }
    
    Diese Methode zeigt eine Warnung in der GUI an, wenn Ihre App während der Ausführung eine Benachrichtigung empfängt.
 9. Öffnen Sie die Datei PushToUserViewController.java, und fügen Sie die folgende Implementierung ein:
@@ -220,9 +220,3 @@ Nun haben Sie die Client-App aktualisiert und können zum Thema [Benachrichtigen
 [Benachrichtigen von Benutzern mit Notification Hubs]: /manage/services/notification-hubs/notify-users-aspnet
 
 [Erste Schritte mit Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-ios
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

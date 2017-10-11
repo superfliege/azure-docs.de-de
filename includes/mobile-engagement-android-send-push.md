@@ -1,6 +1,6 @@
 
 ### <a name="update-manifest-file-to-enable-notifications"></a>Aktualisieren der Manifestdatei zum Aktivieren von Benachrichtigungen
-Kopieren Sie die nachfolgenden In-App-Messaging-Ressourcen in die Datei "Manifest.xml" zwischen die Tags `<application>` und `</application>`.
+Kopieren Sie unten die in-app-messaging-Ressourcen in Ihrem "Manifest.xml" zwischen den `<application>` und `</application>` Tags.
 
         <activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
               <intent-filter>
@@ -44,33 +44,33 @@ Kopieren Sie die nachfolgenden In-App-Messaging-Ressourcen in die Datei "Manifes
             </intent-filter>
         </receiver>
 
-### <a name="specify-an-icon-for-notifications"></a>Geben Sie ein Symbol für Benachrichtigungen an.
-Fügen Sie den folgenden XML-Codeausschnitt in die Datei "Manifest.xml" zwischen die Tags `<application>` und `</application>` ein.
+### <a name="specify-an-icon-for-notifications"></a>Geben Sie ein Symbol für Benachrichtigungen
+Fügen Sie die folgenden XML-Ausschnitt in die "Manifest.xml" zwischen den `<application>` und `</application>` Tags.
 
         <meta-data android:name="engagement:reach:notification:icon" android:value="engagement_close"/>
 
-Dies definiert das Symbol, das in System- und In-App-Benachrichtigungen angezeigt wird. Es ist für In-App-Benachrichtigungen optional, für Systembenachrichtigungen jedoch obligatorisch. Android weist Systembenachrichtigungen mit ungültigen Symbolen zurück.
+Hiermit wird definiert, das Symbol, das sowohl in der System- und Benachrichtigungen in der app angezeigt wird. Ist er optional für app-Benachrichtigungen für systembenachrichtigungen jedoch obligatorisch. Android wird abgelehnt, systembenachrichtigungen mit ungültige Symbole.
 
-Stellen Sie sicher, dass Sie ein Symbol in einem der **Drawable**-Ordner verwenden (z.B. ``engagement_close.png``). Der **mipmap**-Ordner wird nicht unterstützt.
+Stellen Sie sicher, dass Sie ein Symbol, das in einem vorhanden ist die **zeichenbaren** Ordner (z. B. ``engagement_close.png``). **MipMap** Ordner wird nicht unterstützt.
 
 > [!NOTE]
-> Sie sollten das Symbol für das **Startprogramm** nicht verwenden. Es weist eine andere Auflösung auf und befindet sich in der Regel in den Mipmap-Ordnern, die nicht unterstützt werden.
+> Verwenden Sie nicht die **Startprogramm** Symbol. Es wurde eine andere Lösung und ist in der Regel in der Mipmap-Ordner, in denen nicht unterstützt wird.
 > 
 > 
 
-Für reale Apps können Sie ein Symbol verwenden, das entsprechend den [Android-Entwurfsrichtlinien](http://developer.android.com/design/patterns/notifications.html)für Benachrichtigungen geeignet ist.
+Für real-apps können Sie ein Symbol, das für Benachrichtigungen pro geeignetes [Android Entwurfsrichtlinien](http://developer.android.com/design/patterns/notifications.html).
 
 > [!TIP]
-> Um sicherzustellen, dass Sie die richtigen Auflösungen für Symbole verwenden, betrachten Sie [diese Beispiele](https://www.google.com/design/icons).
-> Scrollen Sie nach unten zum Abschnitt **Benachrichtigung**, klicken Sie auf ein Symbol, und klicken Sie dann auf `PNGS`, um den Drawablesymbolsatz herunterzuladen. Es wird für jede Version des Symbols angezeigt, welche Drawable-Ordner für welche Auflösung verwendet werden.
+> Um sicherzustellen, dass auf das um Symbol für richtiges Lösungen zu verwenden, können Sie anzeigen [in diesen Beispielen](https://www.google.com/design/icons).
+> Führen Sie einen Bildlauf nach unten, um die **Benachrichtigung** Abschnitt, klicken Sie auf ein Symbol, und klicken Sie dann auf `PNGS` zeichenbaren Symbolsatz herunterladen. Sie sehen zeichenbaren Ordner mit der Auflösung für jede Version des Symbols verwenden.
 > 
 > 
 
-### <a name="enable-your-app-to-receive-gcm-push-notifications"></a>Aktivieren der App für den Empfang von GCM-Pushbenachrichtigungen
-1. Fügen Sie in „Manifest.xml“ Folgendes zwischen die Tags `<application>` und `</application>` ein, nachdem Sie die aus der Firebase-Projektkonsole abgerufene **Absender-ID** ersetzt haben. \n ist beabsichtigt, stellen Sie daher sicher, dass Sie die Projektnummer damit endet.
+### <a name="enable-your-app-to-receive-gcm-push-notifications"></a>Konfigurieren Sie die Anwendung zum Empfangen von GCM-Pushbenachrichtigungen
+1. Fügen Sie Folgendes in die "Manifest.xml" zwischen den `<application>` und `</application>` Tags, nach dem Ersetzen der **Absender-ID** aus Ihrer Firebase Projekt Konsole abgerufen. Die \n ist beabsichtigt Achten Sie darauf, dass Sie das Projekt mit Zahl enden.
    
         <meta-data android:name="engagement:gcm:sender" android:value="************\n" />
-2. Fügen Sie den Code unten in die Datei „Manifest.xml“ zwischen den Tags `<application>` und `</application>` ein. Ersetzen Sie den Paketnamen <Your package name>.
+2. Fügen Sie den folgenden Code in Ihrem "Manifest.xml" zwischen den `<application>` und `</application>` Tags. Ersetzen Sie den Paketnamen <Your package name>.
    
         <receiver android:name="com.microsoft.azure.engagement.gcm.EngagementGCMEnabler"
         android:exported="false">
@@ -86,7 +86,7 @@ Für reale Apps können Sie ein Symbol verwenden, das entsprechend den [Android-
                 <category android:name="<Your package name>" />
             </intent-filter>
         </receiver>
-3. Fügen Sie die letzte Berechtigungsgruppe, die hervorgehoben ist, vor dem `<application>` -Tag hinzu. Ersetzen Sie `<Your package name>` durch den tatsächlichen Paketnamen der Anwendung.
+3. Den letzten Satz von Berechtigungen, die hervorgehoben werden, vor dem Hinzufügen der `<application>` Tag. Ersetzen Sie `<Your package name>` durch den tatsächlichen Paketnamen Ihrer Anwendung.
    
         <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
         <uses-permission android:name="<Your package name>.permission.C2D_MESSAGE" />

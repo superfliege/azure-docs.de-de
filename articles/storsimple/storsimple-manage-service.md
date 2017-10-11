@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 07/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
 ms.openlocfilehash: ba3637a3a8b15b45c16bf5a00c1f4225bcfc5af8
-ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="deploy-the-storsimple-manager-service-in-the-azure-classic-portal"></a>Bereitstellen des StorSimple Manager-Diensts im klassischen Azure-Portal
 
@@ -102,4 +101,3 @@ Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel 
 * Weitere Informationen zum [StorSimple-Bereitstellungsprozess](storsimple-deployment-walkthrough-u2.md)
 * Weitere Informationen über das [Verwalten des StorSimple-Speicherkontos](storsimple-manage-storage-accounts.md)
 * Weitere Informationen über das [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
-

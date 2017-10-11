@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect, mehrere Domänen"
-description: "In diesem Dokument wird das Einrichten und Konfigurieren mehrerer Domänen der obersten Ebene mit Office&365; und Azure AD beschrieben."
+description: "In diesem Dokument wird das Einrichten und Konfigurieren mehrerer Domänen der obersten Ebene mit Office 365 und Azure AD beschrieben."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fa1c3d9cb07d417f5dbde41d6269fb1d157c3104
-ms.openlocfilehash: a6a97cd187036222f5a47e55670da613117a2318
-ms.contentlocale: de-de
-ms.lasthandoff: 01/12/2017
-
+ms.openlocfilehash: 8e3f496c2868cc3430e0efd47805aec2205168aa
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Unterstützung mehrerer Domänen für den Verbund mit Azure AD
 Die folgende Dokumentation enthält eine Anleitung dazu, wie Sie mehrere Domänen der obersten Ebene und Unterdomänen verwenden, wenn Sie einen Verbund mit Office 365- oder Azure AD-Domänen erstellen.
@@ -67,7 +66,7 @@ Außerdem wird mit `-SupportMultipleDomain` sichergestellt, dass das AD FS-Syste
 
 Während der Authentifizierung in Azure AD oder Office 365 wird daher das IssuerUri-Element im Token des Benutzers verwendet, um die Domäne in Azure AD zu finden.  Wenn keine Übereinstimmung gefunden wird, schlägt die Authentifizierung fehl. 
 
-Wenn der UPN eines Benutzers beispielsweise bsimon@bmcontoso.com, lautet, wird das IssuerUri-Element in dem von AD FS ausgestellten Token auf „http://bmcontoso.com/adfs/services/trust“ festgelegt. Dies entspricht der Azure AD-Konfiguration und die Authentifizierung ist erfolgreich.
+Z. B. wenn ein UPN des Benutzers ist bsimon@bmcontoso.com, das IssuerUri-Element in der Token AD FS-Problemen auf http://bmcontoso.com/adfs/services/trust festgelegt. Dies entspricht der Azure AD-Konfiguration und die Authentifizierung ist erfolgreich.
 
 Unten sehen Sie die angepasste Anspruchsregel, die diese Logik implementiert:
 
@@ -163,5 +162,4 @@ Führen Sie die folgenden Schritte aus, um einen benutzerdefinierten Anspruch zu
     ![Anspruch ersetzen](./media/active-directory-multiple-domains/sub2.png)
 
 5. Klicken Sie auf "OK".  Klicken Sie auf „Übernehmen“.  Klicken Sie auf "OK".  Schließen Sie die AD FS-Verwaltung.
-
 

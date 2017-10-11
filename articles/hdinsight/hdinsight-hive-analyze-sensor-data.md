@@ -16,13 +16,11 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 3abb71c12b4769bebd808276f8bdd832aad22d7a
-ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="analyze-sensor-data-using-the-hive-query-console-on-hadoop-in-hdinsight"></a>Analysieren von Sensordaten mit der Hive-Abfragekonsole für Hadoop in HDInsight
 
@@ -66,4 +64,3 @@ In diesem Beispiel verwenden Sie Hive, um Verlaufsdaten zu verarbeiten und Probl
     ![Abbildung zu „Erste Schritte mit dem Katalog“](./media/hdinsight-hive-analyze-sensor-data/getting-started-gallery.png)
 
 3. Folgen Sie den Anweisungen auf der Webseite, um das Beispiel abzuschließen.
-

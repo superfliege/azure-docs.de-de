@@ -1,20 +1,20 @@
 
 
 
-## <a name="viewing-your-tags-in-the-usage-details"></a>Anzeigen der Tags in den Nutzungsdetails
-Tags, die im Resource Manager-Bereitstellungsmodell in Compute-, Netzwerk- und Speicherressourcen platziert werden, finden Sie in Ihren Nutzungsdetails im [Abrechnungsportal](https://account.windowsazure.com/)wieder.
+## <a name="viewing-your-tags-in-the-usage-details"></a>Anzeigen von Tags in die Verwendungsdetails
+Tags platziert werden, auf dem Server, Netzwerk und Speicherressourcen im Ressourcen-Manager-Bereitstellungsmodell werden Ihre Nutzungsdetails im aufgefüllt werden die [Abrechnung Portal](https://account.windowsazure.com/).
 
-Klicken Sie auf **Nutzungsdetails herunterladen** , um die Nutzungsdetails in Ihrem Abonnement anzuzeigen.
+Klicken Sie auf **Nutzungsdetails herunterladen** So zeigen Sie die Nutzungsdetails in Ihrem Abonnement an.
 
-![Nutzungsdetails im Azure-Portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
+![Nutzungsdetails im Azure-portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
 
-Wählen Sie die Abrechnungsanweisung und die **Version 2** der Nutzungsdetails aus:
+Wählen Sie die Abrechnung und die **Version 2** Nutzungsdetails:
 
-![Version 2 der Vorschau der Nutzungsdetails im Azure-Portal](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
+![Version 2 Vorschau Nutzungsdetails im Azure-portal](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
 
-Den Verwendungsdetails können Sie alle Tags in der Spalte **Tags** entnehmen:
+Über die Verwendungsdetails sehen Sie, alle Tags in der **Tags** Spalte:
 
-![Spalte für Tags im Azure-Portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
+![Tagspalten im Azure-portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
 
-Durch Analysieren dieser Tags zusammen mit der Nutzung erhalten Organisationen neue Einblicke in die Nutzung Ihrer Daten.
+Diese Tags zusammen mit der Nutzung analysieren, können Organisationen neue Erkenntnisse über ihre Daten erhalten werden.
 

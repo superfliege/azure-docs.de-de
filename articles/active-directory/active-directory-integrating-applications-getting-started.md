@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54e6bf0953135855d4dda2bc83c8dc06212c6eb5
-ms.openlocfilehash: 6b3f6889c747e72ee1c592b1b0dfb1d03d700ad3
-ms.contentlocale: de-de
-ms.lasthandoff: 02/03/2017
-
+ms.openlocfilehash: e273d27bacf6978c5056c0ab09846c26426dd12b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Erste Schritte zur Integration von Anwendungen in Azure Active Directory
 ## <a name="overview"></a>Übersicht
@@ -93,5 +92,4 @@ Wenn Sie Ihre benutzerdefinierte Anwendung dem Azure-Anwendungskatalog hinzufüg
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
 

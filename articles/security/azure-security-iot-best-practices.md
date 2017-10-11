@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cdb1436d33fed61210724d55ffbf06f653f24f7c
-
-
+ms.openlocfilehash: 8efc0053458e338ac1afe98d9ce970c1d5cbfa81
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="internet-of-things-security-best-practices"></a>Internet der Dinge – bewährte Methoden für die Sicherheit
 Sicherung der Infrastruktur des Internets der Dinge (Internet of Things, IoT) ist ein kritisches Unterfangen für Benutzer, die sich mit IoT-Lösungen befassen. Aufgrund der Anzahl der betroffenen Geräte, und weil die Geräte verteilt sind, ist ein Sicherheitsereignis, das Millionen von IoT-Geräten gefährdet, keine Bagatelle und kann umfangreiche Auswirkungen haben.
@@ -63,10 +63,4 @@ Befolgen Sie diese bewährten Methoden, wenn Sie IoT-Lösungsoperator sind:
 * **Häufig überwachen**: Die Überwachung der IoT-Infrastruktur auf sicherheitsbezogene Probleme ist entscheidend für die Reaktion auf Sicherheitsvorfälle.
 * **IoT-Infrastruktur physisch schützen**: Die schlimmsten Angriffe gegen die IoT-Infrastruktur beginnen mit dem physischen Zugriff auf Geräte.
 * **Schützen der Cloud-Anmeldeinformationen**: Cloud-Authentifizierungsanmeldeinformationen für die Konfiguration und den Betrieb einer IoT-Bereitstellung sind wahrscheinlich die einfachste Möglichkeit zum Zugreifen und Manipulieren eines IoT-Systems. 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

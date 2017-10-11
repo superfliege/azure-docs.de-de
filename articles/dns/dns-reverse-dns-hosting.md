@@ -12,14 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 3e10b25d2f9b91c96af2958fef6dc6a4fdbff301
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="hosting-reverse-dns-lookup-zones-in-azure-dns"></a>Hosten von Reverse-DNS-Lookupzonen in Azure DNS
 
 In diesem Artikel wird erläutert, wie Sie Reverse-DNS-Lookupzonen für Ihre zugewiesenen IP-Adressbereiche in Azure DNS hosten. Die durch die Reverse-Lookupzone angegebenen IP-Adressbereiche müssen Ihrer Organisation zugewiesen werden – in der Regel von Ihrem Internetdienstanbieter.
@@ -119,7 +117,7 @@ Für Forward-Lookupzonen wird der Vorgang der Delegierung einer DNS-Zone unter [
 
 Im folgenden Beispiel wird die Erstellung eines PTR-Eintrags in einer Reverse-DNS-Zone in Azure DNS ausführlich erläutert. Informationen zu anderen Eintragstypen und zum Ändern vorhandener Einträge finden Sie unter [Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal](dns-operations-recordsets-portal.md).
 
-1.    Wählen Sie oben auf dem Blatt **DNS-Zone** die Option **+ Ressourceneintragssatz** aus, um das Blatt **Ressourceneintragssatz hinzufügen** zu öffnen.
+1.  Wählen Sie oben auf dem Blatt **DNS-Zone** die Option **+ Ressourceneintragssatz** aus, um das Blatt **Ressourceneintragssatz hinzufügen** zu öffnen.
 
  ![DNS-Zone](./media/dns-reverse-dns-hosting/figure4.png)
 
@@ -269,4 +267,3 @@ Weitere Informationen finden Sie unter [Importieren und Exportieren einer DNS-Zo
 Weitere Informationen zu Reverse-DNS finden Sie unter [Reverse DNS](http://en.wikipedia.org/wiki/Reverse_DNS_lookup) in der Wikipedia.
 <br>
 Erfahren Sie, wie Sie [Reverse-DNS-Einträge für Ihre Azure-Dienste verwalten](dns-reverse-dns-for-azure-services.md).
-

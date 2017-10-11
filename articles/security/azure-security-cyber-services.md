@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e3502015d20b172214369b05c3ea12bd5b5c98e9
-
-
+ms.openlocfilehash: 1560ea8b224be0f6bc723f64d8f154805b2771e5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Microsoft-Dienste in der Sicherheit im Internet
 Die Microsoft-Dienste bieten einen umfassenden Ansatz zu Sicherheit, Identität und Sicherheit im Internet. Zu den Microsoft-Diensten zählen eine Reihe von Sicherheits- und Identitätsdiensten, die Strategie, Planung, Implementierung und fortlaufenden Support umfassen und unseren Enterprise-Kunden helfen können, ganzheitliche Sicherheitslösungen zu implementieren, die mit ihren strategischen Zielen übereinstimmen.
@@ -39,9 +39,3 @@ Hier erfahren Sie mehr über die Leistungen von Microsoft-Dienste:
 * [Respond and recover after a security incident](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
 
 [Erfahren Sie mehr](https://aka.ms/cyberserv) über die Sicherheits-Consulting Services der Microsoft-Dienste.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

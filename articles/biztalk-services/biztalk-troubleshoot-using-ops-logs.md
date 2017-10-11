@@ -1,6 +1,6 @@
 ---
-title: Problembehandlung in BizTalk Services mithilfe von Vorgangsprotokollen | Microsoft Docs
-description: Problembehandlung in BizTalk Services mithilfe von Vorgangsprotokollen. MABS, WABS
+title: "Problembehandlung bei BizTalk-Dienste über Vorgangsprotokolle | Microsoft Docs"
+description: "Problembehandlung bei BizTalk-Dienste über Vorgangsprotokolle. MABS WABS"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,65 +14,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: c0c83361f94ffd9c30d7fcc551ff4b85ad7d6fa5
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk Services: Fehlerbehebung mit Vorgangsprotokollen
+# <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk Services: Problembehandlung bei der Verwendung von vorgangsprotokollen
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-## <a name="what-are-the-operation-logs"></a>Was sind Vorgangsprotokolle?
-Vorgangsprotokolle sind eine Verwaltungsdienstfunktion im klassischen Azure-Portal, mit denen Sie Verlaufsprotokolle zu Vorgängen anzeigen können, die in Ihren Azure-Diensten ausgeführt wurden, einschließlich BizTalk Services. So können Sie die Verlaufsdaten zu Verwaltungsvorgängen für Ihr BizTalk Services-Abonnement bis zu 180 Tage lang anzeigen.
+## <a name="what-are-the-operation-logs"></a>Was sind die Vorgangsprotokolle
+Vorgangsprotokolle ist eine Verwaltungsdienste Funktion im klassischen Azure-Portal, das Sie Verlaufsprotokolle der durchgeführten Operationen für die Azure-Dienste, einschließlich BizTalk-Dienste anzeigen kann. Dadurch können Sie historische Daten, die im Zusammenhang mit Management-Vorgänge in Ihrem BizTalk Service-Abonnement bis 180 Tage anzeigen.
 
 > [!NOTE]
-> Diese Funktion erfasst nur Protokolle für Verwaltungsvorgänge in BizTalk Services, beispielsweise wann ein Dienst gestartet oder gesichert wurde usw. Solche Vorgänge werden unabhängig von der Tatsache nachverfolgt, ob sie über das klassische Azure-Portal oder unter Verwendung der [BizTalk Service-REST-APIs](http://msdn.microsoft.com/library/azure/dn232347.aspx)ausgeführt wurden. Eine vollständige Liste der Vorgänge, die mithilfe der Verwaltungsdienste nachverfolgt werden, finden Sie unter [Vorgänge, die mit Azure-Verwaltungsdiensten nachverfolgt werden](#bizops)ausgeführt wurden.<br/><br/>
-> Dies umfasst nicht die Protokolle für Aktivitäten bezüglich der BizTalk Services-Laufzeit (beispielsweise Nachrichten, die von Brücken verarbeitet werden usw.). Verwenden Sie im BizTalk Services-Portal die Ansicht "Nachverfolgung", um diese Protokolle anzuzeigen. Weitere Informationen finden Sie unter [Nachverfolgen von Nachrichten](http://msdn.microsoft.com/library/azure/hh949805.aspx).
+> Diese Funktion zeichnet nur Protokolle für Verwaltungsvorgänge an BizTalk-Dienste, z. B. wenn der Dienst gestartet wurde, bis usw. gesichert. Solche Vorgänge werden nachverfolgt, unabhängig davon, ob sie über das klassische Azure-Portal oder mithilfe ausgeführt werden der [BizTalk-Dienst-REST-APIs](http://msdn.microsoft.com/library/azure/dn232347.aspx). Eine vollständige Liste der Vorgänge, die mithilfe der Verwaltungsdienste nachverfolgt werden, finden Sie unter [Vorgänge nachverfolgten mithilfe von Azure Verwaltungsdienste](#bizops).<br/><br/>
+> Dadurch wird die Protokolle für Aktivitäten im Zusammenhang mit der BizTalk Service-Laufzeit (z. B. die Nachricht von Brücken usw. verarbeitet.) nicht erfasst. Verwenden Sie zum Anzeigen dieser Protokolle die nachverfolgungsansicht die BizTalk Services-Portal ein. Weitere Informationen finden Sie unter [Nachrichten nachverfolgen](http://msdn.microsoft.com/library/azure/hh949805.aspx).
 > 
 > 
 
-## <a name="view-biztalk-services-operation-logs"></a>Anzeigen von BizTalk Services-Vorgangsprotokollen
-1. Wählen Sie im klassischen Azure-Portal die Option **Verwaltungsdienste** und anschließend die Registerkarte **Vorgangsprotokolle**.
-2. Sie können die Protokolle anhand verschiedener Parameter filtern, beispielsweise nach Abonnement, Datumsbereich, Diensttyp (zum Beispiel BizTalk Services), Dienstname oder Vorgangsstatus (erfolgreich oder mit Fehler).
-3. Klicken Sie auf das Häkchen, um die gefilterte Liste anzuzeigen. Die folgende Abbildung zeigt Aktivitäten bezüglich testbiztalkservice:  ![Anzeigen von Operationsprotokollen][ViewLogs] 
-4. Wenn Sie weitere Informationen zu einem bestimmten Vorgang anzeigen möchten, wählen Sie die entsprechende Zeile aus, und klicken Sie unten in der Taskleiste auf **Details** .
+## <a name="view-biztalk-services-operation-logs"></a>Anzeigen von BizTalk über Vorgangsprotokolle Services
+1. Wählen Sie im klassischen Azure-Portal, **Verwaltungsdienste**, und wählen Sie dann die **Vorgangsprotokolle** Registerkarte.
+2. Sie können die Protokolle, die basierend auf verschiedenen Parametern wie Abonnement, Datumsbereich, Diensttyp (z. B. BizTalk-Dienste), Dienstnamen oder Status des Vorgangs ("erfolgreich", "Fehler") filtern.
+3. Wählen Sie das Häkchen, um die gefilterte Liste anzuzeigen. Die folgende Abbildung zeigt die Aktivitäten im Zusammenhang mit Testbiztalkservice: ![Vorgangsprotokolle anzeigen][ViewLogs] 
+4. Um mehr über einen bestimmten Vorgang anzuzeigen, wählen Sie die Zeile, und klicken Sie auf **Details** auf der Taskleiste im unteren Bereich.
 
-## <a name="bizops"></a>Vorgänge, die mit Azure-Verwaltungsdiensten nachverfolgt werden
-In der folgenden Tabelle finden Sie Vorgänge, die mit den Azure-Verwaltungsdiensten nachverfolgt werden:
+## <a name="bizops"></a>Vorgänge, die mithilfe von Azure Verwaltungsdienste nachverfolgt
+Die folgende Tabelle enthält die Vorgänge, die mithilfe der Azure-Verwaltungsdienste nachverfolgt werden:
 
-| Vorgangsname | Task |
+| Vorgangsname | Aufgabe |
 | --- | --- |
-| CreateBizTalkService |Vorgang zur Erstellung eines neuen BizTalk-Dienstes |
-| DeleteBizTalkService |Vorgang zum Löschen eines BizTalk-Dienstes |
-| RestartBizTalkService |Vorgang zum Neustart eines BizTalk-Dienstes |
-| StartBizTalkService |Vorgang zum Starten eines BizTalk-Dienstes |
-| StopBizTalkService |Vorgang zum Beenden eines BizTalk-Dienstes |
-| DisableBizTalkService |Vorgang zum Deaktivieren eines BizTalk-Dienstes |
-| EnableBizTalkService |Vorgang zum Aktivieren eines BizTalk-Dienstes |
-| BackupBizTalkService |Vorgang zum Sichern eines BizTalk-Dienstes |
-| RestoreBizTalkService |Vorgang zur Wiederherstellung eines BizTalk-Dienstes aus einer bestimmten Sicherungskopie |
-| SuspendBizTalkService |Vorgang zum Anhalten eines BizTalk-Dienstes |
-| ResumeBizTalkService |Vorgang zum Fortsetzen eines BizTalk-Dienstes |
-| ScaleBizTalkService |Vorgang zur Skalierung eines BizTalk-Dienstes nach oben oder unten |
-| ConfigUpdateBizTalkService |Vorgang zur Aktualisierung der Konfiguration eines BizTalk-Dienstes |
-| ServiceUpdateBizTalkService |Vorgang für ein Upgrade oder Downgrade eines BizTalk-Dienstes auf eine andere Version |
-| PurgeBackupBizTalkService |Vorgang zum Bereinigen von Sicherungskopien eines BizTalk-Dienstes nach der Aufbewahrungszeit |
+| CreateBizTalkService |Vorgang zum Erstellen einer neuen BizTalk Service |
+| DeleteBizTalkService |Vorgang zum Löschen eines BizTalk Services |
+| RestartBizTalkService |Vorgang um einen BizTalk Service neu zu starten. |
+| StartBizTalkService |Vorgang zum Starten eines BizTalk Services |
+| StopBizTalkService |Vorgang zum Beenden eines BizTalk Services |
+| DisableBizTalkService |Vorgang zum Deaktivieren eines BizTalk Services |
+| EnableBizTalkService |Vorgang um einen BizTalk Service zu aktivieren. |
+| BackupBizTalkService |Vorgang zum Sichern eines BizTalk Services |
+| RestoreBizTalkService |Vorgang um einen BizTalk Service aus einer angegebenen Sicherung wiederherstellen |
+| SuspendBizTalkService |Vorgang zum Anhalten eines BizTalk Services |
+| ResumeBizTalkService |Vorgang zum Fortsetzen eines BizTalk Services |
+| ScaleBizTalkService |Vorgang um einen BizTalk Service vertikal oder horizontal skalieren |
+| ConfigUpdateBizTalkService |Vorgang zum Aktualisieren der Konfiguration des BizTalk Service |
+| ServiceUpdateBizTalkService |Vorgang zum upgrade oder Downgrade für einen BizTalk Service auf eine andere version |
+| PurgeBackupBizTalkService |Vorgang zum Löschen von Sicherungen des BizTalk Service außerhalb der Beibehaltungsdauer |
 
-## <a name="see-also"></a>Weitere Informationen
-* [Sichern von BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=325584)
-* [Wiederherstellen von BizTalk Services aus einer Sicherung](http://go.microsoft.com/fwlink/p/?LinkID=325582)
-* [BizTalk Services: Editionsübersicht](http://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [BizTalk Services: Bereitstellen mithilfe des klassischen Azure-Portals](http://go.microsoft.com/fwlink/p/?LinkID=302280)
-* [BizTalk Services: Bereitstellungsstatusübersicht](http://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](http://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk Services: Drosselung](http://go.microsoft.com/fwlink/p/?LinkID=302282)
-* [BizTalk Services: Name und Schlüssel des Ausstellers](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-* [Wie verwende ich das Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+## <a name="see-also"></a>Siehe auch
+* [Sichern von BizTalk Service](http://go.microsoft.com/fwlink/p/?LinkID=325584)
+* [Wiederherstellen Sie BizTalk Service aus einer Sicherung.](http://go.microsoft.com/fwlink/p/?LinkID=325582)
+* [BizTalk Services: Developer, Basic, Standard und Premium Edition-Diagramm](http://go.microsoft.com/fwlink/p/?LinkID=302279)
+* [BizTalk Services: Bereitstellung Klassisches mit Azure-portal](http://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk Services: Dienststatusdiagramm](http://go.microsoft.com/fwlink/p/?LinkID=329870)
+* [BizTalk Services: Registerkarten "Dashboard, Monitor und Skala"](http://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk Services: Einschränkung](http://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk Services: Ausstellername und Ausstellerschlüssel](http://go.microsoft.com/fwlink/p/?LinkID=303941)
+* [Gewusst wie: Starten Sie mithilfe der Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
-
 

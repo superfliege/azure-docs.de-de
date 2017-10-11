@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: 932f5f12c75299e532d3fa2c31f1805a7df30158
-ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Tutorial: Azure Active Directory-Integration mit Learningpool Act
 
@@ -92,7 +90,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Learningp
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Learningpool Act-Testbenutzers](#creating-a-learningpool-act-test-user)**, um in Learningpool Act eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -112,7 +110,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-Learningpool-tutorial/tutorial_Learningpoolact_url.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
+    a. Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
 
     b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein:
     | |
@@ -261,5 +259,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Learningpool Act“ klicken, sollt
 [201]: ./media/active-directory-saas-Learningpool-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-Learningpool-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-Learningpool-tutorial/tutorial_general_203.png
-
 

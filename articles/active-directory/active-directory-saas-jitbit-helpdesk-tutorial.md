@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 6523ee3179dafd79528093b856b0ec10fafb4f7b
-ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Tutorial: Azure Active Directory-Integration mit Jitbit Helpdesk
 
@@ -92,7 +90,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Jitbit Hel
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Jitbit Helpdesk-Testbenutzers](#creating-a-jitbit-helpdesk-test-user)**, um eine Entsprechung von Britta Simon in Jitbit Helpdesk zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -189,7 +187,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-jitbit-helpdesk-tutorial/create_aaduser_04.png) 
 
-    a. Geben Sie in das Textfeld **Name** den Namen **Britta Simon** ein.
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
 
     b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
 
@@ -293,5 +291,4 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/active-directory-saas-jitbit-helpdesk-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-jitbit-helpdesk-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-jitbit-helpdesk-tutorial/tutorial_general_203.png
-
 

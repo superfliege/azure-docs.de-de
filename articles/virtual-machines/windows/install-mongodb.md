@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: db1a550b9273925b304fe4280f2a1b0e115f856d
-ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Windows-Computer in Azure
 [MongoDB](http://www.mongodb.org) ist eine beliebte, leistungsfähige Open Source-NoSQL-Datenbank. Dieser Artikel führt Sie durch die Installation und Konfiguration von MongoDB auf einem virtuellen Windows Server 2012 R2-Computer in Azure. Sie können [MongoDB auch auf einem virtuellen Linux-Computer in Azure installieren](../linux/install-mongodb.md).
@@ -52,7 +51,7 @@ Um mit der Installation und Konfiguration von MongoDB zu beginnen, [melden Sie s
     ![MongoDB-Installationsprogramm herunterladen](./media/install-mongodb/download-mongodb.png)
    
     Führen Sie das Installationsprogramm nach Abschluss des Downloads aus.
-6. Lesen und akzeptieren Sie die Lizenzbedingungen. Wählen Sie bei entsprechender Aufforderung die Option zum **Abschließen** der Installation.
+6. Lesen und akzeptieren Sie die Lizenzbedingungen. Wählen Sie bei entsprechender Aufforderung die Option zum Abschließen der Installation****.
 7. Klicken Sie auf dem letzten Bildschirm auf **Installieren**.
 
 ## <a name="configure-the-vm-and-mongodb"></a>Konfigurieren des virtuellen Computers und von MongoDB
@@ -164,5 +163,4 @@ Erstellen Sie ggf. eine Netzwerksicherheitsgruppen-Regel, um den Zugriff auf Mon
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie erfahren, wie Sie MongoDB auf dem virtuellen Windows-Computer installieren und konfigurieren. Sie können nun auf Ihrem virtuellen Windows-Computer auf MongoDB zugreifen. Lesen Sie dazu die Informationen in den weiterführenden Themen in der [MongoDB-Dokumentation](https://docs.mongodb.com/manual/).
-
 

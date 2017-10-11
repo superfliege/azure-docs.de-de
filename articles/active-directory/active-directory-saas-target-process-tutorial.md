@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: d15931a5d430252bbd9ae342e1f8fde1a539355b
-ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Tutorial: Azure Active Directory-Integration mit TargetProcess
 
@@ -254,5 +253,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „TargetProcess“ klicken, sollten 
 [201]: ./media/active-directory-saas-target-process-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-target-process-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-target-process-tutorial/tutorial_general_203.png
-
 

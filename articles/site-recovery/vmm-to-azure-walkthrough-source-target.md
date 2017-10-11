@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/25/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: c72f839d0a1288dccb7deb3e44fc2b20d64818f0
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="step-8-set-up-the-source-and-target-for-hyper-v-with-vmm-replication-to-azure"></a>Schritt 8: Einrichten der Quelle und des Ziels der Hyper-V-Replikation (mit VMM) in Azure
 
 Nach dem [Erstellen eines Tresors](vmm-to-azure-walkthrough-create-vault.md) und der Angabe, was repliziert werden soll, konfigurieren Sie anhand der Informationen in diesem Artikel die Quell- und Zieleinstellungen beim Replizieren lokaler virtueller Hyper-V-Computer in System Center Virtual Machine Manager (VMM) in Azure mit dem [Azure Site Recovery](site-recovery-overview.md)-Dienst im Azure-Portal.
@@ -133,4 +131,3 @@ Geben Sie das Azure-Speicherkonto, das für die Replikation verwendet werden sol
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wechseln Sie zu [Schritt 9: Konfigurieren der Netzwerkzuordnung](vmm-to-azure-walkthrough-network-mapping.md).
-

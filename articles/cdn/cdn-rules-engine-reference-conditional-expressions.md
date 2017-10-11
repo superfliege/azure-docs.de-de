@@ -14,13 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: 57e56c38e003cb83dcf44f455c4451d159db8a59
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-cdn-rules-engine-conditional-expressions"></a>Bedingte Ausdrücke des Azure CDN-Regelmoduls
 Dieses Thema enthält ausführliche Beschreibungen der bedingten Ausdrücke für das [Regelmodul](cdn-rules-engine.md) des Azure Content Delivery Network (CDN).
 
@@ -43,9 +42,3 @@ ELSE IF| Mit einem ELSE IF-Ausdruck wird eine alternative Bedingung angegeben, d
 * [Rules Engine Match Conditions](cdn-rules-engine-reference-match-conditions.md) (Regelmodul – Übereinstimmungsbedingungen)
 * [Rules Engine Features](cdn-rules-engine-reference-features.md) (Regelmodul – Features)
 * [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-

@@ -1,6 +1,6 @@
 ---
 title: Was ist Azure Scheduler? | Microsoft Docs
-description: "Mit Azure Scheduler können Sie Aktionen, die in der Cloud ausgeführt werden sollen, deklarativ beschreiben. Anschließend werden diese Aktionen automatisch geplant und ausgeführt."
+description: "Azure Scheduler können Sie deklarativ zu beschreiben, Aktionen, die in der Cloud ausgeführt. Anschließend plant und diese Aktionen automatisch ausgeführt."
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
@@ -14,48 +14,42 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/18/2016
 ms.author: deli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a3bf1aacd6978499d7ef77cbcb451a06b857ac38
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="what-is-azure-scheduler"></a>Was ist Azure Scheduler?
-Mit Azure Scheduler können Sie Aktionen, die in der Cloud ausgeführt werden sollen, deklarativ beschreiben. Anschließend werden diese Aktionen automatisch geplant und ausgeführt.  Mit Scheduler erfolgt dies über das [Azure-Portal](scheduler-get-started-portal.md), über Code, über die [REST-API](https://msdn.microsoft.com/library/mt629143.aspx) oder über Azure PowerShell.
+Azure Scheduler können Sie deklarativ zu beschreiben, Aktionen, die in der Cloud ausgeführt. Anschließend plant und diese Aktionen automatisch ausgeführt.  Scheduler geschieht mithilfe [Azure-Portal](scheduler-get-started-portal.md), Code [REST-API](https://msdn.microsoft.com/library/mt629143.aspx), oder über Azure PowerShell.
 
-Scheduler erstellt, pflegt und startet geplante Arbeit.  Scheduler kann weder Workloads hosten noch Code ausführen. Der Dienst *ruft* nur Code auf, der an anderer Stelle gehostet wird, z.B. in Azure, lokal oder bei einem anderen Anbieter. Der Aufruf erfolgt per HTTP, HTTPS, Speicherwarteschlange, Service Bus-Warteschlange oder Service Bus-Thema.
+Planer erstellt, verwaltet und geplante Arbeit aufruft.  Scheduler arbeitsauslastungen hosten oder Ausführen von Code nicht. Er nur *ruft* Code gehostet an anderer Stelle – in Azure, lokal oder bei einem anderen Anbieter. Sie ruft über HTTP, HTTPS, eine Speicherwarteschlange, Servicebus-Warteschlange oder ein Servicebus-Thema.
 
-Scheduler plant [Aufträge](scheduler-concepts-terms.md), protokolliert einen Verlauf der Auftragsausführungsergebnisse, die überprüft werden können, und plant deterministisch und zuverlässig auszuführende Workloads. Azure WebJobs (Teil des Web-Apps-Features im Azure App Service) und andere Planungsfunktionen von Azure verwenden Scheduler im Hintergrund. Mit der [Scheduler-REST-API](https://msdn.microsoft.com/library/mt629143.aspx) wird die Kommunikation für diese Aktionen verwaltet. Auf diese Weise unterstützt Scheduler mühelos [komplexe Zeitpläne und Wiederholungszeitpläne](scheduler-advanced-complexity.md) .
+Scheduler-Zeitpläne [Aufträge](scheduler-concepts-terms.md), protokolliert den Verlauf der Auftragsausführungsergebnisse, dass eine kann überprüfen, und deterministisch und zuverlässig plant arbeitsauslastungen ausgeführt werden. Azure WebJobs (Teil der Web-Apps-Funktion in Azure App Service) und anderen Azure-Planungsfunktionen verwenden Scheduler im Hintergrund. Die [Scheduler-REST-API](https://msdn.microsoft.com/library/mt629143.aspx) hilft bei die Kommunikation für diese Aktionen zu verwalten. Daher HPC Scheduler unterstützt [komplexe Zeitpläne und erweiterte Wiederholung](scheduler-advanced-complexity.md) einfach.
 
-Mehrere Szenarios bieten sich für die Verwendung von Scheduler an. Beispiel:
+Es gibt mehrere Szenarien, die für die Verwendung eines Planers geeignet. Beispiel:
 
-* *Periodische Anwendungsaktionen:* Erfassen von Daten von Twitter in regelmäßigen Abständen in einem Feed.
-* *Tägliche Wartung:* Tägliche Bereinigung von Protokollen, das Durchführen von Sicherungen und anderen Wartungsaufgaben. Ein Administrator möchte eine Datenbank z.B. für die nächsten neun Monate täglich um 1:00 Uhr sichern.
+* *Wiederkehrende Anwendungsaktionen:* Sammeln von Daten in regelmäßigen Abständen von Twitter zu einem Feed.
+* *Tägliche Wartung:* tägliche pflegen der Protokolle, Erstellen von Sicherungen und andere Wartungsaufgaben. Beispielsweise kann ein Administrator wählen Sie zum Sichern der Datenbank um 1:00 Uhr täglich für die nächsten neun Monate.
 
-Mit Scheduler können Sie [Auftragssammlungen](scheduler-concepts-terms.md) programmgesteuert, mithilfe von Skripts und im Portal erstellen, aktualisieren, löschen, anzeigen und verwalten.
+Scheduler können Sie erstellen, aktualisieren, löschen, anzeigen und Verwalten von Aufträgen und [Auftrag Sammlungen](scheduler-concepts-terms.md) programmgesteuert, durch die Verwendung von Skripts, und klicken Sie im Portal.
 
-## <a name="see-also"></a>Siehe auch
- [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
+## <a name="see-also"></a>Weitere Informationen:
+ [Azure Scheduler-Konzepte,-Terminologie und-Entitätshierarchie](scheduler-concepts-terms.md)
 
- [Erste Schritte mit dem Scheduler im Azure-Portal](scheduler-get-started-portal.md)
+ [Erste Schritte mit Scheduler im Azure-portal](scheduler-get-started-portal.md)
 
  [Pläne und Abrechnung in Azure Scheduler](scheduler-plans-billing.md)
 
- [Erstellen komplexer Zeitpläne und erweiterter Serien mit Azure Scheduler](scheduler-advanced-complexity.md)
+ [Gewusst wie: Erstellen von komplexen Zeitpläne und erweiterte Wiederholung mit Azure Scheduler](scheduler-advanced-complexity.md)
 
- [Azure Scheduler-REST-API – Referenz](https://msdn.microsoft.com/library/mt629143)
+ [Azure Scheduler-REST-API-Referenz](https://msdn.microsoft.com/library/mt629143)
 
- [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
+ [Referenz zur Azure Scheduler-PowerShell-cmdlets](scheduler-powershell-reference.md)
 
- [Hochverfügbarkeit und Zuverlässigkeit von Azure Scheduler](scheduler-high-availability-reliability.md)
+ [Azure Scheduler – hohe Verfügbarkeit und Zuverlässigkeit](scheduler-high-availability-reliability.md)
 
- [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)
+ [Azure Scheduler – Einschränkungen, Standardwerte und Fehlercodes](scheduler-limits-defaults-errors.md)
 
- [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
+ [Ausgehende Authentifizierung mit Azure Scheduler](scheduler-outbound-authentication.md)
 

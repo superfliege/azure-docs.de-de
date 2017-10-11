@@ -1,31 +1,31 @@
 ## <a name="view-the-telemetry"></a>Anzeigen der Telemetrie
 
-Der Raspberry Pi sendet nun Telemetriedaten an die Remoteüberwachungslösung. Die Telemetriedaten können auf dem Lösungsdashboard angezeigt werden. Über das Lösungsdashboard können Sie auch Nachrichten an Ihren Raspberry Pi senden.
+Die Brombeere Pi sendet Telemetrie ist jetzt an der remote-überwachungslösung. Sie können die Telemetrie im Projektmappen-Dashboard anzeigen. Sie können auch Nachrichten an Ihre Brombeere Pi über das Dashboard Solution senden.
 
-- Navigieren Sie zum Lösungsdashboard.
-- Wählen Sie in der Dropdownliste **Anzuzeigendes Gerät** Ihr Gerät aus.
-- Die Telemetriedaten des Raspberry Pi werden auf dem Dashboard angezeigt.
+- Navigieren Sie zu der Projektmappe-Dashboard.
+- Wählen Sie Ihr Gerät bei der **Gerät anzuzeigende** Dropdownliste.
+- Die Telemetriedaten aus der Brombeere Pi werden auf dem Dashboard angezeigt.
 
-![Anzeigen von Telemetriedaten des Raspberry Pi][img-telemetry-display]
+![Anzeigen von Telemetriedaten aus der Brombeere Pi][img-telemetry-display]
 
-## <a name="act-on-the-device"></a>Ausführen von Aktionen für das Gerät
+## <a name="act-on-the-device"></a>Wirken sich auf dem Gerät
 
-Über das Lösungsdashboard können Sie Methoden auf Ihrem Raspberry Pi aufrufen. Wenn der Raspberry Pi eine Verbindung mit der Remoteüberwachungslösung herstellt, sendet er Informationen zu den unterstützten Methoden.
+Über das Dashboard Lösung können Sie auf Ihre Brombeere Pi Methoden aufrufen. Wenn mit der remote-überwachungslösung der Brombeere Pi verbunden ist, sendet er Informationen zu den unterstützten Methoden aus.
 
-- Klicken Sie im Lösungsdashboard auf **Geräte**, um die Seite **Geräte** aufzurufen. Wählen Sie in der **Geräteliste** Ihren Raspberry Pi aus. Wählen Sie anschließend **Methoden** aus:
+- Klicken Sie im Projektmappen-Dashboard auf **Geräte** Besuchen der **Geräte** Seite. Wählen Sie Ihre Brombeere Pi in der **Geräteliste**. Wählen Sie dann **Methoden**:
 
-    ![Auflisten von Geräten im Dashboard][img-list-devices]
+    ![Liste der Geräte im dashboard][img-list-devices]
 
-- Wählen Sie auf der Seite **Methode aufrufen** in der Dropdownliste **Methode** die Option **LightBlink** aus.
+- Auf der **Aufrufmethode** Seite **LightBlink** in der **Methode** Dropdownliste.
 
-- Wählen Sie **InvokeMethod** aus. Die mit dem Raspberry Pi verbundene LED blinkt mehrmals. Die App auf dem Raspberry Pi gibt eine Bestätigung an das Lösungsdashboard zurück:
+- Wählen Sie **InvokeMethod**. Die LED, die mit der Pi Brombeere blinkt mehrmals verbunden. Die app auf die Brombeere Pi sendet eine Bestätigung zurück zum Dashboard Lösung:
 
-    ![Anzeigen des Methodenverlaufs][img-method-history]
+    ![Verlauf der anzeigen-Methode][img-method-history]
 
-- Die LED kann mithilfe der Methode **ChangeLightStatus** ein- und ausgeschaltet werden. Legen Sie dazu **LightStatusValue** auf **1** (Ein) bzw. **0** (Aus) fest.
+- Können Sie wechseln die LED ein- und ausschalten mithilfe der **ChangeLightStatus** Methode mit einem **LightStatusValue** festgelegt **1** für auf oder **0** für deaktiviert.
 
 > [!WARNING]
-> Wenn Sie die Ausführung der Remoteüberwachungslösung in Ihrem Azure-Konto nicht beenden, wird Ihnen die Ausführungszeit in Rechnung gestellt. Weitere Informationen zur Senkung des Verbrauchs während der Ausführung der Remoteüberwachungslösung finden Sie unter [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config] (Konfigurieren vorkonfigurierter Azure IoT Suite-Lösungen zu Demonstrationszwecken). Löschen Sie die vorkonfigurierte Lösung aus Ihrem Azure-Konto, wenn Sie sie nicht mehr benötigen.
+> Wenn Sie die remote-überwachungslösung in Ihrem Azure-Konto ausführen lassen, sind Sie für die Zeit in Rechnung gestellt, die er ausgeführt wird. Weitere Informationen zu reduzieren Verbrauch, während der remote-überwachungslösung ausgeführt wird, finden Sie unter [Konfigurieren von Azure IoT Suite vorkonfigurierter Lösungen zu Demonstrationszwecken][lnk-demo-config]. Löschen Sie die vorkonfigurierte Lösung aus Ihrem Azure-Konto ein, wenn Sie ihn nicht mehr benötigen.
 
 
 [img-telemetry-display]: media/iot-suite-raspberry-pi-kit-view-telemetry/telemetry.png

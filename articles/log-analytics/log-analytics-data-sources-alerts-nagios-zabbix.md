@@ -1,6 +1,6 @@
 ---
-title: Erfassen von Nagios- und Zabbix-Warnungen in OMS Log Analytics | Microsoft-Dokumentation
-description: "Nagios und Zabbix sind Open-Source-Überwachungstools. Sie können Warnungen von diesen Tools in Log Analytics erfassen, um diese zusammen mit Warnungen aus anderen Quellen zu analysieren.  Dieser Artikel beschreibt, wie der OMS-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird."
+title: Erfassen von Nagios und Zabbix-Warnungen in der OMS-Protokollanalyse | Microsoft Docs
+description: "Nagios und Zabbix sind Tools zur Überwachung open-Source. Sie können Warnungen von diesen Tools zu Protokollanalyse zusammenfassen, um diese zusammen mit Warnungen aus anderen Quellen zu analysieren.  Dieser Artikel beschreibt das Konfigurieren der OMS-Agent für Linux für die Warnungen von diesen Systemen zu erfassen."
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -14,27 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
 ms.openlocfilehash: 0b64c32e1031e704d50aab0b38eaea41e27d134b
-ms.contentlocale: de-de
-ms.lasthandoff: 06/10/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Erfassen von Warnungen von Nagios und Zabbix in Log Analytics durch den OMS-Agent für Linux 
-[Nagios](https://www.nagios.org/) und [Zabbix](http://www.zabbix.com/) sind Open-Source Überwachungstools.  Sie können Warnungen in Log Analytics über diese Tools erfassen, um sie zusammen mit [Warnungen aus anderen Quellen](log-analytics-alerts.md) zu analysieren.  Dieser Artikel beschreibt, wie der OMS-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird.
+# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Erfassen von Warnungen von Nagios und Zabbix in Protokollanalyse von OMS-Agent für Linux 
+[Nagios](https://www.nagios.org/) und [Zabbix](http://www.zabbix.com/) open-Source Überwachungstools sind.  Sie können Warnungen in Protokollanalyse über diese Tools erfassen, um zusammen mit zu analysieren [Warnungen aus anderen Quellen](log-analytics-alerts.md).  Dieser Artikel beschreibt das Konfigurieren der OMS-Agent für Linux für die Warnungen von diesen Systemen zu erfassen.
  
 ## <a name="configure-alert-collection"></a>Konfigurieren der Erfassung von Warnungen
 
 ### <a name="configuring-nagios-alert-collection"></a>Konfigurieren der Erfassung von Nagios-Warnungen
-Führen Sie die folgenden Schritte auf dem Nagios-Server aus, um Warnungen zu erfassen.
+Führen Sie die folgenden Schritte aus, auf die Nagios-Server, um Warnungen zu sammeln.
 
-1. Gewähren Sie dem Benutzer **omsagent** Lesezugriff auf die Nagios-Protokolldatei (d.h. `/var/log/nagios/nagios.log`). Sie können den Benutzer **omsagent** der **nagios**-Gruppe hinzufügen, vorausgesetzt, die „nagios.log“-Datei gehört der Gruppe `nagios`. 
+1. Gewähren Sie dem Benutzer **"omsagent"** Lesezugriff auf die Nagios-Protokolldatei (d. h. `/var/log/nagios/nagios.log`). Vorausgesetzt, die Datei "nagios.log" im Besitz der Gruppe `nagios`, können Sie den Benutzer hinzufügen **"omsagent"** auf die **Nagios** Gruppe. 
 
-    sudo usermod -a -G nagios omsagent
+    "sudo" Usermod - a -G Nagios "omsagent"
 
-2.  Ändern Sie die Konfigurationsdatei in (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`). Stellen Sie sicher, dass die folgenden Einträge vorhanden und nicht auskommentiert sind:  
+2.  Ändern die Konfigurationsdatei an (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`). Stellen Sie sicher, dass die folgenden Einträge vorhanden und nicht als Kommentare formatiert sind:  
 
         <source>  
           type tail  
@@ -48,18 +46,18 @@ Führen Sie die folgenden Schritte auf dem Nagios-Server aus, um Warnungen zu er
           type filter_nagios_log  
         </filter>  
 
-3. Starten Sie den omsagent-Daemon neu.
+3. Starten Sie den Omsagent-Daemon neu.
 
     ```
     sudo sh /opt/microsoft/omsagent/bin/service_control restart
     ```
 
 ### <a name="configuring-zabbix-alert-collection"></a>Konfigurieren der Erfassung von Zabbix-Warnungen
-Sie müssen einen Benutzer und ein Kennwort in *Klartext* eingeben, um Warnungen von einem Zabbix-Server zu erfassen. Dies ist nicht ideal, aber es wird empfohlen, dass Sie den Benutzer erstellen und nur Überwachungsberechtigungen gewähren.
+Um Warnungen von einem Zabbix-Server zu erfassen, müssen Sie einen Benutzer und Kennwort in angeben *Klartext*. Dies ist nicht ideal, aber es wird empfohlen, erstellen Sie den Benutzer und gewähren von Berechtigungen für Onlu zu überwachen.
 
-Führen Sie die folgenden Schritte auf dem Nagios-Server aus, um Warnungen zu erfassen.
+Führen Sie die folgenden Schritte aus, auf die Nagios-Server, um Warnungen zu sammeln.
 
-1. Ändern Sie die Konfigurationsdatei in (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`). Stellen Sie sicher, dass die folgenden Einträge vorhanden und nicht auskommentiert sind.  Ändern Sie den Benutzernamen und das Kennwort in Werte für Ihre Zabbix-Umgebung.
+1. Ändern die Konfigurationsdatei an (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`). Stellen Sie sicher, dass die folgenden Einträge vorhanden und nicht als Kommentare formatiert sind.  Ändern Sie den Benutzernamen und das Kennwort auf Werte für Ihre Umgebung Zabbix an.
 
         <source>
          type zabbix_alerts
@@ -70,50 +68,49 @@ Führen Sie die folgenden Schritte auf dem Nagios-Server aus, um Warnungen zu er
          zabbix_password zabbix
         </source>
 
-2. Starten Sie den omsagent-Daemon neu.
+2. Starten Sie den Omsagent-Daemon neu.
 
-    sudo sh /opt/microsoft/omsagent/bin/service_control restart
+    "sudo" sh /opt/microsoft/omsagent/bin/service_control neu starten
 
 
-## <a name="alert-records"></a>Warnungsdatensätze
-Sie können mit [Protokollsuchen](log-analytics-log-searches.md) Warnungsdatensätze von Nagios und Zabbix in Log Analytics abrufen.
+## <a name="alert-records"></a>Warnung Datensätze
+Sie können Warnungen Datensätze von Nagios und Zabbix Abrufen mit [protokollieren sucht](log-analytics-log-searches.md) in Protokollanalyse.
 
-### <a name="nagios-alert-records"></a>Nagios-Warnungsdatensätze
+### <a name="nagios-alert-records"></a>Warnung Nagios-Datensätze
 
-Von Nagios erfasste Datensätze haben den **Typ** **Warnung** und das **SourceSystem** **Nagios**.  Sie verfügen über die Eigenschaften, die in der folgenden Tabelle aufgeführt sind.
+Warnung Nagios erhobene-Datensätze ein **Typ** von **Warnung** und eine **SourceSystem** von **Nagios**.  Sie haben die Eigenschaften in der folgenden Tabelle.
 
 | Eigenschaft | Beschreibung |
 |:--- |:--- |
 | Typ |*Warnung* |
 | SourceSystem |*Nagios* |
-| AlertName |Name der Warnung. |
+| AlertName |Der Name der Warnung. |
 | AlertDescription | Beschreibung der Warnung. |
-| AlertState | Status des Diensts oder Hosts<br><br>OK<br>WARNING<br>UP<br>DOWN |
-| HostName | Der Name des Hosts, der die Warnung erstellt hat |
-| PriorityNumber | Prioritätsstufe der Warnung. |
-| StateType | Der Statustyp der Warnung<br><br>SOFT: Problem, das nicht erneut geprüft wurde<br>HARD: Problem, das so oft wie angegeben erneut geprüft wurde  |
-| TimeGenerated |Datum und Uhrzeit der Warnungserstellung. |
+| Warnungsstatus (alertstate) | Status des Diensts oder der Host.<br><br>OK<br>WARNUNG<br>NACH-OBEN<br>NACH-UNTEN |
+| HostName | Der Name des Hosts, die die datenwarnung erstellt hat. |
+| PriorityNumber | Priorität der Warnung an. |
+| StateType | Der Typ der Zustand der Warnung.<br><br>SOFT - Problem, das nicht erneut geprüft werden soll.<br>Festplatten - Problem, die eine angegebene Anzahl von Malen kennwortanforderungen.  |
+| TimeGenerated |Datum und Uhrzeit der Erstellung die Warnung. |
 
 
-### <a name="zabbix-alert-records"></a>Zabbix-Warnungsdatensätze
-Von Zabbix erfasste Datensätze haben den **Typ** **Warnung** und das **SourceSystem** **Zabbix**.  Sie verfügen über die Eigenschaften, die in der folgenden Tabelle aufgeführt sind.
+### <a name="zabbix-alert-records"></a>Warnung Zabbix-Datensätze
+Warnungen von Zabbix gesammelten Datensätze haben eine **Typ** von **Warnung** und ein **SourceSystem** von **Zabbix**.  Sie haben die Eigenschaften in der folgenden Tabelle.
 
 | Eigenschaft | Beschreibung |
 |:--- |:--- |
 | Typ |*Warnung* |
 | SourceSystem |*Zabbix* |
-| AlertName | Name der Warnung. |
-| AlertPriority | Schweregrad der Warnung<br><br>not classified<br>Information<br>Warnung<br>average<br>high<br>disaster  |
-| AlertState | Status der Warnung<br><br>0: Status ist auf dem neuesten Stand.<br>1: Status ist unbekannt.  |
-| AlertTypeNumber | Gibt an, ob Warnungen mehrere Problemereignisse generieren können<br><br>0: Status ist auf dem neuesten Stand.<br>1: Status ist unbekannt.    |
-| Kommentare | Zusätzliche Kommentare zur Warnung |
-| HostName | Der Name des Hosts, der die Warnung erstellt hat |
-| PriorityNumber | Der Wert, der den Schweregrad der Warnung angibt<br><br>0: Nicht klassifiziert<br>1: Information<br>2: Warnung<br>3: Durchschnitt<br>4: Hoch<br>5: Notfall |
-| TimeGenerated |Datum und Uhrzeit der Warnungserstellung. |
-| TimeLastModified |Datum und Uhrzeit der letzten Änderung des Status der Warnung |
+| AlertName | Der Name der Warnung. |
+| AlertPriority | Schweregrad der Warnung.<br><br>nicht klassifiziert<br>Informationen<br>Warnung<br>Durchschnitt<br>Hohe<br>im Notfall  |
+| Warnungsstatus (alertstate) | Status der Warnung.<br><br>0 - Status wird auf dem neuesten Stand.<br>1 - Status ist unbekannt.  |
+| AlertTypeNumber | Gibt an, ob Warnungen mehrere Problem Ereignisse generiert werden können.<br><br>0 - Status wird auf dem neuesten Stand.<br>1 - Status ist unbekannt.    |
+| Kommentare | Zusätzliche Kommentare zur Warnung. |
+| HostName | Der Name des Hosts, die die datenwarnung erstellt hat. |
+| PriorityNumber | Der Wert, der angibt, der Schweregrad der Warnung.<br><br>0 – nicht klassifiziert<br>1 - Informationen<br>2 – Warnung<br>3 – Durchschnitt<br>4 – hoch<br>5 – nach einem Notfall |
+| TimeGenerated |Datum und Uhrzeit der Erstellung die Warnung. |
+| TimeLastModified |Datum und Uhrzeit der letzten Änderung der Zustand der Warnung. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu [Warnungen](log-analytics-alerts.md) finden Sie in Log Analytics.
-* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
-
+* Erfahren Sie mehr über [Warnungen](log-analytics-alerts.md) in Protokollanalyse.
+* Erfahren Sie mehr über [protokollieren sucht](log-analytics-log-searches.md) zum Analysieren der Daten in Datenquellen / Lösungen gesammelt. 

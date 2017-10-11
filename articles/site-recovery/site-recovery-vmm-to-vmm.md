@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
 ms.openlocfilehash: 777bddea6b1cb325a6f8ede00196b18e1746d80c
-ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site-using-the-azure-portal"></a>Replizieren von virtuellen Hyper-V-Computern in VMM-Clouds an einen sekundären VMM-Standort mithilfe des Azure-Portals
 > [!div class="op_single_selector"]
@@ -444,4 +443,3 @@ In dieser Tabelle ist zusammengefasst, wie Daten in diesem Szenario gespeichert 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie die Bereitstellung getestet haben, können Sie sich [hier](site-recovery-failover.md) ausführlicher über andere Failoverarten informieren.
-

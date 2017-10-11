@@ -10,12 +10,12 @@ articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-powershell
 articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-rest-api.md
 
 -->
-Um Kosten zu sparen, können Sie Computeressourcen bei Bedarf anhalten und fortsetzen. Wenn Sie die Datenbank z.B. nachts oder am Wochenende nicht verwenden, können Sie sie während dieser Zeiträume anhalten und während des Tages wieder fortsetzen. DWUs werden Ihnen nicht in Rechnung gestellt, während die Datenbank angehalten wird.
+Um die Kosten zu sparen, können Sie anhalten und Fortsetzen von Compute-Ressourcen bei Bedarf. Z. B. Wenn Sie die Datenbank während der Nacht und für Wochenenden verwenden, können Sie diese Zeiten anhalten und im Laufe des Tages fortgesetzt. Sie wird nicht DWUs in Rechnung gestellt, während die Datenbank angehalten wird.
 
-Wenn Sie eine Datenbank anhalten, geschieht Folgendes:
+Wenn Sie eine Datenbank anhalten:
 
-* Compute- und Speicherressourcen werden an den Pool der verfügbaren Ressourcen im Rechenzentrum zurückgegeben.
-* Die DWU-Kosten sind für die Dauer der Pause gleich null.
-* Die Speicherung von Daten ist nicht betroffen, und Ihre Daten bleiben intakt. 
-* SQL Data Warehouse bricht alle Vorgänge ab, die gerade ausgeführt werden oder in der Warteschlange stehen.
+* Server- und Speicherressourcen werden an den Pool der verfügbaren Ressourcen im Rechenzentrum zurückgegeben.
+* DWU Kosten sind 0 (null), für die Dauer der Pause an.
+* Datenspeicherung ist nicht betroffen, und Ihre Daten bleiben intakt. 
+* SQL Data Warehouse bricht alle Vorgänge für ausgeführt werden oder in der Warteschlange ab.
 

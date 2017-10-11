@@ -1,14 +1,14 @@
 ## <a name="scenario"></a>Szenario
-Um zu veranschaulichen, wie Sie benutzerdefinierte Routen erstellen, wird in diesem Dokument das folgende Szenario verwendet.
+Zur Veranschaulichung der Vorgehensweise: Erstellen von UDRs verwenden dieses Dokument die folgenden Szenario.
 
-![BILDBESCHREIBUNG](./media/virtual-network-create-udr-scenario-include/figure1.png)
+![IMAGE-BESCHREIBUNG](./media/virtual-network-create-udr-scenario-include/figure1.png)
 
-In diesem Szenario erstellen Sie eine benutzerdefinierte Route für das *Front-End-Subnetz* und eine weitere für das *Back-End-Subnetz*, wie im Folgenden beschrieben: 
+In diesem Szenario erstellen Sie eine UDR für die *Front-End-Subnetz* und eine andere UDR für die *Back-End-Subnetz* , wie im folgenden beschrieben: 
 
-* **UDR-FrontEnd**. Die benutzerdefinierte Route für das Front-End wird auf das Subnetz *FrontEnd* angewendet und enthält eine Route:    
-  * **RouteToBackend**. Diese Route sendet den gesamten an das Back-End-Subnetz gerichteten Datenverkehr an den virtuellen Computer **FW1** .
-* **UDR-BackEnd**. Die Back-End-UDR wird auf das Subnetz *BackEnd* angewendet und enthält eine Route:    
-  * **RouteToFrontend**. Diese Route sendet den gesamten an das Front-End-Subnetz gerichteten Datenverkehr an den virtuellen Computer **FW1** .
+* **UDR-Front-End-**. Die front-End-UDR für gelten die *Front-End-* Subnetz und eine Route enthalten:    
+  * **RouteToBackend**. Diese Route sendet alle Datenverkehr an den Back-End-Subnetz an, die **FW1** virtuellen Computer.
+* **UDR-Back-End-**. Die Back-End UDR für gelten die *Back-End-* Subnetz und eine Route enthalten:    
+  * **RouteToFrontend**. Diese Route sendet alle Datenverkehr auf dem front-End-Subnetz an, die **FW1** virtuellen Computer.
 
-Durch die Kombination dieser Routen wird sichergestellt, dass der gesamte Datenverkehr von einem Subnetz zu einem anderen an den virtuellen Computer **FW1** weitergeleitet wird, der als virtuelles Gerät verwendet wird. Sie müssen auch die IP-Weiterleitung für diesen virtuellen Computer aktivieren, damit er den an andere virtuelle Computer gerichteten Datenverkehr empfangen kann.
+Die Kombination aus diesen Routen wird sichergestellt, dass alle Datenverkehr aus einem Subnetz in einen anderen weitergeleitet werden die **FW1** virtuellen Computer, der als virtuelles Gerät verwendet wird. Sie müssen auch einschalten IP-Weiterleitung für diesen virtuellen Computer, um sicherzustellen, dass sie Datenverkehr auf anderen virtuellen Computern empfangen kann.
 

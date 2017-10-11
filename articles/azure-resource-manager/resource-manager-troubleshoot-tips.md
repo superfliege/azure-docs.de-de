@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
 ms.openlocfilehash: b67bb30fa259fa08e37e11afec724c8b8c3eb633
-ms.contentlocale: de-de
-ms.lasthandoff: 07/15/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/29/2017
 ---
-
 # <a name="understand-azure-deployment-errors"></a>Grundlegendes zu Azure-Bereitstellungsfehlern
 In diesem Thema werden Bereitstellungsfehler beschrieben, und Sie erfahren, wie Sie weitere Informationen zu einem Fehler ermitteln können. Tipps zum Lösen häufiger Azure-Bereitstellungsfehler finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
@@ -207,4 +205,3 @@ Diese Vorgehensweise funktioniert auch für App Service-Apps. Erwägen Sie, Konf
 * Tipps zum Lösen häufiger Azure-Bereitstellungsfehler finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
 * Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](resource-manager-deployment-operations.md).
-

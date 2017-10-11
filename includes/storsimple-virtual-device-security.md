@@ -1,8 +1,8 @@
 <!--v-sharos 10/13/2105 virtual device security-->
 
-Beachten Sie bei der Verwendung des virtuellen StorSimple-Geräts die folgenden Sicherheitsaspekte:
+Bedenken Sie die folgenden Sicherheitsaspekte bei der Verwendung von virtuellen StorSimple-Geräts:
 
-* Das virtuelle Gerät wird über das Microsoft Azure-Abonnement geschützt. Wenn Sie daher das virtuelle Gerät verwenden und Ihr Azure-Abonnement beeinträchtigt ist, sind auch die auf dem virtuellen Gerät gespeicherten Daten anfällig.
-* Der öffentliche Schlüssel des Zertifikats zum Verschlüsseln von in Azure StorSimple gespeicherten Daten wird im klassischen Azure-Portal sicher zur Verfügung gestellt, und der private Schlüssel wird auf dem StorSimple-Gerät aufbewahrt. Auf dem virtuellen StorSimple-Gerät werden die öffentlichen und privaten Schlüssel in Azure gespeichert.
-* Das virtuelle Gerät wird im Microsoft Azure-Datencenter gehostet.
+* Das virtuelle Gerät wird über Ihr Microsoft Azure-Abonnement gesichert. Dies bedeutet, dass wenn Sie das virtuelle Gerät und Ihrem Azure-Abonnement gefährdet ist, die auf Ihrem virtuellen Gerät gespeicherten Daten auch anfällig ist.
+* Der öffentliche Schlüssel des Zertifikats, das zum Verschlüsseln von Daten in Azure StorSimple sicher klassischen Azure-Portal zur Verfügung gestellt wird, und der private Schlüssel wird mit dem StorSimple-Gerät beibehalten. Für das virtuelle StorSimple-Gerät werden die öffentlichen und privaten Schlüssel in Azure gespeichert.
+* Das virtuelle Gerät wird in der Microsoft Azure-Datencenter gehostet.
 

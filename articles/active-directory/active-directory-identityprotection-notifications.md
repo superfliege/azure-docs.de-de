@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ce3379d5b5e883c6601c40aca191e8b84e3ad8d3
-ms.openlocfilehash: 0170b5d2435f6e856478ee9e55ae26c626288f75
-ms.contentlocale: de-de
-ms.lasthandoff: 12/22/2016
-
+ms.openlocfilehash: 079d16bbf75cd2b3b94269d684e1ae1a0e6aa967
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection Benachrichtigungen
 Von Azure AD Identity Protection werden zwei Arten von automatisierten Benachrichtigungs-E-Mails gesendet, die der Verwaltung von Benutzerrisiko- und Risikoereignissen dienen:
@@ -42,25 +41,24 @@ Sie hat folgenden Inhalt:
 * Links zu verwandten Berichten in Identity Protection
 
 <br>
-![Wartung](./media/active-directory-identityprotection-notifications/400.png "Remediation")
+![Wiederherstellung](./media/active-directory-identityprotection-notifications/400.png "Wiederherstellung")
 <br>
 
 Sie können das Senden einer wöchentlichen Übersichts-E-Mail deaktivieren.
 <br><br>
-![Benutzerrisiken](./media/active-directory-identityprotection-notifications/62.png "User risks")
+![Benutzer Risiken](./media/active-directory-identityprotection-notifications/62.png "Benutzer Risiken")
 <br>
 
 **So öffnen Sie das entsprechende Konfigurationsdialogfeld:**
 
 1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Einstellungen**.
    <br><br>
-   ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection-notifications/401.png "User risk policy")
+   ![Richtlinie zum Risiko für Benutzer](./media/active-directory-identityprotection-notifications/401.png "Risiko-Benutzerrichtlinie")
    <br>
 2. Klicken Sie im Abschnitt **Allgemein** auf **Benachrichtigungen**.
    <br><br>
-   ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection-notifications/405.png "User risk policy")
+   ![Richtlinie zum Risiko für Benutzer](./media/active-directory-identityprotection-notifications/405.png "Risiko-Benutzerrichtlinie")
    <br>
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-

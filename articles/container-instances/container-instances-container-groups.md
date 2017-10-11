@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 5b2abb76fc2bfcf719292db1fdafc8b353d13a3c
-ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
-
+ms.openlocfilehash: 25eab41c3f0c986bcce33123f86f4c9638b77191
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="container-groups-in-azure-container-instances"></a>Containergruppen in Azure Container Instances
 
 Die oberste Ressource in Azure Container Instances ist eine Containergruppe. In diesem Artikel wird beschrieben, was Containergruppen sind und welche Arten von Szenarien sie aktivieren.

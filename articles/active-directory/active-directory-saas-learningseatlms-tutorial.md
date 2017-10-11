@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 877e0288fdd1f590acf064c204aff0741539b112
-ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Tutorial: Azure Active Directory-Integration mit Learning Seat LMS
 
@@ -91,7 +89,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Learning 
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Learning Seat LMS-Testbenutzers](#creating-a-learnconnect-test-user)**, um eine Entsprechung von Britta Simon in Learning Seat LMS zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -229,5 +227,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Learning Seat LMS“ klicken, soll
 [201]: ./media/active-directory-saas-learnconnect-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-learnconnect-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-learnconnect-tutorial/tutorial_general_203.png
-
 

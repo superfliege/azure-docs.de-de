@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6f08f986e66e40211f60beef6ebd00bb041a8ada
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: c1591c3e436981e621830916cf0cdc4b7f395d7b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="implement-mobile-engagement-with-media-app"></a>Implementieren von Mobile Engagement per Medien-App
 ## <a name="overview"></a>Übersicht
@@ -57,7 +56,7 @@ Basierend auf Empfehlungen vom IT-Team wurden die folgenden technischen KPIs hin
 Für jeden KPI klassifiziert er die erforderlichen Daten und zeichnet sie am richtigen Ort in seinem Playbook auf.
 
 ## <a name="engagement-program-and-integration"></a>Engagement-Programm und -Integration
-Nachdem Peter die Definition der KPIs abgeschlossen hat, beginnt er mit der Phase der Engagement-Strategie, indem er vier Engagement-Programme und die damit verbundenen Ziele definiert:     ![][1]
+Nachdem Peter die Definition der KPIs abgeschlossen hat, beginnt er mit der Phase der Engagement-Strategie, indem er vier Engagement-Programme und die damit verbundenen Ziele definiert: ![][1]
 
 Anschließend steigt Peter noch tiefer ein und gibt die Details für die Pushbenachrichtigungen der einzelnen Programme an. Pushbenachrichtigungen werden anhand von fünf Elementen definiert:
 
@@ -99,4 +98,3 @@ Nach diesen ersten vier Monaten spiegeln die Ergebnisse eine gute Gesamtleistung
 
 <!--Link references-->
 [Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
-

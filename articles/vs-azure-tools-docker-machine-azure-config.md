@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
 ms.openlocfilehash: 766d327a87ed13e04166d71c3d9ae0a1e7a66d19
-ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-docker-hosts-in-azure-with-docker-machine"></a>Erstellen von Docker-Hosts in Azure mit dem Befehl „docker-machine“
 Das Ausführen von [Docker](https://www.docker.com/) -Containern erfordert eine Host-VM, in der der Docker-Daemon ausgeführt wird.
@@ -122,5 +120,4 @@ Mit „docker-machine“ können Sie Docker-Hosts mühelos für einzelne Überpr
 Informationen zum Hosten von Containern in der Produktion finden Sie unter [Azure-Containerdienst](http://aka.ms/AzureContainerService)
 
 Informationen zum Entwickeln von .NET Core-Anwendungen mit Visual Studio finden Sie unter [Docker-Tools für Visual Studio](http://aka.ms/DockerToolsForVS)
-
 

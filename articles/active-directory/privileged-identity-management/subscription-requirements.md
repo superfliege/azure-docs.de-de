@@ -15,15 +15,12 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: barclayn
 ms.custom: pim
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9364a1449ba17568c82832bc1e97d40febbb30ab
-ms.openlocfilehash: c6aea0b7280ad8f1365c04203c78a1499ba0aa58
-ms.contentlocale: de-de
-ms.lasthandoff: 02/17/2017
-
-
+ms.openlocfilehash: 62d8f80fa1bec3a1b75e316f0b0ee7be8cbefbff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Abonnementanforderungen für Azure Active Directory Privileged Identity Management
 
 Azure AD Privileged Identity Management ist nur mit der Premium P2-Edition von Azure AD verfügbar. Weitere Informationen zu anderen Features von P2 und eine Gegenüberstellung zu Premium P1 finden Sie unter [Azure Active Directory-Editionen](../active-directory-editions.md).
@@ -64,4 +61,3 @@ Wenn ein Azure AD Premium P2-oder EMS E5-Abonnement abläuft oder eine Organisat
 
 - [Erste Schritte mit Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md)
 - [Rollen in Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-roles.md)
-

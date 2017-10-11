@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 0fa7a886e1ecb0a90b6aebc1dbf9ef0c6ce1acf1
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-notification-hubs-notify-users-for-ios-with-net-backend"></a>Azure Notification Hubs – Benachrichtigen von iOS-Benutzern über .NET-Back-End
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
@@ -314,23 +314,23 @@ Durch die Unterstützung von Pushbenachrichtigungen in Azure haben Sie Zugriff a
     Beachten Sie, dass die Festlegung des Gerätetokens die Schaltfläche "Log in" (Anmelden) aktiviert. Dies liegt daran, dass sich der ViewController im Rahmen der Anmeldeaktion für Pushbenachrichtigungen beim App-Back-End registriert. Daher soll erst auf die Anmeldeaktion zugegriffen werden können, wenn das Gerätetoken ordnungsgemäß eingerichtet wurde. Sie können die Anmeldung von der Pushregistrierung entkoppeln, solange die Anmeldung vor der Registrierung erfolgt.
 2. Verwenden Sie in "ViewController.m" die folgenden Codeausschnitte zum Implementieren der Aktionsmethode für die Schaltfläche **Log In** und einer Methode zum Senden der Benachrichtigungsmeldung mithilfe des ASP.NET-Back-Ends.
    
-       - (IBAction)LogInAction:(id)sender {   // Authentifizierungsheader erstellen und in RegisterClient festlegen   NSString* username = self.UsernameField.text;   NSString* password = self.PasswordField.text;
+       - (IBAction) LogInAction: Absender (Id) {/ / Authentifizierungsheader erstellen, und legen Sie es in der Registrierung Clientbenutzername NSString * = Self-Service. UsernameField.text;   NSString * Kennwort = Self-Service. PasswordField.text;
    
            [self createAndSetAuthenticationHeaderWithUsername:username AndPassword:password];
    
-           __weak ViewController* selfie = self;   [self.registerClient registerWithDeviceToken:self.deviceToken tags:nil       andCompletion:^(NSError* error) {       if (!error) {           dispatch_async(dispatch_get_main_queue(),           ^{               selfie.SendNotificationButton.enabled = YES;               [self MessageBox:@"Success" message:@"Registered successfully!"];           });       }   }]; }
+           __weak ViewController * Selfie = self;   [self.registerClient registerWithDeviceToken:self.deviceToken Tags: Nil andCompletion:^(NSError* error) {Wenn (! Fehler) {dispatch_async(dispatch_get_main_queue(), ^ {Selfie. SendNotificationButton.enabled = YES;               [Self MessageBox:@"Success" message:@"Registered erfolgreich!"];});}}];}
 
         - (void)SendNotificationASPNETBackend:(NSString*)pns UsernameTag:(NSString*)usernameTag            Message:(NSString*)message {    NSURLSession* session = [NSURLSession        sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil        delegateQueue:nil];
 
-            // PNS und Benutzernamenstags als Parameter mit der REST-URL an das ASP.NET-Back-End übergeben    NSURL* requestURL = [NSURL URLWithString:[NSString        stringWithFormat:@"%@/api/notifications?pns=%@&to_tag=%@", BACKEND_ENDPOINT, pns,        usernameTag]];
+            Das Tag Pns und den Benutzernamen als Parameter durch die REST-URL übergeben, auf dem ASP.NET Back-End-NSURL * RequestURL = [NSURL URLWithString: [NSString stringWithFormat:@"%@/api/notifications? Pns = % @& To_tag = % @", BACKEND_ENDPOINT, Pns, UsernameTag]];
 
-            NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];    [request setHTTPMethod:@"POST"];
+            Anforderung NSMutableURLRequest * = [NSMutableURLRequest RequestWithURL:requestURL];    [request setHTTPMethod:@"POST"];
 
-            // Simulierten Authentifizierungsheader aus RegisterClient abrufen    NSString* authorizationHeaderValue = [NSString stringWithFormat:@"Basic %@",        self.registerClient.authenticationHeader];    [request setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
+            Abrufen der simulierten Authenticationheader vom Client Register NSString * AuthorizationHeaderValue = [NSString stringWithFormat:@"Basic % @", self.registerClient.authenticationHeader];    [request SetValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
 
-            // Text zu Benachrichtigungsmeldung hinzufügen    [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];    [request setHTTPBody:[message dataUsingEncoding:NSUTF8StringEncoding]];
+            Fügen Sie dem Textkörper der benachrichtigungsmeldung [setValue:@"application/json;charset=utf-8 anfordern" forHTTPHeaderField:@"Content-Type"];    [request SetHTTPBody: [Nachricht DataUsingEncoding:NSUTF8StringEncoding]];
 
-            // REST API für die Sendebenachrichtigung im ASP.NET-Backend ausführen    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)    {        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;        if (error || httpResponse.statusCode != 200)        {            NSString* status = [NSString stringWithFormat:@"Error Status for %@: %d\nError: %@\n",                                pns, httpResponse.statusCode, error];            dispatch_async(dispatch_get_main_queue(),            ^{                // Text anfügen, da alle drei PNS-Aufrufe auch Informationen zum Anzeigen enthalten können                [self.sendResults setText:[self.sendResults.text stringByAppendingString:status]];            });            NSLog(status);        }
+            Führen Sie die Send-Benachrichtigung REST-API für die ASP.NET Back-End-NSURLSessionDataTask * DataTask = [Sitzung DataTaskWithRequest:request CompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {NSHTTPURLResponse* HttpResponse = (NSHTTPURLResponse*) Antwort        Wenn (Fehler || httpResponse.statusCode! = 200) {NSString* Status = [NSString stringWithFormat:@"Error Status % @: % D\nError: %@\n", Pns, httpResponse.statusCode "," Fehler];            dispatch_async(dispatch_get_main_queue(), ^ {/ / fügen Sie Text ein, da alle 3 PNS-Aufrufe auch Informationen zur Ansicht [self.sendResults setText:[self.sendResults.text StringByAppendingString:status] möglicherweise];            });            NSLog(status);        }
 
                 if (data != NULL)
                 {
@@ -409,9 +409,3 @@ Durch die Unterstützung von Pushbenachrichtigungen in Azure haben Sie Zugriff a
 [2]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-user-pwd.png
 [3]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-registered.png
 [4]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-msg.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

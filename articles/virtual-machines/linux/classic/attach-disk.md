@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Anfügen eines Datenträgers an einen virtuellen Linux-Computer in Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie einen Datenträger mit dem klassischen Bereitstellungsmodell einer Linux-VM anfügen und den Datenträger initialisieren, sodass er einsatzbereit ist."
 services: virtual-machines-linux
@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 017ba7197e11c2b222082833d5acabb9e542b762
-ms.contentlocale: de-de
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>Gewusst wie: Anfügen eines Datenträgers an einen virtuellen Linux-Computer
 > [!IMPORTANT] 
@@ -47,7 +45,7 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
     sudo grep SCSI /var/log/messages
     ```
    
-    Für aktuelle Ubuntu-Distributionen müssen Sie möglicherweise sudo grep SCSI /var/log/syslog verwenden, da die Anmeldung bei /var/log/messages möglicherweise standardmäßig deaktiviert ist.
+    Für aktuelle Ubuntu-Verteilungen müssen Sie möglicherweise `sudo grep SCSI /var/log/syslog` verwenden, da die Anmeldung bei `/var/log/messages` möglicherweise standardmäßig deaktiviert ist.
    
     In den angezeigten Meldungen können Sie den Bezeichner des letzten hinzugefügten Datenträgers finden.
    
@@ -91,7 +89,7 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
     sudo fdisk /dev/sdc
     ```
 
-4. Geben Sie nach Aufforderung **n** ein, um eine Partition zu erstellen.
+4. Geben Sie bei Aufforderung  **n**  zum Erstellen einer Partition.
 
     ![Gerät erstellen](./media/attach-disk/fdisknewpartition.png)
 
@@ -236,4 +234,3 @@ Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwende
 <!--Link references-->
 [Agent]:../agent-user-guide.md
 [Logon]:../mac-create-ssh-keys.md
-

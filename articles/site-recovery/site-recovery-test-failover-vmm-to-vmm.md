@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: pratshar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: afc4790d5714ce7145c8f4291a05acc2e9882a9b
-ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="test-failover-vmm-to-vmm-in-site-recovery"></a>Testfailover (VMM zu VMM) in Site Recovery
 
@@ -119,4 +117,3 @@ Beim Durchführen eines Testfailovers wird empfohlen, ein anderes Netzwerk als d
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sobald Sie erfolgreich ein Testfailover durchgeführt haben, können Sie ein [Failover](site-recovery-failover.md) versuchen.
-

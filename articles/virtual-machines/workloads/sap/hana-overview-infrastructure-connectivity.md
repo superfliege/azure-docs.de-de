@@ -14,14 +14,12 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 177627d8f72dbd04fb918ac7ece18321246a9c62
-ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen) 
 
 Machen Sie sich mit den hier angegebenen Definitionen vertraut, bevor Sie diese Anleitung lesen. In [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) wurden zwei unterschiedliche Klassen von HANA-Einheiten (große Instanzen) eingeführt:
@@ -299,6 +297,5 @@ Um sicherzustellen, dass alles entfernt wurde, löschen Sie die folgenden Elemen
 Um eine weitere ExpressRoute-Verbindung für SAP HANA in Azure (große Instanzen) zu entfernen, bitten Sie das SAP HANA in Azure-Dienstverwaltungsteam in einer Azure-Supportanfrage, die Verbindung zu löschen. Im Azure-Abonnement können Sie das VNet je nach Anforderung löschen oder beibehalten. Allerdings müssen Sie die Verbindung zwischen der SAP HANA (große Instanzen)-ExpressRoute-Leitung und dem verknüpften VNet-Gateway löschen.
 
 Wenn Sie auch ein VNet entfernen möchten, befolgen Sie die Anleitung zum Löschen eines VNet im vorherigen Abschnitt.
-
 
 

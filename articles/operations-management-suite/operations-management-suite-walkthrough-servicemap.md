@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
 ms.openlocfilehash: c3548d24c74f8ad865b22d6af3490d0b5cc77a84
-ms.lasthandoff: 04/13/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="operations-management-suite-oms-self-paced-demo---service-map"></a>OMS-Demo (Operations Management Suite) mit individuellem Arbeitstempo – Service Map
 Dies ist eine Demo mit individuellem Arbeitstempo, in der die Nutzung der [Service Map-Lösung](operations-management-suite-service-map.md) in der Operations Management Suite (OMS) schrittweise beschrieben wird, um ein simuliertes Problem in einer Webanwendung zu identifizieren und zu diagnostizieren.  Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar.  Außerdem werden Daten zusammengefasst, die von anderen OMS-Dienten gesammelt werden, um Sie beim Analysieren der Leistung und Identifizieren von Problemen zu unterstützen.  Außerdem nutzen Sie [Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md), um ein Drilldown für erfasste Daten durchzuführen und das zugrunde liegende Problem zu identifizieren.
 

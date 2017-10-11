@@ -1,21 +1,21 @@
-Beim Hinzufügen von Datenträgern zu einer Linux-VM können Fehler auftreten, wenn kein Datenträger in LUN 0 vorhanden ist. Wenn Sie einen Datenträger manuell mit dem Befehl `azure vm disk attach-new` hinzufügen und eine LUN (`--lun`) angeben, statt die entsprechende LUN von Azure Platform bestimmen zu lassen, müssen Sie sicherstellen, dass in LUN 0 bereits ein Datenträger vorhanden ist/vorhanden sein wird. 
+Beim Hinzufügen von Datenträgern in einer Linux-VM können Fehler auftreten, wenn ein Datenträger mit LUN 0 nicht vorhanden ist. Wenn Sie einen Datenträger, indem Sie manuell hinzufügen der `azure vm disk attach-new` -Befehl an, und legen Sie eine LUN (`--lun`) anstatt ermöglicht der Azure-Plattform die entsprechenden LUN zu bestimmen, darauf achten, dass ein Datenträger bereits vorhanden ist / sind unter LUN 0 vorhanden. 
 
-Das folgende Beispiel zeigt einen Codeausschnitt der Ausgabe von `lsscsi`:
+Das folgende Beispiel zeigt einen Ausschnitt der Ausgabe `lsscsi`:
 
 ```bash
 [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc 
 [5:0:0:1]    disk    Msft     Virtual Disk     1.0   /dev/sdd 
 ```
 
-Die zwei Datenträger sind in LUN 0 und LUN 1 vorhanden (die erste Spalte in der `lsscsi`-Ausgabe enthält `[host:channel:target:lun]`). Auf beide Datenträger sollte über den virtuellen Computer zugegriffen werden können. Wenn Sie manuell angegeben haben, dass der erste Datenträger zu LUN 1 und der zweite Datenträger zu LUN 2 hinzugefügt werden soll, werden die Datenträger in Ihrem virtuellen Computer möglicherweise nicht richtig angezeigt.
+Zwei Datenträger vorhanden, auf die LUN 0 "und" LUN 1 (die erste Spalte in der `lsscsi` Ausgabe Details `[host:channel:target:lun]`). Beide Festplatten sollte Accessbile von innerhalb des virtuellen Computers. Wenn Sie manuell den ersten Datenträger an LUN 1 hinzugefügt werden und den zweiten Datenträger an LUN 2 angegeben hatten, möglicherweise nicht die Datenträger ordnungsgemäß innerhalb Ihres virtuellen Computers angezeigt werden.
 
 > [!NOTE]
-> Der `host`-Wert von Azure ist in diesen Beispielen 5, aber dies kann je nach Art des gewählten Speichers variieren.
+> Azure `host` Wert ist 5 in diesen Beispielen, aber dies kann variieren, je nach den Typ des Speichers, die Sie auswählen.
 > 
 > 
 
-Dieses Datenträgerverhalten ist kein Azure-Problem, sondern auf diese entspricht der Linux-Kernel den SCSI-Spezifikationen. Wenn der Linux-Kernel den SCSI-Bus auf angeschlossene Geräte überprüft, muss ein Gerät in LUN 0 gefunden werden, damit das System die Überprüfung auf weitere Geräte fortsetzt. Daher:
+Dieses Verhalten Datenträger ist nicht an ein Azure-Problem, doch die Möglichkeit, in der die Linux-Kernel die SCSI-Spezifikationen folgt. Bei der Linux-Kernel den SCSI-Bus auf angeschlossene Geräte überprüft, muss ein Gerät unter LUN 0 in der Reihenfolge für das System den Scanvorgang für zusätzliche Geräte fortzusetzen gefunden werden. Als solche:
 
-* Überprüfen Sie die Ausgabe von `lsscsi` nach dem Hinzufügen eines Datenträgers, um sicherzustellen, dass in LUN 0 ein Datenträger vorhanden ist.
-* Wenn der Datenträger nicht richtig in Ihrem virtuellen Computer angezeigt wird, überprüfen Sie, ob ein Datenträger in LUN 0 vorhanden ist.
+* Überprüfen Sie die Ausgabe des `lsscsi` nach dem Hinzufügen eines Datenträgers, um sicherzustellen, dass Sie einen Datenträger mit LUN 0 haben.
+* Wenn die Festplatte nicht ordnungsgemäß innerhalb Ihres virtuellen Computers angezeigt wird, stellen Sie sicher, dass ein Datenträger mit LUN 0 vorhanden ist.
 

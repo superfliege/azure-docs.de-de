@@ -1,20 +1,20 @@
 
 <!--author=SharS last changed: 9/15/15-->
 
-#### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>So können sie einen StorSimple-Sicherungszeitplan hinzufügen oder ändern
-1. Klicken Sie auf der Seite **Schnellstart** des Geräts auf die Registerkarte **Sicherungsrichtlinien**. Dadurch gelangen Sie auf die Seite **Sicherungsrichtlinien** .
-2. Klicken Sie in der tabellarischen Auflistung der Richtlinien auf die Richtlinie, die Sie bearbeiten möchten.
-3. Unter **allgemein**können Sie den Namen der Sicherungsrichtlinie ändern.
-4. Klicken Sie unter **Zeitpläne** auf **Zeitpläne verwalten**, um Zeitpläne hinzuzufügen oder zu entfernen. Führen Sie im Dialogfeld **Zeitplan verwalten** folgende Schritte aus:
+#### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>Hinzufügen oder Ändern eines Sicherungszeitplans für StorSimple
+1. Auf dem Gerät **Schnellstart** auf die **Sicherungsrichtlinien** Registerkarte. Dadurch gelangen Sie zu der **Sicherungsrichtlinien** Seite.
+2. Wählen Sie in der Tabellenliste der Richtlinien aus, und klicken Sie auf die Richtlinie, die Sie bearbeiten möchten.
+3. Klicken Sie unter **allgemeine**, Sie können der Name der Sicherungsrichtlinie ändern.
+4. Klicken Sie unter **Zeitpläne**, klicken Sie auf **Verwalten von Zeitplänen** hinzufügen oder Entfernen von Zeitplänen. In der **Zeitplan verwalten** Dialogfeld Feld, gehen Sie folgendermaßen vor:
    
    1. Wählen Sie einen vorhandenen Zeitplan aus, oder erstellen Sie einen neuen Zeitplan.
-   2. Wählen Sie als Typ der Sicherung die lokale Momentaufnahme oder die Cloudmomentaufnahme aus.
-   3. Geben Sie die Sicherungshäufigkeit, Aufbewahrung und Startzeit des Zeitplans an.
-   4. Aktivieren oder deaktivieren Sie den Zeitplan.
-   5. Klicken Sie zum Speichern der Änderungen am Zeitplan auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-add-modify-backup-schedule/HCS_CheckIcon-include.png) .
-5. Fügen Sie im Abschnitt **Volumes** dieser Richtlinie Volumes hinzu, oder entfernen Sie Volumes aus der Richtlinie.
+   2. Wählen Sie den Typ der Sicherung als lokale oder Cloud-Momentaufnahme.
+   3. Geben Sie die sicherungshäufigkeit, die Beibehaltungsdauer und die Startzeit des Zeitplans an.
+   4. Aktivieren Sie oder deaktivieren Sie den Zeitplan.
+   5. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-add-modify-backup-schedule/HCS_CheckIcon-include.png) um die Änderungen auf den Zeitplan zu speichern.
+5. In der **Volumes** Abschnitt hinzufügen oder entfernen Sie die Volumes mit dieser Richtlinie.
 6. Speichern Sie die Änderungen an dieser Richtlinie.
-7. Sie werden aufgefordert, diesen Schritt zu bestätigen. Klicken Sie zum Speichern der Richtlinie auf **OK** .
+7. Sie werden zur Bestätigung aufgefordert. Klicken Sie auf **OK** um die Richtlinie zu speichern.
 
-Die Seite **Sicherungsrichtlinien** wird aktualisiert, um die Änderungen an der Richtlinie zu speichern.
+Die **Sicherungsrichtlinien** Seite wird aktualisiert, um die Änderungen an der Richtlinie zu speichern.
 

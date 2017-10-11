@@ -1,16 +1,16 @@
 ## <a name="application-gateway"></a>Application Gateway
-Application Gateway bietet eine von Azure verwaltete HTTP-Lastenausgleichslösung, die auf Lastenausgleich der HTTP-Ebene 7 basiert. Anwendungslastenausgleich ermöglicht die Verwendung von Weiterleitungsregeln für Netzwerkverkehr auf Basis von HTTP. 
+Application Gateway stellt eine HTTP-verwalteten Azure-lastenausgleichslösung aus basierend auf Layer 7 den Lastenausgleich bereit. Anwendung Lastenausgleich ermöglicht die Verwendung von Weiterleitungsregeln für Netzwerkverkehr basierend auf HTTP. 
 <BR>
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| **backendAddressPools** |Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten entweder zum Subnetz des virtuellen Netzwerks gehören oder eine öffentliche IP-Adresse/VIP oder eine private IP-Adresse sein. |
-| **backendHttpSettingsCollection** |Jeder Pool verfügt über Einstellungen wie Port, Protokoll und cookiebasierte Affinität. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools. |
-| **frontendPorts** |Dieser Port ist der öffentliche Port, der im Anwendungsgateway geöffnet ist. Der Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet. |
-| **httpListeners** |Der Listener umfasst einen Front-End-Port, ein Protokoll (HTTP oder HTTPS, bei beiden muss die Groß-/Kleinschreibung beachtet werden) und den Namen des SSL-Zertifikats (falls SSL-Auslagerung konfiguriert wird). |
-| **requestRoutingRules** |Mit der Regel werden der Listener und der Back-End-Serverpool gebunden und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll. Funktioniert derzeit nur als Roundrobin. |
+| **backendAddressPools** |Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen müssen entweder mit dem virtuellen Netzwerk-Subnetz angehören oder eine öffentliche IP-Adresse/VIP oder privaten IP-sein sollten |
+| **backendHttpSettingsCollection** |Jeder Pool verfügt über Einstellungen wie Port und Protokoll Affinität Cookie-basiert. Diese Einstellungen zu einem Pool gebunden werden und gelten für alle Server im pool |
+| **frontendPorts** |Dieser Port ist der öffentliche Port auf dem Anwendungsgateway geöffnet. Datenverkehr Treffer diesen Port, und klicken Sie dann auf einen Back-End-Server umgeleitet |
+| **HTTP-Listener** |Listener hat einen Front-End-Port, ein Protokoll (Http oder Https sind Groß-/Kleinschreibung), und den Namen des SSL-Zertifikats (falls es sich um eine Konfiguration von SSL Auslagern) |
+| **Regeln für Routinganforderungen** |Die Regel gebunden wird, den Listener, und die Rückseite Serverpool enden und definiert die back-Ends an Serverpool, die der Datenverkehr weitergeleitet werden sollen. Arbeitet derzeit nur als Roundrobin-Methode |
 
-Beispiel für eine Json-Vorlage für Anwendung Gateway:
+Beispiel für eine Anwendung Gateway Json-Vorlage:
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -217,5 +217,5 @@ Beispiel für eine Json-Vorlage für Anwendung Gateway:
 
 
 ### <a name="additional-resources"></a>Zusätzliche Ressourcen
-Weitere Informationen finden Sie unter [ Application Gateway REST-API](https://msdn.microsoft.com/library/azure/mt299388.aspx) .
+Lesen [ Anwendungsgateway REST-API](https://msdn.microsoft.com/library/azure/mt299388.aspx) für Weitere Informationen.
 

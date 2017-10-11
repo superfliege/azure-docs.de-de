@@ -1,14 +1,14 @@
 
-### <a name="create-a-google-firebase-project-with-api-key"></a>Erstellen eines Google Firebase-Projekts mit API-Schlüssel
+### <a name="create-a-google-firebase-project-with-api-key"></a>Erstellen Sie eine Google Firebase-Projekt mit API-Schlüssel
 > [!NOTE]
-> Sie benötigen ein Google-Konto mit verifizierter E-Mail-Adresse, um diesen Vorgang abzuschließen. Besuchen Sie die Seite <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a>, um ein neues Google-Konto zu erstellen.
+> Um dieses Verfahren ausführen zu können, müssen Sie eine Google-Konto verfügen, die eine überprüfte e-Mail-Adresse verfügt. Um ein neues Google-Konto zu erstellen, wechseln Sie zu <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a>.
 > 
 > 
 
-1. Navigieren Sie zur [Firebase-Konsole](https://console.firebase.google.com/), und melden Sie sich mit den Anmeldeinformationen Ihres Google-Kontos an.
-2. Klicken Sie auf die Schaltfläche **Neues Projekt erstellen**. Alternativ dazu können Sie auch auf **Import Google Project** (Google-Projekt importieren) klicken, um ein vorhandenes Projekt zu importieren. 
-3. Wenn Sie sich für die Erstellung eines neuen Projekts entschieden haben, müssen Sie einen **Projektnamen** angeben und eine Auswahl für **Land/Region** treffen.
-4. Klicken Sie auf der Projektseite oben links auf das Zahnradsymbol für die **Einstellungen**. Klicken Sie im Menü auf **Projekteinstellungen**.  
-5. Klicken Sie oben auf die Registerkarte **Cloud Messaging**. 
-6. Notieren Sie sich den **Serverschlüssel** und die **Absender-ID**, die Sie später in der *Android-Manifestdatei* verwenden möchten.  
+1. Navigieren Sie zu der [Firebase Konsole](https://console.firebase.google.com/) und melden Sie sich mit Ihren Google-Kontoanmeldeinformationen.
+2. Klicken Sie auf **neues Projekt erstellen** um ein neues Projekt zu erstellen. Alternativ können Sie auch auf klicken **Google-Projekt importieren** vorhandenes Projekt zu importieren. 
+3. Wenn Sie sich dafür entschieden haben, für das Erstellen eines neuen Projekts und geben Sie dann eine **Projektname** , und wählen Sie eine **Land/Region**.
+4. Klicken Sie auf der Seite "Projekt" auf die **Einstellungen** Zahnrad Wheel oben links. Klicken Sie in der Menüleiste auf **Projekteinstellungen**.  
+5. Klicken Sie auf die **Cloud Messaging** Registerkarte oben. 
+6. Notieren Sie sich die **Serverschlüssel** und **Absender-ID** , das Sie später im Verwenden der *Android Manifestdatei*.  
 

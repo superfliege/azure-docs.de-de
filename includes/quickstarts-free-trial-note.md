@@ -1,1 +1,1 @@
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie nicht über ein Azure-Abonnement verfügen, erstellen Sie eine [Konto frei](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) Vorbereitungen.

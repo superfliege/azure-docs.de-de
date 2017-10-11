@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 07/27/2017
 ms.author: sdanie
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: 3dfc026490093523446650c510dbebdd660e8b6b
-ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="how-to-use-azure-redis-cache"></a>Verwenden von Azure Redis Cache
 > [!div class="op_single_selector"]
@@ -169,7 +168,7 @@ Beim Aufruf von `StringGet` wird das Objekt zurückgegeben, sofern es vorhanden 
         cache.StringSet("key1", value);
     }
 
-Sie können auch `RedisValue` verwenden, wie im folgenden Beispiel gezeigt. `RedisValue`verfügt über implizite Operatoren für die Verwendung integraler Datentypen und kann nützlich sein, wenn `null` ein erwarteter Wert für ein Cacheelement ist.
+Sie können auch `RedisValue`, wie im folgenden Beispiel gezeigt. `RedisValue`verfügt über implizite Operatoren zum Arbeiten mit ganzzahligen Datentypen und kann nützlich sein, wenn `null` erwartender Wert für das zwischengespeicherte Element.
 
 
     RedisValue value = cache.StringGet("key1");
@@ -308,6 +307,5 @@ Nachdem Sie sich nun mit den Grundlagen vertraut gemacht haben, lesen Sie die fo
 [a fifteen minute introduction to Redis data types]: http://redis.io/topics/data-types-intro
 
 [How Application Strings and Connection Strings Work]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
-
 
 

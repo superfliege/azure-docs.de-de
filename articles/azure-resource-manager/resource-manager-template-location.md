@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
 ms.openlocfilehash: 73e50a593c41e841dcaf184abb895406ff5001e9
-ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="set-resource-location-in-azure-resource-manager-templates"></a>Festlegen des Ressourcenspeicherorts in Azure Resource Manager-Vorlagen
 Beim Bereitstellen einer Vorlage müssen Sie einen Speicherort für jede Ressource angeben. Dieses Thema zeigt, wie Sie die Speicherorte bestimmen, die in Ihrem Abonnement für jeden Ressourcentyp zur Verfügung stehen.
@@ -101,5 +100,4 @@ Wenn Sie den Speicherort in Ihrer Vorlage hartcodieren müssen, geben Sie den Na
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Empfehlungen zum Erstellen von Vorlagen finden Sie unter [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](resource-manager-template-best-practices.md).
-
 

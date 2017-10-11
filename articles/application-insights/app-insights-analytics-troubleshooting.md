@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 82a1888cca687ce60f811c2c3cec6b971d4a0461
-ms.contentlocale: de-de
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: 02df117908fc1790e8cfb9ec0a7218c1b8be856c
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Problembehandlung für Analytics in Application Insights
 Probleme mit [Analytics in Application Insights](app-insights-analytics.md)? Beginnen Sie hier Analytics, das leistungsfähige Suchtool von Azure Application Insights.
@@ -109,5 +108,4 @@ Die URL ist ungültig.
 
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
 

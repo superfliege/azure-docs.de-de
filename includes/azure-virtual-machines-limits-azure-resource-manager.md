@@ -1,7 +1,7 @@
 | Ressource | Standardlimit |
 | --- | --- |
-| Virtuelle Computer pro Verfügbarkeitsgruppe | 200 |
-| Zertifikate pro Abonnement |Unbegrenzt<sup>1</sup> |
+| Virtueller Computer pro verfügbarkeitsgruppe | 200 |
+| Zertifikate pro Abonnement |Unbegrenzte<sup>1</sup> |
 
-<sup>1</sup> Beim Azure-Ressourcen-Manager werden Zertifikate im Azure-Schlüsseltresor gespeichert. Obwohl die Anzahl der Zertifikate für ein Abonnement nicht begrenzt ist, gilt trotzdem das Limit von 1 MB für Zertifikate pro Bereitstellung (entweder eines virtuellen Computers oder einer Verfügbarkeitsgruppe).
+<sup>1</sup>mit Azure Resource Manager werden Zertifikate in Azure Key Vault gespeichert. Obwohl die Anzahl der Zertifikate für ein Abonnement unbegrenzt ist, ist immer noch ein Grenzwert von 1 MB von Zertifikaten pro Bereitstellung (die einen einzelnen virtuellen Computer oder eine verfügbarkeitsgruppe besteht aus).
 

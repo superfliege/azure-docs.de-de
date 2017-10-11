@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
 ms.openlocfilehash: 1cc0d2d1e9a62ff8531f963413ff573713d508ad
-ms.lasthandoff: 03/07/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Sicherheit in Azure – bewährte Methoden und Muster
 Wir stellen Ihnen derzeit die folgenden Artikel zu bewährten Methoden und Muster zur Azure-Sicherheit zur Verfügung. Besuchen Sie unbedingt regelmäßig diese Website, um stets über Updates unserer wachsenden Liste bewährter Methoden und Muster zur Azure-Sicherheit informiert zu sein:  
@@ -48,4 +47,3 @@ Für jede bewährte Methode erläutern wir Folgendes:
 * Wie Sie erfahren können, wie Sie die empfohlenen Vorgehensweisen aktivieren
 
 Das Angebot an Artikeln zur Sicherheitsarchitektur von Azure sowie zu bewährten Methoden wird in Zukunft noch erweitert. Themenwünsche können im Diskussionsbereich am Ende dieser Seite geäußert werden.
-

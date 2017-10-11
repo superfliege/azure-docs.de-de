@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 7/7/2017
 ms.author: nitinver
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 15412c3853a2b8436c5e96034c9a92a2a1094662
-ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Problembehandlung bei HBase mit Azure HDInsight
 
 Lernen Sie die wichtigsten Probleme und ihre Lösungen bei der Arbeit mit Apache HBase-Nutzlasten in Apache Ambari kennen.
@@ -422,5 +420,4 @@ Aufgrund dieses abrupten Herunterfahrens wird der Port, der dem Prozess zugeordn
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"   
    ```
-
 

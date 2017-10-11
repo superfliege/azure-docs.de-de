@@ -1,21 +1,21 @@
-## <a name="specify-the-behavior-of-the-iot-device"></a>Angeben des Verhaltens des IoT-Geräts
+## <a name="specify-the-behavior-of-the-iot-device"></a>Geben Sie das Verhalten des IoT-Geräts
 
-Die Clientbibliothek des IoT Hub-Serialisierungsprogramms verwendet ein Modell, um das Format der Nachrichten anzugeben, die das Gerät mit IoT Hub austauscht.
+Die IoT Hub-Serialisierungsprogramm-Clientbibliothek verwendet ein Modell, das Format der Nachrichten, die den Austausch von Gerät und IoT Hub angeben.
 
-1. Fügen Sie die folgenden Variablendeklarationen nach den `#include` -Anweisungen hinzu. Ersetzen Sie die Platzhalterwerte „[Device Id]“ und „[Device Key]“ durch die Werte, die Sie für Ihr Gerät aus dem Dashboard der Remoteüberwachungslösung notiert haben. Ersetzen Sie „[IoTHub Name]“ durch den IoT Hub-Hostnamen aus dem Lösungsdashboard. Beispiel: Wenn der IoT Hub-Hostname **contoso.azure-devices.net** lautet, ersetzen Sie [IoTHub Name] durch **contoso**:
+1. Die folgenden Variablendeklarationen nach dem Hinzufügen der `#include` Anweisungen. Ersetzen der Platzhalterwerte [Geräte-Id] und [Geräteschlüssel] mit Werten, die Sie für Ihr Gerät in remote Lösung überwachungsdashboard notiert haben. Verwenden Sie den IoT Hub-Hostname über das Dashboard für die Projektmappe, um [IoTHub Name] ersetzen. Angenommen, Ihre IoT Hub-Hostname ist **contoso.azure devices.net**, ersetzen Sie [IoTHub Name] mit **Contoso**:
    
     ```c
     static const char* deviceId = "[Device Id]";
     static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]";
     ```
 
-1. Fügen Sie den folgenden Code hinzu, um das Modell zu definieren, das dem Gerät die Kommunikation mit IoT Hub ermöglicht. Dieses Modell gibt Folgendes an:
+1. Fügen Sie den folgenden Code aus, um das Modell zu definieren, das für die Kommunikation mit IoT Hub-Gerät aktiviert. Dieses Modell gibt an, dass das Gerät:
 
-   - Das Gerät kann die Temperatur, die externe Temperatur, die Luftfeuchtigkeit und eine Geräte-ID als Telemetriedaten senden.
-   - Das Gerät kann Metadaten für das Gerät an IoT Hub senden. Grundlegende Metadaten werden beim Start in einem Objekt vom Typ **DeviceInfo** gesendet.
-   - Das Gerät kann gemeldete Eigenschaften an den Gerätezwilling in IoT Hub senden. Diese gemeldeten Eigenschaften werden als Konfigurations-, Geräte- und Systemeigenschaften gruppiert.
-   - Das Gerät kann gewünschte Eigenschaften, die im Gerätezwilling in IoT Hub festgelegt wurden, empfangen und auf sie reagieren.
-   - Das Gerät kann auf die direkten Methoden **Reboot** und **InitiateFirmwareUpdate** reagieren, die über das Lösungsportal aufgerufen werden. Informationen zu den unterstützten direkten Methoden werden vom Gerät mithilfe gemeldeter Eigenschaften gesendet.
+   - Temperatur, externe Temperatur, Luftfeuchtigkeit und Geräte-Id kann als Telemetrie gesendet werden.
+   - Können Metadaten über das Gerät mit IoT Hub senden. Das Gerät sendet grundlegende Metadaten einem **DeviceInfo** Objekt beim Start.
+   - Gemeldete Eigenschaften können auf dem Gerät und IoT Hub gesendet werden. Diese gemeldeten Eigenschaften werden in der Konfiguration, Geräte und Systemeigenschaften gruppiert.
+   - Empfangen und wirken sich auf die gewünschten Eigenschaften, die in dem Gerät und IoT Hub festlegen kann.
+   - Reagieren kann, um die **Neustart** und **InitiateFirmwareUpdate** direkt über das Portal Lösung aufgerufene Methoden. Das Gerät sendet, dass Informationen zu den direkten Methoden, dass er unterstützt mit Eigenschaften gemeldet.
    
     ```c
     // Define the Model
@@ -85,10 +85,10 @@ Die Clientbibliothek des IoT Hub-Serialisierungsprogramms verwendet ein Modell, 
     END_NAMESPACE(Contoso);
     ```
 
-## <a name="implement-the-behavior-of-the-device"></a>Implementieren des Geräteverhaltens
-Fügen Sie nun den Code hinzu, der das im Modell definierte Verhalten implementiert.
+## <a name="implement-the-behavior-of-the-device"></a>Implementieren Sie das Verhalten des Geräts
+Nun fügen Sie Code, der die im Modell definierten Verhalten implementiert.
 
-1. Fügen Sie zur Behandlung der gewünschten Eigenschaften, die auf dem Lösungsdashboard festgelegt werden, die folgenden Funktionen hinzu. Diese gewünschten Eigenschaften sind im Modell definiert:
+1. Fügen Sie die folgenden Funktionen, die die gewünschten Eigenschaften legen Sie im Projektmappen-Dashboard zu behandeln. Diese Eigenschaften werden im Modell definiert:
 
     ```c
     void onDesiredTemperatureMeanValue(void* argument)
@@ -107,7 +107,7 @@ Fügen Sie nun den Code hinzu, der das im Modell definierte Verhalten implementi
     }
     ```
 
-1. Fügen Sie zur Behandlung der direkten Methoden, die über den IoT Hub aufgerufen werden, die folgenden Funktionen hinzu. Diese direkten Methoden sind im Modell definiert:
+1. Fügen Sie die folgenden Funktionen, die direkten durch den IoT Hub aufgerufenen Methoden behandelt. Diese direkte Methoden, die im Modell definiert werden:
 
     ```c
     /* Handlers for direct methods */
@@ -130,7 +130,7 @@ Fügen Sie nun den Code hinzu, der das im Modell definierte Verhalten implementi
     }
     ```
 
-1. Fügen Sie die folgende Funktion hinzu, die eine Nachricht an die vorkonfigurierte Lösung sendet:
+1. Fügen Sie die folgende Funktion, die eine Nachricht an die vorkonfigurierte Lösung sendet:
    
     ```c
     /* Send data to IoT Hub */
@@ -158,7 +158,7 @@ Fügen Sie nun den Code hinzu, der das im Modell definierte Verhalten implementi
     }
     ```
 
-1. Fügen Sie den folgenden Rückrufhandler hinzu, der ausgeführt wird, wenn das Gerät neue gemeldete Eigenschaftswerte an die vorkonfigurierte Lösung gesendet hat:
+1. Fügen Sie den folgenden Rückrufhandler, der ausgeführt wird, wenn das Gerät neue gemeldeten Eigenschaftswerte, die vorkonfigurierte Lösung gesendet hat:
 
     ```c
     /* Callback after sending reported properties */
@@ -169,16 +169,16 @@ Fügen Sie nun den Code hinzu, der das im Modell definierte Verhalten implementi
     }
     ```
 
-1. Fügen Sie die folgende Funktion hinzu, um eine Verbindung zwischen Ihrem Gerät und der vorkonfigurierten Lösung in der Cloud herzustellen und Daten auszutauschen. Diese Funktion führt folgende Schritte aus:
+1. Fügen Sie die folgende Funktion zum Verbinden Ihr Geräts mit der vorkonfigurierte Lösung in der Cloud hinzu, und exchange-Daten. Diese Funktion führt die folgenden Schritte aus:
 
-    - Sie initialisiert die Plattform.
-    - Sie registriert den Contoso-Namespace mit der Serialisierungsbibliothek.
-    - Sie initialisiert den Client mit der Geräteverbindungszeichenfolge.
-    - Sie erstellt eine Instanz des Modells **Thermostat**.
-    - Sie erstellt und sendet gemeldete Eigenschaftswerte.
-    - Sie sendet ein Objekt vom Typ **DeviceInfo**.
-    - Sie erstellt eine Schleife, um im Sekundentakt Telemetriedaten zu senden.
-    - Sie hebt die Initialisierung aller Ressourcen auf.
+    - Initialisiert die Plattform an.
+    - Registriert den Contoso-Namespace mit der Serialisierung-Bibliothek.
+    - Initialisiert den Client mit der Verbindungszeichenfolge des Geräts an.
+    - Erstellen Sie eine Instanz von der **Thermostat** Modell.
+    - Erstellt und sendet gemeldeten Eigenschaftswerte.
+    - Sendet eine **DeviceInfo** Objekt.
+    - Erstellt eine Schleife zum Senden von Telemetriedaten pro Sekunde.
+    - Hebt die Initialisierung aller Ressourcen.
 
       ```c
       void remote_monitoring_run(void)
@@ -296,7 +296,7 @@ Fügen Sie nun den Code hinzu, der das im Modell definierte Verhalten implementi
       }
     ```
    
-    Im Anschluss finden Sie ein Beispiel für eine **Telemetrienachricht**, die an die vorkonfigurierte Lösung gesendet wird:
+    Zu Referenzzwecken im folgenden ist ein Beispiel für **Telemetrie** Nachricht vorkonfigurierte Lösung an:
    
     ```
     {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}

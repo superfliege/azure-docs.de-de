@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 22f2bcfdd8c3978a6924c8c8cdea2744001000fe
-ms.contentlocale: de-de
-ms.lasthandoff: 04/10/2017
-
+ms.openlocfilehash: 436bf5905d2b203dc4cceea97f4fb90593df7111
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 #<a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Erstellen eines Verbunds mit mehreren Instanzen von Azure AD und einer Einzelinstanz von AD FS
 
 Mehrere Gesamtstrukturen können in einer einzelnen hochverfügbaren AD FS-Farm zu einem Verbund zusammengefasst werden, sofern zwischen ihnen eine bidirektionale Vertrauensstellung eingerichtet ist. Die Gesamtstrukturen können der gleichen Azure Active Directory-Instanz entsprechen, müssen aber nicht. In diesem Artikel erfahren Sie, wie Sie einen Verbund zwischen einer einzelnen AD FS-Bereitstellung und mehreren Gesamtstrukturen konfigurieren, die mit unterschiedlichen Azure AD-Instanzen synchronisiert werden.
@@ -66,4 +64,3 @@ Durch den obigen Vorgang werden die Domäne „fabrikam.com“ und die gleiche A
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Herstellen einer Verbindung zwischen Active Directory und Azure Active Directory](active-directory-aadconnect.md)
-

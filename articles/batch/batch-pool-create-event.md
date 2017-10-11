@@ -12,13 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
 ms.openlocfilehash: 67edaa55d7ccd00d4aebb309f11bcf95486e87fa
-ms.lasthandoff: 04/22/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="pool-create-event"></a>Poolerstellungsereignis
 
  Dieses Ereignis wird ausgegeben, nachdem ein Pool erstellt wurde. Der Inhalt des Protokolls macht allgemeine Informationen zum Pool verfügbar. Wenn die Zielgröße des Pools größer als 0 Computeknoten ist, folgt unmittelbar auf dieses Ereignis ein Ereignis zum Start der Größenänderung des Pools.
@@ -98,4 +97,3 @@ ms.lasthandoff: 04/22/2017
 |Elementname|Typ|Hinweise|
 |------------------|--------------|----------|
 |subnetId|String|Gibt den Ressourcenbezeichner des Subnetzes an, in dem die Computeknoten des Pools erstellt werden.|
-

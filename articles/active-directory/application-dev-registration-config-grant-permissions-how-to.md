@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 922774c2482737537b64787ae473231ec1fbb68e
-ms.contentlocale: de-de
-ms.lasthandoff: 04/14/2017
-
+ms.openlocfilehash: 336b945929f80e1a566f7cf71b40fd799a98c12d
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>Gewähren von Berechtigungen für eine benutzerdefiniert entwickelte Anwendung
 
 Wenn Sie im Vorfeld Berechtigungen für Ihre App gewähren möchten oder ein Fehler auftritt, den Sie keiner App zugeteilt haben, führen Sie die unten stehenden Schritte aus.
@@ -31,9 +29,9 @@ Dies entspricht dem Erteilen der Zustimmung zur Anwendung für alle Benutzer in 
 
 1. Navigieren Sie als **globaler Administrator** zum Blatt **App-Registrierungen**, und wählen Sie dann die App aus.
 
-2. Wählen Sie **Erforderliche Berechtigungen** und dann die Schaltfläche **Gewähren von Berechtigungen** am oberen Rand des Blatts aus.
+2. Wählen Sie **Erforderliche Berechtigungen** aus, und klicken Sie dann auf die Schaltfläche **Berechtigungen erteilen** am oberen Rand des Blatts.
 
-Alternativ können Sie eine Anforderung an *login.microsoftonline.com* mit Ihrer App-Konfiguration erstellen und an *&prompt=admin\_consent* anfügen. Nach der Anmeldung als Administrator sollte die App-Zustimmung für alle Benutzer erteilt sein.
+Alternativ können Sie eine Anforderung an *login.microsoftonline.com* mit Ihren App-Konfigurationen erstellen und an *&prompt=admin\_consent* anfügen. Nach der Anmeldung als Administrator sollte die App-Zustimmung für alle Benutzer erteilt sein.
 
 ## <a name="how-to-force-user-consent-for-your-application"></a>Erzwingen der Benutzerzustimmung für Ihre Anwendung
 
@@ -45,5 +43,4 @@ Alternativ können Sie eine Anforderung an *login.microsoftonline.com* mit Ihrer
 
 [Genehmigen und Zuweisen von Berechtigungen für konvergierte Azure AD V2.0-Apps](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
-
+[Azure AD bei Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)

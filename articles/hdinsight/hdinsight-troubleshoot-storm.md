@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/7/2017
 ms.author: raviperi
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 70a3d762431d90acdd6ed2a432a569f34d0ce447
-ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Problembehandlung bei Storm mit Azure HDInsight
 
 Lernen Sie die wichtigsten Probleme und ihre Lösungen bei der Arbeit mit Apache Storm-Nutzlasten in Apache Ambari kennen.
@@ -140,7 +138,7 @@ Informationen zur Verwendung des neuesten Storm-EventHub-Spouts, der mit HDInsig
 ### <a name="source-code-examples"></a>Quellcodebeispiele
 Unter [Beispiele](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) erfahren Sie, wie Sie Daten aus Azure Event Hub mithilfe einer (in Java geschriebenen) Apache Storm-Topologie in einem Azure HDInsight-Cluster lesen und schreiben.
  
-## <a name="how-do-i-locate-storm-log4j-configuration-files-on-clusters"></a>Wie finde ich Storm-Log4J-Konfigurationsdateien in Clustern?
+## <a name="how-do-i-locate-storm-log4j-configuration-files-on-clusters"></a>Wie finde ich Storm-Log4J-Konfigurationsdateien auf Clustern?
  
 Identifizieren von Apache Log4J-Konfigurationsdateien für Storm-Dienste.
  
@@ -153,5 +151,4 @@ Die Supervisor Log4J-Konfiguration wird aus „usr/hdp/\<HDP-Version\>/storm/log
 Die Worker Log4J-Konfiguration wird aus „usr/hdp/\<HDP-Version\>/storm/log4j2/worker.xml“ gelesen.
  
 Beispiele: /usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml, /usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml
-
 

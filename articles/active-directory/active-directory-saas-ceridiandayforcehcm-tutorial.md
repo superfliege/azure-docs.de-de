@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
 ms.openlocfilehash: b2ea3d92f233dab5bd6814e4875f881117eac8e3
-ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Tutorial: Azure Active Directory-Integration mit Ceridian Dayforce HCM
 
@@ -185,11 +184,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/active-directory-saas-ceridiandayforcehcm-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Users and groups** (Benutzer und Gruppen), und klicken Sie dann auf **All users** (Alle Benutzer), um die Benutzerliste anzuzeigen.
+2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
-    ![Die Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/active-directory-saas-ceridiandayforcehcm-tutorial/create_aaduser_02.png)
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/active-directory-saas-ceridiandayforcehcm-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld **All Users** (Alle Benutzer) auf **Add** (Hinzufügen), um das Dialogfeld **User** (Benutzer) zu öffnen.
+3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/active-directory-saas-ceridiandayforcehcm-tutorial/create_aaduser_03.png)
 
@@ -201,7 +200,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
 
-    c. Aktivieren Sie das Kontrollkästchen **Show Password** (Kennwort anzeigen), und notieren Sie sich den Wert, der im Feld **Password** (Kennwort) angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
     d. Klicken Sie auf **Erstellen**.
  
@@ -292,5 +291,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Ceridian Dayforce HCM“ klicken, 
 [201]: ./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_general_203.png
-
 

@@ -13,13 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: anupams;v-bruham;garye
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 9f867641b77c8148c1d6cbf2913da9c1f5ce5b71
-ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
---- 
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
+---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Veröffentlichungsleitfaden für Cortana Intelligence in AppSource
 
 ## <a name="overview"></a>Übersicht
@@ -116,5 +115,4 @@ Zunächst einmal herzlichen Glückwunsch zur Veröffentlichung Ihrer App.
 Das Ertragsniveau, das Sie mit der Veröffentlichung Ihrer App auf AppSource erzielen, hängt stark davon ab, wie Sie Ihr Zielpublikum beeinflussen. Weitere Informationen zur Maximierung der Rentabilität finden Sie unter [Growth-Hacking your Cortana Intelligence app on AppSource (Growth Hacking Ihrer Cortana Intelligence-App auf AppSource)](http://aka.ms/aagrowthhackguide).
 
 Wenn Sie Fragen oder Vorschläge haben, kontaktieren Sie uns bitte unter <appsourcecissupport@microsoft.com>.
-
 

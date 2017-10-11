@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 8/15/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
-ms.openlocfilehash: 72f1ed52c9e0f39009efc54967d7cc68517182a3
-ms.contentlocale: de-de
-ms.lasthandoff: 03/02/2017
-
+ms.openlocfilehash: 40983a3de104238d09b976b5fcf2419da42c1bba
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="back-up-azure-virtual-machines-to-a-recovery-services-vault"></a>Sichern von virtuellen Azure-Computern in einem Recovery Services-Tresor
 > [!div class="op_single_selector"]
@@ -106,4 +105,3 @@ Nachdem Sie Ihren virtuellen Computer geschützt haben, können Sie sich mit den
 
 * [Verwalten und Überwachen Ihrer virtuellen Computer](backup-azure-manage-vms.md)
 * [Wiederherstellen virtueller Computer](backup-azure-arm-restore-vms.md)
-

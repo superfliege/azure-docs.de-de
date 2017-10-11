@@ -16,12 +16,11 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: alexwe
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 9f03e61e05383c309fb66b67e0641b17df5ab00f
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurieren von Azure Multi-Factor Authentication-Server für Hochverfügbarkeit
 
@@ -77,4 +76,3 @@ Beachten Sie die folgenden Elemente für den entsprechend nummerierten Bereich i
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Installieren und Konfigurieren von Azure MFA Server](multi-factor-authentication-get-started-server.md)
-

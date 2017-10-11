@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: f40f64906bf87d8505fa1a209222163256326d14
-ms.openlocfilehash: a2cc4729ca5cb1dcc10630158ec3d94315fb01a5
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: 6cd6c822eb255893feac2536d7bae034380094b2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Verwenden von Azure Security Center zur Reaktion auf Vorfälle
 Viele Organisationen lernen erst nach einem Angriff, wie auf Sicherheitsvorfälle reagiert werden sollte. Zur Reduzierung von Kosten und Schäden ist es wichtig, dass ein Plan zur Reaktion auf Vorfälle vorhanden ist, bevor es zu einem Angriff kommt. Sie können Azure Security Center in unterschiedlichen Phasen einer Reaktion auf Vorfälle nutzen.
@@ -84,7 +83,7 @@ Judy hat sich am Azure-Portal angemeldet und verwendet die Security Center-Konso
    > In diesem Szenario führt Judy eine Bewertung der Warnung zu einer Aktivität mit schädlichen SQL-Befehlen durch. Dies ist in der Abbildung oben dargestellt.
    >
    >
-2. Klicken Sie auf die Warnung **Malicious SQL activity** (Aktivität mit schädlichen SQL-Befehlen), und überprüfen Sie die angegriffenen Ressourcen auf dem Blatt **Malicious SQL Activity** (Aktivität mit schädlichen SQL-Befehlen):  ![Details zum Vorfall](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. Klicken Sie auf die **böswillige SQL Aktivität** Warnungen aufgeführt, und überprüfen Sie die angegriffenen Ressourcen in der **böswillige SQL-Aktivität** Blatt: ![Details zum Vorfall](./media/security-center-incident-response/security-center-incident-response-fig5.png)
 
     Auf diesem Blatt kann Judy sich Notizen dazu machen, welche Ressourcen angegriffen wurden, wie oft der Angriff durchgeführt wurde und wann er erkannt wurde.
 3. Klicken Sie auf die **Angegriffene Ressource** , um weitere Informationen zum Angriff zu erhalten.
@@ -101,4 +100,3 @@ Das Incident Response Team kann auch die [Security Center Power BI](security-cen
 
 ## <a name="conclusion"></a>Zusammenfassung
 Es ist für Ihre Organisation sehr wichtig, vor dem Eintreten eines Vorfalls ein Team zusammenzustellen. Dies hat einen positiven Einfluss auf den Umgang mit Sicherheitsvorfällen. Mit den richtigen Tools für die Überwachung von Ressourcen kann das Team präzise Schritte zur Lösung eines Sicherheitsvorfalls ausführen. Mit den [Erkennungsfunktionen](security-center-detection-capabilities.md) von Security Center erhält die IT-Abteilung hilfreiche Werkzeuge zum schnellen Reagieren auf Sicherheitsvorfälle und Lösen von Sicherheitsproblemen.
-

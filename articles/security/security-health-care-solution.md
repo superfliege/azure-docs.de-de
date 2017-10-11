@@ -1,6 +1,6 @@
 ---
 title: "Praktische Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Azure | Microsoft Docs"
-description: " In diesem Artikel erfahren Sie, wie Sie mithilfe der konfigurierbaren Azure-Dienste und -Features die Sicherheit von Lösungen für das Gesundheitswesen verbessern.. "
+description: " In diesem Artikel erfahren Sie, wie Sie mithilfe der konfigurierbaren Azure-Dienste und -Features die Sicherheit von Lösungen für das Gesundheitswesen verbessern. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/07/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
 ms.openlocfilehash: 34ded89eb7fe005be2341f96e5b883ec73d9e0a5
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Praktische Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Azure
 Startups im Gesundheitswesen, Systemintegratoren (SIs), unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und im Gesundheitswesen tätige Organisationen, die die Einführung von Azure in Erwägung ziehen, benötigen Unterstützung beim Integrieren geeigneter Sicherheitsmaßnahmen für ihre Complianceanforderungen.
@@ -31,9 +31,3 @@ Der Inhalt ist in drei Hauptabschnitte unterteilt:
 3. Anwendung der zentralen Prinzipien auf Anwendungsfälle durch entsprechende Ausrichtung von Lösungsarchitekten, sodass die Anforderungen für die Lösungen mit dem Standard für das Informationssicherheitsmanagement in Einklang stehen.
 
 Wir hoffen, Ihnen mit der [praktischen Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Azure](https://aka.ms/azureindustrysecurity) weiterhelfen zu können. Bei Fragen oder Vorschlägen können Sie gerne weiter unten einen entsprechenden Kommentar erstellen.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-

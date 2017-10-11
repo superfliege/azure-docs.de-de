@@ -1,6 +1,6 @@
 ---
-title: "Abrufen von Werten zum Authentifizieren einer App – Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Erstellen Sie einen Dienstprinzipalnamen für den Zugriff auf SQL-Datenbank aus dem Code."
+title: "Rufen Sie Werte für die Authentifizierung der app - Azure SQL-Datenbank | Microsoft Docs"
+description: "Erstellen Sie einen Dienstprinzipal für den Zugriff auf SQL-Datenbank aus Code ein."
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,21 +16,19 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/30/2016
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
 ms.openlocfilehash: ec6256e9c5bb0d9c8d15d0f673cea70b3915eb34
-ms.contentlocale: de-de
-ms.lasthandoff: 06/22/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Abrufen der erforderlichen Werte aus dem Code zum Authentifizieren einer Anwendung für den Zugriff auf die SQL-Datenbank
-Zum Erstellen und Verwalten der SQL-Datenbank über den Code müssen Sie Ihre App in der Azure Active Directory-Domäne (AAD) in dem Abonnement registrieren, in dem die Azure-Ressourcen erstellt wurden.
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Rufen Sie die erforderlichen Werte zum Authentifizieren von einer Anwendung Code SQL-Datenbank zugreifen
+Zum Erstellen und Verwalten von SQL-Datenbank aus Code müssen Sie Ihre app in der Azure Active Directory (AAD)-Domäne im Abonnement registrieren, auf dem Azure-Ressourcen erstellt wurden.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen aus einer Anwendung
-Die aktuelle Version von [Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) muss installiert sein und ausgeführt werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Ein Dienstprinzipal erstellt den Zugriff auf Ressourcen von einer Anwendung
+Sie müssen das aktuellste [Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) installiert ist und ausgeführt. Ausführliche Informationen finden Sie unter [zum Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
-Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung und der Dienstprinzipal erstellt, den wir zum Authentifizieren der C#-App benötigen. Das Skript gibt Werte aus, die für das vorhergehende C#-Beispiel erforderlich sind. Ausführliche Informationen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+Das folgende PowerShell-Skript erstellt die Active Directory (AD)-Anwendung und der Dienstprinzipal, den wir unsere C#-app authentifizieren müssen. Das Skript gibt die Werte für das vorhergehende Beispiel c# benötigten. Ausführliche Informationen finden Sie unter [Verwenden von Azure PowerShell zum Erstellen eines dienstprinzipals den Zugriff auf Ressourcen](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
     # Sign in to Azure.
     Add-AzureRmAccount
@@ -73,8 +71,7 @@ Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung u
 
 
 
-## <a name="see-also"></a>Siehe auch
-* [Erstellen einer SQL-Datenbank mit C#](sql-database-get-started-csharp.md)
-* [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
-
+## <a name="see-also"></a>Weitere Informationen:
+* [Erstellen Sie eine SQL-Datenbank mit c#](sql-database-get-started-csharp.md)
+* [Über Azure Active Directory-Authentifizierung eine Verbindung mit SQL-Datenbank](sql-database-aad-authentication.md)
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 23a6e09d410616b135506df778d6fdd5ed68bb41
-ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: 468321fa6863d78bc0d179fbe5c2ed6195040d50
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC – Übersicht
 
 Azure Automation DSC ist ein Azure-Dienst, mit dem Sie PowerShell-[Konfigurationen](https://msdn.microsoft.com/powershell/dsc/configurations) mit Desired State Configuration (DSC) schreiben, verwalten und kompilieren, [DSC-Ressourcen](https://msdn.microsoft.com/powershell/dsc/resources) importieren und Konfigurationen Zielknoten zuweisen können – und all dies in der Cloud.
@@ -67,4 +65,4 @@ Möchten Sie sich lieber ein Video ansehen? Betrachten Sie das folgende Video vo
 * Informationen zum Kompilieren von DSC-Konfigurationen und der anschließenden Zuweisung an Zielknoten finden Sie unter [Kompilieren von Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
 * Informationen zur PowerShell-Cmdlet-Referenz für Azure Automation DSC finden Sie unter [Azure Automation DSC-Cmdlets](/powershell/module/azurerm.automation/#automation).
 * Preisinformationen finden Sie unter [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/).
-* Ein Beispiel zur Verwendung von Azure Automation DSC in einer Pipeline für kontinuierliche Bereitstellung finden Sie unter  [Kontinuierliche Bereitstellung für IaaS-VMs mit Azure Automation DSC und Chocolatey](automation-dsc-cd-chocolatey.md).
+* Ein Beispiel zur Verwendung von Azure Automation DSC in einer Pipeline dauerhafte Bereitstellung finden Sie unter [Continuous Deployment Chocolatey zu IaaS-VMs mithilfe von Azure Automation DSC](automation-dsc-cd-chocolatey.md)

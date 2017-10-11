@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 2b25ffd844507074a8467b1135b1331feb9d3ed7
-ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
-
+ms.openlocfilehash: 59c4dfafc102b26e3b9873f433065715f4aec9ec
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="discover-how-customers-are-using-your-application-with-the-application-insights-funnels"></a>Informieren Sie sich mit den Application Insights-Trichtern darüber, wie die Kunden Ihre Anwendung verwenden
 
 Es ist für Ihr Unternehmen von essenzieller Bedeutung, ein Gefühl für die Kundenerfahrung zu entwickeln. Wenn in Ihrer Anwendung mehrere Schritte durchlaufen werden, müssen Sie wissen, ob die meisten Kunden den gesamten Prozess durchlaufen oder diesen an einem bestimmten Punkt beenden. Der Fortschritt beim Ausführen einer Reihe von Schritten in einer Webanwendung wird als „Trichter“ bezeichnet. Sie können die Application Insights-Trichter dazu verwenden, Erkenntnisse über Ihre Benutzer zu erhalten und die schrittweisen Konvertierungsraten zu überwachen. 
@@ -50,4 +48,3 @@ Die folgende Abbildung zeigt die vom Blatt „Trichter“ generierten Daten. Hie
   * [Aufbewahrung](app-insights-usage-retention.md)
   * [Arbeitsmappen](app-insights-usage-workbooks.md)
   * [Hinzufügen von Benutzerkontext](app-insights-usage-send-user-context.md)
-

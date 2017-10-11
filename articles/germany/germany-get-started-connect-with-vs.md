@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: 07b15fa7211d1af4042d7b412dfc56d1cc7a0025
-ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
-
 # <a name="connect-to-azure-germany-by-using-visual-studio"></a>Herstellen einer Verbindung mit Azure Deutschland über Visual Studio
 Entwickler verwenden Visual Studio beim Erstellen von Lösungen zur einfachen Verwaltung ihrer Azure-Abonnements. Sie können derzeit in der Visual Studio-Benutzeroberfläche keine Verbindung mit Azure Deutschland konfigurieren.  
 
@@ -52,9 +49,9 @@ Erstellen Sie eine Datei namens **AadProvider.Configuration.json** mit folgendem
 
 ### <a name="update-visual-studio-for-azure-germany"></a>Aktualisieren von Visual Studio für Azure Deutschland
 
-1.    Schließen Sie Visual Studio.
-2.    Legen Sie die Datei **AadProvider.Configuration.json** in **%localappdata%\\.IdentityService\AadConfigurations** ab. Erstellen Sie diesen Ordner, wenn er nicht vorhanden ist.
-3.    Starten Sie Visual Studio, und beginnen Sie mit der Verwendung Ihres Azure Deutschland-Kontos.
+1.  Schließen Sie Visual Studio.
+2.  Legen Sie die Datei **AadProvider.Configuration.json** in **%localappdata%\\.IdentityService\AadConfigurations** ab. Erstellen Sie diesen Ordner, wenn er nicht vorhanden ist.
+3.  Starten Sie Visual Studio, und beginnen Sie mit der Verwendung Ihres Azure Deutschland-Kontos.
 
 > [!NOTE]
 > Mit der Konfigurationsdatei ist nur der Zugriff auf Azure Deutschland-Abonnements möglich. Zuvor konfigurierte Abonnements werden zwar noch angezeigt, funktionieren jedoch nicht, da Visual Studio jetzt mit Azure Deutschland statt mit der globalen Azure-Umgebung verbunden ist. Um eine Verbindung mit der globalen Azure-Umgebung herzustellen, entfernen Sie die Datei.
@@ -64,9 +61,9 @@ Erstellen Sie eine Datei namens **AadProvider.Configuration.json** mit folgendem
 ### <a name="revert-a-visual-studio-connection-to-azure-germany"></a>Zurücksetzen einer Visual Studio-Verbindung auf Azure Deutschland
 Damit Visual Studio eine Verbindung mit der globalen Azure-Umgebung herstellen kann, müssen Sie die Konfigurationsdatei entfernen, die eine Verbindung mit Azure Deutschland ermöglicht.
 
-1.    Schließen Sie Visual Studio.
-2.    Löschen Sie den Ordner **%localappdata%\.IdentityService\AadConfigurations**, oder benennen Sie ihn um.
-3.    Starten Sie Visual Studio neu, und beginnen Sie mit der Verwendung Ihres Kontos für die globale Azure-Umgebung.
+1.  Schließen Sie Visual Studio.
+2.  Löschen Sie den Ordner **%localappdata%\.IdentityService\AadConfigurations**, oder benennen Sie ihn um.
+3.  Starten Sie Visual Studio neu, und beginnen Sie mit der Verwendung Ihres Kontos für die globale Azure-Umgebung.
 
 > [!NOTE]
 > Nachdem Sie diese Konfiguration zurückgesetzt haben, können Sie nicht mehr auf Ihre Azure Deutschland-Abonnements zugreifen.
@@ -133,7 +130,6 @@ Weitere Informationen zum Herstellen der Verbindung mit Azure Deutschland finden
 * [Herstellen einer Verbindung mit Azure Deutschland über PowerShell](./germany-get-started-connect-with-ps.md)
 * [Herstellen einer Verbindung mit Azure Deutschland über die Azure CLI](./germany-get-started-connect-with-cli.md)
 * [Herstellen einer Verbindung mit Azure Deutschland über das Azure-Portal](./germany-get-started-connect-with-portal.md)
-
 
 
 

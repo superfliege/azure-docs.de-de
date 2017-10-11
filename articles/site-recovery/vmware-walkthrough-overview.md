@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: db6f5f95929503e82a529dba26b56af1edb0767f
-ms.contentlocale: de-de
-ms.lasthandoff: 06/29/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replicate-vmware-vms-to-azure-with-site-recovery"></a>Replizieren von VMware-VMs in Azure mit Site Recovery
 
@@ -40,7 +38,7 @@ Gehen Sie zu [Schritt 1: Überprüfen der Architektur](vmware-walkthrough-archit
 
 ## <a name="step-2-review-prerequisites"></a>Schritt 2: Überprüfen der Voraussetzungen
 
-Stellen Sie sicher, dass Sie über die erforderlichen Komponenten für jede Bereitstellungskomponente verfügen:
+Stellen Sie sicher, dass Sie über die Voraussetzungen für jede Bereitstellungskomponente verfügen:
 
 - **Azure-Voraussetzungen**: Sie benötigen ein Microsoft Azure-Konto, Azure-Netzwerke und Speicherkonten.
 - **Lokale Site Recovery-Komponenten**: Sie benötigen einen Computer mit lokalen Site Recovery-Komponenten.
@@ -51,7 +49,7 @@ Gehen Sie zu [Schritt 2: Überprüfen der Voraussetzungen und Einschränkungen](
 
 ## <a name="step-3-plan-capacity"></a>Schritt 3: Planen der Kapazität
 
-Wenn Sie eine vollständige Bereitstellung ausführen, müssen Sie herausfinden, welche Replikationsressourcen benötigt werden. Es gibt eine Reihe von Tools, die Sie dabei unterstützt. Fahren Sie mit Schritt 2 fort. Wenn Sie eine schnelle Einrichtung vornehmen, um die Umgebung zu testen, können Sie diesen Schritt überspringen.
+Wenn Sie eine vollständige Bereitstellung durchführen, müssen Sie herausfinden, welche Replikationsressourcen benötigt werden. Es gibt eine Reihe von Tools, die Sie dabei unterstützt. Fahren Sie mit Schritt 2 fort. Wenn Sie eine schnelle Einrichtung vornehmen, um die Umgebung zu testen, können Sie diesen Schritt überspringen.
 
 Gehen Sie zu [Schritt 3: Planen der Kapazität](vmware-walkthrough-capacity.md).
 
@@ -63,7 +61,7 @@ Gehen Sie zu [Schritt 4: Planen von Netzwerken](vmware-walkthrough-network.md).
 
 ##  <a name="step-5-prepare-azure-resources"></a>Schritt 5: Vorbereiten der Azure-Ressourcen
 
-Richten Sie Azure-Netzwerke und -Speicher ein, bevor Sie beginnen. Dies können Sie während der Bereitstellung durchführen. Es wird jedoch empfohlen, dass sie es vorher machen.
+Richten Sie Azure-Netzwerke und -Speicher ein, bevor Sie beginnen. Dies können Sie während der Bereitstellung durchführen. Es wird jedoch empfohlen, dass sie diesen Schritt vorher vornehmen.
 
 Gehen Sie zu [Schritt 5: Vorbereiten von Azure](vmware-walkthrough-prepare-azure.md).
 
@@ -112,4 +110,3 @@ Gehen Sie zu [Schritt 11: Aktivieren der Replikation](vmware-walkthrough-enable-
 Nachdem die erste Replikation abgeschlossen wurde, und die Deltareplikation ausgeführt wird, können Sie ein Testfailover ausführen, um sicherzustellen, dass alles wie erwartet funktioniert.
 
 Gehen Sie zu [Schritt 12: Ausführen eines Testfailovers](vmware-walkthrough-test-failover.md).
-

@@ -8,14 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: tamram
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 3d655766b4f2a5efb0c8c29ffa81a89f84b3e17c
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Verwenden eines benutzerdefinierten Images zum Erstellen eines VM-Pools
 
 Wenn Sie einen VM-Pool in Azure Batch erstellen, geben Sie das Image eines virtuellen Computers (VM) an, das das Betriebssystem für jeden Computeknoten im Pool bereitstellt. Sie können einen VM-Pool entweder unter Verwendung eines Azure Marketplace-Images oder durch Bereitstellen eines benutzerdefinierten, von Ihnen vorbereiteten VHD-Images erstellen. Wenn Sie ein benutzerdefiniertes Image bereitstellen, können Sie steuern, wie das Betriebssystem zu dem Zeitpunkt konfiguriert ist, zu dem die einzelnen Computeknoten bereitgestellt werden. Ihr benutzerdefiniertes Image kann auch Anwendungen und Verweisdaten enthalten, die auf dem Computeknoten verfügbar sind, sobald er bereitgestellt wird.

@@ -1,28 +1,28 @@
-## <a name="prepare-your-intel-nuc"></a>Vorbereiten Ihres Intel NUC
+## <a name="prepare-your-intel-nuc"></a>Vorbereiten Sie Ihrer Intel NUC
 
-Führen Sie folgende Schritte aus, um die Hardwareeinrichtung abzuschließen:
+Um die Hardware-Einrichtung abzuschließen, müssen Sie:
 
-- Verbinden Sie Ihren Intel NUC mit dem im Kit enthaltenen Netzteil.
-- Verbinden Sie Ihren Intel NUC per Ethernet-Kabel mit Ihrem Netzwerk.
+- Verbinden Sie Ihre Intel NUC die Stromversorgung erneut in das Kit enthalten.
+- Verbinden Sie Ihre Intel NUC mit Ihrem Netzwerk über ein Ethernetkabel.
 
-Sie haben die Hardwareeinrichtung Ihres Intel NUC-Gatewaygeräts jetzt abgeschlossen.
+Sie haben jetzt die Hardwarekonfiguration des Geräts Gateway Intel NUC abgeschlossen.
 
-### <a name="sign-in-and-access-the-terminal"></a>Anmelden und Zugreifen auf das Terminal
+### <a name="sign-in-and-access-the-terminal"></a>Melden Sie an und Zugreifen auf den Terminalserver
 
-Sie haben zwei Möglichkeiten, um auf Ihrem Intel NUC auf eine Terminalumgebung zuzugreifen:
+Sie haben zwei Möglichkeiten, die auf eine Terminaldienste-Umgebung auf Ihre Intel NUC zuzugreifen:
 
-- Wenn Sie an Ihren Intel NUC eine Tastatur und einen Monitor angeschlossen haben, können Sie direkt auf die Shell zugreifen. Die Standardanmeldeinformationen lauten **root** für den Benutzernamen und **root** für das Kennwort.
+- Wenn Sie eine Tastatur und einen Monitor, die mit der Intel-NUC verbunden haben, können Sie die Shell direkt zugreifen. Die Standardanmeldeinformationen sind Benutzernamen **Root** und das Kennwort **Root**.
 
-- Greifen Sie auf die Shell auf Ihrem Intel NUC von Ihrem Desktopcomputer aus per SSH zu.
+- Zugriff auf die Befehlsshell auf Ihrem Intel NUC mithilfe von SSH vom desktop-Computer.
 
-#### <a name="sign-in-with-ssh"></a>Anmelden mit SSH
+#### <a name="sign-in-with-ssh"></a>Melden Sie sich mit SSH
 
-Zum Anmelden per SSH benötigen Sie die IP-Adresse Ihres Intel NUC. Wenn Sie eine Tastatur und einen Monitor an Ihren Intel NUC angeschlossen haben, können Sie den Befehl `ifconfig` verwenden, um die IP-Adresse zu ermitteln. Alternativ dazu können Sie eine Verbindung mit Ihrem Router herstellen, um die Adressen der Geräte des Netzwerks aufzulisten.
+Um sich mit SSH anmelden, benötigen Sie die IP-Adresse Ihrer NUC Intel. Wenn Sie eine Tastatur und einen Monitor, die mit der Intel-NUC verbunden haben, verwenden Sie die `ifconfig` Befehl aus, um die IP-Adresse gefunden. Verbinden Sie alternativ mit Ihren Router, um die Adressen von Geräten in Ihrem Netzwerk aufzulisten.
 
-Melden Sie sich mit dem Benutzernamen **root** und dem Kennwort **root** an.
+Melden Sie sich mit Benutzernamen **Root** und das Kennwort **Root**.
 
-#### <a name="optional-share-a-folder-on-your-intel-nuc"></a>Optional: Freigeben eines Ordners auf Ihrem Intel NUC
+#### <a name="optional-share-a-folder-on-your-intel-nuc"></a>Optional: Freigabeordner auf Ihre Intel NUC
 
-Bei Bedarf können Sie auch einen Ordner auf Ihrem Intel NUC für Ihre Desktopumgebung freigeben. Wenn Sie einen Ordner freigeben, können Sie Dateien auf Ihrem Intel NUC mithilfe Ihres bevorzugten Desktop-Texteditors (z.B. [Visual Studio Code](https://code.visualstudio.com/) oder [Sublime Text](http://www.sublimetext.com/)) bearbeiten, anstatt `nano` oder `vi` zu verwenden.
+Optional: Sie möchten einen Ordner auf Ihrem Intel NUC mit Ihrer desktop-Umgebung gemeinsam nutzen. Freigeben eines Ordners können Sie Ihre bevorzugte desktop Texteditor (z. B. [Visual Studio Code](https://code.visualstudio.com/) oder [Sublime Text](http://www.sublimetext.com/)) zum Bearbeiten von Dateien auf Ihrem Intel NUC statt `nano` oder `vi`.
 
-Wenn Sie einen Ordner für Windows freigeben möchten, konfigurieren Sie einen Samba-Server auf dem Intel NUC. Alternativ dazu können Sie den SFTP-Server auf dem Intel NUC mit einem SFTP-Client auf Ihrem Desktopcomputer verwenden.
+Um einen Ordner mit Windows freizugeben, konfigurieren Sie einen Samba-Server, auf der Intel-NUC. Alternativ verwenden Sie die SFTP-Server, auf der Intel-NUC mit einem SFTP-Client auf dem Desktopcomputer.

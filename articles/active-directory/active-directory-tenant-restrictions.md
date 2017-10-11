@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 7288f8fa173f8018570cd17aa7274f56a4eead41
-ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -124,9 +122,9 @@ Wenn Sie die Mandanteneinschränkungen ausprobieren möchten, bevor Sie sie für
 
 Fiddler ist ein kostenloser Web Debugging Proxy, mit dem Sie HTTP/HTTPS-Datenverkehr erfassen und modifizieren können, um beispielsweise HTTP-Header einzufügen. Gehen Sie wie folgt vor, um Fiddler zum Testen von Mandanteneinschränkungen zu konfigurieren:
 
-1.    [Laden Sie Fiddler herunter, und installieren Sie es.](http://www.telerik.com/fiddler)
-2.    Konfigurieren Sie Fiddler wie in der [Hilfedokumentation](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS) beschrieben für die Entschlüsselung von HTTPS-Datenverkehr.
-3.    Konfigurieren Sie Fiddler mithilfe von benutzerdefinierten Regeln so, dass die Header *Restrict-Access-To-Tenants* und *Restrict-Access-Context* eingefügt werden:
+1.  [Laden Sie Fiddler herunter, und installieren Sie es.](http://www.telerik.com/fiddler)
+2.  Konfigurieren Sie Fiddler wie in der [Hilfedokumentation](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS) beschrieben für die Entschlüsselung von HTTPS-Datenverkehr.
+3.  Konfigurieren Sie Fiddler mithilfe von benutzerdefinierten Regeln so, dass die Header *Restrict-Access-To-Tenants* und *Restrict-Access-Context* eingefügt werden:
   1. Wählen Sie im Fiddler Web Debugger-Tool das Menü **Rules** (Regeln) und anschließend **Customize Rules...** (Regeln anpassen...) aus, um die Datei „CustomRules“ zu öffnen.
   2. Fügen Sie am Anfang der Funktion *OnBeforeRequest* die folgenden Zeilen hinzu. Ersetzen Sie \<tenant domain\> durch eine bei Ihrem Mandanten registrierte Domäne (beispielsweise „contoso.onmicrosoft.com“). Ersetzen Sie \<directory ID\> durch den Azure AD-GUID Ihres Mandanten.
 
@@ -148,8 +146,8 @@ Nachdem Sie Fiddler konfiguriert haben, können Sie Datenverkehr erfassen, indem
 
 Abhängig von den Funktionen Ihrer Proxyinfrastruktur können Sie unter Umständen einen gestaffelten Rollout der Einstellungen für Ihre Benutzer durchführen. Dabei sollten Sie folgende allgemeine Optionen berücksichtigen:
 
-1.    Verwenden Sie PAC-Dateien, um Testbenutzer an eine Testproxyinfrastruktur weiterzuleiten, während normale Benutzer weiterhin die Produktionsproxyinfrastruktur verwenden.
-2.    Einige Proxyserver unterstützen möglicherweise verschiedene Konfigurationen mit Gruppen.
+1.  Verwenden Sie PAC-Dateien, um Testbenutzer an eine Testproxyinfrastruktur weiterzuleiten, während normale Benutzer weiterhin die Produktionsproxyinfrastruktur verwenden.
+2.  Einige Proxyserver unterstützen möglicherweise verschiedene Konfigurationen mit Gruppen.
 
 Spezifische Details finden Sie in der Dokumentation Ihres Proxyservers.
 
@@ -158,4 +156,3 @@ Spezifische Details finden Sie in der Dokumentation Ihres Proxyservers.
 - Lesen Sie [Updated Office 365 modern authentication](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/) (Aktualisierte moderne Authentifizierung für Office 365).
 
 - Informieren Sie sich über die [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
-

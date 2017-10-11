@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: priyamo
 ms.reviewer: elisol
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: d2dd84007832c56f5893f0ea9f5effcf5ec5816b
-ms.contentlocale: de-de
-ms.lasthandoff: 03/28/2017
-
+ms.openlocfilehash: 2f2817688beb2028fd0bba8522827d87a0097f21
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="register-your-application-with-your-azure-active-directory-tenant"></a>Registrieren Ihrer Anwendung bei Ihrem Azure Active Directory-Mandanten
 
 Sie können Ihre Anwendung mithilfe des Azure-Portals beim Azure Active Directory-Mandanten (Azure AD) registrieren. Dabei wird eine Anwendungs-ID für die Anwendung erstellt und für den Empfang von Token aktiviert.
@@ -64,4 +62,3 @@ Mithilfe des Inline-Manifest-Editors können Sie bestimmte Anwendungseigenschaft
 
 1. In den [Schnellstarts](active-directory-developers-guide.md) finden Sie ausführliche Vorgehensweisen für Anwendungen, die die Authentifizierung mithilfe von Azure AD ausführen.
 2. Sehen Sie sich die vollständige Liste der Codebeispiele auf [GitHub](https://github.com/azure-samples) an.
-

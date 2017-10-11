@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: matp; LADocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
-ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>Verbinden mit Dynamics 365 über Logik-App-Workflows
 
 Mit Logik-Apps können Sie eine Verbindung zu Dynamics 365 (online) herstellen und praktische Geschäftsworkflows erstellen, die Datensätze erstellen, Elemente aktualisieren oder eine Liste mit Datensätzen zurückgeben. Der Dynamics 365-Connector bietet folgende Möglichkeiten:
@@ -38,27 +36,27 @@ In diesem Thema erfahren Sie, wie Sie eine Logik-App erstellen, die eine Aufgabe
 
 ## <a name="create-a-task-when-a-new-lead-is-created-in-dynamics-365"></a>Erstellen einer Aufgabe bei der Erstellung eines neuen Leads in Dynamics 365
 
-1.    [Melden Sie sich bei Azure an.](https://portal.azure.com)
+1.  [Melden Sie sich bei Azure an.](https://portal.azure.com)
 
-2.    Geben Sie im Azure-Suchfeld `Logic apps` ein und drücken Sie die EINGABETASTE.
+2.  Geben Sie im Azure-Suchfeld `Logic apps` ein und drücken Sie die EINGABETASTE.
 
       ![Suchen nach Logik-Apps](./media/connectors-create-api-crmonline/find-logic-apps.png)
 
-3.    Klicken Sie unter **Logik-Apps** auf **Hinzufügen**.
+3.  Klicken Sie unter **Logik-Apps** auf **Hinzufügen**.
 
       ![Hinzufügen einer Logik-App](./media/connectors-create-api-crmonline/add-logic-app.png)
 
-4.    Füllen Sie zum Erstellen der Logik-App die Felder **Name**, **Abonnement**, **Ressourcengruppe** und **Standort** aus, und klicken Sie anschließend auf **Erstellen**.
+4.  Füllen Sie zum Erstellen der Logik-App die Felder **Name**, **Abonnement**, **Ressourcengruppe** und **Standort** aus, und klicken Sie anschließend auf **Erstellen**.
 
-5.    Wählen Sie die neue Logik-App aus. Klicken Sie auf **Aktualisieren**, wenn Sie die Benachrichtigung **Bereitstellung erfolgreich** erhalten.
+5.  Wählen Sie die neue Logik-App aus. Klicken Sie auf **Aktualisieren**, wenn Sie die Benachrichtigung **Bereitstellung erfolgreich** erhalten.
 
-6.    Klicken Sie unter **Entwicklungstools** auf **Logik-App-Designer**. Klicken Sie in der Vorlagenliste auf **Leere Logik-App**.
+6.  Klicken Sie unter **Entwicklungstools** auf **Logik-App-Designer**. Klicken Sie in der Vorlagenliste auf **Leere Logik-App**.
 
-7.    Geben Sie in das Suchfeld `Dynamics 365` ein. Wählen Sie aus der Dynamics 365-Triggerliste **Dynamics 365 – Wenn ein Datensatz erstellt wird** aus.
+7.  Geben Sie in das Suchfeld `Dynamics 365` ein. Wählen Sie aus der Dynamics 365-Triggerliste **Dynamics 365 – Wenn ein Datensatz erstellt wird** aus.
 
-8.    Melden Sie sich bei Dynamics 365 an, falls Sie dazu aufgefordert werden.
+8.  Melden Sie sich bei Dynamics 365 an, falls Sie dazu aufgefordert werden.
 
-9.    Geben Sie in den Triggerdetails folgende Informationen ein:
+9.  Geben Sie in den Triggerdetails folgende Informationen ein:
 
   * **Name der Organisation**: Wählen Sie die Dynamics 365-Instanz aus, die die Logik-App überwachen soll.
 
@@ -174,4 +172,3 @@ Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Besch
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
-

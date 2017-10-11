@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: c0c9362f1c2e15c947aaaf7187f3383ad243140f
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="data-service-publishing-guide-for-the-azure-marketplace"></a>Leitfaden für die Veröffentlichung von Datendiensten im Azure Marketplace
 > [!IMPORTANT]
@@ -159,9 +159,3 @@ Nachdem Sie nun Ihr Datendienstangebot erstellt haben, stellen Sie sicher, dass 
 * Wenn Sie an Beispielen interessiert sind, lesen Sie den Artikel [Beispiele für die OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping-examples.md) , um Beispielcode kennen zu lernen und Codesyntax und Kontext zu verstehen.
 
 [link-pubportal]:https://publish.windowsazure.com
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-

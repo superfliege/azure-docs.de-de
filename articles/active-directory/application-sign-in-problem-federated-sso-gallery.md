@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
 ms.openlocfilehash: 0fc5a8eb3d033d60bf6082d61bf1698924ab91c6
-ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Probleme beim Anmelden bei einer Kataloganwendung, die für einmaliges Anmelden im Verbund konfiguriert ist
 
 Um das Problem zu beheben, müssen Sie die Anwendungskonfiguration in Azure AD wie folgt überprüfen:
@@ -267,4 +265,3 @@ Weitere Informationen zum Anpassen der SAML-Attributansprüche, die an Ihre Anwe
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
-

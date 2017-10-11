@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/24/2017
 ms.author: ryanwi
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 07883a33382cc660b043c99872312a9e77228253
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="deploy-an-autoscaling-app-using-a-template"></a>Bereitstellen einer App für die automatische Skalierung mithilfe einer Vorlage
 
 [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) sind eine hervorragende Möglichkeit, Gruppen aufeinander bezogener Ressourcen bereitzustellen. Dieses Tutorial baut auf [Bereitstellen einer einfachen Skalierungsgruppe](virtual-machine-scale-sets-mvss-start.md) auf und beschreibt, wie Sie eine einfache Anwendung zur automatischen Skalierung unter Verwendung einer Azure Resource Manager-Vorlage in einer Skalierungsgruppe bereitstellen.  Sie können die automatische Skalierung auch mithilfe von PowerShell, CLI oder über das Portal einrichten. Weitere Informationen finden Sie unter [Übersicht über die automatische Skalierung](virtual-machine-scale-sets-autoscale-overview.md).
@@ -309,4 +307,3 @@ fi
 ## <a name="next-steps"></a>Nächste Schritte
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
-

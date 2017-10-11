@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: b1b27918bb5fcff1d19f4711ea70fe46a5697933
-ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tivitz"></a>Tutorial: Azure Active Directory-Integration mit TiViTz
 
@@ -225,5 +223,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „TiViTz“ klicken, sollten Sie aut
 [201]: ./media/active-directory-saas-tivitz-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tivitz-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tivitz-tutorial/tutorial_general_203.png
-
 

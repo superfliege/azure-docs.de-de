@@ -14,13 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: a662841bebda460d4225e080f16705b3f16fdc46
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="get-started-with-azure-advisor"></a>Erste Schritte mit Azure Advisor
 
 Erfahren Sie, wie Sie über das Azure-Portal auf den Ratgeber zugreifen und wie Sie Empfehlungen abrufen, umsetzen, suchen und aktualisieren.
@@ -94,4 +93,3 @@ Weitere Informationen zum Ratgeber:
 * [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
 -  [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
 * [Advisor-Empfehlungen zu Kosten](advisor-performance-recommendations.md)
-

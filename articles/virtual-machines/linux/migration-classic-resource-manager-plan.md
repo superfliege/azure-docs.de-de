@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
 ms.openlocfilehash: 5db4e5b18ad385e7eba125a1296a9c5054213446
-ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 Azure Resource Manager bietet zwar zahlreiche praktische Features, die Migration muss jedoch sorgfältig geplant werden, damit alles reibungslos funktioniert. Eine gründliche Planung gewährleistet, dass beim Ausführen der Migrationsaktivitäten keine Probleme auftreten. 
 
@@ -96,7 +94,7 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
 - **ExpressRoute-Leitungen und VPN:** ExpressRoute-Gateways mit Autorisierungslinks können derzeit nicht ohne Ausfallzeit migriert werden. Informationen zur Umgehung dieses Problems finden Sie unter [Migrieren von ExpressRoute-Verbindungen und zugeordneten virtuellen Netzwerken vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell](../../expressroute/expressroute-migration-classic-resource-manager.md).
 
 - **VM-Erweiterungen:** Erweiterungen für virtuelle Computer können eines der größten Hindernisse für die Migration ausgeführter virtueller Computer darstellen. Korrekturmaßnahmen für VM-Erweiterungen können bis zu zwei Tage in Anspruch nehmen. Berücksichtigen Sie dies bei der Planung.  Zur Meldung des Status der VM-Erweiterungen von ausgeführten virtuellen Computern wird ein funktionierender Azure-Agent benötigt. Wenn für einen ausgeführten virtuellen Computer ein Fehlerstatus zurückgegeben wird, wird die Migration angehalten. Der Agent selbst muss sich für die Migration nicht in einem funktionsfähigen Zustand befinden, aber wenn auf dem virtuellen Computer Erweiterungen vorhanden sind, kann die Migration nur fortgesetzt werden, wenn ein funktionierender Agent und eine ausgehende Internetverbindung (mit DNS) verfügbar sind.
-  - Falls während der Migration die Verbindung mit einem DNS-Server unterbrochen wird, müssen mit Ausnahme von „BGInfo v1\*“ alle VM-Erweiterungen vor der Migrationsvorbereitung von allen virtuellen Computern entfernt und nach der Migration zu Azure Resource Manager wieder den virtuellen Computern hinzugefügt werden.  **Dies gilt nur für ausgeführte virtuelle Computer.**  Bei virtuellen Computern mit dem Status „Beendet (Zuordnung aufgehoben)“ müssen VM-Erweiterungen nicht entfernt werden. **Hinweis:** Viele Erweiterungen wie Azure-Diagnose und Security Center-Überwachung werden nach der Migration automatisch neu installiert und können daher problemlos entfernt werden.
+  - Wenn die Verbindung mit einem DNS-Server während der Migration alle VM-Erweiterungen, mit Ausnahme von BGInfo v1 verloren geht. \* müssen zuerst entfernt werden aus jeder VM, bevor die Migration vorbereiten, und anschließend erneut wieder an den virtuellen Computer nach der Migration von Azure-Ressourcen-Manager.  **Dies gilt nur für ausgeführte virtuelle Computer.**  Bei virtuellen Computern mit dem Status „Beendet (Zuordnung aufgehoben)“ müssen VM-Erweiterungen nicht entfernt werden. **Hinweis:** Viele Erweiterungen wie Azure-Diagnose und Security Center-Überwachung werden nach der Migration automatisch neu installiert und können daher problemlos entfernt werden.
   - Vergewissern Sie sich zudem, dass ausgehender Internetzugriff nicht durch Netzwerksicherheitsgruppen (NSGs) eingeschränkt wird. Das kann bei bestimmten NSG-Konfigurationen der Fall sein. Ausgehender Internetzugriff (und DNS) ist für die Migration von VM-Erweiterungen zu Azure Resource Manager erforderlich. 
   - Von der BGInfo-Erweiterung gibt es zwei Versionen: v1 und v2.  Wenn der virtuelle Computer über das klassische Portal oder mithilfe von PowerShell erstellt wurde, verfügt er wahrscheinlich über die v1-Version der Erweiterung. Diese Erweiterung muss nicht entfernt werden und wird von der Migrations-API übersprungen (nicht migriert). Wenn der klassische virtuelle Computer hingegen über das neue Azure-Portal erstellt wurde, verfügt er wahrscheinlich über die JSON-basierte v2-Version von BGInfo. Diese Version kann zu Azure Resource Manager migriert werden. Dazu muss der Agent jedoch funktionieren und über ausgehenden Internetzugriff (und DNS) verfügen. 
   - **Korrekturoption 1:** Wenn Sie wissen, dass Ihre virtuellen Computer nicht über ausgehenden Internetzugriff verfügen, kein funktionierender DNS-Dienst verfügbar ist und auf den virtuellen Computern keine funktionierenden Azure-Agents vorhanden sind, deinstallieren Sie alle VM-Erweiterungen im Rahmen der Migration vor der Vorbereitungsphase, und installieren Sie sie nach der Migration neu. 
@@ -213,4 +211,3 @@ Rufen Sie sich noch einmal die Gründe für die Migration vom klassischen Bereit
 * [Communitytools zur Unterstützung beim Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager](../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Überprüfen der häufigsten Fehler bei der Migration](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Antworten auf die am häufigsten gestellten Fragen zum Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-

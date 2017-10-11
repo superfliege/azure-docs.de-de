@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: bdeae5d1440cf8930a9cbc1ddea38ea7754ff7f6
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 0e1217afb0a37353793c64ae927b741d9fee4954
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung
  
@@ -43,8 +42,8 @@ Für nicht autorisierte Anforderungen tritt ein Fehler mit dem Statuscode 401 au
  
 Wenn Sie die Azure AD-Authentifizierung mit Azure Media Services nutzen, stehen Ihnen zwei Authentifizierungsoptionen zur Verfügung:
 
-- **Benutzerauthentifizierung** Dient zum Authentifizieren einer Person, die die App zum Interagieren mit Media Services-Ressourcen verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird. 
-- **Dienstprinzipalauthentifizierung** Dient zum Authentifizieren eines Diensts. Bei Anwendungen, die diese Authentifizierungsmethode normalerweise nutzen, handelt es sich um Apps, mit denen Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge ausgeführt werden. Beispiele sind Web-Apps, Funktions-Apps, Logik-Apps, API und Microservices.
+- **Benutzerauthentifizierung**. Dient zum Authentifizieren einer Person, die die App zum Interagieren mit Media Services-Ressourcen verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird. 
+- **Dienstprinzipalauthentifizierung**. Dient zum Authentifizieren eines Diensts. Bei Anwendungen, die diese Authentifizierungsmethode normalerweise nutzen, handelt es sich um Apps, mit denen Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge ausgeführt werden. Beispiele sind Web-Apps, Funktions-Apps, Logik-Apps, API und Microservices.
 
 ### <a name="user-authentication"></a>Benutzerauthentifizierung 
 
@@ -154,5 +153,4 @@ Die folgenden Artikel enthalten Übersichten über Azure AD-Authentifizierungsko
 
 * Verwenden Sie das Azure-Portal zum [Zugreifen auf die Azure AD-Authentifizierung, um die Azure Media Services-API zu nutzen](media-services-portal-get-started-with-aad.md).
 * Verwenden Sie die Azure AD-Authentifizierung zum [Zugreifen auf die Azure Media Services-API mit .NET](media-services-dotnet-get-started-with-aad.md).
-
 

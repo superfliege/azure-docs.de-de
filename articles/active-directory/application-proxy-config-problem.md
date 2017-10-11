@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 7551c290858251b6dbbd131049dbee14e5353785
-ms.contentlocale: de-de
-ms.lasthandoff: 04/17/2017
-
+ms.openlocfilehash: fe56f56162ba7186f1b660a5b44fcef38f1dee9d
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problem-creating-an-application-proxy-application"></a>Problem beim Erstellen einer Anwendungsproxyanwendung 
 
 Nachfolgend sind einige der häufigen Probleme aufgeführt, die beim Erstellen einer neuen Anwendungsproxyanwendung auftreten können.
@@ -51,4 +49,3 @@ Die Fehlermeldung sollte beim Erstellen der Anwendung in der oberen rechten Ecke
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Aktivieren des Anwendungsproxys über das Azure-Portal](active-directory-application-proxy-enable.md)
-

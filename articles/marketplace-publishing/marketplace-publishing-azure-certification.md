@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hascipio
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: aadc695b1f07d04f1fcc7f2f2e3ff90fb7f54849
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>Anfordern einer Vorabgenehmigung für das Microsoft Azure Certified-Programm
 In diesem Artikel erfahren Sie, wie Sie eine Microsoft Azure-Zertifizierung erlangen, um Ihre Lösung in Azure Marketplace veröffentlichen und von Marketingvorteilen profitieren zu können. Eine ausführliche Übersicht über das Microsoft Azure Certified-Programm und dessen Vorteile finden Sie unter [http://azure.com/certified](http://azure.com/certified).
@@ -41,9 +41,3 @@ Nach Erhalt der Vorabgenehmigung für das Microsoft Azure Certified-Programm kö
 
 ## <a name="see-also"></a>Siehe auch
 * [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-

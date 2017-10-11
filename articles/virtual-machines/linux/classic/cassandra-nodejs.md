@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: acfa9f6f0166167341fc54c4d55fb37e0a338024
-ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.openlocfilehash: 1ff3d77ced6c9d90029b251490c05e52d9b43515
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="running-cassandra-with-linux-on-azure-and-accessing-it-from-nodejs"></a>Ausführen von Cassandra mit Linux auf Azure und Zugreifen darauf mit Node.js
 > [!IMPORTANT] 
@@ -683,5 +682,4 @@ Microsoft Azure ist eine flexible Plattform, die das Ausführen von Microsoft- s
 * [http://cassandra.apache.org](http://cassandra.apache.org)
 * [http://www.datastax.com](http://www.datastax.com)
 * [http://www.nodejs.org](http://www.nodejs.org)
-
 

@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: mikerou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 46b0b62f92abbac57bc27bbcdd5821eafedf5519
-ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Programmgesteuertes Skalieren eines Service Fabric-Clusters 
 
 Grundlagen zum Skalieren eines Service Fabric-Clusters in Azure finden Sie in der Dokumentation zu [Clusterskalierung](./service-fabric-cluster-scale-up-down.md). Der Artikel beschreibt, wie Service Fabric-Cluster auf Skalierungsgruppen für virtuelle Computer aufgebaut werden und entweder manuell oder mit automatischen Skalierungsregeln skaliert werden können. In diesem Dokument werden programmgesteuerte Methoden für die Koordination von Azure-Skalierungsvorgängen für komplexere Szenarien behandelt. 
@@ -154,4 +151,3 @@ Für die ersten Schritte mit der Implementierung Ihrer eigenen Logik für automa
 - [Manuelles Skalieren oder mit automatischen Skalierungsregeln](./service-fabric-cluster-scale-up-down.md)
 - [Azure-Fluent-Verwaltungsbibliotheken für .NET](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (nützlich für die Interaktion mit den einem Service Fabric-Cluster zugrunde liegenden VM-Skalierungsgruppen)
 - [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (nützlich für die Interaktion mit einem Service Fabric-Cluster und dessen Knoten)
-

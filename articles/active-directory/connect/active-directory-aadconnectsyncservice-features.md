@@ -14,15 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: a439f421d726f58b2d21fb4a0e883e16db719364
-ms.contentlocale: de-de
-ms.lasthandoff: 03/10/2017
-
+ms.openlocfilehash: c2873510c280a2683c235cfdce3d2617c3b665cd
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-# Features des Azure AD Connect-Synchronisierungsdiensts
-<a id="azure-ad-connect-sync-service-features" class="xliff"></a>
+# <a name="azure-ad-connect-sync-service-features"></a>Features des Azure AD Connect-Synchronisierungsdiensts
 Das Synchronisierungsfeature von Azure AD Connect besteht aus zwei Komponenten:
 
 * Der lokalen Komponente **Azure AD Connect-Synchronisierung**, die auch als **Synchronisierungsmodul** bezeichnet wird.
@@ -62,12 +60,10 @@ Die folgenden Einstellungen werden von Azure AD Connect konfiguriert und können
 | UnifiedGroupWriteback |[Vorschau: Gruppenrückschreiben](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |Derzeit nicht unterstützt. |
 
-## Resilienz bei doppelten Attributen
-<a id="duplicate-attribute-resiliency" class="xliff"></a>
+## <a name="duplicate-attribute-resiliency"></a>Resilienz bei doppelten Attributen
 Damit die Bereitstellung von Objekten mit doppelten UPN-/proxyAddresses-Werten nicht mit einem Fehler abgebrochen wird, wird das doppelte Attribut unter Quarantäne gestellt, und ein temporärer Wert wird zugewiesen. Wenn der Konflikt gelöst ist, wird der temporäre UPN-Wert automatisch auf den richtigen Wert gesetzt. Weitere Informationen finden Sie unter [Identitätssynchronisierung und Resilienz bei doppelten Attributen](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md).
 
-## UserPrincipalName-„Soft Match“
-<a id="userprincipalname-soft-match" class="xliff"></a>
+## <a name="userprincipalname-soft-match"></a>UserPrincipalName-„Soft Match“
 Wenn dieses Feature aktiviert ist, wird ein „Soft Match“ für den UPN sowie für die [primäre SMTP-Adresse](https://support.microsoft.com/kb/2641663)aktiviert, die immer aktiviert ist. Ein „Soft Match“ wird verwendet, um vorhandene Cloudbenutzer in Azure AD mit lokalen Benutzern abzugleichen.
 
 Dieses Feature ist besonders hilfreich, wenn Sie lokale AD-Konten mit vorhandenen in der Cloud erstellten Konten abgleichen müssen und Exchange Online nicht verwenden. In diesem Szenario gibt es im Allgemeinen keinen Grund dafür, das SMTP-Attribut in der Cloud festzulegen.
@@ -84,8 +80,7 @@ Wenn dieses Feature für Ihr Azure AD-Verzeichnis nicht aktiviert ist, können S
 Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 ```
 
-## Synchronisieren von userPrincipalName-Updates
-<a id="synchronize-userprincipalname-updates" class="xliff"></a>
+## <a name="synchronize-userprincipalname-updates"></a>Synchronisieren von userPrincipalName-Updates
 Früher wurden Updates des userPrincipalName-Attributs mithilfe des Synchronisierungsdiensts vom lokalen Standort blockiert, sofern nicht die beiden folgenden Bedingungen erfüllt waren:
 
 * Der Benutzer ist verwaltet (kein Verbundbenutzer).
@@ -109,9 +104,7 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 
 Nach Aktivierung dieses Features bleiben vorhandene userPrincipalName-Werte unverändert. Nach der nächsten lokalen Änderung des userPrincipalName-Attributs wird der UPN im Rahmen der normalen Deltasynchronisierung der Benutzer aktualisiert.  
 
-## Siehe auch
-<a id="see-also" class="xliff"></a>
+## <a name="see-also"></a>Siehe auch
 * [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md)
 * [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
 

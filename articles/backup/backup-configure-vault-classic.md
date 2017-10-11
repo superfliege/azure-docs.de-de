@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: a8daa6a4655b72936b6299c0fa5b80459ffa5da3
-ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="back-up-a-windows-server-or-workstation-to-azure-using-the-classic-portal"></a>Sichern eines Servers oder einer Arbeitsstation unter Windows in Azure mit dem klassischen Portal
 > [!div class="op_single_selector"]
@@ -172,4 +171,3 @@ Zusätzliche Informationen zum Sichern von virtuellen Computern oder anderen Wor
 * [Sichern von IaaS-VMs](backup-azure-vms-prepare.md)
 * [Sichern von Workloads in Azure mit Microsoft Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 * [Sichern von Workloads in Azure mit DPM](backup-azure-dpm-introduction.md)
-

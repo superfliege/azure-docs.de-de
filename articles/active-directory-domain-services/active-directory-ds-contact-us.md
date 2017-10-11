@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 0a4a08a58302c113405756ad7d3bb6487887a72a
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure AD Domain Services – so erreichen Sie uns
 ## <a name="contact-the-product-team"></a>Wenden Sie sich an das Produktteam
@@ -36,4 +35,3 @@ Stellen Sie folgende Informationen bereit, damit wir das Problem untersuchen kö
 Sie können uns Ihr Feedback zu Azure AD Domain Services auch gerne über den **[Azure Active Directory User Voice-Kanal](https://feedback.azure.com/forums/169401-azure-active-directory/)** mitteilen.
 
 Stellen Sie Ihrer Frage oder Ihrem Feedback das Kürzel **„AADDS“**voran, um uns zu erreichen.
-

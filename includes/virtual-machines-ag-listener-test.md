@@ -1,18 +1,18 @@
-In diesem Schritt testen Sie den Verfügbarkeitsgruppenlistener mithilfe einer Clientanwendung, die im selben Netzwerk ausgeführt wird.
+In diesem Schritt testen Sie den verfügbarkeitsgruppenlistener mithilfe einer Clientanwendung, die sich im selben Netzwerk ausgeführt wird.
 
-Für die Clientkonnektivität gelten folgende Anforderungen:
+Clientkonnektivität gelten die folgenden Anforderungen:
 
-* Clientverbindungen mit dem Listener müssen von Computern ausgehen, die sich in einem anderen Clouddienst als dem, der die AlwaysOn-Verfügbarkeitsreplikate hostet, befinden.
-* Wenn sich die AlwaysOn-Replikate in unterschiedlichen Subnetzen befinden, müssen Clients *MultisubnetFailover=True* in der Verbindungszeichenfolge angeben. Diese Bedingung führt zu parallelen Verbindungsversuchen mit Replikaten in unterschiedlichen Subnetzen. Zu diesem Szenario gehört eine regionsübergreifende AlwaysOn-Verfügbarkeitsgruppenbereitstellung.
+* Clientverbindungen mit dem Listener müssen von Computern ausgehen, die in einer anderen Cloud-Dienst als dem befinden, die die verfügbarkeitsreplikate hostet.
+* Wenn die AlwaysOn-Replikate in unterschiedlichen Subnetzen befinden, müssen Clients angeben *MultisubnetFailover = True* in der Verbindungszeichenfolge angegeben. Diese Bedingung führt zu parallelen Verbindungsversuchen mit Replikaten in den verschiedenen Subnetzen. Dieses Szenario umfasst eine regionsübergreifende AlwaysOn-Verfügbarkeit gruppenbereitstellung.
 
-Ein Beispiel ist die Verbindung mit dem Listener über einen der virtuellen Computer im gleichen virtuellen Azure-Netzwerk (jedoch nicht über den, der ein Replikat hostet). Eine einfache Möglichkeit zum Ausführen dieses Tests besteht darin, SQL Server Management Studio mit dem Verfügbarkeitsgruppenlistener zu verbinden. Eine weitere einfache Methode ist die Ausführung von [SQLCMD.exe](https://technet.microsoft.com/library/ms162773.aspx) wie folgt:
+Ein Beispiel ist die Verbindung mit dem Listener von einem virtuellen Computer im gleichen virtuellen Azure-Netzwerk (aber nicht, die ein Replikat hostet). Eine einfache Möglichkeit zum Ausführen dieses Tests werden versuchen, SQL Server Management Studio an den Listener der verfügbarkeitsgruppe zu verbinden. Eine weitere einfache Methode zum Ausführen ist [SQLCMD.exe](https://technet.microsoft.com/library/ms162773.aspx)wie folgt:
 
     sqlcmd -S "<ListenerName>,<EndpointPort>" -d "<DatabaseName>" -Q "select @@servername, db_name()" -l 15
 
 > [!NOTE]
-> Wenn der EndpointPort-Wert *1433* ist, müssen Sie ihn nicht im Aufruf angeben. Beim vorherigen Aufruf wird zudem davon ausgegangen, dass der Clientcomputer zur gleichen Domäne gehört und dass dem Aufrufer Berechtigungen für die Datenbank mithilfe der Windows-Authentifizierung gewährt wurden.
+> Wenn der Wert EndpointPort ist *1433*, Sie sind nicht erforderlich, im Aufruf angegeben. Der vorherige Aufruf wird davon ausgegangen, dass der Clientcomputer mit der gleichen Domäne angehört und der Aufrufer Berechtigungen für die Datenbank gewährt wurde mithilfe der Windows-Authentifizierung.
 > 
 > 
 
-Führen Sie beim Testen des Listeners ein Failover der Verfügbarkeitsgruppe durch, um sicherzustellen, dass Clients über Failover eine Verbindung mit dem Listener herstellen können.
+Wenn Sie den Listener getestet haben, achten Sie darauf, dass Sie ein Failover der verfügbarkeitsgruppe, um sicherzustellen, dass Clients eine Verbindung mit dem Listener failoverübergreifend herstellen können.
 

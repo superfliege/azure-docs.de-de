@@ -1,6 +1,6 @@
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Führen Sie zum Bereinigen der Ressourcen den folgenden Befehl aus:
+Um Ihre Ressourcen bereinigen, führen Sie den folgenden Befehl ein:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

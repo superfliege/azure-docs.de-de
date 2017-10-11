@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
 ms.openlocfilehash: cf25772bd9d92b59401aa5da76e6bbd5fa5ee3e5
-ms.contentlocale: de-de
-ms.lasthandoff: 07/15/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten
 Eine Anwendung, die einmaliges Anmelden mit Azure Active Directory unterstützt, kann nur im [Azure AD-Katalog](https://azure.microsoft.com/marketplace/active-directory/all/)aufgelistet werden, wenn sie einen der folgenden Integrationsmodi implementiert:
@@ -95,5 +94,4 @@ Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten i
 > Logo einfügen (PNG-Datei, 150 px mal 122 px, transparente Hintergrundfarbe):
 > 
 > 
-
 

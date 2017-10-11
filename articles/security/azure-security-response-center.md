@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 35b51ab7fa40e16ebe5170c3dea33b02a653d23b
-
-
+ms.openlocfilehash: bc47589ac769d89b2aa7f7565d08555ace3119d9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="microsoft-security-response-center"></a>Microsoft Security Response Center
 Das Microsoft Security Response Center (MSRC) wird von einigen der weltweit erfahrensten Sicherheitsexperten geleitet. Durch Überwachung rund um die Uhr an jedem Tag des Jahres identifizieren diese Experten Sicherheitsvorfälle und Sicherheitsrisiken lokal und in der Cloud, reagieren darauf und lösen sie.
@@ -39,9 +39,3 @@ Microsoft-Prämienprogramme honorieren Experten für neuartige Ausnutzungstechni
 Mehr über diese Programme erfahren Sie auf der Seite [Microsoft Bounty Programs](https://technet.microsoft.com/security/dn425036) (Prämienprogramme von Microsoft) und im [MSRC-Blog](https://blogs.technet.microsoft.com/msrc/).
 
 Weitere Informationen zum MSRC finden Sie auf der [MSRC-Homepage](https://technet.microsoft.com/library/dn440717.aspx).
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 877fb34d2fe5d4b85157a8338e180358d2226ef1
-
-
+ms.openlocfilehash: 9a69253129cdedc4f5d7e736d5bd8d6a68f95a1e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Versionshinweise zum Azure SDK für .NET 2.7 und .NET 2.7.1
 ## <a name="overview"></a>Übersicht
@@ -63,7 +63,7 @@ In dieser Version wurden die folgenden Aktualisierungen an den Erweiterungen fü
 #### <a name="known-issues"></a>Bekannte Probleme
 Knoten des Web-App-Bereitstellungsslots werden unter dem Knoten "Slots" in Server-Explorer nicht angezeigt, und untergeordnete Knoten des Web-App-Bereitstellungsslots werden unter Cloud Explorer nicht geladen. Dieses Problem wurde behoben und für die nächste SDK-Version vorbereitet. 
 
-### <a name="a-namecloudexploreracloud-explorer-for-visual-studio-2015"></a><a name="cloud_explorer"></a>Cloud Explorer für Visual Studio 2015
+### <a name="cloud_explorer"></a>Cloud Explorer für Visual Studio 2015
 Azure SDK 2.7 enthält Cloud Explorer für Visual Studio 2015, mit dem Sie Ihre Azure-Ressourcen anzeigen, deren Eigenschaften überprüfen und wichtige Entwickleraktionen in Visual Studio ausführen können. 
 
 In Cloud Explorer wird Folgendes unterstützt:
@@ -136,10 +136,4 @@ LightSwitch-Projekte sind mit dieser Version nicht kompatibel. Dieses Problem wi
 [Ankündigungsbeitrag zu Azure SDK 2.7 (in englischer Sprache)](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)
 
 [Unterstützungs- und Deaktivierungsinformationen zum Azure SDK für .NET und APIs](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

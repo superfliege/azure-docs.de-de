@@ -14,14 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 4e2de9c4d1c0f92970911e132fffaacbd01d9ad0
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definieren von Vertrauens-Frameworks mit Azure AD B2C Identity Experience Framework
 
 Benutzerdefinierte Azure Active Directory B2C-Richtlinien (Azure AD B2C), die das Identity Experience Framework nutzen, bieten ihrem Unternehmen einen zentralisierten Dienst. Dieser Dienst reduziert die Komplexität des Identitätsverbunds in einer großen Interessengemeinschaft. Die Komplexität wird auf eine einzelne Vertrauensstellung und einen einzelnen Metadatenaustausch reduziert.
@@ -130,4 +128,3 @@ Interoperabilität ist eine andere wesentliche Herausforderung. Zusätzliche Ans
 User Journeys enthalten Protokollprofile und Metadaten, um die „On the Wire“-Interoperabilität zwischen der vertrauenden Seite und anderen Teilnehmern zu installieren. Außerdem sind Regeln für die betriebsbezogene Runtime vorhanden, die auf Anforderung/Antwort-Nachrichten für den Austausch von Identitätsinformationen angewendet werden, um die Konformität mit veröffentlichten Richtlinien im Rahmen der TF-Spezifikation durchzusetzen. Das Konzept der Benutzer Journeys ist von entscheidender Bedeutung für die Anpassung der Kundenerfahrung. Es verdeutlicht auch, wie das System auf Protokollebene funktioniert.
 
 Auf dieser Basis können Anwendungen und Portale der vertrauenden Seite je nach Kontext benutzerdefinierte Azure AD B2C Richtlinien mit Nutzung des Identity Experience Framework aufrufen, indem der Name einer bestimmten Richtlinie übergeben wird. So können genau das gewünschte Verhalten und der gewünschte Informationsaustausch erzielt werden, ohne dass hoher Aufwand anfällt oder ein Risiko besteht.
-

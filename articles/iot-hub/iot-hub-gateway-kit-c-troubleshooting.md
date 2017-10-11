@@ -16,30 +16,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
-ms.openlocfilehash: f24a620a18d7756b24f8f5f63d8b31fca63ade25
-ms.contentlocale: de-de
-ms.lasthandoff: 01/25/2017
-
+ms.openlocfilehash: 7e80951de55ade6b5140608dcff8ebb064f942ca
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-<a id="troubleshooting" class="xliff"></a>
+# <a name="troubleshooting"></a>Problembehandlung
 
-# Problembehandlung
+## <a name="hardware-issues"></a>Hardwareprobleme
 
-<a id="hardware-issues" class="xliff"></a>
-
-## Hardwareprobleme
-
-<a id="ti-sensortag-cannot-be-connected" class="xliff"></a>
-
-### TI SensorTag kann nicht verbunden werden
+### <a name="ti-sensortag-cannot-be-connected"></a>TI SensorTag kann nicht verbunden werden
 
 Verwenden Sie für die Problembehandlung von SensorTag-Verbindungsproblemen die [SensorTag-App](http://processors.wiki.ti.com/index.php/SensorTag_User_Guide#SensorTag_App_user_guide).
 
-<a id="have-an-issue-with-intel-nuc" class="xliff"></a>
-
-### Probleme mit Intel NUC
+### <a name="have-an-issue-with-intel-nuc"></a>Probleme mit Intel NUC
 
 Informationen zum Beheben von Problemen beim Start finden Sie unter [Troubleshooting No Boot Issues on Intel NUC](http://www.intel.com/content/www/us/en/support/boards-and-kits/000005845.html) (Beheben von Problemen beim Start des Intel NUC).
 
@@ -47,13 +38,9 @@ Informationen zum Beheben von Problemen mit dem Betriebssystem finden Sie unter 
 
 Informationen zum Beheben anderer Probleme finden Sie unter [Blink Codes and Beep Codes for Intel NUC](http://www.intel.com/content/www/us/en/support/boards-and-kits/intel-nuc-boards/000005854.html) (Blinkcodes and Signaltoncodes für Intel NUC).
 
-<a id="nodejs-package-issues" class="xliff"></a>
+## <a name="nodejs-package-issues"></a>Probleme mit Node.js-Paketen
 
-## Probleme mit Node.js-Paketen
-
-<a id="no-response-during-gulp-tasks" class="xliff"></a>
-
-### Keine Antwort während Gulp-Tasks
+### <a name="no-response-during-gulp-tasks"></a>Keine Antwort während Gulp-Tasks
 
 Wenn Sie während der Ausführung von Gulp-Tasks auf Probleme stoßen, können Sie die Option `--verbose` für das Debuggen hinzufügen. Versuchen Sie, laufende Gulp-Tasks mit `Ctrl + C` zu beenden, und führen Sie dann den folgenden Befehl in Ihrem Konsolenfenster aus, um Debugmeldungen anzuzeigen. In der Konsolenausgabe werden unter Umständen detaillierte Fehlermeldungen angezeigt.
 
@@ -61,15 +48,11 @@ Wenn Sie während der Ausführung von Gulp-Tasks auf Probleme stoßen, können S
 gulp --verbose
 ```
 
-<a id="device-discovery-issues" class="xliff"></a>
-
-### Probleme mit Device discovery (Gerätesuche)
+### <a name="device-discovery-issues"></a>Probleme mit Device discovery (Gerätesuche)
 
 Hilfreiche Informationen bei der Behebung von gängigen Problemen mit dem Befehl `discover-sensortag` finden Sie auf der [Wikiseite](https://wiki.archlinux.org/index.php/bluetooth#Bluetoothctl).
 
-<a id="npm-issues" class="xliff"></a>
-
-### NPM-Probleme
+### <a name="npm-issues"></a>NPM-Probleme
 
 Versuchen Sie, das NPM-Paket mit dem folgenden Befehl zu aktualisieren:
 
@@ -79,13 +62,9 @@ npm install -g npm
 
 Wenn das Problem weiterhin besteht, schreiben Sie am Ende dieses Artikels einen Kommentar, oder erstellen Sie in unserem [Beispielrepository](https://github.com/azure-samples/iot-hub-c-intel-nuc-gateway-getting-started) ein GitHub-Problem.
 
-<a id="remote-debugging" class="xliff"></a>
-
-## Remotedebugging
+## <a name="remote-debugging"></a>Remotedebugging
 > Die nachfolgenden Anweisungen gelten für das Debuggen der in diesem Tutorial verwendeten Node.js-Skripts.
-<a id="run-the-sample-application-in-debug-mode" class="xliff"></a>
-
-### Ausführen der Beispielanwendung im Debugmodus
+### <a name="run-the-sample-application-in-debug-mode"></a>Ausführen der Beispielanwendung im Debugmodus
 
 Führen Sie den folgenden Befehl aus, um die Beispielanwendung im Debugmodus auszuführen:
 
@@ -95,9 +74,7 @@ gulp run --debug
 
 Wenn das Debugmodul bereit ist, sollte `Debugger listening on port 5858` in der Konsolenausgabe angezeigt werden.
 
-<a id="configure-visual-studio-code-to-connect-to-the-remote-device" class="xliff"></a>
-
-### Konfigurieren von Visual Studio Code zum Verbinden mit dem Remotegerät
+### <a name="configure-visual-studio-code-to-connect-to-the-remote-device"></a>Konfigurieren von Visual Studio Code zum Verbinden mit dem Remotegerät
 
 1. Öffnen Sie den Bereich **Debuggen** auf der linken Seite.
 2. Klicken Sie auf die grüne Schaltfläche (F5) **Debuggen starten**. Visual Studio Code öffnet eine `launch.json`-Datei.
@@ -125,9 +102,7 @@ Wenn das Debugmodul bereit ist, sollte `Debugger listening on port 5858` in der 
 
 ![Remotedebuggen – Konfiguration](./media/iot-hub-gateway-kit-lessons/troubleshooting/remote_debugging_configuration.png)
 
-<a id="attach-to-the-remote-application" class="xliff"></a>
-
-### Anfügen an die Remoteanwendung
+### <a name="attach-to-the-remote-application"></a>Anfügen an die Remoteanwendung
 
 Klicken Sie auf die grüne Schaltfläche (F5) **Debuggen starten**, um das Debuggen zu starten.
 
@@ -135,9 +110,7 @@ Lesen Sie [JavaScript in VS Code](https://code.visualstudio.com/docs/languages/j
 
 ![Debuggen der BLE-Beispielanwendung](./media/iot-hub-gateway-kit-lessons/troubleshooting/debugging_ble_sample.png)
 
-<a id="azure-cli-issues" class="xliff"></a>
-
-## Probleme mit Azure CLI
+## <a name="azure-cli-issues"></a>Probleme mit Azure CLI
 
 Die Azure-Befehlszeilenschnittstelle (Azure CLI) ist ein Vorschaubuild. Sie können den [Preview Install Guide](https://github.com/Azure/azure-cli/blob/master/doc/preview_install_guide.md) (Installationshandbuch für Vorabversionen) verwenden, um nach Lösungen zu suchen.
 
@@ -151,13 +124,9 @@ Wenn in einem Fehler angezeigt wird, dass keine Version gefunden werden konnte, 
 python -m pip install --upgrade pip
 ```
 
-<a id="python-installation-issues" class="xliff"></a>
+## <a name="python-installation-issues"></a>Probleme bei der Installation von Python
 
-## Probleme bei der Installation von Python
-
-<a id="legacy-installation-issues-macos" class="xliff"></a>
-
-### Probleme bei der Vorgänger-Installation (MacOS)
+### <a name="legacy-installation-issues-macos"></a>Probleme bei der Vorgänger-Installation (MacOS)
 
 Bei der Installation von pip tritt ein Berechtigungsfehler auf, wenn frühere Pakete vorhanden sind, die mit **su**-Berechtigungen installiert wurden. Diese Situation tritt auf, wenn eine frühere Installation von Python mithilfe von brew (MacOS) nicht vollständig deinstalliert wurde. Einige pip-Pakete aus einer früheren Installation wurden mit „root“ erstellt, wodurch der Berechtigungsfehler verursacht wird. Die Lösung ist, die Pakete zu entfernen, die durch root erstellt wurden. Führen Sie die folgenden Schritte aus, um dies abzuschließen:
 
@@ -166,15 +135,11 @@ Bei der Installation von pip tritt ein Berechtigungsfehler auf, wenn frühere Pa
 3. Deinstallieren Sie die Pakete aus Schritt 2: `sudo rm -rf {package name}`
 4. Installieren Sie Python neu.
 
-<a id="azure-iot-hub-issues" class="xliff"></a>
-
-## Probleme mit Azure IoT Hub
+## <a name="azure-iot-hub-issues"></a>Probleme mit Azure IoT Hub
 
 Wenn Sie Azure IoT Hub erfolgreich mit der Azure-Befehlszeilenschnittstelle bereitgestellt haben und ein Tool benötigen, um die Geräte zu verwalten, die eine Verbindung mit IoT Hub herstellen, können Sie die unten angegebenen Tools ausprobieren.
 
-<a id="device-explorer" class="xliff"></a>
-
-### Geräte-Explorer
+### <a name="device-explorer"></a>Geräte-Explorer
 
 [Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) wird auf Ihrem lokalen Windows-Computer ausgeführt und stellt eine Verbindung mit IoT-Hub in Azure her. Er kommuniziert mit den folgenden [IoT Hub-Endpunkten](https://azure.microsoft.com/en-us/documentation/articles/iot-hub-devguide/):
 
@@ -184,9 +149,7 @@ Wenn Sie Azure IoT Hub erfolgreich mit der Azure-Befehlszeilenschnittstelle bere
 
 Konfigurieren Sie Ihre IoT Hub-Verbindungszeichenfolge in diesem Tool, um alle Funktionen nutzen zu können.
 
-<a id="iothub-explorer" class="xliff"></a>
-
-### iothub-explorer
+### <a name="iothub-explorer"></a>iothub-explorer
 
 [iothub-explorer](https://github.com/Azure/iothub-explorer) ist ein Beispiel für CLI-Tools für mehrere Plattformen, um Geräteclients zu verwalten. Mit dem Tool können Sie Geräte im Identitätsregister verwalten, Gerät-zu-Cloud-Nachrichten überwachen und Cloud-zu-Gerät-Befehle senden.
 
@@ -202,15 +165,10 @@ Zum Abrufen zusätzlicher Hilfe zu allen iothub-explorer-Befehlen und den zugeh�
 iothub-explorer help
 ```
 
-<a id="the-azure-portal" class="xliff"></a>
-
-### Das Azure-Portal
+### <a name="the-azure-portal"></a>Das Azure-Portal
 
 Sie können eine vollständige CLI-Oberfläche nutzen, um alle Azure-Ressourcen zu erstellen und zu verwalten. Sie können auch das [Azure-Portal](https://azure.microsoft.com/en-us/documentation/articles/azure-portal-overview/) nutzen, um das Bereitstellen, Verwalten, und Debuggen Ihrer Azure-Ressourcen zu unterstützen.
 
-<a id="azure-storage-issues" class="xliff"></a>
-
-## Probleme mit Azure Storage
+## <a name="azure-storage-issues"></a>Probleme mit Azure Storage
 
 [Microsoft Azure-Speicher-Explorer (Vorschau)](http://storageexplorer.com/) ist eine eigenständige App von Microsoft, mit der Sie unter Windows, MacOS und Linux mit Azure Storage-Daten arbeiten können. Mit diesem Tool können Sie eine Verbindung mit Ihrer Tabelle herstellen und die Daten darin anzeigen. Mithilfe dieses Tools können Sie Probleme mit Azure Storage beheben.
-

@@ -1,10 +1,10 @@
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Alle durchsuchen** > **App Services** und anschließend auf Ihr Mobile Apps-Back-End. Klicken Sie unter **Einstellungen** auf **App Service Push** (App Service-Push) und dann auf den Namen Ihres Benachrichtigungs-Hubs.
-2. Wechseln Sie zu **Google (GCM)**, geben den **Serverschlüssel** ein, den Sie im vorherigen Verfahren von Firebase erhalten haben, und klicken dann auf **Speichern**.
+1. In der [Azure-Portal](https://portal.azure.com/), klicken Sie auf **alle Durchsuchen** > **Anwendungsdienste**, und klicken Sie dann auf Ihre Mobile Apps-Back-End. Klicken Sie unter **Einstellungen**, klicken Sie auf **App Service-Push**, und klicken Sie dann auf Notification Hub-Name.
+2. Wechseln Sie zu **Google (GCM)**, geben Sie die **Serverschlüssel** -Wert, der Sie von Firebase im vorherigen Verfahren abgerufen haben, und klicken Sie dann auf **speichern**.
 
-    ![Festlegen des GCM-API-Schlüssels im Portal](./media/app-service-mobile-android-configure-push/mobile-push-api-key.png)
+    ![Legen Sie den GCM API-Schlüssel im portal](./media/app-service-mobile-android-configure-push/mobile-push-api-key.png)
 
-Das Mobile Apps-Back-End ist nun für die Verwendung von Firebase Cloud Messaging konfiguriert. Dadurch können Sie Pushbenachrichtigungen über den Benachrichtigungs-Hub an Ihre auf einem Android-Gerät ausgeführte App senden.
+Back-End für Mobile Apps ist jetzt konfiguriert, um Firebase Cloud Messaging verwenden. Dadurch können Sie zum Senden von Pushbenachrichtigungen an Ihre app auf einem Android-Gerät ausgeführt werden, indem Sie den Notification Hub.
 
 <!-- URLs. -->
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/22/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 37dc0772ccf74b19656b60f11e66e065815dc2a6
-ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
-
-
+ms.openlocfilehash: 18c5cd8eb4ca211f8ae2b8dd994c0e8c48625a2f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>Tutorial: Azure Active Directory-Integration mit Halosys
 
@@ -93,7 +93,7 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azur
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Halosys als Gegenpart zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Halosys muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den** **Benutzernamen in Azure AD dem** **Benutzernamen in Halosys zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den**** Benutzernamen in Azure AD dem**** Benutzernamen in Halosys zuweisen.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Halosys zu konfigurieren und zu testen:
 
@@ -124,7 +124,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 
     a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern zur Anmeldung bei Ihrer Halosys-Anwendung verwendet wird, und verwenden Sie dabei folgendes Muster: `https://<company-name>.Halosys.com/client-api/api`.
 
-    b. Geben Sie im Textfeld **Identifier URL** (Bezeichner-URL) eine URL nach folgendem Muster ein: `https://<company-name>.Halosys.com`.    
+    b. Geben Sie im Textfeld **Identifier URL** (Bezeichner-URL) eine URL nach folgendem Muster ein: `https://<company-name>.Halosys.com`.   
          
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Halosys** auf **Metadaten herunterladen**, und speichern Sie die Datei auf Ihrem Computer:
 
@@ -168,7 +168,7 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-Halosys-tutorial/create_aaduser_04.png) 
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
+5. Auf der **Teilen Sie uns über diesen Benutzer** Dialogfeld Seite, die folgenden Schritte aus: ![erstellen ein Azure AD-Testbenutzer](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
 
     a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
 
@@ -264,9 +264,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Halosys“ klicken, sollten Sie au
 [203]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
-

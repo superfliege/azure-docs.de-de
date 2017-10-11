@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: f3f3616805f9bdf94fdd6cb467313244608f2d84
-ms.contentlocale: de-de
-ms.lasthandoff: 04/17/2017
-
+ms.openlocfilehash: 40579bbc950fb4ed9ddece4880b03d8ef32149ae
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="troubleshoot-azure-active-directory-application-management"></a>Problembehandlung bei der Azure Active Directory-Anwendungsverwaltung
 Über die folgenden Links gelangen Sie zu einer Inhaltsübersicht, die Sie bei der Behebung einiger der am häufigsten auftretenden Probleme mit der Verwaltung von **Unternehmensanwendungen** in Azure Active Directory unterstützt.
 
@@ -30,4 +28,3 @@ ms.lasthandoff: 04/17/2017
 * [Probleme mit dem Zugriffsbereich](active-directory-application-access-panel-content-map.md)
 * [Probleme mit dem Anwendungsproxy](active-directory-application-proxy-content-map.md)
 * [Probleme beim bedingten Zugriff](active-directory-application-conditional-access-content-map.md)
-

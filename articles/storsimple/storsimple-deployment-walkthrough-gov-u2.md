@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2016
 ms.author: v-sharos
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0b22dcdfc0432533b286e70d130bfe2ee2db92b2
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal-update-2"></a>Bereitstellen lokaler StorSimple-Ger채te im Government-Portal (Update 2)
 [!INCLUDE [storsimple-version-selector-deploy-gov](../../includes/storsimple-version-selector-deploy-gov.md)]
@@ -227,5 +226,4 @@ Installations- und Konfigurationsanweisungen f체r MPIO auf einem StorSimple-Ger�
 ## <a name="next-steps"></a>N채chste Schritte
 * Konfigurieren eines [virtuellen Ger채ts](storsimple-virtual-device-u2.md)
 * Verwenden des [StorSimple-Manager-Diensts](storsimple-manager-service-administration.md) f체r das Verwalten Ihres StorSimple-Ger채ts
-
 

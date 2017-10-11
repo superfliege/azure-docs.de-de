@@ -1,42 +1,42 @@
-## <a name="download-install-and-register-the-azure-backup-agent"></a>Herunterladen, Installieren und Registrieren des Azure Backup-Agents
-Nach dem Erstellen des Azure Backup-Tresors sollte auf jedem Windows-Computer (Windows Server, Windows-Client oder System Center Data Protection Manager-Server oder Azure Backup Server-Computer) ein Agent installiert werden, der das Sichern von Daten und Anwendungen in Azure ermöglicht.
+## <a name="download-install-and-register-the-azure-backup-agent"></a>Herunterladen Sie, installieren Sie und registrieren Sie den Azure Backup-agent
+Nach dem Erstellen der Azure Backup-Tresor, muss ein Agent installiert sein, auf jedem Ihrer Windows-Computer (Windows Server, Windows-Client, System Center Data Protection Manager-Server oder Azure Backup Server-Computer), das Sichern von Daten und Anwendungen in Azure ermöglicht.
 
-1. Melden Sie sich beim [Verwaltungsportal](https://manage.windowsazure.com/)
-2. Klicken Sie auf **Wiederherstellungsdienste**, und wählen Sie den Sicherungstresor aus, den Sie bei einem Server registrieren möchten. Die Seite "Schnellstart" für diesen Sicherungstresor wird angezeigt.
+1. Melden Sie sich bei der [-Verwaltungsportal](https://manage.windowsazure.com/)
+2. Klicken Sie auf **Wiederherstellungsdienste**, wählen Sie die backup-Tresor, die Sie mit einem Server registrieren möchten. Die Seite "Schnellstart" für backup-Tresor wird angezeigt.
    
     ![Schnellstart](./media/backup-install-agent/quickstart.png)
-3. Klicken Sie auf der Seite „Schnellstart“ unter **Agent herunterladen** auf **Für Windows Server oder System Center Data Protection Manager oder Windows Client**. Klicken Sie auf **Speichern** , um ihn auf den lokalen Computer zu kopieren.
+3. Klicken Sie auf der Seite "Schnellstart", auf die **für Windows Server oder System Center Data Protection Manager oder Windows Client** unter option **-Agent herunterladen**. Klicken Sie auf **speichern** , um auf den lokalen Computer zu kopieren.
    
-    ![Agent speichern](./media/backup-install-agent/agent.png)
-4. Sobald der Agent installiert ist, doppelklicken Sie auf „MARSAgentInstaller.exe“, um die Installation des Azure Backup-Agents zu starten. Wählen Sie den Installationsordner und den Ablageordner aus, der für den Agent erforderlich ist. Der verfügbare Speicherplatz am angegebenen Speicherort muss mindestens 5 % der Sicherungsdaten betragen.
-5. Wenn Sie einen Proxyserver für die Verbindung mit dem Internet verwenden, geben Sie im Bildschirm **Proxykonfiguration** die Details des Proxyservers ein. Wenn Sie einen authentifizierten Proxy verwenden, geben Sie in diesem Bildschirm die Informationen zum Benutzernamen und zum Kennwort ein.
-6. Der Azure Backup-Agent installiert .NET Framework 4.5 und Windows PowerShell (falls noch nicht verfügbar), um die Installation abzuschließen.
-7. Wenn der Agent installiert ist, klicken Sie auf die Schaltfläche **Mit Registrierung fortfahren** , um den Workflow fortzusetzen.
+    ![Speichern von Agents](./media/backup-install-agent/agent.png)
+4. Sobald der Agent installiert ist, einen Doppelklick MARSAgentInstaller.exe um die Installation des Azure Backup-Agents zu starten. Wählen Sie den Installationsordner und Ablageordner für den Agent erforderlich. Der Speicherort des Schemacaches angegeben muss freien Speicherplatz verfügen, mindestens 5 % der Sicherungsdaten.
+5. Wenn Sie einen Proxyserver verwenden, um mit dem Internet Verbinden der **Proxykonfiguration** Bildschirm, geben Sie die proxyserverdetails. Wenn Sie einen authentifizierten Proxy verwenden, geben Sie die Benutzerdetails für Name und Kennwort auf diesem Bildschirm.
+6. Azure Backup-Agent installiert .NET Framework 4.5 und Windows PowerShell (falls es nicht bereits vorliegt) um die Installation abzuschließen.
+7. Nachdem der Agent installiert ist, klicken Sie auf die **mit Registrierung Fortfahren** um mit dem Workflow den Vorgang fortzusetzen.
    
    ![Registrieren](./media/backup-install-agent/register.png)
-8. Suchen Sie im Bildschirm für die Tresoranmeldeinformationen nach der zuvor heruntergeladenen Datei mit den Tresoranmeldeinformationen, und wählen Sie sie aus.
+8. Navigieren Sie zu, und wählen Sie die Vault-Anmeldedatei die zuvor heruntergeladen wurde, auf dem Bildschirm Tresor-Anmeldeinformationen.
    
-    ![Tresoranmeldeinformationen](./media/backup-install-agent/vc.png)
+    ![Tresor-Anmeldeinformationen](./media/backup-install-agent/vc.png)
    
-    Die Datei mit den Tresoranmeldeinformationen gilt nur für 48 Stunden (nachdem sie aus dem Portal heruntergeladen wurde). Wenn in diesem Bildschirm Fehler auftreten (z. B. "Datei mit Tresoranmeldeinformationen abgelaufen"), melden Sie sich beim Azure-Portal an, und laden Sie die Datei mit den Tresoranmeldeinformationen erneut herunter.
+    Die Datei mit tresoranmeldeinformationen gilt nur für 48 Stunden (nach dem Herunterladen vom Portal wird). Wenn Sie alle Fehler in diesem Bildschirm (z. B. "provided Vault-Anmeldedatei ist abgelaufen"), Anmeldung beim Azure-Portal auftritt und die Datei mit tresoranmeldeinformationen erneut herunterzuladen.
    
-    Stellen Sie sicher, dass die Datei mit den Tresoranmeldeinformationen an einem Speicherort verfügbar ist, der für die Setupanwendung zugänglich ist. Wenn Zugriffsfehler auftreten, kopieren Sie die Datei mit den Tresoranmeldeinformationen in einen temporären Speicherort auf diesem Computer, und wiederholen Sie den Vorgang.
+    Stellen Sie sicher, dass die Datei mit tresoranmeldeinformationen an einem Ort zugreifen können, von der setupanwendung verfügbar ist. Treten Sie Zugriff auf verwandte Fehlermeldungen, kopieren Sie die Datei mit tresoranmeldeinformationen in ein temporäres Verzeichnis auf diesem Computer, und wiederholen Sie den Vorgang.
    
-    Wenn ein Fehler wegen ungültiger Tresoranmeldeinformationen angezeigt wird (z. B. "Ungültige Tresoranmeldeinformationen angegeben"), ist die Datei entweder beschädigt oder enthält nicht die aktuellen Anmeldeinformationen, die dem Wiederherstellungsdienst zugeordnet sind. Wiederholen Sie den Vorgang, nachdem Sie eine neue Datei mit Tresoranmeldeinformationen vom Portal heruntergeladen haben. Dieser Fehler tritt i. d. R. auf, wenn der Benutzer im Azure-Portal in schneller Folge auf die Option **Tresoranmeldedaten herunterladen** klickt. In diesem Fall ist nur die zweite Datei mit Tresoranmeldeinformationen gültig.
-9. Im Bildschirm **Verschlüsselungseinstellung** können Sie entweder eine Passphrase generieren oder eine Passphrase angeben (mindestens 16 Zeichen). Vergessen Sie nicht, die Passphrase an einem sicheren Speicherort zu speichern.
+    Treten einen ungültige Tresor-Anmeldeinformationen-Fehler (z. B. "Ungültige tresoranmeldeinformationen angegeben") die Datei ist entweder beschädigt oder enthält nicht die aktuellen Anmeldeinformationen verknüpft haben mit der Recovery-Dienst. Wiederholen Sie den Vorgang nach dem Herunterladen einer neuen Vault-Anmeldedatei vom Portal aus. Dieser Fehler wird in der Regel angezeigt, wenn der Benutzer klickt der **tresoranmeldeinformationen herunterladen** -Option in der Azure-Portal in schneller Folge. In diesem Fall ist nur die zweite Anmeldeinformationsdatei gültig.
+9. In der **verschlüsselungseinstellung** Bildschirm können Sie eine Passphrase zu generieren oder geben Sie eine Passphrase (mindestens 16 Zeichen). Denken Sie daran, um die Passphrase an einem sicheren Ort zu speichern.
    
     ![Verschlüsselung](./media/backup-install-agent/encryption.png)
    
    > [!WARNING]
-   > Wenn die Passphrase verloren geht oder vergessen wird, kann Microsoft Ihnen bei der Wiederherstellung der Sicherungsdaten nicht behilflich sein. Der Endbenutzer besitzt die Verschlüsselungspassphrase, und Microsoft kann nicht auf die vom Endbenutzer verwendete Passphrase zugreifen. Speichern Sie die Datei an einem sicheren Speicherort, da sie bei einem Wiederherstellungsvorgang benötigt wird.
+   > Wenn die Passphrase verloren geht oder vergessen; Microsoft kann nicht helfen bei der Wiederherstellung der zu sichernden Daten. Der Benutzer besitzt die verschlüsselungspassphrase, und Microsoft keinen Einblick in die Passphrase, die vom Endbenutzer verwendet. Speichern Sie die Datei an einem sicheren Ort, wie bei einem Wiederherstellungsvorgang erforderlich ist.
    > 
    > 
-10. Nach dem Klicken auf die Schaltfläche **Fertig stellen** wird der Computer erfolgreich beim Tresor registriert, und Sie können mit der Sicherung in Microsoft Azure beginnen.
-11. Bei eigenständiger Verwendung von Microsoft Azure Backup können Sie die während des Registrierungsworkflows angegebenen Einstellungen ändern, indem Sie im Azure Backup-MMC-Snap-In auf die Option **Eigenschaften ändern** klicken.
+10. Nach dem Klicken auf die **Fertig stellen** Schaltfläche, der Computer wurde erfolgreich in den Tresor registriert ist und Sie sind jetzt bereit, um Sichern in Microsoft Azure zu starten.
+11. Bei Verwendung von eigenständigen Microsoft Azure Backup kann, ändern Sie die Einstellungen, die während des Workflows für die Registrierung angegeben werden, indem Sie auf die **Change Properties** -Option in der Azure Backup-Mmc-Snap-in.
     
-    ![Eigenschaften ändern](./media/backup-install-agent/change.png)
+    ![Ändern von Eigenschaften](./media/backup-install-agent/change.png)
     
-    Alternativ können Sie bei Verwendung von Data Protection Manager die während des Registrierungsworkflows angegebenen Einstellungen ändern, indem Sie auf der Registerkarte **Verwaltung** unter **Online** auf die Option **Konfigurieren** klicken.
+    Auch wenn Sie Data Protection Manager zu verwenden, können Sie die Einstellungen ändern während der Registrierung Workflow angegeben werden, indem Sie auf die **konfigurieren** Option dazu **Online** unter der **Management** Registerkarte.
     
     ![Konfigurieren von Azure Backup](./media/backup-install-agent/configure.png)
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-translationtype: Human Translation
-ms.sourcegitcommit: b2e005d707717a8f6db90b24438527304823a6a8
-ms.openlocfilehash: a0867e97805bbb905d5defa89d13bbb0d4c4aa49
-
-
+ms.openlocfilehash: dad415936280b4af916b8c46df46f6c51ac0bca4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-routes-using-the-azure-portal"></a>Problembehandlung bei Routen über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -150,9 +150,3 @@ Beim Überprüfen der zurückgegebenen Liste der Routen sind einige Punkte zu be
 * Damit der VNET-Peering-Datenverkehr ordnungsgemäß weitergeleitet wird, muss eine Systemroute mit **nextHopType:** *nextHopType* für den Präfixbereich des per Peering verknüpften VNET vorhanden sein. Wenn eine solche Route nicht vorhanden ist und der VNET-Peeringlink korrekt ist:
   * Versuchen Sie es nach einigen Sekunden erneut, wenn es sich um einen neu erstellten Peeringlink handelt. Das Weitergeben von Routen an alle Netzwerkschnittstellen in einem Subnetz dauert gelegentlich etwas länger.
   * Die Regeln von Netzwerksicherheitsgruppen (NSGs) können den Datenverkehrsfluss beeinträchtigen. Weitere Informationen finden Sie im Artikel [Problembehandlung bei Netzwerksicherheitsgruppen](virtual-network-nsg-troubleshoot-portal.md) .
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

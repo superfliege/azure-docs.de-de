@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6efe6de6cc6d6d4c9788549048c5b50b03b3de42
-ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 141e3c571d744470fd07e99538b6e38d4144e8d7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>Problembehandlung bei Routen mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -137,5 +135,4 @@ Beim Überprüfen der zurückgegebenen Liste der Routen sind einige Punkte zu be
 * Damit der VNET-Peering-Datenverkehr ordnungsgemäß weitergeleitet wird, muss eine Systemroute mit **nextHopType:** *nextHopType* für den Präfixbereich des per Peering verknüpften VNET vorhanden sein. Wenn eine solche Route nicht vorhanden ist und der VNET-Peeringlink korrekt ist:
   * Versuchen Sie es nach einigen Sekunden erneut, wenn es sich um einen neu erstellten Peeringlink handelt. Das Weitergeben von Routen an alle Netzwerkschnittstellen in einem Subnetz dauert gelegentlich etwas länger.
   * Die Regeln von Netzwerksicherheitsgruppen (NSGs) können den Datenverkehrsfluss beeinträchtigen. Weitere Informationen finden Sie im Artikel [Problembehandlung bei Netzwerksicherheitsgruppen](virtual-network-nsg-troubleshoot-powershell.md) .
-
 

@@ -2,7 +2,7 @@
 
 
 
-Wenn Sie Vorlagenbenachrichtigungen senden, müssen Sie nur eine Reihe von Eigenschaften angeben. In unserem Fall senden wir die Eigenschaften, die beispielsweise die lokalisierte Version der aktuellen Nachrichten enthalten:
+Wenn Sie Vorlage Benachrichtigungen senden, die Sie nur einen Satz von Eigenschaften angeben müssen, in unserem Fall wir den Satz von Eigenschaften, die die lokalisierte Version des die aktuelle Neuigkeiten, für die Instanz enthält, sendet:
 
     {
         "News_English": "World News in English!",
@@ -11,12 +11,12 @@ Wenn Sie Vorlagenbenachrichtigungen senden, müssen Sie nur eine Reihe von Eigen
     }
 
 
-Dieser Abschnitt zeigt, wie Benachrichtigungen mit einer Konsolen-App gesendet werden.
+In diesem Abschnitt wird gezeigt, wie zum Senden von Benachrichtigungen, die mit einer Konsolenanwendung
 
-Der enthaltene Code wird an Windows Store- und iOS-Geräte übertragen, da das Back-End an ein beliebiges unterstütztes Gerät übertragen kann.
+Der Code enthalten, sendet für Windows Store und iOS-Geräte, seit das Back-End auf allen unterstützten Geräten senden kann.
 
-### <a name="to-send-notifications-using-a-c-console-app"></a>Senden von Benachrichtigungen mit einer C#-Konsolenanwendung
-Ändern Sie die `SendTemplateNotificationAsync` -Methode in der zuvor erstellten Konsolen-App mit dem folgenden Code. Wie Ihnen möglicherweise auffällt, ist es in diesem Fall nicht erforderlich, mehrere Benachrichtigungen für verschiedene Gebietsschemas und Plattformen zu senden.
+### <a name="to-send-notifications-using-a-c-console-app"></a>Zum Senden von Benachrichtigungen, die mit einer C#-Konsolenanwendung
+Ändern der `SendTemplateNotificationAsync` Methode in die Konsolen-app, die Sie zuvor erstellt, durch den folgenden Code haben. Beachten Sie, wie in diesem Fall besteht keine Notwendigkeit, die mehrere Benachrichtigungen für verschiedene Gebietsschemas und Plattformen.
 
         private static async void SendTemplateNotificationAsync()
         {
@@ -52,10 +52,10 @@ Der enthaltene Code wird an Windows Store- und iOS-Geräte übertragen, da das B
         }
 
 
-Beachten Sie, dass dieser einfache Aufruf die lokalisierten Nachrichten unabhängig von der Plattform an **alle** Ihre Geräte sendet, da Ihr Notification Hub die korrekte systemeigene Nutzlast erstellt und an alle Geräte sendet, die ein bestimmtes Tag abonniert haben.
+Beachten Sie, dass dieser einfache Aufruf den lokalisierten Teil Nachrichten übermittelt, **alle** Ihrer Geräte, die von der Plattform, unabhängig davon, wie dem Benachrichtigungshub erstellt und übermittelt die richtige native Nutzlast für alle Geräte zu einem bestimmten Tag abonniert.
 
 ### <a name="sending-the-notification-with-mobile-services"></a>Senden der Benachrichtigung mit Mobile Services
-Im Mobile Service-Scheduler können Sie das folgende Skript verwenden:
+In dem Planer Mobile Service können Sie das folgende Skript aus:
 
     var azure = require('azure');
     var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string with full access>');

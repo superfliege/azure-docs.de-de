@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: gangan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 3dc32bfb88e43e82cc4b3f43e31ce20d4302b688
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sku-series-unavailable"></a>SKU-Serien nicht verfügbar
 In einigen Regionen sind bestimmte SKUs bei neuen Abonnements nicht automatisch verfügbar.  Dies kann der Fall sein, wenn [leistungsfähigere SKUs in einer Region bereitgestellt werden](https://azure.microsoft.com/updates/announcing-new-dv2-series-virtual-machine-size/) und die Beliebtheit älterer SKUs nachlässt.
@@ -48,5 +46,4 @@ Wir sind stets offen für Feedback und Vorschläge. Senden Sie uns Ihre [Vorschl
 
 ## <a name="learn-more"></a>Weitere Informationen
 [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq)
-
 

@@ -1,6 +1,6 @@
 ## <a name="webapi-project"></a>WebAPI-Projekt
-1. Öffnen Sie in Visual Studio das Projekt **AppBackend** , das Sie im Tutorial **Benachrichtigen von Benutzern** erstellt haben.
-2. Ersetzen Sie in der Datei "Notifications.cs" die gesamte **Notifications** -Klasse durch den folgenden Code. Stellen Sie sicher, dass Sie die Platzhalter durch Ihre Verbindungszeichenfolge (mit vollständigem Zugriff) für Ihr Notification Hub und den Hub-Namen ersetzen. Diese Werte erhalten Sie im [klassischen Azure-Portal](http://manage.windowsazure.com). Dieses Modul stellt nun die unterschiedlichen sicheren Benachrichtigungen dar, die gesendet werden. In einer vollständigen Implementierung werden die Benachrichtigungen in einer Datenbank gespeichert; der Einfachheit halber speichern wir Sie in diesem Fall im Speicher.
+1. Öffnen Sie in Visual Studio die **AppBackend** Projekt, das Sie in erstellt die **Benutzer benachrichtigen** Lernprogramm.
+2. Ersetzen Sie im Notifications.cs, die gesamte **Benachrichtigungen** Klasse durch den folgenden Code. Achten Sie darauf, dass Sie die Platzhalter durch Ihre Verbindungszeichenfolge (mit vollständigem Zugriff) für die benachrichtigungs-Hub und den Hubnamen zu ersetzen. Sie erhalten diese Werte aus der [klassischen Azure-Portal](http://manage.windowsazure.com). Dieses Modul stellt nun die verschiedenen sichere Benachrichtigungen, die gesendet werden sollen. Die Benachrichtigungen werden in eine vollständige Implementierung in einer Datenbank gespeichert werden; der Einfachheit halber speichern in diesem Fall wird im Arbeitsspeicher.
    
         public class Notification
         {
@@ -40,7 +40,7 @@
             }
         }
 
-1. Ersetzen Sie in der Datei "NotificationsController.cs" den Code innerhalb der **NotificationsController** -Klassendefinition durch den folgenden Code. Durch diese Komponente wird für das Gerät eine Möglichkeit zum sicheren Abrufen der Benachrichtigung implementiert, und sie ermöglicht außerdem (zu Lernzwecken in diesem Lernprogramm) das Auslösen einer sicheren Pushbenachrichtigung an Ihre Geräte. Beachten Sie, dass wenn Sie die Benachrichtigung an das Notification Hub senden, nur eine reine Benachrichtigung mit der ID der Benachrichtigung (und nicht der tatsächlichen Meldung) gesendet wird.
+1. In NotificationsController.cs, ersetzen Sie den Code innerhalb der **NotificationsController** Klassendefinition durch den folgenden Code. Diese Komponente implementiert eine Möglichkeit für das Gerät die Benachrichtigung geschützt abrufen und zeigt außerdem ein Verfahren (für die Zwecke dieses Lernprogramms), um eine sichere Push auf Geräte auszulösen. Beachten Sie, dass beim Senden der benachrichtigungs an den benachrichtigungshub wir nur eine unformatierte Benachrichtigung mit der ID von der Benachrichtigung (und keine tatsächliche Nachricht) senden:
    
        public NotificationsController()
        {
@@ -75,8 +75,8 @@
         }
 
 
-Beachten Sie, dass die `Post` -Methode jetzt keine Popupbenachrichtigung sendet. Es wird eine reine Benachrichtigung gesendet, die nur die Benachrichtigungs-ID und keine vertraulichen Inhalte enthält. Kommentieren Sie auch unbedingt den Sendevorgang für die Plattformen, für die Sie keine Anmeldeinformationen in Ihrem Notification Hub konfiguriert haben, da diese zu Fehlern führen.
+Beachten Sie, dass die `Post` -Methode sendet jetzt keine Popupbenachrichtigung. Er sendet eine unformatierte Benachrichtigung, die nur die benachrichtigungs-ID und keinen vertraulichem Inhalt enthält. Stellen Sie außerdem sicher, dass den Sendevorgang für die Plattformen Kommentar für die Sie nicht auf Ihren benachrichtigungshub konfigurierte Anmeldeinformationen verfügen, wie sie Fehler führt.
 
-1. Nun werden wir diese App erneut auf einer Azure-Website bereitstellen, damit von allen Geräten darauf zugegriffen werden kann. Klicken Sie mit der rechten Maustaste auf das Projekt **AppBackend**, und wählen Sie **Veröffentlichen**.
-2. Wählen Sie die Azure-Website als Ihr Veröffentlichungsziel aus. Melden Sie sich mit Ihrem Azure-Konto an, wählen Sie eine vorhandene oder neue Website, und notieren Sie sich die **Ziel-URL**-Eigenschaft auf der Registerkarte **Verbindung**. Diese URL wird später in diesem Lernprogramm als *Back-End-Endpunkt* bezeichnet. Klicken Sie auf **Veröffentlichen**.
+1. Jetzt werden wir diese app eine Azure-Website erneut bereitstellen, um über alle Geräte zugänglich zu machen. Mit der rechten Maustaste auf die **AppBackend** Projekt, und wählen Sie **veröffentlichen**.
+2. Azure-Website als Ihre Veröffentlichungsziel auswählen. Melden Sie sich mit Ihrem Azure-Konto und wählen Sie eine vorhandene oder neue Website, und notieren Sie sich die **Ziel-URL** Eigenschaft in der **Verbindung** Registerkarte. Wir bezeichnen diese URL als Ihre *Back-End-Endpunkt* weiter unten in diesem Lernprogramm. Klicken Sie auf **veröffentlichen**.
 

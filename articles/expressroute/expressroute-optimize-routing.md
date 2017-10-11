@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/06/2017
 ms.author: charwen
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: c3a85b9445d69330c3f6c7d298169efddb6ecca0
-ms.lasthandoff: 04/07/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="optimize-expressroute-routing"></a>Optimieren von ExpressRoute-Routing
 Wenn Sie mehrere ExpressRoute-Verbindungen nutzen, verfügen Sie über mehr als einen Weg zur Herstellung einer Verbindung mit Microsoft. Dies kann ein suboptimales Routing zur Folge haben. Es kann also sein, dass Ihr Datenverkehr für den Weg zu Microsoft und von Microsoft in Ihr Netzwerk mehr Zeit benötigt. Je länger der Netzwerkpfad, desto höher die Latenz. Die Latenz wirkt sich direkt auf die Anwendungsleistung und die Benutzerfreundlichkeit aus. In diesem Artikel wird dieses Problem veranschaulicht, und es wird beschrieben, wie Sie das Routing mit den standardmäßigen Routingtechnologien optimieren.
@@ -75,4 +74,3 @@ Die Lösung ist einfach. Da Sie wissen, wo sich die VNets und die Verbindungen b
 > Außerdem können Sie die Weiterleitung aus dem VNet an Ihr lokales Netzwerk beeinflussen, wenn Sie über mehrere ExpressRoute-Verbindungen verfügen, indem Sie die Gewichtung einer Verbindung konfigurieren, anstatt das Voranstellen von AS PATH anzuwenden. Diese Vorgehensweise wird oben im zweiten Szenario beschrieben. Für jedes Präfix sehen wir uns vor der AS PATH-Länge immer die Gewichtung der Verbindung an, wenn die Entscheidung darüber getroffen werden soll, wie der Datenverkehr gesendet wird.
 >
 >
-

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: c10145661a8c575381493c9aaa901c3ef92c2e81
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-cdn-rules-engine"></a>Azure CDN-Regelmodul
 Dieses Thema bietet ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen und Features für das [Regelmodul](cdn-rules-engine.md)von Azure Content Delivery Network (CDN).
@@ -80,9 +80,3 @@ Leerzeichen | Ein Leerzeichen wird in der Regel als Literalzeichen behandelt.
 * [Regelmodul – Features](cdn-rules-engine-reference-features.md)
 * [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
 * [Übersicht über das Azure CDN](cdn-overview.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2016
 ms.author: piyushjo;ricksal
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d353cd2fe47c54a0282cc5bb1b22b4a56e0cd82c
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-use-the-engagement-api-on-android"></a>Verwenden der Engagement-API unter Android
 Dieses Dokument ergänzt das Dokument [Erweiterte Berichterstellungsoptionen für Android für Azure Mobile Engagement SDK](mobile-engagement-android-advanced-reporting.md). Es bietet tiefergehende Details zur Verwendung der Engagement-API, um Ihre Anwendungsstatistik zu melden.
@@ -281,9 +281,3 @@ Anwendungsinformationen sind auf **1024** Zeichen pro Aufruf begrenzt (nach der 
 Im vorherigen Beispiel enthält die an den Server gesendete JSON 44 Zeichen:
 
             {"expiration":"2016-12-07","status":"premium"}
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

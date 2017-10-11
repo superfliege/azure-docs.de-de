@@ -1,25 +1,25 @@
-Das Domain Name System (DNS) erleichtert das Auffinden von Ressourcen im Internet. Wenn Sie zum Beispiel eine Adresse in Ihrem Browser eingeben, oder Sie auf einen Link innerhalb einer Website klicken, so übersetzt DNS die Domäne in eine IP-Adresse. Die IP-Adresse ist mit Straße und Hausnummer vergleichbar, aber sie ist nicht sehr einprägsam. Ein DNS-Name wie **contoso.com** lässt sich beispielsweise viel leichter merken als eine IP-Adresse wie 192.168.1.88 oder 2001:0:4137:1f67:24a2:3888:9cce:fea3.
+Domain Name System (DNS) wird verwendet, um Punkte im Internet zu suchen. Z. B. Wenn Sie eine Adresse in Ihrem Browser eingeben, oder klicken Sie auf einen Link auf einer Webseite, verwendet er DNS, um die Domäne in eine IP-Adresse zu übersetzen. Die IP-Adresse ist, wie eine Anschrift an, aber es ist nicht sehr menschlichen freundliche. Beispielsweise ist es viel einfacher, einen DNS-Namen wie merken **"contoso.com"** als eine IP-Adresse wie z. B. 192.168.1.88 oder 2001:0:4137:1f67:24a2:3888:9cce:fea3 zu merken ist.
 
-Das DNS-System beruht auf *Einträgen*. Einträge ordnen einen bestimmten *Namen*, wie zum Beispiel **contoso.com**, entweder einer IP-Adresse oder einem anderen DNS-Namen zu. Wenn eine Anwendung wie ein Webbrowser einen Namen im DNS sucht, gelangt sie zum Eintrag und verwendet dessen Verweis als Adresse. Wenn es sich beim Verweis um eine IP-Adresse handelt, so verwendet der Browser diesen Wert. Wird auf einen anderen DNS-Namen gezeigt, so muss die Anwendung den Namen erneut auflösen. Letztendlich führen alle Namensauflösungen zu einer IP-Adresse.
+Der DNS-System basiert auf *Datensätze*. Datensätze zuordnen einen bestimmten *Namen*, wie z. B. **"contoso.com"**, mit einer IP-Adresse oder einen anderen DNS-Namen. Wenn eine Anwendung, z. B. ein Webbrowser einen Namen im DNS nachgeschlagen werden, sucht den Datensatz, und verwendet, was sie als Adresse zeigt. Wenn der Wert, dem er verweist eine IP-Adresse ist, wird der Browser diesen Wert verwenden. Wenn an einen anderen DNS-Namen verwiesen wird, muss die Anwendung, führen Sie die Lösung erneut. Schließlich wird die gesamte namensausauflösung in eine IP-Adresse beendet.
 
-Azure-Websites wird beim Erstellen automatisch ein DNS-Name zugewiesen. Dieser Name erhält das Format **&lt;IhrWebsitename&gt;.azurewebsites.net**. Wenn Sie Ihre Website als Azure Traffic Manager-Endpunkt hinzufügen, ist diese über die Domäne **&lt;IhrTrafficManagerProfil&gt;.trafficmanager.net** zugänglich.
-
-> [!NOTE]
-> Wenn Ihre Website als ein Traffic Manager-Endpunkt konfiguriert ist, verwenden Sie beim Erstellen von DNS-Einträgen die **.trafficmanager.net** -Adresse.
-> 
-> Mit Traffic Manager können nur CNAME-Einträge verwendet werden.
-> 
-> 
-
-Es gibt auch mehrere Eintragstypen, jeder mit eigenen Funktionen und Beschränkungen, bei als Traffic Manager-Endpunkte konfigurierten Websites interessieren wir uns jedoch nur für den Eintrag *CNAME* .
-
-### <a name="cname-or-alias-record"></a>CNAME- oder Alias-Eintrag
-Ein CNAME-Eintrag weist einen *spezifischen* DNS-Namen, z.B. **mail.contoso.com** oder **www.contoso.com**, einem anderen (kanonischen) Domänennamen zu. Bei Azure-Websites, die Traffic Manager verwenden, ist der kanonische Domänenname der Domänenname **&lt;MeineApp>.trafficmanager.net** Ihres Traffic Manager-Profils. Nach dem Erstellen legt CNAME einen Alias für den Domänennamen **&lt;MeineApp>.trafficmanager.net** an. Der CNAME-Eintrag wird automatisch in die IP-Adresse Ihres Domänennamens **&lt;MeineApp>.trafficmanager.net** aufgelöst. Daher müssen Sie nichts weiter tun, wenn sich die IP-Adresse der Website ändert.
-
-Beim Traffic Manager eingehender Datenverkehr wird nach der Lastenausgleichsmethode, für die er konfiguriert ist, an Ihre Website geroutet. Für die Besucher Ihrer Website ist dieser Vorgang vollständig transparent. Sie sehen nur den benutzerdefinierten Domänennamen in ihrem Browser.
+Wenn Sie eine Azure-Website erstellen, wird ein DNS-Name der Website automatisch zugewiesen. Dieser Name hat das Format  **&lt;Yoursitename&gt;. azurewebsites.net**. Wenn Sie Ihre Website als Azure Traffic Manager-Endpunkt hinzufügen, wird Ihre Website klicken Sie dann über die  **&lt;Yourtrafficmanagerprofile&gt;. trafficmanager.net** Domäne.
 
 > [!NOTE]
-> Bei einigen Domänenregistrierungen können Sie Unterdomänen nur mit einem CNAME-Eintrag wie **www.contoso.com** und nicht mit einem Stammnamen wie **contoso.com** zuweisen. Weitere Informationen zu CNAME-Datensätzen finden Sie in der durch Ihre Registrierung zur Verfügung gestellten Dokumentation, <a href="http://en.wikipedia.org/wiki/CNAME_record">dem Wikipedia-Eintrag "CNAME Resource Record"</a> oder dem Dokument <a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification</a> (IEFT-Domänennamen – Implementierung und Spezifizierung, in englischer Sprache).
+> Wenn Ihre Website als Traffic Manager-Endpunkt konfiguriert ist, verwenden Sie die **. trafficmanager.net** Adresse bei der DNS-Einträge zu erstellen.
+> 
+> CNAME-Einträge können mit Traffic Manager Sie nur
+> 
+> 
+
+Es gibt auch mehrere Arten von-Datensätze; jeder mit ihren eigenen Funktionen und Einschränkungen, jedoch für Websites, die so konfiguriert, dass als Traffic Manager-Endpunkten, wir nur erledigen zu einem; *CNAME* Datensätze.
+
+### <a name="cname-or-alias-record"></a>CNAME oder Alias-Datensatz
+Ein CNAME-Eintrag ordnet eine *bestimmte* DNS-Server ein, z. B. **an "Mail.contoso.com"** oder **www.contoso.com**, zum anderen (kanonischen) Domänennamens. Im Fall von Azure-Websites mit Traffic Manager, der kanonische Domänenname ist die  **&lt;"MyApp" >. trafficmanager.net** Domänennamen Ihres Traffic Manager-Profils. Nach der Erstellung, erstellt der CNAME-Eintrag einen Alias für die  **&lt;"MyApp" >. trafficmanager.net** Domänennamen. Der CNAME-Eintrag in die IP-Adresse aufgelöst wird Ihre  **&lt;"MyApp" >. trafficmanager.net** Domänenname automatisch, wenn die IP-Adresse der Website geändert wird, haben Sie keine Maßnahmen ergreifen.
+
+Nach der Datenverkehr am Traffic Manager geht, leitet dann den Datenverkehr zu Ihrer Website, mit der Lastenausgleichsmethode, es konfiguriert ist, weiter. Dies ist für Besucher Ihrer Website vollständig transparent. Es werden nur der Name der benutzerdefinierten Domäne in ihrem Browser angezeigt.
+
+> [!NOTE]
+> Einige domänenregistrierungsstellen vorschreiben Unterdomänen zuordnen, wenn Sie einen CNAME-Eintrag wie **www.contoso.com**, und nicht-root-Namen, z. B. **"contoso.com"**. Weitere Informationen zu den CNAME-Einträge, finden Sie in der Dokumentation von Ihrer Registrierungsstelle <a href="http://en.wikipedia.org/wiki/CNAME_record">Wikipedia-Eintrag für den CNAME-Eintrag</a>, oder die <a href="http://tools.ietf.org/html/rfc1035">Domänennamen IETF - Implementierung und Spezifikation</a> Dokument.
 > 
 > 
 

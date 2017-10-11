@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 5b6ce5526f354008eb4a697deec737876f22391f
-ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="set-name-and-type-for-child-resource-in-resource-manager-template"></a>Festlegen von Namen und Typ für eine untergeordnete Ressource in einer Resource Manager-Vorlage
 Beim Erstellen einer Vorlage müssen Sie häufig eine untergeordnete Ressource einfügen, die einer übergeordneten Ressource zugeordnet ist. Die Vorlage kann beispielsweise eine SQL Server-Instanz und eine Datenbank enthalten. Dann ist die SQL Server-Instanz die übergeordnete Ressource und die Datenbank die untergeordnete Ressource. 
@@ -88,4 +86,3 @@ Die Datenbank ist eine untergeordnete Ressource des Servers, auch wenn sie in de
 ## <a name="next-steps"></a>Nächste Schritte
 * Empfehlungen zum Erstellen von Vorlagen finden Sie unter [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](resource-manager-template-best-practices.md).
 * Ein Beispiel zum Erstellen mehrerer untergeordneter Ressourcen finden Sie unter [Bereitstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager-Vorlagen](resource-group-create-multiple.md).
-

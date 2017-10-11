@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 4277bc8394c7ba140291e9dc776162e87deab96b
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="resize-a-windows-vm-created-in-the-classic-deployment-model"></a>Ändern der Größe eines virtuellen Windows-Computers, der im klassischen Bereitstellungsmodell erstellt wurde
 In diesem Artikel erfahren Sie, wie die Größe eines virtuellen Windows-Computers, der im klassischen Bereitstellungsmodell erstellt wurde, mithilfe von Azure Powershell geändert wird.
@@ -69,5 +68,4 @@ Ein Beispielskript zum Löschen und Neuerstellen eines Clouddiensts mit einer ne
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ändern der Größe eines virtuellen Computers, der in dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurde](../resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
 

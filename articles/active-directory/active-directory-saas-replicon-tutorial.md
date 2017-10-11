@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/23/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 2aeeceb61191962b62892b8409218684f76c6fa8
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>Tutorial: Azure Active Directory-Integration mit Replicon
 In diesem Tutorial wird die Integration von Azure und Replicon erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
@@ -87,6 +86,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
  
   3. Klicken Sie auf **Weiter**.
 
+
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Replicon** auf **Metadaten herunterladen**, und speichern Sie die Metadaten auf Ihrem Computer.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-replicon-tutorial/IC777804.png "Einmaliges Anmelden konfigurieren")
@@ -153,5 +153,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
     ![Ja](./media/active-directory-saas-replicon-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
 

@@ -17,12 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: d24c92b90d7d8e43554fcd77278bf7d23a963c02
-ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
-
+ms.openlocfilehash: f7eff70ece5e8dc7e0c5983871d40bd1f6eafff2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="connect-to-azure-hdinsight-and-run-hive-queries-using-data-lake-tools-for-visual-studio"></a>Herstellen einer Verbindung mit Azure HDInsight und Ausführen von Hive-Abfragen mithilfe von Data Lake Tools für Visual Studio
 
@@ -120,7 +119,7 @@ Zum Erstellen einer Hive-Tabelle können Sie die Benutzeroberfläche oder Hive-A
 
 **So erstellen Sie eine Hive-Tabelle**
 
-1. Erweitern Sie in **Server-Explorer** nacheinander **Azure** > **HDInsight-Cluster** > einen HDInsight-Cluster > **Hive-Datenbanken**. Klicken Sie mit der rechten Maustaste auf **Standard**, und klicken Sie dann auf **Tabelle erstellen**.
+1. Erweitern Sie in **Server-Explorer** nacheinander **Azure** > **HDInsight-Cluster** &gt; einen HDInsight-Cluster &gt; **Hive-Datenbanken**. Klicken Sie mit der rechten Maustaste auf **Standard**, und klicken Sie dann auf **Tabelle erstellen**.
 2. Konfigurieren Sie die Tabelle.
 3. Klicken Sie auf **Tabelle erstellen** , um den Auftrag zum Erstellen der neuen Hive-Tabelle zu übermitteln.
    
@@ -242,5 +241,4 @@ In diesem Artikel haben Sie erfahren, wie Sie in Visual Studio mithilfe des Data
 * [Erste Schritte mit Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [Übermitteln von Hadoop-Aufträgen in HDInsight](hdinsight-submit-hadoop-jobs-programmatically.md)
 * [Analysieren von Twitter-Daten mit Hadoop in HDInsight](hdinsight-analyze-twitter-data.md)
-
 

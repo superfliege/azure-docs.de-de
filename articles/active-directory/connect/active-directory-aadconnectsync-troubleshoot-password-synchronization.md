@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 33fa6a8867764975a57b8727e7705529d1d7506a
-ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="troubleshoot-password-synchronization-with-azure-ad-connect-sync"></a>Problembehandlung der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung
 Dieses Thema enthält Schritte zum Behandeln von Problemen mit der Kennwortsynchronisierung. Wenn Kennwörter nicht wie erwartet synchronisiert werden, kann dies für eine Teilmenge von Benutzern oder für alle Benutzer der Fall sein. Für die Bereitstellung von Azure Active Directory (Azure AD) Connect mit Version 1.1.524.0 oder höher gibt es nun ein Diagnose-Cmdlet, mit dem Sie Probleme bei der Kennwortsynchronisierung behandeln können:
@@ -269,7 +268,7 @@ Die Statusspalte kann die folgenden Werte enthalten:
 | SourceConnectorNotPresent |Im lokalen Active Directory Connector-Bereich wurde kein Objekt gefunden. |
 | TargetNotExportedToDirectory |Das Objekt im Azure AD-Connectorbereich wurde noch nicht exportiert. |
 | MigratedCheckDetailsForMoreInfo |Der Protokolleintrag wurde vor Build 1.0.9125.0 erstellt und wird im Zustand der Vorversion angezeigt. |
-| Fehler |Dienst hat einen unbekannten Fehler zurückgegeben. |
+| Error |Dienst hat einen unbekannten Fehler zurückgegeben. |
 | Unknown |Fehler beim Versuch, einen Batch von Kennworthashes zu verarbeiten.  |
 | MissingAttribute |Bestimmte Attribute (z.B. Kerberos-Hash), die von Azure Active Directory Domain Services angefordert werden, sind nicht verfügbar. |
 | RetryRequestedByTarget |Bestimmte Attribute (z.B. Kerberos-Hash), die von Azure Active Directory Domain Services angefordert werden, waren zuvor nicht verfügbar. Es wird versucht, den Kennworthash des Benutzers neu zu synchronisieren. |
@@ -354,4 +353,3 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 * [Implementieren der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md)
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-

@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
 ms.openlocfilehash: 014aa646459cd64fca7c697419324caa3edaeeea
-ms.lasthandoff: 03/22/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="configure-the-performance-traffic-routing-method"></a>Konfigurieren der leistungsorientierten Routingmethode für Datenverkehr
 
 Mit der Routingmethode für Leistungsdatenverkehr können Sie Datenverkehr zu den Endpunkten leiten, mit der niedrigsten Latenz des Client-Netzwerks. Normalerweise stellt das Rechenzentrum mit der geringsten Wartezeit die kürzeste geografische Distanz dar. Diese Routingmethode für Datenverkehr kann keine Änderungen in Echtzeit in der Netzwerkkonfiguration oder im Lastenausgleich berücksichtigen.
@@ -37,9 +36,9 @@ Mit der Routingmethode für Leistungsdatenverkehr können Sie Datenverkehr zu de
         2. Geben Sie unter **Pfad** einen Schrägstrich */* ein. Sie müssen einen Pfad und einen Dateinamen angeben, um Endpunkte zu überwachen. Ein Schrägstrich „/“ ist ein gültiger Eintrag für den relativen Pfad und bedeutet, dass sich die Datei im Stammverzeichnis (Standardwert) befindet.
         3. Klicken Sie oben auf der Seite auf **Speichern**.
 5.  Testen Sie wie folgt die Änderungen in Ihrer Konfiguration:
-    1.    Suchen Sie auf der Suchleiste des Portals nach dem Namen des Traffic Manager-Profils, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
-    2.    Klicken Sie auf dem Blatt **Traffic Manager-Profil** auf **Übersicht**.
-    3.    Auf dem Blatt **Traffic Manager-Profil** wird der DNS-Name des neu erstellten Traffic Manager-Profils angezeigt. Dieser kann von beliebigen Clients (etwa durch Navigation in einem Webbrowser) für das Routing zum richtigen Endpunkt nach Maßgabe des Routingtyps verwendet werden. In diesem Fall werden alle Anforderungen im Netzwerk des Clients an den Endpunkt mit der kürzesten Wartezeit geleitet.
+    1.  Suchen Sie auf der Suchleiste des Portals nach dem Namen des Traffic Manager-Profils, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
+    2.  Klicken Sie auf dem Blatt **Traffic Manager-Profil** auf **Übersicht**.
+    3.  Auf dem Blatt **Traffic Manager-Profil** wird der DNS-Name des neu erstellten Traffic Manager-Profils angezeigt. Dieser kann von beliebigen Clients (etwa durch Navigation in einem Webbrowser) für das Routing zum richtigen Endpunkt nach Maßgabe des Routingtyps verwendet werden. In diesem Fall werden alle Anforderungen im Netzwerk des Clients an den Endpunkt mit der kürzesten Wartezeit geleitet.
 6. Sobald das Traffic Manager-Profil funktionsfähig ist, bearbeiten Sie den DNS-Eintrag auf dem autoritativen DNS-Server, damit Ihre Unternehmensdomäne auf den Namen der Traffic Manager-Domäne verweisen kann.
 
 ![Konfigurieren der leistungsorientierten Routingmethode für Datenverkehr mit Traffic Manager][1]

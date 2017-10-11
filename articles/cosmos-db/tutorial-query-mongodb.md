@@ -15,15 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: feffc553a9aa931d96cec71c101674fce08a466b
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB: Wie werden Abfragen mit der API für MongoDB durchgeführt?
 
 Die [API für MongoDB](mongodb-introduction.md) von Azure Cosmos DB unterstützt [MongoDB-Shellabfragen](https://docs.mongodb.com/manual/tutorial/query-documents/). 
@@ -155,8 +152,7 @@ Die nächste Abfrage gibt alle Familien zurück, die registriert sind.
 **Abfragen**
     
     db.families.find( { "isRegistered" : true })
-**Ergebnisse**
-    Kein Dokument wird zurückgegeben. 
+**Ergebnisse** kein Dokument zurückgegeben werden. 
 
 ## <a id="examplequery4"></a> Beispielabfrage 4
 
@@ -316,5 +312,4 @@ Sie können jetzt mit dem nächsten Tutorial fortfahren, um zu erfahren, wie Sie
 
 > [!div class="nextstepaction"]
 > [Globales Verteilen Ihrer Daten](tutorial-global-distribution-documentdb.md)
-
 

@@ -14,13 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
 ms.openlocfilehash: 20c3e3c1cb85308cad47054c2efa87f61cae0f22
-ms.contentlocale: de-de
-ms.lasthandoff: 05/19/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>Erstellen komplexer Zeitpläne und erweiterter Serien mit Azure Scheduler
 ## <a name="overview"></a>Übersicht
@@ -110,9 +108,9 @@ Die folgende Tabelle verdeutlicht, wie *startTime* die Ausführung eines Auftrag
 
 Das folgende Beispiel veranschaulicht, was passiert, wenn *startTime* in der Vergangenheit liegt und nur *recurrence*, aber kein *schedule* angegeben ist.  In diesem Beispiel wird davon ausgegangen, dass die aktuelle Zeit „2015-04-08-13:00“ ist, *startTime* auf „2015-04-07 14:00“ festgelegt ist und für *recurrence* ein Zwei-Tages-Intervall (mit „*frequency*: day“ und „*interval*: 2“) angegeben wurde. Beachten Sie, dass *startTime* in der Vergangenheit liegt.
 
-Unter diesen Bedingungen findet die *erste Ausführung* am 9.4.2015 um 14:00 Uhr statt\. Das Scheduler-Modul berechnet die Ausführungen auf der Grundlage der Startzeit.  In der Vergangenheit liegende Instanzen werden verworfen. Das Modul verwendet die nächste in der Zukunft liegende Instanz.  In vorliegenden Fall ist *startTime* auf 14:00 Uhr am 7.4.2015 festgelegt. Die nächste Instanz folgt zwei Tage nach diesem Zeitpunkt, also am 9.4.2015 um 14:00 Uhr.
+Unter diesen Bedingungen die *ersten Ausführung* werden 2015-04-09 um 14:00 Uhr\. Das Auftragszeitplanungs-Modul berechnet die Ausführungen von der Startzeit.  In der Vergangenheit liegende Instanzen werden verworfen. Das Modul verwendet die nächste in der Zukunft liegende Instanz.  In vorliegenden Fall ist *startTime* auf 14:00 Uhr am 7.4.2015 festgelegt. Die nächste Instanz folgt zwei Tage nach diesem Zeitpunkt, also am 9.4.2015 um 14:00 Uhr.
 
-Beachten Sie, dass die erste Ausführung auch dann zu diesem Zeitpunkt stattfinden würde, wenn als Startzeit der 5.4.2015 oder der 1.4.2015 (jeweils 14:00 Uhr) angegeben wäre\. Nach der ersten Ausführung werden die nachfolgenden Ausführungen auf der Grundlage des Zeitplans berechnet und erfolgen jeweils um 14:00 Uhr am 11.4.2015, am 13.4.2015, am 15.4.2015 usw.
+Beachten Sie, dass die erste Ausführung würde werden die gleiche, selbst wenn die StartTime 2015-04-05 14:00 Uhr oder 14:00\ 2015-04-01. Nach der ersten Ausführung werden die nachfolgenden Ausführungen auf der Grundlage des Zeitplans berechnet und erfolgen jeweils um 14:00 Uhr am 11.4.2015, am 13.4.2015, am 15.4.2015 usw.
 
 Wenn für den Auftrag ein Zeitplan, aber keine Stunden- und/oder Minutenangabe festgelegt ist, werden standardmäßig die Stunden und/oder Minuten der ersten Ausführung verwendet.
 
@@ -136,7 +134,7 @@ Die folgende Tabelle enthält eine ausführliche Beschreibung der *Zeitplaneleme
 ## <a name="examples-recurrence-schedules"></a>Beispiele: Wiederholungszeitpläne
 Im Anschluss folgen verschiedene Beispiele für Wiederholungszeitpläne, bei denen jeweils das schedule-Objekt und die dazugehörigen Elemente im Mittelpunkt stehen.
 
-Bei den folgenden Zeitplänen wird jeweils davon ausgegangen, dass *interval* auf 1 festgelegt ist\. Darüber hinaus wird davon ausgegangen, dass für den *Zeitplan* jeweils eine passende Häufigkeit angegeben ist, da der Zeitplan bei Angabe einer täglichen Häufigkeit beispielsweise nicht mit "monthDays" angepasst werden kann. Eine Beschreibung dieser Einschränkungen finden Sie weiter oben.
+Die Zeitpläne alle folgenden davon ausgehen, dass die *Intervall* auf 1 festgelegt ist\. Darüber hinaus eine davon ausgehen muss die richtige Häufigkeit in Übereinstimmung mit den neuerungen in der *Zeitplan* – z. B. eine Häufigkeit "Day" verwenden und haben eine "MonthDays" Änderung im Zeitplan kann nicht. Eine Beschreibung dieser Einschränkungen finden Sie weiter oben.
 
 | **Beispiel** | **Beschreibung** |
 |:--- |:--- |
@@ -190,5 +188,4 @@ Bei den folgenden Zeitplänen wird jeweils davon ausgegangen, dass *interval* au
  [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
-
 

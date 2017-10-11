@@ -1,6 +1,6 @@
 ---
-title: Analysieren von Nutzungsstatistiken mit den erweiterten HTTP-Berichten in Azure CDN | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie Sie erweiterte HTTP-Berichte in Microsoft Azure CDN erstellen. Diese Berichte enthalten detaillierte Informationen zur CDN-Aktivität."
+title: Analysieren von Verwendungsstatistiken mit Azure-CDN erweiterte HTTP-Berichte | Microsoft Docs
+description: "Erfahren Sie, wie erweiterte HTTP-Berichte in Microsoft Azure-CDN zu erstellen. Diese Berichte enthalten ausführliche Informationen für CDN-Aktivität."
 services: cdn
 documentationcenter: 
 author: zhangmanling
@@ -14,199 +14,193 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
 ms.openlocfilehash: 2dfbc046674b2da692f30c945aee3ea25ae524eb
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analysieren von Nutzungsstatistiken mit den erweiterten HTTP-Berichten in Azure CDN
+# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analysieren von Verwendungsstatistiken mit Azure-CDN erweiterte HTTP-Berichte
 ## <a name="overview"></a>Übersicht
-In diesem Dokument werden die erweiterten HTTP-Berichte in Microsoft Azure CDN erläutert. Diese Berichte enthalten detaillierte Informationen zur CDN-Aktivität.
+Dieses Dokument erläutert erweiterte HTTP-Berichterstattung in Microsoft Azure-CDN. Diese Berichte enthalten ausführliche Informationen für CDN-Aktivität.
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="accessing-advanced-http-reports"></a>Aufrufen erweiterter HTTP-Berichte
-1. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten** .
+## <a name="accessing-advanced-http-reports"></a>Zugreifen auf erweiterte HTTP-Berichte
+1. Klicken Sie auf dem CDN-Profil-Blatt auf den **verwalten** Schaltfläche.
    
-    ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
+    ![CDN-Profil Blatt Schaltfläche verwalten](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
-    Das CDN-Verwaltungsportal wird geöffnet.
-2. Zeigen Sie auf die Registerkarte **Analysen** und dann auf das Flyout **Erweiterte HTTP-Berichte**.  Klicken Sie auf **Große HTTP-Plattform**.
+    Der CDN-Verwaltungsportal wird geöffnet.
+2. Zeigen Sie auf die **Analytics** tab, dann zeigen Sie auf die **erweiterte HTTP-Berichte** Flyout.  Klicken Sie auf **HTTP große Plattform**.
    
-    ![CDN-Verwaltungsportal – Menü „Erweiterte Berichte“](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
+    ![CDN-Verwaltungsportal – Menü Erweiterte Berichte](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
     Berichtsoptionen werden angezeigt.
 
-## <a name="geography-reports-map-based"></a>Geografische Berichte (kartenbasiert)
-Fünf Berichte stehen zur Verfügung, in denen mithilfe einer Karte die Regionen angegeben werden, aus denen Ihre Inhalte angefordert werden. Diese Berichte heißen „Weltkarte“, „Karte der USA“, „Karte von Kanada“, „Europakarte“ und „Asien-Pazifik-Karte“.
+## <a name="geography-reports-map-based"></a>Geography-Berichte (Map-basiert)
+Es gibt fünf Berichte, die nutzen Sie eine Zuordnung für die Regionen angeben, aus denen Ihre Inhalte angefordert werden. Diese Berichte sind World Map, Karte der USA, Kanada Kartentyp, Europa Zuordnung und Asien Pazifik Zuordnung.
 
-Jeder kartenbasierte Bericht klassifiziert geografische Einheiten (z. B. Länder, Bundesländer und Provinzen) gemäß dem Prozentsatz der Treffer, die aus der jeweiligen Region stammen. Darüber hinaus werden anhand einer Karte die Orte visuell dargestellt, aus denen Ihre Inhalte angefordert werden. Dabei werden die einzelnen Regionen entsprechend der Nachfrage in der jeweiligen Region farbkodiert. Hellere Regionen weisen auf eine niedrigere Nachfrage nach Ihren Inhalten hin, dunklere Regionen auf eine höhere Nachfrage.
+Jede Zuordnung-basierter Bericht Ränge geografischen Entitäten (z. B. Länder, Bundesstaaten und Provinzen) gemäß den Prozentsatz der Treffer an, die von dieser Region stammen. Darüber hinaus wird eine Zuordnung bereitgestellt, können Sie die Speicherorte visuell darstellen, aus denen Ihre Inhalte angefordert werden. Es kann zu diesem Zweck jede Region nach der Menge der Anforderung, die in dieser Region erfahrenen farbcodierung. Heller schattierte Regionen zeigen niedriger Nachfrage nach Ihren Inhalt bei dunklere Regionen höhere Ebenen des Bedarfs für Ihre Inhalte angeben an.
 
-Ausführliche Informationen zu Datenverkehr und Bandbreite für die einzelnen Regionen werden direkt unterhalb der Karte bereitgestellt. Dadurch können Sie für jede Region die Gesamtanzahl von Treffern, den Prozentsatz der Treffer, die Gesamtmenge der übertragenen Daten (in GB) sowie den Prozentsatz der übertragenen Daten anzeigen. Zeigen Sie eine Beschreibung für die einzelnen Metriken an. Wenn Sie auf eine Region (d. h. ein Land, ein Bundesland oder eine Provinz) zeigen, werden der Name und der Prozentsatz der Treffer in dieser Region als QuickInfo angezeigt.
+Detaillierte Informationen Datenverkehr und die Bandbreite für jede Region wird direkt unterhalb der Zuordnung bereitgestellt. Dadurch können Sie die Gesamtanzahl der Cachetreffer, den Prozentsatz der Cachetreffer, die Gesamtmenge der Daten anzeigen (in Gigabyte) übertragen. anschließend übertragen der Prozentsatz der Daten für jede Region. Zeigt eine Beschreibung für jede dieser Metriken an. Schließlich, wenn Sie über einen Bereich (d. h., Land, Bundesland oder Kanton) zeigen, werden der Name und der Prozentsatz der Treffer an, die in der Region aufgetreten sind als QuickInfo angezeigt werden.
 
-Nachfolgend finden Sie eine kurze Beschreibung der einzelnen kartenbasierten geografischen Berichte:
-
-| Berichtsname | Beschreibung |
-| --- | --- |
-| Weltkarte |Mit diesem Bericht können Sie die weltweite Nachfrage nach Ihren CDN-Inhalten anzeigen. Auf der Weltkarte ist jedes Land farbkodiert, um den Prozentsatz der Treffer aus der jeweiligen Region anzugeben. |
-| Karte der USA |Mit diesem Bericht können Sie die Nachfrage nach Ihren CDN-Inhalten in den USA anzeigen. Auf dieser Karte ist jeder Bundesstaat farbkodiert, um den Prozentsatz der Treffer aus der jeweiligen Region anzugeben. |
-| Karte von Kanada |Mit diesem Bericht können Sie die Nachfrage nach Ihren CDN-Inhalten in Kanada anzeigen. Auf dieser Karte ist jede Provinz farbkodiert, um den Prozentsatz der Treffer aus der jeweiligen Region anzugeben. |
-| Europakarte |Mit diesem Bericht können Sie die Nachfrage nach Ihren CDN-Inhalten in Europa anzeigen. Auf dieser Karte ist jedes Land farbkodiert, um den Prozentsatz der Treffer aus der jeweiligen Region anzugeben. |
-| Asien-Pazifik-Karte |Mit diesem Bericht können Sie die Nachfrage nach Ihren CDN-Inhalten in Asien anzeigen. Auf dieser Karte ist jedes Land farbkodiert, um den Prozentsatz der Treffer aus der jeweiligen Region anzugeben. |
-
-## <a name="geography-reports-bar-charts"></a>Geografische Berichte (Balkendiagramme)
-Es gibt zwei weitere Berichte mit statistischen Informationen nach Geografie: „Führende Städte“ und „Führende Länder“. In diesem Berichten sind jeweils Städte und Länder gemäß der Anzahl von Treffern aus den jeweiligen Regionen klassifiziert. Bei diesem Berichtstyp werden in einem Balkendiagramm die zehn führenden Städte oder Länder angegeben, die Inhalte über eine bestimmte Plattform angefordert haben. Mit diesem Balkendiagramm können Sie schnell die Regionen ermitteln, die die höchste Anzahl von Anforderungen für Ihre Inhalte generieren.
-
-Die linke Seite des Graphen (y-Achse) gibt an, wie viele Treffer in der angegebenen Region auftraten. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung für jede der zehn führenden Regionen.
-
-### <a name="using-the-bar-charts"></a>Verwenden der Balkendiagramme
-* Wenn Sie auf einen Balken zeigen, werden der Name und die Gesamtanzahl von Treffern in dieser Region als QuickInfo angezeigt.
-* Die QuickInfo für den Bericht „Führende Städte“ bestimmt eine Stadt nach Name, Bundesland/Provinz und Landesabkürzung.
-* Falls die Stadt oder die Region (d. h. das Bundesland/die Provinz), aus der eine Anforderung stammt, nicht ermittelt werden konnte, wird sie als unbekannt angegeben. Wenn das Land unbekannt ist, werden zwei Fragezeichen („??“) angezeigt.
-* Ein Bericht kann Metriken für Europa oder die Asien-Pazifik-Region beinhalten. Mit diesen Elementen sollen keine statistischen Informationen zu allen IP-Adressen in diesen Regionen angegeben werden. Vielmehr gelten sie nur für Anforderungen, die von IP-Adressen in Europa oder der Asien-Pazifik-Region und nicht von IP-Adressen in einem bestimmten Ort oder Land stammen.
-
-Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort sehen Sie die Gesamtanzahl von Treffern, den Prozentsatz der Treffer, die übertragene Datenmenge (in GB) sowie den Prozentsatz der übertragenen Daten für die 250 führenden Regionen. Zeigen Sie eine Beschreibung für die einzelnen Metriken an.
-
-Nachfolgend finden Sie eine kurze Beschreibung der beiden Berichtstypen:
+Eine kurze Beschreibung wird für jeden Typ von Geography Map-basierten Berichts unten bereitgestellt.
 
 | Berichtsname | Beschreibung |
 | --- | --- |
-| Führende Städte |In diesem Bericht werden Städte entsprechend der Anzahl von Treffern aus dieser Region klassifiziert. |
-| Führende Länder |In diesem Bericht werden Länder entsprechend der Anzahl von Treffern aus dieser Region klassifiziert. |
+| Www-Karte |In diesem Bericht können Sie die weltweiten bei Bedarf für Ihre CDN-Inhalte anzeigen. Jedes Land sind farbcodiert, auf die World-Karte, um den Prozentsatz der Treffer an, die aus dem betreffenden Bereich stammt. |
+| Karte der USA |In diesem Bericht können Sie die Nachfrage nach Ihrem CDN-Inhalte in den USA anzeigen. Jeder Zustand ist farbcodiert, auf dieser Karte den Prozentsatz der Treffer an, die von dieser Region stammen. |
+| Kanada-Karte |In diesem Bericht können Sie die Nachfrage nach Ihrem CDN-Inhalte in Kanada anzeigen. Jede Kanton ist farbcodiert, auf dieser Karte den Prozentsatz der Treffer an, die von dieser Region stammen. |
+| Europakarte |In diesem Bericht können Sie die Nachfrage nach Ihrem CDN-Inhalte in Europa anzuzeigen. Auf dieser Karte, um den Prozentsatz der Treffer an, die aus dem betreffenden Bereich stammt, wird jedes Land farbcodiert. |
+| Asien-Pazifik-Karte |In diesem Bericht können Sie die Nachfrage nach Ihrem CDN-Inhalte in Asien anzeigen. Auf dieser Karte, um den Prozentsatz der Treffer an, die aus dem betreffenden Bereich stammt, wird jedes Land farbcodiert. |
+
+## <a name="geography-reports-bar-charts"></a>Geography-Berichte (Balkendiagramme)
+Es gibt zwei zusätzliche Berichte, die je nach Geografie statistische Informationen bieten die Städte nach oben und nach oben Ländern sind. Diese Berichte rank Städte und Ländern bzw. nach der Anzahl der Treffer an, die von dieser Regionen stammen. Nach dem Generieren von diesem Berichtstyp, Aufrufens ein Balkendiagramm die obersten 10 Städte oder Länder, die über eine bestimmte Plattform Inhalt angefordert. Diesem Balkendiagramm können Sie schnell die Regionen zu verschaffen, die die höchste Anzahl von Anforderungen für Ihre Inhalte zu generieren.
+
+Die linke Seite des Diagramms (y-Achse) gibt an, wie viele Treffer in der angegebenen Region aufgetreten ist. Direkt unterhalb des Diagramms (x-Achse) werden soll finden Sie eine Bezeichnung für jede der obersten 10 Regionen.
+
+### <a name="using-the-bar-charts"></a>Verwenden die Balkendiagramme
+* Wenn Sie auf einen Balken zeigen, werden der Name und die Gesamtzahl der Treffer an, die in der Region aufgetreten sind als QuickInfo angezeigt.
+* Die QuickInfo für den Bericht nach oben Städte identifiziert eine Stadt von Name, Bundesland/Kanton und Land Abkürzung.
+* Wenn die Stadt oder die Region (z. B. Bundesland/Kanton) eine Anforderung stammt nicht ermittelt werden konnte, wird angegeben, dass sie unbekannte sind. Wenn das Land unbekannt, und klicken Sie dann auf zwei Fragezeichen (d. h.)?? ist, wird angezeigt.
+* Ein Bericht kann Metriken für die "Europe" oder "Asien/Pazifik." enthalten. Statistische Informationen über alle IP-Adressen in diesen Bereichen enthalten sollen diese Elemente nicht. Stattdessen gelten nur für Anforderungen, die von IP-Adressen stammen, die auf Europa oder Asien/Pazifik statt zu einer bestimmten Stadt und Land verteilt sind.
+
+Die Daten, mit denen das Balkendiagramm generiert wurde, können darunter angezeigt werden. Es werden Sie feststellen, übertragen die Gesamtanzahl der Cachetreffer, den Prozentsatz der Cachetreffer, die Menge der Daten (in Gigabyte), und der Prozentsatz der Daten für die oberen 250 Regionen übertragen. Zeigt eine Beschreibung für jede dieser Metriken an.
+
+Eine kurze Beschreibung wird für beide Typen von Berichten, die weiter unten bereitgestellt.
+
+| Berichtsname | Beschreibung |
+| --- | --- |
+| Top-Orte |In diesem Bericht die Rangfolge Städte entsprechend der Anzahl der Treffer an, die von stammt aus dem betreffenden Bereich bestimmt. |
+| Top Ländern |In diesem Bericht die Rangfolge Ländern entsprechend der Anzahl der Treffer an, die von stammt aus dem betreffenden Bereich bestimmt. |
 
 ## <a name="daily-summary"></a>Tägliche Zusammenfassung
-Mit dem Bericht „Tägliche Zusammenfassung“ können Sie auf täglicher Basis die Gesamtanzahl von Treffern und über eine bestimmte Plattform übertragene Daten anzeigen. Anhand dieser Informationen werden bestimmte CDN-Aktivitätsmuster schnell erkannt. Mithilfe dieses Berichts können Sie beispielsweise ermitteln, an welchen Tagen der Datenverkehr höher oder niedriger als erwartet ausgefallen ist.
+Die täglichen Zusammenfassungsbericht können Sie die Gesamtanzahl der Cachetreffer und über eine bestimmte Plattform auf täglicher Basis übertragenen Daten anzeigen. Diese Informationen kann verwendet werden, um CDN aktivitätsmuster schnell erkannt werden kann. Beispielsweise können in diesem Bericht Sie welche Tage erfahrenen höher oder niedriger ist als die erwartete Datenverkehr zu erkennen.
 
-Bei diesem Berichtstyp wird anhand eines Balkendiagramms der tägliche Umfang der plattformspezifischen Nachfrage in dem vom Bericht abgedeckten Zeitraum visuell dargestellt. Dazu werden im Bericht für die einzelnen Tage Balken angezeigt. Bei Auswahl des Zeitraums „Letzte Woche“ wird beispielsweise ein Balkendiagramm mit sieben Balken erstellt. Jeder Balken zeigt jeweils die Gesamtanzahl von Treffern an dem entsprechenden Tag an.
+Nach dem Generieren von diesem Berichtstyp, stellt ein Balkendiagramm einen visuellen Hinweis auf die Menge des plattformspezifischen Bedarf erfahrenen täglich über den Zeitraum vom Bericht bereit. Es wird zu diesem Zweck einen Balken für jeden Tag im Bericht anzeigen. Beispielsweise als "Letzte Woche" bezeichnet den Zeitraum auswählen ein Balkendiagramm mit sieben Balken generiert. Jeder Balken wird die Gesamtzahl der Treffer an diesem Tag erfahrenen anzugeben.
 
-Die linke Seite des Graphen (y-Achse) gibt an, wie viele Treffer am angegebenen Datum auftraten. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung, die das Datum (Format: JJJJ-MM-TT) für jeden im Bericht enthaltenen Tag angibt.
-
-> [!TIP]
-> Wenn Sie auf einen Balken zeigen, wird die Gesamtanzahl von Treffern an diesem Datum als QuickInfo angezeigt.
-> 
-> 
-
-Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort finden Sie die Gesamtanzahl von Treffern und die Menge der übertragenen Daten (in GB) für alle vom Bericht abgedeckten Tage.
-
-## <a name="by-hour"></a>Nach Stunde
-Mit dem Bericht „Nach Stunde“ können Sie die Gesamtanzahl von Treffern und über eine bestimmte Plattform übertragene Daten auf Stundenbasis anzeigen. Anhand dieser Informationen werden bestimmte CDN-Aktivitätsmuster schnell erkannt. Mithilfe dieses Berichts können Sie beispielsweise die Zeiträume während des Tages ermitteln, in denen der Datenverkehr höher oder niedriger als erwartet ausfällt.
-
-Bei diesem Berichtstyp wird anhand eines Balkendiagramms der Umfang der plattformspezifischen Nachfrage pro Stunde in dem vom Bericht abgedeckten Zeitraum visuell dargestellt. Dazu werden für die einzelnen im Bericht abgedeckten Stunden Balken angezeigt. Bei Auswahl eines 24-Stunden-Zeitraums wird beispielsweise ein Balkendiagramm mit 24 Balken erstellt. Jeder Balken zeigt jeweils die Gesamtanzahl von Treffern während der entsprechenden Stunde an.
-
-Die linke Seite des Graphen (y-Achse) gibt an, wie viele Treffer in der angegebenen Stunde auftraten. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung, die das Datum und die Uhrzeit (Format: JJJJ-MM-TT hh:mm) für jede im Bericht enthaltene Stunde angibt. Die Zeit wird im 24-Stunden-Format (Zeitzone: UTC/GMT) angegeben.
+Die linke Seite des Diagramms (y-Achse) gibt an, wie viele Zugriffe auf das angegebene Datum ist aufgetreten. Direkt unterhalb des Diagramms (x-Achse) werden soll, finden Sie eine Bezeichnung, der das Datum angibt (Format: JJJJ-MM-TT) für jeden Tag im Bericht enthalten.
 
 > [!TIP]
-> Wenn Sie auf einen Balken zeigen, wird die Gesamtanzahl von Treffern in dieser Stunde als QuickInfo angezeigt.
+> Wenn Sie auf einen Balken zeigen, wird die Gesamtzahl der Treffer an, die an diesem Datum aufgetreten sind als QuickInfo angezeigt.
 > 
 > 
 
-Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort finden Sie die Gesamtanzahl von Treffern und die Menge der übertragenen Daten (in GB) für alle vom Bericht abgedeckten Stunden.
+Die Daten, mit denen das Balkendiagramm generiert wurde, können darunter angezeigt werden. Es finden Sie die Gesamtzahl der Treffer und die Datenmenge (in Gigabyte) für jeden Tag, die vom Bericht abgedeckt.
 
-## <a name="by-file"></a>Nach Datei
-Mit dem Bericht „Nach Datei“ können Sie den Umfang der Nachfrage und den über eine bestimmte Plattform übertragenen Datenverkehr für die am häufigsten angeforderten Assets anzeigen. Bei diesem Berichtstyp wird ein Balkendiagramm für die zehn Assets erstellt, die im angegebenen Zeitraum am häufigsten angefordert wurden.
+## <a name="by-hour"></a>Pro Stunde
+Der Bericht nach Stunde können Sie die Gesamtanzahl der Cachetreffer und über eine bestimmte Plattform stündlich übertragenen Daten anzeigen. Diese Informationen kann verwendet werden, um CDN aktivitätsmuster schnell erkannt werden kann. Angenommen, können in diesem Bericht Sie die Zeiträume im Laufe des Tages zu erkennen, die höher oder niedriger ist als die erwartete Datenverkehr auftreten.
+
+Nach dem Generieren von diesem Berichtstyp, gebe ein Balkendiagramm einen visuellen Hinweis auf die Menge des plattformspezifischen-Anforderung, die auf einer stündlichen Basis für den Zeitraum vom Bericht abgedeckt ist. Es wird zu diesem Zweck einen Balken für jede Stunde, die Werte im Bericht anzeigen. Z. B. auswählen ein 24-Stunden Zeitraum ein Balkendiagramm mit 24 Balken generiert. Jeder Balken wird die Gesamtzahl der Treffer erfahrenen während dieser Stunde angegeben.
+
+Die linke Seite des Diagramms (y-Achse) gibt an, auf die angegebene Stunde Treffer aufgetreten ist. Direkt unterhalb des Diagramms (x-Achse) werden soll, finden Sie eine Bezeichnung, die Datum/Uhrzeit (Format: JJJJ-MM-TT HH: mm) für jede Stunde, die im Bericht enthalten. Berichtszeit wird mit 24-Stunden-Format und unter Verwendung der UTC/GMT-Zeitzone angegeben ist.
+
+> [!TIP]
+> Wenn Sie auf einen Balken zeigen, wird die Gesamtzahl der Treffer an, die während dieser Stunde wurden als QuickInfo angezeigt.
+> 
+> 
+
+Die Daten, mit denen das Balkendiagramm generiert wurde, können darunter angezeigt werden. Es finden Sie die Gesamtzahl der Treffer und die Datenmenge (in Gigabyte) für jede Stunde, die vom Bericht abgedeckt.
+
+## <a name="by-file"></a>In Datei
+Der Bericht von Datei können Sie die Menge der Anforderung und den Datenverkehr über eine bestimmte Plattform für die am häufigsten angeforderten Objekte davon anzeigen. Nach dem Generieren von diesem Berichtstyp, wird ein Balkendiagramm für den angegebenen Zeitraum für die obersten 10 am häufigsten angeforderten Objekte generiert.
 
 > [!NOTE]
-> Für diesen Bericht werden Edge-CNAME-URLs in ihre entsprechenden CDN-URLs konvertiert. Dadurch wird unabhängig von der für die Anforderung verwendeten CDN- oder Edge-CNAME-URL ein präziser Wert für die Gesamtanzahl von Treffern für ein Asset ermittelt.
+> Edge-CNAME-URLs werden für die Zwecke dieses Berichts können auf ihre entsprechenden CDN-URLs konvertiert. Dies ermöglicht eine präzise Tally für die Gesamtzahl von Treffern ein Medienobjekt unabhängig vom CDN oder Edge CNAME-URL verwendet, um auf Anforderung zugeordnet.
 > 
 > 
 
-Die linke Seite des Graphen (y-Achse) gibt die Anzahl von Anforderungen für jedes Asset im angegebenen Zeitraum an. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung mit dem Dateinamen für die zehn Assets, die am häufigsten angefordert wurden.
+Die linke Seite des Diagramms (y-Achse) gibt die Anzahl der Anforderungen für jedes Medienobjekt für den angegebenen Zeitraum an. Direkt unterhalb des Diagramms (x-Achse), eine Bezeichnung finden Sie, die den Dateinamen für jede der obersten 10 angeforderten Objekte angibt.
 
-Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort sehen Sie die folgenden Informationen für die 250 Assets, die am häufigsten angefordert wurden: relativer Pfad, Gesamtanzahl von Treffern, Prozentsatz der Treffer, übertragene Datenmenge (in GB) und Prozentsatz der übertragenen Daten.
+Die Daten, mit denen das Balkendiagramm generiert wurde, können darunter angezeigt werden. Dort finden Sie die folgende Informationen für jede der obersten 250 angeforderten Objekte: relativen Pfad, der die Gesamtzahl der Cachetreffer, den Prozentsatz der Cachetreffer, die Menge der Daten zu übertragen, (in Gigabyte), und der Prozentsatz der Daten zu übertragen.
 
-## <a name="by-file-detail"></a>Nach Dateidetails
-Mit dem Bericht „Nach Dateidetails“ können Sie den Umfang der Nachfrage und den über eine bestimmte Plattform übertragenen Datenverkehr für ein bestimmtes Asset anzeigen. Ganz oben im Bericht befindet sich die Option „Dateidetails für“. Mit dieser Option wird eine Liste der am häufigsten angeforderten Assets für die ausgewählte Plattform angezeigt. Um den Bericht „Nach Dateidetail“ zu erstellen, wählen Sie das gewünschte Asset über die Option „Dateidetails für“ aus. Anschließend wird mithilfe eines Balkendiagramms der Umfang der täglichen Nachfrage angegeben, die im Laufe des angegebenen Zeitraums entstand.
+## <a name="by-file-detail"></a>Vom Datei-Detail
+Der vom Datei-Detailbericht können Sie die Menge der Anforderung und den Datenverkehr über eine bestimmte Plattform für ein bestimmtes Medienobjekt entstandenen anzeigen. Ist Sie ganz oben in diesem Bericht die Option Datei Details für ein. Diese Option bietet eine Liste Ihrer am häufigsten angeforderten Objekte für die ausgewählte Plattform. Um einen von Datei detaillierten Bericht zu generieren, müssen Sie wählen Sie die Option Datei Details für das gewünschte Medienobjekt. Nach dem ein Balkendiagramm wird angegeben, dass die Menge der täglich Anforderung, die sie für den angegebenen Zeitraum generiert.
 
-Die linke Seite des Graphen (y-Achse) gibt die Gesamtanzahl von Anforderungen für ein Asset an einem bestimmten Tag an. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung mit dem Datum (Format: JJJJ-MM-TT), für das die CDN-Nachfrage für das Asset gemeldet wurde.
+Die linke Seite des Diagramms (y-Achse) gibt an, die Gesamtanzahl der Anforderungen erfasst, eine Anlage an einem bestimmten Tag aufgetreten ist. Direkt unterhalb des Diagramms (x-Achse) werden soll, finden Sie eine Bezeichnung, der das Datum angibt (Format: JJJJ-MM-TT) für die CDN-Anforderung für das Medienobjekt gemeldet wurde.
 
-Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort finden Sie die Gesamtanzahl von Treffern und die Menge der übertragenen Daten (in GB) für alle vom Bericht abgedeckten Tage.
+Die Daten, mit denen das Balkendiagramm generiert wurde, können darunter angezeigt werden. Es finden Sie die Gesamtzahl der Treffer und die Datenmenge (in Gigabyte) für jeden Tag, die vom Bericht abgedeckt.
 
 ## <a name="by-file-type"></a>Nach Dateityp
-Im Bericht „Nach Dateityp“ können Sie den Umfang der Nachfrage und den Datenverkehr nach Dateityp anzeigen. Bei diesem Berichtstyp wird anhand eines Ringdiagramms der Prozentsatz der Treffer angegeben, die von den zehn führenden Dateitypen generiert wurden.
+Der Bericht nach Dateityp können Sie die Menge der Anforderung und des Dateityp anfallenden Datenverkehrs anzeigen. Nach dem Generieren von diesem Berichtstyp, wird ein Ringdiagramm den Prozentsatz der Treffer generiert, die für die obersten 10 Dateitypen anzugeben.
 
 > [!TIP]
-> Wenn Sie auf ein Segment im Ringdiagramm zeigen, wird der Internetmedientyp des Dateityps als QuickInfo angezeigt.
+> Wenn Sie über ein Segment in das Ringdiagramm zeigen, Medientyp Internet von diesem Dateityp als QuickInfo angezeigt.
 > 
 > 
 
-Die dem Ringdiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort sehen Sie die Dateinamenerweiterung/den Internetmedientyp, die Gesamtanzahl von Treffern, den Prozentsatz der Treffer, die übertragene Datenmenge (in GB) sowie den Prozentsatz der übertragenen Daten für jeden der 250 führenden Dateitypen.
+Die Daten, die zum Generieren der Ringdiagramm verwendet wurde, können darunter angezeigt werden. Es findet den Dateityp Namen Erweiterung/Internet-Medien, die Gesamtanzahl der Cachetreffer, den Prozentsatz der Cachetreffer, übertragen Sie die Datenmenge (in Gigabyte), und der Prozentsatz der Daten für jede der oben 250 Dateitypen übertragen.
 
-## <a name="by-directory"></a>Nach Verzeichnis
-Mit dem Bericht „Nach Verzeichnis“ können Sie den Umfang der Nachfrage und den über eine bestimmte Plattform übertragenen Datenverkehr für Inhalte aus einem bestimmten Verzeichnis anzeigen. Bei diesem Berichtstyp wird anhand eines Balkendiagramms die Gesamtanzahl von Treffern angegeben, die von den Inhalten in den zehn führenden Verzeichnissen generiert wurden.
+## <a name="by-directory"></a>Vom Verzeichnis
+Der Bericht vom Verzeichnis können Sie die Menge der Anforderung und den Datenverkehr über eine bestimmte Plattform für den Inhalt aus einem bestimmten Verzeichnis entstandenen anzeigen. Nach dem Generieren von diesem Berichtstyp, wird ein Balkendiagramm die Gesamtzahl der Treffer von Inhalt in die obersten 10 Verzeichnisse generierten anzugeben.
 
-### <a name="using-the-bar-chart"></a>Verwenden des Balkendiagramms
+### <a name="using-the-bar-chart"></a>Verwenden das Balkendiagramm
 * Zeigen Sie auf einen Balken, um den relativen Pfad zum entsprechenden Verzeichnis anzuzeigen.
-* In einem Unterordner eines Verzeichnisses gespeicherte Inhalte werden beim Berechnen der Nachfrage nach Verzeichnis nicht berücksichtigt. Diese Berechnung basiert ausschließlich auf der Anzahl von Anforderungen, die für die im entsprechenden Verzeichnis gespeicherten Inhalte generiert wurden.
-* Für diesen Bericht werden Edge-CNAME-URLs in ihre entsprechenden CDN-URLs konvertiert. Dadurch wird unabhängig von der für die Anforderung verwendeten CDN- oder Edge-CNAME-URL ein präziser Wert für alle Statistiken für ein Asset ermittelt.
+* Bei der Berechnung der Anforderung vom Verzeichnis in einen Unterordner eines Verzeichnisses gespeicherte Inhalte nicht gezählt. Diese Berechnung basiert ausschließlich auf die Anzahl der Anforderungen, die generiert wird, für den Inhalt im aktuellen Verzeichnis gespeichert.
+* Edge-CNAME-URLs werden für die Zwecke dieses Berichts können auf ihre entsprechenden CDN-URLs konvertiert. Dies ermöglicht eine präzise Tally für alle Statistiken, die ein Medienobjekt unabhängig vom CDN oder Edge CNAME-URL verwendet, um auf Anforderung zugeordnet.
 
-Die linke Seite des Graphen (y-Achse) gibt die Gesamtanzahl von Anforderungen für die in den zehn führenden Verzeichnissen gespeicherten Inhalte an. Jeder Balken im Diagramm stellt ein Verzeichnis dar. Weisen Sie mithilfe von Farbkodierungen einen Balken einem Verzeichnis zu, das im Abschnitt „250 führende vollständige Verzeichnisse“ aufgeführt ist.
+Die linke Seite des Diagramms (y-Achse) gibt an, die Gesamtanzahl der Anforderungen für den Inhalt in die ersten 10-Verzeichnissen gespeichert sind. Jeder Balken im Diagramm stellt ein Verzeichnis dar. Verwenden Sie die color-coding Authentifizierungsschema, um einen Balken in einem Verzeichnis im Abschnitt oben 250 vollständigen Verzeichnissen aufgeführten zuordnen.
 
-Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort sehen Sie die folgenden Informationen für die 250 führenden Verzeichnisse: relativer Pfad, Gesamtanzahl von Treffern, Prozentsatz der Treffer, übertragene Datenmenge (in GB) und Prozentsatz der übertragenen Daten.
+Die Daten, mit denen das Balkendiagramm generiert wurde, können darunter angezeigt werden. Dort finden Sie die folgende Informationen für jeden der oben 250 Verzeichnisse: relativen Pfad, der die Gesamtzahl der Cachetreffer, den Prozentsatz der Cachetreffer, die Menge der Daten zu übertragen, (in Gigabyte), und der Prozentsatz der Daten zu übertragen.
 
-## <a name="by-browser"></a>Nach Browser
-Mit dem Bericht „Nach Browser“ können Sie anzeigen, welche Browser zum Anfordern von Inhalten verwendet wurden. Bei diesem Berichtstyp wird anhand eines Kreisdiagramms der Prozentsatz der Anforderungen angegeben, die von den zehn führenden Browsern verarbeitet wurden.
+## <a name="by-browser"></a>Vom Browser
+Der Bericht vom Browser können Sie anzeigen, welche Browser verwendet wurden, um Inhalte angefordert werden. Nach dem Generieren von diesem Berichtstyp, Aufrufens ein Kreisdiagramms den Prozentsatz der Anforderungen von der obersten 10 Browsern verarbeitet werden.
 
-### <a name="using-the-pie-chart"></a>Verwenden des Kreisdiagramms
-* Zeigen Sie auf ein Segment im Kreisdiagramm, um den Namen und die Version eines Browsers anzuzeigen.
-* Für diesen Bericht werden die verschiedenen Kombinationen aus Browser und Version jeweils als unterschiedliche Browser betrachtet.
-* Das Segment „Andere“ gibt den Prozentsatz der Anforderungen an, die von allen anderen Browsern und Versionen verarbeitet wurden.
+### <a name="using-the-pie-chart"></a>Verwenden Sie das Kreisdiagramm
+* Zeigen Sie auf ein Segment in das Kreisdiagramm die Namen und die Version des Browsers anzeigen.
+* Für die Zwecke dieses Berichts können gilt jede eindeutige Browserversion Kombination aus einen anderen Browser.
+* Das Slice mit dem Namen "Andere" gibt den Prozentsatz der Anforderungen, die von allen anderen Browsern und Versionen behandelt.
 
-Die dem Kreisdiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort finden Sie den Browsertyp/die Versionsnummer, die Gesamtanzahl von Treffern und den Prozentsatz der Treffer für jeden der 250 führenden Browser.
+Darunter können die Daten, die verwendet wurde, generiert das Kreisdiagramm angezeigt werden. Es finden Sie die Browser Typ/Versionsnummer, die Gesamtzahl der Treffer und den Prozentsatz der Treffer für jeden der oben 250 Browser.
 
-## <a name="by-referrer"></a>Nach Verweis
-Mit dem Bericht „Nach Verweis“ können Sie die führenden Verweise auf Inhalte für die ausgewählte Plattform anzeigen. Ein Verweis gibt den Hostnamen an, von dem eine Anforderung generiert wurde. Bei diesem Berichtstyp wird anhand eines Balkendiagramms der Umfang der Nachfrage (d. h. die Treffer) angegeben, die von den zehn führenden Verweisen generiert wurden.
+## <a name="by-referrer"></a>Durch Referrer
+Der Bericht von Referrer können Sie die häufigste Verweise auf Inhalte für die ausgewählte Plattform anzeigen. Eine Referenz gibt an, den Hostnamen, aus dem eine Anforderung generiert wurde. Nach dem Generieren von diesem Berichtstyp, wird ein Balkendiagramm die Menge der Anforderung (d. h. Treffer) generiert, die für die obersten 10 Verweise anzugeben.
 
-Die linke Seite des Graphen (y-Achse) gibt die Gesamtanzahl von Anforderungen für ein Asset für jeden Verweis an. Jeder Balken im Diagramm stellt einen Verweis dar. Weisen Sie mithilfe von Farbkodierungen einen Balken einem Verweis zu, der im Abschnitt „250 führende Verweise“ aufgeführt ist.
+Die linke Seite des Diagramms (y-Achse) gibt an, die Gesamtanzahl der Anforderungen erfasst, ein Medienobjekt bei jeder Referrer aufgetreten ist. Jeder Balken im Diagramm stellt eine Referenz dar. Verwenden Sie die color-coding Authentifizierungsschema, um ein Balken eine Referenz im Abschnitt oben 250 Referrer aufgeführten zuordnen.
 
-Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort finden Sie die URL, die Gesamtanzahl von Treffern und den Prozentsatz der Treffer, die von jedem der 250 führenden Verweise generiert wurden.
+Die Daten, mit denen das Balkendiagramm generiert wurde, können darunter angezeigt werden. Es finden Sie die URL, die Gesamtzahl der Treffer und den Prozentsatz von Treffern, die von jedem der Top-250 Verweiser generiert.
 
-## <a name="by-download"></a>Nach Download
-Mit dem Bericht „Nach Download“ können Sie Downloadmuster für die am häufigsten angeforderten Inhalte analysieren. Ein Balkendiagramm oben im Bericht vergleicht für die zehn am häufigsten abgerufenen Assets die versuchten Downloads mit den abgeschlossenen Downloads. Jeder Balken ist farbkodiert: Versuchte Downloads sind blau und abgeschlossene Downloads sind grün gekennzeichnet.
+## <a name="by-download"></a>Durch Herunterladen
+Der Bericht durch Herunterladen kann, Download-Muster für den am häufigsten angeforderten Inhalt zu analysieren. Der Anfang des Berichts enthält ein Balkendiagramm vergleicht Downloads mit abgeschlossenen Downloads für die obersten 10 angeforderten Objekte versucht, eine. Jeder Balken sind farbcodiert, gemäß der gibt an, ob es sich um einen Versuch Download (Blau) oder einen abgeschlossenen Download (Grün) handelt.
 
 > [!NOTE]
-> Für diesen Bericht werden Edge-CNAME-URLs in ihre entsprechenden CDN-URLs konvertiert. Dadurch wird unabhängig von der für die Anforderung verwendeten CDN- oder Edge-CNAME-URL ein präziser Wert für alle Statistiken für ein Asset ermittelt.
+> Edge-CNAME-URLs werden für die Zwecke dieses Berichts können auf ihre entsprechenden CDN-URLs konvertiert. Dies ermöglicht eine präzise Tally für alle Statistiken, die ein Medienobjekt unabhängig vom CDN oder Edge CNAME-URL verwendet, um auf Anforderung zugeordnet.
 > 
 > 
 
-Die linke Seite des Graphen (y-Achse) gibt den Dateinamen für jedes der zehn am häufigsten abgerufenen Assets an. Direkt unterhalb des Graphen (x-Achse) befinden sich Bezeichnungen mit der Gesamtanzahl von versuchten/abgeschlossenen Downloads.
+Die linke Seite des Diagramms (y-Achse) gibt den Dateinamen für jede der obersten 10 angeforderten Objekte an. Direkt unterhalb des Diagramms (x-Achse) werden soll finden Sie Bezeichnungen, die die Gesamtanzahl der Downloads versucht/abgeschlossene angeben.
 
-Direkt unterhalb des Balkendiagramms werden die folgenden Informationen für die 250 Assets aufgeführt, die am häufigsten angefordert wurden: relativer Pfad (einschließlich Dateiname), Anzahl von abgeschlossenen Downloads, Anzahl von Anforderungen und Prozentsatz der Anforderungen, die zu abgeschlossenen Downloads führten.
+Direkt unterhalb des Diagramms Balken die folgende Informationen werden aufgeführt für die obersten 250 angeforderten Objekte: relativen Pfad (einschließlich Dateiname), die Anzahl der Fälle, in denen es vollständig heruntergeladen wurde, die Anzahl der Fälle, in denen er angefordert wurde und der Prozentsatz der Anforderungen, die in einem vollständigen Download geführt haben.
 
 > [!TIP]
-> Unser CDN wird nicht von einem HTTP-Client (d. h. Browser) informiert, wenn ein Asset vollständig heruntergeladen wurde. Daher muss anhand von Statuscodes und Bytebereichsanfragen ermittelt werden, ob ein Asset vollständig heruntergeladen wurde. Dabei wird zunächst überprüft, ob die Anforderung den Statuscode „200 OK“ aufweist. Wenn dies der Fall ist, wird mithilfe von Bytebereichsanfragen sichergestellt, dass das gesamte Asset abgedeckt ist. Abschließend wird die übertragene Datenmenge mit der Größe des angeforderten Assets verglichen. Wenn die übertragene Datenmenge größer oder gleich der Dateigröße ist und die Bytebereichsanfragen dem Asset entsprechen, wird der Treffer als vollständiger Download gezählt.
+> Unsere CDN informiert wird von einem HTTP-Client (d. h. Browser) Wenn ein Medienobjekt vollständig heruntergeladen wurde. Folglich berechnet, ob ein Medienobjekt gemäß Statuscodes und Bytebereichs-vollständig heruntergeladen wurde, müssen Anforderungen. Im ersten Schritt wir bei dieser Berechnung wird ein Statuscode "200 OK", ob die Anforderung führt. Wenn dies der Fall ist, untersuchen wir am bytebereichsanforderungen, um sicherzustellen, dass sie das gesamte Medienobjekt abdecken. Abschließend Vergleichen wir die Datenmenge, die auf die Größe der angeforderten Ressource. Wenn die Daten übertragen, gleich oder größer als die Dateigröße werden und die bytebereichsanforderungen eignen sich für das Medienobjekt, dann wird der Treffer als vollständige Download gezählt.
 > 
-> Berücksichtigen Sie aufgrund des Interpretationsspielraums bei diesem Bericht die folgenden Punkte, die sich auf Konsistenz und Genauigkeit des Berichts auswirken können:
+> Aufgrund der interpretativen in diesem Bericht sollten Sie die folgenden Punkte bedenken, die die Konsistenz und die Genauigkeit der in diesem Bericht ändern können.
 > 
-> * Datenverkehrsmuster können bei abweichendem Verhalten der Benutzer-Agents nicht präzise vorhergesagt werden. Dadurch können für abgeschlossene Downloads Ergebnisse von über 100 Prozent erzielt werden
-> * Assets, die den progressiven Download über HTTP nutzen, können von diesem Bericht unter Umständen nicht exakt dargestellt werden. Das liegt daran, dass Benutzer verschiedene Stellen in einem Video suchen.
+> * Muster im Datenverkehr können nicht präzise vorhergesagt werden, wenn sich unterschiedlich, Benutzer-Agents Verhalten. Dies kann abgeschlossenen Download Ergebnissen führen, die größer als 100 % sind.
+> * Objekte, die HTTP-progressiven Download nutzen können von diesem Bericht nicht exakt dargestellt werden. Dies liegt an der Benutzern, die an andere Positionen in einem Video Suchvorgänge.
 > 
 > 
 
-## <a name="by-404-errors"></a>Nach 404-Fehlern
-Im Bericht „Nach 404-Fehlern“ können Sie den Inhaltstyp anzeigen, der am häufigsten den Statuscode „404 Nicht gefunden“ generiert. Oben im Bericht ist ein Balkendiagramm für die zehn führenden Assets enthalten, für die der Statuscode „404 Nicht gefunden“ zurückgegeben wurde. In diesem Balkendiagramm wird die Gesamtanzahl von Anforderungen mit den Anforderungen verglichen, die zum Statuscode „404 Nicht gefunden“ für diese Assets führten. Jeder Balken ist farbkodiert. Mit einem gelben Balken wird angegeben, dass für eine Anforderung der Statuscode „404 Nicht gefunden“ zurückgegeben wurde. Ein roter Balken gibt die Gesamtanzahl von Anforderungen für das Asset an.
+## <a name="by-404-errors"></a>Von Fehlern des Typs 404
+Der Bericht von 404-Fehler können Sie den Typ des Inhalts zu identifizieren, die der höchsten Anzahl an 404 Nichtgefunden-Statuscodes generiert. Der Anfang des Berichts enthält ein Balkendiagramm für die obersten 10 Medienobjekte, die für die eine 404 Nichtgefunden-Statuscode zurückgegeben wurde. Diesem Balkendiagramm vergleicht die Gesamtanzahl der Anforderungen mit Anforderungen, die für diese Ressourcen ein 404 Nichtgefunden Statuscode geführt haben. Jeder Balken sind farbcodiert. Ein gelber Balken wird verwendet, um anzugeben, dass die Anforderung einer 404 Statuscode "Nichtgefunden" geführt hat. Ein roter Strich wird verwendet, um die Gesamtanzahl der Anforderungen für das Medienobjekt anzugeben.
 
 > [!NOTE]
-> Beachten Sie bei diesem Bericht Folgendes:
+> Für die Zwecke dieses Berichts ist Folgendes zu beachten:
 > 
-> * Ein Treffer stellt alle Anforderungen eines Assets unabhängig vom Statuscode dar.
-> * Edge-CNAME-URLs werden in ihre entsprechenden CDN-URLs konvertiert. Dadurch wird unabhängig von der für die Anforderung verwendeten CDN- oder Edge-CNAME-URL ein präziser Wert für alle Statistiken für ein Asset ermittelt.
+> * Treffer stellt jede Anforderung für einen Bestand unabhängig von der Statuscode.
+> * Edge-CNAME-URLs werden in ihre entsprechenden CDN-URLs konvertiert. Dies ermöglicht eine präzise Tally für alle Statistiken, die ein Medienobjekt unabhängig vom CDN oder Edge CNAME-URL verwendet, um auf Anforderung zugeordnet.
 > 
 > 
 
-Die linke Seite des Graphen (y-Achse) gibt den Dateinamen für jedes der zehn am häufigsten abgerufenen Assets an, für die der Statuscode „404 Nicht gefunden“ zurückgegeben wurde. Direkt unterhalb des Graphen (x-Achse) befinden sich Bezeichnungen mit der Gesamtanzahl von Anforderungen und der Anzahl von Anforderungen, für die der Statuscode „404 Nicht gefunden“ zurückgegeben wurde.
+Die linke Seite des Diagramms (y-Achse) gibt an, den Dateinamen für jede die obersten 10 angeforderten Objekte, die eine 404 Statuscode "Nichtgefunden" geführt hat. Direkt unterhalb des Diagramms (x-Achse) werden soll finden Sie Bezeichnungen, die angeben, die Gesamtanzahl der Anforderungen und die Anzahl der Anforderungen, die eine 404 Statuscode "Nichtgefunden" geführt hat.
 
-Direkt unterhalb des Balkendiagramms werden die folgenden Informationen für die 250 Assets aufgeführt, die am häufigsten angefordert wurden: relativer Pfad (einschließlich Dateiname), Anzahl von Anforderungen mit dem Statuscode „404 Nicht gefunden“, die Gesamtanzahl von Anforderungen für ein Asset und der Prozentsatz der Anforderungen, für die der Statuscode „404 Nicht gefunden“ zurückgegeben wurde.
+Direkt unterhalb des Diagramms Balken die folgende Informationen werden aufgeführt für die obersten 250 angeforderten Objekte: relativen Pfad (einschließlich Dateiname), die Anzahl der Anforderungen, die eine 404 Statuscode "Nichtgefunden" geführt hat, die Gesamtzahl der Fälle, in denen das Medienobjekt angefordert wurde und der Prozentsatz der Anforderungen, die eine 404 Statuscode "Nichtgefunden" geführt hat.
 
-## <a name="see-also"></a>Weitere Informationen
-* [Übersicht über das Azure CDN](cdn-overview.md)
-* [Echtzeitstatistiken in Microsoft Azure CDN](cdn-real-time-stats.md)
-* [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
-* [Analysieren der Edgeleistung](cdn-edge-performance.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+## <a name="see-also"></a>Weitere Informationen:
+* [Übersicht über die Azure-CDN](cdn-overview.md)
+* [In Echtzeit Statistiken in Microsoft Azure-CDN](cdn-real-time-stats.md)
+* [Überschreiben von Standardverhalten der HTTP-verwenden das Regelmodul](cdn-rules-engine.md)
+* [Analysieren von Edge-Leistung](cdn-edge-performance.md)
 

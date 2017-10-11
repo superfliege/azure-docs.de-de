@@ -1,6 +1,6 @@
 ---
-title: Technische Spezifikationen von StorSimple | Microsoft Docs
-description: "Beschreibt die technischen Spezifikationen und die einzuhaltenden gesetzlichen Richtlinien für die StorSimple-Hardwarekomponenten."
+title: Technische Spezifikationen StorSimple | Microsoft Docs
+description: "Beschreibt die technischen Spezifikationen und Kompatibilität normungsinformationen für die StorSimple-Hardware-Komponenten."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,166 +14,163 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: ac1f6fbd40770374f68d0d280fc1cc040e41b1ef
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technische Spezifikationen und Kompatibilität des StorSimple-Geräts
+# <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technische Spezifikationen und Kompatibilität für das StorSimple-Gerät
 ## <a name="overview"></a>Übersicht
-Die Hardwarekomponenten des Microsoft Azure StorSimple-Geräts verfügen über die in diesem Artikel beschriebenen technischen Spezifikationen und entsprechen den aufgeführten gesetzlichen Richtlinien. In den technischen Spezifikationen werden die Stromversorgungs- und Kühleinheiten (PCMs), Laufwerke, Speicherkapazität und Gehäuse beschrieben. Die Richtlinieninformationen umfassen z. B. internationale Standards sowie Sicherheits-, Emissions- sowie Verkabelungsbestimmungen.
+Die Hardwarekomponenten Ihres Microsoft Azure StorSimple-Geräts entsprechen, auf die technischen Spezifikationen und gesetzlichen Standards, die in diesem Artikel beschriebenen Schritte aus. Die technischen Spezifikationen beschreiben die Stromversorgung und Kühleinheiten (PCMs), Laufwerke, Speicherkapazität und Gehäuse. Die Kompatibilitätsinformationen werden u. a. die internationalen Institutionen, Sicherheit und Emissionen und Verkabelung behandelt.
 
-## <a name="power-and-cooling-module-specifications"></a>Spezifikationen der Stromversorgungs- und Kühleinheit
-Das StorSimple-Gerät verfügt über zwei SBB-kompatible Stromversorgungs- und Kühleinheiten (PCMs) mit 100–240-V-Dual-Lüftern. Dadurch wird eine redundante Stromversorgungskonfiguration gewährleistet. Beim Ausfall eines PCMs wird das Gerät mit der anderen PCM normal weiterbetrieben, bis die fehlerhafte Einheit ausgetauscht wird.  
+## <a name="power-and-cooling-module-specifications"></a>Spezifikationen für Stromversorgung und Kühlung-Modul
+Das StorSimple-Gerät verfügt über zwei dual 100-240-v-Lüfter, SBB-kompatible Power Kühleinheiten (PCMs). Dies bietet eine redundante stromversorgungskonfiguration. Wenn ein PCM ausfällt, funktioniert das Gerät weiterhin normal auf dem anderen PCM ausgeführt werden, bis das fehlerhafte Modul ausgetauscht wurde.  
 
-Das EBOD-Gehäuse enthält ein PCM mit 580 W, und das primäre Gehäuse wird mit einer PCM-Stromversorgung mit 764 W betrieben. In den folgenden Tabellen sind die technischen Spezifikationen der PCMs aufgeführt.
+Das ebod-Gehäuse wird ein PCM mit 580 W und primäres Gehäuse wird ein PCM mit 764 W verwendet. Die folgenden Tabellen enthalten die technischen Spezifikationen der pcms an.
 
-| Spezifikation | 580 W PCM (EBOD) | 764 W PCM (primär) |
+| Spezifikation | PCM MIT 580 W (EBOD) | PCM mit 764 W (primär) |
 | --- | --- | --- |
-| Maximale Ausgangsleistung |580 W |764 |
-| Frequency |50/60 Hz |50/60 Hz |
-| Spannungsbereichsauswahl |Automatischer Spannungsbereich: 90–264 V AC, 47/63 Hz |Automatischer Spannungsbereich: 90–264 V AC, 47/63 Hz |
-| Maximaler Eingangsstrom |20 A |20 A |
-| Leistungsfaktorkorrektur |> 95 % Nenneingangsspannung |> 95 % Nenneingangsspannung |
-| Oberschwingungen |Erfüllt EN61000-3-2 |Erfüllt EN61000-3-2 |
-| Ausgabe |5 V Standbyspannung bei 2,0 A |5 V Standbyspannung bei 2,7 A |
-| +5 V bei 42 A |+5 V bei 40 A | |
-| +12 V bei 38 A |+12 V bei 38 A | |
-| Hot-Plug-fähig |Ja |Ja |
-| Switches und LEDs |Netzteil-Ein-/Aus-Schalter und vier Status-LEDs |Netzteil-Ein-/Aus-Schalter und sechs Status-LEDs |
-| Gehäusekühlung |Axialer Lüfter mit variabler Lüftungssteuerung |Axialer Lüfter mit variabler Lüftungssteuerung |
+| Maximale ausgangsleistung |580 W |764 |
+| Häufigkeit |50/60 Hz |50/60 Hz |
+| Spannung Bereichsauswahl |Automatische reichen: 90-264 V Wechselstrom, 47/63 Hz |Automatische reichen: 90-264 V Wechselstrom, 47/63 Hz |
+| Maximale Einschaltstrom |20 EIN |20 EIN |
+| Blindstromkompensation |> 95 % nominale eingangsspannung |> 95 % nominale eingangsspannung |
+| Oberschwingungen |Erfüllt en 61000-3-2 |Erfüllt en 61000-3-2 |
+| Ausgabe |5 v bereitschaftsspannung bei 2,0 A |5 v bereitschaftsspannung bei 2.7 ein |
+| + 5V @ 42 EIN |+ 5V @ 40 A | |
+| + 12 V BEI @ 38 EIN |+ 12 V BEI @ 38 EIN | |
+| Laufenden Sie austauschbar im Betrieb |Ja |Ja |
+| Schalter und LEDs |AC/aus-Schalter und vier Statusindikator-LEDs |AC/aus-Schalter und sechs Statusindikator-LEDs |
+| Gehäusekühlung |Axiale Lüfter mit variabler Lüfterdrehzahl |Axiale Lüfter mit variabler Lüfterdrehzahl |
 
-## <a name="power-consumption-statistics"></a>Stromverbrauchsstatistiken
-Die folgende Tabelle enthält die typischen Stromverbrauchsdaten für die verschiedenen Modelle von StorSimple-Geräten (tatsächliche Werte können von den veröffentlichten abweichen). 
+## <a name="power-consumption-statistics"></a>Energieverbrauchsstatistik
+Die folgende Tabelle enthält die typische Energieverbrauchsdaten (tatsächlichen Werte können aus den veröffentlichten variieren) für die verschiedenen Modelle eines StorSimple-Gerät. 
 
-| Bedingungen | 240 V AC | 240 V AC | 240 V AC | 110 V AC | 110 V AC | 110 V AC |
+| Bedingungen | 240 V WECHSELSTROM | 240 V WECHSELSTROM | 240 V WECHSELSTROM | 110 V WECHSELSTROM | 110 V WECHSELSTROM | 110 V WECHSELSTROM |
 | --- | --- | --- | --- | --- | --- | --- |
-|  Lüfter langsam, Laufwerke im Leerlauf |1,45 A |0,31 kW |1057,76 BTU/h |3.19 A |0,34 kW |1160,13 BTU/h |
-|  Lüfter langsam, Laufwerkszugriff |1,54 A |0,33 kW |1126,01 BTU/h |3.27 A |0,36 kW |1228,37 BTU/h |
-|  Lüfter schnell, Laufwerke im Leerlauf, Betrieb mit zwei Netzteilen |2,14 A |0,49 kW |1671,95 BTU/h |4,99 A |0,54 kW |1842,56 BTU/h |
-|  Lüfter schnell, Laufwerke im Leerlauf, ein Netzteil zur Stromversorgung und das andere im Leerlauf |2,05 A |0,48 kW |1637,83 BTU/h |4,58 A |0,50 kW |1706,07 BTU/h |
-|  Lüfter schnell, Laufwerkszugriff, Betrieb mit zwei Netzteilen |2,26 A |0,51 kW |1740,19 BTU/h |4,95 A |0,54 kW |1842,56 BTU/h |
-|  Lüfter schnell, Laufwerkszugriff, ein Netzteil zur Stromversorgung und das andere im Leerlauf |2,14 A |0,49 kW |1671,95 BTU/h |4,81 A |0,53 kW |1808,44 BTU/h |
+|  Lüfter langsam, Laufwerke im Leerlauf |1,45 A |0,31 kW |1057.76 BTU/h |3.19 EIN |0.34 kW |1160.13 BTU/h |
+|  Lüfter langsam, Zugriff auf Laufwerke |1.54 EIN |0,33 kW |1126.01 BTU/h |3.27 EIN |0,36 kW |1228.37 BTU/h |
+|  Lüfter schnell, Laufwerke im Leerlauf, zwei aktive Netzteile |2.14 EIN |0.49 kW |1671.95 BTU/h |4,99 EIN |0.54 kW |1842.56 BTU/h |
+|  Lüfter schnell, Laufwerke im Leerlauf, ein aktives Netzteil, eines im Leerlauf |2.05 EIN |0.48 kW |1637.83 BTU/h |4.58 EIN |0,50 kW |1706.07 BTU/h |
+|  Lüfter schnell, Zugriff auf Laufwerke, zwei aktive Netzteile |2.26 EIN |0.51 kW |1740.19 BTU/h |4,95 EIN |0.54 kW |1842.56 BTU/h |
+|  Lüfter schnell, Netzteil, Zugriff auf Laufwerke, ein aktives eines im Leerlauf |2.14 EIN |0.49 kW |1671.95 BTU/h |4.81 EIN |0.53 kW |1808.44 BTU/h |
 
-## <a name="disk-drive-specifications"></a>Laufwerksspezifikationen
-Das StorSimple-Gerät unterstützt bis zu zwölf serielle SAS-Laufwerke (Serial Attached SCSI) im 3,5-Zoll-Formfaktor. Bei den tatsächlichen Laufwerken kann es sich je nach Produktkonfiguration um eine Mischumgebung aus Solid-State-Laufwerken (SSDs) oder Festplattenlaufwerken (HDDs) handeln. Die zwölf Laufwerkseinschübe befinden sich in einer 3 x 4-Konfiguration vor dem Gehäuse. Das EBOD-Gehäuse bietet zusätzlichen Platz für weitere zwölf Laufwerke. Dies müssen jedoch HDDs sein.  
+## <a name="disk-drive-specifications"></a>Spezifikationen für Laufwerke
+Ihr StorSimple-Gerät unterstützt bis zu 12 3,5 Zoll Faktor Serial Attached SCSI (SAS)-Laufwerke. Die tatsächlichen Laufwerke können eine Mischung aus Solid State Drives (SSDs) oder Festplattenlaufwerken (HDDs), abhängig von der Produktkonfiguration sein. Die 12 Einschubfächer befinden sich in einer 3 x 4-Konfiguration vor dem Gehäuse. Das ebod-Gehäuse ermöglicht zusätzlichen Speicher für weitere 12 Laufwerke. Diese stellen immer HDDs.  
 
-## <a name="storage-specifications"></a>Speicherspezifikation
-Sowohl das StorSimple 8100 als auch das StorSimple 8600 verfügen über eine Kombination aus Festplatten- und Solid-State-Laufwerken. Die für 8100 und 8600 nutzbare Gesamtkapazität beträgt etwa 15 TB bzw. 38 TB. In der folgenden Tabelle sind die Details von SSD-, HDD- und Cloudkapazität im Kontext der Kapazität der StorSimple-Lösung dokumentiert.
+## <a name="storage-specifications"></a>Speicher-Spezifikationen
+Der StorSimple-Geräte haben eine Mischung von Festplattenlaufwerken und Solid State Drives für 8100 und 8600. Die nutzbare Gesamtkapazität für 8100 und 8600 lauten etwa 15 TB und 38 TB. In der folgenden Tabelle werden die Details des SSD und HDD cloudkapazität im Rahmen der Kapazität der StorSimple-Lösung beschrieben.
 
-| Gerätemodell/Kapazität | 8100 | 8600 |
+| Gerätemodell / Kapazität | 8100 | 8600 |
 | --- | --- | --- |
-| Anzahl von Festplattenlaufwerken (HDD) |8 |19 |
-| Anzahl von Solid-State-Laufwerken (SSDs) |4 |5 |
-| Kapazität eines HDD-Laufwerks |4 TB |4 TB |
-| Kapazität eines SSD-Laufwerks |400 GB |800 GB |
-| Reservekapazität |4 TB |4 TB |
-| Nutzbare HDD-Kapazität |14 TB |36 TB |
-| Nutzbare SDD-Kapazität |800 GB |2 TB |
-| Insgesamt nutzbare Kapazität* |~ 15 TB |~38 TB |
-| Maximale Kapazität der Lösung (einschließlich Cloud) |200 TB |500 TB |
+| Anzahl von Festplattenlaufwerken (HDDs) |8 |19 |
+| Anzahl von Solid State Drives (SSDs) |4 |5 |
+| Einzelne Festplattenkapazität |4 TB |4 TB |
+| Einzelne SSD-Kapazität |400 GB |800 GB |
+| Reservekapazität |4 TB |4 TB |
+| HDD Kapazität |14 TB |36 TB |
+| Nutzbare SSD-Kapazität |800 GB |2 TB |
+| Insgesamt verwendbaren Kapazität * |~ 15 TB |~ 38 TB |
+| Maximale Lösung Kapazität (einschließlich der Cloud) |200 TB |500 TB |
 
-<sup>* </sup>- *Die nutzbare Gesamtkapazität umfasst die Kapazität, die für Daten, Metadaten und Puffer verfügbar ist.*
+<sup>* </sup>- *Die Gesamtkapazität für nutzbare umfasst die verfügbare Kapazität für Daten, Metadaten und Puffer.*
 
-## <a name="enclosure-dimensions-and-weight-specifications"></a>Gehäuseabmessungen und Gewicht
-In den folgenden Tabellen sind die verschiedenen Gehäusespezifikationen (Abmessungen und Gewicht) aufgeführt.  
+## <a name="enclosure-dimensions-and-weight-specifications"></a>Gehäuseabmessungen und Gewichtung-Spezifikationen
+Die folgenden Tabellen enthalten die verschiedenen gehäusespezifikationen für Abmessungen und Gewicht.  
 
 ### <a name="enclosure-dimensions"></a>Gehäuseabmessungen
-Die folgenden Tabellen enthalten die Abmessungen des Gehäuses in Millimetern und Zoll.
+In der folgenden Tabelle sind die Dimensionen des Gehäuses in Millimeter und Zoll aufgeführt.
 
 | Gehäuse | Millimeter | Zoll |
 | --- | --- | --- |
-| Höhe |87,9 |3,46 |
-| Breite über Rackbefestigung |483 |19,02 |
-| Breite über Gehäusefläche |443 |17,44 |
-| Tiefe von der vorderen Rackbefestigung bis zum Ende der Gehäusefläche |577 |22,72 |
-| Tiefe vom Bedienfeld bis zum äußeren Ende des Gehäuses |630,5 |24,82 |
-| Tiefe von der Befestigungsfläche bis zum äußeren Ende des Gehäuses |603 |23,74 |
+| Höhe |87.9 |3.46 |
+| Breite Frontplatte |483 |19.02 |
+| Breite des gehäusekörpers |443 |17.44 |
+| Tiefe von der Frontplatte bis zum hinteren Ende des gehäusekörpers |577 |22.72 |
+| Tiefe vom Bedienungsfeld bis zum hintersten Ende des Gehäuses |630.5 |24.82 |
+| Tiefe von der Frontplatte bis zum hintersten Ende des Gehäuses |603 |23.74 |
 
-### <a name="enclosure-weight"></a>Gehäusegewicht
-Je nach Konfiguration kann ein vollständig beladenes primäres Gehäuse von 21 kg bis zu 33 kg wiegen und muss von zwei Personen getragen werden. 
+### <a name="enclosure-weight"></a>Gewicht des Gehäuses
+Abhängig von der Konfiguration vollständig geladen primäres Gehäuse zwischen 21 und 33 kg wiegen bestücktes und sind zwei Personen für seine Handhabung erforderlich. 
 
-| Gehäuse | Gewicht |
+| Gehäuse | Gewichtung |
 | --- | --- |
-| Max. Gewicht (abhängig von der Konfiguration) |30–33 kg |
-| Leer (ohne Laufwerke) |21–23 kg |
+| Maximales Gewicht (hängt von der Konfiguration) |30 kg – 33 kg |
+| Leer (keine eingebauten Laufwerke) |21 – 23 kg |
 
-## <a name="enclosure-environment-specifications"></a>Spezifikationen der Gehäuseumgebung
-Dieser Abschnitt enthält die Spezifikationen im Zusammenhang mit der Gehäuseumgebung. Diese Kategorie enthält die Umgebungsvorgaben für Temperatur, Feuchtigkeit, Höhe, Stoßfestigkeit, Schwingungen, Ausrichtung, Sicherheit und elektromagnetische Kompatibilität (EMC).  
+## <a name="enclosure-environment-specifications"></a>Die gehäuseumgebung
+Dieser Abschnitt enthält die Spezifikationen, die sich auf die gehäuseumgebung beziehen. In dieser Kategorie sind die Temperatur, Luftfeuchtigkeit, einsatzhöhe, erschütterungen, Vibrationen, Ausrichtung, Sicherheit und elektromagnetische (EMV) enthalten.  
 
-### <a name="temperature-and-humidity"></a>Temperatur und Feuchtigkeit
-| Gehäuse | Umgebungstemperaturspanne | Relative Luftfeuchtigkeit der Umgebung | Maximale Feuchttemperatur |
+### <a name="temperature-and-humidity"></a>Temperatur und Luftfeuchtigkeit
+| Gehäuse | Bereich für Umgebungstemperatur | Relative Luftfeuchtigkeit | Maximale feuchtkugeltemperatur |
 | --- | --- | --- | --- |
-| Bei Betrieb |5 °C bis 35 °C |20–80 % nicht kondensierend |28 °C |
-| Außerhalb des Betriebs |–40 °C bis 70 °C |5–100 % nicht kondensierend |29 °C |
+| Betriebsbereit |5° C - 35° C (41° C - 95° F) |20 % - 80 % nicht-kondensierend- |28° C (82° F) |
+| Außer Betrieb |-40° C - 70° C (40° C - 158° F) |5 % - 100 % nicht kondensierend |29° C (84° F) |
 
-### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Luftströmung, Höhe, Stöße, Schwingungen, Ausrichtung, Sicherheit und EMC
-| Gehäuse | Betriebsspezifikationen |
+### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Luftstrom, einsatzhöhe, erschütterungen, Vibrationen, Ausrichtung, Sicherheit und EMV
+| Gehäuse | Spezifikationen für den Betrieb |
 | --- | --- |
-| Luftströmung |Die Luftströmung im System verläuft von vorne nach hinten. Das System muss mit einem hinteren Luftstromauslass mit niedrigem Druck betrieben werden. Der Rückstau durch Gehäusetüren und Hindernisse sollte 5 Pascal (0,5 mm Wassersäule) nicht überschreiten. |
-| Höhe, Betrieb |–30 m bis 3045 m (–100 bis 10.000 Fuß) mit einer um 5 °C herabgesetzten maximalen Betriebstemperatur bei Höhen über 7000 Fuß. |
-| Höhe, außerhalb des Betriebs |–305 m bis 12.192 m (–1000 Fuß bis 40.000 Fuß) |
-| Stoßfestigkeit, bei Betrieb |5 g 10 ms ½ Sinus |
-| Stoßfestigkeit, außerhalb des Betriebs |30 g 10 ms ½ Sinus |
-| Schwingungen, bei Betrieb |0,21 g RMS 5 bis 500 Hz zufällig |
-| Schwingungen, außerhalb des Betriebs |1,04 g RMS 2 bis 200 Hz zufällig |
-| Schwingungen, bei Umplatzierung |3 g 2 bis 200 Hz Sinus |
-| Ausrichtung und Montage |19-Zoll-Rackmontage (2 EIA-Einheiten) |
-| Rackschienen |Passend für IEC 297-kompatible Racks mit mindestens 700 mm (31,50 Zoll) Tiefe |
-| Sicherheit und Genehmigungen |CE und UL EN 61000-3, IEC 61000-3, UL 61000-3 |
-| EMC |EN55022 (CISPR – A), FCC A |
+| Luftstrom |Der Luftstrom im System erfolgt von vorne nach hinten. System muss mit einer niederdruckstallation hinten Installation betrieben werden. Gegendruck durch gestelltüren und Hindernisse sollte 5 PA (0,5 mm Wassersäule) nicht überschreiten. |
+| Einsatzhöhe, in Betrieb |-30 Meter 3045 Meter (-100 Feet auf 10.000 Feet) mit maximale Betriebstemperatur Deduplizierung von 5 ° C oberhalb 7000 Feet bewertet. |
+| Einsatzhöhe, nicht in Betrieb |-305 Meter 12.192 Meter (-1,000 Feet zu 40.000 Feet) |
+| Erschütterungen, in Betrieb |5g 10 ms ½ Sinus |
+| Erschütterungen, nicht in Betrieb |30g 10 ms ½ Sinus |
+| Vibrationen, in Betrieb |0, 21 g RMS 5-500 Hz zufällig |
+| Vibrationen, nicht in Betrieb |1, 04 g RMS 2-200 Hz zufällig |
+| Vibrationen, umplatzierung |3g 2-200 Hz Sinus |
+| Ausrichtung und Einbau |19-Zoll-Gestell (2 EIA-Einheiten) |
+| Des Gestells |Entsprechend (31.50 Zoll) mit mindestens 700 mm Tiefe racks kompatibel mit IEC 297 |
+| Sicherheit und Zulassungen |CE und UL EN 61000-3, IEC 61000-3, UL 61000-3 |
+| EMC |EN 55022 (CISPR - EIN), FCC EIN |
 
-## <a name="international-standards-compliance"></a>Einhaltung internationaler Standards
-Ihr Microsoft Azure StorSimple-Gerät entspricht den folgenden internationalen Standards:  
+## <a name="international-standards-compliance"></a>Internationale Normen-Kompatibilität
+Ihr Microsoft Azure StorSimple-Gerät erfüllt die folgenden internationalen Normen:  
 
-* CE – EN 60950 – 1  
-* CB-Zertifizierung für IEC 60950 - 1  
-* UL und cUL für UL 60950 - 1  
+* CE - EN 60950-1  
+* CB-Bericht zu IEC 60950-1  
+* UL und cUL in UL 60950-1  
 
-## <a name="safety-compliance"></a>Sicherheitskompatibilität
-Ihr Microsoft Azure StorSimple-Gerät erfüllt die folgenden Sicherheitsstandards:  
+## <a name="safety-compliance"></a>Sicherheitskonformität
+Ihr Microsoft Azure StorSimple-Gerät erfüllt die folgenden sicherheitsbewertungen:  
 
-* System-Produkttypgenehmigung: UL, cUL, CE  
-* Sicherheitskompatibilität: UL 60950, IEC 60950, EN 60950  
+* Produkttypzulassung des Systems: UL, cUL, CE  
+* Sicherheitskonformität: UL 60950, IEC 60950, EN 60950  
 
-## <a name="emc-compliance"></a>EMC-kompatibel
-Ihr Microsoft Azure StorSimple-Gerät erfüllt die folgenden EMC-Standards:  
+## <a name="emc-compliance"></a>EMV-Konformität
+Ihr Microsoft Azure StorSimple-Gerät erfüllt die folgenden EMC Bewertungen.  
 
 ### <a name="emissions"></a>Emissionen
-Das Gerät ist EMC-konform für Leitungs- und Strahlungsemissionswerte.  
+Das Gerät ist der leitungsgebundenen und der feldgebundenen Emissionen EMV EMV-konform.  
 
-* Leitungsemissions-Grenzwerte: CFR 47 Part 15B Klasse A EN55022 Klasse A CISPR Klasse A  
-* Strahlungsemissions-Grenzwerte: CFR 47 Part 15B Klasse A EN55022 Klasse A CISPR Klasse A   
+* Leitungsgebundenen Emissionen Ebenen zu beschränken: CFR 47 Teil 15 b Klasse A en 55022 Klasse A CISPR Klasse A  
+* Feldgebundenen Emissionen Ebenen zu beschränken: CFR 47 Teil 15 b Klasse A en 55022 Klasse A CISPR Klasse A   
 
-### <a name="harmonics-and-flicker"></a>Oberschwingungen und Flicker
-Das Gerät entspricht EN61000-3-2/3.  
+### <a name="harmonics-and-flicker"></a>Oberschwingungen und Flimmern
+Das Gerät erfüllt en 61000-3-2/3.  
 
-### <a name="immunity-limit-levels"></a>Immunitätsgrenzwerte
-Das Gerät entspricht EN55024.  
+### <a name="immunity-limit-levels"></a>Störfestigkeitsgrenzwerte
+Das Gerät erfüllt en 55024.  
 
-## <a name="ac-power-cord-compliance"></a>Netzkabelkompatibilität
-Der Stecker und das gesamte Netzkabelmodul müssen den Richtlinien des jeweiligen Landes entsprechen, in dem das Gerät verwendet wird, und sie müssen über die erforderlichen Sicherheitsgenehmigungen für das Land verfügen. In den folgenden Tabellen sind die Standards für USA und Europa aufgeführt.  
+## <a name="ac-power-cord-compliance"></a>AC Power Kabel Kompatibilität
+Der Stecker und das gesamte Netzkabel müssen die Normen erfüllen für das Land, in dem das Gerät verwendet wird, und sie müssen sicherheitszulassungen, die in diesem Land gültig sind. Die folgenden Tabellen enthalten die Standards für die USA und Europa.  
 
-### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>Netzkabel – USA (muss NRTL-registriert sein)
-| Component | Spezifikation |
+### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>Netzkabel - USA (NRTL aufgeführt sein muss)
+| Komponente | Spezifikation |
 | --- | --- |
-| Kabeltyp |SV oder SVT, 18 AWG Minimum, 3 Leiter, 2,0 m Maximallänge |
-| Stecker |NEMA 5-15P-Stecker mit Erdung und Nennwerten von 120 V, 10 A; oder IEC 320 C14, 250 V, 10 A |
-| Steckdose |IEC 320 C-13, 250 V, 10 A |
+| Kabeltyp |SV oder SVT, mindestens 18 AWG Minimum, 3 Adern, 2,0 Meter maximale Länge |
+| Plug & |NEMA 5-15P Erdung Typ Anlage Plug bewertet 120 V, 10 A; oder IEC 320 C14, 250 V, 10 A |
+| Socket |IEC 320 C-13, 250 V, 10 A |
 
-### <a name="ac-power-cords---europe"></a>Netzkabel – Europa
-| Component | Spezifikation |
+### <a name="ac-power-cords---europe"></a>Netzkabel - Europa
+| Komponente | Spezifikation |
 | --- | --- |
-| Kabeltyp |Harmonisiert, H05-VVF-3G1.0 |
-| Steckdose |IEC 320 C-13, 250 V, 10 A |
+| Kabeltyp |Harmonisiert, H05-VVF 3g1,0 |
+| Socket |IEC 320 C-13, 250 V, 10 A |
 
 ## <a name="supported-network-cables"></a>Unterstützte Netzwerkkabel
-Für die 10-GbE-Netzwerkschnittstellen, DATA 2 und DATA 3, finden Sie Informationen in der [Liste der unterstützten Netzwerkkabel und Module](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+Die 10-GbE-Netzwerkschnittstellen data2 und data3, finden Sie in der [Liste der unterstützten Netzwerkkabel](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können jetzt ein StorSimple-Gerät in Ihrem Datencenter bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen Ihres lokalen Geräts](storsimple-deployment-walkthrough-u2.md).  
-
+Sie können nun ein virtuelles StorSimple-Gerät in Ihrem Datencenter bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen des lokalen Geräts](storsimple-deployment-walkthrough-u2.md).  
 

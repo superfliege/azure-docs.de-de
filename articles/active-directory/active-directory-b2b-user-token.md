@@ -15,16 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/25/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 57b170539513953bd6a01ab4dd362a65cf905496
-ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
-
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Informationen zu Benutzertoken für die Azure AD B2B-Zusammenarbeit
 
 Wenn Sie wissen möchten, wie das Token für B2B-Zusammenarbeitsbenutzer aussieht: Hier finden Sie die Bearertokendetails und Tokeninhalte für einen Azure Active Directory-Gast (Azure AD) und einen Gast mit Microsoft-Konto im Ressourcenmandanten (für die Mandanten-ID 04dcc6ab-388a-4559-b527-fbec656300ea). Sie können [https://jwt.io/](https://jwt.io/) oder [http://calebb.net](http://calebb.net/) verwenden, um die JSON Web Token (JWT)-Inhalte anzuzeigen.
@@ -54,4 +50,3 @@ Weitere Artikel zur Azure AD B2B-Kollaboration:
 * [Zuordnen von Benutzeransprüchen für die B2B-Zusammenarbeit](active-directory-b2b-claims-mapping.md)
 * [Externe Office 365-Freigabe](active-directory-b2b-o365-external-user.md)
 * [Aktuelle Einschränkungen der B2B-Zusammenarbeit](active-directory-b2b-current-limitations.md)
-

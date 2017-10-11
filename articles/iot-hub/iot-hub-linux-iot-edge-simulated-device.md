@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/09/2017
 ms.author: andbuc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 5349960373ae6815862c5f79a69dd6d5d9d624ab
-ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="use-azure-iot-edge-to-send-device-to-cloud-messages-with-a-simulated-device-linux"></a>Einsatz von Azure IoT Edge zum Senden von D2C-Nachrichten mit einem simulierten Gerät (Linux)
 
 [!INCLUDE [iot-hub-iot-edge-simulated-selector](../../includes/iot-hub-iot-edge-simulated-selector.md)]
@@ -49,7 +46,7 @@ Der Prozess „simulated\_device\_cloud\_upload\_sample“ akzeptiert den Pfad z
 
 Öffnen Sie die Datei **samples/simulated\_device\_cloud\_upload\_sample/src/simulated\_device\_cloud\_upload\_lin.json** in Ihrer lokalen Kopie des Repositorys **iot-edge** in einem Text-Editor. Diese Datei konfiguriert die IoT Edge-Module im Beispielgateway:
 
-* Das **IoTHub** -Modul stellt eine Verbindung mit Ihrem IoT Hub her. Sie konfigurieren das Modul zum Senden von Daten an Ihren IoT Hub. Legen Sie insbesondere den Wert **IoTHubName** auf den Namen Ihres IoT Hubs und den Wert von **IoTHubSuffix** auf **azure-devices.net** fest. Legen Sie den Wert für **Transport** auf eine der folgenden Optionen fest: **HTTP**, **AMQP** oder **MQTT**. Derzeit wird nur bei **HTTP** eine TCP-Verbindung für alle Gerätenachrichten gemeinsam genutzt. Wenn Sie den Wert auf **AMQP** oder **MQTT** festlegen, richtet das Gateway für jedes Gerät eine eigene TCP-Verbindung mit IoT Hub ein.
+* Das **IoTHub** -Modul stellt eine Verbindung mit Ihrem IoT Hub her. Sie konfigurieren das Modul zum Senden von Daten an Ihren IoT Hub. Legen Sie insbesondere den Wert **IoTHubName** auf den Namen Ihres IoT Hubs und den Wert von **IoTHubSuffix** auf **azure-devices.net** fest. Legen Sie den Wert für den **Transport** auf eine der folgenden Optionen fest: **HTTP**, **AMQP** oder **MQTT**. Derzeit wird nur bei **HTTP** eine TCP-Verbindung für alle Gerätenachrichten gemeinsam genutzt. Wenn Sie den Wert auf **AMQP** oder **MQTT** festlegen, richtet das Gateway für jedes Gerät eine eigene TCP-Verbindung mit IoT Hub ein.
 * Das Modul **Mapping** ordnet die MAC-Adressen Ihrer simulierten Geräte den IoT Hub-Geräte-IDs zu. Stellen Sie sicher, dass die **deviceId**-Werte mit den IDs der beiden Geräte übereinstimmen, die Sie Ihrem IoT Hub hinzugefügt haben, und dass die **deviceKey**-Werte die Schlüssel der beiden Geräte enthalten.
 * Bei den Modulen **BLE1** und **BLE2** handelt es sich um die simulierten Geräte. Beachten Sie, dass ihre MAC-Adressen mit den Adressen im Modul **Mapping** übereinstimmen.
 * Das Modul **Logger** protokolliert die Aktivitäten Ihres Gateways in einer Datei.
@@ -152,7 +149,7 @@ Der Prozess „simulated\_device\_cloud\_upload\_sample“ akzeptiert den Pfad z
 }
 ```
 
-Speichern Sie die an der Konfigurationsdatei vorgenommenen Änderungen.
+Speichern Sie die Änderungen, die Sie an der Konfigurationsdatei vorgenommen haben.
 
 So führen Sie das Beispiel aus:
 
@@ -187,4 +184,3 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-securing]: iot-hub-security-ground-up.md
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
 [lnk-iothub-explorer]: https://github.com/Azure/iothub-explorer/blob/master/readme.md
-

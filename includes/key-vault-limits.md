@@ -1,16 +1,16 @@
-Schlüsseltransaktionen (Max. Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup>):
+Transaktionen-Taste (Max-Transaktionen innerhalb von 10 Sekunden pro zulässig pro Region Tresor<sup>1</sup>):
 
 |Schlüsseltyp|HSM-Schlüssel<br>Schlüssel erstellen|HSM-Schlüssel<br>Alle anderen Transaktionen|Softwareschlüssel<br>Schlüssel erstellen|Softwareschlüssel<br>Alle anderen Transaktionen|
 |:---|---:|---:|---:|---:|
-|RSA 2048 Bit|5|1000|10|2000|
-|RSA 3072 Bit|5|250|10|500|
-|RSA 4096 Bit|5|125|10|250|
+|RSA 2048-bit|5|1000|10|2000|
+|3072-Bit-RSA|5|250|10|500|
+|4096-Bit-RSA|5|125|10|250|
 |
 
-Geheimnisse, Schlüssel für verwaltete Speicherkonten und Tresortransaktionen:
-| Transaktionstyp | Max. Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup> |
+Geheime Schlüssel verwaltet Speicherkontoschlüssel und Tresor Transaktionen:
+| Transaktionen-Typ | Max-Transaktionen innerhalb von 10 Sekunden pro zulässig pro Region Tresor<sup>1</sup> |
 | --- | --- |
 | Alle Transaktionen |2000 |
 |
 
-<sup>1</sup> Für alle Transaktionsarten gilt ein abonnementweites Limit (das Fünffache des Schlüsseltresorlimits.) „HSM – andere Transaktionen“ pro Abonnement ist beispielsweise auf 5.000 Transaktionen in 10 Sekunden pro Abonnent beschränkt.
+<sup>1</sup> besteht ein Abonnement Wide-Grenzwert für alle Transaktionstypen, die 5 X schlüsseltresor Grenzwert pro ist. Beispiel: HSM -, dass andere Transaktionen pro Abonnement innerhalb von 10 Sekunden pro Abonnement beschränkt auf 5000 Transaktionen sind.

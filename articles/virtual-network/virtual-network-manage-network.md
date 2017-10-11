@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
 ms.openlocfilehash: 74aace2136136c25bc56327d38cfbab168265401
-ms.contentlocale: de-de
-ms.lasthandoff: 08/15/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
@@ -199,4 +198,3 @@ Sie können ein virtuelles Netzwerk erst löschen, wenn keine Ressourcen mehr da
 - Informationen dazu, wie Sie Netzwerkdatenverkehr zwischen Subnetzen in einem virtuellen Netzwerk filtern, finden Sie unter [Erstellen von Netzwerksicherheitsgruppen](virtual-networks-create-nsg-arm-pportal.md).
 - Um ein virtuelles Netzwerk mittels Peering mit einem anderen virtuellen Netzwerk verbinden zu können, lesen Sie [Erstellen eines Peerings virtueller Netzwerke](virtual-network-create-peering.md#portal).
 - Weitere Informationen zu Optionen zum Verbinden eines virtuellen Netzwerks mit einem lokalen Netzwerk finden Sie unter [Informationen zu VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams).
-

@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3e0f8d92495c976040113f8edc0d4c789920c549
-ms.openlocfilehash: e22dca7b666720edfcbfd1b871d98b9468441fbd
-ms.contentlocale: de-de
-ms.lasthandoff: 01/18/2017
-
-
+ms.openlocfilehash: 698403d181e1fee09bb4692290c92203ded97ba4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse
 Diese Anleitung zeigt, wie der Azure Access Control Service (ACS) im Azure Toolkit für Eclipse verwendet wird. Weitere Informationen zum ACS finden Sie im Abschnitt [Nächste Schritte](#next_steps) .
@@ -161,7 +159,7 @@ Sie können alle Informationen und den Code, der zur Konfiguration Ihrer Java-We
 Auf der Seite **Login Page Integration: Azure Web App** (Anmeldeseitenintegration: Azure-Web-App) wird die unter **Option 1: Link to an ACS-hosted login page** (Option 1: Link zu einer bei ACS gehosteten Anmeldeseite) aufgelistete URL in Ihrer Java-Webanwendung verwendet. Sie benötigen diesen Wert, wenn Sie die Bibliothek für Azure Access Control Service Filter zu ihrer Java-Anwendung hinzufügen.
 
 ## <a name="create-a-java-web-application"></a>Erstellen einer Java-Webanwendung
-1. Klicken Sie im Eclipse-Menü auf **Datei**, auf **Neu** und anschließend auf **Dynamic Web Project** (Dynamisches Webprojekt). (Gehen Sie wie folgt vor, wenn **Dynamic Web Project** (Dynamisches Webprojekt) nach dem Klicken auf **Datei** und **Neu** nicht als verfügbares Projekt aufgeführt ist: Klicken Sie auf **Datei**, anschließend auf **Neu** und dann auf **Projekt**. Erweitern Sie die Option **Web**, und klicken Sie auf **Dynamic Web Project** (Dynamisches Webprojekt) und dann auf **Next** (Weiter).) Nennen Sie das Projekt für die Zwecke dieses Tutorials **MyACSHelloWorld**. (Verwenden Sie diesen Namen unbedingt, da in den weiteren Schritten dieses Lernprogramms erwartet wird, dass Ihre WAR-Datei MyACSHelloWorld heißt).. Ihr Bildschirm sieht dann in etwa wie folgt aus:
+1. Klicken Sie im Eclipse-Menü auf **Datei**, auf **Neu** und anschließend auf **Dynamic Web Project** (Dynamisches Webprojekt). (Gehen Sie wie folgt vor, wenn **Dynamic Web Project** (Dynamisches Webprojekt) nach dem Klicken auf **Datei** und **Neu** nicht als verfügbares Projekt aufgeführt ist: Klicken Sie auf **Datei**, anschließend auf **Neu** und dann auf **Projekt**. Erweitern Sie die Option **Web**, und klicken Sie auf **Dynamic Web Project** (Dynamisches Webprojekt) und dann auf **Next** (Weiter).) Nennen Sie das Projekt für die Zwecke dieses Tutorials **MyACSHelloWorld**. (Verwenden Sie diesen Namen unbedingt, da in den weiteren Schritten dieses Lernprogramms erwartet wird, dass Ihre WAR-Datei MyACSHelloWorld heißt). Ihr Bildschirm sieht dann in etwa wie folgt aus:
    
     ![Erstellen eines Hallo-Welt-Projekts für den ACS (Beispiel)][create_acs_hello_world]
    
@@ -172,6 +170,7 @@ Auf der Seite **Login Page Integration: Azure Web App** (Anmeldeseitenintegratio
     ![Hinzufügen einer JSP-Datei für den ACS (Beispiel)][add_jsp_file_acs]
    
     Klicken Sie auf **Weiter**.
+
 4. Wählen Sie im Dialogfeld **JSP-Vorlage auswählen** die Option **Neue JSP-Datei (HTML)**, und klicken Sie auf **Fertig stellen**.
 5. Wenn in Eclipse die Datei „index.jsp“ geöffnet wird, geben Sie den Text **Hello ACS World!** ein, damit er dynamisch im vorhandenen `<body>`-Element angezeigt wird. Der aktualisierte `<body>` -Inhalt sollte wie folgt aussehen:
    
@@ -299,5 +298,4 @@ An diesem Punkt wird Ihr Zertifikat in Ihre Bereitstellung aufgenommen. Bitte be
 [add_jsp_file_acs]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddJSPFileACS.png
 [create_acs_hello_world]: ./media/active-directory-java-authenticate-users-access-control-eclipse/CreateACSHelloWorld.png
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
-
 

@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: b802f880c1131abb7eb9ba00dd8f2e65017bc802
-ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="nodejs-web-application-using-storage"></a>Node.js-Webanwendung mit Speicher
 ## <a name="overview"></a>Übersicht
@@ -415,6 +414,5 @@ In den folgenden Schritten erfahren Sie, wie Sie die Anwendung beenden und lösc
 [Node.js-Webanwendung mit Express]: http://azure.microsoft.com/develop/nodejs/tutorials/web-app-with-express/
 [Speichern und Zugreifen auf Daten in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Node.js-Webanwendung]: http://azure.microsoft.com/develop/nodejs/tutorials/getting-started/
-
 
 

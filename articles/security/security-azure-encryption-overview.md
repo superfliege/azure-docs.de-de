@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ums.workload: na
 ms.date: 08/18/2017
 ms.author: barclayn
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 752568747ab96bc0a9c7fc5f24ff28c3bce4e09f
-ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-encryption-overview"></a>Übersicht über die Azure-Verschlüsselung
 
@@ -206,4 +205,3 @@ Mit Azure Key Vault gehören für Organisationen das Konfigurieren, Patchen und 
 - [Virtuelle Azure-Computer – Sicherheitsübersicht](security-virtual-machines-overview.md)
 - [Datenverschlüsselung ruhender Daten](azure-security-encryption-atrest.md)
 - [Bewährte Methoden für Datensicherheit und Verschlüsselung](azure-security-data-encryption-best-practices.md)
-

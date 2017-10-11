@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Voraussetzungen
-* Ein [SendGrid](https://www.SendGrid.com/)-Konto 
+* Ein [SendGrid](https://www.SendGrid.com/) Konto 
 
-Bevor Sie Ihr SendGrid-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem SendGrid-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen. 
+Bevor Sie Ihr SendGrid-Konto in einer Logik-app verwenden können, müssen Sie die Logik-app zur Verbindung mit Ihrem SendGrid-Konto autorisieren. Glücklicherweise können Sie problemlos aus in der Logik-app im Azure-Portal vorgehen. 
 
-Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem SendGrid-Konto:
+Es folgen die Schritte zum Autorisieren der Logik-app zur Verbindung mit Ihrem SendGrid-Konto:
 
-1. Zum Herstellen einer Verbindung mit SendGrid wählen Sie im Logik-App-Designer in der Dropdownliste **Verwaltete Microsoft-APIs anzeigen** aus, und geben Sie dann *SendGrid* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:   
-   ![SendGrid: Schritt 1](./media/connectors-create-api-sendgrid/sendgrid-1.png)
-2. Wenn Sie noch keine Verbindungen mit SendGrid hergestellt haben, werden Sie aufgefordert, Ihre SendGrid-Anmeldeinformationen anzugeben. Mithilfe dieser Anmeldeinformationen wird Ihre Logik-App autorisiert, die eine Verbindung herstellen und auf Ihr SendGrid-Konto zugreifen soll:  
-   ![SendGrid: Schritt 2](./media/connectors-create-api-sendgrid/sendgrid-2.png)
-3. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:   
-   ![SendGrid: Schritt 3](./media/connectors-create-api-sendgrid/sendgrid-3.png)   
+1. Wählen Sie zum Erstellen einer Verbindungs mit SendGrid, in der Logik-app-Designer **Anzeigen von Microsoft verwalteten APIs** in der Dropdownliste aus und geben Sie dann *SendGrid* in das Suchfeld. Wählen Sie den Trigger oder die Aktion an, die Sie verwenden möchten, müssen:  
+   ![SendGrid-Schritt 1](./media/connectors-create-api-sendgrid/sendgrid-1.png)
+2. Wenn Sie alle Verbindungen mit SendGrid, bevor Sie erstellt haben, werden Sie aufgefordert Abrufen Ihrer SendGrid-Anmeldeinformationen bereitstellen. Diese Anmeldeinformationen werden verwendet, um Ihre Logik-app für die Verbindung autorisieren und einfacher Zugriff auf Ihr SendGrid-Konto:  
+   ![SendGrid-Schritt 2](./media/connectors-create-api-sendgrid/sendgrid-2.png)
+3. Beachten Sie, dass die Verbindung erstellt wurde, und Sie können nun mit den anderen Schritten in der Logik-app zu fortfahren:  
+   ![SendGrid Schritt 3](./media/connectors-create-api-sendgrid/sendgrid-3.png)   
 

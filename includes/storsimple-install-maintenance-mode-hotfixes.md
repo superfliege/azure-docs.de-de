@@ -1,17 +1,17 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="to-install-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a>So installieren Sie Wartungsmodus-Hotfixes über Windows PowerShell für StorSimple
+#### <a name="to-install-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a>So installieren Sie wartungsmodushotfixes mithilfe von Windows PowerShell für StorSimple
 > [!IMPORTANT]
-> Im Wartungsmodus müssen Sie den Hotfix zunächst auf einem und dann auf dem anderen Controller anwenden.
+> Im Wartungsmodus befindet müssen Sie den Hotfix zuerst auf einen Controller und dann auf den anderen Controller angewendet.
 > 
 > 
 
-1. Versetzen Sie das Gerät in den Wartungsmodus. Weitere Informationen zum Wechseln in den Wartungsmodus finden Sie im Abschnitt [Schritt 2: Wechseln in den Wartungsmodus](../articles/storsimple/storsimple-update-device.md#step2) .
-2. Geben Sie zum Anwenden des Hotfixes Folgendes ein:
+1. Versetzen Sie das Gerät in den Wartungsmodus versetzt. Finden Sie unter [Schritt2: Geben Sie Wartungsmodus](../articles/storsimple/storsimple-update-device.md#step2) für Anweisungen zum Wartungsmodus versetzt.
+2. Um das Hotfix angewendet haben, geben Sie Folgendes ein:
    
      `Start-HcsHotfix` 
-3. Geben Sie bei entsprechender Aufforderung den Pfad zur Netzwerkfreigabe mit den Hotfix-Dateien ein.
-4. Sie werden aufgefordert, diesen Schritt zu bestätigen. Geben Sie **J** ein, um mit der Installation des Hotfixes fortzufahren.
-5. Nachdem Sie den Hotfix auf einem Controller installiert haben, melden Sie sich bei dem anderen Controller an. Wenden Sie den Hotfix wie beim vorherigen Controller an.
-6. Nachdem alle Hotfixes angewendet wurden, beenden Sie den Wartungsmodus. Anweisungen dazu finden Sie unter [Schritt 4: Beenden des Wartungsmodus](../articles/storsimple/storsimple-update-device.md#step4).
+3. Wenn Sie aufgefordert werden, geben Sie den Pfad für den freigegebenen Netzwerkordner, der die Hotfixdateien enthält.
+4. Sie werden zur Bestätigung aufgefordert. Typ **Y** um die Hotfixinstallation fortzusetzen.
+5. Nachdem Sie den Hotfix auf einen Controller angewendet haben, melden Sie sich mit dem anderen Controller. Wenden Sie den Hotfix, wie Sie für den vorherigen Controller ausgeführt haben.
+6. Nachdem die Hotfixes angewendet werden, beenden Sie den Wartungsmodus. Finden Sie unter [Schritt 4: Wartungsmodus beenden](../articles/storsimple/storsimple-update-device.md#step4) Anweisungen.
 

@@ -15,14 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 5818986c939c464a364c52ab31225e15130ab30e
-ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="overview-of-dns-zones-and-records"></a>Übersicht über DNS-Zonen und -Einträge
 
 Auf dieser Seite werden die Konzepte Domänen, DNS-Zonen und DNS-Einträge sowie Ressourceneintragssätze erläutert, und es wird erklärt, wie diese in Azure DNS unterstützt werden.
@@ -140,4 +138,3 @@ Bei der Verwendung von Azure DNS gelten folgende Standardgrenzwerte:
 
 * Lernen Sie, wie Sie [eine DNS-Zone erstellen](dns-getstarted-create-dnszone-portal.md) und [DNS-Einträge erstellen](dns-getstarted-create-recordset-portal.md), um mit der Verwendung von Azure DNS zu beginnen.
 * Um eine vorhandene DNS-Zone zu migrieren, sollten Sie sich zuerst darüber informieren, wie Sie [eine DNS-Zonendatei importieren und exportieren](dns-import-export.md).
-

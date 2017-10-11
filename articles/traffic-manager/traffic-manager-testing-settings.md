@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: aadff1806a7cb22347283143563467366e857569
-ms.lasthandoff: 03/18/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="verify-traffic-manager-settings"></a>Überprüfen von Traffic Manager-Einstellungen
 
 Um Ihre Traffic Manager-Einstellungen zu testen, benötigen Sie mehrere Clients, die sich an verschiedenen Standorten befinden und auf denen Sie Ihre Tests ausführen können. Fahren Sie dann die Endpunkte in Ihrem Traffic Manager-Profil einzeln herunter.
@@ -75,4 +74,3 @@ Sie können auch kostenlose webbasierte DNS-Lookup- und Analysedienste nutzen. M
 * [Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)
 * [Leistungsüberlegungen zu Traffic Manager](traffic-manager-performance-considerations.md)
 * [Problembehandlung beim Status „Heruntergestuft“ in Traffic Manager](traffic-manager-troubleshooting-degraded.md)
-

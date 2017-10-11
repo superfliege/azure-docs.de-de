@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: c5857515ae8357b003f0999c4b11bd666c32bbf9
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="platform-level-event-and-log-generation"></a>Ereignis- und Protokollgenerierung auf Plattformebene
 
 ## <a name="monitoring-the-cluster"></a>Überwachen des Clusters
@@ -113,4 +111,3 @@ Im Folgenden werden zwei allgemeine Verfahren vorgestellt, mit denen Sie die Sam
 ## <a name="next-steps"></a>Nächste Schritte
 
 Ihre Protokolle und Ereignisse müssen aggregiert werden, bevor sie an eine beliebige Analyseplattform gesendet werden können. Lesen Sie die Abschnitte [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) und [WAD](service-fabric-diagnostics-event-aggregation-wad.md), um einige der empfohlenen Optionen besser zu verstehen.
-

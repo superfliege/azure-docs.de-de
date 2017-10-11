@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: ed35d081b191ec41ed9e5970515057a4715c0d59
-ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>Verwalten von grundlegenden Richtlinien für ein Lab in Azure DevTest Labs
 
 Mit Azure DevTest Labs können Sie Kosten und unnötigen Aufwand in Ihren Labs minimieren, indem Sie Richtlinien (Einstellungen) für jedes Lab verwalten. Dieser Artikel dient als Einstieg in die Verwendung von Richtlinien. Sie erfahren, wie Sie zwei der wichtigsten Richtlinien festlegen: Begrenzen der Anzahl von virtuellen Computern, die von einem einzelnen Benutzer erstellt oder angefordert werden können, und Konfigurieren des automatischen Herunterfahrens. Informationen zum Einrichten der einzelnen Labrichtlinien finden Sie im Artikel [Definieren von Labrichtlinien in Azure DevTest Labs](devtest-lab-set-lab-policy.md).  
@@ -92,4 +89,3 @@ Mit der Autostart-Richtlinie können Sie angeben, wann die virtuellen Computer i
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Definieren von Labrichtlinien in Azure DevTest Labs](devtest-lab-set-lab-policy.md): Informationen zum Ändern anderer Labrichtlinien 
-

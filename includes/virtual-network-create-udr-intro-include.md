@@ -1,9 +1,9 @@
-Obwohl durch die Verwendung von Systemrouten der Datenverkehr für Ihre Bereitstellung automatisch ermöglicht wird, gibt es Fälle, in denen Sie das Routing von Paketen über ein virtuelles Gerät steuern möchten. Hierzu können Sie benutzerdefinierte Routen erstellen, die den nächsten Hop für Pakete in ein bestimmtes Subnetz angeben, und festlegen, dass die Pakete stattdessen an Ihre virtuelle Anwendung gesendet werden sollen. Außerdem können Sie die IP-Weiterleitung für den virtuellen Computer aktivieren, der als virtuelles Gerät ausgeführt wird.
+Obwohl die Verwendung von System Routen Datenverkehr automatisch für die Bereitstellung vereinfacht, gibt es jedoch Fälle, die in denen Sie das routing der Pakete über ein virtuelles Gerät steuern möchten. Sie können daher durch Erstellen von benutzerdefinierten Routen, die den nächsten Hop für Pakete Wechsel zu einem bestimmten Subnetz, um Ihr virtuelles Gerät stattdessen aufzurufen, und aktivieren IP-Weiterleitung für den virtuellen Computer ausgeführt wie das virtuelle Gerät angeben.
 
-Beispiele für Fälle, in denen virtuelle Geräte verwendet werden können:
+Einige Fälle, in denen virtuelle Geräte verwendet werden können, umfassen:
 
-* Überwachen des Netzwerkverkehrs mit einem Intrusion Detection System (IDS)
-* Steuerung des Datenverkehrs mit einer Firewall
+* Datenverkehr der Überwachung mit ein Angriffserkennungssystem (IDS)
+* Steuerung des Datenverkehrs mit einer firewall
 
-Weitere Informationen zu UDR und IP-Weiterleitung finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung](../articles/virtual-network/virtual-networks-udr-overview.md).
+Weitere Informationen zu UDR und IP-Weiterleitung, finden Sie auf [benutzerdefinierte Routen und IP-Weiterleitung](../articles/virtual-network/virtual-networks-udr-overview.md).
 

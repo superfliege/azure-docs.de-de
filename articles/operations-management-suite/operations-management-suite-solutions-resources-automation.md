@@ -15,13 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: c1909183a33ed03d8165671cff25cc8b83b77733
-ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>Hinzufügen von Azure Automation-Ressourcen zu einer OMS-Verwaltungslösung (Vorschau)
 > [!NOTE]
@@ -653,4 +651,3 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter](operations-man
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen einer Sicht zu Ihrer Lösung](operations-management-suite-solutions-resources-views.md), um gesammelte Daten zu visualisieren.
-

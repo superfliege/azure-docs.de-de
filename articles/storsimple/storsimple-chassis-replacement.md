@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: 5295c5dd039b1d4746ebaaf90372932e4c3e7c26
-ms.lasthandoff: 01/26/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replace-the-chassis-on-your-storsimple-device"></a>Ersetzen des Gehäuses des StorSimple-Geräts
 ## <a name="overview"></a>Übersicht
@@ -60,5 +59,4 @@ Führen Sie die folgenden Schritte aus, um das Gehäuse in Ihrem StorSimple-Ger�
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
-
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 08/18/2016
 ms.author: deli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scheduler-concepts-terminology--entity-hierarchy"></a>Konzepte, Terminologie und Entitätshierarchie für Scheduler
 ## <a name="scheduler-entity-hierarchy"></a>Entitätshierarchie für Scheduler
@@ -176,7 +176,7 @@ Für den Fall, dass bei einem Scheduler-Auftrag ein Fehler auftritt, kann durch 
 
 Für eine Wiederholungsrichtlinie können zwei zusätzliche Einstellungen angegeben werden: ein Wiederholungsintervall (**retryInterval**) und die Anzahl von Wiederholungen (**retryCount**).
 
-Das Wiederholungsintervall, das durch das Objekt **retryInterval** angegeben wird, ist das Intervall zwischen den Wiederholungen. Der Standardwert ist 30 Sekunden, der konfigurierbare Mindestwert beträgt 15 Sekunden, und der maximale Wert beträgt 18 Monate. Aufträge in Auftragssammlungen vom Typ „Free“ haben einen konfigurierbaren Mindestwert von 1 Stunde.  Es wird im ISO-8601-Format definiert. Gleichermaßen wird der Wert für die Anzahl von Wiederholungen mit dem Objekt **retryCount** angegeben; es bestimmt, wie oft versucht wird, einen Vorgang zu wiederholen. Der Standardwert ist 4, und der maximale Wert ist 20\. Sowohl **retryInterval** als auch **retryCount** sind optional. Wenn **retryType** auf **fixed** festgelegt ist und keine expliziten Werte angegeben werden, werden die Standardwerte verwendet.
+Das Wiederholungsintervall, das durch das Objekt **retryInterval** angegeben wird, ist das Intervall zwischen den Wiederholungen. Der Standardwert ist 30 Sekunden, der konfigurierbare Mindestwert beträgt 15 Sekunden, und der maximale Wert beträgt 18 Monate. Aufträge in Auftragssammlungen vom Typ „Free“ haben einen konfigurierbaren Mindestwert von 1 Stunde.  Es wird im ISO-8601-Format definiert. Gleichermaßen wird der Wert für die Anzahl von Wiederholungen mit dem Objekt **retryCount** angegeben; es bestimmt, wie oft versucht wird, einen Vorgang zu wiederholen. Der Standardwert ist 4, und der maximale Wert ist 20\. Beide **RetryInterval** und **RetryCount** sind optional. Wenn **retryType** auf **fixed** festgelegt ist und keine expliziten Werte angegeben werden, werden die Standardwerte verwendet.
 
 ## <a name="see-also"></a>Weitere Informationen
  [Was ist Azure Scheduler?](scheduler-intro.md)
@@ -196,10 +196,4 @@ Das Wiederholungsintervall, das durch das Objekt **retryInterval** angegeben wir
  [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

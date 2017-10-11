@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
 ms.openlocfilehash: ec431dd5ccfa53e4b975e46da247704dd1e15c2c
-ms.lasthandoff: 04/21/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Tutorial: Azure Active Directory-Integration mit Datahug
 
@@ -203,7 +202,7 @@ Bei Datahug ist die Bereitstellung eine manuelle Aufgabe.
     ![Mitarbeiter hinzufügen](./media/active-directory-saas-datahug-tutorial/3.png)
 
     > [!NOTE] 
-    > Sie können eine Registrierungs-E-Mail an den Benutzer senden, indem Sie das Kontrollkästchen zum **Senden einer Begrüßungs-E-Mail** aktivieren.    
+    > Sie können eine Registrierungs-E-Mail an den Benutzer senden, indem Sie das Kontrollkästchen zum **Senden einer Begrüßungs-E-Mail** aktivieren.  
     > Wenn Sie ein Konto für Salesforce erstellen, senden Sie keine Begrüßungs-E-Mail.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
@@ -261,5 +260,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Datahug“ klicken, sollten Sie au
 [201]: ./media/active-directory-saas-datahug-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-datahug-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-datahug-tutorial/tutorial_general_203.png
-
 

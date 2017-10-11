@@ -1,19 +1,19 @@
 <!--author=SharS last changed: 1/7/2016-->
 
-#### <a name="to-modify-a-volume-container"></a>So ändern Sie einen Volumecontainer
-1. Wählen Sie auf der Seite **Geräte** das Gerät aus, doppelklicken Sie darauf, und klicken Sie dann auf die Registerkarte **Volumecontainer**.
-2. Wählen Sie in der tabellarischen Auflistung der Volumecontainer die Einstellung aus, die Sie ändern möchten, und klicken Sie auf **Ändern**.
-3. Führen Sie im Dialogfeld **Volumecontainer ändern** die folgenden Schritte aus:
+#### <a name="to-modify-a-volume-container"></a>Zum Ändern eines volumecontainers
+1. Auf der **Geräte** Seite, wählen Sie das Gerät, doppelklicken Sie darauf, und klicken Sie dann auf die **volumecontainer** Registerkarte.
+2. Wählen Sie in der tabellarischen Auflistung der volumecontainer, die Einstellung, die Sie ändern möchten, und klicken Sie auf **ändern**.
+3. In der **volumecontainer ändern** Dialogfeld Feld, gehen Sie folgendermaßen vor:
    
-   1. Ändern Sie den Namen des Volumecontainers, und ändern Sie die Einstellung der zugeordneten Bandbreite. 
+   1. Ändern Sie den Namen des volumecontainers und ändern Sie die zugeordnete Bandbreite-Einstellung zu. 
       
-       ![Ändern eines Volumecontainers mit Bandbreitenvorlage 1](./media/storsimple-modify-volume-container/HCS_ModifyVCBT1-include.png)
-   2. Der Verschlüsselungsschlüssel und das Speicherkonto können nicht geändert werden, nachdem sie einmal angegeben wurden. Wenn Sie **Bandbreitenvorlage auswählen**angegeben haben, klicken Sie auf den Pfeil, um zur nächsten Seite zu gelangen.
-4. Auf der nächsten Seite des Dialogfelds **Volumecontainer ändern** :
+       ![Volumecontainer mit, Bandbreitenvorlage 1 ändern](./media/storsimple-modify-volume-container/HCS_ModifyVCBT1-include.png)
+   2. Die Verschlüsselung Schlüssel und Speicher-Konto kann nicht geändert werden, nachdem Sie einmal angegeben werden. Wenn Sie angegeben haben **bandbreitenvorlage auswählen**, klicken Sie auf den Pfeil, um mit der nächsten Seite fortfahren.
+4. In der nächsten Seite mit den **Volumecontainer ändern** (Dialogfeld):
    
-   1. Wählen Sie in der Dropdownliste eine vorhandene Bandbreitenvorlage aus.
-   2. Überprüfen Sie die Zeitplaneinstellungen für die angegebene Bandbreitenvorlage.
+   1. Wählen Sie aus der Dropdown-Liste eine vorhandene bandbreitenvorlage aus.
+   2. Überprüfen Sie die zeitplaneinstellungen für die angegebene bandbreitenvorlage ein.
       
-       ![Ändern eines Volumecontainers mit Bandbreitenvorlage 2](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
-   3. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) , um die aktualisierten Einstellungen zu speichern. Die Seite **Volumecontainer** wird den Änderungen entsprechend aktualisiert.
+       ![Volumecontainer mit Bandbreitenvorlage 2 ändern](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
+   3. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) zum Speichern der aktualisierten Einstellungen. Die **volumecontainer** Seite wird aktualisiert, um die Änderungen wiederzugeben.
 

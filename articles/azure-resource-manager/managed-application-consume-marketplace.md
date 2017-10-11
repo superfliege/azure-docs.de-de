@@ -10,14 +10,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/11/2017
 ms.author: gauravbh; tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: baf456740bddd562391ed64d707f990c8921d710
-ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/29/2017
 ---
-
 # <a name="consume-azure-managed-applications-in-the-marketplace"></a>Nutzen von verwalteten Azure-Anwendungen im Marketplace
 
 Wie im Artikel [Übersicht über verwaltete Anwendungen](managed-application-overview.md) beschrieben, gibt es zwei End-to-End Szenarios. Bei einem steht der Herausgeber oder Hersteller im Mittelpunkt, der eine verwaltete Anwendung zur Verwendung durch Kunden erstellen möchte. Beim zweiten geht es um den Kunden oder den Verbraucher der verwalteten Anwendung. Dieser Artikel behandelt das zweite Szenario. Er beschreibt, wie eine verwaltete Anwendung aus dem Microsoft Azure Marketplace bereitgestellt werden kann.

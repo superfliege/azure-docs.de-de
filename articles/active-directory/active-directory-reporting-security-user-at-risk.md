@@ -13,12 +13,11 @@ ms.workload: identity
 ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 04f15384a7cd0fa03300acdf159d371569ecf9fc
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
@@ -64,9 +63,9 @@ Sie können für gefährdete Benutzer den Anmeldeverlauf des Benutzers prüfen u
 ![Riskante Anmeldungen](./media/active-directory-reporting-security-user-at-risk/46.png)
 
 
-In diesem Dialogfenster steht Ihnen folgende Option zur Verfügung:
+Dieses Dialogfeld bietet Ihnen eine Option aus, um:
 
-- Herunterladen des Berichts
+- Den Bericht herunterladen
 
 - Suchen nach Benutzern
 
@@ -112,5 +111,4 @@ Um ein Risikoereignis zu untersuchen, wählen Sie es in der Liste aus, um das Bl
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu Azure Active Directory Identity Protection finden Sie unter [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
-
 

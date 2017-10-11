@@ -1,6 +1,6 @@
 ---
-title: "Verschlüsselung ruhender Daten von Datenbanken – Azure Cosmos DB | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Azure Cosmos DB eine Standardverschlüsselung für alle Daten bereitstellt."
+title: "Datenbankverschlüsselung ruhender: Azure-Cosmos-Datenbank | Microsoft Docs"
+description: "Erfahren Sie, wie Azure-Cosmos-DB standardverschlüsselung aller Daten bereitstellt."
 services: cosmos-db
 author: voellm
 manager: jhubbard
@@ -14,61 +14,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: voellm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: d8967d4504a8ccabb444c7f3d5635e2d00f287c5
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
+# <a name="azure-cosmos-db-database-encryption-at-rest"></a>Ruhende datenbankverschlüsselung Azure Cosmos-DB
 
-# <a name="azure-cosmos-db-database-encryption-at-rest"></a>Verschlüsselung ruhender Daten von Datenbanken mit Azure Cosmos DB
+Ruhende Verschlüsselung ist ein Ausdruck, der häufig auf die Verschlüsselung von Daten auf Geräten nicht flüchtigen Speicher wie solid-State-Laufwerken (SSDs) verweist, nach dem und Festplattenlaufwerken (HDDs). COSMOS DB speichert die primären Datenbanken auf SSDs. Ihre Medien Anlagen und die Sicherungen werden im Azure-Blob-Speicher gespeichert, der in der Regel durch HDDs gesichert wird. Mit der Version der Verschlüsselung von ruhenden für Cosmos-DB werden alle Datenbanken, Anhänge und Sicherungen verschlüsselt. Ihre Daten werden jetzt während der Übertragung verschlüsselt, (über das Netzwerk) und im Ruhezustand (permanentem Speicher), wodurch Sie End-to-End-Verschlüsselung.
 
-„Verschlüsselung ruhender Daten“ ist ein Ausdruck, der sich im Allgemeinen auf die Verschlüsselung von Daten auf permanenten Speichergeräten wie Solid State-Laufwerken (SSDs) und Festplattenlaufwerken (HDDs) bezieht. Cosmos DB speichert die primären Datenbanken auf SSDs. Die Medienanlagen und die Sicherungen werden in Azure Blob Storage gespeichert und in der Regel durch HDDs gesichert. Mit der Veröffentlichung der Verschlüsselung von ruhenden Daten für Cosmos DB werden Ihre gesamten Datenbanken, Medienanhänge und Sicherungen jetzt verschlüsselt. Damit werden Ihre Daten jetzt während der Übertragung (über das Netzwerk) und im Ruhezustand (permanenter Speicher) verschlüsselt, sodass Sie eine End-to-End-Verschlüsselung erhalten.
+Wie ein PaaS-Dienst, Cosmos DB sehr einfach zu verwenden ist. Da alle in der Cosmos-Datenbank gespeicherte Daten werden verschlüsselt, ruhende und Transport, müssen Sie keine Maßnahmen ergreifen. Wird von einem anderen Verfahren, um dies abzulegen, die Verschlüsselung von ruhenden finden Sie in der Standardeinstellung "auf". Es sind keine Steuerelemente, die es ein- bzw. auszuschalten. Wir diese Funktion bereitstellen, während wir weiterhin erfüllen unsere [Verfügbarkeit und Leistung SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db).
 
-Als PaaS-Dienst ist Cosmos DB sehr einfach zu verwenden. Da alle in Cosmos DB gespeicherten Benutzerdaten sowohl ruhend als auch während der Übertragung verschlüsselt werden, müssen Sie keine Maßnahmen ergreifen. Anders ausgedrückt: Die Verschlüsselung ruhender Daten ist standardmäßig „aktiviert“. Es gibt keine Möglichkeit, dies ein- oder auszuschalten. Wir stellen dieses Feature bereit, während wir weiterhin unsere [Verfügbarkeits- und Leistungs-SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db) erfüllen.
+## <a name="implement-encryption-at-rest"></a>Implementieren Sie die Verschlüsselung im Ruhezustand
 
-## <a name="implement-encryption-at-rest"></a>Implementieren der Verschlüsselung ruhender Daten
+Verschlüsselung ruhender wird mithilfe einer Reihe von sicherheitstechnologien, einschließlich der sicheren Schlüssel Speichersystemen, verschlüsselte Netzwerke und Kryptografie-APIs implementiert. Auf Systemen, die zu entschlüsseln und Verarbeiten von Daten sind zum Kommunizieren mit Systemen, die Schlüssel zu verwalten. Das Diagramm zeigt, wie die Speicherung von verschlüsselten Daten und die Verwaltung von Schlüsseln getrennt ist. 
 
-Die Verschlüsselung ruhender Daten wird über eine Reihe von Sicherheitstechnologien implementiert, einschließlich der Speichersysteme für sichere Schlüssel, verschlüsselter Netzwerke und Kryptografie-APIs. Systeme, die Daten verarbeiten und entschlüsseln, müssen mit Systemen kommunizieren, die Schlüssel verwalten. Das Diagramm veranschaulicht die Trennung zwischen der Speicherung von verschlüsselten Daten und der Verwaltung von Schlüsseln. 
+![Designdiagramm](./media/database-encryption-at-rest/design-diagram.png)
 
-![Entwurfsdiagramm](./media/database-encryption-at-rest/design-diagram.png)
-
-Der grundlegende Ablauf bei einer Benutzeranforderung sieht wie folgt aus:
-- Das Benutzerdatenbankkonto wird bereitgestellt, und die Speicherschlüssel werden über eine Anforderung an den Ressourcenanbieter für den Verwaltungsdienst abgerufen.
-- Ein Benutzer stellt über HTTPS bzw. über den sicheren Transport eine Verbindung mit Cosmos DB her. (Die Details werden in den SDKs zusammengefasst.)
-- Der Benutzer sendet ein zu speicherndes JSON-Dokument über die zuvor erstellte sichere Verbindung.
-- Das JSON-Dokument wird indiziert, sofern der Benutzer die Indizierung nicht deaktiviert hat.
-- Sowohl das JSON-Dokument als auch die Indexdaten werden in den sicheren Speicher geschrieben.
-- In regelmäßigen Abständen werden Daten aus dem sicheren Speicher gelesen und im verschlüsselten Azure Blob Storage gesichert.
+Die grundlegende Vorgehensweise eine benutzeranforderung lautet wie folgt:
+- Das Benutzerkonto für die Datenbank zur Verfügung gestellt wird und Speicherschlüssel über eine Anforderung an den Management-Ressource Dienstanbieter abgerufen werden.
+- Ein Benutzer erstellt eine Verbindung mit der Cosmos-Datenbank über HTTPS/secure Transport. (Die Details der SDKs abstrahieren.)
+- Der Benutzer sendet ein JSON-Dokument über die zuvor erstellte sichere Verbindung gespeichert werden soll.
+- Das JSON-Dokument wird indiziert, es sei denn, die Indizierung der Benutzer deaktiviert hat.
+- Die JSON-Dokument und den Index der Daten werden geschrieben, um Speicher zu sichern.
+- In regelmäßigen Abständen, Daten aus dem sicheren Speicher lesen und in der Azure-verschlüsselte Blob-Speicher gesichert.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>F: Wie hoch sind die Mehrkosten für Azure Storage, wenn Storage Service Encryption aktiviert ist?
-A: Es fallen keine zusätzlichen Kosten an.
+### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>F: wie viel kostet Azure-Speicher Wenn Speicherdienstverschlüsselung aktiviert ist?
+A: Es fallen keine zusätzlichen Kosten.
 
-### <a name="q-who-manages-the-encryption-keys"></a>F: Wer verwaltet die Verschlüsselungsschlüssel?
-A: Die Schlüssel werden von Microsoft verwaltet.
+### <a name="q-who-manages-the-encryption-keys"></a>F: wer die Verschlüsselungsschlüssel verwaltet?
+A: die Schlüssel werden von Microsoft verwaltet.
 
-### <a name="q-how-often-are-encryption-keys-rotated"></a>F: Wie oft werden die Verschlüsselungsschlüssel ausgetauscht?
-A: Microsoft verfügt über eine Reihe von internen Richtlinien für die Rotation der Verschlüsselungsschlüssel, die auch für Cosmos DB gelten. Die spezifischen Richtlinien werden nicht veröffentlicht. Microsoft veröffentlicht den [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx), der als eine Teilmenge der internen Richtlinien gilt und nützliche bewährte Methoden für Entwickler enthält.
+### <a name="q-how-often-are-encryption-keys-rotated"></a>F: wie oft werden die Verschlüsselungsschlüssel gedreht?
+A: Microsoft hat es sich um einen Satz von internen Richtlinien für die Rotation der Verschlüsselungsschlüssel, der Cosmos-DB folgt. Die bestimmten Richtlinien werden nicht veröffentlicht. Microsoft werden veröffentlicht, die [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx), die als eine Teilmenge der internen Anleitung angezeigt wird, und ist nützlich, bewährte Methoden für Entwickler.
 
-### <a name="q-can-i-use-my-own-encryption-keys"></a>F: Kann ich meine eigenen Verschlüsselungsschlüssel verwenden?
-A: Cosmos DB ist ein PaaS-Dienst, und wir haben hart daran gearbeitet, den Dienst benutzerfreundlich zu gestalten. Wir haben festgestellt, dass diese Frage häufig stellvertretend zur Einhaltung von Complianceanforderungen wie PCI-DSS gestellt wird. Im Rahmen der Erstellung dieses Features haben wir mit Complianceprüfern zusammengearbeitet, um sicherzustellen, dass Kunden, die Cosmos DB verwenden, ihre Anforderungen erfüllen können, ohne selbst Schlüssel verwalten zu müssen.
-Aus diesem Grund bieten wir Benutzern derzeit keine Option, die Schlüsselverwaltung selbst durchzuführen.
+### <a name="q-can-i-use-my-own-encryption-keys"></a>F: verwenden kann ich meinen eigenen Verschlüsselungsschlüssel?
+A: Cosmos-DB ist ein PaaS-Dienst, und wir arbeitete hart daran, den Dienst einfach zu verwendende beibehalten. Wir haben festgestellt, dass dieser Frage häufig als Proxy für die Erfüllung einer Anforderung Kompatibilität wie PCI-DSS Frage gestellt wird. Im Rahmen der Erstellung dieses Feature arbeitet wir mit Kompatibilität "Prüfer", um sicherzustellen, dass Kunden Cosmos-DB-verwenden ihre Anforderungen ohne den Schlüssel selbst verwalten.
+Daher bieten wir derzeit keine Benutzer die Möglichkeit, selbst mit schlüsselverwaltung versehen an.
 
-### <a name="q-what-regions-have-encryption-turned-on"></a>F: Für welche Regionen ist die Verschlüsselung aktiviert?
-A: Die Verschlüsselung ist für alle Azure Cosmos DB-Regionen und für alle Benutzerdaten aktiviert.
+### <a name="q-what-regions-have-encryption-turned-on"></a>F: Was Regionen den aktivierter Verschlüsselung haben?
+A: alle Azure-Cosmos-DB-Regionen haben Verschlüsselung für alle Benutzerdaten aktiviert.
 
-### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>F: Wirkt sich die Verschlüsselung auf die SLAs hinsichtlich Leistung, Wartezeit und Durchsatz aus?
-A: Es gibt keine Auswirkungen oder Änderungen hinsichtlich der Leistungs-SLAs, nachdem die Verschlüsselung ruhender Daten für alle vorhandenen und neuen Konten aktiviert ist. Informationen zu den aktuellsten Garantien finden Sie auf der Seite mit der [SLA für Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db).
+### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>F: wirkt Verschlüsselung die Leistung Latenzzeit und Durchsatz SLAs sich?
+A: ist keine Auswirkungen oder Änderungen für die Leistung SLAs nun, dass die Verschlüsselung von ruhenden für alle vorhandenen und neuen Konten aktiviert ist. Erfahren Sie mehr auf die [SLA für Cosmos-DB](https://azure.microsoft.com/support/legal/sla/cosmos-db) Bild, um die neuesten Garantien anzuzeigen.
 
-### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>F: Unterstützt der lokale Emulator die Verschlüsselung ruhender Daten?
-A: Der Emulator ist ein eigenständiges Entwicklungs-/Testtool und verwendet keine Schlüsselverwaltungsdienste, die vom verwalteten Cosmos DB-Dienst verwendet werden. Unsere Empfehlung ist, BitLocker auf Laufwerken zu aktivieren, auf denen Sie vertrauliche Eumlatortestdaten speichern. Der [Emulator unterstützt das Ändern des Standarddatenverzeichnisses](local-emulator.md) sowie die Verwendung eines bekannten Speicherorts.
+### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>F: unterstützt lokale Emulator ruhende Verschlüsselung?
+A: der Emulator ist ein eigenständiges Dev/Test-Tool und verwendet nicht die Key Management-Dienste, die der verwaltete Cosmos-DB-Dienst verwendet. Unsere Empfehlung ist zum Aktivieren von BitLocker auf einem Laufwerk, auf dem Sie vertrauliche Emulator Testdaten speichern. Die [Emulator unterstützt das Ändern der Standarddatenverzeichnis](local-emulator.md) sowie mit einem bekannten Speicherort.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Übersicht über die Cosmos DB-Sicherheit und die neuesten Verbesserungen finden Sie unter [Azure Cosmos DB-Datenbanksicherheit](database-security.md).
-Weitere Informationen zu Microsoft-Zertifizierungen finden Sie im [Azure Trust Center](https://azure.microsoft.com/en-us/support/trust-center/).
-
+Einen Überblick über Cosmos-DB-Sicherheit und die neuesten Verbesserungen finden Sie unter [Azure Cosmos-DB-datenbanksicherheit](database-security.md).
+Weitere Informationen zu Microsoft-Zertifizierungen finden Sie unter der [Azure Trust Center](https://azure.microsoft.com/en-us/support/trust-center/).

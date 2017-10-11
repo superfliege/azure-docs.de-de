@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 8212ff011633c3a89d3310e828b6d5f1cda6ce3f
-ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="step-7-set-up-a-vault-for-hyper-v-replication"></a>Schritt 7: Einrichten eines Tresors für die Hyper-V-Replikation
 
 In diesem Artikel wird beschrieben, wie Sie einen Tresor erstellen und angeben, was Sie von Ihrem lokalen Standort mit dem [Azure Site Recovery](site-recovery-overview.md)-Dienst im Azure-Portal in Azure replizieren möchten.
@@ -50,4 +48,3 @@ Wählen Sie aus, was Sie replizieren möchten und wohin die Daten repliziert wer
 ## <a name="next-steps"></a>Nächste Schritte
 
 Gehen Sie zu [Schritt 8: Einrichten der Quelle und des Ziels](hyper-v-site-walkthrough-source-target.md).
-

@@ -1,8 +1,8 @@
-1. Wechseln Sie auf der Seite **Einstellungen** für Ihr virtuelles Netzwerk zu **DNS-Server**, und klicken Sie darauf, um das Blatt **DNS-Server** zu öffnen.
+1. Auf der **Einstellungen** Seite für Ihr virtuelles Netzwerk, navigieren Sie zu **DNS-Server** zu öffnen und auf die **DNS-Server** Blatt.
 
-    ![DNS-Server hinzufügen](./media/vpn-gateway-add-dns-rm-portal/add_dns_server.png "DNS-Server hinzufügen")
+    ![Die DNS-Server hinzufügen](./media/vpn-gateway-add-dns-rm-portal/add_dns_server.png "DNS-Server hinzufügen")
 
-  - **DNS-Server:** Wählen Sie **Benutzerdefiniert** aus.
-  - **DNS-Server hinzufügen:** Geben Sie die IP-Adresse des DNS-Servers ein, der für die Namensauflösung verwendet werden soll.
+  - **DNS-Server:** wählen **benutzerdefinierte**.
+  - **Hinzufügen von DNS-Server:** Geben Sie die IP-Adresse des DNS-Servers, die Sie für die namensauflösung verwenden möchten.
 
-2. Wenn Sie die DNS-Server hinzugefügt haben, klicken Sie oben auf dem Blatt auf **Speichern**.
+2. Wenn Sie das Hinzufügen von DNS-Server abgeschlossen haben, klicken Sie auf **speichern** oben auf dem Blatt.

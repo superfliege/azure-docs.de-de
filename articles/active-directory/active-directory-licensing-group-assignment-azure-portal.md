@@ -1,5 +1,4 @@
 ---
-
 title: Zuweisen von Lizenzen zu einer Gruppe in Azure Active Directory | Microsoft-Dokumentation
 description: Zuweisen von Lizenzen zu Benutzern mit der Gruppenlizenzierung von Azure Active Directory
 services: active-directory
@@ -17,15 +16,12 @@ ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
 ms.openlocfilehash: 42b18eab9cb419e6ada72ba72dc8be8d7f7b2eed
-ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Zuweisen von Lizenzen zu Benutzer nach Gruppenmitgliedschaft in Azure Active Directory
 
 Dieser Artikel führt Sie durch die Zuweisung von Produktlizenzen zu einer Benutzergruppe in Azure Active Directory (Azure AD) und die anschließende Überprüfung, ob die Lizenzierung ordnungsgemäß durchgeführt wurde.
@@ -112,4 +108,3 @@ Weitere Informationen zu den Features für die Lizenzverwaltung mithilfe von Gru
 * [Bestimmen und Beheben von Lizenzproblemen für eine Gruppe in Azure Active Directory](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung in Azure Active Directory](active-directory-licensing-group-migration-azure-portal.md)
 * [Gruppenbasierte Azure Active Directory-Lizenzierung – zusätzliche Szenarien](active-directory-licensing-group-advanced.md)
-

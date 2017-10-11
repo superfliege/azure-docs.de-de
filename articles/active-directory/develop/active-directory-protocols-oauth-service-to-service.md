@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: cc30a54cd56c0cb03a67f86e4552398baa764e58
-ms.contentlocale: de-de
-ms.lasthandoff: 06/21/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # Dienst-zu-Dienst-Aufrufe mit Clientanmeldeinformationen (freigegebenes Geheimnis oder Zertifikat)
 Beim Fluss zur Gewährung von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein *vertraulicher Client*) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines anderen Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website. Für ein höheres Maß an Sicherheit kann der aufrufende Dienst anstelle eines gemeinsamen Geheimnisses auch ein Zertifikat als Anmeldeinformationen verwenden.
@@ -123,4 +121,3 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung für 
 ## Weitere Informationen
 * [OAuth 2.0 in Azure AD](active-directory-protocols-oauth-code.md)
 * [Beispiel des Dienst-zu-Dienst-Aufrufs mit einem gemeinsamen Geheimnis (C#)](https://github.com/Azure-Samples/active-directory-dotnet-daemon) und [Beispiel des Dienst-zu-Dienst-Aufrufs mit einem Zertifikat (C#)](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
-

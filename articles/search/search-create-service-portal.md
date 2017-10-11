@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Azure Search-Diensts im Portal | Microsoft-Dokumentation
-description: "Stellen Sie einen Azure Search-Dienst über das Portal bereit."
+title: Erstellen eines Azure-Suchdiensts im Portal | Microsoft Docs
+description: Bereitstellen eines Azure-Suchdiensts im Portal an.
 services: search
 manager: jhubbard
 author: HeidiSteen
@@ -13,104 +13,101 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 58f4eab190e40e16ed261c165ffdfc8155eeb434
-ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="create-an-azure-search-service-in-the-portal"></a>Erstellen eines Azure Search-Diensts im Portal
+# <a name="create-an-azure-search-service-in-the-portal"></a>Erstellen eines Azure-Suchdiensts im portal
 
-In diesem Artikel wird die Erstellung bzw. Bereitstellung eines Azure Search-Diensts im Portal erläutert. Anweisungen für PowerShell finden Sie unter [Verwalten des Azure Search-Diensts mit PowerShell](search-manage-powershell.md).
+Dieser Artikel beschreibt die Vorgehensweise beim Erstellen oder Bereitstellen eines Azure-Suchdiensts im Portal. PowerShell-Anweisungen finden Sie unter [Verwalten von Azure Search mit PowerShell](search-manage-powershell.md).
 
-## <a name="subscribe-free-or-paid"></a>Abonnieren (kostenlos oder kostenpflichtig)
+## <a name="subscribe-free-or-paid"></a>Abonnieren Sie (kostenlos oder bezahlt)
 
-[Erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), und verwenden Sie das kostenlose Guthaben, um unsere kostenpflichtigen Azure-Dienste zu testen. Wenn das Guthaben aufgebraucht ist, können Sie das Konto behalten und weiterhin kostenlose Azure-Dienste wie z.B. Websites verwenden. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit der Berechnung von Gebühren einverstanden sind.
+[Öffnen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) und verwenden Sie kostenlose Guthaben, probieren Sie ein kostenpflichtiges Azure-Dienste. Nach dem Guthaben aufgebraucht sind, behalten Sie das Konto und kostenlose Azure-Diensten wie Websites verwenden. Ihre Kreditkarte wird nie in Rechnung gestellt, wenn Sie explizit ändern Sie die Einstellungen, und bitten Sie in Rechnung gestellt.
 
-Alternativ dazu können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für kostenpflichtige Azure-Dienste verwenden können. 
+Alternativ können Sie [MSDN-abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). Ein MSDN-Abonnement bietet Ihnen Gutschriften jedes Monats, den Sie für kostenpflichtige Azure-Dienste verwenden können. 
 
-## <a name="find-azure-search"></a>Aufrufen von Azure Search
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie in der oberen linken Ecke auf das Pluszeichen („+“).
-3. Wählen Sie **Web + Mobile** > **Azure Search** aus.
+## <a name="find-azure-search"></a>Suchen Sie die Azure-Suchdienst
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Klicken Sie auf das Pluszeichen ("+") in der oberen linken Ecke.
+3. Wählen Sie **Web + Mobil** > **Azure Search**.
 
 ![](./media/search-create-service-portal/find-search2.png)
 
-## <a name="name-the-service-and-url-endpoint"></a>Benennen des Diensts und des URL-Endpunkts
+## <a name="name-the-service-and-url-endpoint"></a>Benennen Sie den Dienst und den URL-Endpunkt
 
-Ein Dienstname ist Teil eines URL-Endpunkts, für den API-Aufrufe ausgegeben werden. Geben Sie den Dienstnamen im Feld **URL** ein. 
+Ein Dienstname ist Teil der URL-Endpunkt für die API-Aufrufe ausgegeben werden. Geben Sie den Dienstnamen in der **URL** Feld. 
 
-Anforderungen an Dienstnamen:
-   * Zwischen 2 und 60 Zeichen lang
-   * Kleinbuchstaben, Ziffern oder Bindestriche („-“)
-   * Kein Bindestrich in den ersten beiden und im letzten Zeichen
-   * keine aufeinander folgenden Bindestriche („--“)
+Anforderungen an den Namen:
+   * 2 und 60 Zeichen lang sein
+   * Kleinbuchstaben, Ziffern oder Bindestriche ("-")
+   * keine Bindestriche ("-") als die ersten 2 Zeichen oder die letzten Einzelzeichen
+   * keine aufeinander folgenden Bindestriche ("--")
 
-## <a name="select-a-subscription"></a>Auswählen eines Abonnements
-Wenn Sie über mehrere Abonnements verfügen, wählen Sie ein Abonnement aus, in dem sich Daten- oder Dateispeicherdienste befinden. Azure Search kann die Dienste Azure Table Storage, Blob Storage, SQL-Datenbank und Azure Cosmos DB automatisch erkennen, um sie über *Indexer* zu indizieren. Dies gilt jedoch nur für Dienste im gleichen Abonnement.
+## <a name="select-a-subscription"></a>Wählen Sie ein Abonnement
+Wenn Sie über mehrere Abonnements verfügen, wählen Sie einen, der auch Daten oder Storage Services verfügt. Azure Search kann automatische Erkennung Azure Tabellen- und Blob-Speicher, SQL-Datenbank und Azure-Cosmos-Datenbank für die Indizierung über *Indexer*, sondern nur für Dienste im selben Abonnement.
 
-## <a name="select-a-resource-group"></a>Auswählen einer Ressourcengruppe
-Eine Ressourcengruppe ist eine Sammlung von Azure-Diensten und -Ressourcen, die zusammen verwendet werden. Wenn Sie beispielsweise mit Azure Search eine SQL-Datenbank indizieren, müssen beide Dienste der gleichen Ressourcengruppe angehören.
+## <a name="select-a-resource-group"></a>Wählen Sie eine Ressourcengruppe ein.
+Eine Ressourcengruppe handelt es sich um eine Sammlung von Azure-Dienste und Ressourcen, die zusammen verwendet werden. Wenn Sie Azure Search zum Indizieren einer SQL-Datenbank verwenden, sollten beide Dienste z. B. Teil der gleichen Ressourcengruppe sein.
 
 > [!TIP]
-> Wenn eine Ressourcengruppe gelöscht wird, werden auch die darin befindlichen Dienste gelöscht. Bei Prototypprojekten, die mehrere Dienste verwenden, sollten Sie all diese Dienste in die gleiche Ressourcengruppe platzieren, um das Bereinigen nach Abschluss des Projekts zu vereinfachen. 
+> Durch das Löschen einer Ressourcengruppe werden auch die Dienste darin gelöscht. Bei Prototypprojekten mit mehreren Diensten erleichtert versetzen alle von ihnen in der gleichen Ressourcengruppe Cleanup nach Abschluss des Projekts. 
 
-## <a name="select-a-hosting-location"></a>Auswählen eines Hostingstandorts 
-Als Azure-Dienst kann Azure Search in Rechenzentren auf der ganzen Welt gehostet werden. Beachten Sie, dass sich die [Preise je nach geografischer Lage unterscheiden können](https://azure.microsoft.com/pricing/details/search/).
+## <a name="select-a-hosting-location"></a>Wählen Sie einen Speicherort hosting 
+Als Azure-Dienst kann Azure Search in Rechenzentren weltweit gehostet werden. Beachten Sie, dass [Preise können sich unterscheiden,](https://azure.microsoft.com/pricing/details/search/) nach Geografie.
 
-## <a name="select-a-pricing-tier-sku"></a>Auswählen eines Tarifs (SKU)
-[Azure Search wird derzeit in mehreren Tarifen angeboten](https://azure.microsoft.com/pricing/details/search/): Free, Basic oder Standard. Jeder Tarif verfügt über eigene [Kapazitäten und Grenzwerte](search-limits-quotas-capacity.md). Anleitungen finden Sie unter [Auswählen einer SKU oder eines Tarifs für Azure Search](search-sku-tier.md) .
+## <a name="select-a-pricing-tier-sku"></a>Wählen Sie einen Tarif (SKU)
+[Azure-Suchdienst wird derzeit in mehrere Preisstufen angeboten](https://azure.microsoft.com/pricing/details/search/): kostenlos, Basic oder Standard. Jede Ebene hat ein eigenes [Kapazität und Grenzwerte](search-limits-quotas-capacity.md). Finden Sie unter [wählen Sie eine Preisstufe Ebene oder SKU](search-sku-tier.md) Anleitungen.
 
-In dieser exemplarischen Vorgehensweise haben wir den Standard-Tarif für unseren Dienst gewählt.
+In dieser exemplarischen Vorgehensweise haben wir die Standard-Ebene für den Dienst.
 
-## <a name="create-your-service"></a>Erstellen des Diensts
+## <a name="create-your-service"></a>Erstellen Sie den Dienst
 
-Denken Sie daran, Ihren Dienst an das Dashboard anzuheften, damit Sie nach jeder Anmeldung sofort darauf zugreifen können.
+Denken Sie daran, den Dienst für das Dashboard für den leichteren Zugriff anheften, wenn Sie sich anmelden.
 
 ![](./media/search-create-service-portal/new-service2.png)
 
-## <a name="scale-your-service"></a>Skalieren des Diensts
-Die Erstellung eines Diensts kann einige Minuten dauern (je nach Tarif 15 Minuten oder länger). Nach der Bereitstellung Ihres Diensts können Sie ihn Ihren Anforderungen entsprechend skalieren. Da Sie für Ihren Azure Search-Dienst den Standard-Tarif ausgewählt haben, können Sie den Dienst in zwei Dimensionen skalieren: Replikate und Partitionen. Wenn Sie den Basic-Tarif auswählen, können Sie nur Replikate hinzufügen. Wenn Sie den kostenlosen Dienst bereitstellen, ist keine Skalierung verfügbar.
+## <a name="scale-your-service"></a>Ihr Dienst skalieren
+Es kann einige Minuten zum Erstellen eines Diensts (15 Minuten oder mehr, je nach der Ebene). Nachdem der Dienst bereitgestellt wurde, können Sie darauf, um Ihren Bedürfnissen skalieren. Da Sie die Standard-Ebene für den Azure Search-Dienst ausgewählt haben, können Sie Ihren Dienst skalieren, in zwei Dimensionen: Replikate und Partitionen. Sie die Basisebene ausgewählt haben, können Sie nur Replikate hinzufügen. Wenn Sie den kostenlosen Dienst bereitgestellt haben, ist die Skalierung nicht verfügbar.
 
-***Partitionen*** ermöglichen Ihrem Dienst das Speichern und Durchsuchen weiterer Dokumente.
+***Partitionen*** ermöglichen Sie Ihren Dienst zum Speichern und weitere Dokumente durchsuchen.
 
-***Replikate*** ermöglichen Ihrem Dienst, eine größere Menge von Suchabfragen zu verarbeiten.
+***Replikate*** ermöglichen Sie Ihren Dienst um eine höhere Auslastung von Suchabfragen zu behandeln.
 
 > [!Important]
-> Ein Dienst benötigt [2 Replikate für schreibgeschützte SLAs und 3 Replikate für SLAs mit Lese-/Schreibzugriff](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+> Ein Dienst benötigen [2 Replikate für nur-Lese SLA und 3 Replikate für Lese-/Schreibzugriff SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-1. Wechseln Sie im Azure-Portal zum Blatt Ihres Suchdiensts.
-2. Wählen Sie im linken Navigationsbereich die Optionen **Einstellungen** > **Skalierung** aus.
-3. Verwenden Sie den Schiebregler, um Replikate oder Partitionen hinzuzufügen.
+1. Fahren Sie mit der Search-Dienst Blatt im Azure-Portal.
+2. Wählen Sie im linken Navigationsbereich **Einstellungen** > **Skalierung**.
+3. Verwenden Sie die Slidebar, Replikate oder Partitionen hinzufügen.
 
 ![](./media/search-create-service-portal/settings-scale.png)
 
 > [!Note] 
-> Jeder Tarif bietet unterschiedliche [Grenzwerte](search-limits-quotas-capacity.md) für die Gesamtzahl der in einem einzelnen Dienst zulässigen Sucheinheiten (Replikate × Partitionen = Sucheinheiten gesamt).
+> Jede Ebene hat unterschiedliche [Grenzwerte](search-limits-quotas-capacity.md) auf die Gesamtzahl der Sucheinheiten in einem einzigen Dienst zulässig (Replikate * Partitionen = insgesamt Sucheinheiten).
 
-## <a name="when-to-add-a-second-service"></a>Wann ein zweiter Dienst hinzugefügt werden sollte
+## <a name="when-to-add-a-second-service"></a>Beim Hinzufügen eines zweiten-Diensts
 
-Die überwiegende Mehrheit der Kunden verwenden nur einen Dienst, der auf einer Ebene bereitgestellt wird, die das [richtige Gleichgewicht von Ressourcen](search-sku-tier.md) bietet. Ein Dienst kann mehrere Indizes hosten, die der [Obergrenze der von Ihnen ausgewählten Ebene](search-capacity-planning.md) unterliegt, wobei jeder Index vom anderen isoliert ist. In Azure Search können Anforderungen nur an einen Index geleitet werden, was das versehentliche oder vorsätzliche Datenabrufrisiko von anderen Indizes im selben Dienst verringert.
+Überwiegende Mehrheit der Kunden verwenden Sie nur ein Dienst bereitgestellt, die auf einer Ebene, die bietet die [Saldo von Ressourcen mit der rechten Maustaste](search-sku-tier.md). Ein Dienst kann mehrere Indizes, unterliegen hosten die [maximalen Anzahl der Ebene der Auswahl](search-capacity-planning.md), mit jedem Index voneinander isoliert. In Azure Search können Anforderungen nur an einen Index, minimieren das Risiko von versehentliche oder vorsätzliche Datenabruf von anderen Indizes im selben Dienst weitergeleitet.
 
-Obwohl die meisten Kunden nur einen Dienst nutzen, kann die Dienstredundanz womöglich nötig sein, wenn die operativen Anforderungen Folgendes enthalten:
+Obwohl die meisten Kunden nur einem Dienst verwenden, möglicherweise Dienst Redundanz erforderlich, wenn operational Anforderungen Folgendes einschließen:
 
-+ Notfallwiederherstellung (Ausfall des Rechenzentrums). Azure Search bietet kein sofortiges Failover bei einem Ausfall. Empfehlungen und Anleitungen finden Sie unter [Dienstverwaltung für Azure Search im Azure-Portal](search-manage.md).
-+ Ihre Untersuchung der mehrinstanzenfähigen Modellierung hat ergeben, dass zusätzliche Dienste die optimale Designlösung sind. Weitere Informationen finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure Search](search-modeling-multitenant-saas-applications.md).
-+ Für global bereitgestellte Anwendungen benötigen Sie möglicherweise eine Azure Search-Instanz in mehreren Regionen, um die Wartezeit des internationalen Datenverkehrs Ihrer Anwendung zu minimieren.
++ Wiederherstellung im Notfall (Ausfall des Rechenzentrums). Azure Search bietet keine sofortiges Failover bei einem Ausfall. Empfehlungen und Anleitungen finden Sie unter [-Service-Verwaltung](search-manage.md).
++ Die Untersuchung der mehrinstanzenfähigkeit Modellierung hat ergeben, dass zusätzliche Dienste den optimalen Entwurf. Weitere Informationen finden Sie unter [Entwurf für mehrinstanzenfähigkeit](search-modeling-multitenant-saas-applications.md).
++ Für Global bereitgestellte Anwendungen müssen Sie möglicherweise eine Instanz von Azure Search in mehreren Regionen Latenz von Ihrer Anwendung internationale Datenverkehr zu minimieren.
 
 > [!NOTE]
-> In Azure Search können Sie die Index- und Abfrageworkloads nicht aufteilen. Deshalb würden Sie auch nie mehrere Dienste für aufgeteilte Workloads erstellen. Ein Index wird immer auf dem Dienst, in dem er erstellt wurde, abgefragt (Sie können keinen Index in einem Dienst erstellen und ihn in einen anderen kopieren).
+> In Azure Search kann nicht Indizierung und Abfragen von Arbeitslasten Verwaltungsrechte werden; Deshalb würden Sie niemals mehrere Dienste für separater Arbeitslasten erstellen. Ein Index wird immer abgefragt, auf dem Dienst in der sie erstellt wurde (Sie können nicht in einem Dienst einen Index erstellen und kopieren Sie ihn in einen anderen).
 >
 
-Ein zweiter Dienst ist für hohe Verfügbarkeit nicht vonnöten. Hohe Verfügbarkeit für Abfragen wird erreicht, wenn Sie zwei oder mehr Replikate im gleichen Dienst verwenden. Replikatupdates sind sequenziell. Das bedeutet, dass mindestens eines betriebsfähig ist, wenn ein Dienstupdate ausgeführt wird. Weitere Informationen zur Verfügbarkeit finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Ein zweiter Dienst ist nicht für hohe Verfügbarkeit erforderlich. Hoher Verfügbarkeit für Abfragen wird erreicht, bei der Verwendung von 2 oder mehr Replikate im selben Dienst. Replikat-Updates sind sequenziell, was bedeutet, dass mindestens ein betriebsbereit ist, wenn ein Update-Dienst bereitgestellt wird. Weitere Informationen zur Verfügbarkeit finden Sie unter [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nach der Bereitstellung eines Azure Search-Diensts können Sie einen [Index definieren](search-what-is-an-index.md), damit Sie Ihre Daten hochladen und durchsuchen können.
+Nach der Bereitstellung eines Azure-Suchdiensts, sind Sie bereit für [Index definieren](search-what-is-an-index.md) damit können Sie hoch- und Ihre Daten zu suchen.
 
-Um per Code oder Skript auf den Dienst zuzugreifen, stellen Sie die URL (*Dienstname*.search.windows.net) und einen Schlüssel bereit. Administratorschlüssel gewähren Vollzugriff, Abfrageschlüssel gewähren schreibgeschützten Zugriff. Informationen zum Einstieg finden Sie unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
+Geben Sie die URL, um den Dienstzugriff über Code oder Skript (*Dienstname*..Search.Windows.NET"lauten) und einen Schlüssel. Administratorschlüssel uneingeschränkten Zugriff gewähren; Abfrageschlüssel nur-Lese-Zugriff zu gewähren. Finden Sie unter [Verwendung von Azure Search in .NET](search-howto-dotnet-sdk.md) um zu beginnen.
 
-Ein kurzes Tutorial für die Verwendung des Portals finden Sie unter [Erste Schritte mit Azure Search im Portal](search-get-started-portal.md).
-
+Finden Sie unter [erstellen und Ihren ersten Index Abfragen](search-get-started-portal.md) für ein kurzes Lernprogramm für portalbasierter.
 

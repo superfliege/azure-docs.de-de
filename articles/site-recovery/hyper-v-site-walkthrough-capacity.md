@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: c7891c188c2cecbbf056fa79672a13bb16fa7fcf
-ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="step-3-plan-capacity-and-scaling-for-hyper-v-to-azure-replication"></a>Schritt 3: Planen der Kapazität und Skalierung für Hyper-V für die Replikation in Azure
 
 Verwenden Sie diesen Artikel, um zu ermitteln, wie die Kapazität und die Skalierung beim Replizieren von lokalen Hyper-V-VMs (ohne System Center VMM) in Azure mit [Azure Site Recovery](site-recovery-overview.md) geplant wird.
@@ -84,5 +82,4 @@ Sie können auch das Cmdlet [Set-OBMachineSetting](https://technet.microsoft.com
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Gehen Sie zu [Schritt 4: Planen von Netzwerken](hyper-v-site-walkthrough-network.md).
-
+Gehen Sie zu [Step 4: Plan networking](hyper-v-site-walkthrough-network.md) (Schritt 4: Planen von Netzwerken).

@@ -1,16 +1,16 @@
-Hier erfahren Sie, wie Sie mithilfe des Triggers **Service Bus - When a message is received in a queue** (Service Bus – Wenn bei einer Warteschlange eine Nachricht eingeht) einen Logik-App-Workflow initiieren, wenn ein neues Element an eine Service Bus-Warteschlange gesendet wird.  
+Hier wird erklärt, wie mithilfe der **Service Bus - beim Empfang einer Nachricht in einer Warteschlange** Trigger, um eine Logik-app-Workflow zu initiieren, wenn ein neues Element an eine Service Bus-Warteschlange gesendet wird.  
 
 > [!NOTE]
-> Sie werden aufgefordert, sich mit der Service Bus-Verbindungszeichenfolge anzumelden, wenn Sie noch keine Verbindung mit Service Bus erstellt haben.  
+> Sie werden aufgefordert, die Ihrem Service Bus-Verbindungszeichenfolge Anmeldung, wenn Sie eine Verbindung mit Service Bus nicht bereits erstellt haben.  
 > 
 > 
 
-1. Geben Sie in das Suchfeld des Designers für Logik-Apps die Zeichenfolge **service bus**ein. Wählen Sie dann den Trigger **Service Bus - When a message is received in a queue** (Service Bus – Wenn bei einer Warteschlange eine Nachricht eingeht) aus.  
-   ![Service Bus-Trigger – Abbildung 1](./media/connectors-create-api-servicebus/trigger-1.png)   
-2. Das Dialogfeld **When a message is received in a queue** (Wenn bei einer Warteschlange eine Nachricht eingeht) wird angezeigt.  
-   ![Service Bus-Trigger – Abbildung 2](./media/connectors-create-api-servicebus/trigger-2.png)   
-3. Geben Sie den Namen der Service Bus-Warteschlange ein, die der Trigger überwachen soll.   
-   ![Service Bus-Trigger – Abbildung 3](./media/connectors-create-api-servicebus/trigger-3.png)   
+1. Geben Sie in das Suchfeld auf dem Logik-apps Designer **service Bus-**. Wählen Sie dann die **Service Bus - beim Empfang einer Nachricht in einer Warteschlange** Trigger.  
+   ![Service Bus Trigger Bild 1](./media/connectors-create-api-servicebus/trigger-1.png)   
+2. Die **beim Empfang einer Nachricht in einer Warteschlange** Dialogfeld wird angezeigt.  
+   ![Service Bus Trigger Bild 2](./media/connectors-create-api-servicebus/trigger-2.png)   
+3. Geben Sie den Namen des Service Bus-Warteschlange, die den Trigger zum überwachen möchten.   
+   ![Service Bus Trigger Bild 3](./media/connectors-create-api-servicebus/trigger-3.png)   
 
-Ihre Logik-App ist nun mit einem Trigger konfiguriert. Wenn bei der ausgewählten Warteschlange ein neues Element eingeht, startet der Trigger die anderen Trigger und Aktionen des Workflows.    
+An diesem Punkt hat Ihre Logik-app mit einem Trigger konfiguriert wurde. Wenn ein neues Element in der Warteschlange empfangen wird, die Sie ausgewählt haben, wird der Trigger eine Ausführung von den anderen Triggern und Aktionen im Workflow gestartet.    
 

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
 ms.openlocfilehash: 13169716c47cf9389c8f2651393ac744441bdd6f
-ms.lasthandoff: 03/30/2017
-
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="retrieving-state-information-for-an-importexport-job"></a>Abrufen von Statusinformationen für einen Import/Export-Auftrag
 Sie können den Vorgang [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) zum Abrufen von Informationen zu Import- und Exportaufträgen aufrufen. Die zurückgegebenen Informationen enthalten:
 
@@ -94,4 +92,3 @@ Wenn ein Auftrag oder Laufwerk den erwarteten Lebenszyklus nicht normal durchlä
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwenden der REST-API des Import/Export-Diensts](storage-import-export-using-the-rest-api.md)
-

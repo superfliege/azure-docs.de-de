@@ -16,14 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: ddc391127d43a954f555943d27258593eba02df2
-ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
-
+ms.openlocfilehash: 1ce90cf4bae66bfd6387a2698fd9b1ba7fc64595
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurieren einer Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern in verschiedenen Regionen
 
 In diesem Artikel erfahren Sie, wie Sie ein SQL Server-Always On-Verfügbarkeitsgruppenreplikat auf virtuellen Azure Computern an einem Azure-Remotestandort konfigurieren. Verwenden Sie diese Konfiguration, um die Notfallwiederherstellung zu unterstützen.
@@ -185,4 +183,3 @@ Weitere Informationen finden Sie in den folgenden Themen:
 * [Dokumentation zu virtuellen Computern](http://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure Load Balancer-Instanzen](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 * [Azure-Verfügbarkeitsgruppen](../manage-availability.md)
-

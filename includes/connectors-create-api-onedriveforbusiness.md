@@ -1,16 +1,16 @@
 ### <a name="prerequisites"></a>Voraussetzungen
-* Ein [OneDrive](http://OneDrive.com)-Konto 
+* Ein [OneDrive](http://OneDrive.com) Konto 
 
-Bevor Sie Ihr OneDrive for Business-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem OneDrive for Business-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen. 
+Bevor Sie Ihr OneDrive for Business-Konto in einer Logik-app verwenden können, müssen Sie die Logik-app zur Verbindung mit Ihrem OneDrive for Business-Konto autorisieren. Glücklicherweise können Sie problemlos aus in der Logik-app im Azure-Portal vorgehen. 
 
-Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem OneDrive for Business-Konto:
+Es folgen die Schritte zum Autorisieren der Logik-app zur Verbindung mit Ihrem OneDrive for Business-Konto:
 
-1. Um eine Verbindung mit OneDrive for Business herzustellen, wählen Sie im Logik-App-Designer in der Dropdownliste **Von Microsoft verwaltete APIs anzeigen** aus, und geben Sie dann *OneDrive for Business* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:   
+1. Wählen Sie zum Erstellen einer Verbindungs mit OneDrive for Business in der Logik-app-Designer **Anzeigen von Microsoft verwalteten APIs** in der Dropdownliste aus und geben Sie dann *OneDrive for Business* in das Suchfeld. Wählen Sie den Trigger oder die Aktion an, die Sie verwenden möchten, müssen:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
-2. Wenn Sie noch keine Verbindungen mit OneDrive for Business hergestellt haben, werden Sie aufgefordert, Ihre OneDrive for Business-Anmeldeinformationen anzugeben. Mit diesen Anmeldeinformationen wird Ihre Logik-App autorisiert, eine Verbindung mit Ihrem OneDrive for Business-Konto herzustellen und auf dessen Daten zuzugreifen:  
+2. Wenn Sie alle Verbindungen mit OneDrive for Business, bevor Sie erstellt haben, werden Sie aufgefordert abrufen OneDrive für Business-Anmeldeinformationen angeben. Diese Anmeldeinformationen werden verwendet, um Ihre Logik-app für die Verbindung autorisieren und Zugriff auf Ihre OneDrive for Business-Konto-Daten:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
-3. Geben Sie Ihren OneDrive for Business-Benutzernamen und das zugehörige Kennwort zum Autorisieren Ihrer Logik-App an:  
+3. Geben Sie Ihrem OneDrive for Business-Benutzernamen und ein Kennwort zum Autorisieren der Logik-app:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
-4. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:   
+4. Beachten Sie, dass die Verbindung erstellt wurde, und Sie können nun mit den anderen Schritten in der Logik-app zu fortfahren:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   
 

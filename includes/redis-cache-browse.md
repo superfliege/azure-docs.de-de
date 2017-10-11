@@ -1,14 +1,14 @@
-Sie können im [Azure-Portal](https://portal.azure.com) über das Blatt **Durchsuchen** auf Caches zugreifen.
+Caches möglich, die der [Azure-Portal](https://portal.azure.com) mithilfe der **Durchsuchen** Blatt.
 
-![Azure Redis Cache: Blatt „Durchsuchen“](media/redis-cache-browse/redis-cache-browse.png)
+![Azure-Redis-Cache Blatt "Durchsuchen"](media/redis-cache-browse/redis-cache-browse.png)
 
-Um Ihre Caches anzuzeigen, klicken Sie auf **Weitere Dienste > Redis Caches**. Wenn Sie kürzlich einen Redis Cache besucht haben, können Sie direkt in der Liste auf **Redis Caches** klicken, ohne auf **Weitere Dienste** zu klicken.
+Um die Caches anzuzeigen, klicken Sie auf **Weitere Dienste > Redis Caches**. Wenn Sie in eine Redis-Cache vor kurzem besucht haben, können Sie klicken **Redis-Caches** direkt aus der Liste aus, ohne auf **Weitere Dienste**.
 
-Wählen Sie den gewünschten Cache zum Anzeigen aus, und konfigurieren Sie die Einstellungen für diesen Cache.
+Wählen Sie den gewünschten Cache anzeigen und konfigurieren die Einstellungen für diesen Cache.
 
-![Azure Redis Cache: Cacheliste durchsuchen](media/redis-cache-browse/redis-caches.png)
+![Azure-Redis-Cache Cacheliste durchsuchen](media/redis-cache-browse/redis-caches.png)
 
-Sie können Ihren Cache auf dem Blatt **Redis Cache** anzeigen und konfigurieren.
+Sie können anzeigen und konfigurieren Sie Ihren Cache aus der **Redis-Cache** Blatt.
 
-![Redis Cache: Alle Einstellungen](media/redis-cache-browse/redis-cache-blade.png)
+![Redis-Cache: alle Einstellungen](media/redis-cache-browse/redis-cache-blade.png)
 

@@ -14,13 +14,11 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 3ca93e823f02b1483ed290cf89de191937d1e2c3
-ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="persist-job-and-task-output"></a>Persistente Aufträge und Aufgabenausgabe
 
@@ -96,7 +94,7 @@ Die Dateikonventionenbibliothek unterstützt die Abfrage von Ausgabedateien durc
 Verwenden Sie die Konventionen für die Batch-Bibliothek für .NET, um die Taskausgabe beizubehalten, wenn:
 
 - Sie Dateien in Azure Storage streamen möchten, während der Task noch ausgeführt wird.
-- Sie Daten aus Pools beibehalten möchten, die entweder über die Clouddienstkonfiguration oder die Konfiguration des virtuellen Computers erstellt wurden.
+- Sie möchten Daten aus Pools beibehalten, die entweder über die Clouddienstkonfiguration oder die Konfiguration des virtuellen Computers erstellt wurden.
 - Ihre Clientanwendung oder andere Taks im Auftrag Taskausgabedateien nach ID oder Zweck gefunden und heruntergeladen werden müssen. 
 - Sie Prüfungspunkte oder einen frühen Upload erster Ergebnisse ausführen möchten.
 - Sie die Taskausgabe im Azure-Portal anzeigen möchten.
@@ -128,4 +126,3 @@ Sie können auch Ihre eigene vollständige Lösung zur Dateiverschiebung impleme
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com
 [storage_explorer]: http://storageexplorer.com/
-

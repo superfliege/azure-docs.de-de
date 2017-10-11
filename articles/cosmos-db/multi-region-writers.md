@@ -15,13 +15,11 @@ ms.workload: na
 ms.date: 05/23/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: cf1482ae7b1070023703f5dbe861d151f5d64fd8
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>Global replizierte Datenbankarchitekturen mit mehreren Mastern mit Cosmos DB
 Azure Cosmos DB unterstützt die sofort einsetzbare [globale Replikation](distribute-data-globally.md), bei der Sie Daten mit kürzer Wartezeit beim Zugriff an allen Orten der Workload auf mehrere Regionen verteilen können. Dieses Modell wird häufig für Herausgeber-/Verbraucherworkloads verwendet, bei denen sich ein „Writer“ in einer bestimmten geografischen Region und global verteilte Leser in anderen Regionen (Leseregionen) befinden. 
@@ -323,4 +321,3 @@ In diesem Artikel wurde beschrieben, wie Sie mit Azure Cosmos DB global verteilt
 * Entwickeln Sie mit mehreren Regionen mit der [DocumentDB-API für Azure Cosmos DB](tutorial-global-distribution-documentdb.md).
 * Entwickeln Sie mit mehreren Regionen mit der [MongoDB-API für Azure Cosmos DB](tutorial-global-distribution-MongoDB.md).
 * Entwickeln Sie mit mehreren Regionen mit der [Tabellen-API für Azure Cosmos DB](tutorial-global-distribution-table.md).
-

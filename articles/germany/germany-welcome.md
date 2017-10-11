@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: ba13298654a5f73fcdfcb6e09b06bcbf08159bfc
-ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="welcome-to-azure-germany"></a>Willkommen bei Azure Deutschland
 ## <a name="overview"></a>Übersicht
 Microsoft Azure Deutschland bietet eine Cloudplattform, die auf den [grundlegenden Prinzipien von Sicherheit, Datenschutz, Compliance und Transparenz](https://azure.microsoft.com/overview/clouds/germany/) beruht. Azure Deutschland ist eine physisch isolierte Instanz von Microsoft Azure. Es basiert auf Sicherheits- und [Compliancediensten](https://azure.microsoft.com/support/trust-center/compliance/), die für alle auf dieser Architektur beruhenden Systeme und Anwendungen hinsichtlich deutscher Datenschutzbestimmungen von entscheidender Bedeutung sind. Azure Deutschland wird von einem Datentreuhänder überwacht und unterstützt verschiedene Hybridszenarien für die Erstellung und Bereitstellung von Lösungen lokal oder in der Cloud. Sie können auch die sofortige Skalierbarkeit und garantierte Verfügbarkeit eines überaus skalierbaren Clouddiensts nutzen.
@@ -52,7 +50,6 @@ Wenn Sie mehr über Azure Deutschland erfahren möchten, verwenden Sie die folge
 * [Registrieren für eine Testversion](https://azure.microsoft.com/free/germany/)
 * [Anmelden](https://portal.microsoftazure.de/) (wenn Sie bereits ein Azure Deutschland-Konto besitzen)
 * [Erwerben von und Zugreifen auf Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/) 
-
 
 
 

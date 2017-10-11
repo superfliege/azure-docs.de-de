@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
 ms.openlocfilehash: 118521a127b2e4b765efabdbdde71605440d81c7
-ms.lasthandoff: 03/16/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Bereitstellen des StorSimple Virtual Array – Bereitstellen in VMware
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -120,7 +120,8 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image15.png)
 15. Das Fenster **Neuen virtuellen Computer erstellen** wird angezeigt. Wählen Sie auf der Seite **Konfiguration** die Option **Benutzerdefiniert**. Klicken Sie auf **Weiter**.
-    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
+    
+![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
 16. Geben Sie auf der Seite **Name und Speicherort** den Namen der virtuellen Maschine an. Dieser Name sollte mit dem Ordnernamen übereinstimmen, den Sie in Schritt 8 angegeben haben (empfohlene bewährte Methode).
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image17.png)
@@ -135,8 +136,10 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
 20. Passen Sie auf der Seite **CPUs** die Optionen **Anzahl von virtuellen Sockets** und **Anzahl von Kernen pro virtuellem Socket** so an, dass die **Gesamtzahl der Kerne** 4 (oder mehr) beträgt. Klicken Sie auf **Weiter**.
 
+
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image21.png)
 21. Geben Sie auf der Seite **Arbeitsspeicher** den Wert „8 GB“ (oder mehr) an. Klicken Sie auf **Weiter**.
+
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image22.png)
 22. Geben Sie auf der Seite **Netzwerk** die Anzahl der Netzwerkschnittstellen an. Als Mindestanforderung muss eine Netzwerkschnittstelle vorhanden sein.
@@ -147,8 +150,10 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image24.png)
 24. Wählen Sie auf der Seite **Datenträger auswählen** die Option **Vorhandenen virtuellen Datenträger verwenden**. Klicken Sie auf **Weiter**.
 
+
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
 25. Klicken Sie auf der Seite **Vorhandenen Datenträger auswählen** unter **Datenträger-Dateipfad** auf **Durchsuchen**. Das Dialogfeld **Datenspeicher durchsuchen** wird geöffnet. Navigieren Sie zu dem Speicherort, an den Sie das VMDK hochgeladen haben. Sie sehen jetzt nur eine Datei im Datenspeicher, da die beiden Dateien, die Sie ursprünglich hochgeladen haben, zusammengeführt wurden. Wählen Sie die Datei aus, und klicken Sie auf **OK**. Klicken Sie auf **Weiter**.
+
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
 26. Übernehmen Sie auf der Seite **Erweiterte Optionen** die Standardeinstellung, und klicken Sie auf **Weiter**.
@@ -165,8 +170,10 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image30.png)
 30. Wählen Sie auf der Seite **Datenträger auswählen** die Option **Neuen virtuellen Datenträger erstellen**. Klicken Sie auf **Weiter**.
 
+
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
 31. Ändern Sie auf der Seite **Datenträger erstellen** die **Datenträgergröße** in 500 GB (oder mehr). 500 GB sind die Mindestanforderung, aber Sie können auch einen größeren Datenträger bereitstellen. Beachten Sie hierbei, dass Sie den Datenträger nach der Bereitstellung nicht mehr erweitern oder verkleinern können. Weitere Informationen zur Größe des bereitzustellenden Datenträgers finden Sie im Abschnitt zum Festlegen der Größe im Dokument mit [Best Practices](storsimple-ova-best-practices.md). Wählen Sie unter **Datenträgerbereitstellung** die Option **Thin-Bereitstellung**. Klicken Sie auf **Weiter**.
+
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. Übernehmen Sie auf der Seite **Erweiterte Optionen** die Standardeinstellung.
@@ -243,4 +250,3 @@ Falls bei der anfänglichen Konfiguration über die lokale Webbenutzeroberfläch
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einrichten des StorSimple Virtual Array als Dateiserver](storsimple-virtual-array-deploy3-fs-setup.md)
 * [Einrichten des StorSimple Virtual Array als iSCSI-Server](storsimple-virtual-array-deploy3-iscsi-setup.md)
-

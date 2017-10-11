@@ -1,5 +1,4 @@
 ---
-
 title: "Hinzufügen oder Ändern von Profilinformationen für einen Benutzer in Azure Active Directory | Microsoft-Dokumentation"
 description: "Erläutert, wie Sie in Azure Active Directory Informationen (z.B. ein Profilbild) zum Benutzerprofil hinzufügen."
 services: active-directory
@@ -16,13 +15,11 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: ccc6dfaf1653d5888541d78f5e9e20b183709574
-ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
-
+ms.openlocfilehash: 81d93563a3cbe47ebe12c7ac5de26c5bbc2bb8ff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-or-change-profile-information-for-a-user-in-azure-active-directory"></a>Hinzufügen oder Ändern von Profilinformationen für einen Benutzer in Azure Active Directory
 In diesem Artikel wird erläutert, wie Sie in Azure Active Directory Benutzerprofilinformationen hinzufügen können, beispielsweise ein Profilbild oder Informationen für die Authentifizierung per Telefon und E-Mail. Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation hinzufügen, finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-users-create-azure-portal.md).
@@ -47,4 +44,3 @@ In diesem Artikel wird erläutert, wie Sie in Azure Active Directory Benutzerpro
 * [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
 * [Hinzufügen oder Ändern von Profilinformationen für einen Benutzer in Azure Active Directory](active-directory-users-work-info-azure-portal.md)
 * [Löschen eines Benutzers aus einem Verzeichnis in Azure Active Directory](active-directory-users-delete-user-azure-portal.md)
-

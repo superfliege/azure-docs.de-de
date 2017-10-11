@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 2fc922cb591bcd9ef333fbe3d77ee3dd03005915
-ms.contentlocale: de-de
-ms.lasthandoff: 04/17/2017
-
+ms.openlocfilehash: 9c76b6f3495e2dd759a156fcef97b57aece8d632
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
 
 In diesem Artikel finden Sie Informationen zu den häufig auftretenden Problemen beim Konfigurieren des **einmaligen Anmeldens per Kennwort** für eine nicht im Katalog enthaltene Anwendung.
@@ -173,7 +171,7 @@ Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgen
 
 Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgende Schritte ausführen:
 
-1.  Klicken Sie in der oberen rechten Ecke des Azure-Portals auf das Symbol **Benachrichtigungen** (die Glocke).
+1.  Klicken Sie in der rechten oberen Ecke des Azure-Portals auf das Symbol **Benachrichtigungen** (Glockensymbol).
 
 2.  Wählen Sie eine Benachrichtigung mit einem **Fehlerstatus** aus (mit einem roten (!) neben dem Namen).
 
@@ -193,45 +191,45 @@ Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgend
 
 Es ist sehr wichtig, dass Sie dem Supporttechniker **alle unten aufgelisteten Details** mitteilen, wenn Sie Hilfe benötigen, damit dieser schnell helfen kann. Hierfür können Sie ganz einfach **einen Screenshot erstellen**, oder Sie klicken auf das Symbol **Fehler kopieren** rechts neben dem Textfeld **Fehler kopieren**.
 
-## <a name="notification-details-explained"></a>Erläuterungen der Benachrichtigungsdetails
+## <a name="notification-details-explained"></a>Erläuterung der Benachrichtigungsdetails
 
 Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher erläutert, und es werden Beispiele genannt.
 
 ### <a name="essential-notification-items"></a>Grundlegende Benachrichtigungselemente
 
--   **Titel**: der beschreibende Titel der Benachrichtigung
+-   **Titel:** der beschreibende Titel der Benachrichtigung
 
     -   Beispiel: **Anwendungsproxyeinstellungen**
 
--   **Beschreibung**: Beschreibung des Ergebnisses des Vorgangs
+-   **Beschreibung:** Beschreibung des Ergebnisses des Vorgangs
 
     -   Beispiel: **Die eingegebene interne URL wird bereits von einer anderen Anwendung verwendet**
 
--   **Benachrichtigungs-ID**: die eindeutige ID der Benachrichtigung
+-   **Benachrichtigungs-ID:** die eindeutige ID der Benachrichtigung
 
     -   Beispiel: **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **Clientanforderungs-ID**: die spezifische Anforderungs-ID, die vom Browser erstellt wurde
+-   **Clientanforderungs-ID:** die spezifische Anforderungs-ID, die vom Browser erstellt wurde
 
     -   Beispiel: **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **Zeitstempel (UTC)**: der Zeitstempel beim Auftreten der Benachrichtigung in UTC
+-   **Zeitstempel (UTC):** der Zeitstempel beim Auftreten der Benachrichtigung in UTC
 
     -   Beispiel: **2017-03-23T19:50:43.7583681Z**
 
--   **Interne Transaktions-ID**: die interne ID, über die wir den Fehler in unseren Systemen suchen können
+-   **Interne Transaktions-ID:** die interne ID, über die wir den Fehler in unseren Systemen suchen können
 
     -   Beispiel: **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **UPN**: der Benutzer, der den Vorgang durchgeführt hat
+-   **UPN:** der Benutzer, der den Vorgang durchgeführt hat
 
     -   Beispiel: **tperkins@f128.info**
 
--   **Mandanten-ID**: die eindeutige ID des Mandanten, bei dem der Benutzer Mitglied ist, der den Vorgang durchgeführt hat
+-   **Mandanten-ID:** die eindeutige ID des Mandanten, bei dem der Benutzer Mitglied ist, der den Vorgang durchgeführt hat
 
     -   Beispiel: **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **Benutzerobjekt-ID**: – die eindeutige ID des Benutzers, der den Vorgang durchgeführt hat
+-   **Benutzerobjekt-ID:** die eindeutige ID des Benutzers, der den Vorgang durchgeführt hat
 
     -   Beispiel: **17f84be4-51f8-483a-b533-383791227a99**
 
@@ -249,7 +247,7 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
     -   Beispiel: **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **Details**: detaillierte Beschreibung des Ergebnisses des Vorgangs
+-   **Details:** detaillierte Beschreibung des Ergebnisses des Vorgangs
 
     -   Beispiel: **Interne URL 'http://bing.com/' ist ungültig, da sie bereits verwendet wird**
 
@@ -259,5 +257,4 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
-
 

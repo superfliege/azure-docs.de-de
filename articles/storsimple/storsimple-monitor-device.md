@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/16/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d45bb37c8417785db0ea38be4375a998b6d9f109
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-monitor-your-storsimple-device"></a>Verwenden des StorSimple Manager-Diensts zum Überwachen Ihres StorSimple-Geräts
 ## <a name="overview"></a>Übersicht
@@ -115,10 +115,4 @@ Die folgenden Diagramme stellen den Netzwerkdurchsatz für „Data 0“ und „D
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zur [Verwendung des StorSimple Manager-Dienstdashboards für Geräte](storsimple-device-dashboard.md).
 * Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple Manager-Diensts verwalten](storsimple-manager-service-administration.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

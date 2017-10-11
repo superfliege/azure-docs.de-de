@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2017
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 5ff7c4ee612fd1261d85870be4d6fcbd66b64735
-ms.contentlocale: de-de
-ms.lasthandoff: 03/27/2017
-
+ms.openlocfilehash: a767c93fb271f3aa33d9556c69c511bcac7cb0d5
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio
 Mithilfe von Azure Active Directory (Azure AD) können Sie das einmalige Anmelden (Single Sign-On, SSO) für ASP.NET MVC-Webanwendungen oder Active Directory-Authentifizierung in Web-API-Diensten unterstützen. Mit der Azure Active Directory-Authentifizierung können Ihre Benutzer ihre Konten in Azure Active Directory verwenden, um eine Verbindung mit Ihren Webanwendungen herzustellen. Die Azure Active Directory-Authentifizierung mit Web-API bietet neben weiteren Vorteilen mehr Datensicherheit, wenn eine API über eine Webanwendung verfügbar gemacht wird. Mit Azure AD benötigen Sie kein separates Authentifizierungssystem mit eigenem Konto und Benutzerverwaltung.
@@ -40,11 +39,11 @@ Mithilfe von Azure Active Directory (Azure AD) können Sie das einmalige Anmelde
    
     ![Seite „Einführung“](./media/vs-azure-tools-connected-services-add-active-directory/configure-azure-ad-wizard-1.png)
 
-1. Wählen Sie auf der Seite **Einmaliges Anmelden** des Assistenten **Azure AD-Authentifizierung konfigurieren** eine Domäne aus der Dropdownliste **Domäne** aus. Die Liste der Domänen enthält alle Domänen, auf die mit den im Dialogfeld "Kontoeinstellungen" aufgeführten Konten zugegriffen werden kann. Alternativ können Sie einen Domänennamen eingeben, wenn Sie den gewünschten nicht finden, beispielsweise `mydomain.onmicrosoft.com`. Sie können die Option zum Erstellen einer neuen Azure Active Directory-App auswählen oder die Einstellungen einer vorhandenen Azure Active Directory-App verwenden. Wählen Sie abschließend die Option **Weiter** aus.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden** des Assistenten **Azure AD-Authentifizierung konfigurieren**  eine Domäne aus der Dropdownliste **Domäne** aus. Die Liste der Domänen enthält alle Domänen, auf die mit den im Dialogfeld "Kontoeinstellungen" aufgeführten Konten zugegriffen werden kann. Alternativ können Sie einen Domänennamen eingeben, wenn Sie den gewünschten nicht finden, beispielsweise `mydomain.onmicrosoft.com`. Sie können die Option zum Erstellen einer neuen Azure Active Directory-App auswählen oder die Einstellungen einer vorhandenen Azure Active Directory-App verwenden. Wählen Sie abschließend die Option **Weiter** aus.
    
     ![Seite „Einmaliges Anmelden“](./media/vs-azure-tools-connected-services-add-active-directory/configure-azure-ad-wizard-2.png)
 
-1. Stellen Sie auf der Seite **Verzeichniszugriff** des Assistenten **Azure AD-Authentifizierung konfigurieren** sicher, dass die Option **Verzeichnisdaten lesen** aktiviert ist. 
+1. Stellen Sie auf der Seite **Verzeichniszugriff** des Assistenten **Azure AD-Authentifizierung konfigurieren**  sicher, dass die Option **Verzeichnisdaten lesen** aktiviert ist. 
    
     ![Seite „Verzeichniszugriff“](./media/vs-azure-tools-connected-services-add-active-directory/configure-azure-ad-wizard-3.png)
 
@@ -59,5 +58,4 @@ Beim Ausführen des Assistenten fügt Visual Studio Ihrem Projekt Azure Active D
 * [MSDN-Forum für Azure Active Directory](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)
 * [Azure Active Directory-Dokumentation](https://azure.microsoft.com/documentation/services/active-directory/)
 * [Blogbeitrag: Intro to Azure Active Directory](http://blogs.msdn.com/b/brunoterkaly/archive/2014/03/03/introduction-to-windows-azure-active-directory.aspx)
-
 

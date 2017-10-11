@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 85911fcc66dcedff0d43bd986bce4500a1a2f00b
-
-
+ms.openlocfilehash: db03b3cd668bf8e35913872ac4225de6d4d3edd1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Unterstützte Hardware für 10-GbE-Netzwerkschnittstellen auf Ihrem StorSimple-Gerät
 ## <a name="overview"></a>Übersicht
@@ -57,7 +57,7 @@ Dieser Abschnitt enthält eine Liste der Geräte, die von StorSimple-Kunden erfo
 | Switch-Betriebssystemversion |JunOS 12.3R9.4 |
 | Blade-Modell |Integrierte Ports (PIC 0) |
 | Transceiver-Fabrikat |Juniper |
-| Transceiver-Modell |Teilenummer 740-021308  <br></br>  Teilenummer 740-030658 |
+| Transceiver-Modell |Teilenummer 740-021308  <br></br> Teilenummer 740-030658 |
 | Transceiver-Firmwareversion |Rev 01 Version 0.0 (gemeldet) |
 | Kabelmodell |Duplex-Jumper LC/LC 50/125µ, OM3, LSZH |
 | StorSimple-Modell |8600 |
@@ -122,10 +122,4 @@ Die folgende Tabelle enthält die Switches, die von Mellanox unterstützt werden
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu [StorSimple-Hardwarekomponenten und ihrem Status](storsimple-monitor-hardware-status.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

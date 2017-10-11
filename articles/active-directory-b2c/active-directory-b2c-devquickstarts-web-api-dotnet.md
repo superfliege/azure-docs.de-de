@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
 ms.openlocfilehash: 48452eb68f826d1c7aa61d5e5531f941ac1422b0
-ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C: Aufrufen einer .NET-Web-API über eine .NET-Webanwendung
 
@@ -187,5 +186,4 @@ Folgen Sie demselben Muster, wenn Sie `POST`- und `DELETE`-Anforderungen an die 
 ## <a name="run-the-sample-app"></a>Ausführen der Beispiel-App
 
 Erstellen Sie abschließend beide Apps und führen Sie diese aus. Registrieren Sie sich, und melden Sie sich an. Erstellen Sie anschließend die Aufgaben für den angemeldeten Benutzer. Melden Sie sich ab, und melden Sie sich als ein anderer Benutzer an. Erstellen Sie Aufgaben für diesen Benutzer. Beachten Sie, wie die Aufgaben pro Benutzer in der API gespeichert werden, da die API die Benutzeridentität aus dem empfangenen Token extrahiert. Machen Sie sich auch mit den Bereichen vertraut. Ändern Sie die Berechtigung in eine Schreibberechtigung und versuchen Sie dann, eine Aufgabe hinzuzufügen. Achten Sie lediglich darauf, sich jedes Mal abzumelden, wenn Sie den Bereich ändern.
-
 

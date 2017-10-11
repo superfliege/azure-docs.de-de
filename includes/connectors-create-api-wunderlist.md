@@ -1,18 +1,18 @@
 ### <a name="prerequisites"></a>Voraussetzungen
 * Ein Wunderlist-Konto  
 
-Bevor Sie Ihr Wunderlist-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem Wunderlist-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen. 
+Bevor Sie Ihr Konto Wunderlist in einer Logik-app verwenden können, müssen Sie die Logik-app zur Verbindung mit Ihrem Konto Wunderlist autorisieren. Glücklicherweise können Sie problemlos aus in der Logik-app im Azure-Portal vorgehen. 
 
-Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem Wunderlist-Konto:
+Es folgen die Schritte zum Autorisieren der Logik-app zur Verbindung mit Ihrem Konto Wunderlist:
 
-1. Um eine Verbindung mit Wunderlist herzustellen, wählen Sie im Logik-App-Designer in der Dropdownliste **Von Microsoft verwaltete APIs anzeigen** aus, und geben Sie dann *Wunderlist* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:   
+1. Wählen Sie zum Erstellen einer Verbindungs mit Wunderlist, in der Logik-app-Designer **Anzeigen von Microsoft verwalteten APIs** in der Dropdownliste aus und geben Sie dann *Wunderlist* in das Suchfeld. Wählen Sie den Trigger oder die Aktion an, die Sie verwenden möchten, müssen:  
    ![](./media/connectors-create-api-wunderlist/wunderlist-0.png)
-2. Wenn Sie noch keine Verbindungen mit Wunderlist hergestellt haben, werden Sie aufgefordert, Ihre Wunderlist-Anmeldeinformationen anzugeben. Mit diesen Anmeldeinformationen wird Ihre Logik-App autorisiert, eine Verbindung mit Ihrem Wunderlist-Konto herzustellen und auf dessen Daten zuzugreifen:   
+2. Wenn Sie alle Verbindungen mit Wunderlist, bevor Sie erstellt haben, werden Sie aufgefordert Abrufen Ihrer Wunderlist Anmeldeinformationen angeben. Diese Anmeldeinformationen werden verwendet, um Ihre Logik-app für die Verbindung autorisieren und einfacher Zugriff auf Ihr Wunderlist-Konto:   
    ![](./media/connectors-create-api-wunderlist/wunderlist-1.png)  
-3. Geben Sie Ihre Anmeldeinformationen ein, und klicken Sie dann auf die Schaltfläche für die Anmeldung.  
+3. Ihre Anmeldeinformationen ein und wählen Sie dann die Schaltfläche anmelden  
    ![](./media/connectors-create-api-wunderlist/wunderlist-2.png)  
-4. Sie werden dann darüber informiert, welche Berechtigungen die Logik-App für Ihr Wunderlist-Konto erhält. Wenn Sie zustimmen, klicken Sie auf die entsprechende Schaltfläche. 
+4. Sie fügen dann die Logik-app verfügen, mit Ihrem Konto Wunderlist habe wird mitgeteilt. Wenn Sie zustimmen, klicken Sie auf die Schaltfläche an, dass Ihr Vertrag. 
    ![](./media/connectors-create-api-wunderlist/wunderlist-4.png)  
-5. Klicken Sie abschließend auf die Schaltfläche **Autorisieren**.  
+5. Wählen Sie abschließend die **autorisieren** Schaltfläche  
    ![](./media/connectors-create-api-wunderlist/wunderlist-5.png)  
 

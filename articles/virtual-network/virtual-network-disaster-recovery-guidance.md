@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: narayan;aglick
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: dbb749b056c36f16e921933fb8345211e3eaa697
-
-
+ms.openlocfilehash: 4e125406d2e798138c45e3fbbf61a610afab69fc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="virtual-network--business-continuity"></a>Virtuelles Netzwerk: Geschäftskontinuität
 ## <a name="overview"></a>Übersicht
@@ -46,10 +46,4 @@ Die Anweisungen zum Erstellen eines VNet finden Sie [hier](virtual-networks-crea
 A: Ja, Sie können im Voraus zwei VNets erstellen, die denselben privaten IP-Adressraum und dieselben Ressourcen in zwei verschiedenen Regionen nutzen. Wenn ein Kunde im VNet Dienste mit Internetzugriff hostet, kann er Traffic Manager einrichten, um den Datenverkehr geografisch an die aktive Region zu leiten. Ein Kunde kann jedoch nicht zwei VNets mit demselben Adressraum mit dem lokalen Netzwerk verbinden, da dies Routingprobleme verursachen würde. Im Falle eines Notfalls und Verlusts eines VNet in einer Region kann ein Kunde das andere VNet in der verfügbaren Region mit dem übereinstimmenden Adressraum mit dem lokalen Netzwerk verbinden.
 
 Die Anweisungen zum Erstellen eines VNet finden Sie [hier](virtual-networks-create-vnet-arm-pportal.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

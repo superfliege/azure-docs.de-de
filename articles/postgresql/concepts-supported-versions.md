@@ -9,12 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/06/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 12744ae66a22b16339f9a1549a4d2d25b545c29b
-ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: cdc8f570c66630e210efa3163f8ee419337df3a1
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="supported-postgresql-database-versions"></a>Unterstützte PostgreSQL-Datenbankversionen
 Azure-Datenbank für PostgreSQL unterstützt derzeit die folgenden Versionen:
@@ -30,4 +29,3 @@ Das Patchen von Updates zu Nebenversionen wird von Azure-Datenbank für PostgreS
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur Unterstützung der verschiedenen PostgreSQL-Erweiterungen finden Sie unter [PostgreSQL-Erweiterungen](concepts-extensions.md).
-

@@ -1,11 +1,11 @@
-Mit dem Cmdlet „Get-AzureVNetConnection“ können Sie überprüfen, ob die Verbindung erfolgreich hergestellt wurde.
+Sie können überprüfen, ob die Verbindung mit dem Cmdlet 'Get-AzureVNetConnection' war erfolgreich.
 
-1. Verwenden Sie das folgende Cmdlet-Beispiel, und konfigurieren Sie die Werte so, dass sie Ihren eigenen Werten entsprechen. Der Name des virtuellen Netzwerks muss in Anführungszeichen gesetzt werden, wenn er Leerstellen enthält.
+1. Verwenden Sie das folgende Cmdlet-Beispiel, konfigurieren die Werte, die Ihre eigenen übereinstimmen. Der Name des virtuellen Netzwerks muss in Anführungszeichen eingeschlossen werden, wenn dieser Leerzeichen enthält.
 
   ```powershell
   Get-AzureVNetConnection "Group ClassicRG ClassicVNet"
   ```
-2. Sehen Sie sich nach Abschluss des Cmdlets die Werte an. Im Beispiel weiter unten ist der Verbindungsstatus als „Connected“ (Verbunden) angegeben, und Sie sehen die Eingangs- und Ausgangsbytes.
+2. Nachdem das Cmdlet beendet wurde, zeigt die Werte auf. Im folgenden Beispiel wird der Status der Verbindung wird als "Verbunden", und sehen Sie Ingress- und Egress-Bytes.
 
         ConnectivityState         : Connected
         EgressBytesTransferred    : 181664

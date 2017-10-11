@@ -14,12 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef43d1df2a64d85f256b28cd7db5a4f4356a7ec0
-ms.openlocfilehash: 055f55966de1e5c1bb41a6e0bf1c0da1758a3ed0
-ms.contentlocale: de-de
-ms.lasthandoff: 12/13/2016
-
+ms.openlocfilehash: b89e9af55342d5d7473d848956996f846250b4b5
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer Android-App
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -76,10 +75,9 @@ Nachdem Sie dieses Tutorial abgeschlossen haben, können Sie mit den folgenden T
 * [Hinzufügen der Authentifizierung zu Ihrer Android-App.](app-service-mobile-android-get-started-users.md)
   Erfahren Sie, wie Sie dem Aufgabenlisten-Schnellstartprojekt unter Android mithilfe eines unterstützten Identitätsanbieters eine Authentifizierung hinzufügen.
 * [Aktivieren der Offlinesynchronisierung für Ihre Android-App.](app-service-mobile-android-get-started-offline-data.md)
-  Informieren Sie sich, wie Sie die Offlineunterstützung mit einem Mobile Apps-Back-End zu Ihrer App hinzufügen. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (also das Anzeigen, Hinzufügen oder Ändern von Daten) auch dann, wenn keine Netzwerkverbindung besteht.
+  Hier erfahren Sie, wie Sie die Offlineunterstützung mit einem Mobile Apps-Back-End zu Ihrer App hinzufügen. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (also das Anzeigen, Hinzufügen oder Ändern von Daten) auch dann, wenn keine Netzwerkverbindung besteht.
 
 <!-- URLs -->
 [Android-Schnellstartprojekt]: app-service-mobile-android-get-started.md
 
 [Set Up Google Play Services SDK]:https://developers.google.com/android/guides/setup
-

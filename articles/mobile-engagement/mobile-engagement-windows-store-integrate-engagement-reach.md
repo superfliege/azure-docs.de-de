@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8fc1faac88cab0e3d3755fdf16fe3d7188169961
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 9311e998e67d8d0d56da68fc9460df32ce7ce5a9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-universal-apps-reach-sdk-integration"></a>Windows Universal-Apps Reach SDK-Integration
 Bevor Sie dieser Anleitung folgen, müssen Sie das unter [Integration des Windows Universal Engagement-SDK](mobile-engagement-windows-store-integrate-engagement.md) beschriebene Integrationsverfahren befolgen.
@@ -280,7 +279,7 @@ Sie können den Rückruf in Ihrer „Public App(){}“-Methode der `App.xaml.cs`
 > 
 > 
 
-## <a name="a-idpush-channel-sharinga-push-channel-sharing"></a><a id="push-channel-sharing"></a> Freigeben von Pushkanälen
+## <a id="push-channel-sharing"></a> Freigeben von Pushkanälen
 Wenn Sie Pushbenachrichtigungen in Ihrer Anwendung für einen anderen Zweck verwenden, müssen Sie die Funktion des Engagement-SDK zur Freigabe des Pushkanals verwenden. Dadurch werden verpasste Pushs vermieden.
 
 * Sie können Ihre eigenen Pushkanal für die Engagement Reach-Initialisierung bereitstellen. Das SDK verwendet diesen Kanal, anstatt einen neuen anzufordern.
@@ -338,5 +337,4 @@ Um dieses Protokoll nun zu verwenden, bearbeiten Sie `App.xaml.cs` mit der `OnAc
                 }
               }
               #endregion
-
 

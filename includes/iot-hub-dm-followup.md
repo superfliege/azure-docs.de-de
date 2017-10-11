@@ -1,22 +1,22 @@
-## <a name="customize-and-extend-the-device-management-actions"></a>Anpassen und Erweitern der Geräteverwaltungsaktionen
+## <a name="customize-and-extend-the-device-management-actions"></a>Passen Sie an und erweitern Sie das Gerät Verwaltungsaktionen
 
-Ihre IoT-Lösungen können die festgelegten Geräteverwaltungsmuster erweitern oder benutzerdefinierte Muster ermöglichen. Dazu werden die Grundtypen für die Gerätezwillings- oder die C2D-Methode verwendet. Andere Beispiele für Geräteverwaltungsaktionen sind das Zurücksetzen auf die Werkseinstellungen, Firmware- und Softwareaktualisierungen, Energieverwaltung, Netzwerk- und Konnektivitätsverwaltung und Datenverschlüsselung.
+IoT-Lösungen können erweitern Sie den definierten Satz von Geräte-Management-Mustern oder benutzerdefinierte Muster mit dem Gerät und und Cloud-zu-Gerät-Methode primitive aktivieren. Weitere Beispiele für das Gerät Verwaltungsaktionen enthalten, auf die werkseinstellungen zurückgesetzt, Firmwareupdate Softwareupdate, energieverwaltung, Netzwerk- und Verbindungsproblemen Management und die Verschlüsselung von Daten.
 
-## <a name="device-maintenance-windows"></a>Gerätewartungsfenster
+## <a name="device-maintenance-windows"></a>Wartungsfenster für Gerät
 
-In der Regel konfigurieren Sie die Ausführung von Aktionen für Geräte so, dass Unterbrechungen und Ausfallzeiten auf ein Minimum beschränkt sind. Bei Gerätewartungsfenstern handelt es sich um ein häufig verwendetes Muster zum Festlegen des Zeitpunkts, zu dem ein Gerät seine Konfiguration aktualisieren soll. Ihre Back-End-Lösungen können die gewünschten Eigenschaften des Gerätezwillings verwenden, um auf Ihrem Gerät eine Richtlinie zur Aktivierung eines Wartungsfensters festzulegen und zu aktivieren. Wenn ein Gerät die Wartungsfensterrichtlinie erhält, kann es mithilfe der gemeldeten Eigenschaft des Gerätezwillings den Richtlinienstatus melden. Die Back-End-App kann dann mithilfe von Gerätezwillingsabfragen die Konformität von Geräten und den einzelnen Richtlinien sicherstellen.
+In der Regel konfigurieren Sie die Geräte aus, um Aktionen zu einem Zeitpunkt ausführen, die Unterbrechung und Ausfallzeiten minimiert. Gerät Wartungsfenster sind ein häufig verwendete Muster für die Zeiträume, wenn ein Gerät ihre Konfiguration aktualisiert werden soll. Back-End-Lösungen können die Geräte und die gewünschten Eigenschaften definieren, und aktivieren Sie eine Richtlinie auf Ihrem Gerät, das ein Wartungsfenster ermöglicht. Wenn ein Gerät die wartungsfensterrichtlinie empfängt, können es die gemeldete Eigenschaft von dem Gerät und um den Status der Richtlinie zu melden. Die Back-End-app kann dann Gerät und Abfragen verwendet, der Kompatibilität von Geräten und jede Richtlinie auf kryptografische Weise nachweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine direkte Methode zum Auslösen eines Remoteneustarts auf einem Gerät verwendet. Sie haben die gemeldeten Eigenschaften zum Melden des letzten Neustartzeitpunkts des Geräts verwendet. Darüber hinaus haben Sie den Gerätezwilling abgefragt, um den letzten Neustartzeitpunkt des Geräts aus der Cloud zu ermitteln.
+In diesem Lernprogramm verwendet haben Sie eine direkte Methode zum Auslösen von eines remote-Neustart auf einem Gerät. Sie die gemeldeten Eigenschaften verwendet, um den Zeitpunkt der letzten Neustart vom Gerät zu melden und abgefragt, das Gerät und zum Zeitpunkt der letzten Neustart des Geräts aus der Cloud zu ermitteln.
 
-Informationen zu den weiteren ersten Schritten mit IoT Hub und Geräteverwaltungsmustern, z.B. drahtloses Firmware-Remoteupdate, finden Sie unter:
+Um den Vorgang fortzusetzen, erste Schritte mit IoT Hub und Device Management-Muster wie Remote über die Firmware-Aktualisierung per Funk, finden Sie unter:
 
-[Tutorial: Durchführen eines Firmwareupdates][lnk-fwupdate]
+[Exemplarische Vorgehensweise: So führen Sie ein Firmwareupdate][lnk-fwupdate]
 
-Im Tutorial [Planen und Senden von Aufträgen][lnk-tutorial-jobs] erfahren Sie, wie Sie Ihre IoT-Lösung erweitern und Methodenaufrufe für mehrere Geräte planen.
+Der IoT Erweitern der Lösung und Zeitplan auf mehreren Geräten Methodenaufrufe finden Sie unter der [Zeitplan und broadcast Aufträge] [ lnk-tutorial-jobs] Lernprogramm.
 
-Informationen zu den weiteren ersten Schritten mit IoT Hub finden Sie unter [Erste Schritte mit IoT Edge][lnk-iot-edge].
+Um den Vorgang fortzusetzen, erste Schritte mit IoT Hub, finden Sie unter [erste Schritte mit IoT-Edge][lnk-iot-edge].
 
 [lnk-fwupdate]: ../articles/iot-hub/iot-hub-node-node-firmware-update.md
 [lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md

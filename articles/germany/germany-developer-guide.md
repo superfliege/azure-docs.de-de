@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: 5faafd1be168d7acc6cfaee8448f9a780ba23149
-ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-germany-developer-guide"></a>Microsoft Azure Deutschland – Entwickler- und Benutzerhandbuch
 Bei der Azure Deutschland-Umgebung handelt es sich um eine Instanz von Microsoft Azure, die vom Rest des Microsoft-Netzwerks getrennt ist. Dieses Handbuch erläutert die Unterschiede, die Anwendungsentwickler und -administratoren kennen müssen, um mit dieser separaten Region von Azure interagieren und arbeiten zu können.
@@ -75,5 +73,4 @@ Weitere Informationen zu Azure Deutschland finden Sie in den folgenden Ressource
 * [Welcome to Azure Germany](./germany-welcome.md) (Willkommen bei Azure Deutschland)
 * [Azure Deutschland-Blog](http://blogs.msdn.microsoft.com/azuregermany/)
 * [Microsoft Trust Center (Azure-Konformität)](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
-
 

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 611f4222b5ab1530658f612de39dd2712f98c250
-ms.openlocfilehash: cbc622a959c402fe25ce9ab026c1ae05f194d884
-ms.contentlocale: de-de
-ms.lasthandoff: 02/03/2017
-
+ms.openlocfilehash: ceaeced414c9c302fba335b4578bcdcbfaef0410
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -29,11 +28,11 @@ Bei der Anzeige der Metrikergebnisse im Portal werden diese erneut normalisiert,
 Die Stichprobenerstellung reduziert Datenverkehr und Datenkosten und unterstützt Sie dabei, eine Drosselung zu vermeiden.
 
 ## <a name="in-brief"></a>Kurz gesagt:
-* Bei der Stichprobenerstellung wird ein Datensatz von *n* Datensätzen beibehalten, und der Rest wird verworfen. Beispielsweise wird eines von fünf Ereignissen beibehalten – das ergibt einen Stichproben-Prozentsatz von 20%. 
+* Sampling behält 1 in  *n*  zeichnet und verwirft den Rest. Beispielsweise wird eines von fünf Ereignissen beibehalten – das ergibt einen Stichproben-Prozentsatz von 20%. 
 * Die Stichprobenerstellung wird automatisch durchgeführt, wenn Ihre Anwendung sehr viele Telemetriedaten in ASP.NET-Webserver-Apps sendet.
 * Sie können die Stichprobenerstellung auch manuell festlegen. Dazu verwenden Sie entweder die Preisübersichtsseite im Portal oder Sie nutzen die CONFIG-Datei im ASP.NET-SDK, um den Netzwerkdatenverkehr zu reduzieren.
 * Wenn Sie benutzerdefinierte Ereignisse protokollieren und sicherstellen möchten, dass ein Satz von Ereignissen gemeinsam beibehalten oder verworfen wird, müssen Sie sicherstellen, dass alle Einzelereignisse den gleichen Wert für „OperationId“ haben.
-* Der Stichprobenteiler *n* wird in jedem Datensatz in der Eigenschaft `itemCount` gemeldet, die in der Suche unter dem Anzeigenamen „Anforderungsanzahl“ oder „Ereignisanzahl“ angezeigt wird. Wenn keine Stichprobenerstellung aktiv ist, `itemCount==1`.
+* Der Divisor Sampling  *n*  wurde in der jeder Datensatz in der Eigenschaft `itemCount`, die in der Suche unter dem Anzeigenamen "Anforderungsanzahl" oder "Ereignisanzahl" angezeigt wird. Wenn keine Stichprobenerstellung aktiv ist, `itemCount==1`.
 * Wenn Sie Analytics-Abfragen schreiben, sollten Sie die [Stichprobenerstellung berücksichtigen](app-insights-analytics-tour.md#counting-sampled-data). Insbesondere sollten Sie nicht einfach nur Datensätze zählen, sondern stattdessen `summarize sum(itemCount)`verwenden.
 
 ## <a name="types-of-sampling"></a>Arten der Stichprobenerstellung
@@ -352,5 +351,4 @@ Das clientseitige (JavaScript) SDK führt die Stichprobenerstellung mit festem P
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Filtern](app-insights-api-filtering-sampling.md) erhalten Sie eine strengere Kontrolle über die Sendungen Ihres SDK.
-
 

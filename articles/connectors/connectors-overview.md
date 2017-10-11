@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: 44a756ba437b2ce9f625017998d9ae7d09acae1f
 ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="using-connectors-in-a-logic-app"></a>Verwenden von Connectors in einer Logik-App
 Connectors ermöglichen den schnellen dienst-, protokoll- und plattformübergreifenden Zugriff auf Ereignisse, Daten und Aktionen.  Eine umfassende Liste mit von Logic Apps unterstützten Connectors finden Sie [hier](apis-list.md).  Connectors können als Trigger oder Aktion in einer Logik-App verwendet werden und benötigen unter Umständen eine konfigurierte *Verbindung* (beispielsweise bei der Autorisierung eines Twitter-Kontos für den Zugriff oder die Beitragsveröffentlichung in Ihrem Namen).
@@ -63,9 +63,3 @@ Verbindungen können in Azure angezeigt und verwaltet werden, indem Sie auf **Du
 <!--Image References -->
 [1]: ./media/connectors-overview/addAction.png
 [2]: ./media/connectors-overview/configureAction.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-

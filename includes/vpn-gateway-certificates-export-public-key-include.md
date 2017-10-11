@@ -1,7 +1,7 @@
-Für Point-to-Site-Verbindungen muss die CER-Datei mit dem öffentlichen Schlüssel des Zertifikats (nicht der private Schlüssel) in Azure hochgeladen werden. Führen Sie die folgenden Schritte aus, um die CER-Datei für Ihr selbstsigniertes Stammzertifikat zu exportieren:
+Punkt-zu-Standort-Verbindungen erfordern das Zertifikat öffentlichen Schlüssel CER-Datei (nicht den privaten Schlüssel) in Azure hochgeladen werden soll. Die folgenden Schritte unterstützen Sie die CER-Datei für Ihr selbstsigniertes Stammzertifizierungsstellen-Zertifikat zu exportieren:
 
-1. Öffnen Sie **Benutzerzertifikate verwalten**, um eine CER-Datei für das Zertifikat zu erhalten. Suchen Sie das selbstsignierte Stammzertifikat (in der Regel in „Zertifikate – Aktueller Benutzer\Eigene Zertifikate\Zertifikate“), und klicken Sie mit der rechten Maustaste darauf. Klicken Sie auf **Alle Aufgaben** und anschließend auf **Exportieren**. Dadurch wird der **Zertifikatexport-Assistent**geöffnet.
-2. Klicken Sie im Assistenten auf **Weiter**. Wählen Sie **Nein, privaten Schlüssel nicht exportieren** aus, und klicken Sie dann auf **Weiter**.
-3. Wählen Sie auf der Seite **Dateiformat für den Export** die Option **Base-64-codiert X.509 (.CER)** aus, und klicken Sie dann auf **Weiter**. 
-4. Wählen Sie unter **Zu exportierende Datei** die Option **Durchsuchen** aus, um zu dem Speicherort zu wechseln, an den das Zertifikat exportiert werden soll. Geben Sie unter **Dateiname**einen Namen für die Zertifikatdatei ein. Klicken Sie auf **Weiter**.
-5. Klicken Sie auf **Fertig stellen** , um das Zertifikat zu exportieren. Die Meldung **Der Export war erfolgreich** wird angezeigt. Klicken Sie auf **OK**, um den Assistenten zu schließen.
+1. Um eine CER-Datei aus dem Zertifikat zu erhalten, öffnen Sie **verwalten Benutzerzertifikate**. Suchen Sie das selbstsignierte Stammzertifikat in der Regel in "Zertifikate - Aktueller benutzer\privat\zertifikate", und mit der rechten Maustaste. Klicken Sie auf **alle Aufgaben**, und klicken Sie dann auf **exportieren**. Daraufhin wird die **Zertifikatexport-Assistenten**.
+2. Klicken Sie im Assistenten auf **Weiter**. Wählen Sie **Nein, privaten Schlüssel nicht exportieren**, und klicken Sie dann auf **Weiter**.
+3. Auf der **Exportdateiformat** Seite **Base64-codiertes x. 509 (. CER).** , und klicken Sie dann auf **Weiter**. 
+4. Auf der **zu exportierende Datei**, **Durchsuchen** auf den Speicherort, zu dem Sie das Zertifikat exportieren möchten. Für **Dateiname**, benennen Sie die Zertifikatdatei. Klicken Sie anschließend auf **Weiter**.
+5. Klicken Sie auf **Fertig stellen** beim Exportieren des Zertifikats. Sie finden Sie unter **der Export wurde erfolgreich**. Klicken Sie auf **OK** um den Assistenten zu schließen.

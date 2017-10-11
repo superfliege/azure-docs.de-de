@@ -1,6 +1,6 @@
 ---
 title: "Aktivieren der Überwachung und Bedrohungserkennung für SQL-Datenbanken in Azure Security Center | Microsoft-Dokumentation"
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung **Überwachung und Bedrohungserkennung für SQL-Datenbanken aktivieren** implementieren."
+description: "Dieses Dokument veranschaulicht das Implementieren der Empfehlung Azure Security Center ** Aktivieren der Überwachung und des bedrohungsstatus-Erkennung für SQL-Datenbanken **."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
 ms.openlocfilehash: 8f4febdaa4497fee0dc690b59cd6eaa415c5e5cf
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-databases-in-azure-security-center"></a>Aktivieren der Überwachung und Bedrohungserkennung für SQL-Datenbanken in Azure Security Center
 Azure Security Center empfiehlt Ihnen, die Überwachung und Bedrohungserkennung für alle SQL-Datenbanken zu aktivieren, sofern noch nicht erfolgt. Die Überwachung und Bedrohungserkennung kann Ihnen dabei helfen, gesetzliche Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftliche Probleme oder mutmaßliche Sicherheitsverstöße hinweisen können.
@@ -62,4 +61,3 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 <!--Image references-->
 [1]: ./media/security-center-enable-auditing-on-sql-databases/enable-auditing-on-sql-databases.png
 [2]: ./media/security-center-enable-auditing-on-sql-databases/auditing-threat-detection-blade.png
-

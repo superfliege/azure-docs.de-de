@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
 ms.openlocfilehash: f9bcaa8e55be6e8fddaf88ebc3f18f5dbb2811e4
-ms.contentlocale: de-de
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="step-6-prepare-hyper-v-hosts-for-replication-to-azure"></a>Schritt 6: Vorbereiten von Hyper-V-Hosts für die Replikation in Azure
 
 Verwenden Sie die Anweisungen in diesem Artikel, um lokale Hyper-V-Hosts für die Interaktion mit Azure Site Recovery vorzubereiten.
@@ -45,5 +43,4 @@ Während der Site Recovery-Bereitstellung fügen Sie Hyper-V-Hosts hinzu, die vi
 ## <a name="next-steps"></a>Nächste Schritte
 
 Gehen Sie zu [Schritt 7: Erstellen eines Tresors](hyper-v-site-walkthrough-create-vault.md).
-
 

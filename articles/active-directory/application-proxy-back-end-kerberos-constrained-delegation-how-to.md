@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 0651f497de446bd6b66f8eaccd7114d262925afd
-ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 3a768c30cb874d42d7b4fbd2eeaa6c0e23904e10
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="how-to-configure-an-application-proxy-application-to-use-kerberos-constrained-delegation"></a>Konfigurieren einer Anwendungsproxyanwendung zum Verwenden der eingeschränkten Kerberos-Delegierung
 
 Die Methoden, die zum Erreichen des einmaligen Anmeldens bei veröffentlichten Anwendungen zur Verfügung stehen, können in Abhängigkeit von der Anwendung variieren. Eine der vom Azure-Anwendungsproxy bereitgestellten Optionen ist die eingeschränkte Kerberos-Delegierung (KCD). Dabei wird ein Connectorhost entsprechend konfiguriert, um die eingeschränkte Kerberos-Authentifizierung für Back-End-Anwendungen im Auftrag von Benutzern durchzuführen.
@@ -171,4 +169,3 @@ Wenn Sie bei Ihrem Problem weiterhin nicht vorankommen, können Sie sich an den 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Konfigurieren der eingeschränkten Kerberos-Delegierung (KCD) in einer verwalteten Domäne](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-enable-kcd)
-

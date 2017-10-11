@@ -7,15 +7,12 @@ ms.date: 1/18/2017
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2373cf227cbed4f6657e31088b11dca5223ce5fe
 ms.openlocfilehash: cb6c5b3e86f126d4110d1cd29d8c9891e356e414
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="resource-manager-core-quota-increase-requests"></a>Anforderungen zur Erhöhung von Resource Manager-Kernkontingenten
 
 Resource Manager-Kernkontingente werden auf Regionsebene und auf der Ebene der SKU-Familie erzwungen.
@@ -45,4 +42,3 @@ Wenn Sie eine Erhöhung anfordern möchten, erstellen Sie im Azure-Portal ([http
 
 - Wenn Sie eine Zeile entfernen möchten, deaktivieren Sie die SKU über die Dropdownliste für die SKU-Familie, oder klicken Sie auf das X-Symbol.
 Nachdem Sie die gewünschten Kontingente für die einzelnen SKU-Familien eingegeben haben, klicken Sie auf der Problemschrittseite auf „Weiter“, um die Erstellung der Supportanfrage fortzusetzen.
-

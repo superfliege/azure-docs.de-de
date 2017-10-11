@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
-ms.openlocfilehash: bf2bd9bca8817f64790ac62d2981a51aa36566a3
-ms.contentlocale: de-de
-ms.lasthandoff: 01/27/2017
-
+ms.openlocfilehash: 64be4ea104bd11b8e191e2c8d4170a2de88acb47
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="protecting-content-overview"></a>Schützen von Inhalten – Übersicht
 Microsoft Azure Media Services ermöglicht die Sicherung Ihrer Medien ab dem Zeitpunkt, an dem sie Ihren Computer durch Speicherung, Verarbeitung und Übermittlung verlassen. Mit Media Services können Sie zu übermittelnde Live- und On-Demand-Inhalte dynamisch mit AES (Advanced Encryption Standard) (mit 128-Bit-Verschlüsselungsschlüsseln) oder unter Verwendung einer anderen gängigen DRM-Lösung (Microsoft PlayReady, Google Widevine und Apple FairPlay) verschlüsseln. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients. 
@@ -115,4 +114,3 @@ Die folgenden Themen enthalten Informationen zum Schützen von Inhalten im Speic
 [Ausstellen von Token mithilfe von Azure ACS](http://mingfeiy.com/acs-with-key-services)
 
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png
-

@@ -14,16 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 18c71608f7429f7c52720282ca66f44c88de2d84
-ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: c6a53d851510ed5e6eec1f3ac0f636ad034a6d4c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# Reliable Services – Benachrichtigungen
-<a id="reliable-services-notifications" class="xliff"></a>
+# <a name="reliable-services-notifications"></a>Reliable Services – Benachrichtigungen
 Mit Benachrichtigungen können Clients Änderungen an einem Objekt verfolgen, an dem sie interessiert sind. Zwei Arten von Objekten unterstützen Benachrichtigungen: *Reliable State Manager* und *Reliable Dictionary*.
 
 Häufige Gründe für die Verwendung von Benachrichtigungen:
@@ -33,8 +30,7 @@ Häufige Gründe für die Verwendung von Benachrichtigungen:
 
 Benachrichtigungen werden während der Anwendung von Vorgängen ausgelöst. Aus diesem Grund sollten Benachrichtigungen so schnell wie möglich behandelt werden und synchrone Ereignisse keine aufwändigen Vorgänge enthalten.
 
-## Reliable State Manager-Benachrichtigungen
-<a id="reliable-state-manager-notifications" class="xliff"></a>
+## <a name="reliable-state-manager-notifications"></a>Reliable State Manager-Benachrichtigungen
 Der Reliable State Manager liefert Benachrichtigungen für folgende Ereignisse:
 
 * Transaktion
@@ -109,8 +105,7 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 }
 ```
 
-## Reliable Dictionary-Benachrichtigungen
-<a id="reliable-dictionary-notifications" class="xliff"></a>
+## <a name="reliable-dictionary-notifications"></a>Reliable Dictionary-Benachrichtigungen
 Reliable Dictionary liefert Benachrichtigungen für folgende Ereignisse:
 
 * Rebuild (Neu erstellen): Wird aufgerufen, wenn **ReliableDictionary** seinen Zustand aus einem wiederhergestellten oder kopierten lokalen Status oder einer Sicherung wiederhergestellt hat.
@@ -207,8 +202,7 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 }
 ```
 
-## Empfehlungen
-<a id="recommendations" class="xliff"></a>
+## <a name="recommendations"></a>Empfehlungen
 * *so schnell wie möglich* durch.
 * Führen Sie *keine* aufwändigen Vorgänge (z.B. E/A-Vorgänge) im Rahmen von synchronen Ereignissen aus.
 * *so schnell wie möglich* der Bearbeitung des Ereignisses den Aktionstyp. Es kann sein, dass in Zukunft neue Aktionstypen hinzugefügt werden.
@@ -221,11 +215,9 @@ Hier folgen einige Punkte, die es zu beachten gilt:
 * Für Transaktionen, die mehrere Vorgänge enthalten, werden die Vorgänge in der Reihenfolge angewendet, in der sie auf dem primären Replikat vom Benutzer empfangen wurden.
 * Im Rahmen der Verarbeitung von falschen Fortschritten können einige Vorgänge rückgängig gemacht werden. Für solche Vorgänge zum Rückgängigmachen, die den Zustand des Replikats auf einen stabilen Punkt zurücksetzen, werden Benachrichtigungen ausgelöst. Ein wichtiger Unterschied bei Benachrichtigungen zu Vorgängen zum Rückgängigmachen ist, dass Ereignisse mit doppelten Schlüsseln aggregiert werden. Wird beispielsweise die Transaktion T1 rückgängig gemacht, wird eine einzelne Löschbenachrichtigung „Delete(X)“ angezeigt.
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 * [Zuverlässige Auflistungen](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
 * [Sichern und Wiederherstellen von Reliable Services (Notfallwiederherstellung)](service-fabric-reliable-services-backup-restore.md)
 * [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-
 

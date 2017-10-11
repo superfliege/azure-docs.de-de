@@ -1,32 +1,32 @@
-### <a name="gwipnoconnection"></a> So ändern Sie die IP-Adresse des lokalen Netzwerkgateways (ohne Gatewayverbindung)
+### <a name="gwipnoconnection"></a>So ändern Sie die lokalen Netzwerk-Gateway-IP-Adresse - keine gatewayverbindung
 
-Ändern Sie das Gateway eines lokalen Netzwerks, für das keine Gatewayverbindung besteht, anhand des Beispiels. Bei dieser Gelegenheit können Sie auch die Adresspräfixe ändern.
+Verwenden Sie das Beispiel, um ein lokales Netzwerkgateway ändern, das nicht über ein Gateway-Verbindungsinformationen verfügt. Wenn Sie diesen Wert ändern, können Sie auch die Adresspräfixe gleichzeitig ändern.
 
-1. Klicken Sie für die Ressource für das lokale Netzwerkgateway unter **Einstellungen** auf **Konfiguration**.
-2. Ändern Sie im Feld **IP-Adresse** die IP-Adresse.
-3. Klicken Sie auf **Speichern** , um die Einstellungen zu speichern.
+1. Für das lokale Netzwerkgateway-Ressource in der **Einstellungen** auf **Konfiguration**.
+2. In der **IP-Adresse** ändern Sie die IP-Adresse.
+3. Klicken Sie auf **speichern** zum Speichern der Einstellungen.
 
-### <a name="gwipwithconnection"></a> So ändern Sie die IP-Adresse des lokalen Netzwerkgateways (vorhandene Gatewayverbindung)
+### <a name="gwipwithconnection"></a>So ändern Sie den Adressraum des lokalen Netzwerks Gateway Gateway-IP-- gatewayverbindung vorhandenen
 
-Um ein lokales Netzwerkgateway mit einer Verbindung zu ändern, müssen Sie zuerst die Verbindung entfernen. Nachdem die Verbindung entfernt wurde, können Sie die Gateway-IP-Adresse ändern und eine neue Verbindung erstellen. Bei dieser Gelegenheit können Sie auch die Adresspräfixe ändern. Dies führt zu Ausfallzeiten bei Ihrer VPN-Verbindung. Beim Ändern der Gateway-IP-Adresse müssen Sie das VPN-Gateway nicht löschen. Sie müssen nur die Verbindung entfernen.
+Um ein lokales Netzwerkgateway geändert werden, das eine Verbindung aufweist, müssen Sie zuerst die Verbindung zu entfernen. Nachdem die Verbindung getrennt wird, können Sie ändern die Gateway IP-Adresse und erstellen Sie eine neue Verbindung erneut. Sie können auch die Adresspräfixe gleichzeitig ändern. Dies führt zu Ausfallzeiten für Ihre VPN-Verbindung. Wenn Sie die IP-Adresse des Gateways zu ändern, müssen Sie das VPN-Gateway zu löschen. Sie müssen nur die Verbindung entfernen möchten.
  
-#### <a name="1-remove-the-connection"></a>1. Entfernen Sie die Verbindung.
+#### <a name="1-remove-the-connection"></a>1. Entfernen Sie die Verbindung an.
 
-1. Klicken Sie für die Ressource für das lokale Netzwerkgateway im Abschnitt **Einstellungen** auf **Verbindungen**.
-2. Klicken Sie in der Zeile für die Verbindung auf **...** und dann auf **Löschen**.
-3. Klicken Sie auf **Save**, um Ihre Einstellungen zu speichern.
+1. Für das lokale Netzwerkgateway-Ressource in der **Einstellungen** auf **Verbindungen**.
+2. Klicken Sie auf der **...**  in der Zeile für die Verbindung, klicken Sie dann auf **löschen**.
+3. Klicken Sie auf **speichern** zum Speichern der Einstellungen.
 
-#### <a name="2-modify-the-ip-address"></a>2. Ändern Sie die IP-Adresse.
+#### <a name="2-modify-the-ip-address"></a>2. Ändern Sie die IP-Adresse ein.
 
-Bei dieser Gelegenheit können Sie auch die Adresspräfixe ändern.
+Sie können auch die Adresspräfixe gleichzeitig ändern.
 
-1. Ändern Sie im Feld **IP-Adresse** die IP-Adresse.
-2. Klicken Sie auf **Speichern** , um die Einstellungen zu speichern.
+1. In der **IP-Adresse** ändern Sie die IP-Adresse.
+2. Klicken Sie auf **speichern** zum Speichern der Einstellungen.
 
 #### <a name="3-recreate-the-connection"></a>3. Erstellen Sie die Verbindung erneut.
 
-1. Navigieren Sie zum Gateway für virtuelle Netzwerke für Ihr VNet. (Dies ist nicht das lokale Netzwerkgateway.)
-2. Klicken Sie für das lokale Netzwerkgateway im Abschnitt **Einstellungen** auf **Verbindungen**.
-3. Klicken Sie auf **+ Hinzufügen**, um das Blatt **Verbindung hinzufügen** zu öffnen.
+1. Navigieren Sie zum Gateway virtuellen Netzwerks für das VNet. (Nicht das lokale Netzwerkgateway.)
+2. Auf dem virtuellen Netzwerk-Gateway in der **Einstellungen** auf **Verbindungen**.
+3. Klicken Sie auf die **+ Add** So öffnen die **Verbindung hinzufügen** Blatt.
 4. Erstellen Sie die Verbindung erneut.
-5. Klicken Sie auf **OK**, um die Verbindung zu erstellen.
+5. Klicken Sie auf **OK** zum Erstellen der Verbindung.

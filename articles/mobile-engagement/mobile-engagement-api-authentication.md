@@ -14,13 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: bf8cd0d645d8a5992864c8a3820ac2049a3ff630
-ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: b05181d9252c0a804648e01b4058019278ae5abe
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>Authentifizieren mit Mobile Engagement-REST-APIs
 ## <a name="overview"></a>Übersicht
@@ -150,7 +148,6 @@ Da Sie jetzt über ein gültiges Token verfügen, sind Sie bereit für die API-A
 [2]: ./media/mobile-engagement-api-authentication/mobile-engagement-api-uri-params.png
 [3]: ./media/mobile-engagement-api-authentication/ps-cmdlets.png
 [4]: ./media/mobile-engagement-api-authentication/ad-app-creation.png
-
 
 
 

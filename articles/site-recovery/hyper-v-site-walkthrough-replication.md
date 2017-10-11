@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: ca5bec5cf1152e6259b9fe7a869edd2d62b88e1a
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="step-9-set-up-a-replication-policy-for-hyper-v-vm-replication-to-azure"></a>Schritt 9: Aufstellen einer Replikationsrichtlinie für die Replikation virtueller Hyper-V-Computer in Azure
 
 In diesem Artikel wird beschrieben, wie Sie bei der Replikation von virtuellen Hyper-V-Computern in Azure (ohne System Center VMM) mithilfe des [Azure Site Recovery](site-recovery-overview.md)-Diensts im Azure-Portal eine Replikationsrichtlinie erstellen.
@@ -58,4 +56,3 @@ Wenn Sie eine neue Richtlinie erstellen, wird sie der Hyper-V-Site automatisch z
 ## <a name="next-steps"></a>Nächste Schritte
 
 Gehen Sie zu [Schritt 10: Aktivieren der Replikation](hyper-v-site-walkthrough-enable-replication.md).
-

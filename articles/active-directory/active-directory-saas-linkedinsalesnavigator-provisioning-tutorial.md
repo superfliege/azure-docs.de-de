@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: asmalser-msft
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 86357949c8e6927f78ca5bb8b7e20a6b88c37ef3
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="tutorial-configuring-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LinkedIn Sales Navigator für die automatische Benutzerbereitstellung
 
 
@@ -48,9 +46,9 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie ents
 
 ### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>Wichtige Tipps zum Zuweisen von Benutzern zu LinkedIn Sales Navigator
 
-*    Es wird empfohlen, LinkedIn Sales Navigator einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
+*   Es wird empfohlen, LinkedIn Sales Navigator einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
-*    Beim Zuweisen eines Benutzers zu LinkedIn Sales Navigator müssen Sie im Dialogfeld „Zuweisung“ die Rolle **Benutzer** auswählen. Die Rolle „Standardzugriff“ funktioniert nicht für die Bereitstellung.
+*   Beim Zuweisen eines Benutzers zu LinkedIn Sales Navigator müssen Sie im Dialogfeld „Zuweisung“ die Rolle **Benutzer** auswählen. Die Rolle „Standardzugriff“ funktioniert nicht für die Bereitstellung.
 
 
 ## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>Konfigurieren der Benutzerbereitstellung in LinkedIn Sales Navigator
@@ -93,9 +91,9 @@ Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Si
 
 8) Wenn Sie LinkedIn Sales Navigator bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer LinkedIn Sales Navigator-Instanz. Wählen Sie andernfalls **Hinzufügen** aus, und suchen Sie im Anwendungskatalog nach **LinkedIn Sales Navigator**. Wählen Sie „LinkedIn Sales Navigator“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
-9)    Wählen Sie Ihre LinkedIn Sales Navigator-Instanz und dann die Registerkarte **Bereitstellung** aus.
+9)  Wählen Sie Ihre LinkedIn Sales Navigator-Instanz und dann die Registerkarte **Bereitstellung** aus.
 
-10)    Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
+10) Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
 ![LinkedIn Sales Navigator-Bereitstellung](./media/active-directory-saas-linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
@@ -126,4 +124,3 @@ Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet,
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-enterprise-apps-manage-provisioning.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-

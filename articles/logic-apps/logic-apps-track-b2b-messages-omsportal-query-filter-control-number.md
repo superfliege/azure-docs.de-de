@@ -14,21 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 2748d3d3daf7c13dca05f663a4a088598e1b3605
-ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="query-for-as2-x12-and-edifact-messages-in-the-microsoft-operations-management-suite-oms"></a>Abfragen von AS2-, X12- und EDIFACT-Nachrichten in der Microsoft Operations Management Suite (OMS)
 
 Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriterien filtern, um die AS2-, X12- oder EDIFACT-Nachrichten zu finden, die Sie in der [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) mithilfe von [Azure Log Analytics](../log-analytics/log-analytics-overview.md) nachverfolgen. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen.
 
 ## <a name="requirements"></a>Anforderungen
 
-* Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informationen zum Erstellen einer Logik-App finden Sie [hier](../logic-apps/logic-apps-create-a-logic-app.md). Informationen zum Einrichten der Protokollierung für die Logik-App stehen [hier](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics) zur Verfügung.
+* Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 * Ein Integrationskonto, für das die Überwachung und Protokollierung eingerichtet ist. Informationen zum Erstellen eines Integrationskontos finden Sie [hier](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Informationen zum Einrichten der Überwachung und Protokollierung für das Konto stehen [hier](../logic-apps/logic-apps-monitor-b2b-message.md) zur Verfügung.
 

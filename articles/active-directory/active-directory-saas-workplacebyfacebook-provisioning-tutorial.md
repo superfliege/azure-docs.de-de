@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 9b22679c304248ed7ba7a6bd9eaf82b64f7143cf
-ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-configuring-workplace-by-facebook-for-user-provisioning"></a>Tutorial: Konfigurieren von Workplace by Facebook für die Benutzerbereitstellung
 
@@ -101,6 +99,5 @@ Sie können nun ein Testkonto erstellen. Warten Sie bis zu 20 Minuten, um zu üb
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-* [Tutorial: Azure Active Directory integration with Workplace by Facebook](active-directory-saas-workplacebyfacebook-tutorial.md) (Tutorial: Azure Active Directory-Integration in Workplace by Facebook)
-
+* [Konfigurieren des einmaligen Anmeldens](active-directory-saas-workplacebyfacebook-tutorial.md)
 

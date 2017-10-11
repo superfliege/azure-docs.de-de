@@ -1,16 +1,16 @@
 ### <a name="prerequisites"></a>Voraussetzungen
-* Ein [MailChimp](https://www.MailChimp.com/)-Konto 
+* Ein [MailChimp](https://www.MailChimp.com/) Konto 
 
-Bevor Sie Ihr MailChimp-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem MailChimp-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen. 
+Bevor Sie Ihre MailChimp-Konto in einer Logik-app verwenden können, müssen Sie die Logik-app zur Verbindung mit Ihrem MailChimp-Konto autorisieren. Glücklicherweise können Sie problemlos aus in der Logik-app im Azure-Portal vorgehen. 
 
-Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem MailChimp-Konto:
+Es folgen die Schritte zum Autorisieren der Logik-app zur Verbindung mit Ihrem MailChimp-Konto:
 
-1. Um eine Verbindung mit MailChimp herzustellen, wählen Sie im Logik-App-Designer in der Dropdownliste **Von Microsoft verwaltete APIs anzeigen** aus, und geben Sie dann *MailChimp* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:   
-   ![MailChimp: Schritt ](./media/connectors-create-api-mailchimp/mailchimp-1.png)
-2. Wenn Sie noch keine Verbindungen mit MailChimp hergestellt haben, werden Sie aufgefordert, Ihre MailChimp-Anmeldeinformationen anzugeben. Mit diesen Anmeldeinformationen wird Ihre Logik-App autorisiert, eine Verbindung mit Ihrem MailChimp-Konto herzustellen und auf dessen Daten zuzugreifen:  
-   ![MailChimp: Schritt 2](./media/connectors-create-api-mailchimp/mailchimp-2.png)
-3. Geben Sie Ihren MailChimp-Benutzernamen und das zugehörige Kennwort zum Autorisieren Ihrer Logik-App an:  
-   ![MailChimp: Schritt 3](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
-4. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:   
-   ![MailChimp: Schritt 4](./media/connectors-create-api-mailchimp/mailchimp-4.png)
+1. Wählen Sie zum Erstellen einer Verbindungs mit dem MailChimp, in der Logik-app-Designer **Anzeigen von Microsoft verwalteten APIs** in der Dropdownliste aus und geben Sie dann *MailChimp* in das Suchfeld. Wählen Sie den Trigger oder die Aktion an, die Sie verwenden möchten, müssen:  
+   ![MailChimp-Schritt 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)
+2. Wenn Sie alle Verbindungen mit MailChimp, bevor Sie erstellt haben, werden Sie aufgefordert erhalten Ihre MailChimp-Anmeldeinformationen bereitstellen. Diese Anmeldeinformationen werden verwendet, um Ihre Logik-app für die Verbindung autorisieren und einfacher Zugriff auf Ihre MailChimp-Konto:  
+   ![MailChimp-Schritt 2](./media/connectors-create-api-mailchimp/mailchimp-2.png)
+3. Geben Sie Ihre MailChimp-Benutzernamen und das Kennwort zum Autorisieren der Logik-app:  
+   ![MailChimp-Schritt 3](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
+4. Beachten Sie, dass die Verbindung erstellt wurde, und Sie können nun mit den anderen Schritten in der Logik-app zu fortfahren:  
+   ![MailChimp-Schritt 4](./media/connectors-create-api-mailchimp/mailchimp-4.png)
 

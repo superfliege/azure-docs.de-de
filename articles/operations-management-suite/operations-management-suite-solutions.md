@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
 ms.openlocfilehash: 2443dd73fdf441721bd6f6f340da515d9f5a22a2
-ms.lasthandoff: 03/22/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="working-with-management-solutions-in-operations-management-suite-oms-preview"></a>Arbeiten mit Verwaltungslösungen in der Operations Management Suite (OMS) (Vorschau)
 > [!NOTE]
@@ -114,5 +113,4 @@ Vollständige Anleitungen zur Erstellung von Verwaltungslösungen finden Sie unt
 ## <a name="next-steps"></a>Nächste Schritte
 * Durchsuchen Sie die [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates), um Beispiele für verschiedene Resource Manager-Vorlagen zu finden.
 * Erstellen Sie Ihre eigenen [Verwaltungslösungen](operations-management-suite-solutions-creating.md).
-
 

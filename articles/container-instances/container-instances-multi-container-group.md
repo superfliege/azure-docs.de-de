@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 07/26/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 94744e8138d40dd777c0c004472804e3af6c0b1e
-ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
-
+ms.openlocfilehash: 140f58582645ea32f77e901eb13364ed145bbecf
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="deploy-a-container-group"></a>Bereitstellen einer Containergruppe
 
 Azure Container Instances unterstützt die Bereitstellung von mehreren Containern auf einem einzelnen Host mit einer *Containergruppe*. Dies ist nützlich, wenn eine Sidecar-Anwendung für die Protokollierung, die Überwachung oder irgendeine andere Konfiguration, bei der ein Dienst einen zweiten angefügten Prozess benötigt, erstellt wird. 
@@ -203,4 +201,3 @@ Dieses Dokument behandelt die für die Bereitstellung einer Azure-Instanz mit me
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances-Tutorial]: ./container-instances-tutorial-prepare-app.md
-

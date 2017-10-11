@@ -16,16 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: negat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 01983ac7b60f7fdb237fba27f22cb31fcb3c1b7b
-ms.openlocfilehash: cd1e67ce89a856f325b66087f003b1a9a1ac6f6a
-ms.contentlocale: de-de
-ms.lasthandoff: 02/08/2017
-
-
+ms.openlocfilehash: 2f5cb85703888c5056611d466f508547ee72e44b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
-
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Konvertieren einer Skalierungsgruppenvorlage in eine Skalierungsgruppenvorlage für verwaltete Datenträger
 
 Kunden mit einer Resource Manager-Vorlage für die Erstellung einer Skalierungsgruppe ohne verwaltete Datenträger möchten diese Vorlage unter Umständen anpassen, um verwaltete Datenträger zu verwenden. In diesem Artikel wird die entsprechende Vorgehensweise am Beispiel einer Pull-Anforderung aus den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) (communitygestütztes Repository für Resource Manager-Beispielvorlagen) beschrieben. Die vollständige Pull-Anforderung finden Sie hier: [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998). Im Anschluss finden Sie die relevanten Teile des Diffs sowie die dazugehörigen Erläuterungen:
@@ -150,5 +146,4 @@ Weitere Informationen zur Verwendung von Datenträgern mit Skalierungsgruppen fi
 Wenn Sie Beispiele für Resource Manager-Vorlagen ansehen möchten, die Skalierungsgruppen verwenden, suchen Sie im [Github-Repository für Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates)nach „vmss“.
 
 Allgemeine Informationen finden Sie auf der [Hauptseite für Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
-
 

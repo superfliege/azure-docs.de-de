@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/21/2017
 ms.author: owend
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: bd58f1845dabf6afb47ce27236d14479677a8808
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-a-model-in-azure-portal"></a>Erstellen eines Modells im Azure-Portal
 
@@ -72,6 +71,5 @@ Ihr neues Modell wird in Ihrem Browser angezeigt. Mögliche nächste Schritte:
 ## <a name="next-steps"></a>Nächste Schritte 
 [Verwalten von Datenbankrollen und Benutzern](analysis-services-database-users.md)  
 [Herstellen einer Verbindung mit Excel](analysis-services-connect-excel.md)  
-
 
 

@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Lastenausgleichsdiensten in Azure | Microsoft-Dokumentation
-description: 'In diesem Tutorial erfahren Sie, wie Sie ein Szenario mithilfe des Lastenausgleichportofolios von Azure erstellen: Traffic Manager, Application Gateway und Load Balancer.'
+title: Verwendung des Lastenausgleichs Dienste in Azure | Microsoft Docs
+description: 'Diesem Lernprogramm erfahren Sie, wie Sie ein Szenario erstellen Sie mithilfe des Azure-Lastenausgleich Portfolios: Traffic Manager Application Gateway und Lastenausgleich.'
 services: traffic-manager
 documentationcenter: 
 author: liumichelle
@@ -14,201 +14,199 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
-translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: ae9bd30b76786f94f0d836a39137da696fdb94a2
-ms.lasthandoff: 02/17/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
-# <a name="using-load-balancing-services-in-azure"></a>Verwenden von Lastenausgleichsdiensten in Azure
+# <a name="using-load-balancing-services-in-azure"></a>Verwenden des Lastenausgleichs-Diensten in Azure
 
 ## <a name="introduction"></a>Einführung
 
-Microsoft Azure bietet zahlreiche Dienste für das Verwalten der Verteilung von Netzwerkdatenverkehr und dem Lastenausgleich. Sie können diese Dienste Ihren Anforderungen entsprechend einzeln verwenden oder die Methoden kombinieren, um die optimale Lösung zu erstellen.
+Microsoft Azure bietet mehrere Dienste für die Verwaltung der Verteilung des Netzwerkdatenverkehrs und Lastenausgleich. Sie können diese Dienste einzeln oder kombinieren deren Methoden je nach Bedarf, um die optimale Lösung zu erstellen.
 
-In diesem Tutorial definieren wir zuerst einen Anwendungsfall beim Kunden und finden heraus, wie dieser stabiler und leistungsstärker gestaltet werden kann, indem wir das folgende Lastenausgleichportofolio von Azure verwenden: Traffic Manager, Application Gateway und Load Balancer. Anschließend erhalten Sie Schritt-für-Schritt-Anleitungen zum Erstellen einer geografisch redundanten Bereitstellung, die Datenverkehr an mehrere virtuelle Computer verteilt und mit der verschiedene Anforderungstypen verwaltet werden können.
+In diesem Lernprogramm wir definieren Sie zunächst einen Kunde Anwendungsfall und wie sie eine robustere festgelegt werden kann und leistungsfähiger mithilfe der folgenden Azure-Lastenausgleich Portfolio angezeigt: Traffic Manager Application Gateway und Lastenausgleich. Klicken Sie dann bieten wir eine schrittweise Anleitung zum Erstellen einer Bereitstellung, die geografisch redundant und verteilt den Datenverkehr zu virtuellen Computern können Sie verschiedene Anforderungen verwalten.
 
-Auf konzeptioneller Ebene spielt jeder dieser Dienste eine wichtige Rolle in der Lastenausgleichshierarchie.
+Auf konzeptioneller Ebene spielt jeder dieser Dienste eine unterschiedliche Rolle in der Hierarchie des Lastenausgleichs.
 
-* **Traffic Manager** enthält einen globalen DNS-Lastenausgleich. Der Dienst untersucht eingehende DNS-Anforderungen und antwortet mit einem fehlerfrei funktionierenden Endpunkt. Dies geschieht in Übereinstimmung mit der Routingrichtlinie, die der Kunde ausgewählt hat. Es gibt die folgenden Routingmethoden:
-  * Leistungsorientiertes Routing, um den Anforderer mit Blick auf Latenz zum nächstgelegenen Endpunkt zu verweisen.
-  * Prioritätsorientiertes Routing, um den gesamten Datenverkehr zu einem Endpunkt zu leiten, mit anderen Endpunkten als Sicherung.
-  * Gewichtetes Roundrobin-Routing, das den Datenverkehr basierend auf der Gewichtung verteilt, die jedem Endpunkt zugewiesen ist.
+* **Traffic Manager** enthält globale DNS des Lastenausgleichs. Es prüft auf eingehende DNS-Anforderungen und antwortet mit einem fehlerfreien Endpunkt, entsprechend der routing-Richtlinie, die der Kunde ausgewählt wurde. Optionen für Verteilermethoden lauten:
+  * Leistung, routing, um den anforderer zum nächstgelegenen Endpunkt im Hinblick auf Latenz zu senden.
+  * Priorität routing, um alle Leitung des Datenverkehrs an einen Endpunkt, mit anderen Endpunkten als Sicherung.
+  * Gewichteter Roundrobin-routing, der verteilt den Datenverkehr basierend auf der Gewichtung, die an jeden Endpunkt zugewiesen wird.
 
-  Der Client stellt eine direkte Verbindung zu diesem Endpunkt her. Azure Traffic Manager erkennt, wenn ein Endpunkt fehlerhaft ist, und leitet den Client dann an eine andere fehlerfreie Instanz weiter. Weitere Informationen zu diesem Dienst finden Sie in der [Dokumentation zu Azure Traffic Manager](traffic-manager-overview.md).
-* **Application Gateway** verfügt über einen ADC (Application Delivery Controller) als Dienst und bietet damit verschiedene Lastenausgleichsfunktionen auf Ebene 7 für Ihre Anwendung. So wird Kunden die Optimierung der Webfarmproduktivität ermöglicht, indem die CPU-intensive SSL-Beendigung zum Application Gateway verlagert wird. Andere Routingfunktionen für Ebene 7 umfassen Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, und Möglichkeit zum Hosten von mehreren Websites hinter einem einzelnen Application Gateway. Application Gateway kann als Gateway mit Internetanbindung, rein internes Gateway oder als Kombination dieser beiden Optionen konfiguriert werden. Application Gateway wird vollständig über Azure verwaltet und ist skalierbar und hoch verfügbar. Die Anwendung umfasst viele Diagnose- und Protokollierungsfunktionen zur Verbesserung der Verwaltbarkeit.
-* **Load Balancer** ist ein integraler Bestandteil des Azure SDN-Stapels, äußerst leistungsfähig und bietet Lastenausgleichsdienste der Ebene 4 mit niedriger Latenz für alle UDP- und TCP-Protokolle. Der Dienst verwaltet eingehende und ausgehende Verbindungen. Sie können öffentliche und interne Lastenausgleichs-Endpunkte konfigurieren und Regeln definieren, um eingehende Verbindungen zu Back-End-Pool-Zielen mit TCP und HTTP Integritätstest-Optionen zuzuordnen, damit die Dienstverfügbarkeit verwaltet werden kann.
+  Der Client direkt eine Verbindung mit diesem Endpunkt. Azure Traffic Manager erkennt, wenn ein Endpunkt fehlerhaft ist und dann die Clients in eine andere fehlerfrei Instanz leitet. Verweisen auf [Azure Traffic Manager-Dokumentation](traffic-manager-overview.md) erfahren Sie mehr über den Dienst.
+* **Application Gateway** Übermittlung Controller für die Anwendung (ADC) als ein Dienstangebot verschiedene Layer 7 Lastenausgleichsfunktionen für Ihre Anwendung enthält. Sie können Kunden Webfarm Produktivität zu optimieren, indem Sie die CPU-Intensive SSL-Tunnelabschluss an die Anwendungsgateway-Abladung. Andere Layer 7 Routingfunktionen enthalten roundrobinverteilung von eingehenden Datenverkehr, Cookie-basierte sitzungsaffinität, URL-routing pfadbasierten und die Möglichkeit, mehrere Websites hinter einem einzelnen Anwendungsgateway hosten. Application Gateway kann als ein Gateway Internetzugriff, ein Gateway nur intern oder eine Kombination aus beidem konfiguriert werden. Application Gateway wird vollständig Azure verwalteten, skalierbaren und hoch verfügbar. Er bietet einen umfangreichen Satz von Diagnose- und Protokollierungsfunktionen für bessere Verwaltbarkeit.
+* **Load Balancer** ist ein wesentlicher Bestandteil des Azure-SDN-Stapel, hohe Leistung, niedrige Latenz Layer 4-Lastenausgleich Dienste für alle UDP und TCP-Protokolle. Er verwaltet eingehende und ausgehende Verbindungen. Sie können konfigurieren öffentliche und interne Endpunkte mit Lastenausgleich und definieren Regeln, um eingehende Verbindungen an Back-End-Pool Ziele zu ordnen, indem Sie TCP und HTTP durch Überprüfung der Integrität von Optionen zum Verwalten der Verfügbarkeit des Diensts.
 
 ## <a name="scenario"></a>Szenario
 
-In diesem Beispielszenario verwenden wir eine einfache Website, die zwei Inhaltstypen unterstützt: Images und dynamisch dargestellte Websites. Diese Website muss geografisch redundant sein und ihre Benutzer von ihrem nächstgelegenen Standort aus (niedrigste Latenz) mit Daten versorgen. Der Anwendungsentwickler hat entschieden, dass alle URLs, die dem Muster „/images/*“ entsprechen, über einem dedizierten Pool von VMs bereitgestellt werden. Dies unterscheidet sich zum Rest der Webfarm.
+In diesem Beispielszenario verwenden wir eine einfache Website, die zwei Typen von Inhalten dient: Bilder und dynamisch gerenderte Webseiten. Die Website muss geografisch redundant sein und sollte es die Benutzern über den nächstgelegenen (niedrigste Latenz) dienen Speicherort Ihnen. Der Anwendungsentwickler hat entschieden, die alle URLs, die das Muster/Images/entsprechen * von VMs, die sich vom Rest der Webfarm einen dedizierten Pool verarbeitet werden.
 
-Außerdem muss der standardmäßige VM-Pool, der den dynamischen Inhalt bereitstellt, mit einer Back-End-Datenbank kommunizieren, die auf einem Cluster mit hoher Verfügbarkeit gehostet wird. Die gesamte Bereitstellung wird mit Azure Resource Manager eingerichtet.
+Darüber hinaus muss der VM-Standardpool, die für den dynamischen Inhalt sprechen Sie mit einer Back-End-Datenbank, die gehostet wird, in einem Cluster mit hoher Verfügbarkeit. Die gesamte Bereitstellung wird durch Azure Resource Manager eingerichtet.
 
-Das Verwenden von Traffic Manager, Application Gateway und Load Balancer ermöglicht der Website, diese Entwurfsziele zu erreichen:
+Verwenden von Traffic Manager Application Gateway und Lastenausgleich ermöglicht diese Website, um diese Ziele zu erreichen:
 
-* **Mehrfache Georedundanz**: Durch die Verwendung von Traffic Manager wird der Datenverkehr bei Ausfall einer Region nahtlos zur nächsten passenden Region weitergeleitet. Es ist kein Eingreifen durch den Anwendungsbesitzer notwendig.
-* **Reduzierte Latenz**: Da Azure Traffic Manager den Kunden automatisch zur nächstgelegenen Region weiterleitet, ist die Latenz beim Anfordern der Inhalte der Website kürzer.
-* **Unabhängige Skalierbarkeit**: Dadurch, dass der Workload der Webanwendung nach Inhaltsart getrennt ist, kann der Anwendungsbesitzer die Anforderungsworkloads unabhängig voneinander skalieren. Durch Application Gateway wird sichergestellt, dass der Verkehr zu den richtigen Pools geleitet wird. Dies hängt von den angegebenen Regeln und dem Zustand der Anwendungsintegrität ab.
-* **Interner Lastenausgleich**: Da sich Load Balancer vor dem Cluster mit hoher Verfügbarkeit befindet, steht der Anwendung nur der aktive und fehlerfreie Endpunkt für eine Datenbank zur Verfügung. Darüber hinaus kann ein Datenbankadministrator die Workload durch das clusterweite Verteilen aktiver und passiver Replikate optimieren. Dies geschieht unabhängig von der Front-End-Anwendung. Load Balancer bietet Verbindungen zum Cluster mit hoher Verfügbarkeit und stellt sicher, dass nur fehlerfreie Datenbanken Verbindungsanforderungen erhalten.
+* **Multi-Geo-Redundanz**: fällt eine Region aus, Traffic Manager Datenverkehr weiterleitet nahtlos in die nächstgelegene Region ohne jegliches Eingreifen des aus der Besitzer der Anwendung.
+* **Reduziert die Latenz**: Da Traffic Manager weist automatisch der Kunde die nächstgelegene Region, kundenmeinungen geringere Latenz beim Anfordern der Inhalt der Webseite.
+* **Unabhängige Skalierbarkeit**: Da die Arbeitslast der Web-Anwendung vom Typ des Inhalts getrennt ist, kann Anwendungsbesitzer die Anforderung Arbeitslasten, die unabhängig voneinander skalieren. Application Gateway wird sichergestellt, dass der Datenverkehr an den richtigen Pools basierend auf den angegebenen Vergleichsregeln und die Integrität der Anwendung weitergeleitet wird.
+* **Interner Lastenausgleich**: Da Lastenausgleich befindet sich vor dem Cluster für hohe Verfügbarkeit, nur die aktive und fehlerfreie Endpunkt für eine Datenbank für die Anwendung verfügbar gemacht wird. Darüber hinaus kann ein Datenbankadministrator die arbeitsauslastung optimieren, indem Sie das Verteilen von aktiven und passiven Replikate auf dem Cluster, die unabhängig von der Front-End-Anwendung. Load Balancer stellt Verbindungen mit dem Cluster für hohe Verfügbarkeit und stellt sicher, dass nur fehlerfreie Datenbanken verbindungsanforderungen erhalten.
 
 Das folgende Diagramm zeigt die Architektur dieses Szenarios:
 
-![Diagramm der Lastenausgleichsarchitektur](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
+![Diagramm des Lastenausgleichs Architektur](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
 
 > [!NOTE]
-> Dieses Beispiel zeigt nur eine von vielen möglichen Konfigurationen, die Azure für die Lastenausgleichsdienste bietet. Traffic Manager, Application Gateway und Load Balancer können kombiniert werden, um alle Ihre Anforderungen an den Lastenausgleich optimal zu erfüllen. Wenn beispielsweise die SSL-Auslagerung oder Verarbeitung der Ebene 7 nicht notwendig ist, kann Load Balancer anstatt Application Gateway verwendet werden.
+> In diesem Beispiel ist nur eine von vielen möglichen Konfigurationen der Netzwerklastenausgleich Dienste, die Azure bietet. Traffic Manager, Application Gateway und Lastenausgleich können gemischt werden, und am besten entsprechen Ihren Anforderungen Lastenausgleich zugeordnet. Beispielsweise können SSL auslagern oder Layer 7-Verarbeitung ist nicht notwendig, Load Balancer anstelle von Application Gateway verwendet werden.
 
-## <a name="setting-up-the-load-balancing-stack"></a>Einrichten des Lastenausgleichsstapels
+## <a name="setting-up-the-load-balancing-stack"></a>Einrichten der Stapel des Lastenausgleichs
 
 ### <a name="step-1-create-a-traffic-manager-profile"></a>Schritt 1: Erstellen eines Traffic Manager-Profils
 
-1. Klicken Sie im Azure-Portal auf **Neu**, und suchen Sie im Marketplace nach „Traffic Manager-Profil“.
-2. Geben Sie auf dem Blatt **Traffic Manager-Profil erstellen** die folgenden grundlegende Informationen ein:
+1. Klicken Sie im Azure-Portal auf **neu**, und suchen Sie den Marketplace nach "Traffic Manager-Profil".
+2. Auf der **erstellen Traffic Manager-Profil** Blatt, geben Sie die folgenden grundlegende Informationen:
 
-  * **Name**: Geben Sie Ihren Traffic Manager-Profilen einen DNS-Präfixnamen.
-  * **Routingmethode:** Wählen Sie die Routingmethode für Datenverkehr in der Richtlinie aus. Weitere Informationen zu den Methoden finden Sie unter [Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md).
-  * **Abonnement**: Das Abonnement, das das Profil enthält.
-  * **Ressourcengruppe**: Wählen Sie die Ressourcengruppe aus, die das Profil enthält. Dies kann eine neue oder vorhandene Ressourcengruppe sein.
-  * **Ressourcengruppenstandort**: Der Traffic Manager-Dienst ist global und nicht an einen Standort gebunden. Allerdings müssen Sie eine Region für die Gruppe angeben, in der sich die dem Traffic Manager-Profil zugeordneten Metadaten befinden. Dieser Standort hat keine Auswirkung auf die Laufzeitverfügbarkeit des Profils.
+  * **Namen**: Traffic Manager-Profil ein DNS-Präfixnamen erteilen.
+  * **Routingmethode**: Wählen Sie die Richtlinie für die datenverkehrrouting Methode. Weitere Informationen zu den Methoden finden Sie unter [zu Traffic Manager Datenverkehr Verteilermethoden](traffic-manager-routing-methods.md).
+  * **Abonnement**: Wählen Sie das Abonnement, die das Profil enthält.
+  * **Ressourcengruppe**: Wählen Sie die Ressourcengruppe, die das Profil enthält. Es kann eine neue oder vorhandene Ressourcengruppe sein.
+  * **Speicherort der Ressourcengruppe**: Traffic Manager-Dienst ist ein global und nicht an einen Speicherort gebunden. Allerdings müssen Sie eine Region für die Gruppe angeben, in dem sich die Traffic Manager-Profil zugeordnete Metadaten befindet. Dieser Standort hat keine Auswirkungen auf die laufzeitverfügbarkeit des Profils.
 
-3. Klicken Sie zum Generieren des Traffic Manager-Profils auf **Erstellen**.
+3. Klicken Sie auf **erstellen** Traffic Manager-Profils zu generieren.
 
-  ![Blatt „Erstellen“ von Traffic Manager](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
+  ![Blatt "Erstellen von Traffic Manager"](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
 
-### <a name="step-2-create-the-application-gateways"></a>Schritt 2: Erstellen des Anwendungsgateways
+### <a name="step-2-create-the-application-gateways"></a>Schritt 2: Erstellen der Anwendungsgateways
 
-1. Klicken Sie im Azure-Portal auf **Neu** > **Netzwerk** > **Application Gateway**.
-2. Geben Sie die folgenden allgemeinen Informationen zum Anwendungsgateway an:
+1. Klicken Sie im Azure-Portal im linken Bereich auf **neu** > **Networking** > **Anwendungsgateway**.
+2. Geben Sie die folgenden grundlegende Informationen über das Application Gateway:
 
-  * **Name**: Der Name des Anwendungsgateways.
-  * **SKU-Größe**: Dies ist die Größe des Anwendungsgateways. Sie haben die Wahl zwischen „Klein“, „Mittel“ oder „Groß“.
-  * **Instanzanzahl**: Die Anzahl der Instanzen (ein Wert von 2 bis 10).
-  * **Ressourcengruppe**: Die Ressourcengruppe, die das Anwendungsgateway enthält. Dies kann eine neue oder vorhandene Ressourcengruppe sein.
-  * **Standort**: Die Region für das Anwendungsgateway. Dieser Standort ist mit dem Standort der Ressourcengruppe identisch. Der Standort ist wichtig, da das virtuelle Netzwerk und die öffentliche IP-Adresse den gleichen Standort wie das Gateway aufweisen müssen.
+  * **Namen**: der Name des Anwendungsgateways.
+  * **SKU-Größe**: die Größe der Anwendung-Gateways als klein, Mittel oder groß.
+  * **Instanzanzahl**: die Anzahl der Instanzen, die einen Wert zwischen 2 und 10.
+  * **Ressourcengruppe**: die Ressourcengruppe, die das Anwendungsgateway enthält. Sie können eine vorhandene Ressourcengruppe oder einen neuen sein.
+  * **Speicherort**: die Region für das Anwendungsgateway, die am gleichen Speicherort wie die Ressourcengruppe ist. Der Speicherort ist wichtig, da das virtuelle Netzwerk und die öffentliche IP-Adresse am gleichen Speicherort wie das Gateway sein muss.
 3. Klicken Sie auf **OK**.
-4. Definieren Sie das virtuelle Netzwerk, Subnetz, die Front-End-IP-Adresse und Listenerkonfigurationen für das Anwendungsgateway. In diesem Szenario ist die Front-End-IP-Adresse **Öffentlich**, um das spätere Hinzufügen als Endpunkt zum Traffic Manager-Profil zu ermöglichen.
-5. Konfigurieren Sie den Listener mit einer der folgenden Optionen:
-    * Wenn Sie HTTP verwenden, muss nichts konfiguriert werden. Klicken Sie auf **OK**.
-    * Wenn Sie HTTPS verwenden, sind weitere Konfigurationsschritte erforderlich. Siehe [Erstellen eines Anwendungsgateways](../application-gateway/application-gateway-create-gateway-portal.md) beginnend bei Schritt 9. Wenn Sie die Konfiguration abgeschlossen haben, klicken Sie auf **OK**.
+4. Definieren Sie das virtuelle Netzwerk, Subnetz, Front-End-IP und Listenerkonfigurationen für das Anwendungsgateway. In diesem Szenario ist die Front-End-IP-Adresse **öffentlichen**, womit als Endpunkt Traffic Manager-Profil einem späteren Zeitpunkt hinzugefügt werden.
+5. Konfigurieren Sie den Listener mit einem der folgenden Optionen aus:
+    * Wenn Sie HTTP verwenden, wird nichts zu konfigurieren. Klicken Sie auf **OK**.
+    * Wenn Sie HTTPS verwenden, sind weiteren Konfigurationsschritte erforderlich. Verweisen auf [erstellen Sie einen vorhandenes Anwendungsgateway](../application-gateway/application-gateway-create-gateway-portal.md), beginnend bei Schritt 9. Wenn Sie die Konfiguration abgeschlossen haben, klicken Sie auf **OK**.
 
-#### <a name="configure-url-routing-for-application-gateways"></a>Konfigurieren des URL-Routings für Anwendungsgateways
+#### <a name="configure-url-routing-for-application-gateways"></a>Konfigurieren Sie die URL-routing für Anwendungsgateways
 
-Ein Anwendungsgateway, das mit einer pfadbasierten Regel konfiguriert wird, benötigt bei Wahl eines Back-End-Pools zusätzlich zur Roundrobin-Verteilung ein Pfadmuster der Anforderungs-URL. In diesem Szenario fügen wir eine pfadbasierte Regel hinzu, um alle URLs mit "/images/\*" zum Imageserverpool zu leiten. Weitere Informationen zum Konfigurieren von auf dem URL-Pfad basierendem Routing für ein Anwendungsgateway finden Sie unter [Erstellen einer pfadbasierten Regel für ein Application Gateway über das Portal](../application-gateway/application-gateway-create-url-route-portal.md).
+Bei der Auswahl eines Back-End-Pools wird ein vorhandenes Anwendungsgateway, der mit einem Pfad basierenden Regel konfiguriert ist ein pfadmuster zum der Anforderungs-URL neben Round-Robin-Verteilung. In diesem Szenario wir sind das Hinzufügen einer pfadbasierten Regel zum Weiterleiten von beliebigen URL mit "/ Images /\*" zum Serverpool Bild. Weitere Informationen zum Konfigurieren der URL für einen Anwendungsgateway routing pfadbasierten finden Sie in [erstellen Sie eine Regel pfadbasierten für ein vorhandenes Anwendungsgateway](../application-gateway/application-gateway-create-url-route-portal.md).
 
-![Application Gateway: Diagramm der Webebenen](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
+![Application Gateway Webebene Diagramm](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
-1. Wechseln Sie von Ihrer Ressourcengruppe zur Instanz des Anwendungsgateways, das Sie im vorherigen Abschnitt erstellt haben.
-2. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools** aus, und klicken Sie dann auf **Hinzufügen**, um die VMs hinzuzufügen, die Sie den Back-End-Pools der Webebene zuordnen möchten.
-3. Geben Sie auf dem Blatt **Back-End-Pool hinzufügen** den Namen des Back-End-Pools und alle IP-Adressen der Computer ein, die sich im Pool befinden. In diesem Szenario stellen wir eine Verbindung mit zwei Back-End-Serverpools mit virtuellen Computern her.
+1. Wechseln Sie zu der Instanz des Application-Gateways, das Sie im vorherigen Abschnitt erstellt haben, aus der Ressourcengruppe.
+2. Klicken Sie unter **Einstellungen**Option **Back-End-Pools**, und wählen Sie dann **hinzufügen** die virtuellen Computer hinzufügen, die die Webebene Back-End-Adresspools zugeordnet werden sollen.
+3. Auf der **hinzufügen Back-End-Pools** Blatt, geben Sie den Namen des Back-End-Pool und die IP-Adressen der Computer, die im Pool befinden. In diesem Szenario sind wir zwei Back-End-Server-Pools von virtuellen Computern verbunden.
 
-  ![Application Gateway-Blatt „Back-End-Pool hinzufügen“](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
+  ![Application Gateway "Back-End-Pool hinzufügen" Blatt "](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
-4. Wählen Sie anschließend in den **Einstellungen** des Anwendungsgateways **Regeln** aus, und klicken Sie dann auf die Schaltfläche **Pfadbasiert**, um eine Regel hinzuzufügen.
+4. Klicken Sie unter **Einstellungen** wählen Sie das Anwendungsgateway **Regeln**, und klicken Sie dann auf die **Pfadbasierter** Schaltfläche, um eine Regel hinzuzufügen.
 
-  ![Application Gateway-Regeln: Schaltfläche „Pfadbasiert“](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
+  ![Gateway-Regeln "Pfad basiert" Anwendungsschaltfläche](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
-5. Geben Sie auf dem Blatt **Pfadbasierte Regel hinzufügen** die folgenden Informationen an, um die Regel zu konfigurieren.
+5. Auf der **pfadbasierten Regel hinzufügen** Blatt, konfigurieren Sie die Regel, indem Sie die folgende Informationen bereitstellen.
 
    Grundlegende Einstellungen:
 
-   + **Name**: Der Anzeigename der Regel, auf die Sie über das Portal zugreifen können.
-   + **Listener**: Der Listener, der für die Regel verwendet wird.
-   + **Standard-Back-End-Pool**: Der Back-End-Pool, der mit der Standardregel verwendet werden soll.
-   + **Standard-HTTP-Einstellungen**: Die HTTP-Einstellungen, die mit der Standardregel verwendet werden sollen.
+   + **Namen**: der Anzeigename der Regel, die im Portal zugegriffen werden kann.
+   + **Listener**: den Listener, der für die Regel verwendet wird.
+   + **Standard-Back-End-Pool**: der Back-End-Pool mit der Standardregel verwendet werden soll.
+   + **Standardeinstellungen für die HTTP-**: der HTTP-Einstellungen mit der Standardregel verwendet werden soll.
 
-   Pfadbasierte Regeln:
+   Pfad-Regeln:
 
-   + **Name**: Der Anzeigename der pfadbasierten Regel.
-   + **Pfade**: Die Pfadregel, die für das Weiterleiten von Datenverkehr verwendet wird.
-   + **Back-End-Pool**: Der Back-End-Pool, der mit dieser Regel verwendet werden soll.
-   + **HTTP-Einstellungen**: Die HTTP-Einstellungen, die mit dieser Regel verwendet werden sollen.
+   + **Namen**: der Anzeigename der Regel pfadbasierten.
+   + **Pfade**: der Pfadregel an, die für die Weiterleitung von Datenverkehr verwendet wird.
+   + **Back-End-Pool**: der Back-End-Pool mit dieser Regel verwendet werden soll.
+   + **HTTP-Einstellung**: der HTTP-Einstellungen, die mit dieser Regel verwendet werden.
 
    > [!IMPORTANT]
-   > Pfade: Gültige Pfade müssen mit „/“ beginnen. Der Platzhalter „\*“ darf nur am Ende verwendet werden. Gültige Beispiele sind „/xyz“, „/xyz\*“ oder „/xyz/“\*.
+   > Pfade: Gültige Pfade müssen beginnen mit "/". Der Platzhalter "\*" ist nur am Ende zulässig. Beispiele für gültige sind /xyz /xyz\*, oder /xyz/\*.
 
-   ![Application Gateway-Blatt „Pfadbasierte Regel hinzufügen“](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
+   ![Application Gateway "Pfadbasierten Regel hinzufügen" Blatt "](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
 
-### <a name="step-3-add-application-gateways-to-the-traffic-manager-endpoints"></a>Schritt 3: Hinzufügen von Anwendungsgateways zu Traffic Manager-Endpunkten
+### <a name="step-3-add-application-gateways-to-the-traffic-manager-endpoints"></a>Schritt 3: Hinzufügen von Anwendungsgateways an die Traffic Manager-Endpunkte
 
-In diesem Szenario wird Traffic Manager mit Anwendungsgateways verbunden (die entsprechend den vorherigen Schritten konfiguriert sind), die sich in verschiedenen Regionen befinden. Da die Anwendungsgateways jetzt konfiguriert sind, ist der nächste Schritt, sie mit Ihrem Traffic Manager-Profil zu verbinden.
+In diesem Szenario ist die Traffic Manager mit Anwendungsgateways (wie in den vorherigen Schritten konfiguriert) verbunden, die sich in unterschiedlichen Regionen befinden. Nun, dass die Anwendungsgateways konfiguriert sind, besteht der nächste Schritt zum Verbinden der Computer mit Traffic Manager-Profil.
 
-1. Öffnen Sie Ihr Traffic Manager-Profil. Durchsuchen Sie hierfür Ihre Ressourcengruppe, oder suchen Sie den Namen des Traffic Manager-Profils in **Alle Ressourcen**.
-2. Wählen Sie im linken Bereich **Endpunkte** aus, und klicken Sie dann auf **Hinzufügen**, um einen Endpunkt hinzuzufügen.
+1. Öffnen Sie Ihr Traffic Manager-Profil ein. Zu diesem Zweck zu suchen, in der Ressourcengruppe oder suchen Sie nach den Namen des Traffic Manager-Profils aus **alle Ressourcen**.
+2. Wählen Sie im linken Bereich **Endpunkte**, und klicken Sie dann auf **hinzufügen** zum Hinzufügen eines Endpunkts.
 
-  ![Traffic Manager-Endpunkte: Schaltfläche „Hinzufügen“](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
+  ![Traffic Manager Endpunkten "Add"-Schaltfläche](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
-3. Erstellen Sie auf dem Blatt **Endpunkt hinzufügen** einen Endpunkt durch Eingabe der folgenden Informationen:
+3. Auf der **Endpunkt hinzufügen** Blatt, erstellen Sie einen Endpunkt durch Eingabe der folgenden Informationen:
 
-  * **Typ**: Wählen Sie den Typ des Endpunkts für den Lastenausgleich aus. Wählen Sie in diesem Szenario **Azure-Endpunkt**, da wir diesen mit den Anwendungsgatewayinstanzen verbinden, die wir zuvor konfiguriert haben.
-  * **Name**: Geben Sie den Namen des Endpunkts ein.
-  * **Zielressourcentyp**: Wählen Sie **Öffentliche IP-Adresse** aus. Wählen Sie unter **Zielressource** die öffentliche IP des zuvor konfigurierten Anwendungsgateways aus.
+  * **Typ**: Wählen Sie den Typ des Endpunkts für den Lastenausgleich. Wählen Sie in diesem Szenario **Azure-Endpunkt** da wir es mit den Anwendungsinstanzen für das Gateway eine Verbindung herstellen, die zuvor konfiguriert wurden.
+  * **Namen**: Geben Sie den Namen des Endpunkts.
+  * **Ressourcentyp "" als Ziel**: Wählen Sie **öffentliche IP-Adresse** und dann unter **Zielressource**, wählen Sie die öffentliche IP-Adresse des Anwendungsgateways, die zuvor konfiguriert wurde.
 
-   ![Traffic Manager-Blatt „Endpunkt hinzufügen“](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
+   ![Traffic Manager "Hinzufügen von Endpunkt" Blatt "](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
-4. Sie können nun Ihre Einrichtung überprüfen, indem Sie mit dem DNS Ihres Traffic Manager-Profils darauf zugreifen (in diesem Beispiel: TrafficManagerScenario.trafficmanager.net). Sie können Anforderungen erneut senden, VMs und Webserver hoch- oder herunterfahren, die in verschiedenen Regionen erstellt wurden, und die Einstellungen für Ihr Traffic Manager-Profil ändern, um Ihre Einrichtung zu testen.
+4. Nun können Sie das Setup darauf zugreifen, mit dem DNS-Namen des Traffic Manager-Profil testen (in diesem Beispiel: TrafficManagerScenario.trafficmanager.net). Sie können Anforderungen senden, Hochfahren oder VMs und Webservern, die in unterschiedlichen Regionen erstellt wurden heruntergefahren und ändern die Einstellungen für das Traffic Manager-Profil zum Testen Ihrer Einrichtung.
 
-### <a name="step-4-create-a-load-balancer"></a>Schritt 4: Erstellen eines Lastenausgleichs
+### <a name="step-4-create-a-load-balancer"></a>Schritt 4: Erstellen Sie einen Lastenausgleich
 
-In diesem Szenario verteilt Load Balancer Verbindungen von der Webebene zu den Datenbanken innerhalb eines Clusters mit hoher Verfügbarkeit.
+In diesem Szenario verteilt Load Balancer Verbindungen zwischen der Webebene und die Datenbanken innerhalb eines Clusters hohe Verfügbarkeit.
 
-Wenn Ihr Cluster mit hoher Verfügbarkeit SQL Server AlwaysOn verwendet, finden Sie Schritt-für-Schritt-Anleitungen unter [Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md).
+Wenn Ihre hohe Verfügbarkeit Datenbankcluster SQL Server AlwaysOn verwendet wird, finden Sie in [konfigurieren Sie eine oder mehrere immer auf Verfügbarkeitsgruppenlistener](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) für-Schritt-Anweisungen.
 
-Weitere Informationen zum Konfigurieren eines internen Lastenausgleichs finden Sie unter [Erstellen eines internen Lastenausgleichs über das Azure-Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
+Weitere Informationen zum Konfigurieren von einem internen Lastenausgleich finden Sie unter [erstellen Sie einen internen Lastenausgleich im Azure-Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
 
-1. Klicken Sie im Azure-Portal auf **Neu** > **Netzwerk** > **Load Balancer**.
-2. Wählen Sie auf dem Blatt **Lastenausgleich erstellen** einen Namen für Ihren Lastenausgleich aus.
-3. Legen Sie **Typ** auf **Intern** fest, und wählen Sie das entsprechende virtuelle Netzwerk und Subnetz aus, in dem sich der Lastenausgleich befinden soll.
-4. Wählen Sie unter **IP-Adresszuweisung** entweder **Dynamisch** oder **Statisch** aus.
-5. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe für den Lastenausgleich aus.
-6. Wählen Sie unter **Standort** die entsprechende Region für den Lastenausgleich aus.
-7. Klicken Sie auf **Erstellen**, um den Lastenausgleich zu generieren.
+1. Klicken Sie im Azure-Portal im linken Bereich auf **neu** > **Networking** > **Load Balancer**.
+2. Auf der **Lastenausgleich erstellen** Blatt, wählen Sie einen Namen für Ihr Lastenausgleichsmodul.
+3. Legen Sie die **Typ** auf **intern**, und wählen Sie die entsprechenden virtuellen Netzwerk und Subnetz für das Lastenausgleichsmodul in befinden.
+4. Klicken Sie unter **IP-Adresszuweisung**, wählen Sie entweder **dynamische** oder **statische**.
+5. Klicken Sie unter **Ressourcengruppe**, wählen Sie die Ressourcengruppe für das Lastenausgleichsmodul.
+6. Klicken Sie unter **Speicherort**, wählen Sie die entsprechende Region für das Lastenausgleichsmodul.
+7. Klicken Sie auf **erstellen** der Load Balancer zu generieren.
 
-#### <a name="connect-a-back-end-database-tier-to-the-load-balancer"></a>Verbinden einer Back-End-Datenbankebene mit dem Lastenausgleich
+#### <a name="connect-a-back-end-database-tier-to-the-load-balancer"></a>Verbinden Sie einen Back-End-Datenbankschicht zum Lastenausgleich
 
-1. Suchen Sie in der Ressourcengruppe den Lastenausgleich, den Sie in den vorherigen Schritten erstellt haben.
-2. Klicken Sie unter **Einstellungen** auf **Back-End-Pools** und dann auf **Hinzufügen**, um einen neuen Back-End-Pool hinzuzufügen.
+1. Suchen Sie aus der Ressourcengruppe der Load Balancer, die in den vorherigen Schritten erstellt wurde.
+2. Klicken Sie unter **Einstellungen**, klicken Sie auf **Back-End-Pools**, und klicken Sie dann auf **hinzufügen** an einen Back-End-Adresspool hinzuzufügen.
 
-  ![Load Balancer-Blatt „Back-End-Pool hinzufügen“](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
+  ![Laden des Lastenausgleichsmoduls "Back-End-Pool hinzufügen" Blatt "](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
-3. Geben Sie auf dem Blatt **Back-End-Pool** hinzufügen einen Namen für den Back-End-Pool ein.
-4. Fügen Sie dem Back-End-Pool entweder einzelne VMs oder eine Verfügbarkeitsgruppe hinzu.
+3. Auf der **hinzufügen Back-End-Pools** Blatt, geben Sie den Namen des Back-End-Pools.
+4. Fügen Sie einzelne Computer oder einer verfügbarkeitsgruppe, die an den Back-End-Pool.
 
-#### <a name="configure-a-probe"></a>Konfigurieren eines Tests
+#### <a name="configure-a-probe"></a>Konfigurieren Sie eine Überprüfung
 
-1. Wählen Sie in Ihrem Lastenausgleich unter **Einstellungen** den Punkt **Tests** aus, und klicken Sie dann auf **Hinzufügen**, um einen Test hinzuzufügen.
+1. In Ihr Lastenausgleichsmodul unter **Einstellungen**Option **Prüfpunkte**, und klicken Sie dann auf **hinzufügen** So fügen Sie einen Prüfpunkt hinzu.
 
- ![Load Balancer-Blatt „Test hinzufügen“](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
+ ![Laden des Lastenausgleichsmoduls "Add-Test" Blatt "](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
-2. Geben Sie auf dem Blatt **Test hinzufügen** den Namen für den Test ein.
-3. Wählen Sie **Protokoll** für den Test aus. Bei einer Datenbank ist es vermutlich besser, einen TCP-Test statt eines HTTP-Tests durchzuführen. Weitere Informationen zu Lastenausgleichstests finden Sie unter [Grundlegendes zu Lastenausgleichstests](../load-balancer/load-balancer-custom-probe-overview.md).
-4. Geben Sie den **Port** Ihrer Datenbank ein, der beim Zugreifen auf den Test verwendet werden soll.
-5. Geben Sie unter **Intervall** an, wie häufig die Anwendung getestet werden soll.
-6. Geben Sie unter **Fehlerhafter Schwellenwert** die Anzahl von aufeinanderfolgenden fehlgeschlagenen Tests ein, die auftreten muss, damit die Back-End-VM als fehlerhaft betrachtet wird.
-7. Klicken Sie auf **OK**, um den Test zu erstellen.
+2. Auf der **Add Prüfpunkt** Blatt, geben Sie den Namen für den Prüfpunkt.
+3. Wählen Sie die **Protokoll** für den Prüfpunkt. Bei einer Datenbank sollten Sie eine HTTP-Test, anstatt eine TCP-Überprüfung. Finden Sie weitere Informationen zum Lastenausgleich Prüfpunkte [verstehen lastenausgleichsüberprüfungen](../load-balancer/load-balancer-custom-probe-overview.md).
+4. Geben Sie die **Port** Ihrer Datenbank für den Zugriff auf die Überprüfung verwendet werden.
+5. Klicken Sie unter **Intervall**, angeben, wie häufig die Anwendung zu suchen.
+6. Klicken Sie unter **Fehlerschwellenwert**, geben Sie die Anzahl der kontinuierlichen Testfehler, die auftreten, muss für die Back-End-VM "fehlerhaft" angesehen.
+7. Klicken Sie auf **OK** zum Erstellen des Prüfpunkts.
 
-#### <a name="configure-the-load-balancing-rules"></a>Konfigurieren der Lastenausgleichsregeln
+#### <a name="configure-the-load-balancing-rules"></a>Konfigurieren Sie die Regeln des Lastenausgleichs
 
-1. Wählen Sie unter **Einstellungen** in Ihrem Lastenausgleich **Lastenausgleichsregeln** aus, und klicken Sie auf **Hinzufügen**, um eine Regel zu erstellen.
-2. Geben Sie auf dem Blatt **Lastenausgleichsregel hinzufügen** den **Namen** der Lastenausgleichsregel ein.
-3. Wählen Sie **Front-End-IP-Adresse des Lastenausgleichs**, **Protokoll** und **Port** aus.
-4. Geben Sie unter **Back-End-Port** den Port an, der im Back-End-Pool verwendet werden soll.
-5. Wählen Sie den **Back-End-Pool** und den **Test** aus, den Sie in den vorherigen Schritten erstellt haben, um die Regel darauf anzuwenden.
-6. Wählen Sie unter **Sitzungspersistenz** aus, wie Sitzungen beibehalten werden sollen.
-7. Geben Sie unter **Leerlauftimeouts** die Anzahl von Minuten vor einem Leerlauftimeout an.
-8. Wählen Sie für **Floating IP** entweder **Deaktiviert** oder **Aktiviert** aus.
-9. Klicken Sie auf **OK** , um die Regel zu erstellen.
+1. Klicken Sie unter **Einstellungen** wählen Sie von Ihrem Lastenausgleichsmodul **Load Balancer-Regeln**, und klicken Sie dann auf **hinzufügen** zum Erstellen einer Regel.
+2. Auf der **lastenausgleichsregel hinzufügen** Blatt, geben Sie die **Namen** für die Regel den Lastenausgleich.
+3. Wählen Sie die **Front-End-IP-Adresse** des Load Balancers **Protokoll**, und **Port**.
+4. Klicken Sie unter **Back-End-Port**, geben Sie den Port in der Back-End-Pool verwendet werden.
+5. Wählen Sie die **Back-End-Pool** und **Prüfpunkt** , die in den vorherigen Schritten anzuwendende die Regel erstellt wurden.
+6. Klicken Sie unter **Sitzungspersistenz**, wählen Sie, wie Sie die Sitzungen beibehalten werden soll.
+7. Klicken Sie unter **Leerlauftimeouts**, geben Sie die Anzahl der Minuten, bevor ein Timeout im Leerlauf.
+8. Klicken Sie unter **Floating IP**, wählen Sie entweder **deaktiviert** oder **aktiviert**.
+9. Klicken Sie auf **OK** zum Erstellen der Regel.
 
-### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>Schritt 5: Verbinden von VMs der Webebene mit Load Balancer
+### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>Schritt 5: Verbinden Webebene VMs mit der Load balancer
 
-Jetzt konfigurieren wir die IP-Adresse und den Load Balancer-Front-End-Port in den Anwendungen, die auf Ihren VMs der Webebene ausgeführt werden, für alle Datenbankverbindungen. Diese Konfiguration ist spezifisch für die Anwendung, die auf diesen VMs ausgeführt wird. Informationen zum Konfigurieren der IP-Zieladresse und des Ports finden Sie in der Dokumentation der Anwendung. Um die IP-Adresse des Front-End zu suchen, navigieren Sie im Azure-Portal auf dem Blatt **Einstellungen für Lastenausgleich** zum Front-End-IP-Pool.
+Nachdem wir die IP-Adresse und eines Lastenausgleichs Front-End-Port in der Anwendung, die auf der Webebene VMs für alle Datenbankverbindungen ausgeführt werden konfigurieren. Diese Konfiguration ist spezifisch für die Anwendungen, die auf diesen virtuellen Computern ausgeführt werden. Um die Ziel-IP-Adresse und Port zu konfigurieren, finden Sie in der Dokumentation der Anwendung. Um die IP-Adresse des Front-End in der Azure-Portal suchen, finden Sie in der Front-End-IP-Adresspool auf dem **Lastenausgleichseinstellungen** Blatt.
 
-![Load Balancer-Navigationsbereich „Front-End-IP-Adresspool“](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
+![Load Balancer "Frontend-IP-Adresspool" Navigationsbereich](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Was ist Traffic Manager?](traffic-manager-overview.md)
-* [Übersicht über Application Gateway](../application-gateway/application-gateway-introduction.md)
+* [Übersicht über Traffic Manager](traffic-manager-overview.md)
+* [Gateway-Anwendungsübersicht](../application-gateway/application-gateway-introduction.md)
 * [Übersicht über Azure Load Balancer](../load-balancer/load-balancer-overview.md)
-

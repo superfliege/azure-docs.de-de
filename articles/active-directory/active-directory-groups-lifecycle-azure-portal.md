@@ -16,14 +16,12 @@ ms.date: 08/09/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: f4efac7b74620e68e727292e02a5a904b03d6e2f
-ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
-
+ms.openlocfilehash: 8a43df84fd050d7b4bd8d937b8c55e744cb805d3
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="configure-office-365-groups-expiration-preview"></a>Konfigurieren des Ablaufs von Office 365-Gruppen (Vorschau)
 
 Sie können jetzt den Lebenszyklus von Office 365-Gruppen durch Festlegen des Ablaufs für beliebige Office 365-Gruppen verwalten, die Sie auswählen. Sobald dieser Ablauf festgelegt ist, werden Besitzer dieser Gruppen aufgefordert, ihre Gruppen zu verlängern, wenn sie die Gruppen noch benötigen. Eine Office 365-Gruppe, die nicht verlängert wird, wird gelöscht. Eine Office 365-Gruppe, die gelöscht wurde, kann innerhalb von 30 Tagen von den Gruppenbesitzern oder vom Administrator wiederhergestellt werden.  
@@ -81,4 +79,3 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure AD-Gruppen.
 * [Verwalten der Mitglieder einer Gruppe](active-directory-groups-members-azure-portal.md)
 * [Verwalten der Mitgliedschaften einer Gruppe](active-directory-groups-membership-azure-portal.md)
 * [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](active-directory-groups-dynamic-membership-azure-portal.md)
-

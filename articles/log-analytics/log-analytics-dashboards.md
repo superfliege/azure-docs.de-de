@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/08/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
 ms.openlocfilehash: a90d9c620221bffbb225fb060b997af2f5e90390
-ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Erstellen eines benutzerdefinierten Dashboards für die Verwendung in Log Analytics
 
@@ -89,4 +88,3 @@ Navigieren Sie zum Entfernen einer Kachel zur Ansicht „Mein Dashboard“, und 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erstellen Sie [Warnungen](log-analytics-alerts.md) in Log Analytics, um Benachrichtigungen zu generieren und Probleme zu beheben.
-

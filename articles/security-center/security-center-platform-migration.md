@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: 5ddf71dcd9c5a2b03e3b1441d8c9b4d91b6bad12
-ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-security-center-platform-migration"></a>Azure Security Center – Plattformmigration
 
@@ -78,5 +77,4 @@ In Verbindung mit der Plattformmigration veröffentlichen wir parallel noch eini
 - Die Datensammlung ist erforderlich und wird für Kunden im Tarif Standard automatisch aktiviert.
 - Azure Security Center beginnt mit der Ermittlung von Antischadsoftware-Lösungen, die nicht über Azure-Erweiterungen bereitgestellt wurden. Die Ermittlung von Symantec Endpoint Protection und Defender für Windows 2016 wird als Erstes verfügbar sein.
 - Vorbeugende Richtlinien und Benachrichtigungen können nur auf der *Abonnementebene* konfiguriert werden. Preise können hingegen weiterhin auf der *Ressourcengruppenebene* festgelegt werden.
-
 

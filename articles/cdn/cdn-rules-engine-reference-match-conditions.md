@@ -14,13 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: f4886b1d78dfa87cf25737fb46c12b5963034f27
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Übereinstimmungsbedingungen des Azure CDN-Regelmoduls
 Dieses Thema enthält ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen für das [Regelmodul](cdn-rules-engine.md) des Azure Content Delivery Network (CDN).
 
@@ -124,10 +123,4 @@ URL Query Wildcard | Vergleicht die angegebenen Werte mit der Abfragezeichenfolg
 * [Rules Engine Conditional Expressions](cdn-rules-engine-reference-conditional-expressions.md) (Regelmodul – Bedingte Ausdrücke)
 * [Regelmodul – Features](cdn-rules-engine-reference-features.md)
 * [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

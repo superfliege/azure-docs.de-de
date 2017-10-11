@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: dd9e7f672a9f991fd06530a968a3369b752148a2
 ms.openlocfilehash: 3e4f7bfd117696ddb25156e027e29c0d21f27804
-ms.lasthandoff: 03/01/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>Welche Systemeinschränkungen gelten für die StorSimple 8000-Serie?
 ## <a name="overview"></a>Übersicht
@@ -49,7 +49,7 @@ StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es
 | Verarbeitungsrate für Cloudmomentaufnahmen |15 Minuten/TB |<ul><li>Die Mindestzeit zum Vorbereiten einer Cloudmomentaufnahme für das Hochladen. Diese gilt pro TB an zugewiesenen Volumedaten in der Sicherung. </li><li> Die Gesamtzeit für eine Cloudmomentaufnahme wird berechnet, indem diese Zeit zur Hochladezeit für die Momentaufnahme addiert wird. Letztere wird von der Internetbandbreite der Cloudverbindung beeinflusst. |
 | Maximaler Client-Lese-/-Schreibdurchsatz (wenn von SSD-Ebene aus bereitgestellt)* |920/720 MB/s mit einer einzelnen 10-GbE-Netzwerkschnittstelle |Bis zu 2x mit MPIO und zwei Netzwerkschnittstellen. |
 | Maximaler Client-Lese-/-Schreibdurchsatz (wenn von HDD-Ebene aus bereitgestellt)* |120/250 MB/s | |
-| Maximaler Client-Lese-/-Schreibdurchsatz (wenn von Cloud-Ebene aus bereitgestellt)*ab Update 3** |40/60 MB/s für mehrstufige Volumes<br><br>60/80 MB/s für mehrstufige Volumes, bei denen im Rahmen der Volumeerstellung die Archivierungsoption ausgewählt wurde |Lesedurchsatz hängt von Clients ab, die genügend E/A-Warteschlangentiefe generieren und verwalten müssen. <br><br>Die erreichbare Geschwindigkeit hängt von der Geschwindigkeit des zugrunde liegenden Speicherkontos ab. |
+| Maximaler Client-Lese-/-Schreibdurchsatz (wenn von Cloud-Ebene aus bereitgestellt)* ab Update 3 und höher** |40/60 MB/s für mehrstufige Volumes<br><br>60/80 MB/s für mehrstufige Volumes, bei denen im Rahmen der Volumeerstellung die Archivierungsoption ausgewählt wurde |Lesedurchsatz hängt von Clients ab, die genügend E/A-Warteschlangentiefe generieren und verwalten müssen. <br><br>Die erreichbare Geschwindigkeit hängt von der Geschwindigkeit des zugrunde liegenden Speicherkontos ab. |
 
 &#42; Der maximale Durchsatz pro E/A-Typ wurde mit 100 %-Lese- und 100 %-Schreibszenarien gemessen. Der tatsächliche Durchsatz kann geringer sein und hängt von der E/A-Mischung und den Netzwerkbedingungen ab.
 
@@ -57,5 +57,4 @@ StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die [StorSimple-Systemanforderungen](storsimple-system-requirements.md). 
-
 

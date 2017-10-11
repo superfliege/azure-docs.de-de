@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 53fdf1fe661167b468ef602634528e4d4173f606
-
-
+ms.openlocfilehash: f59fbd18413fb44026d8c92b7f6940ed2f8a00a8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshooting-cdn-endpoints-returning-404-statuses"></a>Problembehandlung bei CDN-Endpunkten mit Status 404
 Dieser Artikel unterstützt Sie bei der Behandlung von Problemen mit [CDN-Endpunkten](cdn-create-new-endpoint.md) , die 404-Fehler ausgeben.
@@ -97,10 +97,4 @@ Als Letztes sollte noch der **Ursprungspfad**geprüft werden.  Standardmäßig i
 In unserem Endpunkt sollen beispielsweise alle Ressourcen im Speicherkonto verfügbar sein, weshalb ich das Feld **Ursprungspfad** leer gelassen habe.  Bei einer Anforderung an `https://cdndocdemo.azureedge.net/publicblob/lorem.txt` wird somit vom Endpunkt eine Verbindung mit `cdndocdemo.core.windows.net` mit der Anforderung `/publicblob/lorem.txt` hergestellt.  Dementsprechend fordert der Endpunkt bei einer Anforderung an `https://cdndocdemo.azureedge.net/donotcache/status.png` vom Ursprung `/donotcache/status.png` an.
 
 Aber wie gehe ich vor, wenn das CDN nicht für jeden Ursprungspfad verwendet werden soll?  Nehmen wir an, ich möchte nur den Pfad `publicblob` bereitstellen.  Durch Eingabe von */publicblob* im Feld **Ursprünglicher Pfad** fügt der Endpunkt vor jeder Anforderung an den Ursprung */publicblob* ein.  Dann wird `/publicblob` bei jeder Anforderung an den Anfang von `https://cdndocdemo.azureedge.net/publicblob/lorem.txt` vor dem Anforderungsteil der URL (`/publicblob/lorem.txt`) eingefügt. Somit wird eine Anforderung für `/publicblob/publicblob/lorem.txt` vom Ursprung erstellt.  Wenn dieser Pfad zu keiner Datei führt, gibt der Ursprung den Status 404 zurück.  Die richtige URL zum Abruf von „lorem.txt“ wäre in diesem Beispiel `https://cdndocdemo.azureedge.net/lorem.txt`.  Wie Sie sehen, ist der Pfad */publicblob* hier nicht angegeben, da der Anforderungsteil der URL `/lorem.txt` lautet und der Endpunkt `/publicblob` hinzufügt, sodass `/publicblob/lorem.txt` als Anforderung an den Ursprung weitergegeben wird.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

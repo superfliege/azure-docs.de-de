@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bedcbc3218022b36cc9f961c7621db3c5a639828
-ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 2738fc1dff50a177a227ae2c7719bd9a192d82ad
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publish-WebApplicationWebSite (Windows PowerShell-Skript)
 Stellt eine Webanwendung auf einem virtuellen Computer bereit. Das Skript erstellt die erforderlichen Ressourcen in Ihrem Azure-Abonnement, wenn sie noch nicht vorhanden sind.
@@ -80,7 +79,7 @@ Bei „true“ können Zertifikate verwendet werden, die nicht von einer vertrau
 | Platzhalterzeichen akzeptieren? |false |
 
 ### <a name="vmpassword"></a>VMPassword
-Die Anmeldeinformationen für das Konto des virtuellen Computers. Beispiel: -VMPassword @{Name = "Admin"; Password = "Kennwort"}
+Die Anmeldeinformationen für das Konto des virtuellen Computers. Beispiel: - VMPassword @{Name = "Admin"; Kennwort = "Kennwort"}
 
 | Aliase | (Keine) |
 | --- | --- |
@@ -91,7 +90,7 @@ Die Anmeldeinformationen für das Konto des virtuellen Computers. Beispiel: -VMP
 | Platzhalterzeichen akzeptieren? |false |
 
 ### <a name="databaseserverpassword"></a>DatabaseServerPassword
-Die Anmeldeinformationen für die SQL-Datenbank in Azure. Beispiel: -DatabaseServerPassword @{Name = "Admin"; Password = "Kennwort"}
+Die Anmeldeinformationen für die SQL-Datenbank in Azure. Beispiel: - DatabaseServerPassword @{Name = "Admin"; Kennwort = "Kennwort"}
 
 | Aliase | (Keine) |
 | --- | --- |
@@ -185,5 +184,4 @@ In der JSON-Konfigurationsdatei sind die Details angegeben, was bereitgestellt w
 ```
 
 Sie können die JSON-Konfigurationsdatei bearbeiten, um die Elemente zu ändern, die bereitgestellt werden. Ein virtueller Computer und ein Clouddienst sind erforderlich, aber der Datenbankabschnitt ist optional.
-
 

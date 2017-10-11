@@ -15,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.date: 08/15/2016
 ms.author: seasa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a635b214fcc9b37ac426df227420b643e2a02cc7
-ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: aa51c846efef12461ec382274199bc049c42aaa3
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Verwalten des Azure Search-Diensts mit PowerShell
 > [!div class="op_single_selector"]
@@ -138,5 +137,4 @@ Nachdem der Dienst erstellt wurde, können Sie die nächsten Schritte ausführen
 * [Einrichten eines Indexers zum Laden von Daten anderer Dienste](search-indexer-overview.md)
 * [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md)
 * [Analysieren Ihres Azure Search-Datenverkehrs](search-traffic-analytics.md)
-
 

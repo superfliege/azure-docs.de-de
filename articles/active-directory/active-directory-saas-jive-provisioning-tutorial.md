@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 957b152fdd40d08a867e788b0cb9f7d57ed481e4
-ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-configuring-jive-for-user-provisioning"></a>Tutorial: Konfigurieren von Jive für die Benutzerbereitstellung
 
@@ -103,4 +101,4 @@ Sie können nun ein Testkonto erstellen. Warten Sie bis zu 20 Minuten, um zu üb
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-* [Configure Single Sign-on](active-directory-saas-jive-tutorial.md) (Einmaliges Anmelden konfigurieren)
+* [Konfigurieren des einmaligen Anmeldens](active-directory-saas-jive-tutorial.md)

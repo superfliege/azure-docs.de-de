@@ -1,32 +1,32 @@
-## <a name="nic"></a>NIC
-Eine Netzwerkkarte (NIC) stellt als Ressource Netzwerkkonnektivität für ein bestehendes Subnetz in einer VNet-Ressource bereit. Obwohl Sie eine Netzwerkkarte als eigenständiges Objekt erstellen können, müssen Sie sie einem anderen Objekt zuweisen, um Konnektivität bereitstellen zu können. Eine Netzwerkkarte kann verwendet werden, um einen virtuellen Computer mit einem Subnetz, einer öffentlichen IP-Adresse oder einem Load Balancer zu verbinden.  
+## <a name="nic"></a>NETZWERKKARTE
+Netzwerkschnittstellenkarte (NIC) eine Netzwerkressource-Schnittstelle stellt über eine Netzwerkverbindung mit einem vorhandenen Subnetz in einem VNet-Ressource. Obwohl Sie eine NIC als eigenständige Objekt erstellen können, müssen Sie ihn in ein anderes Objekt für die tatsächlich Verbindung zuordnen. Eine Netzwerkkarte kann Verbindung ein virtuellen Computers mit einem Subnetz, eine öffentliche IP-Adresse oder einen Lastenausgleich verwendet werden.  
 
 | Eigenschaft | Beschreibung | Beispielwerte |
 | --- | --- | --- |
-| **virtualMachine** |Der virtuelle Computer, dem die Netzwerkkarte zugeordnet ist |/subscriptions/{GUID}/../Microsoft.Compute/virtualMachines/vm1 |
-| **macAddress** |Die MAC-Adresse der Netzwerkkarte |Ein beliebiger Wert zwischen 4 und 30 |
-| **networkSecurityGroup** |Die NSG, der die Netzwerkkarte zugeordnet ist |/subscriptions/{GUID}/../Microsoft.Network/networkSecurityGroups/myNSG1 |
-| **dnsSettings** |DNS-Einstellungen für die Netzwerkkarte |Weitere Informationen finden Sie unter [PIP](#Public-IP-address) |
+| **VirtualMachine.** |VM die NIC zugeordnet ist. |/Subscriptions/{GUID}/../Microsoft.Compute/virtualMachines/VM1 |
+| **macAddress** |MAC-Adresse für die NIC an |einen beliebigen Wert zwischen 4 und 30 ein. |
+| **networkSecurityGroup** |NSG, die NIC zugeordnet sind |/Subscriptions/{GUID}/../Microsoft.Network/networkSecurityGroups/myNSG1 |
+| **dnsSettings** |DNS-Einstellungen für die NIC an |finden Sie unter [PIP](#Public-IP-address) |
 
-Eine Netzwerkschnittstellenkarte (Network Interface Card, NIC) stellt eine Netzwerkschnittstelle dar, die einem virtuellen Computer (VM) zugeordnet werden kann. Ein virtueller Computer hat ein oder mehrere NICs.
+Eine Netzwerkschnittstellenkarte oder NIC, stellt eine Netzwerkschnittstelle aus, die an einen virtuellen Computer (VM) zugeordnet werden kann. Einen virtuellen Computer kann eine oder mehrere NICs haben.
 
-![NICs auf einem einzelnen virtuellen Computer](./media/resource-groups-networking/Figure3.png)
+![NIC auf einem einzelnen virtuellen Computer](./media/resource-groups-networking/Figure3.png)
 
 ### <a name="ip-configurations"></a>IP-Konfigurationen
-Netzwerkkarten verfügen über ein untergeordnetes Objekt mit dem Namen **ipConfigurations** , das die folgenden Eigenschaften enthält:
+NICs haben kein untergeordnetes Objekt mit dem Namen **IP-Konfigurationen** , enthält die folgenden Eigenschaften:
 
 | Eigenschaft | Beschreibung | Beispielwerte |
 | --- | --- | --- |
-| **subnet** |Das Subnetz, mit dem die Netzwerkkarte verbunden ist |/subscriptions/{GUID}/../Microsoft.Network/virtualNetworks/myvnet1/subnets/mysub1 |
-| **privateIPAddress** |Die IP-Adresse für die Netzwerkkarte im Subnetz |10.0.0.8 |
-| **privateIPAllocationMethod** |Die IP-Zuordnungsmethode |Dynamisch oder statisch |
-| **enableIPForwarding** |Gibt an, ob die Netzwerkkarte für das Routing verwendet werden kann |"true" oder "false" |
-| **primary** |Gibt an, ob die Netzwerkkarte die primäre Netzwerkkarte für den virtuellen Computer ist |"true" oder "false" |
-| **publicIPAddress** |Die öffentliche IP-Adresse, die der Netzwerkkarte zugeordnet ist. |Weitere Informationen finden Sie unter [DNS-Einstellungen](#DNS-settings) |
-| **loadBalancerBackendAddressPools** |Back-End-Adresspools, denen die Netzwerkkarte zugeordnet ist | |
-| **loadBalancerInboundNatRules** |Eingehende NAT-Regeln für den Load Balancer, dem die Netzwerkkarte zugeordnet ist | |
+| **Subnetz** |Der NIC-Subnetz ist verbunden. |/Subscriptions/{GUID}/../Microsoft.Network/virtualNetworks/myvnet1/Subnets/mysub1 |
+| **Netzwerkschnittstelle** |IP-Adresse für die Netzwerkkarte in dem Subnetz |10.0.0.8 |
+| **privateIPAllocationMethod** |IP-Zuordnungsmethode |Dynamische oder statische |
+| **enableIPForwarding** |Gibt an, ob die Netzwerkkarte für das routing verwendet werden kann |"True" oder "false" |
+| **primäre** |Gibt an, ob die Netzwerkkarte für die primäre NIC für den virtuellen Computer ist |"True" oder "false" |
+| **publicIPAddress** |Der NIC zugeordnet PIP |finden Sie unter [DNS-Einstellungen](#DNS-settings) |
+| **"loadbalancerbackendaddresspools"** |Sichern von End-Adresspools, denen die NIC zugeordnet sind | |
+| **loadBalancerInboundNatRules** |Eingehende Load Balancer NAT-Regeln, denen die NIC zugeordnet ist | |
 
-Beispiel für eine öffentliche IP-Adresse im JSON-Format:
+Beispiel öffentliche IP-Adresse im JSON-Format:
 
     {
         "name": "lb-nic1-be",
@@ -73,5 +73,5 @@ Beispiel für eine öffentliche IP-Adresse im JSON-Format:
     }
 
 ### <a name="additional-resources"></a>Zusätzliche Ressourcen
-* Lesen Sie die [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163579.aspx) für Informationen zu Netzwerkkarten.
+* Lesen der [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163579.aspx) für Netzwerkkarten.
 

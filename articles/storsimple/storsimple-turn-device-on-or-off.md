@@ -15,13 +15,11 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 0577c837e0c47ba37a4f586603b0f5b951f1b549
-ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Ein- und Ausschalten von Geräten der StorSimple 8000-Serie
 ## <a name="overview"></a>Übersicht
@@ -174,5 +172,4 @@ Nachdem Sie auf Windows PowerShell für StorSimple oder das klassische Azure-Por
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Kontaktieren Sie den Microsoft-Support](storsimple-8000-contact-microsoft-support.md) , wenn beim Einschalten oder Herunterfahren eines StorSimple-Geräts Probleme auftreten.
-
 

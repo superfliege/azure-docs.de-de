@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 742efd1496de9ce76b1e5636297ef30f546bd108
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="resize-a-windows-vm"></a>Ändern der Größe eines virtuellen Windows-Computers
 In diesem Artikel erfahren Sie, wie die Größe eines virtuellen Windows-Computers, der im Resource Manager-Bereitstellungsmodell erstellt wurde, mithilfe von Azure Powershell geändert wird.
@@ -104,5 +103,4 @@ Wenn die neue Größe für einen virtuellen Computer in einer Verfügbarkeitsgru
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese zentral hoch, um zusätzliche Skalierbarkeit zu erhalten. Weitere Informationen finden Sie unter [Automatisches Skalieren von Windows-Computern in einer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
-
 

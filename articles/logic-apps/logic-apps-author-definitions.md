@@ -15,13 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/29/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e94837bf79e42602e2f72cda747ea629eed45a20
-ms.openlocfilehash: 920940d8ebe23d24216d3e886bd8ae58be12ce34
-ms.contentlocale: de-de
-ms.lasthandoff: 03/01/2017
-
-
+ms.openlocfilehash: 7f9e5a10066df8a464c285273e77a85c0d562ebb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-workflow-definitions-for-logic-apps-using-json"></a>Erstellen von Workflowdefinitionen für Logik-Apps per JSON-Code
 
@@ -277,9 +275,9 @@ In diesem Fall rufen wir zuerst eine Liste mit Artikeln ab. Basierend auf der Ka
 
 Beachten Sie hierbei Folgendes: 
 
-*    Mit der Funktion [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) wird überprüft, ob die Kategorie einer bekannten definierten Kategorie entspricht.
+*   Mit der Funktion [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) wird überprüft, ob die Kategorie einer bekannten definierten Kategorie entspricht.
 
-*    Nach dem Erhalt der Kategorie können wir das Element mithilfe von eckigen Klammern aus der Zuordnung abrufen: `parameters[...]`.
+*   Nach dem Erhalt der Kategorie können wir das Element mithilfe von eckigen Klammern aus der Zuordnung abrufen: `parameters[...]`.
 
 ## <a name="process-strings"></a>Verarbeiten von Zeichenfolgen
 
@@ -452,4 +450,3 @@ In der tatsächlichen `PUT`-Anforderung für die Logik-App können Sie den Param
 In den einzelnen Umgebungen können Sie einen anderen Wert für den `connection`-Parameter angeben. 
 
 In der [REST-API-Dokumentation](https://msdn.microsoft.com/library/azure/mt643787.aspx) finden Sie Informationen dazu, welche Möglichkeiten Sie zum Erstellen und Verwalten von Logik-Apps haben. 
-

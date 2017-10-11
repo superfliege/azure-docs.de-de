@@ -15,13 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: cc3c705f1c9123de75ced016a5b39eb1a86b0f73
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Exportieren von Ressourcengruppen, die VM-Erweiterungen enthalten
 
 Azure-Ressourcengruppen können in eine neue Resource Manager-Vorlage exportiert werden, die dann erneut bereitgestellt werden kann. Beim Exportvorgang werden vorhandene Ressourcen interpretiert und eine Resource Manager-Vorlage erstellt, deren Bereitstellung eine ähnliche Ressourcengruppe zum Ergebnis hat. Beim Verwenden der Exportoption für Ressourcengruppen für eine Ressourcengruppe, die Erweiterungen für virtuelle Computer enthält, müssen verschiedene Punkte berücksichtigt werden, etwa die Kompatibilität der Erweiterungen und geschützte Einstellungen.
@@ -165,4 +164,3 @@ Im Beispiel der `IaasDiagnostic`-Erweiterung würden im Parameterabschnitt der R
 ```
 
 An diesem Punkt kann die Vorlage mithilfe einer beliebigen Methode zur Vorlagenbereitstellung bereitgestellt werden.
-

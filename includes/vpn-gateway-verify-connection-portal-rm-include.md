@@ -1,7 +1,7 @@
-Im Azure-Portal können Sie zur gewünschten Verbindung navigieren und den Verbindungsstatus eines Resource Manager-VPN-Gateways anzeigen. Die folgenden Schritte zeigen eine Möglichkeit, zu Ihrer Verbindung zu navigieren und sie zu überprüfen.
+Im Azure-Portal können Sie den Verbindungsstatus der VPN-Gateway Ressourcen-Manager anzeigen, navigieren Sie zur Verbindung. Die folgenden Schritte zeigen eine Möglichkeit, navigieren zu Ihrer Verbindung, und vergewissern Sie sich an.
 
-1. Klicken Sie im [Azure-Portal](http://portal.azure.com) auf **All resources** (Alle Ressourcen), und navigieren Sie zu Ihrem Gateway für virtuelle Netzwerke.
-2. Klicken Sie auf dem Blatt für das Gateway für virtuelle Netzwerke auf **Verbindungen**. Der Status der einzelnen Verbindungen wird angezeigt.
-3. Klicken Sie auf den Namen der zu überprüfenden Verbindung, um **Zusammenfassung** zu öffnen. Unter „Zusammenfassung“ können Sie weitere Informationen zu Ihrer Verbindung anzeigen. Der **Status** lautet „Erfolgreich“ und „Verbunden“, wenn die Verbindung erfolgreich hergestellt wurde.
+1. In der [Azure-Portal](http://portal.azure.com), klicken Sie auf **alle Ressourcen** und navigieren Sie zum Gateway virtuellen Netzwerks.
+2. Klicken Sie auf das Blatt für Gateway des virtuellen Netzwerks auf **Verbindungen**. Sie können den Status der einzelnen Verbindung finden Sie unter.
+3. Klicken Sie auf den Namen der Verbindung, die Sie zum Öffnen überprüfen möchten **Essentials**. In Essentials können Sie weitere Informationen zur Verbindung anzeigen. Die **Status** "Succeeded" und "Verbunden" ist, wenn Sie eine erfolgreiche Verbindung vorgenommen haben.
 
-  ![Überprüfen der VPN Gateway-Verbindung über das Azure-Portal](./media/vpn-gateway-verify-connection-portal-rm-include/connectionsucceeded.png)
+  ![Überprüfen Sie VPN-Gateway-Verbindung mit Azure-portal](./media/vpn-gateway-verify-connection-portal-rm-include/connectionsucceeded.png)

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 56471d8ef68eacacb3ecebad5056d7e7a9f3ca40
-ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="security-frame-session-management--articles"></a>Sicherheitsrahmen: Sitzungsverwaltung | Artikel 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
@@ -30,7 +28,7 @@ ms.lasthandoff: 08/23/2017
 | **Azure DocumentDB** | <ul><li>[Verwenden von minimalen Tokengültigkeitsdauern für generierte Ressourcentoken](#resource-tokens)</li></ul> |
 | **ADFS** | <ul><li>[Implementieren der richtigen Abmeldung mit WsFederation-Methoden bei Verwendung von ADFS](#wsfederation-logout)</li></ul> |
 | **Identity Server** | <ul><li>[Implementieren der richtigen Abmeldung bei Verwendung von Identity Server](#proper-logout)</li></ul> |
-| **Web Application** | <ul><li>[Für Anwendungen, die per HTTPS verfügbar sind, müssen sichere Cookies verwendet werden](#https-secure-cookies)</li><li>[Für alle HTTP-basierten Anwendungen sollte HTTP nur für die Cookiedefinition angegeben werden](#cookie-definition)</li><li>[Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Webseiten](#csrf-asp)</li><li>[Einrichten der Sitzung für die Inaktivitätsgültigkeitsdauer](#inactivity-lifetime)</li><li>[Implementieren der richtigen Abmeldung von der Anwendung](#proper-app-logout)</li></ul> |
+| **Webanwendung** | <ul><li>[Für Anwendungen, die per HTTPS verfügbar sind, müssen sichere Cookies verwendet werden](#https-secure-cookies)</li><li>[Für alle HTTP-basierten Anwendungen sollte HTTP nur für die Cookiedefinition angegeben werden](#cookie-definition)</li><li>[Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Webseiten](#csrf-asp)</li><li>[Einrichten der Sitzung für die Inaktivitätsgültigkeitsdauer](#inactivity-lifetime)</li><li>[Implementieren der richtigen Abmeldung von der Anwendung](#proper-app-logout)</li></ul> |
 | **Web-API** | <ul><li>[Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Web-APIs](#csrf-api)</li></ul> |
 
 ## <a id="logout-adal"></a>Implementieren der richtigen Abmeldung mit ADAL-Methoden bei Verwendung von Azure AD

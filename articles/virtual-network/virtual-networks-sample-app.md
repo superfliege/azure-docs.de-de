@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-translationtype: Human Translation
-ms.sourcegitcommit: cb2e480a45871ad0c956dc976de955ca48ecdfd0
 ms.openlocfilehash: 8506238e41c5d9dac8d76d729d4919b30a0528b9
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>Beispielanwendung für die Verwendung mit DMZs
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
@@ -42,7 +42,7 @@ Wenn Sie die nachstehenden Skripts verwenden, ist diese Erweiterung der Firewall
 Mit diesem Skript werden folgende Vorgänge durchgeführt:
 
 1. Öffnen von ICMPv4 (Ping) in der Windows-Firewall des lokalen Servers für einfacheres Testen
-2. Installieren von IIS und .Net Framework&4;.5
+2. Installieren von IIS und .Net Framework 4.5
 3. Erstellen einer ASP.NET-Webseite und der Datei "Web.config"
 4. Ändern des Standardanwendungspools für einfacheren Dateizugriff
 5. Festlegen des anonymen Benutzers auf Ihr Administratorkonto und -kennwort
@@ -202,9 +202,3 @@ Diese Beispielanwendung enthält kein Skript zum Einrichten des DNS-Servers. Wen
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-

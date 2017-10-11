@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/06/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a96150a6a7f83d1c220e0450f7704634a1f6ed1b
-ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 5c8f4c784eed7b64810a3dd1c36c043d22a66936
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>Erstellen Ihres ersten eigenständigen Service Fabric-Clusters
 Sie können einen eigenständigen Service Fabric-Cluster auf beliebigen virtuellen oder physischen Computern unter Windows Server 2012 R2 oder Windows Server 2016 erstellen – ganz gleich ob lokal oder in der Cloud. In diesem Schnellstarttutorial erfahren Sie, wie Sie innerhalb weniger Minuten einen eigenständigen Entwicklungscluster erstellen.  Nach Abschluss des Tutorials verfügen Sie über einen Cluster mit drei Knoten, der auf einem einzelnen Computer ausgeführt wird und für den Sie Apps bereitstellen können.
 
@@ -95,4 +93,3 @@ Nachdem Sie nun einen eigenständigen Entwicklungscluster eingerichtet haben, k�
 * [Bereitstellen von Apps mit PowerShell](service-fabric-deploy-remove-applications.md)
 
 [service-fabric-explorer]: ./media/service-fabric-get-started-standalone-cluster/sfx.png
-

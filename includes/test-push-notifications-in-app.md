@@ -1,5 +1,5 @@
 
-* Klicken Sie in Xcode auf **Ausführen**, und starten Sie die App auf einem iOS-Gerät (Push funktioniert nicht in Simulatoren). Klicken Sie auf **OK**, um Pushbenachrichtigungen anzunehmen. Diese Aufforderung wird beim ersten Ausführen der App angezeigt.
-* Fügen Sie in der App auf ein neues Element hinzu, und klicken Sie auf **+**.
-* Stellen Sie sicher, dass Sie eine Benachrichtigung erhalten haben, und klicken Sie dann auf **OK** , um diese zu schließen. Sie haben dieses Lernprogramm erfolgreich abgeschlossen.
+* Drücken Sie in Xcode **ausführen** und starten Sie die app auf einem iOS-Gerät (Beachten Sie, die Clientpushinstallation auf Simulatoren nicht funktioniert). Klicken Sie auf **OK** Pushbenachrichtigungen; akzeptiert diese Anforderung tritt beim ersten der app ausführen.
+* Klicken Sie in der app ein neues Element hinzufügen, und klicken Sie auf  **+** .
+* Stellen Sie sicher, dass eine Benachrichtigung empfangen wird, und klicken Sie auf **OK** verwerfen die Benachrichtigung. Sie haben jetzt dieses Lernprogramm erfolgreich abgeschlossen.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Einschränken von Azure-CDN-Inhalten nach Land
 
@@ -62,15 +62,9 @@ Beispielsweise werden durch die Regel zum Blockieren von "/Photos/Strasbourg/" d
 ### <a name="country-codes"></a>Landeskennzahlen
 Die **Geofilterung** verwendet Landeskennzahlen, um die Länder zu definieren, von denen aus eine Anforderung für ein sicheres Verzeichnis zugelassen oder blockiert wird. Die Landeskennzahlen finden Sie unter [Landeskennzahlen für Azure CDN](https://msdn.microsoft.com/library/mt761717.aspx). 
 
-## <a name="a-idconsiderationsaconsiderations"></a><a id="considerations"></a>Überlegungen
+## <a id="considerations"></a>Überlegungen
 * Für Verizon kann es bis zu 90 Minuten und für Akamai einige Minuten dauern, bis die Änderungen an Ihrem Länderfilter wirksam werden.
 * Diese Funktion unterstützt keine Platzhalterzeichen (z. B. "*").
 * Die dem relativen Pfad zugeordnete Geofilterkonfiguration wird rekursiv auf diesen Pfad angewendet.
 * Pro relativen Pfad kann nur eine Regel angewendet werden (Sie können nicht mehrere Länderfilter erstellen, die auf den gleichen relativen Pfad verweisen). Jedoch können mehrere Länderfilter auf einen Ordner angewendet werden. Das liegt an der rekursiven Natur der Länderfilter. Anders ausgedrückt: Ein Unterordner eines zuvor konfigurierten Ordners kann einem anderen Länderfilter zugewiesen werden.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

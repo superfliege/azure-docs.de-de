@@ -1,22 +1,18 @@
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 
-## Nächste Schritte
+Nach der Aktivierung von Azure Key Vault-Integration, können Sie SQL Server-Verschlüsselung für die SQL-VM aktivieren. Zunächst müssen Sie einen asymmetrischen Schlüssel innerhalb Ihres schlüsseltresors und eines symmetrischen Schlüssels in SQL Server für Ihren virtuellen Computer zu erstellen. Klicken Sie dann, Sie können T-SQL-Anweisungen zum Aktivieren der Verschlüsselung für Ihre Datenbanken und die Sicherungen ausgeführt werden.
 
-Nach dem Aktivieren der Azure-Schlüsseltresor-Integration können Sie die SQL Server-Verschlüsselung auf Ihrem virtuellen SQL-Computer aktivieren. Zuerst müssen Sie in Ihrem Schlüsseltresor einen asymmetrischen Schlüssel und in SQL Server auf Ihrem virtuellen Computer einen symmetrischen Schlüssel erstellen. Sie können dann T-SQL-Anweisungen ausführen, um die Verschlüsselung für Ihre Datenbanken und Backups zu aktivieren.
+Es gibt mehrere Typen von Verschlüsselung, die Sie nutzen können:
 
-Es gibt verschiedene Arten der Verschlüsselung, die Sie nutzen können:
-
-* [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
+* [Transparente datenverschlüsselung (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
 * [Verschlüsselte Sicherungen](https://msdn.microsoft.com/library/dn449489.aspx)
-* [Column Level Encryption (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [Verschlüsselung auf Spaltenebene (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
 
-Die folgenden Transact-SQL-Skripts enthalten Beispiele für jeden dieser Bereiche.
+Die folgende Transact-SQL-Skripts finden Sie Beispiele für jeden dieser Bereiche.
 
-<a id="prerequisites-for-examples" class="xliff"></a>
+### <a name="prerequisites-for-examples"></a>Erforderliche Komponenten, Beispiele
 
-### Erforderliche Komponenten für Beispiele
-
-Jedes Beispiel basiert auf diesen beiden erforderlichen Komponenten: einem asymmetrischen Schlüssel aus Ihrem Schlüsseltresor mit dem Namen **CONTOSO_KEY** und Anmeldeinformationen, die mit der Funktion für die Azure-Schlüsseltresor-Integration erstellt wurden und den Namen **Azure_EKM_TDE_cred** haben. Die folgenden Transact-SQL-Befehle richten diese erforderlichen Komponenten für die Ausführung der Beispiele ein:
+Jedes Beispiel basiert auf zwei Komponenten: ein asymmetrischer Schlüssel aus Ihren schlüsseltresor aufgerufen **CONTOSO_KEY** und erstellt das AKV-Integrationsfeature Anmeldeinformationen aufgerufen **Azure_EKM_TDE_cred**. Die folgenden Transact-SQL-Befehle setup diese erforderlichen Komponenten für die Beispiele ausführen.
 
 ``` sql
 USE master;
@@ -55,11 +51,9 @@ WITH PROVIDER_KEY_NAME = 'keytestvault',  --key name
 CREATION_DISPOSITION = OPEN_EXISTING;
 ```
 
-<a id="transparent-data-encryption-tde" class="xliff"></a>
+### <a name="transparent-data-encryption-tde"></a>Transparente datenverschlüsselung (TDE)
 
-### Transparent Data Encryption (TDE)
-
-1. Erstellen Sie eine SQL Server-Anmeldung, die vom Datenbankmodul für TDE verwendet werden kann, und fügen Sie die Anmeldeinformationen hinzu.
+1. Erstellen Sie eine SQL Server-Anmeldung, die vom Datenbankmodul für TDE verwendet werden, und fügen Sie die Anmeldeinformationen hinzu.
 
    ``` sql
    USE master;
@@ -77,7 +71,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-1. Erstellen Sie den Datenbankverschlüsselungsschlüssel, der für TDE verwendet werden soll.
+1. Erstellen Sie den Datenbank-Verschlüsselungsschlüssel, der für TDE verwendet werden.
 
    ``` sql
    USE ContosoDatabase;
@@ -94,11 +88,9 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-<a id="encrypted-backups" class="xliff"></a>
+### <a name="encrypted-backups"></a>Verschlüsselte Sicherungen
 
-### Verschlüsselte Sicherungen
-
-1. Erstellen Sie eine SQL Server-Anmeldung, die vom Datenbankmodul für die Verschlüsselung von Sicherungen verwendet werden kann, und fügen Sie die Anmeldeinformationen hinzu.
+1. Erstellen Sie eine SQL Server-Anmeldung, die vom Datenbankmodul zum Verschlüsseln von Sicherungen verwendet werden, und fügen Sie die Anmeldeinformationen hinzu.
 
    ``` sql
    USE master;
@@ -115,7 +107,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-1. Sichern Sie die Datenbank, indem Sie die Verschlüsselung mit dem asymmetrischen Schlüssel angeben, der im Schlüsseltresor gespeichert ist.
+1. Sichern Sie die Angabe Datenbank-Verschlüsselungsschlüssel, mit dem asymmetrischen Schlüssel im schlüsseltresor gespeichert.
 
    ``` sql
    USE master;
@@ -126,11 +118,9 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-<a id="column-level-encryption-cle" class="xliff"></a>
+### <a name="column-level-encryption-cle"></a>Verschlüsselung auf Spaltenebene (CLE)
 
-### Column Level Encryption (CLE)
-
-Mit diesem Skript wird ein symmetrischer Schlüssel erstellt, der durch den asymmetrischen Schlüssel im Schlüsseltresor geschützt ist, und anschließend wird der symmetrische Schlüssel zum Verschlüsseln der Daten in der Datenbank verwendet.
+Dieses Skript erstellt einen symmetrischen Schlüssel durch den asymmetrischen Schlüssel im schlüsseltresor geschützt, und klicken Sie dann den symmetrischen Schlüssel zum Verschlüsseln von Daten in der Datenbank verwendet.
 
 ``` sql
 CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
@@ -153,10 +143,8 @@ SELECT CONVERT(VARCHAR, DECRYPTBYKEY(@DATA));
 CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 ```
 
-<a id="additional-resources" class="xliff"></a>
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-## Weitere Ressourcen
+Weitere Informationen zum Verwenden dieser Verschlüsselungsfunktionen finden Sie unter [mithilfe von EKM mit SQL Server-Verschlüsselungsfunktionen](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
 
-Weitere Informationen zur Verwendung dieser Verschlüsselungsfunktionen finden Sie unter [Verwenden der erweiterbaren Schlüsselverwaltung mit SQL Server-Verschlüsselungsfunktionen](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
-
-Beachten Sie, dass bei den Schritten in diesem Artikel davon ausgegangen wird, dass bei Ihnen SQL Server bereits auf einem virtuellen Azure-Computer ausgeführt wird. Ist dies nicht der Fall, helfen Ihnen die Informationen unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) weiter. Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie in der [Übersicht zu SQL Server auf virtuellen Azure-Computern](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Beachten Sie, dass die Schritte in diesem Artikel wird davon ausgegangen, dass Sie bereits SQL Server auf virtuellen Azure-Computer ausgeführt wird. Falls nicht, siehe [bereitstellen einen SQL Server-Computer in Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). Andere Hinweise zum SQL Server auf virtuellen Azure-Computern ausgeführt werden soll, finden Sie unter [SQL Server auf Azure Virtual Machines Overview](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).

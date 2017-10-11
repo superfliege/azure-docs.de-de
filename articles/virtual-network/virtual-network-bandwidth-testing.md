@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: a2cbb6ca9197c7af0d1d30e87d58b0314507a531
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: ccebc722386a19014674d7a59757a3685bd50793
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="bandwidththroughput-testing-ntttcp"></a>Testen der Bandbreite / des Durchsatzes (NTTTCP)
 
 Wenn Sie die Leistung des Netzwerkdurchsatzes in Azure testen, ist es empfehlenswert, ein Tool zu verwenden, das das Netzwerk zum Testen als Ziel hat und die Verwendung anderer Ressourcen minimiert, die die Leistung beeinflussen könnten. NTTTCP wird empfohlen.
@@ -164,4 +162,3 @@ ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 ## <a name="next-steps"></a>Nächste Schritte
 * [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](virtual-network-optimize-network-bandwidth.md) hilft Ihnen womöglich bei Ihrem Szenario, abhängig von den Ergebnissen.
 * Weitere Informationen finden Sie unter [Azure Virtual Network – häufig gestellte Fragen](virtual-networks-faq.md)
-

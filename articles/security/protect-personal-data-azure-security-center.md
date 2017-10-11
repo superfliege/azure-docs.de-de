@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 8738ffc13734437f4c61cf7be76590e5d73adf42
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.openlocfilehash: 3a941389713a4d3dbffbbfe8a717409927d85c6d
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="protect-personal-data-from-breaches-and-attacks-azure-security-center"></a>Schützen personenbezogener Daten vor Sicherheitsverletzungen und Angriffen: Azure Security Center
 
@@ -207,4 +206,3 @@ Weitere Anweisungen zum Implementieren einer Lösung zur Sicherheitsrisikobewert
 - [Integrieren von Azure Security Center-Warnungen mithilfe der Azure-Protokollintegration](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration)
 
 - [Boost Azure Security Center with Integrated Vulnerability Assessment](https://blogs.msdn.microsoft.com/azuresecurity/2016/12/16/boost-azure-security-center-with-integrated-vulnerability-assessment/) (Verbessern von Azure Security Center mit integrierter Sicherheitsrisikobewertung)
-

@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: 725fba1227cfc9c4850f9e2d6fd0b13e88eafa20
-ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>Tutorial: Azure Active Directory-Integration mit Panopto
 
@@ -93,7 +91,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Panopto m�
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Panopto-Testbenutzers](#creating-a-panopto-test-user)**, um eine Entsprechung von Britta Simon in Panopto zu erhalten, die mit ihrer Darstellung in Azure AD verkn체pft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon f체r das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)**, um zu 체berpr체fen, ob die Konfiguration funktioniert.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu 체berpr체fen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -260,5 +258,4 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einf체hrung in den Z
 [201]: ./media/active-directory-saas-panopto-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-panopto-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-panopto-tutorial/tutorial_general_203.png
-
 

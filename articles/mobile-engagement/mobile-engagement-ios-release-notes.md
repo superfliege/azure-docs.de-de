@@ -14,12 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: 9bdaa57f9902373ccf796ff109332b64c66bf9e7
-ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-mobile-engagement-ios-sdk-release-notes"></a>Versionshinweise zum iOS-SDK für Azure Mobile Engagement
 
@@ -78,4 +77,3 @@ ms.lasthandoff: 07/19/2017
 * API entfernt, um Nachrichten zwischen Geräten zu senden und zu empfangen.
 * Verbesserungen der Sicherheit
 * SmartAd-Verfolgung entfernt.
-

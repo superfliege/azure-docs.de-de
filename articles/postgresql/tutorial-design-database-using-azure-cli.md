@@ -11,12 +11,11 @@ ms.custom: mvc
 ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 06/13/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 700c68f354c61cb975ae684d558e650631ff4d66
-ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: cf536fce8925f9173b541b845af25a8d8c38eabd
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="design-your-first-azure-database-for-postgresql-using-azure-cli"></a>Entwerfen Ihrer ersten Azure-Datenbank für PostgreSQL mithilfe von Azure CLI 
 In diesem Tutorial verwenden Sie die Azure CLI (Befehlszeilenschnittstelle) und andere Hilfsprogramme, um zu lernen, wie Sie Folgendes ausführen:
@@ -29,7 +28,7 @@ In diesem Tutorial verwenden Sie die Azure CLI (Befehlszeilenschnittstelle) und 
 > * Aktualisieren von Daten
 > * Wiederherstellen von Daten
 
-Sie können Azure Cloud Shell im Browser verwenden oder die [Azure CLI 2.0 auf Ihrem Computer installieren]( /cli/azure/install-azure-cli), um die Codeblöcke in diesem Tutorial auszuführen.
+Sie können Azure Cloud Shell im Browser verwenden oder [Azure CLI 2.0 auf dem lokalen Computer installieren]( /cli/azure/install-azure-cli), um die Codeblöcke in diesem Tutorial auszuführen.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -182,7 +181,7 @@ Für den Befehl `az postgres server restore` sind folgende Parameter erforderlic
 | Einstellung | Empfohlener Wert | Beschreibung  |
 | --- | --- | --- |
 | --resource-group |  myResourceGroup |  Die Ressourcengruppe, in der sich der Quellserver befindet  |
-| --name | mypgserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird |
+| --name | mypgserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Wählen Sie einen Zeitpunkt für die Wiederherstellung aus. Datum und Zeit müssen innerhalb des Aufbewahrungszeitraums für Sicherungen des Quellservers liegen. Verwenden Sie das Datums- und Zeitformat nach ISO 8601. Beispielsweise können Sie Ihre eigene lokale Zeitzone wie etwa `2017-04-13T05:59:00-08:00` oder das UTC-Format Zulu `2017-04-13T13:59:00Z` verwenden. |
 | --source-server | mypgserver-20170401 | Der Name oder die ID des Quellservers, über den die Wiederherstellung durchgeführt wird. |
 
@@ -203,4 +202,3 @@ In diesem Tutorial haben Sie die Verwendung der Azure CLI (Befehlszeilenschnitts
 > * Wiederherstellen von Daten
 
 Um als Nächstes zu erfahren, wie Sie das Azure-Portal verwenden, um ähnliche Aufgaben auszuführen, absolvieren Sie dieses Tutorial: [Entwerfen Ihrer ersten Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals](tutorial-design-database-using-azure-portal.md).
-

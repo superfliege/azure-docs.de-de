@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
 ms.openlocfilehash: 35e3f4ee07414927cd93e3fbe54d7c96f4681ba4
-ms.lasthandoff: 01/30/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-security-videos-on-channel-9"></a>Azure-Sicherheitsvideos auf Channel 9
 [Channel 9](https://channel9.msdn.com/) ist eine Community, in der die Personen hinter unseren Produkten zu Wort kommen und Verbindung mit Kunden aufnehmen können.
@@ -79,4 +78,3 @@ Azure Active Directory (AD) Privileged Identity Management ist eine Premium-Funk
 [Azure Key Vault with Amit Bapat (Azure Key Vault mit Amit Bapat)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Key-Vault-with-Amit-Bapat)
 
 Amit Bapat führt Scott in Azure Key Vault ein. Mit Azure Key Vault können Sie Schlüssel und geheime Daten wie Kennwörter mithilfe von Schlüsseln verschlüsseln, die in HSMs (Hardware Security Module) gespeichert sind. Azure Key Vault kann zur cloudbasierten und hardwarebasierten Verwaltung geheimer Daten in Microsoft Azure eingesetzt werden.
-

@@ -1,3 +1,3 @@
-## <a name="whats-changed"></a>Änderungen
-* Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714)
+## <a name="whats-changed"></a>Neues
+* Eine Anleitung für die Änderung von App Service-Websites finden Sie unter: [Azure App Service und seine Auswirkungen auf vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714)
 

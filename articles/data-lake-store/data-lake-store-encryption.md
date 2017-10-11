@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 4/14/2017
 ms.author: yagupta
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 20444d368c568ee716ff242e33323b91ffd198eb
-ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Datenverschlüsselung in Azure Data Lake Store
 
 Mit der Verschlüsselung in Azure Data Lake Store können Sie Ihre Daten schützen, Sicherheitsrichtlinien für Unternehmen implementieren und gesetzliche Vorschriften einhalten. Dieser Artikel enthält eine Übersicht über das Design und behandelt einige technische Aspekte der Implementierung.
@@ -52,8 +50,8 @@ Data Lake Store bietet zwei Verwaltungsmodi für Masterverschlüsselungsschlüss
 
 Zur Verwaltung des Masterverschlüsselungsschlüssels stehen die beiden folgenden Modi zur Verfügung:
 
-*    Vom Dienst verwaltete Schlüssel
-*    Vom Kunden verwaltete Schlüssel
+*   Vom Dienst verwaltete Schlüssel
+*   Vom Kunden verwaltete Schlüssel
 
 In beiden Modi wird der Masterverschlüsselungsschlüssel geschützt, indem er Azure Key Vault gespeichert wird. Key Vault ist ein vollständig verwalteter, äußerst sicherer Dienst in Azure, der zur sicheren Aufbewahrung kryptografischer Schlüssel verwendet werden kann. Weitere Informationen finden Sie unter [Key Vault](https://azure.microsoft.com/services/key-vault).
 
@@ -74,8 +72,8 @@ Abgesehen von dem Unterschied, wer den MEK und die Key Vault-Instanz verwaltet, 
 
 Beachten Sie beim Auswählen des Modus für die Masterverschlüsselungsschlüssel Folgendes:
 
-*    Beim Bereitstellen eines Data Lake Store-Kontos haben Sie die Wahl zwischen vom Kunden und vom Dienst verwalteten Schlüsseln.
-*    Nach der Bereitstellung eines Data Lake Store-Kontos kann der Modus nicht mehr geändert werden.
+*   Beim Bereitstellen eines Data Lake Store-Kontos haben Sie die Wahl zwischen vom Kunden und vom Dienst verwalteten Schlüsseln.
+*   Nach der Bereitstellung eines Data Lake Store-Kontos kann der Modus nicht mehr geändert werden.
 
 ### <a name="encryption-and-decryption-of-data"></a>Ver- und Entschlüsselung von Daten
 
@@ -92,20 +90,20 @@ Das folgende Diagramm veranschaulicht dieses Konzepte:
 ![Schlüssel bei der Datenverschlüsselung](./media/data-lake-store-encryption/fig2.png)
 
 #### <a name="pseudo-algorithm-when-a-file-is-to-be-decrypted"></a>Pseudoalgorithmus, wenn eine Datei entschlüsselt werden soll:
-1.    Überprüfen Sie, ob der DEK für das Data Lake Store-Konto zwischengespeichert und zur Verwendung bereit ist.
+1.  Überprüfen Sie, ob der DEK für das Data Lake Store-Konto zwischengespeichert und zur Verwendung bereit ist.
     - Falls nicht, lesen Sie den verschlüsselten DEK aus dem persistenten Speicher, und senden Sie ihn zur Entschlüsselung an Key Vault. Der verschlüsselte DEK wird im Arbeitsspeicher zwischengespeichert. Er kann nun verwendet werden.
-2.    Gehen Sie für jeden Datenblock in der Datei wie folgt vor:
+2.  Gehen Sie für jeden Datenblock in der Datei wie folgt vor:
     - Lesen Sie den verschlüsselten Datenblock aus dem persistenten Speicher.
     - Generieren Sie den BEK auf der Grundlage des DEK und des verschlüsselten Datenblocks.
     - Entschlüsseln Sie die Daten mithilfe des BEK.
 
 
 #### <a name="pseudo-algorithm-when-a-block-of-data-is-to-be-encrypted"></a>Pseudoalgorithmus, wenn ein Datenblock verschlüsselt werden soll:
-1.    Überprüfen Sie, ob der DEK für das Data Lake Store-Konto zwischengespeichert und zur Verwendung bereit ist.
+1.  Überprüfen Sie, ob der DEK für das Data Lake Store-Konto zwischengespeichert und zur Verwendung bereit ist.
     - Falls nicht, lesen Sie den verschlüsselten DEK aus dem persistenten Speicher, und senden Sie ihn zur Entschlüsselung an Key Vault. Der verschlüsselte DEK wird im Arbeitsspeicher zwischengespeichert. Er kann nun verwendet werden.
-2.    Generieren Sie auf der Grundlage des DEKs einen eindeutigen BEK für den Datenblock.
-3.    Verschlüsseln Sie den Datenblock mit dem BEK mithilfe der AES-256-Verschlüsselung.
-4.    Speichern Sie den verschlüsselten Datenblock im persistenten Speicher.
+2.  Generieren Sie auf der Grundlage des DEKs einen eindeutigen BEK für den Datenblock.
+3.  Verschlüsseln Sie den Datenblock mit dem BEK mithilfe der AES-256-Verschlüsselung.
+4.  Speichern Sie den verschlüsselten Datenblock im persistenten Speicher.
 
 > [!NOTE] 
 > Im Hinblick auf die Leistung wird der DEK unverschlüsselt für kurze Zeit im Arbeitsspeicher zwischengespeichert und anschließend sofort gelöscht. Auf einem persistenten Medium wird er vor dem Speichern immer durch den MEK verschlüsselt.
@@ -127,17 +125,16 @@ Wenn Sie die Standardverschlüsselungsoptionen verwenden, werden Ihre Daten imme
 
     ![Screenshot von Key Vault](./media/data-lake-store-encryption/keyvault.png)
 
-3.    Wählen Sie den Schlüssel aus, der Ihrem Data Lake Store-Konto zugeordnet ist, und erstellen Sie eine neue Version dieses Schlüssels. Data Lake Store unterstützt derzeit nur die Schlüsselrotation zu einer neuen Version eines Schlüssels. Die Rotation zu einem anderen Schlüssel wird nicht unterstützt.
+3.  Wählen Sie den Schlüssel aus, der Ihrem Data Lake Store-Konto zugeordnet ist, und erstellen Sie eine neue Version dieses Schlüssels. Data Lake Store unterstützt derzeit nur die Schlüsselrotation zu einer neuen Version eines Schlüssels. Die Rotation zu einem anderen Schlüssel wird nicht unterstützt.
 
    ![Screenshot des Fensters „Schlüssel“, „Neue Version“ hervorgehoben](./media/data-lake-store-encryption/keynewversion.png)
 
-4.    Navigieren Sie zum Data Lake Store-Konto, und wählen Sie **Verschlüsselung** aus.
+4.  Navigieren Sie zum Data Lake Store-Konto, und wählen Sie **Verschlüsselung** aus.
 
     ![Screenshot des Fensters des Data Lake Store-Speicherkontos, „Verschlüsselung“ hervorgehoben](./media/data-lake-store-encryption/select-encryption.png)
 
-5.    Sie werden darüber benachrichtigt, dass eine neue Version des Schlüssels verfügbar ist. Klicken Sie auf **Schlüssel rotieren**, um den Schlüssel auf die neue Version zu aktualisieren.
+5.  Sie werden darüber benachrichtigt, dass eine neue Version des Schlüssels verfügbar ist. Klicken Sie auf **Schlüssel rotieren**, um den Schlüssel auf die neue Version zu aktualisieren.
 
     ![Screenshot des Data Lake Store-Fensters mit der Benachrichtigung, „Schlüssel rotieren“ hervorgehoben](./media/data-lake-store-encryption/rotatekey.png)
 
 Der Vorgang dauert in der Regel weniger als zwei Minuten, und bei der Schlüsselrotation sind keine Ausfallzeiten zu erwarten. Nach Abschluss des Vorgangs wird die neue Version des Schlüssels verwendet.
-

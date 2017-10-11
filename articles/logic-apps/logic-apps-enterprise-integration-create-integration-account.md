@@ -14,22 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: LADocs; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 2a7ecec310f4e321417364eee854409b2f85e2d3
-ms.contentlocale: de-de
-ms.lasthandoff: 03/10/2017
-
-
+ms.openlocfilehash: 716e7b5bab8725dea0fd2b760d0e46e8e892c5b4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="what-is-an-integration-account"></a>Was ist ein Integrationskonto?
 
 Mit einem Integrationskonto können Apps für die Unternehmensintegration Artefakte wie Schemas, Zuordnungen, Zertifikate, Partner und Vereinbarungen verwalten. Jede Integrations-App, die Sie erstellen, verwendet ein Integrationskonto, um auf diese Schemas, Zuordnungen, Zertifikate usw. zuzugreifen.
 
 ## <a name="create-an-integration-account"></a>Erstellen eines Integrationskontos
 
-1.    Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. Wählen Sie im linken Menü die Option **Weitere Dienste** aus.
+1.  Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. Wählen Sie im linken Menü die Option **Weitere Dienste** aus.
 
     ![„Weitere Dienste“ auswählen](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
@@ -131,5 +128,4 @@ Gehen Sie wie folgt vor, wenn Sie ein Integrationskonto in ein anderes Azure-Abo
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zu Vereinbarungen](../logic-apps/logic-apps-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")  
-
 

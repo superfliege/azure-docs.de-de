@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: trinadhk; jimpark;
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: fc52c909df5e91741ec1fa21fb911487be039fdc
-ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="restore-virtual-machines-in-azure"></a>Wiederherstellen virtueller Computer in Azure
 > [!div class="op_single_selector"]
@@ -167,4 +166,3 @@ Zum vollständigen Wiederherstellen des virtuellen Computers im Anschluss an die
 ## <a name="next-steps"></a>Nächste Schritte
 * [Problembehandlung](backup-azure-vms-troubleshoot.md#restore)
 * [Verwalten virtueller Computer](backup-azure-manage-vms.md)
-

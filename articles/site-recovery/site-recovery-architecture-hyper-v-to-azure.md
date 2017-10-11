@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/23/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 552794a2c7bba6f551ada5f431cacc236e7732a4
-ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
-
+ms.openlocfilehash: 28f775afaf72b11eec0c22f755e4dbd6a485c895
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-
-
 # <a name="how-does-hyper-v-replication-to-azure-work-in-site-recovery"></a>Wie funktioniert die Hyper-V-Replikation in Azure Site Recovery?
 
 
@@ -68,8 +65,7 @@ Weitere Informationen zu Voraussetzungen für die Bereitstellung und Anforderung
 2. Im Rahmen des Auftrags wird überprüft, ob der Computer die Voraussetzungen erfüllt. Anschließend wird [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) aufgerufen, um die Replikation mit den konfigurierten Einstellungen einzurichten.
 3. Der Auftrag startet die erste Replikation durch Aufrufen der [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx)-Methode, um eine vollständige VM-Replikation zu initiieren, und übermittelt die virtuellen Datenträger des virtuellen Computers an Azure.
 4. Sie können den Auftrag auf der Registerkarte **Aufträge** überwachen.
-        ![Auftragsliste](media/site-recovery-hyper-v-azure-architecture/image1.png)
-        ![Drilldown für „Schutz aktivieren“](media/site-recovery-hyper-v-azure-architecture/image2.png)
+        ![Auftragsliste](media/site-recovery-hyper-v-azure-architecture/image1.png) ![Drilldown für „Schutz aktivieren“](media/site-recovery-hyper-v-azure-architecture/image2.png)
 
 ### <a name="replicate-the-initial-data"></a>Replizieren der ursprünglichen Daten
 
@@ -126,4 +122,3 @@ Im Falle eines Replikationsfehlers wird die integrierte Wiederholungsfunktion ve
 ## <a name="next-steps"></a>Nächste Schritte
 
 Überprüfen Sie die [Supportmatrix](site-recovery-support-matrix-to-azure.md).
-

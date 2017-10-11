@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 312a66544a5e64daa86b4902b57d4050f1f66af5
-ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="security-frame-authorization--mitigations"></a>Sicherheitsrahmen: Autorisierung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
@@ -226,7 +224,7 @@ RLS ist als vorgefertigtes Datenbankfeature nur für SQL Server ab Version 2016 
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | N/V  |
-| **Schritte** | Ein Ressourcentoken ist einer DocumentDB-Berechtigungsressource zugeordnet, und erfasst die Beziehung zwischen dem Benutzer einer Datenbank und der Berechtigung, über die der Benutzer für eine bestimmte DocumentDB-Anwendungsressource (z. B. Sammlung, Dokument) verfügt. Verwenden Sie für den Zugriff auf DocumentDB immer ein Ressourcentoken, falls die Verarbeitung von Hauptschlüsseln oder Schlüsseln mit Leseberechtigung nicht bedenkenlos dem Client überlassen werden kann (beispielsweise im Falle einer Endbenutzeranwendung wie einem mobilen Client oder einem Desktopclient). Verwenden Sie Hauptschlüssel oder Schlüssel mit Leseberechtigung von Back-End-Anwendungen, die diese Schlüssel sicher speichern können.|
+| **Schritte** | Ein Ressourcentoken ist einer DocumentDB-Berechtigungsressource zugeordnet, und erfasst die Beziehung zwischen dem Benutzer einer Datenbank und der Berechtigung, über die der Benutzer für eine bestimmte bestimmte DocumentDB-Anwendungsressource (z. B. Sammlung, Dokument) verfügt. Verwenden Sie für den Zugriff auf DocumentDB immer ein Ressourcentoken, falls die Verarbeitung von Hauptschlüsseln oder Schlüsseln mit Leseberechtigung nicht bedenkenlos dem Client überlassen werden kann (beispielsweise im Falle einer Endbenutzeranwendung wie einem mobilen Client oder einem Desktopclient). Verwenden Sie Hauptschlüssel oder Schlüssel mit Leseberechtigung von Back-End-Anwendungen, die diese Schlüssel sicher speichern können.|
 
 ## <a id="grained-rbac"></a>Ermöglichen Sie mithilfe von RBAC eine differenzierte Zugriffsverwaltung für das Azure-Abonnement.
 
@@ -462,4 +460,3 @@ public class CustomController : ApiController
 | **Attribute**              | N/V  |
 | **Referenzen**              | N/V  |
 | **Schritte** | Das zwischengeschaltete Gateway muss den Aufrufer autorisieren, um zu überprüfen, ob er zum Ausführen der angeforderten Aktion berechtigt ist. Beispielsweise müssen für eine Administratorbenutzeroberfläche/-API, die zum Konfigurieren eines zwischengeschalteten Gateways verwendet wird, und für Geräte, die eine Verbindung mit dem Gateway herstellen, unterschiedliche Berechtigungen verwendet werden.|
-

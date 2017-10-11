@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/01/2017
 ms.author: rajanaki
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: fb5b8c9ac96ac44d0112919664a177f33ef392da
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2017
 ---
-
 #  <a name="prerequisites-for-replicating-azure-virtual-machines-to-another-region-by-using-azure-site-recovery"></a>Voraussetzungen für die Replikation von virtuellen Azure-Computern in einer anderen Region mithilfe von Azure Site Recovery
 
 > [!div class="op_single_selector"]
@@ -56,4 +54,3 @@ Nach der Lektüre dieses Artikels können Sie Kommentare am Ende des Artikels od
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [Netzwerkrichtlinien zum Replizieren von virtuellen Azure-Computern](site-recovery-azure-to-azure-networking-guidance.md).
 - Schützen Sie Ihre Workloads durch die [Replikation virtueller Azure-Computer](site-recovery-azure-to-azure.md).
-

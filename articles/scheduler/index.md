@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation für Azure Scheduler – Tutorials, API-Referenz | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe von Scheduler Aufträge (beispielsweise wiederkehrende Anwendungsaktionen oder routinemäßige Wartungsaufgaben) planen und aufrufen. Tutorials, API-Referenzen und mehr."
+title: "Azure Scheduler-Dokumentation – Lernprogramme, API-Referenz | Microsoft Docs"
+description: "Erfahren Sie, wie Planer Planen und das Aufrufen von Aufträgen, z. B. wiederkehrende Anwendungsaktionen und Routinewartung verwenden. Lernprogramme, API-Referenzen und mehr."
 services: scheduler
 author: carolz
 manager: carolz
@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: ad88288056956ab29d446efbe105157f6b732d5f
 ms.openlocfilehash: 4883e5689a639259ec1c0bcd31e1016f85af5d66
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="scheduler-documentation"></a>Dokumentation zu Scheduler
+# <a name="scheduler-documentation"></a>Scheduler-Dokumentation
 
-Hier erfahren Sie, wie Sie mithilfe von Scheduler wiederkehrende Aufträge in der Cloud planen und automatisch aufrufen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Aufträge (beispielsweise wiederkehrende Anwendungsaktionen oder routinemäßige Wartungsaufgaben) planen und überwachen.
+Informationen Sie zum Verwenden der Planer zum Planen und automatisch Aufrufen von wiederholten Jobs in der Cloud. Lernprogramme, API-Referenzen und Weitere Dokumentationen zeigen planen und Überwachen von Aufträgen wie wiederkehrende Anwendungsaktionen und routinewartungsmaßnahmen ausführen.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -33,7 +34,7 @@ Hier erfahren Sie, wie Sie mithilfe von Scheduler wiederkehrende Aufträge in de
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Informationen zu Scheduler</h3>
+                        <h3>Erfahren Sie mehr über die Planer</h3>
                     </div>
                 </div>
             </div>
@@ -107,11 +108,5 @@ Hier erfahren Sie, wie Sie mithilfe von Scheduler wiederkehrende Aufträge in de
         </div>
     </li>
 </ul>
-
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

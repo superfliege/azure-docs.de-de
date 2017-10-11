@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: 4358c4c621634c17cbbd7fa1c72f12746b8e4a2a
-ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>Lernprogramm: Azure Active Directory-Integration mit Workrite
 
@@ -144,11 +143,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/active-directory-saas-workrite-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zum Anzeigen der Liste mit den Benutzern zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**.
+2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/active-directory-saas-workrite-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie zum Öffnen des Dialogfelds **Benutzer** oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**.
+3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/active-directory-saas-workrite-tutorial/create_aaduser_03.png)
 
@@ -251,5 +250,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel "Workrite" klicken, sollten Sie autom
 [400]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_400.png
 [401]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_401.png
 [402]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_402.png
-
 

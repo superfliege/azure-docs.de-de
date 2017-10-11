@@ -1,25 +1,25 @@
 ## <a name="route-tables"></a>Routentabellen
-Routentabelle enthalten Routen, die den Datenfluss in Ihrer Azure-Infrastruktur bestimmen. Sie können benutzerdefinierte Routen nutzen, um den gesamten Datenverkehr aus einem bestimmten Subnetz zu einem virtuellen Gerät zu leiten, z. B. einer Firewall oder einem System zum Erkennen von Netzwerkangriffen. Sie können Subnetzen eine Routentabelle zuordnen. 
+Route-tabellenressourcen enthält Routen, die zum definieren, wie Datenfluss in Ihrer Azure-Infrastruktur verwendet. Sie können benutzerdefinierte Routen (UDR) verwenden, den um gesamten Datenverkehr auf einem virtuellen Gerät aus einem bestimmten Subnetz zu senden, wie z. B. einer Firewall oder Intrusion Detection (IDS). Sie können eine Routingtabelle mit Subnetzen zuordnen. 
 
-Routentabellen haben die folgenden Eigenschaften:
+Routentabellen enthalten die folgenden Eigenschaften.
 
 | Eigenschaft | Beschreibung | Beispielwerte |
 | --- | --- | --- |
-| **routes** |Auflistung benutzerdefinierter Routen in der Routentabelle |Siehe [Benutzerdefinierte Routen](#User-defined-routes) |
-| **subnets** |Auflistung von Subnetzen, für die die Routentabelle gilt |Siehe [subnets](#Subnets) |
+| **Routen** |Auflistung benutzerdefinierter Routen in der Routingtabelle |finden Sie unter [benutzerdefinierte Routen](#User-defined-routes) |
+| **Subnetze** |Eine Auflistung von Subnetzen wird auf die Routentabelle angewendet. |finden Sie unter [Subnetze](#Subnets) |
 
 ### <a name="user-defined-routes"></a>Benutzerdefinierte Routen
-Sie können benutzerdefinierte Routen erstellen, um anzugeben, wohin Datenverkehr basierend auf seiner Zieladresse gesendet werden soll. Sie können sich eine Route als Definition eines Standardgateways basierend auf der Zieladresse eines Netzwerkpakets vorstellen.
+Sie können erstellen UDRs, um anzugeben, in denen Datenverkehr, gesendet werden soll basierend auf dessen Zieladresse. Sie können eine Route als die Gateway-Standarddefinition basierend auf der Zieladresse eines Netzwerkpakets vorstellen.
 
-Benutzerdefinierte Routen haben die folgenden Eigenschaften: 
+UDRs enthalten die folgenden Eigenschaften. 
 
 | Eigenschaft | Beschreibung | Beispielwerte |
 | --- | --- | --- |
-| **addressPrefix** |Adresspräfix oder vollständige IP-Adresse des Ziels |192.168.1.0/24, 192.168.1.101 |
-| **nextHopType** |Typ des Zielgeräts des Datenverkehrs |VirtualAppliance, VPN Gateway, Internet |
-| **nextHopIpAddress** |IP-Adresse des nächsten Hops |192.168.1.4 |
+| **addressPrefix** |-Adressenpräfix oder vollständige IP-Adresse für das Ziel |192.168.1.0/24, 192.168.1.101 |
+| **nextHopType** |Typ des Geräts der Datenverkehr wird an gesendet werden |"Virtualappliance", VPN-Gateway, Internet |
+| **nextHopIpAddress** |IP-Adresse für den nächsten hop |192.168.1.4 |
 
-Beispielroutentabelle im JSON-Format:
+Route-Beispieltabelle im JSON-Format:
 
     {
         "name": "UDR-BackEnd",
@@ -51,7 +51,7 @@ Beispielroutentabelle im JSON-Format:
     }
 
 ### <a name="additional-resources"></a>Zusätzliche Ressourcen
-* Weitere Informationen zu [benutzerdefinierten Routen](../articles/virtual-network/virtual-networks-udr-overview.md).
-* Weitere Informationen zu Routentabellen finden Sie in der [Referenzdokumentation zur REST-API](https://msdn.microsoft.com/library/azure/mt502549.aspx) .
-* Weitere Informationen zu benutzerdefinierten Routen finden Sie in der [Referenzdokumentation zur REST-API](https://msdn.microsoft.com/library/azure/mt502539.aspx) .
+* Weitere Informationen zu erhalten [UDRs](../articles/virtual-network/virtual-networks-udr-overview.md).
+* Lesen der [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt502549.aspx) für Routentabellen.
+* Lesen der [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt502539.aspx) für Benutzer definierten Routen (UDRs).
 

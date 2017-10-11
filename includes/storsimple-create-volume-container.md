@@ -1,22 +1,22 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="to-create-a-volume-container"></a>So erstellen Sie einen Volumecontainer
-1. Klicken Sie auf der Seite **Schnellstart** auf **Volumecontainer hinzufügen**. Das Dialogfeld **Volumecontainer erstellen** wird angezeigt.
+#### <a name="to-create-a-volume-container"></a>Zum Erstellen eines volumecontainers
+1. Auf dem Gerät **Schnellstart** auf **Hinzufügen eines volumecontainers**. Die **Volumecontainer erstellen** Dialogfeld wird angezeigt.
    
-    ![Volumecontainer erstellen](./media/storsimple-create-volume-container/HCS_CreateVolumeContainerM-include.png)
-2. Gehen Sie im Dialogfeld **Volumecontainer erstellen** folgendermaßen vor.
+    ![Erstellen eines Volumecontainers](./media/storsimple-create-volume-container/HCS_CreateVolumeContainerM-include.png)
+2. In der **volumecontainer erstellen** (Dialogfeld):
    
-   1. Geben Sie einen **Namen** für den Volumecontainer an. Der Name muss 3 bis 32 Zeichen lang sein.
-   2. Wählen Sie ein **Speicherkonto** aus, das diesem Volumecontainer zugeordnet werden soll. Sie können das Standardkonto auswählen, das beim Erstellen des Diensts generiert wird. Sie können auch die Option **Neu hinzufügen** verwenden, um ein Speicherkonto anzugeben, das nicht mit diesem Dienstabonnement verknüpft ist.
-   3. Wählen Sie **Cloud-Speicherverschlüsselung aktivieren** aus, um die Verschlüsselung der Daten zu aktivieren, die vom Gerät in die Cloud gesendet werden.
-   4. Stellen Sie einen **Verschlüsselungsschlüssel für Cloud-Speicher** bereit, der 8 bis 32 Zeichen lang ist, und bestätigen Sie diesen. Dieser Schlüssel wird vom Gerät für den Zugriff auf verschlüsselte Daten verwendet.
-   5. Wählen Sie in der Dropdownliste **Bandbreite angeben** die Option **Unbegrenzt** aus, wenn Sie die gesamte verfügbare Bandbreite nutzen möchten. Sie können diese Option auch auf **Benutzerdefiniert** festlegen, um die Bandbreite zu steuern und einen Wert zwischen 1 und 1.000 MBit/s anzugeben. 
-      Wenn Ihnen Informationen zur Bandbreitenauslastung vorliegen, können Sie möglicherweise Bandbreite nach einem Zeitplan zuordnen, indem Sie **Bandbreitenvorlage auswählen**angeben. Eine detaillierte Anleitung finden Sie unter [Hinzufügen einer Bandbreitenvorlage](../articles/storsimple/storsimple-manage-bandwidth-templates.md#add-a-bandwidth-template).
-   6. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-create-volume-container/HCS_CheckIcon-include.png) , um diesen Volumecontainer zu speichern und den Assistenten zu beenden. 
+   1. Geben Sie einen **Namen** für Ihren volumecontainer. Der Name muss 3 bis 32 Zeichen lang sein.
+   2. Wählen Sie eine **Speicherkonto** , die diesem volumecontainer zugeordnet werden soll. Sie können das Standardkonto auswählen, das zum Zeitpunkt der Erstellung von Diensten generiert wird. Sie können auch die **Add new** Option aus, um ein Speicherkonto angeben, die nicht mit diesem Dienstabonnement verknüpft ist.
+   3. Wählen Sie **Cloudspeicherverschlüsselung aktivieren** zum Aktivieren der Verschlüsselung der Daten vom Gerät in die Cloud gesendet.
+   4. Geben Sie und bestätigen ein **Cloudspeicher-Verschlüsselungsschlüssel** , 8 bis 32 Zeichen lang sein. Dieser Schlüssel wird vom Gerät verwendet, um die verschlüsselten Daten zugreifen.
+   5. Wählen Sie **unbegrenzt** in der **geben Bandbreite** Dropdown-Liste, wenn Sie die gesamte verfügbare Bandbreite nutzen möchten. Sie können diese Option auch festlegen, um **benutzerdefinierte** Bandbreite zu steuern, und geben Sie einen Wert zwischen 1 und 1.000 MBit/s. 
+      Wenn Sie die Informationen zur bandbreitenauslastung haben, können Sie möglicherweise Bandbreite basierend auf einem Zeitplan durch Angabe zuzuordnen **bandbreitenvorlage auswählen**. Eine schrittweise Anleitung finden Sie unter [Hinzufügen einer bandbreitenvorlage](../articles/storsimple/storsimple-manage-bandwidth-templates.md#add-a-bandwidth-template).
+   6. Klicken Sie auf das Häkchensymbol ![Kontrollkästchen-Symbol](./media/storsimple-create-volume-container/HCS_CheckIcon-include.png) Um diesen volumecontainer zu speichern und den Assistenten zu beenden. 
    
-   Der neu erstellte Volumecontainer wird auf der Seite **Volumecontainer** aufgeführt.
+   Der neu erstellte volumecontainer wird aufgeführt, auf die **volumecontainer** Seite.
 
-![Video verfügbar](./media/storsimple-create-volume-container/Video_icon.png) **Video verfügbar**
+![Video zur Verfügung](./media/storsimple-create-volume-container/Video_icon.png) **Video verfügbar**
 
-Sie können sich [hier](https://azure.microsoft.com/documentation/videos/create-a-volume-container-in-your-storsimple-solution/)ein Video anschauen, in dem das Erstellen eines Volumecontainers in der StorSimple-Lösung demonstriert wird.
+Um ein Video zu beobachten, die veranschaulicht, wie einen volumecontainer in Ihrer StorSimple-Lösung zu erstellen, klicken Sie auf [hier](https://azure.microsoft.com/documentation/videos/create-a-volume-container-in-your-storsimple-solution/).
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 52827723477677bc292c645e2390c435fbad3ee4
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="technical-pre-requisites-for-creating-a-data-service-offer-for-the-azure-marketplace"></a>Technische Voraussetzungen für das Erstellen eines Datendienstangebots für den Azure Marketplace
 > [!IMPORTANT]
@@ -67,9 +67,3 @@ Sie haben die Voraussetzungen überprüft und die erforderlichen Aufgaben ausgef
 Wenn Sie den gesamten Prozess und die entsprechenden Artikel für die einzelnen Veröffentlichungsphasen überprüfen möchten, lesen Sie den Artikel [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md).
 
 [link-acct]:marketplace-publishing-accounts-creation-registration.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-

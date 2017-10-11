@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
-translationtype: Human Translation
-ms.sourcegitcommit: 1a4206c80bc3581034b140de0003c64556b90303
 ms.openlocfilehash: fcc847b7e30fd55ca759830e0254ab7542e7663e
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>Abrufen von ARP-Tabellen im klassischen Bereitstellungsmodell
 > [!div class="op_single_selector"]
@@ -168,10 +168,4 @@ Die ARP-Tabelle eines Peerings dient zum Bestimmen und Überprüfen der Schicht-
   * Abrufen einer Routentabelle zum Bestimmen der für ExpressRoute angekündigten Präfixe
 * Überprüfen der Datenübertragung anhand der ein- und ausgehenden Bytes
 * Öffnen Sie beim [Microsoft Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) eine Supportanfrage, wenn weiterhin Probleme auftreten.
-
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

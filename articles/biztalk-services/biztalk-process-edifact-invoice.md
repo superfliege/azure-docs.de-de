@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b7ad7b91c6b836f26b45959ef65a99666a4bf69a
-ms.contentlocale: de-de
-ms.lasthandoff: 02/16/2017
-
+ms.openlocfilehash: 4597ee28e4c3b797c0ab050b21a126a95d9e8191
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Tutorial: Verarbeiten von EDIFACT-Rechnungen mit Azure BizTalk Services
 
@@ -228,6 +227,7 @@ In diesem Thema sehen wir uns an, wie die Lösung mithilfe der Anwendung **Tutor
 
 1. Drücken Sie in Visual Studio F5, um den **Tutorialclient**zu starten.
 2. Die Werte auf dem Bildschirm müssen von dem Schritt, in dem die Service Bus-Warteschlangen erstellt wurden, bereits aufgefüllt sein. Klicken Sie auf **Weiter**.
+
 3. Geben Sie im nächsten Fenster ACS-Anmeldeinformationen für das BizTalk Services-Abonnement und die Endpunkte an, an denen die EAI- und EDI-Brücken (Empfangsbrücken) bereitgestellt sind.
    
    Sie hatten den Endpunkt der EAI-Bridge im vorhergehenden Schritt kopiert. Für den Endpunkt der EDI-Empfangsbrücke navigieren Sie im BizTalk Services-Portal zu „Vereinbarung > Empfangseinstellungen > Transport > Endpunkt“.
@@ -254,9 +254,11 @@ Der wichtigste Aspekt beim Arbeiten mit Batches besteht in der eigentlichen Frei
 1. Klicken Sie im BizTalk Services-Portal auf die Vereinbarung, die Sie zuvor erstellt haben. Klicken Sie auf „Sendeeinstellungen > Batchverarbeitung > Batch hinzufügen“.
 2. Geben Sie als Batchnamen **InvoiceBatch** ein, geben Sie eine Beschreibung an, und klicken Sie anschließend auf **Weiter**.
 3. Geben Sie ein Batchkriterium an, das definiert, welche Nachrichten als Batch gesendet werden müssen. In dieser Lösung werden alle Nachrichten im Batch gesendet. Wählen Sie also die Option „Erweiterte Definitionen verwenden“ aus, und geben Sie **1 = 1** ein. Dies ist eine Bedingung, die immer wahr ist. Daher werden alle Nachrichten als Batch gesendet. Klicken Sie auf **Weiter**.
+
    
    ![][17]  
 4. Geben Sie ein Batchfreigabekriterium ein. Wählen Sie im Dropdownfeld **MessageCountBased** aus, und wählen Sie für **Anzahl** den Wert **3** aus. Dies bedeutet, dass ein aus drei Nachrichten bestehender Batch an Northwind gesendet wird. Klicken Sie auf **Weiter**.
+
    
    ![][18]  
 5. Überprüfen Sie die Zusammenfassung, und klicken Sie dann auf **Speichern**. Klicken Sie auf **Bereitstellen** , um die Vereinbarung erneut bereitzustellen.
@@ -281,5 +283,4 @@ Der wichtigste Aspekt beim Arbeiten mit Batches besteht in der eigentlichen Frei
 [16]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-16.PNG  
 [17]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-17.PNG  
 [18]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-18.PNG
-
 
