@@ -21,7 +21,6 @@ ms.openlocfilehash: 964ea38569062a7127f60dd6309b328db263bf6f
 ms.contentlocale: de-de
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrieren von virtuellen Netzwerken für ExpressRoute vom klassischen Modell zu Resource Manager
 
@@ -76,8 +75,9 @@ In diesem Abschnitt werden die Schritte beschrieben, die zum Migrieren eines vir
 4. Überprüfen, Vorbereiten und Migrieren: Verwenden Sie den folgenden PowerShell-Codeausschnitt zum Verschieben des virtuellen Netzwerks:
 
   ```powershell
-  Move-AzureVirtualNetwork -Prepare $vnetName  
-  Move-AzureVirtualNetwork -Commit $vnetName
+  Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
+  Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
+  Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
   ```
 
   Sie können die Migration auch abbrechen, indem Sie das folgende PowerShell-Cmdlet ausführen:
