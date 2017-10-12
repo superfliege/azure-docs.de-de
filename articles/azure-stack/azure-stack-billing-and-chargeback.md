@@ -33,7 +33,7 @@ Azure Stack enthält die Infrastruktur zum Sammeln und Aggregieren der Nutzungsd
 
 Jeder Ressourcenanbieter in Azure Stack gibt Nutzungsdaten gemäß Ressourcennutzung aus. Der Nutzungsdienst aggregiert diese Nutzungsdaten in regelmäßigen Abständen (stündlich oder täglich) und speichert sie in der Nutzungsdatenbank. Auf die gespeicherten Nutzungsdaten kann von Azure Stack-Betreibern und -Benutzern lokal mithilfe von Nutzungs-APIs zugegriffen werden. 
 
-Wenn Sie [Ihre Azure Stack-Instanz bei Azure registriert haben](azure-stack-register.md), wird die Nutzungsbrücke zum Senden der Nutzungsdaten an Azure Commerce konfiguriert. Wenn die Daten in Azure verfügbar sind, können Sie darauf über das Abrechnungsportal oder mithilfe der Nutzungs-APIs von Azure zugreifen. Weitere Informationen dazu, welche Nutzungsdaten an Azure gemeldet werden, finden Sie im Thema [Report Azure Stack usage data to Azure](azure-stack-usage-reporting.md) (Melden von Azure Stack-Nutzungsdaten an Azure). 
+Wenn Sie [Ihre Azure Stack-Instanz bei Azure registriert haben](azure-stack-register.md), wird Azure Bridge zum Senden der Nutzungsdaten an Azure Commerce konfiguriert. Wenn die Daten in Azure verfügbar sind, können Sie darauf über das Abrechnungsportal oder mithilfe der Nutzungs-APIs von Azure zugreifen. Weitere Informationen dazu, welche Nutzungsdaten an Azure gemeldet werden, finden Sie im Thema [Report Azure Stack usage data to Azure](azure-stack-usage-reporting.md) (Melden von Azure Stack-Nutzungsdaten an Azure). 
 
 Die folgende Abbildung zeigt die wichtigsten Komponenten in der Nutzungspipeline:
 
