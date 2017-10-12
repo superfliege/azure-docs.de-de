@@ -15,12 +15,11 @@ ms.date: 08/12/2017
 ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 9fb25f9f26a220c90f82add02fa5bdb954a926c3
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Anmelden per Smartphone anstelle Ihres Kennworts
 
@@ -92,4 +91,3 @@ Diese Funktion wird momentan nicht für Microsoft Authenticator unter Windows Ph
 Falls Sie die Microsoft Authenticator-App noch nicht heruntergeladen haben, probieren Sie sie doch einmal aus. Die App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) erhältlich, und die Anmeldung per Telefon steht in der Microsoft Authenticator-App für [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](http://go.microsoft.com/fwlink/?Linkid=825073) zur Verfügung.
 
 Antworten auf allgemeine Fragen zur App finden Sie unter [Microsoft Authenticator-App – häufig gestellte Fragen](microsoft-authenticator-app-faq.md).
-

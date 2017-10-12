@@ -11,15 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a02f5e827345a1d28f01d691e1b6fbccfc03ae8a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="derive-column-by-example-transformation"></a>Transformation „Derive Column by Example“
 
 Mit der Transformation **Derive Column by Example** (Spalte nach Beispiel ableiten) können Benutzer eine Ableitung von einer oder mehreren Spalten erstellen, indem sie die von Benutzern bereitgestellten Beispiele des abgeleiteten Ergebnisses verwenden. Die Ableitung kann eine beliebige Kombination aus den unterstützten Transformationen „String“ (Zeichenfolge), „Date“ (Datum) und „Number“ (Zahl) sein. 
@@ -289,12 +286,12 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 1
 
 Diese Teile von Datumsangaben wurden mithilfe von verschiedenen By-Example-Transformationen für dasselbe Dataset extrahiert. Fettgedruckte Zeichenfolgen stehen für die Beispiele, die während der jeweiligen Transformation angegeben wurden.
 
-|DateTime|Wochentag|Datum|Monat|Jahr|Stunde|Minute|Sekunde|
+|DateTime|Wochentag|Date|Month (Monat)|Jahr|Hour|Minute|Sekunde|
 |-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
 |31-Jan-2031 05:54:18|**Fri**|**31**|**Jan**|**2031**|**5**|**54**|**18**|
 |17-Jan-1990 13:32:01|Wed|17|Jan|1990|13|32|01|
 |14-Feb-2034 05:36:07|Tue|14|Feb|2034|5|36|07|
-|14-Mar-2002 13:16:16|Thu|14|Mar|2002|13|16|16|
+|14-Mar-2002 13:16:16|Thu|14|Mrz|2002|13|16|16|
 |21-Jan-1985 05:44:43|Mon|21|Jan|1985|5|44|**43**|
 |16-Aug-1985 01:11:56|Fri|16|Aug|1985|1|11|56|
 |20-Dec-2033 18:36:29|Tue|20|Dec|2033|18|36|29|
@@ -302,14 +299,14 @@ Diese Teile von Datumsangaben wurden mithilfe von verschiedenen By-Example-Trans
 |13-Jan-2038 10:59:36|Wed|13|Jan|2038|10|59|36|
 |14-Aug-1982 15:13:54|Sat|14|Aug|1982|15|13|54|
 |22-Nov-2030 08:18:08|Fri|22|Nov|2030|8|18|08|
-|21-Oct-1997 08:42:58|Tue|21|Oct|1997|8|42|58|
+|21-Oct-1997 08:42:58|Tue|21|Okt|1997|8|42|58|
 |28-Nov-2006 14:19:15|Tue|28|Nov|2006|14|19|15|
 |29-Apr-2031 04:59:45|Tue|29|Apr|2031|4|59|45|
 |29-Jan-2032 02:38:36|Thu|29|Jan|2032|2|38|36|
 |11-May-2028 15:31:52|Thu|11|May|2028|15|31|52|
 |15-Jul-1977 12:45:39|Fri|15|Jul|1977|12|45|11,9|
 |27-Jan-2029 05:55:41|Sat|27|Jan|2029|5|55|41|
-|03-Mar-2024 10:17:49|Sun|3|Mar|2024|10|17|49|
+|03-Mar-2024 10:17:49|Sun|3|Mrz|2024|10|17|49|
 |14-Apr-2010 00:23:13|Wed|14|Apr|2010|0|23|13|
 
 ### <a name="d2-formatting-dates"></a>D2. Formatieren von Datumsangaben
@@ -372,7 +369,7 @@ Diese Zuordnungen von DateTime-Werten zu Zeiträumen wurden mithilfe von verschi
 |tripduration|starttime|start station id|start station latitude|start station longitude|usertype|Column|
 |-----:|-----:|-----:|-----:|-----:|-----:|-----:|
 |61|2016-01-08 16:09:32|107|42.3625|-71.08822|Subscriber|**A Subscriber picked a bike from station 107, lat/long (42.363,-71.088), on Jan 08, 2016 at around 4PM. The trip duration was 61 minutes**|
-|61|2016-01-17 09:28:10|74|42.373268|-71.118579|Customer|A Customer picked a bike from station 74, lat/long (42.373,-71.119), on Jan 17, 2016 at around 9AM. The trip duration was 61 minutes|
+|61|2016-01-17 09:28:10|74|42.373268|-71.118579|Kunde|A Customer picked a bike from station 74, lat/long (42.373,-71.119), on Jan 17, 2016 at around 9AM. The trip duration was 61 minutes|
 |62|2016-01-25 08:10:26|176|42.386748020450561|-71.119018793106079|Subscriber|A Subscriber picked a bike from station 176, lat/long (42.387,-71.119), on Jan 25, 2016 at around 8AM. The trip duration was 62 minutes|
 |63|2016-01-08 10:10:29|107|42.3625|-71.08822|Subscriber|A Subscriber picked a bike from station 107, lat/long (42.363,-71.088), on Jan 08, 2016 at around 10AM. The trip duration was 63 minutes|
 |64|2016-01-15 19:42:08|68|42.36507|-71.1031|Subscriber|A Subscriber picked a bike from station 68, lat/long (42.365,-71.103), on Jan 15, 2016 at around 7PM. The trip duration was 64 minutes|
@@ -390,4 +387,3 @@ In einigen Fällen kann es vorkommen, dass keine einzelne Transformation gefunde
 
 ### <a name="reference"></a>Referenz
 Weitere Informationen zur Technologie „Transformationen von Zeichenfolgen nach Beispiel“ finden Sie in [dieser Veröffentlichung](https://www.microsoft.com/en-us/research/publication/automating-string-processing-spreadsheets-using-input-output-examples/).
-

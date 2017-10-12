@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 08/16/2017
 ms.author: markvi
 ms.openlocfilehash: 8d4460b3059558de2253c6f6a2d2fc8e7564d6d9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-faq"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -27,7 +27,7 @@ Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](active-
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Zugreifen auf Azure und Azure Active Directory
-**F: Warum erhalte ich "keine Abonnements gefunden" beim Versuch, den Zugriff auf Azure AD im klassischen Azure-Portal?**
+**F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, über das klassische Azure-Portal auf Azure AD zuzugreifen?**
 
 **A:** Für den Zugriff auf das klassische Azure-Portal benötigt jeder Benutzer Berechtigungen mit einem Azure-Abonnement. Wenn Sie über ein kostenpflichtiges Office 365- oder Azure AD-Abonnement verfügen, können Sie unter [http://aka.ms/accessAAD](http://aka.ms/accessAAD) einen einmaligen Aktivierungsschritt ausführen. Andernfalls müssen Sie ein kostenloses [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) oder ein kostenpflichtiges Abonnement aktivieren.
 

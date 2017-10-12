@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/08/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3292a2dfefc17e5034c66122a3eab24d6c03e694
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-virtual-machine-by-retrieving-the-password-stored-in-a-key-vault"></a>Erstellen eines virtuellen Computers durch Abrufen des im Schlüsseltresor gespeicherten Kennworts
 
@@ -30,7 +29,7 @@ In diesem Artikel werden die Schritte zum Bereitstellen eines virtuellen Windows
 ## <a name="prerequisites"></a>Voraussetzungen
  
 * Sie müssen ein Angebot abonnieren, das den Key Vault-Dienst umfasst.  
-* [Installieren Sie PowerShell für Azure Stack.](azure-stack-powershell-install.md)  
+* [Installieren Sie PowerShell für Azure Stack-](azure-stack-powershell-install.md)  
 * [Konfigurieren Sie die PowerShell-Umgebung des Azure Stack-Benutzers.](azure-stack-powershell-configure-user.md)
 
 Die folgenden Schritte beschreiben das Verfahren zum Erstellen eines virtuellen Computers durch Abrufen des Kennworts, das in einem Schlüsseltresor gespeichert ist:
@@ -124,5 +123,4 @@ Wenn die Vorlage erfolgreich bereitgestellt wurde, erhalten Sie die folgende Aus
 [Bereitstellen einer Beispiel-App mit Key Vault](azure-stack-kv-sample-app.md)
 
 [Bereitstellen eines virtuellen Computers mit einem Key Vault-Zertifikat](azure-stack-kv-push-secret-into-vm.md)
-
 

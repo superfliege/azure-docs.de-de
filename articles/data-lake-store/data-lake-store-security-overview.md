@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
-ms.openlocfilehash: 59bff7e1f7bdfc1786c4ee47ab2a652e2df85289
-ms.contentlocale: de-de
-ms.lasthandoff: 02/07/2017
-
+ms.openlocfilehash: e72dd7e84ce3961274cf312649cc679abc576aae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-in-azure-data-lake-store"></a>Sicherheit im Azure Data Lake-Speicher
 Viele Unternehmen nutzen Big-Data-Analysen zur Gewinnung von Unternehmenseinblicken, um fundierte Entscheidungen treffen zu können. Ein Unternehmen verfügt unter Umständen über eine komplexe und regulierte Umgebung mit einer wachsenden Zahl von unterschiedlichen Benutzern. Unternehmen müssen sicherstellen, dass wichtige Geschäftsdaten sicherer gespeichert werden und dass einzelnen Benutzern die richtige Zugriffsebene gewährt wird. Azure Data Lake Store ist so konzipiert, dass diese Sicherheitsanforderungen besser erfüllt werden können. In diesem Artikel werden die Sicherheitsfunktionen von Data Lake Store beschrieben, z.B.:
@@ -115,5 +114,4 @@ Wenn Sie neue Features für Data Lake Store wünschen, können Sie uns Ihr Feedb
 * [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 * [Erste Schritte mit Data Lake Store](data-lake-store-get-started-portal.md)
 * [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
-
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: torsteng
 ms.openlocfilehash: 2f0bff394c1e11a270cb324be5a1a45e9e531d7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Clientbibliothek für elastische Datenbanken mit Entity Framework
 Dieses Dokument zeigt, welche Änderungen in einer Entity Framework-Anwendung erforderlich sind, damit diese die Funktionen der [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md)nutzen kann. Der Schwerpunkt liegt auf der Erstellung der [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) und des [datenabhängigen Routings](sql-database-elastic-scale-data-dependent-routing.md) mit dem **Code First**-Ansatz von Entity Framework. Das Tutorial [Code First für eine neue Datenbank](http://msdn.microsoft.com/data/jj193542.aspx) für EF wird im gesamten Dokument als Beispiel verwendet. Der zu diesem Dokument gehörige Beispielcode ist Teil der Beispielserie der Tools für elastische Datenbanken in den Visual Studio-Codebeispielen.

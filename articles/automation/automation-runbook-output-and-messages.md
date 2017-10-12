@@ -3,7 +3,7 @@ title: Runbookausgabe und -meldungen in Azure Automation | Microsoft Docs
 description: Beschreibt, wie Ausgaben und Fehlermeldungen von Runbooks in Azure Automation erstellt und abgerufen werden.
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 13a414f5-0e2c-4be2-9558-a3e3ec84b6b2
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: magoedte;bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 505834d7354fb920e7ebd931e3bb31d837a79077
-ms.openlocfilehash: 6f01f97e38aa271034741c8a5e2f8057ab61fcd7
-ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 212aa4ede83b7c9f3240f8f32073bb7b87bda06d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbookausgabe und -meldungen in Azure Automation
 Die meisten Azure Automation-Runbooks haben eine Ausgabe, z. B. eine Fehlermeldung für den Benutzer oder ein komplexes Objekt, das von einem anderen Workflow genutzt werden soll. Windows PowerShell bietet [mehrere Datenströme](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) zum Senden der Ausgabe eines Skripts oder Workflows. Da jeder dieser Datenströme in Azure Automation unterschiedlich verwendet wird, sollten Sie beim Erstellen eines Runbooks die bewährten Methoden befolgen.
@@ -226,5 +225,4 @@ Weitere Informationen zum Konfigurieren der Integration mit Log Analytics, um Au
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md)
 * Informationen zum Entwerfen und Verwenden von untergeordneten Runbooks finden Sie unter [Untergeordnete Runbooks in Azure Automation](automation-child-runbooks.md)
-
 

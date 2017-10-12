@@ -16,14 +16,12 @@ ms.date: 09/22/2017
 ms.author: curtand
 ms.reviewer: nigu
 ms.custom: it-pro
+ms.openlocfilehash: dd4cf725689739ce4c8b86a4d8203ffc5aff016b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: 38e3f71fb4817de7aa95b99e662856f586e72530
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-cloud-app-discovery-snapshot-reports"></a>Erstellen von Cloud App Discovery-Momentaufnahmeberichten
 
 Laden Sie vor dem Einrichten des automatischen Protokollsammlers ein Protokoll manuell hoch, und lassen Sie es von Cloud App Security analysieren. Wenn Sie noch kein Protokoll besitzen und gern ein Beispielprotokoll hätten, können Sie mit dem folgenden Verfahren eine Beispielprotokolldatei herunterladen, um zu erfahren, wie Ihre Protokolldatei aussehen sollte.
@@ -56,4 +54,3 @@ Laden Sie vor dem Einrichten des automatischen Protokollsammlers ein Protokoll m
 * [Erste Schritte mit Cloud App Discovery in Azure AD](cloudappdiscovery-get-started.md)
 * [Konfigurieren des automatischen Uploads von Protokollen für kontinuierliche Berichte](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 * [Use a custom log parser](https://docs.microsoft.com/cloud-app-security/custom-log-parser) (Verwenden eines benutzerdefinierten Protokollparsers)
-

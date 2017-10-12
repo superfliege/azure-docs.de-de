@@ -16,10 +16,10 @@ ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: 3bd8256814036a357b30b69286da6bb7c974162f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # v2.0-Protokolle – SPAs unter Verwendung des impliziten Flusses
 Mit dem v2.0-Endpunkt können Sie Benutzer sowohl mit persönlichen Konten als auch mit Geschäfts-, Schul- oder Unikonten von Microsoft bei Apps mit einer Seite anmelden.  Bei einseitigen Apps und anderen JavaScript-Apps, die hauptsächlich im Browser ausgeführt werden, gibt es in Bezug auf die Authentifizierung einige interessante Herausforderungen:

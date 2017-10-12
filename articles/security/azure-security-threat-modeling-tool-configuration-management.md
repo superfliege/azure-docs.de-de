@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 114666d0c173786373e3bdd025027eb217922749
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Sicherheitsrahmen: Konfigurationsverwaltung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
-| **Webanwendung** | <ul><li>[Implementieren Sie die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP), und deaktivieren Sie Inline-JavaScript.](#csp-js)</li><li>[Aktivieren Sie die XSS-Filter des Browsers.](#xss-filter)</li><li>[ASP.NET-Anwendungen müssen vor der Bereitstellung die Ablaufverfolgung und das Debugging deaktivieren.](#trace-deploy)</li><li>[Greifen Sie nur auf Drittanbieter-JavaScripts aus vertrauenswürdigen Quellen zu.](#js-trusted)</li><li>[Stellen Sie sicher, dass authentifizierte ASP.NET-Seiten gegen UI Redressing und Clickjacking geschützt sind.](#ui-defenses)</li><li>[Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für ASP.NET-Webanwendungen aktiviert ist.](#cors-aspnet)</li><li>[Aktivieren Sie für ASP.NET-Seiten das ValidateRequest-Attribut.](#validate-aspnet)</li><li>[Verwenden Sie die neuesten Versionen von JavaScript-Bibliotheken (lokal gehostet).](#local-js)</li><li>[Deaktivieren Sie die automatische MIME-Ermittlung.](#mime-sniff)</li><li>[Entfernen Sie Serverstandardheader für Windows Azure-Websites, um Fingerprinting zu vermeiden.](#standard-finger)</li></ul> |
+| **Web Application** | <ul><li>[Implementieren Sie die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP), und deaktivieren Sie Inline-JavaScript.](#csp-js)</li><li>[Aktivieren Sie die XSS-Filter des Browsers.](#xss-filter)</li><li>[ASP.NET-Anwendungen müssen vor der Bereitstellung die Ablaufverfolgung und das Debugging deaktivieren.](#trace-deploy)</li><li>[Greifen Sie nur auf Drittanbieter-JavaScripts aus vertrauenswürdigen Quellen zu.](#js-trusted)</li><li>[Stellen Sie sicher, dass authentifizierte ASP.NET-Seiten gegen UI Redressing und Clickjacking geschützt sind.](#ui-defenses)</li><li>[Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für ASP.NET-Webanwendungen aktiviert ist.](#cors-aspnet)</li><li>[Aktivieren Sie für ASP.NET-Seiten das ValidateRequest-Attribut.](#validate-aspnet)</li><li>[Verwenden Sie die neuesten Versionen von JavaScript-Bibliotheken (lokal gehostet).](#local-js)</li><li>[Deaktivieren Sie die automatische MIME-Ermittlung.](#mime-sniff)</li><li>[Entfernen Sie Serverstandardheader für Windows Azure-Websites, um Fingerprinting zu vermeiden.](#standard-finger)</li></ul> |
 | **Datenbank** | <ul><li>[Konfigurieren Sie eine Windows-Firewall für Datenbankmodulzugriff.](#firewall-db)</li></ul> |
 | **Web-API** | <ul><li>[Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für die ASP.NET-Web-API aktiviert ist.](#cors-api)</li><li>[Verschlüsseln Sie Abschnitte der Web-API-Konfigurationsdateien, die sensible Daten enthalten.](#config-sensitive)</li></ul> |
 | **IoT-Gerät** | <ul><li>[Stellen Sie sicher, dass alle Administratoroberflächen durch sichere Anmeldeinformationen geschützt sind.](#admin-strong)</li><li>[Stellen Sie sicher, dass auf Geräten kein unbekannter Code ausgeführt werden kann.](#unknown-exe)</li><li>[Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des IoT-Geräts mit BitLocker.](#partition-iot)</li><li>[Stellen Sie sicher, dass auf Geräten nur unbedingt erforderliche Dienste/Features aktiviert sind.](#min-enable)</li></ul> |

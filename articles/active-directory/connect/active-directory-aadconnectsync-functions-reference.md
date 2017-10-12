@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: dbd3727d3a31132c2dc1ae1bf5fade7ed969e2c9
-ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: 0f556c786fdfdf775e00e68740351e7630e0e002
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect-Synchronisierung: Funktionsreferenz
 In der Azure AD Connect-Synchronisierung werden Funktionen verwendet, um Attributwerte während der Synchronisierung zu ändern.  
@@ -1342,4 +1341,3 @@ Gibt „has“ zurück.
 * [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-

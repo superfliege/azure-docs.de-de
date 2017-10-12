@@ -16,10 +16,10 @@ ms.custom: migrate
 ms.date: 06/23/2017
 ms.author: joeyong;barbkess
 ms.openlocfilehash: c6e6b890f5e2d0e31b10bbb6803adad02bf60248
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Migrieren von SQL-Code nach SQL Data Warehouse
 Dieser Artikel beschreibt Codeänderungen, die Sie sicherlich benötigen, wenn Sie Ihren Code von einer anderen Datenbank zu SQL Data Warehouse migrieren. Mit einigen SQL Data Warehouse-Funktionen kann die Leistung erheblich verbessert werden, da sie speziell für eine verteilte Ausführung entwickelt wurden. Um jedoch eine gleichbleibende Leistung und Skalierung zu gewährleisten, sind einige Funktionen auch nicht verfügbar.
@@ -32,8 +32,7 @@ Die folgende Liste enthält die wichtigsten Funktionen, die von SQL Data Warehou
 * [MERGE-Anweisung][merge statement]
 * Datenbankübergreifende Verknüpfungen
 * [Cursor][cursors]
-* <seg>
-  [INSERT..EXEC][INSERT..EXEC]</seg>
+* [INSERT..EXEC][INSERT..EXEC]
 * OUTPUT-Klausel
 * Benutzerdefinierte Inlinefunktionen
 * Funktionen mit mehreren Anweisungen

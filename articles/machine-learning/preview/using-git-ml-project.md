@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 59b07c9834904e01256b75344ba2e6892e56438c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-git-repository-with-an-azure-machine-learning-workbench-project"></a>Verwenden von Git-Repository mit einem Azure Machine Learning Workbench-Projekt
 Dieses Dokument enthält Informationen dazu, wie Azure Machine Learning Workbench Git verwendet, um die Reproduzierbarkeit in Ihrem Data Science-Experiment sicherzustellen. Anweisungen zum Verknüpfen Ihres Projekts mit einer Git-Repository in der Cloud sind ebenfalls enthalten.
@@ -174,4 +173,3 @@ Befolgen Sie diese beiden Artikel (beide Ansätze können umgesetzt werden) für
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Verwenden des Team Data Science-Prozesses zum Organisieren der Projektstruktur finden Sie unter [Structure a project with TDSP (Strukturieren eines Projekts mit TDSP)](how-to-use-tdsp-in-azure-ml.md).
-

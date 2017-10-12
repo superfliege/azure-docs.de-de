@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: e2a70f2474298618dd8ee11c583f8f445d7eba7d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität
 In der Unternehmenswelt werden immer mehr Verbrauchergeräte genutzt, und cloudbasierte Software-as-a-Service-Anwendungen (SaaS) sind leicht einsetzbar. Daher stellt es eine große Herausforderung dar, über interne Rechenzentren und Cloudplattformen hinweg die Kontrolle über den Anwendungszugriff durch Benutzer zu behalten.  

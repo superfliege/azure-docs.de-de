@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: adegeo
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b99c54e85f22c5745a852e10bb66368da3b5d8f9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Fügen Sie ein Anwendungszertifikat zu einem Service Fabric-Cluster hinzu
 
 Dieses Beispielskript stellt eine Verbindung mit einem Service Fabric-Cluster her und listet alle bereitgestellten Anwendungen auf.
@@ -38,4 +36,3 @@ Dieses Beispielskript stellt eine Verbindung mit einem Service Fabric-Cluster he
 Weitere Informationen finden Sie in der [Dokumentation der Service Fabric-Befehlszeilenschnittstelle](../service-fabric-cli.md).
 
 Zusätzliche Service Fabric-CLI-Beispiele für Azure Service Fabric finden Sie unter [Azure PowerShell-Beispiele](../samples-cli.md).
-

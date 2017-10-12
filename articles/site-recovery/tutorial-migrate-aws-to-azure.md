@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/22/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: aa378c167c81617bc13baa65335335a749d13516
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -44,7 +43,7 @@ Sie müssen einige wenige Ressourcen Azure vorbereitet haben, um die migrierten 
 
 Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs werden aus dem Speicher erstellt, wenn Sie von Failover von einem lokalen Standort nach Azure ausführen.
 
-1. Klicken Sie im Menü des [Azure-Portals](https://portal.azure.com) auf **Neu** -> **Speicher** -> **Speicherkonto**.
+1. Klicken Sie im Menü des [Azure-Portals](https://portal.azure.com) auf **Neu** -> **Storage** -> **Speicherkonto**.
 2. Geben Sie einen Namen für Ihr Speicherkonto ein. Für diese Tutorials verwenden wir den Namen **awsmigrated2017**. Der Name muss in Azure eindeutig und zwischen 3 und 24 Zeichen lang sein, wobei nur Ziffern und Kleinbuchstaben zulässig sind.
 3. Behalten Sie die Standardwerte für **Bereitstellungsmodell**, **Kontoart**, **Leistung** und **Sichere Übertragung erforderlich** bei.
 5. Wählen Sie den **RA-GRS**-Standardwert für **Replikation** aus.
@@ -227,11 +226,11 @@ Führen Sie das Testfailover im Portal wie folgt aus:
 1. Wechseln Sie auf der Seite für Ihren Tresor zu **Geschützte Elemente** > **Replizierte Elemente**> klicken Sie auf die VM > **+ Testfailover**.
 
 2. Wählen Sie einen Wiederherstellungspunkt für das Failover aus:
-    - **Letzte Verarbeitung**: Führt ein Failover der VM auf den letzten Wiederherstellungspunkt aus, der von Site Recovery verarbeitet wurde. Der Zeitstempel wird angezeigt. Mit dieser Option wird keine Zeit für die Verarbeitung von Daten verwendet und der RTO-Wert (Recovery Time Objective) niedrig gehalten.
+    - **Letzte Verarbeitung**: Führt ein Failover der VM auf den letzten Wiederherstellungspunkt aus, der von Site Recovery verarbeitet wurde. Der Zeitstempel wird angezeigt. Mit dieser Option wird keine Zeit für die Verarbeitung von Daten aufgewendet, und der RTO-Wert (Recovery Time Objective) wird niedrig gehalten.
     - **Letzte App-Konsistenz**: Diese Option führt ein Failover aller virtuellen Computer auf den letzten App-konsistenten Wiederherstellungspunkt aus. Der Zeitstempel wird angezeigt.
     - **Benutzerdefiniert**: Wählen Sie einen beliebigen Wiederherstellungspunkt aus.
 3. Wählen Sie unter **Testfailover** das Azure-Zielnetzwerk aus, mit dem Azure-VMs nach dem Failover verbunden werden. Dies sollte das Netzwerk sein, das Sie im Abschnitt [Vorbereiten der Azure-Ressourcen](#prepare-azure-resources) erstellt haben.
-4. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Sie können den Fortschritt des Vorgangs verfolgen, indem Sie auf die VM klicken, um Ihre Eigenschaften zu öffnen. Sie können auch auf den Auftrag **Testfailover** für den Tresor in **Überwachung und Berichte** > **Aufträge** >
+4. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Sie können den Fortschritt des Vorgangs verfolgen, indem Sie auf die VM klicken, um ihre Eigenschaften zu öffnen. Sie können auch auf den Auftrag **Testfailover** für den Tresor in **Überwachung und Berichte** > **Aufträge** >
    **Site Recovery-Aufträge** klicken.
 5. Nach Abschluss des Failovers wird der virtuelle Azure-Replikatcomputer im Azure-Portal unter **Virtuelle Computer** angezeigt. Vergewissern Sie sich, dass die VM die richtige Größe hat, mit dem richtigen Netzwerk verbunden ist und ausgeführt wird.
 6. Sie sollten nun eine Verbindung mit der replizierten VM in Azure herstellen können.
@@ -253,7 +252,7 @@ Führen Sie ein tatsächliches Failover für die EC2-Instanzen durch, um sie zu 
     ![Abschließen der Migration](./media/tutorial-migrate-aws-to-azure/complete-migration.png)
 
 > [!WARNING]
-> **Brechen Sie ein Failover in Bearbeitung nicht ab**: Vor dem Starten des Failovers wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.  
+> **Brechen Sie ein Failover in Bearbeitung nicht ab:** Vor dem Starten des Failovers wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.  
 
 
     
@@ -264,4 +263,3 @@ In diesem Thema wurde erläutert, wie AWS EC2-Instanzen zu Azure-VMs migriert we
 
 > [!div class="nextstepaction"]
 > [Azure-Tutorials zu virtuellen Windows-Computern](../virtual-machines/windows/tutorial-manage-vm.md)
-

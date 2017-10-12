@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 73bf4451ba1b71807e22440beecc73a7e8045c5e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-and-publish-a-product-in-azure-api-management"></a>Erstellen und Veröffentlichen eines Produkts in Azure API Management
 Produkte in Azure API Management enthalten eine oder mehrere APIs sowie ein Nutzungskontingent und Nutzungsbedingungen. Nachdem ein Produkt veröffentlicht wurde, können Entwickler das Produkt abonnieren und die APIs des Produkts verwenden. Dieses Thema beschreibt, wie Sie ein Produkt erstellen, eine API hinzufügen und das Produkt für Entwickler veröffentlichen können.
 
-## <a name="create-product"> </a>Erstellen eines Produkts
+## <a name="create-product"></a>Erstellen eines Produkts
 Operationen werden einer API im Herausgeberportal hinzugefügt und in diesem konfiguriert. Um auf das Herausgeberportal zuzugreifen, klicken Sie im Azure-Portal für Ihren API Management-Dienst auf **Herausgeberportal**.
 
 ![Herausgeberportal][api-management-management-console]
@@ -62,7 +62,7 @@ Nachdem alle Optionen für das neue Produkt konfiguriert wurden, klicken Sie auf
 
 Klicken Sie auf den entsprechenden Produktnamen auf der Registerkarte **Produkte** , um ein Produkt zu konfigurieren.
 
-## <a name="add-apis"> </a>Hinzufügen von APIs zu einem Produkt
+## <a name="add-apis"></a>Hinzufügen von APIs zu einem Produkt
 Die Seite **Produkte** enthält vier Links für die Konfiguration: **Zusammenfassung**, **Einstellungen**, **Sichtbarkeit** und **Abonnenten**. Auf der Registerkarte **Zusammenfassung** können Sie APIs hinzufügen und die Veröffentlichung von Produkten steuern.
 
 ![Zusammenfassung][api-management-new-product-summary]
@@ -73,7 +73,7 @@ Bevor Sie Ihr Produkt veröffentlichen, müssen Sie mindestens eine API hinzufü
 
 Wählen Sie die gewünschten APIs aus und klicken Sie auf **Speichern**.
 
-## <a name="add-description"> </a>Hinzufügen von beschreibenden Informationen zu einem Produkt
+## <a name="add-description"></a>Hinzufügen von beschreibenden Informationen zu einem Produkt
 Die Registerkarte **Einstellungen** enthält detaillierte Daten zum Produkt wie etwa dessen Zweck, die bereitgestellten APIs und sonstige nützliche Informationen. Dieser Inhalt richtet sich an die Entwickler, die die API aufrufen, und kann im Nur-Text-Format oder mit HTML-Markup erstellt werden.
 
 ![Produkteinstellungen][api-management-product-settings]
@@ -86,12 +86,12 @@ Wenn Sie zulassen möchten, dass Entwicklerkonten das Produkt mehrfach abonniere
 
 Füllen Sie Optional das Feld **Nutzungsbedingungen** aus und beschreiben Sie die Bedingungen, denen die Abonnenten zustimmen müssen, um das Produkt verwenden zu können.
 
-## <a name="publish-product"> </a>Veröffentlichen eines Produkts
+## <a name="publish-product"></a>Veröffentlichen eines Produkts
 Bevor die APIs eines Produkts aufgerufen werden können, müssen Sie das Produkt veröffentlichen. Klicken Sie auf der Registerkarte **Zusammenfassung** für das Produkt auf **Veröffentlichen** und anschließend zur Bestätigung auf **Ja, veröffentlichen**. Klicken Sie auf **Veröffentlichung aufheben**, um ein bereits veröffentlichtes Produkt privat zu setzen.
 
 ![Veröffentlichen des Produkts][api-management-publish-product]
 
-## <a name="make-visible"> </a>Sichtbarmachen eines Produkts für Entwickler
+## <a name="make-visible"></a>Sichtbarmachen eines Produkts für Entwickler
 Auf der Registerkarte **Sichtbarkeit** können Sie die Rollen auswählen, die das Produkt im Entwicklerportal sehen und das Produkt abonnieren können.
 
 ![Produktsichtbarkeit][api-management-product-visiblity]
@@ -102,12 +102,12 @@ Konfigurieren Sie die Sichtbarkeit eines Produkts für die Entwickler in einer G
 > 
 > 
 
-## <a name="view-subscribers"> </a>Anzeigen von Abonnenten eines Produkts
+## <a name="view-subscribers"></a>Anzeigen von Abonnenten eines Produkts
 Die Registerkarte **Abonnenten** enthält eine Liste der Entwickler, die das Produkt abonniert haben. Klicken Sie auf den Namen des Entwicklers, um dessen Details und Einstellungen anzuzeigen. In diesem Beispiel wurde das Produkt noch von keinem Entwickler abonniert.
 
 ![Entwickler][api-management-developer-list]
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Sobald Sie die gewünschten APIs hinzugefügt und das Produkt veröffentlicht haben, können Entwickler das Produkt abonnieren und die APIs aufrufen. Ein Tutorial zur Erläuterung dieser Punkte und erweiterten Produktkonfigurationen finden Sie unter [Erstellen und Konfigurieren erweiterter Produkteinstellungen in Azure API Management][How create and configure advanced product settings in Azure API Management].
 
 Weitere Informationen zum Arbeiten mit Produkten finden Sie im folgenden Video.

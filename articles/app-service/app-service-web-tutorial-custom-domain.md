@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
+ms.openlocfilehash: ac105b82b9bc25e6cc9f5cdf21f34400a09b3934
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: dbd0458878d3ab3bb4cb562f227926b90f1043a4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps
 
@@ -315,4 +314,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um sich über das Anbinden eines ben
 
 > [!div class="nextstepaction"]
 > [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md)
-

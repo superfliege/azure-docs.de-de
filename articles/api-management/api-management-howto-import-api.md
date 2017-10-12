@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 ms.openlocfilehash: c851b88fc1067e65044266d07775717c028e75d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-import-the-definition-of-an-api-with-operations-in-azure-api-management"></a>Importieren einer API-Definition mit Operationen in Azure API Management
 In API Management können Sie neue APIs entweder manuell erstellen und Operationen manuell hinzufügen, oder Sie können die API zusammen mit den Operationen in einem Schritt importieren.
@@ -30,7 +30,7 @@ APIs und deren Operationen können in den folgenden Formaten importiert werden.
 
 Diese Anleitung beschreibt die Erstellung einer neuen API und den Import von Operationen in einem Schritt. Weitere Informationen zur manuellen Erstellung von APIs und zum Hinzufügen von Operationen finden Sie unter [Erstellen von APIs][How to create APIs] und [Hinzufügen von Operationen zu einer API][How to add operations to an API].
 
-## <a name="import-api"> </a>Importieren einer API
+## <a name="import-api"></a>Importieren einer API
 APIs werden im Herausgeberportal erstellt und konfiguriert. Um auf das Herausgeberportal zuzugreifen, klicken Sie im Azure-Portal für Ihren API Management-Dienst auf **Herausgeberportal**. Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Create an API Management service instance] im Tutorial [Erste Schritte mit Azure API Management][Get started with Azure API Management].
 
 ![Herausgeberportal][api-management-management-console]
@@ -61,7 +61,7 @@ Geben Sie alle Werte ein, und klicken Sie auf **Speichern** , um die API und die
 > 
 > 
 
-## <a name="export-api"> </a> Exportieren einer API
+## <a name="export-api"></a> Exportieren einer API
 Sie können nicht nur neue APIs importieren, sondern auch die Definitionen Ihrer APIs aus dem Herausgeberportal exportieren. Klicken Sie dazu auf der Registerkarte **Zusammenfassung** für Ihre **API** auf **API exportieren**.
 
 ![Exportieren einer API][api-management-export-api]
@@ -70,7 +70,7 @@ APIs können im WADL- oder Swagger-Format exportiert werden. Wählen Sie das gew
 
 ![API-Exportformat][api-management-export-api-format]
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie die API erstellt und die Operationen importiert haben, können Sie zusätzliche Einstellungen prüfen und konfigurieren, die API zu einem Produkt hinzufügen und anschließend veröffentlichen, um die API für Entwickler zugänglich zu machen. Weitere Informationen finden Sie in den folgenden Anleitungen.
 
 * [Konfigurieren von API-Einstellungen][How to configure API settings]

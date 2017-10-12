@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
 ms.openlocfilehash: 342d9e2787add3d04f1b744152e135db98848179
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern
 In diesem Artikel werden die wichtigen Unterschiede zwischen der lokalen Bereitstellung von Windows Server Active Directory Domain Services (AD DS) und den Active Directory-Verbunddiensten (AD FS) und der Bereitstellung auf virtuellen Microsoft Azure-Computern beschrieben.

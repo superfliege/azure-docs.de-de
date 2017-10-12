@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 79b215eed38959efd630e21633d235cbc857abd8
 ms.openlocfilehash: dde9d9b8be1faede7d2e9e45597070e6ce51ac02
-ms.contentlocale: de-de
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="describing-a-service-fabric-cluster"></a>Beschreiben eines Service Fabric-Clusters
 Der Service Fabric-Cluster-Ressourcen-Manager stellt verschiedene Methoden zum Beschreiben eines Clusters bereit. Zur Laufzeit nutzt der Clusterressourcen-Manager diese Informationen, um die hohe Verfügbarkeit der Dienste sicherzustellen, die im Cluster ausgeführt werden. Beim Erzwingen dieser wichtigen Regeln wird auch versucht, den Ressourcenverbrauch innerhalb des Clusters zu optimieren.
 
@@ -382,7 +380,7 @@ Metriken unterscheiden sich von Platzierungseinschränkungen und Knoteneigenscha
 
 Es ist wichtig zu beachten, dass der Clusterressourcen-Manager von Service Fabric – genau wie bei Platzierungseinschränkungen und Knoteneigenschaften – nicht versteht, was die Namen der Metriken bedeuten. Bei Namen von Metriken handelt es sich lediglich um Zeichenfolgen. Es ist ratsam, Einheiten als Teil der von Ihnen erstellten Namen von Metriken zu deklarieren, falls die Gefahr von Mehrdeutigkeiten besteht.
 
-## <a name="capacity"></a>Kapazität
+## <a name="capacity"></a>Capacity
 Wenn Sie den *Lastenausgleich*für alle Ressourcen deaktivieren, kann der Clusterressourcen-Manager von Service Fabric dennoch versuchen sicherzustellen, dass kein Knoten überlastet wird. Das Verwalten von Kapazitätsüberläufen ist möglich, es sei denn, der Cluster ist zu belegt und die Workload ist größer als jeder einzelne Knoten. Die Kapazität ist eine weitere *Einschränkung*, anhand der der Clusterressourcen-Manager ermittelt, wie viele Ressourcen auf einem Knoten verbraucht werden. Auch die verbleibende Kapazität wird für den gesamten Cluster nachverfolgt. Sowohl die Kapazität als auch der Verbrauch auf Dienstebene werden als Metrik ausgedrückt. Die Metrik kann beispielsweise „ClientConnections“ lauten, und ein Knoten kann für „ClientConnections“ eine Kapazität von 32768 aufweisen. Für andere Knoten können andere Grenzwerte gelten. Ein auf dem Knoten ausgeführter Dienst kann beispielsweise bestimmen, dass derzeit eine Kapazität von 32256 der Metrik „ClientConnections“ in Anspruch genommen wird.
 
 Während der Laufzeit verfolgt der Clusterressourcen-Manager die verbleibende Kapazität im Cluster und auf den Knoten. Zum Verfolgen der Kapazität subtrahiert der Clusterressourcen-Manager den Verbrauch jedes Diensts von der Kapazität des Knotens, auf dem der betreffende Dienst ausgeführt wird. Mit diesen Informationen kann der Clusterressourcen-Manager von Service Fabric ermitteln, wo Replikate platziert oder wohin diese verschoben werden sollen, um die Kapazität der Knoten nicht zu überschreiten.
@@ -529,4 +527,3 @@ LoadMetricInformation     :
 [Image5]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-layout-different-workloads.png
 [Image6]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-placement-constraints-node-properties.png
 [Image7]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-nodes-and-capacity.png
-

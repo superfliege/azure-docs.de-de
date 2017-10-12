@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 ms.openlocfilehash: 05c20e880d4eb1eacdecc0c4c7e7491dfe1e6a89
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Erste Schritte mit Aufträgen für die elastische Datenbank
 Aufträge für die elastische Datenbank (Vorschau) für Azure SQL-Datenbank ermöglicht die zuverlässige Ausführung von T-SQL-Skripts, die mehrere Datenbanken überspannen, und stellt automatische Wiederholung und ggf. Abschlussgarantien bereit. Weitere Informationen zu Aufträgen für die elastische Datenbank finden Sie auf der [Übersichtsseite zum Feature](sql-database-elastic-jobs-overview.md).

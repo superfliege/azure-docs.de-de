@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ae37f49916445a9486457af61aa9bf8bc1d7eb87
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Austauschen von Hardwarekomponenten auf Geräten der StorSimple 8000-Serie
 
@@ -51,12 +51,12 @@ Machen Sie sich mit den sicherheitsrelevanten Informationen zu Ihrem Gerät und 
 
 Bevor Sie versuchen, eine Komponente auszutauschen, beachten Sie die folgenden Informationen.
 
-![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png) ![Electrical Shock Icon](./media/storsimple-hardware-component-replacement/Electric.png) **WARNUNG!** 
+![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png)![Electrical Shock Icon](./media/storsimple-hardware-component-replacement/Electric.png)**WARNUNG!** 
 
 * Erden Sie sich ordnungsgemäß mithilfe elektrostatischer Entladung oder einer Antistatikmatte, bevor Sie mit Modulen und Komponenten Ihres StorSimple-Gerät-Geräts hantieren.
 * Berühren Sie keine elektrischen Schaltungen. Verwenden Sie die bereitgestellten Griffe und Führungen, wenn Sie mit Komponenten hantieren, die ggf. elektrische Schaltungen haben.
 
-![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png) ![Notice Icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **HINWEIS:**
+![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png)![Notice Icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png)**HINWEIS:**
 
 Wenn Sie ein Modul austauschen, lassen Sie **NIEMALS ein Fach auf der Rückseite des Gehäuses leer**. Besorgen Sie ein Austausch- oder leeres Modul, bevor Sie das fehlerhafte Teil ausbauen.
 

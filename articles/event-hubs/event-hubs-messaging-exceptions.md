@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 1a5922506a0db4277b205ba3390c9c30034c177d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Event Hubs-Messagingausnahmen
 In diesem Artikel werden einige der Ausnahmen aufgeführt, die von den Azure Service Bus-Messaging-APIs generiert werden. Hierzu zählt auch Event Hubs. Diese Referenz kann geändert werden. Prüfen Sie darum bei Bedarf, ob Aktualisierungen vorgenommen wurden.
@@ -98,4 +97,3 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 * [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Erstellen eines Event Hubs](event-hubs-create.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
-

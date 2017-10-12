@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/21/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
+ms.openlocfilehash: 3be46c8c02ad136edb1936fbb39560d479b27277
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: c303235ead2af7cfaa368a5b5f00567ae44cfb86
-ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-with-the-new-azvm-preview-in-cloud-shell"></a>Erstellen eines virtuellen Windows-Computers mit dem neuen Cmdlet „New-AzVM“ (Vorschauversion) in Cloud Shell 
 
 Das Cmdlet „New-AzVM“ (Vorschauversion) vereinfacht die Erstellung eines neuen virtuellen Computers mithilfe von PowerShell. In diesem Leitfaden erfahren Sie, wie Sie PowerShell in Azure Cloud Shell mit dem vorinstallierten Cmdlet „New-AzVM“ verwenden, um einen neuen virtuellen Azure-Computer unter Windows Server 2016 zu erstellen. Nach Abschluss der Bereitstellung stellen wir eine RDP-Verbindung mit dem Server her.  
@@ -83,4 +81,3 @@ In diesem Thema haben Sie mithilfe von „New-AzVM“ einen einfachen virtuellen
 
 > [!div class="nextstepaction"]
 > [Azure-Tutorials zu virtuellen Windows-Computern](./tutorial-manage-vm.md)
-

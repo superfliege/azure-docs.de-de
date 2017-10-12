@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
 ms.openlocfilehash: 21fbdbc4c24440c6fbbd7487cfbb2e0a3140aa96
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Was ist das Clouddienstmodell, und wie kann es gepackt werden?
 Ein Clouddienst wird aus drei Komponenten erstellt: aus der Dienstdefinition *(.csdef)*, der Dienstkonfiguration *(.cscfg)* und einem Dienstpaket *(.cspkg)*. Die beiden Dateien **ServiceDefinition.csdef** und **ServiceConfig.cscfg** sind XML-basiert und beschreiben die Struktur und Konfiguration des Clouddiensts; zusammen werden sie als Modell bezeichnet. Die Datei **ServicePackage.cspkg** ist eine ZIP-Datei, die auf der Grundlage der Datei **ServiceDefinition.csdef** generiert wird und unter anderem alle erforderlichen binärbasierten Abhängigkeiten enthält. In Azure wird ein Clouddienst aus der Datei **ServicePackage.cspkg** sowie der Datei **ServiceConfig.cscfg** erstellt.

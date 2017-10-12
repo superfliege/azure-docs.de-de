@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: 49cc01e54158b68e440f1efbfe2f8b0d076a5692
-ms.contentlocale: de-de
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-the-source-environment-vmware-to-azure"></a>Einrichten der Quellumgebung (VMware in Azure)
 > [!div class="op_single_selector"]
 > * [VMware zu Azure](./site-recovery-set-up-vmware-to-azure.md)
@@ -103,4 +101,3 @@ Klicken Sie auf **+vCenter**, um eine Verbindung mit einem VMware vCenter Server
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Einrichten Ihrer Zielumgebung](./site-recovery-prepare-target-vmware-to-azure.md) in Azure
-

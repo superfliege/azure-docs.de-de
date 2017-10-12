@@ -1,4 +1,4 @@
----   
+---
 title: "SSL-Richtlinienübersicht für Azure Application Gateway | Microsoft-Dokumentation"
 description: "Erfahren Sie, welche Konfigurationsmöglichkeiten Azure Application Gateway für die SSL-Richtlinie bietet."
 services: application gateway
@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure services
 ms.date: 08/03/2017
 ms.author: amsriva
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: ec36af282bbfdc22ff88082412dd18cd2a85f245
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-   
-
 # <a name="application-gateway-ssl-policy-overview"></a>SSL-Richtlinienübersicht für Azure Application Gateway
 
 Mit Azure Application Gateway können Sie die SSL-Zertifikatverwaltung zentralisieren sowie den Ver- und Entschlüsselungsaufwand für eine Back-End-Serverfarm verringern. Diese zentralisierte SSL-Behandlung ermöglicht auch die Angabe einer zentralen SSL-Richtlinie, die auf die Sicherheitsanforderungen Ihrer Organisation abgestimmt ist. Dadurch können Sie sowohl Complianceanforderungen erfüllen als auch Sicherheitsrichtlinien und empfohlene Vorgehensweisen umsetzen.
@@ -107,4 +104,3 @@ Application Gateway unterstützt die folgenden Verschlüsselungssammlungen. Aus 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Sie erfahren möchten, wie Sie die SSL-Auslagerung konfigurieren, lesen Sie [Konfigurieren einer SSL-Richtlinie auf einem Anwendungsgateway](application-gateway-configure-ssl-policy-powershell.md).
-

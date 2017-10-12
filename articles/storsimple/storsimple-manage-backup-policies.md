@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/10/2016
 ms.author: v-sharos
 ms.openlocfilehash: c1e9d5d0450bab5d371aafb40fd7c5920d39dfdb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-backup-policies"></a>Verwalten von Sicherungsrichtlinien mithilfe des StorSimple Manager-Diensts
 [!INCLUDE [storsimple-version-selector-manage-backup-policies](../../includes/storsimple-version-selector-manage-backup-policies.md)]
@@ -53,7 +53,7 @@ Fügen Sie eine Sicherungsrichtlinie zum automatischen Planen Ihrer Sicherungen 
 
 [!INCLUDE [storsimple-add-backup-policy](../../includes/storsimple-add-backup-policy.md)]
 
-![Video verfügbar](./media/storsimple-manage-backup-policies/Video_icon.png) **Video verfügbar**
+![Video verfügbar](./media/storsimple-manage-backup-policies/Video_icon.png)**Video verfügbar**
 
 Sie können sich [hier](https://azure.microsoft.com/documentation/videos/create-storsimple-backup-policies/)ein Video anschauen, in dem das Erstellen einer lokalen Sicherungsrichtlinie oder einer Sicherungsrichtlinie in der Cloud demonstriert wird.
 

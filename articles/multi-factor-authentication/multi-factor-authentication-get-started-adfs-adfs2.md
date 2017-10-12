@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017, it-pro
 ms.openlocfilehash: a05219398aefa158321ae63934743dd43841e33f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Konfigurieren des Azure Multi-Factor Authentication-Servers zur Verwendung von AD FS 2.0
 Dieser Artikel richtet sich an Organisationen, die sind in einem Azure Active Directory-Verbund befinden und lokale Ressourcen oder Ressourcen in der Cloud schützen möchten. Schützen Sie Ihre Ressourcen mithilfe des Azure Multi-Factor Authentication-Servers, und konfigurieren Sie ihn für die Verwendung von AD FS, damit für wichtige Endpunkte die Überprüfung in zwei Schritten ausgelöst wird.

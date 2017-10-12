@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
 ms.openlocfilehash: 6e0b67ba98af27017901608dde4401600eb9957f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Einrichten von Application Insights: Abhängigkeitsüberwachung
 Eine *Abhängigkeit* ist eine externe Komponente, die von Ihrer App aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](app-insights-overview.md) misst, wie lange die Anwendung auf Abhängigkeiten wartet, und wie oft ein Abhängigkeitsaufruf nicht funktioniert. Sie können bestimmte Aufrufe untersuchen, und diese mit Anforderungen und Ausnahmen in Verbindung bringen.
@@ -73,7 +73,7 @@ Klicken Sie sich durch die Abhängigkeitsdiagramme oder die Tabellenelemente, um
 
 ![Instanzen Abhängigkeitsaufrufe](./media/app-insights-asp-net-dependencies/dependency-call-instance.png)
 
-**Die Fehleranzahl** wird auf dem Blatt **Failures** angezeigt. Ein Fehler ist jeder Rückgabecode, der nicht im Bereich 200-399 liegt, oder unbekannt ist.
+**Die Fehleranzahl** wird auf dem Blatt **Ausfälle** angezeigt. Ein Fehler ist jeder Rückgabecode, der nicht im Bereich 200-399 liegt, oder unbekannt ist.
 
 > [!NOTE]
 > **100 % Fehler?** - Dies liegt wahrscheinlich daran, dass Sie nur teilweise Abhängigkeitsdaten erhalten. Sie müssen [die für Ihre Plattform geeignete Abhängigkeitsüberwachung einrichten](#set-up-dependency-monitoring).
@@ -198,7 +198,7 @@ Wenn Sie das Standardmodul für die Nachverfolgung von Abhängigkeiten deaktivie
 ## <a name="troubleshooting"></a>Problembehandlung
 *Das Erfolgsflag für die Abhängigkeit zeigt immer entweder TRUE oder FALSE.*
 
-*SQL-Abfrage, die nicht vollständig angezeigt wird.*
+*SQL-Abfrage, die nicht vollständig angezeigt wird*
 
 * Führen Sie ein Upgrade auf die neueste Version des SDK durch. Wenn Ihre Version von .NET niedriger als 4.6. ist:
   * IIS-Host: Installieren Sie den [Application Insights-Agent](app-insights-monitor-performance-live-website-now.md) auf den Hostservern.

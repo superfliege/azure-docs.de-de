@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2017
 ms.author: bwren
 ms.openlocfilehash: 9fcf23f5ff47bd7457e5afa69eb2b9b33e0bf0fe
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-log-analytics"></a>Was ist Log Analytics?
 Log Analytics ist ein Dienst in [Operations Management Suite \(OMS\)](../operations-management-suite/operations-management-suite-overview.md), der Ihre cloudbasierten und lokalen Umgebungen überwacht, um ihre Verfügbarkeit und Leistung zu gewährleisten.  Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen.  Dieser Artikel enthält eine kurze Erläuterung des Nutzens von Log Analytics, eine Übersicht über die Funktionsweise sowie Links zu ausführlicheren Inhalten mit weiteren Informationen.

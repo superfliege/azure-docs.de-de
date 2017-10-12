@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 09/06/2017
 ms.author: maroche
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: 7259505b68202f3741e64e86555d2e3f968b8951
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Neuerungen in Azure Data Catalog
 Updates für **Azure Data Catalog** werden in regelmäßigen Abständen veröffentlicht. Nicht jede Version umfasst neue Funktionen für Benutzer, da sich einige Versionen auf Back-End-Dienstfunktionen konzentrieren. Auf dieser Seite werden neue Funktionen für Benutzer aufgezeigt, die dem Dienst Azure Data Catalog hinzugefügt wurden.
@@ -264,5 +263,4 @@ August 2015 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
 * In der oberen Navigationsleiste wurde die neue Schaltfläche "Benutzer" mit dem entsprechenden Menü hinzugefügt. In diesem Menü kann der Benutzer das für die Anmeldung bei Azure Data Catalog verwendete Konto anzeigen und sich bei Bedarf abmelden. In diesem Menü wird zudem der Katalogname angezeigt. Dies ist nützlich für Entwickler, die die Azure Data Catalog-REST-API verwenden.
 * Nur Standard Edition: Beim Hinzufügen von Besitzern zu Datenbeständen unterstützt Azure Data Catalog jetzt sowohl Benutzerkonten als auch Sicherheitsgruppen als Besitzer. Um eine Sicherheitsgruppe als Besitzer für ausgewählte Datenasset hinzuzufügen, können Sie entweder den Anzeigenamen der Gruppe oder die UPN-E-Mail-Adresse der Gruppe (sofern vorhanden) eingeben.
 * Unterstützung für Datenquellen in Azure Blob Storage. Benutzer können nun Azure Storage-Blobs und -Verzeichnisse registrieren und ermitteln.
-
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
 ms.openlocfilehash: eb78c05df3b3cdf3887334c11bdabd5cebb74747
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Anpassen des Lebenszyklus einer Web- oder Workerrolle in .NET
 Wenn Sie eine Workerrolle erstellen, erweitern Sie die [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) -Klasse, die Methoden zum Außerkraftsetzen bereitstellt, sodass Sie auf Lebenszyklusereignisse reagieren können. Für Webrollen ist diese Klasse optional, daher wird sie in erster Linie für die Reaktion auf Lebenszyklusereignisse verwendet.

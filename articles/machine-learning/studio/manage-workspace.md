@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2f90234bdd5c917a502d24cd16256bc11c7fbed0
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Verwalten eines Azure Machine Learning-Arbeitsbereichs
 
@@ -136,5 +135,4 @@ Auf der Seite „Configure“ können Sie die folgenden Eigenschaften aktualisie
 * In **Description** können Sie eine Beschreibung des Webdiensts eingeben. „Description“ ist ein Pflichtfeld.
 * **Logging** ermöglicht Ihnen das Aktivieren bzw. Deaktivieren der Fehlerprotokollierung für den Endpunkt. Weitere Informationen zur Protokollierung finden Sie unter [Aktivieren der Protokollierung für Machine Learning-Webdienste](web-services-logging.md).
 * **Enable Sample data** ermöglicht das Bereitstellen von Beispieldaten, die Sie mit dem Request-Response-Dienst testen können. Wenn Sie den Webdienst in Machine Learning Studio erstellt haben, stammen die Beispieldaten aus den Daten, mit denen Sie Ihr Modell trainiert haben. Wenn Sie den Dienst programmgesteuert erstellt haben, stammen die Daten aus den Beispieldaten, die Sie als Teil des JSON-Pakets bereitgestellt haben.
-
 

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: eslesar
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c3ae8da65e03fe9e11b5657a6a40d02de0567da6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="integrate-system-center-configuration-manager-with-oms-update-management-preview"></a>Integrieren von System Center Configuration Manager und OMS-Updateverwaltung (Vorschau)
 
 Kunden, die in System Center Configuration Manager investiert haben, um PCs, Server und Mobilgeräte zu verwalten, profitieren auch von der Leistungsstärke und dem Funktionsumfang dieser Lösung bei der Verwaltung von Softwareupdates im Rahmen des Softwareupdateverwaltungs-Zyklus.  
@@ -56,5 +54,4 @@ Nach Abschluss der Updatebereitstellung mit der OMS-Lösung installieren die Zie
 Um Updates für virtuelle Windows Server-Computer zu verwalten, die Configuration Manager-Clients sind, müssen Sie die Clientrichtlinie so konfigurieren, dass die Funktion der Softwareupdateverwaltung für alle von dieser Lösung verwalteten Clients deaktiviert wird.  Standardmäßig gelten Clienteinstellungen für alle Geräte in der Hierarchie.  Weitere Informationen zu dieser Richtlinieneinstellung und ihrer Konfiguration finden Sie unter [Konfigurieren von Clienteinstellungen in System Center Configuration Manager](https://docs.microsoft.com/sccm/core/clients/deploy/configure-client-settings).  
 
 Nachdem Sie dieses Konfigurationsänderung vorgenommen haben, erstellen Sie anhand der Schritte in [Erstellen einer Updatebereitstellung](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment) eine neue Bereitstellung, und wählen Sie aus der Dropdownliste eine geeignete Configuration Manager-Sammlung aus, die als OMS-Computergruppe dargestellt wird. 
-
 

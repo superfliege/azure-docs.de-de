@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 53be05593c3733ccb27979a3a026414013125779
-ms.contentlocale: de-de
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: bb690bf86743136778e01b480b98c9cc08211839
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="advisor-security-recommendations"></a>Advisor-Empfehlungen zur Sicherheit
 
@@ -39,7 +38,7 @@ Weitere Informationen über Empfehlungen zur Sicherheit finden Sie unter [Verwal
 
 2. Klicken Sie im linken Bereich auf **Weitere Dienste**.
 
-3. Klicken Sie im Dienste-Menübereich unter **Überwachung und Verwaltung** auf **Azure-Ratgeber**.  
+3. Klicken Sie im Dienstmenübereich unter **Überwachung und Verwaltung** auf **Azure-Ratgeber**.  
  Das Ratgeberdashboard wird angezeigt.
 
 4. Klicken Sie auf dem Ratgeber-Dashboard auf die Registerkarte **Sicherheit**.
@@ -47,7 +46,7 @@ Weitere Informationen über Empfehlungen zur Sicherheit finden Sie unter [Verwal
 5. Wählen Sie das Abonnement aus, für das Sie Empfehlungen erhalten möchten, und klicken Sie anschließend auf **Empfehlungen abrufen**.
 
 > [!NOTE]
-> Für den Zugriff auf die Empfehlungen des Ratgebers müssen Sie Ihr Abonnement zunächst beim Ratgeber *registrieren*. Ein Abonnement wird registriert, wenn ein *Abonnementbesitzer* das Ratgeber-Dashboard aufruft und auf die Schaltfläche **Empfehlungen abrufen** klickt. Dies ist eine *einmalige Aufgabe*. Sobald ein Abonnement registriert wurde, können *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements, einer Ressourcengruppe oder einer bestimmten Ressource auf die Ratgeberempfehlungen zugreifen.
+> Für den Zugriff auf die Empfehlungen des Ratgebers müssen Sie Ihr Abonnement zunächst beim Ratgeber *registrieren*. Ein Abonnement wird registriert, wenn ein *Abonnementbesitzer* das Ratgeberdashboard aufruft und auf die Schaltfläche **Empfehlungen abrufen** klickt. Dies ist eine *einmalige Aufgabe*. Sobald ein Abonnement registriert wurde, können *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements, einer Ressourcengruppe oder einer bestimmten Ressource auf die Ratgeberempfehlungen zugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -60,4 +59,3 @@ Hier finden Sie weitere Informationen zu Empfehlungen des Ratgebers:
 
 
  
-

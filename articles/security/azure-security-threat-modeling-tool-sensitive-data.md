@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 21d1ba02052862e16ef27ec313d53cd0bffcc21a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Sicherheitsrahmen: Sensible Daten | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Computer-Vertrauensstellungsgrenze** | <ul><li>[Sicherstellen, dass Binärdateien verschleiert werden, wenn sie sensible Informationen enthalten](#binaries-info)</li><li>[Erwägen der Verwendung von Encrypted File System (EFS) zum Schützen von vertraulichen benutzerspezifischen Daten](#efs-user)</li><li>[Sicherstellen, dass von der Anwendung im Dateisystem gespeicherte sensible Daten verschlüsselt sind](#filesystem)</li></ul> | 
-| **Webanwendung** | <ul><li>[Sicherstellen, dass sensible Inhalte nicht im Browser zwischengespeichert werden](#cache-browser)</li><li>[Verschlüsseln von Abschnitten der Web-App-Konfigurationsdateien, die sensible Daten enthalten](#encrypt-data)</li><li>[Explizites Deaktivieren des autocomplete-HTML-Attributs in sensiblen Formularen und Eingabeumgebungen](#autocomplete-input)</li><li>[Sicherstellen, dass auf dem Benutzerbildschirm angezeigte sensible Daten maskiert sind](#data-mask)</li></ul> | 
+| **Web Application** | <ul><li>[Sicherstellen, dass sensible Inhalte nicht im Browser zwischengespeichert werden](#cache-browser)</li><li>[Verschlüsseln von Abschnitten der Web-App-Konfigurationsdateien, die sensible Daten enthalten](#encrypt-data)</li><li>[Explizites Deaktivieren des autocomplete-HTML-Attributs in sensiblen Formularen und Eingabeumgebungen](#autocomplete-input)</li><li>[Sicherstellen, dass auf dem Benutzerbildschirm angezeigte sensible Daten maskiert sind](#data-mask)</li></ul> | 
 | **Datenbank** | <ul><li>[Implementieren der dynamischen Datenmaskierung zum Beschränken der Offenlegung von sensiblen Daten für Benutzer ohne Berechtigungen](#dynamic-users)</li><li>[Sicherstellen, dass Kennwörter im Salt-Hashformat gespeichert werden](#salted-hash)</li><li>[Sicherstellen, dass sensible Daten in Datenbankspalten verschlüsselt sind](#db-encrypted)</li><li>[Sicherstellen, dass die Verschlüsselung auf Datenbankebene (TDE) aktiviert ist](#tde-enabled)</li><li>[Sicherstellen, dass Datenbanksicherungen verschlüsselt sind](#backup)</li></ul> | 
 | **Web-API** | <ul><li>[Sicherstellen, dass für die Web-API relevante sensible Daten nicht im Speicher des Browsers gespeichert werden](#api-browser)</li></ul> | 
 | Azure DocumentDB | <ul><li>[Verschlüsseln von sensiblen Daten, die in DocumentDB gespeichert werden](#encrypt-docdb)</li></ul> | 

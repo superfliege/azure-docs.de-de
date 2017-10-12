@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 ms.openlocfilehash: 1c39fee739c2f5fd4b928e1e76e1ea57f072b5f8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen
 API Management unterstützt eine Bereitstellung für mehrere Regionen, wodurch API-Herausgeber einen einzelnen API-Verwaltungsdienst in einer beliebigen Anzahl von gewünschten Azure-Regionen zur Verfügung stellen können. Dies trägt dazu bei, die Anforderungslatenz bei geografisch verteilten API-Nutzern zu verringern, und verbessert gleichzeitig die Dienstverfügbarkeit, wenn eine Region offline geht. 
@@ -30,7 +30,7 @@ Bei der anfänglichen Erstellung eines API Management-Diensts enthält dieser nu
 > 
 > 
 
-## <a name="add-region"> </a>Bereitstellen einer API Management-Dienstinstanz für eine neue Region
+## <a name="add-region"></a>Bereitstellen einer API Management-Dienstinstanz für eine neue Region
 > [!NOTE]
 > Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Create an API Management service instance] im Tutorial [Erste Schritte mit Azure API Management][Get started with Azure API Management].
 > 
@@ -52,7 +52,7 @@ Klicken Sie auf **Hinzufügen** um Ihre Auswahl in der Tabelle „Standorte“ z
 
 Wiederholen Sie diesen Vorgang, bis Sie alle Standorte konfiguriert haben, und klicken Sie auf der Symbolleiste auf **Speichern**, um den Bereitstellungsprozess zu starten.
 
-## <a name="remove-region"> </a>Löschen einer API Management-Dienstinstanz aus einem Standort
+## <a name="remove-region"></a>Löschen einer API Management-Dienstinstanz aus einem Standort
 Navigieren Sie im Azure-Portal zur Seite **Scale and pricing (Skalieren und Preise)** für Ihre API Management-Dienstinstanz. 
 
 ![Registerkarte "Skalieren"][api-management-scale-service]

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 139b694b227834c48f213df328ed437d0f5ae18c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-an-azure-app-service-app-by-using-visual-studio-2015"></a>Bereitstellen einer Azure App Service-App mit Visual Studio 2015
 Dieser Artikel beschreibt, wie Azure App Service-Apps (API-Apps, Web-Apps, mobile Apps) mithilfe von Visual Studio 2015 in Azure Deutschland bereitgestellt werden.
 
@@ -39,4 +37,3 @@ Nachdem Sie Visual Studio für das Herstellen der Verbindung mit Ihrem Azure Deu
 * [Bereitstellen einer ASP.NET-Web-App für Azure App Service mit Visual Studio](../app-service/app-service-web-get-started-dotnet.md)
 * Allgemeine App Service-Informationen finden Sie unter [App Service – API-Apps-Dokumentation](../app-service/index.yml).
 * Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
-

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/20/2017
 ms.author: ralfwi
 ms.openlocfilehash: 2d6dca839eae3e274feff3f1711b81b2799bd889
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="available-services-in-azure-germany"></a>Verfügbare Dienste in Azure Deutschland
 Azure Deutschland aktualisiert und erweitert seine Dienste fortlaufend nach dem Evergreeningkonzept. Die Dienste werden mit demselben Code bereitgestellt, der in der globalen Azure-Umgebung verwendet wird, und nach Prüfung auf lokale Implementierbarkeit in Azure Deutschland eingepflegt. In diesem Artikel werden die Dienste beschrieben, die zurzeit in Azure Deutschland verfügbar sind. 

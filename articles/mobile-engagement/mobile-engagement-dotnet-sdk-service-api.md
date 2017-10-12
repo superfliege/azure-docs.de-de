@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 6a497189268c5a1b7e269cc57904ebc77c1906fd
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-net-sdk-to-access-azure-mobile-engagement-service-apis"></a>Zugreifen auf Azure Mobile Engagement-Dienst-APIs mit dem .NET SDK
 Azure Mobile Engagement stellt eine Reihe von APIs zur Verfügung, mit denen Sie Geräte, Reichweiten-/Pushkampagnen usw. verwalten können. Für die Interaktion mit diesen APIs stellen wir Ihnen auch eine [Swagger-Datei](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json) bereit, die Sie mit Tools zum Generieren von SDKs für Ihre bevorzugte Sprache verwenden können. Wir empfehlen die Verwendung des Tools [AutoRest](https://github.com/Azure/AutoRest) , um Ihr SDK aus unserer Swagger-Datei zu generieren.

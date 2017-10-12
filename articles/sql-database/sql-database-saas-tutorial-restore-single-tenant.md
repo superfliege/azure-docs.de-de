@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 792476849e796695dde3f2ec80b56431a17e8fc0
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>Wiederherstellen einer Azure SQL-Datenbank-Instanz eines einzelnen Mandanten in einer mehrinstanzenfähigen SaaS-App
 
@@ -117,7 +116,7 @@ Beachten Sie: Sie würden einem Mandanten wohl kaum Zugriff auf wiederhergestell
 In der Praxis würden Sie wahrscheinlich nur diese wiederhergestellte Datenbank für einen festgelegten Zeitraum beibehalten. Zum Abschluss können Sie den wiederhergestellten Mandanteneintrag durch Aufruf des Skripts *Remove-RestoredTenant.ps1* löschen.
 
 1. Legen Sie **$DemoScenario** auf **4** fest, um das Szenario zum *Entfernen des wiederhergestellten Mandanten* auszuwählen.
-1. **Starten Sie** **die Ausführung mit** **F5.**
+1. **Starten Sie****die Ausführung mit****F5.**
 1. Der Eintrag *ContosoConcertHall\_old* ist jetzt aus dem Katalog gelöscht. Fahren Sie fort, und schließen Sie die Ereignisseseite für diesen Mandanten in Ihrem Browser.
 
 
@@ -150,4 +149,3 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 * Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md)
 * [Weitere Informationen zu Sicherungen für SQL-Datenbank](sql-database-automated-backups.md)
-

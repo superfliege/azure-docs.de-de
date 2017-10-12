@@ -12,15 +12,12 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
 ms.openlocfilehash: 4842944cd0d980fb7e817165da23b9c3c4037e94
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="provision-devices-across-load-balanced-iot-hubs"></a>Bereitstellen von Geräten für IoT Hubs mit Lastausgleich
 
 In diesem Tutorial wird gezeigt, wie Sie anhand des Device Provisioning-Diensts (Device Provisioning Service, DPS) Geräte für mehrere IoT Hubs mit Lastausgleich bereitstellen. In diesem Tutorial lernen Sie Folgendes:
@@ -88,4 +85,3 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="nextstepaction"]
 > [Bind an existing custom SSL certificate to Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
 -->
-

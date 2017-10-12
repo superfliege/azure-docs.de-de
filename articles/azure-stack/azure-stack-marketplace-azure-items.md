@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/11/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: ad65d0fe93a0b67772521c9020c288d0698a8cf0
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Für Azure Stack verfügbare Azure Marketplace-Elemente
 
@@ -146,5 +145,4 @@ Microsoft Azure Stack unterstützt die folgenden Azure Marketplace-Elemente:
 
 ### <a name="next-steps"></a>Nächste Schritte
 [Herunterladen eines Marketplace-Elements](azure-stack-download-azure-marketplace-item.md)
-
 

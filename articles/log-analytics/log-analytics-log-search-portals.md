@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: magoedte; bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: b205f226d95d94b938a70a834ac0147e76d459ea
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="portals-for-creating-and-editing-log-queries-in-azure-log-analytics"></a>Portale zum Erstellen und Bearbeiten von Protokollabfragen in Azure Log Analytics
 
@@ -47,5 +46,4 @@ Aufgrund der erweiterten Funktionen wird das Advanced Analytics-Portal in der Re
 
 - Absolvieren Sie ein Tutorial zur Verwendung der [Protokollsuche](log-analytics-tutorial-viewdata.md), um zu erfahren, wie Abfragen mithilfe der Abfragesprache erstellt werden.
 - Lernen Sie das [Advanced Analytics-Portal](https://go.microsoft.com/fwlink/?linkid=856587) kennen, um komplexe Abfragen zu erstellen und sie als eine Entwicklungsumgebung für Ihre Protokollsuchen zu verwenden.
-
 

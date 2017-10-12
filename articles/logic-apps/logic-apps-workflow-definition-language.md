@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
 ms.openlocfilehash: 6befc5b26f2b01113f1aa813125b33eb66ad6f6a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Schema der Definitionssprache für Workflows für Azure Logic Apps
 
@@ -70,7 +70,7 @@ Das folgende Beispiel zeigt die Struktur einer Parameterdefinition:
 
 |Elementname|Erforderlich|Beschreibung|  
 |------------------|--------------|-----------------|  
-|Typ|Ja|**Typ:** string <p> **Deklaration:** `"parameters": {"parameter1": {"type": "string"}` <p> **Spezifikation:** `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** securestring <p> **Deklaration:** `"parameters": {"parameter1": {"type": "securestring"}}` <p> **Spezifikation:** `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** int <p> **Deklaration:** `"parameters": {"parameter1": {"type": "int"}}` <p> **Spezifikation:** `"parameters": {"parameter1": {"value" : 5}}` <p> **Typ:** bool <p> **Deklaration:** `"parameters": {"parameter1": {"type": "bool"}}` <p> **Spezifikation:** `"parameters": {"parameter1": { "value": true }}` <p> **Typ:** array <p> **Deklaration:** `"parameters": {"parameter1": {"type": "array"}}` <p> **Spezifikation:** `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Typ:** object <p> **Deklaration:** `"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:** `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Typ:** secureobject <p> **Deklaration:** `"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:** `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Hinweis:** Die Typen `securestring` und `secureobject` werden bei `GET`-Vorgängen nicht zurückgegeben. Dieser Typ muss für alle Kennwörter, Schlüssel und Geheimnisse verwendet werden.|  
+|Typ|Ja|**Typ:** string <p> **Deklaration:**`"parameters": {"parameter1": {"type": "string"}` <p> **Spezifikation:**`"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** securestring <p> **Deklaration:**`"parameters": {"parameter1": {"type": "securestring"}}` <p> **Spezifikation:**`"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** int <p> **Deklaration:**`"parameters": {"parameter1": {"type": "int"}}` <p> **Spezifikation:**`"parameters": {"parameter1": {"value" : 5}}` <p> **Typ:** bool <p> **Deklaration:**`"parameters": {"parameter1": {"type": "bool"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": true }}` <p> **Typ:** array <p> **Deklaration:**`"parameters": {"parameter1": {"type": "array"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Typ:** object <p> **Deklaration:**`"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Typ:** secureobject <p> **Deklaration:**`"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Hinweis:** Die Typen `securestring` und `secureobject` werden bei `GET`-Vorgängen nicht zurückgegeben. Dieser Typ muss für alle Kennwörter, Schlüssel und Geheimnisse verwendet werden.|  
 |defaultValue|Nein|Gibt den Standardwert für den Parameter an. Dieser wird verwendet, falls zum Zeitpunkt der Ressourcenerstellung kein Wert angegeben wird.|  
 |allowedValues|Nein|Gibt ein Array mit zulässigen Werten für den Parameter an.|  
 |metadata|Nein|Gibt zusätzliche Informationen zum Parameter an. Hierzu zählen beispielsweise eine lesbare Beschreibung oder Entwurfszeitdaten für Visual Studio oder andere Tools.|  

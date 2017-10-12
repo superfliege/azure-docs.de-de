@@ -16,14 +16,12 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 7b57e37a1bc9391c88c8170f59a39654bf895d47
-ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 94314b3652a05ea387f0930a3a6315fcba6833d2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-powershell-to-copy-a-sql-database-to-a-new-server"></a>Kopieren einer SQL-Datenbank auf einen neuen Server mit PowerShell
 
 In diesem PowerShell-Skriptbeispiel wird eine Kopie einer vorhandenen Datenbank auf einem neuen Server erstellt. 
@@ -32,7 +30,7 @@ In diesem PowerShell-Skriptbeispiel wird eine Kopie einer vorhandenen Datenbank 
 
 ## <a name="copy-a-database-to-a-new-server"></a>Kopieren einer Datenbank auf einen neuen Server
 
-[!code-powershell[main](../../../powershell_scripts/sql-database/copy-database-to-new-server/copy-database-to-new-server.ps1?highlight=18-21 "Kopieren einer Datenbank auf einen neuen Server")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/copy-database-to-new-server/copy-database-to-new-server.ps1?highlight=18-21 "Copy database to new server")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -61,4 +59,3 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
 
 Zusätzliche PowerShell-Skriptbeispiele für SQL-Datenbank finden Sie in den [Azure PowerShell samples for Azure SQL Database](../sql-database-powershell-samples.md) (Azure PowerShell-Beispiele für Azure SQL-Datenbank).
-

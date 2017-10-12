@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 74c34fccffcea6aae370d881791093f9b58a5f3d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-the-azure-stack-users-powershell-environment"></a>Konfigurieren der PowerShell-Umgebung des Azure Stack-Benutzers
 
 Als Azure Stack-Benutzer können Sie die PowerShell-Umgebung des Azure Stack Development Kits konfigurieren. Nach der Konfigurierung können Sie PowerShell verwenden, um Azure Stack-Ressourcen zu verwalten, z.B. Angebote abonnieren, VMs erstellen, Azure Resource Manager-Vorlagen bereitstellen usw. Dieses Thema ist auf die Nutzung mit den Benutzerumgebungen beschränkt. Wenn Sie PowerShell für die Umgebung des Cloudbetreibers einrichten möchten, finden Sie weitere Informationen im Thema [Configure the Azure Stack operator's PowerShell environment (Konfigurieren der PowerShell-Umgebung des Azure Stack-Betreibers)](../azure-stack-powershell-configure-admin.md). 
@@ -129,4 +127,3 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ## <a name="next-steps"></a>Nächste Schritte
 * [Entwickeln von Vorlagen für Azure Stack](azure-stack-develop-templates.md)
 * [Bereitstellen von Vorlagen mit PowerShell](azure-stack-deploy-template-powershell.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2017
 ms.author: magoedte;bwren
+ms.openlocfilehash: 7537a50d3d9b773f48bc498f946ea5f63f6d530b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 844831b63d5263987ed05370125fbe9f01913ab9
-ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Starten eines Runbooks in Azure Automation
 Die folgende Tabelle hilft Ihnen dabei herauszufinden, welche Methode zum Starten eines Runbooks in Azure Automation sich am besten für Ihr jeweiliges Szenario eignet. Dieser Artikel enthält Details zum Starten eines Runbooks über das Azure-Portal oder mit Windows PowerShell. Details zu den anderen Methoden werden in anderen Artikeln bereitgestellt, auf die Sie über unten stehende Links zugreifen können.
@@ -184,5 +183,4 @@ jsmith
 ## <a name="next-steps"></a>Nächste Schritte
 * Die Runbook-Architektur im aktuellen Artikel bietet einen allgemeinen Überblick über Runbooks, die zum Verwalten von Ressourcen in Azure und lokal mit dem Hybrid Runbook Worker eingesetzt werden.  Weitere Informationen zum Ausführen von Automation-Runbooks in Ihrem Rechenzentrum finden Sie unter [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md).
 * Weitere Informationen zum Erstellen von modularen Runbooks, die von anderen Runbooks für spezifische oder allgemeine Funktionen verwendet werden, finden Sie unter [Untergeordnete Runbooks](automation-child-runbooks.md).
-
 

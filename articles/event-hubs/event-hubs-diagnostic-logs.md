@@ -13,15 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 06/27/2017
-ms.author: sethm;babanisa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 09bc62f4918635419d74ef3ae400a41d4ce58b5a
-ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
-
+ms.date: 10/05/2017
+ms.author: sethm
+ms.openlocfilehash: bcc8427d57a001f73d321fbf35c5226a047b68d2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-hubs-diagnostic-logs"></a>Event Hubs-Diagnoseprotokolle
 
@@ -30,6 +28,7 @@ Sie können zwei Typen von Protokollen für Azure Event Hubs anzeigen:
 * **[Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Sie können Diagnoseprotokolle konfigurieren, um einen umfangreicheren Einblick in alle Vorgänge zu erhalten, die im Rahmen des Auftrags ausgeführt werden. Diagnoseprotokolle enthalten Informationen zu Aktivitäten vom Erstellen bis zum Löschen des Auftrags, einschließlich Updates und Aktivitäten während der Auftragsausführung.
 
 ## <a name="turn-on-diagnostic-logs"></a>Aktivieren der Diagnoseprotokolle
+
 Diagnoseprotokolle sind standardmäßig deaktiviert. So aktivieren Sie Diagnoseprotokolle
 
 1.  Klicken Sie im [Azure-Portal](https://portal.azure.com) unter **Überwachung und Verwaltung** auf **Diagnoseprotokolle**.
@@ -137,5 +136,4 @@ Example:
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Übersicht über die Event Hubs-API](event-hubs-api-overview.md)
-* [Erste Schritte mit Event Hubs](event-hubs-csharp-ephcs-getstarted.md)
-
+* [Erste Schritte mit Event Hubs](event-hubs-dotnet-standard-getstarted-send.md)

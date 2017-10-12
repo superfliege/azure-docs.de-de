@@ -16,10 +16,10 @@ ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
 ms.openlocfilehash: 1552e624a4703138ab82f7133ceaec3dbd04e1db
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-view-saml-returned-by-the-azure-access-control-service"></a>Anzeigen der vom Azure Access Control Service zurückgegebenen SAML
 Diese Anleitung erklärt, wie Sie die Security Assertion Markup Language (SAML) anzeigen können, die vom Azure Access Control Service (ACS) an Ihre Anwendung zurückgegeben wurde. Diese Anleitung baut auf das Thema [Gewusst wie: Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md) auf und enthält Code zum Anzeigen der SAML-Informationen. Die fertige Anwendung sieht etwa wie folgt aus.

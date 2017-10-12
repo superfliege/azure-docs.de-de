@@ -15,14 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 86c01a55304c5f5179e0e94d67f318e42075fd48
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-cluster-in-azure-using-powershell"></a>Erstellen eines Windows-Clusters in Azure mithilfe von PowerShell
 Dieses Tutorial zeigt Ihnen, wie Sie einen Windows Service Fabric-Cluster erstellen können, der in Azure ausgeführt wird. Wenn Sie fertig sind, verfügen Sie über einen Cluster, der in der Cloud ausgeführt wird und für den Sie Anwendungen bereitstellen können.
 
@@ -157,4 +155,3 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Als Nächstes fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie eine vorhandene Anwendung bereitstellen.
 > [!div class="nextstepaction"]
 > [Bereitstellen einer .NET-Anwendung mit Docker Compose](service-fabric-host-app-in-a-container.md)
-

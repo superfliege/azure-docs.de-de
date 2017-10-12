@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
 ms.openlocfilehash: 68aaf0fda2e60c5736ab020c15e516144e11d68e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Vorgehensweise: Konfigurieren von lokalen Encodern beim Erstellen von Multi-Bitrate-Datenströmen mit Azure Media Services
 Dieses Thema zählt lokale Liveencoder auf, mit denen Sie Ihre Liveereignisse aufzeichnen und zur weiteren Verarbeitung einen Single-Bitrate-Livedatenstrom an AMS-Kanäle (für die die Livecodierung aktiviert ist) senden können. Das Thema enthält auch Links zu Tutorials, in denen die Konfiguration der aufgelisteten Encoder erläutert wird.

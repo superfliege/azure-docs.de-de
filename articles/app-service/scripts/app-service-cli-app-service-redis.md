@@ -16,14 +16,12 @@ ms.workload: web
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: c1277a04e3a63c09b2ed7f9304bfc482ab9189a8
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-a-web-app-to-a-redis-cache"></a>Herstellen einer Verbindung einer Web-App mit einem Redis-Cache
 
 In diesem Szenario erfahren Sie, wie Sie einen Redis-Cache und eine Azure-Web-App erstellen. Anschließend verknüpfen Sie den Redis-Cache mithilfe von App-Einstellungen mit der Web-App.
@@ -58,4 +56,3 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
 
 Zusätzliche App Service-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure App Service](../app-service-cli-samples.md).
-

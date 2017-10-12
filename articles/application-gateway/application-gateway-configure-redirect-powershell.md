@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: cbee070c6bfe17135f37a82c545bf8ee7db2db43
-ms.contentlocale: de-de
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-redirection-on-application-gateway-with-powershell"></a>Konfigurieren der Umleitung für Application Gateway mit PowerShell
 
 Application Gateway unterstützt das Umleiten von Datenverkehr basierend auf einer definierten Konfiguration. Weitere allgemeine Informationen zur Umleitung finden Sie unter [Application Gateway Redirect Overview](application-gateway-redirect-overview.md) (Application Gateway-Umleitung – Übersicht). Dieser Artikel enthält Beispiele für die Umleitung von HTTP zu HTTPS, pfadbasierte Umleitungen, Umleitungen an mehrere Standorte und Umleitungen an externe Standorte.

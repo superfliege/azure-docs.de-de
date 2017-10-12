@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: bbf357b902474a1812eb7a5a2c914d0c8b91934b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Sicherheitsrahmen: Verwaltung von Ausnahmen | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF – serviceDebug-Knoten nicht in die Konfigurationsdatei aufnehmen](#servicedebug)</li><li>[WCF – serviceMetadata-Knoten nicht in die Konfigurationsdatei aufnehmen](#servicemetadata)</li></ul> |
 | **Web-API** | <ul><li>[Sicherstellen, dass eine ordnungsgemäße Ausnahmebehandlung in der ASP.NET-Web-API erfolgt](#exception)</li></ul> |
-| **Webanwendung** | <ul><li>[Keine Sicherheitsdetails in Fehlermeldungen verfügbar machen](#messages)</li><li>[Implementieren der Standardseite für die Fehlerbehandlung](#default)</li><li>[Festlegen der Bereitstellungsmethode auf „Retail“ in IIS](#deployment)</li><li>[Sicherer Ausfall bei Ausnahmen](#fail)</li></ul> |
+| **Web Application** | <ul><li>[Keine Sicherheitsdetails in Fehlermeldungen verfügbar machen](#messages)</li><li>[Implementieren der Standardseite für die Fehlerbehandlung](#default)</li><li>[Festlegen der Bereitstellungsmethode auf „Retail“ in IIS](#deployment)</li><li>[Sicherer Ausfall bei Ausnahmen](#fail)</li></ul> |
 
 ## <a id="servicedebug"></a>WCF – serviceDebug-Knoten nicht in die Konfigurationsdatei aufnehmen
 

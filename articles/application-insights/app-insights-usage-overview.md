@@ -12,14 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: bwren
+ms.openlocfilehash: edf15e72c822ea5e045895c6f03477c613c0a6c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 12876bff2de5738068f033ecc4ef14b81a68f0f6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="usage-analysis-for-web-applications-with-application-insights"></a>Verwendungsanalyse für Webanwendungen mit Application Insights
 
 Welche Funktionen Ihrer Web-App sind die beliebtesten? Erreichen die Benutzer mit Ihrer App ihre Ziele? Brechen sie an bestimmten Stellen ab, und kehren sie später zurück?  Mit [Azure Application Insights](app-insights-overview.md) erhalten Sie wertvolle Einblicke in die Nutzung Ihrer Web-App durch die Benutzer. Bei jeder Aktualisierung Ihrer App können Sie beurteilen, wie gut sie für Benutzer funktioniert. Mit diesem Wissen können Sie datengesteuerte Entscheidungen über die nächsten Entwicklungszyklen treffen.
@@ -32,7 +30,7 @@ Sie erzielen optimale Ergebnisse, wenn Sie Application Insights im Servercode de
 
     * *Sie möchten keinen Servercode installieren? [Erstellen Sie einfach eine Azure Application Insights-Ressource](app-insights-create-new-resource.md).*
 
-2. **Webseitencode:** Öffnen Sie das [Azure-Portal](https://portal.azure.com), öffnen Sie die Application Insights-Ressource für die App, und öffnen Sie dann **Erste Schritte > Überwachung und Diagnose der clientseitigen Anwendung**. 
+2. **Webseitencode:** Öffnen Sie das [Azure-Portal](https://portal.azure.com), öffnen Sie die Application Insights-Ressource für die App, und öffnen Sie dann **Erste Schritte &gt; Überwachung und Diagnose der clientseitigen Anwendung**. 
 
     ![Kopieren Sie das Skript in die Kopfzeile der Masterwebseite.](./media/app-insights-usage-overview/02-monitor-web-page.png)
 
@@ -176,4 +174,3 @@ Alle neuen TelemetryClients-Elemente fügen automatisch den von Ihnen angegebene
    - [Benutzerabläufe](app-insights-usage-flows.md)
    - [Arbeitsmappen](app-insights-usage-workbooks.md)
    - [Hinzufügen von Benutzerkontext](app-insights-usage-send-user-context.md)
-

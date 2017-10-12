@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c7a6e32089a084d200cd0bb7a57f8f8a1e1bb04e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopieren von Daten aus MySQL mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,7 +46,7 @@ Führen Sie zum Verwenden dieses MySQL-Connectors diese Schritte aus:
 > Wenn der Fehler „Fehler bei Authentifizierung, da die Gegenstelle den Transportdatenstrom geschlossen hat.“ auftritt, sollten Sie ein Upgrade für den MySQL-Connector/Net auf eine höhere Version durchführen.
 
 ## <a name="getting-started"></a>Erste Schritte
-Sie können mit dem .NET SDK, Python-SDK, Azure PowerShell, der REST-API oder der Azure Resource Manager-Vorlage eine Pipeline mit einer Kopieraktivität erstellen. Im [Tutorial zur Kopieraktivität](quickstart-create-data-factory-dot-net.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+Sie können mit dem .NET SDK, Python SDK, Azure PowerShell, der REST-API oder der Azure Resource Manager-Vorlage eine Pipeline mit einer Kopieraktivität erstellen. Im [Tutorial zur Kopieraktivität](quickstart-create-data-factory-dot-net.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den MySQL-Connector verwendet werden:
 
@@ -63,7 +62,7 @@ Folgende Eigenschaften werden für den mit MySQL verknüpften Dienst unterstütz
 | schema | Name des Schemas in der Datenbank. | Nein |
 | username | Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der MySQL-Datenbank an. | Ja |
 | password | Geben Sie das Kennwort für das angegebene Benutzerkonto an. Legen Sie für dieses Feld „SecureString“ fest. | Ja |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
 
 **Beispiel:**
 
@@ -97,7 +96,7 @@ Legen Sie zum Kopieren von Daten aus MySQL die type-Eigenschaft des Datasets auf
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft des Datasets muss auf **RelationalTable** festgelegt werden. | Ja |
+| Typ | Die „type“-Eigenschaft des Datasets muss auf **RelationalTable** festgelegt werden. | Ja |
 | tableName | Name der Tabelle in der MySQL-Datenbank. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
@@ -127,8 +126,8 @@ Legen Sie zum Kopieren von Daten aus MySQL den Quelltyp in der Kopieraktivität 
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **RelationalSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Typ | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **RelationalSource** festgelegt werden. | Ja |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ in „dataset“ angegeben ist) |
 
 **Beispiel:**
 

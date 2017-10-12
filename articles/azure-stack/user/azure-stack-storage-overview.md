@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: xiaofmao
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8777aa486a627cf8b2d8ba443e115638354d10da
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Einführung zu Azure Stack-Speicher
 
@@ -89,5 +88,4 @@ Ein Speicherkonto kann eine beliebige Anzahl von Warteschlangen enthalten, und e
 * [Azure Stack-Speicher: Unterschiede und Überlegungen](azure-stack-acs-differences.md)
 
 * Weitere Informationen zu Azure Storage finden Sie unter [Einführung in Microsoft Azure Storage](../../storage/common/storage-introduction.md).
-
 

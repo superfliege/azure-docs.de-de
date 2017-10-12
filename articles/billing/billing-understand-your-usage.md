@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 0d4f2e19ec3417b7ca111f777e34b1ce66ddb32d
-ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: a99e0dfea16f9fe9776d24fc94eac9ee18c7b2b6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Grundlegendes über Benennungen zu den Gebühren in der Datei mit ausführlichen Nutzungsdaten zu Microsoft Azure 
 Die CSV-Datei mit ausführlichen Informationen zu Nutzungsgebühren enthält Gebühren für die tägliche Nutzung und die Nutzung auf der Ebene von Verbrauchseinheiten für den aktuellen Abrechnungszeitraum. 
@@ -90,4 +89,3 @@ Externe Dienste (auch als „Marketplace-Bestellungen“ bezeichnet) werden von 
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
-

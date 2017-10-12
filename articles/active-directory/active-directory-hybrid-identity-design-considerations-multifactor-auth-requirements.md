@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 5b3a8ce6e4203dfb3700f324e32687dd910118af
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Anforderungen an die Multi-Factor Authentication für Ihre Hybrid-Identitätslösung
 In dieser Welt mit ihrem hohen Mobilitätsgrad, in der Benutzer mit allen Geräten auf Daten und Anwendungen in der Cloud zugreifen können, ist der Schutz dieser Daten zu einer sehr wichtigen Aufgabe geworden.  Jeden Tag kann man neue Artikel über Sicherheitsverletzungen lesen.  Es gibt zwar keinen absoluten Schutz vor diesen Sicherheitsverletzungen, aber die Multi-Factor Authentication bietet eine zusätzliche Sicherheitsebene als Schutz vor Verletzungen dieser Art.

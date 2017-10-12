@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bd0ddfcffdb6f946f9a3786f3d0add1740be861b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="energy-demand-time-series-forecasting"></a>Vorhersagen von Zeitreihen für den Energiebedarf
 
 
@@ -70,8 +68,8 @@ Dieses Szenario enthält Informationen zur Erstellung einer Lösung für die Vor
 ## <a name="create-a-new-workbench-project"></a>Erstellen eines neuen Workbench-Projekts
 
 Erstellen Sie ein neues Projekt mit diesem Beispiel als Vorlage:
-1.  Öffnen Sie die Azure Machine Learning Workbench
-2.  Klicken Sie auf der Seite **Projekte** auf **+**, und wählen Sie **Neues Projekt** aus.
+1.  Öffnen Sie Azure Machine Learning Workbench.
+2.  Klicken Sie auf der Seite **Projekte** auf **+**, wählen Sie **Neues Projekt** aus, und signieren Sie es.
 3.  Geben Sie die Informationen für das neue Projekt im Bereich **Neues Projekt erstellen** ein.
 4.  Geben Sie im Suchfeld **Projektvorlagen suchen** den Suchbegriff „Energy Demand Time Series Forecasting“ ein, und wählen Sie die Vorlage aus.
 5.  Klicken Sie auf **Erstellen**
@@ -195,4 +193,3 @@ In diesem Beispiel wird ein Webdienst auf einem Windows 10-Computer bereitgestel
 Dieses Beispiel veranschaulicht das Erstellen einer umfassenden Lösung zur Zeitreihenvorhersage zur Prognose des Energiebedarfs. Viele der in diesem Beispiel beschriebenen Prinzipien können auf andere Vorhersageszenarien und Branchen angewendet werden.
 
 Dieses Szenario zeigt, wie die Azure Machine Learning Workbench Data Scientists helfen kann, Lösungen für den praktischen Einsatz mit nützlichen Features wie der Jupyter Notebook-Umgebung und Funktionen zur Protokollierung von Metriken zu entwickeln. Das Beispiel veranschaulicht auch das Operationalisieren eines Modells und dessen Bereitstellung mithilfe der Azure Machine Learning-Operationalisierungs-Befehlszeilenschnittstelle. Nach der Bereitstellung können Entwickler oder Datentechniker die Webdienst-API verwenden, um das Vorhersagemodell in einer größere Datenpipeline zu integrieren.
-

@@ -15,14 +15,12 @@ ms.date: 09/06/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: 2b4ad3e7bda1346e606b2c185c204154b8f19f87
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Aktivieren des Remotezugriffs auf SharePoint per Azure AD-Anwendungsproxy
 
 In diesem Artikel wird beschrieben, wie Sie einen lokalen SharePoint-Server mit dem Azure Active Directory (Azure AD)-Anwendungsproxy integrieren.
@@ -208,5 +206,4 @@ Sie können auf die SharePoint-Website jetzt extern über den Azure AD-Anwendung
 
 - [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](active-directory-application-proxy-custom-domains.md)
 - [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)
-
 

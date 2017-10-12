@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 105fc51c2d1152a40a5757985da47330e0b7b8cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-add-operations-to-an-api-in-azure-api-management"></a>Hinzufügen von Operationen zu einer API in Azure API Management
 Bevor eine API in API Management verwendet werden kann, müssen Operationen hinzugefügt werden. Diese Anleitung beschreibt, wie Sie unterschiedliche Typen von Operationen zu einer API in API Management hinzufügen können.
 
-## <a name="add-operation"> </a>Hinzufügen einer Operation
+## <a name="add-operation"></a>Hinzufügen einer Operation
 Operationen werden einer API im Herausgeberportal hinzugefügt und in diesem konfiguriert. Um auf das Herausgeberportal zuzugreifen, klicken Sie im Azure-Portal für Ihren API Management-Dienst auf **Herausgeberportal**.
 
 ![Herausgeberportal][api-management-management-console]
@@ -66,7 +66,7 @@ Aufrufe an die Operation verwenden das Format `/customers?customerid=ALFKI` und 
 
 Die Operationsbeschreibung kann als Nur-Text oder HTML im Textfeld **Beschreibung** eingegeben werden.
 
-## <a name="operation-caching"> </a>Zwischenspeichern von Operationen
+## <a name="operation-caching"></a>Zwischenspeichern von Operationen
 Das Zwischenspeichern von Antworten verbessert die Latenz der API-Consumer und senkt Bandbreitenverbrauch sowie Prozessorlast auf dem HTTP-Webdienst, der die API implementiert. 
 
 Wählen Sie die Registerkarte **Zwischenspeichern**, und markieren Sie das Kontrollkästchen **Aktivieren**, um die Zwischenspeicherung für die Operation schnell und einfach zu aktivieren.
@@ -81,7 +81,7 @@ Cacheschlüssel werden zur Unterscheidung von Antworten verwendet, und die Antwo
 > 
 > 
 
-## <a name="request-parameters"> </a>Anforderungsparameter
+## <a name="request-parameters"></a>Anforderungsparameter
 Operationsparameter werden auf der Registerkarte "Parameter" verwaltet. Die in der **URL-Vorlage** auf der Registerkarte **Signatur** angegebenen Parameter werden automatisch hinzugefügt und können nur durch Bearbeiten der URL-Vorlage geändert werden. Zusätzliche Parameter können manuell eingegeben werden.
 
 Klicken Sie auf **Abfrageparameter hinzufügen** und geben Sie die folgenden Informationen ein, um einen neuen Abfrageparameter zu hinzuzufügen:
@@ -94,7 +94,7 @@ Klicken Sie auf **Abfrageparameter hinzufügen** und geben Sie die folgenden Inf
 
 ![Anforderungsparameter][api-management-request-parameters]
 
-## <a name="request-body"> </a>Anforderungstext
+## <a name="request-body"></a>Anforderungstext
 Wenn die Operation einen Anforderungstext erlaubt und benötigt (z. B. PUT, POST), dann können Sie ein Beispiel in allen unterstützten Darstellungsformaten angeben (z. B. JSON, XML). 
 
 > Der Anforderungstext wird nur zu Dokumentationszwecken verwendet und wird nicht geprüft.
@@ -109,7 +109,7 @@ Klicken Sie auf **Darstellung hinzufügen**, geben Sie den gewünschten Inhaltst
 
 Neben den Darstellungen können Sie auch eine optionale **Beschreibung** in Textform in das Textfeld eingeben.
 
-## <a name="responses"> </a>Antworten
+## <a name="responses"></a>Antworten
 Sie sollten nach Möglichkeit Beispielantworten für alle Statuscodes angeben, die die Operation zurückgeben kann. Jeder Statuscode kann mehr als einen Antworttext existieren, nämlich einen pro unterstütztem Inhaltstyp. 
 
 Klicken Sie zum Hinzufügen einer Antwort auf **Hinzufügen**, und beginnen Sie mit der Eingabe des gewünschten Statuscodes. Dieses Beispiel verwendet den Statuscode **200 OK**. Sobald der Code in der Dropdownliste angezeigt wird, können Sie ihn auswählen. Daraufhin wird der Antwortcode angelegt und zu Ihrer Operation hinzugefügt.
@@ -128,7 +128,7 @@ Fügen Sie bei Bedarf eine optionale Beschreibung in das Textfeld **Beschreibung
 
 Wenn Sie die Operation konfiguriert haben, klicken Sie auf **Speichern**.
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie die Operationen zur API hinzugefügt haben, können Sie die API zu einem Produkt zuordnen und veröffentlichen, sodass Entwickler die Operationen aufrufen können.
 
 * [Erstellen und Veröffentlichen von Produkten][How to create and publish a product]

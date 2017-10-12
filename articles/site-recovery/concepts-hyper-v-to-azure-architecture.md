@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 991c72352eaa4c3b12fcdc1e4112063fb698e772
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="hyper-v-to-azure-replication-architecture"></a>Architektur der Replikation von Hyper-V in Azure
 
 
@@ -79,7 +76,7 @@ Die folgende Tabelle und Grafik bieten eine Übersicht der Komponenten, die für
 1. Nachdem Sie den Schutz für einen virtuellen Hyper-V-Computer über das Azure-Portal oder lokal aktiviert haben, wird der Auftrag **Schutz aktivieren** gestartet.
 2. Im Rahmen des Auftrags wird überprüft, ob der Computer die Voraussetzungen erfüllt. Anschließend wird [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) aufgerufen, um die Replikation mit den konfigurierten Einstellungen einzurichten.
 3. Der Auftrag startet die erste Replikation durch Aufrufen der [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx)-Methode, um eine vollständige VM-Replikation zu initiieren, und übermittelt die virtuellen Datenträger des virtuellen Computers an Azure.
-4. Sie können den Auftrag auf der Registerkarte **Aufträge** überwachen.      ![Auftragsliste](media/concepts-hyper-v-to-azure-architecture/image1.png) ![Drilldown für „Schutz aktivieren“](media/concepts-hyper-v-to-azure-architecture/image2.png)
+4. Sie können den Auftrag auf der Registerkarte **Aufträge** überwachen.      ![Auftragsliste](media/concepts-hyper-v-to-azure-architecture/image1.png)![Drilldown für „Schutz aktivieren“](media/concepts-hyper-v-to-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Erste Datenreplikation
@@ -154,5 +151,4 @@ Sobald Ihre lokale Infrastruktur wieder funktioniert und ausgeführt werden kann
 
 Überprüfen Sie die Supportmatrix. Folgen Sie dem Tutorial, um die Replikation von Hyper-V in Azure zu aktivieren.
 Führen Sie ein Failover und ein Failback aus.
-
 

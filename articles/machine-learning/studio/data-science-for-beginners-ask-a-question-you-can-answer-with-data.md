@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: cgronlun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3423f704a435c3bab463461d05ede468a7a2dd93
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Stellen einer Frage, die Sie mit Daten beantworten können
 ## <a name="video-3-data-science-for-beginners-series"></a>3. Video der Reihe „Data Science für Einsteiger“
@@ -99,4 +98,3 @@ Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science f�
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchführen eines ersten Data Science-Experiments mit Machine Learning Studio](create-experiment.md)
 * [Einführung in Machine Learning in Microsoft Azure](what-is-machine-learning.md)
-

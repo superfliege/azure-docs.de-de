@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: afa863e2a900d4f823b77453d92f034db7d5a93f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>Was sind Warnungen in Microsoft Azure?
 In diesem Artikel werden die verschiedenen Quellen von Warnungen in Microsoft Azure, der Zweck dieser Warnungen, die damit verbundenen Vorteile und die ersten Schritte bei der Verwendung beschrieben. Er bezieht sich insbesondere auf Azure Monitor, enthält aber auch Verweise auf andere Dienste mit Warnungen. Warnungen stellen ein Verfahren für die Überwachung in Azure dar, bei dem Sie Bedingungen für Daten konfigurieren können und benachrichtigt werden, wenn die Bedingungen mit den aktuellen Überwachungsdaten übereinstimmen.
@@ -92,4 +91,3 @@ Weitere Informationen über Warnregeln und ihre Konfiguration erhalten Sie hier:
 * Weitere Informationen zu [Near Real-Time Metric Alerts](monitoring-near-real-time-metric-alerts.md)
 * Weitere Informationen zu [Dienstbenachrichtigungen](monitoring-service-notifications.md)
 * Weitere Informationen zu [Aktionsgruppen](monitoring-action-groups.md)
-

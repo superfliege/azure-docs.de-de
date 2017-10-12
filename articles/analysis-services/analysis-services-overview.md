@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: owend
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8b3a538fc0fe34d0b7af8a99510cfb19abd32d55
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -128,4 +127,3 @@ Haben Sie Vorschläge zur Dokumentation? Sie können am Ende jedes Artikels mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Da Sie jetzt mehr über Azure Analysis Services wissen, können Sie loslegen. Erfahren Sie, wie Sie in Azure [einen Server erstellen](analysis-services-create-server.md). Wenn Ihr Server bereit ist, absolvieren Sie das [Adventure Works-Tutorial](tutorials/aas-adventure-works-tutorial.md). Dort erfahren Sie, wie Sie ein voll funktionsfähiges tabellarisches Modell erstellen und auf Ihrem Server bereitstellen.
-

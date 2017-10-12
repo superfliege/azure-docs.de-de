@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
+ms.openlocfilehash: a2c4062db821e39e1af4fa1d54da0121d3993db4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 032a514ddab625e4f7c5ef23a1da03a0162f43e3
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-azure-cli-20"></a>Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung mithilfe der Azure CLI 2.0
 
@@ -193,4 +192,3 @@ Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unte
 
 * [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

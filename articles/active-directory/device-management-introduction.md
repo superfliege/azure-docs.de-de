@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/29/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: fdc597c9e88e932eace5962c79af4dc3805685a0
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Einführung in die Geräteverwaltung in Azure Active Directory
 
@@ -155,6 +154,5 @@ Als Faustregel sollten Sie Folgendes verwenden:
     - Informationen zu in Azure Active Directory registrierten Windows 10-Geräten finden Sie unter [How to configure Azure Active Directory registered Windows 10 devices](device-management-azuread-registered-devices-windows10-setup.md) (Konfigurieren von in Azure Active Directory registrierten Windows 10-Geräten).
     - Informationen zu in Azure Active Directory eingebundenen Geräten finden Sie unter [How to configure Azure Active Directory joined devices](device-management-azuread-joined-devices-setup.md) (Konfigurieren von in Azure Active Directory eingebundenen Geräten).
     - Informationen zu in Azure AD eingebundenen Hybridgeräten finden Sie unter [Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten](device-management-hybrid-azuread-joined-devices-setup.md).
-
 
 

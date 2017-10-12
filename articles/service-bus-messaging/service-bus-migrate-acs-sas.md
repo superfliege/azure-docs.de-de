@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: 52015dc2f8450bb1af1587df8c0ccc3bda3c9db8
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Migrieren vom Azure Active Directory-Access Control Service zur SAS-Autorisierung
 
 Bei Service Bus-Anwendungen standen in der Vergangenheit zwei verschiedene Autorisierungsmodelle zur Wahl: das direkt von Service Bus bereitgestellte [SAS-Tokenmodell (Shared Access Signature)](service-bus-sas.md) und ein Verbundmodell, bei dem die Verwaltung von Autorisierungsregeln intern vom [Azure Active Directory](/azure/active-directory/)-Access Control Service (ACS) verwaltet wird und vom ACS bezogene Token zur Autorisierung des Zugriffs auf die gewünschten Features an Service Bus übergeben werden.
@@ -68,5 +66,4 @@ Weitere Informationen zur Service Bus-Authentifizierung finden Sie in den folgen
 * [Service Bus-Authentifizierung und -Autorisierung](service-bus-authentication-and-authorization.md)
 * [Service Bus-Authentifizierung mit Shared Access Signatures](service-bus-sas.md)
 * [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
-
 

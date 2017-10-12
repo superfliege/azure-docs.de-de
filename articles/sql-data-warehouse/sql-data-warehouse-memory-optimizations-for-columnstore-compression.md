@@ -16,10 +16,10 @@ ms.custom: performance
 ms.date: 6/2/2017
 ms.author: shigu;barbkess
 ms.openlocfilehash: f0e0b839b4a0c216eee2eb5134d43b91d8f83289
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximieren der Zeilengruppenqualität für Columnstore
 
@@ -84,8 +84,8 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 Der maximale erforderliche Arbeitsspeicher zum Komprimieren einer Zeilengruppe beträgt ungefähr
 
 - 72 MB +
-- \#Zeilen \* \#Spalten \* 8 Byte +
-- \#Zeilen \* \#kurze Zeichenfolgenspalten \* 32 Bytes +
+- \#Zeilen \*\#Spalten \* 8 Byte +
+- \#Zeilen \*\#kurze Zeichenfolgenspalten \* 32 Bytes +
 - \#lange Zeichenfolgenspalten \* 16 MB für das Komprimierungswörterbuch
 
 wo kurze Zeichenfolgenspalten Zeichenfolgendatentypen mit <= 32 Bytes und lange Zeichenfolgenspalten Zeichenfolgendatentypen mit > 32 Bytes verwenden.

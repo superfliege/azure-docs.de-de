@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
-ms.contentlocale: de-de
-ms.lasthandoff: 01/24/2017
-
+ms.openlocfilehash: e163f3c2e9a78b057dc2a7a42924c59d0aac3fab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="share-state-to-and-from-azure-resource-manager-templates"></a>Freigeben des Status für und aus Azure Resource Manager-Vorlagen
 Dieses Thema beschreibt bewährte Methoden für die Verwaltung und Freigabe des Status in Vorlagen. Die in diesem Thema erläuterten Parameter und Variablen sind Beispiele für die Art von Objekten, die Sie definieren können, um Ihre Bereitstellungsanforderungen bequem zu organisieren. Anhand dieser Beispiele können Sie Ihre eigenen Objekte mit Eigenschaftswerten implementieren, die für Ihre Umgebung sinnvoll sind.
@@ -440,4 +439,3 @@ Wenn Sie den virtuellen Computer definieren, legen Sie **osProfile** auf die ers
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zu den Abschnitten der Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md)
 * Unter [Vorlagenfunktionen in Azure Resource Manager](resource-group-template-functions.md)
-

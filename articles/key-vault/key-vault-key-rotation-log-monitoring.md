@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: f98ba1e2da6924476392948a4d18c807d68e39e3
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Einrichten von Azure Key Vault mit End-to-End-Schlüsselrotation und Überwachung
 ## <a name="introduction"></a>Einführung
@@ -417,7 +416,7 @@ An diesem Punkt ist die Funktion fertig. Wechseln Sie zurück zur Registerkarte 
 ### <a name="azure-logic-app"></a>Azure-Logik-App
 Als Nächstes müssen Sie eine Azure-Logik-App erstellen, die die Ereignisse verarbeitet, die die Funktion in die Service Bus-Warteschlange überträgt, den Inhalt analysiert und basierend auf einer erfüllten Bedingung eine E-Mail sendet.
 
-[Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) über **Neu > Logik-App**.
+[Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) über **Neu &gt; Logik-App**.
 
 Sobald die Logik-App erstellt wurde, navigieren Sie zu ihr und wählen **Bearbeiten**aus. Wählen Sie im Logik-App-Editor **Service Bus-Warteschlange** aus, und geben Sie Ihre Service Bus-Anmeldeinformationen ein, um sie mit der Warteschlange zu verbinden.
 
@@ -438,4 +437,3 @@ Erstellen Sie jetzt unter **Falls nein, nichts tun** eine Aktion.
 Wählen Sie als Aktion **Office 365 – E-Mail senden**. Füllen Sie die Felder aus, um eine E-Mail zu erstellen, wenn die definierte Bedingung **false** zurückgibt. Wenn Sie Office 365 nicht haben, können Sie eine Alternative wählen, um dieselben Ergebnisse zu erzielen.
 
 An diesem Punkt haben Sie eine lückenlose Pipeline, die einmal pro Minute eine Überprüfung auf neue Schlüsseltresor-Überwachungsprotokolle vornimmt. Die gefundenen neuen Protokolle werden in eine Service Bus-Warteschlange verschoben. Die Logik-App wird ausgelöst, wenn eine neue Nachricht in der Warteschlange eintrifft. Wenn die *appid* innerhalb des Ereignisses nicht der App-ID der aufrufenden Anwendung entspricht, wird eine E-Mail gesendet.
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 20f60ccd9108a7473705c2368f28d3152d0dd614
-ms.contentlocale: de-de
-ms.lasthandoff: 04/07/2017
-
+ms.openlocfilehash: 8b313b68be07da1a943748d21da68c169980cfc2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Visualisieren von Azure Network Watcher-NSG-Datenflussprotokollen mit Open-Source-Tools
 
 NSG-Datenflussprotokolle (Netzwerksicherheitsgruppen) enthalten Informationen für ein besseres Verständnis von ein- und ausgehendem IP-Datenverkehr in Netzwerksicherheitsgruppen. Diese Datenflussprotokolle zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
@@ -107,8 +105,8 @@ input {
          codec => "json"
          # Refer https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-read-nsg-flow-logs
          # Typical numbers could be 21/9 or 12/2 depends on the nsg log file types
-         file_head_bytes => 21
-         file_tail_bytes => 9
+         file_head_bytes => 12
+         file_tail_bytes => 2
          # Enable / tweak these settings when event is too big for codec to handle.
          # break_json_down_policy => "with_head_tail"
          # break_json_batch_count => 2
@@ -258,4 +256,3 @@ Erfahren Sie unter [Visualisieren der Datenflussprotokolle von Netzwerksicherhei
 [5]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure5.png
 [6]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure6.png
 [7]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure7.png
-

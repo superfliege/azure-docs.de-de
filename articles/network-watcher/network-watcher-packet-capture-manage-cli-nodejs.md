@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 91588910334859c1ea77186674d5bfb31b311b36
-ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: 2124dadd1fc6b5d57250c09d31155a4b421fac26
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-cli-10"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe von Azure CLI 1.0
 
 > [!div class="op_single_selector"]
@@ -225,4 +223,3 @@ Informationen zur Automatisierung von Paketerfassungen mit VM-Warnungen finden S
 Lesen Sie den Artikel zur [IP-Datenflussüberprüfung](network-watcher-check-ip-flow-verify-portal.md), um herauszufinden, ob bestimmter eingehender oder ausgehender Datenverkehr für Ihren virtuellen Computer zulässig ist.
 
 <!-- Image references -->
-

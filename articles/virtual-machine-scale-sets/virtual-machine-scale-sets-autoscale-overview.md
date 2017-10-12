@@ -17,10 +17,10 @@ ms.date: 06/05/2017
 ms.author: adegeo
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 06ff9d9ae1dd8256f0d22c1a60ed6a85554f1f17
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-automatic-scaling-and-virtual-machine-scale-sets"></a>Verwenden von automatischer Skalierung und VM-Skalierungsgruppen
 Bei der automatischen Skalierung virtueller Computer in einer Skalierungsgruppe werden je nach Leistungsbedarf Computer in der Gruppe erstellt oder wieder gelöscht. Wenn das Arbeitsvolumen zunimmt, benötigt eine Anwendung unter Umständen zusätzliche Ressourcen, um ihre Aufgaben effizient auszuführen.
@@ -228,7 +228,7 @@ Das Portal liefert aktuell eine begrenzte Menge an Informationen.
 
 * **Azure-Ressourcen-Explorer**  
 Dieses Tool eignet sich am besten zum Untersuchen des aktuellen Zustands Ihrer Skalierungsgruppe. Wenn Sie diesem Pfad folgen, wird die Instanzansicht für die von Ihnen erstellte Skalierungsgruppe angezeigt:  
-**Abonnements > {Ihr Abonnement} > Ressourcengruppen > {Ihre Ressourcengruppe} > Anbieter > Microsoft.Compute > SkalierungsgruppenVirtuellerComputer > {Ihre Skalierungsgruppe} > virtuelleComputer**
+**Abonnements &gt; {Ihr Abonnement} &gt; Ressourcengruppen &gt; {Ihre Ressourcengruppe} &gt; Anbieter &gt; Microsoft.Compute &gt; SkalierungsgruppenVirtuellerComputer &gt; {Ihre Skalierungsgruppe} &gt; virtuelleComputer**
 
 * **Azure PowerShell**  
 Verwenden Sie folgenden Befehl, um Informationen zu erhalten:

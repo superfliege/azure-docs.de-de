@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
+ms.openlocfilehash: d24139de04b36044bbb88d0e9b9a1feb6d8edfa8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 56c24eb26faf1729c33b025d5c9fcf5d13abd376
-ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="event-hubs-documentation"></a>Event Hubs-Dokumentation
 
 Hier erfahren Sie, wie Sie mithilfe von Event Hubs pro Sekunde Millionen von Ereignissen von verbundenen IoT-Geräten und -Anwendungen sammeln und verwalten. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine skalierbare Erfassung für Ereignisse auf einer breiten Palette von Plattformen einrichten.
@@ -151,4 +149,3 @@ Hier erfahren Sie, wie Sie mithilfe von Event Hubs pro Sekunde Millionen von Ere
         </div>
     </li>
 </ul>
-

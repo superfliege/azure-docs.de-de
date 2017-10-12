@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: terrylan
 ms.openlocfilehash: d13e5b87c446e587091551b22d80fe568d5d8093
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrating-azure-security-center-alerts-with-azure-log-integration"></a>Integrieren von Azure Security Center-Warnungen mithilfe der Azure-Protokollintegration
 Viele für den Sicherheitsbetrieb und die Bearbeitung von Incidents zuständige Teams nutzen eine SIEM-Lösung (Security Information and Event Management) als Ausgangspunkt für die Selektierung und Untersuchung von Sicherheitswarnungen. Mithilfe der Azure-Protokollintegration können Sie Azure Security Center-Warnungen in Ihre SIEM-Lösung integrieren.

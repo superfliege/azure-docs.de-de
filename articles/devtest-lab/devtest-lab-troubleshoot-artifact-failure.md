@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 9a79e50902e8e99e94148f8ef534e6745e31809a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Diagnostizieren von Artefaktfehlern im Lab 
 Nachdem Sie ein Artefakt erstellt haben, können Sie überprüfen, ob es erfolgreich war oder nicht. Artefaktprotokolle in Azure DevTest Labs bieten Informationen, die Ihnen beim Diagnostizieren eines Artefaktfehlers helfen. Zum Anzeigen der Artefaktprotokollinformationen für eine Windows-VM stehen Ihnen eine Reihe von Optionen zur Verfügung:
@@ -59,5 +58,4 @@ Nachdem Sie ein Artefakt erstellt haben, können Sie überprüfen, ob es erfolgr
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [ein Git-Repository einem Lab hinzufügen](devtest-lab-add-artifact-repo.md).
-
 

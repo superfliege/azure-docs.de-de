@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 09c626e97832821009ce2da360ceea2b54273ffa
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-azure-stack"></a>Herstellen einer Verbindung mit Azure Stack
 
@@ -110,5 +109,4 @@ Stellen Sie eine Verbindung mit der Azure Stack-Instanz her, indem Sie eines der
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Verfügbarmachen von virtuellen Computern für Ihre Azure Stack-Benutzer](azure-stack-tutorial-tenant-vm.md)
-
 

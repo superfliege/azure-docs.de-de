@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/25/2017
 ms.author: carlrab
+ms.openlocfilehash: 3b9be28143060537b1a35004c3b3486b8738e956
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: df6e4bba9290c6129c9cba1440bb0c903aacc3c8
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen
 Azure SQL-Datenbank bietet diese Optionen für die Datenbankwiederherstellung mit [automatisierten Datenbanksicherungen](sql-database-automated-backups.md) und [Sicherungen mit langfristiger Aufbewahrungsdauer](sql-database-long-term-retention.md). Die Wiederherstellung aus einer Datenbanksicherung kann die folgenden Ziele haben:
@@ -152,4 +151,3 @@ Automatische Sicherungen schützen Ihre Datenbanken vor Benutzer- und Anwendungs
 * Weitere Informationen zur langfristigen Aufbewahrung von Sicherungen finden Sie im Artikel [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
 * Informationen zum Konfigurieren, Verwalten und Wiederherstellen aus der langfristigen Aufbewahrung automatisierter Sicherungen in einem Azure Recovery Services-Tresor mit dem Azure-Portal finden Sie im Artikel über das [Konfigurieren und Verwenden der langfristigen Sicherungsaufbewahrung](sql-database-long-term-backup-retention-configure.md). 
 * Informationen zu schnelleren Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).  
-

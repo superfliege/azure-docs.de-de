@@ -15,16 +15,15 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d8d45bad6205f0dbc449c86c453c9efc1bbb3da4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Verschieben von Daten aus MongoDB mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1 – Allgemein verfügbar](data-factory-on-premises-mongodb-connector.md)
+> * [Version 1: Allgemein verfügbare Version](data-factory-on-premises-mongodb-connector.md)
 > * [Version 2 – Vorschauversion](../connector-mongodb.md)
 
 > [!NOTE]
@@ -372,4 +371,3 @@ Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-fa
 
 ## <a name="next-steps"></a>Nächste Schritte
 Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) finden Sie schrittweise Anleitungen zum Erstellen einer Datenpipeline für das Verschieben von Daten aus einem lokalen Datenspeicher in einen Azure-Datenspeicher.
-

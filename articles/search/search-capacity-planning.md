@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.date: 02/08/2017
 ms.author: heidist
 ms.openlocfilehash: 26f5e71f3d00161a92de702209e224008ec8a5ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Skalieren von Ressourcenebenen für Abfrage und Indizierung von Arbeitslasten in Azure Search
 Nach dem [Auswählen eines Tarifs](search-sku-tier.md) und dem [Bereitstellen eines Suchdiensts](search-create-service-portal.md) kann im nächsten Schritt optional die Anzahl der von dem Dienst verwendeten Replikate oder Partitionen erhöht werden. Jeder Tarif bietet eine feste Anzahl von Abrechnungseinheiten. In diesem Artikel wird erläutert, wie Sie diese Einheiten für eine optimale Konfiguration zuordnen, bei der Ihre Anforderungen für die Abfrageausführung, Indizierung und Speicherung ausgeglichen sind.

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 578ccb162e91d3ec7befb53b09400fc49c5ba37a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-case---product-recommendations"></a>Anwendungsfall – Produktempfehlungen
 Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden.  Auf der Seite [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) finden Sie Details zu dieser Suite. In diesem Dokument wird ein allgemeiner Anwendungsfall beschrieben, den Azure-Benutzer bereits mithilfe von Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert haben.
@@ -60,5 +59,4 @@ Schließlich wird das Resultset der personalisierten Produktempfehlungen in eine
 Durch Optimieren ihrer Produktempfehlungsstrategie und deren Ausrichtung auf Unternehmensziele erfüllt die Lösung die Verkaufsförderungs- und Marketingziele des Onlinehändlers. Darüber hinaus kann das Unternehmen den Workflow für Produktempfehlungen nun effizient, zuverlässig und wirtschaftlich betreiben und verwalten. Das Modell kann mühelos aktualisiert und seine Effektivität basierend auf den Kennzahlen für die Kundengewinnung und -bindung optimiert werden. Mithilfe von Azure Data Factory konnte der Onlinehändler von seiner zeitaufwändigen und kostspieligen manuellen Cloudressourcenverwaltung zu einer bedarfsgesteuerten Lösung wechseln. Dadurch konnte er nicht nur Zeit und Geld sparen, sondern auch die Zeit bis zur Lösungsbereitstellung verkürzen. Ansichten der Datenherkunft und Integrität von Diensten lassen sich dank der intuitiven Data Factory-Benutzeroberfläche für Überwachung und Verwaltung im Azure-Portal einfach visualisieren. Die Lösung kann nun so geplant und verwaltet werden, dass zuverlässig relevante Daten erzeugt und den Benutzern bereitgestellt werden. Zudem werden Daten- und Verarbeitungsabhängigkeiten automatisch verwaltet.
 
 Durch dieses personalisierte Einkaufserlebnis hat der Onlinehändler eine wettbewerbsfähigere, ansprechende Kundenerfahrung geschaffen, die zu mehr Umsatz und höherer Kundenzufriedenheit führt.
-
 

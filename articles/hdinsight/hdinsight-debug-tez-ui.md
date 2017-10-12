@@ -16,10 +16,10 @@ ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.openlocfilehash: 3889fa1c3523eb0330cbe3b7640fd8590a5ceadf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Verwenden der Tez-Benutzeroberfläche zum Debuggen von Tez-Aufträgen in Windows-basiertem HDInsight
 Die Tez-Benutzeroberfläche ist eine Webseite, die verwendet werden kann, um Aufträge zu verstehen und zu debuggen, die Tez als Ausführungsmodul in Windows-basierten Clustern nutzen. Die Tez-Benutzeroberfläche ermöglicht Ihnen das Visualisieren des Auftrags als Graphen verbundener Elemente, einen Drilldown in die einzelnen Elemente und das Abrufen von Statistiken und Protokollinformationen.
@@ -128,7 +128,7 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
     * **Vertex Counters** (Scheitelpunkt-Leistungsindikatoren) zeigt Leistungsindikatorinformationen für diesen Scheitelpunkt an.
     * **Tasks** (Aufgaben) zeigt Aufgaben für diesen Scheitelpunkt an.
     * **Task Attempts** (Aufgabenversuche) zeigt Informationen zu Versuchen der Ausführung von Aufgaben für diesen Scheitelpunkt an.
-    * **Sources & Sinks** (Quellen und Senken) zeigt Datenquellen und Senken für diesen Scheitelpunkt an.
+    * **Sources &amp; Sinks** (Quellen und Senken) zeigt Datenquellen und Senken für diesen Scheitelpunkt an.
 
       > [!NOTE]
       > Wie beim vorherigen Menü können Sie die Spaltenanzeige für „Tasks“, „Task Attempts“ und „Sources & Sinks“ durchlaufen, um Links zu weiteren Informationen zu den einzelnen Elementen anzuzeigen.

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/23/2017
 ms.author: sethm
 ms.openlocfilehash: 27cc817fd4fc2d88b0b7d87f99d58795a6b8b864
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Erstellen eines Relay-Namespaces mithilfe des Azure-Portals
 Ein Namespace ist ein allgemeiner Container für alle Azure-Relay-Komponenten. Ein einzelner Namespace kann mehrere Relays enthalten, und Namespaces fungieren häufig als Anwendungscontainer. Derzeit gibt es zwei verschiedene Verfahren zum Erstellen von Relay-Namespaces.

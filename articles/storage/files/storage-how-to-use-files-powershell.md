@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f919e1880f709b416867a29de14f1dcc63a165fe
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-powershell-to-manage-azure-files"></a>Verwenden von PowerShell zum Verwalten von Azure Files
 Sie können Azure PowerShell zum Erstellen und Verwalten von Dateifreigaben verwenden.
@@ -96,7 +95,7 @@ Start-AzureStorageFileCopy -SrcShareName srcshare -SrcFilePath srcdir/hello.txt 
 Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -DestShareName hello -DestFilePath hellodir/hello2copy.txt -DestContext $ctx -Context $ctx
 ```
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Files erhalten Sie über diese Links:
+Weitere Informationen zu Azure Files erhalten Sie über diese Links.
 
 * [Häufig gestellte Fragen](../storage-files-faq.md)
 * [Troubleshoot Azure File storage problems in Windows](storage-troubleshoot-windows-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Windows)      

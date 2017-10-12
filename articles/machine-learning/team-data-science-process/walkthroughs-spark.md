@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 99b9f047525f46f68dc2c1029f6d53fbda87b69e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Exemplarische Data Science-Vorgehensweisen mit HDInsight Spark unter Verwendung von PySpark und Scala in Azure
 
 In diesen exemplarischen Vorgehensweisen werden PySpark und Scala in einem Azure Spark-Cluster für Predictive Analytics verwendet. Sie folgen den im Team Data Science-Prozess aufgeführten Schritten. Eine Übersicht über den Team Data Science-Prozess finden Sie unter [Data Science-Prozess](overview.md). Einen Überblick über Spark in HDInsight finden Sie unter [Einführung in Spark in HDInsight](../../hdinsight/hdinsight-apache-spark-overview.md).
@@ -53,5 +50,4 @@ Die exemplarische Vorgehensweise [Verwenden von Scala in Azure](scala-walkthroug
 Eine Erläuterung der Hauptkomponenten, die den Team Data Science-Prozess bilden, finden Sie unter [Übersicht über den Team Data Science-Prozess](overview.md).
 
 Eine Erläuterung des Team Data Science-Prozesslebenszyklus, mit dem Sie Ihre Data Science-Projekte strukturieren können, finden Sie unter [Team Data Science-Prozesslebenszyklus](lifecycle.md). Im Lebenszyklus sind die gesamten Schritte aufgeführt, die bei Projekten bei der Ausführung normalerweise durchlaufen werden. 
-
 

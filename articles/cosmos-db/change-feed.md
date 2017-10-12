@@ -15,12 +15,11 @@ ms.devlang: rest-api
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: arramac
+ms.openlocfilehash: 16bd85065f77612ac342ae4a8b500e0c7fa2a078
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 160fbc98e0f3dcc7d17cbe0c7f7425811596a896
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB
 [Azure Cosmos DB](../cosmos-db/introduction.md) ist ein schneller und flexibler, weltweit replizierter Datenbankdienst, der zum Speichern von großen Mengen von Transaktionsdaten und operativen Daten mit einer planbaren Latenz im einstelligen Millisekundenbereich für Lese- und Schreibvorgänge verwendet wird. Dadurch eignet sich die Lösung besonders gut für IoT-, Spiele-, Einzelhandels- und operative Protokollierungsanwendungen. Ein gängiges Entwurfsmuster in diesen Anwendungen ist, Änderungen an Azure Cosmos DB-Daten nachzuverfolgen und materialisierte Sichten zu aktualisieren, Echtzeitanalysen auszuführen, Daten in Cold Storage zu archivieren und Benachrichtigungen aufgrund bestimmter Ereignisse basierend auf diesen Änderungen auszulösen. Die **Unterstützung von Änderungsfeeds** in Azure Cosmos DB ermöglicht Ihnen das Erstellen effizienter und skalierbarer Lösungen für jedes dieser Muster.
@@ -532,4 +531,3 @@ Im Laufe der Zeit wird somit ein Gleichgewicht erreicht. Diese dynamische Funkti
 ## <a name="next-steps"></a>Nächste Schritte
 * Probieren Sie die [Codebeispiele für den Azure Cosmos DB-Änderungsfeed auf GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed) aus.
 * Lernen Sie die Kodierung mit den [Azure Cosmos DB SDKs](documentdb-sdk-dotnet.md) oder der [REST-API](/rest/api/documentdb/) kennen.
-

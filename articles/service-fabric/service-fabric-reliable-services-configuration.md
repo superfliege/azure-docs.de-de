@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
+ms.openlocfilehash: 84111b37f5cdecf377442bca0b15af2092d57414
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: fa77eaf44f4d90d1a78f5de69e36432a53d80ecd
-ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurieren zustandsbehafteter Reliable Services
 Es gibt zwei Sets von Konfigurationseinstellungen für Reliable Services. Ein Set gilt global für alle Reliable Services im Cluster, während das andere für den jeweiligen Reliable Service spezifisch ist.
@@ -187,5 +186,4 @@ Die Einstellungen SharedLogId und SharedLogPath werden immer zusammen verwendet.
 ## <a name="next-steps"></a>Nächste Schritte
 * [Debuggen einer Service Fabric-Anwendung in Visual Studio](service-fabric-debugging-your-application.md)
 * [Entwicklerreferenz für zuverlässige Dienste](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
 

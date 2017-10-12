@@ -10,14 +10,12 @@ ms.service: mysql
 ms.topic: tutorial
 ms.date: 06/06/2017
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: c7b76cacbdc4e483353f64cc4e50c974867bb5b7
-ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: 92ae809646cb956b0b7cb71cf2a21610bb2d610f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="design-your-first-azure-database-for-mysql-database"></a>Entwerfen Ihrer ersten Azure-Datenbank für MySQL
 Azure-Datenbank für MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Mit dem Azure-Portal können Sie mühelos Ihren Server verwalten und eine Datenbank entwerfen.
 
@@ -168,4 +166,3 @@ In diesem Tutorial verwenden Sie das Azure-Portal, um Folgendes zu lernen:
 
 > [!div class="nextstepaction"]
 > [Herstellen einer Verbindung zwischen Anwendungen und Azure-Datenbank für MySQL](./howto-connection-string.md)
-

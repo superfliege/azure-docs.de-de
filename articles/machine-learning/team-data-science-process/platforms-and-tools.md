@@ -13,15 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6e6e7a199547135bd9695ff0867e8d5a98341b12
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>Plattformen und Tools für Data Science-Teamprojekte
 
 Microsoft bietet ein umfassendes Spektrum an Daten- und Analysediensten/-ressourcen für cloudbasierte und lokale Plattformen. Durch deren Bereitstellung können Sie die Effizienz und Skalierbarkeit Ihrer Data Science-Projekte verbessern. Der [Team Data Science-Prozess](overview.md) (TDSP) ist ein Leitfaden für Teams, die Data Science-Projekte gemeinschaftlich, auf nachvollziehbare Weise und mit Versionskontrolle implementieren möchten.  Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und deren Aufgaben in einem Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
@@ -151,6 +148,6 @@ Wenn Sie die Git-Befehle auf einem Computer unter Linux (CentOS) ausführen, mü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind im Thema [Exemplarische Vorgehensweisen](walkthroughs.md) aufgeführt und mit Miniaturansichtsbeschreibungen verlinkt. Sie zeigen, wie cloudbasierte und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
+Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind im Thema [Exemplarische Vorgehensweisen](walkthroughs.md) aufgeführt und mit Miniaturansichtsbeschreibungen verlinkt. Sie zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
 
 Beispiele zum Ausführen der Schritte im Team Data Science-Prozess mit Azure Machine Learning Studio finden Sie im Lernpfad [Mit Azure ML](http://aka.ms/datascienceprocess).

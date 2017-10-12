@@ -15,14 +15,12 @@ ms.date: 08/31/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 47b17c0d81e8597d3125949b26906cc356a9af11
-ms.contentlocale: de-de
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Verwenden von vorhandenen lokalen Proxyservern
 
 In diesem Artikel erfahren Sie, wie Sie den Azure AD-Anwendungsproxyconnector (Azure Active Directory) für Proxyserver für ausgehenden Datenverkehr konfigurieren. Er richtet sich an Kunden mit Netzwerkumgebungen, die über vorhandene Proxys verfügen.
@@ -189,4 +187,3 @@ Wenn andere Antwortcodes angezeigt werden, z.B. 407 oder 502, weist dies darauf 
 - [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)
 
 - Wenn Probleme mit der Connectorkonnektivität bestehen, stellen Sie Ihre Frage bitte im [Azure Active Directory-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD), oder erstellen Sie ein Ticket bei unserem Supportteam.
-

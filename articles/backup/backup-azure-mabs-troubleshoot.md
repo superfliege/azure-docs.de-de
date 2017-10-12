@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: pullabhk;markgal;
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 71da98bf6d53ab50df4f6e40cf0b548752d10f93
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
 Die folgende Tabelle enthält Problembehandlungsinformationen für Fehler, die bei der Verwendung von Azure Backup Server auftreten.
@@ -89,4 +87,3 @@ Führen Sie diese [Problembehandlungsschritte] (https://docs.microsoft.com/en-us
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
 | Versuchte Einrichtung von E-Mail-Benachrichtigungen per Office 365-Konto | Fehler-ID: 2013| **Ursache:**<br/> Versuchte Verwendung des Office 365-Kontos <br/> **Empfohlene Maßnahme:**<br/> Stellen Sie zuerst sicher, dass für Ihren DPM-Server in Exchange „Zulassen von anonymem Relay für einen Empfangsconnector“ eingerichtet ist. Hier ist ein Link zur entsprechenden Konfiguration angegeben: „http://technet.microsoft.com/de-de/library/bb232021.aspx“. <br/> Falls Sie kein internes SMTP-Relay verwenden können und für die Einrichtung Ihren Office 365-Server verwenden müssen, können Sie hierfür IIS als Relay einrichten. <br/> Sie müssen den DPM-Server so konfigurieren, dass Sie SMTP per IIS an O365 leiten können, und IIS entsprechend einrichten (siehe „https://technet.microsoft.com/de-de/library/aa995718(v=exchg.65).aspx“). <br/> Wichtiger Hinweis: Achten Sie darauf, dass Sie unter „Schritt 3“ > „g“ > „ii“ das Format user@domain.com und NICHT „domain\user“ verwenden. <br/> Richten Sie die Verweise in DPM so ein, dass der lokale Servername als SMTP-Server, Port 587 und die E-Mail-Adresse des Benutzers, von der die E-Mails empfangen werden sollen, verwendet werden. <br/> Der Benutzername und das Kennwort auf der DPM-SMTP-Setupseite sollte ein Domänenkonto in der Domäne sein, in der sich DPM befindet. <br/> HINWEIS: Nehmen Sie beim Ändern der SMTP-Serveradresse die Änderung in die neuen Einstellungen vor, schließen Sie das Feld mit den Einstellungen, und öffnen Sie es dann erneut. So können Sie prüfen, ob der neue Wert vorhanden ist.  Wenn nur das Ändern und Testen durchgeführt wird, werden die neuen Einstellungen nicht immer übernommen. Diese Überprüfung ist also die empfohlene bewährte Methode. <br/> Sie können diese Einstellungen während des Prozesses jederzeit löschen, indem Sie die DPM-Konsole schließen und die folgenden Registrierungsschlüssel bearbeiten:<br/> HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Löschen Sie die Schlüssel SMTPPassword und SMTPUserName. <br/> Sie können sie auf der Benutzeroberfläche wieder hinzufügen, wenn Sie sie neu starten.
-

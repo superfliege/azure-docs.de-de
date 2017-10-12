@@ -15,12 +15,11 @@ ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
+ms.openlocfilehash: 04392b535965edd785bbb66a52eb6b41b768553e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 024b70df99fdefa1598225ebb1fbfee85ea375d0
-ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>Verwenden von Apache Phoenix und SQuirreL mit Windows-basierten HBase-Clustern in HDInsight
 Erfahren Sie, wie Sie [Apache Phoenix](http://phoenix.apache.org/) in HDInsight verwenden und wie Sie SQuirreL auf Ihrer Arbeitsstation für die Verbindung mit einem HBase-Cluster in HDInsight installieren und konfigurieren. Weitere Informationen zu Phoenix finden Sie unter [Phoenix innerhalb von 15 Minuten oder weniger](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Eine Beschreibung der Phoenix-Grammatik finden Sie unter [Phoenix-Grammatik](http://phoenix.apache.org/language/index.html).
@@ -216,8 +215,7 @@ Die Phoenix-Treiber JAR-Datei befindet sich im HBase Cluster. Der Pfad ist je na
 
     C:\apps\dist\phoenix-4.0.0.2.1.11.0-2316\phoenix-4.0.0.2.1.11.0-2316-client.jar
 Sie müssen diesen unter [SQuirreL-Installationsordner]/LIB-Pfad auf Ihre Arbeitsstation kopieren.  Am einfachsten ist es, ihn mit RDP in den Cluster zu bewegen und die Datei 
-dann zu kopieren und auf Ihrer Arbeitsstation abzulegen (STRG + C und 
-STRG + V).
+dann zu kopieren und auf Ihrer Arbeitsstation abzulegen (STRG + C und STRG + V).
 
 **Hinzufügen eines Phoenix-Treibers zu SQuirreL**
 
@@ -274,7 +272,7 @@ In diesem Artikel haben Sie erfahren, wie Sie Apache Phoenix in HDInsight verwen
 * [Übersicht HBase mit HDInsight][hdinsight-hbase-overview]: HBase ist eine Open-Source-NoSQL-Datenbank von Apache, die auf Hadoop aufbaut und wahlfreien Zugriff sowie starke Konsistenz für große Mengen unstrukturierter und teilstrukturierter Daten bietet.
 * [Bereitstellen von HBase-Clustern in Azure Virtual Network][hdinsight-hbase-provision-vnet]: Mit der Integration in virtuelle Netzwerke können HBase-Cluster im selben virtuellen Netzwerk bereitgestellt werden wie Ihre Anwendungen, sodass Anwendungen direkt mit HBase kommunizieren können.
 * [Konfiguration von HBase-Replikation in HDInsight](hdinsight-hbase-replication.md): Erfahren Sie, wie Sie HBase-Replikation über zwei Azure-Rechenzentren konfigurieren.
-* [Analysieren der Twitter-Stimmungen mit HBase in HDInsight][hbase-twitter-sentiment]: Erfahren Sie, wie Sie in Echtzeit [Standpunktanalysen](http://en.wikipedia.org/wiki/Sentiment_analysis) mit Big Data mithilfe von HBase in einem Hadoop-Cluster in HDInsight durchführen können.
+
 
 [azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
@@ -284,7 +282,6 @@ In diesem Artikel haben Sie erfahren, wie Sie Apache Phoenix in HDInsight verwen
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
-[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 
 [hdinsight-hbase-phoenix-sqlline]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-phoenix-sqlline.png
 [img-certificate]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-vpn-certificate.png
@@ -293,4 +290,3 @@ In diesem Artikel haben Sie erfahren, wie Sie Apache Phoenix in HDInsight verwen
 [img-squirrel-alias]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel-alias.png
 [img-squirrel]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel.png
 [img-squirrel-sql]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel-sql.png
-

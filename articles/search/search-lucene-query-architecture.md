@@ -12,14 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: a016438070d13c22f309c5f32b940256069f2ee0
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-full-text-search-works-in-azure-search"></a>Funktionsweise der Volltextsuche in Azure Search
 
 Dieser Artikel ist für Entwickler bestimmt, die eingehendere Informationen zur Funktionsweise der Lucene-Volltextsuche in Azure Search benötigen. Für Textabfragen werden die erwarteten Ergebnisse von Azure Search in den meisten Szenarien problemlos bereitgestellt, aber es kann auch vorkommen, dass Sie ein unerwartetes Ergebnis erhalten. In diesen Situationen können Kenntnisse der vier Phasen der Lucene-Abfragenausführung (Abfrageanalyse, lexikalische Analyse, Dokumentabgleich, Bewertung) hilfreich beim Identifizieren von bestimmten Änderungen von Abfrageparametern oder der Indexkonfiguration sein, auf denen das gewünschte Ergebnis basiert. 
@@ -410,4 +408,3 @@ In diesem Artikel wurde die Volltextsuche im Rahmen von Azure Search beschrieben
 [2]: ./media/search-lucene-query-architecture/azSearch-queryparsing-should2.png
 [3]: ./media/search-lucene-query-architecture/azSearch-queryparsing-must2.png
 [4]: ./media/search-lucene-query-architecture/azSearch-queryparsing-spacious2.png
-

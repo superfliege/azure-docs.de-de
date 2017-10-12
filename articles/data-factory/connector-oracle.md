@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ad9807fc72e3a6e0a6d3916d2d9e042af1fa83ed
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-and-to-oracle-using-azure-data-factory"></a>Kopieren von Daten aus und nach Oracle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,7 +46,7 @@ Dieser Oracle-Connector unterstützt insbesondere die folgenden Versionen der Or
 Zum Kopieren von Daten aus einer Oracle-Datenbank bzw. in eine Oracle-Datenbank, die nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integrationslaufzeit einrichten. Im Artikel [Selbstgehostete Integrationslaufzeit](create-self-hosted-integration-runtime.md) finden Sie Details zur Integrationslaufzeit. Die Integrationslaufzeit bietet einen integrierten Oracle-Treiber. Daher müssen beim Kopieren von Daten aus bzw. nach Oracle keine Treiber manuell installiert werden.
 
 ## <a name="getting-started"></a>Erste Schritte
-Sie können mit dem .NET SDK, Python-SDK, Azure PowerShell, der REST-API oder der Azure Resource Manager-Vorlage eine Pipeline mit einer Kopieraktivität erstellen. Im [Tutorial zur Kopieraktivität](quickstart-create-data-factory-dot-net.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+Sie können mit dem .NET SDK, Python SDK, Azure PowerShell, der REST-API oder der Azure Resource Manager-Vorlage eine Pipeline mit einer Kopieraktivität erstellen. Im [Tutorial zur Kopieraktivität](quickstart-create-data-factory-dot-net.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Oracle-Connector verwendet werden:
 
@@ -59,7 +58,7 @@ Folgende Eigenschaften werden für den mit Oracle verknüpften Dienst unterstüt
 |:--- |:--- |:--- |
 | Typ | Die type-Eigenschaft muss auf **Oracle** festgelegt werden. | Ja |
 | connectionString | Geben Sie Informationen an, die zur Verbindung mit der Oracle-Datenbankinstanz erforderlich sind. Legen Sie für dieses Feld „SecureString“ fest. | Ja |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integrationslaufzeit oder Azure-Integrationslaufzeit verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. |Nein |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. |Nein |
 
 **Beispiel:**
 

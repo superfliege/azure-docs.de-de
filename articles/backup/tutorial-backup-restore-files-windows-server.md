@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 09/20/2017
 ms.author: saurabhsensharma;markgal;
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 28e0bc1414b0fea614f217dc3adf1484c1374018
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Wiederherstellen von Dateien aus Azure auf einer Windows Server-Instanz
 
@@ -82,4 +81,3 @@ Dies schließt die Tutorials zum Sichern und Wiederherstellen von Windows Server
 
 > [!div class="nextstepaction"]
 > [Sichern verschlüsselter virtueller Computer](./scripts/backup-powershell-sample-backup-encrypted-vm.md)
-

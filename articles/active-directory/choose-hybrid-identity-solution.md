@@ -14,10 +14,10 @@ ms.technology:
 ms.assetid: 
 ms.custom: it-pro
 ms.openlocfilehash: 5838e3276765f4f074bca2e3cae81b17edfa7c69
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Hybrididentitätslösungen
 Hybrid-Identitätslösungen mit [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ermöglichen es Ihnen, lokale Verzeichnisobjekte mit Azure AD zu synchronisieren, während Sie Ihre Benutzer weiterhin lokal verwalten. Die erste Entscheidung bei der Planung der Synchronisierung Ihres lokalen Windows Server Active Directory mit Azure AD ist, ob Sie synchronisierte Identitäten oder einen Identitätsverbund verwenden möchten. Mit synchronisierten Identitäten (und optional Kennworthashes) können Ihre Benutzer dasselbe Kennwort zum Zugreifen auf lokale und cloudbasierte Organisationsressourcen verwenden. Für die Anforderungen erweiterter Szenarien wie einmaliges Anmelden (Single-Sign-On, SSO) oder lokales MFA müssen Sie Active Directory-Verbunddienste (AD FS) für den Identitätsverbund bereitstellen. 

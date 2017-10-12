@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 469c94f6115f99bc4cf067e9c8f0e55c64990358
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-experiment"></a>Anleitung Schritt 2: Hochladen vorhandener Daten in ein Azure Machine Learning-Experiment
 Dies ist der zweite Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung mit Azure Machine Learning](walkthrough-develop-predictive-solution.md)
@@ -105,4 +104,3 @@ Weitere Informationen zum Importieren anderer Datentypen in einem Experiment fin
 [2]: media/walkthrough-2-upload-data/add-dataset.png
 [3]: media/walkthrough-2-upload-data/upload-dataset.png
 [4]: media/walkthrough-2-upload-data/dataset-list.png
-

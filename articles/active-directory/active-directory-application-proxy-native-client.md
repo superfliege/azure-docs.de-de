@@ -15,14 +15,12 @@ ms.date: 08/31/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: e1f992aede3af99fa7c2ffa661bccbcac9f52ba9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Aktivieren von nativen Client-Apps für die Interaktion mit Proxyanwendungen
 
 Zusätzlich zu Webanwendungen kann der Azure Active Directory-Anwendungsproxy auch zum Veröffentlichen nativer Client-Apps verwendet werden, die mit der Azure AD Authentication Library (ADAL) konfiguriert werden. Native Client-Apps unterscheiden sich von Web-Apps dadurch, dass sie auf einem Gerät installiert werden, während auf Web-Apps über einen Browser zugegriffen wird. 
@@ -41,7 +39,7 @@ Veröffentlichen Sie Ihre Proxyanwendung wie jede andere Anwendung, und weisen S
 ## <a name="step-2-configure-your-application"></a>Schritt 2: Konfigurieren der Anwendung
 Konfigurieren Sie Ihre systemeigene Anwendung wie folgt:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
 2. Navigieren Sie zu **Azure Active Directory** > **App-Registrierungen**.
 3. Wählen Sie **Registrierung einer neuen Anwendung** aus.
 4. Geben Sie einen Namen für Ihre Anwendung an. Wählen Sie als Anwendungstyp **Nativ**, und geben Sie den Umleitungs-URI für Ihre Anwendung an. 
@@ -100,4 +98,3 @@ Nachdem die ADAL mit diesen Parametern bearbeitet wurde, sollten sich Ihre Benut
 Weitere Informationen über den Fluss bei nativen Anwendungen finden Sie unter [Systemeigene Anwendung zu Web-API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api).
 
 Informationen zum Einrichten von einmaligem Anmelden für den Anwendungsproxy finden Sie [hier](application-proxy-sso-overview.md).
-

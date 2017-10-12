@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/01/2017
 ms.author: vturecek
 ms.openlocfilehash: b19aaa652f2c15573ded632ca1348e1a6752f080
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-a-web-service-front-end-for-your-application-using-aspnet-core"></a>Erstellen eines Webdienst-Front-Ends für Ihre Anwendung mithilfe von ASP.NET Core
 Standardmäßig enthalten Azure Service Fabric-Dienste keine öffentliche Web-Schnittstelle. Um die Funktionalität Ihrer Anwendung für HTTP-Clients verfügbar zu machen, müssen Sie ein Webprojekt als Einstiegspunkt erstellen und dann darüber mit den einzelnen Diensten kommunizieren.
@@ -32,8 +32,8 @@ Für dieses Tutorial benötigen Sie Visual Studio 2017. Alle Editionen sind geei
  - [Installieren Sie Visual Studio 2017](https://www.visualstudio.com/)
 
 Um ASP.NET Core Service Fabric-Anwendungen entwickeln zu können, müssen die folgenden Workloads installiert sein:
- - **Azure-Entwicklung** (unter *Web & Cloud*)
- - **ASP.NET- und Webentwicklung** (unter *Web & Cloud*)
+ - **Azure-Entwicklung** (unter *Web &amp; Cloud*)
+ - **ASP.NET- und Webentwicklung** (unter *Web &amp; Cloud*)
  - **Plattformübergreifende Entwicklung mit .NET Core**  (unter *sonstige Toolsets*)
 
 >[!Note] 

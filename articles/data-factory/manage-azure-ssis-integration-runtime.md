@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: spelluru
-ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
 ms.openlocfilehash: 780e5673b5ed159a7f170373d54fea7c1713a910
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-an-azure-ssis-integration-runtime"></a>Verwalten einer Azure-SSIS-Integrationslaufzeit
 Der Artikel [Erstellen einer Azure-SSIS-Integrationslaufzeit](create-azure-ssis-integration-runtime.md) erläutert die Erstellung einer Azure-SSIS-Integrationslaufzeit mithilfe von Azure Data Factory. Dieser Artikel stellt durch die Bereitstellung von Informationen zum Beenden, Starten, erneuten Konfigurieren oder Entfernen einer Azure-SSIS-Integrationslaufzeit eine Ergänzung dar.  
 
@@ -73,4 +71,3 @@ Weitere Informationen zur Azure-SSIS-Laufzeit finden Sie in den folgenden Themen
 - [Gewusst wie: Erstellen einer Azure-SSIS-Integrationslaufzeit](create-azure-ssis-integration-runtime.md): In diesem Artikel wird das Tutorial vertieft und er enthält Anweisungen zur Verwendung der verwalteten Azure SQL-Instanz (private Vorschau) und zum Verknüpfen der Integrationslaufzeit mit einem VNet. 
 - [Überwachen einer Azure-SSIS-Integrationslaufzeit](monitor-integration-runtime.md#azure-ssis-integration-runtime): In diesem Artikel wird das Abrufen von Informationen zu einer Azure-SSIS-Integrationslaufzeit veranschaulicht, und er enthält Beschreibungen der Status in den zurückgegebenen Informationen. 
 - [Verknüpfen einer Azure-SSIS-Integrationslaufzeit mit einem VNet](join-azure-ssis-integration-runtime-virtual-network.md): Dieser Artikel enthält grundlegende Informationen zum Verknüpfen einer Azure-SSIS-Integrationslaufzeit mit einem Azure Virtual Network (VNet). Darüber hinaus enthält er Schritte zur Verwendung des Azure-Portals zum Konfigurieren des VNet, damit die Azure-SSIS-Integrationslaufzeit dem VNet beitreten kann. 
-

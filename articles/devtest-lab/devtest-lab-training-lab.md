@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2016
 ms.author: sdanie
-ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
 ms.openlocfilehash: 3bad7538121e1049af953e3937fc679b1d9184d9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Verwenden von Azure DevTest Labs zu Schulungszwecken
 Azure DevTest Labs kann außer zum Entwickeln und Testen auch zum Implementieren zahlreicher gängiger Szenarien verwendet werden. Eines dieser Szenarien ist das Einrichten eines Labs zu Schulungszwecken. Mit Azure DevTest Labs können Sie ein Lab erstellen, in dem Sie benutzerdefinierte Vorlagen bereitstellen, mit denen jeder Lab-Benutzer identische und isolierte Umgebungen zu Schulungszwecken erstellen kann. Sie können durch das Anwenden von Richtlinien sicherstellen, dass Schulungsumgebungen für jeden Lab-Benutzer nur bei Bedarf verfügbar sind und genügend Ressourcen – z.B. virtuelle Computer – enthalten, die zur Schulung erforderlich sind. Schließlich können Sie das Lab problemlos für Benutzer freigeben, die dann mit einem Klick darauf zugreifen können.
@@ -102,5 +101,4 @@ In diesem Artikel erfahren Sie mehr zu verschiedenen Azure DevTest Labs-Features
    | [Erstellen eines Labs mithilfe einer Resource Manager-Vorlage](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Erstellen Sie Labs in Azure DevTest Labs mithilfe von Resource Manager-Vorlagen. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-
 

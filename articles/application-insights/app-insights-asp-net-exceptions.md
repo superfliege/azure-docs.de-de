@@ -1,5 +1,5 @@
 ---
-title: Diagnostizieren von Fehlern und Ausnahmen in Web-Apps mit Azure Application Insights | Microsoft-Dokumentation
+title: Diagnostizieren von Fehlern und Ausnahmen in Web-Apps mit Azure Application Insights | Microsoft Docs
 description: Erfassen von Ausnahmen von ASP.NET-Apps zusammen mit der Anforderungstelemetrie.
 services: application-insights
 documentationcenter: .net
@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: bwren
+ms.openlocfilehash: d7603f47d985e1abbab96e931e46e37a8ecb4bc5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
-ms.openlocfilehash: 6baffb1fb14a3b7ede5a754029b9efbaf543ea07
-ms.contentlocale: de-de
-ms.lasthandoff: 09/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights
 Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
@@ -33,8 +32,8 @@ Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](app-insights-o
 * In einigen Anwendungsframeworks oder bei bestimmten Einstellungen müssen Sie einige zusätzliche Schritte ausführen, um weitere Ausnahmen zu erfassen:
   * [Webformulare](#web-forms)
   * [MVC](#mvc)
-  * [Web-API 1.*](#web-api-1)
-  * [Web-API 2.*](#web-api-2)
+  * [Web-API 1.*](#web-api-1x)
+  * [Web-API 2.*](#web-api-2x)
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Diagnostizieren von Ausnahmen mithilfe von Visual Studio
@@ -445,4 +444,3 @@ Dieser Wert unterscheidet sich von der Anzahl der „Ausnahmen“, die vom Appli
 * [Überwachen von REST, SQL und anderen Aufrufen von Abhängigkeiten](app-insights-asp-net-dependencies.md)
 * [Überwachen von Seitenladezeiten, Browserausnahmen und AJAX-Aufrufen](app-insights-javascript.md)
 * [Überwachen von Leistungsindikatoren](app-insights-performance-counters.md)
-

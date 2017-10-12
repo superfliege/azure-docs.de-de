@@ -17,12 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 5b038f73cadc43207d86995a5323db6b5fe9b65d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Verwenden von HDInsight-Tools für IntelliJ mit Hortonworks Sandbox
 
@@ -130,7 +129,7 @@ Sie müssen über eine vorhandene IntelliJ-Anwendung verfügen, bevor Sie einen 
 So richten Sie einen Link zu einem Emulator ein:
 
 1. Öffnen Sie das Projekt in IntelliJ.
-2. Wählen Sie im Menü **View** (Ansicht) die Option **Tool Windows** (Toolfenster) und dann **Azure Explorer** aus.
+2. Wählen Sie im Menü **View**  (Ansicht) die Option **Tool Windows** (Toolfenster) und dann **Azure Explorer** aus.
 3. Erweitern Sie **Azure**, klicken Sie mit der rechten Maustaste auf **HDInsight**, und klicken Sie dann auf **Link an Emulator** (Mit einem Emulator verknüpfen).
 4. Geben Sie im Dialogfeld **Link A New Emulator** (Verknüpfung mit neuem Emulator herstellen) das Kennwort ein, das Sie für das Stammkonto der Hortonworks Sandbox festgelegt haben. Geben Sie anschließend ähnliche Werte ein wie die im folgenden Screenshot verwendeten. Wählen Sie anschließend **OK** aus. 
 
@@ -167,4 +166,3 @@ So übermitteln Sie ein Projekt an einen Emulator:
 - Lernen Sie das [Verwenden der HDInsight-Tools im Azure-Toolkit für Eclipse zum Erstellen von Spark-Anwendungen](hdinsight-apache-spark-eclipse-tool-plugin.md) kennen.
 
 - Ein Video zu HDInsight-Tools für Eclipse finden Sie unter [Use HDInsight Tool for Eclipse to create Spark applications](https://mix.office.com/watch/1rau2mopb6fha) (Verwenden von HDInsight-Tools für Eclipse zum Erstellen von Spark-Anwendungen).
-

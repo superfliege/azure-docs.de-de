@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 900447ab931f15e4d27aedd525eba7881ba813b2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>Optimieren der Leistung von Azure Data Lake Store
 
@@ -146,4 +145,3 @@ Neben den oben genannten allgemeinen Richtlinien stehen in jeder Anwendung versc
 ## <a name="see-also"></a>Siehe auch
 * [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 * [Erste Schritte mit Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-

@@ -15,10 +15,10 @@ ms.workload:
 ms.date: 08/11/2017
 ms.author: ruturajd
 ms.openlocfilehash: 5341e3e56e0c366079958dd9a885f6ee3e8436cb
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-a-linux-master-target-server"></a>Installieren eines Linux-Masterzielservers
 Nach dem Failover Ihrer virtuellen Computer können Sie für die virtuellen Computer ein Failback zum lokalen Standort ausführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
 ms.openlocfilehash: d616ad58156a19e89b3e106639a38df67cbd0abb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-universal-sdk-integration-for-azure-mobile-engagement"></a>Windows Universal-SDK-Integration für Azure Mobile Engagement
 In diesem Dokument werden alle für das Windows Universal-SDK für Azure Mobile Engagement verfügbaren Integrations- und Konfigurationsoptionen beschrieben.

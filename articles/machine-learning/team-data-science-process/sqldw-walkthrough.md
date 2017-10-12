@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;hangzh;weig
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9a913533074bfd9b077d66d133f0ad02319a53ad
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse
 In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells mit SQL Data Warehouse (SQL DW) für ein öffentlich zugängliches Dataset: das Dataset [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/). Das erstellte binäre Klassifizierungsmodell sagt voraus, ob ein Trinkgeld für eine Fahrt bezahlt wird. Zudem werden Modelle für Multiklassenklassifizierung und Regression behandelt, die die Verteilung der gezahlten Trinkgeldbeträge vorhersagen.
@@ -921,4 +920,3 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 [edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-

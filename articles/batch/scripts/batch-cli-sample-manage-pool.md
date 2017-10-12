@@ -14,14 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: ae7eab97c1da1113b0248b74a9dd67de8ce49e36
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="managing-azure-batch-pools-with-azure-cli"></a>Verwalten von Azure Batch-Pools mit der Azure-Befehlszeilenschnittstelle
 
 Diese Skripts veranschaulichen einige der in der Azure-CLI verfügbaren Tools zum Erstellen und Verwalten von Computeknotenpools im Azure Batch-Dienst.
@@ -39,11 +37,11 @@ Batch-Pools können auf zwei Arten konfiguriert werden: entweder als Cloud Servi
 
 ## <a name="pool-with-cloud-service-configuration-sample-script"></a>Beispielskript für einen Pool mit Cloud Services-Konfiguration
 
-[!code-azurecli[main](../../../cli_scripts/batch/manage-pool/manage-pool-windows.sh "Verwalten von Cloud Services-Pools")]
+[!code-azurecli[main](../../../cli_scripts/batch/manage-pool/manage-pool-windows.sh "Manage Cloud Services Pools")]
 
 ## <a name="pool-with-virtual-machine-configuration-sample-script"></a>Beispielskript für einen Pool mit VM-Konfiguration
 
-[!code-azurecli[main](../../../cli_scripts/batch/manage-pool/manage-pool-linux.sh "Verwalten von VM-Pools")]
+[!code-azurecli[main](../../../cli_scripts/batch/manage-pool/manage-pool-linux.sh "Manage Virtual Machine Pools")]
 
 ## <a name="clean-up-pools"></a>Bereinigen von Pools
 
@@ -79,5 +77,4 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
 
 Zusätzliche Batch-CLI-Skriptbeispiele finden Sie in der [Dokumentation zur Azure Batch-CLI](../batch-cli-samples.md).
-
 

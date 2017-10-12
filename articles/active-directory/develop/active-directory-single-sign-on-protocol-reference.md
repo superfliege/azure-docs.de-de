@@ -16,10 +16,10 @@ ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
 ms.openlocfilehash: f41402fc2cb282975b93071d998365fdb0a21941
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # SAML-Protokoll für einmaliges Anmelden
 In diesem Artikel werden die SAML 2.0-Authentifizierungsanforderungen und -antworten erläutert, die Azure Active Directory (Azure AD) für das einmalige Anmelden unterstützt.

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
 ms.openlocfilehash: 7bb8868ab813d0de992e92a921b2d204b0ac60c6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
 
 In diesem Artikel hilft Ihnen beim Auffinden von Informationen zur Problembehandlung von bekannten Problemen mit der Azure AD-Passthrough-Authentifizierung.
@@ -51,7 +49,7 @@ Wenn der Benutzer sich nicht mit der Passthrough-Authentifizierung anmelden kann
 |AADSTS80005|Bei der Überprüfung ist eine unvorhersehbare WebException aufgetreten.|A transient error. (Vorübergehender Fehler.) Wiederholen Sie die Anforderung. Sollte der Fehler weiterhin auftreten, wenden Sie sich an den Microsoft-Support.
 |AADSTS80007|Bei der Kommunikation mit Active Directory ist ein Fehler aufgetreten.|Check the agent logs for more information and verify that Active Directory is operating as expected. (Suchen Sie in den Agent-Protokollen nach weiteren Informationen, und überprüfen Sie, ob Active Directory erwartungsgemäß funktioniert.)
 
-### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Gründe für Anmeldefehler im Azure Active Directory Admin Center (Premium-Lizenz erforderlich)
+### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Gründe für Anmeldefehler im Azure Active Directory-Admin Center (Premium-Lizenz erforderlich)
 
 Wenn Ihrem Mandanten eine Azure AD Premium-Lizenz zugeordnet ist, können Sie sich im [Azure Active Directory-Admin Center](https://aad.portal.azure.com/) auch den [Bericht zu den Anmeldeaktivitäten](../active-directory-reporting-activity-sign-ins.md) ansehen.
 
@@ -171,4 +169,3 @@ Eine weitere Möglichkeit zum Überwachen des Authentifizierung-Agents ist das N
 
 >[!IMPORTANT]
 >Die Passthrough-Authentifizierung bietet mit mehreren Authentifizierungs-Agents hohe Verfügbarkeit, jedoch _keinen_ Lastenausgleich. Abhängig von Ihrer Konfiguration erhalten _nicht_ alle Ihre Authentifizierungs-Agents ungefähr die _gleiche_ Anzahl von Anforderungen. Es ist möglich, dass ein bestimmter Authentifizierungs-Agent überhaupt keinen Datenverkehr empfängt.
-

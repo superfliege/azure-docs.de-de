@@ -16,14 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/26/2017
 ms.author: jejiang
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: fdf1911f4f5b515592b6197ea738d808104cb43e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-hdinsight-tool-for-visual-studio-code"></a>Verwenden von Azure HDInsight-Tools für Visual Studio Code
 
 Erfahren Sie, wie Sie Azure HDInsight Tools für Visual Studio Code (VSCode) verwenden können, um Hive-Batchaufträge, interaktive Hive-Abfragen und pySpark-Skripts zu erstellen und zu übermitteln. Azure HDInsight Tools kann auf den von VSCode unterstützten Plattformen installiert werden, z.B. Windows, Linux und MacOS. Im Folgenden finden Sie die Voraussetzungen für die unterschiedlichen Plattformen.
@@ -251,7 +249,6 @@ Die HDInsight Tools für VSCode unterstützen die folgenden Funktionen:
 ### <a name="managing-resources"></a>Verwalten von Ressourcen
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight(Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
-
 
 
 

@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: 649c656b08c03ca9c902b0d80e77d9b3b662635b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Verwenden des Warteschlangenspeichers mit Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -345,4 +344,3 @@ Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gem
 
 
 [Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/ [Erstellen und Bereitstellen einer Node.js-Web-App in Azure mit WebMatrix]: https://www.microsoft.com/web/webmatrix/
-

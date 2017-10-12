@@ -12,14 +12,12 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: e16866501fd34f0b998ba929771a423866759b55
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 #  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Senden von Benutzerkontext-IDs zur Nutzung in Azure Application Insights
 
 ## <a name="tracking-users"></a>Nachverfolgen von Benutzern
@@ -97,4 +95,3 @@ In diesem Beispiel wird die Benutzer-ID auf einen Bezeichner festgelegt, der nac
     * [Trichter](usage-funnels.md)
     * [Aufbewahrung](app-insights-usage-retention.md)
     * [Arbeitsmappen](app-insights-usage-workbooks.md)
-

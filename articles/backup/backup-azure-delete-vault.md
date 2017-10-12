@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: markgal;trinadhk
 ms.openlocfilehash: ae4a73d12898c62fe2c5cf3683bc7c1c8c845fdf
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="delete-a-recovery-services-vault"></a>Löschen eines Recovery Services-Tresors
 Der Azure Backup-Dienst umfasst zwei Arten von Tresoren: den Backup-Tresor und den Recovery Services-Tresor. Der Backup-Tresor wurde zuerst eingeführt. Anschließend folgte der Recovery Services-Tresor als Unterstützung für die erweiterten Resource Manager-Bereitstellungen. Aufgrund der erweiterten Funktionen und Informationsabhängigkeiten, die im Tresor gespeichert werden müssen, kann das Löschen eines Azure Backup- oder Recovery Services-Tresors schwierig erscheinen. In diesem Artikel wird erläutert, wie die Tresore im klassischen und Azure-Portal gelöscht werden.  

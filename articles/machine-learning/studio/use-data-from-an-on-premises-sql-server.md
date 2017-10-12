@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: garye;krishnan
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 79ae5cd78ce07fcc84be49c2693773d58a15771e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>Durchführen der erweiterten Analyse mit Azure Machine Learning mit Daten aus einer lokalen SQL Server-Datenbank
 
@@ -149,4 +148,3 @@ Nachdem Sie das Gateway eingerichtet haben, können Sie ein **Import Data** -Mod
 Nach Abschluss der Ausführung des Experiments können Sie die Daten, die Sie aus der Datenbank importiert haben, durch Klicken auf den Ausgabeport des **Import Data**-Moduls und Auswählen von **Visualize** visuell darstellen.
 
 Wenn Sie die Entwicklung des Experiments abgeschlossen haben, können Sie Ihr Modell bereitstellen und in Betrieb nehmen. Mit dem Batchausführungsdienst werden Daten aus der im **Import Data** -Modul konfigurierten lokalen SQL Server-Datenbank gelesen und für die Bewertung verwendet. Sie können zwar den Request Response Service zur Bewertung lokaler Daten verwenden, aber Microsoft empfiehlt stattdessen die Verwendung des [Excel-Add-Ins](excel-add-in-for-web-services.md) . Derzeit wird das Schreiben in eine lokale SQL Server-Datenbank über **Export Data** weder in Ihren Experimenten noch in veröffentlichten Webdiensten unterstützt.
-

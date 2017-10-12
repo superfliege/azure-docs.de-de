@@ -16,14 +16,12 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
+ms.openlocfilehash: f88f7aaf71ff35875a13b33230abd5536c021201
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 0d0bceb32902a4ae506919f48302471543dd5162
-ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-powershell-to-monitor-and-scale-a-single-sql-database"></a>Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell
 
 In diesem PowerShell-Beispielskript werden die Leistungsmetriken einer Datenbank überwacht, sie werden auf eine höhere Leistungsstufe skaliert und eine Warnungsregel wird auf einer der Leistungsmetriken erstellt. 
@@ -32,7 +30,7 @@ In diesem PowerShell-Beispielskript werden die Leistungsmetriken einer Datenbank
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-powershell[main](../../../powershell_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.ps1?highlight=13-14 "Überwachen und Skalieren einer einzelnen SQL­Datenbank")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.ps1?highlight=13-14 "Monitor and scale single SQL Database")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -61,4 +59,3 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
 
 Zusätzliche PowerShell-Skriptbeispiele für SQL-Datenbank finden Sie in den [Azure PowerShell samples for Azure SQL Database](../sql-database-powershell-samples.md) (Azure PowerShell-Beispiele für Azure SQL-Datenbank).
-

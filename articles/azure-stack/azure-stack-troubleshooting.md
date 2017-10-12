@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3b40a657ee8eb391d14a38cb95acc0729a8dda21
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Problembehandlung für Microsoft Azure Stack
 
@@ -97,7 +96,6 @@ Beim Herstellen einer Verbindung mit Mandantenabonnements mit PowerShell bemerke
     * Benutzer können das Dashboard nur anzeigen, nachdem sie die Portaleinstellungen zurückgesetzt haben. (Klicken Sie im Benutzerportal Sie auf das Symbol für die Portaleinstellungen (Zahnradsymbol rechts oben). Klicken Sie unter **Standardeinstellungen wiederherstellen** auf **Übernehmen**.)
     * Die Dashboardtitel werden unter Umständen nicht angezeigt. Wenn dieses Problem auftritt, müssen Sie sie manuell wieder hinzufügen.
     * Einige Kacheln werden unter Umständen nicht korrekt angezeigt, wenn Sie diese zuerst zum Dashboard hinzuzufügen. Aktualisieren Sie den Browser, um dieses Problem zu beheben.
-
 
 
 

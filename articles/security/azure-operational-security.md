@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.openlocfilehash: ec9e0fc7d67537a47d5c0d3bb376b60dc6ccffcd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-operational-security"></a>Azure Operational Security
 ## <a name="introduction"></a>Einführung
@@ -334,7 +334,7 @@ In diesem Artikel wird Folgendes erläutert:
 
 Microsoft entwickelt seine Dienste und Software in Hinblick auf die Sicherheit, um sicherzustellen, dass seine Cloudinfrastruktur resilient und vor Angriffen geschützt ist.
 
-- [Operations Management Suite | Security & Compliance](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Operations Management Suite | Security &amp; Compliance](https://www.microsoft.com/cloud-platform/security-and-compliance)
 
 Verwenden Sie Microsoft-Sicherheitsdaten und -analysen, um eine intelligentere und effektivere Bedrohungserkennung vorzunehmen.
 

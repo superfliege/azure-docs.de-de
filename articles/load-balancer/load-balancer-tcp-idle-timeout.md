@@ -11,15 +11,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
-ms.openlocfilehash: 7b8a292bd27792844eb6f620f7564e5091e3d8bc
-
+ms.openlocfilehash: f19ac77f7c7f7d4ab8909d628f9dcce08c07c928
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Konfigurieren der TCP-Leerlauftimeout-Einstellungen für Azure Load Balancer
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 In der Standardkonfiguration ist der Azure Load Balancer auf ein Leerlauftimeout von 4 Minuten eingestellt. Wenn die Dauer einer Inaktivitätsperiode den Timeoutwert überschreitet, gibt es keine Garantie dafür, dass die TCP- oder HTTP-Sitzung zwischen dem Client und Ihrem Clouddienst aufrechterhalten wird.
 
@@ -156,9 +158,3 @@ Sie können das TCP-Leerlauftimeout mithilfe der Dienstverwaltungs-API konfiguri
 [Erste Schritte zum Konfigurieren eines Lastenausgleichs für Internetverbindungen](load-balancer-get-started-internet-arm-ps.md)
 
 [Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

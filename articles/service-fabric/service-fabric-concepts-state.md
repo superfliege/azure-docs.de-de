@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 103fd6c3d536bc11f4e39444043a332a1d8f6c01
-ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-state"></a>Dienstzustand
 **Dienstzustand** bezieht sich auf die Daten (im Arbeitsspeicher oder auf einem Datenträger), die der Dienst für seine Ausführung benötigt. Er umfasst unter anderem die Datenstrukturen und Membervariablen, die der Dienst im Rahmen seiner Aufgaben liest und schreibt. Abhängig von der Architektur des Diensts können dazu auch Dateien oder andere Ressourcen gehören, die auf einem Datenträger gespeichert sind. Ein Beispiel wären etwa Dateien, die eine Datenbank zum Speichern von Daten und Transaktionsprotokollen verwendet.
@@ -42,4 +41,3 @@ Weitere Informationen zu den Service Fabric-Konzepten finden Sie in den folgende
 * [Scaling Service Fabric Applications (in englischer Sprache)](service-fabric-concepts-scalability.md)
 * [Partitionieren von Service Fabric-Diensten](service-fabric-concepts-partitioning.md)
 * [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md)
-

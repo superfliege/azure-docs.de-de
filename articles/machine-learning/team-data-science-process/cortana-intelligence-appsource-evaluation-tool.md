@@ -13,13 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams;v-bruham;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8340ae1231b7f40f739d7bbb63cee1bf0f095ab5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
---- 
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
+---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Lösungsauswertungstool für Cortana Intelligence
 ## <a name="overview"></a>Übersicht
 Sie können das Lösungsauswertungstool Cortana Intelligence dafür verwenden, Ihre erweiterten Analyselösungen in Bezug auf die Konformität zu den von Microsoft empfohlenen bewährten Methoden zu bewerten. Wir freuen uns darauf, mit den Microsoft-Partner (ISVs/SIs) zusammenzuarbeiten, um qualitativ hochwertige Lösungen für Kunden, Händler und Implementierungen bieten zu können. In diesem Handbuch wird schrittweise erläutert, wie das Lösungsauswertungstool in Ihrer Lösung verwendet wird. Darüber hinaus werden die spezifischen zu prüfenden bewährten Methoden beschrieben.
@@ -199,5 +198,4 @@ Weitere Informationen zum Automatisieren des Modelltrainingsprozesses mit Azure 
 [Microsoft Azure Certified zum Erweitern Ihres Business in der Cloud](https://azure.microsoft.com/en-us/marketplace/programs/certified/)
 
 [Microsoft Azure Certified für Cortana Intelligence](https://azure.microsoft.com/en-us/marketplace/programs/certified/cortana/)
-
 

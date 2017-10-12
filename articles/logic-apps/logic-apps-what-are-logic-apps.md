@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/23/2017
 ms.author: klam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 64af585f81d39daaa5373d7cf080404ee5f1b037
-ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 59d35852d6c703f3c96089a8bf426b57660441a6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-logic-apps"></a>Was sind Logik-Apps?
 Logik-Apps ermöglichen die Vereinfachung und die Implementierung skalierbarer Integrationen und Workflows in die Cloud. Es wird ein visueller Designer bereitgestellt, mit dem Sie Ihre Prozesse in Form von Schritten (als Workflow bezeichnet) modellieren und automatisieren können.  In der Cloud und der lokalen Umgebung sind [viele Connectors](../connectors/apis-list.md) zur schnellen Integration für Dienste und Protokolle enthalten.  Eine Logik-App beginnt mit einem Trigger (z.B. „Wenn Dynamics CRM ein Konto hinzugefügt wird“), und nach der Auslösung sind viele verschiedene Kombinationen von Aktionen, Konvertierungen und Bedingungslogikabläufen möglich.
@@ -78,4 +77,3 @@ Es folgt eine Beschreibung einiger der wichtigsten Elemente von Logik-Apps.
 [tpm]: logic-apps-enterprise-integration-accounts.md
 [xml]: logic-apps-enterprise-integration-b2b.md
 [templates]: logic-apps-use-logic-app-templates.md
-

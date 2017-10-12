@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: d71c706a7db570e88339c4ff7af05a48c05df65b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Anleitung für eine unternehmensbezogene Pusharchitektur
 Unternehmen gehen mehr und mehr dazu über, mobile Anwendungen entweder für ihre Endbenutzer (extern) oder für ihre Mitarbeiter (intern) zu erstellen. Sie haben vorhandene Back-End-Systeme, seien es Mainframes oder einige Branchenanwendungen, die in die Architektur der mobilen Anwendungen integriert werden müssen. In dieser Anleitung wird gezeigt, wie sich diese Integration am besten umsetzen lässt, wozu mögliche Lösungen für allgemeine Szenarien vorgeschlagen werden.
@@ -266,4 +265,3 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples](in englisch
 [Azure WebJob]: ../app-service/web-sites-create-web-jobs.md
 [Erste Schritte mit Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [klassischen Azure-Portal]: https://manage.windowsazure.com/
-

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: muralikk
+ms.openlocfilehash: 60139ff36b66432620591ceaf201e046ad30217f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 83cb82b9807718e7a509312d159eb766a5da1d2c
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag
 
 Dieser Artikel führt Sie durch den vollständigen Prozess zur Vorbereitung von Laufwerken für einen Importauftrag.
@@ -133,4 +131,3 @@ Nach Abschluss der Kopiersitzungen können Sie die beiden Laufwerke vom Kopierco
 
 * [Vorbereiten von Festplatten für einen Importauftrag](../storage-import-export-tool-preparing-hard-drives-import.md)
 * [Kurzübersicht über häufig verwendete Befehle](../storage-import-export-tool-quick-reference.md)
-

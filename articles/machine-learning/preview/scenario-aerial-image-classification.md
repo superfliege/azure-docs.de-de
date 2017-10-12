@@ -8,14 +8,12 @@ ms.topic: article
 ms.service: machine-learning
 services: machine-learning
 ms.date: 09/15/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 43b124fc3eb72adc5d299b218c9e16ec83d1a240
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="aerial-image-classification"></a>Klassifizierung von Luftbildern
 
 In diesem Beispiel wird veranschaulicht, wie Sie mit Azure Machine Learning Workbench verteilte Trainings- und Operationalisierungsfunktionen von Modellen zur Bildklassifizierung koordinieren. Das Paket [Microsoft Machine Learning für Apache Spark (MMLSpark)](https://github.com/Azure/mmlspark) wird verwendet, um Bilder mithilfe von vorab trainierten CNTK-Modellen mit Funktionen auszustatten und Klassifizierer mithilfe der abgeleiteten Funktionen zu trainieren. Anschließend werden die trainierten Modelle parallel auf große Bildzusammenstellungen in der Cloud angewendet. Diese Schritte werden in einem [Azure HDInsight Spark](https://azure.microsoft.com/en-us/services/hdinsight/apache-spark/)-Cluster ausgeführt. Dadurch können Sie die Geschwindigkeit der Trainings- und Operationalisierungsfunktionen durch Hinzufügen oder Entfernen von Workerknoten anpassen.
@@ -54,7 +52,7 @@ In den [ausführlichen Anweisungen](https://github.com/MicrosoftDocs/azure-docs-
 Befolgen Sie die folgenden Anweisungen, um die Ausführungsumgebung für dieses Beispiel einzurichten.
 
 ### <a name="prerequisites"></a>Voraussetzungen
-- Ein [Azure-Konto](https://azure.microsoft.com/en-us/free/) (kostenlose Testversionen verfügbar):
+- Ein [Azure-Konto](https://azure.microsoft.com/en-us/free/) (kostenlose Testversionen verfügbar).
     - In diesem Beispiel wird ein HDInsight Spark-Cluster mit 40 Workerknoten (insgesamt 168 Kerne) erstellt. Stellen Sie sicher, dass Ihr Konto über genügend verfügbare Kerne verfügt. Gehen Sie dazu im Azure-Portal auf die Registerkarte „Nutzung + Kontingente“ für Ihr Abonnement.
     - Wenn Sie weniger Kerne zur Verfügung haben, können Sie die HDInsight-Clustervorlage ändern und die Anzahl der bereitgestellten Worker reduzieren. Die Anweisungen hierzu finden Sie im Abschnitt „Erstellen des HDInsight Spark-Clusters“.
 - [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md):
@@ -270,4 +268,3 @@ To dive deeper into this example:
 - Examine the sample scripts for statements calling the `blob_service`. Check that you understand how trained models and predictions are stored and retrieved from the cloud.
 - Explore the contents of the containers created in your blob storage account. Ensure that you understand which script or command is responsible for creating each group of files.
 - Modify the training script to train a different MMLSpark model type or to change the model hyperparameters. Use the run history feature to determine whether your changes increased or decreased the model's accuracy.
-

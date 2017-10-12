@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d1a31bc95b249c3fa1caced138bbf3459eb6282c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>Anleitung Schritt 6: Zugreifen auf den Azure Machine Learning-Webdienst
 
@@ -49,5 +48,4 @@ Weitere Informationen zur Verwendung von Web-App-Vorlagen finden Sie unter [Verw
 Sie können auch eine benutzerdefinierte Anwendung entwickeln, die mithilfe von in den Programmiersprachen R, C# und Python bereitgestelltem Startcode auf den Webdienst zugreift.
 
 Umfassende Informationen finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](consume-web-services.md).
-
 

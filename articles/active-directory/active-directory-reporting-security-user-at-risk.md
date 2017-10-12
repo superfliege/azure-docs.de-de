@@ -14,10 +14,10 @@ ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 04f15384a7cd0fa03300acdf159d371569ecf9fc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
@@ -63,9 +63,9 @@ Sie können für gefährdete Benutzer den Anmeldeverlauf des Benutzers prüfen u
 ![Riskante Anmeldungen](./media/active-directory-reporting-security-user-at-risk/46.png)
 
 
-Dieses Dialogfeld bietet Ihnen eine Option aus, um:
+In diesem Dialogfenster steht Ihnen folgende Option zur Verfügung:
 
-- Den Bericht herunterladen
+- Herunterladen des Berichts
 
 - Suchen nach Benutzern
 

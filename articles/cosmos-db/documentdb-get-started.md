@@ -15,12 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: anhoh
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: e5e6a2e5b7ec4bc9c3c81ff37640c98cae36392d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-documentdb-api-getting-started-tutorial"></a>Azure Cosmos DB: DocumentDB-API – Tutorial zu den ersten Schritten
 > [!div class="op_single_selector"]
@@ -539,7 +538,7 @@ Zum Erstellen der GetStarted-Projektmappe benötigen Sie Folgendes:
 * Ein [Azure Cosmos DB-Konto][cosmos-db-create-account]
 * [GetStarted-Projektmappe](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) (erhältlich auf GitHub)
 
-Um die Verweise auf das Azure Cosmos DB .NET SDK in Visual Studio wiederherzustellen, klicken Sie mit der rechten Maustaste im Projektmappen-Explorer auf die **GetStarted** -Lösung, und klicken Sie dann auf die Option **NuGet-Paketwiederherstellung aktivieren**. Aktualisieren Sie dann in der Datei „App.config“ die Werte „EndpointUrl“ und „AuthorizationKey“, wie unter [Herstellen einer Verbindung mit einem Azure Cosmos DB-Konto](#Connect) beschrieben.
+Um die Verweise auf das Azure Cosmos DB .NET SDK in Visual Studio wiederherzustellen, klicken Sie mit der rechten Maustaste im Projektmappen-Explorer auf die  **GetStarted**-Lösung, und klicken Sie dann auf die Option **NuGet-Paketwiederherstellung aktivieren**. Aktualisieren Sie dann in der Datei „App.config“ die Werte „EndpointUrl“ und „AuthorizationKey“, wie unter [Herstellen einer Verbindung mit einem Azure Cosmos DB-Konto](#Connect) beschrieben.
 
 Das war's auch schon! Nun müssen Sie nur noch die Erstellung durchführen.
 
@@ -553,4 +552,3 @@ Das war's auch schon! Nun müssen Sie nur noch die Erstellung durchführen.
 
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 [cosmos-db-create-account]: create-documentdb-dotnet.md#create-account
-

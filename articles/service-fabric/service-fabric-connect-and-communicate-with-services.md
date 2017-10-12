@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 5/9/2017
 ms.author: vturecek
 ms.openlocfilehash: 3e61ad19df34c6a57da43e26bd2ab9d7ecdbf98e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Herstellung einer Verbindung mit Diensten in Service Fabric und die Kommunikation mit diesen Diensten
 In Service Fabric wird ein Dienst an irgendeinem Ort in einem Service Fabric-Cluster ausgeführt, der sich in der Regel auf mehreren virtuellen Computern befindet. Er kann entweder vom Dienstbesitzer oder automatisch von Service Fabric von einem Standort an einen anderen verschoben werden. Dienste sind nicht statisch an einen bestimmten Computer oder eine bestimmte Adresse gefunden.
@@ -174,7 +174,7 @@ Bitte beachten Sie, dass Azure Load Balancer und der Test nur die *Knoten* kenne
 ## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: Integrierte Optionen für Kommunikations-APIs
 Das Reliable Services-Framework wird mit mehreren vorab erstellten Kommunikationsoptionen ausgeliefert. Welche Option in Ihrem Fall am besten geeignet ist, hängt vom Programmiermodell, dem Kommunikationsframework und der Programmiersprache Ihrer Dienste ab.
 
-* **Kein bestimmtes Protokoll**: Wenn Sie kein bestimmtes Kommunikationsframework verwenden und schnell eine Lösung implementieren möchten, ist das [Dienstremoting](service-fabric-reliable-services-communication-remoting.md) die ideale Lösung, da es stark typisierte Remoteprozeduraufrufe für Reliable Services und Reliable Actors zulässt. Dies ist die einfachste und schnellste Methode für den Einstieg in die Dienstkommunikation. Das Dienstremoting verarbeitet die Auflösung von Dienstadressen, die Verbindungsherstellung, Wiederholungsversuche sowie die Problembehandlung. Dies ist jeweils für C#- und Java-Anwendungen erhältlich.
+* **Kein bestimmtes Protokoll** : Wenn Sie kein bestimmtes Kommunikationsframework verwenden und schnell eine Lösung implementieren möchten, ist das [Dienstremoting](service-fabric-reliable-services-communication-remoting.md) die ideale Lösung, da es stark typisierte Remoteprozeduraufrufe für Reliable Services und Reliable Actors zulässt. Dies ist die einfachste und schnellste Methode für den Einstieg in die Dienstkommunikation. Das Dienstremoting verarbeitet die Auflösung von Dienstadressen, die Verbindungsherstellung, Wiederholungsversuche sowie die Problembehandlung. Dies ist jeweils für C#- und Java-Anwendungen erhältlich.
 * **HTTP**: Für die sprachunabhängige Kommunikation bietet HTTP eine branchenübliche Auswahl von Tools und HTTP-Servern, die in verschiedenen Sprachen verfügbar sind und alle von Service Fabric unterstützt werden. Dienste können alle verfügbaren HTTP-Stapel verwenden, einschließlich [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) für C#-Anwendungen. In C# geschriebene Clients können `ICommunicationClient`die Klassen `ServicePartitionClient` verwenden, wobei für Java die `CommunicationClient`- und `FabricServicePartitionClient`-Klassen [für die Dienstauflösung, HTTP-Verbindungen und Wiederholungsschleifen](service-fabric-reliable-services-communication.md) verwendet werden sollten.
 * **WCF**: Wenn der vorhandene Code das WCF-Kommunikationsframework verwendet, können Sie `WcfCommunicationListener` für den Server und die Klassen `WcfCommunicationClient` und `ServicePartitionClient` für den Client verwenden. Dies ist jedoch nur für C#-Anwendungen für Windows-basierte Cluster verfügbar. Weitere Informationen finden Sie in folgenden Artikel: [WCF-basierter Kommunikationsstapel für Reliable Services](service-fabric-reliable-services-communication-wcf.md).
 

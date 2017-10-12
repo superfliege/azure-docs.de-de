@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: database
 ms.date: 06/07/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 189034b049e776a3b929930be937ec60bc1db241
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure CLI-Beispiele für Azure Cosmos DB
 
 Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Cosmos DB. Referenzseiten für alle CLI-Befehle für Azure Cosmos DB sind in der [Referenz zu Azure CLI 2.0](https://docs.microsoft.com/cli/azure/cosmosdb) verfügbar.
@@ -45,4 +43,3 @@ Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Cosm
 |**Herstellen einer Verbindung zwischen Azure Cosmos DB und den Ressourcen**||
 |[Herstellen einer Verbindung zwischen einer Web-App und Azure Cosmos DB](../app-service/scripts/app-service-cli-app-service-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|Erstellen und Herstellen einer Verbindung zwischen einer Azure Cosmos DB-Datenbank und einer Azure-Web-App|
 |||
-

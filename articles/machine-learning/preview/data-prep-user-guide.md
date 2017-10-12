@@ -12,12 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 22389ba85edb119acdd21b63f2deae2d71f31373
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-preparation-user-guide"></a>Anleitung zur Datenvorbereitung 
 Data Prep bietet Ihnen umfangreiche Funktionen, die im Folgenden dargestellt werden.
@@ -110,4 +109,3 @@ Für jeden Vorgang mit dem verwiesenen Datenfluss muss im übergeordneten Datenf
 [Appendix 8 - Sample Data Sources in Python (Anhang 8: Beispiele für Datenquellen in Python)](data-prep-appendix8-sample-source-connections-python.md)  
 [Appendix 9 - Sample Destination Connections in Python (Anhang 9: Beispiele für Zielverbindungen in Python)](data-prep-appendix9-sample-destination-connections-python.md)  
 [Appendix 10 - Sample Column Transforms in Python (Anhang 10: Beispiele für Spaltentransformationen in Python)](data-prep-appendix10-sample-custom-column-transforms-python.md)  
-

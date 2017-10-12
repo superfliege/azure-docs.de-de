@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: barlan
 ms.custom: end-user
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 847a8bdcf880b56f587f6759058825fd1965d29e
-ms.openlocfilehash: 6ad91429794e465be7cb26963d032d9357143053
-ms.contentlocale: de-de
-ms.lasthandoff: 03/01/2017
-
+ms.openlocfilehash: 2328fe6e6b35ce523f8bf90cbe6159c7ba23d697
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Verwalten der Einstellungen für die Überprüfung in zwei Schritten
 Dieser Artikel enthält Antworten auf Fragen zum Aktualisieren der Einstellungen für die Überprüfung in zwei Schritten oder die Multi-Factor Authentication. Wenn bei der Anmeldung bei Ihrem Konto Probleme auftreten, finden Sie Hilfe unter [Probleme bei der Überprüfung in zwei Schritten](multi-factor-authentication-end-user-troubleshoot.md).
@@ -71,4 +70,3 @@ Wenn Sie die App von Ihrem Gerät deinstallieren oder das Gerät auf die Werksei
 ## <a name="next-steps"></a>Nächste Schritte
 * Unter [Probleme bei der Überprüfung in zwei Schritten](multi-factor-authentication-end-user-troubleshoot.md) finden Sie Tipps zur Problembehandlung und Hilfe.
 * Richten Sie [App-Kennwörter](multi-factor-authentication-end-user-app-passwords.md) für Apps ein, die die Überprüfung in zwei Schritten nicht unterstützen.
-

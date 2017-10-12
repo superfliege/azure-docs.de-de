@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;deguhath
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8f1d9ab5186684c4aac806ace4ebfd38ca1fb306
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Data Science unter Verwendung von Scala und Spark in Azure
 Dieser Artikel zeigt Ihnen die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster. Sie werden durch die Aufgaben geführt, aus denen der [Data Science-Prozess](http://aka.ms/datascienceprocess)besteht: Erfassen und Durchsuchen von Daten, Visualisierung, Featureentwicklung, Modellierung und Modellnutzung. Die im Artikel behandelten Modelle beinhalten logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen (Gradient-boosted Trees, GBTs) neben zwei häufig überwachten Machine Learning-Aufgaben:
@@ -1108,5 +1107,4 @@ Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Scie
 [Exemplarische Vorgehensweisen für den Team Data Science-Prozess](walkthroughs.md) beschreibt andere exemplarische End-to-End-Vorgehensweisen, in denen die Schritte im Team Data Science-Prozess für bestimmte Szenarien veranschaulicht werden. Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden.
 
 [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](spark-model-consumption.md) zeigt Ihnen, wie Sie Scala-Code verwenden, um mit in Spark erstellten und im Azure-Blobspeicher gespeicherten Machine Learning-Modellen automatisch neue Datasets zu laden und zu bewerten. Sie können die dortigen Anweisungen befolgen und für eine automatisierte Nutzung einfach den Python-Code durch den Scala-Code in diesem Artikel ersetzen.
-
 

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 38c0798bc14b094fa788e6e414bad35b34a93d2c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory
 
@@ -634,4 +633,3 @@ Sie können auch [Data Factory-Funktionen](data-factory-functions-variables.md) 
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md
 
 [azure-machine-learning]: http://azure.microsoft.com/services/machine-learning/
-

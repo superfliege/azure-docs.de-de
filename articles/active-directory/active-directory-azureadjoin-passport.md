@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
 ms.openlocfilehash: 62adf8a9fd4400a056e2c0f59c79431acbad5865
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticating-identities-without-passwords-through-windows-hello-for-business"></a>Authentifizieren von Identitäten ohne Kennwörter über Windows Hello for Business
 Die aktuellen Methoden der Authentifizierung mit Kennwörtern allein sind nicht ausreichend, um Benutzer zu schützen. Benutzer verwenden gleiche Kennwörter wiederholt und vergessen sie. Kennwörter können missbraucht werden, sind anfällig für Phishing, für Sicherheitslücken und sie sind leicht zu erraten. Sie sind außerdem schwer zu merken und anfällig für Angriffe wie "[Pass-the-Hash](https://technet.microsoft.com/dn785092.aspx)".

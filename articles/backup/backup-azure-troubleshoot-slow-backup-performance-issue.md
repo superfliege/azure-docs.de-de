@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/13/2017
 ms.author: genli
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: f1aa4117b389bb127eb7235f69f587dcb715ac25
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problembehandlung bei langsamer Sicherung von Dateien und Ordnern in Azure Backup
 Dieser Artikel enthält Informationen zu Problembehandlungsschritten, mit denen Sie eine niedrige Geschwindigkeit beim Sichern von Dateien und Ordnern mit Azure Backup diagnostizieren können. Wenn Sie den Azure Backup-Agent zum Sichern von Dateien verwenden, kann der Sicherungsprozess länger als erwartet dauern. Diese Verzögerung kann eine oder mehrere der folgenden Ursachen haben:
@@ -88,4 +87,3 @@ Anhand der folgenden Indikatoren können Sie den Engpass identifizieren und dann
 
 * **Auf der Benutzeroberfläche wird der Status der Datenübertragung angezeigt**. Die Daten werden immer noch übertragen. Die Netzwerkbandbreite oder die Datenmenge könnte möglicherweise Verzögerungen verursachen.
 * **Auf der Benutzeroberfläche wird der Status der Datenübertragung nicht angezeigt**. Öffnen Sie die Protokolle unter „C:\Microsoft Azure Recovery Services Agent\Temp“, und suchen Sie in den Protokollen nach dem Eintrag „FileProvider::EndData“. Dieser Eintrag verdeutlicht, dass die Datenübertragung abgeschlossen ist und der Katalogisierungsvorgang durchgeführt wird. Brechen Sie die Sicherungsaufträge nicht ab. Warten Sie stattdessen noch ein wenig, bis die Katalogisierung beendet ist. Wenden Sie sich an den [Azure-Support](https://portal.azure.com/#create/Microsoft.Support), wenn das Problem weiterhin besteht.
-

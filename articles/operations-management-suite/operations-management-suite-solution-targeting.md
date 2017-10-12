@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
 ms.openlocfilehash: cb73a2d7ae57a5a11869259dbe913ae83ffb2b01
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-solution-targeting-in-operations-management-suite-oms-to-scope-management-solutions-to-specific-agents-preview"></a>Verwenden von Zielgruppenadressierung für Lösung in Operations Management Suite (OMS), um Verwaltungslösungen auf einen bestimmten Satz von Agents zu beschränken
 Wenn Sie OMS eine Lösung hinzufügen, wird sie automatisch standardmäßig allen mit Ihrem Log Analytics-Arbeitsbereich verbundenen Windows- und Linux-Agents bereitgestellt.  Möglicherweise möchten Sie Ihre Kosten verwalten und den Umfang der für eine Lösung gesammelten Daten begrenzen, indem Sie sie auf einen bestimmten Satz von Agents beschränken.  Dieser Artikel beschreibt die Verwendung von **Zielgruppenadressierung für Lösung**, eines OMS-Features, das Ihnen ermöglicht, einen Bereich auf Ihre Lösungen anzuwenden.

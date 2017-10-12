@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: pajosh
 ms.openlocfilehash: 8ef9ddc345fb553b93815022dc3e6a796cae8b3a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Hybridsicherungen mit Azure Backup
 Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Eindringlingen werden immer größer. Diese Sicherheitsprobleme können erhebliche Daten- und finanzielle Verluste mit sich bringen. Zum Schutz gegen solche Angriffe bietet Azure Backup jetzt neue Sicherheitsfeatures für den Schutz von Hybridsicherungen. In diesem Artikel werden Aktivierung und Verwendung dieser Features mit einem Azure Recovery Services-Agent und Azure Backup Server beschrieben. Zu den Features zählen:

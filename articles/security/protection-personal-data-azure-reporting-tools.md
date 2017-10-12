@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 0ec9ceb63c3e1872e9815a7895b624276fc46123
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Dokumentschutz personenbezogener Daten mit Azure-Berichtstools
 
@@ -276,4 +275,3 @@ Weitere Informationen zum Anzeigen und Verwenden des Berichts mit Bedrohungsinfo
 [Überblick über die Überwachung in Microsoft Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
 
 [Introduction to the Azure Activity Log](https://azure.microsoft.com/resources/videos/intro-activity-log/) (Video, Einführung in das Azure-Aktivitätsprotokoll)
-

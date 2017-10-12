@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: scottnap
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8c023eda179ace41a082bf4a4fadc281c14db7ba
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Einführung in iDNS für Azure Stack
 
@@ -54,5 +53,4 @@ Azure Stack unterstützt iDNS nur für die Registrierung interner Namen, sodass 
 * Erstellen einer DNS-Zone (z.B. „contoso.com“).
 * Erstellen eines Eintrags unter Ihrer eigenen benutzerdefinierten DNS-Zone.
 * Unterstützen des Erwerbs von Domänennamen.
-
 

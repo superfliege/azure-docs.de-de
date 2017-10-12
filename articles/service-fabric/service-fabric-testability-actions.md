@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv;heeldin
 ms.openlocfilehash: c8ddc7732999ae555323bebaef60aa34c8f2ec17
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="testability-actions"></a>Testability-Aktionen
 Zur Simulierung einer unzuverlässigen Infrastruktur bietet Azure Service Fabric Ihnen, dem Entwickler, die Möglichkeit, verschiedene Ausfälle und Statusübergänge aus der Praxis zu simulieren. Diese werden als Testability-Aktionen verfügbar gemacht. Bei den Aktionen handelt es sich um Low-Level-APIs, die eine bestimmte Fault Injection, einen Statusübergang oder eine Überprüfung bewirken. Diese Aktionen können von Ihnen zu umfassenden Testszenarien für Ihre Dienste kombiniert werden.

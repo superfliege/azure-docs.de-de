@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1a4f2d69907d220a8bbec5087ba431dc243c46d6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Verwenden des Ausführungsverlaufs und der Modellmetriken in Azure Machine Learning Workbench
 
@@ -25,7 +24,7 @@ Die **Modellmetriken** können von jedem Punkt Ihres Skripts aus protokolliert w
 Dieser Artikel beschreibt die effektive Nutzung dieser Funktionen, um Rate und Qualität Ihres Data Science-Experimentierens zu erhöhen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
+Zum Ausführen der Schritte in dieser Anleitung müssen Sie folgende Vorbereitungen treffen:
 * [Create and Install Azure Machine Learning (Erstellen und Installieren von Azure Machine Learning)](quickstart-installation.md)
 - [Create a Project (Erstellen eines Projekts)](quickstart-installation.md)
 
@@ -243,4 +242,3 @@ Diese Funktionen sind verfügbar, um Sie beim Prozess des Data Science-Experimen
 Wir hoffen, dass Sie diese nützlich finden und freuen uns über Ihr Feedback.
 Dies ist nur die erste Implementierung und zahlreiche Erweiterungen sind geplant.
 Wir freuen uns darauf, diese kontinuierlich für Azure Machine Learning Workbench bereitzustellen. 
-

@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
 ms.openlocfilehash: b2e755b5b1b4939eac90ac55ba8398c5687124c8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-informix-connector"></a>Erste Schritte mit dem Informix-Connector
 Mit dem Microsoft Connector für Informix werden Logik-Apps mit Ressourcen verbunden, die in einer IBM Informix-Datenbank gespeichert sind. Der Informix-Connector enthält einen Microsoft-Client zum Kommunizieren mit Informix-Remoteservercomputern über ein TCP/IP-Netzwerk. Dies umfasst Clouddatenbanken, z.B. IBM Informix für Windows, in Azure sowie lokale Datenbanken unter Verwendung des lokalen Datengateways. Siehe die [Liste mit unterstützten IBM Informix-Plattformen und -Versionen](connectors-create-api-informix.md#supported-informix-platforms-and-versions) (in diesem Thema).

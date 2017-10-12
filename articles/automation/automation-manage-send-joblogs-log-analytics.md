@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2017
 ms.author: magoedte
+ms.openlocfilehash: 21923adaa8f8118995799319c1fd496a6e449faa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 878149521edc969dc3e15e198ff3b2ead978cf86
-ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Log Analytics (OMS)
 Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Microsoft Operations Management Suite (OMS) Log Analytics-Arbeitsbereich senden.  Auftragsprotokolle und -streams werden im Azure-Portal oder mit PowerShell für einzelne Aufträge angezeigt, d.h., Sie können einfache Untersuchen durchführen. Log Analytics bietet folgende Vorteile:
@@ -207,4 +206,3 @@ Log Analytics bietet eine höhere operative Transparenz für Ihre Automation-Auf
 * Unter [Runbookausgabe und -meldungen](automation-runbook-output-and-messages.md)
 * Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md)
 * Weitere Informationen zu OMS Log Analytics und Datenerfassungsquellen finden Sie unter [Herstellen einer Verbindung zwischen Azure-Speichern und Log Analytics](../log-analytics/log-analytics-azure-storage.md)
-

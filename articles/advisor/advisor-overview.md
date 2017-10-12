@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 35678142550f9f887562f311a5e7d9516495cf53
-ms.contentlocale: de-de
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 96925f251cf4984a11516a962740e19a7b9589dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-azure-advisor"></a>Einführung in Azure Advisor
 
 Hier erfahren Sie mehr über den Azure-Ratgeber und seine wichtigsten Funktionen, und Sie erhalten Sie Antworten auf häufig gestellte Fragen.
@@ -49,7 +47,7 @@ Die Empfehlungen sind in vier Kategorien unterteilt:
   ![Typen von Advisor-Empfehlungen](./media/advisor-overview/advisor-all-tab-examples.png)
 
 > [!NOTE]
-> Für den Zugriff auf die Empfehlungen des Ratgebers müssen Sie Ihr Abonnement zunächst beim Ratgeber *registrieren*. Ein Abonnement wird registriert, wenn ein *Abonnementbesitzer* das Ratgeber-Dashboard aufruft und auf die Schaltfläche **Empfehlungen abrufen** klickt. Dies ist eine *einmalige Aufgabe*. Sobald ein Abonnement registriert wurde, können *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements, einer Ressourcengruppe oder einer bestimmten Ressource auf die Ratgeberempfehlungen zugreifen.
+> Für den Zugriff auf die Empfehlungen des Ratgebers müssen Sie Ihr Abonnement zunächst beim Ratgeber *registrieren*. Ein Abonnement wird registriert, wenn ein *Abonnementbesitzer* das Ratgeberdashboard aufruft und auf die Schaltfläche **Empfehlungen abrufen** klickt. Dies ist eine *einmalige Aufgabe*. Sobald ein Abonnement registriert wurde, können *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements, einer Ressourcengruppe oder einer bestimmten Ressource auf die Ratgeberempfehlungen zugreifen.
 
 Sie können auf eine Empfehlung klicken, um weitere Informationen dazu zu erhalten. Sie lernen außerdem Aktionen kennen, die Sie ausführen können, um eine Chance zu nutzen oder ein Problem zu beheben. 
 
@@ -66,7 +64,7 @@ Sie können die Advisor-Empfehlungen auch auf dem Blatt mit den VM-Ressourcen an
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Welche Berechtigungen benötige ich für den Zugriff auf Advisor?
 
-Für den Zugriff auf die Empfehlungen des Ratgebers müssen Sie Ihr Abonnement zunächst beim Ratgeber *registrieren*. Ein Abonnement wird registriert, wenn ein *Abonnementbesitzer* das Ratgeber-Dashboard aufruft und auf die Schaltfläche **Empfehlungen abrufen** klickt. Dies ist eine *einmalige Aufgabe*. Sobald ein Abonnement registriert wurde, können *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements, einer Ressourcengruppe oder einer bestimmten Ressource auf die Ratgeberempfehlungen zugreifen.
+Für den Zugriff auf die Empfehlungen des Ratgebers müssen Sie Ihr Abonnement zunächst beim Ratgeber *registrieren*. Ein Abonnement wird registriert, wenn ein *Abonnementbesitzer* das Ratgeberdashboard aufruft und auf die Schaltfläche **Empfehlungen abrufen** klickt. Dies ist eine *einmalige Aufgabe*. Sobald ein Abonnement registriert wurde, können *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements, einer Ressourcengruppe oder einer bestimmten Ressource auf die Ratgeberempfehlungen zugreifen.
 
 ### <a name="how-often-are-advisor-recommendations-updated"></a>Wie oft werden Empfehlungen von Advisor aktualisiert?
 
@@ -89,4 +87,3 @@ Hier finden Sie weitere Informationen zu Empfehlungen des Ratgebers:
 * [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
 * [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
 * [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md)
-

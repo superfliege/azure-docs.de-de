@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: mez
 ms.manager: tihazen
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8edc21fb8f42ee5897c4e938045cc1f42aedb3ce
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Zuordnung von Fragen und Antworten mit Azure Machine Learning Workbench
 Die Beantwortung von offenen Fragen ist schwierig und erfordert oft manuellen Aufwand von Experten (SMEs). Um die Arbeitsbelastung der internen SMEs zu reduzieren, erstellen Unternehmen oft Listen mit häufig gestellten Fragen (FAQs), um die Benutzer zu unterstützen. Dieses Beispiel zeigt, wie verschiedene effektive Machine Learning-Methoden verwendet werden können, um offene Abfragen bereits vorhandenen, häufig gestellten Frage/Antwort-Paaren zuzuordnen. Dieses Beispiel zeigt einen einfachen Entwicklungsprozess für die Erstellung einer Lösung, die Azure Machine Learning Workbench verwendet. 
 
@@ -162,4 +160,3 @@ Einige der wichtigsten Highlights dieses Beispiels sind:
 Timothy J. Hazen, Fred Richardson, [_Modeling Multiword Phrases with Constrained Phrases Tree for Improved Topic Modeling of Conversational Speech (Modellieren von Mehr-Wort-Ausdrücken mit eingeschränkter Ausdrucksstruktur für verbesserte Themenmodellierung bei natürlicher Sprache)_](http://people.csail.mit.edu/hazen/publications/Hazen-SLT-2012.pdf). Spoken Language Technology Workshop (SLT), 2012 IEEE. IEEE, 2012.
 
 Timothy J. Hazen, [_MCE Training Techniques for Topic Identification of Spoken Audio Documents (MCE-Trainingsmethoden zu Themenidentifikation gesprochener Audiodokumente)_](http://ieeexplore.ieee.org/abstract/document/5742980/) in IEEE Transactions on Audio, Speech, and Language Processing, vol. 19, no. 8, ff. 2451-2460, Nov. 2011.
-

@@ -15,14 +15,12 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 68788efffd27edf2813cf455490b651c2c7106a8
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric
 Dieses Tutorial ist der vierte Teil einer Serie. Es durchläuft die Schritte, um die Überwachung und Diagnose für eine ASP.NET Core-Anwendung einzurichten, die auf einem Service Fabric-Cluster mithilfe von Application Insights ausgeführt wird. Aus der Anwendung, die im ersten Teil des Tutorials erstellt wurde ([Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)), werden Telemetriedaten gesammelt. 
 
@@ -44,7 +42,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 - Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Installieren Sie Visual Studio 2017](https://www.visualstudio.com/) und die Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
-- [Installieren Sie das Service Fabric SDK](service-fabric-get-started.md).
+- [Installieren Sie das Service Fabric-SDK](service-fabric-get-started.md).
 
 ## <a name="download-the-voting-sample-application"></a>Laden Sie die Beispielanwendung „Voting“ herunter.
 Falls Sie die Beispielanwendung „Voting“ aus [Teil 1 dieser Tutorialreihe](service-fabric-tutorial-create-dotnet-app.md) nicht erstellt haben, können Sie sie herunterladen. Führen Sie in einem Befehlsfenster oder -terminal den folgenden Befehl aus, um das Beispielrepository für die App auf Ihren lokalen Computer zu klonen.
@@ -238,4 +236,3 @@ Da Sie nun die Einrichtung der Überwachung und Diagnose für Ihre ASP.NET-Anwen
 - [Explore monitoring and diagnostics in Service Fabric (Erkunden der Überwachung und Diagnose in Service Fabric)](service-fabric-diagnostics-overview.md)
 - [Service Fabric event analysis with Application Insights (Service Fabric-Ereignisanalyse mit Application Insights)](service-fabric-diagnostics-event-analysis-appinsights.md)
 - Weitere Informationen zu Application Insights finden Sie unter [Application Insights Documentation (Dokumentation zu Application Insights)](https://docs.microsoft.com/en-us/azure/application-insights/)
-

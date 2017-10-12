@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 312a66544a5e64daa86b4902b57d4050f1f66af5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-frame-authorization--mitigations"></a>Sicherheitsrahmen: Autorisierung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Computer-Vertrauensstellungsgrenze** | <ul><li>[Stellen Sie sicher, dass geeignete ACLs konfiguriert sind, um nicht autorisierten Zugriff auf Daten auf dem Gerät zu beschränken.](#acl-restricted-access)</li><li>[Stellen Sie sicher, dass sensible benutzerspezifische Anwendungsinhalte im Benutzerprofilverzeichnis gespeichert werden.](#sensitive-directory)</li><li>[Stellen Sie sicher, dass die bereitgestellten Anwendungen mit geringstmöglichen Berechtigungen ausgeführt werden.](#deployed-privileges)</li></ul> |
-| **Webanwendung** | <ul><li>[Erzwingen Sie bei der Verarbeitung von Geschäftslogikflows die Einhaltung einer sequenziellen Reihenfolge.](#sequential-logic)</li><li>[Implementieren Sie einen Ratenbegrenzungsmechanismus, um Enumerationen zu verhindern.](#rate-enumeration)</li><li>[Stellen Sie sicher, dass eine geeignete Autorisierung eingerichtet ist und dass das Prinzip der geringstmöglichen Berechtigungen angewendet wird.](#principle-least-privilege)</li><li>[Geschäftslogik und Entscheidungen hinsichtlich der Ressourcenzugriffsautorisierung dürfen nicht auf eingehenden Anforderungsparametern basieren.](#logic-request-parameters)</li><li>[Stellen Sie sicher, dass Inhalte und Ressourcen nicht aufzählbar sind und dass auf sie nicht mittels Forceful Browsing zugegriffen werden kann.](#enumerable-browsing)</li></ul> |
+| **Web Application** | <ul><li>[Erzwingen Sie bei der Verarbeitung von Geschäftslogikflows die Einhaltung einer sequenziellen Reihenfolge.](#sequential-logic)</li><li>[Implementieren Sie einen Ratenbegrenzungsmechanismus, um Enumerationen zu verhindern.](#rate-enumeration)</li><li>[Stellen Sie sicher, dass eine geeignete Autorisierung eingerichtet ist und dass das Prinzip der geringstmöglichen Berechtigungen angewendet wird.](#principle-least-privilege)</li><li>[Geschäftslogik und Entscheidungen hinsichtlich der Ressourcenzugriffsautorisierung dürfen nicht auf eingehenden Anforderungsparametern basieren.](#logic-request-parameters)</li><li>[Stellen Sie sicher, dass Inhalte und Ressourcen nicht aufzählbar sind und dass auf sie nicht mittels Forceful Browsing zugegriffen werden kann.](#enumerable-browsing)</li></ul> |
 | **Datenbank** | <ul><li>[Stellen Sie sicher, dass beim Herstellen einer Verbindung mit dem Datenbankserver Konten mit geringstmöglichen Berechtigungen verwendet werden.](#privileged-server)</li><li>[Implementieren Sie Sicherheit auf Zeilenebene (Row Level Security, RLS), um zu verhindern, dass Mandanten auf Daten anderer Mandanten zugreifen.](#rls-tenants)</li><li>[Die Rolle „SysAdmin“ darf nur gültige, erforderliche Benutzer enthalten.](#sysadmin-users)</li></ul> |
 | **IoT-Cloudgateway** | <ul><li>[Verwenden Sie beim Herstellen einer Verbindung mit dem Cloudgateway Token mit geringstmöglichen Berechtigungen.](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Verwenden Sie einen auf Sendeberechtigungen beschränkten SAS-Schlüssel, um Gerätetoken zu generieren.](#sendonly-sas)</li><li>[Verwenden Sie keine Zugriffstoken, die direkten Zugriff auf den Event Hub ermöglichen.](#access-tokens-hub)</li><li>[Verwenden Sie beim Herstellen einer Verbindung mit dem Event Hub SAS-Schlüssel, die über die erforderlichen Mindestberechtigungen verfügen.](#sas-minimum-permissions)</li></ul> |

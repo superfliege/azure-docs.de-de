@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 7c1f235343074ec11c635097f2b094a10f3fe781
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="policies-in-azure-api-management"></a>Richtlinien in Azure API Management
 Richtlinien sind ein umfassendes Werkzeug in Azure API Management, mit dem Anbieter das Verhalten der API über eine Konfiguration verändern können. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Häufig verwendete Anweisungen sind z. B. Formatumwandlungen von XML nach JSON und Aufrufbeschränkungen, um die Anzahl eingehender Aufrufe von einem Entwickler zu beschränken. Viele weitere Richtlinien sind vorkonfiguriert verfügbar.
@@ -29,7 +29,7 @@ Richtlinien werden im Gateway, das sich zwischen API-Consumer und der verwaltete
 
 Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung][Control flow] und [Variable festlegen][Set variable], basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien][Advanced policies] und [Richtlinienausdrücke][Policy expressions].
 
-## <a name="scopes"> </a>Konfigurieren von Richtlinien
+## <a name="scopes"></a>Konfigurieren von Richtlinien
 Richtlinien können entweder global oder im Geltungsbereich eines [Produkts][Product], einer [API][API] oder eines [Vorgangs][Operation] konfiguriert werden. Um Richtlinien zu konfigurieren, navigieren Sie im Herausgeberportal zum Richtlinien-Editor.
 
 ![Menü "Richtlinien"][policies-menu]
@@ -86,7 +86,7 @@ Daraufhin wird ein XML-Ausschnitt in das `inbound` -Element eingefügt, der Anwe
 
 Konfigurieren Sie die Anweisungen für die Richtlinie, und klicken Sie auf **Speichern**. Daraufhin werden die Änderungen sofort an das API Management-Gateway weitergeleitet.
 
-## <a name="sections"> </a>Grundlegendes zur Richtlinienkonfiguration
+## <a name="sections"></a>Grundlegendes zur Richtlinienkonfiguration
 Richtlinien sind Serien von Anweisungen, die in der Reihenfolge für Anfrage und Antwort ausgeführt werden. Die Konfiguration ist entsprechend in `inbound`-, `backend`-, `outbound`- und `on-error`-Abschnitte unterteilt. Ein Beispiel hierfür sehen Sie in der folgenden Konfiguration.
 
 ```xml

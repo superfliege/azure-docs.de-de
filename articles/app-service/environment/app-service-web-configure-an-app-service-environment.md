@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 34fb3f15c03a3d3ef5f0a27081539bf0a6d19c5f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurieren einer App Service-Umgebung v1
 
@@ -161,7 +160,7 @@ Um den Skalierungsvorgang auf dem Blatt „App Service-Umgebung“ zu verwenden,
 
 ![Benutzeroberfläche „Skalieren“][6]
 
-Wenn Sie die Funktionen für die manuelle oder die automatische Skalierung in einem bestimmten Ressourcenpool verwenden möchten, wechseln Sie zu **Einstellungen** > **Front-End-Pool** / **Workerpools**. Öffnen Sie anschließend den Pool, den Sie ändern möchten. Wählen Sie **Einstellungen** > **Horizontal hochskalieren** bzw. **Einstellungen** > **Zentral hochskalieren**. Auf dem Blatt **Horizontal hochskalieren** können Sie die Anzahl von Instanzen steuern. **Zentral hochskalieren** ermöglicht die Festlegung der Ressourcengröße.  
+Wenn Sie die Funktionen für die manuelle oder die automatische Skalierung in einem bestimmten Ressourcenpool verwenden möchten, wechseln Sie zu **Einstellungen** > **Front-End-Pool** /  **Workerpools**. Öffnen Sie anschließend den Pool, den Sie ändern möchten. Wählen Sie **Einstellungen** > **Horizontal hochskalieren** bzw. **Einstellungen** > **Zentral hochskalieren**. Auf dem Blatt **Horizontal hochskalieren** können Sie die Anzahl von Instanzen steuern. **Zentral hochskalieren** ermöglicht die Festlegung der Ressourcengröße.  
 
 ![Benutzeroberfläche „Skalierungseinstellungen“][7]
 
@@ -218,4 +217,3 @@ Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
 [ILBASE]: app-service-environment-with-internal-load-balancer.md
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 3/1/2017
 ms.author: victorh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 41c9ee37c43d4ad41c51ea2ed023d3b47d460dd1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Speicherkonten in Azure Stack
 Speicherkonten enthalten Blob-und Tabellenspeicherdienste und den eindeutigen Namespace für Ihre Speicherdatenobjekte. Standardmäßig sind die Daten in Ihrem Konto nur für Sie als Speicherkontobesitzer verfügbar.
@@ -40,4 +39,3 @@ Speicherkonten enthalten Blob-und Tabellenspeicherdienste und den eindeutigen Na
 [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md)
 
 [Herunterladen des Azure Stack-Überprüfungshandbuchs für mit Azure konsistentem Speicher](http://aka.ms/azurestacktp1doc)
-

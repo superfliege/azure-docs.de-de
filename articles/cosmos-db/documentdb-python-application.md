@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: c62520846ebdc102204e42b50e52383167c6aa14
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Erstellen einer Python Flask-Webanwendung mithilfe von Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -403,4 +402,3 @@ Weitere Python Flask-Tutorials finden Sie unter [The Flask Mega-Tutorial, Part I
 [3]: https://www.microsoft.com/download/details.aspx?id=44266
 [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 [Azure portal]: http://portal.azure.com
-

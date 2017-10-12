@@ -16,14 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 95962833f853886476630d703c8959bad1852e50
-ms.contentlocale: de-de
-ms.lasthandoff: 03/15/2017
-
+ms.openlocfilehash: 90439d792eac618671a9de9938302d8930c986d8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Bereitstellen einer Load Balancer-Lösung mit Internetzugriff über IPv6 mithilfe einer Vorlage
 
 > [!div class="op_single_selector"]
@@ -56,43 +54,43 @@ In diesem Artikel wird eine Vorlage verwendet, die im Katalog mit [Azure-Schnell
 1. Öffnen Sie das Azure-Portal, und melden Sie sich mit einem Konto an, das über Berechtigungen zum Erstellen von virtuellen Computern und Netzwerkressourcen in einem Azure-Abonnement verfügt. Wenn Sie keine vorhandenen Ressourcen verwenden, benötigt das Konto darüber hinaus die Berechtigung zum Erstellen einer Ressourcengruppe und eines Speicherkontos.
 2. Klicken Sie im Menü auf „+Neu“, und geben Sie „Vorlage“ in das Suchfeld ein. Wählen Sie in den Suchergebnissen „Vorlagenbereitstellung“ aus.
 
-    ![LB-IPv6-Portal – Schritt&2;](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![LB-IPv6-Portal – Schritt 2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. Klicken Sie auf dem Blatt „Alles“ auf „Vorlagenbereitstellung“.
 
-    ![LB-IPv6-Portal – Schritt&3;](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![LB-IPv6-Portal – Schritt 3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. Klicken Sie auf „Erstellen“.
 
-    ![LB-IPv6-Portal – Schritt&4;](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![LB-IPv6-Portal – Schritt 4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. Klicken Sie auf „Vorlage bearbeiten“. Löschen Sie den vorhandenen Inhalt, kopieren Sie den gesamten Inhalt der Vorlagendatei (einschließlich der Klammern { } am Anfang und Ende), und fügen Sie ihn ein. Klicken Sie dann auf „Speichern“.
 
     > [!NOTE]
     > Wenn Sie Microsoft Internet Explorer verwenden, wird beim Einfügen ein Dialogfeld angezeigt, mit dem Sie aufgefordert werden, Zugriff auf die Windows-Zwischenablage zuzulassen. Klicken Sie auf „Zugriff zulassen“.
 
-    ![LB-IPv6-Portal – Schritt&5;](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![LB-IPv6-Portal – Schritt 5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. Klicken Sie auf „Parameter bearbeiten“. Geben Sie auf dem Blatt „Parameter“ die Werte gemäß der Anleitung im Abschnitt mit Vorlagenparametern an, und klicken Sie auf „Speichern“, um das Blatt „Parameter“ zu schließen. Wählen Sie auf dem Blatt „Benutzerdefinierte Bereitstellung“ Ihr Abonnement und eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine. Wenn Sie eine Ressourcengruppe erstellen, wählen Sie einen Ort für die Ressourcengruppe aus. Klicken Sie anschließend auf **Rechtliche Bedingungen** und dann für die rechtlichen Bedingungen auf **Kaufen**. Azure beginnt mit der Bereitstellung der Ressourcen. Es dauert einige Minuten, alle Ressourcen bereitzustellen.
 
-    ![LB-IPv6-Portal – Schritt&6;](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![LB-IPv6-Portal – Schritt 6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     Weitere Informationen zu diesen Parametern finden Sie im Abschnitt [Vorlagenparameter und -variablen](#template-parameters-and-variables) weiter unten in diesem Artikel.
 
 7. Um die von der Vorlage erstellten Ressourcen anzuzeigen, klicken Sie auf „Durchsuchen“, scrollen Sie in der Liste nach unten, bis „Ressourcengruppen“ angezeigt wird, und klicken Sie darauf.
 
-    ![LB-IPv6-Portal – Schritt&7;](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
+    ![LB-IPv6-Portal – Schritt 7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
 8. Klicken Sie auf dem Blatt „Ressourcengruppen“ auf den Namen der Ressourcengruppe, die Sie in Schritt 6 angegeben haben. Eine Liste aller Ressourcen, die bereitgestellt wurden, wird angezeigt. Wenn alles erfolgreich verlaufen ist, sollte unter „Letzte Bereitstellung“ der Status „Erfolgreich“ angezeigt werden. Ist dies nicht der Fall, stellen Sie sicher, dass das verwendete Konto über Berechtigungen zum Erstellen der erforderlichen Ressourcen verfügt.
 
-    ![LB-IPv6-Portal – Schritt&8;](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![LB-IPv6-Portal – Schritt 8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > Wenn Sie Ihre Ressourcengruppen sofort nach Abschluss von Schritt 6 durchsuchen, wird unter „Letzte Bereitstellung“ der Status „Wird bereitgestellt“ angezeigt, während die Ressourcen bereitgestellt werden.
 
 9. Klicken Sie in der Liste der Ressourcen auf „myIPv6PublicIP“. Sie sehen, dass sie als IP-Adresse eine IPv6-Adresse aufweist und dass der DNS-Name der Wert ist, den Sie für den Parameter „dnsNameforIPv6LbIP“ in Schritt 6 angegeben haben. Diese Ressource ist die öffentliche IPv6-Adresse und der Hostname, auf den Internetclients zugreifen können.
 
-    ![LB-IPv6-Portal – Schritt&9;](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![LB-IPv6-Portal – Schritt 9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>Überprüfen der Konnektivität
 
@@ -136,4 +134,3 @@ Die in diesem Artikel verwendete Beispielvorlage enthält die folgenden Variable
 | lbName |Geben Sie den Namen des Load Balancers an. Dieser Name wird im Portal angezeigt oder verwendet, wenn darauf mit einem CLI- oder PowerShell-Befehl verwiesen wird. |
 
 Die restlichen Variablen in der Vorlage enthalten abgeleitete Werte, die zugewiesen werden, wenn Azure die Ressourcen erstellt. Ändern Sie diese Variablen nicht.
-

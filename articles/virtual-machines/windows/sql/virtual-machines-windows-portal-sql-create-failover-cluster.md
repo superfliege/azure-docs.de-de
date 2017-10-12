@@ -16,14 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2017
 ms.author: mikeray
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 1bbfd7cc63d534d7f9c360ad4afd05bd4e225725
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
 In diesem Artikel wird beschrieben, wie Sie eine SQL Server-Failoverclusterinstanz (FCI) unter dem Resource Manager-Modell auf virtuellen Azure-Computern erstellen. Bei dieser Lösung wird [„Direkte Speicherplätze“ in Windows Server 2016 Datacenter Edition\(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) als softwarebasiertes virtuelles SAN verwendet, mit dem der Speicher (Datenträger für Daten) zwischen den Knoten (Azure-VMs) in einem Windows-Cluster synchronisiert wird. S2D ist eine Neuerung in Windows Server 2016.
@@ -495,4 +493,3 @@ Auf virtuellen Azure-Computern wird Microsoft Distributed Transaction Coordinato
 [„Direkte Speicherplätze“ in Windows Server 2016](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
 
 [SQL Server support for S2D](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/) (SQL Server-Unterstützung für S2D)
-

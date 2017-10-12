@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 09/16/2017
 ms.author: snmuvva
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: aeeb6c2fb87e6c19991ef243ee7230f4e8f4e251
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="near-real-time-metric-alerts-preview"></a>Near Real-Time Metric Alerts (Preview)
 Azure Monitor unterstützt jetzt einen neuen Typ von Metrikwarnungen, die als „Near Real-Time Metric Alerts (Preview)“ bezeichnet werden. Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
 Diese Warnungen unterscheiden sich in verschiedener Hinsicht von regulären Metrikwarnungen.
@@ -74,7 +72,7 @@ Zurzeit können Real-Time Metric Alerts nur über das Azure Portal erstellt werd
 4. **Benennen** Sie Ihre Warnungsregel, und wählen Sie eine **Beschreibung** aus, die auch in Benachrichtigungs-E-Mails angezeigt wird.
 5. Wählen Sie die **Metrik** aus, die Sie überwachen möchten, und wählen Sie dann je einen Wert für die **Bedingung**, die **Zeitaggregation** und den **Schwellenwert** für die Metrik aus. Wählen Sie optional eine weitere **Metrik** aus, die Sie überwachen möchten, und wählen Sie dann je einen Wert für die **Bedingung**, die **Zeitaggregation** und den **Schwellenwert** für die zweite Metrik aus. 
 
-    ![Hinzufügen von Near Real-Time Metrics Alert1](./media/monitoring-near-real-time-metric-alerts/AddNRTAlert1.png) ![Hinzufügen von Near Real-Time Metrics Alert2](./media/monitoring-near-real-time-metric-alerts/AddNRTAlert2.png)
+    ![Hinzufügen von Near Real-Time Metrics Alert1](./media/monitoring-near-real-time-metric-alerts/AddNRTAlert1.png)![Hinzufügen von Near Real-Time Metrics Alert2](./media/monitoring-near-real-time-metric-alerts/AddNRTAlert2.png)
 6. Wählen Sie den **Zeitraum** aus, für den die Metrikregeln erfüllt sein müssen, bevor die Warnung ausgelöst wird. Wenn Sie z. B. den Zeitraum „Innerhalb der letzten fünf Minuten“ auswählen und die Warnung nach einer CPU-Auslastung von über 80 % (und NetworkIn über 500 MB) sucht, wird die Warnung ausgelöst, wenn die CPU-Auslastung 5 Minuten lang durchgängig über 80 % lag. Nachdem der erste Trigger ausgelöst wurde, erfolgt ein erneutes Auslösen, wenn die CPU-Auslastung 5 Minuten unter 80% bleibt. Die Warnung wird gemäß der **Auswertungshäufigkeit** ausgewertet.
 
 
@@ -95,7 +93,6 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 * ein Diagramm einblenden, das den Schwellenwert der Metrik und die tatsächlichen Werte vom Vortag zeigt.
 * bearbeiten oder löschen.
 * sie **deaktivieren** oder **aktivieren**, wenn Sie den Empfang von Benachrichtigungen zu dieser Warnung vorübergehend beenden oder fortsetzen möchten.
-
 
 
 

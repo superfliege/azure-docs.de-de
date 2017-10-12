@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2ef4385b3307c58d97012c3d0a732da5fbf82ea8
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Aufrufen von gespeicherten Prozeduren aus der Kopieraktivität in Azure Data Factory
 Beim Kopieren von Daten nach [SQL Server](data-factory-sqlserver-connector.md) oder [Azure SQL-Datenbank](data-factory-azure-sql-connector.md) können Sie die **SqlSink** in der Kopieraktivität für das Aufrufen einer gespeicherten Prozedur konfigurieren. Es kann sinnvoll sein, eventuelle zusätzliche Verarbeitungsschritte (Zusammenführen von Spalten, Nachschlagen von Werten, Einfügungen in mehrere Tabellen zugleich usw.), die vor dem Einfügen von Daten in die Zieltabelle erforderlich sind, von der gespeicherten Prozedur ausführen zu lassen. Diese Funktion nutzt [Tabellenwertparameter](https://msdn.microsoft.com/library/bb675163.aspx). 
 
@@ -94,4 +92,3 @@ Gehen Sie die folgenden Connector-Artikel durch, um vollständige JSON-Beispiele
 
 - [Azure SQL-Datenbank](data-factory-azure-sql-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)
-

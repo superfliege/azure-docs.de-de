@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: chkuhtz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: d9e88b859020be2a96a57a01e5624052ed134b64
-ms.contentlocale: de-de
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 1045a18f5fd9739a6028198deea129e9e621f127
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="multiple-vips-for-azure-load-balancer"></a>Mehrere VIPs für Azure Load Balancer
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
@@ -139,4 +137,3 @@ Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigu
 * Bei der Floating IP-Regel muss die Anwendung die DIP für ausgehende Datenflüsse verwenden. Wenn Ihre Anwendung an die VIP-Adresse gebunden ist, die an der Loopback-Schnittstelle im Gastbetriebssystem konfiguriert ist, ist SNAT nicht verfügbar, um den ausgehenden Datenfluss umzuschreiben, und der Datenfluss schlägt fehl.
 * Öffentliche IP-Adressen haben Auswirkungen auf die Abrechnung. Weitere Informationen finden Sie unter [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * Es gelten Grenzwerte für Abonnements. Weitere Informationen finden Sie unter [Einschränkungen für Dienste](../azure-subscription-service-limits.md#networking-limits) .
-

@@ -16,10 +16,10 @@ ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.custom: mvc
 ms.openlocfilehash: 5f0b470bd46cfeaf00b3092dbe9db507ed50f622
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-a-spring-boot-application-on-linux-in-the-azure-container-service"></a>Bereitstellen einer Spring Boot-Anwendung unter Linux in Azure Container Service
 
@@ -268,8 +268,8 @@ The embedded Tomcat server in the sample Spring Boot application is configured t
 
 Weitere Informationen zur Verwendung von Spring Boot-Anwendungen in Azure finden Sie in den folgenden Artikeln:
 
-* [Bereitstellen einer Spring Boot-Anwendung in Azure App Service](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
-* [Bereitstellen einer Spring Boot-Anwendung in einem Kubernetes-Cluster in Azure Container Service](container-service-deploy-spring-boot-app-on-kubernetes.md)
+* [Bereitstellen von Spring Boot-Anwendungen in Azure App Service](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
+* [Deploy a Spring Boot Application on a Kubernetes Cluster in the Azure Container Service](container-service-deploy-spring-boot-app-on-kubernetes.md) (Bereitstellen einer Spring Boot-Anwendung in einem Kubernetes-Cluster in Azure Container Service)
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] und in den [Java-Tools für Visual Studio Team Services].
 

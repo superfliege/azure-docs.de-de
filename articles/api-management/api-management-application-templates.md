@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: df71d6d36949f457ad95576e37ae3da2fef7d4d7
-ms.contentlocale: de-de
-ms.lasthandoff: 01/12/2017
-
+ms.openlocfilehash: 40a4d159afff4db78e27f89b448e21b1d94cd378
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-templates-in-azure-api-management"></a>Anwendungsvorlagen in Azure API Management
 Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des Entwicklerportals mit einem Satz von Vorlagen anzupassen, die den Inhalt konfigurieren. Unter Verwendung dieser Vorlagen können Sie die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und dem Editor Ihrer Wahl (beispielsweise [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) sowie verschiedenen lokalisierten [Zeichenfolgenressourcen](api-management-template-resources.md#strings), [Glyph-Ressourcen](api-management-template-resources.md#glyphs) und [Seitensteuerelementen](api-management-page-controls.md) an Ihre Bedürfnisse anpassen.  
@@ -221,4 +220,4 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Anpassen des Azure API Management-Entwicklerportals mithilfe von Vorlagen](api-management-developer-portal-templates.md).
+Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](api-management-developer-portal-templates.md).

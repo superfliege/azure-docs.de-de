@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f740633230b2479f77d7d09a31dbbf3f72ffb174
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Erste Schritte zum Erstellen eines internen Load Balancers (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle
 
 > [!div class="op_single_selector"]
@@ -181,4 +179,3 @@ Weitere Informationen finden Sie unter `azure vm endpoint --help` .
 [Konfigurieren eines Load Balancer-Verteilungsmodus mithilfe der Quell-IP-Affinität](load-balancer-distribution-mode.md)
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
-

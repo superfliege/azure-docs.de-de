@@ -7,14 +7,12 @@ ms.author: xiaofmao
 ms.date: 9/25/2017
 ms.topic: get-started-article
 ms.service: azure-stack
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 5b2898c64c0f1b5d804e63fa4e4e1218fa7a672c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Erste Schritte mit Azure Stack-Speicher-Entwicklungstools
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*

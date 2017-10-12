@@ -1,5 +1,5 @@
 ---
-title: Was ist Azure Machine Learning? | Microsoft-Dokumentation
+title: Was ist Azure Machine Learning? | Microsoft Docs
 description: "Enthält eine Übersicht über Machine Learning-Experimentieren und die Modellverwaltung. Hierbei handelt es sich um eine integrierte End-to-End-Data Science-Lösung für Data Science-Profis, mit der erweiterte Analyseanwendungen für die Cloud entwickelt und für Experimente genutzt und bereitgestellt werden."
 services: machine-learning
 author: haining
@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: get-started-article
 ms.date: 09/21/2017
+ms.openlocfilehash: 3bf9227a7ee432f036c57dd9d1c3807c7a867f3f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c4919fb679eeb4d25eb0066b9bf617b057d44354
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
 Azure Machine Learning ist eine integrierte End-to-End-Lösung für Data Science und Advanced Analytics. Data Scientists können sie nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -179,7 +177,7 @@ Nutzen Sie Microsoft Machine Learning Server für folgende Zwecke:
 - Bedarfsabhängiges Verteilen von R- und Python-Training in einem Hadoop- oder Spark-Cluster
 
 ### <a name="data-science-virtual-machine"></a>Virtueller Computer für Data Science
-Der [virtuelle Computer für Data Science (DSVM)](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) ist ein benutzerdefiniertes VM-Image in der Microsoft Azure-Cloud, das speziell für Data Science konfiguriert wurde. Es hat viele beliebte Data Science und andere Tools vorinstalliert und vorkonfiguriert, damit Sie sofort intelligente Anwendungen für die erweiterte Analyse erstellen können. Er ist unter Windows Server und unter Linux verfügbar. Wir bieten eine Windows-Edition von DSVM für Windows Server 2016 und 2012. Wir bieten eine Linux-Edition des DSVM in Linux-Distributionen auf der Basis von Ubuntu 16.04 LTS und OpenLogic 7.2 CentOS an. 
+Der [virtuelle Computer für Data Science (DSVM)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) ist ein benutzerdefiniertes VM-Image in der Microsoft Azure-Cloud, das speziell für Data Science konfiguriert wurde. Es hat viele beliebte Data Science und andere Tools vorinstalliert und vorkonfiguriert, damit Sie sofort intelligente Anwendungen für die erweiterte Analyse erstellen können. Er ist unter Windows Server und unter Linux verfügbar. Wir bieten eine Windows-Edition von DSVM für Windows Server 2016 und 2012. Wir bieten eine Linux-Edition des DSVM in Linux-Distributionen auf der Basis von Ubuntu 16.04 LTS und OpenLogic 7.2 CentOS an. 
 
 Verwenden Sie den virtuellen Computer für Data Science, wenn Sie Ihre Aufträge auf einem einzelnen Knoten ausführen oder hosten müssen. Eine anderer Grund für die Nutzung kann das zentrale Hochskalieren eines einzelnen Computers per Remotezugriff sein. Der virtuelle Data Science-Computer wird als Ziel für Azure Machine Learning-Experimentieren und für die Azure Machine Learning-Modellverwaltung unterstützt. 
 
@@ -219,4 +217,3 @@ Microsoft Cognitive Services kann verwendet werden, um Apps übergreifend für G
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Install and create Azure Machine Learning](quickstart-installation.md) (Installieren und Erstellen von Azure Machine Learning)
-

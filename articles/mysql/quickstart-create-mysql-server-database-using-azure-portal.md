@@ -10,14 +10,12 @@ ms.service: mysql-database
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 08/15/2017
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: 46aee37a00a923addc08dd185ce0326a64ccb48c
-ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Erstellen eines Servers für Azure-Datenbank für MySQL über das Azure-Portal
 Azure-Datenbank für MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal in etwa fünf Minuten einen Server für Azure-Datenbank für MySQL erstellen.  
 
@@ -50,7 +48,7 @@ Führen Sie die folgenden Schritte aus, um einen Server für Azure-Datenbank fü
     Standort | *Die Region, die Ihren Benutzern am nächsten liegt*| Der Standort, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten ist.
     Version | *Die neueste Version*| Die neueste Version (es sei denn, Sie haben besondere Anforderungen, die eine andere Version erfordern).
     Tarif  | **Basic**, **50 Compute-Einheiten**, **50 GB** | Dienstebene und Leistungsstufe für Ihre neue Datenbank. Wählen Sie auf der oberen Registerkarte den Tarif **Basic** aus. Wählen Sie das linke Ende des Schiebereglers **Compute-Einheiten** aus, um für diese Schnellstartanleitung den kleinstmöglichen Wert festzulegen. Wählen Sie **OK** aus, um die Tarifauswahl zu speichern. Weitere Informationen erhalten Sie auf dem folgenden Screenshot.
-    An Dashboard anheften | Aktivieren | Ermöglicht die komfortable Nachverfolgung Ihres Servers auf der Titelseite des Dashboards im Azure-Portal.
+    An Dashboard anheften | Prüfen | Ermöglicht die komfortable Nachverfolgung Ihres Servers auf der Titelseite des Dashboards im Azure-Portal.
 
     > [!IMPORTANT]
     > Der hier angegebene Benutzername und das Kennwort für den Serveradministrator werden im weiteren Verlauf dieser Schnellstartanleitung für die Anmeldung beim Server und bei den dazugehörigen Datenbanken benötigt. Behalten Sie diese Angaben im Kopf, oder notieren Sie sie zur späteren Verwendung.
@@ -229,5 +227,4 @@ Wenn Sie nur den neu erstellten Server löschen möchten, gehen Sie wie folgt vo
 
 > [!div class="nextstepaction"]
 > [Entwerfen Sie Ihre erste Azure-Datenbank für MySQL-Datenbank](./tutorial-design-database-using-portal.md)
-
 

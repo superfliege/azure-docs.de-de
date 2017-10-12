@@ -16,14 +16,12 @@ ms.workload: identity
 ms.date: 09/25/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: be3631db20ae744965f9f6677c536ade45e34c49
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="controls-in-azure-active-directory-conditional-access"></a>Steuerelemente beim bedingten Zugriff mit Azure Active Directory 
 
 Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. In einer Richtlinie für den bedingten Zugriff definieren Sie die Antwort („do this“) auf eine bestimmte Bedingung („when this happens“). Im Kontext des bedingten Zugriffs gilt: 
@@ -168,4 +166,3 @@ Weitere Informationen zum Anfordern von eingeschränktem Zugriff mit SharePoint 
 - Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, helfen Ihnen die Informationen unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md) weiter.
 
 - Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md) nach. 
-

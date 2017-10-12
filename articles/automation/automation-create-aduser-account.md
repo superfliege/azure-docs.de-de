@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2017
 ms.author: magoedte
+ms.openlocfilehash: 8f24e6e57c2eec5950c8c12d9f4383ce11cf5c11
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 4eaa3e36ededddeb5268ec4f49b9daee2f824cee
-ms.contentlocale: de-de
-ms.lasthandoff: 08/15/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Authentifizieren von Runbooks mit klassischer Azure-Bereitstellung und Resource Manager-Bereitstellung
 In diesem Artikel werden die Schritte beschrieben, die Sie zum Konfigurieren eines Azure AD-Benutzerkontos für Azure Automation-Runbooks ausführen müssen, die für Ressourcen des klassischen Azure-Bereitstellungsmodells oder Azure Resource Manager-Bereitstellungsmodells ausgeführt werden.  Diese Authentifizierungsidentität wird für Azure Resource Manager-basierte Runbooks zwar weiterhin unterstützt, aber die empfohlene Methode ist die Verwendung eines ausführenden Azure-Kontos.       
@@ -91,5 +90,4 @@ Diese Zeilen sollten nach jedem [Prüfpunkt](http://technet.microsoft.com/librar
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich im Artikel [Azure Automation-Runbooktypen](automation-runbook-types.md) über die unterschiedlichen Runbooktypen und die Schritte zum Erstellen Ihrer eigenen Runbooks.
-
 

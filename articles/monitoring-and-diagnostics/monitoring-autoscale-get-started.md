@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: rajram
+ms.openlocfilehash: 84ce3af2bef1e3204ad91567d155d7cbf90e9c7e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 68cb624b3ef4a77e7cfc949979e0b1949c2e5535
-ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -139,5 +138,4 @@ Sie können immer zur automatischen Skalierung zurückkehren, indem Sie auf **Au
 [12]: ./media/monitoring-autoscale-get-started/scale-definition-json.png
 [13]: ./media/monitoring-autoscale-get-started/disable-autoscale.png
 [14]: ./media/monitoring-autoscale-get-started/set-manualscale.png
-
 

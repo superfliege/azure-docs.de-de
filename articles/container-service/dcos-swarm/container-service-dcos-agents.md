@@ -17,10 +17,10 @@ ms.date: 01/04/2017
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: da4a196b1a73c78dfff7d8310edcc349b8d10665
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="dcos-agent-pools-for-azure-container-service"></a>DC/OS-Agent-Pools für Azure Container Service
 DC/OS-Cluster in Azure Container Service enthalten die Agent-Knoten in zwei Pools, einem öffentlichen und einem privaten Pool. Die Bereitstellung einer Anwendung ist in beiden Pools möglich, der Pool hat jedoch Auswirkungen auf den Zugriff zwischen Computern in Ihrem Containerdienst. Die Computer können über Internetzugriff (öffentlich) verfügen oder nur intern (privat) verwendet werden. Dieser Artikel geht kurz darauf ein, warum ein öffentlicher und ein privater Pool zur Verfügung stehen.

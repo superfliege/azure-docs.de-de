@@ -16,10 +16,10 @@ ms.custom: reference
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 ms.openlocfilehash: 7a20cd8f3c2f304d12a49755dbe6e04f9b1d36df
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="language-elements"></a>Sprachelemente
 ## <a name="core-elements"></a>Kernelemente
@@ -59,11 +59,11 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="wildcard-characters-to-match"></a>Platzhalterzeichen für den Abgleich
 * [= (Gleich)](https://msdn.microsoft.com/library/ms175118.aspx)
-* [> (Größer als)](https://msdn.microsoft.com/library/ms178590.aspx)
-* [< (Kleiner als)](https://msdn.microsoft.com/library/ms179873.aspx)
-* [>= (Größer als oder gleich)](https://msdn.microsoft.com/library/ms181567.aspx)
-* [<= (Kleiner als oder gleich)](https://msdn.microsoft.com/library/ms174978.aspx)
-* [<> (Ungleich)](https://msdn.microsoft.com/library/ms176020.aspx)
+* [&gt; (Größer als)](https://msdn.microsoft.com/library/ms178590.aspx)
+* [&lt; (Kleiner als)](https://msdn.microsoft.com/library/ms179873.aspx)
+* [&gt;= (Größer als oder gleich)](https://msdn.microsoft.com/library/ms181567.aspx)
+* [&lt;= (Kleiner als oder gleich)](https://msdn.microsoft.com/library/ms174978.aspx)
+* [&lt;&gt; (Ungleich)](https://msdn.microsoft.com/library/ms176020.aspx)
 * [!= (Ungleich)](https://msdn.microsoft.com/library/ms190296.aspx)
 * [AND](https://msdn.microsoft.com/library/ms188372.aspx)
 * [BETWEEN](https://msdn.microsoft.com/library/ms187922.aspx)
@@ -75,13 +75,13 @@ ms.lasthandoff: 07/11/2017
 * [OR](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>Bitweise Operatoren
-* [& (Bitweises AND)](https://msdn.microsoft.com/library/ms174965.aspx)
+* [&amp; (Bitweises AND)](https://msdn.microsoft.com/library/ms174965.aspx)
 * [| (Bitweises OR)](https://msdn.microsoft.com/library/ms186714.aspx)
 * [^ (Bitweises exklusives OR)](https://msdn.microsoft.com/library/ms190277.aspx)
 * [~ (Bitweises NOT)](https://msdn.microsoft.com/library/ms173468.aspx)
 * [^= (Bitweises exklusives OR EQUALS)](https://msdn.microsoft.com/library/cc627413.aspx)
 * [| = (Bitweises OR EQUALS)](https://msdn.microsoft.com/library/cc627409.aspx)
-* [&= (Bitweises AND EQUALS)](https://msdn.microsoft.com/library/cc627427.aspx)
+* [&amp;= (Bitweises AND EQUALS)](https://msdn.microsoft.com/library/cc627427.aspx)
 
 ## <a name="functions"></a>Functions
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)

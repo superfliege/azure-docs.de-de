@@ -15,14 +15,12 @@ ms.date: 08/31/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: cf3058832ba656a1a18aea194bf4e5ce4e800e76
-ms.contentlocale: de-de
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Erstellen eines Skripts für die unbeaufsichtigte Installation für den Azure AD-Anwendungsproxyconnector
 
 In diesem Thema wird das Erstellen eines Windows PowerShell-Skripts erläutert, das eine unbeaufsichtigte Installation und Registrierung des Azure AD-Anwendungsproxyconnectors ermöglicht.
@@ -132,6 +130,5 @@ Es gibt zwei Methoden zum Registrieren des Connectors:
 * [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
 * [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
 * [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
-
 
 

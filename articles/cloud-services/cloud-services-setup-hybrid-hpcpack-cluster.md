@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: danlep
 ms.openlocfilehash: f6dc9657e64160be1e68a7356863b53131e9b3c3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>Einrichten eines HPC-Hybridclusters (High Performance Computing) mit Microsoft HPC Pack und bedarfsgesteuerten Azure-Computeknoten
 Nutzen Sie Microsoft HPC Pack 2012 R2 und Azure für die Einrichtung eines kleinen HPC-Hybridclusters (High Performance Computing). Der in diesem Artikel gezeigte Cluster besteht aus einem lokalen HPC Pack-Hauptknoten und verschiedenen Computeknoten, die Sie bei Bedarf in einem Azure-Clouddienst bereitstellen. Dann können Sie auf dem Hybrid-Cluster Rechenaufträge (Compute Jobs) ausführen.

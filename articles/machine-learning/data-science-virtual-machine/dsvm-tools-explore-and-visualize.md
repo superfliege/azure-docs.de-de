@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d8f0616f17dbaa02082492cc1c68f1d989ea5aae
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Auf der Data Science-VM verfügbare Tools zum Durchsuchen und Visualisieren von Daten
 
 Bei Data Science geht es unter anderem darum, Daten zu verstehen. Hierbei helfen Tools zum Durchsuchen und Visualisieren von Daten. Im Anschluss sind einige Tools aufgeführt, die zur Vereinfachung dieses wichtigen Schritts auf der DSVM zur Verfügung stehen. 
@@ -65,5 +63,4 @@ Bei Data Science geht es unter anderem darum, Daten zu verstehen. Hierbei helfen
 | Typische Verwendung      |  Datenvisualisierung und Dashboarderstellung   |
 | Verwendung/Ausführung      | Desktopverknüpfung (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
 | Verwandte Tools auf der DSVM      |   Visual Studio 2017, Visual Studio Code, Juno      |
-
 

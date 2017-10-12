@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/13/2017
 ms.author: magoedte; bwren
+ms.openlocfilehash: f1746f4f6706835d43edc171b03d4ececfa3560c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 00f0b370a05b29c44d0df8f7e9db115ff998b710
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connection-assets-in-azure-automation"></a>Verbindungsobjekte in Azure Automation
 
 Ein Automation-Verbindungsobjekt enthält die Informationen, die zur Verbindungsherstellung mit einem externen Dienst oder einer externen Anwendung aus einem Runbook oder einer DSC-Konfiguration erforderlich sind. Dies kann Informationen einschließen, die für die Authentifizierung erforderlich sind, beispielsweise ein Benutzername und ein Kennwort oder Verbindungsinformationen wie eine URL oder ein Port. Der Wert einer Verbindung liegt darin, dass alle Eigenschaften zur Verbindungsherstellung mit einer bestimmten Anwendung in einem Objekt gespeichert werden, statt mehrere Variablen zu erstellen. Der Benutzer kann die Werte für eine Verbindung an einem Ort bearbeiten, und Sie können den Namen einer Verbindung in einem einzelnen Parameter an ein Runbook oder eine DSC-Konfiguration übergeben. Auf die Eigenschaften für eine Verbindung kann im Runbook oder in der DSC-Konfiguration über die Aktivität **Get-AutomationConnection** zugegriffen werden. 
@@ -62,7 +60,7 @@ Mit der Funktion in der folgenden Tabelle wird auf Verbindungen in einem Python2
 | automationassets.get_automation_connection | Ruft eine Verbindung ab. Gibt ein Wörterbuch mit den Eigenschaften der Verbindung zurück. | 
 
 > [!NOTE] 
-> Sie müssen das Modul „automationassets“ oben im Python-Runbook importieren, um auf die Ressourcenfunktionen zugreifen zu können.
+> Sie müssen das Modul „automationassets“ oben im Python-Runbook importieren, um auf die Assetfunktionen zugreifen zu können.
 
 ## <a name="creating-a-new-connection"></a>Erstellen einer neuen Verbindung
 
@@ -161,4 +159,3 @@ Das folgende Beispiel zeigt die Authentifizierung mithilfe der Verbindung mit de
 - Lesen Sie [Verknüpfungen bei der grafischen Erstellung](automation-graphical-authoring-intro.md#links-and-workflow), um zu verstehen, wie Sie den Ablauf der Logik in Ihren Runbooks steuern können.  
 
 - Weitere Informationen zur Verwendung von PowerShell-Modulen in Azure Automation und bewährte Methoden zum Erstellen eigener PowerShell-Module, die als Integrationsmodule in Azure Automation verwendet werden können, finden Sie unter [Integrationsmodule](automation-integration-modules.md).  
-

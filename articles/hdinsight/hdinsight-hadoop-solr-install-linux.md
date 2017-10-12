@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: c7a911474d6fb90f45565c90a72bfd407898ceba
-ms.contentlocale: de-de
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Solr in HDInsight Hadoop-Clustern
 
@@ -329,4 +328,3 @@ Weitere Informationen zum Arbeiten mit Solr-Sicherungen und -Wiederherstellungen
 * [Installieren Sie Hue in HDInsight-Clustern.](hdinsight-hadoop-hue-linux.md) Verwenden Sie die Clusteranpassung, um Hue in HDInsight Hadoop-Clustern zu installieren. Bei Hue handelt es sich um einen Satz von Webanwendungen zur Interaktion mit einem Hadoop-Cluster.
 
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
-

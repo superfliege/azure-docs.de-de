@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 08/31/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: e1bc68426f93717dcf466652d2481b6ab1db2a18
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-web-app-for-containers"></a>Erstellen einer Node.js- und MongoDB-Web-App in Azure-Web-Apps für Container
 
@@ -42,7 +41,7 @@ Folgendes wird vermittelt:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-1. [Installation von Git](https://git-scm.com/)
+1. [Installieren Sie Git.](https://git-scm.com/)
 1. [Installieren von Node.js V6.0 oder höher und NPM](https://nodejs.org/)
 1. [Installieren von Gulp.js](http://gulpjs.com/) (erforderlich für [MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started))
 1. [Installieren und Ausführen von MongoDB Community Edition](https://docs.mongodb.com/manual/administration/install-community/) 
@@ -480,4 +479,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihrer Web-Ap
 
 > [!div class="nextstepaction"] 
 > [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](../app-service-web-tutorial-custom-domain.md)
-

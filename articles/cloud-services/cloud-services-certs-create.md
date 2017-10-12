@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 689977491e6df37e48536f59234bf4ddba6a1575
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Übersicht über Zertifikate für Azure Cloud Services
 Zertifikate werden in Azure für Clouddienste verwendet ([Dienstzertifikate](#what-are-service-certificates)) und für die Authentifizierung mit der Verwaltungs-API genutzt ([Verwaltungszertifikate](#what-are-management-certificates), wenn das klassische Azure-Portal und das nicht-klassische Azure-Portal verwendet wird). Dieses Thema bietet eine allgemeine Übersicht über beide Zertifikattypen sowie über deren [Erstellung](#create) und [Bereitstellung](#deploy) in Azure.
@@ -97,5 +96,4 @@ In [diesem](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirt
 [Hochladen des Dienstzertifikats in das klassische Azure-Portal](cloud-services-configure-ssl-certificate.md) (oder das [Azure-Portal](cloud-services-configure-ssl-certificate-portal.md)).
 
 Hochladen des [Verwaltungs-API-Zertifikats](../azure-api-management-certs.md) in das klassische Azure-Portal. Das Azure-Portal verwendet für die Authentifizierung keine Verwaltungszertifikate.
-
 

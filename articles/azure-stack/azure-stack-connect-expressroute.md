@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: aa6973939c6cfe0688f5781fdcea5d39670249df
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-azure-stack-to-azure-using-expressroute"></a>Herstellen einer Verbindung von Azure Stack zu Azure mithilfe von ExpressRoute
 
@@ -34,7 +33,7 @@ Es gibt zwei unterstützte Methoden, um virtuelle Netzwerke in Azure Stack mit v
      Eine direkte Verbindung mit Azure aus Ihrer Azure Stack-Bereitstellung. Bei ExpressRoute handelt es sich **nicht** um eine VPN-Verbindung über das öffentliche Internet. Weitere Informationen zu Azure ExpressRoute finden Sie unter [ExpressRoute-Übersicht](../expressroute/expressroute-introduction.md).
 
 Dieser Artikel enthält ein Beispiel, in dem ExpressRoute zum Herstellen einer Verbindung von Azure Stack mit Azure verwendet wird.
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Hier sind die spezifischen Anforderungen für die Verbindungsherstellung zwischen Azure Stack und Azure mit ExpressRoute angegeben:
 * Ein Azure-Abonnement zum Erstellen einer ExpressRoute-Verbindung und von VNets in Azure.
 * Eine bereitgestellte ExpressRoute-Verbindung über einen [Konnektivitätsanbieter](../expressroute/expressroute-locations.md).

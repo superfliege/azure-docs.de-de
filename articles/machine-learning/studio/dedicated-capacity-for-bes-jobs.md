@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 40641910f904aa0c0516f96d84d0ebbbbe8e5501
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>Azure Batch-Dienst für Machine Learning-Aufträge
 
@@ -112,4 +111,3 @@ Es empfiehlt sich, dass Sie den Auftragsstatus abfragen, um zu ermitteln, wann A
 | **Verwenden von Batch-Pool-Verarbeitung**    | **Verwenden von klassischer Batchverarbeitung**  |
 |---|---|
 |Sie müssen eine große Anzahl von Aufträgen ausführen.<br>Oder<br/>Sie müssen sicher sein, dass Ihre Aufträge sofort ausgeführt werden.<br/>Oder<br/>Sie benötigen einen garantierten Durchsatz. Beispielsweise müssen Sie eine Anzahl von Aufträgen in einem bestimmten Zeitrahmen ausführen und möchten Ihre Compute-Ressourcen entsprechend Ihren Anforderungen skalieren.    | Sie führen nur wenige Aufträge aus.<br/>und<br/> Es ist nicht erforderlich, dass die Aufträge sofort ausgeführt werden. |
-

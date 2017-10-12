@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: magoedte;paulomarquesc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: af0bc6b24a403bd09092ac0a099c500d651d15b7
-ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: cae4020741003be54b133efa121b3c09b859a176
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-automation-scenario-using-json-formatted-tags-to-create-a-schedule-for-azure-vm-startup-and-shutdown"></a>Azure Automation-Szenario: Erstellen eines Zeitplans für das Starten und Herunterfahren virtueller Azure-Computer mithilfe von Tags im JSON-Format
 Kunden möchten häufig das Starten und Herunterfahren virtueller Computer planen, um Abonnementkosten zu senken oder geschäftliche und technische Anforderungen zu unterstützen.
@@ -242,4 +241,3 @@ Die **Auftragszusammenfassung** beinhaltet Meldungen aus den Ausgabe-, Warnungs-
 * Weitere Informationen zu den Features der PowerShell-Skriptunterstützung finden Sie unter [Announcing Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)(Ankündigung der nativen PowerShell-Skriptunterstützung in Azure Automation).
 * Weitere Informationen zu Runbookprotokollierung und -ausgabe finden Sie unter [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md).
 * Weitere Informationen zum ausführenden Konto von Azure sowie zum Authentifizieren von Runbooks mithilfe dieses Kontos finden Sie unter [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](automation-sec-configure-azure-runas-account.md).
-

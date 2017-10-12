@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/17/2017
 ms.author: magoedte;bwren
+ms.openlocfilehash: b8accf16c43b7a01233742161e68db6f831a2d30
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: d06052099acbb5544581ef3e8e2007dd751a7544
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="my-first-graphical-runbook"></a>Mein erstes grafisches Runbook
 
@@ -211,5 +210,4 @@ In diesem Schritt passen wir das Runbook so an, dass nur dann versucht wird, den
 * Weitere Informationen zur grafischen Inhaltserstellung finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md)
 * Erste Schritte mit PowerShell-Runbooks werden in [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-powershell.md)
 * Informationen über die ersten Schritte mit PowerShell-Workflow-Runbooks finden Sie unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)
-
 

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7d914684a0ee5598cee7972b78c3ec6296184466
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Cosmos DB mithilfe von Azure Data Factory
 
@@ -43,7 +42,7 @@ Der Azure Cosmos DB-Connector unterstützt insbesondere Folgendes:
 Informationen zum Kopieren von Daten in ihrem jeweiligen Zustand in bzw. aus JSON-Dateien oder in eine andere bzw. aus einer anderen Cosmos DB-Sammlung finden Sie unter [Importieren oder Exportieren von JSON-Dokumenten](#importexport-json-documents).
 
 ## <a name="getting-started"></a>Erste Schritte
-Sie können mit dem .NET SDK, Python-SDK, Azure PowerShell, der REST-API oder der Azure Resource Manager-Vorlage eine Pipeline mit einer Kopieraktivität erstellen. Im [Tutorial zur Kopieraktivität](quickstart-create-data-factory-dot-net.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+Sie können mit dem .NET SDK, Python SDK, Azure PowerShell, der REST-API oder der Azure Resource Manager-Vorlage eine Pipeline mit einer Kopieraktivität erstellen. Im [Tutorial zur Kopieraktivität](quickstart-create-data-factory-dot-net.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren spezifischer Data Factory-Entitäten für Azure Cosmos DB verwendet werden:
 
@@ -55,7 +54,7 @@ Folgende Eigenschaften werden für den mit Azure Cosmos DB verknüpften Dienst u
 |:--- |:--- |:--- |
 | Typ | Die type-Eigenschaft muss auf **CosmosDb** festgelegt werden. | Ja |
 | connectionString |Geben Sie die zum Verbinden mit der Azure Cosmos DB-Datenbank erforderlichen Informationen an. Beachten Sie, dass Sie wie im folgenden Beispiel gezeigt Datenbankinformationen in der Verbindungszeichenfolge angeben müssen. Legen Sie für dieses Feld „SecureString“ fest. |Ja |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. |Nein |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. |Nein |
 
 **Beispiel:**
 
@@ -168,7 +167,7 @@ Legen Sie zum Kopieren von Daten aus Azure Cosmos DB den Senkentyp in der Kopier
 |:--- |:--- |:--- |
 | Typ | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **DocumentDbCollectionSink** festgelegt werden. |Ja |
 | nestingSeparator |Ein Sonderzeichen im Quellspaltennamen, um anzuzeigen, dass das geschachtelte Dokument erforderlich ist. <br/><br/>Beispielsweise generiert `Name.First` in der Struktur des Ausgabedatasets folgende JSON-Struktur im Cosmos DB-Dokument, sofern es sich bei „nestedSeparator“ um einen Punkt handelt: `"Name": {"First": "[value maps to this column from source]"}`. |Nein (der Standardwert ist ein Punkt `.`) |
-| writeBatchTimeout |Die Wartezeit für den Abschluss des Vorgangs.<br/><br/>Zulässige Werte sind Zeiträume. Beispiel: „00:30:00“ (30 Minuten). |Nein |
+| writeBatchTimeout |Die Wartezeit für den Abschluss des Vorgangs.<br/><br/>Zulässige Werte: Zeitraum Beispiel: „00:30:00“ (30 Minuten). |Nein |
 
 **Beispiel:**
 

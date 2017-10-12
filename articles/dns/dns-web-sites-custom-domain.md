@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: d4b0aa817c3fd7f3304b5122ac584166d8079d3c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>Erstellen von DNS-Einträgen für eine Web-App in einer benutzerdefinierten Domäne
 
 Sie können Azure DNS verwenden, um eine benutzerdefinierte Domäne für Ihre Web-Apps zu hosten. Angenommen, Sie erstellen eine Azure-Web-App und möchten, dass Ihre Benutzer über contoso.com oder www.contoso.com als vollqualifizierten Domänennamen Zugriff darauf haben sollen.
@@ -203,4 +201,3 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 ## <a name="next-steps"></a>Nächste Schritte
 
 Befolgen Sie die Anweisungen unter [Konfigurieren eines benutzerdefinierten Domänennamens für App Service](../app-service/app-service-web-tutorial-custom-domain.md) , um die Web-App für das Verwenden einer benutzerdefinierten Domäne zu konfigurieren.
-

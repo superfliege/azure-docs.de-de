@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 08/25/2017
 ms.author: danlep
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: b82cb6cc3724af9306bc3b23125cf7cfa03df8ea
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="options-with-hpc-pack-to-create-and-manage-a-cluster-for-windows-hpc-workloads-in-azure"></a>Optionen zum Erstellen und Verwalten eines Clusters für Windows HPC-Workloads in Azure mit HPC Pack
 [!INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../../includes/virtual-machines-common-hpcpack-cluster-options.md)]
@@ -72,5 +71,4 @@ Dieser Artikel konzentriert sich auf Optionen zum Erstellen von HPC Pack-Cluster
 
 ## <a name="rdma-clusters-for-mpi-workloads"></a>RDMA-Cluster für MPI-Workloads
 * [Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-
 

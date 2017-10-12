@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: fb58a01828e13f9605e4788ee7e064162a7a31d9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Integration von Service Map in System Center Operations Manager
   > [!NOTE]
   > Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.
@@ -134,4 +132,3 @@ Die offizielle Azure-Dokumentation zum Erstellen eines Dienstprinzipals finden S
 
 ### <a name="feedback"></a>Feedback
 Haben Sie Feedback für uns zu Service Map oder dieser Dokumentation? Besuchen Sie unsere [UserVoice-Webseite](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), auf der Sie Features vorschlagen oder vorhandene Vorschläge unterstützen können.
-

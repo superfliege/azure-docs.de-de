@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: 338144eb103c68c7fff407cbeccce11734c1c34b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure-VM-Skalierungsgruppen und verwaltete Datenträger
 
@@ -52,6 +51,5 @@ Informationen dazu, wie Sie eine Resource Manager-Vorlage zum Bereitstellen von 
 Weitere Informationen zur Verwendung von verwalteten Datenträgern mit Skalierungsgruppen finden Sie in [diesem Artikel](./virtual-machine-scale-sets-attached-disks.md).
 
 Informationen zur Verwendung von großen Skalierungsgruppen finden Sie in [diesem Artikel](./virtual-machine-scale-sets-placement-groups.md).
-
 
 

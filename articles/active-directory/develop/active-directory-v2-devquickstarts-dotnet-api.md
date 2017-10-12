@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: d063ea881c82b158a196cb5f63e7514777732846
-ms.contentlocale: de-de
-ms.lasthandoff: 04/10/2017
-
-
+ms.openlocfilehash: bb332196aef59a497a1f80b67ab5c1eeef3dee0a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-an-mvc-web-api"></a>Schützen einer MVC-Web-API
 Mit dem v2.0-Endpunkt von Azure Active Directory können Sie eine Web-API mit [OAuth 2.0](active-directory-v2-protocols.md) -Zugriffstoken schützen, sodass sowohl Benutzer mit persönlichen Microsoft-Konten als auch Benutzer mit Geschäfts-, Schul- oder Unikonten sicher auf Ihre Web-API zugreifen können.
@@ -68,7 +66,7 @@ PM> Install-Package Microsoft.IdentityModel.Protocol.Extensions -ProjectName Tod
 ```
 
 ## <a name="configure-oauth-authentication"></a>Konfigurieren der OAuth-Authentifizierung
-* Fügen Sie dem Projekt „TodoListService“ eine OWIN-Startklasse mit dem Namen `Startup.cs`hinzu.  Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen** --> **Neues Element**, und suchen Sie nach „OWIN“.  Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(…)` auf.
+* Fügen Sie dem Projekt „TodoListService“ eine OWIN-Startklasse mit dem Namen `Startup.cs`hinzu.  Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen**  --> **Neues Element**, und suchen Sie nach „OWIN“.  Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(…)` auf.
 * Ändern Sie die Klassendeklaration in `public partial class Startup` – einen Teil dieser Klasse haben wir bereits für Sie in einer anderen Datei implementiert.  Rufen Sie in der Methode `Configuration(…)` „ConfigureAuth(...)“ auf, um die Authentifizierung für Ihre Webanwendung einzurichten.
 
 ```C#
@@ -126,7 +124,7 @@ public class TodoListController : ApiController
 {
 ```
 
-* Wenn ein autorisierter Aufrufer eine der `TodoListController` -APIs erfolgreich aufruft, muss die Aktion möglicherweise auf Informationen über den Aufrufer zugreifen können.  OWIN stellt über das Objekt `ClaimsPrincpal` Zugriff auf die Ansprüche innerhalb des Bearer-Tokens bereit.  
+* Wenn ein autorisierter Aufrufer eine der `TodoListController` -APIs erfolgreich aufruft, muss die Aktion möglicherweise auf Informationen über den Aufrufer zugreifen können.  OWIN stellt über das Objekt `ClaimsPrincipal` Zugriff auf die Ansprüche innerhalb des Bearer-Tokens bereit.  
 
 ```C#
 public IEnumerable<TodoItem> Get()
@@ -161,13 +159,12 @@ Als Referenz stellen wir das vollständige Beispiel (ohne Ihre Konfigurationswer
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können sich nun weiteren Themen zuwenden.  Wie wäre es zum Beispiel mit Folgendem:
 
-[Aufrufen einer Web-API über eine .NET-Web-App >>](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
+[Aufrufen einer Web-API über eine .NET-Web-App &gt;&gt;](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
 
 Weitere Ressourcen:
 
-* [Das v2.0-Entwicklerhandbuch >>](active-directory-appmodel-v2-overview.md)
-* [StackOverflow-Tag „azure-active-directory“ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Das v2.0-Entwicklerhandbuch &gt;&gt;](active-directory-appmodel-v2-overview.md)
+* [StackOverflow-Tag „azure-active-directory“ &gt;&gt;](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="get-security-updates-for-our-products"></a>Abrufen von Sicherheitsupdates für unsere Produkte
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
-

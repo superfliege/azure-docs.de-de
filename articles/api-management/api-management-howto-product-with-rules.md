@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
 ms.openlocfilehash: 300b1d762a61c810dbffde5aaacd8a85f12c9fca
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>Schützen Ihrer API mithilfe von Aufruflimits in Azure API Management
 In diesem Leitfaden wird gezeigt, wie einfach Sie Ihre Back-End-API schützen können, indem Sie Richtlinien für Aufruflimits und Kontingente mithilfe von API Management konfigurieren.
@@ -28,7 +27,7 @@ In diesem Tutorial erstellen Sie ein kostenloses API-Testprodukt, das es Entwick
 
 Informationen zu fortgeschritteneren Drosselungsszenarien mithilfe der Richtlinien [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) und [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) finden Sie unter [Erweiterte Anforderungsbegrenzung mit Azure API Management](api-management-sample-flexible-throttling.md).
 
-## <a name="create-product"> </a>So erstellen Sie ein Produkt
+## <a name="create-product"></a>So erstellen Sie ein Produkt
 In diesem Schritt erstellen Sie ein kostenloses Testprodukt, für das keine Abonnementgenehmigung erforderlich ist.
 
 > [!NOTE]
@@ -76,7 +75,7 @@ Standardmäßig sind neue Produkte für Benutzer in der Gruppe **Administratoren
 
 Wählen Sie das Kontrollkästchen **Entwickler**, und klicken Sie dann auf **Speichern**.
 
-## <a name="add-api"> </a>So fügen Sie eine API zum Produkt hinzu
+## <a name="add-api"></a>So fügen Sie eine API zum Produkt hinzu
 In diesem Schritt des Lernprogramms werden Sie die Echo API zu dem neu erstellten Produkt "Kostenloser Test" hinzufügen.
 
 > Jede API Management-Dienstinstanz enthält eine vorkonfigurierte Echo-API, die Sie für Tests und erste Schritte mit API Management nutzen können. Weitere Informationen finden Sie unter [Verwalten Ihrer ersten API in Azure API Management][Manage your first API in Azure API Management].
@@ -95,7 +94,7 @@ Wählen Sie **Echo API** aus, und klicken Sie dann auf **Speichern**.
 
 ![Echo API hinzufügen][api-management-add-echo-api]
 
-## <a name="policies"> </a>So konfigurieren Sie Richtlinien für Aufruflimits und Kontingente
+## <a name="policies"></a>So konfigurieren Sie Richtlinien für Aufruflimits und Kontingente
 Aufruflimits und Kontingente werden im Richtlinien-Editor konfiguriert. In diesem Tutorial erstellen wir die Richtlinien [Aufruflimit pro Abonnement](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) und [Nutzungskontingent pro Abonnement](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota). Diese Richtlinien müssen auf den Produktbereich angewendet werden.
 
 Klicken Sie im Menü **API Management** auf der linken Seite auf **Richtlinien**. Klicken Sie in der Liste **Produkt** auf **Kostenlose Testversion**.
@@ -197,7 +196,7 @@ Nachdem Sie die gewünschten Richtlinien konfiguriert haben, klicken Sie auf **S
 
 ![Richtlinie speichern][api-management-policy-save]
 
-## <a name="publish-product"> </a> So veröffentlichen Sie das Produkt
+## <a name="publish-product"></a> So veröffentlichen Sie das Produkt
 Nachdem Sie die APIs hinzugefügt und die Richtlinien konfiguriert haben, muss das Produkt veröffentlicht werden, damit es von Entwicklern verwendet werden kann. Klicken Sie im Menü **API Management** auf der linken Seite auf **Produkte**, und klicken Sie dann auf **Kostenlose Testversion**, um das Produkt zu konfigurieren.
 
 ![Produkt konfigurieren][api-management-configure-product]
@@ -206,7 +205,7 @@ Klicken Sie auf **Veröffentlichen** und anschließend zur Bestätigung auf **Ja
 
 ![Veröffentlichen des Produkts][api-management-publish-product]
 
-## <a name="subscribe-account"> </a>So abonnieren Sie das Produkt über ein Entwicklerkonto
+## <a name="subscribe-account"></a>So abonnieren Sie das Produkt über ein Entwicklerkonto
 Ihr Produkt ist nun veröffentlicht und kann von Entwicklern abonniert und verwendet werden.
 
 > Administratoren einer API Management-Instanz werden automatisch für alle Produkte abonniert. In diesem Schritt des Lernprogramms werden wir das Produkt "Kostenloser Test" mit einem Entwicklerkonto abonnieren, bei dem es sich nicht um ein Administratorkonto handelt. Falls Ihr Entwicklerkonto Teil der Administratorrolle ist, können Sie diesen Schritt dennoch mitverfolgen, auch wenn Sie das Produkt bereits abonniert haben.
@@ -236,7 +235,7 @@ Nach dem Klicken auf **Abonnieren** wird das Produkt in der **Abonnementliste** 
 
 ![Abonnement hinzugefügt][api-management-subscription-added]
 
-## <a name="test-rate-limit"> </a>So rufen Sie eine Operation auf und testen das Aufruflimit
+## <a name="test-rate-limit"></a>So rufen Sie eine Operation auf und testen das Aufruflimit
 Sie haben das Produkt "Kostenloser Test" nun konfiguriert und veröffentlicht und können Operationen aufrufen, um die Richtlinie für das Aufruflimit zu testen.
 Klicken Sie im Menü oben rechts auf **Entwicklerportal** , um zum Entwicklerportal zu gelangen.
 
@@ -271,7 +270,7 @@ Der **Antwortinhalt** gibt das verbleibende Intervall an, bis neue Aufrufe mögl
 
 Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende Aufrufe fehlschlagen, bis 60 Sekunden nach dem ersten der 10 erfolgreichen Aufrufe an das Produkt vergangen sind, bevor das Aufruflimit überschritten wurde. In diesem Beispiel beträgt das verbleibende Intervall 54 Sekunden.
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Das folgende Video zeige eine Demo zum Festlegen von Aufruflimits und Kontingenten.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
@@ -326,4 +325,3 @@ Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende A
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
-

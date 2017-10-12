@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok;rotimpe
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: cd7dab8514b41d930d01fd134229cc9da48b18fe
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
 ## <a name="overview"></a>Übersicht
 Die [Anomaly Detection-API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) ist ein mit Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind.
@@ -192,5 +190,4 @@ Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für
 
 [1]: ./media/apps-anomaly-detection-api/anomaly-detection-score.png
 [2]: ./media/apps-anomaly-detection-api/anomaly-detection-seasonal.png
-
 

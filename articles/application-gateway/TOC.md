@@ -19,30 +19,30 @@
 #### [Azure PowerShell](application-gateway-create-gateway-arm.md)
 #### [Resource Manager: Vorlage](application-gateway-create-gateway-arm-template.md)
 #### [Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md)
-#### [Azure-CLI](application-gateway-create-gateway-cli.md)
-#### [Azure PowerShell (Classic)](application-gateway-create-gateway.md) (Azure PowerShell [klassisch])
+#### [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
+#### [Azure PowerShell (klassisch)](application-gateway-create-gateway.md)
 ### Intern
 #### [Azure PowerShell](application-gateway-ilb-arm.md)
-#### [Azure PowerShell (Classic)](application-gateway-ilb.md) (Azure PowerShell [klassisch])
+#### [Azure PowerShell (klassisch)](application-gateway-ilb.md)
 # Anleitung
 ## Konfigurieren der Web Application Firewall
 ### [Azure-Portal](application-gateway-web-application-firewall-portal.md)
 ### [Azure PowerShell](application-gateway-web-application-firewall-powershell.md)
-### [Azure-CLI](application-gateway-web-application-firewall-cli.md)
+### [Azure-Befehlszeilenschnittstelle](application-gateway-web-application-firewall-cli.md)
 ## Anpassen von Web Application Firewall-Regeln
 ### [Azure-Portal](application-gateway-customize-waf-rules-portal.md)
-### [Azure-CLI](application-gateway-customize-waf-rules-cli.md)
+### [Azure-Befehlszeilenschnittstelle](application-gateway-customize-waf-rules-cli.md)
 ## Konfigurieren von SSL
 ### [Azure-Portal](application-gateway-ssl-portal.md)
 ### [Azure PowerShell](application-gateway-ssl-arm.md)
 ### [Azure PowerShell (Classic)](application-gateway-ssl.md) (Azure PowerShell [klassisch])
-### [Azure-CLI](application-gateway-ssl.md)
+### [Azure-Befehlszeilenschnittstelle](application-gateway-ssl.md)
 ### [End-to-End](application-gateway-end-to-end-ssl-powershell.md)
 ### [SSL-Richtlinie](application-gateway-configure-ssl-policy-powershell.md)
 ## Konfigurieren von Routing auf URL-Pfadbasis
 ### [Azure-Portal](application-gateway-create-url-route-portal.md)
 ### [Azure PowerShell](application-gateway-create-url-route-arm-ps.md)
-### [Azure-CLI](application-gateway-create-url-route-cli.md)
+### [Azure-Befehlszeilenschnittstelle](application-gateway-create-url-route-cli.md)
 ## Konfigurieren des Hostens mehrerer Websites
 ### [Azure-Portal](application-gateway-create-multisite-portal.md)
 ### [Azure PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
@@ -61,7 +61,7 @@
 ### [Diagnoseprotokollierung und -metriken](application-gateway-diagnostics.md)
 # Referenz
 ## [Azure PowerShell](/powershell/azure/overview)
-## [Azure-CLI](/cli/azure/network/application-gateway)
+## [Azure-Befehlszeilenschnittstelle](/cli/azure/network/application-gateway)
 ## [.NET](/dotnet/api)
 ## [Java](/java/api/com.microsoft.azure.management.network)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways)

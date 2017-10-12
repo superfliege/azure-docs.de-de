@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/17/2015
 ms.author: bwren
 ms.openlocfilehash: 3b6da89cc33cda713b483a2af3cbb493a03d6bec
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Einrichten von Application Insights für eine Azure-Web-App mit PowerShell
 [Microsoft Azure](https://azure.com) kann zum [Senden von Azure-Diagnosedaten](app-insights-azure-diagnostics.md) an [Azure Application Insights](app-insights-overview.md) konfiguriert werden. Die Diagnosedaten beziehen sich auf Azure Cloud Services und Azure VMs. Sie ergänzen die Telemetriedaten, die Sie mit dem Application Insights SDK aus der App senden. Als Teil der Automatisierung des Prozesses zum Erstellen neuer Ressourcen in Azure können Sie die Diagnose mit PowerShell konfigurieren.

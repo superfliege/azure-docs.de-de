@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: raviperi
 ms.openlocfilehash: 3d76aebd2a1fd729c8e0639e6afcbde4c3fb752b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scp-programming-guide"></a>SCP-Programmierleitfaden
 SCP ist eine Plattform zur Erstellung zuverlässiger, konsistenter und leistungsfähiger Anwendungen für die Echtzeit-Datenverarbeitung. Sie basiert auf [Apache Storm](http://storm.incubator.apache.org/) , einem von den OSS-Communitys entwickelten Datenstrom-Verarbeitungssystem. Storm wurde von Nathan Marz entwickelt, und der Quellcode wurde von Twitter freigegeben. Für Storm wird [Apache ZooKeeper](http://zookeeper.apache.org/)verwendet, ein weiteres Apache-Projekt für hochzuverlässige verteilte Koordinierung und Zustandsverwaltung. 

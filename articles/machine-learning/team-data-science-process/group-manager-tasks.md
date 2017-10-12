@@ -13,15 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: cd73aed14f672351b72e09d682909a47c63b9026
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="group-manager-tasks"></a>Aufgaben eines Gruppenleiters
 
 In diesem Thema werden die Aufgaben beschrieben, die ein Gruppenleiter für eine Data Science-Organisation zu erfüllen hat. Das Ziel besteht darin, eine auf Zusammenarbeit ausgelegte Gruppenumgebung zu schaffen, die gemäß dem [Team Data Science-Prozess (TDSP)](overview.md) vereinheitlicht ist. Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und die dazugehörigen Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
@@ -55,9 +52,9 @@ In diesem Tutorial werden abgekürzte Namen für Repositorys und Verzeichnisse v
 
 ### <a name="pre-requisites-for-cloning-repositories-and-checking-code-in-and-out"></a>Voraussetzungen für das Klonen von Repositorys und das Aus- und Einchecken von Code
  
-- Git muss auf Ihrem Computer installiert sein. Wenn Sie eine Data Science Virtual Machine (DSVM) verwenden, ist Git bereits installiert, und Sie können sofort starten. Andernfalls helfen Ihnen die Informationen im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) weiter.  
-- Bei Verwendung einer **Windows-DSVM** muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei „README.md“ nach unten zum Abschnitt **Herunterladen und installieren**, und klicken Sie auf den *neuesten Installer*. Mit diesem Schritt gelangen Sie zur Seite mit dem neuesten Installer. Laden Sie den Installer mit der Erweiterung EXE herunter, und führen Sie ihn aus. 
-- Bei Verwendung einer **Linux-DSVM** erstellen Sie auf Ihrer DSVM einen öffentlichen SSH-Schlüssel, den Sie dem VSTS-Server Ihrer Gruppe hinzufügen. Weitere Informationen zu SSH finden Sie im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) im Abschnitt **Erstellen eines öffentlichen SSH-Schlüssels**. 
+- Git muss auf Ihrem Computer installiert sein. Wenn Sie eine Data Science Virtual Machine (DSVM) verwenden, ist Git bereits installiert, sodass Sie gleich loslegen können. Andernfalls helfen Ihnen die Informationen im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) weiter.  
+- Bei Verwendung einer **Windows DSVM** muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei „README.md“ nach unten zum Abschnitt **Herunterladen und installieren**, und klicken Sie auf den *neuesten Installer*. Mit diesem Schritt gelangen Sie zur Seite mit dem neuesten Installer. Laden Sie den Installer mit der Erweiterung EXE herunter, und führen Sie ihn aus. 
+- Bei Verwendung einer **Linux DSVM** erstellen Sie auf Ihrer DSVM einen öffentlichen SSH-Schlüssel, den Sie dem VSTS-Server Ihrer Gruppe hinzufügen. Weitere Informationen zu SSH finden Sie im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) im Abschnitt **Erstellen eines öffentlichen SSH-Schlüssels**. 
 
 
 ## <a name="1-create-account-on-vsts-server"></a>1. Erstellen eines Kontos auf dem VSTS-Server
@@ -316,9 +313,9 @@ Klicken Sie auf der Startseite für den VSTS-Server Ihrer Gruppe oben rechts neb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Hier sind die Links zu den ausführlicheren Beschreibungen der Rollen und Aufgaben angegeben, die vom Team Data Science-Prozess definiert werden:
+Es folgen Links zu den ausführlicheren Beschreibungen der Rollen und Aufgaben, die vom Team Data Science-Prozess definiert werden:
 
-- [Aufgaben eines Gruppenleiters](group-manager-tasks.md)
-- [Aufgaben eines Teamleiters](team-lead-tasks.md)
-- [Aufgaben eines Projektleiters](project-lead-tasks.md)
-- [Aufgaben einzelner Mitwirkender](project-ic-tasks.md)
+- [Group Manager tasks for a data science team (Aufgaben des Gruppenleiters eines Data Science-Teams)](group-manager-tasks.md)
+- [Team Lead tasks for a data science team (Aufgaben des Teamleiters eines Data Science-Teams)](team-lead-tasks.md)
+- [Project Lead tasks for a data science team (Aufgaben des Projektleiters eines Data Science-Teams)](project-lead-tasks.md)
+- [Project Individual Contributors for a data science team (Einzelne Mitwirkende zu einem Projekt eines Data Science-Teams)](project-ic-tasks.md)

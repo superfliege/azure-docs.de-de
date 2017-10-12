@@ -1,6 +1,6 @@
 ---
-title: "Lernprogramm: Azure Active Directory-Integration mit Gefühl United States (nicht-UltiPro) | Microsoft Docs"
-description: "Informationen Sie zum Konfigurieren von einmaliges Anmelden zwischen Azure Active Directory und das Gefühl United States (nicht-UltiPro)."
+title: 'Tutorial: Azure Active Directory-Integration mit Perception United States (Non-UltiPro) | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Perception United States (Non-UltiPro) konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,29 +15,29 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.openlocfilehash: 8e2f9f979f8b94e0c043d4db6e93bd7a53c3dd27
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Lernprogramm: Azure Active Directory-Integration mit Gefühl United States (nicht-UltiPro)
+# <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Tutorial: Azure Active Directory-Integration mit Perception United States (Non-UltiPro)
 
-In diesem Lernprogramm erfahren Sie, wie Gefühl United States (nicht-UltiPro) mit Azure Active Directory (Azure AD) integrieren.
+In diesem Tutorial erfahren Sie, wie Sie Perception United States (Non-UltiPro) in Azure Active Directory (Azure AD) integrieren.
 
-Integrieren von Gefühl United States (nicht-UltiPro) in Azure AD bietet Ihnen folgende Vorteile:
+Die Integration von Perception United States (Non-UltiPro) in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Gefühl United States (nicht-UltiPro) hat.
-- Sie können Ihre Benutzer für die automatisch signiert, Gefühl United States (nicht-UltiPro) (Single Sign-On) mit ihren Azure AD-Konten bei abrufen.
+- Sie können in Azure AD steuern, wer Zugriff auf Perception United States (Non-UltiPro) hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Perception United States (Non-UltiPro) anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten: im Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um Azure AD-Integration mit Gefühl United States (nicht-UltiPro) konfigurieren, benötigen Sie die folgenden Elemente:
+Um die Azure AD-Integration in Perception United States (Non-UltiPro) konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Einem Wahrnehmung United States (nicht-UltiPro) einmaliges Anmelden für Abonnement mit aktivierter
+- Ein Perception United States (Non-UltiPro)-Abonnement, das für das einmalige Anmelden aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -50,13 +50,13 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Gefühl United States (nicht-UltiPro) aus dem Katalog hinzufügen
+1. Hinzufügen von Perception United States (Non-UltiPro) aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-perception-united-states-non-ultipro-from-the-gallery"></a>Gefühl United States (nicht-UltiPro) aus dem Katalog hinzufügen
-Um die Integration von Gefühl United States (nicht-UltiPro) in Azure Active Directory zu konfigurieren, müssen Sie Gefühl United States (nicht-UltiPro) hinzufügen aus dem Katalog der Liste der verwalteten SaaS-apps.
+## <a name="adding-perception-united-states-non-ultipro-from-the-gallery"></a>Hinzufügen von Perception United States (Non-UltiPro) aus dem Katalog
+Zum Konfigurieren der Integration von Perception United States (Non-UltiPro) in Azure AD müssen Sie Perception United States (Non-UltiPro) aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Gefühl United States (nicht-UltiPro) aus dem Katalog hinzufügen möchten, führen Sie die folgenden Schritte aus:**
+**Um Perception United States (Non-UltiPro) aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
@@ -70,43 +70,43 @@ Um die Integration von Gefühl United States (nicht-UltiPro) in Azure Active Dir
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie in das Suchfeld **Gefühl United States (nicht-UltiPro)**Option **Gefühl United States (nicht-UltiPro)** über die Systemsteuerung über Ergebnis klicken Sie dann auf **hinzufügen** Schaltfläche, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Perception United States (Non-UltiPro)** ein, wählen Sie im Ergebnisbereich **Perception United States (Non-UltiPro)** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Gefühl United States (nicht-UltiPro) in der Ergebnisliste](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_addfromgallery.png)
+    ![Perception United States (Non-UltiPro) in der Ergebnisliste](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt Konfigurieren und Testen Sie Azure AD einmaliges Anmelden mit Gefühl United States (nicht-UltiPro) basierend auf einen Testbenutzer "Britta Simon" aufgerufen.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Perception United States (Non-UltiPro) mithilfe einer Testbenutzerin namens Britta Simon.
 
-Für einmaliges Anmelden funktioniert muss Azure AD zu wissen, was der Benutzer Gegenstück in Gefühl United States (nicht-UltiPro) für einen Benutzer in Azure AD ist. Das heißt, muss eine linkbeziehung zwischen einem Azure AD-Benutzer und die entsprechenden Benutzer Gefühl United States (nicht-UltiPro) hergestellt werden.
+Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Perception United States (Non-UltiPro) als Pendant eines Benutzers in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Perception United States (Non-UltiPro) muss eine Linkbeziehung eingerichtet werden.
 
-In Gefühl United States (nicht-UltiPro), weisen Sie den Wert von der **Benutzername** in Azure AD als Wert des der **Benutzername** auf die linkbeziehung zu erstellen.
+Weisen Sie den Wert für **Benutzername** aus Azure AD in Perception United States (Non-UltiPro) als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
 
-Zum Konfigurieren und Testen Sie Azure AD einmaliges Anmelden mit Gefühl United States (nicht-UltiPro), müssen Sie den folgenden Bausteinen ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Perception United States (Non-UltiPro) müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Testbenutzers Gefühl United States (nicht-UltiPro)](#create-a-perception-united-states-non-ultipro-test-user)**  – um eine Entsprechung Britta Simon Gefühl United States (nicht-UltiPro) verfügen, die mit der Azure AD-Darstellung eines Benutzers verknüpft ist.
+3. **[Erstellen eines Perception United States (Non-UltiPro)-Testbenutzers](#create-a-perception-united-states-non-ultipro-test-user)**, um ein Pendant von Britta Simon in Perception United States (Non-UltiPro) zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt werden Azure AD einmaliges Anmelden im Azure-Portal aktivieren und konfigurieren Sie einmaliges Anmelden in Ihrer Anwendung Gefühl United States (nicht-UltiPro).
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Perception United States (Non-UltiPro)-Anwendung.
 
-**Um Azure AD einmaliges Anmelden mit Gefühl United States (nicht-UltiPro) konfigurieren, führen Sie die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Perception United States (Non-UltiPro) die folgenden Schritte aus:**
 
-1. Im Azure-Portal auf der **Gefühl United States (nicht-UltiPro)** anwendungsintegrationsseite, klicken Sie auf **des einmaligen Anmeldens**.
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Perception United States (Non-UltiPro)** auf **Einmaliges Anmelden**.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![Link „Einmaliges Anmelden konfigurieren“][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_samlbase.png)
 
-3. Auf der **Gefühl United States (nicht-UltiPro)-Domäne und die URLs** führen die folgenden Schritte aus:
+3. Führen Sie im Abschnitt **Domäne und URLs für Perception United States (Non-UltiPro)** die folgenden Schritte aus:
 
-    ![Gefühl United States (nicht-UltiPro) URLs einmaliges Anmelden für Informationen zur Domänen- und](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_url.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Perception United States (Non-UltiPro)](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://perception.kanjoya.com/sp`
 
@@ -123,49 +123,49 @@ In diesem Abschnitt werden Azure AD einmaliges Anmelden im Azure-Portal aktivier
 
     ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_general_400.png)
 
-6. Auf der **Gefühl United States (nicht-UltiPro) Konfiguration** auf **konfigurieren Gefühl United States (nicht-UltiPro)** öffnen **Anmelden konfigurieren** Fenster. Kopieren Sie die **SAML-Entitäts-ID** aus dem Abschnitt **Kurzübersicht**.
+6. Klicken Sie im Abschnitt **Perception United States (Non-UltiPro)-Konfiguration** auf **Perception United States (Non-UltiPro) konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID** aus dem Abschnitt **Kurzübersicht**.
 
-    a. Die **Gefühl United States (nicht-UltiPro)** Anwendung erfordert, dass die **SAML Entitäts-ID** -Wert, der Sie kopiert haben, Uri codiert sein. Um den codierten Uri-Wert zu erhalten, verwenden Sie den folgenden Link:**http://www.url-encode-decode.com/**.
+    a. Für die Anwendung **Perception United States (Non-UltiPro)** muss der kopierte Wert der **SAML-Entitäts-ID** URI-codiert werden. Um den URI-codierten Wert abzurufen, verwenden Sie diesen Link: **http://www.url-encode-decode.com/**.
 
-    b. Nach dem Abrufen des URIs codierten Wert kombinieren Sie sie mit der **-Antwort-URL** wie erwähnt werden weiter unten.
+    b. Kombinieren Sie den URI-codierten Wert nach dem Abrufen mit der **Antwort-URL**, wie unten beschrieben.
 
     `https://perception.kanjoya.com/sso?idp=<URI encooded entity_id>`
     
-    c. Fügen Sie den oben angegebenen Wert in der **-Antwort-URL** Textbox in **Gefühl United States (nicht-UltiPro)-Domäne und die URLs** Abschnitt.
+    c. Fügen Sie den obigen Wert im Abschnitt **Domäne und URLs für Perception United States (Non-UltiPro)** in das Textfeld **Antwort-URL** ein.
 
-    ![Gefühl United States (nicht UltiPro) Konfiguration](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_configure.png) 
+    ![Perception United States (Non-UltiPro)-Konfiguration](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_configure.png) 
 
-7. Melden Sie in einem anderen Browserfenster an, um Ihre Gefühl United States (nicht-UltiPro)-Unternehmenswebsite als Administrator.
+7. Melden Sie sich in einem anderen Webbrowserfenster bei der Perception United States (Non-UltiPro)-Unternehmenswebsite als Administrator an.
 
-8. Klicken Sie auf der Hauptsymbolleiste auf **Kontoeinstellungen**.
+8. Klicken Sie auf der Hauptsymbolleiste auf **Account Settings**.
 
-    ![Gefühl United States (nicht-UltiPro) Benutzer](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
+    ![Perception United States (Non-UltiPro)-Benutzer](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
-9. Auf der **Kontoeinstellungen** Seite, die folgenden Schritte aus:
+9. Führen Sie auf der Seite **Account Settings** die folgenden Schritte aus:
 
-    ![Gefühl United States (nicht-UltiPro) Benutzer](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
+    ![Perception United States (Non-UltiPro)-Benutzer](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    a. In der **Firmenname** Textfeld den Namen des der **Unternehmen**.
+    a. Geben Sie im Textfeld **Company Name** den Namen des **Unternehmens** ein.
     
-    b. In der **Kontoname** Textfeld den Namen des der **Konto**.
+    b. Geben Sie im Textfeld **Account Name** den Namen des **Kontos** ein.
 
-    c. In **Standard Reply-To-e-Mail** Text geben die gültigen **E-Mail**.
+    c. Geben Sie im Textfeld **Default Reply-To Email** die gültige **E-Mail-Adresse** ein.
 
-    d. Wählen Sie **SSO-Identitätsanbieter** als **SAML 2.0**.
+    d. Wählen Sie für **SSO Identity Provider** die Option **SAML 2.0** aus.
 
-10. Auf der **SSO-Konfiguration** führen die folgenden Schritte aus:
+10. Führen Sie auf der Seite **SSO Configuration** die folgenden Schritte aus:
 
-    ![Gefühl United States (nicht UltiPro) SSOConfig](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
+    ![Perception United States (Non-UltiPro)-SSO-Konfiguration](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
 
-    a. Wählen Sie **SAML "NameID" Type** als **E-Mail**.
+    a. Wählen Sie als **SAML NameID Type** die Option **EMAIL** aus.
 
-    b. In der **Name der SSO-Konfiguration** Textfeld den Namen des Ihrer **Konfiguration**.
+    b. Geben Sie im Textfeld **SSO Configuration Name** den Namen Ihrer **Konfiguration** ein.
     
-    c. In **Identitätsanbietername** Textbox, fügen Sie den Wert der **SAML Entitäts-ID**, der Sie vom Azure-Portal kopiert haben. 
+    c. Fügen Sie im Textfeld **Identity Provider Name** den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben. 
 
-    d. In **SAML domänentextfeld**, geben Sie die Domäne wie  **@contoso.com** .
+    d. Geben Sie im Textfeld **SAML Domain** die Domäne ein, z.B. **@contoso.com**.
 
-    e. Klicken Sie auf **erneut hochladen** zum Hochladen der **Metadata XML** Datei.
+    e. Klicken Sie auf **Upload Again**, um die **Metadaten-XML**-Datei hochzuladen.
 
     f. Klicken Sie auf **Aktualisieren**.
 
@@ -205,25 +205,25 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     d. Klicken Sie auf **Erstellen**.
   
-### <a name="create-a-perception-united-states-non-ultipro-test-user"></a>Erstellen eines Testbenutzers Gefühl United States (nicht-UltiPro)
+### <a name="create-a-perception-united-states-non-ultipro-test-user"></a>Erstellen eines Perception United States (Non-UltiPro)-Testbenutzers
 
-In diesem Abschnitt erstellen Sie einen Benutzer namens Britta Simon Gefühl United States (nicht-UltiPro). Arbeiten mit [Gefühl United States (nicht-UltiPro)-Supportteam](http://www.ultimatesoftware.com/Contact/ContactUs) um die Benutzer in der Plattform Gefühl United States (nicht-UltiPro) hinzuzufügen.
+In diesem Abschnitt erstellen Sie in Perception United States (Non-UltiPro) einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [Supportteam von Perception United States (Non-UltiPro)](http://www.ultimatesoftware.com/Contact/ContactUs) zusammen, um die Benutzer zur Perception United States (Non-UltiPro)-Plattform hinzuzufügen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt können Sie Britta Simon Azure einmaliges Anmelden verwenden, durch Gewähren des Zugriffs auf Gefühl United States (nicht-UltiPro).
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Perception United States (Non-UltiPro) gewähren.
 
 ![Zuweisen der Benutzerrolle][200] 
 
-**Um Britta Simon zu Gefühl United States (nicht-UltiPro) zuzuweisen, führen Sie die folgenden Schritte aus:**
+**Um Britta Simon zu Perception United States (Non-UltiPro) zuzuweisen, führen Sie die folgenden Schritte aus:**
 
 1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Liste der Anwendungen **Gefühl United States (nicht-UltiPro)**.
+2. Wählen Sie in der Anwendungsliste den Eintrag **Perception United States (Non-UltiPro)** aus.
 
-    ![Der Link Gefühl United States (nicht-UltiPro) in die Liste der Anwendungen](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_app.png)  
+    ![Perception United States (Non-UltiPro)-Link in der Anwendungsliste](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_app.png)  
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -243,7 +243,7 @@ In diesem Abschnitt können Sie Britta Simon Azure einmaliges Anmelden verwenden
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie die Kachel Gefühl United States (nicht-UltiPro) im Zugriffsbereich klicken, Sie sollten automatisch für Ihre Anwendung Gefühl United States (nicht-UltiPro) angemeldete abrufen.
+Wenn Sie im Zugriffsbereich auf die Kachel „Perception United States (Non-UltiPro)“ klicken, sollten Sie automatisch bei Ihrer Perception United States (Non-UltiPro)-Anwendung angemeldet werden.
 Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

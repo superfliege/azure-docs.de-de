@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 06/05/2017
 ms.author: mihauss
 ms.openlocfilehash: 544b11d74a926fe62b8ceca51570ce9d2ee7e6e7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-preview-storage-tiers"></a>Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“ (Vorschau)
 
@@ -113,8 +113,8 @@ Die folgende Tabelle enthält eine Gegenüberstellung der Speicherebenen „Hot�
 
 | | **Speicherebene „Hot“** | **Speicherebene „Cool“** |
 | ---- | ----- | ----- |
-| **Verfügbarkeit** | 99,9 % | 99 % |
-| **Verfügbarkeit** <br> **(RA-GRS-Lesevorgänge)**| 99,99 % | 99,9 % |
+| **Availability** | 99,9 % | 99 % |
+| **Availability** <br> **(RA-GRS-Lesevorgänge)**| 99,99 % | 99,9 % |
 | **Nutzungsgebühren** | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Geringere Speicherkosten, höhere Zugriffs- und Transaktionskosten |
 | **Mindestobjektgröße** | N/V | N/V |
 | **Mindestspeicherdauer** | N/V | N/V |

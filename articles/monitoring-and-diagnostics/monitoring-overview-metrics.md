@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
+ms.openlocfilehash: eb519aab87c13e8836bf1d41992812762f0cd737
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: fbfb3d026540b45a28751d6c3ab0f8dce444e0cd
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Überblick über Metriken in Microsoft Azure
 In diesem Artikel wird beschrieben, was Metriken in Microsoft Azure sind, welche Vorteile sie haben und wie Sie mit deren Nutzung beginnen.  
 
@@ -127,23 +125,6 @@ Einige Azure-Ressourcen unterstützen das horizontale Hoch- oder Herunterskalier
  ![Metriken und automatische Skalierung in Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview5.png)
 
 ## <a name="learn-about-supported-services-and-metrics"></a>Informationen zu unterstützten Diensten und Metriken
-Azure Monitor ist eine neue Metrikinfrastruktur. Sie unterstützt die folgenden Azure-Dienste im Azure-Portal sowie die neue Version der Azure Monitor-API:
-
-* VMs (auf Azure Resource Manager-Basis)
-* VM-Skalierungsgruppen
-* Batch
-* Event Hubs-Namespace
-* Service Bus-Namespace (nur bei Premium-SKU)
-* SQL-Datenbank (Version 12)
-* Elastischer SQL-Pool
-* Websites
-* Webserverfarmen
-* Logik-Apps
-* IoT Hubs
-* Redis Cache
-* Netzwerke: Application Gateways
-* Suche
-
 Eine ausführliche Liste aller unterstützter Dienste mit den entsprechenden Metriken finden Sie unter [Azure Monitor-Metriken – unterstütze Metriken pro Ressourcentyp](monitoring-supported-metrics.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -152,4 +133,3 @@ Weitere Informationen finden Sie auch über die Links in diesem Artikel. Außerd
 * [Allgemeine Metriken für die automatische Skalierung](insights-autoscale-common-metrics.md)
 * [Erstellen von Warnungsregeln](insights-alerts-portal.md)
 * [Analysieren von Protokollen aus Azure Storage mit Log Analytics](../log-analytics/log-analytics-azure-storage.md)
-

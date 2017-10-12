@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: ruturajd
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 7f478a61ee448d2d18b3ac7bc0a579b6e341c30d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="failback-in-site-recovery-for-hyper-v-virtual-machines"></a>Failback in Site Recovery für virtuelle Hyper-V-Computer
 
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Computer, die von Site Recovery geschützt werden, ein Failback durchführen.
@@ -98,4 +96,3 @@ Um das Herunterladen von Daten zu beschleunigen, können Sie Ihren MARS-Agent ko
 Nach Abschluss des Failbackauftrags führen Sie einen **Commit** für den virtuellen Computer aus. Der Commit löscht den virtuellen Azure-Computer und seine Datenträger und bereitet den virtuellen Computer dafür vor, erneut geschützt zu werden.
 
 Nach dem **Commit** können Sie das *umgekehrte Replizieren* initiieren. Dadurch wird der erneute Schutz des virtuellen Computers von einem lokalen Standort nach Azure gestartet. Beachten Sie, dass dadurch nur die Änderungen repliziert werden, da der virtuelle Computer in Azure deaktiviert wurde und daher nur differenzielle Änderungen sendet.
-

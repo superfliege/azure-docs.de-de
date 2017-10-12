@@ -12,14 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 0a77b31e07f118155094fab4d3393ffdb37c9c6f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="supported-data-sources-for-this-release"></a>Unterstützte Datenquellen für dieses Release 
 Das folgende Dokument enthält die Liste der derzeit in der Datenvorbereitung unterstützten Datenquellen.
 
@@ -90,5 +88,4 @@ Lokale Festplatte oder zugeordneter Netzwerkspeicherort
 
 ### <a name="azure-blob"></a>Azure-BLOB
 Für Azure Storage (BLOB) ist ein Azure-Abonnement erforderlich.
-
 

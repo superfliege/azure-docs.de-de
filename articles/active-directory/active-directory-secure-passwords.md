@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 50b24466bcbd399de19934f7ec5ed096e308eaf3
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Ein mehrstufiger Ansatz für die Azure AD-Kennwortsicherheit
 
@@ -86,4 +85,3 @@ Informationen zur Kennwortzurücksetzung in Azure Active Directory finden Sie im
 * [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md)
 * [Grundlagen der Identitätsverwaltung in Azure](fundamentals-identity.md)
 * [Bericht zur Aktivität „Zurücksetzen des Kennworts“](active-directory-passwords-reporting.md)
-

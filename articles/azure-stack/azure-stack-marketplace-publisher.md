@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/14/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 5b2c04d2cbc06e1572dc2e40712f6cf9d886aa1e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Hinzufügen von Marketplace-Elementen mithilfe des Veröffentlichungstools
 Durch Hinzufügen Ihrer Inhalte zum [Azure Stack-Marketplace](azure-stack-marketplace.md) werden Ihre Lösungen für Sie und Ihre Mandanten für die Bereitstellung verfügbar.  Das Marketplace-Toolkit erstellt Azure Marketplace-Paketdateien (AZPKG-Dateien) auf der Grundlage Ihrer IaaS-Azure Resource Manager-Vorlagen oder VM-Erweiterungen.  Darüber hinaus können Sie mit dem Marketplace-Toolkit AZPKG-Dateien veröffentlichen, die entweder mit dem Tool oder [manuell](azure-stack-create-and-publish-marketplace-item.md) erstellt wurden.  In diesem Thema erfahren Sie, wie Sie das Tool herunterladen, ein Marketplace-Element auf der Grundlage einer VM-Vorlage erstellen und das Element anschließend im Azure Stack-Marketplace veröffentlichen.     
 
@@ -95,6 +93,5 @@ Das Marketplace-Toolkit enthält die Datei *solution.parameters.ps1*, mit der Si
 | PNG-Symbol (115 x 115) | ![](./media/azure-stack-marketplace-publisher/image3.png) |
 | PNG-Symbol (255 x 115) | ![](./media/azure-stack-marketplace-publisher/image4.png) |
 | PNG-Miniaturansicht (533 x 324) | ![](./media/azure-stack-marketplace-publisher/image5.png) |
-
 
 

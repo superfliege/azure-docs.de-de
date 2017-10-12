@@ -1,6 +1,6 @@
 ---
-title: Verwendung von Eigenschaften in Azure API Management-Richtlinien
-description: Erfahren Sie, wie Sie Eigenschaften in Azure API Management-Richtlinien zu verwenden.
+title: Verwenden von Eigenschaften in Azure API Management-Richtlinien
+description: Erfahren Sie, wie Eigenschaften in Azure API Management-Richtlinien verwendet werden.
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -15,37 +15,37 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 3b0fe2a300038e13cc488bdb4f50f8be270ea8f4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-to-use-properties-in-azure-api-management-policies"></a>Verwendung von Eigenschaften in Azure API Management-Richtlinien
-API Management-Richtlinien sind eine leistungsstarke Funktion des Systems, das den Verleger, um das Verhalten der API über Konfiguration ändern können. Richtlinien sind eine Auflistung von Anweisungen, die sequenziell bei Anfragen ausgeführt werden oder Antworten einer API. Richtlinienanweisungen können mithilfe von literalen Textwerte, Richtlinienausdrücke und Eigenschaften erstellt werden. 
+# <a name="how-to-use-properties-in-azure-api-management-policies"></a>Verwenden von Eigenschaften in Azure API Management-Richtlinien
+API Management-Richtlinien sind eine leistungsfähige Funktion des Systems, mit der Herausgeber das Verhalten der API über eine Konfiguration ändern können. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Richtlinienanweisungen können mithilfe von literalen Textwerten, Richtlinienausdrücken und Eigenschaften erstellt werden. 
 
-Jede API Management-Dienstinstanz verfügt über eine Properties-Auflistung von Schlüssel/Wert-Paaren, die global für die Dienstinstanz werden. Diese Eigenschaften können Konstantenzeichenfolge Werte in allen-API-Konfiguration und Richtlinien verwalten verwendet werden. Jede Eigenschaft verfügt über die folgenden Attribute.
+Jede API Management-Dienstinstanz weist eine Eigenschaftensammlung von Schlüssel-Wert-Paaren auf, die für die gesamte Dienstinstanz gelten. Diese Eigenschaften können zum Verwalten konstanter Zeichenfolgenwerte für alle API-Konfigurationen und -Richtlinien verwendet werden. Jede Eigenschaft verfügt über die folgenden Attribute.
 
 | Attribut | Typ | Beschreibung |
 | --- | --- | --- |
-| Name |string |Der Name der Eigenschaft. Er kann nur Buchstaben, Ziffern, Punkt, Strich enthalten und Unterstriche enthalten. |
-| Wert |string |Der Wert der Eigenschaft. Es darf nicht leer sein oder nur aus Leerzeichen bestehen. |
-| Geheim |boolean |Bestimmt, ob der Wert einen geheimen Schlüssel und verschlüsselt oder nicht verschlüsselt werden soll. |
-| Tags |Array von Zeichenfolgen |Optional, tags, die bei der zum Filtern der Eigenschaftenliste verwendet werden können. |
+| Name |string |Der Name der Eigenschaft. Er kann nur Buchstaben, Ziffern, Punkte, Gedankenstriche und Unterstriche enthalten. |
+| Wert |string |Der Wert der Eigenschaft. Er darf nicht leer sein oder nur aus Leerzeichen bestehen. |
+| Geheimer Schlüssel |Boolescher Wert |Bestimmt, ob der Wert ein geheimer Schlüssel ist und ob er verschlüsselt werden sollte. |
+| Tags |Array von Zeichenfolgen |Optionale Tags, die zum Filtern der Eigenschaftenliste verwendet werden können, wenn sie bereitgestellt werden. |
 
-Eigenschaften werden im Portal Verleger konfiguriert, auf die **Eigenschaften** Registerkarte. Im folgenden Beispiel werden drei Eigenschaften konfiguriert.
+Eigenschaften werden im Herausgeberportal auf der Registerkarte **Eigenschaften** konfiguriert. Im folgenden Beispiel werden drei Eigenschaften konfiguriert.
 
 ![Eigenschaften][api-management-properties]
 
-Eigenschaftswerte können Literalzeichenfolgen enthalten und [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx). Die folgende Tabelle zeigt die vorherigen drei Eigenschaften und ihre Attribute. Der Wert des `ExpressionProperty` ist ein Richtlinienausdruck, der eine Zeichenfolge mit dem aktuellen Datum und Uhrzeit zurückgibt. Die Eigenschaft `ContosoHeaderValue` wird als ein geheimer Schlüssel markiert, sodass der Wert nicht angezeigt wird.
+Eigenschaftswerte können Literalzeichenfolgen und [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx)enthalten. Die folgende Tabelle zeigt die drei vorherigen Eigenschaften und ihre Attribute. Der Wert von `ExpressionProperty` ist ein Richtlinienausdruck, der eine Zeichenfolge zurückgibt, die das aktuelle Datum und die Uhrzeit enthält. Die Eigenschaft `ContosoHeaderValue` ist als geheimer Schlüssel markiert, sodass ihr Wert nicht angezeigt wird.
 
-| Name | Wert | Geheim | Tags |
+| Name | Wert | Geheimer Schlüssel | Tags |
 | --- | --- | --- | --- |
 | ContosoHeader |TrackingId |False |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |
 | ExpressionProperty |@(DateTime.Now.ToString()) |False | |
 
-## <a name="to-use-a-property"></a>Um eine Eigenschaft zu verwenden
-Um eine Eigenschaft in einer Richtlinie zu verwenden, platzieren Sie den Namen der Eigenschaft innerhalb eines doppelten Paares geschweifter Klammern wie `{{ContosoHeader}}`, wie im folgenden Beispiel gezeigt.
+## <a name="to-use-a-property"></a>So verwenden Sie eine Eigenschaft
+Um eine Eigenschaft in einer Richtlinie zu verwenden, platzieren Sie den Namen der Eigenschaft in ein doppeltes Paar geschweifter Klammern wie `{{ContosoHeader}}`, wie im folgenden Beispiel gezeigt.
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -53,11 +53,11 @@ Um eine Eigenschaft in einer Richtlinie zu verwenden, platzieren Sie den Namen d
 </set-header>
 ```
 
-In diesem Beispiel `ContosoHeader` dient als den Namen eines Headers in einer `set-header` Richtlinie und `ContosoHeaderValue` als der Wert dieses Headers verwendet wird. Wenn diese Richtlinie, während einer Anforderung oder Antwort zum API Management-Gateway ausgewertet wird `{{ContosoHeader}}` und `{{ContosoHeaderValue}}` werden durch ihre jeweiligen Eigenschaftswerte ersetzt.
+In diesem Beispiel dient `ContosoHeader` als Name eines Headers in einer `set-header`-Richtlinie und `ContosoHeaderValue` als Wert dieses Headers. Wenn diese Richtlinie in einer Anforderung oder Antwort an das API Management-Gateway ausgewertet wird, werden `{{ContosoHeader}}` und `{{ContosoHeaderValue}}` durch ihre jeweiligen Eigenschaftswerte ersetzt.
 
-Eigenschaften können als vollständige Attribut- oder Elementwerten wie im vorherigen Beispiel gezeigt verwendet werden, aber sie können auch eingefügt oder in Kombination mit Teil eines Ausdrucks wörtlichen Text wie im folgenden Beispiel gezeigt:`<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Eigenschaften können als vollständige Attribut- oder Elementwerte verwendet werden, wie im vorherigen Beispiel gezeigt, sie können aber auch in einen literalen Textausdruck eingefügt oder mit einem Teil davon kombiniert werden, wie im folgenden Beispiel gezeigt: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
 
-Eigenschaften können auch Richtlinienausdrücke enthalten. Im folgenden Beispiel die `ExpressionProperty` verwendet wird.
+Eigenschaften können auch Richtlinienausdrücke enthalten. Im folgenden Beispiel wird `ExpressionProperty` verwendet.
 
 ```xml
 <set-header name="CustomHeader" exists-action="override">
@@ -65,76 +65,76 @@ Eigenschaften können auch Richtlinienausdrücke enthalten. Im folgenden Beispie
 </set-header>
 ```
 
-Wenn diese Richtlinie ausgewertet wird, `{{ExpressionProperty}}` wird mit dem Wert ersetzt: `@(DateTime.Now.ToString())`. Weil der Wert eines Ausdrucks für die Richtlinie ist, der Ausdruck wird ausgewertet, und die Richtlinie die Ausführung wird fortgesetzt.
+Wenn diese Richtlinie ausgewertet wird, wird `{{ExpressionProperty}}` durch ihren Wert ersetzt: `@(DateTime.Now.ToString())`. Da der Wert ein Richtlinienausdruck ist, wird der Ausdruck ausgewertet, und die Ausführung der Richtlinie wird fortgesetzt.
 
-Sie können diese Out im Entwicklerportal testen, durch Aufrufen eines Vorgangs, das im Gültigkeitsbereich über eine Richtlinie mit Eigenschaften verfügt. Im folgenden Beispiel wird ein Vorgang mit den beiden vorherigen Beispiel aufgerufen `set-header` Richtlinien mit Eigenschaften. Beachten Sie, dass die Antwort zwei benutzerdefinierte Header enthält, die mithilfe von Richtlinien mit Eigenschaften konfiguriert wurden.
+Sie können dies im Entwicklerportal durch Aufrufen eines Vorgangs testen, der eine Richtlinie mit entsprechenden Eigenschaften aufweist. Im folgenden Beispiel wird ein Vorgang mit den beiden vorherigen `set-header` -Beispielrichtlinien mit Eigenschaften aufgerufen. Beachten Sie, dass die Antwort zwei benutzerdefinierte Header enthält, die mithilfe von Richtlinien mit Eigenschaften konfiguriert wurden.
 
 ![Entwicklerportal][api-management-send-results]
 
-Bei Betrachtung der [Inspektor-API-Ablaufverfolgung](api-management-howto-api-inspector.md) für einen Aufruf, der die beiden vorherigen Beispielrichtlinien mit Eigenschaften enthält, sehen Sie die beiden `set-header` Richtlinien mit den Eigenschaftswerten, die eingefügt werden, sowie die Auswertung von Ausdrücken Richtlinie für die Eigenschaft, die den Richtlinienausdruck enthalten.
+Beim Betrachten der [Verfolgung mit dem API-Inspektor](api-management-howto-api-inspector.md) für einen Aufruf, der die beiden vorherigen Beispielrichtlinien mit Eigenschaften enthält, sehen Sie beide `set-header`-Richtlinien mit den eingefügten Eigenschaftswerten und die Auswertung des Richtlinienausdrucks für die Eigenschaft, die den Richtlinienausdruck enthält.
 
-![Inspector-API-Ablaufverfolgung][api-management-api-inspector-trace]
+![Verfolgung mit dem API-Inspektor][api-management-api-inspector-trace]
 
-Beachten Sie, dass während der Eigenschaftswerte Richtlinienausdrücke enthalten können, Eigenschaftswerte andere Eigenschaften enthalten können. Wenn Text mit Verweis auf eine Eigenschaft für den Wert einer Eigenschaft, z. B. verwendet wird `Property value text {{MyProperty}}`, Referenz zur Eigenschaft wird nicht ersetzt werden und wird als Teil des Eigenschaftswerts.
+Beachten Sie, dass Eigenschaftswerte zwar Richtlinienausdrücke enthalten können, Eigenschaftswerte aber keine anderen Eigenschaften enthalten können. Wenn Text, der einen Eigenschaftsverweis enthält, als Eigenschaftswert verwendet wird, z. B. `Property value text {{MyProperty}}`, wird dieser Eigenschaftsverweis nicht ersetzt, und er wird als Bestandteil des Eigenschaftswerts eingebunden.
 
 ## <a name="to-create-a-property"></a>So erstellen Sie eine Eigenschaft
-Um eine Eigenschaft zu erstellen, klicken Sie auf **Eigenschaft hinzufügen** auf die **Eigenschaften** Registerkarte.
+Klicken Sie zum Erstellen einer Eigenschaft auf der Registerkarte **Eigenschaften** auf **Eigenschaft hinzufügen**.
 
 ![Eigenschaft hinzufügen][api-management-properties-add-property-menu]
 
-**Namen** und **Wert** Werte erforderlich sind. Wenn dieser Eigenschaftswert einen geheimen Schlüssel ist, überprüfen Sie die **Dies ist ein geheimer Schlüssel** Kontrollkästchen. Geben Sie eine oder mehrere optionale Tags helfen beim Organisieren Ihrer Eigenschaften, und klicken Sie auf **speichern**.
+**Name** und **Wert** sind erforderliche Werte. Wenn dieser Eigenschaftswert ein geheimer Schlüssel ist, aktivieren Sie das Kontrollkästchen **Dies ist ein geheimer Schlüssel** . Geben Sie ein oder mehrere optionale Tags ein, um Ihre Eigenschaften besser organisieren zu können, und klicken Sie auf **Speichern**.
 
 ![Eigenschaft hinzufügen][api-management-properties-add-property]
 
-Wenn eine neue Eigenschaft gespeichert wird, die **Sucheigenschaftenliste** Textfeld mit dem Namen der neuen Eigenschaft aufgefüllt wird und die neue Eigenschaft angezeigt wird. Um alle Eigenschaften anzuzeigen, deaktivieren Sie die **Sucheigenschaftenliste** Textfeld, und drücken Sie EINGABETASTE.
+Wenn eine neue Eigenschaft gespeichert wird, wird der Name der neuen Eigenschaft in das Textfeld **Eigenschaft suchen** eingetragen, und die neue Eigenschaft wird angezeigt. Um alle Eigenschaften anzuzeigen, löschen Sie den Inhalt des Textfelds **Eigenschaft suchen** , und drücken Sie EINGABETASTE.
 
 ![Eigenschaften][api-management-properties-property-saved]
 
-Informationen zum Erstellen einer Eigenschaft mithilfe der REST-API finden Sie unter [erstellen Sie eine Eigenschaft, die mithilfe der REST-API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Put).
+Informationen zum Erstellen einer Eigenschaft mithilfe der REST-API finden Sie unter [Erstellen einer Eigenschaft mit der REST-API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Put).
 
-## <a name="to-edit-a-property"></a>Um eine Eigenschaft zu bearbeiten.
-Um eine Eigenschaft zu bearbeiten, klicken Sie auf **bearbeiten** neben der Eigenschaft zu bearbeiten.
+## <a name="to-edit-a-property"></a>So bearbeiten Sie eine Eigenschaft
+Klicken Sie zum Bearbeiten einer Eigenschaft neben der zu bearbeitenden Eigenschaft auf **Bearbeiten** .
 
-![Bearbeiten der Eigenschaft][api-management-properties-edit]
+![Eigenschaft bearbeiten][api-management-properties-edit]
 
-Stellen Sie die gewünschten Änderungen vor, und klicken Sie auf **speichern**. Wenn Sie den Namen der Eigenschaft ändern, werden alle Richtlinien, die diese Eigenschaft auf automatisch aktualisiert, um den neuen Namen zu verwenden.
+Nehmen Sie die gewünschten Änderungen vor, und klicken Sie auf **Speichern**. Wenn Sie den Namen der Eigenschaft ändern, werden alle Richtlinien, die auf diese Eigenschaft verweisen, automatisch aktualisiert, sodass sie den neuen Namen verwenden.
 
-![Bearbeiten der Eigenschaft][api-management-properties-edit-property]
+![Eigenschaft bearbeiten][api-management-properties-edit-property]
 
-Informationen zum Bearbeiten einer Eigenschaft mithilfe der REST-API finden Sie unter [Bearbeiten einer Eigenschaft mithilfe der REST-API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch).
+Informationen zum Bearbeiten einer Eigenschaft mithilfe der REST-API finden Sie unter [Bearbeiten einer Eigenschaft mit der REST-API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch).
 
 ## <a name="to-delete-a-property"></a>So löschen Sie eine Eigenschaft
-Um eine Eigenschaft zu löschen, klicken Sie auf **löschen** neben der Eigenschaft zu löschen.
+Klicken Sie zum Löschen einer Eigenschaft neben der zu löschenden Eigenschaft auf **Löschen** .
 
-![Löschen Sie die Eigenschaft][api-management-properties-delete]
+![Eigenschaft löschen][api-management-properties-delete]
 
-Klicken Sie auf **Ja, löschen Sie ihn** zu bestätigen.
+Klicken Sie zur Bestätigung auf **Ja, löschen** .
 
-![Löschen bestätigen][api-management-delete-confirm]
+![Bestätigen des Löschens][api-management-delete-confirm]
 
 > [!IMPORTANT]
-> Wenn die Eigenschaft keine Richtlinien verwiesen wird, werden Sie möglicherweise nicht erfolgreich gelöscht, bis Sie die Eigenschaft aller Richtlinien entfernen, die sie verwenden.
+> Wenn von Richtlinien auf die Eigenschaft verwiesen wird, können Sie sie erst erfolgreich löschen, nachdem Sie die Eigenschaft aus allen Richtlinien entfernt haben, die sie verwenden.
 > 
 > 
 
-Informationen zum Löschen einer Eigenschaft mithilfe der REST-API finden Sie unter [Löschen einer Eigenschaft mithilfe der REST-API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete).
+Informationen zum Löschen einer Eigenschaft mithilfe der REST-API finden Sie unter [Löschen einer Eigenschaft mit der REST-API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete).
 
-## <a name="to-search-and-filter-properties"></a>Zur Suche und Filterung Eigenschaften
-Die **Eigenschaften** Registerkarte enthält Such- und Filterfunktionen helfen Ihnen beim Verwalten Ihrer Eigenschaften. Die Eigenschaftenliste anhand des Namens der Eigenschaft filtern, geben Sie einen Suchbegriff in das **Sucheigenschaftenliste** Textfeld. Um alle Eigenschaften anzuzeigen, deaktivieren Sie die **Sucheigenschaftenliste** Textfeld, und drücken Sie EINGABETASTE.
+## <a name="to-search-and-filter-properties"></a>So suchen und filtern Sie Eigenschaften
+Die Registerkarte **Eigenschaften** umfasst Such- und Filterfunktionen, die Ihnen beim Verwalten Ihrer Eigenschaften helfen. Geben Sie zum Filtern der Eigenschaftenliste nach einem Eigenschaftennamen einen Suchbegriff in das Textfeld **Eigenschaft suchen** ein. Um alle Eigenschaften anzuzeigen, löschen Sie den Inhalt des Textfelds **Eigenschaft suchen** , und drücken Sie EINGABETASTE.
 
-![Suchen][api-management-properties-search]
+![Suche][api-management-properties-search]
 
-Um die Eigenschaftenliste nach Tag-Werte zu filtern, geben Sie ein oder mehrere Tags in der **nach Tags filtern** Textfeld. Um alle Eigenschaften anzuzeigen, deaktivieren Sie die **nach Tags filtern** Textfeld, und drücken Sie EINGABETASTE.
+Geben Sie zum Filtern der Eigenschaftenliste nach Tagwerten ein oder mehrere Tags in das Textfeld **Nach Tags filtern** ein. Um alle Eigenschaften anzuzeigen, löschen Sie den Inhalt des Textfelds **Nach Tags filtern** , und drücken Sie EINGABETASTE.
 
 ![Filter][api-management-properties-filter]
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Arbeiten mit Richtlinien
-  * [Richtlinien in der API-Verwaltung](api-management-howto-policies.md)
+  * [Richtlinien in Azure API Management](api-management-howto-policies.md)
   * [Richtlinienreferenz](https://msdn.microsoft.com/library/azure/dn894081.aspx)
   * [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx)
 
-## <a name="watch-a-video-overview"></a>Sehen Sie sich ein video-Überblick
+## <a name="watch-a-video-overview"></a>Überblicksvideo ansehen
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Use-Properties-in-Policies/player]
 > 
 > 

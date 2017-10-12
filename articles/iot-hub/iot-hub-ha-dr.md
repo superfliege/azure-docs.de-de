@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: elioda
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: b3ca2ed90dd14350d3962a558aaac41f2e007bbd
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hohe Verfügbarkeit und Notfallwiederherstellung von IoT Hub
 Als Azure-Dienst sorgt IoT Hub für hohe Verfügbarkeit, indem Redundanzen auf Azure-Regionsebene bereitgestellt werden, ohne dass zusätzlicher Aufwand für die Lösung anfällt. Die Microsoft Azure-Plattform bietet auch Features zum Erstellen von Lösungen mit Notfallwiederherstellungsfunktionen (Disaster Recovery, DR) oder regionsübergreifender Verfügbarkeit. Wenn Sie global und regionsübergreifend eine hohe Verfügbarkeit für Geräte oder Benutzer erreichen möchten, müssen Sie Ihre Lösungen für die Nutzung der Notfallwiederherstellungsfeatures von Azure gestalten und vorbereiten. Im Artikel [Azure-Geschäftskontinuität – Technische Anleitung](../resiliency/resiliency-technical-guidance.md) werden die integrierten Features von Azure für Geschäftskontinuität und Notfallwiederherstellung beschrieben. Das Dokument [Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen][Disaster recovery and high availability for Azure applications] enthält Architekturinformationen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und hohe Verfügbarkeit.
@@ -60,4 +59,3 @@ Folgen Sie diesen Links, um mehr über Azure IoT Hub zu erfahren:
 
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [What is Azure IoT Hub?]: iot-hub-what-is-iot-hub.md
-

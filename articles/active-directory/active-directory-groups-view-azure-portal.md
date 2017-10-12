@@ -16,12 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 1cc8b9194433840df9ce16baf1a0ec2c3dd08ad9
-ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.openlocfilehash: 32e34ce0d4d6c12f25fcd4ff2de10809ca7ac361
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>Anzeigen von oder Suchen nach Ihren Benutzergruppen in Azure Active Directory
 In diesem Artikel wird erläutert, wie Sie alle Gruppen in Azure Active Directory (Azure AD) anzeigen. Eines der Features der Benutzerverwaltung von Azure AD ist, dass Sie Gruppen verwenden können, um Verwaltungsaufgaben auszuführen, z.B. gleichzeitig einer Anzahl von Benutzern Lizenzen und Berechtigungen zuweisen.
@@ -45,4 +44,3 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Verwalten der Mitglieder einer Gruppe](active-directory-groups-members-azure-portal.md)
 * [Verwalten der Mitgliedschaften einer Gruppe](active-directory-groups-membership-azure-portal.md)
 * [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](active-directory-groups-dynamic-membership-azure-portal.md)
-

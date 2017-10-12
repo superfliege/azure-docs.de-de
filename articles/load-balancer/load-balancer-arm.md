@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6ba329e55f03cf984ae795c1d3a509e196064e2a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Verwenden der Azure Resource Manager-Unterstützung mit Azure Load Balancer
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
@@ -72,4 +70,3 @@ Erste Schritte mit Cmdlets, Befehlszeilentools und REST-APIs von Azure Resource 
 Sie können auch einen [Lastenausgleich für Internetzugriff erstellen](load-balancer-get-started-internet-arm-ps.md) und die Art des [Verteilungsmodus](load-balancer-distribution-mode.md) des Lastenausgleichs für ein bestimmtes Datenverkehrsverhalten im Netzwerk konfigurieren.
 
 Erfahren Sie, wie Sie [TCP-Leerlauftimeout-Einstellungen für ein Lastenausgleichsmodul](load-balancer-tcp-idle-timeout.md)verwalten. Dies ist wichtig, wenn Ihre Anwendung Verbindungen für Server hinter einem Lastenausgleichsmodul beibehalten muss.
-

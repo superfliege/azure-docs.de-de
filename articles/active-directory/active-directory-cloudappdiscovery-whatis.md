@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 35b898aa3c03aeef914a7df574ac65a22a6c7bec
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="find-unmanaged-cloud-applications-with-cloud-app-discovery"></a>Suchen nach nicht verwalteten Cloudanwendungen per Cloud App Discovery
 ## <a name="summary"></a>Zusammenfassung
@@ -50,5 +49,4 @@ Cloud App Discovery ist eine Funktion von Azure Active Directory Premium, mit de
 * [Cloud App Discovery-Registrierungseinstellungen für Proxyserver mit benutzerdefinierten Ports](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 * [Cloud App Discovery – Agent-Änderungsprotokoll ](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
 

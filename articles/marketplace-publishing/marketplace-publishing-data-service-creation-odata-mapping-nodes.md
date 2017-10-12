@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
 ms.openlocfilehash: 8ff76ea21ba684ae2a2afcb74d66b4912d7be053
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-the-nodes-schema-for-mapping-an-existing-web-service-to-odata-through-csdl"></a>Grundlegende Informationen zum Knotenschema zum Zuordnen eines vorhandenen Webdiensts zu OData über CSDL
 > [!IMPORTANT]
@@ -53,13 +53,13 @@ Details zu diesem Knoten finden Sie [hier][MSDNFunctionImportLink](https://msdn.
 Im Folgenden werden die zusätzlichen Attribute (oder Ergänzungen von Attributen) aufgeführt, die von den FunctionImport-Knoten verfügbar gemacht werden:
 
 **d:BaseUri**: Die URI-Vorlage für die REST-Ressource, die über den Marketplace verfügbar ist. Marketplace verwendet die Vorlage zum Erstellen von Abfragen für den REST-Webdienst. Die URI-Vorlage enthält Platzhalter für die Parameter in Form von {Parametername}, wobei "Parametername" der Name des Parameters ist. Beispiel: apiVersion={apiVersion}.
-Parameter können als URI-Parameter oder als Teil des URI-Pfads angezeigt werden. Bei der Darstellung im Pfad sind sie immer erforderlich (können nicht als potenzielle NULL-Werte gekennzeichnet werden). *Beispiel:* `d:BaseUri="http://api.MyWeb.com/Site/{url}/v1/visits?start={start}&amp;end={end}&amp;ApiKey=3fadcaa&amp;Format=XML"`
+Parameter können als URI-Parameter oder als Teil des URI-Pfads angezeigt werden. Bei der Darstellung im Pfad sind sie immer erforderlich (können nicht als potenzielle NULL-Werte gekennzeichnet werden). *Beispiel:*`d:BaseUri="http://api.MyWeb.com/Site/{url}/v1/visits?start={start}&amp;end={end}&amp;ApiKey=3fadcaa&amp;Format=XML"`
 
 **Name**: Der Name der importierten Funktion.  Darf nicht mit anderen in der CSDL definierten Namen identisch sein.  Beispiel: Name="GetModelUsageFile"
 
-**EntitySet** *(optional)* – Wenn die Funktion eine Auflistung von Entitätstypen zurückgibt, muss der Wert von **EntitySet** der Entitätenmenge entsprechen, zu der die Sammlung gehört. Andernfalls darf das Attribut **EntitySet** nicht verwendet werden. *Beispiel:* `EntitySet="GetUsageStatisticsEntitySet"`
+**EntitySet***(optional)* – Wenn die Funktion eine Auflistung von Entitätstypen zurückgibt, muss der Wert von **EntitySet** der Entitätenmenge entsprechen, zu der die Sammlung gehört. Andernfalls darf das Attribut **EntitySet** nicht verwendet werden. *Beispiel:*`EntitySet="GetUsageStatisticsEntitySet"`
 
-**ReturnType** *(optional)* – Gibt den Typ der Elemente an, die vom URI zurückgegeben werden.  Verwenden Sie dieses Attribut nicht, wenn die Funktion keinen Wert zurückgibt. Folgende Typen werden unterstützt:
+**ReturnType***(optional)* – Gibt den Typ der Elemente an, die vom URI zurückgegeben werden.  Verwenden Sie dieses Attribut nicht, wenn die Funktion keinen Wert zurückgibt. Folgende Typen werden unterstützt:
 
 * **Collection (<Entity type name>)**: Gibt eine Sammlung definierter Entitätstypen an. Der Name ist im Name-Attribut des Knotens "EntityType" vorhanden. Ein Beispiel ist "Collection (WXC. HourlyResult)".
 * **Raw (<mime type>)**: Gibt ein unformatiertes Dokument/Blob an, das an den Benutzer zurückgegeben wird. Ein Beispiel ist "Raw(image/jpeg)". Andere Beispiele:
@@ -75,7 +75,7 @@ Parameter können als URI-Parameter oder als Teil des URI-Pfads angezeigt werden
 * **PageSize** : Auslagern wird über eine logische Seite und Größe (Elemente pro Seite) ausgedrückt. "Page" steht für die aktuelle Seite, die zurückgegeben wird. Parameterwert: "$page"
 * **Size** : "Size" gibt die Anzahl der Elemente an, die für jede Seite zurückgegeben werden. Parameterwert: "$size"
 
-**D:AllowedHttpMethods** *(optional)* – Gibt an, welches Verb von der REST-Ressource behandelt wird. Schränkt außerdem das akzeptierte Verb auf den angegebenen Wert ein.  Standard = "POST".  *Beispiel:* `d:AllowedHttpMethods="GET"` Die verfügbaren Optionen sind:
+**D:AllowedHttpMethods***(optional)* – Gibt an, welches Verb von der REST-Ressource behandelt wird. Schränkt außerdem das akzeptierte Verb auf den angegebenen Wert ein.  Standard = "POST".  *Beispiel:*`d:AllowedHttpMethods="GET"` Die verfügbaren Optionen sind:
 
 * **GET** : Wird in der Regel verwendet, um Daten zurückzugeben
 * **POST** : Wird in der Regel verwendet, um neue Daten einzufügen
@@ -84,7 +84,7 @@ Parameter können als URI-Parameter oder als Teil des URI-Pfads angezeigt werden
 
 Zusätzliche untergeordnete (nicht in der CSDL-Dokumentation behandelte) Knoten innerhalb des Knotens "FunctionImport" sind:
 
-**d:RequestBody** *(optional)*: Der Anforderungstext wird verwendet, um anzugeben, dass die Anforderung einen gesendeten Text erwartet. Parameter können im Anforderungstext angegeben werden. Sie werden in geschweiften Klammern ausgedrückt, z. B. {Parametername}. Diese Parameter werden von der Benutzereingabe dem Text zugeordnet, der an den Inhaltsanbieterdienst übertragen wird. Das requestBody-Element verfügt über ein Attribut mit dem Namen "httpMethod". Das Attribut lässt zwei Werte zu:
+**d:RequestBody***(optional)*: Der Anforderungstext wird verwendet, um anzugeben, dass die Anforderung einen gesendeten Text erwartet. Parameter können im Anforderungstext angegeben werden. Sie werden in geschweiften Klammern ausgedrückt, z. B. {Parametername}. Diese Parameter werden von der Benutzereingabe dem Text zugeordnet, der an den Inhaltsanbieterdienst übertragen wird. Das requestBody-Element verfügt über ein Attribut mit dem Namen "httpMethod". Das Attribut lässt zwei Werte zu:
 
 * **POST** : Wird verwendet, wenn die Anforderung ein "HTTP-POST" ist
 * **GET** : Wird verwendet, wenn die Anforderung ein "HTTP GET" ist
@@ -106,25 +106,25 @@ Zusätzliche untergeordnete (nicht in der CSDL-Dokumentation behandelte) Knoten 
 * **d:Prefix**: Das Präfix für den Namespace, wie in den XML-Ergebnissen, die vom Dienst zurückgegeben werden, z.B. "f:FirstName", "f:LastName", wobei "f" das Präfix ist.
 * **d:Uri** : Der vollständige URI des Namespace, der im Ergebnisdokument verwendet wird. Er entspricht dem Wert, in den das Präfix zur Laufzeit aufgelöst wird.
 
-**d:ErrorHandling** *(optional)* – Dieser Knoten enthält die Bedingungen für die Fehlerbehandlung. Jede Bedingung wird anhand des Ergebnisses überprüft, das vom Dienst für den Inhaltsanbieter zurückgegeben wird. Wenn eine Bedingung dem vorgeschlagenen HTTP-Fehlercode entspricht, wird eine Fehlermeldung an den Endbenutzer zurückgegeben.
+**d:ErrorHandling***(optional)* – Dieser Knoten enthält die Bedingungen für die Fehlerbehandlung. Jede Bedingung wird anhand des Ergebnisses überprüft, das vom Dienst für den Inhaltsanbieter zurückgegeben wird. Wenn eine Bedingung dem vorgeschlagenen HTTP-Fehlercode entspricht, wird eine Fehlermeldung an den Endbenutzer zurückgegeben.
 
-**d:ErrorHandling** *(optional)* und **d:Condition** *(optional)*: Ein Bedingungsknoten enthält eine Bedingung, die anhand des vom Inhaltsanbieterdienst zurückgegebenen Ergebnisses überprüft wird. Folgende Attribute sind **erforderlich** :
+**d:ErrorHandling***(optional)* und **d:Condition***(optional)*: Ein Bedingungsknoten enthält eine Bedingung, die anhand des vom Inhaltsanbieterdienst zurückgegebenen Ergebnisses überprüft wird. Folgende Attribute sind **erforderlich** :
 
 * **d:Match** : Ein XPath-Ausdruck, der überprüft, ob ein bestimmter Knoten/Wert im Ausgabe-XML-Code des Inhaltsanbieters vorhanden ist. Der XPath-Ausdruck wird auf die Ausgabe angewandt und sollte "True" zurückgeben, wenn die Bedingung zutrifft, oder andernfalls "False".
 * **d:HttpStatusCode** : Der HTTP-Statuscode, der von Marketplace zurückgegeben werden sollte, falls die Bedingung zutrifft. Marketplace signalisiert Fehler über HTTP-Statuscodes an den Benutzer. Eine Liste der HTTP-Statuscodes finden Sie unter „http://en.wikipedia.org/wiki/HTTP_status_code“.
 * **d:ErrorMessage** : Fehlermeldung, die – mit dem HTTP-Statuscode – an den Endbenutzer zurückgegeben wird. Dies sollte eine benutzerfreundliche Fehlermeldung in Klartext sein.
 
-**d:Title** *(optional)* – Ermöglicht, den Titel der Funktion zu beschreiben. Hierher stammt der Wert für den Titel:
+**d:Title***(optional)* – Ermöglicht, den Titel der Funktion zu beschreiben. Hierher stammt der Wert für den Titel:
 
 * Das optionale Zuordnungsattribut (ein XPath-Ausdruck) gibt an, wo Sie den Titel in der Antwort finden, die von der Serviceanforderung zurückgegeben wird.
 * – Oder – Der Titel, der als Wert des Knotens angegeben ist.
 
-**d:Rights** *(optional)*: Berechtigungen (z.B. das Urheberrecht), die der Funktion zugeordnet sind. Hierher stammt der Wert für die Rechte:
+**d:Rights***(optional)*: Berechtigungen (z.B. das Urheberrecht), die der Funktion zugeordnet sind. Hierher stammt der Wert für die Rechte:
 
 * Das optionale Zuordnungsattribut (ein XPath-Ausdruck) gibt an, wo Sie die Rechte in der Antwort finden, die von der Serviceanforderung zurückgegeben wird.
 * – Oder – Die Rechte, die als Wert des Knotens angegeben sind.
 
-**d:Description** *(optional)* – Eine kurze Beschreibung der Funktion. Hierher stammt der Wert für die Beschreibung:
+**d:Description***(optional)* – Eine kurze Beschreibung der Funktion. Hierher stammt der Wert für die Beschreibung:
 
 * Das optionale Zuordnungsattribut (ein XPath-Ausdruck) gibt an, wo Sie die Beschreibung in der Antwort finden, die von der Serviceanforderung zurückgegeben wird.
 * – Oder – Die Beschreibung, die als Wert des Knotens angegeben ist.
@@ -150,25 +150,25 @@ Zusätzliche untergeordnete (nicht in der CSDL-Dokumentation behandelte) Knoten 
 ## <a name="parameter-node"></a>Parameter-Knoten
 Dieser Knoten stellt einen Parameter dar, der als Teil der URI-Vorlage/des Anforderungstexts verfügbar gemacht wird, der im Knoten "FunctionImport" angegeben wurde.
 
-Eine sehr hilfreiche Dokumentationsseite mit näheren Informationen zum Knoten „Parameter-Element“ finden Sie [hier](http://msdn.microsoft.com/library/ee473431.aspx). (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen.) *Beispiel:* `<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
+Eine sehr hilfreiche Dokumentationsseite mit näheren Informationen zum Knoten „Parameter-Element“ finden Sie [hier](http://msdn.microsoft.com/library/ee473431.aspx). (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen.) *Beispiel:*`<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
 
 | Parameterattribut | Ist erforderlich | Wert |
 | --- | --- | --- |
-| Name |Ja |Der Name des Parameters. Groß-/Kleinschreibung wird berücksichtigt!  Muss mit der BaseUri-Schreibweise übereinstimmen. **Beispiel:** `<Property Name="IsDormant" Type="Byte" />` |
-| Typ |Ja |Der Parametertyp. Der Wert muss ein **EDMSimpleType** oder komplexer Typ sein, der im Gültigkeitsbereich des Modells liegt. Weitere Informationen finden Sie unter "6 unterstützte Parameter-/Eigenschaftstypen".  (Groß-/Kleinschreibung wird berücksichtigt! Erstes Zeichen in Großbuchstaben, der Rest in Kleinbuchstaben.)  Weitere Informationen finden Sie unter [Konzeptionelle Modelltypen (CSDL)][MSDNParameterLink](http://msdn.microsoft.com/library/bb399548.aspx). **Beispiel:** `<Property Name="LimitedPartnershipID " Type="Int32" />` |
-| Mode |Nein |**In**, „Out“ oder „InOut“, je nachdem, ob der Parameter ein Eingabe-, Ausgabe- oder Eingabe-/Ausgabeparameter ist. (Nur "IN" ist im Azure Marketplace verfügbar.) **Beispiel:** `<Parameter Name="StudentID" Mode="In" Type="Int32" />` |
-| MaxLength |Nein |Die maximal zulässige Länge des Parameters. **Beispiel:** `<Property Name="URI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />` |
-| Precision |Nein |Die Genauigkeit des Parameters. **Beispiel:** `<Property Name="PreviousDate" Type="DateTime" Precision="0" />` |
-| Skalieren |Nein |Der Maßstab des Parameters. **Beispiel:** `<Property Name="SICCode" Type="Decimal" Precision="10" Scale="0" />` |
+| Name |Ja |Der Name des Parameters. Groß-/Kleinschreibung wird berücksichtigt!  Muss mit der BaseUri-Schreibweise übereinstimmen. **Beispiel:**`<Property Name="IsDormant" Type="Byte" />` |
+| Typ |Ja |Der Parametertyp. Der Wert muss ein **EDMSimpleType** oder komplexer Typ sein, der im Gültigkeitsbereich des Modells liegt. Weitere Informationen finden Sie unter "6 unterstützte Parameter-/Eigenschaftstypen".  (Groß-/Kleinschreibung wird berücksichtigt! Erstes Zeichen in Großbuchstaben, der Rest in Kleinbuchstaben.)  Weitere Informationen finden Sie unter [Konzeptionelle Modelltypen (CSDL)][MSDNParameterLink](http://msdn.microsoft.com/library/bb399548.aspx). **Beispiel:**`<Property Name="LimitedPartnershipID " Type="Int32" />` |
+| Mode |Nein |**In**, „Out“ oder „InOut“, je nachdem, ob der Parameter ein Eingabe-, Ausgabe- oder Eingabe-/Ausgabeparameter ist. (Nur "IN" ist im Azure Marketplace verfügbar.) **Beispiel:**`<Parameter Name="StudentID" Mode="In" Type="Int32" />` |
+| MaxLength |Nein |Die maximal zulässige Länge des Parameters. **Beispiel:**`<Property Name="URI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />` |
+| Precision |Nein |Die Genauigkeit des Parameters. **Beispiel:**`<Property Name="PreviousDate" Type="DateTime" Precision="0" />` |
+| Skalieren |Nein |Der Maßstab des Parameters. **Beispiel:**`<Property Name="SICCode" Type="Decimal" Precision="10" Scale="0" />` |
 
 Folgende Attribute wurden der CSDL-Spezifikation hinzugefügt:
 
 | Parameterattribut | Beschreibung |
 | --- | --- |
-| **d:Regex** *(optional)* |Mit einer Regexanweisung wird der Eingabewert für den Parameter überprüft. Der Wert wird abgelehnt, wenn der Eingabewert nicht mit der Anweisung übereinstimmt. Auf diese Weise kann auch eine Reihe von möglichen Werten angegeben werden, z. B. ^ [0-9] +? $, um nur Zahlen zuzulassen. **Beispiel:** `<Parameter Name="name" Mode="In" Type="String" d:Nullable="false" d:Regex="^[a-zA-Z]*$" d:Description="Ein Name darf keine Leerzeichen oder nicht alphabetischen nicht englischen Zeichen enthalten" d:SampleValues="George |
-| **d:Enum** *(optional)* |Eine Liste für den Parameter gültiger Werte, wo der senkrechte Strich als Trennzeichen verwendet wird. Der Typ der Werte muss dem definierten Typ des Parameters entsprechen. Beispiel: `english |
-| **d:Nullable** *(optional)* |Ermöglicht, festzulegen, ob ein Parameter potenziell den Wert NULL haben kann. Der Standardwert ist: "True". Allerdings können Parameter, die als Teil des Pfads in der URI-Vorlage verfügbar gemacht werden, nicht NULL sein. Die Benutzereingabe wird überschrieben, wenn das Attribut für diese Parameter auf "False" festgelegt wird. **Beispiel:** `<Parameter Name="BikeType" Type="String" Mode="In" Nullable="false"/>` |
-| **d:SampleValue** *(optional)* |Ein Beispielwert, der als Hinweis für den Client in der Benutzeroberfläche angezeigt werden soll.  Mehrere Werte können in einer durch senkrechte Striche getrennten Liste hinzugefügt werden, d.h. `a |
+| **d:Regex***(optional)* |Mit einer Regexanweisung wird der Eingabewert für den Parameter überprüft. Der Wert wird abgelehnt, wenn der Eingabewert nicht mit der Anweisung übereinstimmt. Auf diese Weise kann auch eine Reihe von möglichen Werten angegeben werden, z. B. ^ [0-9] +? $, um nur Zahlen zuzulassen. **Beispiel:** `&lt;Parameter Name="name" Mode="In" Type="String" d:Nullable="false" d:Regex="^[a-zA-Z]*$" d:Description="Ein Name darf keine Leerzeichen oder nicht alphabetischen nicht englischen Zeichen enthalten" d:SampleValues="George |
+| **d:Enum***(optional)* |Eine Liste für den Parameter gültiger Werte, wo der senkrechte Strich als Trennzeichen verwendet wird. Der Typ der Werte muss dem definierten Typ des Parameters entsprechen. Beispiel: `english |
+| **d:Nullable***(optional)* |Ermöglicht, festzulegen, ob ein Parameter potenziell den Wert NULL haben kann. Der Standardwert ist: "True". Allerdings können Parameter, die als Teil des Pfads in der URI-Vorlage verfügbar gemacht werden, nicht NULL sein. Die Benutzereingabe wird überschrieben, wenn das Attribut für diese Parameter auf "False" festgelegt wird. **Beispiel:**`<Parameter Name="BikeType" Type="String" Mode="In" Nullable="false"/>` |
+| **d:SampleValue***(optional)* |Ein Beispielwert, der als Hinweis für den Client in der Benutzeroberfläche angezeigt werden soll.  Mehrere Werte können in einer durch senkrechte Striche getrennten Liste hinzugefügt werden, d.h. `a |
 
 ## <a name="entitytype-node"></a>EntityType-Knoten
 Dieser Knoten entspricht einem der Typen, die dem Endbenutzer über den Marketplace zurückgegeben werden. Er enthält auch die Zuordnung aus der Ausgabe, die vom Inhaltsanbieterdienst an die Werte zurückgegeben wird, die an den Endbenutzer zurückgegeben werden.
@@ -177,8 +177,8 @@ Nähere Informationen zu diesem Knoten finden Sie [hier](http://msdn.microsoft.c
 
 | Attributname | Ist erforderlich | Wert |
 | --- | --- | --- |
-| Name |Ja |Der Name des Entitätstyps. **Beispiel:** `<EntityType Name="ListOfAllEntities" d:Map="//EntityModel">` |
-| BaseType |Nein |Der Name eines anderen Entitätstyps, der der Basistyp des Entitätstyps ist, der definiert wird. **Beispiel:** `<EntityType Name="PhoneRecord" BaseType="dqs:RequestRecord">` |
+| Name |Ja |Der Name des Entitätstyps. **Beispiel:**`<EntityType Name="ListOfAllEntities" d:Map="//EntityModel">` |
+| BaseType |Nein |Der Name eines anderen Entitätstyps, der der Basistyp des Entitätstyps ist, der definiert wird. **Beispiel:**`<EntityType Name="PhoneRecord" BaseType="dqs:RequestRecord">` |
 
 Folgende Attribute wurden der CSDL-Spezifikation hinzugefügt:
 
@@ -197,7 +197,7 @@ Der XPath-Ausdruck würde "/foo/bar" lauten, da jeder bar-Knoten der sich wieder
 ## <a name="property-node"></a>Property-Knoten
 Dieser Knoten enthält eine Eigenschaft des Datensatzes.
 
-Nähere Informationen über diesen Knoten finden Sie unter [http://msdn.microsoft.com/library/bb399546.aspx](http://msdn.microsoft.com/library/bb399546.aspx) (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen). *Beispiel:* `<EntityType Name="MetaDataEntityType" d:Map="/MyXMLPath">
+Nähere Informationen über diesen Knoten finden Sie unter [http://msdn.microsoft.com/library/bb399546.aspx](http://msdn.microsoft.com/library/bb399546.aspx) (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen). *Beispiel:*`<EntityType Name="MetaDataEntityType" d:Map="/MyXMLPath">
         <Property Name="Name"     Type="String" Nullable="true" d:Map="./Service/Name" d:IsPrimaryKey="true" DefaultValue=”Joe Doh” MaxLength="25" FixedLength="true" />
         ...
         </EntityType>`
@@ -236,7 +236,7 @@ Mit dem XPath-Ausdruck "./bar/baz0" kann hier der baz0-Knoten aus dem Inhaltsanb
 
 **d:isExposed** – Bestimmt, ob das Tabellenschema verfügbar gemacht wird (in der Regel "True"). Siehe "DataService CSDL"-Beispiel.
 
-**d:IsView** *(optional)* – "True", wenn dies auf einer Sicht statt einer Tabelle basiert.  Siehe "DataService CSDL"-Beispiel.
+**d:IsView***(optional)* – "True", wenn dies auf einer Sicht statt einer Tabelle basiert.  Siehe "DataService CSDL"-Beispiel.
 
 **d:Tableschema** – Siehe "DataService CSDL"-Beispiel.
 

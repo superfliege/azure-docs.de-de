@@ -9,12 +9,11 @@ ms.date: 04/27/2017
 ms.topic: sample
 ms.service: functions
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 39e26ba6c3ae0927fbf6c62af0bd3b48d16657ad
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-github"></a>Erstellen einer Funktionen-App und Bereitstellen von Funktionscode über GitHub
 
@@ -30,7 +29,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 Dieses Beispiel erstellt eine Azure-Funktionen-App und stellt Funktionscode über GitHub bereit.
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/deploy-function-app-with-function-github/deploy-function-app-with-function-github.sh?highlight=3 "Erstellen einer Funktionen-App mit Bereitstellung über GitHub")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/deploy-function-app-with-function-github/deploy-function-app-with-function-github.sh?highlight=3 "Create a function app with deployment from GitHub")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -50,4 +49,3 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. D
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
 
 Weitere Azure Functions-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure Functions](../functions-cli-samples.md).
-

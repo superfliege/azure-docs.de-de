@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: ramankum
+ms.openlocfilehash: 5d2360efba8d4336b584f1563274ac7016764aaf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 9e5c73ceb0ff7d9c18c9cf7128b69e40b9796874
-ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Konvertieren zwischen dem Standardspeicher und Storage Premium für verwaltete Azure-Datenträger
 
 Für verwaltete Datenträger stehen zwei Speicheroptionen zur Verfügung: [Premium](../../storage/storage-premium-storage.md) (SSD-basiert) und [Standard](../../storage/storage-standard-storage.md) (HDD-basiert). Entsprechend Ihren Leistungsanforderungen können Sie problemlos zwischen beiden Optionen wechseln – und das bei minimaler Downtime. Diese Funktion ist nicht für nicht verwaltete Datenträger verfügbar. Sie können jedoch problemlos eine [Konvertierung in verwaltete Datenträger ](convert-unmanaged-to-managed-disks.md) durchführen, um einfach zwischen beiden Optionen zu wechseln.
@@ -117,5 +115,4 @@ Start-AzureRmVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erstellen Sie eine schreibgeschützte Kopie eines virtuellen Computers mit [Momentaufnahmen](snapshot-copy-managed-disk.md).
-
 

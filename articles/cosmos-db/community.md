@@ -15,10 +15,10 @@ ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
 ms.openlocfilehash: 4be7f077fa5bc03531baf2443c663f1d8bc4a1c8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="community-portal"></a>Communityportal
 ## <a name="community-spotlight"></a>Community-Schwerpunktthema
@@ -139,7 +139,7 @@ Sie können über aktuelle Azure Cosmos DB-Nachrichten und -Features auf dem Lau
 | [SQL Saturday #430 – Sofia 2015](http://www.sqlsaturday.com/430/Sessions/Details.aspx?sid=36090) |Leonard Lobel |Sofia, Bulgarien |10. Oktober 2015 |– |
 | [SQL Samstag #444 – Kansas City 2015](http://www.sqlsaturday.com/444/Sessions/Details.aspx?sid=38576) |Jeff Renz |Kansas City, MO |3. Oktober 2015 |– |
 | [SQL Saturday #429 – Porto 2015](http://www.sqlsaturday.com/429/Sessions/Details.aspx?sid=36089) |Leonard Lobel |Porto, Portugal |3. Oktober 2015 |– |
-| [AzureCon](https://azure.microsoft.com/azurecon/) |David Makogon, Ryan Crawcour, John Macintyre |Virtuelle Veranstaltung |29. September 2015 |[Azure data and analytics platform](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207) [Working with NoSQL Data in DocumentDB](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) |
+| [AzureCon](https://azure.microsoft.com/azurecon/) |David Makogon, Ryan Crawcour, John Macintyre |Virtuelle Veranstaltung |29. September 2015 |[Azure data and analytics platform](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207)[Working with NoSQL Data in DocumentDB](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) |
 | [SQL Saturday #434 – Holland 2015](http://www.sqlsaturday.com/434/Sessions/Details.aspx?sid=36413) |Leonard Lobel |Utrecht, Niederlande |26. September 2015 |[Einführung in Azure DocumentDB](https://channel9.msdn.com/Blogs/Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
 | [SQL Saturday #441 – Denver 2015](http://www.sqlsaturday.com/441/Sessions/Details.aspx?sid=39191) |Jeff Renz |Denver, CO |19. September 2015 |– |
 | [Meetup: San Francisco Bay Area Azure Developers](http://www.meetup.com/bayazure/events/223943785/) |Andrew Liu |San Francisco, CA |15. September 2015 |– |
@@ -154,7 +154,7 @@ Sie können über aktuelle Azure Cosmos DB-Nachrichten und -Features auf dem Lau
 | [Meetup: London SQL Server User Group](http://www.meetup.com/London-SQL-Server-User-Group/events/221525058/) |Allan Mitchell |London, Großbritannien |19. Mai 2015 |– |
 | [DevIntersection](https://devintersection.com/) |Andrew Liu |Scottsdale, Arizona, USA |18. bis 21. Mai 2015 |– |
 | [Meetup: Seattle Web App Developers Group](http://www.meetup.com/Seattle-Web-App-Developers-Group/events/220591071/) |Andrew Liu |Seattle, WA |14. Mai 2015 |– |
-| [Ignite](http://ignite.microsoft.com/) |Andrew Hoh, John Macintyre |Chicago, IL |4. bis 8. Mai 2015 |[SELECT Latest FROM DocumentDB (Video)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/) [DocumentDB and Azure HDInsight: Better Together (Video)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
+| [Ignite](http://ignite.microsoft.com/) |Andrew Hoh, John Macintyre |Chicago, IL |4. bis 8. Mai 2015 |[SELECT Latest FROM DocumentDB (Video)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/)[DocumentDB and Azure HDInsight: Better Together (Video)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
 | [Build 2015](http://www.buildwindows.com/) |Ryan Crawcour |San Francisco, CA |29. April bis 1. Mai 2015 |[Build the Next Big Thing with Azure’s NoSQL Service: DocumentDB](https://channel9.msdn.com/Events/Build/2015/2-729) |
 | [Global Azure Bootcamp 2015 – Spanien](http://azurebootcamp.es/) |Luis Ruiz Pavon, Roberto Gonzalez |Madrid, Spanien |25. April 2015 |[#DEAN DocumentDB + Express + AngularJS + NodeJS running on Azure](https://channel9.msdn.com/events/Developers-Spain-Events/Global-Azure-Bootcamp-2015/DEAN-DocumentDB--Express--AngularJS--NodeJS-running-on-Azure) |
 | [Meetup: Azure Usergroup Denmark](http://www.meetup.com/Azure-Usergroup-Denmark/events/221026670/) |Christian Holm Diget |Kopenhagen, Dänemark |16. April 2015 |– |
@@ -171,7 +171,7 @@ Sie können über aktuelle Azure Cosmos DB-Nachrichten und -Features auf dem Lau
 | Channel 9: Microsoft + Open Source |Jose Miguel Parrella |14. April 2016 |[From MEAN to DEAN in Azure with Bitnami, VM Scale Sets and DocumentDB (Von MEAN zu DEAN in Azure mit Bitnami, VM-Skalierungsgruppen und DocumentDB)](https://channel9.msdn.com/Blogs/Open/From-MEAN-to-DEAN-in-Azure-with-Bitnami-VM-Scale-Sets-and-DocumentDB) |
 | Wired2WinWebinar |Sai Sankar Kunnathukuzhiyil |9. März 2016 |[Developing Solutions with Azure DocumentDB (Entwickeln von Lösungen mit Azure DocumentDB)](https://www.youtube.com/watch?v=xKttEwXv_bs) |
 | Integration User Group |Han Wong |17. Februar 2016 |[Analyze and visualize non-relational data with DocumentDB + Power BI (Analysieren und Visualisieren von nicht relationalen Daten mit DocumentDB + Power BI)](http://www.integrationusergroup.com/analyze-visualize-non-relational-data-documentdb-power-bi/) |
-| The Azure Podcast |Cale Teeter |14. Januar 2016 |[Episode 110: Using DocumentDB & Search](http://azpodcast.azurewebsites.net/post/Episode-110-Using-DocumentDB-Search) |
+| The Azure Podcast |Cale Teeter |14. Januar 2016 |[Episode 110: Using DocumentDB &amp; Search](http://azpodcast.azurewebsites.net/post/Episode-110-Using-DocumentDB-Search) |
 | Kanal 9: Moderne Anwendungen |Tara Shankar Jana |13. Dezember 2016 |[Take a modern approach to data in your apps (Ein moderner Ansatz für Daten in Ihren Apps)](https://channel9.msdn.com/Series/Modern-Applications/Take-a-modern-approach-to-data-in-your-apps) |
 | NinjaTips |Miguel Quintero |10. Dezember 2015 |[DocumentDB - Un vistazo general](https://channel9.msdn.com/Series/Ninja-Tips/31-NinjaTips-Desarrollo-DocumentDB-1-Vistazo-general) |
 | Integration User Group |Howard Edidin |5. Oktober 2015 |[Azure DocumentDB for Healthcare Integration](http://www.integrationusergroup.com/?event=azure-documentdb-and-biztalk) |

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: fcefb31904cfb77022db0358e9feee6a0479db81
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann
 Bei Verwendung der automatischen Benutzerbereitstellung mit einer Anwendung stellt Azure AD in regelmäßigen Zeitintervallen (in der Regel alle 10 Minuten) automatisch Benutzerkonten in einer App, die auf Dingen wie [Benutzer- und Gruppenzuordnung](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) basiert, bereit und aktualisiert diese.

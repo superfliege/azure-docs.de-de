@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
 ms.openlocfilehash: 9da76bb5f649817cd2f027f3d0eb46d58a996b4f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview-using-azure-powershell"></a>Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau) mit Azure PowerShell
 Es wird beschrieben, wie Sie einen Azure HDInsight-Cluster mit Azure Active Directory (Azure AD) und [Apache Ranger](http://hortonworks.com/apache/ranger/) per Azure PowerShell einrichten. Ein Azure PowerShell-Skript wird bereitgestellt, um die Konfiguration schneller und weniger fehleranfällig zu machen. In die Domäne eingebundenes HDInsight kann nur unter Linux-basierten Clustern konfiguriert werden. Weitere Informationen finden Sie unter [Introduce Domain-joined HDInsight clusters (Einführung in HDInsight-Cluster mit Domänenverknüpfung)](hdinsight-domain-joined-introduction.md).
@@ -132,7 +132,7 @@ In diesem Abschnitt erstellen Sie einen Linux-basierten Hadoop-Cluster in HDInsi
    * **Preise**: Wählen Sie die Anzahl der Workerknoten Ihres Clusters aus.
    * **Erweiterte Konfiguration**: 
      
-     * **Domain-joining & Vnet/Subnet (Domänenbeitritt & VNET-Subnetz)**: 
+     * **Domain-joining &amp; Vnet/Subnet (Domänenbeitritt &amp; VNET-Subnetz)**: 
        
        * **Domäneneinstellungen**: 
          
@@ -172,8 +172,8 @@ Eine weitere Möglichkeit in die Domäne eingebundene HDInsight-Cluster zu erste
    * **Cluster Worker Node count (Anzahl von Workerknoten im Cluster)**: Wählen Sie die Anzahl der Workerknoten aus.
    * **Cluster-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **admin**.
    * **SSH-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **sshuser**.  Sie können auch einen anderen Namen festlegen. 
-   * **Virtual Network-ID**: /subscriptions/&lt;SubscriptionID>/resourceGroups/&lt;ResourceGroupName>/providers/Microsoft.Network/virtualNetworks/&lt;VNetName>
-   * **Virtuelles Netzwerk/Subnetz**: /subscriptions/&lt;SubscriptionID>/resourceGroups/&lt;ResourceGroupName>/providers/Microsoft.Network/virtualNetworks/&lt;VNetName>/subnets/Subnet1
+   * **Virtual Network-ID**: /subscriptions/&lt;SubscriptionID&gt;/resourceGroups/&lt;ResourceGroupName&gt;/providers/Microsoft.Network/virtualNetworks/&lt;VNetName&gt;
+   * **Virtuelles Netzwerk/Subnetz**: /subscriptions/&lt;SubscriptionID&gt;/resourceGroups/&lt;ResourceGroupName&gt;/providers/Microsoft.Network/virtualNetworks/&lt;VNetName&gt;/subnets/Subnet1
    * **Domänenname**: contoso.onmicrosoft.com
    * **Organization Unit DN (Organisationseinheit DN)**: OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com
    * **Cluster Users Group D Ns (Nutzergruppe Cluster D Ns)**: "\"CN=HiveUsers,OU=AADDC Users,DC=<DomainName>,DC=onmicrosoft,DC=com\""

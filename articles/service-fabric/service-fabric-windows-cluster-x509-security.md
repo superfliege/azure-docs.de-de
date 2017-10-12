@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dekapur
+ms.openlocfilehash: d66f02051279d1cfe685fdae6aa8a035f4edd5aa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: e37a68fcf645cf1056b70e520545fb3ce7c22946
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-a-standalone-cluster-on-windows-using-x509-certificates"></a>Schützen eines eigenständigen Windows-Clusters mithilfe von X.509-Zertifikaten
 In diesem Artikel wird beschrieben, wie Sie die Kommunikation zwischen den unterschiedlichen Knoten Ihres eigenständigen Windows-Clusters schützen und Clients, die eine Verbindung mit diesem Cluster herstellen, mit X.509-Zertifikaten authentifizieren. So wird sichergestellt, dass nur autorisierte Benutzer auf den Cluster und die bereitgestellten Anwendungen zugreifen und Verwaltungsaufgaben durchführen können.  Die Zertifikatsicherheit sollte auf dem Cluster aktiviert werden, wenn der Cluster erstellt wird.  
@@ -327,5 +326,4 @@ Um den Cluster zu entfernen, stellen Sie eine Verbindung mit dem Knoten im Clust
 > Eine fehlerhafte Zertifikatkonfiguration kann dazu führen, dass der Cluster während der Bereitstellung nicht angezeigt wird. Um Sicherheitsprobleme selbst zu diagnostizieren, sehen Sie in der Ereignisanzeigegruppe *Anwendungs- und Dienstprotokolle* > *Microsoft-Service Fabric* nach.
 > 
 > 
-
 

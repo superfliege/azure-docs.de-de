@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
 ms.openlocfilehash: 046ce7af40301014746c6aef07d08d81ab4adcc2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Anleitung zum Erstellen eines VM-Images für Azure Marketplace
 In diesem Artikel ( **Schritt 2**) werden Sie durch die Vorbereitung der virtuellen Festplatten (VHDs) geführt, die Sie im Azure Marketplace bereitstellen möchten. Ihre VHDs bilden die Grundlage Ihrer SKU. Der Prozess variiert in Abhängigkeit davon, ob Sie eine Linux- oder Windows-basierte SKU bereitstellen. Dieser Artikel deckt beide Szenarien ab. Dieser Vorgang kann parallel zum [Erstellen und Registrieren eines Kontos][link-acct-creation] ausgeführt werden.

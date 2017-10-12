@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: 58a37c0dd24d54996f517961f3a7f1ec36639cfe
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-service-bus-from-net-with-amqp-10"></a>Verwenden von Service Bus aus .NET mit AMQP 1.0
 
@@ -137,4 +136,3 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
 [Leitfaden zum AMQP 1.0-Protokoll]: service-bus-amqp-protocol-guide.md
 [AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
-

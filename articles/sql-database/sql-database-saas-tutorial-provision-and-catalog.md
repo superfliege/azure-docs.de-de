@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: febf9d9f8a32a95ae61734cc2d3632bb74f6c8f5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="learn-how-to-provision-and-catalog-new-tenants-and-register-them-in-the-catalog"></a>Erfahren Sie, wie Sie neue Mandanten bereitstellen und katalogisieren und im Katalog registrieren können.
 
@@ -176,4 +175,3 @@ Sehen Sie sich das [Tutorial zur Leistungsüberwachung](sql-database-saas-tutori
 * Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Clientbibliothek für elastische Datenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library)
 * [So wird's gemacht: Debuggen von Skripts in Windows PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
-

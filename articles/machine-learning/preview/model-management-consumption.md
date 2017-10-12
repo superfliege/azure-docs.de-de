@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: fc4d793bcf402a3e742fae2b2c0052f2d60d1b47
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="consuming-web-services"></a>Nutzen von Webdiensten
 Sobald Sie ein Modell als in Echtzeit arbeitenden Webdienst bereitgestellt haben, können Sie Daten an ihn senden und Vorhersagen von verschiedenen Plattformen und Anwendungen abrufen. Der in Echtzeit arbeitende Webdienst macht eine REST-API zum Abrufen von Vorhersagen verfügbar. Sie können Daten im ein- oder mehrzeiligen Format an den Webdienst senden, um eine oder mehrere Vorhersagen gleichzeitig zu erhalten.
@@ -165,4 +164,3 @@ headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_ke
 resp = requests.post(url, data, headers=headers)
 resp.text
 ```
-

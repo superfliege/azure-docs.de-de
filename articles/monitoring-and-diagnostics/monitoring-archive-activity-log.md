@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
 ms.openlocfilehash: 0e3a5b84f57eac96249430fa1c2c4cc076c2926a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivieren des Azure-Aktivitätsprotokolls
 In diesem Artikel erfahren Sie, wie Sie Ihr [**Azure-Aktivitätsprotokoll**](monitoring-overview-activity-logs.md) über das Azure-Portal, mithilfe von PowerShell-Cmdlets oder mithilfe der plattformübergreifenden Befehlszeilenschnittstelle in einem Speicherkonto archivieren. Dies ist hilfreich, wenn Sie Ihr Aktivitätsprotokoll (bei vollständiger Kontrolle über die Aufbewahrungsrichtlinie) zur Überwachung, statischen Analyse oder als Sicherungskopie länger als 90 Tage aufbewahren möchten. Falls Sie Ihre Ereignisse nur maximal 90 Tage lang aufbewahren möchten, müssen Sie keine Archivierung in einem Speicherkonto einrichten, da Aktivitätsprotokollereignisse in der Azure-Plattform auch ohne aktivierte Archivierung 90 Tage lang aufbewahrt werden.

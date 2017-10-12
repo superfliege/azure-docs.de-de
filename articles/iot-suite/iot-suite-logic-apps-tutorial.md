@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: corywink
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 5e3221395082513f842863615d40f7d3ebf2562e
-ms.contentlocale: de-de
-ms.lasthandoff: 03/10/2017
-
+ms.openlocfilehash: 7dbfef6d2bcac81d89ed0e3cf36d4c75a264cba7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>Tutorial: Verbinden einer Logik-App mit der vorkonfigurierten Remoteüberwachungslösung von Azure IoT Suite
 Die vorkonfigurierte Remoteüberwachungslösung von [Microsoft Azure IoT Suite][lnk-internetofthings] eignet sich besonders gut für die ersten Schritte mit einem lückenlosen Featuresatz zum Veranschaulichen einer IoT-Lösung. In diesem Tutorial wird erläutert, wie Sie Ihrer vorkonfigurierten Remoteüberwachungslösung von Microsoft Azure IoT Suite eine Logik-App hinzufügen. Diese Schritte veranschaulichen, wie Sie mit Ihrer IoT-Lösung noch mehr erreichen können, indem Sie sie mit einem Geschäftsprozess verbinden.
@@ -172,4 +171,3 @@ Nachdem Sie eine Logik-App zum Verbinden der vorkonfigurierten Lösung mit einem
 [lnk-devsetup]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/dev-setup.md
 [lnk-localdeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/local-deployment.md
 [lnk-clouddeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/cloud-deployment.md
-

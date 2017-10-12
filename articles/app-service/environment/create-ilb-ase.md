@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: cc7bdd7860506c20187dc913b72111824d1737ca
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
@@ -69,7 +68,7 @@ So erstellen Sie eine ILB-ASE:
 
     * Skalieren Sie auf bis zu 100 Instanzen, profitieren Sie jedoch von einer schnelleren Front-End-Skalierung.
 
-6. Wählen Sie **Virtuelles Netzwerk/Speicherort** > **Konfigurationen virtueller Netzwerke**. Legen Sie den **VIP-Typ** auf **Intern** fest.
+6. Wählen Sie **Virtuelles Netzwerk/Speicherort** >  **Konfigurationen virtueller Netzwerke**. Legen Sie den **VIP-Typ** auf **Intern** fest.
 
 7. Geben Sie einen Domänennamen ein. Diese Domäne wird für Apps verwendet, die in dieser ASE erstellt werden. Es gelten einige Einschränkungen. Der Domänenname darf nicht folgendermaßen lauten:
 
@@ -250,4 +249,3 @@ Weitere Informationen zum Konfigurieren Ihrer ILB-ASE mit einem WAF-Gerät finde
 [Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
-

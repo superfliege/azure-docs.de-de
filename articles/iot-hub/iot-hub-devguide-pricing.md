@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: elioda
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 05006a78cc7d82bc048ec5706465f7140eb40e94
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub – Preisinformationen
 
 [Azure IoT Hub – Preise][lnk-pricing] enthält die allgemeinen Informationen zu den verschiedenen SKUs und die Preise für IoT Hub. Dieser Artikel enthält weitere Informationen dazu, wie die verschiedenen IoT Hub-Funktionen als Nachrichten von IoT Hub getaktet werden.
@@ -62,4 +60,3 @@ Zusammen verbrauchen das Gerät und das Lösungs-Back-End also 641 Nachrichten p
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
 [lnk-message-size]: iot-hub-devguide-messages-construct.md
-

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: fd500fdd4c8642bad96dcf71eebcf1fad461a35f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung
 
@@ -30,7 +30,7 @@ Das führt zum Anzeigen einer Genehmigungsaufforderung. Dies erfolgt im Allgemei
 Bestimmte Bedingungen müssen sein erfüllt, damit ein Benutzer die von einer Anwendung benötigten Berechtigungen genehmigt. Wenn diese Bedingungen nicht erfüllt sind, können verschiedene Fehler auftreten. Diese umfassen:
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Anfordern nicht autorisierter Berechtigungen
-* **AADSTS90093:** &lt;Anzeigename_der_Client-App&gt; fordert mindestens eine Berechtigung an, für deren Erteilung Sie nicht autorisiert sind. Wenden Sie sich an einen Administrator, der diese Anwendung in Ihrem Auftrag genehmigen kann.
+* **AADSTS90093:**&lt;Anzeigename_der_Client-App&gt; fordert mindestens eine Berechtigung an, für deren Erteilung Sie nicht autorisiert sind. Wenden Sie sich an einen Administrator, der diese Anwendung in Ihrem Auftrag genehmigen kann.
 
 Dieser Fehler tritt auf, wenn ein Benutzer, der kein Unternehmensadministrator ist, versucht, eine Anwendung zu verwenden, die Berechtigungen anfordert, die nur ein Administrator erteilen kann. Dieser Fehler kann von einem Administrator behoben werden, indem der Zugriff auf die Anwendung im Auftrag der Organisation gewährt wird.
 
@@ -50,7 +50,7 @@ Dieser Fehler zeigt an, dass auf Serverseite ein vorübergehendes Dienstproblem 
 Wenden Sie sich an den Anwendungsentwickler.
 
 ##  <a name="resource-not-available-in-tenant-error"></a>Ressource im Mandanten nicht verfügbar
-* **AADSTS65005:** &lt;Anzeigename_der_Client-App&gt; fordert den Zugriff auf &lt;Anzeigename_der_Ressourcenanwendung&gt; an, die in &lt;Anzeigename_des_Mandanten&gt; Ihrer Organisation nicht verfügbar ist. 
+* **AADSTS65005:**&lt;Anzeigename_der_Client-App&gt; fordert den Zugriff auf &lt;Anzeigename_der_Ressourcenanwendung&gt; an, die in &lt;Anzeigename_des_Mandanten&gt; Ihrer Organisation nicht verfügbar ist. 
 
 Stellen Sie sicher, dass diese Ressource verfügbar ist, oder wenden Sie sich an einen Administrator von &lt;Anzeigename_des_Mandanten&gt;.
 

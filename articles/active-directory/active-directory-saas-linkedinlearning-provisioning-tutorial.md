@@ -1,6 +1,6 @@
 ---
-title: "Lernprogramm: LinkedIn Learning für die automatische benutzerbereitstellung in Azure Active Directory konfigurieren | Microsoft Docs"
-description: Informationen Sie zum Konfigurieren von Azure Active Directory automatisch bereitzustellen und deren Bereitstellung Benutzerkonten LinkedIn lernen.
+title: "Tutorial: Konfigurieren von LinkedIn Learning für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in LinkedIn Learning konfigurieren."
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
@@ -15,112 +15,112 @@ ms.topic: article
 ms.date: 04/15/2017
 ms.author: asmalser-msft
 ms.openlocfilehash: 5eb2b1594eedb2a135d7b8cd501a33d8264e136b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="tutorial-configuring-linkedin-learning-for-automatic-user-provisioning"></a>Lernprogramm: Konfigurieren von LinkedIn Learning für die automatische Benutzerbereitstellung
+# <a name="tutorial-configuring-linkedin-learning-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LinkedIn Learning für die automatische Benutzerbereitstellung
 
 
-Dieses Lernprogramm wird zur Darstellung der Schritte zum Ausführen in LinkedIn Learning und Azure AD, bereitzustellen und zu deren Bereitstellung aufheben Benutzerkonten aus Azure AD mit LinkedIn Learning benötigten. 
+Dieses Tutorial zeigt Ihnen die Schritte, die Sie in LinkedIn Learning und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in LinkedIn Learning automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Lernprogramm beschriebene Szenario wird davon ausgegangen, dass Sie bereits über Folgendes verfügen:
+Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-*   Azure Active Directory-Mandanten
-*   Ein Mandant LinkedIn Learning 
-*   Ein Administratorkonto im LinkedIn Learning mit Zugriff auf das Kontocenter LinkedIn
+*   Azure Active Directory-Mandant
+*   Einen LinkedIn Learning-Mandanten 
+*   Ein Administratorkonto in LinkedIn Learning mit Zugriff auf das LinkedIn Account Center
 
 > [!NOTE]
-> Azure Active Directory integriert mit LinkedIn Learning mithilfe der [SCIM](http://www.simplecloud.info/) Protokoll.
+> Die Integration von Azure Active Directory mit LinkedIn Learning erfolgt über das [SCIM](http://www.simplecloud.info/)-Protokoll.
 
 ## <a name="assigning-users-to-linkedin-learning"></a>Zuweisen von Benutzern zu LinkedIn Learning
 
-Azure Active Directory verwendet ein Konzept "Zuweisungen" aufgerufen, um zu bestimmen, welche Benutzer Zugriff auf ausgewählte apps erhalten sollen. Im Kontext der automatischen benutzerbereitstellung-Konto werden nur die Benutzer und Gruppen, die "zu einer Anwendung in Azure AD zugewiesen wurden" synchronisiert. 
+Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Bereitstellung von Benutzerkonten werden nur die Benutzer und Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden. 
 
-Vor dem Konfigurieren und Aktivieren der Bereitstellung des Diensts, müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD den Benutzer darstellen, die Zugriff auf LinkedIn Learning benötigen. Nachdem entschieden, können Sie diese LinkedIn Learning Zuweisen von Benutzern zu anhand der Anweisungen hier:
+Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD die Benutzer darstellen, die Zugriff auf LinkedIn Learning benötigen. Anschließend können Sie diese Benutzer LinkedIn Learning anhand der folgenden Anweisungen zuweisen:
 
-[Weisen Sie einen Benutzer oder eine Gruppe zu einer Unternehmens-app](active-directory-coreapps-assign-user-azure-portal.md)
+[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](active-directory-coreapps-assign-user-azure-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-linkedin-learning"></a>Wichtige Tipps zum Zuweisen von Benutzern zu LinkedIn Learning
 
-*   Es wird empfohlen, ein einzelnes Azure AD-Benutzers LinkedIn Learning zum Testen der Konfiguration der Bereitstellung zugewiesen werden. Später können zusätzliche Benutzer und/oder Gruppen zugewiesen werden.
+*   Es wird empfohlen, LinkedIn Learning einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
-*   Beim Zuweisen eines Benutzers zu LinkedIn lernen müssen, wählen die **Benutzer** Rolle im Dialogfeld "Zuordnung". Die Rolle "Standardzugriffs" funktioniert nicht für die Bereitstellung.
+*   Beim Zuweisen eines Benutzers zu LinkedIn Learning müssen Sie im Dialogfeld „Zuweisung“ die Rolle **Benutzer** auswählen. Die Rolle „Standardzugriff“ funktioniert nicht für die Bereitstellung.
 
 
-## <a name="configuring-user-provisioning-to-linkedin-learning"></a>Konfiguration der benutzerbereitstellung LinkedIn lernen
+## <a name="configuring-user-provisioning-to-linkedin-learning"></a>Konfigurieren der Benutzerbereitstellung in LinkedIn Learning
 
-Dieser Abschnitt führt Sie durch die Verbindung mit Ihrem Azure AD-API-Bereitstellung LinkedIn-Learning-SCIM-Benutzerkonto, und Konfigurieren des Bereitstellung-Diensts zum Erstellen, aktualisieren und Deaktivieren von Benutzerkonten in LinkedIn Learning basierend auf Benutzer und gruppenzuweisung in Azure AD zugewiesen.
+Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD mit der API zur Bereitstellung von SCIM-Benutzerkonten von LinkedIn Learning sowie durch das Konfigurieren des Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren zugewiesener Benutzerkonten in LinkedIn Learning basierend auf der Benutzer- und Gruppenzuweisung in Azure AD.
 
 > [!TIP]
-> Wahlweise kann auch für LinkedIn Learning SAML-basierten einmaliges Anmelden aktiviert, gemäß der Anweisungen [Azure-Portal](https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese zwei Funktionen ergänzen sich gegenseitig.
+> Sie können auch das SAML-basierte einmalige Anmelden für LinkedIn Learning aktivieren. Befolgen Sie dazu die Anweisungen im [Azure-Portal](https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
 
-### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-learning-in-azure-ad"></a>So konfigurieren Sie die automatische kontobereitstellung in LinkedIn Learning in Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-learning-in-azure-ad"></a>So konfigurieren Sie die automatische Bereitstellung von Benutzerkonten für LinkedIn Learning in Azure AD
 
 
-Der erste Schritt ist das Zugriffstoken LinkedIn abrufen. Wenn Sie ein Enterprise-Administrator sind, können Sie ein Zugriffstoken selbst bereitstellen. Wechseln Sie in Ihrem Kontocenter zu **Einstellungen &gt; globale Einstellungen** , und öffnen Sie die **SCIM Setup** Bereich.
+Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Sie ein Enterprise-Administrator sind, können Sie das Zugriffstoken selbst bereitstellen. Gehen Sie in Ihrem Kontocenter auf **Einstellungen &gt; Globale Einstellungen**, und öffnen Sie den Bereich **SCIM Setup**.
 
 > [!NOTE]
-> Wenn Sie das Kontocenter direkt statt über einen Link zugreifen, können Sie es mithilfe der folgenden Schritte erreichen.
+> Wenn Sie direkt auf das Kontocenter zugreifen und nicht über einen Link, können Sie es über die folgenden Schritte erreichen.
 
-1)  Melden Sie sich am Center-Konto an.
+1)  Melden Sie sich am Kontocenter an.
 
-2)  Wählen Sie **Admin &gt; Administratoreinstellungen** .
+2)  Wählen Sie **Administrator &gt; Administratoreinstellungen** aus.
 
-3)  Klicken Sie auf **erweiterte Integrationen** auf der linken Randleiste. Sie werden an das Kontocenter weitergeleitet.
+3)  Klicken Sie auf **Advanced Integrations** (Erweiterte Integrationen) auf der linken Seitenleiste. Sie werden zum Kontocenter weitergeleitet.
 
-4)  Klicken Sie auf **+ Add neue SCIM Konfiguration** und führen Sie das Verfahren durch Ausfüllen der jedes Feld.
+4)  Klicken Sie auf **+ Add new SCIM configuration** (+ Neue SCIM-Konfiguration hinzufügen), und befolgen Sie das Verfahren, indem Sie jedes Feld ausführen.
 
-> Wenn die automatische Zuweisung von Lizenzen nicht aktiviert ist, bedeutet dies, dass nur Benutzerdaten synchronisiert werden.
+> Wenn die automatische Zuweisung von Lizenzen nicht aktiviert ist, bedeutet das, dass nur Benutzerdaten synchronisiert werden.
 
 ![LinkedIn Learning-Bereitstellung](./media/active-directory-saas-linkedinlearning-provisioning-tutorial/linkedin_1.PNG)
 
-> Wenn Autolicense Zuweisung aktiviert ist, müssen Sie die Anwendungsinstanz und Lizenztyp zu beachten. Auf einer Lizenzen zugewiesen ist, zunächst Grundlage dienen, bis alle Lizenzen durchgeführt werden.
+> Wenn die automatische Zuweisung von Lizenzen aktiviert ist, müssen Sie die Anwendungsinstanz und den Lizenztyp notieren. Lizenzen werden nach dem Prinzip „Wer zuerst kommt, malt zuerst“ zugewiesen, bis alle Lizenzen ausgeführt sind.
 
 ![LinkedIn Learning-Bereitstellung](./media/active-directory-saas-linkedinlearning-provisioning-tutorial/linkedin_2.PNG)
 
-5)  Klicken Sie auf **generieren Token**. Daraufhin sollte das token Display-Zugriff unter der **Zugriffstoken** Feld.
+5)  Klicken Sie dann auf **Token generieren**. Ihr Zugriffstoken sollte unter dem Feld **Zugriffstoken** angezeigt werden.
 
-6)  Speichern Sie das Zugriffstoken in der Zwischenablage oder des Computers vor dem Verlassen der Seite.
+6)  Speichern Sie Ihren Zugriffstoken in Ihrer Zwischenablage oder auf dem Computer, bevor Sie diese Seite verlassen.
 
-7) Als Nächstes melden Sie sich bei der [Azure-Portal](https://portal.azure.com), und navigieren Sie zu der **Azure Active Directory > Unternehmens-Apps > Alle Programme** Abschnitt.
+7) Wechseln Sie als Nächstes im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
 
-8) Wenn Sie bereits LinkedIn Learning für einmaliges Anmelden konfiguriert haben, suchen Sie nach Ihrer Instanz von LinkedIn Learning mithilfe des Felds suchen. Wählen Sie andernfalls **hinzufügen** , suchen Sie nach **LinkedIn Learning** im Anwendungskatalog. Wählen Sie LinkedIn Learning in den Suchergebnissen, und fügen Sie es in der Liste der Anwendungen.
+8) Wenn Sie LinkedIn Learning bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer LinkedIn Learning-Instanz. Wählen Sie andernfalls **Hinzufügen** aus, und suchen Sie im Anwendungskatalog nach **LinkedIn Learning**. Wählen Sie „LinkedIn Learning“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
-9)  Wählen Sie die Instanz von LinkedIn lernen, und wählen Sie dann die **Provisioning** Registerkarte.
+9)  Wählen Sie Ihre LinkedIn Learning-Instanz und dann die Registerkarte **Bereitstellung** aus.
 
-10) Legen Sie die **Bereitstellungsmodus** auf **automatische**.
+10) Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
 ![LinkedIn Learning-Bereitstellung](./media/active-directory-saas-linkedinlearning-provisioning-tutorial/linkedin_3.PNG)
 
-11)  Füllen Sie die folgenden Felder unter **Administratoranmeldeinformationen** :
+11)  Füllen Sie die folgenden Felder unter **Administratoranmeldeinformationen** aus:
 
-* In der **-Mandanten-URL** geben https://api.linkedin.com.
+* Geben Sie im Feld **Mandanten-URL** https://api.linkedin.com ein.
 
-* In der **geheime Sicherheitstoken** Feld, geben Sie das Zugriffstoken, die Sie in Schritt 1 generiert, und klicken Sie auf **Testverbindung** .
+* Geben Sie im Feld **Geheimes Token** den im Schritt 1 generierten Zugriffstoken ein, und klicken Sie auf **Verbindung testen**.
 
-* Eine Erfolgsmeldung sollte auf den oberen Rand Ihres Portals angezeigt werden.
+* Nun sollten Sie oben rechts im Portal eine Benachrichtigung über die erfolgreiche Ausführung sehen.
 
-12) Geben Sie die e-Mail-Adresse einer Person oder Gruppe, die in der Bereitstellung fehlerbenachrichtigungen erhalten sollen die **e-Mail-Benachrichtigung** ein, und aktivieren Sie das Kontrollkästchen unten.
+12) Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das unten gezeigte Kontrollkästchen.
 
 13) Klicken Sie auf **Speichern**. 
 
-14) In der **Attributzuordnungen** Abschnitt, überprüfen Sie die Benutzer- und Attribute, die von Azure AD lernen LinkedIn synchronisiert werden. Beachten Sie, das die Attribute als ausgewählt **Abgleich** Eigenschaften werden verwendet, um die Benutzerkonten und Gruppen in LinkedIn Learning für Updatevorgänge übereinstimmen. Wählen Sie die Schaltfläche "Speichern", um alle Änderungen zu übernehmen.
+14) Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzer- und Gruppenattribute, die von Azure AD mit LinkedIn Learning synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten und Gruppen in LinkedIn Learning für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
 ![LinkedIn Learning-Bereitstellung](./media/active-directory-saas-linkedinlearning-provisioning-tutorial/linkedin_4.PNG)
 
-15) Um den Azure AD-Dienst für das Lernen LinkedIn-Bereitstellung zu aktivieren, Ändern der **Status Bereitstellung** auf **auf** in der **Einstellungen** Abschnitt
+15) Um den Azure AD-Bereitstellungsdienst für LinkedIn Learning zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
 16) Klicken Sie auf **Speichern**. 
 
-Dadurch wird die erstsynchronisierung alle Benutzer und/oder Gruppen LinkedIn Learning im Abschnitt Benutzer und Gruppen zugewiesen werden gestartet. Beachten Sie, dass die erste Synchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr 20 Minuten auftreten, solange der Dienst ausgeführt wird. Sie können die **Synchronisierungsdetails** Abschnitt aus, um den Fortschritt überwachen sowie folgen Links auf die Bereitstellung der Berichte, die alle von der Bereitstellung-Dienst in Ihrer app LinkedIn lernen ausgeführten Aktionen beschreiben.
+Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die LinkedIn Learning im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Beachten Sie, dass die Erstsynchronisierung länger dauert als nachfolgende Synchronisierungen, die ungefähr alle 20 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer LinkedIn Learning-App ausgeführt werden.
 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Verwalten von Konto benutzerbereitstellung für Unternehmens-Apps](active-directory-enterprise-apps-manage-provisioning.md)
-* [Was ist Anwendungszugriff und einmaliges Anmelden bei Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-enterprise-apps-manage-provisioning.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)

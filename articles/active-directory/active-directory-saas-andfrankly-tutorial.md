@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
 ms.openlocfilehash: ea18a9f9bff258337a3de6d7703b4c548efa37df
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Tutorial: Azure Active Directory-Integration mit &frankly
 
@@ -55,7 +55,7 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 ## <a name="adding-frankly-from-the-gallery"></a>Hinzufügen von &frankly aus dem Katalog
 Zum Konfigurieren der Integration von &frankly in Azure AD müssen Sie &frankly aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um &frankly aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Um &amp;frankly aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
@@ -88,7 +88,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei &frankly m
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines &frankly-Testbenutzers](#creating-a-frankly-test-user)**, um eine Entsprechung von Britta Simon in &frankly zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+3. **[Erstellen eines &amp;frankly-Testbenutzers](#creating-a-frankly-test-user)**, um eine Entsprechung von Britta Simon in &amp;frankly zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
@@ -96,7 +96,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei &frankly m
 
 In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer &frankly-Anwendung.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in &frankly die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in &amp;frankly die folgenden Schritte aus:**
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **&frankly** auf **Einmaliges Anmelden**.
 
@@ -176,7 +176,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ![Benutzer zuweisen][200] 
 
-**Um &frankly Britta Simon zuzuweisen, führen Sie die folgenden Schritte aus:**
+**Um &amp;frankly Britta Simon zuzuweisen, führen Sie die folgenden Schritte aus:**
 
 1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 

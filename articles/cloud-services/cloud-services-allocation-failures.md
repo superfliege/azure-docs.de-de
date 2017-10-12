@@ -12,15 +12,14 @@ ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 7/26/2017
 ms.author: v-six
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c91a34eb34a73abe5c5ac2bb6aeb08c818a97856
-ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: cb514d211450bfe012ac9024e191239adf7166ab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Behandeln von Zuordnungsfehlern bei der Bereitstellung von Clouddiensten in Azure
 ## <a name="summary"></a>Zusammenfassung
@@ -72,4 +71,3 @@ Dies sind häufig vorkommende Zuordnungsszenarios, die bewirken, dass eine Zuord
    * Befolgen Sie Lösung 2 oben, und geben Sie die neue reservierte IP-Adresse in der CSCFG des Diensts an.
 4. Entfernen der Affinitätsgruppe für neue Bereitstellungen: Affinitätsgruppen werden nicht mehr empfohlen. Führen Sie die Schritte für Lösung 1 oben aus, um einen neuen Clouddienst bereitzustellen. Stellen Sie sicher, dass der Clouddienst zu keiner Affinitätsgruppe gehört.
 5. Konvertieren in ein regionales virtuelles Netzwerk: Weitere Informationen finden Sie unter [Migrieren von Affinitätsgruppen zu einem regionalen virtuellen Netzwerk (VNet)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
-

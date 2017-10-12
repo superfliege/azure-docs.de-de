@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: bwren
+ms.openlocfilehash: 21e4ae78653977efc7a47f984bc309afac870a59
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 91ffe6fa182f0d5e4294031787b853c33ea460df
-ms.contentlocale: de-de
-ms.lasthandoff: 09/05/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Untersuchen von .NET-Ablaufverfolgungsprotokollen in Application Insights
 Wenn Sie NLog, log4Net oder „System.Diagnostics.Trace“ für die Diagnoseablaufverfolgung in Ihrer ASP.NET-Anwendung verwenden, können Sie Ihre Protokolle an [Azure Application Insights][start] senden, um sie dort zu untersuchen und zu durchsuchen. Die Protokolle werden mit den anderen Telemetriedaten aus Ihrer Anwendung zusammengeführt, damit Sie die Ablaufverfolgungen für die Verarbeitung der einzelnen Benutzeranforderungen identifizieren und mit anderen Ereignissen und Ausnahmeberichten in Beziehung setzen können.
@@ -213,4 +212,3 @@ Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application I
 [portal]: https://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
-

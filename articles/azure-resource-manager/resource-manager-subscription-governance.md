@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
 ms.openlocfilehash: 3a19f2cf7566f38f80639d7c966638a3ec900cf4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Azure-Unternehmensgerüst – präskriptive Abonnementgovernance
 Immer mehr Unternehmen führen für Mobilität und Flexibilität eine öffentliche Cloud ein. Sie nutzen die Stärken der Cloud, um Umsatz zu generieren oder Ressourcen für das Unternehmen zu optimieren. Microsoft Azure bietet eine Vielzahl von Diensten, die Unternehmen wie Bausteine zusammenstellen können, um ein großes Spektrum von Workloads und Anwendungen zu berücksichtigen. 
@@ -106,7 +106,7 @@ Azure Resource Manager-Richtlinien sind ein leistungsstarkes Tool im Azure-Toolk
 
 * **Geografische Compliance/Datenhoheit**: Azure bietet Regionen auf der ganzen Welt. Unternehmen möchten häufig steuern, wo Ressourcen erstellt werden (um Datenhoheit sicherzustellen oder nur um sicherzustellen, dass Ressourcen in der Nähe der Endbenutzer der Ressourcen erstellt werden).
 * **Kostenverwaltung**: Ein Azure-Abonnement kann Ressourcen vieler Typen und Größen enthalten. Unternehmen möchten häufig sicherstellen, dass für Standardabonnements keine unnötig umfangreichen Ressourcen verwendet werden, die pro Monat hohe Kosten verursachen.
-* **Standardgovernance durch erforderliche Tags**: Das Anfordern von Tags ist eines der Features, die am häufigsten verwendet und gewünscht werden. Mithilfe von Azure Resource Manager-Richtlinien können Unternehmen sicherstellen, dass eine Ressource entsprechend mit Tags versehen wird. Die am häufigsten verwendeten Tags sind: Abteilung, Ressourcenbesitzer und Umgebungstyp (z.B. Produktion, Test, Entwicklung)
+* **Standardgovernance durch erforderliche Tags**: Das Anfordern von Tags ist eine der Funktionen, die am häufigsten verwendet und gewünscht wird. Mithilfe von Azure Resource Manager-Richtlinien können Unternehmen sicherstellen, dass eine Ressource entsprechend mit Tags versehen wird. Die am häufigsten verwendeten Tags sind: Abteilung, Ressourcenbesitzer und Umgebungstyp (z.B. Produktion, Test, Entwicklung)
 
 **Beispiele**
 
@@ -197,7 +197,7 @@ Diese Zunahme von Abonnements ist nicht mehr erforderlich. Mit der rollenbasiert
 > Diese Tipps sollen Sie beim Verwalten des Benutzerzugriffs für Ihr gesamtes Abonnement unterstützen.
 
 ## <a name="azure-resource-locks"></a>Azure-Ressourcensperren
-Wenn Ihre Organisation dem Abonnement zentrale Dienste hinzufügt, wird es zunehmend wichtig sicherzustellen, dass diese Dienste verfügbar sind, um eine Unterbrechung des Geschäftsbetriebs zu vermeiden. [Ressourcensperren](resource-group-lock-resources.md) ermöglichen Ihnen, Vorgänge auf wertvollen Ressourcen einzuschränken, bei denen das Ändern oder Löschen einen erheblichen Einfluss auf Ihre Anwendungen oder die Cloudinfrastruktur hätte. Sie können Sperren auf ein Abonnement, eine Ressourcengruppe oder eine Ressource anwenden. Normalerweise wenden Sie Sperren auf grundlegende Ressourcen wie Speicherkonten, virtuelle Netzwerke und Gateways an. 
+Wenn Ihre Organisation dem Abonnement zentrale Dienste hinzufügt, wird es zunehmend wichtig sicherzustellen, dass diese Dienste verfügbar sind, um eine Unterbrechung des Geschäftsbetriebs zu vermeiden. [Ressourcensperren](resource-group-lock-resources.md) ermöglichen es Ihnen, Vorgänge auf wertvollen Ressourcen einzuschränken, bei denen das Ändern oder Löschen einen erheblichen Einfluss auf Ihre Anwendungen oder die Cloudinfrastruktur hätte. Sie können Sperren auf ein Abonnement, eine Ressourcengruppe oder eine Ressource anwenden. Normalerweise wenden Sie Sperren auf grundlegende Ressourcen wie Speicherkonten, virtuelle Netzwerke und Gateways an. 
 
 Ressourcensperren unterstützen aktuell zwei Werte: CanNotDelete und ReadOnly. CanNotDelete bedeutet, dass Benutzer (mit den entsprechenden Berechtigungen) eine Ressource lesen oder ändern können, sie können sie jedoch nicht löschen. ReadOnly bedeutet, dass autorisierte Benutzer eine Ressource nicht löschen oder ändern können.
 

@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
 ms.openlocfilehash: b05181d9252c0a804648e01b4058019278ae5abe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>Authentifizieren mit Mobile Engagement-REST-APIs
 ## <a name="overview"></a>Übersicht
@@ -93,7 +93,7 @@ Sie sollten die Anweisungen unten befolgen, um die Einrichtung mithilfe eines Po
    
    * **Anforderungs-URL** als *https://login.microsoftonline.com/{MANDANT\_ID}/oauth2/token*
    * **HTTP Content-Type-Header** als *application/x-www-form-urlencoded*
-   * **HTTP Request Body** als *grant\_type=client\_credentials&client_id={CLIENT\_ID}&client_secret={CLIENT\_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F*
+   * **HTTP Request Body** als *grant\_type=client\_credentials&amp;client_id={CLIENT\_ID}&amp;client_secret={CLIENT\_SECRET}&amp;resource=https%3A%2F%2Fmanagement.core.windows.net%2F*
      
      Im Folgenden finden Sie eine Beispielanforderung:
      
@@ -128,9 +128,9 @@ Da Sie jetzt über ein gültiges Token verfügen, sind Sie bereit für die API-A
    
     Um die Parameter abzurufen, klicken Sie auf den Namen Ihrer Anwendung, und klicken Sie auf das Dashboard, um eine Seite wie die folgende mit allen 3 Parametern anzuzeigen.
    
-   * **1** `{subscription-id}`
-   * **2** `{app-collection}`
-   * **3** `{app-resource-name}`
+   * **1**`{subscription-id}`
+   * **2**`{app-collection}`
+   * **3**`{app-resource-name}`
    * **4** Ihr Ressourcengruppenname ist **MobileEngagement**, sofern Sie keinen neuen erstellt haben. 
      
      ![Mobile Engagement-API-URI-Parameter][2]

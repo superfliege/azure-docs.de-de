@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2b4d04af7fe7a40a1d907a06ab8772f20956bc19
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Häufig gestellte Fragen zu Azure Machine Learning: Abrechnung, Funktionen, Einschränkungen und Support
 Hier sind einige häufig gestellte Fragen (FAQs) und die entsprechenden Antworten zu Azure Machine Learning aufgeführt. Bei Azure Machine Learning handelt es sich um einen Clouddienst zum Entwickeln von Vorhersagemodellen und Operationalisieren von Lösungen mithilfe von Webdiensten. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -561,4 +560,3 @@ Der Machine Learning-Dienst ist ein mehrinstanzenfähiger Dienst. Die eigentlich
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
 [counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
-

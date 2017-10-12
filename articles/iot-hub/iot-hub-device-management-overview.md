@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: briz
 ms.openlocfilehash: 6d667d42bfef2ec61b055009210d5621f51c17df
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Übersicht über die Geräteverwaltung mit IoT Hub
 ## <a name="introduction"></a>Einführung
@@ -63,7 +63,7 @@ In jeder dieser fünf Phasen müssen mehrere Anforderungen von Gerätebedienern 
     *Weitere nützliche Informationen*: [Verwenden von direkten Methoden][lnk-c2d-methods], [Aufrufen einer direkten Methode auf einem Gerät][lnk-methods-devguide], [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [Planen und Übermitteln von Aufträgen][lnk-jobs], [Planen von Aufträgen auf mehreren Geräten][lnk-jobs-devguide]
 * **Überwachung:** Überwachen Sie die allgemeine Geräteintegrität und den Status laufender Vorgänge, und weisen Sie Bediener auf Probleme hin, die ggf. ihre Aufmerksamkeit erfordern.  Wenden Sie den Gerätezwilling an, um es Geräten zu ermöglichen, Bedingungen und den Status von Updatevorgängen in Echtzeit zu melden. Erstellen Sie leistungsfähige Dashboardberichte, die mithilfe von Abfragen für den Gerätezwilling über neueste Probleme informieren.
   
-    *Weitere nützliche Informationen:* [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting][lnk-query-language].
+    *Weitere nützliche Informationen:*[Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting][lnk-query-language].
 * **Ausmusterung:** Geräte werden nach einem Fehler oder Upgradezyklus oder am Ende der Lebensdauer ausgetauscht oder außer Betrieb gesetzt.  Verwenden Sie zur Verwaltung von Geräteinformationen den Gerätezwilling, falls das physische Gerät ausgetauscht wird (oder das Archiv, falls das Gerät ausgemustert wird). Verwenden Sie die IoT Hub-Identitätsregistrierung zum sicheren Sperren von Geräteidentitäten und Anmeldeinformationen.
   
     *Weitere nützliche Informationen*: [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [Verwalten von Geräteidentitäten][lnk-identity-registry]
@@ -88,7 +88,7 @@ IoT Hub ermöglicht die folgenden Geräteverwaltungsmuster.  In den [Tutorials z
     ![Muster für Fortschritts- und Statusmeldungen der Geräteverwaltung – Grafik][img-report_progress_pattern]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Die Funktionen, Muster und Codebibliotheken, die IoT Hub für die Verwaltung der Geräte bietet ermöglichen es Ihnen IoT-Anwendungen erstellen, die Enterprise IoT Operator Anforderungen innerhalb jedes Gerät Lebenszyklusphase erfüllt werden können.
+Mit den Funktionen, Mustern und Codebibliotheken der IoT Hub-Geräteverwaltung können Sie IoT-Anwendungen erstellen, die in jeder Lebenszyklusphase des jeweiligen Geräts die Anforderungen professioneller IoT-Bediener erfüllen.
 
 Weitere Informationen zu den Geräteverwaltungsfunktionen in IoT Hub finden Sie im Tutorial [Erste Schritte mit der Geräteverwaltung][lnk-get-started].
 

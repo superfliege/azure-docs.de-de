@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
 ms.openlocfilehash: 9a9f4341aaca5bb6049c6d85993c92ea6dd1c8dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-mvp-program"></a>Azure-Sicherheits-MVP-Programm
 Most Valuable Professionals (MVPs) von Microsoft sind wichtige Mitglieder der Community, die sich durch ein beispielhaftes Engagement darin auszeichnen, anderen zu einem optimalen Ergebnis bei der Arbeit mit Microsoft-Technologien zu verhelfen. Sie teilen ihre außergewöhnliche Leidenschaft, ihr praktisches Wissen und technisches Können mit der Community und Microsoft.

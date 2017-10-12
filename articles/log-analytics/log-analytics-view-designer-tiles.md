@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
 ms.openlocfilehash: 2bce5c63b4c6edd3753f1b234cc4f493dcf53dea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-view-designer-tile-reference"></a>Kachelreferenz für den Ansicht-Designer in Log Analytics
 Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
@@ -54,7 +54,7 @@ Die Kachel **Zahl** zeigt eine einzelne Zahl, die die Anzahl der Datensätze ein
 | **Kachel** | |
 | Legende |Text, der unter dem Wert angezeigt wird. |
 | Abfragen |Die auszuführende Abfrage.  Die Anzahl der von der Abfrage zurückgegebenen Datensätze wird angezeigt. |
-| **Erweitert** |**> Datenflussüberprüfung** |
+| **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
 | Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
@@ -75,7 +75,7 @@ Die Kachel **Zwei Zahlen** zeigt zwei Zahlen, die die Anzahl der Datensätze aus
 | **Zweite Kachel** | |
 | Legende |Text, der unter dem Wert angezeigt wird. |
 | Abfragen |Die auszuführende Abfrage.  Die Anzahl der von der Abfrage zurückgegebenen Datensätze wird angezeigt. |
-| **Erweitert** |**> Datenflussüberprüfung** |
+| **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
 | Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
@@ -92,14 +92,14 @@ Die Kachel **Ring** zeigt eine einzelne Zahl an, die eine Spalte mit Werten in e
 | Beschreibung |Text, der unter dem Namen der Kachel angezeigt wird. |
 | **Ring** | |
 | Abfragen |Abfrage, die für den Ring ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Dies ist normalerweise eine Abfrage, in der das Schlüsselwort für die **Maßeinheit** verwendet wird, um die Ergebnisse zusammenzufassen. |
-| **Ring** |**> Mitte** |
+| **Ring** |**&gt; Mitte** |
 | Text |Text, der unter dem Wert im Ring angezeigt wird. |
 | Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie zu einem einzelnen Wert zusammenzufassen.<br><br>– Summe: Addiert die Werte aller Datensätze mit dem Eigenschaftswert.<br>– Prozentsatz: Prozentsatz der summierten Werte aus Datensätzen mit dem Eigenschaftswert verglichen mit den summierten Werten aller Datensätze. |
 | Vom Vorgang in der Mitte verwendete Ergebniswerte |Klicken Sie optional auf das Pluszeichen, um einen oder mehrere Werte hinzuzufügen.  Die Ergebnisse der Abfrage werden auf Datensätze mit den von Ihnen angegebenen Eigenschaftswerten beschränkt.  Wenn keine Werte hinzugefügt werden, werden alle Datensätze in die Abfrage aufgenommen. |
-| **Ring** |**> Weitere Optionen** |
+| **Ring** |**&gt; Weitere Optionen** |
 | Farben |Die Farbe, die für jede der ersten drei Eigenschaften angezeigt wird.  Wenn Sie andere Farben für bestimmte Eigenschaftswerte angeben möchten, verwenden Sie „Erweiterte Farbzuordnung“. |
 | Erweiterte Farbzuordnung |Zeigt eine Farbe für bestimmte Eigenschaftswerte an.  Gehört der angegebene Wert zu den ersten drei, wird die alternative Farbe anstelle der Standardfarbe angezeigt.  Wenn die Eigenschaft nicht in den ersten drei enthalten ist, wird die Farbe nicht angezeigt. |
-| **Erweitert** |**> Datenflussüberprüfung** |
+| **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
 | Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
@@ -116,11 +116,11 @@ Die Kachel **Liniendiagramm** zeigt ein Liniendiagramm mit mehreren Reihen aus e
 | Beschreibung |Text, der unter dem Namen der Kachel angezeigt wird. |
 | **Liniendiagramm** | |
 | Abfragen |Abfrage, die für das Liniendiagramm ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Dies ist normalerweise eine Abfrage, in der das Schlüsselwort für die **Maßeinheit** verwendet wird, um die Ergebnisse zusammenzufassen.  Wenn in der Abfrage das Schlüsselwort für das **Intervall** verwendet wird, wird für die X-Achse des Diagramms dieses Intervall verwendet.  Wenn die Abfrage das Schlüsselwort für das **Intervall** nicht enthält, werden stündliche Intervalle für die X-Achse verwendet. |
-| **Liniendiagramm** |**> Y-Achse** |
+| **Liniendiagramm** |**&gt; Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diese Option aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
 | Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an.  Diese Informationen werden verwendet, um Bezeichnungen im Diagramm anzuzeigen, die Werttypen angeben, und um optional Werte zu konvertieren.  Der **Typ der Einheit** gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in **Aktuelle Einheit**.  Bei Auswahl eines Werts in **Konvertieren in** werden die numerischen Werte vom Typ in **Aktuelle Einheit** in den Typ in **Konvertieren in** konvertiert. |
 | Benutzerdefinierte Bezeichnung |Text, der für die Y-Achse neben der Bezeichnung für den Typ der Einheit angezeigt wird.  Wenn keine Bezeichnung angegeben ist, wird nur der Typ der Einheit angezeigt. |
-| **Erweitert** |**> Datenflussüberprüfung** |
+| **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
 | Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
@@ -137,15 +137,15 @@ Die Kachel **Liniendiagramm und Legende** zeigt ein Liniendiagramm mit mehreren 
 | Beschreibung |Text, der unter dem Namen der Kachel angezeigt wird. |
 | **Liniendiagramm** | |
 | Abfragen |Abfrage, die für das Liniendiagramm ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Dies ist normalerweise eine Abfrage, in der das Schlüsselwort für die **Maßeinheit** verwendet wird, um die Ergebnisse zusammenzufassen.  Wenn in der Abfrage das Schlüsselwort für das **Intervall** verwendet wird, wird für die X-Achse des Diagramms dieses Intervall verwendet.  Wenn die Abfrage das Schlüsselwort für das **Intervall** nicht enthält, werden stündliche Intervalle für die X-Achse verwendet. |
-| **Liniendiagramm** |**> Legende** |
+| **Liniendiagramm** |**&gt; Legende** |
 | Legende |Titeltext, der über dem Wert der Legende angezeigt wird. |
 | Reihenname |Eigenschaftswert für die Reihe, die für den Wert der Legende verwendet wird.  Wenn keine Reihe angegeben wird, werden alle Datensätze der Abfrage verwendet. |
 | Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende zu einem einzelnen Wert zusammenzufassen.<br>– Durchschnitt: Durchschnitt der Werte von allen Datensätzen.<br><br>– Anzahl: Anzahl aller von der Abfrage zurückgegebenen Datensätze.<br>– Letztes Beispiel: Wert aus dem letzten Intervall im Diagramm.<br>– Max: Höchstwert aus den Intervallen im Diagramm.<br>– Min: Mindestwert aus den Intervallen im Diagramm.<br>– Summe: Summe der Werte von allen Datensätzen. |
-| **Liniendiagramm** |**> Y-Achse** |
+| **Liniendiagramm** |**&gt; Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diese Option aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
 | Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an.  Diese Informationen werden verwendet, um Bezeichnungen im Diagramm anzuzeigen, die Werttypen angeben, und um optional Werte zu konvertieren.  Der **Typ der Einheit** gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in **Aktuelle Einheit**.  Bei Auswahl eines Werts in **Konvertieren in** werden die numerischen Werte vom Typ in **Aktuelle Einheit** in den Typ in **Konvertieren in** konvertiert. |
 | Benutzerdefinierte Bezeichnung |Text, der für die Y-Achse neben der Bezeichnung für den Typ der Einheit angezeigt wird.  Wenn keine Bezeichnung angegeben ist, wird nur der Typ der Einheit angezeigt. |
-| **Erweitert** |**> Datenflussüberprüfung** |
+| **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
 | Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
@@ -170,7 +170,7 @@ Die Kachel **Zwei Zeitachsen** zeigt die Ergebnisse von zwei Protokollabfragen i
 | Farbe |Farbe, die für die Säulen in der zweiten Reihe verwendet wird. |
 | Diagrammabfrage |Abfrage, die für die zweite Reihe ausgeführt wird.  Die Angabe der Anzahl von Datensätzen in jedem Zeitintervall wird durch die Säulen im Diagramm dargestellt. |
 | Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende zu einem einzelnen Wert zusammenzufassen.<br><br>– Durchschnitt: Durchschnitt der Werte von allen Datensätzen.<br>– Anzahl: Anzahl aller von der Abfrage zurückgegebenen Datensätze.<br>– Letztes Beispiel: Wert aus dem letzten Intervall im Diagramm.<br>– Max: Höchstwert aus den Intervallen im Diagramm. |
-| **Erweitert** |**> Datenflussüberprüfung** |
+| **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
 | Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |

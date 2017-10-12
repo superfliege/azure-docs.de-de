@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 2c581a2d152a6d3f16de8f249e27a426aa9f844f
-ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: f4175875b68c52e68588b8d0debd003ab73427ec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-network-security-group-view-in-azure-network-watcher"></a>Einführung in die Netzwerksicherheitsgruppen-Ansicht in Azure Network Watcher
 
 Netzwerksicherheitsgruppen werden auf Subnetzebene oder auf NIC-Ebene zugeordnet. Bei einer Zuordnung auf Subnetzebene gilt sie für alle VM-Instanzen in dem Subnetz. Die Netzwerksicherheitsgruppen-Ansicht gibt alle konfigurierten NSGs und Regeln zurück, die auf NIC- und Subnetzebene für einen virtuellen Computer zugeordnet wurden, und bietet dabei Einblicke in die Konfiguration. Darüber hinaus werden die geltenden Sicherheitsregeln für jede Netzwerkkarte auf einem virtuellen Computer zurückgegeben. Mithilfe der Netzwerksicherheitsgruppen-Ansicht können Sie Netzwerksicherheitslücken auf einem virtuellen Computer, z.B. geöffnete Ports, beurteilen. Sie können auch basierend auf einem [Vergleich zwischen den konfigurierten und angewendeten Sicherheitsregeln](network-watcher-nsg-auditing-powershell.md) überprüfen, ob die Netzwerksicherheitsgruppe wie erwartet funktioniert.
@@ -42,7 +40,6 @@ Erfahren Sie unter [Überwachen von Netzwerksicherheitsgruppen-Einstellungen mit
 
 [1]: ./media/network-watcher-security-group-view-overview/securitygroupview.png
 [2]: ./media/network-watcher-security-group-view-overview/figure1.png
-
 
 
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/23/2017
 ms.author: saurabh
 ms.openlocfilehash: 4001ca908ff00b1a40829d687589080e9b07b18a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-cloud-services-using-application-insights"></a>Problembehandlung bei Clouddiensten mit Application Insights
 Mit [Azure SDK 2.8](https://azure.microsoft.com/downloads/) und Azure-Diagnose-Erweiterung 1.5 können Azure-Diagnose-Daten für Ihren Clouddienst direkt an Application Insights senden. Die Protokolle, die von der Azure-Diagnose &mdash;einschließlich Anwendungsprotokolle, Windows-Ereignisprotokolle, ETW-Protokolle und Leistungsindikatoren&mdash; gesammelt wurden, können an Application Insights gesendet werden. Sie können dann diese Informationen auf der Benutzeroberfläche des Application Insights-Portals visuell darstellen. Sie können das Application Insights SDK verwenden, um Einblicke in die Metriken und Protokolle von der Anwendung sowie in die Daten der System- und Infrastrukturebene von Azure-Diagnose zu erhalten.

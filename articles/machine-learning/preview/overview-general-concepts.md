@@ -9,14 +9,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3d4ba2ca6f7adc8b51030c02d9e9eeb2b9995bb4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-machine-learning---concepts"></a>Azure Machine Learning: Konzepte
 
 Dieser Artikel definiert und beschreibt die Konzepte, mit denen Sie zum Verwenden von Azure Machine Learning vertraut sein müssen. 
@@ -58,4 +56,3 @@ Dieser Artikel definiert und beschreibt die Konzepte, mit denen Sie zum Verwende
 - **Images:** Sie können die Manifeste verwenden, um Docker-Images (neu) zu generieren. Docker-Images in Containern ermöglichen die flexible Ausführung in der Cloud, auf lokalen Computern oder IoT-Geräten. Images sind eigenständig und schließen alle Abhängigkeiten ein, die zum Bewerten neuer Daten mit Modellen erforderlich sind. 
 
 - **Dienste:** Mithilfe der Modellverwaltung können Sie Modelle als gepackte Webdienste bereitstellen. Webdienstlogik und -abhängigkeiten werden in einem Image gekapselt. Jeder Webdienst besteht aus einer Gruppe von Containern, die auf dem Image basieren und bereit sind, Anforderungen an eine gegebene URL zu erfüllen. Ein Webdienst zählt als eine einzelne Bereitstellung.
-

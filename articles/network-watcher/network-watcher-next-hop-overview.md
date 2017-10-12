@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 864185e62fb6c3cef4116824b36ee7e5d3447662
-ms.contentlocale: de-de
-ms.lasthandoff: 03/04/2017
-
+ms.openlocfilehash: bb2ca0486b3b3d27a77b70927cb3cbfbeac12c7c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-next-hop-in-azure-network-watcher"></a>Einführung in Nächster Hop in Azure Network Watcher
 
 Der Datenverkehr von einem virtuellen Computer an ein Ziel wird basierend auf den gültigen Routen, die einer Netzwerkkarte zugeordnet sind, gesendet. Nächster Hop ruft den Typ und die IP-Adresse des nächsten Hops eines Pakets von einem angegebenen virtuellen Computer und der Netzwerkkarte ab. Dadurch wird ermittelt, ob das Paket an das Ziel gesendet oder ob der Datenverkehr blockiert wird. Eine falsche Konfiguration von Routen durch den Benutzer, bei der Datenverkehr an einem lokalen Standort oder ein virtuelles Gerät geleitet wird, kann zu Verbindungsproblemen führen. Nächster Hop gibt auch die Routentabelle, die dem nächsten Hop zugeordnet ist, zurück. Wenn vom nächsten Hop abgefragt wird, ob die Route als eine benutzerdefinierte Route definiert ist, wird diese Route zurückgegeben. Andernfalls gibt Nächster Hop die „Systemroute“ zurück.
@@ -44,7 +42,6 @@ Erfahren Sie unter [Überprüfen des nächsten Hops auf einem virtuellen Compute
 
 <!--Image references-->
 [1]: ./media/network-watcher-next-hop-overview/figure1.png
-
 
 
 

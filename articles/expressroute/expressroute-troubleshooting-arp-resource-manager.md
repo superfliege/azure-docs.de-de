@@ -1,6 +1,6 @@
 ---
-title: 'Abrufen von ARP-Tabellen: Ressourcen-Manager: Azure ExpressRoute-Problembehandlung | Microsoft Docs'
-description: "Diese Seite enthält Anweisungen zum Abrufen der ARP Tabellen für eine ExpressRoute-Verbindung"
+title: 'Abrufen von ARP-Tabellen: Resource Manager: Azure ExpressRoute-Problembehandlung | Microsoft-Dokumentation'
+description: "Diese Seite enthält Anweisungen zum Abrufen der ARP-Tabellen für eine ExpressRoute-Verbindung."
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -15,37 +15,37 @@ ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.openlocfilehash: a65b1ba2998eae33b3e73bd2492fbbf025eb5946
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Das Abrufen der ARP Tabellen im Ressourcen-Manager-Bereitstellungsmodell
+# <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Abrufen von ARP-Tabellen im Resource Manager-Bereitstellungsmodell
 > [!div class="op_single_selector"]
-> * [PowerShell - Ressourcen-Manager](expressroute-troubleshooting-arp-resource-manager.md)
-> * [PowerShell - Classic](expressroute-troubleshooting-arp-classic.md)
+> * [PowerShell – Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
+> * [PowerShell – klassisch](expressroute-troubleshooting-arp-classic.md)
 > 
 > 
 
-Dieser Artikel führt Sie durch die Schritte, um zu erfahren, die ARP-Tabellen für ExpressRoute-Verbindung. 
+In diesem Artikel werden Sie durch die Schritte zum Erlernen der Nutzung der ARP-Tabellen für Ihre ExpressRoute-Verbindung geführt. 
 
 > [!IMPORTANT]
-> Dieses Dokument richtet sich darin, Ihnen die einfache Probleme diagnostizieren und korrigieren. Sie dient kein Ersatz für Microsoft-Support. Müssen Sie ein Support-Ticket mit öffnen [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Wenn Sie nicht zur Behebung des Problems mithilfe der unten beschriebenen Anleitungen.
+> Dieses Dokument soll Ihnen helfen, einfache Probleme zu untersuchen und zu beheben. Es dient nicht als Ersatz für Microsoft-Support. Sie müssen ein Supportticket beim [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) öffnen, wenn Sie Ihr Problem nicht anhand der folgenden Anleitung beheben können.
 > 
 > 
 
-## <a name="address-resolution-protocol-arp-and-arp-tables"></a>Behandeln von Resolution Protocol (ARP) und ARP-Tabelle
-ARP (Address Resolution Protocol, versucht) ist eine Schicht-2-Protokoll definiert [RFC 826](https://tools.ietf.org/html/rfc826). ARP wird verwendet, um die Ethernet-Adresse (MAC-Adresse) mit einer IP-Adresse zugeordnet.
+## <a name="address-resolution-protocol-arp-and-arp-tables"></a>Address Resolution Protocol (ARP) und ARP-Tabellen
+Address Resolution Protocol (ARP) ist ein in [RFC 826](https://tools.ietf.org/html/rfc826)definiertes Schicht-2-Protokoll. ARP dient zum Zuordnen der Ethernet-Adresse (MAC-Adresse) zu einer IP-Adresse.
 
-Die ARP-Tabelle enthält eine Zuordnung von der ipv4-Adresse und MAC-Adresse für einen bestimmten peering. Die ARP-Tabelle für eine ExpressRoute-Leitung peering enthält die folgenden Informationen für jede Schnittstelle (Primär oder sekundär)
+Die ARP-Tabelle ermöglicht eine Zuordnung der IPv4-Adresse und MAC-Adresse für ein bestimmtes Peering. Die ARP-Tabelle für ein ExpressRoute-Verbindungspeering enthält die folgenden Informationen für jede (primäre und sekundäre) Schnittstelle.
 
-1. Zuordnung des lokalen Routers Schnittstelle IP-Adresse in die MAC-Adresse
-2. Zuordnung von ExpressRoute-Router-Schnittstelle IP-Adresse in die MAC-Adresse
+1. Zuordnung der IP-Adresse der lokalen Routerschnittstelle zur MAC-Adresse
+2. Zuordnung der IP-Adresse der ExpressRoute-Routerschnittstelle zur MAC-Adresse
 3. Alter der Zuordnung
 
-ARP-Tabellen können Schicht-2-Konfiguration zu überprüfen und grundlegende Problembehandlung layer-2 Konnektivitätsprobleme zu beheben. 
+ARP-Tabellen dienen zum Überprüfen der Layer-2-Konfiguration und Behandeln grundlegender Layer-2-Verbindungsprobleme. 
 
-Beispiel-ARP-Tabelle: 
+Beispiel einer ARP-Tabelle: 
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -53,21 +53,21 @@ Beispiel-ARP-Tabelle:
           0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
 
 
-Der folgende Abschnitt enthält Informationen für die Anzeige der ARP-Tabellen, die edgerouter des ExpressRoute angezeigt wird. 
+Der folgende Abschnitt bietet Informationen zum Anzeigen der ARP-Tabellen, die von ExpressRoute-Edge-Routern verwendet werden. 
 
 ## <a name="prerequisites-for-learning-arp-tables"></a>Voraussetzungen für das Erlernen von ARP-Tabellen
-Stellen Sie sicher, dass Sie die folgenden verfügen, bevor Sie weitere Status
+Stellen Sie sicher, dass Folgendes vorliegt, bevor Sie fortfahren:
 
-* Eine gültige ExpressRoute-Verbindung, die mit mindestens ein peering konfiguriert. Die Verbindung muss vollständig von der Dienstanbieter konfiguriert werden. Sie (oder Ihrem Dienstanbieter) muss mindestens eines der kann (Azure Public für private, Azure und Microsoft) für diese Leitung konfiguriert haben.
-* IP-Adressbereiche für die Konfiguration der kann (Azure Public für private, Azure und Microsoft) verwendet. Überprüfen Sie die IP-Adresse Zuweisung Beispiele in der [ExpressRoute routing Anforderungsseite](expressroute-routing.md) abzurufenden einen Überblick über die Schnittstellen, die auf der Seite und auf der Seite ExpressRoute wie IP-Adressen zugeordnet sind. Erhalten Sie anhand der Informationen in der Peer-Konfiguration der [Konfigurationsseite der ExpressRoute-peering](expressroute-howto-routing-arm.md).
-* Informationen aus Ihrem Netzwerkteam / Verbindungsanbieter für die MAC-Adressen von Schnittstellen, die mit dieser IP-Adressen verwendet.
-* Sie müssen das neueste PowerShell-Modul für Azure (Version 1,50 oder höher) verfügen.
+* Eine gültige ExpressRoute-Verbindung, die mit mindestens einem Peering konfiguriert ist. Die Verbindung muss vom Konnektivitätsanbieter vollständig konfiguriert werden. Von Ihnen (oder Ihrem Konnektivitätsanbieter) muss mindestens eines der Peerings (Azure privat, Azure öffentlich und Microsoft) für diese Verbindung konfiguriert werden.
+* IP-Adressbereiche für die Konfiguration der Peerings (Azure privat, Azure öffentlich und Microsoft). Überprüfen Sie die Beispielzuweisungen von IP-Adressen auf der Seite [ExpressRoute-Routinganforderungen](expressroute-routing.md) , um zu verstehen, wie IP-Adressen auf Ihrer Seite und auf ExpressRoute-Seite zugeordnet werden. Auf der Seite [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung](expressroute-howto-routing-arm.md)erhalten Sie Informationen zur Konfiguration des Peerings.
+* Informationen von Ihrem Netzwerkteam/Konnektivitätsanbieter zu den MAC-Adressen von Schnittstellen, die mit diesen IP-Adressen verwendet werden.
+* Sie benötigen das neueste PowerShell-Modul für Azure (mindestens Version 1.50).
 
-## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>Beim Abrufen der ARP-Tabellen für ExpressRoute-Verbindung
-Dieser Abschnitt enthält Anweisungen für die Anzeige der ARP-Tabellen pro peering mithilfe von PowerShell. Sie oder Ihre Verbindungsanbieter muss vor der weiteren Fortschreiten peering konfiguriert haben. Jede Verbindung verfügt über zwei Pfade (Primär oder sekundär). Sie können die ARP-Tabelle für jeden Pfad unabhängig überprüfen.
+## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>Abrufen der ARP-Tabellen für Ihre ExpressRoute-Verbindung
+Dieser Abschnitt bietet Anweisungen zum Anzeigen der ARP-Tabellen pro Peering mithilfe von PowerShell. Von Ihnen oder Ihrem Konnektivitätsanbieter muss das Peering konfiguriert worden sein, ehe Sie fortfahren können. Jede Verbindung hat einen primären und sekundären Pfad. Sie können die ARP-Tabelle für jeden Pfad unabhängig überprüfen.
 
-### <a name="arp-tables-for-azure-private-peering"></a>ARP-Tabellen für Azure privates peering
-Das folgende Cmdlet bietet ARP Tabellen für Azure privates peering
+### <a name="arp-tables-for-azure-private-peering"></a>IP-Adressen für privates Azure-Peering
+Das folgende Cmdlet dient zum Abrufen der ARP-Tabellen für privates Azure-Peering.
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -79,7 +79,7 @@ Das folgende Cmdlet bietet ARP Tabellen für Azure privates peering
         # ARP table for Azure private peering - Secodary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
 
-Beispielausgabe wird unter einem der Pfade angezeigt.
+Nachstehend sehen Sie die Beispielausgabe für einen der Pfade.
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -87,8 +87,8 @@ Beispielausgabe wird unter einem der Pfade angezeigt.
           0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
 
 
-### <a name="arp-tables-for-azure-public-peering"></a>ARP-Tabellen für die öffentliche Azure-peering
-Das folgende Cmdlet bietet ARP Tabellen für die öffentliche Azure-peering
+### <a name="arp-tables-for-azure-public-peering"></a>ARP-Tabellen für öffentliches Azure-Peering
+Das folgende Cmdlet dient zum Abrufen der ARP-Tabellen für öffentliches Azure-Peering.
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -101,7 +101,7 @@ Das folgende Cmdlet bietet ARP Tabellen für die öffentliche Azure-peering
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
 
 
-Beispielausgabe wird unter einem der Pfade angezeigt.
+Nachstehend sehen Sie die Beispielausgabe für einen der Pfade.
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -109,8 +109,8 @@ Beispielausgabe wird unter einem der Pfade angezeigt.
           0 Microsoft         64.0.0.2   aaaa.bbbb.cccc
 
 
-### <a name="arp-tables-for-microsoft-peering"></a>ARP-Tabellen für Microsoft-peering
-Das folgende Cmdlet enthält ARP Tabellen für Microsoft-peering
+### <a name="arp-tables-for-microsoft-peering"></a>ARP-Tabellen für Microsoft-Peering
+Das folgende Cmdlet dient zum Abrufen der ARP-Tabellen für Microsoft-Peering.
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -123,7 +123,7 @@ Das folgende Cmdlet enthält ARP Tabellen für Microsoft-peering
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
 
 
-Beispielausgabe wird unter einem der Pfade angezeigt.
+Nachstehend sehen Sie die Beispielausgabe für einen der Pfade.
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -131,28 +131,28 @@ Beispielausgabe wird unter einem der Pfade angezeigt.
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 
-## <a name="how-to-use-this-information"></a>Verwenden dieser Informationen
-Die ARP-Tabelle ein Peering kann verwendet werden, um zu bestimmen, Schicht-2-Konfiguration und der Konnektivität zu überprüfen. Dieser Abschnitt enthält einen Überblick darüber, wie ARP-Tabellen in verschiedenen Szenarien aussieht.
+## <a name="how-to-use-this-information"></a>Nutzen dieser Informationen
+Die ARP-Tabelle eines Peerings dient zum Bestimmen und Überprüfen der Layer-2-Konfiguration und -Konnektivität. Dieser Abschnitt enthält eine Übersicht über ARP-Tabellen in verschiedenen Szenarien.
 
-### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>Wenn eine Verbindung in einem funktionsfähigen Zustand (erwarteten Zustand) ist der ARP-Tabelle
-* Die ARP-Tabelle wird ein Eintrag für die lokale Seite mit einer gültigen IP-Adresse und MAC-Adresse und einen ähnlichen Eintrag für die Microsoft-Seite haben. 
-* Das letzte Oktett der lokalen IP-Adresse wird immer eine ungerade Anzahl ergeben.
-* Das letzte Oktett der IP-Adresse von Microsoft wird immer eine gerade Zahl sein.
-* Dieselbe MAC-Adresse wird auf der Microsoft-Seite für alle 3 kann (primäre / sekundäre) angezeigt. 
+### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>ARP-Tabelle einer Verbindung im Betriebszustand (d.h. dem erwarteten Zustand)
+* Die ARP-Tabelle hat einen Eintrag für die lokale Seite mit einer gültigen IP-Adresse und MAC-Adresse und einen ähnlichen Eintrag für die Microsoft-Seite. 
+* Das letzte Oktett der lokalen IP-Adresse ist immer eine ungerade Zahl.
+* Das letzte Oktett der IP-Adresse von Microsoft ist immer eine gerade Zahl.
+* Dieselbe MAC-Adresse wird auf Microsoft-Seite für alle drei Peerings (primär/sekundär) angezeigt. 
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
          10 On-Prem           65.0.0.1   ffff.eeee.dddd
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
-### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>ARP Tabelle, wenn lokale / Konnektivität Anbieterseite sind Probleme aufgetreten
-Wenn Probleme mit der lokalen oder Verbindungsanbieter, die möglicherweise angezeigt werden, dass entweder nur ein Eintrag, in der ARP-Tabelle oder die lokale MAC-Adresse angezeigt werden wird unvollständig angezeigt. Dadurch wird die Zuordnung zwischen dem MAC-Adresse und die IP-Adresse verwendet, in der Microsoft-Seite angezeigt. 
+### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>ARP-Tabelle, wenn auf der lokalen Seite bzw. beim Konnektivitätsanbieter Probleme auftreten
+Bei Problemen mit dem lokalen Anbieter oder dem Konnektivitätsanbieter enthält die ARP-Tabelle unter Umständen nur einen einzelnen Eintrag, oder die lokale MAC-Adresse wird unvollständig angezeigt. Dieser zeigt die Zuordnung zwischen der MAC-Adresse und IP-Adresse auf der Microsoft-Seite. 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    
          0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
-auf der Registerkarte
+oder
        
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------   
@@ -161,20 +161,20 @@ auf der Registerkarte
 
 
 > [!NOTE]
-> Öffnen Sie eine Supportanfrage mit Ihrem Dienstanbieter, um solche Probleme zu debuggen. Wenn die ARP-Tabelle keine IP-Adressen der Schnittstellen, MAC-Adressen zugeordnet ist, überprüfen Sie die folgende Informationen:
+> Öffnen Sie eine Supportanfrage bei Ihrem Konnektivitätsanbieter, um solche Probleme zu beheben. Sehen Sie sich die folgenden Informationen an, wenn für die ARP-Tabelle keine IP-Adressen der Schnittstellen, die MAC-Adressen zugeordnet sind, vorhanden sind:
 > 
-> 1. Wenn die erste IP-Adresse der /30 Subnetz zugewiesen, für die Verknüpfung zwischen dem einen MSEE PR und einen MSEE verwendet wird, auf der Oberfläche einen MSEE-Pr. Azure verwendet immer die zweite IP-Adresse für MSEEs.
-> 2. Überprüfen Sie, ob der Kunde (C#-Tag) und VLAN-Tags Service (S-Tag) für einen MSEE PR und einen MSEE Paar übereinstimmen.
+> 1. Wenn die erste IP-Adresse des /30-Subnetzes, die für den Link zwischen dem MSEE-PR und MSEE zugewiesen ist, für die Schnittstelle des MSEE-PR verwendet wird. Azure verwendet immer die zweite IP-Adresse für MSEEs.
+> 2. Überprüfen Sie, ob die VLAN-Tags für den Kunden (C-Tag) und den Dienst (S-Tag) für das MSEE-PR- und das MSEE-Paar übereinstimmen.
 > 
 
-### <a name="arp-table-when-microsoft-side-has-problems"></a>ARP-Tabelle, wenn Microsoft-Seite Probleme aufgetreten sind.
-* Sie sehen keine ARP-Tabelle, die für ein peering, wenn Probleme, auf der Microsoft-Seite vorliegen angezeigt. 
-* Öffnen Sie ein Support-Ticket mit [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Geben Sie, dass Sie ein Problem mit der Schicht-2-Konnektivität verfügen. 
+### <a name="arp-table-when-microsoft-side-has-problems"></a>ARP-Tabelle, wenn auf der Microsoft-Seite Probleme auftreten
+* Wenn auf der Microsoft-Seite Probleme vorliegen, wird für ein Peering keine ARP-Tabelle angezeigt. 
+* Öffnen Sie ein Supportticket beim [Microsoft Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Geben Sie an, dass Sie ein Problem mit der Layer-2-Konnektivität haben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Überprüfen Sie die Layer 3-Konfigurationen für Ihre ExpressRoute-Verbindung
-  * Abrufen Sie Route zum Ermitteln des Status der BGP-Sitzungen Zusammenfassung 
-  * Abrufen der Routentabelle, um zu bestimmen, welche Präfixe über ExpressRoute angekündigt werden
-* Überprüfen Sie die Datenübertragung anhand Bytes ein- / Ausgabeparameter
-* Öffnen Sie ein Support-Ticket mit [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Wenn weiterhin Probleme auftreten.
+* Überprüfen der Layer-3-Konfigurationen Ihrer ExpressRoute-Verbindung
+  * Abrufen der Routenübersicht zum Bestimmen des Status von BGP-Sitzungen 
+  * Abrufen der Routentabelle zum Bestimmen der für ExpressRoute angekündigten Präfixe
+* Überprüfen der Datenübertragung anhand der ein- und ausgehenden Bytes
+* Öffnen Sie ein Supportticket beim [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , wenn weiterhin Probleme auftreten.
 

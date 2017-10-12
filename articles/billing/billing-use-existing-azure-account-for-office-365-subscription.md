@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/03/2017
 ms.author: cjiang
+ms.openlocfilehash: 6965765757d9a20dfb542bbb3cfae1c30276c238
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 1c6e277e321980aaf30f821dbb41c7eaf296b4cf
-ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Registrieren für ein Office 365-Abonnement mit Ihrem Azure-Konto
 Wenn Sie Azure-Abonnent sind, können Sie zum Registrieren für ein Office 365-Abonnement Ihr Azure-Konto verwenden. Wenn Sie Mitglied einer Organisation sind, die über ein Azure-Abonnement verfügt, können Sie Office 365-Abonnements für Benutzer in der vorhandenen Azure Active Directory-Instanz (Azure AD) erstellen. Registrieren Sie sich für Office 365 mit einem Konto mit der Berechtigung „Globaler Administrator“ oder „Abrechnungsadministrator“ in Ihrem Azure Active Directory-Mandanten. Weitere Informationen finden Sie unter [Überprüfen meiner Kontoberechtigungen in Azure AD](#RoleInAzureAD) und [Zuweisen von Administratorrollen in Azure Active Directory](../active-directory/active-directory-assign-admin-roles.md).
@@ -71,4 +70,3 @@ Nach der Registrierung wird das Office 365-Abonnement der gleichen Azure Active 
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen. 
-

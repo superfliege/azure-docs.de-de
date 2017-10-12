@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 08/24/2017
 ms.author: Jenny Jiang
 ms.openlocfilehash: 19053e31d6eb097bc91a04ef9c6af5772aaa16da
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="debug-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Debuggen von Spark-Anwendungen in einem HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ per SSH
 
@@ -213,7 +213,7 @@ In diesem Abschnitt erfahren Sie, wie Sie den Wert den Variable dynamisch mit de
   ![Debuggen ohne Ausnahme](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-debug-without-exception.png)
 
 ## <a name="seealso"></a>Nächste Schritte
-* [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview.md)
+* [Übersicht: Apache Spark für Azure HDInsight](hdinsight-apache-spark-overview.md)
 
 ### <a name="demo"></a>Demo
 * Erstellen von Scala-Projekten (Video): [Create Spark Scala Applications](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ) (Erstellen von Spark Scala-Anwendungen)
@@ -231,7 +231,7 @@ In diesem Abschnitt erfahren Sie, wie Sie den Wert den Variable dynamisch mit de
 * [Remoteausführung von Aufträgen in einem Spark-Cluster mithilfe von Livy](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Tools und Erweiterungen
-* [Erstellen von Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Erstellen von Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure Toolkit für IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Spark-Anwendungen über VPN](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Verwenden der HDInsight-Tools für IntelliJ mit Hortonworks Sandbox](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [Verwenden der HDInsight-Tools im Azure-Toolkit für Eclipse zum Erstellen von Spark-Anwendungen](hdinsight-apache-spark-eclipse-tool-plugin.md)

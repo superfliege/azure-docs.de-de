@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/19/2017
 ms.author: chackdan
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: e3cfad19e42af24edd68befd7b1eac8cef41a1d6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>Erstellen von Service Fabric-Clustern unter Windows Server oder Linux
 Ein Azure Service Fabric-Cluster ist eine über das Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein Computer oder virtueller Computer, der Teil eines Clusters ist, wird als Clusterknoten bezeichnet. Cluster können auf Tausende von Knoten skaliert werden. Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric Partitionsreplikate und Instanzen des Diensts auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich, und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut auf die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen.
@@ -77,5 +76,4 @@ Die Verwendung von Service Fabric-Clustern unter Azure bietet Vorteile gegenübe
 * Erstellen eines Clusters auf virtuellen Windows- oder Windows Server-Computern: [Erstellen eines Service Fabric-Clusters für Windows Server](service-fabric-cluster-creation-for-windows-server.md)
 * Erstellen eines Clusters auf virtuellen Linux- oder Linux-Computern: [Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal](service-fabric-cluster-creation-via-portal.md)
 * Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).
-
 

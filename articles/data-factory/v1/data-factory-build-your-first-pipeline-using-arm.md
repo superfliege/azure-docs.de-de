@@ -15,12 +15,11 @@ ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: spelluru
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1778a4af004afd45464e37e198d78b4f0977c1c4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector"]
@@ -332,7 +331,7 @@ Erstellen Sie eine JSON-Datei namens **ADFTutorialARM-Parameters.json** mit Para
 
 ## <a name="monitor-pipeline"></a>Überwachen der Pipeline
 1. Klicken Sie nach der Anmeldung beim [Azure-Portal](https://portal.azure.com/) auf **Durchsuchen**, und wählen Sie **Data Factorys** aus.
-     ![Durchsuchen > Data Factorys](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
+     ![Durchsuchen &gt; Data Factorys](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
 2. Klicken Sie auf dem Blatt **Data Factorys** auf die von Ihnen erstellte Data Factory (**TutorialFactoryARM**).    
 3. Klicken Sie auf dem Blatt **Data Factory** für Ihre Data Factory auf **Diagramm**.
 
@@ -623,5 +622,4 @@ Mit dieser Vorlage wird eine Data Factory mit dem Namen GatewayUsingArmDF und de
 | [Datasets](data-factory-create-datasets.md) |Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory. |
 | [Planung und Ausführung](data-factory-scheduling-and-execution.md) |In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. |
 | [Überwachen und Verwalten von Pipelines mit der Überwachungs-App](data-factory-monitor-manage-app.md) |In diesem Artikel wird das Überwachen, Verwalten und Debuggen von Pipelines mit der App für die Überwachung und Verwaltung beschrieben. |
-
 

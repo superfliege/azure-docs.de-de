@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/03/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 53bf33f6027f1f365bd92251490d5c851fb83f8b
-ms.contentlocale: de-de
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: ac73006f3589bf6d8adb0d7935b694b444d1415c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-between-data-lake-store-and-azure-sql-database-using-sqoop"></a>Kopieren von Daten zwischen Data Lake-Speicher und Azure SQL-Datenbank mithilfe von Sqoop
 Erfahren Sie mehr über das Verwenden von Apache Sqoop zum Importieren und Exportieren von Daten zwischen Azure SQL-Datenbank und Data Lake-Speicher.
@@ -141,7 +140,6 @@ Informationen zur Leistungsoptimierung Ihres Sqoop-Auftrags zum Kopieren von Dat
 
 ## <a name="see-also"></a>Siehe auch
 * [Kopieren von Daten aus Azure Storage-Blobs in den Data Lake-Speicher](data-lake-store-copy-data-azure-storage-blob.md)
-* [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
+* [Sichern von Daten in Data Lake Store](data-lake-store-secure-data.md)
 * [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
-

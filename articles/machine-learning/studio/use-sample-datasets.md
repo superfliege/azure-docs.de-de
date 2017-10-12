@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 55cec0c711836360c173a67d575f042d0fe86bef
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
@@ -92,7 +91,7 @@ Rezensionen zu Büchern bei Amazon, die von Forschern der University of Pennsylv
 <tr>
   <td valign=top>Brustkrebsdaten</td>
   <td valign=top>
-Eines von drei krebsbezogenen DataSets, das vom Onkologieinstitut bereitgestellt wurde, das häufig in Dokumenten zum maschinellen Lernen verwendet wird. Kombiniert Diagnoseinformationen mit Merkmalen der Laboranalyse von über 300 Gewebeproben.<p> </p><b>Verwendung:</b> Klassifizierung des Krebstyps auf Basis von neun Attributen, von denen einige linear, andere kategorisch sind. <p> </p><b>Zugrunde liegende Untersuchungen:</b> Wohlberg, W. H., Street, W. N., & Mangasarian, O. L. (1995). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
+Eines von drei krebsbezogenen DataSets, das vom Onkologieinstitut bereitgestellt wurde, das häufig in Dokumenten zum maschinellen Lernen verwendet wird. Kombiniert Diagnoseinformationen mit Merkmalen der Laboranalyse von über 300 Gewebeproben.<p> </p><b>Verwendung:</b> Klassifizierung des Krebstyps auf Basis von neun Attributen, von denen einige linear, andere kategorisch sind. <p> </p><b>Zugrunde liegende Untersuchungen:</b> Wohlberg, W. H., Street, W. N., &amp; Mangasarian, O. L. (1995). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
 </tr>
 
 <tr ID=breast-cancer-features>
@@ -152,7 +151,7 @@ Pünktlichkeitsratendaten zu Passagierflügen aus der TranStats-Datensammlung de
 <tr>
   <td valign=top>Planmäßige Durchführung von Flügen (unformatiert)</td>
   <td valign=top>
-Datensätze zu Ankunft und Abflug von Flügen innerhalb der USA von Oktober 2011.<p> </p><b>Verwendung:</b> Vorhersage von Verspätungen im Flugverkehr. <p> </p><b>Zugrunde liegende Untersuchungen:</b> vom US Dept. of Transportation <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>.
+Datensätze zu Ankunft und Abflug von Flügen innerhalb der USA von Oktober 2011.<p> </p><b>Verwendung:</b> Vorhersage von Verspätungen im Flugverkehr. <p> </p><b>Zugrunde liegende Untersuchungen:</b> vom US Dept. of Transportation <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&amp;DB_Short_Name=On-Time</a>.
   </td>
 </tr>
 
@@ -306,4 +305,3 @@ Diese Daten stammen aus dem KDD Cup 2010 zur Leistungsbewertung von Schülern (<
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-

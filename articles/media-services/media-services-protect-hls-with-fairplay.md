@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
 ms.openlocfilehash: 895d6307b1cef74e195cc2ffd8dbef4196e97b1f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Schützen von HLS-Inhalten mit Apple FairPlay oder Microsoft PlayReady
 Mit Azure Media Services können Sie Ihre HLS-Inhalte (HTTP Live Streaming) unter Verwendung der folgenden Formate dynamisch verschlüsseln:  

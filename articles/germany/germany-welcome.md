@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.openlocfilehash: ba13298654a5f73fcdfcb6e09b06bcbf08159bfc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="welcome-to-azure-germany"></a>Willkommen bei Azure Deutschland
 ## <a name="overview"></a>Übersicht

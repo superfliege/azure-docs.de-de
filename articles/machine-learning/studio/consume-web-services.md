@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: fc1152f1431474b6625f389a1290a121e86fbdac
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-consume-an-azure-machine-learning-web-service"></a>Nutzen eines Azure Machine Learning-Webdiensts
 
@@ -125,5 +124,4 @@ Verwenden Sie zum Verbinden mit einem Machine Learning-Webdienst die **urllib2**
 1. Stellen Sie das Experiment „Sample 1: Download dataset from UCI: Adult 2 class dataset“ bereit, das Teil der Machine Learning-Beispielsammlung ist.
 2. Weisen Sie „apiKey“ den Schlüssel von einem Webdienst zu. Im Abschnitt **Abrufen eines Autorisierungsschlüssels für Azure Machine Learning** zu Beginn dieses Artikels finden Sie weitere Informationen.
 3. Weisen Sie "serviceUri" die Anforderungs-URI zu.
-
 

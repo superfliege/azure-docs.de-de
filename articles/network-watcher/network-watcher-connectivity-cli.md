@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
+ms.openlocfilehash: 996fe0ef31a5bea9111324a661b714e77dffff64
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: c1deaa40bfda0bf3858ad56d3d6a90df34351278
-ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="check-connectivity-with-azure-network-watcher-using-azure-cli-20"></a>Überprüfen der Konnektivität mit Azure Network Watcher mithilfe von Azure CLI 2.0
 
 > [!div class="op_single_selector"]
@@ -307,4 +305,3 @@ Der folgende JSON-Code ist die Beispielantwort auf die Ausführung des vorherige
 Informationen zur Automatisierung von Paketerfassungen mit VM-Warnungen finden Sie unter [Erstellen einer durch Warnungen ausgelösten Paketerfassung](network-watcher-alert-triggered-packet-capture.md).
 
 Lesen Sie den Artikel zur [IP-Datenflussüberprüfung](network-watcher-check-ip-flow-verify-portal.md), um herauszufinden, ob bestimmter eingehender oder ausgehender Datenverkehr für Ihren virtuellen Computer zulässig ist.
-

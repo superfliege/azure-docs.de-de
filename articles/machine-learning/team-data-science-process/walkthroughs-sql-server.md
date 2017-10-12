@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8a8a400b87bacae7f0c34ad5643f66c078053f7a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>Exemplarische Vorgehensweisen zu Data Science in SQL Server unter Verwendung von R, Python und T-SQL
 
 In diesen exemplarischen Vorgehensweisen werden SQL Server, SQL Server R Services und SQL Server Python Services für Predictive Analytics verwendet. R- und Python-Code wird in gespeicherten Prozeduren bereitgestellt. Diese folgen den im Team Data Science-Prozess ausgeführten Schritten. Eine Übersicht über den Team Data Science-Prozess finden Sie unter [Data Science-Prozess](overview.md). 

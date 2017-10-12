@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: carlrab
+ms.openlocfilehash: 44546b423cd7f3a49d3699aa39f2437a42de86a8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: d136b71c9587d4035009a2ef2296fd93f9e984fe
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)
 Azure bietet zwei Optionen zum Hosten von SQL Server-Workloads in Microsoft Azure:
@@ -66,7 +65,6 @@ In der folgenden Tabelle sind die wesentlichen Merkmale von SQL-Datenbank und SQ
 |  | Teams, die integrierte hohe Verfügbarkeit, Notfallwiederherstellung und Upgrades für die Datenbank benötigen. |Teams, die hohe Verfügbarkeit, Notfallwiederherstellung und Patches für SQL Server konfigurieren und verwalten können. Dies wird durch einige bereitgestellte Automatisierungsfeatures erheblich vereinfacht. | |
 |  | Teams, die das zugrunde liegende Betriebssystem und Konfigurationseinstellungen nicht selbst verwalten möchten. |Sie benötigen eine angepasste Umgebung mit uneingeschränkten Administratorrechten. | |
 |  | Datenbanken mit einer Größe von bis zu 4 TB oder größere Datenbanken, die mittels horizontaler Hochskalierung [horizontal oder vertikal partitioniert](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling) werden können |SQL Server-Instanzen mit bis zu 64 TB Speicherplatz. Die Instanz unterstützt beliebig viele Datenbanken. | |
-|  | [Erstellung von SaaS-Anwendungen (Software-as-a-Service)](sql-database-design-patterns-multi-tenancy-saas-applications.md). |Migration und Erstellung von Unternehmens- und Hybridanwendungen. | |
 |  | | |
 | **Ressourcen:** |Sie möchten keine IT-Ressourcen für die Konfiguration und Verwaltung der zugrunde liegenden Infrastruktur beschäftigen, sondern sich auf die Anwendungsebene konzentrieren. |Sie verfügen über einige IT-Ressourcen für die Konfiguration und Verwaltung. Dies wird durch einige bereitgestellte Automatisierungsfeatures erheblich vereinfacht. |
 | **Gesamtbetriebskosten:** |Beseitigt Hardwarekosten und reduziert die Verwaltungskosten. |Eliminiert Hardwarekosten. |
@@ -146,5 +144,4 @@ Entscheiden Sie sich für **SQL Server auf Azure Virtual Machines** , wenn für 
 * Informationen zu den ersten Schritten für SQL-Datenbank finden Sie unter [Erstellen einer ersten Azure SQL-Datenbank](sql-database-get-started-portal.md).
 * Informationen finden Sie unter [Preise für SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/).
 * Informationen zu den ersten Schritten mit SQL Server auf virtuellen Azure-Computern finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) .
-
 

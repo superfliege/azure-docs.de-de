@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Azure-Funktionen-App-Einstellungen | Microsoft-Dokumentation
+title: Konfigurieren von Azure-Funktionen-App-Einstellungen | Microsoft Docs
 description: Hier erhalten Sie Informationen zum Konfigurieren von Azure Funktionen-App-Einstellungen.
 services: 
 documentationcenter: .net
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2017
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 3229fe0b5aacbbc716039a4a6abfd235dbc4c4f7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Verwalten einer Funktionen-App im Azure-Portal 
 
@@ -130,7 +129,6 @@ Weitere Informationen zum Verwenden von App Service-Einstellungen finden Sie unt
 
 + [Konfigurieren von Web-Apps in Azure App Service](../app-service/web-sites-configure.md)
 + [Kontinuierliche Bereitstellung für Azure Functions](functions-continuous-deployment.md)
-
 
 
 

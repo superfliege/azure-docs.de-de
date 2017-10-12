@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: c240643d2a7ce98ddd7f7871eeef654cced953f7
-ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Platzierungsrichtlinien für Service Fabric-Dienste
 Platzierungsrichtlinien sind zusätzliche Regeln, mit denen in einigen besonderen, nicht alltäglichen Szenarien die Dienstplatzierung gesteuert werden kann. Einige Beispiele für diese Szenarien:
@@ -134,4 +133,3 @@ Wäre es auch möglich, diese Konfigurationen für Dienste in einem Cluster zu v
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png
 [Image3]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-preferred-primary-domain.png
-

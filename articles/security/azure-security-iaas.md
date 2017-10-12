@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: barclayn
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: f93211d289553b7a8afbe8c17fa4847f3d4585a8
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 
@@ -230,4 +229,3 @@ Der folgende Screenshot zeigt ein Beispiel der Informationen, die in Operations 
 * [Blog des Azure-Sicherheitsteams](https://blogs.msdn.microsoft.com/azuresecurity/)
 * [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)
 * [Sicherheit in Azure – bewährte Methoden und Muster](security-best-practices-and-patterns.md)
-

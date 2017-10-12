@@ -15,12 +15,11 @@ ms.date: 06/15/2017
 ms.author: barlan
 ms.reviewer: yossib
 ms.custom: end-user
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: 6527e624ce9c911b201881ffd409c57b2f065ef3
-ms.contentlocale: de-de
-ms.lasthandoff: 06/22/2017
-
+ms.openlocfilehash: 5b6694afc0bafaf2be5f98c625dd6724b91234fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Was ist Azure Multi-Factor Authentication?
 Sie haben eine E-Mail von einem IT-Mitarbeiter erhalten oder Ihr Vorgesetzter hat Ihnen gesagt, dass für Ihr Konto eine zusätzliche Sicherheitsüberprüfung hinzugefügt wurde.  Was bedeutet dies?
@@ -48,4 +47,3 @@ Wählen Sie eines dieser Themen aus, um zu beginnen.
 | [Ändern der Einstellungen](multi-factor-authentication-end-user-manage-settings.md) |Hier erfahren Sie, wie Sie Ihre Einstellungen wie die Telefonnummer oder die bevorzugte Registrierungsmethode ändern können. |
 | [Hilfe zu App-Kennwörtern](multi-factor-authentication-end-user-app-passwords.md) |Hier erhalten Sie Informationen zum Erstellen und Verwenden von App-Kennwörtern. |
 | [Verwenden der mobilen App](microsoft-authenticator-app-how-to.md) |Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
-

@@ -2,11 +2,11 @@
 
 # Schnellstart
 ## [Quickstart for Bash](quickstart.md) (Schnellstart für Bash)
-## [Quickstart for PowerShell](quickstart-powershell.md) (Schnellstart für PowerShell)
+## [Schnellstart für PowerShell](quickstart-powershell.md)
 
 # Konzepte
-## [Features & tools in Bash](features.md) (Features und Tools in Bash)
-## [Features & tools in PowerShell](features-powershell.md) (Features und Tools in PowerShell)
+## [Features &amp; tools in Bash](features.md) (Features und Tools in Bash)
+## [Features &amp; tools in PowerShell](features-powershell.md) (Features und Tools in PowerShell)
 ## [Einschränkungen](limitations.md)
 ## [Problembehandlung](troubleshooting.md)
 
@@ -18,7 +18,7 @@
 # [Preise](pricing.md)
 
 # Referenz
-## [Azure-CLI](/cli/azure)
+## [Azure-Befehlszeilenschnittstelle](/cli/azure)
 ## [Azure PowerShell](/powershell/azure)
 
 # Ressourcen

@@ -15,14 +15,12 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 737cdff3140be68cf9d6d396b470dd09c65c52f2
-ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.openlocfilehash: abed4095bcacac4ca3995acfaafae2f16d5f1532
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Übersicht über die Integration von Application Gateway in Azure Security Center
 
 In diesem Artikel wird erläutert, wie Sie von Application Gateway und Security Center beim Schutz Ihrer Webanwendungsressourcen unterstützt werden. Die Firewall für Application Gateway-Webanwendungen (WAF) lässt sich in [Security Center](../security-center/security-center-intro.md) integrieren, was eine nahtlose Sicht auf das Verhindern, Erkennen und Reagieren auf Bedrohungen für die ungeschützten Webanwendungen in Ihrer Umgebung bietet.

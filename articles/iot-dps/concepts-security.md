@@ -12,14 +12,12 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
 ms.openlocfilehash: 3ccbaaf55d2bdfedffcdb5ca069798328e2d75fd
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Sicherheitskonzepte beim IoT Hub Device Provisioning-Dienst 
 
 Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, mit dem Sie Geräte ohne manuelles Eingreifen auf einem angegebenen IoT Hub konfigurieren können. Mit dem Device Provisioning-Dienst können Sie Millionen von Geräten auf sichere und skalierbare Weise bereitstellen. Dieser Artikel bietet eine Übersicht über die *Sicherheitskonzepte* bei der Gerätebereitstellung. Dieser Artikel ist für alle Personen relevant, die an der Vorbereitung von Geräten für die Bereitstellung beteiligt sind.
@@ -67,4 +65,3 @@ Ein Zwischenzertifikat ist ein X.509-Zertifikat, das vom Stammzertifikat (oder e
 ## <a name="leaf-certificate"></a>Untergeordnetes Zertifikat
 
 Ein untergeordnetes Zertifikat (oder Endeinheitzertifikat) wird zur Identifizierung des Zertifikatinhabers verwendet und enthält in seiner Zertifikatkette das Stammzertifikat. Mit dem untergeordneten Zertifikat werden kein anderen Zertifikate signiert.
-

@@ -1,4 +1,3 @@
-
 ---
 title: Dienstremoting in Service Fabric | Microsoft Docs
 description: "Service Fabric-Remoting ermöglicht Clients und Diensten die Kommunikation mit Diensten über einen Remoteprozeduraufruf."
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 655bc3dd3735a35fbe7437e8dda92b2adf15f7bf
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>Dienstremoting mit Reliable Services
 Für WebAPI, WCF (Windows Communication Foundation) und andere Dienste, die nicht an ein bestimmtes Kommunikationsprotokoll oder einen bestimmten Kommunikationsstapel gebunden sind, stellt das Reliable Services-Framework einen Remotingmechanismus für das schnelle, einfache Einrichten von Remoteprozeduraufrufen für Dienste bereit.
@@ -392,4 +390,3 @@ Im folgenden Beispiel wird die Json-Serialisierung mit Remoting V2 verwendet.
 * [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
 * [WCF-Kommunikation mit Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 * [Absichern der Kommunikation für Reliable Services](service-fabric-reliable-services-secure-communication.md)
-

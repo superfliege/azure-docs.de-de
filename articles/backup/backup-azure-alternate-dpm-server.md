@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/18/2017
 ms.author: adigan;giridham;trinadhk;markgal
 ms.openlocfilehash: 688d155b68bc2d76d53f78d251bc2f659582845f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Wiederherstellen von Daten von Azure Backup Server
 Mit Azure Backup Server können Sie die Daten wiederherstellen, die Sie in einem Recovery Services-Tresor gesichert haben. Der entsprechende Prozess ist in der Azure Backup Server-Verwaltungskonsole integriert und ähnelt dem Wiederherstellungsworkflow für andere Azure Backup-Komponenten.

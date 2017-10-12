@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: get-started-article
 ms.date: 09/12/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 680c1afab1af31cfef51b1c82d2db49f452ba6ab
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools for AI
 Visual Studio Code Tools for AI ist eine Entwicklungserweiterung zum Erstellen, Testen und Bereitstellen von Deep Learning- und KI-Lösungen. Die Erweiterung lässt sich nahtlos in Azure Machine Learning integrieren und zeigt den Ausführungsverlauf sowie die Leistung vorheriger Trainings und benutzerdefinierter Metriken an. Sie bietet eine Explorer-Ansicht mit Beispielen zum Durchsuchen und Durchführen eines Bootstraps eines neuen Projekts mit dem [Microsoft Cognitive Toolkit](http://www.microsoft.com/en-us/cognitive-toolkit) (früher als CNTK bezeichnet), [Google TensorFlow](https://www.tensorflow.org) und anderen Deep Learning-Frameworks. Sie bietet zudem einen Explorer für Computeziele, mit dem Sie Aufträge übermitteln können, um Modelle in Remoteumgebungen wie Azure Virtual Machines oder Linux-Servern mit GPU zu trainieren. 
  
@@ -83,4 +81,3 @@ Um genaue Details zu den Ergebnissen eines Auftrags zu erhalten, klicken Sie obe
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
 > [Konfigurieren von Azure Machine Learning Workbench zum Arbeiten mit einer IDE](./how-to-configure-your-IDE.md)
-

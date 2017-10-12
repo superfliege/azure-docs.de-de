@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: aelnably;wesmc
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 27a2c95c09197b3439d3fac7c74d253df2b32b1c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="continuous-deployment-with-azure-web-app-for-containers"></a>Continuous Deployment mit Azure-Web-App für Container
 
@@ -93,4 +92,3 @@ Wenn das Image aktualisiert wird, wird die Web-App automatisch mit dem neuen Ima
 * [Informationen zum Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps für Container](quickstart-custom-docker-image.md)
 * [Azure App Service-Web-App für Container – FAQs](./app-service-linux-faq.md) 
 * [Verwalten von Web-App für Container mithilfe der Azure CLI 2.0](./app-service-linux-cli.md)
-

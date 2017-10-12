@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: 1f261f97bbd9233d47eadc7e902e00ee87af9e34
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
@@ -141,7 +140,7 @@ Um das Hochladen von VHD-Dateien zum Erstellen benutzerdefinierter Images automa
 
 So suchen Sie nach dem Zielspeicherkonto, das Ihrem Lab zugeordnet ist:
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 2. Wählen Sie im Menü auf der linken Seite die Option **Ressourcengruppen** aus.
 3. Suchen Sie nach der Ressourcengruppe, die Ihrem Lab zugeordnet ist, und wählen Sie sie aus.
 4. Wählen Sie unter **Übersicht** eines der Speicherkonten aus.
@@ -235,4 +234,3 @@ VM-Bereitstellungsfehler werden in Aktivitätsprotokollen erfasst. Sie finden di
 Gelegentlich tritt der Bereitstellungsfehler vor Beginn der VM-Bereitstellung auf. Dies ist beispielsweise der Fall, wenn das Abonnementlimit für eine Ressource, die mit der VM erstellt wurde, überschritten wird. In diesem Fall werden die Fehlerdetails in den Aktivitätsprotokollen auf Labebene erfasst. Aktivitätsprotokolle befinden sich im unteren Bereich der Einstellungen von **Konfiguration und Richtlinien**. Weitere Informationen zum Verwenden von Aktivitätsprotokollen in finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-audit).
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

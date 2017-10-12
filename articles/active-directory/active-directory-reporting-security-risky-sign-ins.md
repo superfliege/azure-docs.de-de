@@ -14,10 +14,10 @@ ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 45a6f63bd920c9a70c25b8dfae084ea030256cf4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal
 
@@ -51,7 +51,7 @@ Die Granularitätsebene von Berichten kann für die einzelnen Editionen aber var
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – Free und Basic Edition
 
-In den Azure Active Directory-Editionen Free und Basic wird Ihnen eine Liste mit riskanten Anmeldungen zur Verfügung gestellt, die für Ihre Benutzer erkannt wurden. In diesem Bericht werden:
+In den Azure Active Directory-Editionen Free und Basic wird Ihnen eine Liste mit riskanten Anmeldungen zur Verfügung gestellt, die für Ihre Benutzer erkannt wurden. Folgendes finden Sie im Bericht:
 
 - **Benutzer**: Der Name des Benutzers, der während des Anmeldevorgangs verwendet wurde
 - **IP**: Die IP-Adresse des Geräts, die für die Verbindung mit Azure Active Directory verwendet wurde
@@ -73,9 +73,9 @@ Basierend auf Ihrer Untersuchung der riskanten Anmeldung können Sie Azure Activ
 
 Ausführlichere Informationen finden Sie unter [Manuelles Schließen von Risikoereignissen](active-directory-identityprotection.md#closing-risk-events-manually).
 
-Dieser Bericht enthält eine Option aus, um Szenarien:
+In diesem Bericht stehen Ihnen folgende Optionen zur Verfügung:
 
-- Ihren Ressourcen
+- Suchen von Ressourcen
 - Herunterladen der Berichtsdaten
 
 

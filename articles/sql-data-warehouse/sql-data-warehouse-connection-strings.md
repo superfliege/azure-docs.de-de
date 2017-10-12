@@ -16,10 +16,10 @@ ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
 ms.openlocfilehash: e71ea1d23f68ed41c03bbce88b08863d2831c1bd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="drivers-for-azure-sql-data-warehouse"></a>Treiber für Azure SQL Data Warehouse
 Sie können über verschiedene Anwendungsprotokolle eine Verbindung mit SQL Data Warehouse herstellen, z.B. über [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] und [JDBC][JDBC]. Im Folgenden sind einige Beispiele für Verbindungszeichenfolgen für die einzelnen Protokolle aufgeführt.  Sie können auch das Azure-Portal zum Einrichten Ihrer Verbindungszeichenfolge verwenden.  Um die Verbindungszeichenfolge über das Azure-Portal zu erstellen, navigieren Sie zum Blatt Ihrer Datenbank, und klicken Sie unter *Zusammenfassung* auf *Datenbank-Verbindungszeichenfolgen anzeigen*.

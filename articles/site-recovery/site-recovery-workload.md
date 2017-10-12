@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/08/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
 ms.openlocfilehash: d7cb95d0e099d5e0357ce8871f02c894acfdc9b7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Welche Workloads können mit Azure Site Recovery geschützt werden?
 In diesem Artikel werden Workloads und Anwendungen beschrieben, die Sie mit dem Azure Site Recovery-Dienst replizieren können.
@@ -159,4 +158,3 @@ Weitere Informationen zum Schutz von Citrix XenApp- und XenDesktop-Bereitstellun
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Überprüfen der Voraussetzungen](site-recovery-prereq.md)
-

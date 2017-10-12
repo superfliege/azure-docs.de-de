@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
 ms.openlocfilehash: d6c1707f67d986487e5a45e76ffc9a02ddf16eb1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Nutzung der Google-Anmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -27,7 +27,7 @@ In diesem Thema wird veranschaulicht, wie Sie Azure App Service zur Verwendung v
 
 Sie benötigen ein Google-Konto mit verifizierter E-Mail-Adresse, um den in diesem Thema beschriebenen Vorgang abzuschließen. Besuchen Sie die Seite [accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302), um ein neues Google-Konto zu erstellen.
 
-## <a name="register"> </a>Registrieren Ihrer Anwendung für Google
+## <a name="register"></a>Registrieren Ihrer Anwendung für Google
 1. Melden Sie sich beim [Azure-Portal]an, und navigieren Sie zu Ihrer Anwendung. Kopieren Sie Ihre **URL**. Sie wird später zum Konfigurieren der Google-App benötigt.
 2. Navigieren Sie zur Website [Google apis](http://go.microsoft.com/fwlink/p/?LinkId=268303) (Google-APIs), melden Sie sich mit den Anmeldeinformationen für Ihr Google-Konto an, klicken Sie auf **Create project** (Projekt erstellen), geben Sie einen **Projektnamen** an, und klicken Sie auf **Create** (Erstellen).
 3. Klicken Sie unter **Social APIs** (APIs für soziale Netzwerke) auf **Google+ API** (Google+-API) und dann auf **Enable** (Aktivieren).
@@ -40,7 +40,7 @@ Sie benötigen ein Google-Konto mit verifizierter E-Mail-Adresse, um den in dies
     > Der geheime Clientschlüssel ist eine wichtige Anmeldeinformation. Teilen Sie diesen Schlüssel mit niemandem, und geben Sie ihn nicht über Ihre Anwendung weiter.
 
 
-## <a name="secrets"> </a>Hinzufügen von Google-Informationen zu Ihrer Anwendung
+## <a name="secrets"></a>Hinzufügen von Google-Informationen zu Ihrer Anwendung
 1. Navigieren Sie im [Azure-Portal]wieder zu Ihrer Anwendung. Klicken Sie auf **Einstellungen** und anschließend auf **Authentifizierung/Autorisierung**.
 2. Falls das Authentifizierungs-/Autorisierungsfeature nicht aktiviert ist, aktivieren Sie es über die Option **Ein**.
 3. Klicken Sie auf **Google**. Fügen Sie die ID und den geheimen Schlüssel ein, die Sie zuvor erhalten haben, und aktivieren Sie optional alle Bereiche, die bei Ihrer Anwendung erforderlich sind. Klicken Sie dann auf **OK**.
@@ -53,7 +53,7 @@ Sie benötigen ein Google-Konto mit verifizierter E-Mail-Adresse, um den in dies
 
 Sie können nun Google für die Authentifizierung in Ihrer App verwenden.
 
-## <a name="related-content"> </a>Verwandte Inhalte
+## <a name="related-content"></a>Verwandte Inhalte
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Anchors. -->

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/22/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 95e31d0ca5983e0946ad6fb993e7a89a6a63d2c3
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Site Recovery
 Dieser Artikel enthält häufig gestellte Fragen zur Azure Site Recovery. Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -220,4 +219,3 @@ Ja, Sie können virtuelle Hyper-V-Computer in Azure oder zwischen Dienstanbieter
 ## <a name="next-steps"></a>Nächste Schritte
 * Lesen Sie die [Site Recovery-Übersicht](site-recovery-overview.md)
 * Informieren Sie sich [Site Recovery-Architektur](site-recovery-components.md)  
-

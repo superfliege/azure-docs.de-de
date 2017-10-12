@@ -14,14 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 08/30/2017
 ms.author: eugenesh
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 3f2ead208ea1525489a40d1fb637da47cd8a9b24
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="field-mappings-in-azure-search-indexers"></a>Feldzuordnungen in Azure Search-Indexern
 Bei Verwendung des Azure Search-Indexers gibt es gelegentlich Situationen, in denen die Eingabedaten nicht ganz dem Schema des Zielindexes entsprechen. In diesen Fällen können Sie Ihre Daten mithilfe von **Feldzuordnungen** in das gewünschte Format umwandeln.
 
@@ -206,4 +204,3 @@ Die Azure SQL-Datenbank verfügt über keinen integrierten Datentyp, der `Collec
 
 ## <a name="help-us-make-azure-search-better"></a>Helfen Sie uns bei der Verbesserung von Azure Search
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/)mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
-

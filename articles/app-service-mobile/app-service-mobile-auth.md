@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 4105392f58eaf37e88c1d9ffb74f3f4133fa5482
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authentication-and-authorization-in-azure-mobile-apps"></a>Authentifizierung und Autorisierung in Azure Mobile Apps
 ## <a name="what-is-app-service-authentication--authorization"></a>Was ist App Service-Authentifizierung/Autorisierung?
@@ -107,4 +106,3 @@ Wenn Sie ein anderes Identitätssystem als die hier beschriebenen verwenden möc
 [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Google-Anmeldung]: ../app-service/app-service-mobile-how-to-configure-google-authentication.md
 [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
 [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Twitter-Anmeldung]: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md
-

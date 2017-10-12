@@ -17,12 +17,11 @@ ms.topic: troubleshooting
 ms.date: 04/25/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 01057dd7832cab6121a22e3bb7d0dc4cd7e9b35d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 4160b9ef6cda1efd6c76ce1b283c78b4d43a5187
-ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
 Sie können Ihre Rechnung auch aus dem [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) herunterladen oder sie per E-Mail zugeschickt bekommen. Um Ihre Daten zur täglichen Nutzung herunterzuladen, wechseln Sie zum [Azure-Kontocenter](https://account.azure.com/Subscriptions). Nur bestimmte Rollen, z.B. der Kontoadministrator, haben die Berechtigung zum Abrufen von Abrechnungs- und Nutzungsinformationen. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](billing-manage-access.md).
@@ -105,5 +104,4 @@ Mehrere Gründe können dafür ausschlaggebend sein, dass Sie keine Rechnung seh
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
-
 

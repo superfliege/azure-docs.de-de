@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
 ms.openlocfilehash: 4787e4033e1afda6339b0b917263ecc165e400ad
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="input-metadata"></a>Eingeben von Metadaten
 Ein Codierauftrag ist einem Eingabeasset (oder mehreren) zugeordnet, für das Sie einige Codieraufgaben durchführen möchten.  Nach Abschluss einer Aufgabe wird ein Ausgabeasset erzeugt.  Das Ausgabeasset enthält Videodaten, Audiodaten, Miniaturansichten, das Manifest usw. Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Eingabeasset. Der Name der XML-Metadatendatei weist das folgende Format auf: &lt;Asset-ID&gt;_metadata.xml (z.B. „41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml“), wobei &lt;Asset-ID&gt; der „AssetId“-Wert des Eingabeassets ist.  

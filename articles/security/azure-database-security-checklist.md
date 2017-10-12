@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: tomsh
 ms.openlocfilehash: 5047635555a6b4592c0714677c2b942e50bad344
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-security-checklist"></a>Checkliste für die Sicherheit der Azure-Datenbank
 
@@ -49,7 +49,7 @@ Es wird empfohlen, den Artikel [Azure Database Security Best Practices (Bewährt
 |<br>Verschlüsselung ruhender Daten| <ul><li>[Transparente Datenverschlüsselung](http://go.microsoft.com/fwlink/?LinkId=526242), wenn inaktive Daten physisch in digitaler Form gespeichert werden.</li></ul>|
 |**Steuern des Zugriffs**||  
 |<br> Datenbankzugriff | <ul><li>[Authentifizierung](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-control-access) (Azure Active Directory-Authentifizierung, AD-Authentifizierung) verwendet von Azure Active Directory verwaltete Identitäten.</li><li>[Autorisierung](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-control-access) erteilt Benutzern die minimal erforderlichen Berechtigungen.</li></ul> |
-|<br>Anwendungszugriff| <ul><li>[Sicherheit auf Zeilenebene](https://msdn.microsoft.com/library/dn765131) (Verwendet Sicherheitsrichtlinien und beschränkt gleichzeitig den Zugriff auf Zeilenebene auf Grundlage einer Benutzeridentität, einer Rolle oder eines Ausführungskontexts).</li><li>[Dynamische Datenmaskierung](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-dynamic-data-masking-get-started) (Verwendet Permission & Policy, schränkt die Offenlegung sensibler Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden).</li></ul>|
+|<br>Anwendungszugriff| <ul><li>[Sicherheit auf Zeilenebene](https://msdn.microsoft.com/library/dn765131) (Verwendet Sicherheitsrichtlinien und beschränkt gleichzeitig den Zugriff auf Zeilenebene auf Grundlage einer Benutzeridentität, einer Rolle oder eines Ausführungskontexts).</li><li>[Dynamische Datenmaskierung](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-dynamic-data-masking-get-started) (Verwendet Permission &amp; Policy, schränkt die Offenlegung sensibler Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden).</li></ul>|
 |**Proaktive Überwachung**||  
 | <br>Nachverfolgen und Erkennen| <ul><li>Die [Überprüfung](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) verfolgt Datenbankereignisse und schreibt diese in ein Überwachungs-/Aktivitätsprotokoll in Ihrem [Azure Speicherkonto](https://docs.microsoft.com/en-us/azure/storage/storage-create-storage-account).</li><li>Nachverfolgen der Integrität der Azure-Datenbank mit [Azure Monitor-Aktivitätsprotokollen](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs).</li><li>Die [Bedrohungserkennung](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-threat-detection) erkennt anormale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. </li></ul> |
 |<br>Azure Security Center| <ul><li>Die [Überwachung der Daten](https://docs.microsoft.com/en-us/azure/security-center/security-center-enable-auditing-on-sql-databases) verwendet Azure Security Center als eine zentralisierte Sicherheitsüberwachungslösung für SQL und anderen Azure-Dienste.</li></ul>|     

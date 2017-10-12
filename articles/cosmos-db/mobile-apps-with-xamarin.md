@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: arramac
 ms.openlocfilehash: 4dfe9c755f3e7d5414ae04dd4027defd6cef2e4a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Erstellen von mobilen Anwendungen mit Xamarin und Azure Cosmos DB
 Die meisten mobilen Apps müssen Daten in der Cloud speichern, und Azure Cosmos DB ist eine Clouddatenbank für mobile Apps. Sie besitzt alle Komponenten, die Entwickler von mobilen Produkten benötigen. Es handelt sich um eine vollständig verwaltete Database-as-a-Service-Lösung, die bei Bedarf skaliert werden kann. Diese Lösung kann Benutzern Ihrer Anwendung Daten unabhängig vom Standort weltweit transparent bereitstellen. Mit dem [Azure Cosmos DB .NET Core SDK](documentdb-sdk-dotnet-core.md) können Sie erreichen, dass mobile Xamarin-Apps ohne mittlere Ebene direkt mit Azure Cosmos DB interagieren.

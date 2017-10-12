@@ -43,7 +43,7 @@
 # Referenz
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=batch)
 ## [Azure PowerShell](/powershell/module/azurerm.batch)
-## [Azure-CLI](/cli/azure/batch)
+## [Azure-Befehlszeilenschnittstelle](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
 ## [Java](/java/api/com.microsoft.azure.batch)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest)

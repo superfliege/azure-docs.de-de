@@ -15,20 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: davidmu
+ms.openlocfilehash: bfc06c1b44974fd17a3794654503d21d6407a917
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: e747d4777bdf515e8b7bd54f44ff48b8539ed765
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-application-gateway-with-a-web-application-firewall-by-using-the-portal"></a>Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Portal
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](application-gateway-web-application-firewall-portal.md)
 > * [PowerShell](application-gateway-web-application-firewall-powershell.md)
-> * [Azure-CLI](application-gateway-web-application-firewall-cli.md)
+> * [Azure-Befehlszeilenschnittstelle](application-gateway-web-application-firewall-cli.md)
 
 In diesem Artikel wird erläutert, wie ein Anwendungsgateway, für das eine Web Application Firewall (WAF) aktiviert ist, erstellt wird.
 
@@ -84,7 +82,7 @@ Dieses Szenario umfasst Folgendes:
 * Sie erstellen ein Subnetz mit dem Namen Appgatewaysubnet, für das 10.0.0.0/28 als CIDR-Block verwendet wird.
 * Sie konfigurieren ein Zertifikat für die SSL-Auslagerung.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. Falls Sie noch nicht über ein Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free) registrieren.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an. Falls Sie noch nicht über ein Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free) registrieren.
 
 2. Wählen Sie im Portalbereich **Favoriten** die Option **Neu** aus.
 
@@ -166,4 +164,3 @@ Informationen zum Konfigurieren der SSL-Auslagerung und zum Entfernen kostspieli
 [3]: ./media/application-gateway-web-application-firewall-portal/figure3.png
 [10]: ./media/application-gateway-web-application-firewall-portal/figure10.png
 [scenario]: ./media/application-gateway-web-application-firewall-portal/scenario.png
-

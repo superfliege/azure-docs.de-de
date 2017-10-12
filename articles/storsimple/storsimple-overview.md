@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
 ms.openlocfilehash: 86b8300553caa0741e8aca3c0e7621ec80cc5b21
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung
 ## <a name="overview"></a>Übersicht
@@ -216,7 +216,7 @@ In der folgenden Tabelle finden Sie eine Übersicht über die unterstützten Sto
 | Sicherung |Sicherung des Primärziels |Ja* |Unterstützt, wenn das StorSimple-Gerät nur für diese Workload verwendet wird |Update 3 und höher |
 | Sicherung |Sicherung des Sekundärziels |Ja* |Unterstützt, wenn das StorSimple-Gerät nur für diese Workload verwendet wird |Update 3 und höher |
 
-*Ja&#42; – Lösungsrichtlinien und -einschränkungen sollten angewendet werden.*
+*Ja&amp;#42; – Lösungsrichtlinien und -einschränkungen sollten angewendet werden.*
 
 Die folgenden Workloads werden von Geräten der StorSimple 8000-Serie nicht unterstützt. Die Bereitstellung dieser Workloads auf einem StorSimple-Gerät führt zu einer nicht unterstützten Konfiguration.
 
@@ -239,7 +239,7 @@ Nachfolgend finden Sie eine Liste der von StorSimple unterstützten Infrastruktu
 | Allgemein |Indizierung |Ja* |Bei mehrstufigen Volumes wird nur die Indizierung der Metadaten unterstützt (nicht der Daten).<br>Bei lokalen Volumes wird eine vollständige Indizierung unterstützt. |Alle Versionen |
 | Allgemein |Virenschutz |Ja* |Bei mehrstufigen Volumes wird das Scannen nur beim Öffnen und Schließen unterstützt.<br> Bei lokalen Volumes wird ein vollständiger Scan unterstützt. |Alle Versionen |
 
-*Ja&#42; – Lösungsrichtlinien und -einschränkungen sollten angewendet werden.*
+*Ja&amp;#42; – Lösungsrichtlinien und -einschränkungen sollten angewendet werden.*
 
 Im Folgenden finden Sie eine Liste von Software, die mit StorSimple zum Erstellen von Lösungen verwendet wird.
 

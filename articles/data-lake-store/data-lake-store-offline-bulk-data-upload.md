@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1309b44ea99af6d20a4d0f730dd68969f3c3082b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Verwenden von Azure Import/Export zum Kopieren von Daten in Data Lake Store im Offlinemodus
 In diesem Artikel erfahren Sie, wie Sie große Datasets (>200 GB) mit Kopiermethoden im Offlinemodus, z.B. mit dem [Azure Import/Export-Dienst](../storage/common/storage-import-export-service.md), in einen Azure Data Lake Store kopieren können. Die in diesem Artikel als Beispiel verwendete Datei hat eine Größe von 339.420.860.416 Byte, d.h. etwa 319GB auf dem Datenträger. Der Name dieser Datei lautet „319GB.tsv“.
@@ -212,4 +211,3 @@ Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importe
 * [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 * [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
-

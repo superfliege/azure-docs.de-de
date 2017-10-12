@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/26/2016
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 08cba012cca61eeb03187d2b4165e2a79b15bc3d
-ms.openlocfilehash: 12313f7f245d32c33882f1036f7d4b48bfb3ddc5
-ms.contentlocale: de-de
-ms.lasthandoff: 02/03/2017
-
+ms.openlocfilehash: 521b7bd1599ebe4158258e0eb706efae2e5c5b3a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Fehlerbehandlung in grafischen Azure Automation-Runbooks
 
 Eine wichtige Regel, die Sie beim Entwerfen von Runbooks berücksichtigen sollten, ist die Identifizierung verschiedener möglicher Probleme für Runbooks, z. B. Erfolg, erwartete Fehlerzustände und unerwartete Fehlerbedingungen.
@@ -75,4 +73,3 @@ Fehlerlinks zeigen von diesen Aktivitäten auf eine Aktivität zur **Fehlerverwa
 * Weitere Informationen zu Links und Linktypen in grafischen Runbooks finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow).
 
 * Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md).
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 983a3d22c73721c643b8283679040a0b6f7beedf
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>Untersuchen von Daten im Team Data Science-Prozess
 Dieses Dokument beschreibt die Vorgehensweise beim Untersuchen von Daten in vier unterschiedlichen Speicherumgebungen, die in der Regel im Data Science-Prozess verwendet werden:
@@ -32,5 +31,4 @@ Dieses Dokument beschreibt die Vorgehensweise beim Untersuchen von Daten in vier
 Das folgende **Menü** enthält Links zu den Themen, in denen die Verwendung dieser Tools zum Untersuchen von Daten aus verschiedenen Speicherumgebungen beschrieben wird. 
 
 [!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
-
 

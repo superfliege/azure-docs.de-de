@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: d2334a59d83c90bdd02c4fa29261d36aad292892
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-phone-silverlight-apps"></a>Erste Schritte mit Azure Mobile Engagement für Windows Phone Silverlight-Apps
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -40,7 +40,7 @@ In diesem Tutorial wird ein einfaches Übertragungsszenario mit Mobile Engagemen
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
 * Visual Studio 2013
-* [MicrosoftAzure.MobileEngagement] 
+* [MicrosoftAzure.MobileEngagement]
 
 > [!NOTE]
 > Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-windows-phone-get-started).

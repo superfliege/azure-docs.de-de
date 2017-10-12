@@ -3,7 +3,7 @@
 ## [Was ist Load Balancer Standard?](load-balancer-standard-overview.md)
 ## [Internet Load Balancer](load-balancer-internet-overview.md)
 ## [Interner Load Balancer](load-balancer-internal-overview.md)
-## [Load Balancer-Tests](load-balancer-custom-probe-overview.md)
+## [Grundlegendes zu Load Balancer-Tests](load-balancer-custom-probe-overview.md)
 ## [Grundlegendes zu Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md)
 ## [Support für Azure Resource Manager](load-balancer-arm.md)
 ## [IPv6-Unterstützung](load-balancer-ipv6-overview.md)
@@ -17,8 +17,8 @@
 ### [Konfigurieren des internen Load Balancers (CLI)](load-balancer-get-started-ilb-arm-cli.md)
 ### [Konfigurieren des internen Load Balancers (Vorlage)](load-balancer-get-started-ilb-arm-template.md)
 
-## [Konfigurieren des Internal Load Balancers für Cloud Services](load-balancer-get-started-ilb-classic-cloud.md)
-### [Konfigurieren des Internal Load Balancers für Cloud Services (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
+## [Konfigurieren des Internal Load Balancers für Clouddienste](load-balancer-get-started-ilb-classic-cloud.md)
+### [Konfigurieren des Internal Load Balancers für Clouddienste (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
 ### [Konfigurieren des Internal Load Balancers für Cloud Services (CLI)](load-balancer-get-started-ilb-classic-cli.md)
 
 ## [Konfigurieren des Load Balancers mit Internetzugriff](load-balancer-get-started-internet-portal.md)
@@ -35,7 +35,7 @@
 ### [Erstellen eines Load Balancers mit Internetzugriff und IPv6 (Vorlage)](load-balancer-ipv6-internet-template.md)
 
 ## [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer](load-balancer-get-started-internet-az-portal.md)
-### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer [PowerShell]](load-balancer-get-started-internet-az-powershell.md)
+### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer [PowerShell])](load-balancer-get-started-internet-az-powershell.md)
 ### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer [CLI]](load-balancer-get-started-internet-az-cli.md)
 
 # Anleitung

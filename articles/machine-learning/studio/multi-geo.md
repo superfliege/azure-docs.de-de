@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/6/2017
 ms.author: tedway; neerajkh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e4941ccf8c6d7a0c77527e9c1d722bc3a770114a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multi-geo-help-documentation"></a>Hilfedokumentation für mehrere geografische Räume
 Dieser Artikel beschreibt, wie Sie in unterschiedlichen Azure-Regionen einen Arbeitsbereich erstellen und einen Webdienst veröffentlichen können.  Auf der Seite [Azure-Produkte nach Region](https://azure.microsoft.com/en-us/regions/services/) sind die Regionen aufgeführt, in denen Azure Machine Learning verfügbar ist.
@@ -59,4 +58,3 @@ Stellen Sie eine Frage im [Azure Machine Learning-Forum](https://social.msdn.mic
 [2]: ./media/multi-geo/multi-geo_2.png
 [3]: ./media/multi-geo/multi-geo_3.png
 [4a]: ./media/multi-geo/multi-geo_4a.png
-

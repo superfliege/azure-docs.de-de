@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: bwren
+ms.openlocfilehash: 329f3c66bc131a9555f1778acfcae5dd9c761f56
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 4955f90de06cd720d78c5bb60c0adcd7dc633245
-ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatisieren von Log Analytics-Prozessen mit dem Connector für Microsoft Flow
 Mit [Microsoft Flow](https://ms.flow.microsoft.com) können Sie automatisierte Workflows erstellen, indem Sie Hunderte von Aktionen für eine Vielzahl von Diensten verwenden. Die Ausgabe einer Aktion kann als Eingabe einer anderen Aktion genutzt werden, damit Sie die Integration zwischen unterschiedlichen Diensten erstellen können.  Mit dem Azure Log Analytics-Connector für Microsoft Flow können Sie Workflows mit Daten erstellen, die von Protokollsuchen in Log Analytics abgerufen werden.
 
@@ -85,7 +83,6 @@ Im Tutorial in diesem Artikel wird gezeigt, wie Sie einen Flow erstellen, bei de
 
 - Informieren Sie sich über [Protokollsuchen in Log Analytics](log-analytics-log-search-new.md).
 - Erfahren Sie mehr über [Microsoft Flow](https://ms.flow.microsoft.com).
-
 
 
 

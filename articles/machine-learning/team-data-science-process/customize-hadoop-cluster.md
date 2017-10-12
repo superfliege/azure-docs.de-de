@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: hangzh;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 522e33b399f2648427464b439bc4405e9e8097cd
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-azure-hdinsight-hadoop-clusters-for-the-team-data-science-process"></a>Anpassen von Azure HDInsight Hadoop-Clustern für den Team Data Science-Prozess
 In diesem Artikel wird beschrieben, wie ein HDInsight Hadoop-Cluster durch die Installation der 64-Bit-Version von Anaconda (Python 2.7) auf jedem Knoten angepasst wird, wenn der Cluster als HDInsight-Dienst bereitgestellt wird. Es wird auch gezeigt, wie Sie auf den Hauptknoten zugreifen, um benutzerdefinierte Aufträge an den Cluster zu übermitteln. Diese Anpassung macht viele beliebte Python-Module verfügbar, die Bestandteil von Anaconda sind. Dies geschieht sehr benutzerfreundlich in UDFs (User Defined Function, benutzerdefinierte Funktion), die entwickelt wurden, um Hive-Datensätze im Cluster zu verarbeiten. Anweisungen zu den in diesem Szenario verwendeten Prozeduren finden Sie unter [Gewusst wie: Übermitteln von Hive-Abfragen](move-hive-tables.md#submit).
@@ -89,5 +88,4 @@ Klicken Sie nach dem Aktivieren des Remotezugriffs unten auf der Seite auf **CON
 Die nächsten Schritte des erweiterten Analyseprozesses sind unter [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) aufgeführt. Dazu gehören u.a. auch das Verschieben von Daten nach HDInsight sowie das Verarbeiten und Extrahieren von Stichproben, um anschließend mithilfe von Azure Machine Learning Erkenntnisse aus den Daten zu ziehen.
 
 Unter [Übermitteln von Hive-Abfragen](move-hive-tables.md#submit) finden Sie Anweisungen zum Zugreifen auf die Python-Module in Anaconda vom Hauptknoten des Clusters aus. Dazu werden UDFs (User Defined Function, benutzerdefinierte Funktion) verwendet, um im Cluster gespeicherte Hive-Datensätze zu verarbeiten.
-
 

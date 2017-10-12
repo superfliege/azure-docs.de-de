@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: ff6da0ce95d0405714602c3872da34a2bff344d3
-ms.contentlocale: de-de
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Beheben von Bereitstellungsproblemen für Azure Container Instances
 
 In diesem Artikel wird veranschaulicht, wie Sie die Problembehandlung beim Bereitstellen von Containern in Azure Container Instances durchführen. Außerdem werden einige allgemeine Probleme beschrieben, die unter Umständen auftreten.
@@ -226,4 +224,3 @@ Dieser Fehler gibt an, dass aufgrund starker Auslastung in der Region, in der di
 * Geben Sie niedrigere CPU- und Arbeitsspeichereinstellungen für den Container an.
 * Führen Sie die Bereitstellung in einer anderen Azure-Region durch.
 * Führen Sie die Bereitstellung zu einem späteren Zeitpunkt durch.
-

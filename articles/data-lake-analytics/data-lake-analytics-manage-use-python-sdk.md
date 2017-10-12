@@ -14,15 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
+ms.custom: devcenter
+ms.openlocfilehash: 22b56e9569ac1fd2afe2c91013fa5605f9f3ef99
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 0d69207c0b8bcbba6dee42a1dc856e9085629734
-ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Verwalten von Azure Data Lake Analytics mithilfe von Python
 
 ## <a name="python-versions"></a>Python-Versionen
@@ -258,5 +256,4 @@ adlaAccountClient.computePolicies.createOrUpdate(rg, adla, "GaryMcDaniel", newPo
 - Wenn Sie dasselbe Tutorial mit anderen Tools verwenden möchten, klicken Sie oben auf der Seite auf die Registerkartenauswahl.
 - Informationen zum Erlernen von U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 - Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
-
 

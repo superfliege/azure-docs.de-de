@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ebf35877dcd6f980af75f46b437070a6a29b7c54
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-a-kubernetes-cluster-with-operations-management-suite"></a>Überwachen eines Kubernetes-Clusters mit der Operations Management Suite
 
 Die Überwachung des Kubernetes-Clusters und der Kubernetes-Container ist wichtig, vor allem wenn Sie einen umfangreichen Produktionscluster mit mehreren Apps verwalten. 
@@ -156,4 +154,3 @@ Klicken Sie auf diesen Link, um vordefinierte Skriptbeispiele für Container Ser
 
 > [!div class="nextstepaction"]
 > [Skriptbeispiele für Azure Container Service](cli-samples.md)
-

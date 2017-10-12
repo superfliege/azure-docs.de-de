@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: bwren
 ms.openlocfilehash: 7a24df6f2c3b2c091d1b66b8b9c0a61035ffde11
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrating-with-operations-management-suite-oms"></a>Integration in die Operations Management Suite (OMS)
 Die Operations Management Suite ist die cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen das Verwalten und Schützen Ihrer lokalen und cloudbasierten Infrastruktur erleichtert.  Sie können nicht nur die Standardfunktionen der OMS verwenden, sondern die Suite auch in andere Verwaltungsanwendungen und -lösungen integrieren, um eine hybride Verwaltungsumgebung, benutzerdefinierte und speziell auf Ihre Umgebung zugeschnittene Verwaltungsszenarien oder eine benutzerdefinierte Verwaltungslösung für Ihre Kunden bereitzustellen.  Dieser Artikel bietet eine Übersicht über die verschiedenen Optionen für die Integration in die OMS-Dienste sowie Links zu anderen Artikeln mit detaillierten technischen Informationen. 

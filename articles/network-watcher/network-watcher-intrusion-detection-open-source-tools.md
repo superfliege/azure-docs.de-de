@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d60b1d44844c449e0f66dc0107a25531569d097b
-ms.openlocfilehash: 82d5e525859ebe03b152c63e4debbae469049c12
-ms.contentlocale: de-de
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Durchführen der Erkennung von Netzwerkangriffen mit Network Watcher und Open Source-Tools
 
 Paketerfassungen sind eine wichtige Komponente zum Implementieren von Systemen zur Erkennung von Netzwerkangriffen (Intrusion Detection Systems, IDS) und Durchführen der Sicherheitsüberwachung für Netzwerke (Network Security Monitoring, NSM). Es gibt mehrere Open Source-Tools für den IDS-Bereich, mit denen Paketerfassungen verarbeitet werden können und nach Signaturen von möglichen Netzwerkangriffen und schädlichen Aktivitäten gesucht werden kann. Mit den von Network Watcher bereitgestellten Paketerfassungen können Sie Ihr Netzwerk im Hinblick auf schädliche Eindringversuche oder Sicherheitsrisiken analysieren.
@@ -82,7 +80,7 @@ Die von Suricata generierten Protokolle enthalten zwar wertvolle Informationen z
 
 #### <a name="install-elasticsearch"></a>Installieren von Elasticsearch
 
-1. Für Elastic Stack ab Version 5.0 ist Java 8 erforderlich. Führen Sie den Befehl `java -version` aus, um Ihre Version zu überprüfen. Wenn Java nicht installiert ist, können Sie in der Dokumentation auf der [Oracle-Website](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html) nachsehen.
+1. Elastic Stack ab Version 5.0 erfordert Java 8. Führen Sie den Befehl `java -version` aus, um Ihre Version zu überprüfen. Wenn Java nicht installiert ist, sehen Sie in der Dokumentation auf der [Oracle-Website](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html) nach.
 1. Laden Sie das richtige Binärpaket für Ihr System herunter:
 
     ```
@@ -93,7 +91,7 @@ Die von Suricata generierten Protokolle enthalten zwar wertvolle Informationen z
 
     Andere Methoden zur Installation finden Sie auf der [Installationsseite von Elasticsearch](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html).
 
-1. Sie überprüfen die Ausführung von Elasticsearch mit diesem Befehl:
+1. Sie überprüfen die Ausführung von Elasticsearch mit dem Befehl:
 
     ```
     curl http://127.0.0.1:9200
@@ -220,7 +218,7 @@ Weitere Anweisungen zum Installieren von Logstash finden Sie in der [offiziellen
 
 ### <a name="install-kibana"></a>Installieren von Kibana
 
-1. Führen Sie zum Installieren von Kibana die folgenden Befehle aus:
+1. Führen Sie die folgenden Befehle zum Installieren von Kibana aus:
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
@@ -297,4 +295,3 @@ Erfahren Sie unter [Visualisieren der Datenflussprotokolle von Netzwerksicherhei
 [5]: ./media/network-watcher-intrusion-detection-open-source-tools/figure5.png
 [6]: ./media/network-watcher-intrusion-detection-open-source-tools/figure6.png
 [7]: ./media/network-watcher-intrusion-detection-open-source-tools/figure7.png
-

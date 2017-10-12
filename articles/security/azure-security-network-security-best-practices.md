@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: TomSh
 ms.openlocfilehash: 659304937eebb1b2fe6faf019dfef63e1e29bcd4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-network-security-best-practices"></a>Bewährte Methoden für die Azure-Netzwerksicherheit
 Mit Microsoft Azure können Sie virtuelle Computer und Appliances mit anderen Geräten im Netzwerk verbinden, indem Sie sie in Azure Virtual Networks anordnen. Ein Azure Virtual Network ist ein virtuelles Netzwerkkonstrukt, mit dem Sie virtuelle Netzwerkschnittstellenkarten mit einem virtuellen Netzwerk verbinden können, um die TCP/IP-basierte Kommunikation zwischen netzwerkfähigen Geräten zu ermöglichen. Azure Virtual Machines die mit einem Azure Virtual Network verbunden sind, können eine Verbindung mit Geräten in demselben Azure Virtual Network, anderen Azure Virtual Networks, im Internet oder sogar in eigenen lokalen Netzwerken herstellen.

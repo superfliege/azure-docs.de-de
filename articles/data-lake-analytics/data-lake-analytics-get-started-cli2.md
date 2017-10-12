@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: jgao
 ms.openlocfilehash: fe2b84aac718ff5eddd4d73b5dc2120362952c1e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>Erste Schritte mit Azure Data Lake Analytics mithilfe von Azure CLI 2.0
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -199,7 +199,7 @@ az dls fs downlod --account "myadlsaccount" --source-path "/Output/SearchLog-fro
 
 **Abrufen von Informationen zu Pipelines und Wiederholungen**
 
-Verwenden der `az dla job pipeline` Befehle, um die Pipelineinformationen von zuvor gesendeten Aufträge anzuzeigen.
+Verwenden Sie die Befehle `az dla job pipeline`, um die Pipelineinformationen für zuvor übermittelte Aufträge anzuzeigen.
 
 ```
 az dla job pipeline list --account "<Data Lake Analytics Account Name>"
@@ -207,7 +207,7 @@ az dla job pipeline list --account "<Data Lake Analytics Account Name>"
 az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeline-identity "<Pipeline ID>"
 ```
 
-Verwenden der `az dla job recurrence` Befehle aus, um die Wiederholungsinformationen für zuvor finden Sie unter übermittelten Aufträge.
+Verwenden Sie die Befehle `az dla job recurrence`, um die Wiederholungsinformationen für zuvor übermittelte Aufträge anzuzeigen.
 
 ```
 az dla job recurrence list --account "<Data Lake Analytics Account Name>"

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a5bbf899fd13de4c5a7d3379e2231828c102b372
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Verschieben von Daten von einer lokalen SQL Server-Instanz zu SQL Azure mithilfe von Azure Data Factory
 In diesem Thema wird gezeigt, wie Sie mithilfe von Azure Data Factory (ADF) Daten aus einer lokalen SQL Server-Datenbank über Azure Blob Storage in eine SQL Azure-Datenbank verschieben.
@@ -326,4 +325,3 @@ Die Parameterwerte *startdate* und *enddate* müssen durch die tatsächlichen Da
 Sobald die Pipeline ausgeführt wird, sollten Sie die Daten sehen können, die im für den Blob ausgewählten Container angezeigt werden – immer eine Datei pro Tag.
 
 Beachten Sie, dass wir nicht die Funktionalität von ADF zum inkrementellen Übertragen von Daten per Pipe genutzt haben. Weitere Informationen zur Vorgehensweise sowie zu weiteren von ADF bereitgestellten Funktionen finden Sie in der [ADF-Dokumentation](https://azure.microsoft.com/services/data-factory/).
-

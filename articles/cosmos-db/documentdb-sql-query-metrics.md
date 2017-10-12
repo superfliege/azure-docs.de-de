@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: arramac
-ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
 ms.openlocfilehash: c6c929c568cf7246c2c2e414723a38429727df36
-ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
 Azure Cosmos DB bietet eine [SQL-API zum Abfragen von Daten](documentdb-sql-query.md), ohne dass Schemas oder sekundäre Indizes erforderlich sind. Dieser Artikel enthält folgende Informationen für Entwickler:
@@ -32,31 +31,31 @@ Azure Cosmos DB bietet eine [SQL-API zum Abfragen von Daten](documentdb-sql-quer
 
 ## <a name="about-sql-query-execution"></a>Informationen über die Ausführung von SQL-Abfragen
 
-In Azure Cosmos DB speichern Sie Daten in Containern, die auf eine beliebige [Speichergröße oder einen beliebigen Anforderungsdurchsatz](partition-data.md) erweitert werden können. Azure Cosmos DB skaliert nahtlos Daten im Hintergrund über physische Partitionen hinweg, um das Datenwachstum im bereitgestellten Durchsatz zu verarbeiten. Sie können mit der REST-API oder einer der unterstützten [DocumentDB-SDKs](documentdb-sdk-dotnet.md) SQL-Abfragen an einen beliebigen Container ausgeben.
+In Azure Cosmos DB speichern Sie Daten in Containern, die auf eine beliebige [Speichergröße oder einen beliebigen Anforderungsdurchsatz](partition-data.md) erweitert werden können. Azure Cosmos DB skaliert Daten nahtlos im Hintergrund über physische Partitionen hinweg, um das Datenwachstum im bereitgestellten Durchsatz zu verarbeiten. Sie können mit der REST-API oder einer der unterstützten [DocumentDB-SDKs](documentdb-sdk-dotnet.md) SQL-Abfragen an einen beliebigen Container ausgeben.
 
-Ein kurzer Überblick über die Partitionierung: Sie definieren einen Partitionsschlüssel wie „city“, der bestimmt, wie Daten auf physischen Partitionen aufgeteilt werden. Daten, die zu einem einzelnen Partitionsschlüssel gehören (z.B. „city“ == „Seattle“), werden auf einer physischen Partition gespeichert, wobei eine einzelne physische Partition in der Regel jedoch mehrere Partitionsschlüssel aufweist. Wenn eine Partition die Speichergröße erreicht, teilt der Dienst die Partition nahtlos in zwei neue Partitionen auf, und teilt den Partitionsschlüssel gleichmäßig über diese Partitionen hinweg auf. Da Partitionen vorübergehend sind, verwenden die APIs eine Abstraktion eines „Partitionsschlüsselbereichs“, der die Bereiche von Partitionsschlüsselhashes bezeichnet. 
+Ein kurzer Überblick über die Partitionierung: Sie definieren einen Partitionsschlüssel wie „city“, der bestimmt, wie Daten auf physischen Partitionen aufgeteilt werden. Daten, die zu einem einzelnen Partitionsschlüssel gehören (z.B. „city“ == „Seattle“), werden auf einer physischen Partition gespeichert, wobei eine einzelne physische Partition in der Regel jedoch mehrere Partitionsschlüssel aufweist. Wenn eine Partition die Speichergröße erreicht, teilt der Dienst die Partition nahtlos in zwei neue Partitionen auf und teilt den Partitionsschlüssel gleichmäßig auf diese Partitionen auf. Da Partitionen vorübergehend sind, verwenden die APIs eine Abstraktion eines „Partitionsschlüsselbereichs“, der die Bereiche von Partitionsschlüsselhashes bezeichnet. 
 
 Wenn Sie eine Abfrage an Azure Cosmos DB ausgeben, führt das SDK folgende logische Schritte aus:
 
-* Analysieren Sie die SQL-Abfrage, um den Abfrageausführungsplan zu bestimmen. 
+* Es analysiert die SQL-Abfrage, um den Abfrageausführungsplan zu bestimmen. 
 * Wenn die Abfrage einen Filter für den Partitionsschlüssel wie `SELECT * FROM c WHERE c.city = "Seattle"` enthält, wird sie an eine einzelne Partition weitergeleitet. Wenn die Abfrage keinen Filter für einen Partitionsschlüssel enthält, wird sie in allen Partitionen ausgeführt, und die Ergebnisse werden auf Clientseite zusammengeführt.
-* Die Abfrage wird basierend auf der Clientkonfiguration seriell oder parallel in jeder Partition ausgeführt. In jeder Partition führt die Abfrage möglicherweise eine oder mehrere Roundtrips durch, je nach Komplexität der Abfrage, der konfigurierten Seitengröße und dem bereitgestelltem Durchsatz der Sammlung. Bei jeder Ausführung wird die Anzahl der [Anforderungseinheiten](request-units.md) (Request Units, RUs) zurückgegeben, die bei der Ausführung der Abfrage genutzt werden, und optional die Abfrageausführungsstatistik. 
-* Das SDK führt eine Zusammenfassung der Abfrageergebnisse über die Partitionen hinweg durch. Wenn die Abfrage beispielsweise eine ORDER BY-Klausel über die Partitionen hinweg enthält, werden die Ergebnisse der einzelnen Partitionen sortiert zusammengeführt, um Ergebnisse in global sortierter Reihenfolge zurückzugeben. Wenn die Abfrage eine Aggregation wie `COUNT` enthält, wird die Anzahl der einzelnen Partitionen summiert, um die Gesamtzahl zu bestimmen.
+* Die Abfrage wird basierend auf der Clientkonfiguration seriell oder parallel in jeder Partition ausgeführt. In jeder Partition führt die Abfrage möglicherweise eine oder mehrere Roundtrips durch, je nach Komplexität der Abfrage, der konfigurierten Seitengröße und dem bereitgestelltem Durchsatz der Sammlung. Bei jeder Ausführung wird die Anzahl der [Anforderungseinheiten](request-units.md) (Request Units, RUs), die bei der Ausführung der Abfrage genutzt werden, und optional die Abfrageausführungsstatistik zurückgegeben. 
+* Das SDK führt eine partitionsübergreifende Zusammenfassung der Abfrageergebnisse durch. Wenn die Abfrage beispielsweise eine partitionsübergreifende ORDER BY-Klausel enthält, werden die Ergebnisse der einzelnen Partitionen sortiert zusammengeführt, um Ergebnisse in global sortierter Reihenfolge zurückzugeben. Wenn die Abfrage eine Aggregation wie `COUNT` enthält, wird die Anzahl der einzelnen Partitionen summiert, um die Gesamtzahl zu bestimmen.
 
-Die SDKs stellen verschiedene Optionen für die Abfrageausführung bereit. In .NET sind diese Optionen beispielsweise in der `FeedOptions`-Klasse verfügbar. In der folgenden Tabelle werden diese Optionen beschrieben und erläutert, wie sie sich auf die Abfrageausführungszeit auswirken. 
+Die SDKs stellen verschiedene Optionen für die Abfrageausführung bereit. In .NET sind diese Optionen beispielsweise in der `FeedOptions`-Klasse verfügbar. Die folgende Tabelle beschreibt diese Optionen und erläutert, wie sie sich auf die Abfrageausführungszeit auswirken. 
 
 | Option | Beschreibung |
 | ------ | ----------- |
-| `EnableCrossPartitionQuery` | Muss auf „true“ für eine Abfrage festgelegt werden, die über mehrere Partitionen hinweg ausgeführt werden muss. Dies ist eine explizite Kennzeichnung, um Ihnen bewusste Leistungstradeoffs während der Entwicklungszeit zu ermöglichen. |
+| `EnableCrossPartitionQuery` | Muss auf „true“ für eine Abfrage festgelegt werden, die partitionsübergreifend ausgeführt werden muss. Dies ist eine explizite Kennzeichnung, die es Ihnen bei der Entwicklung ermöglichen soll, gezielt Leistungskompromisse zu finden. |
 | `EnableScanInQuery` | Muss auf „true“ festgelegt werden, wenn Sie die Indizierung deaktiviert haben, die Abfrage jedoch trotzdem mittels einer Überprüfung ausführen möchten. Diese Option ist nur anwendbar, wenn die Indizierung für den angeforderten Filterpfad deaktiviert ist. | 
 | `MaxItemCount` | Die maximale Anzahl von Elementen, die pro Roundtrip an den Server zurückgegeben werden soll. Mit einem Wert von „-1“ können Sie festlegen, dass die Anzahl der Elemente vom Server verwaltet wird. Alternativ können Sie diesen Wert senken, um nur eine geringe Anzahl von Elementen pro Roundtrip abzurufen. 
 | `MaxBufferedItemCount` | Dies ist eine clientseitige Option, mit der die Speicherbelegung bei der Durchführung der partitionsübergreifenden ORDER BY-Klausel beschränkt wird. Durch einen höheren Wert kann die Latenz der partitionsübergreifenden Sortierung verringert werden. |
-| `MaxDegreeOfParallelism` | Ruft die Anzahl der gleichzeitigen Vorgänge ab bzw. legt diese fest, die auf Clientseite während der parallelen Abfrageausführung im Azure DocumentDB-Datenbankdienst ausgeführt wird. Ein positiver Eigenschaftswert beschränkt die Anzahl der gleichzeitigen Vorgänge auf den festgelegten Wert. Wenn ein kleinerer Wert als 0 festgelegt wird, wird die Anzahl der gleichzeitig auszuführenden Vorgänge automatisch vom System festgelegt. |
-| `PopulateQueryMetrics` | Ermöglicht die ausführliche Protokollierung von Statistiken zu der Zeit, die in verschiedenen Phasen der Abfrageausführung wie der Kompilierzeit, Indexschleifenzeit sowie Dokumentladezeit aufgewendet wird. Sie können die Ausgabe der Abfragestatistik an den Azure-Support weitergeben, um Probleme zur Abfrageleistung zu diagnostizieren. |
-| `RequestContinuation` | Sie können die Abfrageausführung fortsetzen, indem Sie den von jeder Abfrage zurückgegebenen opaken Fortsetzungstoken übergeben. Das Fortsetzungstoken kapselt alle Zustände, die für die Abfrageausführung erforderlich sind. |
+| `MaxDegreeOfParallelism` | Ruft die Anzahl der gleichzeitigen Vorgänge ab, die auf Clientseite während der parallelen Abfrageausführung im Azure DocumentDB-Datenbankdienst ausgeführt werden, bzw. legt diese fest. Ein positiver Eigenschaftswert beschränkt die Anzahl der gleichzeitigen Vorgänge auf den festgelegten Wert. Wenn ein kleinerer Wert als 0 festgelegt wird, wird die Anzahl der gleichzeitig auszuführenden Vorgänge automatisch vom System festgelegt. |
+| `PopulateQueryMetrics` | Aktiviert die ausführliche Protokollierung von Statistiken zu den verschiedenen Zeitabschnitten bei der Abfrageausführung (Kompilierzeit, Indexschleifenzeit und Dokumentladezeit). Sie können die Ausgabe der Abfragestatistik an den Azure-Support weitergeben, um Probleme zur Abfrageleistung zu diagnostizieren. |
+| `RequestContinuation` | Sie können die Abfrageausführung fortsetzen, indem Sie das von jeder Abfrage zurückgegebene opake Fortsetzungstoken übergeben. Das Fortsetzungstoken kapselt alle Zustände, die für die Abfrageausführung erforderlich sind. |
 | `ResponseContinuationTokenLimitInKb` | Sie können die maximale Größe des vom Server zurückgegebenen Fortsetzungstokens beschränken. Möglicherweise müssen Sie dies festlegen, wenn Ihr Anwendungshost Grenzwerte für die Größe des Antwortheaders vorsieht. Durch Festlegen dieses Werts kann sich die Gesamtdauer und die Anzahl der für die Abfrage verwendeten RUs erhöhen.  |
 
-Nehmen wir als Beispiel eine Beispielabfrage für einen Partitionsschlüssel, der für eine Sammlung mit `/city` als Partitionsschlüssel angefordert und mit einem Durchsatz von 100.000 RU/s bereitgestellt wird. In .NET fordern Sie diese Abfrage mit `CreateDocumentQuery<T>` folgendermaßen an:
+Angenommen, wir hätten eine Abfrage für einen Partitionsschlüssel, der für eine Sammlung mit `/city` als Partitionsschlüssel angefordert und mit einem Durchsatz von 100.000 RU/s bereitgestellt wird. In .NET fordern Sie diese Abfrage mit `CreateDocumentQuery<T>` folgendermaßen an:
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -100,7 +99,7 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-Jede Abfrageausführungsseite entspricht einer REST-API `POST` mit dem Header `Accept: application/query+json` und der SQL-Abfrage im Text. Jede Abfrage führt eine oder mehrere Roundtrips zum Server durch, wobei der Token `x-ms-continuation` zwischen dem Client und dem Server wiederholt wird, um die Ausführung fortzusetzen. Die Konfigurationsoptionen unter „FeedOptions“ werden in Form von Anforderungsheadern an den Server übergeben. `MaxItemCount` entspricht beispielsweise `x-ms-max-item-count`. 
+Jede Abfrageausführungsseite entspricht einer REST-API `POST` mit dem Header `Accept: application/query+json` und der SQL-Abfrage im Text. Jede Abfrage führt eine oder mehrere Roundtrips zum Server durch, wobei das Token `x-ms-continuation` zwischen dem Client und dem Server wiederholt wird, um die Ausführung fortzusetzen. Die Konfigurationsoptionen unter „FeedOptions“ werden in Form von Anforderungsheadern an den Server übergeben. `MaxItemCount` entspricht beispielsweise `x-ms-max-item-count`. 
 
 Die Anforderung gibt die folgende (zur besseren Lesbarkeit gekürzte) Antwort zurück:
 
@@ -133,7 +132,7 @@ Die von der Abfrage zurückgegebenen Schlüsselantwortheader umfassen Folgendes:
 
 | Option | Beschreibung |
 | ------ | ----------- |
-| `x-ms-item-count` | Die Anzahl der in der Antwort zurückgegebenen Elemente. Dies ist abhängig vom angegebenen `x-ms-max-item-count`-Header, der Anzahl der Elemente, die in der maximalen Größe der Antwortnutzlast angepasst werden können, dem bereitgestellten Durchsatz und der Abfrageausführungszeit. |  
+| `x-ms-item-count` | Die Anzahl der in der Antwort zurückgegebenen Elemente. Diese ist abhängig vom angegebenen `x-ms-max-item-count`-Header, der Anzahl der Elemente, die maximal als Antwortnutzlast übertragen werden können, dem bereitgestellten Durchsatz und der Abfrageausführungszeit. |  
 | `x-ms-continuation:` | Das Fortsetzungstoken zum Fortsetzen der Abfrageausführung, sofern zusätzliche Ergebnisse verfügbar sind. | 
 | `x-ms-documentdb-query-metrics` | Die Abfragestatistik für die Ausführung. Dies ist eine durch Trennzeichen getrennte Zeichenfolge, die Statistiken zum Zeitaufwand in den verschiedenen Phasen der Abfrageausführung enthält. Dieser Wert wird zurückgegeben, wenn `x-ms-documentdb-populatequerymetrics` auf `True` festgelegt ist. | 
 | `x-ms-request-charge` | Die Anzahl der von der Abfrage genutzten [Anforderungseinheiten](request-units.md). | 
@@ -148,14 +147,14 @@ Im Folgenden werden die gängigsten Faktoren vorgestellt, die sich auf die Abfra
 | Bereitgestellter Durchsatz | Messen Sie die RUs pro Abfrage, und stellen Sie sicher, dass Sie über den erforderlichen bereitgestellten Durchsatz für Ihre Abfragen verfügen. | 
 | Partitionierung und Partitionsschlüssel | Geben Sie Abfragen mit dem Partitionsschlüsselwert in der Filterklausel aufgrund geringer Latenz den Vorzug. |
 | SDK und Abfrageoptionen | Befolgen Sie bewährte Methoden für SDK wie direkte Konnektivität, und optimieren Sie Optionen für die clientseitige Abfrageausführung. |
-| Netzwerklatenz | Berücksichtigen Sie das Netzwerkoverhead bei der Messung, und verwenden Sie Multi-Homing-APIs, um den Lesevorgang über die am nächsten gelegene Region durchzuführen. |
+| Netzwerklatenz | Berücksichtigen Sie den Netzwerkoverhead bei der Messung, und verwenden Sie Multihoming-APIs, um den Lesevorgang über die am nächsten gelegene Region durchzuführen. |
 | Indizierungsrichtlinien | Stellen Sie sicher, dass Sie über die erforderlichen Indizierungspfade bzw. die erforderliche Indizierungsrichtlinie für die Abfrage verfügen. |
 | Abfrageausführungsmetriken | Analysieren Sie die Abfrageausführungsmetriken, um potenzielle Änderungen an Abfrage- und Datenformen zu identifizieren.  |
 
 ### <a name="provisioned-throughput"></a>Bereitgestellter Durchsatz
-In Cosmos DB erstellen Sie Container für Daten, die jeweils mit einem reservierten Durchsatz, ausgedrückt in Anforderungseinheiten (RU) pro Sekunde, ausgestattet sind. Eine Lesevorgang von einem 1-KB-Dokument entspricht 1 RU, und jeder Vorgang (einschließlich Abfragen) wird basierend auf der jeweiligen Komplexität zu einer festen Anzahl von RUs normalisiert. Wenn Sie beispielsweise 1000 RU/s für Ihren Container bereitgestellt und eine Abfrage wie `SELECT * FROM c WHERE c.city = 'Seattle'` haben, für die 5 RUs erforderlich sind, können Sie solche Abfragen pro Sekunde gemäß folgender Formel ausführen: (1000 RU/s) / (5 RU/Abfrage) = 200 Abfragen/s. 
+In Cosmos DB erstellen Sie Container für Daten, die jeweils mit einem reservierten Durchsatz, ausgedrückt in Anforderungseinheiten (RU) pro Sekunde, ausgestattet sind. 1 RU ist definiert als das Lesen eines 1 KB großen Dokuments, und jeder Vorgang (einschließlich Abfragen) wird basierend auf der jeweiligen Komplexität als konkrete Anzahl von RUs ausgedrückt. Wenn Sie beispielsweise 1000 RU/s für Ihren Container bereitgestellt und eine Abfrage wie `SELECT * FROM c WHERE c.city = 'Seattle'` haben, für die 5 RUs erforderlich sind, können Sie solche Abfragen pro Sekunde gemäß folgender Formel ausführen: (1000 RU/s) : (5 RU/Abfrage) = 200 Abfragen/s. 
 
-Wenn Sie mehr als 200 Abfragen/s übermitteln, beginnt der Dienst, die Rate eingehender Anforderungen bei über 200 Abfragen/s zu begrenzen. Die SDKs verarbeiten diesen Fall automatisch, indem Sie eine Wartezeit/Wiederholung ausführen. Daher werden Sie bei diesen Abfragen möglicherweise eine höhere Latenz feststellen. Durch Erhöhen des bereitgestellten Durchsatzes auf den erforderlichen Wert werden Latenz und Durchsatz Ihrer Abfragen verbessert. 
+Wenn Sie mehr als 200 Abfragen/s übermitteln, beginnt der Dienst, die Rate eingehender Anforderungen bei über 200 Abfragen/s zu begrenzen. Die SDKs verarbeiten diesen Fall automatisch, indem sie einen Backoff oder eine Wiederholung ausführen. Daher werden Sie bei diesen Abfragen möglicherweise eine höhere Latenz feststellen. Durch Erhöhen des bereitgestellten Durchsatzes auf den erforderlichen Wert werden Latenz und Durchsatz Ihrer Abfragen verbessert. 
 
 Weitere Informationen zu Anforderungseinheiten finden Sie unter [Anforderungseinheiten](request-units.md).
 
@@ -167,7 +166,7 @@ Bei Azure Cosmos DB werden Abfragen in der Regel in der Reihenfolge von den schn
 * Abfrage ohne eine Gleichheits- oder Bereichsfilterklausel in einer Eigenschaft
 * Abfrage ohne Filter
 
-Abfragen, bei denen alle Partitionen konsultiert werden müssen, erfordern höhere Latenzen und verbrauchen mehr RUs. Da jede Partition über eine automatische Indizierung für alle Eigenschaften verfügt, kann die Abfrage in diesem Fall effizient über den Index verarbeitet werden. Durch Optionen für Parallelität können Sie Abfragen erstellen, die Partitionen schneller umfassen.
+Abfragen, bei denen alle Partitionen abgefragt werden müssen, verursachen höhere Latenzen und verbrauchen mehr RUs. Da jede Partition über eine automatische Indizierung für alle Eigenschaften verfügt, kann die Abfrage in diesem Fall effizient über den Index verarbeitet werden. Mithilfe der Optionen für die Parallelverarbeitung können Sie partitionsübergreifende Abfragen schneller erstellen.
 
 Weitere Informationen zur Partitionierung und zu Partitionsschlüsseln finden Sie unter [Partitionieren in Azure Cosmos DB](partition-data.md).
 
@@ -280,6 +279,5 @@ Im Folgenden werden einige Beispielabfragen vorgestellt und erläutert, wie eini
 * Weitere Informationen zu den unterstützten SQL-Abfrageoperatoren und Schlüsselwörtern finden Sie unter [SQL-Abfrage](documentdb-sql-query.md). 
 * Weitere Informationen zu Anforderungseinheiten finden Sie unter [Anforderungseinheiten](request-units.md).
 * Weitere Informationen zur Indizierungsrichtlinie finden Sie unter [Indizierungsrichtlinie](indexing-policies.md). 
-
 
 

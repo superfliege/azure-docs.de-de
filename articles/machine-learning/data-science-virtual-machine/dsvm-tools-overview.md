@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c6948447ea7bfa6219bf70d46d14f82724fa0c60
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>Kennenlernen der Data Science-VM
 
@@ -38,4 +37,3 @@ Die Tools, Plattformen, Hilfsprogramme und Beispiele der DSVM wurden in folgende
 6. **[Tools zum Durchsuchen und Visualisieren von Daten](dsvm-tools-explore-and-visualize.md)**
 7. **[Datenplattformen](dsvm-data-platforms.md)**
 8. **[Beispiele und exemplarische Vorgehensweisen](dsvm-samples-and-walkthroughs.md)**
-

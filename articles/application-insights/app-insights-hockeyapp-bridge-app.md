@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: bwren
 ms.openlocfilehash: 450ca10613d137393090578619f3766734d1d493
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Untersuchen von HockeyApp-Daten in Application Insights
 [HockeyApp](https://azure.microsoft.com/services/hockeyapp/) ist die empfohlene Plattform für die Überwachung von desktopbasierten und mobilen Live-Apps. In HockeyApp können Sie nicht nur Absturzdaten erhalten, sondern auch benutzerdefinierte und nachverfolgte Telemetriedaten senden, um die Nutzung zu überwachen und die Diagnose zu ermöglichen. Dieser Telemetriedatenstrom kann mithilfe des leistungsstarken [Analytics](app-insights-analytics.md)-Features von [Azure Application Insights](app-insights-overview.md) abgefragt werden. Darüber hinaus können Sie [die benutzerdefinierten und nachverfolgten Telemetriedaten exportieren](app-insights-export-telemetry.md). Richten Sie zum Aktivieren dieser Features eine Brücke ein, die benutzerdefinierte HockeyApp-Daten an Application Insights überträgt.

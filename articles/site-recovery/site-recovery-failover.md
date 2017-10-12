@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/25/2017
 ms.author: pratshar
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 9c00cf88fa8b754c92cfd0f01be61a596d04d7c6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="failover-in-site-recovery"></a>Failover in Site Recovery
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Computer und physische Server, die per Site Recovery geschützt werden, ein Failover durchführen.
@@ -131,4 +130,3 @@ Es kann ratsam sein, bei einem Failover bestimmte Aktionen zu automatisieren. Hi
 Verwenden Sie die Option [**Geplantes Failover**](site-recovery-failback-from-azure-to-hyper-v.md), um für virtuelle Hyper-V-Computer ein **Failback** von Azure zum lokalen Standort durchzuführen.
 
 Wenn Sie für einen virtuellen Hyper-V-Computer ein Failover in ein anderes lokales Datencenter durchgeführt haben, das von einem VMM-Server verwaltet wird, und das primäre Datencenter verfügbar ist, können Sie die Option **Umgekehrt replizieren** verwenden, um die Replikation zurück in das primäre Datencenter zu starten.
-

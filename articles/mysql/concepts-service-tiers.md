@@ -10,10 +10,10 @@ ms.service: mysql-database
 ms.topic: article
 ms.date: 05/23/2017
 ms.openlocfilehash: d9ec4556d57ff1975a93d806237ad0c7416b9988
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Optionen und Leistung von Azure-Datenbank für MySQL: Übersicht über die verfügbaren Funktionen in den einzelnen Tarifen
 Wenn Sie einen Azure-Datenbank für MySQL-Server erstellen, treffen Sie drei Hauptentscheidungen zur Konfiguration der Ressourcen, die diesem Server zugeordnet werden. Diese Entscheidungen beeinflussen die Leistung und Skalierung des Servers.

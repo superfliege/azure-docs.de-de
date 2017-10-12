@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/17/2017
 ms.author: bwren
+ms.openlocfilehash: 6f627140e6c5583636f7979889f74e489fe66496
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 14f923e3f08dd3b286218ae56012ce14edcc4058
-ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 Wenn Sie ein Runbook in Azure Automation starten, wird ein Auftrag erstellt. Ein Auftrag ist eine einzelne Ausführungsinstanz eines Runbooks. Für die Ausführung jedes Auftrags wird ein Azure Automation-Worker zugewiesen. Wenngleich Worker von mehreren Azure-Konten gemeinsam genutzt werden, sind die Aufträge von verschiedenen Automation-Konten voneinander isoliert. Sie können nicht steuern, welcher Worker die Anforderung für Ihren Auftrag verarbeitet.  Für ein einzelnes Runbook können mehrere Aufträge gleichzeitig ausgeführt werden. Wenn Sie die Liste der Runbooks im Azure-Portal anzeigen, wird der Status aller Aufträge aufgelistet, die für jedes Runbook gestartet wurden. Sie können die Liste der Aufträge für jedes Runbook anzeigen, um den Status der einzelnen Aufträge nachzuverfolgen. Eine Beschreibung der verschiedenen Auftragsstatusangaben finden Sie unter [Auftragsstatuswerte](#job-statuses).
@@ -99,5 +98,4 @@ Sorgen Sie beim Erstellen eines Runbooks dafür, dass die Zeit zum Ausführen vo
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu den verschiedenen Methoden, die zum Starten eines Runbooks in Azure Automation verwendet werden können, finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
-
 

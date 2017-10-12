@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: bb1144519db84e5685fbae1a2f55854e1102120a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurieren von Web-Apps in Azure App Service
 In diesem Thema wird erläutert, wie Sie eine Web-App mit dem [Azure-Portal]konfigurieren.
@@ -177,4 +176,3 @@ Weitere Informationen finden Sie unter [Vorgehensweise: Überwachen des Web-Endp
 [configure01]: ./media/web-sites-configure/configure01.png
 [configure02]: ./media/web-sites-configure/configure02.png
 [configure03]: ./media/web-sites-configure/configure03.png
-

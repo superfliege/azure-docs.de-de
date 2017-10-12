@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
 ms.openlocfilehash: b0c33a47dd0cae79eab32ac578448fae8bf59be5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: Webanmeldungen mit OpenID Connect
 OpenID Connect ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, mit dem Benutzer sicher bei Webanwendungen angemeldet werden können. Mithilfe der Azure Active Directory B2C (Azure AD B2C)-Implementierung von OpenID Connect können Sie die Registrierung, die Anmeldung und die sonstige Identitätsverwaltung Ihrer Webanwendungen nach Azure Active Directory (Azure AD) auslagern. In diesem Leitfaden wird dies sprachunabhängig erläutert. Er beschreibt das Senden und Empfangen von HTTP-Nachrichten ohne Verwendung unserer Open Source-Bibliotheken.

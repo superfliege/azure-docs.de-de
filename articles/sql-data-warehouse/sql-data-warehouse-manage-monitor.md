@@ -1,6 +1,6 @@
 ---
-title: "Überwachen Sie Ihre arbeitsauslastung mit DMVs | Microsoft Docs"
-description: "Erfahren Sie, wie Ihre arbeitsauslastung mit DMVs überwachen."
+title: "Überwachen Ihrer Workload mit dynamischen Verwaltungssichten | Microsoft Docs"
+description: "Informationen zum Überwachen Ihrer Workload mit dynamischen Verwaltungssichten."
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -16,40 +16,40 @@ ms.custom: performance
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
 ms.openlocfilehash: 7ce6c2cdf1e28852da536414533ccdcdaeb437e5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="monitor-your-workload-using-dmvs"></a>Überwachen Sie Ihre arbeitsauslastung mit DMVs
-Dieser Artikel beschreibt, wie Sie dynamische Verwaltungssichten (DMVs) verwenden, um die arbeitsauslastung überwachen und untersuchen Sie die Ausführung von Abfragen in Azure SQL Data Warehouse.
+# <a name="monitor-your-workload-using-dmvs"></a>Überwachen Ihrer Workload mit dynamischen Verwaltungssichten
+Dieser Artikel beschreibt, wie Sie mit dynamischen Verwaltungssichten Ihre Workload überwachen und die Ausführung von Abfragen in Azure SQL Data Warehouse untersuchen.
 
 ## <a name="permissions"></a>Berechtigungen
-Wenn die DMVs in diesem Artikel abgefragt werden soll, benötigen Sie die VIEW DATABASE STATE oder CONTROL-Berechtigung. Durch Erteilen der VIEW DATABASE STATE ist in der Regel die bevorzugte Berechtigung, wie viel restriktiver ist.
+Um die DMVs in diesem Artikel abzufragen, benötigen Sie die Berechtigung VIEW DATABASE STATE oder CONTROL. Üblicherweise ist VIEW DATABASE STATE die bevorzugte Berechtigung, da sie wesentlich restriktiver ist.
 
 ```sql
 GRANT VIEW DATABASE STATE TO myuser;
 ```
 
-## <a name="monitor-connections"></a>Monitor-Verbindungen
-Alle Anmeldungen in SQL Data Warehouse werden protokolliert, um [sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Diese DMV enthält die letzten 10.000 Anmeldungen.  Die Session_id ist der Primärschlüssel und wird für jede neue Anmeldung sequenziell zugewiesen.
+## <a name="monitor-connections"></a>Überwachen von Verbindungen
+Alle Anmeldungen bei SQL Data Warehouse werden in [sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions] protokolliert.  Diese DMV enthält die letzten 10.000 Anmeldungen.  Die Sitzungs-ID ist der Primärschlüssel und wird bei jeder neuen Anmeldung sequenziell zugewiesen.
 
 ```sql
 -- Other Active Connections
 SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <> session_id();
 ```
 
-## <a name="monitor-query-execution"></a>Überwachen der Ausführung von Abfragen
-Alle Abfragen in SQL Data Warehouse ausgeführt werden protokolliert [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Diese DMV enthält die letzten 10.000 ausgeführten Abfragen.  Die Request_id eindeutig identifiziert wird jede Abfrage und ist der Primärschlüssel für diese DMV.  Die Request_id wird für jede neue Abfrage sequenziell zugewiesen und QID, das für die Abfrage-ID steht vorangestellt ist  Diese DMV für einen bestimmten Session_id Abfragen zeigt alle Abfragen für eine bestimmte Anmeldung.
+## <a name="monitor-query-execution"></a>Überwachen der Abfrageausführung
+Alle in SQL Data Warehouse ausgeführten Abfragen werden in [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests] protokolliert.  Diese DMV enthält die letzten 10.000 ausgeführten Abfragen.  Die Anforderungs-ID identifiziert jede Abfrage eindeutig. Sie ist der Primärschlüssel für diese DMV.  Die Anforderungs-ID wird für jede neue Abfrage sequenziell zugewiesen und erhält das Präfix QID für Abfrage-ID.  Bei der Abfrage dieser DMV für eine bestimmte Sitzungs-ID werden alle Abfragen für eine bestimmte Anmeldung angezeigt.
 
 > [!NOTE]
-> Gespeicherte Prozeduren verwenden mehrere Anforderungs-IDs.  Anforderung-IDs werden in sequenzieller Reihenfolge zugewiesen. 
+> Gespeicherte Prozeduren verwenden mehrere Anforderungs-IDs.  Anforderungs-IDs werden in sequenzieller Reihenfolge zugewiesen. 
 > 
 > 
 
-Es folgen die Schritte zu befolgen, um die Abfrageausführungspläne und Uhrzeiten für eine bestimmte Abfrage zu untersuchen.
+Führen Sie folgende Schritte aus, um Abfrageausführungspläne und -zeiten für eine bestimmte Abfrage zu untersuchen.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>Schritt 1: Identifizieren Sie die Abfrage, die Sie untersuchen möchten.
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>Schritt 1: Ermitteln der Abfrage, die Sie untersuchen möchten
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -70,11 +70,11 @@ FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-Aus den vorherigen Abfrageergebnissen **Beachten Sie die Anforderungs-ID** der Abfrage, die Sie untersuchen möchten.
+Notieren Sie sich aus den oben stehenden Abfrageergebnissen **die Anforderungs-ID** der Abfrage, die Sie untersuchen möchten.
 
-Abfragen in der **Suspended** Zustand wird in der Warteschlange aufgrund Parallelitätsgrenzen. Diese Abfragen werden auch in der sys.dm_pdw_waits Wartevorgänge Abfrage mit einem UserConcurrencyResourceType angezeigt. Finden Sie unter [Parallelität und die Arbeitslast Management] [ Concurrency and workload management] für Weitere Informationen zu den Parallelitätsgrenzen. Abfragen können auch warten, bis andere Gründe wie z. B. für das Objektsperren.  Wenn die Abfrage für eine Ressource wartet, finden Sie unter [untersuchen die Abfrage auf Ressourcen wartet] [ Investigating queries waiting for resources] weiter unten in diesem Artikel.
+Abfragen im Status **Angehalten** werden aufgrund von Parallelitätslimits in die Warteschlange gestellt. Diese Abfragen werden auch in der Abfrage „sys.dm_pdw_waits“ mit dem Typ UserConcurrencyResourceType angezeigt. Weitere Informationen zu Parallelitätslimits finden Sie unter [Parallelitäts- und Workloadverwaltung][Concurrency and workload management]. Abfragen können auch aus anderen Gründen warten, beispielsweise wegen Objektsperren.  Wenn Ihre Abfrage auf eine Ressource wartet, finden Sie nähere Informationen unter [Untersuchen von Abfragen, die auf Ressourcen warten][Investigating queries waiting for resources] weiter unten in diesem Artikel.
 
-Verwenden Sie zur Vereinfachung der Suche nach einer Abfrage in der Tabelle sys.dm_pdw_exec_requests [Bezeichnung] [ LABEL] zuweisen ein Kommentars der Abfrage, die in der Ansicht sys.dm_pdw_exec_requests gesucht werden kann.
+Vereinfachen Sie die Suche nach einer Abfrage in der Tabelle „sys.dm_pdw_exec_requests“ mithilfe von [LABEL][LABEL], um Ihrer Abfrage einen Kommentar hinzuzufügen, der in der Ansicht „sys.dm_pdw_exec_requests“ gesucht werden kann.
 
 ```sql
 -- Query with Label
@@ -85,7 +85,7 @@ OPTION (LABEL = 'My Query')
 ```
 
 ### <a name="step-2-investigate-the-query-plan"></a>Schritt 2: Untersuchen des Abfrageplans
-Verwenden Sie die Anforderungs-ID zum Abrufen der Abfrage verteilte SQL (DSQL)-Plan aus [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
+Rufen Sie mit der Anforderungs-ID den DSQL-Plan (Distributed SQL, verteiltes SQL) der Abfrage aus [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps] ab.
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -96,15 +96,15 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-Wenn ein Plan DSQL länger dauert ist als erwartet, kann die Ursache eines komplexen Plans mit vielen DSQL Schritte oder nur einen Schritt benötigt einen langen Zeitraum sein.  Wenn der Plan viele Schritte mit mehreren Verschiebevorgänge ist, erwägen Sie, optimieren Ihre Tabelle-Verteilungen, um die datenverschiebung zu reduzieren. Die [Tabelle Verteilung] [ Table distribution] Artikel wird erläutert, warum die Daten verschoben werden müssen, um eine Abfrage zu lösen und erläutert einige Verteilungsstrategien zum Verschieben von Daten zu minimieren.
+Wenn ein DSQL-Plan mehr Zeit in Anspruch nimmt als erwartet, kann die Ursache ein komplexer Plan mit vielen DSQL-Schritten oder nur ein einziger Schritt sein, der einen langen Zeitraum benötigt.  Wenn der Plan viele Schritte mit mehreren Verschiebungen aufweist, erwägen Sie die Optimierung Ihrer Tabellenverteilungen, um Datenverschiebungen zu reduzieren. Der Artikel [Verteilen von Tabellen][Table distribution] erläutert, warum Daten verschoben werden müssen, um eine Abfrage zu lösen, und erläutert einige Verteilungsstrategien zum Minimieren von Datenverschiebungen.
 
-Weitere Details zu einem einzigen Schritt Untersuchen der *Operation_type* Spalte die lang andauernde abfrageschritt, und beachten Sie die **Schrittindex**:
+Um weitere Informationen zu einem Einzelschritt zu erhalten, beachten Sie die Spalte *operation_type* des Abfrageschritts mit langer Laufzeit, und beachten Sie den **Schrittindex**:
 
-* Fahren Sie fort mit Schritt 3a für **SQL-Vorgänge**: OnOperation RemoteOperation, ReturnOperation.
-* Fahren Sie fort mit Schritt 3 b für **Datenverschiebung Vorgänge**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
+* Fahren Sie für **SQL-Vorgänge**mit Schritt 3a fort: OnOperation, RemoteOperation, ReturnOperation.
+* Fahren Sie für **Datenverschiebungsvorgänge**mit Schritt 3b fort: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
 ### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>Schritt 3a: Untersuchen von SQL auf verteilten Datenbanken
-Verwenden Sie die Anforderungs-ID und den Schrittindex beim Abrufen der Details von [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], die Ausführungsinformationen des Schritts Abfrage auf alle verteilten Datenbanken enthält.
+Verwenden Sie die Anforderungs-ID und den Schrittindex, um Informationen aus [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests] abzurufen. Das Ergebnis enthält Informationen zur Ausführung des Abfrageschritts in allen verteilten Datenbanken.
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -114,7 +114,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Wenn der abfrageschritt ausgeführt wird, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] kann zum Abrufen des geschätzten Plans von SQL Server aus dem Plancache SQL Server für den Schritt, die unter einer bestimmten Verteilung verwendet werden.
+Wenn der Abfrageschritt ausgeführt wird, können Sie mit [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] aus dem Cache des SQL Server-Plans den berechneten SQL Server-Ausführungsplan für den in einer bestimmten Verteilung ausgeführten Schritt abrufen.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -123,8 +123,8 @@ Wenn der abfrageschritt ausgeführt wird, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PD
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Schritt 3 b: Untersuchen der datenverschiebung auf verteilten Datenbanken
-Verwenden Sie die Anforderungs-ID und den Schrittindex zum Abrufen von Informationen zu einem auf jede Verteilung von Daten Bewegung [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Schritt 3 b: Untersuchen der Datenverschiebung auf den verteilten Datenbanken
+Verwenden Sie die Anforderungs-ID und den Schrittindex, um Informationen zu einem Datenverschiebungsschritt, der für jede Verteilung ausgeführt wird, aus [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers] abzurufen.
 
 ```sql
 -- Find the information about all the workers completing a Data Movement Step.
@@ -134,10 +134,10 @@ SELECT * FROM sys.dm_pdw_dms_workers
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-* Überprüfen Sie die *Total_elapsed_time* Spalte, um festzustellen, ob eine bestimmte Verteilung wesentlich länger als andere für das Verschieben von Daten dauert.
-* Überprüfen Sie für die lang andauernde Verteilung der *Rows_processed* Spalte, um festzustellen, ob die Anzahl der Zeilen aus, auf denen Verteilungspunkte verschobene wesentlich größer als die andere ist. Wenn dies der Fall ist, kann dies Neigung der zugrunde liegenden Daten hinweisen.
+* Überprüfen Sie die Spalte *total_elapsed_time*, um festzustellen, ob das Verschieben von Daten in einer bestimmten Verteilung erheblich länger dauert als in anderen Verteilungen.
+* Überprüfen Sie für die Verteilung mit langer Laufzeit die Spalte *rows_processed*, um festzustellen, ob die Anzahl der Zeilen, die von dieser Verteilung verschoben werden, beträchtlich größer als bei den anderen ist. Falls ja, kann dies auf eine Ungleichmäßigkeit der zugrunde liegenden Daten hinweisen.
 
-Wenn die Abfrage ausgeführt wird, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] kann zum Abrufen des geschätzten Plans von SQL Server aus dem Plancache für die SQL Server für den aktuell ausgeführten SQL-Schritt innerhalb einer bestimmten Verteilung verwendet werden.
+Wird die Abfrage gerade ausgeführt, können Sie mit [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] aus dem Cache des SQL Server-Plans den berechneten SQL Server-Ausführungsplan für den derzeit ausgeführten SQL-Schritt innerhalb einer bestimmten Verteilung abrufen.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -148,8 +148,8 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 
 <a name="waiting"></a>
 
-## <a name="monitor-waiting-queries"></a>Überwachen der wartende Abfragen
-Wenn Sie feststellen, dass die Abfrage nicht Fortschritte erzielt wird, da sie für eine Ressource wartet, wird hier eine Abfrage, die alle Ressourcen, die anzeigt, dass eine Abfrage wartet.
+## <a name="monitor-waiting-queries"></a>Überwachen von wartenden Abfragen
+Wenn Sie feststellen, dass Ihre Abfrage keine Fortschritte erzielt, weil sie auf eine Ressource wartet, können Sie mit folgender Abfrage alle Ressourcen anzeigen, auf die eine Abfrage wartet.
 
 ```sql
 -- Find queries 
@@ -171,12 +171,12 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-Wenn die Abfrage auf die Ressourcen von einer anderen Abfrage aktiv wartet, dann ist des Status **AcquireResources**.  Wenn die Abfrage enthält die erforderlichen Ressourcen, die Status werden **gewährt**.
+Wenn die Abfrage aktiv auf Ressourcen einer anderen Abfrage wartet, lautet der Status **AcquireResources**.  Wenn die Abfrage über alle erforderlichen Ressourcen verfügt, ist der Status **Granted**.
 
-## <a name="monitor-tempdb"></a>Monitor tempdb
-Hohe Tempdb-Auslastung kann die Ursache für eine geringe Leistung und unzureichenden Arbeitsspeicher sein. Zuerst überprüfen Sie, ob Sie Data skew oder schlechter Qualität Zeilengruppen haben, und führen Sie die entsprechenden Aktionen. Erwägen Sie, Ihr Datawarehouse Skalierung, wenn Sie Tempdb erreichen seine Grenzen beim Ausführen der Abfrage finden. Im folgenden wird beschrieben, wie Tempdb-Auslastung pro Abfrage auf jedem Knoten zu identifizieren. 
+## <a name="monitor-tempdb"></a>Überwachen von tempdb
+Eine hohe tempdb-Auslastung kann die Hauptursache für Probleme in Verbindung mit geringer Leistung und unzureichendem Arbeitsspeicher sein. Überprüfen Sie zuerst, ob Datenschiefe oder Zeilengruppen schlechter Qualität vorhanden sind, und führen Sie die entsprechenden Aktionen durch. Ziehen Sie die Skalierung Ihres Data Warehouse in Betracht, wenn Sie feststellen, dass tempdb beim Ausführen der Abfrage vollständig ausgelastet ist. Im Folgenden wird beschrieben, wie zu jedem Knoten die tempdb-Auslastung pro Abfrage ermittelt wird. 
 
-Erstellen Sie die folgende Ansicht aus, um die entsprechenden Knoten-Id für sys.dm_pdw_sql_requests zuzuordnen. Dadurch können Sie andere Pass-Through-DMVs nutzen, und verknüpfen diese Tabellen mit sys.dm_pdw_sql_requests.
+Erstellen Sie die folgende Ansicht, um die entsprechende Knoten-ID für „sys.dm_pdw_sql_requests“ zuzuordnen. Dadurch können Sie andere Pass-Through-DMVs nutzen und diese Tabellen mit „sys.dm_pdw_sql_requests“ verknüpfen.
 
 ```sql
 -- sys.dm_pdw_sql_requests with the correct node id
@@ -200,7 +200,7 @@ CREATE VIEW sql_requests AS
 FROM sys.pdw_distributions AS d
 RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
 ```
-Führen Sie die folgende Abfrage aus, um Tempdb zu überwachen:
+Führen Sie die folgende Abfrage aus, um tempdb zu überwachen:
 
 ```sql
 -- Monitor tempdb
@@ -233,9 +233,9 @@ ORDER BY sr.request_id;
 ```
 ## <a name="monitor-memory"></a>Überwachen des Arbeitsspeichers
 
-Arbeitsspeicher kann die Ursache für eine geringe Leistung und unzureichenden Arbeitsspeicher sein. Zuerst überprüfen Sie, ob Sie Data skew oder schlechter Qualität Zeilengruppen haben, und führen Sie die entsprechenden Aktionen. Erwägen Sie, Ihr Datawarehouse Skalierung, wenn Sie SQL Server-speicherauslastung erreichen seine Grenzen beim Ausführen der Abfrage finden.
+Der Arbeitsspeicher kann die Hauptursache für Probleme in Verbindung mit geringer Leistung und unzureichendem Arbeitsspeicher sein. Überprüfen Sie zuerst, ob Datenschiefe oder Zeilengruppen schlechter Qualität vorhanden sind, und führen Sie die entsprechenden Aktionen durch. Ziehen Sie die Skalierung Ihres Data Warehouse in Betracht, wenn Sie feststellen, dass die Speicherauslastung von SQL Server beim Ausführen der Abfrage die Grenzwerte erreicht.
 
-Die folgende Abfrage gibt die SQL Server Verwendung und ungenügendem Arbeitsspeicher pro Knoten zurück:   
+Die folgende Abfrage gibt die Speicherauslastung von SQL Server und die Speicherauslastung pro Knoten zurück:   
 ```sql
 -- Memory consumption
 SELECT
@@ -257,8 +257,8 @@ WHERE
 pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
-## <a name="monitor-transaction-log-size"></a>Überwachen der Größe des Transaktionsprotokolls
-Die folgende Abfrage gibt die Größe des Transaktionsprotokolls auf jede Verteilung zurück. Überprüfen Sie, ob Sie Data skew oder schlechter Qualität Zeilengruppen haben, und führen Sie die entsprechenden Aktionen. Wenn eine der Protokolldateien 160 GB erreicht ist, sollten Sie Zentrales Skalieren Ihrer Instanz oder beschränken die Transaktionsgröße. 
+## <a name="monitor-transaction-log-size"></a>Überwachen der Größe von Transaktionsprotokollen
+Die folgende Abfrage gibt die Größe von Transaktionsprotokollen für jede Verteilung zurück. Überprüfen Sie, ob Datenschiefe oder Zeilengruppen schlechter Qualität vorhanden sind, und führen Sie die entsprechenden Aktionen durch. Wenn eine der Protokolldateien 160 GB erreicht, sollten Sie Ihre Instanz eventuell zentral hochskalieren oder die Transaktionsgröße beschränken. 
 ```sql
 -- Transaction log size
 SELECT
@@ -271,8 +271,8 @@ instance_name like 'Distribution_%'
 AND counter_name = 'Log File(s) Used Size (KB)'
 AND counter_name = 'Target Server Memory (KB)'
 ```
-## <a name="monitor-transaction-log-rollback"></a>Überwachen von Transaktionsrollback-Protokoll
-Wenn Ihre Abfragen fehlschlagen oder sehr lange dauert, um den Vorgang fortzusetzen, können Sie überprüfen und überwachen, wenn Sie alle Transaktionen ein Rollback verfügen.
+## <a name="monitor-transaction-log-rollback"></a>Überwachen des Rollbacks von Transaktionsprotokollen
+Wenn bei Ihren Abfragen Fehler auftreten oder deren Verarbeitung sehr lange dauert, können Sie überprüfen und überwachen, ob Sie über Rollbacks von Transaktionen verfügen.
 ```sql
 -- Monitor rollback
 SELECT 
@@ -285,8 +285,8 @@ GROUP BY t.pdw_node_id, nod.[type]
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Finden Sie unter [Systemsichten] [ System views] Weitere Informationen zu DMVs.
-Finden Sie unter [bewährte SQL Data Warehouse] [ SQL Data Warehouse best practices] für Weitere Informationen zu bewährten Methoden
+Weitere Informationen zu DMVs finden Sie unter [Systemsichten][System views].
+Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][SQL Data Warehouse best practices].
 
 <!--Image references-->
 

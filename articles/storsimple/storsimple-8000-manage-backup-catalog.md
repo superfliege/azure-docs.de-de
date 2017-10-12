@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: ac2577c6cd350d6d437d55e61ec73d954cb24893
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>Verwalten des Sicherungskatalogs mithilfe des StorSimple-Geräte-Manager-Diensts
 ## <a name="overview"></a>Übersicht
@@ -36,11 +36,11 @@ Das Blatt **Sicherungskatalog** bietet eine Abfrage, mit der Sie die Auswahl der
 
 Die gefilterten Sicherungssätze werden dann basierend auf den folgenden Attributen in Tabellenform angezeigt:
 
-* **Name**: Name der Sicherungsrichtlinie oder des Volumes, der oder dem dieser Sicherungssatz zugeordnet ist.
-* **Größe**: Die tatsächliche Größe des Sicherungssatzes.
-* **Erstellt am**: Datum und Uhrzeit der Erstellung der Sicherungen. 
-* **Typ**: Sicherungssätze können lokale Momentaufnahmen oder Cloudmomentaufnahmen sein. Eine lokale Momentaufnahme ist eine Sicherung aller Volumedaten, die auf dem lokalen Gerät gespeichert ist, während die Sicherung von Volumedaten in der Cloud als Cloudmomentaufnahme bezeichnet wird. Lokale Momentaufnahmen bieten schnelleren Zugriff, während Cloudmomentaufnahmen für Datenstabilität ausgewählt werden.
-* **Initiiert von**: Die Sicherungen können automatisch nach einem Zeitplan oder manuell durch einen Benutzer initiiert werden. Sie können eine Sicherungsrichtlinie verwenden, um Sicherungen zu planen. Es ist aber auch möglich, mithilfe der Option **Sicherung erstellen** eine manuelle Sicherung durchzuführen.
+* **Name** – der Name der Sicherungsrichtlinie oder des Volumes, der oder dem dieser Sicherungssatz zugeordnet ist.
+* **Größe** : die tatsächliche Größe des Sicherungssatzes.
+* **Erstellt am** : das Datum und die Uhrzeit der Erstellung der Sicherungen. 
+* **Typ** : Sicherungssätze können lokale Momentaufnahmen oder Cloudmomentaufnahmen sein. Eine lokale Momentaufnahme ist eine Sicherung aller Volumedaten, die auf dem lokalen Gerät gespeichert ist, während die Sicherung von Volumedaten in der Cloud als Cloudmomentaufnahme bezeichnet wird. Lokale Momentaufnahmen bieten schnelleren Zugriff, während Cloudmomentaufnahmen für Datenstabilität ausgewählt werden.
+* **Initiiert von** : Die Sicherungen können automatisch nach einem Zeitplan oder manuell durch einen Benutzer initiiert werden. Sie können eine Sicherungsrichtlinie verwenden, um Sicherungen zu planen. Es ist aber auch möglich, mithilfe der Option **Sicherung erstellen** eine manuelle Sicherung durchzuführen.
 
 ## <a name="list-backup-sets-for-a-backup-policy"></a>Aufführen der Sicherungssätze für eine Sicherungsrichtlinie
 Führen Sie die folgenden Schritte aus, um alle Sicherungen für eine Sicherungsrichtlinie aufzuführen.

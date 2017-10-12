@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: alfredop
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 166147c8cb4949be1b23e0a06868e66c8a5844f4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Häufig gestellte Fragen zur Azure Stack-Nutzungs-API 
 In diesem Artikel werden einige häufig gestellte Fragen zur Azure Stack-Nutzungs-API beantwortet.
@@ -81,5 +80,4 @@ Aktuell können Sie *nur nach gemeldeter Zeit* abfragen.
 [Ressourcennutzungs-API für Anbieter](azure-stack-provider-resource-api.md)
 
 [Ressourcennutzungs-API für Mandanten](azure-stack-tenant-resource-usage-api.md)
-
 

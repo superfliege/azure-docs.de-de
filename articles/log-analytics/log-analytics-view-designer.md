@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
 ms.openlocfilehash: e3c463d749dc4179df58286b9bb75584880a6bc6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-view-designer-to-create-custom-views-in-log-analytics"></a>Erstellen benutzerdefinierter Ansichten in Log Analytics mithilfe des Ansicht-Designers
 Mit dem Ansicht-Designer in [Log Analytics](log-analytics-overview.md) können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die verschiedene Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.

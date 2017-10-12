@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: jgao
+ms.openlocfilehash: c1aeed8c6fe4f83b170838e4efb9d9c4744fb951
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 9ad482a932c56aa2585560eb74cf4cef06a6fa52
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Erstellen einer .NET HDInsight-Anwendung für die nicht interaktive Authentifizierung
 Sie können Ihre Microsoft .NET Azure HDInsight-Anwendung entweder unter der eigenen Identität der Anwendung (nicht interaktiv) oder unter der Identität des angemeldeten Benutzers der Anwendung (interaktiv) ausführen. In diesem Artikel erfahren Sie, wie Sie eine .NET-Anwendung für die nicht interaktive Authentifizierung erstellen, um eine Verbindung mit Azure herzustellen und HDInsight zu verwalten. Ein Beispiel für die interaktive Anwendung finden Sie unter [Verbinden mit Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
@@ -40,7 +39,7 @@ Weisen Sie Ihrer Azure AD-Anwendung eine [Rolle](../active-directory/role-based-
 
 **So fügen Sie der Azure AD-Anwendung die Rolle „Besitzer“ hinzu**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
 2. Wählen Sie im Menü auf der linken Seite die Option **Ressourcengruppe** aus.
 3. Wählen Sie die Ressourcengruppe mit dem HDInsight-Cluster aus, in dem Sie später in diesem Tutorial die Hive-Abfrage ausführen möchten. Wenn Sie über eine große Anzahl von Ressourcengruppen verfügen, können Sie mit dem Filter die gewünschte suchen.
 4. Wählen Sie im Ressourcengruppenmenü **Zugriffssteuerung (IAM)**.
@@ -129,4 +128,3 @@ Weisen Sie Ihrer Azure AD-Anwendung eine [Rolle](../active-directory/role-based-
 * [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 * Weitere Informationen finden Sie unter [Authentifizieren eines Dienstprinzipals mit Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 * Weitere Informationen finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md).
-

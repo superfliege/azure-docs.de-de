@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: ramankum
 ms.openlocfilehash: 559753d7ff3da7e8b5dc8f976368a1d35dd6258b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs
 Azure Storage Premium bietet Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer (VMs) mit E/A-intensiven Workloads. Für VM-Datenträger, die Storage Premium nutzen, werden Daten auf SSD-Laufwerken (Solid-State Drives) gespeichert. Um die Geschwindigkeit und Leistung von Storage Premium-Datenträgern zu nutzen, können Sie vorhandene VM-Datenträger zu Storage Premium migrieren.

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: markvi
 ms.openlocfilehash: c944a355c07b96c27dcdd477f625638284eabdf3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
@@ -26,8 +26,8 @@ Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer de
 Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von Visual Basic for Applications (VBA) ähnlich.
 
 * Der gesamte Ausdruck muss mittels Funktionen definiert werden, die aus einem Namen mit darauffolgenden Argumenten in Klammern bestehen:  <br>
-  *Funktionsname(<<Argument 1>>,<<argument N>>)*
-* Sie können Funktionen ineinander verschachteln. Beispiel: <br> *FunktionEins(FunktionZwei(<<argument1>>))*
+  *Funktionsname(&lt;&lt;Argument 1&gt;&gt;,&lt;<argument N>&gt;)*
+* Sie können Funktionen ineinander verschachteln. Beispiel: <br> *FunktionEins(FunktionZwei(&lt;<argument1>&gt;))*
 * Sie können drei verschiedene Argumententypen an die Funktionen übergeben:
   
   1. Attribute, die in eckige Klammern eingeschlossen werden müssen. Beispiel: [Attributname]
@@ -36,7 +36,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 * Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \ ) versehen werden. Beispiel: "Firmenname: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Liste der Funktionen
-[Anfügen](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
+[Anfügen](#append)&nbsp;&nbsp;&nbsp;&nbsp;[FormatDateTime](#formatdatetime)&nbsp;&nbsp;&nbsp;&nbsp;[Join](#join)&nbsp;&nbsp;&nbsp;&nbsp;[Mid](#mid)&nbsp;&nbsp;&nbsp;&nbsp;[Not](#not)&nbsp;&nbsp;&nbsp;&nbsp;[Replace](#replace)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces)&nbsp;&nbsp;&nbsp;&nbsp;[Switch](#switch)
 
 - - -
 ### <a name="append"></a>Anfügen

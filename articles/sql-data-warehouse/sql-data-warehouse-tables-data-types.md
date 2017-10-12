@@ -16,10 +16,10 @@ ms.custom: tables
 ms.date: 06/02/2017
 ms.author: shigu;barbkess
 ms.openlocfilehash: 5c24c71af16bd9851d9caf15fecfa4bb76f5f77e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>Leitfaden zum Definieren von Datentypen für Tabellen in SQL Data Warehouse
 Verwenden Sie diese Empfehlungen zum Definieren von Datentypen für die Tabelle, die mit SQL Data Warehouse kompatibel sind. Neben der Kompatibilität wird durch die Größe der Datentypen die Abfrageleistung verbessert.

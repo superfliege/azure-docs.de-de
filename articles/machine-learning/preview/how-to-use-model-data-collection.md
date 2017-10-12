@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e751e2f0ec812de43a03749e04ff165fa62ec649
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-collect-model-data-using-data-collection"></a>Sammeln von Modelldaten mithilfe der Datensammlung
 
 Mithilfe des Modelldatensammlungs-Features können Sie Modelleingaben und Vorhersagen eines Machine Learning-Webdiensts archivieren. Dieses Dokument informiert Sie über die folgenden Aspekte der Modelldatensammlung:
@@ -108,5 +106,4 @@ Daten aus Azure-Blobs können auf verschiedene Arten sowohl mit Microsoft-Softwa
     var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")
     ```
 - [Hive](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): Laden Sie CSV-Daten in eine Hive-Tabelle, und führen Sie SQL-Abfragen direkt für ein Blob durch.
-
 

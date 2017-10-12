@@ -16,14 +16,12 @@ ms.topic: quickstart
 ms.date: 09/05/2017
 ms.author: wesmc
 ms.custom: mvc
+ms.openlocfilehash: 28b0b50c68fa7c16a354fd16b7dfd930436c6b4b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: da47bc9dd6fd980a37e2fdb57485858c2f1b2a73
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="run-a-custom-docker-hub-image-in-azure-web-app-for-containers"></a>Ausführen eines benutzerdefinierten Images von Docker-Hubs in Azure-Web-Apps für Container #
 
 App Service stellt vordefinierte Anwendungsstapel unter Linux mit Unterstützung für bestimmte Versionen bereit, z.B. PHP 7.0 und Node.js 4.5. Sie können auch ein benutzerdefiniertes Docker-Image verwenden, um Ihre Web-App in einem Anwendungsstapel bereitzustellen, der nicht bereits in Azure definiert ist. In diesem Schnellstartartikel wird erläutert, wie eine Web-App erstellt und ein Python-Image für diese bereitgestellt wird. Sie erstellen die Web-App mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
@@ -79,4 +77,3 @@ http://<app_name>.azurewebsites.net
 
 > [!div class="nextstepaction"]
 > [Erstellen einer Docker Python- und PostgreSQL-Web-App in Azure](tutorial-docker-python-postgresql-app.md)
-

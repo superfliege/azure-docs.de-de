@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f774888ba3921d0688feddac669ed1dca4667441
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Verfügbarmachen von SQL-Datenbanken für Ihre Azure Stack-Benutzer
 
@@ -87,5 +86,4 @@ Im nächsten Tutorial lernen Sie Folgendes:
 
 > [!div class="nextstepaction"]
 > [Make web, mobile, and API apps available to your users (Verfügbarmachen von Web-, API- und mobilen Apps für Ihre Azure Stack-Benutzer)]( azure-stack-tutorial-app-service.md)
-
 

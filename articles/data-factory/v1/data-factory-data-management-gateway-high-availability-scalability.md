@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: abnarain
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1aac856d154724e3dcd282e2d34c27571cd1cb02
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit (Vorschauversion)
 Dieser Artikel enthält hilfreiche Informationen zum Konfigurieren einer Lösung für hohe Verfügbarkeit und Skalierbarkeit mit dem Datenverwaltungsgateway.    
@@ -62,7 +61,7 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie die beiden folgenden Artike
 > [!NOTE]
 > Bevor Sie ein Datenverwaltungsgateway auf einem lokalen Windows-Computer installieren, sollten Sie sich mit den Voraussetzungen im [Hauptartikel](data-factory-data-management-gateway.md#prerequisites) vertraut machen.
 
-1. Aktivieren Sie in der [exemplarischen Vorgehensweise](data-factory-move-data-between-onprem-and-cloud.md#create-gateway) beim Erstellen eines logischen Gateways das Feature **Hohe Verfügbarkeit und Skalierbarkeit**. 
+1. Aktivieren Sie in der [exemplarischen Vorgehensweise](data-factory-move-data-between-onprem-and-cloud.md#create-gateway) beim Erstellen eines logischen Gateways das Feature **Hohe Verfügbarkeit und Skalierbarkeit** . 
 
     ![Datenverwaltungsgateway – Aktivieren der hohen Verfügbarkeit und Skalierbarkeit](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-enable-high-availability-scalability.png)
 2. Verwenden Sie auf der Seite **Konfigurieren** entweder den Link **Express-Setup** oder **Manuelles Setup**, um auf dem ersten Knoten (lokaler Windows-Computer) ein Gateway zu installieren.
@@ -250,4 +249,3 @@ Klicken Sie nach dem Löschen auf derselben Seite des Azure-Portals auf **Vorsch
 Lesen Sie die folgenden Artikel:
 - [Datenverwaltungsgateway](data-factory-data-management-gateway.md): Liefert eine ausführliche Übersicht über das Gateway.
 - [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md): Enthält eine exemplarische Vorgehensweise mit einer Schritt-für-Schritt-Anleitung für die Verwendung eines Gateways mit einem einzelnen Knoten. 
-

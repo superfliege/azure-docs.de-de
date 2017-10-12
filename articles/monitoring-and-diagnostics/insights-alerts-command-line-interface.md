@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
 ms.openlocfilehash: 92246a8da73a244a1c9a924bed55711d71a20fd8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – plattformübergreifende Befehlszeilenschnittstelle
 > [!div class="op_single_selector"]
@@ -99,7 +99,7 @@ Sie können stets Hilfe zu Befehlen erhalten, indem Sie einen Befehl eingeben un
      *PT1M* ist die Granularität der verfügbaren Messung (1-Minuten-Intervalle). Durch Verwenden verschiedener Granularitäten erhalten Sie verschiedene Metrikoptionen.
 4. Geben Sie zum Erstellen einer metrikbasierten Warnregel einen Befehl im folgenden Format ein:
 
-    **azure insights alerts rule metric set** *[Optionen] &lt;ruleName&gt; &lt;location&gt; &lt;resourceGroup&gt; &lt;windowSize&gt; &lt;operator&gt; &lt;threshold&gt; &lt;targetResourceId&gt; &lt;metricName&gt; &lt;timeAggregationOperator&gt;*
+    **azure insights alerts rule metric set***[Optionen] &lt;ruleName&gt;&lt;location&gt;&lt;resourceGroup&gt;&lt;windowSize&gt;&lt;operator&gt;&lt;threshold&gt;&lt;targetResourceId&gt;&lt;metricName&gt;&lt;timeAggregationOperator&gt;*
 
     Im folgenden Beispiel wird eine Warnung für eine Websiteressource eingerichtet. Die Warnung wird ausgelöst, wenn fünf Minuten durchgängig Datenverkehr empfangen wird. Sie wird erneut ausgelöst, wenn fünf Minuten lang kein Datenverkehr empfangen wird.
 
@@ -124,7 +124,7 @@ Sie können stets Hilfe zu Befehlen erhalten, indem Sie einen Befehl eingeben un
     ```
 7. Verwenden Sie zum Löschen von Regeln einen Befehl mit dem folgenden Format:
 
-    **insights alerts rule delete** [Optionen] &lt;resourceGroup&gt; &lt;ruleName&gt;
+    **insights alerts rule delete** [Optionen] &lt;resourceGroup&gt;&lt;ruleName&gt;
 
     Mit diesen Befehlen werden die zuvor in diesem Artikel erstellten Regeln gelöscht.
 

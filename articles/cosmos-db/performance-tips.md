@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: mimig
+ms.openlocfilehash: cf7ba26369b3978bb0c2ad5e903a7aee804017ca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 3b15d6645b988f69f1f05b27aff6f726f34786fc
-ms.openlocfilehash: cab019480a14de1a1481abee800553c6545add70
-ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-tips-for-azure-cosmos-db"></a>Leistungstipps für Azure Cosmos DB
 Azure Cosmos DB ist eine schnelle und flexible verteilte Datenbank mit nahtloser Skalierung, garantierter Latenz und garantiertem Durchsatz. Die Skalierung Ihrer Datenbank mit Cosmos DB erfordert keine aufwendigen Änderungen an der Architektur und keine Erstellung von komplexem Code. Zentrales Hoch- und Herunterskalieren ist ebenso problemlos möglich wie das Aufrufen einer einzelnen API oder [SDK-Methode](set-throughput.md#set-throughput-sdk). Da der Zugriff auf Cosmos DB jedoch über Netzwerkaufrufe erfolgt, können Sie clientseitige Optimierungen vornehmen, um eine optimale Leistung zu erzielen.
@@ -145,14 +144,8 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
     - Für auf Azure bereitgestellte ASP.NET-Webanwendungen wählen Sie im Azure-Portal unter **Anwendungseinstellungen** die Option **Platform as 64-bit** (Plattform als 64-Bit) aus.
 
 ## <a name="indexing-policy"></a>Indizierungsrichtlinien
-1. **Verwenden der verzögerten Indizierung zur Beschleunigung der Erfassung zu Spitzenzeiten**
-
-    Cosmos DB ermöglicht die Angabe einer Indizierungsrichtlinie (auf Sammlungsebene), sodass Sie wählen können, ob Dokumente in einer Sammlung automatisch indiziert werden sollen.  Darüber hinaus können Sie zwischen synchronen (konsistenten) und asynchronen (verzögerten) Indexaktualisierungen wählen. Der Index wird bei jedem Einfügen, Ersetzen oder Löschen eines Dokuments der Sammlung standardmäßig synchron aktualisiert. Im synchronen Modus können die Abfragen die gleiche [Konsistenzebene](consistency-levels.md) wie bei Dokumentlesevorgängen verwenden – ganz ohne Verzögerung durch den Aufholbedarf des Index.
-
-    Die verzögerte Indizierung empfiehlt sich unter Umständen für Szenarien, in denen Daten schubweise geschrieben werden und sich der Arbeitsaufwand für die Indizierung von Inhalten über einen längeren Zeitraum bezahlt machen soll. Mit der verzögerten Indizierung können Sie den bereitgestellten Durchsatz effektiv nutzen und Schreibanforderungen zu Spitzenzeiten mit minimaler Latenz verarbeiten. Wichtig: Bei aktivierter verzögerter Indizierung sind Abfrageergebnisse unabhängig von der für das Cosmos DB-Konto konfigurierten Konsistenzebene letztendlich konsistent.
-
-    Daher fällt im konsistenten Indizierungsmodus („IndexingPolicy.IndexingMode“ auf „Consistent“ festgelegt) pro Schreibvorgang die höchste Belastung für Anforderungseinheiten an, während im verzögerten Indizierungsmodus („IndexingPolicy.IndexingMode“ auf „Lazy“ festgelegt) sowie bei deaktivierter Indizierung („IndexingPolicy.Automatic“ auf „False“ festgelegt) zum Zeitpunkt des Schreibvorgangs keinerlei Indizierungskosten anfallen.
-2. **Beschleunigen von Schreibvorgängen durch Ausschließen nicht verwendeter Pfade von der Indizierung**
+ 
+1. **Beschleunigen von Schreibvorgängen durch Ausschließen nicht verwendeter Pfade von der Indizierung**
 
     Die Indizierungsrichtlinie von Cosmos DB ermöglicht auch die Verwendung von Indizierungspfaden („IndexingPolicy.IncludedPaths“ und „IndexingPolicy.ExcludedPaths“), um anzugeben, welche Dokumentpfade in die Indizierung ein- bzw. von der Indizierung ausgeschlossen werden sollen.  Die Verwendung von Indizierungspfaden kann in Szenarien, in denen die Abfragemuster im Voraus bekannt sind, die Leistung bei Schreibvorgängen verbessern und den Indexspeicher verringern, da die Indizierungskosten direkt damit zusammenhängen, wie viele individuelle Pfade indiziert werden. Der folgende Code zeigt beispielsweise, wie Sie mithilfe des Platzhalterzeichens „*“ einen gesamten Abschnitt von Dokumenten (eine Unterstruktur) von der Indizierung ausschließen.
 
@@ -214,4 +207,3 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 Eine Beispielanwendung zur Evaluierung von Cosmos DB für Hochleistungsszenarien auf einigen Clientcomputern finden Sie unter [Leistungs- und Skalierungstests mit Cosmos DB](performance-testing.md).
 
 Weitere Informationen zur Gestaltung einer auf Skalierung und hohe Leistung ausgelegten Anwendung finden Sie unter [Partitionieren und Skalieren von Daten in Cosmos DB](partition-data.md).
-

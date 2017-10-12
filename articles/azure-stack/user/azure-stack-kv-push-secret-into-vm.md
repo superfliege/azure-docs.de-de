@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/03/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 29ccdc9eca9911b2f550f9e09da83d0b1d30f9db
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-virtual-machine-and-include-certificate-retrieved-from-a-key-vault"></a>Erstellen eines virtuellen Computers und Aufnehmen eines aus einem Schlüsseltresor abgerufenen Zertifikats
 
@@ -28,7 +27,7 @@ Dieser Artikel unterstützt Sie beim Erstellen eines virtuellen Computers in Azu
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Sie müssen ein Angebot abonnieren, das den Key Vault-Dienst umfasst. 
-* [Installieren Sie PowerShell für Azure Stack.](azure-stack-powershell-install.md)  
+* [Installieren Sie PowerShell für Azure Stack-](azure-stack-powershell-install.md)  
 * [Konfigurieren Sie die PowerShell-Umgebung des Azure Stack-Benutzers.](azure-stack-powershell-configure-user.md)
 
 Ein Schlüsseltresor in Azure Stack wird zum Speichern von Zertifikaten verwendet. Zertifikate sind in vielen verschiedenen Szenarios nützlich. Stellen Sie sich beispielsweise ein Szenario mit einem virtuellen Computer in Azure Stack vor, auf dem eine Anwendung ausgeführt wird, die ein Zertifikat erfordert. Dieses Zertifikat kann zur Verschlüsselung, zur Authentifizierung bei Active Directory oder für SSL auf einer Website verwendet werden. Die Speicherung des Zertifikats in einem Schlüsseltresor trägt dazu bei, dass es sicher ist.
@@ -178,6 +177,5 @@ Set-AzureKeyVaultSecretAttribute -VaultName contosovault -Name servicecert -Vers
 
 * [Bereitstellen eines virtuellen Computers mit einem Key Vault-Kennwort](azure-stack-kv-deploy-vm-with-secret.md)
 * [Gewähren des Zugriffs einer Anwendung auf Key Vault](azure-stack-kv-sample-app.md)
-
 
 

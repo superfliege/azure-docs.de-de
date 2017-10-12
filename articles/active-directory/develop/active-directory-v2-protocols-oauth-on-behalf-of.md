@@ -16,10 +16,10 @@ ms.date: 05/04/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 356083fbaabfcd2ec7581adf319fa22b810df0d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # Azure Active Directory v2.0- und Im-Auftrag-von-Ablauf von OAuth2.0
 Der Im-Auftrag-von-Ablauf von OAuth2.0 wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum eine andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den nachgelagerten Dienst stellen kann, muss für den Benutzer ein Zugriffstoken aus Azure Active Directory (Azure AD) gesichert werden.

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;fashah;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 06c165d25361694cf660f391b3d221ad1d63e95d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Erstellen von Features für Daten in SQL Server mithilfe von SQL und Python
 Dieses Dokument veranschaulicht das Generieren von Features für Daten auf einem virtuellen SQL Server-Computer in Azure, die dazu beitragen, dass Algorithmen effizienter aus den Daten lernen können. Dies kann mithilfe von SQL oder durch die Verwendung einer Programmiersprache wie Python erreicht werden. Hier werden beide Methoden erläutert.
@@ -122,5 +121,4 @@ Die [Pandas-Bibliothek](http://pandas.pydata.org/) in Python bietet eine Vielzah
     data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
 Sie können nun mit dem Pandas-DataFrame arbeiten, wie unter [Erstellen von Features für Azure-Blobspeicherdaten mithilfe von Panda](create-features-blob.md)beschrieben.
-
 

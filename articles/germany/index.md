@@ -12,14 +12,12 @@ ms.topic: landing-page
 ms.tgt_pltfrm: na
 ms.date: 04/12/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 759531ee75ff9609e8b5aaecdc4323fbb4bb1921
-ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: 6c84b3718f53d704d443491d526a228ed3c02829
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-germany-documentation"></a>Azure Deutschland-Dokumentation
 
 <p style="font-size: 1.125rem; padding-bottom: 0px;">Microsoft Azure Deutschland wurde basierend auf den Microsoft Trusted Cloud-Prinzipien von Sicherheit, Datenschutz, Compliance und Transparenz entwickelt. Es bietet Datenhoheit bei der Übertragung und Speicherung in Deutschland und gewährleistet die Geschäftskontinuität per Datenreplikation zwischen deutschen Rechenzentren.</p>
@@ -100,4 +98,3 @@ ms.lasthandoff: 05/03/2017
         </div>
     </li>
 </ul>
-

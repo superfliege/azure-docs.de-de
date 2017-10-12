@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: cac35aa26fcdb7f2fb0db3b895d3c99d77f3b4ba
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="import-your-data-into-azure-machine-learning-studio-from-another-experiment"></a>Importieren der Daten aus einem anderen Experiment in Azure Machine Learning Studio
 [!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]
@@ -33,5 +32,4 @@ Hin und wieder wird ein Zwischenergebnis aus einem Experiment benötigt, um es a
 4. Klicken Sie auf das Häkchen **OK** .
 
 Wenn der Speichervorgang abgeschlossen ist, ist das Dataset für die Verwendung in allen Experimenten in Ihrem Arbeitsbereich verfügbar. Sie finden es in der Liste **Saved Datasets** in der Modulpalette.
-
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
 ms.openlocfilehash: 471433c7ef2f6f128210ed145f685b42b44eea92
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>Aktivieren der Offlinesynchronisierung für Ihre mobile Xamarin.Android-App
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -60,8 +60,7 @@ In diesem Abschnitt verbinden Sie die App erneut mit dem mobilen App-Back-End. B
 3. (Optional) Zeigen Sie die aktualisierten Daten mithilfe von SQL Server-Objekt-Explorer oder einem REST-Tool wie Fiddler an. Beachten Sie, dass die Daten zwischen der Azure Mobile App-Back-End-Datenbank und dem lokalen Speicher synchronisiert wurden.
 4. Klicken Sie in der App auf das Kontrollkästchen neben einigen Elementen, um sie im lokalen Speicher abzuschließen.
 
-   `CheckItem` ruft `SyncAsync` auf, um jedes abgeschlossene Element mit dem Mobile App-Back-End zu synchronisieren. `SyncAsync` ruft sowohl Push- als auch Pullvorgänge auf. <seg>
-     **Bei jeder Ausführung eines Pullvorgangs gegen eine Tabelle, die der Client geändert hat, wird immer automatisch ein Pushvorgang**.</seg> Dadurch wird sichergestellt, dass alle Tabellen im lokalen Speicher und die Beziehungen konsistent bleiben. Dieses Verhalten kann zu einem unerwarteten Pushvorgang führen. Weitere Informationen zu diesem Verhalten finden Sie unter [Inkrementelle Synchronisierung].
+   `CheckItem` ruft `SyncAsync` auf, um jedes abgeschlossene Element mit dem Mobile App-Back-End zu synchronisieren. `SyncAsync` ruft sowohl Push- als auch Pullvorgänge auf. **Bei jeder Ausführung eines Pullvorgangs gegen eine Tabelle, die der Client geändert hat, wird immer automatisch ein Pushvorgang**. Dadurch wird sichergestellt, dass alle Tabellen im lokalen Speicher und die Beziehungen konsistent bleiben. Dieses Verhalten kann zu einem unerwarteten Pushvorgang führen. Weitere Informationen zu diesem Verhalten finden Sie unter [Inkrementelle Synchronisierung].
 
 ## <a name="review-the-client-sync-code"></a>Überprüfen des Clientcodes für die Synchronisierung
 Das Xamarin-Clientprojekt, das Sie heruntergeladen haben, nachdem Sie das Lernprogramm [Erstellen einer Xamarin Android-App] abgeschlossen haben, enthält bereits Code zur Unterstützung der Offlinesynchronisierung mithilfe einer lokalen SQLite-Datenbank. Dies ist eine kurze Übersicht darüber, was bereits im Code des Lernprogramms enthalten ist. Eine grundlegende Übersicht über die Funktion finden Sie unter [Inkrementelle Synchronisierung].

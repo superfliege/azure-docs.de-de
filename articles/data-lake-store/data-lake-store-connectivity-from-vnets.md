@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9bd7a76ef644df3db72ce95a3ef89a04bec1381f
-ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 029939eabc7283d7591576fa1b14731a9e626a88
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>Zugreifen auf Azure Data Lake Store von virtuellen Computern in einem Azure-VNet
 Bei Azure Data Lake Store handelt es sich um einen PaaS-Dienst, der unter öffentlichen Internet-IP-Adressen ausgeführt wird. Jeder Server, der eine Verbindung mit dem öffentlichen Internet herstellen kann, kann in der Regel auch eine Verbindung mit Azure Data Lake Store-Endpunkten herstellen. Standardmäßig können alle virtuellen Computer in Azure-VNets auf das Internet und damit auf Azure Data Lake Store zugreifen. Allerdings ist es möglich, virtuelle Computer in einem VNet so zu konfigurieren, dass sie nicht auf das Internet zugreifen können. Bei diesen virtuellen Computern ist auch der Zugriff auf Azure Data Lake Store eingeschränkt. Der Zugriff auf das öffentliche Internet kann für virtuelle Computer in Azure-VNets mit einer der folgenden Methoden blockiert werden:
@@ -55,5 +54,4 @@ Wenn eine ExpressRoute-Verbindung konfiguriert wird, können die lokalen Server 
 ## <a name="see-also"></a>Weitere Informationen
 * [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 * [Sicherheit in Azure Data Lake Store](data-lake-store-security-overview.md)
-
 

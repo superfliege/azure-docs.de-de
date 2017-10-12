@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: banders
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: ce8065d777bb315d4f9589d1b24a5152296facfe
-ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0-Lösung (Vorschauversion) in Log Analytics
 
 ![Wire Data-Symbol](./media/log-analytics-wire-data/wire-data2-symbol.png)
@@ -456,4 +454,3 @@ Ein Datensatz mit dem Typ _WireData_ wird für jeden Eingabedatentyp erstellt. D
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Durchsuchen von Protokollen](log-analytics-log-searches.md) und darüber, wie Sie ausführliche Wire Data-Suchdatensätze anzeigen.
-

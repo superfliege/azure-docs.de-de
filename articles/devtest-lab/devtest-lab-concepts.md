@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 7028cdacf7d597c238bf29bd26bbd44705d66224
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-Konzepte
 ## <a name="overview"></a>Übersicht
@@ -91,4 +90,3 @@ In [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](https
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen eines Labs in Azure DevTest Labs](devtest-lab-create-lab.md)
-

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: huvalo
 ms.openlocfilehash: 283a296fb39863c2801be1093cc4f56904786abd
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="django-hello-world-web-app-on-a-windows-server-vm"></a>Django-Web-App „Hello World“ auf einer Windows Server-VM
 
@@ -62,7 +62,7 @@ Der folgende Screenshot zeigt die fertige Anwendung:
 > [!IMPORTANT] 
 > Die folgenden Anweisungen setzen voraus, dass Sie sich ordnungsgemäß am virtuellen Computer angemeldet haben. Sie setzen außerdem voraus, dass Sie Befehle auf dem virtuellen Computer und nicht auf dem lokalen Computer ausgeben.
 
-## <a id="setup"> </a>Installieren von Python, Django und WFastCGI
+## <a id="setup"></a>Installieren von Python, Django und WFastCGI
 > [!NOTE]
 > Zum Herunterladen mithilfe von Internet Explorer müssen Sie möglicherweise die Internet Explorer-Einstellungen unter **Verstärkte Sicherheitskonfiguration** konfigurieren. Klicken Sie hierzu auf **Starten** > **Verwaltung** > **Server-Manager** > **Lokaler Server**. Klicken Sie auf **Verstärkte Sicherheitskonfiguration für IE**, und wählen Sie dann **Aus** aus.
 

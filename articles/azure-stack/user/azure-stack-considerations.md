@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/25/2017
 ms.author: twooley
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 1e170f320292e3dbe920907a4ed81ab0d1eb388b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Wichtige Aspekte: Verwenden von Diensten oder Erstellen von Apps für Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stapel Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 In Bezug auf die Verwendung von Diensten oder die Erstellung von Apps für Azure Stack müssen Sie wissen, dass zwischen Azure Stack und Azure Unterschiede bestehen. Dieser Artikel enthält eine Übersicht über die wichtigsten Aspekte, die für die Nutzung von Azure Stack als Hybrid Cloud-Entwicklungsumgebung gelten.
 
@@ -50,7 +49,7 @@ In der folgenden Tabelle sind die allgemeinen Unterschiede zwischen Azure Stack 
 | An wen können Sie sich wenden, um Support zu erhalten? | Microsoft | Wenden Sie sich bei einem integrierten System an Ihren Azure Stack-Betreiber (in Ihrer Organisation oder bei Ihrem Dienstanbieter), um Unterstützung zu erhalten.<br><br>Support zum Azure Stack Development Kit erhalten Sie in den [Microsoft-Foren](https://social.msdn.microsoft.com/Forums/home?forum=azurestack). Da das Development Kit eine Evaluierungsumgebung ist, wird über den Microsoft-Kundensupport (Customer Support Services, CSS) kein offizieller Support angeboten.
 | Verfügbare Dienste | Sehen Sie sich die Liste mit den [Azure-Produkten](https://azure.microsoft.com/services/?b=17.04b) an. Die verfügbaren Dienste variieren je nach Azure-Region. | Azure Stack unterstützt eine Teilgruppe der Azure-Dienste. Die Dienste variieren in Abhängigkeit davon, was von Ihrer Organisation oder Ihrem Dienstanbieter angeboten wird.
 | Azure Resource Manager-Endpunkt* | https://management.azure.com | Verwenden Sie bei einem integrierten Azure Stack-System den vom Azure Stack-Betreiber bereitgestellten Endpunkt.<br><br>Verwenden Sie für das Development Kit https://management.local.azurestack.external.
-| Portal-URL* | [https://portal.azure.com](https://portal.azure.com) | Rufen Sie bei einem integrierten Azure Stack-System die vom Azure Stack-Betreiber bereitgestellte URL auf.<br><br>Verwenden Sie für das Development Kit https://portal.local.azurestack.external.
+| Portal-URL* | [https://portal.azure.com](https://portal.azure.com) | Rufen Sie bei einem integrierten Azure Stack-System die vom Azure Stack-Operator bereitgestellte URL auf.<br><br>Verwenden Sie für das Development Kit https://portal.local.azurestack.external.
 | Region | Sie können die Region für die Bereitstellung auswählen. | Verwenden Sie bei einem integrierten Azure Stack-System die im System verfügbare Region.<br><br>Für das Development Kit lautet die Region immer **local**.
 | Ressourcengruppen | Eine Ressourcengruppe kann mehrere Regionen umfassen. | Sowohl für integrierte Systeme als auch für das Development Kit gibt es nur eine Region.
 |Unterstützte Namespaces, Ressourcentypen und API-Versionen | Aktuelle Versionen (oder frühere Versionen, die noch nicht als veraltet eingestuft sind). | Azure Stack unterstützt bestimmte Versionen. Informationen hierzu finden Sie im Abschnitt „Versionsanforderungen“ dieses Artikels.
@@ -94,4 +93,3 @@ Ausführlichere Informationen zu den Unterschieden auf Dienstebene finden Sie un
 * [Aspekte von virtuellen Computern in Azure Stack](azure-stack-vm-considerations.md)
 * [Azure Stack-Speicher: Unterschiede und Überlegungen](azure-stack-acs-differences.md)
 * [Überlegungen zu Azure Stack-Netzwerken](azure-stack-network-differences.md)
-

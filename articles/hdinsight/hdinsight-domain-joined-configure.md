@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
 ms.openlocfilehash: 9964c3dff24ef8a3a6047fe18c0f36c12c1de33d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview"></a>Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)
 
@@ -262,7 +262,7 @@ In diesem Abschnitt erstellen Sie einen Linux-basierten Hadoop-Cluster in HDInsi
    * **Preise**: Wählen Sie die Anzahl der Workerknoten Ihres Clusters aus.
    * **Erweiterte Konfiguration**: 
      
-     * **Domain-joining & Vnet/Subnet (Domänenbeitritt & VNET-Subnetz)**: 
+     * **Domain-joining &amp; Vnet/Subnet (Domänenbeitritt &amp; VNET-Subnetz)**: 
        
        * **Domäneneinstellungen**: 
          
@@ -302,8 +302,8 @@ Eine weitere Möglichkeit in die Domäne eingebundene HDInsight-Cluster zu erste
    * **Cluster Worker Node count (Anzahl von Workerknoten im Cluster)**: Wählen Sie die Anzahl der Workerknoten aus.
    * **Cluster-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **admin**.
    * **SSH-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **sshuser**.  Sie können auch einen anderen Namen festlegen. 
-   * **Virtual Network-ID**: /subscriptions/&lt;SubscriptionID>/resourceGroups/&lt;ResourceGroupName>/providers/Microsoft.Network/virtualNetworks/&lt;VNetName>
-   * **Virtuelles Netzwerk/Subnetz**: /subscriptions/&lt;SubscriptionID>/resourceGroups/&lt;ResourceGroupName>/providers/Microsoft.Network/virtualNetworks/&lt;VNetName>/subnets/Subnet1
+   * **Virtual Network-ID**: /subscriptions/&lt;SubscriptionID&gt;/resourceGroups/&lt;ResourceGroupName&gt;/providers/Microsoft.Network/virtualNetworks/&lt;VNetName&gt;
+   * **Virtuelles Netzwerk/Subnetz**: /subscriptions/&lt;SubscriptionID&gt;/resourceGroups/&lt;ResourceGroupName&gt;/providers/Microsoft.Network/virtualNetworks/&lt;VNetName&gt;/subnets/Subnet1
    * **Domänenname**: contoso.onmicrosoft.com
    * **Organization Unit DN (Organisationseinheit DN)**: OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com
    * **Clusterbenutzergruppen-DNs**: [\"HiveUsers\"]

@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
+ms.openlocfilehash: f3d3d2b1ef0957417e09bb2c9b3913cd366aaa4b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: ece2549a607ffa06602c26cf77db93f67112d029
-ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurieren von SSL-Richtlinienversionen und Verschlüsselungssammlungen für Application Gateway
 
 Hier erfahren Sie, wie Sie SSL-Richtlinienversionen und Verschlüsselungssammlungen für Application Gateway konfigurieren. Ihnen steht eine [Liste mit vordefinierten Richtlinien](#predefined-ssl-policies) zur Verfügung, die verschiedene Konfigurationen von SSL-Richtlinienversionen und aktivierten Verschlüsselungssammlungen enthalten. Darüber hinaus können Sie eine [benutzerdefinierte SSL-Richtlinie](#configure-a-custom-ssl-policy) definieren, die auf Ihre individuellen Anforderungen abgestimmt ist.

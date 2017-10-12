@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: dastrock
-ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
 ms.openlocfilehash: 51001feb17ae99d3bd391a9f980d514e07f97099
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C: Anwendungstypen
 Azure Active Directory (Azure AD) B2C unterstützt die Authentifizierung für eine Vielzahl von modernen App-Architekturen. Diese basieren alle auf den branchenüblichen Protokollen [OAuth 2.0](active-directory-b2c-reference-protocols.md) oder [OpenID Connect](active-directory-b2c-reference-protocols.md). Dieses Dokument beschreibt die App-Typen, die Sie unabhängig von der bevorzugten Sprache oder Plattform erstellen können. Außerdem verdeutlicht es die allgemeinen Szenarien, bevor Sie mit dem [Erstellen von Anwendungen beginnen](active-directory-b2c-overview.md#get-started).
@@ -132,4 +131,3 @@ Der Ablauf wird derzeit von Azure AD B2C nicht unterstützt. Diese Apps können 
 Viele Architekturen umfassen eine Web-API, von der eine andere Downstream-Web-API aufgerufen werden muss, wobei beide durch Azure AD B2C gesichert sind. Dieses Szenario wird häufig bei nativen Clients mit einem Web-API-Back-End eingesetzt. Dieses ruft dann einen Microsoft-Onlinedienst wie z. B. die Azure AD Graph-API auf.
 
 Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0-JWT-Bearer unterstützt werden, auch bekannt als „Im Auftrag von“-Ablauf.  Der „Im Auftrag von“-Ablauf ist in Azure AD B2C derzeit noch nicht implementiert.
-

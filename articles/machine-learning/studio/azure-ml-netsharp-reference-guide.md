@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeannt
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 54bef3e257363300ee1a13f7f45fc983e465ddbf
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Erläuterungen zur Spezifikationssprache Net# für neuronale Netzwerke für Azure Machine Learning
 ## <a name="overview"></a>Übersicht
@@ -415,5 +414,4 @@ Die Definition des folgenden Netzwerks zur Erkennung von Ziffern veranschaulicht
 Die Net#-Sprache zum Anpassen der Architektur von neuronalen Netzwerken wurde bei Microsoft von Shon Katzenberger (Architect, Machine Learning) und Alexey Kamenev (Software Engineer, Microsoft Research) entwickelt. Sie wird für interne Machine Learning-Projekte und -Anwendungen verwendet, die von der Bilderkennung bis zur Textanalyse reichen. Weitere Informationen finden Sie unter [Neural Nets in Azure ML - Introduction to Net#](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx) (Neuronale Netze in Azure ML – Einführung in Net#).
 
 [1]:./media/azure-ml-netsharp-reference-guide/formula_large.gif
-
 

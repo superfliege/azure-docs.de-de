@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/22/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: 5aa47b4b12dc136a3f6ba66688804859f9eb5446
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Ausführen von Sqoop-Aufträgen mit Hadoop in HDInsight mit Curl
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
@@ -129,7 +128,6 @@ Weitere HDInsight-Artikel zu curl:
 * [Ausführen von Hive-Abfragen mit Hadoop in HDInsight mit REST](hdinsight-hadoop-use-hive-curl.md)
 * [Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von REST](hdinsight-hadoop-use-mapreduce-curl.md)
 * [Ausführen von Pig-Aufträgen mit Hadoop in HDInsight mithilfe von Curl](hdinsight-hadoop-use-pig-curl.md)
-
 
 
 

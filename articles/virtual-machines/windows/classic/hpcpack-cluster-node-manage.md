@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
 ms.openlocfilehash: dc9f354191b9e80ff6a01bd401a874c6998bda79
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Verwalten der Anzahl und Verfügbarkeit von Computeknoten in einem HPC Pack-Cluster in Azure
 Wenn Sie einen HPC Pack 2012 R2-Cluster auf virtuellen Azure-Computern erstellt haben, möchten Sie wahrscheinlich einige virtuelle Computer für Computeknoten im Cluster hinzufügen, entfernen, starten (bereitstellen) oder beenden (Bereitstellung aufheben). Zum Durchführen dieser Aufgaben können Sie Azure PowerShell-Skripts ausführen, die auf dem Hauptknoten des virtuellen Computers installiert sind. Mit diesen Skripts können Sie die Anzahl und Verfügbarkeit der HPC Pack-Clusterressourcen steuern und so auch Kosten senken.

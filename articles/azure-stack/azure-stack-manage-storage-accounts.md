@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/6/2017
 ms.author: anirudha
-ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
 ms.openlocfilehash: 6e14bd6312135b45984a82099e68a934ec2a4a70
-ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Verwalten von Speicherkonten in Azure Stack
 Erfahren Sie, wie Speicherkonten in Azure Stack verwaltet werden, um Speicherkapazität basierend auf Geschäftsanforderungen zu suchen, wiederherzustellen und freizugeben.

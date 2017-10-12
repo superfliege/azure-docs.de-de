@@ -10,14 +10,12 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: victorh
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 5f815bafdcc7c05ec7f4149fb7c9df178f0f80e2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>Erstellen eines virtuellen Linux-Computers mit dem Azure Stack-Portal
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
@@ -142,5 +140,4 @@ Wenn Ressourcengruppe, VM und alle zugehörigen Ressourcen nicht mehr benötigt 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Schnellstart haben Sie einen einfachen virtuellen Linux-Computer und eine Netzwerksicherheitsgruppen-Regel bereitgestellt sowie einen Webserver installiert. Um weitere Informationen zu virtuellen Computern unter Azure Stack zu erhalten, fahren Sie mit [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md) (Überlegungen zu virtuellen Computern in Azure Stack) fort.
-
 

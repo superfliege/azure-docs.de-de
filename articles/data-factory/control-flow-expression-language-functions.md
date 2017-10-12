@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 13e9b951c46ae1cd16c7f38d5ade8a4f8a156e63
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -95,7 +94,7 @@ Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwende
   
 |Funktionsname|Beschreibung|  
 |-------------------|-----------------|  
-|contains|Gibt „true“ zurück, wenn das Wörterbuch einen Schlüssel, die Liste einen Wert oder die Zeichenfolge eine Teilzeichenfolge enthält. Der folgende Ausdruck gibt beispielsweise `true:``contains('abacaba','aca')` zurück.<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Auflistung<br /><br /> **Beschreibung:** Erforderlich. Die Auflistung, in der gesucht werden soll.<br /><br /> **Parameternummer:** 2<br /><br /> **Name:** Objekt suchen<br /><br /> **Beschreibung:** Erforderlich. Das Objekt, das innerhalb der **Auflistung** gesucht werden soll.|  
+|contains|Gibt „true“ zurück, wenn das Wörterbuch einen Schlüssel, die Liste einen Wert oder die Zeichenfolge eine Teilzeichenfolge enthält. Der folgende Ausdruck gibt beispielsweise `true:``contains('abacaba','aca')` zurück<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Auflistung<br /><br /> **Beschreibung:** Erforderlich. Die Auflistung, in der gesucht werden soll.<br /><br /> **Parameternummer:** 2<br /><br /> **Name:** Objekt suchen<br /><br /> **Beschreibung:** Erforderlich. Das Objekt, das innerhalb der **Auflistung** gesucht werden soll.|  
 |length|Gibt die Anzahl von Elementen in einem Array oder in einer Zeichenfolge zurück. Der folgende Ausdruck gibt beispielsweise `3` zurück: `length('abc')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Auflistung<br /><br /> **Beschreibung:** Erforderlich. Die Auflistung, deren Länge abgerufen werden soll.|  
 |empty|Gibt „true“ zurück, wenn das Objekt, das Array oder die Zeichenfolge leer ist. Der folgende Ausdruck gibt beispielsweise `true` zurück:<br /><br /> `empty('')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Auflistung<br /><br /> **Beschreibung:** Erforderlich. Die Auflistung, für die geprüft werden soll, ob sie leer ist.|  
 |intersection|Gibt ein einzelnes Array oder Objekt zurück, für das gemeinsame Elemente zwischen Arrays oder Objekten übergeben wurden. Die folgende Funktion gibt beispielsweise `[1, 2]` zurück:<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> Bei den Parametern für die Funktion kann es sich entweder um eine Gruppe von Objekten oder um eine Gruppe von Arrays (aber nicht um eine Kombination aus beidem) handeln. Sollten zwei Objekte mit dem gleichen Namen vorhanden sein, wird jeweils das letzte Objekt in das endgültige Objekt aufgenommen.<br /><br /> **Parameternummer**: 1 ... *n*<br /><br /> **Name:** Auflistung *n*<br /><br /> **Beschreibung:** Erforderlich. Die auszuwertenden Auflistungen. Ein Objekt muss in allen übergebenen Auflistungen enthalten sein, um in das Ergebnis aufgenommen zu werden.|  

@@ -12,14 +12,12 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
 ms.openlocfilehash: c230e73f83d8acd0f142e037f70a80c9e0e4107e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-manage-device-enrollments-in-the-iot-hub-device-provisioning-service"></a>Gewusst wie: Verwalten der Geräteregistrierungen im IoT Hub Device Provisioning-Dienst
 
 Eine *Geräteregistrierung* erstellt einen Datensatz eines einzelnen Geräts oder einer Gruppe von Geräten, die sich zu einem beliebigen Zeitpunkt beim Azure IoT Hub Device Provisioning-Dienst registrieren können. Der Registrierungsdatensatz enthält die erste gewünschte Konfiguration für die Geräte im Rahmen dieser Registrierung, einschließlich des gewünschten IoT Hubs. Dieser Artikel zeigt Ihnen die Verwaltung von Geräteregistrierungen für Ihren Bereitstellungsdienst.
@@ -76,7 +74,6 @@ In Fällen, in denen Ihre Geräte nicht in einem IoT Hub bereitgestellt werden m
 5. Sobald die Aktion abgeschlossen ist, sehen Sie, dass Ihr Eintrag aus der Geräteregistrierungsliste entfernt wurde. 
  
     ![Entfernen der Registrierung im Portal](./media/how-to-manage-enrollments/remove-enrollment.png)
-
 
 
 

@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: liamca
 ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Überlegungen zur Leistung und Optimierung von Azure Search
 Eine hervorragende Suchfunktion ist ein Schlüssel zum Erfolg für viele mobile und Webanwendungen. Vom Immobilienmarkt über Gebrauchtwagenmärkte bis hin zu Onlinekatalogen – schnelle Suchvorgänge und relevante Ergebnisse sind sehr wichtig für die Kundenzufriedenheit. Dieses Dokument stellt bewährte Methoden vor, mit deren Hilfe Sie optimal von Azure Search profitieren können. Dies gilt insbesondere für Szenarien mit hohen Anforderungen an die Skalierbarkeit, die Unterstützung mehrerer Sprachen oder benutzerdefinierte Rangfolgen.  Darüber hinaus beschreibt dieses Dokument interne Merkmale und erläutert verschiedene Vorgehensweisen, die in realen Kunden-Apps effektiv funktionieren.

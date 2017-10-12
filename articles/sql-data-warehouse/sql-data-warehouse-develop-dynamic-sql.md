@@ -16,10 +16,10 @@ ms.custom: queries
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 ms.openlocfilehash: 29228676373aee8dbc7b1b2a7d92ffc978333804
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="dynamic-sql-in-sql-data-warehouse"></a>Dynamischer SQL-Code in SQL Data Warehouse
 Beim Entwickeln von Anwendungscode für SQL Data Warehouse müssen Sie unter Umständen dynamischen SQL-Code verwenden, um flexible, generische und modulare Lösungen bereitstellen zu können. SQL Data Warehouse unterstützt derzeit keine BLOB-Datentypen. Dadurch kann die Größe Ihrer Zeichenfolgen verringert werden, weil Blob-Typen sowohl varchar(max)- als auch nvarchar(max)-Typen umfassen. Wenn Sie diese Typen im Anwendungscode verwendet haben und sehr große Zeichenfolgen erstellen, müssen Sie den Code in Segmente unterteilen und stattdessen die EXEC-Anweisung verwenden.

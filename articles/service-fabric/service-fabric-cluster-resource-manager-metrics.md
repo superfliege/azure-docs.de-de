@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 5c291ef864518b2366c61c9e5c11fac9e8468a00
-ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken
 *Metriken* die Ressourcen, die für Ihre Dienste wichtig sind und die von den Knoten im Cluster bereitgestellt werden. Eine Metrik ist ein beliebiges Element, das Sie verwalten möchten, um die Leistung Ihrer Dienste zu verbessern oder zu steuern. Sie können beispielsweise den Arbeitsspeicherverbrauch überwachen, um festzustellen, ob Ihr Dienst überlastet ist. Eine weitere Verwendungsmöglichkeit: Sie können ermitteln, ob der Dienst an eine andere Position verschoben werden kann, bei der eine geringere Arbeitsspeicherauslastung gegeben ist, um die Leistung zu steigern.
@@ -273,4 +272,3 @@ Im unteren Beispiel hat der Clusterressourcen-Manager die Replikate sowohl auf d
 [Image2]:./media/service-fabric-cluster-resource-manager-metrics/Service-Fabric-Resource-Manager-Dynamic-Load-Reports.png
 [Image3]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-metric-weights-impact.png
 [Image4]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-global-vs-local-balancing.png
-

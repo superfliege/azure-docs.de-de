@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: genli
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 990215d9e82b67256363ff195d2af9a91dc0706a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Anwendungsleistung von Web-Apps in Azure
 
@@ -190,4 +189,3 @@ Weitere Informationen zu ausgehenden Verbindungen in Ihrer Web-App finden Sie im
 ## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>Wie verwende ich Visual Studio zum Remotedebuggen meiner App Service-Web-App?
 
 Eine ausführliche exemplarische Vorgehensweise, die Ihnen zeigt, wie Sie Ihre Web-App mithilfe von Visual Studio debuggen, finden Sie unter [Remotedebuggen Ihrer App Service-Web-App](https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/).
-

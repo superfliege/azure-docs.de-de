@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: f6d7c2a1a3e3bf78b568f2f6b079476e403b9911
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-programs-and-their-controls"></a>Verwalten von Programmen und ihren Steuerelementen 
 
 Azure AD enthält Zugriffsüberprüfungen für Gruppenmitglieder und den Anwendungszugriff. Diese sind Beispiele für Steuerelemente, die sicherstellen, dass Sie im Blick behalten können, wer Zugriff besitzt. Diese Steuerelemente ermöglichen Unternehmen das effiziente Verwalten ihrer Governance-, Risikomanagement und Konformitätsanforderungen.  
@@ -37,5 +35,4 @@ Wenn ein Programm nicht mehr benötigt wird und keine Steuerelemente mit ihm ver
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen einer Zugriffsüberprüfung für Mitglieder einer Gruppe oder den Zugriff auf eine Anwendung](active-directory-azure-ad-controls-create-access-review.md)
-
 

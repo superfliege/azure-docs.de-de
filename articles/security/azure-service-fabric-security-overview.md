@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 908bdaf002e42035567974b204f5b39e73e82024
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-fabric-security-overview"></a>Übersicht über die Azure Service Fabric-Sicherheit
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Service Fabric bietet einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind.
@@ -193,4 +192,3 @@ Sicherheit ist einer der wichtigsten Aspekte der Kommunikation. Das Reliable Ser
 ## <a name="next-steps"></a>Nächste Schritte
 - Konzeptionelle Informationen zur Clustersicherheit finden Sie unter [Erstellen eines Service Fabric-Clusters mithilfe von Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) und im [Azure-Portal](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal).
 - Weitere Informationen zur Clustersicherheit in Service Fabric finden Sie unter [Service Fabric-Clustersicherheit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security).
-

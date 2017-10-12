@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 98ed23b8031c56ba642427e817e48a4e7a5830fc
-ms.contentlocale: de-de
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-with-the-azure-portal"></a>Erstellen einer Windows-VM im Azure-Portal
 
 Virtuelle Azure-Computer können über das Azure-Portal erstellt werden. Diese Methode bietet eine browserbasierte Benutzeroberfläche zum Erstellen und Konfigurieren von virtuellen Computern und alle zugehörigen Ressourcen. In diesem Schnellstart werden die Erstellung eines virtuellen Computers und die Installation eines Webservers auf der VM Schritt für Schritt beschrieben.
@@ -108,4 +106,3 @@ In diesem Schnellstart haben Sie einen einfachen virtuellen Computer und eine Ne
 
 > [!div class="nextstepaction"]
 > [Azure-Tutorials zu virtuellen Windows-Computern](./tutorial-manage-vm.md)
-

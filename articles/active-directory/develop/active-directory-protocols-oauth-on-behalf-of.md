@@ -16,10 +16,10 @@ ms.date: 05/01/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 0bb74816f216f0965c3ec780c4895cf7e488c3cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # Dienst-zu-Dienst-Aufrufe unter Verwendung einer Stellvertreter-Benutzeridentität im Im-Auftrag-Fluss
 Der Im-Auftrag-Fluss von OAuth 2.0 wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum einen andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den Downstream-Dienst stellen kann, muss für den Benutzer ein Zugriffstoken aus Azure Active Directory (Azure AD) abgesichert werden.

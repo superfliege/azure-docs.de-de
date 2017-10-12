@@ -15,14 +15,12 @@ ms.date: 09/05/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
 ms.openlocfilehash: df2ffb8958a7d4b881f0a6904fb9ca13c3614040
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Zugreifen auf lokale Anwendungen über Microsoft Teams
 
 Der Azure Active Directory-Anwendungsproxy ermöglicht ortsunabhängiges einmaliges Anmelden bei lokalen Anwendungen. Microsoft Teams optimiert die Zusammenarbeit an einem zentralen Ort. Durch die Integration beider Lösungen können Benutzer in jeder Situation produktiv mit ihren Teamkollegen zusammenarbeiten. 
@@ -58,4 +56,3 @@ Nachdem ein Mitglied eines Teams die Registerkarte hinzugefügt hat, wird sie f�
 
 - Informieren Sie sich über das [Veröffentlichen lokaler SharePoint-Websites](application-proxy-enable-remote-access-sharepoint.md) mit dem Anwendungsproxy.
 - Konfigurieren Sie Ihre Apps für die Verwendung von [benutzerdefinierten Domänen](active-directory-application-proxy-custom-domains.md) für die externe URL. 
-

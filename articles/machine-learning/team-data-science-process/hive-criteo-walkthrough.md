@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 13dc1b516946aadc9c8a57a55768113bc925e63e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset
 
@@ -47,7 +46,7 @@ Hier finden Sie einen Auszug der ersten 20 Spalten der zwei Beobachtungen (Zeil
 
 Sowohl in den numerischen als auch den Kategoriespalten dieses DataSets fehlen Werte. Wir beschreiben eine einfache Methode zum Umgang mit den fehlenden Werten. Wir untersuchen weitere Details der Daten, wenn wir diese in Hive-Tabellen speichern.
 
-**Definition:** *Durchklickrate (Clickthrough Rate, CTR):* Dies ist der Prozentsatz an Klicks in den Daten. In diesem Criteo-DataSet beträgt die CTR etwa 3,3 % oder 0,033.
+**Definition:***Durchklickrate (Clickthrough Rate, CTR):* Dies ist der Prozentsatz an Klicks in den Daten. In diesem Criteo-DataSet beträgt die CTR etwa 3,3 % oder 0,033.
 
 ## <a name="mltasks"></a>Beispiele für Vorhersageaufgaben
 In dieser exemplarischen Vorgehensweise werden zwei beispielhafte Vorhersageprobleme behandelt:
@@ -166,7 +165,7 @@ Wir weisen darauf hin, dass all diese Tabellen extern sind, da wir einfach auf A
         hive
    
      Wenn Sie die Abfrage nun in der REPL-Befehlszeile ausschneiden und einfügen, wird sie ausgeführt.
-2. **Speichern von Abfragen in einer Datei und Ausführen des Befehls**: Die zweiten Methode besteht im Speichern der Abfragen in einer HQL-Datei ([sample&#95;hive&#95;create&#95;criteo&#95;database&#95;and&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)). Anschließend wird zum Ausführen der Abfrage folgender Befehl ausgegeben:
+2. **Speichern von Abfragen in einer Datei und Ausführen des Befehls**: Die zweiten Methode besteht im Speichern der Abfragen in einer HQL-Datei ([sample&amp;#95;hive&amp;#95;create&amp;#95;criteo&amp;#95;database&amp;#95;and&amp;#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)). Anschließend wird zum Ausführen der Abfrage folgender Befehl ausgegeben:
    
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
@@ -631,5 +630,4 @@ Beachten Sie, dass wir den Standard-API-Schlüssel durch den API-Schlüssel unse
 Wir sehen, dass wir für die beiden angefragten Testbeispiele (im JSON-Framework oder Python-Skript) Antworten im Format "Bewertete Bezeichnungen, bewertete Wahrscheinlichkeiten" erhalten. Beachten Sie, dass wir in diesem Fall die Standardwerte des vorab erstellten Codes ausgewählt haben (Nullen für alle numerischen Spalten und die Zeichenfolge „value“ für alle Kategoriespalten).
 
 Damit sind wir am Ende unser ausführlichen exemplarischen Vorgehensweise zum Behandeln umfangreicher DataSets mithilfe von Azure Machine Learning angekommen. Wir haben mit einem Terabyte an Daten begonnen, ein Vorhersagemodell erstellt und dieses als Webdienst in der Cloud bereitgestellt.
-
 

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27.017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 2bbab5f1ac0efe9632ad6c818504584e2503cf15
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-1-review-the-architecture-for-vmware-replication-to-azure"></a>Schritt 1: Überprüfen der Architektur für die VMware-Replikation in Azure
 
 Dieser Artikel beschreibt die Komponenten und Prozesse bei der Replikation lokaler virtueller VMware-Computer in Azure mithilfe des [Azure Site Recovery](site-recovery-overview.md)-Diensts.
@@ -87,4 +85,3 @@ Für Failbacks gelten einige Anforderungen:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Gehen Sie zu [Schritt 2: Überprüfen der Voraussetzungen und Einschränkungen](vmware-walkthrough-prerequisites.md).
-

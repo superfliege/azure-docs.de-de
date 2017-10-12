@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1d580ae43925bfb2cbe0fd9461cfb7e207fa56ec
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect-Optionen für die Benutzeranmeldung
 Mit Azure Active Directory Connect (Azure AD) können sich Ihre Benutzer sowohl bei Cloud- als auch bei lokalen Ressourcen mit denselben Kennwörtern anmelden. In diesem Artikel werden die wichtigsten Konzepte für jedes Identitätsmodell beschrieben, um Sie bei der Auswahl der Identität zu unterstützen, die Sie für die Registrierung für Azure AD verwenden möchten.
@@ -176,4 +175,3 @@ Wählen Sie auf der Seite **Benutzeranmeldung** die gewünschte Benutzeranmeldun
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 - Erfahren Sie mehr über [Entwurfskonzepte für Azure AD Connect](active-directory-aadconnect-design-concepts.md)
-

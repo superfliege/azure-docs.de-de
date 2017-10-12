@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: bwren
+ms.openlocfilehash: c1b0614bc9ab0e816e7d28da6a6497dfa8004976
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: e26186f7dfc81563d72478bf3cf1d306f0203fa5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/05/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Debuggen von Anwendungen mit Azure Application Insights in Visual Studio
 In Visual Studio (2015 und höher) können Sie mithilfe von Telemetriedaten aus [Azure Application Insights](app-insights-overview.md) sowohl beim Debuggen als auch in der Produktion in Ihrer ASP.NET-Web-App die Leistung analysieren und Probleme diagnostizieren.
@@ -104,5 +103,4 @@ Dies ist ebenfalls hilfreich, wenn Sie über [benutzerdefinierte Telemetriedaten
 | --- | --- |
 | **[Hinzufügen weiterer Daten](app-insights-asp-net-more.md)**<br/>Überwachen Sie Nutzung, Verfügbarkeit, Abhängigkeiten und Ausnahmen. Integrieren Sie Ablaufverfolgungen aus Protokollierungsframeworks. Schreiben Sie benutzerdefinierte Telemetriedaten. |![Visual Studio](./media/app-insights-visual-studio/64.png) |
 | **[Navigation und Dashboards im Application Insights-Portal](app-insights-dashboards.md)**<br/>Zeigen Sie Dashboards, leistungsstarke Diagnose- und Analysetools, Warnungen, eine Livezuordnung der Abhängigkeiten Ihrer Anwendung sowie exportierte Telemetriedaten an. |![Visual Studio](./media/app-insights-visual-studio/62.png) |
-
 

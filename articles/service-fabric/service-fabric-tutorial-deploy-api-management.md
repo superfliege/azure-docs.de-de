@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/13/2017
 ms.author: ryanwi
+ms.openlocfilehash: 705212675fc0a869a4374f621d5f2d7e035294dd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 1cadb543660b636ce7f0285973e6fb4141841b99
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-api-management-with-service-fabric"></a>Bereitstellen von API Management mit Service Fabric
 Dieses Tutorial ist der zweite Teil einer Reihe. In diesem Tutorial wird beschrieben, wie Sie [Azure API Management](../api-management/api-management-key-concepts.md) mit Service Fabric einrichten, um Datenverkehr an einen Back-End-Dienst in Service Fabric weiterzuleiten.  Am Ende des Tutorials haben Sie API Management in einem VNET bereitgestellt und einen API-Vorgang zum Senden von Datenverkehr an zustandslose Back-End-Dienste konfiguriert. Weitere Informationen zu den Azure API Management-Szenarios mit Service Fabric finden Sie im [Übersichtsartikel](service-fabric-api-management-overview.md).
 

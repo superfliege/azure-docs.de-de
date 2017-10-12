@@ -17,10 +17,10 @@ ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.openlocfilehash: 481f3efdb1cbbeba328183da7e320c7e5b819b3a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-a-web-app-to-a-storage-account"></a>Herstellen einer Verbindung einer Web-App mit einem Speicherkonto
 
@@ -30,7 +30,7 @@ Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure Powe
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-powershell[main](../../../powershell_scripts/app-service/connect-to-storage/connect-to-storage.ps1 "Herstellen einer Verbindung einer Web-App mit einem Speicherkonto")]
+[!code-powershell[main](../../../powershell_scripts/app-service/connect-to-storage/connect-to-storage.ps1 "Connect a web app to a storage account")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 

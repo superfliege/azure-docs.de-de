@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cf8fdca51a6a4ad1b7cd4fe6980543199f6b36e0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>Erste Schritte zum Erstellen von Lösungen mit der Batch-Clientbibliothek für .NET
 
@@ -50,7 +50,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über C#- und Visual Studio-G
 ### <a name="visual-studio"></a>Visual Studio
 Sie benötigen **Visual Studio 2015 oder höher**, um das Beispielprojekt zu erstellen. Kostenlose Versionen und Testversionen von Visual Studio finden Sie in der [Übersicht der Visual Studio-Produkte][visual_studio].
 
-### <a name="dotnettutorial-code-sample"></a>*DotNetTutorial* 
+### <a name="dotnettutorial-code-sample"></a>*DotNetTutorial*
 Das Beispiel [DotNetTutorial][github_dotnettutorial] ist eines der vielen Batch-Codebeispiele im Repository [azure-batch-samples][github_samples] auf GitHub. Sie können alle Beispiele herunterladen, indem Sie auf der Startseite des Repositorys auf **Clone or download > Download ZIP** („Klonen oder herunterladen“ > „ZIP-Datei herunterladen“) oder auf den Link zum direkten Herunterladen ([azure-batch-samples-master.zip][github_samples_zip]) klicken. Nachdem Sie den Inhalt der ZIP-Datei extrahiert haben, befindet sich die Projektmappe im folgenden Ordner:
 
 `\azure-batch-samples\CSharp\ArticleProjects\DotNetTutorial`
@@ -515,8 +515,8 @@ Wenn einem Auftrag Aufgaben hinzugefügt werden, werden sie automatisch in die W
 
 Es gibt viele Ansätze für die Überwachung der Aufgabenausführung. DotNetTutorial enthält ein einfaches Beispiel, bei dem nur der Abschluss und das Fehlschlagen oder der Erfolg von Aufgaben gemeldet wird. Die `MonitorTasks`-Methode in der Datei `Program.cs` von DotNetTutorial enthält drei Batch .NET-Konzepte, auf die wir hier näher eingehen möchten. Sie sind unten in der Reihenfolge ihrer Darstellung aufgeführt:
 
-1. **ODATADetailLevel:** [ODATADetailLevel][net_odatadetaillevel] muss bei Auflistungsvorgängen (etwa beim Abrufen einer Liste mit Aufgaben eines Auftrags) angegeben werden, um die Leistung der Batch-Anwendung zu optimieren. Machen Sie sich mit den Informationen unter [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) vertraut, wenn Sie in Ihren Batch-Anwendungen eine Statusüberwachung verwenden möchten.
-2. **TaskStateMonitor:** [TaskStateMonitor][net_taskstatemonitor] stellt Hilfsprogramme zum Überwachen des Aufgabenstatus für Batch .NET-Anwendungen bereit. Bei `MonitorTasks` wartet *DotNetTutorial*, bis alle Aufgaben innerhalb eines bestimmten Zeitraums den Status [TaskState.Completed][net_taskstate] erreicht haben. Anschließend wird der Auftrag beendet.
+1. **ODATADetailLevel:**[ODATADetailLevel][net_odatadetaillevel] muss bei Auflistungsvorgängen (etwa beim Abrufen einer Liste mit Aufgaben eines Auftrags) angegeben werden, um die Leistung der Batch-Anwendung zu optimieren. Machen Sie sich mit den Informationen unter [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) vertraut, wenn Sie in Ihren Batch-Anwendungen eine Statusüberwachung verwenden möchten.
+2. **TaskStateMonitor:**[TaskStateMonitor][net_taskstatemonitor] stellt Hilfsprogramme zum Überwachen des Aufgabenstatus für Batch .NET-Anwendungen bereit. Bei `MonitorTasks` wartet *DotNetTutorial*, bis alle Aufgaben innerhalb eines bestimmten Zeitraums den Status [TaskState.Completed][net_taskstate] erreicht haben. Anschließend wird der Auftrag beendet.
 3. **TerminateJobAsync:** Wenn ein Auftrag mit [JobOperations.TerminateJobAsync][net_joboperations_terminatejob] (oder durch das Blockieren von JobOperations.TerminateJob) beendet wird, wird der Auftrag als abgeschlossen gekennzeichnet. Dies ist erforderlich, wenn für Ihre Batch-Lösung eine [JobReleaseTask][net_jobreltask]-Aufgabe verwendet wird. Dieser besondere Aufgabentyp wird unter [Vorbereitung und Abschluss von Aufträgen](batch-job-prep-release.md)beschrieben.
 
 Hier ist die `MonitorTasks`-Methode aus der Datei `Program.cs` von *DotNetTutorial* angegeben:

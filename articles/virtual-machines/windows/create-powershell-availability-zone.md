@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: danlep
 ms.custom: 
+ms.openlocfilehash: e86fcb4dbf170e5bc07553165e09d6fc3d3cf283
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c863dbdcb242bdea208f7e72f6c1f61b5ba04844
-ms.openlocfilehash: 0c81829e94f35025980216c1ce059c70a6cc7524
-ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit PowerShell
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell einen virtuellen Azure-Computer unter Windows Server 2016 in einer Azure-Verfügbarkeitszone erstellen. Eine [Verfügbarkeitszone](../../availability-zones/az-overview.md) ist eine physisch separate Zone in einer Azure-Region. Verwenden Sie Verfügbarkeitszonen, um Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Datencenters zu schützen.

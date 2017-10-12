@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
 ms.openlocfilehash: dfc4f2e84704307ccbea6141c0dbc8d089733b22
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: OAuth 2.0-Autorisierungscodefluss
 Durch Gewähren des OAuth 2.0-Autorisierungcodes in Apps, die auf einem Gerät installiert sind, können Sie auf geschützte Ressourcen wie Web-APIs zugreifen. Mithilfe der Azure Active Directory B2C(Azure AD B2C)-Implementierung von OAuth 2.0 können Sie Ihre mobilen und Desktop-Apps Aufgaben zur Registrierung, Anmeldung und Identitätsverwaltung hinzufügen. Dieser Artikel ist sprachunabhängig. In dem Artikel wird beschrieben, wie HTTP-Nachrichten ohne Verwendung von Open Source-Bibliotheken gesendet und empfangen werden.

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/16/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bbee77e669f49bdebb57121df8672a9253945b3c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrieren von lokalen Computern zu Azure
 
@@ -108,7 +107,7 @@ Führen Sie ein Failover für die zu migrierenden Computer aus.
 
 
 > [!WARNING]
-> **Brechen Sie ein Failover in Bearbeitung nicht ab**: Vor dem Starten des Failovers wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
+> **Brechen Sie ein Failover in Bearbeitung nicht ab:** Vor dem Starten des Failovers wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
 
 In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, die etwa 8 bis 10 Minuten dauern können. Bei physischen Servern, VMware-Linux-Computern, VMware-VMs ohne aktivierten DHCP-Dienst und VMware-VMs mit den folgenden Starttreibern kann das Testfailover länger dauern: storvsc, vmbus, storflt, intelide, atapi.
 
@@ -117,4 +116,3 @@ In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, 
 
 > [!div class="nextstepaction"]
 > [Replizieren von Azure-VMs nach dem Migrieren in Azure in einer anderen Region](site-recovery-azure-to-azure-after-migration.md)
-

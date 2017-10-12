@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
 ms.openlocfilehash: 070e848f753452953b9e5dfe94799e7c0a314530
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="pen-testing"></a>Penetrationstests
 Einer der größten Vorteile von Microsoft Azure bei Test und Bereitstellung von Anwendungen ist, dass Sie keine lokale Infrastruktur zum Entwickeln, Testen und Bereitstellen der Anwendungen zusammenstellen müssen. Die Microsoft Azure-Plattformdienste stellen die gesamte Infrastruktur bereit. Sie müssen sich keine Gedanken über Anforderung, Erwerb und Aufbau eigener lokaler Hardware machen.

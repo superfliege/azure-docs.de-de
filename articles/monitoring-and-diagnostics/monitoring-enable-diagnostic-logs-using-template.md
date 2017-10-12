@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/30/2017
 ms.author: johnkem
+ms.openlocfilehash: 2f764bc14e882f71957299b833d5bc1a6765622a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: dde2435e976bbd14ca35cccc714ea21dcc5817b7
-ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatisches Aktivieren von Diagnoseeinstellungen bei der Ressourcenerstellung mithilfe einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an Log Analytics senden.
@@ -241,5 +240,4 @@ Der gesamte Prozess wird in [diesem Dokument](../virtual-machines/windows/extens
 ## <a name="next-steps"></a>Nächste Schritte
 * [Informieren Sie sich ausführlicher über Azure-Diagnoseprotokolle.](monitoring-overview-of-diagnostic-logs.md)
 * [Streamen Sie Azure-Diagnoseprotokolle an Event Hubs.](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-
 

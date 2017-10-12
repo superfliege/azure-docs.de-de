@@ -1,6 +1,6 @@
 ---
-title: 'Gewusst wie: Verwenden von Fiddler zum Auswerten und Testen von Azure Search REST-APIs | Microsoft Docs'
-description: "Verwenden Sie Fiddler für einen Code-Ansatz zum Überprüfen der Verfügbarkeit von Azure Search und testen die REST-APIs."
+title: Auswerten und Testen von Azure Search-REST-APIs mithilfe von Fiddler | Microsoft Docs
+description: "Verwenden Sie Fiddler zur codefreien Überprüfung der Verfügbarkeit von Azure Search sowie zum Testen der REST-APIs."
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: heidist
 ms.openlocfilehash: c38b73fa69bee34ce2434c6274cb017c99ef3c35
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-fiddler-to-evaluate-and-test-azure-search-rest-apis"></a>Verwenden von Fiddler zum Auswerten und Testen von Azure Search REST-APIs
+# <a name="use-fiddler-to-evaluate-and-test-azure-search-rest-apis"></a>Auswerten und Testen von Azure Search-REST-APIs mithilfe von Fiddler
 > [!div class="op_single_selector"]
 >
 > * [Übersicht](search-query-overview.md)
-> * [-Explorer durchsuchen](search-explorer.md)
+> * [Suchexplorer](search-explorer.md)
 > * [Fiddler](search-fiddler.md)
 > * [.NET](search-query-dotnet.md)
 > * [REST](search-query-rest-api.md)
 >
 >
 
-In diesem Artikel wird erläutert, wie Fiddler, als verfügbar verwenden eine [kostenlos von Telerik](http://www.telerik.com/fiddler), um HTTP-Anforderungen zum Ausstellen und Anzeigen von Antworten mithilfe der Azure-Suchdienst-REST-API ohne Code schreiben zu müssen. Azure-Suchdienst ist vollständig verwalteten, Cloud-Suchdiensts in Microsoft Azure, .NET und REST-APIs leichter programmierbare gehostet. REST-APIs sind dokumentiert, auf Azure-Suchdienst [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx).
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Fiddler (erhältlich als [kostenloser Download von Telerik](http://www.telerik.com/fiddler)) HTTP-Anforderungen ausgeben und Antworten mithilfe der Azure Search-REST-API anzeigen, ohne Code zu schreiben. Azure Search ist ein vollständig verwalteter, gehosteter Cloudsuchdienst in Microsoft Azure, der leicht über .NET- und REST-APIs programmiert werden kann. Die Dokumentation zu den REST-APIs des Azure Search-Diensts finden Sie in [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx).
 
-In den folgenden Schritten müssen Sie einen Index erstellen, Hochladen von Dokumenten, Abfragen den Index und dann Abfragen das System Service-Informationen.
+In den folgenden Schritten erstellen Sie einen Index, laden Dokumente hoch, fragen den Index ab und fragen zuletzt Dienstinformationen aus dem System ab.
 
-Um diese Schritte abzuschließen, benötigen Sie ein Azure-Suchdiensts und `api-key`. Finden Sie unter [Erstellen eines Azure-Suchdiensts im Portal](search-create-service-portal.md) Anleitungen für den Einstieg.
+Für diese Schritte benötigen Sie einen Azure Search-Dienst und `api-key`. Anweisungen zu den ersten Schritten finden Sie unter [Erstellen eines Azure Search-Diensts im Portal](search-create-service-portal.md) .
 
-## <a name="create-an-index"></a>Erstellen Sie einen index
-1. Starten Sie Fiddler. Auf der **Datei** Menü deaktivieren **Datenverkehr erfassen** , irrelevante HTTP-Aktivitäten zu verbergen, die nicht mit der aktuellen Aufgabe verknüpft ist.
-2. Auf der **Composer** Registerkarte, müssen Sie eine Anforderung im folgenden Screenshot sieht formulieren.
+## <a name="create-an-index"></a>Erstellen eines Index
+1. Starten Sie Fiddler. Deaktivieren Sie die Option **Capture Traffic** (Datenverkehr erfassen) im Menü **File** (Datei), um zusätzliche HTTP-Aktivitäten auszublenden, die nicht zur aktuellen Aufgabe gehören.
+2. Erstellen Sie die in der Registerkarte **Composer** eine Anforderung, die wie im folgenden Screenshot aussieht.
 
       ![][1]
-3. Wählen Sie **PUT**.
-4. Geben Sie eine URL, die die Dienst-URL, Anforderungsattribute und die api-Version angibt. Einige Zeiger zu bedenken:
+3. Wählen Sie **PUT**aus.
+4. Geben Sie eine URL ein, die sich aus der Dienst-URL, Anforderungsattributen und der API-Version zusammensetzt. Beachten Sie dabei Folgendes:
 
-   * Verwenden Sie HTTPS als Präfix an.
-   * Anforderung-Attribut ist "/ Indexes/Hotels". Dies teilt die Suche einen Index mit dem Namen "Hotels" erstellen.
-   * API-Version ist Kleinbuchstaben, angegeben als "? api-Version = 2016-09-01". API-Versionen sind wichtig, da Azure Search regelmäßig Updates bereitgestellt. In seltenen Fällen kann ein Dienstupdate eine unterbrechende Änderung an der API führen. Aus diesem Grund erfordert Azure Search eine api-Version für jede Anforderung, damit Sie vollständige Kontrolle sind über welche verwendet wird.
+   * Verwenden Sie das Präfix HTTPS.
+   * Das Anfrageattribut ist "/indexes/hotels". Damit weisen Sie Search an, einen Index mit dem Namen "hotels" zu erstellen.
+   * Die API-Version ist in Kleinbuchstaben als „?api-version=2016-09-01“ angegeben. API-Versionen sind wichtig, da regelmäßig Updates für Azure Search bereitgestellt werden. In seltenen Fällen kann es passieren, dass ein Teil der API durch ein Update nicht mehr wie gewohnt funktioniert. Aus diesem Grund erfordert Azure Search eine API-Version für jede Anforderung, damit Sie steuern können, welche Version verwendet wird.
 
-     Die vollständige URL sollte ähnlich wie im folgenden Beispiel aussehen.
+     Die komplette URL sollte in etwa wie folgt aussehen.
 
              https://my-app.search.windows.net/indexes/hotels?api-version=2016-09-01
-5. Geben Sie den Anforderungsheader, ersetzen den Host und den api-Schlüssel mit Werten, die für den Dienst gültig sind.
+5. Geben Sie den Anforderungsheader an, und ersetzen Sie host und api-key durch die entsprechenden Werte für Ihren Dienst.
 
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
-6. Fügen Sie im Anforderungstext in den Feldern, die die Definition des Indexes bilden.
+6. Fügen Sie im Anforderungstext die Felder für die Indexdefinition ein.
 
           {
          "name": "hotels",  
@@ -76,28 +76,28 @@ Um diese Schritte abzuschließen, benötigen Sie ein Azure-Suchdiensts und `api-
            {"name": "location", "type": "Edm.GeographyPoint"}
           ]
          }
-7. Klicken Sie auf **ausführen**.
+7. Klicken Sie auf **Ausführen**.
 
-In wenigen Sekunden sehen Sie eine Antwort "HTTP 201" in der Sitzungsliste, der angibt, dass der Index wurde erfolgreich erstellt wurde.
+In der Sitzungsliste sollte innerhalb weniger Sekunden eine HTTP 201-Antwort angezeigt werden. Das bedeutet, dass der Index erfolgreich erstellt wurde.
 
-Wenn Sie HTTP 504 erhalten haben, stellen Sie sicher, dass die URL HTTPS angibt. Wenn Sie HTTP 400 oder 404 angezeigt wird, überprüfen Sie den Hauptteil der Anforderung, um sicherzustellen, dass keine Fehler kopieren und einfügen. Eine HTTP 403 gibt in der Regel ein Problem mit der api-Schlüssel (ein ungültiger Schlüssel oder ein Problem Syntax mit wie der api-Schlüssel angegeben wird).
+Falls Sie eine "HTTP 504"-Antwort erhalten, prüfen Sie, ob die URL mit HTTPS beginnt. Wenn Sie eine "HTTP 400"- oder "HTTP 404"-Antwort erhalten, prüfen Sie den Hauptteil der Anforderung auf Fehler, die durch Kopieren und Einfügen entstanden sind. "HTTP 403" deutet in der Regel auf ein Problem mit dem api-key hin (entweder ein ungültiger Schlüssel oder ein Syntaxproblem bei der Angabe des API-Schlüssels).
 
 ## <a name="load-documents"></a>Laden von Dokumenten
-Auf der **Composer** Registerkarte Ihre Anfrage zum Dokumente bereitgestellt wird wie folgt aussehen. Der Text der Anforderung enthält die Suchdaten Bucket für Hotels, 4.
+Ihre Anforderung für Dokumente in der Registerkarte **Composer** sieht in etwa wie folgt aus. Der Text der Anforderung enthält die Suchdaten für 4 Hotels.
 
    ![][2]
 
-1. Wählen Sie **POST**.
-2. Geben Sie eine URL, die Folgen beginnt mit HTTPS, gefolgt von Ihrem Dienst-URL "/indexes/ < Indexname >/Dokumente/Index? api-Version = 2016-09-01". Die vollständige URL sollte ähnlich wie im folgenden Beispiel aussehen.
+1. Wählen Sie **POST**aus.
+2. Geben Sie eine URL ein, die sich aus „HTTPS“, Ihrer Dienst-URL und „/indexes/<'indexname'>/docs/index?api-version=2016-09-01“ zusammensetzt. Die komplette URL sollte in etwa wie folgt aussehen.
 
          https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
-3. Anforderungsheader sollten identisch sein. Denken Sie daran, dass Sie den Host und den api-Schlüssel durch die Werte ersetzt, die für den Dienst gültig sind.
+3. Der Anforderungsheader muss identisch zur vorherigen Abfrage sein. Ersetzen Sie host und api-key (Kleinbuchstaben) durch die entsprechenden Werte für Ihren Dienst.
 
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
-4. Der Anforderungstext enthält vier Dokumente, die die Hotels Index hinzugefügt werden.
+4. Der Anforderungstext enthält vier Dokumente, die zum Index "hotels" hinzugefügt werden sollen.
 
          {
          "value": [
@@ -159,63 +159,63 @@ Auf der **Composer** Registerkarte Ihre Anfrage zum Dokumente bereitgestellt wir
            }
           ]
          }
-5. Klicken Sie auf **ausführen**.
+5. Klicken Sie auf **Ausführen**.
 
-In ein paar Sekunden sollte eine Antwort "HTTP 200" in der Sitzungsliste angezeigt werden. Dies gibt an, dass die Dokumente erfolgreich erstellt wurden. Wenn Sie eine 207 erhalten, konnte nicht über mindestens ein Dokument hochladen. Wenn Sie eine 404 erhalten, müssen Sie einen Syntaxfehler in der Kopf- oder der Text der Anforderung.
+Innerhalb weniger Sekunden sollten Sie eine "HTTP 200"-Antwort in der Sitzungsliste sehen. Dies bedeutet, dass die Dokumente erfolgreich erstellt wurden. Falls Sie eine 207-Antwort erhalten, ist der Upload von mindestens einem Dokument fehlgeschlagen. Wenn Sie eine 404-Antwort erhalten, enthält entweder der Header oder der Text Ihrer Anforderung einen Syntaxfehler.
 
-## <a name="query-the-index"></a>Abfragen von index
-Nun, dass ein Index und Dokumente geladen werden, können Sie Abfragen für diese ausgeben.  Auf der **Composer** Registerkarte ein **abrufen** -Befehl, der Ihr Dienst abgefragt wird im folgenden Screenshot ähnelt.
+## <a name="query-the-index"></a>Indexabfragen
+Sie haben nun einen Index erstellt und Dokumente hochgeladen und können beginnen, Abfragen auszuführen.  Erstellen Sie zur Abfrage des Diensts einen **GET**-Befehl auf der Registerkarte **Composer**, der ähnlich wie im folgenden Screenshot aussieht.
 
    ![][3]
 
-1. Wählen Sie **abrufen**.
-2. Geben Sie eine URL, die Folgen beginnt mit HTTPS, gefolgt von Ihrem Dienst-URL "/indexes/ < Indexname > / Docs?", gefolgt von Abfrageparametern. Verwenden Sie beispielsweise die folgende URL ein, und Ersetzen Sie den Hostnamen Beispiel durch einen gültigen für Ihren Dienst aus.
+1. Wählen Sie **GET**aus.
+2. Geben Sie eine URL ein, die mit HTTPS beginnt, gefolgt von Ihrer Dienst-URL, gefolgt von "/indexes/<'indexname'>/docs?", gefolgt von den Abfrageparametern. Verwenden Sie als Beispiel die folgende URL und ersetzen Sie den Beispiel-Hostnamen durch einen gültigen Hostnamen für Ihren Dienst.
 
          https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2016-09-01
 
-   Diese Abfrage sucht nach dem Begriff "Autohof" und ruft das Facet Kategorien für Bewertungen ab.
-3. Anforderungsheader sollten identisch sein. Denken Sie daran, dass Sie den Host und den api-Schlüssel durch die Werte ersetzt, die für den Dienst gültig sind.
+   Diese Abfrage sucht nach dem Begriff "motel" und ruft Facettenkategorien für Bewertungen ab.
+3. Der Anforderungsheader muss identisch zur vorherigen Abfrage sein. Ersetzen Sie host und api-key (Kleinbuchstaben) durch die entsprechenden Werte für Ihren Dienst.
 
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
 
-Der Antwortcode 200 werden soll, und die antwortausgabe sollte ähnlich wie im folgenden Screenshot aussehen.
+Der Antwortcode sollte 200 sein, und die Antwortausgabe sollte in etwa dem folgenden Screenshot entsprechen.
 
    ![][4]
 
-Die folgende Beispielabfrage stammt aus dem [Suchindex-Vorgang (Azure Search-API)](http://msdn.microsoft.com/library/dn798927.aspx) auf MSDN. Viele der Beispiele für Abfragen in diesem Thema werden Räume, wobei in Fiddler nicht zulässig sind. Jedes Leerzeichen mit a + Zeichen vor dem Einfügen in die Abfrage string, bevor Sie versuchen, die Abfrage in Fiddler ersetzen.
+Die folgende Beispielabfrage stammt aus dem Artikel [Suchindex-Operationen (Azure Search-API)](http://msdn.microsoft.com/library/dn798927.aspx) auf MSDN. Viele der Beispielabfragen in diesem Thema enthalten Leerzeichen, die von Fiddler nicht unterstützt werden. Ersetzen Sie alle Leerzeichen vor dem Einfügen durch ein +-Zeichen, bevor Sie die Abfrage in Fiddler ausführen.
 
-**Bevor ein Leerzeichen ersetzt werden:**
+**Vor dem Ersetzen der Leerzeichen:**
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01
 
-**Nachdem durch Leerzeichen ersetzt werden +:**
+**Nach dem Ersetzen der Leerzeichen durch +:**
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2016-09-01
 
-## <a name="query-the-system"></a>Abfragen des Systems
-Sie können auch das System zum Abrufen von Dokument Anzahlen und Speicherverbrauch Abfragen. Auf der **Composer** Registerkarte Ihre Anforderung sieht etwa wie folgt und Zurückgeben der Antwort eine Anzahl für die Anzahl der Dokumente und verwendeter Speicherplatz.
+## <a name="query-the-system"></a>Systemabfragen
+Sie können auch das System abfragen, um Dokumentenanzahl oder Speicherverbrauch zu erhalten. Erstellen Sie auf der Registerkarte **Composer** eine Anforderung mit dem folgenden Text. Die Antwort enthält die Anzahl der Dokumente und den verbrauchten Speicherplatz.
 
  ![][5]
 
-1. Wählen Sie **abrufen**.
-2. Geben Sie eine URL, die die Dienst-URL, gefolgt von "/ Indizes/Hotels/Stats? api-Version = 2016-09-01":
+1. Wählen Sie **GET**aus.
+2. Geben Sie eine URL mit Ihrer Dienst-URL ein, gefolgt von „/indexes/hotels/stats?api-version=2016-09-01“:
 
          https://my-app.search.windows.net/indexes/hotels/stats?api-version=2016-09-01
-3. Geben Sie den Anforderungsheader, ersetzen den Host und den api-Schlüssel mit Werten, die für den Dienst gültig sind.
+3. Geben Sie den Anforderungsheader an, und ersetzen Sie host und api-key durch die entsprechenden Werte für Ihren Dienst.
 
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
-4. Der Anforderungstext leer sein.
-5. Klicken Sie auf **ausführen**. Daraufhin sollte einen Statuscode "HTTP 200" in der Sitzungsliste. Wählen Sie den Eintrag, der für den Befehl bereitgestellt wurde.
-6. Klicken Sie auf die **Inspektoren** Registerkarte, klicken Sie auf die **Header** Registerkarte, und wählen Sie dann das JSON-Format. Daraufhin sollte die Dokumentgröße Anzahl und den Speicher (in KB).
+4. Lassen Sie den Anforderungstext leer.
+5. Klicken Sie auf **Ausführen**. Sie sollten eine "HTTP 200"-Antwort in der Sitzungsliste sehen. Wählen Sie den Eintrag zu Ihrem Befehl aus.
+6. Klicken Sie auf die Registerkarte **Inspectors** (Inspektoren), klicken Sie auf die Registerkarte **Headers** (Header), und wählen Sie das JSON-Format aus. Sie sollten nun die Dokumentenanzahl und die Speichergröße (in KB) sehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Finden Sie unter [Verwalten Ihres Suchdiensts in Azure](search-manage.md) für ein ohne-Verwaltung und Verwendung von Azure Search eine Methode.
+Informationen zur Verwaltung und Verwendung von Azure Search ohne Code finden Sie unter [Verwalten Ihres Suchdiensts in Azure](search-manage.md) .
 
 <!--Image References-->
 [1]: ./media/search-fiddler/AzureSearch_Fiddler1_PutIndex.png

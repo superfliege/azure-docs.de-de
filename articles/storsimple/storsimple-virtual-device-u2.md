@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4ed93f9783efcd700db18aa21b5867c951bd2b97
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>Bereitstellen und Verwalten eines virtuellen StorSimple-Geräts in Azure
 ## <a name="overview"></a>Übersicht
@@ -37,9 +36,9 @@ Das virtuelle StorSimple-Gerät steht in zwei Modellen zur Verfügung, dem Stand
 | **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/common/storage-create-storage-account.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br>Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](../storage/common/storage-premium-storage.md) |
 | **Informationen zu Workloads** |Abrufen von Dateien aus Sicherungskopien auf Elementebene |Cloudentwicklungs- und Testszenarien, niedrige Latenz und Workloads mit höherer Leistung  <br></br>Sekundäres Gerät für die Notfallwiederherstellung |
 
-<sup>1</sup> *Ehemals 1100*.
+<sup>1</sup>*Ehemals 1100*.
 
-<sup>2</sup> *Die Serien 8010 und 8020 verwenden Azure Storage Standard für die Cloud-Ebene. Einen Unterschied gibt es nur in der lokalen Ebene innerhalb des Geräts*.
+<sup>2</sup>*Die Serien 8010 und 8020 verwenden Azure Storage Standard für die Cloud-Ebene. Einen Unterschied gibt es nur in der lokalen Ebene innerhalb des Geräts*.
 
 In diesem Artikel werden die einzelnen Schritte beim Bereitstellen eines virtuellen StorSimple-Geräts in Azure beschrieben. In diesem Artikel lernen Sie Folgendes:
 
@@ -236,4 +235,3 @@ Wenn beim Erstellen eines virtuellen Geräts keine Verbindung mit dem Internet b
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie beim [Verwalten Ihres virtuellen Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md)vorgehen.
 * Erfahren Sie, wie Sie [StorSimple-Volumes aus einem Sicherungssatz wiederherstellen](storsimple-restore-from-backup-set.md).
-

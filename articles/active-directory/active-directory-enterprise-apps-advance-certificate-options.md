@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 09/07/2017
 ms.author: jeedes
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 42da703203fbd4c9225b82d119b53e5d03c63aba
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Erweiterte Optionen für die Zertifikatsignatur im SAML-Token für Katalog-Apps in Azure Active Directory
 Azure Active Directory (Azure AD) unterstützt im Anwendungskatalog von Azure Active Directory mittlerweile Tausende von vorab integrierten Anwendungen. Hierin sind auch mehr als 500 Anwendungen enthalten, die einmaliges Anmelden mit dem SAML 2.0-Protokoll unterstützen. Wenn sich ein Benutzer mithilfe von SAML über Azure AD bei einer Anwendung authentifiziert, sendet Azure AD ein Token an die Anwendung (per HTTP POST). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token werden mit dem eindeutigen Zertifikat, das in Azure AD generiert wird, und mit spezifischen Standardalgorithmen signiert.
@@ -68,4 +67,3 @@ Azure AD unterstützt zwei Signaturalgorithmen zum Signieren der SAML-Antwort:
 [2]: ./media/active-directory-enterprise-apps-advance-certificate-options/saml-signing-algo-sha1.png
 [3]: ./media/active-directory-enterprise-apps-advance-certificate-options/saml-signing-algo-sha256.png
 [4]: ./media/active-directory-enterprise-apps-advance-certificate-options/saml-signing-options.png
-

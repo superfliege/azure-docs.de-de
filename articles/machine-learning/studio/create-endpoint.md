@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
 ms.author: himad
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 821ad87fc10b2380e5ed89c037c335bc7747009e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-endpoints"></a>Erstellen von Endpunkten
 > [!NOTE]
@@ -72,5 +71,4 @@ Sie können Ihrem Webdienst einen Endpunkt mithilfe des Beispielcodes [AddEndpoi
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Nutzen eines Azure Machine Learning-Webdiensts](consume-web-services.md)
-
 

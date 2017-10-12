@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: e547469dc61eddd1d772571ab0919532ac91f128
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-frame-authentication--mitigations"></a>Sicherheitsrahmen: Authentifizierung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
-| **Webanwendung**    | <ul><li>[Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus zur Authentifizierung bei Webanwendungen.](#standard-authn-web-app)</li><li>[Anwendungen müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln.](#handle-failed-authn)</li><li>[Aktivieren Sie Step-up-Authentifizierung oder adaptive Authentifizierung.](#step-up-adaptive-authn)</li><li>[Stellen Sie sicher, dass Administratoroberflächen angemessen gesperrt sind.](#admin-interface-lockdown)</li><li>[Implementieren Sie sichere Funktionen für vergessene Kennwörter.](#forgot-pword-fxn)</li><li>[Stellen Sie sicher, dass die Kennwort- und die Kontorichtlinie implementiert werden.](#pword-account-policy)</li><li>[Implementieren Sie Kontrollen, um die Enumeration von Benutzernamen zu verhindern.](#controls-username-enum)</li></ul> |
+| **Web Application**    | <ul><li>[Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus zur Authentifizierung bei Webanwendungen.](#standard-authn-web-app)</li><li>[Anwendungen müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln.](#handle-failed-authn)</li><li>[Aktivieren Sie Step-up-Authentifizierung oder adaptive Authentifizierung.](#step-up-adaptive-authn)</li><li>[Stellen Sie sicher, dass Administratoroberflächen angemessen gesperrt sind.](#admin-interface-lockdown)</li><li>[Implementieren Sie sichere Funktionen für vergessene Kennwörter.](#forgot-pword-fxn)</li><li>[Stellen Sie sicher, dass die Kennwort- und die Kontorichtlinie implementiert werden.](#pword-account-policy)</li><li>[Implementieren Sie Kontrollen, um die Enumeration von Benutzernamen zu verhindern.](#controls-username-enum)</li></ul> |
 | **Datenbank** | <ul><li>[Verwenden Sie beim Herstellen einer SQL Server-Verbindung nach Möglichkeit die Windows-Authentifizierung.](#win-authn-sql)</li><li>[Verwenden Sie beim Herstellen einer SQL-Datenbank-Verbindung nach Möglichkeit die Azure Active Directory-Authentifizierung.](#aad-authn-sql)</li><li>[Stellen Sie bei Verwendung des SQL-Authentifizierungsmodus sicher, dass die Konto- und die Kennwortrichtlinie für SQL Server erzwungen werden.](#authn-account-pword)</li><li>[Verwenden Sie für eigenständige Datenbanken keine SQL-Authentifizierung.](#autn-contained-db)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Verwenden Sie gerätespezifische Authentifizierungsanmeldeinformationen mit SAS-Token.](#authn-sas-tokens)</li></ul> |
 | **Azure-Vertrauensstellungsgrenze** | <ul><li>[Aktivieren Sie Azure Multi-Factor Authentication für Azure-Administratoren.](#multi-factor-azure-admin)</li></ul> |
@@ -188,7 +188,7 @@ ms.lasthandoff: 08/29/2017
 | **SDL-Phase**               | Bereitstellung |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | Umgebung: Azure  |
-| **Referenzen**              | [Szenarien für die Service Fabric-Clustersicherheit](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
+| **Referenzen**              | [Szenarien für die Clustersicherheit in Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
 | **Schritte** | <p>Cluster sollten immer gesichert werden, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit dem Cluster herstellen können, insbesondere dann, wenn im Cluster Produktionsworkloads ausgeführt werden.</p><p>Achten Sie beim Erstellen eines Service Fabric-Clusters darauf, dass der Sicherheitsmodus auf „Sicher“ festgelegt ist, und konfigurieren Sie das erforderliche X.509-Serverzertifikat. Bei Erstellung eines unsicheren Clusters kann jeder anonyme Benutzer eine Verbindung herstellen, wenn der Cluster Verwaltungsendpunkte im öffentlichen Internet verfügbar macht.</p>|
 
 ## <a id="fabric-cn-nn"></a>Stellen Sie sicher, dass sich das Client-zu-Knoten-Zertifikat von Service Fabric vom Knoten-zu-Knoten-Zertifikat unterscheidet.

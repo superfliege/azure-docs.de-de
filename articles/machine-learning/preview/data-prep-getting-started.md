@@ -7,15 +7,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: faf6e557914a33454229b5830419b9ef6f200a8c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="getting-started-with-data-preparation"></a>Erste Schritte bei der Datenvorbereitung
 
 Willkommen beim Leitfaden zu den ersten Schritten für die Datenvorbereitung. 
@@ -79,7 +76,7 @@ Importieren Sie Daten für die Datenvorbereitung, indem Sie in der Projektansich
 
 Sehen Sie sich zuerst oben in jeder Spalte den Balken zur Datenqualität an. Grün steht für die Zeilen, die Werte enthalten. Grau steht für Zeilen mit einem fehlenden Wert, NULL-Wert usw. Rot steht für die Fehlerwerte. Bewegen Sie den Mauszeiger auf den Balken, um eine QuickInfo mit der genauen Anzahl von Zeilen in jedem der drei Buckets zu erhalten. Für den Balken zur Datenqualität wird eine logarithmische Skalierung verwendet. Sehen Sie sich daher immer die tatsächlichen Zahlen an, um einen ungefähren Eindruck zum Umfang der fehlenden Daten zu erhalten.
 
-![Spalten](media/data-prep-getting-started/columns.png)
+![columns](media/data-prep-getting-started/columns.png)
 
 Verwenden Sie als Nächstes eine Kombination aus anderen Inspektoren und das Raster, um die Datenmerkmale noch besser zu verstehen.  Beginnen Sie mit dem Formulieren von Hypothesen zur Datenverarbeitung, die für die weitere Analyse erforderlich sind. Die meisten Inspektoren werden für eine einzelne Spalte oder eine geringe Anzahl von Spalten verwendet.  
 
@@ -97,7 +94,7 @@ Mit Transformationen werden die Daten geändert und Ausführungen der Daten erm�
 
 Mit einem grünen Symbol links von einem Schritt wird jeweils angegeben, dass er ausgeführt wurde, und die Daten spiegeln die Ausführung der Transformation wider. Mit einem vertikalen Strich links vom Schritt wird der aktuelle Status der Daten in den Inspektoren angegeben.
 
-![Schritte](media/data-prep-getting-started/steps.PNG)
+![steps](media/data-prep-getting-started/steps.PNG)
 
 Versuchen Sie, häufiger kleinere Änderungen an den Daten vorzunehmen und nach jeder Änderung eine Überprüfung durchzuführen (Schritt 4), während die Hypothese weiterentwickelt wird.
 
@@ -114,15 +111,15 @@ Navigieren Sie zur Schrittliste auf der rechten Seite der Benutzeroberfläche, u
 Nachdem Sie die Datenvorbereitung abgeschlossen haben, können Sie den Datenfluss in eine Ausgabe schreiben. Ein Datenfluss kann über viele Ausgaben verfügen. Im Menü „Transformationen“ können Sie auswählen, als welche Ausgabe das Dataset geschrieben werden soll. Sie können auch das Ziel der Ausgabe auswählen. 
 
 ## <a name="list-of-appendices"></a>Liste der Anhänge 
-[Appendix 2 - Supported Data Sources](data-prep-appendix2-supported-data-sources.md) (Anhang 2 – Unterstützte Datenquellen)  
-[Appendix 3 - Supported Transforms](data-prep-appendix3-supported-transforms.md) (Anhang 3 – Unterstützte Transformationen)  
-[Appendix 4 - Supported Inspectors](data-prep-appendix4-supported-inspectors.md) (Anhang 4 – Unterstützte Inspektoren)  
-[Appendix 5 - Supported Destinations](data-prep-appendix5-supported-destinations.md) (Anhang 5 – Unterstützte Ziele)  
-[Appendix 6 - Sample Filter Expressions in Python](data-prep-appendix6-sample-filter-expressions-python.md) (Anhang 6 – Beispiele für Filterausdrücke in Python)  
-[Appendix 7 - Sample Transform Dataflow Expressions in Python](data-prep-appendix7-sample-transform-data-flow-python.md) (Anhang 7 – Beispiele für Ausdrücke für die Datenflusstransformation in Python)  
-[Appendix 8 - Sample Data Sources in Python](data-prep-appendix8-sample-source-connections-python.md) (Anhang 8 – Beispiele für Datenquellen in Python)  
-[Appendix 9 - Sample Destination Connections in Python](data-prep-appendix9-sample-destination-connections-python.md) (Anhang 9 – Beispiele für Zielverbindungen in Python)  
-[Appendix 10 - Sample Column Transforms in Python](data-prep-appendix10-sample-custom-column-transforms-python.md) (Anhang 10 – Beispiele für Spaltentransformationen in Python)  
+[Appendix 2 - Supported Data Sources (Anhang 2: Unterstützte Datenquellen)](data-prep-appendix2-supported-data-sources.md)  
+[Appendix 3 - Supported Transforms (Anhang 3: Unterstützte Transformationen)](data-prep-appendix3-supported-transforms.md)  
+[Appendix 4 - Supported Inspectors (Anhang 4: Unterstützte Inspektoren)](data-prep-appendix4-supported-inspectors.md)  
+[Appendix 5 - Supported Destinations (Anhang 5: Unterstützte Ziele)](data-prep-appendix5-supported-destinations.md)  
+[Appendix 6 - Sample Filter Expressions in Python (Anhang 6: Beispiele für Filterausdrücke in Python)](data-prep-appendix6-sample-filter-expressions-python.md)  
+[Appendix 7 - Sample Transform Dataflow Expressions in Python (Anhang 7: Beispiele für Ausdrücke zur Datenflusstransformation in Python)](data-prep-appendix7-sample-transform-data-flow-python.md)  
+[Appendix 8 - Sample Data Sources in Python (Anhang 8: Beispiele für Datenquellen in Python)](data-prep-appendix8-sample-source-connections-python.md)  
+[Appendix 9 - Sample Destination Connections in Python (Anhang 9: Beispiele für Zielverbindungen in Python)](data-prep-appendix9-sample-destination-connections-python.md)  
+[Appendix 10 - Sample Column Transforms in Python (Anhang 10: Beispiele für Spaltentransformationen in Python)](data-prep-appendix10-sample-custom-column-transforms-python.md)  
 
 ## <a name="see-also"></a>Weitere Informationen
 

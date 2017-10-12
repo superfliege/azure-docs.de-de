@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/02/201
 ms.author: magoedte;bwren;sngun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 92893edc4e02de148f6585e83c6861fd751401bb
-ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: e4a90f47167cfa2497e1ad5ae9db025d2d7d91dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-azure-automation-data"></a>Verwalten von Azure Automation-Daten
 Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Automation-Umgebung.
@@ -81,5 +80,4 @@ In der folgenden Tabelle werden die verfügbaren Paare primärer und sekundärer
 | Japan Ost |Japan (Westen) |
 
 Microsoft versucht im unwahrscheinlichen Fall, dass Daten der primären Region verloren gehen, diese wiederherzustellen. Wenn die Daten der primären Region nicht wiederhergestellt werden können, erfolgt ein Geofailover, über das die betroffenen Kunden durch ihr Abonnement benachrichtigt werden.
-
 

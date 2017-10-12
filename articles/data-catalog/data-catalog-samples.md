@@ -16,10 +16,10 @@ ms.workload: data-catalog
 ms.date: 08/05/2017
 ms.author: spelluru
 ms.openlocfilehash: 6ba88885805f1a206f01015f7eec5236da517403
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-catalog-developer-samples"></a>Data Catalog – Entwicklerbeispiele
 Erste Schritte bei der Entwicklung von Data Catalog-Apps mittels der Data Catalog-REST-API. Die Data Catalog-REST-API ist eine REST-basierte API, die einen programmgesteuerten Zugriff auf Data Catalog-Ressourcen ermöglicht, um diese Datenressourcen programmgesteuert zu registrieren, zu kommentieren und zu durchsuchen.

@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 706a1151897f50d41ef6690f28a926ad8cb56d4b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Datei- und Komprimierungsformate
 *Dieses Thema bezieht sich auf die folgenden Connectors: [Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [Azure-Blob](data-factory-azure-blob-connector.md), [Azure Data Lake Store](data-factory-azure-datalake-connector.md), [Dateisystem](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md), [HDFS](data-factory-hdfs-connector.md), [HTTP](data-factory-http-connector.md) und [SFTP](data-factory-sftp-connector.md).*
 
@@ -513,4 +511,3 @@ Informationen zu den von Azure Data Factory unterstützten dateibasierten Datens
 - [HDFS](data-factory-hdfs-connector.md)
 - [Dateisystem](data-factory-onprem-file-system-connector.md)
 - [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)
-

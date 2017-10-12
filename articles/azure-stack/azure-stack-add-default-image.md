@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: sngun
+ms.openlocfilehash: 43781cb025865df1d228376f57412f3d482d3ad0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 62f467f1dae5a2cb04e5230ed43b77ec3ec8c1a1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>Hinzufügen des VM-Images für Windows Server 2016 zum Azure Stack-Marketplace
 
@@ -141,7 +140,7 @@ Um sicherzustellen, dass das VM-Image für Windows Server 2016 das aktuelle kumu
 |New-AzsServer2016VMImage-Parameter|Erforderlich|Beschreibung|
 |-----|-----|------|
 |ISOPath|Ja|Der vollqualifizierte Pfad zur heruntergeladenen ISO-Datei für Windows Server 2016|
-|Net35|Nein|Dieser Parameter ermöglicht die Installation der .NET 3.5-Runtime im Windows Server 2016-Image. Standardmäßig ist dieser Wert auf „true“ festgelegt. Das Image muss die .NET 3.5-Runtime zum Installieren der SQL- und MYSQL-Ressourcenanbieter enthalten. |
+|Net35|Nein|Dieser Parameter ermöglicht die Installation der .NET 3.5-Runtime im Windows Server 2016-Image. Standardmäßig ist dieser Wert auf „true“ festgelegt.|
 |Version|Nein|Mit diesem Parameter können Sie auswählen, welches Windows Server 2016-Image hinzugefügt werden soll: **Core**, **Voll** oder **Beide**. Standardmäßig ist dieser Wert auf „Voll“ festgelegt.|
 |VHDSizeInMB|Nein|Legt die Größe (in MB) des VHD-Images fest, das zu Ihrer Azure Stack-Umgebung hinzugefügt werden soll. Standardmäßig ist dieser Wert auf 40.960 MB festgelegt.|
 |CreateGalleryItem|Nein|Gibt an, ob ein Marketplace-Element für das Windows Server 2016-Image erstellt werden soll. Standardmäßig ist dieser Wert auf „true“ festgelegt.|
@@ -153,4 +152,3 @@ Um sicherzustellen, dass das VM-Image für Windows Server 2016 das aktuelle kumu
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Bereitstellen von virtuellen Computern](azure-stack-provision-vm.md)
-

@@ -17,10 +17,10 @@ ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.openlocfilehash: 9acd1cf4d1a5705811c4dedc545505ec0ac55fc7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>Weltweites Skalieren einer Web-App mit einer Hochverfügbarkeitsarchitektur
 
@@ -30,7 +30,7 @@ Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure Powe
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-powershell[main](../../../powershell_scripts/app-service/scale-geographic/scale-geographic.ps1 "Weltweites Skalieren einer Web-App mit einer Hochverfügbarkeitsarchitektur")]
+[!code-powershell[main](../../../powershell_scripts/app-service/scale-geographic/scale-geographic.ps1 "Scale a web app worldwide with a high-availability architecture")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 

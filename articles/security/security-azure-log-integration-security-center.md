@@ -15,12 +15,11 @@ ums.workload: na
 ms.date: 08/29/2017
 ms.author: barclayn
 ms.custom: azlog
+ms.openlocfilehash: 9acce21d544a43adcd0c0983771c02c6bb39caec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 46758e9aa8d95bb10d91c315c1d712ab8f607188
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-get-your-security-center-alerts-in-azure-log-integration"></a>Abrufen von Azure Security Center-Warnungen bei der Azure-Protokollintegration
 
@@ -58,4 +57,3 @@ Weitere Informationen zur Azure-Protokollintegration finden Sie in folgenden Dok
 * [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner): In diesem Blogbeitrag erfahren Sie, wie die Azure-Protokollintegration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird.
 * [Azure log Integration frequently asked questions (FAQ)](security-azure-log-integration-faq.md) (Häufig gestellte Fragen zur Azure-Protokollintegration): Hier finden Sie Antworten auf häufig gestellte Fragen zur Azure-Protokollintegration.
 * [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) (Neue Features für Azure-Diagnose und Azure-Überwachungsprotokolle): In diesem Blogbeitrag werden Azure-Überwachungsprotokolle und andere Features vorgestellt, mit denen Sie sich einen Einblick in die Vorgänge Ihrer Azure-Ressourcen verschaffen können.
-

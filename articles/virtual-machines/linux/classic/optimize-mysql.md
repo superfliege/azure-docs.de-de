@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: ningk
 ms.openlocfilehash: 8f2ec884fa98e989448ac11675e71f39aa21fa7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="optimize-mysql-performance-on-azure-linux-vms"></a>Optimieren der MySQL-Leistung auf virtuellen Azure Linux-Computern
 Es gibt viele Faktoren, die die MySQL-Leistung unter Azure beeinträchtigen, sowohl in Bezug auf die Auswahl der virtuellen Hardware als auch auf die Softwarekonfiguration. Dieser Artikel befasst sich mit der Leistungsoptimierung über die Speicher-, System- und Datenbankkonfiguration.

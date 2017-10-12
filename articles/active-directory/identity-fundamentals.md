@@ -13,12 +13,11 @@ ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 52f05ee8a5c07fc008da40aef12d1ad8e8136429
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Grundlagen der Azure-Identitätsverwaltung
 Da sich immer mehr digitale Unternehmensressourcen außerhalb des Unternehmensnetzwerks, in der Cloud und auf Geräten befinden, wird eine herausragende, cloudbasierte Identitäts- und Zugriffsverwaltungslösung zur Notwendigkeit. Cloudbasierte Identitäten sind nun die beste Möglichkeit, die Kontrolle darüber und den Einblick darin zu behalten, wie und wann Benutzer auf Unternehmensanwendungen und -daten zugreifen.

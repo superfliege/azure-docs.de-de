@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 75213a4d0297c96ec32200158d8b60db4b8b2da4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="process-large-scale-datasets-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Data Factory und Batch
 In diesem Artikel wird die Architektur einer Beispiellösung beschrieben, mit der umfangreiche Datasets auf automatische und geplante Weise verschoben und verarbeitet werden. Darüber hinaus enthält der Artikel eine umfassende exemplarische Vorgehensweise zur Implementierung der Lösung mit Azure Data Factory und Azure Batch.
@@ -120,7 +119,7 @@ Erstellen eines **Azure Batch-Pools** mit mindestens 2 Computeknoten.
 
    ![](./media/data-factory-data-processing-using-batch/image4.png)
 
-   Wenn Sie **Azure Storage Explorer** verwenden, laden Sie die Datei **file.txt** auf **mycontainer** hoch. Klicken Sie in der Symbolleiste auf **Kopieren**, um eine Kopie des Blobs zu erstellen. Ändern Sie im Dialogfeld **Blob kopieren** den **Namen des Zielblobs** in `inputfolder/2015-11-16-00/file.txt`. Wiederholen Sie diesen Schritt zum Erstellen von `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt` usw. Mit dieser Aktion werden die Ordner automatisch erstellt.
+   Wenn Sie **Azure Storage Explorer** verwenden, laden Sie die Datei **file.txt** auf **mycontainer** hoch. Klicken Sie in der Symbolleiste auf **Kopieren**, um eine Kopie des Blobs zu erstellen. Ändern Sie im Dialogfeld **Blob kopieren**  den **Namen des Zielblobs** in `inputfolder/2015-11-16-00/file.txt`. Wiederholen Sie diesen Schritt zum Erstellen von `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt` usw. Mit dieser Aktion werden die Ordner automatisch erstellt.
 5. Erstellen Sie einen weiteren Container mit dem Namen `customactivitycontainer`. Sie laden die benutzerdefinierte Aktivität als Zip-Datei in diesen Container hoch.
 
 #### <a name="visual-studio"></a>Visual Studio
@@ -527,7 +526,7 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst für Ihr **Azure Batch
 
    1. Ersetzen Sie **Kontoname** mit dem Namen Ihres Azure Batch-Kontos.
    2. Ersetzen Sie **Zugriffsschlüssel** durch den Zugriffsschlüssel des Azure Batch-Kontos.
-   3. Geben Sie die ID des Pools für die **poolName** - Eigenschaft ein**.** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
+   3. Geben Sie die ID des Pools für die **poolName**-Eigenschaft **ein.** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
    4. Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein.
 
       > [!IMPORTANT]
@@ -911,4 +910,3 @@ Nachdem Sie Daten verarbeitet haben, können Sie sie mit Online-Tools wie **Micr
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
-

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: magoedte
+ms.openlocfilehash: 2b3ca90382a1c4fb6446799ad539ab8ee603aefc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 62793dcdbbf4c83161e95d1c165d5c231245f7c6
-ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Azure Automation-Szenario – Integration der Automation-Quellcodeverwaltung mit GitHub Enterprise
 
 Automation unterstützt aktuell die Integration der Quellcodeverwaltung, wodurch Sie Runbooks in Ihrem Automation-Konto einem GitHub-Repository für die Quellcodeverwaltung zuordnen können.  Allerdings möchten Kunden, die [GitHub Enterprise](https://enterprise.github.com/home) zur Unterstützung ihrer DevOps-Methoden bereitgestellt haben, dieses auch verwenden, um den Lebenszyklus von zur Automatisierung von Geschäftsprozessen und Dienstverwaltungsvorgängen entwickelten Runbooks zu verwalten.  
@@ -71,7 +69,7 @@ Wenn Sie in Ihrem Rechenzentrum noch keinen Hybrid Runbook Worker bereitgestellt
 
 1. Melden Sie sich auf dem Computer, der die Hybrid Runbook Worker-Rolle hostet, mit einem Konto mit lokalen Administratorrechten an, und erstellen Sie ein Verzeichnis, in dem die Git-Runbookdateien gespeichert werden.  Klonen Sie das interne Git-Repository in das Verzeichnis.
 2. Wenn Sie noch kein RunAs-Konto erstellt haben oder wenn Sie ein neues RunAs-Konto für diesen Zweck erstellen möchten, navigieren Sie aus dem Azure-Portal zu den Automation-Konten, wählen Sie Ihr Automation-Konto aus, und erstellen Sie ein [Anmeldeinformationsobjekt](automation-credentials.md), das den Benutzernamen und das Kennwort für einen Benutzer mit Berechtigungen für den Hybrid Worker enthält.  
-3. [Bearbeiten Sie das Runbook](automation-edit-textual-runbook.md) **Export RunAsCertificateToHybridWorker** in Ihrem Automation-Konto, und ändern Sie den Wert für die Variable *$Password* in ein sicheres Kennwort.  Nachdem Sie den Wert geändert haben, klicken Sie auf **Veröffentlichen**, um die Entwurfsversion des Runbooks veröffentlichen zu lassen. 
+3. [Bearbeiten Sie das Runbook](automation-edit-textual-runbook.md)**Export RunAsCertificateToHybridWorker** in Ihrem Automation-Konto, und ändern Sie den Wert für die Variable *$Password* in ein sicheres Kennwort.  Nachdem Sie den Wert geändert haben, klicken Sie auf **Veröffentlichen**, um die Entwurfsversion des Runbooks veröffentlichen zu lassen. 
 5. Starten Sie das Runbook **Export-RunAsCertificateToHybridWorker**, und wählen Sie im Blatt **Runbook starten** unter der Option **Laufzeiteinstellungen** die Option **Hybrid Worker** aus. Wählen Sie anschließend aus der Dropdownliste die zuvor für dieses Szenario erstellte Hybrid Worker-Gruppe aus.  
 
     Hierdurch wird ein Zertifikat in den Hybrid Worker exportiert, damit Runbooks auf dem Worker sich mithilfe der ausführenden Verbindung bei Azure authentifizieren können, um Azure-Ressourcen zu verwalten (speziell für dieses Szenario: um Runbooks in das Automation-Konto zu importieren).
@@ -92,4 +90,3 @@ Wenn Sie in Ihrem Rechenzentrum noch keinen Hybrid Runbook Worker bereitgestellt
 
 -  Weitere Informationen zu den verschiedenen Runbooktypen sowie zu ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
 -  Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Native PowerShell Script Support in Azure Automation (Native PowerShell-Skriptunterstützung in Azure Automation)](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
-

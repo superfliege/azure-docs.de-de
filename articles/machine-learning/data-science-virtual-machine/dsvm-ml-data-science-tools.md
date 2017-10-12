@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c772fa16b94d09e0fc0450ce86503553c26f8a24
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="machine-learning-and-data-science-tools"></a>Machine Learning- und Data Science-Tools
 Die Data Science-VM (DSVM) verfügt über ein umfangreiches Angebot an Tools und Bibliotheken für Machine Learning in gängigen Sprachen wie Python, R und Julia. 
 
@@ -95,4 +93,3 @@ Im Anschluss sind einige der Machine Learning-Tools und -Bibliotheken auf der DS
 | Verwandte Tools auf der DSVM      | Apache Spark, MXNet, XGBoost, Sparkling Water, Deep Water    |
 
 Auf der DSVM befinden sich noch einige andere ML-Bibliotheken wie etwa das beliebte `scikit-learn`-Paket, das im Rahmen der auf der DSVM installierten Anaconda Python-Distribution bereitgestellt wird. Sehen Sie sich mithilfe der entsprechenden Paket-Manager die Liste mit den verfügbaren Paketen für Python, R und Julia an. 
-

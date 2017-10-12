@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 8657415f61d9977ad90883278f8737609248fed6
-ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: f7b8560d4ce7374e36d5f7e8a5d2056396e4f089
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 #<a name="notification-hubs-documentation"></a>Dokumentation zu Notification Hubs
 
 Hier erfahren Sie, wie Sie Notification Hubs (ein plattformübergreifendes, skalierbares Pushbenachrichtigungsmodul zum schnellen Senden von Millionen von Nachrichten) verwenden. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Pushbenachrichtigungen einrichten und von einem beliebigen Back-End an beliebige mobile Geräte senden. 
@@ -212,5 +210,4 @@ Hier erfahren Sie, wie Sie Notification Hubs (ein plattformübergreifendes, skal
         </div>
     </li>
 </ul>
-
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
 ms.openlocfilehash: aca8cf2b94e8b746a5cac6af021c7221a29b7345
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors-Zustandsverwaltung
 Reliable Actors sind Singlethread-Objekte, die sich zum Kapseln von Logik und Zustand eignen. Da Akteure unter Reliable Services ausgeführt werden, können Sie den Zustand zuverlässig beibehalten, indem sie die gleiche Persistenz- und Replikationsmechanismen wie Reliable Services verwenden. Daher verlieren Akteure ihren Zustand nicht nach Fehlern, bei der Reaktivierung nach einer Garbage Collection oder beim Verschieben zwischen Knoten in einem Cluster aufgrund von Ressourcenausgleich oder Upgrades.

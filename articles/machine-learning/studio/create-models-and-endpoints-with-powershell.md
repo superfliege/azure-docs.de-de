@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: garye;haining
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: cc938fdaa6843f7c9e974d9b88a9b682b4678493
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Erstellen vieler Machine Learning-Modelle und Webdienst-Endpunkte in nur einem Experiment mit PowerShell
 Dies ist ein Beispiel für ein häufiges Machine Learning-Problem: Sie möchten viele Modelle erstellen, die über den gleichen Trainingsworkflow verfügen und denselben Algorithmus nutzen, als Eingabe aber unterschiedliche Trainingsdatasets verwenden. In diesem Artikel erfahren Sie, wie Sie dies in größerem Umfang in Azure Machine Learning Studio mit nur einem Experiment durchführen.
 
 Angenommen, Sie besitzen eine Fahrradvermietung als globales Franchise-Unternehmen. Sie möchten ein Regressionsmodell erstellen, um die Mietnachfrage anhand von bisherigen Daten vorherzusagen. Sie betreiben weltweit 1.000 Mietstandorte und haben speziell für jeden Standort ein Dataset mit wichtigen Daten wie Datum, Uhrzeit, Wetter und Verkehrssituation erfasst.
 
-Sie können das Modell einmalig trainieren, indem Sie eine zusammengefasste Version mit allen Datasets aller Standorte verwenden. Da jeder Standort aber über eine einzigartige Umgebung verfügt, besteht ein besserer Ansatz darin, das Regressionsmodell separat zu trainieren, indem Sie jeweils das Dataset für den Standort nutzen. Auf diese Weise können bei jedem trainierten Modell die unterschiedlichen Ladengrößen, das Volumen, die Geografie, Einwohnerzahl, Fahrradfreundlichkeit der Verkehrsinfrastruktur usw. *berücksichtigt werden*.
+Sie können das Modell einmalig trainieren, indem Sie eine zusammengefasste Version mit allen Datasets aller Standorte verwenden. Da jeder Standort aber über eine einzigartige Umgebung verfügt, besteht ein besserer Ansatz darin, das Regressionsmodell separat zu trainieren, indem Sie jeweils das Dataset für den Standort nutzen. Auf diese Weise können bei jedem trainierten Modell die unterschiedlichen Ladengrößen, das Volumen, die Geografie, Einwohnerzahl, Fahrradfreundlichkeit der Verkehrsinfrastruktur usw. **berücksichtigt werden.
 
 Dies wäre vermutlich der beste Ansatz. Sie möchten in Azure Machine Learning aber nicht 1.000 Trainingsexperimente erstellen müssen, also ein Experiment pro Standort. Dies ist nicht nur viel zu aufwändig, sondern auch eine sehr ineffiziente Vorgehensweise, da alle Experimente mit Ausnahme des Trainingsdatasets die gleichen Komponenten aufweisen würden.
 
@@ -172,4 +171,3 @@ Hier ist der vollständige Quellcode angegeben:
         Write-Host ('Patching endpoint ' + $endpointName + '...');
         Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
     }
-

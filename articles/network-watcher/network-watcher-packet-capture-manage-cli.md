@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: c94eb46f31f2f19b843ccd7bf77b8a39943a07d4
-ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: 66f53f97220f8fd23fa38bece0025f8b48289e23
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-cli-20"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe von Azure CLI 2.0
 
 > [!div class="op_single_selector"]
@@ -74,10 +72,10 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 
 ### <a name="step-2"></a>Schritt 2
 
-Um sicherzustellen, dass der Agent installiert ist, führen Sie das Cmdlet `vm extension get` aus, und geben Sie die Ressourcengruppe und den Namen des virtuellen Computers an. Überprüfen Sie die Ergebnisliste, um sicherzustellen, dass der Agent installiert ist.
+Um sicherzustellen, dass der Agent installiert ist, führen Sie das Cmdlet `vm extension show` aus, und geben Sie die Ressourcengruppe und den Namen des virtuellen Computers an. Überprüfen Sie die Ergebnisliste, um sicherzustellen, dass der Agent installiert ist.
 
 ```azurecli
-az vm extension show -resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
+az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
 ```
 
 Das folgende Beispiel zeigt die Antwort nach der Ausführung von `az vm extension show`.
@@ -111,7 +109,7 @@ Nachdem Sie die vorherigen Schritte abgeschlossen haben, wird der Paketerfassung
 Der nächste Schritt besteht im Abrufen der Network Watcher-Instanz. Der Name des Network Watchers wird in Schritt 4 an das Cmdlet `az network watcher show` übergeben.
 
 ```azurecli
-az network watcher show -resource-group resourceGroup -name networkWatcherName
+az network watcher show --resource-group resourceGroup --name networkWatcherName
 ```
 
 ### <a name="step-2"></a>Schritt 2
@@ -280,4 +278,3 @@ Informationen zur Automatisierung von Paketerfassungen mit VM-Warnungen finden S
 Lesen Sie den Artikel zur [IP-Datenflussüberprüfung](network-watcher-check-ip-flow-verify-portal.md), um herauszufinden, ob bestimmter eingehender oder ausgehender Datenverkehr für Ihren virtuellen Computer zulässig ist.
 
 <!-- Image references -->
-

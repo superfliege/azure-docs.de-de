@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
 ms.openlocfilehash: e653764d7cb514d50b44fadd0cc5963dd404d99e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-virtual-network"></a>Erstellen Ihres ersten virtuellen Netzwerks
 
@@ -56,7 +56,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Netzwerk mit zwei Subn
     |**Subnetzname**|*Front-End*|Der Subnetzname muss innerhalb des virtuellen Netzwerks eindeutig sein.|
     |**Subnetzadressbereich**|*10.0.0.0/24*| Der angegebene Bereich muss innerhalb des Adressraums liegen, den Sie für das virtuelle Netzwerk definiert haben.|
     |**Abonnement**|*[Ihr Abonnement]*|Wählen Sie ein Abonnement aus, in dem Sie das VNet erstellen möchten. Ein VNet befindet sich innerhalb eines einzelnen Abonnements.|
-    |**Ressourcengruppe**|**Neu erstellen:** *MyRG*|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups).|
+    |**Ressourcengruppe**|**Neu erstellen:***MyRG*|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups).|
     |**Standort**|*USA, Westen*| In der Regel wird der Standort ausgewählt, der Ihrem physischen Standort am nächsten ist.|
 
     Die Erstellung des VNets dauert ein paar Sekunden. Nach der Erstellung wird es auf dem Dashboard des Azure-Portals angezeigt.

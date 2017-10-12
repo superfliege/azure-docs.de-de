@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: haining;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 809df66042f6c765ed56836db40f72a5cd8ca7f6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen
 **Was sind Cortana Intelligence-Wettbewerbe?**
@@ -114,5 +113,4 @@ Die Wettbewerbsplattform unterstützt derzeit nur die Einreichung von Beiträgen
 **Bewahren wir die Lösungen/Beiträge der Benutzer aus den Wettbewerben auf?**
 
 Benutzerbeiträge werden nur zu Bewertungszwecken, also zum Ermitteln der Gewinnerlösungen aufbewahrt. Weitere Informationen finden Sie in unseren [Geschäftsbedingungen](http://aka.ms/comptermsandconditions) .
-
 

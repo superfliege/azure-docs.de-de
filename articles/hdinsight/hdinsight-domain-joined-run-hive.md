@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
 ms.openlocfilehash: de537d5e39dd0d3f75ff802948c7372e4d65d127
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight-preview"></a>Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung (Vorschau)
 Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive konfigurieren. In diesem Artikel erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf die Hive-Beispieltabelle „hivesampletable“ einzuschränken. Die Hive-Beispieltabelle „hivesampletable“ ist in HDInsight-Clustern enthalten. Nach dem Konfigurieren der Richtlinien stellen Sie unter Verwendung von Excel und ODBC-Treiber eine Verbindung mit Hive-Tabellen in HDInsight her.

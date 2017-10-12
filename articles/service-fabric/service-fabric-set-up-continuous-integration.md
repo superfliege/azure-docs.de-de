@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2016
 ms.author: mthalman;mikhegn
 ms.openlocfilehash: 76a1e013e824910c7a489e345b6563ae3951378f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-service-fabric-continuous-integration-and-deployment-with-visual-studio-team-services"></a>Einrichten von Continuous Integration und Continuous Deployment für Service Fabric mit Visual Studio Team Services
 In diesem Artikel werden die Schritte beschrieben, die zum Einrichten von Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Anwendung mithilfe von Visual Studio Team Services (VSTS) ausgeführt werden müssen.

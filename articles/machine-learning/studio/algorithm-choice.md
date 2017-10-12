@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/25/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 822bed8ffc43459dd053fda5b68f62f839b7d94b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>Auswählen von Algorithmen für Microsoft Azure Machine Learning
 Die Antwort auf die Frage „Welchen Algorithmus für Machine Learning sollte ich verwenden?“ lautet immer „Kommt darauf an“. Es hängt von der Größe, Qualität und Art der Daten ab. Es hängt davon ab, was Sie mit der Antwort anfangen möchten. Es hängt davon ab, wie die mathematische Logik des Algorithmus in Anweisungen für den Computer übersetzt wurde, den Sie verwenden. Und es hängt davon ab, wie viel Zeit Sie haben. Selbst der erfahrenste Datenanalyst kann Ihnen nicht sagen, welcher Algorithmus die besten Ergebnisse liefert, bevor er ihn ausprobiert hat.
@@ -82,11 +81,11 @@ Linear Regressionsalgorithmen gehen davon aus, dass Datentrends einer geraden Li
 
 ![Nicht lineare Klassengrenze][1]
 
-***Nicht lineare Klassengrenze*** *– Die Verwendung eines linearen Klassifizierungsalgorithmus würde zu einer verringerten Genauigkeit führen.*
+***Nicht lineare Klassengrenze****– Die Verwendung eines linearen Klassifizierungsalgorithmus würde zu einer verringerten Genauigkeit führen.*
 
 ![Daten mit einem nicht linearen Trend][2]
 
-***Daten mit einem nicht linearen Trend*** *– Die Verwendung einer linearen Regressionsmethode würde wesentlich höhere Fehler erzeugen als nötig.*
+***Daten mit einem nicht linearen Trend****– Die Verwendung einer linearen Regressionsmethode würde wesentlich höhere Fehler erzeugen als nötig.*
 
 Trotz ihrer Gefahren sind lineare Algorithmen als erster Ansatzpunkt sehr beliebt. Sie sind tendenziell algorithmisch einfach und lassen sich schnell trainieren.
 
@@ -155,7 +154,7 @@ Obwohl es verwirrenderweise „Regression“ im Namen trägt, handelt es sich be
 
 ![Logistische Regression mit zweiklassigen Daten mit nur einem Merkmal][4]
 
-***Eine logistische Regression mit zweiklassigen Daten mit nur einem Merkmal*** *– die Klassengrenze ist der Punkt, an dem die logistische Kurve gleich nah an beiden Klassen ist*
+***Eine logistische Regression mit zweiklassigen Daten mit nur einem Merkmal****– die Klassengrenze ist der Punkt, an dem die logistische Kurve gleich nah an beiden Klassen ist*
 
 ### <a name="trees-forests-and-jungles"></a>Bäume, Wälder und Dschungel
 Decision Forests (Entscheidungswälder; [Regression](https://msdn.microsoft.com/library/azure/dn905862.aspx), [zweiklassig](https://msdn.microsoft.com/library/azure/dn906008.aspx) und [mehrklassig](https://msdn.microsoft.com/library/azure/dn906015.aspx)), Decision Jungles (Entscheidungsdschungel; [zweiklassig](https://msdn.microsoft.com/library/azure/dn905976.aspx) und [mehrklassig](https://msdn.microsoft.com/library/azure/dn905963.aspx)) und Boosted Decision Trees (verstärkte Entscheidungsbäume; [Regression](https://msdn.microsoft.com/library/azure/dn905801.aspx) und [zweiklassig](https://msdn.microsoft.com/library/azure/dn906025.aspx)) basieren alle auf Entscheidungsbäumen (Decision Trees), einem grundlegenden Machine Learning-Konzept. Es gibt viele Varianten von Entscheidungsbäumen, aber alle machen dasselbe – sie unterteilen den Merkmalsraum in Bereiche mit größtenteils derselben Bezeichnung. Dies können Bereiche mit konsistenter Kategorie oder mit konstantem Wert sein, je nachdem, ob Sie eine Klassifizierung oder Regression durchführen.
@@ -208,7 +207,7 @@ Wenn Sie ein sehr spezielles Ziel haben, könnten Sie Glück haben. In der Samml
 
 ![PCA-basierte Erkennung von Anomalien][8]
 
-***PCA-basierte Erkennung von Anomalien*** *– die überwiegende Mehrheit der Daten liegt in einer stereotypen Verteilung; von dieser Verteilung erheblich abweichende Punkte sind verdächtig*
+***PCA-basierte Erkennung von Anomalien****– die überwiegende Mehrheit der Daten liegt in einer stereotypen Verteilung; von dieser Verteilung erheblich abweichende Punkte sind verdächtig*
 
 ![Mittels K-Means gruppiertes Dataset][9]
 
@@ -247,4 +246,3 @@ Begonnen und geleitet von John Langford bei Microsoft Research, ist VW ein Forme
 [8]: ./media/algorithm-choice/image8.png
 [9]: ./media/algorithm-choice/image9.png
 [10]: ./media/algorithm-choice/image10.png
-

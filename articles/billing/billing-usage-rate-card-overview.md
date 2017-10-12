@@ -13,16 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 04/18/2017
+ms.date: 10/9/2017
 ms.author: mobandyo;bryanla
+ms.openlocfilehash: 26217d6f4e14166a89fbb561cb12d0af78ae6f4d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 85b53620a886625920e8e057a14e1ed5fa3e5333
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Verwenden der Azure-Abrechnungs-APIs, um programmgesteuerte Einblicke in die Nutzung Ihrer Azure-Ressourcen zu erlangen
 Verwenden Sie Azure-Abrechnungs-APIs, um Nutzungs- und Ressourcendaten mittels Pull in Ihre bevorzugten Datenanalysetools abzurufen. Mithilfe der Azure-Ressourcennutzungs- und -Gebührenkarten-APIs können Sie Ihre Kosten genau vorhersagen und verwalten. Die APIs werden als Ressourcenanbieter implementiert und sind Teil der API-Familie, die von Azure Resource Manager verfügbar gemacht wird.  
 
@@ -63,8 +61,6 @@ Hier sind einige Szenarios angegeben, die aufgrund der Kombination aus Nutzungs-
   * Außerdem können Sie ermitteln, ob ein anderer Azure-Angebotstyp zu einem besseren Preis für eine Azure-Ressource führt.
   
 ## <a name="partner-solutions"></a>Partnerlösungen
-Unter [Nutzungs- und Gebührenkarten-APIs von Microsoft Azure ermöglichen Cloudyn die ITFM-Bereitstellung für Kunden](billing-usage-rate-card-partner-solution-cloudyn.md) wird die Integrationsumgebung beschrieben, die vom Azure-Abrechnungs-API-Partner [Cloudyn](https://www.cloudyn.com/microsoft-azure/) angeboten wird. Dieser Artikel enthält ausführliche Informationen zu den Umgebungen, darunter ein Video mit einer Darstellung, wie Sie Cloudyn und die Azure-Abrechnungs-APIs verwenden können, um Einblicke in die Azure-Nutzungsdaten zu erhalten.
-
 Unter [Integration von Cloud Cruiser und Microsoft Azure-Abrechnungs-API](billing-usage-rate-card-partner-solution-cloudcruiser.md) wird beschrieben, wie das [Express for Azure Pack von Cloud Cruiser](http://www.cloudcruiser.com/partners/microsoft/) direkt über das WAP-Portal (Windows Azure Pack) eingesetzt werden kann. Sie können sowohl die betrieblichen als auch die finanziellen Aspekte der Microsoft Azure Private Cloud oder gehosteten Public Cloud über eine zentrale Benutzeroberfläche nahtlos verwalten.   
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -78,5 +74,4 @@ Unter [Integration von Cloud Cruiser und Microsoft Azure-Abrechnungs-API](billin
 * Weitere Informationen zum Azure-Ressourcen-Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-overview.md) . 
 
 * Weitere Informationen zu den Tools, die zum Entwickeln eines Verständnisses der Cloudausgaben erforderlich sind, finden Sie im Gartner-Artikel [Market Guide for IT Financial Management (ITFM) Tools](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb) (Marktleitfaden für IT Financial Management (ITFM)-Tools).
-
 

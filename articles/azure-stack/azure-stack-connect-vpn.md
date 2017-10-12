@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c06eb0bb44bdfeab956e9b5051786b5bc631acf5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Herstellen einer Verbindung von Azure Stack zu Azure mithilfe von VPN
 
@@ -239,7 +238,7 @@ Um sicherzustellen, dass der Datenverkehr über die Site-to-Site-Verbindung gese
 1. Melden Sie sich beim Azure-Portal an.
 2. Klicken Sie in der Navigationsleiste links auf **Virtuelle Computer**.
 3. Suchen Sie in der Liste mit den virtuellen Computern nach dem zuvor erstellten Computer **Azure-VM**, und wählen Sie ihn aus.
-4. Klicken Sie im Bereich für den virtuellen Computer auf **Verbinden**.
+4. Klicken Sie im Abschnitt für den virtuellen Computer auf **Verbinden**.
 5. Melden Sie sich mit dem Konto an, das Sie beim Erstellen des virtuellen Computers konfiguriert haben.
 6. Öffnen Sie ein **Windows PowerShell**-Fenster mit erhöhten Rechten.
 7. Geben Sie **ipconfig /all** ein.

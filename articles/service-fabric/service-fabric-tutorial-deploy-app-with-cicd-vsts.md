@@ -15,14 +15,12 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
 ms.openlocfilehash: d0f67b1a63c36e878ed5f7c9aa1c45267e5b156c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster
 Dieses Tutorial ist der dritte Teil einer Serie und beschreibt, wie Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Anwendung mithilfe von Visual Studio Team Services eingerichtet werden.  Es ist eine vorhandene Service Fabric-Anwendung erforderlich. Die im Artikel [Erstellen einer .NET-Anwendung](service-fabric-tutorial-create-dotnet-app.md) erstellte Anwendung wird als Beispiel verwendet.
 
@@ -39,7 +37,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * [Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)
 > * [Bereitstellen der Anwendung in einem Remotecluster](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * Konfigurieren von CI/CD mit Visual Studio Team Services
-> * [Set up monitoring and diagnostics for the application (Einrichten der Überwachung und Diagnose für die Anwendung)](service-fabric-tutorial-monitoring-aspnet.md)
+> * [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
@@ -162,7 +160,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 Fahren Sie mit dem nächsten Tutorial fort:
 > [!div class="nextstepaction"]
-> [Set up monitoring and diagnostics for the application (Einrichten der Überwachung und Diagnose für die Anwendung)](service-fabric-tutorial-monitoring-aspnet.md) 
+> [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-monitoring-aspnet.md) 
 
 
 <!-- Image References -->

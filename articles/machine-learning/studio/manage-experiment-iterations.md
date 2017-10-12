@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 062620f2174ecc93c1deb816069e32152dbef636
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Verwalten von Experimentiterationen in Azure Machine Learning-Studio
 Das Entwickeln eines solchen Vorhersageanalysemodells ist ein iterativer Prozess: Sie ändern die verschiedenen Funktionen und Parameter des Experiments, und die Ergebnisse nähern sich solange an, bis Sie der Ansicht sind, ein trainiertes, effektives Modell erreicht zu haben. Wichtig für diesen Prozess ist das Verfolgen der verschiedenen Iterationen der Experimentparameter und -konfigurationen.
@@ -84,4 +83,3 @@ Sie können diese Version  des Experiments nun weiterhin ändern und ausführen,
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-

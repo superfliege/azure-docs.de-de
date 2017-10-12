@@ -16,14 +16,12 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 07/05/2017
 ms.author: janeng
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 946492e1d4b784a2a70b553826b4ec837799ff6d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Verwenden Sie zum Verschieben einer Azure SQL-Datenbank in einem elastischen SQL-Pool eine Befehlszeilenschnittstelle.
 
 In diesem Azure CLI-Beispielskript werden zwei Pools erstellt, eine Azure SQL-Datenbank aus einem elastischen SQL-Pool in einen anderen und dann eine Datenbank aus einem elastischen Pool auf eine Einzeldatenbank-Leistungsstufe von Azure verschoben. 
@@ -36,7 +34,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/move-database-between-pools/move-database-between-pools.sh "Verschieben der Datenbank zwischen Pools")]
+[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/move-database-between-pools/move-database-between-pools.sh "Move database between pools")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -64,6 +62,5 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
 
 Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../sql-database-cli-samples.md).
-
 
 

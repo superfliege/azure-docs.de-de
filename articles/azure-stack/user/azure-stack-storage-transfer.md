@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: xiaofmao
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9799498a11449a9ed496d0fdb40312603eda064e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tools-for-azure-stack-storage"></a>Tools für Azure Stack-Speicher
 
@@ -36,7 +35,7 @@ Welches Tool am besten für Sie geeignet ist, hängt von Ihren Anforderungen ab:
 
     Eine aufgabenbasierte Befehlszeilenshell und Skriptsprache, die speziell für die Systemverwaltung entwickelt wurde.
 
-* [Azure-CLI](#azure-cli)
+* [Azure-Befehlszeilenschnittstelle](#azure-cli)
 
     Ein plattformübergreifendes Tool auf Open-Source-Basis, das eine Reihe von Befehlen zum Arbeiten mit der Azure- und Azure Stack-Plattform bietet.
 
@@ -234,5 +233,4 @@ Weitere Informationen zu Microsoft Azure Storage-Explorer finden Sie unter [Erst
 * [Erste Schritte mit dem Storage-Explorer (Vorschau)](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Azure Stack-Speicher: Unterschiede und Überlegungen](azure-stack-acs-differences.md)
 * [Einführung in Microsoft Azure Storage](../../storage/common/storage-introduction.md)
-
 

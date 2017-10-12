@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 73d0dabe5b8b179cbc0847c2819947febd6ef4d8
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store
 Erfahren Sie, wie Sie die Diagnoseprotokollierung für Ihr Data Lake Store-Konto aktivieren, und wie Sie die für Ihr Konto erfassten Protokolle anzeigen.
@@ -183,5 +182,4 @@ Azure Data Lake Store stellt ein Muster bereit, nach dem die Protokolldaten vera
 ## <a name="see-also"></a>Siehe auch
 * [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 * [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
-
 

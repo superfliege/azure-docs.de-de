@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: bf190741b10c10e885d927ad21a9f2b25107943f
-ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: b167a0584740a4e583a35bd6d44ec5d616ba04f7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Erstellen eines benutzerdefinierten Tests für ein Azure Application Gateway (klassisch) mithilfe von PowerShell
 
@@ -211,5 +210,4 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 Wenn Sie die SSL-Auslagerung (Secure Sockets Layer) konfigurieren möchten, lesen Sie den Abschnitt [Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung](application-gateway-ssl.md).
 
 Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, lesen Sie den Abschnitt [Erstellen eines Anwendungsgateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
-
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: b3ae472d52208d3c76424d29192c1eb982639572
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Probleme beim Hinzufügen einer Azure AD-Kataloganwendung
 
@@ -110,7 +110,7 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
 ### <a name="detailed-notification-items"></a>Detaillierte Benachrichtigungselemente
 
--   **Anzeigename:** **(kann leer sein)** ein detaillierterer Anzeigename für den Fehler
+-   **Anzeigename:****(kann leer sein)** ein detaillierterer Anzeigename für den Fehler
 
     -   Beispiel: **Anwendungsproxyeinstellungen**
 
@@ -118,7 +118,7 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
     -   Beispiel: **Fehler**
 
--   **Objekt-ID:** **(kann leer sein)** die Objekt-ID, für die der Vorgang durchgeführt wurde
+-   **Objekt-ID:****(kann leer sein)** die Objekt-ID, für die der Vorgang durchgeführt wurde
 
     -   Beispiel: **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 

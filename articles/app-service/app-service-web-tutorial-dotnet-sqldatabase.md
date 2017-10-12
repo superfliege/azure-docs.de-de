@@ -15,14 +15,12 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 810d3281ee1bcf15fb61ecea4e5de0c8fbc0bc8e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank
 
 [Azure-Web-Apps](app-service-web-overview.md) bietet einen hochgradig skalierbaren Webhosting-Dienst mit Self-Patching. In diesem Tutorial wird veranschaulicht, wie Sie eine datengesteuerte ASP.NET-Web-App in Azure bereitstellen und dafür eine Verbindung mit [Azure SQL-Datenbank](../sql-database/sql-database-technical-overview.md) herstellen. Am Ende dieses Lernprogramms verfügen Sie über eine ASP.NET-App, die in Azure ausgeführt wird und mit SQL-Datenbank verbunden ist.
@@ -431,4 +429,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie der Web-App 
 
 > [!div class="nextstepaction"]
 > [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](app-service-web-tutorial-custom-domain.md)
-

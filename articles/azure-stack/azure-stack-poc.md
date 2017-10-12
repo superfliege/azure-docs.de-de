@@ -15,12 +15,11 @@ ms.topic: overview
 ms.date: 09/25/2017
 ms.author: helaw
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 950ba44c0b7eb80c9b0a3c69a9fca03cd244576d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-stack"></a>Was ist Azure Stack?
 
@@ -41,5 +40,4 @@ Für das Azure Stack Development Kit gelten die folgenden Einschränkungen:
 [Wichtige Features und Konzepte](azure-stack-key-features.md)
 
 [Azure Stack: Eine Erweiterung von Azure (pdf)](https://azure.microsoft.com/en-us/resources/azure-stack-an-extension-of-azure/)
-
 

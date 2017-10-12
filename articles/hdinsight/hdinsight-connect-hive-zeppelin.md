@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: b44321619f2aa94a6d98624ab1ee35a598fb6fc8
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Verwenden von Zeppelin zum Ausführen von Hive-Abfragen in Azure HDInsight 
 
@@ -83,4 +82,3 @@ In diesem Artikel haben Sie gelernt, wie Sie Daten aus HDInsight mithilfe von Po
 * [Connect to Azure HDInsight and run Hive queries using Data Lake Tools for Visual Studio (Verbinden mit Azure HDInsight und Ausführen von Hive-Abfragen mithilfe von Data Lake-Tools für Visual Studio)](./hdinsight-hadoop-visual-studio-tools-get-started.md).
 * [Verwenden von Azure HDInsight-Tools für Visual Studio Code](hdinsight-for-vscode.md)
 * [Upload data to HDInsight (Hochladen von Daten in HDInsight)](./hdinsight-upload-data.md).
-

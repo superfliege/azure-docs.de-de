@@ -13,10 +13,10 @@ ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: ca7092a06a9ffce8383ca8bc9f70ce312cdf9de4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-hosting-model"></a>Service Fabric-Hostingmodell
 Dieser Artikel bietet einen Überblick über von Service Fabric bereitgestellte Anwendungshostingmodelle, und beschreibt die Unterschiede zwischen dem Modell mit einem **gemeinsam genutzten Prozess** und dem Modell mit einem **exklusiven Prozess**. Er beschreibt die Darstellung einer bereitgestellten Anwendung auf einem Service Fabric-Knoten und die Beziehung zwischen Replikaten (oder Instanzen) des Diensts und dem service-host-Prozess.

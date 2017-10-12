@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: magoedte
+ms.openlocfilehash: 91af774560860b35913e57b49fb7a1dd59f5640f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 9ae1629462d375c1061d9c7b25975c789ee661c9
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics-Datensicherheit
 Microsoft ist bestrebt, bei der Bereitstellung von Software und Diensten, mit denen Sie die IT-Infrastruktur Ihres Unternehmens verwalten, Ihre Privatsphäre und Ihre Daten zu schützen. Wenn Sie Ihre Daten anderen anvertrauen, setzt dieses Vertrauen strikte Sicherheit voraus. Das wissen wir. Microsoft hält strenge Compliance- und Sicherheitsrichtlinien ein – angefangen bei der Codierung bis hin zum Betreiben von Diensten.
@@ -165,4 +164,3 @@ Sie können sich im OMS-Portal bei Log Analytics anmelden, indem Sie ein zuvor e
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erste Schritte mit Log Analytics](log-analytics-get-started.md). Hier erfahren Sie mehr über Log Analytics und wie Sie binnen Minuten loslegen können.
-

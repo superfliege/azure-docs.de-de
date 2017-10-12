@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/06/2017
 ms.author: charwen
 ms.openlocfilehash: c3a85b9445d69330c3f6c7d298169efddb6ecca0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="optimize-expressroute-routing"></a>Optimieren von ExpressRoute-Routing
 Wenn Sie mehrere ExpressRoute-Verbindungen nutzen, verfügen Sie über mehr als einen Weg zur Herstellung einer Verbindung mit Microsoft. Dies kann ein suboptimales Routing zur Folge haben. Es kann also sein, dass Ihr Datenverkehr für den Weg zu Microsoft und von Microsoft in Ihr Netzwerk mehr Zeit benötigt. Je länger der Netzwerkpfad, desto höher die Latenz. Die Latenz wirkt sich direkt auf die Anwendungsleistung und die Benutzerfreundlichkeit aus. In diesem Artikel wird dieses Problem veranschaulicht, und es wird beschrieben, wie Sie das Routing mit den standardmäßigen Routingtechnologien optimieren.

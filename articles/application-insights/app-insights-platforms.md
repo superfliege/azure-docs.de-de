@@ -1,6 +1,6 @@
 ---
-title: "Application Insights: Sprachen, Plattformen und Integrationsmöglichkeiten | Microsoft Docs"
-description: "Verfügbare Sprachen, Plattformen und Integrationsmöglichkeiten für Application Insights"
+title: "Application Insights: Programmiersprachen, Plattformen und Integrationsmöglichkeiten | Microsoft Docs"
+description: "Verfügbare Programmiersprachen, Plattformen und Integrationsmöglichkeiten für Application Insights"
 services: application-insights
 documentationcenter: 
 author: OlegAnaniev-MSFT
@@ -13,23 +13,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 7f9b886259c065627055f62a3636ab65434ca57b
-ms.contentlocale: de-de
-ms.lasthandoff: 05/23/2017
-
+ms.openlocfilehash: d49ad2ff584f42c0e4732a5cff60d23cdf631512
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="developer-analytics-languages-platforms-and-integrations"></a>Entwickleranalysen: Sprachen, Plattformen und Integrationsmöglichkeiten
+# <a name="developer-analytics-languages-platforms-and-integrations"></a>Entwickleranalysen: Programmiersprachen, Plattformen und Integrationsmöglichkeiten
 Bei diesen Elementen handelt es sich um Implementierungen von [Application Insights](app-insights-overview.md), von denen wir gehört haben. Einige davon stammen von Drittanbietern.
 
-## <a name="languages---officially-supported-by-application-insights-team"></a>Sprachen – offiziell vom Application Insights-Team unterstützt
+## <a name="languages---officially-supported-by-application-insights-team"></a>Programmiersprachen – offiziell vom Application Insights-Team unterstützt
 * [C#|VB (.NET)](app-insights-asp-net.md)
 * [Java](app-insights-java-get-started.md)
 * [JavaScript-Webseiten](app-insights-javascript.md)
+* [Node.JS](app-insights-nodejs.md)
 
-## <a name="languages---community-supported"></a>Sprachen – von der Community unterstützt
-* [Node.JS](https://github.com/Microsoft/ApplicationInsights-node.js)
+## <a name="languages---community-supported"></a>Programmiersprachen – von der Community unterstützt
 * [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 * [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
 * [Ruby](https://rubygems.org/gems/application_insights)
@@ -83,5 +82,4 @@ Bei diesen Elementen handelt es sich um Implementierungen von [Application Insig
 * [Stream Analytics](app-insights-export-power-bi.md)
 
 ## <a name="projects"></a> Erstellen eines eigenen SDK
-Wenn für Ihre Sprache oder Plattform noch kein SDK vorhanden ist, können Sie eins erstellen. Sehen Sie sich den Code der vorhandenen SDKs an, die im [Application Insights-SDK-Projekt auf GitHub](https://github.com/Microsoft/AppInsights-Home)aufgeführt sind.
-
+Wenn für Ihre Programmiersprache oder Plattform noch kein SDK vorhanden ist, können Sie eins erstellen. Sehen Sie sich den Code der vorhandenen SDKs an, die im [Application Insights-SDK-Projekt auf GitHub](https://github.com/Microsoft/AppInsights-Home)aufgeführt sind.

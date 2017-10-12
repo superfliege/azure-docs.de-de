@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4050fdc2056df395bbcc37e3783f61eebd90f80a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Lösungs-Playbook zur Fahrzeugtelemetrieanalyse: Ausführliche Betrachtung der Lösung
 Dieses **Menü** enthält Links zu den Abschnitten des Playbooks: 
@@ -377,7 +376,7 @@ Weitere Informationen zu allen „Windowing“-Funktionen in Azure Stream Analyt
 
 Die Projektmappe enthält eine Anwendung, mit der das Machine Learning-Modell in Echtzeit operationalisiert werden kann. Diese Anwendung hat den Namen „RealTimeDashboardApp“ und wird im Rahmen der Lösungsbereitstellung erstellt und konfiguriert. Die Anwendung führt Folgendes aus:
 
-1. Überwacht eine Event Hub-Instanz, in der Stream Analytics die Ereignisse fortlaufend in einem Muster veröffentlicht. ![Stream Analytics-Abfrage zum Veröffentlichen der Daten](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig14-vehicle-telematics-stream-analytics-query-for-publishing.png) *Abbildung 14 – Stream Analytics-Abfrage zum Veröffentlichen der Daten auf einer Event Hub-Ausgabeinstanz* 
+1. Überwacht eine Event Hub-Instanz, in der Stream Analytics die Ereignisse fortlaufend in einem Muster veröffentlicht. ![Stream Analytics-Abfrage zum Veröffentlichen der Daten](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig14-vehicle-telematics-stream-analytics-query-for-publishing.png)*Abbildung 14 – Stream Analytics-Abfrage zum Veröffentlichen der Daten auf einer Event Hub-Ausgabeinstanz* 
 2. Für jedes Ereignis, das diese Anwendung empfängt, wird Folgendes durchgeführt: 
    
    * Die Daten werden über einen Endpunkt mit Machine Learning-Request-Response-Bewertung (RRS) verarbeitet. Der RRS-Endpunkt wird automatisch als Teil der Bereitstellung veröffentlicht.
@@ -699,5 +698,4 @@ Klicken Sie hier, um eine ausführliche Anleitung zum Einrichten der Power BI-Be
 
 ## <a name="summary"></a>Zusammenfassung
 In diesem Dokument wird die Projektmappe für die Fahrzeugtelemetrieanalyse (Vehicle Telemetry Analytics) ausführlich beschrieben. Es wird ein Lambda-Architekturmuster für die Echtzeit- und Batchanalyse mit Vorhersagen und Aktionen veranschaulicht. Dieses Muster gilt für eine Vielzahl von Anwendungsfällen, für die „Hot Path“-Analysen (Echtzeit) und „Cold Path“-Analysen (Batch) erforderlich sind. 
-
 

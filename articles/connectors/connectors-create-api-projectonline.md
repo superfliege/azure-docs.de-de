@@ -1,6 +1,6 @@
 ---
-title: ProjectOnline-Connector in Azure-Logik-Apps | Microsoft Docs
-description: "Erstellen Sie mit Azure App Service-Logik-apps. Project Online ist eine flexible onlinelösung für das projektportfoliomanagement (PPM) und die tägliche Arbeit von Microsoft. Übermittelt und Office 365, Project Online können Organisationen schnell mit Verwaltungsfunktionen zu planen, priorisieren und Verwalten von Projekten und Projekt Portfolio Investitionen leistungsstarke Projekt beginnen – praktisch von überall aus auf fast jedem Gerät."
+title: "ProjectOnline-Connector für Azure Logic Apps | Microsoft-Dokumentation"
+description: "Erstellen Sie Logik-Apps mit Azure App Service. Project Online ist eine flexible Onlinelösung von Microsoft für das für Projektportfoliomanagement (PPM) und die tägliche Arbeit. Project Online wird über Office 365 bereitgestellt und verschafft Organisationen einen schnellen Zugang zu leistungsfähigen Projektmanagementfunktionen. So können sie kurzfristig Projekte und Investitionen in Projektportfolios planen, priorisieren und steuern – an fast jedem Ort und auf nahezu jedem Gerät."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -16,29 +16,29 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
 ms.openlocfilehash: b075e2eb36f54afb7544e0aeb698701cd224ff93
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-the-projectonline-connector"></a>Erste Schritte mit dem ProjectOnline-connector
-Project Online ist eine flexible onlinelösung für das projektportfoliomanagement (PPM) und die tägliche Arbeit von Microsoft. Übermittelt und Office 365, Project Online können Organisationen schnell mit Verwaltungsfunktionen zu planen, priorisieren und Verwalten von Projekten und Projekt Portfolio Investitionen leistungsstarke Projekt beginnen – praktisch von überall aus auf fast jedem Gerät.
+# <a name="get-started-with-the-projectonline-connector"></a>Erste Schritte mit dem Project Online-Connector
+Project Online ist eine flexible Onlinelösung von Microsoft für das für Projektportfoliomanagement (PPM) und die tägliche Arbeit. Project Online wird über Office 365 bereitgestellt und verschafft Organisationen einen schnellen Zugang zu leistungsfähigen Projektmanagementfunktionen. So können sie kurzfristig Projekte und Investitionen in Projektportfolios planen, priorisieren und steuern – an fast jedem Ort und auf nahezu jedem Gerät.
 
-Erstellen Sie eine Logik-app jetzt beginnen können, finden Sie unter [erstellen Sie eine Logik-app](../logic-apps/logic-apps-create-a-logic-app.md).
+Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) beschrieben.
 
-## <a name="create-a-connection-to-projectonline"></a>Erstellen Sie eine Verbindung mit ProjectOnline
-Um die Logik-apps mit ProjectOnline zu erstellen, erstellen Sie zuerst eine **Verbindung** Geben Sie die Details für die folgenden Eigenschaften: 
+## <a name="create-a-connection-to-projectonline"></a>Herstellen einer Verbindung mit Project Online
+Um Logik-Apps mit Project Online zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben: 
 
 | Eigenschaft | Erforderlich | Beschreibung |
 | --- | --- | --- |
-| Token |Ja |Geben Sie die Anmeldeinformationen ProjectOnline |
+| Tokenverschlüsselung |Ja |Angeben der Anmeldeinformationen für Project Online |
 
 > [!INCLUDE [Steps to create a connection to ProjectOnline](../../includes/connectors-create-api-projectonline.md)]
 > 
 
-## <a name="connector-specific-details"></a>Connector-spezifische details
+## <a name="connector-specific-details"></a>Connectorspezifische Details
 
-Alle Trigger und in der Swagger definierte Aktionen anzeigen, und Lesen Sie auch die Grenzwerte in der [connectordetails](/connectors/projectonline/).
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/projectonline/) an.
 
-## <a name="more-connectors"></a>Mehrere connectors
-Wechseln Sie zurück zu den [APIs Liste](apis-list.md).
+## <a name="more-connectors"></a>Weitere Connectors
+Gehen Sie zur [Liste der APIs](apis-list.md)zurück.

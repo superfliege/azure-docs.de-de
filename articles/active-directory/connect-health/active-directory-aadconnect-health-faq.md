@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 902e5bdfbbf04ab70989be8c41e16eb69e475908
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.

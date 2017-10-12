@@ -16,10 +16,10 @@ ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: d63692f02b3dec50a1e7df034b8915bb450b4cfd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # Azure Active Directory v2.0 und das OpenID Connect-Protokoll
 OpenID Connect ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, mit dem Benutzer sicher bei Webanwendungen angemeldet werden können. Die Implementierung von OpenID Connect im v2.0-Endpunkt ermöglicht es Ihnen, Anmeldungen und API-Zugriff für Ihre webbasierten Apps hinzuzufügen. In diesem Artikel erfahren Sie, wie dies unabhängig von der Sprache ausgeführt wird. Er beschreibt, wie HTTP-Nachrichten ohne Verwendung von Microsoft Open Source-Bibliotheken gesendet und empfangen werden.
@@ -29,7 +29,7 @@ OpenID Connect ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, 
 > 
 > 
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) erweitert das OAuth 2.0-*Autorisierungsprotokoll* für die Verwendung als *Authentifizierungsprotokoll*, sodass Sie die einmalige Anmeldung mithilfe von OAuth durchführen können. OpenID Connect führt das Konzept eines *ID-Tokens* ein. Hierbei handelt es sich um ein Sicherheitstoken, mit dem der Client die Identität des Benutzers überprüfen kann. Ferner ruft das ID-Token auch Basisprofilinformationen über den Benutzer ab. Da OpenID Connect das OAuth 2.0-Protokoll erweitert, können Apps auf sichere Weise *Zugriffstoken* abrufen, die für den Zugriff auf Ressourcen verwendet werden können, welche mithilfe eines [Autorisierungsservers](active-directory-v2-protocols.md#the-basics) geschützt werden. OpenID Connect wird für das Erstellen von [Webanwendungen](active-directory-v2-flows.md#web-apps) empfohlen, die auf einem Server gehostet werden und auf die über einen Browser zugegriffen wird.
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) erweitert das OAuth 2.0-*Autorisierungs*protokoll für die Verwendung als *Authentifizierungs*protokoll, sodass Sie das einmalige Anmelden mithilfe von OAuth durchführen können. OpenID Connect führt das Konzept eines *ID-Tokens* ein. Hierbei handelt es sich um ein Sicherheitstoken, mit dem der Client die Identität des Benutzers überprüfen kann. Ferner ruft das ID-Token auch Basisprofilinformationen über den Benutzer ab. Da OpenID Connect das OAuth 2.0-Protokoll erweitert, können Apps auf sichere Weise *Zugriffstoken* abrufen, die für den Zugriff auf Ressourcen verwendet werden können, welche mithilfe eines [Autorisierungsservers](active-directory-v2-protocols.md#the-basics) geschützt werden. OpenID Connect wird für das Erstellen von [Webanwendungen](active-directory-v2-flows.md#web-apps) empfohlen, die auf einem Server gehostet werden und auf die über einen Browser zugegriffen wird.
 
 ## Protokolldiagramm – Anmeldung
 Der grundlegende Anmeldefluss besteht aus den in der nächsten Abbildung gezeigten Schritten. Jeder Schritt wird in diesem Artikel detailliert beschrieben.

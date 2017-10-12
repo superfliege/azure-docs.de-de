@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: johnkem
 ms.openlocfilehash: 1a885166e5c71f13da222bfc22b0fc579096c52f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Konfigurieren eines Webhooks für eine Azure-Metrikwarnung
 Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, Fehler protokollieren, ein Team per Chat-/Messagingdienst benachrichtigen oder beliebige andere Aktionen ausführen. In diesem Artikel erfahren Sie, wie Sie einen Webhook für eine Azure-Metrikwarnung festlegen und wie die Nutzlast für den an einen Webhook gerichteten HTTP POST-Vorgang aussieht. Informationen zur Einrichtung und zum Schema einer Azure-Aktivitätsprotokollwarnung (Warnung für Ereignisse) finden Sie auf [dieser Seite](insights-auditlog-to-webhook-email.md).

@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
+ms.openlocfilehash: d70186513b7313c8181092bc93a723f21154f7bc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 038bb4cf0a9278416261c05ddaa0ee97d83b63c5
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>Erstellen einer Funktion, die durch einen GitHub-Webhook ausgelöst wird
 
@@ -109,4 +108,3 @@ Sie haben eine Funktion erstellt, die ausgeführt wird, wenn eine Anforderung vo
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
 Weitere Informationen zu Webhooktriggern finden Sie unter [HTTP- und Webhookbindungen in Azure Functions](functions-bindings-http-webhook.md).
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7a54771d99f2719fcc345496b152a5d3acc02121
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>Übersicht über das Anbieten von Diensten in Azure Stack
 
@@ -45,5 +44,4 @@ Berücksichtigen Sie beim Planen Ihrer Angebote Folgendes:
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erfahren Sie mehr über Angebote, Pläne, Kontingente und Abonnements](azure-stack-plan-offer-quota-overview.md)
-
 

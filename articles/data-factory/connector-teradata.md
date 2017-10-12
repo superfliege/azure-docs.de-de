@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 77cf65930a6d622e54395dd563901977c9d76170
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Kopieren von Daten aus Teradata mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -57,12 +56,12 @@ Folgende Eigenschaften werden für den mit Teradata verknüpften Dienst unterst�
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **Teradata** festgelegt sein. | Ja |
+| Typ | Die „type“-Eigenschaft muss auf **Teradata** festgelegt sein. | Ja |
 | server | Name des Teradata-Servers. | Ja |
 | authenticationType | Typ der Authentifizierung für die Verbindung mit der Teradata-Datenbank.<br/>Zulässige Werte: **Basic** und **Windows**. | Ja |
 | username | Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der Teradata-Datenbank an. | Ja |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. Legen Sie für dieses Feld „SecureString“ fest. | Ja |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbst gehostete Integration Runtime ist erforderlich. Siehe [Voraussetzungen](#prerequisites). |Ja |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
 
 **Beispiel:**
 
@@ -126,7 +125,7 @@ Legen Sie zum Kopieren von Daten aus Teradata den Quellentyp in der Kopieraktivi
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **RelationalSource** festgelegt werden. | Ja |
+| Typ | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **RelationalSource** festgelegt werden. | Ja |
 | query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ in „dataset“ angegeben ist) |
 
 **Beispiel:**

@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
+ms.openlocfilehash: 461ddfda796bfe6639e27f6c4cd53e82b4e397d1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 8c59fa7e9315922af4fab5f8492194b50459ef8b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-in-transit-with-encryption"></a>Azure-Verschlüsselungstechnologien: Schützen personenbezogener Daten während der Übertragung mithilfe von Verschlüsselung
 
@@ -195,4 +194,3 @@ Das Unternehmen kann sein Ziel der Sicherung personenbezogener Daten und der Gew
 - [Häufig gestellte Fragen zum VPN-Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vpn-faq)
 
 - [Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service](https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site)
-

@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 09/11/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 7ac85bffb9593923808c77f2240e6f0e841e74cd
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-and-use-azure-container-registry"></a>Bereitstellen und Verwenden von Azure Container Registry
 
 Dies ist der zweite Teil eines dreiteiligen Tutorials. Im [vorherigen Schritt](./container-instances-tutorial-prepare-app.md) wurde ein Containerimage für eine einfache in [Node.js](http://nodejs.org) geschriebene Webanwendung erstellt. In diesem Tutorial wird dieses Image per Push in eine Azure Container Registry-Instanz übertragen. Wenn Sie das Containerimage noch nicht erstellt haben, kehren Sie zu [Tutorial 1 – Erstellen von Containerimages](./container-instances-tutorial-prepare-app.md) zurück. 
@@ -166,4 +164,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um mehr über die Bereitstellung des
 
 > [!div class="nextstepaction"]
 > [Bereitstellen von Containern in Azure Container Instances](./container-instances-tutorial-deploy-app.md)
-

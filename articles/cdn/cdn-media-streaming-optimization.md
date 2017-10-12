@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.translationtype: HT
-ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
 ms.openlocfilehash: 02cd0fe30a2a14f42a16ed12f714d496bbb23b36
-ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-streaming-optimization-via-the-azure-content-delivery-network"></a>Medienstreaming-Optimierung über das Azure Content Delivery Network 
  
@@ -98,5 +97,4 @@ Mit der partiellen Cachefreigabe kann das CDN teilweise zwischengespeicherte Inh
 ### <a name="cache-fill-wait-time"></a>Wartezeit für die Cacheauffüllung
 
  Durch die Wartezeit für die Cacheauffüllung wird erzwungen, dass der Edgeserver sämtliche nachfolgende Anforderungen für die Ressource zurückstellt, bis HTTP-Antwortheader vom Ursprungsserver eingehen. Wenn vor Ablauf der Wartezeit HTTP-Antwortheader vom Ursprungsserver eingehen, werden alle zurückgestellten Anforderungen über den wachsenden Cache bedient. Gleichzeitig wird der Cache mit Daten des Ursprungsservers gefüllt. Die Wartezeit für die Cacheauffüllung ist standardmäßig auf 3.000 Millisekunden festgelegt. 
-
 

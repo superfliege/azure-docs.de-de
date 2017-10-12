@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f7a924b576690f5b76418a3de6221ef6c39c39f0
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>Verschieben von Daten in und aus Azure Blob Storage mithilfe von AzCopy
 AzCopy ist ein Befehlszeilenprogramm, das zum Hochladen, Herunterladen und Kopieren von Daten in und aus Microsoft Azure-Blob-, -Datei- und -Tabellenspeicher konzipiert wurde.
@@ -89,5 +88,4 @@ Verwenden Sie zum Übertragen von Blobs zwischen Azure-Containern den folgenden 
 > 3. Sie können mit dem **/Source** -Parameter keine *bestimmte Blobdatei* für das Herunterladen angeben. Um eine bestimmte Datei herunterzuladen, geben Sie den Blobdateinamen mithilfe des */Pattern* -Parameters an. **/S** -Parameter kann verwendet werden, damit AzCopy rekursiv nach einem Dateinamensmuster sucht. Ohne den „/Pattern“-Parameter lädt AzCopy alle Dateien in diesem Verzeichnis herunter.
 > 
 > 
-
 

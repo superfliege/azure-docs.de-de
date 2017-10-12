@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/25/2017
 ms.author: jdial
 ms.custom: 
+ms.openlocfilehash: bfeba57036338b4e325d2f122443f2cde0373eed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: 701a8febb3f897fd7f1a81a00adb4635df153d3a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-public-ip-address-in-an-availability-zone-with-powershell"></a>Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit PowerShell
 
 Sie können eine öffentliche IP-Adresse in einer Azure-Verfügbarkeitszone (Vorschau) bereitstellen. Eine Verfügbarkeitszone ist eine physisch separate Zone in einer Azure-Region. In diesem Artikel werden folgende Themen erläutert:

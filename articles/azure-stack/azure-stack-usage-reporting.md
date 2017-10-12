@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: sngun;AlfredoPizzirani
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 695b93a818d3c0e615bb79e0a2861e134b2f5c89
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="report-azure-stack-usage-data-to-azure"></a>Melden von Azure Stack-Nutzungsdaten an Azure 
 
 Nutzungsdaten, auch Verbrauchsdaten genannt, stellen die Menge der verwendeten Ressourcen dar. Die integrierten Azure Stack-Systeme, die das nutzungsbasierte Abrechnungsmodell verwenden, sollten die Nutzungsdaten an Azure melden. Diese Nutzungsdaten werden für Abrechnungszwecke verwendet. Der Azure Stack-Operator ist für die Konfiguration der Nutzungsdaten-Berichterstellung in seiner Azure Stack-Umgebung verantwortlich.

@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: c8ba8743fbadc2c40762d555a8c573c741a75282
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-excel-to-hadoop-by-using-power-query"></a>Verbinden von Excel mit Hadoop mithilfe von Power Query
 Eine der wichtigsten Features der Big Data-Lösung von Microsoft ist die Integration von Microsoft Business Intelligence (BI)-Komponenten in Hadoop-Cluster in Azure HDInsight. Ein gutes Beispiel ist die Möglichkeit, Excel mithilfe von Microsoft Power Query für Excel-Add-Ins mit dem Azure Storage-Konto zu verbinden, das die dem Hadoop-Cluster zugeordneten Daten enthält. Dieser Artikel beschreibt die Einrichtung und Verwendung von Power Query für die Abfrage von Daten aus einem mit HDInsight verwalteten Hadoop-Cluster.
@@ -87,4 +86,3 @@ In diesem Artikel haben Sie gelernt, wie Sie Daten aus HDInsight mithilfe von Po
 [image-hdi-powerquery-imported-table]: ./media/hdinsight-connect-excel-power-query/hdi.powerquery.importedtable.PNG
 
 [powerquery-download]: http://go.microsoft.com/fwlink/?LinkID=286689
-

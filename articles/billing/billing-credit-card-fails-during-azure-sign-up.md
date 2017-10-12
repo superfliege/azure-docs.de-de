@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: cjiang
 ms.openlocfilehash: bad37f2447ac8de727326914b611f81effc9cf3f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="your-debit-card-or-credit-card-is-declined-at-azure-sign-up"></a>Kreditkarte oder Debitkarte wird abgelehnt, wenn ich versuche, mich bei Azure zu registrieren
 Falls Ihre Debit- oder Kreditkarte bei der Registrierung für Azure abgelehnt bzw. nicht akzeptiert wird, müssen Sie ggf. eines der unten angegebenen Probleme beheben:

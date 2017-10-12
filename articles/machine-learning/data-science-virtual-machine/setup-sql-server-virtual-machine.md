@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: xibingao;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ac39de97174e58964b48601d559abeba5e624c21
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-an-azure-sql-server-virtual-machine-as-an-ipython-notebook-server-for-advanced-analytics"></a>Einrichten eines virtuellen Azure SQL Server-Computers als IPython Notebook-Server für die erweiterte Analyse
 In diesem Thema wird das Bereitstellen und Konfigurieren eines virtuellen SQL Server-Computers als Teil einer cloudbasierten Data Science-Umgebung beschrieben. Der virtuelle Windows-Computer wird mit Unterstützung von Tools wie IPython Notebook, Azure-Speicher-Explorer und AzCopy sowie anderer Hilfsprogramme, die für Data Science-Projekte hilfreich sind, konfiguriert. Azure Storage-Explorer und AzCopy stellen z. B. hilfreiche Möglichkeiten zum Hochladen von Daten von Ihrem lokalen Computer in den Azure-Blobspeicher oder das Herunterladen aus dem Blobspeicher auf Ihren lokalen Computer bereit.
@@ -274,5 +273,4 @@ Die nächsten Schritte im Data Science-Prozess sind unter [Team Data Science-Pro
 [12]: ./media/setup-sql-server-virtual-machine/25sysadmin.png
 [13]: ./media/setup-sql-server-virtual-machine/amlreader.png
 [15]: ./media/setup-sql-server-virtual-machine/vmshutdown.png
-
 

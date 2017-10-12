@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 09/06/2017
 ms.author: glenga
 ms.custom: mvc, devcenter
+ms.openlocfilehash: 3d9e7a4eb6d94067af6b5c64e71910694d5a6077
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 8baa8e950164de64d1cd91c0c5bb51d324bbc807
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Erstellen Ihrer ersten Funktion mit Visual Studio
 
@@ -108,5 +107,4 @@ Sie haben Visual Studio genutzt, um eine C#-Funktions-App mit einer einfachen Fu
 + Informationen zum Konfigurieren Ihres Projekts für die Unterstützung anderer Arten von Triggern und Bindungen finden Sie unter [Azure Functions-Tools für Visual Studio](functions-develop-vs.md) im Abschnitt [Konfigurieren des Projekts für die lokale Entwicklung](functions-develop-vs.md#configure-the-project-for-local-development).
 + Weitere Informationen zum lokalen Testen und Debuggen mit den Azure Functions Core-Tools finden Sie unter [Lokales Codieren und Testen von Azure-Funktionen](functions-run-local.md). 
 + Weitere Informationen zum Entwickeln von Funktionen wie .NET-Klassenbibliotheken finden Sie unter [Using .NET class libraries with Azure Functions](functions-dotnet-class-library.md) (Verwenden von .NET-Klassenbibliotheken mit Azure Functions). 
-
 

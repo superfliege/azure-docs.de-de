@@ -8,14 +8,12 @@ ms.topic: article
 ms.date: 9/25/2017
 ms.author: victorh
 keywords: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 02d73a3d843ee7cd3cdfbf6b137908e03d7306a7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Integration des Azure Stack-Datencenters – Veröffentlichen von Endpunkten
 
 *Gilt für: Integrierte Azure Stack-Systeme*
@@ -37,7 +35,7 @@ Interne Infrastruktur-VIPs sind nicht aufgeführt, da sie zum Veröffentlichen v
 > Benutzer-VIPs sind dynamisch und werden von den Benutzern selbst definiert. Der Azure Stack-Betreiber hat darauf keinen Einfluss.
 
 
-|Endpunkt (VIP)|A-Eintrag des DNS-Hosts|Protokoll|Ports|
+|Endpunkt (VIP)|A-Eintrag des DNS-Hosts|Protocol|Ports|
 |---------|---------|---------|---------|
 |AD FS|`Adfs.[Region].[External FQDN]`|HTTPS|443|
 |Portal (Administrator)|`Adminportal.[Region].[External FQDN]`|HTTPS|443|
@@ -47,8 +45,8 @@ Interne Infrastruktur-VIPs sind nicht aufgeführt, da sie zum Veröffentlichen v
 |Graph|`Graph.[Region].[External FQDN]`|HTTPS|443|
 |Zertifikatsperrliste|`Crl.[Region].[External FQDN]`|HTTP|80|
 |DNS|`*.[Region].[External FQDN]`|TCP und UDP|53|
-|Schlüsseltresor (Benutzer)|`*.vault.[Region].[External FQDN]`|TCP<br>TCP|443<br>12490|
-|Schlüsseltresor (Administrator)|`*.adminvault.[Region].[External FQDN]`|TCP<br>TCP|443<br>12492|
+|Key Vault (Benutzer)|`*.vault.[Region].[External FQDN]`|TCP<br>TCP|443<br>12490|
+|Key Vault (Administrator)|`*.adminvault.[Region].[External FQDN]`|TCP<br>TCP|443<br>12492|
 |Speicherwarteschlange|`*.queue.[Region].[External FQDN]`|HTTP<br>HTTPS|80<br>443|
 |Speichertabelle|`*.table.[Region].[External FQDN]`|HTTP<br>HTTPS|80<br>443|
 |Speicherblob|`*.blob.[Region].[External FQDN]`|HTTP<br>HTTPS|80<br>443|
@@ -58,7 +56,7 @@ Interne Infrastruktur-VIPs sind nicht aufgeführt, da sie zum Veröffentlichen v
 Azure Stack unterstützt nur transparente Proxyserver. In einer Bereitstellung mit einem Uplink zwischen einem transparenten Proxy und einem herkömmlichen Proxyserver müssen für die ausgehende Kommunikation die folgenden Ports und URLs zugelassen werden:
 
 
-|Zweck|URL|Protokoll|Ports|
+|Zweck|URL|Protocol|Ports|
 |---------|---------|---------|---------|
 |Identity|`login.windows.net`<br>`login.microsoftonline.com`<br>`graph.windows.net`|HTTP<br>HTTPS|80<br>443|
 |Marketplace-Syndikation|`https://management.azure.com`<br>`https://*.blob.core.windows.net`<br>`https://*.azureedge.net`<br>`https://*.microsoftazurestack.com`|HTTPS|443|

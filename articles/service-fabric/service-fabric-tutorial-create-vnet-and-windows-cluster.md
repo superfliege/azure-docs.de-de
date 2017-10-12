@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2017
 ms.author: ryanwi
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 7cee4f8d68062dcfd2b6f61d55319160a2a80a98
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Bereitstellen eines Service Fabric-Windows-Clusters in einem virtuellen Azure-Netzwerk
 Dieses Tutorial ist der erste Teil einer Serie. Hier erfahren Sie, wie Sie mithilfe der PowerShell einen Service Fabric-Windows-Cluster in einem vorhandenen virtuellen Azure-Netzwerk (VNET) und Subnetz bereitstellen. Wenn Sie fertig sind, verfügen Sie über einen Cluster, der in der Cloud ausgeführt wird und für den Sie Anwendungen bereitstellen können.  Informationen zum Erstellen eines Linux-Clusters per Azure CLI finden Sie unter [Erstellen eines sicheren Linux-Clusters in Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
@@ -252,4 +250,3 @@ Als Nächstes fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Si
 
 [cluster-arm]:https://github.com/Azure-Samples/service-fabric-api-management/blob/master/cluster.json
 [cluster-parameters-arm]:https://github.com/Azure-Samples/service-fabric-api-management/blob/master/cluster.parameters.json
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2017
 ms.author: kgremban
+ms.openlocfilehash: 231028a7389dba50efe7d197837855b39826f9b9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 6239e0affd778f8f64222abce769841b27d6be1d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-multi-factor-authentication"></a>Was ist Azure Multi-Factor Authentication?
 Die Überprüfung in zwei Schritten ist eine Authentifizierungsmethode, die die Verwendung mehrerer Überprüfungsmethoden erfordert und eine wichtige zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen bietet. Dies funktioniert durch das Anfordern von zwei oder mehr der folgenden Verifizierungsmethoden:
@@ -29,7 +28,7 @@ Die Überprüfung in zwei Schritten ist eine Authentifizierungsmethode, die die 
 * Etwas, das Sie haben (ein vertrautes Gerät, das nicht leicht dupliziert werden kann, wie ein Telefon)
 * Etwas, das Sie sind (biometrisch)
 
-<center>![Benutzername und Kennwort](./media/multi-factor-authentication/pword.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Zertifikate](./media/multi-factor-authentication/phone.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Smartphone](./media/multi-factor-authentication/hware.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Smartcard](./media/multi-factor-authentication/smart.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Virtuelle Smartcard](./media/multi-factor-authentication/vsmart.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Benutzername und Kennwort](./media/multi-factor-authentication/cert.png)</center>
+<center>![Benutzername und Kennwort](./media/multi-factor-authentication/pword.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Zertifikate](./media/multi-factor-authentication/phone.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Smartphone](./media/multi-factor-authentication/hware.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Smartcard](./media/multi-factor-authentication/smart.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Virtuelle Smartcard](./media/multi-factor-authentication/vsmart.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Benutzername und Kennwort](./media/multi-factor-authentication/cert.png)</center>
 
 Azure Multi-Factor Authentication (MFA) ist die Lösung von Microsoft für die Überprüfung in zwei Schritten. Azure MFA hilft beim Schützen des Zugriffs auf Daten und Anwendungen und erfüllt gleichzeitig die Anforderungen von Benutzern an ein einfaches Anmeldeverfahren. Sie bietet eine sichere Authentifizierung mit verschiedenen Überprüfungsmethoden, einschließlich Telefonanruf, SMS oder mobile App.
 
@@ -55,4 +54,3 @@ Azure Multi-Factor Authentication ist eine benutzerfreundliche, skalierbare und 
 - Informationen zur [Funktionsweise von Azure Multi-Factor Authentication](multi-factor-authentication-how-it-works.md)
 
 - Informieren Sie sich zu den verschiedenen [Versionen und Verbrauchsmethoden für Azure Multi-Factor Authentication](multi-factor-authentication-versions-plans.md).
-

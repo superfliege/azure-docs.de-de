@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: arramac
-ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
 ms.openlocfilehash: 862594bcbd6df8a2c62a12340ceb8096fb6bd691
-ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-queries-for-azure-cosmos-db-documentdb-api"></a>SQL-Abfragen für Azure Cosmos DB-DocumentDB-API
 Microsoft Azure Cosmos DB unterstützt Dokumentabfragen mit SQL (Structured Query Language) als JSON-Abfragesprache. Azure Cosmos DB funktioniert ohne Schema. Die direkte Integration des JSON-Datenmodells in das Datenbankmodul ermöglicht eine automatische Indexierung von JSON-Dokumenten ohne explizite Schemas oder die Erstellung sekundärer Indizes. 
@@ -1779,7 +1778,7 @@ Für das Typsystem werden alle primitiven JSON-Typen unterstützt: numerische Ty
 Es folgt eine Liste der unterstützten LINQ-Operatoren im LINQ-Anbieter, die im DocumentDB .NET SDK enthalten sind.
 
 * **Select**: Projektionen einschließlich Objektkonstruktion werden in SQL SELECT übersetzt.
-* **Where**: Filter werden in SQL WHERE übersetzt und unterstützen die Übersetzung von &&, || und ! in die SQL-Operatoren
+* **Where**: Filter werden in SQL WHERE übersetzt und unterstützen die Übersetzung von &amp;&amp;, || und ! in die SQL-Operatoren
 * **SelectMany**: Ermöglicht das Entladen von Arrays in die SQL-JOIN-Klausel. Kann zum Verketten/Verschachteln von Ausdrücken in Arrayelemente verwendet werden.
 * **OrderBy und OrderByDescending**: Auf-/absteigende Übersetzung in ORDER BY
 * Die Operatoren **Count**, **Sum**, **Min**, **Max** und **Average** für die Aggregation und deren asynchrone Entsprechungen **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync** und **AverageAsync**.

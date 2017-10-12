@@ -12,14 +12,12 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
 ms.openlocfilehash: 088d127521ce89d3a82e30ad8797fe5746ae7e03
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurieren von Cloudressourcen für die Gerätebereitstellung mit dem IoT Hub Device Provisioning-Dienst
 
 In diesem Tutorial wird gezeigt, wie die Cloud für die automatische Gerätebereitstellung mithilfe des IoT Hub Device Provisioning-Diensts eingerichtet wird. In diesem Tutorial lernen Sie Folgendes:
@@ -107,4 +105,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihr Gerät f
 
 > [!div class="nextstepaction"]
 > [Einrichten von Geräten für die Bereitstellung](tutorial-set-up-device.md)
-

@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2f2125e739b738847e03ce429d65801969611685
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Unterstützte Sprachen der Data Science-VM 
 
 Die Data Science-VM (DSVM) verfügt über mehrere vorgefertigte Sprachen und Entwicklungstools für die Erstellung von KI-Anwendungen. In Anschluss werden einige der wichtigsten aufgeführt. 
@@ -149,7 +147,7 @@ R wird auf der DSVM in einer globalen, für alle Benutzer lesbaren Umgebung inst
 
 |    |           |
 | ------------- | ------------- |
-| Unterstützte Sprachversionen | 0.5 |
+| Unterstützte Sprachversionen | 0,5 |
 | Unterstützte DSVM-Editionen      | Linux, Windows     |
 | Konfiguration/Installation auf der DSVM  | Windows: Installiert unter `C:\JuliaPro-VERSION`<br /> Linux: Installiert unter `/opt/JuliaPro-VERSION`    |
 | Links zu Beispielen      | Jupyter-Beispielnotebooks für Julia sind enthalten.     |
@@ -199,6 +197,5 @@ Julia befindet sich standardmäßig in einer globalen, für alle Benutzer lesbar
 **Node.js:** Node.js steht sowohl in der Linux- als auch in der Windows-Edition der DSVM zur Verfügung und ist auf den Pfad festgelegt. Geben Sie zur Verwendung von Node.js den Befehl `node` oder `npm` an einer Eingabeaufforderung (Windows) bzw. in einer Bash-Shell (Linux) ein. Unter Windows werden die Node.js-Tools für Visual Studio als Erweiterung installiert, sodass Ihnen für die Entwicklung Ihrer Node.js-Anwendung eine grafische IDE zur Verfügung steht. 
 
 **F#:** Verfügbar unter Windows und erreichbar in Visual Studio Community Edition oder über eine `Developer Command Prompt for Visual Studio` (durch Ausführen des Befehls `fsc`). 
-
 
 

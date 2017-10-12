@@ -14,14 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 09/07/2017
 ms.author: eugenesh
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: bf4d3a517e1308a142d21cffff64f3c6e104eb62
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indizierung der JSON-Blobs mit Azure Search-Blobindexer
 Dieser Artikel beschreibt die Konfiguration des Azure Search-Blobindexers, um strukturierte Inhalte aus Blobs zu extrahieren, die JSON enthalten.
 
@@ -172,4 +170,3 @@ Dann verwenden Sie diese Konfiguration, um das in der `level2`-Eigenschaft entha
 
 ## <a name="help-us-make-azure-search-better"></a>Helfen Sie uns bei der Verbesserung von Azure Search
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
-

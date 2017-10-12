@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/01/2016
 ms.author: glenga
 ms.openlocfilehash: 22397b6b448b418d5b54a457c3bafaf5c68ecc7b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="getting-started"> </a>Ich verwende Mobile Services – welche Vorteile bietet App Service?
+# <a name="getting-started"></a>Ich verwende Mobile Services – welche Vorteile bietet App Service?
 ## <a name="overview"></a>Übersicht
 Ihr vorhandener Mobile Service ist sicher und wird weiterhin unterstützt. Die *Azure App Service* -Plattform bietet für Ihre mobile App jedoch eine Reihe von Vorteilen, die mit Mobile Services derzeit nicht verfügbar sind:
 

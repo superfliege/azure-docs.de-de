@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 820b73a5dbf9bb108e189313cf6ee2b924ab04c7
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="visualize-and-troubleshoot-stream-analytics-jobs"></a>Visualisieren und Problembehandlung von Stream Analytics-Aufträgen
 Ähnlich wie bei anderen cloudbasierten Technologien ist bei Stream Analytics manchmal eine Problembehandlung notwendig, um zu untersuchen, warum ein Auftrag nicht das erwartete Ergebnis (oder gar kein Ergebnis) liefert. Zu diesem Zweck bietet Stream Analytics die Möglichkeit, einen Streamingauftrag zu visualisieren. Diese Option lässt sich auch als Modellierungstool einsetzen und bietet zudem Vorteile für Benutzer, die eine Dokumentation ihrer Arbeit benötigen.
@@ -46,5 +45,4 @@ Wenn ein Benutzer Zwischenschritte von Abfragen anzeigen möchte, um die Datenfl
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 

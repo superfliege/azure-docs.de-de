@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 712b29a347e246ad5afbf842930b0e01749c1203
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
 Dieser Artikel enthält eine Übersicht über die Datenintegration zwischen lokalen Datenspeichern und Clouddatenspeichern mit Data Factory. Er baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) und anderen Artikeln über zentrale Konzepte von Data Factory auf: [Datasets](data-factory-create-datasets.md) und [Pipelines](data-factory-create-pipelines.md).
@@ -413,4 +412,3 @@ In diesem Schritt verwenden Sie das Azure-Portal zur Überwachung der Aktivität
 ## <a name="next-steps"></a>Nächste Schritte
 * Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie alle Informationen zum Datenverwaltungsgateway.
 * Unter [Kopieren von Daten aus Azure-Blob in Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) erfahren Sie, wie Sie die Kopieraktivität verwenden, um Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher zu verschieben.
-

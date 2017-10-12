@@ -14,12 +14,11 @@ ms.date: 09/25/2017
 ms.author: curtand
 ms.reviewer: jsnow
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: 2ea119b56f467f57b5929dec05bfd645028578ef
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>Schnellstart: Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory
 
@@ -62,7 +61,7 @@ Nachdem Sie den DNS-Eintrag hinzugefügt haben, können Sie den Domänennamen mi
 Nun können Sie [Benutzernamen zuweisen, die Ihren benutzerdefinierten Domänennamen enthalten](active-directory-users-create-azure-portal.md). Sie können mit Ihrem benutzerdefinierten Domänennamen cloudbasierte Benutzerkonten erstellen oder zuvor synchronisierte lokale Benutzerkontoinformationen aktualisieren. Sie können auch synchronisierte Domänensuffixinformationen zu Benutzerkonten mit [Microsoft PowerShell](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains) oder der [Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations) ändern.
 
 > [!TIP]
-> Sie können maximal 900 Namen verwalteter Domänen hinzufügen. Wenn Sie alle Domänen für den lokalen Verbund mit Active Directory konfigurieren möchten, können Sie in jedem Verzeichnis bis zu 450 Domänennamen hinzufügen. Weitere Informationen finden Sie unter [Verbund- und verwaltete Domänennamen](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names).
+> Sie können maximal 900 Namen für verwaltete Domänen hinzufügen. Wenn Sie alle Domänen für den lokalen Verbund mit Active Directory konfigurieren möchten, können Sie in jedem Verzeichnis bis zu 450 Domänennamen hinzufügen. Weitere Informationen finden Sie unter [Verbund- und verwaltete Domänennamen](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 Probieren Sie die folgenden Schritte zur Problembehandlung aus, wenn Sie einen benutzerdefinierten Domänennamen nicht überprüfen können:

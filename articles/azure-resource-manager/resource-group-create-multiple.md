@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/26/2017
 ms.author: tomfitz
 ms.openlocfilehash: ed8e3081d2b2e07938d7cf3aa5f95f6dde81bc66
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Bereitstellen mehrerer Instanzen einer Ressource oder Eigenschaft in Azure Resource Manager-Vorlagen
 In diesem Thema erfahren Sie, wie Sie die Azure Resource Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Ressource oder mehrere Instanzen einer Eigenschaft für eine Ressource zu erstellen.

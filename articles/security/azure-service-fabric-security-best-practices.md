@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 5f02b6be1fde4026057000bed4e8014cb56ccf9a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Bewährte Methoden für die Azure Service Fabric-Sicherheit
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Bevor Sie Ihre Cloudanwendung für die Produktion bereitstellen, überprüfen Sie unsere Liste grundlegender und empfohlener bewährter Methoden zum Implementieren sicherer Cluster in der Anwendung.
@@ -186,4 +185,3 @@ Azure Service Fabric unterstützt zwei Zugriffssteuerungstypen für Clients, die
 ## <a name="next-steps"></a>Nächste Schritte
 - Richten Sie Ihre Service Fabric-[Entwicklungsumgebung](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) ein.
 - Informieren Sie sich über [Service Fabric-Supportoptionen](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
-

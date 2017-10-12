@@ -10,15 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 4440ca81545978ab7438f1684ce71ded24c326e9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="review-usage-and-costs"></a>Überprüfen der Nutzung und der Kosten
 
 Die Azure-Kostenverwaltung von Cloudyn zeigt Nutzung und Kosten auf, sodass Sie Trends nachverfolgen, Ineffizienz erkennen und Warnungen erstellen können. Alle Nutzungs- und Kostendaten werden in Cloudyn-Dashboards und -Berichten angezeigt. In den Beispielen dieses Tutorials erhalten Sie schrittweise Anleitungen zum Überprüfen von Nutzung und Kosten anhand von Dashboards und Berichten. In diesem Tutorial lernen Sie Folgendes:
@@ -101,4 +98,3 @@ Im nächsten Tutorial erfahren Sie, wie Sie den Zugriff auf Daten steuern.
 
 > [!div class="nextstepaction"]
 > [Steuern des Zugriffs auf Daten](tutorial-user-access.md)
-

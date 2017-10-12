@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b6a333d075e0391adca4f37bbff8918391a22fde
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Entwicklungstools auf der Data Science-VM
 
 Die Data Science-VM (DSVM) bündelt mehrere beliebte Tools und IDEs zu einer produktiven Umgebung für Entwickler. Im Anschluss sind einige der Tools aufgeführt, die auf der DSVM zur Verfügung stehen: 
@@ -83,5 +81,4 @@ Die Data Science-VM (DSVM) bündelt mehrere beliebte Tools und IDEs zu einer pro
 | Typische Verwendung      |  Datenvisualisierung und Dashboarderstellung   |
 | Verwendung/Ausführung      | Desktopverknüpfung (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
 | Verwandte Tools auf der DSVM      |   Visual Studio 2017, Visual Studio Code, Juno      |
-
 

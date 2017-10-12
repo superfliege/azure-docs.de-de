@@ -12,12 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: denlee
+ms.openlocfilehash: b6cc51ad2bab294035f3ed8f300423d1d320df1f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 02d4042803bdbc3b982019e0e5d3bcd7ed3e0173
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Einführung in die Graph-API von Azure Cosmos DB
 
@@ -149,4 +148,3 @@ Weitere Informationen zur Diagrammunterstützung in Azure Cosmos DB finden Sie d
 
 * Erste Schritte durch das [Tutorial zum Azure Cosmos DB-Diagramm](create-graph-dotnet.md)
 * Erfahren Sie mehr über das [Abfragen von Graphen in Azure Cosmos DB mithilfe von Gremlin](gremlin-support.md).
-

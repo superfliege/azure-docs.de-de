@@ -15,12 +15,11 @@ ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
+ms.openlocfilehash: 5ff4184a6147c367c64b5c90c090e1abe59edb90
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: 79f7ccabb3900acfba7216823cecc7fc7bddd4b3
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Importieren einer BACPAC-Datei in eine neue Azure SQL-Datenbank
 
@@ -47,7 +46,7 @@ Um den Status des Importvorgangs zu überwachen, öffnen Sie die Seite für den 
 
 Um den Status des Importvorgangs zu überwachen, öffnen Sie die Seite für den logischen Server, in den die Datenbank importiert wird. Scrollen Sie nach unten bis zu **Vorgänge**, und klicken Sie dann auf **Import-/Exportverlauf**.
    
-   ![Importieren](./media/sql-database-import/import-history.png) ![Importstatus](./media/sql-database-import/import-status.png)
+   ![Importieren](./media/sql-database-import/import-history.png)![Importstatus](./media/sql-database-import/import-status.png)
 
 Zum Überprüfen, ob die Datenbank auf dem Server aktiv ist, klicken Sie auf **SQL-Datenbanken** und prüfen, ob der Status der neuen Datenbank **Online** ist.
 
@@ -114,7 +113,6 @@ Ein weiteres Skriptbeispiel finden Sie unter [Importieren von einer BACPAC-Datei
 * Informationen zum Herstellen einer Verbindung mit einer importierten SQL-Datenbank und zum Abfragen einer solchen Datenbank finden Sie unter [Herstellen einer Verbindung mit einer SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md).
 * Einen Blogbeitrag des SQL Server-Kundenberatungsteams zur Migration mithilfe von BACPAC-Dateien finden Sie unter [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) (Migrieren von SQL Server zu Azure SQL-Datenbank mithilfe von BACPAC-Dateien).
 * Eine Erläuterung des gesamten Migrationsprozesses von SQL Server-Datenbanken, einschließlich Empfehlungen zur Leistung, finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank](sql-database-cloud-migrate.md).
-
 
 
 

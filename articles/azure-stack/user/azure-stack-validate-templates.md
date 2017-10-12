@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c99e5ebc2612e10f42bddbbd2f1c17d7404305d3
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="check-your-templates-for-azure-stack-with-template-validator"></a>Überprüfen Ihrer Vorlagen für Azure Stack mit dem Validierungssteuerelement für Vorlagen
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
@@ -102,5 +100,4 @@ Die heruntergeladenen Dateien enthalten eine Standarddatei (*AzureStackCloudCapa
 ## <a name="next-steps"></a>Nächste Schritte
  - [Deploy templates to Azure Stack (Bereitstellen von Vorlagen in Azure Stack)](azure-stack-arm-templates.md)
  - [Entwickeln von Vorlagen für Azure Stack](azure-stack-develop-templates.md)
-
 

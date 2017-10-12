@@ -11,15 +11,14 @@ ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: masaran;jimpark;delhan;trinadhk;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2ee4bfa8c7dce45c6366ddc8aa6e723fe91431a7
-ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 9dc0105034e0d354a6cbbd7ba70634bdff83c1bd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Sichern eines Exchange-Servers unter Azure Backup mit System Center 2012 R2 DPM
 In diesem Artikel wird beschrieben, wie Sie einen Server mit System Center 2012 R2 Data Protection Manager (DPM) konfigurieren, um einen Microsoft Exchange-Server in Azure Backup zu sichern.  
@@ -67,7 +66,8 @@ Führen Sie die folgenden Schritte aus, um den DPM-Schutz-Agent auf dem Exchange
 
    * Kurzfristiger Schutz unter Verwendung eines Datenträgers
    * Onlineschutz
-6. Klicken Sie auf **Next**.
+6. Klicken Sie auf **Weiter**.
+
 7. Wählen Sie die Option **„Eseutil“ zum Prüfen der Datenintegrität ausführen** aus, wenn Sie die Integrität der Exchange-Server-Datenbanken überprüfen möchten.
 
     Nach dem Auswählen dieser Option wird für den DPM-Server die Backupkonsistenz überprüft, um den generierten E/A-Datenverkehr zu vermeiden, indem der Befehl **eseutil** auf dem Exchange-Server ausgeführt wird.
@@ -78,6 +78,7 @@ Führen Sie die folgenden Schritte aus, um den DPM-Schutz-Agent auf dem Exchange
    >
    >
 8. Klicken Sie auf **Weiter**.
+
 9. Wählen Sie die Datenbank für **Kopiesicherung** aus, und klicken Sie auf **Weiter**.
 
    > [!NOTE]
@@ -126,4 +127,3 @@ Für Online-Wiederherstellungspunkte gibt es fünf Wiederherstellungstypen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)
-

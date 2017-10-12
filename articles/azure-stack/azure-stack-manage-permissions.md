@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e558f9de9bc3182bbe20ceb9d8f3f96e47fa542c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-role-based-access-control"></a>Verwalten der rollenbasierten Zugriffssteuerung
 
@@ -39,5 +38,4 @@ Ein Benutzer in Azure Stack kann ein Leser, ein Besitzer oder ein Mitwirkender a
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Hinzufügen von Azure Stack-Mandanten](azure-stack-add-new-user-aad.md)
-
 

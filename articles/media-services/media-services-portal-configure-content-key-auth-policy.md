@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
 ms.openlocfilehash: 5a35c7255a1c30a693862589c14f6a22a1900790
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-content-key-authorization-policy"></a>Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -65,7 +65,7 @@ Beim Konfigurieren der durch **TOKEN** eingeschränkten Richtlinie müssen Sie W
 ### <a name="playready"></a>PlayReady
 Wenn Sie Inhalte mit **PlayReady** schützen, müssen Sie in Ihrer Autorisierungsrichtlinie u.a. eine XML-Zeichenfolge zur Definition der PlayReady-Lizenzvorlage angeben. Standardmäßig ist die folgende Richtlinie festgelegt:
 
-<PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1"> <LicenseTemplates> <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices> <ContentKey i:type="ContentEncryptionKeyFromHeader" /> <LicenseType>Nicht beständig</LicenseType> <PlayRight> <AllowPassingVideoContentToUnknownOutput>Zulässig</AllowPassingVideoContentToUnknownOutput> </PlayRight> </PlayReadyLicenseTemplate> </LicenseTemplates> </PlayReadyLicenseResponseTemplate>
+<PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1"><LicenseTemplates><PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices><ContentKey i:type="ContentEncryptionKeyFromHeader" /><LicenseType>Nicht beständig</LicenseType><PlayRight><AllowPassingVideoContentToUnknownOutput>Zulässig</AllowPassingVideoContentToUnknownOutput></PlayRight></PlayReadyLicenseTemplate></LicenseTemplates></PlayReadyLicenseResponseTemplate>
 
 Klicken Sie auf die Schaltfläche **XML für Importrichtlinie** , und geben Sie anderen XML-Code an, der dem [hier](media-services-playready-license-template-overview.md)definierten XML-Schema entspricht.
 

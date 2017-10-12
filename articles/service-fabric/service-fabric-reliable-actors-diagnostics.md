@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: abhisram
 ms.openlocfilehash: 1c53a6bbe0152f6f2b9666e6059af7c6d02e481f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnose und Leistungsüberwachung für Reliable Actors
 Die Reliable Actors-Laufzeit gibt [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)-Ereignisse und [Leistungsindikatoren](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx) aus. Diese bieten Einblicke in den Laufzeitbetrieb und Hilfe bei der Problembehandlung und Leistungsüberwachung.

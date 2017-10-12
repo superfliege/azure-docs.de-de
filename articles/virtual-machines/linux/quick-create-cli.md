@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: b3359b4e175ca4c3a96b49ab55c224589dea9190
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-linux-virtual-machine-with-the-azure-cli"></a>Erstellen einer Linux-VM mit der Azure CLI
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Anleitung wird die Bereitstellung eines virtuellen Computers mit Ubuntu-Server mithilfe der Azure CLI ausführlich beschrieben. Sobald der Server bereitgestellt ist, wird eine SSH-Verbindung erstellt und ein NGINX-Webserver installiert.
@@ -121,4 +119,3 @@ In diesem Schnellstart haben Sie einen einfachen virtuellen Computer und eine Ne
 
 > [!div class="nextstepaction"]
 > [Tutorials für virtuelle Azure Linux-Computer](./tutorial-manage-vm.md)
-

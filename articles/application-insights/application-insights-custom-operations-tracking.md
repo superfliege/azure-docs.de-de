@@ -12,14 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
+ms.openlocfilehash: 6412445f4e7a9b639ae9a38a44ff51038c6fcc00
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b31d38fe2f7060597956a1ee9c66f43ce39d7240
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
 
 Mit Azure Application Insights SDKs werden eingehende HTTP-Anforderungen und Aufrufe abhängiger Dienste wie HTTP-Anforderungen und SQL-Abfragen automatisch nachverfolgt. Dank der Nachverfolgung und Korrelation von Anforderungen und Abhängigkeiten erhalten Sie Einblicke in die Reaktionsfähigkeit und Zuverlässigkeit der gesamten Anwendung für alle Microservices, die diese Anwendung vereint. 
@@ -477,4 +475,3 @@ public async Task RunMyTaskAsync()
 - Informieren Sie sich über das Melden von benutzerdefinierten [Ereignissen und Metriken](app-insights-api-custom-events-metrics.md) an Application Insights.
 - Informationen zur [Standardkonfiguration](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) der Sammlung von Kontexteigenschaften.
 - Lesen Sie den [System.Diagnostics.Activity User Guide](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) (System.Diagnostics.Activity-Benutzerhandbuch), um zu erfahren, wie wir Telemetriedaten korrelieren.
-

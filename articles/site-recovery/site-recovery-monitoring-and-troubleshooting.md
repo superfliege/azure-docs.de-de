@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: rajanaki
 ms.openlocfilehash: 5bcb5dcb6afc3909e34dde31f845e014e7c539e3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-troubleshoot-protection-for-virtual-machines-and-physical-servers"></a>Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern
 In diesem Leitfaden zur Überwachung und Problembehandlung wird beschrieben, wie Sie die Replikationsintegrität nachverfolgen und die Problembehandlung für Azure Site Recovery durchführen.
@@ -146,8 +146,8 @@ Um ein Supportticket für Azure Site Recovery zu öffnen, wenden Sie sich unter 
 Im Folgenden sind häufige Fehler und die dazugehörigen Lösungen aufgeführt. Jeder Fehler wird auf einer separaten Wikiseite dokumentiert.
 
 ### <a name="general"></a>Allgemein
-* <span style="color:green;">NEU</span> [Aufträge mit dem Fehler „Ein Vorgang wird ausgeführt.“ Fehler 505, 514, 532.](http://social.technet.microsoft.com/wiki/contents/articles/32190.azure-site-recovery-jobs-failing-with-error-an-operation-is-in-progress-error-505-514-532.aspx)
-* <span style="color:green;">NEU</span> [Aufträge mit dem Fehler „Server ist nicht mit dem Internet verbunden“. Fehler 25018.](http://social.technet.microsoft.com/wiki/contents/articles/32192.azure-site-recovery-jobs-failing-with-error-server-isn-t-connected-to-the-internet-error-25018.aspx)
+* <span style="color:green;">NEU</span>[Aufträge mit dem Fehler „Ein Vorgang wird ausgeführt.“ Fehler 505, 514, 532.](http://social.technet.microsoft.com/wiki/contents/articles/32190.azure-site-recovery-jobs-failing-with-error-an-operation-is-in-progress-error-505-514-532.aspx)
+* <span style="color:green;">NEU</span>[Aufträge mit dem Fehler „Server ist nicht mit dem Internet verbunden“. Fehler 25018.](http://social.technet.microsoft.com/wiki/contents/articles/32192.azure-site-recovery-jobs-failing-with-error-server-isn-t-connected-to-the-internet-error-25018.aspx)
 
 ### <a name="setup"></a>Einrichtung
 * [Der Virtual Machine Manager-Server kann aufgrund eines internen Fehlers nicht registriert werden. In der Auftragsansicht im Site Recovery-Portal finden Sie weitere Details zu diesem Fehler. Führen Sie das Setup erneut aus, um den Server zu registrieren.](http://social.technet.microsoft.com/wiki/contents/articles/25570.the-vmm-server-cannot-be-registered-due-to-an-internal-error-please-refer-to-the-jobs-view-in-the-site-recovery-portal-for-more-details-on-the-error-run-setup-again-to-register-the-server.aspx)
@@ -160,9 +160,9 @@ Im Folgenden sind häufige Fehler und die dazugehörigen Lösungen aufgeführt. 
 * [Das Speicherkonto im Abonnement kann beim Konfigurieren des Schutzes nicht ausgewählt werden.](http://social.technet.microsoft.com/wiki/contents/articles/32027.can-t-select-the-storage-account-within-the-subscription-while-configuring-protection.aspx)
 
 ### <a name="protection"></a>Schutz
-* <span style="color:green;">NEU</span> [„Schutz aktivieren“ führt zu dem Fehler „Der Schutz für den virtuellen Computer konnte nicht konfiguriert werden“. Fehler 60007, 40003.](http://social.technet.microsoft.com/wiki/contents/articles/32194.azure-site-recovery-enable-protection-failing-with-error-protection-couldn-t-be-configured-for-the-virtual-machine-error-60007-40003.aspx)
-* <span style="color:green;">NEU</span> [„Schutz aktivieren“ führt zu dem Fehler „Der Schutz für den virtuellen Computer konnte nicht aktiviert werden“. Fehler 70094.](http://social.technet.microsoft.com/wiki/contents/articles/32195.azure-site-recovery-enable-protection-failing-with-error-protection-couldn-t-be-enabled-for-the-virtual-machine-error-70094.aspx)
-* <span style="color:green;">NEU</span> [Livemigrationsfehler 23848: Der virtuelle Computer wird mithilfe von Typ „Live“ verschoben. Dadurch kann der Wiederherstellungsschutzstatus des virtuellen Computers unterbrochen werden.](http://social.technet.microsoft.com/wiki/contents/articles/32021.live-migration-error-23848-the-virtual-machine-is-going-to-be-moved-using-type-live-this-could-break-the-recovery-protection-status-of-the-virtual-machine.aspx)
+* <span style="color:green;">NEU</span>[„Schutz aktivieren“ führt zu dem Fehler „Der Schutz für den virtuellen Computer konnte nicht konfiguriert werden“. Fehler 60007, 40003.](http://social.technet.microsoft.com/wiki/contents/articles/32194.azure-site-recovery-enable-protection-failing-with-error-protection-couldn-t-be-configured-for-the-virtual-machine-error-60007-40003.aspx)
+* <span style="color:green;">NEU</span>[„Schutz aktivieren“ führt zu dem Fehler „Der Schutz für den virtuellen Computer konnte nicht aktiviert werden“. Fehler 70094.](http://social.technet.microsoft.com/wiki/contents/articles/32195.azure-site-recovery-enable-protection-failing-with-error-protection-couldn-t-be-enabled-for-the-virtual-machine-error-70094.aspx)
+* <span style="color:green;">NEU</span>[Livemigrationsfehler 23848: Der virtuelle Computer wird mithilfe von Typ „Live“ verschoben. Dadurch kann der Wiederherstellungsschutzstatus des virtuellen Computers unterbrochen werden.](http://social.technet.microsoft.com/wiki/contents/articles/32021.live-migration-error-23848-the-virtual-machine-is-going-to-be-moved-using-type-live-this-could-break-the-recovery-protection-status-of-the-virtual-machine.aspx)
 * [Aktivieren des Schutzes fehlgeschlagen, da der Agent nicht auf dem Hostcomputer installiert ist.](http://social.technet.microsoft.com/wiki/contents/articles/31105.enable-protection-failed-since-agent-not-installed-on-host-machine.aspx)
 * [Ein geeigneter Host für den replizierten virtuellen Computer wurde nicht gefunden. Grund: geringe Computeressourcen.](http://social.technet.microsoft.com/wiki/contents/articles/25501.a-suitable-host-for-the-replica-virtual-machine-can-t-be-found-due-to-low-compute-resources.aspx)
 * [Ein geeigneter Host für den replizierten virtuellen Computer wurde nicht gefunden. Grund: Es ist kein logisches Netzwerk angeschlossen.](http://social.technet.microsoft.com/wiki/contents/articles/25502.a-suitable-host-for-the-replica-virtual-machine-can-t-be-found-due-to-no-logical-network-attached.aspx)

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
 ms.openlocfilehash: 4ab1f83e88b262b1752300b2786340d9abca8154
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Anleitung zur Konvertierung von Web- und Workerrollen in zustandslose Service Fabric-Dienste
 In diesem Artikel wird beschrieben, wie Sie Ihre Cloud Services-Web- und -Workerrollen zu zustandslosen Service Fabric-Diensten migrieren. Dies ist für Anwendungen, deren allgemeine Architektur weitgehend gleich bleibt, der einfachste Migrationspfad von Cloud Services zu Service Fabric.

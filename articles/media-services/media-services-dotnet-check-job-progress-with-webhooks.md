@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: a54ea21ea2d5ce62aabaeca7c5d25281a7d3f4be
-ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET
 Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können Media Services-Auftragsbenachrichtigungen mit Azure-Webhooks oder [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) überwachen. In diesem Thema wird die Verwendung von Webhooks veranschaulicht.
@@ -513,4 +512,3 @@ In diesem Abschnitt wird der Code gezeigt, der eine Webhookbenachrichtigung zu e
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

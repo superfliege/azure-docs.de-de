@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.date: 01/10/2017
 ms.author: carlrab
 ms.openlocfilehash: d9b007d29e06e672db71b4a8415673f258c3fd89
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten
 Die Microsoft Azure SQL-Datenbank unterstützt eine Teilmenge dynamischer Verwaltungssichten für die Diagnose von Leistungsproblemen, die auf blockierte Abfragen oder Abfragen mit langen Laufzeiten, fehlerhafte Abfragepläne usw. zurückzuführen sind. Dieses Thema enthält Informationen zum Erkennen häufiger Leistungsprobleme mithilfe von dynamischen Verwaltungssichten.

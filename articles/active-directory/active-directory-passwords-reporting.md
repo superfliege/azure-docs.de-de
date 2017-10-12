@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 4d7f05d626e6f718ca3597dff00715af4055f046
-ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: 10963ab0b84b48c35df3022649363bbc8fc112a5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -273,7 +272,6 @@ Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung
 * [**Rollout:**](active-directory-passwords-best-practices.md) Mithilfe der hier enthaltenen Anleitungen können Sie SSPR planen und für Ihre Benutzer bereitstellen.
 * [**Anpassung:**](active-directory-passwords-customize.md) Passen Sie das Aussehen und Verhalten von SSPR für Ihr Unternehmen an.
 * [**Ausführliche technische Informationen:**](active-directory-passwords-how-it-works.md) Schauen Sie hinter den Vorhang, um zu verstehen, wie alles funktioniert.
-* [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? Antworten auf Fragen, die Sie schon immer stellen wollten
+* [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? - Antworten auf Fragen, die Sie schon immer stellen wollten
 * [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.
 * [**Richtlinie:**](active-directory-passwords-policy.md): Verstehen Sie Azure AD-Kennwortrichtlinien, und legen Sie sie fest.
-

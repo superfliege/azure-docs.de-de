@@ -15,12 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 6fd0e32374827b249f5aba1cbfc39117c88c6272
-ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
-
+ms.openlocfilehash: ac0399867e0cdab1825022c4ed73ce003cc8c7e6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
 In diesem Thema wird gezeigt, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, der Zeilen in einer Tabelle in einer Azure SQL-Datenbank-Instanz bereinigt. Die neue C#-Funktion wird basierend auf einer vordefinierten Vorlage für einen Timertrigger im Azure-Portal erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als Einstellung in der Funktions-App festlegen. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. Damit Ihre Funktion einzelne CRUD-Vorgänge in einer Mobile Apps-Tabelle verarbeiten kann, sollten Sie stattdessen die [Mobile Apps-Bindung](functions-bindings-mobile-apps.md) verwenden.
@@ -125,4 +124,3 @@ Weitere Informationen zu Functions finden Sie in den folgenden Themen:
   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
 * [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen  
-

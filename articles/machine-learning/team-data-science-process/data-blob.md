@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: fashah;garye;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 61792050cbda7d6c1ec3f7e88c3552c752ca74da
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="heading"></a>Verarbeiten von Azure-Blobdaten mit erweiterter Analyse
 In diesem Dokument werden das Durchsuchen von Daten und Generieren von Funktionen aus Daten in einem Azure-Blobspeicher beschrieben. 
@@ -168,5 +167,4 @@ Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt habe
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
 

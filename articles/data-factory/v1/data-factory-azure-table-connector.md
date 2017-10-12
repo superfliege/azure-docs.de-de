@@ -15,17 +15,16 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6ddcde7e0c0f665eac9d749107db107e652c0be1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Verschieben von Daten in eine und aus einer Azure-Tabelle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1: Allgemein verfügbare Version](data-factory-azure-table-connector.md)
-> * [Version 2: Vorschauversion](../connector-azure-table-storage.md)
+> * [Version 2 – Vorschauversion](../connector-azure-table-storage.md)
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data to or from Azure Table using Azure Data Factory](../connector-azure-table-storage.md) (Kopieren von Daten in oder aus Azure Table mit Azure Data Factory).
@@ -567,4 +566,3 @@ In diesem Fall führt Data Factory die Typkonvertierungen automatisch einschlie�
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
-

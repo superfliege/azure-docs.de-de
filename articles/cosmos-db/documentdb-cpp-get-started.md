@@ -14,12 +14,11 @@ ms.devlang: cpp
 ms.topic: article
 ms.date: 12/25/2016
 ms.author: aasthan
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: 324b5844362c2712d54fd766eb95e1d9102f757a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-c-console-application-tutorial-for-the-documentdb-api"></a>Azure Cosmos DB: Tutorial zur C++-Konsolenanwendung für die DocumentDB-API
 > [!div class="op_single_selector"]
@@ -293,6 +292,5 @@ Wenn Sie die GetStarted-Lösung mit sämtlichen Beispielen aus diesem Artikel er
 * Weitere Informationen zum Programmiermodell finden Sie auf der [Azure Cosmos DB-Dokumentationsseite](https://azure.microsoft.com/documentation/services/documentdb/) im Abschnitt „Develop“ (Entwickeln).
 
 [create-account]: create-documentdb-dotnet.md#create-account
-
 
 

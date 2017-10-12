@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 2d2cc04887d90b9f005bfe5310a9ce2fb2f7e217
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introducing-microsoft-azure"></a>Einführung in Microsoft Azure
 Microsoft Azure ist die Anwendungsplattform von Microsoft für die öffentliche Cloud.  Das Ziel dieses Artikels besteht darin, Ihnen ein grundlegendes Verständnis von Azure zu vermitteln, auch wenn Sie in Bezug auf das Cloud Computing über keine Erfahrungen verfügen.
@@ -538,4 +537,3 @@ SendGrid ist eine Anwendung in Azure Store, mit der Sie E-Mails senden können. 
 Nachdem Sie nun einen Überblick erhalten haben, besteht der nächste Schritt darin, Ihre erste Azure-Anwendung zu schreiben. Wählen Sie die gewünschte Sprache, [holen Sie sich das entsprechende SDK](/downloads/), und los geht's. Cloud Computing ist der neue Standard – machen Sie jetzt den ersten Schritt.
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
-

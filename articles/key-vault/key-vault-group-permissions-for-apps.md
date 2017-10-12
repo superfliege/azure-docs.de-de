@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
+ms.openlocfilehash: 14da9256def60d678ef5cae795fef1c373914b5c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 52c04b234d460a62daf4b067a5d322af144f15f6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Gewähren der Berechtigung zum Zugreifen auf einen Schlüsseltresor für viele Anwendungen
 
@@ -58,4 +57,3 @@ Wenn Sie einer Gruppe von Anwendungen einen anderen Berechtigungssatz gewähren 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über das [Schützen einer Key Vault-Instanz](key-vault-secure-your-key-vault.md).
-

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b9a010409dc7f49333ab188b89280f3ad54816c1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Verwalten von API-Versionsprofilen in Azure Stack
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
@@ -116,5 +114,4 @@ Uninstall-AzureRmProfile -Profile 2017-03-09-profile
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Installieren von PowerShell für Azure Stack](azure-stack-powershell-install.md)
-* [Konfigurieren Sie die PowerShell-Umgebung des Azure Stack-Benutzers.](user/azure-stack-powershell-configure-user.md)  
-
+* [Konfigurieren der PowerShell-Umgebung des Azure Stack-Benutzers](user/azure-stack-powershell-configure-user.md)  

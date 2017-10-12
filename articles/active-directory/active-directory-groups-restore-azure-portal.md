@@ -16,14 +16,12 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 795b711542c0a200b80e414397094a102213caf2
-ms.contentlocale: de-de
-ms.lasthandoff: 05/19/2017
-
+ms.openlocfilehash: 5d06cee492e3360bcaf8c7663c97d0c8ed3e243f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Wiederherstellen einer gelöschten Office 365-Gruppe in der Azure Active Directory-Vorschau
 
 Wenn Sie eine Office 365-Gruppe in Azure Active Directory (Azure AD) löschen, wird die gelöschte Gruppe beibehalten, ist aber 30 Tage lang nach dem Löschdatum nicht sichtbar. Damit soll sichergestellt werden, dass die Gruppe und dessen Inhalte bei Bedarf wiederhergestellt werden können. Diese Funktionalität ist ausschließlich auf Office 365-Gruppen in Azure AD beschränkt. Sie ist nicht für Sicherheits- und Verteilergruppen verfügbar.
@@ -85,4 +83,3 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory-Gru
 * [Verwalten der Mitglieder einer Gruppe](active-directory-groups-members-azure-portal.md)
 * [Verwalten der Mitgliedschaften einer Gruppe](active-directory-groups-membership-azure-portal.md)
 * [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](active-directory-groups-dynamic-membership-azure-portal.md)
-

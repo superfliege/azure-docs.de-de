@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 29fb247771d662d3abcbf35e95ff0f7a8cf95af1
-ms.openlocfilehash: 461542095d9ef357460e93d65bb9f4dd8fe17c86
-ms.contentlocale: de-de
-ms.lasthandoff: 02/09/2017
-
+ms.openlocfilehash: 9726304918cbbc85e32e2095d2f1d4701fb8a71e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="iot-suite-documentation"></a>IoT Suite-Dokumentation
 
 Schneller Einstieg mit Microsoft Azure IoT Suite. Nutzen Sie vorkonfigurierte Lösungen, und beschleunigen Sie die Entwicklung Ihrer IoT-Lösung (Internet der Dinge). Mithilfe der Geräte-SDKs für verschiedene Plattformen (u.a. Linux, Windows und Echtzeitbetriebssysteme) können Sie neue Geräte hinzufügen und vorhandene Geräte verbinden. Skalieren Sie Ihre Lösung problemlos von einigen wenigen Sensoren auf Millionen von gleichzeitig verbundenen Geräten, und vertrauen Sie unabhängig von der Größenordnung Ihres Projekts auf die weltweite Verfügbarkeit von Azure.
@@ -101,6 +99,5 @@ Schneller Einstieg mit Microsoft Azure IoT Suite. Nutzen Sie vorkonfigurierte L�
         </div>
     </li>
 </ul>
-
 
 

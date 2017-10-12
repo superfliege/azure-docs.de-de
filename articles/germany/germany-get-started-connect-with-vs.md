@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.openlocfilehash: 07b15fa7211d1af4042d7b412dfc56d1cc7a0025
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-azure-germany-by-using-visual-studio"></a>Herstellen einer Verbindung mit Azure Deutschland über Visual Studio
 Entwickler verwenden Visual Studio beim Erstellen von Lösungen zur einfachen Verwaltung ihrer Azure-Abonnements. Sie können derzeit in der Visual Studio-Benutzeroberfläche keine Verbindung mit Azure Deutschland konfigurieren.  

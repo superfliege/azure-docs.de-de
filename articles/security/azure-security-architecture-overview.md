@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: yurid
 ms.openlocfilehash: efb0cfa4b7950a2d9418282965a23498a67cbffc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-architecture-overview"></a>Übersicht über die Sicherheitsarchitektur
 Eine solide Architekturgrundlage ist einer der Schlüssel zum Erfolg, wenn es um sichere Lösungsbereitstellungen in Azure geht. Mit diesem Wissen lernen Sie Ihre Anforderungen besser kennen, denn Sie können die richtigen Fragen stellen und sind eher in der Lage, die richtigen Antworten auf Ihre Fragen zu erkennen. Richtige Antworten auf richtige Fragen zu erhalten ist ein großer Schritt, die Sicherheit Ihrer Bereitstellungen zu optimieren.

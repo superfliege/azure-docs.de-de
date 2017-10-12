@@ -15,17 +15,16 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 32b72577002962f049f446d6f3c2353189867e92
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Verschieben von Daten nach und aus Azure Cosmos DB mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1: Allgemein verfügbare Version](data-factory-azure-documentdb-connector.md)
-> * [Version 2: Vorschauversion](../connector-azure-cosmos-db.md)
+> * [Version 2 – Vorschauversion](../connector-azure-cosmos-db.md)
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data to or from Azure Cosmos DB using Azure Data Factory](../connector-azure-cosmos-db.md) (Kopieren von Daten in oder aus Azure Cosmos DB mit Azure Data Factory).
@@ -499,4 +498,3 @@ Azure Cosmos DB ist ein NoSQL-Speicher für JSON-Dokumente, in denen geschachtel
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
-

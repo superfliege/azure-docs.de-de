@@ -12,12 +12,11 @@ ms.topic: article
 ms.date: 09/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 358015d6cfd9961508b209f628b2d648a75e3c2c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 
@@ -79,7 +78,7 @@ Nachdem Ihnen der Zugriff auf das Feature Blob Storage-Ereignisse gewährt wurde
  
 Nachdem Sie registriert wurden, können Sie dieses Tutorial fortsetzen.
 
-## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure Storage-Kontos
+## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
 Für Azure Functions ist ein allgemeines Speicherkonto erforderlich. Erstellen Sie ein separates allgemeines Speicherkonto in der Ressourcengruppe, indem Sie den Befehl [az storage account create](/cli/azure/storage/account#create) verwenden.
 
@@ -93,11 +92,11 @@ az storage account create --name <general_storage_account> \
 --sku Standard_LRS --kind storage
 ```
 
-## <a name="create-a-function-app"></a>Erstellen einer Funktions-App  
+## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App  
 
-Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funktion in Azure hostet. Die Funktions-App bietet eine Umgebung für die serverlose Ausführung des Funktionscodes. Erstellen Sie eine Funktions-App mithilfe des Befehls [az functionapp create](/cli/azure/functionapp#create). 
+Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funktion in Azure hostet. Die Funktionen-App bietet eine Umgebung für die serverlose Ausführung des Funktionscodes. Erstellen Sie eine Funktionen-App mithilfe des Befehls [az functionapp create](/cli/azure/functionapp#create). 
 
-Ersetzen Sie im folgenden Befehl den Platzhalter `<function_app>` durch den eigenen eindeutigen Namen Ihrer Funktions-App. Da `<function_app>` als DNS-Standarddomäne für die Funktions-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. In diesem Fall ist „`<general_storage_account>`“ der Name des allgemeinen Speicherkontos, das Sie erstellt haben.  
+Ersetzen Sie im folgenden Befehl den Platzhalter `<function_app>` durch den eigenen eindeutigen Namen Ihrer Funktions-App. Da `<function_app>` als DNS-Standarddomäne für die Funktionen-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. In diesem Fall ist „`<general_storage_account>`“ der Name des allgemeinen Speicherkontos, das Sie erstellt haben.  
 
 ```azurecli-interactive
 az functionapp create --name <function_app> --storage-account  <general_storage_account>  \

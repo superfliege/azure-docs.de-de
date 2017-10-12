@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c2a3b9702afd99c29b64133a05515a1b5f395130
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>Tutorial: Klassifizieren von Iris über die Befehlszeilenschnittstelle
 Azure Machine Learning-Dienste (Vorschau) sind eine integrierte End-to-End-Lösung für den Bereich Data Science und Advanced Analytics, mit der professionelle Datenanalysten Daten vorbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
 
@@ -273,5 +271,4 @@ In diesem Tutorial wurde erklärt, wie Sie die Funktionen der Azure Machine Lear
 > * Erstellen eines Kontos für die Modellverwaltung
 > * Erstellen einer Umgebung zur Bereitstellung eines Webdiensts
 > * Bereitstellen eines Webdiensts und Bewerten mit neuen Daten
-
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm
 ms.openlocfilehash: 1403184d96388cb03b2c767c4da342ec1c6fe236
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-faq"></a>Service Bus – Häufig gestellte Fragen
 In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Service Bus beantwortet. Sie können auch [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.

@@ -7,18 +7,16 @@ ms.author: salonis
 manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
-ms.custom: mvc
+ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/15/2017
+ms.openlocfilehash: 342e7dfd35ce890cda4a1d98613592353a63d7e2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 481e2552e2a2cd91d026774438788143109b28df
-ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure-Datenbank für PostgreSQL: Verwenden von Python zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von [Python](https://python.org) eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Außerdem wird gezeigt, wie Sie SQL-Anweisungen verwenden, um Daten in der Datenbank über macOS, Ubuntu Linux und Windows-Plattformen abzufragen, einzufügen, zu aktualisieren und zu löschen. Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Python-Entwicklung vertraut sind und noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
 
@@ -54,7 +52,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie nach dem Server **mypgserver-20170401**, den Sie soeben erstellt haben.
 3. Klicken Sie auf den Servernamen **mypgserver-20170401**.
-4. Wählen Sie die Seite **Übersicht** des Servers aus, und notieren Sie sich den **Servernamen** und **den Anmeldenamen des Serveradministrators**.
+4. Wählen Sie die Seite **Übersicht** des Servers aus, und notieren Sie sich den Servernamen**** und**** den Anmeldenamen des Serveradministrators.
  ![Azure-Datenbank für PostgreSQL – Anmeldename des Serveradministrators](./media/connect-python/1-connection-string.png)
 5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Serveradministrator-Anmeldenamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
 
@@ -211,4 +209,3 @@ conn.close()
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
 > [Migrieren der Datenbank mit Export und Import](./howto-migrate-using-export-and-import.md)
-

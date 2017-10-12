@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 ms.openlocfilehash: 8e84562115a866c0df5e0dee6c7f66c036a74737
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Verwalten horizontal hochskalierter Clouddatenbanken
 Für die Verwaltung horizontal hochskalierter Sharddatenbanken ermöglicht Ihnen das Feature **Auftrag für die elastische Datenbank** (Vorschau) das zuverlässige Ausführen eines Transact-SQL-Skripts (T-SQL) für eine Gruppe von Datenbanken. Dies schließt Folgendes ein:

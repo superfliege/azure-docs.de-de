@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: sdanie
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 45b2a500751830f6ca19fe8450a7781cb0fcb618
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-premium-azure-redis-cache-with-clustering"></a>Erstellen eines Azure Redis Cache vom Typ „Premium“ mit Clustering
 
 In diesem Szenario erfahren Sie, wie Sie einen 6 GB-Azure Redis Cache mit Premium-Tarif erstellen. Dabei ist Clustering aktiviert, und es sind zwei Shards vorhanden.

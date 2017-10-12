@@ -15,14 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
+ms.openlocfilehash: 355cb2cef52b5dfecddae228d0cc24a069d3b695
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: 90720774f956149dc159de1d5457e556a52ddc82
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
 ## <a name="overview"></a>Übersicht 
@@ -135,7 +133,7 @@ Die Laufzeit stellt `customDimensions.LogLevel` und `customDimensions.Category` 
 
 Sie können Application Insights ohne benutzerdefinierte Konfiguration verwenden, aber die Standardkonfiguration kann zu hohen Datenvolumina führen. Wenn Sie ein Visual Studio Azure-Abonnement verwenden, erreichen Sie unter Umständen Ihr Datenlimit für App Insights. Im restlichen Teil dieses Artikels wird beschrieben, wie Sie die Daten konfigurieren und anpassen, die Ihre Funktionen an Application Insights senden.
 
-### <a name="categories"></a>Kategorien
+### <a name="categories"></a>Categories
 
 Die Azure Functions-Protokollierung enthält eine *Kategorie* für jedes Protokoll. Mit der Kategorie wird angegeben, von welchem Teil des Laufzeitcodes bzw. Ihres Funktionscodes das Protokoll geschrieben wurde. 
 
@@ -456,7 +454,7 @@ Mit dem Parameter `tagOverrides` wird `operation_Id` auf die Aufrufkennung der F
 
 ### <a name="dependencies"></a>Abhängigkeiten
 
-Abhängigkeiten werden nicht automatisch angezeigt, aber Sie können benutzerdefinierten Code schreiben, um Abhängigkeiten anzuzeigen. Dies wird im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#create-custom-telemetry-data-in-c-function-code) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie folgt aussieht:
+Abhängigkeiten werden nicht automatisch angezeigt, aber Sie können benutzerdefinierten Code schreiben, um Abhängigkeiten anzuzeigen. Dies wird im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#custom-telemetry-in-c-functions) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie folgt aussieht:
 
 ![Anwendungszuordnung](media/functions-monitoring/app-map.png)
 
@@ -521,4 +519,3 @@ Weitere Informationen finden Sie unter [Vorgehensweise: Streaming von Protokolle
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zum von Functions verwendeten Protokollierungsframework](https://docs.microsoft.com/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)
-

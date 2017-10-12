@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 09/05/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: 6fd88c58c0067deab08d502be4bd624c297b5fde
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account-using-the-azure-cli"></a>Erstellen einer MongoDB-App mit Angular und Azure Cosmos DB – Teil 4: Erstellen eines Azure Cosmos DB-Kontos mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -29,7 +28,7 @@ Teil 4 des Tutorials baut auf [Teil 3](tutorial-develop-mongodb-nodejs-part3.md)
 
 > [!div class="checklist"]
 > * Erstellen einer Azure-Ressourcengruppe mithilfe der Azure-Befehlszeilenschnittstelle
-> * Erstellen eines Azure Cosmos DB-Kontos mithilfe der Azure-Befehlszeilenschnittstelle
+> * Erstellen eines Azure Cosmos DB-Kontos mithilfe der Azure CLI
 
 ## <a name="video-walkthrough"></a>Exemplarische Vorgehensweise per Video
 
@@ -86,4 +85,3 @@ Im nächsten Teil des Tutorials wird Azure Cosmos DB unter Verwendung von Mongoo
 
 > [!div class="nextstepaction"]
 > [Herstellen einer Verbindung mit Azure Cosmos DB mithilfe von Mongoose](tutorial-develop-mongodb-nodejs-part5.md)
-

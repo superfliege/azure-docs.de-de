@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a13bbd5d32eaab96dfb97e60652dbe9bcbdfb1b1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Erkennung von biomedizinischen Entitäten unter Verwendung der Team Data Science-Prozessvorlage (TDSP)
 
 Ziel dieses realen Szenarios ist es, zu verdeutlichen, wie mithilfe von Azure Machine Learning Workbench eine komplexere NLP-Aufgabe (Natural Language Processing, Verarbeitung natürlicher Sprache), z.B. die Extraktion von Entitäten aus unstrukturiertem Text, gelöst werden kann:
@@ -269,5 +267,4 @@ Wir haben die Einzelheiten dazu erörtert, wie Sie ein Modell für Worteinbettun
 * [Recurrent Neural Networks](https://www.tensorflow.org/tutorials/recurrent) (Rekurrente neuronale Netze)
 * [Problems encountered with Spark ml Word2Vec](https://intothedepthsofdataengineering.wordpress.com/2017/06/26/problems-encountered-with-spark-ml-word2vec/) (Probleme bei Spark ML Word2Vec)
 * [Spark Word2Vec: lessons learned](https://intothedepthsofdataengineering.wordpress.com/2017/06/26/spark-word2vec-lessons-learned/) (Spark Word2Vec: Gewonnene Erkenntnisse)
-
 

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/27/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: b07386eeb0d3e05a0b4545be39030066fbdafd3d
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Einbinden eines neuen Windows 10-Geräts in Azure AD auf der Windows-Willkommensseite
 
@@ -87,4 +86,3 @@ Ob ein Gerät in Ihre Azure AD-Instanz eingebunden wurde, können Sie im Dialogf
 - Weitere Informationen finden Sie unter [Einführung in die Geräteverwaltung in Azure Active Directory](device-management-introduction.md).
 
 - Ausführliche Informationen zum Verwalten von Geräten im Azure AD-Portal finden Sie unter [Verwalten von Geräten mithilfe des Azure-Portals – Vorschau](device-management-azure-portal.md).
-

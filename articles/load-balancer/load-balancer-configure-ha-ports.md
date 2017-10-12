@@ -15,20 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
 ms.openlocfilehash: 7256548b988812c64ca9a9f8a84fec377646635d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-high-availability-ports-for-internal-load-balancer"></a>Konfigurieren von Hochverfügbarkeitsports für einen internen Lastenausgleich
 
 Dieser Artikel beinhaltet eine Beispielbereitstellung von Hochverfügbarkeitsports (High Availability, HA) auf einem internen Lastenausgleich. Für virtuelle Netzwerkgeräte spezifische Konfigurationen finden Sie auf den entsprechenden Anbieterwebsites.
 
 >[!NOTE]
-> Das Feature für Hochverfügbarkeitsports ist derzeit als Vorschauversion verfügbar. Während der Vorschauphase ist das Feature unter Umständen nicht so verfügbar und zuverlässig wie Features in Versionen mit allgemeiner Verfügbarkeit. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Das Feature für Hochverfügbarkeitsports ist derzeit als Vorschauversion verfügbar. Während der Vorschauphase weist das Feature unter Umständen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Features in Releases mit allgemeiner Verfügbarkeit auf. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Abbildung 1 zeigt die folgende Konfiguration des in diesem Artikel beschriebenen Bereitstellungsbeispiels:
 - Die Netzwerkgeräte werden im Back-End-Pool eines internen Lastenausgleichs hinter der Konfiguration der Hochverfügbarkeitsports bereitgestellt. 
@@ -90,4 +88,3 @@ azure network lb rule create --resource-group contoso-rg --lb-name contoso-ilb -
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über [Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md).
-

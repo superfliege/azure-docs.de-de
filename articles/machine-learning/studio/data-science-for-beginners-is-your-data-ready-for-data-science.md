@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: cgronlun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9b5cf776981af0dff57195d5c7f1923b8d9a3862
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Sind Ihre Daten für Data Science bereit?
 ## <a name="video-2-data-science-for-beginners-series"></a>2. Video der Reihe „Data Science für Einsteiger“
@@ -112,4 +111,3 @@ Sehen Sie sich unbedingt auch die anderen vier Videos in der Reihe *Data Science
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchführen eines ersten Data Science-Experiments mit Machine Learning Studio](create-experiment.md)
 * [Einführung in Machine Learning in Microsoft Azure](what-is-machine-learning.md)
-

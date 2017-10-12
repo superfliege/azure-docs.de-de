@@ -16,14 +16,12 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 0fcddfd7e224fc763616573e5cd8b3345cc46ded
-ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 50d1c0827ee7efac2b0f16a44705030184a3c07e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren einer Failovergruppe bei der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank
 
 In diesem PowerShell-Beispielskript wird eine Failovergruppe bei der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank konfiguriert und ein Failover für ein sekundäres Replikat von Azure SQL-Datenbank ausgeführt.
@@ -32,7 +30,7 @@ In diesem PowerShell-Beispielskript wird eine Failovergruppe bei der aktiven Geo
 
 ## <a name="sample-scripts"></a>Beispielskripts
 
-[!code-powershell[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover-database/setup-geodr-and-failover-database-failover-group.ps1?highlight=19-22 "Einrichten einer Failovergruppe für eine einzelne Datenbank")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover-database/setup-geodr-and-failover-database-failover-group.ps1?highlight=19-22 "Set up failover group for single database")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -66,4 +64,3 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
 
 Zusätzliche PowerShell-Skriptbeispiele für SQL-Datenbank finden Sie in den [Azure PowerShell samples for Azure SQL Database](../sql-database-powershell-samples.md) (Azure PowerShell-Beispiele für Azure SQL-Datenbank).
-

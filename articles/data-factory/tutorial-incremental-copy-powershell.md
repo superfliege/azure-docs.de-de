@@ -13,16 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/10/2017
 ms.author: shlo
+ms.openlocfilehash: 91b632b6d2c2917acf17e9d89c1b5a4b0f8b1c33
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 6a73e7818edfb796b7294f6794d2652c5feedf5c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage
-Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und -transformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können. 
+Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können. 
 
 Im Rahmen der Datenintegrationserfahrung ist eines der weit verbreiteten Szenarios das inkrementelle Laden von Daten in regelmäßigen Abständen, um aktualisierte Analyseergebnisse, nach dem anfänglichen Laden von Daten und Analysen, zu aktualisieren. In diesem Tutorial konzentrieren Sie sich auf das Laden ausschließlich neuer oder aktualisierter Datensätze aus den Datenquellen in Datensenken. Die Ausführung ist im Vergleich zu vollständigem Laden, insbesondere für große Datasets effizienter.    
 
@@ -37,7 +35,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 > * Erstellen des Quell-, Senken-, Grenzwert-Datasets.
 > * Erstellen einer Pipeline.
 > * Ausführen der Pipeline.
-> * Überwachen der Ausführung der Pipeline. 
+> * Überwachen der Pipelineausführung. 
 
 ## <a name="overview"></a>Übersicht
 Das allgemeine Lösungsdiagramm: 
@@ -62,7 +60,7 @@ Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung:
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als den **Quell**-Datenspeicher. Wenn Sie keine Azure SQL-Datenbank besitzen, finden Sie die Anleitung zum Erstellen einer solchen im Artikel [Create an Azure SQL database (Erstellen einer Azure SQL-Datenbank)](../sql-database/sql-database-get-started-portal.md).
+* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als den **Quell**-Datenspeicher. Wenn Sie noch nicht über eine Azure SQL-Datenbank verfügen, finden Sie im Artikel [Erstellen einer Azure SQL-Datenbank](../sql-database/sql-database-get-started-portal.md) die Schritte zum Erstellen einer solchen Datenbank.
 * **Azure Storage-Konto**. Sie verwenden den Blob Storage als den **Senken**-Datenspeicher. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Create a storage account (Erstellen eines Speicherkontos)](../storage/common/storage-create-storage-account.md#create-a-storage-account) eine Anleitung zum Erstellen eines Azure Storage-Kontos. Erstellen Sie einen Container mit dem Namen **Adftutorial**. 
 * **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/install-azurerm-ps) (Erste Schritte mit Azure PowerShell-Cmdlets).
 
@@ -165,7 +163,7 @@ END
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
     ```
-2. Führen Sie zum Erstellen einer Data Factory das **Set-AzureRmDataFactoryV2** Cmdlet aus. Ersetzen Sie vor Ausführung des Befehls die Platzhalter durch Ihre eigenen Werte.
+2. Führen Sie zum Erstellen einer Data Factory das Cmdlet **Set-AzureRmDataFactoryV2** aus. Ersetzen Sie vor dem Ausführen des Befehls die Platzhalter durch Ihre eigenen Werte.
 
     ```powershell
     Set-AzureRmDataFactoryV2 -ResourceGroupName "<your resource group to create the factory>" -Location "East US" -Name "<specify the name of data factory to create. It must be globally unique.>" 
@@ -173,14 +171,14 @@ END
 
     Beachten Sie folgende Punkte:
 
-    * Der Name der Azure Data Factory muss global eindeutig sein. Wird die folgende Fehlermeldung angezeigt, ändern Sie den Namen, und wiederholen Sie den Vorgang.
+    * Der Name der Azure Data Factory muss global eindeutig sein. Wenn die folgende Fehlermeldung angezeigt wird, ändern Sie den Namen, und wiederholen Sie den Vorgang.
 
         ```
         The specified Data Factory name '<data factory name>' is already in use. Data Factory names must be globally unique.
         ```
 
     * Data Factory-Instanzen können nur von Mitwirkenden oder Administratoren des Azure-Abonnements erstellt werden.
-    * Derzeit ist von Data Factory V2 aus, das Erstellen einer Data Factory nur in der Region „USA, Osten“ möglich. Die von Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Compute Services (HDInsight usw.) können auch in anderen Regionen verwendet werden.
+    * Derzeit ermöglicht Data Factory V2 das Erstellen einer Data Factory nur in der Region „USA, Osten“. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
@@ -727,7 +725,6 @@ Gehen Sie zum nächsten Tutorial, um mehr über das Transformieren von Daten mit
 
 > [!div class="nextstepaction"]
 >[Transform data using Spark cluster in cloud (Transformieren von Daten mit Spark-Cluster in der Cloud)](tutorial-transform-data-spark-powershell.md).
-
 
 
 

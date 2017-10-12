@@ -3,7 +3,7 @@ title: "Benutzerdefinierte Load Balancer-Tests und Überwachen des Integritätss
 description: "Erfahren Sie, wie Sie mit benutzerdefinierten Tests für Azure Load Balancer Instanzen hinter einem Load Balancer überwachen."
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,15 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: ce2550ca8301fd12d61cca143b2851b84f1a0f50
-ms.openlocfilehash: 01afa3a08bbb56d4c6b8b18c5eb07f49706c6482
-
+ms.openlocfilehash: 102c07ff0994b3b411f2a13d7a43c5398d5dfd42
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="understand-load-balancer-probes"></a>Grundlegendes zu Load Balancer-Tests
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Load Balancer bietet die Möglichkeit, die Integrität der Serverinstanzen mithilfe von Tests zu überwachen. Wenn ein Test nicht reagiert, beendet der Load Balancer das Senden neuer Verbindungen an die fehlerhafte Instanz. Die vorhandenen Verbindungen sind nicht betroffen, und neue Verbindungen werden an fehlerfreie Instanzen gesendet.
 
@@ -94,9 +96,3 @@ TCP- und HTTP-Tests werden als fehlerfrei eingestuft und markieren die Rollenins
 ## <a name="use-log-analytics-for-load-balancer"></a>Verwenden der Protokollanalyse für den Load Balancer
 
 Mit der [Protokollanalyse für den Load Balancer](load-balancer-monitor-log.md) können Sie den Testintegritätsstatus und die Testanzahl überprüfen. Die Protokollierung kann mit Power BI oder Azure Operational Insights verwendet werden, um Statistiken zum Integritätsstatus des Load Balancers bereitzustellen.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

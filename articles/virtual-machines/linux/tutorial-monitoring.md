@@ -16,12 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 70c17d9a8f7bf6d9106efcb56eee7cd996460c18
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Überwachen und Aktualisieren eines virtuellen Linux-Computers in Azure
 
@@ -211,7 +210,7 @@ Sobald die Lösung **Updateverwaltung** aktiviert ist, wird der Bildschirm **Upd
 
 Planen Sie zum Installieren von Updates eine Bereitstellung, die Ihrem Releasezeitplan und Wartungsfenster entspricht.
 
-Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicken Sie auf **Updatebereitstellung planen** am oberen Rand des Bildschirms **Updateverwaltung**. Geben Sie im Bildschirm **Neue Updatebereitstellung** die folgenden Informationen ein:
+Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicken Sie auf **Updatebereitstellung planen** am oberen Rand des Bildschirms **Updateverwaltung**. Geben Sie auf dem Bildschirm **Neue Updatebereitstellung** die folgenden Informationen ein:
 
 * **Name**: eindeutiger Name zum Identifizieren der Updatebereitstellung.
 * **Auszuschließende Updates**: Wählen Sie diese Option, um die Namen von Paketen einzugeben, die vom Update ausgeschlossen werden sollen.
@@ -290,4 +289,3 @@ Im nächsten Tutorial erhalten Sie Informationen zu Azure Security Center.
 
 > [!div class="nextstepaction"]
 > [Verwalten der VM-Sicherheit](./tutorial-azure-security.md)
-

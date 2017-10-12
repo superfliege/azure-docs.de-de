@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/25/2017
 ms.author: anajod
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a8763c01cba4e5a9eaa3b7842b627d6eb9661a95
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Hinzufügen von Linux-Images zu Azure Stack
 
@@ -54,7 +53,7 @@ Bereiten Sie gemäß den folgenden Anweisungen Ihr eigenes Linux-Image vor:
    * [Debian Linux](../virtual-machines/linux/debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Oracle Linux](../virtual-machines/linux/oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Red Hat Enterprise Linux](../virtual-machines/linux/redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-   * [SLES & openSUSE](../virtual-machines/linux/suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+   * [SLES &amp; openSUSE](../virtual-machines/linux/suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Ubuntu](../virtual-machines/linux/create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 1. Laden Sie den [Azure Linux-Agent](https://github.com/Azure/WALinuxAgent/) herunter, und installieren Sie ihn.
@@ -97,5 +96,4 @@ Bereiten Sie gemäß den folgenden Anweisungen Ihr eigenes Linux-Image vor:
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Übersicht über das Anbieten von Diensten in Azure Stack](azure-stack-offer-services-overview.md)
-
 

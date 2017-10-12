@@ -12,14 +12,12 @@ ms.topic: article
 ms.date: 09/18/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a3b453028b7fd32bd3ed22823a337f7a978d9aa7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region-preview"></a>Durchführen eines Notfallwiederherstellungsverfahrens für Azure-VMs in eine sekundäre Azure-Region (Vorschau)
 
 Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
@@ -56,4 +54,3 @@ In diesem Tutorial wird erläutert, wie ein Notfallwiederherstellungsverfahren f
 
 > [!div class="nextstepaction"]
 > [Ausführen eines Produktionsfailovers](azure-to-azure-tutorial-failover-failback.md)
-

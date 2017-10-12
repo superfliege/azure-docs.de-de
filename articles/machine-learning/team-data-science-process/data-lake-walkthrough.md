@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: bradsev;weig
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 5c4ec4578d7d59ae128448be7378f6104d0ce601
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skalierbare Data Science mit Azure Data Lake: lückenlose exemplarische Vorgehensweise
 Diese exemplarische Vorgehensweise veranschaulicht die Nutzung von Azure Data Lake zum Anwenden von Datenuntersuchungs- und binären Klassifizierungsaufgaben auf das Dataset „NYC Taxi Trip and Fare“, um vorherzusagen, ob neben dem Fahrpreis ein Trinkgeld gezahlt wird oder nicht. Sie werden lückenlos durch die Schritte des [Data Science-Prozesses](http://aka.ms/datascienceprocess)begleitet – von der Datenerfassung über das Training des Modells bis zur Bereitstellung eines Webdiensts zum Veröffentlichen des Modells.
@@ -686,4 +685,3 @@ Der Lernpfad für den [Team Data Science-Prozess (TDSP)](http://aka.ms/datascien
 * [Der Team Data Science-Prozess in Aktion: Verwenden von HDInsight Hadoop-Clustern](hive-walkthrough.md)
 * [Der Team Data Science-Prozess: Verwenden von SQL Server](sql-walkthrough.md)
 * [Übersicht über Data Science mit Spark in Azure HDInsight](spark-overview.md)
-

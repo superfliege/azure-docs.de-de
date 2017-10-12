@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.translationtype: HT
-ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
 ms.openlocfilehash: 565bcba848de1c518b25ff4c55a9a47aaa45bfb4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="perform-azure-blob-storage-operations-with-azure-powershell"></a>Ausführen von Vorgängen für Azure Blob Storage mit Azure PowerShell
 
 Der Azure-Blobspeicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Objektdaten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. In diesem Artikel werden grundlegende Vorgänge für den Azure Blob Storage wie das Hochladen, Herunterladen und Löschen von Blobs beschrieben. Folgendes wird vermittelt:
@@ -34,7 +32,7 @@ Der Azure-Blobspeicher ist ein Dienst zur Speicherung großer Mengen unstrukturi
 > * Kopieren von Blobs
 > * Löschen von Blobs
 > * Anzeigen und Festlegen von Metadaten und Eigenschaften eines Blobs
-> * Verwalten von Sicherheitseinstellungen mit SAS (Shared Access Signatures)
+> * Verwalten von Sicherheitseinstellungen mit SAS
 
 Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
 

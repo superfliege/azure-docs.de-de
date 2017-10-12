@@ -16,12 +16,11 @@ ms.date: 08/30/2017
 ms.author: joflore
 ms.reviewer: alexwe
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: df847c370817c0702163b5e22c35c7e4f1d3cfee
-ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Erste Schritte mit Azure Multi-Factor Authentication-Server
 
@@ -201,4 +200,3 @@ Der neue Server ist nun aktiv und wird mit den ursprünglichen Konfigurations- u
 - Einrichten und Konfigurieren von [Remotedesktopgateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS](multi-factor-authentication-get-started-server-rdg.md)
 - [Bereitstellen des mobilen App-Webdiensts für den Azure Multi-Factor Authentication-Server](multi-factor-authentication-get-started-server-webservice.md)
 - [Erweiterte Szenarien mit Azure Multi-Factor Authentication und Drittanbieter-VPNs](multi-factor-authentication-advanced-vpn-configurations.md)
-

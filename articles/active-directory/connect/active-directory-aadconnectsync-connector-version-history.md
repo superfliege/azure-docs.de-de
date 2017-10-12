@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/06/2017
 ms.author: fimguy
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: 98eb9b3a58737da2436eed591d69a900166c6af9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connector-version-release-history"></a>Connector – Versionsveröffentlichungsverlauf
 Die Connectors für Forefront Identity Manager (FIM) und Microsoft Identity Manager (MIM) werden regelmäßig aktualisiert.
@@ -59,7 +58,7 @@ Verwandte Links:
     * Der Datei „WSConfigTool.exe.config“ kann ein Ersetzungsmuster hinzugefügt werden, z.B. ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```.
 
 * Lotus Notes:
-  * Wenn die Option **zum Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten**deaktiviert ist, tritt für den Connector ein Fehler beim Export auf. Update: Nach dem Exportfluss werden alle Attribute in Domino exportiert, zum Zeitpunkt des Exports wird jedoch ein KeyNotFoundException-Fehler an Sync zurückgegeben. 
+  * Wenn die Option zum Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten**** deaktiviert ist, tritt für den Connector ein Fehler beim Export auf. Update: Nach dem Exportfluss werden alle Attribute in Domino exportiert, zum Zeitpunkt des Exports wird jedoch ein KeyNotFoundException-Fehler an Sync zurückgegeben. 
     * Der Grund: Beim Umbenennungsvorgang tritt ein Fehler auf, wenn versucht wird, DN (UserName-Attribut) durch Ändern eines der folgenden Attribute zu ändern:  
       - LastName
       - FirstName
@@ -209,4 +208,3 @@ Vor März 2016 wurden die Connectors als Support-Themen veröffentlicht.
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-

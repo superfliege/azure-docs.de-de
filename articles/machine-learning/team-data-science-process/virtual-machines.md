@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 88fe9673176cdade92faad4bbdcb2e1bd11f4a55
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provision-azure-data-science-virtual-machines-as-ipython-notebook-servers"></a>Bereitstellen von virtuellen Azure Data Science-Computern als IPython Notebook-Server
 Sie erhalten hier Anweisungen zum Einrichten einer Azure-VM und einer Azure-VM mit SQL Server als IPython Notebook-Server. Der virtuelle Windows-Computer wird mit Unterstützung von Tools wie IPython Notebook, Azure-Speicher-Explorer und AzCopy sowie anderer Hilfsprogramme, die für Data Science-Projekte hilfreich sind, konfiguriert. Azure-Speicher-Explorer und AzCopy stellen z. B. hilfreiche Möglichkeiten zum Hochladen von Daten von Ihrem lokalen Computer in den Azure-Speicher oder das Herunterladen aus dem Speicher auf Ihren lokalen Computer bereit. 
@@ -44,5 +43,4 @@ Nach der Bereitstellung und Konfiguration können diese virtuellen Computer als 
 > Virtuelle Azure-Computer werden **nach Nutzung abgerechnet**. Damit Sie nicht für ungenutzte virtuelle Computer bezahlen müssen, müssen Sie diese im **klassischen Azure-Portal** in den Status [Angehalten (Zuordnung aufgehoben)](http://manage.windowsazure.com/)versetzen. Eine Schrittanleitung dazu, wie Sie die Zuordnung Ihrer virtuellen Computer aufheben, finden Sie unter [Herunterfahren und Freigeben von nicht genutzten virtuellen Computern](../data-science-virtual-machine/setup-virtual-machine.md#shutdown)
 > 
 > 
-
 

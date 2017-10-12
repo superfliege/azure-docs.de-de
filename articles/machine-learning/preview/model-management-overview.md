@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 31b859d86e82c92839462280721c5f84f1d923cd
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure Machine Learning-Modellverwaltung
 
@@ -126,4 +125,3 @@ Die folgende Abbildung zeigt den vollständigen Workflow basierend auf den besch
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Einführung in die Modellverwaltung finden Sie unter [Modellverwaltung konfigurieren](model-management-configuration.md).
-

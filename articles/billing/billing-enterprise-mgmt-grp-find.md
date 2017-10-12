@@ -12,14 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: rithorn
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: df4d85d0556a62311c112f24431b54d042333c7f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-an-azure-subscription-or-management-group"></a>Suchen nach einem Azure-Abonnement oder einer Verwaltungsgruppe
 
 Wenn Sie ein Abonnement oder eine Verwaltungsgruppe nicht in Azure finden, suchen Sie möglicherweise im falschen Verzeichnis. Diese Situation kann auftreten, wenn Ihr Konto in mehreren Azure Active Directorys vorhanden ist. Jedes [Active Directory ist unabhängig](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-directory-independence), und Zugriffsberechtigungen werden nicht Verzeichnisse übergreifend vererbt.      
@@ -55,7 +53,6 @@ Sie können ein Abonnement in das Verzeichnis verschieben, das Ihren Verwaltungs
 
 
  
-
 
 
 

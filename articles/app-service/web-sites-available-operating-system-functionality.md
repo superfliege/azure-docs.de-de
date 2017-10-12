@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 ms.openlocfilehash: 18ff5c81d0aa5e8a28ed8a11dad19811d2fa1d2c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Betriebssystemfunktionen für Azure App Service
 In diesem Artikel werden allgemeine grundlegende Betriebssystemfunktionen beschrieben, die für alle Apps zur Verfügung stehen, die in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)ausgeführt werden. Diese Funktionen umfassen Zugriff auf Dateien, Netzwerke und Registrierung sowie Diagnoseprotokolle und Ereignisse. 

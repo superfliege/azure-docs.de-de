@@ -10,15 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 64699db16eaa55d6206f7631ced3072e21cd2074
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>Registrieren eines einzelnen Azure-Abonnements und Anzeigen von Kostendaten
 
 Mithilfe Ihres Azure-Abonnements können Sie sich bei der Azure-Kostenverwaltung von Cloudyn registrieren. Durch die Registrierung erhalten Sie Zugriff auf das Cloudyn-Portal. In diesem Schnellstart wird der Registrierungsvorgang ausführlich erläutert, der zum Erstellen eines Cloudyn-Testabonnements und zum Anmelden beim Cloudyn-Portal erforderlich ist. Es wird auch gezeigt, wie die Anzeige von Kostendaten sofort gestartet werden kann.
@@ -51,4 +48,3 @@ In diesem Schnellstart haben Sie Ihre Azure-Abonnementinformationen verwendet, u
 
 > [!div class="nextstepaction"]
 > [Anzeigen von Kostendaten](./tutorial-review-usage.md)
-

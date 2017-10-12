@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: a1fe545e4a341709232cba36c6e3cf3b4ce82e80
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrieren eines aktiven DNS-Namens zu Azure App Service
 
@@ -55,9 +54,9 @@ Welchen TXT-Eintrag Sie benötigen, hängt vom zu migrierenden DNS-Eintrag ab. B
 
 | DNS-Beispieleintrag | TXT-Host | TXT-Wert |
 | - | - | - |
-| @ (Stamm) | _awverify_ | _&lt;App-Name>.azurewebsites.net_ |
-| www (Unterdomäne) | _awverify.www_ | _&lt;App-Name>.azurewebsites.net_ |
-| \* (Platzhalter) | _awverify.\*_ | _&lt;App-Name>.azurewebsites.net_ |
+| @ (Stamm) | _awverify_ | _&lt;App-Name&gt;.azurewebsites.net_ |
+| www (Unterdomäne) | _awverify.www_ | _&lt;App-Name&gt;.azurewebsites.net_ |
+| \* (Platzhalter) | _awverify.\*_ | _&lt;App-Name&gt;.azurewebsites.net_ |
 
 Beachten Sie auf der Seite mit den DNS-Einträgen den Eintragstyp des DNS-Namens, den Sie migrieren möchten. App Service unterstützt Zuordnungen von CNAME- und A-Einträgen.
 
@@ -116,8 +115,8 @@ Ordnen Sie für das Stammdomänenbeispiel `contoso.com` den A- oder CNAME-Eintra
 | FQDN-Beispiel | Eintragstyp | Host | Wert |
 | - | - | - | - |
 | contoso.com (Stammdomäne) | A | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
-| www.contoso.com (Unterdomäne) | CNAME | `www` | _&lt;App-Name>.azurewebsites.net_ |
-| \*.contoso.com (Platzhalter) | CNAME | _\*_ | _&lt;App-Name>.azurewebsites.net_ |
+| www.contoso.com (Unterdomäne) | CNAME | `www` | _&lt;App-Name&gt;.azurewebsites.net_ |
+| \*.contoso.com (Platzhalter) | CNAME | _\*_ | _&lt;App-Name&gt;.azurewebsites.net_ |
 
 Speichern Sie die Einstellungen.
 
@@ -129,4 +128,3 @@ Informieren Sie sich darüber, wie Sie ein benutzerdefiniertes SSL-Zertifikat an
 
 > [!div class="nextstepaction"]
 > [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md)
-

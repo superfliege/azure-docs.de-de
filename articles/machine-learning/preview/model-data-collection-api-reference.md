@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7a0fda8a44d13bcaba84b4124d9b693c05874154
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Referenz zur Modelldatensammlungs-API für Azure Machine Learning
 
@@ -95,5 +94,4 @@ Siehe die Details unter „Methode“ und „Parameter“:
 |-------------|------------|-------------------------|
 | input_data | Mehrere Typen | Die zu sammelnden Daten (derzeit werden die Liste „types“, „numpy.array, pandas.DataFrame“ und „pyspark.sql.DataFrame“ akzeptiert). Bei Datenrahmentypen, wenn ein Header mit Featurenamen vorhanden ist, werden diese Informationen in das Datenziel eingefügt (ohne dass Featurenamen explizit an den „ModelDataCollector“-Konstruktor übergeben werden müssen) |
 | user_correlation_id | string | Optionaler Korrelationsbezeichner, der vom Benutzer zum Korrelieren dieser Vorhersage bereitgestellt werden kann |
-
 

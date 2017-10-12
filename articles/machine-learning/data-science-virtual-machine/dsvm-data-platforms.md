@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9b8beb51c555c6125fa3b0abbad892d627a180b9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-platforms"></a>Datenplattformen
 
 Mit der Data Science-VM (DSVM) können Sie Analysen für ein breites Spektrum von Datenplattformen erstellen. Neben Schnittstellen für Remotedatenplattformen bietet die DSVM eine lokale Instanz für eine schnelle Entwicklung und Prototypenerstellung. 
@@ -106,5 +104,4 @@ Sie können die Hadoop-bezogenen Dienste beenden, wenn Sie sie nicht benötigen.
 
 
 Bibliotheken für den Datenzugriff über Azure Blob Storage oder Azure Data Lake Storage (ADLS) und für die Verwendung der MMLSpark-Machine Learning-Bibliotheken von Microsoft sind unter „$SPARK_HOME/jars“ vorinstalliert. Diese JAR-Dateien werden beim Start von Spark automatisch geladen. Standardmäßig verwendet Spark Daten auf dem lokalen Datenträger. Wenn die Spark-Instanz auf der DSVM auf gespeicherte Daten in Azure Blob Storage oder ADLS zugreifen soll, müssen Sie die Datei `core-site.xml` auf der Grundlage der Vorlage aus „$SPARK_HOME/conf/core-site.xml.template“ (enthält Platzhalter für Blob- und ADLS-Konfigurationen) mit den entsprechenden Anmeldeinformationen für Azure Blob Storage und Azure Data Lake Storage erstellen/konfigurieren. Eine ausführlichere Anleitung zum Erstellen der Anmeldeinformationen für den ADLS-Dienst finden Sie [hier](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory#create-an-active-directory-application). Nach Eingabe der Anmeldeinformationen für Azure-Blob Storage oder ADLS in die Datei „core-site.xml“ können Sie mit dem URI-Präfix „wasb://“ oder „adl://“ auf die in diesen Quellen gespeicherten Daten verweisen. 
-
 

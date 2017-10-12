@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 0c6e4d9d2a3744f607b72364f3944c700acd070c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-diagnostics"></a>Was ist die Azure-Diagnose?
 Die Azure-Diagnose ist eine Funktion in Azure, mit der Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts, Azure Virtual Machines unter Microsoft Windows und Service Fabric unterstützt. Andere Azure-Dienste verwenden ihre eigenen separaten Diagnosefunktionen.
@@ -79,4 +78,3 @@ Erste Schritte finden Sie unter [Überwachen einer Service Fabric-Anwendung](../
 * Hier erhalten Sie Informationen zur Verwendung von [Leistungsindikatoren in der Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-performance-counters.md).
 * Erlernen Sie das [Weiterleiten von Azure-Diagnoseinformationen an Application Insights](azure-diagnostics-configure-application-insights.md).
 * Wenn bei der Diagnose Probleme mit dem Starten oder dem Finden von Daten in Azure Storage-Tabellen auftreten, finden Sie weitere Informationen unter [Problembehandlung mit Azure-Diagnose](azure-diagnostics-troubleshooting.md).
-

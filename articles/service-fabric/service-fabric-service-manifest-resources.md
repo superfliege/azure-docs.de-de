@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: subramar
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 615b758d6aa48f94ec8c9159d4f52e32f413c8d9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Angeben von Ressourcen in einem Dienstmanifest
 ## <a name="overview"></a>Übersicht
@@ -201,4 +200,3 @@ Angenommen, Sie haben im Dienstmanifest Folgendes angegeben:
 Und nehmen wir weiter an, der Port1- und der Protocol1-Wert für die Anwendungsparameter sind NULL oder leer. Der Port wird weiterhin von ServiceFabric bestimmt. Und das TCP-Protokoll wird verwendet.
 
 Angenommen, Sie geben einen falschen Wert an – beispielsweise den Zeichenfolgenwert „Foo“ anstelle einer ganzen Zahl für den Port.  Für den Befehl „New-ServiceFabricApplication“ tritt ein Fehler mit dem Hinweis auf, dass der Außerkraftsetzungsparameter mit dem Namen „ServiceEndpoint1“ und dem Attribut „Port1“ im Abschnitt „ResourceOverrides“ ungültig ist. Außerdem werden Sie darauf hingewiesen, dass „Foo“ angegeben wurde, aber eine ganze Zahl erforderlich ist.
-

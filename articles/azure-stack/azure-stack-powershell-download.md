@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 20cac6eace89d86f8fa6d7640357e19c8d7359b3
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="download-azure-stack-tools-from-github"></a>Herunterladen von Azure Stack-Tools von GitHub
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
@@ -80,6 +78,5 @@ Das Repository „AzureStack-Tools“ umfasst PowerShell-Module, die die folgend
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Konfigurieren Sie die PowerShell-Umgebung des Azure Stack-Benutzers.](user/azure-stack-powershell-configure-user.md)   
+* [Konfigurieren der PowerShell-Umgebung des Azure Stack-Benutzers](user/azure-stack-powershell-configure-user.md)   
 * [Connect to Azure Stack Development Kit over a VPN (Herstellen einer Verbindung mit dem Azure Stack Development Kit über VPN)](azure-stack-connect-azure-stack.md)  
-

@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: e83bc42d658c4d6304f98b99d0e0942595bd65d2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD
 
 Administratoren können eine Überprüfung von Gruppenmitgliedern oder Benutzern anfordern, die einer Anwendung zugewiesen sind, indem sie [eine Zugriffsüberprüfung erstellen](active-directory-azure-ad-controls-create-access-review.md). Azure AD sendet den Prüfern automatisch eine E-Mail, in der sie aufgefordert werden, den Zugriff zu überprüfen. Benutzern, die diese E-Mail nicht erhalten haben, können Sie die Anweisungen unter [So überprüfen Sie den Zugriff](active-directory-azure-ad-controls-perform-access-review.md) senden.  Folgen Sie den Schritten in diesem Artikel, nachdem der Zeitraum der Zugriffsüberprüfung abgelaufen ist oder der Administrator die Zugriffsüberprüfung beendet hat, um die Ergebnisse anzuzeigen und anzuwenden.
@@ -55,8 +53,7 @@ Wenn Sie an einer Überprüfung nicht weiter interessiert sind, löschen Sie sie
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Manage user access with Azure AD access reviews (Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen)](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
-- [Manage guest access with Azure AD access reviews (Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen)](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
-- [Manage programs and controls for Azure AD access reviews (Verwalten der Programme und Kontrollen für Azure AD-Zugriffsüberprüfungen)](active-directory-azure-ad-controls-manage-programs-controls.md)
+- [Manage guest access with Azure AD access reviews](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md) (Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen)
+- [Manage programs and controls for Azure AD access reviews](active-directory-azure-ad-controls-manage-programs-controls.md) (Verwalten der Programme und Kontrollen für Azure AD-Zugriffsüberprüfungen)
 - [Erstellen einer Zugriffsüberprüfung für Mitglieder einer Gruppe oder den Zugriff auf eine Anwendung](active-directory-azure-ad-controls-create-access-review.md)
 - [Erstellen einer Zugriffsüberprüfung von Benutzern in der Azure AD-Administratorrolle](active-directory-privileged-identity-management-how-to-start-security-review.md)
-

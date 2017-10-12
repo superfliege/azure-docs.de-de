@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2fc71d3a03ff978485104bcd1cd9391c1d5ee392
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal
 Im Microsoft Azure Machine Learning Web Services-Portal können Sie Ihre neuen und klassischen Machine Learning-Webdienste verwalten. Da klassische und neue Webdienste auf unterschiedlichen zugrunde liegenden Technologien basieren, gibt es für beide geringfügig andere Verwaltungsfunktionen.
@@ -188,5 +187,4 @@ Um zusätzliche Konten zu verwalten, die Zugriff auf den Arbeitsbereich in Machi
 > Über den Link **v** wird Machine Learning Studio mit dem Microsoft-Konto geöffnet, an dem Sie gerade angemeldet sind. Das Microsoft-Konto, mit dem Sie sich beim klassischen Azure-Portal angemeldet haben, um einen Arbeitsbereich zu erstellen, verfügt nicht automatisch über die Berechtigung zum Öffnen dieses Arbeitsbereichs. Um einen Arbeitsbereich zu öffnen, müssen Sie an dem Microsoft-Konto angemeldet sein, das als Besitzer des Arbeitsbereichs definiert wurde, oder Sie müssen eine Einladung des Besitzers zur Teilnahme am Arbeitsbereich erhalten haben.
 > 
 > 
-
 

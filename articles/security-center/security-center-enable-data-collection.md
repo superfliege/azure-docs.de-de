@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: terrylan
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 226fc82abf7aa24a0aa1bd3c21279158e1ce8e95
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie hinsichtlich Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen, angemeldeter Benutzer und Mandanten-ID. Darüber hinaus kopiert der Microsoft Monitoring Agent Absturzabbilddateien in Ihren Arbeitsbereich.
@@ -101,7 +100,7 @@ Im Anschluss finden Sie eine vollständige Aufschlüsselung der Sicherheits- und
    ![Ereignis-IDs][4]
 
 So wählen Sie Ihre Filterrichtlinie:
-1. Wählen Sie auf dem Blatt mit der **Sicherheitsrichtlinie und den Einstellungen** unter **Sicherheitsereignisse** Ihre Filterrichtlinie aus.
+1. Wählen Sie auf dem Blatt mit der Sicherheitsrichtlinie und den Einstellungen**** unter **Sicherheitsereignisse** Ihre Filterrichtlinie aus.
 2. Wählen Sie **Speichern** aus.
 
    ![Auswählen der Filterrichtlinie][5]
@@ -141,4 +140,3 @@ In diesem Artikel wurde die Funktionsweise der Datensammlung und der automatisch
 [4]: ./media/security-center-enable-data-collection/event-id.png
 [5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
 [6]: ./media/security-center-enable-data-collection/disable-automatic-provisioning.png
-

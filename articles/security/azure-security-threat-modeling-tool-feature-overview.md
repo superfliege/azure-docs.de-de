@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: 5c60e13028c3ccdf3269d74ab4724bb34ca10c19
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="threat-modeling-tool-feature-overview"></a>Übersicht über die Funktionen des Threat Modeling Tools
 
 Das Threat Modeling Tool kann Sie bei der Bedrohungsmodellierung unterstützen. Eine allgemeine Einführung in das Tool finden Sie unter [Erste Schritte mit dem Threat Modeling Tool](./azure-security-threat-modeling-tool-getting-started.md).
@@ -140,14 +138,14 @@ Beim Öffnen oder Erstellen eines neuen Modells wird die **Entwurfsansicht** ge�
 
 Sie können dem Raster Elemente auf zwei Arten hinzufügen:
 
-- **Drag & Drop**: Ziehen Sie das gewünschte Element in das Raster. Verwenden Sie dann die Elementeigenschaften, um zusätzliche Informationen anzugeben.
+- **Drag &amp; Drop**: Ziehen Sie das gewünschte Element in das Raster. Verwenden Sie dann die Elementeigenschaften, um zusätzliche Informationen anzugeben.
 - **Klicken mit der rechten Maustaste**: Klicken Sie mit der rechten Maustaste auf das Raster, und wählen Sie Optionen im Kontextmenü. Auf dem Bildschirm wird eine generische Darstellung des ausgewählten Elements angezeigt.
 
 ### <a name="connect-elements"></a>Verbinden von Elementen
 
 Sie können Elemente auf zwei Arten verbinden:
 
-- **Drag & Drop**: Ziehen Sie den gewünschten Datenfluss in das Raster, und verbinden Sie beide Enden mit den entsprechenden Elementen.
+- **Drag &amp; Drop**: Ziehen Sie den gewünschten Datenfluss in das Raster, und verbinden Sie beide Enden mit den entsprechenden Elementen.
 - **Klicken bei gedrückter UMSCHALTTASTE**: Klicken Sie auf das erste Element (Daten werden gesendet), halten Sie die UMSCHALTTASTE gedrückt, und wählen Sie dann das zweite Element aus (Daten werden empfangen). Klicken Sie mit der rechten Maustaste, und wählen Sie **Verbinden** aus. Wenn Sie einen bidirektionalen Datenfluss verwenden, ist die Reihenfolge nicht so wichtig.
 
 ### <a name="properties"></a>Eigenschaften
@@ -210,4 +208,3 @@ Nachdem Sie das Ändern von Prioritäten und Aktualisieren des Status der einzel
 
 * Informationen dazu, wie Sie eine Vorlage zur Community beitragen können, finden Sie auf unserer [GitHub](https://github.com/Microsoft/threat-modeling-templates)-Seite. 
 * Besuchen Sie die [Downloadseite](https://aka.ms/tmtpreview), um mit der Verwendung des Tools zu beginnen.
-

@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: bb528c424bc71f0309439e741c30e16d0d13c7d7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Skalieren von Kubernetes-Pods und der Kubernetes-Infrastruktur
 
 Wenn Sie die Tutorials durchgearbeitet haben, verfügen Sie über einen funktionsfähigen Kubernetes-Cluster in Azure Container Service und haben die Azure Vote-App bereitgestellt. 
@@ -160,5 +158,4 @@ Fahren Sie mit dem nächsten Tutorial fort, um mehr über die Aktualisierung von
 
 > [!div class="nextstepaction"]
 > [Aktualisieren einer Anwendung in Kubernetes](./container-service-tutorial-kubernetes-app-update.md)
-
 

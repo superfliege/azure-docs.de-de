@@ -16,12 +16,11 @@ ms.date: 09/07/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal;it-pro;
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 7a7370eb076ba8602a58a260a14bb863c55bc803
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>Einrichten von Azure Active Directory für die Self-Service-Gruppenverwaltung
 Ihre Benutzer können ihre eigenen Sicherheitsgruppen oder Office 365-Gruppen in Azure Active Directory (Azure AD) erstellen und verwalten. Benutzer können auch Mitgliedschaften in Sicherheitsgruppen oder Office 365-Gruppen anfordern. Der Besitzer der Gruppe kann dann die Mitgliedschaft genehmigen oder verweigern. Die tagtägliche Steuerung der Gruppenmitgliedschaft kann an Personen delegiert werden, die den Geschäftskontext für die betreffende Mitgliedschaft verstehen. Self-Service-Funktionen zur Gruppenverwaltung sind nur für Sicherheitsgruppen und Office 365-Gruppen, aber nicht für E-Mail-aktivierte Sicherheitsgruppen oder Verteilerlisten verfügbar.
@@ -51,4 +50,3 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 * [Was ist Azure Active Directory?](active-directory-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-

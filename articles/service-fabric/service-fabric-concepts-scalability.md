@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 680b996e370f66a5e22644ae1d1bf41d314bb4de
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scaling-in-service-fabric"></a>Skalierung in Service Fabric
 Azure Service Fabric erleichtert das Erstellen skalierbarer Anwendungen durch Verwalten der Dienste, Partitionen und Replikate auf den Knoten eines Clusters. Das Ausführen vieler Workloads auf derselben Hardware ermöglicht eine maximale Ressourcennutzung, bietet jedoch auch Flexibilität bei der Auswahl der Skalierung für die Workloads. 
@@ -151,4 +150,3 @@ Weitere Informationen zu den Service Fabric-Konzepten finden Sie in den folgende
 
 * [Verfügbarkeit der Service Fabric-Dienste](service-fabric-availability-services.md)
 * [Partitionieren von Service Fabric-Diensten](service-fabric-concepts-partitioning.md)
-

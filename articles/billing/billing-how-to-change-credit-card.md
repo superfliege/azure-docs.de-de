@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: genli
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: 03764377b3ea0e17d4a192a7e05bb495ec56f331
-ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Hinzufügen, Aktualisieren oder Entfernen einer Kredit- oder Debitkarte für Azure
 
@@ -101,4 +100,3 @@ Leider unterstützt Azure derzeit keine einmaligen Zahlungen für Kredit- oder D
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
-

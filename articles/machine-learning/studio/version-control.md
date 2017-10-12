@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: haining
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9d1fcc761115c64fafb811d6ca1c2389babfdc15
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Application Lifecycle Management in Azure Machine Learning Studio
 Azure Machine Learning Studio ist ein Tool, mit dem Machine Learning-Experimente entwickelt und auf der Azure-Cloudplattform ausgeführt werden. Es ist vergleichbar mit der Zusammenführung der Visual Studio IDE mit skalierbaren Clouddiensten zu einer einzelnen Plattform. Sie können standardmäßige ALM-Vorgehensweisen (Application Lifecycle Management), von der Versionsverwaltung verschiedener Ressourcen bis zur automatischen Ausführung und Bereitstellung, in Azure Machine Learning Studio integrieren. In diesem Artikel werden einige der Optionen und Ansätze behandelt.
@@ -101,4 +100,3 @@ Ein wichtiger Aspekt von ALM ist die Möglichkeit, den Ausführungs- und Bereits
 * Laden Sie das [Azure Machine Learning Studio PowerShell](http://aka.ms/amlps)-Modul herunter, und starten Sie die Automatisierung Ihrer ALM-Aufgaben.
 * Erfahren Sie, wie Sie über PowerShell und die API zum Umtrainieren [eine große Anzahl von ML-Modellen mit nur einem einzigen Experiment erstellen und verwalten](create-models-and-endpoints-with-powershell.md).
 * Erfahren Sie mehr über [das Bereitstellen von Azure Machine Learning-Webdiensten](publish-a-machine-learning-web-service.md).
-

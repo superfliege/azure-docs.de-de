@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/24/2017
 ms.author: asgang
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: c235102a60b6d11c8b77203121352bd1400f4325
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Replizieren einer Dynamics AX-Anwendung mit mehreren Schichten mithilfe von Azure Site Recovery
 
@@ -193,4 +192,3 @@ Mithilfe von Site Recovery können Sie für Active Directory einen vollständig 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Schutz von Unternehmensworkloads mit Site Recovery finden Sie unter [Welche Workloads können mit Azure Site Recovery geschützt werden?](site-recovery-workload.md).
-

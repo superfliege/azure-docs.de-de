@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 46662c15374f781a6527bb1435d883ae060c63f4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deep-learning-and-ai-frameworks"></a>Deep Learning- und KI-Frameworks
 Die [Data Science-VM](http://aka.ms/dsvm) (DSVM) und die [Deep Learning-VM](http://aka.ms/dsvm/deeplearning) unterstützen eine Reihe von Deep Learning-Frameworks zur Unterstützung bei der Erstellung von KI-Anwendungen mit Predictive Analytics und kognitiven Fähigkeiten wie Bild- und Sprachverständnis. 
 
@@ -190,5 +188,4 @@ Das Starten des Diensts dauert ca. eine Minute. Starten Sie einen Webbrowser, un
 | Unterstützte DSVM-Editionen      | Linux     |
 | Konfiguration/Installation auf der DSVM  | Torch ist unter `/dsvm/tools/torch` installiert. PyTorch ist in der Python 2.7-Umgebung (_root_) sowie in der Python 3.5-Umgebung (_py35_) installiert.   |
 | Links zu Beispielen      | Torch-Beispiele finden Sie unter `/dsvm/samples/torch`. PyTorch-Beispiele finden Sie unter `/dsvm/samples/pytorch`.      |
-
 

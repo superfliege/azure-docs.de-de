@@ -14,16 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/18/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 45f1c61189b338d38681c8e93be01953da65913f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für VMware-VMs und physische Server, die nach Azure repliziert werden.
 
-In diesem Tutorial wird das Ausführen eines Failovers einer VMware-VM auf Azure beschrieben. Nach dem Failover erfolgt ein Failback auf den lokalen Standort, wenn er verfügbar ist. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial wird das Ausführen eines Failovers einer VMware-VM auf Azure beschrieben. Nach dem Failover erfolgt ein Failback zum lokalen Standort, wenn er verfügbar ist. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Überprüfen der VMware-VM-Eigenschaften, um die Konformität mit Azure-Anforderungen festzustellen
@@ -35,8 +34,8 @@ In diesem Tutorial wird das Ausführen eines Failovers einer VMware-VM auf Azure
 
 Dies ist das fünfte Tutorial in einer Reihe. In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben.
 
-1. [Prepare Azure](tutorial-prepare-azure.md) (Vorbereiten von Azure)
-2. [Prepare on-premises VMware](tutorial-prepare-on-premises-vmware.md) (Lokales Vorbereiten von VMware)
+1. [Vorbereiten von Azure](tutorial-prepare-azure.md)
+2. [Lokales Vorbereiten von VMware](tutorial-prepare-on-premises-vmware.md)
 3. [Einrichten der Notfallwiederherstellung](tutorial-vmware-to-azure.md)
 4. [Durchführen eines Notfallwiederherstellungsverfahrens](tutorial-dr-drill-azure.md)
 
@@ -58,7 +57,7 @@ Failover und Failback weisen vier Phasen auf:
 
 1. Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente** > VM.
 
-2. Im Bereich **Repliziertes Element** finden Sie eine Zusammenfassung der Informationen über virtuelle Computer, den Integritätsstatus sowie die neuesten verfügbaren Wiederherstellungspunkte. Klicken Sie auf **Eigenschaften**, um weitere Details anzuzeigen.
+2. Im Bereich **Repliziertes Element** finden Sie eine Zusammenfassung der Informationen zu virtuellen Computern, den Integritätsstatus sowie die neuesten verfügbaren Wiederherstellungspunkte. Klicken Sie auf **Eigenschaften**, um weitere Details anzuzeigen.
 
 3. In **Compute und Netzwerk** können Sie den Azure-Namen, die Ressourcengruppe, Zielgröße, [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) und [Einstellungen verwalteter Datenträger](#managed-disk-considerations) ändern.
 
@@ -71,9 +70,9 @@ Failover und Failback weisen vier Phasen auf:
 1. Klicken Sie unter **Einstellungen** > **Replizierte Elemente** auf VM > **Failover**.
 
 2. Wählen Sie in **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
-   - **Neueste** (Standard): Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers nach Site Recovery repliziert wurden.
-   - **Letzte Verarbeitung**: Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
-   - **Letzte App-Konsistenz**: Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten App-konsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde.
+   - **Neueste** (Standard): Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
+   - **Letzte Verarbeitung:** Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
+   - **Letzte App-Konsistenz:** Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten App-konsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde.
    - **Benutzerdefiniert**: Geben Sie einen Wiederherstellungspunkt an.
 
 3. Klicken Sie auf **Der Computer wird vor Beginn des Failovers heruntergefahren**, um zu versuchen, virtuelle Quellcomputer herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
@@ -83,7 +82,7 @@ Failover und Failback weisen vier Phasen auf:
 5. **Committen** Sie das Failover nach der Überprüfung. Dadurch werden alle verfügbaren Wiederherstellungspunkte gelöscht.
 
 > [!WARNING]
-> **Brechen Sie ein Failover in Bearbeitung nicht ab**: Vor dem Starten des Failovers wird die VM-Replikation beendet.
+> **Brechen Sie ein Failover in Bearbeitung nicht ab:** Vor dem Starten des Failovers wird die VM-Replikation beendet.
 > Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
 
 In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, die etwa 8 bis 10 Minuten dauern können. Bei physischen Servern, VMware-Linux-Computern, VMware-VMs ohne aktivierten DHCP-Dienst und VMware-VMs mit den folgenden Starttreibern kann das Testfailover länger dauern: storvsc, vmbus, storflt, intelide, atapi.
@@ -154,4 +153,3 @@ Die Daten sollten nun wieder auf Ihrem lokalen Standort sein, aber sie werden ni
 2. Wählen Sie den Prozessserver, mit dem die replizierten Daten nach Azure gesendet werden, und klicken Sie auf **OK**.
 
 Nachdem das erneute Schützen abgeschlossen ist, wird der virtuelle Computer zurück nach Azure repliziert, und Sie können ggf. ein Failover ausführen.
-

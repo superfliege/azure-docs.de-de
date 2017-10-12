@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
 ms.author: chackdan
+ms.openlocfilehash: 2bd3053d645d9acd4850fddf7f27237ff954e8c7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 6cc3be57ed283cafa686d46d4b376c69f06301ea
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-Knotentypen und VM-Skalierungsgruppen
 VM-Skalierungsgruppen sind eine Azure Compute-Ressource. Sie können Skalierungsgruppen verwenden, um eine Sammlung virtueller Computer als Gruppe bereitzustellen und zu verwalten. Richten Sie eine separate Skalierungsgruppe für jeden Knotentyp ein, den Sie in einem Azure Service Fabric-Cluster definieren möchten. Sie können jeden Knotentyp einzeln zentral hoch- oder herunterskalieren, bei jedem Typ unterschiedliche Portgruppen öffnen und verschiedene Kapazitätsmetriken verwenden.
@@ -150,4 +149,3 @@ Führen Sie die folgenden Schritte aus, um das Kennwort für alle Knoten eines b
 [LBBlade]: ./media/service-fabric-cluster-nodetypes/LBBlade.png
 [NATRules]: ./media/service-fabric-cluster-nodetypes/NATRules.png
 [RDP]: ./media/service-fabric-cluster-nodetypes/RDP.png
-

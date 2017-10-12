@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: milanga;juliako;
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: a55a0c2ef8c1c065b39fce9dc6ef2f806b60dfdc
-ms.contentlocale: de-de
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gesichts- und Emotionenerkennung mit Azure Media Analytics
 ## <a name="overview"></a>Übersicht
@@ -504,5 +503,4 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
 [Azure Media Analytics-Demos](http://amslabs.azurewebsites.net/demos/Analytics.html)
-
 

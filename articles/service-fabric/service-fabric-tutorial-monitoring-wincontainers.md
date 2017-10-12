@@ -15,15 +15,12 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 16c9926d44f972d2b38028cb6ab1420de6b60533
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="monitor-windows-containers-on-service-fabric-using-oms"></a>Überwachen von Windows-Containern unter Service Fabric mit OMS
 
 Dieser dritte Teil eines Tutorials führt Sie schrittweise durch die OMS-Einrichtung zum Überwachen Ihrer Windows-Container, die unter Service Fabric orchestriert sind.
@@ -33,7 +30,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Konfigurieren von OMS für Ihren Service Fabric-Cluster
 > * Verwenden eines OMS-Arbeitsbereichs zum Anzeigen und Abfragen von Protokollen Ihrer Container und Knoten
-> * Konfigurieren des OMS-Agents zum Erfassen von Container- und Knotenmetriken
+> * Konfigurieren des OMS-Agent zum Erfassen von Container- und Knotenmetriken
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen, sollten folgende Voraussetzungen erfüllt sein:

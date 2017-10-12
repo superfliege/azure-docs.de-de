@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: adegeo
 ms.openlocfilehash: fd6efac829d3fd9e2840362b8d2ff423add566d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Verfügbarmachen von Rollenkonfigurationseinstellungen als Umgebungsvariable mit XPath
 In der Dienstdefinitionsdatei der Clouddienst-Worker- oder Webrolle können Sie Laufzeitkonfigurationswerte als Umgebungsvariablen verfügbar machen. Die folgenden XPath-Werte (die API-Werten entsprechen) werden unterstützt.

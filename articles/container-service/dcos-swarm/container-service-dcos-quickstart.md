@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/04/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 8070d224fe6281e61f67483d4f1dd905a2ab99eb
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-dcos-cluster"></a>Bereitstellen eines DC/OS-Clusters
 
 DC/OS stellt eine verteilte Plattform zum Ausführen moderner Containeranwendungen bereit. Mit Azure Container Service ist die Bereitstellung eines produktionsfertigen DC/OS-Clusters schnell und einfach. In diesem Schnellstart werden die grundlegenden Schritte zum Bereitstellen eines DC/OS-Clusters und Ausführen der grundlegenden Arbeitsauslastung erläutert.

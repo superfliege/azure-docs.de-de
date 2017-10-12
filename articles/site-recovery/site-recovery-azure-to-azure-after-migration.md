@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: ponatara
 ms.openlocfilehash: 2aee0fb8d1ba1ff1584bee91b4d1cc34b654d97f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-azure-vms-to-another-region-after-migration-to-azure-by-using-azure-site-recovery"></a>Sie können mit Azure Site Recovery virtuelle Azure-Computer nach der Migration in Azure in einer anderen Region replizieren.
 
@@ -63,7 +63,7 @@ Die folgende Tabelle enthält zusätzliche Informationen zum Installieren des VM
 | **Vorgang** | **Windows** | **Linux** |
 | --- | --- | --- |
 | Installieren des VM-Agents |Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. |Installieren Sie den neuesten [Linux-Agent](../virtual-machines/linux/agent-user-guide.md). Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu installieren. Es wird *nicht empfohlen*, den Linux-VM-Agent direkt von GitHub zu installieren.  |
-| Überprüfen der VM-Agent-Installation |1. Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner „C:\WindowsAzure\Packages“. Dieser Ordner enthält die Datei „WaAppAgent.exe“. <br>2. Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der **Produktversion** sollte 2.6.1198.718 oder eine höhere Version angegeben sein. |– |
+| Überprüfen der VM-Agent-Installation |1. Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner „C:\WindowsAzure\Packages“. Dieser Ordner enthält die Datei „WaAppAgent.exe“. <br>2. Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der **Produktversion** sollte 2.6.1198.718 oder eine höhere Version angegeben sein. |N/V |
 
 
 ### <a name="step-3-remove-the-mobility-service-from-the-migrated-virtual-machine"></a>Schritt 3: Entfernen von Mobility Service vom migrierten virtuellen Computer

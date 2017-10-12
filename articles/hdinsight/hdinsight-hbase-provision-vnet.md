@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/17/2017
 ms.author: jgao
+ms.openlocfilehash: 77ddfc0210fdbd6aea44bc50e18406e4d9c285c7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: c78f1b16328c5b3a92f530ca06e6f5aeaeefca78
-ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Erstellen von HBase-Clustern in HDInsight in Azure Virtual Network
 Erfahren Sie, wie Sie Azure HDInsight HBase-Cluster in [Azure Virtual Network][1] erstellen können.
@@ -48,12 +47,12 @@ In diesem Abschnitt erstellen Sie mit einer [Azure Resource Manager-Vorlage](../
 > * **Clusterversion**: 3.5
 > * **Anzahl von Workerknoten im Cluster**: 2
 > * **Standard-Speicherkonto**: eine eindeutige Zeichenfolge
-> * **Name des virtuellen Netzwerks**: &lt;Clustername>-vnet
+> * **Name des virtuellen Netzwerks**: &lt;Clustername&gt;-vnet
 > * **Adressraum des virtuellen Netzwerks**: 10.0.0.0/16
 > * **Subnetzname**: subnet1
 > * **Subnetzadressbereich**: 10.0.0.0/24
 >
-> &lt;Clustername> wird durch den Clusternamen ersetzt, den Sie bei Verwendung der Vorlage angeben.
+> &lt;Clustername&gt; wird durch den Clusternamen ersetzt, den Sie bei Verwendung der Vorlage angeben.
 >
 >
 
@@ -78,7 +77,7 @@ Führen Sie die Schritte unter [Erste Schritte mit HBase mit Hadoop in HDInsight
 ## <a name="connect-to-the-hbase-cluster-using-hbase-java-rpc-apis"></a>Verbinden Sie sich mithilfe von HBase-Java-RPC-APIs mit dem HBase-Cluster.
 1. Erstellen Sie einen virtuellen IaaS-Computer (Infrastructure-as-a-Service) im gleichen virtuellen Azure-Netzwerk und im gleichen Subnetz. Anweisungen zum Erstellen eines neuen virtuellen IaaS-Computers finden Sie im Abschnitt zum [Erstellen eines virtuellen Computers unter Windows Server](../virtual-machines/virtual-machines-windows-hero-tutorial.md). Beim Ausführen der in diesem Dokument beschriebenen Schritte müssen Sie die folgenden Werte für die Netzwerkkonfiguration verwenden:
 
-   * **Virtuelles Netzwerk**: &lt;Clustername>-vnet
+   * **Virtuelles Netzwerk**: &lt;Clustername&gt;-vnet
    * **Subnetz**: subnet1
 
    > [!IMPORTANT]
@@ -252,7 +251,6 @@ In diesem Tutorial haben Sie erfahren, wie Sie einen HBase-Cluster erstellen. We
 * [Konfigurieren der HBase-Replikation in HDInsight](hdinsight-hbase-replication.md)
 * [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Erste Schritte mit HBase mit Hadoop in HDInsight](hdinsight-hbase-tutorial-get-started.md)
-* [Analysieren der Twitter-Stimmungen mit HBase in HDInsight](hdinsight-hbase-analyze-twitter-sentiment.md)
 * [Virtuelle Netzwerke im Überblick][vnet-overview]
 
 [1]: http://azure.microsoft.com/services/virtual-network/
@@ -260,7 +258,6 @@ In diesem Tutorial haben Sie erfahren, wie Sie einen HBase-Cluster erstellen. We
 [3]: http://technet.microsoft.com/library/hh847889.aspx
 
 [hbase-get-started]: hdinsight-hbase-tutorial-get-started.md
-[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 [vnet-overview]: ../virtual-network/virtual-networks-overview.md
 [vm-create]: ../virtual-machines/virtual-machines-windows-hero-tutorial.md
 
@@ -300,4 +297,3 @@ In diesem Tutorial haben Sie erfahren, wie Sie einen HBase-Cluster erstellen. We
 [img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Verwenden von Skriptaktionen zum Anpassen eines HBase-Clusters"
 
 [azure-preview-portal]: https://portal.azure.com
-

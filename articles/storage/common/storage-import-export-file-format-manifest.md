@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: c1857eb94fba13c30e7f07669616f5d0ab9953f4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Format der Manifestdateien des Azure Import/Export-Diensts
 Die Laufwerksmanifestdatei beschreibt die Zuordnung zwischen Blobs in Azure Blob Storage und Dateien auf dem Laufwerk, aus denen ein Import- oder Exportauftrag besteht. Für einen Importvorgang wird die Manifestdatei im Rahmen des Prozesses der Laufwerksvorbereitung erstellt und auf dem Laufwerk gespeichert, bevor dieses an das Azure-Rechenzentrum gesendet wird. Während eines Exportvorgangs wird das Manifest vom Azure-Import-/Exportdienst erstellt und auf dem Laufwerk gespeichert.  

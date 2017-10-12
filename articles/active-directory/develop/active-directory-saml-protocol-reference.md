@@ -17,10 +17,10 @@ ms.author: priyamo
 ms.custom: aaddev
 ms.reviewer: dastrock
 ms.openlocfilehash: d5ffba5d0c409fe9de7a9e82c6faa4ca2702ab95
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # Verwendung des SAML-Protokolls durch Azure Active Directory
 Azure Active Directory (Azure AD) verwendet das SAML 2.0-Protokoll, um es Anwendungen zu ermöglichen, für Benutzer das einmalige Anmelden bereitzustellen. In den SAML-Profilen zum [einmaligen Anmelden](active-directory-single-sign-on-protocol-reference.md) und [einmaligen Abmelden](active-directory-single-sign-out-protocol-reference.md) von Azure AD wird beschrieben, wie SAML-Assertionen, -Protokolle und -Bindungen im Identitätsanbieterdienst verwendet werden.

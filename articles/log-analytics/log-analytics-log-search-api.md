@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: 5b51c6fcc69c8dff6579a1a1221e88822eccc1a3
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-log-search-rest-api"></a>Log Analytics-REST-API für die Protokollsuche
 In diesem Tutorial erfahren Sie im Rahmen eines allgemeinen Tutorials sowie anhand von Beispielen, wie Sie die Log Analytics-REST-API für die Protokollsuche verwenden. Log Analytics ist Teil der Operations Management Suite (OMS).
@@ -419,4 +418,3 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{Resource Group
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) , um Abfragen mithilfe von benutzerdefinierten Feldern für die Kriterien zu erstellen.
-

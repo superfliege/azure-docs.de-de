@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6d7eeaf460674c3ab98425a5412ffa465b9ffd1d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="throttling-resource-manager-requests"></a>Begrenzen von Resource Manager-Anforderungen
 Für jedes Abonnement und jeden Mandanten begrenzt Resource Manager Leseanforderungen auf 15.000 pro Stunde und Schreibanforderungen auf 1.200 pro Stunde. Diese Grenzwerte gelten für jede Instanz von Azure Resource Manager. In jeder Azure-Region sind mehrere Instanzen vorhanden, und Azure Resource Manager wird an alle Azure-Regionen bereitgestellt.  In der Praxis sind die Grenzwerte also effektiv sehr viel höher als oben angegeben, da Benutzeranforderungen im Allgemeinen von vielen verschiedenen Instanzen verarbeitet werden.

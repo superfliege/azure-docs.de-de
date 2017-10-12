@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: cynthn
 ms.openlocfilehash: 74765877e7836d6878284b350a25d8355dc83d7d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für einen virtuellen Linux-Computer, Beheben von SSH-Konfigurationsproblemen und Überprüfen der Datenträgerkonsistenz mithilfe der VMAccess-Erweiterung
 Wenn Sie aufgrund eines vergessenen Kennworts, eines falschen SSH-Schlüssels (Secure Shell) oder eines Problems bei der SSH-Konfiguration keine Verbindung mit einem virtuellen Linux-Computer herstellen können, haben Sie die Möglichkeit, das Kennwort oder den SSH-Schlüssel zurückzusetzen, SSH-Konfigurationsprobleme zu beheben und die Datenträgerkonsistenz zu überprüfen. Verwenden Sie dazu die VMAccessForLinux-Erweiterung mit der Azure-Befehlszeilenschnittstelle. 

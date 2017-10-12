@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: cynthn
+ms.openlocfilehash: 66ff0ac6c7b23bde04e9934b591dd62067d669c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 97aa69745d200ee76f9f859eb3a8b0ad2f202bad
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Trennen eines Datenträgers von einem virtuellen Windows-Computer
 Wenn Sie einen Datenträger, der an einen virtuellen Computer angefügt ist, nicht mehr benötigen, können Sie ihn leicht trennen. Dadurch wird der Datenträger von dem virtuellen Computer entfernt, aber nicht aus dem Speicher.
@@ -62,5 +61,4 @@ Weitere Informationen finden Sie unter [Remove-AzureRmVMDataDisk](/powershell/mo
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie den Datenträger wiederverwenden möchten, können Sie ihn einfach [an einen anderen virtuellen Computer anfügen](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
 

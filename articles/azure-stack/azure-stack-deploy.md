@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/11/2017
 ms.author: erikje
+ms.openlocfilehash: 73e7efb7d789fe12846d68066c0927bb123831a2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 4a53065f76cef7b711f4a656b437cbefaf47c5d0
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Voraussetzungen für die Azure Stack-Bereitstellung
 
@@ -183,5 +182,4 @@ Das Format der Nutzungsdaten ist unter [Report Azure Stack usage data to Azure](
 [Herunterladen des Bereitstellungspakets für das Azure Stack Development Kit](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
 
 [Bereitstellen des Azure Stack Development Kits](azure-stack-run-powershell-script.md)
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: parakhj
+ms.openlocfilehash: 92087e4553580a5fe14e647d014e493bc7e47b67
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 7f98637264d1acb209d0379e4800e542fc91955b
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Referenz zu Azure AD B2C-Token
 
@@ -155,5 +154,4 @@ Die folgenden Angaben zur Tokengültigkeitsdauer dienen zu Informationszwecken. 
 | ID-Token |Eine Stunde |ID-Token sind in der Regel eine Stunde lang gültig. Ihre Web-App kann die gleiche Dauer für Sitzungen mit Benutzern verwenden (empfohlen). Sie können auch eine andere Sitzungslebensdauer wählen. Falls Ihre App ein neues ID-Token abrufen muss, muss sie lediglich eine neue Anmeldeanforderung an Azure AD senden. Wenn ein Benutzer eine gültige Browsersitzung für Azure AD nutzt, muss dieser Benutzer die Anmeldeinformationen unter Umständen nicht erneut eingeben. |
 | Aktualisierungstoken |Bis zu 14 Tage |Ein einzelnes Aktualisierungstoken ist maximal 14 Tage gültig. Ein Aktualisierungstoken kann jedoch jederzeit aus verschiedenen Gründen ungültig werden. Ihre App sollte weiterhin versuchen, ein Aktualisierungstoken zu verwenden, bis die Anforderung fehlschlägt oder bis es von Ihrer App durch ein neues Aktualisierungstoken ersetzt wird. Ein Aktualisierungstoken kann zudem ungültig werden, wenn der Benutzer das letzte Mal vor 90 Tagen seine Anmeldeinformationen eingegeben hat. |
 | Autorisierungscodes |Fünf Minuten |Autorisierungscodes haben absichtlich eine kurze Gültigkeitsdauer. Sie sollten umgehend für Zugriffs-, ID- oder Aktualisierungstoken eingelöst werden, wenn sie empfangen werden. |
-
 

@@ -15,14 +15,12 @@ ms.workload: identity
 ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 5d09021627ca60a94cb1984b29b8dc7913d093d6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>Einrichten von SharePoint Online und Exchange Online für bedingten Zugriff mit Azure Active Directory 
 
 Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von Benutzern auf Ihre Cloud-Apps steuern. Wenn Sie den Zugriff auf SharePoint Online und Exchange Online mithilfe des bedingten Zugriffs steuern möchten, müssen Sie folgende Vorgänge ausführen:
@@ -183,7 +181,6 @@ Durch Anwenden der folgenden drei Regeln:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter [Bedingter Zugriff in Azure Active Directory](active-directory-conditional-access.md).
-
 
 
 

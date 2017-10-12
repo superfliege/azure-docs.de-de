@@ -15,12 +15,11 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 5a23f76a27c33bf3ba35e1959faf3e4d18d10683
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: 70c99fc0a46c5b2d1818ea82ae2d36286c6a355e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-documentdb-api-app-with-nodejs-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Web-App der DocumentDB-API mit Node.js und dem Azure-Portal
 
@@ -155,6 +154,5 @@ In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erst
 
 > [!div class="nextstepaction"]
 > [Import data into Azure Cosmos DB (Importieren von Daten in Azure Cosmos DB)](import-data.md)
-
 
 

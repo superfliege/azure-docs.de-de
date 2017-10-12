@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: spelluru
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c473d4adf3b87fe6dc9fa89e0bae112bf27d47ed
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell
 > [!div class="op_single_selector"]
@@ -541,7 +540,7 @@ Klicken Sie auf die Kachel **Metrik zur Data Factory**:
 ![Kachel „Metrik zur Data Factory“](./media/data-factory-monitor-manage-pipelines/data-factory-metrics-tile.png)
 
 Klicken Sie auf dem Blatt **Metrik** auf der Symbolleiste auf **+ Warnung hinzufügen**.
-![Blatt „Metrik zur Data Factory“ > Warnung hinzufügen](./media/data-factory-monitor-manage-pipelines/add-alert.png)
+![Blatt „Metrik zur Data Factory“ &gt; Warnung hinzufügen](./media/data-factory-monitor-manage-pipelines/add-alert.png)
 
 Führen Sie auf der Seite **Warnungsregel hinzufügen** die folgenden Schritte aus, und klicken Sie auf **OK**.
 
@@ -659,4 +658,3 @@ Sie können eine Data Factory mithilfe der Schaltfläche **Verschieben** in der 
 Sie können auch alle zugehörigen Ressourcen (z.B. mit der Data Factory verknüpfte Warnungen) zusammen mit der Data Factory verschieben.
 
 ![Dialogfeld „Ressourcen verschieben“](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
-

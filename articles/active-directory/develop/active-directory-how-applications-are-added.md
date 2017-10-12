@@ -16,10 +16,10 @@ ms.date: 02/09/2016
 ms.author: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 6ffcfcb7ed071a12b0b3495ad534fd00f6d6ad99
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Wie und warum werden Anwendungen zu Azure AD hinzugefügt?
 Wenn Sie in Ihrer Instanz von Azure Active Directory eine Anwendungsliste anzeigen, fragen Sie sich vielleicht zunächst, woher die Anwendungen stammen und warum sie dort angezeigt werden.  Dieser Artikel beschreibt im Überblick, wie Anwendungen im Verzeichnis dargestellt werden, und vermittelt Kontext, anhand dem Sie besser verstehen, wie die Anwendungen in Ihr Verzeichnis kamen.
@@ -121,7 +121,7 @@ Diese mag zunächst bedenklich klingen, Sie sollten dabei aber auch Folgendes be
 * Anwendungen, die Azure AD für oAuth nutzen, legen genau fest, welche Berechtigungen die Benutzer Anwendungen erteilen können und bei welchen Berechtigungen die Zustimmung eines Administrators erforderlich ist.  Es versteht sich von selbst, dass nur Administratoren größeren Umfängen und wichtigen Berechtigungen zustimmen können.
 * Bei Benutzern, die Anwendungen hinzufügen und ihnen Zugriff auf ihre Daten erlauben, handelt es sich um überwachte Ereignisse. Sie können daher in den Überwachungsberichten des Azure-Verwaltungsportals überprüfen, wie eine Anwendung zum Verzeichnis hinzugefügt wurde.
 
-**Hinweis:** *Microsoft selbst verwendet bereits seit Monaten die Standardkonfiguration.*
+**Hinweis:***Microsoft selbst verwendet bereits seit Monaten die Standardkonfiguration.*
 
 Bei all dem muss auch gesagt werden, dass es nach wie vor möglich ist, zu verhindern, dass Benutzer Anwendungen zu Ihrem Verzeichnis hinzufügen und im eigenen Ermessen entscheiden, welche Informationen sie den Anwendungen freigeben. Sie brauchen dazu nur die Verzeichniskonfiguration im Azure-Verwaltungsportal zu ändern.  Auf die nachfolgend abgebildete Konfiguration kann im Azure-Verwaltungsportal auf der Registerkarte „Konfigurieren“ Ihres Verzeichnisses zugegriffen werden.
 

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
+ms.openlocfilehash: 49edbaad0af2eeef4b8c348b9fd34e37ba7e80e9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 28d32d1e2d82519fc7b2ad4edca8435c3759594f
-ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-analytics-in-application-insights"></a>Verwenden von Analytics in Application Insights
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Log Analytics-Abfragesprache beschrieben.
@@ -111,7 +110,7 @@ Wenn Sie denken, dass nicht alle erwarteten Ergebnisse angezeigt werden, kann di
   * [top 100 by timestamp](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) 
   * [take 100](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html)
   * [summarize ](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html) 
-  * [where timestamp > ago(3d)](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)
+  * [where timestamp &gt; ago(3d)](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)
 
 (Sollen mehr als 10.000 Zeilen zurückgegeben werden? Stattdessen können Sie den [fortlaufenden Export](app-insights-export-telemetry.md) verwenden. Analytics ist für Analysen und nicht zum Abrufen von Rohdaten vorgesehen.)
 
@@ -135,7 +134,7 @@ Wenn in einem Zeitdiagramm eine abrupte Spitze oder ein Sprung in Ihren Daten da
 ![Analytics-Diagnose](./media/app-insights-analytics-using/analytics-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>An Dashboard anheften
-Sie können ein Diagramm oder eine Tabelle an eines Ihrer [freigegebenen Dashboards](app-insights-dashboards.md) anheften – klicken Sie einfach auf die Stecknadel. (Unter Umständen müssen Sie [das Tarifpaket für Ihre App aktualisieren](app-insights-pricing.md) , um diese Funktion zu aktivieren.) 
+Sie können ein Diagramm oder eine Tabelle an eines Ihrer [freigegebenen Dashboards](app-insights-dashboards.md) anheften – klicken Sie einfach auf die Stecknadel. 
 
 ![Auf Stecknadel klicken](./media/app-insights-analytics-using/pin-01.png)
 
@@ -238,5 +237,4 @@ Bei Verwendung von [LogStash](https://www.elastic.co/guide/en/logstash/current/g
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
 

@@ -11,14 +11,12 @@ ms.topic: article
 ms.date: 8/25/2017
 ms.author: mlearned
 ms.custom: Jenkins
+ms.openlocfilehash: c6cfca299dabba253757d959411c0cac8f90fa2e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: a3bfa3a17f0d7300f9d1ceb529410bbbb7bb2fee
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Skalieren Ihrer Jenkins-Bereitstellungen für verschiedene Anforderungen mit Azure-VM-Agents
 
 Dieses Tutorial erläutert, wie Sie das [Jenkins-Plug-In für Azure-VM-Agents](https://plugins.jenkins.io/azure-vm-agents) verwenden, um mit in Azure ausgeführten virtuellen Linux-Computern bedarfsgesteuert Kapazität hinzuzufügen.
@@ -147,5 +145,4 @@ Wählen Sie **Verify Template**, um die Konfiguration zu überprüfen, und klick
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Continuous Integration und Continuous Deployment in Azure App Service](deploy-jenkins-app-service-plugin.md)
-
+> [Continuous Integration und Continuous Deployment in Azure App Service](java-deploy-webapp-tutorial.md)

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 04e019501be6880fcc7e92de690a9f31195282e4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="retrain-a-classic-web-service"></a>Erneutes Trainieren eines klassischen Webdiensts
 Der von Ihnen bereitgestellte Vorhersagewebdienst ist der Standardbewertungsendpunkt. Standardendpunkte werden mit den ursprünglichen Trainings- und Bewertungsexperimenten synchronisiert. Daher kann das trainierte Modell für den Standardendpunkt nicht ersetzt werden. Zum erneuten Trainieren des Webdiensts müssen Sie dem Webdienst einen neuen Endpunkt hinzufügen. 
@@ -146,5 +145,4 @@ Mithilfe der APIs zum erneuten Trainieren können Sie das trainierte Modell eine
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Problembehandlung für das erneute Trainieren eines klassischen Azure Machine Learning-Webdiensts](troubleshooting-retraining-models.md)
-
 

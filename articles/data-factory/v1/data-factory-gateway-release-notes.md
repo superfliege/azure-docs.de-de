@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: abnarain
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 50406e50363054fb92a1783751ba62ca7b3455e4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Versionshinweise für Datenverwaltungsgateway
 Eine Herausforderung für die moderne Datenintegration ist das Verschieben von Daten zwischen lokalen Speicherorten und der Cloud. Dank Data Factory verläuft diese Integration mit dem Datenverwaltungsgateway. Es handelt sich um einen Agent, den Sie lokal installieren können, um eine hybride Datenverschiebung zu ermöglichen.
@@ -252,4 +251,3 @@ In den folgenden Artikeln finden Sie ausführliche Informationen zum Datenverwal
 ### <a name="1051442"></a>1.0.5144.2
 
 *  Keine Änderungen, die Azure Data Factory-Szenarien betreffen.
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 50d82847fb629880f298f79f9ab791a13836f01c
-ms.openlocfilehash: e27bb694d0cbcf1ff7c9d8ca4682a79c8b5c5cb1
-ms.contentlocale: de-de
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 61abda6053fe743e294f309df3a6e1041052ec6e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Visualisieren von Mustern im eingehenden und ausgehenden VM-Datenverkehr mithilfe von Open Source-Tools
 
 Paketerfassungen enthalten Netzwerkdaten, die Ihnen das Durchführen von Maßnahmen zur Netzwerkforensik und eingehende Paketuntersuchungen ermöglichen. Sie können viele verschiedene Open Source-Tools zum Analysieren von Paketerfassungen verwenden, um Erkenntnisse zu Ihrem Netzwerk zu gewinnen. Ein Open Source-Tool dieser Art, mit dem die Paketerfassung visualisiert werden kann, ist CapAnalysis. Die Visualisierung von Paketerfassungsdaten ist eine nützliche Möglichkeit, um sich schnell einen Überblick über Muster und Anomalien in Ihrem Netzwerk zu verschaffen. Außerdem ist es mit Visualisierungen möglich, Erkenntnisse dieser Art auf einfache Weise zu teilen.
@@ -111,4 +109,3 @@ Erfahren Sie unter [Visualisieren der Datenflussprotokolle von Netzwerksicherhei
 [9]: ./media/network-watcher-using-open-source-tools/figure9.png
 [10]: ./media/network-watcher-using-open-source-tools/figure10.png
 [11]: ./media/network-watcher-using-open-source-tools/figure11.png
-

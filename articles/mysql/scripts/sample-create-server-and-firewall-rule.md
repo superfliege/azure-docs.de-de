@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: sample
 ms.date: 05/31/2017
 ms.openlocfilehash: 201db294ce362ef3e09cbe62f48bd51c8ea94dbb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-mysql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Erstellen eines MySQL-Servers und Konfigurieren einer Firewallregel mit der Azure CLI
 Dieses CLI-Beispielskript erstellt einen einzelnen Azure-Datenbank für MySQL-Server und konfiguriert eine Firewallregel auf Serverebene. Nach der erfolgreichen Ausführung des Skripts ist der MySQL-Server für alle Azure-Dienste und die konfigurierte IP-Adresse erreichbar.
@@ -26,11 +26,11 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="sample-script"></a>Beispielskript
 Bearbeiten Sie in diesem Beispielskript die hervorgehobenen Zeilen, um den Benutzernamen und das Kennwort des Administrators anzupassen.
-[!code-azurecli-interactive[main](../../../cli_scripts/mysql/create-mysql-server-and-firewall-rule/create-mysql-server-and-firewall-rule.sh?highlight=15-16 "Erstellen Sie eine Azure-Datenbank für MySQL und eine Firewallregel auf Serverebene.")]
+[!code-azurecli-interactive[main](../../../cli_scripts/mysql/create-mysql-server-and-firewall-rule/create-mysql-server-and-firewall-rule.sh?highlight=15-16 "Create an Azure Database for MySQL, and server-level firewall rule.")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe und alle damit verbundenen Ressourcen entfernt werden.
-[!code-azurecli-interactive[main](../../../cli_scripts/mysql/create-mysql-server-and-firewall-rule/delete-mysql.sh "Löschen Sie die Ressourcengruppe.")]
+[!code-azurecli-interactive[main](../../../cli_scripts/mysql/create-mysql-server-and-firewall-rule/delete-mysql.sh "Delete the resource group.")]
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.

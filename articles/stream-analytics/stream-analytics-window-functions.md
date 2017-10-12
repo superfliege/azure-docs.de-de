@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 2a6559551f608cf435e89997392a6a0ba995c583
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-stream-analytics-window-functions"></a>Einführung in Stream Analytics-Fensterfunktionen
 In vielen Szenarien mit Echtzeit-Streaming ist es erforderlich, Vorgänge nur für die Daten in temporalen Fenstern durchzuführen. Die native Unterstützung für Fensterfunktionen ist ein Hauptfeature von Azure Stream Analytics, mit dem die Entwicklerproduktivität beim Erstellen komplexer Aufträge mit Datenstromverarbeitung gefördert wird. Stream Analytics ermöglicht Entwicklern die Verwendung von [**rollierenden Fenstern**](https://msdn.microsoft.com/library/dn835055.aspx), [**springenden Fenstern**](https://msdn.microsoft.com/library/dn835041.aspx) und [**Schiebefenstern**](https://msdn.microsoft.com/library/dn835051.aspx), um für Streamingdaten temporale Vorgänge durchzuführen. Beachten Sie, dass die Ergebnisse für alle [Fenster](https://msdn.microsoft.com/library/dn835019.aspx) vorgänge am **Ende** des Fensters ausgegeben werden. Die Ausgabe des Fensters ist ein einzelnes Ereignis, das auf der verwendeten Aggregatfunktion basiert. Das Ereignis verfügt über den Zeitstempel vom Ende des Fensters, und alle Fensterfunktionen werden mit einer festen Länge definiert. Schließlich sollten Sie noch beachten, dass alle Fensterfunktionen in einer [**GROUP BY**](https://msdn.microsoft.com/library/dn835023.aspx)-Klausel verwendet werden sollten.
@@ -51,5 +50,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 

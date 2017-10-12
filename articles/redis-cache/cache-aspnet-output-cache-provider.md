@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: sdanie
 ms.openlocfilehash: 845f25637a0e48460fc76c1ee36060274b3cec38
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>ASP.NET-Ausgabecacheanbieter für Azure Redis Cache
 Der Redis-Ausgabecacheanbieter ist ein prozessunabhängiger Speichermechanismus für Ausgabecachedaten. Diese Daten sind für vollständige HTTP-Antworten bestimmt (Zwischenspeichern von Seitenausgaben). Der Anbieter wird zum neuen Erweiterungspunkt des Ausgabecacheanbieters hinzugefügt, der in ASP.NET 4 eingeführt wurde.

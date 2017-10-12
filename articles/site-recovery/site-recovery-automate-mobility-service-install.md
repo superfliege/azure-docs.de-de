@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/01/2017
 ms.author: krnese
 ms.openlocfilehash: bcc5f11afbecac8fe63935f3401dd3e2d767e8aa
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>Bereitstellen des Mobility Service in Azure Automation DSC für die VM-Replikation
 In Operations Management Suite bieten wir Ihnen eine umfassende Lösung zur Sicherung und Notfallwiederherstellung, die Sie im Rahmen Ihres Geschäftskontinuitätsplans nutzen können.

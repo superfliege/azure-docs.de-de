@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bd5a977c10d3955639beb893cd7a37581b14f7c0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-batch-sdk-for-python"></a>Erste Schritte mit dem Batch SDK für Python
 
@@ -371,7 +371,7 @@ Wenn Sie einen Pool erstellen, definieren Sie mit [PoolAddParameter][py_pooladdp
 
 * **ID** des Pools (*id* – erforderlich)<p/>Wie die meisten Entitäten in Batch muss auch der neue Pool über eine eindeutige ID in Ihrem Batch-Konto verfügen. Ihr Code verweist mit seiner ID auf diesen Pool. So wird der Pool im Azure-[Portal][azure_portal] identifiziert.
 * **Anzahl von Computeknoten** (*target_dedicated* – erforderlich)<p/>Diese Eigenschaft gibt an, wie viele virtuelle Computer im Pool bereitgestellt werden sollen. Beachten Sie, dass alle Batch-Konten über ein **Standardkontingent** verfügen, das die Anzahl von **Kernen** (und somit auch von Computeknoten) in einem Batch-Konto begrenzt. Die Standardkontingente und eine Anleitung zum [Erhöhen des Kontingents](batch-quota-limit.md#increase-a-quota) (wie etwa der Anzahl von Kernen in Ihrem Batch-Konto) finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Wenn Sie sich z.B. die Frage stellen, weshalb Ihr Pool nur eine bestimmte Anzahl von Knoten erreicht, liegt dies möglicherweise am Kernkontingent.
-* **Betriebssystem** für Knoten (*virtual_machine_configuration* **oder** *cloud_service_configuration* – erforderlich)<p/>In *python_tutorial_client.py* erstellen wir einen Pool mit Linux-Knoten mithilfe eines [VirtualMachineConfiguration][py_vm_config]-Elements. Mit der Funktion `select_latest_verified_vm_image_with_node_agent_sku` in `common.helpers` wird die Verwendung von Images des [Azure Virtual Machines Marketplace][vm_marketplace] vereinfacht. Unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md) finden Sie weitere Informationen zur Verwendung von Marketplace-Images.
+* **Betriebssystem** für Knoten (*virtual_machine_configuration***oder***cloud_service_configuration* – erforderlich)<p/>In *python_tutorial_client.py* erstellen wir einen Pool mit Linux-Knoten mithilfe eines [VirtualMachineConfiguration][py_vm_config]-Elements. Mit der Funktion `select_latest_verified_vm_image_with_node_agent_sku` in `common.helpers` wird die Verwendung von Images des [Azure Virtual Machines Marketplace][vm_marketplace] vereinfacht. Unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md) finden Sie weitere Informationen zur Verwendung von Marketplace-Images.
 * **Größe der Computeknoten** (*vm_size* – erforderlich)<p/>Da wir für [VirtualMachineConfiguration][py_vm_config] Linux-Knoten angeben, legen wir eine Größe für virtuelle Computer (in diesem Beispiel `STANDARD_A1`) fest. Dies ist unter [Größen für virtuelle Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) beschrieben. Unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md) finden Sie ebenfalls wieder weitere Informationen.
 * **Startaufgabe** (*start_task* – nicht erforderlich)<p/>Zusammen mit den oben genannten Eigenschaften des physischen Knotens können Sie auch eine Aufgabe vom Typ [StartTask][py_starttask] für den Pool festlegen. (Dies ist aber nicht unbedingt erforderlich.) Die StartTask wird auf jedem Knoten ausgeführt, wenn dieser dem Pool hinzugefügt wird, sowie bei jedem Neustart eines Knotens. Mit der Startaufgabe lassen sich Computeknoten besonders gut auf die Ausführung von Aufgaben vorbereiten. Ein Beispiel wäre etwa das Installieren der Anwendungen, die von Ihren Aufgaben ausgeführt werden.<p/>In dieser Beispielanwendung kopiert die Startaufgabe die (mit der **resource_files**-Eigenschaft der Startaufgabe angegebenen) Dateien, die aus Storage heruntergeladen werden, aus dem *Arbeitsverzeichnis* der Startaufgabe in das *freigegebene* Verzeichnis, auf das alle auf dem Knoten ausgeführten Aufgaben zugreifen können. Im Wesentlichen wird dadurch `python_tutorial_task.py` in das freigegebene Verzeichnis jedes Knotens kopiert, wenn der Knoten dem Pool beitritt. So können alle Aufgaben, die auf dem Knoten ausgeführt werden, darauf zugreifen.
 

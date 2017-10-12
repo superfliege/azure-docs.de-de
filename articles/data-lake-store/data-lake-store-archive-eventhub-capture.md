@@ -1,6 +1,6 @@
 ---
-title: Erfassen von Daten von Event Hubs in Azure Data Lake-Speicher | Microsoft Docs
-description: Mit Azure Data Lake-Speicher zum Erfassen von Daten von Event Hubs
+title: Erfassen von Daten von Event Hubs in Azure Data Lake Store | Microsoft-Dokumentation
+description: Verwenden von Azure Data Lake Store zum Erfassen von Daten von Event Hubs
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,14 +14,14 @@ ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
 ms.openlocfilehash: a9e69576958ae96d22a4eb03d0df429f0b307298
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Mit Azure Data Lake-Speicher zum Erfassen von Daten von Event Hubs
+# <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Verwenden von Azure Data Lake Store zum Erfassen von Daten von Event Hubs
 
-Erfahren Sie mehr über das Azure Data Lake-Speicher verwenden, um von Azure Event Hubs empfangenen Daten zu erfassen.
+Hier erfahren Sie, wie Sie Azure Data Lake Store zum Erfassen von Daten verwenden, die von Azure Event Hubs empfangen werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,95 +29,95 @@ Erfahren Sie mehr über das Azure Data Lake-Speicher verwenden, um von Azure Eve
 
 * **Ein Azure Data Lake-Speicherkonto**. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit dem Azure Data Lake Store](data-lake-store-get-started-portal.md).
 
-*  **Ein Event Hubs-Namespace**. Anweisungen hierzu finden Sie unter [Erstellen eines Event Hubs-Namespace](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Stellen Sie sicher, dass das Data Lake-Speicher-Konto und den Namespace des Event Hubs desselben Azure-Abonnements sind.
+*  **Ein Event Hubs-Namespace**. Anweisungen hierzu finden Sie unter [Erstellen eines Event Hubs-Namespaces](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Stellen Sie sicher, dass das Data Lake Store-Konto und der Event Hubs-Namespace im selben Azure-Abonnement enthalten sind.
 
 
 ## <a name="assign-permissions-to-event-hubs"></a>Zuweisen von Berechtigungen für Event Hubs
 
-In diesem Abschnitt erstellen Sie einen Ordner im Konto Sie die Daten von Event Hubs zu erfassen möchten. Sie weisen auch Berechtigungen für Event Hubs, damit sie Daten in ein Data Lake-Speicher-Konto schreiben kann. 
+In diesem Abschnitt erstellen Sie einen Ordner in dem Konto, in dem Sie die Daten von Event Hubs erfassen möchten. Zudem weisen Sie Event Hubs Berechtigungen zu, damit der Dienst Daten in ein Data Lake Store-Konto schreiben kann. 
 
-1. Öffnen Sie das Data Lake-Speicher-Konto soll zum Erfassen von Daten von Event Hubs, und klicken Sie dann auf **Data Explorer**.
+1. Öffnen Sie das Data Lake Store-Konto, in dem Sie Daten von Event Hubs erfassen möchten, und klicken Sie dann auf **Daten-Explorer**.
 
-    ![Data Lake-Datenspeicher-Explorer](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Data Lake-Datenspeicher-Explorer")
+    ![Data Lake Store-Daten-Explorer](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Data Lake Store-Daten-Explorer")
 
-2.  Klicken Sie auf **neuer Ordner** und geben Sie dann einen Namen für den Ordner, in der Sie die Daten erfassen möchten.
+2.  Klicken Sie auf **Neuer Ordner**, und geben Sie dann einen Namen für den Ordner ein, in dem Sie die Daten erfassen möchten.
 
-    ![Erstellen Sie einen neuen Ordner im Data Lake-Speicher](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "erstellen Sie einen neuen Ordner im Data Lake-Speicher")
+    ![Erstellen eines neuen Ordners in Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "Erstellen eines neuen Ordners in Data Lake Store")
 
-3. Zuweisen von Berechtigungen auf der Stammebene des Data Lake-Speicher. 
+3. Weisen Sie auf der Data Lake Store-Stammebene Berechtigungen zu. 
 
-    a. Klicken Sie auf **Data Explorer**, wählen Sie den Stamm des Data Lake-Speicher an, und klicken Sie dann auf **Zugriff**.
+    a. Klicken Sie auf **Daten-Explorer**, wählen Sie den Stamm des Data Lake Store-Kontos aus, und klicken Sie dann auf **Zugriff**.
 
-    ![Zuweisen von Berechtigungen für Data Lake-Speicher-Stamm](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Zuweisen von Berechtigungen für Data Lake-Speicher-Stamm")
+    ![Zuweisen von Berechtigungen für den Data Lake Store-Stamm](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Zuweisen von Berechtigungen für den Data Lake Store-Stamm")
 
-    b. Klicken Sie unter **Zugriff**, klicken Sie auf **hinzufügen**, klicken Sie auf **Benutzer oder Gruppe auswählen**, und suchen Sie nach `Microsoft.EventHubs`. 
+    b. Klicken Sie unter **Zugriff** auf **Hinzufügen** und dann auf **Benutzer oder Gruppe auswählen**, und suchen Sie anschließend nach `Microsoft.EventHubs`. 
 
-    ![Zuweisen von Berechtigungen für Data Lake-Speicher-Stamm](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Zuweisen von Berechtigungen für Data Lake-Speicher-Stamm")
+    ![Zuweisen von Berechtigungen für den Data Lake Store-Stamm](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Zuweisen von Berechtigungen für den Data Lake Store-Stamm")
     
     Klicken Sie auf **Auswählen**.
 
-    c. Klicken Sie unter **Zuweisen von Berechtigungen**, klicken Sie auf **Select-Berechtigungen**. Legen Sie **Berechtigungen** auf **ausführen**. Legen Sie **hinzufügen** auf **diesen Ordner und alle untergeordneten Elemente**. Legen Sie **hinzufügen als** auf **ein Berechtigungseintrag Zugriff und eine Standard-Berechtigungseintrag**.
+    c. Klicken Sie unter **Berechtigungen zuweisen** auf **Berechtigungen auswählen**. Legen Sie **Berechtigungen** auf **Ausführen** fest. Legen Sie **Add to** (Hinzufügen zu) auf **Diesen Ordner und alle untergeordneten Ordner** fest. Legen Sie **Add as** (Hinzufügen als) auf **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** fest.
 
-    ![Zuweisen von Berechtigungen für Data Lake-Speicher-Stamm](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Zuweisen von Berechtigungen für Data Lake-Speicher-Stamm")
+    ![Zuweisen von Berechtigungen für den Data Lake Store-Stamm](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Zuweisen von Berechtigungen für den Data Lake Store-Stamm")
 
     Klicken Sie auf **OK**.
 
-4. Zuweisen von Berechtigungen für den Unterordner Data Lake-Speicherkonto, in dem Sie Daten erfassen möchten.
+4. Weisen Sie Berechtigungen für den Ordner im Data Lake Store-Konto zu, in dem Sie Daten erfassen möchten.
 
-    a. Klicken Sie auf **Data Explorer**, wählen Sie den Ordner, in das Data Lake-Speicher-Konto, und klicken Sie dann auf **Zugriff**.
+    a. Klicken Sie auf **Daten-Explorer**, wählen Sie den Ordner im Data Lake Store-Konto aus, und klicken Sie dann auf **Zugriff**.
 
-    ![Zuweisen von Berechtigungen für Data Lake-Speicher-Ordner](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Zuweisen von Berechtigungen für Data Lake-Speicher-Ordner")
+    ![Zuweisen von Berechtigungen für den Data Lake Store-Ordner](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Zuweisen von Berechtigungen für den Data Lake Store-Ordner")
 
-    b. Klicken Sie unter **Zugriff**, klicken Sie auf **hinzufügen**, klicken Sie auf **Benutzer oder Gruppe auswählen**, und suchen Sie nach `Microsoft.EventHubs`. 
+    b. Klicken Sie unter **Zugriff** auf **Hinzufügen** und dann auf **Benutzer oder Gruppe auswählen**, und suchen Sie anschließend nach `Microsoft.EventHubs`. 
 
-    ![Zuweisen von Berechtigungen für Data Lake-Speicher-Ordner](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Zuweisen von Berechtigungen für Data Lake-Speicher-Ordner")
+    ![Zuweisen von Berechtigungen für den Data Lake Store-Ordner](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Zuweisen von Berechtigungen für den Data Lake Store-Ordner")
     
     Klicken Sie auf **Auswählen**.
 
-    c. Klicken Sie unter **Zuweisen von Berechtigungen**, klicken Sie auf **Select-Berechtigungen**. Legen Sie **Berechtigungen** auf **lesen, schreiben,** und **ausführen**. Legen Sie **hinzufügen** auf **diesen Ordner und alle untergeordneten Elemente**. Legen Sie schließlich **hinzufügen als** auf **ein Berechtigungseintrag Zugriff und eine Standard-Berechtigungseintrag**.
+    c. Klicken Sie unter **Berechtigungen zuweisen** auf **Berechtigungen auswählen**. Legen Sie **Berechtigungen** auf **Read, Write** (Lesen, Schreiben) und **Ausführen** fest. Legen Sie **Add to** (Hinzufügen zu) auf **Diesen Ordner und alle untergeordneten Ordner** fest. Legen Sie abschließend **Add as** (Hinzufügen als) auf **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** fest.
 
-    ![Zuweisen von Berechtigungen für Data Lake-Speicher-Ordner](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Zuweisen von Berechtigungen für Data Lake-Speicher-Ordner")
+    ![Zuweisen von Berechtigungen für den Data Lake Store-Ordner](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Zuweisen von Berechtigungen für den Data Lake Store-Ordner")
     
     Klicken Sie auf **OK**. 
 
-## <a name="configure-event-hubs-to-capture-data-to-data-lake-store"></a>Konfigurieren von Event Hubs zum Erfassen von Daten in Data Lake-Speicher
+## <a name="configure-event-hubs-to-capture-data-to-data-lake-store"></a>Konfigurieren von Event Hubs zum Erfassen von Daten in Data Lake Store
 
-In diesem Abschnitt erstellen Sie einen Event Hub innerhalb eines Event Hubs-Namespace. Sie müssen außerdem den Event Hub zum Erfassen von Daten mit einer Azure Data Lake-Speicher-Konto konfigurieren. In diesem Abschnitt wird davon ausgegangen, dass Sie bereits einen Event Hubs-Namespace erstellt haben.
+In diesem Abschnitt erstellen Sie einen Event Hub innerhalb eines Event Hubs-Namespaces. Außerdem konfigurieren Sie den Event Hub zum Erfassen von Daten in einem Azure Data Lake Store-Konto. In diesem Abschnitt wird davon ausgegangen, dass Sie bereits einen Event Hubs-Namespace erstellt haben.
 
-2. Aus der **Übersicht** Bereich des Event Hubs-Namespace, klicken Sie auf **+ Event Hub**.
+2. Klicken Sie im Bereich **Übersicht** des Event Hubs-Namespaces auf **+ Event Hub**.
 
-    ![Erstellen von Event Hubs](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Event Hub erstellen")
+    ![Erstellen eines Event Hubs](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Erstellen eines Event Hubs")
 
-3. Geben Sie die folgenden Werte zum Konfigurieren von Event Hubs zum Erfassen von Daten in Data Lake-Speicher.
+3. Geben Sie die folgenden Werte an, um Event Hubs zum Erfassen von Daten in Data Lake Store zu konfigurieren.
 
-    ![Erstellen von Event Hubs](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Event Hub erstellen")
+    ![Erstellen eines Event Hubs](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Erstellen eines Event Hubs")
 
-    a. Geben Sie einen Namen für den Event Hub.
+    a. Geben Sie einen Namen für den Event Hub an.
     
-    b. Legen Sie für dieses Lernprogramm **Partitionsanzahl** und **Nachrichtenbeibehaltung** auf die Standardwerte.
+    b. In diesem Tutorial legen Sie **Partitionsanzahl** und **Nachrichtenaufbewahrung** auf die Standardwerte fest.
     
-    c. Legen Sie **erfassen** auf **auf**. Legen Sie die **Zeitfenster** (wie häufig die erfassen) und **Fenstergröße** (Datengröße erfassen). 
+    c. Legen Sie **Erfassen** auf **On** (Ein) fest. Legen Sie das **Zeitfenster** (Häufigkeit der Erfassung) und **Größenfenster** (zu erfassende Datengröße) fest. 
     
-    d. Für **erfassen Anbieter**Option **Azure Data Lake-Speicher** und die SELECT-Anweisung der Data Lake-Speicher Sie zuvor erstellt haben. Für **Lake Datenpfad**, geben Sie den Namen des Ordners, die Sie in das Data Lake-Speicher-Konto erstellt haben. Sie müssen nur den relativen Pfad zu dem Ordner angeben.
+    d. Wählen Sie für **Capture Provider** (Erfassungsanbieter) die Option **Azure Data Lake Store** aus, und wählen Sie dann den zuvor erstellten Data Lake Store aus. Geben Sie für **Data Lake Path** (Data Lake-Pfad) den Namen des Ordners ein, den Sie im Data Lake Store-Konto erstellt haben. Sie müssen nur den relativen Pfad zum Ordner angeben.
 
-    e. Lassen Sie die **Beispiel Capture Namen Dateiformate** auf den Standardwert. Diese Option steuert die Ordnerstruktur, die unter dem Ordner Capture erstellt wird.
+    e. Übernehmen Sie für **Beispielnamensformate für Erfassungsdateien** den Standardwert. Diese Option steuert die Ordnerstruktur, die unter dem Erfassungsordner erstellt wird.
 
     f. Klicken Sie auf **Erstellen**.
 
-## <a name="test-the-setup"></a>Testen Sie das setup
+## <a name="test-the-setup"></a>Testen der Einstellungen
 
-Sie können jetzt testen Sie die Projektmappe durch Senden von Daten an den Azure Event Hub Folgen Sie den Anweisungen am [Senden von Ereignissen an Azure Event Hubs](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md). Wenn Sie anfangen, die gesendet werden, sehen Sie die Daten im Data Lake-Speicher widergespiegelt verwenden die Ordnerstruktur, die Sie angegeben haben. Beispielsweise sehen Sie eine Ordnerstruktur, wie im folgenden Screenshot ist in Ihre Data Lake-Speicher gezeigt.
+Sie können die Lösung jetzt testen, indem Sie Daten an den Azure Event Hub senden. Folgen Sie den Anweisungen unter [Senden von Ereignissen an Azure Event Hubs](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md). Sobald Sie mit dem Senden der Daten beginnen, werden die Daten in der von Ihnen angegebenen Ordnerstruktur in Data Lake Store angezeigt. Wie im folgenden Screenshot gezeigt, sehen Sie beispielsweise eine Ordnerstruktur in Ihrem Data Lake Store.
 
-![Beispiel für EventHub-Daten in Data Lake-Speicher](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "Beispiel EventHub-Daten in Data Lake-Speicher")
+![EventHub-Beispieldaten in Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "EventHub-Beispieldaten in Data Lake Store")
 
 > [!NOTE]
-> Auch wenn Sie keine Nachrichten an Event Hubs schreibt Event Hubs leere Dateien mit nur den Headern in das Data Lake-Speicher-Konto. Die Dateien werden an das gleiche Zeitintervall geschrieben, dass Sie beim Erstellen des Event Hubs angegeben.
+> Auch wenn keine Nachrichten in Event Hubs eingeben, schreibt Event Hubs leere Dateien, die nur die Header enthalten, in das Data Lake Store-Konto. Die Dateien werden in dem Zeitintervall geschrieben, das Sie beim Erstellen des Event Hubs angegeben haben.
 > 
 >
 
 ## <a name="analyze-data-in-data-lake-store"></a>Analysieren von Daten im Data Lake-Speicher
 
-Sobald die Daten im Data Lake-Speicher befindet, können Sie analytische Aufträge zu verarbeiten und Druck zu nehmen die Daten ausführen. Finden Sie unter [USQL Avro Beispiel](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) Anleitungen hierfür unter Verwendung von Azure Data Lake Analytics.
+Sobald die Daten sich in Data Lake Store befinden, können Sie Analyseaufträge zum Verarbeiten und Berechnen der Daten ausführen. Informationen zum Ausführen solcher Aufträge mit Azure Data Lake Analytics finden Sie unter [U-SQL Avro Example](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) (U-SQL-Avro-Beispiel).
   
 
 ## <a name="see-also"></a>Weitere Informationen

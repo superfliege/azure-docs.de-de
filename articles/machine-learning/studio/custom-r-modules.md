@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 03/24/2017
 ms.author: bradsev;ankarlof
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: cf3f0e79a9f873a57ef6b7f5233d324faee3e017
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Benutzerdefinierte R-Module in Azure Machine Learning
 
@@ -372,5 +371,4 @@ Die Ausführungsumgebung für das R-Skript verwendet die gleiche Version von R w
 
 * Nicht beständiges Dateisystem: Dateien, die beim Ausführen des benutzerdefinierten Moduls geschrieben werden, können nicht über mehrere Ausführungen des gleichen Moduls hinweg beibehalten werden.
 * Kein Netzwerkzugriff
-
 

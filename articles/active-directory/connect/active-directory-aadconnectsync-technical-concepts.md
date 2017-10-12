@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi;andkjell
 ms.openlocfilehash: 6cf8debc6443bb60fc5f601ea4aa392eb2f13a8f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect-Synchronisierung: Technische Konzepte
 Dieser Artikel ist eine Zusammenfassung des Themas [Grundlegendes zur Architektur](active-directory-aadconnectsync-technical-concepts.md).
@@ -40,8 +40,7 @@ Die folgenden Abschnitte bieten weitere Details zu den folgenden Aspekten des FI
 ## <a name="connector"></a>Connector
 Die zur Kommunikation mit einem verbundenen Verzeichnis verwendeten Codemodule werden „Connectors“ genannt (zuvor als Verwaltungs-Agents (Management Agents, MAs) bezeichnet).
 
-Sie werden auf dem Computer installiert, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird.
-Mithilfe von Connectors können Konvertierungen ohne Agents mithilfe von Remotesystemprotokollen ausgeführt werden. Damit entfällt die Notwendigkeit, sich auf die Bereitstellung spezialisierter Agents zu verlassen. Dies hat ein vermindertes Risiko und geringere Bereitstellungszeiten zur Folge, insbesondere wenn es um die Arbeit mit kritischen Anwendungen und Systemen geht.
+Sie werden auf dem Computer installiert, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird. Mithilfe von Connectors können Konvertierungen ohne Agents mithilfe von Remotesystemprotokollen ausgeführt werden. Damit entfällt die Notwendigkeit, sich auf die Bereitstellung spezialisierter Agents zu verlassen. Dies hat ein vermindertes Risiko und geringere Bereitstellungszeiten zur Folge, insbesondere wenn es um die Arbeit mit kritischen Anwendungen und Systemen geht.
 
 In der obigen Abbildung ist der Connector mit dem Connectorbereich gleichbedeutend, umfasst jedoch die gesamte Kommunikation mit dem externen System.
 

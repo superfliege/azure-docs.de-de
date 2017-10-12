@@ -15,12 +15,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 08b07053dd1507bcf0564f3071642f66f06b3559
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Konfigurieren von Python in Azure App Service-Web-Apps
 Dieses Lernprogramm beschreibt die Optionen für das Authoring und Konfigurieren einer grundlegenden Web Server Gateway Interface (WSGI)-kompatiblen Python-Anwendung für [Azure App Service-Web-Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -360,5 +359,4 @@ Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 
 ## <a name="whats-changed"></a>Änderungen
 * Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714)
-
 

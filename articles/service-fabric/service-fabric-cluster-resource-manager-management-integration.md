@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 70c0cc37a1d362c937ab86bd630c5ab051e63870
-ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integration des Clusterressourcen-Managers in die Service Fabric-Clusterverwaltung
 Der Clusterressourcen-Manager von Service Fabric führt zwar keine Upgrades in Service Fabric aus, ist jedoch daran beteiligt. Bei der Verwaltung unterstützt Sie der Clusterressourcen-Manager zunächst einmal durch das Verfolgen des gewünschten Clusterstatus und der im Cluster enthaltenen Dienste. Der Clusterressourcen-Manager sendet Integritätsberichte, wenn der Cluster nicht in die gewünschte Konfiguration versetzt werden kann. Dies ist beispielsweise der Fall, wenn nicht genügend Kapazität verfügbar ist. Der Clusterressourcen-Manager sendet dann Integritätswarnungen und Fehler, die das Problem angeben. Ein weiterer Teil der Integration hängt mit der Funktionsweise von Upgrades zusammen. Während Upgrades wird das Verhalten des Clusterressourcen-Managers geringfügig verändert.  
@@ -210,4 +209,3 @@ Im Allgemeinen möchten Sie, dass das Upgrade auch dann abgeschlossen wird, wenn
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Starten Sie mit einer [Einführung in den Clusterressourcen-Manager von Service Fabric](service-fabric-cluster-resource-manager-introduction.md)
-

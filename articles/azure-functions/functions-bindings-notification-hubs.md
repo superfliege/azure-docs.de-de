@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/26/2017
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: 02d01d0f6e945ed54dbe766aec2a0fd7c17c510f
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-notification-hub-output-binding"></a>Azure Functions Notification Hub-Ausgabebindung
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
@@ -41,11 +40,11 @@ Die Datei „function.json“ stellt die folgenden Eigenschaften bereit:
 |Eigenschaft  |Beschreibung  |
 |---------|---------|
 |**name** | Variablenname, der im Funktionscode für die Notification Hub-Nachricht verwendet wird |
-|**type** | Muss auf `notificationHub` festgelegt werden. |
+|**type** | Muss auf `notificationHub` festgelegt sein. |
 |**tagExpression** | Mit Tagausdrücken können Sie Benachrichtigungen an eine Gruppe von Geräten übermitteln, die sich für den Empfang entsprechender Benachrichtigungen registriert haben.  Weitere Informationen finden Sie unter [Weiterleitung und Tagausdrücke](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | Name der Notification Hub-Ressource im Azure-Portal |
 |**Verbindung** | Diese Verbindungszeichenfolge muss eine Verbindungszeichenfolge für die **Anwendungseinstellung** sein, die auf den *DefaultFullSharedAccessSignature*-Wert Ihres Notifications Hubs festgelegt ist. |
-|**direction** | Muss auf `out` festgelegt werden. | 
+|**direction** | Muss auf `out` festgelegt sein. | 
 |**platform** | Mit der platform-Eigenschaft wird die Benachrichtigungsplattform Ihrer Benachrichtigungsziele angegeben. Wenn die Plattformeigenschaft aus der Ausgabebindung weggelassen wird, können Vorlagenbenachrichtigungen für alle Zielplattformen verwendet werden, die auf dem Azure Notification Hub konfiguriert sind. Weitere Informationen zur allgemeinen Verwendung von Vorlagen zum Senden von plattformübergreifenden Benachrichtigungen mit einem Azure Notification Hub finden Sie unter [Vorlagen](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Wenn _platform_ festgelegt wird, muss einer der folgenden Werte verwendet werden: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. Weitere Informationen zur Konfiguration des Notification Hubs für APNS und zum Empfang der Benachrichtigung in einer Client-App finden Sie unter [Senden von Pushbenachrichtigungen an iOS mit Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Weitere Informationen zur Konfiguration des Notification Hubs für ADM und zum Empfang der Benachrichtigung in einer Kindle-App finden Sie unter [Erste Schritte mit Notification Hubs für Kindle-Apps](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>gcm</code>&mdash;[Google Cloud Messaging](https://developers.google.com/cloud-messaging/). Firebase Cloud Messaging, die neue Version von GCM, wird ebenfalls unterstützt. Weitere Informationen finden Sie unter [Senden von Pushbenachrichtigungen an Android mit Azure Notification Hubs](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md).</li><li><code>wns</code>&mdash;[Windows-Pushbenachrichtigungsdienst](https://msdn.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview) für Windows-Plattformen. Windows Phone 8.1 und höher wird vom Windows-Pushbenachrichtigungsdienst (WNS) ebenfalls unterstützt. Weitere Informationen finden Sie unter [Erste Schritte mit Notification Hubs für Apps für die universelle Windows-Plattform](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[Microsoft-Pushbenachrichtigungsdienst](https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx). Diese Plattform unterstützt Windows Phone 8 und frühere Windows Phone-Plattformen. Weitere Informationen finden Sie unter [Senden von Pushbenachrichtigungen mit Azure Notification Hubs unter Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
 
 Beispiel für „function.json“:
@@ -293,5 +292,4 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
 

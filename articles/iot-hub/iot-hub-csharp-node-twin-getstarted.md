@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2017
 ms.author: elioda
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: 4cf607e8e0ccd3aab06be54d715c2bf3777caeb0
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-device-twins-netnode"></a>Erste Schritte mit Gerätezwillingen (.NET/Node)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -37,7 +36,7 @@ Am Ende dieses Tutorials verfügen Sie über eine .NET- und eine Node.js-Konsole
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Visual Studio 2015 oder Visual Studio 2017
-* Node.js Version 4.0.x oder höher.
+* Node.js Version 4.0.x oder höher
 * Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -198,5 +197,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 [lnk-twin-how-to-configure]: iot-hub-csharp-node-twin-how-to-configure.md
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
-
 

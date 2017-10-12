@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: f57c915dd566e9da9b751bb776a1170842d87297
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Ereignisaggregation und -sammlung mithilfe von EventFlow
 
 Mit dem [EventFlow-Element der Microsoft-Diagnose](https://github.com/Azure/diagnostics-eventflow) können Ereignisse von einem Knoten an mindestens ein Überwachungsziel geleitet werden. Da die entsprechenden Daten als NuGet-Paket in Ihrem Dienstprojekt enthalten sind, werden der EventFlow-Code und die -Konfiguration mit dem Dienst übertragen, sodass das oben erwähnte Problem mit der Konfiguration pro Knoten für die Azure-Diagnose nicht besteht. EventFlow wird im Dienstprozess ausgeführt und direkt mit den konfigurierten Ausgaben verbunden. Aufgrund der direkten Verbindung funktioniert EventFlow für Azure-, Container- und lokale Bereitstellungen von Diensten. Gehen Sie mit Bedacht vor, wenn Sie EventFlow in Szenarien mit hoher Dichte ausführen, z.B. in einem Container, da für jede EventFlow-Pipeline eine externe Verbindung hergestellt wird. Wenn Sie also mehrere Prozesse hosten, ergeben sich auch mehrere ausgehende Verbindungen! Dies ist für Service Fabric-Anwendungen kein größeres Problem, da alle Replikate eines `ServiceType`-Elements in demselben Prozess ausgeführt werden, sodass die Anzahl von ausgehenden Verbindungen begrenzt wird. EventFlow ermöglicht auch die Ereignisfilterung, sodass nur die Ereignisse gesendet werden, die dem angegebenen Filter entsprechen.
@@ -157,4 +155,3 @@ Starten Sie Ihren Dienst, und sehen Sie sich die Informationen im Fenster für d
 * [Ereignisanalyse und Visualisierung mit Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Ereignisanalyse und Visualisierung mit OMS](service-fabric-diagnostics-event-analysis-oms.md)
 * [EventFlow-Dokumentation](https://github.com/Azure/diagnostics-eventflow)
-

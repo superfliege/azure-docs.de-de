@@ -16,10 +16,10 @@ ms.date: 07/26/2017
 ms.author: TomSh
 ms.custom: azlog
 ms.openlocfilehash: 9d39ecd513386b75b4b640721f80991caaf9ade8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure-Protokollintegration mit Azure-Diagnoseprotokollierung und Windows-Ereignisweiterleitung
 Mit der Azure-Protokollintegration (AzLog) können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in Ihre lokalen SIEM-Systeme (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) integrieren. Diese Integration bietet ein einheitliches Sicherheitsdashboard für alle Ihre Ressourcen (ganz gleich ob lokal oder in der Cloud), sodass Sie Sicherheitsereignisse im Zusammenhang mit Ihren Anwendungen aggregieren, korrelieren, analysieren und entsprechende Warnungen ausgeben können.
@@ -99,8 +99,8 @@ Nach Abschluss der grundlegenden Setuproutine sind Sie bereit, die auf die Insta
 Es sollte jetzt etwas angezeigt werden, das der folgenden Abbildung ähnelt. </br></br>
 ![Installationsbildschirm mit aktiviertem Kontrollkästchen für Telemetrie](./media/security-azure-log-integration-get-started/loaded-modules.png) </br></br>
 3. Jetzt müssen Sie „AzLog“ konfigurieren, um eine bestimmte Azure-Umgebung zu verwenden. Eine „Azure-Umgebung“ ist der „Typ“ des Rechenzentrums für die Azure-Cloud, mit dem Sie arbeiten möchten. Obwohl es zu diesem Zeitpunkt mehrere Azure-Umgebungen gibt, sind die relevanten Optionen derzeit entweder **AzureCloud** oder **AzureUSGovernment**.   Stellen Sie in Ihrer PowerShell-Umgebung mit erhöhten Rechten sicher, dass Sie sich in **C:\Programme\Microsoft Azure Log Integration\** befinden. </br></br>
-    Sobald vorhanden ist, führen Sie den Befehl ein: </br>
-    ``Set-AzlogAzureEnvironment -Name AzureCloud``(für Azure kommerzielle)
+    Führen Sie dort den folgenden Befehl aus: </br>
+    ``Set-AzlogAzureEnvironment -Name AzureCloud`` (für Azure Commercial)
 
       >[!NOTE]
       Wenn der Befehl erfolgreich ausgeführt wird, erhalten Sie kein Feedback.  Wenn Sie die Azure-Cloud der US-Regierung verwenden möchten, würden Sie **AzureUSGovernment** (für die -Name-Variable) verwenden. Andere Azure-Clouds werden zu diesem Zeitpunkt nicht unterstützt.  
@@ -180,7 +180,7 @@ Weitere Informationen zur Azure-Protokollintegration finden Sie in folgenden Dok
 
 * [Microsoft Azure Log Integration for Azure logs (Microsoft Azure-Protokoll-Integration für Azure-Protokolle)](https://www.microsoft.com/download/details.aspx?id=53324): Download Center für Details, Systemanforderungen und Installationsanweisungen für die Azure-Protokollintegration.
 * [Introduction to Azure log integration](security-azure-log-integration-overview.md) (Einführung in die Azure-Protokollintegration): Dieses Dokument stellt die Azure-Protokollintegration, die wichtigsten Funktionen sowie die Funktionsweise vor.
-* [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner): In diesem Blogbeitrag erfahren Sie, wie die Azure-Protokollintegration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird. Dies ist unser aktuelle Anleitungen zum Konfigurieren der SIEM-Komponenten. Überprüfen Sie den SIEM-Anbieter zuerst für weitere Details.
+* [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner): In diesem Blogbeitrag erfahren Sie, wie die Azure-Protokollintegration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird. Dies ist die derzeit geltende Empfehlung für die Konfiguration von SIEM-Komponenten. Holen Sie zunächst weitere Informationen bei Ihrem SIEM-Hersteller ein.
 * [Azure log Integration frequently asked questions (FAQ)](security-azure-log-integration-faq.md) (Häufig gestellte Fragen zur Azure-Protokollintegration): Hier finden Sie Antworten auf häufig gestellte Fragen zur Azure-Protokollintegration.
-* [Integrieren von Security Center melden Warnungen mit Azure Integration](../security-center/security-center-integrating-alerts-with-log-integration.md) – dieses Dokument zeigt, wie Synchronisierung Security Center-Warnungen, zusammen mit der virtuellen Maschine-Sicherheitsereignisse, die von Azure-Diagnose und Azure Aktivitätsprotokolle, mit dem protokollanalysen oder SIEM-Lösung erfasst.
+* [Integrieren von Security Center-Warnungen mithilfe der Azure-Protokollintegration](../security-center/security-center-integrating-alerts-with-log-integration.md): In diesem Dokument erfahren Sie, wie Sie Azure Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Aktivitätsprotokollen erfasste Sicherheitsereignisse virtueller Computer mit Ihrer Protokollanalyse- oder SIEM-Lösung synchronisieren.
 * [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) (Neue Features für Azure-Diagnose und Azure-Überwachungsprotokolle): In diesem Blogbeitrag werden Azure-Überwachungsprotokolle und andere Features vorgestellt, mit denen Sie sich einen Einblick in die Vorgänge Ihrer Azure-Ressourcen verschaffen können.

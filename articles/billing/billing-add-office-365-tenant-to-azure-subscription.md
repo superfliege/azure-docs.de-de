@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/13/2017
 ms.author: cjiang
+ms.openlocfilehash: e6300932d044ec9a4f88eb5bd5977220ed11d513
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: b7b3e4539110f68e1e6ef4a75110924a27b40c49
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="link-an-office-365-tenant-to-an-azure-subscription"></a>Verknüpfen eines Office 365-Mandanten mit einem Azure-Abonnement
 Verknüpfen Sie Ihre separaten Azure- und Office 365-Abonnements, sodass Sie von Ihrem Azure-Abonnement aus auf den Office 365-Mandanten zugreifen können. Um Ihre Abonnements zu verknüpfen, melden Sie sich bei Azure mit dem Azure-Dienstadministratorkonto an, fügen Sie ein Verzeichnis hinzu, und fügen Sie dann die Office 365 Geschäfts-, Schul- oder Unikonten dem Azure Active Directory-Mandanten hinzu.
@@ -94,5 +93,4 @@ Informationen zum Hinzufügen eines Administrators zu Ihrem Azure-Abonnement fin
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
-
 

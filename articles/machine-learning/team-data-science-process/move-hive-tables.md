@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e879ab2874cb3298de4b0929b286482d824e8309
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage
 In diesem Thema werden allgemeine Hive-Abfragen beschrieben, mit denen Hive-Tabellen erstellt und Daten aus dem Azure-Blobspeicher geladen werden. Es werden auch einige Hinweise zur Partitionierung der Hive-Tabellen und zur Verwendung des ORC-Formats (Optimized Row Columnar) zur Verbesserung der Abfrageleistung bereitgestellt.
@@ -143,11 +142,11 @@ Mit dieser Hive-Abfrage erstellen Sie eine Hive-Tabelle.
 
 Im Folgenden werden die Felder beschrieben, mit denen Sie die Implementierung und andere Konfigurationen vornehmen:
 
-* **&#60;Datenbankname>**: Name der zu erstellenden Datenbank. Wenn Sie die Standarddatenbank verwenden möchten, kann die Abfrage *create database...* ausgelassen werden.
-* **&#60;Tabellenname>**: Name der zu erstellenden Tabelle in der angegebenen Datenbank. Wenn Sie die Standarddatenbank verwenden möchten, kann auf die Tabelle direkt mit *&#60;Tabellenname>* ohne &#60;Datenbankname> verwiesen werden.
-* **&#60;Feldtrennzeichen>**: Trennzeichen für die Felder in der Datendatei, die in die Hive-Tabelle hochgeladen werden soll.
-* **&#60;Zeilentrennzeichen>**: Trennzeichen für die Zeilen in der Datendatei.
-* **&#60;Speicherort>**: Azure-Speicherort zum Speichern der Daten der Hive-Tabellen. Wenn Sie *LOCATION &#60;Speicherort>* nicht angeben, werden die Datenbank und die Tabellen im Verzeichnis *hive/warehouse/* im Standardcontainer des Hive-Clusters gespeichert. Wenn Sie den Speicherort angeben möchten, muss sich dieser im Standardcontainer für die Datenbank und die Tabellen befinden. Auf diesen Speicherort muss als relativer Speicherort zum Standardcontainer des Clusters im Format *'wasb:///&#60;Verzeichnis 1>/'* oder *'wasb:///&#60;Verzeichnis 1>/&#60;Verzeichnis 2>/'* usw. verwiesen werden. Nachdem die Abfrage ausgeführt wurde, werden die relativen Verzeichnisse innerhalb des Standardcontainers erstellt.
+* **&amp;#60;Datenbankname&gt;**: Name der zu erstellenden Datenbank. Wenn Sie die Standarddatenbank verwenden möchten, kann die Abfrage *create database...* ausgelassen werden.
+* **&amp;#60;Tabellenname&gt;**: Name der zu erstellenden Tabelle in der angegebenen Datenbank. Wenn Sie die Standarddatenbank verwenden möchten, kann auf die Tabelle direkt mit *&#60;Tabellenname>* ohne &#60;Datenbankname> verwiesen werden.
+* **&amp;#60;Feldtrennzeichen&gt;**: Trennzeichen für die Felder in der Datendatei, die in die Hive-Tabelle hochgeladen werden soll.
+* **&amp;#60;Zeilentrennzeichen&gt;**: Trennzeichen für die Zeilen in der Datendatei.
+* **&amp;#60;Speicherort&gt;**: Azure-Speicherort zum Speichern der Daten der Hive-Tabellen. Wenn Sie *LOCATION &#60;Speicherort>* nicht angeben, werden die Datenbank und die Tabellen im Verzeichnis *hive/warehouse/* im Standardcontainer des Hive-Clusters gespeichert. Wenn Sie den Speicherort angeben möchten, muss sich dieser im Standardcontainer für die Datenbank und die Tabellen befinden. Auf diesen Speicherort muss als relativer Speicherort zum Standardcontainer des Clusters im Format *'wasb:///&#60;Verzeichnis 1>/'* oder *'wasb:///&#60;Verzeichnis 1>/&#60;Verzeichnis 2>/'* usw. verwiesen werden. Nachdem die Abfrage ausgeführt wurde, werden die relativen Verzeichnisse innerhalb des Standardcontainers erstellt.
 * **TBLPROPERTIES("skip.header.line.count"="1")**: Wenn die Datendatei einen Header enthält, müssen Sie diese Eigenschaft **am Ende** der *create table*-Abfrage einfügen. Andernfalls wird der Header als ein Datensatz in die Tabelle geladen. Wenn die Datendatei keinen Header enthält, kann dieser Konfigurationsschritt in der Abfrage ausgelassen werden.
 
 ## <a name="load-data"></a>Laden von Daten in Hive-Tabellen
@@ -155,7 +154,7 @@ Mit dieser Hive-Abfrage laden Sie Daten eine Hive-Tabelle.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **&#60;Pfad zu Blobdaten>**: Wenn sich die in die Hive-Tabelle hochzuladende Blobdatei im Standardcontainer des HDInsight Hadoop-Clusters befindet, sollte *&#60;Pfad zu Blobdaten>* das Format *'wasb:///&#60;Verzeichnis in diesem Container>/&#60;Blobdateiname>'* haben. Die Blobdatei kann sich auch in einem zusätzlichen Container des HDInsight Hadoop-Clusters befinden. In diesem Fall muss *&#60;path to blob data>* das Format *'wasb://&#60;container name>@&#60;storage account name>.blob.core.windows.net/&#60;blob file name>'* haben.
+* **&amp;#60;Pfad zu Blobdaten&gt;**: Wenn sich die in die Hive-Tabelle hochzuladende Blobdatei im Standardcontainer des HDInsight Hadoop-Clusters befindet, sollte *&amp;#60;Pfad zu Blobdaten&gt;* das Format *'wasb:///&amp;#60;Verzeichnis in diesem Container&gt;/&amp;#60;Blobdateiname&gt;'* haben. Die Blobdatei kann sich auch in einem zusätzlichen Container des HDInsight Hadoop-Clusters befinden. In diesem Fall muss *&#60;path to blob data>* das Format *'wasb://&#60;container name>@&#60;storage account name>.blob.core.windows.net/&#60;blob file name>'* haben.
 
   > [!NOTE]
   > Die Blobdaten, die in die Hive-Tabelle hochgeladen werden sollen, müssen sich im Standard- oder einem zusätzlichen Container des Speicherkontos für den Hadoop-Cluster befinden. Andernfalls misslingt die Abfrage *LOAD DATA* , weil sie keinen Zugriff auf die Daten hat.
@@ -236,4 +235,3 @@ Sie können *&#60;Name der externen TEXTFILE-Tabelle>* gefahrlos mithilfe der fo
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 
 Sie besitzen nun eine einsatzbereite Tabelle mit Daten im ORC-Format.  
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: 5346e331d76149ac3aed7aaf11eb3171e0ac5cfc
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Notfallwiederherstellung in Azure Service Fabric
 Zur Gewährleistung von hoher Verfügbarkeit muss unter anderem sichergestellt werden, dass Dienste verschiedenste Arten von Ausfällen überstehen können. Dies ist besonders wichtig bei Ausfällen, die überraschend auftreten oder sich Ihrer Kontrolle entziehen. In diesem Artikel werden einige allgemeine Ausfälle beschrieben, die sich als äußerst problematisch erweisen können, wenn sie nicht angemessen im Modell berücksichtigt und behandelt werden. Darüber hinaus enthält der Artikel Informationen zu Abhilfen und Maßnahmen, die Sie ergreifen können, wenn dennoch ein Notfall eintritt. Dadurch soll das Risiko von Ausfallzeiten oder Datenverlusten im Falle von geplanten oder anderweitigen Ausfällen möglichst gering gehalten oder ganz beseitigt werden.
@@ -154,4 +153,3 @@ Sowohl in eigenständigen Service Fabric-Clustern als auch in Azure werden die S
 <!-- Images -->
 
 [sfx-cluster-map]: ./media/service-fabric-disaster-recovery/sfx-clustermap.png
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d96c89ed3650c09ac6465e30754ef1155b06d601
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fehlertoleranz der Kopieraktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -101,6 +100,5 @@ Weitere Informationen finden Sie in den anderen Artikeln zur Kopieraktivität:
 
 - [Kopieraktivität – Übersicht](copy-activity-overview.md)
 - [Leistung der Kopieraktivität](copy-activity-performance.md)
-
 
 

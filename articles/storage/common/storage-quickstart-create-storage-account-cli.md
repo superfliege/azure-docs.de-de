@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/28/2017
 ms.author: marsma
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b1fb2da4acf6e06219d790f2354cada4f1e34285
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-storage-account-using-the-azure-cli"></a>Erstellen eines Speicherkontos mit der Azure-Befehlszeilenschnittstelle
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Schnellstartanleitung wird erläutert, wie Sie mit der Azure-Befehlszeilenschnittstelle ein Azure Storage-Konto erstellen.
@@ -60,7 +58,7 @@ Es gibt verschiedene Speicherkontotypen für verschiedene Verwendungsszenarien, 
 |**Unterstützte Dienste**| Blob-, Datei-, Tabellen- und Warteschlangendienst | Blob-Dienst | Blob-Dienst|
 |**Unterstützte Blobtypen**|Blockblobs, Seitenblobs, Anfügeblobs | Seitenblobs | Blockblobs und Anfügeblobs|
 
-Erstellen Sie ein allgemeines Standardspeicherkonto mit dem Befehl [az storage account create](/cli/azure/storage/account#create).
+Erstellen Sie mit dem Befehl [az storage account create](/cli/azure/storage/account#create) ein allgemeines Standardspeicherkonto.
 
 ```azurecli-interactive
 az storage account create \

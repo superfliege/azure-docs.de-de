@@ -51,7 +51,7 @@ sections:
           - html: <a href="app-insights-tutorial-alert">Überwachen der Anwendungsintegrität und Ausgeben von Warnungen</a>
           - html: <a href="app-insights-tutorial-users">Analysieren der Kundennutzung und -informationen</a>
           - html: <a href="app-insights-tutorial-dashboards">Erstellen von benutzerdefinierten KPI-Dashboards</a>
-  - title: Kostenloses Pluralsight-Videotraining
+  - title: Kostenloses PluralSight-Videotraining
     items:
       - type: list
         style: cards

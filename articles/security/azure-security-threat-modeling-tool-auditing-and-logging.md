@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 3f1933fc59862eca7ae6ee40bbd5136e449e5cf1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Sicherheitsrahmen: Überwachung und Protokollierung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Dynamics CRM**    | <ul><li>[Identifizieren von vertraulichen Entitäten in der Lösung und Implementieren der Änderungsüberwachung](#sensitive-entities)</li></ul> |
-| **Webanwendung** | <ul><li>[Sicherstellen, dass Überwachung und Protokollierung für die Anwendung erzwungen werden](#auditing)</li><li>[Sicherstellen, dass die Protokollrotation und -trennung vorhanden sind](#log-rotation)</li><li>[Sicherstellen, dass die Anwendung keine sensiblen Benutzerdaten protokolliert](#log-sensitive-data)</li><li>[Sicherstellen, dass für die Überwachungs- und Protokolldateien der Zugriff eingeschränkt ist](#log-restricted-access)</li><li>[Sicherstellen, dass Ereignisse der Benutzerverwaltung protokolliert werden](#user-management)</li><li>[Sicherstellen, dass das System über integrierte Schutzmaßnahmen gegen missbräuchliche Nutzung verfügt](#inbuilt-defenses)</li><li>[Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](#diagnostics-logging)</li></ul> |
+| **Web Application** | <ul><li>[Sicherstellen, dass Überwachung und Protokollierung für die Anwendung erzwungen werden](#auditing)</li><li>[Sicherstellen, dass die Protokollrotation und -trennung vorhanden sind](#log-rotation)</li><li>[Sicherstellen, dass die Anwendung keine sensiblen Benutzerdaten protokolliert](#log-sensitive-data)</li><li>[Sicherstellen, dass für die Überwachungs- und Protokolldateien der Zugriff eingeschränkt ist](#log-restricted-access)</li><li>[Sicherstellen, dass Ereignisse der Benutzerverwaltung protokolliert werden](#user-management)</li><li>[Sicherstellen, dass das System über integrierte Schutzmaßnahmen gegen missbräuchliche Nutzung verfügt](#inbuilt-defenses)</li><li>[Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](#diagnostics-logging)</li></ul> |
 | **Datenbank** | <ul><li>[Sicherstellen, dass die Anmeldungsüberwachung in SQL Server aktiviert ist](#identify-sensitive-entities)</li><li>[Aktivieren der Bedrohungserkennung in Azure SQL](#threat-detection)</li></ul> |
 | **Azure Storage (in englischer Sprache)** | <ul><li>[Verwenden der Azure-Speicheranalyse zum Überwachen des Zugriffs auf Azure Storage](#analytics)</li></ul> |
 | **WCF** | <ul><li>[Implementieren einer ausreichenden Protokollierung](#sufficient-logging)</li><li>[Implementieren einer ausreichenden Behandlung von Überwachungsfehlern](#audit-failure-handling)</li></ul> |

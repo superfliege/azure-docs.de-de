@@ -16,10 +16,10 @@ ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
 ms.openlocfilehash: 54c0149a769e654139bbdf709802d49127f041ac
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-data-warehouse-backups"></a>SQL Data Warehouse-Sicherungen
 SQL Data Warehouse bietet sowohl lokale als auch geografische Sicherungen im Rahmen der Data Warehouse-Sicherungsfunktionalität. Hierzu gehören Azure Storage Blob-Momentaufnahmen und georedundante Speicher. Verwenden Sie Data Warehouse-Sicherungen, um Ihr Data Warehouse auf einen Wiederherstellungspunkt in der primären Region oder in einer anderen geografischen Region wiederherzustellen. Dieser Artikel erläutert die Merkmale von Sicherungen in SQL Data Warehouse.

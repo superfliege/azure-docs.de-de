@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 09/26/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 53ab4c04901994982b451149c4a82a5b72c9fc82
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory (Azure AD)
 In einigen Fällen kann der Begriff „Anwendung“ im Kontext von Azure AD falsch verstanden werden. Das Ziel dieses Artikels ist die Veranschaulichung der konzeptuellen und konkreten Aspekte der Azure AD-Anwendungsintegration, gefolgt von einer Erläuterung der Registrierung und Zustimmung zu einer [mehrinstanzenfähigen Anwendung](active-directory-dev-glossary.md#multi-tenant-application).
@@ -77,4 +76,3 @@ Der [Azure AD-Graph-Tester](https://graphexplorer.azurewebsites.net/) eignet sic
 [AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
 [AZURE-Portal]: https://portal.azure.com
-

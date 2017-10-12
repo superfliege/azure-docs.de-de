@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: db1360fa54d82c50adc04194697d994925338296
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Bereitstellen einer Data Science Virtual Machine in Azure 
 
@@ -30,7 +29,7 @@ Die DLVM bietet mehrere Tools für AI einschließlich GPU-Editionen beliebter De
 Es folgen die Schritte zum Erstellen einer Instanz der Deep Learning Virtual Machine: 
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/#create/microsoft-ads.dsvm-deep-learningtoolkit
-) zur Auflistung der virtuellen Computer.
+)zur Auflistung der virtuellen Computer.
 2. Klicken Sie unten auf der Seite auf die Schaltfläche **Create**, um einen Assistenten aufzurufen.![configure-dlvm](./media/dlvm-provision-wizard.PNG)
 3. Der Assistent zum Erstellen der DLVM erfordert **Eingaben** für jeden der **vier Schritte**, die in der Abbildung rechts aufgelistet sind. Die zum Konfigurieren der einzelnen Schritte erforderlichen Eingaben sind:
    
@@ -72,7 +71,7 @@ Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmel
 > 
 
 #### <a name="installing-and-configuring-x2go-client"></a>Installieren und Konfigurieren des X2Go-Clients
-Die Linux DLVM wird bereits mit X2Go-Server bereitgestellt und ist zum Akzeptieren von Clientverbindungen bereit. Um eine Verbindung mit dem grafischen Linux-VM-Desktop herzustellen, führen Sie auf dem Client die folgenden Schritte aus:
+Die Linux DLVM wird bereits mit X2Go-Server bereitgestellt und ist zum Akzeptieren von Clientverbindungen bereit. Führen Sie auf dem Client die folgenden Schritte aus, um eine Verbindung mit dem grafischen Desktop des virtuellen Linux-Computers herzustellen:
 
 1. Laden Sie den X2Go-Client für Ihre Clientplattform von [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)herunter, und installieren Sie ihn.    
 2. Führen Sie den X2Go-Client aus, und wählen Sie die Option **Neue Sitzung**aus. Es wird ein Konfigurationsfenster mit mehreren Registerkarten geöffnet. Geben Sie die folgenden Konfigurationsparameter ein:
@@ -87,4 +86,3 @@ Die Linux DLVM wird bereits mit X2Go-Server bereitgestellt und ist zum Akzeptier
 Nachdem Sie sich bei der VM angemeldet haben, indem Sie entweder den SSH-Client oder den grafischen XFCE-Desktop über den X2Go-Client nutzen, können Sie die Tools verwenden, die auf der VM installiert und konfiguriert sind. Auf dem XFCE-Desktop können Sie Anwendungsmenü-Tastenkombinationen und Desktopsymbole für viele Tools anzeigen.
 
 Sobald Ihre VM erstellt und bereitgestellt wurde, können Sie beginnen, die installierten und konfigurierten Tools zu verwenden. Für viele der Tools gibt es Desktopsymbole und Kacheln im Startmenü. 
-

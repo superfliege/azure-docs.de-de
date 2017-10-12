@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.openlocfilehash: 7bfda602dbc0ea47828a7c9243b8b9b09ec78432
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>Behandeln von Problemen mit dem Azure Import/Export-Tool
 Das Microsoft Azure Import/Export-Tool zeigt Fehlermeldungen an, wenn Probleme auftreten. Dieses Thema enthält einige häufig auftretende Probleme, auf die Benutzer stoßen können.  

@@ -1,6 +1,6 @@
 ---
-title: "Die Excel-Connector hinzufügen | Microsoft Docs"
-description: "Übersicht über das Excel-Connector mit REST-API-Parametern"
+title: "Hinzufügen des Excel-Connectors | Microsoft Docs"
+description: "Übersicht über den Excel-Connector mit REST-API-Parametern"
 services: 
 documentationcenter: 
 author: MandiOhlinger
@@ -16,20 +16,20 @@ ms.workload: na
 ms.date: 08/23/2016
 ms.author: mandia; ladocs
 ms.openlocfilehash: 4d62bee573aba4c8b0445b1f4c44190496fb3a18
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-the-excel-connector"></a>Erste Schritte mit der Excel-connector
-Es ist keine Excel-Connector im Logik-Apps ein. 
+# <a name="get-started-with-the-excel-connector"></a>Erste Schritte mit dem Excel-Connector
+In Logic Apps steht kein Excel-Connector zur Verfügung. 
 
-## <a name="to-use-excel-data"></a>Excel-Daten verwenden
-Sie können Excel-Daten wie z. B. als durch Trennzeichen getrennte Werten (CSV)-Datei in einem Speicherordner speichern [OneDrive](connectors-create-api-onedrive.md). Sie können auch diese CSV-Datei mit den [Flatfile-Connector](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
+## <a name="to-use-excel-data"></a>So verwenden Sie Excel-Daten
+Sie können Excel-Daten in einer durch Trennzeichen getrennten Datei (CSV-Datei) in einem Speicherordner speichern (beispielsweise in [OneDrive](connectors-create-api-onedrive.md)). Diese CSV-Datei kann auch mit dem [Flatfile-Connector](../logic-apps/logic-apps-enterprise-integration-flatfile.md)verwendet werden.
 
-## <a name="connector-specific-details"></a>Connector-spezifische details
+## <a name="connector-specific-details"></a>Connectorspezifische Details
 
-Alle Trigger und in der Swagger definierte Aktionen anzeigen, und Lesen Sie auch die Grenzwerte in der [connectordetails](/connectors/excel/).
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/excel/) an.
 
-## <a name="more-connectors"></a>Mehrere connectors
-Wechseln Sie zurück zu den [APIs Liste](apis-list.md).
+## <a name="more-connectors"></a>Weitere Connectors
+Gehen Sie zur [Liste der APIs](apis-list.md)zurück.

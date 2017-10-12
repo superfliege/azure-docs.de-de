@@ -10,14 +10,12 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 445901a740920a74f259aaa9c6b862680c1c807e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="archive-azure-monitoring-data"></a>Archivieren von Azure-Überwachungsdaten
 
 Auf mehreren Ebenen Ihrer Azure-Umgebung werden Protokoll- und Metrikdaten generiert, die in einem Azure Storage-Konto archiviert werden können. Dies bietet sich an, um einen Verlauf von Überwachungsdaten über einen längeren Zeitraum in einem preiswerten, nicht durchsuchbaren Speicher beizubehalten, nachdem die Daten die Aufbewahrungsfrist in Log Analytics oder Azure Monitor überschritten haben. In diesem Tutorial durchlaufen Sie die Schritte zum Konfigurieren Ihrer Azure-Umgebung für das Archivieren von Daten in einem Speicherkonto.
@@ -26,9 +24,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
 
-## <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
+## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
 
 Zunächst müssen Sie ein Speicherkonto einrichten, in dem die Überwachungsdaten archiviert werden sollen. Führen Sie dazu [die hier beschriebenen Schritte](../storage/common/storage-create-storage-account.md) aus.
 
@@ -164,4 +162,3 @@ In diesem Tutorial haben Sie gelernt, wie Sie die Archivierung von Überwachungs
 
 > [!div class="nextstepaction"]
 > [Erste Schritte mit Log Analytics](../log-analytics/log-analytics-get-started.md)
-

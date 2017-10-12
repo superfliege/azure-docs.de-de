@@ -14,10 +14,10 @@ ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: bwren
 ms.openlocfilehash: d07a0c81f89100c378456bbea8dca1c009cc8d77
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentieren von Web-Apps zur Laufzeit mit Application Insights
 
@@ -28,7 +28,7 @@ Sie können eine Live-Web-App mit Azure Application Insights instrumentieren, oh
 
 Bei der Anwendung von Application Insights auf die .NET-Webanwendungen können Sie zwischen drei Möglichkeiten wählen:
 
-* **Buildzeit:** [Fügen Sie Ihrem Web-App-Code das Application Insights-SDK hinzu][greenbrown].
+* **Buildzeit:**[Fügen Sie Ihrem Web-App-Code das Application Insights-SDK hinzu][greenbrown].
 * **Laufzeit:** Instrumentieren Sie Ihre Web-App auf dem Server wie unten beschrieben, ohne den Code neu zu erstellen und bereitzustellen.
 * **Beides:** Erstellen Sie das SDK in Ihrem Web-App-Code, und wenden Sie auch die Laufzeiterweiterungen an. So können Sie die Vorteile beider Optionen nutzen.
 

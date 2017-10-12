@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/16/2017
 ms.author: nepeters
+ms.openlocfilehash: 4117b6020d2d75a953fd5f032b378e49d2c752ab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 45b3e2a493fd6fab54f193f8ea9bbeae1d7470ac
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -151,4 +150,3 @@ Pfadinformationen nach dem ersten URI-Segment werden für Dateien beibehalten, d
 ### <a name="support"></a>Support
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im MSDN Azure-Forum oder im Stack Overflow-Forum (https://azure.microsoft.com/en-us/support/forums/) Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/en-us/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/en-us/support/faq/).
-

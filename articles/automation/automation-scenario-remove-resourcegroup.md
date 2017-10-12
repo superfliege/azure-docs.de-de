@@ -3,7 +3,7 @@ title: Automatisieren der Entfernung von Ressourcengruppen | Microsoft Docs
 description: PowerShell-Workflow-Version eines Azure Automation-Szenarios mit Runbooks zum Entfernen aller Ressourcengruppen in Ihrem Abonnement.
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: 
 ms.assetid: b848e345-fd5d-4b9d-bc57-3fe41d2ddb5c
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
-ms.openlocfilehash: 6aa3897d44b146483204d43e026d3d158c3e13b6
-
-
+ms.openlocfilehash: 8b23e55a597f293b17183e80eea6c2763aabe9ba
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-automation-scenario-automate-removal-of-resource-groups"></a>Azure Automation-Szenario – Automatisieren der Entfernung von Ressourcengruppen
+# <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure Automation-Szenario – Automatisieren der Entfernung von Ressourcengruppen
 Viele Kunden erstellen mehr als eine Ressourcengruppe. Einige werden unter Umständen für die Verwaltung von Produktionsanwendungen verwendet, und andere werden vielleicht als Entwicklungs-, Test- und Stagingumgebungen genutzt. Dabei kann nicht nur die Bereitstellung dieser Ressourcen automatisiert werden, es ist auch möglich, eine Ressourcengruppe mit nur einem Klick außer Betrieb zu setzen. Mit Azure Automation können Sie diese häufig anfallende Verwaltungsaufgabe optimieren. Darüber hinaus ist dieses Szenario auch hilfreich, wenn Sie ein Azure-Abonnement verwenden, für das ein durch ein Mitgliedsangebot wie MSDN oder das Microsoft Partner Network Cloud Essentials-Programm bedingtes Ausgabenlimit gilt.
 
 Dieses Szenario basiert auf einem PowerShell-Runbook und dient dazu, einzelne oder mehrere Ressourcengruppen aus Ihrem Abonnement zu entfernen. In der Standardeinstellung des Runbooks wird vor dem Fortfahren ein Test durchgeführt. So wird sichergestellt, dass Sie die Ressourcengruppe nicht versehentlich löschen, bevor Sie zum Abschließen dieses Verfahrens bereit sind.   
@@ -67,9 +67,3 @@ Die **Auftragszusammenfassung** beinhaltet Meldungen aus den Ausgabe-, Warnungs-
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Einstieg in die Erstellung eigener Runbooks finden Sie unter [Erstellen oder Importieren eines Runbooks in Azure Automation](automation-creating-importing-runbook.md).
 * Informationen zu den ersten Schritten mit PowerShell-Workflow-Runbooks finden Sie unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md).
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

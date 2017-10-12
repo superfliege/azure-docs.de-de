@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 387ec757ec17799408ef45bfeb523eb98a5b1013
-ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-operations-manager-to-log-analytics"></a>Herstellen einer Verbindung zwischen Operations Manager und Log Analytics
 Zur Bewahrung Ihrer bisherigen Investitionen in System Center Operations Manager sowie zur Nutzung erweiterter Funktionen mit Log Analytics können Sie Operations Manager mit Ihrem OMS-Arbeitsbereich verknüpfen.  Die Kombination der Möglichkeiten von OMS mit den Vorteilen von Operations Manager ermöglicht Folgendes:
 
@@ -299,6 +297,5 @@ Wenn Sie planen, die Verwaltungsgruppe später wieder mit einem OMS-Arbeitsberei
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen über das Hinzufügen von Funktionen und Erfassen von Daten finden Sie unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md).
-
 
 

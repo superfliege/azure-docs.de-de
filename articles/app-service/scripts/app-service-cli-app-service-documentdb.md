@@ -16,14 +16,12 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: b581f8d5a4e924e0aa88bf614839c917345eb570
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-a-web-app-to-cosmos-db"></a>Herstellen einer Verbindung zwischen einer Web-App und Cosmos DB
 
 In diesem Szenario erfahren Sie, wie Sie ein Azure Cosmos DB-Konto und eine Azure-Web-App erstellen. Anschließend verknüpfen Sie die Cosmos DB-Instanz mithilfe von App-Einstellungen mit der Web-App.
@@ -60,4 +58,3 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
 
 Zusätzliche App Service-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure App Service](../app-service-cli-samples.md).
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: DavidBosland
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 97cd45563dbd2341620658e05dbbd9ff0519b1aa
-ms.contentlocale: de-de
-ms.lasthandoff: 02/06/2017
-
+ms.openlocfilehash: 5ac1f509ca90a09d8bd8e67a04df99516a6da072
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="view-and-change-your-cloud-solution-provider-reseller-incentive-in-the-azure-marketplace"></a>Anzeigen und Ändern Ihres „Reseller Incentive“ für Cloud-Lösungsanbieter im Azure Marketplace
 Am 15. März 2016 werden wir den „Reseller Incentive“ für Cloud-Lösungsanbieter (Cloud Solution Providers, CSPs) den Marketplace-Herausgebern zur Verfügung stellen.  Die Standardeinstellung für diesen Anreizwert ist **Ja**.  Als Verleger können Sie entscheiden, ob Sie an dem Anreizprogramm teilnehmen oder nicht.  Dieser Artikel veranschaulicht, wie Sie die Einstellung in Ihrem Verlegerprofil  ändern, sodass Sie auf die Teilnahme verzichten können.
@@ -46,4 +45,3 @@ Um Ihren „Reseller Incentive“-Status anzuzeigen oder zu ändern, gehen Sie f
 [2]: ./media/marketplace-publishing-csp-incentive/profile-boxes.png
 [3]: ./media/marketplace-publishing-csp-incentive/profile-publishers-boxes.png
 [4]: ./media/marketplace-publishing-csp-incentive/profile-publishers-change-boxes.png
-

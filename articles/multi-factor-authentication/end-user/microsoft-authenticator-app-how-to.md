@@ -15,14 +15,12 @@ ms.date: 08/15/2017
 ms.author: barlan
 ms.reviewer: librown
 ms.custom: H1Hack27Feb2017, end-user
+ms.openlocfilehash: e1e979319e53d222be33032acd0a79697dd09ab6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 6bcb6d9f7a1e9b241fa70690016b03d6eb5887ab
-ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Erste Schritte mit der Microsoft Authenticator-App
 Die Microsoft Authenticator-App bietet eine zusätzliche Sicherheitsstufe in Ihrem Geschäfts-, Schul- oder Unikonto (z.B. bsimon@contoso.com) oder Ihrem Microsoft-Konto (z.B. bsimon@outlook.com).
 
@@ -109,4 +107,3 @@ Danach müssen Sie zum Überprüfen Ihrer Anmeldung nur noch die erhaltene Pushb
 Sobald Sie Ihr Konto der App hinzugefügt haben, werden Sie möglicherweise aufgefordert, eine Testüberprüfung auszuführen, um sicherzustellen, dass alles richtig konfiguriert wurde. Danach sind Sie fertig! Vor der nächsten Anmeldung müssen Sie keine weiteren Schritte durchführen.
 
 Wenn Sie die Verwendung von Überprüfungscodes in der App festgelegt haben, werden diese auf der Startseite angezeigt. Sie ändern sich alle 30 Sekunden, sodass Sie stets über einen neuen Code verfügen, wenn Sie einen benötigen. Sie müssen sie jedoch erst beachten, wenn Sie sich anmelden und zur Eingabe eines Überprüfungscodes aufgefordert werden.  
-

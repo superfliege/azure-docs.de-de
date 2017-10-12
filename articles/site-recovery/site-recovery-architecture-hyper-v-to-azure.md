@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 06/23/2017
 ms.author: raynew
 ms.openlocfilehash: 28f775afaf72b11eec0c22f755e4dbd6a485c895
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-does-hyper-v-replication-to-azure-work-in-site-recovery"></a>Wie funktioniert die Hyper-V-Replikation in Azure Site Recovery?
 
@@ -64,8 +64,7 @@ Weitere Informationen zu Voraussetzungen für die Bereitstellung und Anforderung
 1. Nachdem Sie den Schutz für einen virtuellen Hyper-V-Computer über das Azure-Portal oder lokal aktiviert haben, wird der Auftrag **Schutz aktivieren** gestartet.
 2. Im Rahmen des Auftrags wird überprüft, ob der Computer die Voraussetzungen erfüllt. Anschließend wird [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) aufgerufen, um die Replikation mit den konfigurierten Einstellungen einzurichten.
 3. Der Auftrag startet die erste Replikation durch Aufrufen der [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx)-Methode, um eine vollständige VM-Replikation zu initiieren, und übermittelt die virtuellen Datenträger des virtuellen Computers an Azure.
-4. Sie können den Auftrag auf der Registerkarte **Aufträge** überwachen.
-        ![Auftragsliste](media/site-recovery-hyper-v-azure-architecture/image1.png) ![Drilldown für „Schutz aktivieren“](media/site-recovery-hyper-v-azure-architecture/image2.png)
+4. Sie können den Auftrag auf der Registerkarte **Aufträge** überwachen.      ![Auftragsliste](media/site-recovery-hyper-v-azure-architecture/image1.png)![Drilldown für „Schutz aktivieren“](media/site-recovery-hyper-v-azure-architecture/image2.png)
 
 ### <a name="replicate-the-initial-data"></a>Replizieren der ursprünglichen Daten
 

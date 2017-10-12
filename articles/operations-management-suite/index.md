@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ccfbd45def1ecf036a2464f560aa89817c37b419
-ms.openlocfilehash: 54b3ce2c8c3966ee36350fed71bdc48aa5bffa63
-ms.contentlocale: de-de
-ms.lasthandoff: 02/09/2017
-
+ms.openlocfilehash: 12f959376d4923e4e2481e37108ade632ac14902
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-operations-management-suite-oms"></a>Was ist die Operations Management Suite (OMS)?
 Microsoft Operations Management Suite (OMS) ist die cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen das Verwalten und Schützen Ihrer Infrastruktur lokal und in der Cloud erleichtert.  Da OMS als cloudbasierter Dienst implementiert wird, ist die Lösung mit minimalen Investitionen in Infrastrukturdienste schnell betriebsbereit.  Neue Features werden automatisch bereitgestellt, sodass Sie Kosten für die laufende Wartung und Upgrades sparen.
@@ -53,5 +52,4 @@ Durch Sicherheit und Compliance können Sie Sicherheitsrisiken für Ihre Infrast
 * Weitere Informationen zu [Azure Automation](../automation/automation-intro.md)
 * Weitere Informationen zu [Azure Backup](http://azure.microsoft.com/documentation/services/backup)
 * Weitere Informationen zu [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery)
-
 

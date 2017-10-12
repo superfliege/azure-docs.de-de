@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/15/2017
 ms.author: marsma
-ms.translationtype: HT
-ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
 ms.openlocfilehash: c37fc0b701b668ab6bb9213a487ec8baa33fe663
-ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="perform-blob-storage-operations-with-azure-cli"></a>Ausführen von Blobspeichervorgängen über die Azure-Befehlszeilenschnittstelle
 
 Der Azure-Blobspeicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Objektdaten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. In diesem Tutorial werden grundlegende Azure-Blobspeichervorgänge wie das Hochladen, Herunterladen und Löschen von Blobs behandelt. Folgendes wird vermittelt:
@@ -32,7 +30,7 @@ Der Azure-Blobspeicher ist ein Dienst zur Speicherung großer Mengen unstrukturi
 > * Auflisten der Blobs in einem Container
 > * Herunterladen eines Blobs aus einem Container
 > * Kopieren eines Blobs zwischen Speicherkonten
-> * Löschen eines Blobs
+> * Löschen eines BLOBs
 > * Anzeigen und Ändern von Blobeigenschaften und -metadaten
 > * Verwalten der Sicherheit mit einer SAS (Shared Access Signature)
 
@@ -76,7 +74,7 @@ az storage container set-permission \
 
 ## <a name="upload-a-blob-to-a-container"></a>Hochladen eines Blobs in einen Container
 
-Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. In Azure Storage werden hauptsächlich Blockblobs gespeichert. Anfügeblobs werden verwendet, wenn einem vorhandenen Blob Daten hinzugefügt werden müssen, ohne den vorhandenen Inhalt zu ändern (etwa bei der Protokollierung). Seitenblobs liegen den VHD-Dateien virtueller IaaS-Computer zugrunde.
+Blob Storage unterstützt Block-, Anfüge- und Seitenblobs. In Azure Storage werden hauptsächlich Blockblobs gespeichert. Anfügeblobs werden verwendet, wenn einem vorhandenen Blob Daten hinzugefügt werden müssen, ohne den vorhandenen Inhalt zu ändern (etwa bei der Protokollierung). Seitenblobs liegen den VHD-Dateien virtueller IaaS-Computer zugrunde.
 
 In diesem Beispiel wird mit dem Befehl [az storage blob upload](/cli/azure/storage/blob#upload) ein Blob in den im letzten Schritt erstellten Container hochgeladen.
 
@@ -283,4 +281,3 @@ Die folgenden Ressourcen enthalten weitere Informationen zur Verwendung der Azur
   * [Azure CLI 2.0: Befehlsreferenz](/cli/azure/)
 * Microsoft Azure-Speicher-Explorer
   * Beim [Microsoft Azure-Speicher-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie unter Windows, macOS und Linux visuell mit Azure Storage-Daten arbeiten können.
-

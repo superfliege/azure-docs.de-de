@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/02/2016
 ms.author: yurid
 ms.openlocfilehash: 0bea62a43cf6cac9132fe64f2d6c54e52def4c55
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-services-and-technologies"></a>Sicherheitsdienste und -technologien in Azure
 In unseren Diskussionen mit bestehenden und zukünftigen Azure-Kunden werden wir häufig gefragt: „Haben Sie eine Liste aller sicherheitsbezogenen Dienste und Technologien, die Azure zu bieten hat?“

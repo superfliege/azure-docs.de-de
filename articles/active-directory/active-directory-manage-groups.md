@@ -16,12 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
+ms.openlocfilehash: 3a4764ddf2dea68bf25bd46b9691429ad3341678
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: cd8125eda7643f0b190d35cbb89edf8b7b4eca30
-ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen
 Azure Active Directory (Azure AD) ist eine umfassende Lösung für die Identitäts- und Zugriffsverwaltung, die einen robusten Satz von Funktionen zur Verwaltung des Zugriffs auf lokale und Cloudanwendungen und -ressourcen bereitstellt, einschließlich Microsoft-Onlinediensten wie Office 365 und zahlreicher Microsoft-SaaS-Anwendungen. Dieser Artikel bietet eine allgemeine Übersicht. Wenn Sie jedoch direkt mit der Verwendung von Azure AD-Gruppen beginnen möchten, befolgen Sie die Anweisungen unter [Verwalten von Sicherheitsgruppen in Azure AD](active-directory-accessmanagement-manage-groups.md). Weitere Informationen zum Verwalten von Gruppen in Azure Active Directory mithilfe von PowerShell finden Sie unter [Azure Active Directory-Cmdlets für die Gruppenverwaltung](active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
@@ -81,4 +80,3 @@ Da Sie nun die Grundlagen der Zugriffsverwaltung kennen, können Sie sich jetzt 
 * [Einrichten dedizierter Gruppen in Azure AD](active-directory-accessmanagement-dedicated-groups.md)
 * [Graph-API-Referenz für Gruppen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
 * [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](active-directory-accessmanagement-groups-settings-cmdlets.md)
-

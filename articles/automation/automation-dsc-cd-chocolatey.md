@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/29/2016
 ms.author: golive
 ms.openlocfilehash: f23d7374a8954a0a95853fa9e00b54a8d9c468c4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Anwendungsbeispiel: Fortlaufende Bereitstellung auf virtuellen Computern mit Automation DSC und Chocolatey
 In einer DevOps-Welt gibt es viele Tools, die an den verschiedenen Punkten der Continuous Integration-Pipeline als Hilfe dienen.  Azure Automation Desired State Configuration (DSC), also die Konfiguration des gewünschten Zustands, ist eine willkommene neue Option für DevOps-Teams.  In diesem Artikel wird das Einrichten der fortlaufenden Bereitstellung (Continuous Deployment, CD) für einen Windows-Computer veranschaulicht.  Sie können das Verfahren leicht so erweitern, dass in der Rolle (z. B. einer Website) so viele Windows-Computer wie nötig enthalten sind, und von diesem Punkt aus noch eine Erweiterung auf zusätzliche Rollen durchführen.
@@ -77,7 +77,7 @@ Es gibt auch eine manuelle Vorgehensweise.  Die Ordnerstruktur eines PowerShell-
 
 * Installieren Sie das Modul, das Sie auf Ihrer Arbeitsstation benötigen, wie folgt:
   * Installieren Sie [Windows Management Framework 5.0](http://aka.ms/wmf5latest) (unter Windows 10 nicht erforderlich).
-  * `Install-Module –Name MODULE-NAME` <— Ruft das Modul aus dem PowerShell-Katalog ab. 
+  * `Install-Module –Name MODULE-NAME` &lt;— Ruft das Modul aus dem PowerShell-Katalog ab. 
 * Kopieren Sie den Modulordner unter `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` in einen temporären Ordner. 
 * Löschen Sie Beispiele und Dokumentation aus dem Hauptordner. 
 * Zippen Sie den Hauptordner, und geben Sie der ZIP-Datei den Namen des Ordners. 

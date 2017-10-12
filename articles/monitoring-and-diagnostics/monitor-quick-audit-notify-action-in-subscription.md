@@ -10,14 +10,12 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 636dc0fcae1bc2647cd59add5957884971015ce2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Überwachen und Empfangen von Benachrichtigungen zu wichtigen Aktionen im Azure-Abonnement
 
 Das **Azure-Aktivitätsprotokoll** zeigt den Verlauf der Ereignisse auf Abonnementebene in Azure an. Darüber hinaus enthält es Informationen darüber, *welche Ressourcen* von *welcher Person* zu einem bestimmten *Zeitpunkt* erstellt, aktualisiert oder gelöscht wurden. Sie können eine **Aktivitätsprotokollwarnung** erstellen, um E-Mail-, SMS- oder Webhookbenachrichtigungen zu erhalten, wenn eine Ihren Warnungsbedingungen entsprechende Aktivität auftritt. In diesem Schnellstart wird gezeigt, wie Sie eine einfache Netzwerksicherheitsgruppe erstellen, das Aktivitätsprotokoll zum Abrufen von Informationen über das aufgetretene Ereignis durchsuchen und dann eine Aktivitätsprotokollwarnung erstellen, um eine Benachrichtigung zu erhalten, wenn im weiteren Verlauf Netzwerksicherheitsgruppen erstellt werden.
@@ -101,4 +99,3 @@ In diesem Schnellstart haben Sie einen Vorgang zum Generieren eines Aktivitätsp
 
 > [!div class="nextstepaction"]
 > [Archivieren von Überwachungsdaten](./monitor-tutorial-archive-monitoring-data.md)
-

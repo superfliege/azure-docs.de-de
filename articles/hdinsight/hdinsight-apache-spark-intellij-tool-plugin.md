@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 08/24/2017
 ms.author: nitinme
 ms.openlocfilehash: 19cb8f436fa4d86f323013a5d4b3b50bf6c80a1a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Erstellen von Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure Toolkit für IntelliJ
 
@@ -310,7 +310,7 @@ Derzeit wird die direkte Anzeige von Spark-Ausgaben nicht unterstützt.
 Falls Sie Vorschläge oder Feedback haben oder bei Verwendung dieses Plug-Ins Probleme auftreten, senden Sie eine E-Mail an hdivstool@microsoft.com.
 
 ## <a name="seealso"></a>Nächste Schritte
-* [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview.md)
+* [Übersicht: Apache Spark für Azure HDInsight](hdinsight-apache-spark-overview.md)
 
 ### <a name="demo"></a>Demo
 * Erstellen von Scala-Projekten (Video): [Create Spark Scala Applications](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ) (Erstellen von Spark Scala-Anwendungen)

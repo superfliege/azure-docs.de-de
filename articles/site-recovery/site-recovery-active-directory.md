@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 7/20/2017
 ms.author: pratshar
 ms.openlocfilehash: 197441fc24c178695d4eada6db59f503b21672ad
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="protect-active-directory-and-dns-with-azure-site-recovery"></a>Schützen von Active Directory und DNS mit Azure Site Recovery
 Für Unternehmensanwendungen, z.B. SharePoint, Dynamics AX und SAP, ist eine Active Directory- und DNS-Infrastruktur erforderlich, damit sie richtig funktionieren. Wenn Sie eine Notfallwiederherstellungs-Lösung für Anwendungen erstellen, müssen Sie daran denken, dass Sie Active Directory und DNS vorrangig vor den anderen Anwendungskomponenten schützen und wiederherstellen müssen, um sicherzustellen, dass Vorgänge richtig ablaufen, wenn ein Notfall eintritt.
@@ -81,7 +81,7 @@ Bei den meisten Anwendungen muss außerdem ein Domänencontroller und ein DNS-Se
 1. Erstellen Sie ein isoliertes Netzwerk. Jedes in Azure erstellte virtuelle Netzwerk ist standardmäßig von anderen Netzwerken isoliert. Der IP-Adressbereich dieses Netzwerks sollte mit dem Ihres Produktionsnetzwerks identisch sein. Aktivieren Sie nicht die Standort-zu-Standort-Konnektivität in diesem Netzwerk.
 1. Stellen Sie eine im Netzwerk erstellte DNS-IP-Adresse als die IP-Adresse bereit, die der virtuelle DNS-Computer abrufen soll. Wenn Sie zu Azure replizieren, geben Sie die IP-Adresse für den virtuellen Computer, der beim Failover verwendet wird, in der Einstellung für die **Ziel-IP-Adresse** in den **Compute und Netzwerk**-Einstellungen an. 
 
-    ![Ziel-IP](./media/site-recovery-active-directory/DNS-Target-IP.png) **Ziel-IP**
+    ![Ziel-IP](./media/site-recovery-active-directory/DNS-Target-IP.png)**Ziel-IP**
 
     ![Azure-Testnetzwerk](./media/site-recovery-active-directory/azure-test-network.png)
 

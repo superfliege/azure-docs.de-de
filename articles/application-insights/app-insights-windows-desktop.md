@@ -14,10 +14,10 @@ ms.topic: get-started-article
 ms.date: 08/26/2016
 ms.author: bwren
 ms.openlocfilehash: 9d7e2a390adf10cbf5d88dd0084ce09136987309
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-usage-and-performance-in-windows-desktop-apps"></a>Überwachen der Nutzung und Leistung von Windows-Desktop-Apps
 
@@ -37,7 +37,7 @@ Mit [Azure Application Insights](app-insights-overview.md) und [HockeyApp](https
 3. Bearbeiten Sie die NuGet-Pakete Ihres App-Projekts in Visual Studio, und fügen Sie ihnen „Microsoft.ApplicationInsights.WindowsServer“ hinzu. (Oder wählen Sie „Microsoft.ApplicationInsights“ aus, wenn Sie nur die reine API ohne die Standardmodule zur Telemetrieerfassung verwenden möchten.)
 4. Legen Sie den Instrumentierungsschlüssel im Code fest:
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *Ihr Schlüssel* `";` 
+    `TelemetryConfiguration.Active.InstrumentationKey = "`*Ihr Schlüssel*`";` 
    
     Oder legen Sie ihn in der Datei „ApplicationInsights.config“ fest (wenn Sie eines der Standardtelemetriepakete installiert haben):
    

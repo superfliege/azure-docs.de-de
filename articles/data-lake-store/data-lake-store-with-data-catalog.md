@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 90e29a9ab522031db8feb934a218d4b671561417
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>Registrieren von Daten aus dem Data Lake-Speicher in Azure Data Catalog
 In diesem Artikel erfahren Sie, wie der Azure Data Lake-Speicher in Azure Data Catalog integriert wird, um Ihre Daten innerhalb einer Organisation auffindbar zu machen, indem sie in Data Catalog integriert werden. Weitere Informationen zum Katalogisieren von Daten finden Sie unter [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Informationen zu den Szenarien, in denen Sie Data Catalog verwenden können, finden Sie unter [Häufige Szenarien mit Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).
@@ -83,4 +82,3 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 * [Hinzufügen von Anmerkungen zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
 * [Hinzufügen von Dokumenten zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 * [Integrieren des Data Lake-Speichers in andere Azure-Dienste](data-lake-store-integrate-with-other-services.md)
-

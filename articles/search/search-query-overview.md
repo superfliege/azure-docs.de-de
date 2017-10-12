@@ -1,6 +1,6 @@
 ---
-title: Fragen Sie Ihre Azure-Suchindex | Microsoft Docs
-description: Erstellen Sie eine Suchabfrage in Azure Search, und verwenden Sie die Suchparameter zu filtern und Sortieren von Suchergebnissen.
+title: Abfragen des Azure Search-Indexes | Microsoft Docs
+description: Erstellen Sie eine Suchabfrage in Azure Search, und verwenden Sie Suchparameter zum Filtern und Sortieren von Suchergebnissen.
 services: search
 manager: jhubbard
 documentationcenter: 
@@ -14,56 +14,56 @@ ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: ashmaka
 ms.openlocfilehash: a22b82829df4659681940267e64c98d345453958
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="query-your-azure-search-index"></a>Fragen Sie Ihren Azure Search-index
+# <a name="query-your-azure-search-index"></a>Abfragen des Azure Search-Index
 > [!div class="op_single_selector"]
 > * [Übersicht](search-query-overview.md)
-> * [Verwaltungsportal](search-explorer.md)
+> * [Portal](search-explorer.md)
 > * [.NET](search-query-dotnet.md)
 > * [REST](search-query-rest-api.md)
 > 
 > 
 
-Wenn Sie Search-Anforderungen für Azure Search übermitteln zu können, stehen eine Anzahl von Parametern, die zusammen mit den tatsächlichen Wörtern angegeben werden können, die in das Suchfeld der Anwendung eingegeben werden. Diese Abfrageparameter können Sie einige eine umfassendere Steuerung erzielen die [Volltext-Suchfunktionen](search-lucene-query-architecture.md).
+Beim Senden von Suchanforderungen an Azure Search können Sie einige Parameter zusätzlich zu den eigentlichen Wörtern angeben, die Sie in das Suchfeld der Anwendung eingeben. Mit diesen Abfrageparametern haben Sie eine genauere Kontrolle über die [Volltext-Suchoberfläche](search-lucene-query-architecture.md).
 
-Im folgenden finden Sie eine Liste, die allgemeine Verwendungsmöglichkeiten der Abfrageparameter in Azure Search kurz erläutert. Vollständige Abdeckung von Abfrageparametern und deren Verhalten finden Sie unter den detaillierten Seiten für die [REST-API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) und [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters#microsoft_azure_search_models_searchparameters#properties_summary).
+Unten ist eine Liste angegeben, in der kurz häufige Verwendungsmöglichkeiten der Abfrageparameter in Azure Search erläutert werden. Umfassende Informationen zu Abfrageparametern und ihrem Verhalten finden Sie auf den ausführlichen Seiten für die [REST-API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) und das [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters#microsoft_azure_search_models_searchparameters#properties_summary).
 
-## <a name="types-of-queries"></a>Typen von Abfragen
-Azure Search bietet viele Optionen zum Erstellen von äußerst wichtiger Abfragen. Die zwei Haupttypen von Abfragen, die Sie verwenden werden `search` und `filter`. Ein `search` Abfrage sucht nach einem oder mehreren Begriffen in allen *durchsuchbaren* Felder in Ihren Index und funktioniert wie erwartet eine Suchmaschine wie Google oder Bing verwendet würde. Ein `filter` Abfrage ergibt einen booleschen Ausdruck über alle *filterbaren* Felder in einem Index. Im Gegensatz zu `search` Abfragen `filter` Abgleich von Abfragen der genaue Inhalt eines Felds, d. h., sie sind für Zeichenfolgenfelder Groß-/Kleinschreibung.
+## <a name="types-of-queries"></a>Abfragetypen
+Azure Search bietet viele Optionen, um äußerst leistungsfähige Abfragen zu erstellen. Die zwei wichtigsten Abfragetypen, die Sie verwenden werden, sind `search` und `filter`. Eine `search`-Abfrage sucht nach einem oder mehreren Begriffen in allen *durchsuchbaren* Feldern im Index. Sie funktioniert so, wie Sie es von einer Suchmaschine wie Google oder Bing erwarten. Eine `filter`-Abfrage wertet einen booleschen Ausdruck für alle *filterbaren* Felder in einem Index aus. Im Gegensatz zu `search`-Abfragen gleichen `filter`-Abfragen den genauen Inhalt eines Felds ab, d. h., bei Zeichenfolgenfeldern muss die Groß-/Kleinschreibung berücksichtigt werden.
 
-Suchen und Filtern können separat oder zusammen verwendet werden. Wenn Sie diese zusammen verwenden, der Filter wird zuerst angewendet, für den gesamten Index, und klicken Sie dann die Suche durchgeführt wird, auf dem die Ergebnisse des Filters. Filter kann daher ein nützliches Verfahren, um die abfrageleistung zu verbessern, da sie den Satz von Dokumenten reduzieren, die die Suchabfrage verarbeiten muss.
+Suchvorgänge und Filter können separat oder zusammen verwendet werden. Wenn sie zusammen verwendet werden, wird der Filter zuerst auf den gesamten Index angewendet, und anschließend wird die Suche für die Ergebnisse des Filters ausgeführt. Filter können daher eine nützliche Methode zum Verbessern der Abfrageleistung darstellen, da sie die Menge der Dokumente reduzieren, die bei der Suchabfrage verarbeitet werden müssen.
 
-Die Syntax für Filterausdrücke ist eine Teilmenge der [OData-Filtersprache](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search). Für Suchabfragen verwenden Sie entweder die [eine vereinfachte Syntax](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search) oder [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search) wird die nachstehend erläutert.
+Die Syntax für Filterausdrücke ist eine Teilmenge der [OData-Filtersprache](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search). Für Suchabfragen können Sie die [vereinfachte Syntax](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search) oder die [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search) verwenden. Beide sind unten beschrieben.
 
 ### <a name="simple-query-syntax"></a>Einfache Abfragesyntax
-Die [einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search) ist der Standard-Abfragesprache, die in Azure Search verwendet. Die einfache Abfragesyntax unterstützt eine Reihe von allgemeinen Suchoperatoren einschließlich AND, OR, NOT, Ausdruck, Suffix und von rangfolgenoperatoren.
+Die [einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search) ist die Abfragesprache, die in Azure Search standardmäßig verwendet wird. Die einfache Abfragesyntax unterstützt eine Reihe von allgemeinen Suchoperatoren, z. B. AND, OR, NOT, Begriff, Suffix und Rangfolgeoperatoren.
 
 ### <a name="lucene-query-syntax"></a>Lucene-Abfragesyntax
-Die [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search) können Sie mit der weithin und ausdrucksbasierte Abfragesprache entwickelt als Teil [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
+Mit der [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search) können Sie die viel genutzte und ausdrucksbasierte Abfragesprache verwenden, die als Teil von [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) entwickelt wurde.
 
-Mithilfe dieser Abfragesyntax können Sie einfach die folgenden Funktionen zu erreichen: [Feld bezogenen Abfragen](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_fields), [fuzzy-Suche](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_fuzzy), [NEAR-Suche](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_proximity), [Begriff verstärkungsfaktors](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_termboost), [Suche mit regulärem Ausdruck](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_regex), [Platzhaltersuche](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_wildcard), [Syntax Grundlagen](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_syntax), und [von Abfragen mit booleschen Operatoren](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_boolean).
+Diese Abfragesyntax ermöglicht auf einfache Weise Folgendes: [Feldbezogene Abfragen](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_fields), [Fuzzy-Suche](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_fuzzy), [NEAR-Suche](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_proximity), [Term Boosting](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_termboost), [Suche mit regulärem Ausdruck](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_regex), [Platzhaltersuche](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_wildcard), [Grundlagen der Syntax](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_syntax) und [Abfragen mit booleschen Operatoren](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_boolean).
 
-## <a name="ordering-results"></a>Anordnen von Ergebnissen
-Wenn Sie Ergebnisse für eine Suchabfrage zu empfangen, können Sie anfordern, dass Azure Search die Ergebnisse sortiert nach Werten in einem bestimmten Feld dient. Standardmäßig ordnet Azure Search die Suchergebnisse basierend auf den Rang des suchbewertung jedes Dokument, das von abgeleitet ist [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
+## <a name="ordering-results"></a>Sortieren von Ergebnissen
+Wenn Sie Ergebnisse für eine Suchabfrage erhalten, können Sie anfordern, dass Azure Search die Ergebnisse sortiert nach den Werten in einem bestimmten Feld bereitstellt. Azure Search sortiert die Suchergebnisse standardmäßig basierend auf der Rangfolge der Suchbewertung eines Dokuments, die von [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)abgeleitet wird.
 
-Wenn Sie möchten, dass Azure Search zurückzugebenden Ihre Ergebnisse sortiert werden durch einen anderen Wert als der suchbewertung können Sie die `orderby` Parameter zu suchen. Können, geben Sie den Wert von der `orderby` Parameter Feldnamen und Aufrufe an die [ `geo.distance()` Funktion](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search) für räumlichen Werte. Jeder Ausdruck kann folgen `asc` um anzugeben, dass die Ergebnisse in aufsteigender Reihenfolge angefordert werden und `desc` um anzugeben, dass die Ergebnisse in absteigender Reihenfolge angefordert werden. Die Standard-Rangfolge Aufsteigend.
+Falls Azure Search die Ergebnisse sortiert nach einem anderen Wert als der Suchbewertung zurückgeben soll, können Sie den Suchparameter `orderby` verwenden. Sie können den Wert des Parameters `orderby` angeben, um Feldnamen und Aufrufe der [`geo.distance()`-Funktion](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search) für Geowerte einzubinden. Auf jeden Ausdruck kann `asc` folgen, um anzugeben, dass die Ergebnisse in aufsteigender Reihenfolge angefordert werden. Verwenden Sie `desc`, um anzugeben, dass die Ergebnisse in absteigender Reihenfolge zurückgegeben werden sollen. Standardmäßig wird die aufsteigende Sortierung verwendet.
 
 ## <a name="paging"></a>Paging
-Azure Search vereinfacht die Auslagerung von Suchergebnissen zu implementieren. Mithilfe der `top` und `skip` Parameter, können Sie reibungslos Search-Anforderungen, mit denen Sie die gesamte Gruppe von Suchergebnissen in verwaltbare, geordnete Teilmengen zu erhalten, die einfach gutes Suche UI-Methoden ermöglichen ausgeben. Wenn Sie diese kleineren Teilmengen von Ergebnisse empfangen zu können, erhalten Sie auch die Anzahl der Dokumente in der gesamten Gruppe von Suchergebnissen.
+Mit Azure Search ist es einfach, das Paging (Anordnen auf Seiten) von Suchergebnissen zu implementieren. Mit den Parametern `top` und `skip` können Sie reibungslos Suchanforderungen ausgeben, die Ihnen das Empfangen aller Suchergebnisse in Form von verwaltbaren, sortierten Teilmengen und somit eine benutzerfreundliche Vorgehensweise auf der Suchoberfläche ermöglichen. Wenn Sie diese kleineren Teilmengen mit Ergebnissen empfangen, können Sie auch die Zahl der Dokumente in der Gesamtmenge der Suchergebnisse erhalten.
 
-Weitere Informationen finden Sie Informationen zu paging von Suchergebnissen im Artikel [wie auf der Seite Suchergebnisse in Azure Search](search-pagination-page-layout.md).
+Weitere Informationen zum Paging von Suchergebnissen finden Sie im Artikel [Anordnen von Suchergebnissen auf Seiten in Azure Search](search-pagination-page-layout.md).
 
-## <a name="hit-highlighting"></a>Drücken Sie die Hervorhebung
-In Azure Search hervorgehoben werden die genauen Teil Suchergebnisse, die Suchabfrage entsprechen, wird leicht, mit der `highlight`, `highlightPreTag`, und `highlightPostTag` Parameter. Sie können angeben, welche *durchsuchbaren* Felder müssen ihre übereinstimmenden Text hervorgehoben sowie die genaue Zeichenfolge Tags anzufügende am Anfang und Ende des übereinstimmenden Texts, die Azure Search zurückgibt angeben.
+## <a name="hit-highlighting"></a>Treffermarkierung
+In Azure Search ist das Hervorheben der exakten Menge von Suchergebnissen, die mit der Suchabfrage übereinstimmen, dank der Parameter `highlight`, `highlightPreTag` und `highlightPostTag` einfach. Sie können angeben, für welche *durchsuchbaren* Felder der gefundene Text hervorgehoben werden soll. Außerdem können Sie die genauen Zeichenfolgentags angeben, die am Anfang und Ende des von Azure Search zurückgegebenen Übereinstimmungstexts angefügt werden sollen.
 
-## <a name="try-out-query-syntax"></a>Probieren Sie Abfragesyntax
+## <a name="try-out-query-syntax"></a>Ausprobieren der Abfragesyntax
 
-Die beste Möglichkeit, die Syntaxunterschiede zu verstehen ist durch das Senden von Abfragen und Ergebnisse überprüfen.
+Die beste Möglichkeit, Syntaxunterschiede zu verstehen, besteht darin, Abfragen zu senden und die Ergebnisse zu überprüfen.
 
-+ Verwendung [-Explorer Durchsuchen](search-explorer.md) im Azure-Portal. Durch die Bereitstellung von [der Beispiel-Index](search-get-started-portal.md), können Sie den Index in Minuten, die mithilfe von Tools im Portal Abfragen.
++ Verwenden Sie den [Suchexplorer](search-explorer.md) im Azure-Portal. Durch die Bereitstellung [des Beispielindex](search-get-started-portal.md) können Sie den Index mithilfe der Tools im Portal in wenigen Minuten abfragen.
 
-+ Verwendung [Fiddler](search-fiddler.md) oder Chrome-Postman, um Abfragen auf einen Index zu übermitteln, die Sie in Ihrem Suchdienst hochgeladen haben. Beide Tools unterstützt REST-Aufrufe an einen HTTP-Endpunkt. 
++ Verwenden Sie [Fiddler](search-fiddler.md) oder Chrome Postman, um Abfragen an einen Index zu senden, den Sie in Ihren Suchdienst hochgeladen haben. Beide Tools unterstützen REST-Aufrufe an einen HTTP-Endpunkt. 

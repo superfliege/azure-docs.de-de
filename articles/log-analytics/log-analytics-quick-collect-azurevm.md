@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e5787bed43d8e327774d2cbea7e8875b56903cf6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="collect-data-about-azure-virtual-machines"></a>Sammeln von Daten über virtuelle Azure-Computer
 [Azure Log Analytics](log-analytics-overview.md) kann Daten direkt von Ihren virtuellen Azure-Computern und anderen Ressourcen in Ihrer Umgebung zur detaillierten Analyse und Korrelation in einem einzelnen Repository sammeln.  Dieser Schnellstart zeigt Ihnen, wie Sie in wenigen einfachen Schritten Daten von Ihren Azure-Linux- oder Windows-VMs konfigurieren und sammeln.  
  
@@ -97,4 +95,3 @@ Um zu erfahren, wie Sie die Daten anzeigen und analysieren, fahren Sie mit dem T
 
 > [!div class="nextstepaction"]
 > [Anzeigen oder Analysieren der Daten in Log Analytics](log-analytics-tutorial-viewdata.md)
-

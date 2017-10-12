@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d9f86ac19044fd13e77d35d6c3dd9964c3852001
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-workspaces"></a>Verwalten von Arbeitsbereichen
 
@@ -62,7 +61,7 @@ Sie können im Azure-Portal die Details zu Ihrem Arbeitsbereich anzeigen.
 
 #### <a name="view-workspace-information-in-the-azure-portal"></a>Anzeigen von Arbeitsbereichsinformationen im Azure-Portal
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**.  Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Log Analytics**.  
     ![Azure-Hub](./media/log-analytics-manage-access/hub.png)  
 3. Wählen Sie auf dem Blatt mit den Log Analytics-Abonnements einen Arbeitsbereich aus.

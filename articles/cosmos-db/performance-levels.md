@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: 6692d5b75954b2162862e6be7c2e39c63fa8408b
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Aussondern der Leistungsebenen S1, S2 und S3
 
@@ -179,4 +178,3 @@ Weitere Informationen zu Preisen und der Datenverwaltung mit Azure Cosmos DB fin
 1.  [Partitionierung von Daten in Cosmos DB](documentdb-partition-data.md). Es werden die Unterschiede zwischen Containern mit nur einer Partition und partitionierten Containern beschrieben, und Sie erhalten Tipps zur Implementierung einer Partitionierungsstrategie für die nahtlose Skalierung.
 2.  [Cosmos DB-Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Enthält Informationen zu den Kosten für den Bereitstellungsdurchsatz und für den Speicherverbrauch.
 3.  [Anforderungseinheiten](request-units.md): Enthält Informationen zum Verbrauch des Durchsatzes für verschiedene Vorgangstypen, z.B. Lesen, Schreiben, Abfragen.
-

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 ms.openlocfilehash: b4d71cdfbab535b02542fbb26c7555265e5f9c37
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management
 In API Management werden Gruppen verwendet, um die Sichtbarkeit von Produkten für Entwickler zu verwalten. Produkte gewähren Sichtbarkeit für Gruppen, und Entwickler können alle Produkte anzeigen und abonnieren, die für die Gruppen sichtbar sind, in denen sie Mitglied sind. 
@@ -38,7 +38,7 @@ Diese Anleitung beschreibt, wie Administrator einer API Management-Instanz neue 
 > 
 > 
 
-## <a name="create-group"> </a>Erstellen einer Gruppe
+## <a name="create-group"></a>Erstellen einer Gruppe
 Klicken Sie im Azure-Portal für Ihren API Management-Dienst auf **Herausgeberportal**, um einen neue Gruppe zu erstellen. Daraufhin gelangen Sie zum API Management-Herausgeberportal.
 
 ![Herausgeberportal][api-management-management-console]
@@ -61,7 +61,7 @@ Die neue Gruppe wird auf der Registerkarte „Gruppen“ angezeigt. Klicken Sie 
 
 Nachdem Sie die Gruppe erstellt haben, können Sie sie zu Produkten und Entwicklern zuordnen.
 
-## <a name="associate-group-product"> </a>Zuordnen einer Gruppe zu einem Produkt
+## <a name="associate-group-product"></a>Zuordnen einer Gruppe zu einem Produkt
 Um eine Gruppe zu einem Produkt zuzuordnen, klicken Sie im Menü **API Management** auf der linken Seite auf **Produkte** und anschließend auf den Namen des gewünschten Produkts.
 
 ![Sichtbarkeit einstellen][api-management-add-group-to-product]
@@ -79,7 +79,7 @@ Auf der Registerkarte **Sichtbarkeit** können Sie Gruppen hinzufügen oder entf
 
 Sobald ein Produkt zu einer Gruppe zugeordnet ist, können Entwickler in dieser Gruppe das Produkt anzeigen und abonnieren.
 
-## <a name="associate-group-developer"> </a>Zuordnen von Entwicklern zu Gruppen
+## <a name="associate-group-developer"></a>Zuordnen von Entwicklern zu Gruppen
 Klicken Sie zum Zuordnen von Entwicklern zu einer Gruppe im Menü **API Management** auf der linken Seite auf **Benutzer**, und aktivieren Sie das Kontrollkästchen neben den Entwicklern, die Sie der Gruppe zuordnen möchten.
 
 ![Entwickler zu einer Gruppe hinzufügen][api-management-add-group-to-developer]
@@ -90,7 +90,7 @@ Markieren Sie die gewünschten Entwickler und klicken Sie anschließend auf die 
 
 Sobald Sie die Zuordnung zwischen Entwickler und Gruppe erstellt haben, können Sie diese auf der Registerkarte **Benutzer** anzeigen.
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Sobald ein Entwickler zu einer Gruppe hinzugefügt wurde, können diese die zu dieser Gruppe zugeordneten Produkte anzeigen und abonnieren. Weitere Informationen finden Sie unter [Erstellen und Veröffentlichen eines Produkts in Azure API Management][How create and publish a product in Azure API Management].
 * Zusätzlich zum Erstellen und Verwalten von Gruppen im Herausgeberportal können Sie Ihre Gruppen mithilfe der Entität [Gruppe](https://msdn.microsoft.com/library/azure/dn776329.aspx) der API Management-REST-API erstellen und verwalten.
 

@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/20/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4076b1e7ab3a70009217a1deff72da4bff0dc871
-ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: cb6eefa2e1cb67d4864344d63a635def371659b7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL-Datenbank: Verwenden von Visual Studio Code zum Herstellen einer Verbindung mit und Abfragen von Daten
 
@@ -191,4 +190,3 @@ Verwenden Sie den folgenden Code, um mit der Transact-SQL-Anweisung [DELETE](htt
 
 - Weitere Informationen zum Herstellen einer Verbindung und Durchführen von Abfragen mit SQL Server Management Studio finden Sie unter [Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](sql-database-connect-query-ssms.md).
 - Im [Blogpost zum Erstellen einer Datenbank-IDE mit der MSSQL-Erweiterung](https://msdn.microsoft.com/magazine/mt809115) finden Sie einen MSDN Magazine-Artikel zum Verwenden von Visual Studio Code.
-

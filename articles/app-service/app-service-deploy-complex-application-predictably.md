@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
+ms.openlocfilehash: 3719e037f1564411a8f94d1ca962ba1ef6b5d435
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 87592410e6471219d3262cdcc7b47ee1b0686961
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Vorhersagbares Bereitstellen von Microservices in Azure
 Dieses Tutorial zeigt, wie eine aus [Microservices](https://en.wikipedia.org/wiki/Microservices) bestehende Anwendung in [Azure App Service](/services/app-service/) als eine Einheit und in vorhersagbarer Weise mithilfe von JSON-Ressourcengruppenvorlagen und PowerShell-Skripts bereitgestellt wird. 
@@ -89,7 +88,7 @@ Alles, was Sie gerade in wenigen Minuten gesehen haben, ist eine vollständig be
 Sie können diese Anwendung Dutzende, Hunderte oder Tausende Male bereitstellen und erhalten jedes Mal genau die gleiche Konfiguration. Durch die Wiederholbarkeit und die Vorhersagbarkeit dieses Ansatzes können Sie hochgradig skalierbare Anwendungen einfach und zuverlässig bereitstellen.
 
 ## <a name="examine-or-edit-azuredeployjson"></a>Untersuchen (oder Bearbeiten) von AZUREDEPLOY.JSON
-Jetzt sehen wir uns an, wie das GitHub-Repository eingerichtet wurde. Verwenden Sie den JSON-Editor im Azure .NET SDK. Wenn Sie das [Azure .NET SDK 2.6](/downloads/) noch nicht installiert haben, holen Sie dies jetzt nach.
+Jetzt sehen wir uns an, wie das GitHub-Repository eingerichtet wurde. Verwenden Sie den JSON-Editor im Azure .NET SDK. Wenn Sie das [Azure .NET SDK 2.6](https://azure.microsoft.com/downloads/) noch nicht installiert haben, holen Sie dies jetzt nach.
 
 1. Klonen Sie das [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) -Repository mit Ihrem bevorzugten Git-Tool. Im Screenshot unten wird Team Explorer in Visual Studio 2013 verwendet.
    
@@ -269,5 +268,4 @@ In DevOps sind Wiederholbarkeit und Vorhersagbarkeit der Schlüssel für eine er
 * [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md)
 * [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
 * [Troubleshooting Resource Group Deployments in Azure (Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure)](../azure-resource-manager/resource-manager-common-deployment-errors.md)
-
 

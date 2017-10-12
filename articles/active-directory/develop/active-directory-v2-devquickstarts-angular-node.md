@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 0e90171afd9c4c782fbb18375ab2d147497ef442
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---nodejs"></a>Hinzufügen der Anmeldung zu einer einseitigen AngularJS-App – Node.js
 In diesem Artikel verwenden wir den v2.0-Endpunkt von Azure Active Directory, um einer AngularJS-App eine Anmeldung mit Microsoft-basierten Konten hinzuzufügen. Mit dem v2.0-Endpunkt können Sie eine einzelne Integration in Ihrer App ausführen und Benutzer mit persönlichen Konten sowie mit Geschäfts-, Schul- oder Unikonten authentifizieren.
@@ -240,8 +240,8 @@ Navigieren Sie in einem Browser zu `http://localhost:8080`.  Melden Sie sich mit
 
 Weitere Informationen zum v2.0-Endpunkt finden Sie im [v2.0-Entwicklerhandbuch](active-directory-appmodel-v2-overview.md).  Weitere Ressourcen:
 
-* [Azure-Beispiele auf GitHub >>](https://github.com/Azure-Samples)
-* [Azure AD auf Stack Overflow >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Azure-Beispiele auf GitHub &gt;&gt;](https://github.com/Azure-Samples)
+* [Azure AD auf Stack Overflow &gt;&gt;](http://stackoverflow.com/questions/tagged/azure-active-directory)
 * Azure AD-Dokumentation auf [Azure.com >>](https://azure.microsoft.com/documentation/services/active-directory/)
 
 ## <a name="get-security-updates-for-our-products"></a>Abrufen von Sicherheitsupdates für unsere Produkte

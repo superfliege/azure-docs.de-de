@@ -7,14 +7,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bed026e8f75618403efa3eed475371d1d2746bc5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-source-wizard"></a>Datenquellen-Assistent #
 
 Der Datenquellen-Assistent bietet eine schnelle und einfache Möglichkeit, um ein Dataset ohne Code in Azure ML Workbench einzubinden. In diesem Tool können Sie auch eine Beispielstrategie für das Dataset auswählen. 
@@ -74,4 +72,3 @@ Wenn der Dateipfad wichtige Daten enthält, können Sie festlegen, dass dieser a
 ![Schritt 7](media/data-source-wizard/step6.png)
 
 Wenn Sie auf „Fertig stellen“ klicken, wird eine neue Datenquelle zum Projekt hinzugefügt. Sie finden diese in der Datenansicht in der Gruppe „Datenquellen“ oder als DSOURCE-Datei in der **Dateiansicht**.
-

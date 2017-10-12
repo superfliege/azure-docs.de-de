@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2017
 ms.author: bwren
 ms.openlocfilehash: b7f28868e3ffdf95dbe39872f382e7c97eae692c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="custom-logs-in-log-analytics"></a>Benutzerdefinierte Protokolle in Log Analytics
 Mithilfe der Datenquelle „Custom Logs“ (Benutzerdefinierte Protokolle) in Log Analytics können Ereignisse aus Textdateien auf Windows- und Linux-Computern gesammelt werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien.  Mithilfe des Log Analytics-Features [Benutzerdefinierte Felder](log-analytics-custom-fields.md) können gesammelte Datensätze im Protokoll individuell analysiert und einzelnen Feldern zugeordnet werden.

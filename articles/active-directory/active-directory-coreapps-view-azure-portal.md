@@ -16,12 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 14b335d14d893640d469508d6f34b4e7ec6bee8b
-ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
-
+ms.openlocfilehash: 13a45733b3b8d9ea0593e3b546b6ea58aa5f1a46
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="view-all-the-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>Anzeigen aller von Ihnen verwaltbaren Unternehmens-Apps in Azure Active Directory
 Sie können Ihre Unternehmens-Apps in Azure Active Directory (Azure AD) verwalten. Hierzu zählt das Anzeigen der Apps, die Sie verwalten können, das Zuweisen von Benutzern oder Gruppen zu einer App, das Verwalten der Eigenschaften für die App, beispielsweise Anwendungsname oder -logo, und sogar das Deaktivieren einer Anwendung, mit sich Benutzer nicht mehr bei der App anmelden können.
@@ -39,4 +38,3 @@ Sie können Ihre Unternehmens-Apps in Azure Active Directory (Azure AD) verwalte
 * [Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [Deaktivieren von Benutzeranmeldungen für eine Unternehmens-App](active-directory-coreapps-disable-app-azure-portal.md)
 * [Ändern des Namens oder Logos einer Unternehmens-App](active-directory-coreapps-change-app-logo-user-azure-portal.md)
-

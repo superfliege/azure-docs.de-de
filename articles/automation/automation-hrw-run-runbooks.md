@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: magoedte
+ms.openlocfilehash: d069b5040e0e280e54d4ffd8eccdacca302b7cc5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 993bc3ea480a329541ca4ae825189cdb5a2b4a8b
-ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks auf einem Hybrid Runbook Worker 
 Es gibt keine Unterschiede in der Struktur von Runbooks, die in Azure Automation oder auf einem Hybrid-Runbook-Worker ausgeführt werden. Die jeweils verwendeten Runbooks unterscheiden sich aber meist deutlich, da Runbooks für einen Hybrid Runbook Worker Ressourcen normalerweise auf dem lokalen Computer selbst oder in der lokalen Umgebung der Bereitstellung verwalten, während Runbooks in Azure Automation Ressourcen in der Regel in der Azure-Cloud verwalten.
 

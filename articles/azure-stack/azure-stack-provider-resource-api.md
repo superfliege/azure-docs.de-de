@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: alfredop
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c54dca9d734cf909cf20d5235a90b9b46f0af11c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provider-resource-usage-api"></a>Ressourcennutzungs-API für Anbieter
 Der Begriff „Anbieter“ bezieht sich auf den Dienstadministrator und auf alle delegierten Anbieter. Azure Stack-Betreiber und delegierte Anbieter können die Nutzungs-API für Anbieter verwenden, um einen Einblick in die Nutzung ihrer direkten Mandanten zu erhalten. A0 kann beispielsweise die Anbieter-API aufrufen, um die Nutzungsinformationen zur direkten Nutzung von A1 und A2 abzurufen, und A1 kann die Nutzungsinformationen von A3 und A4 abrufen.
@@ -94,5 +93,4 @@ meterID1",
 [Referenz zur Ressourcennutzungs-API für Mandanten](azure-stack-tenant-resource-usage-api.md)
 
 [Häufig gestellte Fragen zur Nutzung](azure-stack-usage-related-faq.md)
-
 

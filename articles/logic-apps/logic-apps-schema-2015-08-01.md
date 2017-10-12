@@ -1,6 +1,6 @@
 ---
-title: Schema-1-Vorschau August 2015 - aktualisiert Azure-Logik-Apps | Microsoft Docs
-description: "Erstellen von JSON-Definitionen für Azure-Logik-Apps mit Schema Version 2015-08-01-Vorschau"
+title: "Schemaaktualisierungen für Azure Logic Apps – 1. August 2015 (Vorschau) | Microsoft-Dokumentation"
+description: "Erstellen von JSON-Definitionen für Azure Logic Apps mit der Schemaversion „2015-08-01-preview“."
 author: stepsic-microsoft-com
 manager: anneta
 editor: 
@@ -16,37 +16,37 @@ ms.custom: H1Hack27Feb2017
 ms.date: 05/31/2016
 ms.author: LADocs; stepsic
 ms.openlocfilehash: 35d7a56d5607dcc18a4407c65b92962d3d0dcd1d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Schema-Updates für Azure-Logik-Apps - 1. August 2015-Vorschau
+# <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Schemaaktualisierungen für Azure Logic Apps – 1. August 2015 (Vorschau)
 
-Diese neuen Schema und API-Version für Azure-Logik-Apps enthält wichtige Verbesserungen, die Logik-apps stellen, zuverlässiger und einfacher zu verwenden:
+Diese neue Schema- und API-Version für Azure Logic Apps enthält wichtige Verbesserungen, mit denen Logik-Apps zuverlässiger und einfacher zu verwenden sind:
 
-*   Die **APIApp** Aktionstyp wird aktualisiert, um ein neues [ **APIConnection** ](#api-connections) Aktionstyp.
-*   **Wiederholen Sie die** umbenannt in [ **Foreach**](#foreach).
-*   Die [ **HTTP-Listener** API-App](#http-listener) ist nicht mehr erforderlich.
-*   Aufrufen des untergeordneten Workflows verwendet eine [neues Schema](#child-workflows).
+*   Der **APIApp**-Aktionstyp wird auf einen neuen [**APIConnection**](#api-connections)-Aktionstyp aktualisiert.
+*   **Repeat** wird in [**Foreach**](#foreach) umbenannt.
+*   Die [**HTTP-Listener**-API-App](#http-listener) ist nicht mehr erforderlich.
+*   Für den Aufruf untergeordneter Workflows wird ein [neues Schema](#child-workflows) verwendet.
 
 <a name="api-connections"></a>
-## <a name="move-to-api-connections"></a>Verschieben Sie in der API-Verbindungen
+## <a name="move-to-api-connections"></a>Wechsel zu API-Verbindungen
 
-Die wichtigste Änderung besteht, dass Sie nicht mehr auf API-Apps in Ihrem Azure-Abonnement bereitstellen, damit Sie APIs verwenden können. Hier sind die Verwendungsmöglichkeiten Sie APIs verwenden können:
+Die größte Änderung besteht darin, dass Sie zur Verwendung von APIs keine API-Apps in Ihrem Azure-Abonnement bereitstellen müssen. Hier sind die Verwendungsmöglichkeiten für APIs:
 
 * Verwaltete APIs
-* Ihre benutzerdefinierte Web-APIs
+* Ihre benutzerdefinierten Web-APIs
 
-Jeder Methode ist etwas anders behandelt werden, da ihre Verwaltungs- und hosting Modelle unterscheiden. Ein Vorteil dieses Modells ist, dass Sie nicht mehr begrenzt sind, Ressourcen, die bereitgestellt werden in Ihrem Azure-Ressourcengruppe. 
+Jede dieser Möglichkeiten wird etwas anders gehandhabt, da sich ihre Verwaltungs- und Hostingmodelle unterscheiden. Ein Vorteil dieses Modells besteht darin, dass Sie nicht mehr auf in Ihrer Azure-Ressourcengruppe bereitgestellte Ressourcen beschränkt sind. 
 
 ### <a name="managed-apis"></a>Verwaltete APIs
 
-Einige APIs in Ihrem Namen, z. B. Office 365, Salesforce, Twitter und FTP wird von Microsoft verwaltet. Sie können einige verwaltete APIs als-ist sein können, z. B. Bing übersetzen zu können, während andere Konfiguration erforderlich ist. Diese Konfiguration wird aufgerufen, eine *Verbindung*.
+Microsoft verwaltet einige APIs in Ihrem Namen, z.B. Office 365, Salesforce, Twitter und FTP. Sie können einige dieser verwalteten APIs ohne weitere Bearbeitung verwenden, etwa Bing Translate, wohingegen andere APIs konfiguriert werden müssen. Diese Konfiguration wird als *Verbindung* (Connection) bezeichnet.
 
-Wenn Sie Office 365 verwenden, müssen Sie z. B. eine Verbindung erstellen, die Ihr Office 365-Anmeldung Token enthält. Dieses Token sicher gespeichert und aktualisiert, sodass Ihre Logik-app immer die Office 365-APIs aufrufen kann. Wenn Sie mit Ihrem SQL oder FTP-Server verbinden möchten, müssen Sie auch eine Verbindung erstellen, die die Verbindungszeichenfolge ist. 
+Wenn Sie Office 365 verwenden, müssen Sie beispielsweise eine Verbindung erstellen, die Ihr Office 365-Anmeldetoken enthält. Dieses Token wird sicher gespeichert und aktualisiert, damit Ihre Logik-App jederzeit die Office 365-API aufrufen kann. Wenn Sie eine Verbindung mit Ihrer SQL Server-Instanz oder dem FTP-Server herstellen möchten, müssen Sie eine Verbindung erstellen, die die Verbindungszeichenfolge enthält. 
 
-Diese Aktionen werden in dieser Definition aufgerufen `APIConnection`. Hier ist ein Beispiel für eine Verbindung, die Aufrufe von Office 365, um eine e-Mail zu senden:
+Innerhalb dieser Definition werden diese Aktionen als `APIConnection` bezeichnet. Hier sehen Sie ein Beispiel für eine Verbindung, die Office 365 zum Senden einer E-Mail aufruft:
 
 ```
 {
@@ -75,17 +75,17 @@ Diese Aktionen werden in dieser Definition aufgerufen `APIConnection`. Hier ist 
 }
 ```
 
-Die `host` Objekt ist Teil von Eingaben, die nur für API-Verbindungen und wartungsplanlizenzen Teile enthält: `api` und `connection`.
+Das `host`-Objekt stellt den Teil der Eingaben dar, der nur für API-Verbindungen gilt. Es besteht aus zwei Teilen: `api` und `connection`.
 
-Die `api` hat die Common Language Runtime, die URL der, in dem die API verwaltet gehostet wird. Sehen Sie die verfügbaren verwalteten APIs, die durch den Aufruf `GET https://management.azure.com/subscriptions/{subid}/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview`.
+`api` enthält die Laufzeit-URL, unter der die verwaltete API gehostet wird. Durch den Aufruf von `GET https://management.azure.com/subscriptions/{subid}/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview` können Sie alle verfügbaren verwalteten APIs anzeigen.
 
-Wenn Sie eine API verwenden, wird die API kann oder möglicherweise keine *Verbindungsparameter* definiert. Wenn die API nicht unterstützt, keine *Verbindung* ist erforderlich. Wenn die API der Fall ist, müssen Sie eine Verbindung erstellen. Die erstellte Verbindung hat den Namen, den Sie auswählen. Verweisen Sie dann den Namen in der `connection` Objekt innerhalb der `host` Objekt. Rufen Sie zum Erstellen einer Verbindungs in einer Ressourcengruppe:
+Wenn Sie eine API verwenden, müssen für die API nicht unbedingt *Verbindungsparameter* definiert sein. Sind für die API keine Parameter definiert, ist keine *Verbindung* erforderlich. Sind für die API Parameter definiert, müssen Sie eine Verbindung erstellen. Die erstellte Verbindung hat den Namen, den Sie auswählen. Sie verweisen dann im `connection`-Objekt innerhalb des `host`-Objekts auf den Namen. Rufen Sie zum Erstellen einer Verbindung in einer Ressourcengruppe Folgendes auf:
 
 ```
 PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/providers/Microsoft.Web/connections/{name}?api-version=2015-08-01-preview
 ```
 
-Mit dem folgenden Text:
+Verwenden Sie folgenden Text:
 
 ```
 {
@@ -101,10 +101,10 @@ Mit dem folgenden Text:
 }
 ```
 
-### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Bereitstellen von verwalteten APIs in einer Azure-Ressourcen-Manager-Vorlage
+### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Bereitstellen von verwalteten APIs in einer Azure Resource Manager-Vorlage
 
-Als interaktive Anmeldung nicht erforderlich ist, können Sie eine vollständige Anwendung in einer Azure-Ressourcen-Manager-Vorlage erstellen.
-Wenn Anmeldung erforderlich ist, Sie können alles, was mit der Azure Resource Manager-Vorlage einrichten, aber weiterhin bestehen, besuchen das Portal, um die Verbindungen zu autorisieren. 
+Sie können eine vollständige Anwendung in einer Azure Resource Manager-Vorlage erstellen, solange keine interaktive Anmeldung erforderlich ist.
+Ist eine Anmeldung erforderlich, können Sie alle Elemente mit der Azure Resource Manager-Vorlage einrichten, müssen jedoch zum Autorisieren der Verbindungen das Portal aufrufen. 
 
 ```
     "resources": [{
@@ -194,13 +194,13 @@ Wenn Anmeldung erforderlich ist, Sie können alles, was mit der Azure Resource M
     }]
 ```
 
-In diesem Beispiel sehen Sie, dass die Verbindungen nur Ressourcen sind, die in der Ressourcengruppe vorhanden. Verweisen auf die verwalteten APIs, die in Ihrem Abonnement zur Verfügung.
+Sie sehen in diesem Beispiel, dass es sich bei den Verbindungen lediglich um Ressourcen in der Ressourcengruppe handelt. Sie verweisen auf die verwalteten APIs, die Ihnen in Ihrem Abonnement zur Verfügung stehen.
 
-### <a name="your-custom-web-apis"></a>Ihre benutzerdefinierte Web-APIs
+### <a name="your-custom-web-apis"></a>Ihre benutzerdefinierten Web-APIs
 
-Wenn Sie eine eigene API, nicht von Microsoft verwaltet zu verwenden, verwenden Sie die integrierte **HTTP** Aktion aus, um die Methoden aufrufen. Für eine optimale Erfahrung sollten Sie einen Swagger-Endpunkt für Ihre API verfügbar machen. Dieser Endpunkt ermöglicht die Logik-App-Designer zum Rendern der Eingaben und Ausgaben für Ihre API. Ohne Swagger kann der Designer als nicht transparenter JSON-Objekte nur der Eingaben und Ausgaben anzeigen.
+Wenn Sie eigene (also nicht von Microsoft verwaltete) APIs einsetzen, verwenden Sie für das Aufrufen die integrierte **HTTP**-Aktion. Für die optimale Nutzung sollten Sie einen Swagger-Endpunkt für Ihre API verfügbar machen. Durch diesen Endpunkt kann der Logik-App-Designer die Ein- und Ausgaben für Ihre API rendern. Ohne Swagger kann der Designer die Ein- und Ausgaben nur als nicht transparente JSON-Objekte anzeigen.
 
-Hier ist ein Beispiel mit den neuen `metadata.apiDefinitionUrl` Eigenschaft:
+Hier sehen Sie ein Beispiel für die neue `metadata.apiDefinitionUrl` -Eigenschaft:
 
 ```
 {
@@ -219,13 +219,13 @@ Hier ist ein Beispiel mit den neuen `metadata.apiDefinitionUrl` Eigenschaft:
 }
 ```
 
-Wenn Sie Ihre Web-API in Azure App Service hosten, wird Ihre Web-API automatisch in der Liste der verfügbaren Aktionen im Designer angezeigt. Wenn dies nicht der Fall ist, müssen Sie direkt in der URL einfügen. Der Swagger-Endpunkt muss nicht authentifiziert werden, um in der Logik-App-Designer verwendet werden, obwohl Sie die API mit den Methoden sichern können, die Swagger unterstützt.
+Wenn Sie Ihre Web-API in Azure App Service hosten, wird die Web-API automatisch in der Liste der im Designer verfügbaren Aktionen angezeigt. Andernfalls müssen Sie die URL direkt einfügen. Der Swagger-Endpunkt darf nicht authentifiziert sein, damit er im Logik-App-Designer verwendet werden kann, aber Sie können die API selbst mit den von Swagger unterstützten Methoden sichern.
 
-### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>Aufrufen von bereitgestellte API-apps mit 2015-08-01-Vorschau
+### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>Aufrufen bereitgestellter API-Apps mit „2015-08-01-preview“
 
-Wenn Sie zuvor eine API-App bereitgestellt haben, können Sie die app mit Aufrufen der **HTTP** Aktion.
+Wenn Sie zuvor eine API-App bereitgestellt haben, können Sie sie über die **HTTP**-Aktion aufrufen.
 
-Bei Verwendung von Dropbox beim Auflisten der Dateien, beispielsweise Ihre **2014-12-01-Vorschau** Schemadefinition-Version möglicherweise etwa:
+Beispiel: Wenn Sie Dropbox zum Auflisten von Dateien verwenden, ist in der Schemaversionsdefinition **2014-12-01-preview** etwa Folgendes enthalten:
 
 ```
 {
@@ -266,7 +266,7 @@ Bei Verwendung von Dropbox beim Auflisten der Dateien, beispielsweise Ihre **201
 }
 ```
 
-Während der Parameter-Abschnitt der Definition der Logik-app unverändert bleibt, können Sie die entsprechende HTTP-Aktion, wie in diesem Beispiel erstellen:
+Sie können die entsprechende HTTP-Aktion gemäß diesem Beispiel erstellen, während der Parameterabschnitt der Logik-App-Definition unverändert bleibt.
 
 ```
 {
@@ -293,23 +293,23 @@ Während der Parameter-Abschnitt der Definition der Logik-app unverändert bleib
 }
 ```
 
-Über diese Eigenschaften einzeln-durchlaufen:
+Informationen zu den einzelnen Eigenschaften:
 
-| Action-Eigenschaft | Beschreibung |
+| Aktionseigenschaft | Beschreibung |
 | --- | --- |
-| `type` |`Http`Statt`APIapp` |
-| `metadata.apiDefinitionUrl` |Um diese Aktion in der Logik-App-Designer zu verwenden, schließen Sie die Metadaten-Endpunkt, der aus erstellt wird:`{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
-| `inputs.uri` |Erstellt von:`{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
-| `inputs.method` |Immer`POST` |
-| `inputs.body` |Identisch mit der API-App-Parameter |
+| `type` |`Http` anstelle von `APIapp` |
+| `metadata.apiDefinitionUrl` |Wenn Sie diese Aktion im Logik-App-Designer verwenden möchten, sollten Sie den Metadatenendpunkt aufnehmen. Er wird erstellt aus: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
+| `inputs.uri` |Erstellt aus: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
+| `inputs.method` |Immer `POST` |
+| `inputs.body` |Identisch mit den API-App-Parametern |
 | `inputs.authentication` |Identisch mit der API-App-Authentifizierung |
 
-Dieser Ansatz sollte für alle API-App-Aktionen verwendet werden. Beachten Sie jedoch, dass diese frühere API-Apps nicht mehr unterstützt werden. Daher sollten Sie in den beiden anderen zuvor genannten Optionen, eine verwaltete API oder Hosten Ihrer benutzerdefinierten Web-API verschieben.
+Dieser Ansatz sollte bei allen API-App-Aktionen funktionieren. Beachten Sie jedoch, dass diese früheren API-Apps nicht mehr unterstützt werden. Daher sollten Sie auf eine der beiden anderen vorherigen Optionen umsteigen, eine verwaltete API oder Hosten Ihrer benutzerdefinierten Web-API.
 
 <a name="foreach"></a>
-## <a name="renamed-repeat-to-foreach"></a>"Wiederholen" umbenannt in "Foreach"
+## <a name="renamed-repeat-to-foreach"></a>„Repeat“ umbenannt in „Foreach“
 
-Für die vorherige Version des Datenbankschemas, erhalten wir viel Kundenfeedback, **wiederholen** war verwirrend und wurde nicht ordnungsgemäß zu erfassen, **wiederholen** wurde tatsächlich eine für jede Schleife. Daher haben wir umbenannt `repeat` auf `foreach`. Beispielsweise würde zuvor Sie schreiben:
+Für die vorherige Schemaversion haben wir umfangreiches Kundenfeedback mit dem Hinweis erhalten, dass bei **Repeat** nicht ganz klar sei, dass es sich bei **Repeat** tatsächlich um eine For-Each-Schleife handelt. Daher wurde `repeat` in `foreach` umbenannt. Beispielsweise hätten Sie zuvor geschrieben:
 
 ```
 {
@@ -326,7 +326,7 @@ Für die vorherige Version des Datenbankschemas, erhalten wir viel Kundenfeedbac
 }
 ```
 
-Nun möchten Sie Folgendes schreiben:
+Jetzt würden Sie schreiben:
 
 ```
 {
@@ -343,11 +343,11 @@ Nun möchten Sie Folgendes schreiben:
 }
 ```
 
-Die Funktion `@repeatItem()` wurde zuvor für das aktuelle Element durchlaufenen verweisen verwendet. Diese Funktion ist nun vereinfacht, sodass Sie `@item()`. 
+Zuvor wurde mit der Funktion `@repeatItem()` auf das aktuelle Element verwiesen, das durchlaufen wurde. Diese Funktion ist nun zu `@item()` vereinfacht. 
 
-### <a name="reference-outputs-from-foreach"></a>Referenz-Ausgaben aus "Foreach"
+### <a name="reference-outputs-from-foreach"></a>Referenzausgaben von „foreach“
 
-Zur Vereinfachung der Ausgaben von `foreach` Aktionen werden nicht in ein Objekt namens umschlossen `repeatItems`. Während die Ausgaben des vorherigen `repeat` Beispiel wäre:
+Zur Vereinfachung sind Ausgaben von `foreach`-Aktionen nicht in ein Objekt namens `repeatItems` eingeschlossen. Die Ausgaben des vorherigen `repeat`-Beispiels waren:
 
 ```
 {
@@ -368,7 +368,7 @@ Zur Vereinfachung der Ausgaben von `foreach` Aktionen werden nicht in ein Objekt
 }
 ```
 
-Jetzt werden diese Ausgaben aus:
+Jetzt lauten diese Ausgaben:
 
 ```
 [
@@ -387,7 +387,7 @@ Jetzt werden diese Ausgaben aus:
 ]
 ```
 
-Zuvor in den Text der Aktion abgerufen werden soll, wenn Sie diese Ausgaben zu verweisen:
+Bisher mussten Sie zum Aufrufen des Texts der Aktion beim Verweisen auf diese Ausgaben Folgendes verwenden:
 
 ```
 {
@@ -405,7 +405,7 @@ Zuvor in den Text der Aktion abgerufen werden soll, wenn Sie diese Ausgaben zu v
 }
 ```
 
-Jetzt können Sie stattdessen folgendermaßen vor:
+Nun führen Sie stattdessen Folgendes aus:
 
 ```
 {
@@ -423,19 +423,19 @@ Jetzt können Sie stattdessen folgendermaßen vor:
 }
 ```
 
-Mit diesen Änderungen, die Funktionen `@repeatItem()`, `@repeatBody()`, und `@repeatOutputs()` werden entfernt.
+Infolge dieser Änderungen werden die Funktionen `@repeatItem()`, `@repeatBody()` und `@repeatOutputs()` entfernt.
 
 <a name="http-listener"></a>
-## <a name="native-http-listener"></a>Systemeigene HTTP-listener
+## <a name="native-http-listener"></a>Nativer HTTP-Listener
 
-Die HTTP-Listener-Funktionen werden jetzt erstellt. Sie müssen also nicht mehr zum Bereitstellen einer HTTP-Listener-API-App. Finden Sie unter [die vollständigen Details zur Verwendung Ihrer Logik-app-Endpunkt hier aufrufbar zu machen](../logic-apps/logic-apps-http-endpoint.md). 
+Die HTTP-Listener-Funktionen sind jetzt integriert, daher müssen Sie keine HTTP-Listener-API-App mehr bereitstellen. Ausführliche Informationen dazu, wie Sie den Logik-App-Endpunkt aufrufbar machen, finden Sie [hier](../logic-apps/logic-apps-http-endpoint.md). 
 
-Mit diesen Änderungen wir entfernt die `@accessKeys()` -Funktion, die wir mit ersetzt die `@listCallbackURL()` -Funktion zum Abrufen des Endpunkts bei Bedarf. Darüber hinaus müssen Sie mindestens ein Trigger in der Logik-app jetzt definieren. Wenn Sie möchten `/run` den Workflow, benötigen Sie eine dieser Trigger: `manual`, `apiConnectionWebhook`, oder `httpWebhook`.
+Im Rahmen dieser Änderungen haben wir die `@accessKeys()`-Funktion entfernt und durch die `@listCallbackURL()`-Funktion zum Abrufen des Endpunkts (wenn erforderlich) ersetzt. Außerdem müssen Sie jetzt mindestens einen Trigger in Ihrer Logik-App definieren. Wenn Sie für den Workflow `/run` ausführen möchten, benötigen Sie einen der folgenden Trigger: `manual`, `apiConnectionWebhook` oder `httpWebhook`.
 
 <a name="child-workflows"></a>
-## <a name="call-child-workflows"></a>Aufrufen von untergeordneten workflows
+## <a name="call-child-workflows"></a>Aufrufen von untergeordneten Workflows
 
-Aufrufen des untergeordneten Workflows erforderlich zuvor, möchten den Workflow, das Zugriffstoken abrufen und Einfügen von Token in der Definition der Logik-app, in denen diese untergeordneten Workflows aufgerufen werden soll. Mit dem neuen Schema generiert das Logic Apps-Modul automatisch eine SAS, zur Laufzeit für den untergeordneten Workflow, daher ist es nicht vertrauliche Daten in der Definition einfügen. Hier ist ein Beispiel:
+Zuvor mussten Sie zum Aufrufen von untergeordneten Workflows den gewünschten Workflow aufrufen, das Zugriffstoken abrufen und dieses Token in die Definition der Logik-App einfügen, die den untergeordneten Workflow aufrufen sollte. Mit dem neuen Schema generiert das Logic Apps-Modul zur Laufzeit automatisch eine SAS für den untergeordneten Workflow, sodass Sie keine geheimen Schlüssel in die Definition einfügen müssen. Beispiel:
 
 ```
 "mynestedwf": {
@@ -461,20 +461,20 @@ Aufrufen des untergeordneten Workflows erforderlich zuvor, möchten den Workflow
 }
 ```
 
-Eine zweite Verbesserung ist, dass wir die untergeordneten Workflows vollen Zugriff auf die eingehende Anforderung erteilen. Das bedeutet, dass Sie im Parameter übergeben können die *Abfragen* Abschnitt und in der *Header* -Objekt, sodass Sie vollständig auf den gesamten Nachrichtentext definieren können.
+Eine zweite Verbesserung ist, dass die untergeordneten Workflows vollen Zugriff auf die eingehende Anforderung erhalten. Dies bedeutet, dass Sie Parameter im Abschnitt *queries* und im Objekt *headers* übergeben und den gesamten Text vollständig festlegen können.
 
-Schließlich sind Änderungen des untergeordneten Workflows erforderliche. Während Sie zuvor direkt untergeordneten Workflow aufrufen konnte, müssen Sie jetzt einen Trigger Endpunkt des Workflows für das übergeordnete Element aufrufen definieren. Im Allgemeinen fügen Sie einen Trigger, der hat `manual` geben, und klicken Sie dann, dass Trigger in der Definition des übergeordneten verwenden. Beachten Sie die `host` speziell Eigenschaft verfügt über eine `triggerName` , da deren Trigger immer angegeben werden muss, die Sie aufrufen.
+Schließlich müssen Änderungen am untergeordneten Workflow vorgenommen werden. Zuvor konnten Sie einen untergeordneten Workflow direkt aufrufen. Nun müssen Sie einen Triggerendpunkt im Workflow festlegen, den der übergeordnete Workflow aufruft. Im Allgemeinen fügen Sie einen Trigger vom Typ `manual` hinzu und verwenden ihn dann in der übergeordneten Definition. Beachten Sie, dass die `host`-Eigenschaft ein spezielles `triggerName`-Element enthält, da Sie immer angeben müssen, welchen Trigger Sie aufrufen.
 
-## <a name="other-changes"></a>Sonstige Änderungen
+## <a name="other-changes"></a>Weitere Änderungen
 
-### <a name="new-queries-property"></a>Neue "Abfragen"-Eigenschaft
+### <a name="new-queries-property"></a>Neue „queries“-Eigenschaft
 
-Alle Aktionstypen unterstützen jetzt eine neue Eingabe aufgerufen `queries`. Diese Eingabe kann strukturiertes Objekt, anstatt dass müssen manuell die Zeichenfolge zusammenstellen sein.
+Alle Aktionstypen unterstützen jetzt eine neue Eingabe namens `queries`. Diese Eingabe kann ein strukturiertes Objekt sein, sodass Sie die Zeichenfolge nicht manuell zusammensetzen müssen.
 
-### <a name="renamed-parse-function-to-json"></a>Umbenannte "parse()" Funktion "json()"
+### <a name="renamed-parse-function-to-json"></a>Funktion „parse()“ umbenannt in „json()“
 
-Wir sind hinzufügen Weitere-Inhaltstypen bald, damit es umbenannt der `parse()` -Funktion `json()`.
+Wir fügen bald weitere Inhaltstypen hinzu, daher wurde die `parse()`-Funktion in `json()` umbenannt.
 
-## <a name="coming-soon-enterprise-integration-apis"></a>In Kürze: Enterprise Integration-APIs
+## <a name="coming-soon-enterprise-integration-apis"></a>In Kürze verfügbar: Enterprise Integration-APIs
 
-Wir haben keine verwaltete Versionen noch Enterprise Integration-APIs wie AS2. In der Zwischenzeit können Sie Ihre vorhandenen bereitgestellten BizTalk-APIs über den HTTP-Aktion. Weitere Informationen finden Sie unter "Using Ihre bereits bereitgestellte API-apps" in der [Integrationsstrategie](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 
+Wir haben noch keine verwalteten Versionen der Enterprise Integration-APIs wie AS2. In der Zwischenzeit können Sie Ihre vorhandenen bereitgestellten BizTalk-APIs über die HTTP-Aktion verwenden. Ausführliche Informationen finden Sie in der [Integrationsroadmap](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/) unter „Verwenden der bereits bereitgestellten API-Apps“. 

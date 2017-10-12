@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 59c595f0d5ce849f44c46fdb6cab0b44d35fffa0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Hinzufügen der Zwischenspeicherung zum Verbessern der Leistung in Azure API Management
 Operationen in API Management können für das Zwischenspeichern von Antworten konfiguriert werden. Das Zwischenspeichern von Antworten kann API-Latenz, Bandbreitennutzung und Webdienstlast für Daten, die sich eher selten ändern, drastisch senken.
@@ -33,7 +33,7 @@ In diesem Leitfaden wird gezeigt, wie Sie die Zwischenspeicherung von Antworten 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Schritte in diesem Leitfaden ausführen zu können, müssen Sie über eine API Management-Dienstinstanz mit einer konfigurierten API und einem konfigurierten Produkt verfügen. Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Create an API Management service instance] im Tutorial [Erste Schritte mit Azure API Management][Get started with Azure API Management].
 
-## <a name="configure-caching"> </a>Konfigurieren einer Operation für die Zwischenspeicherung
+## <a name="configure-caching"></a>Konfigurieren einer Operation für die Zwischenspeicherung
 In diesem Schritt prüfen Sie die Einstellungen der Zwischenspeicherung für die **GET Resource (cached)** -Operation der Echo-Beispiel-API.
 
 > [!NOTE]
@@ -65,7 +65,7 @@ Jedes Operationsergebnis erhält einen Schlüssel anhand der Felder, die in **Na
 
 Mit der Konfiguration für das Zwischenspeichern in diesem Beispiel liefert die erste Anforderung an die **GET Resource (cached)** -Operation eine Antwort vom Back-End-Dienst zurück. Diese Antwort wird zwischengespeichert und erhält einen Schlüssel anhand der angegebenen Header und Abfrageparameter. Bei nachfolgenden Aufrufen der Operation mit denselben Parametern wird die zwischengespeicherte Antwort zurückgegeben, bis das Ablaufintervall abgelaufen ist.
 
-## <a name="caching-policies"> </a>Prüfen der Richtlinien für die Zwischenspeicherung
+## <a name="caching-policies"></a>Prüfen der Richtlinien für die Zwischenspeicherung
 In diesem Schritt prüfen Sie die Einstellungen der Zwischenspeicherung für die **GET Resource (cached)** -Operation der Echo-Beispiel-API.
 
 Wenn Sie die Einstellungen der Zwischenspeicherung für eine Operation auf der Registerkarte **Zwischenspeichern** konfigurieren, werden Richtlinien für die Zwischenspeicherung für die Operation hinzugefügt. Sie können diese Richtlinien im Richtlinien-Editor anzeigen und bearbeiten.
@@ -102,7 +102,7 @@ Die Richtliniendefinition für diese Operation enthält auch die Richtlinien fü
 > 
 > 
 
-## <a name="test-operation"> </a>Aufrufen einer Operation und Testen der Zwischenspeicherung
+## <a name="test-operation"></a>Aufrufen einer Operation und Testen der Zwischenspeicherung
 Um die Zwischenspeicherung in Aktion zu sehen, können Sie die Operation im Entwicklerportal aufrufen. Klicken Sie im Menü oben rechts auf **Entwicklerportal** .
 
 ![Entwicklerportal][api-management-developer-portal-menu]
@@ -139,7 +139,7 @@ Geben Sie **25** in das Feld **param2** ein, und klicken Sie dann auf **HTTP Get
 
 **sampleheader** hat in der Antwort nun den Wert **value2**. Die zuvor zwischengespeicherte Antwort wurde nicht zurückgegeben, da die Operationsergebnisse einen Schlüssel anhand der Abfragezeichenfolge erhalten.
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu Richtlinien für die Zwischenspeicherung finden Sie unter [Richtlinien für die Zwischenspeicherung][Caching policies] in der [Richtlinienreferenz für API Management][API Management policy reference].
 * Informationen zum Zwischenspeichern von Elementen nach Schlüssel mithilfe von Richtlinienausdrücken finden Sie unter [Benutzerdefiniertes Zwischenspeichern in Azure API Management](api-management-sample-cache-by-key.md).
 

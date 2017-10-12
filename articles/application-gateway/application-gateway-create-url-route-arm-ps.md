@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: davidmu
+ms.openlocfilehash: f2797864d7f0bda35d4d84ee78b157879451f889
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: b1ed7d5693ff7e6730255462411d462694b730e1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-application-gateway-by-using-path-based-routing"></a>Erstellen eines Anwendungsgateways mit pfadbasiertem Routing
 
@@ -296,5 +295,4 @@ DnsSettings              : {
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zur SSL-Auslagerung (Secure Sockets Layer) finden Sie unter [Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung mit Azure Resource Manager](application-gateway-ssl-arm.md).
-
 

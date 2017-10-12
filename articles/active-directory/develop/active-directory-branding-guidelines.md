@@ -16,10 +16,10 @@ ms.date: 04/27/2017
 ms.author: skwan
 ms.custom: aaddev
 ms.openlocfilehash: 4f6806cde52ce965a8f78a5cce8a24c3d1248594
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="branding-guidelines-for-applications"></a>Brandingrichtlinien für Anwendungen
 Dieses Thema behandelt die empfohlenen Brandingrichtlinien für die Entwicklung von Anwendungen mit Azure Active Directory (Azure AD). Die Richtlinien stellen sicher, dass sich Kunden besser zurechtfinden, die sich über ihr in Azure AD verwaltetes Geschäfts- oder Schulkonto (oder über ihr persönliches Konto) bei Ihrer Anwendung registrieren und anmelden möchten.
@@ -57,7 +57,7 @@ Nach der Zustimmung des Administrators kann dieser entscheiden, ob Ihre App dem 
 
 Es empfiehlt sich jedoch, eine Erläuterung in Textform zu verwenden, anstatt nur auf Schaltflächen zu setzen. Beispiel:
 
-> *Wenn Sie bereits Office 365 oder andere Unternehmensdienste von Microsoft verwenden, können Sie <Name_Ihrer_App> einfach Zugriff auf die Daten Ihrer Organisation gewähren. Dadurch können Benutzer mit ihren bereits vorhandenen Arbeitskonten auf <Name_Ihrer_App> zugreifen.*
+> *Wenn Sie bereits Office 365 oder andere Unternehmensdienste von Microsoft verwenden, können Sie &lt;Name_Ihrer_App&gt; einfach Zugriff auf die Daten Ihrer Organisation gewähren. Dadurch können Benutzer mit ihren bereits vorhandenen Arbeitskonten auf <Name_Ihrer_App> zugreifen.*
 > 
 > 
 
@@ -80,12 +80,12 @@ Für die Schaltflächen kann auch ein dunkles Farbschema verwendet werden.
 ## <a name="branding-dos-and-donts"></a>Brandingempfehlungen
 **Verwenden Sie** „Geschäfts- oder Schulkonto“ in Kombination mit der Schaltfläche „Bei Microsoft anmelden“, um eine zusätzliche Erläuterung bereitzustellen, damit Endbenutzer sofort wissen, ob sie die Option verwenden können. **Nicht** Verwenden Sie keine Begriffe wie „Unternehmenskonto“, „Geschäftskonto“ oder „Firmenkonto“.
 
-**Nicht** verwendet werden. Office 365 ist auch der Name eines Verbraucherangebots von Microsoft, bei dem Azure AD nicht für die Authentifizierung verwendet wird.
+**** verwendet werden. Office 365 ist auch der Name eines Verbraucherangebots von Microsoft, bei dem Azure AD nicht für die Authentifizierung verwendet wird.
 
-**Nicht** verändert werden.
+**** verändert werden.
 
 **Nicht** mit den Marken Azure und Active Directory in Berührung kommen. Gegenüber Entwicklern, IT-Experten und Administratoren können diese Begriffe dagegen problemlos verwendet werden.
 
 ## <a name="navigation-dos-and-donts"></a>Navigationsempfehlungen
-**Stellen Sie** den Benutzern eine Funktion zur Verfügung, über die sie sich abmelden und das Benutzerkonto wechseln können. Die meisten Benutzer besitzen zwar nur ein einzelnes persönliches Konto von Microsoft/Facebook/Google/Twitter, gehören aber häufig mehreren Organisationen an. Die Unterstützung mehrerer angemeldeter Benutzer folgt in Kürze.
+**** Stellen Sie den Benutzern eine Funktion zur Verfügung, über die sie sich abmelden und das Benutzerkonto wechseln können. Die meisten Benutzer besitzen zwar nur ein einzelnes persönliches Konto von Microsoft/Facebook/Google/Twitter, gehören aber häufig mehreren Organisationen an. Die Unterstützung mehrerer angemeldeter Benutzer folgt in Kürze.
 

@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: dc3162ae8e6ce622139125c2e78fa45d2e90d534
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="calling-a-web-api-from-a-net-web-app"></a>Aufrufen einer Web-API über eine .NET-Web-App
 Mit dem v2.0-Endpunkt können Sie schnell eine Authentifizierung zu Ihren Web-Apps und Web-APIs hinzufügen, die sowohl persönliche Microsoft-Konten als auch Geschäfts-, Schul- oder Unikonten unterstützen.  Hier erstellen wir eine MVC-Web-App, über die Benutzer unter Verwendung von OpenID Connect und unterstützt durch die OWIN-Middleware von Microsoft angemeldet werden.  Die Web-App ruft OAuth 2.0-Zugriffstoken für eine durch OAuth 2.0 gesicherte Web-API ab, die das Erstellen, Lesen und Löschen von Daten in der Aufgabenliste eines bestimmten Benutzers ermöglicht.
@@ -194,8 +194,8 @@ Als Referenz stellen wir [hier](https://github.com/AzureADQuickStarts/AppModelv2
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Ressourcen:
 
-* [Das v2.0-Entwicklerhandbuch >>](active-directory-appmodel-v2-overview.md)
-* [StackOverflow-Tag „azure-active-directory“ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Das v2.0-Entwicklerhandbuch &gt;&gt;](active-directory-appmodel-v2-overview.md)
+* [StackOverflow-Tag „azure-active-directory“ &gt;&gt;](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="get-security-updates-for-our-products"></a>Abrufen von Sicherheitsupdates für unsere Produkte
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.

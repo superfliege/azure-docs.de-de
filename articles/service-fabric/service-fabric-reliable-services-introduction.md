@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: masnider;
 ms.openlocfilehash: 601b1c7713c9785d949c1c72000ec7f3f63dd682
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reliable-services-overview"></a>Übersicht über Reliable Services
 Azure Service Fabric vereinfacht das Schreiben und Verwalten zustandsloser und zustandsbehafteter Dienste (Reliable Services). Dieses Thema behandelt Folgendes:

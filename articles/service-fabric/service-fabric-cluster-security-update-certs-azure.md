@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/09/2017
 ms.author: chackdan
 ms.openlocfilehash: c433e8683755e454f9561f094269c3daccf78a62
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hinzufügen oder Entfernen von Zertifikaten für einen Service Fabric-Cluster in Azure
 Es wird empfohlen, dass Sie sich damit vertraut machen, wie Service Fabric X.509-Zertifikate verwendet werden, und dass Sie sich mit den [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md) auskennen. Sie müssen verstehen, was ein Clusterzertifikat ist, und wofür es verwendet wird, bevor Sie den Vorgang fortsetzen.
@@ -119,7 +119,7 @@ Wenn Sie ein **Rollover für das Zertifikat** durchführen möchten, geben Sie d
 ``` 
 
 
-**Schritt 4:** Nehmen Sie Änderungen an **allen** **Microsoft.Compute/virtualMachineScaleSets**-Ressourcendefinitionen vor. Suchen Sie nach der Ressourcendefinition „Microsoft.Compute/virtualMachineScaleSets“. Scrollen Sie unter „virtualMachineProfile“ zu „publisher“: „Microsoft.Azure.ServiceFabric“.
+**Schritt 4:** Nehmen Sie Änderungen an **allen****Microsoft.Compute/virtualMachineScaleSets**-Ressourcendefinitionen vor. Suchen Sie nach der Ressourcendefinition „Microsoft.Compute/virtualMachineScaleSets“. Scrollen Sie unter „virtualMachineProfile“ zu „publisher“: „Microsoft.Azure.ServiceFabric“.
 
 In den Service Fabric-Herausgebereinstellungen sollte in etwa Folgendes angezeigt werden:
 
@@ -160,7 +160,7 @@ Die Eigenschaften sollten nun wie folgt aussehen:
 ![Json_Pub_Setting3][Json_Pub_Setting3]
 
 
-**Schritt 5:** Nehmen Sie Änderungen an **allen** **Microsoft.Compute/virtualMachineScaleSets**-Ressourcendefinitionen vor. Suchen Sie nach der Ressourcendefinition „Microsoft.Compute/virtualMachineScaleSets“. Scrollen Sie unter „OSProfile“ zu „vaultCertificates“. Dies sollte in etwa wie folgt aussehen:
+**Schritt 5:** Nehmen Sie Änderungen an **allen****Microsoft.Compute/virtualMachineScaleSets**-Ressourcendefinitionen vor. Suchen Sie nach der Ressourcendefinition „Microsoft.Compute/virtualMachineScaleSets“. Scrollen Sie unter „OSProfile“ zu „vaultCertificates“. Dies sollte in etwa wie folgt aussehen:
 
 
 ![Json_Pub_Setting4][Json_Pub_Setting4]

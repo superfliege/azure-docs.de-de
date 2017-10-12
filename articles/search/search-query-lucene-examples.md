@@ -15,14 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/21/2017
 ms.author: liamca
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: 1faed621039ecd04064cb074e6b9011418e6ec47
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Beispiele für die Lucene-Abfragesyntax zum Erstellen von Abfragen in Azure Search
 Beim Erstellen von Abfragen für Azure Search können Sie entweder die standardmäßige [einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) oder alternativ dazu den [Lucene-Abfrageparser in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) verwenden. Der Lucene-Abfrageparser unterstützt komplexere Abfragekonstrukte, beispielsweise feldbezogene Abfragen, Fuzzysuche, NEAR-Suche, Begriffsverstärkung (Term Boosting) und die Suche nach regulären Ausdrücken.
 
@@ -45,7 +43,7 @@ In allen Beispielen in diesem Artikel wird der Suchparameter **queryType=full** 
 
 **Beispiel 1** : Klicken Sie mit der rechten Maustaste auf den folgenden Abfrageausschnitt, um diesen auf einer neuen Browserseite zu öffnen, auf der JSFiddle geladen und die Abfrage ausgeführt wird:
 
-* [&queryType=full&search=*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*)
+* [&amp;queryType=full&amp;search=*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*)
 
 Im neuen Browserfenster werden die JavaScript-Quelle und die HTML-Ausgabe nebeneinander dargestellt. Das Skript verweist auf eine vollständige Abfrage (nicht nur den unter dem Link dargestellten Ausschnitt). Die vollständige Abfrage wird für jedes Beispiel in den URLs angezeigt. 
 
@@ -71,7 +69,7 @@ Das in **Feldname:Suchbegriff** angegebene Feld muss durchsuchbar sein. Einzelhe
 
 **Beispiel 2:** Klicken Sie mit der rechten Maustaste auf den folgenden Codeausschnitt. Diese Abfrage sucht nach Berufsbezeichnungen, in denen der Begriff „Senior“, jedoch nicht der Begriff „Junior“ enthalten ist:
 
-* [&queryType=full&search= business_title:senior NOT junior](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:senior+NOT+junior)
+* [&amp;queryType=full&amp;search= business_title:senior NOT junior](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:senior+NOT+junior)
 
 ## <a name="fuzzy-search-example"></a>Beispiel für die Fuzzysuche
 Bei einer Fuzzysuche werden Übereinstimmungen in Ausdrücken gefunden, die ähnlich aufgebaut sind. Laut [Lucene-Dokumentation](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) basiert die Fuzzysuche auf der [Damerau-Levenshtein-Distanz](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance).
@@ -80,7 +78,7 @@ Hängen Sie für eine Fuzzysuche das Tildesymbol „~“ ans Ende eines einzelne
 
 **Beispiel 3** : Klicken Sie mit der rechten Maustaste auf den folgenden Abfrageausschnitt. Diese Abfrage sucht nach Stellenangeboten mit dem Begriff „Associate“ (der falsch geschrieben ist):
 
-* [&queryType=full&search= business_title:asosiate~](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:asosiate~)
+* [&amp;queryType=full&amp;search= business_title:asosiate~](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:asosiate~)
 
 > [!Note]
 > Fuzzyabfragen werden nicht [analysiert](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Dies mag überraschend sein, wenn Sie Wortstammerkennung oder Lemmatisierung erwarten. Die lexikalische Analyse erfolgt nur für vollständige Begriffe (Begriffsabfrage oder Ausdrucksabfrage). Abfragetypen mit unvollständigen Begriffen (Präfixabfrage, Platzerhalterabfrage, Abfrage regulärer Ausdrücke, Fuzzyabfrage) werden direkt unter Umgehung der Analysephase an die Abfragestruktur angehängt. Die einzige Transformation, die für unvollständige Abfrageausdrücke durchgeführt wird, ist die Umwandlung in Kleinbuchstaben.
@@ -91,11 +89,11 @@ NEAR-Suchen werden verwendet, um Begriffe zu suchen, die in einem Dokument nahe 
 
 **Beispiel 4** : Klicken Sie mit der rechten Maustaste auf die Abfrage. Suchen Sie nach Stellen mit dem Begriff „Senior Analyst“, wobei die beiden Wörter durch höchstens ein Wort getrennt sein sollen:
 
-* [&queryType=full&search=business_title:"senior analyst"~1](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~1)
+* [&amp;queryType=full&amp;search=business_title:"senior analyst"~1](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~1)
 
 **Beispiel 5** : Versuchen Sie es noch einmal, und entfernen Sie die Wörter zwischen „Senior“ und „Analyst“.
 
-* [&queryType=full&search=business_title:"senior analyst"~0](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~0)
+* [&amp;queryType=full&amp;search=business_title:"senior analyst"~0](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~0)
 
 ## <a name="term-boosting-examples"></a>Beispiele für Begriffsverstärkung (Term Boosting)
 Die Begriffsverstärkung (Term Boosting) bezieht sich auf das Höherbewerten eines Dokuments, wenn es den verstärkten Begriff enthält, im Verhältnis zu Dokumenten, die den Begriff nicht enthalten. Dies unterscheidet sich insofern von Bewertungsprofilen, als dass bei Bewertungsprofilen bestimmte Felder statt bestimmter Begriffe verstärkt werden. Im folgenden Beispiel werden die Unterschiede veranschaulicht.
@@ -106,11 +104,11 @@ Verwenden Sie zum Verstärken eines Begriffs das Caretzeichen „^“ mit einem 
 
 **Beispiel 6**: Klicken Sie mit der rechten Maustaste auf die Abfrage. Wir suchen nach Stellen mit dem Begriff „Computer Analyst“. Es gibt keine Ergebnisse mit beiden Wörtern, „Computer“ und „Analyst“. Stellen für Analysten werden in den Ergebnissen weit oben angezeigt.
 
-* [&queryType=full&search=business_title:computer analyst](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
+* [&amp;queryType=full&amp;search=business_title:computer analyst](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
 
 **Beispiel 7**: Versuchen Sie es noch einmal, indem Sie dieses Mal in den Ergebnissen den Begriff „Computer“ gegenüber dem Begriff „Analyst“ verstärken, wenn nicht beide Wörter zusammen vorhanden sind.
 
-* [&queryType=full&search=business_title:computer^2 analyst](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
+* [&amp;queryType=full&amp;search=business_title:computer^2 analyst](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
 
 ## <a name="regular-expression-example"></a>Beispiel für einen regulären Ausdruck
 Bei einer Suche mit regulärem Ausdruck werden Übereinstimmungen basierend auf dem Inhalt zwischen Schrägstrichen „/“ gefunden, wie in der [RegExp-Klasse](http://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html)dokumentiert.
@@ -126,7 +124,7 @@ Sie können die allgemein bekannte Syntax für die Platzhaltersuche nach mehrere
 
 **Beispiel 9**: Klicken Sie mit der rechten Maustaste auf die Abfrage. Suchen Sie nach Stellen, die das Präfix „Prog“ enthalten. Dazu gehören beispielsweise Berufsbezeichnungen mit den Begriffen „Programmierer“ und „Programmierung“.
 
-* [&queryType=full&$select=business_title&search=business_title:prog*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:prog*)
+* [&amp;queryType=full&amp;$select=business_title&amp;search=business_title:prog*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:prog*)
 
 Sie können die Symbole * oder ? nicht als erstes Zeichen in einer Suche verwenden.
 

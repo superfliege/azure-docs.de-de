@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2016
 ms.author: aelnably
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: dc252903571857b5fc89d1d9a2c63cd6b44e9021
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Klonen der Azure App Service-App mit PowerShell
 Mit der Veröffentlichung von Microsoft Azure PowerShell Version 1.1.0 wurde New-AzureRMWebApp eine neue Option hinzugefügt. Diese ermöglicht es dem Benutzer, eine vorhandene Web-App in eine neu erstellte App in einer anderen Region oder der gleichen Region zu klonen. Dadurch können Kunden eine Reihe von Apps in unterschiedlichen Regionen bereitstellen.
@@ -106,9 +105,8 @@ Dieses Feature ist zurzeit in der Vorschau. Wir arbeiten daran, neue Funktionen 
 
 ### <a name="references"></a>Referenzen
 * [Klonen von Web-App](app-service-web-app-cloning.md)
-* [Sichern von Web-App in Azure App Service](web-sites-backup.md)
+* [Sichern von Web-Apps in Azure App Service](web-sites-backup.md)
 * [Unterstützung des Azure Resource Manager für Azure Traffic Manager – Vorschau](../traffic-manager/traffic-manager-powershell-arm.md)
 * [Einführung in die App Service-Umgebung](environment/intro.md)
 * [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
-
 

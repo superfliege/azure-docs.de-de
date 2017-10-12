@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
 ms.openlocfilehash: 263a381dc72105eea60ad9b39434599ff04a4531
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Azure Media Services
 Azure Media Services (AMS) ermöglicht Ihnen das Erfassen, Codieren, Hinzufügen von Inhaltsschutz und Streamen Ihrer Inhalte (Details finden Sie in [diesem](media-services-protect-with-drm.md) Artikel). Es gibt jedoch Kunden, die AMS nur zum Übermitteln von Lizenzen und/oder Schlüsseln nutzen und die Codierung, Verschlüsselung und das Streaming mithilfe ihrer lokalen Server durchführen möchten. Dieser Artikel beschreibt, wie Sie mit AMS PlayReady- und/oder Widevine-Lizenzen bereitstellen und die restlichen Aufgaben auf Ihren lokalen Servern ausführen können. 
@@ -40,7 +40,7 @@ Sie können das in diesem Artikel beschriebene Beispiel [hier](https://github.co
 1. Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.config“ mit Verbindungsinformationen, wie unter [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) beschrieben. 
 2. Fügen Sie den **appSettings** in Ihrer Datei „app.config“ die folgenden Elemente hinzu:
 
-    <add key="Issuer" value="http://testacs.com"/> <add key="Audience" value="urn:test"/>
+    <add key="Issuer" value="http://testacs.com"/><add key="Audience" value="urn:test"/>
 
 ## <a name="net-code-example"></a>Codebeispiel für .NET
 

@@ -1,6 +1,6 @@
 ---
-title: Upgrade von PhoneFactor auf Azure MFA-Server | Microsoft Docs
-description: "Erste Schritte mit Azure MFA-Server bei einem upgrade von Phonefactor Agent ältere."
+title: Upgraden von PhoneFactor auf den Azure MFA-Server | Microsoft-Dokumentation
+description: "Informieren Sie sich über die ersten Schritte mit dem Azure MFA-Server, wenn Sie ein Upgrade des älteren PhoneFactor-Agents ausführen möchten."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -15,67 +15,67 @@ ms.topic: get-started-article
 ms.date: 06/06/2017
 ms.author: kgremban
 ms.openlocfilehash: 7ab7e693909f807781744ae53eed75d425096590
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Upgrade von PhoneFactor Agent auf Azure Multi-Factor Authentication-Server
-Upgrade von PhoneFactor Agent v5.x oder älter auf Azure Multi-Factor Authentication-Server, den PhoneFactor-Agent deinstallieren und Komponenten zuerst zugewiesen. Anschließend können die Multi-Factor Authentication-Server und die zugehörigen Komponenten installiert werden.
+# <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Upgraden des PhoneFactor-Agents auf den Azure Multi-Factor Authentication-Server
+Wenn Sie den PhoneFactor-Agent v5.x oder eine ältere Version auf den Azure Multi-Factor Authentication-Server upgraden möchten, müssen Sie zunächst den PhoneFactor-Agent und die dazugehörigen Komponenten deinstallieren. Anschließend können Sie den Multi-Factor Authentication-Server und die dazugehörigen Komponenten installieren.
 
-## <a name="uninstall-the-phonefactor-agent"></a>Deinstallieren Sie den PhoneFactor-Agent
+## <a name="uninstall-the-phonefactor-agent"></a>Deinstallieren des PhoneFactor-Agents
 
-1. Sichern Sie zuerst die PhoneFactor-Datendatei aus. Der Standardinstallationspfad lautet c:\Programme\Microsoft Files\PhoneFactor\Data\Phonefactor.pfdata.
+1. Sichern Sie zunächst die PhoneFactor-Datendatei. Der Standardinstallationspfad lautet "C:\Programme\PhoneFactor\Data\Phonefactor.pfdata".
 
 2. Wenn das Benutzerportal installiert ist:
-  1. Navigieren Sie zum Installationsordner, und Sichern Sie die Datei "Web.config". Der Standardinstallationspfad lautet C:\inetpub\wwwroot\PhoneFactor.
+  1. Navigieren Sie zum Installationsordner, und sichern Sie die Datei "Web.config". Der Standardinstallationspfad lautet "C:\inetpub\wwwroot\PhoneFactor".
 
-  2. Wenn Sie das Portal benutzerdefinierte Designs hinzugefügt haben, Sichern Sie Ihren benutzerdefinierten Ordner unter dem Verzeichnis C:\inetpub\wwwroot\PhoneFactor\App_Themes.
+  2. Wenn Sie dem Portal benutzerdefinierte Designs hinzugefügt haben, sichern Sie den benutzerdefinierten Ordner unter dem Verzeichnis "C:\inetpub\wwwroot\PhoneFactor\App_Themes".
 
-  3. Deinstallieren Sie das Benutzerportal entweder über den PhoneFactor-Agent (nur verfügbar, wenn auf dem gleichen Server wie der PhoneFactor-Agent installiert) oder über Windows-Programme und Funktionen.
+  3. Deinstallieren Sie das Benutzerportal entweder über den PhoneFactor-Agent (nur verfügbar, wenn auf demselben Server wie der PhoneFactor-Agent installiert) oder über "Programme und Funktionen" von Windows.
 
-3. Wenn der Webdienst für Mobile Apps installiert ist:
+3. Wenn der Webdienst der mobilen App installiert ist:
 
-  1. Wechseln Sie zum Installationsordner, und Sichern Sie die Datei "Web.config". Der Standardinstallationspfad lautet C:\inetpub\wwwroot\PhoneFactorPhoneAppWebService.
+  1. Navigieren Sie zum Installationsordner, und sichern Sie die Datei "Web.config". Der Standardinstallationspfad lautet „C:\inetpub\wwwroot\PhoneFactorPhoneAppWebService“.
 
-  2. Deinstallieren Sie den Webdienst für Mobile Anwendungen Service über Windows-Programme und Funktionen.
+  2. Deinstallieren Sie den Webdienst der mobilen App über „Programme und Funktionen“ von Windows.
 
-4. Wenn das Webdienst-SDK installiert ist, deinstallieren Sie es entweder über den PhoneFactor-Agent oder über Windows-Programme und Funktionen.
+4. Wenn das Webdienst-SDK installiert ist, deinstallieren Sie es über den PhoneFactor-Agent oder über "Programme und Funktionen" von Windows.
 
-5. Deinstallieren Sie den PhoneFactor Agent über die Windows-Programme und Funktionen.
+5. Deinstallieren Sie den PhoneFactor-Agent über "Programme und Funktionen" von Windows.
 
-## <a name="install-the-multi-factor-authentication-server"></a>Installieren Sie den Multi-Factor Authentication-Server
+## <a name="install-the-multi-factor-authentication-server"></a>Installieren des Multi-Factor Authentication-Servers
 
-Der Installationspfad ist übernommen aus der Registrierung aus der vorherigen PhoneFactor-Agent-Installation, sodass am gleichen Speicherort (z. B. c:\Programme\Microsoft c:\programme\phonefactor) installiert werden soll. Neuinstallationen haben einen anderen standardmäßigen Installationspfad (z. B. c:\Programme\Microsoft C:\programme\multi-Factor Authentication Server). Vom vorherigen PhoneFactor Agent hinterlassene Datendatei sollte während der Installation aktualisiert werden, damit Ihre Benutzer und Einstellungen noch vorhanden sein sollten, nach der Installation der neuen Multi-Factor Authentication-Servers.
+Der Installationspfad wird aus der Registrierung der vorherigen PhoneFactor-Agent-Installation übernommen. Die Installation erfolgt also unter dem gleichen Pfad (beispielsweise „C:\Programme\PhoneFactor“). Für Neuinstallationen wird ein anderer Standardinstallationspfad verwendet (z.B. „C:\Programme\Multi-Factor Authentication Server“). Während der Installation wird die noch vorhandene PhoneFactor-Agent-Datendatei aktualisiert. Deshalb sind nach dem Installieren des neuen Multi-Factor Authentication-Servers die Benutzer und Einstellungen noch vorhanden.
 
-1. Wenn Sie aufgefordert werden, aktivieren Sie den Multi-Factor Authentication-Server, und stellen Sie sicher, dass er der richtigen Replikationsgruppe zugewiesen ist.
+1. Aktivieren Sie den Multi-Factor Authentication-Server, wenn Sie dazu aufgefordert werden, und stellen Sie sicher, dass er der richtigen Replikationsgruppe zugewiesen ist.
 
-2. Wenn das Webdienst-SDK zuvor installiert war, installieren Sie das neue Webdienst-SDK über die Benutzeroberfläche des Multi-Factor Authentication-Server.
+2. Wenn das Webdienst-SDK zuvor installiert war, installieren Sie das neue Webdienst-SDK über die Benutzeroberfläche des Multi-Factor Authentication-Servers.
 
-  Der Standardname für das virtuelle Verzeichnis lautet jetzt **"multifactorauthwebservicesdk"** anstelle von **PhoneFactorWebServiceSdk**. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Wenn Sie die Installation den neuen Standardnamen verwenden lassen, müssen Sie hingegen die URL in einer Anwendung zu ändern, die das Webdienst-SDK (z. B. das Benutzerportal und der Webdienst für Mobile App) verweisen, dass Sie am richtigen Speicherort verweist.
+  Der Standardname des virtuellen Verzeichnisses lautet jetzt **MultiFactorAuthWebServiceSdk** und nicht mehr **PhoneFactorWebServiceSdk**. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Wenn Sie hingegen die Verwendung des neuen Standardnamens während der Installation zulassen, müssen Sie die URL in allen Anwendungen ändern, die auf das Webdienst-SDK verweisen (z.B. im Benutzerportal und im Webdienst der mobilen App), damit sie auf das richtige Verzeichnis verweist.
 
-3. Wenn das Benutzerportal zuvor auf dem PhoneFactor Agent-Server installiert war, installieren Sie das neue Multi-Factor Authentication-Benutzerportal über die Benutzeroberfläche des Multi-Factor Authentication-Server.
+3. Wenn das Benutzerportal zuvor auf dem PhoneFactor-Agent-Server installiert war, installieren Sie das neue Multi-Factor Authentication-Benutzerportal über die Benutzeroberfläche des Multi-Factor Authentication-Servers.
 
-  Der Standardname für das virtuelle Verzeichnis lautet jetzt **"multifactorauth"** anstelle von **PhoneFactor**. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Wenn Sie die Installation den neuen Standardnamen verwenden lassen, sollten Sie andernfalls klicken Sie auf das benutzerportalsymbol im Multi-Factor Authentication-Server und aktualisieren die URL des Benutzerportals auf der Registerkarte "Einstellungen".
+  Der Standardname des virtuellen Verzeichnisses lautet jetzt **MultiFactorAuth** und nicht mehr **PhoneFactor**. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Wenn Sie hingegen die Verwendung des neuen Standardnamens bei der Installation zulassen, klicken Sie im Multi-Factor Authentication-Server auf das Benutzerportal-Symbol, und aktualisieren Sie auf der Registerkarte "Einstellungen" die Benutzerportal-URL.
 
-4. Wenn das Benutzerportal und/oder der Webdienst für Mobile Apps zuvor auf einem anderen Server als der PhoneFactor-Agent installiert war:
+4. Wenn das Benutzerportal und/oder der Webdienst der mobilen App zuvor auf einem anderen Server als dem PhoneFactor-Agent installiert wurde:
 
-  1. Wechseln Sie zum Installationsspeicherort (z. B. c:\Programme\Microsoft c:\programme\phonefactor), und kopieren Sie eine oder mehrere Installationsprogramme auf den anderen Server. Es gibt 32-Bit und 64-Bit-Installationsprogramme für das Benutzerportal und der Webdienst für Mobile Apps. Sie heißen MultiFactorAuthenticationUserPortalSetupXX.msi und MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi.
+  1. Navigieren Sie zum Installationspfad (z.B. „C:\Programme\PhoneFactor“), und kopieren Sie ein oder mehrere Installationsprogramme auf den anderen Server. Für das Benutzerportal und den Webdienst der mobilen App gibt es 32-Bit- und 64-Bit-Installationsprogramme. Ihre Namen lauten „MultiFactorAuthenticationUserPortalSetupXX.msi“ und „MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi“.
 
-  2. Klicken Sie zum Installieren des Benutzerportals auf dem Webserver öffnen Sie eine Eingabeaufforderung als Administrator, und führen Sie MultiFactorAuthenticationUserPortalSetupXX.msi.
+  2. Um das Benutzerportal auf dem Webserver zu installieren, öffnen Sie eine Eingabeaufforderung als Administrator, und führen Sie „MultiFactorAuthenticationUserPortalSetupXX.msi“ aus.
 
-    Der Standardname für das virtuelle Verzeichnis lautet jetzt **"multifactorauth"** anstelle von **PhoneFactor**. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Wenn Sie die Installation den neuen Standardnamen verwenden lassen, sollten Sie andernfalls klicken Sie auf das benutzerportalsymbol im Multi-Factor Authentication-Server und aktualisieren die URL des Benutzerportals auf der Registerkarte "Einstellungen". Vorhandene Benutzer müssen über die neue URL informiert werden.
+    Der Standardname des virtuellen Verzeichnisses lautet jetzt **MultiFactorAuth** und nicht mehr **PhoneFactor**. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Wenn Sie hingegen die Verwendung des neuen Standardnamens bei der Installation zulassen, klicken Sie im Multi-Factor Authentication-Server auf das Benutzerportal-Symbol, und aktualisieren Sie auf der Registerkarte "Einstellungen" die Benutzerportal-URL. Vorhandene Benutzer müssen über die neue URL informiert werden.
 
-  3. Gehen Sie beim Benutzerportal Installationspfad (z. B. C:\inetpub\wwwroot\MultiFactorAuth), und bearbeiten Sie die Datei "Web.config". Kopieren Sie die Werte in den Abschnitten "appSettings" und "ApplicationSettings" aus der ursprünglichen Datei "Web.config", die in die neue "Web.config"-Datei vor dem Upgrade gesichert wurde. Wenn der neue Standardname virtuellen Verzeichnisses bei der Installation des Webdienst-SDK beibehalten wurde, ändern Sie die URL im Abschnitt ApplicationSettings so, dass auf den richtigen Speicherort verweist. Wenn in der vorherigen Datei web.config noch andere Standardwerte geändert wurden, gelten Sie die gleichen Änderungen auf die neue Datei "Web.config".
+  3. Wechseln Sie zum Installationsspeicherort des Benutzerportals (z.B. „C:\inetpub\wwwroot\MultiFactorAuth“), und bearbeiten Sie die Datei „web.config“. Kopieren Sie die Werte in den Abschnitten „appSettings“ und „applicationSettings“ aus der ursprünglichen Datei „web.config“, die vor dem Upgrade auf die neue Datei „web.config“ gesichert wurde. Wenn beim Installieren des Webdienst-SDK der neue Standardname des virtuellen Verzeichnisses beibehalten wurde, ändern Sie die URL im Abschnitt "applicationSettings", damit sie auf den richtigen Speicherort verweist. Wenn in der vorherigen Datei „web.config“ weitere Standardeinstellungen geändert wurden, wenden Sie diese Änderungen auf die neue Datei „web.config“ an.
 
-  4. Klicken Sie zum Installieren des Webdiensts für Mobile Apps auf dem Webserver öffnen Sie eine Eingabeaufforderung als Administrator, und führen Sie die multifactorauthenticationmobileappwebservicesetupxx.msi aus.
+  4. Um den Webdienst der mobilen App auf dem Webserver zu installieren, öffnen Sie eine Eingabeaufforderung als Administrator, und führen Sie „MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi“ aus.
 
-    Der Standardname für das virtuelle Verzeichnis lautet jetzt **MultiFactorAuthMobileAppWebService** anstelle von **PhoneFactorPhoneAppWebService**. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Möglicherweise möchten einen kürzeren Namen zu erleichtern für Endbenutzer auf ihren mobilen Geräten einzugeben auswählen. Wenn Sie die Installation den neuen Standardnamen verwenden lassen, sollten Sie andernfalls klicken Sie auf das Symbol Mobile Anwendung im Multi-Factor Authentication-Server und aktualisieren die Mobile App Webdienst-URL.
+    Der Standardname des virtuellen Verzeichnisses lautet jetzt **MultiFactorAuthMobileAppWebService** und nicht mehr **PhoneFactorPhoneAppWebService**. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Sie sollten einen kürzeren Namen wählen, damit er von den Endbenutzern einfacher auf ihren Mobilgeräten eingegeben werden kann. Wenn Sie hingegen die Verwendung des neuen Standardnamens bei der Installation zulassen, klicken Sie auf dem Multi-Factor Authentication-Server auf das Symbol „Mobile App“, und aktualisieren Sie die URL des Webdiensts der mobilen App.
 
-  5. Wechseln Sie an den Webdienst für Mobile App Installationspfad (z. B. C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService), und bearbeiten Sie die Datei "Web.config". Kopieren Sie die Werte in den Abschnitten "appSettings" und "ApplicationSettings" aus der ursprünglichen Datei "Web.config", die in die neue "Web.config"-Datei vor dem Upgrade gesichert wurde. Wenn der neue Standardname virtuellen Verzeichnisses bei der Installation des Webdienst-SDK beibehalten wurde, ändern Sie die URL im Abschnitt ApplicationSettings so, dass auf den richtigen Speicherort verweist. Wenn in der vorherigen Datei web.config noch andere Standardwerte geändert wurden, gelten Sie die gleichen Änderungen auf die neue Datei "Web.config".
+  5. Wechseln Sie zum Installationsspeicherort des Webdiensts der mobilen App (z.B. „C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService“), und bearbeiten Sie die Datei „web.config“. Kopieren Sie die Werte in den Abschnitten „appSettings“ und „applicationSettings“ aus der ursprünglichen Datei „web.config“, die vor dem Upgrade auf die neue Datei „web.config“ gesichert wurde. Wenn beim Installieren des Webdienst-SDK der neue Standardname des virtuellen Verzeichnisses beibehalten wurde, ändern Sie die URL im Abschnitt "applicationSettings", damit sie auf den richtigen Speicherort verweist. Wenn in der vorherigen Datei „web.config“ weitere Standardeinstellungen geändert wurden, wenden Sie diese Änderungen auf die neue Datei „web.config“ an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Installieren des benutzerportals](multi-factor-authentication-get-started-portal.md) für Azure Multi-Factor Authentication-Server.
+- [Installieren Sie das Benutzerportal](multi-factor-authentication-get-started-portal.md) für den Azure Multi-Factor Authentication-Server.
 
-- [Konfigurieren der Windows-Authentifizierung](multi-factor-authentication-get-started-server-windows.md) für Ihre Anwendungen. 
+- [Konfigurieren Sie die Windows-Authentifizierung](multi-factor-authentication-get-started-server-windows.md) für Ihre Anwendungen. 

@@ -1,6 +1,6 @@
 ---
-title: "Erfahren Sie mehr über die Einschränkung in BizTalk Services | Microsoft Docs"
-description: "Informationen Sie zur einschränkungsschwellenwerten und daraus resultierende Laufzeitverhalten für BizTalk-Dienste. Einschränkung basiert auf speicherauslastung und die Anzahl der Nachrichten. MABS WABS"
+title: Informationen zur Drosselung in BizTalk Services | Microsoft Docs
+description: "Erfahren Sie mehr über Drosselungsschwellenwerte und das daraus resultierende Laufzeitverhalten für BizTalk Services. Die Drosselung basiert auf der Arbeitsspeicherauslastung und der Nachrichtenanzahl. MABS, WABS"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -15,57 +15,57 @@ ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
 ms.openlocfilehash: 145e7470bbc01c676a1fb5856c0f9a8726e667fc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="biztalk-services-throttling"></a>BizTalk Services: Einschränkung
+# <a name="biztalk-services-throttling"></a>BizTalk Services: Drosselung
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Azure BizTalk Services implementiert dienstdrosselung basierend auf zwei Bedingungen: speicherauslastung und die Anzahl der Nachrichten gleichzeitig verarbeiten. Dieses Thema listet die einschränkungsschwellenwerte und beschreibt das Laufzeitverhalten aus, wenn eine Einschränkung angewendet wird.
+Azure BizTalk Services implementiert die Dienstdrosselung basierend auf zwei Bedingungen: Arbeitsspeicherauslastung und Anzahl der gleichzeitig verarbeiteten Nachrichten. In diesem Thema werden die Drosselungsschwellenwerte aufgelistet und das Laufzeitverhalten beim Auftreten einer Drosselungsbedingung beschrieben.
 
-## <a name="throttling-thresholds"></a>Einschränkungsschwellenwerte
-Die folgende Tabelle enthält die Drosselung Quelle und die Schwellenwerte:
+## <a name="throttling-thresholds"></a>Drosselungsschwellenwerte
+In der folgenden Tabelle sind die Drosselungsquelle und die -schwellenwerte aufgelistet:
 
 |  | Beschreibung | Niedriger Schwellenwert | Hoher Schwellenwert |
 | --- | --- | --- | --- |
-| Arbeitsspeicher |% des insgesamt System-Arbeitsspeicher-verfügbare/PageFileBytes. <p><p>Insgesamt verfügbaren PageFileBytes beträgt ungefähr 2 Mal der Arbeitsspeicher des Systems. |60% |70 % |
-| Verarbeitung von Nachrichten |Anzahl der Nachrichten gleichzeitig verarbeiten |40 * Anzahl der Kerne |100 * Anzahl der Kerne |
+| Arbeitsspeicher |% des verfügbaren Gesamtsystemarbeitsspeichers/PageFileBytes. <p><p>Verfügbarer PageFileBytes-Gesamtwert beträgt etwa das Zweifache des RAM des Systems. |60 % |70 % |
+| Nachrichtenverarbeitung |Anzahl der simultan verarbeiteten Nachrichten |40 * Anzahl der Kernspeicher |100 * Anzahl der Kernspeicher |
 
-Wenn ein hoher Schwellenwert erreicht wird, startet Azure BizTalk Services zur Drosselung. Einschränkung wird beendet, wenn der untere Schwellenwert erreicht wird. Der Dienst wird z. B. 65 % Systemspeicher verwendet. In diesem Fall wird der Dienst nicht einschränken. Der Dienst gestartet wird, mithilfe von 70 % Systemspeicher. In diesem Fall wird der Dienst drosselt und weiterhin einschränken, bis der Dienst % von 60 (niedriger Schwellenwert) Systemspeicher verwendet.
+Wenn ein hoher Schwellenwert erreicht ist, beginnt Azure BizTalk Services mit der Drosselung. Die Drosselung wird beendet, wenn ein niedriger Schwellenwert erreicht wird. Der Dienst nutzt beispielsweise 65 % des Systemarbeitsspeichers. In dieser Situation führt der Dienst keine Drosselung durch. Der Dienst beginnt damit, wenn 70 % des Systemarbeitsspeichers genutzt werden. In dieser Situation führt der Dienst eine Drosselung durch und setzt diese fort, bis der Dienst 60 % (niedriger Schwellenwert) des Systemarbeitsspeichers nutzt.
 
-Azure BizTalk Services verfolgt die Drosselung Status (normaler Status im Vergleich zu gedrosselt Zustand) und die Dauer der Einschränkung.
+Azure BizTalk Services verfolgen den Drosselungsstatus (normaler Status vs. gedrosselter Status) und die Drosselungsdauer.
 
 ## <a name="runtime-behavior"></a>Laufzeitverhalten
-Wenn Azure BizTalk Services eine einschränkungsstatus eingibt, geschieht Folgendes:
+Wenn Azure BizTalk Services einen Drosselungsstatus erreichen, tritt Folgendes ein:
 
-* Einschränkung wird pro Rolleninstanz. Beispiel:<br/>
-  RoleInstanceA ist die Drosselung. RoleInstanceB ist keine Einschränkung. In diesem Fall werden die Nachrichten in RoleInstanceB wie erwartet verarbeitet. Nachrichten in RoleInstanceA verworfen, und mit der folgenden Fehlermeldung fehlschlagen:<br/><br/>
-  **Server ist ausgelastet. Bitte versuchen Sie es erneut.**<br/><br/>
-* Alle Quellen Pull abrufen oder Herunterladen eine Nachricht nicht. Beispiel:<br/>
-  Eine Pipeline abruft Nachrichten aus einer externen FTP-Quelle. In einem Status der nachrichtenveröffentlichungseinschränkung Ruft die Rolleninstanz, die auf diese Weise die Pull ab. In diesem Fall beendet die Pipeline zusätzliche Nachrichten herunterladen, bis die Rolleninstanz Einschränkung wird beendet.
-* Eine Antwort wird an den Client gesendet werden, damit der Client die Nachricht erneut senden kann.
-* Sie müssen warten, bis die Einschränkung aufgelöst wird. Insbesondere müssen Sie warten, bis der untere Schwellenwert erreicht ist.
+* Die Drosselung wird pro Rolleninstanz durchgeführt. Beispiel:<br/>
+  RoleInstanceA steht für Drosselung. RoleInstanceB wird nicht gedrosselt. In dieser Situation werden die Nachrichten in RoleInstanceB erwartungsgemäß verarbeitet. Die Nachrichten in RoleInstanceA werden verworfen und schlagen mit dem folgenden Fehler fehl:<br/><br/>
+  **Der Server ist ausgelastet. Bitte versuchen Sie es später noch einmal.**<br/><br/>
+* Keine der Pullquellen ruft eine Nachricht ab oder lädt eine herunter. Beispiel:<br/>
+  Eine Pipeline ruft Nachrichten per Pullaktion aus einer externen FTP-Quelle ab. Die Rolleninstanz, welche die Pullaktion durchführt, geht in einen Drosselungsstatus über. In dieser Situation setzt die Pipeline das Herunterladen zusätzlicher Nachrichten aus, bis die Rolleninstanz die Drosselung beendet.
+* Eine Antwort wird an den Client gesendet, so dass dieser die Nachricht neu senden kann.
+* Sie müssen solange warten, bis die Drosselung aufgelöst ist. Insbesondere müssen Sie warten, bis ein niedriger Schwellenwert erreicht ist.
 
 ## <a name="important-notes"></a>Wichtige Hinweise
-* Einschränkung kann nicht deaktiviert werden.
-* Einschränkungsschwellenwerten kann nicht geändert werden.
-* Einschränkung wird die systemweite implementiert.
-* Azure SQL-Datenbankserver verfügt auch über integrierte Einschränkung.
+* Die Drosselung kann nicht deaktiviert werden.
+* Die Drosselungsschwellenwerte können nicht modifiziert werden.
+* Die Drosselung ist systemweit implementiert.
+* Der Azure SQL-Datenbankserver verfügt ebenfalls über eine integrierte Drosselung.
 
-## <a name="additional-azure-biztalk-services-topics"></a>Weitere Azure BizTalk Services-Themen
+## <a name="additional-azure-biztalk-services-topics"></a>Zusätzliche Azure BizTalk Services-Themen
 * [Installieren des Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
 * [Lernprogramme: Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
-* [Gewusst wie: Starten Sie mithilfe der Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-* [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+* [Wie verwende ich das Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [BizTalk Services-Dokumentation](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
-## <a name="see-also"></a>Siehe auch
-* [BizTalk Services: Developer, Basic, Standard und Premium Edition-Diagramm](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [BizTalk Services: Bereitstellung Klassisches mit Azure-portal](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-* [BizTalk Services: Dienststatusdiagramm](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-* [BizTalk Services: Registerkarten "Dashboard, Monitor und Skala"](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+## <a name="see-also"></a>Weitere Informationen
+* [BizTalk Services: Editionsübersicht](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [BizTalk Services: Bereitstellen mithilfe des klassischen Azure-Portals](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [BizTalk Services: Bereitstellungsstatusübersicht](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+* [BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk Services: Sichern und Wiederherstellen](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [BizTalk Services: Ausstellername und Ausstellerschlüssel](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+* [BizTalk Services: Name und Schlüssel des Ausstellers](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
 

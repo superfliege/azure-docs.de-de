@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 5c862dbf46a30dd6811faeea447d559dca493991
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Hochladen von Daten für Hadoop-Aufträge in HDInsight
 
@@ -55,7 +54,7 @@ Microsoft bietet die folgenden Hilfsprogramme für die Arbeit mit Azure Storage:
 >
 >
 
-#### <a id="xplatcli"></a>Azure CLI
+#### <a id="xplatcli"></a>Azure-Befehlszeilenschnittstelle
 Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool zur Verwaltung von Azure-Diensten. Verwenden Sie zum Hochladen von Daten in Azure Storage die folgenden Schritte:
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
@@ -329,4 +328,3 @@ Jetzt wissen Sie, wie Sie Daten in HDInsight importieren. Lesen Sie in den folge
 [image-azure-storage-explorer]: ./media/hdinsight-upload-data/HDI.AzureStorageExplorer.png
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
-

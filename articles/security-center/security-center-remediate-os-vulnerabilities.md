@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: terrylan
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 39879c22278a55f841e294cda5a89bec2bdf6988
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="remediate-os-vulnerabilities-in-azure-security-center"></a>Beheben von Betriebssystem-Sicherheitsrisiken in Azure Security Center
 Azure Security Center analysiert täglich das Betriebssystem Ihrer virtuellen Computer (VMs) und physischen Computer auf Konfigurationen, die sie möglicherweise anfälliger für Angriffe machen. Security Center empfiehlt die Behandlung von Sicherheitsrisiken, wenn die Betriebssystemkonfiguration nicht den empfohlenen Konfigurationsregeln entspricht, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu beseitigen.
@@ -52,7 +51,7 @@ In diesem Beispiel betrachten wir die Empfehlung **Betriebssystem-Sicherheitsris
   - **CCIED**: Eindeutiger CCE-Bezeichner für die Regel Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen.
   - **NAME**: Name des Regelfehlers
   - **REGELTYP**: Registrierungsschlüssel, Sicherheitsrichtlinie oder Überwachungsrichtlinie
-  - **ANZAHL VON VMS UND COMPUTERN**: Die Gesamtzahl virtueller und physischer Computer mit diesem Regelfehler
+  - **Anzahl VON VMS UND COMPUTERN**: Die Gesamtzahl virtueller und physischer Computer mit diesem Regelfehler
   - **REGELSCHWEREGRAD**: CCE-Schweregrad: „Kritisch“, „Wichtig“ oder „Warnung“
   - **STATUS**: Der aktuelle Status der Empfehlung:
 
@@ -111,4 +110,3 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Ressourcen:
 [4]: ./media/security-center-remediate-os-vulnerabilities/search.png
 [5]: ./media/security-center-remediate-os-vulnerabilities/log-search.png
 [6]: ./media/security-center-remediate-os-vulnerabilities/search-results.png
-

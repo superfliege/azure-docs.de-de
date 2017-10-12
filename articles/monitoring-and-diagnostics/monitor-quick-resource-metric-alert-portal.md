@@ -10,14 +10,12 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: ancav
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 08d63d47a99bdf9480299a74634bc0e9a09e691e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Erhalten einer Benachrichtigung, wenn ein Metrikwert eine Bedingung erfüllt
 
 Azure Monitor stellt Metriken für viele Azure-Ressourcen zur Verfügung. Diese Metriken liefern Informationen zur Leistung und Integrität von Ressourcen. In vielen Fällen können Metrikwerte einen Hinweis liefern, wenn Probleme für eine Ressource auftreten. Sie können Metrikwarnungen erstellen, um anormales Verhalten zu überwachen und eine Benachrichtigung zu erhalten, wenn dieses auftritt. In diesem Schnellstart werden die einzelnen Schritte beim Erstellen einer Logik-App und eines Auftrags sowie das Visualisieren der Metriken für die Logik-App beschrieben. Danach wird das Erstellen einer Warnung und das Empfangen einer Benachrichtigung für eine Metrik für die Logik-App-Ressource vorgestellt.
@@ -28,7 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
 
 ## <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 
@@ -116,4 +114,3 @@ In diesem Schnellstart haben Sie gelernt, wie eine Metrikwarnung für Ihre Resso
 
 > [!div class="nextstepaction"]
 > [Azure Monitor-Abonnementaktionswarnungen](./monitor-quick-audit-notify-action-in-subscription.md )
-

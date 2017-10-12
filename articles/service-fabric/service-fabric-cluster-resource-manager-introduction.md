@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 3e8cd4dc8e960e38ba0e4a9a195b2f61d9ec1924
-ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Einführung in den Clusterressourcen-Manager von Service Fabric
 Zur Verwaltung von IT-Systemen oder Onlinediensten wurden diesen bisher üblicherweise spezielle physische oder virtuelle Computer zugewiesen. Dienste wurden als Ebenen entworfen. Es gab eine Webebene und eine Daten- oder Speicherebene. Clientanwendungen verfügten über eine Messaging-Ebene, auf der Anforderungen eingingen und ausgingen, und einen speziellen Satz von Computern für die Zwischenspeicherung. Für jede Ebene oder jede Art von Workload gab es bestimmte fest zugeordnete Computer oder Computergruppen, so z.B. für die Datenbank und die Webserver. Wenn eine bestimmte Art von Workload eine Überlastung der Computer verursachte, auf denen sie ausgeführt wurde, wurden dieser Ebene weitere Computer mit derselben Konfiguration hinzugefügt. Jedoch konnten nicht alle Workloads so einfach skaliert werden – insbesondere für die Datenebene mussten Sie in der Regel Computer durch größere Computer ersetzen. Ganz einfach. Wenn ein Computer ausfiel, wurde dieser Teil der gesamten Anwendung mit niedriger Kapazität ausgeführt, bis der Computer wiederhergestellt werden konnte. Noch immer recht einfach (wenn auch nicht unbedingt spaßig).
@@ -64,4 +63,3 @@ Da der Clusterressourcen-Manager für das Verschieben von Diensten zuständig is
 - Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
 - Der Clusterressourcen-Manager arbeitet mit den Verwaltungsfunktionen von Service Fabric. Weitere Informationen hierzu finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-management-integration.md)
 - Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie im Artikel zum [Lastenausgleich](service-fabric-cluster-resource-manager-balancing.md)
-

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
 ms.openlocfilehash: 4b0a57c3bab688487eb9a50461b406e1a6e477c6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Aktivieren der Offlinesynchronisierung für Ihre Windows-App
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -44,7 +44,7 @@ Offlinefunktionen der mobilen Azure-App ermöglichen Ihnen die Interaktion mit e
 1. Installieren Sie die [SQLite-Laufzeit für die Universelle Windows-Plattform](http://sqlite.org/2016/sqlite-uwp-3120200.vsix).
 2. Öffnen Sie in Visual Studio den NuGet-Paket-Manager für das UWP-App-Projekt, das Sie im Tutorial [Erstellen einer Windows-App] abgeschlossen haben.
     Suchen und installieren Sie das NuGet-Paket **Microsoft.Azure.Mobile.Client.SQLiteStore**.
-3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise** > **Verweis hinzufügen...** > **Universal Windows** > **Erweiterungen**, und aktivieren Sie dann sowohl **SQLite for Universal Windows Platform** (SQLite für die universelle Windows-Plattform) als auch **Visual C++ 2015 Runtime for Universal Windows Platform apps** (Visual C++ 2015-Laufzeit für Apps der universellen Windows-Plattform).
+3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise** > **Verweis hinzufügen...** >**Universal Windows**>**Erweiterungen**, und aktivieren Sie dann sowohl **SQLite for Universal Windows Platform** (SQLite für die universelle Windows-Plattform) als auch **Visual C++ 2015 Runtime for Universal Windows Platform apps** (Visual C++ 2015-Laufzeit für Apps der universellen Windows-Plattform).
 
     ![Referenz zum Hinzufügen von SQLite für UWP][1]
 4. Öffnen Sie die Datei „MainPage.xaml.cs“, und heben Sie die Auskommentierung der Definition `#define OFFLINE_SYNC_ENABLED` auf.
@@ -74,8 +74,7 @@ Beim ersten Ausführen der Anwendung ruft der `OnNavigatedTo`-Ereignishandler `I
 3. (Optional) Zeigen Sie die aktualisierten Daten mithilfe von SQL Server-Objekt-Explorer oder einem REST-Tool wie Fiddler an. Beachten Sie, dass die Daten zwischen der Azure Mobile App-Back-End-Datenbank und dem lokalen Speicher synchronisiert wurden.
 4. Klicken Sie in der App auf das Kontrollkästchen neben einigen Elementen, um sie im lokalen Speicher abzuschließen.
 
-   `UpdateCheckedTodoItem` ruft `SyncAsync` auf, um jedes abgeschlossene Element mit dem Mobile App-Back-End zu synchronisieren. `SyncAsync` ruft sowohl Push- als auch Pullvorgänge auf. <seg>
-     **Bei jeder Ausführung eines Pullvorgangs für eine Tabelle, die der Client geändert hat, wird aber immer automatisch ein Pushvorgang ausgeführt**.</seg> Durch dieses Verhalten wird sichergestellt, dass alle Tabellen im lokalen Speicher und die Beziehungen konsistent bleiben. Dieses Verhalten kann zu einem unerwarteten Pushvorgang führen.  Weitere Informationen zu diesem Verhalten finden Sie unter [Offlinedatensynchronisierung in Azure Mobile Apps].
+   `UpdateCheckedTodoItem` ruft `SyncAsync` auf, um jedes abgeschlossene Element mit dem Mobile App-Back-End zu synchronisieren. `SyncAsync` ruft sowohl Push- als auch Pullvorgänge auf. **Bei jeder Ausführung eines Pullvorgangs für eine Tabelle, die der Client geändert hat, wird aber immer automatisch ein Pushvorgang ausgeführt**. Durch dieses Verhalten wird sichergestellt, dass alle Tabellen im lokalen Speicher und die Beziehungen konsistent bleiben. Dieses Verhalten kann zu einem unerwarteten Pushvorgang führen.  Weitere Informationen zu diesem Verhalten finden Sie unter [Offlinedatensynchronisierung in Azure Mobile Apps].
 
 ## <a name="api-summary"></a>Zusammenfassung für die API
 Zur Unterstützung der Offlinefunktionen mobiler Dienste haben Sie die Schnittstelle [IMobileServiceSyncTable] verwendet und [MobileServiceClient.SyncContext][synccontext] mit einer lokalen SQLite-Datenbank initialisiert. In einer Offlinesituation funktionieren die normalen CRUD-Operationen für Mobile Apps so, als ob die App immer noch verbunden wäre. Alle Operationen werden jedoch nur im lokalen Speicher ausgeführt. Zur Synchronisierung des lokalen Speichers mit dem Server werden die folgenden Methoden verwendet:

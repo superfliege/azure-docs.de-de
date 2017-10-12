@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/13/2017
 ms.author: ryanwi;mikhegn
 ms.openlocfilehash: 359677972c7e1fa3f7435052021ddfae5b1ed85e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>Erste Schritte beim Bereitstellen und Aktualisieren von Anwendungen im lokalen Cluster
 Das Azure Service Fabric-SDK umfasst eine vollständige lokale Entwicklungsumgebung, die Sie verwenden können, um schnell mit der Bereitstellung und Verwaltung von Anwendungen in einem lokalen Cluster zu beginnen. In diesem Artikel verwenden Sie Windows PowerShell, um einen lokalen Cluster zu erstellen, eine vorhandene Anwendung bereitzustellen und die Anwendung auf eine neue Version zu aktualisieren.

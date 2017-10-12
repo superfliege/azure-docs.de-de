@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: ee784704ada9238b5cd048f99aaa4cb192ec7d57
-ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
-
+ms.openlocfilehash: 8e61044f261033a473241e2de152026bf49c4c70
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory
 In Azure Active Directory (Azure AD) können Sie Ihren Unternehmensanwendungen auf einfache Weise einen Benutzer oder eine Gruppe zuweisen. Sie benötigen die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App, und Sie müssen globaler Administrator für das Verzeichnis sein.
@@ -49,4 +48,3 @@ In Azure Active Directory (Azure AD) können Sie Ihren Unternehmensanwendungen a
 * [Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [Deaktivieren von Benutzeranmeldungen für eine Unternehmens-App](active-directory-coreapps-disable-app-azure-portal.md)
 * [Ändern des Namens oder Logos einer Unternehmens-App](active-directory-coreapps-change-app-logo-user-azure-portal.md)
-

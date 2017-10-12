@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/25/2017
 ms.author: jdial
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: ef93d43bbd0c58950027810c8c335d9076574326
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-public-ip-address-in-an-availability-zone-with-the-azure-cli"></a>Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit Azure CLI
 
 Sie können eine öffentliche IP-Adresse in einer Azure-Verfügbarkeitszone (Vorschau) bereitstellen. Eine Verfügbarkeitszone ist eine physisch separate Zone in einer Azure-Region. In diesem Artikel werden folgende Themen erläutert:
@@ -61,4 +59,3 @@ az network public-ip show --resource-group myResourceGroup --name myPublicIp
 
 - Erfahren Sie mehr über [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview).
 - Erfahren Sie mehr über [öffentliche IP-Adressen](../virtual-network/virtual-network-public-ip-address.md). 
-

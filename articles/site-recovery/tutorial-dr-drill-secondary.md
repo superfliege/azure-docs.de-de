@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/18/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8737c2a22bd729cfc15d5448e1ec0becef643fd5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-a-disaster-recovery-drill-for-hyper-v-vms-to-your-secondary-on-premises-site"></a>Durchführen einer Notfallwiederherstellungsübung für Hyper-V-VMs an Ihrem sekundären lokalen Standort
 
@@ -46,7 +45,7 @@ Dieses Tutorial veranschaulicht das Durchführen einer Notfallwiederherstellungs
 ## <a name="run-a-test-failover-for-a-vm"></a>Ausführen eines Testfailovers für einen virtuellen Computer
 
 1. Klicken Sie unter **Replizierte Elemente** auf die VM > **Testfailover**.
-2. Geben Sie in **Testfailover** an, wie die virtuellen Computer nach dem Testfailover mit Netzwerken verbunden werden. Es wird empfohlen, im Rahmen dieses Tutorials mit Site Recovery automatisch ein Testnetzwerk zu erstellen. [Weitere Informationen](site-recovery-test-failover-vmm-to-vmm.md#network-options-in-site-recovery)
+2. Geben Sie in **Testfailover** an, wie die virtuellen Computer nach dem Testfailover mit Netzwerken verbunden werden. Es wird empfohlen, im Rahmen dieses Tutorials mit Site Recovery automatisch ein Testnetzwerk zu erstellen. [Weitere Informationen](site-recovery-test-failover-vmm-to-vmm.md#network-options-in-site-recovery).
 3. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Überwachen Sie den Fortschritt auf der Registerkarte **Aufträge** .
 4. Vergewissern Sie sich nach Abschluss des Failovers, dass die virtuellen Testcomputer erfolgreich gestartet werden.
 5. Klicken Sie anschließend auf **Testfailover bereinigen**. Dadurch werden die Test-VMs und alle während des Testfailovers erstellten Netzwerke gelöscht.
@@ -56,7 +55,6 @@ Dieses Tutorial veranschaulicht das Durchführen einer Notfallwiederherstellungs
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Ausführen eines Produktionsfailovers](tutorial-vmm-to-vmm-failover-failback.md)
-
 
 
 

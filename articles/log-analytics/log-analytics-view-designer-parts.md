@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
 ms.openlocfilehash: 40a6101576708936404447576d704a49666143fe
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-view-designer-visualization-part-reference"></a>Referenz der Visualisierungskomponenten im Ansicht-Designer in Log Analytics
 Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten aus dem OMS-Repository enthalten. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Visualisierungskomponenten, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
@@ -83,10 +83,10 @@ Die Kopfzeile weist eine einzelne Zahl auf, die die Anzahl der Datensätze aus e
 | Farbe |Farbe der Balken oder Sparklines. |
 | Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
 | Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
-| **Liste** |**> Spaltentitel** |
+| **Liste** |**&gt; Spaltentitel** |
 | Name |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
 | Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
-| **Liste** |**> Schwellenwerte** |
+| **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
 ## <a name="two-numbers--list-part"></a>Komponente mit zwei Zahlen und Liste
@@ -112,10 +112,10 @@ Die Kopfzeile weist zwei Zahlen auf, die die Anzahl der Datensätze aus getrennt
 | Vorgang |Vorgang, der für die Sparkline ausgeführt werden soll.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
 | Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
-| **Liste** |**> Spaltentitel** |
+| **Liste** |**&gt; Spaltentitel** |
 | Name |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
 | Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
-| **Liste** |**> Schwellenwerte** |
+| **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
 ## <a name="donut--list-part"></a>Komponente mit Ring und Liste
@@ -135,13 +135,13 @@ Die Kopfzeile zeigt eine einzelne Zahl an, die eine Spalte mit Werten in einer P
 | Untertitel |Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
 | **Ring** | |
 | Abfragen |Abfrage, die für den Ring ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein. |
-| **Ring** |**> Mitte** |
+| **Ring** |**&gt; Mitte** |
 | Text |Text, der unter dem Wert im Ring angezeigt wird. |
 | Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie zu einem einzelnen Wert zusammenzufassen.<br><br>– Summe: Die Werte aller Datensätze werden addiert.<br>– Prozentsatz: Prozentsatz der Datensätze, die von den Werten in **Vom Vorgang in der Mitte verwendete Ergebniswerte** zurückgegeben werden, von der Gesamtanzahl der Datensätze in der Abfrage. |
 | Vom Vorgang in der Mitte verwendete Ergebniswerte |Klicken Sie optional auf das Pluszeichen, um einen oder mehrere Werte hinzuzufügen.  Die Ergebnisse der Abfrage werden auf Datensätze mit den von Ihnen angegebenen Eigenschaftswerten beschränkt.  Wenn keine Werte hinzugefügt werden, werden alle Datensätze in die Abfrage aufgenommen. |
-| **Weitere Optionen** |**> Farben** |
+| **Weitere Optionen** |**&gt; Farben** |
 | Farbe 1<br>Farbe 2<br>Farbe 3 |Wählen Sie die Farbe für jeden der im Ring angezeigten Werte aus. |
-| **Weitere Optionen** |**> Erweiterte Farbzuordnung** |
+| **Weitere Optionen** |**&gt; Erweiterte Farbzuordnung** |
 | Feldwert |Geben Sie den Namen eines Felds ein, um es in einer anderen Farbe anzuzeigen, wenn es im Ring enthalten ist. |
 | Farbe |Wählen Sie die Farbe für das eindeutige Feld aus. |
 | **Liste** | |
@@ -152,10 +152,10 @@ Die Kopfzeile zeigt eine einzelne Zahl an, die eine Spalte mit Werten in einer P
 | Vorgang |Vorgang, der für die Sparkline ausgeführt werden soll.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
 | Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
-| **Liste** |**> Spaltentitel** |
+| **Liste** |**&gt; Spaltentitel** |
 | Name |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
 | Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
-| **Liste** |**> Schwellenwerte** |
+| **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
 ## <a name="two-timelines--list-part"></a>Komponente mit zwei Zeitachsen und Liste
@@ -182,10 +182,10 @@ Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Sä
 | Farbe |Farbe der Balken oder Sparklines. |
 | Vorgang |Vorgang, der für die Sparkline ausgeführt werden soll.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
-| **Liste** |**> Spaltentitel** |
+| **Liste** |**&gt; Spaltentitel** |
 | Name |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
 | Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
-| **Liste** |**> Schwellenwerte** |
+| **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
 ## <a name="information-part"></a>Komponente mit Informationen
@@ -202,7 +202,7 @@ Die Kopfzeile zeigt statischen Text und einen optionalen Link an.  Die Liste zei
 | **Kopfzeile** | |
 | Image |Bilddatei, die in der Kopfzeile angezeigt wird. |
 | Bezeichnung |Text, der in der Kopfzeile angezeigt wird. |
-| **Kopfzeile** |**> Link** |
+| **Kopfzeile** |**&gt; Link** |
 | Bezeichnung |Text des Links. |
 | Url |URL für den Link. |
 | **Informationselemente** | |
@@ -226,11 +226,11 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Untertitel |Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
 | **Liniendiagramm** | |
 | Abfragen |Abfrage, die für das Liniendiagramm ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Dies ist normalerweise eine Abfrage, in der das Schlüsselwort für die **Maßeinheit** verwendet wird, um die Ergebnisse zusammenzufassen.  Wenn in der Abfrage das Schlüsselwort für das **Intervall** verwendet wird, wird für die X-Achse des Diagramms dieses Intervall verwendet.  Wenn die Abfrage das Schlüsselwort für das **Intervall** nicht enthält, werden stündliche Intervalle für die X-Achse verwendet. |
-| **Liniendiagramm** |**> Legende** |
+| **Liniendiagramm** |**&gt; Legende** |
 | Legendentitel |Text, der über dem Wert der Legende angezeigt wird. |
 | Reihenname |Eigenschaftswert für die Reihe, die für den Wert der Legende verwendet wird.  Wenn keine Reihe angegeben wird, werden alle Datensätze der Abfrage verwendet. |
 | Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende zu einem einzelnen Wert zusammenzufassen.<br><br>– Durchschnitt: Durchschnitt der Werte von allen Datensätzen.<br>– Anzahl: Anzahl aller von der Abfrage zurückgegebenen Datensätze.<br>– Letztes Beispiel: Wert aus dem letzten Intervall im Diagramm.<br>– Max: Höchstwert aus den Intervallen im Diagramm.<br>– Min: Mindestwert aus den Intervallen im Diagramm.<br>– Summe: Summe der Werte von allen Datensätzen. |
-| **Liniendiagramm** |**> Y-Achse** |
+| **Liniendiagramm** |**&gt; Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diese Option aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
 | Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an.  Diese Informationen werden verwendet, um Bezeichnungen im Diagramm anzuzeigen, die Werttypen angeben, und um optional Werte zu konvertieren.  Der Typ der Einheit gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in „Aktuelle Einheit“.  Bei Auswahl eines Werts in „Konvertieren in“ werden die numerischen Werte vom Typ in „Aktuelle Einheit“ in den Typ in „Konvertieren in“ konvertiert. |
 | Benutzerdefinierte Bezeichnung |Text, der für die Y-Achse neben der Bezeichnung für den Typ der Einheit angezeigt wird.  Wenn keine Bezeichnung angegeben ist, wird nur der Typ der Einheit angezeigt. |
@@ -242,10 +242,10 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Vorgang |Vorgang, der für die Sparkline ausgeführt werden soll.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
 | Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
-| **Liste** |**> Spaltentitel** |
+| **Liste** |**&gt; Spaltentitel** |
 | Name |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
 | Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
-| **Liste** |**> Schwellenwerte** |
+| **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
 ## <a name="line-chart--list-part"></a>Komponente mit Liniendiagramm und Liste
@@ -265,7 +265,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Untertitel |Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
 | **Liniendiagramm** | |
 | Abfragen |Abfrage, die für das Liniendiagramm ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Dies ist normalerweise eine Abfrage, in der das Schlüsselwort für die **Maßeinheit** verwendet wird, um die Ergebnisse zusammenzufassen.  Wenn in der Abfrage das Schlüsselwort für das **Intervall** verwendet wird, wird für die X-Achse des Diagramms dieses Intervall verwendet.  Wenn die Abfrage das Schlüsselwort für das **Intervall** nicht enthält, werden stündliche Intervalle für die X-Achse verwendet. |
-| **Liniendiagramm** |**> Y-Achse** |
+| **Liniendiagramm** |**&gt; Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diese Option aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
 | Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an.  Diese Informationen werden verwendet, um Bezeichnungen im Diagramm anzuzeigen, die Werttypen angeben, und um optional Werte zu konvertieren.  Der Typ der Einheit gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in „Aktuelle Einheit“.  Bei Auswahl eines Werts in „Konvertieren in“ werden die numerischen Werte vom Typ in „Aktuelle Einheit“ in den Typ in „Konvertieren in“ konvertiert. |
 | Benutzerdefinierte Bezeichnung |Text, der für die Y-Achse neben der Bezeichnung für den Typ der Einheit angezeigt wird.  Wenn keine Bezeichnung angegeben ist, wird nur der Typ der Einheit angezeigt. |
@@ -277,10 +277,10 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Vorgang |Vorgang, der für die Sparkline ausgeführt werden soll.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
 | Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
-| **Liste** |**> Spaltentitel** |
+| **Liste** |**&gt; Spaltentitel** |
 | Name |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
 | Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
-| **Liste** |**> Schwellenwerte** |
+| **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
 ## <a name="stack-of-line-charts-part"></a>Komponente mit Liniendiagrammstapel
@@ -294,12 +294,12 @@ Zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im zeitl
 | Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
 | Neue Gruppe |Wählen Sie diese Option aus, um in der Ansicht auf der Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
 | Symbol |Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
-| **Diagramm 1<br>Diagramm 2<br>Diagramm 3** |**> Kopfzeile** |
+| **Diagramm 1<br>Diagramm 2<br>Diagramm 3** |**&gt; Kopfzeile** |
 | Titel |Text, der oben im Diagramm angezeigt wird. |
 | Untertitel |Text, der unter dem Titel oben im Diagramm angezeigt wird. |
 | **Diagramm 1<br>Diagramm 2<br>Diagramm 3** |**Liniendiagramm** |
 | Abfragen |Abfrage, die für das Liniendiagramm ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Dies ist normalerweise eine Abfrage, in der das Schlüsselwort für die **Maßeinheit** verwendet wird, um die Ergebnisse zusammenzufassen.  Wenn in der Abfrage das Schlüsselwort für das **Intervall** verwendet wird, wird für die X-Achse des Diagramms dieses Intervall verwendet.  Wenn die Abfrage das Schlüsselwort für das **Intervall** nicht enthält, werden stündliche Intervalle für die X-Achse verwendet. |
-| **Diagramm** |**> Y-Achse** |
+| **Diagramm** |**&gt; Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diese Option aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
 | Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an.  Diese Informationen werden verwendet, um Bezeichnungen im Diagramm anzuzeigen, die Werttypen angeben, und um optional Werte zu konvertieren.  Der Typ der Einheit gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in „Aktuelle Einheit“.  Bei Auswahl eines Werts in „Konvertieren in“ werden die numerischen Werte vom Typ in „Aktuelle Einheit“ in den Typ in „Konvertieren in“ konvertiert. |
 | Benutzerdefinierte Bezeichnung |Text, der für die Y-Achse neben der Bezeichnung für den Typ der Einheit angezeigt wird.  Wenn keine Bezeichnung angegeben ist, wird nur der Typ der Einheit angezeigt. |

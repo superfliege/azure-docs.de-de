@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/04/2017
 ms.author: haining;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f4e53fa46a6b7f8811e4fee67b1466786b81cdc9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Übersichtsdiagramm der Azure Machine Learning Studio-Funktionen
 Das Diagramm **Übersicht der Microsoft Azure Machine Learning Studio-Funktionen** bietet eine allgemeine Übersicht, wie Machine Learning Studio dazu verwendet werden kann, Predictive Analytics-Modelle zu entwickeln und diese in der Azure-Cloud anzuwenden.
@@ -51,5 +50,4 @@ Laden Sie das Diagramm **Übersicht der Microsoft Azure Machine Learning Studio-
 * Ausführliche Beschreibungen der Algorithmen für maschinelles Lernen, die in Machine Learning Studio verfügbar sind, finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](algorithm-choice.md).
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 

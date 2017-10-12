@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 2637ab6405f2d4ea1da84981295a144874dfa4f6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegieren von Benutzerregistrierung und Produktabonnierung
 Mit der Delegierung können Sie Anmeldung, Registrierung und Produktabonnierung von Entwicklern mit Ihrer vorhandenen Website umsetzen, anstatt die integrierte Funktion im Entwicklerportal zu verwenden. Auf diese Weise besitzt die Website die Benutzerdaten und kann die Prüfung dieser Schritte auf selbst definierte Weise durchführen.
 
-## <a name="delegate-signin-up"> </a>Delegieren von Anmeldung und Registrierung für Entwickler
+## <a name="delegate-signin-up"></a>Delegieren von Anmeldung und Registrierung für Entwickler
 Um die Anmeldung und Registrierung für Entwickler in Ihrer vorhandenen Website zu delegieren, müssen Sie einen speziellen Delegierungsendpunkt in Ihrer Website als Einstiegspunkt für diese aus dem API Management-Entwicklerportal gestellten Anfragen einrichten.
 
 Der komplette Workflow sieht wie folgt aus:
@@ -44,7 +44,7 @@ Anschließend müssen Sie den **Delegierungsendpunkt**einrichten. Dieser Endpunk
 
 1. Empfang einer Anforderung in der folgenden Form:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL der Herkunftsseite}&salt={Zeichenfolge}&sig={Zeichenfolge}*
+   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&amp;returnUrl={URL der Herkunftsseite}&amp;salt={Zeichenfolge}&amp;sig={Zeichenfolge}*
    > 
    > 
    
@@ -88,7 +88,7 @@ Sie müssen die folgenden Abfrageparameter für Operationen zur Kontoverwaltung 
 * **salt**: Eine spezielle Salt-Zeichenfolge, mit der ein Sicherheitshash generiert wird
 * **sig**: Ein berechneter Sicherheitshash zum Vergleich mit dem von Ihnen generierten Hash
 
-## <a name="delegate-product-subscription"> </a>Delegieren der Produktabonnierung
+## <a name="delegate-product-subscription"></a>Delegieren der Produktabonnierung
 Die Delegierung der Produktabonnierung funktioniert gleich wie die Delegierung der Anmeldung und Registrierung. Der komplette Workflow sieht wie folgt aus:
 
 1. Ein Entwickler wählt ein Produkt im API Management-Entwicklerportal aus und klickt auf die Schaltfläche "Abonnieren".
@@ -101,7 +101,7 @@ Konfigurieren Sie anschließend die folgenden Aktionen für den Delegierungsendp
 
 1. Empfang einer Anforderung in der folgenden Form:
    
-   > *http://www.Ihre Website.com/apimdelegation?operation={Operation}&productId={zu abonnierendes Produkt}&userId={Benutzer}&salt={Zeichenfolge}&sig={Zeichenfolge}*
+   > *http://www.Ihre Website.com/apimdelegation?operation={Operation}&amp;productId={zu abonnierendes Produkt}&amp;userId={Benutzer}&amp;salt={Zeichenfolge}&amp;sig={Zeichenfolge}*
    > 
    > 
    
@@ -126,7 +126,7 @@ Konfigurieren Sie anschließend die folgenden Aktionen für den Delegierungsendp
 3. Führen Sie Ihre für die Produktabonnierung erforderlichen Schritte anhand der im Parameter **operation** angeforderten Operation aus, z.B. Abrechnung, weitere Fragen usw.
 4. Nachdem der Benutzer das Produkt auf Ihrer Seite erfolgreich abonniert hat, abonnieren Sie das Produkt in API Management für den Benutzer, indem Sie die [REST-API für die Produktabonnierung]aufrufen.
 
-## <a name="delegate-example-code"> </a> Beispielcode
+## <a name="delegate-example-code"></a> Beispielcode
 Diese Codebeispiele zeigen, wie Sie mit dem *Überprüfungsschlüssel für die Delegierung*, der im Herausgeberportal auf dem Bildschirm für die Delegierung festgelegt wird, einen HMAC erstellen, mit dessen Hilfe anschließend die Signatur überprüft wird, um die Gültigkeit der übergebenen „returnUrl“ nachzuweisen. Der gleiche Code funktioniert mit geringfügigen Änderungen auch für "productId" und "userID".
 
 **C#-Code zum Generieren des Hash von "returnUrl"**

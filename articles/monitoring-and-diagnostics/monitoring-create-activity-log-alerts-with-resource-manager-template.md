@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: ancav
 ms.openlocfilehash: 92076c7fe1f867919b7e02abf79cf0fb74fb7eb4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>Erstellen einer Aktivitätsprotokollwarnung mithilfe einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mit einer [Azure Resource Manager-Vorlage](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates) Aktivitätsprotokollwarnungen konfigurieren können. Mithilfe von Vorlagen können Sie problemlos viele Warnungen einrichten, die basierend auf bestimmten Aktivitätsprotokollereignis-Bedingungen als Teil Ihres automatisierten Bereitstellungsprozesses aktiviert werden.

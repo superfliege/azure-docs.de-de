@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2016
 ms.author: dariagrigoriu
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: ef5924607868bcb3dc35e279539b78d5a0e17c1a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Kontinuierliche Bereitstellung in Azure App Service
 In diesem Tutorial erfahren Sie, wie Sie einen Workflow für die kontinuierliche Bereitstellung für Ihre [Azure-Web-Apps](app-service-web-overview.md) konfigurieren. Die Integration von App Service in BitBucket, GitHub und [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) ermöglicht einen Workflow für die kontinuierliche Bereitstellung. Hierbei werden die neuesten Updates aus Ihrem Projekt, das in einem der genannten Dienste veröffentlicht ist, per Pull nach Azure übertragen. Die kontinuierliche Bereitstellung ist hervorragend für Projekte geeignet, bei denen häufig zahlreiche Beiträge integriert werden.
@@ -96,4 +95,3 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 [Erstellen eines Repositorys (GitHub)]: https://help.github.com/articles/create-a-repo
 [Erstellen eines Repositorys (BitBucket)]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
 [Erste Schritte mit VSTS]: https://www.visualstudio.com/docs/vsts-tfs-overview
-

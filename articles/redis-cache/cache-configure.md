@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: sdanie
 ms.openlocfilehash: 0274e58eb2e83202d4dbc58da0c67d0fdde22ede
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Gewusst wie: Konfigurieren von Azure Redis Cache
 In diesem Thema wird beschrieben, wie Sie die Konfiguration für Ihre Azure Redis Cache-Instanzen überprüfen und aktualisieren. Außerdem wird die standardmäßige Redis-Serverkonfiguration für Azure Redis Cache-Instanzen beschrieben.
@@ -402,9 +402,9 @@ Neue Azure Redis Cache-Instanzen werden mit den folgenden standardmäßigen Redi
 | `maxmemory-samples` |3 |Zur Einsparung von Arbeitsspeicher sind LRU- und minimale TTL-Algorithmen keine präzisen Algorithmen, sondern angenäherte Algorithmen. Standardmäßig werden von Redis drei Schlüssel geprüft, und es wird der Schlüssel ausgewählt, der vor längerer Zeit verwendet wurde. |
 | `lua-time-limit` |5.000 |Maximale Ausführungszeit eines Lua-Skripts in Millisekunden. Wenn die maximale Ausführungszeit erreicht wird, protokolliert Redis, dass ein Skript nach der maximal zulässigen Ausführungszeit weiterhin ausgeführt wird. Es wird dann damit begonnen, auf Abfragen mit einem Fehler zu antworten. |
 | `lua-event-limit` |500 |Maximale Größe der Skriptereigniswarteschlange. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Die Clientausgabepuffer-Grenzwerte können verwendet werden, um die Verbindungstrennung für Clients zu erzwingen, die aus einem bestimmten Grund Daten nicht schnell genug vom Server lesen. (Ein häufiger Grund ist, dass ein Pub/Sub-Client Nachrichten nicht so schnell verarbeiten kann, wie sie von der veröffentlichenden Stelle produziert werden.) Weitere Informationen finden Sie unter [http://redis.io/topics/clients](http://redis.io/topics/clients). |
+| `client-output-buffer-limit``normalclient-output-buffer-limit``pubsub` |0 0 032mb 8mb 60 |Die Clientausgabepuffer-Grenzwerte können verwendet werden, um die Verbindungstrennung für Clients zu erzwingen, die aus einem bestimmten Grund Daten nicht schnell genug vom Server lesen. (Ein häufiger Grund ist, dass ein Pub/Sub-Client Nachrichten nicht so schnell verarbeiten kann, wie sie von der veröffentlichenden Stelle produziert werden.) Weitere Informationen finden Sie unter [http://redis.io/topics/clients](http://redis.io/topics/clients). |
 
-<a name="databases"></a> 
+<a name="databases"></a>
 <sup>1</sup>Der Grenzwert für `databases` ist für jeden Azure Redis Cache-Tarif unterschiedlich und kann bei der Erstellung des Caches festgelegt werden. Wenn bei der Cacheerstellung keine Einstellung für `databases` angegeben wird, wird der Standardwert (16) verwendet.
 
 * Caches vom Typ „Basic“ und „Standard“
@@ -429,7 +429,7 @@ Weitere Informationen zu Datenbanken finden Sie unter [Was sind Redis-Datenbanke
 > 
 > 
 
-<a name="maxclients"></a> 
+<a name="maxclients"></a>
 <sup>2</sup>`maxclients` ist für jeden Azure Redis Cache-Tarif unterschiedlich.
 
 * Caches vom Typ „Basic“ und „Standard“

@@ -16,14 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2fee04ee11210b9081fc7edb64da1f0210f1bd06
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
 Sie können mithilfe einer Azure Resource Manager-Vorlage eine Funktions-App bereitstellen. In diesem Artikel werden die erforderlichen Ressourcen und die Parameter hierfür beschrieben. Abhängig von den [Triggern und Bindungen](functions-triggers-bindings.md) in Ihrer Funktions-App müssen Sie möglicherweise weitere Ressourcen bereitstellen.
@@ -293,4 +291,3 @@ Machen Sie sich näher mit dem Entwickeln und Konfigurieren von Azure Functions 
 
 [Funktions-App im Verbrauchsplan]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic/azuredeploy.json
 [Funktions-App im Azure App Service-Plan]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json
-

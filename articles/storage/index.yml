@@ -39,7 +39,7 @@ sections:
         style: ordered
         items:
           - html: <a href="/azure/storage/blobs/storage-upload-process-images">Upload and retrieve image data in the cloud</a> (Hochladen und Abrufen von Imagedaten in der Cloud)
-          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Trigger Azure Functions to process blobs</a> (Auslösen von Azure-Funktionen zum Verarbeiten von Blobs)
+          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Trigger Azure Functions to process blobs</a> (Auslösen von Azure-Funktionen zum Verarbeiten von Blobs)
           - html: <a href="/azure/storage/blobs/storage-secure-access-application">Secure application data</a> (Schützen von Anwendungsdaten)
           - html: <a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Monitor and troubleshoot storage</a> (Überwachung und Problembehandlung bei Speicher)
   - title: Beispiele
@@ -51,7 +51,7 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
-          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure-CLI</a>
+          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure-Befehlszeilenschnittstelle</a>
   - title: Kostenloses PluralSight-Videotraining
     items:
       - type: list

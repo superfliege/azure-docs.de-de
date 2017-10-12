@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 06/29/2017
 ms.author: joeyong;barbkess
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 0d156bc2eecf8220bd5ff4eb811d91482f216837
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-your-data"></a>Migrieren von Daten
 Daten können aus unterschiedlichen Quellen und mithilfe verschiedener Tools in Ihr SQL Data Warehouse verschoben werden.  Zum Erreichen dieses Ziels können die ADF-Kopieraktivität, SSIS und bcp verwendet werden. Mit zunehmender Menge der Daten empfiehlt es sich jedoch, den Vorgang der Datenmigration in verschiedene Schritte aufzugliedern. Dies bietet Ihnen die Möglichkeit, die einzelnen Schritte im Hinblick auf Leistung und Belastbarkeit zu optimieren und so eine reibungslose Datenmigration zu gewährleisten.
@@ -208,4 +207,3 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][deve
 [preview version]: http://aka.ms/downloadazcopypr/
 [ADO.NET destination adapter]: https://msdn.microsoft.com/library/bb934041.aspx
 [SSIS documentation]: https://msdn.microsoft.com/library/ms141026.aspx
-
