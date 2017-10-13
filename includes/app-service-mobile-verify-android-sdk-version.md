@@ -1,17 +1,17 @@
-Aufgrund der ständigen Entwicklung entsprechen in Android Studio installierte Android-SDK-Version möglicherweise nicht die Version im Code. Android SDK, auf die verwiesen wird in diesem Lernprogramm wird die Version 23, die neueste zum Zeitpunkt der Verfassung. Die Versionsnummer erhöhen, da neue Versionen des SDK angezeigt, und es wird empfohlen, die neueste verfügbare Version.
+Aufgrund ständiger Weiterentwicklung stimmt die Version des in Android Studio installierten Android-SDK unter Umständen nicht mit der Version im Code überein. In diesem Tutorial wird von Version 23 des Android-SDK ausgegangen. Das war die neueste Version zum Zeitpunkt des Verfassens. Mit neuen Ausgaben des SDK kann die Versionsnummer größer werden. Es empfiehlt sich, die neueste verfügbare Version zu verwenden.
 
-Versionskonflikt zwei Symptome sind:
+Zwei Symptome nicht übereinstimmender Versionen sind:
 
-- Wenn Sie erstellen oder das Projekt neu erstellen, erhalten Sie möglicherweise Fehlermeldungen wie Gradle "**Fehler beim Suchen des Ziel Google Inc.:Google APIs:n**".
-- Standard-Android-Objekte im Code, der aufgelöst werden soll, basierend auf `import` Anweisungen möglicherweise Fehlermeldungen generiert werden.
+- Wenn Sie das Projekt erstellen oder erneut erstellen, erhalten Sie möglicherweise eine Gradle-Fehlermeldung mit einem Hinweis wie **Ziel nicht gefunden: Google Inc.:Google APIs:n**.
+- Standard-Android-Objekte im Code, die auf Grundlage von `import` -Ausdrücken aufgelöst werden sollten, können Fehlermeldungen verursachen.
 
-Wenn eine dieser Optionen angezeigt wird, entsprechen die Version von Android SDK in Android Studio installiert das SDK-Ziel des heruntergeladenen Projekt möglicherweise nicht. Um die Version zu überprüfen, nehmen Sie die folgenden Änderungen:
+Wenn eines dieser Symptome auftritt, stimmt die Version des in Android Studio installierten Android SDK möglicherweise nicht mit dem SDK-Ziel des heruntergeladenen Projekts überein. Zur Überprüfung der Version nehmen Sie die folgenden Änderungen vor:
 
-1. Klicken Sie in Android Studio **Tools** > **Android** > **SDK-Manager**. Wenn Sie nicht die neueste Version der Plattform SDK installiert haben, klicken Sie dann auf um es zu installieren. Notieren Sie die Versionsnummer.
-2. Auf der **Projektexplorer** Registerkarte **Gradle-Skripts**, öffnen Sie die Datei **build.gradle (Modeule: app)**. Sicherstellen, dass die **CompileSdkVersion** und **BuildToolsVersion** festgelegt sind, auf die neueste SDK-Version installiert. Die Tags können wie folgt aussehen:
+1. Klicken Sie in Android Studio auf **Tools** > **Android** > **SDK Manager**. Wenn nicht die neueste Version der SDK-Plattform installiert ist, so klicken Sie zur Installation. Notieren Sie sich die Versionsnummer.
+2. Öffnen Sie auf der Registerkarte **Projektexplorer** unter **Gradle Scripts** (Gradle-Skripts) die Datei **build.gradle (module: app)**. Vergewissern Sie sich, dass für **compileSdkVersion** und **buildToolsVersion** die neueste installierte SDK-Version festgelegt ist. Die Tags könnten folgendermaßen aussehen:
 
              compileSdkVersion 'Google Inc.:Google APIs:23'
             buildToolsVersion "23.0.2"
-3. Android Studio-Projekt-Explorer mit der Maustaste des Projektknotens, wählen Sie **Eigenschaften**, und wählen Sie in der linken Spalte **Android**. Sicherstellen, dass die **Projektziel erstellen** festgelegt ist, auf die gleiche SDK-Version als die **TargetSdkVersion**.
+3. Klicken Sie im Android Studio-Projektexplorer mit der rechten Maustaste auf den Projektknoten, und wählen Sie **Properties** (Eigenschaften) und dann in der linken Spalte **Android** aus. Stellen Sie sicher, dass für **Project Build Target** (Projektbuildziel) dieselbe SDK-Version wie für **targetSdkVersion** angegeben ist.
 
-In Android Studio ist die Manifestdatei nicht mehr an das Ziel SDK und die minimale SDK-Version, anders als bei Eclipse verwendet.
+In Android Studio wird anders als bei Eclipse die Manifestdatei nicht mehr dazu verwendet, die Ziel-SDK und die SDK-Mindestversion anzugeben.

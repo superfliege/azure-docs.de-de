@@ -1,17 +1,17 @@
-Nun, dass Sie einen Trigger hinzugefügt haben, ist es Zeit für etwas Interessantes mit den Daten, die vom Trigger generiert wird. Führen Sie diese Schritte zum Hinzufügen der **Service Bus - Nachricht senden** Aktion. Diese Aktion sendet eine Nachricht an Service Bus.  
+Nachdem Sie nun einen Trigger hinzugefügt haben, ist es an der Zeit, die vom Trigger generierten Daten sinnvoll zu nutzen. Führen Sie die folgenden Schritte zum Hinzufügen der Aktion **Service Bus – Nachricht senden** aus. Diese Aktion sendet eine Nachricht an Service Bus.  
 
-Führen Sie diese Schritte, um die Nachricht Sendeaktion erstellen:  
+Führen Sie die folgenden Schritte zum Erstellen einer Aktion „Nachricht senden“ aus:  
 
-1. Wählen Sie **+ neuen Schritt** die Aktion hinzufügen.  
-2. Wählen Sie **fügen Sie eine Aktion**. Dieser wird geöffnet, ein Suchfeld, in dem Sie für jede Aktion suchen können übernehmen möchten. In diesem Beispiel sind Service Bus-Aktionen von Interesse sind.    
-   ![Abbildung 1 – Service Bus Aktion](./media/connectors-create-api-servicebus/action-1.png)   
-3. Geben Sie *service Bus-*.  
-4. Wählen Sie **Service Bus - Nachricht senden** als die zu ergreifende Maßnahme.  
-   ![Abbildung 2 – Servicebus Aktion](./media/connectors-create-api-servicebus/action-2.png)    
-5. Geben Sie den Inhalt für die Nachricht ein. Dies ist erforderlich.  
-6. Geben Sie die Warteschlange oder ein Thema ein, an die die Nachricht gesendet wird. Dies ist auch erforderlich.   
-7. Geben Sie andere Details zur Nachricht. Dies ist optional.     
-   ![Abbildung 3 – Servicebus Aktion](./media/connectors-create-api-servicebus/action-3.png)    
-8. Speichern Sie die Änderungen an den Workflow ein.   
-   ![Abbildung 4 – Servicebus Aktion](./media/connectors-create-api-servicebus/action-4.png)     
+1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion hinzuzufügen.  
+2. Wählen Sie **Aktion hinzufügen**. Daraufhin öffnet sich ein Suchfeld, in dem Sie nach der gewünschten Aktion suchen können. In diesem Beispiel sind Service Bus-Aktionen von Interesse.    
+   ![Service Bus-Aktion – Abbildung 1](./media/connectors-create-api-servicebus/action-1.png)   
+3. Geben Sie *Service Bus*ein.  
+4. Wählen Sie **Service Bus - Nachricht senden** als die auszuführende Aktion aus.  
+   ![Service Bus-Aktion – Abbildung 2](./media/connectors-create-api-servicebus/action-2.png)    
+5. Geben Sie den Inhalt der Nachricht ein. Dies ist erforderlich.  
+6. Geben Sie den Warteschlangen- oder Themennamen ein, an den die Nachricht gesendet wird. Dies ist auch erforderlich.   
+7. Geben Sie weitere Informationen über die Nachricht ein. Dies ist optional.     
+   ![Service Bus-Aktion – Abbildung 3](./media/connectors-create-api-servicebus/action-3.png)    
+8. Speichern Sie die Änderungen am Workflow.   
+   ![Service Bus-Aktion – Abbildung 4](./media/connectors-create-api-servicebus/action-4.png)     
 

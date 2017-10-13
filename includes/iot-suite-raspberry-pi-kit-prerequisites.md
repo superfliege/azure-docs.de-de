@@ -1,31 +1,31 @@
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dieses Lernprogramm abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
+Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 
 > [!NOTE]
-> Wenn Sie keines Konto haben, können Sie in wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [kostenlose Azure-Testversion][lnk-free-trial].
+> Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].
 
 ### <a name="required-software"></a>Erforderliche Software
 
-Sie benötigen die SSH-Client auf dem Desktopcomputer, für den Remotezugriff von der Befehlszeile auf die Brombeere Pi zu können.
+Sie benötigen einen SSH-Client auf Ihrem Desktopcomputer, um per Remotezugriff auf die Befehlszeile des Raspberry Pi zugreifen zu können.
 
-- Windows umfasst einen SSH-Client nicht. Es wird empfohlen, [PuTTY](http://www.putty.org/).
-- Die meisten Linux-Distributionen und Mac OS enthalten die SSH-Befehlszeile-Hilfsprogramm. Weitere Informationen finden Sie unter [SSH mithilfe von Linux oder Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- In Windows ist kein SSH-Client enthalten. Wir empfehlen die Verwendung von [PuTTY](http://www.putty.org/).
+- In den meisten Linux-Distributionen sowie in Mac OS ist ein SSH-Befehlszeilenprogramm enthalten. Weitere Informationen finden Sie unter [SSH Using Linux or Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md) (SSH unter Linux oder Mac OS).
 
-### <a name="required-hardware"></a>Erforderliche hardware
+### <a name="required-hardware"></a>Erforderliche Hardware
 
-Ein Desktopcomputer, um die Befehlszeile auf die Brombeere Pi herstellen können.
+Ein Desktopcomputer, über den Sie eine Remoteverbindung mit der Befehlszeile auf dem Raspberry Pi herstellen können.
 
-[Microsoft IoT Starter Kit für Brombeere Pi 3] [ lnk-starter-kits] oder entsprechende Komponenten. Dieses Lernprogramm verwendet die folgenden Elemente aus dem Kit:
+[Microsoft IoT Starter Kit für Raspberry Pi 3][lnk-starter-kits] oder entsprechende Komponenten. In diesem Tutorial wird Folgendes aus dem Kit verwendet:
 
-- Brombeere Pi 3
+- Raspberry Pi 3
 - MicroSD-Karte (mit NOOBS)
-- Ein USB-Mini-Kabel
-- Ein Ethernet-Kabel
-- BME280-Temperatursensor
+- Ein Mini-USB-Kabel
+- Ein Ethernetkabel
+- BME280-Sensor
 - Breadboard
-- Jumperdrähten
-- Widerstand
+- Jumperdrähte
+- Widerstände
 - LEDs
 
 [lnk-starter-kits]: https://azure.microsoft.com/develop/iot/starter-kits/

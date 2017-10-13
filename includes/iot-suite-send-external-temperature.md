@@ -1,44 +1,44 @@
-## <a name="configure-the-nodejs-simulated-device"></a>Konfigurieren Sie das Node.js simulierte Gerät
-1. Klicken Sie auf das entfernte überwachungsdashboard auf **+ Hinzufügen eines Geräts** und fügen Sie dann eine *benutzerdefinierte*. Notieren Sie sich den IoT Hub Hostname, Geräte-Id und Geräteschlüssel. Sie benötigen sie später in diesem Lernprogramm, wenn Sie die Clientanwendung für remote_monitoring.js-Gerät vorbereiten.
-2. Stellen Sie sicher, dass Version Node.js 0.12.x oder höher auf dem Entwicklungscomputer installiert ist. Führen Sie `node --version` an der Eingabeaufforderung oder in einer Shell auf die Version zu überprüfen. Informationen zur Verwendung von Paket-Manager zum Installieren von Node.js unter Linux finden Sie unter [Installation von Node.js über Paket-Manager][node-linux].
-3. Bei der Installation von Node.js Klonen Sie die neueste Version der [Azure Iot-Sdk-Knoten] [ lnk-github-repo] Repository auf Ihrem Entwicklungscomputer. Verwenden Sie immer die **master** Verzweigung für die neueste Version der Bibliotheken und Beispiele.
-4. Aus der lokalen Kopie der [Azure Iot-Sdk-Knoten] [ lnk-github-repo] Repository, die folgenden beiden Dateien kopieren von Knoten/Gerät/Beispielordner zu einem leeren Ordner auf dem Entwicklungscomputer:
+## <a name="configure-the-nodejs-simulated-device"></a>Konfigurieren des simulierten Node.js-Geräts
+1. Klicken Sie im Dashboard für die Remoteüberwachung auf **+ Gerät hinzufügen** , und fügen Sie ein *benutzerdefiniertes Gerät* hinzu. Notieren Sie sich den IoT Hub-Hostnamen, die Geräte-ID und den Geräteschlüssel. Sie benötigen diese Informationen im weiteren Verlauf dieses Tutorials, wenn Sie die Geräteclientanwendung „remote_monitoring.js“ vorbereiten.
+2. Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die Node.js-Version 0.12.x installiert ist. Führen Sie an einer Eingabeaufforderung oder in der Shell `node --version` aus, um die Version zu überprüfen. Informationen zur Verwendung eines Paket-Managers zum Installieren von Node.js unter Linux finden Sie unter [Installieren von Node.js mithilfe eines Paket-Managers][node-linux].
+3. Wenn Sie Node.js installiert haben, klonen Sie die neueste Version des Repositorys [azure-iot-sdk-node][lnk-github-repo] auf Ihren Entwicklungscomputer. Verwenden Sie stets die Verzweigung **master** , die die neueste Version der Bibliotheken und Beispiele bietet.
+4. Kopieren Sie in Ihrer lokalen Kopie des Repositorys [azure-iot-sdk-node][lnk-github-repo] die beiden folgenden Dateien aus dem Ordner „node/device/samples“ in einen leeren Ordner auf Ihrem Entwicklungscomputer:
    
-   * Packages.JSON
+   * packages.json
    * remote_monitoring.js
-5. Öffnen Sie die Datei remote_monitoring.js, und suchen Sie nach der Definition der folgenden Variablen:
+5. Öffnen Sie die Datei „remote_monitoring.js“, und suchen Sie nach der folgenden Variablendefinition:
    
     ```
     var connectionString = "[IoT Hub device connection string]";
     ```
-6. Ersetzen Sie **[IoT Hub Gerät-Verbindungszeichenfolge]** mit Ihrem Gerät-Verbindungszeichenfolge. Verwenden Sie die Werte für Ihre IoT Hub-Hostname, Geräte-Id und Geräteschlüssel, die Sie in Schritt 1 notiert vorgenommen. Eine Verbindungszeichenfolge Gerät weist das folgende Format:
+6. Ersetzen Sie **[IoT Hub device connection string]** durch Ihre Geräteverbindungszeichenfolge. Verwenden Sie die Werte für Ihren IoT Hub-Hostnamen, die Geräte-ID und den Geräteschlüssel, die Sie in Schritt 1 notiert haben. Eine Geräteverbindungszeichenfolge hat folgendes Format:
    
     ```
     HostName={your IoT Hub hostname};DeviceId={your device id};SharedAccessKey={your device key}
     ```
    
-    Wenn Ihre IoT Hub-Hostname ist **Contoso** und die Geräte-Id ist **Mydevice**, sieht wie folgt der folgende Ausschnitt aus die Verbindungszeichenfolge:
+    Wenn der IoT Hub-Hostname **contoso** und die Geräte-ID **mydevice** lautet, sieht Ihre Verbindungszeichenfolge wie folgt aus:
    
     ```
     var connectionString = "HostName=contoso.azure-devices.net;DeviceId=mydevice;SharedAccessKey=2s ... =="
     ```
-7. Speichern Sie die Datei. Führen Sie die folgenden Befehle in einer Shell oder eine Eingabeaufforderung in den Ordner mit diesen Dateien zum Installieren der erforderlichen Pakete und führen Sie die beispielanwendung aus:
+7. Speichern Sie die Datei. Führen Sie die folgenden Befehle in einer Shell oder an einer Eingabeaufforderung im Ordner mit diesen Dateien aus, um die erforderlichen Pakete zu installieren. Führen Sie dann die Beispielanwendung aus:
    
     ```
     npm install
     node remote_monitoring.js
     ```
 
-## <a name="observe-dynamic-telemetry-in-action"></a>Beachten Sie die dynamische Telemetrie in Aktion
-Das Dashboard zeigt die Temperatur und Luftfeuchtigkeit Telemetrie aus den vorhandenen simulierten Geräten:
+## <a name="observe-dynamic-telemetry-in-action"></a>Beobachten dynamischer Telemetriedaten in Aktion
+Das Dashboard zeigt die Telemetriedaten zu Temperatur und Feuchtigkeit von den vorhandenen simulierten Geräten:
 
-![Der Standard-dashboard][image1]
+![Das Standarddashboard][image1]
 
-Wenn Sie das Node.js simulierte Gerät, das Sie im vorherigen Abschnitt ausgeführt haben auswählen, sehen Sie Temperatur, Luftfeuchtigkeit und externen Temperatur Telemetrie:
+Wenn Sie das simulierte Node.js-Gerät auswählen, das Sie im vorherigen Abschnitt ausgeführt haben, werden Telemetriedaten zu Temperatur, Luftfeuchtigkeit und Außentemperatur angezeigt:
 
-![Externe Temperatur zum Dashboard hinzufügen.][image2]
+![Hinzufügen von Außentemperaturen zum Dashboard][image2]
 
-Der remote-überwachungslösung automatisch erkennt den zusätzlichen externen Temperatur Telemetrie-Typ und das Diagramm auf dem Dashboard hinzugefügt.
+Die Remoteüberwachungslösung erkennt automatisch die zusätzlichen Telemetriedaten zur Außentemperatur und fügt sie dem Diagramm im Dashboard hinzu.
 
 [node-linux]: https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager
 [lnk-github-repo]: https://github.com/Azure/azure-iot-sdk-node

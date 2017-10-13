@@ -4,27 +4,27 @@
 >
 >
 
-Die folgenden Beschränkungen gelten für protokollanalyseressourcen pro Abonnement:
+Für Log Analytics-Ressourcen gelten pro Abonnement die folgenden Einschränkungen:
 
 | Ressource | Standardlimit | Kommentare
 | --- | --- | --- |
-| Anzahl der freien Arbeitsbereiche pro Abonnement | 10 | Dieser Grenzwert kann nicht vergrößert werden. |
-| Anzahl der bezahlten Arbeitsbereiche pro Abonnement | N/V | Sie sind durch die Anzahl von Ressourcen innerhalb einer Ressourcengruppe und die Anzahl von Ressourcengruppen pro Abonnement beschränkt. | 
+| Anzahl von kostenlosen Arbeitsbereichen pro Abonnement | 10 | Dieser Grenzwert kann nicht erhöht werden. |
+| Anzahl von kostenpflichtigen Arbeitsbereichen pro Abonnement | – | Sie sind durch die Anzahl von Ressourcen innerhalb einer Ressourcengruppe und die Anzahl von Ressourcengruppen pro Abonnement eingeschränkt. | 
 
 
-Die folgenden Beschränkungen gelten für jeden Arbeitsbereich für Protokollanalyse:
+Die folgenden Grenzwerte gelten für jeden Log Analytics-Arbeitsbereich:
 
-|  | Free | Standard | Premium | Eigenständig | OMS |
+|  | Kostenlos | Standard | Premium | Eigenständig | OMS |
 | --- | --- | --- | --- | --- | --- |
-| Datenvolume pro Tag erfasst |500 MB<sup>1</sup> |Keine |Keine | Keine | Keine
-| Beibehaltungsdauer |7 Tage |1 Monat |12 Monate | 1 Monat<sup>2</sup> | 1 Monat <sup>2</sup>|
+| Pro Tag erfasstes Datenvolumen |500 MB<sup>1</sup> |Keine |Keine | Keine | Keine
+| Aufbewahrungszeitraum |7 Tage |1 Monat |12 Monate | 1 Monat<sup>2</sup> | 1 Monat<sup>2</sup>|
 
-<sup>1</sup> bei Kunden, die Daten-Übertragung ihrer 500 MB tagesgrenze erreicht, die Datenanalyse beendet und wird zu Beginn des nächsten Tages fortgesetzt. Täglich basiert auf UTC.
+<sup>1</sup>Wenn Kunden bei der Datenübertragung das Tageslimit von 500 MB erreichen, wird die Datenanalyse beendet und am nächsten Morgen fortgesetzt. Ein Tag wird in UTC-Zeit ausgegeben.
 
-<sup>2</sup> Beibehaltungsdauer der Daten für die eigenständige und die OMS-Preisgestaltung Pläne und 730 Tagen erhöht werden kann.
+<sup>2</sup>Der Aufbewahrungszeitraum für die Tarife „Eigenständig“ und „OMS“ kann auf 730 Tage erhöht werden.
 
-| Kategorie | Limits | Kommentare
+| Kategorie | Grenzen | Kommentare
 | --- | --- | --- |
-| Datensammler-API | Maximale Größe einer einzelnen POST-Anforderung ist 30 MB<br>Maximale Größe für Feldwerte beträgt 32 KB | Teilen Sie größere Volumes in mehrere Beiträge<br>Felder, die länger als 32 KB werden abgeschnitten. |
-| Search-API | 5000 für nicht-aggregierte Daten zurückgegebenen Datensätze<br>500000 Einträge für die aggregierten Daten | Aggregierte Daten werden eine Suche, die enthält die `measure` Befehl
+| Data Collector API (Datensammler-API) | Die maximale Größe für einen einzelnen Beitrag beträgt 30 MB.<br>Die maximale Größe für Feldwerte beträgt 32 KB. | Teilen Sie größere Volumen auf mehrere Beiträge auf.<br>Felder mit einer Länge von mehr als 32 KB werden abgeschnitten. |
+| Search-API | 5000 zurückgegebene Datensätze (nicht aggregierte Daten)<br>500.000 Datensätze (aggregierte Daten) | Bei aggregierten Daten handelt es sich um eine Suche, die den Befehl `measure` enthält.
  

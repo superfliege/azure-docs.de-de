@@ -1,15 +1,15 @@
-1. Kopieren Sie die Installation auf den Server, und öffnen Sie das Installationsprogramm aus.
-2. Auf der **Installationsoption** Blatt select **Mobilitätsdienst installieren**.
+1. Kopieren Sie die Installation auf den Server, und öffnen Sie das Installationsprogramm.
+2. Wählen Sie auf dem Blatt **Installationsoption** die Option **Install Mobility Service** (Mobility Service installieren) aus.
 
-    ![Mobility Service installiert Optionsseite ](./media/site-recovery-install-mob-svc-gui/mobility1.png)
-3. Wählen Sie den Installationsspeicherort aus, und klicken Sie auf **installieren** , wird der Installationsvorgang.
+    ![Optionsseite für die Mobility Service-Installation ](./media/site-recovery-install-mob-svc-gui/mobility1.png)
+3. Wählen Sie den Installationsspeicherort aus, und klicken Sie auf **Installieren**, um den Installationsvorgang zu starten.
 
-    ![Mobility Service installiert Lageseite ](./media/site-recovery-install-mob-svc-gui/mobility2.png)
-4. Sie können **Installationsstatus** Seite, um das Installationsprogramm Fortschritt zu überwachen.
-    ![Mobility Service Fortschritt](./media/site-recovery-install-mob-svc-gui/mobility3.png)
+    ![Seite für den Speicherort der Mobility Service-Installation ](./media/site-recovery-install-mob-svc-gui/mobility2.png)
+4. Sie können auf der Seite **Installationsstatus** den Fortschritt des Installationsprogramms überwachen.
+    ![Fortschritt der Mobility Service-Installation](./media/site-recovery-install-mob-svc-gui/mobility3.png)
 
-5. Nachdem die Installation abgeschlossen ist, klicken Sie auf die **fahren Sie mit der Konfiguration** Schaltfläche, um den Mobilitätsdienst mit Ihren Konfigurationsserver registrieren.
-    ![Mobilitätsdienst Seite "registrieren"](./media/site-recovery-install-mob-svc-gui/mobility4.png)
+5. Klicken Sie nach Abschluss der Installation auf die Schaltfläche **Proceed to Configuration** (Mit der Konfiguration fortfahren), um Mobility Service beim Konfigurationsserver zu registrieren.
+    ![Seite für die Mobility Service-Registrierung ](./media/site-recovery-install-mob-svc-gui/mobility4.png)
 
-6. Klicken Sie auf die **registrieren** Schaltfläche, um die Registrierung abzuschließen.
-    ![Mobilitätsdienst Seite "registrieren"](./media/site-recovery-install-mob-svc-gui/mobility5.png)
+6. Klicken Sie auf die Schaltfläche **Registrieren**, um die Registrierung abzuschließen.
+    ![Seite für die Mobility Service-Registrierung ](./media/site-recovery-install-mob-svc-gui/mobility5.png)

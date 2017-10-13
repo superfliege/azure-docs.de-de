@@ -1,41 +1,41 @@
 
 
-Wenn Sie ein Webanwendungsprojekt für Azure erstellen, können Sie einen virtuellen Computer in Azure bereitstellen. Sie können die virtuelle Maschine mit zusätzlichen Software konfigurieren oder verwenden die virtuelle Maschine für die Diagnose oder Debuggen.
+Wenn Sie ein Webanwendungsprojekt für Azure erstellen, können Sie einen virtuellen Computer in Azure bereitstellen. Anschließend können Sie den virtuellen Computer mit zusätzlicher Software konfigurieren oder zu Diagnose- bzw. Debugzwecken verwenden.
 
-Um einen virtuellen Computer erstellen, wenn Sie eine Webanwendung erstellen, gehen Sie folgendermaßen vor:
+Befolgen Sie die folgenden Schritte, um beim Erstellen einer Webanwendung einen virtuellen Computer zu erstellen:
 
-1. Klicken Sie in Visual Studio auf **Datei** > **neu** > **Projekt** > **Web**, und wählen Sie dann **ASP.NET-Webanwendung** (unter der **Visual C#-** oder **Visual Basic** Knoten).
-2. In der **neues ASP.NET-Projekt** (Dialogfeld), wählen Sie den Typ des gewünschten Webanwendung, und stellen sicher, dass die Azure-Abschnitt des Dialogfelds (in der unteren rechten Ecke), die **Host in der Cloud** Kontrollkästchen aktiviert ist (dieses Kontrollkästchen ist mit der Bezeichnung **Remoteressourcen** in einigen Installationen).
+1. Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt** > **Web**, und wählen Sie anschließend **ASP.NET-Webanwendung** (unter dem Knoten **Visual C#** oder **Visual Basic**) aus.
+2. Wählen Sie im Dialogfeld **Neues ASP.NET-Projekt** die gewünschte Art von Webanwendung aus. Vergewissern Sie im Azure-Bereich des Dialogfelds (rechts unten), dass das Kontrollkästchen **In der Cloud hosten** aktiviert ist. (Dieses Kontrollkästchen ist bei einigen Installationen auch mit **Remoteressourcen erstellen** beschriftet.)
    
     ![][0]
-3. Wählen Sie für dieses Beispiel in der Dropdown-Liste unter Microsoft Azure **virtuellen Computer (v1)**, und klicken Sie dann auf die **OK** Schaltfläche.
-4. Melden Sie sich bei Azure an, wenn Sie aufgefordert werden. Die **Erstellen virtueller Computer** Dialogfeld wird angezeigt.
+3. Wählen Sie für dieses Beispiel in der Dropdownliste unter Microsoft Azure die Option **Virtueller Computer (V1)** aus, und klicken Sie anschließend auf die Schaltfläche **OK**.
+4. Melden Sie sich bei Azure an, wenn Sie dazu aufgefordert werden. Das Dialogfeld **Virtuellen Computer erstellen** wird angezeigt.
    
     ![][2]
-5. In der **DNS-Namen** Geben Sie einen Namen für den virtuellen Computer. Der DNS-Name muss in Azure eindeutig sein. Wenn der von Ihnen eingegebene Name nicht verfügbar ist, wird ein rotes Ausrufezeichen angezeigt.
-6. In der **Image** wählen Sie das Bild auf dem virtuellen Computer basieren soll. Sie können die standard-Azure-VM-Images oder das Bild, das Sie in Azure hochgeladen haben.
-7. Lassen Sie die **Aktivieren von IIS und Web Deploy** Kontrollkästchen aktiviert, es sei denn, Sie planen, einen anderen Webserver zu installieren. Kann nicht aus Visual Studio veröffentlichen, wenn Sie Web Deploy deaktivieren. Sie können IIS und Web Deploy an ein beliebiges Paket Windows Server-Images, einschließlich benutzerdefinierter Abbilder hinzufügen.
-8. In der **Größe** wählen Sie die Größe des virtuellen Computers.
-9. Geben Sie die Anmeldeinformationen für diesen virtuellen Computer an. Notieren Sie, da Sie ihnen den Zugriff auf die Computer über Remotedesktop benötigen.
-10. In der **Speicherort** Liste, wählen Sie die Region zum Hosten der virtuellen Maschine.
-11. Klicken Sie auf die **OK** Schaltfläche zum Starten der Erstellung des virtuellen Computers. Sie können den Fortschritt des Vorgangs im folgen der **Ausgabe** Fenster.
+5. Geben Sie im Feld **DNS-Name** einen Namen für den virtuellen Computer ein. Der DNS-Name muss in Azure eindeutig sein. Wenn der eingegebene Name nicht verfügbar ist, wird ein rotes Ausrufezeichen angezeigt.
+6. Wählen Sie in der Liste **Image** das Image aus, das als Grundlage für den virtuellen Computer dienen soll. Sie können ein beliebiges Standardimage für virtuelle Azure-Computer oder ein eigenes in Azure hochgeladenes Image auswählen.
+7. Lassen Sie das Kontrollkästchen **IIS und Web Deploy aktivieren** aktiviert, sofern Sie nicht planen, einen anderen Webserver zu installieren. Wenn Sie Web Deploy deaktivieren, können Sie nicht über Visual Studio veröffentlichen. Sie können IIS und Web Deploy zu beliebigen gepackten Windows Server-Abbildern hinzufügen, einschließlich Ihrer eigenen benutzerdefinierten Abbilder.
+8. Wählen Sie in der Liste **Größe** die Größe für den virtuellen Computer aus.
+9. Geben Sie die Anmeldeinformationen für diesen virtuellen Computer an. Notieren Sie sich diese, da sie für den Zugriff auf den Computer über den Remotedesktop erforderlich sind.
+10. Wählen Sie in der Liste **Standort** die Region zum Hosten des virtuellen Computers aus.
+11. Klicken Sie auf die Schaltfläche **OK**, um die Erstellung des virtuellen Computers zu starten. Sie können den Fortschritt des Vorgangs im Fenster **Ausgabe** verfolgen.
     
     ![][3]
-12. Wenn der virtuelle Computer bereitgestellt wird, werden veröffentlichte Skripts erstellt, einem **PublishScripts** Knoten in der Projektmappe. Das veröffentlichte Skript wird ausgeführt und stellt einen virtuellen Computer in Azure bereit. Die **Ausgabe** Fenster wird der Status angezeigt. Das Skript führt die folgenden Aktionen aus, um den virtuellen Computer einzurichten:
+12. Bei der Bereitstellung des virtuellen Computers werden veröffentlichte Skripts im Knoten **PublishScripts** Ihrer Projektmappe erstellt. Das veröffentlichte Skript wird ausgeführt und stellt einen virtuellen Computer in Azure bereit. Das Fenster **Ausgabe** zeigt den Status an. Das Skript führt die folgenden Aktionen zum Einrichten des virtuellen Computers aus:
     
-    * Erstellt die virtuelle Maschine aus, wenn er nicht bereits vorhanden.
-    * Erstellt ein Speicherkonto mit einem Namen, die mit beginnt `devtest`, jedoch nur, wenn in der angegebenen Region noch solches Speicherkonto nicht.
-    * Erstellt einen Cloud-Dienst als Container für die virtuelle Maschine und eine Webrolle für die Webanwendung erstellt.
-    * Konfigurieren von Web Deploy auf dem virtuellen Computer.
-    * Konfiguriert IIS und ASP.NET auf dem virtuellen Computer an.
+    * Erstellt den virtuellen Computer, wenn er nicht vorhanden ist.
+    * Erstellt ein Speicherkonto mit einem Namen, der mit `devtest`beginnt, jedoch nur, wenn kein derartiges Speicherkonto in der angegebenen Region vorhanden ist.
+    * Erstellt einen Clouddienst als Container für den virtuellen Computer und erstellt eine Webrolle für die Webanwendung.
+    * Konfiguriert Web Deploy auf dem virtuellen Computer.
+    * Konfiguriert IIS und ASP.NET auf dem virtuellen Computer.
     
     ![][4]
-13. (Optional) Sie können mit der neuen virtuellen Maschine verbinden. In **Server-Explorer**, erweitern Sie die **VMs** Knoten, wählen Sie den Knoten für den virtuellen Computer, die Sie erstellt haben, und klicken Sie im Kontextmenü, wählen Sie **mit Remotedesktop verbinden**. Alternativ können Sie in **Cloud Explorer** Sie könne **im Portal öffnen** im Kontextmenü und Herstellen einer Verbindung mit dem virtuellen Computer vorhanden.
+13. (Optional:) Stellen Sie eine Verbindung mit dem neuen virtuellen Computer her. Erweitern Sie im **Server-Explorer** den Knoten **Virtual Machines**. Wählen Sie anschließend den Knoten für den erstellten virtuellen Computer und dann im Kontextmenü die Option **Mit Remotedesktop verbinden** aus. Alternativ können Sie im **Cloud Explorer** im Kontextmenü die Option **Im Portal öffnen** auswählen und dort eine Verbindung mit dem virtuellen Computer herstellen.
     
     ![][5]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie die veröffentlichte Skripts anpassen, erstellen möchten, lesen Sie detailliertere Informationen [mithilfe von Windows PowerShell-Skripts zum Veröffentlichen in Entwicklungs- und Testumgebungen](http://msdn.microsoft.com/library/dn642480.aspx).
+Wenn Sie die erstellten veröffentlichten Skripts anpassen möchten, lesen Sie die detaillierteren Informationen unter [Verwenden von Windows PowerShell-Skripts zum Veröffentlichen in Entwicklungs- und Testumgebungen](http://msdn.microsoft.com/library/dn642480.aspx).
 
 [0]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_NewProject.PNG
 [1]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_SignIn.PNG

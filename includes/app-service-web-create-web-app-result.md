@@ -1,4 +1,4 @@
-Nach Erstellung der Web-App zeigt die Azure-Befehlszeilenschnittstelle eine Ausgabe wie im folgenden Beispiel an:
+Nach Erstellung der Web-App zeigt die Azure CLI eine Ausgabe wie im folgenden Beispiel an:
 
 ```json
 Local git is configured with url of 'https://<username>@<app name>.scm.azurewebsites.net/<app name>.git'

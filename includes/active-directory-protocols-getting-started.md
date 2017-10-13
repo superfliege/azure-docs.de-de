@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über das Azure AD .NET Protokoll | Microsoft Docs"
-description: Verwendung von HTTP-Nachrichten beim Autorisieren des Zugriffs auf Webanwendungen und Web-APIs in Ihrem Mandanten, die mithilfe von Azure AD.
+title: "Übersicht über das Azure AD .NET-Protokoll | Microsoft-Dokumentation"
+description: Es wird beschrieben, wie Sie HTTP-Nachrichten zum Autorisieren des Zugriffs auf Webanwendungen und Web-APIs in Ihrem Mandanten mit Azure AD verwenden.
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
@@ -14,20 +14,20 @@ ms.topic: article
 ms.date: 01/21/2016
 ms.author: priyamo
 ms.openlocfilehash: 42ce8dfd30cda7d4085778954350550fd9fdf13d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-## Registrieren Sie Ihre Anwendung mit dem AD-Mandanten
-Zunächst müssen Sie Ihre Anwendung mit Azure Active Directory (Azure AD)-Mandanten zu registrieren. Dies wird bieten Ihnen eine Anwendungs-ID für Ihre Anwendung sowie zum Empfangen von Token zu aktivieren.
+## Registrieren der Anwendung beim AD-Mandanten
+Zuerst müssen Sie Ihre Anwendung beim Azure Active Directory-Mandanten (AAD) registrieren. Hierbei erhalten Sie eine Anwendungs-ID für die Anwendung, und die Aktivierung für den Empfang von Token wird durchgeführt.
 
-* Melden Sie sich bei der [Azure-Portal](https://portal.azure.com).
-* Wählen Sie die Azure AD-Mandanten durch Klicken auf Ihr Konto in der oberen rechten Ecke der Seite.
+* Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+* Wählen Sie Ihren Azure AD-Mandanten aus, indem Sie in der oberen rechten Ecke der Seite auf Ihr Konto klicken.
 * Klicken Sie im linken Navigationsbereich auf **Azure Active Directory**.
-* Klicken Sie auf **App Registrierungen** , und klicken Sie auf **hinzufügen**.
-* Befolgen Sie die Anweisungen aus, und erstellen Sie eine neue Anwendung. Keine Rolle spielt, ob es sich um eine Webanwendung oder eine systemeigene Anwendung für dieses Lernprogramm ist, aber wenn Sie spezifische Beispiele für Webanwendungen oder systemeigenen Anwendungen möchten sehen Sie sich unsere [Schnellstarts](../articles/active-directory/develop/active-directory-developers-guide.md).
-  * Geben Sie für Webanwendungen, die **Anmelde-URL** ist die Basis-URL Ihrer App, wo können Benutzer z. B. Anmeldung `http://localhost:12345`.
+* Klicken Sie auf **App-Registrierungen**, und klicken Sie auf **Hinzufügen**.
+* Folgen Sie der Anleitung, und erstellen Sie eine neue Anwendung. Es spielt bei diesem Tutorial keine Rolle, ob es sich um eine Webanwendung oder eine native Anwendung handelt. Falls Sie spezielle Beispiele für Webanwendungen oder native Anwendungen wünschen, können Sie sich unsere [Schnellstarts](../articles/active-directory/develop/active-directory-developers-guide.md) ansehen.
+  * Geben Sie für Webanwendungen die **Anmelde-URL** an. Dies ist die Basis-URL Ihrer App, unter der sich Benutzer anmelden können, z.B. `http://localhost:12345`.
 <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
-  * Geben Sie für systemeigene Anwendungen eine **Umleitungs-URI**, die von Azure AD verwendet werden, token Antworten zurückgeben. Geben Sie einen bestimmten Wert für Ihre Anwendung. z. B.`http://MyFirstAADApp`
-* Sobald Sie die Registrierung abgeschlossen haben, wird Azure AD Ihrer Anwendung zuweisen eine eindeutige Client-ID, der die Anwendung-ID Sie benötigen diesen Wert in den nächsten Abschnitten so kopieren Sie es aus der Seite "Anwendung".
+  * Geben Sie für native Anwendungen einen **Umleitungs-URI** an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. `http://MyFirstAADApp`.
+* Nach Abschluss der Registrierung weist Azure AD Ihrer Anwendung eine eindeutige Client-ID zu, die Anwendungs-ID. Diesen Wert benötigen Sie in den nächsten Abschnitten, weswegen Sie ihn von der Anwendungsseite kopieren sollten.

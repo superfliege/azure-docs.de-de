@@ -1,7 +1,7 @@
 > [!TIP]
 > 
-> **Sehen Sie sich die Azure-Speicher Code Samples-repository**
+> **Repository mit Azure Storage-Codebeispielen**
 > 
-> Einfach zu bedienenden End-to-End-Azure-Speicher Codebeispiele, die Sie herunterladen und ausführen können, sehen Sie sich unsere Spaltenliste [Beispiele für Azure-Speicher](https://azure.microsoft.com/en-us/resources/samples/?service=storage).
+> In unserer Liste mit [Azure Storage-Beispielen](https://azure.microsoft.com/en-us/resources/samples/?service=storage) finden Sie benutzerfreundliche, umfassende Azure Storage-Codebeispiele, die Sie herunterladen und ausführen können.
 
 

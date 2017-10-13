@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/25/2017
+ms.date: 10/11/2017
 ms.author: carlrab
+ms.openlocfilehash: 70f512ef5742346df742e0718e2ccffd076a979e
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 3af597d7af13daaf80cd750b230675c8475033e1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank
 
@@ -37,7 +36,7 @@ Gehen Sie wie folgt vor, um die Dienstebene, Leistungsebene oder Speichermenge f
 ![Konfigurieren von Dienst- und Leistungsebene](./media/sql-database-single-database-resources/change-service-tier.png)
 
 > [!IMPORTANT]
-> Wenn Sie eine P11- oder P15-Dienstebene auswählen, helfen Ihnen die Informationen unter [Aktuelle Einschränkungen von P11- und P15-Datenbanken mit einer maximalen Größe von 4 TB](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb) weiter.
+> Wenn Sie eine P11- oder P15-Dienstebene auswählen, helfen Ihnen die Informationen unter [Aktuelle Einschränkungen von P11- und P15-Datenbanken mit einer maximalen Größe von 4 TB](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb) weiter.
 >
 
 ## <a name="manage-single-database-resources-using-powershell"></a>Verwalten der Ressourcen einer einzelnen Datenbank mit PowerShell
@@ -60,12 +59,12 @@ Verwenden Sie diese Befehle der [Azure CLI-SQL-Datenbank](/cli/azure/sql/db), um
 
 | Cmdlet | Beschreibung |
 | --- | --- |
-|[az sql db create](/cli/azure/sql/db#create) |Erstellt eine Datenbank|
-|[az sql db list](/cli/azure/sql/db#list)|Listet alle Datenbanken und Data Warehouses eines Servers oder alle Datenbanken eines Pools für elastische Datenbanken auf|
-|[az sql db list-editions](/cli/azure/sql/db#list-editions)|Listet verfügbare Dienstziele und Speicherlimits auf|
-|[az sql db list-usages](/cli/azure/sql/db#list-usages)|Gibt Informationen zur Datenbankverwendung zurück|
-|[az sql db show](/cli/azure/sql/db#show)|Ruft eine Datenbank oder ein Data Warehouse ab|
-|[az sql db update](/cli/azure/sql/db#update)|Aktualisiert eine Datenbank|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Erstellt eine Serverfirewallregel|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Listet die Firewallregeln auf einem Server auf|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|Zeigt die Details einer Firewallregel an|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|Aktualisiert eine Firewallregel|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Löscht eine Firewallregel|
+
 
 > [!TIP]
 > Ein Azure CLI-Beispielskript, mit dem eine Azure SQL-Einzeldatenbank auf eine andere Leistungsebene skaliert wird, nachdem die Größeninformationen der Datenbank abgerufen wurden, finden Sie unter [Überwachen und Skalieren einer einzelnen SQL-Datenbank mit der Azure CLI](scripts/sql-database-monitor-and-scale-database-cli.md).
@@ -95,7 +94,7 @@ Verwenden Sie diese REST-API-Anforderungen, um Dienstebenen, Leistungsstufen und
 
 | Befehl | Beschreibung |
 | --- | --- |
-|[Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
+|[Databases - Create Or Update](/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
 |[Datenbanken – Abrufen](/rest/api/sql/databases/get)|Ruft eine Datenbank ab|
 |[Datenbanken – Abrufen nach Pool für elastische Datenbanken](/rest/api/sql/databases/getbyelasticpool)|Ruft eine Datenbank in einem Pool für elastische Datenbanken ab|
 |[Datenbanken – Abrufen nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/getbyrecommendedelasticpool)|Ruft eine Datenbank in einem empfohlenen Pool für elastische Datenbanken ab|
@@ -111,4 +110,3 @@ Verwenden Sie diese REST-API-Anforderungen, um Dienstebenen, Leistungsstufen und
 - Informationen zu Dienstebenen, Leistungsstufen und Speichermengen finden Sie unter [Verfügbare Leistungsoptionen für eine Azure SQL-Datenbank](sql-database-service-tiers.md).
 - Informationen zu elastischen Pools finden Sie unter [Elastische Pools als Hilfe beim Verwalten und Skalieren mehrerer SQL-Datenbanken](sql-database-elastic-pool.md).
 - Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
-

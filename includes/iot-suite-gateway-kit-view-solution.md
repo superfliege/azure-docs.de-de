@@ -1,38 +1,38 @@
-## <a name="view-the-solution-dashboard"></a>Zeigen Sie das Dashboard für die Lösung
+## <a name="view-the-solution-dashboard"></a>Anzeigen des Lösungsdashboards
 
-Die Lösung Dashboard können Sie die bereitgestellte Projektmappe verwalten. Sie können z. B. Telemetrie anzeigen, Hinzufügen von Geräten und Methoden aufrufen.
+Im Lösungsdashboard können Sie die bereitgestellte Lösung verwalten. Sie können beispielsweise Telemetriedaten anzeigen, Geräte hinzufügen und Methoden aufrufen.
 
-1. Wenn die Bereitstellung abgeschlossen ist, und gibt an, die Kachel für Ihre vorkonfigurierte Lösung **bereit**, wählen Sie **starten** Ihre Überwachung Lösung Remoteportal in einer neuen Registerkarte geöffnet.
+1. Wenn die Bereitstellung abgeschlossen ist und auf der Kachel für die vorkonfigurierte Lösung **Bereit** angezeigt wird, wählen Sie **Starten** aus, um eine neue Registerkarte mit dem Lösungsportal für die Remoteüberwachung zu öffnen.
 
-    ![Starten Sie die vorkonfigurierte Lösung][img-launch-solution]
+    ![Vorkonfigurierte Lösung starten][img-launch-solution]
 
-1. Standardmäßig zeigt das Portal für die Lösung die *Dashboard*. Navigieren Sie zu anderen Bereichen des Portals Lösung mithilfe des Menüs auf der linken Seite der Seite.
+1. Standardmäßig zeigt das Lösungsportal das *Dashboard* an. Navigieren Sie über das Menü auf der linken Seite zu anderen Bereichen des Lösungsportals.
 
-    ![Remote vorkonfigurierte Lösung überwachungsdashboard][img-menu]
+    ![Lösungsdashboard der vorkonfigurierten Lösung für die Remoteüberwachung][img-menu]
 
 ## <a name="add-a-device"></a>Hinzufügen eines Geräts
 
-Für ein Gerät zum Verbinden mit der vorkonfigurierte Lösung muss er sich gegenüber IoT Hub mit gültigen Anmeldeinformationen identifizieren. Sie können die Anmeldeinformationen des Geräts über das Dashboard Solution abrufen. Sie enthalten die Anmeldeinformationen des Geräts in Ihrer Clientanwendung weiter unten in diesem Lernprogramm.
+Damit ein Gerät eine Verbindung mit der vorkonfigurierten Lösung herstellen kann, muss es sich mit gültigen Anmeldeinformationen bei IoT Hub identifizieren können. Sie können die Anmeldeinformationen für das Gerät aus dem Lösungsdashboard abrufen. Sie fügen die Anmeldeinformationen für das Gerät später in diesem Tutorial zu Ihrer Clientanwendung hinzu.
 
-Um ein Gerät remote überwachen Projektmappe hinzuzufügen, führen Sie die folgenden Schritte aus, in der Projektmappe Dashboard:
+Um Ihrer Remoteüberwachungslösung ein Gerät hinzuzufügen, führen Sie im Lösungsdashboard die folgenden Schritte aus:
 
-1. Klicken Sie in der unteren linken Ecke des Dashboards auf **Hinzufügen eines Geräts**.
+1. Klicken Sie in der linken unteren Ecke des Dashboards auf **Gerät hinzufügen**.
 
    ![Hinzufügen eines Geräts][1]
 
-1. In der **benutzerdefinierte Gerät** auf **Add new**.
+1. Klicken Sie im Bereich **Benutzerdefiniertes Gerät** auf **Neue hinzufügen**.
 
    ![Hinzufügen eines benutzerdefinierten Geräts][2]
 
-1. Wählen Sie **ich möchte meine eigene Geräte-ID definieren**. Geben Sie eine Geräte-ID z. B. **device01**, klicken Sie auf **überprüfen ID** überprüfen Sie den Namen noch nicht bereits in der Projektmappe verwendet, und klicken Sie dann auf **erstellen** auf das Gerät bereitstellen.
+1. Wählen Sie die Option **Ich möchte meine eigene Geräte-ID definieren**. Geben Sie eine Geräte-ID ein (beispielsweise **device01**), und klicken Sie auf **ID prüfen**, um sich zu vergewissern, dass Sie den Namen noch nicht in Ihrer Lösung verwendet haben. Klicken Sie anschließend auf **Erstellen**, um das Gerät bereitzustellen.
 
-   ![Geräte-ID hinzufügen][3]
+   ![Hinzufügen einer Geräte-ID][3]
 
-1. Notieren Sie sich die Anmeldeinformationen des Geräts (**Geräte-ID**, **IoT Hub-Hostname**, und **Geräteschlüssel**). Ihre Clientanwendung für die Intel NUC benötigt diese Werte zur Verbindung mit der remote-überwachungslösung. Klicken Sie dann auf **Fertig**.
+1. Notieren Sie sich die Anmeldeinformationen des Geräts (**Geräte-ID**, **IoT Hub-Hostname** und **Geräteschlüssel**). Ihre Clientanwendung auf dem Intel NUC benötigt diese Werte, um eine Verbindung mit der Remoteüberwachungslösung herzustellen. Klicken Sie anschließend auf **Fertig**.
 
-    ![Anmeldeinformationen des Geräts anzeigen][4]
+    ![Anzeigen von Geräteanmeldeinformationen][4]
 
-1. Wählen Sie Ihr Gerät in der Geräteliste im Projektmappen-Dashboard. Klicken Sie auf die **Gerätedetails** auf **Gerät aktivieren**. Der Status Ihres Geräts ist jetzt **ausführen**. Der remote-überwachungslösung kann jetzt erhalten von Ihrem Gerät Telemetrie und Aufrufen von Methoden auf dem Gerät.
+1. Wählen Sie Ihr Gerät im Lösungsdashboard in der Liste mit den Geräten aus. Klicken Sie anschließend im Bereich **Gerätedetails** auf **Gerät aktivieren**. Der Status Ihres Geräts lautet jetzt **Wird ausgeführt**. Die Remoteüberwachungslösung kann jetzt Telemetriedaten von Ihrem Gerät empfangen und Methoden auf dem Gerät aufrufen.
 
 [img-launch-solution]: media/iot-suite-gateway-kit-view-solution/launch.png
 [img-menu]: media/iot-suite-gateway-kit-view-solution/menu.png

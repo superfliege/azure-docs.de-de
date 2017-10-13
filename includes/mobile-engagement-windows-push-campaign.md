@@ -1,25 +1,25 @@
-Es wird nun eine einfache Push Notification-Kampagne erstellt, die eine Pushbenachrichtigung an unserer app sendet.
+Wir erstellen nun eine einfache Push-Benachrichtigungskampagne, die eine Push-Benachrichtigung an die App sendet.
 
-1. Navigieren Sie zu der **erreichen** Registerkarte in Ihr Portal für Mobile Einbindung.
-2. Klicken Sie auf **neue Ankündigung** Ihre Benachrichtigung pushkampagne zu erstellen.
+1. Navigieren Sie zu der Registerkarte **REACH** in Ihrem Mobile Engagement-Portal.
+2. Klicken Sie auf **Neue Ankündigung** , um die Push-Benachrichtigungskampagne zu erstellen.
    
     ![](./media/mobile-engagement-windows-push-campaign/new-announcement.png)
-3. Richten Sie das erste Feld der Kampagne durch die folgenden Schritte aus:
+3. Richten Sie das erste Feld der Kampagne mit den folgenden Schritten ein:
    
     ![](./media/mobile-engagement-windows-push-campaign/campaign-first-params.png)
    
-    ein. Geben Sie einen **Namen** für Ihre Kampagne.
+    a. Geben Sie einen **Name** n für die Kampagne an.
    
-    b. Wählen Sie **Übermittlungszeit** als *jederzeit*.
+    b. Wählen Sie für **Delivery time** die Option *Any time*aus.
    
-    d. Geben Sie in den Benachrichtigungstext - die **Titel** werden die in in der Push fett formatiert.
+    d. Geben Sie in den Benachrichtigungstext den **Titel** ein, der im Push-Vorgang fett gedruckt erscheint.
    
     e. Geben Sie dann Ihre **Nachricht**
-4. Führen Sie einen Bildlauf nach unten, und klicken Sie in der **Content** Abschnitt **Benachrichtigung nur**.
+4. Navigieren Sie nach unten, und wählen Sie im Abschnitt **Inhalt** die Option **Nur Benachrichtigung**.
    
     ![](./media/mobile-engagement-windows-push-campaign/campaign-content.png)
-5. Sie haben die grundlegendste Kampagne möglich festlegen. Jetzt einen Bildlauf nach unten erneut aus, und klicken Sie auf die **erstellen** Schaltfläche, um Ihre Kampagne zu speichern.
-6. Letzter Schritt: Klicken Sie auf **aktivieren** , aktivieren die Kampagne und Pushbenachrichtigungen zu senden.
+5. Sie haben das Festlegen der Basiskampagne abgeschlossen. Scrollen Sie nun wieder nach unten, und klicken Sie auf die Schaltfläche **Erstellen** , um Ihre Kampagne zu speichern.
+6. Als letzten Schritt klicken Sie auf **Aktivieren** , um die Kampagne zu aktivieren und Pushbenachrichtigungen zu senden.
    
     ![](./media/mobile-engagement-windows-push-campaign/campaign-activate.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "Site Recovery schränkt Tabelle"
-description: "Beschreibt systemeinschränkungen für Site Recovery."
+title: "Tabelle zu Beschränkungen für Site Recovery"
+description: "Beschreibung der Systembegrenzung für Site Recovery."
 services: site recovery
 documentationcenter: NA
 author: csilauraa
@@ -14,19 +14,19 @@ ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
 ms.openlocfilehash: e0694aa8c5226b794be59358e73751cc493a7e95
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-Die folgenden Beschränkungen gelten für Azure Site Recovery:
+Für Azure Site Recovery gelten die folgenden Beschränkungen.
 
-| LIMIT-BEZEICHNER | STANDARDLIMIT |
+| BEZEICHNUNG | STANDARDLIMIT |
 | --- | --- | --- | --- |
 | Anzahl der Tresore pro Abonnement |25 |
-| Anzahl Server pro Azure-Tresor |250 |
-| Anzahl der Schutzgruppen pro Azure-Tresor |Keine Beschränkung |
-| Anzahl von Wiederherstellungsplänen pro Azure-Tresor |Keine Beschränkung |
-| Anzahl von Servern pro Schutzgruppe |Keine Beschränkung |
-| Anzahl Server pro Wiederherstellungsplan |50 |
+| Anzahl der Server pro Azure-Tresor |250 |
+| Anzahl der Schutzgruppen pro Azure-Tresor |Keine Begrenzung |
+| Anzahl der Wiederherstellungspläne pro Azure-Tresor |Keine Begrenzung |
+| Anzahl der Server pro Schutzgruppe |Keine Begrenzung |
+| Anzahl der Server pro Wiederherstellungsplan |50 |
 

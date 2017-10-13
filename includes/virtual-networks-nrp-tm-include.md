@@ -1,26 +1,26 @@
 ## <a name="traffic-manager-profile"></a>Traffic Manager-Profil
-Traffic Manager und dessen untergeordneten endpunktressource aktivieren Sie die DNS-Weiterleitung an Endpunkte in Azure und außerhalb von Azure. Diese Verteilung des Netzwerkdatenverkehrs unterliegt Verteilermethoden für die Richtlinie. Traffic Manager ermöglicht auch das endpunktzuständen überwacht werden soll, und entsprechend umgeleitet Datenverkehr auf Grundlage der Integritäts eines Endpunkts. 
+Der Traffic Manager und seine untergeordnete Endpunkt-Ressource ermöglichen das DNS-Routing zu Endpunkten in und außerhalb von Azure. Eine solche Datenverkehrsverteilung wird durch Routingrichtlinien bestimmt. Der Traffic Manager lässt auch eine Überwachung der Endpunkt-Integrität zu, sowie eine angemessene Umleitung des Datenverkehrs basierend auf der Integrität eines Endpunktes. 
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| **trafficRoutingMethod** |Mögliche Werte sind *Leistung*, *Weighted*, und *Priorität* |
+| **trafficRoutingMethod** |Mögliche Werte sind *Leistung*, *Gewichtung* und *Priorität*. |
 | **dnsConfig** |FQDN für das Profil |
-| **Protokoll** |Überwachung von Protokoll, mögliche Werte sind *HTTP* und *HTTPS* |
-| **Port** |Überwachung von port |
-| **Pfad** |Überwachungspfad |
-| **Endpunkte** |Container für Ressourcen |
+| **Protokoll** |Überwachungsprotokoll, mögliche Werte sind *HTTP* und *HTTPS* |
+| **Port** |Überwachungsport |
+| **Path** |Überwachungspfad |
+| **Endpunkte** |Container für Endpunkt-Ressourcen |
 
 ### <a name="endpoint"></a>Endpunkt
-Ein Endpunkt ist eine untergeordnete Ressource eines Traffic Manager-Profils. Webendpunkt, mit denen die Benutzer des Datenverkehrs Verteilung, auf der Grundlage von der konfigurierten Richtlinie in der Traffic Manager-Profilressource, oder er stellt einen Dienst dar. 
+Ein Endpunkt ist eine dem Traffic Manager-Profil untergeordnete Ressource. Er stellt einen Dienst- oder Webendpunkt dar, an den der Benutzerdatenverkehr anhand der in der Traffic Manager-Ressource konfigurierten Richtlinie verteilt wird. 
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| **Typ** |Der Typ des Endpunkts, um mögliche Werte sind *Azure-Endpunkt*, *externe Endpunkt*, und *Endpunkt geschachtelt* |
-| **"targetresourceid"** |öffentliche IP-Adresse eines Endpunkts Dienst oder einer Website. Dabei kann es sich um einen Azure oder externen Endpunkt handeln. |
-| **Gewichtung** |Endpunkt-Gewichtung in der datenverkehrsverwaltung verwendet. |
-| **Priorität** |Priorität des Endpunkts, verwendet, um eine failoveraktion definieren |
+| **Typ** |Der Typ des Endpunkts, mögliche Werte sind *Azure-Endpunkt*, *externer Endpunkt* und *verschachtelter Endpunkt* |
+| **targetResourceId** |Öffentliche IP-Adresse eines Dienst- oder Webendpunktes. Dabei kann es sich um einen Azure- oder externen Endpunkt handeln. |
+| **Weight** |Endpunkt-Gewichtung, die für die Datenverkehrsverwaltung verwendet wird. |
+| **Priority** |Priorität des Endpunktes, die zum Definieren einer Failover-Aktion verwendet wird |
 
-Beispiel von Traffic Manager im Json-Format: 
+Beispiel von Traffic Manager im JSON-Format: 
 
         {
             "apiVersion": "[variables('tmApiVersion')]",
@@ -77,6 +77,6 @@ Beispiel von Traffic Manager im Json-Format:
         }
 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
-Lesen [REST-API-Dokumentation für Traffic Manager](https://msdn.microsoft.com/library/azure/mt163664.aspx) für Weitere Informationen.
+## <a name="additional-resources"></a>Weitere Ressourcen
+Weitere Informationen erhalten Sie in der [REST-API-Dokumentation für Traffic Manager](https://msdn.microsoft.com/library/azure/mt163664.aspx) .
 

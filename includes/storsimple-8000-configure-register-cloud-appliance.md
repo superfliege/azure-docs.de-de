@@ -1,19 +1,19 @@
-#### <a name="to-configure-and-register-the-cloud-appliance"></a>So konfigurieren und registrieren den Cloud-Anwendung
+#### <a name="to-configure-and-register-the-cloud-appliance"></a>So konfigurieren und registrieren Sie das Cloudgerät
 
-1. Wählen Sie aus, und klicken Sie auf das StorSimple Cloud-Anwendung, die Sie erstellt, in haben der **Geräte** Blatt.
+1. Wählen Sie auf dem Blatt **Geräte** die StorSimple Cloud Appliance-Instanz aus, die Sie erstellt haben, und klicken Sie darauf.
 
-    ![StorSimple-Cloud-Anwendung in der Liste der Geräte](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
-2. In der **Gerät konfigurieren** Blatt die folgenden Schritte aus:
+    ![StorSimple Cloud Appliance in der Liste der Geräte](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
+2. Führen Sie auf dem Blatt **Gerät konfigurieren** folgende Schritte aus:
     
-    1. Geben Sie die **Verschlüsselungsschlüssel für Dienstdaten** im dafür vorgesehenen Feld. Dieser Schlüssel wird generiert, wenn Sie die erste physische Gerät mit Ihrem StorSimple-Geräte-Manager-Dienst registriert.
+    1. Geben Sie den **Verschlüsselungsschlüssel für Dienstdaten** in das entsprechende Feld ein. Dieser Schlüssel wird generiert, wenn Sie das erste physische Gerät bei Ihrem StorSimple-Geräte-Manager-Dienst registrieren.
 
-    2. Geben Sie die **Geräte-Administratorkennwort** und **Snapshot Manager** Kennwort der angegebenen Länge und die Einstellungen.
+    2. Geben Sie das **Geräteadministratorkennwort** und das **Snapshot Manager**-Kennwort mit der angegebenen Länge und gemäß der Einstellungen an.
 
-    3. Klicken Sie auf **OK** die Erstkonfiguration und Registrierung des Geräts Cloud fertig.
+    3. Klicken Sie auf **OK**, um die Erstkonfiguration sowie die Registrierung des Cloudgeräts abzuschließen.
     
-        ![Konfigurieren von StorSimple Cloud Appliance-Gerät](./media/storsimple-8000-configure-register-cloud-appliance/sca-configure1.png)
+        ![StorSimple Cloud Appliance – Gerätekonfiguration](./media/storsimple-8000-configure-register-cloud-appliance/sca-configure1.png)
 
-Nachdem die Konfiguration und die Registrierung abgeschlossen ist, wird das Gerät online geschaltet. (Es dauert einige Minuten, bis das Gerät online geschaltet werden kann.)
+Nach dem Abschluss der Konfiguration und Registrierung wird das Gerät online geschaltet. (Es kann mehrere Minuten dauern, bis das Gerät online ist.)
 
-![StorSimple Cloud Appliance online Phase](./media/storsimple-8000-configure-register-cloud-appliance/sca-configure2.png)
+![StorSimple Cloud Appliance – Gerät ist online](./media/storsimple-8000-configure-register-cloud-appliance/sca-configure2.png)
 

@@ -1,27 +1,27 @@
-#### <a name="configure-the-ios-project-in-xamarin-studio"></a>Konfigurieren von iOS-Projekt in Xamarin Studio
-1. Öffnen Sie in Xamarin.Studio, **"Info.plist"**, und Aktualisieren der **Paket-ID** mit der Paket-ID, die Sie zuvor erstellt, mit Ihrer neuen app-ID. haben
+#### <a name="configure-the-ios-project-in-xamarin-studio"></a>Konfigurieren des iOS-Projekts in Xamarin Studio
+1. Öffnen Sie in Xamarin.Studio die Datei **Info.plist**, und aktualisieren Sie die **Paket-ID** mit der Paket-ID, die Sie zuvor mit Ihrer neuen App-ID erstellt haben.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-21.png)
-2. Führen Sie einen Bildlauf nach unten bis zum **Hintergrundmodi**. Wählen Sie die **Aktivieren von Hintergrundmodi** Feld und die **Remote Benachrichtigungen** Feld.
+2. Scrollen Sie nach unten zu **Background Modes** (Hintergrundmodi). Aktivieren Sie die Kontrollkästchen **Enable Background Modes** (Hintergrundmodi aktivieren) und **Remote notifications** (Remotebenachrichtigungen).
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-22.png)
-3. Doppelklicken Sie auf das Projekt in der Systemsteuerung Projektmappe öffnen **Projektoptionen**.
-4. Klicken Sie unter **erstellen**, wählen Sie **iOS Bundle Signing**, und wählen Sie die entsprechende Identität und Bereitstellung erstellen ein Profil eingerichtet oben für dieses Projekt.
+3. Doppelklicken Sie im Projektmappenbereich auf Ihr Projekt, um die **Projektoptionen**zu öffnen.
+4. Wählen Sie unter **Build** die Option **iOS Bundle Signing** (iOS-Paketsignierung) sowie die Identität und das Bereitstellungsprofil aus, die Sie soeben für dieses Projekt eingerichtet haben.
 
    ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-20.png)
 
-   Dadurch wird sichergestellt, dass das Projekt das neue Profil zum Signieren von Code verwendet. Die offizielle Xamarin gerätebereitstellung Dokumentation, finden Sie unter [Xamarin Gerätebereitstellung].
+   Hierdurch wird sichergestellt, dass das Projekt das neue Profil für Codesignierung verwendet. Die offizielle Dokumentation zur Xamarin-Gerätebereitstellung finden Sie unter [Xamarin Device Provisioning](Xamarin – Gerätebereitstellung, in englischer Sprache).
 
-#### <a name="configure-the-ios-project-in-visual-studio"></a>Konfigurieren Sie die iOS-Projekt in Visual Studio
-1. Klicken Sie in Visual Studio mit der rechten Maustaste des Projekts, und klicken Sie dann auf **Eigenschaften**.
-2. Klicken Sie in den Eigenschaftenseiten auf die **iOS-Anwendung** Registerkarte, und aktualisieren Sie die **Bezeichner** mit der ID, die Sie zuvor erstellt haben.
+#### <a name="configure-the-ios-project-in-visual-studio"></a>Konfigurieren des iOS-Projekts in Visual Studio
+1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt, und klicken Sie dann auf **Eigenschaften**.
+2. Klicken Sie auf den Eigenschaftenseiten auf die Registerkarte **iOS-Anwendung**, und aktualisieren Sie den **Bezeichner** mit der zuvor erstellten ID.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-23.png)
-3. In der **iOS Bundle Signing** Registerkarte, wählen Sie die entsprechende Identität und ein Bereitstellungsprofil Sie nur für dieses Projekt richten.
+3. Wählen Sie auf der Registerkarte **iOS Bundle Signing** (iOS-Paketsignierung) die Identität und das Bereitstellungsprofil aus, die Sie gerade für dieses Projekt eingerichtet haben.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-24.png)
 
-    Dadurch wird sichergestellt, dass das Projekt das neue Profil zum Signieren von Code verwendet. Die offizielle Xamarin gerätebereitstellung Dokumentation, finden Sie unter [Xamarin Gerätebereitstellung].
-4. Doppelklicken Sie auf die Datei "Info.plist", um ihn zu öffnen, klicken Sie dann aktivieren **RemoteNotifications** unter **Hintergrundmodi**.
+    Hierdurch wird sichergestellt, dass das Projekt das neue Profil für Codesignierung verwendet. Die offizielle Dokumentation zur Xamarin-Gerätebereitstellung finden Sie unter [Xamarin Device Provisioning](Xamarin – Gerätebereitstellung, in englischer Sprache).
+4. Öffnen Sie „Info.plist“ per Doppelklick, und aktivieren Sie unter **Background Modes** (Hintergrundmodi) die Option **RemoteNotifications**.
 
-[Xamarin Gerätebereitstellung]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
+[Xamarin Device Provisioning]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/

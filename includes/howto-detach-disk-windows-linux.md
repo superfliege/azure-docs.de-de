@@ -1,39 +1,39 @@
-Wenn Sie einen Datenträger, der an einen virtuellen Computer angefügt ist nicht mehr benötigen, können Sie problemlos trennen. Trennen eines Datenträgers entfernt den Datenträger vom virtuellen Computer jedoch nicht, löschen Sie den Datenträger aus dem Azure-Speicherkonto.
+Wenn Sie einen Datenträger, der an einen virtuellen Computer angefügt ist, nicht mehr benötigen, können Sie ihn leicht trennen. Beim Trennen eines Datenträgers wird dieser vom virtuellen Computer entfernt, aber er wird nicht aus dem Azure-Speicherkonto gelöscht.
 
-Wenn Sie die vorhandenen Daten auf dem Datenträger erneut verwenden möchten, können Sie es dieselbe virtuelle Maschine, oder ein anderer Computer anzufügen.  
+Wenn Sie die vorhandenen Daten erneut auf dem Datenträger verwenden möchten, können Sie ihn erneut an denselben virtuellen Computer oder an einen anderen anfügen.  
 
 > [!NOTE]
-> Um ein Betriebssystem-Datenträger zu trennen, müssen Sie zuerst den virtuellen Computer löschen.
+> Ein Betriebssystem-Datenträger kann erst getrennt werden, nachdem der virtuelle Computer gelöscht wurde.
 >
 
-## <a name="find-the-disk"></a>Suchen Sie den Datenträger
-Wenn Sie nicht den Namen des Datenträgers kennen oder es überprüfen, bevor Sie sie trennen möchten, gehen Sie folgendermaßen vor.
+## <a name="find-the-disk"></a>Suchen des Datenträgers
+Wenn Sie den Namen des Datenträgers nicht kennen oder diesen vor dem Trennen überprüfen möchten, führen Sie die folgenden Schritte aus.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
-2. Klicken Sie auf **VMs**, und wählen Sie dann den entsprechenden virtuellen Computer.
+2. Klicken Sie auf **Virtuelle Computer**, und wählen Sie dann den betreffenden virtuellen Computer aus.
 
-3. Klicken Sie auf **Datenträger** am linken Rand des virtuellen Computers-Dashboard unter **Einstellungen**.
+3. Klicken Sie links im VM-Dashboard unter **Einstellungen**auf **Datenträger**.
 
- Das Dashboard des virtuellen Computers Listet den Namen und Typ, der alle angeschlossenen Datenträger. Dieser Bildschirm zeigt z. B. einen virtueller Computer mit einem Betriebssystem (BS)-Datenträger und einen Datenträger:
+ Im VM-Dashboard werden der Name und Typ aller angefügten Datenträger aufgeführt. Beispielsweise zeigt dieser Bildschirm einen virtuellen Computer mit einer Betriebssystemfestplatte und einem Datenträger:
 
     ![Datenträger suchen](./media/howto-detach-disk-windows-linux/vmwithdisklist.png)
 
-## <a name="detach-the-disk"></a>Trennen Sie den Datenträger
-1. Klicken Sie auf der Azure-Portal auf **virtuelle Maschinen**, und klicken Sie dann auf den Namen des virtuellen Computers an, die den Datenträger hat Sie trennen möchten.
+## <a name="detach-the-disk"></a>Trennen des Datenträgers
+1. Klicken Sie im Azure-Portal auf **Virtuelle Computer**, und klicken Sie dann auf den Namen des virtuellen Computers mit dem Datenträger, den Sie trennen möchten.
 
-2. Klicken Sie auf **Datenträger** am linken Rand des virtuellen Computers-Dashboard unter **Einstellungen**.
+2. Klicken Sie links im VM-Dashboard unter **Einstellungen** auf **Datenträger**.
 
-3. Klicken Sie auf dem Datenträger, die, den Sie trennen möchten.
+3. Klicken Sie auf den Datenträger, den Sie trennen möchten.
 
-  ![Identifizieren Sie den Datenträger zu trennen](./media/howto-detach-disk-windows-linux/disklist.png)
+  ![Identifizieren des zu trennenden Datenträgers](./media/howto-detach-disk-windows-linux/disklist.png)
 
-4. Klicken Sie auf der Befehlsleiste auf **trennen**.
+4. Klicken Sie auf der Befehlsleiste auf **Trennen**.
 
-  ![Suchen Sie die Detach-Befehl](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
+  ![Befehl „Trennen“](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
 
-5. Klicken Sie im Bestätigungsfenster auf **Ja** beim Trennen des Datenträgers.
+5. Klicken Sie im Bestätigungsfenster auf **Ja**, um den Datenträger zu trennen.
 
-  ![Vergewissern Sie sich durch das Trennen des Datenträgers](./media/howto-detach-disk-windows-linux/confirmdetach.png)
+  ![Bestätigen der Trennung des Datenträgers](./media/howto-detach-disk-windows-linux/confirmdetach.png)
 
-Der Datenträger im Speicher verbleibt jedoch nicht mehr an einen virtuellen Computer angefügt ist.
+Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.

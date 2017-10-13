@@ -5,7 +5,7 @@ Nachdem eine Welle für eine geplante Wartung geplant und Benachrichtigungen ges
 
 Sie können im Azure-Portal nach VMs suchen, für die eine Wartung geplant ist.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
 
 2. Klicken Sie im linken Navigationsbereich auf **Virtuelle Computer**.
 
@@ -34,7 +34,7 @@ Sie können im Azure-Portal nach VMs suchen, für die eine Wartung geplant ist.
 
 Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um weitere Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll] (../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie im Menü auf der linken Seite auf **Überwachen**. 
 3. Klicken Sie im Bereich **Monitor - Activity log** (Überwachen – Aktivitätsprotokoll) auf **Warnungen**.
 4. Klicken Sie im Bereich **Monitor - Alerts** (Überwachen – Warnungen) auf **+ Aktivitätsprotokollwarnung hinzufügen**.

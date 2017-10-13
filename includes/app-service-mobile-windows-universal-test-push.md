@@ -1,11 +1,11 @@
 
-1. Mit der rechten Maustaste in den Windows Store-Projekt, klicken Sie auf **als Startprojekt festlegen**, drücken Sie dann die Taste F5, um die Windows Store-app auszuführen.
+1. Klicken Sie mit der rechten Maustaste auf das Windows Store-Projekt, klicken Sie auf **Als Startprojekt festlegen**, und drücken Sie dann F5, um die Windows Store-App auszuführen.
    
-    Nachdem die app gestartet wurde, wird das Gerät für Pushbenachrichtigungen registriert.
-2. Beenden von Windows Store-app, und wiederholen Sie den vorherigen Schritt für die Windows Phone Store-app.
+    Nach dem Start der App ist das Gerät für Pushbenachrichtigungen registriert.
+2. Beenden Sie die Windows Store-App, und führen Sie den obigen Schritt erneut für die Windows Phone Store-App aus.
    
-    An diesem Punkt sind beide Geräte registriert, um Pushbenachrichtigungen zu erhalten.
-3. Führen Sie die Windows Store-app erneut aus, und geben Sie Text in **TodoItem einfügen**, und klicken Sie dann auf **speichern**.
+    Nun sind beide Geräte für den Empfang von Pushbenachrichtigungen registriert.
+3. Starten Sie die Windows Store-App erneut, geben Sie unter **Aufgabenelement einfügen** Text ein, und klicken Sie dann auf **Speichern**.
    
        Note that after the insert completes, both the Windows Store and the Windows Phone apps receive a push notification from WNS. The notification is displayed on Windows Phone even when the app isn't running.
    

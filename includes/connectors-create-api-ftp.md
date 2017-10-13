@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Voraussetzungen
-* Ein [FTP](https://wikipedia.org/wiki/File_Transfer_Protocol) Konto  
+* Ein [FTP](https://wikipedia.org/wiki/File_Transfer_Protocol)-Konto  
 
-Bevor Sie Ihre FTP-Konto in einer Logik-app verwenden können, müssen Sie die Logik-app zur Verbindung mit Ihrem FTP-Kontos autorisieren. Glücklicherweise können Sie problemlos aus in der Logik-app im Azure-Portal vorgehen.  
+Bevor Sie Ihr FTP-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für die Verbindung mit Ihrem FTP-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen.  
 
-Es folgen die Schritte zum Autorisieren der Logik-app zur Verbindung mit Ihrem FTP-Kontos:  
+Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem FTP-Konto:  
 
-1. Wählen Sie zum Erstellen einer Verbindungs mit FTP, in der Logik-app-Designer **Anzeigen von Microsoft verwalteten APIs** in der Dropdownliste aus und geben Sie dann *FTP* in das Suchfeld. Wählen Sie den Trigger oder die Aktion an, die Sie verwenden möchten, müssen:  
-   ![Schritt beim Erstellen eines FTP-Verbindung](./media/connectors-create-api-ftp/ftp-1.png)  
-2. Wenn Sie alle Verbindungen mit FTP, bevor Sie erstellt haben, werden Sie aufgefordert Abrufen der FTP-Anmeldeinformationen. Diese Anmeldeinformationen werden verwendet, um Ihre Logik-app für die Verbindung autorisieren und den Zugriff auf Daten von Ihrem FTP-Konto:  
-   ![Schritt beim Erstellen eines FTP-Verbindung](./media/connectors-create-api-ftp/ftp-2.png)  
-3. Beachten Sie, dass die Verbindung erstellt wurde, und Sie können nun mit den anderen Schritten in der Logik-app zu fortfahren:  
-   ![Schritt beim Erstellen eines FTP-Verbindung](./media/connectors-create-api-ftp/ftp-3.png)  
+1. Um eine Verbindung mit FTP herzustellen, wählen Sie im Designer für Logik-Apps in der Dropdownliste **Von Microsoft verwaltete APIs anzeigen** aus, und geben Sie dann *FTP* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:   
+   ![Schritt zur Erstellung der FTP-Verbindung](./media/connectors-create-api-ftp/ftp-1.png)  
+2. Wenn Sie noch keine Verbindungen mit FTP hergestellt haben, werden Sie aufgefordert, Ihre FTP-Anmeldeinformationen anzugeben. Mit diesen Anmeldeinformationen wird Ihre Logik-App autorisiert, eine Verbindung mit dem FTP-Konto herzustellen und auf dessen Daten zuzugreifen:  
+   ![Schritt zur Erstellung der FTP-Verbindung](./media/connectors-create-api-ftp/ftp-2.png)  
+3. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit den anderen Schritten in Ihrer Logik-App fortfahren können:  
+   ![Schritt zur Erstellung der FTP-Verbindung](./media/connectors-create-api-ftp/ftp-3.png)  
 

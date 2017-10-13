@@ -1,16 +1,16 @@
-1. Navigieren Sie zu, und öffnen Sie das Blatt für Ihr virtuelles Netzwerk-Gateway. Es gibt mehrere Möglichkeiten zum Navigieren. In unserem Beispiel wir navigiert an das Gateway "VNet1GW" Navigieren Sie zu **TestVNet1-Übersicht > -> verbunden VNet1GW-Geräte >**.
-2. Klicken Sie auf das Blatt für VNet1GW auf **Verbindungen**. Klicken Sie oben auf dem Blatt "Verbindungen" auf **+ Add** So öffnen die **Verbindung hinzufügen** Blatt.
+1. Öffnen Sie das Blatt für das Gateway für virtuelle Netzwerke. Dazu gibt es verschiedene Möglichkeiten. Im Beispiel wurde mit **TestVNet1 > Überblick > Verbundene Geräte > VNet1GW** zum Gateway „VNet1GW“ navigiert.
+2. Klicken Sie auf dem Blatt für „VNet1GW“ auf **Verbindungen**. Klicken Sie oben auf dem Blatt „Verbindungen“ auf **+Hinzufügen**, um das Blatt **Verbindung hinzufügen** zu öffnen.
 
-    ![Standort-zu-Standort-Verbindung erstellen](./media/vpn-gateway-add-site-to-site-connection-s2s-rm-portal-include/connection1.png)
+    ![Einrichten einer Standort-zu-Standort-Verbindung](./media/vpn-gateway-add-site-to-site-connection-s2s-rm-portal-include/connection1.png)
 
-3. Auf der **Verbindung hinzufügen** Blatt, füllen Sie die Werte zum Herstellen die Verbindung.
+3. Geben Sie auf dem Blatt **Verbindung hinzufügen** die Werte zum Erstellen der Verbindung ein.
 
-  - **Name:** benennen Sie die Verbindung. Wir verwenden **VNet1toSite2** in unserem Beispiel.
-  - **Verbindungstyp:** wählen **Site-to-site(IPSec)**.
-  - **Gateway des virtuellen Netzwerks:** der Wert wird festgelegt, da Sie eine Verbindung zwischen diesem Gateway herstellen.
-  - **Lokales Netzwerkgateway:** klicken Sie auf **wählen Sie ein lokales Netzwerkgateway** , und wählen Sie das Gateway des lokalen Netzwerks, die Sie verwenden möchten. In unserem Beispiel verwenden wir **Standort2**.
-  - **Gemeinsam verwendeter Schlüssel:** hier der Wert entsprechen muss, die Sie für Ihre lokalen VPN-Gerät verwenden. Im Beispiel wird verwendet "abc123", aber Sie können (und sollten) verwenden etwas komplexer. Wichtig ist, dass der Wert, den Sie hier den gleichen Wert sein muss, den Sie beim Konfigurieren des VPN-Geräts angegeben werden.
-  - Die verbleibenden Werte für **Abonnement**, **Ressourcengruppe**, und **Speicherort** behoben werden.
+  - **Name:** Geben Sie einen Namen für die Verbindung ein. Im Beispiel wird **VNet1toSite2** verwendet.
+  - **Verbindungstyp:** Wählen Sie **Standort-zu-Standort (IPsec)** aus.
+  - **Gateway für virtuelle Netzwerke:** Der Wert ist festgelegt, da Sie von diesem Gateway aus die Verbindung herstellen.
+  - **Lokales Netzwerkgateway:** Klicken Sie auf **Lokales Netzwerkgateway auswählen**, und wählen Sie das lokale Netzwerkgateway aus, das Sie verwenden möchten. In unserem Beispiel verwenden wir **Site2**.
+  - **Gemeinsam verwendeter Schlüssel:** Dieser Wert muss mit dem Wert übereinstimmen, den Sie für Ihr lokales VPN-Gerät verwenden. Im Beispiel wurde „abc123“ verwendet, aber Sie können (und sollten) einen komplexeren Wert verwenden. Entscheidend ist Folgendes: Der Wert, den Sie hier angeben, muss dem Wert entsprechen, den Sie beim Konfigurieren Ihres VPN-Geräts angegeben haben.
+  - Die verbleibenden Werte für **Abonnement**, **Ressourcengruppe** und **Speicherort** wurden korrigiert.
 
-4. Klicken Sie auf **OK** zum Herstellen die Verbindung. Sehen Sie *Verbindung erstellen* flash auf dem Bildschirm.
-5. Sehen Sie die Verbindung nicht in der **Verbindungen** Blatt des Gateways des virtuellen Netzwerks. Der Status geht aus *unbekannt* auf *Herstellen einer Verbindung*, und klicken Sie dann auf *erfolgreich*.
+4. Klicken Sie auf **OK** , um die Verbindung zu erstellen. Auf dem Bildschirm blinkt der Hinweis *Verbindung wird erstellt* .
+5. Die Verbindung wird auf dem Blatt **Verbindungen** des Gateways für virtuelle Netzwerke angezeigt. Der Status wechselt von *Unbekannt* zu *Verbindung wird hergestellt* und dann zu *Erfolgreich*.

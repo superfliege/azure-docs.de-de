@@ -1,38 +1,38 @@
-In diesem Schritt erstellen Sie manuell den verfügbarkeitsgruppenlistener im Failovercluster-Manager und SQL Server Management Studio.
+In diesem Schritt erstellen Sie manuell den Verfügbarkeitsgruppenlistener im Failovercluster-Manager und in SQL Server Management Studio.
 
-1. Öffnen Sie Failovercluster-Manager über den Knoten, der das primäre Replikat hostet.
+1. Öffnen Sie den Failovercluster-Manager über den Knoten, der das primäre Replikat hostet.
 
-2. Wählen Sie die **Netzwerke** Knoten, und notieren Sie den Clusternetzwerknamen. Dieser Name wird in der Variablen $ClusterNetworkName im PowerShell-Skript verwendet.
+2. Wählen Sie den Knoten **Netzwerke** aus, und notieren Sie dann den Namen des Clusternetzwerks. Dieser Name wird in der Variablen $ClusterNetworkName im PowerShell-Skript verwendet.
 
 3. Erweitern Sie den Clusternamen, und klicken Sie dann auf **Rollen**.
 
-4. In der **Rollen** Bereich mit der rechten Maustaste in des Namens der verfügbarkeitsgruppe, und wählen Sie dann **Ressource hinzufügen** > **Clientzugriffspunkt**.
+4. Klicken Sie im Bereich **Rollen** mit der rechten Maustaste auf den Verfügbarkeitsgruppennamen, und wählen Sie dann **Ressource hinzufügen** > **Clientzugriffspunkt** aus.
    
-    ![Clientzugriffspunkt für verfügbarkeitsgruppe hinzufügen](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
+    ![Hinzufügen eines Clientzugriffspunkts für die Verfügbarkeitsgruppe](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
 
-5. In der **Namen** Feld, einen Namen für den neuen Listener zu erstellen, klicken Sie auf **Weiter** zweimal, und klicken Sie dann auf **Fertig stellen**.  
-    Schalten Sie den Listener oder die Ressource online zu diesem Zeitpunkt.
+5. Erstellen Sie im Feld **Name** einen Namen für diesen neuen Listener, klicken Sie zweimal auf **Weiter** und anschließend auf **Fertig stellen**.  
+    Schalten Sie den Listener oder die Ressource jetzt noch nicht online.
 
-6. Klicken Sie auf die **Ressourcen** Registerkarte, und erweitern Sie dann den Clientzugriffspunkt, die Sie gerade erstellt haben. 
-    Die IP-Adressressource für jedes Clusternetzwerk in Ihrem Cluster angezeigt. Wenn dies eine reine Azure-Lösung ist, wird nur eine IP-Adressenressource angezeigt.
+6. Klicken Sie auf die Registerkarte **Ressourcen**, und erweitern Sie dann den Clientzugriffspunkt, den Sie gerade erstellt haben. 
+    Die IP-Adressressource für jedes der Clusternetzwerke im Cluster wird angezeigt. Wenn dies eine reine Azure-Lösung ist, wird nur eine IP-Adressressource angezeigt.
 
-7. Führen Sie eine der folgenden:
+7. Führen Sie einen der folgenden Schritte aus:
    
-   * So konfigurieren Sie Hybrid-Lösung:
+   * So konfigurieren Sie eine Hybridlösung
      
-        a. Mit der rechten Maustaste in der IP-Adressressource, die Ihrem lokalen Subnetz entspricht, und wählen Sie dann **Eigenschaften**. Beachten Sie die IP-Adressennamen und den Netzwerknamen.
+        a. Klicken Sie mit der rechten Maustaste auf die IP-Adressressource, die Ihrem lokalen Subnetz entspricht, und wählen Sie dann **Eigenschaften** aus. Notieren Sie den Namen der IP-Adresse und des Netzwerks.
    
-        b. Wählen Sie **statische IP-Adresse**, eine nicht verwendete IP-Adresse zuweisen, und klicken Sie dann auf **OK**.
+        b. Wählen Sie **Statische IP-Adresse** aus, weisen Sie eine nicht verwendete IP-Adresse zu, und klicken Sie dann auf **OK**.
  
-   * So konfigurieren Sie eine reine Azure-Lösung:
+   * So konfigurieren Sie eine reine Azure-Lösung
 
-        a. Mit der rechten Maustaste in der IP-Adressressource, der Ihrem Azure-Subnetz entspricht, und wählen Sie dann **Eigenschaften**.
+        a. Klicken Sie mit der rechten Maustaste auf die IP-Adressressource, die Ihrem Azure-Subnetz entspricht, und wählen Sie dann **Eigenschaften** aus.
        
        > [!NOTE]
-       > Fällt der Listener später aufgrund von einem in Konflikt stehende IP-Adresse von DHCP ausgewählten online ist, können Sie eine gültige statische IP-Adresse in diesem Eigenschaftenfenster konfigurieren.
+       > Kann der Listener später durch eine in Konflikt stehende IP-Adresse, die von DHCP ausgewählt wird, nicht online geschaltet werden, können Sie in diesem Eigenschaftenfenster eine gültige statische IP-Adresse konfigurieren.
        > 
        > 
 
-       b. In der gleichen **IP-Adresse** im Eigenschaftenfenster ändern die **IP-Adressname**.  
-        Dieser Name wird in der Variablen $IPResourceName des PowerShell-Skripts verwendet. Wenn Ihre Lösung virtueller Azure-Netzwerke umfasst, wiederholen Sie diesen Schritt für jede IP-Adressressource.
+       b. Ändern Sie im gleichen Eigenschaftenfenster **IP-Adresse** den Wert für **IP-Adressname**.  
+        Dieser Name wird in der Variablen $IPResourceName des PowerShell-Skripts verwendet. Wenn die Lösung mehrere virtuelle Azure-Netzwerke umfasst, wiederholen Sie diesen Schritt für jede IP-Ressource.
 

@@ -1,37 +1,37 @@
-## <a name="set-up-azure-cli-for-azure-dns"></a>Einrichten von Azure-CLI für Azure-DNS
+## <a name="set-up-azure-cli-for-azure-dns"></a>Einrichten der Azure-CLI für Azure DNS
 
-### <a name="before-you-begin"></a>Vorbereitung
+### <a name="before-you-begin"></a>Voraussetzungen
 
-Stellen Sie sicher, dass Sie die folgenden Elemente aufweisen, bevor die Konfiguration.
+Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes verfügen:
 
-* Ein Azure-Abonnement. Wenn Sie ein Azure-Abonnement noch nicht haben, können Sie aktivieren die [Vorteile für MSDN-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder melden Sie sich für eine [Konto frei](https://azure.microsoft.com/pricing/free-trial/).
-* Installieren Sie die neueste Version der Azure-CLI für Windows, Linux oder Mac. Weitere Informationen finden Sie unter [installieren Sie die Azure-CLI](../articles/cli-install-nodejs.md).
+* Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
+* Installieren Sie die neueste Version der für Windows, Mac und Linux verfügbaren Azure-Befehlszeilenschnittstelle. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../articles/cli-install-nodejs.md).
 
-### <a name="sign-in-to-your-azure-account"></a>Melden Sie sich beim Azure-Konto
+### <a name="sign-in-to-your-azure-account"></a>Anmelden bei Ihrem Azure-Konto
 
-Ein Konsolenfenster geöffnet und mit Ihren Anmeldeinformationen authentifiziert werden. Weitere Informationen finden Sie unter [melden Sie sich bei Azure an, aus der Azure-CLI](../articles/xplat-cli-connect.md)
+Öffnen Sie ein Konsolenfenster, und authentifizieren Sie sich mit Ihren Anmeldeinformationen. Weitere Informationen finden Sie unter [Log in to Azure from the Azure CLI](../articles/xplat-cli-connect.md) (Anmelden bei Azure über die Azure-CLI).
 
 ```azurecli
 azure login
 ```
 
-### <a name="switch-cli-mode"></a>Switch-CLI-Modus
+### <a name="switch-cli-mode"></a>Wechseln des CLI-Modus
 
-Azure DNS verwendet Azure Resource Manager. Stellen Sie sicher, dass Sie CLI-Modus zur Verwendung von Azure Resource Manager-Befehle wechseln.
+Azure DNS verwendet den Azure-Ressourcen-Manager. Achten Sie darauf, zur Verwendung von Azure Resource Manager-Befehlen zum CLI-Modus zu wechseln.
 
 ```azurecli
 azure config mode arm
 ```
 
-### <a name="select-the-subscription"></a>Wählen Sie das Abonnement
+### <a name="select-the-subscription"></a>Auswählen des Abonnements
 
-Überprüfen Sie die Abonnements für das Konto ein.
+Überprüfen Sie die Abonnements für das Konto.
 
 ```azurecli
 azure account list
 ```
 
-Wählen Sie das Azure-Abonnements verwenden.
+Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
 
 ```azurecli
 azure account set "subscription name"
@@ -39,17 +39,17 @@ azure account set "subscription name"
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen auf einen Speicherort anzugeben. Dies wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet werden. Da alle DNS-Ressourcen global, nicht Land/Region sind, hat die Auswahl der Speicherort der Ressourcengruppe allerdings keine Auswirkungen auf Azure DNS.
+Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Da alle DNS-Ressourcen global und nicht regional sind, hat die Auswahl des Speicherorts für die Ressourcengruppe jedoch keine Auswirkungen auf Azure DNS.
 
-Sie können diesen Schritt überspringen, wenn Sie eine vorhandene Ressourcengruppe verwenden.
+Dieser Schritt kann übersprungen werden, wenn Sie eine vorhandene Ressourcengruppe verwenden.
 
 ```azurecli
 azure group create -n myresourcegroup --location "West US"
 ```
 
-### <a name="register-resource-provider"></a>Registrierung des Ressourcenanbieters
+### <a name="register-resource-provider"></a>Registrieren des Ressourcenanbieters
 
-Der Azure DNS-Dienst wird vom Ressourcenanbieter Microsoft.Network verwaltet. Ihr Azure-Abonnement muss registriert sein, um diesen Ressourcenanbieter vor der Verwendung von Azure DNS zu verwenden. Dies ist ein Einmaliger Vorgang für jedes Abonnement.
+Der Azure DNS-Dienst wird vom Ressourcenanbieter "Microsoft.Network" verwaltet. Ihr Azure-Abonnement muss für die Verwendung dieses Ressourcenanbieters registriert werden, bevor Sie Azure DNS verwenden können. Dieser Schritt muss einmal für jedes Abonnement ausgeführt werden.
 
 ```azurecli
 azure provider register --namespace Microsoft.Network

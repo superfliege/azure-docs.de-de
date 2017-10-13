@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Voraussetzungen
-* Ein [SMTP](https://wikipedia.org/wiki/Simple_Mail_Transfer_Protocol) Konto  
+* Ein [SMTP](https://wikipedia.org/wiki/Simple_Mail_Transfer_Protocol)-Konto  
 
-Bevor Sie Ihr SMTP-Konto in einer Logik-app verwenden können, müssen Sie die Logik-app zur Verbindung mit Ihrem SMTP-Konto autorisieren. Glücklicherweise können Sie problemlos aus in der Logik-app im Azure-Portal vorgehen.  
+Bevor Sie Ihr SMTP-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für die Verbindung mit Ihrem SMTP-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen.  
 
-Es folgen die Schritte zum Autorisieren der Logik-app zur Verbindung mit Ihrem SMTP-Konto:  
+Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem SMTP-Konto:  
 
-1. Wählen Sie zum Erstellen einer Verbindungs mit SMTP, in der Logik-app-Designer **Anzeigen von Microsoft verwalteten APIs** in der Dropdownliste aus und geben Sie dann *SMTP* in das Suchfeld. Wählen Sie den Trigger oder die Aktion an, die Sie verwenden möchten, müssen:  
+1. Zum Herstellen einer Verbindung mit SMTP wählen Sie im Designer für Logik-Apps in der Dropdownliste **Verwaltete Microsoft-APIs anzeigen** aus, und geben Sie dann *SMTP* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:   
    ![](./media/connectors-create-api-smtp/smtp-1.png)  
-2. Wenn Sie alle Verbindungen mit SMTP, bevor Sie erstellt haben, werden Sie aufgefordert Abrufen der SMTP-Anmeldeinformationen. Diese Anmeldeinformationen werden verwendet, um Ihre Logik-app für die Verbindung autorisieren und einfacher Zugriff auf Ihr SMTP-Konto:  
+2. Wenn Sie noch keine Verbindungen mit SMTP hergestellt haben, werden Sie aufgefordert, Ihre SMTP-Anmeldeinformationen anzugeben. Mit diesen Anmeldeinformationen wird Ihre Logik-App autorisiert, eine Verbindung mit dem SMTP-Konto herzustellen und auf dessen Daten zuzugreifen:  
    ![](./media/connectors-create-api-smtp/smtp-2.png)  
-3. Beachten Sie, dass die Verbindung erstellt wurde, und Sie können nun mit den anderen Schritten in der Logik-app zu fortfahren:  
+3. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit den anderen Schritten in Ihrer Logik-App fortfahren können:  
    ![](./media/connectors-create-api-smtp/smtp-3.png)  
 

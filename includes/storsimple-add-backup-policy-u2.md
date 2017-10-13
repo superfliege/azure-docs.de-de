@@ -1,24 +1,24 @@
 <!--author=v-sharos last changed: 11/06/15-->
 
-#### <a name="to-add-a-storsimple-backup-policy"></a>So fügen Sie eine Sicherungsrichtlinie StorSimple hinzu
-1. Auf dem Gerät **Schnellstart** auf die **Sicherungsrichtlinien** Registerkarte. Dadurch gelangen Sie zu der **Sicherungsrichtlinien** Seite.
-2. Klicken Sie am unteren Rand der Seite, auf **hinzufügen** zum Hinzufügen einer Sicherungsrichtlinie-Assistenten zu starten.
+#### <a name="to-add-a-storsimple-backup-policy"></a>So fügen Sie eine StorSimple-Sicherungsrichtlinie hinzu
+1. Klicken Sie auf der Seite **Schnellstart** des Geräts auf die Registerkarte **Sicherungsrichtlinien**. Dadurch gelangen Sie auf die Seite **Sicherungsrichtlinien** .
+2. Klicken Sie unten auf der Seite auf **Hinzufügen** , um den Assistenten zum Hinzufügen einer Sicherungsrichtlinie zu starten.
    
     ![Hinzufügen einer Sicherungsrichtlinie 1](./media/storsimple-add-backup-policy-u2/AddBackupPolicy1.png)
-3. In der **Sicherungsrichtlinie hinzufügen** Dialogfeld unter **Sicherungsrichtlinie definieren**, gehen Sie folgendermaßen vor:
+3. Führen Sie im Dialogfeld **Sicherungsrichtlinie hinzufügen** unter **Sicherungsrichtlinie definieren** die folgenden Schritte aus:
    
-   1. Geben Sie einen Sicherungsrichtlinie-Namen, der zwischen 3 und 150 Zeichen enthält.
-   2. Klicken Sie auf die Kontrollkästchen, um diese Sicherungsrichtlinie ein oder mehrere Volumes zuweisen. Beachten Sie, dass Sie Volumes auswählen können, die unterschiedliche Cloud-Service-Anbieter verwenden. Bei Verwendung von mehreren Cloud-Dienstanbietern, basierend auf der ersten Auswahl wird die Liste nur in der Cloud-Service-Anbieter für Volumes angezeigt. Dies können Sie auf die Gruppe von Volumes, die zu einer einzelnen Cloud-Dienstanbieter in einer Momentaufnahme gehören.
-   3. Klicken Sie auf das Symbol "Pfeil" ![Symbol "Pfeil"](./media/storsimple-add-backup-policy-u2/HCS_ArrowIcon-include.png) um zur nächsten Seite zu wechseln.
+   1. Geben Sie für Ihre Sicherungsrichtlinie einen Namen an, der zwischen 3 und 150 Zeichen lang ist.
+   2. Aktivieren Sie die entsprechenden Kontrollkästchen, um dieser Sicherungsrichtlinie Volumes zuzuweisen. Beachten Sie, dass Sie keine Volumes auswählen können, die andere Clouddienstanbieter verwenden. Bei Verwendung von mehreren Clouddienstanbietern werden in der Liste basierend auf der ersten Auswahl Volumes angezeigt, die nur zu diesem Clouddienstanbieter gehören. Dadurch können Sie Volumes in einer Momentaufnahme gruppieren, die zu einem einzelnen Clouddienstanbieter gehören.
+   3. Klicken Sie auf den Pfeil  ![Pfeilsymbol](./media/storsimple-add-backup-policy-u2/HCS_ArrowIcon-include.png) , um zur nächsten Seite zu wechseln.
       
       ![Hinzufügen einer Sicherungsrichtlinie 2](./media/storsimple-add-backup-policy-u2/AddBackupPolicy2.png)
-4. Klicken Sie unter **definieren Sie einen Zeitplan**, gehen Sie folgendermaßen vor:
+4. Gehen Sie unter **Zeitplan definieren**folgendermaßen vor:
    
-   1. In der **Typ der Sicherung** wählen Sie im **Cloudmomentaufnahme** oder **lokale Momentaufnahme** aus der Dropdown-Liste.
-   2. Geben Sie die Häufigkeit der Sicherungen (Geben Sie eine Zahl ein, und wählen Sie dann **Tage** oder **Wochen** aus der Dropdown-Liste).
-   3. Geben Sie einen Zeitplan aus.
-   4. Geben Sie eine Uhrzeit und Datum für die Sicherungsrichtlinie um zu beginnen.  
-   5. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-add-backup-policy-u2/HCS_CheckIcon-include.png) um die Richtlinie zu speichern.
+   1. Wählen Sie im Feld **Typ der Sicherung** eine der Optionen **Cloudmomentaufnahme** oder **Lokale Momentaufnahme** in der Dropdownliste aus.
+   2. Geben Sie die Häufigkeit der Sicherungen an. (Geben Sie eine Zahl an, und wählen Sie dann in der Dropdownliste **Tage** oder **Wochen** aus.)
+   3. Geben Sie einen Aufbewahrungszeitplan ein.
+   4. Geben Sie Startzeit und -datum für die Sicherungsrichtlinie ein.  
+   5. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-add-backup-policy-u2/HCS_CheckIcon-include.png) , um die Richtlinie zu speichern.
 
-Die neu hinzugefügte Richtlinie wird in der Tabellenansicht angezeigt werden, auf die **Sicherungsrichtlinien** Seite.
+Die neu hinzugefügte Richtlinie wird in der Tabellenansicht auf der Seite **Sicherungsrichtlinien** angezeigt.
 

@@ -1,11 +1,11 @@
 ## <a name="scenario"></a>Szenario
 
-Erstellen Sie einen internen Lastenausgleich entsprechend das folgende Szenario
+Sie erstellen einen internen Lastenausgleich gemäß dem folgenden Szenario
 
-![IMAGE-BESCHREIBUNG](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
+![BILDBESCHREIBUNG](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
 
-Ein internen Lastenausgleich ist in einem virtuellen Netzwerk konfiguriert.
+Ein interner Load Balancer ist in einem virtuellen Netzwerk konfiguriert.
 
-* 2 virtuellen Computern aufgerufen DB1 und DB2
+* Zwei virtuelle Computer namens DB1 und DB2
 * Endpunkte
 * Interner Lastenausgleich

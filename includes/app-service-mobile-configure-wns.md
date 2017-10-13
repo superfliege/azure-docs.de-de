@@ -1,7 +1,7 @@
 
-1. In der [Azure-Portal](https://portal.azure.com/), klicken Sie auf **alle Durchsuchen** > **Anwendungsdienste**, und klicken Sie auf Ihre Mobile Apps-Back-End. Klicken Sie unter **Einstellungen**, klicken Sie auf **App Service-Push**, und klicken Sie dann auf Notification Hub-Name.
-2. Wechseln Sie zu **Windows (WNS)**, geben Sie die **Sicherheitsschlüssel** (geheimer Clientschlüssel) und **Paket-SID** , die Sie aus der Live-Dienste-Website abgerufen, und klicken Sie dann auf **speichern**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Alle durchsuchen** > **App Services** und anschließend auf Ihr Mobile Apps-Back-End. Klicken Sie unter **Einstellungen** auf **App Service Push** (App Service-Push) und dann auf den Namen Ihres Benachrichtigungs-Hubs.
+2. Navigieren Sie zu **Windows (WNS)**, geben Sie den **Sicherheitsschlüssel** (Clientgeheimnis) und die **Paket-SID** von der Live Services-Website ein, und klicken Sie dann auf **Speichern**.
 
-    ![Legen Sie den WNS-Schlüssel im portal](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
+    ![Festlegen des WNS-Schlüssels im Portal](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
 
-Die Back-End ist jetzt für WNS zu verwenden, um das Senden von Pushbenachrichtigungen konfiguriert.
+Das Back-End ist jetzt für die Verwendung von WNS zum Senden von Pushbenachrichtigungen konfiguriert.

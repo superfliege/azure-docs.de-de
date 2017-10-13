@@ -1,4 +1,4 @@
-Wenn Sie die URL einer shared Access Signature (SAS), das Zugriff auf Ressourcen in einem Speicherkonto gewährt besitzen, können Sie die SAS in einer Verbindungszeichenfolge verwenden. Da die SAS zum Authentifizieren der Anforderung erforderlichen Informationen enthält, stellt eine Verbindungszeichenfolge mit einer SAS-bereit, das Protokoll, den Dienstendpunkt und die erforderlichen Anmeldeinformationen zum Zugriff auf die Ressource.
+Wenn Sie über eine URL für Shared Access Signature (SAS) verfügen, die den Zugriff auf Ressourcen in einem Speicherkonto ermöglicht, können Sie die SAS in einer Verbindungszeichenfolge verwenden. Da die SAS die zum Authentifizieren der Anforderung erforderlichen Informationen enthält, werden über eine Verbindungszeichenfolge mit einer SAS das Protokoll, der Dienstendpunkt und die erforderlichen Anmeldeinformationen zum Zugreifen auf die Ressource bereitgestellt.
 
 Um eine Verbindungszeichenfolge zu erstellen, die eine SAS enthält, geben Sie die Zeichenfolge im folgenden Format ein:
 
@@ -10,32 +10,32 @@ FileEndpoint=myFileEndpoint;
 SharedAccessSignature=sasToken
 ```
 
-Jeder Dienstendpunkt ist optional, obwohl die Verbindungszeichenfolge, die mindestens eine enthalten muss.
+Jeder Dienstendpunkt ist optional, obwohl die Verbindungszeichenfolge mindestens einen enthalten muss.
 
 > [!NOTE]
-> Verwendung von HTTPS mit einem SAS wird als bewährte Methode empfohlen.
+> Die Verwendung von HTTPS mit einem SAS wird als bewährte Methode empfohlen.
 >
-> Wenn Sie eine SAS in einer Verbindungszeichenfolge in einer Konfigurationsdatei angeben, müssen Sie möglicherweise codiert Sonderzeichen in der URL.
+> Wenn Sie eine SAS in einer Verbindungszeichenfolge in einer Konfigurationsdatei angeben, müssen Sie womöglich Sonderzeichen in der URL codieren.
 >
 >
 
-### <a name="service-sas-example"></a>Dienst-SAS-Beispiel
-Hier ist ein Beispiel einer Verbindungszeichenfolge, die einen Dienst SAS für Blob-Speicher umfasst:
+### <a name="service-sas-example"></a>Beispiel für Dienst-SAS
+Hier ist ein Beispiel einer Verbindungszeichenfolge, die eine Dienst-SAS für Blobspeicher enthält:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;
 SharedAccessSignature=sv=2015-04-05&sr=b&si=tutorial-policy-635959936145100803&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 ```
 
-Und hier ist ein Beispiel für die gleiche Verbindungszeichenfolge mit Codierung von Sonderzeichen:
+Und hier ist ein Beispiel für die gleiche Verbindungszeichenfolge mit codierten Sonderzeichen:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;
 SharedAccessSignature=sv=2015-04-05&amp;sr=b&amp;si=tutorial-policy-635959936145100803&amp;sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 ```
 
-### <a name="account-sas-example"></a>Konto-SAS-Beispiel
-Hier ist ein Beispiel für eine Verbindungszeichenfolge, die eine SAS-Konto für die Speicherung von BLOB- und umfasst. Beachten Sie, dass die Endpunkte für beide Dienste angegeben werden:
+### <a name="account-sas-example"></a>Beispiel für Konto-SAS
+Hier ist ein Beispiel einer Verbindungszeichenfolge, die eine Dienst-SAS für Blob-und Dateispeicher enthält: Beachten Sie, dass Endpunkte für beide Dienste angegeben werden:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;

@@ -99,7 +99,7 @@ In diesem Artikel werden folgende Themen erläutert:
 - [Erstellen einer Azure-Infrastruktur mit Terraform](../articles/virtual-machines/linux/terraform-create-complete-vm.md)
 
 
-## <a name="azure-automation"></a>Azure Automation
+## <a name="azure-automation"></a>Azure-Automatisierung
 [Azure Automation](https://azure.microsoft.com/services/automation/) verwendet Runbooks, um eine Reihe von Aufgaben auf Ihren virtuellen Zielcomputern zu verarbeiten. Azure Automation dient zur Verwaltung vorhandener virtueller Computer und nicht zur Erstellung einer Infrastruktur. Azure Automation kann für virtuelle Linux- und Windows-Computer sowie für lokale virtuelle oder physische Computer mit einem Hybrid Runbook Worker ausgeführt werden. Runbooks können in einem Quellcodeverwaltungs-Repository (beispielsweise GitHub) gespeichert werden. Diese Runbooks können dann manuell oder nach einem definierten Zeitplan ausgeführt werden.
 
 Azure Automation bietet auch einen DSC-Dienst (Desired State Configuration), mit dem Sie Definitionen für die Konfiguration einer bestimmten Gruppe von virtuellen Computern erstellen können. DSC stellt dann sicher, dass die erforderliche Konfiguration angewendet wird und der virtuelle Computer konsistent bleibt. Azure Automation DSC kann auf Computern unter Windows und Linux ausgeführt werden.

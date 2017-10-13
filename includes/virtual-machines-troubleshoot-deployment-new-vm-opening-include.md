@@ -1,5 +1,5 @@
-Wenn Sie versuchen, eine neue Azure-virtuellen Computer (VM) erstellen, sind häufige Fehler, die auftreten, Fehler oder Zuordnungsfehler bereitstellen.
+Wenn Sie versuchen, einen neuen virtuellen Azure-Computer zu erstellen, treten am häufigsten Bereitstellungsfehler oder Zuordnungsfehler auf.
 
-* Einem Bereitstellungsfehler geschieht, wenn das Betriebssystemabbild aufgrund falscher vorbereitenden Schritte oder aufgrund von falschen Einstellungen auswählen, während der Erfassung des aus dem Portal nicht geladen kann.
-* Ein zuordnungsfehlers entsteht, wenn das Cluster bzw. die Region sind keine verfügbaren Ressourcen auf, oder die angeforderte Größe des virtuellen Computers wird nicht unterstützt.
+* Ein Bereitstellungsfehler tritt auf, wenn das Betriebssystem-Image nicht geladen werden kann, weil falsche Vorbereitungsschritte ausgeführt wurden oder weil während der Erfassung des Images über das Portal die falschen Einstellungen ausgewählt wurden.
+* Ein Zuordnungsfehler tritt auf, wenn in dem Cluster oder der Region keine Ressourcen verfügbar sind oder wenn die angeforderte Größe des virtuellen Computers nicht unterstützt werden kann.
 

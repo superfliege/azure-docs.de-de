@@ -1,26 +1,26 @@
-Mit Azure Resource Manager, definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt Parameter aufgerufen, der alle Parameterwerte enthält.
-Sie sollten einen Parameter für diese Werte definieren, die unterschiedlich sind, basierend auf das Projekt, das Sie bereitstellen oder basierend auf die Umgebung aus, der Sie bereitstellen. Definieren Sie keine Parameter für Werte, die immer gleich bleiben werden. Jeder Parameterwert wird in der Vorlage verwendet, um die Ressourcen zu definieren, die bereitgestellt werden. 
+Mit dem Azure-Ressourcen-Manager definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt namens "Parameters", der alle Parameterwerte enthält.
+Definieren Sie einen Parameter für die Werte, die basierend auf dem bereitgestellten Projekt oder der bereitgestellten Umgebung variieren. Definieren Sie keine Parameter für Werte, die sich nicht ändern. Jeder Parameterwert wird in der Vorlage verwendet, um die bereitgestellten Ressourcen zu definieren. 
 
-Wenn Sie Parameter definieren, verwenden die **AllowedValues** Feld an, die einen Benutzer Werte kann während der Bereitstellung bereitstellen. Verwenden der **"DefaultValue"** Feld, um den Parameter einen Wert zuweisen, wenn während der Bereitstellung wird kein Wert angegeben.
+Verwenden Sie beim Definieren von Parametern das Feld **allowedValues** , um anzugeben, welche Werte ein Benutzer während der Bereitstellung angeben kann. Verwenden Sie das Feld **defaultValue** , um dem Parameter einen Wert zuweisen, wenn kein Wert während der Bereitstellung angegeben wird.
 
-Wir beschreiben Sie jeden Parameter in der Vorlage.
+Jeder Parameter wird in der Vorlage beschrieben.
 
 ### <a name="sitename"></a>siteName
-Der Name der Web-app, die Sie erstellen möchten.
+Der Name der Web-App, die Sie erstellen möchten.
 
     "siteName":{
       "type":"string"
     }
 
 ### <a name="hostingplanname"></a>hostingPlanName
-Der Name des App Service-Plan für das Hosten von Web-app verwenden.
+Der Name des App Service-Plans zum Hosten der Web-App.
 
     "hostingPlanName":{
       "type":"string"
     }
 
-### <a name="sku"></a>SKU
-Der Tarif für den hostingplan.
+### <a name="sku"></a>sku
+Der Tarif für den Hostingplan.
 
     "sku": {
       "type": "string",
@@ -44,10 +44,10 @@ Der Tarif für den hostingplan.
       }
     }
 
-Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind, und weist den Standardwert (S1), wenn kein Wert angegeben wird.
+Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind, und weist einen Standardwert (S1) zu, wenn kein Wert angegeben wird.
 
 ### <a name="workersize"></a>workerSize
-Die Instanzgröße des hostingplans (klein, Mittel oder groß).
+Die Instanzgröße des Hostingplans (klein, mittel oder groß).
 
     "workerSize":{
       "type":"string",
@@ -59,5 +59,5 @@ Die Instanzgröße des hostingplans (klein, Mittel oder groß).
       "defaultValue":"0"
     }
 
-Die Vorlage definiert die Werte, die für diesen Parameter (0, 1 oder 2) zulässig sind, und weist einen Standardwert (0), wenn kein Wert angegeben wird. Die Werte entsprechen "klein", mittelgroßen und großen.
+Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (0, 1 oder 2), und weist einen Standardwert (0) zu, wenn kein Wert angegeben wird. Die Werte entsprechen klein, mittel und groß.
 

@@ -1,25 +1,25 @@
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dieses Lernprogramm abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
+Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 
 > [!NOTE]
-> Wenn Sie keines Konto haben, können Sie in wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [kostenlose Azure-Testversion][lnk-free-trial].
+> Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].
 
 ### <a name="required-software"></a>Erforderliche Software
 
-Sie benötigen SSH-Client auf dem Desktopcomputer Remotezugriff in der Intel-NUC der Befehlszeile ermöglicht.
+Sie benötigen einen SSH-Client auf Ihrem Desktopcomputer, um per Remotezugriff auf die Befehlszeile des Intel NUC zugreifen zu können.
 
-- Windows umfasst einen SSH-Client nicht. Es wird empfohlen, [PuTTY](http://www.putty.org/).
-- Die meisten Linux-Distributionen und Mac OS enthalten die SSH-Befehlszeile-Hilfsprogramm.
+- In Windows ist kein SSH-Client enthalten. Wir empfehlen die Verwendung von [PuTTY](http://www.putty.org/).
+- In den meisten Linux-Distributionen sowie in Mac OS ist ein SSH-Befehlszeilenprogramm enthalten.
 
-### <a name="required-hardware"></a>Erforderliche hardware
+### <a name="required-hardware"></a>Erforderliche Hardware
 
-Ein Desktopcomputer, um die Befehlszeile für die Intel NUC herstellen können.
+Ein Desktopcomputer, über den Sie eine Remoteverbindung mit der Befehlszeile auf dem Intel NUC herstellen können.
 
-[IoT kommerzielle Gateway Kit][lnk-starter-kits]. Dieses Lernprogramm verwendet die folgenden Elemente aus dem Kit:
+[IoT Commercial Gateway Kit][lnk-starter-kits]. In diesem Tutorial wird Folgendes aus dem Kit verwendet:
 
-- Intel® NUC Kit DE3815TYKE mit 4G Arbeitsspeicher und Bluetooth-Erweiterung-Karte
-- Power-Adapter
+- Intel® NUC-Kit DE3815TYKE mit 4G Arbeitsspeicher und Bluetooth-Erweiterungskarte
+- Netzteil
 
 [lnk-starter-kits]: https://azure.microsoft.com/develop/iot/starter-kits/
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

@@ -1,15 +1,15 @@
-1. Auf **verbinden** erstellt und lädt eine Datei des Remotedesktopprotokolls (RDP-Datei). Klicken Sie auf **öffnen** , diese Datei zu verwenden.
-2. Sie erhalten eine Warnung, die das RDP von einem unbekannten Verleger stammt. Dies ist normal. Klicken Sie im Fenster des Remotedesktops auf **verbinden** um den Vorgang fortzusetzen.
+1. Nach Klicken auf **Verbinden** wird eine Remotedesktopprotokolldatei (RDP-Datei) erstellt und heruntergeladen. Klicken Sie auf **Öffnen** , damit diese Datei verwendet wird.
+2. Es erscheint eine Warnung mit dem Hinweis, dass die RDP-Datei von einem unbekannten Herausgeber stammt. Dies ist normal. Klicken Sie im Fenster "Remotedesktop" auf **Verbinden** , um den Vorgang fortzusetzen.
    
-    ![Screenshot des eine Warnung zu einem unbekannten Herausgeber.](./media/virtual-machines-log-on-win-server/rdp-warn.png)
-3. In der **Windows-Sicherheit** Fenster, geben Sie die Anmeldeinformationen für ein Konto auf dem virtuellen Computer, und klicken Sie dann auf **OK**.
+    ![Screenshot einer Warnung zu einem unbekannten Herausgeber](./media/virtual-machines-log-on-win-server/rdp-warn.png)
+3. Geben Sie im Fenster **Windows-Sicherheit** den Benutzernamen und das Kennwort eines Kontos auf dem virtuellen Computer ein, und klicken Sie anschließend auf **OK**.
    
-     **Lokales Konto** -Dies ist in der Regel den lokalen Benutzernamen und das Kennwort, die Sie beim Erstellen der virtuellen Maschine angegeben. In diesem Fall die Domäne ist der Name des virtuellen Computers und eingegeben wird, als *%vmname*&#92; *Benutzername*.  
+     **Lokales Konto**: Hierbei handelt es sich in der Regel um den Benutzernamen und das Kennwort des lokalen Kontos, die Sie beim Erstellen des virtuellen Computers angegeben haben. In diesem Fall ist die Domäne der Name des virtuellen Computers. Das Eingabeformat lautet *VM-Name*&#92;*Benutzername*.  
    
-    **Virtuellen Computer in der Domäne** – Wenn der virtuelle Computer einer Domäne angehört Geben Sie den Benutzernamen im Format *Domäne*&#92; *Benutzername*. Das Konto muss auch in der Gruppe "Administratoren" sein oder über die entsprechende RAS-Berechtigungen mit dem virtuellen Computer.
+    **In die Domäne eingebundener virtueller Computer**: Falls der virtuelle Computer in eine Domäne eingebunden ist, geben Sie den Benutzernamen im Format *Domäne*&amp;#92;*Benutzername* ein. Das Konto muss außerdem entweder zur Gruppe „Administratoren“ gehören oder über Remotezugriffsrechte für den virtuellen Computer verfügen.
    
-    **Domänencontroller** – Wenn der virtuelle Computer ein Domänencontroller ist. Geben Sie den Benutzernamen und das Kennwort eines Administratorkontos Domäne für diese Domäne.
-4. Klicken Sie auf **Ja** zum Überprüfen der Identität des virtuellen Computers und auf Anmeldung fertigzustellen.
+    **Domänencontroller** – Wenn der virtuelle Computer ein Domänencontroller ist, geben Sie den Benutzernamen und das Kennwort eines Domänenadministratorkontos für diese Domäne an.
+4. Klicken Sie auf **Ja** , um die Identität des virtuellen Computers zu bestätigen und das Anmelden zu beenden.
    
-   ![Screenshot der eine Nachricht zum Überprüfen der Identität des virtuellen Computers.](./media/virtual-machines-log-on-win-server/cert-warning.png)
+   ![Screenshot mit einer Meldung zur Überprüfung der Identität des virtuellen Computers](./media/virtual-machines-log-on-win-server/cert-warning.png)
 

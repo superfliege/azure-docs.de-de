@@ -1,39 +1,39 @@
-## <a name="what-are-service-bus-topics-and-subscriptions"></a>Was sind Service Bus-Themen und Abonnements?
-Service Bus-Themen und Abonnements Unterstützung einer *Veröffentlichen/Abonnieren* Kommunikationsmodell messaging. Wenn Themen und Abonnements verwenden möchten, führen Sie Komponenten einer verteilten Anwendung nicht direkt miteinander kommunizieren; Stattdessen tauschen sie Nachrichten über ein Thema, das als Vermittler fungiert.
+## <a name="what-are-service-bus-topics-and-subscriptions"></a>Was sind Service Bus-Themen und -Abonnements?
+Service Bus-Themen und -Abonnements unterstützen ein Modell der Messagingkommunikation über das *Veröffentlichen/Abonnieren* . Bei der Verwendung von Themen und Abonnements kommunizieren die Komponenten einer verteilten Anwendung nicht direkt miteinander, sondern tauschen Nachrichten über ein Thema aus, das als Zwischenstufe fungiert.
 
 ![TopicConcepts](./media/howto-service-bus-topics/sb-topics-01.png)
 
-Im Gegensatz zu Service Bus-Warteschlangen, die in denen jede Nachricht von einem einzigen Consumer verarbeitet werden bieten Themen und Abonnements über eine "eins zu viele"-Kommunikation, die mit einem Veröffentlichen/Abonnieren-Muster. Es ist möglich, mehrere Abonnements für ein Thema zu registrieren. Wenn eine Nachricht an ein Thema gesendet wird, wird es dann für alle Abonnements verfügbar versucht, Handle/unabhängig Prozess.
+Anders als bei Service Bus-Warteschlangen, bei denen jede Nachricht von einem einzelnen Consumer verarbeitet wird, bieten Themen und Abonnements eine 1:n-Kommunikationsform mit einem Veröffentlichungs- und Abonnementsmuster. Es ist möglich, mehrere Abonnements zu einem Thema anzumelden. Wenn eine Nachricht an ein Thema gesendet wird, steht sie in jedem Abonnement zur Verfügung, wo sie unabhängig von den anderen Abonnements verarbeitet wird.
 
-Ein Abonnement für ein Thema ähnelt eine virtuelle Warteschlange, die Kopien der Nachrichten empfängt, die an das Thema gesendet wurden. Optional können Sie Filterregeln für ein Thema auf der Grundlage einer pro-Abonnement registrieren, die wodurch Sie filtern oder einschränken, welche Nachrichten an ein Thema von themaabonnements empfangen werden.
+Ein Themenabonnement ähnelt einer virtuellen Warteschlange, die Kopien der Nachrichten enthält, die an das Thema gesendet wurden. Sie können optional auch Filterregeln für einzelne Abonnements eines Themas anmelden. Auf diese Weise können Sie filtern oder einschränken, welche Nachrichten an ein Thema von welchen Themenabonnements empfangen werden.
 
-Service Bus-Themen und Abonnements ermöglichen es Ihnen, zu skalieren und eine sehr große Anzahl von Nachrichten über viele Benutzer und Anwendungen zu verarbeiten.
+Mit Service Bus-Themen und -Abonnements können Sie sehr viele Nachrichten an sehr viele Benutzer und Anwendungen verarbeiten.
 
-## <a name="create-a-namespace"></a>Erstellen Sie einen namespace
-Um zu Service Bus-Themen und Abonnements in Azure verwenden, erstellen Sie zuerst eine *Dienstnamespace*. Ein Namespace stellt ein bereichsdefinitionscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung bereit.
+## <a name="create-a-namespace"></a>Erstellen eines Namespace
+Um mit der Verwendung von Service Bus-Themen und -Abonnements in Azure beginnen zu können, müssen Sie zuerst einen *Dienstnamespace*erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
 
-So erstellen Sie einen namespace
+So erstellen Sie einen Namespace
 
-1. Melden Sie sich an den [Azure-Portal][Azure portal].
-2. Klicken Sie im linken Navigationsbereich des Portals auf **neu**, klicken Sie dann auf **Enterprise Integration**, und klicken Sie dann auf **Service Bus**.
-3. In der **Namespace erstellen** Dialogfeld, geben Sie einen Namespace ein. Das System überprüft sofort, um festzustellen, ob der Name verfügbar ist.
-4. Nachdem sichergestellt wird der Name des Namespaces verfügbar ist, wählen Sie die Preisstufe (Basic, Standard oder Premium).
-5. In der **Abonnement** Feld, und wählen Sie ein Azure-Abonnement, um den Namespace zu erstellen.
-6. In der **Ressourcengruppe** Feld, und wählen Sie eine vorhandene Ressourcengruppe, in dem der Namespace wird Live- oder ein neues erstellen.      
-7. In **Speicherort**, wählen Sie das Land bzw. die Region, die in der der Namespace gehostet werden soll.
+1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
+2. Klicken Sie im linken Navigationsbereich des Portals auf **Neu** > **Enterprise Integration** > **Service Bus**.
+3. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
+4. Ist der Name verfügbar, wählen Sie den Tarif („Basic“, „Standard“ oder Premium“) aus.
+5. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
+6. Wählen Sie im Feld **Ressourcengruppe** eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.      
+7. Wählen Sie im Feld **Standort** das Land oder die Region aus, in dem bzw. in der Ihr Namespace gehostet werden soll.
    
     ![Namespace erstellen][create-namespace]
-8. Klicken Sie auf die **erstellen** Schaltfläche. Das System jetzt Ihren Namespace erstellt und aktiviert. Möglicherweise müssen Sie einige Minuten als Vorschriften Systemressourcen für Ihr Konto zu warten.
+8. Klicken Sie auf die Schaltfläche **Erstellen** . Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
 
 ### <a name="obtain-the-credentials"></a>Abrufen der Anmeldeinformationen
-1. Klicken Sie in der Liste der Namespaces auf die neu erstellte Namespacename.
-2. In der **Service Bus-Namespace** Blatt, klicken Sie auf **mit gemeinsamen Zugriffsrichtlinien**.
-3. In der **mit gemeinsamen Zugriffsrichtlinien** Blatt, klicken Sie auf **RootManageSharedAccessKey**.
+1. Klicken Sie in der Liste mit den Namespaces auf den neu erstellten Namespacenamen.
+2. Klicken Sie auf dem Blatt **Service Bus-Namespace** auf **Richtlinien für gemeinsamen Zugriff**.
+3. Klicken Sie auf dem Blatt **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
    
-    ![Verbindungsinformationen][connection-info]
-4. In der **Richtlinie: RootManageSharedAccessKey** Blatt, klicken Sie auf die Kopie Schaltfläche neben **Zeichenfolge – primäre Verbindungsschlüssel**, um die Verbindungszeichenfolge in die Zwischenablage zur späteren Verwendung zu kopieren.
+    ![connection-info][connection-info]
+4. Klicken Sie auf dem Blatt **Richtlinie: RootManageSharedAccessKey** neben **Verbindungszeichenfolge – Primärschlüssel** auf die Kopierschaltfläche, um die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage zu kopieren.
    
-    ![Verbindungszeichenfolgen][connection-string]
+    ![connection-string][connection-string]
 
 [Azure portal]: https://portal.azure.com
 [create-namespace]: ./media/howto-service-bus-topics/create-namespace.png

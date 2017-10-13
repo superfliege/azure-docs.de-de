@@ -1,9 +1,9 @@
 
-1. Fügen Sie in der Projektdatei "MainPage.Xaml.cs" die folgenden **mit** Anweisungen:
+1. Fügen Sie in der Projektdatei "MainPage.xaml.cs" die folgenden **using** -Anweisungen hinzu:
    
         using System.Linq;        
         using Windows.Security.Credentials;
-2. Ersetzen Sie die **AuthenticateAsync** -Methode durch folgenden Code:
+2. Ersetzen Sie die Methode **AuthenticateAsync** durch den folgenden Code:
    
         private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
         {
@@ -72,13 +72,13 @@
             return success;
         }
    
-    In dieser Version von **AuthenticateAsync**, die app in gespeicherte Anmeldeinformationen zu verwenden versucht die **PasswordVault** auf den Dienst zuzugreifen. Reguläre anmelden wird auch ausgeführt, wenn keine gespeicherten Anmeldeinformationen.
+    In dieser Version von **AuthenticateAsync** versucht die App, auf den Dienst über Anmeldeinformationen zuzugreifen, die in **PasswordVault** gespeichert sind. Dies erfolgt auch dann, wenn keine gespeicherten Anmeldeinformationen vorhanden sind.
    
    > [!NOTE]
-   > Ein zwischengespeichertes Token ist abgelaufen und Ablauf des Tokens kann auch nach der Authentifizierung auftreten, wenn die app verwendet wird. Informationen zu bestimmen, ob ein Token abgelaufen ist, finden Sie unter [für abgelaufene Authentifizierungstoken überprüfen](http://aka.ms/jww5vp). Eine Lösung für die Behandlung von im Zusammenhang mit ablaufender Token Authentifizierungsfehler, finden Sie im Beitrag [Caching und Behandeln von abgelaufenen Token in Azure Mobile Services verwaltet SDK](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
+   > Zwischengespeicherte Token können auch nach der Authentifizierung ablaufen, wenn die App verwendet wird. Weitere Informationen dazu, wie Sie ermitteln, ob ein Token abgelaufen ist, finden Sie unter [Check for expired Azure Mobile Services authentication tokens](http://aka.ms/jww5vp)(in englischer Sprache). Eine Lösung zur Behandlung von Autorisierungsfehlern in Zusammenhang mit abgelaufenen Token finden Sie im Beitrag [Caching and handling expired tokens in Azure Mobile Services managed SDK](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx)(Zwischenspeichern und Behandeln von abgelaufenen Token mit dem Azure Mobile Services-SDK für verwalteten Code, in englischer Sprache). 
    > 
    > 
-3. Starten Sie die app zweimal neu.
+3. Starten Sie die App zweimal neu.
    
-    Beachten Sie, dass beim ersten Start melden Sie sich mit den Anbieter erneut erforderlich ist. Allerdings auf den zweiten Neustart werden die zwischengespeicherten Anmeldeinformationen verwendet und Anmeldung umgangen wird. 
+    Beachten Sie, dass beim ersten Start die Anmeldung beim Anbieter wieder erforderlich ist. Beim zweiten Neustart jedoch werden die zwischengespeicherten Anmeldeinformationen verwendet, und die Anmeldung wird umgangen. 
 

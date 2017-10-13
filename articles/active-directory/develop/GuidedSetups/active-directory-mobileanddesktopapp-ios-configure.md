@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
+ms.openlocfilehash: 0ebca65585fc87bd4a85ba092cd423fce9540f58
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 8a4f412102c0e75654030f5d4f8aab575fdcebba
-ms.contentlocale: de-de
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 ## <a name="create-an-application-express"></a>Erstellen einer Anwendung (Express)
 Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* registrieren:
@@ -69,4 +69,3 @@ Fügen Sie unter dem <code>dict</code>-Stammknoten Folgendes hinzu:
 Ersetzen Sie <i><code>[Your_Application_Id_Here]</code></i> durch die Anwendungs-ID, die Sie gerade registriert haben
 </li>
 </ol>
-

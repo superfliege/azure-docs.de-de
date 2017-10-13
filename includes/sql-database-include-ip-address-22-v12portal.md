@@ -15,24 +15,24 @@ articles/sql-database/sql-database-connect-query.md
 -->
 
 
-1. Melden Sie sich auf die [Azure-Portal](https://portal.azure.com/) am http://portal.azure.com/.
-2. Klicken Sie in dem linken Banner auf **alle Durchsuchen**. Die **Durchsuchen** Blatt wird angezeigt.
-3. Führen Sie einen Bildlauf aus, und klicken Sie auf **SQL Server**. Die **SQL Servern** Blatt wird angezeigt.
+1. Melden Sie sich unter „http://portal.azure.com/“ beim [Azure-Portal](https://portal.azure.com/) an.
+2. Klicken Sie im linken Banner auf **ALLE DURCHSUCHEN**. Das Blatt **Durchsuchen** wird angezeigt.
+3. Scrollen Sie und klicken Sie auf **SQL-Server**. Das Blatt **SQL-Server** wird angezeigt.
    
-    ![Suchen nach Ihrem Azure SQL-Datenbank-Server im portal][b21-FindServerInPortal]
-4. Der Einfachheit halber klicken Sie auf das Steuerelement minimieren, auf den früheren **Durchsuchen** Blatt.
-5. Starten Sie in das Textfeld "Filter" Geben Sie den Namen des Servers ein. Es wird eine Zeile angezeigt.
-6. Klicken Sie auf die Zeile für den Server. Es wird ein Blatt für den Server angezeigt.
-7. Klicken Sie auf der Seite "Server" auf **Einstellungen**. Die **Einstellungen** Blatt wird angezeigt.
-8. Klicken Sie auf **Firewall**. Die **Firewalleinstellungen** Blatt wird angezeigt.
+    ![Suchen Sie Ihren Azure SQL-Datenbankserver im Portal][b21-FindServerInPortal]
+4. Der Einfachheit halber klicken Sie auf das Minimieren-Steuerelement im früheren Blatt **Durchsuchen** .
+5. Geben Sie im Filtertextfeld zunächst den Namen des Servers ein. Die Zeile wird angezeigt.
+6. Klicken Sie auf die Zeile für den Server. Ein Blatt für den Server wird angezeigt.
+7. Klicken Sie auf dem Serverblatt auf **Einstellungen**. Das Blatt **Einstellungen** wird angezeigt.
+8. Klicken Sie auf **Firewall**. Das Blatt **Firewalleinstellungen** wird angezeigt.
    
-    ![Klicken Sie auf ' Einstellungen > Firewall][b31-SettingsFirewallNavig]
-9. Klicken Sie auf **Hinzufügen von Client-IP-**. Geben Sie einen Namen für die neue Regel ein, in das erste Textfeld.
-10. Geben Sie die Werte der niedrigen und hohen IP-Adresse für den Bereich an, die, den Sie aktivieren möchten.
+    ![Klicken Sie auf "Einstellungen > Firewall"][b31-SettingsFirewallNavig]
+9. Klicken Sie auf **Client-IP hinzufügen**. Geben Sie einen Namen für die neue Regel in das erste Textfeld ein.
+10. Geben Sie die niedrigen und hohen IP-Adresswerte für den Bereich ein, den Sie aktivieren möchten.
     
-    * Kann es praktisch, wenn das Ende der niedrigen Wert mit **.0** und High mit **.255**.
+    * Es kann praktisch sein, wenn der niedrige Wert auf **.0** endet und der hohe auf **.255**.
     
-    ![Fügen Sie einen IP-Adressbereich zu ermöglichen][b41-AddRange]
+    ![Fügen Sie einen erlaubten IP-Adressbereich hinzu][b41-AddRange]
 11. Klicken Sie auf **Speichern**.
 
 <!-- Image references. -->

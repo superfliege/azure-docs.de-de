@@ -1,6 +1,6 @@
 ---
-title: "Azure AD-v2-Android-erste Schritte – konfigurieren | Microsoft Docs"
-description: "Wie eine Android-app ein Zugriffstoken abrufen und Aufrufen von Microsoft Graph-API oder APIs, Zugriffstoken aus Azure Active Directory-v2-Endpunkt erfordern, können"
+title: "Azure AD v2 – Android – Erste Schritte – Konfigurieren | Microsoft-Dokumentation"
+description: Informationen, wie eine Android-App ein Zugriffstoken abrufen und die Microsoft Graph-API oder APIs aufrufen kann, die Zugriffstoken vom Azure Active Directory-v2-Endpunkt erfordern
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -16,26 +16,26 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.openlocfilehash: 945b09ccdb7537987da33d32d94a3ccacd829ffd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 ## <a name="create-an-application-express"></a>Erstellen einer Anwendung (Express)
-Nun Sie zum Registrieren Ihrer Anwendung in müssen der *Microsoft App-Registrierungsportal*:
-1. Registrieren Sie Ihre Anwendung über die [Microsoft App-Registrierungsportal](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure)
-2.  Geben Sie einen Namen für die Anwendung und Ihre e-Mail-Adresse
-3.  Stellen Sie sicher, dass die Option für das Setup geführtes aktiviert ist
-4.  Führen Sie die Anweisungen zum Abrufen der Anwendungs-ID, und fügen ihn in Ihren code
+Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* registrieren:
+1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure).
+2.  Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein.
+3.  Stellen Sie sicher, dass die Option für geführtes Setup aktiviert ist.
+4.  Befolgen Sie die Anweisungen zum Abrufen der Anwendungs-ID, und fügen Sie sie in Ihren Code ein.
 
-### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Fügen Sie Ihre Anwendung Registrierungsinformationen zur Projektmappe (Erweitert)
-Nun Sie zum Registrieren Ihrer Anwendung in müssen der *Microsoft App-Registrierungsportal*:
-1. Wechseln Sie zu der [Microsoft App-Registrierungsportal](https://apps.dev.microsoft.com/portal/register-app) zum Registrieren einer Anwendung
-2. Geben Sie einen Namen für die Anwendung und Ihre e-Mail-Adresse 
-3. Stellen Sie sicher, dass die Option für das Setup geführtes deaktiviert ist.
-4. Klicken Sie auf `Add Platform`, und wählen Sie dann `Native Application` und klicken Sie auf Speichern
-5.  Open `MainActivity` (under `app` > `java` > *`{host}.{namespace}`*)
-6.  Ersetzen Sie die *[Geben Sie hier für die Anwendung Id]* in der Zeile, beginnend mit `final static String CLIENT_ID` mit Anwendungs-ID, die Sie gerade registriert haben:
+### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Hinzufügen der Registrierungsinformationen Ihrer Anwendung zur Projektmappe (für Fortgeschrittene)
+Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* registrieren:
+1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app).
+2. Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein. 
+3. Stellen Sie sicher, dass die Option für geführtes Setup deaktiviert ist.
+4. Klicken Sie auf `Add Platform`, wählen Sie `Native Application` aus, und klicken Sie auf „Speichern“.
+5.  Öffnen Sie `MainActivity` (unter `app` > `java` > *`{host}.{namespace}`*).
+6.  Ersetzen Sie die *[hier die Anwendung-ID eingeben]* in der Zeile, die mit `final static String CLIENT_ID` beginnt, durch die Anwendungs-ID, die Sie gerade registriert haben:
 
 ```java
 final static String CLIENT_ID = "[Enter the application Id here]";
@@ -43,7 +43,7 @@ final static String CLIENT_ID = "[Enter the application Id here]";
 <!-- Workaround for Docs conversion bug -->
 <ol start="7">
 <li>
-Open `AndroidManifest.xml` (unter `app`  >  `manifests`) fügen Sie die folgende Aktivität `manifest\application` Knoten. Hierdurch wird registriert, ein `BrowserTabActivity` um das Betriebssystem zum Fortsetzen der Anwendung nach Abschluss der Authentifizierungs zu ermöglichen:
+Öffnen Sie `AndroidManifest.xml` (unter `app` > `manifests`). Fügen Sie die folgende Aktivität dem Knoten `manifest\application` hinzu. Hierdurch wird `BrowserTabActivity` registriert, um dem Betriebssystem das Fortsetzen der Anwendung nach Abschluss der Authentifizierung zu ermöglichen:
 </li>
 </ol>
 
@@ -66,6 +66,6 @@ Open `AndroidManifest.xml` (unter `app`  >  `manifests`) fügen Sie die folgende
 <!-- Workaround for Docs conversion bug -->
 <ol start="8">
 <li>
-In der `BrowserTabActivity`, ersetzen Sie `[Enter the application Id here]` -ID der Anwendung.
+Ersetzen Sie `[Enter the application Id here]` in `BrowserTabActivity` durch die Anwendungs-ID.
 </li>
 </ol>

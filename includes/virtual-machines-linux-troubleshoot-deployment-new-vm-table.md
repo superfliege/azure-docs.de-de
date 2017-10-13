@@ -1,7 +1,7 @@
-Die folgende Tabelle enthält die möglichen hochladen und Capture Kombinationen von Linux generalisiert und Betriebssystemimages spezialisiert. Die Kombinationen, die ohne Fehler verarbeitet werden durch einen Y angegeben, und solche, die Fehler auslöst, werden durch ein n angegeben Die Ursachen und Lösungen für die unterschiedlichen Fehler in ausführen, werden unterhalb der Tabelle angegeben.
+In der folgenden Tabelle sind die möglichen Upload- und Erfassungskombinationen von generalisierten und spezialisierten Linux-Betriebssystem-Images aufgeführt. Die Kombinationen, die ohne Fehler verarbeitet werden, sind durch ein „J“ gekennzeichnet, und die Kombinationen, bei denen Fehler ausgelöst werden, durch ein „N“. Die Ursachen und Lösungen für die verschiedenen auftretenden Fehler werden unterhalb der Tabelle beschrieben.
 
-| OS | Laden Sie die Spezifikation hoch. | Hochladen Sie, Gen. | Spezifikation zu erfassen. | Gen zu erfassen. |
+| Betriebssystem | Upload (spez.) | Upload (gen.) | Erfassung (spez.) | Erfassung (gen.) |
 | --- | --- | --- | --- | --- |
-| Linux-Gen. |N<sup>1</sup> |J |N<sup>3</sup> |J |
-| Linux-Spezifikation. |J |N<sup>2</sup> |J |N<sup>4</sup> |
+| Linux (gen.) |N<sup>1</sup> |J |N<sup>3</sup> |J |
+| Linux (spez.) |J |N<sup>2</sup> |J |N<sup>4</sup> |
 

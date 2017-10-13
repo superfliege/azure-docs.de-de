@@ -1,26 +1,26 @@
-## <a name="using-vault-credentials-to-authenticate-with-the-azure-backup-service"></a>Tresor-Anmeldeinformationen verwenden für die Authentifizierung bei Azure Backup-Dienst
-Der lokale Server (Windows-Client oder Windows Server oder Data Protection Manager-Server) muss bei einem sicherungstresor authentifiziert werden, bevor sie Daten in Azure sichern kann. Die Authentifizierung erfolgt mithilfe von "Tresor-Anmeldeinformationen". Das Konzept der tresoranmeldeinformationen ist ähnelt dem Konzept einer "veröffentlichungseinstellungen"-Datei die in Azure PowerShell verwendet wird.
+## <a name="using-vault-credentials-to-authenticate-with-the-azure-backup-service"></a>Verwenden von Tresoranmeldeinformationen zur Authentifizierung beim Azure Backup-Dienst
+Der lokale Server (Windows-Client oder Windows Server oder Data Protection Manager-Server) muss bei einem Sicherungstresor authentifiziert werden, bevor Daten in Azure gesichert werden können. Die Authentifizierung erfolgt mithilfe von "Tresoranmeldeinformationen". Das Konzept der Tresoranmeldeinformationen ähnelt dem Konzept einer Datei mit "Veröffentlichungseinstellungen", die in Azure PowerShell verwendet wird.
 
-### <a name="what-is-the-vault-credential-file"></a>Was ist die Datei mit tresoranmeldeinformationen?
-Die Datei mit tresoranmeldeinformationen ist ein Zertifikat vom Portal für jede backup-Tresor generiert. Das Portal hochgeladen klicken Sie dann den öffentlichen Schlüssel, Access Control Service (ACS). Der private Schlüssel des Zertifikats für dem Benutzer als Teil des Workflows zur Verfügung, denen als Eingabe in der Registrierung zustandsautomatenworkflow zugewiesen ist. Dadurch wird den Computer zum Senden von Sicherungsdaten an einem identifizierten-Tresor im Azure Backup-Dienst authentifiziert.
+### <a name="what-is-the-vault-credential-file"></a>Was ist die Datei mit Tresoranmeldeinformationen?
+Die Datei mit Tresoranmeldeinformationen ist ein Zertifikat, das vom Portal für jeden Sicherungstresor generiert wird. Das Portal lädt anschließend den öffentlichen Schlüssel in den Access Control Service (ACS) hoch. Der private Schlüssel des Zertifikats wird dem Benutzer während des Workflows zur Verfügung gestellt und dient als Eingabe für den Workflow zur Computerregistrierung. Dadurch wird der Computer zum Senden von Sicherungsdaten an einen identifizierten Tresor im Azure Backup-Dienst authentifiziert.
 
-Die tresoranmeldeinformationen wird nur während des Workflows für die Registrierung verwendet. Es ist Aufgabe des Benutzers, um sicherzustellen, dass die Datei mit tresoranmeldeinformationen nicht gefährdet sind. Fällt in die Hände der alle nicht autorisierten Benutzer, kann die Datei mit tresoranmeldeinformationen verwendet werden, auf anderen Computern mit demselben Tresor zu registrieren. Jedoch, wie die zu sichernden Daten verschlüsselt ist, verwenden eine Passphrase an den Kunden gehört, können nicht vorhandene Sicherungsdaten gefährdet werden. Um dieses Problem zu minimieren, werden Tresor-Anmeldeinformationen festgelegt, in 48 Std. abläuft. Sie können den tresoranmeldeinformationen des backup-Tresor oft – herunterladen, aber während des Workflows für die Registrierung gilt nur der neueste Vault-Anmeldedatei.
+Die Tresoranmeldeinformationen werden nur während des Registrierungsworkflows verwendet. Es ist Aufgabe des Benutzers sicherzustellen, dass die Datei mit den Tresoranmeldeinformationen sicher aufbewahrt wird. Fällt sie in die Hände eines böswilligen Benutzers, kann dieser die Datei mit den Tresoranmeldeinformationen zur Registrierung weiterer Computer beim selben Tresor verwenden. Da die Sicherungsdaten jedoch durch eine Passphrase verschlüsselt sind, die dem Kunden gehört, sind vorhandene Sicherungsdaten nicht gefährdet. Um dieses Risiko auf ein Mindestmaß zu verringern, laufen die Tresoranmeldeinformationen nach 48 Stunden ab. Sie können die Tresoranmeldeinformationen beliebig oft von einem Sicherungstresor herunterladen – jedoch nur die neueste Datei mit Tresoranmeldeinformationen ist für den Registrierungsworkflow gültig.
 
-### <a name="download-the-vault-credential-file"></a>Die Datei mit tresoranmeldeinformationen herunterladen
-Die Datei mit tresoranmeldeinformationen ist über einen sicheren Kanal vom Azure-Portal heruntergeladen. Azure Backup-Dienst ist nicht bekannt, des privaten Schlüssels des Zertifikats und des privaten Schlüssels wird nicht im Verwaltungsportal oder den Dienst beibehalten. Verwenden Sie die folgenden Schritte aus, um die Datei mit den tresoranmeldeinformationen auf einem lokalen Computer herunterladen.
+### <a name="download-the-vault-credential-file"></a>Herunterladen der Datei mit Tresoranmeldeinformationen
+Die Datei mit Tresoranmeldeinformationen wird über einen sicheren Kanal aus dem Azure-Portal heruntergeladen. Der Azure Backup-Dienst kennt nicht den privaten Schlüssel des Zertifikats, und der private Schlüssel wird weder im Portal noch im Dienst aufbewahrt. Gehen Sie folgendermaßen vor, um die Datei mit Tresoranmeldeinformationen auf einen lokalen Computer herunterzuladen.
 
-1. Melden Sie sich bei der [-Verwaltungsportal](https://manage.windowsazure.com/)
-2. Klicken Sie auf **Wiederherstellungsdienste** im linken Navigationsbereich und wählen Sie den sicherungstresor, in dem Sie erstellt haben. Klicken Sie auf das Symbol "Cloud", um die Schnellstart-Ansicht des sicherungstresors zu erhalten.
+1. Melden Sie sich beim [Verwaltungsportal](https://manage.windowsazure.com/)
+2. Klicken Sie im linken Navigationsbereich auf **Recovery Services** , und wählen Sie den Sicherungstresor aus, den Sie erstellt haben. Klicken Sie auf das Cloudsymbol, um die Ansicht "Schnellstart" des Sicherungstresors aufzurufen.
    
-   ![Die Schnellansicht](./media/backup-download-credentials/quickview.png)
-3. Klicken Sie auf der Seite "Schnellstart" auf **tresoranmeldeinformationen herunterladen**. Das Portal generiert die Datei mit Tresor-Anmeldeinformationen, zum Download zur Verfügung gestellt werden.
+   ![Schnellansicht](./media/backup-download-credentials/quickview.png)
+3. Klicken Sie auf der Seite "Schnellstart" auf **Tresoranmeldeinformationen herunterladen**. Das Portal generiert die Datei mit Tresoranmeldeinformationen, die zum Download zur Verfügung gestellt wird.
    
-   ![Herunterladen](./media/backup-download-credentials/downloadvc.png)
-4. Das Portal wird mithilfe einer Kombination aus den tresornamen und dem aktuellen Datum tresoranmeldeinformationen generiert. Klicken Sie auf **speichern** Herunterladen der tresoranmeldeinformationen zum Ordner "Downloads" das lokale Konto, oder wählen speichern, aus speichern, um einen Speicherort für den Tresor-Anmeldeinformationen angeben.
+   ![Download](./media/backup-download-credentials/downloadvc.png)
+4. Das Portal generiert Tresoranmeldeinformationen mit einer Kombination aus dem Tresornamen und dem aktuellen Datum. Klicken Sie auf **Speichern**, um die Tresoranmeldeinformationen in den Downloadordner des lokalen Kontos herunterzuladen. Sie können auch im Menü „Speichern“ die Option „Speichern unter“ auswählen, um einen anderen Speicherort anzugeben.
 
 ### <a name="note"></a>Hinweis
-* Stellen Sie sicher, dass die tresoranmeldeinformationen wird gespeichert, in einen Speicherort an, die von Ihrem Computer zugegriffen werden kann. Wenn sie in einer Freigabe/SMB-Datei gespeichert ist, überprüfen Sie für die Zugriffsberechtigungen.
-* Die Datei mit tresoranmeldeinformationen ist nur während des Workflows für die Registrierung verwendet.
-* Die Datei mit tresoranmeldeinformationen läuft ab nach 48 Std. und kann über das Portal heruntergeladen werden.
-* Finden Sie in der Azure-Sicherung [– häufig gestellte Fragen](../articles/backup/backup-azure-backup-faq.md) für alle Fragen im Workflow.
+* Stellen Sie sicher, dass die Tresoranmeldeinformationen an einem Ort gespeichert werden, der von Ihrem Computer aus zugänglich ist. Wenn sie in einer Dateifreigabe/einem SMB gespeichert sind, überprüfen Sie die Zugriffsberechtigungen.
+* Die Datei mit den Tresoranmeldeinformationen wird nur während des Registrierungsworkflows verwendet.
+* Die Datei mit den Tresoranmeldeinformationen läuft nach 48 Stunden ab und kann über das Portal heruntergeladen werden.
+* Bei Fragen zum Workflow finden Sie Informationen in den [häufig gestellten Fragen](../articles/backup/backup-azure-backup-faq.md) zu Azure Backup.
 

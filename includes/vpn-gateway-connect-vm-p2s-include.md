@@ -1,10 +1,10 @@
-Sie können mit einem virtuellen Computer verbinden, die für Ihr VNet bereitgestellt wird, indem Sie eine Remotedesktopverbindung mit Ihrem virtuellen Computer erstellen. Die beste Möglichkeit, vergewissern Sie sich zunächst, dass Sie eine Verbindung zu Ihrem virtuellen Computer herstellen können, ist über ihren privaten IP-Adresse, anstatt Computernamens eine Verbindung herstellen. Auf diese Weise werden Sie testen, um festzustellen, ob Sie können eine Verbindung herstellen, nicht, ob namensauflösung ordnungsgemäß konfiguriert ist.
+Sie können eine Verbindung mit einer VM herstellen, die in Ihrem VNet bereitgestellt wird, indem Sie eine Remotedesktopverbindung mit Ihrer VM herstellen. Die beste Möglichkeit zur anfänglichen Sicherstellung, dass eine Verbindung mit Ihrer VM hergestellt werden kann, ist die Verwendung der privaten IP-Adresse anstelle des Computernamens. Auf diese Weise können Sie testen, ob die Verbindungsherstellung möglich ist, anstatt zu überprüfen, ob die Namensauflösung richtig konfiguriert ist.
 
-1. Suchen Sie die private IP-Adresse ein. Sie erhalten die private IP-Adresse eines virtuellen Computers durch entweder über die Eigenschaften für den virtuellen Computer im Azure-Portal oder mithilfe von PowerShell.
+1. Ermitteln Sie die private IP-Adresse. Sie können die private IP-Adresse einer VM ermitteln, indem Sie sich entweder die Eigenschaften für die VM im Azure-Portal ansehen oder PowerShell verwenden.
 
-  - Azure-Portal – suchen Sie den virtuellen Computer im Azure-Portal. Anzeigen der Eigenschaften für den virtuellen Computer an. Die private IP-Adresse aufgeführt wird.
+  - Azure-Portal: Suchen Sie im Azure-Portal nach Ihrem virtuellen Computer. Zeigen Sie die Eigenschaften für die VM an. Die private IP-Adresse ist aufgeführt.
 
-  - PowerShell - aus Ihrer Ressourcengruppen im Beispiel zum Anzeigen einer Liste von virtuellen Computern und privaten IP-Adressen verwenden. Sie müssen nicht in diesem Beispiel ändern, bevor Sie ihn verwenden.
+  - PowerShell: Verwenden Sie das Beispiel, um eine Liste mit VMs und privaten IP-Adressen aus Ihren Ressourcengruppen anzuzeigen. Es ist nicht erforderlich, dieses Beispiel vor der Verwendung zu ändern.
 
     ```powershell
     $VMs = Get-AzureRmVM
@@ -19,17 +19,17 @@ Sie können mit einem virtuellen Computer verbinden, die für Ihr VNet bereitges
     }
     ```
 
-2. Stellen Sie sicher, dass Sie Ihr VNet mit Punkt-zu-Standort-VPN-Verbindung verbunden sind.
-3. Open **Remote Desktop Connection** Geben Sie "RDP" oder "Remotedesktopverbindung" in das Suchfeld auf der Taskleiste ein, wählen Sie dann eine Remotedesktopverbindung. Sie können auch eine Remotedesktopverbindung mit dem "Mstsc"-Befehl in PowerShell öffnen. 
-4. Geben Sie in Remote Desktop Connection die private IP-Adresse des virtuellen Computers aus. Sie können "Optionen anzeigen", passen Sie die zusätzliche Einstellungen, und verbinden klicken.
+2. Vergewissern Sie sich, dass eine Point-to-Site-VPN-Verbindung mit Ihrem VNet besteht.
+3. Öffnen Sie eine **Remotedesktopverbindung**, indem Sie auf der Taskleiste im Suchfeld „RDP“ oder „Remotedesktopverbindung“ eingeben und dann „Remotedesktopverbindung“ wählen. Sie können auch den Befehl „mstsc“ in PowerShell verwenden, um eine Remotedesktopverbindung zu öffnen. 
+4. Geben Sie in der Remotedesktopverbindung die private IP-Adresse der VM ein. Sie können auf „Optionen anzeigen“ klicken, um weitere Einstellungen anzupassen, und dann die Verbindung herstellen.
 
-### <a name="to-troubleshoot-an-rdp-connection-to-a-vm"></a>Um eine RDP-Verbindung zu einem virtuellen Computer zu beheben.
+### <a name="to-troubleshoot-an-rdp-connection-to-a-vm"></a>So führen Sie die Problembehandlung für die RDP-Verbindung mit einer VM durch
 
-Wenn Sie Probleme beim Herstellen einer Verbindung zu einem virtuellen Computer über eine VPN-Verbindung auftreten, überprüfen Sie Folgendes:
+Falls Sie beim Herstellen einer Verbindung mit einem virtuellen Computer per VPN-Verbindung Probleme haben sollten, überprüfen Sie Folgendes:
 
-- Stellen Sie sicher, dass Ihre VPN-Verbindung erfolgreich ist.
-- Stellen Sie sicher, dass Sie mit der privaten IP-Adresse für den virtuellen Computer herstellen.
-- Verwenden Sie "Ipconfig", überprüfen Sie die IPv4-Adresse zugewiesen, die Ethernet-Adapter auf dem Computer, von dem Sie eine Verbindung herstellen. Die IP-Adresse innerhalb des Adressbereichs des Vnets, den Sie zum Verbinden oder in den Adressbereich des Ihrer VPNClientAddressPool ist, wird dies als eine überlappende Adressraum bezeichnet. Auf diese Weise der Adressraum überschneidet sich, der Netzwerkdatenverkehr Azure nicht erreichen kann, bleibt er im lokalen Netzwerk.
-- Wenn Sie eine Verbindung mit dem virtuellen Computer mit der privaten IP-Adresse, jedoch nicht den Computernamen herstellen können, stellen Sie sicher, dass Sie DNS ordnungsgemäß konfiguriert haben. Weitere Informationen zur Funktionsweise der namensauflösung für virtuelle Computer finden Sie unter [namensauflösung für virtuelle Computer](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
-- Stellen Sie sicher, dass die VPN-clientkonfigurationspaket generiert wurde, nachdem die DNS-Server IP-Adressen für das VNet angegeben wurden. Wenn Sie die IP-Adressen von DNS-Server aktualisiert haben, generieren und ein neues Konfigurationspaket für VPN-Client installieren.
-- Weitere Informationen zu RDP-Verbindungen finden Sie unter [Remotedesktopverbindungen zu einer virtuellen Maschine beheben](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md).
+- Stellen Sie sicher, dass die Herstellung der VPN-Verbindung erfolgreich war.
+- Stellen Sie sicher, dass Sie die Verbindung mit der privaten IP-Adresse für die VM herstellen.
+- Überprüfen Sie mit „ipconfig“ die IPv4-Adresse, die dem Ethernet-Adapter auf dem Computer zugewiesen ist, von dem aus Sie die Verbindung herstellen. Wenn sich die IP-Adresse im Adressbereich des VNETs befindet, mit dem Sie die Verbindung herstellen, oder im Adressbereich von „VPNClientAddressPool“ liegt, wird dies als sich überschneidender Adressraum bezeichnet. Falls sich Ihr Adressraum auf diese Weise überschneidet, kommt der Netzwerkdatenverkehr nicht bei Azure an, sondern verbleibt im lokalen Netzwerk.
+- Falls Sie mit der privaten IP-Adresse eine Verbindung mit der VM herstellen können, aber nicht mit dem Computernamen, sollten Sie sich vergewissern, dass das DNS richtig konfiguriert ist. Weitere Informationen zur Funktionsweise der Namensauflösung für virtuelle Computer finden Sie unter [Namensauflösung für virtuelle Computer](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+- Stellen Sie sicher, dass das VPN-Clientkonfigurationspaket generiert wurde, nachdem die IP-Adressen des DNS-Server für das VNET angegeben wurden. Wenn Sie die IP-Adressen des DNS-Servers aktualisiert haben, generieren Sie ein neues VPN-Clientkonfigurationspaket und installieren es.
+- Weitere Informationen zu RDP-Verbindungen finden Sie unter [Behandeln von Problemen bei Remotedesktopverbindungen mit einem virtuellen Azure-Computer](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md).

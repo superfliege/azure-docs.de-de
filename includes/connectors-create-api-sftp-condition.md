@@ -1,12 +1,12 @@
-1. Wählen Sie **+ neuen Schritt** die Aktion hinzufügen.  
-2. Wählen Sie die **fügen Sie eine Aktion** Link. Dieser wird geöffnet, das Suchfeld, in dem Sie für jede Aktion suchen können, übernehmen möchten. In diesem Beispiel sind SharePoint-Aktionen von Interesse sind.    
-   ![SFTP Bedingung Bild 1](./media/connectors-create-api-sftp/condition-1.png)    
-3. Wählen Sie **wählen Sie einen Wert** auf der linken Seite. 
-   ![SFTP Bedingung Bild 2](./media/connectors-create-api-sftp/condition-2.png)    
-4. Wählen Sie **Dateiinhalt** um anzugeben, dass der Inhalt der Datei in der Bedingung ausgewertet werden sollen.      
-   ![SFTP Bedingung Bild 3](./media/connectors-create-api-sftp/condition-3.png)   
-5. Wählen Sie *enthält* aus der Liste der Operatoren.       
-   ![SFTP Bedingung Bild 4](./media/connectors-create-api-sftp/condition-4.png)   
-6. Wählen Sie **wählen Sie einen Wert** auf der rechten Seite, und geben Sie *ExtractMeFirst*. In diesem Beispiel ist ExtractMeFirst ein Wert, der erwartet wird, befindet sich in einer Datei von Personen, die über Zugriff auf die SFTP-Ordner, um anzugeben, dass es sich um eine Archivdatei ist, die extrahiert werden sollen.  
-   ![SFTP Bedingung Bild 5](./media/connectors-create-api-sftp/condition-5.png)   
+1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion hinzuzufügen.  
+2. Wählen Sie den Link **Aktion hinzufügen** aus. Daraufhin öffnet sich das Suchfeld, mit dem Sie nach der gewünschten Aktion suchen können. In diesem Beispiel sind SharePoint-Aktionen von Interesse.    
+   ![SFTP-Bedingung – Abbildung 1](./media/connectors-create-api-sftp/condition-1.png)    
+3. Wählen Sie auf der linken Seite **Wert auswählen** aus. 
+   ![SFTP-Bedingung – Abbildung 2](./media/connectors-create-api-sftp/condition-2.png)    
+4. Wählen Sie **Dateiinhalt** aus, um anzugeben, dass Sie mit der Bedingung den Dateiinhalt auswerten möchten.      
+   ![SFTP-Bedingung – Abbildung 3](./media/connectors-create-api-sftp/condition-3.png)   
+5. Wählen Sie aus der Liste der Operatoren *enthält* aus.       
+   ![SFTP-Bedingung – Abbildung 4](./media/connectors-create-api-sftp/condition-4.png)   
+6. Wählen Sie auf der rechten Seite **Wert auswählen** aus, und geben Sie *ExtractMeFirst*ein. In diesem Beispiel ist „ExtractMeFirst“ ein Wert, der von Personen, die Zugriff auf den SFTP-Ordner haben, in einer Datei erwartet wird, um anzugeben, dass es sich um eine zu extrahierende Archivdatei handelt.  
+   ![SFTP-Bedingung – Abbildung 5](./media/connectors-create-api-sftp/condition-5.png)   
 

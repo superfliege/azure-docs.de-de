@@ -1,32 +1,32 @@
 <!--author=alkohli last changed: 07/05/2017-->
 
 > [!NOTE] 
-> Sie können nicht geändert, die Einstellungen für die Verschlüsselung und die Anmeldeinformationen des Speicherkontos mit einem volumecontainer verknüpft sind, nachdem er erstellt wurde.
+> Sie können die Verschlüsselungseinstellungen und die Anmeldeinformationen des Speicherkontos, die einem Volumecontainer zugeordnet sind, nach der Erstellung nicht mehr ändern.
 
-#### <a name="to-modify-a-volume-container"></a>Zum Ändern eines volumecontainers
+#### <a name="to-modify-a-volume-container"></a>So ändern Sie einen Volumecontainer
 
-1. Wechseln Sie zu Ihrer StorSimple-Geräte-Manager-Dienst, und navigieren Sie zu **Management > volumecontainer**.
+1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst und anschließend zu **Verwaltung > Volumecontainer**.
 
-2. Wählen Sie aus der tabellarischen Liste der volumecontainer den volumecontainer, die, den Sie ändern möchten. Auf der **Geräte** Seite, wählen Sie das Gerät, doppelklicken Sie darauf, und klicken Sie dann auf die **volumecontainer** Registerkarte.
+2. Wählen Sie in der tabellarischen Volumecontainerliste den Volumecontainer aus, den Sie ändern möchten. Wählen Sie auf der Seite **Geräte** das Gerät aus, doppelklicken Sie darauf, und klicken Sie dann auf die Registerkarte **Volumecontainer**.
 
-2. Wählen Sie in der tabellarischen Auflistung der volumecontainer, den volumecontainer, den Sie ändern möchten. Klicken Sie in der geöffneten Blatt auf **ändern** in der Befehlsleiste.
+2. Wählen Sie in der tabellarischen Volumecontainerliste den Volumecontainer aus, den Sie ändern möchten. Klicken Sie im Blatt, dass sich anschließend öffnet, in der Befehlsleiste auf **Ändern**.
 
-    ![Ändern von Volume-container](./media/storsimple-8000-modify-volume-container/modify-vol-container1.png)
+    ![Ändern eines Volumecontainers](./media/storsimple-8000-modify-volume-container/modify-vol-container1.png)
 
-3. In der **volumecontainer ändern** Blatt die folgenden Schritte aus:
+3. Führen Sie auf dem Blatt **Volumecontainer ändern** die folgenden Schritte aus:
    
-   1. Name, Verschlüsselungsschlüssel und Speicherkonto, das dem volumecontainer zugeordneten können nicht geändert werden, nachdem Sie einmal angegeben werden. Ändern Sie die Einstellung für die zugeordnete Bandbreite.
+   1. Der Name, der Verschlüsselungsschlüssel und das Speicherkonto, die dem Volumecontainer zugeordnet wurden, können nicht geändert werden, nachdem sie einmal angegeben wurden. Ändern Sie die Einstellung für die zugeordnete Bandbreite.
       
-       ![Ändern Sie die Einstellung für die Bandbreite](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
+       ![Ändern der Einstellung für die Bandbreite](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
 
    2.  Klicken Sie auf **OK**.
-4. In der nächsten Seite mit den **Volumecontainer ändern** (Dialogfeld):
+4. Auf der nächsten Seite des Dialogfelds **Volumecontainer ändern** :
    
-   1. Wählen Sie aus der Dropdown-Liste eine vorhandene bandbreitenvorlage aus.
-   2. Überprüfen Sie die zeitplaneinstellungen für die angegebene bandbreitenvorlage ein.
-   3. Klicken Sie auf **speichern** und die Änderungen zu bestätigen.
+   1. Wählen Sie in der Dropdownliste eine vorhandene Bandbreitenvorlage aus.
+   2. Überprüfen Sie die Zeitplaneinstellungen für die angegebene Bandbreitenvorlage.
+   3. Klicken Sie auf **Speichern**, und bestätigen Sie die Änderungen.
       
-       ![Bestätigen von Änderungen](./media/storsimple-8000-modify-volume-container/modify-vol-container3.png)
+       ![Bestätigen der Änderungen](./media/storsimple-8000-modify-volume-container/modify-vol-container3.png)
 
-   3. Die **volumecontainer** Blatt wird aktualisiert, um die Änderungen wiederzugeben.
+   3. Das Blatt **Volumecontainer** wird den Änderungen entsprechend aktualisiert.
 

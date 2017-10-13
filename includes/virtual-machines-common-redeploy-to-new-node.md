@@ -1,17 +1,17 @@
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
-1. Wählen Sie den virtuellen Computer, die Sie verwenden möchten, stellen Sie erneut bereit, und wählen Sie dann die *erneut bereitstellen* Schaltfläche der *Einstellungen* Blatt. Möglicherweise müssen Sie den Bildlauf finden Sie unter der **Unterstützung und Problembehandlung** Abschnitt, wie im folgenden Beispiel gezeigt auf die Schaltfläche "Erneut bereitstellen" enthält:
+1. Wählen Sie den virtuellen Computer aus, der erneut bereitgestellt werden soll, und klicken Sie dann auf dem Blatt *Einstellungen* auf die Schaltfläche *Erneut bereitstellen*. Unter Umständen müssen Sie nach unten scrollen, um den Abschnitt **Support und Problembehandlung** anzuzeigen, in dem die Schaltfläche „Erneut bereitstellen“ enthalten ist, wie im folgenden Beispiel gezeigt:
    
-    ![Azure VM-Bereich "](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)
-2. Um den Vorgang zu bestätigen, wählen Sie die *erneut bereitstellen* Schaltfläche:
+    ![Blatt „Azure-VM“](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)
+2. Klicken Sie auf die Schaltfläche *Erneut bereitstellen*, um den Vorgang zu bestätigen:
    
-    ![Stellen Sie eine VM-Blade erneut bereit.](./media/virtual-machines-common-redeploy-to-new-node/redeployvm.png)
-3. Die **Status** des virtuellen Computers geändert wird, um *aktualisieren* wie der virtuellen Computer wird vorbereitet, erneut bereitzustellen, wie im folgenden Beispiel gezeigt:
+    ![Blatt „Erneutes Bereitstellen eines virtuellen Computers“](./media/virtual-machines-common-redeploy-to-new-node/redeployvm.png)
+3. Der **Status** des virtuellen Computers ändert sich zu *Wird aktualisiert*, wenn der virtuelle Computer zur erneuten Bereitstellung vorbereitet wird, wie im folgenden Beispiel gezeigt:
    
-    ![Aktualisieren der VM](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)
-4. Die **Status** dann Änderungen an *gestartet* wie der virtuelle Computer auf einen neuen Azure-Host Hochfahren wie im folgenden Beispiel gezeigt:
+    ![Virtueller Computer wird aktualisiert](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)
+4. Der **Status** ändert sich dann zu *Wird gestartet*, wenn der virtuelle Computer auf einem neuen Azure-Host gestartet wird, wie im folgenden Beispiel gezeigt:
    
-    ![VM starten](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
-5. Nachdem der virtuelle Computer während des Startvorgangs abgeschlossen ist die **Status** wird dann an zurückgegeben *ausführen*, der angibt, des virtuellen Computers wurde wurde erfolgreich erneut bereitgestellt:
+    ![Virtueller Computer wird gestartet](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
+5. Nachdem der virtuelle Computer den Startvorgang abgeschlossen hat, wechselt der **Status** wieder zu *Wird ausgeführt*und gibt damit an, dass der virtuelle Computer erfolgreich erneut bereitgestellt wurde:
    
-    ![Beispiel-VM](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
+    ![Virtueller Computer wird ausgeführt](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
 

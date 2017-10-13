@@ -1,42 +1,42 @@
-## <a name="prepare-your-raspberry-pi"></a>Vorbereiten Sie Ihrer Brombeere Pi
+## <a name="prepare-your-raspberry-pi"></a>Vorbereiten des Raspberry Pi
 
 ### <a name="install-raspbian"></a>Installieren von Raspbian
 
-Ist dies das erste Mal Sie Ihre Brombeere Pi verwenden, müssen Sie zum Installieren der Raspbian Betriebssystems mit NOOBS auf die SD-Karte im Kit enthalten. Die [Brombeere Pi Software Handbuch] [ lnk-install-raspbian] wird beschrieben, wie ein Betriebssystem auf Ihre Brombeere Pi zu installieren. In diesem Lernprogramm wird davon ausgegangen, dass Sie das Betriebssystem Raspbian auf Ihre Brombeere Pi installiert haben.
+Wenn Sie den Raspberry Pi zum ersten Mal verwenden, müssen Sie das Raspbian-Betriebssystem mithilfe von NOOBS auf der im Kit enthaltenen SD-Karte installieren. Eine entsprechende Installationsanleitung finden Sie im [Softwarehandbuch für den Raspberry Pi][lnk-install-raspbian]. In diesem Tutorial wird davon ausgegangen, dass Sie das Raspbian-Betriebssystem bereits auf Ihrem Raspberry Pi installiert haben.
 
 > [!NOTE]
-> Die SD-Karte in enthalten die [Microsoft Azure IoT Starter Kit für Brombeere Pi 3] [ lnk-starter-kits] bereits NOOBS installiert wurde. Sie können starten die Brombeere Pi aus dieser Smartcard und so installieren Sie das Betriebssystem Raspbian auswählen.
+> Auf der SD-Karte des [Microsoft Azure IoT Starter Kits für Raspberry Pi 3][lnk-starter-kits] ist NOOBS bereits installiert. Sie können den Raspberry Pi über diese Karte starten und das Raspbian-Betriebssystem installieren.
 
-Um die Hardware-Einrichtung abzuschließen, müssen Sie:
+Führen Sie folgende Schritte aus, um die Hardwareeinrichtung abzuschließen:
 
-- Verbinden Sie Ihre Brombeere Pi die Stromversorgung erneut in das Kit enthalten.
-- Verbinden Sie Ihre Brombeere Pi mit Ihrem Netzwerk mit der Ethernet-Kabel, die in Ihrem Kit enthalten. Alternativ können Sie einrichten [Wireless-Konnektivität] [ lnk-pi-wireless] für Ihre Brombeere Pi.
+- Verbinden Sie Ihren Raspberry Pi mit dem im Kit enthaltenen Netzteil.
+- Verbinden Sie Ihren Raspberry Pi über das im Kit enthaltene Ethernetkabel mit Ihrem Netzwerk. Alternativ können Sie eine [WLAN-Verbindung][lnk-pi-wireless] für Ihren Raspberry Pi einrichten.
 
-Sie haben jetzt die Hardware-Einrichtung Ihrer Brombeere Pi abgeschlossen.
+Damit ist die Hardwareeinrichtung Ihres Raspberry Pi abgeschlossen.
 
-### <a name="sign-in-and-access-the-terminal"></a>Melden Sie an und Zugreifen auf den Terminalserver
+### <a name="sign-in-and-access-the-terminal"></a>Anmelden und Zugreifen auf das Terminal
 
-Sie haben zwei Möglichkeiten, die auf eine Terminaldienste-Umgebung auf Ihre Brombeere Pi zuzugreifen:
+Sie können auf Ihrem Raspberry Pi auf zwei Arten auf eine Terminalumgebung zuzugreifen:
 
-- Wenn Sie eine Tastatur und einen Monitor, die mit der Pi Brombeere verbunden haben, können Sie die Raspbian GUI verwenden, auf ein terminal-Fenster zuzugreifen.
+- Wenn Sie eine Tastatur und einen Monitor an Ihren Raspberry Pi angeschlossen haben, können Sie über die grafische Raspbian-Benutzeroberfläche auf ein Terminalfenster zugreifen.
 
-- Auf zugreifen Sie der Befehlszeile auf Ihre Brombeere Pi mithilfe von SSH vom desktop-Computer.
+- Sie können aber auch auf Ihrem Desktopcomputer per SSH auf die Befehlszeile Ihres Raspberry Pi zugreifen.
 
-#### <a name="use-a-terminal-window-in-the-gui"></a>Verwenden Sie ein terminal-Fenster auf der grafischen Benutzeroberfläche
+#### <a name="use-a-terminal-window-in-the-gui"></a>Verwenden eines Terminalfensters auf der grafischen Benutzeroberfläche
 
-Die Standardanmeldeinformationen für Raspbian werden Benutzername **Pi** und das Kennwort **Brombeere**. In der Taskleiste in der Benutzeroberfläche, starten Sie den **Terminaldienste** Dienstprogramm mit dem Symbol, das einen Monitor aussieht.
+Die Anmeldeinformationen für Raspbian lauten standardmäßig **pi** (Benutzername) und **raspberry** (Kennwort). Auf der Taskleiste der grafischen Benutzeroberfläche können Sie über das Monitorsymbol das Hilfsprogramm **Terminal** starten.
 
-#### <a name="sign-in-with-ssh"></a>Melden Sie sich mit SSH
+#### <a name="sign-in-with-ssh"></a>Anmelden mit SSH
 
-Sie können SSH für befehlszeilengestützten Zugriff auf Ihre Brombeere Pi verwenden. Der Artikel [SSH (Secure Shell)] [ lnk-pi-ssh] beschreibt, wie zum Konfigurieren von SSH auf Ihre Brombeere Pi und Herstellen einer Verbindung über [Windows] [ lnk-ssh-windows] oder [Linux und Mac OS][lnk-ssh-linux].
+Sie können über SSH auf die Befehlszeile Ihres Raspberry Pi zugreifen. Im Artikel [SSH (Secure Shell)][lnk-pi-ssh] erfahren Sie, wie Sie SSH auf Ihrem Raspberry Pi konfigurieren und unter [Windows][lnk-ssh-windows] oder unter [Linux und Mac OS][lnk-ssh-linux] eine Verbindung herstellen.
 
-Melden Sie sich mit Benutzernamen **Pi** und das Kennwort **Brombeere**.
+Melden Sie sich mit dem Benutzernamen **pi** und dem Kennwort **raspberry** an.
 
-#### <a name="optional-share-a-folder-on-your-raspberry-pi"></a>Optional: Freigabeordner auf Ihre Brombeere Pi
+#### <a name="optional-share-a-folder-on-your-raspberry-pi"></a>Optional: Freigeben eines Ordners auf Ihrem Raspberry Pi
 
-Optional: Sie möchten einen Ordner auf Ihrem Brombeere Pi mit Ihrer desktop-Umgebung gemeinsam nutzen. Freigeben eines Ordners können Sie Ihre bevorzugte desktop Texteditor (z. B. [Visual Studio Code](https://code.visualstudio.com/) oder [Sublime Text](http://www.sublimetext.com/)) zum Bearbeiten von Dateien auf Ihrem Brombeere Pi anstatt `nano` oder `vi`.
+Bei Bedarf können Sie auch einen Ordner auf Ihrem Raspberry Pi für Ihre Desktopumgebung freigeben. Wenn Sie einen Ordner freigeben, können Sie Dateien auf Ihrem Raspberry PI mithilfe Ihres bevorzugten Desktop-Texteditors (etwa [Visual Studio Code](https://code.visualstudio.com/) oder [Sublime Text](http://www.sublimetext.com/)) bearbeiten, anstatt `nano` oder `vi` zu verwenden.
 
-Konfigurieren Sie zum Freigeben eines Ordners in Windows einen Samba-Server, auf die Brombeere Pi. Alternativ können Sie verwenden die integrierte [SFTP](https://www.raspberrypi.org/documentation/remote-access/) Server mit einem SFTP-Client auf dem Desktop.
+Wenn Sie einen Ordner für Windows freigeben möchten, konfigurieren Sie einen Samba-Server auf dem Raspberry Pi. Alternativ können Sie den integrierten [SFTP](https://www.raspberrypi.org/documentation/remote-access/)-Server mit einem SFTP-Client auf Ihrem Desktop verwenden.
 
 [lnk-install-raspbian]: https://www.raspberrypi.org/learning/software-guide/quickstart/
 [lnk-pi-wireless]: https://www.raspberrypi.org/documentation/configuration/wireless/README.md

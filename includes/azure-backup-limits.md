@@ -1,12 +1,12 @@
-Die folgenden Beschränkungen gelten für Azure Backup.
+Für Azure Backup gelten die folgenden Beschränkungen.
 
-| Limit-Bezeichner | Standardlimit |
+| Bezeichnung | Standardlimit |
 | --- | --- |
-| Anzahl der Server/Computer, die für jeden Tresor registriert werden kann |für Windows Server/Client/SCDPM 50 <br/> 200 für IaaS-VMs |
-| Größe der Datenquelle für Daten, die in Azure-tresorspeicher gespeichert |Max. 54400 GB<sup>1</sup> |
-| Anzahl der backup-Tresoren, die in jeder Azure-Abonnement erstellt werden können |25 (sicherungstresore) <br/> 25 Recovery Services-Tresor pro region |
-| Anzahl der Häufigkeit, mit der Sicherung pro Tag eingeplant werden kann |3 pro Tag für Windows Server und Client <br/> 2 pro Tag für SCDPM <br/> Einmal pro Tag für IaaS-VMs |
-| Datenträger einem virtuellen Computer in Azure für die Sicherung zugeordnet |16 |
+| Anzahl der Server/Computer, die für jeden Tresor registriert werden können |50 für Windows Server/Windows Client/SCDPM  <br/> 200 für virtuelle IaaS-Computer |
+| Größe einer Datenquelle für im Azure-Tresorspeicher gespeicherten Daten |Max. 54.400 GB<sup>1</sup> |
+| Anzahl der Sicherungstresore, die in einem Azure-Abonnement erstellt werden können |25 (Sicherungstresore) <br/> 25 Recovery Services-Tresore pro Region |
+| Häufigkeit der geplanten Sicherungen pro Tag |3 Sicherungen pro Tag für Windows Server und Windows Client  <br/> 2 pro Tag für SCDPM <br/> Eine Sicherung pro Tag für virtuelle IaaS-Computer |
+| Datenträger, die für die Sicherung an einen virtuellen Azure-Computer angeschlossen sind |16 |
 
-* <sup>1</sup>der 54400-GB-Grenze gilt nicht für IaaS-VM-Sicherungen.
+* <sup>1</sup>Die Beschränkung von  54.400 GB gilt nicht für IaaS-VM-Sicherungen.
 

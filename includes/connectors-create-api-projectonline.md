@@ -1,16 +1,16 @@
 ### <a name="prerequisites"></a>Voraussetzungen
-* Ein [ProjectOnline](https://products.office.com/Project/project-online-with-project-for-office-365) Konto 
+* Ein [ProjectOnline](https://products.office.com/Project/project-online-with-project-for-office-365)-Konto 
 
-Bevor Sie Ihr Konto ProjectOnline in einer Logik-app verwenden können, müssen Sie die Logik-app zur Verbindung mit Ihrem Konto ProjectOnline autorisieren. Glücklicherweise können Sie problemlos aus in der Logik-app im Azure-Portal vorgehen. 
+Bevor Sie Ihr ProjectOnline-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem ProjectOnline-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen. 
 
-Es folgen die Schritte zum Autorisieren der Logik-app zur Verbindung mit Ihrem Konto ProjectOnline:
+Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem ProjectOnline-Konto:
 
-1. Wählen Sie zum Erstellen einer Verbindungs mit ProjectOnline, in der Logik-app-Designer **Anzeigen von Microsoft verwalteten APIs** in der Dropdownliste aus und geben Sie dann *ProjectOnline* in das Suchfeld. Wählen Sie den Trigger oder die Aktion an, die Sie verwenden möchten, müssen:  
-   ![ProjectOnline Schritt 1](./media/connectors-create-api-projectonline/projectonline-1.png)
-2. Wenn Sie alle Verbindungen mit ProjectOnline, bevor Sie erstellt haben, werden Sie aufgefordert Abrufen Ihrer ProjectOnline Anmeldeinformationen angeben. Diese Anmeldeinformationen werden verwendet, um Ihre Logik-app für die Verbindung autorisieren und einfacher Zugriff auf Ihr ProjectOnline-Konto:  
-   ![ProjectOnline Schritt 2](./media/connectors-create-api-projectonline/projectonline-2.png)
-3. Geben Sie Ihre ProjectOnline-Benutzernamen und das Kennwort zum Autorisieren der Logik-app:  
-   ![ProjectOnline Schritt 3](./media/connectors-create-api-projectonline/projectonline-3.png)   
-4. Beachten Sie, dass die Verbindung erstellt wurde, und Sie können nun mit den anderen Schritten in der Logik-app zu fortfahren:  
-   ![ProjectOnline Schritt 4](./media/connectors-create-api-projectonline/projectonline-4.png)   
+1. Um eine Verbindung mit ProjectOnline herzustellen, wählen Sie im Logik-App-Designer in der Dropdownliste **Von Microsoft verwaltete APIs anzeigen** aus, und geben Sie dann *ProjectOnline* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:   
+   ![ProjectOnline: Schritt 1](./media/connectors-create-api-projectonline/projectonline-1.png)
+2. Wenn Sie noch keine Verbindungen mit ProjectOnline hergestellt haben, werden Sie aufgefordert, Ihre ProjectOnline-Anmeldeinformationen anzugeben. Mit diesen Anmeldeinformationen wird Ihre Logik-App autorisiert, eine Verbindung mit Ihrem ProjectOnline-Konto herzustellen und auf dessen Daten zuzugreifen:  
+   ![ProjectOnline: Schritt 2](./media/connectors-create-api-projectonline/projectonline-2.png)
+3. Geben Sie Ihren ProjectOnline-Benutzernamen und das zugehörige Kennwort zum Autorisieren Ihrer Logik-App an:  
+   ![ProjectOnline: Schritt 3](./media/connectors-create-api-projectonline/projectonline-3.png)   
+4. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:   
+   ![ProjectOnline: Schritt 4](./media/connectors-create-api-projectonline/projectonline-4.png)   
 

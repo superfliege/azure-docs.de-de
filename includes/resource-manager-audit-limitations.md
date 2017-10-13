@@ -1,4 +1,4 @@
-Das Aktivitätsprotokoll enthält alle Schreibvorgänge (PUT, POST, DELETE) für Ihre Ressourcen ausgeführt. Es umfasst nicht die Lesevorgänge (GET). Sie können die Überwachungsprotokolle, Fehler ermittelt wird, bei der Problembehandlung oder überwachen, wie ein Benutzer in Ihrer Organisation für eine Ressource geändert.
+Das Aktivitätsprotokoll enthält alle Schreibvorgänge (PUT, POST, DELETE), die für Ihre Ressourcen durchgeführt wurden. Es enthält jedoch keine Lesevorgänge (GET). Sie können bei der Problembehandlung mithilfe der Überwachungsprotokolle einen Fehler ermitteln oder nachverfolgen, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat.
 
-Aktivitätsprotokolle werden 90 Tage lang aufbewahrt. Sie können für eine beliebige Anzahl von Datumsangaben, Abfragen, solange das Startdatum nicht mehr als 90 Tage in der Vergangenheit liegt.
+Aktivitätsprotokolle werden 90 Tage lang aufbewahrt. Sie können beliebige Datumsbereiche abfragen, das Startdatum darf jedoch maximal 90 Tage zurückliegen.
 

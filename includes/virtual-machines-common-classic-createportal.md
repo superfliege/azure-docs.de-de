@@ -1,12 +1,12 @@
 
 
-Ein *benutzerdefinierte* virtuellen Computer bedeutet einfach nur eine virtuelle Maschine, die mithilfe einer **ausgewähltes app** aus der **Marketplace** , da es ein Großteil der Arbeit für Sie erledigt. Dennoch können Sie weiterhin Konfigurationsoptionen vornehmen, die die folgenden Elemente enthalten:
+Ein *benutzerdefinierter* virtueller Computer ist einfach ein virtueller Computer, den Sie mit einer **ausgewählten App** im **Marketplace** erstellen, weil Ihnen damit viele Arbeitsschritte abgenommen werden. Sie können aber trotzdem Konfigurationen mit den folgenden Elementen auswählen:
 
-* Verbinden den virtuellen Computer mit einem virtuellen Netzwerk an.
-* Installieren die Azure-VM-Agent und Erweiterungen für Azure-virtuelle Computer, z. B. für Antischadsoftware.
-* Hinzufügen der virtuellen Maschine an vorhandenen Cloud-Dienste.
-* Hinzufügen von den virtuellen Computer auf ein vorhandenes Speicherkonto aus.
-* Hinzufügen der virtuellen Maschine zu einer verfügbarkeitsgruppe an.
+* Verbinden des virtuellen Computers mit einem virtuellen Netzwerk.
+* Installieren des virtuellen Azure-Computer-Agents und der -Erweiterungen, z. B. für Antischadsoftware.
+* Hinzufügen des virtuellen Computers zu vorhandenen Clouddiensten.
+* Hinzufügen des virtuellen Computers zu einem vorhandenen Speicherkonto.
+* Hinzufügen des virtuellen Computers zu einer Verfügbarkeitsgruppe.
 
 <!--
 > [!IMPORTANT]
@@ -16,12 +16,12 @@ Ein *benutzerdefinierte* virtuellen Computer bedeutet einfach nur eine virtuelle
  -->
 
 > [!IMPORTANT]
-> Wenn Sie einen virtuellen Computer auf ein virtuelles Netzwerk verwenden möchten, stellen Sie sicher, dass Sie das virtuelle Netzwerk angeben, wenn Sie den virtuellen Computer erstellen.
+> Wenn Ihr virtueller Computer ein virtuelles Netzwerk verwenden soll, geben Sie das virtuelle Netzwerk beim Erstellen des virtuellen Computers an.
 
-> * Zwei Vorteile der Verwendung eines virtuellen Netzwerks eine Verbindung direkt mit dem virtuellen Computer und standortübergreifende Verbindungen eingerichtet werden.
+> * Zwei Vorteile der Nutzung eines virtuellen Netzwerks sind die direkte Verbindung mit dem virtuellen Computer und die Einrichtung von lokalen Verbindungen.
 
-> * Eine virtuelle Maschine kann konfiguriert werden, um ein virtuelles Netzwerk zu verknüpfen, nur, wenn Sie den virtuellen Computer erstellen. Ausführliche Informationen zu virtuellen Netzwerken, finden Sie unter [virtuelle Azure-Netzwerke im Überblick](../articles/virtual-network/virtual-networks-overview.md).
+> * Ein virtueller Computer kann so konfiguriert werden, dass er nur zu dem Zeitpunkt Teil eines virtuellen Netzwerks werden kann, zu dem er erstellt wird. Ausführliche Informationen über virtuelle Netzwerke erhalten Sie unter [Übersicht über Azure Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
 >
 >
 
-## <a name="to-create-the-virtual-machine"></a>Zum Erstellen des virtuellen Computers
+## <a name="to-create-the-virtual-machine"></a>So erstellen Sie den virtuellen Computer

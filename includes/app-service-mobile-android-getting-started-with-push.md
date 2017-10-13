@@ -1,5 +1,5 @@
-1. In Ihrem **app** Projekt, öffnen Sie die Datei `AndroidManifest.xml`. Ersetzen Sie in den Code in den nächsten beiden Schritten  *`**my_app_package**`*  mit dem Namen des app-Pakets für das Projekt. Dies ist der Wert, der die `package` Attribut von der `manifest` Tag.
-2. Fügen Sie die folgenden neuen Berechtigungen nach den vorhandenen `uses-permission` Element:
+1. Öffnen Sie im **App**-Projekt die Datei `AndroidManifest.xml`. Ersetzen Sie im Code in den nächsten beiden Schritten *`**my_app_package**`* durch den Namen des App-Pakets für Ihr Projekt. Dies ist der `package`-Attributwert des `manifest`-Tags.
+2. Fügen Sie die folgenden neuen Berechtigungen nach dem vorhandenen `uses-permission` -Element ein:
 
         <permission android:name="**my_app_package**.permission.C2D_MESSAGE"
             android:protectionLevel="signature" />
@@ -7,7 +7,7 @@
         <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
         <uses-permission android:name="android.permission.GET_ACCOUNTS" />
         <uses-permission android:name="android.permission.WAKE_LOCK" />
-3. Fügen Sie den folgenden Code nach der `application` Starttag:
+3. Fügen Sie den folgenden Code nach dem Starttag `application` ein:
 
         <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
                                          android:permission="com.google.android.c2dm.permission.SEND">
@@ -16,24 +16,24 @@
                 <category android:name="**my_app_package**" />
             </intent-filter>
         </receiver>
-4. Öffnen Sie die Datei *ToDoActivity.java*, und fügen Sie die folgende importanweisung hinzu:
+4. Öffnen Sie die Datei *ToDoActivity.java*, und fügen Sie die folgende Import-Anweisung ein:
 
         import com.microsoft.windowsazure.notifications.NotificationsManager;
-5. Fügen Sie die folgende private Variable, auf die Klasse. Ersetzen Sie  *`<PROJECT_NUMBER>`*  mit der Projektnummer, die Ihre app aus dem vorhergehenden Verfahren von Google zugewiesen.
+5. Fügen Sie der Klasse die folgende private Variable hinzu. Ersetzen Sie *`<PROJECT_NUMBER>`* durch die Projektnummer, die Ihrer App im vorherigen Vorgang durch Google zugewiesen wurde.
 
         public static final String SENDER_ID = "<PROJECT_NUMBER>";
-6. Ändern Sie die Definition der *MobileServiceClient* aus **private** auf **öffentlichen statischen**, sodass es nun wie folgt aussieht:
+6. Ändern Sie die Definition von *MobileServiceClient* von **private** in **public static**:
 
         public static MobileServiceClient mClient;
-7. Fügen Sie eine neue Klasse, um Benachrichtigungen zu behandeln. Öffnen Sie im Projekt-Explorer die **Src** > **main** > **Java** Knoten aus, und mit der rechten Maustaste den Paketknoten-Name. Klicken Sie auf **neu**, und klicken Sie dann auf **Java-Klasse**.
-8. In **Namen**, Typ `MyHandler`, und klicken Sie dann auf **OK**.
+7. Fügen Sie eine neue Klasse zum Behandeln von Benachrichtigungen hinzu. Öffnen Sie im Projektexplorer den Knoten **src** > **main** > **java**, und klicken Sie mit der rechten Maustaste auf den Paketnamenknoten. Klicken Sie auf **Neu** und anschließend auf **Java Class** (Java-Klasse).
+8. Geben Sie unter **Name** die Zeichenfolge `MyHandler` ein, und klicken Sie anschließend auf **OK**.
 
     ![](./media/app-service-mobile-android-configure-push/android-studio-create-class.png)
 
-9. Ersetzen Sie in der Datei MyHandler der Klassendeklaration mit:
+9. Ersetzen Sie in der Datei „MyHandler“ die Klassendeklaration durch Folgendes:
 
         public class MyHandler extends NotificationsHandler {
-10. Fügen Sie die folgende importanweisungen für die `MyHandler` Klasse:
+10. Fügen Sie die folgenden import-Anweisungen für die `MyHandler` -Klasse hinzu:
 
         import com.microsoft.windowsazure.notifications.NotificationsHandler;
         import android.app.NotificationManager;
@@ -43,10 +43,10 @@
         import android.os.AsyncTask;
         import android.os.Bundle;
         import android.support.v4.app.NotificationCompat;
-11. Fügen Sie dieses Element die `MyHandler` Klasse:
+11. Als Nächstes fügen Sie der `MyHandler` -Klasse dieses Element hinzu:
 
         public static final int NOTIFICATION_ID = 1;
-12. In der `MyHandler` -Klasse verwenden, fügen Sie den folgenden Code hinzu, überschreiben die **OnRegistered** -Methode, die Ihr Gerät mit dem mobilen Dienst Notification Hub registriert.
+12. Fügen Sie den folgende Code in die `MyHandler`-Klasse ein, um die **onRegistered**-Methode zu überschreiben, mit der das Gerät beim Benachrichtigungs-Hub des mobilen Diensts registriert wird.
 
         @Override
         public void onRegistered(Context context,  final String gcmRegistrationId) {
@@ -66,7 +66,7 @@
                }
            }.execute();
        }
-13. In der `MyHandler` -Klasse verwenden, fügen Sie den folgenden Code hinzu, überschreiben die **OnReceive** -Methode, die bewirkt, dass die Benachrichtigung angezeigt, wenn sie empfangen werden.
+13. Fügen Sie in der `MyHandler` -Klasse den folgenden Code zum Überschreiben der **onReceive** -Methode hinzu, wodurch die Benachrichtigung nach ihrem Empfang angezeigt wird.
 
         @Override
         public void onReceive(Context context, Bundle bundle) {
@@ -89,8 +89,8 @@
                        context.getSystemService(Context.NOTIFICATION_SERVICE);
                notificationManager.notify(NOTIFICATION_ID, notification);
        }
-14. Wieder in der Datei TodoActivity.java Aktualisieren der **OnCreate** Methode der *ToDoActivity* Klasse zum Registrieren der Benachrichtigung Handler-Klasse. Stellen Sie sicher, dass dieser Code nach dem Hinzufügen der *MobileServiceClient* instanziiert wird.
+14. Aktualisieren Sie in der Datei „TodoActivity.java“ die **onCreate** -Methode der *ToDoActivity* -Klasse, um die Benachrichtigungsbehandlungsklasse zu registrieren. Stellen Sie sicher, dass dieser Code nach der Instanziierung von *MobileServiceClient* hinzufügt wird.
 
         NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
-    Ihre app wird jetzt aktualisiert, um Pushbenachrichtigungen zu unterstützen.
+    Ihre App kann Pushbenachrichtigungen nun unterstützen.

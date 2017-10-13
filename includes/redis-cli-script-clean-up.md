@@ -1,6 +1,6 @@
-## <a name="clean-up-deployment"></a>Bereitstellung bereinigen 
+## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
-Nachdem das Beispielskript ausgeführt wurde, kann der folgende Befehl verwendet werden, entfernen Sie die Ressourcengruppe, Azure-Redis-Cache-Instanz und alle zugehörigen Ressourcen in der Ressourcengruppe.
+Nach der Ausführung des Skriptbeispiels können Sie den folgenden Befehl verwenden, um die Ressourcengruppe, die Azure Redis Cache-Instanz und alle dazugehörigen Ressourcen in der Ressourcengruppe zu entfernen.
 
 ```azurecli
 az group delete --name contosoGroup

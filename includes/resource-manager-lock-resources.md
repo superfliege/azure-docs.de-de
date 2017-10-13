@@ -1,13 +1,13 @@
-1. Wählen Sie im Blatt "Einstellungen" für die Ressource, eine Ressourcengruppe oder ein Abonnement, das Sie sperren möchten, **sperrt**.
+1. Wählen Sie im Blatt „Einstellungen“ für die Ressourcen, Ressourcengruppen oder Abonnements, die Sie sperren möchten, die Option **Sperren**.
    
-      ![Wählen Sie Option Sperren](./media/resource-manager-lock-resources/select-lock.png)
-2. Wählen Sie zum Hinzufügen einer Sperre **hinzufügen**. Wenn Sie eine Sperre auf einer übergeordneten Ebene erstellen möchten, wählen Sie das übergeordnete Element. Die ausgewählte Ressource erbt die Sperre aus dem übergeordneten Element. Z. B. könnte die Ressourcengruppe, um eine Sperre für alle zugehörigen Ressourcen gelten gesperrt werden.
+      ![Sperre auswählen](./media/resource-manager-lock-resources/select-lock.png)
+2. Wählen Sie zum Hinzufügen einer Sperre **Hinzufügen**. Wenn Sie eine Sperre auf einer übergeordneten Ebene erstellen möchten, wählen Sie das übergeordnete Element. Die derzeit ausgewählte Ressource erbt die Sperre vom übergeordneten Element. Sie könnten z.B. die Ressourcengruppe sperren, um eine Sperre auf alle ihre Ressourcen anzuwenden.
    
-      ![Hinzufügen von Sperren](./media/resource-manager-lock-resources/add-lock.png) 
-3. Geben Sie der Sperre einer Ebene Namen und sperren. Optional können Sie Hinweise hinzufügen, die die Sperre zu beschreiben.
+      ![Sperre hinzufügen](./media/resource-manager-lock-resources/add-lock.png) 
+3. Weisen Sie der Sperre einen Namen und eine Ebene zu. Optional können Sie Notizen hinzufügen, die die Sperre beschreiben.
    
-      ![Set-Sperre](./media/resource-manager-lock-resources/set-lock.png) 
-4. Um die Sperre zu löschen, wählen Sie die Auslassungspunkte und **löschen** aus den verfügbaren Optionen.
+      ![Sperre festlegen](./media/resource-manager-lock-resources/set-lock.png) 
+4. Um die Sperre zu löschen, wählen Sie die Schaltfläche mit den Auslassungszeichen und dann in den verfügbaren Optionen **Löschen** .
    
-      ![Löschen Sie sperren](./media/resource-manager-lock-resources/delete-lock.png) 
+      ![Sperre löschen](./media/resource-manager-lock-resources/delete-lock.png) 
 

@@ -1,3 +1,3 @@
-Name / Wert-Auflistung benutzerdefinierter Eigenschaften. Diese Auflistung wird verwendet, um standardmäßigen Telemetrie mit benutzerdefinierten Dimensionen zu erweitern. Beispiele hierfür sind bereitstellungsslot, die Telemetrie oder Telemetrie-Element, eine bestimmte Eigenschaft wie Bestellnummer erzeugt. 
+Name-Wert-Sammlung mit benutzerdefinierten Eigenschaften. Diese Sammlung wird verwendet, um standardmäßige Telemetrie mit den benutzerdefinierten Dimensionen zu erweitern. Ein Beispiel hierfür sind Bereitstellungsslots, die eine spezifische Eigenschaft auf Telemetrie- oder Telemetrieelementebene (beispielsweise eine Bestellnummer) erzeugt haben. 
 
-Max. Anzahl von Schlüssellänge: 150 Länge der Max-Werts: 8192
+Maximale Schlüssellänge: 150 Maximale Wertlänge: 8.192

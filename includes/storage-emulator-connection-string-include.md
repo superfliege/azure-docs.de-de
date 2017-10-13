@@ -1,4 +1,4 @@
-Der Speicheremulator unterstützt ein einziges festgelegtes Konto und einen bekannten Authentifizierungsschlüssel, für die Authentifizierung mit gemeinsam verwendetem Schlüssel. Dieses Konto und die Schlüssel sind die einzigen gemeinsam verwendeten Schlüssel-Anmeldeinformationen für die Verwendung mit dem Speicheremulator zulässig. Sie sind:
+Der Speicheremulator unterstützt nur ein einziges festgelegtes Konto und einen bekannten Authentifizierungsschlüssel für die Authentifizierung mit einem gemeinsam verwendeten Schlüssel. Dieses Konto und dieser Schlüssel sind die einzigen gemeinsam verwendeten Anmeldeinformationen, die für den Speicheremulator verwendet werden dürfen. Sie lauten wie folgt:
 
 ```
 Account name: devstoreaccount1
@@ -6,13 +6,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> Der vom Speicheremulator unterstützte Authentifizierungsschlüssel ist nur für das Testen der Funktionalität des clientauthentifizierungscodes vorgesehen. Es ist keine keinerlei Sicherheitszwecke. Sie können nicht Ihr Speicherkonto für die Produktion und der Schlüssel mit dem Speicheremulator verwenden. Sie sollten das entwicklungskonto nicht mit Produktionsdaten verwenden.
+> Der vom Speicheremulator unterstützte Authentifizierungsschlüssel ist lediglich für das Testen der Funktionalität des Clientauthentifizierungscodes vorgesehen. Er erfüllt keinerlei Sicherheitszwecke. Sie können das in der Produktion verwendete Speicherkonto und den zugehörigen Schlüssel nicht mit dem Speicheremulator verwenden. Es ist nicht ratsam, das Entwicklungskonto mit Produktionsdaten zu verwenden.
 > 
-> Der Speicheremulator unterstützt nur Verbindung über HTTP. HTTPS ist jedoch das empfohlene Protokoll für den Zugriff auf Ressourcen in einer produktionsumgebung Azure-Speicherkonto an.
+> Der Speicheremulator unterstützt nur Verbindungen über HTTP. Das empfohlene Protokoll für den Zugriff auf Ressourcen in einem in der Produktionsumgebung verwendeten Azure-Speicherkonto ist aber HTTPS.
 > 
 
-#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Herstellen einer Verbindung mit dem Emulator-Konto mithilfe einer Verknüpfung
-Die einfachste Möglichkeit zur Verbindung mit des Speicheremulators aus Ihrer Anwendung ist eine Verbindungszeichenfolge in der Konfigurationsdatei Ihrer Anwendung zu konfigurieren, die die Verknüpfung verweist auf `UseDevelopmentStorage=true`. Hier ist ein Beispiel einer Verbindungszeichenfolge auf den Speicheremulator in einer *"App.config"* Datei: 
+#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Herstellen einer Verbindung mit dem Emulatorkonto über eine Verknüpfung
+Am einfachsten können Sie über Ihre Anwendung eine Verbindung mit dem Speicheremulator herstellen, indem Sie eine Verbindungszeichenfolge in der Konfigurationsdatei Ihrer Anwendung konfigurieren, die auf die Verknüpfung `UseDevelopmentStorage=true` verweist. Eine Verbindungszeichenfolge, die auf den Speicheremulator in einer *app.config*-Datei verweist, kann beispielsweise wie folgt aussehen: 
 
 ```xml
 <appSettings>
@@ -20,8 +20,8 @@ Die einfachste Möglichkeit zur Verbindung mit des Speicheremulators aus Ihrer A
 </appSettings>
 ```
 
-#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>Herstellen einer Verbindung mit dem Emulator-Konto, mit dem bekannten Namen und Schlüssel
-Um eine Verbindungszeichenfolge zu erstellen, die auf dem Emulator-Kontonamen und den Schlüssel verweist, müssen Sie die Endpunkte für jeden der Dienste angeben, die Sie über dem Emulator in der Verbindungszeichenfolge verwenden möchten. Dies ist erforderlich, damit die Verbindungszeichenfolge die Endpunkte Emulator verweisen, die unterscheiden, die für ein Speicherkonto für die Produktion sind. Beispielsweise wird der Wert der Verbindungszeichenfolge wie folgt aussehen:
+#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>Herstellen einer Verbindung mit dem Emulatorkonto mithilfe des bekannten Kontonamens und Schlüssels
+Um eine Verbindungszeichenfolge zu erstellen, die auf den Emulator-Kontonamen und -schlüssel verweist, müssen Sie die Endpunkte für jeden Dienst, den Sie über den Emulator verwenden möchten, in der Verbindungszeichenfolge angeben. Dies ist erforderlich, damit die Verbindungszeichenfolge auf die Emulator-Endpunkte verweist. Diese unterscheiden sich von den Endpunkten eines Produktions-Speicherkontos. Beispielsweise wird der Wert der Verbindungszeichenfolge wie folgt aussehen:
 
 ```
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
@@ -31,10 +31,10 @@ TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
-Dieser Wert ist identisch mit der oben gezeigten Verknüpfung `UseDevelopmentStorage=true`.
+Dieser Wert stimmt mit der oben dargestellten Verknüpfung `UseDevelopmentStorage=true` überein.
 
-#### <a name="specify-an-http-proxy"></a>Geben Sie einen HTTP-proxy
-Sie können auch angeben, dass einen HTTP-Proxy verwendet wird, wenn Sie den Dienst mit dem Speicheremulator testen. Dies kann hilfreich für das HTTP-Anforderungen und Antworten beobachten, während des Debuggens Vorgänge für die Speicherdienste sein. Fügen Sie zum Angeben eines Proxys der `DevelopmentStorageProxyUri` zur Verbindungszeichenfolge hinzufügen aus, und legen Sie dessen Wert auf den Proxy-URI. Hier ist z. B. eine Verbindungszeichenfolge, die auf den Speicheremulator verweist und einen HTTP-Proxy:
+#### <a name="specify-an-http-proxy"></a>Angeben eines HTTP-Proxys
+Sie können auch einen HTTP-Proxy angeben, der beim Testen des Dienstes anhand des Speicheremulators verwendet werden soll. Dies kann zum Beobachten von HTTP-Anforderungen und -Antworten nützlich sein, während Sie Vorgänge anhand der Speicherdienste debuggen. Fügen Sie der Verbindungszeichenfolge die Option `DevelopmentStorageProxyUri` hinzu, um einen Proxy anzugeben, und legen Sie ihren Wert auf den Proxy-URI fest. Hier sehen Sie beispielsweise eine Verbindungszeichenfolge, die auf den Speicheremulator verweist und einen HTTP-Proxy konfiguriert:
 
 ```
 UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri

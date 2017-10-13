@@ -1,12 +1,12 @@
 ## <a name="vpn-gateway"></a>VPN-Gateway
-Eine VPN-Gateway-Ressource können Sie eine sichere Verbindung zwischen ihrer lokalen Datencenter und Azure zu erstellen. Eine VPN-Gateway-Ressource kann auf drei verschiedene Arten konfiguriert werden:
+Eine VPN-Gateway-Ressource ermöglicht Ihnen, eine sichere Verbindung zwischen ihrem lokalen Rechenzentrum und Azure zu erstellen. Eine VPN-Gateway-Ressource kann auf drei unterschiedliche Arten konfiguriert werden:
 
-* **Zeigen Sie auf der Website** – sicher in einem VNET mit einem VPN-Client von einem beliebigen Computer gehosteten Azure-Ressourcen zugreifen können. 
-* **Verbindung mit mehreren Standorten** – Sie können sichere aus Ihrem lokalen Rechenzentren verbinden, auf Ressourcen in einem VNET ausgeführt. 
-* **VNET-zu-VNET** – Sie können sichere Verbindung über Azure-VNETS innerhalb derselben Region oder über Regionen hinweg, arbeitsauslastungen mit Geo-Redundanz zu erstellen.
+* **Punkt-zu-Standort** – Mit einem VPN-Client von einem beliebigen Computer können Sie sicher auf Ihre in einem VNET gehosteten Azure-Ressourcen zugreifen. 
+* **Multisite-Verbindung** – Sie können von Ihren lokalen Rechenzentren eine sichere Verbindung zu Ressourcen aufbauen, die in einem VNET ausgeführt werden. 
+* **VNET-zu-VNET** – Sie können über Azure-VNETs hinweg (in der gleichen Region oder regionsübergreifend) eine sichere Verbindung aufbauen, um Arbeitsauslastungen mit Georedundanz zu erstellen.
 
-Wichtige Eigenschaften der VPN-Gateway gehören:
+Zu den Schlüsseleigenschaften eines VPN-Gateway zählen:
 
-* **Gatewaytyp** - dynamisch weitergeleitet oder ein statischen weitergeleitet Gateway. 
-* **VPN-Client Adresspool Präfix** – IP-Adressen für Clients eine Verbindung herstellen, in einen Punkt in der Standortkonfiguration zugewiesen werden.
+* **Gateway-Typ** - dynamisch oder statisch weitergeleitetes Gateway. 
+* **Adresspool-Präfix des VPN-Client** –  IP-Adressen, die den Clients mit Punkt-zu-Standort-Verbindung zuzuweisen sind.
 

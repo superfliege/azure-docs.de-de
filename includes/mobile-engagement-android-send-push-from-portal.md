@@ -1,44 +1,44 @@
-### <a name="grant-mobile-engagement-access-to-your-gcm-api-key"></a>Gewähren von Mobile Engagement-Zugriff auf Ihren GCM API-Schlüssel
-Damit können Mobile Engagement Pushbenachrichtigungen in Ihrem Auftrag zu senden, müssen Sie Zugriff auf Ihren API-Schlüssel gewähren. Dies erfolgt durch Konfigurieren und Sie Ihren Schlüssel in das Portal für Mobile Einbindung eingeben.
+### <a name="grant-mobile-engagement-access-to-your-gcm-api-key"></a>Gewähren des Zugriffs für Mobile Engagement auf den GCM-API-Schlüssel
+Damit Mobile Engagement Pushbenachrichtigungen in Ihrem Namen senden kann, müssen Sie Mobile Engagement den Zugriff auf Ihren API-Schlüssel gewähren. Dies wird durch Konfigurieren und Eingeben Ihres Schlüssels im Mobile Engagement-Portal erreicht.
 
-1. Stellen Sie sicher aus Ihrem klassischen Azure-Portal, Sie sind in der app, die wir für dieses Projekt verwenden möchten, und klicken Sie dann auf die **einbeziehen** unten auf die Schaltfläche:
+1. Stellen Sie über das klassische Azure-Portal sicher, dass Sie sich in der App befinden, die wir für dieses Projekt verwenden, und klicken Sie dann am unteren Rand auf die Schaltfläche **Einbinden** :
    
     ![](./media/mobile-engagement-android-send-push/engage-button.png)
-2. Klicken Sie dann auf die **Einstellungen** -> **nativen Push** Abschnitt aus, um die GCM-Schlüssel eingeben:
+2. Klicken Sie dann auf den Abschnitt **Einstellungen** -> **Nativer Push**, um Ihren GCM-Schlüssel einzugeben:
    
     ![](./media/mobile-engagement-android-send-push/engagement-portal.png)
-3. Klicken Sie auf die **bearbeiten** Symbol vor **API-Schlüssel** in der **GCM-Einstellungen** Abschnitt wie folgt:
+3. Klicken Sie im Abschnitt **GCM-Einstellungen** auf das Symbol **Bearbeiten** vor **API-Schlüssel**, wie unten gezeigt:
    
     ![](./media/mobile-engagement-android-send-push/native-push-settings.png)
-4. Im Popupfenster, fügen Sie die Schlüssel des GCM-Server abgerufen werden, bevor es aus, und klicken Sie dann auf **Ok**.
+4. Fügen Sie im Popupfenster den GCM-Serverschlüssel ein, den Sie zuvor bezogen haben, und klicken Sie auf **OK**.
    
     ![](./media/mobile-engagement-android-send-push/api-key.png)
 
-## <a id="send"></a>Eine Benachrichtigung an die app senden
-Es wird nun eine einfache Push Notification-Kampagne erstellt, die eine Pushbenachrichtigung an unserer app sendet.
+## <a id="send"></a>Versenden von Benachrichtigungen an die App
+Wir erstellen nun eine einfache Push-Benachrichtigungskampagne, die eine Push-Benachrichtigung an die App sendet.
 
-1. Navigieren Sie zu der **erreichen** Registerkarte in Ihr Portal für Mobile Einbindung.
-2. Klicken Sie auf **neue Ankündigung** Ihre Benachrichtigung pushkampagne zu erstellen.
+1. Navigieren Sie zu der Registerkarte **REACH** in Ihrem Mobile Engagement-Portal.
+2. Klicken Sie auf **Neue Ankündigung** , um die Push-Benachrichtigungskampagne zu erstellen.
    
     ![](./media/mobile-engagement-android-send-push/new-announcement.png)
-3. Richten Sie das erste Feld der Kampagne durch die folgenden Schritte aus:
+3. Richten Sie das erste Feld der Kampagne mit den folgenden Schritten ein:
    
     ![](./media/mobile-engagement-android-send-push/campaign-first-params.png)
    
-    ein. Benennen Sie Ihre Kampagne.
+    a. Benennen der Kampagne.
    
-    b. Wählen Sie die **Übermittlungstyp** als *systembenachrichtigung -> einfache*: Dies ist die einfache Android pushbenachrichtigungstyp, die einen Titel und eine kleine Textzeile.
+    b. Wählen Sie *Systembenachrichtigung/Einfach* für **Übermittlungstyp**: Dies ist der einfache Android-Pushbenachrichtigungstyp, der einen Titel und eine kleine Textzeile unterstützt.
    
-    c. Wählen Sie **Übermittlungszeit** als *jederzeit* zum ermöglichen der Apps, die eine Benachrichtigung erhalten, ob die app oder nicht gestartet wird.
+    c. Wählen Sie für **Lieferzeit** die Option *Jederzeit* aus, um eine Benachrichtigung darüber zu erhalten, ob die App gestartet wurde oder nicht.
    
-    d. In der Benachrichtigung Texttyp der **Titel** kann sich in in der Push fett formatiert.
+    d. Geben Sie in den Benachrichtigungstext den **Titel** ein, der im Pushvorgang fett gedruckt erscheint.
    
     e. Geben Sie dann Ihre **Nachricht**
-4. Führen Sie einen Bildlauf nach unten, und klicken Sie in der **Content** Abschnitt **Benachrichtigung nur**.
+4. Navigieren Sie nach unten, und wählen Sie im Abschnitt **Inhalt** die Option **Nur Benachrichtigung**.
    
     ![](./media/mobile-engagement-android-send-push/campaign-content.png)
-5. Sie haben die grundlegendste Kampagne möglich festlegen. Jetzt einen Bildlauf nach unten erneut aus, und klicken Sie auf die **erstellen** Schaltfläche, um Ihre Kampagne zu speichern.
-6. Letzter Schritt: Klicken Sie auf **aktivieren** Ihre Kampagne zum Senden von Pushbenachrichtigungen zu aktivieren.
+5. Sie haben das Festlegen der Basiskampagne abgeschlossen. Scrollen Sie nun wieder nach unten, und klicken Sie auf die Schaltfläche **Erstellen** , um Ihre Kampagne zu speichern.
+6. Als letzten Schritt klicken Sie auf **Aktivieren** , um die Kampagne zu aktivieren, damit Pushbenachrichtigungen gesendet werden.
    
     ![](./media/mobile-engagement-android-send-push/campaign-activate.png)
 

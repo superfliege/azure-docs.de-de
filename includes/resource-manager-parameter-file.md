@@ -1,4 +1,4 @@
-Wenn Sie eine Parameterdatei zum Übergeben von Parameterwerten während der Bereitstellung verwenden, müssen Sie eine JSON-Datei in einem Format ähnlich wie im folgenden Beispiel erstellen:
+Bei der Verwendung einer Parameterdatei zum Übergeben von Parameterwerten während der Bereitstellung müssen Sie eine JSON-Datei in einem Format wie im folgenden Beispiel erstellen.
 
 ```json
 {
@@ -26,7 +26,7 @@ Wenn Sie eine Parameterdatei zum Übergeben von Parameterwerten während der Ber
 }
 ```
 
-Die Größe der Parameterdatei darf nicht mehr als 64 KB sein.
+Die Parameterdatei darf nicht größer als 64 KB sein.
 
-Wenn Sie einen sensiblen Wert für einen Parameter (z. B. ein Kennwort) bereitstellen müssen, fügen Sie diesen Wert auf einen schlüsseltresor hinzu. Abrufen der schlüsseltresor während der Bereitstellung an, wie im vorherigen Beispiel gezeigt. Weitere Informationen finden Sie unter [sichere Werte übergeben, während der Bereitstellung](../articles/azure-resource-manager/resource-manager-keyvault-parameter.md). 
+Wenn Sie einen vertraulichen Wert für einen Parameter (z.B. ein Kennwort) angeben müssen, fügen Sie den Wert einem Schlüsseltresor hinzu. Rufen Sie den Schlüsseltresor während der Bereitstellung wie im vorherigen Beispiel gezeigt ab. Weitere Informationen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](../articles/azure-resource-manager/resource-manager-keyvault-parameter.md). 
 

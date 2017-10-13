@@ -1,11 +1,11 @@
-In diesem Abschnitt wird gezeigt, wie Ihre app mithilfe der Mobile Engagement in Echtzeit Überwachungsfunktion der Mobile Engagement-Back-End zu verbinden. 
+In diesem Abschnitt erfahren Sie, wie Sie Ihre App mithilfe der Echtzeitüberwachungsfunktion von Mobile Engagement mit dem Mobile Engagement-Back-End verbinden. 
 
-1. In Ihrem **Azure Mobile Engagement** berücksichtigen, stellen Sie sicher, dass Sie die app auswählen möchten, überwachen und Verwalten von in der **Mobile Engagement** Portal. Navigieren Sie durch Klicken auf Ihr Portal für Mobile Einbindung die **einbeziehen** unten auf die Schaltfläche. 
+1. Wählen Sie in Ihrem **Azure Mobile Engagement**-Konto die App aus, die Sie im **Mobile Engagement**-Portal überwachen und verwalten möchten. Navigieren zu Ihrem Mobile Engagement-Portal, indem Sie unten auf die Schaltfläche **Einbinden** klicken. 
    
      ![](./media/mobile-engagement-connect-app-with-monitor/engage-button.png)
-2. Sie werden im Portal für Mobile Einbindung aufgenommen. Wenn die Registerkarte "überwachen" nicht ausgewählt ist, klicken Sie auf die **Monitor**.
-3. Der Monitor ist jedes Gerät in Echtzeit angezeigt werden, das das mit dem die app bereit.
-4. Starten Sie Ihre app jetzt. Wenn Ihre Integration richtig ist, was bedeutet, dass Ihre app jetzt mit der Mobile Engagement Back-End-verbunden ist und Daten an sie sendet, sollte eine Sitzung im Systemmonitor angezeigt werden.  
+2. Sie gelangen zum Mobile Engagement-Portal. Wenn die Registerkarte „Überwachen“ nicht ausgewählt ist, klicken Sie auf **Überwachen**.
+3. Die Überwachung (Monitor) kann Ihnen ein beliebiges Gerät in Echtzeit anzeigen, das Ihre App startet.
+4. Starten Sie jetzt Ihre App. Sie sollten eine Sitzung im Monitor sehen, wenn Ihre Integration richtig ist, was bedeutet, dass Ihre App nun mit dem Mobile Engagement-Back-End verbunden ist und Daten an das Back-End sendet.  
    
      ![](./media/mobile-engagement-connect-app-with-monitor/monitor.png)
 
