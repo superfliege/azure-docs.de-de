@@ -13,15 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/25/2017
+ms.date: 9/10/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 072efdccaa8df5d430314d753a437b524986b53c
-ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
-
-
+ms.openlocfilehash: 35b40f80c5a9ccc67830429a5a75d2974d0d138c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-your-environment-to-back-up-azure-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer
 > [!div class="op_single_selector"]
@@ -69,7 +67,7 @@ Bei einem Sicherungstresor handelt es sich um eine Entität, in der alle Sicheru
 > Ab März 2017 können im klassischen Portal keine Sicherungstresore mehr erstellt werden. Vorhandene Sicherungstresore werden weiterhin unterstützt, und [mithilfe von Azure PowerShell können neue Sicherungstresore erstellt werden](./backup-client-automation-classic.md#create-a-backup-vault). Microsoft empfiehlt jedoch das Erstellen von Recovery Services-Tresoren für alle Bereitstellungen, da zukünftige Verbesserungen nur für Recovery Services-Tresore gelten.
 
 
-In der Abbildung sind die Beziehungen zwischen den verschiedenen Azure Backup-Entitäten dargestellt:     ![Azure Backup-Entitäten und Beziehungen](./media/backup-azure-vms-prepare/vault-policy-vm.png)
+In der Abbildung sind die Beziehungen zwischen den verschiedenen Azure Backup-Entitäten dargestellt: ![Azure Backup-Entitäten und Beziehungen](./media/backup-azure-vms-prepare/vault-policy-vm.png)
 
 
 
@@ -189,12 +187,12 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 Bevor Sie einen virtuellen Azure-Computer sichern können, müssen Sie zunächst sicherstellen, dass der Azure VM-Agent auf dem virtuellen Computer ordnungsgemäß installiert ist. Da es sich beim VM-Agent zum Zeitpunkt der Erstellung des virtuellen Computers um eine optionale Komponente handelt, müssen Sie sicherstellen, dass das Kontrollkästchen für den VM-Agent aktiviert ist, bevor der virtuelle Computer bereitgestellt wird.
 
 ### <a name="manual-installation-and-update"></a>Manuelle Installation und Aktualisierung
-Der VM-Agent ist auf virtuellen Computern, die über den Azure-Katalog erstellt werden, bereits vorhanden. Auf virtuellen Computern, die aus lokalen Datencentern migriert werden, ist der VM-Agent jedoch nicht installiert. Für diese virtuellen Computer muss der VM-Agent explizit installiert werden. Erfahren Sie mehr über das [Installieren des VM-Agents auf einem vorhandenen virtuellen Computer](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx).
+Der VM-Agent ist auf virtuellen Computern, die über den Azure-Katalog erstellt werden, bereits vorhanden. Auf virtuellen Computern, die aus lokalen Datencentern migriert werden, ist der VM-Agent jedoch nicht installiert. Für diese virtuellen Computer muss der VM-Agent explizit installiert werden. 
 
 | **Vorgang** | **Windows** | **Linux** |
 | --- | --- | --- |
-| Installieren des VM-Agents |<li>Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li>[Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) , um anzugeben, dass der Agent installiert wurde. |<li> Installieren Sie den neuesten [Linux-Agent](https://github.com/Azure/WALinuxAgent) aus GitHub. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li> [Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) , um anzugeben, dass der Agent installiert wurde. |
-| Aktualisieren des VM-Agents |Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br><br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). <br><br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
+| Installieren des VM-Agent |Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen.<li>[Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) , um anzugeben, dass der Agent installiert wurde. |<li> Installieren Sie den neuesten [Linux-Agent](../virtual-machines/linux/agent-user-guide.md). Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu installieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt von GitHub zu installieren.  |
+| Aktualisieren des VM-Agents |Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu aktualisieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt von GitHub zu aktualisieren.<br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
 | Überprüfen der VM-Agent-Installation |<li>Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner *C:\WindowsAzure\Packages*. <li>Dieser Ordner enthält die Datei "WaAppAgent.exe".<li> Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der Produktversion sollte 2.6.1198.718 oder eine höhere Version angegeben sein. |– |
 
 Erfahren Sie mehr über den [VM-Agent](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) und seine [Installation](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/).
@@ -213,4 +211,3 @@ Ihre Umgebung ist jetzt für das Sichern Ihres virtuellen Computers vorbereitet.
 * [Sichern virtueller Computer](backup-azure-vms.md)
 * [Planen der Sicherungsinfrastruktur für virtuelle Computer](backup-azure-vms-introduction.md)
 * [Verwalten der Sicherung virtueller Computer](backup-azure-manage-vms.md)
-

@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: bhanupr
 ms.openlocfilehash: af3c5a19ae8e2e606e4b0506f9f6dddb41192e40
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="os-patching-for-hdinsight"></a>Patchen des Betriebssystems für HDInsight 
 Als verwalteter Hadoop-Dienst erledigt HDInsight das Patchen des Betriebssystems für die zugrundeliegenden virtuellen Computer, die von HDInsight-Clustern verwendet werden. Mit Wirkung ab dem 1. August 2016 haben wir die Richtlinie für das Patchen von Gastbetriebssystemen für Linux-basierte HDInsight-Cluster (Version 3.4 oder höher) geändert. Ziel der neuen Richtlinie ist es, die aufgrund von Patching erforderlichen Neustarts erheblich zu reduzieren. Im Rahmen der neuen Richtlinie werden Patches für virtuelle Computer in Linux-Clustern weiterhin jeden Montag oder Donnerstag ab 0:00 Uhr UTC schrittweise auf allen Knoten in jedem Cluster aufgespielt. Die einzelnen virtuellen Computer werden jedoch nur noch maximal alle 30 Tage aufgrund von Patchingvorgängen für das Gastbetriebssystem neu gestartet. Auch der erste Neustart eines neu erstellten Clusters erfolgt nicht früher als 30 Tage nach Erstellungsdatum des Clusters. Patches werden wirksam, sobald die virtuellen Computer neu gestartet werden.
@@ -44,8 +44,7 @@ Mithilfe der in diesem Artikel beschriebenen Skriptaktion können Sie den Zeitpl
 ## <a name="how-to-use-the-script"></a>Verwendung des Skripts 
 
 Zur Verwendung des Skripts benötigen Sie die folgenden Informationen:
-1. Den Skriptspeicherort: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh.
-    HDInsight verwendet diesen URI zum Suchen und Ausführen des Skripts auf allen virtuellen Computern im Cluster.
+1. Den Skriptspeicherort: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh.  HDInsight verwendet diesen URI zum Suchen und Ausführen des Skripts auf allen virtuellen Computern im Cluster.
   
 2. Clusterknotentypen, auf die das Skript angewendet wird: Hauptknoten, Arbeitsknoten, Zookeeper. Dieses Skript muss auf alle Knotentypen im Cluster angewendet werden. Wenn es auf einen Knotentyp nicht angewendet wird, verwenden die virtuellen Computer für den betreffenden Knotentyp weiterhin den vorherigen Patchzeitplan.
 

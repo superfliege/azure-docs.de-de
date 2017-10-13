@@ -15,17 +15,16 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2bc5ec9b6396850f863c51288f86a99f42db726b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1: Allgemein verfügbare Version](data-factory-ftp-connector.md)
-> * [Version 2: Vorschauversion](../connector-ftp.md)
+> * [Version 2 – Vorschauversion](../connector-ftp.md)
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from FTP server by using Azure Data Factory](../connector-ftp.md) (Kopieren von Daten von einem FTP-Server mit Azure Data Factory).
@@ -394,4 +393,3 @@ Entsprechende Informationen finden Sie in den folgenden Artikeln:
 * Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
 * Eine Schritt-für-Schritt-Anleitung zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie im [Kopieraktivität-Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-

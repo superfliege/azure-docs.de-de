@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 9f2a3e104df579029da56ba515b2159c18f4eae6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
 Da wir in einer hochgradig vernetzten Welt leben, werden wir irgendwann Teil **sozialer Netzwerke**. Wir verwenden diese Netzwerke, um mit Freunden, Kollegen und der Familie in Kontakt zu bleiben oder auch, um das, was uns bewegt, mit Menschen mit den gleichen Interessen zu teilen.
@@ -217,7 +216,7 @@ Doch, was können wir von ihm lernen? Einige einfache Beispiele sind die [Stimmm
 
 Nun, da ich Ihr Interesse geweckt habe, glauben Sie wahrscheinlich, dass Sie eine Promotion in Mathematik benötigen, um einfachen Datenbanken und Dateien diese Muster und Informationen zu entlocken. Aber da liegen Sie falsch.
 
-[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), ein Teil der [Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx), ist ein vollständig verwalteter Clouddienst, mit dem Sie Workflows mithilfe von Algorithmen in einer einfachen Drag & Drop-Schnittstelle erstellen, Ihre eigenen Algorithmen in [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) programmieren oder einige der bereits erstellten und einsatzbereiten APIs verwenden können (z. B. [Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content Moderator](https://www.microsoft.com/moderator) oder [Recommendations](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)).
+[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), ein Teil der [Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx), ist ein vollständig verwalteter Clouddienst, mit dem Sie Workflows mithilfe von Algorithmen in einer einfachen Drag &amp; Drop-Schnittstelle erstellen, Ihre eigenen Algorithmen in [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) programmieren oder einige der bereits erstellten und einsatzbereiten APIs verwenden können (z. B. [Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content Moderator](https://www.microsoft.com/moderator) oder [Recommendations](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)).
 
 Um diese Machine Learning-Szenarien zu realisieren, können wir [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) zum Erfassen der Informationen aus verschiedenen Quellen und [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) verwenden, um die Informationen zu verarbeiten und eine Ausgabe zu generieren, die von Azure Machine Learning verarbeitet werden kann.
 

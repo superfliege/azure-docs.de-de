@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
+ms.openlocfilehash: e4f7571acb72d8f099898fffc05eb43083aeabfe
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ba5116b1e92fbb34a6a83f20fff661beb66b5d0c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="avoid-getting-charged-for-your-azure-free-account"></a>Vermeiden Sie, dass Ihnen für Ihr kostenloses Azure-Konto Gebühren angezeigt werden
 
@@ -50,4 +49,3 @@ Die Vorteile Ihres kostenlosen Azure-Kontos laufen nach 12 Monaten ab. Anschlie�
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
-

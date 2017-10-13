@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 4/20/2017
 ms.author: saurse;nkolli;trinadhk
 ms.openlocfilehash: 074d21269206b243f8b0e8747811544132805229
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Azure Backup komprimiert die Erstsicherungen. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die komprimierten Daten der Erstsicherungen offline in Azure hochzuladen.  
@@ -93,7 +93,7 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
 ### <a name="prepare-a-sata-drive-and-create-an-azure-import-job-by-using-the-azure-disk-preparation-tool"></a>Vorbereiten der SATA-Festplatte und Erstellen eines Azure-Importauftrags mit dem Azure-Tool für die Datenträgervorbereitung
 Das Azure-Tool für die Datenträgervorbereitung ist im Installationsverzeichnis des Recovery Services-Agents (Update vom August 2016 und höher) unter folgendem Pfad verfügbar:
 
-   *\Microsoft* *Azure* *Recovery* *Services* *Agent\Utils\*
+   *\Microsoft**Azure**Recovery**Services* *Agent\Utils\*
 
 1. Navigieren Sie zu diesem Verzeichnis, und kopieren Sie das Verzeichnis **AzureOfflineBackupDiskPrep** auf einen Kopiercomputer, auf dem die vorzubereitenden Datenträger bereitgestellt werden. Überprüfen Sie für den Kopiercomputer Folgendes:
 

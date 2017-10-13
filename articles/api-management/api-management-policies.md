@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: eea563ccbceab0833fb5e5eaf75e3a4347ef1ea4
-ms.contentlocale: de-de
-ms.lasthandoff: 01/12/2017
-
+ms.openlocfilehash: 89d76c5d00f8a438cfec7fd1568d4735f0a65327
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
 Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).  
@@ -66,7 +65,7 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
   
     -   [Anforderungsmethode festlegen](api-management-advanced-policies.md#SetRequestMethod) – dient der Vornahme von Änderungen der HTTP-Anforderungsmethode.  
   
-    -   [Statuscode festlegen](api-management-advanced-policies.md#SetStatus) – ändert den HTTP-Statuscode auf den angegebenen Wert.  
+    -   [Statuscode festlegen](api-management-advanced-policies.md#SetStatus) – Ändert den HTTP-Statuscode in den angegebenen Wert.  
   
     -   [Ablaufverfolgung](api-management-advanced-policies.md#Trace) – Fügt eine Zeichenfolge in der Ausgabe für den [API-Inspektor](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) hinzu.  
   
@@ -122,4 +121,3 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
   
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Richtlinien finden Sie unter [Richtlinien in Azure API Management](api-management-howto-policies.md).  
-

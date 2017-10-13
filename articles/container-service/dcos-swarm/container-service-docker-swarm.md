@@ -17,10 +17,10 @@ ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: 6ca2d2e49c4b7f5eb0580e7091b09209f8b73a7c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="container-management-with-docker-swarm"></a>Containerverwaltung mit Docker Swarm
 Docker Swarm bietet eine Umgebung zum Bereitstellen von in Containern enthaltenen Workloads für Docker-Hosts in einem Pool. Für Docker Swarm wird die native Docker-API verwendet. Der Workflow zum Verwalten von Containern in Docker Swarm ist fast mit dem Workflow auf einem einzelnen Containerhost identisch. Dieses Dokument enthält einfache Beispiele für die Bereitstellung von in Containern enthaltenen Workloads in einer Azure Container Service-Instanz von Docker Swarm. Eine ausführlichere Dokumentation zu Docker Swarm finden Sie unter [Docker Swarm auf Docker.com](https://docs.docker.com/swarm/).

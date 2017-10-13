@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 ms.openlocfilehash: a19c453bb3271374b587f3d0b35adad55863b490
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von OAuth 2.0 in Azure API Management
 Viele APIs unterstützen [OAuth 2.0](http://oauth.net/2/) zum Schützen der API und um sicherzustellen, dass nur autorisierte Benutzer Zugriff erhalten und nur auf die Ressourcen zugreifen können, für die sie berechtigt sind. Um die interaktive Entwicklerkonsole von Azure API Management mit solchen APIs zu verwenden, ermöglicht der Dienst Ihnen das Konfigurieren Ihrer Dienstinstanz für die Zusammenarbeit mit einer OAuth 2.0-aktivierten API.
 
-## <a name="prerequisites"> </a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Diese Anleitung beschreibt, wie Sie eine Instanz des API Management-Diensts zur Verwendung der OAuth 2.0-Autorisierung für Entwicklerkonten konfigurieren. Es wird jedoch nicht behandelt, wie Sie einen OAuth 2.0-Anbieter konfigurieren. Die Konfiguration ist je nach OAuth 2.0-Anbieter unterschiedlich, die Schritte sind jedoch ähnlich, und die beim Konfigurieren von OAuth 2.0 in Ihrer Instanz des API Management-Diensts erforderlichen Informationen sind gleich. In diesem Thema werden Beispiele zur Verwendung von Azure Active Directory als OAuth 2.0-Anbieter gezeigt.
 
 > [!NOTE]
@@ -31,7 +31,7 @@ Diese Anleitung beschreibt, wie Sie eine Instanz des API Management-Diensts zur 
 > 
 > 
 
-## <a name="step1"> </a>Konfigurieren eines OAuth 2.0-Autorisierungsservers in API Management
+## <a name="step1"></a>Konfigurieren eines OAuth 2.0-Autorisierungsservers in API Management
 Klicken Sie zunächst im Azure-Portal für Ihren API Management-Dienst auf **Entwicklerportal**.
 
 ![Herausgeberportal][api-management-management-console]
@@ -90,7 +90,7 @@ Falls für **Autorisierungscode-Berechtigungstypen** die Einstellung **Ressource
 
 Nachdem Sie das Formular ausgefüllt haben, klicken Sie auf **Speichern** , um die OAuth 2.0-Autorisierungsserverkonfiguration für API Management zu speichern. Nach dem Speichern der Serverkonfiguration können Sie APIs wie im nächsten Abschnitt beschrieben zur Nutzung konfigurieren.
 
-## <a name="step2"> </a>Konfigurieren einer API zum Verwenden der OAuth 2.0-Benutzerauthentifizierung
+## <a name="step2"></a>Konfigurieren einer API zum Verwenden der OAuth 2.0-Benutzerauthentifizierung
 Klicken Sie im Menü **API Management** auf der linken Seite auf **APIs**, klicken Sie auf die gewünschte API und danach auf **Sicherheit**. Aktivieren Sie anschließend das Kontrollkästchen für **OAuth 2.0**.
 
 ![Benutzerautorisierung][api-management-user-authorization]
@@ -99,7 +99,7 @@ Wählen Sie in der Dropdownliste den gewünschten **Autorisierungsserver** aus, 
 
 ![Benutzerautorisierung][api-management-user-authorization-save]
 
-## <a name="step3"> </a>Testen der OAuth 2.0-Benutzerauthentifizierung im Entwicklerportal
+## <a name="step3"></a>Testen der OAuth 2.0-Benutzerauthentifizierung im Entwicklerportal
 Nachdem Sie Ihren OAuth 2.0-Autorisierungsserver und Ihre API zu dessen Nutzung konfiguriert haben, können Sie ihn testen, indem Sie zum Entwicklerportal wechseln und eine API aufrufen.  Klicken Sie im Menü oben rechts auf **Entwicklerportal** .
 
 ![Entwicklerportal][api-management-developer-portal-menu]

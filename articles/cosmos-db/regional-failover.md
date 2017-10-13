@@ -16,10 +16,10 @@ ms.date: 05/24/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3d8ba08bc9f99cb77c9f03949fc5db299eb222c8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Automatische regionale Failover für die Geschäftskontinuität in Azure Cosmos DB
 Azure Cosmos DB vereinfacht die globale Verteilung von Daten, indem es vollständig verwaltete [Datenbankkonten in mehreren Regionen](distribute-data-globally.md) bietet, die für eine sorgfältig austarierte Balance zwischen Konsistenz, Verfügbarkeit und Leistung mit den entsprechenden Garantien sorgen. Cosmos DB-Konten bieten hohe Verfügbarkeit, Latenzen im einstelligen Millisekundenbereich, mehrere [klar abgegrenzte Konsistenzebenen](consistency-levels.md), transparentes regionales Failover mit Multihosting-APIs sowie die Fähigkeit, Durchsatz und Speicher für alle Konten weltweit flexibel zu skalieren. 

@@ -14,14 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: asirveda;robmcm
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 8776142d5452bf5057990702c89aa1a541382ffc
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-spring-boot-application-to-the-azure-app-service"></a>Bereitstellen von Spring Boot-Anwendungen in Azure App Service
 
 Das **[Spring-Framework]** ist eine Open-Source-Lösung, mit der Java-Entwickler Anwendungen auf Unternehmensebene erstellen können. Eines der gängigsten Projekte, das auf dieser Plattform aufbaut, ist [Spring Boot]. Es bietet einen vereinfachten Ansatz für das Erstellen eigenständiger Java-Anwendungen.
@@ -243,4 +241,3 @@ Weitere Informationen zum Konfigurieren zusätzlicher Einstellungen für Ihre We
 [AZ08]: ./media/app-service-deploy-spring-boot-web-app-on-azure/AZ08.png
 [AZ09]: ./media/app-service-deploy-spring-boot-web-app-on-azure/AZ09.png
 [AZ10]: ./media/app-service-deploy-spring-boot-web-app-on-azure/AZ10.png
-

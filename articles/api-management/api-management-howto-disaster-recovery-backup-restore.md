@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 ms.openlocfilehash: 07c0265490cfae733133b6e0c938f90f9b392da4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 Indem Sie Ihre APIs über Azure API Management veröffentlichen und verwalten, profitieren Sie von vielen Fehlertoleranz- und Infrastrukturfunktionen, die Sie sonst erst entwickeln, implementieren und verwalten müssten. Die Azure-Plattform minimiert einen Großteil der potenziellen Ausfälle zu einem Bruchteil der Kosten.
@@ -116,7 +116,7 @@ Legen Sie vor dem Aufrufen der in den folgenden Abschnitten beschriebenen Vorgä
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
-## <a name="step1"> </a>Sichern eines API Management-Diensts
+## <a name="step1"></a>Sichern eines API Management-Diensts
 Zum Sichern eines API Management-Diensts führen Sie die folgende HTTP-Anforderung aus:
 
 `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}`
@@ -152,7 +152,7 @@ Beachten Sie die folgenden Einschränkungen für die Sicherungsanforderung.
 * Die Häufigkeit, mit der Sie Dienstsicherungen durchführen, wirkt sich auf das Ziel Ihres Wiederherstellungspunkts aus. Um die Auswirkungen zu minimieren, empfehlen wir, regelmäßige Sicherungen zu implementieren und bei Bedarf Sicherungen durchzuführen, wenn Sie bedeutende Änderungen an Ihrem API Management-Dienst vorgenommen haben.
 * **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen somit verloren**.
 
-## <a name="step2"> </a>Wiederherstellen eines API Management-Diensts
+## <a name="step2"></a>Wiederherstellen eines API Management-Diensts
 Zum Wiederherstellen eines API Management-Diensts aus einer zuvor erstellten Sicherung führen Sie die folgende HTTP-Anforderung aus:
 
 `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}`

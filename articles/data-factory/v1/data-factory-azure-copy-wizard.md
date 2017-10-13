@@ -15,16 +15,15 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: spelluru
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b63c930b5ef1de349a1daf434426829ebc51da11
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Kopier-Assistent in Azure Data Factory
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. 
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. 
 
 Der Kopier-Assistent in Azure Data Factory vereinfacht den Datenerfassungsvorgang (üblicherweise der erste Schritt in einem Szenario mit End-to-End-Datenintegration). Zur Arbeit mit dem Kopier-Assistenten in Azure Data Factory sind Kenntnisse hinsichtlich der JSON-Definitionen für verknüpfte Dienste, Datasets und Pipelines nicht erforderlich. Der Assistent erstellt automatisch eine Pipeline, um Daten aus der ausgewählten Datenquelle in das gewünschte Ziel zu kopieren. Darüber hinaus können Sie mit dem Kopier-Assistenten die erfassten Daten zum Zeitpunkt der Erstellung überprüfen. Dies spart insbesondere dann Zeit, wenn Sie Daten zum ersten Mal aus der Datenquelle erfassen. Klicken Sie zum Starten des Kopier-Assistenten auf der Startseite Ihrer Data Factory auf die Kachel **Daten kopieren** .
 
@@ -93,4 +92,3 @@ Ein einmaliger Kopiervorgang ermöglicht nur einmal das Verschieben von Daten au
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mit einer Kopieraktivität unter Verwendung des Data Factory-Kopier-Assistenten finden Sie im [Tutorial: Erstellen einer Pipeline mithilfe des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
-

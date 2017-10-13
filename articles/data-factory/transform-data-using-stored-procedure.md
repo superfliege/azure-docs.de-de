@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: shengc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f13f8aa0ca8686c0582bed77d047c9e6b39f7aa2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformieren von Daten mit der SQL Server-Aktivität „Gespeicherte Prozedur“ in Azure Data Factory | Microsoft-Dokumentation
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1: Allgemein verfügbare Version](v1/data-factory-stored-proc-activity.md)
-> * [Version 2: Vorschauversion](transform-data-using-stored-procedure.md)
+> * [Version 2 – Vorschauversion](transform-data-using-stored-procedure.md)
 
 
 Sie verwenden Transformationsaktivitäten in einer Data Factory-[Pipeline](concepts-pipelines-activities.md), um Rohdaten in Vorhersagen und Erkenntnisse umzuwandeln und zu verarbeiten. Die Aktivität der „Gespeicherte Prozedur“ ist eine der Transformationsaktivitäten, die Data Factory unterstützt. Dieser Artikel baut auf dem Artikel [Transformieren von Daten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten in Data Factory bietet.
@@ -94,4 +91,3 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
 * [Machine Learning-Batchausführungsaktivität](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)
-

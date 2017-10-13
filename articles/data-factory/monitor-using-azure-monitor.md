@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a130907fe6cf2ae6498502644949290bc838f239
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Überwachen von Data Factorys mit Azure Monitor  
 Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachung stellt Daten bereit, auf deren Grundlage die ordnungsgemäße Ausführung der Anwendung sichergestellt werden kann. Sie trägt auch zur Vermeidung potenzieller Probleme bei und hilft bei der Behandlung bereits aufgetretener Probleme. Darüber hinaus können Sie auf der Grundlage von Überwachungsdaten umfassende Erkenntnisse über Ihre Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
@@ -110,9 +109,9 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | Protokolle| Komplexer Typ| Der Name einer Diagnoseprotokollkategorie für einen Ressourcentyp. Um die Liste der Diagnoseprotokollkategorien für eine Ressource zu erhalten, führen Sie zuerst einen GET-Vorgang zum Abrufen von Diagnoseeinstellungen aus. |
 | category| String| Array von Protokollkategorien und ihrer Aufbewahrungsrichtlinien |
 | timeGrain | String | Die Granularität von Metriken, die im Zeitformat ISO 8601 erfasst werden. Muss „PT1M“ (eine Minute) sein|
-| Aktiviert| Boolesch | Gibt an, ob die Sammlung dieser Metrik- oder Protokollkategorie für diese Ressource aktiviert ist|
+| Aktiviert| Boolean | Gibt an, ob die Sammlung dieser Metrik- oder Protokollkategorie für diese Ressource aktiviert ist|
 | retentionPolicy| Komplexer Typ| Beschreibt die Aufbewahrungsrichtlinie für eine Metrik- oder Protokollkategorie. Wird nur für die Speicherkonto-Option verwendet.|
-| Tage| Int| Anzahl der Tage, die Metriken oder Protokolle aufbewahrt werden sollen. Beim Wert 0 werden die Protokolle dauerhaft gespeichert. Wird nur für die Speicherkonto-Option verwendet. |
+| Tage| int| Anzahl der Tage, die Metriken oder Protokolle aufbewahrt werden sollen. Beim Wert 0 werden die Protokolle dauerhaft gespeichert. Wird nur für die Speicherkonto-Option verwendet. |
 
 **Antwort**
 

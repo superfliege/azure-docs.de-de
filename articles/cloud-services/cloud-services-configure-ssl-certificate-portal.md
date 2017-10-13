@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 7b0e76f86ec6443fcb394f7be1e6b417de99d4b7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurieren von SSL für eine Anwendung in Azure
 > [!div class="op_single_selector"]
@@ -51,7 +50,7 @@ Zu Testzwecken können Sie ein selbst signiertes Zertifikat [erstellen](cloud-se
 
 Daraufhin müssen Sie Informationen zum Zertifikat in Ihre Definitions- und Konfigurationsdateien für den Dienst einfügen.
 
-<a name="modify"> </a>
+<a name="modify"></a>
 
 ## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Schritt 2: Ändern der Definitions- und Konfigurationsdateien für den Dienst
 Ihre Anwendung muss so konfiguriert sein, dass das Zertifikat verwendet wird. Außerdem muss ein HTTPS-Endpunkt hinzugefügt werden. Daher müssen die Definitions- und Konfigurationsdateien für den Dienst aktualisiert werden.
@@ -186,4 +185,3 @@ Jetzt wird die Bereitstellung in Azure ausgeführt, und Sie können eine HTTPS-V
 * Weitere Informationen zum [Bereitstellen eines Clouddiensts](cloud-services-how-to-create-deploy-portal.md)
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
-

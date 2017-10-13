@@ -10,24 +10,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 5b2fa44eaf801715d50282b4c1460c58d3631637
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Registrieren eines Azure Enterprise Agreements und Anzeigen von Kostendaten
 
-Sie verwenden Ihr Enterprise Agreement, um sich bei der Azure-Kostenverwaltung von Cloudyn zu registrieren. Ihre Registrierung stellt den Zugriff auf das Cloudyn-Portal bereit. In diesem Schnellstart wird der Registrierungsvorgang ausführlich erläutert, der zum Erstellen eines Cloudyn-Testabonnements und Anmelden am Cloudyn-Portal erforderlich ist. Es wird auch gezeigt, wie die Anzeige von Kostendaten sofort gestartet werden kann.
+Sie verwenden Ihr Enterprise Agreement, um sich bei der Azure-Kostenverwaltung von Cloudyn zu registrieren. Ihre Registrierung stellt den Zugriff auf das Cloudyn-Portal bereit. In diesem Schnellstart wird der Registrierungsvorgang ausführlich erläutert, der zum Erstellen eines Cloudyn-Testabonnements und zum Anmelden beim Cloudyn-Portal erforderlich ist. Es wird auch gezeigt, wie die Anzeige von Kostendaten sofort gestartet werden kann.
 
-## <a name="log-in-to-azure"></a>Anmelden bei Azure
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-- Melden Sie sich unter „http://portal.azure.com“ am Azure-Portal an.
+- Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
-## <a name="create-a-trial-registration"></a>Erstellen einer Testregistrierung
+## <a name="create-a-trial-registration"></a>Erstellen einer Registrierung für die Testversion
 
 1. Klicken Sie im Azure-Portal in der Liste der Dienste auf **Kostenverwaltung und Abrechnung**.
 2. Klicken Sie unter **Übersicht** auf **Kostenverwaltung**.  
@@ -52,4 +49,3 @@ In diesem Schnellstart haben Sie Ihre Azure Enterprise Agreement-Informationen v
 
 > [!div class="nextstepaction"]
 > [Anzeigen von Kostendaten](./tutorial-review-usage.md)
-

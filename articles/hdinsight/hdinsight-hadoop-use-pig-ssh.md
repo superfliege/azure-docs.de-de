@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/03/2017
 ms.author: larryfr
+ms.openlocfilehash: 303a8de4f644b11bda68136fe42af6bc091bb892
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: e4c893ef4bfa573dd9fbc9c9b0ae296720769842
-ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Ausführen von Pig-Jobs auf einem Linux-basierten Cluster mit dem Pig-Befehl (SSH)
 
@@ -133,4 +132,3 @@ Weitere Informationen zu anderen Methoden zur Verwendung von Hadoop in HDInsight
 
 * [Verwenden von Hive mit Hadoop in HDInsight](hdinsight-use-hive.md)
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
-

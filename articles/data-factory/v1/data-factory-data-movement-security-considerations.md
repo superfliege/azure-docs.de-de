@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7535a21b80a753f7334bd99d4ac9dc8ca8d43f6b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung
 ## <a name="introduction"></a>Einführung
 In diesem Artikel ist die grundlegenden Sicherheitsinfrastruktur beschrieben, die von Datenverschiebungsdiensten in Azure Data Factory verwendet wird, um Ihre Daten zu schützen. Azure Data Factory-Verwaltungsressourcen setzen auf der Azure Sicherheitsinfrastruktur auf und nutzen alle möglichen Sicherheitsmaßnahmen, die von Azure bereitgestellt werden.
@@ -192,4 +190,3 @@ Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Gatewaycompu
 Informationen zur Leistung der Kopieraktivität finden Sie im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md).
 
  
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
 ms.openlocfilehash: 2e5cce26bc8bebbe6b9f8ba3c3d03e8c3db8c87c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-azure-cosmos-db"></a>Überwachen von Microsoft Azure Cosmos DB
 Sie können Ihre Azure Cosmos DB-Konten im [Azure-Portal](https://portal.azure.com/) überwachen. Für jedes Konto in Azure Cosmos DB ist eine vollständige Sammlung von Metriken verfügbar, mit der der Durchsatz, der Speicher, die Verfügbarkeit, die Latenz und die Konsistenz überwacht werden kann.
@@ -87,5 +86,4 @@ Weitere Informationen finden Sie unter [Retrieving Resource Metrics via the Azur
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Kapazitätsplanung für Azure Cosmos DB finden Sie unter [Azure Cosmos DB capacity planner calculator](https://www.documentdb.com/capacityplanner) (Azure Cosmos DB Capacity Planner-Rechner).
-
 

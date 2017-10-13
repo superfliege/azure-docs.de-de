@@ -15,14 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 31af39eef3889bebd18baa2be297c433cc733ed3
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="build-a-java-and-mysql-web-app-in-azure"></a>Erstellen einer Java- und MySQL-Web-App in Azure
 
 In diesem Tutorial wird gezeigt, wie Sie eine Java-Web-App in Azure erstellen und mit einer MySQL-Datenbank verbinden. Anschließend besitzen Sie eine [Spring Boot](https://projects.spring.io/spring-boot/)-Anwendung, die Daten in [Azure-Datenbank für MySQL](https://docs.microsoft.com/azure/mysql/overview) speichert und mit [Azure App Service-Web-Apps](app-service-web-overview.md) ausgeführt wird.
@@ -136,7 +134,7 @@ Welche Werte Sie für `--location` verwenden können, erfahren Sie mithilfe des 
 
 ### <a name="create-a-mysql-server"></a>Erstellen eines MySQL-Servers
 
-Erstellen Sie in Cloud Shell mit dem Befehl [az mysql server create](/cli/azure/mysql/server#create) einen Server in Azure-Datenbank für MySQL (Vorschau).    
+Erstellen Sie in Cloud Shell mit dem Befehl [az mysql server create](/cli/azure/mysql/server#create) einen Server in Azure Database for MySQL (Vorschauversion).    
 Ersetzen Sie den Platzhalter `<mysql_server_name>` durch Ihren eigenen eindeutigen MySQL-Servernamen. Dieser Name ist Teil des Hostnamens des MySQL-Servers `<mysql_server_name>.mysql.database.azure.com` und muss daher global eindeutig sein. Ersetzen Sie auch `<admin_user>` und `<admin_password>` durch Ihre eigenen Werte.
 
 ```azurecli-interactive

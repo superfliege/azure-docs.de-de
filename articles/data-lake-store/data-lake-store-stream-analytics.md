@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/29/2017
+ms.date: 10/03/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4ecf4f8594f7a274bec231fb74c4caa22c3cc354
-ms.openlocfilehash: b5f2ae124ca3276e15e0d1f75d655ec346bf8ee8
-ms.contentlocale: de-de
-ms.lasthandoff: 01/06/2017
-
-
+ms.openlocfilehash: 92ddf9619a0db398f7866aab60e834f09add3e7a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Streamen von Daten aus Azure Storage-Blob in Data Lake-Speicher mit Azure Stream Analytics
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake-Speicher als Ausgabe für einen Azure Stream Analytics-Auftrag verwenden. Dieser Artikel beschreibt ein einfaches Szenario, bei dem Daten aus einem Azure Storage-Blob (Eingabe) gelesen und in Data Lake-Speicher (Ausgabe) geschrieben werden.
@@ -129,4 +127,3 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Erstellen eines HDInsight-Clusters für die Verwendung von Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
-

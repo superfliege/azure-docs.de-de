@@ -8,14 +8,12 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: babanisa
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: 358c1f4bca2ced207caf599db2fb1453ca8bc41e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="an-introduction-to-azure-event-grid"></a>Einführung in Azure Event Grid
 
 Mit Azure Event Grid können Sie mühelos Anwendungen mit ereignisbasierten Architekturen erstellen. Sie wählen die Azure-Ressource aus, die Sie abonnieren möchten, und geben den Ereignishandler oder WebHook-Endpunkt an, an den das Ereignis gesendet werden soll. Event Grid verfügt über integrierte Unterstützung für Ereignisse, die aus Azure-Diensten stammen, wie Speicherblobs und Ressourcengruppen. Event Grid bietet auch mithilfe benutzerdefinierter Themen und Webhooks benutzerdefinierte Unterstützung für Anwendungs- und Drittanbieterereignisse. 

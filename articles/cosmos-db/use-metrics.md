@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: govindk
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: e6399831fe7c6cc727e92b13719df3b69e9981bf
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Überwachen und Debuggen mit Metriken in Azure Cosmos DB
 
 Azure Cosmos DB bietet Metriken für Durchsatz, Speicher, Konsistenz, Verfügbarkeit und Latenz. Das [Azure-Portal](https://portal.azure.com) bietet eine Gesamtansicht dieser Metriken. Für detailliertere Metriken sind das Client-SDK und die [Diagnoseprotokolle](./logging.md) verfügbar.
@@ -101,4 +99,3 @@ Nachdem Sie jetzt erfahren haben, wie Sie mit den Metriken im Azure-Portal Probl
 
 * [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-testing.md)
 * [Leistungstipps für Azure Cosmos DB](performance-tips.md)
-

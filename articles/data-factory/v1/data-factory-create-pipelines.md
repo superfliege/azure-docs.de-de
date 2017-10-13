@@ -15,17 +15,16 @@ ms.topic: article
 ms.date: 08/12/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 94c820b23a91f3493a0fbc8e1fd38c86d371e985
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1: Allgemein verfügbare Version](data-factory-create-pipelines.md)
-> * [Version 2: Vorschauversion](../concepts-pipelines-activities.md)
+> * [Version 2 – Vorschauversion](../concepts-pipelines-activities.md)
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Pipelines and activities in Azure Data Factory](../concepts-pipelines-activities.md) (Pipelines und Aktivitäten in Azure Data Factory).
@@ -362,5 +361,4 @@ Beachten Sie Folgendes:
 - Weitere Informationen über Datasets finden Sie im Artikel [Datasets in Azure Data Factory](data-factory-create-datasets.md). 
 - Weitere Informationen über die Planung und Ausführung von Pipelines finden Sie im Artikel [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md). 
   
-
 

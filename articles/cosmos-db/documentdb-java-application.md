@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 08/22/2017
 ms.author: denlee
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 7b1053a7ec879294cb2240c9d6b4cd32f923ef9c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-documentdb-api"></a>Erstellen einer Java-Webanwendung mithilfe von Azure Cosmos DB und der DocumentDB-API
 > [!div class="op_single_selector"]
@@ -106,7 +105,7 @@ Dazu müssen Sie das Projekt zu einem Maven-Projekt konvertieren, indem Sie die 
      
    * Alternativ fügen Sie den Abhängigkeits-XML-Code für die Gruppen-ID und die Artefakt-ID mit einem Text-Editor direkt in der Datei „pom.xml“ hinzu:
      
-        <dependency> <groupId>com.microsoft.azure</groupId> <artifactId>azure-documentdb</artifactId> <version>1.9.1</version> </dependency>
+        <dependency><groupId>com.microsoft.azure</groupId><artifactId>azure-documentdb</artifactId><version>1.9.1</version></dependency>
 6. Klicken Sie auf **OK**, damit Maven das DocumentDB-Java-SDK installiert.
 7. Speichern Sie die Datei pom.xml.
 
@@ -757,4 +756,3 @@ Alle Beispiele in diesem Tutorial befinden sich im Projekt [todo](https://github
 22. Informationen zum Bereitstellen Ihres Projekts auf einer Azure-Website finden Sie unter [Schritt 6: Bereitstellen der Anwendung auf Azure-Websites](#Deploy).
 
 [1]: media/documentdb-java-application/keys.png
-

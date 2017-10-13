@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 041847f2f341528c742d127f5d624e60c26e01fe
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 Das Feature zum Sichern und Wiederherstellen in [Azure App Service](app-service-web-overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen. 
@@ -172,5 +171,4 @@ Informationen zum Wiederherstellen einer App aus einer Sicherung finden Sie unte
 [LogsFolder]: ./media/web-sites-backup/12Logs.png
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
 [kudu-portal]:./media/web-sites-backup/kudu-portal.PNG
-
 

@@ -3,7 +3,7 @@ title: Bearbeiten von Textrunbooks in Azure Automation
 description: "Dieser Artikel enthält verschiedene Verfahren zum Arbeiten mit PowerShell und PowerShell-Workflow-Runbooks in Azure Automation unter Verwendung des Text-Editors."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: stevenka
 editor: tysonn
 ms.assetid: 6f5b48fb-6f30-4e99-9e14-9061b5554b08
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: magoedte;bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 154d2cd9b7f4ea51d3fd4c1995b67a25816b28a2
-ms.openlocfilehash: 6aa34a19b15ae0c5c031f20a9c6c8e5ed3290b10
-
-
+ms.openlocfilehash: ae36342ab0f42c364dedd4107a59f5b0ffc20a0a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Bearbeiten von Textrunbooks in Azure Automation
 Mit dem Text-Editor in Azure Automation können Sie [PowerShell-Runbooks](automation-runbook-types.md#powershell-runbooks) und [PowerShell-Workflow-Runbooks](automation-runbook-types.md#powershell-workflow-runbooks) bearbeiten. Dieser Editor bietet neben den üblichen Features anderer Code-Editoren wie Intellisense und Farbcodierung zusätzliche spezielle Features, um den Zugriff auf für Runbooks typische Ressourcen zu ermöglichen.  Dieser Artikel enthält detaillierte Schritte zum Ausführen verschiedener Funktionen mit diesem Editor.
@@ -131,9 +131,3 @@ Die folgenden Beispielbefehle zeigen, wie der vorhandene Inhalt eines Runbooks d
 * [Anmeldeinformationen](automation-credentials.md)
 * [Zeitpläne](automation-schedules.md)
 * [Variablen](automation-variables.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

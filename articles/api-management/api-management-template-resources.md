@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 3c633d54e6b81576a2fbd1adfc69775ca1bdd09d
-ms.contentlocale: de-de
-ms.lasthandoff: 04/07/2017
-
+ms.openlocfilehash: 212e7ea7bb2ffea63c7ba210195df0da38aa8f0a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-api-management-template-resources"></a>Ressourcen von Azure API Management-Vorlagen
 Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung in Entwicklerportalvorlagen.  
@@ -163,7 +162,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |----------|----------|  
 |WebDocumentationInvalidHeaderErrorMessage|Invalid header '{0}' (Ungültiger Header '{0}')|  
 |WebDocumentationInvalidRequestErrorMessage|Invalid Request URL (Ungültige Anforderungs-URL)|  
-|TextboxLabelAccessToken|Access token * (Zugriffstoken *)|  
+|TextboxLabelAccessToken|Access token * (Zugriffstoken)|  
 |DropdownOptionPrimaryKeyFormat|Primary-{0} (Primär-{0})|  
 |DropdownOptionSecondaryKeyFormat|Secondary-{0} (Sekundär-{0})|  
 |WebDocumentationSubscriptionKeyText|Your subscription key (Ihr Abonnementschlüssel)|  
@@ -579,4 +578,3 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](api-management-developer-portal-templates.md).
-

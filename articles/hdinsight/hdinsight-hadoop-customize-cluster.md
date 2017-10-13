@@ -17,13 +17,13 @@ ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: ec95b6d66c71b4278dd1e16807fcc75f5e8b1c36
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Anpassen Windows-basierter HDInsight-Cluster mithilfe von Skriptaktionen
-Eine **Skriptaktion** kann während der Clustererstellung zum Aufrufen [benutzerdefinierter Skripts](hdinsight-hadoop-script-actions.md) verwendet werden, um zusätzliche Software auf einem Cluster zu installieren.
+**Script Action** kann während der Clustererstellung zum Aufrufen [benutzerdefinierter Skripts](hdinsight-hadoop-script-actions.md) verwendet werden, um zusätzliche Software auf einem Cluster zu installieren.
 
 Die Informationen in diesem Artikel gelten für Windows-basierte HDInsight-Cluster. Informationen zu Linux-basierten Clustern finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 

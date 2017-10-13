@@ -15,12 +15,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
+ms.openlocfilehash: 029fb8ddad84b297d99509a0a9ad35d9548e5c00
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 07ad266ad87028996c4a7b3e4365c11b019f8529
-ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sign-up-for-azure-as-an-organization"></a>Als Unternehmen für Azure registrieren
 Bis vor Kurzem war es nur mit einem Microsoft-Konto (Windows Live ID) möglich, sich für ein neues Microsoft Azure-Abonnement zu registrieren. Nun unterstützt Azure auch eine der beiden folgenden Kontomethoden zur Registrierung:
@@ -37,5 +36,4 @@ Möchten Sie sich als Organisation bei Azure anmelden? [**Jetzt registrieren**](
 * [Microsoft Azure-Blog](https://azure.microsoft.com/blog/)
 * [Was ist Azure AD?](active-directory-whatis.md)
 * [Verwenden Ihrer lokalen Identitätsinfrastruktur in der Cloud](active-directory-aadconnect.md)
-
 

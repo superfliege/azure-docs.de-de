@@ -10,14 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
+ms.openlocfilehash: 3ad1bfe2c45fd087f094aad5b2028ab488dbb2a9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: fb00711c762aa67c632d1cc582741970e3df0ef2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Erstellen benutzerdefinierter KPI-Dashboards mithilfe von Azure Application Insights
 
 Sie können mehrere Dashboards im Azure-Portal erstellen, wobei jedes Kacheln enthält, die Daten aus mehreren Azure-Ressourcen in verschiedenen Ressourcengruppen und Abonnements visualisieren.  Außerdem lassen sich verschiedene Diagramme und Ansichten aus Azure Application Insights anheften, um benutzerdefinierte Dashboards zu erstellen, mit denen Sie einen vollständigen Überblick über die Integrität und Leistung der Anwendung erhalten.  Dieses Tutorial führt Sie durch die Erstellung eines benutzerdefinierten Dashboards, das mehrere Daten- und Visualisierungstypen aus Azure Application Insights enthält.  Folgendes wird vermittelt:

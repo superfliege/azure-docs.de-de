@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: b6aacc536e589a2036aba5a0784a4ba71641a59e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0-Metadatenunterstützung in Azure Functions (Vorschauversion)
 Metadatenunterstützung für OpenAPI 2.0 (ehemals Swagger) in Azure Functions ist eine Vorschaufunktion, mit der Sie eine OpenAPI 2.0-Definition in einer Funktions-App schreiben können. Diese Datei kann dann mit der Funktions-App gehostet werden.
@@ -82,4 +81,3 @@ Nun werden Änderungen an „swagger.json“ in Ihrem Repository von Ihrer Funkt
 * [Erste-Schritte-Tutorial](functions-api-definition-getting-started.md). Probieren Sie unsere exemplarische Vorgehensweise aus, um eine OpenAPI-Definition in Aktion zu sehen!
 * [Azure Functions-GitHub-Repository](https://github.com/Azure/Azure-Functions/). Testen Sie das Functions-Repository, und geben Sie uns Feedback zur Vorschauversion der Unterstützung von API-Definitionen! Erstellen Sie ein GitHub-Problem für jeden Punkt, für den Sie eine Aktualisierung wünschen.
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md). Informieren Sie sich über das Programmieren von Funktionen und das Festlegen von Triggern und Bindungen.
-

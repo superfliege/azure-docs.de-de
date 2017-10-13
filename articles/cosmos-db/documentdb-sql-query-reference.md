@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/13/2017
 ms.author: mimig
+ms.openlocfilehash: 0a05f4ee86d2dcca40dc0b5ec2c503ba0b8bfe8c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 63b2d20c74df4fd6173994ee1a727594ba8afba3
-ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-documentdb-api-sql-syntax-reference"></a>Azure Cosmos DB: DocumentDB-API: SQL-Syntaxreferenz
 
 Die DocumentDB-API von Azure Cosmos DB unterstützt Abfragen von Dokumenten mithilfe einer vertrauten, SQL-ähnlichen (Structured Query Language, strukturierte Abfragesprache) Grammatik für hierarchische JSON-Dokumente, ohne dass ein explizites Schema oder die Erstellung sekundärer Indizes erforderlich ist. Dieses Thema ist die Referenzdokumentation für die DocumentDB-API-SQL-Abfragesprache.
@@ -505,8 +503,8 @@ ORDER BY <sort_specification>
 |**Arithmetisch**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Addition.<br /><br /> Subtraktion.<br /><br /> Multiplikation.<br /><br /> Division.<br /><br /> Modulation.|  
 |**Bitweise**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Bitweises OR.<br /><br /> Bitweises AND.<br /><br /> Bitweises XOR.<br /><br /> Verschiebung nach links.<br /><br /> Verschiebung nach rechts.<br /><br /> Nullauffüllung, Verschiebung nach rechts.|  
 |**Logisch**|**AND**<br /><br /> **OR**|Logische Konjunktion. Gibt **true** zurück, wenn beide Argumente **true** sind, andernfalls **false**.<br /><br /> Logische Konjunktion. Gibt **true** zurück, wenn beide Argumente **true** sind, andernfalls **false**.|  
-|**Vergleich**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Gleich. Gibt **true** zurück, wenn die Argumente gleich sind, andernfalls **false**.<br /><br /> Ungleich. Gibt **true** zurück, wenn die Argumente nicht gleich sind, andernfalls **false**.<br /><br /> Größer als. Gibt **true** zurück, wenn das erste Argument größer als das zweite Argument ist, andernfalls **false**.<br /><br /> Größer als oder gleich. Gibt **true** zurück, wenn das erste Argument größer als das zweite Argument oder ihm gleich ist, andernfalls **false**.<br /><br /> Kleiner als. Gibt **true** zurück, wenn das erste Argument kleiner als das zweite Argument ist, andernfalls **false**.<br /><br /> Kleiner als oder gleich. Gibt **true** zurück, wenn das erste Argument kleiner als das zweite Argument oder ihm gleich ist, andernfalls **false**.<br /><br /> Zusammenfügen. Gibt das zweite Argument zurück, wenn das erste Argument ein **undefinierter** Wert ist.|  
-|**String**|**&#124;&#124;**|Verkettung. Gibt eine Verkettung der beiden Argumente zurück.|  
+|**Vergleich**|**=**<br /><br /> **!=, &lt;&gt;**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Gleich. Gibt **true** zurück, wenn die Argumente gleich sind, andernfalls **false**.<br /><br /> Ungleich. Gibt **true** zurück, wenn die Argumente nicht gleich sind, andernfalls **false**.<br /><br /> Größer als. Gibt **true** zurück, wenn das erste Argument größer als das zweite Argument ist, andernfalls **false**.<br /><br /> Größer als oder gleich. Gibt **true** zurück, wenn das erste Argument größer als das zweite Argument oder ihm gleich ist, andernfalls **false**.<br /><br /> Kleiner als. Gibt **true** zurück, wenn das erste Argument kleiner als das zweite Argument ist, andernfalls **false**.<br /><br /> Kleiner als oder gleich. Gibt **true** zurück, wenn das erste Argument kleiner als das zweite Argument oder ihm gleich ist, andernfalls **false**.<br /><br /> Zusammenfügen. Gibt das zweite Argument zurück, wenn das erste Argument ein **undefinierter** Wert ist.|  
+|**String**|**&amp;#124;&amp;#124;**|Verkettung. Gibt eine Verkettung der beiden Argumente zurück.|  
   
  **Ternäre Operatoren:**  
   
@@ -671,8 +669,8 @@ ORDER BY <sort_specification>
     |-|-|    
     |GROSSBUCHSTABEN|Schlüsselwörter, bei denen Groß-/Kleinschreibung nicht beachtet werden muss.|  
     |Kleinbuchstaben|Schlüsselwörter, bei denen Groß-/Kleinschreibung beachtet werden muss.|  
-    |\<nichtterminal>|Nichtterminal, separat definiert.|  
-    |\<nichtterminal> ::=|Syntaxdefinition von „nichtterminal“.|  
+    |\<nichtterminal&gt;|Nichtterminal, separat definiert.|  
+    |\<nichtterminal&gt; ::=|Syntaxdefinition von „nichtterminal“.|  
     |other_terminal|Terminal (Token), ausführlich in Wörtern beschrieben.|  
     |Bezeichner|Bezeichner. Ermöglicht nur die folgenden Zeichen: a-z, A-Z 0-9 _Erstes Zeichen darf keine Ziffer sein.|  
     |„String“|Zeichenfolge in Anführungszeichen. Kann jede gültige Zeichenfolge ein. Siehe Beschreibung von „string_literal“.|  
@@ -2773,4 +2771,3 @@ SELECT ST_ISVALIDDETAILED({
  [Dokumentation für Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/)  
   
   
-

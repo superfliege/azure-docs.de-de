@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/21/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
+ms.openlocfilehash: 6a73f7e83abc793eafcf762a592bd975d00eaf88
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: e05d24655149dc03cfd435fbc07539d91f2e1502
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-kubernetes-cluster-for-linux-containers"></a>Bereitstellen eines Kubernetes-Clusters für Linux-Container
 
 In dieser Schnellstartanleitung wird ein Kubernetes-Cluster mithilfe der Azure-Befehlszeilenschnittstelle bereitgestellt. Anschließend wird in dem Cluster eine Anwendung mit mehreren Containern bereitgestellt und ausgeführt, die ein Web-Front-End und eine Redis-Instanz umfasst. Nach Abschluss des Vorgangs kann auf die Anwendung über das Internet zugegriffen werden. 
@@ -230,4 +228,3 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 
 > [!div class="nextstepaction"]
 > [Verwalten eines ACS Kubernetes-Clusters](./container-service-tutorial-kubernetes-prepare-app.md)
-

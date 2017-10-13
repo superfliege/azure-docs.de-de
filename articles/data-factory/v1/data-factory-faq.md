@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
 robots: noindex
+ms.openlocfilehash: d64425d067df92998538c78d1ca3a1650502b77a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f45a9bd265991a3c2234f12af428b27b7659cb6b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – Häufig gestellte Fragen
 ## <a name="general-questions"></a>Allgemeine Fragen
@@ -143,7 +142,7 @@ Ein weit verbreiteter Fehler besteht darin, die **external**-Eigenschaft im Eing
 
 Im folgenden Beispiel müssen Sie nur für **dataset1** den Wert **external** auf „true“ festlegen.  
 
-**DataFactory1** Pipeline 1: dataset1 > activity1 > dataset2 > activity2 > dataset3 Pipeline 2: dataset3 > activity3 > dataset4
+**DataFactory1** Pipeline 1: dataset1 &gt; activity1 &gt; dataset2 &gt; activity2 &gt; dataset3 Pipeline 2: dataset3 &gt; activity3 &gt; dataset4
 
 Wenn Sie über eine andere Data Factory mit einer Pipeline, die Dataset4 nimmt, verfügen (erstellt von Pipeline 2 in Data Factory 1), markieren Sie Dataset4 als externes Dataset, da das Dataset von einer anderen Data Factory (DataFactory1, nicht DataFactory2) erstellt wird.  
 
@@ -206,4 +205,3 @@ Wenn Sie alle Ausführungen wirklich sofort beenden möchten, ist die einzige M�
 [hdinsight-supported-regions]: http://azure.microsoft.com/pricing/details/hdinsight/
 [hdinsight-alternate-storage]: http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
-

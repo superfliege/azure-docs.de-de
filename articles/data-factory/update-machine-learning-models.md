@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 062d82d1bb2126a5b135796a2b5fa00ccf02511d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning-Modellen mithilfe der Ressourcenaktualisierungsaktivität
 Dieser Artikel stellt eine Ergänzung zum Hauptartikel zur Integration von Azure Data Factory und Azure Machine Learning dar: [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md). Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen. 
@@ -32,7 +31,7 @@ Das erneute Training kann häufig durchgeführt werden. Mithilfe der Batchausfü
 
 Die folgende Abbildung zeigt die Beziehung zwischen Trainings- und Vorhersagewebdiensten. 
 
-![Webdienste](./media/update-machine-learning-models/web-services.png)
+![WEB SERVICES](./media/update-machine-learning-models/web-services.png)
 
 ## <a name="azure-machine-learning-update-resource-activity"></a>Azure Machine Learning-Ressourcenaktualisierungsaktivität 
 
@@ -311,4 +310,3 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [Spark-Aktivität](transform-data-using-spark.md)
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)
-

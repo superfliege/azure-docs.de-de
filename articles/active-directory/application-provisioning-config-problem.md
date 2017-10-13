@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 44e344095352f2bc6b27e389fc8be2cdf3e368d8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung
 
@@ -31,7 +31,7 @@ Sobald der Dienst konfiguriert ist, erhalten Sie die meisten Einblicke in die Au
 
 -   **Überwachungsprotokolle**: Die Überwachungsprotokolle für die Bereitstellung zeichnen alle vom Bereitstellungsdienst durchgeführten Vorgänge auf, einschließlich der Abfragen von Azure AD für zugewiesene Benutzer, die sich im Bereitstellungsbereich befinden. Fragen Sie die Ziel-App hinsichtlich dem Vorkommen dieser Benutzer ab, wobei die Benutzerobjekte zwischen dem System verglichen werden. Fügen Sie dann auf Basis des Vergleichs das Benutzerkonto zum Zielsystem hinzu oder aktualisieren bzw. deaktivieren Sie es. Sie können auf die Überwachungsprotokolle für die Bereitstellung im Azure-Portal auf der Registerkarte **Azure Active Directory &gt; Unternehmens-Apps &gt; \[Anwendungsname\] &gt; Überwachungsprotokolle** zugreifen. Filtern Sie die Protokolle nach der Kategorie **Kontobereitstellung**, um nur die Bereitstellungsereignisse für die jeweilige App anzuzeigen.
 
--   **Bereitstellungsstatus**: Eine Zusammenfassung des letzten Bereitstellungsdurchlaufs für eine bestimmte App wird im Abschnitt **Azure Active Directory &gt; Unternehmens-Apps &gt; \[Anwendungsname\] &gt;Bereitstellung** am unteren Bildschirmrand unter den Diensteinstellungen angezeigt. In diesem Abschnitt wird zusammengefasst, wie viele Benutzer (und/oder Gruppen) aktuell zwischen den beiden Systemen synchronisiert werden und ob dabei Fehler aufgetreten sind. Die Fehlerdetails werden in den Überwachungsprotokollen aufgeführt. Beachten Sie, dass der Bereitstellungsstatus nicht ausgefüllt wird, bis eine vollständige anfängliche Synchronisierung zwischen Azure AD und der App abgeschlossen wurde.
+-   **Bereitstellungsstatus**: Eine Zusammenfassung des letzten Bereitstellungsdurchlaufs für eine bestimmte App wird im Abschnitt **Azure Active Directory &gt; Unternehmens-Apps &gt;\[Anwendungsname\]&gt;Bereitstellung** am unteren Bildschirmrand unter den Diensteinstellungen angezeigt. In diesem Abschnitt wird zusammengefasst, wie viele Benutzer (und/oder Gruppen) aktuell zwischen den beiden Systemen synchronisiert werden und ob dabei Fehler aufgetreten sind. Die Fehlerdetails werden in den Überwachungsprotokollen aufgeführt. Beachten Sie, dass der Bereitstellungsstatus nicht ausgefüllt wird, bis eine vollständige anfängliche Synchronisierung zwischen Azure AD und der App abgeschlossen wurde.
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>Zu berücksichtigende allgemeine Problembereiche bei der Bereitstellung
 

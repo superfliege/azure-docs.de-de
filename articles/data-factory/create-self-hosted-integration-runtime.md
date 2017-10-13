@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 18f5aea960bca34699d2d265d4801797291a3e3a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integrationslaufzeit finden Sie unter [Integration Runtime Overview](concepts-integration-runtime.md) (Übersicht über Integrationslaufzeit). 
@@ -218,7 +217,7 @@ Zusätzlich zu den obigen Punkten müssen Sie auch sicherstellen, dass Microsoft
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Mögliche Symptome für Probleme im Zusammenhang mit der Firewall und dem Proxyserver
 Wenn Sie ähnliche Fehler wie die unten aufgeführten feststellen, liegt dies meist an einer unsachgemäßen Konfiguration der Firewall oder des Proxyservers. Hierdurch wird verhindert, dass die selbstgehostete Integrationslaufzeit eine Verbindung mit der Data Factory herstellt, um sich zu authentifizieren. Überprüfen Sie den vorherigen Abschnitt, um sicherzustellen, dass die Firewall und der Proxyserver richtig konfiguriert sind.
 
-1.  Wenn Sie versuchen, die selbstgehostete Integrationslaufzeit zu registrieren, erhalten Sie den folgenden Fehler: „Fehler beim Registrieren dieses Knotens der Integrationslaufzeit. Stellen Sie sicher, dass der Authentifizierungsschlüssel gültig ist und dass der Hostdienst der Integrationslaufzeit auf diesem Computer ausgeführt wird. “
+1.  Wenn Sie versuchen, die selbstgehostete Integrationslaufzeit zu registrieren, erhalten Sie den folgenden Fehler: „Fehler beim Registrieren dieses Knotens der Integrationslaufzeit. Stellen Sie sicher, dass der Authentifizierungsschlüssel gültig ist und dass der Hostdienst der Integrationslaufzeit auf diesem Computer ausgeführt wird. "
 2.  Wenn Sie den Konfigurations-Manager für die Integrationslaufzeit öffnen, wird der Status als **Getrennt** oder **Verbindung wird hergestellt** angezeigt. Beim Anzeigen der Windows-Ereignisprotokolle sehen Sie unter „Ereignisanzeige“ > „Anwendungs- und Dienstprotokolle“ > „Microsoft-Integrationslaufzeit“ beispielsweise folgende Fehlermeldung:
 
     ```
@@ -240,5 +239,4 @@ Falls Sie den Port 8060 auf dem Computer für die selbstgehostete Integrationsla
 
 ## <a name="next-steps"></a>Nächste Schritte
 Das folgende Tutorial enthält eine Schritt-für-Schritt-Anleitung: [Tutorial: Kopieren von lokalen Daten in die Cloud](tutorial-hybrid-copy-powershell.md).
-
 
