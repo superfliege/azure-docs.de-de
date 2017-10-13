@@ -1,6 +1,6 @@
 ---
 title: Erstellen von Angeboten in Azure Stack | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie als Cloudadministrator ein Angebot für Ihre Mandanten in Azure Stack erstellen."
+description: "Erfahren Sie, wie Sie als Cloudadministrator ein Angebot für Ihre Benutzer in Azure Stack erstellen."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: erikje
+ms.openlocfilehash: 269a6106f657536ba74be366f842b2f9cd86c5dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 76d038a0eb53cf5f22ed377354f5f09de2dc9c1b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Erstellen von Angeboten in Azure Stack
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-[Angebote](azure-stack-key-features.md) sind Gruppen mit mindestens einem Plan, die Anbieter Mandanten zum Erwerb oder als Abonnement anbieten. Dieses Dokument zeigt Ihnen, wie Sie ein Angebot erstellen, das den im letzten Schritt [von Ihnen erstellten Plan](azure-stack-create-plan.md) enthält. Durch dieses Angebot erhalten Abonnenten die Möglichkeit, virtuelle Computer bereitzustellen.
+[Angebote](azure-stack-key-features.md) sind Gruppen mit einem oder mehreren Plänen, die Anbieter Benutzern zum Erwerben oder Abonnieren anbieten. Dieses Dokument zeigt Ihnen, wie Sie ein Angebot erstellen, das den im letzten Schritt [von Ihnen erstellten Plan](azure-stack-create-plan.md) enthält. Durch dieses Angebot erhalten Abonnenten die Möglichkeit, virtuelle Computer bereitzustellen.
 
 1. Melden Sie sich beim Azure Stack-Administratorportal an (https://adminportal.local.azurestack.external) > klicken Sie auf **Neu** > **Tenant Offers + Plans** (Mandantenangebote und Pläne)  >  **Angebot**.
 
@@ -40,19 +39,18 @@ ms.lasthandoff: 09/25/2017
 
    ![](media/azure-stack-create-offer/image03.png)
 
-Angebote müssen öffentlich gemacht werden, damit Mandanten beim Abonnieren die vollständige Ansicht erhalten. Angebote können Folgendes sein:
+Angebote müssen öffentlich gemacht werden, damit Benutzer beim Abonnieren die vollständige Ansicht erhalten. Angebote können Folgendes sein:
 
-* **Öffentlich:**für Mandanten sichtbar.
+* **Öffentlich:** Für Benutzer sichtbar
 * **Privat:** nur für die Cloudadministratoren sichtbar. Dies ist hilfreich beim Entwerfen des Plan oder Angebots oder wenn der Cloudadministrator jedes Abonnement genehmigen möchte.
 * **Außer Betrieb:**für neue Abonnenten geschlossen. Der Cloudadministrator kann mit dem Status „Außer Betrieb“ zukünftige Abonnements verhindern und derzeitige Abonnenten unverändert lassen.
 
-Änderungen am Angebot sind für den Mandanten nicht sofort sichtbar. Damit Ihnen die Änderungen angezeigt werden, müssen Sie sich möglicherweise ab- und wieder anmelden, damit das neue Abonnement in der Abonnementauswahl beim Erstellen von Ressourcen/Ressourcengruppen angezeigt wird.
+Änderungen am Angebot sind für den Benutzer nicht sofort sichtbar. Damit Ihnen die Änderungen angezeigt werden, müssen Sie sich möglicherweise ab- und wieder anmelden, damit das neue Abonnement in der Abonnementauswahl beim Erstellen von Ressourcen/Ressourcengruppen angezeigt wird.
 
 > [!NOTE]
 >Sie können mithilfe von PowerShell auch Standardangebote, -pläne und -kontingente erstellen. Informationen dazu finden Sie in der [Infodatei für Azure Stack-Dienstadministratoren](https://github.com/Azure/AzureStack-Tools/tree/master/ServiceAdmin).
 >
 
 
-## <a name="next-steps"></a>Nächste Schritte
+### <a name="next-steps"></a>Nächste Schritte
 [Abonnieren eines Angebots und anschließendes Bereitstellen eines virtuellen Computers](azure-stack-subscribe-plan-provision-vm.md)
-

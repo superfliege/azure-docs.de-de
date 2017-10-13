@@ -14,25 +14,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: erikje
+ms.openlocfilehash: 30759dca746fd7fd02653556cb105f419f5bf854
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ddd69acaed4d56211092866571350d855b14e8b3
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Erstellen von Plänen in Azure Stack
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-[Pläne](azure-stack-key-features.md) sind Gruppen mit mindestens einem Dienst. Als Anbieter können Sie Pläne erstellen und Ihren Mandanten anbieten. Im Gegenzug abonnieren Ihre Mandanten Ihre Angebote, um die Pläne und Dienste, die sie damit enthalten, zu verwenden. In diesem Beispiel wird veranschaulicht, wie Sie einen Plan erstellen, der die Compute-, Netzwerk- und Speicherressourcenanbieter enthält. Mit diesem Plan erhalten Abonnenten die Möglichkeit, virtuelle Computer bereitzustellen.
+[Pläne](azure-stack-key-features.md) sind Gruppen mit mindestens einem Dienst. Als Anbieter können Sie Pläne erstellen und Ihren Benutzern anbieten. Im Gegenzug abonnieren Ihre Benutzer die Angebote, um die darin enthaltenen Pläne und Dienste zu verwenden. In diesem Beispiel wird veranschaulicht, wie Sie einen Plan erstellen, der die Compute-, Netzwerk- und Speicherressourcenanbieter enthält. Mit diesem Plan erhalten Abonnenten die Möglichkeit, virtuelle Computer bereitzustellen.
 
 1. Melden Sie sich im Azure Stack-Administratorportal (https://adminportal.local.azurestack.external) an. Geben Sie die Anmeldeinformationen für das Konto ein, das Sie in Schritt 5 des Abschnitts zum Thema [Ausführen des PowerShell-Skripts](azure-stack-run-powershell-script.md) erstellt haben.
 
-2. Klicken Sie zum Erstellen von Plänen und Angeboten, die Mandanten abonnieren können, auf **Neu** > **Mandantenangebote + Pläne** > **Plan**.
+2. Klicken Sie zum Erstellen von Plänen und Angeboten, die Benutzer abonnieren können, auf **Neu** > **Mandantenangebote + Pläne** > **Plan**.
 
    ![](media/azure-stack-create-plan/image01.png)
-3. Geben Sie auf dem Blatt **Neuer Plan** Werte für die Optionen **Anzeigename** und **Ressourcenname** ein. Der Anzeigename ist der verständliche Anzeigename des Plans, der für Mandanten angezeigt wird. Nur der Administrator kann den Ressourcennamen einsehen. Es handelt sich um den Namen, mit dem Administratoren den Plan als Azure-Ressourcen-Manager-Ressource bearbeiten.
+3. Geben Sie auf dem Blatt **Neuer Plan** Werte für die Optionen **Anzeigename** und **Ressourcenname** ein. Der Anzeigename ist der verständliche Anzeigename des Plans, der für Benutzer angezeigt wird. Nur der Administrator kann den Ressourcennamen einsehen. Es handelt sich um den Namen, mit dem Administratoren den Plan als Azure-Ressourcen-Manager-Ressource bearbeiten.
 
    ![](media/azure-stack-create-plan/image02.png)
 4. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene aus, die als Container für den Plan dient.
@@ -68,4 +67,3 @@ ms.lasthandoff: 09/25/2017
 
 ### <a name="next-steps"></a>Nächste Schritte
 [Erstellen von Angeboten](azure-stack-create-offer.md)
-

@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/22/2017
 ms.author: erikje
+ms.openlocfilehash: 083ca2f0a06625810d2f90a682ba0b3110032e60
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: bfed4c557a420eda14cafe5b1cf8ad11476e2d79
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Übersicht über Pläne, Angebote, Kontingente und Abonnements
 
-*Gilt für: Azure Stack Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Mit [Azure Stack](azure-stack-poc.md) können Sie viele verschiedene Dienste bereitstellen, z.B. virtuelle Computer, SQL Server-Datenbanken, SharePoint, Exchange und sogar [Azure Marketplace-Elemente](azure-stack-marketplace-azure-items.md). Als Cloudbetreiber verwenden Sie Pläne, Angebote und Kontingente, um diese Dienste in Azure Stack zu konfigurieren und bereitzustellen.
+Mit [Azure Stack](azure-stack-poc.md) können Sie viele verschiedene Dienste bereitstellen, z.B. virtuelle Computer, SQL Server-Datenbanken, SharePoint, Exchange und sogar [Azure Marketplace-Elemente](azure-stack-marketplace-azure-items.md). Als Azure Stack-Bediener verwenden Sie Pläne, Angebote und Kontingente, um diese Dienste in Azure Stack zu konfigurieren und bereitzustellen.
 
 Angebote enthalten mindestens einen Plan, und jeder Plan enthält mindestens einen Dienst. Indem Sie Pläne erstellen und in unterschiedlichen Angeboten kombinieren, können Sie Folgendes steuern:
 - Dienste und Ressourcen, auf die Benutzer zugreifen können
@@ -44,7 +43,7 @@ Nachdem Sie das Angebot erstellt haben, kann es von Ihren Benutzern abonniert we
 
 ## <a name="plans"></a>Pläne
 
-Pläne sind Gruppen von einem oder mehreren Diensten. Als Cloudbetreiber [erstellen Sie Pläne](azure-stack-create-plan.md), die Sie Ihren Benutzern anbieten können. Im Gegenzug abonnieren Ihre Benutzer die Angebote, um die darin enthaltenen Pläne und Dienste zu verwenden. Stellen Sie beim Erstellen von Plänen sicher, dass Sie Ihre Kontingente festlegen und Ihre Basispläne definieren. Außerdem können Sie erwägen, optionale Add-On-Pläne einzubinden.
+Pläne sind Gruppen von einem oder mehreren Diensten. Als Azure Stack-Bediener [erstellen Sie Pläne](azure-stack-create-plan.md), die Sie Ihren Benutzern anbieten können. Im Gegenzug abonnieren Ihre Benutzer die Angebote, um die darin enthaltenen Pläne und Dienste zu verwenden. Stellen Sie beim Erstellen von Plänen sicher, dass Sie Ihre Kontingente festlegen und Ihre Basispläne definieren. Außerdem können Sie erwägen, optionale Add-On-Pläne einzubinden.
 
 ### <a name="quotas"></a>Kontingente
 
@@ -69,7 +68,7 @@ Beim [Erstellen eines Angebots](azure-stack-create-offer.md) müssen Sie mindest
 
 ## <a name="subscriptions"></a>Abonnements
 
-Über ein Abonnement können Benutzer Ihre Angebote wahrnehmen. Wenn Sie ein Cloudbetreiber bei einem Service Provider sind, erwerben Benutzer (Mandanten) Ihre Dienste, indem sie Ihre Angebote abonnieren. Wenn Sie ein Cloudbetreiber in einer Organisation sind, können Ihre Benutzer (Mitarbeiter) die von Ihnen angebotenen Dienste abonnieren, ohne dafür zu zahlen. Jede Kombination aus einem Benutzer und einem Angebot stellt ein eindeutiges Abonnement dar. Daher kann ein Benutzer über Abonnements für mehrere Angebote verfügen, aber jedes Abonnement gilt nur für ein Angebot. Pläne, Angebote und Kontingente gelten jeweils nur für ein eindeutiges Abonnement. Die gemeinsame Nutzung für mehrere Abonnements ist nicht möglich. Jede Ressource, die von einem Benutzer erstellt wird, ist einem Abonnement zugeordnet.
+Über ein Abonnement können Benutzer Ihre Angebote wahrnehmen. Wenn Sie ein Azure Stack-Bediener bei einem Dienstanbieter sind, erwerben Benutzer (Mandanten) Ihre Dienste, indem sie Ihre Angebote abonnieren. Wenn Sie ein Azure Stack-Bediener in einer Organisation sind, können Ihre Benutzer (Mitarbeiter) die von Ihnen angebotenen Dienste abonnieren, ohne dafür zu zahlen. Jede Kombination aus einem Benutzer und einem Angebot stellt ein eindeutiges Abonnement dar. Daher kann ein Benutzer über Abonnements für mehrere Angebote verfügen, aber jedes Abonnement gilt nur für ein Angebot. Pläne, Angebote und Kontingente gelten jeweils nur für ein eindeutiges Abonnement. Die gemeinsame Nutzung für mehrere Abonnements ist nicht möglich. Jede Ressource, die von einem Benutzer erstellt wird, ist einem Abonnement zugeordnet.
 
 
 ### <a name="default-provider-subscription"></a>Standardabonnement des Anbieters
@@ -79,4 +78,3 @@ Das Standardabonnement des Anbieters wird automatisch erstellt, wenn Sie das Azu
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Erstellen von Plänen](azure-stack-create-plan.md)
-

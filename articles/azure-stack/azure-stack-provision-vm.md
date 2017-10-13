@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: erikje
+ms.openlocfilehash: 233cf4df53af6a49e5fe4c5d51e112d8196a7530
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 98770945d5cccc27bfce971491e6ea30fee2460a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-test-virtual-machine-in-azure-stack"></a>Erstellen eines virtuellen Testcomputers in Azure Stack
 
 *Gilt für: Azure Stack Development Kit*
 
-Als Cloudbetreiber können Sie einen virtuellen Testcomputer zum Überprüfen Ihrer [Azure Stack](azure-stack-poc.md)-Bereitstellung erstellen.
+Als Azure Stack-Bediener können Sie einen virtuellen Testcomputer zum Überprüfen Ihrer [Azure Stack](azure-stack-poc.md) Developer Kit-Bereitstellung erstellen.
 
 > [!NOTE]
 > Bevor Sie virtuelle Computer bereitstellen können, müssen Sie dem [Azure Stack-Marketplace das Windows Server 2016 Evaluation-Image hinzufügen](azure-stack-add-default-image.md).
@@ -44,4 +43,3 @@ Als Cloudbetreiber können Sie einen virtuellen Testcomputer zum Überprüfen Ih
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Verwenden des Administrator- und des Benutzerportals in Azure Stack](azure-stack-manage-portals.md)
-
