@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 10/24/2016
 ms.author: alkohli
 ms.openlocfilehash: 309ceba2d65c0745ba1acac698acb62526ab8078
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Auspacken, Einbauen und Verkabeln des StorSimple 8600-Geräts
 ## <a name="overview"></a>Übersicht
@@ -30,7 +30,7 @@ Die folgenden Schritte bieten klare und ausführliche Anweisungen zum Auspacken 
 ### <a name="prepare-to-unpack-your-device"></a>Vorbereitungen zum Auspacken des Geräts
 Lesen Sie die folgenden Informationen, bevor Sie das Gerät auspacken.
 
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol für hohes Gewicht](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **WARNUNG!**
+![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol für hohes Gewicht](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png)**WARNUNG!**
 
 1. Stellen Sie aufgrund des Gewichts des Geräts sicher, dass zwei Personen verfügbar sind, wenn Sie den Vorgang manuell durchführen. Ein vollständig konfiguriertes Gehäuse kann bis zu 32 kg wiegen.
 2. Legen Sie den Karton auf einen flachen, ebenen Untergrund.
@@ -88,7 +88,7 @@ Die Gehäuse werden in ein 19-Zoll-Standardrack mit Pfosten an Vorder- und Rück
 2. Stellen Sie sicher, dass am vorgesehenen Standort eine Standardstromversorgung von einer unabhängigen Quelle oder eine Rack-PDU (Power Distribution Unit) mit unterbrechungsfreier Stromversorgung (USV) vorhanden ist.
 3. Vergewissern Sie sich, dass das Rack, in das Sie die Gehäuse einbauen möchten, Platz für einen Einschub mit 4 HE (2 x 2 HE) bietet.
 
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol für hohes Gewicht](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **WARNUNG!**
+![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol für hohes Gewicht](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png)**WARNUNG!**
 
  Stellen Sie aufgrund des Gewichts des Geräts sicher, dass zwei Personen verfügbar sind, wenn Sie die Einrichtung des Geräts manuell durchführen. Ein vollständig konfiguriertes Gehäuse kann bis zu 32 kg wiegen.
 

@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 773b37ec8f775d68f1faca0d252f3064c7de0317
-ms.contentlocale: de-de
-ms.lasthandoff: 05/09/2017
-
+ms.openlocfilehash: c7cb5353585373af8de0d30b06bcfa49a3278c17
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-custom-image-of-an-azure-vm-using-powershell"></a>Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mithilfe von PowerShell
 
 Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Starten von Konfigurationen verwendet werden, z.B. zum Vorabladen von Anwendungen, Anwendungskonfigurationen und anderen Betriebssystemkonfigurationen. In diesem Tutorial erstellen Sie ein eigenes benutzerdefiniertes Image eines virtuellen Azure-Computers. Folgendes wird vermittelt:
@@ -211,7 +209,6 @@ Im nächsten Tutorial erhalten Sie Informationen zu hoch verfügbaren virtuellen
 
 > [!div class="nextstepaction"]
 > [Erstellen eines hoch verfügbaren virtuellen Computers](tutorial-availability-sets.md)
-
 
 
 

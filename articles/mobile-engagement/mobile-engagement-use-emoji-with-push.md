@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: bbb7ce5e95b229a7505c5e97b6866d5a302a1d27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-emoji-emoticon-within-push-notifications"></a>Verwenden von Emoticons in Pushbenachrichtigungen
 Emojis lassen sich in wenigen einfachen Schritten in Pushbenachrichtigungen einfügen. 
@@ -37,7 +37,7 @@ Emojis lassen sich in wenigen einfachen Schritten in Pushbenachrichtigungen einf
 6. Füllen Sie die anderen Felder für die Benachrichtigung aus, und speichern Sie sie. 
 7. Wenn Sie einen Test ausführen oder die Ankündigung aktivieren, wird eine Benachrichtigung mit dem Emoticon entsprechend Ihren Festlegungen angezeigt.   
    
-    ![][3] ![][4] ![][5]
+    ![][3]![][4]![][5]
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-use-emoji-with-push/notification_input.png

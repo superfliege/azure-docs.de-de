@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 459c792028d3eede059814324597811b24e65ac2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schemazuordnung in Kopieraktivität
 In diesem Artikel wird beschrieben, wie Kopieraktivität in Azure Data Factory Schemazuordnung und Datentypzuordnung von Quelldaten zu Senkendaten beim Kopieren der Daten ausführt.
@@ -188,9 +187,8 @@ In folgenden Szenarien wird „structure“ im Dataset vorgeschlagen:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie die weiteren Artikel zur Kopieraktivität:
+Weitere Informationen finden Sie in den anderen Artikeln zur Kopieraktivität:
 
 - [Kopieraktivität – Übersicht](copy-activity-overview.md)
 - [Fault tolerance of copy activity in Azure Data Factory](copy-activity-fault-tolerance.md) (Fehlertoleranz der Kopieraktivität in Azure Data Factory)
 - [Copy Activity performance and tuning guide](copy-activity-performance.md) (Handbuch zur Leistung und Optimierung der Kopieraktivität)
-

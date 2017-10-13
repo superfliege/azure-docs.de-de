@@ -12,15 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: rithorn
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 18541c68b02ae1b59ae4a6a85122dff614c9978c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen 
 
 Wenn Sie über mehrere Abonnements verfügen, können Sie diese in Containern organisieren, die als „Verwaltungsgruppen“ bezeichnet werden, um die abonnementübergreifende Verwaltung von Zugriff, Richtlinien, Kosten und Konformität zu vereinfachen. Beispielsweise können Sie Richtlinien auf eine Verwaltungsgruppe anwenden, die die Anzahl der Ressourcentypen begrenzt, die erstellt werden können.
@@ -93,6 +90,5 @@ Mit dem Ressourcen-Manager können Sie benutzerdefinierte Richtlinien zum Verwal
 
 > [!Note]
 > Die Richtlinie wird nicht Verzeichnisse übergreifend erzwungen. 
-
 
 

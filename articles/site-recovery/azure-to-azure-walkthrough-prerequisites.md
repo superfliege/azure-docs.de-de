@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: d38fc766d5226be7161433555da9622e006c80e9
-ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-2-before-you-start"></a>Schritt 2: Vorbereitung
 
 Nachdem Sie die [Architektur](azure-to-azure-walkthrough-architecture.md) für die Replikation virtueller Azure-Computer (Virtual Machines, VMs) zwischen Azure-Regionen mit [Azure Site Recovery](site-recovery-overview.md) überprüft haben, können Sie mit diesem Artikel feststellen, ob die Voraussetzungen erfüllt sind.
@@ -74,4 +72,3 @@ Siehe hierzu die nachstehende Tabelle. Eine vollständige Liste der Supportanfor
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wechseln Sie zu [Schritt 3: Planen des Netzwerks](azure-to-azure-walkthrough-network.md), um eine ausgehende Verbindung herzustellen.
-

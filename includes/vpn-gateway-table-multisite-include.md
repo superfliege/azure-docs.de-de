@@ -1,5 +1,4 @@
-| **Bereitstellungsmodell/Methode** | **Azure-Portal** | **Klassisches Portal** | **PowerShell** |
+| **Bereitstellungsmodell/Methode** | **Azure-Portal** | **PowerShell** |
 | --- | --- | --- | --- |
-| **Ressourcen-Manager** |[Artikel](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |Nicht unterstützt |Unterstützt |
-| **Klassisch** |Nicht unterstützt |Nicht unterstützt |[Artikel](../articles/vpn-gateway/vpn-gateway-multi-site.md) |
-
+| Ressourcen-Manager |[Artikel](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |Unterstützt |
+| Klassisch | Nicht unterstützt | [Artikel](../articles/vpn-gateway/vpn-gateway-multi-site.md) |

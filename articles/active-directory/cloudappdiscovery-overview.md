@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: curtand
 ms.reviewer: nigu
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: 59af2a5de5936d15456058aaeacfc334b9b34d4c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cloud-app-discovery-enhancements-in-azure-active-directory"></a>Verbesserungen an Cloud App Discovery mit Azure Active Directory 
 Mehr als 80 % der Arbeitnehmer geben an, nicht genehmigte SaaS-Apps für Arbeitszwecke zu verwenden. Wir integrieren jetzt Cloud App Discovery in Azure AD mit Microsoft Cloud App Security-Daten und -Analysefunktionen, damit Sie nicht verwaltete Cloud-Apps leichter erkennen können. Diese neue Integration erfordert andere Setupschritte als zuvor.

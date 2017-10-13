@@ -1,6 +1,6 @@
 ---
-title: Vorbereiten von Ziel (Physical-to Azure) | Microsoft Docs
-description: Dieser Artikel beschreibt, wie der Azure-Umgebung starten, Replizieren von physischen Servern, die mit Windows oder Linux in Azure vorbereiten.
+title: Vorbereiten des Ziels (physisch nach Azure) | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Sie Ihre Azure-Umgebung vorbereiten, um mit dem Replizieren von physischen Servern unter Windows oder Linux nach Azure zu beginnen.
 services: site-recovery
 documentationcenter: 
 author: bsiva
@@ -15,38 +15,38 @@ ms.workload: backup-recovery
 ms.date: 5/31/2017
 ms.author: bsiva
 ms.openlocfilehash: aa7a32ace8354f615a8b8cc137f6bdf48fbadf48
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="prepare-target-vmware-to-azure"></a>Vorbereiten des Ziels (VMware in Azure)
+# <a name="prepare-target-vmware-to-azure"></a>Vorbereiten des Ziels (VMware nach Azure)
 > [!div class="op_single_selector"]
-> * [VMware in Azure](./site-recovery-prepare-target-vmware-to-azure.md)
-> * [Physische in Azure](./site-recovery-prepare-target-physical-to-azure.md)
+> * [VMware zu Azure](./site-recovery-prepare-target-vmware-to-azure.md)
+> * [Physisch nach Azure](./site-recovery-prepare-target-physical-to-azure.md)
 
-Dieser Artikel beschreibt, wie der Azure-Umgebung starten, Replizieren von physischen Servern (x 64), die mit Windows oder Linux in Azure vorbereiten.
+Dieser Artikel beschreibt, wie Sie Ihre Azure-Umgebung vorbereiten, um mit dem Replizieren von physischen Servern (x64) unter Windows oder Linux nach Azure zu beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Der Artikel wird Folgendes vorausgesetzt:
-- Sie haben eine Recovery Services-Tresor zum Schutz Ihrer physischen Server erstellt. Sie können aus einer Recovery Services-Tresor erstellen die [Azure-Portal](http://portal.azure.com "Azure-Portal").
-- Sie haben [Einrichten Ihrer lokalen Umgebung](./site-recovery-set-up-physical-to-azure.md) auf physische Servern in Azure zu replizieren.
+In diesem Artikel wird Folgendes vorausgesetzt:
+- Sie haben einen Recovery Services-Tresor zum Schutz Ihrer physischen Server erstellt. Sie können einen Recovery Services-Tresor im [Azure-Portal](http://portal.azure.com "Azure-Portal") erstellen.
+- Sie haben [Ihre lokale Umgebung eingerichtet](./site-recovery-set-up-physical-to-azure.md), um physische Server nach Azure zu replizieren.
 
 ## <a name="prepare-target"></a>Vorbereiten des Ziels
 
-Nach Abschluss der **Schritt 1:Select Schutzziel** und **Schritt2: Vorbereiten der Quelle**, gelangen Sie auf **Schritt 3: Ziel**
+Nach Abschluss von **Schritt 1: Auswählen des Schutzziels** und **Schritt 2: Vorbereiten der Quelle** gelangen Sie zu **Schritt 3: Ziel**
 
 ![Vorbereiten des Ziels](./media/site-recovery-prepare-target-physical-to-azure/prepare-target-physical-to-azure.png)
 
-1. **Abonnement:** aus dem Dropdownmenü aus, wählen Sie das Abonnement, das die physischen Servern repliziert werden sollen.
-2. **Bereitstellungsmodell:** auswählen des Bereitstellungsmodells (Classic oder Ressourcen-Manager)
+1. **Abonnement:** Wählen Sie aus dem Dropdownmenü das Abonnement aus, in das Sie die physischen Server replizieren möchten.
+2. **Bereitstellungsmodell:** Wählen Sie das Bereitstellungsmodell aus (klassisch oder Resource Manager).
 
-Basierend auf dem ausgewählten Bereitstellungsmodell, wird eine Überprüfung ausgeführt, um sicherzustellen, dass Sie über mindestens ein kompatibles Speicherkonto und virtuelles Netzwerk in der Ziel-Abonnements zu replizieren und das Failover Ihren physischen Servern verfügen.
+Basierend auf dem ausgewählten Bereitstellungsmodell wird eine Überprüfung vorgenommen, um sicherzustellen, dass Sie über mindestens ein kompatibles Speicherkonto und ein virtuelles Netzwerk im Zielabonnement verfügen, um die Replikation und das Failover Ihrer physischen Servern auszuführen.
 
-Wenn die Überprüfungen erfolgreich abgeschlossen ist, klicken Sie auf OK, um mit dem nächsten Schritt fortfahren.
+Wenn die Überprüfungen erfolgreich abgeschlossen sind, klicken Sie auf „OK“, um mit dem nächsten Schritt fortzufahren.
 
-Falls Sie nicht, eine kompatible Ressourcen-Manager-Storage-Konto oder ein virtuelles Netzwerk besitzen, oder weitere Domänen hinzufügen möchten, Sie können dazu durch Klicken auf die **+ Speicherkonto** oder **+ Netzwerk** Schaltflächen oben auf dem Blatt ".
+Falls Sie über kein kompatibles Resource Manager-Speicherkonto oder kein virtuelles Netzwerk verfügen oder weitere hinzufügen möchten, können Sie dazu auf die Schaltflächen **+ Speicherkonto** oder **+ Netzwerk** oben auf dem Blatt klicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Konfigurieren Sie replikationseinstellungen](./site-recovery-setup-replication-settings-vmware.md).
+[Konfigurieren der Replikationseinstellungen](./site-recovery-setup-replication-settings-vmware.md).

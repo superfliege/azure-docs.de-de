@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: curtand
 ms.reviewer: nigu
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: af54b77dc985f2ca6abeab29165278dfa598f5e2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Einrichten von Cloud App Discovery in Azure AD
 
 Die neuen Cloud App Discovery-Verbesserungen in Azure AD sind jetzt mit einer Azure Active Directory Premium P1-Lizenz verfügbar. Diese Verbesserungen basieren auf der Integration mit Microsoft Cloud App Security. Cloud App Discovery vergleicht Ihre Datenverkehrsprotokolle mit dem Cloud App Security-Katalog, in dem mehr als 15.000 Cloud-Apps enthalten sind, um stets Informationen zur Cloud-Verwendung und Schatten-IT für Sie bereitzustellen. 

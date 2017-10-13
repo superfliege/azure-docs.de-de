@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell;mikhegn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: b71723034e5f663986c49481072bfd6779d3d57b
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.openlocfilehash: 53614d4d2e3101e8ea0bfa6a29256cc817055843
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-multiple-guest-executables"></a>Bereitstellen mehrerer ausführbarer Gastanwendungsdateien
 In diesem Artikel erfahren Sie, wie Sie mehrere ausführbare Gastanwendungsdateien packen und für Azure Service Fabric bereitstellen. Informationen zum Erstellen und Bereitstellen eines einzelnen Service Fabric-Pakets finden Sie im Abschnitt [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md).
@@ -74,7 +72,7 @@ Es folgt eine Beschreibung der verwendeten Parameter:
 * **/target** : Definiert das Verzeichnis, in dem das Paket erstellt werden soll. Dieses Verzeichnis darf nicht mit dem Quellverzeichnis identisch sein.
 * **/appname** : Gibt den Anwendungsnamen der vorhandenen Anwendung an. Wichtig ist der Hinweis, dass dieser Name in den Dienstnamen im Manifest und nicht in den Service Fabric-Anwendungsnamen übersetzt wird.
 * **/exe**: Definiert die ausführbare Datei, die Service Fabric starten soll. In diesem Fall ist das `node.exe`.
-* **/ma** : Gibt das Argument an, das verwendet wird, um die ausführbare Datei zu starten. Da Node.js nicht installiert ist, muss Service Fabric den Node.js-Webserver durch Ausführen von `node.exe bin/www`starten.  `/ma:'bin/www'` weist das Verpackungstool an, `bin/ma` als Argument für „node.exe“ zu verwenden.
+* **/ma** : Gibt das Argument an, das verwendet wird, um die ausführbare Datei zu starten. Da Node.js nicht installiert ist, muss Service Fabric den Node.js-Webserver durch Ausführen von `node.exe bin/www`starten.  `/ma:'bin/www'` weist das Verpackungstool an, `bin/www` als Argument für „node.exe“ zu verwenden.
 * **/AppType** : Bestimmt den Namen des Service Fabric-Anwendungstyps.
 
 Wenn Sie zum Verzeichnis navigieren, das im Parameter „/target“ angegeben wurde, sehen Sie, dass das Tool ein voll funktionsfähiges Service Fabric-Paket erstellt hat (siehe unten):
@@ -220,4 +218,3 @@ Führen Sie zum Hinzufügen eines weiteren Diensts zu einer Anwendung, die berei
 * Weitere Informationen zum Bereitstellen von Containern finden Sie unter [Vorschau: Service Fabric und Container](service-fabric-containers-overview.md).
 * [Beispiel für das Packen und Bereitstellen einer ausführbaren Gastdatei](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Beispiel für zwei ausführbare Gastdateien (C# und Node.js), die über den Naming Service mithilfe von REST kommunizieren](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
-

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
 ms.openlocfilehash: 44d243a034b20b99faf284c8615e470bc6f9d020
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation-private-preview"></a>Verwenden des .NET SDK zum Initiieren einer Datentransformation (private Vorschau)
 
@@ -34,7 +34,7 @@ Bevor Sie beginnen stellen Sie sicher, dass Sie über Folgendes verfügen:
 *   Konfigurationseinstellungen für das Initiieren des Datentransformationsauftrags (in diesem Dokument finden Sie Anweisungen, wie Sie diese Einstellungen erhalten).
 *   Eine Auftragsdefinition, die korrekt in einer Ressource für Hybriddaten innerhalb einer Ressourcengruppe konfiguriert wurde.
 *   Alle erforderlichen DLLS. Laden Sie diese DLLS aus dem [GitHub-Repository](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) herunter.
-*   `Get-ConfigurationParams.ps1` [-Skript](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) aus dem GitHub-Repository.
+*   `Get-ConfigurationParams.ps1`[-Skript](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) aus dem GitHub-Repository.
 
 ## <a name="step-by-step"></a>Schrittweise Anleitung
 

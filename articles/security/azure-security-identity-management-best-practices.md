@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
 ms.openlocfilehash: 50f9073d3c35bd9dcfd826ff44e767fb69558757
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 Die Identität wird häufig als neue Grenzschicht für die Sicherheit angesehen, indem diese Rolle vom herkömmlichen netzwerkzentrierten Ansatz übernommen wird. Die Weiterentwicklung dieses Dreh- und Angelpunkts für die Bereiche Sicherheit und Investitionen basiert darauf, dass Umkreisnetzwerke immer durchlässiger geworden sind und die Verteidigung des Umkreisnetzwerks nicht mehr so effektiv wie vor der immensen Nutzung von [BYOD](http://aka.ms/byodcg)-Geräten und Cloudanwendungen sein kann.

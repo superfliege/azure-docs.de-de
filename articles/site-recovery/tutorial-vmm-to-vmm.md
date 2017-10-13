@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9764e48e04eb0c83afea09934ce64d2485ab15d5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-your-secondary-on-premises-site"></a>Einrichten der Notfallwiederherstellung für Hyper-V-VMs auf Ihrem sekundären lokalen Standort
 
@@ -140,8 +139,8 @@ Bevor Sie beginnen, stellen Sie sicher, dass alle Hosts, die die Richtlinie verw
 1. Geben Sie unter **Kopierhäufigkeit**an, wie oft Sie Deltadaten nach der ersten Replikation replizieren möchten (alle 30 Sekunden, nach 5 Minuten oder nach 15 Minuten).
 2. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** die Größe des Aufbewahrungszeitfensters für die einzelnen Wiederherstellungspunkte in Stunden an. Replizierte Computer können innerhalb eines Zeitfensters an einem beliebigen Punkt wiederhergestellt werden.
 3. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit** an, wie häufig (1 bis 12 Stunden) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten. Hyper-V verwendet zwei Arten von Momentaufnahmen:
-    - **Standardmomentaufnahme**: Bietet eine inkrementelle Momentaufnahme des gesamten virtuellen Computers.
-    - **App-konsistente Momentaufnahme**: Erstellt eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb des virtuellen Computers. VSS (Volume Shadow Copy Service, Volumeschattenkopie-Dienst) stellt sicher, dass Apps zum Zeitpunkt der Momentaufnahme konsistent sind. Aktivieren anwendungskonsistenter Momentaufnahmen, wirkt sich auf Quell-VMs auf die App-Leistung aus. Legen Sie einen Wert fest, der geringer ist als die Anzahl der konfigurierten zusätzlichen Wiederherstellungspunkte.
+    - **Standardmomentaufnahme:** Bietet eine inkrementelle Momentaufnahme des gesamten virtuellen Computers
+    - **App-konsistente Momentaufnahme:** Erstellt eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb des virtuellen Computers. VSS (Volume Shadow Copy Service, Volumeschattenkopie-Dienst) stellt sicher, dass Apps zum Zeitpunkt der Momentaufnahme konsistent sind. Aktivieren anwendungskonsistenter Momentaufnahmen, wirkt sich auf Quell-VMs auf die App-Leistung aus. Legen Sie einen Wert fest, der geringer ist als die Anzahl der konfigurierten zusätzlichen Wiederherstellungspunkte.
 4. Geben Sie unter **Datenübertragungskomprimierung** an, ob übertragene Replikationsdaten komprimiert werden sollen.
 5. Wählen Sie **Replikat-VM löschen** aus, um anzugeben, dass die Replikat-VM gelöscht werden sollte, wenn Sie den Schutz für die Quell-VM deaktivieren. Wenn Sie diese Einstellung aktivieren, und Sie deaktivieren den Schutz für die Quell-VMs, wird der virtuelle Computer aus der Site Recovery-Konsole entfernt, die Site Recovery-Einstellungen für die VMM werden aus der VMM-Konsole entfernt, und das Replikat wird gelöscht.
 6. Wenn Sie über das Netzwerk replizieren, geben Sie unter **Methode für anfängliche Replikation** an, ob die erste Replikation sofort gestartet werden soll oder ob Sie sie planen möchten. Um Netzwerkbandbreite zu sparen, sollte der Zeitraum außerhalb Ihrer Spitzenzeiten liegen. Klicken Sie dann auf **OK**.
@@ -164,4 +163,3 @@ Sie können den Fortschritt der Aktion **Schutz aktivieren** unter **Aufträge**
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Durchführen eines Notfallwiederherstellungsverfahrens](tutorial-dr-drill-secondary.md)
-

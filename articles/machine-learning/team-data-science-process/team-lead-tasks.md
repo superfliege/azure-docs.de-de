@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 116eaa59eb60833036ad4d3c975c0b86e525f625
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="team-lead-tasks"></a>Aufgaben des Teamleiters
 
 In diesem Thema werden die Aufgaben beschrieben, die ein Teamleiter für sein Data Science-Team zu erfüllen hat. Ziel ist es, eine auf Zusammenarbeit ausgelegte Teamumgebung einzurichten, die gemäß dem [Team Data Science-Prozess](overview.md) (TDSP) vereinheitlicht ist. Der TDSP ist eine flexible, iterative Data Science-Methodik zur effizienten Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen. Er soll die Zusammenarbeit und die Lernprozesse im Team verbessern. Der Prozess fasst die bewährten Methoden und Strukturen von Microsoft sowie aus der gesamten Branche zusammen, die für eine erfolgreiche Implementierung von Data Science-Initiativen erforderlich sind, mit denen Unternehmen maximalen Nutzen aus ihren Analyseprogrammen ziehen können. Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und zugeordneten Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
@@ -68,14 +66,14 @@ Teamleiter müssen in jedem Fall ihren Teammitgliedern mitteilen, welche Reposit
 
 ## <a name="0-prerequisites"></a>0. Voraussetzungen
 
-Zum Erfüllen der Voraussetzungen müssen die dem Gruppenleiter zugewiesenen Aufgaben ausgeführt werden. Siehe dazu [Aufgaben des Gruppenleiters eines Data Science-Teams](group-manager-tasks.md). Kurz zusammengefasst müssen die folgenden Anforderungen erfüllt sein, ehe Sie mit den Aufgaben des Teamleiters beginnen: 
+Zum Erfüllen der Voraussetzungen müssen die dem Gruppenleiter zugewiesenen Aufgabe ausgeführt werden. Siehe dazu [Aufgaben des Gruppenleiters eines Data Science-Teams](group-manager-tasks.md). Kurz zusammengefasst müssen die folgenden Anforderungen erfüllt sein, ehe Sie mit den Aufgaben des Teamleiters beginnen: 
 
 - Ihr **VSTS-Gruppenserver** (oder Gruppenkonto für eine andere Codehostingplattform) wurde von Ihrem Gruppenmanager eingerichtet.
 - Ihr **GroupProjectTemplate-Repository** (R1) wurde unter Ihrem Gruppenkonto von Ihrem Gruppenleiter auf der Codehostingplattform eingerichtet, die verwendet werden soll.
 - Sie wurden in Ihrem Gruppenkonto **autorisiert**, Repositorys für Ihr Team zu erstellen.
-- Git muss auf Ihrem Computer installiert sein. Wenn Sie eine Data Science Virtual Machine (DSVM) verwenden, ist Git bereits installiert, sodass Sie gleich loslegen können. Andernfalls helfen Ihnen die Informationen im Anhang [Plattformen und Tools](platforms-and-tools.md#appendix) weiter.  
-- Bei Verwendung einer **Windows-DSVM** muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei „README.md“ nach unten zum Abschnitt **Herunterladen und installieren**, und klicken Sie auf den *neuesten Installer*. Dadurch gelangen Sie zur Seite mit dem neuesten Installer. Laden Sie den Installer mit der Erweiterung EXE herunter, und führen Sie ihn aus. 
-- Bei Verwendung einer **Linux-DSVM** erstellen Sie auf Ihrer DSVM einen öffentlichen SSH-Schlüssel, den Sie dem VSTS-Server Ihrer Gruppe hinzufügen. Weitere Informationen zu SSH finden Sie im Anhang [Plattformen und Tools](platforms-and-tools.md#appendix) im Abschnitt **Erstellen eines öffentlichen SSH-Schlüssels**. 
+- Git muss auf Ihrem Computer installiert sein. Wenn Sie eine Data Science Virtual Machine (DSVM) verwenden, ist Git bereits installiert, sodass Sie gleich loslegen können. Andernfalls helfen Ihnen die Informationen im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) weiter.  
+- Bei Verwendung einer **Windows DSVM** muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei „README.md“ nach unten zum Abschnitt **Download and Install**, und klicken Sie auf den *neuesten Installer*. Dadurch gelangen Sie zur Seite mit dem neuesten Installer. Laden Sie den Installer mit der Erweiterung EXE herunter, und führen Sie ihn aus. 
+- Bei Verwendung einer **Linux DSVM** erstellen Sie auf Ihrer DSVM einen öffentlichen SSH-Schlüssel, den Sie dem VSTS-Server Ihrer Gruppe hinzufügen. Weitere Informationen zu SSH finden Sie im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) im Abschnitt **Erstellen eines öffentlichen SSH-Schlüssels**. 
     
 ## <a name="1-create-a-team-project-and-repositories"></a>1. Erstellen eines Teamprojekts und von Repositorys
 
@@ -412,9 +410,9 @@ Klicken Sie auf der Homepage des VSTS-Servers rechts oben auf das **Zahnradsymbo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Hier sind die Links zu den ausführlicheren Beschreibungen der Rollen und Aufgaben angegeben, die vom Team Data Science-Prozess definiert werden:
+Es folgen Links zu den ausführlicheren Beschreibungen der Rollen und Aufgaben, die vom Team Data Science-Prozess definiert werden:
 
-- [Aufgaben eines Gruppenleiters für ein Team Data Science](group-manager-tasks.md)
-- [Aufgaben des Teamleiters für ein Team Data Science](team-lead-tasks.md)
-- [Aufgaben des Projektleiters für ein Team Data Science](project-lead-tasks.md)
-- [Einzelne Projektmitwirkende für ein Team Data Science](project-ic-tasks.md)
+- [Group Manager tasks for a data science team (Aufgaben des Gruppenleiters eines Data Science-Teams)](group-manager-tasks.md)
+- [Team Lead tasks for a data science team (Aufgaben des Teamleiters eines Data Science-Teams)](team-lead-tasks.md)
+- [Project Lead tasks for a data science team (Aufgaben des Projektleiters eines Data Science-Teams)](project-lead-tasks.md)
+- [Project Individual Contributors for a data science team (Einzelne Mitwirkende zu einem Projekt eines Data Science-Teams)](project-ic-tasks.md)

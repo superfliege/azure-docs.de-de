@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
 ms.openlocfilehash: c158c67a82e12501386179e19bc75fd852d7e308
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Bereitstellen eines Azure AD-Anwendungsproxys in einer durch Azure AD Domain Services verwalteten Domäne
 Mit dem Azure Active Directory-Anwendungsproxy (AD) können Sie Remotemitarbeiter unterstützen, indem Sie lokale Anwendungen so veröffentlichen, dass über das Internet auf sie zugegriffen werden kann. Mit Azure AD Domain Services können Sie jetzt lokal ausgeführte Legacyanwendungen per Lift & Shift zu Azure Infrastrukturdiensten migrieren. Anschließend können Sie diese Anwendungen über den Azure AD-Anwendungsproxy veröffentlichen, um Benutzern in Ihrer Organisation einen sicheren Remotezugriff bereitzustellen.
@@ -93,7 +93,7 @@ Zuvor haben Sie einen virtuellen Windows Server-Computer bereitgestellt und in d
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben den Azure AD-Anwendungsproxy eingerichtet und in Ihre verwaltete Azure AD Domain Services-Domäne integriert.
 
-* **Migrieren Ihrer Anwendungen zu virtuellen Azure-Computern:** Sie können Ihre Anwendungen per Lift & Shift von lokalen Servern zu virtuellen Azure-Computern migrieren, die in die verwaltete Domäne eingebunden sind. Auf diese Weise können Sie die Infrastrukturkosten einsparen, die beim lokalen Ausführen von Servern anfallen.
+* **Migrieren Ihrer Anwendungen zu virtuellen Azure-Computern:** Sie können Ihre Anwendungen per Lift &amp; Shift von lokalen Servern zu virtuellen Azure-Computern migrieren, die in die verwaltete Domäne eingebunden sind. Auf diese Weise können Sie die Infrastrukturkosten einsparen, die beim lokalen Ausführen von Servern anfallen.
 
 * **Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy:** Veröffentlichen Sie Anwendungen, die auf Ihren virtuellen Azure-Computern ausgeführt werden, über den Azure AD-Anwendungsproxy. Weitere Informationen finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../active-directory/application-proxy-publish-azure-portal.md).
 

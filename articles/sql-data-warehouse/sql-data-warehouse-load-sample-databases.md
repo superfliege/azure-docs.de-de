@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
 ms.openlocfilehash: 1e0df958a2f18fe1e988168918e5cfd293f84e64
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-sample-data-into-sql-data-warehouse"></a>Laden von Beispieldaten in SQL Data Warehouse
 Befolgen Sie diese einfachen Schritte, um die Adventure Works-Beispieldatenbank zu laden und abzufragen. Zunächst verwenden diese Skripts „sqlcmd“, um SQL auszuführen und so Tabellen und Ansichten zu erstellen. Nachdem die Tabellen erstellt wurden, verwenden die Skripts „bcp“, um Daten zu laden.  Wenn Sie sqlcmd und bcp noch nicht installiert haben, folgen Sie diesen Links, um [bcp][install bcp] und [sqlcmd][install sqlcmd] zu installieren.

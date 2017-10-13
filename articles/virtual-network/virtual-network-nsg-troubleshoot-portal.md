@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 ms.openlocfilehash: f01d3b43a7953697a6b03e176dace33448d95cd9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -64,7 +64,7 @@ Sie können die vollständige Liste der effektiven Sicherheitsregeln für eine N
     Beachten Sie die folgenden Abschnitte in der Abbildung:
    
    * **Bereich:** ist auf den in Schritt 3 ausgewählten virtuellen Computer *VM1*festgelegt.
-   * **Netzwerkschnittstelle:** *VM1-NIC1* ist ausgewählt. Ein virtueller Computer kann über mehrere Netzwerkschnittstellen (NIC) verfügen. Jede NIC kann eindeutige effektive Sicherheitsregeln aufweisen. Bei der Problembehandlung müssen Sie möglicherweise die effektiven Sicherheitsregeln für jede NIC anzeigen.
+   * **Netzwerkschnittstelle:***VM1-NIC1* ist ausgewählt. Ein virtueller Computer kann über mehrere Netzwerkschnittstellen (NIC) verfügen. Jede NIC kann eindeutige effektive Sicherheitsregeln aufweisen. Bei der Problembehandlung müssen Sie möglicherweise die effektiven Sicherheitsregeln für jede NIC anzeigen.
    * **Associated NSGs** (Zugeordnete NSGs): NSGs können auf die NIC sowie das Subnetz angewendet werden, mit dem die NIC verbunden ist. In der Abbildung wurde eine NSG sowohl auf die NIC als auch auf das Subnetz angewendet, mit dem sie verbunden ist. Sie können auf die Namen der NSGs klicken, um Regeln in den NSGs direkt zu ändern.
    * **Registerkarte „VM1-nsg“:** In der Abbildung wird die Liste der Regeln für die auf die NIC angewendete NSG angezeigt. Beim Erstellen einer NSG werden in Azure immer mehrere Standardregeln erstellt. Die Standardregeln können nicht entfernt werden, Sie können sie jedoch durch Regeln mit höherer Priorität überschreiben. Weitere Informationen zu Standardregeln finden Sie im Artikel [Übersicht über NSGs](virtual-networks-nsg.md#default-rules) .
    * **Spalte „ZIEL“:** Für einige Regeln enthält diese Spalte Text, für andere sind Adresspräfixe aufgeführt. Der Text entspricht dem Namen der Standardtags, die beim Erstellen auf die Sicherheitsregel angewendet werden. Die Tags sind vom System bereitgestellte Bezeichner, die mehrere Präfixe darstellen. Bei der Auswahl einer Regel mit einem Tag, etwa *AllowInternetOutBound*, werden die Präfixe auf dem Blatt **Address prefixes** (Adresspräfixe) aufgeführt.

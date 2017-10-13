@@ -31,11 +31,11 @@
       href: tutorial-load-balancer.md
     - name: '8: Verwalten von Netzwerken'
       href: tutorial-virtual-network.md
-    - name: '9: Sichern virtueller Computer'
+    - name: 9 – Sichern virtueller Computer
       href: tutorial-backup-vms.md
     - name: '10: Überwachen und Aktualisieren von virtuellen Computern'
       href: tutorial-monitoring.md
-    - name: '11: Verwalten der Sicherheit virtueller Computer'
+    - name: 11 – Verwalten der Sicherheit virtueller Computer
       href: tutorial-azure-security.md
     - name: '12: Bereitstellen von Jenkins'
       href: tutorial-jenkins-github-docker-cicd.md

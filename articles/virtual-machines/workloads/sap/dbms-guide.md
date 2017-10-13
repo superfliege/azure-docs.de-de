@@ -18,10 +18,10 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1046d32a0b4b6ede027ef1931314a188c64c94bb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -760,7 +760,7 @@ Da die SQL Server-Images im Azure Marketplace nicht die Sortierung verwenden, di
 * Öffnen Sie ein Windows-Befehlsfenster als Administrator.
 * Ändern Sie das Verzeichnis in „C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012“.
 * Führen Sie den folgenden Befehl aus: Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
-  * `<local_admin_account_name`> ist das Konto, das als Administratorkonto definiert wurde, als die VM zum ersten Mal über den Katalog bereitgestellt wurde.
+  * `<local_admin_account_name`&gt; ist das Konto, das als Administratorkonto definiert wurde, als die VM zum ersten Mal über den Katalog bereitgestellt wurde.
 
 Dieser Vorgang sollte nur wenige Minuten dauern. Um sicherzustellen, dass dieser Schritt zum richtigen Ergebnis geführt hat, führen Sie die folgenden Schritte durch:
 
@@ -803,25 +803,25 @@ Im Folgenden finden Sie einige Überlegungen zur Verwendung eines Verfügbarkeit
 * Bei der Verwendung eines Verfügbarkeitsgruppenlisteners müssen die Datenbank-VMs mit einem dedizierten Lastenausgleich verbunden sein. Die Namensauflösung in Nur-Cloud-Bereitstellungen erfordert entweder, dass sich alle VMs eines SAP-Systems (Anwendungsserver, DBMS-Server und (A)SCS-Server) in demselben virtuellen Netzwerk befinden, oder die Wartung der Datei „etc\host“ durch eine SAP-Anwendungsebene ist erforderlich, um die VM-Namen der SQL Server-VMs aufzulösen. Um zu vermeiden, dass Azure neue IP-Adressen in Fällen zuweist, in denen beide VMs durch Zufall heruntergefahren werden, sollten Sie den Netzwerkschnittstellen dieser VMs in der Always On-Konfiguration statische IP-Adressen zuweisen (die Definition einer statischen IP-Adresse wird in [diesem Artikel][virtual-networks-reserved-private-ip] beschrieben).
 
 [comment]: <> (Alte Blogs)
-[comment]: <> (<https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx>, <https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx>) 
+[comment]: <> (&lt;https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx&gt;, &lt;https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx&gt;) 
 * Beim Erstellen der WSFC-Clusterkonfiguration, in der dem Cluster eine spezielle IP-Adresse zugewiesen muss, sind spezielle Schritte notwendig, da Azure dem Clusternamen derzeit dieselbe IP-Adresse zuweisen würde wie dem Knoten, auf dem der Cluster erstellt wird. Das bedeutet, dass ein manueller Schritt ausgeführt werden muss, um dem Cluster eine andere IP-Adresse zuzuweisen.
 * Der Verfügbarkeitsgruppenlistener wird in Azure mit TCP/IP-Endpunkten erstellt, die den VMs zugewiesen werden, auf denen die primären und sekundären Replikate der Verfügbarkeitsgruppe ausgeführt werden.
 * Möglicherweise müssen diese Endpunkte mit Zugriffssteuerungslisten (ACLs) gesichert werden.
 
 [comment]: <> (TODO alter Blog)
 [comment]: <> (Die einzelnen Schritte und Anforderungen bei der Installation einer Always On-Konfiguration in Azure werden am besten durch das Tutorial veranschaulicht, das [hier][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups] verfügbar ist.)
-[comment]: <> (Vorkonfigurierte Always On-Einrichtung über den Azure-Katalog <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
+[comment]: <> (Vorkonfigurierte Always On-Einrichtung über den Azure-Katalog &lt;https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx&gt;)
 [comment]: <> (Die Erstellung eines Verfügbarkeitsgruppenlisteners wird am besten in [diesem Tutorial][virtual-machines-windows-classic-ps-sql-int-listener] beschrieben.)
 [comment]: <> (Die Sicherung von Netzwerkendpunkten mit ACLs wird am besten hier erklärt:)
-[comment]: <> (*    <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>)
-[comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx> )
-[comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>)  
-[comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>) 
+[comment]: <> (*    &lt;https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/&gt;)
+[comment]: <> (*    &lt;https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx&gt; )
+[comment]: <> (*    &lt;https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx&gt;)  
+[comment]: <> (*    &lt;https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx&gt;) 
 
 Es ist auch möglich, eine SQL Server Always On-Verfügbarkeitsgruppe über verschiedene Azure-Regionen hinweg bereitzustellen. Bei dieser Funktion wird die Azure-VNET-zu-VNET-Konnektivität verwendet (weitere Details finden Sie [hier][virtual-networks-configure-vnet-to-vnet-connection]).
 
 [comment]: <> (TODO alter Blog)
-[comment]: <> (Die Einrichtung von SQL Server-Always On-Verfügbarkeitsgruppen in einem solchen Szenario wird hier beschrieben: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.) 
+[comment]: <> (Die Einrichtung von SQL Server-Always On-Verfügbarkeitsgruppen in einem solchen Szenario wird hier beschrieben: &lt;https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx&gt;.) 
 
 #### <a name="summary-on-sql-server-high-availability-in-azure"></a>SQL Server-Hochverfügbarkeit in Azure – Zusammenfassung
 Da der Azure-Speicher Inhalte schützt, gibt es einen Grund weniger, der für ein Hot-Standby-Image spricht. Dies bedeutet, dass Ihr Hochverfügbarkeitsszenario nur in den folgenden Fällen einen Schutz bieten muss:
@@ -933,7 +933,7 @@ Der virtuelle Azure-Computer, auf dem das SAP-System gehostet wird, kann auf ver
 
 Wird die VM in einem Nur-Cloud-Szenario ohne standortübergreifende Konnektivität zwischen der lokalen Umgebung und Azure bereitgestellt, müssen eine öffentliche IP-Adresse und eine Domänenbezeichnung festgelegt werden. Das Format des öffentlichen DNS-Namens der VM sieht wie folgt aus:
 
-> `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
+> `<custom domainlabel`&gt;.`<azure region`&gt;.cloudapp.azure.com
 > 
 > 
 
@@ -1086,7 +1086,7 @@ Der virtuelle Azure-Computer, auf dem das SAP-System gehostet wird, kann auf ver
 
 Wird die VM in einem Nur-Cloud-Szenario ohne standortübergreifende Konnektivität zwischen der lokalen Umgebung und Azure bereitgestellt, müssen eine öffentliche IP-Adresse und eine Domänenbezeichnung festgelegt werden. Das Format des öffentlichen DNS-Namens der VM sieht wie folgt aus:
 
-> `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
+> `<custom domainlabel`&gt;.`<azure region`&gt;.cloudapp.azure.com
 > 
 > 
 

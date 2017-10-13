@@ -144,7 +144,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer VM 
 | ------ | ----------- |
 | [Azure-Portal](../articles/virtual-machines/windows/quick-create-portal.md) | Es werden die bereits erwähnten Standard-Netzwerkeinstellungen verwendet, um eine VM mit einer einzelnen NIC zu erstellen. Zum Erstellen einer VM mit mehreren NICs müssen Sie eine andere Methode verwenden. |
 | [Azure PowerShell](../articles/virtual-machines/windows/tutorial-manage-vm.md) | Umfasst die Verwendung von [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) zum Hinzufügen der zuvor erstellten NIC zur VM-Konfiguration. |
-| [Azure-CLI](../articles/virtual-machines/linux/create-cli-complete.md) | Erstellen Sie eine VM, und stellen Sie dafür eine Verbindung mit einem VNet, einem Subnetz und einer Netzwerkkarte her, indem Sie die einzelnen erforderlichen Schritte ausführen. |
+| [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/create-cli-complete.md) | Erstellen Sie eine VM, und stellen Sie dafür eine Verbindung mit einem VNet, einem Subnetz und einer Netzwerkkarte her, indem Sie die einzelnen erforderlichen Schritte ausführen. |
 | [Vorlage](../articles/virtual-machines/windows/ps-template.md) | Verwenden Sie [Very simple deployment of a Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) (Sehr einfache Bereitstellung einer Windows-VM) als Anleitung zum Bereitstellen einer VM mit einer Vorlage. |
 
 ## <a name="next-steps"></a>Nächste Schritte

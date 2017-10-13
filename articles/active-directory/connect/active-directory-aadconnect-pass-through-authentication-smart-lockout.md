@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
 ms.openlocfilehash: 7e05c469260a445578c80cdf77fab2d5ffb48022
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Azure Active Directory-Passthrough-Authentifizierung: Smart Lockout
 
 ## <a name="overview"></a>Übersicht
@@ -149,4 +147,3 @@ Um die Smart Lockout-Werte Ihres Mandanten zu aktualisieren, führen Sie die fol
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Verfassen neuer Feature-Anforderungen
-

@@ -10,14 +10,12 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: ancav
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7e8d97657e03b0eaff76365d3988f51c773e3b55
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Erstellen einer Einstellung für die automatische Skalierung von Azure-Ressourcen basierend auf Leistungsdaten oder einem Zeitplan
 
 Über die Einstellungen für die automatische Skalierung können Sie basierend auf vordefinierten Bedingungen Instanzen des Diensts hinzufügen oder entfernen. Diese Einstellungen können über das Portal erstellt werden. Bei dieser Methode wird eine browserbasierte Benutzeroberfläche zum Erstellen und Konfigurieren einer Einstellung für die automatische Skalierung verwendet. Dieses Tutorial führt Sie durch folgende Schritte:
@@ -174,4 +172,3 @@ In diesem Tutorial haben Sie eine einfache Web-App und einen einfachen App Servi
 
 > [!div class="nextstepaction"]
 > [Archivieren von Überwachungsdaten](./monitor-tutorial-archive-monitoring-data.md)
-

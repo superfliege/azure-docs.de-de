@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: billgib; sstein
 ms.openlocfilehash: 4e32407d5f321198358e07980907c3420aaf56c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="extract-data-from-tenant-databases-into-an-analytics-database-for-offline-analysis"></a>Extrahieren von Daten aus Mandantendatenbanken in eine Analysedatenbank für die Offlineanalyse
 
@@ -52,13 +52,13 @@ Die Wingtip-SaaS-Skripts und der Quellcode der Anwendung stehen im GitHub-Reposi
 Für dieses Tutorial ist es erforderlich, dass Sie eine Datenbank bereitstellen, um die Ergebnisse der Auftragsausführung von Skripts zu erfassen, die Abfrageergebnisse enthalten. Erstellen wir zu diesem Zweck eine Datenbank mit dem Namen „tenantanalytics“.
 
 1. Öffnen Sie …\\Learning Modules\\Operational Analytics\\Tenant Analytics\\*Demo-TenantAnalyticsDB.ps1* in der *PowerShell ISE*, und legen Sie den folgenden Wert fest:
-   * **$DemoScenario** = **2** *Operative Analysedatenbank bereitstellen*
+   * **$DemoScenario** = **2***Operative Analysedatenbank bereitstellen*
 1. Drücken Sie **F5** zum Ausführen des Demoskripts (das das Skript *Deploy-TenantAnalyticsDB.ps1* aufruft), wodurch die Mandantenanalysedatenbank erstellt wird.
 
 ## <a name="create-some-data-for-the-demo"></a>Erstellen einiger Daten für die Demo
 
 1. Öffnen Sie …\\Learning Modules\\Operational Analytics\\Tenant Analytics\\*Demo-TenantAnalyticsDB.ps1* in der *PowerShell ISE*, und legen Sie den folgenden Wert fest:
-   * **$DemoScenario** = **1** *Tickets für Events an allen Veranstaltungsorten kaufen*
+   * **$DemoScenario** = **1***Tickets für Events an allen Veranstaltungsorten kaufen*
 1. Drücken Sie **F5**, um das Skript auszuführen und einen Ticketbestellverlauf zu erstellen.
 
 

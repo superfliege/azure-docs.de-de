@@ -1,28 +1,28 @@
 
 <!--author=alkohli last changed: 01/20/2017-->
 
-#### <a name="to-create-a-manual-backup"></a>Zum Erstellen einer manuellen Sicherung
+#### <a name="to-create-a-manual-backup"></a>So erstellen Sie eine manuelle Sicherung
 
-1. Wechseln Sie zu Ihrer StorSimple-Geräte-Manager-Dienst, und klicken Sie dann auf **Geräte**. Wählen Sie aus der tabellarischen Auflistung von Geräten, Ihr Gerät aus. Wechseln Sie zu **Einstellungen > Verwalten > Sicherungsrichtlinien**.
+1. Navigieren Sie zum StorSimple-Geräte-Manager-Dienst, und klicken Sie dann auf **Geräte**. Wählen Sie Ihr Gerät in der Tabelle mit den Geräten aus. Navigieren Sie zu **Einstellungen > Verwalten > Sicherungsrichtlinien**.
 
-2. Die **Sicherungsrichtlinien** Blatt Listet alle Sicherungsrichtlinien in einem tabellarischen Format, einschließlich der Richtlinie für das Volume, die Sie sichern möchten. Wählen Sie die Richtlinie, die dem Volume, die Sie sichern möchten, und mit der rechten Maustaste das Kontextmenü aufrufen. Wählen Sie aus der Dropdown-Liste **jetzt sichern**.
+2. Auf dem Blatt **Sicherungsrichtlinien** sind alle Sicherungsrichtlinien in einem Tabellenformat aufgelistet, darunter auch die Richtlinie für das zu sichernde Volume. Wählen Sie die Richtlinie, die dem zu sichernden Volume zugeordnet ist, und klicken Sie mit der rechten Maustaste, um das Kontextmenü aufzurufen. Wählen Sie in der Dropdownliste die Option **Jetzt sichern**.
 
-    ![Erstellen Sie eine manuelle Sicherung](./media/storsimple-8000-create-manual-backup/createmanualbu1.png)
+    ![Erstellen einer manuellen Sicherung](./media/storsimple-8000-create-manual-backup/createmanualbu1.png)
 
-3. In der **jetzt sichern** Blatt die folgenden Schritte aus:
+3. Führen Sie auf dem Blatt **Jetzt sichern** die folgenden Schritte aus:
 
-    1. Wählen Sie die entsprechende **Snapshot-Typ** aus der Dropdownliste aus: **lokale** Momentaufnahme oder **Cloud** Momentaufnahme. Wählen Sie lokale Momentaufnahme für schnelle Sicherungen oder Wiederherstellungen und Cloud-Momentaufnahme für die resilienz von Daten.
+    1. Wählen Sie in der Dropdownliste den passenden **Momentaufnahmetyp** aus: **Lokal** oder **Cloud**. Wählen Sie für schnelle Sicherungen oder Wiederherstellungen die lokale Momentaufnahme, und wählen Sie die Cloudmomentaufnahme, um mehr Datenresilienz zu erzielen.
 
-        ![Erstellen Sie eine manuelle Sicherung](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
+        ![Erstellen einer manuellen Sicherung](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 
-    2. Klicken Sie auf **OK** zum Starten eines Auftrags zum Erstellen einer Momentaufnahme. Eine Benachrichtigung am oberen Rand der Seite wird angezeigt, nachdem der Auftrag erfolgreich erstellt wurde.
+    2. Klicken Sie auf **OK**, um einen Auftrag zum Erstellen einer Momentaufnahme zu starten. Am oberen Rand der Seite wird eine Benachrichtigung angezeigt, nachdem der Auftrag erfolgreich erstellt wurde.
 
-        ![Erstellen Sie eine manuelle Sicherung](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
+        ![Erstellen einer manuellen Sicherung](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
 
-    3. Klicken Sie auf die Benachrichtigung, um den Auftrag zu überwachen. Dadurch gelangen Sie zu der **Aufträge** Blade, in dem Sie den Status des Auftrags anzeigen können.
+    3. Klicken Sie auf die Benachrichtigung, um den Auftrag zu überwachen. Sie gelangen auf das Blatt **Aufträge**, auf dem Sie den Auftragsstatus anzeigen können.
 
 
-5. Nachdem der Sicherungsauftrag abgeschlossen ist, navigieren Sie zu der **Sicherungskatalog** Registerkarte.
+5. Nachdem der Sicherungsauftrag abgeschlossen wurde, navigieren Sie zur Registerkarte **Sicherungskatalog** .
 
-6. Legen Sie die Filterauswahl auf die entsprechenden Gerätegruppen, Sicherungsrichtlinie und Zeitraum. Die Sicherung sollte in der Liste der Sicherungssätze angezeigt werden, die im Katalog angezeigt wird.
+6. Legen Sie die Filterauswahl auf das entsprechende Gerät, die Sicherungsrichtlinie und den Zeitraum fest. Die Sicherung sollte in der Liste der Sicherungssätze enthalten sein, die im Katalog angezeigt wird.
 

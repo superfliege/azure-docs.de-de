@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: c2c5aee3db11255be5a6fe405424c2cbb92c5b95
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD
 
 Zugriffszuweisungen sind „veraltet“, wenn Benutzer über Zugriff verfügen, den sie nicht mehr benötigen.  Um das Risiko im Zusammenhang mit Statuszugriffszuweisungen zu reduzieren, können Administratoren eine Überprüfung von Gruppenmitgliedern oder Benutzern anfordern, die einer Anwendung zugewiesen sind, indem sie eine Zugriffsüberprüfung erstellen. In den Handbüchern zum [Verwalten des Benutzerzugriffs](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md) und [Verwalten des Gastzugriffs](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md) finden Sie weitere Informationen zu diesen Szenarios.  
@@ -51,6 +49,5 @@ Sie können den Fortschritt der Überprüfungen durch die Prüfer im Azure AD-Da
 Wenn eine Zugriffsüberprüfung gestartet wurde, sendet Azure AD automatisch eine E-Mail an die Prüfer, in der diese zur Überprüfung des Zugriffs aufgefordert werden. Benutzern, die diese E-Mail nicht erhalten haben, können Sie die Anweisungen unter [So überprüfen Sie den Zugriff](active-directory-azure-ad-controls-perform-access-review.md) senden.  
 
 Befolgen Sie nach Ablauf des Zugriffsüberprüfungszeitraums oder nachdem der Administrator die Zugriffsüberprüfung angehalten hat, die Schritte zum [Abschließen einer Zugriffsüberprüfung](active-directory-azure-ad-controls-complete-access-review.md), um die Ergebnisse anzuzeigen und anzuwenden.
-
 
 

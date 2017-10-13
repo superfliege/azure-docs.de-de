@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/21/2017
 ms.author: kraigb
 ms.openlocfilehash: 25b3ca9af2639860d9cfcb1492aef745fb47beb9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-visual-studio-publish-azure-application-wizard"></a>Verwenden des Visual Studio-Assistenten zum Veröffentlichen von Azure-Anwendungen
 Nachdem Sie eine Webanwendung in Visual Studio entwickelt haben, können Sie diese Anwendung mit dem **Assistenten zum Veröffentlichen einer Azure-Anwendung** in einem Azure-Clouddienst veröffentlichen. 
@@ -58,7 +58,7 @@ Je nach Art des von Ihnen verwendeten Visual Studio-Projekts können Sie auf ein
 
 ![Allgemeine Einstellungen](./media/vs-azure-tools-publish-azure-application-wizard/settings-common-settings.png)
 
-**Clouddienst**: Wählen Sie in der Dropdownliste entweder einen vorhandenen Clouddienst aus, oder wählen Sie **&lt;Neu erstellen>** aus, und erstellen Sie einen Clouddienst. Das Datencenter wird für jeden Clouddienst in Klammern angezeigt. Es wird empfohlen, für den Clouddienst den gleichen Datencenter-Speicherort wie für das Speicherkonto zu verwenden (Erweiterte Einstellungen).  
+**Clouddienst**: Wählen Sie in der Dropdownliste entweder einen vorhandenen Clouddienst aus, oder wählen Sie **&lt;Neu erstellen&gt;** aus, und erstellen Sie einen Clouddienst. Das Datencenter wird für jeden Clouddienst in Klammern angezeigt. Es wird empfohlen, für den Clouddienst den gleichen Datencenter-Speicherort wie für das Speicherkonto zu verwenden (Erweiterte Einstellungen).  
 
 **Umgebung**: Wählen Sie entweder **Produktion** oder **Staging** aus. Wählen Sie die Stagingumgebung, wenn Sie die Anwendung in einer Testumgebung bereitstellen möchten. 
 
@@ -76,7 +76,7 @@ Je nach Art des von Ihnen verwendeten Visual Studio-Projekts können Sie auf ein
 
 **Bereitstellungsbezeichnung**: Akzeptieren Sie den Standardnamen, oder geben Sie einen Namen Ihrer Wahl ein. Um der Bereitstellungsbezeichnung das Datum anzufügen, lassen Sie das Kontrollkästchen aktiviert. 
    
-**Speicherkonto**: Wählen Sie das für diese Bereitstellung zu verwendende Speicherkonto aus oder **&lt;Neu erstellen>, um ein Speicherkonto zu erstellen. Das Datencenter wird für jedes Speicherkonto in Klammern angezeigt. Es wird empfohlen, für das Speicherkonto den gleichen Datencenter-Speicherort wie für den Clouddienst zu verwenden (Erweiterte Einstellungen).  
+**Speicherkonto**: Wählen Sie das für diese Bereitstellung zu verwendende Speicherkonto aus oder **&lt;Neu erstellen&gt;, um ein Speicherkonto zu erstellen. Das Datencenter wird für jedes Speicherkonto in Klammern angezeigt. Es wird empfohlen, für das Speicherkonto den gleichen Datencenter-Speicherort wie für den Clouddienst zu verwenden (Erweiterte Einstellungen).  
    
 Das Azure-Speicherkonto speichert das Paket für die Bereitstellung der Anwendung. Nach der Bereitstellung der Anwendung wird das Paket aus dem Speicherkonto entfernt.
 

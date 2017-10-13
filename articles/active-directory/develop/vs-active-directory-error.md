@@ -16,10 +16,10 @@ ms.date: 03/05/2017
 ms.author: kraigb
 ms.custom: aaddev
 ms.openlocfilehash: 4f29f62b2996cae98b02c1ed5fcb59eca09301ef
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connection-wizard"></a>Diagnostizieren von Fehlern mit dem Verbindungs-Assistenten für Azure Active Directory
 Beim Erkennen des vorherigen Authentifizierungscodes hat der Assistent einen nicht kompatiblen Authentifizierungstyp erkannt.   

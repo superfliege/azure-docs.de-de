@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/31/2017
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 75dcc603327b50718b279f3ce055663ec0bc2596
-ms.contentlocale: de-de
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="accessing-azure-virtual-machines-from-server-explorer"></a>Zugreifen auf virtuelle Computer in Azure über den Server-Explorer
 Mit dem Server-Explorer in Visual Studio können Sie Informationen über die von Azure gehosteten virtuellen Computer anzeigen.
@@ -52,5 +51,4 @@ Wenn Sie in Azure gehostete virtuelle Computer verwenden, können Sie über den 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Verwenden von Azure-Rollen in Visual Studio finden Sie unter [Verwenden von Remotedesktop mit Azure-Rollen](vs-azure-tools-remote-desktop-roles.md).
-
 

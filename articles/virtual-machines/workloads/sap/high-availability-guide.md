@@ -18,10 +18,10 @@ ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 65236f527b62b4990b062fb6a54ce13b3c182e93
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hohe Verfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern
 
@@ -701,9 +701,9 @@ _**Abbildung 11:** Festlegen von Azure Resource Manager-Parametern für hohe Ver
     * DBMS-Cluster: <*SAP-System-SID*>-db-<*Anzahl*>
 
   * **Netzwerkkarten für alle virtuellen Computer mit zugeordneten IP-Adressen:**
-    * <*SAP-System-SID*>-nic-di-<*Anzahl*>
-    * <*SAP-System-SID*>-nic-ascs-<*Anzahl*>
-    * <*SAP-System-SID*>-nic-db-<*Anzahl*>
+    * <*SAP-System-SID*&gt;-nic-di-&lt;*Anzahl*>
+    * <*SAP-System-SID*&gt;-nic-ascs-&lt;*Anzahl*>
+    * <*SAP-System-SID*&gt;-nic-db-&lt;*Anzahl*>
 
   * **Azure-Speicherkonten**
 
@@ -716,7 +716,7 @@ _**Abbildung 11:** Festlegen von Azure Resource Manager-Parametern für hohe Ver
     * Mit allen Ports für die ASCS/SCS-Instanz und IP-Adresse <*SAP-System-SID*>-lb-ascs
     * Mit allen Ports für das SQL Server-DBMS und IP-Adresse <*SAP-System-SID*>-lb-db
 
-  * **Netzwerksicherheitsgruppe:** <*SAP-System-SID*>-nsg-ascs-0  
+  * **Netzwerksicherheitsgruppe:** &lt;*SAP-System-SID*&gt;-nsg-ascs-0  
     * Mit einem offenen externen RDP-Port (Remote Desktop Protocol) zum virtuellen Computer <*SAP-System-SID*>-ascs-0
 
 > [!NOTE]
@@ -1614,7 +1614,7 @@ Die Clustergruppe **SAP PR1** wird auf dem Clusterknoten A ausgeführt, z.B. auf
 
 ![Abbildung 61: Failovercluster-Manager: Die SAP-Clustergruppe <SID> wird auf Clusterknoten A ausgeführt][sap-ha-guide-figure-5000]
 
-_**Abbildung 61:** Failovercluster-Manager: Die SAP-Clustergruppe <*SID*> wird auf Clusterknoten A ausgeführt_
+_**Abbildung 61:** Failovercluster-Manager: Die SAP-Clustergruppe &lt;*SID*&gt; wird auf Clusterknoten A ausgeführt_
 
 Im SIOS DataKeeper-Tool für die Verwaltung und Konfiguration erkennen Sie, dass die Daten auf dem freigegebenen Datenträger synchron vom Quellvolume S auf Clusterknoten A auf das Zielvolume S auf Clusterknoten B repliziert werden, also z.B. von **pr1-ascs-0 [10.0.0.40]** nach **pr1-ascs-1 [10.0.0.41]**.
 
@@ -1643,7 +1643,7 @@ _**Abbildung 62:** In SIOS DataKeeper wird das lokale Volume von Clusterknoten A
 
   ![Abbildung 63: Failovercluster-Manager: Die SAP-Clustergruppe <SID> wird auf Clusterknoten B ausgeführt][sap-ha-guide-figure-5002]
 
-  _**Abbildung 63:** Failovercluster-Manager: Die SAP-Clustergruppe <*SID*> wird auf Clusterknoten B ausgeführt_
+  _**Abbildung 63:** Failovercluster-Manager: Die SAP-Clustergruppe &lt;*SID*&gt; wird auf Clusterknoten B ausgeführt_
 
   Der freigegebene Datenträger wird jetzt auf Clusterknoten B bereitgestellt. SIOS DataKeeper repliziert Daten vom Quellvolume S auf Clusterknoten B auf das Zielvolume S auf Clusterknoten A, also z.B. von **pr1-ascs-1 [10.0.0.41]** nach **pr1-ascs-0 [10.0.0.40]**.
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 925aff209056f5a63b927dcb95ef6621967a0ffb
-ms.contentlocale: de-de
-ms.lasthandoff: 01/12/2017
-
+ms.openlocfilehash: 6aa7a25a9addceee78abe027fb3a19351940464e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-api-management-page-controls"></a>Seitensteuerelemente in Azure API Management
 Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung in Entwicklerportalvorlagen.  
@@ -55,7 +54,7 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
 ##  <a name="app-actions"></a> app-actions  
  Das Steuerelement `app-actions` bietet eine Benutzeroberfläche für die Interaktion mit Anwendungen auf der Benutzerprofilseite im Entwicklerportal.  
   
- ![Steuerelement „app&#45;actions“](./media/api-management-page-controls/APIM-app-actions-control.png "APIM-Steuerelement „app-actions“")  
+ ![Steuerelement „app&amp;#45;actions“](./media/api-management-page-controls/APIM-app-actions-control.png "APIM-Steuerelement „app-actions“")  
   
 ### <a name="usage"></a>Verwendung  
   
@@ -77,7 +76,7 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
 ##  <a name="basic-signin"></a> basic-signin  
  Das Steuerelement `basic-signin` stellt ein Steuerelement zum Sammeln von Informationen zur Benutzeranmeldung auf der Anmeldeseite im Entwicklerportal bereit.  
   
- ![Steuerelement „basic&#45;signin“](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM-Steuerelement „basic-signin“")  
+ ![Steuerelement „basic&amp;#45;signin“](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM-Steuerelement „basic-signin“")  
   
 ### <a name="usage"></a>Verwendung  
   
@@ -159,7 +158,7 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
 ##  <a name="sign-up"></a> sign-up  
  Das Steuerelement `sign-up` stellt ein Steuerelement zum Sammeln von Benutzerprofilinformationen auf der Registrierungsseite im Entwicklerportal bereit.  
   
- ![Steuerelement „sign&#45;up“](./media/api-management-page-controls/APIM-sign-up-control.png "APIM-Steuerelement „sign-up“")  
+ ![Steuerelement „sign&amp;#45;up“](./media/api-management-page-controls/APIM-sign-up-control.png "APIM-Steuerelement „sign-up“")  
   
 ### <a name="usage"></a>Verwendung  
   
@@ -178,7 +177,7 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
 ##  <a name="subscribe-button"></a> subscribe-button  
  `subscribe-button` bietet ein Steuerelement, mit dem ein Benutzer ein Produkt abonnieren kann.  
   
- ![Steuerelement „subscribe&#45;button“](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM-Steuerelement „subscribe-button“")  
+ ![Steuerelement „subscribe&amp;#45;button“](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM-Steuerelement „subscribe-button“")  
   
 ### <a name="usage"></a>Verwendung  
   
@@ -197,7 +196,7 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
 ##  <a name="subscription-cancel"></a> subscription-cancel  
  Das Steuerelement `subscription-cancel` stellt auf der Benutzerprofilseite im Entwicklerportal ein Steuerelement für das Kündigen des Abonnements für ein Produkt bereit.  
   
- ![Steuerelement „subscription&#45;cancel“](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM-Steuerelement „subscription-cancel“")  
+ ![Steuerelement „subscription&amp;#45;cancel“](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM-Steuerelement „subscription-cancel“")  
   
 ### <a name="usage"></a>Verwendung  
   

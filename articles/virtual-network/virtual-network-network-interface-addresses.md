@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 254d5d43f0f665f64ddfe276fe31702f66f16758
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
 Erfahren Sie etwas über das Hinzufügen, Ändern und Entfernen öffentlicher und privater IP-Adressen für Netzwerkschnittstellen. Die einer Netzwerkschnittstelle zugewiesenen privaten IP-Adressen ermöglichen dem virtuellen Computer die Kommunikation mit anderen Ressourcen im virtuellen Azure-Netzwerk und verbundenen Netzwerken. Eine private IP-Adresse ermöglicht ebenfalls die ausgehende Kommunikation mit dem Internet über eine nicht vorhersagbare IP-Adresse. Das Zuweisen einer [öffentlichen IP-Adresse](virtual-network-public-ip-address.md) zu einer Netzwerkschnittstelle ermöglicht eingehende Kommunikation an einen virtuellen Computer aus dem Internet. Die Adresse ermöglicht außerdem die ausgehende Kommunikation vom virtuellen Computer mit dem Internet über eine vorhersagbare IP-Adresse. Weitere Informationen finden Sie unter [Grundlegendes zu ausgehenden Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
@@ -205,4 +203,3 @@ Um einen virtuellen Computer mit unterschiedlichen IP-Konfigurationen zu erstell
 |Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |Erstellen eines virtuellen Computers mit einer NIC und mehreren IPv4-Adressen|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
 |Erstellen eines virtuellen Computers mit einer NIC und einer IPv6-Adresse (mit Azure Load Balancer)|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Azure Resource Manager-Vorlage](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-

@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.openlocfilehash: 7d0400c834767736f63bc30a7bc2495dc6ee6e36
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines – Bereitstellung für SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -605,8 +605,8 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
       * [Microsoft Azure Storage][dbms-guide-2.3] im [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
       * [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern][storage-premium-storage-preview-portal]
       * [Einführung in Microsoft Azure Storage][storage-introduction]
-  * **URI der VHD mit dem Benutzerimage** (nur Vorlage für Images auf verwalteten Datenträgern): Der URI der VHD mit dem privaten Betriebssystemimage, z.B. „https://&lt;Kontoname>.blob.core.windows.net/vhds/userimage.vhd“.
-  * **Benutzerimage-Speicherkonto** (nur Vorlage für Images auf nicht verwalteten Datenträgern): Der Name des Speicherkontos, in dem das private Betriebssystemimage gespeichert ist, z.B. &lt;Kontoname> in „https://&lt;Kontoname>.blob.core.windows.net/vhds/userimage.vhd“.
+  * **URI der VHD mit dem Benutzerimage** (nur Vorlage für Images auf verwalteten Datenträgern): Der URI der VHD mit dem privaten Betriebssystemimage, z.B. „https://&lt;Kontoname&gt;.blob.core.windows.net/vhds/userimage.vhd“.
+  * **Benutzerimage-Speicherkonto** (nur Vorlage für Images auf nicht verwalteten Datenträgern): Der Name des Speicherkontos, in dem das private Betriebssystemimage gespeichert ist, z.B. &lt;Kontoname&gt; in „https://&lt;Kontoname&gt;.blob.core.windows.net/vhds/userimage.vhd“.
   * **userImageId** (nur Vorlage für Images auf verwalteten Datenträgern): ID des Images auf einem verwalteten Datenträger, das Sie verwenden möchten.
   * **Administratorbenutzername** und **Administratorkennwort**: Benutzername und Kennwort.
 
@@ -692,7 +692,7 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
       * [Microsoft Azure Storage][dbms-guide-2.3] im [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
       * [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern][storage-premium-storage-preview-portal]
       * [Einführung in Microsoft Azure Storage][storage-introduction]
-  * **URI der VHD mit dem Betriebssystemdatenträger** (nur Vorlage für nicht verwaltete Datenträger): Der URI des Datenträgers mit dem privaten Betriebssystem, z.B. „https://&lt;Kontoname>.blob.core.windows.net/vhds/osdisk.vhd“.
+  * **URI der VHD mit dem Betriebssystemdatenträger** (nur Vorlage für nicht verwaltete Datenträger): Der URI des Datenträgers mit dem privaten Betriebssystem, z.B. „https://&lt;Kontoname&gt;.blob.core.windows.net/vhds/osdisk.vhd“.
   * **ID des verwalteten Betriebssystemdatenträgers** (nur Vorlage für verwaltete Datenträger): Die ID des verwalteten Datenträgers mit dem Betriebssystem, z.B. „/subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN“.
   * **Neues oder vorhandenes Subnetz**: Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt werden oder ein bestehendes Subnetz verwendet wird. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
   * **Subnetz-ID**: Die ID des Subnetzes, mit dem die virtuellen Computer die Verbindung herstellen. Wählen Sie das Subnetz des VPN- oder virtuellen Azure ExpressRoute-Netzwerks aus, um den virtuellen Computer mit dem lokalen Netzwerk zu verbinden. Die ID sieht normalerweise wie folgt aus:

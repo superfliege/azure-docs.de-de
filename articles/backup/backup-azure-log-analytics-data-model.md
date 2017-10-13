@@ -16,10 +16,10 @@ ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 041a8835a1dd185739b23d4073fd5811bb4490b5
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 Dieser Artikel beschreibt das Datenmodell, das für die Pushübertragung von Berichtsdaten an Log Analytics verwendet wird. Mit diesem Datenmodell können Sie benutzerdefinierte Abfragen und Dashboards erstellen und in OMS verwenden. 

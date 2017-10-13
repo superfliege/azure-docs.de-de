@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: f82be4ff7bd0839be4f826f9a04ba0876f4ec91d
-ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
-
+ms.openlocfilehash: dc8aa21d89ce575d29d3a9c08909eb5617d7b8a5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="stream-analytics-documentation"></a>Stream Analytics-Dokumentation
 
 Hier erfahren Sie, wie Sie mit Stream Analytics (einen vollständig verwalteten Ereignisverarbeitungsmodul) IoT-Analysen in der Cloud ausführen. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie unter anderem Daten von Anwendungen, Sensoren und Geräten sowie aus sozialen Medien in Echtzeit analysieren. 
@@ -177,6 +175,5 @@ Hier erfahren Sie, wie Sie mit Stream Analytics (einen vollständig verwalteten 
         </div>
     </li>
 </ul>
-
 
 

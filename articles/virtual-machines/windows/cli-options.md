@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: nepeters
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 0ac4aa10db43fb84119ab97cf78b2d5592cfd277
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="using-the-azure-cli-on-windows"></a>Verwenden der Azure CLI unter Windows
 
 Die Azure-Befehlszeilenschnittstelle (CLI) stellt eine Befehlszeile und eine Skriptumgebung für das Erstellen und Verwalten von Azure-Ressourcen bereit. Die Azure CLI steht für macOS-, Linux- und Windows-Betriebssysteme zur Verfügung. Die CLI-Befehle sind für all diese Betriebssysteme identisch, die Skriptsyntax kann jedoch je nach Betriebssystem abweichen.
@@ -65,4 +63,3 @@ Durch den Befehl wird eine Bash-Sitzung gestartet, in der die Azure CLI-Tools be
 [Azure CLI Samples](../../app-service/app-service-cli-samples.md) (Azure CLI-Beispiele)
 
 [Azure CLI samples for Azure SQL Database](../../sql-database/sql-database-cli-samples.md) (Azure CLI-Beispiele für Azure SQL-Datenbank)
-

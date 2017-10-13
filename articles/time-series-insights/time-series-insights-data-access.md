@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/01/2017
 ms.author: omravi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
-ms.openlocfilehash: e975c6d8f217bc73948c0c046204b16b1a742bc7
-ms.contentlocale: de-de
-ms.lasthandoff: 05/20/2017
-
+ms.openlocfilehash: 5258bf5de6f7aa1ea246f1235e7d362b1b7d0181
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>Gew채hren von Datenzugriff f체r eine Time Series Insights-Umgebung 체ber das Azure-Portal
 
 Time Series Insights-Umgebungen verf체gen 체ber zwei unabh채ngige Typen von Zugriffsrichtlinien:
@@ -75,4 +73,3 @@ Die folgenden Schritte zeigen, wie Sie einem Benutzerprinzipal Datenzugriff gew�
 * [Erstellen einer Ereignisquelle](time-series-insights-add-event-source.md)
 * [Senden von Ereignissen](time-series-insights-send-events.md) an die Ereignisquelle
 * Anzeigen Ihrer Umgebung im [Time Series Insights-Portal](https://insights.timeseries.azure.com)
-

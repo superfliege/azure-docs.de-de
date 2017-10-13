@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 ms.openlocfilehash: a9d4d3be7f046af975f6dc25670070204848588c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-api-inspector-to-trace-calls-in-azure-api-management"></a>Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management
 API Management stellt einen API-Inspektor bereit, der Sie bei Debugging und Problembehandlung Ihrer APIs unterstützt. Der API-Inspektor kann programmgesteuert eingesetzt oder direkt aus dem Entwicklerportal aufgerufen werden. 
@@ -32,7 +32,7 @@ Hier finden Sie eine schrittweise Anleitung für die Nutzung des API-Inspektors.
 > 
 > 
 
-## <a name="trace-call"> </a> Verwenden des API-Inspektors zum Verfolgen von Aufrufen
+## <a name="trace-call"></a> Verwenden des API-Inspektors zum Verfolgen von Aufrufen
 Um den API-Inspektor zu verwenden, fügen Sie Ihrem Operationsaufruf einen **ocp-apim-trace: true**-Anforderungsheader hinzu. Anschließend können Sie die Ablaufverfolgung über die im **ocp-apim-trace-location**-Antwortheader angegebene URL herunterladen und analysieren. Dies kann programmgesteuert in Ihren Anwendungen ausgeführt oder direkt aus dem Entwicklerportal aufgerufen werden.
 
 In diesem Lernprogramm wird gezeigt, wie Sie mit dem API-Inspektor Vorgänge mithilfe der Basic Calculator-API verfolgen, die im Tutorial mit den ersten Schritten zum [Verwalten Ihrer ersten API](api-management-get-started.md) konfiguriert wird. Falls Sie dieses Lernprogramm nicht abgeschlossen haben, dauert es nur wenige Minuten, die Basic Calculator-API zu importieren. Sie können jedoch auch eine andere API Ihrer Wahl verwenden, z. B. die Echo API. Jede API Management-Dienstinstanz enthält eine vorkonfigurierte Echo-API, die Sie für Tests und erste Schritte mit API Management nutzen können. Die Echo-API gibt einfach alle Eingaben zurück. Sie können diese API mit beliebigen HTTP-Verben aufrufen. Der Rückgabewert enthält wieder Ihre Eingaben. 
@@ -71,7 +71,7 @@ ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net
 
 Sie können die Ablaufverfolgung vom angegebenen Speicherort herunterladen und wie im folgenden Schritt gezeigt analysieren. Beachten Sie, dass nur die letzten 100 Protokolleinträge gespeichert werden und Protokollspeicherorte in Rotation wiederverwendet werden. Wenn Sie mehr als 100 Aufrufe mit aktivierter Ablaufverfolgung ausführen, werden die ersten Ablaufverfolgungen überschrieben.
 
-## <a name="inspect-trace"> </a>Analysieren der Ablaufverfolgung
+## <a name="inspect-trace"></a>Analysieren der Ablaufverfolgung
 Laden Sie die Ablaufverfolgungsdatei über die **ocp-apim-trace-location** -URL herunter, um die Werte in der Ablaufverfolgung zu überprüfen. Es handelt sich um eine Textdatei im JSON-Format, die Werte ähnlich des folgenden Beispiels enthält.
 
 ```json
@@ -235,7 +235,7 @@ Laden Sie die Ablaufverfolgungsdatei über die **ocp-apim-trace-location** -URL 
 }
 ```
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Eine Demonstration zu Richtlinienausdrücken für die Ablaufverfolgung finden Sie in der [Cloud Cover-Episode 177 zu weiteren API Management-Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Führen Sie einen schnellen Vorlauf bis 21:00 durch, um die Demo anzuzeigen.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Cloud+Cover/Episode-177-More-API-Management-Features-with-Vlad-Vinogradsky/player]

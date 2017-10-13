@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 55b857bd5b3d0c32553a60ff0649aeeb721cd6da
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>Verwenden der Azure-Befehlszeilenschnittstelle 1.0 mit Azure Storage
 
@@ -84,11 +83,11 @@ Unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](ht
 5. Öffnen Sie auf Ihrem lokalen Computer Ihren bevorzugten Texteditor (z. B. Vim). Geben Sie das obige Skript in den Texteditor ein.
 6. Nun müssen Sie die Skriptvariablen auf Basis der Konfigurationseinstellungen aktualisieren.
 
-   * **<storage_account_name>**: Verwenden Sie den im Skript angegebenen Namen, oder geben Sie einen neuen Namen für Ihr Speicherkonto ein. **Wichtig:** Der Name des Speicherkontos muss in Azure eindeutig sein. Er darf außerdem nur aus Kleinbuchstaben bestehen!
-   * **<storage_account_key>**: Der Zugriffsschlüssel für Ihr Speicherkonto.
-   * **<container_name>**: Verwenden Sie den im Skript angegebenen Namen, oder geben Sie einen neuen Namen für Ihren Container ein.
-   * **<image_to_upload>**: Geben Sie einen Pfad zu einem Bild auf dem lokalen Computer ein. Beispiel: „~/images/HelloWorld.png“.
-   * **<destination_folder>**: Geben Sie den Pfad zu einem lokalen Verzeichnis zum Speichern von Dateien ein, die aus Azure Storage heruntergeladen werden. Beispiel: „~/downloadImages“.
+   * **&lt;storage_account_name&gt;**: Verwenden Sie den im Skript angegebenen Namen, oder geben Sie einen neuen Namen für Ihr Speicherkonto ein. **Wichtig:** Der Name des Speicherkontos muss in Azure eindeutig sein. Er darf außerdem nur aus Kleinbuchstaben bestehen!
+   * **&lt;storage_account_key&gt;**: Der Zugriffsschlüssel für Ihr Speicherkonto.
+   * **&lt;container_name&gt;**: Verwenden Sie den im Skript angegebenen Namen, oder geben Sie einen neuen Namen für Ihren Container ein.
+   * **&lt;image_to_upload&gt;**: Geben Sie einen Pfad zu einem Bild auf dem lokalen Computer ein. Beispiel: „~/images/HelloWorld.png“.
+   * **&lt;destination_folder&gt;**: Geben Sie den Pfad zu einem lokalen Verzeichnis zum Speichern von Dateien ein, die aus Azure Storage heruntergeladen werden. Beispiel: „~/downloadImages“.
 7. Nachdem Sie die erforderlichen Variablen in Vim aktualisiert haben, drücken Sie die Tastenkombinationen `ESC`, `:`, `wq!`, um das Skript zu speichern.
 8. Zum Ausführen des Skripts geben Sie einfach den Namen der Skripdatei in der Bash-Konsole ein. Nachdem das Skript ausgeführt wird, sollten Sie über einen lokalen Zielordner verfügen, der die heruntergeladene Image-Datei enthält. Der folgende Screenshot zeigt eine Beispielausgabe:
 
@@ -242,4 +241,3 @@ Sie finden die Befehlsreferenz zur Azure-Befehlszeilenschnittstelle 1.0 für die
 * [Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“](../../cli-install-nodejs.md)
 
 Sie können auch die [Azure CLI 2.0](../storage-azure-cli.md) testen. Dies ist eine in Python geschriebene Befehlszeilenschnittstelle (Command Line Interface, CLI) der nächsten Generation zur Verwendung mit dem Resource Manager-Bereitstellungsmodell.
-

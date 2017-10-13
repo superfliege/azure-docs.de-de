@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
 ms.openlocfilehash: 55e1cd90df0e4413ce027361c636257d823a50d6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-software-high-availability-and-networking-requirements"></a>StorSimple-Software, hohe Verfügbarkeit und Netzwerkanforderungen
 ## <a name="overview"></a>Übersicht
@@ -122,13 +121,13 @@ Die Algorithmen der Routingmetrik unterscheiden sich je nach Version der Softwar
 
 Dazu gehören Softwareversionen vor Update 1, z. B. die GA oder die Versionen 0.1, 0.2 oder 0.3. Die auf der Routingmetrik basierende Reihenfolge lautet wie folgt:
 
-   *Zuletzt konfigurierte 10-GbE-Netzwerkschnittstelle > andere 10-GbE-Netzwerkschnittstelle > zuletzt konfigurierte 1-GbE-Netzwerkschnittstelle > andere 1-GbE-Netzwerkschnittstelle*
+   *Zuletzt konfigurierte 10-GbE-Netzwerkschnittstelle &gt; andere 10-GbE-Netzwerkschnittstelle &gt; zuletzt konfigurierte 1-GbE-Netzwerkschnittstelle &gt; andere 1-GbE-Netzwerkschnittstelle*
 
 **Versionen ab Update 1 und vor Update 2**
 
 Dazu gehören Softwareversionen wie z. B. 1, 1.1 und 1.2. Die auf der Routingmetrik basierende Reihenfolge wird folgendermaßen festgelegt:
 
-   *DATA 0 > zuletzt konfigurierte 10-GbE-Netzwerkschnittstelle > andere 10-GbE-Netzwerkschnittstelle > zuletzt konfigurierte 1-GbE-Netzwerkschnittstelle > andere 1-GbE-Netzwerkschnittstelle*
+   *DATA 0 &gt; zuletzt konfigurierte 10-GbE-Netzwerkschnittstelle &gt; andere 10-GbE-Netzwerkschnittstelle &gt; zuletzt konfigurierte 1-GbE-Netzwerkschnittstelle &gt; andere 1-GbE-Netzwerkschnittstelle*
 
    In Update 1 ist DATA 0 die niedrigste Routingmetrik. Daher wird der gesamte Datenverkehr der Cloud über DATA 0 weitergeleitet. Notieren Sie sich dies, wenn es mehrere Cloud-Netzwerkschnittstellen auf dem StorSimple-Gerät gibt.
 
@@ -151,13 +150,13 @@ Update 2 umfasst mehrere netzwerkbezogene Verbesserungen, und die Routingmetrik 
 
 * Der Clouddatenverkehr wird in folgender Reihenfolge über die Netzwerkschnittstellen weitergeleitet:
   
-    *Data 0 > Data 1 > Date 2 > Data 3 > Data 4 > Data 5*
+    *Data 0 &gt; Data 1 &gt; Date 2 &gt; Data 3 &gt; Data 4 &gt; Data 5*
   
     Dies lässt sich anhand des folgenden Beispiels erläutern:
   
     Stellen Sie sich ein StorSimple-Gerät mit zwei cloudfähigen Netzwerkschnittstellen vor, Data 0 und Data 5. Data 1 bis Data 4 sind nicht cloudfähig, weisen jedoch ein konfiguriertes Gateway auf. Der Datenverkehr für dieses Gerät wird in folgender Reihenfolge weitergeleitet:
   
-    *Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)*
+    *Data 0 (1) &gt; Data 5 (6) &gt; Data 1 (20) &gt; Data 2 (30) &gt; Data 3 (40) &gt; Data 4 (50)*
   
     *Die Zahlen in Klammern geben die jeweilige Routingmetrik an.*
   
@@ -251,4 +250,3 @@ Lesen Sie sich diese bewährten Methoden sorgfältig durch, um eine hohe Verfüg
 
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
-

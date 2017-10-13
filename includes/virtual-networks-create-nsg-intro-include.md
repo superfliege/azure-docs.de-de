@@ -1,4 +1,4 @@
-Sie können eine NSG zur Steuerung des Datenverkehrs an eine oder mehrere virtuelle Computer (VMs), Rolleninstanzen, Netzwerkschnittstellenkarten (NIC) oder Subnetze in Ihrem virtuellen Netzwerk verwenden. Eine NSG enthält Zugriffssteuerungsregeln, die basierend auf der Richtung des Datenverkehrs, Protokoll, Quelladresse und -Port und Zieladresse und Port Datenverkehr zulassen oder verweigern. Die Regeln einer NSG können jederzeit geändert werden, und die Änderungen werden auf alle zugehörigen Instanzen angewendet.
+Sie können eine Netzwerksicherheitsgruppe (NSG) verwenden, um in Ihrem virtuellen Netzwerk eingehenden Datenverkehr für virtuelle Computer, Rolleninstanzen, Netzwerkkarten (NICs) oder Subnetze zu steuern. Eine NSG enthält Regeln zur Zugriffssteuerung, die den Datenverkehr auf Grundlage der Richtung des Datenverkehrs, des Protokolls, der Quelladresse und des Quellports, und der Zieladresse und des Zielports zulässt oder verweigert. Die Regeln für eine NSG können jederzeit geändert werden, und die Änderungen werden auf alle zugeordneten Instanzen angewendet.
 
-Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie auf [was eine NSG ist](../articles/virtual-network/virtual-networks-nsg.md).
+Weitere Informationen zu NSGs finden Sie unter [Was ist eine NSG](../articles/virtual-network/virtual-networks-nsg.md).
 

@@ -3,8 +3,8 @@ title: Verwalten von Azure Blob Storage-Ressourcen mit dem Speicher-Explorer (Vo
 description: Verwalten von Azure-Blobcontainern und Blobs mit dem Speicher-Explorer (Vorschau)
 services: storage
 documentationcenter: na
-author: kraigb
-manager: ghogen
+author: cawa
+manager: paulyuk
 editor: 
 ms.assetid: 2f09e545-ec94-4d89-b96c-14783cc9d7a9
 ms.service: storage
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: kraigb
+ms.author: cawa
+ms.openlocfilehash: c23b87cca66df0834a31494be7d8657ff9f2a865
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e766962d0d4ec8499b2735b58fc2339ce04fdbe2
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>Verwalten von Azure-Blobspeicherressourcen mit dem Speicher-Explorer (Vorschau)
 ## <a name="overview"></a>Übersicht
@@ -74,7 +73,7 @@ Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer im Speicher
 2. Erweitern Sie im linken Bereich das Speicherkonto, das den gewünschten Blobcontainer enthält.
 3. Erweitern Sie die Option **BLOB-Container**des Speicherkontos.
 4. Klicken Sie mit der rechten Maustaste auf den Blobcontainer, den Sie löschen möchten, und wählen Sie im Kontextmenü die Option **Löschen**.
-   Sie können auch die ENTF-TASTE drücken, um den derzeit ausgewählten Blobcontainer zu **löschen**.
+   Sie können auch die ENTF-TASTE **** drücken, um den derzeit ausgewählten Blobcontainer zu löschen.
 
    ![Kontextmenü „Delete blob Container“ (Blobcontainer löschen)][4]
 5. Wählen Sie im Bestätigungsdialogfeld die Option **Ja** .
@@ -236,4 +235,3 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
 [17]: ./media/vs-azure-tools-storage-explorer-blobs/blob-upload-folder-menu.png
 [18]: ./media/vs-azure-tools-storage-explorer-blobs/blob-upload-folder-options.png
 [19]: ./media/vs-azure-tools-storage-explorer-blobs/blob-container-open-editor-context-menu.png
-

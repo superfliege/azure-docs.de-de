@@ -45,10 +45,10 @@ sections:
         style: ordered
         items:
           - html: <a href="service-fabric-tutorial-create-dotnet-app">Bereitstellen einer .NET-Anwendung</a>
-          - html: <a href="service-fabric-tutorial-create-cluster-azure-ps">Migrieren einer vorhandenen .NET-Anwendung per Lift & Shift</a>
+          - html: <a href="service-fabric-tutorial-create-cluster-azure-ps">Migrieren einer vorhandenen .NET-Anwendung per Lift &amp; Shift</a>
           - html: <a href="service-fabric-tutorial-create-container-images">Erstellen einer Linux-Container-App</a>
           - html: Erstellen und Verwalten eines <a href="service-fabric-tutorial-create-vnet-and-windows-cluster">Windows</a>- oder <a href="service-fabric-tutorial-create-vnet-and-linux-cluster">Linux</a>-Clusters
-  - title: Kostenloses Pluralsight-Videotraining
+  - title: Kostenloses PluralSight-Videotraining
     items:
       - type: list
         style: cards

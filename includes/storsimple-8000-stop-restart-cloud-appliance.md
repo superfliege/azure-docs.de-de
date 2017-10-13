@@ -1,37 +1,37 @@
-#### <a name="to-stop-and-start-a-cloud-appliance"></a>Beenden und starten eine Cloud-Anwendung
+#### <a name="to-stop-and-start-a-cloud-appliance"></a>Beenden und starten eines Cloudgeräts
 
-1. Um eine Cloud-Anwendung zu beenden, wechseln Sie zu dem virtuellen Computer für Ihre Cloud-Anwendung.
-    ![Cloud StorSimple Appliance-VM](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart1.png)
+1. Zum Beenden eines Cloudgeräts wechseln Sie zum virtuellen Computer für Ihr Cloudgerät.
+    ![StorSimple Cloud Appliance – virtueller Computer](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart1.png)
 
-2. Klicken Sie auf der Befehlsleiste auf **beenden**.
+2. Klicken Sie auf der Befehlsleiste auf **Beenden**.
 
-    ![Cloud StorSimple Appliance-VM](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart2.png)
+    ![StorSimple Cloud Appliance – virtueller Computer](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart2.png)
 
 3. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**.
 
-    ![Cloud StorSimple Appliance-VM](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart3.png)
+    ![StorSimple Cloud Appliance – virtueller Computer](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart3.png)
 
-4. Wenn Sie einen virtuellen Computer beenden, ruft er freigegeben. Während der Cloud-Anwendung beendet wird, wird sein Status **Deallocating**. Nach dem Cloud-Anwendung beendet wird, wird sein Status **beendet (Zuordnung aufgehoben)**.
+4. Wenn Sie einen virtuellen Computer beenden, wird seine Zuordnung aufgehoben. Während das Cloudgerät beendet wird, weist es den Status **Zuordnung wird aufgehoben** auf. Nach dem Beenden des Cloudgeräts weist es den Status **Beendet (Zuordnung aufgehoben)** auf.
 
-    ![Cloud StorSimple Appliance-VM](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart4.png)
+    ![StorSimple Cloud Appliance – virtueller Computer](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart4.png)
 
-5. Sobald ein virtueller Computer beendet wird, klicken Sie auf **starten** (Schaltfläche verfügbar) auf den virtuellen Computer zu starten. Nach dem Cloud-Anwendung gestartet wurde, wird sein Status **gestartet**.
+5. Sobald ein virtueller Computer beendet wurde, klicken Sie auf **Starten** (Schaltfläche wird verfügbar), um ihn zu starten. Nach dem Starten des Cloudgeräts weist des den Status **Gestartet** auf.
 
-    ![Cloud StorSimple Appliance-VM](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart5.png)
+    ![StorSimple Cloud Appliance – virtueller Computer](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart5.png)
 
-Verwenden Sie die folgenden Cmdlets zum Beenden und starten eine Cloud-Anwendung.
+Verwenden Sie die folgenden Cmdlets zum Beenden und Starten eines Cloudgeräts.
 
 `Stop-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
 `Start-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
-#### <a name="to-restart-a-cloud-appliance"></a>Um eine Cloud-Anwendung neu zu starten.
+#### <a name="to-restart-a-cloud-appliance"></a>So starten Sie ein Cloudgerät neu
 
-Um eine Cloud-Anwendung neu zu starten, wechseln Sie zu dem virtuellen Computer für Ihre Cloud-Anwendung. Klicken Sie auf der Befehlsleiste auf **Neustart**. Wenn Sie aufgefordert werden, vergewissern Sie sich mit den Neustart. Wenn die Cloud-Anwendung für die Verwendung bereit ist, wird sein Status **ausführen**.
+Zu Neustarten eines Cloudgeräts wechseln Sie zum virtuellen Computer für Ihr Cloudgerät. Klicken Sie auf der Befehlsleiste auf **Neu starten**. Bestätigen Sie den Neustart, wenn Sie dazu aufgefordert werden. Wenn das Cloudgerät zur Verwendung bereit ist, wird der Status **Wird ausgeführt** angezeigt.
 
-![Cloud StorSimple Appliance-VM](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart6.png)
+![StorSimple Cloud Appliance – virtueller Computer](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart6.png)
 
-Verwenden Sie das folgende Cmdlet, um eine Cloud-Anwendung neu zu starten.
+Verwenden Sie die folgenden Cmdlets für den Neustart eines Cloudgeräts.
 
 `Restart-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 

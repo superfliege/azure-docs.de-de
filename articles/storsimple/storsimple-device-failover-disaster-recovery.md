@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/16/2016
 ms.author: alkohli
 ms.openlocfilehash: bf92ffdb16b86c4033cc96ae2abb060d90f9505e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-device"></a>Ausführen eines Failovers und einer Notfallwiederherstellung für das StorSimple-Gerät
 ## <a name="overview"></a>Übersicht
@@ -141,7 +141,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem virtuellen StorS
    
     b. Wechseln Sie zur Seite **Volumecontainer** . Es sollten jetzt alle Volumecontainer und die Volumes des alten Geräts aufgeführt werden.
 
-![Video verfügbar](./media/storsimple-device-failover-disaster-recovery/Video_icon.png) **Video verfügbar**
+![Video verfügbar](./media/storsimple-device-failover-disaster-recovery/Video_icon.png)**Video verfügbar**
 
 Sie können sich [hier](https://azure.microsoft.com/documentation/videos/storsimple-and-disaster-recovery/)ein Video anschauen, in dem das Wiederherstellen eines fehlgeschlagenen physischen Geräts auf ein virtuelles Gerät in der Cloud demonstriert wird.
 

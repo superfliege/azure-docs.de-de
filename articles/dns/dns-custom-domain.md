@@ -12,14 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: gwallace
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 41c1649bfff035bc641d7c1f5d7803cd105e8297
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS
 
 Azure DNS stellt DNS für eine benutzerdefinierte Domäne für Ihre Azure-Ressourcen bereit, die benutzerdefinierte Domänen unterstützen oder einen vollqualifizierten Domänennamen (FQDN) aufweisen. Dies gilt beispielsweise für den Fall, wenn Sie eine Azure-Web-App haben und möchten, dass Ihre Benutzer über contoso.com oder www.contoso.com als FQDN Zugriff darauf haben sollen. Dieser Artikel führt Sie durch die Konfiguration Ihres Azure-Diensts mit Azure DNS für die Verwendung von benutzerdefinierten Domänen.

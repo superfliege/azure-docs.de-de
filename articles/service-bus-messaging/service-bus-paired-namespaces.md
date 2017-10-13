@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: bdd4c7948608c03447d1e040a746ed0eb7b0771b
-ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>Details zur Implementierung von gekoppelten Namespaces und Kostenaspekte
 Mit der [PairNamespaceAsync][PairNamespaceAsync]-Methode unter Verwendung einer [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions]-Instanz werden sichtbare Aufgaben in Ihrem Namen ausgeführt. Da beim Verwenden des Features Kostenaspekte zu beachten sind, ist es ratsam, sich mit diesen Aufgaben vertraut zu machen. So sind Sie auf das Auftreten dieses Verhaltens vorbereitet. Die API veranlasst in Ihrem Namen das folgende automatische Verhalten:
@@ -120,4 +119,3 @@ Ausführliche Informationen zum asynchronen Service Bus-Messaging finden Sie unt
 [0]: ./media/service-bus-paired-namespaces/IC673405.png
 [1]: ./media/service-bus-paired-namespaces/IC673406.png
 [2]: ./media/service-bus-paired-namespaces/IC673407.png
-

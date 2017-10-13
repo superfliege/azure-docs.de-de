@@ -1,6 +1,6 @@
 ---
-title: "Erste Schritte mit datenbankübergreifende Abfragen, die (vertikale Partitionierung) | Microsoft Docs"
-description: Verwendung von elastischen Datenbankabfrage mit vertikal partitionierten Datenbanken
+title: "Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung) | Microsoft Docs"
+description: "Sie erfahren, wie Sie Abfragen für elastische Datenbanken für vertikal partitionierte Datenbanken verwenden."
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -15,26 +15,26 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: torsteng
 ms.openlocfilehash: 17158c4960e9ba9251524659c90af9aec1316774
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Erste Schritte mit datenbankübergreifende Abfragen, die (vertikale Partitionierung) (Vorschau)
-Elastische Datenbankabfrage (Vorschau) für Azure SQL-Datenbank können Sie T-SQL-Abfragen ausführen, die mehrere Datenbanken, die mit einem einzelnen Verbindungspunkt umfassen. Dieses Thema gilt für [vertikal partitioniert Datenbanken](sql-database-elastic-query-vertical-partitioning.md).  
+# <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung, Vorschau)
+Mit Abfragen für elastische Datenbanken (Vorschau) für Azure SQL-Datenbank können Sie T-SQL-Abfragen ausführen, die sich mit einem einzigen Verbindungspunkt über mehrere Datenbanken erstrecken. Dieses Thema gilt für [vertikal partitionierte Datenbanken](sql-database-elastic-query-vertical-partitioning.md).  
 
-Abschließend wird: Informationen zum Konfigurieren und Verwenden einer Azure SQL-Datenbank zum Ausführen von Abfragen, die mehrere verbundene Datenbanken umfassen. 
+Nach Abschluss des Themas haben Sie Folgendes gelernt: Konfigurieren und Verwenden einer Azure SQL-Datenbank zum Ausführen von Abfragen, die sich über mehrere verwandte Datenbanken erstrecken. 
 
-Weitere Informationen zur Funktion für elastische Datenbanken Abfrage finden Sie unter [Übersicht zu Azure SQL-Datenbank elastischen Datenbank Abfragen](sql-database-elastic-query-overview.md). 
+Weitere Informationen zur Abfragefunktion für elastische Datenbanken finden Sie unter [Übersicht über die Abfrage für elastische Datenbanken in Azure SQL-Datenbank](sql-database-elastic-query-overview.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen die ALTER ANY EXTERNAL DATA SOURCE-Berechtigung besitzen. Diese Berechtigung ist im Lieferumfang der ALTER DATABASE-Berechtigung. ALTER ANY EXTERNAL DATA SOURCE-Berechtigungen sind erforderlich, um auf der zugrunde liegenden Datenquelle zu verweisen.
+Sie müssen über die Berechtigung ALTER ANY EXTERNAL DATA SOURCE verfügen. Diese Berechtigung ist in der Berechtigung ALTER DATABASE enthalten. ALTER ANY EXTERNAL DATA SOURCE-Berechtigungen sind erforderlich, um auf die zu Grunde liegende Datenquelle zu verweisen.
 
-## <a name="create-the-sample-databases"></a>Erstellen Sie die Beispieldatenbanken
-Zum Einstieg müssen zum Erstellen von zwei Datenbanken **Kunden** und **Aufträge**, entweder in die gleichen oder einem anderen logischen Server.   
+## <a name="create-the-sample-databases"></a>Erstellen der Beispieldatenbanken
+Zuerst müssen die beiden Datenbanken **Customers** (Kunden) und **Orders** (Bestellungen) erstellt werden, und zwar entweder auf demselben oder auf unterschiedlichen logischen Servern.   
 
-Führen Sie die folgenden Abfragen auf die **Aufträge** Datenbank zum Erstellen der **Bestellinformationen** Tabelle, und geben Sie die Beispieldaten. 
+Führen Sie die folgenden Abfragen in der Datenbank **Orders** aus, um die Tabelle **OrderInformation** zu erstellen und die Beispieldaten einzugeben. 
 
     CREATE TABLE [dbo].[OrderInformation]( 
         [OrderID] [int] NOT NULL, 
@@ -46,7 +46,7 @@ Führen Sie die folgenden Abfragen auf die **Aufträge** Datenbank zum Erstellen
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1) 
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8) 
 
-Jetzt, führen Sie folgende Abfrage für die **Kunden** Datenbank zum Erstellen der **CustomerInformation** Tabelle, und geben Sie die Beispieldaten. 
+Führen Sie dann die folgende Abfrage in der Datenbank **Customers** aus, um die Tabelle **CustomerInformation** zu erstellen und die Beispieldaten einzugeben. 
 
     CREATE TABLE [dbo].[CustomerInformation]( 
         [CustomerID] [int] NOT NULL, 
@@ -59,20 +59,20 @@ Jetzt, führen Sie folgende Abfrage für die **Kunden** Datenbank zum Erstellen 
     INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (3, 'Lylla', 'MNO') 
 
 ## <a name="create-database-objects"></a>Erstellen von Datenbankobjekten
-### <a name="database-scoped-master-key-and-credentials"></a>Datenbankweit gültige Hauptschlüssel und Anmeldeinformationen
-1. Öffnen Sie SQL Server Management Studio oder SQL Server Datatools in Visual Studio.
-2. Herstellen einer Verbindung mit der Orders-Datenbank, und führen Sie die folgenden T-SQL-Befehle:
+### <a name="database-scoped-master-key-and-credentials"></a>Erstellen des Datenbankhauptschlüssels und der Anmeldeinformationen
+1. Öffnen Sie SQL Server Management Studio oder SQL Server Data Tools in Visual Studio.
+2. Stellen Sie eine Verbindung mit der Datenbank „Orders“ her, und führen Sie die folgenden T-SQL-Befehle aus:
    
         CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>'; 
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred 
         WITH IDENTITY = '<username>', 
         SECRET = '<password>';  
    
-    "Benutzername" und "Kennwort" Benutzername und Kennwort verwendet werden soll, die Anmeldung in der Customers-Datenbank.
-    Authentifizierung mit Azure Active Directory mit flexible Abfragen wird derzeit nicht unterstützt.
+    Als „username“ und „password“ sollten der Benutzername und das Kennwort verwendet werden, die zum Anmelden an der Datenbank „Customers“ genutzt werden.
+    Die Authentifizierung mithilfe von Azure Active Directory mit elastischen Abfragen wird derzeit nicht unterstützt.
 
 ### <a name="external-data-sources"></a>Externe Datenquellen
-Um eine externe Datenquelle zu erstellen, führen Sie den folgenden Befehl für die Orders-Datenbank: 
+Um eine externe Datenquelle zu erstellen, führen Sie den folgenden Befehl für die Datenbank „Orders“ aus: 
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH 
         (TYPE = RDBMS, 
@@ -82,7 +82,7 @@ Um eine externe Datenquelle zu erstellen, führen Sie den folgenden Befehl für 
     ) ;
 
 ### <a name="external-tables"></a>Externe Tabellen
-Erstellen Sie eine externe Tabelle, für die Orders-Datenbank, die die Definition der Tabelle CustomerInformation entspricht:
+Erstellen Sie eine externe Tabelle in der Datenbank „Orders“, die der Definition der Tabelle „CustomerInformation“ entspricht:
 
     CREATE EXTERNAL TABLE [dbo].[CustomerInformation] 
     ( [CustomerID] [int] NOT NULL, 
@@ -91,8 +91,8 @@ Erstellen Sie eine externe Tabelle, für die Orders-Datenbank, die die Definitio
     WITH 
     ( DATA_SOURCE = MyElasticDBQueryDataSrc) 
 
-## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Führen Sie eine Beispielabfrage für elastische Datenbanken T-SQL
-Nachdem Sie Ihre externen Tabellen und der externen Datenquelle definiert haben jetzt können T-SQL Sie die externe Tabellen abzufragen. Führen Sie diese Abfrage für die Orders-Datenbank: 
+## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Ausführen einer T-SQL-Abfrage für eine elastische Beispieldatenbank
+Nachdem Sie die externe Datenquelle und die externen Tabellen definiert haben, können Sie jetzt T-SQL verwenden, um externe Tabellen abzufragen. Führen Sie für die Datenbank „Orders“ diese Abfrage aus: 
 
     SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company 
     FROM OrderInformation 
@@ -100,14 +100,14 @@ Nachdem Sie Ihre externen Tabellen und der externen Datenquelle definiert haben 
     ON CustomerInformation.CustomerID = OrderInformation.CustomerID 
 
 ## <a name="cost"></a>Kosten
-Derzeit ist die Funktion der elastischen Datenbank Abfrage in die Kosten der Azure SQL-Datenbank enthalten.  
+Derzeit ist die Abfragefunktion für elastische Datenbanken in den Kosten für Ihre Azure SQL-Datenbank enthalten.  
 
-Weitere Informationen zur Preisgestaltung finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database). 
+Preisinformationen finden Sie unter [Preise für SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Einen Überblick über die flexible Abfrage finden Sie unter [elastische Abfrageübersicht](sql-database-elastic-query-overview.md).
-* Syntax und Beispiel-Abfragen für vertikal partitionierten Daten, finden Sie unter [vertikal Abfragen partitionierte Daten)](sql-database-elastic-query-vertical-partitioning.md)
-* Ein Lernprogramm horizontale Partitionierung (Sharding) finden Sie unter [erste Schritte mit flexible Abfrage für die horizontale Partitionierung (Sharding)](sql-database-elastic-query-getting-started.md).
-* Syntax und Beispiel Abfragen von horizontal partitionierten Daten, finden Sie unter [Abfragen von horizontal partitionierte Daten)](sql-database-elastic-query-horizontal-partitioning.md)
-* Finden Sie unter [sp\_ausführen \_remote](https://msdn.microsoft.com/library/mt703714) für eine gespeicherte Prozedur, die auf einem einzelnen Azure SQL-Remotedatenbank oder eine Gruppe von Datenbanken, die als Shards in einem horizontalen Partitionierungsschema für eine Transact-SQL-Anweisung ausgeführt wird.
+* Eine Übersicht über elastische Abfragen finden Sie unter [Übersicht über elastische Abfragen in Azure SQL-Datenbank](sql-database-elastic-query-overview.md).
+* Die Syntax und Beispiele für Abfragen von vertikal partitionierten Daten finden Sie unter [Abfragen von vertikal partitionierten Daten](sql-database-elastic-query-vertical-partitioning.md).
+* Ein Tutorial zur horizontalen Partitionierung (Sharding) finden Sie unter [Erste Schritte mit elastischen Abfragen für horizontale Partitionierung (Sharding)](sql-database-elastic-query-getting-started.md).
+* Die Syntax und Beispiele für Abfragen von horizontal partitionierten Daten finden Sie unter [Abfragen von horizontal partitionierten Daten](sql-database-elastic-query-horizontal-partitioning.md).
+* Unter [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) finden Sie eine gespeicherte Prozedur, mit der eine Transact-SQL-Anweisung für eine einzelne Remoteinstanz von Azure SQL-Datenbank oder für eine Gruppe von Datenbanken ausgeführt wird, die als Shards in einem Schema mit horizontaler Partitionierung dienen.

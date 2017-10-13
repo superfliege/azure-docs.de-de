@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d60b1d44844c449e0f66dc0107a25531569d097b
-ms.openlocfilehash: a91da330e677c85f16f6f4e506613576b6507d7c
-ms.contentlocale: de-de
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 57f2200e541eeb629f72d60ffa0acb2d8233c018
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatisieren der NSG-Überwachung mit der Azure Network Watcher-Sicherheitsgruppenansicht
 
 Kunden stehen häufig vor der Herausforderung, den Sicherheitsstatus ihrer Infrastruktur abzufragen. Diese Abfrage muss auch für die virtuellen Computer in Azure durchgeführt werden. Es ist wichtig, ein ähnliches Sicherheitsprofil basierend auf den Regeln von Netzwerksicherheitsgruppen (NSGs) anzuwenden. In der Sicherheitsgruppenansicht können Sie jetzt die Liste der Regeln abrufen, die innerhalb einer NSG auf einen virtuellen Computer angewendet sind. Sie können ein Gold-Sicherheitsprofil für die NSG definieren, die Sicherheitsgruppenansicht im Wochenrhythmus initiieren, die Ausgabe mit dem Gold-Profil vergleichen und einen Bericht erstellen. Auf diese Weise können Sie problemlos alle virtuellen Computer identifizieren, die nicht dem vorgeschriebenen Sicherheitsprofil entsprechen.
@@ -190,7 +188,6 @@ SideIndicator            : <=
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Einstellungen geändert wurden, finden Sie unter [Verwalten von Netzwerksicherheitsgruppen](../virtual-network/virtual-network-manage-nsg-arm-portal.md) Informationen zum Ermitteln der fraglichen Netzwerksicherheitsgruppe und Sicherheitsregeln.
-
 
 
 

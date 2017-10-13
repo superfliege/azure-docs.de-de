@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: iainfou
 ms.openlocfilehash: 23c30c954875598ce3e01db137b0ef8cda9779f4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-and-uploading-a-virtual-hard-disk-that-contains-the-linux-operating-system"></a>Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält
 > [!IMPORTANT] 
@@ -40,7 +40,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Elemente 
 
 * **Azure-Befehlszeilenschnittstelle** : Installieren Sie die neueste [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) , um die VHD hochzuladen.
 
-<a id="prepimage"> </a>
+<a id="prepimage"></a>
 
 ## <a name="step-1-prepare-the-image-to-be-uploaded"></a>Schritt 1: Vorbereiten des hochzuladenden Images
 Azure unterstützt eine Vielzahl von Linux-Distributionen (siehe [Unterstützte Distributionen](../endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Die folgenden Artikel führen Sie durch die Vorbereitung der verschiedenen Linux-Distributionen, die in Azure unterstützt werden. Nachdem Sie die Schritte in den folgenden Leitfäden ausgeführt haben, kehren Sie hierher zurück, sobald Sie über eine VHD-Datei verfügen, die in Azure hochgeladen werden kann:
@@ -60,7 +60,7 @@ Azure unterstützt eine Vielzahl von Linux-Distributionen (siehe [Unterstützte 
 
 Beachten Sie auch die **[Installationshinweise für Linux](../create-upload-generic.md#general-linux-installation-notes)**. Diese enthalten allgemeine Tipps zur Vorbereitung von Linux-Images für Azure.
 
-<a id="connect"> </a>
+<a id="connect"></a>
 
 ## <a name="step-2-prepare-the-connection-to-azure"></a>Schritt 2: Vorbereiten der Verbindung mit Azure
 Stellen Sie sicher, dass Sie die Azure-Befehlszeilenschnittstelle im klassischen Bereitstellungsmodell (`azure config mode asm`) verwenden, und melden Sie sich anschließend bei Ihrem Konto an:
@@ -70,7 +70,7 @@ azure login
 ```
 
 
-<a id="upload"> </a>
+<a id="upload"></a>
 
 ## <a name="step-3-upload-the-image-to-azure"></a>Schritt 3: Hochladen des Image in Azure
 Zum Hochladen der VHD-Datei benötigen Sie ein Speicherkonto. Sie können ein vorhandenes Speicherkonto auswählen oder [ein neues erstellen](../../../storage/common/storage-create-storage-account.md).

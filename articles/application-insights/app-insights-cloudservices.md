@@ -16,10 +16,10 @@ ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: bwren
 ms.openlocfilehash: c12b225aa351d0c272243469550791a6840091e0
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
 [Microsoft Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) können mit [Application Insights][start] auf Verfügbarkeit, Leistung, Fehler und Verwendung überwacht werden. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.
@@ -104,7 +104,7 @@ Hierdurch haben Sie die Möglichkeit, allen Rollen benutzerdefinierte Geschäfts
 
 Konfigurieren Sie in Visual Studio das Application Insights SDK für jedes Cloud-App-Projekt.
 
-1. **Webrollen**: Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **Application Insights konfigurieren** oder **Hinzufügen > Application Insights-Telemetrie**.
+1. **Webrollen**: Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **Application Insights konfigurieren** oder **Hinzufügen &gt; Application Insights-Telemetrie**.
 
 2. **Workerrollen**: 
  * Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten**.

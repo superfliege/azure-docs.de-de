@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 8f693bc51fc9635fae4376137e7e573bf74da7cb
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-pricing-and-billing"></a>Service Bus – Preise und Abrechnung
 Service Bus wird in den Tarifen Standard und [Premium](service-bus-premium-messaging.md) angeboten. Sie können einen Diensttarif für jeden von Ihnen erstellten Service Bus-Dienstnamespace auswählen, und diese Tarifauswahl gilt für alle Warteschlangen, Entitäten, die in diesem Namespace erstellt werden.
@@ -99,4 +98,3 @@ Ja. Es gibt keine Verbindungsgebühren für das Senden von Ereignissen über HTT
 * In den [häufig gestellten Fragen zu Service Bus](service-bus-faq.md#pricing) werden einige allgemeine Fragen zur Preisgestaltung und Abrechnung für Service Bus beantwortet.
 
 [Azure portal]: https://portal.azure.com
-

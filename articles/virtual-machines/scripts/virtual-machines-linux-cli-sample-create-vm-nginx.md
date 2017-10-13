@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 0a6c33d84f1fab85e6ed2933c47c041ca2e59520
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-vm-with-nginx"></a>Erstellen eines virtuellen Computers mit NGINX
 
 Dieses Skript erstellt einen virtuellen Azure-Computer und verwendet die benutzerdefinierte Azure-VM-Skripterweiterung, um NGINX zu installieren. Nachdem das Skript ausgeführt wurde, können Sie die Demonstrationswebsite über die öffentliche IP-Adresse des virtuellen Computers aufrufen.
@@ -34,7 +32,7 @@ Dieses Skript erstellt einen virtuellen Azure-Computer und verwendet die benutze
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nginx/create-vm-nginx.sh "Schnelles Erstellen einer VM")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nginx/create-vm-nginx.sh "Quick Create VM")]
 
 ## <a name="custom-script-extension"></a>Benutzerdefinierte Skripterweiterung
 
@@ -75,4 +73,3 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
 
 Zusätzliche VM-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Linux-VMs in Azure](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-

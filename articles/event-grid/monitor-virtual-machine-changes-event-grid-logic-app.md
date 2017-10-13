@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: LADocs; estfan
 ms.openlocfilehash: 4d4c16860dbec10162797a13c8f9f57106abd17f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Überwachen von Änderungen an einem virtuellen Computer mit Azure Event Grid und Logic Apps
 
@@ -64,7 +64,7 @@ Erstellen Sie zuerst eine Logik-App, und fügen Sie einen Ereignisrastertrigger 
    | **Name** | *{Name-Ihrer-Logik-App}* | Geben Sie einen eindeutigen Namen für die Logik-App an. | 
    | **Abonnement** | *{Ihr-Azure-Abonnement}* | Wählen Sie für alle Dienste in diesem Tutorial das gleiche Azure-Abonnement. | 
    | **Ressourcengruppe** | *{Ihre-Azure-Ressourcengruppe}* | Wählen Sie für alle Dienste in diesem Tutorial die gleiche Azure-Ressourcengruppe. | 
-   | **Location** | *{Ihre-Azure-Region}* | Wählen Sie für alle Dienste in diesem Tutorial die gleiche Azure-Region. | 
+   | **Standort** | *{Ihre-Azure-Region}* | Wählen Sie für alle Dienste in diesem Tutorial die gleiche Azure-Region. | 
    | | | 
 
 4. Wählen Sie dann **An Dashboard anheften** und **Erstellen** aus.
@@ -182,7 +182,7 @@ Fügen Sie nun eine [*Aktion*](../logic-apps/logic-apps-what-are-logic-apps.md#l
 
    | Einstellung | Empfohlener Wert | Beschreibung | 
    | ------- | --------------- | ----------- | 
-   | **To** | *{Empfänger-E-Mail-Adresse}* |Geben Sie die E-Mail-Adresse des Empfängers ein. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. | 
+   | **An** | *{Empfänger-E-Mail-Adresse}* |Geben Sie die E-Mail-Adresse des Empfängers ein. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. | 
    | **Betreff** | Ressource aktualisiert: **Betreff**| Geben Sie den Inhalt des Betreffs der E-Mail ein. Geben Sie für dieses Tutorial den vorgeschlagenen Text ein, und wählen Sie das Feld **Betreff** des Ereignisses. Hier enthält Ihr E-Mail-Betreff den Namen für die aktualisierte Ressource (virtueller Computer). | 
    | **Text** | Ressourcengruppe: **Thema** <p>Ereignistyp: **Ereignistyp**<p>Ereignis-ID: **ID**<p>Zeit: **Ereigniszeit** | Geben Sie den Inhalt des Texts der E-Mail ein. Geben Sie für dieses Tutorial den vorgeschlagenen Text ein, und wählen Sie die Felder **Thema**, **Ereignistyp**, **ID** und **Ereigniszeit** des Ereignisses, damit Ihre E-Mail den Namen der Ressourcengruppe, den Ereignistyp, den Ereigniszeitstempel und die Ereignis-ID für das Update einschließt. <p>Um Ihrem Inhalt leere Zeilen hinzuzufügen, drücken Sie UMSCHALT + EINGABETASTE. | 
    | | | 

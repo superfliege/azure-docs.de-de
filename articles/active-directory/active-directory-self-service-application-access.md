@@ -16,12 +16,11 @@ ms.date: 09/06/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: oldportal;it-pro;
-ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
 ms.openlocfilehash: 39c62461c9659b0cb4422de88686283ba462c53b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="self-service-application-access-and-delegated-management-with-azure-active-directory"></a>Self-Service-Anwendungszugriff und delegierte Verwaltung mit Azure Active Directory
 Das Aktivieren von Self-Service-Funktionen für Endbenutzer ist ein häufiges Szenario in IT-Unternehmen. Dort gibt es viele Benutzer und viele Anwendungen, und die am besten informierte Person, die über das Erteilen von Zugriffsrechten entscheidet, ist nicht unbedingt der Verzeichnisadministrator. Oft ist die Person, die am besten darüber entscheiden kann, wer Zugriff auf eine Anwendung erhält, ein Teamleiter oder ein anderer delegierter Administrator. Es ist jedoch der Benutzer, der die App benutzt, und nur er weiß genau, was er zum Ausführen seiner Aufgaben benötigt.
@@ -109,4 +108,3 @@ Die Kachel **Konfigurieren** wird nur angezeigt, wenn die Anwendung vom IT-Admin
 [1]: ./media/active-directory-self-service-application-access/ssaa_admin.PNG
 [2]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app.PNG
 [3]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app_config.PNG
-

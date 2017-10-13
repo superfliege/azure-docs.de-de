@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: fboylu
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: aafa395f8c0593d9597f74cd5cd2a41f26897c6f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Playbook für die Cortana Intelligence-Lösungsvorlage zum Vorhersagen des Wartungsbedarfs in der Luft- und Raumfahrt und weiteren Branchen
 ## <a name="executive-summary"></a>Kurzfassung
@@ -369,5 +368,4 @@ Dieselben Data Warehouses können für die Batchbewertung der Beispielwerte und 
 Abbildung 8. Beispiel für eine Lösungsarchitektur für die vorbeugende Wartung
 
 Weitere Informationen zu den einzelnen Komponenten der Architektur finden Sie in der [Azure](https://azure.microsoft.com/) -Dokumentation.
-
 

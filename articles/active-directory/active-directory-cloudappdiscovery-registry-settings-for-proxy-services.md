@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: b8584809b76d6be12a6f489f0bb819081d1803d2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cloud-app-discovery-registry-settings-for-proxy-services"></a>Cloud App Discovery-Registrierungseinstellungen für Proxydienste
 In diesem Thema wird beschrieben, wie Sie den erforderlichen Port auf den Computern mit dem Cloud App Discovery-Agent festlegen. Standardmäßig verwendet der Cloud App Discovery-Agent nur die Ports 80 oder 443. Wenn Sie planen, Cloud App Discovery in einer Umgebung mit einem Proxyserver zu installieren, der einen benutzerdefinierten Port (weder 80 noch 443) verwendet, müssen Sie die Agents zur Verwendung dieses Ports konfigurieren. Die Konfiguration basiert auf einem Registrierungsschlüssel.
@@ -54,5 +53,4 @@ In diesem Thema wird beschrieben, wie Sie den erforderlichen Port auf den Comput
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Wie ermittle ich nicht genehmigte Cloud-Apps, die in meiner Organisation verwendet werden?](active-directory-cloudappdiscovery-whatis.md) 
-
 

@@ -1,29 +1,29 @@
 
 
-## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>Verwenden Sie das Portal auf einen virtuellen Computer in ein anderes Abonnement verschieben
-Sie können einen virtuellen Computer verschieben, und dieser Ressourcen in ein anderes Abonnement, das mithilfe des Portals zugewiesen ist.
+## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>Verschieben eines virtuellen Computers in ein anderes Abonnement mithilfe des Portals
+Sie können einen virtuellen Computer und die dazugehörigen Ressourcen mithilfe des Portals in ein anderes Abonnement verschieben.
 
-1. Öffnen der [Azure-Portal](https://portal.azure.com).
-2. Klicken Sie auf **Durchsuchen** > **VMs** , und wählen Sie den virtuellen Computer, die Sie aus der Liste verschieben möchten.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+2. Klicken Sie auf **Durchsuchen** > **Virtuelle Computer**, und wählen Sie in der Liste den zu verschiebenden virtuellen Computer aus.
    
-    ![Screenshot des Essentials-Abschnitts, in dem Sie auf dem Blatt "Move-Ressourcen" öffnen das Stiftsymbol klicken.](./media/virtual-machines-common-move-vm/move-button.png)
-3. In der **Essentials** Abschnitt, klicken Sie auf die **Abonnement ändern** Bleistift neben den Namen des Abonnements. Die **Verschieben von Ressourcen** Blatt wird geöffnet.
+    ![Screenshot des Abschnitts „Essentials“, in dem Sie auf das Stiftsymbol klicken, um das Blatt „Ressourcen verschieben“ zu öffnen.](./media/virtual-machines-common-move-vm/move-button.png)
+3. Klicken Sie im Abschnitt **Zusammenfassung** neben dem Abonnementnamen auf das Stiftsymbol für **Abonnement ändern**. Das Blatt **Ressourcen verschieben** wird geöffnet.
    
-    ![Screenshot des Blatts Ressourcen verschieben.](./media/virtual-machines-common-move-vm/move.png)
-4. Wählen Sie in den Ressourcen zu verschieben. In den meisten Fällen sollten Sie alle aufgelisteten optionalen Ressourcen verschieben.
-5. Wählen Sie die **Abonnement** , in dem den virtuelle Computer verschoben werden sollen.
-6. Wählen Sie eine vorhandene **Ressourcengruppe** , oder geben Sie einen Namen für eine neue Ressourcengruppe erstellt haben.
-7. Wenn Sie fertig sind, wählen, die Sie beachten, dass die neue Ressource IDs erstellt werden und diese müssen mit dem virtuellen Computer verwendet werden, nachdem es verschoben wird, klicken Sie dann auf **OK**.
+    ![Screenshot des Blatts „Ressourcen verschieben“](./media/virtual-machines-common-move-vm/move.png)
+4. Wählen Sie alle Ressourcen aus, die verschoben werden sollen. In den meisten Fällen sollten Sie alle aufgeführten optionalen Ressourcen verschieben.
+5. Wählen Sie das **Abonnement** aus, in das Sie den virtuellen Computer verschieben möchten.
+6. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder geben Sie einen Namen ein, um eine neue Ressourcengruppe zu erstellen.
+7. Bestätigen Sie anschließend den Hinweis, dass neue Ressourcen-IDs erstellt werden und nach dem Verschieben für den virtuellen Computer verwendet werden müssen, und klicken Sie auf **OK**.
 
-## <a name="use-the-portal-to-move-a-vm-to-another-resource-group"></a>Verwenden Sie das Portal so verschieben Sie einen virtuellen Computer in einer anderen Ressourcengruppe
-Sie können einen virtuellen Computer verschieben, und dieser Ressourcen in einer anderen Ressourcengruppe, die mithilfe des Portals zugewiesen ist.
+## <a name="use-the-portal-to-move-a-vm-to-another-resource-group"></a>Verschieben eines virtuellen Computers in eine andere Ressourcengruppe mithilfe des Portals
+Sie können einen virtuellen Computer und die dazugehörigen Ressourcen mithilfe des Portals in eine andere Ressourcengruppe verschieben.
 
-1. Öffnen der [Azure-Portal](https://portal.azure.com).
-2. Klicken Sie auf **Durchsuchen** > **Ressourcengruppen** , und wählen Sie die Ressourcengruppe, die den virtuellen Computer enthält.
-3. In der **Ressourcengruppe** Blatt select **verschieben** aus dem Menü.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+2. Klicken Sie auf **Durchsuchen** > **Ressourcengruppen**, und wählen Sie die Ressourcengruppe aus, die den virtuellen Computer enthält.
+3. Wählen Sie auf dem Blatt **Ressourcengruppe** die Menüoption **Verschieben** aus.
    
-    ![Screenshot der Schaltfläche Verschieben der Ressource Gruppen im Menü auf.](./media/virtual-machines-common-move-vm/move-rg.png)
-4. In der **Verschieben von Ressourcen** Blatt, wählen Sie die Ressourcen, die verschoben werden, und geben Sie eine vorhandene Ressource Gruppennamen ein, oder wählen Sie eine neue Ressourcengruppe erstellen. Wenn Sie fertig sind, wählen, die Sie beachten, dass die neue Ressource IDs erstellt werden und diese müssen mit dem virtuellen Computer verwendet werden, nachdem es verschoben wird, klicken Sie dann auf **OK**
+    ![Screenshot der Schaltfläche „Verschieben“ im Ressourcengruppenmenü](./media/virtual-machines-common-move-vm/move-rg.png)
+4. Wählen Sie auf dem Blatt **Ressourcen verschieben** die zu verschiebenden Ressourcen aus, und geben Sie dann entweder den Namen einer vorhandenen Ressourcengruppe ein, oder wählen Sie aus, dass eine neue Ressourcengruppe erstellt werden soll. Bestätigen Sie anschließend den Hinweis, dass neue Ressourcen-IDs erstellt werden und nach dem Verschieben für den virtuellen Computer verwendet werden müssen, und klicken Sie auf **OK**
    
-    ![Screenshot des Blatts Ressourcen verschieben.](./media/virtual-machines-common-move-vm/move-rg-list.png)
+    ![Screenshot des Blatts „Ressourcen verschieben“](./media/virtual-machines-common-move-vm/move-rg-list.png)
 

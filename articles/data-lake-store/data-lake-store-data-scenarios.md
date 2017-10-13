@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 5c3e4a4d98922533bcf901108d58329cb951b01c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Verwenden von Azure Data Lake-Speicher für Big Data-Anforderungen
 Es gibt vier wichtige Phasen in der Big Data-Verarbeitung:
@@ -133,4 +132,3 @@ Sie können eine Kombination von Diensten verwenden, um visuelle Darstellungen d
 
 * Sie können beginnen, indem Sie [Daten mithilfe von Azure Data Factory aus Data Lake Store nach Azure SQL Data Warehouse verschieben](../data-factory/copy-activity-overview.md)
 * Danach können Sie [Power BI in Azure SQL Data Warehouse integrieren](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md) , um eine visuelle Darstellung der Daten zu erstellen.
-

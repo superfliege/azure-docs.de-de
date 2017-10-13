@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: fb981f3240799c924464c828b2c835ac5d9879ed
-ms.contentlocale: de-de
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Erste Schritte zum Bereitstellen von On Demand-Inhalten über das Azure-Portal
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -30,7 +29,7 @@ In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie einen einfachen Di
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein Azure-Konto. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/). 
-* Ein Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Erstellen eines Azure Media Services-Kontos mithilfe des Azure-Portals](media-services-portal-create-account.md).
+* Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Erstellen eines Azure Media Services-Kontos mithilfe des Azure-Portals](media-services-portal-create-account.md).
 
 Dieses Lernprogramm enthält die folgenden Aufgaben:
 
@@ -49,7 +48,7 @@ Eines der gängigsten Szenarien bei der Verwendung von Azure Media Services ist 
 
 So starten Sie den Streamingendpunkt:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
 2. Wählen Sie **Einstellungen** > **Streamingendpunkte** aus. 
 3. Wählen Sie den Standard-Streamingendpunkt aus. Das Fenster **DEFAULT STREAMING ENDPOINT DETAILS** (DETAILS ZUM STANDARD-STREAMINGENDPUNKT) wird angezeigt.
 4. Wählen Sie das Symbol **Starten** aus.
@@ -59,14 +58,14 @@ So starten Sie den Streamingendpunkt:
 Um Videos mit Media Services streamen zu können, müssen Sie die Quellvideos hochladen, mit mehreren Bitraten codieren und das Ergebnis veröffentlichen. Der erste Schritt ist in diesem Abschnitt beschrieben. 
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Azure Media Services-Konto aus.
-2. Wählen Sie **Einstellungen** > **Ressourcen**. Wählen Sie die Schaltfläche **Hochladen** aus.
+2. Wählen Sie **Einstellungen** > **Ressourcen**. Wählen Sie die Schaltfläche **Hochladen**.
    
     ![Hochladen von Dateien](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
     Das Fenster **Upload a video asset** (Videoobjekt hochladen) wird angezeigt.
    
    > [!NOTE]
-   > Die Dateigröße für den Videoupload wird von Media Services nicht begrenzt.
+   > Die Dateigröße für den Videoupload ist für Media Services nicht begrenzt.
    > 
    > 
 3. Navigieren Sie auf Ihrem Computer zu dem Video, das Sie hochladen möchten. Wählen Sie das Video und anschließend **OK** aus.  
@@ -84,7 +83,7 @@ So codieren Sie Ihre Inhalte mithilfe von Media Encoder Standard im Azure-Portal
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Azure Media Services-Konto aus.
 2. Wählen Sie **Einstellungen** > **Ressourcen**. Wählen Sie das Medienobjekt aus, das Sie codieren möchten.
 3. Wählen Sie die Schaltfläche **Codieren** aus.
-4. Wählen Sie im Bereich **Medienobjekt codieren** den Prozessor **Media Encoder Standard** und eine Voreinstellung aus. Informationen zu Voreinstellungen finden Sie unter [Verwenden von Azure Media Encoder Standard zum automatischen Generieren einer Reihe von Bitraten](media-services-autogen-bitrate-ladder-with-mes.md) sowie unter [Aufgabenvoreinstellungen für MES (Media Encoder Standard)](media-services-mes-presets-overview.md). Wählen Sie die Voreinstellung aus, die am besten zu Ihrem Eingabevideo passt. Wenn Sie also beispielsweise wissen, dass das Eingabevideo eine Auflösung von 1920 &#215; 1080 Pixel hat, empfiehlt Sie die Voreinstellung **H264 Multiple Bitrate 1080p**. Bei einem Video mit geringer Auflösung (640 &#215; 360) sollte die Voreinstellung **H264 Multiple Bitrate 1080p** nicht verwendet werden.
+4. Wählen Sie im Bereich **Medienobjekt codieren** den Prozessor **Media Encoder Standard** und eine Voreinstellung aus. Informationen zu Voreinstellungen finden Sie unter [Verwenden von Azure Media Encoder Standard zum automatischen Generieren einer Reihe von Bitraten](media-services-autogen-bitrate-ladder-with-mes.md) sowie unter [Aufgabenvoreinstellungen für MES (Media Encoder Standard)](media-services-mes-presets-overview.md). Wählen Sie die Voreinstellung aus, die am besten zu Ihrem Eingabevideo passt. Wenn Sie also beispielsweise wissen, dass das Eingabevideo eine Auflösung von 1920 &#215; 1080 Pixel hat, sollten Sie die Voreinstellung **H264 Multiple Bitrate 1080p** wählen. Bei einem Video mit geringer Auflösung (640 &#215; 360) sollte die Voreinstellung **H264 Multiple Bitrate 1080p** nicht verwendet werden.
    
    Zur einfacheren Ressourcenverwaltung können Sie den Namen des Ausgabemedienobjekts und den Namen des Auftrags bearbeiten.
    
@@ -99,8 +98,8 @@ Sie können den Status des Codierungsauftrags überwachen, indem Sie oben auf de
 ## <a name="publish-content"></a>Veröffentlichen von Inhalten
 Damit Sie Benutzern eine URL zum Streamen oder Herunterladen Ihrer Inhalte zur Verfügung stellen können, müssen Sie zunächst einen Locator erstellen, um das Medienobjekt zu veröffentlichen. Locators ermöglichen den Zugriff auf Dateien im Medienobjekt. Azure Media Services unterstützt zwei Arten von Locators: 
 
-* **Streaminglocators (OnDemandOrigin).** Streaminglocators werden für adaptives Streaming verwendet. Beispiele für adaptives Streaming sind HLS, Smooth Streaming und MPEG-DASH. Für die Erstellung eines Streaminglocators muss Ihr Medienobjekt eine ISM-Datei enthalten. 
-* **Progressive Locators (Shared Access Signature, SAS).** Progressive Locators werden verwendet, um Videos per progressivem Download bereitzustellen.
+* **Streaminglocators (OnDemandOrigin)**. Streaminglocators werden für adaptives Streaming verwendet. Beispiele für adaptives Streaming sind HLS, Smooth Streaming und MPEG-DASH. Für die Erstellung eines Streaminglocators muss Ihr Medienobjekt eine ISM-Datei enthalten. 
+* **Progressive Locators (Shared Access Signature, SAS)**. Progressive Locators werden verwendet, um Videos per progressivem Download bereitzustellen.
 
 Eine HLS-Streaming-URL können Sie erstellen, indem Sie *(format=m3u8-aapl)* an die URL anhängen:
 
@@ -157,4 +156,3 @@ Folgende Überlegungen sollten berücksichtigt werden:
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-

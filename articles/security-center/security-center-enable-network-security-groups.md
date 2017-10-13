@@ -1,6 +1,6 @@
 ---
-title: Aktivieren der Netzwerk-Sicherheitsgruppen in Azure Security Center | Microsoft Docs
-description: Dieses Dokument veranschaulicht das Implementieren der Empfehlung Azure Security Center ** aktivieren Netzwerk Sicherheit Gruppen **.
+title: Aktivieren von Netzwerksicherheitsgruppen in Azure Security Center | Microsoft Docs
+description: In diesem Dokument erfahren Sie, wie Sie die von Azure Security Center empfohlene Aktivierung von Netzwerksicherheitsgruppen implementieren.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -15,50 +15,50 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
 ms.openlocfilehash: 1e034d59d8847f237fa0d4c772344d45cd618576
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="enable-network-security-groups-in-azure-security-center"></a>Aktivieren der Netzwerk-Sicherheitsgruppen in Azure Security Center
-Azure Security Center empfiehlt, dass Sie eine Netzwerksicherheitsgruppe (NSG) aktivieren, wenn nicht bereits aktiviert ist. NSGs enthalten eine Liste der Zugriffssteuerungsliste (ACL)-Regeln, die zulassen oder verweigern den Netzwerkdatenverkehr zu Ihrem VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen in diesem Subnetz zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr an einen einzelnen virtuellen Computer eingeschränkt werden durch das Zuordnen einer NSG direkt an den virtuellen Computer weiter. Um zu erfahren, weitere finden Sie unter [neuerungen eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
+# <a name="enable-network-security-groups-in-azure-security-center"></a>Aktivieren von Netzwerksicherheitsgruppen in Azure Security Center
+Azure Security Center empfiehlt die Aktivierung einer Netzwerksicherheitsgruppe (NSG), sofern noch keine aktiviert ist. NSGs enthalten eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von eingehendem Netzwerkdatenverkehr für Ihre VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einem einzelnen virtuellen Computer weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird. Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
 
-Wenn Sie keine NSGs aktiviert Security Center stellt zwei Empfehlungen: Aktivieren von Netzwerksicherheitsgruppen für Subnetze und Netzwerksicherheitsgruppen auf virtuellen Computern zu aktivieren. Sie wählen Sie die Ebene, Subnetz oder den virtuellen Computer NSGs anwenden.
+Sollten keine Netzwerksicherheitsgruppen aktiviert sein, stellt Security Center zwei Empfehlungen bereit: „Netzwerksicherheitsgruppen in Subnetzen aktivieren“ und „Netzwerksicherheitsgruppen auf virtuellen Computern aktivieren“. Sie haben die Wahl, auf welcher Ebene (Subnetz oder virtueller Computer) Sie NSGs anwenden möchten.
 
 > [!NOTE]
-> Dieses Dokument wird den Dienst mithilfe einer beispielbereitstellung eingeführt.  Dies ist keiner detaillierten Anleitung erfahren.
+> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Es ist keine schrittweise Anleitung.
 >
 >
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
-1. In der **Empfehlungen** Blatt select **Netzwerksicherheitsgruppen aktivieren** in Subnetzen oder auf virtuellen Computern.
+1. Wählen Sie auf dem Blatt **Empfehlungen** aus, ob **Netzwerksicherheitsgruppen** in Subnetzen oder auf virtuellen Computern aktiviert werden sollen.
    ![Aktivieren von Netzwerksicherheitsgruppen][1]
-2. Daraufhin wird das Blatt **fehlende Netzwerksicherheitsgruppen konfigurieren** für ein Subnetz oder für virtuelle Computer, abhängig von der Empfehlung, die Sie ausgewählt haben. Wählen Sie ein Subnetz oder eine virtuelle Maschine so konfigurieren Sie eine NSG auf.
+2. Daraufhin wird das Blatt zum **Konfigurieren fehlender Netzwerksicherheitsgruppen** für Subnetze oder virtuelle Computer geöffnet (je nachdem, welche Empfehlung Sie ausgewählt haben). Wählen Sie ein Subnetz oder einen virtuellen Computer aus, um eine Netzwerksicherheitsgruppe dafür zu konfigurieren.
 
-   ![Konfigurieren der NSG für Subnetz][2]
+   ![Konfigurieren der NSG (Subnetz)][2]
 
-   ![Konfigurieren der NSG für virtuellen Computer][3]
-3. Auf der **Netzwerksicherheitsgruppe auswählen** Blatt, wählen Sie eine vorhandene NSG oder **neu erstellen** eine NSG zu erstellen.
+   ![Konfigurieren der NSG (virtueller Computer)][3]
+3. Wählen Sie auf dem Blatt **Netzwerksicherheitsgruppe auswählen** eine vorhandene NSG aus, oder wählen Sie **Neu erstellen** aus, um eine NSG zu erstellen.
 
    ![Netzwerksicherheitsgruppe auswählen][4]
 
-Wenn Sie eine NSG erstellen, führen Sie die Schritte in [NSGs mit der Azure-Portal verwalten](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) eine NSG zu erstellen und Festlegen von Sicherheitsregeln.
+Falls Sie eine NSG erstellen möchten, führen Sie die Schritte unter [Verwalten von NSGs mithilfe des Azure-Portals](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) aus, um eine NSG zu erstellen und Sicherheitsregeln festzulegen.
 
-## <a name="see-also"></a>Weitere Informationen:
-In diesem Artikel wurde gezeigt, wie zur Umsetzung der Empfehlung Sicherheitscenter "Netzwerksicherheitsgruppen aktivieren", für die Subnetze oder virtuellen Computern. Weitere Informationen zum Aktivieren von Netzwerksicherheitsgruppen finden Sie unter den folgenden:
+## <a name="see-also"></a>Weitere Informationen
+In diesem Artikel haben Sie erfahren, wie Sie die von Security Center empfohlene Aktivierung von Netzwerksicherheitsgruppen für Subnetze oder virtuelle Computer implementieren. Weitere Informationen zu NSGs finden Sie hier:
 
 * [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
-* [NSGs mit der Azure-Portal verwalten](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [Verwalten von NSGs mithilfe des Azure-Portals](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 
-Weitere Informationen zum Security Center finden Sie in der folgenden:
+Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md) – Informationen zum Konfigurieren der Sicherheitsrichtlinien für Ihre Azure-Abonnements und Ressourcengruppen.
-* [Verwalten von Empfehlungen zur Sicherheit in Azure Security Center](security-center-recommendations.md) – erfahren Sie, wie Empfehlungen Ihrer Azure-Ressourcen zu schützen.
-* [Sicherheit-Systemüberwachung in Azure Security Center](security-center-monitoring.md) – erfahren Sie, wie die Integrität der Azure-Ressourcen zu überwachen.
-* [Verwalten von und reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – Informationen zum Verwalten von und reagieren auf Sicherheitswarnungen.
-* [Überwachung mit Azure Security Center partnerlösungen](security-center-partner-solutions.md) – erfahren Sie, wie Überwachung des Integritätsstatus von partnerlösungen.
-* [Azure Security Center – häufig gestellte Fragen](security-center-faq.md) – häufig gestellte Fragen zur Verwendung des Diensts suchen.
-* [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) --Neuigkeiten zu Azure-Sicherheit und Informationen.
+* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+* [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
+* [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+* [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
+* [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+* [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
 
 <!--Image references-->
 [1]: ./media/security-center-enable-nsg/enable-nsg.png

@@ -14,12 +14,11 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.author: andredm
 ms.reviewer: rqureshi
+ms.openlocfilehash: 77315171754304c965f296670fbba3a4751a3656
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 73e3211416a1d110f1714872290a4156f3d194f7
-ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle
 > [!div class="op_single_selector"]
@@ -151,7 +150,7 @@ Anschließend wird im Beispiel die Rollenzuweisung aus einer Gruppe im Abonnemen
 ## <a name="create-a-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
 So erstellen Sie eine benutzerdefinierte Rolle:
 
-    azure role create --inputfile <file path>
+    azure role definition create --role-definition <file path>
 
 Im folgenden Beispiel wird die benutzerdefinierte Rolle *Virtual Machine Operator*erstellt. Diese benutzerdefinierte Rolle gewährt Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* sowie zum Starten, Neustarten und Überwachen virtueller Computer. Diese benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden. In diesem Beispiel wird eine JSON-Datei als Eingabe genutzt.
 
@@ -160,9 +159,9 @@ Im folgenden Beispiel wird die benutzerdefinierte Rolle *Virtual Machine Operato
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenerstellung – Screenshot](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-2.png)
 
 ## <a name="modify-a-custom-role"></a>Ändern einer benutzerdefinierten Rolle
-Um eine benutzerdefinierte Rolle zunächst zu ändern, verwenden Sie den Befehl `azure role show` , um die Rollendefinition abzurufen. Nehmen Sie zweitens die gewünschten Änderungen an der Rollendefinitionsdatei vor. Verwenden Sie abschließend `azure role set` , um die geänderte Rollendefinition zu speichern.
+Um eine benutzerdefinierte Rolle zunächst zu ändern, verwenden Sie den Befehl `azure role definition list` , um die Rollendefinition abzurufen. Nehmen Sie zweitens die gewünschten Änderungen an der Rollendefinitionsdatei vor. Verwenden Sie abschließend `azure role definition update` , um die geänderte Rollendefinition zu speichern.
 
-    azure role set --inputfile <file path>
+    azure role definition update --role-definition <file path>
 
 Im folgenden Beispiel wird der Vorgang *Microsoft.Insights/diagnosticSettings/* zu **Actions** und ein Azure-Abonnement zu **AssignableScopes** der benutzerdefinierten Rolle „Virtual Machine Operator“ (Mitwirkender für virtuelle Computer) hinzugefügt.
 
@@ -171,7 +170,7 @@ Im folgenden Beispiel wird der Vorgang *Microsoft.Insights/diagnosticSettings/* 
 ![Azure-Befehlszeile für RBAC – Azure-Rollenfestlegung – Screenshot](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set2.png)
 
 ## <a name="delete-a-custom-role"></a>Löschen einer benutzerdefinierten Rolle
-Verwenden Sie zum Löschen einer benutzerdefinierten Rolle zuerst den Befehl `azure role show` , um die **ID** der Rolle zu ermitteln. Führen Sie anschließend den Befehl `azure role delete` aus, um die Rolle unter Angabe der **ID**zu löschen.
+Verwenden Sie zum Löschen einer benutzerdefinierten Rolle zuerst den Befehl `azure role definition list` , um die **ID** der Rolle zu ermitteln. Führen Sie anschließend den Befehl `azure role definition delete` aus, um die Rolle unter Angabe der **ID**zu löschen.
 
 Im folgenden Beispiel wird die benutzerdefinierte Rolle *Virtual Machine Operator* entfernt.
 
@@ -183,7 +182,7 @@ Zum Auflisten der Rollen, die in einem Bereich für die Zuweisung verfügbar sin
 Der folgende Befehl führt alle Rollen auf, die für die Zuweisung im ausgewählten Abonnement verfügbar sind.
 
 ```
-azure role list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
+azure role definition list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
 ```
 
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenliste – Screenshot](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list1.png)
@@ -191,12 +190,11 @@ azure role list --json | jq '.[] | {"name":.properties.roleName, type:.propertie
 Im folgenden Beispiel ist die benutzerdefinierte Rolle *Virtual Machine Operator* im Abonnement *Production4* nicht verfügbar, da dieses Abonnement nicht in **AssignableScopes** für die Rolle enthalten ist.
 
 ```
-azure role list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'
+azure role definition list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'
 ```
 
 ![Azure-Befehlszeile für RBAC – Azure-Rollenliste für benutzerdefinierte Rollen – Screenshot](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
-
 

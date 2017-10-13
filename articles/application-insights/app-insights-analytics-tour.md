@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ccea92dda99c3b76cbb7d37b20ce810b210a8217
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Einführung in Analytics in Application Insights
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Log Analytics-Abfragesprache beschrieben.
@@ -570,7 +569,7 @@ So überprüfen Sie, ob eine benutzerdefinierte Dimension einen bestimmten Typ h
 Sie können Ihre Ergebnisse an ein Dashboard anheften, um eine Übersicht über Ihre wichtigsten Diagramme und Tabellen zu erhalten.
 
 * [Freigegebenes Azure-Dashboard](app-insights-dashboards.md#share-dashboards): Klicken Sie auf das Stecknadelsymbol. Bevor Sie dies tun, müssen Sie über ein freigegebenes Dashboard verfügen. Öffnen Sie im Azure-Portal ein Dashboard (oder erstellen Sie es), und klicken Sie auf „Freigeben“.
-* [Power BI-Dashboard](app-insights-export-power-bi.md): Klicken Sie auf „Export“ > „Power BI Query“ (Exportieren > Power BI-Abfrage). Ein Vorteil dieser alternativen Vorgehensweise besteht darin, dass Sie Ihre Abfrage neben anderen Ergebnissen aus unterschiedlichen Quellen anzeigen können.
+* [Power BI-Dashboard](app-insights-export-power-bi.md): Klicken Sie auf „Export“ &gt; „Power BI Query“ (Exportieren &gt; Power BI-Abfrage). Ein Vorteil dieser alternativen Vorgehensweise besteht darin, dass Sie Ihre Abfrage neben anderen Ergebnissen aus unterschiedlichen Quellen anzeigen können.
 
 ## <a name="combine-with-imported-data"></a>Kombinieren mit importierten Daten
 
@@ -714,4 +713,3 @@ Erweiterte Abfragen:
 * In der [Kurzübersicht für SQL-Benutzer](https://aka.ms/sql-analytics) finden Sie eine Übersetzung der gängigsten Sprachen.
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-

@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: d7a761310782faab1dda023785f93cf90742e2ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-cordovaphonegap"></a>Erste Schritte mit Azure Mobile Engagement für Cordova/Phonegap
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -35,7 +35,7 @@ In diesem Lernprogramm erstellen Sie auf dem Mac eine leere Cordova-App und inte
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
 * Xcode, den Sie aus dem Mac App Store installieren können (für die Bereitstellung in iOS)
-* [Android-SDK & Emulator](http://developer.android.com/sdk/installing/index.html) (für die Bereitstellung in Android)
+* [Android-SDK &amp; Emulator](http://developer.android.com/sdk/installing/index.html) (für die Bereitstellung in Android)
 * Pushbenachrichtigungszertifikat (P12), das Sie im Apple Dev Center für APNS abrufen können
 * GCM-Projektnummer, die Sie in der Google-Entwicklerkonsole für GCM abrufen können
 * [Cordova-Plug-In für Mobile Engagement](https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-engagement)

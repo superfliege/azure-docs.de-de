@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/20/2017
 ms.author: sstein
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 53bfbd602c2c395d510529eacd5b8075b20437ab
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-recommendations"></a>Empfehlungen zur Leistung
 
@@ -81,6 +80,5 @@ Empfehlungen zum Beheben von Schemaproblemen werden angezeigt, wenn der Azure SQ
 * Weitere Informationen zum automatischen Überwachen der Datenbankleistung mit der automatisierten Diagnose und der Ursachenanalyse von Leistungsproblemen finden Sie unter [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md).
 * Weiter Informationen zur Verwendung von Leistungsempfehlungen im Azure-Portal finden Sie unter [Performance recommendations in the Azure portal (Leistungsempfehlungen im Azure-Portal)](sql-database-advisor-portal.md).
 * Unter [Query Performance Insight](sql-database-query-performance.md) erfahren Sie, wie Sie die Auswirkungen Ihrer wichtigsten Abfragen auf die Leistung anzeigen und untersuchen können.
-
 
 

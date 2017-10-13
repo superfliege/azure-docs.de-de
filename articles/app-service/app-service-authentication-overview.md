@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
+ms.openlocfilehash: 4ba4155515e587038ffe2dbca064ad27aca97445
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: b67f95847ac3228aa1d04d89af7e9fe4eeff3220
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authentifizierung und Autorisierung in Azure App Service
 ## <a name="what-is-app-service-authentication--authorization"></a>Was ist App Service-Authentifizierung/Autorisierung?
@@ -150,11 +149,11 @@ Informationen zur Verwendung des clientgesteuerten Flusses für Google finden Si
 
 * [Verwenden des Google-Anmelde-SDK für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 
-### <a name="api-applications"></a>API-Anwendungen
-In den folgenden Tutorials erfahren Sie, wie Sie Ihre API-Apps schützen können:
+<!-- ### API applications
+The following tutorials show how to protect your API apps:
 
-* [Benutzerauthentifizierung für API-Apps in Azure App Service][apia-user]
-* [Dienstprinzipalauthentifizierung für API-Apps in Azure App Service][apia-service]
+* [User authentication for API Apps in Azure App Service][apia-user]
+* [Service principal authentication for API Apps in Azure App Service][apia-service] -->
 
 [iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
 [Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
@@ -175,4 +174,3 @@ In den folgenden Tutorials erfahren Sie, wie Sie Ihre API-Apps schützen können
 [ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
 [ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
 [ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
-

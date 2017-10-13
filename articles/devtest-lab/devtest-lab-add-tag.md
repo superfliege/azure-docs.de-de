@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
 ms.author: tarcher
+ms.openlocfilehash: c268c1a10e4a313d0520f96e452ef978b6201115
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: cdf62c2eca23384c4ec5c20547ba7653605f5434
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Hinzufügen von Tags zu einem Lab in Azure DevTest Labs
 
@@ -40,7 +39,7 @@ Jedes Tag besteht aus einem **Name**/**Wert**-Paar. Sie können beispielsweise e
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>Schritte zur Verwaltung von Tags in einem vorhandenen Lab
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 1. Wählen Sie ggf. **Weitere Dienste** und dann in der Liste **DevTest Labs** aus. Ihr Lab wird unter Umständen bereits auf dem Dashboard unter **Alle Ressourcen** angezeigt.
 1. Wählen Sie in der Liste der Labs das Lab aus, in dem Sie Tags hinzufügen oder verwalten möchten.  
 1. Wählen Sie im Bereich **Übersicht** des Labs die Option **Konfiguration und Richtlinien** aus.  
@@ -67,4 +66,3 @@ Der Artikel [Verwenden von Tags zum Organisieren von Azure-Ressourcen](https://d
 ## <a name="next-steps"></a>Nächste Schritte
 * Sie können mithilfe benutzerdefinierter Richtlinien Einschränkungen und Konventionen für Ihr Abonnement festlegen. Bei einer von Ihnen definierten Richtlinie kann es erforderlich sein, dass alle Ressourcen über einen Wert für ein bestimmtes Tag verfügen. Weitere Informationen finden Sie unter [Verwalten aller Richtlinien für ein Lab in Azure DevTest Labs](devtest-lab-set-lab-policy.md).
 * Erkunden Sie den [DevTest Labs-Azure Resource Manager-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
-

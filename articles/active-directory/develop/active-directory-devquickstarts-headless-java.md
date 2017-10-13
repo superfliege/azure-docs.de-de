@@ -1,6 +1,6 @@
 ---
-title: Azure AD-Java-Befehlszeile erste Schritte | Microsoft Docs
-description: Vorgehensweise zum Erstellen einer Java-Befehlszeile-app, die Benutzer meldet sich auf eine API zugreifen.
+title: Erste Schritte mit der Azure AD Java-Befehlszeile | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie eine Java-Befehlszeilen-App erstellen, die Benutzer für den Zugriff auf eine API anmeldet."
 services: active-directory
 documentationcenter: java
 author: navyasric
@@ -16,50 +16,50 @@ ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 91e4a7b2ac454465d5cce4948a4d5f0b542d2b55
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="using-java-command-line-app-to-access-an-api-with-azure-ad"></a>Mithilfe von Java-Befehlszeile App Zugriff auf eine-API bei Azure AD
+# <a name="using-java-command-line-app-to-access-an-api-with-azure-ad"></a>Verwenden der Java-Befehlszeilen-App für den Zugriff auf eine API mit Azure AD
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Azure AD erleichtert einfach und unkompliziert zum Auslagern der identitätsverwaltung für Ihre Web-app, bietet einmaliges an- und Abmeldung mit nur wenigen Codezeilen.  In Java-Web-apps erreichen dies Sie mit der Microsoft-Implementierung von der Community gesteuerte ADAL4J.
+Azure AD erleichtert die Auslagerung der Identitätsverwaltung für Webanwendungen, indem es eine einmalige An- und Abmeldung (Single Sign-on und Single Sign-out) mit nur wenigen Codezeilen ermöglicht.  Für Java-Web-Apps erreichen Sie das Gleiche durch die Microsoft-Implementierung des Community-gestützten ADAL4J.
 
-  Verwenden Sie hier ADAL4J an:
+  Hier verwenden wir ADAL4J für Folgendes:
 
-* Melden Sie den Benutzer in der app mithilfe von Azure AD als Identitätsanbieter an.
-* Einige Informationen über den Benutzer angezeigt.
-* Melden Sie den Benutzer aus einer app.
+* Anmelden von Benutzern an der App mit Azure AD als Identitätsanbieter
+* Anzeigen einiger Informationen zum Benutzer
+* Abmelden des Benutzers von der App
 
-Zu diesem Zweck müssen Sie Folgendes ausführen:
+Dazu müssen Sie folgende Schritte ausführen:
 
 1. Registrieren einer Anwendung in Azure AD
-2. Richten Sie Ihre app aus, um die ADAL4J-Bibliothek verwenden.
-3. Verwenden der Bibliothek ADAL4J an- und Abmelde Anforderungen an Azure AD ausgibt.
-4. Drucken Sie Daten über den Benutzer aus.
+2. Legen Sie fest, dass Ihre App die Bibliothek „ADAL4J“ verwendet.
+3. Verwenden Sie die Bibliothek „ADAL4J“ zur Ausgabe von An- und Abmeldeanforderungen für Azure AD.
+4. Ausdrucken von Informationen zum Benutzer
 
-Um zu beginnen, [Herunterladen der app Skeleton](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip) oder [Laden Sie das vollständige Beispiel](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip).  Sie benötigen auch einen Azure AD-Mandanten, in dem Ihre Anwendung registrieren.  Wenn Sie noch, besitzen keine [erfahren Sie, wie eine](active-directory-howto-tenant.md).
+Beginnen Sie, indem Sie das [Anwendungsgerüst](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip) oder [das vollständige Beispiel herunterladen](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip).  Außerdem benötigen Sie einen Azure AD-Mandanten, bei dem Sie Ihre Anwendung registrieren.  Wenn Sie noch keinen Mandanten haben, [erfahren Sie hier, wie Sie einen erhalten](active-directory-howto-tenant.md).
 
-## <a name="1--register-an-application-with-azure-ad"></a>1.  Registrieren einer Anwendung in Azure AD
-Um Ihre app zur Authentifizierung von Benutzern zu aktivieren, müssen Sie zunächst eine neue Anwendung in Ihrem Mandanten registriert.
+## <a name="1--register-an-application-with-azure-ad"></a>1.  Registrieren einer Anwendung in Azure AD
+Damit Ihre Anwendung Benutzer authentifizieren kann, müssen Sie zunächst in Ihrem Mandanten eine neue Anwendung registrieren.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie in der oberen Menüleiste auf, auf Ihr Konto und unter der **Directory** wählen Sie die Active Directory-Mandanten, wo Ihre Anwendung registriert werden sollen.
-3. Klicken Sie auf **mehr Dienste** im linken Navigationsbereich, und wählen Sie **Azure Active Directory**.
-4. Klicken Sie auf **App Registrierungen** , und wählen Sie **hinzufügen**.
-5. Folgen Sie den Assistenten, und erstellen Sie ein neues **Webanwendung und/oder WebAPI**.
-  * Die **Namen** der Anwendung wird die Anwendung für Endbenutzer beschreiben
-  * Die **Anmelde-URL** ist die base-URL Ihrer App.  Das Skelett Standardwert ist `http://localhost:8080/adal4jsample/`.
-6. Sobald Sie die Registrierung abgeschlossen haben, wird AAD Ihre app eine eindeutige Anwendung-ID zuweisen  Sie benötigen diesen Wert in den nächsten Abschnitten so kopieren Sie ihn aus der Registerkarte "Anwendung".
-7. Aus der **Einstellungen** -> **Eigenschaften** Seite für Ihre Anwendung, aktualisieren Sie die App-ID-URI. Die **App ID-URI** ist ein eindeutiger Bezeichner für Ihre Anwendung.  Die Konvention ist die Verwendung `https://<tenant-domain>/<app-name>`, z. B. `http://localhost:8080/adal4jsample/`.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+2. Klicken Sie auf der oberen Leiste auf Ihr Konto, und wählen Sie in der Liste **Verzeichnis** den Active Directory-Mandanten aus, für den Sie Ihre Anwendungen registrieren möchten.
+3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
+4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen**.
+5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **Webanwendung und/oder Web-API**.
+  * Am **Namen** der Anwendung sollten die Endbenutzer die Funktion der Anwendung ablesen können.
+  * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Der Standardwert des Gerüsts lautet `http://localhost:8080/adal4jsample/`.
+6. Nach Abschluss der Registrierung weist AAD Ihrer App eine eindeutige Anwendungs-ID zu.  Diesen Wert benötigen Sie in den nächsten Abschnitten, kopieren Sie ihn also aus der Registerkarte „Anwendung“.
+7. Aktualisieren Sie auf der Seite **Einstellungen** -> **Eigenschaften** für Ihre Anwendung den App-ID-URI. Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung.  Üblicherweise wird `https://<tenant-domain>/<app-name>` verwendet, z.B. `http://localhost:8080/adal4jsample/`.
 
-Einmal im Portal für Ihre app erstellen eine **Schlüssel** aus der **Einstellungen** Seite für Ihre Anwendung, und kopieren Sie ihn nach unten.  Sie benötigen ihn in Kürze.
+Erstellen Sie im Portal für Ihre App auf der Seite **Einstellungen** einen **Schlüssel** für Ihre Anwendung, und notieren Sie ihn.  Sie benötigen ihn später.
 
-## <a name="2-set-up-your-app-to-use-adal4j-library-and-prerequisites-using-maven"></a>2. Richten Sie Ihre app ADAL4J-Bibliothek und erforderlichen Komponenten mit Maven verwenden
-Konfigurieren Sie hier ADAL4J, um die OpenID Connect-Authentifizierungsprotokoll verwenden.  ADAL4J wird zum an- und Abmelde Anforderungen ausstellen, verwalten die Sitzung des Benutzers und Abrufen von Informationen zum Benutzer, unter anderem verwendet werden.
+## <a name="2-set-up-your-app-to-use-adal4j-library-and-prerequisites-using-maven"></a>2. Festlegen, dass Ihre App die Bibliothek „ADAL4J“ verwendet und Bestimmen der Voreinstellungen für Maven
+Hier konfigurieren wir ADAL4J für die Verwendung des OpenID Connect-Authentifizierungsprotokolls.  ADAL4J wird unter anderem für die Ausgabe von Anmelde- und Abmeldeanforderungen, für die Verwaltung der Benutzersitzungen und für das Abrufen von Benutzerinformationen verwendet.
 
-* Im Stammverzeichnis des Projekts, geöffnet/erstellt `pom.xml` und suchen Sie die `// TODO: provide dependencies for Maven` und Ersetzen Sie durch Folgendes:
+* Öffnen oder erstellen Sie `pom.xml` im Stammverzeichnis des Projekts, suchen Sie `// TODO: provide dependencies for Maven`, und ersetzen Sie es durch Folgendes:
 
 ```Java
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -181,10 +181,10 @@ Konfigurieren Sie hier ADAL4J, um die OpenID Connect-Authentifizierungsprotokoll
 
 
 
-## <a name="3-create-the-java-publicclient-file"></a>3. Die Java-PublicClient-Datei erstellen
-Wie oben angegeben, werden die Graph-API verwendet. zum Abrufen von Daten über den angemeldeten Benutzer. Für diese Option, um uns einfach werden erstellen wir die sowohl eine Datei zur Darstellung einer **Verzeichnisobjekt** und eine einzelne Datei zur Darstellung der **Benutzer** , damit das Muster OO Java verwendet werden kann.
+## <a name="3-create-the-java-publicclient-file"></a>3. Erstellen der Java-PublicClient-Datei
+Wie bereits erwähnt, wird Graph-API zum Abrufen von Daten über den angemeldeten Benutzer verwendet. Das ist einfacher, wenn wir sowohl eine Datei erstellen, die ein **Verzeichnisobjekt** darstellt, als auch eine separate Datei, die den **Benutzer** darstellt. So kann das OO-Muster von Java genutzt werden.
 
-* Erstellen Sie eine Datei namens `DirectoryObject.java` das Lernprogramm zu Data über alle DirectoryObject speichern (Sie können gerne ihn später für andere Graph-Abfragen verwenden, weisen verwenden können) verwendet wird. Sie können Ausschneiden und dadurch von unten einfügen:
+* Erstellen Sie eine Datei namens `DirectoryObject.java` , die grundlegende Informationen zu jedem DirectoryObject speichert (dies kann später für beliebige andere Graph-Abfragen verwendet werden). Fügen Sie mit Ausschneiden/Einfügen Folgendes ein:
 
 ```Java
 import java.io.BufferedReader;
@@ -249,23 +249,23 @@ public class PublicClient {
 
 
 ## <a name="compile-and-run-the-sample"></a>Kompilieren und Ausführen des Beispiels
-Ändern Sie in Ihrem Stammverzeichnis wieder, und führen den folgenden Befehl zum Erstellen des Beispiels einfach zusammen mit `maven`. Dies wird mithilfe der `pom.xml` Datei, die Sie geschrieben, für die Abhängigkeiten haben.
+Wechseln Sie zurück zum Stammverzeichnis, und führen Sie den folgenden Befehl aus, um mit `maven`das gerade zusammengestellte Beispiel zu erstellen. Dabei wird die Datei `pom.xml` verwendet, die Sie für Abhängigkeiten erstellt haben.
 
 `$ mvn package`
 
-Sie verfügen jetzt über eine `adal4jsample.war` Datei Ihre `/targets` Verzeichnis. Sie können bereitstellen, die im Tomcat-Container und besuchen Sie 
+In Ihrem Verzeichnis `/targets` sollte sich nun die Datei `adal4jsample.war` befinden. Diese können Sie in Ihrem Tomcat-Container bereitstellen und die URL besuchen. 
 
 `http://localhost:8080/adal4jsample/`
 
 > [!NOTE]
-> Es ist sehr einfach, eine WAR mit den neuesten Tomcat-Servern bereitstellen. Wechseln Sie einfach zu `http://localhost:8080/manager/` und befolgen Sie die Anweisungen zum Hochladen Ihrer '' adal4jsample.war "Datei. Mit den richtigen Endpunkt tritt ein Autodeploy für Sie.
+> Mit den aktuellen Tomcat-Servern können WAR-Dateien einfach bereitgestellt werden. Navigieren Sie einfach zu `http://localhost:8080/manager/`, und führen Sie die Schritte zum Hochladen der Datei „adal4jsample.war“ aus. Sie wird automatisch mit dem richtigen Endpunkt bereitgestellt.
 > 
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Gratulation! Sie verfügen jetzt über eine funktionierende Java-Anwendung, die zum Authentifizieren von Benutzern, sichere sicherheitskontodatenbanken aufrufen, Web-APIs, die mithilfe von OAuth 2.0, und erhalten grundlegende Informationen über den Benutzer.  Wenn Sie nicht bereits getan haben, ist jetzt die Zeit zum Auffüllen von Ihrem Mandanten mit einigen Benutzern.
+Glückwunsch! Sie haben nun eine funktionierende Java-Anwendung, die Benutzer authentifizieren, Web-APIs über OAuth 2.0 sicher aufrufen und grundlegende Benutzerinformationen abfragen kann.  Sofern nicht bereits geschehen, ist es nun an der Zeit, Ihren Mandanten mit Benutzern zu füllen.
 
-Zu Referenzzwecken im abgeschlossenen Beispiel (ohne die Konfigurationswerte) [dient als eine ZIP hier](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip), oder Sie können von GitHub Klonen:
+Als Referenz stellen wir das vollständige Beispiel (ohne Ihre Konfigurationswerte) [hier als ZIP-Datei bereit](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip). Sie können es alternativ aus GitHub klonen:
 
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
 

@@ -15,12 +15,11 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: danlep
+ms.openlocfilehash: 87d60ae51aaa33b709d272605419fd85eeb5d93d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 653af144eb12cacf955f96a5442efd73add38e88
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-a-lemp-web-server-on-an-azure-vm"></a>Installieren eines LEMP-Webservers auf einem virtuellen Azure-Computer
 In diesem Artikel werden Sie durch die Bereitstellung eines NGINX-Webservers sowie von MySQL und PHP (LEMP-Stack) auf einem virtuellen Ubuntu-Computer in Azure geführt. Der LEMP-Stack ist eine Alternative zum gängigen [LAMP-Stack](tutorial-lamp-stack.md), der auch in Azure installiert werden kann. Um den LEMP-Server in Aktion zu sehen, können Sie optional eine WordPress-Website installieren und konfigurieren. In diesem Tutorial lernen Sie Folgendes:
@@ -71,7 +70,7 @@ Nachdem NGINX installiert und Port 80 für den virtuellen Computer geöffnet wur
 Überprüfen Sie die Version von MySQL mit dem folgenden Befehl (beachten Sie die Großschreibung des `V`-Parameters):
 
 ```bash
-msql -V
+mysql -V
 ```
 
 Es wird empfohlen, das folgende Skript zum Sichern der Installation von MySQL auszuführen:
@@ -177,4 +176,3 @@ Im nächsten Tutorial erfahren Sie, wie Sie Webserver mit SSL-Zertifikaten siche
 [1]: ./media/tutorial-lemp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lemp-stack/nginx.png
-

@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: omravi
+ms.openlocfilehash: 1814459e47280af62450a4093140ab6ab9b765fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: abd66208ab7ac30831f3f1eddb2891ed7bcd3995
-ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-azure-time-series-insights"></a>Was ist Azure Time Series Insights?
 
 Azure Time Series Insights ist ein verwalteter Clouddienst mit Speicher-, Analyse- und Visualisierungskomponenten zur einfachen gleichzeitigen Erfassung, Speicherung, Untersuchung und Analyse unzähliger Ereignisse. Mit Time Series Insights erhalten Sie globale Einblicke in Ihre Daten und können auf dieser Grundlage Ihre IoT-Lösungen schneller validieren und kostenintensive Ausfallzeiten von Geräten vermeiden, indem Sie versteckte Trends und Anomalien erkennen und die Ermittlung zugrunde liegender Ursachen nahezu in Echtzeit durchführen. Time Series Insights erfasst Zeitreihendaten von Ereignisbrokern (z.B. IoT Hubs oder Event Hubs), indiziert die Daten und mustert Daten basierend auf einer konfigurierbaren Aufbewahrungsrichtlinie aus. Benutzer verwenden die Daten entweder über eine intuitive Benutzeroberfläche oder über REST-Abfrage-APIs.
@@ -51,4 +49,3 @@ Azure Time Series Insights ist ein verwalteter Clouddienst mit Speicher-, Analys
 * **Umgebung**: Eine Umgebung ist eine Azure-Ressource mit Erfassungs- und Speicherfunktionen.  Kunden stellen Umgebungen über das Azure-Portal mit der erforderlichen Kapazität bereit.
 * **Ereignisquelle**: Eine Ereignisquelle leitet sich von einem Ereignisbroker, z.B. Azure Event Hubs, ab.  Time Series Insights stellt eine direkte Verbindung mit Ereignisquellen her, und der Datenstrom wird erfasst, ohne dass Sie eine einzige Codezeile schreiben müssen. Zurzeit unterstützt Time Series Insights Azure Event Hubs und Azure IoT Hubs.
 * **Referenzdaten**: Mit Time Series Insights erhalten Benutzer die Möglichkeit, Zeitreihendaten mit Referenzdaten zu verknüpfen.  Referenzdaten können Metadaten zu Geräten oder andere statische Daten enthalten, die sich relativ selten ändern. Time Series Insights verknüpft die Referenzdaten mit Datenströmen, sodass Benutzer diese Daten nahezu in Echtzeit visualisieren und analysieren können.
-

@@ -14,14 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/15/2017
 ms.author: ahomer
 ms.custom: mvc
+ms.openlocfilehash: feaced0d0784b5724fb1e30be5e66cb7c808d77f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: a40e26a8681df31fad664e4d1df4c1513311900d
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-your-app-to-linux-vms-using-jenkins-and-team-services"></a>Bereitstellen Ihrer App auf virtuellen Linux-Computern mithilfe von Jenkins und Team Services
 
 Continuous Integration (CI) und Continuous Deployment (CD) stellen eine Pipeline dar, über die Sie Ihren Code erstellen, freigeben und bereitstellen können. Team Services umfasst eine vollständige Gruppe von CI/CD-Automatisierungstools mit vollem Funktionsumfang für die Bereitstellung in Azure. Jenkins ist ein gängiges serverbasiertes CI/CD-Drittanbietertool, das auch CI/CD-Automatisierung beinhaltet. Sie können beide Tools zusammen verwenden, um die Bereitstellung Ihrer Cloud-Apps oder Clouddienste anzupassen.
@@ -184,15 +182,15 @@ Mit der Aufgabe **Bereitstellung einer Azure-Ressourcengruppe** wird die Bereits
 
   ![Erstellen einer neuen Ressourcengruppe](media/tutorial-build-deploy-jenkins/provision-web-server.png)
 
-* **Speicherort der Vorlage:** `URL of the file`
+* **Speicherort der Vorlage:**`URL of the file`
 
-* **Vorlagenlink:** `{your-git-repo}/ARM-Templates/UbuntuWeb1.json`
+* **Vorlagenlink:**`{your-git-repo}/ARM-Templates/UbuntuWeb1.json`
 
-* **Vorlagenparameterlink:** `{your-git-repo}/ARM-Templates/UbuntuWeb1.parameters.json`
+* **Vorlagenparameterlink:**`{your-git-repo}/ARM-Templates/UbuntuWeb1.parameters.json`
 
 * **Vorlagenparameter überschreiben:** eine Liste der Außerkraftsetzungswerte, z.B.: `-location {location} -virtualMachineName {machine] -virtualMachineSize Standard_DS1_v2 -adminUsername {username} -virtualNetworkName fabrikam-node-rg-vnet -networkInterfaceName fabrikam-node-websvr1 -networkSecurityGroupName fabrikam-node-websvr1-nsg -adminPassword $(adminpassword) -diagnosticsStorageAccountName fabrikamnodewebsvr1 -diagnosticsStorageAccountId Microsoft.Storage/storageAccounts/fabrikamnodewebsvr1 -diagnosticsStorageAccountType Standard_LRS -addressPrefix 172.16.8.0/24 -subnetName default -subnetPrefix 172.16.8.0/24 -publicIpAddressName fabrikam-node-websvr1-ip -publicIpAddressType Dynamic`.<br />Fügen Sie Ihre eigenen Werte für die {Platzhalter} ein. 
 
-* **Erforderliche Komponenten aktivieren:** `Configure with Deployment Group agent`
+* **Erforderliche Komponenten aktivieren:**`Configure with Deployment Group agent`
 
 * **TFS/VSTS-Endpunkt:** Wählen Sie **Hinzufügen** und im Dialogfeld „Neue Team Foundation Server/Team Services-Verbindung hinzufügen“ die Option **Tokenbasierte Authentifizierung** aus. Geben Sie den Namen der Verbindung und die URL des Teamprojekts ein. Generieren Sie ein [persönliches Zugriffstoken (PAT)]( https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate), und geben Sie es dann ein, um die Verbindung mit Ihrem Teamprojekt zu authentifizieren.
 
@@ -208,11 +206,11 @@ Die Standardeinstellungen für die Aufgabe „Bereitstellung einer Azure-Ressour
 
 Über die Aufgabe **Shellskript** wird die Konfiguration für ein Skript angegeben, das auf jedem Server ausgeführt wird, um Node.js zu installieren und die App zu starten. Konfigurieren Sie ihn wie folgt:
 
-* **Skriptpfad:** `$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh`
+* **Skriptpfad:**`$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh`
 
-* **Arbeitsverzeichnis angeben:** `Checked`
+* **Arbeitsverzeichnis angeben:**`Checked`
 
-* **Arbeitsverzeichnis:** `$(System.DefaultWorkingDirectory)/Fabrikam-Node`
+* **Arbeitsverzeichnis:**`$(System.DefaultWorkingDirectory)/Fabrikam-Node`
    
 ## <a name="rename-and-save-the-release-definition"></a>Umbenennen und Speichern der Freigabedefinition
 

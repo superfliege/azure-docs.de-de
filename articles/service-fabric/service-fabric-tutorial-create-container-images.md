@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
+ms.openlocfilehash: 08b3cc4a52c09ee03818b563794ef9b009d12ef4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: e84a0a05cbe1952d8325a9aed1c1df411bfcb877
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-container-images-for-service-fabric"></a>Erstellen von Containerimages für Service Fabric
 
 Dieses Tutorial ist der erste Teil einer Tutorialreihe, in der die Verwendung von Containern in einem Linux-basierten Service Fabric-Cluster veranschaulicht wird. In diesem Tutorial wird eine Anwendung mit mehreren Containern für die Verwendung mit Service Fabric vorbereitet. In den nachfolgenden Tutorials werden diese Images als Teil einer Service Fabric-Anwendung verwendet. In diesem Tutorial lernen Sie Folgendes: 
@@ -57,12 +55,7 @@ Verwenden Sie Git, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung heru
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-containers.git
 
-```
-
-Geben Sie im geklonten Verzeichnis mit dem folgenden Befehl das Arbeitsverzeichnis ein. 
-
-```bash 
-cd Linux/container-tutorial/
+cd service-fabric-dotnet-containers/Linux/container-tutorial/
 ```
 
 Das Verzeichnis „container-tutorial“ enthält einen Ordner mit dem Namen „azure-vote“. Dieser Ordner „azure-vote“ enthält den Front-End-Quellcode und eine Dockerfile-Datei zum Erstellen des Front-Ends. Das Verzeichnis „container-tutorial“ enthält auch das Verzeichnis „redis“, das wiederum die Dockerfile-Datei zum Erstellen des Redis-Images enthält. Diese Verzeichnisse enthalten die erforderlichen Ressourcen für diese Tutorialreihe. 
@@ -242,4 +235,3 @@ Im nächsten Tutorial erfahren Sie, wie Sie Container mithilfe von Yeoman in ein
 
 > [!div class="nextstepaction"]
 > [Packen und Bereitstellen von Containern als Service Fabric-Anwendung](service-fabric-tutorial-package-containers.md)
-

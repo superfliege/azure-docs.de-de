@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
 ms.openlocfilehash: 869e5284c71904fcc817ceee0f39d94fab1bc6f3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Tutorial: Azure Active Directory-Integration mit T&E Express
 
@@ -55,7 +55,7 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 ## <a name="adding-te-express-from-the-gallery"></a>Hinzufügen von T&E Express aus dem Katalog
 Zum Konfigurieren der Integration von T&E Express in Azure AD müssen Sie T&E Express aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um T&E Express aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Um T&amp;E Express aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Verwaltungsportals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
@@ -88,7 +88,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei T&E Expre
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines T&E Express-Testbenutzers](#creating-a-te-express-test-user)**, um in T&E Express eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+3. **[Erstellen eines T&amp;E Express-Testbenutzers](#creating-a-te-express-test-user)**, um in T&amp;E Express eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
@@ -96,7 +96,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei T&E Expre
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Verwaltungsportal und konfigurieren das einmalige Anmelden in Ihrer T&E Express-Anwendung.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei T&E Express die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei T&amp;E Express die folgenden Schritte aus:**
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **T&E Express** auf **Einmaliges Anmelden**.
 
@@ -199,7 +199,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ![Benutzer zuweisen][200] 
 
-**Um Britta Simon T&E Express zuzuweisen, führen Sie die folgenden Schritte aus:**
+**Um Britta Simon T&amp;E Express zuzuweisen, führen Sie die folgenden Schritte aus:**
 
 1. Öffnen Sie im Azure-Verwaltungsportal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 

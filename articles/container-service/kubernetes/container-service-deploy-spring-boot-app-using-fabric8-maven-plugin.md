@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: yuwzho;robmcm
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: d368e71866406f6011c5cfa75eba13461e8e4ca4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-spring-boot-app-using-the-fabric8-maven-plugin"></a>Bereitstellen einer Spring Boot-App unter Verwendung des Fabric8 Maven-Plug-Ins
 
 **[Fabric8]**  ist eine Open-Source-Lösung, die auf **[Kubernetes]** basiert und Entwicklern beim Erstellen von Anwendungen in Linux-Containern hilft.
@@ -508,9 +506,9 @@ Wenn der Kubernetes-Cluster nicht mehr benötigt wird, können Sie den Befehl `a
 
 Weitere Informationen zur Verwendung von Spring Boot-Anwendungen in Azure finden Sie in den folgenden Artikeln:
 
-* [Bereitstellen einer Spring Boot-Anwendung in Azure App Service](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
+* [Bereitstellen von Spring Boot-Anwendungen in Azure App Service](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
 * [Bereitstellen einer Spring Boot-Anwendung unter Linux in Azure Container Service](container-service-deploy-spring-boot-app-on-linux.md)
-* [Bereitstellen einer Spring Boot-Anwendung in einem Kubernetes-Cluster in Azure Container Service](container-service-deploy-spring-boot-app-on-kubernetes.md)
+* [Deploy a Spring Boot Application on a Kubernetes Cluster in the Azure Container Service](container-service-deploy-spring-boot-app-on-kubernetes.md) (Bereitstellen einer Spring Boot-Anwendung in einem Kubernetes-Cluster in Azure Container Service)
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] und in den [Java-Tools für Visual Studio Team Services].
 
@@ -547,4 +545,3 @@ Weitere Beispiele zur Vorgehensweise bei der Verwendung benutzerdefinierter Dock
 
 [SB01]: ./media/container-service-deploy-spring-boot-app-using-fabric8-maven-plugin/SB01.png
 [SB02]: ./media/container-service-deploy-spring-boot-app-using-fabric8-maven-plugin/SB02.png
-

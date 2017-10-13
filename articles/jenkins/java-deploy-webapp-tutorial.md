@@ -11,14 +11,12 @@ ms.workload: web
 ms.date: 08/02/2017
 ms.author: routlaw
 ms.custom: Jenkins, devcenter
+ms.openlocfilehash: 3a2635ac968d843226f05dc51cf4a5f078235c11
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: dcc60feb4c0b3a961689f3d365d49ac1690696a6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Einrichten von Continuous Integration und Continuous Deployment in Azure App Service mit Jenkins
 
 Dieses Tutorial richtet Continuous Integration und Continuous Deployment (CI/CD) einer Java-Beispiel-Web-App, die mit dem [Spring Boot](http://projects.spring.io/spring-boot/)-Framework entwickelt wurde, mithilfe von Jenkins in einer [Azure App Service-Web-App unter Linux](/azure/app-service/containers/app-service-linux-intro) ein.
@@ -187,4 +185,3 @@ Richten Sie Jenkins so ein, dass [GitHub-Webhooks](https://developer.github.com/
 - [Verwenden von Azure-VMs als Build-Agents](/azure/jenkins/jenkins-azure-vm-agents)
 - [Verwalten von Ressourcen in Aufträgen und Pipelines mit der Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline)
  
-

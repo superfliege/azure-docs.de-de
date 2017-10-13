@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: c9115bb5bc3d22c67ea0ac77b8972ae7f919926b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-review-access-with-azure-ad-access-reviews"></a>Überprüfen des Zugriffs mit der Azure AD-Zugriffsüberprüfung
 
 Azure Active Directory vereinfacht Unternehmen das Verwalten des Zugriffs auf Anwendungen und Mitglieder von Gruppen in Azure AD und anderen Microsoft Online Services durch eine Funktion namens „Zugriffsüberprüfungen“.  Sie haben möglicherweise eine E-Mail von Microsoft erhalten, in der Sie aufgefordert werden, den Zugriff von Mitgliedern einer Gruppe oder Benutzern mit Zugriff auf eine Anwendung zu überprüfen. 
@@ -43,7 +41,6 @@ Der Prüfer kann möglicherweise verlangen, dass Sie eine Begründung für den w
 ## <a name="next-steps"></a>Nächste Schritte
 
 Bitte beachten Sie, dass der verweigerte Zugriff des Benutzers nicht direkt entfernt wird. Er kann entfernt werden, wenn die Überprüfung abgeschlossen ist oder ein Administrator die Überprüfung anhält. Wenn Sie also Ihre Antwort ändern und einen zuvor abgelehnten Benutzer genehmigen oder einen zuvor genehmigten Benutzer ablehnen möchten, klicken Sie auf die Zeile, setzen Sie die Antwort zurück und wählen Sie eine neue Antwort aus.  Dies ist möglich, bis die Zugriffsüberprüfung abgeschlossen ist.
-
 
 
 

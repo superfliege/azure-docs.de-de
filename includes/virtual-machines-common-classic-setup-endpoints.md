@@ -1,57 +1,57 @@
 
-Jeder Endpunkt hat eine *öffentlichen Port* und ein *privaten Port*:
+Jeder Endpunkt verfügt über einen *öffentlichen* und einen *privaten* Port:
 
-* Der öffentliche Port wird von Azure-Lastenausgleich für eingehenden Datenverkehr an den virtuellen Computer aus dem Internet überwacht.
-* Der private Port wird von der virtuellen Maschine zum Abhören von eingehenden Datenverkehr, in der Regel für eine Anwendung oder Dienst auf dem virtuellen Computer ausgeführt.
+* Der öffentliche Port wird von Azure-Lastenausgleich verwendet, um eingehenden Datenverkehr an den virtuellen Computer aus dem Internet zu überwachen.
+* Der private Port wird vom virtuellen Computer zum Überwachen von eingehendem Datenverkehr verwendet, in der Regel für eine Anwendung oder ein Dienst, der auf dem virtuellen Computer ausgeführt wird.
 
-Standardwerte für die IP-Protokoll und die TCP- oder UDP-Ports für bekannte Netzwerk Protokolle bereitgestellt werden, wenn Sie Endpunkte mit Azure-Portal erstellen. Für benutzerdefinierte Endpunkte müssen Sie die richtige IP-Protokoll (TCP oder UDP) und die öffentlichen und privaten Ports angeben. Um nach dem Zufallsprinzip eingehenden Datenverkehr auf mehrere virtuelle Computer zu verteilen, müssen Sie einen Lastenausgleich Satz bestehend aus mehreren Endpunkten zu erstellen.
+Die Standardwerte für das IP-Protokoll und die TCP- oder UDP-Ports für bekannte Netzwerkprotokolle werden bereitgestellt, wenn Sie mit dem Azure-Portal Endpunkte erstellen. Bei benutzerdefinierten Endpunkten müssen Sie das richtige IP-Protokoll (TCP oder UDP) und die öffentlichen und privaten Ports angeben. Um nach dem Zufallsprinzip eingehenden Datenverkehr auf mehrere virtuelle Computer zu verteilen, müssen Sie einen Lastenausgleich, bestehend aus mehreren Endpunkten, erstellen.
 
-Nachdem Sie einen Endpunkt erstellt haben, können Sie eine Zugriffssteuerungsliste (ACL) verwenden, um Regeln zu definieren, die zulassen oder verweigern den eingehenden Datenverkehr an den öffentlichen Port des Endpunkts basierend auf dessen IP-Quelladresse. Wenn der virtuelle Computer in Azure virtual Network ist, sollten Sie netzwerksicherheitsgruppen jedoch stattdessen verwenden. Weitere Informationen finden Sie unter [zu netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-nsg.md).
+Nachdem Sie einen Endpunkt erstellt haben, können Sie eine Zugriffssteuerungsliste (ACL) zum Definieren von Regeln verwenden, die eingehenden Datenverkehr an den öffentlichen Port des Endpunkts basierend der Quell-IP-Adresse zulassen oder verweigern. Wenn der virtuelle Computer in Azure ist, sollten Sie stattdessen Netzwerk-Sicherheitsgruppen verwenden. Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-nsg.md).
 
 > [!NOTE]
-> Konfiguration der Firewall für virtuelle Computer in Azure erfolgt automatisch für Ports im Zusammenhang mit remote-Konnektivität-Endpunkte, mit dem Azure automatisch eingerichtet. Für die Ports für alle anderen Endpunkte erfolgt keine Konfiguration automatisch an die Firewall des virtuellen Computers. Wenn Sie einen Endpunkt für den virtuellen Computer erstellen, müssen Sie sicherstellen, dass die Firewall des virtuellen Computers auch den Datenverkehr für das Protokoll und den privaten Port entspricht der Endpunktkonfiguration kann. Zum Konfigurieren der Firewall finden Sie in der Dokumentation oder der Onlinehilfe für das Betriebssystem auf dem virtuellen Computer ausgeführt wird.
+> Firewallkonfiguration für virtuelle Computer in Azure erfolgt automatisch für Ports, die mit Remotekonnektivität-Endpunkten verknüpft sind, die Azure automatisch einrichtet. Für Ports, die für alle anderen Endpunkte angegeben werden, wird keine Konfiguration der Firewall des virtuellen Computers automatisch durchgeführt. Wenn Sie einen Endpunkt für den virtuellen Computer erstellen, müssen Sie sicherstellen, dass die Firewall des virtuellen Computers außerdem den Datenverkehr für das Protokoll und den privaten Port entsprechend der Endpunktkonfiguration ermöglicht. Informationen zum Konfigurieren der Firewall finden Sie in der Dokumentation oder der Onlinehilfe für das Betriebssystem, das auf dem virtuellen Computer ausgeführt wird.
 >
 >
 
-## <a name="create-an-endpoint"></a>Erstellen Sie einen Endpunkt
-1. Wenn Sie dies noch nicht getan haben, melden Sie sich bei der [Azure-Portal](https://portal.azure.com).
-2. Klicken Sie auf **VMs**, und klicken Sie dann auf den Namen des virtuellen Computers, den Sie konfigurieren möchten.
-3. Klicken Sie auf **Endpunkte** in der **Einstellungen** Gruppe. Die **Endpunkte** Seite listet alle aktuellen Endpunkte für den virtuellen Computer. (In diesem Beispiel wird eine Windows-VM. Ein Linux-VM wird standardmäßig einen Endpunkt für SSH angezeigt.)
+## <a name="create-an-endpoint"></a>Erstellen eines Endpunkts
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com)an, falls Sie dies noch nicht getan haben.
+2. Klicken Sie auf **Virtuelle Computer**und dann auf den Namen des virtuellen Computers, den Sie konfigurieren möchten.
+3. Klicken Sie in der Gruppe **Einstellungen** auf **Endpunkte**. Auf der Seite **Endpunkte** sind alle aktuellen Endpunkte für den virtuellen Computer aufgelistet. (Dieses Beispiel ist eine Windows-VM. Eine Linux-VM weist standardmäßig einen Endpunkt für SSH auf.)
 
    <!-- ![Endpoints](./media/virtual-machines-common-classic-setup-endpoints/endpointswindows.png) -->
    ![Endpunkte](./media/virtual-machines-common-classic-setup-endpoints/endpointsblade.png)
 
-4. Klicken Sie in der Befehlsleiste oben die Endpunkt-Einträge auf **hinzufügen**.
-5. Auf der **Endpunkt hinzufügen** Seite, geben Sie einen Namen für den Endpunkt in **Namen**.
-6. In **Protokoll**, wählen Sie entweder **TCP** oder **UDP**.
-7. In **öffentlicher Port**, geben Sie die Portnummer für den eingehenden Datenverkehr aus dem Internet. In **privater Port**, geben Sie die Nummer des Ports an, der den virtuellen Computer überwacht wird. Diese Portnummern können unterschiedlich sein. Stellen Sie sicher, dass die Firewall auf dem virtuellen Computer konfiguriert wurde, um den Datenverkehr für das Protokoll (in Schritt 6) und privaten Port zu ermöglichen.
+4. Klicken Sie in der Befehlsleiste über den Einträgen für die Endpunkte auf **Hinzufügen**.
+5. Geben Sie auf der Seite **Endpunkt hinzufügen** unter **Name** einen Namen für den Endpunkt an.
+6. Wählen Sie unter **Protokoll** entweder **TCP** oder **UDP** aus.
+7. Geben Sie unter **Öffentlicher Port** die Portnummer für den eingehenden Datenverkehr aus dem Internet ein. Geben Sie unter **Privater Port**die Nummer des Ports an, auf dem der virtuelle Computer überwacht. Diese Portnummern dürfen sich unterscheiden. Stellen Sie sicher, dass die Firewall auf dem virtuellen Computer konfiguriert wurde, um den Datenverkehr für das Protokoll (in Schritt 6 angegeben) und den privaten Port zu ermöglichen.
 10. Klicken Sie auf **OK**.
 
-Wird der neue Endpunkt aufgeführt, auf die **Endpunkte** Seite.
+Der neue Endpunkt wird auf der Seite **Endpunkte** aufgeführt.
 
-![Erstellen des erfolgreich](./media/virtual-machines-common-classic-setup-endpoints/endpointcreated.png)
+![Endpunkt erfolgreich erstellt](./media/virtual-machines-common-classic-setup-endpoints/endpointcreated.png)
 
-## <a name="manage-the-acl-on-an-endpoint"></a>Verwalten Sie die ACL für einen Endpunkt
-Zum Definieren von Computern, die Datenverkehr gesendet werden kann, kann die ACL für einen Endpunkt auf Datenverkehr basierend auf IP-Quelladresse einschränken. Führen Sie folgende Schritte hinzufügen, ändern oder entfernen eine ACL für einen Endpunkt aus.
+## <a name="manage-the-acl-on-an-endpoint"></a>Verwaltung der ACL für einen Endpunkt
+Zum Definieren der Computer, die Datenverkehr senden können, kann die ACL für einen Endpunkt Datenverkehr anhand der IP-Quelladresse einschränken. Gehen Sie folgendermaßen vor, um eine ACL an einem Endpunkt hinzuzufügen, zu modifizieren oder zu entfernen.
 
 > [!NOTE]
-> Ist der Endpunkt Teil einer Reihe mit Lastenausgleich, werden alle vorgenommenen Änderungen der ACL für einen Endpunkt auf alle Endpunkte in der Gruppe angewendet.
+> Wenn der Endpunkt Teil eines Satzes mit Lastenausgleich ist, werden alle Änderungen, die Sie an der ACL oder an einem Endpunkt vornehmen, auf alle Endpunkte in diesem Satz angewendet.
 >
 >
 
-Wenn der virtuelle Computer in Azure virtual Network ist, empfiehlt es sich um netzwerksicherheitsgruppen anstelle von ACLs. Weitere Informationen finden Sie unter [zu netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-nsg.md).
+Befindet sich der virtuelle Computer in einem virtuellen Azure-Netzwerk, sollten Sie anstelle von ACLs Netzwerksicherheitsgruppen verwenden. Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-nsg.md).
 
-1. Wenn Sie bereits, melden Sie sich bei Azure-Portal geschehen.
-2. Klicken Sie auf **VMs**, und klicken Sie dann auf den Namen des virtuellen Computers, den Sie konfigurieren möchten.
-3. Klicken Sie auf **Endpunkte**. Wählen Sie aus der Liste den entsprechenden Endpunkt. Die ACL-Liste ist am unteren Rand der Seite.
+1. Melden Sie sich beim Azure-Portal an, falls Sie dies noch nicht getan haben.
+2. Klicken Sie auf **Virtuelle Computer**und dann auf den Namen des virtuellen Computers, den Sie konfigurieren möchten.
+3. Klicken Sie auf **Endpunkte**. Wählen Sie in der Liste den entsprechenden Endpunkt aus. Die ACL-Liste befindet sich unten auf der Seite.
 
-   ![Geben Sie die ACL-details](./media/virtual-machines-common-classic-setup-endpoints/aclpreentry.png)
+   ![ACL-Details festlegen](./media/virtual-machines-common-classic-setup-endpoints/aclpreentry.png)
 
-4. Mit der Zeilen in der Liste hinzufügen, löschen oder bearbeiten Regeln für eine ACL und ihre Reihenfolge ändern. Die **Remotesubnetz** Wert ist ein IP-Adressbereich für eingehenden Datenverkehr aus dem Internet, die Azure-Lastenausgleich zum Zulassen oder verweigern den Datenverkehr basierend auf dessen IP-Quelladresse verwendet. Achten Sie darauf, dass die IP-Adressbereich in CIDR-Format, auch bekannt als Präfix Adressformat angeben. Ein Beispiel ist `10.1.0.0/8`.
+4. Verwenden Sie die Zeilen in der Liste zum Hinzufügen, Löschen oder Bearbeiten von Regeln für eine ACL und Änderung ihrer Reihenfolge. Der Wert unter **Remotesubnetz** ist ein IP-Adressbereich für eingehenden Datenverkehr aus dem Internet, den der Azure Load Balancer verwendet, um Datenverkehr basierend auf der IP-Quelladresse zuzulassen oder zu verweigern. Sie müssen den IP-Adressbereich im CIDR-Format, auch bekannt als Adresspräfixformat, angeben. Ein Beispiel ist `10.1.0.0/8`.
 
- ![Neue ACL-Eintrag](./media/virtual-machines-common-classic-setup-endpoints/newaclentry.png)
+ ![Neuer ACL-Eintrag](./media/virtual-machines-common-classic-setup-endpoints/newaclentry.png)
 
 
-Sie können Regeln nur Datenverkehr von bestimmten Computern, die für Ihre Computer auf das Internet zulassen oder Verweigern von bestimmten, bekannten Adressbereiche Datenverkehr verwenden.
+Sie können Regeln verwenden, um nur Verkehr von bestimmten Computern zuzulassen, die Ihren Computern im Internet entsprechen oder um Datenverkehr von bestimmten, bekannten Adressbereichen zu verweigern.
 
-Die Regeln werden in Reihenfolge mit der ersten Regel beginnt und endet mit der letzten Regel ausgewertet. Dies bedeutet, dass die Regeln vom am wenigsten restriktive zum restriktivste sortiert werden soll. Beispiele und Weitere Informationen finden Sie unter [was eine Netzwerk-Zugriffssteuerungsliste ist](../articles/virtual-network/virtual-networks-acl.md).
+Die Regeln werden der Reihe nach, beginnend mit der ersten und endend mit der letzten Regel, bewertet. Dies bedeutet, dass die Regeln gemäß der Restriktivität geordnet werden sollen. Beispiele und weitere Informationen finden Sie unter [Was ist eine Endpunkt-Zugriffssteuerungsliste (Access Control List, ACL)?](../articles/virtual-network/virtual-networks-acl.md).

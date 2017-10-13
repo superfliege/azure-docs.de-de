@@ -1,30 +1,30 @@
-## <a name="network-security-group"></a>Netzwerksicherheitsgruppe
-Eine NSG-Ressource ermöglicht die Erstellung von Sicherheitsgrenze für Arbeitslasten, durch die Implementierung zulassen und verweigern Regeln. Diese Regeln können auf einer virtuellen Maschine, einer NIC oder einem Subnetz angewendet werden.
+## <a name="network-security-group"></a>Netzwerksicherheitsgruppen (NSG)
+Eine NSG-Ressource ermöglicht das Erstellen einer Sicherheitsbegrenzung für Arbeitsauslastungen durch Implementieren von Zulassungs- und Ablehnungsregeln. Diese Regeln können für einen virtuellen Computer, eine Netzwerkkarte oder ein Subnetz gelten.
 
 | Eigenschaft | Beschreibung | Beispielwerte |
 | --- | --- | --- |
-| **Subnetze** |Liste der Subnetz-Ids, denen die NSG angewendet wird. |/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/Providers/Microsoft.Network/virtualNetworks/TestVNet/Subnets/Frontend |
-| **securityRules** |Liste der Sicherheitsregeln für die, die der NSG bilden |Finden Sie unter [Sicherheitsregel](#Security-rule) unten |
-| **defaultSecurityRules** |Liste der Standard-Sicherheitsregeln in jede NSG vorhanden |Finden Sie unter [Standard Sicherheitsregeln](#Default-security-rules) unten |
+| **Subnetze** |Liste der Subnetz-IDs, die zur NSG gehören. |/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd |
+| **securityRules** |Liste der Sicherheitsregeln, die die NSG bilden |Siehe [Sicherheitsregel](#Security-rule) unten. |
+| **defaultSecurityRules** |Liste der Standardsicherheitsregeln, die in jeder NSG vorhanden sind |Siehe [Standardsicherheitsregeln](#Default-security-rules) unten. |
 
-* **Sicherheitsregel** -eine NSG können mehrere Sicherheitsregeln definiert haben. Jede Regel kann erlauben oder Verweigern von verschiedenen Arten von Datenverkehr.
+* **Sicherheitsregeln** - Eine NSG kann mehrere Sicherheitsregeln definieren. Jede Regel kann verschiedene Datenverkehrstypen zulassen oder ablehnen.
 
 ### <a name="security-rule"></a>Sicherheitsregel
-Eine Sicherheitsregel ist eine untergeordnete Ressource einer NSG mit den folgenden Eigenschaften.
+Eine Sicherheitsregel ist eine untergeordnete Ressource einer NSG, die die nachstehenden Eigenschaften aufweist.
 
 | Eigenschaft | Beschreibung | Beispielwerte |
 | --- | --- | --- |
-| **Beschreibung** |Beschreibung für die Regel |Für alle virtuellen Computer im Subnetz X eingehenden Datenverkehr zulassen |
-| **Protokoll** |Protokoll für die Regel entsprechend |TCP, UDP oder * |
-| **sourcePortRange** |Quellportbereich entsprechend für die Regel |80, 100-200, * |
-| **destinationPortRange** |Zielportbereich entsprechend für die Regel |80, 100-200, * |
-| **sourceAddressPrefix** |Source-Adresspräfix entsprechend für die Regel |10.10.10.1 10.10.10.0/24 VirtualNetwork |
-| **destinationAddressPrefix** |Ziel-Adresspräfix entsprechend für die Regel |10.10.10.1 10.10.10.0/24 VirtualNetwork |
-| **Richtung** |Richtung des Datenverkehrs für die Regel entsprechend |eingehende oder ausgehende |
-| **Priorität** |Die Priorität für die Regel. Regeln werden überprüft, in der Reihenfolge ihrer Priorität, sobald eine Regel gilt, keine weiteren Regeln für den Abgleich getestet werden. |10, 100, 65000 |
-| **Zugriff** |Art des Zugriffs anwenden, wenn die Regel eine Übereinstimmung mit |zulassen oder verweigern |
+| **description** |Beschreibung der Regel |Eingehenden Datenverkehr für alle virtuellen Computer in Subnetz X zulassen |
+| **protocol** |Protokoll entsprechend der Regel |TCP, UDP oder * |
+| **sourcePortRange** |Quellportbereich entsprechend der Regel |80, 100-200, * |
+| **destinationPortRange** |Zielportbereich entsprechend der Regel |80, 100-200, * |
+| **sourceAddressPrefix** |Quelladresspräfix entsprechend der Regel |10.10.10.1, 10.10.10.0/24, VirtualNetwork |
+| **destinationAddressPrefix** |Zieladresspräfix entsprechend der Regel |10.10.10.1, 10.10.10.0/24, VirtualNetwork |
+| **direction** |Richtung des Datenverkehrs entsprechend der Regel |Eingehend oder ausgehend |
+| **priority** |Priorität für die Regel. Regeln werden in der Reihenfolge ihrer Priorität überprüft. Sobald eine Regel erfüllt ist, wird keine weitere Übereinstimmung mit der Regel gesucht. |10, 100, 65000 |
+| **access** |Typ des Zugriffs bei Übereinstimmung mit der Regel |Zulassen oder verweigern |
 
-Beispiel NSG im JSON-Format:
+Beispiel-NSG im JSON-Format:
 
     {
         "name": "NSG-BackEnd",
@@ -67,11 +67,11 @@ Beispiel NSG im JSON-Format:
         }
     }
 
-### <a name="default-security-rules"></a>Sicherheit-Standardregeln
+### <a name="default-security-rules"></a>Standardsicherheitsregeln
 
-Standardregeln für die Sicherheit haben die gleichen Eigenschaften, die in Sicherheitsregeln verfügbar. Sie sind vorhanden, um grundlegende Konnektivität zwischen Ressourcen bereitzustellen, die NSGs auf sie angewendet haben. Stellen Sie sicher, dass Sie wissen, welche [Standard Sicherheitsregeln](../articles/virtual-network/virtual-networks-nsg.md#default-rules) vorhanden sind.
+Standardsicherheitsregeln weisen dieselben Eigenschaften wie Sicherheitsregeln auf. Ihr Zweck besteht darin, die grundlegende Konnektivität zwischen Ressourcen zu ermöglichen, die zu NSGs gehören. Machen Sie sich mit den [Standardsicherheitsregeln](../articles/virtual-network/virtual-networks-nsg.md#default-rules) vertraut.
 
 ### <a name="additional-resources"></a>Zusätzliche Ressourcen
-* Weitere Informationen zu erhalten [NSGs](../articles/virtual-network/virtual-networks-nsg.md).
-* Lesen der [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163615.aspx) für Netzwerksicherheitsgruppen.
-* Lesen der [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163580.aspx) für Sicherheitsregeln.
+* Weitere Informationen zu [NSGs](../articles/virtual-network/virtual-networks-nsg.md).
+* Weitere Informationen zu NSGs finden Sie in der [Referenzdokumentation zur REST-API](https://msdn.microsoft.com/library/azure/mt163615.aspx) .
+* Weitere Informationen zu Sicherheitsregeln finden Sie in der [Referenzdokumentation zur REST-API](https://msdn.microsoft.com/library/azure/mt163580.aspx) .

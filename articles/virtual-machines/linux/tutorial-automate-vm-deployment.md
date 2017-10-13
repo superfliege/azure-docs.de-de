@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
+ms.openlocfilehash: 4e2d07a03902a8c837150da8d50ab9abec8d1c95
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 6adf4e43aa80c28c6f5f8d8a071966323ba85723
-ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Gewusst wie: Anpassen eines virtuellen Linux-Computers beim ersten Start
 In einem früheren Tutorial haben Sie erfahren, wie eine SSH-Verbindung mit einem virtuellen Computer hergestellt und NGINX manuell installiert wird. Um VMs auf schnelle und einheitliche Weise zu erstellen, ist meist eine Form der Automatisierung erwünscht. Eine gängige Methode zum Anpassen virtueller Computer beim ersten Start ist die Verwendung von [cloud-Init](https://cloudinit.readthedocs.io). In diesem Tutorial lernen Sie Folgendes:
 
@@ -123,7 +121,7 @@ az vm create \
     --custom-data cloud-init.txt
 ```
 
-Es dauert einige Minuten, den virtuellen Computer zu erstellen, die Pakete zu installieren und die App zu starten. Es gibt Hintergrundaufgaben, die weiterhin ausgeführt werden, wenn Ihnen von der Azure-Befehlszeilenschnittstelle wieder eine Eingabeaufforderung angezeigt wird. Unter Umständen dauert es einige Minuten, bis Sie auf die App zugreifen können. Sobald der virtuelle Computer erstellt ist, notieren Sie die `publicIpAddress`, die von der Azure-CLI angezeigt wird. Diese Adresse wird verwendet, um über einen Webbrowser auf die Node.js-App zuzugreifen.
+Es dauert einige Minuten, den virtuellen Computer zu erstellen, die Pakete zu installieren und die App zu starten. Es gibt Hintergrundaufgaben, die weiterhin ausgeführt werden, wenn Ihnen von der Azure CLI wieder eine Eingabeaufforderung angezeigt wird. Unter Umständen dauert es noch einige Minuten, bis Sie auf die App zugreifen können. Sobald der virtuelle Computer erstellt ist, notieren Sie die `publicIpAddress`, die von der Azure-CLI angezeigt wird. Diese Adresse wird verwendet, um über einen Webbrowser auf die Node.js-App zuzugreifen.
 
 Damit Webdatenverkehr Ihren virtuellen Computer erreicht, öffnen Sie Port 80 über das Internet mit [az vm open-port](/cli/azure/vm#open-port):
 
@@ -251,7 +249,7 @@ az vm create \
     --secrets "$vm_secret"
 ```
 
-Es dauert einige Minuten, den virtuellen Computer zu erstellen, die Pakete zu installieren und die App zu starten. Es gibt Hintergrundaufgaben, die weiterhin ausgeführt werden, wenn Ihnen von der Azure-Befehlszeilenschnittstelle wieder eine Eingabeaufforderung angezeigt wird. Unter Umständen dauert es einige Minuten, bis Sie auf die App zugreifen können. Sobald der virtuelle Computer erstellt ist, notieren Sie die `publicIpAddress`, die von der Azure-CLI angezeigt wird. Diese Adresse wird verwendet, um über einen Webbrowser auf die Node.js-App zuzugreifen.
+Es dauert einige Minuten, den virtuellen Computer zu erstellen, die Pakete zu installieren und die App zu starten. Es gibt Hintergrundaufgaben, die weiterhin ausgeführt werden, wenn Ihnen von der Azure CLI wieder eine Eingabeaufforderung angezeigt wird. Unter Umständen dauert es noch einige Minuten, bis Sie auf die App zugreifen können. Sobald der virtuelle Computer erstellt ist, notieren Sie die `publicIpAddress`, die von der Azure-CLI angezeigt wird. Diese Adresse wird verwendet, um über einen Webbrowser auf die Node.js-App zuzugreifen.
 
 Damit sicherer Webdatenverkehr Ihren virtuellen Computer erreicht, öffnen Sie Port 443 über das Internet mit [az vm open-port](/cli/azure/vm#open-port):
 
@@ -286,4 +284,3 @@ Im nächsten Tutorial erfahren Sie, wie Sie benutzerdefinierte VM-Images erstell
 
 > [!div class="nextstepaction"]
 > [Erstellen von benutzerdefinierten VM-Images](./tutorial-custom-images.md)
-

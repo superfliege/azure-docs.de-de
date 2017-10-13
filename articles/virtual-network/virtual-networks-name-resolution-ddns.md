@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: garbrad
 ms.openlocfilehash: 440a062e5fff73526b2d77d7d0a7c52ca72a66f1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Registrieren von Hostnamen mithilfe von dynamischem DNS auf Ihrem eigenen DNS-Server
 [Azure bietet eine Namensauflösung](virtual-networks-name-resolution-for-vms-and-role-instances.md) für virtuelle Maschinen (VMs) und Rolleninstanzen. Wenn Ihre Namensauflösung jedoch mehr leisten muss, als die Azure-Namensauflösung ermöglicht, können Sie eigene DNS-Server bereitstellen. Auf diese Weise können Sie eine maßgeschneiderte DNS-Lösung für Ihre speziellen Anforderungen erstellen. Beispielsweise kann es vorkommen, dass Sie eine DNS-Lösung für den Zugriff auf Ihren lokalen Active Directory-Domänencontroller benötigen.

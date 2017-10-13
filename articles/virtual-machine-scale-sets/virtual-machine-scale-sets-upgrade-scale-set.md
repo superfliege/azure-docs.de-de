@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: guybo
 ms.openlocfilehash: c7093e221ff8fe69ded1cfbce4f3ddeb1a195666
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-a-virtual-machine-scale-set"></a>Upgraden einer VM-Skalierungsgruppe
 In diesem Artikel erfahren Sie, wie Sie ohne Ausfallzeiten ein Rollout eines Betriebssystemupdates für eine Skalierungsgruppe mit virtuellen Azure-Computern durchführen. In diesem Kontext wird bei einem Betriebssystemupdate entweder die Version oder die SKU des Betriebssystems oder der URI eines benutzerdefinierten Images geändert. Ein Update ohne Ausfallzeiten heißt, dass virtuelle Computer nicht alle gleichzeitig, sondern einzeln oder gruppenweise aktualisiert werden (beispielsweise eine Fehlerdomäne nach der anderen). Dadurch können virtuelle Computer, die gerade nicht aktualisiert werden, weiter ausgeführt werden.

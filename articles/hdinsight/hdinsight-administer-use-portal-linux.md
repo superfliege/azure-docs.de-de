@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: ashishtha
+ms.openlocfilehash: d08a9a7cc82095b0a90abd98bd4f6d13cdadb671
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 54e53c98390b44ee5f298d5f61c13a4d299e5ae1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -58,14 +57,14 @@ Wenn Sie einen HDInsight-Cluster erstellen, müssen Sie ein Azure-Abonnement ang
 
 - So erstellen Sie eine neue Ressourcengruppe:
 
-    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+    1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
     2. Klicken Sie im linken Menü auf **Abonnement**. Es weist ein gelbes Schlüsselsymbol auf. Daraufhin sollte eine Liste der Abonnements angezeigt werden.
     3. Klicken Sie auf das Abonnement, das Sie zum Erstellen von Clustern verwenden. 
     4. Klicken Sie auf **Meine Berechtigungen**.  Ihre [Rolle](../active-directory/role-based-access-control-what-is.md#built-in-roles) für das Abonnement wird angezeigt. Um HDInsight-Cluster erstellen zu können, müssen Sie mindestens über den Zugriffstyp „Mitwirkender“ verfügen.
 
 - So verwenden Sie eine vorhandene Ressourcengruppe:
 
-    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+    1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
     2. Klicken Sie im linken Menü auf **Ressourcengruppen**, um eine Liste der Ressourcengruppen anzuzeigen.
     3. Klicken Sie auf die Ressourcengruppe, die Sie zum Erstellen Ihres HDInsight-Clusters verwenden möchten.
     4. Klicken Sie auf **Zugriffssteuerung (IAM)**, und vergewissern Sie sich, dass Sie oder eine Gruppe, der Sie angehören, mindestens über den Zugriffstyp „Mitwirkender“ für die Ressourcengruppe verfügen/verfügt.
@@ -78,7 +77,7 @@ Wenn der Fehler „NoRegisteredProviderFound“ oder „MissingSubscriptionRegis
 3. Klicken Sie auf den Clusternamen. Wenn die Clusterliste lang ist, können Sie oben auf der Seite filtern.
 4. Klicken Sie in der Liste auf einen Cluster, um die Übersichtsseite anzuzeigen:
 
-    ![Azure-Portal – HDInsight-Cluster-Zusammenfassung](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png) **Übersichtsmenü:**
+    ![Azure-Portal – HDInsight-Cluster-Zusammenfassung](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png)**Übersichtsmenü:**
     * **Dashboard**: Öffnet das Clusterdashboard (für Linux-basierte Cluster: Ambari Web).
     * **Secure Shell**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an.
     * **Cluster skalieren**: Dient zum Ändern der Anzahl von Workerknoten für den Cluster.
@@ -362,4 +361,3 @@ In diesem Artikel haben Sie einige grundlegende administrative Funktionen kennen
 
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-command-line.png "Hadoop-Befehlszeile"
-

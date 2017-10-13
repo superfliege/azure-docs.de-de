@@ -265,14 +265,18 @@
       href: /cli/azure/storage
     - name: .NET
       items:
-        - name: Ressourcen-Manager
-          href: /dotnet/api/microsoft.azure.management.storage
-        - name: Datenverschiebung
-          href: /dotnet/api/microsoft.windowsazure.storage.datamovement
         - name: 'Blobs, Warteschlangen, Tabellen und Dateien'
-          href: 'https://docs.microsoft.com/en-us/dotnet/api/overview/azure/storage?view=azure-dotnet'
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client?view=azure-dotnet'
+        - name: Datenverschiebung
+          href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement?view=azure-dotnet'
+        - name: Ressourcen-Manager
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management?view=azure-dotnet'
     - name: Java
-      href: 'http://azure.github.io/azure-storage-java/'
+      items:
+        - name: 'Blobs, Warteschlangen, Tabellen und Dateien'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/clientlibrary'
+        - name: Ressourcen-Manager
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/managementapi'
     - name: Node.js
       href: 'http://azure.github.io/azure-storage-node'
     - name: Ruby

@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
 ms.openlocfilehash: 67386b03ae4cc683fe00e11e8dad19d1442eff09
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 In diesem Thema wird demonstriert, wie Sie Azure App Services zur Verwendung eines Microsoft-Kontos als Authentifizierungsanbieter konfigurieren. 
 
-## <a name="register-microsoft-account"> </a>Registrieren Ihrer App mit einem Microsoft-Konto
+## <a name="register-microsoft-account"></a>Registrieren Ihrer App mit einem Microsoft-Konto
 1. Melden Sie sich beim [Azure-Portal]an, und navigieren Sie zu Ihrer Anwendung. Kopieren Sie Ihre **URL**. Sie wird später benötigt, um die App mit einem Microsoft-Konto zu konfigurieren.
 2. Navigieren Sie im Microsoft Account Developer Center zur Seite [Eigene Anwendungen] , und melden Sie sich, falls erforderlich, mit Ihrem Microsoft-Konto an.
 3. Klicken Sie auf **App hinzufügen**, geben Sie einen Anwendungsnamen ein, und klicken Sie auf **Anwendung erstellen**.
@@ -42,7 +42,7 @@ In diesem Thema wird demonstriert, wie Sie Azure App Services zur Verwendung ein
     > [!IMPORTANT]
     > Bei dem Kennwort handelt es sich um eine wichtige Information für die Anmeldung. Teilen Sie das Kennwort keiner anderen Person mit, und geben Sie es nicht in einer Clientanwendung weiter.
 
-## <a name="secrets"> </a>Hinzufügen von Microsoft-Kontoinformationen zu Ihrer App Service-Anwendung
+## <a name="secrets"></a>Hinzufügen von Microsoft-Kontoinformationen zu Ihrer App Service-Anwendung
 1. Navigieren Sie im [Azure-Portal] zu Ihrer Anwendung, und klicken Sie auf **Einstellungen** > **Authentifizierung/Autorisierung**.
 2. Falls das Authentifizierungs-/Autorisierungsfeature nicht aktiviert ist, legen Sie es auf **Ein**fest.
 3. Klicken Sie auf **Microsoft-Konto**. Fügen Sie die Werte für die Anwendungs-ID und das Kennwort ein, die Sie zuvor erhalten haben, und aktivieren Sie optional alle Bereiche, die bei Ihrer Anwendung erforderlich sind. Klicken Sie dann auf **OK**.
@@ -55,7 +55,7 @@ In diesem Thema wird demonstriert, wie Sie Azure App Services zur Verwendung ein
 
 Sie können nun ein Microsoft-Konto für die Authentifizierung in Ihrer App verwenden.
 
-## <a name="related-content"> </a>Verwandte Inhalte
+## <a name="related-content"></a>Verwandte Inhalte
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Images. -->

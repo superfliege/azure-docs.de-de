@@ -1,6 +1,6 @@
 ---
-title: Replizieren von Anwendungen (Azure, Azure) | Microsoft Docs
-description: "In diesem Artikel wird beschrieben, wie beim Einrichten der Replikation von virtuellen Computern in einer Azure-Region in einer anderen Region in Azure ausgeführt wird."
+title: Replizieren von Anwendungen (Azure zu Azure) | Microsoft-Dokumentation
+description: "Dieser Artikel beschreibt, wie Sie die Replikation von virtuellen Computern, die in einer Azure-Region ausgeführt werden, in einer anderen Azure-Region einrichten."
 services: site-recovery
 documentationcenter: 
 author: asgang
@@ -15,111 +15,111 @@ ms.workload: storage-backup-recovery
 ms.date: 5/22/2017
 ms.author: asgang
 ms.openlocfilehash: f9f97cf840b722c8cfee169dd1640e0682f287ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Replizieren Sie virtuelle Computer in Azure zu einem anderen Azure-region
+# <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Replizieren von virtuellen Azure-Computern in einer anderen Azure-Region
 
 
 
 >[!NOTE]
 >
-> Site Recovery-Replikation für Azure Virtual Machines ist derzeit als Vorschau verfügbar.
+> Die Site Recovery-Replikation für virtuelle Azure-Computer ist derzeit als Vorschauversion verfügbar.
 
-In diesem Artikel wird beschrieben, wie beim Einrichten der Replikation von virtuellen Computern in einer Azure-Region zu einem anderen Azure-Region ausgeführt werden.
+Dieser Artikel beschreibt, wie Sie die Replikation von virtuellen Computern, die in einer Azure-Region ausgeführt werden, in einer anderen Azure-Region einrichten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Der Artikel wird davon ausgegangen, dass Sie bereits über Site Recovery und Recovery Services-Tresor bekannt. Sie müssen einen "Recovery Services-Tresor" vorab erstellt haben.
+* In diesem Artikel wird davon ausgegangen, dass Sie bereits mit Site Recovery und dem Recovery Services-Tresor vertraut sind. Vorab müssen Sie einen Recovery Services-Tresor erstellt haben.
 
     >[!NOTE]
     >
-    > Es wird empfohlen, dass Sie die "Recovery Services-Tresor" am Speicherort zu erstellen, in dem Ihre virtuellen Computer repliziert werden soll. Ist das Ziel "USA Mitte", erstellen Sie z. B. Tresor in "USA".
+    > Es wird empfohlen, dass Sie den Recovery Services-Tresor an dem Speicherort erstellen, an dem Ihre virtuellen Computer repliziert werden sollen. Wenn Ihr Zielspeicherort beispielsweise „USA, Mitte“ ist, erstellen Sie den Tresor „USA, Mitte“.
 
-* Wenn Sie Netzwerksicherheitsgruppe Gruppen (NSG)-Regeln oder Firewallproxy für die Zugriffssteuerung für ausgehende Internetverbindung für den Azure-VMs verwenden, stellen Sie sicher, Sie-Positivliste erforderlichen URLs oder IP-Adressen. Verweisen auf [Networking Guidance-Dokument](./site-recovery-azure-to-azure-networking-guidance.md) Weitere Details.
+* Wenn Sie NSG-Regeln (Netzwerksicherheitsgruppen) oder einen Firewallproxy verwenden, um den Zugriff für ausgehende Internetverbindungen auf den Azure-VMs zu steuern, stellen Sie sicher, dass Sie die erforderlichen URLs oder IP-Adressen in die Whiteliste aufnehmen. Weitere Informationen finden Sie unter [Richtliniendokument für Netzwerke](./site-recovery-azure-to-azure-networking-guidance.md).
 
-* Wenn Sie eine Expressroute- oder eine VPN-Verbindung zwischen lokalen und den Speicherort der Quelle in Azure haben, führen Sie die [Website Wiederherstellungsaspekte für Azure an ExpressRoute lokal / VPN-Konfiguration](site-recovery-azure-to-azure-networking-guidance.md#guidelines-for-existing-azure-to-on-premises-expressroutevpn-configuration) Dokument.
+* Wenn eine ExpressRoute- oder VPN-Verbindung zwischen dem lokalen Speicherort und dem Quellspeicherort in Azure vorliegt, folgen Sie den Informationen im Dokument [Überlegungen zur Site Recovery für Azure bei einer lokalen ExpressRoute-/VPN-Konfiguration](site-recovery-azure-to-azure-networking-guidance.md#guidelines-for-existing-azure-to-on-premises-expressroutevpn-configuration).
 
-* Ihr Azure-Benutzerkonto benötigt bestimmte [Berechtigungen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) zum Aktivieren der Replikation des virtuellen Azure-Computer.
+* Ihr Azure-Benutzerkonto benötigt bestimmte [Berechtigungen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) zum Aktivieren der Replikation eines virtuellen Azure-Computers.
 
-* Zum Erstellen von virtuellen Computern am Zielspeicherort an, die Sie als DR-Region verwenden möchten, sollte Ihr Azure-Abonnement aktiviert werden. Erhalten Sie Unterstützung dafür, dass das Kontingent erforderliche.
+* Ihr Azure-Abonnement sollte zum Erstellen von virtuellen Computer an dem Zielspeicherort aktiviert sein, den Sie als Region für die Notfallwiederherstellung verwenden möchten. Sie können sich an den Support wenden, um das erforderliche Kontingent zu aktivieren.
 
-## <a name="enable-replication-from-azure-site-recovery-vault"></a>Aktivieren der Replikation von Azure Site Recovery-Tresor
-Für diese Abbildung repliziert wir ausgeführter virtueller Maschinen in der "East Asia" Azure-Speicherort zu dem Speicherort "Südostasien". Die Schritte sind wie folgt aus:
+## <a name="enable-replication-from-azure-site-recovery-vault"></a>Aktivieren der Replikation über den Azure Site Recovery-Tresor
+Für diese Veranschaulichung werden virtuelle Computer, die am Standort „Asien, Osten“ ausgeführt werden, am Standort „Asien, Südosten“ repliziert. Die Schritte lauten wie folgt:
 
- Klicken Sie auf **+ replizieren** im Tresor zum Aktivieren der Replikation für die virtuellen Computer.
+ Klicken Sie im Tresor auf **+Replizieren**, um die Replikation für die virtuellen Computer zu aktivieren.
 
-1. **Quelle:** bezieht sich auf den Ausgangspunkt des der Computer in diesem Fall also **Azure**.
+1. **Quelle:** Dies bezieht sich auf den Ausgangspunkt der Computer, in diesem Fall also **Azure**.
 
-2. **Quellspeicherort:** ist die Azure-Region aus, wo Sie Ihre virtuellen Computer schützen möchten. Für diese Abbildung wird der Quellspeicherort "East Asia" sein.
+2. **Quellstandort:** Dies ist die Azure-Region, aus der Sie Ihre virtuellen Computer schützen möchten. In dieser Veranschaulichung ist der Quellspeicherort „Asien, Osten“.
 
-3. **Bereitstellungsmodell:** bezieht sich auf das Azure-Bereitstellungsmodell Quellcomputer. Sie können entweder klassischen auswählen oder Ressourcen-Manager und der Computer, die zu dem bestimmten Modell gehören, werden für den Schutz im nächsten Schritt aufgeführt.
+3. **Bereitstellungsmodell:** Dies bezieht sich auf das Azure-Bereitstellungsmodell der Quellcomputer. Sie können entweder das klassische Modell oder den Ressourcen-Manager auswählen. Die Computer, die zu dem spezifischen Modell gehören, werden im nächsten Schritt für den Schutz aufgeführt.
 
       >[!NOTE]
       >
-      > Nur können Sie eine klassische virtuelle Maschine repliziert und stellen Sie es als eine klassische virtuelle Maschine wieder her. Sie können ihn nicht als Ressourcen-Manager für virtuelle Computer wiederherstellen.
+      > Sie können einen replizierten klassischen virtuellen Computer nur als klassischen virtuellen Computer wiederherstellen. Eine Wiederherstellung als virtueller Ressourcen-Manager-Computer ist nicht möglich.
 
-4. **Ressourcengruppe:** ist die Ressourcengruppe, zu denen Ihre virtuellen Quellcomputern gehören. Für den Schutz im nächsten Schritt werden alle virtuellen Computer unter der ausgewählten Ressourcengruppe aufgeführt.
+4. **Ressourcengruppe:** Dies ist die Ressourcengruppe, zu der Ihre virtuellen Quellcomputer gehören. Alle virtuellen Computer der ausgewählten Ressourcengruppe werden im nächsten Schritt für den Schutz aufgeführt.
 
-    ![Aktivieren der Replikation](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
+    ![Replikation aktivieren](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
-In **virtuelle Maschinen > Wählen Sie virtuelle Computer**auf, und wählen Sie jeden Computer, die Sie replizieren möchten. Sie können nur Computer auswählen, für die Replikation aktiviert werden kann. Klicken Sie anschließend auf %%amp;quot;OK%%amp;quot;.
-    ![Aktivieren der Replikation](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
+Klicken Sie auf **Virtuelle Computer > Virtuelle Computer auswählen**, und wählen Sie die Computer aus, die Sie replizieren möchten. Sie können nur Computer auswählen, für die die Replikation aktiviert werden kann. Klicken Sie dann auf „OK“.
+    ![Replikation aktivieren](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 
-Einstellungen im Abschnitt können Sie die Ziel-Standorteigenschaften konfigurieren.
+Im Einstellungsabschnitt können Sie die Eigenschaften des Zielspeicherorts konfigurieren.
 
-1. **Zielspeicherort:** Dies ist der Speicherort, in denen die Quelldaten für die virtuelle Maschine werden repliziert. Abhängig von den ausgewählten Computern Speicherort, Site Recovery Geben Sie die Liste der geeigneten Zielregionen an.
+1. **Zielstandort:** Dies ist der Speicherort, am dem die Daten der virtuellen Quellcomputer repliziert werden. Abhängig vom ausgewählten Computerstandort, stellt Site Recovery eine Liste der geeigneten Zielregionen bereit.
 
     > [!TIP]
-    > Es wird empfohlen, behalten Sie den Zielspeicherort an identisch zum Zeitpunkt des Wiederherstellungspunkts services-Tresor.
+    > Es wird empfohlen, den Zielspeicherort des Recovery Services-Tresors zu verwenden.
 
-2. **Zielressourcengruppe:** ist die Ressourcengruppe, zu dem alle Ihre replizierte virtuelle Computer gehören wird. Standardmäßig erstellt ASR eine neue Ressourcengruppe in der Zielregion mit Namen "asr" Suffix. Für den Fall, dass Sie bereits von ASR erstellte Ressourcengruppe vorhanden sind, wird er wiederverwendet werden. Sie könne auch so anzupassen, wie im Abschnitt weiter unten dargestellt.    
-3. **Ziel virtuelles Netzwerk:** standardmäßig ASR erstellt ein neues virtuelles Netzwerk in der Zielregion mit Namen "asr" Suffix. Dadurch wird Ihr Quellnetzwerk zugeordnet werden und wird für alle zukünftigen Schutz verwendet werden.
+2. **Zielressourcengruppe:** Dies ist die Ressourcengruppe, zu der alle replizierten virtuellen Computer gehören werden. Standardmäßig erstellt ASR eine neue Ressourcengruppe in der Zielregion, deren Name das Suffix „asr“ aufweist. Für den Fall, dass die von ASR erstellte Ressourcengruppe bereits vorhanden ist, wird diese wiederverwendet. Sie können sie auch optional anpassen, wie im Abschnitt weiter unten dargestellt.    
+3. **Virtuelles Zielnetzwerk:** Standardmäßig erstellt ASR ein neues virtuelles Netzwerk in der Zielregion, dessen Name das Suffix „asr“ aufweist. Dieses wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet werden.
 
     > [!NOTE]
-    > [Überprüfen Sie die Netzwerkdetails](site-recovery-network-mapping-azure-to-azure.md) um weitere Informationen zur Netzwerkzuordnung.
+    > [Überprüfen Sie die Netzwerkdetails](site-recovery-network-mapping-azure-to-azure.md), um weitere Informationen zur Netzwerkzuordnung zu erhalten.
 
-4. **Speicherkonten als Ziel:** standardmäßig ASR neue zielspeicherkonto, wobei Ihre Quell-VM-Speicherkonfiguration erstellt wird. Für den Fall, dass Sie bereits von ASR erstellte Speicherkonto vorhanden, wird er wiederverwendet werden.
+4. **Zielspeicherkonto:** Standardmäßig erstellt ASR das neue Zielspeicherkonto, wobei die Konfiguration Ihres VM-Quellspeichers kopiert wird. Für den Fall, dass das von ASR erstellte Speicherkonto bereits vorhanden ist, wird dieses wiederverwendet.
 
-5. **Zwischenspeichern von Speicherkonten:** ASR benötigt zusätzlichen Speicherplatz Konto mit dem Namen der Cachespeicher in den Quellbereich. Alle Änderungen, die in der Quell-VMs werden vor der Replikation, die an den Zielspeicherort Cache Speicherkonto gesendet und nachverfolgt.
+5. **Cachespeicherkonto :** ASR benötigt als zusätzliches Speicherkonto ein sogenanntes Cachespeicherkonto in der Quellregion. Alle Änderungen an den virtuellen Quellcomputern werden nachverfolgt und vor der Replikation dieser Computer am Zielspeicherort an das Cachespeicherkonto gesendet.
 
-6. **Verfügbarkeitsgruppe:** ASR erstellt standardmäßig eine neue verfügbarkeitsgruppe, die in der Zielregion mit Namen "asr" Suffix. Für den Fall, dass ASR bereits erstellte Verfügbarkeit Menge vorhanden sind, wird er wiederverwendet werden.
+6. **:** Standardmäßig erstellt ASR eine neue Verfügbarkeitsgruppe in der Zielregion, deren Name das Suffix „asr“ aufweist. Für den Fall, dass die von ASR erstellte Verfügbarkeitsgruppe bereits vorhanden ist, wird diese wiederverwendet.
 
-7.  **Replikationsrichtlinie:** definiert die Einstellungen für die Wiederherstellung Punkt Aufbewahrung Verlauf und der app konsistent Häufigkeit von Momentaufnahmen. Standardmäßig wird eine neue Replikationsrichtlinie ASR mit den Standardeinstellungen von 24 Stunden für Aufbewahrungszeitraum des Wiederherstellungspunkts Punkt und "60 Minuten für die Häufigkeit von app-konsistente Momentaufnahmen erstellt werden.
+7.  **Replikationsrichtlinie:** Diese definiert die Einstellungen für den Aufbewahrungsverlauf des Wiederherstellungspunkts und die App-konsistente Momentaufnahmenhäufigkeit. Standardmäßig erstellt ASR eine neue Replikationsrichtlinie mit der Standardeinstellung „24 Stunden“ für den Aufbewahrungszeitraum des Wiederherstellungspunkts und „60 Minuten“ für die App-konsistente Momentaufnahmenhäufigkeit.
 
-    ![Aktivieren der Replikation](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
+    ![Replikation aktivieren](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
 
 ## <a name="customize-target-resources"></a>Anpassen der Zielressourcen
 
-Für den Fall, dass Sie die von ASR verwendeten Standardeinstellungen ändern möchten, können Sie die Einstellungen, die je nach Ihren Anforderungen ändern.
+Für den Fall, dass Sie die von ASR verwendeten Standardeinstellungen ändern möchten, können Sie diese nach Bedarf ändern.
 
-1. **Anpassen:** klicken sie zum Ändern der Standardeinstellungen von ASR verwendet.
+1. **Anpassen:** Klicken Sie auf diese Option, um die von ASR verwendeten Standardeinstellungen zu ändern.
 
-2. **Zielressourcengruppe:** können Sie die Ressourcengruppe aus der Liste aller Ressourcengruppen, die innerhalb des Abonnements am Zielspeicherort vorhandene auswählen.
+2. **Zielressourcengruppe:** Sie können die Ressourcengruppe aus der Liste aller Ressourcengruppen wählen, die innerhalb des Abonnements am Zielspeicherort vorhanden sind.
 
-3. **Ziel virtuelles Netzwerk:** Sie finden die Liste der im virtuellen Netzwerk am Zielspeicherort an.
+3. **Virtuelles Zielnetzwerk:** Hier finden Sie die Liste aller virtuellen Netzwerke am Zielspeicherort.
 
-4. **Verfügbarkeitsgruppe:** können Sie die virtuellen Computer, die Verfügbarkeit in Quellbereich gehören nur Verfügbarkeit legt Einstellungen hinzufügen.
+4. **Verfügbarkeitsgruppe:** Sie können nur den virtuellen Computern Einstellungen für Verfügbarkeitsgruppen hinzufügen, die der Verfügbarkeit in der Quellregion angehören.
 
-5. **Ziel-Speicherkonten:**
+5. **Zielspeicherkonto:**
 
-![Aktivieren der Replikation](./media/site-recovery-replicate-azure-to-azure/customize.PNG) klicken Sie auf **erstellen Zielressource** und Aktivieren der Replikation
+![Replikation aktivieren](./media/site-recovery-replicate-azure-to-azure/customize.PNG) Klicken Sie auf **Create target resource** (Zielressource erstellen) und auf „Replikation aktivieren“.
 
 
-Nachdem der virtuelle Computer geschützt werden können, überprüfen Sie den Status der Integrität von virtuellen Computern unter **replizierten Elemente**
+Nachdem die virtuellen Computer geschützt wurden, können Sie deren Integrität unter **Replizierte Elemente** überprüfen.
 
 >[!NOTE]
->Konnten Sie während der Zeit der ersten Replikation gibt es eine Möglichkeit, dass Status dauert es bis zu aktualisieren und für einige Zeit nicht Status angezeigt werden. Sie können die Schaltfläche "Aktualisieren" oben auf dem Blatt ", um den neuesten Status abzurufen klicken.
+>Im Verlauf der ersten Replikation besteht die Möglichkeit, dass die Statusaktualisierung eine Weile dauert und vorübergehend kein Fortschritt angezeigt wird. Sie können oben auf dem Blatt auf die Schaltfläche „Aktualisieren“ klicken, um den neuesten Status abzurufen.
 >
 
-![Aktivieren der Replikation](./media/site-recovery-replicate-azure-to-azure/replicateditems.PNG)
+![Replikation aktivieren](./media/site-recovery-replicate-azure-to-azure/replicateditems.PNG)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erfahren Sie mehr](site-recovery-test-failover-to-azure.md) zum Ausführen eines Test-Failovers.
-- [Erfahren Sie mehr](site-recovery-failover.md) zu verschiedenen Typen von Failover und wie Sie diese ausführen.
-- Erfahren Sie mehr über [mit Wiederherstellungsplänen](site-recovery-create-recovery-plans.md) RTO zu reduzieren.
-- Erfahren Sie mehr über [erneut zu Azure-VMs schützen](site-recovery-how-to-reprotect.md) nach einem Failover.
+- [Erfahren Sie mehr](site-recovery-test-failover-to-azure.md) über die Ausführung von Testfailovervorgängen.
+- [Informieren Sie sich](site-recovery-failover.md) über die unterschiedlichen Failoverarten und deren Durchführung.
+- Erfahren Sie mehr über die [Verwendung von Wiederherstellungsplänen](site-recovery-create-recovery-plans.md) zur RTO-Verringerung.
+- Erfahren Sie mehr über das [erneute Schützen von virtuellen Azure-Computern](site-recovery-how-to-reprotect.md) nach einem Failover.

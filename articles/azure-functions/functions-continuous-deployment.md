@@ -15,12 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: 35a0b0faa61cf4b42ba1d8696c85f5724ff73f23
-ms.contentlocale: de-de
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Continuous Deployment für Azure Functions
 Mit Azure Functions können Sie Ihre Funktionen-App unter Verwendung von App Service-Continuous Integration problemlos bereitstellen. Functions kann in Bitbucket, Dropbox, GitHub und Visual Studio Team Services (VSTS) integriert werden. Dies ermöglicht einen Workflow, bei dem Funktionscodeaktualisierungen, die durch einen dieser integrierten Dienste erfolgt sind, die Bereitstellung in Azure auslösen. Sollten Sie noch nicht mit Azure Functions vertraut sein, sehen Sie sich zuerst die [Übersicht zu Azure Functions](functions-overview.md)an.
@@ -153,4 +152,3 @@ Bevor Sie über FTP oder ein lokales Git-Repository Dateien aus Ihrer Funktionen
 
 > [!div class="nextstepaction"]
 > [Bewährte Methoden für Azure Functions](functions-best-practices.md)
-

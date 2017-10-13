@@ -1,6 +1,6 @@
 ---
 title: "Aktivieren der Verschlüsselung für Speicherkonten in Azure Security Center | Microsoft Docs"
-description: "Dieses Dokument wird gezeigt, wie Sie die Azure Security Center-Empfehlungen zu implementieren ** Aktivieren der Verschlüsselung für Azure Storage Account **."
+description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlungen in **Aktivieren der Verschlüsselung für Azure Storage-Konten** umsetzen."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/20/2016
 ms.author: terrylan
 ms.openlocfilehash: b7b2e8a12cbab68da9c8fcc348e8e3c543607007
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>Aktivieren der Verschlüsselung für Azure Storage-Konten in Azure Security Center
 Azure Security Center empfiehlt eventuell die Aktivierung der Azure Storage Service Encryption für ruhende Daten.

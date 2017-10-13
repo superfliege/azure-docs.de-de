@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tarcher
 ms.openlocfilehash: 1ff3d77ced6c9d90029b251490c05e52d9b43515
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="running-cassandra-with-linux-on-azure-and-accessing-it-from-nodejs"></a>Ausführen von Cassandra mit Linux auf Azure und Zugreifen darauf mit Node.js
 > [!IMPORTANT] 
@@ -457,7 +457,7 @@ Die Anzeige sollte der Abbildung unten ähneln:
 
 Beachten Sie, dass der in Schritt 4 erstellte Keyspace „SimpleStrategy“ mit dem Replikationsfaktor 3 verwendet. SimpleStrategy wird für eine einzelne Rechenzentrumsbereitstellungen empfohlen, während NetworkTopologyStrategy für Bereitstellungen in mehreren Rechenzentren empfohlen wird. Ein Replikationsfaktor von 3 toleriert Knotenausfälle.
 
-## <a id="tworegion"> </a>Bereitstellung für mehrere Regionen
+## <a id="tworegion"></a>Bereitstellung für mehrere Regionen
 Bei diesem Verfahren wird die abgeschlossene Bereitstellung in einer Region genutzt und der gleiche Vorgang für die Installation in der zweiten Region wiederholt. Der Hauptunterschied zwischen einer Bereitstellung in einer Region und in mehreren Regionen besteht in der Einrichtung des VPN-Tunnels für die Kommunikation zwischen den Regionen. Wir beginnen mit der Netzwerkinstallation, stellen die virtuellen Computer bereit und konfigurieren dann Cassandra.
 
 ### <a name="step-1-create-the-virtual-network-at-the-2nd-region"></a>Schritt 1: Erstellen des virtuellen Netzwerks in der zweiten Region

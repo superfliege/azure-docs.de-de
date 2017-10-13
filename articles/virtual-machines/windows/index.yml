@@ -65,7 +65,7 @@ sections:
           - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">Verwalten der Sicherheit auf virtuellen Computern</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">Erstellen einer Continuous Integration-Pipeline mit Visual Studio</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-secure-web-server">Sichern eines Webservers mit SSL</a>
-  - title: Kostenloses Pluralsight-Videotraining
+  - title: Kostenloses PluralSight-Videotraining
     items:
       - type: list
         style: cards

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.openlocfilehash: 9e5c929251259a86944121e504dc033bc99e3bc4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-Protokollierung und -Überwachung
 ## <a name="introduction"></a>Einführung
@@ -354,7 +354,7 @@ Bei den verbundenen Quellen handelt es sich um die Computer und anderen Ressourc
 
 | Dienst | Ressourcentyp | Protokolle | Metriken | Lösung |
 | :------ | :------------ | :--- | :------ | :------- |
-|Anwendungsgateways|  Microsoft.Network/<br>applicationGateways|  Diagnose|Diagnose|    [Azure Application](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [Gateway-Analyse](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
+|Anwendungsgateways|  Microsoft.Network/<br>applicationGateways|  Diagnose|Diagnose|    [Azure Application](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)[Gateway-Analyse](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
 |Application Insights||     Connector|  Connector|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)-[Connector (Vorschau)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
 |Automation-Konten|   Microsoft.Automation/<br>AutomationAccounts|    Diagnose||       [Weitere Informationen](https://docs.microsoft.com/en-us/azure/automation/automation-manage-send-joblogs-log-analytics)|
 |Batch-Konten|    Microsoft.Batch/<br>batchAccounts|  Diagnose|    Diagnose||
@@ -431,7 +431,7 @@ Welche Einstellungen durchgesetzt werden müssen, um sicherzustellen, dass Ihre 
 
 Als Administrator einer Websitesammlung können Sie den Verlauf der Aktionen abrufen, die von einem bestimmten Benutzer durchgeführt werden. Zudem können Sie den Verlauf der Aktionen abrufen, die während eines bestimmten Zeitraums durchgeführt werden. 
 
-- [Suchen des Überwachungsprotokolls im Office 365 Security & Compliance Center](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US)
+- [Suchen des Überwachungsprotokolls im Office 365 Security &amp; Compliance Center](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US)
 
 Mit dem Office 365 Security & Compliance Center können Sie das vereinheitlichte Überwachungsprotokoll suchen, um Benutzer- und Administratoraktivitäten in Ihrer Office 365-Organisation anzuzeigen.
 

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 158b0b65ba53630050275c910f2a7acfc39b8759
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Features und Tools für Bash in Azure Cloud Shell
 
 [!include [features-introblock](../../includes/cloud-shell-features-introblock.md)]
@@ -77,4 +75,3 @@ Dateien außerhalb von `$Home` und der Zustand des Computers werden nicht sitzun
 ## <a name="next-steps"></a>Nächste Schritte
 [Bash in Cloud Shell – Schnellstart](quickstart.md) <br>
 [Erfahren Sie mehr über Azure CLI 2.0](https://docs.microsoft.com/cli/azure/).
-

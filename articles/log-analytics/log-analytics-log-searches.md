@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/26/2017
 ms.author: bwren
 ms.openlocfilehash: bf237a837297cb8f1ab3a3340139133adcd2b244
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>Suchen von Daten mit Protokollsuchen in Log Analytics
 
@@ -169,7 +169,7 @@ EventLog=System TimeGenerated>NOW-24HOURS
 
 #### <a name="to-search-using-a-boolean-operator"></a>Suchen mithilfe eines booleschen Operators
 * Geben Sie im Suchabfragefeld `EventLog=System TimeGenerated>NOW-24HOURS`  
-    ![Boolesche Suche](./media/log-analytics-log-searches/oms-search-boolean.png)
+    ![""search with boolean" (boolesche Suche)" (boolesche Suche)](./media/log-analytics-log-searches/oms-search-boolean.png)
 
 Sie können das Zeitintervall zwar grafisch steuern, was die meiste Zeit auch sinnvoll ist, es hat jedoch auch Vorteile, einen Zeitfilter direkt in die Abfrage einzuschließen. Beispielsweise funktioniert dies hervorragend mit Dashboards, bei denen Sie die Zeit für jede Kachel überschreiben können, unabhängig von der *globalen* Zeitauswahl auf der Dashboardseite. Weitere Informationen finden Sie unter [Time Matters in Dashboard](http://cloudadministrator.wordpress.com/2014/10/19/system-center-advisor-restarted-time-matters-in-dashboard-part-6/)("Zeit spielt in Dashboards eine Rolle", auf Englisch).
 

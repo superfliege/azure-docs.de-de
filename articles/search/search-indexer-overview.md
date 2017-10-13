@@ -15,14 +15,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: 1ea9dfcaec188bac2e92909f4811568b589357d4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="indexers-in-azure-search"></a>Indexer in Azure Search
 > [!div class="op_single_selector"]
 >
@@ -44,7 +42,7 @@ Sie können Indexer bei Bedarf oder nach einem Zeitplan für die regelmäßige D
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Ansätze zum Erstellen und Verwalten von Indexern
 Für allgemein verfügbare Indexer wie Azure SQL oder Azure Cosmos DB können Sie Indexer mit diesen Ansätzen erstellen und verwalten:
 
-* [Portal > Datenimport-Assistent ](search-get-started-portal.md)
+* [Portal &gt; Datenimport-Assistent ](search-get-started-portal.md)
 * [Dienst-REST-API](https://msdn.microsoft.com/library/azure/dn946891.aspx)
 * [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.search.iindexersoperations.aspx)
 
@@ -76,4 +74,3 @@ Nachdem Sie sich über die Grundlagen informiert haben, ist der nächste Schritt
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Indizieren von CSV-Blobs mit Azure Search-Blobindexer](search-howto-index-csv-blobs.md)
 * [Indizieren von JSON-Blobs mit Azure Search-Blobindexer](search-howto-index-json-blobs.md)
-

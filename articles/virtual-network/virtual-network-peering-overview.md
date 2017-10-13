@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 082cd8a6cf50f76c89fe5995047396c734f83034
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -42,7 +41,7 @@ Die Verwendung von VNET-Peering bietet unter anderem folgende Vorteile:
 
 ## <a name="requirements-constraints"></a>Anforderungen und Einschränkungen
 
-* Das Peering von virtuellen Netzwerken in derselben Region befindet sich in der Phase der allgemeinen Verfügbarkeit. Das Peering von virtuellen Netzwerken in unterschiedlichen Regionen befindet sich derzeit in „USA, Westen-Mitte“, „Kanada, Mitte“ und „USA, Westen 2“ in der Vorschauphase. Sie können [Ihr Abonnement für die Vorschau registrieren](virtual-network-create-peering.md).
+* Das Peering von virtuellen Netzwerken in derselben Region befindet sich in der Phase der allgemeinen Verfügbarkeit. Das Peering von virtuellen Netzwerken in unterschiedlichen Regionen befindet sich derzeit in USA, Westen-Mitte, Kanada, Mitte und USA, Westen 2 in der in der Vorschauphase. Sie können [Ihr Abonnement für die Vorschau registrieren](virtual-network-create-peering.md).
     > [!WARNING]
     > Peerings virtueller Netzwerke, die in diesem Szenario erstellt wurden, bieten ggf. nicht denselben Grad an Verfügbarkeit und Zuverlässigkeit wie Versionen mit allgemeiner Verfügbarkeit. Peerings virtueller Netzwerke weisen unter Umständen eingeschränkte Funktionen auf und stehen ggf. nicht in allen Azure-Regionen zur Verfügung. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network) .
 
@@ -141,4 +140,3 @@ Für ein- und ausgehenden Datenverkehr, der eine VNET-Peeringverbindung verwende
 
 * Informieren Sie sich über das Erstellen einer [Hub-and-Spoke-Netzwerktopologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering).
 * Informieren Sie sich über alle [Einstellungen für das VNET-Peering und deren Änderung](virtual-network-manage-peering.md).
-

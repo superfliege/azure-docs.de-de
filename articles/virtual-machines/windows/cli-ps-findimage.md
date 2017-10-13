@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/12/2017
 ms.author: danlep
+ms.openlocfilehash: c9b35ff5f3fbd33639805b5a4f105df32562a691
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: 630f555b003b0efc45b372a7009dbf036aa8c737
-ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Vorgehensweise zum Suchen nach Windows-VM-Images im Azure Marketplace mit Azure PowerShell
 
@@ -159,4 +158,3 @@ Wenn Sie den gewählten SKU-Namen aus dieser Liste kopieren, besitzen Sie alle I
 
 ## <a name="next-steps"></a>Nächste Schritte
 Jetzt können Sie genau das Datenträgerabbild auswählen, das Sie verwenden möchten. Um mit den Imageinformationen schnell einen virtuellen Computer zu erstellen, nach dem Sie soeben gesucht haben, lesen Sie den Abschnitt [Erstellen eines virtuellen Windows-Computers mit PowerShell](quick-create-powershell.md).
-

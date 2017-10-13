@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 06/27/2017
 ms.author: samacha
 ms.openlocfilehash: 97044cb5d7b0b3fcb3b85328df618a265bc59b61
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>Auswählen einer Stream Analytics-Plattform: Vergleich von Apache Storm und Azure Stream Analytics
 Azure umfasst mehrere Lösungen zum Analysieren von Streamingdaten: [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) und [Apache Storm in Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-storm/). Beide Analyseplattformen verfügen über die Vorteile einer PaaS-Lösung. Für die Plattformen gelten aber einige erhebliche Unterschiede bei den Funktionen sowie in Bezug auf die Konfiguration und Verwaltung. 
@@ -33,7 +33,7 @@ In diesem Artikel werden die Features nebeneinander gestellt und verglichen, dam
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong> </strong>
+                    <strong></strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -145,7 +145,7 @@ Weitere Informationen finden Sie unter <a href="http://azure.microsoft.com/prici
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong> </strong>
+                    <strong></strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -254,7 +254,7 @@ Ja. Benutzer können benutzerdefinierten Code in C#, Java oder einer beliebigen 
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong> </strong>
+                    <strong></strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -344,7 +344,7 @@ Benutzer können ein beliebiges Datencodierungsformat implementieren, indem sie 
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong> </strong>
+                    <strong></strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -492,7 +492,7 @@ Apache Storm ist eine fehlertolerante Streamingplattform. Aber der Benutzer ist 
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong> </strong>
+                    <strong></strong>
                 </p>
             </td>
             <td width="204" valign="top">

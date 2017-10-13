@@ -16,12 +16,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
+ms.openlocfilehash: 47e7db5462ecf3a2211538b1f46ed0571980b15b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 3ae0f28272d70a63b74a9f249566ae789f07aad5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-net-core-web-app-in-a-linux-container-in-azure"></a>Erstellen einer .NET Core-Web-App in einem Linux-Container in Azure
 
@@ -35,7 +34,7 @@ Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden.
 
 So führen Sie diesen Schnellstart durch:
 
-* [Installation von Git](https://git-scm.com/)
+* [Installieren Sie Git.](https://git-scm.com/)
 * [Installieren des .NET Core SDK](https://www.microsoft.com/net/download/core)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -186,4 +185,3 @@ Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App ange
 
 > [!div class="nextstepaction"]
 > [Erstellen einer .NET Core- und SQL-Datenbank-Web-App in Azure-Web-Apps für Container](tutorial-dotnetcore-sqldb-app.md)
-

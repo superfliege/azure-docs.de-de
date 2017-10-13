@@ -56,7 +56,7 @@ sections:
           - html: <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Migrieren einer vorhandenen SQL Server-Datenbank zur Verwendung von Azure SQL-Datenbank</a>
           - html: <a href="/azure/sql-database/sql-database-security-tutorial">Sichern Ihrer SQL-Datenbank</a>
           - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">Implementieren einer geografisch verteilten Datenbank</a>
-  - title: Kostenloses Pluralsight-Videotraining
+  - title: Kostenloses PluralSight-Videotraining
     items:
       - type: list
         style: cards
@@ -84,7 +84,7 @@ sections:
         className: cardsD
         items:
           - title: Befehlszeile
-            html: '<p><a href="/powershell/module/azurerm.sql/#sql">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell (elastische Datenbank)</a></p><p><a href="/cli/azure/sql">Azure-CLI</a></p>'
+            html: '<p><a href="/powershell/module/azurerm.sql/#sql">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell (elastische Datenbank)</a></p><p><a href="/cli/azure/sql">Azure-Befehlszeilenschnittstelle</a></p>'
           - title: Sprachen
             html: '<p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>'
           - title: REST

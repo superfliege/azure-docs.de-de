@@ -14,12 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
-ms.openlocfilehash: dd9019a6feb86d90fc6219b06bf1e69da4c2b18f
-ms.contentlocale: de-de
-ms.lasthandoff: 12/08/2016
-
+ms.openlocfilehash: 66f0a9b591b812a52dc6037dcfcb64a2c250f05c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>Debuggen eines Azure-Clouddiensts oder virtuellen Computers in Visual Studio
 Visual Studio bietet verschiedene Optionen für das Debuggen von Azure-Clouddiensten und virtuellen Computern.
@@ -27,7 +26,7 @@ Visual Studio bietet verschiedene Optionen für das Debuggen von Azure-Clouddien
 ## <a name="debug-your-cloud-service-on-your-local-computer"></a>Debuggen des Clouddiensts auf dem lokalen Computer
 Sie können Zeit und Geld sparen, wenn Sie den Azure-Compute-Emulator zum Debuggen Ihres Clouddiensts auf einem lokalen Computer verwenden. Durch lokales Debuggen eines Diensts vor der Bereitstellung können Sie die Zuverlässigkeit und Leistung verbessern, ohne für die Computezeit bezahlen zu müssen. Allerdings können einige Fehler nur auftreten, wenn Sie einen Clouddienst in Azure selbst ausführen. Sie können diese Fehler debuggen, wenn Sie Remotedebuggen beim Veröffentlichen Ihres Diensts aktivieren und dann den Debugger zu einer Rolleninstanz hinzufügen.
 
-Der Emulator simuliert den Azure-Computedienst und wird in Ihrer lokalen Umgebung ausgeführt, sodass Sie den Clouddienst vor der Bereitstellung testen und debuggen können. Der Emulator behandelt den Lebenszyklus der Rolleninstanzen und bietet Zugriff auf simulierte Ressourcen wie lokalen Speicher. Beim Debuggen oder Ausführen des Diensts in Visual Studio wird der Emulator automatisch als Hintergrundanwendung gestartet und dann der Dienst für den Emulator bereitgestellt. Mit dem Emulator können Sie Ihren Dienst anzeigen, wenn er in der lokalen Umgebung ausgeführt wird. Sie können die vollständige Version oder die Express-Version des Emulators ausführen. (Beginnend mit Azure 2.3 ist die Express-Version des Emulators Standard.) Weitere Informationen finden Sie unter [Verwenden von Emulator Express zum lokalen Ausführen und Debuggen eines Clouddiensts](https://msdn.microsoft.com/library/dn339018.aspx).
+Der Emulator simuliert den Azure-Computedienst und wird in Ihrer lokalen Umgebung ausgeführt, sodass Sie den Clouddienst vor der Bereitstellung testen und debuggen können. Der Emulator behandelt den Lebenszyklus der Rolleninstanzen und bietet Zugriff auf simulierte Ressourcen wie lokalen Speicher. Beim Debuggen oder Ausführen des Diensts in Visual Studio wird der Emulator automatisch als Hintergrundanwendung gestartet und dann der Dienst für den Emulator bereitgestellt. Mit dem Emulator können Sie Ihren Dienst anzeigen, wenn er in der lokalen Umgebung ausgeführt wird. Sie können die vollständige Version oder die Express-Version des Emulators ausführen. (Beginnend mit Azure 2.3 ist die Express-Version des Emulators Standard.) Weitere Informationen finden Sie unter [Verwenden von Emulator Express zum lokalen Ausführen und Debuggen eines Clouddiensts](vs-azure-tools-emulator-express-debug-run.md).
 
 ### <a name="to-debug-your-cloud-service-on-your-local-computer"></a>So debuggen Sie den Clouddienst auf dem lokalen Computer
 1. Wählen Sie auf der Menüleiste **Debuggen** und **Debuggen starten** aus, um das Azure-Clouddienstprojekt auszuführen. Alternativ können Sie F5 drücken. Eine Meldung wird angezeigt, dass der Serveremulator gestartet wurde. Wenn der Emulator gestartet wird, wird dies durch das Taskleistensymbol bestätigt.
@@ -166,4 +165,3 @@ Visual Studio ASP.NET-Projekte bieten eine Option, einen praktischen virtuellen 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie **IntelliTrace** , um ein Protokoll der Aufrufe und Ereignisse von einem freigegebenen Server zu sammeln. Weitere Informationen finden Sie unter [Debuggen eines veröffentlichten Clouddiensts mit IntelliTrace und Visual Studio](http://go.microsoft.com/fwlink/?LinkID=623016).
 * Verwenden Sie die **Azure-Diagnose** , um ausführliche Informationen zu Code, der in Rollen ausgeführt wird, zu protokollieren, unabhängig davon, ob die Rollen in der Entwicklungsumgebung oder in Azure ausgeführt werden. Weitere Informationen finden Sie unter [Sammeln von Protokollierungsdaten mit der Azure-Diagnose](http://go.microsoft.com/fwlink/p/?LinkId=400450).
-

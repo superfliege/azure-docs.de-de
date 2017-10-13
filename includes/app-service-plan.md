@@ -1,8 +1,8 @@
-Ein [App Service-Plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) gibt den Speicherort, Größe, und Funktionen der Web-Server-Farm, die Ihre app hostet. Sie können Geld sparen, wenn mehrere apps gehostet wird. durch Konfigurieren der Web-apps, um eine einzelne App Service-Plan freizugeben.
+Ein [App Service-Plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) gibt den Standort, die Größe und die Funktionen der Webserverfarm an, die Ihre App hostet. Beim Hosten mehrerer Apps können Sie Geld sparen, indem Sie die Web-Apps für die gemeinsame Verwendung eines einzelnen App Service-Plans konfigurieren.
 
-App Service-Pläne zu definieren:
+In App Service-Plänen wird Folgendes definiert:
 
-* Region (z. B.: Nordeuropa, USA, Osten oder Südostasien)
-* Größe der Instanz (klein, Mittel oder groß)
-* Anzahl der Dezimalstellen (1 bis 20 Instanzen)
-* SKU (frei, freigegebene, Basic, Standard oder Premium)
+* Region (z.B. „Europa, Norden“, „USA, Osten“ oder „Asien, Südosten“)
+* Instanzgröße (klein, mittel, groß)
+* Skalierung (1 bis 20 Instanzen)
+* SKU (Free, Shared, Basic, Standard oder Premium)

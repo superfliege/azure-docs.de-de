@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: tamram
+ms.openlocfilehash: 7d86d5e8547d977c07cfbb0597b74382172a8472
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: eef0ff164b2857172fc24d8a0af7beddb29b262c
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
 
@@ -266,4 +265,3 @@ Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 * Evaluieren Sie den plattformübergreifenden von der Community unterstützten Open Source-Speicheremulator [Azurite](https://github.com/arafato/azurite). 
 * [Azure Storage-Beispiele mit .NET](../storage-samples-dotnet.md) enthält Links zu mehreren Codebeispielen, die Sie bei der Anwendungsentwicklung verwenden können.
 * Im [Microsoft Azure Storage-Explorer](http://storageexplorer.com) können Sie mit Ressourcen in Ihrem Storage-Konto in der Cloud und im Speicheremulator arbeiten.
-

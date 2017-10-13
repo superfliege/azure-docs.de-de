@@ -19,6 +19,7 @@
 # Anleitung
 
 ## Sicherheitsrichtlinie
+### [Übersicht](security-center-policies-overview.md)
 ### [Datensammlung](security-center-enable-data-collection.md)
 ### [Sicherheitsrichtlinie](security-center-policies.md)
 ### [E-Mail-Benachrichtigungen](security-center-provide-security-contact-details.md)
@@ -53,7 +54,6 @@
 #### [Endpoint Protection installieren](security-center-install-endpoint-protection.md)
 #### [Neustart nach Systemupdates](security-center-apply-system-updates.md#reboot-after-system-updates)
 #### [Betriebssystem-Sicherheitsrisiken beheben](security-center-remediate-os-vulnerabilities.md)
-#### [Auflösen von Endpoint Protection-Integritätswarnungen](security-center-resolve-endpoint-protection-health-alerts.md)
 #### [Betriebssystemversion aktualisieren](security-center-update-os-version.md)
 #### [Sicherheitsrisikobewertung nicht installiert](security-center-vulnerability-assessment-recommendations.md)
 ### [Überwachen der Sicherheitsintegrität](security-center-monitoring.md)

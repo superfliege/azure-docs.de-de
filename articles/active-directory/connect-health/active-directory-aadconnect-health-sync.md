@@ -15,10 +15,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4b06338cb62cc458e7b097db36023f0746d4e969
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Überwachen der Azure AD Connect-Synchronisierung mit Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung von Azure AD Connect (Sync) mithilfe von Azure AD Connect Health.  Informationen zum Überwachen von AD FS mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](active-directory-aadconnect-health-adfs.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md).
@@ -67,8 +67,7 @@ Mit diesem Feature kann ein Bericht zu Synchronisierungsfehlern erstellt werden,
 * Der Bericht deckt Fehler ab, die mit dem Synchronisierungsclient aufgezeichnet werden (Azure AD Connect-Version 1.1.281.0 oder höher).
 * Er enthält die Fehler, die beim letzten Synchronisierungsvorgang auf dem Synchronisierungsmodul aufgetreten sind. („Export“ auf den Azure AD-Connector.)
 * Der Azure AD Connect Health-Agent für die Synchronisierung muss über eine ausgehende Verbindung mit den erforderlichen Endpunkten verfügen, damit der Bericht die neuesten Daten enthält.
-* Der Bericht wird **alle 30 Minuten aktualisiert**, indem die Daten verwendet werden, die vom Azure AD Connect Health-Agent für die Synchronisierung hochgeladen werden.
-  Folgende Hauptfunktionen sind verfügbar:
+* Der Bericht wird **alle 30 Minuten aktualisiert**, indem die Daten verwendet werden, die vom Azure AD Connect Health-Agent für die Synchronisierung hochgeladen werden. Folgende Hauptfunktionen sind verfügbar:
 
   * Kategorisierung von Fehlern
   * Liste der Objekte mit Fehler nach Kategorie

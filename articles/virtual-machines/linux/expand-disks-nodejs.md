@@ -1,6 +1,6 @@
 ---
-title: "Erweitern Sie die Betriebssystem-Datenträger für Linux-VM mit dem Azure-CLI-1.0 | Microsoft Docs"
-description: "Informationen Sie zum Erweitern der virtuellen Datenträger (BS) auf einer Linux-VM mit der Azure-CLI-1.0 und der Ressourcen-Manager-Bereitstellungsmodell"
+title: "Erweitern eines Betriebssystemdatenträgers auf einem virtuellen Linux-Computer mit Azure CLI 1.0 | Microsoft Docs"
+description: "Erfahren Sie, wie Sie den virtuellen Betriebssystemdatenträger auf einer Linux-VM unter Verwendung von Azure CLI 1.0 und des Resource Manager-Bereitstellungsmodells erweitern."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,41 +15,41 @@ ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
 ms.openlocfilehash: 0aedcd70b54c2ed47ec327ccf0529a48351353c0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli-with-the-azure-cli-10"></a>Erweitern Sie die Betriebssystem-Datenträger für einen Linux-VM, die mithilfe der Azure-CLI mit dem Azure-CLI-1.0
-Die Standardgröße für die virtuelle Festplatte für das Betriebssystem (BS) befindet sich normalerweise 30 GB auf einem virtuellen Linux-Computer (VM) in Azure. Sie können [Hinzufügen von Datenträgern](add-disk.md) verliehen wird zusätzlicher Speicherplatz, aber Sie können auch möchten, um den Betriebssystem-Datenträger zu erweitern. In diesem Artikel erläutert, wie den Betriebssystemdatenträger für eine nicht verwaltete Datenträger mit dem Azure-CLI-1.0 mit Linux-VM zu erweitern.
+# <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli-with-the-azure-cli-10"></a>Erweitern des Betriebssystemdatenträgers auf einer Linux-VM mithilfe von Azure CLI 1.0
+Die Standardgröße der virtuellen Festplatte für das Betriebssystem (operating system; OS) beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer (VM) in Azure. Sie können [Datenträger hinzufügen](add-disk.md), um zusätzlichen Speicherplatz zur Verfügung zu stellen, aber möglicherweise möchten Sie auch den Betriebssystemdatenträger erweitern. In diesem Artikel wird beschrieben, wie der Betriebssystemdatenträger für einen virtuellen Linux-Computer mit nicht verwalteten Datenträgern mithilfe von Azure CLI 1.0 erweitert werden kann.
 
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen, die Aufgabe abgeschlossen
-Führen Sie die Aufgabe, die mit einer der folgenden CLI-Versionen:
+## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
+Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
-- [Azure-CLI 1.0](#prerequisites) – unsere CLI für den klassischen und Ressource Management Bereitstellungsmodelle (in diesem Artikel)
-- [Azure-CLI-2.0](expand-disks.md) -unsere nächste Generation CLI für das ressourcenbereitstellungsmodell für die Verwaltung
+- [Azure-CLI 1.0](#prerequisites): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
+- [Azure CLI 2.0:](expand-disks.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Müssen Sie die [neuesten Azure-CLI-1.0](../../cli-install-nodejs.md) installiert und bei angemeldet ein [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) mithilfe des Ressourcen-Manager-Modus wie folgt:
+Installieren Sie die [neueste Azure CLI 1.0](../../cli-install-nodejs.md), und melden Sie sich mithilfe des Resource Manager-Modus wie folgt bei einem [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) an:
 
 ```azurecli
 azure config mode arm
 ```
 
-Ersetzen Sie in den folgenden Beispielen Beispielnamen für die Parameter durch Ihre eigenen Werte. Beispiel-Parameternamen enthalten *MyResourceGroup* und *"MyVM"*.
+Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispiele für Parameternamen sind *myResourceGroup* und *myVM*.
 
-## <a name="expand-os-disk"></a>Erweitern Sie die Betriebssystem-Datenträger
+## <a name="expand-os-disk"></a>Erweitern des Betriebssystemdatenträgers
 
-1. Vorgänge für virtuelle Festplatten mit dem virtuellen Computer mit nicht möglich. Im folgenden Beispiel wird beendet, und hebt die Zuordnung des virtuellen Computers mit dem Namen *"MyVM"* in der Ressourcengruppe mit dem Namen *MyResourceGroup*:
+1. Vorgänge auf virtuellen Festplatten können nicht durchgeführt werden, wenn die VM ausgeführt wird. Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* beendet und die Zuordnung dafür aufgehoben:
 
     ```azurecli
     azure vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
     > [!NOTE]
-    > `azure vm stop`die Compute-Ressourcen werden nicht freigegeben werden. Um Serverressourcen freizugeben, verwenden `azure vm deallocate`. Der virtuelle Computer muss freigegeben werden, um die virtuelle Festplatte zu erweitern.
+    > `azure vm stop` gibt die Computerressourcen nicht frei. Verwenden Sie `azure vm deallocate`, um Computerressourcen freizugeben. Die VM muss aufgehoben werden, um die virtuelle Festplatte zu erweitern.
 
-2. Aktualisieren Sie die Größe des nicht verwalteten OS Datenträger mithilfe der `azure vm set` Befehl. Das folgende Beispiel aktualisiert die virtuellen Computer namens *"MyVM"* in der Ressourcengruppe mit dem Namen *MyResourceGroup* werden *50* GB:
+2. Aktualisieren Sie mit dem Befehl `azure vm set` die Größe des nicht verwalteten Betriebssystemdatenträgers. Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* auf eine Größe von *50* GB aktualisiert:
 
     ```azurecli
     azure vm set \
@@ -58,13 +58,13 @@ Ersetzen Sie in den folgenden Beispielen Beispielnamen für die Parameter durch 
         --new-os-disk-size 50
     ```
 
-3. Starten Sie Ihren virtuellen Computer wie folgt:
+3. Starten Sie Ihre VM wie folgt:
 
     ```azurecli
     azure vm start --resource-group myResourceGroup --name myVM
     ```
 
-4. SSH eine Verbindung mit Ihrem virtuellen Computer mit den entsprechenden Anmeldeinformationen. Verwenden Sie zum Überprüfen der Betriebssystemdatenträger Größe `df -h`. Die folgende Beispielausgabe zeigt die primäre Partition (*/Dev/sda1*) ist jetzt 50 GB:
+4. SSH mit Ihrer VM mit den entsprechenden Anmeldeinformationen. Verwenden Sie `df -h`, um zu überprüfen, ob die Größe des Betriebssystemdatenträgers geändert wurde. Die folgende Beispielausgabe zeigt, dass die primäre Partition (*/dev/sda1*) jetzt eine Größe von 50 GB hat:
 
     ```bash
     Filesystem      Size  Used Avail Use% Mounted on
@@ -74,4 +74,4 @@ Ersetzen Sie in den folgenden Beispielen Beispielnamen für die Parameter durch 
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie zusätzlichen Speicher benötigen Sie auch [fügen Sie Datenträger hinzu, um eine Linux-VM](add-disk.md). Weitere Informationen zu datenträgerverschlüsselung, finden Sie unter [Verschlüsseln von Datenträger auf einem Linux-VM mithilfe der Azure-CLI](encrypt-disks.md).
+Wenn Sie zusätzlichen Speicher benötigen, [fügen Sie Datenträger zu einer Linux-VM hinzu](add-disk.md). Weitere Informationen zur Datenträgerverschlüsselung finden Sie unter [Encrypt disks on a Linux VM using the Azure CLI (Verschlüsseln von Datenträgern auf einer Linux-VM mithilfe der Azure-Befehlszeilenschnittstelle)](encrypt-disks.md).

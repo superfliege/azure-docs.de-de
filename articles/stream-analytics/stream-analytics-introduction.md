@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/08/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 6bb70ba7588b8c6e9261fca097403e7fccb041eb
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-stream-analytics"></a>Was ist Stream Analytics?
 
 Azure Stream Analytics ist ein vollständig verwaltetes Modul für die Ereignisverarbeitung, mit dem Sie analytische Echtzeitberechnungen von Datenströmen einrichten können. Die Daten können von Geräten, Sensoren, Websites, Feeds sozialer Medien, Anwendungen, Infrastruktursystemen usw. stammen. 
@@ -99,5 +97,4 @@ Als verwalteter Dienst in der Cloud trägt Stream Analytics zur Verhinderung von
 * Erfahren Sie, wie Sie [Stream Analytics-Aufträge skalieren](stream-analytics-scale-jobs.md). 
 * Erfahren Sie, wie Sie [Stream Analytics und Azure Machine Learning integrieren](stream-analytics-machine-learning-integration-tutorial.md).
 * Antworten auf Ihre Fragen zu Stream Analytics finden Sie im [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
-
 

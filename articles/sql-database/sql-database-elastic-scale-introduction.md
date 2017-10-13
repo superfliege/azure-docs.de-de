@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 ms.openlocfilehash: 5bb6d17ffd047ae91476c52750f293414d1dfdd5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Horizontales Hochskalieren mit Azure SQL-Datenbank
 Mithilfe der Tools für **elastische Datenbanken** können Sie Azure SQL-Datenbanken problemlos horizontal hochskalieren. Mit diesen Tools und Features können Sie nahezu unbegrenzt viele Datenbankressourcen der **Azure SQL-Datenbank** zur Erstellung von Lösungen für transaktionale Workloads und insbesondere SaaS-Anwendungen (Software as a Service) verwenden. Die Features für elastische Datenbanken umfassen Folgendes:

@@ -1,4 +1,4 @@
---- 
+---
 title: Erste Schritte mit Azure Automation | Microsoft-Dokumentation
 description: "Dieser Artikel enthält eine Übersicht über den Azure Automation-Dienst, und es werden das Design und die Implementierungsdetails beschrieben, die als Vorbereitung für die Nutzung des Angebots über Azure Marketplace erforderlich sind."
 services: automation
@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/31/2017
 ms.author: magoedte
+ms.openlocfilehash: fad13053895c5d6e3c41835fea3cf0bdd3380cd4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 3269af400d091435af56b0093abbb839d8dd7068
-ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="getting-started-with-azure-automation"></a>Erste Schritte mit Azure Automation
 
 In dieser Anleitung zu den ersten Schritten werden wichtige Konzepte zur Bereitstellung von Azure Automation vorgestellt. Wenn Automatisierung in Azure neu für Sie ist oder wenn Sie Erfahrung mit Software zur Automatisierung von Workflows haben (z.B. System Center Orchestrator), hilft Ihnen diese Anleitung dabei, sich auf Automation vorzubereiten und darin einzusteigen.  Danach können Sie mit der Entwicklung von Runbooks zur Unterstützung Ihrer Anforderungen in Bezug auf Prozessautomatisierung beginnen. 
@@ -191,6 +189,5 @@ Nach der Integration des Angebots können Sie mit der Erstellung von Runbooks be
 ## <a name="next-steps"></a>Nächste Schritte
 * Sie können überprüfen, ob die Authentifizierung Ihres neuen Automation-Kontos für Azure-Ressourcen funktioniert, indem Sie die Informationen zum [Testen der Authentifizierung für ausführende Azure Automation-Konten](automation-verify-runas-authentication.md) verwenden.
 * Bevor Sie mit dem Erstellen von Runbooks beginnen, sehen Sie sich zunächst die unterstützten [Runbook-Automatisierungstypen](automation-runbook-types.md) und damit zusammenhängende Überlegungen an.
-
 
 

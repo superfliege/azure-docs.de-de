@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 09/11/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 47208c60b316b580af8bf22d4f90d330ce285f7a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-container-to-azure-container-instances"></a>Bereitstellen eines Containers für Azure Container Instances
 
 Dies ist der letzte Teil eines dreiteiligen Tutorials. In vorhergehenden Abschnitten wurde [ein Containerimage erstellt](container-instances-tutorial-prepare-app.md) und [per Push an eine Azure Container Registry übermittelt](container-instances-tutorial-prepare-acr.md). Mit diesem Abschnitt wird das Tutorial abgeschlossen, indem der Container in Azure Container Instances bereitgestellt wird. Folgende Schritte werden ausgeführt:
@@ -106,4 +104,3 @@ In diesem Tutorial haben Sie Ihre Container in Azure Container Instances bereitg
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
-

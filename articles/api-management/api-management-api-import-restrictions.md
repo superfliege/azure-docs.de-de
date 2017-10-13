@@ -14,25 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: apipm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: ac799d66b5038c207413086b0fa71239ff2a332f
-ms.contentlocale: de-de
-ms.lasthandoff: 03/15/2017
-
+ms.openlocfilehash: 4cb6ad53b59b81f906a85027f4ff988bbb78706a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Einschränkungen und bekannte Probleme beim Import von APIs
 ## <a name="about-this-list"></a>Informationen zu dieser Liste
 Auch wenn wir jede Anstrengung unternehmen, Ihnen einen reibungslosen und problemfreien Import Ihrer APIs in Azure API Management zu ermöglichen, sind wir gelegentlich gezwungen, Einschränkungen einzurichten, oder es kommt zu Problemen, die behoben werden müssen, damit Sie einen bestimmten Import erfolgreich abschließen können. Diese Probleme werden nachfolgend unter dem jeweiligen Importformat der API beschrieben.
 
-## <a name="open-api"> </a>Open API/Swagger
+## <a name="open-api"></a>Open API/Swagger
 Wenn Ihnen beim Import von Open API-Dokumenten Fehler gemeldet werden, sollten Sie zunächst sicherstellen, dass Sie das Dokument überprüft haben. Diese Überprüfung können Sie mit dem Designer des neuen Azure-Portals (Design – Front-End – Open API Specification Editor) oder mit einem Tool eines Drittanbieters, zum Beispiel mit <a href="http://www.swagger.io">Swagger Editor</a>, vornehmen.
 
 * **Hostname**: Das Attribut für den Hostnamen ist erforderlich.
 * **Basispfad**: Das Attribut für den Basispfad ist erforderlich.
 * **Schemas**: Ein Schema-Array ist erforderlich. 
 
-## <a name="wsdl"> </a>WSDL
+## <a name="wsdl"></a>WSDL
 WSDL-Dateien werden zur Generierung von SOAP-Pass-Through-APIs verwendet oder dienen als Back-End einer SOAP-to-REST-API.
 
 * **WSDL:Import**: APIs, die dieses Attribut verwenden, werden derzeit nicht unterstützt. Die Kunden sollten die importierten Elemente zu einem Dokument zusammenfassen.
@@ -41,7 +40,7 @@ WSDL-Dateien werden zur Generierung von SOAP-Pass-Through-APIs verwendet oder di
 * **MTOM**: Dienste, die MTOM verwenden, funktionieren <em>möglicherweise</em>. Eine offizielle Unterstützung wird derzeit nicht geboten.
 * Rekursiv definierte (also beispielsweise auf ein eigenes Array verweisende) **Rekursionstypen** werden nicht unterstützt.
 
-## <a name="wadl"> </a>WADL
+## <a name="wadl"></a>WADL
 Derzeit sind keine Probleme beim Import im Format WADL bekannt.
 
 
@@ -81,4 +80,3 @@ Derzeit sind keine Probleme beim Import im Format WADL bekannt.
 [How to add operations to an API]: api-management-howto-add-operations.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to cache operation results in Azure API Management]: api-management-howto-cache.md
-

@@ -1,5 +1,5 @@
 # Übersicht
-## [About virtual machines (Informationen zu virtuellen Computern)](../../virtual-machines-windows-about.md)
+## [About virtual machines (Informationen zu virtuellen Computern)](../../virtual-machines-windows-about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [Datenträger und VHDs](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [Virtuelle Netzwerke](../../../virtual-network/virtual-networks-overview.md)
 ## [Häufig gestellte Fragen](faq.md)
@@ -86,7 +86,7 @@
 
 # Referenz
 ## [Azure PowerShell](/powershell/azure/overview)
-## [Azure-CLI](/cli/azure/vm)
+## [Azure-Befehlszeilenschnittstelle](/cli/azure/vm)
 ## [Java](/java/api)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [Erstellen von Resource Manager-Vorlagen](../../../resource-group-authoring-templates.md)

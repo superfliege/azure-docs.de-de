@@ -15,21 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9fcfca3de6204581936a2bacfd86e84fd373190a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke
 
 In diesem Artikel erfahren Sie, wie Sie ein Peering virtueller Netzwerke erstellen, ändern oder löschen. VNet-Peering ist ein Mechanismus, mit dem virtuelle Netzwerke (VNets) über das Azure-Backbonenetzwerk miteinander verbunden werden können. Nach dem Peering werden die virtuellen Netzwerke weiterhin als separate Ressourcen verwaltet. Wenn Sie nicht mit dem Peering virtueller Netzwerke vertraut sind, sollten Sie vor der Durchführung der Aufgaben den Artikel [Peering virtueller Netzwerke – Überblick](virtual-network-peering-overview.md) lesen und das Tutorial unter [Erstellen eines Peerings virtueller Netzwerke](virtual-network-create-peering.md) absolvieren.
 
-Das Peering von virtuellen Netzwerken in der gleichen Region ist allgemein verfügbar. Das Peering von virtuellen Netzwerken in unterschiedlichen Regionen befindet sich derzeit in USA, Westen-Mitte, Kanada, Mitte und USA, Westen 2 in der in der Vorschauphase. Sie können [Ihr Abonnement für die Vorschau registrieren](virtual-network-create-peering.md).
+Das Peering von virtuellen Netzwerken in derselben Region befindet sich in der Phase der allgemeinen Verfügbarkeit. Das Peering von virtuellen Netzwerken in unterschiedlichen Regionen befindet sich derzeit in USA, Westen-Mitte, Kanada, Mitte und USA, Westen 2 in der in der Vorschauphase. Sie können [Ihr Abonnement für die Vorschau registrieren](virtual-network-create-peering.md).
 
 > [!WARNING]
-> Peerings virtueller Netzwerke, die in diesem Szenario erstellt wurden, bieten ggf. nicht denselben Grad an Verfügbarkeit und Zuverlässigkeit wie Versionen mit allgemeiner Verfügbarkeit. Peerings virtueller Netzwerke weisen möglicherweise eingeschränkte Funktionen auf und stehen ggf. nicht in allen Azure-Regionen zur Verfügung. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network) .
+> Peerings virtueller Netzwerke, die in diesem Szenario erstellt wurden, bieten ggf. nicht denselben Grad an Verfügbarkeit und Zuverlässigkeit wie Versionen mit allgemeiner Verfügbarkeit. Peerings virtueller Netzwerke weisen unter Umständen eingeschränkte Funktionen auf und stehen ggf. nicht in allen Azure-Regionen zur Verfügung. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network) .
 >
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -168,4 +167,3 @@ Erfahren Sie mehr über [integrierte Rollen](../active-directory/role-based-acce
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über das Erstellen einer [Hub-and-Spoke-Netzwerktopologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering). 
-

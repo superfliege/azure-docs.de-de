@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/31/2017
 ms.author: sujayt
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: 99c08a1efbc610959fb4ba824dcb0601efac5877
-ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="networking-guidance-for-replicating-azure-virtual-machines"></a>Leitfaden für Netzwerke zum Replizieren von virtuellen Azure-Computern
 
@@ -185,4 +184,3 @@ Befolgen Sie die folgenden Best Practices für die ExpressRoute-Konfiguration:
 
 ## <a name="next-steps"></a>Nächste Schritte
 Schützen Sie Ihre Workloads durch die [Replikation virtueller Azure-Computer](site-recovery-azure-to-azure.md).
-

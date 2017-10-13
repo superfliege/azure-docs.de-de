@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/24/2017
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: 456daea494ed1daed9bd809b68ae12fceb800299
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>Durchsuchen und Verwalten von Speicherressourcen mit dem Server-Explorer
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
@@ -86,7 +85,7 @@ Sie können die folgenden Vorgänge für Blobs mithilfe der Schaltflächen in de
    
    ![Hochladen einer Datei in einen Blobordner](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766037.png)
     
-   Sie können den Containerordnern Unterordner hinzufügen, indem Sie denselben Schritt anwenden. Wenn Sie keinen Ordnernamen angeben, wird die Datei auf der obersten Ebene des Blobcontainers hochgeladen. Die Datei wird im angegebenen Ordner im Container angezeigt.
+   Sie können den Containerordnern Unterordner hinzufügen, indem Sie den Schritt wie beschrieben erneut durchführen. Wenn Sie keinen Ordnernamen angeben, wird die Datei auf der obersten Ebene des Blobcontainers hochgeladen. Die Datei wird im angegebenen Ordner im Container angezeigt.
    
    ![Ordner, der einem Blobcontainer hinzugefügt wurde](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766038.png)
 3. Doppelklicken Sie auf den Ordner, oder drücken Sie die EINGABETASTE, um den Inhalt des Ordners anzuzeigen. Wenn Sie sich im Ordner des Containers befinden, können Sie in das Stammverzeichnis des Containers zurückkehren, indem Sie die Schaltfläche **Übergeordnetes Verzeichnis öffnen** (Pfeilschaltfläche) wählen.
@@ -128,7 +127,7 @@ Standardmäßig wird ein Blob in ein temporäres Verzeichnis heruntergeladen. Um
 ### <a name="to-upload-blobs"></a>So laden Sie Blobs hoch
 * Wählen Sie die Schaltfläche **Blob hochladen** aus, wenn der Container für die Anzeige in der Blobcontaineransicht geöffnet ist.
   
-Sie können eine oder mehrere Dateien eines beliebigen Typs zum Hochladen auswählen. Im Fenster **Azure-Aktivitätsprotokoll** wird der Uploadstatus angezeigt. Weitere Informationen zum Arbeiten mit Blobdaten finden Sie unter [Verwenden des Azure Blob Storage in .NET](http://go.microsoft.com/fwlink/p/?LinkId=267911).
+Sie können eine oder mehrere Dateien eines beliebigen Typs zum Hochladen auswählen. Im Fenster **Azure-Aktivitätsprotokoll** wird der Uploadstatus angezeigt. Weitere Informationen zum Arbeiten mit Blobdaten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](http://go.microsoft.com/fwlink/p/?LinkId=267911).
 
 ### <a name="to-view-logs-transferred-to-blobs"></a>So zeigen Sie an Blobs übertragene Protokolle an
 Wenn Sie mithilfe der Azure-Diagnose Daten von der Azure-Anwendung protokollieren und Protokolle an das Speicherkonto übertragen haben, werden Container angezeigt, die von Azure für diese Protokolle erstellt wurden. Das Anzeigen dieser Protokolle im Server-Explorer ist eine einfache Möglichkeit, um Probleme mit Ihrer Anwendung zu erkennen, insbesondere wenn sie für Azure bereitgestellt wurde. 
@@ -191,8 +190,8 @@ Entitäten in einer einzelnen Tabelle müssen nicht denselben Eigenschaftensatz 
    
 * Binäre Daten (`type byte[]`) können zwar nicht angezeigt oder bearbeitet, sie können aber in einer Tabelle gespeichert werden.
 * Die **PartitionKey**- oder **RowKey**-Werte können nicht bearbeitet werden, da dieser Vorgang vom Tabellenspeicher in Azure nicht unterstützt wird.
-* Sie können keine Eigenschaft mit dem Namen **Zeitstempel** erstellen. Azure-Speicherdienste verwenden eine Eigenschaft mit diesem Namen.
-* **DateTime**-Werte müssen den Regions- und Spracheinstellungen des Computers (Beispiel: TT.MM.JJJJ HH:MM:SS für Deutschland) entsprechend eingegeben werden.
+* Sie können keine Eigenschaft mit dem Namen **Timestamp** erstellen. Azure-Speicherdienste verwenden eine Eigenschaft mit diesem Namen.
+* **DateTime**-Werte müssen den Regions- und Spracheinstellungen des Computers (Beispiel: TT.MM.JJJJ HH:MM:SS für „Deutsch (Deutschland)“) entsprechend eingegeben werden.
 
 ### <a name="to-add-entities"></a>So fügen Sie Entitäten hinzu
 1. Wählen Sie im Tabellen-Designer die Schaltfläche **Entität hinzufügen**.
@@ -265,7 +264,7 @@ Das neue Speicherkonto wird im Projektmappen-Explorer in der Liste **Speicher** 
 2. Wählen Sie im Dialogfeld **Speicherkonto erstellen** die folgenden Informationen aus, oder geben Sie sie ein:
    
    * Den Namen des vorhandenen Speicherkontos, das Sie anfügen möchten.
-   * Den Schlüssel für das ausgewählte Speicherkonto. Dieser Wert wird für gewöhnlich bereitgestellt, wenn Sie ein Speicherkonto auswählen. Wenn Visual Studio den Speicherkontoschlüssel merken soll, aktivieren Sie das Kontrollkästchen **Kontoschlüssel merken**.
+   * Den Schlüssel für das ausgewählte Speicherkonto. Dieser Wert wird für gewöhnlich bereitgestellt, wenn Sie ein Speicherkonto auswählen. Wenn Visual Studio sich den Speicherkontoschlüssel merken soll, aktivieren Sie das Kontrollkästchen **Kontoschlüssel merken**.
    * Das Protokoll, das zum Herstellen einer Verbindung mit dem Speicherkonto verwendet wird, beispielsweise HTTP, HTTPS oder ein benutzerdefinierter Endpunkt. Weitere Informationen über benutzerdefinierte Endpunkte finden Sie unter [Konfigurieren von Verbindungszeichenfolgen](https://msdn.microsoft.com/library/azure/ee758697.aspx).
 
 ### <a name="to-view-the-secondary-endpoints"></a>So zeigen Sie die sekundären Endpunkte an
@@ -287,5 +286,4 @@ Wenn Sie ein Speicherkonto löschen, werden auch alle gespeicherten Schlüsselin
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen dazu, wie Microsoft Azure Storage-Dienste verwendet werden, finden Sie unter [Zugreifen auf Microsoft Azure Storage-Dienste](https://msdn.microsoft.com/library/azure/ee405490.aspx).
-
 

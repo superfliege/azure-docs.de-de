@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/16/2017
 ms.author: xshi
+ms.openlocfilehash: 9b278735ce3af9e6e61a85c5e95ea218622361c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 8eee4b2eea165176bddf0896685636bbac4db321
-ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-adafruit-feather-m0-wifi-to-azure-iot-hub-in-the-cloud"></a>Verbinden von Adafruit Feather M0 WiFi mit Azure IoT Hub in der Cloud
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
@@ -161,7 +159,7 @@ Die Beispielanwendung wird auf GitHub gehostet. Klonen Sie das Beispielrepositor
 1. Klicken Sie auf **File** > **Preferences** (Windows/Linux) oder **Arduino** > **Preferences** (Mac), kopieren Sie den Link unten in der Option **Additional Boards Manager URLs**, und fügen Sie ihn in die Arduino IDE-Voreinstellungen ein.
    
    ```
-   https://adafruit.github.io/arduino-board-index/package_adafruit_index.json, https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
+   https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
    ```
 
 1. Klicken Sie auf **Tools** > **Board** > **Boards Manager**, und installieren Sie dann `Arduino SAMD Boards` Version `1.6.2` oder höher. 
@@ -240,5 +238,4 @@ Wenn Sie die folgende Ausgabe im Serial Monitor-Fenster und die blinkende LED au
 Sie haben ein Feather M0 WiFi-Gerät erfolgreich mit Ihrem IoT Hub verbunden und die erfassten Sensordaten an Ihren IoT Hub gesendet. 
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-
 

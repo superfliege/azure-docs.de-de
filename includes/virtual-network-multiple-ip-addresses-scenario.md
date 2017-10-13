@@ -1,13 +1,13 @@
 ## <a name="scenario"></a>Szenario
-Ein virtuellen Computer mit einer einzigen NIC wird erstellt und mit einem virtuellen Netzwerk verbunden. Der virtuelle Computer erfordert drei verschiedene *private* -IP-Adressen und zwei *öffentlichen* IP-Adressen. Die folgenden IP-Konfigurationen werden die IP-Adressen zugewiesen:
+Ein virtueller Computer mit einer einzelnen NIC wird erstellt und mit einem virtuellen Netzwerk verbunden. Der virtuelle Computer benötigt drei verschiedene *private* IP-Adressen und zwei *öffentliche* IP-Adressen. Die IP-Adressen werden den folgenden IP-Konfigurationen zugewiesen:
 
-* **"Ipconfig"-1:** weist eine *statische* private IP-Adresse und ein *statische* öffentliche IP-Adresse.
-* **"Ipconfig"-2:** weist eine *statische* private IP-Adresse und ein *statische* öffentliche IP-Adresse.
-* **"Ipconfig" – 3:** weist eine *statische* private IP-Adresse und keine öffentliche IP-Adresse.
+* **IPConfig-1:** Weist eine *statische* private IP-Adresse und eine *statische* öffentliche IP-Adresse zu.
+* **IPConfig-2:** Weist eine *statische* private IP-Adresse und eine *statische* öffentliche IP-Adresse zu.
+* **IPConfig-3:** Weist eine *statische* private IP-Adresse und keine öffentliche IP-Adresse zu.
   
     ![Mehrere IP-Adressen](./media/virtual-network-multiple-ip-addresses-scenario/multiple-ipconfigs.png)
 
-Die IP-Konfigurationen sind an die NIC zugeordnet, wenn die NIC erstellt wird und die NIC wird während der Erstellung des virtuellen Computers mit dem virtuellen Computer angeschlossen. Die Typen von IP-Adressen, die für das Szenario verwendet werden zur Veranschaulichung. Sie können beliebige IP-Adresse und Zuweisung von Typen zuweisen, die Sie benötigen.
+Die IP-Konfigurationen werden der NIC zugeordnet, wenn diese erstellt wird, und die NIC wird an den virtuellen Computer angefügt, wenn dieser erstellt wird. Die für das Szenario verwendeten IP-Adresstypen dienen lediglich zur Veranschaulichung. Sie können beliebige IP-Adressen und Zuweisungstypen zuweisen.
 
 > [!NOTE]
-> Obwohl die Schritte in diesem Artikel werden alle IP-Konfigurationen auf eine einzelne NIC zuweist, können Sie auch mehrere IP-Konfigurationen an eine beliebige NIC auf einem virtuellen Multi-NIC-Computer zuweisen. Informationen zum Erstellen eines virtuellen Computers mit mehreren NICs, lesen Sie die [erstellen Sie einen virtuellen Computer mit mehreren NICs](../articles/virtual-network/virtual-network-deploy-multinic-arm-ps.md) Artikel.
+> In den Schritten dieses Artikels werden zwar alle IP-Konfigurationen einer einzelnen NIC zugewiesen, es ist jedoch auch möglich, jeder NIC in einem virtuellen Computer mit mehreren NICs mehrere IP-Konfigurationen zuzuweisen. Wie Sie einen virtuellen Computer mit mehreren NICs erstellen, erfahren Sie im Artikel [Erstellen einer VM mit mehreren Netzwerkkarten (NICs) mithilfe von PowerShell](../articles/virtual-network/virtual-network-deploy-multinic-arm-ps.md).

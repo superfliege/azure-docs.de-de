@@ -10,10 +10,10 @@ articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-powershell
 articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-rest-api.md
 
 -->
-Wenn Sie eine Datenbank fortgesetzt:
+Wenn Sie eine Datenbank fortsetzen, geschieht Folgendes:
 
-* SQL Data Warehouse ruft Server- und Speicherressourcen für Ihre DWU-Einstellung ab.
-* Berechnen Sie, dass Gebühren für Ihr DWUs fortsetzen.
+* SQL Data Warehouse lädt Server- und Speicherressourcen für Ihre DWU-Einstellung.
+* Computegebühren für Ihre DWUs fallen wieder an.
 * Ihre Daten sind verfügbar.
-* Sie benötigen, um Ihre Arbeitsauslastungsabfragen neu zu starten.
+* Sie müssen Ihre Workloadabfragen neu starten.
 

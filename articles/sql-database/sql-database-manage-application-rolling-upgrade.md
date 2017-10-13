@@ -1,6 +1,6 @@
 ---
-title: Parallelen Anwendungsupgrades - Azure SQL-Datenbank | Microsoft Docs
-description: "Erfahren Sie, wie Azure SQL Database Geo-Replikation verwenden, um online-Upgrades Ihrer Cloud-Anwendung zu unterstützen."
+title: "Parallele Anwendungsupgrades – Azure SQL-Datenbank | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie die Georeplikation von Azure SQL-Datenbank verwenden, um Onlineupgrades Ihrer Cloudanwendung zu unterstützen."
 services: sql-database
 documentationcenter: 
 author: anosov1960
@@ -16,126 +16,126 @@ ms.workload: NA
 ms.date: 07/16/2016
 ms.author: sashan
 ms.openlocfilehash: 4b59c8aa3dea3e8fba692ab66420295a09210d3b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Verwalten des parallelen Upgrades von Cloudanwendungen mit SQL-Datenbank aktive georeplikation
+# <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Verwalten von parallelen Upgrades von Cloudanwendungen mithilfe der aktiven Georeplikation von SQL-Datenbank
 > [!NOTE]
-> [Aktive geografische Replikation](sql-database-geo-replication-overview.md) ist jetzt für alle Datenbanken in allen Ebenen verfügbar.
+> [Die aktive Georeplikation](sql-database-geo-replication-overview.md) ist jetzt für alle Datenbanken in allen Tarifen verfügbar.
 > 
 
-Informationen zur Verwendung [georeplikation](sql-database-geo-replication-overview.md) in SQL-Datenbank, um parallele Upgrades Ihrer Cloud-Anwendung zu aktivieren. Da eine unterbrechungsfreie Upgrades ist, muss es Teil der Planung der Geschäftskontinuität und Entwurf. In diesem Artikel stellen wir sehen uns zwei unterschiedliche Methoden im Rahmen des Upgradeprozesses orchestriert, und erläutern die vor- und Nachteile der einzelnen Optionen. Im Rahmen dieses Artikels verwenden wir eine einfache Anwendung, die von einer Website mit einer einzelnen Datenbank als ihre Datenebene verbunden besteht. Unser Ziel ist es zum Aktualisieren von Version 1 der Anwendung auf Version 2 ohne erhebliche Auswirkungen auf die endbenutzererfahrung. 
+Erfahren Sie, wie Sie die [Georeplikation](sql-database-geo-replication-overview.md) in SQL-Datenbank verwenden, um parallele Upgrades Ihrer Cloudanwendung zu aktivieren. Da ein Upgrade einen unterbrechenden Vorgang darstellt, sollte es Teil der Planung und des Designs Ihrer Geschäftskontinuität sein. In diesem Artikel betrachten wir zwei unterschiedliche Methoden zum Orchestrieren des Upgradevorgangs und erörtern die Vor- und Nachteile jeder Option. Für die Zwecke dieses Artikels verwenden wir eine einfache Anwendung, die aus einer mit einer Einzeldatenbank als Datenebene verbundenen Website besteht. Unser Ziel ist es, die Version 1 der Anwendung auf die Version 2 zu aktualisieren, ohne dass sich dies deutlich auf die Endbenutzererfahrung auswirkt. 
 
-Wenn die Upgradeoptionen für die Auswertung sollten Sie die folgenden Faktoren:
+Beim Evaluieren der Upgradeoptionen sollten Sie die folgenden Faktoren berücksichtigen:
 
-* Auswirkungen auf die Verfügbarkeit der Anwendung während der Upgrades. Wie lange die Anwendungsfunktion eingeschränkt oder beeinträchtigt werden kann.
-* Möglichkeit zum Rollback bei einem Upgrade ein Fehler auftritt.
-* Eine Schwachstelle der Anwendung, wenn ein schwerwiegender Fehler während des Upgrades auftritt.
-* Insgesamt Kosten.  Dies schließt zusätzliche Redundanz und Mehrkosten temporäre Komponenten, die durch den Aktualisierungsvorgang verwendet. 
+* Die Auswirkung auf die Verfügbarkeit der Anwendung während Upgrades. Wie lange die Anwendungsfunktion möglicherweise eingeschränkt oder beeinträchtigt ist.
+* Die Möglichkeit, bei einem Upgradefehler ein Rollback durchzuführen.
+* Das Sicherheitsrisiko für die Anwendung, wenn während des Upgrades ein schwerwiegender Fehler auftritt, der nicht in Zusammenhang mit dem Upgrade steht.
+* Die insgesamt anfallenden Kosten.  Dies schließt zusätzliche Redundanz und Mehrkosten der vom Upgradevorgang verwendeten temporären Komponenten ein. 
 
-## <a name="upgrading-applications-that-rely-on-database-backups-for-disaster-recovery"></a>Aktualisieren von Anwendungen, die auf datenbanksicherungen für die Wiederherstellung im Notfall basieren
-Wenn die Anwendung auf automatische datenbanksicherungen basiert und geowiederherstellung Wiederherstellung im Notfall verwendet, wird es in der Regel auf einer einzelnen Azure-Region bereitgestellt. In diesem Fall werden im Rahmen des Upgradeprozesses eine Sicherung Bereitstellung aller Komponenten der Anwendung der Aktualisierung beteiligt. Sie werden mit einem Profil für das Failover Azure Traffic Manager (WATM) nutzen, um die Unterbrechung durch Endbenutzer zu minimieren.  Das folgende Diagramm veranschaulicht die betriebssystemumgebung, die vor dem Upgrade zu. Der Endpunkt <i>Contoso 1.azurewebsites.net</i> stellt eine produktionsslot an die Anwendung, die aktualisiert werden muss. Damit die Möglichkeit, ein Rollback müssen das Upgrade Sie einen Stufe-Slot durch eine vollständig synchronisierte Kopie der Anwendung erstellen. Die folgenden Schritte sind erforderlich, um die Anwendung für das Upgrade vorzubereiten:
+## <a name="upgrading-applications-that-rely-on-database-backups-for-disaster-recovery"></a>Upgraden von Anwendungen, die sich auf Datenbanksicherungen für die Notfallwiederherstellung verlassen
+Wenn sich Ihre Anwendung auf automatische Datenbanksicherungen verlässt und die Geowiederherstellung zur Notfallwiederherstellung verwendet, wird sie normalerweise in einer einzelnen Azure-Region bereitgestellt. In diesem Fall umfasst der Upgradevorgang das Erstellen einer Sicherungsbereitstellung aller am Upgrade beteiligter Anwendungskomponenten. Nutzen Sie Azure Traffic Manager mit dem Failoverprofil, um die Endnutzerunterbrechung zu minimieren.  Das folgende Diagramm veranschaulicht die Betriebsumgebung vor dem Upgradevorgang. Der Endpunkt <i>contoso-1.azurewebsites.net</i> stellt einen Produktionsslot der Anwendung dar, die upgegradet werden muss. Sie müssen einen Stagingslot mit einer vollständig synchronisierten Kopie der Anwendung erstellen, um ein Rollback des Upgrades zu ermöglichen. Die folgenden Schritte sind erforderlich, um die Anwendung für das Upgrade vorzubereiten:
 
-1. Erstellen Sie einen Stufe Slot für das Upgrade an. Um führen, die eine sekundäre Datenbank (1) erstellen und Bereitstellen einer identischen Website in derselben Azure-Region. Überwachen Sie die sekundäre Datenbank, um festzustellen, ob das seeding abgeschlossen ist.
-2. Erstellen Sie ein Failover-Profil in WATM mit <i>Contoso 1.azurewebsites.net</i> als onlineendpunkt und <i>Contoso 2.azurewebsites.net</i> als offline. 
+1. Erstellen Sie einen Stagingslot für das Upgrade. Hierzu erstellen Sie eine sekundäre Datenbank (1) und stellen eine identische Website in derselben Azure-Region bereit. Überwachen Sie die sekundäre Datenbank, um festzustellen, ob der Seedingprozess abgeschlossen ist.
+2. Erstellen Sie ein Failoverprofil in Azure Traffic Manager mit <i>contoso-1.azurewebsites.net</i> als Onlineendpunkt und <i>contoso-2.azurewebsites.net</i> als Offlineendpunkt. 
 
 > [!NOTE]
-> Beachten Sie die Schritte zur Vorbereitung wirkt sich nicht auf die Anwendung im produktionsslot und ordnungsgemäß im vollständigen Zugriffsmodus.
+> Beachten Sie, dass sich die Vorbereitungsschritte nicht auf die Anwendung im Produktionsslot auswirken und diese im Vollzugriffsmodus funktionieren kann.
 >  
 
-![Konfiguration des SQL-Go-Datenbankreplikation. Cloud-Wiederherstellung im Notfall.](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
+![Konfiguration der SQL-Datenbank-Georeplikation Cloudbasierte Notfallwiederherstellung](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
 
-Werden bei Abschluss der Schritte zur Vorbereitung ist die Anwendung für die tatsächlichen Aktualisierung bereit. Das folgende Diagramm veranschaulicht die Schritte im Rahmen Upgradeprozesses. 
+Wenn die Vorbereitungsschritte abgeschlossen sind, ist die Anwendung bereit für das tatsächliche Upgrade. Das folgende Diagramm veranschaulicht die Schritte, die der Upgradevorgang umfasst. 
 
-1. Legen Sie die primäre Datenbank in den produktionsslot zu nur-Lese-Modus (3). Dadurch wird sichergestellt, dass die Produktionsinstanz von der Anwendung (V1) schreibgeschützt sind und während des Upgrades daher verhindert, dass die datenabweichungen zwischen V1 und V2-Datenbankinstanzen bleibt.  
-2. Trennen Sie die sekundäre Datenbank mit dem Modus für geplante Beendigung (4). Es wird eine vollständige Synchronisierung unabhängige Kopie der primären Datenbank erstellt. Diese Datenbank wird aktualisiert.
-3. Aktivieren der primären Datenbank mit Lese-/ Schreibmodus, und führen Sie das Aktualisierungsskript im Slot Phase (5).     
+1. Legen Sie für die primäre Datenbank im Produktionsslot den schreibgeschützten Modus fest (3). Dadurch wird sichergestellt, dass die Produktionsinstanz der Anwendung (V1) während des Upgrades schreibgeschützt bleibt, sodass Datenabweichungen zwischen V1- und V2-Datenbankinstanzen vermieden werden.  
+2. Trennen Sie die sekundäre Datenbank mithilfe des Modus für die geplante Beendigung (4). Dieser erstellt eine vollständig synchronisierte, unabhängige Kopie der primären Datenbank. Diese Datenbank wird upgegradet.
+3. Ändern Sie den Modus der primären Datenbank in den Lese-/Schreibmodus, und führen Sie das Upgradeskript im Stagingslot aus (5).     
 
-![Konfiguration des SQL-Datenbank Geo-Replikation. Cloud-Wiederherstellung im Notfall.](media/sql-database-manage-application-rolling-upgrade/Option1-2.png)
+![Konfiguration der SQL-Datenbank-Georeplikation Cloudbasierte Notfallwiederherstellung](media/sql-database-manage-application-rolling-upgrade/Option1-2.png)
 
-Wenn das Upgrade erfolgreich abgeschlossen, können Sie jetzt die Endbenutzer die bereitgestellten Kopie der Anwendung zu wechseln. Es werden jetzt produktionsslot an die Anwendung.  Führen Sie dazu einige zusätzliche Schritte wie im folgenden Diagramm dargestellt.
+Wenn das Upgrade erfolgreich abgeschlossen ist, können die Endbenutzer jetzt zu der bereitgestellten Kopie der Anwendung wechseln. Diese wird nun zum Produktionsslot der Anwendung.  Dies umfasst ein paar mehr Schritte, wie im folgenden Diagramm dargestellt.
 
-1. Wechseln Sie den onlineendpunkt in der WATM-Profil zu <i>Contoso 2.azurewebsites.net</i>, welche Punkte die V2-Version der Website (6). Es wird nun im produktionsslot mit der V2-Anwendung und der Endbenutzer-Datenverkehr an sie gesendet wird.  
-2. Wenn Sie die V1-Anwendungskomponenten nicht mehr benötigen, damit Sie ohne Bedenken können entfernen Sie (7).   
+1. Ändern Sie den Onlineendpunkt im Azure Traffic Manager-Profil in <i>contoso-2.azurewebsites.net</i>, der auf die V2-Version der Website verweist (6). Dieser wird nun zum Produktionsslot mit der V2-Anwendung, und der Endbenutzerdatenverkehr wird an ihn umgeleitet.  
+2. Wenn Sie die V1-Anwendungskomponenten nicht mehr benötigen, können Sie diese sicher entfernen (7).   
 
-![Konfiguration des SQL-Datenbank Geo-Replikation. Cloud-Wiederherstellung im Notfall.](media/sql-database-manage-application-rolling-upgrade/Option1-3.png)
+![Konfiguration der SQL-Datenbank-Georeplikation Cloudbasierte Notfallwiederherstellung](media/sql-database-manage-application-rolling-upgrade/Option1-3.png)
 
-Wenn im Rahmen des Upgradeprozesses nicht erfolgreich ist, z. B. aufgrund eines Fehlers in das Aktualisierungsskript die Phase Slot angesehen wird, gefährdet. Um ein Rollback für die Anwendung in den Zustand vor dem upgrade stellen Sie einfach die Anwendung in den produktionsslot zu übergeben, die uneingeschränkten Zugriff. Die Schritte werden in die nächste Abbildung angezeigt.    
+Wenn der Upgradevorgang nicht erfolgreich ist, z.B. aufgrund eines Fehlers im Upgradeskript, sollte der Stagingslot als gefährdet betrachtet werden. Legen Sie für die Anwendung im Produktionsslot einfach wieder „Vollzugriff“ fest, um sie auf den Status vor dem Upgrade zurückzusetzen. Die Schritte hierzu werden im nächsten Diagramm angezeigt.    
 
-1. Legen Sie die Datenbankkopie auf Lese-/ Schreibmodus (8). Dadurch wird der vollständige V1 funktional im produktionsslot wiederhergestellt.
-2. Führen Sie die Fehlerursachenanalyse aus, und entfernen Sie die betroffenen Komponenten in der Phase-Slot (9). 
+1. Legen Sie für die Datenbankkopie den Lese-/Schreibmodus fest (8). Dadurch wird die vollständige V1 im Produktionsslot wiederhergestellt.
+2. Führen Sie die Fehlerursachenanalyse durch, und entfernen Sie die gefährdeten Komponenten im Stagingslot (9). 
 
-An diesem Punkt wird die Anwendung voll funktionsfähig ist, und die Upgradeschritte können wiederholt werden.
-
-> [!NOTE]
-> Das Rollback erfordert keine Änderungen in WATM-Profil aus, da es bereits verweist <i>Contoso 1.azurewebsites.net</i> als aktiven Endpunkt.
-> 
-> 
-
-![Konfiguration des SQL-Datenbank Geo-Replikation. Cloud-Wiederherstellung im Notfall.](media/sql-database-manage-application-rolling-upgrade/Option1-4.png)
-
-Der Schlüssel **Vorteil** dieser Option wird die Aktualisierung einer Anwendung in einer einzelnen Region mit einer Reihe von einfachen Schritten. Die Kosten des Upgrades ist relativ niedrig. Die Main **Kompromiss** darin, dass wenn ein schwerwiegender Fehler, während des Upgrades auftritt die Wiederherstellung in den Zustand vor dem upgrade erneute Bereitstellung der Anwendung in einer anderen Region und Wiederherstellung der Datenbank aus einer Sicherung mithilfe der geowiederherstellung umfassen soll. Dieser Vorgang führt zu erheblichen Ausfallzeiten.   
-
-## <a name="upgrading-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>Aktualisieren von Anwendungen, die geografische Replikation der Datenbank für die Wiederherstellung im Notfall benötigen
-Wenn Ihre Anwendung die geografische Replikation für Geschäftskontinuität nutzt, wird sie für mindestens zwei verschiedenen Regionen mit einer aktiven Bereitstellung in der primären Region und ein standby-Bereitstellung in Sicherung Region bereitgestellt. Zusätzlich zu den Faktoren, die weiter oben erwähnt muss im Rahmen des Upgradeprozesses garantiert, dass:
-
-* Die Anwendung bleibt jederzeit während des Upgrades von schwerwiegenden Fehlern geschützt
-* Die geografisch redundante Komponenten der Anwendung werden parallel mit den aktiven Komponenten aktualisiert.
-
-Azure Traffic Manager (WATM) mithilfe des Failovercluster-Profils mit ein aktives und drei sicherungsendpunkte wird nutzen, um diese Ziele zu erreichen.  Das folgende Diagramm veranschaulicht die betriebssystemumgebung, die vor dem Upgrade zu. Die Websites <i>Contoso 1.azurewebsites.net</i> und <i>Contoso dr.azurewebsites.net</i> eine produktionsslot an die Anwendung mit vollständige geografische Redundanz darstellen. Damit die Möglichkeit, ein Rollback müssen das Upgrade Sie einen Stufe-Slot durch eine vollständig synchronisierte Kopie der Anwendung erstellen. Müssen, stellen Sie sicher, dass die Anwendung schnell wiederhergestellt werden kann, für den Fall, dass ein schwerwiegender Fehler während des Upgrades auftritt, muss das Einschubfach Phase auch Geo-redundant sein. Die folgenden Schritte sind erforderlich, um die Anwendung für das Upgrade vorzubereiten:
-
-1. Erstellen Sie einen Stufe Slot für das Upgrade an. Um führen, die eine sekundäre Datenbank (1) erstellen und eine identische Kopie der Website in derselben Azure-Region bereitstellen. Überwachen Sie die sekundäre Datenbank, um festzustellen, ob das seeding abgeschlossen ist.
-2. Erstellen Sie eine geografisch redundante sekundäre Datenbank im Slot Phase durch Geo-Replikation die sekundäre Datenbank für die Sicherung Region (Dies wird "verkettet geografische Replikation" bezeichnet). Überwachen Sie die sekundäre Sicherung, um festzustellen, ob der Seedingvorgang abgeschlossenen (3) ist.
-3. Erstellen Sie eine standby-Kopie der Website in der backup-Region aus, und verknüpfen Sie es mit der geografisch redundante sekundäre (4).  
-4. Fügen Sie zusätzliche Endpunkte <i>Contoso 2.azurewebsites.net</i> und <i>Contoso 3.azurewebsites.net</i> der Failover-Profil in WATM als offline-Endpunkte (5). 
+An dieser Stelle ist die Anwendung voll funktionsfähig, und die Upgradeschritte können wiederholt werden.
 
 > [!NOTE]
-> Beachten Sie die Schritte zur Vorbereitung wirkt sich nicht auf die Anwendung im produktionsslot und ordnungsgemäß im vollständigen Zugriffsmodus.
+> Das Rollback erfordert keine Änderungen im Azure Traffic Manager-Profil, da es bereits auf <i>contoso-1.azurewebsites.net</i> als aktiven Endpunkt verweist.
 > 
 > 
 
-![Konfiguration des SQL-Datenbank Geo-Replikation. Cloud-Wiederherstellung im Notfall.](media/sql-database-manage-application-rolling-upgrade/Option2-1.png)
+![Konfiguration der SQL-Datenbank-Georeplikation Cloudbasierte Notfallwiederherstellung](media/sql-database-manage-application-rolling-upgrade/Option1-4.png)
 
-Sobald der Schritte zur Vorbereitung abgeschlossen wurden, ist die Phase für die Aktualisierung bereit. Das folgende Diagramm veranschaulicht die Upgradeschritte.
+Der wichtigste **Vorteil** dieser Option ist, dass Sie eine Anwendung in einer einzelnen Region mithilfe einer Reihe von einfachen Schritten upgraden können. Die anfallenden Kosten für das Upgrade sind relativ gering. Der wichtigste **Nachteil** ist, dass im Fall eines schwerwiegenden Fehlers während des Upgrades die Wiederherstellung auf den Status vor dem Upgrade beinhaltet, dass die Anwendung in einer anderen Region erneut bereitgestellt und die Datenbank mithilfe der Geowiederherstellung aus einer Sicherung wiederhergestellt wird. Dieser Prozess führt zu erheblicher Downtime.   
 
-1. Legen Sie die primäre Datenbank in den produktionsslot zu nur-Lese-Modus (6). Dadurch wird sichergestellt, dass die Produktionsinstanz von der Anwendung (V1) schreibgeschützt sind und während des Upgrades daher verhindert, dass die datenabweichungen zwischen V1 und V2-Datenbankinstanzen bleibt.  
-2. Trennen Sie die sekundäre Datenbank in der gleichen Region mit dem Modus für geplante Beendigung (7). Es wird eine vollständige Synchronisierung unabhängige Kopie der primären Datenbank erstellt, der automatisch einen primären nach dem Beenden werden soll. Diese Datenbank wird aktualisiert.
-3. Aktivieren Sie in der Phase Slot Lese-/ Schreibmodus der primären Datenbank, und führen Sie das Upgrade-Skript (8).    
+## <a name="upgrading-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>Upgrade von Anwendungen, die für die Notfallwiederherstellung von der Datenbank-Georeplikation abhängen
+Wenn Ihre Anwendung für die Geschäftskontinuität die Georeplikation nutzt, wird sie in mindestens zwei verschiedenen Regionen bereitgestellt. In der primären Region erfolgt eine aktive Bereitstellung und in der Sicherungsregion eine Standby-Bereitstellung. Zusätzlich zu den weiter oben genannten Faktoren muss der Upgradevorgang Folgendes garantieren:
 
-![Konfiguration des SQL-Datenbank Geo-Replikation. Cloud-Wiederherstellung im Notfall.](media/sql-database-manage-application-rolling-upgrade/Option2-2.png)
+* Die Anwendung bleibt jederzeit während des Upgrades vor schwerwiegenden Fehlern geschützt
+* Die georedundanten Komponenten der Anwendung werden parallel mit den aktiven Komponenten upgegradet
 
-Wenn das Upgrade wurde erfolgreich abgeschlossen. Sie sind jetzt bereit für die um die Endbenutzer auf die V2-Version der Anwendung zu wechseln. Im folgende Diagramm werden die Schritte veranschaulicht.
+Zum Erreichen dieser Ziele nutzen Sie Azure Traffic Manager, indem Sie das Failoverprofil mit einem aktiven Endpunkt und drei Sicherungsendpunkten verwenden.  Das folgende Diagramm veranschaulicht die Betriebsumgebung vor dem Upgradevorgang. Die Websites <i>contoso-1.azurewebsites.net</i> und <i>contoso-dr.azurewebsites.net</i> stellen einen Produktionsslot der Anwendung mit vollständiger geografischer Redundanz dar. Sie müssen einen Stagingslot mit einer vollständig synchronisierten Kopie der Anwendung erstellen, um ein Rollback des Upgrades zu ermöglichen. Der Stagingslot muss ebenfalls georedundant sein, da Sie sicherstellen müssen, dass die Anwendung im Fall eines schwerwiegenden Fehlers während des Upgradevorgangs schnell wiederhergestellt werden kann. Die folgenden Schritte sind erforderlich, um die Anwendung für das Upgrade vorzubereiten:
 
-1. Wechseln Sie den aktiven Endpunkt in der WATM-Profil zu <i>Contoso 2.azurewebsites.net</i>, die nun verweist auf die V2-Version von der Website (9). Es wird nun eine produktionsslot mit der V2-Anwendung, und Endbenutzer-Datenverkehr an sie gesendet wird. 
-2. Wenn Sie die V1-Anwendung nicht mehr benötigen, damit Sie ohne Bedenken können entfernen Sie (10 und 11).  
-
-![Konfiguration des SQL-Datenbank Geo-Replikation. Cloud-Wiederherstellung im Notfall.](media/sql-database-manage-application-rolling-upgrade/Option2-3.png)
-
-Wenn im Rahmen des Upgradeprozesses nicht erfolgreich ist, z. B. aufgrund eines Fehlers in das Aktualisierungsskript die Phase Slot angesehen wird, gefährdet. Um ein Rollback für die Anwendung in den Zustand vor dem upgrade stellen Sie einfach mithilfe der Anwendung im produktionsslot mit Vollzugriff. Die Schritte werden in die nächste Abbildung angezeigt.    
-
-1. Legen Sie die Kopie der primären Datenbank im produktionsslot auf Lese-/ Schreibmodus (12). Dadurch wird der vollständige V1 funktional im produktionsslot wiederhergestellt.
-2. Führen Sie die Fehlerursachenanalyse aus, und entfernen Sie die betroffenen Komponenten in der Phase-Slot (13 und 14). 
-
-An diesem Punkt wird die Anwendung voll funktionsfähig ist, und die Upgradeschritte können wiederholt werden.
+1. Erstellen Sie einen Stagingslot für das Upgrade. Hierzu erstellen Sie eine sekundäre Datenbank (1) und stellen eine identische Kopie der Website in derselben Azure-Region bereit. Überwachen Sie die sekundäre Datenbank, um festzustellen, ob der Seedingprozess abgeschlossen ist.
+2. Erstellen Sie im Stagingslot eine georedundante sekundäre Datenbank, indem Sie eine Georeplikation der sekundären Datenbank auf die Sicherungsregion durchführen (dies wird „verkettete Georeplikation“ genannt). Überwachen Sie die sekundäre Sicherungsdatenbank, um festzustellen, ob der Seedingprozess abgeschlossen ist (3).
+3. Erstellen Sie eine Standby-Kopie der Website in der Sicherungsregion, und verknüpfen Sie diese mit der georedundanten sekundären Datenbank (4).  
+4. Fügen Sie dem Failoverprofil in Azure Traffic Manager die zusätzlichen Endpunkte <i>contoso-2.azurewebsites.net</i> und <i>contoso-3.azurewebsites.net</i> als Offlineendpunkte hinzu (5). 
 
 > [!NOTE]
-> Das Rollback erfordert keine Änderungen in WATM-Profil aus, da es bereits verweist <i>Contoso 1.azurewebsites.net</i> als aktiven Endpunkt.
+> Beachten Sie, dass sich die Vorbereitungsschritte nicht auf die Anwendung im Produktionsslot auswirken und diese im Vollzugriffsmodus funktionieren kann.
 > 
 > 
 
-![Konfiguration des SQL-Datenbank Geo-Replikation. Cloud-Wiederherstellung im Notfall.](media/sql-database-manage-application-rolling-upgrade/Option2-4.png)
+![Konfiguration der SQL-Datenbank-Georeplikation Cloudbasierte Notfallwiederherstellung](media/sql-database-manage-application-rolling-upgrade/Option2-1.png)
 
-Der Schlüssel **Vorteil** für diese Option ist, dass Sie die Anwendung und geografisch redundante Clientkopie parallel durchführen können, ohne Beeinträchtigung der Geschäftskontinuität während des Upgrades. Die Main **Kompromiss** ist, dass doppelte Redundanz der einzelnen Komponenten der Anwendung und daher höhere Dollar Kosten fallen. Es beinhaltet auch einen etwas komplizierteren Workflow. 
+Wenn die Vorbereitungsschritte abgeschlossen sind, ist der Stagingslot bereit für das Upgrade. Das folgende Diagramm veranschaulicht die Upgradeschritte.
+
+1. Legen Sie für die primäre Datenbank im Produktionsslot den schreibgeschützten Modus fest (6). Dadurch wird sichergestellt, dass die Produktionsinstanz der Anwendung (V1) während des Upgrades schreibgeschützt bleibt, sodass Datenabweichungen zwischen V1- und V2-Datenbankinstanzen vermieden werden.  
+2. Trennen Sie die sekundäre Datenbank in derselben Region mithilfe des Modus für die geplante Beendigung (7). Dieser erstellt eine vollständig synchronisierte, unabhängige Kopie der primären Datenbank, die nach Abschluss automatisch zu einer primären Datenbank wird. Diese Datenbank wird upgegradet.
+3. Ändern Sie den Modus der primären Datenbank im Stagingslot in den Lese-/Schreibmodus, und führen Sie das Upgradeskript aus (8).    
+
+![Konfiguration der SQL-Datenbank-Georeplikation Cloudbasierte Notfallwiederherstellung](media/sql-database-manage-application-rolling-upgrade/Option2-2.png)
+
+Wenn das Upgrade erfolgreich abgeschlossen ist, können die Endbenutzer jetzt zu der V2-Version der Anwendung wechseln. Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte.
+
+1. Ändern Sie den aktiven Endpunkt im Azure Traffic Manager-Profil in <i>contoso-2.azurewebsites.net</i>, der nun auf die V2-Version der Website verweist (9). Dieser wird nun zu einem Produktionsslot mit der V2-Anwendung, und der Endbenutzerdatenverkehr wird an ihn umgeleitet. 
+2. Wenn Sie die V1-Anwendung nicht mehr benötigen, können Sie diese sicher entfernen (10 und 11).  
+
+![Konfiguration der SQL-Datenbank-Georeplikation Cloudbasierte Notfallwiederherstellung](media/sql-database-manage-application-rolling-upgrade/Option2-3.png)
+
+Wenn der Upgradevorgang nicht erfolgreich ist, z.B. aufgrund eines Fehlers im Upgradeskript, sollte der Stagingslot als gefährdet betrachtet werden. Verwenden Sie die Anwendung im Produktionsslot einfach wieder mit dem Vollzugriff, um sie auf den Status vor dem Upgrade zurückzusetzen. Die Schritte hierzu werden im nächsten Diagramm angezeigt.    
+
+1. Legen Sie für die Kopie der primären Datenbank im Produktionsslot den Lese-/Schreibmodus fest (12). Dadurch wird die vollständige V1 im Produktionsslot wiederhergestellt.
+2. Führen Sie die Fehlerursachenanalyse durch, und entfernen Sie die gefährdeten Komponenten im Stagingslot (13 und 14). 
+
+An dieser Stelle ist die Anwendung voll funktionsfähig, und die Upgradeschritte können wiederholt werden.
+
+> [!NOTE]
+> Das Rollback erfordert keine Änderungen im Azure Traffic Manager-Profil, da es bereits auf <i>contoso-1.azurewebsites.net</i> als aktiven Endpunkt verweist.
+> 
+> 
+
+![Konfiguration der SQL-Datenbank-Georeplikation Cloudbasierte Notfallwiederherstellung](media/sql-database-manage-application-rolling-upgrade/Option2-4.png)
+
+Der wichtigste **Vorteil** dieser Option ist, dass Sie die Anwendung und ihre georedundante Kopie parallel upgraden können, ohne Ihre Geschäftskontinuität während des Upgrades zu beeinträchtigen. Der wichtigste **Nachteil** ist, dass die Option von jeder Anwendungskomponente die doppelte Redundanz erfordert und daher höhere Kosten anfallen. Sie umfasst auch einen komplexeren Workflow. 
 
 ## <a name="summary"></a>Zusammenfassung
-Upgrade im Artikel beschriebenen Methoden unterscheiden sich hinsichtlich der Komplexität und die Kosten Dollar aber beide darauf konzentrieren, minimiert die Zeit, wenn der Benutzer auf schreibgeschützte Vorgänge beschränkt ist. Diese Zeit wird direkt durch die Dauer des Upgradeskript definiert. Es ist nicht abhängig, auf die Größe der Datenbank, die Dienstebene, die Sie ausgewählt haben, die Website-Konfiguration und andere Faktoren, die Sie nicht einfach steuern können. Dies ist, da die Vorbereitungsschritte über die Upgradeschritte entkoppelt sind und ohne Beeinträchtigung der produktionsanwendung erfolgen können. Die Effizienz des Upgradeskript ist der wichtigste Faktor, der für den Endbenutzer während der Upgrades bestimmt. Daher ist die beste Möglichkeit verbessert werden kann durch die Konzentration Ihrer Arbeit darauf, auf das Aktualisierungsskript so effizient wie möglich zu machen.  
+Die beiden in diesem Artikel beschriebenen Upgrademethoden unterscheiden sich hinsichtlich der Komplexität und der anfallenden Kosten. Beide legen jedoch den Fokus auf die Minimierung der Zeit, in der die Endbenutzer auf schreibgeschützte Vorgänge eingeschränkt sind. Diese Zeit wird direkt durch die Dauer des Upgradeskripts definiert. Sie hängt nicht von der Datenbankgröße, der gewählten Dienstebene, der Websitekonfiguration oder anderen Faktoren ab, die Sie nicht einfach steuern können. Das liegt daran, dass alle Vorbereitungsschritte von den Upgradeschritten entkoppelt sind und ohne Auswirkungen auf die Produktionsanwendung durchgeführt werden können. Die Effizienz des Upgradeskripts ist der wichtigste Faktor, der die Endbenutzerfreundlichkeit während Upgrades bestimmt. Die beste Möglichkeit diese zu verbessern ist daher, sich darauf zu konzentrieren, das Upgradeskript so effizient wie möglich zu gestalten.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine Business Continuity – Überblick und Szenarien finden Sie unter [Business Continuity – Überblick](sql-database-business-continuity.md).
-* Finden Sie Informationen zu Azure SQL-Datenbank automatisierte Sicherungen [SQL-Datenbank automatisierte Sicherungen](sql-database-automated-backups.md).
-* Zur Verwendung der automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus automatisierten Sicherungen](sql-database-recovery-using-backups.md).
-* Weitere Informationen zu schneller Wiederherstellungsoptionen finden Sie unter [aktive geografische Replikation](sql-database-geo-replication-overview.md).
+* Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+* Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+* Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus automatisierten Sicherungen](sql-database-recovery-using-backups.md).
+* Informationen zu schnelleren Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 
 

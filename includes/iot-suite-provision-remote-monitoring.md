@@ -1,25 +1,25 @@
 ## <a name="provision-the-solution"></a>Bereitstellen der Lösung
 
-Wenn Sie in Ihrem Konto bereits remote vorkonfigurierten überwachungslösung bereitgestellt noch nicht:
+Wenn Sie die vorkonfigurierte Lösung für die Remoteüberwachung noch nicht in Ihrem Konto bereitgestellt haben:
 
-1. Melden Sie sich beim [azureiotsuite.com] [ lnk-azureiotsuite] Kontoanmeldeinformationen mit Ihrem Azure, und klicken Sie auf  **+**  um eine Projektmappe zu erstellen.
-2. Klicken Sie auf **wählen** auf die **Remoteüberwachung** Kachel.
-3. Geben Sie einen **Projektmappenname** für die Remoteüberwachung Lösung vorkonfiguriert.
-4. Wählen Sie die **Region** und **Abonnement** verwenden, um die Lösung bereitgestellt werden sollen.
-5. Klicken Sie auf **Projektmappe erstellen** um den Bereitstellungsvorgang beginnen. Normalerweise dauert es einige Zeit in Anspruch.
+1. Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto bei [azureiotsuite.com][lnk-azureiotsuite] an, und klicken Sie auf **+**, um eine Lösung zu erstellen.
+2. Klicken Sie auf der Kachel **Remoteüberwachung** auf **Auswählen**.
+3. Geben Sie einen **Lösungsnamen** für Ihre vorkonfigurierte Remoteüberwachungslösung ein.
+4. Wählen Sie die gewünschten Angaben für **Region** und **Abonnement**, um die Lösung bereitzustellen.
+5. Klicken Sie auf **Lösung erstellen** , um den Bereitstellungsprozess zu beginnen. Das dauert in der Regel einige Minuten.
 
-### <a name="wait-for-the-provisioning-process-to-complete"></a>Warten Sie, im Rahmen des Bereitstellungsprozesses abgeschlossen
-1. Klicken Sie auf die Kachel für die Projektmappe mit **Provisioning** Status.
-2. Beachten Sie, dass die **Status Bereitstellung** wie Azure-Dienste im Azure-Abonnement bereitgestellt werden.
-3. Nachdem die Bereitstellung abgeschlossen ist, ändert sich der Status **bereit**.
-4. Klicken Sie auf die Kachel, um die Details der Projektmappe im rechten Bereich anzuzeigen.
+### <a name="wait-for-the-provisioning-process-to-complete"></a>Warten auf den Abschluss des Bereitstellungsvorgangs
+1. Klicken Sie auf die Kachel für Ihre Lösung mit dem Status **Bereitstellung** .
+2. Beachten Sie die **Bereitstellungsstatus** während der Bereitstellung von Azure-Diensten im Azure-Abonnement.
+3. Nach Abschluss der Bereitstellung ändert sich der Status in **Bereit**.
+4. Klicken Sie auf die Kachel, um im rechten Bereich Details zur Lösung anzuzeigen.
 
 > [!NOTE]
-> Wenn Sie beim Bereitstellen der Projektmappe vorkonfiguriert, dass Probleme auftreten, überprüfen Sie [Berechtigungen für die Website azureiotsuite.com] [ lnk-permissions] und [– häufig gestellte Fragen][lnk-faq]. Wenn die Probleme weiterhin, erstellen Sie ein Dienstticket für den [Portal][lnk-portal].
+> Falls beim Bereitstellen der vorkonfigurierten Lösung Probleme auftreten, helfen Ihnen die Informationen unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions] und die [häufig gestellten Fragen][lnk-faq] weiter. Sollten die Probleme weiterhin auftreten, können Sie im [Portal][lnk-portal] ein Dienstticket erstellen.
 > 
 > 
 
-Gibt es Details, die Sie anzeigen, die für Ihre Lösung nicht aufgeführten erwarten? Senden Sie uns Vorschläge auf [User Voice](https://feedback.azure.com/forums/321918-azure-iot).
+Erwarten Sie Informationen zu Ihrer Lösung, die nicht aufgeführt werden? Senden Sie uns Vorschläge für neue Funktionen über den [Feedbackbereich](https://feedback.azure.com/forums/321918-azure-iot)zu.
 
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
 [lnk-permissions]: ../articles/iot-suite/iot-suite-permissions.md

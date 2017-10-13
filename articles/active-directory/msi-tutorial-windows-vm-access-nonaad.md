@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: elkuzmen
+ms.openlocfilehash: 783579eda204b44564abdcb3fee30c09b0e5c1a7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 1785b4da8c54354dbc48c514dbb8f969a1f997ca
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-managed-service-identity-msi-with-a-windows-vm-to-access-azure-key-vault"></a>Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) mit einer Windows-VM für den Zugriff auf Azure Key Vault 
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -47,7 +45,7 @@ In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt. Sie kön
 1.  Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
 2.  Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
 3.  Geben Sie die Informationen zum virtuellen Computer ein. Der **Benutzername** und das **Kennwort**, die hier erstellt werden, sind die Anmeldeinformationen, die Sie für die Anmeldung beim virtuellen Computer verwenden.
-4.  Wählen Sie in der Dropdownliste das geeignete **Abonnement** für den virtuellen Computer aus.
+4.  Wählen Sie in der Dropdownliste das richtige **Abonnement** für den virtuellen Computer aus.
 5.  Um eine neue **Ressourcengruppe** auszuwählen, in der der virtuelle Computer erstellt werden soll, wählen Sie **Neu erstellen** aus. Klicken Sie zum Abschluss auf **OK**.
 6.  Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. Behalten Sie auf dem Blatt „Einstellungen“ die Standardwerte bei, und klicken Sie auf **OK**.
 
@@ -75,7 +73,7 @@ Mithilfe von MSI kann der Code Zugriffstoken zur Authentifizierung von Ressource
 Zunächst müssen Sie eine Key Vault erstellen und der Identität des virtuellen Computers den Zugriff darauf erteilen.   
 
 1. Wählen Sie oben auf der linken Navigationsleiste **+ Neu**, dann **Sicherheit und Identität** und anschließend **Key Vault**.  
-2. Geben Sie einen Namen für die neue **Key Vault** an. 
+2. Geben Sie unter **Name** einen Namen für die neue Key Vault an. 
 3. Suchen Sie die Key Vault in dem Abonnement und in der Ressourcengruppe, in der sich auch der zuvor erstellte virtuelle Computer befindet. 
 4. Wählen Sie **Zugriffsrichtlinien** aus, und klicken Sie auf **Neue hinzufügen**. 
 5. Wählen Sie unter „Anhand einer Vorlage konfigurieren“ die Option **Verwaltung von Geheimnissen** aus. 
@@ -143,4 +141,3 @@ Nachdem Sie das Geheimnis aus der Key Vault abgerufen haben, können Sie es für
 - Einen Überblick über MSI finden Sie unter [Übersicht über verwaltete Dienstidentitäten](../active-directory/msi-overview.md).
 
 Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.
-

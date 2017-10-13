@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 506b625905abf52963230a787af66f956bc292b5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Replikation von lokalen Computern
 
@@ -50,7 +49,7 @@ Die integrierte Rolle „Mitwirkender für virtuelle Computer“ verfügt über 
 
 ## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
 
-Images der replizierten Computer werden im Azure-Speicher gespeichert. Azure-VMs werden aus dem Speicher erstellt, wenn Sie ein Failover von einem lokalen Standort nach Azure ausführen.
+Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs werden aus dem Speicher erstellt, wenn Sie ein Failover von einem lokalen Standort nach Azure ausführen.
 
 1. Klicken Sie im Menü des [Azure-Portals](https://portal.azure.com) auf **Neu** -> **Storage** -> **Speicherkonto**.
 2. Geben Sie einen Namen für Ihr Speicherkonto ein. Für diese Tutorials verwenden wir den Namen **contosovmsacct1910171607**. Der Name muss in Azure eindeutig und zwischen 3 und 24 Zeichen lang sein, wobei nur Ziffern und Kleinbuchstaben zulässig sind.
@@ -101,4 +100,3 @@ Wenn die Azure-VMs nach einem Failover aus dem Speicher erstellt werden, werden 
 
 > [!div class="nextstepaction"]
 > [Vorbereiten der lokalen VMware-Infrastruktur für die Notfallwiederherstellung in Azure](tutorial-prepare-on-premises-vmware.md)
-

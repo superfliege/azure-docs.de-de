@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2017
 ms.author: johnkem
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: c7075c2e1a2500eca1d0aa9b3a797e8a0e903ede
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Nutzen der Überwachungsdaten von Azure
 
@@ -29,30 +28,29 @@ Wir bringen mit der Azure Monitor-Pipeline die Überwachungsdaten von der gesamt
 
 | Datentyp | Kategorie | Unterstützte Dienste | Zugriffsmethoden |
 | --- | --- | --- | --- |
-| Azure Monitor-Metriken auf Plattformebene | Metriken | [Siehe Liste hier](monitoring-supported-metrics.md) | <ul><li>**REST-API:** [Azure Monitor-Metrik-API](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Speicher-Blob oder Event Hub:** [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
-| Compute-Metriken für Gastbetriebssysteme (z.B. Leistungsindikatoren) | Metriken | [Windows](../virtual-machines-dotnet-diagnostics.md)- und Linux-VMs (V2), [Clouddienste](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Speichertabelle oder Blob:** [Windows oder Linux – Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Event Hub:** [Windows Azure-Diagnose](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
-| Benutzerdefinierte oder Anwendungsmetriken | Metriken | Alle mit Application Insights instrumentierten Anwendungen | <ul><li>**REST-API:** [Application Insights-REST-API](https://dev.applicationinsights.io/reference)</li></ul> |
-| Speichermetrik | Metriken | Azure Storage | <ul><li>**Speichertabelle:** [Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
-| Abrechnungsdaten | Metriken | Alle Azure-Dienste | <ul><li>**REST-API:** [Azure-APIs zur Ressourcennutzung und Gebührenkarte](../billing/billing-usage-rate-card-overview.md)</li></ul> |
-| Aktivitätsprotokoll | Ereignisse | Alle Azure-Dienste | <ul><li>**REST-API:** [Azure Monitor-Ereignis-API](https://docs.microsoft.com/rest/api/monitor/events)</li><li>**Speicherblob oder Event Hub:** [Protokollprofil](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
-| Azure Monitor-Diagnoseprotokolle | Ereignisse | [Siehe Liste hier](monitoring-diagnostic-logs-schema.md) | <ul><li>**Speicher-Blob oder Event Hub:** [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
-| Compute-Protokolle für Gastbetriebssysteme (z.B. IIS, ETW, syslogs) | Ereignisse | [Windows](../virtual-machines-dotnet-diagnostics.md)- und Linux-VMs (V2), [Clouddienste](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Speichertabelle oder Blob:** [Windows oder Linux – Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Event Hub:** [Windows Azure-Diagnose](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
-| App Service-Protokolle | Ereignisse | App Services | <ul><li>**File, Table oder Blob Storage:** [Web-App-Diagnose](../app-service/web-sites-enable-diagnostic-log.md)</li></ul> |
-| Speicherprotokolle | Ereignisse | Azure Storage | <ul><li>**Speichertabelle:** [Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
-| Security Center-Warnungen | Ereignisse | Azure Security Center | <ul><li>**REST-API:** [Sicherheitswarnungen](https://msdn.microsoft.com/library/mt704050.aspx)</li></ul> |
-| Active Directory-Berichte | Ereignisse | Azure Active Directory | <ul><li>**REST-API:** [Azure Active Directory-Graph-API](../active-directory/active-directory-reporting-api-getting-started.md)</li></ul> |
-| Security Center-Ressourcenstatus | Status | [Alle unterstützten Ressourcen](https://msdn.microsoft.com/library/mt704041.aspx#Anchor_1) | <ul><li>**REST-API:** [Sicherheitsstatus](https://msdn.microsoft.com/library/mt704041.aspx)</li></ul> |
-| Resource Health | Status | Unterstützte Dienste | <ul><li>**REST-API:** [Ressourcenintegritäts-REST-API](https://azure.microsoft.com/blog/reduce-troubleshooting-time-with-azure-resource-health/)</li></ul> |
-| Azure Monitor-Metrikwarnungen | Benachrichtigungen | [Siehe Liste hier](monitoring-supported-metrics.md) | <ul><li>**Webhook:** [Azure-Metrikwarnungen](insights-webhooks-alerts.md)</li></ul> |
+| Azure Monitor-Metriken auf Plattformebene | Metriken | [Siehe Liste hier](monitoring-supported-metrics.md) | <ul><li>**REST-API:**[Azure Monitor-Metrik-API](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Speicher-Blob oder Event Hub:**[Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
+| Compute-Metriken für Gastbetriebssysteme (z.B. Leistungsindikatoren) | Metriken | [Windows](../virtual-machines-dotnet-diagnostics.md)- und Linux-VMs (V2), [Clouddienste](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Speichertabelle oder Blob:**[Windows oder Linux – Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Event Hub:**[Windows Azure-Diagnose](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
+| Benutzerdefinierte oder Anwendungsmetriken | Metriken | Alle mit Application Insights instrumentierten Anwendungen | <ul><li>**REST-API:**[Application Insights-REST-API](https://dev.applicationinsights.io/reference)</li></ul> |
+| Speichermetrik | Metriken | Azure Storage | <ul><li>**Speichertabelle:**[Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
+| Abrechnungsdaten | Metriken | Alle Azure-Dienste | <ul><li>**REST-API:**[Azure-APIs zur Ressourcennutzung und Gebührenkarte](../billing/billing-usage-rate-card-overview.md)</li></ul> |
+| Aktivitätsprotokoll | Ereignisse | Alle Azure-Dienste | <ul><li>**REST-API:**[Azure Monitor-Ereignis-API](https://docs.microsoft.com/rest/api/monitor/events)</li><li>**Speicherblob oder Event Hub:**[Protokollprofil](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
+| Azure Monitor-Diagnoseprotokolle | Ereignisse | [Siehe Liste hier](monitoring-diagnostic-logs-schema.md) | <ul><li>**Speicher-Blob oder Event Hub:**[Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
+| Compute-Protokolle für Gastbetriebssysteme (z.B. IIS, ETW, syslogs) | Ereignisse | [Windows](../virtual-machines-dotnet-diagnostics.md)- und Linux-VMs (V2), [Clouddienste](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Speichertabelle oder Blob:**[Windows oder Linux – Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Event Hub:**[Windows Azure-Diagnose](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
+| App Service-Protokolle | Ereignisse | App Services | <ul><li>**File, Table oder Blob Storage:**[Web-App-Diagnose](../app-service/web-sites-enable-diagnostic-log.md)</li></ul> |
+| Speicherprotokolle | Ereignisse | Azure Storage | <ul><li>**Speichertabelle:**[Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
+| Security Center-Warnungen | Ereignisse | Azure Security Center | <ul><li>**REST-API:**[Sicherheitswarnungen](https://msdn.microsoft.com/library/mt704050.aspx)</li></ul> |
+| Active Directory-Berichte | Ereignisse | Azure Active Directory | <ul><li>**REST-API:**[Azure Active Directory-Graph-API](../active-directory/active-directory-reporting-api-getting-started.md)</li></ul> |
+| Security Center-Ressourcenstatus | Status | [Alle unterstützten Ressourcen](https://msdn.microsoft.com/library/mt704041.aspx#Anchor_1) | <ul><li>**REST-API:**[Sicherheitsstatus](https://msdn.microsoft.com/library/mt704041.aspx)</li></ul> |
+| Resource Health | Status | Unterstützte Dienste | <ul><li>**REST-API:**[Ressourcenintegritäts-REST-API](https://azure.microsoft.com/blog/reduce-troubleshooting-time-with-azure-resource-health/)</li></ul> |
+| Azure Monitor-Metrikwarnungen | Benachrichtigungen | [Siehe Liste hier](monitoring-supported-metrics.md) | <ul><li>**Webhook:**[Azure-Metrikwarnungen](insights-webhooks-alerts.md)</li></ul> |
 | Azure Monitor-Aktivitätsprotokollwarnungen | Benachrichtigungen | Alle Azure-Dienste | <ul><li>**Webhook:** Azure-Aktivitätsprotokollwarnungen</li></ul> |
-| Benachrichtigungen zum automatischen Skalieren | Benachrichtigungen | [Siehe Liste hier](monitoring-overview-autoscale.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [Benachrichtigung zur automatischen Skalierung mit dem Webhook-Nutzlastschema](insights-autoscale-to-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Warnungen zu OMS-Protokollsuchabfragen | Benachrichtigungen | OMS Log Analytics | <ul><li>**Webhook:** [Log Analytics-Warnungen](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
-| Application Insights-Metrikwarnungen | Benachrichtigungen | Application Insights | <ul><li>**Webhook:** [Application Insights-Warnungen](../application-insights/app-insights-alerts.md)</li></ul> |
-| Application Insights-Webtests | Benachrichtigungen | Application Insights | <ul><li>**Webhook:** [Application Insights-Warnungen](../application-insights/app-insights-alerts.md)</li></ul> |
+| Benachrichtigungen zum automatischen Skalieren | Benachrichtigungen | [Siehe Liste hier](monitoring-overview-autoscale.md#supported-services-for-autoscale) | <ul><li>**Webhook:**[Benachrichtigung zur automatischen Skalierung mit dem Webhook-Nutzlastschema](insights-autoscale-to-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
+| Warnungen zu OMS-Protokollsuchabfragen | Benachrichtigungen | OMS Log Analytics | <ul><li>**Webhook:**[Log Analytics-Warnungen](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
+| Application Insights-Metrikwarnungen | Benachrichtigungen | Application Insights | <ul><li>**Webhook:**[Application Insights-Warnungen](../application-insights/app-insights-alerts.md)</li></ul> |
+| Application Insights-Webtests | Benachrichtigungen | Application Insights | <ul><li>**Webhook:**[Application Insights-Warnungen](../application-insights/app-insights-alerts.md)</li></ul> |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr zu [Azure Monitor-Metriken](monitoring-overview-metrics.md).
 - Erfahren Sie mehr zum [Azure-Aktivitätsprotokoll](monitoring-overview-activity-logs.md).
 - Erfahren Sie mehr zu [Azure-Diagnoseprotokollen](monitoring-overview-of-diagnostic-logs.md).
-

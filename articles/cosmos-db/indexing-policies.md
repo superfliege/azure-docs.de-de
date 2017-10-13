@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/17/2017
 ms.author: arramac
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 30a21645831f0cfcb3b52c797dbddfa6b5283960
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Unterstützen von Indexdaten durch Azure Cosmos DB
 
@@ -168,7 +167,7 @@ Nachdem wir uns mit der Angabe von Pfaden beschäftigt haben, wenden wir uns jet
 Azure Cosmos DB unterstützt die Indextypen „Hash“ und „Range“ für alle Pfade (die für Zeichenfolgen, Zahlen oder beides konfiguriert sein können).
 
 * **Hash** unterstützt effiziente Gleichheits- und JOIN-Abfragen. In den meisten Fällen benötigen Hashindizes keine höhere Genauigkeit als den Standardwert von 3 Bytes. Der Datentyp kann „String“ oder „Number“ sein.
-* **Range** unterstützt effiziente Gleichheitsabfragen, Bereichsabfragen (mit >, <, >=, <=, !=) und Order By-Abfragen. Bei Order By-Abfragen muss standardmäßig auch die maximale Indexgenauigkeit (–1) angegeben werden. Der Datentyp kann „String“ oder „Number“ sein.
+* **Range** unterstützt effiziente Gleichheitsabfragen, Bereichsabfragen (mit &gt;, &lt;, &gt;=, &lt;=, !=) und Order By-Abfragen. Bei Order By-Abfragen muss standardmäßig auch die maximale Indexgenauigkeit (–1) angegeben werden. Der Datentyp kann „String“ oder „Number“ sein.
 
 Azure Cosmos DB unterstützt auch den Indextyp „Spatial“ für alle Pfade, die für den Datentyp „Point“, „Polygon“ oder „LineString“ angegeben werden können. Der Wert im angegebenen Pfad muss ein gültiges GeoJSON-Fragment wie `{"type": "Point", "coordinates": [0.0, 10.0]}`sein.
 
@@ -413,5 +412,4 @@ Verwenden Sie die unten angegebenen Links, um auf Beispiele für die Verwaltung 
 1. [Codebeispiele für die DocumentDB API-.NET-Indexverwaltung](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/IndexManagement/Program.cs)
 2. [Vorgänge für DocumentDB API REST-Dokumentauflistungen](https://msdn.microsoft.com/library/azure/dn782195.aspx)
 3. [Abfrage mit SQL](documentdb-sql-query.md)
-
 

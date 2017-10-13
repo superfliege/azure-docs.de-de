@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/10/2017
 ms.author: eugenesh
 ms.openlocfilehash: b167f69f853f6ecdfd56179e6ffb946cdf2f45b8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Indizieren von Azure Table Storage mit Azure Search
 In diesem Artikel wird beschrieben, wie Sie Azure Search zum Indizieren von Daten verwenden, die in Azure Table Storage gespeichert sind.
@@ -70,9 +70,9 @@ Weitere Informationen zur API für das Erstellen einer Datenquelle finden Sie un
 
 Sie können die Anmeldeinformationen für die Tabelle mit einer der folgenden Methoden angeben: 
 
-- **Verbindungszeichenfolge für den Vollzugriff auf ein Speicherkonto:** `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Sie können die Verbindungszeichenfolge über das Azure-Portal abrufen, indem Sie zu **Blatt des Speicherkontos** > **Einstellungen** > **Schlüssel** (für klassische Speicherkonten) bzw. **Einstellungen** > **Zugriffsschlüssel** (für Azure Resource Manager-Speicherkonten) navigieren.
-- **Speicherkonto Shared Access Signature-Verbindungszeichenfolge (SAS):** `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl`. Die SAS sollte über die Berechtigungen zum Auflisten und Lesen für Container (in diesem Fall Tabellen) und Objekte (Tabellenzeilen) verfügen.
--  **Tabellen-SAS:** `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r`. Die SAS sollte über die Abfrageberechtigung (Lesen) für die Tabelle verfügen.
+- **Verbindungszeichenfolge für den Vollzugriff auf ein Speicherkonto:**`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Sie können die Verbindungszeichenfolge über das Azure-Portal abrufen, indem Sie zu **Blatt des Speicherkontos** > **Einstellungen** > **Schlüssel** (für klassische Speicherkonten) bzw. **Einstellungen** > **Zugriffsschlüssel** (für Azure Resource Manager-Speicherkonten) navigieren.
+- **Speicherkonto Shared Access Signature-Verbindungszeichenfolge (SAS):**`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl`. Die SAS sollte über die Berechtigungen zum Auflisten und Lesen für Container (in diesem Fall Tabellen) und Objekte (Tabellenzeilen) verfügen.
+-  **Tabellen-SAS:**`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r`. Die SAS sollte über die Abfrageberechtigung (Lesen) für die Tabelle verfügen.
 
 Weitere Informationen zu Shared Access Signatures (SAS) finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 

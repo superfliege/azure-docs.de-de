@@ -16,12 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 2ec65409287bf55f2892e573131739cfca49dd9d
-ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.openlocfilehash: c387467dfd91e2904e6c1f043506280fc08c92e7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Dienst- und andere Einschränkungen für Azure AD
 Dieser Artikel beschreibt die Nutzungsbeschränkungen und andere Diensteinschränkungen für den Azure Active Directory-Dienst. Einen vollständigen Überblick über die Microsoft Azure-Diensteinschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
@@ -31,4 +30,3 @@ Dieser Artikel beschreibt die Nutzungsbeschränkungen und andere Diensteinschrä
 ## <a name="whats-next"></a>Nächste Schritte
 * [Als Organisation für Azure registrieren](sign-up-organization.md)
 * [Verknüpfung von Azure-Abonnements mit Azure AD](active-directory-how-subscriptions-associated-directory.md)
-

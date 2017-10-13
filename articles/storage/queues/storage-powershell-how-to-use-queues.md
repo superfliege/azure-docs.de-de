@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.translationtype: HT
-ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
 ms.openlocfilehash: 357d8db329a6a3c782753804d681029fdb07b5f7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Ausführen von Vorgängen für Azure Queue Storage mit Azure PowerShell
 
 Azure Queue Storage ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Weitere Informationen finden Sie unter [Introduction to Azure Queues (Einführung in Azure-Warteschlangen)](storage-queues-introduction.md). In diesem Tutorial werden häufige Vorgänge für Queue Storage behandelt. Folgendes wird vermittelt:
@@ -66,7 +64,7 @@ New-AzureRmResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>Speicherkonto erstellen
 
-Erstellen Sie ein allgemeines Standardspeicherkonto mit lokal redundantem Speicher (LRS) mithilfe von [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Rufen Sie den Kontext des Speicherkontos ab, der das zu verwendende Speicherkonto definiert. Wenn Sie Aktionen auf einem Speicherkonto ausführen, verweisen Sie auf den Kontext, statt wiederholt die Anmeldeinformationen bereitzustellen.
+Erstellen Sie ein allgemeines Standardspeicherkonto mit lokal redundantem Speicher (LRS) mithilfe von [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Rufen Sie den Kontext des Speicherkontos ab, der das zu verwendende Speicherkonto definiert. Wenn Sie Aktionen für ein Speicherkonto ausführen, verweisen Sie auf den Kontext, anstatt wiederholt die Anmeldeinformationen anzugeben.
 
 ```powershell
 $storageAccountName = "howtoqueuestorage"

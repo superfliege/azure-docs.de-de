@@ -8,14 +8,12 @@ ms.author: markgal
 ms.date: 09/16/2017
 ms.topic: article
 ms.service: backup
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f144db921a8b2d01dbfe883a48574c4fabdae6f7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Verwenden des Azure-Portals zum Sichern mehrerer virtueller Computer
 
 Wenn Sie Daten in Azure sichern, speichern Sie diese Daten in einer Azure-Ressource mit der Bezeichnung Recovery Services-Tresor. Sie finden den Recovery Services-Tresor in den meisten Azure-Diensten im Einstellungsmenü. Die Integration des Recovery Services-Tresors in das Einstellungsmenü der meisten Azure-Dienste macht das Sichern von Daten ganz einfach. Die Arbeit mit den einzelnen Datenbanken oder virtuellen Computern in Ihrem Unternehmen ist jedoch aufwendig. Was geschieht, wenn Sie die Daten für alle virtuellen Computer in einer Abteilung oder an einem Standort sichern möchten? Es ist einfach, mehrere virtuelle Computer zu sichern, indem Sie eine Sicherungsrichtlinie erstellen und diese Richtlinie auf die gewünschten virtuellen Computer anwenden. In diesem Tutorial werden folgende Punkte erläutert:
@@ -187,4 +185,3 @@ Im nächsten Tutorial stellen Sie einen virtuellen Azure-Computer von einem Date
 
 > [!div class="nextstepaction"]
 > [Verwalten von virtuellen Computern mithilfe der Befehlszeilenschnittstelle](./tutorial-restore-disk.md)
-

@@ -17,10 +17,10 @@ ms.date: 7/12/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8b8fda17a8d1d1796d5299e3aba4b0fd5e719a4c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Verbinden von Raspberry Pi mit Azure IoT Hub (C)
 
@@ -80,7 +80,7 @@ Diese Elemente sind optional, da das Codebeispiel simulierte Sensordaten unterst
 Bereiten Sie die microSD-Karte für die Installation des Raspbian-Image vor.
 
 1. Laden Sie Raspbian herunter.
-   1. [Herunterladen von Raspbian Jessie mit Desktop](https://www.raspberrypi.org/downloads/raspbian/) (die ZIP-Datei).
+   1. [Laden Sie Raspbian Jessie mit Desktop herunter](https://www.raspberrypi.org/downloads/raspbian/) (die ZIP-Datei).
    1. Entpacken Sie das Raspbian-Image in einen Ordner auf Ihrem Computer.
 1. Installieren Sie Raspbian auf der microSD-Karte.
    1. [Laden Sie das SD-Kartenbrennprogramm Etcher herunter, und installieren Sie es](https://etcher.io/).
@@ -106,7 +106,7 @@ Weitere Referenzdokumente zum Aktivieren von SSH und SPI finden Sie auf[raspberr
 
 ### <a name="connect-the-sensor-to-pi"></a>Verbinden des Sensors mit Pi
 
-Verwenden Sie die Steckplatine und Jumperdrähte, um eine LED und einen BME280-Sensor wie folgt zu verbinden. Wenn Sie mit den Sensor besitzen [überspringen Sie diesen Abschnitt](#connect-pi-to-the-network).
+Verwenden Sie die Steckplatine und Jumperdrähte, um eine LED und einen BME280-Sensor wie folgt zu verbinden. Wenn Sie keinen Sensor haben, [überspringen Sie diesen Abschnitt](#connect-pi-to-the-network).
 
 ![Die Raspberry Pi- und Sensorverbindung](media/iot-hub-raspberry-pi-kit-c-get-started/3_raspberry-pi-sensor-connection.png)
 
@@ -145,14 +145,14 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
 1. Verwenden Sie einen der folgenden SSH-Clients auf Ihrem Hostcomputer, um die Verbindung mit Ihrem Raspberry Pi herzustellen.
    
    **Windows-Benutzer**
-   1. Herunterladen und installieren [PuTTY](http://www.putty.org/) für Windows. 
-   1. Kopieren Sie die IP-Adresse des Abschnitts Pi in die Host-Name (oder IP-Adresse), und wählen Sie SSH wie der Verbindungstyp.
+   1. Laden Sie [PuTTY](http://www.putty.org/) für Windows herunter, und installieren Sie es. 
+   1. Kopieren Sie die IP-Adresse von Pi, fügen Sie sie in den Abschnitt „Hostname (oder IP-Adresse)“ ein, und wählen Sie „SSH“ als Verbindungstyp.
    
-   ![PuTTy](media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
+   ![PuTTY](media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
-   **Mac und Ubuntu-Benutzer**
+   **Mac- und Ubuntu-Benutzer**
    
-   Verwenden Sie die integrierte SSH-Client auf Ubuntu oder MacOS. Müssen Sie möglicherweise ausführen `ssh pi@<ip address of pi>` Pi über SSH herstellen.
+   Verwenden Sie den integrierten SSH-Client unter Ubuntu oder macOS. Möglicherweise müssen Sie `ssh pi@<ip address of pi>` ausführen, um eine SSH-Verbindung mit Pi herzustellen.
    > [!NOTE] 
    Der Standardbenutzername ist `pi`, und das Kennwort ist `raspberry`.
 
@@ -186,7 +186,7 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
 
    ![Konfigurationsdatei](media/iot-hub-raspberry-pi-kit-c-get-started/6_config-file.png)
 
-   Es gibt zwei Argumente in dieser Datei, die Sie konfigurieren können. Der erste ist `INTERVAL`, definiert das Zeitintervall (in Millisekunden) zwischen zwei Meldungen, die in der cloud zu senden. Das zweite heißt `SIMULATED_DATA` und ist ein boolescher Wert, der bestimmt, ob simulierte Sensordaten verwendet werden sollen.
+   Es gibt zwei Argumente in dieser Datei, die Sie konfigurieren können. Das erste ist `INTERVAL`, mit dem das Zeitintervall (in Millisekunden) zwischen zwei Nachrichten bestimmt wird, die an die Cloud gesendet werden. Das zweite heißt `SIMULATED_DATA` und ist ein boolescher Wert, der bestimmt, ob simulierte Sensordaten verwendet werden sollen.
 
    Wenn Sie **keinen Sensor haben**, legen Sie den Wert von `SIMULATED_DATA` auf `1` fest, damit die Beispielanwendung simulierte Sensordaten erstellt und nutzt.
 
@@ -217,6 +217,6 @@ Die folgende Ausgabe sollte angezeigt werden, die die Sensordaten und Nachrichte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben eine Beispielanwendung ausgeführt, die Sensordaten sammelt und an Ihren IoT Hub sendet. Die Nachrichten, die Ihre Brombeere Pi Ihren IoT Hub oder senden Nachrichten an Ihre Brombeere Pi in eine Befehlszeilenschnittstelle gesendet wurde, finden Sie unter der [verwalten Cloud Gerät mit Iothub Explorer-Lernprogramm messaging](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
+Sie haben eine Beispielanwendung ausgeführt, die Sensordaten sammelt und an Ihren IoT Hub sendet. Um die Nachrichten anzuzeigen, die Raspberry Pi an Ihre IoT Hub-Instanz gesendet hat, oder Nachrichten an Raspberry Pi in einer Befehlszeilenschnittstelle zu senden, gehen Sie das [Tutorial zum Verwalten von Cloudgerätemessaging mit iothub-explorer](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging) durch.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

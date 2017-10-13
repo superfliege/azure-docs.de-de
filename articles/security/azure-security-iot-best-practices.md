@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: yurid
 ms.openlocfilehash: 8efc0053458e338ac1afe98d9ce970c1d5cbfa81
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="internet-of-things-security-best-practices"></a>Internet der Dinge – bewährte Methoden für die Sicherheit
 Sicherung der Infrastruktur des Internets der Dinge (Internet of Things, IoT) ist ein kritisches Unterfangen für Benutzer, die sich mit IoT-Lösungen befassen. Aufgrund der Anzahl der betroffenen Geräte, und weil die Geräte verteilt sind, ist ein Sicherheitsereignis, das Millionen von IoT-Geräten gefährdet, keine Bagatelle und kann umfangreiche Auswirkungen haben.

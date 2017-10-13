@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: d45a43d1d4304fd0028d15b4797228a22cc6e76f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuelle Computer in einer Azure Resource Manager-Vorlage
 
 In diesem Artikel werden die Aspekte einer Azure Resource Manager-Vorlage beschrieben, die für virtuelle Computer gelten. Es wird keine vollständige Vorlage zum Erstellen eines virtuellen Computers beschrieben. Hierfür benötigen Sie Ressourcendefinitionen für Speicherkonten, Netzwerkschnittstellen, öffentliche IP-Adressen und virtuelle Netzwerke. Weitere Informationen dazu, wie diese Ressourcen zusammen definiert werden können, finden Sie unter [Resource Manager-Vorlage – Exemplarische Vorgehensweise](../../azure-resource-manager/resource-manager-template-walkthrough.md).
@@ -460,4 +458,3 @@ Es ist kein Problem, dieselbe Vorlage zum Erstellen von Ressourcen oder Aktualis
 - Erstellen Sie Ihre eigene Vorlage: [Erstellen von Azure Resource Manager-Vorlagen](../../resource-group-authoring-templates.md).
 - Stellen Sie die Vorlagen bereit, die Sie erstellt haben: [Erstellen Sie einen virtuellen Windows-Computer mit einer Resource Manager-Vorlage](ps-template.md).
 - Erfahren Sie, wie Sie die erstellten virtuellen Computer verwalten, indem Sie [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) durcharbeiten.
-

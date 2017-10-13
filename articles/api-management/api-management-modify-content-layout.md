@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: antonba
 ms.openlocfilehash: 708c803c36c182ed90e04731b12d4ade00ae7ffb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Ändern des Inhalts und Layouts von Seiten im Entwicklerportal in Azure API Management
 Es gibt drei grundlegende Möglichkeiten, das Entwicklerportal in Azure API Management anzupassen:
@@ -27,7 +27,7 @@ Es gibt drei grundlegende Möglichkeiten, das Entwicklerportal in Azure API Mana
 * [Aktualisieren der Stile, die für Seitenelemente im gesamten Entwicklerportal verwendet werden][customize-styles]
 * [Ändern der Vorlagen, die für vom Portal generierte Seiten verwendet werden][portal-templates] (z.B. API-Dokumente, Produkte, Benutzerauthentifizierung usw.)
 
-## <a name="page-structure"> </a>Struktur von Seiten im Entwicklerportal
+## <a name="page-structure"></a>Struktur von Seiten im Entwicklerportal
 
 Das Entwicklerportal basiert auf einem Content Management-System. Das Layout jeder Seite wird basierend auf einer Gruppe von kleinen Seitenelementen erstellt, die als „Widgets“ bezeichnet werden:
 
@@ -39,7 +39,7 @@ Alle Widgets können bearbeitet werden.
 
 Bei der täglichen Bearbeitung von Seiten wird normalerweise nur das Widget „Contents“ (Inhalte) geändert, das für jede Seite unterschiedlichen Inhalt aufweist.
 
-## <a name="modify-layout-widget"> </a>Ändern des Inhalts eines Layoutwidgets
+## <a name="modify-layout-widget"></a>Ändern des Inhalts eines Layoutwidgets
 
 Die Inhalte im Entwicklerportal werden über das Herausgeberportal geändert, das im Azure-Portal aufgerufen werden kann. Um dorthin zu gelangen, klicken Sie auf der Dienstsymbolleiste Ihrer API Management-Instanz auf **Herausgeberportal**.
 
@@ -57,7 +57,7 @@ Die neue Kopfzeile wird jetzt auf allen Seiten im Entwicklerportal angezeigt.
 > 
 > 
 
-## <a name="edit-page-contents"> </a>Bearbeiten der Seiteninhalte
+## <a name="edit-page-contents"></a>Bearbeiten der Seiteninhalte
 
 Klicken Sie im Menü **Entwicklerportal** des Herausgeberportals auf **Inhalte**, um eine Liste aller vorhandenen Inhaltsseiten anzuzeigen.
 
@@ -69,7 +69,7 @@ Klicken Sie auf die **Willkommensseite**, um den Inhalt zu bearbeiten, der auf d
 > 
 > 
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Aktualisieren der Stile, die für Seitenelemente im gesamten Entwicklerportal verwendet werden][customize-styles]
 * [Ändern der Vorlagen, die für vom Portal generierte Seiten verwendet werden][portal-templates] (z.B. API-Dokumente, Produkte, Benutzerauthentifizierung usw.)
 

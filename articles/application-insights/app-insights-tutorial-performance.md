@@ -10,14 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
+ms.openlocfilehash: 411e10367f02846261f9fcc7717b5abb147b2c09
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 32311136a670261952d9bd0cf372e10a83cfe745
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Suchen und Diagnostizieren von Leistungsproblemen mit Azure Application Insights
 
 Azure Application Insights erfasst die Telemetriedaten Ihrer Anwendung, um die Funktion und die Leistung zu analysieren.  Sie können mit diesen Informationen ggf. Probleme identifizieren oder Verbesserungen für die Anwendung entwerfen, die eine breite Benutzergruppe erreichen.  In diesem Tutorial lernen Sie den Prozess kennen, in dem die Leistung der Serverkomponenten der Anwendung und die Perspektive des Clients analysiert wird.  Folgendes wird vermittelt:
@@ -127,4 +125,3 @@ Nun, da Sie wissen, wie Sie Laufzeitausnahmen ermitteln, können Sie mit dem nä
 
 > [!div class="nextstepaction"]
 > [Ausgeben von Warnungen zur Anwendungsintegrität](app-insights-tutorial-alert.md)
-

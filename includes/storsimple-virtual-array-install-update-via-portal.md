@@ -1,55 +1,55 @@
 <!--author=alkohli last changed: 11/07/16 -->
 
-#### <a name="to-install-updates-via-the-azure-portal"></a>Installieren von Updates über das Azure-portal
+#### <a name="to-install-updates-via-the-azure-portal"></a>So installieren Sie Updates über das Azure-Portal
 
-1. Wechseln Sie für Ihre StorSimple-Geräte-Manager, und wählen Sie **Geräte**. Wählen Sie aus der Liste der Geräte, die mit dem Dienst verbunden werden soll aus, und klicken Sie auf das Gerät, das Sie aktualisieren möchten. 
+1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager, und wählen Sie **Devices** (Geräte) aus. Wählen Sie aus der Liste der mit dem Dienst verbundenen Geräte das Gerät aus, das Sie aktualisieren möchten, und klicken Sie darauf. 
 
-    ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate1m.png) 
+    ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate1m.png) 
 
-2. In der **Einstellungen** Blatt, klicken Sie auf **Geräteupdates**. 
+2. Klicken Sie auf dem Blatt **Settings** (Einstellungen) auf **Device updates** (Geräteupdates). 
 
-    ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate2m.png)  
+    ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate2m.png)  
 
-3. Eine Meldung wird angezeigt, wenn die Softwareupdates verfügbar sind. Sie können auch klicken, um nach Updates zu suchen, **Scan**.
+3. Wenn Softwareupdates verfügbar sind, wird eine Meldung angezeigt. Sie können auch auf **Scan** (Überprüfen) klicken, um nach Updates zu suchen.
 
-    ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate3m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate3m.png)
 
-    Sie werden benachrichtigt, wenn die Überprüfung gestartet und erfolgreich abgeschlossen wird.
+    Sie werden jeweils benachrichtigt, wenn die Überprüfung beginnt und erfolgreich abgeschlossen wurde.
 
-    ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate5m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate5m.png)
 
-4. Sobald die Updates überprüft werden, klicken Sie auf **Updates herunterladen**. 
+4. Wenn die Updatesuche abgeschlossen wurde, klicken Sie auf **Download updates** (Updates herunterladen). 
 
-    ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate6m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate6m.png)
 
-5. In der **neue Updates** Blatt, überprüfen Sie die Informationen ein, nachdem die Updates heruntergeladen wurden, Sie die Installation zu bestätigen müssen. Klicken Sie auf **OK**.
+5. Lesen Sie auf dem Blatt **New updates** (Neue Updates) die Hinweise, dass nach dem Download von Updates die Installation bestätigt werden muss. Klicken Sie auf **OK**.
 
-    ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate7m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate7m.png)
 
-6. Sie werden benachrichtigt, wenn der Upload wird gestartet und erfolgreich abgeschlossen wird.
+6. Sie werden jeweils benachrichtigt, wenn das Hochladen beginnt und erfolgreich abgeschlossen wurde.
 
-     ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate8m.png)
+     ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate8m.png)
 
-5. In der **Geräteupdates** Blatt, klicken Sie auf **installieren**.
+5. Klicken Sie im Blatt **Device updates** auf **Install** (Installieren).
 
-     ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate11m.png)   
+     ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate11m.png)   
 
-6. In der **neue Updates** Blatt werden Sie gewarnt, dass das Update störende ist. Als virtuellen Arrays ermöglicht einem einzelnen Knoten Gerät ist, wird das Gerät neu gestartet werden, nachdem sie aktualisiert wird. Dies unterbricht alle e/a ausgeführt. Klicken Sie auf **OK** Updates installiert werden. 
+6. Auf dem Blatt **New updates** (Neue Updates) werden Sie gewarnt, dass das Update zu einer Unterbrechung führt. Da es sich bei Virtual Array um ein Gerät mit einem Einzelknoten handelt, wird das Gerät nach dem Update neu gestartet. Dadurch werden alle laufenden E/A-Vorgänge unterbrochen. Klicken Sie auf **OK**, um die Updates zu installieren. 
 
-    ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate12m.png) 
+    ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate12m.png) 
 
-7. Sie werden benachrichtigt, wenn der Auftrag für die Installation wird gestartet. 
+7. Sie werden benachrichtigt, wenn der Installationsauftrag beginnt. 
 
-    ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate13m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate13m.png)
 
-8.  Klicken Sie nach erfolgreichem der Auftrag zum Installieren Abschluss auf **Auftrag anzeigen** wiederherstellungsverknüpfung in der **Geräteupdates** Blatt ", um die Installation zu überwachen. 
+8.  Klicken Sie nach erfolgreichem Beendigen des Installationsauftrags im Blatt **Device updates** (Geräteupdates) auf den Link **View Job** (Auftrag anzeigen), um die Installation zu überwachen. 
 
-    ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate15m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate15m.png)
 
-    Dadurch gelangen Sie zu der **Updates installieren** Blatt. Sie können ausführliche Informationen zu dem Auftrag hier anzeigen.
+    Dadurch gelangen Sie auf das Blatt **Install Updates** (Updates installieren). Hier finden Sie ausführliche Informationen zum Auftrag.
 
-    ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate16m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate16m.png)
 
-9. Nachdem die Updates erfolgreich installiert wurden, sehen Sie eine Nachricht an diesen Effekt in dem Gerät-Blatt "Updates". Die Version der Software ändert sich auch um **10.0.10288.0**. 
+9. Nachdem die Updates erfolgreich installiert wurden, wird eine Benachrichtigung diesbezüglich im Blatt „Device updates“ angezeigt. Die Softwareversion ändert sich auch auf **10.0.10288.0**. 
 
-    ![Aktualisieren von Gerät](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate17m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate17m.png)

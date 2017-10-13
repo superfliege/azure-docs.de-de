@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: a1a3688d4ff215d05d2f78cdfa7d402e3fc20be2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-ddos-protection-standard-using-azure-powershell"></a>Verwalten des Azure DDoS-Schutzstandards mithilfe von Azure PowerShell
 
@@ -134,6 +133,6 @@ Weitere Informationen über den Zugriff und das Konfigurieren der Azure-Diagnose
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Informieren Sie sich ausführlicher über Azure-Diagnoseprotokolle.](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+- [Weitere Informationen zu Azure-Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
 - [Analysieren von Protokollen aus Azure Storage mit Log Analytics](../log-analytics/log-analytics-azure-storage.md)
 - [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

@@ -14,10 +14,10 @@ ms.topic: get-started-article
 ms.date: 05/15/2017
 ms.author: bwren
 ms.openlocfilehash: 4b9f8c618a69c4c157dafeb7f726aae24efad428
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Manuelles Konfigurieren von Application Insights für .NET-Anwendungen
 
@@ -89,14 +89,14 @@ Wenn Sie Anpassungen an der Datei "ApplicationInsights.config" vorgenommen haben
 
 * Legen Sie den Instrumentationsschlüssel im Code (beispielsweise in `main()`) fest: 
   
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *Ihr Schlüssel* `";` 
+    `TelemetryConfiguration.Active.InstrumentationKey = "`*Ihr Schlüssel*`";` 
 * [Schreiben Sie mithilfe der API eigene Telemetrie.](app-insights-api-custom-events-metrics.md#ikey)
 
 **Wenn Sie andere Application Insights-Pakete installiert haben** , können Sie zum Festlegen des Instrumentationsschlüssels auch die CONFIG-Datei verwenden:
 
 * Bearbeiten Sie die Datei "ApplicationInsights.config" (die bei der NuGet-Installation hinzugefügt wurde). Fügen Sie Folgendes direkt vor dem Endtag ein:
   
-    `<InstrumentationKey>` *Der kopierte Instrumentationsschlüssel*  `</InstrumentationKey>`
+    `<InstrumentationKey>`*Der kopierte Instrumentationsschlüssel* `</InstrumentationKey>`
 * Stellen Sie sicher, dass die Eigenschaften von „ApplicationInsights.config“ im Projektmappen-Explorer auf **Buildvorgang = Inhalt, In Ausgabeverzeichnis kopieren = Kopieren**festgelegt sind.
 
 Es ist nützlich, den Instrumentierungsschlüssel im Code festzulegen, wenn Sie [den Schlüssel für verschiedene Buildkonfigurationen wechseln möchten](app-insights-separate-resources.md). Wenn Sie den Schlüssel im Code festlegen, müssen Sie ihn nicht in der Datei `.config` festlegen.

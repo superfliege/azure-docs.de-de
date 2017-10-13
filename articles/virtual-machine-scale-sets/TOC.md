@@ -48,7 +48,7 @@
 
 # Referenz
 ## [Azure PowerShell](/powershell/azure/overview)
-## [Azure-CLI](../virtual-machines/azure-cli-arm-commands.md)
+## [Azure-Befehlszeilenschnittstelle](../virtual-machines/azure-cli-arm-commands.md)
 ## [REST](/rest/api/virtualmachinescalesets/)
 
 # Ressourcen

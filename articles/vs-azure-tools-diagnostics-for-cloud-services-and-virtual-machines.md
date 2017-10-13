@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: d3c85cde864d599871e195df2e81548180e647ba
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Konfigurieren der Diagnose für Azure Cloud Services und Virtual Machines
 Wenn Sie Probleme bei einem Azure-Clouddienst oder virtuellen Azure-Computer beheben müssen, können Sie mithilfe von Visual Studio Azure-Diagnose leichter konfigurieren. Azure-Diagnose erfasst Systemdaten und Protokollierungsdaten auf den virtuellen Computern und den virtuellen Computerinstanzen, auf denen der Clouddienst ausgeführt wird, und überträgt die Daten in ein Speicherkonto Ihrer Wahl. Weitere Informationen zur Diagnoseprotokollierung in Azure finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](app-service/web-sites-enable-diagnostic-log.md) .
@@ -302,5 +301,4 @@ Legen Sie im Fenster **Eigenschaften** die Eigenschaft **In Ausgabeverzeichnis k
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Diagnoseprotokollierung in Azure finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](cloud-services/cloud-services-dotnet-diagnostics.md) und [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](app-service/web-sites-enable-diagnostic-log.md).
-
 

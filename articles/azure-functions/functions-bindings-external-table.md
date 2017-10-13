@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: e6aa6913bdb2cf8e581b76b7680d0a96c9858bd1
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-external-table-binding-preview"></a>Azure Functions – Bindungen zu externen Tabellen (Vorschau)
 In diesem Artikel wird gezeigt, wie Sie in einer Funktion integrierte Bindungen verwenden können, um tabellarisch gespeicherte Daten in SaaS-Anbietern (z. B. Sharepoint, Dynamics) zu verarbeiten. Azure Functions unterstützt Eingabe- und Ausgabebindungen für externe Tabellen.
@@ -200,4 +199,3 @@ dataSetName (Name des Datasets) ist „default“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-

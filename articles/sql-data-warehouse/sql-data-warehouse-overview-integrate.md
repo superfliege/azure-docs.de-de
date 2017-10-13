@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
 ms.openlocfilehash: d407c29f99fd7537590ec787febd84a9e3f4f353
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="leverage-other-services-with-sql-data-warehouse"></a>Nutzen anderer Dienste mit SQL Data Warehouse
 Zusätzlich zur Kernfunktionalität ermöglicht SQL Data Warehouse Benutzern die gleichzeitige Nutzung vieler anderer Dienste in Azure.  Insbesondere haben wir aktuell Schritte unternommen, um die weitreichende Integration folgender Dienste voranzubringen:

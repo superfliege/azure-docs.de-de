@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: e9ff7947e7801a9f352a7a947b09893b8f615d88
-ms.contentlocale: de-de
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-traffic-manager-profile"></a>Erstellen eines Traffic Manager-Profils
 
 Dieser Artikel beschreibt, wie ein Profil mit dem Routingtyp **Priorität** erstellt werden kann, um Benutzer an zwei Azure-Web-Apps-Endpunkte zu routen. Mithilfe des Routingtyps **Priorität** wird der gesamte Datenverkehr an den ersten Endpunkt geroutet, während der zweite als Backup dient. Das hat zur Folge, dass Benutzer an den zweiten Endpunkt geroutet werden können, wenn die Integrität des ersten Endpunkts nicht intakt ist.
@@ -73,7 +71,6 @@ Wenn es nicht mehr benötigt wird, löschen Sie die Ressourcengruppe und das ers
 - Weitere Informationen über [Routingtypen](traffic-manager-routing-methods.md).
 - Weitere Informationen über Endpunkttypen [Endpunkttypen](traffic-manager-endpoint-types.md).
 - Weitere Informationen über [Endpunktüberwachung](traffic-manager-monitoring.md).
-
 
 
 

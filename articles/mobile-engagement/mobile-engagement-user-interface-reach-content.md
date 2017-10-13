@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>Verwaltung des eindeutigen Inhalts der verschiedenen Kampagnenarten für Pushbenachrichtigungen
 Im Abschnitt "Inhalt" einer neuen Reichweitenkampagne können Sie den Inhalt Ihrer Ankündigungen, Umfragen, Datenpushes und Kacheln (nur Windows Phone) ändern. Die Einstellung "Inhalt" von Pushkampagnen ist spezifisch für den Typ der Kampagne. 
@@ -59,7 +59,7 @@ Jedes Vorkommen des Musters {deviceid} wird automatisch durch die Kennung des Ge
   * Beispiel: http://www.azure.com
   * Senden einer E-Mail
   * mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
-  * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
+  * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&amp;body=Good%20stuff!
   * Senden einer SMS
   * sms:\[phone-number\] 
   * Beispiel: sms:2125551212
@@ -83,7 +83,7 @@ Jedes Vorkommen des Musters {deviceid} wird automatisch durch die Kennung des Ge
   * Beispiel: http://www.azure.com
   * Senden einer E-Mail
   * mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
-  * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
+  * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&amp;body=Good%20stuff!
   * Senden einer SMS (Skype Store App erforderlich)
   * sms:\[phone-number\] 
   * Beispiel: sms:2125551212

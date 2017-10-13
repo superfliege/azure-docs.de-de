@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 22924da07434a06f4c822d97a2afd02ea982e0e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-administer-your-storsimple-device"></a>Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts
 ## <a name="overview"></a>Übersicht
@@ -55,7 +55,7 @@ Die folgende Tabelle gibt Aufschluss über die Navigationshierarchie der Benutze
 | Aufträge |Konfigurieren (Gerät) | | |
 | Warnungen |Wartung | | |
 
-![Video verfügbar](./media/storsimple-manager-service-administration/Video_icon.png) **Video verfügbar**
+![Video verfügbar](./media/storsimple-manager-service-administration/Video_icon.png)**Video verfügbar**
 
 Um sich ein Video anzusehen, das Sie durch die Benutzeroberfläche des StorSimple Manager-Diensts führt, klicken Sie [hier](https://azure.microsoft.com/documentation/videos/storsimple-manager-service-overview/).
 

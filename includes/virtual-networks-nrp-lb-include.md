@@ -1,17 +1,17 @@
-## <a name="load-balancer"></a>Lastenausgleich
-Ein Load Balancer wird verwendet, wenn Sie Ihre Anwendungen zu skalieren möchten. Typische Szenarien umfassen Anwendungen, die auf mehrere VM-Instanzen ausgeführt. Die VM-Instanzen werden von einem Lastenausgleich Produktkatalogsystem, die hilft, um den Netzwerkdatenverkehr zu den verschiedenen Anwendungsinstanzen zu verteilen. 
+## <a name="load-balancer"></a>Lastenausgleichsmodul
+Ein Lastenausgleichsmodul wird verwendet, wenn Sie Ihre Anwendungen skalieren möchten. Zu den typischen Bereitstellungsszenarios zählen Anwendungen, die auf mehreren VM-Instanzen ausgeführt werden. Den VM-Instanzen ist ein Lastenausgleichsmodul vorgelagert, das hilft den Netzwerkdatenverkehr an die verschiedenen Instanzen zu verteilen. 
 
-![NIC auf einem einzelnen virtuellen Computer](./media/resource-groups-networking/figure8.png)
+![NICs auf einem einzelnen virtuellen Computer](./media/resource-groups-networking/figure8.png)
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| *frontendIPConfigurations* |ein Load Balancer kann eine oder mehrere front-End-IP-Adressen, auch bezeichnet als eine virtuelle IP-Adressen (VIPs) enthalten. Diese IP-Adressen können dienen als für den Datenverkehr eingehend und öffentliche IP-Adresse oder privaten IP- |
-| *backendAddressPools* |Hierbei handelt es sich um virtuelle Computer-NICs, die an die Last verteilt wird zugeordneten IP-Adressen |
-| *loadBalancingRules* |eine Regeleigenschaft ordnet eine angegebene Front-End-IP- und die Kombination aus Port auf einen Satz von Back-End-IP-Adressen und die Kombination aus Port. Mit einer einzelnen Definition einer Load Balancer-Ressource Sie können mehrere Load balancer-Regeln definieren, jede Regel eine Kombination von der Vorderseite reflektieren Ende IP-Adresse und Port und Sichern von End-IP- und Port virtuellen Computern zugeordnet werden sollen. Die Regel ist ein Port im front-End-Pool zu viele virtuelle Computer im Back-End-pool |
-| *Prüfpunkte* |Prüfpunkte ermöglichen Ihnen die Integrität des VM-Instanzen des. Wenn eine zustandsüberprüfung fehlschlägt, wird die virtuelle Computerinstanz aus der Rotation automatisch ausgeführt werden |
-| *inboundNatRules* |NAT-Regeln, die den eingehenden Datenverkehr durch den Vordergrund fließen definieren IP zu beenden und an den Back-End-IP mit einer bestimmten virtuellen Maschine Instanz verteilt. NAT-Regel ist ein Port im front-End-Pool an einen virtuellen Computer im Back-End-pool |
+| *frontendIPConfigurations* |Ein Load Balancer kann ein oder mehrere Front-End-IP-Adressen umfassen, auch als virtuelle IPs (VIPs) bekannt. Diese IP-Adressen dienen als Eingang für den Datenverkehr und sind öffentliche oder private IP-Adressen. |
+| *backendAddressPools* |Dies sind IP-Adressen, die den VM NICs zugeordnet sind, an die die Last verteilt wird. |
+| *loadBalancingRules* |Eine Regeleigenschaft ordnet eine bestimmte Front-End-IP-/Port-Kombination einer Back-End-IP-Adressen-/Port-Kombination zu. Mit einer einzelnen Definition einer Load Balancer-Ressource können Sie mehrere Lastenausgleichsregeln definieren, von denen jede eine Kombination aus Front-End-IP und Port sowie Back-End-IP und Port darstellt, die dem virtuellen Computer zugeordnet ist. Die Regel ist ein Port im Front-End-Pool für viele virtuelle Computer im Back-End-Pool. |
+| *Tests* |Mit Tests können Sie die Integrität der VM-Instanzen nachverfolgen. Schlägt eine Integritätsüberprüfung fehl, wird die Instanz des virtuellen Computers automatisch aus der Rotation entfernt. |
+| *inboundNatRules* |NAT-Regeln definieren den Eingangsdatenverkehr, der durch die Front-End-IP fließt und an die Back-End-IP an eine bestimmte Instanz eines virtuellen Computers verteilt wird. Die NAT-Regel ist ein Port im Front-End-Pool für einen virtuellen Computer im Back-End-Pool. |
 
-Beispiel der Lastenausgleichsmodul-Vorlage im Json-Format:
+Beispiel für eine Vorlage für einen Load Balancer im Json-Format:
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -187,5 +187,5 @@ Beispiel der Lastenausgleichsmodul-Vorlage im Json-Format:
     }
 
 ### <a name="additional-resources"></a>Zusätzliche Ressourcen
-Lesen [den load Balancer-REST-API](https://msdn.microsoft.com/library/azure/mt163651.aspx) für Weitere Informationen.
+Weitere Informationen finden Sie unter [Lastenausgleich für REST-API](https://msdn.microsoft.com/library/azure/mt163651.aspx) .
 

@@ -13,14 +13,12 @@ ms.devlang: na
 ms.date: 09/06/2017
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: fbc0fd12999c9085c3c364f0d7115eb1ab1ddd74
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>Verwenden der Visual Studio Code-Erweiterung für die Erstellung einer Azure Resource Manager-Vorlage
 Dieser Artikel enthält Informationen zu den Vorteilen, die sich durch das Installieren und Nutzen der Azure Resource Manager-Tools-Erweiterung in Visual Studio Code ergeben. Sie können Resource Manager-Vorlagen in VS Code auch ohne die Erweiterung erstellen, aber die Erweiterung verfügt über Optionen für die automatische Vervollständigung, die Ihnen die Entwicklung von Vorlagen vereinfachen. Hierbei werden Funktionen, Parameter und Variablen vorgeschlagen, die in der Vorlage verfügbar sind.
 
@@ -300,4 +298,3 @@ az group delete --name examplegroup
 * Weitere Informationen zur Struktur einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 * Weitere Informationen zu den Eigenschaften für ein Speicherkonto finden Sie in der [Referenz zu Speicherkontenvorlagen](/azure/templates/microsoft.storage/storageaccounts).
 * Komplette Vorlagen für viele verschiedene Lösungstypen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
-

@@ -1,9 +1,9 @@
-Zusätzlich zum Verbinden von Clients automatisch an das primäre Replikat, kann ein Listener verwendet werden, um schreibgeschützte arbeitsauslastungen auf den sekundären Replikaten umzuleiten. Diese Verwendung kann die Leistung und Skalierbarkeit für die gesamte Projektmappe verbessert. Weitere Informationen finden Sie unter [Verwenden von ReadIntent-Routing mit Azure AlwaysOn-verfügbarkeitsgruppenlistener](http://go.microsoft.com/fwlink/?LinkId=522515).
+Zusätzlich zum automatischen Verbinden von Clients mit dem primären Replikat kann ein Listener verwendet werden, um schreibgeschützte Workloads an sekundäre Replikate umzuleiten. Auf diese Weise kann die Leistung und Skalierbarkeit Ihrer Lösung insgesamt verbessern. Weitere Informationen finden Sie unter [Use ReadIntent Routing with Azure AlwaysOn Availability Group Listener](http://go.microsoft.com/fwlink/?LinkId=522515) (Verwenden von ReadIntent-Routing mit Azure AlwaysOn-Verfügbarkeitsgruppenlistener).
 
 > [!NOTE]
-> Tipps zum Azure-Listener zur Problembehandlung finden Sie unter [Problembehandlung verfügbarkeitsgruppenlistener in Azure](https://blogs.msdn.microsoft.com/alwaysonpro/2017/02/22/troubleshooting-internal-load-balancer-listener-connectivity-in-azure) in AlwaysOn-Support-Team [Blog](http://blogs.msdn.com/b/alwaysonpro/).
+> Hinweise zur Problembehandlung bei Azure-Listenern finden Sie unter [Problembehandlung für den Verfügbarkeitsgruppenlistener in Azure](https://blogs.msdn.microsoft.com/alwaysonpro/2017/02/22/troubleshooting-internal-load-balancer-listener-connectivity-in-azure) im [Blog](http://blogs.msdn.com/b/alwaysonpro/) des AlwaysOn-Supportteams.
 > 
 > 
 
-Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [SQL Server auf Azure Virtual Machines](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [SQL Server auf virtuellen Azure-Computern](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
 

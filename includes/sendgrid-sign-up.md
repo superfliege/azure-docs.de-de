@@ -1,65 +1,65 @@
-Azure-Kunden können 25.000 kostenlose e-Mails monatlich entsperren. Diese 25.000 freien monatlichen e-Mails erhalten Sie Zugriff auf Erweiterter Berichterstattung und Analyse und [alle APIs] [ all APIs] (Web, SMTP, Ereignis, Analyse und mehr). Informationen über zusätzliche Dienste von SendGrid finden Sie auf der [SendGrid-Lösungen] [ SendGrid Solutions] Seite.
+Kunden von Azure können monatlich 25.000 kostenlose E-Mails freischalten. Mit diesen 25.000 kostenlosen E-Mails pro Monat erhalten Sie Zugriff auf erweiterte Berichterstellung und Analysen sowie auf [sämtliche APIs][all APIs] (Web, SMTP, Ereignis, Analyse usw.). Informationen zu den zusätzlichen Diensten von SendGrid finden Sie auf der [Seite mit den SendGrid-Lösungen][SendGrid Solutions].
 
-### <a name="to-sign-up-for-a-sendgrid-account"></a>Für eine SendGrid-Konto registrieren
-1. Melden Sie sich auf die [Azure-Verwaltungsportal][Azure Management Portal].
-2. Klicken Sie im Menü auf der linken Seite auf **neu**.
+### <a name="to-sign-up-for-a-sendgrid-account"></a>So registrieren Sie ein SendGrid-Konto
+1. Melden Sie sich im [Azure-Verwaltungsportal][Azure Management Portal] an.
+2. Klicken Sie im Menü auf der linken Seite auf **Neu**.
 
-    ![Befehl-Leiste neu][command-bar-new]
-3. Klicken Sie auf **Add-ons** und dann **SendGrid-e-Mail-Übermittlung**.
+    ![command-bar-new][command-bar-new]
+3. Klicken Sie auf **Add-Ons** und anschließend auf **E-Mail-Zustellung über SendGrid**.
 
-    ![Sendgrid-Speicher][sendgrid-store]
-4. Füllen Sie das Formular für die Registrierung, und wählen Sie **erstellen**.
+    ![sendgrid-store][sendgrid-store]
+4. Füllen Sie das Registrierungsformular aus, und wählen Sie **Erstellen**.
 
-    ![Sendgrid-erstellen][sendgrid-create]
-5. Geben Sie einen **Namen** zum Identifizieren Ihrer SendGrid-Diensts in Ihrem Azure-Einstellungen. Namen müssen zwischen 1 und 100 Zeichen lang sein und nur alphanumerische Zeichen, Bindestriche, Punkte und Unterstriche enthalten. Der Name muss in der Liste der abonnierte Speicherelemente in Azure eindeutig sein.
-6. Eingabe und Bestätigung Ihrer **Kennwort**.
-7. Wählen Sie Ihre **Abonnement**.
-8. Erstellen Sie ein neues **Ressourcengruppe** oder eine vorhandene verwenden.
-9. In der **Tarif** Abschnitt wählen Sie die SendGrid-Plan, die Sie registrieren möchten.
+    ![sendgrid-create][sendgrid-create]
+5. Geben Sie unter **Name** einen Namen ein, um Ihren SendGrid-Dienst in Ihren Azure-Einstellungen zu identifizieren. Namen müssen zwischen 1 und 100 Zeichen lang sein und dürfen nur alphanumerische Zeichen, Gedankenstriche, Punkte und Unterstriche enthalten. Der Name muss in der Liste der abonnierten Azure Store-Artikel eindeutig sein.
+6. Geben Sie Ihr **Kennwort** ein, und bestätigen Sie es.
+7. Wählen Sie Ihr **Abonnement** aus.
+8. Erstellen Sie eine neue **Ressourcengruppe**, oder verwenden Sie eine bereits vorhandene.
+9. Wählen Sie im Abschnitt **Tarif** den SendGrid-Tarif aus, für den Sie sich registrieren möchten.
 
-    ![Sendgrid-Preise][sendgrid-pricing]
-10. Geben Sie einen **Promotioncode** sofern vorhanden.
-11. Geben Sie Ihre **Kontaktinformationen**.
-12. Lesen und akzeptieren Sie die **rechtliche Bedingungen**.
-13. Nach dem Bestätigen des Kaufs sehen Sie eine **wurde erfolgreich bereitgestellt** Popupfenster angezeigt, und Sie sehen Ihre aufgeführte Konto die **alle Ressourcen** Abschnitt.
+    ![sendgrid-pricing][sendgrid-pricing]
+10. Geben Sie einen **Promotioncode** ein (sofern vorhanden).
+11. Geben Sie Ihre **Kontaktinformationen** ein.
+12. Lesen Sie sich die rechtlichen **Bedingungen** durch, und akzeptieren Sie sie.
+13. Im Anschluss an die Kaufbestätigung erscheint ein Popup mit dem Hinweis, dass die **Bereitstellung erfolgreich** war, und Ihr Konto wird im Abschnitt **Alle Ressourcen** aufgeführt.
 
-    ![alle Ressourcen][all-resources]
+    ![Alle Ressourcen][all-resources]
 
-    Nachdem Sie Ihren Einkauf abgeschlossen haben, und auf die **verwalten** Schaltfläche, um die e-Mail-Überprüfung initiieren, Sie erhalten eine e-Mail von SendGrid werden Sie aufgefordert, Ihr Konto zu überprüfen. Wenn Sie nicht diese e-Mail empfangen oder Probleme mit Ihrem Konto haben, finden Sie unter diese häufig gestellten Fragen.
+    Nachdem Sie den Kauf abgeschlossen und zum Initiieren der E-Mail-Überprüfung auf die Schaltfläche **Verwalten** geklickt haben, erhalten Sie eine E-Mail von SendGrid, in der Sie gebeten werden, Ihr Konto zu bestätigen. Sollten Sie diese E-Mail nicht erhalten oder Ihr Konto nicht bestätigen können, lesen Sie sich die häufig gestellten Fragen durch.
 
-    ![Verwalten][manage]
+    ![manage][manage]
 
-    **Sie können nur bis zu 100-e-Mails/Tag senden, bis Sie Ihr Konto überprüft haben.**
+    **Solange das Konto noch nicht bestätigt wurde, können pro Tag nur maximal 100 E-Mails versendet werden.**
 
-    Um Ihr Abonnement zu ändern oder die SendGrid erhalten Sie die Einstellungen angezeigt wird, klicken Sie auf den Namen Ihres SendGrid-Diensts, um die SendGrid-Marketplace-Dashboard zu öffnen.
+    Wenn Sie Ihren Abonnementplan ändern oder die SendGrid-Kontakteinstellungen anzeigen möchten, klicken Sie auf den Namen des SendGrid-Diensts, um das SendGrid-Marketplace-Dashboard zu öffnen.
 
     ![Einstellungen][settings]
 
-    Um eine e-Mail mit SendGrid senden zu können, müssen Sie Ihren API-Schlüssel angeben.
+    Wenn Sie eine E-Mail mit SendGrid senden möchten, müssen Sie Ihren API-Schlüssel angeben.
 
-### <a name="to-find-your-sendgrid-api-key"></a>Ihren SendGrid-API-Schlüssel gefunden.
-1. Klicken Sie auf **Verwalten**.
+### <a name="to-find-your-sendgrid-api-key"></a>So finden Sie Ihren API-Schlüssel für SendGrid
+1. Klicken Sie auf **Manage**.
 
-    ![Verwalten][manage]
-2. Wählen Sie in Ihrem SendGrid-Dashboard **Einstellungen** und dann **API-Schlüssel** im Menü auf der linken Seite.
+    ![manage][manage]
+2. Wählen Sie auf Ihrem SendGrid-Dashboard die Option **Settings** (Einstellungen) und anschließend im Menü auf der linken Seite die Option **API Keys** (API-Schlüssel) aus.
 
-    ![API-Schlüssel][api-keys]
+    ![api-keys][api-keys]
 
-3. Klicken Sie auf die **API-Schlüssel erstellen** Dropdownliste, und wählen Sie **allgemeinen API-Schlüssel**.
+3. Klicken Sie auf das Dropdownfeld **Create API Key** (API-Schlüssel erstellen), und wählen Sie **General API Key** (Allgemeiner API-Schlüssel) aus.
 
-    ![Allgemein-api-Schlüssel][general-api-key]
-4. Geben Sie mindestens die **Name dieses Schlüssels** und Bereitstellen des vollen **Senden von E-Mails** , und wählen Sie **speichern**.
+    ![general-api-key][general-api-key]
+4. Geben Sie mindestens einen Wert für **Name of this key** (Name dieses Schlüssels) an, gewähren Sie Vollzugriff für **Mail Send** (Senden von E-Mails), und wählen Sie **Save** (Speichern).
 
-    ![Zugriff][access]
-5. Ihre API wird an diesem Punkt nur einmal angezeigt. Sie unbedingt sicher zu speichern.
+    ![access][access]
+5. Ihre API wird daraufhin einmal angezeigt. Bewahren Sie sie an einem sicheren Ort auf.
 
-### <a name="to-find-your-sendgrid-credentials"></a>Mithilfe der Softwareoption Ihrer SendGrid-Anmeldeinformationen
-1. Klicken Sie auf das Symbol "Taste" zu Ihrem **Benutzername**.
+### <a name="to-find-your-sendgrid-credentials"></a>So finden Sie Ihre SendGrid-Anmeldeinformationen
+1. Klicken Sie auf das Schlüsselsymbol, um zu Ihrem **Benutzernamen** zu gelangen.
 
     ![key][key]
-2. Das Kennwort ist diejenige, die Sie beim Setup ausgewählt haben. Sie können auswählen, **Change Password** oder **Zurücksetzen des Kennworts** Änderungen vornehmen.
+2. Als Kennwort wird das Kennwort verwendet, das Sie bei der Einrichtung gewählt haben. Wenn Sie Änderungen vornehmen möchten, können Sie auf **Kennwort ändern** oder auf **Kennwort zurücksetzen** klicken.
 
-Um Ihre e-Mail-zustellbarkeit dar-Einstellungen zu verwalten, klicken Sie auf die **Schaltfläche "verwalten"**. Dies wird zu Ihrem SendGrid-Dashboard umleiten.
+Die Einstellungen für die Zustellung von E-Mails können durch Klicken auf die Schaltfläche **Verwalten** verwaltet werden. Daraufhin werden Sie zum SendGrid-Dashboard umgeleitet.
 
     ![manage][manage]
 

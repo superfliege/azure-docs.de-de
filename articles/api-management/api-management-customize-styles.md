@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: antonba
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 336d4f80f0357796fb29eb9314c11edfce831a69
-ms.openlocfilehash: bd08eb476a4bd7298c5650977b88ba0b24deddec
-ms.contentlocale: de-de
-ms.lasthandoff: 02/23/2017
-
+ms.openlocfilehash: 89baf60d0204a1701e93309f09b90bc94c4ca57b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-the-styling-of-the-developer-portal-in-azure-api-management"></a>Anpassen von Stilen im Entwicklerportal in Azure API Management
 Es gibt drei grundlegende Möglichkeiten, das Entwicklerportal in Azure API Management anzupassen:
@@ -28,7 +27,7 @@ Es gibt drei grundlegende Möglichkeiten, das Entwicklerportal in Azure API Mana
 * [Aktualisieren der Stile, die für Seitenelemente im gesamten Entwicklerportal verwendet werden][customize-styles] (in diesem Leitfaden beschrieben)
 * [Ändern der Vorlagen, die für vom Portal generierte Seiten verwendet werden][portal-templates] (z.B. API-Dokumente, Produkte, Benutzerauthentifizierung usw.)
 
-## <a name="change-headers-styling"> </a>Ändern der Stile von Seitenelementen
+## <a name="change-headers-styling"></a>Ändern der Stile von Seitenelementen
 
 Farben, Schriftarten, Schriftgrößen, Abstände und andere stilverwandte Elemente aller Portalseiten werden durch Stilregeln definiert. 
 
@@ -67,7 +66,7 @@ Vorgenommene Änderungen werden als Echtzeitvorschau angezeigt, sind jedoch nur 
 > 
 
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie den Inhalt von Enwicklerportalseiten mithilfe von [Entwicklerportalvorlagen](api-management-developer-portal-templates.md)anpassen.
 
 [Change the styling of the headers]: #change-headers-styling
@@ -88,4 +87,3 @@ Vorgenommene Änderungen werden als Echtzeitvorschau angezeigt, sind jedoch nur 
 
 [bootstrap]: http://getbootstrap.com/
 [LESS variables]: http://getbootstrap.com/css/
-

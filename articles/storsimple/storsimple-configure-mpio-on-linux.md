@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/01/2016
 ms.author: alkohli
 ms.openlocfilehash: add539351066f9ff94febeebfd5334773b360e8f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurieren von MPIO auf einem StorSimple-Host mit CentOS
 In diesem Artikel werden die Schritte erläutert, die zum Konfigurieren von Multipfad-E/A (Multipathing IO, MPIO) auf Ihrem CentOS 6.6-Hostserver ausgeführt werden müssen. Der Hostserver ist zur Gewährleistung hoher Verfügbarkeit über iSCSI-Initiatoren mit Ihrem Microsoft Azure StorSimple-Gerät verbunden. Nachfolgend wird im Detail beschrieben, wie Multipfadgeräte automatisch erkannt und wie die Einrichtung für StorSimple-Volumes durchgeführt wird.
@@ -56,11 +56,11 @@ Die Konfigurationsdatei `/etc/multipath.conf` ermöglicht eine Konfiguration vie
 
 Die Datei "multipath.conf" enthält fünf Abschnitte:
 
-- **Standardeinstellungen auf Systemebene** *(defaults)*: Sie können die Standardwerte auf Systemebene überschreiben.
-- **Gesperrte Geräte** *(blacklist)*: Sie können eine Liste der Geräte konfigurieren, die nicht über "device-mapper" gesteuert werden sollen.
-- **Ausnahmen für schwarze Liste** *(blacklist_exceptions)*: Sie können festlegen, dass bestimmte Geräte als Multipfadgeräte behandelt werden, selbst wenn sie in der schwarzen Liste aufgeführt sind.
-- **Einstellungen für den Speichercontroller** *(devices)*: Sie können Konfigurationseinstellungen festlegen, die auf Geräte mit Hersteller- und Produktinformationen angewendet werden.
-- **Gerätespezifische Einstellungen** *(multipaths)*: Sie können diesen Abschnitt dazu verwenden, die Konfigurationseinstellungen für einzelne LUNs zu optimieren.
+- **Standardeinstellungen auf Systemebene***(defaults)*: Sie können die Standardwerte auf Systemebene überschreiben.
+- **Gesperrte Geräte***(blacklist)*: Sie können eine Liste der Geräte konfigurieren, die nicht über "device-mapper" gesteuert werden sollen.
+- **Ausnahmen für schwarze Liste***(blacklist_exceptions)*: Sie können festlegen, dass bestimmte Geräte als Multipfadgeräte behandelt werden, selbst wenn sie in der schwarzen Liste aufgeführt sind.
+- **Einstellungen für den Speichercontroller***(devices)*: Sie können Konfigurationseinstellungen festlegen, die auf Geräte mit Hersteller- und Produktinformationen angewendet werden.
+- **Gerätespezifische Einstellungen***(multipaths)*: Sie können diesen Abschnitt dazu verwenden, die Konfigurationseinstellungen für einzelne LUNs zu optimieren.
 
 ## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Konfigurieren von Multipfad auf StorSimple-Geräten mit Verbindung zu einem Linux-Host
 Ein StorSimple-Gerät, das mit einem Linux-Host verbunden ist, kann für hohe Verfügbarkeit und Lastenausgleich konfiguriert werden. Angenommen, der Linux-Host ist über zwei Schnittstellen mit dem SAN verbunden, und das Gerät ist ebenfalls über zwei Schnittstellen mit dem SAN verbunden. Wenn sich diese Schnittstellen im selben Subnetz befinden, stehen 4 Pfade zur Verfügung. Wenn sich jedoch die DATA-Schnittstelle zum Gerät und die Hostschnittstelle in einem unterschiedlichen IP-Subnetz befinden (und nicht routingfähig sind), stehen nur 2 Pfade zur Verfügung. Sie können Multipfad zur automatischen Erkennung aller verfügbaren Pfade konfigurieren, einen Lastenausgleichsalgorithmus für diese Pfade auswählen, spezifische Konfigurationseinstellungen für reine StorSimple-Volumes festlegen und Multipfad anschließend aktivieren und überprüfen.

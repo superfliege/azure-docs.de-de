@@ -1,6 +1,6 @@
 ---
-title: "Mehrere IP-Adressen für virtuelle Computer in Azure - Vorlage | Microsoft Docs"
-description: "Erfahren Sie, wie eine virtuelle Maschine über ein Azure-Ressourcen-Manager-Vorlage mehrere IP-Adressen zuweisen."
+title: "Mehrere IP-Adressen für virtuelle Azure Computer – Vorlage | Microsoft Docs"
+description: "Erfahren Sie, wie Sie einem virtuellen Azure-Computer mehrere IP-Adressen mit einer Azure Resource Manager-Vorlage zuordnen können."
 documentationcenter: 
 author: jimdial
 manager: timlt
@@ -15,88 +15,88 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 ms.openlocfilehash: d4b189fb23dda1167c4f6b17b618c718d32dd98f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>Weisen Sie mehrere IP-Adressen für virtuelle Computer mit einer Azure-Ressourcen-Manager-Vorlage
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mit einer Azure Resource Manager-Vorlage
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-In diesem Artikel wird erläutert, wie zum Erstellen eines virtuellen Computers (VM) über das Azure-Ressourcen-Manager-Bereitstellungsmodell mit einer Ressourcen-Manager-Vorlage. Auf der gleichen NIC können mehrere öffentliche und private IP-Adressen zugewiesen werden, bei der Bereitstellung einer virtuellen Maschine über dem klassischen Bereitstellungsmodell. Weitere Informationen zu Azure-Bereitstellungsmodellen finden Sie die [verstehen Bereitstellungsmodelle](../resource-manager-deployment-model.md) Artikel.
+In diesem Artikel wird beschrieben, wie Sie über das Azure Resource Manager-Bereitstellungsmodell mithilfe einer Resource Manager-Vorlage einen virtuellen Computer erstellen. Es ist nicht möglich, einer Netzwerkkarte mehrere öffentliche und private IP-Adressen zuzuweisen, wenn ein virtueller Computer über das klassische Bereitstellungsmodell bereitgestellt wird. Weitere Informationen zu den Azure-Bereitstellungsmodellen finden Sie im Artikel zum Thema [Understand deployment models (Bereitstellungsmodelle verstehen)](../resource-manager-deployment-model.md).
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name="template-description"></a>Beschreibung der Vorlage
 
-Bereitstellen einer Vorlage ermöglicht es Ihnen, schnell und konsistent mit anderen Konfigurationswerten Azure-Ressourcen erstellen. Lesen der [Ressourcen-Manager-Vorlage Exemplarische Vorgehensweise](../azure-resource-manager/resource-manager-template-walkthrough.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Artikel, wenn Sie nicht mit Vorlagen für Azure Resource Manager vertraut sind. Die [bereitstellen ein virtuellen Computers mit mehreren IP-Adressen](https://azure.microsoft.com/resources/templates/101-vm-multiple-ipconfig) Vorlage wird in diesem Artikel verwendet.
+Das Bereitstellen einer Vorlage ermöglicht es Ihnen, schnell und konsistent Azure-Ressourcen mit unterschiedlichen Konfigurationswerten zu erstellen. Wenn Sie nicht mit Azure Resource Manager-Vorlagen vertraut sind, sollten Sie den Artikel [Resource Manager-Vorlage – Exemplarische Vorgehensweise](../azure-resource-manager/resource-manager-template-walkthrough.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lesen. In diesem Artikel wird die Vorlage [Deploy a VM with multiple IPs](https://azure.microsoft.com/resources/templates/101-vm-multiple-ipconfig) verwendet.
 
-<a name="resources"></a>Bereitstellen der Vorlage erstellt die folgenden Ressourcen:
+<a name="resources"></a>Durch Bereitstellen der Vorlage werden die folgenden Ressourcen erstellt:
 
 |Ressource|Name|Beschreibung|
 |---|---|---|
-|Die Netzwerkschnittstelle|*myNic1*|Die drei IP-Konfigurationen, die im Szenario Abschnitt dieses Artikels beschriebenen sind erstellt und auf diese NIC zugeordnet|
-|Öffentliche IP-Adressressource|erstellt von 2: *MyPublicIP* und *myPublicIP2*|Diese Ressourcen sind statische öffentliche IP-Adressen und zugewiesen sind die *"ipconfig"-1-* und *"ipconfig"-2-* IP-Konfigurationen, die im Szenario beschrieben.|
-|VM|*myVM1*|Eine standardmäßige DS3 VM.|
-|Virtuelles Netzwerk|*myVNet1*|Ein virtuelles Netzwerk mit einem Subnetz mit dem Namen *MySubnet*.|
-|Speicherkonto|Für die Bereitstellung eindeutig|Ein Speicherkonto.|
+|Netzwerkschnittstelle|*myNic1*|Die drei IP-Konfigurationen, die im Szenarioabschnitt dieses Artikels beschrieben sind, werden erstellt und dieser Netzwerkkarte (Network Interface Card, NIC) zugeordnet.|
+|Öffentliche IP-Adressressource|Es werden 2 erstellt: *myPublicIP* und *myPublicIP2*|Diesen Ressourcen sind statische öffentliche IP-Adressen zugewiesen, und sie sind den IP-Konfigurationen *IPConfig-1* und *IPConfig-2* zugewiesen, die im Szenario beschrieben sind.|
+|VM|*myVM1*|Ein standardmäßiger virtueller DS3-Computer.|
+|Virtuelles Netzwerk|*myVNet1*|Ein virtuelles Netzwerk mit einem Subnetz namens *mySubnet*.|
+|Speicherkonto|Einzig für die Bereitstellung|Ein Speicherkonto.|
 
-<a name="parameters"></a>Wenn Sie die Vorlage bereitstellen zu können, müssen Sie Werte für die folgenden Parameter angeben:
+<a name="parameters"></a>Wenn Sie die Vorlage bereitstellen, müssen Sie Werte für die folgenden Parameter angeben:
 
 |Name|Beschreibung|
 |---|---|
-|adminUsername|Benutzername des Administrators. Der Benutzername muss einhalten, [Benutzername für Azure-Anforderungen](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
-|AdminPassword|Das Kennwort einhalten muss, Administratorkennwort [Azure kennwortanforderungen](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-|dnsLabelPrefix|DNS-Name PublicIPAddressName1. Der DNS-Namen verweisen auf eine öffentliche IP-Adressen mit dem virtuellen Computer zugewiesen. Der Name muss innerhalb der Azure-Region (Standort) eindeutig sein, die Erstellung des virtuellen Computers in.|
-|dnsLabelPrefix1|DNS-Name PublicIPAddressName2. Der DNS-Namen verweisen auf eine öffentliche IP-Adressen mit dem virtuellen Computer zugewiesen. Der Name muss innerhalb der Azure-Region (Standort) eindeutig sein, die Erstellung des virtuellen Computers in.|
-|OSVersion|Die Windows-/Linux-Version für den virtuellen Computer. Das Betriebssystem ist ein vollständig gepatchten Image der angegebenen Windows-/Linux-Version ausgewählt.|
-|imagePublisher|Der Windows-/Linux-Image-Herausgeber für den ausgewählten virtuellen Computer.|
-|imageOffer|Die Windows-/Linux-Image für den ausgewählten virtuellen Computer.|
+|adminUsername|Benutzername des Administrators. Der Benutzername muss den [Azure-Anforderungen für Benutzernamen](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json) entsprechen.|
+|adminPassword|Kennwort des Administrators. Das Kennwort muss den [Azure-Anforderungen für Kennwörter](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) entsprechen.|
+|dnsLabelPrefix|DNS-Name für PublicIPAddressName1. Der DNS-Name wird zu einer der öffentlichen IP-Adressen aufgelöst, die dem virtuellen Computer zugewiesen sind. Der Name muss innerhalb der Azure-Region (Standort), in der Sie den virtuellen Computer erstellen, eindeutig sein.|
+|dnsLabelPrefix1|DNS-Name für PublicIPAddressName2. Der DNS-Name wird zu einer der öffentlichen IP-Adressen aufgelöst, die dem virtuellen Computer zugewiesen sind. Der Name muss innerhalb der Azure-Region (Standort), in der Sie den virtuellen Computer erstellen, eindeutig sein.|
+|OSVersion|Die Windows/Linux-Version für den virtuellen Computer. Das Betriebssystem ist ein vollständig gepatchtes Image der Windows/Linux-Version, die ausgewählt ist.|
+|imagePublisher|Der Windows/Linux-Image-Herausgeber (Publisher) für den ausgewählten virtuellen Computer.|
+|imageOffer|Das Windows/Linux-Image für den ausgewählten virtuellen Computer.|
 
-Jede der Ressourcen, die von der Vorlage bereitgestellt wird mit mehrere Standardeinstellungen konfiguriert. Sie können diese Einstellungen über eine der folgenden Methoden anzeigen:
+Jede der Ressourcen, die über die Vorlage bereitgestellt werden, wird mit mehreren Standardeinstellungen konfiguriert. Sie können diese Einstellungen mit den beiden folgenden Methoden anzeigen:
 
-- **Zeigen Sie die Vorlage auf GitHub:** , wenn Sie mit Vorlagen vertraut sind, sehen Sie die Einstellungen in der [Vorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json).
-- **Zeigen Sie die Einstellungen nach der Bereitstellung:** , wenn Sie nicht mit Vorlagen vertraut sind, können die Vorlage mithilfe der Schritte in den folgenden Abschnitten bereitstellen und zeigen Sie dann die Einstellungen nach der Bereitstellung.
+- **Anzeigen der Vorlage auf GitHub:** Wenn Sie mit Vorlagen vertraut sind, können Sie sich die Einstellungen in der [Vorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) ansehen.
+- **Anzeigen der Einstellungen nach der Bereitstellung:** Wenn Sie nicht mit Vorlagen vertraut sind, können Sie die Vorlage bereitstellen, indem Sie die Schritte in einem der folgenden Abschnitte ausführen, und sich dann die Einstellungen nach der Bereitstellung ansehen.
 
-Sie können Azure-Portal, PowerShell oder der Azure-Befehlszeilenschnittstelle (CLI) verwenden, um die Vorlage bereitzustellen. Alle Methoden liefern das gleiche Ergebnis. Um die Vorlage bereitzustellen, führen Sie die Schritte in einem der folgenden Abschnitte:
+Sie können das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) verwenden, um die Vorlage bereitzustellen. Alle Methoden führen zu selben Ergebnis. Um die Vorlage bereitzustellen, führen Sie die Schritte in einem der folgenden Abschnitte aus:
 
-## <a name="deploy-using-the-azure-portal"></a>Die Bereitstellung über das Azure-portal
+## <a name="deploy-using-the-azure-portal"></a>Bereitstellen über das Azure-Portal
 
-Um die Vorlage mit der Azure-Portal bereitzustellen, müssen führen Sie die folgenden Schritte aus:
+Wenn Sie die Vorlage über das Azure-Portal bereitstellen möchten, führen Sie die folgenden Schritte aus:
 
-1. Ändern Sie die Vorlage aus, bei Bedarf. Die Vorlage bereitstellt, die Ressourcen und Einstellungen aufgeführt, der [Ressourcen](#resources) Abschnitt dieses Artikels. Weitere Informationen zu Vorlagen und wie diese erstellen, lesen die [Authoring Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json)Artikel.
-2. Bereitstellen Sie die Vorlage mit einer der folgenden Methoden:
-    - **Wählen Sie die Vorlage im Portal:** die Schritte in der [Bereitstellen von Ressourcen aus der benutzerdefinierten Vorlage](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template) Artikel. Wählen Sie die bereits vorhandene Vorlage, die mit dem Namen *101-Vm-Multiple-Ipconfig*.
-    - **Direkt:** klicken Sie auf die folgende Schaltfläche, um die Vorlage direkt in das Portal zu öffnen:<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+1. Ändern Sie ggf. die Vorlage. Über die Vorlage werden die Ressourcen und Einstellungen bereitgestellt, die im [Ressourcen](#resources)-Abschnitt dieses Artikels aufgeführt sind. Weitere Informationen zu Vorlagen sowie zum Schreiben von Vorlagen finden Sie im Artikel [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+2. Stellen Sie die Vorlage mit einer der folgenden Methoden bereit:
+    - **Auswählen der Vorlage im Portal:** Führen die Schritte im Artikel [Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template) aus. Wählen Sie die bereits vorhandene Vorlage *101-vm-multiple-ipconfig* aus.
+    - **Direkt:** Klicken Sie auf die folgende Schaltfläche, um die Vorlage direkt im Portal zu öffnen: <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-Unabhängig von der Methode Sie sich entscheiden, müssen Sie Werte für die [Parameter](#parameters) zuvor in diesem Artikel aufgeführt. Nachdem der virtuelle Computer bereitgestellt wird, Herstellen einer Verbindung mit dem virtuellen Computer, und fügen Sie der privaten IP-Adressen für das Betriebssystem, die Sie bereitgestellt haben, mithilfe der Schritte in der [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) Abschnitt dieses Artikels. Fügen Sie die öffentlichen IP-Adressen nicht für das Betriebssystem an.
+Unabhängig von der Methode, für die Sie sich entscheiden, müssen Sie Werte für die [Parameter](#parameters) angeben, die in diesem Artikel weiter oben aufgeführt sind. Nachdem der virtuelle Computer bereitgestellt ist, stellen Sie eine Verbindung mit dem virtuellen Computer her, und fügen Sie dem von Ihnen bereitgestellten Betriebssystem die privaten IP-Adressen hinzu. Führen Sie dazu die Schritte im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel aus. Fügen Sie dem Betriebssystem nicht die öffentlichen IP-Adressen hinzu.
 
-## <a name="deploy-using-powershell"></a>Mithilfe von PowerShell bereitstellen
+## <a name="deploy-using-powershell"></a>Bereitstellen mit PowerShell
 
-Um die Vorlage mithilfe von PowerShell bereitstellen zu können, müssen führen Sie die folgenden Schritte aus:
+Wenn Sie die Vorlage mit PowerShell bereitstellen möchten, führen Sie die folgenden Schritte aus:
 
-1. Bereitstellen die Vorlage mithilfe der Schritte in der [Bereitstellen einer Vorlage mit PowerShell](../azure-resource-manager/resource-group-template-deploy-cli.md) Artikel. Dieser Artikel beschreibt mehrere Optionen für die Bereitstellung einer Vorlage. Falls gewünscht, um die Bereitstellung über die `-TemplateUri parameter`, ist der URI für diese Vorlage *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Falls gewünscht, um die Bereitstellung über die `-TemplateFile` Parameter, kopieren Sie den Inhalt von der [Vorlagendatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) über GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie den Vorlageninhalt bei Bedarf. Die Vorlage bereitstellt, die Ressourcen und Einstellungen aufgeführt, der [Ressourcen](#resources) Abschnitt dieses Artikels. Weitere Informationen zu Vorlagen und wie diese erstellen, lesen die [Authoring Azure Resource Manager-Vorlagen ](../azure-resource-manager/resource-group-authoring-templates.md)Artikel.
+1. Stellen Sie die Vorlage bereit, indem Sie die Schritte im Artikel [Bereitstellen einer Vorlage mit PowerShell](../azure-resource-manager/resource-group-template-deploy-cli.md) ausführen. In diesem Artikel sind mehrere Optionen für ein Bereitstellen einer Vorlage beschrieben. Wenn Sie das Bereitstellen über den `-TemplateUri parameter`, ausführen möchten, hat diese Vorlage den URI *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Möchten Sie das Bereitstellen über den Parameter `-TemplateFile` ausführen, kopieren Sie den Inhalt der [Vorlagendatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie ggf. den Inhalt der Vorlage. Über die Vorlage werden die Ressourcen und Einstellungen bereitgestellt, die im [Ressourcen](#resources)-Abschnitt dieses Artikels aufgeführt sind. Weitere Informationen zu Vorlagen sowie zum Schreiben von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
-    Unabhängig von der Option, die Sie auswählen, um die Vorlage mit bereitzustellen, müssen Sie angeben, Werte für die Parameter aufgeführt, die der [Parameter](#parameters) Abschnitt dieses Artikels. Falls gewünscht, Parameter, die mithilfe einer Parameterdatei bereitstellen, kopieren Sie den Inhalt von der [Parameterdatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) über GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie die Werte in der Datei. Verwenden Sie die Datei, die Sie erstellt haben, als der Wert für die `-TemplateParameterFile` Parameter.
+    Unabhängig von der Art und Weise, wie Sie die Vorlage bereitstellen, müssen Sie Werte für die Parameter angeben, die im [Parameter](#parameters)-Abschnitt dieses Artikels aufgeführt sind. Wenn Sie die Parameter mithilfe einer Parameterdatei bereitstellen möchten, kopieren Sie den Inhalt der [Parameterdatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie die Werte in der Datei. Verwenden Sie den Namen der Datei, die Sie erstellt haben, als Wert für den Parameter `-TemplateParameterFile`.
 
-    Um gültige Werte für die "osversion" ImagePublisher und ImageOffer Parameter zu ermitteln, führen Sie die Schritte in der [navigieren und die Option Windows-VM-Images Artikel](../virtual-machines/windows/cli-ps-findimage.md) Artikel.
+    Um gültige Werte für die Parameter „OSVersion“, „ImagePublisher“ und „imageOffer“ zu ermitteln, führen Sie die Schritte im Artikel [Navigieren zu und Auswählen von Images virtueller Windows-Computer](../virtual-machines/windows/cli-ps-findimage.md) aus.
 
     >[!TIP]
-    >Wenn Sie nicht sicher sind, ob eine Dnslabelprefix verfügbar ist, geben Sie die `Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` Befehl aus, um herauszufinden. Wenn es verfügbar ist, wird der Befehl zurück `True`.
+    >Wenn Sie nicht sicher sind, ob ein „dnslabelprefix“ verfügbar ist, geben Sie den Befehl `Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` ein, um dies festzustellen. Ist das Präfix verfügbar, gibt der Befehl den Wert `True` zurück.
 
-2. Nachdem der virtuelle Computer bereitgestellt wird, Herstellen einer Verbindung mit dem virtuellen Computer, und fügen Sie der privaten IP-Adressen für das Betriebssystem, die Sie bereitgestellt haben, mithilfe der Schritte in der [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) Abschnitt dieses Artikels. Fügen Sie die öffentlichen IP-Adressen nicht für das Betriebssystem an.
+2. Nachdem der virtuelle Computer bereitgestellt ist, stellen Sie eine Verbindung mit dem virtuellen Computer her, und fügen Sie dem von Ihnen bereitgestellten Betriebssystem die privaten IP-Adressen hinzu. Führen Sie dazu die Schritte im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel aus. Fügen Sie dem Betriebssystem nicht die öffentlichen IP-Adressen hinzu.
 
-## <a name="deploy-using-the-azure-cli"></a>Bereitstellen Sie mithilfe der Azure-CLI
+## <a name="deploy-using-the-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
 
-Um die Vorlage mit der Azure-CLI-1.0 bereitzustellen, müssen führen Sie die folgenden Schritte aus:
+Wenn Sie die Vorlage über die Azure-Befehlszeilenschnittstelle 1.0 bereitstellen möchten, führen Sie die folgenden Schritte aus:
 
-1. Bereitstellen die Vorlage mithilfe der Schritte in der [Bereitstellen einer Vorlage mit der Azure-CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) Artikel. Dieser Artikel beschreibt mehrere Optionen für die Bereitstellung der Vorlage. Falls gewünscht, um die Bereitstellung über die `--template-uri` (-f), ist der URI für diese Vorlage *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Falls gewünscht, um die Bereitstellung über die `--template-file` (-f) Parameter, kopieren Sie den Inhalt von der [Vorlagendatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) über GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie den Vorlageninhalt bei Bedarf. Die Vorlage bereitstellt, die Ressourcen und Einstellungen aufgeführt, der [Ressourcen](#resources) Abschnitt dieses Artikels. Weitere Informationen zu Vorlagen und wie diese erstellen, lesen die [Authoring Azure Resource Manager-Vorlagen ](../azure-resource-manager/resource-group-authoring-templates.md)Artikel.
+1. Stellen Sie die Vorlage bereit, indem Sie die Schritte im Artikel [Bereitstellen einer Vorlage mit der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md) ausführen. In diesem Artikel sind mehrere Optionen für ein Bereitstellen der Vorlage beschrieben. Wenn Sie das Bereitstellen über `--template-uri` (-f) ausführen möchten, hat diese Vorlage den URI *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Möchten Sie das Bereitstellen über den Parameter `--template-file` (-f) ausführen, kopieren Sie den Inhalt der [Vorlagendatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie ggf. den Inhalt der Vorlage. Über die Vorlage werden die Ressourcen und Einstellungen bereitgestellt, die im [Ressourcen](#resources)-Abschnitt dieses Artikels aufgeführt sind. Weitere Informationen zu Vorlagen sowie zum Schreiben von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
-    Unabhängig von der Option, die Sie auswählen, um die Vorlage mit bereitzustellen, müssen Sie angeben, Werte für die Parameter aufgeführt, die der [Parameter](#parameters) Abschnitt dieses Artikels. Falls gewünscht, Parameter, die mithilfe einer Parameterdatei bereitstellen, kopieren Sie den Inhalt von der [Parameterdatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) über GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie die Werte in der Datei. Verwenden Sie die Datei, die Sie erstellt haben, als der Wert für die `--parameters-file` (– e) Parameter.
+    Unabhängig von der Art und Weise, wie Sie die Vorlage bereitstellen, müssen Sie Werte für die Parameter angeben, die im [Parameter](#parameters)-Abschnitt dieses Artikels aufgeführt sind. Wenn Sie die Parameter mithilfe einer Parameterdatei bereitstellen möchten, kopieren Sie den Inhalt der [Parameterdatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie die Werte in der Datei. Verwenden Sie den Namen der Datei, die Sie erstellt haben, als Wert für den Parameter `--parameters-file` (-e).
 
-    Um gültige Werte für die "osversion" ImagePublisher und ImageOffer Parameter zu ermitteln, führen Sie die Schritte in der [navigieren und die Option Windows-VM-Images Artikel](../virtual-machines/windows/cli-ps-findimage.md) Artikel.
+    Um gültige Werte für die Parameter „OSVersion“, „ImagePublisher“ und „imageOffer“ zu ermitteln, führen Sie die Schritte im Artikel [Navigieren zu und Auswählen von Images virtueller Windows-Computer](../virtual-machines/windows/cli-ps-findimage.md) aus.
 
-2. Nachdem der virtuelle Computer bereitgestellt wird, Herstellen einer Verbindung mit dem virtuellen Computer, und fügen Sie der privaten IP-Adressen für das Betriebssystem, die Sie bereitgestellt haben, mithilfe der Schritte in der [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) Abschnitt dieses Artikels. Fügen Sie die öffentlichen IP-Adressen nicht für das Betriebssystem an.
+2. Nachdem der virtuelle Computer bereitgestellt ist, stellen Sie eine Verbindung mit dem virtuellen Computer her, und fügen Sie dem von Ihnen bereitgestellten Betriebssystem die privaten IP-Adressen hinzu. Führen Sie dazu die Schritte im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel aus. Fügen Sie dem Betriebssystem nicht die öffentlichen IP-Adressen hinzu.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

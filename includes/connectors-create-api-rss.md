@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Voraussetzungen
-* Ein [RSS](https://wikipedia.org/wiki/RSS) Konto  
+* Ein [RSS](https://wikipedia.org/wiki/RSS)-Konto  
 
-Bevor Sie Ihr Konto RSS in einer Logik-app verwenden können, müssen Sie die Logik-app zur Verbindung mit Ihrem Konto RSS autorisieren. Glücklicherweise können Sie problemlos aus in der Logik-app im Azure-Portal vorgehen.  
+Bevor Sie Ihr RSS-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für die Verbindung mit Ihrem RSS-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen.  
 
-Es folgen die Schritte zum Autorisieren der Logik-app zur Verbindung mit Ihrem Konto RSS:  
+Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem RSS-Konto:  
 
-1. Wählen Sie zum Erstellen einer Verbindungs mit RSS, in der Logik-app-Designer **Anzeigen von Microsoft verwalteten APIs** in der Dropdownliste aus und geben Sie dann *RSS* in das Suchfeld. Wählen Sie den Trigger oder die Aktion an, die Sie verwenden möchten, müssen:  
-   ![Schritt beim Erstellen eines RSS-Verbindung](./media/connectors-create-api-rss/rss-1.png)  
+1. Zum Herstellen einer Verbindung mit wählen Sie im Logik-App-Designer in der Dropdownliste**Verwaltete Microsoft-APIs anzeigen** aus, und geben Sie dann *RSS* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:   
+   ![Schritt zur Erstellung der RSS-Verbindung](./media/connectors-create-api-rss/rss-1.png)  
 2. Wählen Sie **Verbindung erstellen** :  
-   ![Schritt beim Erstellen eines RSS-Verbindung](./media/connectors-create-api-rss/rss-2.png)  
-3. Beachten Sie, dass die Verbindung erstellt wurde, und Sie können nun mit den anderen Schritten in der Logik-app zu fortfahren:  
-   ![Schritt beim Erstellen eines RSS-Verbindung](./media/connectors-create-api-rss/rss-3.png)  
+   ![Schritt zur Erstellung der RSS-Verbindung](./media/connectors-create-api-rss/rss-2.png)  
+3. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:   
+   ![Schritt zur Erstellung der RSS-Verbindung](./media/connectors-create-api-rss/rss-3.png)  
 

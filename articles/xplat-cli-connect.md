@@ -17,10 +17,10 @@ ms.date: 10/04/2016
 ms.author: rasquill
 "\"/": 
 ms.openlocfilehash: 31efab60690b54faf7992251fcd01e307c4464f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-in-to-azure-from-the-azure-cli"></a>Anmelden bei Azure über die Azure-Befehlszeilenschnittstelle (CLI)
 Die Azure-Befehlszeilenschnittstelle umfasst eine Reihe von plattformübergreifenden Open Source-Befehlen für die Arbeit mit Azure-Ressourcen. Dieser Artikel beschreibt verschiedene Möglichkeiten zum Angeben der Anmeldeinformationen für Ihr Azure-Konto, um für die Azure-Befehlszeilenschnittstelle eine Verbindung mit Ihrem Azure-Abonnement herzustellen:

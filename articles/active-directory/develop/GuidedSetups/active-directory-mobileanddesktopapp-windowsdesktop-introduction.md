@@ -1,6 +1,6 @@
 ---
-title: "Azure AD v2 Windows Desktop erste Schritte – Einführung | Microsoft Docs"
-description: "Wie Windows Desktop .NET (XAML)-Anwendungen eine API, die erfordern Zugriffstoken von Azure Active Directory-v2-Endpunkt aufrufen können"
+title: "Azure AD v2 – Windows-Desktop: Erste Schritte – Einführung | Microsoft-Dokumentation"
+description: "Informationen, wie Windows Desktop .NET (XAML)-Anwendungen eine API aufrufen können, die Zugriffstoken vom Azure Active Directory v2-Endpunkt anfordert"
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -16,40 +16,40 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.openlocfilehash: 4a695c00fce4deb02261ba58ec95469746bb1486
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Rufen Sie die Microsoft Graph-API aus einer Windows-Desktop-app
+# <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Aufrufen der Microsoft Graph-API aus einer Windows Desktop-App
 
-Dieses Handbuch veranschaulicht, wie eine systemeigene Windows-Desktop-.NET (XAML)-Anwendung ein Zugriffstoken abrufen und Microsoft Graph-API oder andere APIs, Zugriffstoken aus Azure Active Directory-v2-Endpunkt erfordern, aufrufen kann.
+Diese Anleitung veranschaulicht, wie eine native Windows Desktop .NET (XAML)-Anwendung ein Zugriffstoken abrufen und die Microsoft Graph-API und andere APIs aufrufen kann, die Zugriffstoken von einem Azure Active Directory v2-Endpunkt anfordern.
 
-Am Ende dieses Handbuchs wird Ihre Anwendung Lage rufen Sie eine geschützte API, die Persönliche Konten (z. B. outlook.com, live.com usw.) sowie Arbeiten mit und schulkonten von Unternehmen oder Organisation, die über Azure Active Directory verfügt.  
+Am Ende dieser Anleitung kann Ihre Anwendung eine geschützte API sowohl mit persönlichen Konten (z.B. outlook.com, live.com u.a.) als auch Geschäfts,- Schul- und Unikonten von Unternehmen oder Organisationen aufrufen, die mit Azure Active Directory arbeiten.  
 
-> Dieses Handbuch ist Visual Studio 2015 Update 3 oder Visual Studio 2017 erforderlich.  Haben sie kein? [Visual Studio-2017 kostenlos herunterladen](https://www.visualstudio.com/downloads/)
+> Für diese Anleitung ist Visual Studio 2015 Update 3 oder Visual Studio 2017 erforderlich.  Sie haben beides nicht? [Laden Sie Visual Studio 2017 kostenlos herunter](https://www.visualstudio.com/downloads/)
 
-### <a name="how-this-guide-works"></a>Funktionsweise dieses Handbuchs
+### <a name="how-this-guide-works"></a>Funktionsweise dieser Anleitung
 
-![Funktionsweise dieses Handbuchs](media/active-directory-mobileanddesktopapp-windowsdesktop-intro/windesktophowitworks.png)
+![Funktionsweise dieser Anleitung](media/active-directory-mobileanddesktopapp-windowsdesktop-intro/windesktophowitworks.png)
 
-Die beispielanwendung, die erstellt wird, wird in diesem Handbuch kann einer Windows-Desktop-Anwendung zum Abfragen von Microsoft Graph-API oder eine Web-API, die Token von Azure Active Directory-v2-Endpunkt akzeptiert. In diesem Szenario wird der HTTP-Anforderungen über den Autorisierungsheader ein Token hinzugefügt. Tokenabruf und-Erneuerung wird von Microsoft Authentication Library (MSAL) behandelt.
+Die in dieser Anleitung erstellte Beispielanwendung ermöglicht einer Windows Desktop-Anwendung das Abfragen einer Microsoft Graph-API oder Web-API, die Token von einem Azure Active Directory-v2-Endpunkt akzeptiert. In diesem Szenario wird ein Token über den Autorisierungsheader HTTP-Anforderungen hinzugefügt. Tokenabruf und -verlängerung werden von der Microsoft Authentication Library (MSAL) verarbeitet.
 
 
-### <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Behandlung von tokenabruf für den Zugriff auf Web-APIs geschützt
+### <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Verarbeiten des Beziehens von Token für den Zugriff auf geschützte Web-APIs
 
-Nachdem der Benutzer authentifiziert hat, empfängt die beispielanwendung ein Token, das zum Abfragen von Microsoft Graph-API oder eine Web-API von Microsoft Azure Active Directory v2 gesichert verwendet werden kann.
+Nach der Authentifizierung des Benutzers empfängt die Beispielanwendung ein Token, mit dem eine Microsoft Graph-API oder Web-API abgefragt werden kann, die von Microsoft Azure Active Directory v2 geschützt wird.
 
-APIs, wie z. B. Microsoft Graph erfordern ein Zugriffstoken, um den Zugriff auf bestimmte Ressourcen – z. B. zum Lesen eines Benutzerprofils Kalender des Zugriffsbenutzers oder senden Sie eine e-Mail zu ermöglichen. Ihre Anwendung kann ein Zugriffstoken mithilfe von MSAL auf diese Ressourcen zugreifen, durch Angeben von API-Bereichen anfordern. Dieses Zugriffstoken wird dann der HTTP-Authorization-Header für jeden Aufruf für die geschützte Ressource hinzugefügt. 
+APIs wie Microsoft Graph erfordern ein Zugriffstoken, um den Zugriff auf bestimmte Ressourcen zu ermöglichen, z.B. zum Lesen eines Benutzerprofils, Zugreifen auf den Kalender eines Benutzers oder Senden einer E-Mail. Ihre Anwendung kann ein Zugriffstoken mithilfe der MSAL anfordern, um auf diese Ressourcen durch Angeben von API-Bereichen zuzugreifen. Dieses Zugriffstoken wird dann dem HTTP-Autorisierungsheader für jeden Aufruf hinzugefügt, der für die geschützte Ressource erfolgt. 
 
-MSAL verwaltet Zwischenspeichern und Zugriffstoken, aktualisieren, damit Ihre Anwendung nicht um benötigt.
+Die MSAL verwaltet das Zwischenspeichern und Aktualisieren von Zugriffstoken, damit Ihre Anwendung dies nicht übernehmen muss.
 
 
 ### <a name="nuget-packages"></a>NuGet-Pakete
 
-Dieses Handbuch verwendet die folgenden NuGet-Pakete:
+In dieser Anleitung werden die folgenden NuGet-Pakete verwendet:
 
-|-Bibliothek|Beschreibung|
+|Bibliothek|Beschreibung|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft-Authentifizierungsbibliothek (MSAL)|
+|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL)|
 

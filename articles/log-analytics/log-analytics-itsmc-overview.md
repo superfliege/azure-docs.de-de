@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 411d6103852cbf534d3c420d5ea7b2146df5164e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>Zentrales Verwalten von ITSM-Arbeitselementen mit dem IT Service Management Connector (Vorschau)
 
@@ -83,7 +82,7 @@ Incidents und Änderungsanforderungen aus dem ITSM-Produkt werden mit Ihrem Log 
 > [!NOTE]
 > Abhängig vom in Log Analytics importierten Arbeitselementtyp enthält **ServiceDesk_CL** die folgenden Felder:
 
-**Arbeitselement:** **Incidents**  
+**Arbeitselement:****Incidents**  
 ServiceDeskWorkItemType_s="Incident"
 
 **Felder**
@@ -110,7 +109,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Computer
 
 
-**Arbeitselement:** **Änderungsanforderungen**
+**Arbeitselement:****Änderungsanforderungen**
 
 ServiceDeskWorkItemType_s="ChangeRequest"
 
@@ -175,7 +174,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | Zugewiesen zu  |
 | Title_s|  Kurzbeschreibung |
 | Type_s|  Typ |
-| Category_s|  Kategorie |
+| Category_s|  Category (Kategorie) |
 | CRState_s|  Zustand|
 | Urgency_s|  Dringlichkeit |
 | Priority_s| Priority|
@@ -307,4 +306,3 @@ Kontaktieren Sie uns bei Fragen oder Feedback zum IT Service Management Connecto
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Hinzufügen von ITSM-Produkten/-Diensten zum IT Service Management Connector](log-analytics-itsmc-connections.md).
-

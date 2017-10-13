@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ff857e83a37b95bceb751539bb34e9fb7f202931
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="walkthrough-step-1-create-a-machine-learning-workspace"></a>Exemplarische Vorgehensweise, Schritt 1: Erstellen eines Machine Learning-Arbeitsbereichs
 Dies ist der erste Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung mit Azure Machine Learning](walkthrough-develop-predictive-solution.md).
@@ -63,4 +62,3 @@ Nachdem Ihr Arbeitsbereich erstellt wurde, öffnen Sie Machine Learning Studio (
 
 [1]: ./media/walkthrough-1-create-ml-workspace/create1.png
 [2]: ./media/walkthrough-1-create-ml-workspace/open-workspace.png
-

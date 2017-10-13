@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 62fa6a6d0cccc5545b94d4ae167f2fcc7e4cd0de
-ms.contentlocale: de-de
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 1ad6ca4abe73336ce9ce3539fdaf2a9d7dd23fa6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="packet-inspection-with-azure-network-watcher"></a>Paketuntersuchung mit Azure Network Watcher
 
 Mit dem Feature für die Paketerfassung von Network Watcher können Sie Erfassungssitzungen auf Ihren Azure-VMs über das Portal, PowerShell, CLI und programmgesteuert per SDK und die REST-API initiieren und verwalten. Sie können die Paketerfassung für Szenarien einsetzen, für die Daten auf Paketebene erforderlich sind, indem Sie die Informationen in einem leicht verwendbaren Format bereitstellen. Indem Sie frei erhältliche Tools zum Untersuchen der Daten verwenden, können Sie die Kommunikation an und von Ihren VMs untersuchen und Erkenntnisse zum Netzwerkdatenverkehr gewinnen. Einige Beispiel für die Nutzung von Daten der Paketerfassung sind: Untersuchen von Netzwerk- oder Anwendungsproblemen, Erkennen von missbräuchlicher Nutzung des Netzwerks und von Eindringversuchen oder Einhalten der vorgeschriebenen Konformität. In diesem Artikel wird veranschaulicht, wie Sie eine von Network Watcher bereitgestellte Paketerfassungsdatei mit einem gängigen Open Source-Tool öffnen. Außerdem enthält der Artikel Beispiele dazu, wie Sie eine Verbindungswartezeit berechnen, ungewöhnlichen Datenverkehr identifizieren und Netzwerkstatistiken untersuchen.
@@ -136,7 +134,6 @@ Informieren Sie sich unter [Übersicht über die Azure-Netzwerküberwachung](net
 [6]: ./media/network-watcher-deep-packet-inspection/figure6.png
 [7]: ./media/network-watcher-deep-packet-inspection/figure7.png
 [8]: ./media/network-watcher-deep-packet-inspection/figure8.png
-
 
 
 

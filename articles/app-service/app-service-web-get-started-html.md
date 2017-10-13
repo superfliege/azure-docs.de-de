@@ -15,12 +15,11 @@ ms.topic: quickstart
 ms.date: 05/26/2017
 ms.author: riande
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
 ms.openlocfilehash: a4b6e0578bb0b45b6be5bdf28af5936d627b1c74
-ms.contentlocale: de-de
-ms.lasthandoff: 09/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Erstellen einer statischen HTML-Web-App in Azure
 
@@ -34,7 +33,7 @@ Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden.
 
 So führen Sie diesen Schnellstart durch:
 
-- [Installation von Git](https://git-scm.com/)
+- [Installieren Sie Git.](https://git-scm.com/)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -147,4 +146,3 @@ Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App ange
 
 > [!div class="nextstepaction"]
 > [Zuordnen einer benutzerdefinierten Domäne](app-service-web-tutorial-custom-domain.md)
-

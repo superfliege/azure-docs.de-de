@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 02/03/2017
 ms.author: jgao
 ms.openlocfilehash: 332d7af2539eea8890745005104ac5b0921c2b7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-rest-apis"></a>Erste Schritte mit Azure Data Lake Analytics mit REST-APIs
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -43,7 +43,7 @@ Gehen Sie wie folgt vor, um die interaktive Authentifizierung durchzuführen:
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
    
    > [!NOTE]
-   > \<REDIRECT-URI> muss für die Verwendung in einer URL codiert werden. Verwenden Sie für „https://localhost“ also `https%3A%2F%2Flocalhost`.
+   > \<REDIRECT-URI&gt; muss für die Verwendung in einer URL codiert werden. Verwenden Sie für „https://localhost“ also `https%3A%2F%2Flocalhost`.
    > 
    > 
    

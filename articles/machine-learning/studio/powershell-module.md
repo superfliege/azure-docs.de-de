@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: garye;haining
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 47d005e584b6cb87d27a77f56ff619d342481aaa
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="powershell-module-for-microsoft-azure-machine-learning"></a>PowerShell-Modul für Microsoft Azure Machine Learning
 Das PowerShell-Modul für Azure Machine Learning ist ein leistungsfähiges Tool, mit dem Sie Windows PowerShell zum Verwalten von Arbeitsbereichen, Experimenten, Datasets, klassischen Webdiensten und vielem mehr verwenden können.
@@ -63,4 +62,3 @@ Sie haben auch die Möglichkeit, die Git-Struktur zu klonen, den Code zu ändern
 Die vollständige Dokumentation für das PowerShell-Modul finden Sie unter [https://aka.ms/amlps](https://aka.ms/amlps). 
 
 Ein erweitertes Beispiel für die Verwendung des Moduls in einem realen Szenario finden Sie im ausführlichen Anwendungsfall [Erstellen vieler Machine Learning-Modelle und Webdienst-Endpunkte in nur einem Experiment mit PowerShell](create-models-and-endpoints-with-powershell.md).
-

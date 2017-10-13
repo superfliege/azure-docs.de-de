@@ -1,56 +1,56 @@
-## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Vorbereiten der Azure Resource Manager-Anforderungen zu authentifizieren
-Sie müssen alle Vorgänge, die Sie ausführen, auf Ressourcen mit Authentifizieren der [Azure Resource Manager] [ lnk-authenticate-arm] mit Azure Active Directory (AD). Die einfachste Möglichkeit, diese Konfiguration ist die Verwendung von PowerShell oder Azure-CLI.
+## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Vorbereiten der Authentifizierung von Anforderungen von Azure Resource Manager
+Sie müssen alle Vorgänge authentifizieren, die Sie mithilfe von [Azure Resource Manager][lnk-authenticate-arm] mit Azure Active Directory (AD) für die Ressourcen ausführen. Die einfachste Möglichkeit hierzu ist die Verwendung von PowerShell oder der Azure-Befehlszeilenschnittstelle.
 
-Installieren der [Azure PowerShell-Cmdlets] [ lnk-powershell-install] bevor Sie fortfahren.
+Installieren Sie die [Azure PowerShell-Cmdlets][lnk-powershell-install], bevor Sie den Vorgang fortsetzen.
 
-Die folgenden Schritte zeigen, wie Sie die Kennwort-Authentifizierung für eine AD-Anwendung mithilfe von PowerShell einrichten. Sie können diese Befehle in einer standard-PowerShell-Sitzung ausführen.
+Die folgenden Schritte zeigen, wie Sie die Kennwortauthentifizierung für eine AD-Anwendung mithilfe von PowerShell einrichten. Sie können diese Befehle in einer standardmäßigen PowerShell-Sitzung ausführen.
 
-1. Melden Sie sich mit Ihrem Azure-Abonnement mit dem folgenden Befehl aus:
+1. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Abonnement an:
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-1. Wenn Sie mehrere Azure-Abonnements verfügen, gewährt die sich bei Azure anmelden Zugriff auf alle Azure Abonnements, die Ihre Anmeldeinformationen zugeordnet. Verwenden Sie den folgenden Befehl, um die Azure-Abonnements für Ihre Verwendung aufzulisten:
+1. Wenn Sie über mehrere Azure-Abonnements verfügen, erhalten Sie durch die Anmeldung bei Azure Zugriff auf alle Azure-Abonnements, die mit Ihren Anmeldeinformationen verknüpft sind. Führen Sie den folgenden Befehl aus, um eine Liste der Azure-Abonnements anzuzeigen, die Sie verwenden können:
 
     ```powershell
     Get-AzureRMSubscription
     ```
 
-    Verwenden Sie den folgenden Befehl Abonnement auswählen, die zum Ausführen der Befehle zum Verwalten von Ihren IoT Hubs verwendet werden sollen. Sie können den Abonnementnamen oder die ID aus der Ausgabe des vorherigen Befehls verwenden:
+    Führen Sie den folgenden Befehl aus, um das Abonnement auszuwählen, das Sie zum Ausführen der Befehle zum Verwalten Ihres IoT Hubs verwenden möchten. Sie können entweder den Abonnementnamen oder die ID aus der Ausgabe des vorherigen Befehls verwenden:
 
     ```powershell
     Select-AzureRMSubscription `
         -SubscriptionName "{your subscription name}"
     ```
 
-2. Notieren Sie sich Ihre **"tenantid"** und **"subscriptionId"**. Sie benötigen sie später erneut.
-3. Erstellen einer neuen Azure Active Directory-Anwendung, die mit dem folgenden Befehl ein, und Ersetzen Sie dabei die Platzhaltern:
+2. Notieren Sie sich Ihre **TenantId** und Ihre **SubscriptionId**. Diese werden später benötigt.
+3. Erstellen Sie mit dem folgenden Befehl eine neue Azure Active Directory-Anwendung, und ersetzen Sie die Platzhalter:
    
-   * **{Anzeigename}:** einen Anzeigenamen für Ihre Anwendung z. B. **MySampleApp**
-   * **{URL der Homepage}:** die URL der Startseite der app wie z. B. **http://mysampleapp/home**. Diese URL muss nicht auf einer realen Anwendung verweisen.
-   * **{ID}:** ein eindeutiger Bezeichner, wie z. B. **http://mysampleapp**. Diese URL muss nicht auf einer realen Anwendung verweisen.
-   * **{Password}:** ein Kennwort, das Sie mit der app zur Authentifizierung verwenden.
+   * **{Display name}:** ein Anzeigename für Ihre Anwendung, z.B. **MySampleApp**.
+   * **{Home page URL}:** Die URL der Startseite der App, z.B. **http://mysampleapp/home**. Diese URL muss nicht auf eine echte Anwendung verweisen.
+   * **{Application identifier}:** Ein eindeutiger Bezeichner, z.B. **http://meinebeispielapp**. Diese URL muss nicht auf eine echte Anwendung verweisen.
+   * **{Password}:** Ein Kennwort, das Sie zur Authentifizierung mit Ihrer App verwenden werden.
      
      ```powershell
      New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
      ```
-4. Notieren Sie sich die **ApplicationId** der Anwendung, die Sie erstellt haben. Dies ist später erforderlich.
-5. Erstellen Sie einen neuen Dienstprinzipal mithilfe des folgenden Befehls, und Ersetzen Sie dabei **{MyApplicationId}** mit der **ApplicationId** aus dem vorherigen Schritt:
+4. Notieren Sie sich die **ApplicationId** der Anwendung, die Sie erstellt haben. Sie benötigen sie später.
+5. Erstellen Sie einen neuen Dienstprinzipal mithilfe des folgenden Befehls, und ersetzen Sie dabei **{MyApplicationId}** durch die **ApplicationId** aus dem vorherigen Schritt:
    
     ```powershell
     New-AzureRmADServicePrincipal -ApplicationId {MyApplicationId}
     ```
-6. Richten Sie eine rollenzuweisung, die mithilfe des folgenden Befehls, und Ersetzen Sie dabei **{MyApplicationId}** mit Ihrem **ApplicationId**.
+6. Richten Sie eine Rollenzuweisung mithilfe des folgenden Befehls ein, und ersetzen Sie dabei **{MyApplicationId}** durch Ihre **ApplicationId**.
    
     ```powershell
     New-AzureRmRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
     ```
 
-Sie haben nun erstellen die Azure AD-Anwendung, die Ihnen ermöglicht, die von der benutzerdefinierten C#-Anwendung zu authentifizieren. Sie benötigen die folgenden Werte später in diesem Lernprogramm:
+Sie haben jetzt eine Azure AD-Anwendung fertig erstellt, mit der die Authentifizierung aus einer benutzerdefinierten C#-Anwendung möglich ist. Die folgenden Werte benötigen Sie später in diesem Tutorial:
 
 * TenantId
-* "SubscriptionId"
+* SubscriptionId
 * ApplicationId
 * Kennwort
 

@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 564c06c5017a77431b7d6fed7b43c47141b12252
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Datenerfassungstools für die Data Science-VM
 
 Einer der ersten technischen Schritte eines Data Science- oder KI-Projekts besteht darin, die zu verwendenden Datasets zu identifizieren und in die Analyseumgebung zu importieren. Die Data Science-VM (DSVM) bietet Tools und Bibliotheken, um Daten aus verschiedenen Quellen in einen lokalen analytischen Datenspeicher auf der DSVM oder in eine cloudbasierte oder lokale Datenplattform zu importieren. 
@@ -98,4 +96,3 @@ Im Anschluss sind einige der Datenverschiebungstools aufgeführt, die auf der DS
 |  Verwendung/Ausführung    |   Starten Sie das Microsoft-Datenverwaltungsgateway über das Startmenü.    |
 | Links zu Beispielen      | [Gateway zur Datenverwaltung](https://msdn.microsoft.com/library/dn879362.aspx)      |
 | Verwandte Tools auf der DSVM      | AzCopy, AdlCopy, bcp    |
-

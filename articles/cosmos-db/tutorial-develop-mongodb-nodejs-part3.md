@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 09/05/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: 1fb8d7b9f1014f37f0f3afa20605fce10c45a967
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>Erstellen einer MongoDB-App mit Angular und Azure Cosmos DB – Teil 3: Erstellen der Benutzeroberfläche mit Angular
 
@@ -101,7 +100,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
     > 2. Geben Sie *angular essentials* in das Suchfeld ein.
     > 3. Klicken Sie auf **Installieren**. 
     > 4. Klicken Sie auf die Schaltfläche **Erneut laden**, um die neuen Erweiterungen zu verwenden.
-    > Oder laden Sie sie unter [http://jpapa.me/angularessentials](http://jpapa.me/angularessentials) herunter. 
+    > Sie können sie auch von [http://jpapa.me/angularessentials](http://jpapa.me/angularessentials) herunterladen. 
     > ![Erweiterung „Angular Essentials“](./media/tutorial-develop-mongodb-nodejs-part3/angular-essentials-extension.png)
 
 7. Navigieren Sie wieder zur Datei **heroes.component.html**, und fügen Sie den folgenden Code ein. `<div>` ist der Container für die gesamte Seite. Der Container enthält eine Liste mit Helden, die wir erstellen müssen, damit Sie auf der Benutzeroberfläche auf einen Helden klicken können, um ihn auszuwählen und zu bearbeiten oder zu löschen. Danach folgt im HTML-Code etwas Formatierung, um deutlich zu machen, welcher Held ausgewählt wurde. Darüber hinaus gibt es einen Bearbeitungsbereich, in dem Sie einen neuen Helden hinzufügen oder einen bereits vorhandenen Helden bearbeiten können. 
@@ -559,4 +558,3 @@ Im nächsten Teil des Tutorials wird ein Azure Cosmos DB-Konto erstellt.
 
 > [!div class="nextstepaction"]
 > [Erstellen eines Azure Cosmos DB-Kontos mithilfe der Azure-Befehlszeilenschnittstelle](tutorial-develop-mongodb-nodejs-part4.md)
-

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
+ms.openlocfilehash: 592a8716dd15b25b14fed145c11e5f5714cdd41c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c4a0b047ce5c6706b51e96e8cc160c610625869e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
 ## <a name="overview"></a>Übersicht
@@ -518,7 +517,7 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
 
    **Ressourcen**
 
-* [Why We're Not Recommending "FIPS Mode" Anymore (Warum wir den „FIPS-Modus“ nicht mehr empfehlen)](http://blogs.technet.com/b/secguide/archive/2014/04/07/why-we-re-not-recommending-fips-mode-anymore.aspx)
+* [Why We're Not Recommending "FIPS Mode" Anymore (Warum wir den „FIPS-Modus“ nicht mehr empfehlen)](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
   Dieser Blogartikel bietet einen Überblick über FIPS und erläutert, warum der FIPS-Modus nicht mehr standardmäßig aktiviert ist.
 * [FIPS 140 Validation (FIPS 140-Validierung)](https://technet.microsoft.com/library/cc750357.aspx)
@@ -527,4 +526,3 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
 * ["System cryptography: Use FIPS compliant algorithms for encryption, hashing, and signing" security settings effects in Windows XP and in later versions of Windows („Systemkryptografie: Verwenden von FIPS-konformen Algorithmen für Verschlüsselung, Hashing und Signatur“ – Effekte von Sicherheitseinstellungen in Windows XP und höheren Versionen von Windows)](https://support.microsoft.com/kb/811833)
 
   Dieser Artikel behandelt die Verwendung des FIPS-Modus auf älteren Windows-Computern.
-

@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4c4391cecaf10428b5d4cacf3b39e6a08d417053
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>API zum Azure Machine Learning-Modellverwaltungskonto – Referenz
 
@@ -91,7 +90,7 @@ Registrieren eines Modells
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | OK: Die Modellregistrierung war erfolgreich | [Modell](#model) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-models-in-an-account"></a>Abfragen der Liste mit den Modellen in einem Konto
 ### <a name="request"></a>Anforderung
@@ -119,7 +118,7 @@ Dient zum Abfragen der Liste mit den Modellen in einem Konto. Die Ergebnisliste 
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich | [PaginatedModelList](#paginatedmodellist) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-model-details"></a>Abrufen der Modelldetails
 ### <a name="request"></a>Anforderung
@@ -145,7 +144,7 @@ Abrufen des Modells nach ID
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich | [Modell](#model) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
 
 ## <a name="register-a-manifest-with-the-registered-model-and-all-dependencies"></a>Registrieren eines Manifests beim registrierten Modell und allen Abhängigkeiten
 
@@ -171,7 +170,7 @@ Registrieren eines Manifests beim registrierten Modell und allen Abhängigkeiten
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Die Registrierung des Manifests war erfolgreich | [Manifest](#manifest) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-manifests-in-an-account"></a>Abfragen der Liste mit den Manifesten in einem Konto
 
@@ -200,7 +199,7 @@ Fragen Sie die Liste mit den Manifesten in einem Konto ab. Die Ergebnisliste kan
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolg | [PaginatedManifestList](#paginatedmanifestlist) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-manifest-details"></a>Abrufen der Manifestdetails
 
@@ -226,7 +225,7 @@ Abrufen von Manifesten nach ID
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolg | [Manifest](#manifest) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
 
 ## <a name="create-an-image"></a>Erstellen eines Image
 
@@ -252,7 +251,7 @@ Erstellen eines Image als Docker-Image in ACR
 | Code | Beschreibung | Header | Schema |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Die Standort-URL für den asynchronen Vorgang. Mit einem GET-Aufruf können Sie den Status der Aufgabe für die Imageerstellung anzeigen. | Operation-Location |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-images-in-an-account"></a>Abfragen der Liste mit den Images in einem Konto
 
@@ -281,7 +280,7 @@ Dient zum Abfragen der Liste mit den Images in einem Konto. Die Ergebnisliste ka
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolg | [PaginatedImageList](#paginatedimagelist) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-image-details"></a>Abrufen von Imagedetails
 
@@ -307,7 +306,7 @@ Abrufen des Image nach ID
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolg | [Image](#image) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
 
 
 ## <a name="create-a-service"></a>Erstellen eines Diensts
@@ -335,7 +334,7 @@ Erstellen eines Diensts aus einem Image
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Die Standort-URL für den asynchronen Vorgang. Mit einem GET-Aufruf können Sie den Status der Aufgabe für die Diensterstellung anzeigen. | Operation-Location |
 | 409 | Ein Dienst mit dem angegebenen Namen ist bereits vorhanden |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-services-in-an-account"></a>Abfragen der Liste mit den Diensten in einem Konto
 
@@ -369,7 +368,7 @@ Dient zum Abfragen der Liste mit den Diensten in einem Konto. Das Ergebnis kann 
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolg | [PaginatedServiceList](#paginatedservicelist) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-service-details"></a>Abrufen von Dienstdetails
 
@@ -395,7 +394,7 @@ Abrufen des Diensts nach ID
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolg | [ServiceResponse](#serviceresponse) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
 
 ## <a name="update-a-service"></a>Aktualisieren eines Diensts
 
@@ -423,7 +422,7 @@ Aktualisieren eines vorhandenen Diensts
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Die Standort-URL für den asynchronen Vorgang. Mit einem GET-Aufruf können Sie den Status der Aufgabe für die Dienstaktualisierung anzeigen. | Operation-Location |
 | 404 | Dienst mit der angegebenen ID ist nicht vorhanden |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
 
 ## <a name="delete-a-service"></a>Löschen eines Diensts
 
@@ -450,7 +449,7 @@ Dient zum Löschen eines Diensts.
 |--------------------|--------------------|--------------------|
 | 200 | Erfolg |  |
 | 204 | Dienst mit der angegebenen ID ist nicht vorhanden |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
 
 ## <a name="get-service-keys"></a>Abrufen von Dienstschlüsseln
 
@@ -476,7 +475,7 @@ Dient zum Abrufen von Dienstschlüsseln.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolg | [AuthKeys](#authkeys)
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
 
 ## <a name="regenerate-service-keys"></a>Erneutes Generieren eines Dienstschlüssels
 
@@ -503,9 +502,9 @@ Dient zum erneuten Generieren und Zurückgeben von Dienstschlüsseln.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolg | [AuthKeys](#authkeys)
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
 
-## <a name="query-the-list-of-deployments-in-an-account"></a>Abfragen der Liste mit den Bereitstellungen eines Kontos
+## <a name="query-the-list-of-deployments-in-an-account"></a>Dient zum Abfragen der Liste mit den Bereitstellungen eines Kontos.
 
 ### <a name="request"></a>Anforderung
 | Methode | Anforderungs-URI |
@@ -529,7 +528,7 @@ Dient zum Abfragen der Liste mit den Bereitstellungen eines Kontos. Die Ergebnis
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolg | [DeploymentList](#deploymentlist) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
 
 ## <a name="get-deployment-details"></a>Abrufen von Bereitstellungsdetails
 
@@ -555,7 +554,7 @@ Dient zum Abrufen von Bereitstellungen nach ID.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolg | [Bereitstellung](#deployment) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
 
 ## <a name="get-operation-details"></a>Abrufen von Vorgangsdetails
 
@@ -581,7 +580,7 @@ Dient zum Abrufen des Status von asynchronen Vorgängen nach Vorgangs-ID.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolg | [OperationStatus](#asyncoperationstatus) |
-| default | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort mit Beschreibung des Grunds für den Fehler | [ErrorResponse](#errorresponse)
 
 
 
@@ -672,7 +671,7 @@ Konfiguration zum Reservieren von Ressourcen für den Container im Cluster
 
 
 <a name="deployment"></a>
-### <a name="deployment"></a>Deployment
+### <a name="deployment"></a>Bereitstellung
 Instanz einer Azure Machine Learning-Bereitstellung
 
 
@@ -780,7 +779,7 @@ Azure Machine Learning-Manifest
 
 
 <a name="model"></a>
-### <a name="model"></a>Model
+### <a name="model"></a>Modell
 Instanz eines Azure Machine Learning-Modells
 
 
@@ -931,5 +930,4 @@ Typ der Ziellaufzeit
 |---|---|---|
 |**properties**  <br>*erforderlich*||<string, string>-Zuordnung|
 |**runtimeType**  <br>*erforderlich*|Gibt die Laufzeit an.|enum (SparkPython, Python)|
-
 

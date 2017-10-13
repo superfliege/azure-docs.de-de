@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1d79b775e97765a48be48a96cf10bc9435b4539b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Verwalten und Analysieren von Datenflussprotokollen für Netzwerksicherheitsgruppen in Azure mithilfe von Network Watcher und Graylog
 
 [Datenflussprotokolle von Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md) enthalten Informationen für ein besseres Verständnis von ein- und ausgehendem IP-Datenverkehr in Azure-Netzwerkschnittstellen. Datenflussprotokolle zeigen ausgehende und eingehende Datenflüsse pro Netzwerksicherheitsgruppe, die Netzwerkschnittstelle, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
@@ -249,4 +247,3 @@ Durch die Integration von Network Watcher mit Graylog haben Sie jetzt eine einfa
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie unter [Visualize network security group flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md) (Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI), wie Sie Ihre NSG-Datenflussprotokolle mit Power BI visualisieren.
-

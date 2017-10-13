@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: giladm
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 04c402709560775592e5500362b0d9a4ccbf5a6f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 Die SQL-Datenbank-Überprüfung in Azure verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto. Die Überwachung ermöglicht außerdem Folgendes:
@@ -67,7 +66,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Navigieren Sie zum Blatt mit den **Einstellungen** der SQL-Datenbank/des SQL Server, die bzw. den Sie überwachen möchten. Wählen Sie auf dem Blatt **Einstellungen** die Option **Überwachung und Bedrohungserkennung**.
 
-    <a id="auditing-screenshot"></a> ![Navigationsbereich][1]
+    <a id="auditing-screenshot"></a>![Navigationsbereich][1]
 3. Wenn Sie eine Serverüberwachungsrichtlinie einrichten möchten, können Sie auf dem Blatt für die Datenbanküberwachung den Link **Servereinstellungen anzeigen** auswählen. Anschließend können Sie die Serverüberwachungseinstellungen anzeigen oder ändern. Eine Standardrichtlinie für die Serverüberwachung wird auf alle vorhandenen und neu erstellten Datenbanken auf einem Server angewendet.
 
     ![Navigationsbereich][2]
@@ -80,7 +79,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
    >[!TIP]
    >Verwenden Sie für alle überwachten Datenbanken dasselbe Speicherkonto, um die Berichtvorlagen für die Überwachung optimal einzusetzen.
 
-    <a id="storage-screenshot"></a> ![Navigationsbereich][4]
+    <a id="storage-screenshot"></a>![Navigationsbereich][4]
 6. Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie PowerShell oder die REST-API verwenden. 
 7. Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature der Bedrohungserkennung aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](sql-database-threat-detection-get-started.md).
 8. Klicken Sie auf **Speichern**.
@@ -221,4 +220,3 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 [104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
 [105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditing
 [106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditing
-

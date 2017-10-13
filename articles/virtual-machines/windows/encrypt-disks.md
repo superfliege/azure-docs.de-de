@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/10/2017
 ms.author: iainfou
 ms.openlocfilehash: 98b42b252a601af090579e3939f3c7ab91c3803b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-windows-vm"></a>Verschlüsseln virtueller Datenträger auf einem virtuellen Windows-Computer
 Zum Verbessern der Sicherheit und Compliance von virtuellen Computern können virtuelle Datenträger in Azure verschlüsselt werden. Die Verschlüsselung der Datenträger basiert auf kryptografischen Schlüsseln, die in Azure Key Vault gesichert werden. Diese kryptografischen Schlüssel werden von Ihnen kontrolliert, und Sie können deren Verwendung überwachen. In diesem Artikel wird erläutert, wie Sie virtuelle Datenträger auf einem virtuellen Windows-Computer mithilfe von Azure PowerShell verschlüsseln. Sie können auch [Datenträger auf einem virtuellen Linux-Computer mithilfe von Azure CLI 2.0 verschlüsseln](../linux/encrypt-disks.md).
@@ -39,7 +39,7 @@ Gehen Sie zum Verschlüsseln eines virtuellen Computers wie folgt vor:
 ## <a name="encryption-process"></a>Verschlüsselungsvorgang
 Für die Datenträgerverschlüsselung werden folgende zusätzliche Komponenten benötigt:
 
-* **Azure Key Vault:** Schützt die für die Datenträgerverschlüsselung/-entschlüsselung verwendeten kryptografischen und geheimen Schlüssel. 
+* **Azure Key Vault:** Schützt die für die Datenträgerverschlüsselung/-entschlüsselung verwendeten kryptografischen Schlüssel und Geheimnisse. 
   * Sie können eine ggf. bereits vorhandene Azure Key Vault-Instanz verwenden. Für die Datenträgerverschlüsselung wird keine dedizierte Key Vault-Instanz benötigt.
   * Zur Trennung administrativer Grenzen und der Schlüsselsichtbarkeit können Sie eine dedizierte Key Vault-Instanz erstellen.
 * **Azure Active Directory:** Wickelt den sicheren Austausch der erforderlichen kryptografischen Schlüssel und die Authentifizierung für angeforderte Aktionen ab. 

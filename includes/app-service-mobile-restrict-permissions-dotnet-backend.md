@@ -1,20 +1,20 @@
 
-Standardmäßig können anonym APIs im Back-End für Mobile Apps aufgerufen werden. Als Nächstes müssen Sie den Zugriff auf nur authentifizierte Clients einschränken.  
+Standardmäßig können APIs auf Mobile Apps-Back-Ends anonym aufgerufen werden. Als Nächstes müssen Sie den Zugriff auf authentifizierte Clients beschränken.  
 
-* **Node.js zurück (über das Azure-Portal) enden** :  
+* **Node.js-Back-End (über das Azure-Portal):**  
 
-    Klicken Sie in Ihrer Einstellungen für Mobile Apps können auf **einfache Tabellen** , und wählen Sie die Tabelle. Klicken Sie auf **Berechtigungen ändern**Option **authentifizierter Zugriff nur** für alle Berechtigungen, und klicken Sie dann auf **speichern**.
-* **.NET back-End (c#)**:  
+    Klicken Sie in den Einstellungen von Mobile Apps auf **Einfache Tabellen**, und wählen Sie Ihre Tabelle aus. Klicken Sie auf **Berechtigungen ändern**, wählen Sie für alle Berechtigungen **Authenticated access only** (Nur authentifizierter Zugriff) aus, und klicken Sie auf **Speichern**.
+* **.NET-Back-End (C#):**  
 
-    Navigieren Sie im Server-Projekt zu **Controller** > **TodoItemController.cs**. Hinzufügen der `[Authorize]` -Attribut auf die **TodoItemController** -Klasse wie folgt. Um den Zugriff auf bestimmte Methoden zu beschränken, können Sie auch dieses Attribut nur auf diese Methoden anstelle der Klasse anwenden. Veröffentlichen Sie das Server-Projekt.
+    Navigieren Sie im Serverprojekt zu **Controller** > **TodoItemController.cs**. Fügen Sie das `[Authorize]`-Attribut der **TodoItemController**-Klasse wie folgt hinzu: Um den Zugriff auf bestimmte Methoden zu beschränken, können Sie dieses Attribut auch nur auf diese Methoden anstelle der Klasse anwenden. Veröffentlichen Sie das Serverprojekt erneut.
 
         [Authorize]
         public class TodoItemController : TableController<TodoItem>
 
 * **Node.js-Back-End (über Node.js-Code)** :  
 
-    Um die Authentifizierung für den Zugriff auf Tabellen benötigen, fügen Sie die folgende Zeile am Node.js-Server-Skript:
+    Um für den Zugriff auf Tabellen eine Authentifizierung anzufordern, fügen Sie die folgende Zeile in das Node.js-Serverskript ein:
 
         table.access = 'authenticated';
 
-    Weitere Informationen finden Sie unter [Vorgehensweise: Authentifizierung für den Zugriff auf Tabellen](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth). Zum Herunterladen von Schnellstart Codeprojekt aus Ihrer Website finden Sie unter [Vorgehensweise: Herunterladen von Node.js Back-End-Schnellstart Codeprojekt mithilfe von Git](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart).
+    Ausführlichere Informationen finden Sie unter [Erzwingen der Authentifizierung für den Zugriff auf Tabellen](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth). Informationen zum Herunterladen des Schnellstart-Codeprojekts von Ihrer Website finden Sie unter [Herunterladen des Schnellstart-Codeprojekts für das Node.js-Back-End mithilfe von Git](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart).

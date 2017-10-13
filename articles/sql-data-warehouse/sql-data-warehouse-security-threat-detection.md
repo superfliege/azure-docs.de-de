@@ -16,10 +16,10 @@ ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
 ms.openlocfilehash: f4a2376fe4fb710d031c35ca7fdbf4c7bb0f3caa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-threat-detection"></a>Erste Schritte mit der Bedrohungserkennung
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anomale Datenbankakt
 2. Navigieren Sie zum Konfigurationsblatt des SQL Data Warehouse, das Sie überwachen möchten. Wählen Sie auf dem Blatt „Einstellungen“ die Option **Überwachung und Bedrohungserkennung**.
    
     ![Navigationsbereich][1]
-3. **Aktivieren** Sie die Überwachung auf dem Blatt für die Konfiguration der **Überwachung und Bedrohungserkennung**. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.
+3. **Aktivieren Sie** auf dem Konfigurationsblatt für die **Überwachung und Bedrohungserkennung** die Überwachung. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.
    
     ![Navigationsbereich][2]
 4. Aktivieren Sie **** die Bedrohungserkennung.

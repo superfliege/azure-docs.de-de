@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
 ms.openlocfilehash: 8d39aafb0ab7b0e87afdf4d2f50f1e224b8d251f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Verschlüsseln eines virtuellen Azure-Computers
 Azure Security Center gibt eine Warnung aus, wenn Sie über nicht verschlüsselte virtuelle Computer verfügen. Dies wird als Warnung mit hohem Schweregrad angezeigt. Empfohlen wird in diesem Fall die Verschlüsselung der virtuellen Computer.
@@ -115,7 +115,7 @@ Die Ausgabe des Skripts sieht etwa wie folgt aus:
 ## <a name="encrypt-the-azure-virtual-machine"></a>Verschlüsseln des virtuellen Azure-Computers
 Sie können Ihren virtuellen Computer nun verschlüsseln. Wenn sich Ihr virtueller Computer in der gleichen Ressourcengruppe wie Ihr Schlüsseltresor befindet, können Sie zum Abschnitt mit den Verschlüsselungsschritten weitergehen. Wenn der virtuelle Computer sich jedoch nicht in der gleichen Ressourcengruppe wie der Schlüsseltresor befindet, geben Sie in die Konsole von PowerShell ISE Folgendes ein:
 
-**$resourceGroupName = <‘Virtual_Machine_RG’>**
+**$resourceGroupName = &lt;‘Virtual_Machine_RG’&gt;**
 
 Ersetzen Sie **<Virtual_Machine_RG>** durch den Namen der Ressourcengruppe, in der sich die virtuellen Computer befinden (in einfachen Anführungszeichen). Betätigen Sie anschließend die **EINGABETASTE**.
 Geben Sie in die PowerShell ISE-Konsole Folgendes ein, um zu bestätigen, dass der richtige Ressourcengruppenname eingegeben wurde:
@@ -129,7 +129,7 @@ Betätigen Sie die **EINGABETASTE**. Der Name der Ressourcengruppe, in der sich 
 ### <a name="encryption-steps"></a>Verschlüsselungsschritte
 Geben Sie in PowerShell zunächst den Namen des zu verschlüsselnden virtuellen Computers an. Geben Sie in der Konsole Folgendes ein:
 
-**$vmName = <’Ihr_VM-Name’>**
+**$vmName = &lt;’Ihr_VM-Name’&gt;**
 
 Ersetzen Sie **<’Ihr_VM-Name’>** durch den Namen des virtuellen Computers (in einfachen Anführungszeichen), und betätigen Sie dann die **EINGABETASTE**.
 

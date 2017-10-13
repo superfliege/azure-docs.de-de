@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/03/2017
 ms.author: carlrab
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 74b04cb7737011423556cbd956ecef770ac82ad4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sql-database-customer-implementation-technical-studies"></a>Azure SQL-Datenbank-Kundenimplementierungen – technische Details – Studien
 
@@ -39,4 +38,3 @@ ms.lasthandoff: 09/09/2017
 - [Microsoft Dynamics](https://customers.microsoft.com/story/dynamics365operationsproductteam): In dieser kurzen Fallstudie werden die bewährten Methoden und Erkenntnisse vorgestellt, die die Dynamics 365 for Operations-Produktteams bei der Migration zu Azure SQL-Datenbank gewonnen haben, um Kunden ein vollständig verwaltetes SaaS-Angebot (Software as a Service) zu bieten. Mithilfe von Azure SQL-Datenbank war das Dynamics 365 for Operations-Team in der Lage, den Dienst mit einer deutlich kleineren Anzahl von Mitarbeitern zu verwalten und zu betreiben und mühelos leistungsstarke Verwaltungsfunktionen zu skalieren. Hierzu zählen z.B. Funktionen zur automatischen Datenbanksicherung, Aufbewahrung von Datenbanksicherungen sowie Funktionen für hohe Verfügbarkeit und die Notfallwiederherstellung. Diese Faktoren und die Möglichkeit, Datenbanken mit einfacher Automatisierung auszustatten, hat Azure SQL-Datenbank zu einer hervorragenden Plattform für die Bereitstellung umfangreicher Dienste gemacht.
 
 - [Microsoft OneDrive und SharePoint Online](https://customers.microsoft.com/story/microsoft-azure-sql-database-dicrete-manufacturing-united-states): Diese kurze Fallstudie vermittelt Hintergrundinformationen zur Migration von Microsoft OneDrive und SharePoint Online zu Azure SQL-Datenbank und beschreibt, wie diese Migration nahezu unbegrenzte elastische Kapazitätsverwaltung ermöglichte und dabei Betriebskosten und Infrastrukturmehraufwand beträchtlich reduzierte.
-

@@ -1,19 +1,19 @@
-### <a name="create-a-tcp-endpoint-for-the-virtual-machine"></a>Erstellen Sie einen TCP-Endpunkt für den virtuellen Computer
-Um SQL Server über das Internet zugreifen zu können, benötigen den virtuellen Computer einen Endpunkt zum Abhören von eingehenden TCP-Kommunikation. Diese Azure-Konfigurationsschritt leitet eingehenden TCP-Port-Datenverkehr an einen TCP-Port, der für die virtuelle Maschine zugänglich ist.
+### <a name="create-a-tcp-endpoint-for-the-virtual-machine"></a>Erstellen eines TCP-Endpunkts für den virtuellen Computer
+Für den Zugriff auf SQL Server über das Internet benötigt der virtuelle Computer einen Endpunkt, um nach eingehender TCP-Kommunikation zu lauschen. Dieser Azure-Konfigurationsschritt leitet den eingehenden Datenverkehr des TCP-Ports zu einem TCP-Port, auf den der virtuelle Computer zugreifen kann.
 
 > [!NOTE]
-> Wenn Sie innerhalb der gleichen Cloud-Dienst oder virtuellen Netzwerk verbinden, müssen Sie keinen öffentlich zugängliche Endpunkt zu erstellen. In diesem Fall können Sie mit dem nächsten Schritt fortfahren. Weitere Informationen finden Sie unter [Verbindungsszenarien](../articles/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect.md#connection-scenarios).
+> Wenn die Verbindung innerhalb desselben Clouddiensts oder innerhalb desselben virtuellen Netzwerks erfolgt, müssen Sie keinen Endpunkt mit öffentlichem Zugriff erstellen. In diesem Fall können Sie mit dem nächsten Schritt fortfahren. Weitere Informationen finden Sie unter [Verbindungsszenarien](../articles/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect.md#connection-scenarios).
 > 
 > 
 
-1. Wählen Sie im Azure-Verwaltungsportal **virtuelle Computer (klassisch)**.
-2. Anschließend wählen Sie die SQL Server-Computer.
-3. Wählen Sie **Endpunkte**, und klicken Sie dann auf die **hinzufügen** Schaltfläche oben auf dem Blatt "Endpunkte".
+1. Wählen Sie im Azure-Portal **Virtuelle Computer (klassisch)**aus.
+2. Wählen Sie dann Ihren virtuellen Computer mit SQL Server aus.
+3. Wählen Sie **Endpunkte** aus, und klicken Sie dann oben auf dem Blatt „Endpunkte“ auf die Schaltfläche **Hinzufügen**.
    
-    ![Portal Schritte zum Erstellen des](./media/virtual-machines-sql-server-connection-steps/portal-endpoint-creation.png)
-4. Auf der **Add Endpoint** Blatt bieten eine **Namen** z. B. SQLEndpoint.
-5. Wählen Sie **TCP** für die **Protokoll**.
-6. Für **öffentlichen Port**, geben Sie z. B. eine Portnummer **57500**.
-7. Für **privaten Port**, geben Sie die SQL Server Überwachungsport, dessen Standard **1433**.
-8. Klicken Sie auf **Ok** einen Endpunkt erstellen.
+    ![Schritte im Portal für die Endpunkterstellung](./media/virtual-machines-sql-server-connection-steps/portal-endpoint-creation.png)
+4. Geben Sie auf dem Blatt **Endpunkt hinzufügen** einen **Namen** wie „SQLEndpoint“ ein.
+5. Wählen Sie **TCP** als **Protokoll** aus.
+6. Geben Sie für **Öffentlicher Port** eine Portnummer wie **57500** an.
+7. Geben Sie für **Privater Port** den SQL Server-Lauschport an. Standardmäßig ist dies **1433**.
+8. Klicken Sie auf **OK** , um den Endpunkt zu erstellen.
 

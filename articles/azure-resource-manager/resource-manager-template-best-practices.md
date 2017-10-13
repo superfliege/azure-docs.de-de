@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: tomfitz
 ms.openlocfilehash: a23301ba88279af3f7bf4d353ae808e9eeb0900d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-for-creating-azure-resource-manager-templates"></a>Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen
 Anhand dieser Leitfäden können Sie zuverlässige und benutzerfreundliche Azure Resource Manager-Vorlagen erstellen. Bei diesen Richtlinien handelt es sich lediglich um Vorschläge. Sie müssen nicht zwingend eingehalten werden (es sei denn, es ist etwas anderes angegeben). Für Ihr Szenario muss einer der folgenden Ansätze oder eines der folgenden Beispiel unter Umständen angepasst werden.

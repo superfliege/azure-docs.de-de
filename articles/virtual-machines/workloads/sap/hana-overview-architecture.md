@@ -11,15 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 10/02/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 63e1820033e051b72601291c5206772192e68769
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 0fa1ac4f9e9711332c568e84f86d132508eb185f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/05/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Übersicht und Architektur von SAP HANA in Azure (große Instanzen)
 
@@ -183,7 +182,7 @@ Einige Beispiele für die Ausführung mehrerer SAP HANA-Instanzen könnte wie fo
 | SKU | Arbeitsspeichergröße | Speichergröße | Größen mit mehreren Datenbanken |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 1x768 GB HANA-Instanz<br /> oder 1x512 GB-Instanz + 1x256-GB-Instanz<br /> oder 3x256 GB-Instanzen | 
-| S72m | 768 GB | 3 TB | 3x512 GB HANA-Instanzen<br />oder 1x512 GB-Instanz + 1x1 TB-Instanz<br />oder 6x256 GB-Instanzen<br />oder 1x1,5 TB-Instanzen | 
+| S72m | 1,5 TB | 6 TB | 3x512 GB HANA-Instanzen<br />oder 1x512 GB-Instanz + 1x1 TB-Instanz<br />oder 6x256 GB-Instanzen<br />oder 1x1,5 TB-Instanzen | 
 | S192m | 4 TB | 16 TB | 8x512 GB-Instanzen<br />oder 4x1 TB-Instanzen<br />oder 4x512 GB-Instanzen + 2x1 TB-Instanzen<br />oder 4x768 GB-Instanzen + 2x512 TB-Instanzen<br />oder 1x4 TB-Instanz |
 | S384xm | 8 TB | 22 TB | 4x2 TB-Instanzen<br />oder 2x4 TB-Instanz<br />oder 2x3 TB-Instanzen + 1x2 TB-Instanzen<br />oder 2x2,5 TB-Instanzen + 1x3 TB-Instanzen<br />oder 1x8 TB-Instanz |
 
@@ -483,6 +482,5 @@ Die obige Abbildung zeigt, wie die verschiedenen Azure-VNETs in beiden Regionen 
 
 > [!IMPORTANT] 
 > Wenn mehrere ExpressRoute-Verbindungen verwendet werden, sollten die Einstellungen „AS Path prepending“ und „Local Preference BGP“ verwendet werden, um ein ordnungsgemäßes Routing des Datenverkehrs sicherzustellen.
-
 
 

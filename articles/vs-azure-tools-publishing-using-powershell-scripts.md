@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
+ms.openlocfilehash: 92753860ec820172e46f483831eb0c1cf1acb038
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: ba36ad0f46ce681b61acc576448fd36441b43f72
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Veröffentlichung in Entwicklungs- und Testumgebungen mithilfe von Windows PowerShell-Skripts
 Wenn Sie eine Webanwendung in Visual Studio erstellen, können Sie ein Windows PowerShell-Skript generieren. Mit diesem können Sie später die Veröffentlichung Ihrer Website in Azure als Web-App im Azure App Service oder als virtueller Computer automatisieren. Sie können das Windows PowerShell-Skript im Visual Studio-Editor entsprechend Ihren Anforderungen bearbeiten und erweitern oder das Skript in vorhandene Build-, Test- und Veröffentlichungsskripts integrieren.
@@ -344,4 +343,3 @@ Wenn Sie Hilfe zu Funktionen abrufen möchten, können Sie an der Windows PowerS
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur PowerShell-Skripterstellung finden Sie unter [Skripterstellung mit Windows PowerShell](https://technet.microsoft.com/library/bb978526.aspx). Weitere Azure PowerShell-Skripts finden Sie im [Script Center](https://azure.microsoft.com/documentation/scripts/).
-

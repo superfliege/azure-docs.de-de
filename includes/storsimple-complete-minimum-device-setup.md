@@ -1,39 +1,39 @@
 <!--author=alkohli last changed: 9/17/15-->
 
-#### <a name="to-complete-the-minimum-storsimple-device-setup"></a>Die Mindestkonfiguration des StorSimple-Gerät abgeschlossen
-1. In der **Geräte** Seite, wählen Sie das Gerät, klicken Sie auf den Pfeil für den Gerätenamen, um zur Seite "Gerät" zu wechseln. 
+#### <a name="to-complete-the-minimum-storsimple-device-setup"></a>So führen Sie die mindestens erforderliche StorSimple-Gerätekonfiguration aus
+1. Wählen Sie auf der Seite **Geräte** das Gerät aus, klicken Sie auf den Pfeil neben dem Gerätenamen, um zur Seite für dieses Gerät zu wechseln. 
    
-    ![Seite "Geräte" mit Gerät online](./media/storsimple-complete-minimum-device-setup/HCS_DevicesPageM-include.png) 
-2. Klicken Sie auf Symbol "Schnellstart" ![Quick-Startsymbol](./media/storsimple-complete-minimum-device-setup/HCS_QuickStartIcon-include.png) auf die schnellstartseite Gerät zugreifen. Klicken Sie auf **Ausführen des gerätesetups** zum Starten der **Gerät konfigurieren** Assistenten.
+    ![Geräteseite mit online geschaltetem Gerät](./media/storsimple-complete-minimum-device-setup/HCS_DevicesPageM-include.png) 
+2. Klicken Sie auf das Schnellstartsymbol ![Schnellstart-Symbol](./media/storsimple-complete-minimum-device-setup/HCS_QuickStartIcon-include.png) , um auf die Schnellstartseite für das Gerät zuzugreifen. Klicken Sie auf **Geräteinstallation abschließen** , um den **Assistenten zum Konfigurieren von Geräten** zu starten.
    
-    ![Seite "Schnellstart" Gerät](./media/storsimple-complete-minimum-device-setup/Device_Quick_Start_page_1M.png)
-3. Auf der **Grundeinstellungen** Seite, gehen Sie folgendermaßen vor:
+    ![Schnellstartseite für das Gerät](./media/storsimple-complete-minimum-device-setup/Device_Quick_Start_page_1M.png)
+3. Gehen Sie auf der Seite **Grundeinstellungen** folgendermaßen vor:
    
-   1. Geben Sie einen **Anzeigenamen** für Ihr Gerät. Der Standardname für das Gerät gibt Informationen wie Gerätemodell und Seriennummer. Sie können einen Anzeigenamen mit bis zu 64 Zeichen enthalten, Ihr Gerät verwalten zuweisen.
-   2. Legen Sie die **Zeitzone** basierend auf dem geografischen Standort, in dem das Gerät bereitgestellt wird. Ihr Gerät verwendet diese Zeitzone für alle geplanten Vorgänge.
-   3. Klicken Sie unter **DNS-Einstellungen**, geben Sie eine Adresse für Ihre **sekundären DNS-Server**. Wenn Sie IPv6 verwenden, wird das Feld basierend auf dem IPv6-Präfix, das in Windows PowerShell-Schnittstelle bereitgestellten aufgefüllt. 
-      Wenn der sekundäre DNS-Server nicht konfiguriert ist, werden Sie nicht zulässig auf Ihrem Gerätekonfiguration zu speichern.
-   4. Aktivieren Sie unter den Schnittstellen des iSCSI-aktiviert mindestens ein Netzwerk für iSCSI. Mindestens eine Netzwerkschnittstelle muss cloudaktiviert sein, und eine Schnittstelle muss iSCSI-aktiviert sein. DATA 0 ist automatisch cloudaktiviert.
+   1. Geben Sie einen **Anzeigenamen** für Ihr Gerät an. Der Standardgerätename enthält Informationen zum Gerätemodell und zur Seriennummer. Sie können einen Anzeigenamen zuweisen, der bis zu 64 Zeichen lang ist, um Ihr Gerät zu verwalten.
+   2. Legen Sie die **Zeitzone** basierend auf dem geografischen Standort fest, an dem das Gerät bereitgestellt wird. Ihr Gerät verwendet diese Zeitzone für alle geplanten Vorgänge.
+   3. Geben Sie unter **DNS-Einstellungen** eine Adresse für **Sekundärer DNS-Server** an. Wenn Sie IPv6 verwenden, wird das Feld basierend auf dem IPv6-Präfix ausgefüllt, das in der Windows PowerShell-Benutzeroberfläche angegeben wurde. 
+      Wenn der sekundäre DNS-Server nicht konfiguriert ist, können Sie Ihre Gerätekonfiguration nicht speichern.
+   4. Aktivieren Sie unter "Aktivierte iSCI Schnittstellen" mindestens ein Netzwerk für iSCSI. Mindestens eine Netzwerkschnittstelle muss cloudfähig sein, und eine Schnittstelle muss iSCSI-aktiviert sein. DATA 0 ist automatisch cloudfähig.
       
-      ![Grundlegende Einstellungen für StorSimple Mindestanforderungen für Geräte einrichten](./media/storsimple-complete-minimum-device-setup/HCS_MinDeviceSetupBasicSettings1-include.png)
-4. Klicken Sie auf das Pfeilsymbol. ![StorSimple-Symbol "Pfeil"](./media/storsimple-complete-minimum-device-setup/HCS_ArrowIcon-include.png)
-5. Auf der **Netzwerkschnittstellen** Seite, geben Sie die festen IP-Adressen für Controller 0 und Controller 1. Wenn die DATA 0-Schnittstelle für IPv4 konfiguriert wurde, müssen die festen IP-Adressen im IPv4-Format angegeben werden. Wenn Sie ein Präfix für die IPv6-Konfiguration angegeben, werden die festen IP-Adressen in diesen Feldern automatisch aufgefüllt.
+      ![Grundlegende Einstellungen für die minimale Konfiguration von StorSimple-Geräten](./media/storsimple-complete-minimum-device-setup/HCS_MinDeviceSetupBasicSettings1-include.png)
+4. Klicken Sie auf das Pfeilsymbol. ![StorSimple, Pfeilsymbol](./media/storsimple-complete-minimum-device-setup/HCS_ArrowIcon-include.png)
+5. Geben Sie auf der Seite **Netzwerkschnittstellen** die festen IP-Adressen für Controller 0 und Controller 1 an. Wenn die DATA 0-Schnittstelle für IPv4 konfiguriert wurde, müssen die festen IP-Adressen im IPv4-Format angegeben werden. Wenn Sie ein Präfix für die IPv6-Konfiguration angegeben haben, werden die festen IP-Adressen in diesen Feldern automatisch mit Daten aufgefüllt.
 
     > [!NOTE] 
-    > - Die festen IP-Adressen des Controllers müssen freie IP-Adressen innerhalb des Subnetzes, das die IP-Adresse des Geräts zugänglich sein.
-    > - Die festen IP-Adressen für den Controller für die Wartung der Updates auf dem Gerät verwendet werden darf, und daher die feste IP-Adressen routingfähig mit dem Internet herstellen können.
+    > - Die festen IP-Adressen des Controllers müssen freie IP-Adressen in dem Subnetz sein, auf das die IP-Adresse des Geräts zugreifen kann.
+    > - Die festen IP-Adressen für den Controller werden dazu verwendet, die Updates für das Gerät vorzunehmen. Daher ist es erforderlich, dass die festen IP-Adressen routingfähig und für Verbindungen mit dem Internet geeignet sind.
 
-    ![StorSimple minimale geräteeinrichtung – Schnittstellen](./media/storsimple-complete-minimum-device-setup/HCS_MinDeviceSetupNetworkInterfaces2-include.png)
+    ![Netzwerkschnittstellen für die minimale Konfiguration von StorSimple-Geräten](./media/storsimple-complete-minimum-device-setup/HCS_MinDeviceSetupNetworkInterfaces2-include.png)
 
-1. Klicken Sie auf das Häkchensymbol ![StorSimple Häkchensymbol](./media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-include.png).
-   Sie gelangen zurück auf das Gerät **Schnellstart** Seite.
+1. Klicken Sie auf das Häkchensymbol ![StorSimple, Häkchensymbol](./media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-include.png)an.
+   Sie gelangen zurück auf die Seite **Schnellstart** des Geräts.
    
    > [!NOTE]
-   > Sie können alle anderen geräteeinstellungen jederzeit ändern, indem Sie den Zugriff auf die **konfigurieren** Seite.
+   > Alle anderen Geräteeinstellungen können über die Seite **Konfigurieren** des Geräts.
    > 
    > 
 
-![Video zur Verfügung](./media/storsimple-complete-minimum-device-setup/Video_icon.png) **Video verfügbar**
+![Video verfügbar](./media/storsimple-complete-minimum-device-setup/Video_icon.png)**Video verfügbar**
 
-Um ein Video zu beobachten, die mindestens erforderliche gerätesetup veranschaulicht, klicken Sie auf [hier](https://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/).
+Sie können sich [hier](https://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/)ein Video anschauen, in dem die mindestens erforderliche Gerätekonfiguration demonstriert wird.
 

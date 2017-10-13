@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
 ms.openlocfilehash: eab135d10c0d6df8ca72ac47d6804017a998a3d2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-remote-desktop-with-azure-roles"></a>Verwendung von Remotedesktop mit Azure-Rollen
 Mit dem Azure SDK und Remotedesktopdiensten greifen Sie auf Azure-Rollen und virtuelle Computer zu, die von Azure gehostet werden. In Visual Studio können Sie Remotedesktopdienste in einem Azure-Clouddienstprojekt konfigurieren. Zum Aktivieren von Remotedesktopdiensten müssen Sie ein Arbeitsprojekt mit einer Rolle oder mehreren Rollen erstellen und es anschließend in Azure veröffentlichen.

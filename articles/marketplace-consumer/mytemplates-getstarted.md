@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: vybavar
 ms.openlocfilehash: 01657619cbe579c6818a790cc3ab95a33936a565
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-private-templates-on-the-azure-portal"></a>Erste Schritte mit privaten Vorlagen im Azure-Portal
 Eine [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) -Vorlage ist eine deklarative Vorlage, die zum Definieren Ihrer Bereitstellung verwendet wird. Sie können die für eine Lösung bereitzustellenden Ressourcen definieren und Parameter und Variablen angeben, die die Eingabe von Werten für verschiedene Umgebungen ermöglichen. Die Vorlage besteht aus JSON und Ausdrücken, mit denen Sie Werte für die Bereitstellung erstellen können.

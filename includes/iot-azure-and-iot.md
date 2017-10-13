@@ -13,7 +13,7 @@ Die [Azure IoT Suite][lnk-iot-suite] bietet umfassende End-to-End-Implementierun
 
 ## <a name="iot-solution-architecture"></a>Architektur einer IoT-Lösung
 
-Das folgende Diagramm zeigt die Architektur einer typischen IoT-Lösung. Es enthält keine Namen von bestimmten Azure-Diensten, sondern beschreibt die wichtigsten Elemente in der Architektur einer generischen IoT-Lösung. In dieser Architektur werden von IoT-Geräten Daten erfasst und an ein Cloudgateway gesendet. Das Cloudgateway macht die Daten für die Verarbeitung durch andere Back-End-Dienste verfügbar. Das Lösungs-Back-End stellt Daten für Branchenanwendungen oder über ein Dashboard oder einen Bericht für Bedienpersonal zur Verfügung.
+Das folgende Diagramm zeigt die Architektur einer typischen IoT-Lösung. Es enthält keine Namen von bestimmten Azure-Diensten, sondern beschreibt die wichtigsten Elemente in der Architektur einer generischen IoT-Lösung. In dieser Architektur werden von IoT-Geräten Daten erfasst und an ein Cloud-Gateway gesendet. Das Cloudgateway macht die Daten für die Verarbeitung durch andere Back-End-Dienste verfügbar. Das Lösungs-Back-End stellt Daten für Branchenanwendungen oder über ein Dashboard oder einen Bericht für Bedienpersonal zur Verfügung.
 
 ![Architektur einer IoT-Lösung][img-solution-architecture]
 

@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-the-global-settings-of-your-application"></a>Verwaltung der globalen Einstellungen Ihrer Anwendung
 Die verfügbaren Optionen im Menü **Einstellungen** für eine Anwendung variieren abhängig von der Plattform der Anwendung und den Berechtigungen, die Sie der Anwendung erteilt haben. Dazu zählen: Details, Projekte, Systemeigener Push, Pushgeschwindigkeit, Tag (App-Info) und Kommerzieller Druck. Die Menüoption „Tag“ (App-Info) im Abschnitt „Einstellungen“ kann von der Anwendung (mithilfe des SDK) oder von Ihrem Back-End (mithilfe der Device-API) verwaltet werden. 

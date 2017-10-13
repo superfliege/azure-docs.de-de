@@ -1,6 +1,6 @@
 ---
-title: "Azure Scheduler-Dokumentation – Lernprogramme, API-Referenz | Microsoft Docs"
-description: "Erfahren Sie, wie Planer Planen und das Aufrufen von Aufträgen, z. B. wiederkehrende Anwendungsaktionen und Routinewartung verwenden. Lernprogramme, API-Referenzen und mehr."
+title: "Dokumentation für Azure Scheduler – Tutorials, API-Referenz | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mithilfe von Scheduler Aufträge (beispielsweise wiederkehrende Anwendungsaktionen oder routinemäßige Wartungsaufgaben) planen und aufrufen. Tutorials, API-Referenzen und mehr."
 services: scheduler
 author: carolz
 manager: carolz
@@ -13,14 +13,14 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 ms.openlocfilehash: 4883e5689a639259ec1c0bcd31e1016f85af5d66
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="scheduler-documentation"></a>Scheduler-Dokumentation
+# <a name="scheduler-documentation"></a>Dokumentation zu Scheduler
 
-Informationen Sie zum Verwenden der Planer zum Planen und automatisch Aufrufen von wiederholten Jobs in der Cloud. Lernprogramme, API-Referenzen und Weitere Dokumentationen zeigen planen und Überwachen von Aufträgen wie wiederkehrende Anwendungsaktionen und routinewartungsmaßnahmen ausführen.
+Hier erfahren Sie, wie Sie mithilfe von Scheduler wiederkehrende Aufträge in der Cloud planen und automatisch aufrufen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Aufträge (beispielsweise wiederkehrende Anwendungsaktionen oder routinemäßige Wartungsaufgaben) planen und überwachen.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -34,7 +34,7 @@ Informationen Sie zum Verwenden der Planer zum Planen und automatisch Aufrufen v
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erfahren Sie mehr über die Planer</h3>
+                        <h3>Informationen zu Scheduler</h3>
                     </div>
                 </div>
             </div>

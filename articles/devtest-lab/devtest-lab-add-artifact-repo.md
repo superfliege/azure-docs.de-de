@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: e0fb8b3c991d3f95acef77b37929fb5f6dc06242
-ms.contentlocale: de-de
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Hinzufügen eines Git-Repositorys zum Speichern von benutzerdefinierten Artefakten und Resource Manager-Vorlagen
 
@@ -71,7 +70,7 @@ Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wich
 10. Fahren Sie mit dem Abschnitt [Verbinden des Labs mit dem Repository](#connect-your-lab-to-the-repository) fort.
 
 ## <a name="connect-your-lab-to-the-repository"></a>Verbinden des Labs mit dem Repository
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 2. Wählen Sie **Weitere Dienste** und dann in der Liste der Dienste **DevTest Labs** aus.
 3. Wählen Sie in der Liste mit den Labs Ihr Lab aus. 
 4. Wählen Sie **Konfiguration und Richtlinien** > **Repositorys** > **+ Hinzufügen** aus.
@@ -99,4 +98,3 @@ Nachdem Sie Ihr privates Git-Repository erstellt haben, können Sie nach Bedarf 
 * [Erstellen Sie Umgebungen mit mehreren VMs und PaaS-Ressourcen mit Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md). Anschließend können Sie die Vorlagen in Ihrem privaten Repository speichern.
 
 Wenn Sie einen virtuellen Computer erstellen, können Sie überprüfen, ob die Artefakte oder Vorlagen Ihrem Git-Repository hinzugefügt werden. Sie sind sofort in der Liste der Artefakte oder Vorlagen verfügbar. Der Name Ihres privaten Repositorys wird in der Spalte angezeigt, die die Quelle angibt. 
-

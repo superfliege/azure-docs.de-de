@@ -16,10 +16,10 @@ ms.custom: tables
 ms.date: 07/12/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 3c166acb17193caae32d7bad133ec510ff679353
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="distributed-data-and-distributed-tables-for-massively-parallel-processing-mpp"></a>Verteilte Daten und verteilte Tabellen für MPP (Massively Parallel Processing)
 Es wird beschrieben, wie Benutzerdaten in Azure SQL Data Warehouse und Parallel Data Warehouse – den MPP-Systemen (Massively Parallel Processing) von Microsoft – verteilt werden. Wenn Sie Ihr Data Warehouse so entwerfen, dass verteilte Daten effektiv verwendet werden, können Sie Vorteile der MPP-Architektur in Bezug auf die Abfrageverarbeitung nutzen. Einige Entscheidungen beim Datenbankentwurf können erhebliche Auswirkungen auf die Verbesserung der Abfrageleistung haben.  

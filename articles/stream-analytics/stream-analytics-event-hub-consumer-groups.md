@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: ede3137de92e251f4ad020bc1ce3f041918242b2
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="debug-azure-stream-analytics-with-event-hub-receivers"></a>Debuggen von Azure Stream Analytics mit Event Hub-Empfängern
 
 Sie können Azure Event Hubs in Azure Stream Analytics nutzen, um Daten in einem Auftrag zu erfassen oder aus diesem auszugeben. Eine bewährte Methode beim Arbeiten mit Event Hubs ist die Verwendung mehrerer Consumergruppen, um die Skalierbarkeit von Aufträgen sicherzustellen. Ein Grund hierfür ist, dass die Anzahl der Leser im Stream Analytics-Auftrag für eine bestimmte Eingabe sich auf die Anzahl der Leser in einer einzelnen Consumergruppe auswirkt. Die genaue Anzahl der Empfänger basiert auf internen Implementierungsdetails für die Logik der horizontalen Skalierungstopologie. Die Anzahl der Empfänger wird nicht extern verfügbar gemacht. Die Anzahl der Leser kann sich entweder zur Startzeit des Auftrags oder im Verlauf von Auftragsaktualisierungen ändern.
@@ -90,4 +88,3 @@ Um weitere Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](ht
 * [Skalieren von Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Referenz zur Stream Analytics-Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenz zur REST-API für die Stream Analytics-Verwaltung](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-

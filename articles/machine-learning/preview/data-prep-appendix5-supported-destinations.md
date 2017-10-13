@@ -12,14 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 415ceba02eb3c8da3de5ab3aa6980fbe5bae2db9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="supported-data-exports-for-this-preview"></a>Unterstützte Datenexporte für diese Vorschau 
 Es können Exporte in verschiedene Formate durchgeführt werden. Bei diesen Formaten können die Zwischenergebnisse der Datenvorbereitung beibehalten werden, bevor diese in den restlichen Workflows Machine Learning-Workflow integriert werden.
 
@@ -58,5 +56,4 @@ Lokale Festplatte oder zugeordneter Netzwerkspeicherort
 
 ### <a name="azure-blob"></a>Azure-BLOB 
 Für Azure Storage (BLOB) ist ein Azure-Abonnement erforderlich.
-
 

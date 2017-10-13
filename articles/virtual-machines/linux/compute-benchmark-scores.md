@@ -13,15 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/11/2017
+ms.date: 09/25/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 0d0bd736ddbdf1c4b4344747130236df2af76138
-ms.contentlocale: de-de
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: 3c7b34652ea4c9340b9fe7f6ada3f9992642aeac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Compute-Benchmarkergebnisse für virtuelle Linux-Computer
 Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äußerst leistungsfähig Azure-VMs unter Ubuntu. Compute-Benchmarkergebnisse stehen auch für [virtuelle Windows-Computer](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)zur Verfügung.
@@ -91,5 +89,4 @@ Die Linux-Zahlen wurden durch die Ausführung von [CoreMark](http://www.eembc.or
 ## <a name="next-steps"></a>Nächste Schritte
 * Speicherkapazitäten, Details zu Datenträgern und weitere Überlegungen zur Auswahl von Größen für virtuelle Computer finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Laden Sie zum Ausführen des CoreMark-Skripts auf virtuellen Linux-Computern das [CoreMark-Skriptpaket](http://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip)herunter.
-
 

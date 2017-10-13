@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 06/01/2017
 ms.author: valthom; ladocs
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: 9fb0258df3f45d121cda49d3b5c274bd9548c832
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>Herstellen einer Verbindung mit einem IBM MQ-Server aus einer Logik-App mit dem MQ-Connector 
 
 Der Microsoft-Connector für MQ sendet und empfängt Nachrichten, die lokal oder in Azure auf einem MQ-Server gespeichert sind. Dieser Connector umfasst einen Microsoft-Client zum Kommunizieren mit einem IBM MQ-Remoteserver über ein TCP/IP-Netzwerk. Das vorliegende Dokument ist ein Leitfaden für den Einstieg in die Verwendung des MQ-Connectors. Es wird empfohlen, dass Sie zunächst nach einer einzelnen Nachricht in einer Warteschlange suchen und dann die weiteren Aktionen ausprobieren.    
@@ -126,4 +124,3 @@ Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Besch
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
-

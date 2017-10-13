@@ -1,6 +1,6 @@
 ---
 title: "Datenmodell für Azure Backup"
-description: "In diesem Artikel dreht Details für die Power BI Modells für Azure Backup-Berichte."
+description: "In diesem Artikel werden die Details des Power BI-Datenmodells für Azure Backup-Berichte vorgestellt."
 services: backup
 documentationcenter: 
 author: JPallavi
@@ -16,184 +16,184 @@ ms.date: 06/26/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: efecbc9f1c410744f49795889c4ec3cc618f07e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Datenmodell für Azure Backup-Berichte
-Dieser Artikel beschreibt die Power BI-Datenmodell, die zum Erstellen von Azure Backup-Berichten verwendet. Mit diesem Datenmodell, können Sie vorhandene Berichte basierend auf den entsprechenden Feldern filtern und weitere einhergehen, eigene Berichte erstellen, mithilfe von Tabellen und Felder im Modell. 
+In diesem Artikel wird das Power BI-Datenmodell beschrieben, das zum Erstellen von Azure Backup-Berichten verwendet wird. Mit diesem Datenmodell können Sie vorhandene Berichte basierend auf entsprechenden Feldern filtern und, was noch wichtiger ist, eigene Berichte mithilfe der Tabellen und Felder im Modell erstellen. 
 
-## <a name="creating-new-reports-in-power-bi"></a>Erstellen neue Berichte in Power BI
-Power BI bietet Funktionen zur Anpassung können Sie mit [Erstellen von Berichten mithilfe des Datenmodells](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/).
+## <a name="creating-new-reports-in-power-bi"></a>Erstellen neuer Berichte in Power BI
+Power BI bietet Anpassungsfunktionen, mit deren Hilfe Sie [Berichte mithilfe des Datenmodells erstellen](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/) können.
 
-## <a name="using-azure-backup-data-model"></a>Mithilfe von Azure Backup-Datenmodell
-Sie können die folgenden Felder, die als Teil des Datenmodells bereitgestellten Berichte zu erstellen und Anpassen vorhandener Berichte.
+## <a name="using-azure-backup-data-model"></a>Verwenden des Azure Backup-Datenmodells
+Sie können die folgenden Felder im Datenmodell nutzen, um Berichte zu erstellen und vorhandene Berichte anzupassen.
 
 ### <a name="alert"></a>Warnung
-Diese Tabelle enthält grundlegende Felder und Aggregationen über verschiedene verwandte Warnungsfelder an.
+Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene warnungsbezogene Felder.
 
 | Feld | Datentyp | Beschreibung |
 | --- | --- | --- |
-| #AlertsCreatedInPeriod |Ganze Zahl |Anzahl der Warnungen, die im ausgewählten Zeitraum erstellt |
-| % ActiveAlertsCreatedInPeriod |Prozentsatz |Prozentsatz der aktiven Warnungen im ausgewählten Zeitraum |
-| % CriticalAlertsCreatedInPeriod |Prozentsatz |Prozentsatz der kritische Warnungen im ausgewählten Zeitraum |
+| #AlertsCreatedInPeriod |Ganze Zahl |Anzahl der Warnungen, die im gewählten Zeitraum erstellt wurden |
+| %ActiveAlertsCreatedInPeriod |Prozentsatz |Prozentsatz aktiver Warnungen im gewählten Zeitraum |
+| %CriticalAlertsCreatedInPeriod |Prozentsatz |Prozentsatz kritischer Warnungen im gewählten Zeitraum |
 | AlertOccurenceDate |Datum |Datum der Erstellung der Warnung |
-| AlertSeverity |Text |Schweregrad der Warnung z. B. kritisch |
-| AlertStatus |Text |Status der Warnung z. B. aktiv |
-| AlertType |Text |Typ der generierten Warnung z. B. Sicherung |
-| AlertUniqueId |Text |Eindeutige Id der generierten Warnung |
-| AsOnDateTime |Datum/Uhrzeit |Letzte Aktualisierungszeit für die ausgewählte Zeile |
-| AvgResolutionTimeInMinsForAlertsCreatedInPeriod |Dezimalzahl |Dies ist die durchschnittliche Zeit (in Minuten) zum Beheben der Warnung für ausgewählten Zeitraum |
-| EntityState |Text |Aktuellen Status der Warnung Objekts z. B. aktiv, gelöschte |
+| AlertSeverity |Text |Schweregrad der Warnung, z.B. Kritisch |
+| AlertStatus |Text |Status der Warnung, z.B. Aktiv |
+| AlertType |Text |Typ der generierten Warnung, z.B. Sicherung |
+| AlertUniqueId |Text |Eindeutige ID der generierten Warnung |
+| AsOnDateTime |Datum/Uhrzeit |Uhrzeit der letzten Aktualisierung der ausgewählten Zeile |
+| AvgResolutionTimeInMinsForAlertsCreatedInPeriod |Dezimalzahl |Durchschnittliche Zeit (in Minuten) zum Beheben der Warnung für den gewählten Zeitraum |
+| EntityState |Text |Aktueller Status des Warnungsobjekts, z.B. Aktiv, Gelöscht |
 
-### <a name="backup-item"></a>Sichern des Elements
-Diese Tabelle enthält grundlegende Felder und Aggregationen über verschiedene backup Element bezogenen Felder.
+### <a name="backup-item"></a>Sicherungselement
+Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene auf Sicherungselemente bezogene Felder.
 
 | Feld | Datentyp | Beschreibung |
 | --- | --- | --- |
-| #BackupItems |Ganze Zahl |Anzahl der Elemente für die Sicherung |
-| #UnprotectedBackupItems |Ganze Zahl |Anzahl der Elemente für die Sicherung für den Schutz beendet oder für Sicherungen jedoch nicht gestartet Sicherungen konfiguriert|
-| AsOnDateTime |Datum/Uhrzeit |Letzte Aktualisierungszeit für die ausgewählte Zeile |
-| BackupItemFriendlyName |Text |Anzeigename der backup-Element |
-| BackupItemId |Text |ID der backup-Element |
-| BackupItemName |Text |Name der backup-Element |
-| BackupItemType |Text |Backup Elementtyp z. B. VM, FileFolder |
-| EntityState |Text |Aktuellen Status des Objekts Sichern des Elements z. B. aktiv, gelöschte |
-| LastBackupDateTime |Datum/Uhrzeit |Zeitpunkt der letzten Sicherung für Sichern des ausgewählten Elements |
-| LastBackupState |Text |Status der letzten Sicherung für das Sichern des ausgewählten Elements beispielsweise erfolgreich, Fehler |
-| LastSuccessfulBackupDateTime |Datum/Uhrzeit |Zeitpunkt der letzten erfolgreichen Sicherung Sichern des ausgewählten Elements |
-| ProtectionState |Text |Aktuelle Schutzstatus des backup Elements z. B. Protected, ProtectionStopped |
+| #BackupItems |Ganze Zahl |Anzahl der Sicherungselemente |
+| #UnprotectedBackupItems |Ganze Zahl |Anzahl der Sicherungselemente, deren Schutz beendet wurde oder die für Sicherungen konfiguriert sind, aber Sicherungen nicht gestartet wurden|
+| AsOnDateTime |Datum/Uhrzeit |Uhrzeit der letzten Aktualisierung der ausgewählten Zeile |
+| BackupItemFriendlyName |Text |Anzeigename des Sicherungselements |
+| BackupItemId |Text |ID des Sicherungselements |
+| BackupItemName |Text |Name des Sicherungselements |
+| BackupItemType |Text |Typ des Sicherungselements, z.B. VM, Dateiordner |
+| EntityState |Text |Aktueller Status des Sicherungselementobjekts, z.B. Aktiv, Gelöscht |
+| LastBackupDateTime |Datum/Uhrzeit |Zeitpunkt der letzten Sicherung des ausgewählten Sicherungselements |
+| LastBackupState |Text |Status der letzten Sicherung des ausgewählten Sicherungselements, z.B. Erfolgreich, Fehler |
+| LastSuccessfulBackupDateTime |Datum/Uhrzeit |Zeitpunkt der letzten erfolgreichen Sicherung des ausgewählten Sicherungselements |
+| ProtectionState |Text |Aktueller Schutzstatus des Sicherungselements, z.B. Geschützt, Schutz beendet |
 
 ### <a name="calendar"></a>Kalender
-Diese Tabelle enthält Details zu den Feldern kalenderbezogener.
+Diese Tabelle enthält Details zu kalenderbezogenen Feldern.
 
 | Feld | Datentyp | Beschreibung |
 | --- | --- | --- |
-| Datum |Datum |Datum, die zum Filtern von Daten ausgewählt |
-| DateKey |Text |Der eindeutige Schlüssel für jedes Datum-Element |
-| DayDiff |Dezimalzahl |Differenz an Tag zum Filtern von Daten, z. B., 0 gibt an, Daten des aktuellen Tages, 1, wenn Daten von einem des vorherigen Tages, 0 und-1 anzugeben, die Daten für den aktuellen und dem vorherigen Tag  |
-| Monat |Text |Monat des Jahres, der zum Filtern von Daten ausgewählt und Monat am ersten Tag beginnt und endet am 31. Tag |
-| MonthDate | Datum |Datum des Monats, wenn Monat beendet wird, zum Filtern von Daten ausgewählt |
-| MonthDiff |Dezimalzahl |Unterschied im Monat zum Filtern von Daten, z. B., 0 gibt an, Daten des aktuellen Monats, 1, wenn Daten des vorherigen Monats, 0 und-1 anzugeben, die Daten für den aktuellen und dem vorherigen Monat |
-| Woche |Text |Zum Filtern von Daten, ausgewählte Woche die Woche am Sonntag beginnt, und endet am Samstag |
-| WeekDate |Datum |Datum in der Woche aus, wenn Woche beendet wird, zum Filtern von Daten ausgewählt |
-| WeekDiff |Dezimalzahl |Unterschied in der Woche zum Filtern von Daten, z. B., 0 gibt Daten der aktuellen Woche, 1, wenn Daten der vorherigen Woche, 0 und-1 Daten anzugeben, für die aktuellen und dem vorherigen Woche |
-| Jahr |Text |Kalenderjahr, die zum Filtern von Daten ausgewählt |
-| YearDate |Datum |Datum des Jahres, wenn Jahr endet, zum Filtern von Daten ausgewählt |
+| Datum |Datum |Zum Filtern von Daten ausgewähltes Datum |
+| DateKey |Text |Eindeutiger Schlüssel jedes Datumselements |
+| DayDiff |Dezimalzahl |Differenz in Form von Tagen für das Filtern von Daten. Beispiel: 0 gibt die Daten des aktuellen Tages, -1 die Daten des Vortages an. 0 und -1 geben Daten des aktuellen und des Vortages an.  |
+| Month (Monat) |Text |Der gewählte Monat des Jahres zum Filtern von Daten. Der Monat beginnt am 1. und endet am 31. Tag. |
+| MonthDate | Datum |Zum Filtern von Daten ausgewähltes Datum im Monat, an dem der Monat endet |
+| MonthDiff |Dezimalzahl |Differenz in Form von Monaten für das Filtern von Daten. Beispiel: 0 gibt die Daten des aktuellen Monats, -1 die Daten des Vormonats an. 0 und -1 geben Daten des aktuellen und des Vormonats an. |
+| Woche |Text |Zum Filtern von Daten ausgewählte Woche. Die Woche beginnt am Sonntag und endet am Samstag. |
+| WeekDate |Datum |Zum Filtern von Daten ausgewähltes Datum in der Woche, an dem die Woche endet |
+| WeekDiff |Dezimalzahl |Differenz in Form von Wochen für das Filtern von Daten. Beispiel: 0 gibt die Daten der aktuellen Woche, -1 die Daten der Vorwoche an. 0 und -1 geben Daten der aktuellen und der Vorwoche an. |
+| Year (Jahr) |Text |Zum Filtern von Daten ausgewähltes Kalenderjahr |
+| YearDate |Datum |Zum Filtern von Daten ausgewähltes Datum im Jahr, an dem das Jahr endet |
 
-### <a name="job"></a>Job
-Diese Tabelle enthält grundlegende Felder und Aggregationen über verschiedene auftragsbezogene Felder.
+### <a name="job"></a>Auftrag
+Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene auftragsbezogene Felder.
 
 | Feld | Datentyp | Beschreibung |
 | --- | --- | --- |
-| #JobsCreatedInPeriod |Ganze Zahl |Anzahl der Aufträge, die in den ausgewählten Zeitraum erstellt |
-| % FailuresForJobsCreatedInPeriod |Prozentsatz |Prozentsatz insgesamt schon in den ausgewählten Zeitraum |
-| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Dezimalzahl |80. Perzentil-Wert, der Daten in MB für die übertragenen **backup** in den ausgewählten Zeitraum erstellten Aufträge |
-| AsOnDateTime |Datum/Uhrzeit |Letzte Aktualisierungszeit für die ausgewählte Zeile |
-| AvgBackupDurationInMinsForJobsCreatedInPeriod |Dezimalzahl |Durchschnittliche Zeit in Minuten für **abgeschlossene Sicherung** im ausgewählten Zeitraum erstellten Aufträge |
-| AvgRestoreDurationInMinsForJobsCreatedInPeriod |Dezimalzahl |Durchschnittliche Zeit in Minuten für **Wiederherstellung abgeschlossen** im ausgewählten Zeitraum erstellten Aufträge |
-| BackupStorageDestination |Text |Ziel des backup-Storage-z. B. Cloud, Datenträger  |
-| EntityState |Text |Aktuellen Status der Job-Objekt, z. B. aktiv, gelöschte |
-| JobFailureCode |Text |Fehler-Codezeichenfolge aufgrund der Auftragsfehler aufgetreten ist |
-| JobOperation |Text |Vorgang für den Auftrag z. B. Sicherung, Wiederherstellung, Konfigurieren der Sicherung ausgeführt wird |
-| JobStartDate |Datum |Datum der Auftrag gestartet |
-| "Jobstarttime" |Zeit |Zeit bei der Ausführung Auftrags gestartet wurde |
-| JobStatus |Text |Status des Auftrags nicht mehr benötigen, z. B. abgeschlossen, fehlgeschlagen |
-| JobUniqueId |Text |Eindeutige Id für den Auftrag zu identifizieren |
+| #JobsCreatedInPeriod |Ganze Zahl |Anzahl der Aufträge, die im gewählten Zeitraum erstellt wurden |
+| %FailuresForJobsCreatedInPeriod |Prozentsatz |Prozentsatz der gesamten Auftragsfehler im ausgewählten Zeitraum |
+| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Dezimalzahl |80. Quantilwert der übertragenen Daten (in MB) für **Sicherungsaufträge**, die im ausgewählten Zeitraum erstellt wurden |
+| AsOnDateTime |Datum/Uhrzeit |Uhrzeit der letzten Aktualisierung der ausgewählten Zeile |
+| AvgBackupDurationInMinsForJobsCreatedInPeriod |Dezimalzahl |Durchschnittliche Zeit in Minuten für **abgeschlossene Sicherungsaufträge**, die im ausgewählten Zeitraum erstellt wurden |
+| AvgRestoreDurationInMinsForJobsCreatedInPeriod |Dezimalzahl |Durchschnittliche Zeit in Minuten für **abgeschlossene Wiederherstellungsaufträge**, die im ausgewählten Zeitraum erstellt wurden |
+| BackupStorageDestination |Text |Ziel des Sicherungsspeichers, z.B. Cloud, Datenträger  |
+| EntityState |Text |Aktueller Status des Auftragsobjekts, z.B. Aktiv, Gelöscht |
+| JobFailureCode |Text |Zeichenfolge mit dem Fehlercode zum Angeben des Grunds des Auftragsfehlers |
+| JobOperation |Text |Vorgang, für den Auftrag ausgeführt wird, z.B. Sicherung, Wiederherstellung, Sicherungskonfiguration |
+| JobStartDate |Datum |Datum des Starts des Auftrags |
+| JobStartTime |Time |Uhrzeit des Starts des Auftrags |
+| Auftragsstatus |Text |Status des beendeten Auftrags, z.B. Abgeschlossen, Fehler |
+| JobUniqueId |Text |Eindeutige ID zur Bezeichnung des Auftrags |
 
 ### <a name="policy"></a>Richtlinie
-Diese Tabelle enthält grundlegende Felder und Aggregationen über verschiedene Felder im Zusammenhang mit Gruppenrichtlinien.
+Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene richtlinienbezogene Felder.
 
 | Feld | Datentyp | Beschreibung |
 | --- | --- | --- |
-| #Policies |Ganze Zahl |Anzahl von Sicherungsrichtlinien, die im System vorhanden sind. |
-| #PoliciesInUse |Ganze Zahl |Anzahl der Richtlinien, die derzeit für das Konfigurieren von Sicherungen verwendet wird |
-| AsOnDateTime |Datum/Uhrzeit |Letzte Aktualisierungszeit für die ausgewählte Zeile |
-| BackupDaysOfTheWeek |Text |Wenn Sicherungen geplanten Wochentage |
-| BackupFrequency |Text |Häufigkeit, mit dem Sicherungen, z. B. täglich, wöchentlich ausgeführt werden |
-| BackupTimes |Text |Datum und Uhrzeit, wann die Sicherungen geplant sind |
-| DailyRetentionDuration |Ganze Zahl |Insgesamt Beibehaltungsdauer in Tagen für die konfigurierten Sicherungen |
-| DailyRetentionTimes |Text |Datum und Uhrzeit, wann die tägliche Beibehaltung konfiguriert wurde |
-| EntityState |Text |Aktuellen Status des Objekts Richtlinie z. B. aktiv, gelöschte |
-| MonthlyRetentionDaysOfTheMonth |Text |Datumsangaben des Monats für die monatliche Beibehaltung ausgewählt |
-| MonthlyRetentionDaysOfTheWeek |Text |Die Wochentage für die monatliche Beibehaltung ausgewählt |
-| MonthlyRetentionDuration |Dezimalzahl |Insgesamt Beibehaltungsdauer in Monaten für konfigurierten Sicherungen |
-| MonthlyRetentionFormat |Text |Geben Sie der Konfiguration für die monatliche Beibehaltung z. B. täglich für Tag basieren, wöchentlich, für die Woche basierend |
-| MonthlyRetentionTimes |Text |Datum und Uhrzeit, wann die monatliche Beibehaltung konfiguriert ist |
-| MonthlyRetentionWeeksOfTheMonth |Text |Wochen des Monats, wenn die monatliche Beibehaltung ist, konfiguriert, z. B. First, Last usw.. |
-| Richtlinienname |Text |Name der Richtlinie definiert |
-| PolicyUniqueId |Text |Eindeutige Id zum Identifizieren der Richtlinie |
-| RetentionType |Text |Geben Sie der Aufbewahrungsrichtlinie z. B., täglich, wöchentlich, monatlich, jährlich |
-| WeeklyRetentionDaysOfTheWeek |Text |Die Wochentage für die wöchentliche Beibehaltung ausgewählt |
-| WeeklyRetentionDuration |Dezimalzahl |Wöchentliche Beibehaltung-Gesamtdauer in Wochen für den konfigurierten Sicherungen |
-| WeeklyRetentionTimes |Text |Datum und Uhrzeit, wann die wöchentliche Beibehaltung konfiguriert ist |
-| YearlyRetentionDaysOfTheMonth |Text |Datumsangaben des Monats für die jährliche Beibehaltung ausgewählt |
-| YearlyRetentionDaysOfTheWeek |Text |Die Wochentage für die jährliche Beibehaltung ausgewählt |
-| YearlyRetentionDuration |Dezimalzahl |Insgesamt Beibehaltungsdauer in Jahren für den konfigurierten Sicherungen |
-| YearlyRetentionFormat |Text |Geben Sie der Konfiguration für die jährliche Beibehaltung z. B. täglich für Tag basieren, wöchentlich, für die Woche basierend |
-| YearlyRetentionMonthsOfTheYear |Text |Monate des Jahres für die jährliche Beibehaltung ausgewählt |
-| YearlyRetentionTimes |Text |Datum und Uhrzeit, wann die jährliche Beibehaltung konfiguriert ist |
-| YearlyRetentionWeeksOfTheMonth |Text |Wochen des Monats, wenn die jährliche Beibehaltung ist, konfiguriert, z. B. First, Last usw.. |
+| #Policies |Ganze Zahl |Anzahl der Sicherungsrichtlinien im System |
+| #PoliciesInUse |Ganze Zahl |Anzahl der Richtlinien, die derzeit für das Konfigurieren von Sicherungen verwendet werden |
+| AsOnDateTime |Datum/Uhrzeit |Uhrzeit der letzten Aktualisierung der ausgewählten Zeile |
+| BackupDaysOfTheWeek |Text |Tag der Woche, für den Sicherungen geplant sind |
+| BackupFrequency |Text |Häufigkeit, mit der Sicherungen erfolgen, z. B. täglich, wöchentlich |
+| BackupTimes |Text |Datum und Uhrzeit geplanter Sicherungen |
+| DailyRetentionDuration |Ganze Zahl |Gesamte Beibehaltungsdauer in Tagen für konfigurierte Sicherungen |
+| DailyRetentionTimes |Text |Konfiguration von Datum und Uhrzeit der täglichen Beibehaltung |
+| EntityState |Text |Aktueller Status des Richtlinienobjekts, z.B. Aktiv, Gelöscht |
+| MonthlyRetentionDaysOfTheMonth |Text |Datumsangaben des Monats, die für die monatliche Beibehaltung ausgewählt sind |
+| MonthlyRetentionDaysOfTheWeek |Text |Tage der Woche, die für die monatliche Beibehaltung ausgewählt sind |
+| MonthlyRetentionDuration |Dezimalzahl |Gesamte Beibehaltungsdauer in Monaten für konfigurierte Sicherungen |
+| MonthlyRetentionFormat |Text |Typ der Konfiguration für die monatliche Beibehaltung, z.B. täglich für tagesbasiert, wöchentlich für wochenbasiert |
+| MonthlyRetentionTimes |Text |Konfiguration von Datum und Uhrzeit der monatlichen Beibehaltung |
+| MonthlyRetentionWeeksOfTheMonth |Text |Wochen des Monats, für die die monatliche Beibehaltung konfiguriert ist, z.B. Erste, Letzte usw. |
+| PolicyName |Text |Name der definierten Richtlinie |
+| PolicyUniqueId |Text |Eindeutige ID zur Bezeichnung der Richtlinie |
+| RetentionType |Text |Typ der Aufbewahrungsrichtlinie, z.B. Täglich, Wöchentlich, Monatlich, Jährlich |
+| WeeklyRetentionDaysOfTheWeek |Text |Tage der Woche, die für die wöchentliche Beibehaltung ausgewählt sind |
+| WeeklyRetentionDuration |Dezimalzahl |Gesamte wöchentliche Beibehaltungsdauer in Wochen für konfigurierte Sicherungen |
+| WeeklyRetentionTimes |Text |Konfiguration von Datum und Uhrzeit der wöchentlichen Beibehaltung |
+| YearlyRetentionDaysOfTheMonth |Text |Datumsangaben des Monats, die für die jährliche Beibehaltung ausgewählt sind |
+| YearlyRetentionDaysOfTheWeek |Text |Tage der Woche, die für die jährliche Beibehaltung ausgewählt sind |
+| YearlyRetentionDuration |Dezimalzahl |Gesamte Beibehaltungsdauer in Jahren für konfigurierte Sicherungen |
+| YearlyRetentionFormat |Text |Typ der Konfiguration für die jährliche Beibehaltung, z.B. täglich für tagesbasiert, wöchentlich für wochenbasiert |
+| YearlyRetentionMonthsOfTheYear |Text |Monate des Jahres, die für die jährliche Beibehaltung ausgewählt sind |
+| YearlyRetentionTimes |Text |Konfiguration von Datum und Uhrzeit der jährlichen Beibehaltung |
+| YearlyRetentionWeeksOfTheMonth |Text |Wochen des Monats, für die die jährliche Beibehaltung konfiguriert ist, z.B. Erste, Letzte usw. |
 
-### <a name="protected-server"></a>Geschützte Server
-Diese Tabelle enthält grundlegende Felder und Aggregationen über verschiedene der geschützten serverbezogene Felder.
+### <a name="protected-server"></a>Geschützter Server
+Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene Felder, die sich auf geschützte Server beziehen.
 
 | Feld | Datentyp | Beschreibung |
 | --- | --- | --- |
-| #ProtectedServers |Ganze Zahl |Anzahl von geschützten Servern |
-| AsOnDateTime |Datum/Uhrzeit |Letzte Aktualisierungszeit für die ausgewählte Zeile |
-| AzureBackupAgentOSType |Text |Der Typ des Azure Backup-Agents |
-| AzureBackupAgentOSVersion |Text |BS-Version von Azure Backup-Agents |
-| AzureBackupAgentUpdateDate |Text |Datum, Agent-Backup-Agent aktualisiert wurde |
-| AzureBackupAgentVersion |Text |Versionsnummer der Backup-Agent |
-| BackupManagementType |Text |Anbietertyp für das Backup z. B. IaaSVM, FileFolder |
-| EntityState |Text |Aktuellen Status des Objekts geschützten Server z. B. aktiv, gelöschte |
+| #ProtectedServers |Ganze Zahl |Anzahl geschützter Server |
+| AsOnDateTime |Datum/Uhrzeit |Uhrzeit der letzten Aktualisierung der ausgewählten Zeile |
+| AzureBackupAgentOSType |Text |Betriebssystemtyp des Azure Backup-Agents |
+| AzureBackupAgentOSVersion |Text |Betriebssystemversion des Azure Backup-Agents |
+| AzureBackupAgentUpdateDate |Text |Datum, an dem der Agent-Backup-Agent aktualisiert wurde |
+| AzureBackupAgentVersion |Text |Nummer der Backup-Agent-Version |
+| BackupManagementType |Text |Anbietertyp für die Sicherung, z.B. IaaSVM, FileFolder |
+| EntityState |Text |Aktueller Status des Objekts des geschützten Servers, z.B. Aktiv, Gelöscht |
 | ProtectedServerFriendlyName |Text |Anzeigename des geschützten Servers |
 | ProtectedServerName |Text |Name des geschützten Servers |
-| ProtectedServerType |Text |Typ des geschützten Servers gesichert wird, wird z. B. IaaSVMContainer |
-| ProtectedServerName |Text |Name der geschützten Server zum Sichern des Elements gehört |
-| RegisteredContainerId |Text |ID des Containers für die Sicherung registriert |
+| ProtectedServerType |Text |Typ des geschützten Servers, der gesichert wird, z.B. IaaSVMContainer |
+| ProtectedServerName |Text |Name des geschützten Servers, zu dem das Sicherungselement gehört |
+| RegisteredContainerId |Text |ID des Containers, der für die Sicherung registriert ist |
 
 ### <a name="storage"></a>Speicher
-Diese Tabelle enthält grundlegende Felder und Aggregationen über verschiedene speicherbezogene Felder.
+Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene speicherbezogene Felder.
 
 | Feld | Datentyp | Beschreibung |
 | --- | --- | --- |
-| #ProtectedInstances |Dezimalzahl |Anzahl der geschützten Instanzen, die zum Berechnen von Front-End-Speicher in Abrechnung, berechneten basierend auf neueste Wert in die ausgewählte Zeit |
-| AsOnDateTime |Datum/Uhrzeit |Letzte Aktualisierungszeit für die ausgewählte Zeile |
-| CloudStorageInMB |Dezimalzahl |Backup-Sicherungen, berechnet verwendete Cloud-Speicher basierend auf neueste Wert in die ausgewählte Zeit |
-| EntityState |Text |Aktuellen Status des Objekts, z. B. aktiv, gelöschte |
-| LastUpdatedDate |Datum |Datum, die ausgewählte Zeile zuletzt aktualisiert wurde |
+| #ProtectedInstances |Dezimalzahl |Anzahl der geschützten Instanzen, die zum Berechnen von Front-End-Speicher in der Abrechnung verwendet werden. Die Berechnung erfolgt basierend auf dem letzten Wert im ausgewählten Zeitraum. |
+| AsOnDateTime |Datum/Uhrzeit |Uhrzeit der letzten Aktualisierung der ausgewählten Zeile |
+| CloudStorageInMB |Dezimalzahl |Von Sicherungen belegter Sicherungsspeicher in der Cloud. Die Berechnung erfolgt basierend auf dem letzten Wert im ausgewählten Zeitraum. |
+| EntityState |Text |Aktueller Status des Speicherobjekts, z.B. Aktiv, Gelöscht |
+| LastUpdatedDate |Datum |Datum, an dem ausgewählte Zeile zuletzt aktualisiert wurde |
 
-### <a name="time"></a>Zeit
-Diese Tabelle enthält Details zu den Feldern zeitbezogene.
+### <a name="time"></a>Time
+Diese Tabelle enthält Details zu uhrzeitbezogenen Feldern.
 
 | Feld | Datentyp | Beschreibung |
 | --- | --- | --- |
-| Stunde |Zeit |Stunde des Tages z. B. 13:00:00 Uhr |
-| HourNumber |Dezimalzahl |Anzahl der Stunde des Tages z. B. 13.00 |
-| Minute |Dezimalzahl |Minute einer Stunde |
-| PeriodOfTheDay |Text |Zeitraum Zeitfenster des Tages z. B. 12-3-Uhr |
-| Zeit |Zeit |Die Tageszeit beispielsweise 12:00:01 Uhr |
-| TimeKey |Text |Schlüsselwert zum Zeitpunkt darstellen. |
+| Hour |Time |Stunde des Tages, z.B. 13:00:00 Uhr |
+| HourNumber |Dezimalzahl |Nummer der Stunde des Tages, z.B. 13:00 |
+| Minute |Dezimalzahl |Minute der Stunde |
+| PeriodOfTheDay |Text |Zeitfenster des Tages, z.B. 12-15 Uhr |
+| Time |Time |Stunde des Tages, z.B. 12:00:01 Uhr |
+| TimeKey |Text |Schlüsselwert zum Darstellen der Zeit |
 
 ### <a name="vault"></a>Tresor
-Diese Tabelle enthält grundlegende Felder und Aggregationen über verschiedene Tresor-bezogene Felder.
+Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene tresorbezogene Felder.
 
 | Feld | Datentyp | Beschreibung |
 | --- | --- | --- |
-| #Vaults |Ganze Zahl |Anzahl von Tresoren |
-| AsOnDateTime |Datum/Uhrzeit |Letzte Aktualisierungszeit für die ausgewählte Zeile |
-| AzureDataCenter |Text |Rechenzentrum, in dem Tresor befindet. |
-| EntityState |Text |Aktuellen Status des Tresor-Objekts, z. B. aktiv, gelöschte |
-| StorageReplicationType |Text |Typ der Speicherreplikation für den Tresor z. B. GeoRedundant |
-| "SubscriptionId" |Text |Abonnement-Id des Kunden, die zur Erstellung von Berichten ausgewählt |
-| Tresorname |Text |Name des Tresors |
-| VaultTags |Text |RFID-Transponder, die den Tresor zugeordnet sind |
+| #Vaults |Ganze Zahl |Anzahl der Tresore |
+| AsOnDateTime |Datum/Uhrzeit |Uhrzeit der letzten Aktualisierung der ausgewählten Zeile |
+| AzureDataCenter |Text |Rechenzentrum, in dem sich der Tresor befindet |
+| EntityState |Text |Aktueller Status des Tresorobjekts, z.B. Aktiv, Gelöscht |
+| StorageReplicationType |Text |Typ der Speicherreplikation für den Tresor, z.B. Georedundant |
+| SubscriptionId |Text |Abonnement-ID des Kunden, die zur Erstellung von Berichten ausgewählt ist |
+| VaultName |Text |Name des Tresors |
+| VaultTags |Text |Dem Tresor zugeordnete Tags |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie das Datenmodell zum Erstellen von Azure Backup-Berichte überprüfen, finden Sie in den folgenden Artikeln, ausführliche Informationen zum Erstellen und Anzeigen von Berichten in Power BI.
+Nachdem Sie das Datenmodell zum Erstellen von Azure Backup-Berichten überprüft haben, finden Sie in den folgenden Artikeln weitere ausführliche Informationen zum Erstellen und Anzeigen von Berichten in Power BI.
 
 * [Erstellen von Berichten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
 * [Filtern von Berichten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)

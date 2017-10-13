@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 013c99045621e4651a44ab99c9f695fff6004654
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="split-column-by-example-transformation"></a>Transformation „Aufteilen von Spalten anhand eines Beispiels“
 Diese Transformation teilt den Inhalt einer Spalte vorausschauend auf aussagekräftige Begrenzungen auf, ohne dass eine Benutzereingabe erforderlich ist. Der Splitalgorithmus wählt die Begrenzungen aus, nachdem der Inhalt der Spalte analysiert wurde. Diese Begrenzungen können von Folgendem definiert werden:
 * einem festgelegten Trennzeichen
@@ -178,4 +176,3 @@ Im folgenden Beispiel möchten wir Gewichtswerte von den Maßeinheiten trennen. 
 ## <a name="technical-notes"></a>Technische Hinweise
 
 Die Split-Transformationsfunktion basiert auf der Technologie der **Predictive Program Synthesis** (Vorausschauenden Programmsynthese). Mit dieser Technologie werden Datenumwandlungsprogramme automatisch basierend auf den Eingabedaten erlernt. Die Programme werden in einer domänenspezifischen Sprache synthetisiert. Die DSL basiert auf Trennzeichen und Feldern, die in bestimmten Kontexten regulärer Ausdrücke vorkommen. Weitere Informationen zu dieser Technologie finden Sie in einer [neuen Veröffentlichung zu diesem Thema](https://www.microsoft.com/en-us/research/publication/automated-data-extraction-using-predictive-program-synthesis/). 
-

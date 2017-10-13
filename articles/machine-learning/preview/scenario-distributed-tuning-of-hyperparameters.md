@@ -8,14 +8,12 @@ ms.topic: article
 ms.author: dmpechyo
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 643cea5cc134a2eb25a0dec4abefd9edca726332
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Verteilte Optimierung von Hyperparametern mit Azure Machine Learning Workbench
 
 In diesem Szenario wird beschrieben, wie Sie mit Azure Machine Learning Workbench Hyperparameter von Machine Learning-Algorithmen, die die scikit-learn-API implementieren, mit horizontaler Hochskalierung optimieren. Dabei wird erläutert, wie ein Docker-Remotecontainer und ein Spark-Cluster als Ausführungs-Back-End zum Optimieren von Hyperparametern konfiguriert und verwendet werden.
@@ -35,7 +33,7 @@ Die Rastersuche unter Verwendung der Kreuzvalidierung kann sehr zeitaufwendig se
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar).
+* Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
 * Eine installierte Kopie der [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) nach dem [Schnellstarthandbuch zum Installieren und Erstellen](./quickstart-installation.md), um die Workbench zu installieren und Konten zu erstellen.
 * In diesem Szenario wird davon ausgegangen, dass Sie die Azure ML Workbench mit einem lokal installierten Docker-Modul unter Windows 10 oder macOS ausführen. 
 * Um das Szenario mit einem Docker-Remotecontainer auszuführen, stellen Sie die Ubuntu Data Science Virtual Machine (DSVM) bereit. Befolgen Sie dazu die entsprechenden [Anweisungen](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-provision-vm). Es wird empfohlen, einen virtuellen Computer mit mindestens 8 Kernen und 28 GB Arbeitsspeicher zu verwenden. D4-Instanzen von virtuellen Computern weisen eine solche Kapazität auf. 
@@ -281,7 +279,7 @@ Anschließend ersetzen wir
 
     from sklearn.model_selection import GridSearchCV
 
-durch 
+with 
 
     from spark_sklearn import GridSearchCV
 
@@ -312,7 +310,6 @@ In diesem Szenario haben wir erläutert, wie mit der Azure Machine Learning Work
 ## <a name="references"></a>Referenzen
 
 [1] T. Chen und C. Guestrin. [XGBoost: A Scalable Tree Boosting System](https://arxiv.org/abs/1603.02754). KDD 2016.
-
 
 
 

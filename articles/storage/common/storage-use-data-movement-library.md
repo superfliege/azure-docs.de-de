@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 7890159574de0db58dd2e7d1b6a19305381d29d6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Übertragen von Daten mit der Microsoft Azure Storage Data Movement-Bibliothek
 
@@ -570,7 +569,6 @@ Unsere Data Movement-Anwendung ist jetzt abgeschlossen. [Den vollständigen Beis
 In dieser Einführung haben wir eine Anwendung erstellt, die mit Azure Storage interagiert und unter Windows, Linux und macOS ausgeführt wird. Erste Schritte mit Fokus auf Blobspeicher. Allerdings können dieselben Kenntnisse auf File Storage angewendet werden. Weitere Informationen finden Sie in der [Referenzdokumentation zur Azure Storage Data Movement-Bibliothek](https://azure.github.io/azure-storage-net-data-movement).
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
-
 
 
 

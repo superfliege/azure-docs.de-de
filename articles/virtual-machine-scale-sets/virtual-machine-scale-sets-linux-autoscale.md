@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 ms.openlocfilehash: eff4add1cb16fe25022787668dc1d2277845dd95
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automatically-scale-linux-machines-in-a-virtual-machine-scale-set"></a>Automatisches Skalieren von Linux-Computern in einer VM-Skalierungsgruppe
 VM-Skalierungsgruppen erleichtern das Bereitstellen und Verwalten identischer virtueller Computer als Gruppe. Skalierungsgruppen stellen eine hoch skalierbare und anpassbare Compute-Ebene für Anwendungen mit Hyperskalierung bereit und bieten Unterstützung für Images der Windows-Plattform, Images der Linux-Plattform, benutzerdefinierte Images und Erweiterungen. Weitere Informationen finden Sie unter [Virtual Machine Scale Sets Overview](virtual-machine-scale-sets-overview.md)(Übersicht über VM-Skalierungsgruppen).
@@ -590,5 +590,5 @@ azure group delete vmsstestrg1
 * Beispiele für Überwachungsfeatures von Azure Monitor finden Sie unter [Azure Monitor –Schnellstartbeispiele für die plattformübergreifende Befehlszeilenschnittstelle](../monitoring-and-diagnostics/insights-cli-samples.md).
 * Informationen zu Benachrichtigungsfeatures finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md).
 * Informationen zur Verwendung von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor finden Sie [hier](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
-* Sehen Sie sich die [Demo-app für automatische Skalierung auf Ubuntu 16.04](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) Vorlage, die eine Python-Flasche app einrichtet, führen Sie die Funktionen zum automatische Skalieren von VM Scale legt sie fest.
+* Sehen Sie sich die Vorlage [Autoscale demo app on Ubuntu 16.04](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) (Demonstrations-App zum automatischen Skalieren unter Ubuntu 16.04) an. Diese richtet eine Python/bottle-App ein, um die automatische Skalierungsfunktion von VM-Skalierungsgruppen auszuführen.
 

@@ -3,7 +3,7 @@ title: "Verwenden von Azure Active Directory zum Authentifizieren von Lösungen 
 description: "Batch unterstützt Azure AD für die Authentifizierung vom Batch-Dienst aus."
 services: batch
 documentationcenter: .net
-author: tamram
+author: v-dotren
 manager: timlt
 editor: 
 tags: 
@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 06/20/2017
+ms.date: 09/28/2017
 ms.author: tamram
-ms.openlocfilehash: 9c03bde919c46cd301229255c0b12ee69dda6f78
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.openlocfilehash: a5dd04e992bd181e512d176fd913a7395fd6b702
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -31,13 +31,6 @@ Bei Verwendung der Azure AD-Authentifizierung mit Azure Batch können Sie auf zw
 - Mithilfe eines **Dienstprinzipals**, um eine unbeaufsichtigte Anwendung zu authentifizieren. Ein Dienstprinzipal definiert die Richtlinie und Berechtigungen für eine Anwendung, um die Anwendung zu repräsentieren, wenn zur Laufzeit auf Ressourcen zugegriffen wird.
 
 Weitere Informationen zu Azure AD finden Sie unter [Dokumentation zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
-
-## <a name="authentication-and-pool-allocation-mode"></a>Authentifizierung und Poolzuordnungsmodus
-
-Wenn Sie ein Batch-Konto erstellen, können Sie angeben, wo für dieses Konto erstellte Pools zugeordnet werden sollen. Sie können Pools wahlweise entweder im standardmäßigen Batch-Dienstabonnement oder in einem Benutzerabonnement auswählen. Ihre Auswahl bestimmt, wie Sie den Zugriff auf Ressourcen in diesem Konto authentifizieren.
-
-- **Batch-Dienstabonnement**. Standardmäßig werden Batch-Pools in einem Abonnement des Batch-Diensts zugeordnet. Wenn Sie diese Option wählen, können Sie den Zugriff auf Ressourcen in diesem Konto entweder mit einem [gemeinsam verwendeten Schlüssel](https://docs.microsoft.com/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service) oder mit Azure AD authentifizieren.
-- **Benutzerabonnement.** Sie können die Zuordnung von Batch-Pools in einem von Ihnen angegebenen Benutzerabonnement wählen. Wenn Sie diese Option auswählen, müssen Sie die Authentifizierung mit Azure AD durchführen.
 
 ## <a name="endpoints-for-authentication"></a>Endpunkte für die Authentifizierung
 

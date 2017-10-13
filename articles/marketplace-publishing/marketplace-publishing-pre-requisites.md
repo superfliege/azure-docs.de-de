@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: hascipio
 ms.openlocfilehash: 4f86d444a2f2b97fd8605d480db358813bc39fd3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Allgemeine Voraussetzungen für das Erstellen eines Angebots für den Azure Marketplace
 Bevor Sie mit der Angebotserstellung fortfahren, müssen Sie sich zunächst mit den allgemeinen, geschäftsprozessbezogenen Voraussetzungen vertraut machen.

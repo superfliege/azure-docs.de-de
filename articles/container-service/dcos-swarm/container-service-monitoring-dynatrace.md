@@ -18,10 +18,10 @@ ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: 6fa23728680779e33eda7bb9aa8a01b9cad9a82b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>Überwachen eines Azure Container Service-DC/OS-Clusters mit Dynatrace SaaS/Managed
 In diesem Artikel erfahren Sie, wie Sie [Dynatrace](https://www.dynatrace.com/) OneAgent zum Überwachen aller Agentknoten in Ihrem Azure Container Service-Cluster bereitstellen. Für diese Konfiguration benötigen Sie ein Konto mit Dynatrace SaaS/Managed. 

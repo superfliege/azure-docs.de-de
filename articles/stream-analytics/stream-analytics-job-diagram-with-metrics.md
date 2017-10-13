@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 5b689c07bf8baa531c7a50ca50ed5140c1787e7b
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Datengesteuertes Debuggen mithilfe des Auftragsdiagramms
 
 Mithilfe des Auftragsdiagramms auf dem Blatt **Überwachung** im Azure-Portal können Sie Ihre Auftrags-Pipeline visualisieren. Sie zeigt Ein- und Ausgaben sowie Abfrageschritte an. Mithilfe des Auftragsdiagramms können Sie die Metriken für jeden Schritt untersuchen, um die Ursache eines Problems bei der Problembehandlung schneller zu isolieren.
@@ -96,4 +94,3 @@ Um weitere Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](ht
 * [Skalieren von Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Referenz zur Stream Analytics-Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenz zur REST-API für die Stream Analytics-Verwaltung](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-

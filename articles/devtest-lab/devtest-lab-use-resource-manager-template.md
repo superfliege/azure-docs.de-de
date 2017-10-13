@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 0807ab367b91be5acd261f2b58ca2112b2c9e380
-ms.contentlocale: de-de
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-a-virtual-machines-azure-resource-manager-template"></a>Verwenden der Azure Resource Manager-Vorlage eines virtuellen Computers
 
 Wenn Sie einen virtuellen Computer (VM) in DevTest Labs über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) erstellen, können Sie die Azure Resource Manager-Vorlage anzeigen, bevor Sie die VM speichern. Die Vorlage kann dann als Basis für die Erstellung von weiteren Lab-VMs mit den gleichen Einstellungen verwendet werden.
@@ -70,4 +68,3 @@ Nachdem Sie eine Resource Manager-Vorlage gespeichert und an Ihre Anforderungen 
 ### <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über das [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md).
 * Sehen Sie sich im [öffentlichen DevTest Labs-GitHub-Repository](https://github.com/Azure/azure-quickstart-templates) weitere Resource Manager-Schnellstartvorlagen für die DevTest Labs-Automatisierung an.
-

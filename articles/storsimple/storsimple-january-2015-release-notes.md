@@ -1,6 +1,6 @@
 ---
-title: 0,2 Versionshinweise StorSimple 8000-Update | Microsoft Docs
-description: "Beschreibt die neuen Features und Fixes, offene Probleme und problemumgehungen verfügbar für die Januar 2015 Microsoft Azure StorSimple-Version (Update 0,2)."
+title: "Versionshinweise zu Update 0.2 von StorSimple 8000 | Microsoft Docs"
+description: "Beschreibt die neuen Features und Problembehebungen sowie noch nicht behandelte Probleme und verfügbare Problemumgehungen für die Microsoft Azure StorSimple-Version vom Januar 2015 (Update 0.2)."
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -15,60 +15,60 @@ ms.workload: TBD
 ms.date: 05/16/2016
 ms.author: v-sharos
 ms.openlocfilehash: 2fc50f7faddb4b61ea5e7d328469fc3cc0eb6f3e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="storsimple-8000-series-update-02-release-notes---january-2015"></a>StorSimple 8000 Series Update 0,2 Versionshinweise – Januar 2015
+# <a name="storsimple-8000-series-update-02-release-notes---january-2015"></a>Versionsanmerkungen zu Update 0.2 der StorSimple 8000-Serie – Januar 2015
 ## <a name="overview"></a>Übersicht
-Die folgenden Anmerkungen zu dieser Version identifizieren Sie die kritischen offenen Probleme für die vom Januar 2015-Version von Microsoft Azure StorSimple. Sie enthalten auch eine Liste der StorSimple-Software und-Firmware Updates in dieser Version enthalten. Dies ist die zweite Version nach die Version von StorSimple 8000-Serie Version in der Regel im Juli 2014 verfügbar waren.
+Dieses Dokument beschreibt die wichtigsten offenen Fragen für die Microsoft Azure StorSimple-Version von Januar 2015. Es enthält auch eine Liste der StorSimple-Software- und -Firmware-Updates, die in dieser Version enthalten sind. Dies ist die zweite Version, nachdem die Freigabeversion der StorSimple 8000-Serie im Juli 2014 allgemein verfügbar gemacht wurde.
 
-Dieses Update ändert nicht die physische Geräte verwendete Softwareversion Gerätesoftware des Oktober-Updates. Weiterhin um Version 6.3.9600.17312. Das Bild verwendet, die für das Image des virtuellen Geräts wurde in dieser Version geändert. Aus diesem Grund werden alle neuen virtuellen Geräte nach 1/20/2015 erstellt die 6.3.9600.17361 als Version angezeigt.  
+Dieses Update ändert die Softwareversion des physischen Geräts nach dem Oktober-Update nicht. Es bleibt weiterhin Version 6.3.9600.17312. Das vom Image des virtuellen Geräts verwendete Image wurde in dieser Version geändert. Daher wird für alle neuen nach dem 20.01.2015 erstellten virtuellen Geräte die Version 6.3.9600.17361 angezeigt.  
 
-Überprüfen Sie die folgende Informationen, die in den Anmerkungen zur Version für das Update vom Januar 2015 enthalten sind.
+Lesen Sie die folgenden Informationen in den Versionshinweisen für das Update vom Januar 2015.
 
 > [!IMPORTANT]
-> * Dieses Update ist nicht über Windows Update verfügbar und kann nicht wie andere Updates installiert werden. Ihr Gerät wird dieses Update nicht empfangen, auch wenn Sie die Updates angewendet haben, mithilfe des klassische Azure-Portal. Dieses Update gilt nur für virtuelle Geräte, die nach dem 20. Januar 2015 erstellt wurden. 
-> * Das Januar-Version von StorSimple enthält keine Updates an das physische StorSimple-Gerät. Können Sie weiterhin alle verfügbaren Windows-Updates anwenden, um das virtuelle Gerät, einschließlich jüngster Sicherheitsupdates, aber Sie werden feststellen, dass eine Änderung der Version für das physische StorSimple-Gerät.
+> * Dieses Update ist nicht über Windows Update verfügbar und kann nicht wie andere Updates installiert werden. Ihr Gerät erhält dieses Update selbst dann nicht, wenn Sie die Updates über das klassische Azure-Portal installiert haben. Dieses Update gilt nur für virtuelle Geräte, die nach dem 20. Januar 2015 erstellt wurden. 
+> * Die Januar-Version von StorSimple enthält keine Updates des physischen StorSimple-Geräts. Sie können weiterhin alle verfügbaren Windows-Updates für das virtuelle Gerät, einschließlich der neuesten Sicherheitsupdates, anwenden, es wird aber keine Änderung der Version für das physische StorSimple-Gerät angezeigt.
 > 
 > 
 
-## <a name="whats-new-in-the-january-release"></a>Was ist neu in Version vom Januar
-Dieses Update enthält eine Korrektur hinsichtlich der Volumes auf dem virtuellen Gerät offline geschaltet. (Siehe [Probleme in dieser Version behobene](#issues-fixed-in-the-january-release).)  
+## <a name="whats-new-in-the-january-release"></a>Neuigkeiten in der Januar-Version
+Dieses Update behebt ein Problem, durch das die Volumes auf dem virtuellen Gerät offline geschaltet werden. (Siehe [In dieser Version behobene Probleme](#issues-fixed-in-the-january-release).)  
 
 Das Update enthält keine neuen Features oder Funktionen.  
 
-## <a name="issues-fixed-in-the-january-release"></a>In der Version vom Januar behobene Probleme
+## <a name="issues-fixed-in-the-january-release"></a>In der Januar-Version behobene Probleme
 Die folgende Tabelle beschreibt das Problem, das in diesem Update behoben wurde.
 
-| Nein. | Komponente | Problem | Gilt für physische Geräte | Gilt für das virtuelle Gerät |
+| Nr. | Funktion | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- |
-| 1 |Volumes offline geschaltet |Wenn mehrere Minuten hohe Cloud-Latenzen beibehalten werden, gehen die StorSimple-Volumes virtuelles Gerät auf den Hosts offline. Diese Korrektur erhöht den Schwellenwert für die Cloud-Latenzen, minimieren dadurch die Situationen, in denen die Volumes auf Hosts offline geschaltet führen würde. |Nein |Ja |
+| 1 |Wechsel von Volumes in den Offlinemodus |Wenn Cloud-Latenzen für mehrere Minuten andauern, wechseln die Volumes des virtuellen StorSimple-Geräts auf den Hosts in den Offlinemodus. Dieses Update erhöht den Schwellenwert für die Cloud-Latenzen und minimiert dadurch die Situationen, in denen die Volumes auf Hosts offline gehen. |Nein |Ja |
 
-## <a name="known-issues-in-the-january-release"></a>Bekannte Probleme in der Version vom Januar
+## <a name="known-issues-in-the-january-release"></a>Bekannte Probleme in der Januar-Version
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in dieser Version.
 
-| Nein. | Komponente | Problem | Kommentare/problemumgehung | Gilt für physische Geräte | Gilt für das virtuelle Gerät |
+| Nr. | Funktion | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- | --- |
-| 1 |Zurück auf Werkseinstellungen |In einigen Fällen beim Ausführen von auf die werkseinstellungen zurückgesetzt, das StorSimple-Gerät kann hängen bleiben und diese Nachricht anzeigen: **Zurücksetzung auf werkseinstellungen wird ausgeführt (Phase 8).** Dies geschieht, wenn Sie STRG + C drücken, während das Cmdlet ausgeführt wird. |Drücken Sie STRG + C nicht nach dem Initiieren des auf die werkseinstellungen zurückgesetzt. Wenn Sie bereits in diesem Zustand befinden, wenden Sie sich an den Microsoft Support, für die nächsten Schritte. |Ja |Nein |
-| 2 |Datenträgerquorum |In seltenen Fällen Wenn der Großteil der Datenträger im ebod-Gehäuse eines Geräts 8600 getrennt werden, sodass kein datenträgerquorum wird dann der Speicherpool offline sein. Es wird offline geschaltet bleiben, selbst wenn der Datenträger wieder verbunden ist. |Sie müssen das Geräte neu starten. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft Support, für die nächsten Schritte. |Ja |Nein |
-| 3 |Momentaufnahmefehler in der Cloud |In seltenen Fällen kann eine Cloud-Momentaufnahme mit der Fehlermeldung fehlschlagen **Maximales sicherungslimit erreicht**. Dies tritt auf, wenn Sie 255 onlineklone auf demselben Gerät, von demselben ursprünglichen Volume überschreiten, das gelöscht wurde. | |Ja |Ja |
-| 4 |Falsche Controller-ID |Bei einem Austausch eines Controllers ausgeführt wird, kann der Controller 0 als Controller 1 angezeigt. Während des controlleraustauschs Wenn das Image vom Peerknoten geladen ist kann die Controller-ID anfänglich als dem peercontroller-ID angezeigt  In seltenen Fällen kann dieses Verhalten auch nach einem Neustart des Systems auftreten. |Es ist keine Benutzeraktion erforderlich. Diese Situation sollte sich auflösen, nachdem der controlleraustausch abgeschlossen ist. |Ja |Nein |
-| 5 |Geräteüberwachungsdiagramme |In StorSimple Manager-Dienst funktionieren die geräteüberwachungsdiagramme nicht, wenn grundlegende oder NTLM-Authentifizierung in der Proxyserverkonfiguration für das Gerät aktiviert ist. |Ändern Sie die webproxykonfiguration für das Gerät bei Ihrem StorSimple Manager-Dienst registriert werden, damit die Authentifizierung auf NONE festgelegt wird. Führen Sie hierzu die Windows PowerShell für StorSimple Set HcsWebProxy-Cmdlet. |Ja |Ja |
-| 6 |Speicherkonten |Verwenden des Speicherdiensts So löschen Sie das Speicherkonto ist ein nicht unterstütztes Szenario. Dies führt zu einer Situation in der Benutzerdaten abgerufen werden können. | |Ja |Ja |
-| 7 |Geräte-failover |Mehrere Failover eines volumecontainers von demselben Quellgerät auf verschiedene Zielgeräte wird nicht unterstützt. |Failover von einem einzelnen nicht reagierenden Gerät auf mehrere Geräte stellen die volumecontainer auf dem ersten Gerät mit erfolgtem Failover dateneigentümerschaft verlieren. Nach einem Failover werden diese volumecontainer angezeigt oder Verhalten sich anders, wenn Sie sie im klassischen Azure-Portal anzeigen. |Ja |Nein |
-| 8 |Installation |Während des StorSimple-Adapters für SharePoint-Installation müssen Sie bieten eine Geräte-IP, damit die Installation erfolgreich abgeschlossen. | |Ja |Nein |
-| 9 |Webproxy |Wenn Ihre webproxykonfiguration HTTPS als das angegebene Protokoll verfügt, wirkt sich Ihr Gerät-zu-Dienst-Kommunikation, und das Gerät offline geschaltet wird. Supportpakete werden auch bei der Nutzung umfangreiche Ressourcen auf Ihrem Gerät generiert werden. |Stellen Sie sicher, dass die Webproxy-URL über HTTP als das angegebene Protokoll verfügt. Weitere Informationen zum finden Sie unter [Konfigurieren des Webproxys für Ihr Gerät](storsimple-configure-web-proxy.md). |Ja |Nein |
-| 10 |Webproxy |Wenn Sie konfigurieren und des Webproxys auf einem registrierten Gerät aktivieren, müssen Sie den aktiven Controller auf Ihrem Gerät neu starten. | |Ja |Nein |
-| 11 |Hohe Cloud-Latenz und hoher e/a-arbeitsauslastung |Wenn Ihr StorSimple-Gerät eine Kombination aus sehr hohen Cloud-Latenzen (mehrere Sekunden) und hoher e/a-arbeitsauslastung stößt, wird den gerätevolumes wechseln, verschlechtert sich die Leistung, und die e/as möglicherweise ein Fehler mit dem Fehler "Gerät nicht bereit". |Sie müssen manuell neu starten die Geräte-Controller oder Ausführen eines gerätefailovers, um diese Situation zu beheben. |Ja |Nein |
+| 1 |Zurücksetzen auf Werkseinstellungen |Unter bestimmten Umständen kann das StorSimple-Gerät beim Zurücksetzen auf die Werkseinstellungen nicht mehr reagieren und die folgende Nachricht anzeigen: **Zurücksetzung auf Werkseinstellungen wird ausgeführt (Phase 8)**. Dies kann vorkommen, wenn Sie STRG+C drücken, während das Cmdlet ausgeführt wird. |Drücken Sie STRG+C nicht nach dem Einleiten einer Zurücksetzung auf die Werkseinstellungen. Wenn dies bereits erfolgt ist, wenden Sie sich an den Microsoft-Support, um Informationen zu den nächsten Schritten zu erhalten. |Ja |Nein |
+| 2 |Datenträgerquorum |In seltenen Fällen kann der Speicherpool offline geschaltet werden, wenn der Großteil der Datenträger im EBOD-Gehäuse eines 8600-Geräts getrennt wird, sodass kein Datenträgerquorum verfügbar ist. Der Speicherpool bleibt offline, auch wenn die Verbindung zu den Datenträgern wiederhergestellt wird. |Sie müssen das Gerät neu starten. Wenn das Problem weiterhin auftritt, wenden Sie sich an den Microsoft-Support, um Informationen zu den nächsten Schritten zu erhalten. |Ja |Nein |
+| 3 |Fehler bei der Cloud-Momentaufnahme |In seltenen Fällen tritt ggf. ein Fehler **Maximales Sicherungslimit erreicht** einer Cloudmomentaufnahme auf. Dies kann vorkommen, wenn die Anzahl von 255 Onlineklonen auf demselben Gerät überschritten wird, die von demselben ursprünglichen Volume stammen, das gelöscht wurde. | |Ja |Ja |
+| 4 |Falsche Controller-ID |Beim Austausch eines Controllers kann es vorkommen, dass Controller 0 als Controller 1 angezeigt wird. Während des Controlleraustauschs kann die Controller-ID anfänglich als ID des Peercontrollers angezeigt werden, wenn das Image vom Peerknoten geladen wurde.  In seltenen Fällen kann dieses Verhalten auch nach einem Neustart des Systems auftreten. |Es ist keine Benutzeraktion erforderlich. Dieses Problem löst sich von selbst, nachdem der Controlleraustausch abgeschlossen ist. |Ja |Nein |
+| 5 |Geräteüberwachungsdiagramme |Im StorSimple-Manager-Dienst funktionieren die Geräteüberwachungsdiagramme nicht, wenn in der Proxyserverkonfiguration für das Gerät die Standard- oder NTLM-Authentifizierung aktiviert ist. |Ändern Sie die Webproxykonfiguration für das beim StorSimple-Manager-Dienst registrierte Gerät so, dass für die Authentifizierung die Option KEINE festgelegt ist. Führen Sie zu diesem Zweck das Windows PowerShell für StorSimple-Cmdlet "Set-HcsWebProxy" aus. |Ja |Ja |
+| 6 |Speicherkonten |Das Verwenden des Speicherdiensts zum Löschen des Speicherkontos wird nicht unterstützt. Dies führt dazu, dass keine Benutzerdaten abgerufen werden können. | |Ja |Ja |
+| 7 |Gerätefailover |Mehrere Failover eines Volumecontainers von demselben Quellgerät auf verschiedene Zielgeräte werden nicht unterstützt. |Das Failover von einem einzelnen nicht reagierenden Gerät auf mehrere Geräte führt dazu, dass die Volumecontainer auf dem ersten Gerät mit erfolgtem Failover die Dateneigentümerschaft verlieren. Wenn Sie diese Volumecontainer nach einem solchen Failover im klassischen Azure-Portal betrachten, werden sie anders angezeigt oder verhalten sie sich anders. |Ja |Nein |
+| 8 |Installation |Während der Installation von StorSimple-Adapter für SharePoint müssen Sie die IP-Adresse eines Geräts angeben, damit die Installation erfolgreich abgeschlossen wird. | |Ja |Nein |
+| 9 |Webproxy |Wenn Ihre Webproxykonfiguration das Protokoll "HTTPS" verwendet, ist die Kommunikation zwischen dem Gerät und dem Dienst beeinträchtigt, und das Gerät wird offline geschaltet. Supportpakete werden bei diesem Vorgang ebenfalls generiert. Sie beanspruchen auf Ihrem Gerät erhebliche Ressourcen. |Stellen Sie sicher, dass "HTTP" als Protokoll für die Webproxy-URL angegeben ist. Weitere Informationen finden Sie unter [Konfigurieren des Webproxys für Ihr Gerät](storsimple-configure-web-proxy.md). |Ja |Nein |
+| 10 |Webproxy |Wenn Sie den Webproxy für ein registriertes Gerät konfigurieren und aktivieren, müssen Sie den aktiven Controller auf Ihrem Gerät neu starten. | |Ja |Nein |
+| 11 |Hohe Cloud-Latenzen und hohe E/A-Arbeitsauslastung |Wenn Ihr StorSimple-Gerät mit einer Kombination aus sehr hohen Cloud-Latenzen (mehrere Sekunden) und hoher E/A-Arbeitsauslastung konfrontiert wird, verschlechtert sich die Leistung der Gerätevolumes, und es tritt ggf. der E/A-Fehler "Gerät nicht bereit" auf. |Sie müssen die Gerätecontroller manuell neu starten oder ein Gerätefailover ausführen, um dieses Problem zu beheben. |Ja |Nein |
 
-## <a name="physical-device-updates-in-the-january-release"></a>Physisches Geräteupdates in der Januar zu veröffentlichen
-Dieses Update enthält keine anderen Änderungen an das StorSimple-Gerät.
+## <a name="physical-device-updates-in-the-january-release"></a>Updates für das physische Gerät in der Januar-Version
+Dieses Update enthält keine anderen Änderungen am StorSimple-Gerät.
 
-## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-the-january-release"></a>Serial attached SCSI (SAS)-Controller und Firmware-Updates in der Januar freigeben
-Diese Version enthält keine Updates an den Serial attached SCSI (SAS)-Controller oder die Firmware. Die treiberaktualisierung erfolgte in der Oktober 2014-Version. 
+## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-the-january-release"></a>Updates des SAS-Controllers (Serial Attached SCSI) und der Firmware in der Januar-Version
+Diese Version enthält keine Updates für den SAS-Controller (Serial Attached SCSI) oder die Firmware. Das Treiberupdate wurde in der Version vom Oktober 2014 durchgeführt. 
 
-## <a name="virtual-device-updates-in-the-january-release"></a>Virtuelles Geräteupdates in der Januar zu veröffentlichen
-Diese Version enthält ein aktualisiertes Image für das virtuelle Gerät an. Alle virtuellen Geräte, die nach dem 20. Januar 2015 erstellt zeigt die Version der Software als "6.3.9600.17361" angezeigt.
+## <a name="virtual-device-updates-in-the-january-release"></a>Updates für virtuelle Geräte in der Version vom Januar
+Diese Version enthält ein aktualisiertes Image für das virtuelle Gerät. Für alle nach dem 20.01.2015 erstellten virtuellen Geräte wird die Version 6.3.9600.17361 angezeigt.
 

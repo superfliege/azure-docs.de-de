@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 00161e7c6fb4becdb7d8eab266fa27128e50f8ca
-ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: ef559fbbd3e8448d64167552cacee04790418343
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-powershell"></a>Herausfinden des Typs des nächsten Hops über PowerShell mithilfe der Funktion „Nächster Hop“ in Azure Network Watcher
 
 > [!div class="op_single_selector"]
@@ -104,7 +102,6 @@ Die folgende Liste zeigt die derzeit verfügbaren NextHopType-Werte:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zur programmgesteuerten Überprüfung der Einstellungen Ihrer Netzwerksicherheitsgruppe finden Sie unter [NSG-Überwachung mit Network Watcher](network-watcher-nsg-auditing-powershell.md).
-
 
 
 

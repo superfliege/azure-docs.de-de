@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ce5d333ad5d339b64d1fc1d081651052f71a8b67
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Senden von Benutzer-Realmessungen an Azure Traffic Manager mithilfe von Webseiten
 
 >[!NOTE]
@@ -76,5 +74,4 @@ Nachdem Sie den RUM-Schlüssel erhalten haben, müssen Sie dieses kopierte JavaS
 - Informieren Sie sich über die [Funktionsweise von Traffic Manager](traffic-manager-overview.md)
 - Informieren Sie sich über die von Traffic Manager unterstützten [Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md) .
 - Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-create-profile.md)
-
 

@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/25/2017
 ms.author: jdial
 ms.custom: 
+ms.openlocfilehash: 2fcbed2f83d66a0b4336cd1c464bb02eff3ef229
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: 0398e9f814614b3dccf849385903a8ed8717eafb
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-public-ip-address-in-an-availability-zone-with-the-azure-portal"></a>Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit dem Azure-Portal
 
 Sie können eine öffentliche IP-Adresse in einer Azure-Verfügbarkeitszone (Vorschau) bereitstellen. Eine Verfügbarkeitszone ist eine physisch separate Zone in einer Azure-Region. In diesem Artikel werden folgende Themen erläutert:
@@ -38,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter „https://portal.azure.com“ im Azure-Portal an. 
+Melden Sie sich unter „https://portal.azure.com“ am Azure-Portal an. 
 
 ## <a name="create-a-zonal-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse in einer Zone
 
@@ -48,7 +46,7 @@ Melden Sie sich unter „https://portal.azure.com“ im Azure-Portal an.
 
     |Einstellung|Wert|
     |---|---|
-    |SKU| **Basic**: Mit der statischen oder der dynamischen Zuordnungsmethode zugewiesen. Kann jeder Azure-Ressource zugewiesen werden, der eine öffentliche IP-Adresse zugewiesen werden kann, z.B. Netzwerkschnittstellen, VPN Gateways, Application Gateways und Lastenausgleiche mit Internetzugriff. Sie können die öffentliche IP-Adresse einer bestimmten Zone in der Einstellung **Verfügbarkeitszone** zuweisen. Sind nicht zonenredundant. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Overview of Availability Zones in Azure (Preview) (Übersicht über Verfügbarkeitszonen in Azure (Vorschauversion))](https://docs.microsoft.com/azure/availability-zones/az-overview). **Standard**: Nur mit der statischen Zuordnungsmethode zugewiesen. Kann Netzwerkschnittstellen oder Standardlastenausgleichen mit Internetzugriff zugewiesen werden. Wenn Sie die öffentliche IP-Adresse einem Standardlastenausgleich mit Internetzugriff zuweisen, müssen Sie „Standard“ auswählen. Weitere Informationen zu SKUs von Azure Load Balancer finden Sie unter [Azure load balancer standard SKU (Standard-SKU von Azure Load Balancer)](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview). Sind standardmäßig zonenredundant. Können in Zonen erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden. Die Standard-SKU befindet sich in der Vorschauversion. Bevor Sie eine öffentliche IP-Adresse für eine Standard-SKU erstellen, müssen Sie sich zunächst für die Vorschauversion registrieren. Unter [Register for the standard SKU preview (Registrieren für die Vorschauversion der Standard-SKU)](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#preview-sign-up) können Sie sich für die Vorschauversion registrieren. Die Standard-SKU kann nur an einem unterstützten Speicherort erstellt werden.  Eine Liste der unterstützten Speicherorte (Regionen) finden Sie unter [Region availability (Regionsverfügbarkeit)](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#region-availability). Auf der Seite [Azure Virtual Network updates (Updates für Azure Virtual Network)](https://azure.microsoft.com/updates/?product=virtual-network) erhalten Sie außerdem zusätzlichen Support für Regionen.|   
+    |SKU| **Basic**: Mit der statischen oder der dynamischen Zuordnungsmethode zugewiesen. Kann jeder Azure-Ressource zugewiesen werden, der eine öffentliche IP-Adresse zugewiesen werden kann, z.B. Netzwerkschnittstellen, VPN Gateways, Application Gateways und Lastenausgleiche mit Internetzugriff. Sie können die öffentliche IP-Adresse einer bestimmten Zone in der Einstellung **Verfügbarkeitszone** zuweisen. Sind nicht zonenredundant. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Overview of Availability Zones in Azure (Preview) (Übersicht über Verfügbarkeitszonen in Azure (Vorschauversion))](https://docs.microsoft.com/azure/availability-zones/az-overview). **Standard**: Nur mit der statischen Zuordnungsmethode zugewiesen. Kann Netzwerkschnittstellen oder Standardlastenausgleichen mit Internetzugriff zugewiesen werden. Wenn Sie die öffentliche IP-Adresse einem Standardlastenausgleich mit Internetzugriff zuweisen, müssen Sie „Standard“ auswählen. Weitere Informationen zu SKUs von Azure Load Balancer finden Sie unter [Azure load balancer standard SKU (Standard-SKU von Azure Load Balancer)](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview). Sind standardmäßig zonenredundant. Können in Zonen erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden. Die Standard-SKU befindet sich in der Vorschauversion. Bevor Sie eine öffentliche IP-Adresse für eine Standard-SKU erstellen, müssen Sie sich zunächst für die Vorschauversion registrieren. Unter [Register for the standard SKU preview (Registrieren für die Vorschauversion der Standard-SKU)](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#preview-sign-up) können Sie sich für die Vorschauversion registrieren. Die Standard-SKU kann nur an einem unterstützten Speicherort erstellt werden.  Eine Liste mit den unterstützten Standorten (Regionen) finden Sie unter [Region availability](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#region-availability) (Regionsverfügbarkeit). Auf der Seite [Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network) (Updates für Azure Virtual Network) erhalten Sie außerdem zusätzlichen Support für Regionen.|   
     |Name|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
     |Ressourcengruppe|Klicken Sie auf „Neu erstellen“, und geben Sie „myResourceGroup“ ein|
     |Standort|Europa, Westen|
@@ -59,7 +57,7 @@ Melden Sie sich unter „https://portal.azure.com“ im Azure-Portal an.
     ![Erstellen einer öffentlichen IP-Adresse in einer Zone](./media/create-public-ip-availability-zone-portal/public-ip-address.png) 
 
 > [!NOTE]
-> Wenn Sie eine öffentliche IP-Adresse für eine Standard-SKU der Netzwerkschnittstelle eines virtuellen Computers zuweisen, müssen Sie den geplanten Datenverkehr explizit mit einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) zulassen. Die Kommunikation mit der Ressource schlägt fehl, bis Sie eine Netzwerksicherheitsgruppe erstellen und den gewünschten Datenverkehr explizit zulassen.
+> Wenn Sie eine öffentliche IP-Adresse für eine Standard-SKU der Netzwerkschnittstelle eines virtuellen Computers zuweisen, müssen Sie den geplanten Datenverkehr explizit mit einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) zulassen. Die Kommunikation mit der Ressource schlägt fehl, bis Sie eine Netzwerksicherheitsgruppe erstellen und zuordnen und den gewünschten Datenverkehr explizit zulassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

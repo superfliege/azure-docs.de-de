@@ -11,14 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
 ms.openlocfilehash: 7c355e2feb5ebe5971d8391b326422a1abec1497
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="publish-multiple-versions-of-your-api-in-a-predictable-way"></a>Planbares Veröffentlichen mehrerer Versionen Ihrer API
 In diesem Tutorial erfahren Sie, wie Sie Versionen Ihrer API einrichten und auswählen, wie sie von API-Entwicklern aufgerufen werden.
 
@@ -75,4 +73,3 @@ Damit Ihre neue Version für Aufrufer sichtbar ist, muss sie einem **Produkt** h
 3. Klicken Sie auf **v1**.
 4. Beachten Sie die **Anforderungs-URL** des ersten Vorgangs in der Liste. Dort sehen Sie, dass der API-URL-Pfad **v1** enthält.
 ![Angezeigte Version im Entwicklerportal](media/api-management-getstarted-publish-versions/VersionDevPortal.PNG)
-

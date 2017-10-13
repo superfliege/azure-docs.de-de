@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 33cd461c61db5f3f6aa9f68fc655ace94c30611a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 ##  <a name="introduction"></a>Einführung
 ### <a name="overview"></a>Übersicht
@@ -348,5 +346,4 @@ Microsoft Azure enthält viele verschiedene cloudbasierte Computing-Dienste mit 
 - [Speicherisolation](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 
 Bei Microsoft Azure sind auf Kunden-VMs basierende Computevorgänge von Speichervorgängen getrennt. Diese Trennung ermöglicht eine unabhängige Skalierung der Computevorgänge und Speichervorgänge, sodass die Umsetzung der Mehrinstanzenfähigkeit und Isolation vereinfacht wird. Aus diesem Grund wird Azure Storage auf separater Hardware ohne Netzwerkverbindung mit Azure Compute (außer auf logischer Ebene) ausgeführt. Alle Anforderungen werden je nach Auswahl des Kunden über HTTP oder HTTPS ausgeführt.
-
 

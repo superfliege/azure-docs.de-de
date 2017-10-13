@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: e5a658e0d20d42911870f2522f6c1bab7529ea11
-ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -28,7 +27,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   [Ablaufsteuerung](api-management-advanced-policies.md#choose) – Bedingte Anwendung von Richtlinienanweisungen basierend auf den Ergebnissen der Auswertung von booleschen [Ausdrücken](api-management-policy-expressions.md)  
   
--   [Anforderung weiterleiten](#ForwardRequest) – Leitet die Anforderung an den Back-End-Dienst.
+-   [Anforderung weiterleiten](#ForwardRequest) – leitet die Anforderung an den Back-End-Dienst.
 
 -   [Parallelität einschränken:](#LimitConcurrency) verhindert die Ausführung der eingeschlossenen Richtlinien durch mehr als die angegebene Anzahl von Anforderungen gleichzeitig.
   
@@ -1017,4 +1016,3 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 -   [Richtlinien in Azure API Management](api-management-howto-policies.md) 
 -   [Richtlinienausdrücke](api-management-policy-expressions.md)
-

@@ -1,52 +1,52 @@
-1. Melden Sie sich beim [klassischen Azure-Portal](http://manage.windowsazure.com) an.  
-2. Klicken Sie auf der Befehlsleiste am unteren Rand des Fensters auf **neu**.
-3. Klicken Sie unter **berechnen**, klicken Sie auf **VM**, und klicken Sie dann auf **aus Katalog**.
+1. Melden Sie sich beim [klassischen Azure-Portal](http://manage.windowsazure.com)an.  
+2. Klicken Sie in der Befehlsleiste am unteren Ende des Fensters auf **Neu**.
+3. Unter **Compute** klicken Sie auf **Virtueller Computer** und anschließend auf **From Gallery** (Aus Galerie).
    
-    ![Erstellen eines neuen virtuellen Computers][Image1]
-4. Klicken Sie unter der **SUSE** gruppieren, wählen Sie ein Image eines virtuellen Computers OpenSUSE, und klicken Sie dann auf den Pfeil, um den Vorgang fortzusetzen.
-5. Auf der ersten **Konfiguration des virtuellen Computers** Seite:
+    ![Neuen virtuellen Computer erstellen][Image1]
+4. Wählen Sie unter der Gruppe **SUSE** das Image eines virtuellen OpenSUSE-Computers aus, und klicken Sie auf den Pfeil, um den Vorgang fortzusetzen.
+5. Gehen Sie auf der ersten Seite für die **Konfiguration des virtuellen Computers** wie folgt vor:
    
-   * Geben Sie einen **Name des virtuellen Computers**, z. B. "Testlinuxvm". Der Name muss zwischen 3 und 15 Zeichen enthalten, können nur Buchstaben, Zahlen und Bindestriche enthalten und muss mit einem Buchstaben beginnen und mit einem Buchstaben oder einer Ziffer enden.
-   * Überprüfen Sie die **Ebene** , und wählen Sie eine **Größe**. Die Ebene bestimmt die Größen, denen Sie auswählen können. Die Größe wirkt sich auf die Kosten für verwenden, sowie Konfigurationsoptionen, z. B. wie viele Datenträger Sie anfügen können. Weitere Informationen finden Sie unter [Größen für virtuelle Maschinen](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-   * Geben Sie einen **neuer Benutzername**, oder übernehmen Sie den Standardnamen **Azureuser**. Dieser Name wird auf die Datei/etc/sudoers.d/omsagent hinzugefügt.
-   * Entscheiden, welche **Authentifizierung** verwenden. Allgemeine Richtlinien zur finden Sie unter [sichere Kennwörter](http://msdn.microsoft.com/library/ms161962.aspx).
-6. Auf der nächsten **Konfiguration des virtuellen Computers** Seite:
+   * Weisen Sie unter **Name des virtuellen Computers** einen Namen zu, z.B. „testlinuxvm“. Der Name muss zwischen 3 und 15 Zeichen enthalten, er darf nur aus Buchstaben, Zahlen und Bindestrichen bestehen und muss mit einem Buchstaben beginnen und mit einem Buchstaben oder einer Zahl enden.
+   * Überprüfen Sie den **Tarif**, und wählen Sie eine **Größe** aus. Die Ebene bestimmt, zwischen welchen Größen Sie wählen können. Die Größe wirkt sich auf seine Betriebskosten sowie auf die Konfigurationsoptionen, wie die Anzahl der Datenträger, die Sie anschließen können, aus. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+   * Geben Sie einen neuen Benutzernamen**** ein, oder übernehmen Sie den Standardnamen **azureuser**. Dieser Name wird der Sudoer-Listendatei hinzugefügt.
+   * Wählen Sie aus, welche Art der **Authentifizierung** verwendet werden soll. Hinweise zu allgemeinen Kennwortrichtlinien finden Sie unter [Sichere Kennwörter](http://msdn.microsoft.com/library/ms161962.aspx).
+6. Gehen Sie auf der Seite für die **Konfiguration des virtuellen Computers** wie folgt vor:
    
-   * Verwenden Sie den Standardnamen **Erstellen eines neuen Cloud-Diensts**.
-   * In der **DNS-Namen** Geben Sie einen eindeutigen DNS-Namen, die als Teil der Adresse, z. B. "Testlinuxvm" verwendet.
-   * In der **Region/Affinitätsgruppe/virtuelles Netzwerk** Feld, wählen Sie eine Region, in dem das virtuelle Image gehostet wird.
-   * Klicken Sie unter **Endpunkte**, behalten Sie den SSH-Endpunkt. Sie können andere Benutzer nun oder hinzufügen, ändern oder löschen, nachdem die virtuelle Maschine erstellt wurde.
+   * Verwenden Sie die Standardeinstellung **Einen neuen Clouddienst erstellen**.
+   * Geben Sie im Feld **DNS-Name** einen gültigen DNS-Namen ein, der als Teil der Adresse verwendet wird, z.B. „testlinuxvm“.
+   * Wählen Sie im Feld **Region/Affinity Group/Virtual Network** eine Region aus, in der dieses virtuelle Image gehostet wird.
+   * Behalten Sie unter **Endpunkte**den SSH-Endpunkt bei. Sie können nun weitere Endpunkte hinzufügen oder nach dem Erstellen des virtuellen Computers vorhandene Endpunkte hinzufügen, ändern oder löschen.
      
      > [!NOTE]
-     > Wenn Sie eine virtuelle Maschine auf ein virtuelles Netzwerk verwenden möchten Sie **müssen** Geben Sie das virtuelle Netzwerk beim Erstellen des virtuellen Computers. Sie können ein virtuelles Netzwerk nach der Erstellung der virtuellen Maschine einen virtuellen Computer hinzufügen. Weitere Informationen finden Sie unter [Überblick über virtuelle Netzwerke](../articles/virtual-network/virtual-networks-overview.md).
+     > Wenn der virtuelle Computer ein virtuelles Netzwerk verwenden soll, **müssen** Sie das virtuelle Netzwerk beim Erstellen des virtuellen Computers angeben. Sie können einen virtuellen Computer nicht einem virtuellen Netzwerk hinzufügen, nachdem Sie den virtuellen Computer erstellt haben. Weitere Informationen finden Sie unter [Virtuelle Netzwerke im Überblick](../articles/virtual-network/virtual-networks-overview.md).
      > 
      > 
-7. Für den letzten **Konfiguration des virtuellen Computers** Seite, behalten Sie die Standardeinstellungen, und klicken Sie dann auf das Häkchen, um den Vorgang abzuschließen.
+7. Behalten Sie auf der letzten Seite für die **Konfiguration des virtuellen Computers** die Standardeinstellungen bei, und klicken Sie zum Fertigstellen auf das Häkchen.
 
-Im Portal aufgeführt, die neue virtuelle Maschine unter **VMs**. Während der Status, als gemeldet wird **(Bereitstellung)**, wird der virtuelle Computer eingerichtet wird. Wenn der Status gemeldet wird, als **ausführen**, können Sie mit dem nächsten Schritt wechseln.
+Der neue virtuelle Computer wird im Portal unter **Virtuelle Computer**aufgelistet. Der virtuelle Computer wird eingerichtet, dabei wird der Status **(Bereitstellung)**angezeigt. Wenn als Status **Wird ausgeführt**gemeldet wird, können Sie mit dem nächsten Schritt fortfahren.
 
 ## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
-Verwenden Sie SSH oder PuTTY zur Verbindung mit dem virtuellen Computer je nach Betriebssystem auf dem Computer, den Sie eine Verbindung herstellen müssen:
+In Abhängigkeit von dem Betriebssystem auf dem Computer, über den Sie eine Verbindung herstellen, verwenden Sie für die Verbindung mit dem virtuellen Computer SSH oder PuTTY:
 
-* Verwenden Sie SSH auf einem Computer, auf dem Linux ausgeführt wird. Geben Sie in die Eingabeaufforderung Folgendes ein:
+* Verwenden Sie auf einem Computer mit Linux SSH. Geben Sie an der Eingabeaufforderung Folgendes ein:
   
     `$ ssh newuser@testlinuxvm.cloudapp.net -o ServerAliveInterval=180`
   
-    Geben Sie das Kennwort des Benutzers.
-* Von einem Computer unter Windows können verwenden Sie PuTTY. Wenn Sie nicht installiert ist, laden Sie es der [PuTTY-Downloadseite][PuTTYDownload].
+    Geben Sie das Kennwort des Benutzers ein.
+* Verwenden Sie auf einem Computer mit Windows PuTTY. Ist PuTTY nicht installiert, laden Sie die Anwendung von der [PuTTY-Downloadseite][PuTTYDownload] herunter.
   
-    Speichern Sie **putty.exe** in ein Verzeichnis auf Ihrem Computer. Öffnen Sie eine Eingabeaufforderung, navigieren Sie zu diesem Ordner und führen Sie **putty.exe**.
+    Speichern Sie **putty.exe** in einem Verzeichnis auf dem Computer. Öffnen Sie eine Eingabeaufforderung, navigieren Sie zu dem betreffenden Verzeichnis, und führen Sie **putty.exe**aus.
   
-    Geben Sie den Hostnamen, z. B. "testlinuxvm.cloudapp.net", und geben Sie "22" für die **Port**.
+    Geben Sie den Hostnamen ein, z.B. „testlinuxvm.cloudapp.net“, und geben Sie dann für **Port** den Wert „22“ ein.
   
     ![PuTTY-Bildschirm][Image6]  
 
-## <a name="update-the-virtual-machine-optional"></a>Update der virtuellen Maschine (optional)
-1. Nachdem Sie mit dem virtuellen Computer verbunden sind, können Sie optional Systemupdates und -Patches installieren. Um das Update auszuführen, geben Sie Folgendes ein:
+## <a name="update-the-virtual-machine-optional"></a>Aktualisieren des virtuellen Computers (optional)
+1. Nachdem Sie eine Verbindung mit dem virtuellen Computer hergestellt haben, haben Sie die Möglichkeit, Systemaktualisierungen und Patches zu installieren. Zum Ausführen der Aktualisierung geben Sie Folgendes ein:
    
     `$ sudo zypper update`
-2. Wählen Sie **Software**, klicken Sie dann **Onlineupdate** zum Auflisten der verfügbaren Updates. Wählen Sie **Accept** zum Starten der Installation und alle neuen verfügbaren Patches (außer den optional) anwenden.
-3. Wählen Sie nach Abschluss der Installation **Fertig stellen**.  Das System ist jetzt auf dem neuesten Stand.
+2. Wählen Sie **Software** und dann **Onlineupdate**, um die verfügbaren Updates aufzulisten. Wählen Sie **Annehmen** , um die Installation zu starten und alle verfügbaren neuen Patches (außer den optionalen) anzuwenden.
+3. Wählen Sie nach Abschluss der Installation **Fertig stellen**aus.  Ihr System ist jetzt auf dem aktuellen Stand.
 
 [PuTTYDownload]: http://www.puttyssh.org/download.html
 

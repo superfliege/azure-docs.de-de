@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro; oldportal
 ms.openlocfilehash: fc65c4053c45d9c16c62ee0fe65924133a4bb94a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ Der letzte Schritt besteht darin, für jede Anwendung die Connectorgruppe festzu
 
 1. Wählen Sie im klassischen Azure-Portal in Ihrem Verzeichnis die Anwendung aus, die Sie der Gruppe zuweisen möchten, und klicken Sie auf **Konfigurieren**.
 2. Wählen Sie unter **Connectorgruppe**die Gruppe aus, die die Anwendung verwenden soll. Diese Änderung wird sofort übernommen.  
-    ![Screenshot zu Anwendungsproxy-Connectorgruppen – Gruppe aus dem Dropdown-Menü auswählen](./media/active-directory-application-proxy-connectors/app_proxy_connectors_newgroup.png)
+    ![Screenshot zu Anwendungsproxy-Connectorgruppen  – Gruppe aus dem Dropdown-Menü auswählen](./media/active-directory-application-proxy-connectors/app_proxy_connectors_newgroup.png)
 
 ## <a name="see-also"></a>Siehe auch
 * [Aktivieren des Anwendungsproxys](active-directory-application-proxy-enable.md)

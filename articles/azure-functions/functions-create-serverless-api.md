@@ -11,14 +11,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: e4fe86b80d8a786da15cdea37619e54e55102e3f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-serverless-api-using-azure-functions"></a>Erstellen einer serverlosen API mit Azure Functions
 
 In diesem Tutorial erfahren Sie, wie Sie mit Azure Functions höchst flexibel skalierbare APIs erstellen können. Zu Azure Functions gehört eine Sammlung von integrierten HTTP-Triggern und -Bindungen, die Ihnen das Erstellen eines Endpunkts in einer Vielzahl von Sprachen wie z.B. Node.js und C# erleichtern. In diesem Tutorial passen Sie einen HTTP-Trigger so an, dass er bestimmte Aktionen in Ihrem API-Entwurf verarbeitet. Sie bereiten sich auch auf eine Erweiterung Ihrer API vor, indem Sie sie in Azure Functions-Proxys integrieren und Modell-APIs einrichten. All dies erfolgt auf der Grundlage der serverlosen Compute-Umgebung für Functions. Daher müssen Sie sich keine Gedanken über die Skalierung der Ressourcen machen – Sie können sich ganz auf Ihre API-Logik konzentrieren.
@@ -195,4 +193,3 @@ Die folgenden Referenzen können bei der weiteren Entwicklung Ihrer API hilfreic
 
 [Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
 [Arbeiten mit Proxys in Azure Functions (Vorschau)]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
-

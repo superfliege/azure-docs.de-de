@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/12/2017
 ms.author: yushwang
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: 13a17eb3d78e70a09864bf218f1027d6e98486a6
-ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-bgp-with-azure-vpn-gateways"></a>Übersicht über BGP mit Azure-VPN-Gateways
 Dieser Artikel enthält eine Übersicht über die Unterstützung des Border Gateway-Protokolls (BGP) in Azure-VPN-Gateways.
@@ -56,5 +55,4 @@ Das folgende Diagramm veranschaulicht ein Beispiel für eine Mehrfachhop-Topolog
 
 ## <a name="next-steps"></a>Nächste Schritte
 Schritte zum Konfigurieren von BGP für standortübergreifende Verbindungen und VNET-zu-VNET-Verbindungen finden Sie unter [Konfigurieren von BGP auf Azure VPN Gateways mithilfe von Azure Resource Manager und PowerShell](vpn-gateway-bgp-resource-manager-ps.md) .
-
 

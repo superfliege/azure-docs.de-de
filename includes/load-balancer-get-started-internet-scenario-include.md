@@ -1,7 +1,7 @@
-In diesem Szenario werden die folgenden Aufgaben ausgeführt werden:
+In diesem Szenario werden die folgenden Aufgaben ausgeführt:
 
-* Erstellen Sie ein Lastenausgleichsmodul, das Netzwerkdatenverkehr über Port 80 empfängt und eingehenden Datenverkehr an virtuelle Computer "web1" und "web2" Senden
-* Erstellen Sie die NAT-Regeln für remote desktop Zugriff/SSH für virtuelle Computer hinter dem Lastenausgleichsmodul
-* Erstellen von zustandsüberprüfungen
+* Erstellen eines Load Balancers für den Empfang von Netzwerkdatenverkehr an Port 80 und Senden von Datenverkehr mit Lastenausgleich an die virtuellen Computer „web1“ und „web2“
+* Erstellen von NAT-Regeln für Remotedesktopzugriff/SSH für virtuelle Computer hinter dem Load Balancer
+* Erstellen von Integritätstests
 
-![Load Balancer-Szenario](./media/load-balancer-get-started-internet-scenario-include/scenario-classic.png)
+![Load Balancer-Szenarios](./media/load-balancer-get-started-internet-scenario-include/scenario-classic.png)

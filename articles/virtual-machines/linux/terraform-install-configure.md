@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/14/2017
 ms.author: echuvyrov
 ms.openlocfilehash: da567097be38ac649c6bf1de1508de24d21cb877
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure 
 In diesem Artikel werden die erforderlichen Schritte zum Installieren und Konfigurieren von Terraform zum Bereitstellen von Ressourcen (z.B. virtuellen Computern) in Azure erläutert. Sie erfahren, wie Sie Azure-Anmeldeinformationen erstellen und verwenden, um Cloudressourcen auf sichere Weise bereitzustellen.

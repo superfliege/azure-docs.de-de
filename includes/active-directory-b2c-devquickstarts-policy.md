@@ -1,5 +1,5 @@
 > [!NOTE]
-> In Azure AD B2C, Ihre Richtlinie Name wird als Präfix verwendet werden `b2c_1_`, z. B. `b2c_1_sign_up`.  Sie sind für alle Ihre apps, die sowohl Client-als auch Ihre Richtlinien können verwendet werden.  Wenn Sie zuvor Richtlinien in einem anderen B2C exemplarischen Vorgehensweise erstellt haben, besteht keine Notwendigkeit dazu erneut aus. Sie können die Richtlinien erneut verwenden, die Sie zuvor im Verwaltungsportal erstellt haben, wenn sie die Anforderungen der Anwendung entsprechen.
+> In Azure AD B2C beginnt der Name Ihrer Richtlinie mit dem Präfix `b2c_1_`, zum Beispiel `b2c_1_sign_up`.   Sie können die Richtlinien für alle Ihre Apps geltend machen, sowohl Client- als auch Server-Apps.  Wenn Sie bereits zuvor Richtlinien in einer anderen exemplarischen B2C-Vorgehensweise erstellt haben, müssen Sie diesen Vorgang nicht wiederholen. Sie können die Richtlinien wiederverwenden, die Sie zuvor im Portal erstellt haben, wenn sie die Anforderungen der Anwendung erfüllen.
 > 
 > 
 

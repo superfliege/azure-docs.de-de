@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: 57ab58fa1fd8371d0b6f019f94bb162bcc1e0e43
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="repairing-an-export-job"></a>Reparieren eines Exportauftrags
 Nach Abschluss eines Exportauftrags können Sie das Microsoft Azure Import/Export-Tool lokal ausführen, um folgende Vorgänge durchzuführen:  
@@ -37,15 +37,15 @@ Die folgenden Parameter können mit **RepairExport** angegeben werden:
   
 |Parameter|Beschreibung|  
 |---------------|-----------------|  
-|**/r:<Reparaturdatei\>**|Erforderlich. Pfad zur Reparaturdatei, die den Status der Reparatur verfolgt und das Fortsetzen einer unterbrochenen Reparatur ermöglicht. Jedes Laufwerk muss über genau eine Reparaturdatei verfügen. Wenn Sie mit der Reparatur eines bestimmten Laufwerks beginnen, wird der Pfad zu einer noch nicht vorhandenen Reparaturdatei übergeben. Zum Fortsetzen einer unterbrochenen Reparatur müssen Sie den Namen einer vorhandenen Reparaturdatei übergeben. Die Reparaturdatei für das Ziellaufwerk muss immer angegeben werden.|  
-|**/logdir:<Protokollverzeichnis\>**|Optional. Das Protokollverzeichnis. In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
-|**/d:<Zielverzeichnis\>**|Erforderlich. Das zu überprüfende und zu reparierende Verzeichnis. Dies ist normalerweise das Stammverzeichnis des Exportlaufwerks, könnte aber auch eine Netzwerkdateifreigabe sein, die eine Kopie der exportierten Dateien enthält.|  
-|**/bk:<BitLocker-Schlüssel\>**|Optional. Sie müssen den BitLocker-Schlüssel angeben, wenn das Tool ein verschlüsseltes Laufwerk entsperren soll, auf dem die exportierten Dateien gespeichert sind.|  
-|**/sn:<Speicherkontoname\>**|Erforderlich. Der Name des Speicherkontos für den Exportauftrag.|  
-|**/sk:<Speicherkontoschlüssel\>**|Nur **Erforderliche**, wenn keine Container-SAS angegeben wurde. Der Kontoschlüssel des Speicherkontos für den Exportauftrag.|  
-|**/csas:<Container-SAS\>**|Nur **Erforderliche**, wenn kein Speicherkontoschlüssel angegeben wurde. Die Container-SAS für den Zugriff auf die Blobs, die dem Exportauftrag zugeordnet sind.|  
-|**/CopyLogFile:<Laufwerk-Kopierprotokolldatei\>**|Erforderlich. Der Pfad zur Kopierprotokolldatei des Laufwerks. Die Datei wird vom Windows Azure Import/Export-Dienst generiert und kann aus dem Blobspeicher heruntergeladen werden, der dem Auftrag zugeordnet ist. Die Kopierprotokolldatei enthält Informationen zu fehlerhaften Blobs oder Dateien, die repariert werden müssen.|  
-|**/ManifestFile:<Laufwerkmanifestdatei\>**|Optional. Der Pfad zur Manifestdatei des Exportlaufwerks. Diese Datei wird vom Windows Azure Import/Export-Dienst erstellt und auf dem Exportlaufwerk sowie optional in einem Blob im Speicherkonto gespeichert, das dem Auftrag zugeordnet ist.<br /><br /> Der Inhalt der Dateien auf dem Exportlaufwerk wird mit den in dieser Datei enthaltenen MD5-Hashes überprüft. Alle ermittelten beschädigten Dateien werden heruntergeladen und erneut in die Zielverzeichnisse geschrieben.|  
+|**/r:&lt;Reparaturdatei\>**|Erforderlich. Pfad zur Reparaturdatei, die den Status der Reparatur verfolgt und das Fortsetzen einer unterbrochenen Reparatur ermöglicht. Jedes Laufwerk muss über genau eine Reparaturdatei verfügen. Wenn Sie mit der Reparatur eines bestimmten Laufwerks beginnen, wird der Pfad zu einer noch nicht vorhandenen Reparaturdatei übergeben. Zum Fortsetzen einer unterbrochenen Reparatur müssen Sie den Namen einer vorhandenen Reparaturdatei übergeben. Die Reparaturdatei für das Ziellaufwerk muss immer angegeben werden.|  
+|**/logdir:&lt;Protokollverzeichnis\>**|Optional. Das Protokollverzeichnis. In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
+|**/d:&lt;Zielverzeichnis\>**|Erforderlich. Das zu überprüfende und zu reparierende Verzeichnis. Dies ist normalerweise das Stammverzeichnis des Exportlaufwerks, könnte aber auch eine Netzwerkdateifreigabe sein, die eine Kopie der exportierten Dateien enthält.|  
+|**/bk:&lt;BitLocker-Schlüssel\>**|Optional. Sie müssen den BitLocker-Schlüssel angeben, wenn das Tool ein verschlüsseltes Laufwerk entsperren soll, auf dem die exportierten Dateien gespeichert sind.|  
+|**/sn:&lt;Speicherkontoname\>**|Erforderlich. Der Name des Speicherkontos für den Exportauftrag.|  
+|**/sk:&lt;Speicherkontoschlüssel\>**|Nur **Erforderliche**, wenn keine Container-SAS angegeben wurde. Der Kontoschlüssel des Speicherkontos für den Exportauftrag.|  
+|**/csas:&lt;Container-SAS\>**|Nur **Erforderliche**, wenn kein Speicherkontoschlüssel angegeben wurde. Die Container-SAS für den Zugriff auf die Blobs, die dem Exportauftrag zugeordnet sind.|  
+|**/CopyLogFile:&lt;Laufwerk-Kopierprotokolldatei\>**|Erforderlich. Der Pfad zur Kopierprotokolldatei des Laufwerks. Die Datei wird vom Windows Azure Import/Export-Dienst generiert und kann aus dem Blobspeicher heruntergeladen werden, der dem Auftrag zugeordnet ist. Die Kopierprotokolldatei enthält Informationen zu fehlerhaften Blobs oder Dateien, die repariert werden müssen.|  
+|**/ManifestFile:&lt;Laufwerkmanifestdatei\>**|Optional. Der Pfad zur Manifestdatei des Exportlaufwerks. Diese Datei wird vom Windows Azure Import/Export-Dienst erstellt und auf dem Exportlaufwerk sowie optional in einem Blob im Speicherkonto gespeichert, das dem Auftrag zugeordnet ist.<br /><br /> Der Inhalt der Dateien auf dem Exportlaufwerk wird mit den in dieser Datei enthaltenen MD5-Hashes überprüft. Alle ermittelten beschädigten Dateien werden heruntergeladen und erneut in die Zielverzeichnisse geschrieben.|  
   
 ## <a name="using-repairexport-mode-to-correct-failed-exports"></a>Verwenden des RepairExport-Modus zum Beheben fehlerhafter Exporte  
 Sie können das Azure Import/Export-Tool zum Herunterladen von Dateien verwenden, die nicht exportiert werden konnten. Die Kopierprotokolldatei enthält eine Liste der Dateien, die nicht exportiert werden konnten.  

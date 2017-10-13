@@ -68,7 +68,7 @@
 
 # Referenz
 ## [Azure PowerShell](/powershell/azure/overview)
-## [Azure-CLI](/cli/azure/vm)
+## [Azure-Befehlszeilenschnittstelle](/cli/azure/vm)
 ## [Java](/java/api)
 ## [Erstellen von Resource Manager-Vorlagen](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [Communityvorlagen](https://azure.microsoft.com/documentation/templates)

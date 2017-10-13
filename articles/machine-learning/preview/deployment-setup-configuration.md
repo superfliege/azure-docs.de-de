@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 61ecea71874b05c2c5f7572aa6128fc320422b1f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="model-management-setup"></a>Einrichtung der Modellverwaltung
 
@@ -27,7 +26,7 @@ Am Ende dieses Dokuments sollte Ihre Modellverwaltungsumgebung eingerichtet und 
 
 ## <a name="what-you-need-to-get-started"></a>Voraussetzungen
 Um diesen Leitfaden bestmöglich zu nutzen, sollten Sie als Besitzer Zugriff auf ein Azure-Abonnement haben, in dem Sie Ihre Modelle bereitstellen können.
-Die CLI ist in Azure Machine Learning Workbench und auf [Azure-DSVMs](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) (Data Science Virtual Machines) vorinstalliert.
+Die CLI ist in Azure Machine Learning Workbench und [Azure DSVMs](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) (Data Science Virtual Machines) vorinstalliert.
 
 ## <a name="using-the-cli"></a>Verwenden der CLI
 Um die CLIs (Befehlszeilenschnittstellen) in Workbench zu nutzen, klicken Sie auf **Datei** -> **Eingabeaufforderung öffnen**. 
@@ -113,7 +112,7 @@ az ml env set -n [environment name] -g [resource group]
 ```
 
 #### <a name="cluster-deployment"></a>Clusterbereitstellung
-Verwenden Sie Clusterbereitstellung für Produktionsszenarien in großem Maßstab. Ein ACS-Cluster mit Kubernetes als Orchestrator wird eingerichtet. Der ACS-Cluster kann horizontal hochskaliert werden, um für Aufrufe Ihres Webdiensts einen größeren Durchsatz zu bewältigen.
+Wählen Sie die Clusterbereitstellung für Produktionsszenarien in großem Maßstab. Ein ACS-Cluster mit Kubernetes als Orchestrator wird eingerichtet. Der ACS-Cluster kann horizontal hochskaliert werden, um für Aufrufe Ihres Webdiensts einen größeren Durchsatz zu bewältigen.
 
 Um den Webdienst in einer Produktionsumgebung bereitzustellen, legen Sie zuerst die Umgebung mit dem folgenden Befehl fest:
 
@@ -124,7 +123,7 @@ az ml env setup --cluster -n [your environment name] -l [Azure region e.g. eastu
 Der Befehl zum Einrichten der Clusterumgebung erstellt die folgenden Ressourcen in Ihrem Abonnement:
 - Eine Ressourcengruppe (sofern keine angegeben bzw. der angegebene Name nicht vorhanden ist)
 - Ein Speicherkonto
-- Eine Azure Container Registry-Instanz (ACR)
+- Eine Azure Container Registry (ACR)
 - Eine Kubernetes-Bereitstellung in einem Azure Container Service-Cluster (ACS)
 - Ein Application Insights-Konto
 
@@ -172,4 +171,3 @@ az ml service create realtime --model-file [model file/folder path] -f [scoring 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Probieren Sie eines der vielen Beispiele im Katalog aus.
-

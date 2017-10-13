@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: genli
+ms.openlocfilehash: 55cfba5e9730b123bba20dfdc5d10c1157352a35
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 2411b2ccd30f2155164d65272f999fdd1f6ba760
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Problembehandlung: Azure-Site-to-Site-VPN-Verbindung kann nicht hergestellt werden und reagiert nicht mehr
 
 Nach dem Konfigurieren einer Site-to-Site-VPN-Verbindung zwischen einem lokalen Netzwerk und einem virtuellen Azure-Netzwerk wird plötzlich die Verbindung getrennt und kann nicht wieder hergestellt werden. Dieser Artikel enthält Schritte, mit denen Sie dieses Problem beheben können. 
@@ -99,7 +97,7 @@ Suchen und Entfernen Sie benutzerdefiniertes routing (UDR) oder Netzwerksicherhe
 2. Klicken Sie sich durch die Zertifikatswarnung.
 3. Wenn Sie eine Antwort erhalten, wird das VPN-Gateway als integer betrachtet. Wenn Sie keine Antwort erhalten, ist das Gateway möglicherweise nicht fehlerfrei, oder auf dem Gatewaysubnetz ist eine NSG vorhanden, die das Problem verursacht. Der folgende Text ist eine Beispielantwort:
 
-    &lt;?xml version="1.0"?> <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primäre Instanz: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6</string&gt;
+    &lt;?xml version="1.0"?&gt; <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primäre Instanz: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6&lt;/string&gt;
 
 ### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>Schritt 8: Überprüfen, ob beim lokalen VPN-Gerät die Funktion Perfect Forward Secrecy aktiviert ist
 
@@ -109,4 +107,3 @@ Die Funktion Perfect Forward Secrecy kann die Probleme mit der Trennung der Verb
 
 -   [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 -   [Konfigurieren einer IPsec/IKE-Richtlinie für Site-to-Site-VPN-Verbindungen](vpn-gateway-ipsecikepolicy-rm-powershell.md)
-

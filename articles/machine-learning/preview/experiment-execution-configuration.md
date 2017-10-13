@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/17/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bb1c7d318939c42edb9a51e28dec31593f2485f9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="overview-of-azure-machine-learning-experiment-execution-service"></a>Übersicht über den Azure Machine Learning-Experimentieren-Ausführungsdienst
 Mit dem Azure Machine Learning-Experimentieren-Ausführungsdienst können Data Scientists ihre Experimente ausführen, indem Sie die Ausführungs- und Ausführungsverwaltungsfunktionen von Azure ML (Azure Machine Learning) verwenden. Im Rahmen des Diensts wird ein Framework für flexible Experimente mit schnellen Iterationen bereitgestellt. Mit Azure ML Workbench können Sie mit lokalen Ausführungen auf Ihrem Computer beginnen und einen einfachen Pfad zum vertikalen und horizontalen Hochskalieren in andere Umgebungen nutzen, z.B. virtuelle Data Science-Remotecomputer mit GPU oder HDInsight-Cluster mit Ausführung von Spark.
 
@@ -252,6 +250,5 @@ Eine Anleitung zum Ausführen Ihrer Skripts per GPU finden Sie im Artikel [Verwe
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Create Azure Machine Learning preview accounts and install Azure Machine Learning Workbench](quickstart-installation.md) (Erstellen von Azure Machine Learning-Vorschaukonten und Installieren von Azure Machine Learning Workbench)
+* [Create and Install Azure Machine Learning (Erstellen und Installieren von Azure Machine Learning)](quickstart-installation.md)
 * [Modellverwaltung](model-management-overview.md)
-

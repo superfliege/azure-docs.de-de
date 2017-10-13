@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 03/22/2017
 ms.author: alkohli
 ms.openlocfilehash: 99b76e3bc2939c65654cbf606fda6f8a45e0c44b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set-update-2"></a>Wiederherstellen eines StorSimple-Volumes aus einem Sicherungssatz (Update 2)
 [!INCLUDE [storsimple-version-selector-restore-from-backup](../../includes/storsimple-version-selector-restore-from-backup.md)]
@@ -67,7 +67,7 @@ Die Seite **Sicherungskatalog** bietet eine Abfrage, mit der Sie die Auswahl der
 
 Die gefilterten Sicherungssätze werden dann basierend auf den folgenden Attributen in Tabellenform angezeigt:
 
-* **Name**: Name der Sicherungsrichtlinie oder des Volumes, der oder dem dieser Sicherungssatz zugeordnet ist.
+* **Name** – der Name der Sicherungsrichtlinie oder des Volumes, der oder dem dieser Sicherungssatz zugeordnet ist.
 * **Größe** – die tatsächliche Größe des Sicherungssatzes.
 * **Erstellt am** – das Datum und die Uhrzeit der Erstellung der Sicherungen. 
 * **Typ** – Sicherungssätze können lokale Momentaufnahmen oder Cloudmomentaufnahmen sein. Eine lokale Momentaufnahme ist eine Sicherung aller Volumedaten, die lokal auf dem Gerät gespeichert sind. Die Sicherung von Volumedaten in der Cloud wird dagegen als Cloudmomentaufnahme bezeichnet. Lokale Momentaufnahmen bieten schnelleren Zugriff, während Cloudmomentaufnahmen für Datenstabilität ausgewählt werden.
@@ -107,7 +107,7 @@ Sie können Ihr StorSimple-Volume auf der Seite **Sicherungskatalog** aus einer 
 7. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-restore-from-backup-set-u2/HCS_CheckIcon.png) Ein Wiederherstellungsauftrag wird gestartet. Über die Seite **Aufträge** können Sie den Auftrag anzeigen. 
 8. Nachdem die Wiederherstellung abgeschlossen ist, können Sie überprüfen, ob die Inhalte der Volumes durch die aus der Sicherung ersetzt wurden.
 
-![Video verfügbar](./media/storsimple-restore-from-backup-set-u2/Video_icon.png) **Video verfügbar**
+![Video verfügbar](./media/storsimple-restore-from-backup-set-u2/Video_icon.png)**Video verfügbar**
 
 Um ein Video zu schauen, in dem gezeigt wird, wie Sie mithilfe des Klons und Wiederherstellungsfunktionen in StorSimple gelöschte Dateien wiederherstellen können, klicken Sie [hier](https://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/).
 

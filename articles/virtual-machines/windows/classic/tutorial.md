@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
 ms.openlocfilehash: 0981872ff819fdf49a9cc97afce3c212013ce76b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>Erstellen eines virtuellen Windows-Computers im Azure-Portal
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Sie können auch mithilfe [eigener Images](createupload-vhd.md)virtuelle Compute
 
 <!-- 02/27/2017 Video removed as it was based on the classic portal. -->
 
-## <a id="createvirtualmachine"> </a>Erstellen des virtuellen Computers
+## <a id="createvirtualmachine"></a>Erstellen des virtuellen Computers
 [!INCLUDE [virtual-machines-create-WindowsVM](../../../../includes/virtual-machines-create-windowsvm.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte

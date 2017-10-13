@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 09/15/2016
 ms.author: zachal
 ms.openlocfilehash: 4292f9d8cd181073fdf0adff99fcb9624e0e9f55
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-vmss-and-desired-state-configuration-with-azure-resource-manager-templates"></a>Windows VMSS und Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
 Dieser Artikel beschreibt die Resource Manager-Vorlage für den [Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 

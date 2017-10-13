@@ -1,6 +1,6 @@
 ---
-title: "Scheduler – hohe Verfügbarkeit und Zuverlässigkeit"
-description: "Scheduler – hohe Verfügbarkeit und Zuverlässigkeit"
+title: "Hochverfügbarkeit und Zuverlässigkeit von Scheduler"
+description: "Hochverfügbarkeit und Zuverlässigkeit von Scheduler"
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
@@ -15,66 +15,66 @@ ms.topic: article
 ms.date: 08/16/2016
 ms.author: deli
 ms.openlocfilehash: 7e7fe49de7814b6058468d630f8638720e5864f3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="scheduler-high-availability-and-reliability"></a>Scheduler – hohe Verfügbarkeit und Zuverlässigkeit
-## <a name="azure-scheduler-high-availability"></a>Azure Scheduler – hohe Verfügbarkeit
-Als ein Kern Azure Platform-Dienst Azure Scheduler ist hoch verfügbar und features sowohl geografisch redundante dienstbereitstellung als auch geografisch regionale auftragsreplikation.
+# <a name="scheduler-high-availability-and-reliability"></a>Hochverfügbarkeit und Zuverlässigkeit von Scheduler
+## <a name="azure-scheduler-high-availability"></a>Hochverfügbarkeit von Azure Scheduler
+Als Kerndienst der Azure-Plattform ist Azure Scheduler hochverfügbar und bietet sowohl eine georedundante Dienstbereitstellung als auch eine georegionale Auftragsreplikation.
 
-### <a name="geo-redundant-service-deployment"></a>Geografisch redundante dienstbereitstellung
-Azure Scheduler ist über die Benutzeroberfläche in fast allen geografischen Regionen, die in Azure heutzutage ist verfügbar. Ist die Liste der Regionen, die Azure Scheduler verfügbar ist [hier aufgeführten](https://azure.microsoft.com/regions/#services). Wenn ein Rechenzentrum in einer gehosteten Region nicht verfügbar dargestellt wird, sind die Failoverfunktionen von Azure Scheduler, dass der Dienst von einem anderen Rechenzentrum verfügbar ist.
+### <a name="geo-redundant-service-deployment"></a>Georedundante Dienstbereitstellung
+Azure Scheduler steht über die Benutzeroberfläche in nahezu allen geografischen Regionen zur Verfügung, die aktuell in Azure verfügbar sind. Die Regionen, in denen Azure Scheduler verfügbar ist, finden Sie [hier](https://azure.microsoft.com/regions/#services). Beim Ausfall eines Rechenzentrums in einer gehosteten Region wird der Azure Scheduler-Dienst dank Failoverfunktionen über ein anderes Rechenzentrum bereitgestellt.
 
-### <a name="geo-regional-job-replication"></a>Geografische regionale auftragsreplikation
-Es ist nicht nur Azure Scheduler-Front-End für Management Anforderungen verfügbar, aber Ihr jeweils eigener Auftrag auch geografisch repliziert ist. Bei ein Ausfall in einer Region, wird Azure Scheduler ein Failover und stellt sicher, dass der Auftrag von einem anderen Rechenzentrum in der komplementären geografischen Region ausgeführt wird.
+### <a name="geo-regional-job-replication"></a>Georegionale Auftragsreplikation
+Das Front-End von Azure Scheduler ist nicht nur für Verwaltungsanforderungen verfügbar, Ihr eigener Auftrag wird auch geografisch repliziert. Bei einem Ausfall in einer Region wird mittels Failover für Azure Scheduler sichergestellt, dass der Auftrag in einem anderen Rechenzentrum in der gekoppelten geografischen Region ausgeführt wird.
 
-Wenn Sie einen Auftrag in Süd/Mitte erstellt haben, repliziert Azure Scheduler beispielsweise automatisch diesen Auftrag in NORD/Mitte. Wenn ein Fehler im Süd/Mitte vorhanden ist, stellt Azure Scheduler sicher, dass der Auftrag von NORD/Mitte ausgeführt wird. 
+Wenn Sie also beispielsweise einen Auftrag in der Region „USA (Mitte/Süden)“ erstellt haben, repliziert Azure Scheduler diesen Auftrag automatisch in die Region „USA (Mitte/Norden)“. Bei einem Ausfall in der Region „USA (Mitte/Süden)“ sorgt Azure Scheduler dafür, dass der Auftrag in der Region „USA (Mitte/Norden)“ ausgeführt wird. 
 
 ![][1]
 
-Daher wird sichergestellt, dass Azure Scheduler, dass Ihre Daten innerhalb der gleichen größeren geografischen Region bei einem Azure-Ausfall bleibt. Daher müssen Sie Ihren Auftrag nur um hohe Verfügbarkeit hinzuzufügen nicht duplizieren – Azure Scheduler stellt hohe Verfügbarkeit von Funktionen für Ihre Aufträge automatisch bereit.
+Dadurch gewährleistet Azure Scheduler, dass Ihre Daten bei einem Ausfall von Azure grob innerhalb der gleichen geografischen Region verbleiben. Sie müssen Ihren Auftrag also nicht duplizieren, um eine hohe Verfügbarkeit zu erreichen, da Azure Scheduler bereits automatisch eine hohe Verfügbarkeit für Ihre Aufträge bietet.
 
-## <a name="azure-scheduler-reliability"></a>Azure Scheduler-Zuverlässigkeit
-Azure Scheduler garantiert seine eigene hohe Verfügbarkeit und bietet einen anderen Ansatz für benutzererstellte Aufträge. Der Auftrag kann z. B. einen HTTP-Endpunkt aufrufen, der nicht verfügbar ist. Azure Scheduler versucht dennoch, Ihren Auftrag erfolgreich ausgeführt wird, durch die Vergabe Sie alternativen für den Umgang mit einem Fehler. Dazu bietet Azure Scheduler auf zwei Arten:
+## <a name="azure-scheduler-reliability"></a>Zuverlässigkeit von Azure Scheduler
+Azure Scheduler bietet eine garantierte hohe Verfügbarkeit sowie einen anderen Ansatz für Aufträge, die von Benutzern erstellt werden. Es kann beispielsweise vorkommen, dass Ihr Auftrag einen HTTP-Endpunkt aufruft, der nicht verfügbar ist. Azure Scheduler versucht trotzdem, den Auftrag erfolgreich auszuführen, und stellt dafür alternative Optionen für die Fehlerbehandlung bereit. Dies wird auf zwei Arten erreicht:
 
-### <a name="configurable-retry-policy-via-retrypolicy"></a>Konfigurierbare Wiederholungsrichtlinie über "RetryPolicy"
-Azure Scheduler können Sie eine wiederholungsrichtlinie konfigurieren. Standardmäßig, wenn ein Auftrag fehlschlägt, versucht Scheduler den Auftrag erneut vier weitere Male in Intervallen von 30 Sekunden. Sie können diese wiederholungsrichtlinie aggressiver (z. B. zehn Mal in Intervallen von 30 Sekunden) werden neu konfigurieren oder großzügiger ist (z. B. zwei Mal täglich.)
+### <a name="configurable-retry-policy-via-retrypolicy"></a>Konfigurierbare Wiederholungsrichtlinie („retryPolicy“)
+In Azure Scheduler können Sie eine Wiederholungsrichtlinie konfigurieren. Nach einer nicht erfolgreichen Auftragsausführung wird die Ausführung standardmäßig viermal im Abstand von jeweils 30 Sekunden wiederholt. Diese Wiederholungsrichtlinie kann aggressiver (beispielsweise zehnmal im 30-Sekunden-Takt) oder großzügiger (beispielsweise zweimal in Tagesintervallen) konfiguriert werden.
 
-Als Beispiel für die dies nützlich ist können Sie einen Auftrag erstellen, der einmal pro Woche ausgeführt und ruft einen HTTP-Endpunkt. Wenn der HTTP-Endpunkt für ein paar Stunden Wenn Ihr Auftrag ausgeführt wird wird, können Sie nicht warten möchten eine weitere Woche für den Auftrag erneut ausführen, da auch die standardmäßige wiederholungsrichtlinie schlägt fehl. In solchen Fällen können Sie die standardmäßige wiederholungsrichtlinie (z. B.) alle drei Stunden wiederholt statt alle 30 Sekunden erneut konfigurieren.
+Dies kann zum Beispiel hilfreich sein, wenn Sie einen Auftrag erstellen, der einmal pro Woche ausgeführt wird und einen HTTP-Endpunkt aufruft. Fällt dieser HTTP-Endpunkt für einige Stunden aus, empfiehlt es sich wahrscheinlich nicht, eine ganze Woche zu warten, bis der Auftrag erneut ausgeführt wird, da hier sogar die standardmäßige Wiederholungsrichtlinie nicht greift. In einem solchen Fall können Sie die standardmäßige Wiederholungsrichtlinie beispielsweise mit einer Wiederholung im Drei-Stunden-Takt konfigurieren.
 
-Informationen zum Konfigurieren einer wiederholungsrichtlinie, finden Sie unter [RetryPolicy](scheduler-concepts-terms.md#retrypolicy).
+Informationen zum Konfigurieren einer Wiederholungsrichtlinie finden Sie unter [retryPolicy](scheduler-concepts-terms.md#retrypolicy).
 
-### <a name="alternate-endpoint-configurability-via-erroraction"></a>Alternative Endpunktkonfigurierbarkeit über "ErrorAction"
-Bleibt der Zielendpunkt für Ihren Azure Scheduler-Auftrag nicht erreichbar ist, fragt Azure Scheduler alternativen fehlerbehandlungsendpunkt nachdem seine wiederholungsrichtlinie. Wenn ein alternativer fehlerbehandlungsendpunkt konfiguriert ist, wird Sie von Azure Scheduler aufgerufen. Mit einem alternativen Endpunkt haben Ihre eigenen Aufträge Fehlerfall hoch verfügbar.
+### <a name="alternate-endpoint-configurability-via-erroraction"></a>Konfigurierbarer alternativer Endpunkt („errorAction“)
+Ist der Zielendpunkt für Ihren Azure Scheduler-Auftrag weiterhin nicht erreichbar, greift Azure Scheduler nach Anwendung der Wiederholungsrichtlinie auf den alternativen Fehlerbehandlungsendpunkt zurück. Wenn ein alternativer Fehlerbehandlungsendpunkt konfiguriert ist, wird er von Azure Scheduler aufgerufen. Mit einem alternativen Endpunkt sind Ihre Aufträge bei einem Ausfall hochverfügbar.
 
-Beispielsweise können in der folgenden Abbildung folgt Azure Scheduler seiner wiederholungsrichtlinie, um einen Webdienst in New York zu erreichen. Nachdem die Wiederholungen fehlschlagen, prüft er, ob eine alternative vorhanden ist. Klicken Sie dann Azure, und startet, die an den alternativen mit derselben wiederholungsrichtlinie Anforderungen.
+Ein Beispiel sehen Sie im folgenden Diagramm: Azure Scheduler wendet die Wiederholungsrichtlinie an und versucht, einen Webdienst in New York zu erreichen. Da die Wiederholungen nicht erfolgreich sind, überprüft der Dienst, ob eine Alternative vorhanden ist. Daraufhin werden Anforderungen unter Verwendung der gleichen Wiederholungsrichtlinie an den alternativen Endpunkt gerichtet.
 
 ![][2]
 
-Beachten Sie, dass dieselbe wiederholungsrichtlinie sowohl die ursprünglichen Aktion als auch die alternative Fehleraktion gilt. Es ist auch möglich, dass die alternative Fehleraktion Aktionstyp von Aktionstyp der Hauptaktion unterscheiden. Z. B. während der Hauptaktion einen HTTP-Endpunkt aufgerufen werden kann, die Fehleraktion stattdessen möglicherweise eine Speicherwarteschlange, Servicebus-Warteschlange oder Servicebus Thema-Aktion, die Protokollierung von Anzeigefehlern ausführt.
+Beachten Sie, dass die gleiche Wiederholungsrichtlinie sowohl für die ursprüngliche Aktion als auch für die alternative Fehleraktion gilt. Der Aktionstyp der alternativen Fehleraktion kann sich auch vom Aktionstyp der Hauptaktion unterscheiden. So kann die Fehleraktion beispielsweise eine Speicherwarteschlangen-, Service Bus-Warteschlangen- oder Service Bus-Themenaktion mit Fehlerprotokollierung sein, obwohl die Hauptaktion einen HTTP-Endpunkt aufruft.
 
-Weitere Informationen zum Konfigurieren eines alternativen Endpunkts finden Sie unter [ErrorAction](scheduler-concepts-terms.md#action-and-erroraction).
+Weitere Informationen zum Konfigurieren eines alternativen Endpunkts finden Sie unter [errorAction](scheduler-concepts-terms.md#action-and-erroraction).
 
-## <a name="see-also"></a>Siehe auch
- [Was ist Scheduler?](scheduler-intro.md)
+## <a name="see-also"></a>Weitere Informationen
+ [Was ist Azure Scheduler?](scheduler-intro.md)
 
- [Azure Scheduler-Konzepte,-Terminologie und-Entitätshierarchie](scheduler-concepts-terms.md)
+ [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
 
- [Erste Schritte mit Scheduler im Azure-portal](scheduler-get-started-portal.md)
+ [Erste Schritte mit dem Scheduler im Azure-Portal](scheduler-get-started-portal.md)
 
  [Pläne und Abrechnung in Azure Scheduler](scheduler-plans-billing.md)
 
- [Gewusst wie: Erstellen von komplexen Zeitpläne und erweiterte Wiederholung mit Azure Scheduler](scheduler-advanced-complexity.md)
+ [Erstellen komplexer Zeitpläne und erweiterter Serien mit Azure Scheduler](scheduler-advanced-complexity.md)
 
- [Azure Scheduler-REST-API-Referenz](https://msdn.microsoft.com/library/mt629143)
+ [Azure Scheduler-REST-API – Referenz](https://msdn.microsoft.com/library/mt629143)
 
- [Referenz zur Azure Scheduler-PowerShell-cmdlets](scheduler-powershell-reference.md)
+ [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
 
- [Azure Scheduler – Einschränkungen, Standardwerte und Fehlercodes](scheduler-limits-defaults-errors.md)
+ [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)
 
- [Ausgehende Authentifizierung mit Azure Scheduler](scheduler-outbound-authentication.md)
+ [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
 [1]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png
 

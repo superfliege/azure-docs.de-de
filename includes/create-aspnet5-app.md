@@ -1,6 +1,6 @@
-1. Wählen Sie in Visual Studio-Menü **Datei > Neu > Projekt**.
-2. Klicken Sie unter der **Vorlagen** Teil der **neues Projekt** wählen Sie im Dialogfeld **Visual c# > Web**.
-3. Wählen Sie **ASP.NET Core-Webanwendung (.NET Core)**.
-4. Benennen Sie Ihre neuen Anwendung (oder übernehmen Sie die Standardeinstellung), und wählen Sie **OK**.
-5. Klicken Sie unter **ASP.NET Core 1.1 Vorlagen**Option **Webanwendung** , und wählen Sie **OK**.
+1. Wählen Sie im Menü von Visual Studio **Datei > Neu > Projekt** aus.
+2. Wählen Sie im Abschnitt **Vorlagen** des Dialogfelds **Neues Projekt** die Option **Visual C# > Web** aus.
+3. Wählen Sie **ASP.NET Core-Webanwendung (.NET Core)**aus.
+4. Weisen Sie Ihrer neuen Anwendung einen Namen zu (oder übernehmen Sie den Standardnamen), und wählen Sie **OK**aus.
+5. Wählen Sie unter **ASP.NET Core 1.1-Vorlagen** den Eintrag **Webanwendung** und dann **OK** aus.
 

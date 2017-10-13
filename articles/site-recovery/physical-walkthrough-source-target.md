@@ -1,6 +1,6 @@
 ---
-title: "Einrichten von Quelle und Ziel für die physischen Server-Replikation in Azure mit Azure Site Recovery | Microsoft Docs"
-description: "Fasst die Schritte zum Einrichten von Quell- und Einstellungen für die Replikation von physischen Servern in den Azure-Speicher mit dem Azure Site Recovery-Dienst"
+title: "Einrichten der Quelle und des Ziels für die Replikation physischer Server zu Azure mit Azure Site Recovery | Microsoft-Dokumentation"
+description: "Dieser Artikel bietet einen Überblick über die Schritte zum Einrichten von Quell- und Zieleinstellungen für die Replikation von physischen Servern zu Azure Storage mit Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -15,60 +15,60 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
 ms.openlocfilehash: e89bbf5a2c1d71852e49da43d3106a05ebfc28a8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="step-7-set-up-the-source-and-target-for-physical-server-replication-to-azure"></a>Schritt 7: Richten Sie die Quell-als auch für physische Serverreplikation in Azure
+# <a name="step-7-set-up-the-source-and-target-for-physical-server-replication-to-azure"></a>Schritt 7: Einrichten der Quelle und des Ziels für die Replikation physischer Server zu Azure
 
-In diesem Artikel wird beschrieben, wie so konfigurieren Sie Quell-und zieleinstellungen beim Replizieren von lokalen physischen Server auf Azure, mit der [Azure Site Recovery](site-recovery-overview.md) Dienst im Azure-Portal.
+In diesem Artikel wird beschrieben, wie Sie die Quell- und Zieleinstellungen beim Replizieren von lokalen physischen Servern zu Azure mit [Azure Site Recovery](site-recovery-overview.md) im Azure-Portal konfigurieren.
 
-Senden Sie Fragen und Kommentare am Ende dieses Artikels oder auf die [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
-
-
-## <a name="set-up-the-source-environment"></a>Die Source-Umgebung einrichten
-
-Richten Sie den Konfigurationsserver im Tresor zu registrieren und Ermitteln von Computern.
-
-1. Klicken Sie auf **Standortwiederherstellung** > **Schritt 1: Vorbereiten der Infrastruktur** > **Quelle**.
-2. Wenn Sie mit einem Konfigurationsserver haben, klicken Sie auf **+ Konfigurationsserver**.
-3. In **Server hinzufügen**, überprüfen Sie, ob **Konfigurationsserver** wird im **Servertyp**.
-4. Laden Sie Setup Unified für Site Recovery-Installationsdatei herunter.
-5. Tresorregistrierungsschlüssel herunterladen Sie benötigen diese beim Ausführen des Setups Unified. Der Schlüssel ist fünf Tage nach der Generierung gültig.
-
-   ![Einrichten von Datenquellen](./media/vmware-walkthrough-source-target/set-source2.png)
+Kommentare und Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) veröffentlichen.
 
 
-## <a name="register-the-configuration-server-in-the-vault"></a>Den Konfigurationsserver im Tresor zu registrieren.
+## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
 
-Gehen Sie folgendermaßen vor, bevor Sie beginnen, und führen Sie Setup zum Installieren der Konfigurationsserver, Prozessserver und masterzielserver Unified. Das Video beschreibt das Einrichten der Komponenten für VMware-VM zur Replikation in Azure. Allerdings ist der gleiche Prozess für physischen Servern Replikation in Azure gültig.
+Richten Sie den Konfigurationsserver ein, registrieren Sie ihn im Tresor, und ermitteln Sie die Computer.
 
-- Auf dem Konfigurationsserver VM, stellen Sie sicher, dass die Systemuhr mit synchronisiert ist ein [Zeitserver](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service). Sie sollte übereinstimmen. Wenn es 15 Minuten im Vordergrund oder nach hinten, Setup schlägt möglicherweise fehl.
-- Führen Sie Setup als lokaler Administrator auf dem Servercomputer Konfiguration.
-- Stellen Sie sicher, dass TLS 1.0 auf dem virtuellen Computer aktiviert ist.
+1. Klicken Sie auf **Site Recovery** > **Schritt 1: Bereiten Sie die Infrastruktur vor** > **Quelle**.
+2. Wenn Sie keinen Konfigurationsserver verwenden, klicken Sie auf **+Konfigurationsserver**.
+3. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver** angezeigt wird.
+4. Laden Sie die Installationsdatei für das einheitliche Setup von Site Recovery herunter.
+5. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen beim Ausführen des einheitlichen Setups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
+
+   ![Quelle einrichten](./media/vmware-walkthrough-source-target/set-source2.png)
+
+
+## <a name="register-the-configuration-server-in-the-vault"></a>Registrieren des Konfigurationsservers im Tresor
+
+Erledigen Sie das Folgende, bevor Sie beginnen, und führen Sie dann das einheitliche Setup aus, um den Konfigurationsserver, den Prozessserver und den Masterzielserver zu installieren. Das Video beschreibt das Einrichten der Komponenten für die Replikation einer VMware-VM zu Azure. Der gleiche Prozess für die Replikation physischer Server zu Azure gültig.
+
+- Stellen Sie auf der Konfigurationsserver-VM sicher, dass die Systemuhr mit einem [Zeitserver](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) synchronisiert ist. Die Zeiten sollten übereinstimmen. Falls der Unterschied 15 Minuten beträgt, ist das Setup unter Umständen nicht erfolgreich.
+- Führen Sie das Setup als lokaler Administrator auf dem Konfigurationsservercomputer aus.
+- Stellen Sie sicher, dass TLS 1.0 auf der VM aktiviert ist.
 
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Der Konfigurationsserver kann auch installiert [über die Befehlszeile](http://aka.ms/installconfigsrv).
+> Der Konfigurationsserver kann auch [über die Befehlszeile](http://aka.ms/installconfigsrv) installiert werden.
 
 
 
 
-## <a name="set-up-the-target-environment"></a>Einrichten der zielumgebung
+## <a name="set-up-the-target-environment"></a>Einrichten der Zielumgebung
 
-Bevor Sie die zielumgebung einrichten, stellen Sie sicher, dass Sie ein Azure Storage-Konto und ein virtuelles Netzwerk eingerichtet haben.
+Stellen Sie vor dem Einrichten der Zielumgebung sicher, dass Sie über ein Azure-Speicherkonto und -Netzwerk verfügen.
 
-1. Klicken Sie auf **Vorbereiten der Infrastruktur** > **Ziel**, und wählen Sie das Azure-Abonnement verwenden möchten.
-2. Geben Sie, ob Ziel Bereitstellungsmodell Ressourcen-Manager-basierte oder klassische ist.
-3. Site Recovery überprüft, dass Sie eine oder mehrere Azure-Speicherkonten kompatibel und Netzwerke verfügen.
+1. Klicken Sie auf **Infrastruktur vorbereiten** > **Ziel**, und wählen Sie das gewünschte Azure-Abonnement aus.
+2. Geben Sie an, ob Ihr Zielbereitstellungsmodell vom Typ „Resource Manager“ oder „klassisch“ ist.
+3. Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkonten und -Netzwerke verfügen.
 
    ![Ziel](./media/physical-walkthrough-source-target/gs-target.png)
 
-4. Wenn Sie ein Speicherkonto oder Netzwerk erstellt haben, klicken Sie auf **+ Speicherkonto** oder **+ Netzwerk**, um ein Ressourcen-Manager-Konto erstellen oder Inline-Netzwerk.
+4. Gehen Sie wie folgt vor, falls Sie kein Speicherkonto oder Netzwerk erstellt haben: Klicken Sie auf **+Speicherkonto** oder **+Netzwerk**, um „inline“ ein Resource Manager-Konto oder Netzwerk zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wechseln Sie zu [Schritt 8: Richten Sie eine Replikationsrichtlinie](physical-walkthrough-replication.md)
+[Step 8: Set up a replication policy](physical-walkthrough-replication.md) (Schritt 8: Einrichten einer Replikationsrichtlinie)

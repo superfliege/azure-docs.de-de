@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d0c047c17608635b0d5fb0fb1353c6f8515d7a71
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Verwenden von Vorlagen zum Erstellen von Azure Data Factory-Entitäten
 ## <a name="overview"></a>Übersicht
@@ -254,4 +253,3 @@ Möchten Sie beim Bereitstellen von Azure Data Factory-Entitäten mithilfe von P
 > Bisher ist es nicht möglich, Vorlagen für bestehende Data Factorys zu exportieren. Diese Funktion befindet sich jedoch in Entwicklung.
 >
 >
-

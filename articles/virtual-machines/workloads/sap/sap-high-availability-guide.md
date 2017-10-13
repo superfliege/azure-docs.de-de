@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d00db895ffcf9ba9a51e3df2dae5d33c0277dd6f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Hohe Verfügbarkeit von Azure Virtual Machines für SAP NetWeaver
 
@@ -171,7 +171,7 @@ Zur Vereinfachung der Bereitstellung und Konfiguration verwenden wir in diesem A
 ## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> Voraussetzungen
 Achten Sie vor Beginn darauf, dass die in den folgenden Abschnitten beschriebenen Voraussetzungen erfüllt sind. Überprüfen Sie darüber hinaus alle Ressourcen im Abschnitt [Ressourcen][sap-ha-guide-2].
 
-In diesem Artikel verwenden wir Azure Resource Manager-Vorlagen für [drei Ebenen von SAP NetWeaver mithilfe von Datenträgern verwaltet](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). Eine hilfreiche Übersicht über die Vorlagen finden Sie unter [Azure Resource Manager-Vorlagen für SAP](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
+In diesem Artikel verwenden wir Azure Resource Manager-Vorlagen für [SAP NetWeaver mit drei Ebenen und Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). Eine hilfreiche Übersicht über die Vorlagen finden Sie unter [Azure Resource Manager-Vorlagen für SAP](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
 
 ## <a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> Ressourcen
 In diesen Artikeln werden SAP-Bereitstellungen in Azure behandelt:
@@ -211,9 +211,9 @@ In Azure Resource Manager können Sie mit Ressourcengruppen alle Anwendungsresso
 
 ### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a> Abhängigkeit des internen Azure Load Balancer von der Azure-Ressourcengruppe
 
-In der Azure klassischen Bereitstellungsmodell besteht eine Abhängigkeit zwischen den Azure internen Lastenausgleich (Azure-Lastenausgleich-Dienst) und den Cloud-Dienst zur Verfügung. Alle internen Load Balancer benötigt einen Cloud-Dienst.
+Beim klassischen Azure-Bereitstellungsmodell besteht eine Abhängigkeit zwischen dem internen Lastenausgleich (Azure Load Balancer-Dienst) und dem Clouddienst. Für jeden internen Lastenausgleich wird ein Clouddienst benötigt.
 
-In Azure Resource Manager jedes Azure-Ressource in einer Azure-Ressourcengruppe platziert werden muss, und dies gilt auch für Azure-Lastenausgleich. Allerdings besteht keine Notwendigkeit, eine Azure-Ressourcengruppe pro Azure-Lastenausgleich verfügen, z. B. eine Azure-Ressourcengruppe kann mehrere Azure-Lastenausgleichsmodule enthalten. Die Umgebung ist einfacher und flexibler. 
+In Azure Resource Manager muss jede Azure-Ressource in eine Azure-Ressourcengruppe aufgenommen werden, und dies gilt auch für den Azure-Lastenausgleich. Allerdings besteht keine Notwendigkeit, eine Azure-Ressourcengruppe pro Azure-Lastenausgleich zu verwenden. Eine Azure-Ressourcengruppe kann also mehrere Azure-Lastenausgleichsmodule enthalten. Die Umgebung ist einfacher und flexibler. 
 
 ### <a name="support-for-sap-multi-sid-scenarios"></a>Unterstützung für SAP-Multi-SID-Szenarien
 
@@ -278,9 +278,9 @@ _**Abbildung 2:** Windows Server-Failoverclusteringkonfiguration in Azure ohne f
 ### <a name="1a464091-922b-48d7-9d08-7cecf757f341"></a> Freigegebener Datenträger in Azure mit SIOS DataKeeper
 Sie benötigen freigegebenen Clusterspeicher für eine hoch verfügbare SAP ASCS/SCS-Instanz. Ab September 2016 bietet Azure keinen freigegebenen Speicher zum Erstellen eines Clusters mit freigegebenem Speicher mehr an. Die Drittanbietersoftware SIOS DataKeeper Cluster Edition ermöglicht es Ihnen, einen gespiegelten Speicher zu erstellen, der freigegebenen Clusterspeicher simuliert. Die SIOS-Lösung bietet eine synchrone Datenreplikation in Echtzeit. Eine freigegebene Datenträgerressource für einen Cluster wird folgendermaßen erstellt:
 
-1. Fügen Sie einen zusätzlichen Datenträger, auf die einzelnen virtuellen Computer (VMs) in einer Windows-Clusterkonfiguration.
+1. Fügen Sie einen zusätzlichen Datenträger an sämtliche virtuelle Computer (VMs) in einer Windows-Clusterkonfiguration an.
 2. Führen Sie SIOS DataKeeper Cluster Edition auf beiden virtuellen Computerknoten aus.
-3. Konfigurieren Sie SIOS DataKeeper Cluster Edition aus, sodass er den Inhalt des Datenträgervolumes zusätzliche angefügten vom virtuellen Quellcomputer auf das Datenträgervolume zusätzliche angefügt, der dem virtuellen Zielcomputer spiegelt. SIOS DataKeeper abstrahiert die lokalen Quell- und Zielvolumes und präsentiert diese beim Windows Server-Failoverclustering als einen freigegebenen Datenträger.
+3. Konfigurieren Sie SIOS DataKeeper Cluster Edition so, dass synchron der Inhalt des zusätzlich angefügten Datenträgervolumes vom virtuellen Quellcomputer im zusätzlich angefügten Datenträgervolume des virtuellen Zielcomputers gespiegelt wird. SIOS DataKeeper abstrahiert die lokalen Quell- und Zielvolumes und präsentiert diese beim Windows Server-Failoverclustering als einen freigegebenen Datenträger.
 
 Weitere Informationen zu [SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/).
 
@@ -322,7 +322,7 @@ Alle virtuellen Computer, auf denen SAP-Anwendungsserverinstanzen gehostet werde
 
 Erfahren Sie mehr über das [Verwalten der Verfügbarkeit virtueller Computer][virtual-machines-manage-availability].
 
-Nur nicht verwaltete Datenträger: Da der Azure-Speicherkonto eine potenzielle Fehlerquelle ist, es ist wichtig, über mindestens zwei Azure-Speicherkonten haben, in dem mindestens zwei virtuelle Computer verteilt werden. In einer idealen Konfiguration würden die Datenträger jedes virtuellen Computers, auf dem eine SAP-Dialoginstanz ausgeführt wird, in einem anderen Speicherkonto bereitgestellt werden.
+Nur beim nicht verwalteten Datenträger: Da das Azure-Speicherkonto ein potenzieller Single Point of Failure sein kann, benötigen Sie unbedingt mindestens zwei Azure-Speicherkonten, auf die mindestens zwei virtuelle Computer verteilt sind. In einer idealen Konfiguration würden die Datenträger jedes virtuellen Computers, auf dem eine SAP-Dialoginstanz ausgeführt wird, in einem anderen Speicherkonto bereitgestellt werden.
 
 ### <a name="f559c285-ee68-4eec-add1-f60fe7b978db"></a> Hohe Verfügbarkeit für SAP ASCS/SCS-Instanzen
 Abbildung 5 ist ein Beispiel für eine SAP ASCS/SCS-Instanz mit hoher Verfügbarkeit.
@@ -398,9 +398,9 @@ Die Vorlagen mit drei Ebenen in Azure Resource Manager unterstützen auch Szenar
 Hier können Sie die Azure Resource Manager-Vorlagen für das in diesem Artikel beschriebene Beispielszenario abrufen:
 
 * [Azure Marketplace-Image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
-* [Azure Marketplace-Image mithilfe von Datenträgern verwaltet](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
+* [Azure Marketplace-Image mit Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
 * [Benutzerdefiniertes Image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
-* [Benutzerdefiniertes Bild mithilfe von Datenträgern verwaltet](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
+* [Benutzerdefiniertes Image mit Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
 
 So bereiten Sie die Infrastruktur für Architekturvorlage 1 vor
 
@@ -419,11 +419,11 @@ _**Abbildung 11:** Festlegen von Azure Resource Manager-Parametern für hohe Ver
     * DBMS-Cluster: <*SAP-System-SID*>-db-<*Anzahl*>
 
   * **Netzwerkkarten für alle virtuellen Computer mit zugeordneten IP-Adressen:**
-    * <*SAP-System-SID*>-nic-di-<*Anzahl*>
-    * <*SAP-System-SID*>-nic-ascs-<*Anzahl*>
-    * <*SAP-System-SID*>-nic-db-<*Anzahl*>
+    * <*SAP-System-SID*&gt;-nic-di-&lt;*Anzahl*>
+    * <*SAP-System-SID*&gt;-nic-ascs-&lt;*Anzahl*>
+    * <*SAP-System-SID*&gt;-nic-db-&lt;*Anzahl*>
 
-  * **Azure-Speicherkonten (nicht verwalteten Datenträger)**
+  * **Azure-Speicherkonten (nur nicht verwalteter Datenträger)**
 
   * **Verfügbarkeitsgruppen** für:
     * Virtuelle Computer für SAP-Anwendungsserver: <*SAP-System-SID*>-avset-di
@@ -434,7 +434,7 @@ _**Abbildung 11:** Festlegen von Azure Resource Manager-Parametern für hohe Ver
     * Mit allen Ports für die ASCS/SCS-Instanz und IP-Adresse <*SAP-System-SID*>-lb-ascs
     * Mit allen Ports für das SQL Server-DBMS und IP-Adresse <*SAP-System-SID*>-lb-db
 
-  * **Netzwerksicherheitsgruppe:** <*SAP-System-SID*>-nsg-ascs-0  
+  * **Netzwerksicherheitsgruppe:** &lt;*SAP-System-SID*&gt;-nsg-ascs-0  
     * Mit einem offenen externen RDP-Port (Remote Desktop Protocol) zum virtuellen Computer <*SAP-System-SID*>-ascs-0
 
 > [!NOTE]
@@ -491,9 +491,9 @@ Sie können diese Azure Resource Manager-Vorlage für SAP zur Vereinfachung der 
 Azure Resource Manager-Vorlagen für dieses Bereitstellungsszenario sind hier verfügbar:
 
 * [Azure Marketplace-Image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
-* [Azure Marketplace-Image mithilfe von Datenträgern verwaltet](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
+* [Azure Marketplace-Image mit Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
 * [Benutzerdefiniertes Image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
-* [Benutzerdefiniertes Bild mithilfe von Datenträgern verwaltet](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
+* [Benutzerdefiniertes Image mit Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
 
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Vorbereiten der Infrastruktur für Architekturvorlage 3
@@ -513,7 +513,7 @@ Die folgenden Abschnitte enthalten weitere Details zu den Vorlagen und Parameter
 
 Mit der ASCS/SCS-Vorlage werden zwei virtuelle Computer bereitgestellt, die Sie verwenden können, um einen Windows-Failovercluster zum Hosten von mehreren ASCS/SCS-Instanzen zu erstellen.
 
-Zum Einrichten der ASCS/SCS Multi-SID-Vorlage in der [ASCS/SCS Multi-SID-Vorlage] [ sap-templates-3-tier-multisid-xscs-marketplace-image] oder [ASCS/SCS Multi-SID-Vorlage mithilfe von Datenträgern verwaltet][sap-templates-3-tier-multisid-xscs-marketplace-image-md], geben Sie Werte für die folgenden Parameter:
+Geben Sie in der [ASCS/SCS-Multi-SID-Vorlage][sap-templates-3-tier-multisid-xscs-marketplace-image] oder der [ASCS/SCS-Multi-SID-Vorlage mit Managed Disks][sap-templates-3-tier-multisid-xscs-marketplace-image-md] Werte für die folgenden Parameter ein, um die ASCS/SCS-Multi-SID-Vorlage einzurichten:
 
   - **Ressourcenpräfix**.  Legen Sie das Ressourcenpräfix fest, um alle Ressourcen, die während der Bereitstellung erstellt werden, mit einem Präfix zu versehen. Da die Ressourcen nicht nur zu einem einzigen SAP-System gehören, ist das Präfix der Ressource nicht die SID eines einzigen SAP-Systems.  Das Präfix muss zwischen **drei und sechs Zeichen** lang sein.
   - **Stapeltyp**. Wählen Sie den Stapeltyp des SAP-Systems aus. Abhängig vom Stapeltyp hat der Azure Load Balancer eine (nur ABAP oder Java) oder zwei (ABAP+Java) private IP-Adressen pro SAP-System.
@@ -550,7 +550,7 @@ Der Lastenausgleich wird so konfiguriert, dass die folgenden Testports verwendet
 
 Mit der Datenbankvorlage werden ein oder zwei virtuelle Computer bereitgestellt, die Sie zum Installieren des relationalen Datenbankverwaltungssystems (RDBMS) für ein SAP-System verwenden können. Wenn Sie z.B. eine ASCS/SCS-Vorlage für fünf SAP-Systeme bereitstellen, müssen Sie diese Vorlage fünfmal bereitstellen.
 
-Zum Einrichten der Datenbank Multi-SID-Vorlage in der [Database Multi-SID-Vorlage] [ sap-templates-3-tier-multisid-db-marketplace-image] oder [Database Multi-SID-Vorlage mithilfe von Datenträgern verwaltet][sap-templates-3-tier-multisid-db-marketplace-image-md], geben Sie Werte für die folgenden Parameter:
+Geben Sie in der [Datenbank-Multi-SID-Vorlage][sap-templates-3-tier-multisid-db-marketplace-image] oder der [Datenbank-Multi-SID-Vorlage mit Managed Disks][sap-templates-3-tier-multisid-db-marketplace-image-md] Werte für die folgenden Parameter ein, um die Datenbank-Multi-SID-Vorlage einzurichten:
 
   -  **SAP-System-ID**. Geben Sie die SAP-System-ID des SAP-Systems ein, das Sie installieren möchten. Die ID wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
   -  **Betriebssystemtyp**. Wählen Sie das Betriebssystem des virtuellen Computers aus.
@@ -567,7 +567,7 @@ Zum Einrichten der Datenbank Multi-SID-Vorlage in der [Database Multi-SID-Vorlag
 
 Die Anwendungsservervorlage stellt zwei oder mehr virtuelle Computer bereit, die als SAP-Anwendungsserverinstanzen für ein SAP-System verwendet werden können. Wenn Sie z.B. eine ASCS/SCS-Vorlage für fünf SAP-Systeme bereitstellen, müssen Sie diese Vorlage fünfmal bereitstellen.
 
-Zum Einrichten der Application Server Multi-SID-Vorlage in der [Server Multi-SID-Anwendungsvorlage] [ sap-templates-3-tier-multisid-apps-marketplace-image] oder [Server Multi-SID-Anwendungsvorlage mithilfe von Datenträgern verwaltet][sap-templates-3-tier-multisid-apps-marketplace-image-md], geben Sie Werte für die folgenden Parameter:
+Geben Sie in der [Anwendungsserver-Multi-SID-Vorlage][sap-templates-3-tier-multisid-apps-marketplace-image] oder der [Anwendungsserver-Multi-SID-Vorlage mit Managed Disks][sap-templates-3-tier-multisid-apps-marketplace-image-md] Werte für die folgenden Parameter ein, um die Anwendungsserver-Multi-SID-Vorlage einzurichten:
 
   -  **SAP-System-ID**. Geben Sie die SAP-System-ID des SAP-Systems ein, das Sie installieren möchten. Die ID wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
   -  **Betriebssystemtyp**. Wählen Sie das Betriebssystem des virtuellen Computers aus.
@@ -1040,7 +1040,7 @@ So installieren Sie SIOS DataKeeper
 
 #### <a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a> Einrichten von SIOS DataKeeper
 
-Nach der Installation von SIOS DataKeeper auf beiden Knoten müssen Sie mit der Konfiguration beginnen. Das Ziel der Konfiguration werden synchrone Datenreplikation zwischen den zusätzlichen Datenträger zu jedem virtuellen Computer angefügt haben.
+Nach der Installation von SIOS DataKeeper auf beiden Knoten müssen Sie mit der Konfiguration beginnen. Ziel der Konfiguration ist eine synchrone Datenreplikation zwischen den zusätzlichen Datenträgern, die Sie an jeden virtuellen Computer angefügt haben.
 
 1.  Starten Sie das DataKeeper-Tool für die Verwaltung und Konfiguration, und wählen Sie dann **Verbindung mit Server herstellen** aus. (In Abbildung 46 ist diese Option rot markiert.)
 
@@ -1117,7 +1117,7 @@ Es sind keine Besonderheiten zu berücksichtigen, wenn unterschiedliche DBMS-Die
 ### <a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a> Installieren von SAP mit einer hoch verfügbaren ASCS/SCS-Instanz
 
 > [!IMPORTANT]
-> Achten Sie darauf, nicht die Auslagerungsdatei auf von DataKeeper gespiegelten Volumes zu platzieren. DataKeeper unterstützt keine gespiegelten Volumes. Belassen Sie die Auslagerungsdatei auf dem temporären Laufwerk D eines virtuellen Azure-Computers (dies ist auch die Standardeinstellung). Wenn sie nicht bereits vorhanden ist, verschieben Sie die Windows-Auslagerungsdatei auf Laufwerk D: von Ihrem virtuellen Azure-Computer.
+> Achten Sie darauf, nicht die Auslagerungsdatei auf von DataKeeper gespiegelten Volumes zu platzieren. DataKeeper unterstützt keine gespiegelten Volumes. Belassen Sie die Auslagerungsdatei auf dem temporären Laufwerk D eines virtuellen Azure-Computers (dies ist auch die Standardeinstellung). Wenn sie sich noch nicht dort befindet, verschieben Sie die Windows-Auslagerungsdatei auf Laufwerk D: des virtuellen Azure-Computers.
 >
 >
 
@@ -1334,7 +1334,7 @@ Die Clustergruppe **SAP PR1** wird auf dem Clusterknoten A ausgeführt, z.B. auf
 
 ![Abbildung 61: Failovercluster-Manager: Die SAP-Clustergruppe <SID> wird auf Clusterknoten A ausgeführt][sap-ha-guide-figure-5000]
 
-_**Abbildung 61:** Failovercluster-Manager: Die SAP-Clustergruppe <*SID*> wird auf Clusterknoten A ausgeführt_
+_**Abbildung 61:** Failovercluster-Manager: Die SAP-Clustergruppe &lt;*SID*&gt; wird auf Clusterknoten A ausgeführt_
 
 Im SIOS DataKeeper-Tool für die Verwaltung und Konfiguration erkennen Sie, dass die Daten auf dem freigegebenen Datenträger synchron vom Quellvolume S auf Clusterknoten A auf das Zielvolume S auf Clusterknoten B repliziert werden, also z.B. von **pr1-ascs-0 [10.0.0.40]** nach **pr1-ascs-1 [10.0.0.41]**.
 
@@ -1363,7 +1363,7 @@ _**Abbildung 62:** In SIOS DataKeeper wird das lokale Volume von Clusterknoten A
 
   ![Abbildung 63: Failovercluster-Manager: Die SAP-Clustergruppe <SID> wird auf Clusterknoten B ausgeführt][sap-ha-guide-figure-5002]
 
-  _**Abbildung 63:** Failovercluster-Manager: Die SAP-Clustergruppe <*SID*> wird auf Clusterknoten B ausgeführt_
+  _**Abbildung 63:** Failovercluster-Manager: Die SAP-Clustergruppe &lt;*SID*&gt; wird auf Clusterknoten B ausgeführt_
 
   Der freigegebene Datenträger wird jetzt auf Clusterknoten B bereitgestellt. SIOS DataKeeper repliziert Daten vom Quellvolume S auf Clusterknoten B auf das Zielvolume S auf Clusterknoten A, also z.B. von **pr1-ascs-1 [10.0.0.41]** nach **pr1-ascs-0 [10.0.0.40]**.
 

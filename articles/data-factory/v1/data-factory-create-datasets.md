@@ -15,17 +15,16 @@ ms.topic: article
 ms.date: 08/08/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f2af15189a7c8643d51e8567b4366726b4b8051c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1: Allgemein verfügbare Version](data-factory-create-datasets.md)
-> * [Version 2: Vorschauversion](../concepts-datasets-linked-services.md)
+> * [Version 2 – Vorschauversion](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Datasets and linked services in Azure Data Factory](../concepts-datasets-linked-services.md) (Datasets und verknüpfte Dienste in Azure Data Factory).
@@ -452,4 +451,3 @@ Mit der Eigenschaft **datasets** können Sie Datasets erstellen, die einer Pipel
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu Pipelines finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](data-factory-create-pipelines.md). 
 - Weitere Informationen über die Planung und Ausführung von Pipelines finden Sie unter [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md). 
-

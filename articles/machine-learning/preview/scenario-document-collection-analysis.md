@@ -9,14 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 669fc7a9ec5dfb446ef2755919c498fe6f60c9df
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="document-collection-analysis"></a>Analysieren von Dokumentsammlungen
 
 Dieses Szenario veranschaulicht, wie Sie eine umfangreiche Sammlung von Dokumenten zusammenfassen und analysieren. Dazu gehören auch Techniken wie das Lernen von Ausdrücken, das Modellieren von Themen und die Themenmodellanalyse mithilfe der Azure ML Workbench. Die Azure Machine Learning Workbench ermöglicht das einfache zentrale Hochskalieren sehr großer Dokumentsammlungen und stellt Verfahren zum Trainieren und Optimieren von Modellen in einer Vielzahl von Rechenkontexten bereit – angefangen bei lokalen Computeoperationen bis hin zu Data Science bei VMs in Spark-Clustern. Die einfache Entwicklung wird über Jupyter Notebooks in der Azure Machine Learning Workbench gewährleistet.
@@ -66,8 +64,8 @@ Folgende Voraussetzungen müssen zum Ausführen dieses Beispiels erfüllt sein:
 ## <a name="create-a-new-workbench-project"></a>Erstellen eines neuen Workbench-Projekts
 
 Erstellen Sie ein neues Projekt mit diesem Beispiel als Vorlage:
-1.  Öffnen Sie die Azure Machine Learning Workbench
-2.  Klicken Sie auf der Seite **Projekte** auf **+**, und wählen Sie **Neues Projekt** aus.
+1.  Öffnen Sie Azure Machine Learning Workbench.
+2.  Klicken Sie auf der Seite **Projekte** auf **+**, wählen Sie **Neues Projekt** aus, und signieren Sie es.
 3.  Geben Sie die Informationen für das neue Projekt im Bereich **Neues Projekt erstellen** ein.
 4.  Geben Sie im Suchfeld **Projektvorlagen suchen** den Suchbegriff „Document Collection Analysis“ (Dokumentsammlungsanalyse) ein, und wählen Sie die Vorlage aus.
 5.  Klicken Sie auf **Erstellen**
@@ -246,4 +244,3 @@ Dieses Echtwelt-Szenario veranschaulicht die Verwendung bekannter Textanalysever
 * **Timothy J. Hazen**, [_Latent Topic Modeling for Audio Corpus Summarization_](http://people.csail.mit.edu/hazen/publications/Hazen-Interspeech11.pdf). 12th Annual Conference of the International Speech Communication Association. 2011.
 
 * **Michael Roder, Andreas Both, Alexander Hinneburg**, [_Exploring the Space of Topic Coherence Measures_](http://svn.aksw.org/papers/2015/WSDM_Topic_Evaluation/public.pdf). Proceedings of the eighth ACM international conference on Web search and data mining. ACM, 2015.
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: a81b956107ef82f40ad5304808068a7573ca7d27
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern
 
@@ -140,5 +139,4 @@ Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Comput
 ### <a name="other-resources"></a>Weitere Ressourcen
 * [Installieren einer neuen Active Directory-Gesamtstruktur in Azure](../../../active-directory/active-directory-new-forest-virtual-machine.md)
 * [Create Failover Cluster for Availability Groups in Azure VM (Erstellen eines Failoverclusters für Verfügbarkeitsgruppen auf virtuellen Azure-Computern)](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
-
 

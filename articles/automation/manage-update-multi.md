@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: eslesar
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 89bf87f27fdf276068cba261fc6ae1660307e0b7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Verwalten von Updates für mehrere virtuelle Azure-Computer
 
 Mithilfe der Updateverwaltung können Sie Updates und Patches für Ihre virtuellen Azure-Computer verwalten.
