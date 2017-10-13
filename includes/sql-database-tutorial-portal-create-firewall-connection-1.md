@@ -10,7 +10,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
 
 1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
 
-2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken**, und wählen Sie dann die Option **Erstellen** unter **SQL-Datenbank** auf der Seite **Neu**.
+2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Neu** unter **SQL-Datenbank** die Option **Erstellen** aus.
 
    ![Leere Datenbank erstellen](../articles/sql-database/media/sql-database-design-first-database/create-empty-database.png)
 
@@ -38,19 +38,19 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
 
 6. Klicken Sie auf **Tarif**, um die Dienstebene, die Anzahl von DTUs und die Menge an Speicher anzugeben. Entdecken Sie die Optionen für die Menge an DTUs und Speicher, die für jede Dienstebene verfügbar ist. 
 
-7. Wählen Sie in diesem Tutorial die Dienstebene **Standard**, und wählen Sie dann mit dem Schieberegler **100 DTUs (S3)** und **400** GB Speicher aus.
+7. Wählen Sie in diesem Tutorial die Dienstebene **Standard** und dann mit dem Schieberegler **100 DTUs (S3)** und **400** GB Speicher aus.
 
    ![Datenbankerstellung s1](../articles/sql-database/media/sql-database-design-first-database/create-empty-database-pricing-tier.png)
 
-8. Akzeptieren Sie die Nutzungsbedingungen für die Vorschau, um die Option **Add-On-Speicher** zu verwenden. 
+8. Akzeptieren Sie die Nutzungsbedingungen für die Vorschauversion, um die Option **Add-On-Speicher** zu verwenden. 
 
    > [!IMPORTANT]
    > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
    >
-   >\* Im Premium-Tarif ist eine Speicherkapazität von mehr als 1 TB folgenden Regionen verfügbar: „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“, „Europa, Westen“, „Deutschland, Mitte“, „Asien, Südosten“, „Japan, Osten“, „Australien, Osten“, „Kanada, Mitte“ und „Kanada, Osten“. Siehe [P11-P15: Aktuelle Einschränkungen](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   >\* Im Premium-Tarif ist eine Speicherkapazität von mehr als 1 TB folgenden Regionen verfügbar: „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“, „Europa, Westen“, „Deutschland, Mitte“, „Asien, Südosten“, „Japan, Osten“, „Australien, Osten“, „Kanada, Mitte“ und „Kanada, Osten“. Siehe [Aktuelle Einschränkungen für P11–P15](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    > 
 
-9. Klicken Sie auf **Übernehmen**, wenn Sie die Server-Ebene, die Anzahl von DTUs und die Menge an Speicherplatz ausgewählt haben.  
+9. Klicken Sie auf **Übernehmen**, wenn Sie die Dienstebene, die Anzahl von DTUs und die Menge an Speicherplatz ausgewählt haben.  
 
 10. Wählen Sie eine **Sortierung** für die leere Datenbank aus (verwenden Sie in diesem Tutorial den Standardwert). Weitere Informationen über Sortierungen finden Sie unter [Sortierungen](https://docs.microsoft.com/sql/t-sql/statements/collations).
 
@@ -74,7 +74,7 @@ Der SQL-Datenbankdienst erstellt eine Firewall auf Serverebene, um zu verhindern
 
    ![Servername](../articles/sql-database/media/sql-database-get-started-portal/server-name.png) 
 
-3. Klicken Sie in der Symbolleiste auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet. 
+3. Klicken Sie auf der Symbolleiste auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet. 
 
    ![Serverfirewallregel](../articles/sql-database/media/sql-database-get-started-portal/server-firewall-rule.png) 
 

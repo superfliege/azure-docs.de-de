@@ -1,13 +1,13 @@
 
-* **.NET Back-End-(c#)**:      
+* **.NET-Back-End (C#)**:      
   
-  1. Klicken Sie in Visual Studio mit der rechten Maustaste des Server-Projekts, und klicken Sie auf **NuGet-Pakete verwalten**, suchen Sie nach `Microsoft.Azure.NotificationHubs`, klicken Sie dann auf **installieren**. Hiermit werden die Bibliothek Benachrichtigungshubs zum Senden von Benachrichtigungen von Ihrem Back-End installiert.
-  2. Öffnen Sie in Visual Studio-Projekt mit dem Back-End **Controller** > **TodoItemController.cs**. Fügen Sie am Anfang der Datei die folgenden `using` Anweisung:
+  1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Serverprojekt, klicken Sie auf **NuGet-Pakete verwalten**, und suchen Sie nach `Microsoft.Azure.NotificationHubs`. Klicken Sie anschließend auf **Installieren**. Dadurch wird die Notification Hubs-Bibliothek zum Senden von Benachrichtigungen von Ihrem Back-End installiert.
+  2. Öffnen Sie im Visual Studio-Projekt des Back-Ends **Controller** > **TodoItemController.cs**. Fügen Sie am Anfang der Datei die folgenden `using` -Anweisung hinzu:
      
           using Microsoft.Azure.Mobile.Server.Config;
           using Microsoft.Azure.NotificationHubs;
 
-    3. Ersetzen Sie die `PostTodoItem` -Methode durch folgenden Code:  
+    3. Ersetzen Sie die `PostTodoItem` -Methode durch den folgenden Code:  
 
             public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
             {
@@ -47,12 +47,12 @@
                 return CreatedAtRoute("Tables", new { id = current.Id }, current);
             }
 
-    4. Veröffentlichen Sie das Server-Projekt.
+    4. Veröffentlichen Sie das Serverprojekt erneut.
 
-* **Node.js Back-End-** : 
+* **Node.js-Back-End:** 
   
-  1. Wenn Sie, nicht bereits getan [der Schnellstart herunter](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) oder verwenden Sie andernfalls die [online-Editor im Azure-Portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).    
-  2. Ersetzen Sie die todoitem.js Table-Skript, durch den folgenden Code:
+  1. Falls nicht bereits geschehen, [laden Sie das Schnellstartprojekt herunter](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), oder verwenden Sie den [Online-Editor im Azure-Portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).    
+  2. Ersetzen Sie das Tabellenskript in „todoitem.js“ durch den folgenden Code:
 
             var azureMobileApps = require('azure-mobile-apps'),
                 promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -91,4 +91,4 @@
 
             module.exports = table;
 
-    2. Wenn Sie die Datei auf dem lokalen Computer bearbeiten, erneut veröffentlichen Sie, das Server-Projekt.
+    2. Beim Bearbeiten der Datei auf Ihrem lokalen Computer veröffentlichen Sie das Serverprojekt erneut.

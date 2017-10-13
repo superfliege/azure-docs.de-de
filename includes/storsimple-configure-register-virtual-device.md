@@ -1,19 +1,19 @@
-#### <a name="to-configure-and-register-the-virtual-device"></a>So konfigurieren und registrieren das virtuelle Gerät
+#### <a name="to-configure-and-register-the-virtual-device"></a>So konfigurieren und registrieren Sie virtuelle Geräte
 
-1. Wählen Sie das virtuelle StorSimple-Gerät, die Sie gerade erstellt, in haben der **Geräte** Seite.
-2. Klicken Sie auf **Ausführen des gerätesetups**. Dies startet den Assistenten zum Konfigurieren von Geräten.
+1. Wählen Sie auf der Seite **Geräte** das virtuelle StorSimple-Gerät aus, das Sie soeben erstellt haben.
+2. Klicken Sie auf **Gerätesetup abschließen**. Dadurch wird der Konfigurationsassistent gestartet.
     
-    ![StorSimple-gerätesetup in die Seite "Geräte"](./media/storsimple-configure-register-virtual-device/StorSimple_CompleteDeviceSetupSVA1M.png)
+    ![StorSimple – Abschließen der Geräteeinrichtung auf der Seite "Geräte"](./media/storsimple-configure-register-virtual-device/StorSimple_CompleteDeviceSetupSVA1M.png)
 
-4. Geben Sie die **Verschlüsselungsschlüssel für Dienstdaten** im dafür vorgesehenen Feld.
+4. Geben Sie den **Verschlüsselungsschlüssel für Dienstdaten** in das entsprechende Feld ein.
 
-5. Geben Sie den Momentaufnahme-Manager und Geräteadministrator Kennwörter aus der Länge und den angegebenen Einstellungen.
+5. Geben Sie das Snapshot Manager- und das Geräteadministratorkennwort entsprechend der angegebenen Länge und den angegebenen Einstellungen ein.
 
-6. Klicken Sie auf das Häkchen, um die Erstkonfiguration und Registrierung des virtuellen Geräts abzuschließen. 
+6. Klicken Sie auf das Häkchen, um die Erstkonfiguration sowie die Registrierung des virtuellen Geräts abzuschließen. 
     
-    ![Virtuelle StorSimple-geräteeinstellungen](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceSettings1.png)
+    ![StorSimple – Einstellungen für virtuelles Gerät](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceSettings1.png)
 
-Nachdem die Konfiguration und die Registrierung abgeschlossen ist, wird das Gerät online geschaltet. (Es dauert einige Minuten, bis das Gerät online geschaltet werden kann.)
+Nach dem Abschluss der Konfiguration und Registrierung wird das Gerät online geschaltet. (Es kann mehrere Minuten dauern, bis das Gerät online ist.)
 
-![StorSimple virtuelles Gerät online-Phase](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceOnline1M.png)
+![StorSimple – virtuelles Gerät ist online](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceOnline1M.png)
 

@@ -1,7 +1,7 @@
 
 1. Öffnen Sie das Projekt in Android Studio.
 
-2. In **Projektexplorer** öffnen Sie in Android Studio die ToDoActivity.java-Datei, und fügen Sie die folgende Import-Anweisungen hinzu:
+2. Öffnen Sie die Datei „ToDoActivity.java“ im **Projektexplorer** in Android Studio, und fügen Sie die folgenden Importanweisungen hinzu:
 
         import java.util.concurrent.ExecutionException;
         import java.util.concurrent.atomic.AtomicBoolean;
@@ -13,7 +13,7 @@
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceAuthenticationProvider;
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
 
-3. Fügen Sie die folgende Methode, die **ToDoActivity** Klasse:
+3. Fügen Sie der **ToDoActivity** -Klasse die folgende Methode hinzu:
 
         // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
         public static final int GOOGLE_LOGIN_REQUEST_CODE = 1;
@@ -43,18 +43,18 @@
             }
         }
 
-    Dieser Code erstellt eine Methode, um die Behandlung des Authentifizierungsprozesses Google. Ein Dialogfeld zeigt die ID des authentifizierten Benutzers. Sie können nur auf eine erfolgreiche Authentifizierung fortgesetzt werden.
+    Dieser Code erstellt eine Methode für die Verarbeitung des Google-Authentifizierungsprozesses. Ein Dialogfeld zeigt die ID des authentifizierten Benutzers an. Sie können den Vorgang nur bei erfolgreicher Authentifizierung fortsetzen.
 
     > [!NOTE]
-    > Wenn Sie einen Identitätsanbieter als Google verwenden, ändern Sie den Wert, der zum Übergeben der **Anmeldung** Methode, um einen der folgenden Werte: _MicrosoftAccount_, _Facebook_, _Twitter_, oder _Windowsazureactivedirectory_.
+    > Falls Sie einen anderen Identitätsanbieter als Google verwenden, ändern Sie den an die **login**-Methode übergebenen Wert in einen der folgenden Werte: _MicrosoftAccount_, _Facebook_, _Twitter_ oder _windowsazureactivedirectory_.
 
-4. In der **OnCreate** -Methode, fügen Sie die folgende Codezeile hinzu, nach dem Code, der instanziiert die `MobileServiceClient` Objekt.
+4. Fügen Sie in der **onCreate**-Methode die folgende Codezeile im Anschluss an den Code hinzu, der das `MobileServiceClient`-Objekt instanziiert.
 
         authenticate();
 
-    Dieser Aufruf startet den Authentifizierungsprozess abgebrochen.
+    Dieser Aufruf startet den Authentifizierungsprozess.
 
-5. Im restlichen Code nach dem Verschieben `authenticate();` in der **OnCreate** Methode, um ein neues **CreateTable** Methode:
+5. Verschieben Sie den verbleibenden Code nach `authenticate();` in der **OnCreate**-Methode in eine neue **CreateTable**-Methode.
 
         private void createTable() {
 
@@ -72,7 +72,7 @@
             refreshItemsFromTable();
         }
 
-6. Damit werden Umleitung funktioniert wie erwartet, hinzufügen den folgenden Ausschnitt des _RedirectUrlActivity_ auf _AndroidManifest.xml_:
+6. Fügen Sie den folgenden Codeausschnitt von _RedirectUrlActivity_ der Datei _AndroidManifest.xml_ hinzu, um sicherzustellen, dass die Umleitung erwartungsgemäß funktioniert.
 
         <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
             <intent-filter>
@@ -84,7 +84,7 @@
             </intent-filter>
         </activity>
 
-7. Hinzufügen von RedirectUriScheme zu _build.gradle_ der Android-Anwendung.
+7. Fügen Sie redirectUriScheme dem _build.gradle_-Element Ihrer Android-Anwendung hinzu.
 
         android {
             buildTypes {
@@ -99,13 +99,13 @@
             }
         }
 
-8. Fügen Sie die Abhängigkeiten in Ihrer build.gradle com.android.support:customtabs:23.0.1 hinzu:
+8. Fügen Sie „com.android.support:customtabs:23.0.1“ den Abhängigkeiten im build.gradle-Element hinzu:
 
-      Abhängigkeiten {/ /... "com.android.support:customtabs:23.0.1" Kompilieren}
+      dependencies {        // ...        compile 'com.android.support:customtabs:23.0.1'    }
 
-9. Aus der **ausführen** Menü klicken Sie auf **app ausführen** um die app, und melden Sie sich mit Ihrem ausgewählten Identitätsanbieter zu starten.
+9. Klicken Sie im Menü **Ausführen** auf **App ausführen**, um die App zu starten, und melden Sie sich mit dem Identitätsanbieter Ihrer Wahl an.
 
 > [!WARNING]
-> Das URL-Schema erwähnt wird Groß-/Kleinschreibung beachtet.  Sicherstellen, dass alle Vorkommen von `{url_scheme_of_you_app}` verwenden die gleiche Groß-/Kleinschreibung.
+> Bei dem erwähnten URL-Schema muss die Groß-/Kleinschreibung beachtet werden.  Stellen Sie sicher, dass alle Vorkommen von `{url_scheme_of_you_app}` die gleiche Groß-/Kleinschreibung verwenden.
 
-Wenn Sie sich erfolgreich angemeldet haben, sollte sollte die app ohne Fehler ausgeführt, Sie auch können Abfragen des Back-End-Diensts und Updates an Daten vorzunehmen.
+Nach erfolgreicher Anmeldung sollte die App ohne Fehler ausgeführt werden, und Sie sollten in der Lage sein, den Back-End-Dienst abzufragen und Daten zu aktualisieren.

@@ -1,16 +1,16 @@
 
-**Objective-C**:
+**Objective-C:**
 
-1. In **QSAppDelegate.m**, importieren Sie das iOS SDK und **QSTodoService.h**:
+1. Importieren Sie das iOS-SDK und **QSTodoService.h** in **QSAppDelegate.m**:
    
         #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
         #import "QSTodoService.h"
-2. In `didFinishLaunchingWithOptions` in **QSAppDelegate.m**, einfügen, die die folgenden direkt vor dem Zeilen `return YES;`:
+2. Fügen Sie in **QSAppDelegate.m** in `didFinishLaunchingWithOptions` die folgenden Zeilen direkt vor `return YES;` ein:
    
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-3. In **QSAppDelegate.m**, fügen Sie die folgenden Handlermethoden hinzu. Ihre app wird jetzt aktualisiert, um Pushbenachrichtigungen zu unterstützen. 
+3. Fügen Sie in **QSAppDelegate.m**die folgenden Handlermethoden hinzu. Ihre App kann Pushbenachrichtigungen nun unterstützen. 
    
         // Registration with APNs is successful
         - (void)application:(UIApplication *)application
@@ -77,17 +77,17 @@
    
         }
 
-**SWIFT**:
+**Swift:**
 
-1. Hinzufügen der Datei **ClientManager.swift** mit dem folgenden Inhalt. Ersetzen Sie *AppUrl %* durch die URL des Back-End Azure Mobile-Anwendung.
+1. Fügen Sie die Datei **ClientManager.swift** mit folgendem Inhalt hinzu: Ersetzen Sie *%AppUrl%* durch die URL des Azure-Back-Ends für mobile Apps.
    
         class ClientManager {
             static let sharedClient = MSClient(applicationURLString: "%AppUrl%")
         }
-2. In **ToDoTableViewController.swift**, ersetzen Sie die `let client` Linie, die initialisiert ein `MSClient` mit der folgenden Zeile:
+2. Ersetzen Sie in **ToDoTableViewController.swift** die Zeile `let client`, die `MSClient` initialisiert, durch die folgende Zeile:
    
         let client = ClientManager.sharedClient
-3. In **AppDelegate.swift**, ersetzen Sie den Text der `func application` wie folgt:
+3. Ersetzen Sie in **AppDelegate.swift** den Text von `func application` wie folgt:
    
         func application(application: UIApplication,
           didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -97,7 +97,7 @@
            application.registerForRemoteNotifications()
            return true
         }
-4. In **AppDelegate.swift**, fügen Sie die folgenden Handlermethoden hinzu. Ihre app wird jetzt aktualisiert, um Pushbenachrichtigungen zu unterstützen.
+4. Fügen Sie in **AppDelegate.swift**die folgenden Handlermethoden hinzu. Ihre App kann Pushbenachrichtigungen nun unterstützen.
    
         func application(application: UIApplication,
            didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {

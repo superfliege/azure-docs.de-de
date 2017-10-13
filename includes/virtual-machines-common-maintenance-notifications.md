@@ -49,7 +49,7 @@ In der Ansicht mit den VM-Details können Sie auch weitere wartungsbezogene Deta
 Am oberen Rand der VM-Detailansicht wird ein neues Benachrichtigungsmenüband angezeigt, wenn Ihr virtueller Computer von einer Welle für eine geplante Wartung betroffen ist. Darüber hinaus wird eine neue Option zum Starten der Wartung hinzugefügt (sofern möglich). 
 
 
-Klicken Sie auf die Wartungsbenachrichtigung, um die Wartungsseite mit weiteren Details zur geplanten Wartung anzuzeigen. Von dort aus können Sie die Wartung**** für Ihren virtuellen Computer starten.
+Klicken Sie auf die Wartungsbenachrichtigung, um die Wartungsseite mit weiteren Details zur geplanten Wartung anzuzeigen. Von dort aus können Sie die **Wartung** für Ihren virtuellen Computer starten.
 
 Nach dem Start der Wartung wird Ihr virtueller Computer neu gestartet, und der Wartungsstatus wird innerhalb weniger Minuten mit dem entsprechenden Ergebnis aktualisiert.
 

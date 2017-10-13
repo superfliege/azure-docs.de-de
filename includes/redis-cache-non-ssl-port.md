@@ -1,4 +1,4 @@
-So aktivieren Sie den nicht-SSL-Port [Durchsuchen](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) auf Ihren Cache in die [Azure-Portal](https://portal.azure.com) , und klicken Sie auf **Erweiterte Einstellungen**. Klicken Sie auf **keine** für **Zugriff nur über SSL zulassen** auf die **Erweiterte Einstellungen** Blatt, und klicken Sie dann auf **speichern**.
+[Navigieren](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) Sie zum Aktivieren des SSL-fremden Ports im [Azure-Portal](https://portal.azure.com) zu Ihrem Cache, und klicken Sie auf **Erweiterte Einstellungen**. Klicken Sie auf dem Blatt **Erweiterte Einstellungen** für **Nur Zugriff über SSL zulassen** auf **Nein**, und klicken Sie anschließend auf **Speichern**.
 
-![Redis cacheeinstellungen](media/redis-cache-non-ssl-port/redis-cache-non-ssl-port.png)
+![Redis Cache: Einstellungen](media/redis-cache-non-ssl-port/redis-cache-non-ssl-port.png)
 

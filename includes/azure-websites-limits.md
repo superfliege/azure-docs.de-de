@@ -14,7 +14,7 @@
 | Websockets pro Instanz<sup>7</sup> |5 |35 |350 |Unbegrenzt |Unbegrenzt |
 | Gleichzeitige [Debuggerverbindungen](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) pro Anwendung |1 |1 |1 |5 |5 |
 | [azurewebsites.net-Unterdomäne mit FTP/S und SSL](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |X |X |X |X |X |
-| [benutzerdefinierte Domäne](../articles/app-service/app-service-web-tutorial-custom-domain.md)  | |X |X |X |X |
+| [benutzerdefinierte Domäne](../articles/app-service/app-service-web-tutorial-custom-domain.md) | |X |X |X |X |
 | benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/app-service-web-tutorial-custom-ssl.md) | | |Unbegrenzt |Unbegrenzt, 5 SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzt, 5 SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |
 | Integrierter Lastenausgleich | |X |X |X |X |
 | [Immer aktiviert](../articles/app-service/web-sites-configure.md) | | |X |X |X |

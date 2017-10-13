@@ -54,7 +54,7 @@ Gehen Sie nach Fertigstellung Ihrer Nutzungsbedingungen wie folgt vor, um sie hi
 ![Hinzufügen von Nutzungsbedingungen](media/active-directory-tou/tou2.png)
 3. Geben Sie unter **Name** einen Namen für die Nutzungsbedingungen ein.
 4. Geben Sie unter **Anzeigename** einen Anzeigenamen ein.  Diese Überschrift wird Benutzern bei der Anmeldung angezeigt.
-5. Navigieren**** Sie zur PDF-Datei mit den fertig gestellten Nutzungsbedingungen, und wählen Sie sie aus.  Wir empfehlen den Schriftgrad 24.
+5. **Navigieren** Sie zur PDF-Datei mit den fertig gestellten Nutzungsbedingungen, und wählen Sie sie aus.  Wir empfehlen den Schriftgrad 24.
 6. Sie können die hochgeladenen Nutzungsbedingungen mithilfe einer Vorlage oder einer benutzerdefinierten Richtlinie für den bedingten Zugriff **erzwingen**.  Benutzerdefinierte Richtlinien für den bedingten Zugriff ermöglichen präzise Nutzungsbedingungen bis hin zu einer spezifischen Cloudanwendung oder Benutzergruppe.  Weitere Informationen finden Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md).
 7. Klicken Sie auf **Erstellen**.
 8. Nach dem Auswählen einer benutzerdefinierten Vorlage für bedingten Zugriff wird ein neuer Bildschirm angezeigt, auf dem Sie die Richtlinie für den bedingten Zugriff anpassen können.

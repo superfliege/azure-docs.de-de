@@ -1,30 +1,30 @@
 
-### <a name="to-sign-up-for-a-blitline-account"></a>Zum Registrieren für ein Konto Blitline
-1. Melden Sie sich auf die [Azure-Verwaltungsportal](https://manage.windowsazure.com/).
-2. Klicken Sie im unteren Bereich des Verwaltungsportals auf **neu**.
+### <a name="to-sign-up-for-a-blitline-account"></a>So registrieren Sie ein Blitline-Konto
+1. Melden Sie sich im [Azure-Verwaltungsportal](https://manage.windowsazure.com/)an.
+2. Klicken Sie im unteren Bereich des Verwaltungsportal auf **Neu**.
    
-    ![Befehl-Leiste neu][command-bar-new]
-3. Klicken Sie auf **Store**.
+    ![command-bar-new][command-bar-new]
+3. Klicken Sie auf **Speichern**.
    
-    ![Blitline-Speicher][blitline-store]
-4. In der **wählen Sie ein Add-on** wählen Sie im Dialogfeld **Blitline** , und klicken Sie auf den Pfeil nach rechts.
-5. In der **personalisieren Add-on** Dialogfeld wählen die **Blitline** Plan, die Sie registrieren möchten.
-6. Geben Sie einen Namen zur Identifizierung Ihrer **Blitline** in den Einstellungen der Azure service, oder verwenden Sie den Standardwert **Blitline**. Namen müssen zwischen 1 und 100 Zeichen lang sein und nur alphanumerische Zeichen, Bindestriche, Punkte und Unterstriche enthalten. Der Name muss in der Liste der abonnierte Speicherelemente in Azure eindeutig sein.
+    ![blitline-store][blitline-store]
+4. Wählen Sie im Dialogfeld **Add-On auswählen** die Option **Blitline** aus, und klicken Sie anschließend auf den Pfeil nach rechts.
+5. Klicken Sie im Dialogfeld **Add-On personalisieren** auf den **Blitline**-Plan, für den Sie sich registrieren möchten.
+6. Geben Sie einen Namen zur Identifizierung Ihres **Blitline**-Diensts in Ihren Azure-Einstellungen ein, oder verwenden Sie den Standardwert **Blitline**. Namen müssen zwischen 1 und 100 Zeichen lang sein und dürfen nur alphanumerische Zeichen, Gedankenstriche, Punkte und Unterstriche enthalten. Der Name muss in der Liste der abonnierten Azure Store-Artikel eindeutig sein.
    
-    ![Store-Bildschirm-1][store-screen-1]
-7. Wählen Sie einen Wert für die Region; z. B. USA (Westen). 
-8. Klicken Sie auf die PFEIL-NACH-RECHTS-TASTE.
-9. Auf der **überprüfen Kauf** Registerkarte, überprüfen Sie den Plan und Informationen zu den Preisen und überprüfen Sie die rechtlichen Bedingungen. Wenn Sie den Bedingungen zustimmen, klicken Sie auf das Häkchen. Nachdem Sie auf das Häkchen klicken, wird Ihr Konto Blitline den Bereitstellungsvorgang beginnen. 
+    ![store-screen-1][store-screen-1]
+7. Wählen Sie einen Wert für die Region aus; z. B. West-USA. 
+8. Klicken Sie auf den Pfeil nach rechts.
+9. Prüfen Sie den Plan, die Preisinformationen sowie die rechtlichen Bedingungen auf der Registerkarte **Bestellung prüfen** . Aktivieren Sie das Kontrollkästchen, wenn Sie den Bedingungen zustimmen. Nachdem Sie das Kontrollkästchen aktiviert haben, beginnt der Bereitstellungsvorgang Ihres Blitline-Kontos. 
 
-Um Blitline zu verwenden, müssen Sie Ihre Anwendung-ID haben.
+Um Blitline verwenden zu können, benötigen Sie Ihre Anwendungs-ID.
 
-### <a name="to-find-your-blitline-application-id"></a>Ihre Blitline Anwendungs-ID gefunden.
+### <a name="to-find-your-blitline-application-id"></a>So finden Sie Ihre Blitline-Anwendungs-ID
 1. Klicken Sie auf **Verbindungsinformationen**.
    
-    ![Blitline-Verbindung-Info-Schaltfläche][blitline-connection-info-button]
-2. In der *Verbindungsinformationen* Dialogfeld sehen Sie Ihre Anwendung-ID
+    ![blitline-connection-info-button][blitline-connection-info-button]
+2. Im Dialogfeld *Verbindungsinformationen* wird Ihre Anwendungs-ID angezeigt
    
-    ![Blitline Verbindungsinformationen][blitline-connection-info]
+    ![blitline-connection-info][blitline-connection-info]
 
 <!--images-->
 
