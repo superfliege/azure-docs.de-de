@@ -1,7 +1,7 @@
 ## <a name="repeatability-during-copy"></a>Wiederholbarkeit beim Kopieren
-Beim Kopieren von Daten mit Azure SQL-SQL-Server von anderen Daten speichert müssen Sie die Wiederholbarkeit unerwünschte Ergebnisse vermeiden Bedenken. 
+Beim Kopieren von Daten in Azure SQL/SQL Server aus anderen Datenspeichern muss die Wiederholbarkeit berücksichtigt werden, um unbeabsichtigte Ergebnisse zu vermeiden. 
 
-Beim Kopieren von Daten zu Azure SQL-SQL Server-Datenbank wird kopieraktivität standardmäßig APPEND DataSet der Sink-Tabelle in der Standardeinstellung. Beispielsweise sieht beim Kopieren von Daten aus einer CSV (durch Trennzeichen getrennte Werte) Datei Datenquelle, die zwei Datensätze mit Azure SQL-SQL-Datenbank enthält diese Tabelle:
+Beim Kopieren von Daten in eine Azure SQL/SQL Server-Datenbank fügt die Kopieraktivität das Dataset standardmäßig mit APPEND an die Senkentabelle an. Wenn Sie z. B. Daten aus einer CSV-Datei mit zwei Datensätzen in eine Azure SQL-/SQL Server-Datenbank kopieren, sieht die Tabelle wie folgt aus:
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -10,7 +10,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-Angenommen Sie, Sie wurden Fehler gefunden wird, in der Quelldatei, und aktualisiert die Menge der nach-unten-Tube von 2 bis 4 in der Quelldatei. Wenn Sie den Datenslice für diesen Zeitraum erneut ausführen, finden Sie zwei neue Datensätze, die mit Azure SQL-SQL-Datenbank angefügt. Die im folgenden wird davon ausgegangen, die primary Key-Einschränkung in keiner der Spalten in der Tabelle vorkommen.
+Angenommen, Sie haben Fehler in der Quelldatei gefunden und die Menge von "Down Tube" in der Quelldatei von 2 in 4 geändert. Wenn Sie den Datenslice für diesen Zeitraum wiederholen, finden Sie zwei neue an die Azure SQL-/SQL Server-Datenbank angefügte Datensätze. Nachstehend wird angenommen, dass keine der Spalten der Tabelle die Einschränkung "Primärschlüssel" aufweist.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -21,15 +21,15 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Um dies zu vermeiden, müssen Sie UPSERT-Semantik angeben, durch die Nutzung eines der folgenden 2 Mechanismen, die unten aufgeführten.
+Um dies zu vermeiden, müssen Sie UPSERT-Semantik (zum Aktualisieren und Einfügen) angeben, indem Sie eines der beiden folgenden Verfahren nutzen.
 
 > [!NOTE]
-> Ein Slice kann automatisch in Azure Data Factory gemäß der angegebenen wiederholungsrichtlinie erneut ausgeführt werden.
+> Ein Slice kann in Azure Data Factory automatisch gemäß der angegebenen Wiederholungsrichtlinie wiederholt werden.
 > 
 > 
 
-### <a name="mechanism-1"></a>Mechanismus 1
-Sie können nutzen **SqlWriterCleanupScript** Eigenschaft Systembereinigungsaktion zuerst ausführen, wenn ein Slice ausgeführt wird. 
+### <a name="mechanism-1"></a>Verfahren 1
+Sie können die **SqlWriterCleanupScript** -Eigenschaft verwenden, um zunächst eine Systembereinigungsaktion auszuführen, wenn ein Slice ausgeführt wird. 
 
 ```json
 "sink":  
@@ -39,9 +39,9 @@ Sie können nutzen **SqlWriterCleanupScript** Eigenschaft Systembereinigungsakti
 }
 ```
 
-Das Bereinigungsskript ausgeführt werden würde erste während Kopie für einen bestimmten Slice werden die Daten aus der SQL-Tabelle, die für dieses Segment gelöscht würde. Die Aktivität wird anschließend die Daten in der SQL-Tabelle einfügen. 
+Das Bereinigungsskript wird zuerst während des Kopiervorgangs für einen bestimmten Slice ausgeführt, wobei die Daten aus der SQL-Tabelle gelöscht werden, die diesem Slice entspricht. Die Aktivität fügt anschließend die Daten in die SQL-Tabelle ein. 
 
-Wenn der Slice wird nun erneut ausführen, können Sie sehen, dass die Menge aktualisiert wird, sobald gewünscht.
+Wenn der Slice nun wiederholt wird, erkennen Sie, dass die Menge wie gewünscht aktualisiert wurde.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -50,25 +50,25 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Nehmen Sie an, dass der Flatfile Washer Datensatz aus der ursprünglichen Csv entfernt wird. Klicken Sie dann den Slice erneut ausführen, erzeugt das folgende Ergebnis: 
+Angenommen, der Datensatz "Flat Washer" wurde aus der ursprünglichen CSV-Datei entfernt. Bei Wiederholen des Slices wird das folgende Ergebnis erzeugt: 
 
 ```
 ID    Product        Quantity    ModifiedDate
 ...    ...            ...            ...
 7     Down Tube    4            2015-05-01 00:00:00
 ```
-Keine neuen musste ausgeführt werden. Copy-Aktivität ausgeführt wurde, das Bereinigungsskript aus, um die entsprechenden Daten für dieses Segment zu löschen. Und dann die Eingabe aus dem freigegebenen Clustervolume gelesen werden (die Sie dann nur 1 Datensatz enthalten) und die Tabelle eingefügt. 
+Weitere Schritte müssen nicht erfolgen. Die Kopieraktivität hat das Bereinigungsskript ausgeführt, um die dem Slice entsprechenden Daten zu löschen. Dann wurde die Eingabe aus der CSV-Datei (die jetzt nur noch 1 Datensatz enthielt) gelesen und in die Tabelle eingefügt. 
 
-### <a name="mechanism-2"></a>Mechanismus 2
+### <a name="mechanism-2"></a>Verfahren 2
 > [!IMPORTANT]
-> SliceIdentifierColumnName wird für Azure SQL Data Warehouse zu diesem Zeitpunkt nicht unterstützt. 
+> sliceIdentifierColumnName wird für Azure SQL Data Warehouse derzeit nicht unterstützt. 
 
-Ein weiterer Mechanismus Wiederholbarkeit erreicht ist, durch die Verwendung einer dedizierten Spalteninhalts (**SliceIdentifierColumnName**) in der Ziel-Tabelle. Diese Spalte würde von Azure Data Factory verwendet werden, um sicherzustellen, dass die Quelle und Ziel synchronisiert bleiben. Dieser Ansatz funktioniert bei Flexibilität beim Ändern oder das Ziel-SQL-Tabellenschema definieren. 
+Ein anderes Verfahren zum Erreichen von Wiederholbarkeit sieht eine dedizierte Spalte (**SliceIdentifierColumnName**) in der Zieltabelle vor. Diese Spalte wird von Azure Data Factory verwendet, um sicherzustellen, dass Quell- und Zielserver synchron bleiben. Dieser Ansatz funktioniert, wenn das Schema der SQL-Zieltabelle flexibel geändert oder definiert werden kann. 
 
-Diese Spalte wird von Azure Data Factory für Wiederholbarkeit Zwecke verwendet werden, und im Prozess Azure Data Factory wird keine Änderungen Schema der Tabelle. Die Möglichkeit, diesen Ansatz zu verwenden:
+Diese Spalte wird von Azure Data Factory zum Zweck der Wiederholbarkeit verwendet, wobei Azure Data Factory keine Änderungen am Schema der Tabelle vornimmt. So setzen Sie dieses Verfahren um:
 
-1. Definieren Sie eine Spalte des Typs binäre (32) im Ziel-SQL-Tabelle. Es darf keine Einschränkungen für diese Spalte. Nennen Sie diese Spalte als "ColumnForADFuseOnly" wir für dieses Beispiel.
-2. Verwenden sie in der kopieraktivität wie folgt:
+1. Definieren Sie in der SQL-Zieltabelle eine Spalte vom Typ "binary (32)". Für diese Spalte dürfen keine Einschränkungen gelten. Lassen Sie uns diese Spalte für dieses Beispiel "ColumnForADFuseOnly" nennen.
+2. Verwenden Sie sie wie folgt in der Kopieraktivität:
    
     ```json
     "sink":  
@@ -79,7 +79,7 @@ Diese Spalte wird von Azure Data Factory für Wiederholbarkeit Zwecke verwendet 
     }
     ```
 
-Azure Data Factory füllt diese Spalte gemäß benötigt, stellen Sie sicher, dass die Quelle und Ziel synchronisiert bleiben. Die Werte dieser Spalte sollten nicht vom Benutzer außerhalb dieses Kontexts verwendet werden. 
+Azure Data Factory füllt diese Spalte den Anforderungen entsprechend auf, um sicherzustellen, dass Quell- und Zielserver synchron bleiben. Die Werte dieser Spalte dürfen außerhalb dieses Kontexts nicht vom Benutzer verwendet werden. 
 
-Ähnlich wie bei den Mechanismus 1 kopieren-Aktivität wird automatisch zunächst bereinigen Sie die Daten für das angegebene Segment aus dem Ziel-SQL-Tabelle, und führen Sie dann die kopieraktivität normalerweise zum Einfügen der Daten aus der Quelle zum Ziel für dieses Segment. 
+Ähnlich wie bei Verfahren 1 bereinigt die Kopieraktivität zunächst automatisch die Daten eines bestimmten Slices in der SQL-Zieltabelle. Anschließend wird die Kopieraktivität normal ausgeführt, um für diesen Slice Daten aus der Quelle im Ziel einzufügen. 
 

@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Können keine Anwendungen, die registriert wird, der **Anwendungen** Registerkarte auf der klassischen [Azure-Verwaltungsportal](https://manage.windowsazure.com/) dafür.
+> Sie können hierfür keine Anwendungen verwenden, die im klassischen **Azure-Verwaltungsportal** auf der Registerkarte [Anwendungen](https://manage.windowsazure.com/) registriert sind.
 > 
 > 
 

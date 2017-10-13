@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/01/2017
 ms.author: robinsh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 97bacc2c1285fe4a467a54f224bb9fabbd851fee
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-net"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit .NET
 
 In diesem Schnellstart erfahren Sie, wie Sie mit C#.NET Blockblobs in einem Container in Azure Blob Storage unter Windows hochladen, herunterladen und auflisten.
@@ -219,4 +217,3 @@ In diesem Schnellstart haben Sie gelernt, wie Sie mit .NET Dateien zwischen eine
 > [Gewusst wie: Blob Storage-Vorgänge](storage-dotnet-how-to-use-blobs.md)
 
 Weitere Informationen zum Storage-Explorer und Blobs finden Sie unter [Verwalten von Azure Blob Storage-Ressourcen mit dem Speicher-Explorer (Vorschau)](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-

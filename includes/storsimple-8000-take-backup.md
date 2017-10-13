@@ -2,35 +2,35 @@
 
 ### <a name="to-take-a-backup"></a>So erstellen Sie eine Sicherung
 
-1. Wechseln Sie zu Ihrer StorSimple-Geräte-Manager-Dienst. Aus der tabellarischen Auflistung von Geräten, auswählen, und klicken Sie auf Ihrem Gerät, und klicken Sie dann auf **alle Einstellungen**. In der **Einstellungen** wechseln Sie zum Blatt **Einstellungen > Verwalten > Sicherungsrichtlinie**.
+1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst. Wählen Sie in der tabellarischen Geräteauflistung Ihr Gerät aus, klicken Sie darauf, und klicken Sie dann auf **Alle Einstellungen**. Wechseln Sie auf dem Blatt **Einstellungen** zu **Einstellungen > Verwalten > Sicherungsrichtlinie**.
 
-    ![Backup-Richtlinie hinzufügen](./media/storsimple-8000-take-backup/step8takebu1.png)
+    ![Sicherungsrichtlinie hinzufügen](./media/storsimple-8000-take-backup/step8takebu1.png)
 
-2. In der **Sicherungsrichtlinie** Blatt, klicken Sie auf **+ Richtlinie hinzufügen**.
+2. Klicken Sie auf dem Blatt **Sicherungsrichtlinie** auf **+ Richtlinie hinzufügen**.
 
-    ![Backup-Richtlinie hinzufügen](./media/storsimple-8000-take-backup/step8takebu2.png)
+    ![Sicherungsrichtlinie hinzufügen](./media/storsimple-8000-take-backup/step8takebu2.png)
 
-3. In der **Erstellen einer Sicherungsrichtlinie** Blatt geben einen Namen, die zwischen 3 und 150 Zeichen für Ihre Sicherungsrichtlinie enthält.
+3. Geben Sie auf dem Blatt **Sicherungsrichtlinie erstellen** einen Namen für Ihre Sicherungsrichtlinie mit 3 bis 150 Zeichen ein.
 
-4. Wählen Sie die Volumes gesichert werden soll. Wenn Sie mehr als ein Volume auswählen, werden diese Volumes werden gruppiert, um eine ausfallsichere Sicherung zu erstellen.
+4. Wählen Sie die Volumes aus, die gesichert werden sollen. Wenn Sie mehrere Volumes auswählen, werden diese gruppiert, um eine absturzkonsistente Sicherung zu erstellen.
 
-    ![Backup-Richtlinie hinzufügen](./media/storsimple-8000-take-backup/step8takebu4.png)
+    ![Sicherungsrichtlinie hinzufügen](./media/storsimple-8000-take-backup/step8takebu4.png)
 
-5. Auf **erste Zeitplan hinzufügen** Blatt:
+5. Auf dem Blatt **Ersten Zeitplan hinzufügen**:
 
-    1. Wählen Sie den Typ der Sicherung. Wählen Sie für schnellere Wiederherstellungen **lokale** Momentaufnahme. Wählen Sie für datenresilienz **Cloud** Momentaufnahme.
-    2. Geben Sie die sicherungshäufigkeit in Minuten, Stunden, Tage oder Wochen an.
-    3. Wählen Sie eine Aufbewahrungsdauer. Die Aufbewahrungsdauer hängt von den sicherungshäufigkeit ab. Beispielsweise kann für eine tägliche Richtlinie kann die Aufbewahrung in Wochen, angegeben werden, während die Aufbewahrungsdauer für eine monatliche Richtlinie Monate beträgt.
-    4. Wählen Sie die Startzeit und das Datum für die Sicherungsrichtlinie.
-    5. Klicken Sie auf **OK** die Sicherungsrichtlinie zu erstellen.
+    1. Wählen Sie den Sicherungstyp aus. Wählen Sie für schnellere Wiederherstellungen **lokale** Momentaufnahme aus. Wählen Sie für Datenresilienz **Cloud**-Momentaufnahme aus.
+    2. Geben Sie die Sicherungshäufigkeit in Minuten, Stunden, Tagen oder Wochen an.
+    3. Wählen Sie eine Aufbewahrungsdauer aus. Die Aufbewahrungsdauer hängt von der Sicherungshäufigkeit ab. Für eine tägliche Richtlinie kann die Aufbewahrungsdauer z. B. in Wochen angegeben werden, während die Aufbewahrungsdauer für eine monatliche Richtlinie Monate beträgt.
+    4. Wählen Sie die Startzeit und das Datum für die Richtlinie aus.
+    5. Klicken Sie auf **OK**, um die Sicherungsrichtlinie zu erstellen.
 
-        ![Backup-Richtlinie hinzufügen](./media/storsimple-8000-take-backup/step8takebu5.png) 
+        ![Sicherungsrichtlinie hinzufügen](./media/storsimple-8000-take-backup/step8takebu5.png) 
 
-6. Klicken Sie auf **erstellen** die Sicherungsrichtlinie-Erstellung starten. Sie werden benachrichtigt, wenn die Sicherungsrichtlinie erfolgreich erstellt wurde. Die Liste der Sicherungsrichtlinien wird ebenfalls aktualisiert.
+6. Klicken Sie auf **Erstellen**, um die Erstellung der Sicherungsrichtlinie zu starten. Sie werden benachrichtigt, wenn die Sicherungsrichtlinie erfolgreich erstellt wurde. Die Liste der Sicherungsrichtlinien wird ebenfalls aktualisiert.
       
-      ![Backup-Richtlinie hinzufügen](./media/storsimple-8000-take-backup/step8takebu9.png)
+      ![Sicherungsrichtlinie hinzufügen](./media/storsimple-8000-take-backup/step8takebu9.png)
       
-      Sie haben jetzt eine Sicherungsrichtlinie, die geplante Sicherungen für Ihre Volumedaten erstellt.
+      Sie verfügen nun über eine Sicherungsrichtlinie, die geplante Sicherungen für Ihre Volumedaten erstellt.
 
 
 

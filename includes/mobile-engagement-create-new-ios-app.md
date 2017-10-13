@@ -1,17 +1,17 @@
-1. Starten Sie **Xcode** , und wählen Sie im Popupfenster **Erstellen eines neuen Xcode-Projekts**.
+1. Starten Sie **Xcode**, und wählen Sie im Popupfenster die Option **Create a new Xcode project** aus.
    
     ![](./media/mobile-engagement-create-new-ios-app/xcode-new-project.png)
-2. Wählen Sie **einzelne Ansicht Anwendung**, und klicken Sie dann auf **Weiter**.
+2. Wählen Sie **Single View Application** aus, und klicken Sie dann auf **Next**.
    
     ![](./media/mobile-engagement-create-new-ios-app/xcode-simple-view.png)
-3. Füllen Sie die **Produktname**, **Organisationsname**, und **Organisations-ID**. Wählen Sie **Objective-C** oder **Swift** in der **Sprache** Auswahl anhand Ihrer app.
+3. Geben Sie **Produktname**, **Organisationsname** und **Organisations-ID** ein. Wählen Sie, entsprechend Ihrer App, **Objective-C** oder **Swift** im Abschnitt **Language** aus.
    
     ![](./media/mobile-engagement-create-new-ios-app/xcode-project-props.png)
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass die Paket-ID übereinstimmt, mit, was Sie in der Apple Developer-Konsole für AppId definiert haben und dass Sie ein entsprechendes Zertifikat dafür verfügen. 
+> Vergewissern Sie sich, dass die Paket-ID (Bündel-ID, Bundle Identifier) dem Wert entspricht, den Sie in der Apple-Entwicklerkonsole für „AppId“ definiert haben, und dass Sie ein entsprechendes Zertifikat für die Paket-ID haben. 
 > 
 > 
 
-Xcode wird die Demo-app erstellen, in der wir Mobile Engagement zu integrieren.
+Xcode erstellt die Demo-App, in die wir Mobile Engagement integrieren.
 

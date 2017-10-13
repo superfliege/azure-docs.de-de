@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: db8d7b0e117276dd63ee83a1c2337e69253184b8
-ms.contentlocale: de-de
-ms.lasthandoff: 03/15/2017
-
+ms.openlocfilehash: 8772a9a21a0c99994ac9bcf10ea7b13c35bac6c2
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Problembehandlung ohne Daten – Application Insights für .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Einige meiner Telemetriedaten fehlen
@@ -159,11 +158,9 @@ Weitere Informationen finden Sie unter [Telemetriedaten zu Abhängigkeiten](app-
 ## <a name="no-performance-data"></a>Keine Leistungsdaten
 Leistungsdaten (CPU, E/A-Rate usw.) sind für [Java-Webdienste](app-insights-java-collectd.md), [Windows-Desktop-Apps](app-insights-windows-desktop.md), [IIS-Web-Apps und -Dienste bei Installation des Statusmonitors](app-insights-monitor-performance-live-website-now.md) und [Azure Cloud Services](app-insights-azure.md) verfügbar. Sie finden die Leistungsdaten unter „Einstellungen“ > „Server“.
 
-Für Azure-Websites sind sie dagegen nicht verfügbar.
-
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Keine Daten (Serverdaten), seitdem ich die App auf meinem Server veröffentlicht habe
 * Überprüfen Sie, ob Sie tatsächlich alle Daten von Microsoft kopiert haben. ApplicationInsights-DLLs auf dem Server, zusammen mit „Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll“
-* Möglicherweise müssen Sie in der Firewall [einige TCP-Ports öffnen](app-insights-ip-addresses.md#data-access-api).
+* Möglicherweise müssen Sie in der Firewall [einige TCP-Ports öffnen](app-insights-ip-addresses.md).
 * Wenn Sie einen Proxy verwenden müssen, um Daten aus Ihrem Unternehmensnetzwerk zu senden, legen Sie [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) in der Datei "Web.config" fest.
 * Windows Server 2008: Stellen Sie sicher, dass folgende Updates installiert sind: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
@@ -184,5 +181,4 @@ Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Ser
 
 ## <a name="still-not-working"></a>Noch nicht funktionsfähig ...
 * [Application Insights-Forum](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
-
 

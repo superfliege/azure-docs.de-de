@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
+ms.openlocfilehash: 192680efe07368666c5a9d037549c7686189d0b0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 6c80c6814dacf90a0a50dab691899c3a8cc2bf82
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-files-with-linux"></a>Verwenden von Azure Files mit Linux
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Linux-Distributionen mithilfe des Pakets [cifs-utils](https://wiki.samba.org/index.php/LinuxCIFS_utils) aus dem [Samba-Projekt](https://www.samba.org/) eingebunden werden. Dieser Artikel veranschaulicht zwei Möglichkeiten zum Einbinden einer Azure-Dateifreigabe: bei Bedarf mit dem Befehl `mount` oder beim Start durch Erstellen eines Eintrags in `/etc/fstab`.
@@ -111,10 +110,9 @@ Linux-Benutzer, wir möchten von Ihnen hören!
 Die Benutzergruppe „Azure Files for Linux“ bietet ein Forum, in dem Sie Ihr Feedback zu File Storage für Linux geben können. Senden Sie eine E-Mail an [Azure Files Linux Users](mailto:azurefileslinuxusers@microsoft.com), um der Benutzergruppe beizutreten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Files erhalten Sie über die folgenden Links.
+Weitere Informationen zu Azure Files erhalten Sie über diese Links.
 * [Referenz zur REST-API des Dateidiensts](http://msdn.microsoft.com/library/azure/dn167006.aspx)
 * [Verwenden von AzCopy mit Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Verwenden der Azure CLI mit Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Häufig gestellte Fragen](../storage-files-faq.md)
 * [Problembehandlung](storage-troubleshoot-linux-file-connection-problems.md)
-

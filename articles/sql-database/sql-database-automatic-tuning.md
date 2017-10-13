@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/19/2017
 ms.author: jovanpop
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 64abcf680199938c54be5005ee96670a8e580270
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatische Optimierung in Azure SQL-Datenbank
 
@@ -48,4 +47,3 @@ Die erforderlichen Schritte für das Azure-Portal finden Sie im Artikel [Aktivie
 - Bei der Verwendung der manuellen Optimierung helfen Ihnen die Informationen unter [Azure SQL Database Advisor im Azure-Portal](sql-database-advisor-portal.md) weiter. Außerdem können Sie manuell die Empfehlungen anwenden, die zu einer Verbesserung der Leistung Ihrer Abfragen führen.
 - Hier finden Sie weitere Informationen zu der integrierten Logik, die [Azure SQL-Datenbank](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/) optimiert.
 - Hier finden Sie weitere Informationen zur [automatischen Optimierung](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) in Azure SQL-Datenbank und SQL Server 2017.
-

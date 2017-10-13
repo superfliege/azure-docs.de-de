@@ -2,7 +2,7 @@
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
 * Visual Studio 2015 oder 2017
-* [MicrosoftAzure.MobileEngagement](http://go.microsoft.com/?linkid=9864592) 
+* [MicrosoftAzure.MobileEngagement](http://go.microsoft.com/?linkid=9864592)
 
 
 > [!NOTE]

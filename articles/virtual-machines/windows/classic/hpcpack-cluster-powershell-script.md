@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
 ms.openlocfilehash: 85b125ab19671b61d2541af6378c95feb88bf952
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Erstellen eines Windows-High Performance Computing (HPC)-Clusters mit dem HPC Pack-IaaS-Bereitstellungsskript
 Führen Sie das PowerShell-Skript für die HPC Pack-IaaS-Bereitstellung aus, um einen vollständigen HPC Pack 2012 R2-Cluster für Windows-Workloads auf virtuellen Azure-Computern bereitzustellen. Der Cluster besteht aus einem mit Active Directory verknüpften Hauptknoten mit Windows Server und Microsoft HPC Pack sowie weiteren von Ihnen angegebenen Windows-Computeressourcen. Falls Sie einen HPC Pack-Cluster in Azure für Linux-Workloads bereitstellen möchten, finden Sie weitere Informationen unter [Erstellen eines High Performance Computing (HPC)-Clusters mit virtuellen Linux-Computern mit dem HPC Pack-IaaS-Bereitstellungsskript](../../linux/classic/hpcpack-cluster-powershell-script.md). Sie können auch eine Azure-Ressourcen-Manager-Vorlage verwenden, um einen HPC Pack-Cluster bereitzustellen. Beispiele finden Sie unter [Create an HPC cluster](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/) (Erstellen eines HPC-Clusters) und [Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/) (Erstellen eines HPC-Clusters mit einem benutzerdefinierten Computeknotenimage).

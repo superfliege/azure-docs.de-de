@@ -11,19 +11,17 @@ ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.devlang: NA
-ms.date: 08/25/2017
+ms.date: 10/11/2017
 ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
+ms.openlocfilehash: 38c8c83909fe6a68e8850c9ac9d796784c38c70a
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 2af5be1c2250c3ec363b97c21bc3fa05c8ace984
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/12/2017
 ---
-
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen
 
 Pools für elastische SQL-Datenbanken sind eine einfache, kostengünstige Lösung zum Verwalten und Skalieren mehrerer Datenbanken mit variierenden und unvorhersehbaren Anforderungen. Die Datenbanken in einem elastischen Pool befinden sich auf einem einzelnen Azure SQL-Datenbank-Server und nutzen gemeinsam eine festgelegte Anzahl von Ressourcen ([elastischen Datenbanktransaktionseinheiten [elastic Database Transaction Units, eDTUs]](sql-database-what-is-a-dtu.md)) zu einem festen Preis. Mit Pools für elastische Datenbanken in Azure SQL-Datenbanken sind SaaS-Entwickler in der Lage, das Preis-Leistungs-Verhältnis einer Gruppe von Datenbanken im Rahmen eines vorgegebenen Budgets zu optimieren und gleichzeitig eine flexible Leistung für jede Datenbank sicherzustellen. 
@@ -329,12 +327,12 @@ Verwenden Sie zum Erstellen und Verwalten von Pools für elastische SQL-Datenban
 
 | Cmdlet | Beschreibung |
 | --- | --- |
-|[az sql elastic-pool create](/cli/azure/sql/elastic-pool#create)|Erstellt einen elastischen Pool.|
-|[az sql elastic-pool list](/cli/azure/sql/elastic-pool#list)|Gibt eine Liste elastischer Pools auf einem Server zurück.|
-|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#list-dbs)|Gibt eine Liste der Datenbanken in einem elastischen Pool zurück.|
-|[az sql elastic-pool list-editions](/cli/azure/sql/elastic-pool#list-editions)|Umfasst auch verfügbare DTU-Einstellungen, Speicherlimits und datenbankbezogene Einstellungen für den Pool. Zum Verringern der Ausführlichkeit sind zusätzliche Speicherlimits und datenbankbezogene Einstellungen standardmäßig ausgeblendet.|
-|[az sql elastic-pool update](/cli/azure/sql/elastic-pool#update)|Aktualisiert einen elastischen Pool.|
-|[az sql elastic-pool delete](/cli/azure/sql/elastic-pool#delete)|Löscht den elastischen Pool.|
+|[az sql elastic-pool create](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create)|Erstellt einen elastischen Pool.|
+|[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list)|Gibt eine Liste elastischer Pools auf einem Server zurück.|
+|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_dbs)|Gibt eine Liste der Datenbanken in einem elastischen Pool zurück.|
+|[az sql elastic-pool list-editions](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_editions)|Umfasst auch verfügbare DTU-Einstellungen, Speicherlimits und datenbankbezogene Einstellungen für den Pool. Zum Verringern der Ausführlichkeit sind zusätzliche Speicherlimits und datenbankbezogene Einstellungen standardmäßig ausgeblendet.|
+|[az sql elastic-pool update](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)|Aktualisiert einen elastischen Pool.|
+|[az sql elastic-pool delete](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_delete)|Löscht den elastischen Pool.|
 
 ## <a name="manage-databases-within-elastic-pools-using-transact-sql"></a>Verwalten von Datenbanken in Pools für elastische SQL-Datenbanken mit Transact-SQL
 
@@ -382,4 +380,3 @@ Verwenden Sie zum Erstellen und Verwalten von SQL-Datenbank-Pools für elastisch
 * Ein Video finden Sie unter [Microsoft Virtual Academy video course on Azure SQL Database elastic capabilities](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) (Microsoft Virtual Academy-Videokurs zu Funktionen elastischer Datenbanken in Azure SQL-Datenbank).
 * Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die elastische Pools verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 * Ein SaaS-Tutorial, in dem elastische Pools verwendet werden, finden Sie in der [Einführung in die SaaS-Anwendung Wingtip](sql-database-wtp-overview.md).
-

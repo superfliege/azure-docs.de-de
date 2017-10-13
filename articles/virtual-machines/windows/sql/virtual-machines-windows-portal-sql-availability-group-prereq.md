@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
 ms.openlocfilehash: 3d508877928e033f24dae62c1042745ea7250033
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines
 
@@ -467,11 +467,11 @@ Wiederholen Sie diese Schritte auf dem anderen virtuellen SQL Server-Computer.
 Für die Lösung müssen die folgenden TCP-Ports in der Firewall geöffnet sein:
 
 - **SQL Server-VM**:<br/>
-   Port 1433 für eine Standardinstanz von SQL Server.
+   Port 1433 für eine Standardinstanz von SQL Server
 - **Azure-Lastenausgleichstest**:<br/>
-   Jeden verfügbaren Port. Für Beispiele wird häufig 59999 verwendet.
+   Ein beliebiger verfügbarer Port. Für Beispiele wird häufig 59999 verwendet.
 - **Datenbankspiegelungs-Endpunkt**: <br/>
-   Jeden verfügbaren Port. Für Beispiele wird häufig 5022 verwendet.
+   Ein beliebiger verfügbarer Port. Für Beispiele wird häufig 5022 verwendet.
 
 Die Firewallports müssen auf beiden virtuellen SQL-Server-Computern geöffnet sein.
 

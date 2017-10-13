@@ -1,31 +1,31 @@
 
-1. Klicken Sie auf die **Anwendungsdienste** Schaltfläche, wählen Sie Ihre Mobile Apps-Back-End, wählen Sie **Schnellstart**, und wählen Sie dann Ihre Clientplattform (iOS, Android, Xamarin, Cordova).
+1. Klicken Sie auf die Schaltfläche **App Services**, wählen Sie Ihr Mobile Apps-Back-End aus, wählen Sie **Schnellstart** aus, und wählen Sie anschließend Ihre Clientplattform (iOS, Android, Xamarin oder Cordova) aus.
 
-    ![Azure-Portal mit Mobile Apps Schnellstart hervorgehoben][quickstart]
+    ![Azure-Portal mit hervorgehobenem Mobile Apps-Schnellstart][quickstart]
 
-2. Wenn eine datenbankverbindung nicht konfiguriert ist, erstellen Sie dazu wie folgt vor:
+2. Ist keine Datenbankverbindung konfiguriert, gehen Sie wie folgt vor, um eine zu erstellen:
 
-    ![Azure-Portal mit Mobile Apps Connect auf Datenbank][connect]
+    ![Azure-Portal mit Mobile Apps – Herstellen der Datenbankverbindung][connect]
 
-    a. Erstellt eine neue SQL-Datenbank und Server.
+    a. Erstellen Sie eine neue SQL-Datenbank und einen Server.
 
-    ![Azure-Portal für Mobile Apps erstellen, neue Datenbank und server][server]
+    ![Azure-Portal mit Mobile Apps – Erstellen einer neuen Datenbank und eines Servers][server]
 
     b. Warten Sie, bis die Erstellung der Datenverbindung erfolgreich abgeschlossen wurde.
 
-    ![Azure-Portal Benachrichtigung der erfolgreichen Erstellung der Datenverbindung][notification]
+    ![Azure-Portal Benachrichtigung bei erfolgreicher Erstellung der Datenverbindung][notification]
 
     c. Die Herstellung der Datenverbindung muss erfolgreich sein.
 
-    ![Azure Portal-Benachrichtigung "Sie haben bereits eine Datenverbindung"][already-connection]
+    ![Azure Portal-Benachrichtigung: „Sie verfügen bereits über eine Datenverbindung.“][already-connection]
 
 3. Wählen Sie unter **2. Tabellen-API erstellen** als **Back-End-Sprache** die Option „Node.js“ aus. 
  
-4. Akzeptieren Sie die Bestätigung, und wählen Sie dann **erstellen TodoItem-Tabelle**.  
-    Diese Aktion erstellt eine neue Aufgabe Item-Tabelle in der Datenbank. 
+4. Akzeptieren Sie die Bestätigung, und wählen Sie dann **TodoItem-Tabelle erstellen** aus.  
+    Dadurch wird in Ihrer Datenbank eine neue Aufgabenlistentabelle erstellt. 
 
     >[!IMPORTANT]
-    > Ein vorhandenes Back-End in Node.js wechseln, werden alle Inhalt überschrieben. Um ein .NET Back-End stattdessen zu erstellen, finden Sie unter [mit dem .NET Back-End-Server SDK für Mobile Apps arbeiten][instructions].
+    > Bei der Umstellung eines vorhandenen Back-Ends auf Node.js werden sämtliche Inhalte überschrieben. Wenn Sie stattdessen ein .NET-Back-End erstellen möchten, lesen Sie [Vorgehensweise: Erstellen eines .NET Mobile App-Back-Ends][instructions].
 
 <!-- Images. -->
 [quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png

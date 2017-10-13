@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/11/2017
 ms.author: jgao
+ms.openlocfilehash: 822c5f2302fb32d0d5a05ba69132282c050b7b8b
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
-ms.openlocfilehash: 17fac0327c3c454a8ea5c4d91b2d3e23de71f4ce
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Verwenden von Interactive Query mit HDInsight
 Interactive Query (auch Hive LLAP oder [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP) genannt) ist ein Azure HDInsight-[Clustertyp](hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interactive Query unterstützt speicherinternes Zwischenspeichern, wodurch Hive-Abfragen schneller und viel interaktiver werden. 
@@ -30,7 +29,6 @@ Interactive Query (auch Hive LLAP oder [Live Long and Process](https://cwiki.apa
 Ein Interactive Query-Cluster unterscheidet sich von einem Hadoop-Cluster. Er enthält nur den Hive-Dienst. 
 
 > [!NOTE]
-> MapReduce, Pig, Sqoop, Oozie und andere Dienste werden in Kürze aus diesem Clustertyp entfernt.
 > Sie können im Interactive Query-Cluster nur über die Ambari-Hive-Ansicht, Beeline und den Microsoft Hive Open Database Connectivity-Treiber (ODBC Hive) auf den Hive-Dienst zugreifen. Sie können nicht über die Hive-Konsole, Templeton, das Azure-Befehlszeilentool (Azure CLI) oder Azure PowerShell darauf zugreifen. 
 > 
 > 
@@ -86,5 +84,4 @@ So suchen Sie die Verbindungszeichenfolge für die Java Database Connectivity (J
 * Erfahren Sie, wie Sie [die Hive-Ansicht mit Hadoop in HDInsight verwenden](hdinsight-hadoop-use-hive-ambari-view.md).
 * Erfahren Sie, wie Sie den [Beeline-Client mit Apache Hive verwenden](hdinsight-hadoop-use-hive-beeline.md).
 * Erfahren Sie, wie Sie [Excel mithilfe des Microsoft Hive ODBC-Treibers mit Hadoop in Azure HDInsight verbinden](hdinsight-connect-excel-hive-odbc-driver.md).
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: c8f731502d6589bfa908aa26cf418a65b18be635
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Überwachen von StorSimple-Geräten
 ## <a name="overview"></a>Übersicht
@@ -135,5 +134,4 @@ Wenn Sie sich das Diagramm zum Durchsatz der Schnittstelle Data 1 ansehen, einer
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [das Dashboard für den StorSimple-Geräte-Manager-Dienst verwenden](storsimple-device-dashboard.md).
 * Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple-Geräte-Manager-Diensts verwalten](storsimple-manager-service-administration.md).
-
 

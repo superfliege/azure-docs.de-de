@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.openlocfilehash: 6ec74ae0b0931f3fed99a43f4f7e58f9d425b138
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag
 Bevor Sie einen Exportauftrag erstellen, müssen Sie eine Gruppe von Blobs auswählen, die Sie exportieren möchten. Der Microsoft Azure Import/Export-Dienst bietet Ihnen die Möglichkeit, die ausgewählten Blobs mithilfe einer Liste von Blobpfaden oder Blobpräfixen darzustellen.  
@@ -31,12 +31,12 @@ Bei der Verwendung des Befehls `PreviewExport` des Import/Export-Tools können S
 
 |Befehlszeilenparameter|Beschreibung|  
 |--------------------------|-----------------|  
-|**/logdir:**<Protokollverzeichnis\>|Optional. Das Protokollverzeichnis. In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
-|**/sn:**<Speicherkontoname\>|Erforderlich. Der Name des Speicherkontos für den Exportauftrag.|  
-|**/sk:**<Speicherkontoschlüssel\>|Nur erforderlich, wenn keine Container-SAS (Shared Access Signature) angegeben wurde. Der Kontoschlüssel des Speicherkontos für den Exportauftrag.|  
-|**/csas:**<Container-SAS\>|Nur erforderlich, wenn kein Speicherkontoschlüssel angegeben wurde. Die Container-SAS zum Auflisten der Blobs, die im Exportauftrag exportiert werden sollen.|  
-|**/ExportBlobListFile:**<Datei mit der Blobliste für den Export\>|Erforderlich. Pfad zur XML-Datei mit der Liste der Blobpfade oder Blobpfadpräfixe für die zu exportierenden Blobs. Das Dateiformat entspricht dem Format, das im Element `BlobListBlobPath` im [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)-Vorgang der REST-API des Import/Export-Diensts verwendet wird.|  
-|**/DriveSize:**<Laufwerkgröße\>|Erforderlich. Die Größe der Laufwerke, die für einen Exportauftrag verwendet werden sollen, *beispielsweise* 500 GB, 1,5 TB.|  
+|**/logdir:**&lt;Protokollverzeichnis\>|Optional. Das Protokollverzeichnis. In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
+|**/sn:**&lt;Speicherkontoname\>|Erforderlich. Der Name des Speicherkontos für den Exportauftrag.|  
+|**/sk:**&lt;Speicherkontoschlüssel\>|Nur erforderlich, wenn keine Container-SAS (Shared Access Signature) angegeben wurde. Der Kontoschlüssel des Speicherkontos für den Exportauftrag.|  
+|**/csas:**&lt;Container-SAS\>|Nur erforderlich, wenn kein Speicherkontoschlüssel angegeben wurde. Die Container-SAS zum Auflisten der Blobs, die im Exportauftrag exportiert werden sollen.|  
+|**/ExportBlobListFile:**&lt;Datei mit der Blobliste für den Export\>|Erforderlich. Pfad zur XML-Datei mit der Liste der Blobpfade oder Blobpfadpräfixe für die zu exportierenden Blobs. Das Dateiformat entspricht dem Format, das im Element `BlobListBlobPath` im [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)-Vorgang der REST-API des Import/Export-Diensts verwendet wird.|  
+|**/DriveSize:**&lt;Laufwerkgröße\>|Erforderlich. Die Größe der Laufwerke, die für einen Exportauftrag verwendet werden sollen, *beispielsweise* 500 GB, 1,5 TB.|  
 
 ## <a name="command-line-example"></a>Befehlszeilenbeispiel
 

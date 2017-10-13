@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
 ms.openlocfilehash: d817358211f123c96d899c5cff88cc47aeb5c9c1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-cli-10"></a>Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe von Azure CLI 1.0
 Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie mithilfe von Azure CLI 1.0 eine Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM hergestellt werden kann, um Fehler zu beheben, und wie dann die ursprüngliche VM neu erstellt wird.

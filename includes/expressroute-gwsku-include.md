@@ -1,8 +1,8 @@
-Wenn Sie ein virtuelles Netzwerkgateway erstellen, müssen Sie an das Gateway-SKU, die Sie verwenden möchten. Bei der Auswahl einer höheren SKU-Gateway weitere CPUs und mehr Netzwerkbandbreite, die das Gateway zugewiesen werden, und das Gateway kann daher höher Netzwerkdurchsatz an das virtuelle Netzwerk unterstützen. 
+Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie die gewünschte Gateway-SKU angeben. Wenn Sie eine höhere Gateway-SKU wählen, werden dem Gateway mehr CPUs und eine höhere Bandbreite zugewiesen. Infolgedessen unterstützt das Gateway einen höheren Netzwerkdurchsatz im virtuellen Netzwerk. 
 
-ExpressRoute Gateways des virtuellen Netzwerks können die folgenden SKUs: 
+Virtuelle ExpressRoute-Netzwerkgateways können folgende SKUs verwenden: 
 
 * Standard
-* Verteilte
+* HighPerformance
 * UltraPerformance
 

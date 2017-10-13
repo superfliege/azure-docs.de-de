@@ -16,12 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/07/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 222cb9629e50e49ce08e0737d7f2570e9187317a
-ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
-
+ms.openlocfilehash: dbba39f5b9f18aaca6449e08aa584224fc2126d7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Überwachen der Sicherheit virtueller Computer mit Azure Security Center
 
@@ -43,7 +42,7 @@ Wählen Sie für den Zugriff auf das Security Center-Dashboard im Azure-Portal a
 
 Security Center bietet über die reine Datenermittlung hinaus auch Empfehlungen für erkannte Probleme. Wenn etwa ein virtueller Computer ohne eine angefügte Netzwerksicherheitsgruppe bereitgestellt wurde, zeigt Security Center beispielsweise eine Empfehlung für mögliche Maßnahmen an. Sie erhalten automatisierte Korrekturmaßnahmen, ohne das Umfeld von Security Center verlassen zu müssen.  
 
-![Empfehlungen](./media/tutorial-azure-security/recommendations.png)
+![Recommendations](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>Einrichten der Datensammlung
 
@@ -58,14 +57,14 @@ Der Datensammlungs-Agent von Security Center wird daraufhin auf allen virtuellen
 
 ## <a name="set-up-a-security-policy"></a>Einrichten einer Sicherheitsrichtlinie
 
-Sicherheitsrichtlinien werden verwendet, um die Elemente zu definieren, für die Security Center Daten sammelt und Empfehlungen gibt. Sie können unterschiedliche Sicherheitsrichtlinien auf verschiedene Gruppen von Azure-Ressourcen anwenden. Obwohl Azure-Ressourcen standardmäßig gegen sämtliche Richtlinienelemente ausgewertet werden, können Sie einzelne Richtlinienelemente für alle Azure-Ressourcen oder für eine Ressourcengruppe deaktivieren. Ausführliche Informationen zu Security Center-Sicherheitsrichtlinien finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](../../security-center/security-center-policies.md). 
+Sicherheitsrichtlinien werden verwendet, um die Elemente zu definieren, für die Security Center Daten sammelt und Empfehlungen gibt. Sie können unterschiedliche Sicherheitsrichtlinien auf verschiedene Gruppen von Azure-Ressourcen anwenden. Obwohl Azure-Ressourcen standardmäßig für sämtliche Richtlinienelemente ausgewertet werden, können Sie einzelne Richtlinienelemente für alle Azure-Ressourcen oder für eine Ressourcengruppe deaktivieren. Ausführliche Informationen zu Security Center-Sicherheitsrichtlinien finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](../../security-center/security-center-policies.md). 
 
 So richten Sie eine Sicherheitsrichtlinie für alle Azure-Ressourcen ein:
 
 1. Wählen Sie auf dem Security Center-Dashboard **Sicherheitsrichtlinie** und dann Ihr Abonnement aus.
 2. Wählen Sie **Präventionsrichtlinie** aus.
 3. Aktivieren oder deaktivieren Sie die Richtlinienelemente, die Sie auf alle Azure-Ressourcen anwenden möchten.
-4. Wenn Sie Ihre Einstellungen festgelegt haben, wählen **OK** aus.
+4. Wenn Sie Ihre Einstellungen festgelegt haben, wählen Sie **OK** aus.
 5. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Speichern** aus. 
 
 So richten Sie eine Richtlinie für eine bestimmte Ressourcengruppe ein:
@@ -74,7 +73,7 @@ So richten Sie eine Richtlinie für eine bestimmte Ressourcengruppe ein:
 2. Wählen Sie **Präventionsrichtlinie** aus.
 3. Aktivieren oder deaktivieren Sie die Richtlinienelemente, die Sie auf die Ressourcengruppe anwenden möchten.
 4. Wählen Sie unter **Vererbung** die Option **Eindeutig** aus.
-5. Wenn Sie Ihre Einstellungen festgelegt haben, wählen **OK** aus.
+5. Wenn Sie Ihre Einstellungen festgelegt haben, wählen Sie **OK** aus.
 6. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Speichern** aus.  
 
 Sie können auf dieser Seite auch die Datensammlung für eine bestimmte Ressourcengruppe deaktivieren.
@@ -111,15 +110,15 @@ So zeigen Sie eine Liste aller Empfehlungen an
 
 In vielen Fällen stellt Security Center Schritte zur Umsetzung der Empfehlung vor, die Sie ausführen können, ohne Security Center verlassen zu müssen. Im folgenden Beispiel erkennt Security Center eine Netzwerksicherheitsgruppe, die eine uneingeschränkte Eingangsregel enthält. Sie können auf der Empfehlungsseite die Schaltfläche **Eingangsregeln bearbeiten** auswählen. Die für das Ändern der Regel erforderliche Benutzeroberfläche wird angezeigt. 
 
-![Empfehlungen](./media/tutorial-azure-security/remediation.png)
+![Recommendations](./media/tutorial-azure-security/remediation.png)
 
 Nachdem Empfehlungen umgesetzt wurden, werden sie als gelöst markiert. 
 
 ## <a name="view-detected-threats"></a>Anzeigen erkannter Bedrohungen
 
-Neben den Empfehlungen zur Ressourcenkonfiguration bietet Security Center auch Warnungen zur Bedrohungserkennung. Die Sicherheitswarnfunktion aggregiert die von den einzelnen VMs gesammelten Daten, Azure-Netzwerkprotokolle und verbundenen Partnerlösungen, um Sicherheitsrisiken für Azure-Ressourcen zu erkennen. Ausführliche Informationen zu Funktionen der Security Center-Bedrohungserkennung finden Sie unter [Azure Security Center-Erkennungsfunktionen](../../security-center/security-center-detection-capabilities.md).
+Neben den Empfehlungen zur Ressourcenkonfiguration bietet Security Center auch Warnungen zur Bedrohungserkennung. Das Sicherheitswarnfeature aggregiert die von den einzelnen VMs gesammelten Daten, Azure-Netzwerkprotokolle und verbundenen Partnerlösungen, um Sicherheitsrisiken für Azure-Ressourcen zu erkennen. Ausführliche Informationen zu Funktionen der Security Center-Bedrohungserkennung finden Sie unter [Azure Security Center-Erkennungsfunktionen](../../security-center/security-center-detection-capabilities.md).
 
-Für die Sicherheitswarnfunktion muss der Security Center-Tarif von *Free* auf *Standard* erhöht werden. Sie können eine 30-tägige, **kostenlose Testversion** nutzen, wenn Sie auf diesen höheren Tarif wechseln. 
+Für das Sicherheitswarnfeature muss der Security Center-Tarif von *Free* auf *Standard* erhöht werden. Sie können eine 30-tägige, **kostenlose Testversion** nutzen, wenn Sie auf diesen höheren Tarif wechseln. 
 
 So ändern Sie den Tarif  
 
@@ -149,5 +148,4 @@ Wechseln Sie zum nächsten Tutorial, um mehr über das Erstellen einer CI/CD-Pip
 
 > [!div class="nextstepaction"]
 > [Erstellen einer CI/CD-Infrastruktur mit Jenkins, GitHub und Docker](tutorial-jenkins-github-docker-cicd.md)
-
 

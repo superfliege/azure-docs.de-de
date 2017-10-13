@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: edd8c526a681c9cd5226ede6110f21c3362aaef6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights
 
@@ -324,4 +323,3 @@ Intelligent Insights benötigt in der Regel eine Stunde für die Fehlerursachena
 - [Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql)
 - Informationen zum [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
-

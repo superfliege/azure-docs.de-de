@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: NA
-ms.date: 07/10/2017
+ms.date: 10/11/2017
 ms.author: sashan
-ms.openlocfilehash: 290d672146765b9273697ba35e99231a5b854679
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0725d5747ab343dcf99ad8f2dc0e47d7304c9f1e
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Übersicht: Failovergruppen und aktive Georeplikation
 Mit der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Datenbanken am gleichen oder an verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen für Abfragen und Failover zur Verfügung, wenn ein Rechenzentrum ausgefallen oder keine Verbindung mit der primären Datenbank möglich ist. Das Failover muss durch die Anwendung des Benutzers manuell eingeleitet werden. Nach einem Failover hat die neue primäre Datenbank einen anderen Verbindungsendpunkt. 
@@ -175,7 +175,7 @@ Wie bereits erwähnt, können Gruppen für automatisches Failover (in der Vorsch
 | [Create or Update Database (createMode=Restore)](/rest/api/sql/Databases/CreateOrUpdate) |Erstellt oder aktualisiert eine primäre oder sekundäre Datenbank oder stellt diese wieder her. |
 | [Get Create or Update Database Status](/rest/api/sql/Databases/CreateOrUpdate) |Ruft den Status während eines Erstellungsvorgangs ab. |
 | [Set Secondary Database as Primary (Planned Failover)](/rest/api/sql/replicationlinks/failover) |Legt fest, welche Replikatdatenbank als primäre Replikatdatenbank verwendet wird, indem ein Failover von der aktuellen primären Replikatdatenbank durchgeführt wird. |
-| [Set Secondary Database as Primary (Unplanned Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks#failoverallowdataloss) |Legt fest, welche Replikatdatenbank als primäre Replikatdatenbank verwendet wird, indem ein Failover von der aktuellen primären Replikatdatenbank durchgeführt wird. Bei diesem Vorgang können Daten verloren gehen. |
+| [Set Secondary Database as Primary (Unplanned Failover)](/rest/api/sql/replicationlinks/failoverallowdataloss) |Legt fest, welche Replikatdatenbank als primäre Replikatdatenbank verwendet wird, indem ein Failover von der aktuellen primären Replikatdatenbank durchgeführt wird. Bei diesem Vorgang können Daten verloren gehen. |
 | [Get Replication Link](/rest/api/sql/replicationlinks/get) |Ruft eine spezifische Replikationsverknüpfung für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo_replication_links“ sichtbar sind. |
 | [Replication Links - List By Database](/rest/api/sql/replicationlinks/listbydatabase) | Ruft alle Replikationsverknüpfungen für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo_replication_links“ sichtbar sind. |
 | [Delete Replication Link](/rest/api/sql/databases/delete) | Löscht einen Datenbankreplikationslink. Kann nicht während eines Failovers verwendet werden. |

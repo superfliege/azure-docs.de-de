@@ -1,6 +1,6 @@
 ---
-title: Gewichteter Roundrobin-verkehrsroutingmethode mit Azure Traffic Manager konfigurieren | Microsoft Docs
-description: "In diesem Artikel wird erläutert, wie Lastenausgleich des Datenverkehrs über eine Roundrobin-Methode in Traffic Manager"
+title: "Konfigurieren der gewichteten Roundrobin-Routingmethode für Datenverkehr mit Azure Traffic Manager | Microsoft Docs"
+description: "In diesem Artikel wird der Lastenausgleich des Datenverkehrs mit einer Roundrobinmethode in Traffic Manager erläutert."
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -15,43 +15,43 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
 ms.openlocfilehash: 7aa4c9120d44ff1b3e59a57090ea04e3f8021fc4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurieren Sie die gewichtete verkehrsroutingmethode in Traffic Manager
+# <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurieren der gewichteten Routingmethode für Datenverkehr in Traffic Manager
 
-Ein allgemeines Datenverkehr routing-Methode-Muster ist stehen eine Reihe identischer Endpunkte, z. B. Cloud-Dienste und Websites, und Datenverkehr im Roundrobin-Verfahren an die einzelnen gesendet. Die folgenden Schritte beschreiben, wie diese Art von verkehrsroutingmethode konfigurieren.
+Ein gängiges Muster für das Routing von Datenverkehr besteht darin, eine Reihe identischer Endpunkte (die Clouddienste und Websites umfassen) bereitzustellen und Datenverkehr im Roundrobin-Verfahren an die einzelnen Endpunkte zu senden. Die folgenden Schritte beschreiben, wie diese Routingmethodentyp für Datenverkehr konfiguriert wird.
 
 > [!NOTE]
-> Azure-Websites bieten bereits Roundrobin-Lastenausgleichsfunktionen für Websites in einem Rechenzentrum (auch bekannt als "Region"). Traffic Manager ermöglicht Ihnen die Angabe von Roundrobin-Routingmethode für Websites in verschiedenen Datencentern.
+> Beachten Sie, dass Azure Websites bereits Roundrobin-Lastenausgleichsfunktionen für Websites in einem Rechenzentrum (auch als „Region“ bezeichnet) zur Verfügung stellt. Traffic Manager ermöglicht das Angeben von Routingmethoden für Roundrobin-Datenverkehr für Websites in verschiedenen Datencentern.
 
-## <a name="to-configure-the-weighted-traffic-routing-method"></a>So konfigurieren Sie die gewichtete datenverkehrrouting-Methode
+## <a name="to-configure-the-weighted-traffic-routing-method"></a>So konfigurieren Sie die gewichtete Routingmethode für Datenverkehr
 
-1. Über einen Browser und melden Sie sich bei der [Azure-Portal](http://portal.azure.com). Wenn Sie ein Konto noch nicht haben, registrieren Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free/). 
-2. Suchen Sie in das Portal Suchleiste den **Traffic Manager-Profile** , und klicken Sie dann auf den Profilnamen, die die Routingmethode für konfiguriert werden soll.
-3. In der **Traffic Manager-Profil** Blatt, stellen Sie sicher, dass die Cloud-Dienste und Websites, die Sie in Ihre Konfiguration einschließen möchten, vorhanden sind.
-4. In der **Einstellungen** auf **Konfiguration**, und klicken Sie in der **Konfiguration** Blatt vollständige wie folgt:
-    1. Für **Datenverkehr Routingeinstellungen Methode**, stellen Sie sicher, dass die datenverkehrrouting-Methode ist **Weighted**. Wenn sie nicht der Fall ist, klicken Sie auf **Weighted** aus der Dropdownliste aus.
-    2. Legen Sie die **Monitor endpunkteinstellungen** identisch ist, damit alle jeden Endpunkt in diesem Profil wie folgt:
-        1. Wählen Sie das entsprechende **Protokoll**, und geben Sie die **Port** Anzahl. 
-        2. Für **Pfad** Geben Sie einen Schrägstrich  */* . Um Endpunkte zu überwachen, müssen Sie einen Pfad und Dateinamen angeben. Ein Schrägstrich "/" ein gültiger Eintrag für den relativen Pfad und bedeutet, dass die Datei im Stammverzeichnis (Standardwert) ist.
-        3. Klicken Sie am oberen Rand der Seite, auf **speichern**.
-5. Testen Sie die Änderungen in Ihrer Konfiguration wie folgt:
-    1.  Klicken Sie in das Portal Suchleiste den Traffic Manager-Profilnamen suchen, und klicken Sie auf die Traffic Manager-Profil in den Ergebnissen, angezeigt.
-    2.  In der **Traffic Manager** Blatt ein Profil erstellen, klicken Sie auf **Übersicht**.
-    3.  Die **Traffic Manager-Profil** Blatt zeigt der DNS-Name des neu erstellten Traffic Manager-Profil an. Dies kann von Clients (z. B. durch Navigieren Sie mithilfe eines Webbrowsers) verwendet werden, an dem richtigen Endpunkt weitergeleitet werden, die durch den routing Typ bestimmt. In diesem Fall werden alle Anforderungen weitergeleitet jeder Endpunkt im Round-Robin.
-6. Sobald Traffic Manager-Profil arbeitet, bearbeiten Sie den DNS-Eintrag auf dem autoritativen DNS-Server so, dass Ihre Unternehmensdomäne dem Traffic Manager-Domänennamen verweist.
+1. Melden Sie sich in einem Browser beim [Azure-Portal](http://portal.azure.com) an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free/) registrieren. 
+2. Suchen Sie auf der Suchleiste des Portals die **Traffic Manager-Profile**, und klicken Sie dann auf den Namen des Profils, für das Sie die Routingmethode konfigurieren möchten.
+3. Stellen Sie auf dem Blatt **Traffic Manager-Profil** sicher, dass die Clouddienste sowie die Websites, die Ihre Konfiguration beinhalten soll, vorhanden sind.
+4. Klicken Sie im Abschnitt **Einstellungen** auf **Konfiguration**, und nehmen Sie auf dem Blatt **Konfiguration** die folgenden Einstellungen vor:
+    1. Überprüfen Sie in den Einstellungen der **Routingmethode für Datenverkehr**, ob die Routingmethode für Datenverkehr **Weighted** ist. Klicken Sie andernfalls in der Dropdownliste auf **Weighted** .
+    2. Legen Sie die **Überwachungseinstellungen für Endpunkt** für alle Endpunkte in diesem Profil wie folgt identisch fest:
+        1. Wählen Sie das entsprechende **Protokoll** aus, und geben Sie die Nummer für den **Port** an. 
+        2. Geben Sie unter **Pfad** einen Schrägstrich */* ein. Sie müssen einen Pfad und einen Dateinamen angeben, um Endpunkte zu überwachen. Ein Schrägstrich „/“ ist ein gültiger Eintrag für den relativen Pfad und bedeutet, dass sich die Datei im Stammverzeichnis (Standardwert) befindet.
+        3. Klicken Sie oben auf der Seite auf **Speichern**.
+5. Testen Sie wie folgt die Änderungen in Ihrer Konfiguration:
+    1.  Suchen Sie auf der Suchleiste des Portals nach dem Namen des Traffic Manager-Profils, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
+    2.  Klicken Sie auf dem Blatt **Traffic Manager-Profil** auf **Übersicht**.
+    3.  Auf dem Blatt **Traffic Manager-Profil** wird der DNS-Name des neu erstellten Traffic Manager-Profils angezeigt. Dieser kann von beliebigen Clients (etwa durch Navigation in einem Webbrowser) für das Routing zum richtigen Endpunkt nach Maßgabe des Routingtyps verwendet werden. In diesem Fall werden alle Anforderungen in einem Roundrobinverfahren an die einzelnen Endpunkte weitergeleitet.
+6. Sobald das Traffic Manager-Profil funktionsfähig ist, bearbeiten Sie den DNS-Eintrag auf dem autoritativen DNS-Server, damit Ihre Unternehmensdomäne auf den Namen der Traffic Manager-Domäne verweisen kann.
 
-![Konfigurieren von gewichteten verkehrsroutingmethode mit Traffic Manager][1]
+![Konfigurieren der gewichteten Routingmethode für Datenverkehr mit Traffic Manager][1]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [Priorität Datenverkehr Routingmethode](traffic-manager-configure-priority-routing-method.md).
-- Erfahren Sie mehr über [Leistung Datenverkehr Routingmethode](traffic-manager-configure-performance-routing-method.md).
-- Erfahren Sie mehr über [geografischen Routingmethode](traffic-manager-configure-geographic-routing-method.md).
-- Erfahren Sie, wie [Traffic Manager-testeinstellungen](traffic-manager-testing-settings.md).
+- Informationen zur [prioritätsbasierten Routingmethode für Datenverkehr](traffic-manager-configure-priority-routing-method.md).
+- Informationen zur [leistungsorientierten Routingmethode für Datenverkehr](traffic-manager-configure-performance-routing-method.md).
+- Informationen zur [geografischen Routingmethode](traffic-manager-configure-geographic-routing-method.md).
+- Informationen zum [Testen von Traffic Manager-Einstellungen](traffic-manager-testing-settings.md).
 
 <!--Image references-->
 [1]: ./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-routing-method.png

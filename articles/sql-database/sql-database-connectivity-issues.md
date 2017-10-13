@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/13/2017
 ms.author: daleche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: ae081fc0432e36bf9f4d4f06f289386ddce37990
-ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 5260d6afd24ae0a9c60ee609b54f04bf901f219d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>Durchführen der Problembehandlung, Diagnose und Verhinderung von SQL-Verbindungsfehlern und vorübergehenden Fehlern für SQL-Datenbank
 In diesem Artikel wird beschrieben, wie Sie Verbindungsausfälle und vorübergehende Fehler verhindern, behandeln, diagnostizieren und beheben, die bei Ihrer Clientanwendung während der Interaktion mit Azure SQL-Datenbank auftreten. Erfahren Sie, wie Sie die Wiederholungslogik konfigurieren, die Verbindungszeichenfolge erstellen und andere Verbindungseinstellungen anpassen.
@@ -337,19 +336,19 @@ Die folgenden EntLib60-Klassen sind besonders nützlich für Wiederholungslogik.
 
 *Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**:*
 
-* **RetryPolicy** 
+* **RetryPolicy**
   
-  * **ExecuteAction** 
-* **ExponentialBackoff** 
-* **SqlDatabaseTransientErrorDetectionStrategy** 
-* **ReliableSqlConnection** 
+  * **ExecuteAction**
+* **ExponentialBackoff**
+* **SqlDatabaseTransientErrorDetectionStrategy**
+* **ReliableSqlConnection**
   
-  * **ExecuteCommand** 
+  * **ExecuteCommand**
 
 Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport**:
 
-* **AlwaysTransientErrorDetectionStrategy** 
-* **NeverTransientErrorDetectionStrategy** 
+* **AlwaysTransientErrorDetectionStrategy**
+* **NeverTransientErrorDetectionStrategy**
 
 Unter folgenden Links finden Sie weitere Informationen zu EntLib60:
 
@@ -447,5 +446,4 @@ public bool IsTransient(Exception ex)
 * Informationen zur Problembehandlung bei anderen häufigen Problemen bei der Verbindung mit Azure SQL-Datenbank erhalten Sie unter [Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank](sql-database-troubleshoot-common-connection-issues.md).
 * [SQL Server-Verbindungspooling (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)
 * [*Retrying* ist eine Apache 2.0-lizenzierte Allzweckbibliothek für Wiederholungen, die in **Python** geschrieben wurde und das Hinzufügen von Wiederholungsverhalten zu praktisch jeglichen Elementen vereinfacht.](https://pypi.python.org/pypi/retrying)
-
 

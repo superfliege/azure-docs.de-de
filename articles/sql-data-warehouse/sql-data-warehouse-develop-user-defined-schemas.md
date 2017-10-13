@@ -16,10 +16,10 @@ ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 ms.openlocfilehash: dfb58956ad6637cf0f50b4c052ab98fb7c26139d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="user-defined-schemas-in-sql-data-warehouse"></a>Benutzerdefinierte Schemas in SQL Data Warehouse
 Herkömmliche Data Warehouses verwenden häufig separate Datenbanken, um Anwendungsgrenzen auf Basis von Workload, Domäne oder Sicherheit zu erstellen. Ein herkömmliches Data Warehouse in SQL Server kann z. B. eine Stagingdatenbank, eine Data Warehouse-Datenbank und einige Data Mart-Datenbanken enthalten. In dieser Topologie funktioniert jede Datenbank als Workload und Sicherheitsgrenze in der Architektur.

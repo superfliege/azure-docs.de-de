@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: e06c73c2c00b27178f8431b83b5c5a42110b6b1e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer – Leitfaden zur Problembehandlung
 
 Bei der Vorschauversion von Microsoft Azure Storage Explorer handelt es sich um eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können. Die App kann mit Storage-Konten verbunden werden, die in Azure, unabhängigen Clouds und Azure Stack gehostet werden.
@@ -182,4 +180,3 @@ Wenn sich das Problem durch keine dieser Lösungen beheben lässt, übermitteln 
 Klicken Sie dazu auf das Menü **Hilfe** und dann auf **Feedback senden**.
 
 ![Feedback](./media/storage-explorer-troubleshooting/4022503_en_1.png)
-

@@ -8,14 +8,12 @@ ms.author: cbrooks
 ms.date: 08/18/2017
 ms.topic: article
 ms.service: storage
+ms.openlocfilehash: 1a489f199bcc955fd14e82d16670d854305b00c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: a68d5c4ee8ad69cd888765a96566a7ca6c13cff3
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-preview"></a>Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt (Vorschauversion)
 
 Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel abonnieren Sie mithilfe der Azure-Befehlszeilenschnittstelle Blob Storage-Ereignisse und lösen das Ereignis aus, um das Ergebnis anzuzeigen. 
@@ -145,4 +143,3 @@ Sie haben gelernt, wie Sie Themen und Ereignisabonnements erstellen. Nun können
 
 - [Reacting to Blob storage events (preview)](storage-blob-event-overview.md) (Reagieren auf Blob Storage-Ereignisse (Vorschauversion))
 - [An introduction to Azure Event Grid](../../event-grid/overview.md) (Einführung in Azure Event Grid)
-

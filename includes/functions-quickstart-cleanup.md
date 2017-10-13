@@ -1,5 +1,5 @@
-Andere Schnellstarts in dieser Auflistung bauen auf diesem Schnellstart. Wenn Sie weiterhin auf nachfolgende Schnellstarts oder die Lernprogramme verwenden möchten, führen Sie Bereinigen von Ressourcen erstellt, die in diesem Schnellstart nicht gestartet werden. 
+Andere Schnellstarts dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts oder Tutorials fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. 
 
-Wenn Sie nicht beabsichtigen, um den Vorgang fortzusetzen, klicken Sie auf die **Ressourcengruppe** für die Funktion-app in das Portal, und klicken Sie dann auf **löschen**. 
+Wenn Sie den Vorgang nicht fortsetzen möchten, klicken Sie auf die **Ressourcengruppe** für die Funktionen-App im Portal und dann auf **Löschen**. 
 
-![Wählen Sie die Ressourcengruppe aus der Funktion app gelöscht.](./media/functions-quickstart-cleanup/functions-app-delete-resource-group.png)
+![Wählen Sie die Ressourcengruppe aus, die aus der Funktionen-App gelöscht werden soll.](./media/functions-quickstart-cleanup/functions-app-delete-resource-group.png)

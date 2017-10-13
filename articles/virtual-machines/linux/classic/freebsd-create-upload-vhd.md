@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: huishao
+ms.openlocfilehash: 0010e01d4333b96696680ec6fbbeee74b17f46a3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 918f454784a9676297077c2e94c3e49ab2872d2f
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-upload-a-freebsd-vhd-to-azure"></a>Erstellen und Hochladen einer FreeBSD-VHD in Azure
 In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit FreeBSD-Betriebssystem erstellen und hochladen. Nach dem Hochladen können Sie sie als eigenes Image verwenden, um einen virtuellen Computer (Virtual Machine, VM) in Azure zu erstellen.
@@ -207,4 +206,3 @@ Nach dem Hochladen der VHD-Datei können Sie sie als Image zu der Ihrem Abonneme
 5. Nach Abschluss der Bereitstellung sehen Sie, dass Ihr virtueller FreeBSD-Computer in Azure ausgeführt wird.
 
     ![FreeBSD-Image in Azure](./media/freebsd-create-upload-vhd/freebsdimageinazure.png)
-

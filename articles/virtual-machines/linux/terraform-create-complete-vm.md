@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: echuvyrov
-ms.translationtype: HT
-ms.sourcegitcommit: e05028ad46ef6ec2584cd2d3f4843cf38bb54f9e
 ms.openlocfilehash: a4a418a3b277d41b62aa049941a4c65e3bb82808
-ms.contentlocale: de-de
-ms.lasthandoff: 09/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Erstellen einer vollständigen Linux-VM-Infrastruktur in Azure mit Terraform
 Mit Terraform können Sie vollständige Infrastrukturbereitstellungen in Azure definieren und erstellen. Dazu lassen sich Terraform-Vorlagen in einem für Menschen lesbaren Format erstellen, die Azure-Ressourcen konsistent und reproduzierbar erstellen und konfigurieren. In diesem Artikel wird gezeigt, wie Sie eine vollständige Linux-Umgebung und die unterstützenden Ressourcen mit Terraform erstellen. Hier erfahren Sie auch, wie Sie [Terraform installieren und konfigurieren](terraform-install-configure.md).
 

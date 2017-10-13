@@ -10,7 +10,7 @@ articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-powershell
 articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-rest-api.md
 
 -->
-Sie können erhöhen oder verringern Sie die Compute durch Anpassen des Data Warehouse-Einheiten (DWUs). Der Standardwert ist 400 DWUs. Serverdienste linear, wenn die Erhöhung der DWUs zu erhöhen. Z. B. Ändern der DWUs von 400 800 wird double die Serverressourcen. 
+Sie können die Computeressourcen durch Anpassen der Data Warehouse-Einheiten (DWUs) erhöhen oder verringern. Der Standardwert beträgt 400 DWUs. Computeressourcen steigen linear mit der Zunahme der DWUs. Beispielsweise werden die Computeressourcen bei Zunahme der DWUs von 400 auf 800 verdoppelt. 
 
-Eine Liste der aktuellen DWU-Einstellungen, finden Sie in der Servicelevel-Zielpunkt [Service Kapazitätsgrenzen](../articles/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
+Eine Liste der aktuellen DWU-Einstellungen finden Sie im Servicelevel-Zielpunkt in [Kapazitätsgrenzen von SQL Data Warehouse](../articles/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 

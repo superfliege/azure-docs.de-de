@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: billgib; sstein
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: a27a65627fecf35b59122110250a40c6fe8077b5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Ausführen von Ad-hoc-Analyseabfragen für mehrere Azure SQL-Datenbanken
 
@@ -193,4 +192,3 @@ Probieren Sie das [Tutorial zu Mandantenanalysen](sql-database-saas-tutorial-ten
 
 * Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastische Abfrage](sql-database-elastic-query-overview.md)
-

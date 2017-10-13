@@ -10,16 +10,16 @@ ms.assetid: 41d63a97-37db-4e40-b652-77c2fd1c09b7
 ms.service: sql-database
 ms.custom: load & move data
 ms.devlang: NA
-ms.date: 06/15/2017
+ms.date: 10/11/2017
 ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.openlocfilehash: faa567ec615a07da8633629fc98e3454c84a8f5f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.openlocfilehash: 4427b74f205dcd2eabf825bbfc345279dc303f96
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportieren einer Azure SQL-Datenbank in eine BACPAC-Datei
 
@@ -27,7 +27,7 @@ Wenn Sie eine Datenbank zur Archivierung oder zum Verschieben auf eine andere Pl
 
 > [!IMPORTANT] 
 > Der automatisierte Export von Azure SQL-Datenbanken wurde am 1. März 2017 eingestellt. Sie können die [langfristige Sicherungsaufbewahrung](sql-database-long-term-retention.md
-) oder [Azure Automation](https://github.com/Microsoft/azure-docs-pr/blob/2461f706f8fc1150e69312098640c0676206a531/articles/automation/automation-intro.md) zum regelmäßigen Archivieren von SQL-Datenbanken mithilfe von PowerShell nach einem Zeitplan Ihrer Wahl verwenden. Als Beispiel Sie das [PowerShell-Beispielskript](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) aus GitHub herunterladen.
+) oder [Azure Automation](https://github.com/Microsoft/azure-docs/blob/2461f706f8fc1150e69312098640c0676206a531/articles/automation/automation-intro.md) zum regelmäßigen Archivieren von SQL-Datenbanken mithilfe von PowerShell nach einem Zeitplan Ihrer Wahl verwenden. Als Beispiel Sie das [PowerShell-Beispielskript](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) aus GitHub herunterladen.
 >
 
 ## <a name="considerations-when-exporting-an-azure-sql-database"></a>Überlegungen beim Exportieren einer Azure SQL-Datenbank

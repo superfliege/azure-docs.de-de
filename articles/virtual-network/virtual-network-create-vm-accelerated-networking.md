@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 449425189a3b42dcb2c31316c1c8e38fac69d761
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.openlocfilehash: 2e887230a102f5c6289ca2eec0e4700a0e1fdfde
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="create-a-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb
 
@@ -52,7 +52,7 @@ Die folgenden Einschränkungen gelten für die Verwendung dieser Funktion:
 * **VM-Größe:** Allzweck- und für Computezwecke optimierte Instanzgrößen mit mindestens acht Kernen. Weitere Informationen finden Sie in den Artikeln zu VM-Größen von [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Die Anzahl von unterstützten VM-Instanzgrößen wird in Zukunft erweitert werden.
 * **Bereitstellung nur über Azure Resource Manager (ARM):** Beschleunigter Netzwerkbetrieb ist für die Bereitstellung über ASM/RDFE nicht verfügbar.
 
-Änderungen an diesen Einschränkungen werden auf der Seite mit [Updates für virtuelle Azure-Netzwerke](https://azure.microsoft.com/updates/accelerated-networking-in-preview) bekanntgegeben.
+Änderungen an diesen Einschränkungen werden auf der Seite mit [Updates für virtuelle Azure-Netzwerke](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview/) bekanntgegeben.
 
 ## <a name="create-a-windows-vm"></a>Erstellen eines virtuellen Windows-Computers
 Sie können das Azure-Portal oder Azure [PowerShell](#windows-powershell) verwenden, um die VM zu erstellen.

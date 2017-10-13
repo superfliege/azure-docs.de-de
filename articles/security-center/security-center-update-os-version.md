@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2016
 ms.author: terrylan
 ms.openlocfilehash: ce0d178914907750e5da59f223a4b1e04b9bb6fb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-os-version-in-azure-security-center"></a>Aktualisieren der Betriebssystemversion in Azure Security Center
 Für virtuelle Computer in Clouddiensten empfiehlt Azure Security Center die Aktualisierung des Betriebssystems, falls eine neuere Version zur Verfügung steht.  Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden.

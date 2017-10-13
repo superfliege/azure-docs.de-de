@@ -1,26 +1,26 @@
 ### <a name="prerequisites"></a>Voraussetzungen
 * Ein Twilio-Konto
-* Eine überprüfte Twilio-Telefonnummer, die SMS empfangen kann
-* Eine überprüfte Twilio-Telefonnummer, die SMS senden können
+* Eine verifizierte Twilio-Telefonnummer, die SMS empfangen kann
+* Eine verifizierte Twilio-Telefonnummer, die SMS senden kann
 
 > [!NOTE]
-> Wenn Sie ein Testabonnement Twilio-Konto verwenden, können nur SMS zu senden **überprüft** Telefonnummern.  
+> Wenn Sie ein Twilio-Testkonto verwenden, können Sie SMS nur an **verifizierte** Telefonnummern senden.  
 > 
 > 
 
-Bevor Sie Ihre Twilio-Konto in einer Logik-app verwenden können, müssen Sie die Logik-app für die Verbindung mit Ihrem Twilio-Konto autorisieren. Glücklicherweise können Sie problemlos aus in der Logik-app im Azure-Portal vorgehen. 
+Bevor Sie Ihr Twilio-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem Twilio-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen. 
 
-Es folgen die Schritte zum Autorisieren der Logik-app für die Verbindung mit Ihrem Twilio-Konto:
+Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem Twilio-Konto:
 
-1. Wählen Sie zum Erstellen einer Verbindungs mit Twilio, in der Logik-app-Designer **Anzeigen von Microsoft verwalteten APIs** in der Dropdownliste aus und geben Sie dann *Twilio* in das Suchfeld. Wählen Sie den Trigger oder die Aktion an, die Sie verwenden möchten, müssen:  
+1. Um eine Verbindung mit Twilio herzustellen, wählen Sie im Logik-App-Designer in der Dropdownliste **Mit Microsoft verwaltete APIs anzeigen** aus, und geben Sie dann *Twilio* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:   
    ![](./media/connectors-create-api-twilio/twilio-0.png)
-2. Wenn Sie alle Verbindungen mit Twilio, bevor Sie erstellt haben, werden Sie aufgefordert erhalten Ihre Twilio-Anmeldeinformationen bereitstellen. Diese Anmeldeinformationen werden verwendet, um Ihre Logik-app für die Verbindung autorisieren und einfacher Zugriff auf Ihre Twilio-Konto:  
+2. Wenn Sie noch keine Verbindungen mit Twilio hergestellt haben, werden Sie aufgefordert, Ihre Twilio-Anmeldeinformationen anzugeben. Mit diesen Anmeldeinformationen wird Ihre Logik-App autorisiert, eine Verbindung mit Ihrem Twilio-Konto herzustellen und auf dessen Daten zuzugreifen:  
    ![](./media/connectors-create-api-twilio/twilio-1.png)  
-3. Sie müssen die **Twilio-Konto-Id** und **Twilio-Zugriffstoken** über das Dashboard in Twilio so melden Sie sich mit Ihrem Twilio-Konto jetzt, sich zu beanspruchen diese zwei Angaben:  
+3. Sie benötigen die **Twilio-Konto-ID** und das **Twilio-Zugriffstoken** vom Dashboard in Twilio. Melden Sie sich daher jetzt bei Ihrem Twilio-Konto an, und notieren Sie sich diese Daten:  
    ![](./media/connectors-create-api-twilio/twilio-2.png)  
-4. Twilio und Logik-apps verwenden unterschiedliche Namen, um diese zwei Angaben zu identifizieren. Hier ist, wie sie zum Dialogfeld "Logik-apps" zugeordnet werden müssen:![](./media/connectors-create-api-twilio/twilio-3.png)  
-5. Wählen Sie die **Verbindung erstellen** Schaltfläche:  
+4. Twilio und Logik-Apps verwenden unterschiedliche Bezeichnungen für diese beiden Angaben. So ordnen Sie die Daten im Logik-Apps-Dialogfeld richtig zu: ![](./media/connectors-create-api-twilio/twilio-3.png)  
+5. Klicken Sie auf die Schaltfläche **Verbindung erstellen**:  
    ![](./media/connectors-create-api-twilio/twilio-4.png)
-6. Beachten Sie, dass die Verbindung erstellt wurde, und Sie können nun mit den anderen Schritten in der Logik-app zu fortfahren:  
+6. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:   
    ![](./media/connectors-create-api-twilio/twilio-5.png)
 
