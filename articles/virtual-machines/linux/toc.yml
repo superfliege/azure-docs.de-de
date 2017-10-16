@@ -247,6 +247,7 @@
             - name: Installieren von NVIDIA-GPU-Treibern
               href: n-series-driver-setup.md
     - name: Verwalten von Speicher
+      href: about-disks-and-vhds.md
       items:
         - name: Informationen zu Managed Disks
           href: managed-disks-overview.md
