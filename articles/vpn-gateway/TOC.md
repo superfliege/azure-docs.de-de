@@ -16,9 +16,8 @@
 ## Konfigurieren von Site-to-Site-Verbindungen
 ### [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
-### [Azure-CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
+### [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure-Portal (klassisch)](vpn-gateway-howto-site-to-site-classic-portal.md)
-### [Klassisches Portal (klassisch)](vpn-gateway-site-to-site-create.md)
 
 ## Konfigurieren von Point-to-Site-Verbindungen – native Azure-Zertifikatauthentifizierung
 ### Konfigurieren einer P2S-VPN-Verbindung
@@ -39,7 +38,7 @@
 ## Konfigurieren von VNet-zu-VNet-Verbindungen
 ### [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
-### [Azure-CLI](vpn-gateway-howto-vnet-vnet-cli.md)
+### [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
 ### [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 ## Konfigurieren einer VNet-zu-VNet-Verbindung zwischen Bereitstellungsmodellen
 ### [Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -57,13 +56,14 @@
 ### [Azure PowerShell](vpn-gateway-activeactive-rm-powershell.md)
 ## Konfigurieren von BGP für ein VPN-Gateway
 ### [Azure PowerShell](vpn-gateway-bgp-resource-manager-ps.md)
+### [Azure-Befehlszeilenschnittstelle](bgp-how-to-cli.md)
 ## Konfigurieren der Tunnelerzwingung
 ### [Azure PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [Azure PowerShell (klassisch)](vpn-gateway-about-forced-tunneling.md)
 ## Ändern der Einstellungen des lokalen Netzwerkgateways
 ### [Azure-Portal](vpn-gateway-modify-local-network-gateway-portal.md)
 ### [Azure PowerShell](vpn-gateway-modify-local-network-gateway.md)
-### [Azure-CLI](vpn-gateway-modify-local-network-gateway-cli.md)
+### [Azure-Befehlszeilenschnittstelle](vpn-gateway-modify-local-network-gateway-cli.md)
 ## [Überprüfen einer VPN Gateway-Verbindung](vpn-gateway-verify-connection-resource-manager.md)
 ## [Zurücksetzen einer VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md)
 ## Löschen eines VPN-Gateways
@@ -81,6 +81,8 @@
 ### [Point-to-Site-Verbindungsproblem](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
 ### [Site-to-Site-Verbindung wird zeitweilig getrennt](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [Site-to-Site-Verbindung kann nicht hergestellt werden](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
+### [Probleme mit der Application Gateway-Sitzungsaffinität](https://support.microsoft.com/help/4033827/troubleshooting-azure-application-gateway-session-affinity-issues)
+### [Konfigurieren und Überprüfen von VNET- oder VPN-Verbindungen](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
 
 # Referenz
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)

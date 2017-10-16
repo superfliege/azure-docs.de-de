@@ -19,6 +19,8 @@
       href: azure-stack-tutorial-app-service.md
 - name: Konzepte
   items:
+    - name: Überlegungen zur Planung
+      href: azure-stack-planning-considerations.md
     - name: Wartungsrichtlinie
       href: azure-stack-servicing-policy.md
     - name: Versionshinweise
@@ -37,6 +39,8 @@
           href: azure-stack-deploy.md
         - name: Bereitstellen
           href: azure-stack-run-powershell-script.md
+        - name: Installieren von PowerShell
+          href: azure-stack-powershell-configure-quickstart.md
         - name: Registrieren
           href: azure-stack-register.md
         - name: Herstellen einer Verbindung mit Azure Stack
@@ -89,6 +93,8 @@
           href: azure-stack-manage-windows-azure-pack.md
         - name: Austauschen von Hardware
           items:
+            - name: Knotenaktionen
+              href: azure-stack-node-actions.md
             - name: Austauschen des Datenträgers
               href: azure-stack-replace-disk.md
     - name: 'Sicherheit, Konformität und Identität'
@@ -133,10 +139,16 @@
               href: azure-stack-mysql-resource-provider-deploy.md
             - name: Bereitstellen eines SQL-Ressourcenanbieters
               href: azure-stack-sql-resource-provider-deploy.md
+            - name: Erstellen von SQL-Datenbanken
+              href: azure-stack-sql-resource-provider-databases.md
+            - name: Hinzufügen von Hostservern
+              href: azure-stack-sql-resource-provider-hosting-servers.md
         - name: App Service als PaaS anbieten
           items:
             - name: Übersicht über App Service in Azure Stack
               href: azure-stack-app-service-overview.md
+            - name: Kapazitätsplanung
+              href: azure-stack-app-service-capacity-planning.md
             - name: Bevor Sie beginnen
               href: azure-stack-app-service-before-you-get-started.md
             - name: Bereitstellen eines App Service-Ressourcenanbieters

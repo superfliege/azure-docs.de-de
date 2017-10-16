@@ -28,6 +28,7 @@
 ### [Festlegen von Richtlinien und Zeitplänen](devtest-lab-set-lab-policy.md)
 ### [Konfigurieren des Kostenmanagements](devtest-lab-configure-cost-management.md)
 ### [Konfigurieren von Marketplace-Images](devtest-lab-configure-marketplace-images.md)
+### [Aktivieren eines lizenzierten Image](devtest-lab-enable-licensed-images.md)
 ### [Hinzufügen von Tags zu einem Lab](devtest-lab-add-tag.md)
 
 ## [Auswählen benutzerdefinierter Images oder Formeln](devtest-lab-comparing-vm-base-image-types.md)
@@ -56,7 +57,7 @@
 ## [Skalieren des Labs](devtest-lab-scale-lab.md)
 
 # Referenz
-## [Azure-CLI](/cli/azure/lab)
+## [Azure-Befehlszeilenschnittstelle](/cli/azure/lab)
 ## [Azure PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [Automatisches Erstellen oder Ändern von Labs](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
 ## [REST-API](https://docs.microsoft.com/rest/api/dtl/)

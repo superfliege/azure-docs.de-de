@@ -1,6 +1,7 @@
 - name: Dokumentation zu virtuellen Computern für Data Science
   items: null
 - name: Übersicht
+  expanded: true
   items:
     - name: Was ist die Data Science-VM?
       href: overview.md
@@ -25,8 +26,11 @@
     - name: Verwenden einer Deep Learning-VM
       href: use-deep-learning-dsvm.md
 - name: Referenz
+  expanded: true
   items:
-    - name: Deep Learning und AI-Frameworks
+    - name: Ermitteln der DSVM
+      href: dsvm-tools-overview.md
+    - name: Deep Learning- und KI-Frameworks
       href: dsvm-deep-learning-ai-frameworks.md
     - name: ML- und Data Science-Tools
       href: dsvm-ml-data-science-tools.md

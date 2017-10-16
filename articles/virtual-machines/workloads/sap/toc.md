@@ -7,6 +7,8 @@
 ## [Installieren von SAP HANA](hana-installation.md)
 ## [Hohe Verfügbarkeit und Notfallwiederherstellung](hana-overview-high-availability-disaster-recovery.md)
 ## [Problembehandlung und Überwachung](troubleshooting-monitoring.md)
+## Anleitung
+### [HA-Einrichtung mit STONITH](ha-setup-with-stonith.md)
 # SAP HANA in Azure Virtual Machines
 ## [SAP HANA-Einzelinstanz](hana-get-started.md)
 ## [Bereitstellungshandbuch für S/4 HANA oder BW/4 HANA SAP CAL](cal-s4h.md)

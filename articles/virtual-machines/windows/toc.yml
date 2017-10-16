@@ -145,7 +145,7 @@
           href: prepare-for-upload-vhd-image.md
         - name: Verwenden eines generalisierten Images
           href: create-vm-generalized-managed.md
-        - name: Verwenden eines spezialisierten Images
+        - name: Verwenden eines speziellen Datenträgers
           href: create-vm-specialized.md
         - name: Erfassen eines virtuellen Computers als Image
           href: capture-image-resource.md

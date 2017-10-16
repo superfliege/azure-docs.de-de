@@ -53,6 +53,8 @@
               href: log-analytics-azure-vm-extension.md
             - name: Azure-Ressourcen
               href: log-analytics-azure-storage.md
+            - name: Diagnose- oder Protokolldaten aus dem Azure-Speicher
+              href: log-analytics-azure-storage-iis-table.md
             - name: Operations Manager
               href: log-analytics-om-agents.md
             - name: Konfigurations-Manager
@@ -92,6 +94,8 @@
           items:
             - name: Reguläre Ausdrücke
               href: log-analytics-log-searches-regex.md
+            - name: Arbeitsbereichsübergreifende Suchvorgänge
+              href: log-analytics-cross-workspace-search.md
         - name: Ausführen von Aktionen aus Suchergebnissen
           href: log-analytics-log-search-takeaction.md
         - name: Computergruppen
@@ -229,6 +233,10 @@
       href: /powershell/module/azurerm.operationalinsights
     - name: REST
       href: /rest/api/loganalytics
+    - name: Referenz zur Kachel „Ansicht-Designer“
+      href: log-analytics-view-designer-tiles.md
+    - name: Referenz zur Visualisierungskomponente im Ansicht-Designer
+      href: log-analytics-view-designer-parts.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

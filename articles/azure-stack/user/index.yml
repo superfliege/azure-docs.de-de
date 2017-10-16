@@ -4,7 +4,7 @@ title: Benutzerdokumentation zu Azure Stack
 metadata:
   document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
   title: 'Dokumentation für Azure Stack – Tutorials, API-Referenz'
-  description: 'Hier erfahren Sie, wie Sie mithilfe der Vorschau von Azure Stack Azure-Dienste aus Ihrem Datencenter bereitstellen. Lernen Sie Features und deren Funktionsweise in einer Proof of Concept-Umgebung kennen.'
+  description: 'Es wird beschrieben, wie Sie Azure Stack-Dienste verwenden und Apps für Azure Stack erstellen.'
   services: azure-stack
   author: carolz
   manager: carolz
@@ -12,12 +12,12 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/23/2017
+  ms.date: 10/02/2017
   ms.author: carolz
 abstract:
-  description: 'Azure Stack ist eine Hybrid Cloud-Plattform, mit der Sie Azure-Dienste aus dem Rechenzentrum Ihres Unternehmens oder Ihres Service Providers verwenden können. Als Entwickler können Sie Apps in Azure Stack erstellen. Anschließend können Sie diese Apps in Azure Stack bzw. Azure bereitstellen, oder Sie können echte Hybrid-Apps erstellen, für die die Konnektivität zwischen einer Azure Stack-Cloud und Azure genutzt wird.  Erfahren Sie, wie Sie mit unseren Schnellstarts und Tutorials Ressourcen erstellen und Apps bereitstellen.'
+  description: 'Azure Stack ist eine Hybrid Cloud-Plattform, mit der Sie Azure-Dienste aus dem Rechenzentrum Ihres Unternehmens oder Ihres Service Providers verwenden können. Als Entwickler können Sie Apps in Azure Stack erstellen. Anschließend können Sie diese Apps in Azure Stack bzw. Azure bereitstellen, oder Sie können echte Hybrid-Apps erstellen, für die die Konnektivität zwischen einer Azure Stack-Cloud und Azure genutzt wird. Erfahren Sie, wie Sie mit unseren Schnellstarts und Tutorials Ressourcen erstellen und Apps bereitstellen.<br/><br/>Wenn Sie ein Azure Stack-Betreiber sind, der die Infrastruktur verwaltet und Dienste anbietet, hilft Ihnen die <a href="/azure/azure-stack/">Dokumentation für Betreiber</a> weiter.'
 sections:
-  - title: Schnellstart
+  - title: Fünfminütige Schnellstarts
     items:
       - type: paragraph
         text: 'Erfahren Sie, wie Sie in Azure Stack einen virtuellen Windows-Computer bereitstellen:'
@@ -56,7 +56,7 @@ sections:
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph
-        text: 'Bereitstellen von Anwendungen für Azure und Azure Stack:'
+        text: 'Es wird beschrieben, wie Sie Anwendungen für Azure und Azure Stack bereitstellen.'
       - type: list
         style: ordered
         items:
@@ -68,4 +68,4 @@ sections:
         className: cardsD
         items:
           - title: Befehlszeile
-            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">Azure Stack PowerShell</a></p>
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p>

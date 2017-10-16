@@ -15,9 +15,9 @@
 
 # Anleitung
 ## Beitreten zu einer verwalteten Domäne
-### [Verbinden einer Windows Server-VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [ mithilfe von PowerShell](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
-### [Red Hat Enterprise Linux](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+### [Virtueller Windows Server-Computer](active-directory-ds-admin-guide-join-windows-vm-portal.md)
+### [Virtueller Windows Server-Computer mit PowerShell](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
+### [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
 ### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
 ## Verwalten einer verwalteten Domäne
 ### [Verwalten einer verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
