@@ -15,26 +15,25 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
+ms.openlocfilehash: 196bf4351ebd2bf977102571de385edae6f9612b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: 3a4d6f23bd8824636b3babe208add92db6aab537
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-on-azure-stack-using-azure-cli"></a>Erstellen eines virtuellen Windows-Computers in Azure Stack mithilfe der Azure CLI
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure Stack-Ressourcen über die Befehlszeile. In dieser Anleitung wird das Erstellen einer Windows Server 2016-VM mithilfe der Azure CLI in Azure Stack beschrieben. Sobald die VM erstellt ist, stellen Sie eine Verbindung mit dem Remotedesktop her, installieren Sie IIS, und zeigen Sie die Standardwebsite an. 
 
-Bevor Sie beginnen, stellen Sie sicher, dass Ihr Azure Stack-Operator das „Windows Server 2016“-Image dem Azure Stack-Marketplace hinzugefügt hat.  
+## <a name="prerequisites"></a>Voraussetzungen 
 
-Azure Stack erfordert eine spezifische Version der Azure CLI, um die Ressourcen zu erstellen und zu verwalten. Wenn Sie die Azure CLI nicht für Azure Stack konfiguriert haben, führen Sie die Schritte zum [Installieren und Konfigurieren der Azure CLI](azure-stack-connect-cli.md) aus.
+* Stellen Sie sicher, dass Ihr Azure Stack-Bediener das Image „Windows Server 2016“ dem Azure Stack-Marketplace hinzugefügt hat.  
 
+* Azure Stack erfordert eine spezifische Version der Azure CLI, um die Ressourcen zu erstellen und zu verwalten. Wenn Sie die Azure CLI nicht für Azure Stack konfiguriert haben, führen Sie die Schritte zum [Installieren und Konfigurieren der Azure CLI](azure-stack-connect-cli.md) aus.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure Stack-Ressourcen bereitgestellt und verwaltet werden. Verwenden Sie zum Erstellen einer Ressourcengruppe den Befehl [az group create](/cli/azure/group#create). Wir haben allen Variablen in diesem Dokument Werte zugewiesen. Sie können entweder diese Werte verwenden oder einen anderen Wert zuweisen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen myResourceGroup im lokalen Speicherort erstellt.
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure Stack-Ressourcen bereitgestellt und verwaltet werden. Führen Sie im Development Kit oder im integrierten Azure Stack-System den Befehl [az group create](/cli/azure/group#create) aus, um eine Ressourcengruppe zu erstellen. Wir haben allen Variablen in diesem Dokument Werte zugewiesen. Sie können entweder diese Werte verwenden oder einen anderen Wert zuweisen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen myResourceGroup im lokalen Speicherort erstellt.
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -65,7 +64,7 @@ Standardmäßig sind für in Azure Stack bereitgestellte virtuelle Windows-Compu
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
+## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
 
 Erstellen Sie mit dem folgenden Befehl eine Remotedesktopsitzung mit dem virtuellen Computer. Ersetzen Sie die IP-Adresse mit der öffentlichen IP-Adresse des virtuellen Computers. Geben Sie nach Aufforderung die beim Erstellen des virtuellen Computers verwendeten Anmeldeinformationen ein.
 
@@ -97,7 +96,4 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Create a virtual machine by retrieving the password stored in a Key Vault](azure-stack-kv-deploy-vm-with-secret.md) (Erstellen eines virtuellen Computers durch Abrufen des im Schlüsseltresor gespeicherten Kennworts)
-
-[Introduction to Azure Stack storage](azure-stack-storage-overview.md) (Einführung zu Speicher in Azure Stack)
-
+In diesem Schnellstart haben Sie eine einfache Windows-VM bereitgestellt. Um weitere Informationen zu virtuellen Computern unter Azure Stack zu erhalten, fahren Sie mit [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md) (Überlegungen zu virtuellen Computern in Azure Stack) fort.

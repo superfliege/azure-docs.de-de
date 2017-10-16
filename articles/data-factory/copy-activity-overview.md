@@ -11,21 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 09/26/2017
 ms.author: jingwang
+ms.openlocfilehash: 784b9489911be0d9a559b6fe7795a6c2cbdb09fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 4ea7220310f63108f8ec2fa1b28ddcaf992a3a51
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
 ## <a name="overview"></a>Übersicht
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1 – Allgemein verfügbar](v1/data-factory-data-movement-activities.md)
+> * [Version 1: Allgemein verfügbare Version](v1/data-factory-data-movement-activities.md)
 > * [Version 2 – Vorschau](copy-activity-overview.md)
 
 In Azure Data Factory können Sie die Kopieraktivität verwenden, um Daten zwischen lokalen Datenspeichern und Clouddatenspeichern zu kopieren. Nach dem Kopieren können die Daten weiter transformiert und analysiert werden. Sie können die Kopieraktivität auch zum Veröffentlichen von Transformations- und Analyseergebnissen für die Verwendung für Business Intelligence (BI) und in Anwendungen verwenden.
@@ -156,7 +155,7 @@ Ausführungsdetails der Kopieraktivität und Leistungsmerkmale werden im Ausfüh
 | sqlDwPolyBase | Wenn PolyBase beim Kopieren von Daten in SQL Data Warehouse verwendet wird. | Boolean |
 | redshiftUnload | Wenn UNLOAD beim Kopieren von Daten aus Redshift verwendet wird. | Boolean |
 | hdfsDistcp | Wenn DistCp beim Kopieren von Daten aus HDFS verwendet wird. | Boolean |
-| effectiveIntegrationRuntime | Zeigt an, welche Integration Runtime verwendet wird, um die Aktivitätsausführung zu unterstützen. Dabei wird folgendes Format verwendet: <IR name> (<region for Azure IR>). | Text (Zeichenfolge) |
+| effectiveIntegrationRuntime | Zeigt an, welche Integration Runtime verwendet wird, um die Aktivitätsausführung zu unterstützen. Dabei wird folgendes Format verwendet: `<IR name> (<region if it's Azure IR>)`. | Text (Zeichenfolge) |
 | usedCloudDataMovementUnits | Die effektiven Einheiten für Clouddatenverschiebungen beim Kopieren. | Int32-Wert |
 | redirectRowPath | Pfad zum Protokoll der übersprungenen, nicht kompatible Zeilen im Blobspeicher, den Sie unter „redirectIncompatibleRowSettings“ konfigurieren. Siehe das folgende Beispiel. | Text (Zeichenfolge) |
 | billedDuration | Die Dauer, die für Datenverschiebungen in Rechnung gestellt wird. | Int32-Wert in Sekunden |
@@ -196,4 +195,3 @@ Weitere Informationen finden Sie in den folgenden Schnellstartanleitungen, Tutor
 - [Kopieren von Daten von einem Speicherort in einen anderen Speicherort im gleichen Azure-Blobspeicher](quickstart-create-data-factory-dot-net.md)
 - [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](tutorial-copy-data-dot-net.md)
 - [Kopieren von Daten aus einer lokalen SQL Server-Instanz in Azure](tutorial-hybrid-copy-powershell.md)
-

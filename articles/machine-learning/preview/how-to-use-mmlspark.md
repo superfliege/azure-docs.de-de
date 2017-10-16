@@ -9,13 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/26/2017
+ms.openlocfilehash: 6714e8ad77693f0cdefe3e40c99153299e1c72d0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 506d439dc51513138c92e05bc5855848fc60f6a1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-microsoft-machine-learning-library-for-apache-spark"></a>Verwenden der Microsoft Machine Learning-Bibliothek für Apache Spark
 
@@ -66,10 +65,14 @@ Sie können MMLSpark auch direkt mit einer [Skriptaktion](https://github.com/Azu
 
 Öffnen Sie das CLI-Fenster über Azure Machine Learning Workbench, indem Sie zum Menü „File“ navigieren und auf „Open Command Prompt“ klicken.
 
-Führen Sie im CLI-Fenster folgenden Befehl aus:
+Führen Sie im CLI-Fenster folgende Befehle aus:
 
 ```
-az ml computecontext attach --name <myhdi> --address <ssh-myhdi.azurehdinsight.net> --username <sshusername> --password <sshpwd> --type cluster
+az ml computetarget attach --name <myhdi> --address <myhdi-ssh.azurehdinsight.net> --username <sshusername> --password <sshpwd> --type cluster
+```
+
+```
+az ml experiment prepare -c <myhdi>
 ```
 
 Der Cluster ist jetzt für das Projekt als Computeziel verfügbar.
@@ -84,4 +87,3 @@ Azure Machine Learning Workbench übermittelt den Spark-Auftrag an den Cluster. 
 Informationen zur MMLSpark-Bibliothek sowie Beispiele finden Sie unter [MMLSpark-GitHub-Repository](https://github.com/Azure/mmlspark).
 
 *Apache®, Apache Spark und Spark® sind entweder eingetragene Marken oder Marken der Apache Software Foundation in den USA und/oder anderen Ländern.*
-

@@ -15,16 +15,15 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
 robots: noindex
+ms.openlocfilehash: 3a0a097afa0ef5efe11cb5044bf9ea5d399e463f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 4465694d02e56c774a5750a1455c2e66ecbda523
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1 – Allgemein verfügbar](data-factory-usql-activity.md)
+> * [Version 1: Allgemein verfügbare Version](data-factory-usql-activity.md)
 > * [Version 2 – Vorschauversion](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
@@ -208,17 +207,18 @@ Der folgende JSON-Ausschnitt definiert eine Pipeline mit einer U-SQL-Aktivität 
 
 Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Aktivität spezifisch sind. 
 
-| Eigenschaft | Beschreibung | Erforderlich |
-|:--- |:--- |:--- |
-| Typ |Die type-Eigenschaft muss auf **DataLakeAnalyticsU-SQL**festgelegt werden. |Ja |
-| scriptPath |Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. |Nein (wenn script verwendet wird) |
-| scriptLinkedService |Verknüpfter Dienst, der den Speicher, der das Skript enthält, mit der Data Factory verknüpft. |Nein (wenn script verwendet wird) |
-| script |Geben Sie anstelle von scriptPath und scriptLinkedService ein Inlineskript an. Beispiel: `"script": "CREATE DATABASE test"`. |Nein (wenn scriptPath and scriptLinkedService verwendet werden) |
-| degreeOfParallelism |Die maximale Anzahl von Knoten, die zum Ausführen des Auftrags gleichzeitig verwendet werden. |Nein |
-| priority |Bestimmt, welche der in der Warteschlange befindlichen Aufträge als erstes ausgeführt werden. Je niedriger die Zahl, desto höher die Priorität. |Nein |
-| parameters |Parameter für das U-SQL-Skript |Nein |
-| runtimeVersion | Die Runtime-Version des zu verwendenden U-SQL-Moduls | Nein | 
-| compilationMode | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen:</p> <ul><li>**Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen ausgeführt.</li><li>**Full:** Es wird die vollständige Kompilierung ausgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw.</li><li>**SingleBox:** Es wird die vollständige Kompilierung ausgeführt, wobei die TargetType-Einstellung auf „SingleBox“ festgelegt ist.</li></ul><p>Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. </p>| Nein | 
+| Eigenschaft            | Beschreibung                              | Erforderlich                                 |
+| :------------------ | :--------------------------------------- | :--------------------------------------- |
+| Typ                | Die type-Eigenschaft muss auf **DataLakeAnalyticsU-SQL**festgelegt werden. | Ja                                      |
+| linkedServiceName   | Verweis auf den Azure Data Lake Analytics-Dienst, der als verknüpfter Dienst in Data Factory registriert ist | Ja                                      |
+| scriptPath          | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. | Nein (wenn script verwendet wird)                   |
+| scriptLinkedService | Verknüpfter Dienst, der den Speicher, der das Skript enthält, mit der Data Factory verknüpft. | Nein (wenn script verwendet wird)                   |
+| script              | Geben Sie anstelle von scriptPath und scriptLinkedService ein Inlineskript an. Beispiel: `"script": "CREATE DATABASE test"`. | Nein (wenn scriptPath and scriptLinkedService verwendet werden) |
+| degreeOfParallelism | Die maximale Anzahl von Knoten, die zum Ausführen des Auftrags gleichzeitig verwendet werden. | Nein                                       |
+| priority            | Bestimmt, welche der in der Warteschlange befindlichen Aufträge als erstes ausgeführt werden. Je niedriger die Zahl, desto höher die Priorität. | Nein                                       |
+| parameters          | Parameter für das U-SQL-Skript          | Nein                                       |
+| runtimeVersion      | Die Runtime-Version des zu verwendenden U-SQL-Moduls | Nein                                       |
+| compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen:</p> <ul><li>**Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen ausgeführt.</li><li>**Full:** Es wird die vollständige Kompilierung ausgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw.</li><li>**SingleBox:** Es wird die vollständige Kompilierung ausgeführt, wobei die TargetType-Einstellung auf „SingleBox“ festgelegt ist.</li></ul><p>Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. </p> | Nein                                       |
 
 Die Skriptdefinition finden Sie unter [Skriptdefinition „SearchLogProcessing.txt“](#sample-u-sql-script) . 
 
@@ -342,6 +342,5 @@ Anstelle von hartcodierten Werten können dynamische Parameter verwendet werden.
 ```
 
 In diesem Fall werden die Eingabedateien weiterhin aus dem Ordner „/datalake/input“ abgerufen und die Ausgabedateien im Ordner „datalake/output“ generiert. Die Dateinamen sind dynamisch und basieren auf der Startzeit des Slices.  
-
 
 

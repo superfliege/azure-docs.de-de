@@ -15,18 +15,17 @@ ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: erikje
 ms.custom: mvc
+ms.openlocfilehash: 3d3f31775ae9384faeae20f108b71cea5dcc2934
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 54d16b57526241544ae50c9b8e10a8add667916b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-stack-development-kit-deployment-quickstart"></a>Schnellstart für die Azure Stack Development Kit-Bereitstellung
 
 *Gilt für: Azure Stack Development Kit*
 
-Das [Azure Stack Development Kit](azure-stack-poc.md) ist eine Test- und Entwicklungsumgebung, die sie zum Evaluieren und Demonstrieren von Azure Stack-Funktionen und -Diensten bereitstellen können. Um sie einsatzbereit zu machen, müssen Sie die Umgebungshardware vorbereiten und einige Skripts ausführen (dies nimmt mehrere Stunden in Anspruch). Anschließend können Sie sich bei den Administrator- und Mandantenportalen anmelden, um Azure Stack zu verwalten und Angebote zu testen. 
+Das [Azure Stack Development Kit](azure-stack-poc.md) ist eine Test- und Entwicklungsumgebung, die sie zum Evaluieren und Demonstrieren von Azure Stack-Funktionen und -Diensten bereitstellen können. Um sie einsatzbereit zu machen, müssen Sie die Umgebungshardware vorbereiten und einige Skripts ausführen (dies nimmt mehrere Stunden in Anspruch). Anschließend können Sie sich bei den Administrator- und Benutzerportalen anmelden, um Azure Stack zu verwalten und Angebote zu testen. 
 
 1. [**Planen Sie die Hardware, Software und das Netzwerk**](azure-stack-deploy.md). Der Computer, der das Development Kit hostet (der Development Kit-Host) muss die Hardware-, Software- und Netzwerkanforderungen erfüllen. Sie müssen auch zwischen der Verwendung von Azure Active Directory oder Active Directory-Verbunddienste (AD FS) wählen. Achten Sie darauf, diese Voraussetzungen vor dem Beginn der Bereitstellung zu erfüllen, damit der Installationsvorgang reibungslos ausgeführt wird. 
 
@@ -38,5 +37,4 @@ Das [Azure Stack Development Kit](azure-stack-poc.md) ist eine Test- und Entwick
 
 5. Wenn Azure Active Directory für Ihre Azure Stack-Bereitstellung verwendet wird, müssen Sie [Azure Stack bei Azure registrieren](azure-stack-register.md), damit Sie [Azure Marketplace-Elemente](azure-stack-download-azure-marketplace-item.md) in Azure Stack herunterladen können.
 
-Nach Abschluss dieser Schritte verfügen Sie über eine Development Kit-Umgebung mit Administrator- und Mandantenportalen. Als Nächstes können Sie [eine Verbindung mit dem Portal herstellen und sich anmelden](azure-stack-connect-azure-stack.md). Dann können Sie mit der Bereitstellung von Ressourcenanbietern, dem Erstellen von [Angeboten](azure-stack-key-features.md#regions-services-plans-offers-and-subscriptions) und dem Auffüllen von Azure Stack [Marketplace](azure-stack-marketplace.md) beginnen.
-
+Nach Abschluss dieser Schritte verfügen Sie über eine Development Kit-Umgebung mit Administrator- und Benutzerportalen. Als Nächstes können Sie [eine Verbindung mit dem Portal herstellen und sich anmelden](azure-stack-connect-azure-stack.md). Dann können Sie mit der Bereitstellung von Ressourcenanbietern, dem Erstellen von [Angeboten](azure-stack-key-features.md#regions-services-plans-offers-and-subscriptions) und dem Auffüllen von Azure Stack [Marketplace](azure-stack-marketplace.md) beginnen.

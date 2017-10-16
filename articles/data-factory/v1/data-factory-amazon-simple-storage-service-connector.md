@@ -12,20 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2017
+ms.date: 09/26/2017
 ms.author: jingwang
 robots: noindex
+ms.openlocfilehash: d2681e629d478208301091571d77a3c283a8e774
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 042b81cd2228ac87bcb6c654776a9c235920b77e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Verschieben von Daten aus Amazon Simple Storage Service mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1: Allgemein verfügbare Version](data-factory-amazon-simple-storage-service-connector.md)
-> * [Version 2: Vorschauversion](../connector-amazon-simple-storage-service.md)
+> * [Version 2 – Vorschauversion](../connector-amazon-simple-storage-service.md)
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from Amazon Simple Storage Service using Azure Data Factory](../connector-amazon-simple-storage-service.md) (Kopieren von Daten aus Amazon Simple Storage Service mit Azure Data Factory).
@@ -69,6 +68,10 @@ Ein verknüpfter Dienst verbindet einen Data Store mit einer Data Factory. Sie e
 | --- | --- | --- | --- |
 | accessKeyID |ID des geheimen Zugriffsschlüssels. |string |Ja |
 | secretAccessKey |Der geheime Zugriffsschlüssel selbst. |Verschlüsselte geheime Zeichenfolge |Ja |
+
+>[!NOTE]
+>Dieser Connector erfordert Zugriffsschlüssel für ein IAM-Konto zum Kopieren von Daten aus Amazon S3. [Temporäre Sicherheitsanmeldeinformationen](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) werden nicht unterstützt.
+>
 
 Beispiel:
 
@@ -364,4 +367,3 @@ Entsprechende Informationen finden Sie in den folgenden Artikeln:
 * Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
 * Eine Schritt-für-Schritt-Anleitung zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie im [Kopieraktivität-Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-

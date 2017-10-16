@@ -15,36 +15,35 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
+ms.openlocfilehash: de2ff697c083493b43ab0d1b5bcde532c28684e4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: d868ce59fcb09bae8c111da3892af33317003474
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-linux-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Erstellen eines virtuellen Linux-Computers mithilfe der Azure CLI in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme*
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure Stack-Ressourcen über die Befehlszeile. In diesem Schnellstart wird die Verwendung der Azure CLI zum Erstellen eines virtuellen Linux-Computers in Azure Stack ausführlich erklärt.  Nachdem der virtuelle Computer erstellt wurde, wird ein Webserver installiert und Port 80 geöffnet, um Webdatenverkehr zuzulassen.
 
-Bevor Sie beginnen, stellen Sie sicher, dass Ihr Azure Stack-Operator das „Ubuntu Server 16.04 LTS“-Image dem Azure Stack-Marketplace hinzugefügt hat.  
+## <a name="prerequisites"></a>Voraussetzungen 
 
-Azure Stack erfordert eine spezifische Version der Azure CLI, um die Ressourcen zu erstellen und zu verwalten. Wenn Sie die Azure CLI nicht für Azure Stack konfiguriert haben, führen Sie die Schritte zum [Installieren und Konfigurieren der Azure CLI](azure-stack-connect-cli.md) aus.
+* Stellen Sie sicher, dass Ihr Azure Stack-Bediener das Image „Ubuntu Server 16.04 LTS“ dem Azure Stack-Marketplace hinzugefügt hat. 
 
-Abschließend müssen Sie noch einen öffentlichen SSH-Schlüssel mit dem Namen „id_rsa.pub“ im SSH-Verzeichnis Ihres Windows-Benutzerprofils erstellen. Ausführliche Informationen zum Erstellen von SSH-Schlüsseln finden Sie unter [Gewusst wie: Verwenden von SSH-Schlüsseln mit Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md). 
+* Azure Stack erfordert eine spezifische Version der Azure CLI, um die Ressourcen zu erstellen und zu verwalten. Falls die Azure CLI nicht für Azure Stack konfiguriert ist, melden Sie sich beim [Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) (oder im Falle einer [VPN-Verbindung](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) bei einem Windows-basierten externen Client) an, und führen Sie die Schritte zum [Installieren und Konfigurieren der Azure CLI](azure-stack-connect-cli.md) aus.
 
+* Ein öffentlicher SSH-Schlüssel mit dem Namen „id_rsa.pub“ muss im SSH-Verzeichnis Ihres Windows-Benutzerprofils erstellt werden. Ausführliche Informationen zum Erstellen von SSH-Schlüsseln finden Sie unter [Gewusst wie: Verwenden von SSH-Schlüsseln mit Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md). 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure Stack-Ressourcen bereitgestellt und verwaltet werden. Verwenden Sie zum Erstellen einer Ressourcengruppe den Befehl [az group create](/cli/azure/group#create). Wir haben allen Variablen in diesem Dokument Werte zugewiesen. Sie können entweder diese Werte verwenden oder einen anderen Wert zuweisen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen myResourceGroup im lokalen Speicherort erstellt.
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure Stack-Ressourcen bereitgestellt und verwaltet werden. Führen Sie im Development Kit oder im integrierten Azure Stack-System den Befehl [az group create](/cli/azure/group#create) aus, um eine Ressourcengruppe zu erstellen. Wir haben allen Variablen in diesem Dokument Werte zugewiesen. Sie können entweder diese Werte verwenden oder einen anderen Wert zuweisen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen myResourceGroup im lokalen Speicherort erstellt.
 
 ```cli
 az group create --name myResourceGroup --location local
 ```
 
-## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
+## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
 Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm#create) eine VM. Im folgenden Beispiel wird ein virtueller Computer namens „myVM“ erstellt. Dieses Beispiel verwendet „Demouser“ als Administratorbenutzernamen und Demouser@123 als Kennwort. Aktualisieren Sie diese Werte auf andere, für Ihre Umgebung geeignete Werte. Diese Werte werden benötigt, wenn eine Verbindung mit dem virtuellen Computer hergestellt wird.
 
@@ -107,8 +106,5 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Create a virtual machine by retrieving the password stored in a Key Vault](azure-stack-kv-deploy-vm-with-secret.md) (Erstellen eines virtuellen Computers durch Abrufen des im Schlüsseltresor gespeicherten Kennworts)
-
-[Introduction to Azure Stack storage](azure-stack-storage-overview.md) (Einführung zu Speicher in Azure Stack)
-
+In dieser Schnellstartanleitung haben Sie einen einfachen virtuellen Linux-Computer bereitgestellt. Um weitere Informationen zu virtuellen Computern unter Azure Stack zu erhalten, fahren Sie mit [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md) (Überlegungen zu virtuellen Computern in Azure Stack) fort.
 

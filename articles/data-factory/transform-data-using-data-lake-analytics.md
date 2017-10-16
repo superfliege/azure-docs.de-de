@@ -13,22 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: shengc
+ms.openlocfilehash: 5e54464ceabfe1fea2af80d63e538bea6a0a50a5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f72ee8b6ef51046a64e794b17d1c389a25246358
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1: Allgemein verfügbare Version](v1/data-factory-usql-activity.md)
-> * [Version 2: Vorschauversion](transform-data-using-data-lake-analytics.md)
+> * [Version 2 – Vorschauversion](transform-data-using-data-lake-analytics.md)
 
 Eine Pipeline in einer Azure Data Factory verarbeitet Daten in verknüpften Speicherdiensten mithilfe verknüpfter Compute Services. Sie enthält eine Abfolge von Aktivitäten, wobei jede Aktivität einen bestimmten Verarbeitungsvorgang ausführt. In diesem Kapitel wird die **U-SQL-Aktivität von Data Lake Analytics** beschrieben, die ein **U-SQL**-Skript auf einem mit **Azure Data Lake Analytics** verknüpften Computedienst ausführt. 
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschauversion verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie [USQL-Aktivität in V1](v1/data-factory-usql-activity.md).
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie [USQL-Aktivität in V1](v1/data-factory-usql-activity.md).
 
 Erstellen Sie ein Azure Data Lake Analytics-Konto, bevor Sie mit einer U-SQL-Aktivität von Data Lake Analytics eine Pipeline erstellen. Weitere Informationen zu Azure Data Lake Analytics finden Sie unter [Erste Schritte mit Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
@@ -123,14 +122,14 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 | Name                | Name der Aktivität in der Pipeline     | Ja      |
 | Beschreibung         | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
 | Typ                | Für die Data Lake Analytics-U-SQL-Aktivität ist der Aktivitätstyp **DataLakeAnalyticsU-SQL**. | Ja      |
-| linkedServiceName   | Mit Azure Data Lake Analytics verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  |          |
+| linkedServiceName   | Mit Azure Data Lake Analytics verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  |Ja       |
 | scriptPath          | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. | Ja      |
 | scriptLinkedService | Verknüpfter Dienst, der den Speicher, der das Skript enthält, mit der Data Factory verknüpft. | Ja      |
 | degreeOfParallelism | Die maximale Anzahl von Knoten, die zum Ausführen des Auftrags gleichzeitig verwendet werden. | Nein       |
 | priority            | Bestimmt, welche der in der Warteschlange befindlichen Aufträge als erstes ausgeführt werden. Je niedriger die Zahl, desto höher die Priorität. | Nein       |
 | parameters          | Parameter für das U-SQL-Skript          | Nein       |
 | runtimeVersion      | Die Runtime-Version des zu verwendenden U-SQL-Moduls | Nein       |
-| compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen: **Semantic:** Es werden nur Semantik- und erforderliche Integritätsprüfungen ausgeführt.**Full**: Es wird die vollständige Kompilierung ausgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw.**SingleBox:** Es wird die vollständige Kompilierung ausgeführt, wobei die „TargetType“-Einstellung auf „SingleBox“ festgelegt ist. Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. | Nein |
+| compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen: **Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen ausgeführt. **Full:** Es wird die vollständige Kompilierung ausgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw. **SingleBox:** Es wird die vollständige Kompilierung ausgeführt, wobei die TargetType-Einstellung auf „SingleBox“ festgelegt ist. Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. | Nein |
 
 Die von Data Factory übermittelte Skriptdefinition finden Sie unter [Skriptdefinition „SearchLogProcessing.txt“](#sample-u-sql-script). 
 
@@ -199,4 +198,3 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
 * [Machine Learning-Batchausführungsaktivität](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)
-
