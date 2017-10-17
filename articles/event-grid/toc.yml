@@ -6,8 +6,12 @@
       href: overview.md
 - name: Schnellstarts
   items:
-    - name: Erstellen und Weiterleiten benutzerdefinierter Ereignisse
+    - name: Erstellen eines benutzerdefinierten Ereignisses – Azure CLI
       href: custom-event-quickstart.md
+    - name: Erstellen eines benutzerdefinierten Ereignisses – Azure PowerShell
+      href: custom-event-quickstart-powershell.md
+    - name: Erstellen eines benutzerdefinierten Ereignisses – Azure-Portal
+      href: custom-event-quickstart-portal.md
 - name: Lernprogramme
   items:
     - name: Überwachen von Änderungen an virtuellen Computern mit Logik-Apps

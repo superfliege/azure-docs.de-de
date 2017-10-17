@@ -16,6 +16,7 @@
 ### [Erstellen virtueller Computer](devtest-lab-add-vm.md)
 ### [Erstellen von anforderbaren virtuellen Computern](devtest-lab-add-claimable-vm.md)
 ### [Erstellen und Verwalten virtueller Computer mit der Azure CLI](devtest-lab-vmcli.md)
+### [Neustarten eines virtuellen Computers](devtest-lab-restart-vm.md)
 
 ## Verwenden von Umgebungen in einem Lab
 ### [Erstellen einer Umgebung](devtest-lab-create-environment-from-arm.md)
@@ -57,8 +58,8 @@
 ## [Skalieren des Labs](devtest-lab-scale-lab.md)
 
 # Referenz
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/lab)
-## [Azure PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
+## [CLI 2.0](/cli/azure/lab)
+## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [Automatisches Erstellen oder Ändern von Labs](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
 ## [REST-API](https://docs.microsoft.com/rest/api/dtl/)
 ## [Resource Manager-Vorlagen](https://github.com/Azure/azure-devtestlab/tree/master/Samples)

@@ -135,12 +135,16 @@
           href: sql-database-disaster-recovery.md
         - name: Durchführen des Notfallwiederherstellungsverfahrens
           href: sql-database-disaster-recovery-drills.md
-    - name: Laden und Verschieben von Daten
+    - name: Migrieren zu SQL-Datenbank
       items:
         - name: Migrieren einer SQL Server-Datenbank
           href: sql-database-cloud-migrate.md
         - name: T-SQL-Änderungen
           href: sql-database-transact-sql-information.md
+        - name: Verwalten von Datenbanken nach der Migration
+          href: sql-database-manage-after-migration.md
+    - name: Laden und Verschieben von Daten
+      items:
         - name: Kopieren einer Datenbank
           href: sql-database-copy.md
         - name: Importieren einer Datenbank
@@ -169,8 +173,6 @@
           href: sql-database-operate-query-store.md
         - name: Erweiterte Ereignisse
           href: sql-database-xevent-db-diff-from-svr.md
-        - name: Kompatibilitätsgrade
-          href: sql-database-compatibility-level-query-performance-130.md
         - name: Überwachen von In-Memory
           href: sql-database-in-memory-oltp-monitoring.md
     - name: Horizontales Skalieren
@@ -266,6 +268,12 @@
         - name: Regeln für virtuelle Netzwerke von PowerShell
           href: sql-database-vnet-service-endpoint-rule-powershell.md
     - name: Geschäftskontinuität
+      items:
+        - name: Konfigurieren eines Tresors – Sicherungen
+          href: sql-database-long-term-backup-retention-configure.md
+        - name: Georeplikation – Portal
+          href: sql-database-geo-replication-portal.md
+    - name: Laden und Verschieben von Daten
       items:
         - name: Laden von Daten mit BCP
           href: sql-database-load-from-csv-with-bcp.md

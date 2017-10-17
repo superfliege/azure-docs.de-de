@@ -22,6 +22,7 @@
 
 # Anleitung
 ## Planen und Entwerfen
+### [Georedundante Notfallwiederherstellung und Georeplikation](event-hubs-geo-dr.md)
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [Übersicht über das Authentifizierungs- und Sicherheitsmodell](event-hubs-authentication-and-security-model-overview.md)
 ### [Verfügbarkeit und Konsistenz](event-hubs-availability-and-consistency.md)

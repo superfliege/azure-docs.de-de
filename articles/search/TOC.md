@@ -68,7 +68,7 @@
 ### [Vorschläge](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [Facettennavigation](search-faceted-navigation.md)
 ### [Synonymvorschau](search-synonyms.md)
-
+### [Sicherheitsfilter](search-security-trimming-for-azure-search.md)
 # Referenz
 
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)

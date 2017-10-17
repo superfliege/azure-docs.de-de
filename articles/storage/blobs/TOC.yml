@@ -28,6 +28,8 @@
           href: storage-secure-access-application.md
         - name: 4 – Überwachung und Problembehandlung bei Speicher
           href: storage-monitor-troubleshoot-storage-application.md
+    - name: Suchen von unstrukturierten Daten in Cloudspeicher
+      href: storage-unstructured-search.md
 - name: Beispiele
   items:
     - name: Azure PowerShell

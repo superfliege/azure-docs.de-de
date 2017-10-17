@@ -21,6 +21,12 @@
       href: ../container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app.md
     - name: Service Fabric
       href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+- name: Konzepte
+  items:
+    - name: Containerregistrierungs-SKUs
+      href: container-registry-skus.md
+    - name: Georeplikation (Vorschau)
+      href: container-registry-geo-replication.md
 - name: Anleitungen
   items:
     - name: Push- und Pull-Vorgänge für Images
@@ -43,8 +49,8 @@
       href: /powershell/module/azurerm.containerregistry
 - name: Ressourcen
   items:
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Roadmap
+      href: 'https://aka.ms/acr/roadmap'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/container-registry/'
     - name: Regionale Verfügbarkeit

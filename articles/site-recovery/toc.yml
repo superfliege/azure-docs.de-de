@@ -51,6 +51,8 @@
       href: concepts-physical-to-azure-architecture.md
     - name: Hyper-V-zu-sekundärem-Standort-Architektur
       href: concepts-hyper-v-to-secondary-architecture.md
+    - name: Azure zu Azure – Supportmatrix
+      href: site-recovery-support-matrix-azure-to-azure.md
     - name: Lokal zu Azure – Supportmatrix
       href: site-recovery-support-matrix-to-azure.md
     - name: Lokal zu sekundärem Standort – Supportmatrix
