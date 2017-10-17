@@ -12,25 +12,17 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/30/2017
+ms.date: 10/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 9401ada519f600b0d2817f06a396e16607a24129
-ms.contentlocale: de-de
-ms.lasthandoff: 07/01/2017
-
-
+ms.openlocfilehash: 3646d14be662af0fdf80790cb53ddc581b33a146
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-<a id="get-started-with-service-bus-topics" class="xliff"></a>
-
-# Erste Schritte mit Service Bus-Themen
+# <a name="get-started-with-service-bus-topics"></a>Erste Schritte mit Service Bus-Themen
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
-
-<a id="what-will-be-accomplished" class="xliff"></a>
-
-## Ziele
 
 Dieses Tutorial enthält die folgenden Schritte:
 
@@ -40,26 +32,20 @@ Dieses Tutorial enthält die folgenden Schritte:
 4. Schreiben einer Konsolenanwendung zum Senden einer Nachricht an das Thema
 5. Schreiben einer Konsolenanwendung zum Empfangen dieser Nachricht aus dem Abonnement
 
-<a id="prerequisites" class="xliff"></a>
-
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 1. [Visual Studio 2015 oder höher](http://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2017 verwendet.
 2. Ein Azure-Abonnement.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-<a id="1-create-a-namespace-using-the-azure-portal" class="xliff"></a>
-
-## 1. Erstellen eines Namespace mithilfe des Azure-Portals
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Erstellen eines Namespace mithilfe des Azure-Portals
 
 Falls Sie bereits einen Service Bus Messaging-Namespace erstellt haben, können Sie zum Abschnitt [Erstellen eines Themas mit dem Azure-Portal](#2-create-a-topic-using-the-azure-portal) springen.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-<a id="2-create-a-topic-using-the-azure-portal" class="xliff"></a>
-
-## 2. Erstellen eines Themas mit dem Azure-Portal
+## <a name="2-create-a-topic-using-the-azure-portal"></a>2. Erstellen eines Themas mit dem Azure-Portal
 
 1. Melden Sie sich beim [Azure-Portal][azure-portal] an.
 2. Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**. (Wird **Service Bus** nicht angezeigt, klicken Sie auf **More services** (Weitere Dienste)).
@@ -74,9 +60,7 @@ Falls Sie bereits einen Service Bus Messaging-Namespace erstellt haben, können 
     ![„Neu“ wählen][createtopic3]
 6. Klicken Sie im unteren Bereich des Blatts auf **Erstellen**.
 
-<a id="3-create-a-subscription-to-the-topic" class="xliff"></a>
-
-## 3. Erstellen eines Abonnements für das Thema
+## <a name="3-create-a-subscription-to-the-topic"></a>3. Erstellen eines Abonnements für das Thema
 
 1. Klicken Sie im Bereich mit den Portalressourcen auf den Namespace, den Sie in Schritt 1 erstellt haben, und klicken Sie dann auf den Namen des Themas, das Sie in Schritt 2 erstellt haben.
 2. Klicken Sie oben im Übersichtsbereich auf das Pluszeichen neben **Abonnement**, um diesem Thema ein Abonnement hinzuzufügen.
@@ -85,30 +69,22 @@ Falls Sie bereits einen Service Bus Messaging-Namespace erstellt haben, können 
 
 3. Geben Sie einen Namen für das Abonnement ein. Behalten Sie bei den anderen Optionen die Standardwerte bei.
 
-<a id="4-send-messages-to-the-topic" class="xliff"></a>
-
-## 4. Senden von Nachrichten an das Thema
+## <a name="4-send-messages-to-the-topic"></a>4. Senden von Nachrichten an das Thema
 
 Um Nachrichten an das Thema senden zu können, erstellen wir mit Visual Studio eine C#-Konsolenanwendung.
 
-<a id="create-a-console-application" class="xliff"></a>
-
-### Erstellen einer Konsolenanwendung
+### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
 Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**.
 
-<a id="add-the-service-bus-nuget-package" class="xliff"></a>
-
-### Hinzufügen des NuGet-Pakets "Service Bus"
+### <a name="add-the-service-bus-nuget-package"></a>Hinzufügen des NuGet-Pakets "Service Bus"
 
 1. Klicken Sie mit der rechten Maustaste auf das neu erstellte Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
-2. Klicken Sie auf die Registerkarte **Durchsuchen**, suchen Sie nach **Microsoft Azure Service Bus**, und wählen Sie anschließend das Element **WindowsAzure.ServiceBus** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach dieses Dialogfeld.
+2. Klicken Sie auf die Registerkarte **Durchsuchen**, suchen Sie nach **WindowsAzure.ServiceBus**, und wählen Sie anschließend das Element **WindowsAzure.ServiceBus** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach dieses Dialogfeld.
    
     ![Auswählen eines NuGet-Pakets][nuget-pkg]
 
-<a id="write-some-code-to-send-a-message-to-the-topic" class="xliff"></a>
-
-### Schreiben von Code zum Senden einer Nachricht an das Thema
+### <a name="write-some-code-to-send-a-message-to-the-topic"></a>Schreiben von Code zum Senden einer Nachricht an das Thema
 
 1. Fügen Sie am Anfang der Datei „Program.cs“ die folgende `using`-Anweisung hinzu:
    
@@ -170,9 +146,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
    
       ![Nachrichtengröße][topic-message]
 
-<a id="5-receive-messages-from-the-subscription" class="xliff"></a>
-
-## 5. Empfangen von Nachrichten aus dem Abonnement
+## <a name="5-receive-messages-from-the-subscription"></a>5. Empfangen von Nachrichten aus dem Abonnement
 
 1. Gehen Sie wie folgt vor, um die gerade gesendeten Nachrichten zu empfangen: Erstellen Sie eine neue Konsolenanwendung, und fügen Sie einen Verweis auf das Service Bus-NuGet-Paket hinzu, ähnlich wie bei der vorherigen Absenderanwendung.
 2. Fügen Sie am Anfang der Datei „Program.cs“ die folgende `using`-Anweisung hinzu:
@@ -180,7 +154,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-3. Fügen Sie der `Main` -Methode den folgenden Code hinzu. Legen Sie die `connectionString`-Variable auf die Verbindungszeichenfolge fest, die Sie beim Erstellen des Namespace erhalten haben, und legen Sie `topicName` auf den Namen fest, den Sie beim Erstellen des Themas verwendet haben.
+3. Fügen Sie der `Main` -Methode den folgenden Code hinzu. Legen Sie die `connectionString`-Variable auf die Verbindungszeichenfolge fest, die Sie beim Erstellen des Namespace erhalten haben, und legen Sie `topicName` auf den Namen fest, den Sie beim Erstellen des Themas verwendet haben. Stellen Sie außerdem sicher, dass Sie `<your subscription name>` durch den Namen des Abonnements ersetzen, das Sie in Schritt 3 erstellt haben. 
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -233,9 +207,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
 
 Glückwunsch! Sie haben jetzt ein Thema und ein Abonnement erstellt, eine Nachricht gesendet und diese Nachricht empfangen.
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Sehen Sie sich das [GitHub-Repository mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples) an, mit denen einige erweiterte Features des Service Bus Messaging veranschaulicht werden.
 
@@ -250,4 +222,3 @@ Sehen Sie sich das [GitHub-Repository mit Beispielen](https://github.com/Azure/a
 [createtopic4]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-topic4.png
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 [azure-portal]: https://portal.azure.com
-

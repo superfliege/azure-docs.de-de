@@ -1,6 +1,1 @@
-|  | **Klassische Bereitstellung** | **Resource Manager-Bereitstellung** |
-| --- | --- | --- |
-| **Klassisches Portal** |Nicht unterstützt |Nicht unterstützt |
-| **Azure-Portal** |Nicht unterstützt |Nicht unterstützt |
-| **PowerShell** |[Artikel](../articles/expressroute/expressroute-howto-coexist-classic.md) |[Artikel](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
-
+|**Bereitstellungsmodell/Methode** | **Azure-Portal** | **PowerShell** | |---|---|---| | Resource Manager | **Nicht unterstützt** | [Artikel](../articles/expressroute/expressroute-howto-coexist-resource-manager.md)| | Klassisch | **Nicht unterstützt** | [Artikel](../articles/expressroute/expressroute-howto-coexist-classic.md) |

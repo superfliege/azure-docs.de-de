@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über die SQL-Datenbank | Microsoft Docs"
-description: "Hilfeinhalt für SQL-Datenbank (Übersicht) in Azure-portal"
+title: "Übersicht zu SQL-Datenbank | Microsoft-Dokumentation"
+description: "Enthält hilfreiche Informationen zur Übersicht über SQL-Datenbank im Azure-Portal."
 services: sql-database
 author: sewatson
 manager: lwelicki
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: b41b4b7d302b0f3c528fa424627b4446a5e2c0ca
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-database-documentation"></a>SQL-Datenbank-Dokumentation
 
@@ -28,7 +28,7 @@ Erfahren Sie, wie Sie eine SQL-Datenbank erstellen, sie mit SQL Management Studi
 
 ## <a name="step-by-step-tutorials"></a>Schritt-für-Schritt-Tutorials
 
-Informationen Sie zum Erstellen, verwalten und Migrieren von Datenbanken mithilfe der SQL-Datenbank.
+Enthält Informationen dazu, wie Sie Datenbanken per SQL-Datenbank erstellen, verwalten und migrieren.
 
 - [Erstellen und Entwerfen des Schemas für eine neue SQL-Datenbank](/azure/sql-database/sql-database-design-first-database)
 - [Migrieren einer vorhandenen SQL Server-Datenbank zur Verwendung von Azure SQL-Datenbank](/azure/sql-database/sql-database-migrate-your-sql-server-database)
@@ -49,5 +49,5 @@ Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
 
 ## <a name="more"></a>Weitere Informationen
 
-- [Besuchen Sie die Dokumentation, um mehr zu erfahren](/azure/sql-database/index)
-- [Erfahren Sie mehr über alle Azure-Dienste](https://aka.ms/j3wr7y)
+- [Weitere Informationen finden Sie in der Dokumentation](/azure/sql-database/index)
+- [Informationen zu allen Azure-Diensten](https://aka.ms/j3wr7y)

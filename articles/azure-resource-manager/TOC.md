@@ -53,18 +53,18 @@
 
 ## Verwalten
 ### [Azure PowerShell](powershell-azure-resource-manager.md)
-### [Azure-CLI](xplat-cli-azure-resource-manager.md)
+### [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
 ### [Azure-Portal](resource-group-portal.md)
 ### [REST-API](resource-manager-rest-api.md)
 ### [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md)
 ### [Verschieben von Ressourcen in neue Gruppen oder Abonnements](resource-group-move-resources.md)
+### [Organisieren von Abonnements mit Verwaltungsgruppen](../billing/billing-enterprise-mgmt-group-overview.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Governancebeispiele](resource-manager-subscription-examples.md)
 
 ## Steuern des Zugriffs
 ### Erstellen eines Dienstprinzipals
 #### [Azure PowerShell](resource-group-authenticate-service-principal.md)
-#### [Azure-CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-#### [Azure CLI 1.0](resource-group-authenticate-service-principal-cli.md)
+#### [Azure-Befehlszeilenschnittstelle](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [Azure-Portal](resource-group-create-service-principal-portal.md)
 ### [Authentifizierungs-API für den Zugriff auf Abonnements](resource-manager-api-authentication.md)
 ### [Sperren von Ressourcen](resource-group-lock-resources.md)

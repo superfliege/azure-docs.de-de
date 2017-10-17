@@ -8,59 +8,62 @@ ms.author: jehunte
 ms.date: 09/13/2017
 ms.topic: hero-article
 manager: carmonm
+ms.openlocfilehash: bfdd67ac1018f242e415da1a66d93f22bea8d054
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 5291d112c2cdf157543fe301d5a5c80f3fe561ae
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Verwalten eines virtuellen Azure-Computers mit Bestandserfassung
 
-Die Nachverfolgung des Inventars kann auf der Ressourcenseite eines virtuellen Azure-Computers für diesen Computer aktiviert werden. Diese Methode stellt eine browserbasierte Benutzeroberfläche zum Einrichten und Konfigurieren der Bestandserfassung bereit.
+Sie können die Bestandsnachverfolgung für einen virtuellen Azure-Computer auf der Ressourcenseite des virtuellen Computers aktivieren. Diese Methode stellt eine browserbasierte Benutzeroberfläche zum Einrichten und Konfigurieren der Bestandserfassung bereit.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-Wenn Sie noch nicht über einen virtuellen Azure-Computer verfügen, erstellen Sie einen [virtuellen Computer](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal), bevor Sie beginnen.
+## <a name="before-you-begin"></a>Voraussetzungen
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
+Falls Sie noch nicht über einen virtuellen Azure-Computer verfügen, können Sie einen [virtuellen Computer erstellen](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal).
 
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
-
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
+Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
 
 ## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>Aktivieren der Bestandserfassung über die Ressourcenseite des virtuellen Computers
 
-1. Wählen Sie links im Bildschirm **Virtuelle Computer** aus.
-1. Wählen Sie einen virtuellen Computer aus der Liste aus.
-1. Wählen Sie im Ressourcenmenü unterhalb von **Vorgänge** die Option **Bestand (Vorschau)** aus.
-1. Am oberen Rand der Seite wird ein Banner angezeigt, in dem Sie darüber informiert werden, dass die Lösung nicht aktiviert ist. Klicken Sie auf das Banner, um die Lösung zu aktivieren.
-1. Wählen Sie einen Log Analytics-Arbeitsbereich aus, in dem Ihre Datenprotokolle gespeichert werden sollen. Wenn für diese Region keine Arbeitsbereiche verfügbar sind, werden Sie aufgefordert, einen Standardarbeitsbereich und ein Automation-Konto zu erstellen. Klicken Sie auf **Aktivieren**, um das Onboarding Ihres Computers zu starten.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Virtuelle Computer**.
+2. Wählen Sie in der Liste mit den virtuellen Computern eine VM aus.
+3. Wählen Sie im Menü **Ressource** unter **Operations** (Vorgänge) die Option **Bestand (Vorschau)**.  
+    Am oberen Rand des Fensters wird ein Banner angezeigt, in dem Sie darüber informiert werden, dass die Lösung nicht aktiviert ist. 
+4. Wählen Sie das Banner aus, um die Lösung zu aktivieren.
+5. Wählen Sie einen Log Analytics-Arbeitsbereich aus, in dem Ihre Datenprotokolle gespeichert werden sollen.  
+    Wenn für diese Region kein Arbeitsbereich verfügbar ist, werden Sie aufgefordert, einen Standardarbeitsbereich und ein Automation-Konto zu erstellen. 
+6. Wählen Sie die Option **Aktivieren**, um das Onboarding für Ihren Computer zu starten.
 
    ![Anzeigen von Onboardingoptionen](./media/automation-vm-inventory/inventory-onboarding-options.png)  
-
-1. Sie werden in einer Statusleiste benachrichtigt, dass die Lösung aktiviert wird. Dieser Vorgang kann bis zu 15 Minuten dauern. In dieser Zeit können Sie das Blatt schließen. Wenn Sie es offen lassen, werden Sie darin informiert, sobald die Lösung aktiviert wurde. Sie können den Bereitstellungsstatus über den Benachrichtigungsbereich überwachen.
+    Sie werden in einer Statusleiste benachrichtigt, dass die Lösung aktiviert wird. Dieser Vorgang kann bis zu 15 Minuten dauern. Während dieser Zeit können Sie das Fenster schließen oder geöffnet lassen. Sie werden benachrichtigt, wenn die Lösung aktiviert wurde. Sie können den Bereitstellungsstatus über den Benachrichtigungsbereich überwachen.
 
    ![Anzeigen der Inventarlösung direkt nach dem Onboarding](./media/automation-vm-inventory/inventory-onboarded.png)
 
-1. Wenn die Bereitstellung abgeschlossen ist, wird die Statusleiste nicht mehr angezeigt. Zu diesem Zeitpunkt sammelt das System noch Bestandsdaten, und die Daten sind möglicherweise noch nicht sichtbar. Eine vollständige Sammlung der Daten kann 24 Stunden dauern.
+Nachdem die Bereitstellung abgeschlossen ist, wird die Statusleiste nicht mehr angezeigt. Es werden weiterhin Bestandsdaten gesammelt, und es kann sein, dass die Daten noch nicht sichtbar sind. Eine vollständige Sammlung der Daten kann 24 Stunden dauern.
 
 ## <a name="configure-your-inventory-settings"></a>Konfigurieren der Inventareinstellungen
 
-Standardmäßig sind Software, Windows-Dienste und Linux-Daemons für die Sammlung konfiguriert. Um auch Daten zu Windows-Registrierung und Dateien zu sammeln, konfigurieren Sie die Einstellungen der Bestandserfassung.
+Standardmäßig sind Software, Windows-Dienste und Linux-Daemons für die Sammlung konfiguriert. Konfigurieren Sie die Einstellungen der Bestandserfassung, um auch Bestandsdaten zur Windows-Registrierung und zu den Dateien zu sammeln.
 
-1. Klicken Sie in der Ansicht **Bestand (Vorschau)** auf die Schaltfläche **Einstellungen bearbeiten** am oberen Rand der Seite.
-2. Um eine neue Einstellung für die Sammlung hinzuzufügen, navigieren Sie über die Registerkarten **Windows-Registrierung**, **Windows-Dateien** und **Linux-Dateien** zu der Einstellungskategorie, die Sie hinzufügen möchten. Klicken Sie am oberen Seitenrand auf **Hinzufügen**.
-3. Details und Beschreibungen jeder Einstellungseigenschaft finden Sie auf der [Dokumentationsseite zum Inventar](https://aka.ms/configinventorydocs).
+1. Wählen Sie in der Ansicht **Bestand (Vorschau)** am oberen Rand des Fensters die Schaltfläche **Einstellungen bearbeiten**.
+2. Navigieren Sie zum Hinzufügen einer neuen Sammlungseinstellung zu der Einstellungskategorie, die Sie hinzufügen möchten, indem Sie die Registerkarten **Windows-Registrierung**, **Windows-Dateien** und **Linux-Dateien** wählen. 
+3. Wählen Sie oben im Fenster die Option **Hinzufügen**.
+4. Details und Beschreibungen der einzelnen Einstellungseigenschaften finden Sie auf der [Dokumentationsseite zur Bestandserfassung](https://aka.ms/configinventorydocs).
 
-## <a name="disconnecting-your-virtual-machine-from-management"></a>Trennen des virtuellen Computers von der Verwaltung
+## <a name="disconnect-your-virtual-machine-from-management"></a>Trennen des virtuellen Computers von der Verwaltung
 
-So trennen Sie Ihren Computer von der Bestandsverwaltung:
+Gehen Sie wie folgt vor, um Ihren virtuellen Computer aus der Bestandsverwaltung herauszunehmen:
 
-1. Klicken Sie Azure-Portal im linken Menü auf **Log Analytics**, und wählen Sie den Arbeitsbereich aus, den Sie beim Onboarding Ihres virtuellen Computers verwendet haben.
-1. Wählen Sie auf der Log Analytics-Seite im Ressourcenmenü unter der Kategorie **Arbeitsbereichsdatenquellen** die Option **Virtuelle Computer** aus. 
-1. Wählen Sie den virtuellen Computer aus, den Sie von der Liste trennen möchten. Für diesen Computer wird neben dem Text „Dieser Arbeitsbereich“ ein grünes Häkchen in der Spalte**OMS-Verbindung** angezeigt. Klicken Sie am oberen Rand der nächsten Seite auf **Trennen**, und klicken Sie im Bestätigungsdialogfeld auf **Ja**, um den Computer von der Verwaltung zu trennen.
+1. Wählen Sie im linken Bereich des Azure-Portals die Option **Log Analytics** und dann den Arbeitsbereich, den Sie beim Onboarding Ihres virtuellen Computers verwendet haben.
+2. Wählen Sie im Fenster **Log Analytics** im Menü **Ressource** unter der Kategorie **Arbeitsbereichsdatenquellen** die Option **Virtuelle Computer**. 
+3. Wählen Sie in der Liste den virtuellen Computer aus, den Sie trennen möchten. Der virtuelle Computer ist in der Spalte **OMS-Verbindung** neben **Dieser Arbeitsbereich** mit einem grünen Häkchen gekennzeichnet. 
+4. Wählen Sie oben auf der nächsten Seite die Option **Disconnect** (Trennen).
+5. Wählen Sie im Bestätigungsfenster die Option **Ja**.  
+    Mit dieser Aktion wird der Computer von der Verwaltung getrennt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Verwalten von Änderungen in Dateien und Registrierungseinstellungen finden Sie unter [Änderungsnachverfolgung](../log-analytics/log-analytics-change-tracking.md).
-* Informationen zur Verwaltung von Windows- und Paketupdates auf Ihren virtuellen Computern finden Sie unter [Updateverwaltung](../operations-management-suite/oms-solution-update-management.md).
-
+* Informationen zur Verwaltung von Änderungen in Dateien und Registrierungseinstellungen auf Ihren virtuellen Computern finden Sie unter [Nachverfolgen von Änderungen an der Software in Ihrer Umgebung mit der Change Tracking-Lösung](../log-analytics/log-analytics-change-tracking.md).
+* Informationen zur Verwaltung von Windows- und Paketupdates auf Ihren virtuellen Computern finden Sie unter [Lösung für die Updateverwaltung in OMS](../operations-management-suite/oms-solution-update-management.md).

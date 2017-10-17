@@ -11,18 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 09/29/2017
 ms.author: shlo
+ms.openlocfilehash: ef7055342a04057acfba9dad350f654aa4de6096
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 09e514aee503b7cb045c81d8ddcb855ced9b072b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-introduction.md)
+> * [Version 1: Allgemein verfügbare Version](v1/data-factory-introduction.md)
 > * [Version 2: Vorschauversion](introduction.md)
 
 In Zeiten von Big Data werden unorganisierte Rohdaten häufig in relationalen, nicht relationalen und anderen Speichersystemen gespeichert. Für sich genommen mangelt es den Rohdaten allerdings an Kontext bzw. an der nötigen Aussagekraft, um von Analysten, Datenspezialisten und Entscheidungsträgern in Unternehmen sinnvoll genutzt werden zu können. Hierzu bedarf es eines Diensts zur Orchestrierung und Operationalisierung von Prozessen, die diese enormen Rohdatenmengen in verwertbare geschäftliche Erkenntnisse verwandeln. Azure Data Factory ist ein spezieller verwalteter Clouddienst für diese komplexen Hybridprojekte mit ETL (Extrahieren, Transformieren und Laden), ELT (Extrahieren, Laden und Transformieren) und Datenintegration.
@@ -58,7 +57,7 @@ Wenn Daten in einem zentralen Datenspeicher in der Cloud gespeichert sind, solle
 Die Rohdaten liegen nun in einem für Unternehmen nutzbaren Format vor und werden als Nächstes in Azure Data Warehouse, Azure SQL-Datenbank, Azure CosmosDB oder in ein anderes Analysemodul geladen, auf das Ihre Benutzer in ihren Business Intelligence-Tools verweisen können.
 
 ### <a name="monitor"></a>Überwachen
-Nachdem Sie Ihre Pipeline für die Datenintegration erfolgreich erstellt und bereitgestellt haben und einen geschäftlichen Nutzen aus den optimierten Daten ziehen können, möchten Sie die geplanten Aktivitäten und Pipelines auf Erfolgs- und Fehlerraten überwachen. Azure Data Factory bietet integrierte Unterstützung für die Pipelineüberwachung per Azure Monitor, API, PowerShell, OMS und Integritätsbereiche im Azure-Portal.
+Nachdem Sie Ihre Pipeline für die Datenintegration erfolgreich erstellt und bereitgestellt haben und einen geschäftlichen Nutzen aus den optimierten Daten ziehen können, möchten Sie die geplanten Aktivitäten und Pipelines auf Erfolgs- und Fehlerraten überwachen. Azure Data Factory bietet integrierte Unterstützung für die Pipelineüberwachung per Azure Monitor, API, PowerShell, Microsoft Operations Management Suite (OMS) und Integritätsbereiche im Azure-Portal.
 
 ## <a name="whats-different-in-version-2"></a>Was ist in Version 2 anders?
 Version 2 von Azure Data Factory basiert auf dem ursprünglichen Azure Data Factory-Dienst für die Datenverschiebung und -transformierung, kann nun aber für ein breiteres Spektrum cloudgeprägter Datenintegrationsszenarien verwendet werden. In Version 2 von Azure Data Factory erwarten Sie folgende Funktionen:
@@ -98,14 +97,18 @@ Weitere Informationen finden Sie im [Tutorial zur Ablaufsteuerung](tutorial-cont
 Wenn Sie Ihre SSIS-Workloads verschieben möchten, können Sie eine Data Factory der Version 2 erstellen und eine Azure-SSIS-IR (Integration Runtime) bereitstellen. Die Azure-SSIS-IR ist ein vollständig verwalteter Cluster mit virtuellen Azure-Computern (Knoten), die speziell für die Ausführung von SSIS-Paketen in der Cloud bestimmt sind. Eine ausführliche Anleitung finden Sie im [Tutorial zum Bereitstellen von SSIS-Paketen in Azure](tutorial-deploy-ssis-packages-azure.md). 
  
 
-## <a name="rich-cross-platform-sdks"></a>Umfangreiche plattformübergreifende SDKs
+### <a name="sdks"></a>SDKs
 Für erfahrene Benutzer, die auf der Suche nach einer befehlsorientierten Benutzerschnittstelle sind, bietet Version 2 ein breites Spektrum an SDKs zum Erstellen, Verwalten und Überwachen von Pipelines mit Ihrer bevorzugten IDE.
 
-- .NET SDK
-- PowerShell
-- Python SDK
+- .NET SDK – Das .NET SDK wird für Version 2 aktualisiert. 
+- PowerShell – Die PowerShell-Cmdlets werden für Version 2 aktualisiert. Die Cmdlets der Version 2 enthalten **DataFactoryV2** im Namen. Beispiel: Get-AzureRmDataFactoryV2. 
+- Python SDK – Dieses SDK ist neu in der Version 2.
+- REST-API – Die REST-API wird für Version 2 aktualisiert.  
 
-Data Factorys können auch mithilfe von REST-APIs erstellt werden. 
+Die für Version 2 aktualisierten SDKs sind nicht abwärtskompatibel mit Clients der Version 1. 
+
+### <a name="monitoring"></a>Überwachung
+Version 2 unterstützt derzeit nur das Überwachen von Data Factorys mithilfe von SDKs. Das Portal verfügt noch nicht über die Unterstützung zur Überwachung von Data Factorys der Version 2. 
 
 ## <a name="load-the-data-into-a-lake"></a>Laden der Daten in einen Lake
 Mit den mehr als 30 Connectors von Data Factory können Sie Daten aus hybriden und heterogenen Umgebungen in Azure laden.  Aktuelle Leistungsergebnisse aus internen Tests sowie Optimierungsvorschläge finden Sie im [Handbuch zur Leistung und Optimierung](copy-activity-performance.md). Darüber hinaus haben wir vor kurzem Hochverfügbarkeit und Skalierbarkeit für die selbst gehostete Integration Runtime eingeführt, die Sie in einer privaten Netzwerkumgebung installieren, um der Nachfrage großer Tier-1-Geschäftskunden nach höherer Verfügbarkeit und besserer Skalierbarkeit gerecht zu werden.
@@ -151,7 +154,7 @@ Weitere Informationen zu den Data Factory-Konzepten finden Sie in den folgenden 
 
 - [Datasets und verknüpfte Dienste](concepts-datasets-linked-services.md)
 - [Pipelines und Aktivitäten](concepts-pipelines-activities.md)
-- [Integration Runtime](concepts-integration-runtime.md)
+- [Integrationslaufzeit](concepts-integration-runtime.md)
 
 ## <a name="supported-regions"></a>Unterstützte Regionen:
 
@@ -165,4 +168,3 @@ Nehmen wir beispielsweise an, dass Ihre Computeumgebungen wie Azure HDInsight-Cl
 
 ## <a name="next-steps"></a>Nächste Schritte
 Ausführliche Informationen zum Erstellen einer Data Factory finden Sie in den folgenden Schnellstartanleitungen: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST-API](quickstart-create-data-factory-rest-api.md) und Azure-Portal. 
-

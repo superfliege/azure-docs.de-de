@@ -10,17 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/03/2017
+ms.date: 10/02/2017
 ms.topic: get-started-article
 ms.author: tomfitz
+ms.openlocfilehash: 7d20469aaf2dfdd7a5f3650983b59152de837837
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: d07b2354906994ef7842a64d9f58bcbcc18f96e7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage
 In diesem Thema werden die einzelnen Schritte zum Erstellen Ihrer ersten Azure Resource Manager-Vorlage beschrieben. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager](resource-group-overview.md). Wenn Sie über vorhandene Ressourcen verfügen und eine Vorlage für diese Ressourcen verwenden möchten, helfen Ihnen die Informationen unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md) weiter.
 
@@ -97,58 +95,21 @@ Nun können Sie die Vorlage bereitstellen. Verwenden Sie PowerShell oder die Azu
 
 Nach Abschluss der Bereitstellung befindet sich Ihr Speicherkonto in der Ressourcengruppe.
 
-## <a name="deploy-template-from-cloud-shell"></a>Bereitstellen der Vorlage über Cloud Shell
+[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
-Mit [Cloud Shell](../cloud-shell/overview.md) können Sie Befehle der Azure-Befehlszeilenschnittstelle ausführen, um Ihre Vorlage bereitzustellen. Die Vorlage muss allerdings zuerst in die Dateifreigabe für Ihre Cloud Shell-Instanz geladen werden. Für den Fall, dass Sie Cloud Shell noch nicht verwendet haben, finden Sie unter [Übersicht über Azure Cloud Shell (Vorschau)](../cloud-shell/overview.md) Informationen zum Einrichten von Cloud Shell.
+Verwenden Sie für die Azure CLI die folgenden Befehle:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.   
+```azurecli-interactive
+az group create --name examplegroup --location "South Central US"
+az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
+```
 
-2. Wählen Sie Ihre Cloud Shell-Ressourcengruppe aus. Namensmuster: `cloud-shell-storage-<region>`.
+Derzeit ist PowerShell in der Cloud Shell als Vorschauversion verfügbar. Verwenden Sie für PowerShell die folgenden Befehle:
 
-   ![Auswählen der Ressourcengruppe](./media/resource-manager-create-first-template/select-cs-resource-group.png)
-
-3. Wählen Sie das Speicherkonto für Ihre Cloud Shell-Instanz aus.
-
-   ![Auswählen des Speicherkontos](./media/resource-manager-create-first-template/select-storage.png)
-
-4. Wählen Sie **Dateien** aus.
-
-   ![Auswählen von Dateien](./media/resource-manager-create-first-template/select-files.png)
-
-5. Wählen Sie die Dateifreigabe für Cloud Shell aus. Namensmuster: `cs-<user>-<domain>-com-<uniqueGuid>`.
-
-   ![Auswählen der Dateifreigabe](./media/resource-manager-create-first-template/select-file-share.png)
-
-6. Wählen Sie **Verzeichnis hinzufügen** aus.
-
-   ![Hinzufügen des Verzeichnisses](./media/resource-manager-create-first-template/select-add-directory.png)
-
-7. Nennen Sie es **templates**, und wählen Sie **OK** aus.
-
-   ![Benennen des Verzeichnisses](./media/resource-manager-create-first-template/name-templates.png)
-
-8. Wählen Sie Ihr neues Verzeichnis aus.
-
-   ![Auswählen des Verzeichnisses](./media/resource-manager-create-first-template/select-templates.png)
-
-9. Wählen Sie die Option **Hochladen**.
-
-   ![Auswählen von „Hochladen“](./media/resource-manager-create-first-template/select-upload.png)
-
-10. Suchen Sie Ihre Vorlage, und laden Sie sie hoch.
-
-   ![Hochladen der Datei](./media/resource-manager-create-first-template/upload-files.png)
-
-11. Öffnen Sie die Eingabeaufforderung.
-
-   ![Öffnen von Cloud Shell](./media/resource-manager-create-first-template/start-cloud-shell.png)
-
-12. Geben Sie in der Cloud Shell-Instanz folgende Befehle ein:
-
-   ```azurecli
-   az group create --name examplegroup --location "South Central US"
-   az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
-   ```
+```powershell
+New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
+New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile $home\CloudDrive\templates\azuredeploy.json
+```
 
 Nach Abschluss der Bereitstellung befindet sich Ihr Speicherkonto in der Ressourcengruppe.
 
@@ -445,4 +406,3 @@ az group delete --name examplegroup
 * Weitere Informationen zur Struktur einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 * Weitere Informationen zu den Eigenschaften für ein Speicherkonto finden Sie in der [Referenz zu Speicherkontenvorlagen](/azure/templates/microsoft.storage/storageaccounts).
 * Komplette Vorlagen für viele verschiedene Lösungstypen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
-

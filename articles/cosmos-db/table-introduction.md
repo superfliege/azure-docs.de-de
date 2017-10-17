@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/29/2017
 ms.author: arramac
+ms.openlocfilehash: c184b02f46ac2ad66c6ce607967a687c82d31477
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 2073948d44ccc4b9b83e4eaf4f250dc272e46292
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Einführung in die Table-API von Azure Cosmos DB
 
@@ -31,7 +30,7 @@ Mit [Azure Cosmos DB](introduction.md) wird die Table-API (Vorschauversion) für
 * Garantierte Hochverfügbarkeit.
 * [Automatische sekundäre Indizierung](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
-Diese Anwendungen können mit der Table-API ohne Codeänderungen zu Azure Cosmos DB migriert werden und Premium-Funktionen nutzen.
+Diese Anwendungen können mit der Table-API ohne Codeänderungen zu Azure Cosmos DB migriert werden und Premium-Funktionen nutzen. Die Table-API ist für .NET und Python verfügbar.
 
 Wir empfehlen Ihnen, sich das folgende Video anzusehen, in dem Aravind Ramachandran die ersten Schritte mit der Table-API für Azure Cosmos DB erläutert:
 
@@ -64,5 +63,6 @@ Hier einige Hinweise, um Ihnen den Einstieg zu erleichtern:
 * [Entwickeln mit der Table-API in .NET](tutorial-develop-table-dotnet.md)
 * [Abfragen von Tabellendaten mit der Table-API](tutorial-query-table.md)
 * [Einrichten der globalen Verteilung von Azure Cosmos DB mithilfe der Table-API](tutorial-global-distribution-table.md)
-* [Azure Cosmos DB Table-API SDK für .NET](table-sdk-dotnet.md)
+* [Azure Cosmos DB-Table-.NET-API](table-sdk-dotnet.md)
+* [Azure Cosmos DB-Table-SDK für Python](table-sdk-python.md)
 

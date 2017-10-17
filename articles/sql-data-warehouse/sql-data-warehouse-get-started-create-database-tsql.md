@@ -17,10 +17,10 @@ ms.custom: create
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 10d8aa2b3ab8d7d8a9b91e95ffccf03faa89d237
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-sql-data-warehouse-database-by-using-transact-sql-tsql"></a>Erstellen einer SQL Data Warehouse-Datenbank mithilfe von Transact-SQL (TSQL)
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ In diesem Artikel erfahren Sie, wie Sie eine SQL Data Warehouse-Instanz mithilfe
 Zunächst benötigen Sie Folgendes:
 
 * **Azure-Konto:** Lesen Sie zum Erstellen eines Kontos die Informationen unter [Kostenlose Azure-Testversion][Azure Free Trial] oder [MSDN-Azure-Gutschriften][MSDN Azure Credits].
-* **Azure SQL-Server**: finden Sie unter [erstellen Sie einen logischen Server mit Azure SQL-Datenbank mit dem Azure-Portal] [erstellen Sie einen logischen Server mit Azure SQL-Datenbank mit dem Azure-Portal] oder [erstellen Sie einen Azure SQL-Datenbank logischen Server mit PowerShell] [erstellen Sie einen Azure SQL-Datenbank logischen Server mit PowerShell] Weitere Details.
+* **Azure SQL Server**: Weitere Details finden Sie unter [Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal][Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal] oder [Erstellen eines logischen Servers mit Azure SQL-Datenbank mithilfe von PowerShell][Erstellen eines logischen Servers mit Azure SQL-Datenbank mithilfe von PowerShell].
 * **Ressourcengruppe:**Verwenden Sie entweder die gleiche Ressourcengruppe wie Ihre Azure SQL Server-Instanz, oder lesen Sie die Informationen zum [Erstellen einer neuen Ressourcengruppe][how to create a resource group].
 * **Umgebung für die Ausführung von T-SQL:** Zum Ausführen von T-SQL können Sie [Visual Studio][Installing Visual Studio and SSDT], [sqlcmd][sqlcmd] oder [SSMS][SSMS] verwenden.
 

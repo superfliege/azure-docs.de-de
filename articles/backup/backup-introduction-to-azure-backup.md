@@ -13,15 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/11/2017
+ms.date: 9/29/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 120810b2b112649e21ec4bfe0c0f58b1fe3d80ae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 699ec578832e894b5bfc0cfad35528eac377c4ff
-ms.contentlocale: de-de
-ms.lasthandoff: 09/05/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
 Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Recovery Services-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
@@ -68,9 +67,7 @@ Falls Sie unsicher sind, welche Azure Backup-Komponente für Ihre Anforderungen 
 | Azure IaaS-VM-Sicherung |<p>**Ja**</p><p>Teil der Azure-Fabric</p><p>Speziell für die [Sicherung von Azure IaaS-VMs (Infrastructure as a Service)](backup-azure-vms-introduction.md).</p> |<p>**Nein**</p> <p>Sichern Sie virtuelle Computer in Ihrem Datencenter mit System Center DPM.</p> |<p>Recovery Services-Tresor</p> |
 
 ## <a name="which-applications-and-workloads-can-be-backed-up"></a>Welche Anwendungen und Workloads kann ich sichern?
-Die folgende Tabelle enthält eine Matrix mit den Daten und Workloads, die mit Azure Backup geschützt werden können. Die Spalte „Azure Backup-Lösung“ enthält Links zur Bereitstellungsdokumentation für die Lösung. Jede Azure Backup-Komponente kann in einer Umgebung mit einem klassischen Bereitstellungsmodell (Service Manager-Bereitstellung) oder Resource Manager-Bereitstellungsmodell bereitgestellt werden.
-
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+Die folgende Tabelle enthält eine Matrix mit den Daten und Workloads, die mit Azure Backup geschützt werden können. Die Spalte „Azure Backup-Lösung“ enthält Links zur Bereitstellungsdokumentation für die Lösung. 
 
 | Daten oder Workload | Quellumgebung | Azure Backup-Lösung |
 | --- | --- | --- |
@@ -93,7 +90,7 @@ In der folgende Tabellen sind die Azure Backup-Komponenten angegeben, die über 
 | Azure Backup-Agent (MARS) |Keine (nur Windows-basierter Agent) |
 | System Center DPM |<li> Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/> <li> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs </br> </br>  *Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar.* <br/> |
 | Azure Backup Server |<li>Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/> <li> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs </br></br> *Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar.*  |
-| Azure IaaS-VM-Sicherung |Anwendungskonsistente Sicherung per [Pre-Skript- und Post-Skript-Framework](backup-azure-linux-app-consistent.md)<br/> [Präzise Dateiwiederherstellung](backup-azure-restore-files-from-vm.md)<br/> [Wiederherstellen aller VM-Datenträger](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [VM-Wiederherstellung](backup-azure-arm-restore-vms.md#create-a-new-vm-from-restore-point) |
+| Azure IaaS-VM-Sicherung |Anwendungskonsistente Sicherung per [Pre-Skript- und Post-Skript-Framework](backup-azure-linux-app-consistent.md)<br/> [Präzise Dateiwiederherstellung](backup-azure-restore-files-from-vm.md)<br/> [Wiederherstellen aller VM-Datenträger](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [VM-Wiederherstellung](backup-azure-arm-restore-vms.md#create-a-new-vm-from-a-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Verwenden von Storage Premium-VMs mit Azure Backup
 Azure Backup schützt Storage Premium-VMs. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive, Festkörperlaufwerk), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium finden Sie im Artikel [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/common/storage-premium-storage.md).
@@ -224,13 +221,12 @@ Allgemeine Beispiele für geschützte Instanzen sind virtuelle Computer, Anwendu
 ## <a name="what-is-a-recovery-services-vault"></a>Was ist ein Recovery Services-Tresor?
 Ein Recovery Services-Tresor ist eine Onlinespeicherentität in Azure, die zum Speichern von Daten wie Sicherungskopien, Wiederherstellungspunkten und Sicherungsrichtlinien verwendet wird. Sie können Recovery Services-Tresore zum Speichern von Sicherungsdaten für Azure-Dienste sowie lokale Server und Arbeitsstationen verwenden. Recovery Services-Tresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand. Sie können innerhalb eine Abonnements beliebig viele Recovery Services-Tresore erstellen.
 
-Sicherungstresore, die auf Azure Service Manager basieren, waren die erste Version eines Tresors. Recovery Services-Tresore, die um die Azure Resource Manager-Modellfunktionen ergänzt wurden, sind die zweite Version. Eine vollständige Beschreibung der Funktionsunterschiede finden Sie im [Übersichtsartikel zu Recovery Services-Tresoren](backup-azure-recovery-services-vault-overview.md). Sicherungstresors werden weiterhin unterstützt, Sie können aber keine neuen Sicherungstresore im Azure-Portal mehr erstellen.
+Sicherungstresore, die auf Azure Service Manager basieren, waren die erste Version eines Tresors. Recovery Services-Tresore, die um die Azure Resource Manager-Modellfunktionen ergänzt wurden, sind die zweite Version. Eine vollständige Beschreibung der Funktionsunterschiede finden Sie im [Übersichtsartikel zu Recovery Services-Tresoren](backup-azure-recovery-services-vault-overview.md). Sicherungstresors werden weiterhin unterstützt, Sie können aber keine neuen Sicherungstresore im Azure-Portal mehr erstellen. Sie müssen das Azure-Portal nutzen, um Ihre Sicherungstresore zu verwalten.
 
 > [!IMPORTANT]
-> Sie können nun ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchführen. Detaillierte Informationen finden Sie im Artikel [Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft empfiehlt, ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchzuführen.<br/> Nach dem **15. Oktober 2017** können mit PowerShell keine Sicherungstresore mehr erstellt werden. <br/> **Ab dem 1. November 2017 gilt Folgendes:**
->- Für alle verbleibenden Sicherungstresore wird automatisch ein Upgrade auf Recovery Services-Tresore durchgeführt.
->- Der Zugriff auf Ihre Sicherungsdaten im klassischen Portal wird nicht möglich sein. Verwenden Sie stattdessen das Azure-Portal, um auf Ihre Sicherungsdaten in Recovery Services-Tresoren zuzugreifen.
->
+> Sie können nun ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchführen. Detaillierte Informationen finden Sie im Artikel [Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft empfiehlt, ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchzuführen.<br/> Nach dem **15. Oktober 2017** können mit PowerShell keine Sicherungstresore mehr erstellt werden. <br/> Bis zum **1. November 2017** wird für alle verbleibenden Sicherungstresore automatisch ein Upgrade auf Recovery Services-Tresore durchgeführt.
+
+
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Wie unterscheidet sich Azure Backup von Azure Site Recovery?
 Azure Backup und Azure Site Recovery ähneln sich insofern als mit beiden Diensten Daten gesichert und dann wiederhergestellt werden können. Beide Dienste bieten aber unterschiedliche Funktionen hinsichtlich der Geschäftskontinuität und Notfallwiederherstellung in Ihrem Unternehmen. Verwenden Sie Azure Backup, um Daten auf differenzierte Weise zu schützen und wiederherzustellen. Wenn beispielsweise die Darstellung eines Laptops beschädigt wurde, verwenden Sie Azure Backup, um die Darstellung wiederherzustellen. Wenn Sie die Konfiguration und die Daten eines virtuellen Computers in einem anderen Rechenzentrum replizieren möchten, verwenden Sie Azure Site Recovery.
@@ -260,4 +256,3 @@ Weitere Informationen zum Schützen anderer Workloads finden Sie in diesen Artik
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
-

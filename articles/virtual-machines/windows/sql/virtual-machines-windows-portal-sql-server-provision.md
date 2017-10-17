@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen eines virtuellen SQL Server-Computers | Microsoft Docs
-description: Verwenden Sie das Portal, um in Azure einen virtuellen SQL Server-Computer zu erstellen und eine Verbindung damit herzustellen. In diesem Tutorial wird der Resource Manager-Modus verwendet.
+title: Erstellen eines virtuellen Windows-Computers mit SQL Server 2017 in Azure | Microsoft-Dokumentation
+description: "In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal einen virtuellen Windows-Computer mit SQL Server 2017 erstellen."
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -12,55 +12,54 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 08/14/2017
+ms.date: 10/10/2017
 ms.author: jroth
+ms.openlocfilehash: 48f9f97d6e0aee6b2c84444289a427bebcb296e2
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: c923f9aae4c7a1b8bd4f5760d0ec4f33923b9321
-ms.contentlocale: de-de
-ms.lasthandoff: 08/15/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="provision-a-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen Computers mit SQL Server über das Azure-Portal
+# <a name="provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal
+
 > [!div class="op_single_selector"]
 > * [Portal](virtual-machines-windows-portal-sql-server-provision.md)
 > * [PowerShell](virtual-machines-windows-ps-sql-create.md)
-> 
-> 
+> * [Linux](../../linux/sql/provision-sql-server-linux-virtual-machine.md)
 
-In diesem umfassenden Tutorial erfahren Sie, wie Sie das Azure-Portal zum Bereitstellen eines virtuellen Computers mit SQL Server verwenden.
-
-Der Azure Virtual Machine-Katalog enthält mehrere Images mit Microsoft SQL Server. Mit wenigen Klicks können Sie eines der SQL-VM-Images im Katalog auswählen und in Ihrer Azure-Umgebung bereitstellen.
+In diesem Schnellstarttutorial erstellen Sie über das Azure-Portal einen virtuellen Windows-Computer mit SQL Server.
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
-* [Auswählen eines SQL-VM-Image aus dem Katalog](#select-a-sql-vm-image-from-the-gallery)
-* [Konfigurieren und Erstellen der VM](#configure-the-vm)
-* [Öffnen der VM mit Remotedesktop](#open-the-vm-with-remote-desktop)
-* [Herstellen einer Remoteverbindung mit SQL Server](#connect-to-sql-server-remotely)
+* [Auswählen eines SQL-VM-Image aus dem Katalog](#select)
+* [Konfigurieren und Erstellen der VM](#configure)
+* [Öffnen der VM mit Remotedesktop](#remotedesktop)
+* [Herstellen einer Remoteverbindung mit SQL Server](#connect)
 
-## <a name="select-a-sql-vm-image-from-the-gallery"></a>Auswählen eines SQL-VM-Image aus dem Katalog
+## <a id="select"></a>Auswählen eines SQL-VM-Image aus dem Katalog
 
 1. Melden Sie sich mit Ihrem Konto beim [Azure-Portal](https://portal.azure.com) an.
 
    > [!NOTE]
    > Wenn Sie kein Azure-Konto haben, sollten Sie die Seite [Kostenlose einmonatige Testversion](https://azure.microsoft.com/pricing/free-trial/)besuchen.
 
-2. Klicken Sie im Azure-Portal auf **Neu**. Das Portal wird mit dem Fenster **Neu** geöffnet.
+1. Klicken Sie im Azure-Portal auf **Neu**. Das Portal wird mit dem Fenster **Neu** geöffnet.
 
-3. Klicken Sie im Fenster **Neu** auf **Compute** und anschließend auf **Alle anzeigen**.
+1. Klicken Sie im Fenster **Neu** auf **Compute** und anschließend auf **Alle anzeigen**.
 
    ![Fenster „Neu berechnen“](./media/virtual-machines-windows-portal-sql-server-provision/azure-new-compute-blade.png)
 
-4. Geben Sie in das Suchfeld die Zeichenfolge **SQL Server** ein, und drücken Sie die EINGABETASTE.
+1. Geben Sie in das Suchfeld die Zeichenfolge **SQL Server 2017** ein, und drücken Sie die EINGABETASTE.
 
-5. Klicken Sie anschließend auf das Symbol **Filter**, und wählen Sie **Microsoft** als Herausgeber aus. Klicken Sie im Filterfenster auf **Fertig**, um die Ergebnisse nach von Microsoft veröffentlichten SQL Server-Images zu filtern.
+1. Klicken Sie anschließend auf das Symbol **Filter**.
+
+1. Überprüfen Sie im Fenster „Filter“ das Vorhandensein der Unterkategorie **Windows-basiert** und von **Microsoft** als Anbieter. Klicken Sie anschließend auf **Fertig**, um die Ergebnisse nach von Microsoft veröffentlichten Windows SQL Server-Images zu filtern.
 
    ![Fenster für Azure Virtual Machines](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
 
-5. Überprüfen Sie die verfügbaren SQL Server-Images. Für jedes Image sind eine SQL Server-Version und ein Betriebssystem angegeben.
+1. Überprüfen Sie die verfügbaren SQL Server-Images. Für jedes Image sind eine SQL Server-Version und ein Betriebssystem angegeben.
 
-6. Wählen Sie das Image **Free License: SQL Server 2016 SP1 Developer on Windows Server 2016** aus.
+1. Wählen Sie das Image **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016** aus.
 
    > [!TIP]
    > In diesem Tutorial wird die Developer Edition verwendet, weil es sich um eine Edition von SQL Server mit vollem Funktionsumfang handelt, die zu Testzwecken in der Entwicklung kostenlos ist. Sie zahlen nur für die Ausführung der VM. Sie können allerdings ein beliebiges Image für dieses Tutorial auswählen.
@@ -70,13 +69,13 @@ In diesem Lernprogramm lernen Sie Folgendes:
    >
    > Weitere Informationen zu diesen Optionen finden Sie unter [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Preisinformationen für virtuelle Azure-Computer unter SQL Server).
 
-7. Stellen Sie unter **Bereitstellungsmodell auswählen** sicher, dass **Resource Manager** ausgewählt ist. Das Resource Manager-Bereitstellungsmodell ist das empfohlene Bereitstellungsmodell für neue virtuelle Computer. 
+1. Stellen Sie unter **Bereitstellungsmodell auswählen** sicher, dass **Resource Manager** ausgewählt ist. Das Resource Manager-Bereitstellungsmodell ist das empfohlene Bereitstellungsmodell für neue virtuelle Computer. 
 
-8. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen**.
 
     ![SQL-VM mit Resource Manager erstellen](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
-## <a name="configure-the-vm"></a>Konfigurieren der VM
+## <a id="configure"></a>Konfigurieren der VM
 Es sind fünf Fenster zum Konfigurieren eines virtuellen SQL Server-Computers vorhanden.
 
 | Schritt | Beschreibung |
@@ -156,7 +155,7 @@ Konfigurieren Sie im Fenster **SQL Server-Einstellungen** die speziellen Einstel
 | [Automatisiertes Patchen](#automated-patching) |
 | [Automatisierte Sicherung](#automated-backup) |
 | [Azure-Schlüsseltresor-Integration](#azure-key-vault-integration) |
-| [R Services](#r-services) |
+| [SQL Server Machine Learning Services](#sql-server-machine-learning-services) |
 
 ### <a name="connectivity"></a>Konnektivität
 
@@ -257,14 +256,11 @@ In der folgenden Tabelle sind die Parameter aufgeführt, die zum Konfigurieren d
 
 Weitere Informationen finden Sie unter [Konfigurieren der Azure-Schlüsseltresor-Integration für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-ps-sql-keyvault.md).
 
-### <a name="r-services"></a>R Services
+### <a name="sql-server-machine-learning-services"></a>SQL Server Machine Learning Services
 
-Sie können auch [SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx) aktivieren. Dies ermöglicht die Verwendung der erweiterten Analyse mit SQL Server 2016. Klicken Sie im Fenster **SQL Server-Einstellungen** auf **Aktivieren**.
+Sie können [SQL Server Machine Learning Services](https://msdn.microsoft.com/library/mt604845.aspx) aktivieren. Dies ermöglicht die Verwendung der erweiterten Analyse mit SQL Server 2017. Klicken Sie im Fenster **SQL Server-Einstellungen** auf **Aktivieren**.
 
-> [!NOTE]
-> Für SQL Server 2016 Developer Edition wird diese Option fälschlicherweise vom Portal deaktiviert. Für die Developer-Edition muss R Services nach dem Erstellen Ihres virtuellen Computers manuell aktiviert werden.
-
-![SQL Server R Services aktivieren](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
+![Aktivieren von SQL Server Machine Learning Services](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
 
 Klicken Sie auf **OK**, wenn Sie mit dem Konfigurieren der SQL Server-Einstellungen fertig sind.
 
@@ -275,9 +271,9 @@ Klicken Sie auf **OK**, wenn Sie mit dem Konfigurieren der SQL Server-Einstellun
 Sie können die Bereitstellung über das Azure-Portal überwachen. Auf der Schaltfläche **Benachrichtigungen** oben auf der Seite wird der grundlegende Status der Bereitstellung angezeigt.
 
 > [!NOTE]
-> Damit Sie sich einen Eindruck von Bereitstellungszeiten verschaffen können, habe ich eine SQL-VM für die Region „USA, Osten“ mit Standardeinstellungen bereitgestellt. Diese Testbereitstellung hat insgesamt 26 Minuten gedauert. Je nach Region und den gewählten Einstellungen kann es aber sein, dass die Bereitstellung bei Ihnen schneller oder langsamer geht.
+> Damit Sie sich einen Eindruck von Bereitstellungszeiten verschaffen können, habe ich eine SQL-VM für die Region „USA, Osten“ mit Standardeinstellungen bereitgestellt. Die Durchführung dieser Testbereitstellung dauerte ungefähr 12 Minuten. Je nach Region und den gewählten Einstellungen kann es aber sein, dass die Bereitstellung bei Ihnen schneller oder langsamer geht.
 
-## <a name="open-the-vm-with-remote-desktop"></a>Öffnen der VM mit Remotedesktop
+## <a id="remotedesktop"></a>Öffnen der VM mit Remotedesktop
 
 Führen Sie die folgenden Schritte aus, um mithilfe von Remotedesktop eine Verbindung mit dem virtuellen SQL Server-Computer herzustellen:
 
@@ -295,7 +291,7 @@ In diesen Schritten wird der **SQL Server-Konfigurations-Manager** verwendet, um
 
 > [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
-## <a name="connect-to-sql-server-remotely"></a>Herstellen einer Remoteverbindung mit SQL Server
+## <a id="connect"></a>Herstellen einer Remoteverbindung mit SQL Server
 
 In diesem Tutorial haben wir den Zugriffstyp **Öffentlich** für den virtuellen Computer und die **SQL Server-Authentifizierung** ausgewählt. Mit diesen Einstellungen wurde der virtuelle Computer automatisch so konfiguriert, dass SQL Server-Verbindungen von jedem Client über das Internet zulässig sind (vorausgesetzt, diese verfügen über die richtige SQL-Anmeldung).
 

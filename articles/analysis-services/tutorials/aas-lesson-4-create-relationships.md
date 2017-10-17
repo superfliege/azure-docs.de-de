@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 09/20/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: d79af3915c718a79f60e5f589527eb4c2ae8b367
-ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 70812790348bbf525c7ed6299c656f7dd8e83dff
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-4-create-relationships"></a>Lektion 4: Erstellen von Beziehungen
 
@@ -34,7 +33,10 @@ Geschätzte Zeit zum Bearbeiten dieser Lektion: **10 Minuten**
 Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorgegebenen Reihenfolge durchgeführt werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 3: Markieren als Datumstabelle](../tutorials/aas-lesson-3-mark-as-date-table.md) abgeschlossen haben. 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>Überprüfen von vorhandenen Beziehungen und Hinzufügen von neuen Beziehungen  
-Wenn Sie Daten mithilfe von Get Data importiert haben, haben Sie sieben Tabellen aus der Datenbank „AdventureWorksDW2014“ abgerufen. Beim Importieren von Daten aus einer relationalen Quelle werden im Allgemeinen vorhandene Beziehungen automatisch zusammen mit den Daten importiert. Bevor Sie jedoch mit der Erstellung Ihres Modells fortfahren, sollten Sie überprüfen, ob die Beziehungen zwischen den Tabellen korrekt sind. In diesem Tutorial fügen Sie außerdem drei neue Beziehungen hinzu.  
+Wenn Sie Daten mithilfe von Get Data importiert haben, haben Sie sieben Tabellen aus der Datenbank „AdventureWorksDW2014“ abgerufen. Beim Importieren von Daten aus einer relationalen Quelle werden im Allgemeinen vorhandene Beziehungen automatisch zusammen mit den Daten importiert. Damit mit Get Data im Datenmodell automatisch Beziehungen erstellt werden, müssen Beziehungen zwischen den Tabellen der Datenquelle bestehen.
+
+Bevor Sie mit der Erstellung Ihres Modells fortfahren, sollten Sie überprüfen, ob die Beziehungen zwischen den Tabellen korrekt sind. In diesem Tutorial fügen Sie außerdem drei neue Beziehungen hinzu.  
+
   
 #### <a name="to-review-existing-relationships"></a>Zum Überprüfen vorhandener Beziehungen, gehen Sie folgendermaßen vor:  
   
@@ -44,7 +46,10 @@ Wenn Sie Daten mithilfe von Get Data importiert haben, haben Sie sieben Tabellen
     
     ![AAS-Lektion4-Diagramm](../tutorials/media/aas-lesson4-diagram.png)
   
-    Mit dem Steuerelement der Minikarte in der unteren rechten Ecke des Modell-Designers können Sie so viele Tabellen wie möglich anzeigen. Sie können die Tabellen auch per Drag & Drop an andere Positionen verschieben, sie näher zusammenbringen oder in einer bestimmten Reihenfolge anordnen. Das Verschieben der Tabellen hat keinen Einfluss auf die bestehenden Beziehungen zwischen den Tabellen. Zum Anzeigen aller Spalten einer bestimmten Tabelle klicken Sie auf eine Ecke der Tabelle, und ziehen Sie sie bis zur gewünschten Größe.  
+    > [!NOTE]
+    > Wenn keine Beziehungen zwischen Tabellen angezeigt werden, bedeutet dies, dass zwischen den Tabellen der Datenquelle wahrscheinlich keine Beziehungen bestehen.
+
+    Mit dem Steuerelement der Minikarte in der unteren rechten Ecke des Modell-Designers können Sie so viele Tabellen wie möglich anzeigen. Sie können die Tabellen auch per Drag & Drop an andere Positionen verschieben, sie näher zusammenbringen oder in einer bestimmten Reihenfolge anordnen. Das Verschieben der Tabellen hat keinen Einfluss auf die Beziehungen zwischen den Tabellen. Zum Anzeigen aller Spalten einer bestimmten Tabelle klicken Sie auf eine Ecke der Tabelle, und ziehen Sie sie bis zur gewünschten Größe.  
   
 2.  Klicken Sie auf die durchgezogene Linie zwischen den Tabellen **DimCustomer** und **DimGeography**. Die durchgezogene Linie zwischen diesen beiden Tabellen zeigt an, dass die Beziehung aktiv ist, d.h., sie wird bei der Berechnung von DAX-Formeln standardmäßig verwendet.  
   
@@ -63,7 +68,7 @@ Wenn Sie Daten mithilfe von Get Data importiert haben, haben Sie sieben Tabellen
     |Ja|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
     |Ja|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
-    Fehlen Beziehungen, so stellen Sie sicher, dass Ihr Modell die folgenden Tabellen enthält: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory und FactInternetSales. Werden Tabellen aus derselben Datenquellenverbindung zu unterschiedlichen Zeitpunkten importiert, werden zwischen diesen Tabellen keine Beziehungen erstellt. Diese müssen anschließend manuell erstellt werden.  
+    Falls einige dieser Beziehungen fehlen, sollten Sie sicherstellen, dass Ihr Modell die folgenden Tabellen enthält: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory und FactInternetSales. Wenn Tabellen aus derselben Datenquellenverbindung zu unterschiedlichen Zeitpunkten importiert werden, werden zwischen diesen Tabellen keine Beziehungen erstellt, sondern dies muss anschließend manuell erfolgen. Falls keine Beziehungen angezeigt werden, bedeutet dies, dass in der Datenquelle keine Beziehungen vorhanden sind. Sie können sie im Datenmodell manuell erstellen.
 
 ### <a name="take-a-closer-look"></a>Ausführlichere Betrachtung
 In der Diagrammansicht wird die Beziehung zwischen den Tabellen durch einen Pfeil, ein Sternchen und eine Zahl auf den Linien dargestellt.
@@ -102,4 +107,3 @@ In einigen Fällen möchten Sie möglicherweise zusätzliche Beziehungen zwische
   
   
   
-

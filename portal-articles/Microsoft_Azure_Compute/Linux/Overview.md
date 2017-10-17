@@ -1,6 +1,6 @@
 ---
-title: "Linux-virtuelle Maschinen (Übersicht) | Microsoft Docs"
-description: "Hilfeinhalt für Linux-virtuelle Maschinen (Übersicht) in Azure-portal"
+title: "Übersicht über virtuelle Linux-Computer | Microsoft-Dokumentation"
+description: "Enthält hilfreiche Informationen zur Übersicht über virtuelle Linux-Computer im Azure-Portal."
 services: virtual-machines-linux
 author: sewatson
 manager: lwelicki
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: 0de3fc4cab53564d7d131666e4a8c0ace8a64fb8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="linux-virtual-machines-documentation"></a>Dokumentation zu Linux-VMs
 
@@ -28,7 +28,7 @@ Erfahren Sie, wie Sie einen NGINX-Webserver auf einem virtuellen Computer unter 
 
 ## <a name="step-by-step-tutorials"></a>Schritt-für-Schritt-Tutorials
 
-Informationen Sie zum Bereitstellen, verwalten und Skalieren von Linux-VMs in Azure.
+Enthält Informationen dazu, wie Sie virtuelle Linux-Computer in Azure bereitstellen, verwalten und skalieren.
 
 - [Erstellen und Verwalten von virtuellen Linux-Computern](/azure/virtual-machines/linux/tutorial-manage-vm)
 - [Erstellen und Verwalten von VM-Datenträgern](/azure/virtual-machines/linux/tutorial-manage-disks)
@@ -58,5 +58,5 @@ Stellen Sie Ihre erste Anwendung in Azure bereit.
 
 ## <a name="more"></a>Weitere Informationen
 
-- [Besuchen Sie die Dokumentation, um mehr zu erfahren](/azure/virtual-machines/linux/index)
-- [Erfahren Sie mehr über alle Azure-Dienste](https://aka.ms/j3wr7y)
+- [Weitere Informationen finden Sie in der Dokumentation](/azure/virtual-machines/linux/index)
+- [Informationen zu allen Azure-Diensten](https://aka.ms/j3wr7y)

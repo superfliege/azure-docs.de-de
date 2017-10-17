@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
+ms.openlocfilehash: c3ffc819fcc442f87fb4985ecb08be8ec02ba957
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 530a9558df2323e1aa49d9f4b974c142ee5ecf37
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Bereitstellen des Azure Stack Development Kit
 
@@ -75,7 +74,7 @@ Um das [Azure Stack Development Kit](azure-stack-poc.md) bereitstellen zu könne
     # Download file
     Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
     ```
-6. Öffnen Sie eine PowerShell-Konsole mit erhöhten Rechten > führen Sie das Skript „C:\AzureStack_Installer\asdk-installer.ps1“ aus > klicken Sie auf **VHDX vorbereiten**.
+6. Öffnen Sie eine PowerShell-Konsole mit erhöhten Rechten, führen Sie das Skript „C:\AzureStack_Installer\asdk-installer.ps1“ aus, und klicken Sie auf **Umgebung vorbereiten**.
 7. Navigieren Sie auf der Seite **Cloudbuilder-VHDX erstellen** des Installationsprogramms zu der cloudbuilder.vhdx-Datei, die Sie in den vorherigen Schritten heruntergeladen haben, und wählen Sie sie aus.
 8. Optional: Aktivieren Sie das Kontrollkästchen **Treiber hinzufügen**, um einen Ordner mit weiteren Treibern anzugeben, die Sie auf dem Host installieren möchten.
 9. Geben Sie auf der Seite **Optionale Einstellungen** das lokale Administratorkonto für den Development Kit-Host an. Wenn Sie diese Anmeldeinformationen nicht angeben, benötigen Sie während des folgenden Installationsvorgangs KVM-Zugriff auf den Host.
@@ -144,15 +143,17 @@ Alternativ können Sie von Grund auf [erneut bereitstellen](azure-stack-redeploy
 Um sicherzustellen, dass das Kennwort für den Development Kit-Host nicht zu früh abläuft, führen Sie nach der Bereitstellung folgende Schritte aus:
 
 1. Öffnen Sie auf dem Development Kit-Host die **Gruppenrichtlinienverwaltung**, und navigieren Sie zu **Gruppenrichtlinienverwaltung** – **Gesamtstruktur: azurestack.local** – **Domänen** – **azurestack.local**.
-2. Klicken Sie mit der rechten Maustaste auf **Mitgliedsserver**, und klicken Sie auf **Bearbeiten**.
+2. Klicken Sie mit der rechten Maustaste auf **Standarddomänenrichtlinie**, und klicken Sie auf **Bearbeiten**.
 3. Navigieren Sie im Gruppenrichtlinienverwaltungs-Editor zu **Computerkonfiguration** – **Richtlinien** – **Windows-Einstellungen** – **Sicherheitseinstellungen** – **Kontorichtlinien** – **Kennwortrichtlinie**.
 4. Doppelklicken Sie im rechten Bereich auf **Maximales Kennwortalter**.
 5. Ändern Sie im Dialogfeld **Maximales Kennwortalter – Eigenschaften** den Wert **Kennwort läuft ab in** in „180“, und klicken Sie auf **OK**.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+[Installieren von PowerShell](azure-stack-powershell-configure-quickstart.md)
+
 [Register Azure Stack with your Azure subscription](azure-stack-register.md) (Registrieren von Azure Stack in Ihrem Azure-Abonnement)
 
 [Herstellen einer Verbindung mit Azure Stack](azure-stack-connect-azure-stack.md)
-
 

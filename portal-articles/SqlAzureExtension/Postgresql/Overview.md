@@ -1,6 +1,6 @@
 ---
-title: "Azure-Datenbank PostgreSQL Übersicht | Microsoft Docs"
-description: "Hilfeinhalt für Azure-Datenbank PostgreSQL Übersicht über die in Azure-portal"
+title: "Azure Database for PostgreSQL – Übersicht | Microsoft-Dokumentation"
+description: "Enthält hilfreiche Informationen zur Übersicht über Azure Database for PostgreSQL im Azure-Portal."
 services: app-service
 author: sewatson
 manager: lwelicki
@@ -9,36 +9,36 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
 ms.openlocfilehash: 9c930d1171b77ddf0bb6621fbf012f98816fd763
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-database-for-postgresql-documentation"></a>Azure-Datenbank für die PostgreSQL-Dokumentation
+# <a name="azure-database-for-postgresql-documentation"></a>Dokumentation zur Azure-Datenbank für PostgreSQL
 
-Azure-Datenbank für PostgreSQL ist ein relationaler Datenbankdienst, der basierend auf der open Source-Postgres-Datenbankmodul. Es ist ein vollständig verwalteter Datenbank Dienstangebot unternehmenswichtige Arbeitslasten mit vorhersagbare Leistung, Sicherheit, hohe Verfügbarkeit und dynamische Skalierung verarbeiten kann.  Entwickeln von Anwendungen mit Azure-Datenbank für PostgreSQL nutzt die open-Source-Tools und der Plattform Ihrer Wahl.  Informationen Sie zum Azure-Datenbank für PostgreSQL mit unserem Schnellstarts, Lernprogramme und Beispiele zu verwenden.
+Die Azure-Datenbank für PostgreSQL ist ein relationaler Datenbankdienst, der auf der Open Source-PostgreSQL-Datenbank-Engine basiert. Das vollständig verwaltete Database as a Service-Angebot kann geschäftskritische Workloads mit vorhersagbarer Leistung, Sicherheit, hoher Verfügbarkeit und dynamischer Skalierung verarbeiten.  Beim Entwickeln von Anwendungen mit der Azure-Datenbank für PostgreSQL können Sie die Open-Source-Tools und die Plattform Ihrer Wahl verwenden.  Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie die Azure-Datenbank für PostgreSQL verwenden.
 
-## <a name="5-minute-quickstarts"></a>5-Minuten-Schnellstarts
+## <a name="5-minute-quickstarts"></a>Fünfminütige Schnellstarts
 
-Erfahren Sie mehr über das Erstellen einer PostgreSQL-Datenbank mit:
+Erfahren Sie, wie Sie eine PostgreSQL-Datenbank mit Folgendem erstellen:
 
 - [Azure-Portal](/azure/postgresql/quickstart-create-server-database-portal)
-- [Azure-CLI](/azure/postgresql/quickstart-create-server-database-azure-cli)
+- [Azure-Befehlszeilenschnittstelle](/azure/postgresql/quickstart-create-server-database-azure-cli)
 
-## <a name="step-by-step-tutorials"></a>Schrittweise Lernprogramme
+## <a name="step-by-step-tutorials"></a>Schritt-für-Schritt-Tutorials
 
-Erfahren Sie, wie Sie:
+In diesem Artikel werden folgende Themen erläutert:
 
-- Entwerfen einer Datenbank: [Azure-Portal](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure-CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
-- [Erstellen Sie eine Web-App über Python- und die CLI](/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
+- Erstellen einer Datenbank: [Azure-Portal](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
+- [Erstellen einer Web-App mit Python und der CLI](/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
 
 ## <a name="samples"></a>Beispiele 
 
-Suchen Sie Skripts zur Verwaltung der allgemeinen Aufgaben.
+Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
 
-- [Azure-CLI](/azure/postgresql/sample-scripts-azure-cli)
+- [Azure-Befehlszeilenschnittstelle](/azure/postgresql/sample-scripts-azure-cli)
 
-## <a name="more"></a>Mehr
+## <a name="more"></a>Weitere Informationen
 
-- [Besuchen Sie die Dokumentation, um mehr zu erfahren](/azure/postgresql/index)
-- [Erfahren Sie mehr über alle Azure-Dienste](https://aka.ms/j3wr7y)
+- [Weitere Informationen finden Sie in der Dokumentation](/azure/postgresql/index)
+- [Informationen zu allen Azure-Diensten](https://aka.ms/j3wr7y)

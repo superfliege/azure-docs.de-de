@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/14/2017
 ms.author: jingwang
+ms.openlocfilehash: 74e2a57aa933c7025db952fa09de236f5dabb8c6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 60641ddfef7846f0e8b5d850e716b2652bf62367
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="copy-data-between-on-premises-and-cloud"></a>Kopieren von Daten zwischen lokalen Quellen und der Cloud
 Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können. 
 
@@ -218,12 +216,12 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
         "name": "SqlServerLinkedService"
     }
    ```
-2. Um vertrauliche Daten aus der JSON-Nutzlast in der lokalen selbstgehosteten Integration Runtime zu verschlüsseln, können Sie **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** ausführen und die oben stehende JSON-Nutzlast übergeben. So wird sichergestellt, dass die Anmeldeinformationen per DPAPI (Data Protection Application Programming Interface) verschlüsselt und lokal auf dem Knoten der selbstgehosteten Integration Runtime gespeichert werden. Die Ausgabenutzlast kann an eine weitere JSON-Datei umgeleitet werden (in diesem Fall „encryptedLinkedService.json“), die verschlüsselte Anmeldeinformationen enthält. 
+2. Um vertrauliche Daten aus der JSON-Nutzlast in der lokalen selbstgehosteten Integration Runtime zu verschlüsseln, können Sie **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** ausführen und die obige JSON-Nutzlast übergeben. So wird sichergestellt, dass die Anmeldeinformationen per DPAPI (Data Protection Application Programming Interface) verschlüsselt und lokal auf dem Knoten der selbstgehosteten Integration Runtime gespeichert werden. Die Ausgabenutzlast kann an eine weitere JSON-Datei umgeleitet werden (in diesem Fall „encryptedLinkedService.json“), die verschlüsselte Anmeldeinformationen enthält. 
 
     Ersetzen Sie **&lt;integration runtime name&gt;** durch den Namen Ihrer Integration Runtime, bevor Sie den Befehl ausführen.
 
    ```powershell
-   New-AzureRmDataFactoryV2LinkedServiceEncryptCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName <integration runtime name> -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
+   New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName <integration runtime name> -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
    ```
 
 3. Führen Sie den folgenden Befehl mithilfe der im vorherigen Schritt erstellten JSON-Datei aus, um den **SqlServerLinkedService** zu erstellen:

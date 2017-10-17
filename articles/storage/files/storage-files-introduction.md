@@ -12,23 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: renash
+ms.openlocfilehash: 81de67334f66a61582bb2c5d5a2303cf3a1a086c
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 5a4a26957c115277e7558c210560777af63d2d0f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-azure-files"></a>Einführung in Azure Files
 Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (auch als Common Internet File System oder CIFS bezeichnet) zugegriffen werden kann. Azure-Dateifreigaben können gleichzeitig durch die Cloud oder lokale Bereitstellungen von Windows, Linux und macOS eingebunden werden. Außerdem können Azure-Dateifreigaben auf Windows Server-Instanzen per Azure-Dateisynchronisierung (Vorschauversion) zwischengespeichert werden, um in der Nähe des Datennutzungsorts für schnellen Zugriff zu sorgen.
 
 ## <a name="videos"></a>Videos
-| Einführung in Azure Files (27 Min.) | Azure Files-Tutorial (5 Min.)  |
+| Einführung in Azure File Sync (2 Min.) | Azure Files mit Sync (Ignite 2017) (85 Min.)  |
 |-|-|
-| [![Standbild aus dem Einführungsvideo für Azure Files. Klicken Sie darauf, um die Wiedergabe zu starten.](./media/storage-files-introduction/azure-files-introduction-video-snapshot1.png)](https://www.youtube.com/watch?v=zlrpomv5RLs) | [![Standbild aus dem Tutorialvideo für Azure Files. Klicken Sie darauf, um die Wiedergabe zu starten.](./media/storage-files-introduction/azure-files-introduction-video-snapshot2.png)](https://channel9.msdn.com/Blogs/Azure/Azure-File-storage-with-Windows/) |
+| [![Standbild aus dem Einführungsvideo für Azure File Sync. Klicken Sie darauf, um die Wiedergabe zu starten.](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Standbild der Präsentation zu Azure Files mit Sync. Klicken Sie darauf, um die Wiedergabe zu starten.](./media/storage-files-introduction/azure-files-ignite-2017-video.png)](https://www.youtube.com/watch?v=r26jWDGF_rg) |
 
 ## <a name="why-azure-files-is-useful"></a>Nützlichkeit von Azure Files
 Verwendungsmöglichkeiten für Azure-Dateifreigaben:
@@ -36,7 +34,7 @@ Verwendungsmöglichkeiten für Azure-Dateifreigaben:
 * **Ersetzen oder Erweitern von lokalen Dateiservern**:  
     Azure Files kann herkömmliche lokale Dateiserver oder NAS-Geräte vollständig ersetzen bzw. erweitern. Gängige Betriebssysteme wie Windows, macOS und Linux auf der ganzen Welt können Azure-Dateifreigaben direkt bereitstellen. Azure-Dateifreigaben können auch per Azure-Dateisynchronisierung auf Windows Server-Instanzen repliziert werden (entweder lokal oder in der Cloud), um für die Daten am Ort ihrer Verwendung eine leistungsstarke und verteilte Zwischenspeicherung zu erzielen.
 
-* **Lift & Shift-Anwendungen:**  
+* **Lift &amp; Shift-Anwendungen:**  
     Azure Files vereinfacht Lift & Shift-Vorgänge in die Cloud für Anwendungen, bei denen erwartet wird, dass auf einer Dateifreigabe Dateianwendungs- oder Benutzerdaten gespeichert werden. Azure Files ermöglicht nicht nur das klassische Lift & Shift-Szenario, bei dem sowohl die Anwendung als auch die dazugehörigen Daten nach Azure verschoben werden, sondern auch das Lift & Shift-Hybridszenario, bei dem die Anwendungsdaten nach Azure Files verschoben werden und die Anwendung weiter lokal ausgeführt wird. 
 
 * **Einfachere Cloudentwicklung:**  

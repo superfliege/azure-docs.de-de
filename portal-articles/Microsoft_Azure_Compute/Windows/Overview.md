@@ -1,6 +1,6 @@
 ---
-title: "Windows virtuelle Maschinen (Übersicht) | Microsoft Docs"
-description: "Hilfeinhalt für Windows-Computer (Übersicht) in Azure-portal"
+title: "Übersicht über virtuelle Windows-Computer | Microsoft-Dokumentation"
+description: "Enthält hilfreiche Informationen zur Übersicht über virtuelle Windows-Computer im Azure-Portal."
 services: virtual-machines-windows
 author: sewatson
 manager: lwelicki
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: 03b204d9970a3831543a03dfa08e2a4d8b274034
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-virtual-machines-documentation"></a>Dokumentation zu virtuellen Windows-Computern
 
@@ -28,7 +28,7 @@ Erfahren Sie, wie Sie einen IIS-Webserver auf einem virtuellen Computer unter Wi
 
 ## <a name="step-by-step-tutorials"></a>Schritt-für-Schritt-Tutorials
 
-Informationen Sie zum Bereitstellen, verwalten und Überwachen von Windows-VMs in Azure.
+Es wird beschrieben, wie Sie virtuelle Windows-Computer in Azure bereitstellen, verwalten und überwachen.
 
 - [Erstellen und Verwalten von virtuellen Windows-Computern](/azure/virtual-machines/windows/tutorial-manage-vm)
 - [Erstellen und Verwalten von VM-Datenträgern](/azure/virtual-machines/windows/tutorial-manage-data-disk)
@@ -58,5 +58,5 @@ Stellen Sie Ihre erste Anwendung in Azure bereit.
 
 ## <a name="more"></a>Weitere Informationen
 
-- [Besuchen Sie die Dokumentation, um mehr zu erfahren](/azure/virtual-machines/windows/index)
-- [Erfahren Sie mehr über alle Azure-Dienste](https://aka.ms/j3wr7y)
+- [Weitere Informationen finden Sie in der Dokumentation](/azure/virtual-machines/windows/index)
+- [Informationen zu allen Azure-Diensten](https://aka.ms/j3wr7y)

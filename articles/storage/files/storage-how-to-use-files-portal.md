@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
+ms.openlocfilehash: e56f8bf1057a8bc2cfcde841f69022104bafff27
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: fc521fa40428caacebb072cb1aacdebf0ce977ac
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-use-azure-files-from-the-azure-portal"></a>Verwenden von Azure Files über das Azure-Portal
 Das [Azure-Portal](https://portal.azure.com) bietet eine Benutzeroberfläche für die Verwaltung von Azure Files. Sie können in Ihrem Webbrowser die folgenden Aktionen ausführen:
 
@@ -74,7 +72,7 @@ Das [Azure-Portal](https://portal.azure.com) bietet eine Benutzeroberfläche fü
 Klicken Sie zum Ermitteln des Speicherkonto-Zugriffsschlüssels für die Einbindung am unteren Rand der Verbindungsseite auf **Zugriffsschlüssel für dieses Speicherkonto anzeigen** am unteren Rand der Seite "Verbinden".
 
 ## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen zu Azure Files erhalten Sie über diese Links:
+Weitere Informationen zu Azure Files erhalten Sie über diese Links.
 
 * [Häufig gestellte Fragen](../storage-files-faq.md)
 * [Troubleshoot Azure File storage problems in Windows](storage-troubleshoot-windows-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Windows)      

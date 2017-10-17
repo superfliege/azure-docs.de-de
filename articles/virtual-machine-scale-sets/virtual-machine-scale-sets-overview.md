@@ -16,12 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 5fa08049fd0b13945de307e9d28224ea0d5a1307
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: bdd0fd0d1919f61fe586f495adadaf4eabde2dae
-ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Was sind VM-Skalierungsgruppen in Azure?
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Gruppe von identischen virtuellen Computern bereitstellen und verwalten können. Da alle virtuellen Computer in einer Skalierungsgruppe gleich konfiguriert sind, ermöglichen Skalierungsgruppen eine echte automatische Skalierung ohne Vorabbereitstellung virtueller Computer. Das erleichtert die Erstellung umfangreicher Dienste, die auf hohe Rechenleistung, Big Data und Workloads in Containern ausgelegt sind.
@@ -34,7 +33,12 @@ Die folgenden Videos enthalten weitere Informationen zu Skalierungsgruppen:
 * [VM-Skalierungsgruppen mit Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
 ## <a name="creating-and-managing-scale-sets"></a>Erstellen und Verwalten von Skalierungsgruppen
-Eine Skalierungsgruppe können Sie im [Azure-Portal](https://portal.azure.com) wie folgt erstellen: Wählen Sie **Neu** aus, und geben Sie **Skalierung** in die Suchleiste ein. In den Ergebnissen wird **VM-Skalierungsgruppe** aufgeführt. Sie können anschließend die Pflichtfelder ausfüllen, um Ihre Skalierungsgruppe anzupassen und bereitzustellen. Im Portal stehen auch Optionen zum Einrichten grundlegender Regeln für die automatische Skalierung auf der Grundlage der CPU-Auslastung zur Verfügung.
+Eine Skalierungsgruppe können Sie im [Azure-Portal](https://portal.azure.com) wie folgt erstellen: Wählen Sie **Neu** aus, und geben Sie **Skalierung** in die Suchleiste ein. In den Ergebnissen wird **VM-Skalierungsgruppe** aufgeführt. Sie können anschließend die Pflichtfelder ausfüllen, um Ihre Skalierungsgruppe anzupassen und bereitzustellen. Im Portal stehen auch Optionen zum Einrichten grundlegender Regeln für die automatische Skalierung auf der Grundlage der CPU-Auslastung zur Verfügung. 
+
+Skalierungsgruppen können in einer [Verfügbarkeitszone](../availability-zones/az-overview.md) bereitgestellt werden.
+
+> [!NOTE]
+> VM-Skalierungsgruppen unterstützen derzeit nur die Bereitstellung in einer einzelnen Verfügbarkeitszone. In Zukunft soll auch die Bereitstellung in mehreren Zonen unterstützt werden.
 
 VM-Skalierungsgruppen können genau wie einzelne virtuelle Azure Resource Manager-Computer mithilfe von JSON-Vorlagen und [REST-APIs](https://msdn.microsoft.com/library/mt589023.aspx) definiert und bereitgestellt werden. Ihnen stehen daher alle Standardbereitstellungsmethoden von Azure Resource Manager zur Verfügung. Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
@@ -89,7 +93,7 @@ Im [Azure-Portal](https://portal.azure.com) werden die Skalierungsgruppen und di
 
 Zum Anzeigen oder Bearbeiten der zugrunde liegenden JSON-Definition einer Azure-Ressource können Sie auch den [Azure-Ressourcen-Explorer](https://resources.azure.com) verwenden. Bei Skalierungsgruppen handelt es sich um eine Ressource unter dem Azure-Ressourcenanbieter „Microsoft.Compute“. Dort können Sie sie durch Erweitern folgender Links anzeigen:
 
-**Abonnements** > **Ihr Abonnement** > **resourceGroups** > **providers** > **Microsoft.Compute** > **virtualMachineScaleSets** > **Ihre Skalierungsgruppe** > usw.
+**Abonnements** > **Ihr Abonnement** > **resourceGroups** > **providers** > **Microsoft.Compute** > **virtualMachineScaleSets** > **Ihre Skalierungsgruppe** &gt; usw.
 
 ## <a name="scale-set-scenarios"></a>Szenarien für Skalierungsgruppen
 Dieser Abschnitt enthält einige typische Szenarien für Skalierungsgruppen. Einige auf höherer Ebene angesiedelte Azure-Dienste (wie Batch, Service Fabric und Azure Container Service) verwenden diese Szenarien.
@@ -167,4 +171,3 @@ Dieser Abschnitt enthält einige typische Szenarien für Skalierungsgruppen. Ein
 **A.** Ja. Eine Skalierungsgruppe ist eine implizite Verfügbarkeitsgruppe mit fünf Fehlerdomänen und fünf Updatedomänen. Skalierungsgruppen mit mehr als 100 virtuellen Computern gelten über mehrere *Platzierungsgruppen* hinweg, die wiederum mehreren Verfügbarkeitsgruppen entsprechen. Weitere Informationen zu Platzierungsgruppen finden Sie unter [Verwenden umfangreicher VM-Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md). Eine Verfügbarkeitsgruppe mit virtuellen Computern kann sich im gleichen virtuellen Netzwerk befinden wie eine Skalierungsgruppe mit virtuellen Computern. Oftmals werden virtuelle Steuerknotencomputer (für die häufig eine eindeutige Konfiguration erforderlich ist) in einer Verfügbarkeitsgruppe und Datenknoten in der Skalierungsgruppe platziert.
 
 Weitere Antworten auf Fragen zu Skalierungsgruppen finden Sie unter [Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen](virtual-machine-scale-sets-faq.md).
-
