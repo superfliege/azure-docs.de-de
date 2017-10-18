@@ -137,7 +137,7 @@ Der Zweck der Ressource „ Gateway des lokalen Netzwerks“ besteht darin, das 
 1. Melden Sie sich auf dem physischen Computer für Azure Stack an.
 2. Melden Sie sich mit Ihrem Benutzerkonto am Benutzerportal an, und klicken Sie auf **Neu**.
 3. Wählen Sie im Marketplace-Menü die Option **Netzwerk** aus.
-4. Wählen Sie in der Ressourcenliste den Eintrag für das lokale Netzwerkgateway**** aus.
+4. Wählen Sie in der Ressourcenliste den Eintrag für das **lokale Netzwerkgateway** aus.
 5. Geben Sie im Feld **Name** den Text **ER-Router-GW** ein.
 6. Verwenden Sie zum Eingeben der **IP-Adresse** Diagramm 2 als Hilfe. Die IP-Adresse der LAN-Unterschnittstelle für den ExpressRoute-Router von „Tenant 1“ lautet 10.60.3.255. Geben Sie für Ihre eigene Umgebung die IP-Adresse der entsprechenden Schnittstelle Ihres Routers ein.
 7. Geben Sie im Feld **Adressraum** den Adressraum der VNETs ein, mit denen Sie in Azure eine Verbindung herstellen möchten. Nutzen Sie für dieses Beispiel Diagramm 2 als Hilfe. Beachten Sie, dass die erforderlichen Subnetze für „Tenant 1“ **192.168.2.0/24** (Hub-VNET in Azure) und **10.100.0.0/16** (Spoke-VNET in Azure) lauten. Geben Sie die entsprechenden Subnetze für Ihre eigene Umgebung ein.
