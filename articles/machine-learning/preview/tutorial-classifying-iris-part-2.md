@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/25/2017
+ms.openlocfilehash: 273b94e9a53e36d7e8c699d3b7fa4305b881a001
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f1f270b95a60e847ce7d29c2d7d60c57891924cc
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="classifying-iris-part-2-build-a-model"></a>Klassifizieren von Iris, Teil 2: Erstellen eines Modells
 Azure Machine Learning-Dienste (Vorschau) sind eine integrierte End-to-End-Lösung für den Bereich Data Science und Advanced Analytics, mit der professionelle Datenanalysten Daten vorbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
 
@@ -38,6 +36,10 @@ In diesem Tutorial wird das zeitlose Schwertlilien-DataSet ([Iris flower dataset
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Arbeiten Sie zunächst den ersten Teil dieser Tutorialreihe durch. Führen Sie vor dem vorliegenden Tutorial die Schritte im [Tutorial zum Vorbereiten von Daten](tutorial-classifying-iris-part-1.md) aus, um Azure Machine Learning-Ressourcen zu erstellen und die Azure Machine Learning Workbench-Anwendung zu installieren.
+
+Sie können optional mit der Ausführung von Skripts für einen lokalen Docker-Container experimentieren. Hierzu muss auf Ihrem Windows- oder macOS-Computer ein lokal installiertes und gestartetes Docker-Modul vorhanden sein. (Die Community Edition ist ausreichend.) Weitere Informationen finden Sie in der [Docker-Installationsanleitung](https://docs.docker.com/engine/installation/).
+
+Wenn Sie mit der Ausführung des Skripts in einem Docker-Container auf einem virtuellen Azure-Remotecomputer oder in einem HDInsight Spark-Cluster experimentieren möchten, befolgen Sie die [Anweisungen zum Erstellen eines Ubuntu-basierten virtuellen Data Science-Azure-Computers oder HDI-Clusters](how-to-create-dsvm-hdi.md).
 
 ## <a name="review-irissklearnpy-and-configuration-files"></a>Überprüfen der Datei „iris_sklearn.py“ und der Konfigurationsdatei
 1. Starten Sie die Anwendung **Azure Machine Learning Workbench**, und öffnen Sie das Projekt **myIris**, das Sie im vorherigen Teil der Tutorialreihe erstellt haben.
@@ -102,7 +104,7 @@ Zunächst bereiten wir das Skript **iris_sklearn.py** für die erste Ausführung
 
 8. Klicken Sie im Bereich „Aufträge“ auf das Wort **Abgeschlossen** im Auftragsstatustext. Im daraufhin geöffneten Popupfenster wird der Standardausgabetext (stdout) des ausgeführten Skripts angezeigt. Um den stdout-Text zu schließen, klicken Sie oben rechts im Popupfenster auf die Schaltfläche **X**.
 
-9. Klicken Sie im selben Auftragsstatustext im Bereich „Aufträge“ auf den blauen Text **iris_sklearn.py [1]** direkt über dem Status **Abgeschlossen** und der Startzeit. Auf der daraufhin geöffneten Seite **Run Properties** (Ausführungseigenschaften) werden Informationen zu den Ausführungseigenschaften sowie **Ausgabedateien**, eventuelle **Visualisierungen** und **Protokolle** der jeweiligen Ausführung angezeigt. 
+9. Klicken Sie im gleichen Auftragsstatus im Bereich „Aufträge“ direkt über dem Status **Abgeschlossen** und der Startzeit auf den blauen Text **iris_sklearn.py [n]** (_n_ ist die Ausführungsanzahl). Auf der daraufhin geöffneten Seite **Run Properties** (Ausführungseigenschaften) werden Informationen zu den Ausführungseigenschaften sowie **Ausgabedateien**, eventuelle **Visualisierungen** und **Protokolle** der jeweiligen Ausführung angezeigt. 
 
    Nach Abschluss der Ausführung werden im Popupfenster die folgenden Ergebnisse angezeigt:
 
@@ -367,4 +369,3 @@ Sie können nun mit dem dritten Teil der Reihe fortfahren. Wir haben das logisti
 
 > [!div class="nextstepaction"]
 > [Bereitstellen eines Modells](tutorial-classifying-iris-part-3.md)
-

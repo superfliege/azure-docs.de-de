@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 09/20/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 90833fa9744eac298b0da82cd3d12f27cc237510
-ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: ba0030ca25adf13a3a831facec2ded9cff0bd882
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-6-create-measures"></a>Lektion 6: Erstellen von Measures
 
@@ -53,7 +52,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorge
     DaysCurrentQuarterToDate:=COUNTROWS( DATESQTD( 'DimDate'[Date])) 
     ```
   
-    Beachten Sie, dass die linke obere Zelle jetzt einen Measurenamen, **DaysCurrentQuarterToDate**, gefolgt von dem Ergebnis **92** enthält.
+    Beachten Sie, dass die linke obere Zelle jetzt einen Measurenamen, **DaysCurrentQuarterToDate**, gefolgt von dem Ergebnis **92** enthält. Das Ergebnis ist hier nicht relevant, da kein Benutzerfilter angewendet wurde.
     
       ![aas-lektion6-neuesmeasure](../tutorials/media/aas-lesson6-newmeasure.png) 
     
@@ -102,7 +101,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorge
     |TaxAmt|InternetTotalTaxAmt|Summe|=SUM([TaxAmt])|  
     |Freight (Fracht)|InternetTotalFreight|Summe|=SUM([Freight])|  
   
-2.  Erstellen Sie die folgenden Measures in dieser Reihenfolge durch Klicken auf eine leere Zelle im Measureraster mithilfe der Bearbeitungsleiste, und benennen Sie sie:  
+2.  Klicken Sie im Measureraster auf eine leere Zelle, und verwenden Sie die Bearbeitungsleiste, um die folgenden benutzerdefinierten Measures in der angegebenen Reihenfolge zu erstellen:  
   
       ```
       InternetPreviousQuarterMargin:=CALCULATE([InternetTotalMargin],PREVIOUSQUARTER('DimDate'[Date]))
@@ -134,4 +133,3 @@ Measures, die für die FactInternetSales-Tabelle erstellt wurden, können verwen
 [Lektion 7: Erstellen von Key Performance Indicators](../tutorials/aas-lesson-7-create-key-performance-indicators.md)  
 
   
-

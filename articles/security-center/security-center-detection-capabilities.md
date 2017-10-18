@@ -12,22 +12,21 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 09/20/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: b6a0504f2dd5d23fa135b8afc371e3a9210d7caa
-ms.lasthandoff: 04/18/2017
-
-
+ms.openlocfilehash: edef9bc1ba2420a4b7d95f891fd8b0b7e144c2ae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure Security Center-Erkennungsfunktionen
 In diesem Dokument werden die erweiterten Erkennungsfunktionen von Azure Security Center beschrieben. Mit diesen Funktionen können aktive Bedrohungen Ihrer Microsoft Azure-Ressourcen identifiziert werden, und Sie erhalten die Einblicke, die zum schnellen Ergreifen von Maßnahmen erforderlich sind.
 
+Im Standard-Tarif von Azure Security Center sind erweiterte Erkennungsverfahren verfügbar. Sie können auch eine kostenlose 60-Tage-Testversion nutzen. Über die [Sicherheitsrichtlinie](security-center-policies.md)können Sie die Tarifauswahl ändern. Weitere Informationen zu den Preisen finden Sie auf der [Security Center-Seite](https://azure.microsoft.com/pricing/details/security-center/) . 
+
 > [!NOTE]
-> Im Standard-Tarif von Azure Security Center sind erweiterte Erkennungsverfahren verfügbar. Sie können auch eine kostenlose 60-Tage-Testversion nutzen. Über die [Sicherheitsrichtlinie](security-center-policies.md)können Sie die Tarifauswahl ändern. Weitere Informationen zu den Preisen finden Sie auf der [Security Center-Seite](https://azure.microsoft.com/pricing/details/security-center/) . 
-> 
-> 
+> Für Security Center wurde als eingeschränkte Vorschauversion ein neuer Satz von Erkennungen veröffentlicht, die anhand von AuditD-Datensätzen (einem allgemeinen Überwachungsframework) schädliches Verhalten auf Linux-Computern erkennen. Wenn Sie die Vorschauversion ausprobieren möchten, senden Sie uns eine [E-Mail](mailto:ASC_linuxdetections@microsoft.com) mit Ihren Abonnement-IDs.
 
 ## <a name="responding-to-todays-threats"></a>Reagieren auf die heutigen Bedrohungen
 In den letzten 20 Jahren hat sich die Bedrohungslandschaft stark verändert. In der Vergangenheit mussten sich Unternehmen in der Regel nur Sorgen um eine mögliche Verunstaltung Ihrer Websites durch einzelne Angreifer machen, die häufig nur Ihre Fähigkeiten austesten wollten. Die Angreifer von heute sind dagegen viel besser vorbereitet und ausgerüstet. Sie verfolgen häufig bestimmte finanzielle oder strategische Ziele. Außerdem stehen ihnen mehr Ressourcen zur Verfügung, da sie von Staaten oder der organisierten Kriminalität finanziert werden.
@@ -90,5 +89,4 @@ In diesem Dokument wurde beschrieben, wie die Erkennungsfunktionen von Azure Sec
 * [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
-
 

@@ -14,14 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: renash
+ms.openlocfilehash: 98e5964f4a2dffd728dae1c452facfa6ea488167
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 3ff076f1b5c708423ee40e723875c221847258b0
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="develop-for-azure-files-with-net"></a>Entwickeln für Azure Files mit .NET 
 > [!NOTE]
 > In diesem Artikel erfahren Sie, wie Sie Azure Files mit .NET-Code verwalten. Weitere Informationen zu Azure Files finden Sie in der [Einführung in Azure Files](storage-files-introduction.md).
@@ -32,7 +30,7 @@ ms.lasthandoff: 09/25/2017
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
 ## <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
-Dieses Tutorial veranschaulicht die grundlegende Verwendung von .NET bei der Entwicklung von Anwendungen oder Diensten, die Azure Files zum Speichern von Dateidaten verwenden. In diesem Tutorial erstellen wir eine einfache Konsolenanwendung und zeigen Ihnen, wie Sie grundlegende Aktionen mit .NET und Azure Files ausführen:
+Dieses Tutorial veranschaulicht die grundlegende Verwendung von .NET bei der Entwicklung von Anwendungen oder Diensten, die Azure Files zum Speichern von Dateidaten verwenden. In diesem Tutorial erstellen wir eine einfache Konsolenanwendung und zeigen, wie Sie grundlegende Aktionen mit .NET und Azure Files ausführen:
 
 * Abrufen der Inhalte einer Datei
 * Festlegen des Kontingents (maximale Größe) für die Dateifreigabe
@@ -138,7 +136,7 @@ if (share.Exists())
 Führen Sie die Konsolenanwendung aus, um die Ausgabe zu sehen.
 
 ## <a name="set-the-maximum-size-for-a-file-share"></a>Festlegen der maximalen Größe für eine Dateifreigabe
-Ab Version 5.x der Azure Storage-Clientbibliothek können Sie das Kontingent (oder die maximale Größe) für eine Dateifreigabe in Gigabyte festlegen. Sie können auch überprüfen, wie viele Daten sich aktuell auf der Freigabe befinden.
+Ab Version 5.x der Azure Storage-Clientbibliothek können Sie das Kontingent (oder die maximale Größe) für eine Dateifreigabe in Gigabytes festlegen. Sie können auch überprüfen, wie viele Daten sich aktuell auf der Freigabe befinden.
 
 Durch Festlegen des Kontingents für eine Freigabe können Sie die Gesamtgröße der Dateien einschränken, die in der Freigabe gespeichert werden. Überschreitet die Gesamtgröße der Dateien in der Freigabe das für die Freigabe festgelegte Kontingent, können die Clients weder die Größe von vorhandenen Dateien ändern noch neue Dateien erstellen – es sei denn, diese sind leer.
 
@@ -327,10 +325,84 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
 Auf gleiche Weise können Sie ein BLOB in eine Datei kopieren. Wenn das Quellobjekt ein BLOB ist, erstellen Sie eine SAS, um den Zugriff auf dieses BLOB während des Kopiervorgangs zu authentifizieren.
 
+## <a name="share-snapshots-preview"></a>Freigabemomentaufnahmen (Vorschauversion)
+Ab Version 8.5 der Azure Storage-Clientbibliothek können Sie eine Freigabemomentaufnahme (Vorschauversion) erstellen. Außerdem können Sie Freigabemomentaufnahmen auflisten, durchsuchen und löschen. Freigabemomentaufnahmen sind schreibgeschützt. Es können also keine Schreibvorgänge für Freigabemomentaufnahmen ausgeführt werden.
+
+**Erstellen von Freigabemomentaufnahmen**
+
+Im folgenden Beispiel wird eine Freigabemomentaufnahme erstellt.
+
+```csharp
+storageAccount = CloudStorageAccount.Parse(ConnectionString); 
+fClient = storageAccount.CreateCloudFileClient(); 
+string baseShareName = "myazurefileshare"; 
+CloudFileShare myShare = fClient.GetShareReference(baseShareName); 
+var snapshotShare = myShare.Snapshot();
+
+```
+**Auflisten von Freigabemomentaufnahmen**
+
+Im folgenden Beispiel werden die Freigabemomentaufnahmen in einer Freigabe aufgelistet.
+
+```csharp
+var shares = fClient.ListShares(baseShareName, ShareListingDetails.All);
+```
+
+**Durchsuchen von Dateien und Verzeichnissen in Freigabemomentaufnahmen**
+
+Im folgenden Beispiel werden Dateien und das Verzeichnis in Freigabemomentaufnahmen durchsucht.
+
+```csharp
+CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); 
+var rootDirectory = mySnapshot.GetRootDirectoryReference(); 
+var items = rootDirectory.ListFilesAndDirectories();
+```
+
+**Auflisten von Freigaben und Freigabemomentaufnahmen sowie Wiederherstellen von Dateifreigaben oder Dateien aus Freigabemomentaufnahmen** 
+
+Die Erstellung einer Momentaufnahme von einer Dateifreigabe ermöglicht die spätere Wiederherstellung einzelner Dateien oder der gesamten Dateifreigabe. 
+
+Zum Wiederherstellen einer Datei aus einer Dateifreigabemomentaufnahme können Sie die Freigabemomentaufnahmen einer Dateifreigabe abfragen. Anschließend können Sie eine Datei abrufen, die zu einer bestimmten Freigabemomentaufnahme gehört, und diese Version direkt für Lese- und Vergleichsvorgänge oder für die Wiederherstellung verwenden.
+
+```csharp
+CloudFileShare liveShare = fClient.GetShareReference(baseShareName);
+var rootDirOfliveShare = liveShare.GetRootDirectoryReference();
+
+       var dirInliveShare = rootDirOfliveShare.GetDirectoryReference(dirName);
+var fileInliveShare = dirInliveShare.GetFileReference(fileName);
+
+           
+CloudFileShare snapshot = fClient.GetShareReference(baseShareName, snapshotTime);
+var rootDirOfSnapshot = snapshot.GetRootDirectoryReference();
+
+       var dirInSnapshot = rootDirOfSnapshot.GetDirectoryReference(dirName);
+var fileInSnapshot = dir1InSnapshot.GetFileReference(fileName);
+
+string sasContainerToken = string.Empty;
+       SharedAccessFilePolicy sasConstraints = new SharedAccessFilePolicy();
+       sasConstraints.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24);
+       sasConstraints.Permissions = SharedAccessFilePermissions.Read;
+       //Generate the shared access signature on the container, setting the constraints directly on the signature.
+sasContainerToken = fileInSnapshot.GetSharedAccessSignature(sasConstraints);
+
+string sourceUri = (fileInSnapshot.Uri.ToString() + sasContainerToken + "&" + fileInSnapshot.SnapshotTime.ToString()); ;
+fileInliveShare.StartCopyAsync(new Uri(sourceUri));
+
+```
+
+
+**Löschen von Freigabemomentaufnahmen**
+
+Im folgenden Beispiel wird eine Freigabemomentaufnahme gelöscht.
+
+```csharp
+CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
+```
+
 ## <a name="troubleshooting-azure-files-using-metrics"></a>Behandeln von Problemen mit Azure Files mithilfe von Metriken
 Azure Storage Analytics unterstützt nun Metriken für Azure Files. Mit Metrikdaten können Sie Anforderungen verfolgen und Probleme diagnostizieren.
 
-Die Metriken für Azure Files können über das [Azure-Portal](https://portal.azure.com) aktiviert werden. Sie können Metriken auch programmgesteuert aktivieren, indem Sie den Vorgang „Set File Service Properties“ über die REST API oder einen analogen Vorgang in der Speicherclientbibliothek aufrufen.
+Die Metriken für Azure Files können über das [Azure-Portal](https://portal.azure.com) aktiviert werden. Sie können Metriken auch programmgesteuert aktivieren, indem Sie den Vorgang „Set File Service Properties“ über die REST-API oder einen analogen Vorgang in der Speicherclientbibliothek aufrufen.
 
 Im folgenden Codebeispiel wird veranschaulicht, wie Sie die Storage-Clientbibliothek für .NET zum Aktivieren von Metriken für Azure Files verwenden.
 
@@ -387,16 +459,16 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 Umfassende Unterstützung bei der Problembehandlung erhalten Sie auch im [Artikel zur Problembehandlung für Azure Files](storage-troubleshoot-windows-file-connection-problems.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Files erhalten Sie über diese Links:
+Weitere Informationen zu Azure Files erhalten Sie über diese Links.
 
 ### <a name="conceptual-articles-and-videos"></a>Konzeptionelle Artikel und Videos
-* [Azure Files: ein reibungsloses Cloud-SMB-Dateisystem für Windows und Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
+* [Azure Files: a frictionless cloud SMB file system for Windows and Linux (Azure Files: ein reibungsloses Cloud-SMB-Dateisystem für Windows und Linux)](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
 * [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-file-storage"></a>Toolunterstützung für Dateispeicher
 * [Verwenden von AzCopy mit Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
-* [Troubleshooting Azure Files problems](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems) (Behandeln von Azure Files-Problemen)
+* [Troubleshooting Azure Files problems (Behandeln von Azure Files-Problemen)](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>Referenz
 * [Referenz zur Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)

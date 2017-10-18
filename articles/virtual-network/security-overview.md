@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
+ms.openlocfilehash: 98559cbb0acab91c4b2c30c6d0129e955eef85f9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
-ms.openlocfilehash: 63a313d9035422207a1ce56f0da8b388e2747685
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="network-security"></a>Netzwerksicherheit
 
@@ -59,8 +58,8 @@ Eine Netzwerksicherheitsgruppe kann – innerhalb der [Grenzwerte](../azure-subs
 
 **Überlegungen**
 
-- **Virtuelle IP des Hostknotens**: Grundlegende Infrastrukturdienste wie DHCP, DNS und die Systemüberwachung werden über die virtualisierten Host-IP-Adressen 168.63.129.16 und 169.254.169.254 bereitgestellt. Diese öffentlichen IP-Adressen gehören Microsoft und sind die einzigen virtuellen IP-Adressen, die in allen Regionen zu diesem Zweck verwendet werden. Die IP-Adressen werden der physischen IP-Adresse des Servercomputers (Hostknoten) zugeordnet, der die VM hostet. Der Hostknoten fungiert als DHCP-Relay, als rekursiver DNS-Resolver und als Integritätstestquelle für den Load Balancer und den Computer. Bei der Kommunikation mit diesen IP-Adressen handelt es sich nicht um einen Angriff. Wenn Sie den Datenverkehr an bzw. von diesen IP-Adressen blockieren, funktioniert ein virtueller Computer unter Umständen nicht richtig.
-- **Lizenzierung (Schlüsselverwaltungsdienst)**: Die auf den VMs verwendeten Windows-Images müssen lizenziert sein. Zum Sicherstellen der Lizenzierung wird eine entsprechende Anforderung an die Hostserver des Schlüsselverwaltungsdiensts gesendet, die solche Abfragen verarbeiten. Die Anforderung wird in ausgehender Richtung über Port 1688 gesendet.
+- **Virtuelle IP des Hostknotens**: Grundlegende Infrastrukturdienste wie DHCP, DNS und die Systemüberwachung werden über die virtualisierten Host-IP-Adressen 168.63.129.16 und 169.254.169.254 bereitgestellt. Diese öffentlichen IP-Adressen gehören Microsoft und sind die einzigen virtuellen IP-Adressen, die in allen Regionen zu diesem Zweck verwendet werden. Die Adressen werden der physischen IP-Adresse des Servercomputers (Hostknoten) zugeordnet, der den virtuellen Computer hostet. Der Hostknoten fungiert als DHCP-Relay, als rekursiver DNS-Resolver und als Integritätstestquelle für den Load Balancer und den Computer. Bei der Kommunikation mit diesen IP-Adressen handelt es sich nicht um einen Angriff. Wenn Sie den Datenverkehr an bzw. von diesen IP-Adressen blockieren, funktioniert ein virtueller Computer unter Umständen nicht richtig.
+- **Lizenzierung (Schlüsselverwaltungsdienst)**: Die auf virtuellen Computern ausgeführten Windows-Images müssen lizenziert werden. Zum Sicherstellen der Lizenzierung wird eine entsprechende Anforderung an die Hostserver des Schlüsselverwaltungsdiensts gesendet, die solche Abfragen verarbeiten. Die Anforderung wird in ausgehender Richtung über Port 1688 gesendet.
 - **Virtuelle Computer in Pools mit Lastenausgleich**: Der angewendete Quellport und -adressbereich stammen vom Ausgangscomputer, nicht vom Lastenausgleich. Der Zielport und -adressbereich sind für den Zielcomputer bestimmt, nicht für den Lastenausgleich.
 - **Azure-Dienstinstanzen**: Instanzen mehrerer Azure-Dienste, z.B. HDInsight, Anwendungsdienstumgebungen und VM-Skalierungsgruppen, werden in Subnetzen virtueller Computer bereitgestellt. Machen Sie sich auf jeden Fall mit den Portanforderungen für die einzelnen Dienste vertraut, bevor Sie eine Netzwerksicherheitsgruppe auf das Subnetz anwenden, in dem die Ressource bereitgestellt wurde. Wenn Sie den Datenverkehr für Ports verweigern, die für den Dienst benötigt werden, funktioniert der Dienst nicht richtig. 
 
@@ -126,7 +125,7 @@ Sie können die Standardregeln nicht entfernen, aber Sie können sie außer Kraf
 
 * **VirtualNetwork** (*Resource Manager) (**VIRTUAL_NETWORK** für klassisch): Dieses Tag enthält den VM-Adressraum (alle für das virtuelle Netzwerk definierten CIDR-Bereiche), alle verbundenen lokalen Adressräume und [per Peering verknüpfte](virtual-network-peering-overview.md) virtuelle Netzwerke oder virtuelle Netzwerke, die mit einem [VM-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verbunden sind.
 * **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** für klassisch): Dieses Tag symbolisiert den Lastenausgleich der Azure-Infrastruktur. Das Tag wird in eine [Azure-Datencenter-IP-Adresse](https://www.microsoft.com/download/details.aspx?id=41653) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert. Sie können diese Regel außer Kraft setzen, wenn Sie den Lastenausgleich von Azure nicht verwenden.
-* **Internet** (Resource Manager) (**INTERNET** für klassisch): Mit diesem Tag wird der Azure-Adressraum für öffentliche IP-Adressen angegeben. Die Adressen dieses Tags sind im Dokument zum [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) aufgeführt, das regelmäßig aktualisiert wird.
+* **Internet** (Resource Manager) (**INTERNET** klassisch): Dieses Tag stellt den IP-Adressraum dar, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist. Der Adressbereich schließt den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) ein.
 * **AzureTrafficManager** (nur Resource Manager): Mit diesem Tag wird der IP-Adressraum für den Azure Traffic Manager-Dienst angegeben.
 * **Storage** (nur Resource Manager): Mit diesem Tag wird der IP-Adressraum für den Azure Storage-Dienst angegeben. Wenn Sie *Storage* als Wert angeben, wird der Datenverkehr für den Speicher zugelassen oder verweigert. Falls Sie den Zugriff auf den Speicher nur für eine bestimmte [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region angeben. Wenn Sie den Zugriff auf Azure Storage beispielsweise nur für die Region „USA, Osten“ zulassen möchten, können Sie *Storage.EastUS* als Diensttag angeben. Zusätzliche verfügbare regionale Diensttags: Storage.AustraliaEast, Storage.AustraliaSoutheast, Storage.EastUS, Storage.UKSouth, Storage.WestCentralUS, Storage.WestUS und Storage.WestUS2. Das Tag steht für den Dienst, aber nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure Storage-Dienst, aber nicht für ein bestimmtes Azure Storage-Konto.
 * **Sql** (nur Resource Manager): Dieses Tag steht für die Adresspräfixe der Azure SQL-Datenbank- und Azure SQL Data Warehouse-Dienste. Sie können für dieses Diensttag nur bestimmte Regionen angeben. Wenn Sie den Zugriff auf Azure SQL-Datenbank beispielsweise nur für die Region „USA, Osten“ zulassen möchten, können Sie *Sql.EastUS* als Diensttag angeben. Es ist nicht möglich, nur Sql für alle Azure-Regionen anzugeben, sondern Sie müssen die Regionen einzeln angeben. Andere verfügbare regionale Diensttags: Sql.AustraliaEast, Sql.AustraliaSoutheast, Sql.EastUS, Sql.UKSouth, Sql.WestCentralUS, Sql.WestUS und Sql.WestUS2. Das Tag steht für den Dienst, aber nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure SQL-Datenbank-Dienst, aber nicht für eine bestimmte Azure SQL-Datenbank.
@@ -152,7 +151,7 @@ Wenn Sie andere Regeln erstellen und andere Anwendungssicherheitsgruppen als Zie
  
 Informationen zu den Grenzwerten beim Erstellen von Anwendungssicherheitsgruppen und zum Angeben in Sicherheitsregeln finden Sie unter [Einschränkungen bei Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-Anwendungssicherheitsgruppen sind als Vorschauversion verfügbar. Vor der Verwendung von Netzwerksicherheitsgruppen müssen Sie diese entsprechend registrieren, indem Sie die Schritte 1 bis 5 unter [Create a network security group with application security groups](create-network-security-group-preview.md#powershell) (Erstellen einer Netzwerksicherheitsgruppe mit Anwendungssicherheitsgruppen) ausführen und die wichtigen Informationen unter [Vorschaufeatures](#preview-features) lesen. Während der Vorschauphase sind Anwendungssicherheitsgruppen auf den Bereich des virtuellen Netzwerks beschränkt. Virtuelle Netzwerke, die über Querverweise auf Anwendungssicherheitsgruppen einer Netzwerksicherheitsgruppe per Peering miteinander verknüpft sind, werden nicht angewendet. 
+Anwendungssicherheitsgruppen sind als Vorschauversion verfügbar. Vor der Verwendung von Anwendungssicherheitsgruppen müssen Sie diese entsprechend registrieren, indem Sie die Schritte 1 bis 5 unter [Create a network security group with application security groups](create-network-security-group-preview.md#powershell) (Erstellen einer Netzwerksicherheitsgruppe mit Anwendungssicherheitsgruppen) ausführen und die Informationen unter [Vorschaufeatures](#preview-features) lesen. Während der Vorschauphase sind Anwendungssicherheitsgruppen auf den Bereich des virtuellen Netzwerks beschränkt. Virtuelle Netzwerke, die über Querverweise auf Anwendungssicherheitsgruppen einer Netzwerksicherheitsgruppe per Peering miteinander verknüpft sind, werden nicht angewendet. 
 
 Features, die sich in der Vorschauphase befinden, weisen nicht den gleichen Grad an Verfügbarkeit und Zuverlässigkeit wie bereits allgemein verfügbare Features auf. Vor der Verwendung von Anwendungssicherheitsgruppen müssen Sie diese zuerst entsprechend registrieren. Die Features sind nur in der folgenden Region verfügbar: USA, Westen-Mitte.
 
@@ -160,4 +159,3 @@ Features, die sich in der Vorschauphase befinden, weisen nicht den gleichen Grad
 
 * Arbeiten Sie das Tutorial [Erstellen einer Netzwerksicherheitsgruppe](virtual-networks-create-nsg-arm-pportal.md) durch.
 * Arbeiten Sie das Tutorial [Create a network security group with application security groups](create-network-security-group-preview.md) (Erstellen einer Netzwerksicherheitsgruppe mit Anwendungssicherheitsgruppen) durch.
-

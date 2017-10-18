@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
+ms.openlocfilehash: bfdcc4aadab18091b2f57e8bc751b37d1bac4d26
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 8ef8a1cc2393f0befbf83c3124b67b405ae06898
-ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Installieren des Azure AD Connect Health-Agents
 In diesem Dokument werden Sie durch die Installation und Konfiguration der Azure AD Connect Health-Agents geleitet. Sie können die Agents [hier](active-directory-aadconnect-health.md#download-and-install-azure-ad-connect-health-agent)herunterladen.
@@ -37,7 +36,19 @@ Die folgende Tabelle enthält eine Liste mit Anforderungen für die Verwendung v
 | Die SSL-Überprüfung für ausgehenden Datenverkehr ist gefiltert oder deaktiviert. | Beim Agent-Registrierungsschritt oder bei Datenuploads tritt unter Umständen ein Fehler auf, wenn auf der Netzwerkebene eine SSL-Überprüfung oder Beendigung für ausgehenden Datenverkehr erfolgt. |
 | Firewall-Ports auf dem Server, auf dem der Agent ausgeführt wird. |Für den Agent müssen die folgenden Firewallports geöffnet sein, damit er mit den Azure AD Health-Dienstendpunkten kommunizieren kann:</br></br><li>TCP-Port 443</li><li>TCP-Port 5671</li> |
 | Zulassen der folgenden Websites, wenn die verstärkte IE-Sicherheit aktiviert ist |Wenn die verstärkte IE-Sicherheit aktiviert ist, müssen die folgenden Websites auf dem Server zugelassen werden, auf dem der Agent installiert werden soll:</br></br><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li><li>https://login.windows.net</li><li>Der Verbundserver für Ihre Organisation, dem Azure Active Directory vertraut. Beispiel: https://sts.contoso.com</li> |
+| Sicherstellen, dass mindestens PowerShell 4. 0 installiert ist | <li>Windows Server 2008 R2 verfügt standardmäßig über PowerShell 2.0. Diese Version ist für den Agent jedoch nicht ausreichend.  Aktualisieren Sie PowerShell, wie unter [Installation des Agents auf Windows Server 2008 R2-Servern](#agent-installation-on-windows-server-2008-r2-servers) beschrieben.</li><li>Windows Server 2012 verfügt standardmäßig über PowerShell 3.0. Diese Version ist für den Agent jedoch nicht ausreichend.  [Aktualisieren](http://www.microsoft.com/en-us/download/details.aspx?id=40855) Sie Windows Management Framework.</li><li>Windows Server 2012 R2 und höhere Versionen verfügen standardmäßig über eine geeignete PowerShell-Version.</li>|
 |Deaktivieren von FIPS|FIPS wird von Azure AD Connect Health-Agents nicht unterstützt.|
+
+## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>Herunterladen und Installieren des Azure AD Connect Health-Agents
+* Vergewissern Sie sich, dass Sie [die Anforderungen für Azure AD Connect Health erfüllen](active-directory-aadconnect-health-agent-install.md#requirements).
+* Erste Schritte mit Azure AD Connect Health für AD FS
+    * [Laden Sie den Azure AD Connect Health-Agent für AD FS herunter.](http://go.microsoft.com/fwlink/?LinkID=518973)
+    * [Zeigen Sie die Installationsanweisungen an](#installing-the-azure-ad-connect-health-agent-for-ad-fs).
+* Erste Schritte mit Azure AD Connect Health für die Sychronisierung
+    * [Laden Sie die aktuelle Version von Azure AD Connect herunter, und installieren Sie sie](http://go.microsoft.com/fwlink/?linkid=615771). Der Health-Agent für die Synchronisierung wird im Rahmen der Installation von Azure AD Connect installiert (Version 1.0.9125.0 oder höher).
+* Erste Schritte mit Azure AD Connect Health für AD DS
+    * [Laden Sie den Azure AD Connect Health-Agent für AD DS herunter](http://go.microsoft.com/fwlink/?LinkID=820540).
+    * [Zeigen Sie die Installationsanweisungen an](#installing-the-azure-ad-connect-health-agent-for-ad-ds).
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Installieren des Azure AD Connect Health-Agents für AD FS
 Um die Installation des Agents zu starten, doppelklicken Sie auf die EXE-Datei, die Sie heruntergeladen haben. Klicken Sie auf dem ersten angezeigten Bildschirm auf "Installieren".
@@ -89,11 +100,11 @@ Um mithilfe der Nutzungsanalyse Daten zu sammeln und zu analysieren, benötigt d
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>So aktivieren Sie die Überwachung für AD FS unter Windows Server 2008 R2
 1. Klicken Sie auf **Start**, zeigen Sie auf **Programme** und dann auf **Verwaltung**, und klicken Sie anschließend auf **Lokale Sicherheitsrichtlinie**.
-2. Navigieren Sie zum Ordner **Sicherheitseinstellungen\Lokale Richtlinien\User Rights Management**, und doppelklicken Sie dann auf „Generieren von Sicherheitsüberwachungen“.
+2. Navigieren Sie zum Ordner **Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten**, und doppelklicken Sie dann auf **Generieren von Sicherheitsüberwachungen**.
 3. Stellen Sie auf der Registerkarte **Lokale Sicherheitseinstellung** sicher, dass das AD FS 2.0-Dienstkonto aufgeführt wird. Wenn es nicht vorhanden ist, klicken Sie auf **Benutzer oder Gruppe hinzufügen** und fügen es der Liste hinzu. Klicken Sie dann auf **OK**.
-4. Öffnen Sie zum Aktivieren der Überwachung eine Eingabeaufforderung mit erhöhten Rechten, und führen Sie den folgenden Befehl aus: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>
-5. Schließen Sie "Lokale Sicherheitsrichtlinie", und öffnen Sie dann das Verwaltungs-Snap-In. Klicken Sie zum Öffnen des Verwaltungs-Snap-Ins auf **Start**, zeigen Sie auf **Programme** und dann auf **Verwaltung**, und klicken Sie anschließend auf „AD FS 2.0 Management“.
-6. Klicken Sie im Bereich "Aktionen" auf "Verbunddiensteigenschaften bearbeiten".
+4. Öffnen Sie zum Aktivieren der Überwachung eine Eingabeaufforderung mit erhöhten Rechten, und führen Sie den folgenden Befehl aus: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>.
+5. Schließen Sie **Lokale Sicherheitsrichtlinie**, und öffnen Sie dann das Snap-In **AD FS-Verwaltung**. Klicken Sie zum Öffnen des Snap-Ins „AD FS-Verwaltung“ auf **Start**, zeigen Sie auf **Programme** > **Verwaltung**, und klicken Sie anschließend auf **AD FS 2.0 Management**.
+6. Klicken Sie im Bereich **Aktionen** auf **Verbunddiensteigenschaften bearbeiten**.
 7. Klicken Sie im Dialogfeld **Verbunddiensteigenschaften** auf die Registerkarte **Ereignisse**.
 8. Aktivieren Sie die Kontrollkästchen **Erfolgreiche Überprüfungen** und **Fehlerüberprüfungen**.
 9. Klicken Sie auf **OK**.
@@ -303,4 +314,3 @@ Sie können das Flag -ShowResults im Befehl verwenden, um detaillierte Protokoll
 * [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
-

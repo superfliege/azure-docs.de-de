@@ -1,29 +1,27 @@
 ---
 title: "Azure-Schnellstart – Sichern einer VM per Azure CLI | Microsoft-Dokumentation"
 description: Es wird beschrieben, wie Sie Ihre virtuellen Computer mit der Azure CLI sichern.
-services: virtual-machines-linux, azure-backup
+services: backup, virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: 
 tags: azure-resource-manager, virtual-machine-backup
 ms.assetid: 
-ms.service: virtual-machines-linux, azure-backup
+ms.service: backup, virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 09/18/2017
+ms.workload: storage-backup-recovery
+ms.date: 10/02/2017
 ms.author: iainfou
 ms.custom: mvc
+ms.openlocfilehash: b0820613e5b08895148391837c1d7b28cb207128
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: b01916516d15ffee46f135e175ee4136f79acbe5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Sichern eines virtuellen Computers in Azure per CLI
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in georedundanten Recovery-Tresoren gespeichert werden können. In diesem Artikel wird ausführlich beschrieben, wie Sie einen virtuellen Computer (VM) in Azure mit der Azure CLI sichern. Sie können diese Schritte auch mit [Azure PowerShell](quick-backup-vm-powershell.md) oder im [Azure-Portal](quick-backup-vm-portal.md) ausführen.
 
@@ -31,21 +29,17 @@ Dieser Schnellstart ermöglicht die Sicherung auf einer vorhandenen Azure-VM. We
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.18 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
-
-
-## <a name="register-the-azure-backup-resource-provider"></a>Registrieren des Azure Backup-Ressourcenanbieters
-Bei der ersten Verwendung von Azure Backup müssen Sie den Azure Recovery Service-Anbieter in Ihrem Abonnement mit [az provider register](/cli/azure/provider?view=azure-cli-latest#az_provider_register) registrieren.
-
-```azurecli-interactive
-az provider register --namespace Microsoft.RecoveryServices
-```
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie mindestens die Version 2.0.18 der Azure-Befehlszeilenschnittstelle. Führen Sie zum Ermitteln der Version der Befehlszeilenschnittstelle Folgendes aus: ༖༗. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
 
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 Ein Recovery Services-Tresor ist ein logischer Container, in dem die Sicherungsdaten für jede geschützte Ressource, z.B. Azure-VMs, gespeichert werden. Wenn der Sicherungsauftrag für eine geschützte Ressource ausgeführt wird, wird im Recovery Services-Tresor ein Wiederherstellungspunkt erstellt. Sie können einen dieser Wiederherstellungspunkte dann verwenden, um Daten für einen bestimmten Zeitpunkt wiederherzustellen.
 
-Erstellen Sie einen Recovery Services-Tresor mit **az backup vault create**. Geben Sie dieselbe Ressourcengruppe und denselben Standort wie für die zu schützende VM an. Wenn Sie den [VM-Schnellstart](../virtual-machines/linux/quick-create-cli.md) verwendet haben, hat die Ressourcengruppe den Namen *myResourceGroup*, die VM heißt *myVM* und die Ressourcen befinden sich am Standort *eastus*.
+Erstellen Sie einen Recovery Services-Tresor mit [az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault#az_backup_vault_create). Geben Sie dieselbe Ressourcengruppe und denselben Standort wie für die zu schützende VM an. Wenn Sie den [VM-Schnellstart](../virtual-machines/linux/quick-create-cli.md) verwendet haben, haben Sie Folgendes erstellt:
+
+- Eine Ressourcengruppe namens *myResourceGroup*.
+- Einen virtuellen Computer namens *myVM*.
+- Ressourcen am Standort *eastus*.
 
 ```azurecli-interactive 
 az backup vault create --resource-group myResourceGroup \
@@ -53,11 +47,11 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-Für den Tresor ist standardmäßig die georedundante Speicherung festgelegt. Als weiterer Schutz für Ihre Daten wird auf dieser Speicherredundanzebene sichergestellt, dass Ihre Sicherungsdaten in einer sekundären Azure-Region repliziert werden, die Hunderte Kilometer von der primären Region entfernt ist.
+Für den Recovery Services-Tresor ist standardmäßig die georedundante Speicherung festgelegt. Georedundanter Speicher sorgt dafür, dass Ihre Sicherungsdaten in einer sekundären Azure-Region repliziert werden, die Hunderte von Kilometern von der primären Region entfernt ist.
 
 
 ## <a name="enable-backup-for-an-azure-vm"></a>Aktivieren der Sicherung für eine Azure-VM
-Sie erstellen und verwenden Richtlinien, um zu definieren, wann ein Sicherungsauftrag ausgeführt wird und wie lange die Wiederherstellungspunkte gespeichert werden. Bei der Standardschutzrichtlinie wird jeden Tag ein Sicherungsauftrag ausgeführt, und Wiederherstellungspunkte werden 30 Tage lang beibehalten. Sie können diese Standardrichtlinienwerte verwenden, um Ihre VM schnell zu schützen. Verwenden Sie **az backup protection enable-for-vm**, um den Sicherungsschutz für eine VM zu aktivieren. Geben Sie die Ressourcengruppe und die zu schützende VM und anschließend die Richtlinie an, die verwendet werden soll:
+Erstellen Sie eine Schutzrichtlinie, um zu definieren, wann ein Sicherungsauftrag ausgeführt werden soll und wie lange die Wiederherstellungspunkte gespeichert werden sollen. Bei der Standardschutzrichtlinie wird jeden Tag ein Sicherungsauftrag ausgeführt, und Wiederherstellungspunkte werden 30 Tage lang beibehalten. Sie können diese Standardrichtlinienwerte verwenden, um Ihre VM schnell zu schützen. Verwenden Sie [az backup protection enable-for-vm](https://docs.microsoft.com/cli/azure/backup/protection#az_backup_protection_enable_for_vm), um den Sicherungsschutz für einen virtuellen Computer zu aktivieren. Geben Sie die Ressourcengruppe und die zu schützende VM und anschließend die Richtlinie an, die verwendet werden soll:
 
 ```azurecli-interactive 
 az backup protection enable-for-vm \
@@ -69,7 +63,7 @@ az backup protection enable-for-vm \
 
 
 ## <a name="start-a-backup-job"></a>Starten eines Sicherungsauftrags
-Verwenden Sie **az backup protection backup-now**, um sofort einen Sicherungsvorgang zu starten, anstatt zu warten, bis die Standardrichtlinie den Auftrag zum geplanten Zeitpunkt ausführt. Bei diesem ersten Sicherungsauftrag wird ein vollständiger Wiederherstellungspunkt erstellt. Bei jedem Sicherungsauftrag nach diesem ersten Sicherungsvorgang werden dann inkrementelle Wiederherstellungspunkte erstellt. Inkrementelle Wiederherstellungspunkte sind in Bezug auf die Speicherung und die Dauer effizient, da nur Änderungen übertragen werden, die seit der letzten Sicherung vorgenommen wurden.
+Verwenden Sie [az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az_backup_protection_backup_now), um sofort einen Sicherungsvorgang zu starten, anstatt zu warten, bis die Standardrichtlinie den Auftrag zum geplanten Zeitpunkt ausführt. Bei diesem ersten Sicherungsauftrag wird ein vollständiger Wiederherstellungspunkt erstellt. Bei jedem Sicherungsauftrag nach diesem ersten Sicherungsvorgang werden dann inkrementelle Wiederherstellungspunkte erstellt. Inkrementelle Wiederherstellungspunkte sind in Bezug auf die Speicherung und die Dauer effizient, da nur Änderungen übertragen werden, die seit der letzten Sicherung vorgenommen wurden.
 
 Die folgenden Parameter werden verwendet, um die VM zu sichern:
 
@@ -88,11 +82,9 @@ az backup protection backup-now \
     --retain-until 18-10-2017
 ```
 
-Da bei diesem ersten Sicherungsauftrag ein vollständiger Wiederherstellungspunkt erstellt wird, kann der Vorgang bis zu 20 Minuten dauern.
-
 
 ## <a name="monitor-the-backup-job"></a>Überwachen des Sicherungsauftrags
-Verwenden Sie **az backup job list**, um den Status von Sicherungsaufträgen zu überwachen:
+Verwenden Sie [az backup job list](https://docs.microsoft.com/cli/azure/backup/job#az_backup_job_list), um den Status von Sicherungsaufträgen zu überwachen:
 
 ```azurecli-interactive 
 az backup job list \
@@ -116,7 +108,7 @@ Wenn der *Status* des Sicherungsauftrags als *Completed* gemeldet wird, ist Ihre
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 Wenn die Komponenten nicht mehr benötigt werden, können Sie den Schutz auf der VM deaktivieren, die Wiederherstellungspunkte und den Recovery Services-Tresor entfernen und anschließend die Ressourcengruppe und die dazugehörigen VM-Ressourcen löschen. Falls Sie eine vorhandene VM verwendet haben, können Sie den abschließenden Befehl [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete) überspringen, damit die Ressourcengruppe und die VM erhalten bleiben.
 
-Wenn Sie mit einem Backup-Tutorial fortfahren möchten, in dem die Wiederherstellung von Daten für Ihre VM beschrieben wird, können Sie die Schritte in diesem Abschnitt überspringen und mit [Nächste Schritte](#next-steps) fortfahren. 
+Unter [Nächste Schritte](#next-steps) finden Sie ein Sicherungstutorial, in dem die Wiederherstellung von Daten für Ihren virtuellen Computer erläutert wird. 
 
 ```azurecli-interactive 
 az backup protection disable \
@@ -137,4 +129,3 @@ In diesem Schnellstart haben Sie einen Recovery Services-Tresor erstellt, den Sc
 
 > [!div class="nextstepaction"]
 > [Sichern von mehreren Azure-VMs](./tutorial-backup-vm-at-scale.md)
-

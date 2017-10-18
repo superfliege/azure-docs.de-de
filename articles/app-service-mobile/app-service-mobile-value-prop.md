@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
+ms.openlocfilehash: 8576f2b6adce044d2060c3ba6d19ac330e3637c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 166cebeb20ecc79b447dac25f243f07163a6d127
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="getting-started"> </a>Informationen zu Mobile Apps in Azure App Service
+# <a name="getting-started"></a>Informationen zu Mobile Apps in Azure App Service
 Azure App Service ist ein vollständig verwaltetes PaaS-Angebot ([Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)) für professionelle Entwickler. Der Dienst stellt umfangreiche Funktionen für Web- und Integrationsszenarien sowie für mobile Szenarien bereit. 
 
 Das Mobile Apps-Feature von Azure App Service bietet Unternehmensentwicklern und Systemintegratoren eine hochgradig skalierbare, global verfügbare Entwicklungsplattform für mobile Anwendungen.
@@ -68,7 +67,7 @@ Die folgenden Plattformfeatures sind für mobile Produktionswebsites nützlich:
 
 * **Continuous Deployment:** App Service kann in gängige SCM-Systeme (Supply Chain Management) integriert werden, sodass Sie automatisch eine neue Version Ihres Back-Ends bereitstellen können, indem Sie sie mittels Pushvorgang an eine Verzweigung Ihres SCM-Systems übermitteln.
 
-  Erfahren Sie mehr über [Bereitstellungsoptionen].
+  Erfahren Sie mehr über [Bereitstellungsoptionen](../app-service/app-service-deploy-local-git.md).
 
 * **Virtuelles Netzwerk:** App Service kann eine Verbindung mit lokalen Ressourcen über ein virtuelles Netzwerk, über Azure ExpressRoute oder über Hybridverbindungen herstellen.
 
@@ -87,7 +86,6 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 
 <!-- URLs. -->
 [Migrate your mobile service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [Einstiegstutorial]: app-service-mobile-ios-get-started.md
 [Azure Table Storage]:../cosmos-db/table-storage-how-to-use-dotnet.md
 [Azure Cosmos DB]: ../cosmos-db/documentdb-get-started.md
@@ -100,12 +98,10 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [(Xamarin.iOS und Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin.Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[hier]: ../app-service-web/web-sites-scale.md
-[Stagingumgebungen]: ../app-service-web/web-sites-staged-publishing.md
-[Bereitstellungsoptionen]: ../app-service-web/web-sites-deploy.md
+[hier]: ../app-service/web-sites-scale.md
+[Stagingumgebungen]: ../app-service/web-sites-staged-publishing.md
 [Hybridverbindungen]: ../biztalk-services/integration-hybrid-connection-overview.md
-[virtuelle Netzwerke]: ../app-service-web/web-sites-integrate-with-vnet.md
-[ExpressRoute]: ../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md
-[hier]: ../app-service-web/app-service-app-service-environment-intro.md
+[virtuelle Netzwerke]: ../app-service/web-sites-integrate-with-vnet.md
+[ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
+[hier]: ../app-service/environment/intro.md
 [Lernpfad]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
-

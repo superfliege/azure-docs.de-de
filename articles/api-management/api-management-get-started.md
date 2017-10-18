@@ -15,16 +15,16 @@ ms.topic: hero-article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 6e76d1ee08f804637999ef2ebf5d25becf6a0408
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-first-api-in-azure-api-management"></a>Verwalten Ihrer ersten API in Azure API Management
-## <a name="overview"> </a>Übersicht
+## <a name="overview"></a>Übersicht
 Diese Anleitung beschreibt die ersten Schritte mit Azure API Management und Ihrem ersten API-Aufruf.
 
-## <a name="concepts"> </a>Was ist Azure API Management?
+## <a name="concepts"></a>Was ist Azure API Management?
 Mithilfe von Azure API Management können Sie ein API-Programm mit vollem Funktionsumfang auf einem beliebigen Back-End starten.
 
 Zu den häufigen Szenarios gehören:
@@ -57,7 +57,7 @@ Das System setzt sich aus den folgenden Komponenten zusammen:
   * Erstellen eines Kontos und Anfordern von API-Schlüsseln
   * Zugriff auf Nutzungsanalysen
 
-## <a name="create-service-instance"> </a>Erstellen einer API Management-Instanz
+## <a name="create-service-instance"></a>Erstellen einer API Management-Instanz
 > [!NOTE]
 > Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][Azure Free Trial].
 > 
@@ -71,7 +71,7 @@ Geben Sie für **Name** einen eindeutigen Unterdomänennamen für die Dienst-URL
 
 Wählen Sie die gewünschten Werte für **Abonnement**, **Ressourcengruppe** und **Region** für Ihre Dienstinstanz aus.
 
-Geben Sie **Contoso Ltd.** unter **Organisationsname** ein, und geben Sie Ihre E-Mail-Adresse in das Feld **Administrator-E-Mail** ein.
+Geben Sie unter **Organisationsname** die Zeichenfolge **Contoso Ltd.** und im Feld **Administrator-E-Mail** Ihre E-Mail-Adresse ein.
 
 > [!NOTE]
 > Diese E-Mail-Adresse wird für Benachrichtigungen vom API Management-System verwendet. Weitere Informationen finden Sie unter [Konfigurieren von Benachrichtigungen und E-Mail-Vorlagen in Azure API Management][How to configure notifications and email templates in Azure API Management].
@@ -93,7 +93,7 @@ Klicken Sie zum Starten der Bereitstellung der Dienstinstanz auf **Erstellen**.
 
 Nach der Erstellung der Dienstinstanz können Sie eine API erstellen oder importieren.
 
-## <a name="create-api"> </a>Importieren einer API
+## <a name="create-api"></a>Importieren einer API
 Eine API besteht aus einem Satz von Operationen, die aus Clientanwendungen aufgerufen werden können. API-Operationen funktionieren als Proxys für vorhandene Webdienste.
 
 Sie können eine API manuell erstellen (und ihr Operationen hinzufügen), oder Sie importieren eine API. In diesem Tutorial wird die API für einen Rechner-Beispielwebdienst importiert, der von Microsoft bereitgestellt und in Azure gehostet wird.
@@ -140,7 +140,7 @@ In diesem Lernprogramm wurde die Basic Calculator-API zum Starter-Produkt hinzug
 
 Um API-Aufrufe ausführen zu können, müssen Entwickler zunächst das Produkt abonnieren, das Zugriff auf die API bietet. Entwickler können die Produkte im Entwicklerportal abonnieren. Administratoren können Entwickler im Herausgeberportal für Produkte abonnieren. Sie sind standardmäßig als Administrator konfiguriert, da Sie die API Management-Dienstinstanz in den vorherigen Schritten des Lernprogramms erstellt haben. Aus diesem Grund haben Sie alle Produkte bereits standardmäßig abonniert.
 
-## <a name="call-operation"> </a>Aufrufen einer Operation aus dem Entwicklerportal
+## <a name="call-operation"></a>Aufrufen einer Operation aus dem Entwicklerportal
 Operationen können direkt aus dem Entwicklerportal aufgerufen werden. Dies ist ein einfacher Weg, um die Operationen einer API anzuzeigen und zu testen. In diesem Schritt des Tutorials rufen Sie die Operation **Add two integers** der Basic Calculator-API auf. Klicken Sie im Herausgeberportal im Menü oben rechts auf **Entwicklerportal**.
 
 ![Entwicklerportal][api-management-developer-portal-menu]
@@ -163,7 +163,7 @@ Nach dem Aufruf der Operation zeigt das Entwicklerportal den **Antwortstatus**, 
 
 ![Antwort][api-management-invoke-get-response]
 
-## <a name="view-analytics"> </a>Anzeigen von Analysen
+## <a name="view-analytics"></a>Anzeigen von Analysen
 Um Analysen für "Basic Calculator" anzuzeigen, wechseln Sie zurück zum Herausgeberportal, indem Sie im Entwicklerportal im Menü oben rechts auf **Verwalten** klicken.
 
 ![Verwalten][api-management-manage-menu]
@@ -196,7 +196,7 @@ Der Abschnitt **Analyse** enthält die folgenden vier Registerkarten:
 * **Integrität** konzentriert sich auf Statuscodes, Cache-Treffer und Antwortzeiten für APIs und Dienste.
 * **Aktivität** enthält Berichte mit detaillierten Informationen zur Aktivität pro Entwickler, Produkt, API und Operation.
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie Ihre API mit [Aufruflimits](api-management-howto-product-with-rules.md)schützen können.
 
 [Azure Free Trial]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a

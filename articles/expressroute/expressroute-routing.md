@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: osamam
+ms.openlocfilehash: ecb71e8cfc1d723521024ecb79665f4a3117bd4b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: e6e2009717430a692528cd3ec3a2c6e46a12fe03
-ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -73,10 +72,18 @@ Sie können für das private Peering öffentliche oder private IPv4-Adressen ver
 ### <a name="public-peering"></a>Öffentliches Peering
 Der öffentliche Azure-Peeringpfad ermöglicht, dass Sie zu allen in Azure gehosteten Diensten über die öffentliche IP-Adresse eine Verbindung herstellen können. Dazu zählen Dienste, die unter [ExpressRoute – Häufig gestellte Fragen](expressroute-faqs.md) aufgeführt sind und die von ISVs auf Microsoft Azure gehostet werden. Die Konnektivität mit Microsoft Azure-Diensten für öffentliches Peering wird immer von Ihrem Netzwerk aus in das Microsoft-Netzwerk initiiert. Sie müssen öffentliche IP-Adressen für den Datenverkehr verwenden, der für das Microsoft-Netzwerk bestimmt ist.
 
+> [!IMPORTANT]
+> Auf alle Azure-PaaS-Dienste kann auch über Microsoft-Peering zugegriffen werden. Wir empfehlen, Microsoft-Peering zu erstellen und eine Verbindung mit Azure-PaaS-Diensten über Microsoft-Peering herzustellen.  
+>   
+
+
+Für öffentliches Peering kann eine private AS-Nummer verwendet werden.
+
 ### <a name="microsoft-peering"></a>Microsoft-Peering
-Mit dem Microsoft-Peeringpfad können Sie eine Verbindung mit den Clouddiensten von Microsoft herstellen, die vom öffentlichen Azure-Peeringpfad nicht unterstützt werden. Die Liste der Dienste umfasst Office 365-Dienste wie z.B. Exchange Online, SharePoint Online, Skype for Business und Dynamics 365. Microsoft unterstützt die bidirektionale Konnektivität für das Microsoft-Peering. Für Datenverkehr, der für Microsoft-Clouddienste bestimmt ist, müssen vor dem Eintritt in das Microsoft-Netzwerk gültige, öffentliche IPv4-Adressen verwendet werden.
+Über den Microsoft-Peeringpfad können Sie eine Verbindung mit allen Microsoft-Clouddiensten herstellen, die unter öffentlichen IP-Adressen gehostet werden. Hierzu zählen unter anderem Office 365, Dynamics 365 und Microsoft Azure-PaaS-Dienste. Microsoft unterstützt die bidirektionale Konnektivität für das Microsoft-Peering. Für Datenverkehr, der für Microsoft-Clouddienste bestimmt ist, müssen vor dem Eintritt in das Microsoft-Netzwerk gültige, öffentliche IPv4/IPv6-Adressen verwendet werden.
 
 Stellen Sie sicher, dass Ihre IP-Adresse und die AS-Nummer für Sie in einer der folgenden Registrierungen registriert sind:
+
 
 * [ARIN](https://www.arin.net/)
 * [APNIC](https://www.apnic.net/)
@@ -85,6 +92,10 @@ Stellen Sie sicher, dass Ihre IP-Adresse und die AS-Nummer für Sie in einer der
 * [RIPENCC](https://www.ripe.net/)
 * [RADB](http://www.radb.net/)
 * [ALTDB](http://altdb.net/)
+
+Falls Ihre Präfixe und Ihre AS-Nummer in den obigen Registrierungen nicht Ihnen zugewiesen sind, müssen Sie eine Supportanfrage zur manuellen Überprüfung Ihrer Präfixe und ASN stellen. Dazu benötigt der Support Belege – beispielsweise ein Autorisierungsschreiben, das beweist, dass Sie zur Verwendung der Ressourcen berechtigt sind.
+
+Für Microsoft-Peering kann eine private AS-Nummer verwendet werden, dies erfordert jedoch ebenfalls eine manuelle Überprüfung.
 
 > [!IMPORTANT]
 > Öffentliche IP-Adressen, die gegenüber Microsoft per ExpressRoute angekündigt werden, dürfen nicht im Internet angekündigt werden. Ansonsten wird die Verbindung mit anderen Microsoft-Diensten unter Umständen unterbrochen. Öffentliche IP-Adressen, die von Servern in Ihrem Netzwerk verwendet werden, für die mit O365-Endpunkten innerhalb von Microsoft kommuniziert wird, können aber über ExpressRoute angekündigt werden. 
@@ -134,39 +145,40 @@ Sie können mehr als eine ExpressRoute-Verbindung pro geopolitischer Region erwe
 | **Microsoft Azure-Region** | **BGP-Communitywert** |
 | --- | --- |
 | **Nordamerika** | |
-| USA (Ost) |12076:51004 |
-| USA (Ost) 2 |12076:51005 |
-| USA (West) |12076:51006 |
-| USA, Westen 2 |12076:51026 |
-| USA, Westen-Mitte |12076:51027 |
-| USA (Mitte/Norden) |12076:51007 |
-| USA Süd Mitte |12076:51008 |
-| USA (Mitte) |12076:51009 |
-| Kanada, Mitte |12076:51020 |
-| Kanada, Osten |12076:51021 |
+| USA (Ost) | 12076:51004 |
+| USA (Ost) 2 | 12076:51005 |
+| USA (West) | 12076:51006 |
+| USA, Westen 2 | 12076:51026 |
+| USA, Westen-Mitte | 12076:51027 |
+| USA (Mitte/Norden) | 12076:51007 |
+| USA Süd Mitte | 12076:51008 |
+| USA (Mitte) | 12076:51009 |
+| Kanada, Mitte | 12076:51020 |
+| Kanada, Osten | 12076:51021 |
 | **Südamerika** | |
-| Brasilien Süd |12076:51014 |
+| Brasilien Süd | 12076:51014 |
 | **Europa** | |
-| Nordeuropa |12076:51003 |
-| Westeuropa |12076:51002 |
+| Nordeuropa | 12076:51003 |
+| Westeuropa | 12076:51002 |
 | UK, Süden | 12076:51024 |
 | UK, Westen | 12076:51025 |
 | **Asien-Pazifik** | |
-| Ostasien |12076:51010 |
-| Südostasien |12076:51011 |
+| Ostasien | 12076:51010 |
+| Südostasien | 12076:51011 |
 | **Japan** | |
-| Japan Ost |12076:51012 |
-| Japan (Westen) |12076:51013 |
+| Japan Ost | 12076:51012 |
+| Japan (Westen) | 12076:51013 |
 | **Australien** | |
-| Australien (Osten) |12076:51015 |
-| Australien (Südosten) |12076:51016 |
+| Australien (Osten) | 12076:51015 |
+| Australien (Südosten) | 12076:51016 |
 | **Indien** | |
-| Indien, Süden |12076:51019 |
-| Indien, Westen |12076:51018 |
-| Indien, Mitte |12076:51017 |
+| Indien, Süden | 12076:51019 |
+| Indien, Westen | 12076:51018 |
+| Indien, Mitte | 12076:51017 |
 | **Korea** | |
-| Korea, Süden |12076:51028 |
-| Korea, Mitte |12076:51029 |
+| Korea, Süden | 12076:51028 |
+| Korea, Mitte | 12076:51029 |
+
 
 Alle Routen, die von Microsoft angekündigt werden, werden mit dem entsprechenden Communitywert gekennzeichnet. 
 
@@ -179,11 +191,11 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 
 | **Service** | **BGP-Communitywert** |
 | --- | --- |
-| Exchange Online |12076:5010 |
-| SharePoint Online |12076:5020 |
-| Skype for Business Online |12076:5030 |
-| Dynamics 365 |12076:5040 |
-| Andere Office 365 Online-Dienste |12076:5100 |
+| Exchange Online | 12076:5010 |
+| SharePoint Online | 12076:5020 |
+| Skype for Business Online | 12076:5030 |
+| Dynamics 365 | 12076:5040 |
+| Andere Office 365 Online-Dienste | 12076:5100 |
 
 > [!NOTE]
 > Microsoft berücksichtigt keine BGP-Communitywerte, die von Ihnen für die gegenüber Microsoft angekündigten Routen festgelegt werden.
@@ -218,5 +230,4 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
   * [Erstellen einer ExpressRoute-Verbindung für das klassische Bereitstellungsmodell](expressroute-howto-circuit-classic.md) oder [Erstellen und Ändern einer ExpressRoute-Verbindung mit Azure Resource Manager](expressroute-howto-circuit-arm.md)
   * [Konfigurieren des Routings für das klassische Bereitstellungsmodell](expressroute-howto-routing-classic.md) oder [Konfigurieren des Routings für das Resource Manager-Bereitstellungsmodell](expressroute-howto-routing-arm.md)
   * [Verknüpfen eines klassischen VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md) oder [Verknüpfen eines Resource Manager-VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
-
 

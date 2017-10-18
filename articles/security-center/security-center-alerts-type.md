@@ -12,25 +12,24 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/20/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 19f71e0d5a8a4642b86ae60a3ab2a4042fa2990e
-ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
-
+ms.openlocfilehash: 274c50dad9b8a1d79a71a29b04cb8e44ad91893c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Verstehen der Sicherheitswarnungen in Azure Security Center
 In diesem Artikel werden die verschiedenen Arten von Sicherheitswarnungen und verwandte Informationen beschrieben, die in Azure Security Center verfügbar sind. Weitere Informationen zur Verwaltung von Warnungen und Vorfällen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
 
+Führen Sie ein Upgrade auf Azure Security Center Standard durch, um erweiterte Erkennungsfunktionen einzurichten. Sie können auch eine kostenlose 60-Tage-Testversion nutzen. Wählen Sie in der [Sicherheitsrichtlinie](security-center-policies.md) den **Tarif** aus, wenn Sie ein Upgrade durchführen möchten. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
+
 > [!NOTE]
-> Führen Sie ein Upgrade auf Azure Security Center Standard durch, um erweiterte Erkennungsfunktionen einzurichten. Sie können auch eine kostenlose 60-Tage-Testversion nutzen. Wählen Sie in der [Sicherheitsrichtlinie](security-center-policies.md) den **Tarif** aus, wenn Sie ein Upgrade durchführen möchten. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
->
+> Für Security Center wurde als eingeschränkte Vorschauversion ein neuer Satz von Erkennungen veröffentlicht, die anhand von AuditD-Datensätzen (einem allgemeinen Überwachungsframework) schädliches Verhalten auf Linux-Computern erkennen. Wenn Sie die Vorschauversion ausprobieren möchten, senden Sie uns eine [E-Mail](mailto:ASC_linuxdetections@microsoft.com) mit Ihren Abonnement-IDs.
 
 ## <a name="what-type-of-alerts-are-available"></a>Welche Art von Warnungen ist verfügbar?
-Azure Security Center verwendet eine Vielzahl von [Erkennungsfunktionen](security-center-detection-capabilities.md), um Kunden vor potenziellen Angriffen auf ihre Umgebungen zu warnen. Diese Warnungen enthalten wichtige Informationen über den Auslöser der Warnung, die möglicherweise betroffenen Ressourcen und die Quelle des Angriffs. Die in einer Warnung enthaltenen Informationen variieren je nach Typ der Analyse, mit der die Bedrohung erkannt wird. Vorfälle können auch zusätzliche Kontextinformationen beinhalten, die bei der Untersuchung einer Bedrohung hilfreich sein können.  Dieser Artikel enthält Informationen über die folgenden Warnungstypen:
+Azure Security Center verwendet eine Vielzahl von [Erkennungsfunktionen](security-center-detection-capabilities.md), um Kunden vor potenziellen Angriffen auf ihre Umgebungen zu warnen. Diese Warnungen enthalten wichtige Informationen zum Auslöser der Warnung, zu den möglicherweise betroffenen Ressourcen und zur Quelle des Angriffs. Die in einer Warnung enthaltenen Informationen variieren je nach Typ der Analyse, mit der die Bedrohung erkannt wird. Vorfälle können auch zusätzliche Kontextinformationen beinhalten, die bei der Untersuchung einer Bedrohung hilfreich sein können.  Dieser Artikel enthält Informationen über die folgenden Warnungstypen:
 
 * Verhaltensanalyse von VMs (Virtual Machine Behavioral Analysis, VMBA)
 * Netzwerkanalyse
@@ -45,9 +44,9 @@ In Azure Security Center kann die Verhaltensanalyse verwendet werden, um komprom
 >
 
 ### <a name="crash-analysis"></a>Absturzanalyse
-Die Absturzabbild-Speicheranalyse ist ein Verfahren zum Erkennen von anspruchsvoller Schadsoftware, mit der herkömmliche Sicherheitslösungen umgangen werden können. Mit verschiedenen Arten von Schadsoftware wird versucht, die Wahrscheinlichkeit für die Entdeckung durch Antivirenprogramme zu verringern. Zu diesem Zweck werden niemals Daten auf Datenträger geschrieben oder auf Datenträger geschriebene Softwarekomponenten verschlüsselt. So wird erreicht, dass die Schadsoftware mit herkömmlichen Antischadsoftware-Verfahren nur schwer erkannt werden kann. Schadsoftware dieser Art kann aber mithilfe der Arbeitsspeicheranalyse erkannt werden, da die Schadsoftware Spuren im Arbeitsspeicher hinterlassen muss, um funktionieren zu können.
+Die Absturzabbild-Speicheranalyse ist ein Verfahren zum Erkennen von anspruchsvoller Schadsoftware, mit der herkömmliche Sicherheitslösungen umgangen werden können. Mit verschiedenen Arten von Schadsoftware wird versucht, die Wahrscheinlichkeit für die Entdeckung durch Antivirenprogramme zu verringern. Zu diesem Zweck werden niemals Daten auf Datenträger geschrieben oder auf Datenträger geschriebene Softwarekomponenten verschlüsselt. Mit dieser Technik wird erreicht, dass die Schadsoftware mit herkömmlichen Antischadsoftware-Verfahren nur schwer erkannt werden kann. Schadsoftware dieser Art kann aber mithilfe der Arbeitsspeicheranalyse erkannt werden, da die Schadsoftware Spuren im Arbeitsspeicher hinterlassen muss, um funktionieren zu können.
 
-Beim Absturz von Software wird in einem Absturzabbild ein Teil des Arbeitsspeichers zum Zeitpunkt des Absturzes erfasst. Der Absturz kann durch Schadsoftware, allgemeine Anwendungsprobleme oder Systemfehler verursacht werden. Indem die Arbeitsspeicherdaten im Absturzabbild analysiert werden, kann Security Center Verfahren erkennen, die für folgende Zwecke verwendet werden: Ausnutzen von Schwachstellen in Software, Zugreifen auf vertrauliche Daten und Bewegen auf einem kompromittierten Computer. Dies wird mit einer minimalen Auswirkung auf die Leistung von Hosts erreicht, da die Analyse vom Security Center-Back-End durchgeführt wird.
+Beim Absturz von Software wird in einem Absturzabbild ein Teil des Arbeitsspeichers zum Zeitpunkt des Absturzes erfasst. Der Absturz kann auf Schadsoftware, allgemeine Anwendungsprobleme oder Systemfehler zurückzuführen sein. Indem die Arbeitsspeicherdaten im Absturzabbild analysiert werden, kann Security Center Verfahren erkennen, die für folgende Zwecke verwendet werden: Ausnutzen von Schwachstellen in Software, Zugreifen auf vertrauliche Daten und Bewegen auf einem kompromittierten Computer. Dies wird mit einer minimalen Auswirkung auf die Leistung von Hosts erreicht, da die Analyse vom Security Center-Back-End durchgeführt wird.
 
 Die folgenden Felder gelten für die Absturzabbildbeispiele weiter unten in diesem Artikel:
 
@@ -62,7 +61,7 @@ Das Beispiel für die Shellcode-Warnung enthält das folgende zusätzliche Feld:
 
 * ADDRESS: Speicherort im Arbeitsspeicher des Shellcodes
 
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![Shellcode-Warnung](./media/security-center-alerts-type/security-center-alerts-type-fig2.png)
 
@@ -78,7 +77,7 @@ Zusätzlich zu den allgemeinen Feldern, die oben im Abschnitt „Erkennung von S
 * HIJACKEDMODULEPATH: Pfad des Windows-Systemmoduls, das Opfer des Hijacking-Vorgangs geworden ist.
 * HIJACKINGMODULEPATH: Enthält den Pfad des Hijacking-Moduls.
 
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![Warnung vor Modul-Hijacking](./media/security-center-alerts-type/security-center-alerts-type-fig3.png)
 
@@ -97,7 +96,7 @@ Zusätzlich zu den allgemeinen Feldern, die oben im Abschnitt „Erkennung von S
 
 Diese Warnung extrahiert auch bestimmte Felder aus dem PE-Header des Moduls, z.B. „CHECKSUM“ und „TIMESTAMP“, und zeigt sie an. Diese Felder werden nur angezeigt, wenn sie im Modul vorhanden sind. Details zu diesen Feldern finden Sie in der [Microsoft PE- und COFF-Spezifikation](https://msdn.microsoft.com/windows/hardware/gg463119.aspx).
 
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![Warnung vor Windows-Maskerade](./media/security-center-alerts-type/security-center-alerts-type-fig4.png)
 
@@ -111,21 +110,21 @@ Zusätzlich zu den allgemeinen Feldern, die oben im Abschnitt „Erkennung von S
 * MODULENAME: Enthält den Namen der geänderten Systembinärdatei.
 * MODULEVERSION: Enthält die Version der geänderten Systembinärdatei.
 
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![Warnung vor Änderung einer Systembinärdatei](./media/security-center-alerts-type/security-center-alerts-type-fig5.png)
 
 ### <a name="suspicious-process-executed"></a>Ausgeführter verdächtiger Prozess
 Security Center identifiziert einen verdächtigen Prozess, der auf einem virtuellen Zielcomputer ausgeführt wird, und löst dann eine Warnung aus. Die Erkennung sucht nicht nach dem bestimmten Namen, sondern nach dem Parameter der ausführbaren Datei. So kann der verdächtige Prozess von Security Center auch dann erkannt werden, wenn der Angreifer die ausführbare Datei umbenennt.
 
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![Warnung vor verdächtigem Prozess](./media/security-center-alerts-type/security-center-alerts-type-fig6-new.png)
 
-### <a name="multiple-domain-accounts-queried"></a>Vermehrte Abfragen von Domänenkonten
-Security Center kann mehrere Abfrageversuche für Active Directory-Domänenkonten erkennen. Dies wird von Angreifern normalerweise während der Netzwerkerkundung durchgeführt. Angreifer können dieses Verfahren nutzen, um die Domäne für folgende Zwecke abzufragen: Wer sind die Benutzer, wie lauten die Administratorkonten der Domäne, welche Computer sind Domänencontroller und welche potenziellen Vertrauensstellungen mit anderen Domänen bestehen für die Domäne?
+### <a name="multiple-domains-accounts-queried"></a>Abfrage mehrerer Domänenkonten
+Security Center kann mehrere Abfrageversuche für Active Directory-Domänenkonten erkennen. Dies wird von Angreifern üblicherweise im Rahmen der Netzwerkerkundung durchgeführt. Angreifer können dieses Verfahren nutzen, um die Domäne für folgende Zwecke abzufragen: Wer sind die Benutzer, wie lauten die Administratorkonten der Domäne, welche Computer sind Domänencontroller und welche potenziellen Vertrauensstellungen mit anderen Domänen bestehen für die Domäne?
 
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![Warnung vor mehreren Domänenkonten](./media/security-center-alerts-type/security-center-alerts-type-fig7-new.png)
 
@@ -133,7 +132,7 @@ Hier ist ein Beispiel für diese Art von Warnung angegeben:
 
 Security Center löst eine Warnung aus, wenn in Windows Server 2016 und Windows 10 das Sicherheitsereignis 4798 eintritt. Dies passiert, wenn lokale Administratorgruppen aufgezählt werden. Normalerweise wird dieses Verfahren von Angreifern während der Netzwerkerkundung durchgeführt. Angreifer können es nutzen, um die Identität von Benutzern mit Administratorrechten abzufragen.
 
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![Lokaler Administrator](./media/security-center-alerts-type/security-center-alerts-type-fig14-new.png)
 
@@ -141,7 +140,7 @@ Hier ist ein Beispiel für diese Art von Warnung angegeben:
 
 Security Center löst eine Warnung aus, wenn erkannt wird, dass in der Befehlszeile eine Mischung aus Groß- und Kleinbuchstaben verwendet wird. Angreifer nutzen dieses Verfahren unter Umständen zur Umgehung der Berücksichtigung von Groß-/Kleinschreibung oder von Computerregeln auf Hashbasis.
 
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![Ungewöhnliche Mischung](./media/security-center-alerts-type/security-center-alerts-type-fig15-new.png)
 
@@ -152,7 +151,7 @@ Ein kompromittierter [krbtgt](https://technet.microsoft.com/library/dn745899.asp
 > [!NOTE] 
 > Weitere Informationen zu Kerberos Golden Tickets finden Sie im [Windows 10 Credential Theft Mitigation Guide](http://download.microsoft.com/download/C/1/4/C14579CA-E564-4743-8B51-61C0882662AC/Windows%2010%20credential%20theft%20mitigation%20guide.docx) (Leitfaden zur Verhinderung des Diebstahls von Anmeldeinformationen unter Windows 10).
 
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![Golden Ticket](./media/security-center-alerts-type/security-center-alerts-type-fig16-new.png)
 
@@ -160,7 +159,7 @@ Hier ist ein Beispiel für diese Art von Warnung angegeben:
 
 Security Center löst eine Warnung aus, wenn ein Konto erstellt wird, das einem vorhandenen integrierten Konto mit Administratorrechten stark ähnelt. Dieses Verfahren kann von Angreifern verwendet werden, um ein nicht autorisiertes Konto zu erstellen und so bei einer Überprüfung durch Menschen der Entdeckung zu entgehen.
  
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![Verdächtiges Konto](./media/security-center-alerts-type/security-center-alerts-type-fig17-new.png)
 
@@ -168,7 +167,7 @@ Hier ist ein Beispiel für diese Art von Warnung angegeben:
 
 Angreifer können versuchen, die Hostsicherheit zu umgehen, indem sie benutzerdefinierte Firewallregeln erstellen. Auf diese Weise sollen schädliche Anwendungen die Möglichkeit zur Kommunikation mit dem Steuerungszentrum haben, oder über den kompromittierten Host sollen Angriffe auf das Netzwerk erfolgen. Security Center löst eine Warnung aus, wenn erkannt wird, dass aus einer ausführbaren Datei an einem verdächtigen Speicherort eine neue Firewallregel erstellt wurde.
  
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![Firewallregel](./media/security-center-alerts-type/security-center-alerts-type-fig18-new.png)
 
@@ -176,7 +175,7 @@ Hier ist ein Beispiel für diese Art von Warnung angegeben:
 
 Security Center löst eine Warnung aus, wenn erkannt wird, dass von einem Microsoft-HTML-Anwendungshost (HTA) PowerShell-Befehle ausgeführt werden. Dieses Verfahren wird von Angreifern genutzt, um schädliche PowerShell-Skripts zu starten.
  
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![HTA und PS](./media/security-center-alerts-type/security-center-alerts-type-fig19-new.png)
 
@@ -189,7 +188,7 @@ Für Netzwerkgeräte ist die Ermittlung und Profilerstellung nahezu genauso wie 
 
 ![Warnung vor verdächtigem ausgehendem Datenverkehr](./media/security-center-alerts-type/security-center-alerts-type-fig8.png)
 
-Diese Warnung liefert Informationen, die Sie zum Identifizieren der Ressource verwenden können, die zum Initiieren des Angriffs genutzt wurde. Diese Warnung enthält auch Informationen, mit denen der kompromittierte Computer, der Erkennungszeitpunkt und das verwendete Protokoll und der Port identifiziert werden können. Auf diesem Blatt ist auch eine Liste mit Lösungsschritten angegeben, die Sie ausführen können, um das Problem zu beseitigen.
+Diese Warnung liefert Informationen, die Sie zum Identifizieren der Ressource verwenden können, die zum Initiieren des Angriffs genutzt wurde. Diese Warnung enthält auch Informationen, mit denen der kompromittierte Computer, der Erkennungszeitpunkt und das verwendete Protokoll und der Port identifiziert werden können. Auf dieser Seite ist auch eine Liste mit Lösungsschritten für das Problem angegeben.
 
 ### <a name="network-communication-with-a-malicious-machine"></a>Netzwerkkommunikation mit einem schädlichen Computer
 Durch die Nutzung von Microsoft Threat Intelligence-Feeds kann Azure Security Center kompromittierte Computer erkennen, die mit schädlichen IP-Adressen kommunizieren. Häufig gehört die schädliche Adresse zu einem Befehls- und Steuerungszentrum (Command and Control Center). In diesem Fall hat Security Center erkannt, dass für die Kommunikation die Schadsoftware „Pony Loader“ (auch als [Fareit](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=PWS:Win32/Fareit.AF) bekannt) verwendet wurde.
@@ -206,7 +205,7 @@ Diese Warnung enthält Informationen, mit denen Sie die für den Angriff verwend
 ### <a name="possible-outgoing-denial-of-service-attack-detected"></a>Möglichen Denial-of-Service-Angriff in ausgehender Richtung erkannt
 Anomaler Netzwerkdatenverkehr, der von einem virtuellen Computer stammt, kann dazu führen, dass Security Center eine Warnung vor einem potenziellen Denial-of-Service-Angriff auslöst.
 
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
 ![Ausgehender DoS-Angriff](./media/security-center-alerts-type/security-center-alerts-type-fig10-new.png)
 
@@ -254,4 +253,3 @@ In diesem Artikel wurden die unterschiedlichen Arten von Sicherheitswarnungen in
 * [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md)
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Konformität von Azure.
-

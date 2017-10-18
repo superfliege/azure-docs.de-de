@@ -12,20 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 06/29/2016
+ms.date: 09/25/2017
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: cafe4f2d9ae9a79fd2e27b8734bda43bb774eeb2
-ms.openlocfilehash: e0ef1b006a2b202c08a71caaff4ef4d763d50d0a
-
-
+ms.openlocfilehash: f9fef96b71e0db7b15ff5208e9bd1a0b4ecf7211
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-notification-hubs-with-xamarin-for-android"></a>Erste Schritte mit Notification Hubs mit Xamarin für Android
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Übersicht
-In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Azure Notification Hubs eine Pushbenachrichtigung an eine Xamarin.Android-App senden.
-Sie erstellen eine leere Xamarin.Android-App, die Pushbenachrichtigungen mithilfe von Google Cloud Messaging (GCM) empfängt. Sobald Sie dieses Lernprogramm abgeschlossen haben, können Sie über Ihren Notification Hub Pushbenachrichtigungen an alle Geräte senden, die Ihre App ausführen. Der komplette Code ist in der [NotificationHubs-Beispiel-App][GitHub] verfügbar.
+In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Azure Notification Hubs eine Pushbenachrichtigung an eine Xamarin.Android-App senden. Sie erstellen eine leere Xamarin.Android-App, die Pushbenachrichtigungen mithilfe von Google Cloud Messaging (GCM) empfängt. Sobald Sie dieses Lernprogramm abgeschlossen haben, können Sie über Ihren Notification Hub Pushbenachrichtigungen an alle Geräte senden, die Ihre App ausführen. Der komplette Code ist in der [NotificationHubs-Beispiel-App][GitHub] verfügbar.
 
 Das Lernprogramm zeigt ein einfaches Übertragungsszenario mithilfe von Notification Hubs.
 
@@ -55,7 +54,7 @@ Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen N
 ## <a name="configure-your-notification-hub"></a>Konfigurieren Ihres Notification Hub
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="7">
+<ol start="5">
 
 <li><p>Klicken Sie auf die Registerkarte <b>Konfigurieren</b>, geben Sie den Wert für den <b>API-Schlüssel</b> ein, den Sie im vorherigen Abschnitt erhalten haben, und klicken Sie auf <b>Speichern</b>.</p>
 </li>
@@ -65,18 +64,18 @@ Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen N
 Der Notification Hub ist jetzt für die Arbeit mit GCM konfiguriert, und Sie besitzen die Verbindungszeichenfolge, um die App für den Empfang von Benachrichtigungen zu registrieren und Pushbenachrichtigungen zu versenden.
 
 ## <a name="connect-your-app-to-the-notification-hub"></a>Verbinden Ihrer App mit dem Notification Hub
-### <a name="create-a-new-project"></a>Erstellen eines neuen Projekts
-1. Klicken Sie in Xamarin Studio auf **New Solution**, dann auf **Android App** und danach auf **Next**.
+Erstellen Sie zunächst ein neues Projekt.
+1. Klicken Sie in Xamarin Studio auf **Neue Projektmappe** > **Android-App** und anschließend auf **Weiter**.
    
       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project1.png)
 
-2. Geben Sie die Werte für **App-Name** und **Bezeichner** ein. Klicken Sie auf **Target Platforms**, um die Zielplattformen anzugeben, die Sie unterstützen möchten, und dann auf **Next** und **Create**.
+2. Geben Sie die Werte für **App-Name** und **Bezeichner** ein. Wählen Sie die **Zielplattformen** aus, die Sie unterstützen möchten, und klicken Sie dann auf **Weiter** > **Erstellen**.
    
       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project2.png)
 
     Dadurch wird ein neues Android-Projekt erstellt.
 
-1. Klicken Sie in der Lösungsansicht mit der rechten Maustaste auf Ihr neues Projekt, und wählen Sie **Options**aus, um die Projekteigenschaften zu öffnen. Wählen Sie im Bereich **Build** das Element **Android Application** aus.
+3. Klicken Sie in der Lösungsansicht mit der rechten Maustaste auf Ihr neues Projekt, und wählen Sie **Options**aus, um die Projekteigenschaften zu öffnen. Wählen Sie im Bereich **Build** das Element **Android Application** aus.
    
     Ihr **Package name** muss mit einem Kleinbuchstaben beginnen.
    
@@ -86,10 +85,9 @@ Der Notification Hub ist jetzt für die Arbeit mit GCM konfiguriert, und Sie bes
    > 
    
       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub--xamarin-android-app-options.png)
-2. Legen Sie optional die **Minimum Android version** auf einen anderen API Level fest.
-3. Legen Sie optional die **Target Android version** auf Ihre gewünschte Zielversion der API fest (API Level 8 oder höher).
-
-Klicken Sie auf **OK** , um das Dialogfeld „Project Options“ zu schließen.
+4. Legen Sie optional die **Minimum Android version** auf einen anderen API Level fest.
+5. Legen Sie optional die **Target Android version** auf Ihre gewünschte Zielversion der API fest (API Level 8 oder höher).
+6. Klicken Sie auf **OK**, um das Dialogfeld mit den Projektoptionen zu schließen.
 
 ### <a name="add-the-required-components-to-your-project"></a>Hinzufügen der gewünschten Komponenten zum Projekt
 Der im Xamarin Component Store erhältliche Google Cloud Messaging Client vereinfacht das Vorgehen bei der Bereitstellung von Pushbenachrichtigungen in Xamarin.Android.
@@ -105,22 +103,23 @@ Der im Xamarin Component Store erhältliche Google Cloud Messaging Client verein
    * **Verbindungszeichenfolge für Überwachung**: Klicken Sie auf dem [Dashboard im klassischen Azure-Portal] auf **Verbindungszeichenfolgen anzeigen**. Kopieren Sie die Verbindungszeichenfolge *DefaultListenSharedAccessSignature* für diesen Wert.
    * **Hub-Name**: Dies ist der Name des Hubs aus dem [Dashboard im klassischen Azure-Portal]. Beispiel: *mynotificationhub2*.
      
-     Erstellen Sie eine **Constants.cs** -Klasse für Ihr Xamarin-Projekt und definieren Sie die folgenden Konstantenwerte in der Klasse. Ersetzen Sie die Platzhalter durch Ihre Werte.
+2. Erstellen Sie eine **Constants.cs** -Klasse für Ihr Xamarin-Projekt und definieren Sie die folgenden Konstantenwerte in der Klasse. Ersetzen Sie die Platzhalter durch Ihre Werte.
      
-       public static class Constants   {
+        public static class Constants
+        {
      
            public const string SenderID = "<GoogleProjectNumber>"; // Google API Project Number
            public const string ListenConnectionString = "<Listen connection string>";
            public const string NotificationHubName = "<hub name>";
-       }
-2. Fügen Sie die folgenden using-Anweisungen zu **MainActivity.cs**hinzu:
+        }
+3. Fügen Sie die folgenden using-Anweisungen zu **MainActivity.cs**hinzu:
    
         using Android.Util;
         using Gcm.Client;
-3. Fügen Sie der `MainActivity` -Klasse eine Instanzvariable hinzu, die bei laufender App zum Anzeigen eines Warndialogfelds verwendet wird.
+4. Fügen Sie der `MainActivity` -Klasse eine Instanzvariable hinzu, die bei laufender App zum Anzeigen eines Warndialogfelds verwendet wird.
    
         public static MainActivity instance;
-4. Fügen Sie der **MainActivity** -Klasse die folgende Methode hinzu:
+5. Fügen Sie der **MainActivity** -Klasse die folgende Methode hinzu:
    
         private void RegisterWithGCM()
         {
@@ -132,7 +131,7 @@ Der im Xamarin Component Store erhältliche Google Cloud Messaging Client verein
             Log.Info("MainActivity", "Registering...");
             GcmClient.Register(this, Constants.SenderID);
         }
-5. Initialisieren Sie in der `OnCreate`-Methode von **MainActivity.cs** die `instance`-Variable, und fügen Sie einen Aufruf von `RegisterWithGCM` hinzu:
+6. Initialisieren Sie in der `OnCreate`-Methode von **MainActivity.cs** die `instance`-Variable, und fügen Sie einen Aufruf von `RegisterWithGCM` hinzu:
    
         protected override void OnCreate (Bundle bundle)
         {
@@ -149,13 +148,13 @@ Der im Xamarin Component Store erhältliche Google Cloud Messaging Client verein
    
             RegisterWithGCM();
         }
-6. Erstellen Sie eine neue Klasse namens **MyBroadcastReceiver**.
+7. Erstellen Sie eine neue Klasse namens **MyBroadcastReceiver**.
    
    > [!NOTE]
    > Die Erstellung einer **BroadcastReceivers** -Klasse wird nachstehend von Grund auf erläutert. Eine schnelle Alternative zur manuellen Erstellung von **MyBroadcastReceiver.cs** ist jedoch ein Verweis auf die Datei **GcmService.cs** im Xamarin.Android-Projektbeispiel in den [NotificationHubs-Beispielen][GitHub]. Sie können für den Anfang auch **GcmService.cs** duplizieren und die Klassennamen ändern.
    > 
    > 
-7. Fügen Sie die folgenden „using“-Anweisungen in **MyBroadcastReceiver.cs** ein (mit Verweis auf die zuvor hinzugefügte Komponente und Assembly):
+8. Fügen Sie die folgenden „using“-Anweisungen in **MyBroadcastReceiver.cs** ein (mit Verweis auf die zuvor hinzugefügte Komponente und Assembly):
    
         using System.Collections.Generic;
         using System.Text;
@@ -164,7 +163,7 @@ Der im Xamarin Component Store erhältliche Google Cloud Messaging Client verein
         using Android.Util;
         using Gcm.Client;
         using WindowsAzure.Messaging;
-8. Fügen Sie **MyBroadcastReceiver.cs** die folgenden Berechtigungsanforderungen zwischen den **using**-Anweisungen und der **namespace**-Deklaration hinzu:
+9. Fügen Sie **MyBroadcastReceiver.cs** die folgenden Berechtigungsanforderungen zwischen den **using**-Anweisungen und der **namespace**-Deklaration hinzu:
    
         [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
         [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -174,7 +173,7 @@ Der im Xamarin Component Store erhältliche Google Cloud Messaging Client verein
         [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
         [assembly: UsesPermission(Name = "android.permission.INTERNET")]
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
-9. Ändern Sie in **MyBroadcastReceiver.cs** die Klasse **MyBroadcastReceiver** auf folgende Weise:
+10. Ändern Sie in **MyBroadcastReceiver.cs** die Klasse **MyBroadcastReceiver** auf folgende Weise:
    
         [BroadcastReceiver(Permission=Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE },
@@ -189,7 +188,7 @@ Der im Xamarin Component Store erhältliche Google Cloud Messaging Client verein
    
             public const string TAG = "MyBroadcastReceiver-GCM";
         }
-10. Fügen Sie in **MyBroadcastReceiver.cs** eine weitere Klasse mit dem Namen **PushHandlerService** hinzu, die von **GcmServiceBase** abgeleitet wird. Wenden Sie unbedingt das **Service** -Attribut auf die Klasse an:
+11. Fügen Sie in **MyBroadcastReceiver.cs** eine weitere Klasse mit dem Namen **PushHandlerService** hinzu, die von **GcmServiceBase** abgeleitet wird. Wenden Sie unbedingt das **Service** -Attribut auf die Klasse an:
     
          [Service] // Must use the service tag
          public class PushHandlerService : GcmServiceBase
@@ -202,8 +201,8 @@ Der im Xamarin Component Store erhältliche Google Cloud Messaging Client verein
                  Log.Info(MyBroadcastReceiver.TAG, "PushHandlerService() constructor");
              }
          }
-11. **GcmServiceBase** implementiert die Methoden **OnRegistered()**, **OnUnRegistered()**, **OnMessage()**, **OnRecoverableError()** und **OnError()**. Unsere Implementierungsklasse **PushHandlerService** muss diese Methoden überschreiben, die als Reaktion auf die Interaktion mit dem Notification Hub aufgerufen werden.
-12. Überschreiben Sie die **OnRegistered()**-Methode in **PushHandlerService** mithilfe des folgenden Codes:
+12. **GcmServiceBase** implementiert die Methoden **OnRegistered()**, **OnUnRegistered()**, **OnMessage()**, **OnRecoverableError()** und **OnError()**. Unsere Implementierungsklasse **PushHandlerService** muss diese Methoden überschreiben, die als Reaktion auf die Interaktion mit dem Notification Hub aufgerufen werden.
+13. Überschreiben Sie die **OnRegistered()**-Methode in **PushHandlerService** mithilfe des folgenden Codes:
     
          protected override void OnRegistered(Context context, string registrationId)
          {
@@ -241,7 +240,7 @@ Der im Xamarin Component Store erhältliche Google Cloud Messaging Client verein
     > Beachten Sie im obigen **OnRegistered()** -Code die Möglichkeit, Tags für bestimmte Nachrichtenkanäle zu registrieren.
     > 
     > 
-13. Überschreiben Sie die **OnMessage**-Methode in **PushHandlerService** mithilfe des folgenden Codes:
+14. Überschreiben Sie die **OnMessage**-Methode in **PushHandlerService** mithilfe des folgenden Codes:
     
         protected override void OnMessage(Context context, Intent intent)
         {
@@ -265,7 +264,7 @@ Der im Xamarin Component Store erhältliche Google Cloud Messaging Client verein
                 createNotification ("Unknown message details", msg.ToString ());
             }
         }
-14. Fügen Sie die folgenden Methoden **createNotification** und **dialogNotify** zu **PushHandlerService** hinzu, damit Benutzer über den Eingang einer Nachricht informiert werden.
+15. Fügen Sie die folgenden Methoden **createNotification** und **dialogNotify** zu **PushHandlerService** hinzu, damit Benutzer über den Eingang einer Nachricht informiert werden.
     
     > [!NOTE]
     > Benachrichtigen in Android Version 5.0 und höher unterscheiden sich in der Ausführung deutlich von früheren Versionen. Wenn Sie dies in Android 5.0 prüfen, muss die App ausgeführt werden, damit die Benachrichtigung empfangen werden kann. Weitere Informationen finden Sie unter [Android-Benachrichtigungen](http://go.microsoft.com/fwlink/?LinkId=615880).
@@ -310,7 +309,7 @@ Der im Xamarin Component Store erhältliche Google Cloud Messaging Client verein
                 alert.Show();
             });
         }
-15. Überschreiben Sie die abstrakten Member **OnUnRegistered()**, **OnRecoverableError()** und **OnError()**, um Ihren Code kompilieren zu können:
+16. Überschreiben Sie die abstrakten Member **OnUnRegistered()**, **OnRecoverableError()** und **OnError()**, um Ihren Code kompilieren zu können:
     
         protected override void OnUnRegistered(Context context, string registrationId)
         {
@@ -335,20 +334,20 @@ Der im Xamarin Component Store erhältliche Google Cloud Messaging Client verein
 Stellen Sie beim Ausführen dieser App im Emulator sicher, dass Sie ein Android Virtual Device (AVD) verwenden, das Google-APIs unterstützt.
 
 > [!IMPORTANT]
-> Um Pushbenachrichtigungen zu erhalten, müssen Sie ein Google-Konto auf Ihrem Android Virtual Device einrichten. (Navigieren Sie im Emulator zu **Einstellungen** und klicken Sie auf **Konto hinzufügen**.) Überprüfen Sie zudem, dass der Emulator mit dem Internet verbunden ist.
+> Um Pushbenachrichtigungen zu erhalten, müssen Sie ein Google-Konto auf Ihrem Android Virtual Device einrichten. (Navigieren Sie im Emulator zu **Einstellungen**, und klicken Sie auf **Konto hinzufügen**.) Überprüfen Sie zudem, dass der Emulator mit dem Internet verbunden ist.
 > 
 > [!NOTE]
 > Benachrichtigen in Android Version 5.0 und höher unterscheiden sich in der Ausführung deutlich von früheren Versionen. Weitere Informationen finden Sie unter [Android-Benachrichtigungen](http://go.microsoft.com/fwlink/?LinkId=615880).
 > 
 > 
 
-1. Klicken Sie unter **Tools** auf **Open Android Emulator Manager**, wählen Sie Ihr Gerät aus, und klicken Sie auf **Edit**.
+1. Klicken Sie unter **Tools** auf **Android-Emulator-Manager (AVD) öffnen**, wählen Sie Ihr Gerät aus, und klicken Sie auf **Bearbeiten**.
    
       ![][18]
-2. Wählen Sie **Google APIs** in **Target** aus, und klicken Sie dann auf **OK**.
+2. Wählen Sie unter **Ziel** die Option **Google-APIs** aus, und klicken Sie dann auf **OK**.
    
       ![][19]
-3. Klicken Sie in der oberen Symbolleiste auf **Run**, und wählen Sie Ihre App aus. Daraufhin wird der Emulator gestartet und die App ausgeführt.
+3. Klicken Sie auf der oberen Symbolleiste auf **Ausführen**, und wählen Sie Ihre App aus. Daraufhin wird der Emulator gestartet und die App ausgeführt.
    
    Die App ruft die *registrationId* von GCM ab und registriert sich beim Notification Hub.
 
@@ -373,7 +372,7 @@ In diesem Abschnitt senden Sie Benachrichtigungen mithilfe einer .NET-Konsolen-A
 1. Erstellen einer neuen Visual C#-Konsolenanwendung:
    
       ![][20]
-2. Klicken Sie in Visual Studio auf **Extras**, auf **NuGet-Paket-Manager** und dann auf **Paket-Manager-Konsole**.
+2. Wählen Sie in Visual Studio die Optionen **Extras** > **NuGet-Paket-Manager** und anschließend **Paket-Manager-Konsole** aus.
    
     Daraufhin wird in Visual Studio die Paket-Manager-Konsole angezeigt.
 3. Legen Sie im Fenster der Paket-Manager-Konsole als **Standardprojekt** das neue Konsolenanwendungsprojekt fest, und führen Sie dann im Konsolenfenster den folgenden Befehl aus:
@@ -410,8 +409,8 @@ In diesem Abschnitt senden Sie Benachrichtigungen mithilfe einer .NET-Konsolen-A
 4. Erstellen Sie einen neuen geplanten Auftrag. Fügen Sie einen Namen ein, und klicken Sie dann auf **On demand**.
    
       ![][23]
-5. Wenn der Auftrag erstellt ist, klicken Sie auf den Auftragsnamen. Klicken Sie anschließend in der Kopfleiste auf die Registerkarte **Skript** .
-6. Fügen Sie das folgende Skript in Ihre Scheduler-Funktion ein. Stellen Sie sicher, dass Sie die Platzhalter durch den Notification Hub-Namen und die Verbindungszeichenfolge für *DefaultFullSharedAccessSignature* ersetzen, die Sie zuvor erhalten haben. Klicken Sie auf **Speichern**.
+5. Klicken Sie nach Erstellung des Auftrags auf den Auftragsnamen. Klicken Sie anschließend auf der oberen Leiste auf die Registerkarte **Skript**.
+6. Fügen Sie das folgende Skript in Ihre Scheduler-Funktion ein. Stellen Sie sicher, dass Sie die Platzhalter durch den Notification Hub-Namen und die Verbindungszeichenfolge für *DefaultFullSharedAccessSignature* ersetzen, die Sie zuvor erhalten haben. Wählen Sie **Speichern** aus.
    
         var azure = require('azure');
         var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string>');
@@ -427,7 +426,7 @@ In diesem Abschnitt senden Sie Benachrichtigungen mithilfe einer .NET-Konsolen-A
             }
           }
         );
-7. Klicken Sie in der unteren Leiste auf **Run Once** . Sie sollten dann eine Popupbenachrichtigung erhalten.
+7. Klicken Sie auf der unteren Leiste auf **Einmal ausführen**. Sie sollten dann eine Popupbenachrichtigung erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem einfachen Beispiel haben Sie Benachrichtigungen an alle Android-Geräte versendet. Informationen zum Adressieren bestimmter Benutzer finden Sie in dem Lernprogramm [Benachrichtigen von Benutzern mit Benachrichtigungshubs]. Wenn Sie Ihre Benutzer in Interessengruppen einteilen möchten, finden Sie unter [Verwenden von Benachrichtigungshubs zum Übermitteln von Nachrichten]weitere Informationen. Mehr zur Verwendung von Notification Hubs erfahren Sie im [Notification Hubs-Leitfaden] und unter [Notification Hubs für Android].
@@ -477,9 +476,3 @@ In diesem einfachen Beispiel haben Sie Benachrichtigungen an alle Android-Gerät
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Google Cloud Messaging Client-Komponente]: http://components.xamarin.com/view/GCMClient/
 [Azure Messaging-Komponente]: http://components.xamarin.com/view/azure-messaging
-
-
-
-<!--HONumber=Jan17_HO1-->
-
-

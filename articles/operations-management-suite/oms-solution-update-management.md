@@ -3,7 +3,7 @@ title: "Lösung für die Updateverwaltung in OMS | Microsoft Docs"
 description: "In diesem Artikel soll vermittelt werden, wie Sie diese Lösung zum Verwalten von Updates für Ihre Windows- und Linux-Computer verwenden."
 services: operations-management-suite
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: e33ce6f9-d9b0-4a03-b94e-8ddedcc595d2
@@ -13,19 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/27/2017
-ms.author: magoedte
+ms.author: eslesar
+ms.openlocfilehash: 839689ab991fdc251608cf79d65a5810db5eeeb3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: e463102a4b21253e28b01d6d149aba55bab18674
-ms.contentlocale: de-de
-ms.lasthandoff: 07/31/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-management-solution-in-oms"></a>Lösung für die Updateverwaltung in OMS
 
 ![Symbol für die Updateverwaltung](./media/oms-solution-update-management/update-management-symbol.png)
 
 Mithilfe der Lösung für die Updateverwaltung in OMS können Sie Betriebssystem-Sicherheitsupdates für Ihre Windows- und Linux-Computer verwalten, die in Azure, in lokalen Umgebungen oder bei anderen Cloudanbietern bereitgestellt wurden.  Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
+
+## <a name="update-management-in-azure-automation"></a>Updateverwaltung in Azure Automation
+
+Die Updateverwaltung für virtuelle Computer kann direkt in Ihrem [Azure Automation](../automation/automation-offering-get-started.md)-Konto aktiviert werden.
+Informationen zum Aktivieren der Updateverwaltung für virtuelle Computer über das Automation-Konto finden Sie unter [Verwalten von Updates für mehrere virtuelle Azure-Computer](../automation/manage-update-multi.md).
 
 
 ## <a name="solution-overview"></a>Lösungsübersicht
@@ -307,11 +311,17 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensä
 | Type=Update and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") |Liste mit allen Paketen, für die ein Update zur Behebung von kritischen oder sicherheitsrelevanten Sicherheitsrisiken verfügbar ist | 
 | Type:UpdateRunProgress &#124; measure Count() by UpdateRunName |Liste mit den Updatebereitstellungen, bei denen Computer geändert wurden | 
 | Type:UpdateRunProgress UpdateRunName="DeploymentName" &#124; measure Count() by Computer |Computer, die bei dieser Updateausführung aktualisiert wurden (Ersetzen Sie den Wert durch den Namen Ihrer Updatebereitstellung.) | 
-| Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |Liste mit allen „Ubuntu“-Computern mit verfügbaren Updates | 
+| Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |Liste mit allen „Ubuntu“-Computern mit verfügbaren Updates |
+
+## <a name="integrate-with-system-center-configuration-manager"></a>Integrieren in System Center Configuration Manager
+
+Kunden, die PCs, Server und Mobilgeräte mit System Center Configuration Manager verwalten, schätzen die Lösung auch für ihre Stabilität und Ausgereiftheit bei der Verwaltung von Softwareupdates im Rahmen des Softwareupdateverwaltungs-Zyklus.
+
+Wie Sie die OMS-Updateverwaltungslösung in System Center Configuration Manager integrieren, erfahren Sie unter [Integrieren von System Center Configuration Manager und OMS-Updateverwaltung (Vorschau)](../automation/oms-solution-updatemgmt-sccmintegration.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Dieser Abschnitt enthält Informationen zum Durchführen der Problembehandlung mit der Lösung für die Updateverwaltung.  
+Dieser Abschnitt enthält Informationen zum Durchführen der Problembehandlung mit der Lösung für die Updateverwaltung.
 
 ### <a name="how-do-i-troubleshoot-onboarding-issues"></a>Wie behandle ich Onboardingprobleme?
 Sollten Sie Probleme beim Onboarding der Lösung oder eines virtuellen Computers haben, suchen Sie im Ereignisprotokoll **Anwendungs- und Dienstprotokolle\Operations Manager** nach Ereignissen mit der Ereignis-ID 4502 und einer Ereignisnachricht, die **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** enthält.  Die folgende Tabelle enthält spezifische Fehlermeldungen und passende Lösungsvorschläge.  
@@ -333,4 +343,3 @@ Weitere Informationen finden Sie unter [Runbookausgabe und -meldungen in Azure A
 * Verwenden Sie die Protokollsuche in [Log Analytics](../log-analytics/log-analytics-log-searches.md), um ausführliche Daten zu Updates anzuzeigen.
 * [Erstellen Sie eigene Dashboards](../log-analytics/log-analytics-dashboards.md), um die Einhaltung der erforderlichen Updates für Ihre verwalteten Computer anzuzeigen.
 * [Erstellen Sie Warnungen](../log-analytics/log-analytics-alerts.md), wenn kritische Updates für Computer als fehlend erkannt werden oder für einen Computer die automatischen Updates deaktiviert sind.  
-

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 48749bfa2ab54a0e766a4aad4f39073cc4e90818
-ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: 78a165d831796bb6bb23e51f415383eb925115ee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: Erstellen einer .NET-Web-API
 
@@ -40,7 +39,7 @@ Als Nächstes müssen Sie in Ihrem B2C-Verzeichnis eine Web-API-App erstellen. D
 * Fügen Sie der Anwendung eine **Web-App** oder **Web-API** hinzu.
 * Verwenden Sie den **Umleitungs-URI** `https://localhost:44332/` für die Web-App. Dies ist der Standardspeicherort des Web-App-Clients für dieses Codebeispiel.
 * Kopieren Sie die **Anwendungs-ID** , die Ihrer App zugewiesen ist. Sie benötigen sie später.
-* Geben Sie einen App-Bezeichner in das Feld **App-ID-URI** ein.
+* Geben Sie einen App-Bezeichner in das Feld **App-ID-URI** ein. Kopieren Sie den vollständigen **App-ID-URI**. Sie benötigen sie später.
 * Fügen Sie über das Menü **Published scopes** (Veröffentlichte Bereiche) Berechtigungen hinzu.
 
   [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
@@ -83,6 +82,7 @@ Unser Beispiel ist so konfiguriert, dass die Richtlinien und die Client-ID unser
     * `ida:SignUpSignInPolicyId` durch Ihren Namen für die Richtlinie zur Registrierung bzw. Anmeldung
     * `ida:EditProfilePolicyId` durch den Namen der Richtlinie für „Profil bearbeiten“
     * `ida:ResetPasswordPolicyId` durch den Namen der Richtlinie für „Kennwort zurücksetzen“
+    * `api:ApiIdentifier` durch den App-ID-URI
 
 
 ## <a name="secure-the-api"></a>Sichern der API
@@ -212,4 +212,3 @@ Zum Schluss erstellen Sie `TaskWebApp` und `TaskService` und führen diese Eleme
 ## <a name="edit-your-policies"></a>Bearbeiten der Richtlinien
 
 Nachdem Sie eine API mit Azure AD B2C gesichert haben, können Sie mit Ihrer Richtlinie für die Registrierung bzw. Anmeldung experimentieren und die Auswirkungen (sofern vorhanden) auf die API beobachten. Sie können die Anwendungsansprüche in den Richtlinien bearbeiten und die Benutzerinformationen ändern, die in der Web-API verfügbar sind. Ansprüche, die Sie hinzufügen, stehen Ihrer .NET MVC-Web-API im `ClaimsPrincipal` -Objekt zur Verfügung, wie oben in diesem Artikel beschrieben.
-

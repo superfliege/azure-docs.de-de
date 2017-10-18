@@ -1,6 +1,6 @@
 ---
 title: "Überwachen von Identität und Zugriff in Azure Security Center | Microsoft-Dokumentation"
-description: "In diesem Dokument wird die Identitäts- und Zugriffsfunktion in Azure Security Center beschrieben, mit der Sie die Zugriffsaktivitäten der Benutzer und identitätsbezogene Probleme überwachen können."
+description: "Hier erfahren Sie, wie Sie mithilfe der Identitäts- und Zugriffsfunktion in Azure Security Center die Zugriffsaktivitäten der Benutzer sowie identitätsbezogene Probleme überwachen können."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -12,53 +12,61 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2017
+ms.date: 09/12/2017
 ms.author: yurid
+ms.openlocfilehash: 842045fbcb5b4f661cc006a207f4087370a7b4ab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 2e351cd38e7baefc09fa36ceabffec92de22433b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="monitoring-identity-and-access-in-azure-security-center"></a>Überwachen von Identität und Zugriff in Azure Security Center
-In diesem Dokument wird beschrieben, wie Sie Azure Security Center zum Überwachen der Identität und Zugriffsaktivitäten von Benutzern überwachen.
+# <a name="monitor-identity-and-access-in-azure-security-center"></a>Überwachen von Identität und Zugriff in Azure Security Center
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Security Center die Identität und Zugriffsaktivitäten von Benutzern überwachen.
 
 ## <a name="why-monitor-identity-and-access"></a>Gründe für das Überwachen der Identität und des Zugriffs
-Die Identität sollte die Kontrollebene für Ihr Unternehmen darstellen, und der Schutz der Identität sollte höchste Priorität haben. In der Vergangenheit haben Unternehmen über Grenzen verfügt, bei denen es sich quasi um eine der „Hauptverteidigungslinien“ gehandelt hat. Da heutzutage immer mehr Daten und Apps in die Cloud verlagert werden, ist die Identität zur neuen Grenze geworden.
+Die Identität sollte die Kontrollebene für Ihr Unternehmen darstellen, und der Schutz der Identität sollte höchste Priorität haben. In der Vergangenheit waren Unternehmen von Grenzen umgeben, die als eine der Hauptverteidigungsmaßnahmen dienten. Da heutzutage jedoch immer mehr Daten und Apps in die Cloud verlagert werden, ist die Identität zur neuen Grenze geworden.
 
-Indem Sie Ihre Identitätsaktivitäten überwachen, können Sie proaktive Aktionen durchführen, bevor es zu einem Vorfall kommt, bzw. reaktive Aktionen, um einen Angriffsversuch zu stoppen. Das Dashboard „Identität und Zugriff“ enthält eine Übersicht über den Identitätszustand, z.B. die Anzahl von fehlgeschlagenen Anmeldeversuchen, das bei den Versuchen verwendete Benutzerkonto, gesperrte Konten, Konten mit geänderten oder zurückgesetzten Kennwörtern und die Anzahl von derzeit angemeldeten Konten.
+Durch die Überwachung von Identitätsaktivitäten können Sie proaktive Maßnahmen ergreifen, bevor es zu einem Vorfall kommt, oder einen Angriffsversuch abwehren. Auf dem Dashboard „Identity & Access“ (Identität und Zugriff) können Sie sich anhand folgender Informationen einen Überblick über den Identitätszustand verschaffen:
 
-## <a name="how-to-monitor-identity-and-access-activities"></a>Vorgehensweise beim Überwachen der Identität und der Zugriffsaktivitäten
-Führen Sie die unten angegebenen Schritte aus, um die aktuellen Aktivitäten zu visualisieren, die sich auf die Identität und den Zugriff beziehen. Hierfür müssen Sie auf das Dashboard **Identität und Zugriff** zugreifen:
+* Anzahl erfolgloser Anmeldeversuche 
+* Bei diesen Versuchen verwendete Benutzerkonten
+* Gesperrte Konten
+* Konten mit geändertem oder zurückgesetztem Kennwort 
+* Anzahl angemeldeter Konten
 
-1.  Öffnen Sie das Dashboard **Security Center**.
-2.  Klicken Sie im linken Bereich unter **Prävention** auf **Identität und Zugriff**. Wenn Sie mehrere Arbeitsbereiche verwenden, wird die Arbeitsbereichsauswahl angezeigt.
+## <a name="monitor-identity-and-access-activities"></a>Überwachen von Identitäts- und Zugriffsaktivitäten
+Öffnen Sie zum Anzeigen der aktuellen Identitäts- und Zugriffsaktivitäten das Dashboard **Identity & Access** (Identität und Zugriff):
+
+1. Öffnen Sie das Dashboard **Security Center**.
+
+2. Klicken Sie im linken Bereich unter **Prävention** auf **Identity & Access** (Identität und Zugriff). Wenn Sie mehrere Arbeitsbereiche verwenden, wird die Arbeitsbereichsauswahl angezeigt.
 
     ![Arbeitsbereichsauswahl](./media/security-center-identity-access\security-center-identity-access-fig1.png)
 
     > [!NOTE]
-    > Wenn in der letzten Spalte **UPGRADEPLAN** angezeigt wird, liegt dies daran, dass für diesen Arbeitsbereich das kostenlose Abonnement verwendet wird und Sie ein Upgrade auf ein Standard-Abonnement durchführen müssen, um dieses Feature nutzen zu können. Bei REQUIRES UPDATE (UPDATE ERFORDERLICH) müssen Sie [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) aktualisieren, um das Feature nutzen zu können. Weitere Informationen zum Tarif finden Sie unter „Azure Security Center-Preise“. 
+    > Wenn in der Spalte ganz rechts **UPGRADE PLAN** (PLAN UPGRADEN) angezeigt wird, wird für diesen Arbeitsbereich das kostenlose Abonnement verwendet. Führen Sie ein Upgrade auf das Standard-Abonnement durch, um das Feature verwenden zu können. Wenn in der Spalte ganz rechts **REQUIRES UPDATE** (UPDATE ERFORDERLICH) angezeigt wird, aktualisieren Sie [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), um das Feature verwenden zu können. Weitere Informationen zum Tarif finden Sie unter „Security Center – Preise“. 
     > 
-3. Wenn Sie mehr als einen Arbeitsbereich untersuchen möchten, können Sie die Untersuchung gemäß der Spalte **FAILED LOGONS** (FEHLGESCHLAGENE ANMELDUNGEN) priorisieren. In dieser Spalte wird die aktuelle Anzahl von fehlgeschlagenen Anmeldeversuchen für den Arbeitsbereich angezeigt. Wählen Sie den gewünschten Arbeitsbereich aus. Das Dashboard **Identität und Zugriff** wird angezeigt.
+3. Falls Sie mehrere Arbeitsbereiche untersuchen müssen, können Sie die Untersuchung anhand der Spalte **FAILED LOGONS** (FEHLGESCHLAGENE ANMELDUNGEN) priorisieren. In dieser Spalte wird die aktuelle Anzahl nicht erfolgreicher Anmeldeversuche für den Arbeitsbereich angezeigt. Wählen Sie den gewünschten Arbeitsbereich aus. Das Dashboard **Identity & Access** (Identität und Zugriff) wird angezeigt.
 
-    ![Identität und Zugriff](./media/security-center-identity-access\security-center-identity-access-fig2.png)
+    ![„Identity & Access“ (Identität und Zugriff)](./media/security-center-identity-access\security-center-identity-access-fig2.png)
 
-4. Die in diesem Dashboard verfügbaren Informationen dienen Ihnen als direkte Hilfe beim Identifizieren einer potenziellen verdächtigen Aktivität. Dieses Dashboard ist in drei Hauptbereiche unterteilt:
-    * **Identitätsstatus**: Enthält eine Zusammenfassung der identitätsbezogenen Aktivitäten, die in diesem Arbeitsbereich durchgeführt werden.
-    * **Failed logons** (Fehlgeschlagene Anmeldungen): Dient zum schnellen Identifizieren der Hauptursache für den Fehler beim Anmeldeversuch. Es wird eine Liste mit den zehn Konten angezeigt, für die bei Anmeldeversuchen die meisten Fehler aufgetreten sind.
-    * **Logons overtime** (Anmeldungen mit Mehrzeit): Dient zum schnellen Identifizieren des Mehraufwands an Zeit für Anmeldungen, und es wird eine Top 10-Liste mit den Computerkonten mit entsprechenden Anmeldeversuchen angezeigt.
+4. Die in diesem Dashboard verfügbaren Informationen helfen Ihnen beim Identifizieren einer potenziell verdächtigen Aktivität. Dieses Dashboard ist in drei Hauptbereiche unterteilt:
+
+    a. **Identitätsstatus**. Enthält eine Zusammenfassung der identitätsbezogenen Aktivitäten in diesem Arbeitsbereich.
+
+    b. **Failed logons** (Fehlgeschlagene Anmeldungen). Ermöglicht die schnelle Ermittlung der Hauptursache für nicht erfolgreiche Anmeldeversuche. In einer werden die zehn Konten mit den meisten erfolglosen Anmeldeversuchen angezeigt.
+
+    c. **Anmeldungen im zeitlichen Verlauf**. Ermöglicht die schnelle Ermittlung der Anzahl von Anmeldungen im Zeitverlauf. Dazu wird eine Liste mit den meisten Computerkontoanmeldungen angezeigt.
     
-Unabhängig von der ausgewählten Kachel basiert das angezeigte Dashboard auf der [Protokollsuche-Abfrage](https://docs.microsoft.com/azure/security-center/security-center-search). Die einzigen Unterschiede sind der Typ der Abfrage und das Ergebnis. Sie können weiterhin ein Element auswählen, z.B. einen Computer, und darauf klicken, um relevante Daten anzuzeigen. 
+Das angezeigte Dashboard basiert unabhängig von der ausgewählten Kachel auf der Protokollsuchabfrage. Der einzige Unterschied sind die Art der Abfrage und das Ergebnis. Sie können weiterhin ein Element (beispielsweise einen Computer) auswählen und relevante Daten anzeigen. 
 
 ## <a name="see-also"></a>Weitere Informationen
-In diesem Dokument wurde beschrieben, wie Sie die Identität und den Zugriff in Azure Security Center überwachen. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
+In diesem Artikel wurde beschrieben, wie Sie die Identität und den Zugriff in Security Center überwachen. Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:
 
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Hier erfahren Sie, wie Sie Warnungen verwalten und auf Sicherheitsvorfälle in Security Center reagieren.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md). Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.
 * [Azure Security Center – Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Hier erfahren Sie, wie Sie allgemeine Probleme in Security Center behandeln. 
-* [Azure Security Center – häufig gestellte Fragen](security-center-faq.md)festgelegt ist. Enthält häufig gestellte Fragen zur Verwendung des Diensts.
+* [Azure Security Center – häufig gestellte Fragen](security-center-faq.md)festgelegt ist. Hier finden Sie häufig gestellte Fragen zur Verwendung von Security Center.
 * [Azure Security-Blog](http://blogs.msdn.com/b/azuresecurity/). Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
-
 

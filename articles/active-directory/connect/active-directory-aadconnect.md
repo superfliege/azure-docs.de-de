@@ -13,14 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/13/2017
+ms.date: 10/02/2017
 ms.author: billmath
+ms.openlocfilehash: c7aca7b67f4773cf7d19f84253487ed060e0db73
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 97f89cd6cf37d92ac50f149336e1d1143de991ec
-ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory
 Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory. Dadurch können Sie für Ihre Benutzer eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen. Dieses Thema beschreibt die Planung, Bereitstellung und den Betrieb. Es umfasst Links zu Themen, die mit diesem Bereich zusammenhängen.
@@ -127,6 +126,15 @@ Das synchronisierte Konfigurationsmodell wird als [deklarative Bereitstellung](a
 |Ändern der Standardkonfiguration | [Bewährte Methoden zum Ändern der Standardkonfiguration](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)|
 
 ## <a name="configure-federation-features"></a>Konfigurieren von Verbundfunktionen
+
+Azure AD Connect bietet mehrere Features, die die Verbunderstellung mit Azure AD unter Verwendung von AD FS sowie die Verwaltung Ihrer Verbundvertrauensstellung vereinfachen. Azure AD Connect unterstützt AD FS ab Windows Server 2012 R2.
+
+[Aktualisieren Sie das SSL-Zertifikat der AD FS-Farm](active-directory-aadconnectfed-ssl-update.md), auch wenn Sie Azure AD nicht für die Verwaltung Ihrer Verbundvertrauensstellung verwenden.
+
+[Fügen Sie Ihrer Farm einen AD FS-Server hinzu](active-directory-aadconnect-federation-management.md#addadfsserver), um die Farm nach Bedarf zu erweitern.
+
+[Reparieren Sie die Vertrauensstellung](active-directory-aadconnect-federation-management.md#repairthetrust) mit Azure AD mit einigen wenigen Klicks.
+
 AD FS kann für die Unterstützung von [mehreren Domänen](active-directory-aadconnect-multiple-domains.md)konfiguriert werden. Beispiel: Sie besitzen mehrere Domänen der obersten Ebene, die Sie für den Verbund verwenden müssen.
 
 Wenn Ihr AD FS-Server nicht für die automatische Aktualisierung von Zertifikaten in Azure AD konfiguriert wurde oder wenn Sie eine Lösung ohne AD FS nutzen, werden Sie benachrichtigt, wenn Sie [Zertifikate aktualisieren](active-directory-aadconnect-o365-certs.md)müssen.
@@ -157,5 +165,4 @@ Ignite 2015-Präsentation über die Erweiterung lokaler Verzeichnisse in die Cl
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3862/player]
 > 
 > 
-
 

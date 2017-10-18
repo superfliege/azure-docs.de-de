@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
 ms.openlocfilehash: 710a1fe0ce2b7a1841187cf75f4ffb090cc161e5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>Verbinden Ihrer Sicherheitsprodukte mit der Sicherheits- und Überwachungslösung der Operations Management Suite (OMS) 
 Dieses Dokument enthält Informationen zum Verbinden Ihrer Sicherheitsprodukte mit der Sicherheits- und Überwachungslösung der OMS. Die folgenden Quellen werden unterstützt:
@@ -63,7 +63,7 @@ Auf dem Agent-Computer müssen die Ereignisse vom Syslog-Daemon an den lokalen U
     log { source(src); filter(f_local4_oms); destination(security_oms); };
     
 3. Laden Sie die Datei *security_events.conf* herunter, und fügen Sie sie auf dem OMS-Agent-Computer unter */etc/opt/microsoft/omsagent/conf/omsagent.d/* ein.
-4. Geben Sie den folgenden Befehl an den Syslog-Daemon neu starten: *für Syslog-ng ausführen:*
+4. Geben Sie den unten angegebenen Befehl ein, um den Syslog-Daemon neu zu starten: *Für syslog-ng:*
     
     ```
     sudo service rsyslog restart

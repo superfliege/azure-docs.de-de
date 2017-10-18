@@ -8,12 +8,11 @@ ms.service: service-fabric
 ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: edwardsa
+ms.openlocfilehash: a938e300b1510a4f5f4eac3bd3d9a8bb728241ea
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: f246ee8aaecf3a398182debdea07832c75c1bd9c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -25,11 +24,28 @@ Bei der Azure Service Fabric-Befehlszeilenschnittstelle (CLI) handelt es sich um
 
 Stellen Sie vor der Installation sicher, dass in Ihrer Umgebung Python und pip installiert sind. Weitere Informationen finden Sie in der [Schnellstartdokumentation zu pip](https://pip.pypa.io/en/latest/quickstart/) und der offiziellen [Python-Installationsdokumentation](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-Die Versionen Python 2.7 und 3.6 werden zwar unterstützt, aber wir empfehlen Ihnen die Verwendung von Python 3.6. Im folgenden Abschnitt wird beschrieben, wie Sie die erforderlichen Komponenten und die Befehlszeilenschnittstelle installieren.
+Die Befehlszeilenschnittstelle unterstützt die Python-Versionen 2.7, 3.5 und 3.6. Die empfohlene Version ist Python 3.6, da für Python 2.7 bald der Support eingestellt wird.
+
+### <a name="service-fabric-target-runtime"></a>Service Fabric-Ziellaufzeit
+
+Die Service Fabric-Befehlszeilenschnittstelle ist zur Unterstützung der neuesten Laufzeitversion des Service Fabric SDK gedacht. Die folgende Tabelle gibt Aufschluss darüber, welche Version der Befehlszeilenschnittstelle Sie installieren sollten:
+
+| CLI-Version   | Unterstützte Laufzeitversion |
+|---------------|---------------------------|
+| Neueste (~=2)  | Neueste (~=6.0)            |
+| 1.1.0         | 5.6, 5.7                  |
+
+Sie können optional eine zu installierende Zielversion der Befehlszeilenschnittstelle angeben, indem Sie den Befehl `pip install` mit dem Suffix `==<version>` versehen. Die Syntax für Version 1.1.0 lautet beispielsweise wie folgt:
+
+```
+pip install -I sfctl==1.1.0
+```
+
+Ersetzen Sie den folgenden Befehl vom Typ `pip install` bei Bedarf durch den zuvor genannten Befehl.
 
 ## <a name="install-pip-python-and-the-service-fabric-cli"></a>Installieren von pip, Python und der Service Fabric CLI
 
- Es gibt viele Möglichkeiten, pip und Python auf Ihrer Plattform zu installieren. Hier sind einige Schritte aufgeführt, mit denen Sie die gängigen Betriebssysteme mit Python 3.6 und pip schnell einrichten können.
+Es gibt viele Möglichkeiten, pip und Python auf Ihrer Plattform zu installieren. Im Anschluss sind einige Schritte aufgeführt, mit denen Sie gängige Betriebssysteme schnell mit Python 3 und pip einrichten können.
 
 ### <a name="windows"></a>Windows
 
@@ -52,47 +68,45 @@ pip --version
 
 Installieren Sie anschließend die Service Fabric-Befehlszeilenschnittstelle mit dem folgenden Befehl:
 
-```
+```bat
 pip install sfctl
 sfctl -h
 ```
 
-Sollte eine Fehlermeldung mit dem Hinweis angezeigt werden, dass `sfctl` nicht gefunden wurde, führen Sie die folgenden Befehle aus:
+### <a name="ubuntu-and-windows-subsystem-for-linux"></a>Ubuntu und Windows-Subsystem für Linux
+
+Führen Sie zum Installieren der Service Fabric-Befehlszeilenschnittstelle die folgenden Befehle aus:
 
 ```bash
-export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
-```
-
-### <a name="ubuntu"></a>Ubuntu
-
-Für Ubuntu 16.04 Desktop können Sie Python 3.6 installieren, indem Sie ein PPA (Personal Package Archive) eines Drittanbieters verwenden.
-
-Führen Sie am Terminal die folgenden Befehle aus:
-
-```bash
-sudo add-apt-repository ppa:jonathonf/python-3.6
-sudo apt-get update
-sudo apt-get install python3.6
+sudo apt-get install python3
 sudo apt-get install python3-pip
+pip3 install sfctl
 ```
 
-Führen Sie dann zum Installieren der Service Fabric CLI nur für Ihre Installation von Python 3.6 den folgenden Befehl aus:
+Die Installation können Sie anschließend mit Folgendem testen:
 
 ```bash
-python3.6 -m pip install sfctl
 sfctl -h
 ```
 
-Sollte eine Fehlermeldung mit dem Hinweis angezeigt werden, dass `sfctl` nicht gefunden wurde, führen Sie die folgenden Befehle aus:
+Es kann vorkommen, dass ein Fehler aufgrund eines nicht gefundenen Befehls auftritt:
+
+`sfctl: command not found`
+
+Vergewissern Sie sich in diesem Fall, dass über `$PATH` auf `~/.local/bin` zugegriffen werden kann:
 
 ```bash
 export PATH=$PATH:~/.local/bin
 echo "export PATH=$PATH:~/.local/bin" >> .bashrc
 ```
 
-Diese Schritte haben keine Auswirkungen auf die Systeminstallationen von Python 3.5 und 2.7. Versuchen Sie nicht, diese Installationen zu ändern, sofern Sie nicht mit Ubuntu vertraut sind.
+Sollte die Installation im Windows-Subsystem für Linux aufgrund falscher Ordnerberechtigungen nicht erfolgreich sein, muss der Vorgang unter Umständen mit erhöhten Berechtigungen wiederholt werden:
 
+```bash
+sudo pip3 install sfctl
+```
+
+<a name = "cli-mac"></a>
 ### <a name="macos"></a>macOS
 
 Für MacOS empfehlen wir Ihnen die Nutzung des [HomeBrew-Paket-Managers](https://brew.sh). Wenn HomeBrew nicht bereits installiert ist, können Sie die Installation mit dem folgenden Befehl durchführen:
@@ -108,17 +122,6 @@ brew install python3
 pip3 install sfctl
 sfctl -h
 ```
-
-
-Sollte eine Fehlermeldung mit dem Hinweis angezeigt werden, dass `sfctl` nicht gefunden wurde, führen Sie die folgenden Befehle aus:
-
-```bash
-export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
-```
-
-
-Diese Schritte haben keine Auswirkungen auf die Systeminstallation von Python 2.7.
 
 ## <a name="cli-syntax"></a>CLI-Syntax
 
@@ -239,13 +242,11 @@ sfctl application create -h
 Führen Sie zum Aktualisieren der Service Fabric-Befehlszeilenschnittstelle die folgenden Befehle aus, und ersetzen Sie dabei `pip` durch `pip3` (abhängig von der getroffenen Auswahl bei der ursprünglichen Installation):
 
 ```bash
-pip uninstall sfctl 
-pip install sfctl 
+pip uninstall sfctl
+pip install sfctl
 ```
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Bereitstellen einer Anwendung mit der Azure Service Fabric-Befehlszeilenschnittstelle](service-fabric-application-lifecycle-sfctl.md)
 * [Erste Schritte mit Service Fabric unter Linux](service-fabric-get-started-linux.md)
-

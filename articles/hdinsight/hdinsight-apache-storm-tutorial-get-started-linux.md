@@ -13,15 +13,14 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/15/2017
+ms.date: 10/06/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
+ms.openlocfilehash: 56905a457f972d1820e56dca00c42686bcad5453
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 83fc6db1ddb43eb87e7c58684505d7196c1e53d0
-ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Erste Schritte mit Apache Storm in HDInsight mithilfe der Storm-Starter-Beispiele
 
@@ -44,7 +43,7 @@ Apache Storm ist ein skalierbares, fehlertolerantes, verteiltes Echtzeit-Berechn
 
 Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsight“ zu erstellen:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Optionen **+ NEU**, **Intelligence + Analyse** und dann **HDInsight**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **+ NEU**, **Daten + Analysen** und anschließend auf **HDInsight**.
 
     ![Erstellen eines HDInsight-Clusters](./media/hdinsight-apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
@@ -57,7 +56,7 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsig
     * **Ressourcengruppe**: Die Ressourcengruppe, in der der Cluster erstellt wird.
     * **Standort**: Die Azure-Region, in der der Cluster erstellt werden soll.
 
-    ![Wählen Sie das Abonnement aus.](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
+   ![Wählen Sie das Abonnement aus.](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
 3. Wählen Sie **Clustertyp** aus, und legen Sie dann auf dem Blatt **Clusterkonfiguration** die folgenden Werte fest:
 
@@ -69,7 +68,7 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsig
 
     * **Clusterebene**: Standard
 
-    Klicken Sie abschließend auf die Schaltfläche **Auswählen**, um die Einstellungen zu speichern.
+   Klicken Sie abschließend auf die Schaltfläche **Auswählen**, um die Einstellungen zu speichern.
 
     ![Auswählen des Clustertyps](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-cluster-type.png)
 
@@ -92,7 +91,11 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsig
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
-    Wenn Sie zum Schutz Ihres SSH-Benutzerkontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen öffentlichen Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` verwenden, um den passenden privaten Schlüssel anzugeben. Beispiel: `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
+    > [!TIP]
+    > Der SSH-Client weist unter Umständen darauf hin, dass die Echtheit des Hosts nicht bestätigt werden kann. Geben Sie in diesem Fall `yes` ein, um den Vorgang fortzusetzen.
+
+    > [!NOTE]
+    > Wenn Sie zum Schutz Ihres SSH-Benutzerkontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen öffentlichen Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` verwenden, um den passenden privaten Schlüssel anzugeben. Beispiel: `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
 
     Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -118,7 +121,7 @@ Die Storm-Benutzeroberfläche bietet eine Weboberfläche zum Arbeiten mit ausgef
 
 Führen Sie die folgenden Schritte aus, um die Topologie mithilfe der Storm-Benutzeroberfläche zu überwachen:
 
-1. Öffnen Sie https://CLUSTERNAME.azurehdinsight.net/stormui in einem Webbrowser, um die Storm-Benutzeroberfläche anzuzeigen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters.
+1. Rufen Sie in einem Webbrowser die folgende URL auf, um die Storm-Benutzeroberfläche anzuzeigen: `https://CLUSTERNAME.azurehdinsight.net/stormui`. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters.
 
     > [!NOTE]
     > Wenn Sie dazu aufgefordert werden, einen Benutzernamen und ein Kennwort anzugeben, geben Sie den Namen des Cluster-Administrators (Admin) und das entsprechende Kennwort ein, die Sie beim Erstellen des Clusters verwendet haben.
@@ -210,4 +213,3 @@ Beispieltechnologien, die mit Storm in HDInsight verwendet werden können, finde
 [stormjavadocs]: https://storm.incubator.apache.org/apidocs/
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [preview-portal]: https://portal.azure.com/
-

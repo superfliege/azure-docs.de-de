@@ -13,16 +13,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 09/19/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: e77de4b9a74b528fa8a7ce86424fc14628b2cacc
-ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 07151fdf79d3b06f3144fbebff9015645b1ed000
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="lesson-2-get-data"></a>Lektion 2: Abrufen von Daten
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
@@ -30,6 +28,9 @@ ms.lasthandoff: 06/03/2017
 In dieser Lektion verwenden Sie Get Data in SSDT zum Herstellen einer Verbindung mit der AdventureWorksDW2014-Beispieldatenbank. Weiterhin wählen Sie Daten aus, erstellen eine Vorschau und einen Filter und führen dann den Import in Ihr Arbeitsbereichsmodell aus.  
   
 Mit Get Data können Sie Daten aus einer großen Anzahl von Quellen importieren: Azure SQL Database, Oracle, Sybase, OData Feed, Teradata, Dateien etc. Die Daten können auch mit einem Power Query-M-Formelausdruck abgefragt werden.
+
+> [!NOTE]
+> Die Aufgaben und Bilder in diesem Tutorial zeigen das Herstellen einer Verbindung mit einer AdventureWorksDW2014-Datenbank auf einem lokalen Server. In bestimmten Fällen kann sich eine AdventureWorksDW2014-Datenbank in Azure davon unterscheiden.
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **10 Minuten**  
   
@@ -71,13 +72,19 @@ Tabellen in der AdventureWorksDW2014-Beispieldatenbank enthalten Daten, die nich
   
 #### <a name="to-filter-the-table-data-before-importing"></a>So filtern Sie die Tabellendaten vor dem Importieren  
   
-1.  Wählen Sie im Abfrage-Editor die Tabelle **DimCustomer**. Eine Ansicht der DimCustomer-Tabelle in der Datenquelle (der AdventureWorksDWQ2014-Beispieldatenbank) wird angezeigt. 
+1.  Wählen Sie im Abfrage-Editor die Tabelle **DimCustomer**. Eine Ansicht der DimCustomer-Tabelle in der Datenquelle (der AdventureWorksDW2014-Beispieldatenbank) wird angezeigt. 
   
 2.  Aktivieren Sie die Mehrfachauswahl (Strg + Klick), und wählen Sie **SpanishEducation**, **FrenchEducation**, **SpanishOccupation**, **FrenchOccupation**. Klicken Sie dann mit der rechten Maustaste, und klicken Sie auf **Spalten entfernen**. 
 
     ![aas-lesson2-remove-columns](../tutorials/media/aas-lesson2-remove-columns.png)
   
     Da diese Spaltenwerte für die Analyse der Internetverkäufe nicht relevant sind, müssen diese Spalten nicht importiert werden. Durch das Entfernen nicht erforderlicher Spalten wird das Modell kleiner und effizienter.  
+
+    > [!TIP]
+    > Sollte Ihnen ein Fehler unterlaufen, können Sie unter **ANGEWENDETE SCHRITTE** einen Schritt löschen.   
+    
+    ![aas-lesson2-remove-columns](../tutorials/media/aas-lesson2-remove-step.png)
+
   
 4.  Filtern Sie die verbleibenden Tabellen, indem Sie die folgenden Spalten aus allen Tabellen entfernen:  
     
@@ -85,7 +92,7 @@ Tabellen in der AdventureWorksDW2014-Beispieldatenbank enthalten Daten, die nich
     
       |Column|  
       |--------|  
-      |DateKey|  
+      |**DateKey**|  
       |**SpanishDayNameOfWeek**|  
       |**FrenchDayNameOfWeek**|  
       |**SpanishMonthName**|  
@@ -130,11 +137,7 @@ Tabellen in der AdventureWorksDW2014-Beispieldatenbank enthalten Daten, die nich
   
     **FactInternetSales**
   
-      |Column|  
-      |------------------|  
-      |**OrderDateKey**|  
-      |**DueDateKey**|  
-      |**ShipDateKey**|   
+      Keine Spalten entfernt.
   
 ## <a name="Import"></a>Importieren Sie die ausgewählten Tabellen und Spaltendaten  
 Nachdem Sie nun eine Vorschau der nicht benötigten Daten angezeigt und diese herausgefiltert haben, können Sie den Rest der Daten importieren, wenn Sie dies wünschen. Der Assistent importiert sowohl die Tabellendaten als auch sämtliche Beziehungen zwischen den Tabellen. Im Modell werden neue Tabellen und Spalten erstellt, und die von Ihnen herausgefilterten Daten werden nicht importiert.  
@@ -160,4 +163,3 @@ Es ist wichtig, das Modellprojekt häufig zu speichern.
 
   
   
-

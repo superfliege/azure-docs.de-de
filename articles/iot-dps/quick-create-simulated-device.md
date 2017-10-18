@@ -5,21 +5,19 @@ services: iot-dps
 keywords: 
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/05/2017
+ms.date: 09/18/2017
 ms.topic: hero-article
 ms.service: iot-dps
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
+ms.openlocfilehash: e8e97f0a0d18bafac581ce0fa31a69e385669bcf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: d8d8ff77f0099185707a0207c4ba6aed190a102e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-and-provision-a-simulated-device-using-iot-hub-device-provisioning-service-preview"></a>Erstellen und Bereitstellen eines simulierten Geräts mithilfe des IoT Hub Device Provisioning-Diensts (Vorschauversion)
 
 Die folgenden Schritte zeigen, wie Sie auf Ihrem Entwicklungscomputer unter dem Windows-Betriebssystem ein simuliertes Gerät erstellen, den Windows-TPM-Simulator als [Hardwaresicherheitsmodul (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) des Geräts ausführen und dieses simulierte Gerät mithilfe des Codebeispiels mit dem Device Provisioning-Dienst und Ihrer IoT Hub-Instanz verbinden. 
@@ -29,7 +27,7 @@ Führen Sie zunächst die Schritte unter [Set up the IoT Hub Device Provisioning
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>Vorbereiten der Entwicklungsumgebung 
 
-1. Vergewissern Sie sich, dass auf Ihrem Computer entweder Visual Studio 2015 oder [Visual Studio 2017](https://www.visualstudio.com/vs/) installiert ist. 
+1. Vergewissern Sie sich, dass auf Ihrem Computer entweder Visual Studio 2015 oder [Visual Studio 2017](https://www.visualstudio.com/vs/) installiert ist. Für die Visual Studio-Installation muss die Workload „Desktopentwicklung mit C++“ aktiviert sein.
 
 2. Laden Sie das [CMake-Buildsystem](https://cmake.org/download/) herunter, und installieren Sie es.
 
@@ -93,7 +91,7 @@ Führen Sie zunächst die Schritte unter [Set up the IoT Hub Device Provisioning
 
 2. Wählen Sie auf Ihrem Computer in Visual Studio das Beispielprojekt **dps_client_sample** aus, und öffnen Sie die Datei **dps_client_sample.c**.
 
-3. Weisen Sie den Wert für _ID Scope_ (ID-Bereich) der Variablen `dps_scope_id` zu. Beachten Sie, dass die Variable `dps_uri` den gleichen Wert besitzt wie der globale_ _Geräteendpunkt. 
+3. Weisen Sie den Wert für _ID Scope_ (ID-Bereich) der Variablen `dps_scope_id` zu. Beachten Sie, dass die Variable `dps_uri` den gleichen Wert besitzt wie der globale__ Geräteendpunkt. 
 
     ```c
     static const char* dps_uri = "global.azure-devices-provisioning.net";
@@ -122,4 +120,3 @@ In dieser Schnellstartanleitung haben Sie auf Ihrem Computer ein simuliertes TPM
 
 > [!div class="nextstepaction"]
 > [Tutorials für den Azure IoT Hub Device Provisioning-Dienst](./tutorial-set-up-cloud.md)
-

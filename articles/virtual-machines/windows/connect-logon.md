@@ -13,14 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/01/2017
+ms.date: 09/29/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 88431377a36d5bc36220c630f0c8d4a46ab4a434
-ms.lasthandoff: 03/31/2017
-
-
+ms.openlocfilehash: 91a437345858cf3a9b00b6b4e8e72cd253f8f069
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer
 Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedesktopsitzung (RDP) von einem Windows-Desktop zu starten. Zuerst stellen Sie eine Verbindung mit dem virtuellen Computer her, und dann melden Sie sich an.
@@ -29,9 +28,9 @@ Wenn Sie von einem Mac eine Verbindung mit einem virtuellen Windows-Computer her
 
 ## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/)an, falls Sie dies noch nicht getan haben.
-2. Klicken Sie im Hub-Menü auf **Virtuelle Computer**.
+2. Klicken Sie im linken Menü auf **Virtual Machines**.
 3. Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.
-4. Klicken Sie auf dem Blatt für den virtuellen Computer auf **Verbinden**.
+4. Klicken Sie auf der Seite für den virtuellen Computer auf **Verbinden**.
    
     ![Screenshot des Azure-Portals beim Herstellen einer Verbindung mit Ihrem virtuellen Computer](./media/connect-logon/connect.png)
    
@@ -45,5 +44,4 @@ Wenn Sie von einem Mac eine Verbindung mit einem virtuellen Windows-Computer her
 
 ## <a name="next-steps"></a>Nächste Schritte
 Falls beim Herstellen der Verbindung Probleme auftreten, helfen Ihnen die Informationen unter [Problembehandlung bei Remotedesktopverbindungen](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)weiter. Dieser Artikel führt Sie durch die Diagnose und Behebung von häufigen Problemen.
-
 

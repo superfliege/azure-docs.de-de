@@ -3,7 +3,7 @@ title: "Übersicht über Azure Batch für Entwickler | Microsoft-Dokumentation"
 description: Lernen Sie die Features des Batch-Diensts und seiner APIs aus der Sicht eines Entwicklers kennen.
 services: batch
 documentationcenter: .net
-author: tamram
+author: v-dotren
 manager: timlt
 editor: 
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 06/28/2017
-ms.author: tamram
+ms.date: 010/04/2017
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2f2a878414e4efd626d674ef9a182ae52eeb1ff
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.openlocfilehash: f182dff164b8baa7e2144231667adbd12fcc717d
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
 
@@ -45,7 +45,7 @@ Der folgende allgemeine Workflow ist typisch für fast alle Anwendungen und Dien
 In den folgenden Abschnitten werden diese und andere Ressourcen von Batch besprochen, die Ihr verteiltes Computingszenario ermöglichen.
 
 > [!NOTE]
-> Zur Verwendung des Batch-Diensts wird ein [Batch-Konto](#account) benötigt. Die meisten Batch-Lösungen verwenden außerdem ein [Azure-Speicherkonto][azure_storage] zum Speichern und Abrufen von Dateien. Von Batch wird derzeit ausschließlich der Speicherkontotyp **Allgemein** unterstützt, wie in den [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md) unter Schritt 5 des Abschnitts [Erstellen Sie ein Speicherkonto.](../storage/common/storage-create-storage-account.md#create-a-storage-account) beschrieben.
+> Zur Verwendung des Batch-Diensts wird ein [Batch-Konto](#account) benötigt. Die meisten Batch-Lösungen verwenden außerdem ein zugeordnetes [Azure-Speicherkonto][azure_storage] zum Speichern und Abrufen von Dateien. 
 >
 >
 
@@ -70,44 +70,14 @@ Einige der folgenden Ressourcen – Konten, Computeknoten, Pools, Aufträge, Tas
 ## <a name="account"></a>Konto
 Ein Batch-Konto ist eine eindeutig identifizierte Entität innerhalb des Batch-Diensts. Die gesamte Verarbeitung ist einem Batch-Konto zugeordnet.
 
-Ein Azure Batch-Konto können Sie über das [Azure-Portal](batch-account-create-portal.md) oder programmgesteuert (beispielsweise mit der [Batch Management .NET-Bibliothek ](batch-management-dotnet.md)) erstellen. Bei der Kontoerstellung können Sie ein Azure Storage-Konto zuordnen.
+Ein Azure Batch-Konto können Sie über das [Azure-Portal](batch-account-create-portal.md) oder programmgesteuert (beispielsweise mit der [Batch Management .NET-Bibliothek ](batch-management-dotnet.md)) erstellen. Bei der Kontoerstellung können Sie ein Azure-Speicherkonto zur Speicherung auftragsbezogener Eingabe- und Ausgabedaten oder Anwendungen zuordnen.
 
-### <a name="pool-allocation-mode"></a>Poolzuordnungsmodus
+Sie können mehrere Batch-Workloads in einem Batch-Konto ausführen oder Ihre Workloads auf Batch-Konten in demselben Abonnement, aber verschiedenen Azure-Regionen aufteilen.
 
-Wenn Sie ein Batch-Konto erstellen, können Sie angeben, wie [Pools](#pool) mit Computeknoten zugeordnet werden sollen. Computeknotenpools können entweder in einem von Azure Batch verwalteten Abonnement oder in Ihrem eigenen Abonnement zugeordnet werden. Die Eigenschaft für den *Poolzuordnungsmodus* des Kontos legt fest, wo Pools zugeordnet werden. 
+> [!NOTE]
+> Wenn Sie ein Batch-Konto erstellen, sollten Sie im Allgemeinen den Standardmodus **Batch-Dienst** verwenden, in dem Pools im Hintergrund in von Azure verwalteten Abonnements zugeordnet werden. Die Alternative (der Modus **Benutzerabonnement**) wird nicht mehr empfohlen. In diesem Modus werden virtuelle Batch-Computer und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird.
+>
 
-Überlegen Sie, welcher Poolzuordnungsmodus für Ihr Szenario am besten geeignet ist:
-
-* **Batch-Dienst:** Der Standard-Poolzuordnungsmodus. In diesem Modus werden Pools im Hintergrund in von Azure verwalteten Abonnements zugeordnet. Zu berücksichtigende Schlüsselaspekte des Poolzuordnungsmodus „Batch-Dienst“:
-
-    - Der Poolzuordnungsmodus „Batch-Dienst“ unterstützt sowohl Cloud Service-Pools als auch VM-Pools.
-    - Der Poolzuordnungsmodus „Batch-Dienst“ unterstützt sowohl die Authentifizierung mit gemeinsam verwendetem Schlüssel als auch die [Azure AD-Authentifizierung](batch-aad-auth.md) (Azure Active Directory). 
-    - In Pools mit dem Poolzuordnungsmodus „Batch-Dienst“ können dedizierte Computeknoten oder Computeknoten mit niedriger Priorität verwendet werden.
-    - Verwenden Sie den Poolzuordnungsmodus „Batch-Dienst“ nicht, wenn Sie Pools mit virtuellen Azure-Computern auf der Grundlage benutzerdefinierter VM-Images erstellen oder ein virtuelles Netzwerk verwenden möchten. Erstellen Sie Ihr Konto stattdessen mit dem Poolzuordnungsmodus „Benutzerabonnement“.
-    - Pools mit virtuellen Computern, die in einem Konto bereitgestellt werden, das mit dem Poolzuordnungsmodus „Batch-Dienst“ erstellt wurde, müssen auf der Grundlage von Images aus dem [Azure Virtual Machines-Marketplace][vm_marketplace] erstellt werden.
-
-* **Benutzerabonnement:** Beim Poolzuordnungsmodus „Benutzerabonnement“ werden die Batch-Pools in dem Azure-Abonnement zugeordnet, in dem das Konto erstellt wird. Zu berücksichtigende Schlüsselaspekte des Poolzuordnungsmodus „Benutzerabonnement“:
-     
-    - Der Poolzuordnungsmodus „Benutzerabonnement“ unterstützt ausschließlich VM-Pools. Cloud Services-Pools werden nicht unterstützt.
-    - Wenn Sie VM-Pools auf der Grundlage benutzerdefinierter VM-Images erstellen oder ein virtuelles Netzwerk mit VM-Pools verwenden möchten, müssen Sie den Poolzuordnungsmodus „Benutzerabonnement“ verwenden.  
-    - Für im Benutzerabonnement zugeordnete Pools muss die [Azure Active Directory-Authentifizierung](batch-aad-auth.md) verwendet werden. 
-    - Bei Verwendung des Poolzuordnungsmodus „Benutzerabonnement“ müssen Sie einen Azure-Schlüsseltresor für Ihr Batch-Konto einrichten. 
-    - In Pools unter einem Konto, das mit dem Poolzuordnungsmodus „Benutzerabonnement“ erstellt wurde, können nur dedizierte Computeknoten verwendet werden. Knoten mit niedriger Priorität werden nicht unterstützt.
-    - VM-Pools, die in einem Konto mit dem Poolzuordnungsmodus „Benutzerabonnement“ bereitgestellt werden, können auf der Grundlage von Images aus dem [Azure Virtual Machines-Marketplace][vm_marketplace] oder auf der Grundlage eigener benutzerdefinierter Images erstellt werden.
-
-Die folgende Tabelle enthält eine Gegenüberstellung der Poolzuordnungsmodi „Batch-Dienst“ und „Benutzerabonnement“:
-
-| **Poolzuordnungsmodus**                 | **Batch-Dienst**                                                                                       | **Benutzerabonnement**                                                              |
-|-------------------------------------------|---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| **Poolzuordnung in**               | Von Azure verwaltetes Abonnement                                                                           | Benutzerabonnement, unter dem das Batch-Konto erstellt wird                        |
-| **Unterstützte Konfigurationen**             | <ul><li>Clouddienstkonfiguration</li><li>VM-Konfiguration (Linux und Windows)</li></ul> | <ul><li>VM-Konfiguration (Linux und Windows)</li></ul>                |
-| **Unterstützte VM-Images**                  | <ul><li>Azure Marketplace-Images</li></ul>                                                              | <ul><li>Azure Marketplace-Images</li><li>Benutzerdefinierte Images</li></ul>                   |
-| **Unterstützte Computeknotentypen**         | <ul><li>Dedizierte Knoten</li><li>Knoten mit niedriger Priorität</li></ul>                                            | <ul><li>Dedizierte Knoten</li></ul>                                                  |
-| **Unterstützte Authentifizierung**             | <ul><li>Gemeinsam verwendeter Schlüssel</li><li>Azure AD</li></ul>                                                           | <ul><li>Azure AD</li></ul>                                                         |
-| **Azure Key Vault erforderlich**             | Nein                                                                                                      | Ja                                                                                |
-| **Kernkontingent**                           | Abhängig vom Batch-Kernkontingent                                                                          | Abhängig vom Kernkontingent des Abonnements                                              |
-| **Unterstützung von Azure Virtual Network (VNET)** | Mit der Clouddienstkonfiguration erstellte Pools                                                      | Mit der VM-Konfiguration erstellte Pools                               |
-| **Unterstütztes VNET-Bereitstellungsmodell**      | VNETs, die mit dem klassischen Bereitstellungsmodell erstellt wurden                                                             | VNETs, die mit dem klassischen Bereitstellungsmodell oder mit Azure Resource Manager erstellt wurden |
 
 ## <a name="azure-storage-account"></a>Azure-Speicherkonto
 
@@ -134,7 +104,7 @@ Azure Batch-Pools basieren auf der Azure-Computeplattform. Sie bieten Funktionen
 
 Jedem Knoten, der einem Pool hinzugefügt wird, werden ein eindeutiger Name und eine IP-Adresse zugewiesen. Beim Entfernen eines Knotens aus einem Pool gehen alle Änderungen am Betriebssystem oder an den Dateien verloren, und sein Name und die IP-Adresse werden zur späteren Verwendung freigegeben. Wenn ein Knoten einen Pool verlässt, endet seine Lebensdauer.
 
-Wenn Sie einen Pool erstellen, können Sie die folgenden Attribute angeben. Einige Einstellungen sind abhängig vom Poolzuordnungsmodus des [Batch-Kontos](#account):
+Wenn Sie einen Pool erstellen, können Sie die folgenden Attribute angeben:
 
 - Betriebssystem und Version von Serverknoten
 - Art des Serverknotens und vorgegebene Anzahl von Knoten
@@ -149,11 +119,9 @@ Wenn Sie einen Pool erstellen, können Sie die folgenden Attribute angeben. Eini
 Alle diese Einstellungen werden in den folgenden Abschnitten ausführlicher beschrieben.
 
 > [!IMPORTANT]
-> Batch-Konten, die mit dem Poolzuordnungsmodus „Batch-Dienst“ erstellt wurden, verfügen über ein Standardkontingent, das die Anzahl von Kernen in einem Batch-Konto begrenzt. Die Anzahl der Kerne entspricht der Anzahl von Serverknoten. Die Standardkontingente und eine Anleitung zum [Erhöhen des Kontingents](batch-quota-limit.md#increase-a-quota) finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Wenn der Pool die Zielanzahl der Knoten nicht erreicht, könnte das Kontingent für die Kerne die Ursache sein.
+> Batch-Konten verfügen über ein Standardkontingent, das die Anzahl von Kernen in einem Batch-Konto begrenzt. Die Anzahl der Kerne entspricht der Anzahl von Serverknoten. Die Standardkontingente und eine Anleitung zum [Erhöhen des Kontingents](batch-quota-limit.md#increase-a-quota) finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Wenn der Pool die Zielanzahl der Knoten nicht erreicht, könnte das Kontingent für die Kerne die Ursache sein.
 >
->Bei Batch-Konten, die mit dem Poolzuordnungsmodus „Benutzerabonnement“ erstellt wurden, werden die Kontingente des Batch-Diensts nicht beachtet. Stattdessen verwenden sie das Kontingent für die Kerne für das angegebene Abonnement gemeinsam. Weitere Informationen finden Sie unter [Virtual Machines-Grenzwerte](../azure-subscription-service-limits.md#virtual-machines-limits) in [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-subscription-service-limits.md).
->
->
+
 
 ### <a name="compute-node-operating-system-and-version"></a>Betriebssystem und Version von Serverknoten
 
@@ -173,41 +141,14 @@ Wenn Sie einen Batch-Pool erstellen, können Sie die Konfiguration für virtuell
 
 Wenn Sie einen Pool erstellen, müssen Sie je nach dem Betriebssystem des Basisimages Ihrer VHD die entsprechende **nodeAgentSkuId** auswählen. Eine Zuordnung der verfügbaren Knoten-Agent-SKU-IDs zu ihren Betriebssystemimages erhalten Sie durch den Aufruf des Vorgangs unter [List Supported Node Agent SKUs](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) (Auflisten der unterstützten Knoten-Agent-SKUs).
 
-Im Abschnitt [Konto](#account) finden Sie Informationen zum Festlegen des Poolzuordnungsmodus beim Erstellen eines Batch-Kontos.
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>Benutzerdefinierte Images für Pools virtueller Computer
 
-Wenn Sie VM-Pools auf der Grundlage eines benutzerdefinierten Images bereitstellen möchten, erstellen Sie Ihr Batch-Konto mit dem Poolzuordnungsmodus „Benutzerabonnement“. In diesem Modus werden Batch-Pools dem Abonnement zugeordnet, in dem sich das Konto befindet. Im Abschnitt [Konto](#account) finden Sie Informationen zum Festlegen des Poolzuordnungsmodus beim Erstellen eines Batch-Kontos.
+Wenn Sie ein benutzerdefiniertes Image verwenden möchten, müssen Sie es zunächst generalisieren. Informationen zum Vorbereiten benutzerdefinierter Linux-Images von Azure-VMs finden Sie unter [Generalisieren und Erfassen eines virtuellen Linux-Computers](../virtual-machines/linux/capture-image.md). Informationen zum Vorbereiten benutzerdefinierter Windows-Images von virtuellen Azure-Computern finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md). 
 
-Wenn Sie ein benutzerdefiniertes Image verwenden möchten, müssen Sie es zunächst generalisieren. Informationen zum Vorbereiten benutzerdefinierter Linux-Images von virtuellen Azure-Computern finden Sie unter [Erfassen eines virtuellen Linux-Computers, der in Azure ausgeführt wird](../virtual-machines/linux/capture-image-nodejs.md). Informationen zum Vorbereiten benutzerdefinierter Windows-Images von virtuellen Azure-Computern finden Sie unter [Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mithilfe von PowerShell](../virtual-machines/windows/tutorial-custom-images.md). 
+Ausführliche Informationen zu den Anforderungen und Schritten finden Sie unter [Verwenden eines benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
 
-> [!IMPORTANT]
-> Beachten Sie bei der Vorbereitung Ihres benutzerdefinierten Images Folgendes:
-> - Vergewissern Sie sich, dass das Betriebssystem-Basisimage, das Sie zum Bereitstellen Ihrer Batch-Pools verwenden, über keine vorinstallierten Azure-Erweiterungen (beispielsweise die benutzerdefinierte Skripterweiterung) verfügt. Wenn das Image eine vorinstallierte Erweiterung enthält, treten beim Bereitstellen des virtuellen Computers unter Umständen Probleme auf.
-> - Vergewissern Sie sich, dass das von Ihnen bereitgestellte Betriebssystem-Basisimage das standardmäßige temporäre Laufwerk verwendet, da dies aktuell vom Batch-Knoten-Agent erwartet wird.
->
->
 
-Wenn Sie einen Pool mit der Konfiguration „Virtueller Computer“ mithilfe eines benutzerdefinierten Images erstellen möchten, benötigen Sie Azure Storage-Standardkonten, um Ihre benutzerdefinierten VHD-Images zu speichern. Benutzerdefinierte Images werden als Blobs gespeichert. Wenn Sie beim Erstellen eines Pools auf Ihre benutzerdefinierten Images verweisen möchten, geben Sie in der [osDisk](https://docs.microsoft.com/rest/api/batchservice/add-a-pool-to-an-account#bk_osdisk)-Eigenschaft der [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/add-a-pool-to-an-account#bk_vmconf)-Eigenschaft die URIs der Blobs mit den benutzerdefinierten Image-VHDs an.
-
-Stellen Sie sicher, dass Ihre Speicherkonten die folgenden Kriterien erfüllen:   
-
-- Die Speicherkonten mit den Blobs mit den benutzerdefinierten Image-VHDs müssen demselben Abonnement wie das Batch-Konto (das Benutzerabonnement) angehören.
-- Die angegebenen Speicherkonten müssen sich in derselben Region wie das Batch-Konto befinden.
-- Zurzeit werden nur allgemeine Storage Standard-Konten unterstützt. Azure Storage Premium wird in der Zukunft unterstützt.
-- Sie können ein Speicherkonto mit mehreren Blobs mit benutzerdefinierten VHDs oder mehrere Speicherkonten mit jeweils einem einzelnen Blob angeben. Es wird empfohlen, mehrere Speicherkonten zu verwenden, um eine bessere Leistung zu erzielen.
-- Ein eindeutiges Blob für benutzerdefinierte Images unterstützt bis zu 40 Linux-VM-Instanzen oder 20 Windows-VM-Instanzen. Sie müssen Kopien des VHD-Blobs erstellen, um Pools mit mehr virtuellen Computern zu erstellen. Ein Pool mit 200 virtuellen Windows-Computern benötigt beispielsweise 10 eindeutige VHD-Blobs, die in der **osDisk**-Eigenschaft angegeben werden.
-
-So erstellen Sie ein benutzerdefiniertes Image mithilfe des Azure-Portals
-
-1. Navigieren Sie im Azure-Portal zu Ihrem Batch-Konto.
-2. Wählen Sie auf dem Blatt **Einstellungen** die Menüoption **Pools** aus.
-3. Wählen Sie auf dem Blatt **Pools** den Befehl **Hinzufügen** aus. Daraufhin wird das Blatt **Pool hinzufügen** angezeigt.
-4. Wählen Sie in der Dropdownliste **Imagetyp** die Option **Benutzerdefiniertes Image (Linux/Windows)** aus. Das Portal zeigt die Auswahl **Benutzerdefiniertes Image** an. Wählen Sie eine oder mehrere VHDs aus demselben Container aus, und klicken Sie auf die Schaltfläche **Auswählen**. 
-    Die Unterstützung für VHDs aus verschiedenen Speicherkonten und unterschiedlichen Containern wird in der Zukunft hinzugefügt.
-5. Wählen Sie die richtigen Werte für **Verleger/Angebot/SKU** für Ihre benutzerdefinierten VHDs und den gewünschten **Zwischenspeicherungsmodus** aus, und füllen Sie alle anderen Parameter für den Pool aus.
-6. Um festzustellen, ob ein Pool auf einem benutzerdefinierten Image basiert, überprüfen Sie die **Betriebssystem**-Eigenschaft im Abschnitt mit der Ressourcenzusammenfassung auf dem Blatt **Pool**. Der Wert dieser Eigenschaft sollte **Benutzerdefiniertes VM-Image** lauten.
-7. Alle benutzerdefinierten VHDs, die einem Pool zugeordnet sind, werden auf dem Blatt **Eigenschaften** des Pools angezeigt.
 
 ### <a name="compute-node-type-and-target-number-of-nodes"></a>Art des Serverknotens und vorgegebene Anzahl von Knoten
 
@@ -219,8 +160,7 @@ Wenn Sie einen Pool erstellen, können Sie die gewünschte Art von Serverknoten 
 
     Serverknoten mit niedriger Priorität können zurückgestellt werden, wenn Azure nicht über genügend überschüssige Kapazität verfügt. Wenn ein Knoten beim Ausführen von Aufgaben zurückgestellt wird, werden die Aufgaben in eine Warteschlange gestellt und erneut ausgeführt, wenn wieder ein Serverknoten verfügbar ist. Knoten mit niedriger Priorität eignen sich gut für Workloads, bei denen der Zeitpunkt des Auftragsabschlusses flexibel ist und die Arbeit über viele Knoten verteilt wird. Bevor Sie sich entscheiden, Knoten mit niedriger Priorität für Ihr Szenario zu verwenden, sollten Sie sich vergewissern, dass sämtliche Arbeit, die aufgrund einer vorzeitigen Entfernung verloren geht, gering und einfach zu wiederholen ist.
 
-    Serverknoten mit niedriger Priorität stehen nur für Batch-Konten zur Verfügung, die im Poolzuordnungsmodus **Batch-Dienst** erstellt wurden.
-
+    
 Sie können sowohl Serverknoten mit niedriger Priorität als auch dedizierte Serverknoten im selben Pool verwenden. Jede Art von Knoten &mdash; mit niedriger Priorität und dediziert &mdash; verfügt über eine eigene Zieleinstellung, für die Sie die gewünschte Anzahl von Knoten angeben können. 
     
 Die Anzahl der Serverknoten wird als *Ziel* bezeichnet, da Ihr Pool in einigen Fällen unter Umständen nicht die gewünschte Anzahl von Knoten erreicht. Ein Pool kann das Ziel zum Beispiel nicht erreichen, wenn er zuvor das [Kernkontingent](batch-quota-limit.md) Ihres Batch-Kontos erreicht. Der Pool kann das Ziel auch nicht erreichen, wenn Sie eine Formel für automatische Skalierung auf den Pool angewendet haben, die die maximale Anzahl von Knoten beschränkt.
@@ -446,34 +386,15 @@ Zur Bewältigung einer variablen, kontinuierlichen Auslastung wird in der Regel 
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>Virtuelles Netzwerk (VNET) und Firewallkonfiguration 
 
-Wenn Sie in Azure Batch einen Computeknotenpool bereitstellen, können Sie den Pool einem Subnetz eines [virtuellen Azure-Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) zuordnen. Weitere Informationen zum Erstellen eines VNETs mit Subnetzen finden Sie unter [Erstellen eines virtuellen Netzwerks mit mehreren Subnetzen](../virtual-network/virtual-networks-create-vnet-arm-pportal.md). 
+Wenn Sie in Batch einen Computeknotenpool bereitstellen, können Sie den Pool einem Subnetz eines [virtuellen Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) zuordnen. Weitere Informationen zum Erstellen eines VNETs mit Subnetzen finden Sie unter [Erstellen eines virtuellen Netzwerks mit mehreren Subnetzen](../virtual-network/virtual-networks-create-vnet-arm-pportal.md). 
 
- * Ein VNET, das einem Pool zugeordnet wird, muss folgende Anforderungen erfüllen:
+VNET-Anforderungen:
 
-   * Es muss sich in derselben Azure-**Region** wie das Azure Batch-Konto befinden.
-   * Es muss sich im selben **Abonnement** wie das Azure Batch-Konto befinden.
+* Das virtuelle Netzwerk muss sich in der gleichen **Azure-Region** und im gleichen **Azure-Abonnement** befinden wie das Azure Batch-Konto.
 
-* Welche Art von VNET unterstützt wird, hängt davon ab, wie Pools für das Batch-Konto zugewiesen werden:
+* Für Pools, die mit einer VM-Konfiguration erstellt wurden, werden nur virtuelle Netzwerke unterstützt, die auf ARM (Azure Resource Manager) basieren. Für Pools, die mit einer Clouddienstkonfiguration erstellt wurden, werden sowohl ARM-basierte als auch klassische virtuelle Netzwerke unterstützt. 
 
-    - Wenn der Poolzuordnungsmodus für Ihr Batch-Konto auf „Batch-Dienst“ festgelegt ist, können Sie ein VNET nur Pools zuweisen, die mit der **Clouddienstkonfiguration** erstellt wurden. Außerdem muss das angegebene VNET mit dem klassischen Bereitstellungsmodell erstellt werden. VNets, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden, werden nicht unterstützt.
- 
-    - Wenn der Poolzuordnungsmodus für Ihr Batch-Konto auf „Benutzerabonnement“ festgelegt ist, können Sie ein VNET nur Pools zuweisen, die mit der **VM-Konfiguration** erstellt wurden. Mit der **Clouddienstkonfiguration** erstellte Pools werden nicht unterstützt. Das zugeordnete VNET kann mit dem Azure Resource Manager-Bereitstellungsmodell oder mit dem klassischen Bereitstellungsmodell erstellt werden.
-
-    Eine Tabelle mit einer Zusammenfassung der VNET-Unterstützung nach Poolzuordnungsmodus finden Sie im Abschnitt [Poolzuordnungsmodus](#pool-allocation-mode).
-
-* Wenn der Poolzuordnungsmodus für Ihr Batch-Konto auf „Batch-Dienst“ festgelegt ist, müssen Sie dem Batch-Dienstprinzipal Zugriffsberechtigungen für das VNET erteilen. Das VNET muss dem Batch-Dienstprinzipal die Rolle [Mitwirkender für klassische virtuelle Computer](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/#classic-virtual-machine-contributor) der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) zuweisen. Falls die angegebene RBAC-Rolle nicht bereitgestellt wird, gibt der Batch-Dienst „400 – Ungültige Anforderung“ zurück. So fügen Sie die Rolle über das Azure-Portal hinzu:
-
-    1. Wählen Sie **VNET** und anschließend **Zugriffssteuerung (IAM)** > **Rollen** > **Mitwirkender für virtuelle Computer** > **Hinzufügen** aus.
-    2. Wählen Sie auf dem Blatt **Berechtigungen hinzufügen** die Rolle **Mitwirkender für virtuelle Computer** aus.
-    3. Suchen Sie auf dem Blatt **Berechtigungen hinzufügen** nach der Batch-API. Suchen Sie nach den folgenden Zeichenfolgen, bis Sie die API gefunden haben:
-        1. **MicrosoftAzureBatch**.
-        2. **Microsoft Azure Batch**. Neuere Azure AD-Mandanten verwenden diesen Namen unter Umständen.
-        3. **ddbf3205-c6bd-46ae-8127-60eb93363864** ist die ID für die Batch-API. 
-    3. Wählen Sie den Batch-API-Dienstprinzipal aus. 
-    4. Klicken Sie auf **Speichern**.
-
-        ![Zuweisen der Rolle „Mitwirkender für virtuelle Computer“ zum Batch-Dienstprinzipal](./media/batch-api-basics/iam-add-role.png)
-
+* Zur Verwendung eines ARM-basierten Netzwerks muss die Batch-Client-API die [Azure Active Directory-Authentifizierung](batch-aad-auth.md) verwenden. Zur Verwendung eines klassischen virtuellen Netzwerks muss der Dienstprinzipal „MicrosoftAzureBatch“ für das angegebene virtuelle Netzwerk über die rollenbasierte Zugriffssteuerungsrolle „Mitwirkender für klassische virtuelle Computer“ verfügen. 
 
 * Im angegebenen Subnetz müssen genügend freie **IP-Adressen** für die Gesamtanzahl von Zielknoten (Summe der Pooleigenschaften `targetDedicatedNodes` und `targetLowPriorityNodes`) zur Verfügung stehen. Wenn das Subnetz nicht über genügend freie IP-Adressen verfügt, belegt der Batch-Dienst teilweise die Computeknoten im Pool und gibt einen Anpassungsfehler zurück.
 

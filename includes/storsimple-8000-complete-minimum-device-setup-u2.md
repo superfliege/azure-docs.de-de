@@ -1,4 +1,4 @@
-<!--author=alkohli last changed: 01/12/17-->
+<!--author=alkohli last changed: 09/28/17-->
 
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>So führen Sie die mindestens erforderliche StorSimple-Gerätekonfiguration aus
 
@@ -21,7 +21,7 @@
 
             ![Netzwerkschnittstellen für die minimale Konfiguration von StorSimple-Geräten](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
 
-            Die festen IP-Adressen für den Controller werden dazu verwendet, die Updates für das Gerät vorzunehmen. Aus diesem Grund müssen die festen IP-Adressen routingfähig sein und eine Verbindung mit dem Internet herstellen können. Mit dem [Test-HcsmConnection][Test]-Cmdlet können Sie feststellen, ob die festen IP-Adressen Ihres Controllers routingfähig sind. Im folgenden Beispiel sind feste Controller-IP-Adressen dargestellt, die ins Internet weitergeleitet werden und auf die Microsoft Update-Server zugreifen können.
+            Die festen IP-Adressen für den Controller werden für die Bereitstellung der Updates für das Gerät sowie für die Garbage Collection verwendet. Aus diesem Grund müssen die festen IP-Adressen routingfähig sein und eine Verbindung mit dem Internet herstellen können. Mit dem [Test-HcsmConnection][Test]-Cmdlet können Sie feststellen, ob die festen IP-Adressen Ihres Controllers routingfähig sind. Im folgenden Beispiel sind feste Controller-IP-Adressen dargestellt, die ins Internet weitergeleitet werden und auf die Microsoft Update-Server zugreifen können.
 
             ![Test-HcsmConnection mit Darstellung routingfähiger IP-Adressen](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 

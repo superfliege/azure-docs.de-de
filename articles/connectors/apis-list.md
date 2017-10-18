@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
 ms.openlocfilehash: c14ac7592efabfec8668d7437463e2d8771ee072
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connectors-list"></a>Liste mit den Connectors
 > [!TIP]
@@ -56,9 +56,9 @@ Das Enterprise Integration Pack (EIP) umfasst Connectors, die in der BizTalk Ser
 
 |  |  |  |  |
 | --- | --- | --- | --- |
-| [![API-Symbol][as2icon]<br/>**AS2</br>-Decodierung**][as2decode] | [![API-Symbol][as2icon]<br/>**AS2</br>-Codierung**][as2encode] | [![API-Symbol][x12icon]<br/>**EDIFACT</br>-Decodierung**][EDIFACTdecode] | [![API-Symbol][x12icon]<br/>**EDIFACT</br>-Codierung**][EDIFACTencode] |
-[![API-Symbol][flatfileicon]<br/>**Flatfile</br>-Codierung**][flatfiledoc] | [![API-Symbol][flatfiledecodeicon]<br/>**Flatfile</br>-Decodierung**][flatfiledecodedoc] | [![API-Symbol][integrationaccounticon]<br/>**Integrations-<br/>konto**][integrationaccountdoc] | [![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc] |
-| [![API-Symbol][x12icon]<br/>**X12</br>-Decodierung**][x12decode] | [![API-Symbol][x12icon]<br/>**X12</br>-Codierung**][x12encode] | [![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc] | |
+| [![API-Symbol][as2icon]<br/>**AS2-</br>Decodierung**][as2decode] | [![API-Symbol][as2icon]<br/>**AS2-</br>Codierung**][as2encode] | [![API-Symbol][x12icon]<br/>**EDIFACT-</br>Decodierung**][EDIFACTdecode] | [![API-Symbol][x12icon]<br/>**EDIFACT-</br>Codierung**][EDIFACTencode] |
+[![API-Symbol][flatfileicon]<br/>**Flatfile-</br>Codierung**][flatfiledoc] | [![API-Symbol][flatfiledecodeicon]<br/>**Flatfile-</br>Decodierung**][flatfiledecodedoc] | [![API-Symbol][integrationaccounticon]<br/>**Integrations-<br/>konto**][integrationaccountdoc] | [![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc] |
+| [![API-Symbol][x12icon]<br/>**X12-</br>Decodierung**][x12decode] | [![API-Symbol][x12icon]<br/>**X12-</br>Codierung**][x12encode] | [![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc] | |
 
 ## <a name="enterprise-connectors"></a>Enterprise-Connectors
 
@@ -66,7 +66,7 @@ Stellen Sie in Ihren Logik-Apps eine Verbindung mit Ihren Unternehmensanwendunge
 
 |  |  |
 | --- | --- |
-|[![API Icon][MQicon]<br/>**MQ**][mqdoc]|[![API-Symbol][SAPicon]<br/>**SAP**][sapconnector]|
+|[![API-Symbol][MQicon]<br/>**MQ**][mqdoc]|[![API-Symbol][SAPicon]<br/>**SAP**][sapconnector]|
 
 
 ## <a name="az"></a>Vollständige Liste von A bis Z
@@ -160,7 +160,7 @@ Fehlt noch ein Connector-Thema oder Details, die Ihrer Meinung nach wichtig sind
 [sapconnector]: ../logic-apps/logic-apps-using-sap-connector.md "Herstellen einer Verbindung mit einem lokalen SAP-System"
 [service-busdoc]: ./connectors-create-api-servicebus.md "Senden von Nachrichten aus Service Bus-Warteschlangen und -Themen und Empfangen von Nachrichten aus Service Bus-Warteschlangen und -Abonnements"
 [sharepointdoc]: ./connectors-create-api-sharepointonline.md "Stellen Sie eine Verbindung mit SharePoint Online her. Sie können Dokumente verwalten, Elemente auflisten und vieles mehr."
-[sharepointserver]: ./connectors-create-api-sharepointserver.md "Verbinden Sie mit SharePoint auf dem lokalen Server. Sie können Dokumente verwalten, Elemente auflisten und vieles mehr."
+[sharepointserver]: ./connectors-create-api-sharepointserver.md "Stellen Sie eine Verbindung mit dem lokalen SharePoint-Server her. Sie können Dokumente verwalten, Elemente auflisten und vieles mehr."
 [sql-serverdoc]: ./connectors-create-api-sqlazure.md "Stellen Sie eine Verbindung mit Azure SQL-Datenbank oder SQL Server her. Sie können Einträge in einer SQL-Datenbanktabelle erstellen, aktualisieren, abrufen und löschen."
 [twitterdoc]: ./connectors-create-api-twitter.md "Stellen Sie eine Verbindung mit Twitter her. Sie können Timelines abrufen, Tweets posten und vieles mehr."
 [webhookdoc]: ./connectors-native-webhook.md "Hinzufügen von Webhookaktionen und Triggern zu Ihren Logik-Apps"

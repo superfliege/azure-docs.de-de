@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2017
+ms.date: 10/02/2017
 ms.author: billmath
+ms.openlocfilehash: a4b3c7543efc33d07dbd4f6c01b6e1bc354d1ed2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: a3a4a90221821de690f72260b2adca07680d30a9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](active-directory-aadconnect-get-started-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -71,7 +70,7 @@ Für das globale Administratorkonto kann auch [Privileged Identity Management](.
 
 Falls ein Fehler auftritt und Sie Probleme mit der Konnektivität haben, können Sie unter [Problembehebung bei Konnektivitätsproblemen](active-directory-aadconnect-troubleshoot-connectivity.md) nach einer Lösung suchen.
 
-## <a name="pages-under-the-section-sync"></a>Seiten im Abschnitt "Synchronisierung"
+## <a name="pages-under-the-sync-section"></a>Seiten im Abschnitt „Synchronisierung“
 
 ### <a name="connect-your-directories"></a>Verzeichnisse verbinden
 Zum Herstellen einer Verbindung mit Ihren Active Directory Domain Services benötigt Azure AD Connect den Namen der Gesamtstruktur und die Anmeldeinformationen für ein Konto, das über ausreichende Berechtigungen verfügt.
@@ -232,9 +231,12 @@ Auf einem Computer mit den Gruppenrichtlinien-Verwaltungstools:
 ## <a name="configuring-federation-with-ad-fs"></a>Konfigurieren des Verbunds mit AD FS
 Das Konfigurieren von AD FS mit Azure AD Connect ist mit nur wenigen Mausklicks erledigt. Für die Konfiguration wird Folgendes benötigt:
 
-* Ein Windows Server 2012 R2-Server für den Verbundserver mit aktivierter Remoteverwaltung
-* Ein Windows Server 2012 R2-Server für den Webanwendungsproxy-Server mit aktivierter Remoteverwaltung
+* Ein Server unter Windows Server 2012 R2 (oder höher) für den Verbundserver mit aktivierter Remoteverwaltung
+* Ein Server unter Windows Server 2012 R2 (oder höher) für den Webanwendungsproxy-Server mit aktivierter Remoteverwaltung
 * Ein SSL-Zertifikat für den Verbunddienstnamen, den Sie verwenden möchten (z.B. „sts.contoso.com“)
+
+>[!NOTE]
+>Sie können das SSL-Zertifikat für Ihre AD FS-Farm mit Azure AD Connect aktualisieren, auch wenn Sie es nicht für die Verwaltung Ihrer Verbundvertrauensstellung verwenden.
 
 ### <a name="ad-fs-configuration-pre-requisites"></a>Voraussetzungen für die AD FS-Konfiguration
 Vergewissern Sie sich, dass WinRM auf den Remoteservern aktiviert ist, damit Sie Ihre AD FS-Farm mithilfe von Azure AD Connect konfigurieren können. Machen Sie sich außerdem unter [Tabelle 3: Azure AD Connect und Verbund-/WAP-Server](active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) mit den Portanforderungen vertraut.
@@ -245,6 +247,9 @@ Sie können eine vorhandene AD FS-Farm verwenden oder eine neue AD FS-Farm ers
 ![AD FS-Farm](./media/active-directory-aadconnect-get-started-custom/adfs1.png)
 
 Wenn Sie sich für die Verwendung einer bereits vorhandenen AD FS-Farm entscheiden, gelangen Sie direkt zur Konfiguration der Vertrauensstellung zwischen AD FS und Azure AD.
+
+>[!NOTE]
+>Mit Azure AD Connect kann nur eine einzelne AD FS-Farm verwaltet werden. Wenn für die ausgewählte AD FS-Farm bereits eine Verbundvertrauensstellung mit Azure AD konfiguriert ist, wird diese von Azure AD Connect neu erstellt.
 
 ### <a name="specify-the-ad-fs-servers"></a>Angeben der AD FS-Server
 Geben Sie die Server ein, auf denen Sie AD FS installieren möchten. Sie können je nach Ihren Kapazitätsplanungsanforderungen einen oder mehrere Server hinzufügen. Verknüpfen Sie vor dieser Konfiguration alle Server mit Active Directory. Microsoft empfiehlt, einen einzelnen AD FS-Server für Test- und Pilotbereitstellungen zu installieren. Nach der Erstkonfiguration können Sie dann Azure AD Connect erneut ausführen und weitere Server hinzufügen und bereitstellen, um Ihren Skalierungsanforderungen gerecht zu werden.
@@ -350,4 +355,3 @@ Weitere Informationen zu diesen Features, die mit der Installation aktiviert wur
 Weitere Informationen zu folgenden allgemeinen Themen: [Scheduler und Auslösen der Synchronisierung](active-directory-aadconnectsync-feature-scheduler.md).
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-

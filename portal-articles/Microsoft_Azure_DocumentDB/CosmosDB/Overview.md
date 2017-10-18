@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über Azure Cosmos-DB | Microsoft Docs"
-description: "Hilfeinhalt für Azure-Cosmos-Datenbank (Übersicht) in Azure-portal"
+title: "Übersicht über Azure Cosmos DB | Microsoft-Dokumentation"
+description: "Hilfreiche Informationen zur Übersicht über Azure Cosmos DB im Azure-Portal"
 services: cosmos-db
 author: sewatson
 manager: lwelicki
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
 ms.openlocfilehash: 30ffaff9c4a7bacbda1f6b973f328a345eb5d5b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-cosmos-db-documentation"></a>Azure-Cosmos-DB-Dokumentation
+# <a name="azure-cosmos-db-documentation"></a>Dokumentation für Azure Cosmos DB
 
-Azure Cosmos-Datenbank ist ein Global verteilte Datenbank, um elastisch und unabhängig Durchsatz und den Speicher über eine beliebige Anzahl von geografischen Regionen mit einer umfassenden SLA skalieren können. Sie können Dokument, eine Schlüssel-Wert oder Diagramm-Datenbanken mit Cosmos-DB mithilfe mehrerer beliebter APIs und Programmiermodellen entwickeln. Erfahren Sie, wie Cosmos-DB mit unserem Schnellstarts, Lernprogramme und Beispiele zu verwenden.
+Azure Cosmos DB ist ein global verteilte Datenbank zur elastischen und unabhängigen Skalierung von Durchsatz und Speicher in verschiedenen geografischen Regionen mit einer umfassenden SLA. Mit Cosmos DB können Sie Dokument-, Schlüssel/Wert- oder Graph-Datenbanken mithilfe mehrerer beliebter APIs und Programmiermodellen erstellen. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Cosmos DB verwenden.
 
-## <a name="5-minute-quickstarts"></a>5-Minuten-Schnellstarts
+## <a name="5-minute-quickstarts"></a>Fünfminütige Schnellstarts
 
-Erfahren Sie mehr über das Azure-Cosmos-Datenbank verwenden, um eine Global verteilte Datenbank, die mit einer der Multi-Modell-APIs zu erstellen:
+Erfahren Sie mehr über die Verwendung von Azure Cosmo DB zum Erstellen einer global verteilten Datenbank mit einer der Multi-Modell-APIs:
 
 ### <a name="documentdb-api"></a>DocumentDB-API
 
@@ -46,24 +46,24 @@ Erfahren Sie mehr über das Azure-Cosmos-Datenbank verwenden, um eine Global ver
 
 - [.NET](/azure/cosmos-db/create-table-dotnet)
 
-## <a name="step-by-step-tutorials"></a>Schrittweise Lernprogramme
+## <a name="step-by-step-tutorials"></a>Schritt-für-Schritt-Tutorials
 
-Informationen Sie zum Entwickeln von apps mithilfe von Azure-Cosmos-Datenbank:
+Erfahren Sie mehr über die App-Entwicklung mit Azure Cosmos DB:
 
-- Entwickeln eine app mit Cosmos DB: [DocumentDB](/azure/cosmos-db/tutorial-develop-documentdb-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb) | [Tabelle](/azure/cosmos-db/tutorial-develop-table-dotnet) | [Diagramm](/azure/cosmos-db/tutorial-develop-graph-dotnet)
-- Importieren von Daten in Cosmos-DB [DocumentDB](/azure/documentdb/documentdb-import-data) | [MongoDB](/azure/documentdb/documentdb-mongodb-migrate) 
-- Abfragen von Daten mit Cosmos-DB: [DocumentDB](/azure/cosmos-db/tutorial-query-documentdb) | [MongoDB](/azure/cosmos-db/tutorial-query-mongodb) | [Tabelle](/azure/cosmos-db/tutorial-query-table) | [Diagramm](/azure/cosmos-db/tutorial-query-graph)
-- Globale Datenbankreplikation mit Cosmos-DB: [DocumentDB](/azure/cosmos-db/tutorial-global-distribution-documentdb) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [Tabelle] (/ Azure/Cosmos-Db/Lernprogramm-global--Verteilungstabelle | [Diagramm](/azure/cosmos-db/tutorial-global-distribution-graph)
-- [Entwickeln Sie Ihre Anwendung lokal mit dem emulator](/azure/documentdb/documentdb-nosql-local-emulator)
+- Entwickeln einer App mit Cosmos DB: [DocumentDB](/azure/cosmos-db/tutorial-develop-documentdb-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb) | [Table](/azure/cosmos-db/tutorial-develop-table-dotnet) | [Graph](/azure/cosmos-db/tutorial-develop-graph-dotnet)
+- Importieren von Daten in Cosmos DB: [DocumentDB](/azure/documentdb/documentdb-import-data) | [MongoDB](/azure/documentdb/documentdb-mongodb-migrate) 
+- Abfragen von Daten mit Cosmos DB: [DocumentDB](/azure/cosmos-db/tutorial-query-documentdb) | [MongoDB](/azure/cosmos-db/tutorial-query-mongodb) | [Table](/azure/cosmos-db/tutorial-query-table) | [Graph](/azure/cosmos-db/tutorial-query-graph)
+- Globale Datenbankreplikation mit Cosmos DB: [DocumentDB](/azure/cosmos-db/tutorial-global-distribution-documentdb) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [Table](/azure/cosmos-db/tutorial-global-distribution-table | [Graph](/azure/cosmos-db/tutorial-global-distribution-graph)
+- [Lokales Entwickeln Ihrer Anwendung lokal mit dem Emulator](/azure/documentdb/documentdb-nosql-local-emulator)
 
 ## <a name="samples"></a>Beispiele
 
-Suchen Sie Skripts zur Verwaltung der allgemeinen Aufgaben.
+Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
 
-- [Azure-CLI](/azure/cosmos-db/cli-samples)
+- [Azure-Befehlszeilenschnittstelle](/azure/cosmos-db/cli-samples)
 - [Azure PowerShell](/azure/cosmos-db/powershell-samples)
 
-## <a name="more"></a>Mehr
+## <a name="more"></a>Weitere Informationen
 
-- [Besuchen Sie die Dokumentation, um mehr zu erfahren](/azure/cosmos-db/index)
-- [Erfahren Sie mehr über alle Azure-Dienste](https://aka.ms/j3wr7y)
+- [Weitere Informationen finden Sie in der Dokumentation](/azure/cosmos-db/index)
+- [Informationen zu allen Azure-Diensten](https://aka.ms/j3wr7y)

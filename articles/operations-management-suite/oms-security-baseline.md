@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
-ms.openlocfilehash: f29b20ba11b030d98a7a5574f816ea132edc3f6d
-ms.lasthandoff: 12/06/2016
-
-
+ms.openlocfilehash: 6f4cfda6f367cb8a68d038fa0a3390442be034c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Baselinebewertung in der Sicherheits- und Überwachungslösung von Operations Management Suite
 In diesem Dokument erhalten Sie Informationen zur Verwendung der Baselinebewertung der [Sicherheits- und Überwachungslösung von Operations Management Suite (OMS)](operations-management-suite-overview.md), um auf den Zustand Ihrer überwachten Ressourcen zuzugreifen.
@@ -40,7 +39,7 @@ Es gibt drei Arten von Regeln:
 > 
 
 ## <a name="security-baseline-assessment"></a>Bewertung der Sicherheitsbaseline
-Sie können über das Dashboard Ihre aktuelle Bewertung der Sicherheitsbaseline für alle Computer prüfen, die mit der Sicherheits- und Überwachungslösung von OMS überwacht werden.  Führen Sie die folgenden Schritte aus, um auf das Dashboard für die Bewertung der Sicherheitsbaseline zuzugreifen:
+Sie können über das Dashboard Ihre aktuelle Bewertung der Sicherheitsbaseline für alle Computer prüfen, die mit der Sicherheits- und Überwachungslösung von OMS überwacht werden. Führen Sie die folgenden Schritte aus, um auf das Dashboard für die Bewertung der Sicherheitsbaseline zuzugreifen:
 
 1. Klicken Sie im Hauptdashboard von **Microsoft Operations Management Suite** auf die Kachel **Security and Audit** (Sicherheit und Überwachung).
 2. Klicken Sie im Dashboard **Security and Audit** (Sicherheit und Überwachung) unter **Security Domains** (Sicherheitsdomänen) auf **Baseline Assessment** (Baselinebewertung). Das Dashboard für die **Bewertung der Sicherheitsbaseline** wird wie in der folgenden Abbildung angezeigt:
@@ -54,7 +53,7 @@ Dieses Dashboard ist in drei Hauptbereiche unterteilt:
 * **Computer mit fehlender Baselinebewertung**: In diesem Abschnitt werden die Computer aufgeführt, auf die aufgrund einer Inkompatibilität des Betriebssystems oder von Fehlern nicht zugegriffen wurde. 
 
 ### <a name="accessing-computers-compared-to-baseline"></a>Zugreifen auf „Mit Baseline verglichene Computer“
-Im Idealfall bestehen alle Ihre Computer die Bewertung der Sicherheitsbaseline. Es ist aber zu erwarten, dass dies in einigen Fällen nicht realisierbar ist. Im Rahmen der Sicherheitsverwaltung ist es wichtig, die Überprüfung der Computer mit Fehlern durchzuführen und sicherzustellen, dass alle Tests der Sicherheitsbewertung bestanden werden. Eine schnelle Möglichkeit zur Visualisierung ist die Auswahl der Option **Computer, auf die zugegriffen wurde** unter **Mit Baseline verglichene Computer**. Die Liste mit den Computern sollte im Ergebnis der Protokollsuche wie hier dargestellt angezeigt werden:
+Im Idealfall entsprechen alle Ihre Computer der Bewertung der Sicherheitsbaseline. Es ist aber zu erwarten, dass dies in einigen Fällen nicht realisierbar ist. Im Rahmen der Sicherheitsverwaltung ist es wichtig, die Überprüfung der Computer mit Fehlern durchzuführen und sicherzustellen, dass alle Tests der Sicherheitsbewertung bestanden werden. Eine schnelle Möglichkeit zur Visualisierung ist die Auswahl der Option **Computer, auf die zugegriffen wurde** unter **Mit Baseline verglichene Computer**. Die Liste mit den Computern sollte im Ergebnis der Protokollsuche wie hier dargestellt angezeigt werden:
 
 ![Ergebnisse für „Computer, auf die zugegriffen wurde“](./media/oms-security-baseline/oms-security-baseline-fig2.png)
 
@@ -85,5 +84,4 @@ In diesem Dokument wurde die Baselinebewertung der Sicherheits- und Überwachung
 * [Operations Management Suite (OMS) – Übersicht](operations-management-suite-overview.md)
 * [Überwachen von und Reagieren auf Sicherheitswarnungen in der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-responding-alerts.md)
 * [Überwachen von Ressourcen in der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-monitoring-resources.md)
-
 

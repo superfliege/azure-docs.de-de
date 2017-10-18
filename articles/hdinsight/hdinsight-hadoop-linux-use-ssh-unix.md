@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/03/2017
+ms.date: 10/06/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
+ms.openlocfilehash: fd95d055bedbec89027e1a75bcd4c9addab18ed3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: df0feb51469333bac42c779d860192d46f24ac62
-ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH
 
@@ -45,6 +44,11 @@ HDInsight kann Linux (Ubuntu) als Betriebssystem für Knoten im Hadoop-Cluster v
 > Wenn Ihr Cluster einen Edgeknoten enthält, sollten Sie __stets die Verbindung mit dem Edgeknoten__ mithilfe von SSH herstellen. Auf den Hauptknoten werden Dienste gehostet, die für die Integrität von Hadoop wichtig sind. Auf dem Edgeknoten werden nur die Komponenten ausgeführt, die Sie darauf anordnen.
 >
 > Weitere Informationen zur Verwendung von Edgeknoten finden Sie unter [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md#access-an-edge-node).
+
+> [!TIP]
+> Wenn Sie zum ersten Mal eine Verbindung mit HDInsight herstellen, zeigt der SSH-Client unter Umständen eine Warnung mit dem Hinweis an, dass die Echtheit des Hosts nicht bestätigt werden kann. Klicken Sie in diesem Fall auf „Ja“, um den Host der Liste mit den vertrauenswürdigen Servern des SSH-Clients hinzuzufügen.
+>
+> Wenn Sie zuvor eine Verbindung mit einem Server mit dem gleichen Namen hergestellt haben, erscheint unter Umständen eine Warnung mit dem Hinweis, dass der gespeicherte Hostschlüssel nicht dem Hostschlüssel des Servers entspricht. In diesem Fall verweigert der SSH-Client möglicherweise die Verbindungsherstellung mit dem Cluster. Informationen zum Entfernen des Eintrags für den Servernamen finden Sie in der Dokumentation Ihres SSH-Clients.
 
 ## <a name="ssh-clients"></a>SSH-Clients
 

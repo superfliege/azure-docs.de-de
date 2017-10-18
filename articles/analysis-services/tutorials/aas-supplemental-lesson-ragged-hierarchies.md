@@ -15,18 +15,17 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 36acf2b20a4c3acab8050eb9c5489c8ee53e4d4e
-ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
-
+ms.openlocfilehash: d34b2123153406640cf03bc9f57efa557af4cfaa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>Ergänzende Lektion – Unregelmäßige Hierarchien
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-In dieser ergänzenden Lektion beheben Sie ein häufiges Problem beim Pivotieren von Hierarchien, die leere Werte (Member) auf verschiedenen Ebenen enthalten. Eine derartige Hierarchie ist z.B. eine Organisation, in der ein hochrangiger Manager sowohl Ressortleiter als auch Nicht-Manager als direkte Mitarbeiter hat , oder eine geographische Hierarchie mit den Ebenen Land-Region-Stadt, in der einige Städte keinen übergeordneten Staat oder keine übergeordnete Provinz haben, wie etwa Washington D.C. oder die Vatikanstadt. Wenn eine Hierarchie leere Member aufweist, steigt sie oft zu anderen oder unregelmäßigen Ebenen hinunter.
+In dieser ergänzenden Lektion beheben Sie ein häufiges Problem beim Pivotieren von Hierarchien, die leere Werte (Member) auf verschiedenen Ebenen enthalten. Ein Beispiel wäre etwa eine Organisation, in der einem hochrangigen Manager sowohl Abteilungsleiter als auch Mitarbeiter ohne Führungskompetenzen unterstellt sind. Ein anderes Beispiel wären geografische Hierarchien mit Land, Region und Stadt, bei denen einige Städte keinem Bundesland/Kanton untergeordnet sind (wie etwa im Fall von Washington D. C. oder Vatikanstadt). Wenn eine Hierarchie leere Member aufweist, steigt sie oft zu anderen oder unregelmäßigen Ebenen hinunter.
 
 ![aas-lektion-detail-unregelmäßige-hierarchien-tabelle](../tutorials/media/aas-lesson-detail-ragged-hierarchies-table.png)
 

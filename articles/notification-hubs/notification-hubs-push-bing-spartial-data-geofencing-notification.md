@@ -13,18 +13,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 09/13/2017
+ms.date: 09/15/2017
 ms.author: dendeli
+ms.openlocfilehash: a416edaded8aa04c3229a5788d648de0a6afe2b6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 8db82ae9f37a89b6b7049208133949a7f49e9d92
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="geo-fenced-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Geofencing-Pushbenachrichtigungen mit Azure Notification Hubs und Bing Spatial Data
 > [!NOTE]
-> Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02).
+> Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02).
 > 
 > 
 
@@ -119,7 +118,7 @@ Klicken Sie auf der Registerkarte mit den Paketeigenschaften, die geöffnet wird
 
 ![](./media/notification-hubs-geofence/vs-package-location.png)
 
-Da die Standortfunktion nun deklariert wurde, können Sie in Ihrer Projektmappe einen neuen Ordner mit dem Namen `Core` erstellen und diesem dann eine neue Datei mit dem Namen `LocationHelper.cs` hinzufügen:
+Da die Standortfunktion nun deklariert wurde, können Sie in Ihrer Projektmappe einen neuen Ordner mit dem Namen `Core` erstellen und diesem dann eine neue Datei namens `LocationHelper.cs` hinzufügen:
 
 ![](./media/notification-hubs-geofence/vs-location-helper.png)
 
@@ -179,7 +178,7 @@ Die Implementierung des Ereignishandlers lautet wie folgt:
         }
     }
 
-Beachten Sie, dass wir den Handler als „async“ deklariert haben, da `GetCurrentLocation` „awaitable“ ist und daher in einem asynchronen Kontext ausgeführt werden muss. Da es unter bestimmten Umständen auch zu einem NULL-Standort kommen kann (wenn z.B. die Standortdienste deaktiviert sind oder die Anwendung keine Berechtigungen für den Zugriff auf den Standort erhalten hat), müssen wir sicherstellen, dass dieser Fall per NULL CHECK richtig behandelt wird.
+Beachten Sie, dass wir den Handler als „async“ deklariert haben, da `GetCurrentLocation` „awaitable“ ist und daher in einem asynchronen Kontext ausgeführt werden muss. Da es unter bestimmten Umständen auch zu einem NULL-Standort kommen kann (etwa wenn die Standortdienste deaktiviert sind oder die Anwendung keine Berechtigungen für den Zugriff auf den Standort erhalten hat), müssen wir sicherstellen, dass dieser Fall per NULL CHECK korrekt gehandhabt wird.
 
 Führen Sie die Anwendung aus. Achten Sie darauf, dass Sie den Standortzugriff zulassen:
 
@@ -381,7 +380,7 @@ Da wir nicht die echten Koordinaten übergeben (die sich derzeit ggf. nicht inne
 
 ![](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-## <a name="whats-next"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Es gibt einige Schritte, deren Ausführung zusätzlich zu den obigen Schritten unter Umständen erforderlich ist, um sicherzustellen, dass die Lösung bereit für die Produktion ist.
 
 Zunächst sollten Sie ggf. sicherstellen, dass die Geofences dynamisch sind. Hierfür ist etwas zusätzliche Arbeit mit der Bing-API erforderlich, um neue Grenzen innerhalb der vorhandenen Datenquelle hochzuladen. Weitere Informationen zu diesem Thema finden Sie in der API-Dokumentation zu [Bing Spatial Data Services](https://msdn.microsoft.com/library/ff701734.aspx).
@@ -391,5 +390,4 @@ Außerdem kann es bei der Sicherstellung, dass die Bereitstellung für die richt
 In der oben gezeigten Projektmappe wird ein Szenario beschrieben, bei dem Sie viele verschiedene Plattformen nutzen können. Daher haben wir das Geofencing nicht auf systemspezifische Funktionen beschränkt. Die universelle Windows-Plattform verfügt aber standardmäßig über Funktionen zum [Erkennen von Geofences](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence).
 
 Weitere Informationen zu Notification Hubs-Funktionen finden Sie in unserem [Dokumentationsportal](https://azure.microsoft.com/documentation/services/notification-hubs/).
-
 
