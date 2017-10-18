@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
-ms.openlocfilehash: c3ffc819fcc442f87fb4985ecb08be8ec02ba957
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b8497f0331e9b7d19eed2e1c254849a1619f496a
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Bereitstellen des Azure Stack Development Kit
 
@@ -109,7 +109,7 @@ Um das [Azure Stack Development Kit](azure-stack-poc.md) bereitstellen zu könne
 7. Legen Sie optional die folgenden Werte fest:
     - **VLAN-ID**: Legt die VLAN-ID fest. Verwenden Sie diese Option nur, wenn für Host und AzS-BGPNAT01 eine VLAN-ID für den Zugriff auf das physische Netzwerk (und das Internet) konfiguriert werden muss. 
     - **DNS-Weiterleitung**: Ein DNS-Server wird als Teil der Azure Stack-Bereitstellung erstellt. Damit Computer innerhalb der Lösung Namen außerhalb des Stamps auflösen können, stellen Sie Ihren vorhandenen Infrastruktur-DNS-Server bereit. Der DNS-Server innerhalb des Stamps leitet Auflösungsanforderungen, die unbekannte Namen betreffen, an diesen Server weiter.
-    - **Zeitserver**: Legt einen bestimmten Zeitserver fest. 
+    - **Zeitserver**: Dieses Pflichtfeld dient zum Festlegen des Zeitservers und muss eine IP-Adresse enthalten. Besuchen Sie zum Ermitteln der IP-Adresse eines Zeitservers [pool.ntp.org](http:\\pool.ntp.org), oder pingen Sie „time.windows.com“. 
 8. Klicken Sie auf **Weiter**.
  
 9. Auf der Seite **Überprüfen von Netzwerkadaptereigenschaften** sehen Sie eine Statusanzeige. 
