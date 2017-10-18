@@ -27,23 +27,23 @@
       href: overview-general-concepts.md
 - name: Anleitungen
   items:
-    - name: Verwenden von Machine Learning Workbench
+    - name: Verwenden von Workbench
       items:
         - name: Verwenden von Python IDEs
           href: how-to-configure-your-IDE.md
         - name: Verwenden von Jupyter-Notebooks
           href: how-to-use-jupyter-notebooks.md
-        - name: Integrieren in ein Git-Repository
+        - name: Integrieren in Git-Repositorys
           href: using-git-ml-project.md
-        - name: Strukturieren eines Projekts mit TDSP
+        - name: Strukturieren von Projekten per TDSP
           href: how-to-use-tdsp-in-azure-ml.md
         - name: Roaming und Kollaboration
           href: roaming-and-collaboration.md
-    - name: Verwenden von Visual Studio-Tools
+    - name: Verwenden von Visual Studio Code-Tools für KI
       href: quickstart-visual-studio-tools.md
     - name: Konfigurieren der Compute-Umgebung
       items:
-        - name: Konfigurieren von Ausführungszielen
+        - name: Konfigurieren des Experimentierens
           href: experiment-execution-configuration.md
         - name: Erstellen von DSVM-und HDI Spark-Clustern
           href: how-to-create-dsvm-hdi.md
@@ -51,13 +51,14 @@
           href: how-to-use-gpu.md
     - name: Abrufen und Verstehen von Daten
       items:
-        - name: Zugreifen auf Daten mit dem Datenquellen-Assistenten
+        - name: Hinzufügen einer Datenquelle
           href: data-source-wizard.md
-        - name: Erste Schritte bei der Datenvorbereitung
-          href: data-prep-getting-started.md
         - name: Anleitung zur Datenvorbereitung
+          href: data-prep-getting-started.md
+        - name: Erweiterte Datenvorbereitung
           href: data-prep-user-guide.md
         - name: Transformationen bei der Datenvorbereitung
+          href: data-prep-appendix3-supported-transforms.md
           items:
             - name: Kombinieren von Spalten anhand eines Beispiels
               href: data-prep-combine-columns-by-example.md
@@ -65,7 +66,7 @@
               href: data-prep-derive-column-by-example.md
             - name: Teilen von Spalten anhand eines Beispiels
               href: data-prep-split-column-by-example.md
-            - name: Erweitern von JSON
+            - name: Expand JSON (JSON erweitern)
               href: data-prep-expand-json.md
     - name: Entwickeln von Modellen
       items:
@@ -73,22 +74,26 @@
           href: tutorial-iris-azure-cli.md
         - name: Nachverfolgen des Ausführungsverlaufs und der Modellmetriken
           href: how-to-use-run-history-model-metrics.md
-        - name: Ermitteln der genauesten und kürzesten Ausführungen
+        - name: Ermitteln der Ausführung mit der höchsten Genauigkeit
           href: how-to-find-best-accuracy-cli.md
         - name: Lesen und Schreiben von Dateien
           href: how-to-read-write-files.md
-        - name: MMLSpark-Bibliothek
+        - name: Verwenden der MMLSpark-Bibliothek
           href: how-to-use-mmlspark.md
-    - name: Bereitstellen von Modellen
+    - name: Operationalisieren von Modellen
       items:
         - name: Einrichten der Modellverwaltung
           href: deployment-setup-configuration.md
+        - name: Skalieren von Clustern und Diensten
+          href: how-to-scale-clusters.md
         - name: Bereitstellen eines Webdiensts
           href: model-management-service-deploy.md
         - name: Verwenden eines Webdiensts
           href: model-management-consumption.md
-        - name: Verwenden der Modelldatensammlung
+        - name: Sammeln von Modelldaten
           href: how-to-use-model-data-collection.md
+        - name: Leitfaden zur Problembehandlung bei der Bereitstellung
+          href: how-to-deploy-troubleshooting-guide.md
     - name: Praktische Beispiele
       items:
         - name: Analyse der Dokumentsammlung
@@ -121,8 +126,6 @@
           href: data-prep-python-extensibility-overview.md
         - name: Unterstützte Datenquellen
           href: data-prep-appendix2-supported-data-sources.md
-        - name: Unterstützte Transformationen
-          href: data-prep-appendix3-supported-transforms.md
         - name: Unterstützte Inspektoren
           href: data-prep-appendix4-supported-inspectors.md
         - name: Unterstützte Datenziele
@@ -131,7 +134,7 @@
           href: data-prep-supported-runtime-data-environments.md
         - name: Beispiel für Filterausdrücke in Python
           href: data-prep-appendix6-sample-filter-expressions-python.md
-        - name: Beispiel für benutzerdefinierte DataFlow-Transformationen in Python
+        - name: Beispiel für benutzerdefinierte Datenflusstransformationen in Python
           href: data-prep-appendix7-sample-transform-data-flow-python.md
         - name: Beispiel für Quellverbindungen in Python
           href: data-prep-appendix8-sample-source-connections-python.md
@@ -143,7 +146,7 @@
           href: data-prep-python-execution-api.md
     - name: Experimentieren
       items:
-        - name: Ausführungskonfiguration
+        - name: Konfiguration des Experimentieren-Diensts
           href: experiment-execution-configuration-reference.md
         - name: Protokollierungs-API
           href: reference-logging-api.md
@@ -155,11 +158,15 @@
           href: model-management-cli-reference.md
         - name: API für Modelldatensammlung
           href: model-data-collection-api-reference.md
+    - name: Versionshinweise
+      items:
+        - name: Sprint 0 – Oktober 2017
+          href: release-notes-sprint-0.md
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
       href: frequently-asked-questions.md
-    - name: Leitfaden zu bekannten Problemen und zur Problembehandlung
+    - name: Bekannte Probleme und Problembehandlung
       href: known-issues-and-troubleshooting-guide.md
     - name: Team Data Science-Prozess – Dokumentation
       href: ../team-data-science-process/overview.md
@@ -170,7 +177,7 @@
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
     - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=MachineLearning'
+      href: 'https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
     - name: Videos

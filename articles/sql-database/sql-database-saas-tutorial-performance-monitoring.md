@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
+ms.openlocfilehash: f05e769a8c5d26c0149dcba05c0973de4bd30313
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 115aa01ee6e3bd539086d80df1dcd94b3b7e2723
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 
@@ -48,7 +47,7 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 Die Verwaltung der Datenbankleistung umfasst das Kompilieren und Analysieren von Leistungsdaten sowie das Reagieren auf diese Daten durch Anpassen von Parametern, um eine akzeptable Reaktionszeit für Ihre Anwendung zu erhalten. Werden mehrere Mandanten gehostet, sind Pools für elastische Datenbanken eine kostengünstige Möglichkeit, Ressourcen für eine Gruppe von Datenbanken mit unvorhersehbaren Workloads bereitzustellen und zu verwalten. Bei bestimmten Workloadmustern können davon profitieren, nur zwei S3-Datenbanken in einem Pool zu verwalten.
 
-![Medien](./media/sql-database-saas-tutorial-performance-monitoring/app-diagram.png)
+![Anwendungsdiagramm](./media/sql-database-saas-tutorial-performance-monitoring/app-diagram.png)
 
 Pools und die Datenbanken in den Pools sollten überwacht werden, um sicherzustellen, dass die Leistung innerhalb zulässiger Bereiche bleibt. Optimieren Sie die Konfiguration der Pools so, dass die Anforderungen der aggregierten Workload von allen Datenbanken erfüllt sind, und stellen Sie sicher, dass die Pool-eDTUs für den allgemeinen Workload angemessen sind. Passen Sie die eDTU-Mindest- und Höchstwerte pro Datenbank an die entsprechenden Werte für Ihre spezifischen Anwendungsanforderungen an.
 
@@ -115,11 +114,11 @@ Beachten Sie die Diagramme **Überwachung des Pools für elastische Datenbanken*
 
 Der Ressourcenverbrauch des Pools ist im Wesentlichen die aggregierte Datenbankauslastung von allen Datenbanken im Pool. Das Datenbankdiagramm zeigt die meist verwendeten Datenbanken an:
 
-![](./media/sql-database-saas-tutorial-performance-monitoring/pool1.png)
+![Datenbankdiagramm](./media/sql-database-saas-tutorial-performance-monitoring/pool1.png)
 
 Da neben den fünf wichtigsten Datenbanken weitere Datenbanken im Pool vorhanden sind, zeigt die Poolauslastung Aktivitäten, die nicht im Diagramm der fünf wichtigsten Datenbanken widergespiegelt werden. Um zusätzliche Details anzuzeigen, klicken Sie auf **Datenbankressourcenverbrauch**:
 
-![](./media/sql-database-saas-tutorial-performance-monitoring/database-utilization.png)
+![Datenbankressourcennutzung](./media/sql-database-saas-tutorial-performance-monitoring/database-utilization.png)
 
 
 ## <a name="set-performance-alerts-on-the-pool"></a>Festlegen von Leistungsbenachrichtigungen für den Pool
@@ -249,4 +248,3 @@ In diesem Tutorial lernen Sie Folgendes:
 * [Pools für elastische SQL-Datenbanken](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
 * [Log Analytics](sql-database-saas-tutorial-log-analytics.md): Tutorial zum Einrichten und Verwenden von Log Analytics
-

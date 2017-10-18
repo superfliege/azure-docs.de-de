@@ -101,6 +101,7 @@
 ##### [Verwalten von Volumecontainern](storsimple-8000-manage-volume-containers.md)
 ##### [Verwalten von Volumes – aktuell](storsimple-8000-manage-volumes-u2.md)
 ###### [Häufig gestellte Fragen: lokale Volumes](storsimple-8000-local-volume-faq.md)
+##### [Rollenbasierte Zugriffssteuerung](storsimple-8000-role-based-access-control.md)
 ##### [Verwalten von ACRs](storsimple-8000-manage-acrs.md)
 ##### [Verwalten von Bandbreitenvorlagen](storsimple-8000-manage-bandwidth-templates.md)
 ##### [Anzeigen und Verwalten von Aufträgen](storsimple-8000-manage-jobs-u2.md)
@@ -118,6 +119,7 @@
 ##### [Konfigurieren des Webproxys](storsimple-8000-configure-web-proxy.md)
 ##### [Ändern der DATA 0-Einstellungen](storsimple-8000-modify-data-0.md)
 
+#### [Verwenden von Azure PowerShell-Beispielskripts](storsimple-8000-automation-azurerm-scripts.md)
 
 #### [Verwenden von StorSimple Snapshot Manager](storsimple-snapshot-manager-admin.md)
 ##### [Was ist StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
@@ -187,7 +189,7 @@
 #### [Allgemein verfügbare Version](storsimple-july-2014-release-notes.md)
 
 ## Referenz
-### [Azure PowerShell](/powershell/azure/overview?view=azuresmps-3.7.0)
+### [REST-API](https://docs.microsoft.com/rest/api/storsimple)
 ### [Windows PowerShell für StorSimple-Cmdlets](https://technet.microsoft.com/library/dn688168.aspx)
 
 # StorSimple 8000-Serie (klassisches Portal)

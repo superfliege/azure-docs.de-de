@@ -7,6 +7,7 @@
 ## [Häufig gestellte Fragen](active-directory-faq.md)
 
 # Erste Schritte
+## [Erste Schritte mit Azure AD](get-started-azure-ad.md)
 ## [Registrieren für Azure AD Premium](active-directory-get-started-premium.md)
 ## [Hinzufügen eines benutzerdefinierten Domänennamens](add-custom-domain.md)
 ## [Konfigurieren des Unternehmensbrandings](customize-branding.md)
@@ -43,6 +44,7 @@
 #### [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung](active-directory-licensing-group-migration-azure-portal.md)
 #### [Zusätzliche Szenarien für die Gruppenbasierte Lizenzierung](active-directory-licensing-group-advanced.md)
 #### [Azure PowerShell-Beispiele für die gruppenbasierte Lizenzierung](active-directory-licensing-ps-examples.md)
+#### [Referenz zu Produkten und Serviceplänen in Azure AD](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Verwalten von Benutzerprofilen](active-directory-users-profile-azure-portal.md)
 ### [Zurücksetzen eines Kennworts](active-directory-users-reset-password-azure-portal.md)
 ### [Verwalten von Benutzerarbeitsinformationen](active-directory-users-work-info-azure-portal.md)
@@ -64,6 +66,7 @@
 #### [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung](active-directory-licensing-group-migration-azure-portal.md)
 #### [Zusätzliche Szenarien für die Gruppenbasierte Lizenzierung](active-directory-licensing-group-advanced.md)
 #### [Azure PowerShell-Beispiele für die gruppenbasierte Lizenzierung](active-directory-licensing-ps-examples.md)
+#### [Referenz zu Produkten und Serviceplänen in Azure AD](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Einrichten des Office 365-Gruppenablaufs](active-directory-groups-lifecycle-azure-portal.md)
 ### [Anzeigen aller Gruppen](active-directory-groups-view-azure-portal.md)
 ### [Aktivieren dedizierter Gruppen](active-directory-accessmanagement-dedicated-groups.md)
@@ -136,7 +139,7 @@
 ### Aufgaben
 #### [Einrichten von bei Azure AD registrierten Windows 10-Geräten](device-management-azuread-registered-devices-windows10-setup.md)
 #### [Einrichten von in Azure AD eingebundenen Geräten](device-management-azuread-joined-devices-setup.md)
-#### [Einrichten von in Azure AD eingebundenen Hybridgeräten](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### [Einrichten von in Azure AD eingebundenen Hybridgeräten](device-management-hybrid-azuread-joined-devices-setup.md)
 #### [Lokale Bereitstellung](active-directory-device-registration-on-premises-setup.md)
 #### [Azure AD-Einbindung während des Eindrucks beim ersten Ausführen von Windows 10](device-management-azuread-joined-devices-frx.md)
 ### Problembehandlung
@@ -147,7 +150,7 @@
 ### [Übersicht](active-directory-enable-sso-scenario.md)
 ### [Erste Schritte](active-directory-integrating-applications-getting-started.md)
 ### [Tutorials für die Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
-### [Cloud App Discovery](cloudappdiscovery-overview.md)
+### [Cloud-App-Ermittlung](cloudappdiscovery-overview.md)
 #### [Einrichten der Ermittlung ohne Agents](cloudappdiscovery-get-started.md)
 #### [Erstellen von Momentaufnahmenberichten](cloudappdiscovery-set-up-snapshots.md)
 #### [Konfigurieren des automatischen Uploads von Protokollen für kontinuierliche Berichte](https://docs.microsoft.com/cloud-app-security/discovery-docker)
@@ -203,6 +206,7 @@
 #### [Verwalten der Bereitstellung von Benutzerkonten](active-directory-enterprise-apps-manage-provisioning.md)
 #### [Verwalten des einmaligen Anmeldens für Unternehmens-Apps](active-directory-enterprise-apps-manage-sso.md)
 #### [Erweiterte Zertifikatsignatur für SAML-Apps](active-directory-enterprise-apps-advance-certificate-options.md)
+####[ Ausblenden der Benutzeroberfläche eines Benutzers in Azure Active Directory](active-directory-coreapps-hide-third-party-app.md)
 
 ### [Verwalten des Zugriffs auf Apps](active-directory-managing-access-to-apps.md)
 #### [Self-Service-Zugriff](active-directory-self-service-application-access.md)
