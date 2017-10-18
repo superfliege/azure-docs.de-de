@@ -64,9 +64,9 @@ Gehen Sie nach dem Erstellen eines Tresors wie folgt vor, um Schlüssel und Gehe
 
 3. Klicken Sie auf dem Blatt **Schlüssel** auf **Hinzufügen**. 
 
-4. Wählen Sie auf dem Blatt **Schlüssel erstellen** in der Liste mit den**** Optionen die gewünschte Schlüsselerstellungsmethode aus. Sie können einen neuen Schlüssel**** generieren, einen vorhandenen Schlüssel**** hochladen oder einen gesicherten Schlüssel**** wiederherstellen.  
+4. Wählen Sie auf dem Blatt **Schlüssel erstellen** in der Liste mit den **Optionen** die gewünschte Schlüsselerstellungsmethode aus. Sie können einen neuen Schlüssel **generieren**, einen vorhandenen Schlüssel **hochladen** oder einen gesicherten Schlüssel **wiederherstellen**.  
 
-5. Geben Sie einen**** Namen für Ihren Schlüssel ein. Der Schlüsselname darf nur alphanumerische Zeichen und Bindestriche (-) enthalten.  
+5. Geben Sie einen **Namen** für Ihren Schlüssel ein. Der Schlüsselname darf nur alphanumerische Zeichen und Bindestriche (-) enthalten.  
 
 6. Konfigurieren Sie optional Werte für **Aktivierungsdatum festlegen** und **Ablaufdatum festlegen** für Ihren Schlüssel.  
 
@@ -83,9 +83,9 @@ Nach erfolgreicher Erstellung des Schlüssels können Sie ihn auf dem Blatt **Sc
 
 3. Klicken Sie auf dem Blatt **Geheimnisse** auf **Hinzufügen**.  
 
-4. Wählen Sie auf dem Blatt **Geheimnis erstellen** in der Liste mit**** Uploadoptionen die gewünschte Option für die Geheimniserstellung aus. Sie können ein Geheimnis**** manuell erstellen, indem Sie einen Wert für das Geheimnis eingeben, oder aber ein **Zertifikat** von Ihrem lokalen Computer hochladen.  
+4. Wählen Sie auf dem Blatt **Geheimnis erstellen** in der Liste mit **Uploadoptionen** die gewünschte Option für die Geheimniserstellung aus. Sie können ein Geheimnis **manuell** erstellen, indem Sie einen Wert für das Geheimnis eingeben, oder aber ein **Zertifikat** von Ihrem lokalen Computer hochladen.  
 
-5. Geben Sie einen Namen**** für das Geheimnis ein. Der Geheimnisname darf nur alphanumerische Zeichen und Bindestriche (-) enthalten.  
+5. Geben Sie einen **Namen** für das Geheimnis ein. Der Geheimnisname darf nur alphanumerische Zeichen und Bindestriche (-) enthalten.  
 
 6. Geben Sie optional den **Inhaltstyp** an, und konfigurieren Sie Werte für **Aktivierungsdatum festlegen** und **Ablaufdatum festlegen** für das Geheimnis.  
 

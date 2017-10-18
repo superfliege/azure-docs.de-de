@@ -77,7 +77,7 @@ Es wird empfohlen, nur über den Hardwarelebenszyklushost oder über einen dediz
       - **Benutzername**: Geben Sie das CloudAdmin-Konto im Format **&lt;*Azure Stack-Domäne*&gt;\cloudadmin** an. (Für ASDK lautet der Benutzername **Azurestack\cloudadmin**.)
       - **Kennwort**: Geben Sie das gleiche Kennwort ein, das während der Installation für das Domänenadministratorkonto AzureStackAdmin bereitgestellt wurde.
     
-3.  Nachdem Sie eine Verbindung hergestellt haben, ändert sich die Aufforderung zu **[*IP-Adresse oder ERCS VM-Name*]: PS > ** oder **[Azs ercs01]: PS>**, abhängig von der Umgebung. Führen Sie `Get-Command` aus, um die Liste der verfügbaren Cmdlets anzuzeigen.
+3.  Nachdem Sie eine Verbindung hergestellt haben, ändert sich die Aufforderung zu **[*IP-Adresse oder ERCS VM-Name*]: PS>** oder **[Azs ercs01]: PS>**, abhängig von der Umgebung. Führen Sie `Get-Command` aus, um die Liste der verfügbaren Cmdlets anzuzeigen.
 
     ![Die Ausgabe des Cmdlet „Get-Command“ zeigt die Liste der verfügbaren Befehle](media/azure-stack-privileged-endpoint/getcommandoutput.png)
 
