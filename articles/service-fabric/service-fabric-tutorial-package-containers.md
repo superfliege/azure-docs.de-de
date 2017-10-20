@@ -239,7 +239,7 @@ Navigieren Sie in einem Browser zu Service Fabric Explorer (http://lin4hjim3l4.w
 
 ![Service Fabric Explorer][sfx]
 
-Um eine Verbindung zur ausgeführten Anwendung herzustellen, öffnen Sie einen Webbrowser, und wechseln Sie zu der Cluster-Url – z.B. „http://lin0823ryf2he.cloudapp.azure.com:80“. Die Abstimmungsanwendung sollte in der Webbenutzeroberfläche angezeigt werden.
+Um eine Verbindung zur ausgeführten Anwendung herzustellen, öffnen Sie einen Webbrowser, und wechseln Sie zu der Cluster-Url – z.B. „ http://lin0823ryf2he.cloudapp.azure.com:80 “. Die Abstimmungsanwendung sollte in der Webbenutzeroberfläche angezeigt werden.
 
 ![votingapp][votingapp]
 
