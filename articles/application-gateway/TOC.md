@@ -59,6 +59,7 @@
 ## Problembehandlung
 ### [Behandeln von Fehlern in Application Gateway](application-gateway-troubleshooting-502.md)
 ### [Diagnoseprotokollierung und -metriken](application-gateway-diagnostics.md)
+### [Probleme mit der Application Gateway-Sitzungsaffinität](https://support.microsoft.com/help/4033827/troubleshooting-azure-application-gateway-session-affinity-issues)
 # Referenz
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/network/application-gateway)

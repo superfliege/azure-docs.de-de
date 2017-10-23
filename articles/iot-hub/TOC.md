@@ -109,6 +109,7 @@
 ### Aktualisieren der Gerätefirmware mithilfe von Geräteaufträgen
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-firmware-update.md)
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-firmware-update.md)
+#### [.NET-Back-End-/.NET-Gerät](iot-hub-csharp-csharp-firmware-update.md)
 #### [Java-Back-End-/Java-Gerät](iot-hub-java-java-firmware-update.md)
 ### Planen und Übertragen von Aufträgen
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-schedule-jobs.md)

@@ -97,6 +97,7 @@
 #### [Wartezeiten](active-directory-reporting-latencies-azure-portal.md)
 #### [Notifications](active-directory-reporting-notifications.md)
 #### [Fehlercodes für Anmeldeaktivitäten](active-directory-reporting-activity-sign-ins-errors.md)
+#### [Mehrstufige Authentifizierung](active-directory-reporting-activity-sign-ins-mfa.md)
 ### Problembehandlung
 #### [Fehlende Überwachungsdaten](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Fehlende Daten in den Downloads](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -150,8 +151,7 @@
 ### [Übersicht](active-directory-enable-sso-scenario.md)
 ### [Erste Schritte](active-directory-integrating-applications-getting-started.md)
 ### [Tutorials für die Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
-### [Cloud-App-Ermittlung](cloudappdiscovery-overview.md)
-#### [Einrichten der Ermittlung ohne Agents](cloudappdiscovery-get-started.md)
+### [Cloud-App-Ermittlung](cloudappdiscovery-get-started.md)
 #### [Erstellen von Momentaufnahmenberichten](cloudappdiscovery-set-up-snapshots.md)
 #### [Konfigurieren des automatischen Uploads von Protokollen für kontinuierliche Berichte](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Verwenden eines benutzerdefinierten Protokollparsers](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
