@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
+ms.openlocfilehash: 43e1a66c3aca882f8f572d2bf71976d6b65a9c68
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: 23ee3572752030332c5bfdd84edc97df5fb8e58f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric-Anwendungsupgrade
 Eine Azure Service Fabric Anwendung ist eine Sammlung von Diensten. Während eines Upgrades vergleicht Service Fabric das neue [Anwendungsmanifest](service-fabric-application-model.md#describe-an-application) mit der vorherigen Version und ermittelt, welche Dienste in der Anwendung aktualisiert werden müssen. Service Fabric vergleicht die Versionsnummern in den Dienstmanifesten mit den Versionsnummern in der vorherigen Version. Wenn sich ein Dienst nicht geändert hat, wird er nicht aktualisiert.
@@ -32,6 +31,8 @@ Aus diesem Grund müssen die beiden Versionen aufwärts- und abwärtskompatibel 
 Updatedomänen werden im Clustermanifest angegeben, wenn Sie den Cluster konfigurieren. Updatedomänen erhalten Updates nicht in einer bestimmten Reihenfolge. Bei einer Updatedomäne handelt es sich um eine logische Bereitstellungseinheit für eine Anwendung. Updatedomänen ermöglichen eine gleichbleibend hohe Verfügbarkeit der Dienste während eines Upgrades.
 
 Nicht parallele Upgrades sind möglich, wenn das Upgrade auf alle Knoten im Cluster angewendet wird. Dies ist der Fall, wenn die Anwendung nur über eine Updatedomäne verfügt. Von diesem Ansatz wird jedoch abgeraten, da der Dienst zum Zeitpunkt des Upgrades nicht aktiv und nicht verfügbar ist. Darüber hinaus übernimmt Azure keine Garantie, wenn ein Cluster mit nur einer Updatedomäne eingerichtet wird.
+
+Nach Abschluss des Upgrades verbleiben alle Dienste und Replikate (Instanzen) in derselben Version. Dies bedeutet: Wenn das Upgrade erfolgreich durchgeführt wird, werden sie auf die neue Version aktualisiert. Wenn beim Upgrade ein Fehler auftritt und ein Rollback durchgeführt wird, werden sie auf die alte Version zurückgesetzt.
 
 ## <a name="health-checks-during-upgrades"></a>Integritätsprüfungen bei Upgrades
 Für ein Upgrade müssen Integritätsrichtlinien festgelegt (oder Standardwerte verwendet) werden. Ein Upgrade wird als erfolgreich bezeichnet, wenn alle Updatedomänen innerhalb der angegebenen Timeouts aktualisiert werden und wenn alle Updatedomänen als fehlerfrei gelten.  Eine fehlerfreie Updatedomäne bedeutet, dass die Aktualisierungsdomäne alle in der Integritätsrichtlinie angegebenen Integritätsprüfungen bestanden hat. Eine Integritätsrichtlinie kann beispielsweise vorgeben, dass alle Dienste in einer Anwendungsinstanz *fehlerfrei*laufen müssen, so wie die Integrität von Service Fabric definiert ist.
@@ -76,4 +77,3 @@ Informieren Sie sich in [weiterführenden Themen](service-fabric-application-upg
 Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).
 
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png
-

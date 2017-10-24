@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
 ms.openlocfilehash: be957651af78519f678321aec511b71cb18a85f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus
 Dieser Artikel enthält Informationen zur Syntax und zu den Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie für gewöhnlich zum Erstellen und Verwalten von Azure-Ressourcen im Azure Resource Manager-Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im ARM-Modus ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen. Eine allgemeine Übersicht über Azure-Ressourcen und -Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).  
@@ -968,7 +968,7 @@ Parameteroptionen:
      -s, --subscription <subscription>      the subscription identifier
 
 <BR>
-    lb-netzwerkadresspool löschen [Options] < Ressourcengruppe >< lb-Name ><name>
+    network lb address-pool delete [options] <resource-group> <lb-name> <name>
 
 Entfernt die Back-End-IP-Pool-Bereichsressource aus dem Lastenausgleichsmodul.
 
@@ -1353,7 +1353,7 @@ Parameteroptionen:
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
 <BR>
-    öffentliche IP-Adresse Netzwerks anzeigen [Options] < Ressourcengruppe ><name>
+    network public-ip show [options] <resource-group> <name>
 
 Zeigt die Eigenschaften der öffentlichen IP für eine öffentliche IP-Ressource innerhalb einer Ressourcengruppe an.
 

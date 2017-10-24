@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/22/2017
 ms.author: carlrab
+ms.openlocfilehash: 5824347cbfd80ce2d21e256f4ce6e6fe2201792f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 59bb9778c89142212708b660fb200de3f0f1f9d4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-sql-database-features"></a>Funktionen von Azure SQL-Datenbank
 
 Azure SQL-Datenbank verwendet die gleiche Codebasis wie SQL Server und unterstützt auf der Datenbankebene größtenteils die gleichen Features. Die Features von Azure SQL-Datenbank und SQL Server unterscheiden sich hauptsächlich auf der Instanzebene. 
@@ -130,4 +128,3 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 
 - Informationen über den Azure SQL-Datenbank-Dienst finden Sie unter [Was ist SQL Database? Einführung in SQL-Datenbank](sql-database-technical-overview.md).
 - Informationen zur Transact-SQL-Unterstützung und zu den Unterschieden finden Sie unter [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](sql-database-transact-sql-information.md).
-

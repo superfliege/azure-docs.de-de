@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: e6eafb1a0030b022da2b5d0b787e092f3067c99f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.openlocfilehash: 793a2cdd55c4e9213e5097f4e318c0790960a64d
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Erstellen und Lesen von IoT Hub-Nachrichten
 
@@ -30,7 +30,7 @@ Um eine nahtlose Interoperabilität zwischen Protokollen zu gewährleisten, defi
 
 Eigenschaftennamen und Eigenschaftswerte dürfen nur alphanumerische ASCII-Zeichen sowie die Zeichen ``{'!', '#', '$', '%, '&', "'", '*', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` enthalten. Dies gilt für folgende Situationen:
 
-* Senden von D2C-Nachrichten über HTTP
+* Senden von Gerät-zu-Cloud-Nachrichten über das Protokoll HTTPS
 * Senden von Cloud-an-Gerät-Nachrichten.
 
 Weitere Informationen zum Codieren und Decodieren von Nachrichten, die über verschiedene Protokollen gesendet werden, finden Sie unter [Azure IoT-SDKs][lnk-sdks].

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
+ms.openlocfilehash: 33d0b9aa37cc92dda27f1cf21f1d393b42b8c09b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 52d131384c61b57d31873530304c644d6e9c11f1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-analytics-outputs-options-for-storage-analysis"></a>Stream Analytics-Ausgaben: Optionen für Speicher, Analyse
 Überlegen Sie beim Erstellen eines Stream Analytics-Auftrags, wie die resultierenden Daten genutzt werden. Wie möchten Sie die Ergebnisse des Stream Analytics-Auftrags anzeigen, und wo möchten Sie sie speichern?
@@ -57,7 +56,7 @@ Die folgende Tabelle enthält die Namen und Beschreibungen der Eigenschaften, di
 </tr>
 <tr>
 <td>Präfixmuster des Pfads</td>
-<td>Der Dateipfad, mit dem Ihre Dateien im angegebenen Data Lake-Speicherkonto geschrieben werden. <BR>{date}, {time}<BR>Beispiel 1: folder1/logs / {date} / {time}<BR>Beispiel 2: folder1/logs / {date}</td>
+<td>Die Dateibenennung erfolgt gemäß den nachstehenden Konventionen: <BR>{Präfixmuster des Pfads}/schemaHashcode_Guid_Number.extension <BR> <BR>Beispielausgabedateien:<BR>Myoutput/20170901/00/45434_gguid_1.csv <BR>Myoutput/20170901/01/45434_gguid_1.csv <BR> <BR>Im Folgenden werden nun die Fälle vorgestellt, in denen eine neue Datei erstellt wird:<BR>1. Änderung im Ausgabeschema <BR>2. Externer oder interner Neustart eines Auftrags<BR><BR>Wenn das Dateipfadmuster darüber hinaus kein abschließendes „/“ enthält, wird auch das letzte Muster im Dateipfad als Dateinamenpräfix behandelt.<BR><BR>Beispiel:<BR>Bei dem Pfadmuster „Ordner1/logs/HH“ kann die generierte Datei wie folgt aussehen: „Ordner1/logs/02_134343_gguid_1.csv“.</td>
 </tr>
 <tr>
 <td>Datumsformat [<I>optional</I>]</td>
@@ -81,7 +80,7 @@ Die folgende Tabelle enthält die Namen und Beschreibungen der Eigenschaften, di
 </tr>
 <tr>
 <td>Format</td>
-<td>Gilt nur für die JSON-Serialisierung. "Separate Zeile" gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. "Array" gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird.</td>
+<td>Gilt nur für die JSON-Serialisierung. "Separate Zeile" gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. "Array" gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. Dieses Array wird nur geschlossen, wenn der Auftrag beendet wird, oder Stream Analytics zum nächsten Zeitfenster verschoben wurde. Im Allgemeinen ist es besser, in separaten Zeilen geschriebenen JSON-Code zu verwenden, da er keine spezielle Behandlung erfordert, während noch in die Ausgabedatei geschrieben wird.</td>
 </tr>
 </tbody>
 </table>
@@ -137,7 +136,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 </tr>
 <tr>
 <td>Präfixmusters des Pfads [optional]</td>
-<td>Der Dateipfad, mit dem Ihre Blobs im angegebenen Container geschrieben werden.<BR>In dem Pfad können Sie mindestens eine Instanz der beiden folgenden Variablen verwenden, um die Frequenz anzugeben, in der Blobs geschrieben werden:<BR>{date}, {time}<BR>Beispiel 1: cluster1/logs/{date}/{time}<BR>Beispiel 2: cluster1/logs/{date}</td>
+<td>Das Dateipfadmuster, mit dem Ihre Blobs im angegebenen Container geschrieben werden. <BR> In dem Pfadmuster können Sie mindestens eine Instanz der beiden folgenden Variablen verwenden, um die Frequenz anzugeben, in der Blobs geschrieben werden: <BR> {date}, {time} <BR> Beispiel 1: cluster1/logs/{date}/{time} <BR> Beispiel 2: cluster1/logs/{date} <BR> <BR> Die Dateibenennung erfolgt gemäß den nachstehenden Konventionen: <BR> {Präfixmuster des Pfads}/schemaHashcode_Guid_Number.extension <BR> <BR> Beispielausgabedateien: <BR> Myoutput/20170901/00/45434_gguid_1.csv <BR> Myoutput/20170901/01/45434_gguid_1.csv <BR> <BR> Im Folgenden werden nun die Fälle vorgestellt, in denen eine neue Datei erstellt wird: <BR> 1. Überschreitung der maximal zulässigen Anzahl von Blöcken (derzeit 50.000) in der aktuellen Datei <BR> 2. Änderung im Ausgabeschema <BR> 3. Externer oder interner Neustart eines Auftrags  </td>
 </tr>
 <tr>
 <td>Datumsformat [optional]</td>
@@ -182,7 +181,7 @@ Es gibt einige Parameter, die erforderlich sind, um Event Hub-Datenströme als A
 | Ereignisserialisierungsformat |Das Serialisierungsformat für Ausgabedaten.  Es werden JSON, CSV und Avro unterstützt. |
 | Codieren |Bei CSV und JSON ist UTF-8 gegenwärtig das einzige unterstützte Codierungsformat. |
 | Trennzeichen |Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der Daten im CSV-Format. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabulator und senkrechter Strich. |
-| Format |Gilt nur für den JSON-Typ. "Separate Zeile" gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. "Array" gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. |
+| Format |Gilt nur für die JSON-Serialisierung. "Separate Zeile" gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. "Array" gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. Dieses Array wird nur geschlossen, wenn der Auftrag beendet wird, oder Stream Analytics zum nächsten Zeitfenster verschoben wurde. Im Allgemeinen ist es besser, in separaten Zeilen geschriebenen JSON-Code zu verwenden, da er keine spezielle Behandlung erfordert, während noch in die Ausgabedatei geschrieben wird. |
 
 ## <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com/) kann als Ausgabe für einen Stream Analytics-Auftrag verwendet werden, um eine umfassende Visualisierungsumgebung für die Analyseergebnisse bereitzustellen. Diese Funktionalität kann für betriebliche Dashboards, die Erstellung von Berichten und eine metrikgesteuerte Berichterstellung verwendet werden.
@@ -267,7 +266,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Partitionsschlüssel |Der Name der Ausgabespalte mit dem Partitionsschlüssel. Der Partitionsschlüssel ist ein eindeutiger Bezeichner für die Partition innerhalb einer Tabelle, die den ersten Teil des Primärschlüssels einer Entität bildet. Dabei handelt es sich um einen Zeichenfolgenwert, der bis zu 1 KB groß sein kann. |
 | Zeilenschlüssel |Der Name der Ausgabespalte, die den Zeilenschlüssel enthält. Der Zeilenschlüssel ist ein eindeutiger Bezeichner für eine Entität innerhalb einer Partition. Sie bildet den zweiten Teil des Primärschlüssels einer Entität. Der Zeilenschlüssel ist ein Zeichenfolgenwert, der bis zu 1 KB groß sein kann. |
 | Batchgröße |Dies ist die Anzahl von Datensätzen für einen Batchvorgang. In der Regel ist die Standardeinstellung für die meisten Aufträge ausreichend. Ausführlichere Informationen zum Ändern dieser Einstellung finden Sie unter [TableBatchOperation Class (TableBatchOperation-Klasse)](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx). |
-
+ 
 ## <a name="service-bus-queues"></a>Service Bus-Warteschlangen
 [Service Bus-Warteschlangen](https://msdn.microsoft.com/library/azure/hh367516.aspx) bieten eine FIFO-Nachrichtenzustellung (First In, First Out) an einen Consumer oder an mehrere konkurrierende Consumer. Typischerweise wird erwartet, dass Nachrichten in der zeitlichen Reihenfolge von den Consumern empfangen und verarbeitet werden, in der sie der Warteschlange hinzugefügt wurden, und jede Nachricht wird nur von einem Nachrichtenconsumer empfangen und verarbeitet.
 
@@ -298,7 +297,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Name der Themenrichtlinie |Beim Erstellen eines Themas können Sie auf der Registerkarte „Thema konfigurieren“ Richtlinien für den gemeinsamen Zugriff erstellen. Jede Richtlinie für den gemeinsamen Zugriff verfügt über einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
 | Schlüssel der Themenrichtlinie |Der Schlüssel für den gemeinsamen Zugriff, der für die Authentifizierung des Zugriffs auf den Service Bus-Namespace verwendet wird. |
 | Ereignisserialisierungsformat |Das Serialisierungsformat für Ausgabedaten.  Es werden JSON, CSV und Avro unterstützt. |
-| Codieren |Beim CSV- oder JSON-Format muss eine Codierung angegeben werden. Das einzige derzeit unterstützte Codierungsformat ist UTF-8. |
+ | Codieren |Beim CSV- oder JSON-Format muss eine Codierung angegeben werden. Das einzige derzeit unterstützte Codierungsformat ist UTF-8. |
 | Trennzeichen |Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der Daten im CSV-Format. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabulator und senkrechter Strich. |
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
@@ -315,6 +314,23 @@ Die folgende Liste enthält die Eigenschaftennamen und die entsprechenden Beschr
   2\) MyCollection{partition} – Solche Auflistungen müssen vorhanden sein: „MyCollection0“, „MyCollection1“, „MyCollection2“ usw.  
 * **Partitionsschlüssel**: Optional. Nur erforderlich, wenn Sie im Muster Ihres Sammlungsnamens ein {partition}-Token verwenden. Der Name des Felds in Ausgabeereignissen, das zur Angabe des Schlüssels für die Partitionierung der Ausgabe über Sammlungen hinweg verwendet wird. Für die Ausgabe einer einzelnen Sammlung kann eine beliebige Ausgabespalte wie „PartitionId“ verwendet werden.  
 * **Dokument-ID** : Optional. Der Name des Felds in Ausgabeereignissen, das zur Angabe des Primärschlüssels verwendet wird, auf dem Einfüge- und Aktualisierungsvorgänge basieren.  
+
+## <a name="azure-functions-in-preview"></a>Azure Functions (Vorschauversion)
+Azure Functions ist ein serverloser Computedienst, mit dem Sie Code bedarfsgesteuert ausführen können, ohne eine explizite Infrastruktur bereitstellen oder verwalten zu müssen. Mit diesem Dienst können Sie Codes implementieren, die durch in Azure- oder Drittanbieterdiensten auftretende Ereignisse ausgelöst werden.  Aufgrund der Möglichkeit, auf Trigger zu antworten, ist Azure Functions die ideale Ausgabe für Azure Stream Analytics. Mithilfe dieses Ausgabeadapters können Benutzer eine Verbindung zwischen Stream Analytics und Azure Functions herstellen und als Reaktion auf verschiedenste Ereignisse ein Skript oder einen Codeausschnitt ausführen.
+
+Azure Stream Analytics ruft Azure Functions über HTTP-Trigger auf. Der neue Azure Functions-Ausgabeadapter wird mit folgenden konfigurierbaren Eigenschaften zur Verfügung gestellt:
+
+| Eigenschaftenname | Beschreibung |
+| --- | --- |
+| Funktionen-App |Name der Azure Functions-App |
+| Funktion |Name der Funktion in der Azure Functions-App |
+| Max Batch Size |Mit dieser Eigenschaft kann die maximale Größe für jeden Ausgabebatch festgelegt werden, der an Ihre Azure Functions-Instanz gesendet wird. Standardmäßig ist dieser Wert auf 256 KB festgelegt. |
+| Max Batch Count  |Wie der Name schon sagt, können Sie mit dieser Eigenschaft die maximale Anzahl von Ereignissen in jedem Batch angeben, der an Azure Functions gesendet wird. Der Standardwert für „Max Batch Count“ ist 100. |
+| Schlüssel |Wenn Sie eine Azure-Funktion aus einem anderen Abonnement verwenden möchten, können Sie dies tun, indem Sie den Schlüssel für den Zugriff auf Ihre Funktion angeben. |
+
+Beachten Sie, dass die Größe der an Azure Functions gesendeten Batches verringert wird, wenn in Azure Stream Analytics Ausnahme 413 (HTTP-Anforderungseinheit zu groß) durch Azure Functions auftritt. Verwenden Sie in Ihrem Azure-Funktionscode diese Ausnahme, um sicherzustellen, dass Azure Stream Analytics keine übermäßig großen Batches sendet. Stellen Sie außerdem sicher, dass die Werte für die maximal zulässige Batchanzahl und -größe in der Funktion mit den Werten übereinstimmen, die im Stream Analytics-Portal eingegeben wurden. 
+
+Zudem wird in Fällen, in denen kein Ereignis in einem Zeitfenster auftritt, keine Ausgabe generiert. Die computeResult-Funktion wird daher nicht aufgerufen. Dieses Verhalten entspricht den integrierten Aggregatfunktionen im Fenstermodus.
 
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
@@ -335,4 +351,3 @@ Sie haben nun Stream Analytics kennengelernt, einen verwalteten Dienst für Stre
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
-

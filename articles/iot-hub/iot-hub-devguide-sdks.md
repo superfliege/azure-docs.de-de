@@ -12,26 +12,24 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/15/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: bcbf4b9633f58293edb19aeb33dec6602ac4ec8f
-ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
-
+ms.openlocfilehash: e299de0953cefac925b0015a15983d25d456576f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-and-use-azure-iot-sdks"></a>Verstehen und Verwenden von Azure IoT SDKs
 
-Drei Kategorien von SDKs können mit IoT Hub verwendet werden:
+Es gibt drei Kategorien von Software Development Kits (SDKs) für die Arbeit mit IoT Hub:
 
 * **Geräte-SDKs** ermöglichen das Erstellen von Apps, die auf Ihren IoT-Geräten ausgeführt werden. Mit diesen Apps werden Telemetriedaten an die IoT Hub-Instanz gesendet und optional Nachrichten von der IoT Hub-Instanz empfangen.
 
 * **Dienst-SDKs** ermöglichen das Verwalten der IoT Hub-Instanz und senden optional Nachrichten an die IoT-Geräte.
 
-* **Azure IoT Edge** ermöglicht das Erstellen von Gateways, um Geräte zu aktivieren, die keines der unterstützten Protokolle verwenden, oder für die Verarbeitung von Nachrichten auf dem Edgeknoten.
+* **Azure IoT-Edge** ermöglicht Ihnen, Gateways für Geräte zu erstellen, die nicht eines der unterstützten Protokolle verwenden. Gateways können auch Nachrichten in Edge verarbeiten.
 
 SDKs dienen zur Unterstützung mehrerer Programmiersprachen.
 
@@ -41,11 +39,11 @@ Die Microsoft Azure IoT-Geräte-SDKs enthalten Code, der das Erstellen von Gerä
 
 Die folgenden Azure IoT-Geräte-SDKs sind auf GitHub zum Download verfügbar:
 
-* [Azure IoT-Geräte-SDK für C][lnk-c-device-sdk] wurde in ANSI C (C99) geschrieben und ist auf Portabilität und hohe Plattformkompatibilität ausgelegt. Für C gibt es zwei Geräteclientbibliotheken: **iothub_client** auf niedriger Ebene und das **Serialisierungsmodul**.
 * [Azure IoT-Geräte-SDK für .NET][lnk-dotnet-device-sdk]
 * [Azure IoT-Geräte-SDK für Java][lnk-java-device-sdk]
 * [Azure IoT-Geräte-SDK für Node.js][lnk-node-device-sdk]
 * [Azure IoT-Geräte-SDK für Python][lnk-python-device-sdk]
+* [Azure IoT-Geräte-SDK für C][lnk-c-device-sdk] wurde in ANSI C (C99) geschrieben und ist auf Portabilität und hohe Plattformkompatibilität ausgelegt. Für C gibt es zwei Geräteclientbibliotheken: **iothub_client** auf niedriger Ebene und das **Serialisierungsmodul**.
 
 > [!NOTE]
 > In den „Readme“-Dateien in den GitHub-Repositorys finden Sie Informationen zum Verwenden sprach- und plattformspezifischer Paket-Manager zum Installieren von Binärdateien und Abhängigkeiten auf Ihrem Entwicklungscomputer.
@@ -63,8 +61,8 @@ Die Azure IoT-Dienst-SDKs enthalten Code zum Erstellen von Anwendungen, die dire
 Die folgenden Azure IoT-Dienst-SDKs sind auf GitHub zum Download verfügbar:
 
 * [Azure IoT-Dienst-SDK für .NET][lnk-dotnet-service-sdk]
-* [Azure IoT-Dienst-SDK für Node.js][lnk-node-service-sdk]
 * [Azure IoT-Dienst-SDK für Java][lnk-java-service-sdk]
+* [Azure IoT-Dienst-SDK für Node.js][lnk-node-service-sdk]
 * [Azure IoT-Dienst-SDK für Python][lnk-python-service-sdk]
 * [Azure IoT-Dienst-SDK für C][lnk-c-service-sdk]
 
@@ -82,12 +80,12 @@ Sie können [Azure IoT Edge][lnk-iot-edge] von GitHub herunterladen.
 Die folgende Liste enthält Links zur online verfügbaren API-Referenzdokumentation für Azure IoT-Gerätebibliotheken, -Dienstbibliotheken und -Gatewaybibliotheken:
 
 * [Internet der Dinge (IoT, Internet of Things) .NET][lnk-dotnet-ref]
-* [IoT Hub REST][lnk-rest-ref]
-* [Azure IoT-Geräte-SDK für C][lnk-c-ref]
 * [Azure IoT-Geräte-SDK für Java][lnk-java-ref]
 * [Azure IoT-Dienst-SDK für Java][lnk-java-service-ref]
 * [Azure IoT-Geräte-SDK für Node.js][lnk-node-ref]
 * [Azure IoT-Dienst-SDK für Node.js][lnk-node-service-ref]
+* [Azure IoT-Geräte-SDK für C][lnk-c-ref]
+* [IoT Hub REST][lnk-rest-ref]
 * [Azure IoT Edge][lnk-gateway-ref]
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -127,4 +125,3 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 [lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 77f06b6ef146bdea8dc2f6cb920979e827626e35
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Konfigurieren von Multipfad-E/A für Ihr StorSimple-Gerät
 Microsoft hat Unterstützung für die Multipfad-E/A-Funktion (Multipath I/O, MPIO) in Windows Server integriert, um Ihnen beim Erstellen hoch verfügbarer, fehlertoleranter SAN-Konfigurationen zu helfen. MPIO verwendet redundante physische Pfadkomponenten (Adapter, Kabel und Switches), um logische Pfade zwischen dem Server und dem Speichergerät zu erstellen. Wenn bei einer Komponente ein Fehler auftritt, durch den ein logischer Pfad fehlschlägt, verwendet die Multipfad-Logik einen anderen Pfad für E/A, sodass Anwendungen weiterhin auf ihre Daten zugreifen können. Darüber hinaus kann MPIO abhängig von Ihrer Konfiguration auch die Leistung durch ein Umverteilen der Lasten auf alle Pfade verbessern. Weitere Informationen finden Sie unter [Multipfad-E/A (Übersicht)](https://technet.microsoft.com/library/cc725907.aspx "Multipfad-E/A (Übersicht) and features").  
@@ -115,8 +115,7 @@ Nachdem MPIO unter Windows Server konfiguriert wurde, können auf dem StorSimple
 13. Initialisieren Sie den Datenträger, und erstellen Sie dann ein neues Volume. Wählen Sie während des Formatierungsvorgangs eine Blockgröße von 64 KB aus.
     ![Datenträgerverwaltung](./media/storsimple-configure-mpio-windows-server/IC741008.png)
 14. Klicken Sie unter **Datenträgerverwaltung** mit der rechten Maustaste auf den **Datenträger**, und wählen Sie dann **Eigenschaften** aus.
-15. Klicken Sie im Dialogfeld **Eigenschaften von Multipfad-Datenträgergerät** der StorSimple-Modellnummer auf die Registerkarte **MPIO**.
-    ![StorSimple 8100 – Eigenschaften von Multipfad-Datenträgergerät](./media/storsimple-configure-mpio-windows-server/IC741009.png)
+15. Klicken Sie im Dialogfeld **Eigenschaften von Multipfad-Datenträgergerät** der StorSimple-Modellnummer auf die Registerkarte **MPIO**. ![StorSimple 8100 – Eigenschaften von Multipfad-Datenträgergerät](./media/storsimple-configure-mpio-windows-server/IC741009.png)
 16. Klicken Sie im Abschnitt **DSM-Name** auf **Details**, und vergewissern Sie sich, dass die Parameter auf die Standardparameter festgelegt sind. Die Standardparameter lauten:
     
     * Pfadüberprüfungszeitraum = 30

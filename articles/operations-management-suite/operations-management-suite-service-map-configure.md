@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 9af6c0fc3df2863c8e7b9a6a62acf5ba6b7d2d0a
-ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
-
+ms.openlocfilehash: 4c5c8aacd2d104b8d6074b90eeffc32b29fc50f3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Konfigurieren von Service Map in Operations Management Suite
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -92,7 +91,7 @@ Verwenden Sie Optionen aus der folgenden Tabelle, um über die Befehlszeile zu i
 
 Der Standardspeicherort von Dateien des Dependency-Agents für Windows lautet „C:\Programme\Microsoft Dependency Agent“.
 
-### <a name="install-the-dependency-agent-on-linux"></a>Deinstallieren des Dependency-Agents unter Linux
+### <a name="install-the-dependency-agent-on-linux"></a>Installieren des Dependency-Agents unter Linux
 Zum Installieren oder Konfigurieren des Agent ist Root-Zugriff erforderlich.
 
 Der Dependency-Agent wird auf Linux-Computern mit „InstallDependencyAgent-Linux64.bin“ installiert, einem Shellskript mit einer selbstextrahierenden Binärdatei. Sie können die Datei mit „sh“ ausführen oder der Datei selbst Ausführungsberechtigungen hinzufügen.
@@ -138,6 +137,55 @@ Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDepend
 wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin
 sh InstallDependencyAgent-Linux64.bin -s
 ```
+
+## <a name="azure-vm-extension"></a>Azure-VM-Erweiterung
+Sie können den Dependency-Agent ganz einfach über eine [Azure-VM-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/windows/classic/agents-and-extensions) auf Ihren Azure-VMs bereitstellen.  Mithilfe der Azure-VM-Erweiterung können Sie den Dependency-Agent auf Ihren VMs über ein PowerShell-Skript oder direkt in der Azure Resource Manager-Vorlage der VM bereitstellen.  Es ist eine Erweiterung für Windows (DependencyAgentWindows) und Linux (DependencyAgentLinux) verfügbar.  Wenn Sie die Bereitstellung über die Azure-VM-Erweiterung durchführen, können Ihre Agents automatisch auf die neuesten Versionen aktualisiert werden.
+
+Um die Azure-VM-Erweiterung über PowerShell bereitzustellen, können Sie das folgende Beispiel verwenden:
+```PowerShell
+#
+# Deploy the Dependency Agent to every VM in a Resource Group
+#
+
+$version = "9.1"
+$ExtPublisher = "Microsoft.Azure.Monitoring.DependencyAgent"
+$OsExtensionMap = @{ "Windows" = "DependencyAgentWindows"; "Linux" = "DependencyAgentLinux" }
+$rmgroup = "<Your Resource Group Here>"
+
+Get-AzureRmVM -ResourceGroupName $rmgroup |
+ForEach-Object {
+    ""
+    $name = $_.Name
+    $os = $_.StorageProfile.OsDisk.OsType
+    $location = $_.Location
+    $vmRmGroup = $_.ResourceGroupName
+    "${name}: ${os} (${location})"
+    Date -Format o
+    $ext = $OsExtensionMap.($os.ToString())
+    $result = Set-AzureRmVMExtension -ResourceGroupName $vmRmGroup -VMName $name -Location $location `
+    -Publisher $ExtPublisher -ExtensionType $ext -Name "DependencyAgent" -TypeHandlerVersion $version
+    $result.IsSuccessStatusCode
+}
+```
+
+Ein noch einfacherer Weg, um sicherzustellen, dass der Dependency-Agent auf jeder Ihrer VMs verfügbar ist, ist die Einbindung des Agents in Ihre Azure Resource Manager-Vorlage.  Beachten Sie, dass der Dependency-Agent weiterhin vom OMS-Agent abhängt, sodass die [OMS-Agent-VM-Erweiterung](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-vm-extension) zuerst bereitgestellt werden muss.  Der folgende JSON-Codeausschnitt kann dem Bereich *resources* in Ihrer Vorlage hinzugefügt werden.
+```JSON
+"type": "Microsoft.Compute/virtualMachines/extensions",
+"name": "[concat(parameters('vmName'), '/DependencyAgent')]",
+"apiVersion": "2017-03-30",
+"location": "[resourceGroup().location]",
+"dependsOn": [
+"[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+],
+"properties": {
+    "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
+    "type": "DependencyAgentWindows",
+    "typeHandlerVersion": "9.1",
+    "autoUpgradeMinorVersion": true
+}
+
+```
+
 
 ## <a name="desired-state-configuration"></a>Desired State Configuration
 Zum Bereitstellen des Dependency-Agents über Desired State Configuration können Sie das Modul „xPSDesiredStateConfiguration“ und ein paar Codezeilen wie die folgenden verwenden:
@@ -334,4 +382,3 @@ Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Date
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie nach Bereitstellung und Konfiguration [Service Map verwenden](operations-management-suite-service-map.md) können.
-

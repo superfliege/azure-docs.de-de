@@ -10,20 +10,18 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: C++
 ms.topic: quickstart
-ms.date: 08/03/2017
+ms.date: 09/22/2017
+ms.openlocfilehash: 92620c8081b1f0f5c96cc3ae09465b3526e74042
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 63388b83b913d95136140fa4c56af0dbebbdad81
-ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Verwenden von Connector/C++ zum Herstellen einer Verbindung und zum Abfragen von Daten
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mit einer C++-Anwendung eine Verbindung mit einer Azure-Datenbank für MySQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der C++-Entwicklung vertraut sind und noch keine Erfahrung mit Azure-Datenbank für MySQL haben.
+Dieser Schnellstart zeigt, wie Sie mit einer C#-Anwendung eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der C#-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
+In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Ausgangspunkt verwendet:
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
@@ -37,9 +35,9 @@ Außerdem benötigen Sie Folgendes:
 Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Entwicklung per .NET vertraut sind.
 
 ### <a name="windows"></a>**Windows**
-1. Installieren Sie Visual Studio 2017 Community. Hierbei handelt es sich um eine vollwertige, kostenlose und erweiterbare IDE zum Erstellen von modernen Anwendungen für Android, iOS und Windows sowie zum Erstellen von Web- und Datenbankanwendungen und Clouddiensten. Sie können entweder das vollständige .NET Framework oder nur .NET Core installieren. Die Codeausschnitte in der Schnellstartanleitung können für beides verwendet werden. Falls Visual Studio bereits auf Ihrem Computer installiert ist, können Sie die nächsten beiden Schritte überspringen.
-   - Laden Sie das [Visual Studio 2017-Installationsprogramm](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) herunter. 
-   - Führen Sie das Installationsprogramm aus, und befolgen Sie die Installationsanweisungen, um die Installation abzuschließen.
+- Installieren Sie Visual Studio 2017 Community. Hierbei handelt es sich um eine vollwertige, kostenlose und erweiterbare IDE zum Erstellen von modernen Anwendungen für Android, iOS und Windows sowie zum Erstellen von Web- und Datenbankanwendungen sowie Clouddiensten. Sie können entweder das vollständige .NET Framework oder nur .NET Core installieren. Die Codeausschnitte in der Schnellstartanleitung können mit beiden Lösungen verwendet werden. Falls Visual Studio bereits auf Ihrem Computer installiert ist, können Sie die nächsten beiden Schritte überspringen.
+   1. Laden Sie das [Visual Studio 2017-Installationsprogramm](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) herunter. 
+   2. Führen Sie das Installationsprogramm aus, und befolgen Sie die Installationsanweisungen, um die Installation abzuschließen.
 
 ### <a name="configure-visual-studio"></a>**Konfigurieren von Visual Studio**
 1. Fügen Sie in Visual Studio unter „Projekteigenschaft“ > „Konfigurationseigenschaften“ > „C/C++“ > „Linker“ > „Allgemein“ > „Zusätzliche Bibliotheksverzeichnisse“ das Verzeichnis „lib\opt“ (also „C:\Programme (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt“) des C++-Connectors hinzu.
@@ -55,7 +53,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie nach dem soeben erstellten Server, z.B. **myserver4demo**.
 3. Klicken Sie auf den Servernamen.
-4. Wählen Sie die Seite mit den **Eigenschaften** des Servers aus. Notieren Sie sich den **Servernamen** und den **Anmeldenamen des Serveradministrators**.
+4. Wählen Sie die Seite **Eigenschaften** des Servers aus, und notieren Sie sich den **Servernamen** und **den Anmeldenamen des Serveradministrators**.
  ![Servername für Azure-Datenbank für MySQL](./media/connect-cpp/1_server-properties-name-login.png)
 5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Serveradministrator-Anmeldenamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
 
@@ -127,7 +125,7 @@ int main()
 
 ## <a name="read-data"></a>Lesen von Daten
 
-Verwenden Sie den folgenden Code, um die Daten mit einer **SELECT**-SQL-Anweisung zu verbinden und zu lesen. Im Code wird die sql::Driver-Klasse mit der connect()-Methode verwendet, um eine Verbindung mit MySQL herzustellen. Anschließend werden im Code die Methoden „prepareStatement()“ und „executeQuery()“ verwendet, um die Auswahlbefehle auszuführen. Zum Schluss wird im Code „next()“ verwendet, um zu den Datensätzen in den Ergebnissen zu gelangen. Danach werden im Code „getInt()“ und „getString()“ verwendet, um die Werte im Datensatz zu analysieren.
+Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **SELECT** zu verbinden und zu lesen. Im Code wird die sql::Driver-Klasse mit der connect()-Methode verwendet, um eine Verbindung mit MySQL herzustellen. Anschließend werden im Code die Methoden „prepareStatement()“ und „executeQuery()“ verwendet, um die Auswahlbefehle auszuführen. Als Nächstes wird im Code „next()“ verwendet, um zu den Datensätzen in den Ergebnissen zu gelangen. Schließlich werden im Code „getInt()“ und „getString()“ verwendet, um die Werte im Datensatz zu analysieren.
 
 Ersetzen Sie die Parameter „Host“, „DBName“, „User“ und „Password“ durch die Werte, die Sie beim Erstellen des Servers und der Datenbank angegeben haben. 
 
@@ -179,7 +177,7 @@ int main()
 ```
 
 ## <a name="update-data"></a>Aktualisieren von Daten
-Verwenden Sie den folgenden Code, um die Daten mit einer **UPDATE**-SQL-Anweisung zu verbinden und zu lesen. Im Code wird die sql::Driver-Klasse mit der connect()-Methode verwendet, um eine Verbindung mit MySQL herzustellen. Anschließend werden im Code die Methoden „prepareStatement()“ und „executeQuery()“ verwendet, um die Aktualisierungsbefehle auszuführen. 
+Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **UPDATE** zu verbinden und zu lesen. Im Code wird die sql::Driver-Klasse mit der connect()-Methode verwendet, um eine Verbindung mit MySQL herzustellen. Anschließend werden im Code die Methoden „prepareStatement()“ und „executeQuery()“ verwendet, um die Aktualisierungsbefehle auszuführen. 
 
 Ersetzen Sie die Parameter „Host“, „DBName“, „User“ und „Password“ durch die Werte, die Sie beim Erstellen des Servers und der Datenbank angegeben haben. 
 
@@ -229,7 +227,7 @@ int main()
 
 
 ## <a name="delete-data"></a>Löschen von Daten
-Verwenden Sie den folgenden Code, um die Daten mit einer **DELETE**-SQL-Anweisung zu verbinden und zu lesen. Im Code wird die sql::Driver-Klasse mit der connect()-Methode verwendet, um eine Verbindung mit MySQL herzustellen. Anschließend werden im Code die Methoden „prepareStatement()“ und „executeQuery()“ verwendet, um die Löschbefehle auszuführen.
+Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **DELETE** zu verbinden und zu lesen. Im Code wird die sql::Driver-Klasse mit der connect()-Methode verwendet, um eine Verbindung mit MySQL herzustellen. Anschließend werden im Code die Methoden „prepareStatement()“ und „executeQuery()“ verwendet, um die Löschbefehle auszuführen.
 
 Ersetzen Sie die Parameter „Host“, „DBName“, „User“ und „Password“ durch die Werte, die Sie beim Erstellen des Servers und der Datenbank angegeben haben. 
 
@@ -282,4 +280,3 @@ int main()
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
 > [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md)
-

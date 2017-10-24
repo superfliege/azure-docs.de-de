@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 10/13/2016
 ms.author: sashan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: de5e1732dab570b80692efcdd08e4ed2d8c98800
-ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
-
+ms.openlocfilehash: 48b35f761273c68b03af1fc5e977bb99455a01e0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurieren und Verwalten der Sicherheit von Azure SQL-Datenbank für die Geowiederherstellung oder den Failover 
 
@@ -30,7 +28,7 @@ ms.lasthandoff: 05/18/2017
 >  
 
 ## <a name="overview-of-authentication-requirements-for-disaster-recovery"></a>Übersicht über die Authentifizierungsanforderungen für die Notfallwiederherstellung
-In diesem Thema werden die Authentifizierungsanforderungen zum Konfigurieren und Steuern der [aktiven Georeplikation](sql-database-geo-replication-overview.md) sowie die erforderlichen Schritte zum Einrichten des Benutzerzugriffs auf die sekundäre Datenbank beschrieben. Außerdem wird beschrieben, wie nach der [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore)der Zugriff auf die wiederhergestellte Datenbank aktiviert wird. Weitere Informationen zu Wiederherstellungsoptionen finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+In diesem Thema werden die Authentifizierungsanforderungen zum Konfigurieren und Steuern der [aktiven Georeplikation](sql-database-geo-replication-overview.md) sowie die erforderlichen Schritte zum Einrichten des Benutzerzugriffs auf die sekundäre Datenbank beschrieben. Außerdem wird beschrieben, wie nach der [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore) der Zugriff auf die wiederhergestellte Datenbank aktiviert wird. Weitere Informationen zu Wiederherstellungsoptionen finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
 ## <a name="disaster-recovery-with-contained-users"></a>Notfallwiederherstellung mit eigenständigen Benutzern
 Im Gegensatz zu herkömmlichen Benutzern, die Anmeldungen in der „master“-Datenbank zugeordnet werden müssen, wird ein eigenständiger Benutzer vollständig von der Datenbank selbst verwaltet. Dies hat zwei Vorteile. Beim Notfallwiederherstellungs-Szenario können sich die Benutzer weiter ohne zusätzliche Konfiguration mit der neuen primären Datenbank bzw. mit der Geowiederherstellung wiederhergestellten Datenbank verbinden, da die Datenbank die Benutzer verwaltet. Es gibt bei dieser Konfiguration auch vom Standpunkt der Anmeldung potenzielle Skalierbarkeits- und Leistungsvorteile. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx). 
@@ -104,5 +102,4 @@ Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen m
 * Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 * Informationen zur Verwendung und Konfiguration der aktiven Georeplikation finden Sie unter [aktive Georeplikation](sql-database-geo-replication-overview.md)
 * Informationen zur Verwendung der Geowiederherstellung finden Sie unter [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore)
-
 

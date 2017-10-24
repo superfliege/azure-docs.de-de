@@ -11,11 +11,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: junyi
-ms.openlocfilehash: 0c430272225d79737baec2be15ed7c93991cdeac
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.openlocfilehash: eddeb5cc13aac7ab33305adcd266465a5b143462
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-java"></a>Erstellen eines Azure IoT Edge-Moduls mit Java
 
@@ -127,7 +127,7 @@ Bei den Eingaben kann es sich um Daten von Hardware (z.B. eines Bewegungsmelders
 
 Die Ausgabe ist mit der Eingabe vergleichbar, da sie ein bestimmtes Hardwareverhalten (z.B. eine blinkende LED), eine Meldung an andere Module oder sonstige Ausgaben (z.B. die Ausgabe über die Konsole) auslösen kann.
 
-Module kommunizieren mithilfe der `com.microsoft.azure.gateway.messaging.Message`-Klasse miteinander. Der **Inhalt** einer `Message` ist ein Bytearray, das beliebige von Ihnen gewünschte Daten darstellen kann. In der `Message` sind auch **Eigenschaften** vorhanden, die einfach eine Zuordnung von Zeichenfolgen darstellen. **Eigenschaften** können in Headern einer HTTP-Anforderung bzw. Metadaten einer Datei enthalten sein.
+Module kommunizieren mithilfe der `com.microsoft.azure.gateway.messaging.Message`-Klasse miteinander. Der **Inhalt** einer `Message` ist ein Bytearray, das beliebige von Ihnen gewünschte Daten darstellen kann. In der `Message` sind auch **Eigenschaften** vorhanden, die einfach eine Zuordnung von Zeichenfolgen darstellen. **Eigenschaften** können in Headern einer HTTPS-Anforderung oder in den Metadaten einer Datei enthalten sein.
 
 Zum Entwickeln eines Azure IoT Edge-Moduls in Java müssen Sie eine neue Modulklasse erstellen, die von `com.microsoft.azure.gateway.core.GatewayModule` erbt, und die erforderlichen abstrakten Methoden `receive()` und `destroy()` implementieren. An diesem Punkt können Sie festlegen, ob die optionalen Methoden `start()` oder `create()` implementiert werden soll. Der folgende Codeausschnitt veranschaulicht, wie Sie mit dem Erstellen eines Azure IoT Edge-Moduls beginnen.
 

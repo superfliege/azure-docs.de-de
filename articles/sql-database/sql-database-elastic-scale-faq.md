@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 ms.openlocfilehash: f0a7b5ce61feaead608d457465f64813737fa112
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="elastic-database-tools-faq"></a>Tools für elastische Datenbanken – Häufig gestellte Fragen
 #### <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>Wie wird der Shardingschlüssel für die Schemainformationen mit Daten aufgefüllt, wenn eine Einzelinstanz pro Shard und kein Shardingschlüssel verwendet wird?
@@ -32,7 +32,7 @@ Weitere Informationen finden Sie unter **[Hinzufügen eines Shards zu einer Anwe
 Für die Verwendung der Clientbibliothek für elastische Datenbanken fallen keine Kosten an. Es entstehen nur Kosten für die Azure SQL-Datenbanken, die Sie für Shards verwenden, und für den Shard-Zuordnungs-Manager sowie für die Web-/Workerrollen, die für das Split-Merge-Tool bereitgestellt werden.
 
 #### <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Warum funktionieren meine Anmeldeinformationen nicht, wenn ich einen Shard von einem anderen Server hinzufüge?
-Verwenden Sie keine Anmeldeinformationen in Form von "Benutzer-ID =username@servername", verwenden Sie stattdessen einfach "Benutzer-ID = Username".  Stellen Sie außerdem sicher, dass die Anmeldung "benutzername" über Berechtigungen für den Shard verfügt.
+Verwenden Sie keine Anmeldeinformationen im Format „Benutzer-ID=username@servername“, sondern einfach „Benutzer-ID = benutzername“.  Stellen Sie außerdem sicher, dass die Anmeldung "benutzername" über Berechtigungen für den Shard verfügt.
 
 #### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Muss ich bei jedem Starten meiner Anwendung einen Shard-Zuordnungs-Manager erstellen und Shards mit Daten auffüllen?
 Nein. Das Erstellen eines Shardzuordnungs-Managers (Beispiel: **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) ist ein einmaliger Vorgang.  Ihre Anwendung sollte den Aufruf **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** beim Start der Anwendung verwenden.  Pro Anwendungsdomäne sollte nur ein solcher Aufruf erfolgen.

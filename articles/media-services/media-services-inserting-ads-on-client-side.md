@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 ms.openlocfilehash: 52ba731f88c630830560e3cf8406ba2e9613c8a5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Einfügen von Anzeigen auf Clientseite
 Dieses Thema enthält Informationen zum Einfügen verschiedener Typen von Anzeigen auf Clientseite.
@@ -154,7 +154,7 @@ Nicht lineare Werbeeinblendungen werden ebenfalls in einem <Creative>-Element an
     </Creative>
 
 
-Das <**NonLinearAds**>-Element kann ein oder mehrere <**NonLinear**>-Elemente enthalten, von denen jedes eine nicht lineare Werbeeinblendung beschreiben kann. Das <**NonLinear**>-Element gibt die Ressource für die nicht lineare Werbeeinblendung an. Bei der Ressource kann es sich um eine <**StaticResource**> eine <**IFrameResource**> oder eine <**HTMLResource**> handeln. <**StaticResource**> beschreibt eine Nicht-HTML-Ressource und definiert ein creativeType-Attribut, das angibt, wie die Ressource angezeigt wird:
+Das <**NonLinearAds**>-Element kann ein oder mehrere <**NonLinear**>-Elemente enthalten, von denen jedes eine nicht lineare Werbeeinblendung beschreiben kann. Das <**NonLinear**>-Element gibt die Ressource für die nicht lineare Werbeeinblendung an. Bei der Ressource kann es sich um eine <**StaticResource**> eine <**IFrameResource**> oder eine <**HTMLResource**> handeln. <**StaticResource**&gt; beschreibt eine Nicht-HTML-Ressource und definiert ein creativeType-Attribut, das angibt, wie die Ressource angezeigt wird:
 
 Image/gif, image/jpeg, image/png: Die Ressource wird in einem HTML-<**img**>-Tag angezeigt.
 

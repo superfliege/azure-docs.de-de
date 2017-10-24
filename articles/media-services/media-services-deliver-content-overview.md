@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 09/28/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 249b87ecc9e43fa26a74e27f91f807d60b275eeb
-ms.contentlocale: de-de
-ms.lasthandoff: 01/13/2017
-
+ms.openlocfilehash: 815aae57af93b0e4870bd9f61da248e4be328db4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deliver-content-to-customers"></a>Übermitteln von Inhalten an Kunden
 Bei der Übermittlung Ihrer Streaming- oder Video-on-Demand-Inhalte an Kunden möchten Sie qualitativ hochwertige Videos unter verschiedenen Netzwerkbedingungen an unterschiedliche Geräte senden.
@@ -27,7 +26,10 @@ Bei der Übermittlung Ihrer Streaming- oder Video-on-Demand-Inhalte an Kunden m�
 So erreichen Sie dieses Ziel:
 
 * Codieren Sie den Datenstrom in einen Videodatenstrom mit mehreren Bitraten (adaptive Bitrate). So berücksichtigen Sie verschiedene Qualitäts- und Netzwerkbedingungen.
-* Verpacken Sie den Datenstrom mit der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) von Microsoft Azure Media Services neu in verschiedene Protokolle. So berücksichtigen Sie das Streaming auf verschiedene Geräte. Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: HTTP Live Streaming (HLS), Smooth Streaming und MPEG-DASH.
+* Verpacken Sie den Datenstrom mit der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) von Microsoft Azure Media Services neu in verschiedene Protokolle. So berücksichtigen Sie das Streaming auf verschiedene Geräte. Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: <br/>
+    * **HTTP Live Streaming** (HLS): Fügen Sie den Pfad „(format=m3u8-aapl)“ dem Abschnitt „/Manifest“ der URL hinzu, um den Ursprungsserver des Streamings anzuweisen, HLS-Inhalte für die Nutzung auf nativen **Apple iOS**-Geräten zurückzugeben (Details finden Sie unter [Locators](#locators) und [URLs](#URLs)).
+    * **MPEG-DASH**: Fügen Sie den Pfad „(format=mpd-time-csf)“ dem Abschnitt „/Manifest“ der URL hinzu, um den Ursprungsserver des Streamings anzuweisen, MPEG-DASH-Inhalte zurückzugeben (Details finden Sie unter [Locators](#locators) und [URLs](#URLs)).
+    * **Smooth Streaming**.
 
 >[!NOTE]
 >Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
@@ -52,7 +54,7 @@ Mit Media Services können Sie Filter für Ihre Medienobjekte definieren. Diese 
 
 Weitere Informationen finden Sie unter [Filter und dynamische Manifeste](media-services-dynamic-manifest-overview.md).
 
-## <a name="locators"></a>Locators
+## <a name="a-idlocatorslocators"></a><a id="locators"/>Locators
 Um Ihren Benutzern eine URL für das Streaming bzw. Herunterladen des Inhalts angeben zu können, müssen Sie zunächst das Medienobjekt veröffentlichen, indem Sie einen Locator erstellen. Ein Locator bieten einen Einstiegspunkt für den Zugriff auf die in einem Medienobjekt enthaltenen Dateien. Media Services unterstützt zwei Arten von Locatorobjekten:
 
 * OnDemandOrigin-Locator. Diese werden zum Streamen von Medien (z.B. MPEG-DASH, HLS oder Smooth Streaming) und zum progressiven Download von Dateien verwendet.
@@ -82,10 +84,10 @@ Um Benutzern Streaming-URLs bereitzustellen, müssen Sie zuerst einen OnDemandOr
 > Sie können auch den Inhalt über eine SSL-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen. Beachten Sie, dass AMS derzeit SSL mit benutzerdefinierten Domänen nicht unterstützt.  
 > 
 
-
 Sie können nur über SSL streamen, wenn der Streamingendpunkt, von dem aus Sie Ihre Inhalte übermitteln, nach dem 10. September 2014 erstellt wurde. Wenn die Streaming-URLs auf Streamingendpunkten basieren, die nach dem 10. September 2014 erstellt wurden, enthält die URL „streaming.mediaservices.windows.net“. Streaming-URLs, die "origin.mediaservices.windows.net" (das alte Format) enthalten, unterstützen kein SSL. Wenn die URL im alten Format vorliegt und Sie über SSL streamen möchten, erstellen Sie einen neuen Streamingendpunkt. Verwenden Sie die URLs, die auf dem neuen Streamingendpunkt basieren, um Ihre Inhalte über SSL zu streamen.
 
-## <a name="streaming-url-formats"></a>Streaming-URL-Formate
+## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>Streaming-URL-Formate
+
 ### <a name="mpeg-dash-format"></a>MPEG-DASH-Format
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=mpd-time-csf)
 
@@ -185,5 +187,4 @@ Einige ältere Smooth Streaming-Clients unterstützen möglicherweise nicht die 
 
 ## <a name="related-topics"></a>Verwandte Themen
 [Aktualisieren von Media Services nach dem Austausch der Speicherschlüssel](media-services-roll-storage-access-keys.md)
-
 

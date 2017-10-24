@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: annahar
 ms.openlocfilehash: 0e9b2ef89ca39a7988a7b2573496a605dfc604b4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli-20"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mit der Azure CLI 2.0
 
@@ -216,7 +216,7 @@ Sie können zu einer vorhandenen NIC zusätzliche private und öffentliche IP-Ad
         --public-ip-address myPublicIP3
         ```
 
-    - **Ordnen Sie die Ressource auf einem vorhandenen IP-Konfiguration** eine öffentliche IP-Adressressource kann nur eine IP-Konfiguration, die verknüpft sind noch keine gibt zugeordnet werden. Ob einer IP-Konfiguration eine öffentliche IP-Adresse zugeordnet ist, können Sie mithilfe des folgenden Befehls ermitteln:
+    - **Zuordnen der Ressource zu einer vorhandenen IP-Konfiguration** Eine öffentliche IP-Adressressource kann nur einer IP-Konfiguration zugeordnet werden, der noch keiner öffentlichen IP-Adressressource zugeordnet ist. Ob einer IP-Konfiguration eine öffentliche IP-Adresse zugeordnet ist, können Sie mithilfe des folgenden Befehls ermitteln:
 
         ```bash
         az network nic ip-config list \

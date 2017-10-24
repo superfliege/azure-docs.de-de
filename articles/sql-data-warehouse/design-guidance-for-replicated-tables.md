@@ -14,14 +14,12 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 07/14/2017
 ms.author: rortloff;barbkess
+ms.openlocfilehash: 9599752c649acb191344fc32d1606adf888b44f7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 437a4f628a343312984d1fa2981df7fa01459e26
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Entwurfsleitfaden für die Verwendung von replizierten Tabellen in Azure SQL Data Warehouse
 Dieser Artikel enthält Empfehlungen für das Entwerfen von replizierten Tabellen im SQL Data Warehouse-Schema. Nutzen Sie diese Empfehlungen, um die Abfrageleistung zu verbessern, indem Sie die Datenverschiebung und die Komplexität von Abfragen reduzieren.
 
@@ -203,10 +201,9 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 Verwenden Sie zum Erstellen einer replizierten Tabelle eine dieser Anweisungen:
 
 - [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 Einen Überblick über verteilte Tabellen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-distribute.md).
-
 
 
 

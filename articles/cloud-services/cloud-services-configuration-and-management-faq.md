@@ -13,15 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 9/20/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 7d7676be26a8b68ab9fda18388e2b8cd5ed5f60b
-ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
-
-
+ms.openlocfilehash: 2ce497146abf664b0084cd96963523812f166e3f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services – Häufig gestellte Fragen (FAQs)
 
@@ -137,3 +135,76 @@ Weitere Informationen finden Sie im folgenden Richtliniendokument:
 
 Beachten Sie, dass es sich bei CSR nur um eine Textdatei handelt. Sie muss NICHT von dem Computer aus erstellt werden, auf dem das Zertifikat letztlich verwendet wird. Obwohl dieses Dokument für App Service geschrieben ist, ist das Erstellen einer CSR generisch und gilt auch für Cloud Services.
 
+## <a name="how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way"></a>Wie kann ich eine Antischadsoftware-Erweiterung für meine Cloud Services automatisiert hinzufügen?
+
+Sie können mithilfe des PowerShell-Skripts im Starttask die Antischadsoftware-Erweiterung aktivieren. Führen Sie die Schritte in den folgenden Artikeln aus, um sie zu implementieren: 
+ 
+- [Erstellen eines PowerShell-Starttasks](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
+- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/Azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+
+Weitere Informationen zu den Antimalware-Bereitstellungsszenarien, und wie sie vom Portal aus aktiviert werden, finden Sie unter [Antimalware-Bereitstellungsszenarien](../security/azure-security-antimalware.md#antimalware-deployment-scenarios).
+
+## <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>Wie wird die Servernamensanzeige (Server Name Indication, SNI) für Cloud Services aktiviert?
+
+Sie können SNI in Cloud Services mit einer der folgenden Methoden aktivieren:
+
+### <a name="method-1-use-powershell"></a>Method 1: Verwenden von PowerShell
+
+Die SNI-Bindung kann mithilfe des PowerShell-Cmdlets **New-WebBinding** in einem Starttask für eine Rolleninstanz des Clouddiensts wie unten beschrieben konfiguriert werden:
+    
+    New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
+    
+Wie [hier](https://technet.microsoft.com/library/ee790567.aspx) beschrieben, können die $sslFlags einen der folgenden Werte haben:
+
+|Wert|Bedeutung|
+------|------
+|0|Keine SNI|
+|1|SNI aktiviert |
+|2 |Keine SNI-Bindung, die den zentralen Zertifikatspeicher verwendet|
+|3|SNI-Bindung, die den zentralen Zertifikatspeicher verwendet |
+ 
+### <a name="method-2-use-code"></a>Methode 2: Verwenden von Code
+
+Die SNI-Bindung könnte auch über den Code im Rollenstart konfiguriert werden, wie in diesem [Blogbeitrag](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/) beschrieben:
+
+    
+    //<code snip> 
+                    var serverManager = new ServerManager(); 
+                    var site = serverManager.Sites[0]; 
+                    var binding = site.Bindings.Add(“:443:www.test1.com”, newCert.GetCertHash(), “My”); 
+                    binding.SetAttributeValue(“sslFlags”, 1); //enables the SNI 
+                    serverManager.CommitChanges(); 
+    //</code snip> 
+    
+Bei jedem der obigen Ansätze müssen die entsprechenden Zertifikate (*.pfx) für den spezifischen Hostnamen zuerst mit einem Starttask oder über den Code in der Rolleninstanz installiert werden, damit die SNI-Bindung wirksam wird.
+
+## <a name="how-can-i-add-tags-to-my-azure-cloud-service"></a>Wie kann ich meinem Azure-Clouddienst Tags hinzufügen? 
+
+Der Clouddienst ist eine klassische Ressource. Nur Ressourcen, die mit dem Azure Resource Manager erstellt wurden, unterstützen Tags. Sie können keine Tags auf klassische Ressourcen wie den Clouddienst anwenden. 
+
+## <a name="how-to-enable-http2-on-cloud-services-vm"></a>Wie wird HTTP/2 auf der Cloud Services-VM aktiviert?
+
+Windows 10 und Windows Server 2016 unterstützen HTTP/2 auf Client- und Serverseite. Wenn Ihr Client (Browser) über TLS eine Verbindung mit dem IIS-Server herstellt, wobei HTTP/2 über TLS-Erweiterungen ausgehandelt wird, müssen Sie keine Änderungen auf der Serverseite vornehmen. Dies liegt daran, weil über TLS standardmäßig der h2-14-Header gesendet wird, der die Verwendung von HTTP/2 festlegt. Wenn andererseits der Client einen Upgradeheader zum Upgrade auf HTTP/2 sendet, müssen Sie die folgende Änderung auf der Serverseite vornehmen, um sicherzustellen, dass das Upgrade funktioniert, und Sie eine HTTP/2-Verbindung erhalten. 
+
+1. Führen Sie „regedit.exe“ aus.
+2. Navigieren Sie zum Registrierungsschlüssel: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+3. Erstellen Sie einen neuen DWORD-Wert namens **DuoEnabled**.
+4. Legen Sie hierfür den Wert 1 fest.
+5. Starten Sie den Server neu.
+6. Wechseln Sie zu Ihrer **Standardwebsite**, und erstellen Sie unter **Bindungen** eine neue TLS-Bindung mit dem selbstsignierten Zertifikat, das Sie gerade erstellt haben. 
+
+Weitere Informationen finden Sie unter:
+
+- [HTTP/2 on IIS](https://blogs.iis.net/davidso/http2) (HTTP/2 auf IIS)
+- [Video: HTTP/2 in Windows 10: Browser, Apps and Webserver](https://channel9.msdn.com/Events/Build/2015/3-88) (HTTP/2 in Windows 10: Browser, Apps und Webserver)
+         
+
+Beachten Sie, dass die oben genannten Schritte über einen Starttask automatisiert werden können, sodass er immer dann, wenn eine neue PaaS-Instanz erstellt wird, die obigen Änderungen in der Systemregistrierung vornehmen kann. Weitere Informationen finden Sie unter [Konfigurieren und Ausführen von Startaufgaben für einen Clouddienst](cloud-services-startup-tasks.md).
+
+ 
+Sobald dies geschehen ist, können Sie mit einer der folgenden Methoden überprüfen, ob HTTP/2 aktiviert wurde:
+
+- Aktivieren Sie die Protokollversion in IIS-Protokollen, und schauen Sie in die IIS-Protokolle. HTTP/2 wird in den Protokollen angezeigt. 
+- Aktivieren Sie „F12 Developer Tool“ in Internet Explorer/Edge, und wechseln Sie zur Registerkarte „Netzwerk“, um das Protokoll zu überprüfen. 
+
+Weitere Informationen finden Sie unter [HTTP/2 on IIS](https://blogs.iis.net/davidso/http2) (HTTP/2 auf IIS).

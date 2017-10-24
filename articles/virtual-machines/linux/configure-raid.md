@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.openlocfilehash: 12f540a700fbf85e579e8aadc9f6def039299ff7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurieren von Software-RAID unter Linux
 Ein häufiges Szenario ist die Verwendung von Software-RAID auf virtuellen Linux-Computern in Azure, um mehrere angefügte Datenträger als einzelnes RAID-Gerät darzustellen. Dies kann normalerweise angewendet werden, um die Leistung zu verbessern und optimierten Durchsatz im Vergleich zur Verwendung eines einzelnen Datenträgers zu ermöglichen.
@@ -61,7 +61,7 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/d
                     sectors (command 'u').
     ```
 
-2. Drücken Sie "n", an der Eingabeaufforderung zum Erstellen einer  **n** ew Partition:
+2. Drücken Sie an der Eingabeaufforderung die N-TASTE, um eine **n**eue Partition zu erstellen:
 
     ```bash
     Command (m for help): n

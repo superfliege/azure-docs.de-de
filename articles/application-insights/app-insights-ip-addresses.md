@@ -1,5 +1,5 @@
 ---
-title: Von Application Insights verwendete IP-Adressen | Microsoft Docs
+title: Von Application Insights und Log Analytics verwendete IP-Adressen | Microsoft-Dokumentation
 description: "Für Application Insights erforderliche Serverfirewallausnahmen"
 services: application-insights
 documentationcenter: .net
@@ -11,16 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 10/04/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: eec83ceb6edbc1aaa68d51a85d2a913063677530
-ms.contentlocale: de-de
-ms.lasthandoff: 06/29/2017
-
+ms.openlocfilehash: a599321a3650b72f7ad52d7c4a74db157dee861b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="ip-addresses-used-by-application-insights"></a>Von Application Insights verwendete IP-Adressen
+# <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Von Application Insights und Log Analytics verwendete IP-Adressen
 Der Dienst [Azure Application Insights](app-insights-overview.md) verwendet eine Reihe von IP-Adressen. Diese müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App hinter einer Firewall gehostet wird.
 
 > [!NOTE]
@@ -119,11 +118,19 @@ RU : Moscow
 94.245.82.33
 94.245.82.37
 94.245.82.38
+51.140.79.229
+51.140.84.172
+51.140.87.211
+51.140.105.74
 SE : Stockholm
 94.245.78.40
 94.245.78.41
 94.245.78.42
 94.245.78.45
+51.141.25.219
+51.141.32.101
+51.141.35.167
+51.141.54.177
 SG : Singapore
 52.187.29.7
 52.187.179.17
@@ -151,6 +158,14 @@ US : FL-Miami
 65.54.78.58
 65.54.78.59
 65.54.78.60
+52.165.130.58
+52.173.142.229
+52.173.147.190
+52.173.17.41
+52.173.204.247
+52.173.244.190
+52.173.36.222
+52.176.1.226
 US : IL-Chicago
 23.96.247.139
 23.96.249.113
@@ -189,12 +204,18 @@ US : VA-Ashburn
 
 ```  
 
-## <a name="data-access-api"></a>Datenzugriffs-API
+## <a name="application-insights-api"></a>Application Insights API
 | Zweck | URI | IP | Ports |
 | --- | --- | --- | --- |
 | API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |13.82.26.252<br/>40.76.213.73 |80, 443 |
 | API-Dokumentation |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |13.82.24.149<br/>40.114.82.10 |80, 443 |
 | Interne API |aigs.aisvc.visualstudio.com<br/>aigs1.aisvc.visualstudio.com<br/>aigs2.aisvc.visualstudio.com<br/>aigs3.aisvc.visualstudio.com<br/>aigs4.aisvc.visualstudio.com<br/>aigs5.aisvc.visualstudio.com<br/>aigs6.aisvc.visualstudio.com |dynamisch|443 |
+
+## <a name="log-analytics-api"></a>Log Analytics-API
+| Zweck | URI | IP | Ports |
+| --- | --- | --- | --- |
+| API |api.loganalytics.io<br/>*.api.loganalytics.io |dynamisch |80, 443 |
+| API-Dokumentation |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |dynamisch |80, 443 |
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
 
@@ -205,6 +226,15 @@ US : VA-Ashburn
 | Medien-CDN | applicationanalyticsmedia.azureedge.net | dynamisch | 80, 443 |
 
 Hinweis: Für die Domäne „*.applicationinsights.io“ ist das Application Insights-Team verantwortlich.
+
+## <a name="log-analytics-portal"></a>Log Analytics-Portal
+
+| Zweck | URI | IP | Ports |
+| --- | --- | --- | --- |
+| Portal | portal.loganalytics.io | dynamisch | 80, 443 |
+| CDN | applicationanalytics.azureedge.net | dynamisch | 80, 443 |
+
+Hinweis: Die Domäne „*.loganalytics.io“ ist im Besitz des Log Analytics-Teams.
 
 ## <a name="application-insights-azure-portal-extension"></a>Azure-Portalerweiterung für Application Insights
 
@@ -235,4 +265,3 @@ Hinweis: Für die Domäne „*.applicationinsights.io“ ist das Application Ins
 | Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | dynamisch | 443
 | Portal | ppe.gateway.azureserviceprofiler.net | dynamisch | 443
 | Speicher | *.core.windows.net | dynamisch | 443
-

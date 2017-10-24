@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
 ms.openlocfilehash: 2738fc1dff50a177a227ae2c7719bd9a192d82ad
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publish-WebApplicationWebSite (Windows PowerShell-Skript)
 Stellt eine Webanwendung auf einem virtuellen Computer bereit. Das Skript erstellt die erforderlichen Ressourcen in Ihrem Azure-Abonnement, wenn sie noch nicht vorhanden sind.
@@ -79,7 +79,7 @@ Bei „true“ können Zertifikate verwendet werden, die nicht von einer vertrau
 | Platzhalterzeichen akzeptieren? |false |
 
 ### <a name="vmpassword"></a>VMPassword
-Die Anmeldeinformationen für das Konto des virtuellen Computers. Beispiel: - VMPassword @{Name = "Admin"; Kennwort = "Kennwort"}
+Die Anmeldeinformationen für das Konto des virtuellen Computers. Beispiel: -VMPassword @{Name = "admin"; Password = "password"}
 
 | Aliase | (Keine) |
 | --- | --- |
@@ -90,7 +90,7 @@ Die Anmeldeinformationen für das Konto des virtuellen Computers. Beispiel: - VM
 | Platzhalterzeichen akzeptieren? |false |
 
 ### <a name="databaseserverpassword"></a>DatabaseServerPassword
-Die Anmeldeinformationen für die SQL-Datenbank in Azure. Beispiel: - DatabaseServerPassword @{Name = "Admin"; Kennwort = "Kennwort"}
+Die Anmeldeinformationen für die SQL-Datenbank in Azure. Beispiel: -DatabaseServerPassword @{Name = "admin"; Password = "password"}
 
 | Aliase | (Keine) |
 | --- | --- |

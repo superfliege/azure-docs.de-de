@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 014d282daffdbfc03e7f3495f8e59bfda4cdb396
-ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.openlocfilehash: c4e6bdba54ded3880aabfc22ea07217fb5035477
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-customize-a-windows-virtual-machine-in-azure"></a>Anpassen eines virtuellen Windows-Computers in Azure
 Zum Konfigurieren von virtuellen Computern (VMs) auf schnelle und einheitliche Weise ist meist eine Form der Automatisierung erwünscht. Eine gängige Methode zum Anpassen von Windows-VMs ist die Verwendung der [benutzerdefinierten Skripterweiterung für Windows](extensions-customscript.md). In diesem Tutorial lernen Sie Folgendes:
 
@@ -32,7 +30,9 @@ Zum Konfigurieren von virtuellen Computern (VMs) auf schnelle und einheitliche W
 > * Erstellen eines virtuellen Computers, der die benutzerdefinierte Skripterweiterung verwendet
 > * Anzeigen einer ausgeführten IIS-Website aus nach Anwendung der Erweiterung
 
-Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
 
 
 ## <a name="custom-script-extension-overview"></a>Übersicht über benutzerdefinierte Skripterweiterungen
@@ -46,19 +46,19 @@ Sie können die benutzerdefinierte Skripterweiterung mit Windows- und Linux-VMs 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 Bevor Sie eine VM erstellen können, müssen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *EastUS* eine Ressourcengruppe mit dem Namen *myResourceGroupAutomate*:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroupAutomate -Location EastUS
 ```
 
 Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort des Administrators der VMs fest:
 
-```powershell
+```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
 Nun können nun mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) die VM erstellen. Das folgende Beispiel erstellt die erforderlichen virtuellen Netzwerkkomponenten, die Betriebssystemkonfiguration und dann einen virtuellen Computer mit dem Namen *myVM*:
 
-```powershell
+```azurepowershell-interactive
 # Create a subnet configuration
 $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
     -Name mySubnet `
@@ -136,7 +136,7 @@ Die Erstellung der Ressourcen und VM dauert einige Minuten.
 ## <a name="automate-iis-install"></a>Automatisieren der Installation von IIS
 Verwenden Sie [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) zum Installieren der benutzerdefinierten Skripterweiterung. Die Erweiterung führt `powershell Add-WindowsFeature Web-Server` zum Installieren des IIS-Webservers aus und aktualisiert dann die Seite *Default.htm* mit dem Hostnamen der VM:
 
-```powershell
+```azurepowershell-interactive
 Set-AzureRmVMExtension -ResourceGroupName myResourceGroupAutomate `
     -ExtensionName IIS `
     -VMName myVM `
@@ -151,7 +151,7 @@ Set-AzureRmVMExtension -ResourceGroupName myResourceGroupAutomate `
 ## <a name="test-web-site"></a>Testen der Website
 Rufen Sie mit [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse Ihres Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* abgerufen, die wir zuvor erstellt haben:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmPublicIPAddress `
     -ResourceGroupName myResourceGroupAutomate `
     -Name myPublicIP | select IpAddress
@@ -175,4 +175,3 @@ Im nächsten Tutorial erfahren Sie, wie Sie benutzerdefinierte VM-Images erstell
 
 > [!div class="nextstepaction"]
 > [Erstellen von benutzerdefinierten VM-Images](./tutorial-custom-images.md)
-

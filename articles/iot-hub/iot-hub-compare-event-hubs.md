@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: a37df79a38a35b61cca72918d4d893a4bfc83b7e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.openlocfilehash: 44dc7b18d46d1e75e8b55b6e32a346272a06bda9
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="comparison-of-azure-iot-hub-and-azure-event-hubs"></a>Vergleich zwischen Azure IoT Hub und Azure Event Hubs
 Eine der wichtigsten Anwendungsmöglichkeiten für IoT Hub ist die Erfassung der Telemetriedaten von Geräten. Aus diesem Grund wird IoT Hub häufig mit [Azure Event Hubs][Azure Event Hubs] verglichen. Ebenso wie IoT Hub ist Event Hubs ein Dienst zur Ereignisverarbeitung, der riesige Mengen von Ereignis- und Telemetriedaten erfassen kann und gleichzeitig eine niedrige Latenz und hohe Zuverlässigkeit bietet.
@@ -29,11 +29,11 @@ Allerdings bestehen bei den Diensten viele Unterschiede, die in der folgenden Ta
 | --- | --- | --- |
 | Kommunikationsmuster | Ermöglicht [Gerät-zu-Cloud-Kommunikation][lnk-d2c-guidance] (Messaging, Dateiuploads und gemeldete Eigenschaften) und [Cloud-zu-Gerät-Kommunikation][lnk-c2d-guidance] (direkte Methoden, gewünschte Eigenschaften, Messaging). |Ermöglicht nur Ereigniseingang (meist für D2C-Szenarien). |
 | Gerätestatusinformationen | [Gerätezwillinge][lnk-twins] können Gerätestatusinformationen speichern und abfragen. | Gerätestatusinformationen können nicht gespeichert werden. |
-| Unterstützung für Geräteprotokolle |Unterstützt MQTT, MQTT über WebSockets, AMQP, AMQP über WebSockets und HTTP. Darüber hinaus arbeitet IoT Hub mit dem [Azure IoT-Protokollgateway][lnk-azure-protocol-gateway] zusammen, einer anpassbaren Protokollgateway-Implementierung, die benutzerdefinierte Protokolle unterstützt. |Unterstützt AMQP, AMQP über WebSockets und HTTP. |
+| Unterstützung für Geräteprotokolle |Unterstützt MQTT, MQTT über WebSockets, AMQP, AMQP über WebSockets und HTTPS. Darüber hinaus arbeitet IoT Hub mit dem [Azure IoT-Protokollgateway][lnk-azure-protocol-gateway] zusammen, einer anpassbaren Protokollgateway-Implementierung, die benutzerdefinierte Protokolle unterstützt. |Unterstützt AMQP, AMQP über WebSockets und HTTPS. |
 | Sicherheit |Ermöglicht Identität pro Gerät und widerrufbare Zugriffssteuerung. Siehe [Abschnitt über Sicherheit im IoT Hub-Entwicklerleitfaden]. |Ermöglicht Event Hub-weite [SAS-Richtlinien][Event Hubs - security] mit begrenzter Widerrufsunterstützung über [Richtlinien des Herausgebers][Event Hubs publisher policies]. Bei IoT-Lösungen ist es häufig erforderlich, eine benutzerdefinierte Lösung zur Unterstützung von Anmeldeinformationen pro Gerät und Maßnahmen zum Schutz vor Spoofing zu implementieren. |
 | Vorgangsüberwachung |Ermöglicht IoT-Lösungen, einen umfangreichen Satz von Geräte-Identitätsverwaltungs- und -verbindungsereignissen zu abonnieren, z. B. individuelle Authentifizierungsfehler, Drosselung und Ausnahmen bei ungültigen Formaten. Diese Ereignisse ermöglichen Ihnen das rasche Bestimmen von Verbindungsproblemen auf Einzelgerätebene. |Macht nur aggregierte Metriken verfügbar. |
 | Skalieren |Ist für die Unterstützung von Millionen von gleichzeitig verbundenen Geräten optimiert. |Misst die Verbindungen gemäß den [Azure Event Hubs-Kontingenten][Azure Event Hubs quotas]. Jedoch können Sie mit Event Hubs die Partition für jede gesendete Nachricht angeben. |
-| Geräte-SDKs |Bietet [Geräte-SDKs][Azure IoT SDKs] für eine Vielzahl von Plattformen und Sprachen, zusätzlich zu direkten MQTT-, AMQP- und HTTP-APIs. |Wird unter .NET, Java und C unterstützt und verfügt außerdem über AMQP- und HTTP-Sendeschnittstellen. |
+| Geräte-SDKs |Bietet [Geräte-SDKs][Azure IoT SDKs] für eine Vielzahl von Plattformen und Sprachen, zusätzlich zu direkten MQTT-, AMQP- und HTTPS-APIs. |Wird unter .NET, Java und C unterstützt und verfügt außerdem über AMQP- und HTTPS-Sendeschnittstellen. |
 | Dateiupload |Ermöglicht IoT-Lösungen zum Hochladen von Dateien von Geräten in die Cloud. Enthält einen Dateibenachrichtigungs-Endpunkt für die Workflowintegration und eine Vorgangsüberwachungskategorie für die Debugunterstützung. | Nicht unterstützt. |
 | Weiterleiten von Nachrichten zu mehreren Endpunkten | Bis zu 10 benutzerdefinierte Endpunkte werden unterstützt. Regeln bestimmen, wie Nachrichten an die benutzerdefinierten Endpunkte weitergeleitet werden. Weitere Informationen finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub][lnk-devguide-messaging]. | Hierfür muss zusätzlicher Code geschrieben und für die Nachrichtenverteilung gehostet werden. |
 

@@ -12,36 +12,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2017
+ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e7c38c7f0d40a310dd0b6bd0e866d2d55115550
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.custom: H1Hack27Feb2017;it-pro
+ms.openlocfilehash: b59f74546e219d45814a1a2e05e59beb0b080f21
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Zurücksetzen des Kennworts für einen Benutzer in Azure Active Directory
-> [!div class="op_single_selector"]
-> * [Azure-Portal](active-directory-users-reset-password-azure-portal.md)
-> * [Klassisches Azure-Portal](active-directory-create-users-reset-password.md)
->
->
 
 ## <a name="how-to-reset-the-password-for-a-user"></a>Wie Sie das Kennwort für einen Benutzer zurücksetzen können
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit dem Konto eines globalen Administrators für das Verzeichnis an.
+2. Wählen Sie **Benutzer und Gruppen** aus.
 
    ![Öffnen der Benutzerverwaltung](./media/active-directory-users-reset-password-azure-portal/create-users-user-management.png)
-3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Benutzer** aus.
+3. Wählen Sie **Alle Benutzer**.
 
-   ![Öffnen des Blatts „Benutzer“](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
-4. Wählen Sie auf dem Blatt **Benutzer und Gruppen – Benutzer** einen Benutzer aus der Liste aus.
-5. Wählen Sie auf dem Blatt für den ausgewählten Benutzer die Option **Übersicht** aus, und klicken Sie in der Befehlsleiste auf **Kennwort zurücksetzen**.
+   ![Öffnen der Gruppe „Alle Benutzer“](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
+1. Wählen Sie in der Liste einen Benutzer aus.
+2. Wählen Sie für den ausgewählten Benutzer die Option **Übersicht**, und klicken Sie in der Befehlsleiste auf **Kennwort zurücksetzen**.
 
     ![Auswählen des Befehls „Kennwort zurücksetzen“](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
-6. Wählen Sie auf dem Blatt **Kennwort zurücksetzen** den Befehl **Kennwort zurücksetzen** aus.
+6. Wählen Sie unter **Kennwort zurücksetzen** die Option **Kennwort zurücksetzen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen eines Benutzers](active-directory-users-create-azure-portal.md)

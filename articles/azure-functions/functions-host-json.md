@@ -14,14 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
+ms.openlocfilehash: 96103e7014212ecaa3e4e9238ae3b9c7a851cca9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: e836ccd204ff06e1eb0494cb392e781f29fdf421
-ms.contentlocale: de-de
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="hostjson-reference-for-azure-functions"></a>host.json-Referenz für Azure Functions
 
 Die Metadatendatei *host.json* enthält globale Konfigurationsoptionen, die sich auf alle Funktionen einer Funktionen-App auswirken. In diesem Artikel werden die verfügbaren Einstellungen aufgelistet. Das JSON-Schema befindet sich unter „http://json.schemastore.org/host“.
@@ -32,7 +30,7 @@ Es gibt andere globale Konfigurationsoptionen in [App-Einstellungen](functions-a
 
 Für die folgende *host.json*-Beispieldatei sind alle möglichen Optionen angegeben.
 
-```javascript
+```json
 {
     "aggregator": {
         "batchSize": 1000,
@@ -101,7 +99,7 @@ In den folgenden Abschnitten dieses Artikels werden die einzelnen allgemeinen Ei
 
 Gibt an, wie viele Funktionsaufrufe aggregiert werden, wenn [Metriken für Application Insights berechnet werden](functions-monitoring.md#configure-the-aggregator). 
 
-```javascript
+```json
 {
     "aggregator": {
         "batchSize": 1000,
@@ -121,7 +119,7 @@ Funktionsaufrufe werden aggregiert, wenn der erste der beiden Grenzwerte erreich
 
 Steuert das [Stichprobenfeature in Application Insights](functions-monitoring.md#configure-sampling).
 
-```javascript
+```json
 {
     "applicationInsights": {
         "sampling": {
@@ -141,7 +139,7 @@ Steuert das [Stichprobenfeature in Application Insights](functions-monitoring.md
 
 Konfigurationseinstellung für [Event Hub-Trigger und -Bindungen](functions-bindings-event-hubs.md).
 
-```javascript
+```json
 {
     "eventHub": {
       "maxBatchSize": 64,
@@ -161,7 +159,7 @@ Konfigurationseinstellung für [Event Hub-Trigger und -Bindungen](functions-bind
 
 Eine Liste der Funktionen, die vom Auftragshost ausgeführt werden.  Ein leeres Array bedeutet, dass alle Funktionen ausgeführt werden.  Nur bei [lokaler Ausführung](functions-run-local.md) für die Verwendung vorgesehen. Verwenden Sie in Funktionen-Apps die *function.json* `disabled`-Eigenschaft anstelle dieser Eigenschaft in *host.json*.
 
-```javascript
+```json
 {
     "functions": [ "QueueProcessor", "GitHubWebHook" ]
 }
@@ -171,7 +169,7 @@ Eine Liste der Funktionen, die vom Auftragshost ausgeführt werden.  Ein leeres 
 
 Gibt die Timeoutdauer für alle Funktionen an. Im Verbrauchstarif liegt der gültige Bereich zwischen 1 Sekunde und 10 Minuten, wobei der Standardwert bei 5 Minuten liegt. In App Service-Plänen besteht keine Einschränkung und der Standardwert ist NULL, d. h. kein Timeout.
 
-```javascript
+```json
 {
     "functionTimeout": "00:05:00"
 }
@@ -181,7 +179,7 @@ Gibt die Timeoutdauer für alle Funktionen an. Im Verbrauchstarif liegt der gül
 
 Konfigurationseinstellungen für [HTTP-Trigger und -Bindungen](functions-bindings-http-webhook.md).
 
-```javascript
+```json
 {
     "http": {
         "routePrefix": "api",
@@ -203,7 +201,7 @@ Konfigurationseinstellungen für [HTTP-Trigger und -Bindungen](functions-binding
 
 Die eindeutige ID für einen Auftragshost. Die kann eine GUID in Kleinbuchstaben mit entfernten Bindestrichen sein. Dies ist für die lokale Ausführung erforderlich. Beim Ausführen in Azure Functions wird eine ID automatisch generiert, wenn `id` ausgelassen wird.
 
-```javascript
+```json
 {
     "id": "9f4ea53c5136457d883d685e57164f08"
 }
@@ -213,7 +211,7 @@ Die eindeutige ID für einen Auftragshost. Die kann eine GUID in Kleinbuchstaben
 
 Steuerelemente, die nach Protokollen filtern, die von einem [ILogger-Objekt](functions-monitoring.md#write-logs-in-c-functions) oder von [context.log](functions-monitoring.md#write-logs-in-javascript-functions) geschrieben werden.
 
-```javascript
+```json
 {
     "logger": {
         "categoryFilter": {
@@ -238,7 +236,7 @@ Steuerelemente, die nach Protokollen filtern, die von einem [ILogger-Objekt](fun
 
 Konfigurationseinstellungen für [Trigger und Bindungen der Speicherwarteschlange](functions-bindings-storage-queue.md).
 
-```javascript
+```json
 {
     "queues": {
       "maxPollingInterval": 2000,
@@ -262,7 +260,7 @@ Konfigurationseinstellungen für [Trigger und Bindungen der Speicherwarteschlang
 
 Konfigurationseinstellung für [Service Bus-Trigger und -Bindungen](functions-bindings-service-bus.md).
 
-```javascript
+```json
 {
     "serviceBus": {
       "maxConcurrentCalls": 16,
@@ -282,7 +280,7 @@ Konfigurationseinstellung für [Service Bus-Trigger und -Bindungen](functions-bi
 
 Konfigurationseinstellungen für das Singleton-Sperrverhalten. Weitere Informationen finden Sie unter [GitHub-Problem zur Singleton-Unterstützung](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
-```javascript
+```json
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -305,7 +303,7 @@ Konfigurationseinstellungen für das Singleton-Sperrverhalten. Weitere Informati
 
 Konfigurationseinstellungen für Protokolle, die Sie mithilfe eines `TraceWriter`-Objekts erstellen. Weitere Informationen finden Sie unter [C#-Protokollierung](functions-reference-csharp.md#logging) und [Node.js-Protokollierung](functions-reference-node.md#writing-trace-output-to-the-console). 
 
-```javascript
+```json
 {
     "tracing": {
       "consoleLevel": "verbose",
@@ -323,11 +321,26 @@ Konfigurationseinstellungen für Protokolle, die Sie mithilfe eines `TraceWriter
 
 Eine Reihe von [Verzeichnissen mit freigegebenem Code](functions-reference-csharp.md#watched-directories), die auf Änderungen überwacht werden sollte.  Dadurch wird sichergestellt, dass Änderungen am Code in diesen Verzeichnissen von Ihren Funktionen übernommen werden.
 
-```javascript
+```json
 {
     "watchDirectories": [ "Shared" ]
 }
 ```
+
+## <a name="durabletask"></a>durableTask
+
+Name eines [Aufgabenhubs](durable-functions-task-hubs.md) für [Durable Functions](durable-functions-overview.md).
+
+```json
+{
+  "durableTask": {
+    "HubName": "MyTaskHub"
+  }
+}
+```
+
+Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn nicht angegeben, lautet der standardmäßige Aufgabenhubname für eine Funktionen-App **DurableFunctionsHub**. Weitere Informationen finden Sie unter [Aufgabenhubs in Durable Functions (Azure Functions)](durable-functions-task-hubs.md).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -336,4 +349,3 @@ Eine Reihe von [Verzeichnissen mit freigegebenem Code](functions-reference-cshar
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen finden Sie unter den globalen Einstellungen in Umgebungsvariablen](functions-app-settings.md)
-

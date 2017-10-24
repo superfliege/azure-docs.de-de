@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/10/2017
 ms.author: johnkem
+ms.openlocfilehash: 2e99b7afa4e458e9ef62314e65d9e386657a747b
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 23da12e518d88109fd7271fd363b6c1f099c5ab6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle
 
@@ -30,22 +29,22 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 
 | Dienst | Schema und Dokumente |
 | --- | --- |
-| API Management | Schema nicht verfügbar. |
+| API Management | [API Management-Diagnoseprotokolle](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Anwendungsgateways |[Diagnoseprotokollierung für Application Gateway](../application-gateway/application-gateway-diagnostics.md) |
 | Azure-Automatisierung |[Protokollanalysen für Azure Automation](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Diagnoseprotokolle für Azure Batch](../batch/batch-diagnostics.md) |
 | Customer Insights | Schema nicht verfügbar. |
 | Content Delivery Network | Schema nicht verfügbar. |
-| CosmosDB | Schema nicht verfügbar. |
+| CosmosDB | [Azure Cosmos DB-Protokollierung](../cosmos-db/logging.md) |
 | Data Lake Analytics |[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake-Speicher |[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Event Hubs |[Azure Event Hubs-Diagnoseprotokolle](../event-hubs/event-hubs-diagnostic-logs.md) |
-| IoT Hub Device Provisioning-Dienst | Schema nicht verfügbar. |
+| IoT Hub | [IoT Hub-Vorgänge](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Schlüsseltresor |[Azure-Schlüsseltresor-Protokollierung](../key-vault/key-vault-logging.md) |
 | Lastenausgleichsmodul |[Log Analytics für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) |
 | Logik-Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDoS-Schutz öffentlicher IP-Adressen | Schema nicht verfügbar. |
+| DDoS-Schutz | Schema nicht verfügbar. |
 | Recovery Services | Schema nicht verfügbar.|
 | Suche |[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](../search/search-traffic-analytics.md) |
 | Server Management | Schema nicht verfügbar. |
@@ -99,8 +98,8 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|Wartestatistik des Abfragespeichers|
 |Microsoft.Sql/servers/databases|Errors|Errors|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|Wartestatistik der Datenbank|
-|Microsoft.Sql/servers/databases|Timeouts|Timeouts|
-|Microsoft.Sql/servers/databases|Blocks|Blöcke|
+|Microsoft.Sql/servers/databases|Zeitlimits|Zeitlimits|
+|Microsoft.Sql/servers/databases|Blöcke|Blöcke|
 |Microsoft.Sql/servers/databases|SQLInsights|SQL-Informationen|
 |Microsoft.StreamAnalytics/streamingjobs|Ausführung|Ausführung|
 |Microsoft.StreamAnalytics/streamingjobs|Erstellen|Erstellen|
@@ -111,4 +110,3 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 * [Streamen von Diagnoseprotokollen für Ressourcen an **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * Ändern der Diagnoseeinstellungen für Ressourcen mithilfe der Azure Monitor-REST-API ([Service Diagnostic Settings](https://msdn.microsoft.com/library/azure/dn931931.aspx) (Diagnoseeinstellungen für Dienste))
 * [Analysieren von Protokollen aus Azure Storage mit Log Analytics](../log-analytics/log-analytics-azure-storage.md)
-

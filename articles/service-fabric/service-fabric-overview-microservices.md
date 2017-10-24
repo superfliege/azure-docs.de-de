@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
+ms.openlocfilehash: 91f4d1658875245f023e7546650e7b2592b48af1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
-ms.openlocfilehash: d90b8c41d130526607adb035c5c6d4c02c5f7c4f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen
 Für Softwareentwickler gibt es nichts Neues, was das Einbeziehen einer Anwendung in Komponententeile betrifft. Es handelt sich hierbei um ein zentrales Paradigma der Objektorientierung, von Softwareabstrahierungen und der „Komponentisierung“. Heute erfolgt diese Faktorisierung meist in Form von Klassen und Schnittstellen zwischen freigegebenen Bibliotheken und Technologieebenen. In der Regel wird ein mehrstufiger Ansatz mit einem Back-End-Speicher, einer Geschäftslogik auf der mittleren Ebene und einer Front-End-Benutzeroberfläche verwendet. Was sich im Laufe der letzten Jahre *doch* geändert hat, ist die Tatsache, dass wir als Entwickler verteilte Anwendungen erstellen, die für die Cloud bestimmt und geschäftlich geboten sind.
@@ -111,7 +110,7 @@ Beim Microservice-Ansatz verwaltet und speichert jeder Dienst seinen eigenen Zus
 Die Versionsverwaltung ist insbesondere für die bereitgestellte Version eines Microservice erforderlich, damit mehrere unterschiedliche Versionen bereitgestellt und parallel ausgeführt werden können. Die Versionsverwaltung unterstützt Szenarien, in denen für eine neuere Version eines Microservice während des Upgrades ein Fehler auftritt und ein Rollback zu einer vorherigen Version durchgeführt werden muss. Das andere Szenario für die Versionsverwaltung ist die Durchführung von A/B-Tests, bei denen unterschiedliche Benutzer unterschiedliche Versionen des Diensts erhalten. Es ist beispielsweise üblich, einen Microservice für eine bestimmte Gruppe von Kunden zu aktualisieren, um neue Funktionen vor dem größeren Rollout zu testen. Nach der Lebenszyklusverwaltung von Microservices geht es nun mit der Kommunikation weiter.
 
 ### <a name="interacts-with-other-microservices-over-well-defined-interfaces-and-protocols"></a>Interagiert mit anderen Microservices über gut definierte Schnittstellen und Protokolle
-Auf dieses Thema muss hier nicht näher eingegangen werden, da Kommunikationsmuster in der umfangreichen Literatur beschrieben werden, die im Bereich der dienstorientierten Architektur in den letzten zehn Jahren veröffentlicht wurde. Im Allgemeinen wird für die Dienstkommunikation ein REST-Ansatz mit HTTP- und TCP-Protokollen sowie XML oder JSON als Serialisierungsformat eingesetzt. Aus Sicht der Benutzeroberfläche geht es hierbei um den Webdesignansatz. Es hindert Sie aber nichts daran, binäre Protokolle oder eigene Datenformate zu verwenden. Seien Sie darauf vorbereitet, dass die Verwendung Ihrer Microservices für Benutzer schwieriger ist, wenn diese öffentlich verfügbar sind.
+Auf dieses Thema muss hier nicht näher eingegangen werden, da Kommunikationsmuster in der umfangreichen Literatur beschrieben werden, die im Bereich der dienstorientierten Architektur in den letzten zehn Jahren veröffentlicht wurde. Im Allgemeinen wird für die Dienstkommunikation ein REST-Ansatz mit HTTP- und TCP-Protokollen sowie XML oder JSON als Serialisierungsformat eingesetzt. Aus Sicht der Benutzeroberfläche geht es hierbei um den Webdesignansatz. Es hindert Sie aber nichts daran, binäre Protokolle oder eigene Datenformate zu verwenden. Seien Sie darauf vorbereitet, dass die Verwendung Ihrer Microservices für Benutzer schwieriger ist, wenn diese Protokolle und Formate nicht öffentlich verfügbar sind.
 
 ### <a name="has-a-unique-name-url-used-to-resolve-its-location"></a>Eindeutiger Name (URL), der zum Auflösen des Speicherorts verwendet wird
 Wir erwähnen immer wieder, dass der Microservice-Ansatz Ähnlichkeiten mit dem Web aufweist. Wie das Web auch, muss Ihr Microservice unabhängig vom Ort der Ausführung adressierbar sein. Wenn Sie anfangen, sich Gedanken über Computer und den Ort der Ausführung bestimmter Microservices zu machen, führt dies schnell zu Problemen. 
@@ -158,7 +157,7 @@ Ein wichtiger Ansatz in Service Fabric ist das Wiederverwenden von vorhandenem C
 
 Es ist wichtig, darauf hinzuweisen, dass Sie **mit jeder dieser Phasen beginnen und aufhören** können. Sie müssen nicht mit der nächsten Phase fortfahren. Schauen wir uns nun Beispiele für jede dieser Phasen an.
 
-**Lift and Shift**: Sehr viele Unternehmen verschieben Anwendungen mit der „Lift and Shift“-Methode in Container. Dafür gibt es zwei Gründe:
+**Lift & Shift**: Sehr viele Unternehmen migrieren per Lift & Shift ihre bestehenden monolithischen Anwendungen in Container. Dafür gibt es zwei Gründe:
 
 - Kostensenkung entweder durch die Konsolidierung und das Entfernen der vorhandenen Hardware oder durch das Ausführen von Anwendungen mit höherer Dichte 
 - Konsistenter Bereitstellungvertrag zwischen der Entwicklung und Vorgängen.
@@ -187,4 +186,3 @@ Das Ziel von Service Fabric ist die Reduzierung der komplexen Anwendungserstellu
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png
 [Image3]: media/service-fabric-overview-microservices/microservices-migration.png
-

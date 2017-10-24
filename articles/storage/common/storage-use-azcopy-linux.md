@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 28/9/2017
 ms.author: seguler
+ms.openlocfilehash: d77ac39b7fcf6a23ebc58a2bbf9dc7de664edbb3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: 0b6417b616a9e4e74b5fb8a67e1414ad74e8f258
-ms.contentlocale: de-de
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Übertragen von Daten mit AzCopy unter Linux
 AzCopy unter Linux ist ein Befehlszeilenprogramm, das zum Kopieren von Daten zu und von Microsoft Azure Blob und File Storage entwickelt wurde, wobei durch einfache Befehle optimale Leistung erzielt wird. Sie können Daten von einem Objekt zu einem anderen innerhalb Ihres Speicherkontos oder von einem Speicherkonto zu einem anderen kopieren.
@@ -497,7 +496,7 @@ azcopy \
     --sync-copy
 ```
 
-Der Standardblobtyp beim Kopieren aus File Storage in einen Blob Storage ist Blockblob. Benutzer können die Option `/BlobType:page` angeben, um den Zielblobtyp zu ändern.
+Der Standardblobtyp beim Kopieren aus File Storage in einen Blob Storage ist Blockblob. Benutzer können die Option `--blob-type page` angeben, um den Zielblobtyp zu ändern. Die Typen `page | block | append` sind verfügbar.
 
 Beachten Sie, dass `--sync-copy` zu zusätzlichen Ausgangskosten im Vergleich zu asynchronen Kopien führen kann. Zum Vermeiden von Ausgangskosten empfiehlt sich die Verwendung dieser Option auf einem Azure-VM, der sich in derselben Region wie das Quellspeicherkonto befindet.
 
@@ -691,5 +690,4 @@ Weitere Informationen zu Azure Storage und zu AzCopy finden Sie in den folgenden
 * [AzCopy: Transfer data with restartable mode and SAS token (AzCopy: Übertragen von Daten mit neu startbarem Modus und SAS-Token)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
 * [AzCopy: Verwenden des kontoübergreifenden Kopierblobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 * [AzCopy: Hochladen/Herunterladen von Dateien für Microsoft Azure-Blobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
-
 

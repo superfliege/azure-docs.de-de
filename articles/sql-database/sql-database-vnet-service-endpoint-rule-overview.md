@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 09/27/2017
+ms.date: 10/09/2017
 ms.author: genemi
+ms.openlocfilehash: f62184d97b18d72b91d63db0e449bbab6c20a179
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: e4ee69abe0b3b5d594ee191cc8210d25c325efaa
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank
 
@@ -109,8 +108,8 @@ Jede Regel für ein virtuelles Netzwerk gilt für den gesamten Azure SQL-Datenba
 
 Bei der Verwaltung der Dienstendpunkte des virtuellen Netzwerks erfolgt eine Trennung von Sicherheitsrollen. Die folgenden Rollen müssen Aktionen ausführen:
 
-- **Netzwerkadministrator:** &nbsp; Aktivieren des Endpunkts.
-- **Datenbankadministrator:** &nbsp; Aktualisieren der Zugriffssteuerungsliste durch Hinzufügen des angegebenen Subnetzes zum Azure SQL-Datenbankserver.
+- **Netzwerkadministrator:**&nbsp; Aktivieren des Endpunkts.
+- **Datenbankadministrator:**&nbsp; Aktualisieren der Zugriffssteuerungsliste durch Hinzufügen des angegebenen Subnetzes zum Azure SQL-Datenbankserver.
 
 *Alternative zur rollenbasierten Zugriffssteuerung:* 
 
@@ -118,9 +117,16 @@ Die Rollen „Netzwerkadministrator“ und „Datenbankadministrator“ haben me
 
 Sie können mit der [rollenbasierten Zugriffssteuerung (RBAC)][rbac-what-is-813s] in Azure arbeiten, um eine einzelne benutzerdefinierte Sicherheitsrolle zu erstellen, die nur über die benötigte Teilmenge von Zugriffsrechten verfügt. Die benutzerdefinierte Rolle kann definiert werden, anstatt den Netzwerk- oder Datenbankadministrator einzubeziehen. Die auf die Sicherheit bezogene Angriffsfläche ist kleiner, wenn Sie einen Benutzer einer benutzerdefinierte Rolle hinzufügen und ihn nicht den beiden anderen wichtigen Administratorrollen hinzufügen.
 
-#### <a name="limitations"></a>Einschränkungen
+
+
+
+
+
+## <a name="limitations"></a>Einschränkungen
 
 Bei Azure SQL-Datenbank gelten für Regeln für ein virtuelles Netzwerk folgende Einschränkungen:
+
+- In der Firewall für Ihre SQL-Datenbank verweist jede Regel für ein virtuelles Netzwerk auf ein Subnetz. Alle Subnetze, auf die verwiesen wird, müssen in derselben geografischen Region gehostet werden, in der die SQL-Datenbank gehostet wird.
 
 - Für jeden Azure SQL-Datenbankserver können für ein angegebenes virtuelles Netzwerk maximal 128 Einträge in der Zugriffssteuerungsliste vorhanden sein.
 
@@ -146,9 +152,36 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 
 
+## <a name="errors-40914-and-40615"></a>Fehler 40914 und 40615
+
+Der Verbindungsfehler 40914 bezieht sich auf *Regeln für ein virtuelles Netzwerk*, die im Azure-Portal im Bereich „Firewall“ angegeben werden. Beim Fehler 40615 verhält es sich ähnlich, nur dass sich dieser Fehler auf *IP-Adressregeln* in der Firewall bezieht.
+
+#### <a name="error-40914"></a>Fehler 40914
+
+*Meldungstext:* Der bei der Anmeldung angeforderte Server „*[Servername]*“ kann nicht geöffnet werden. Der Client hat keine Zugriffsberechtigung für den Server.
+
+*Fehlerbeschreibung:* Der Client befindet sich in einem Subnetz, das Endpunkte des virtuellen Netzwerkservers enthält. Der Azure SQL-Datenbankserver enthält jedoch keine Regeln für ein virtuelles Netzwerk, die dem Subnetz die Berechtigung zur Kommunikation mit der SQL-Datenbank gewähren.
+
+*Fehlerbehebung:* Verwenden Sie im Azure-Portal im Bereich „Firewall“ die Steuerung von Regel für ein virtuelles Netzwerk, um [eine Regel für ein virtuelles Netzwerk](#anchor-how-to-by-using-firewall-portal-59j) für das Subnetz hinzuzufügen.
+
+#### <a name="error-40615"></a>Fehler 40615
+
+*Meldungstext:* Der bei der Anmeldung angeforderte Server „{0}“ kann nicht geöffnet werden. Der Client mit der IP-Adresse „{1}“ hat keine Zugriffsberechtigung für den Server.
+
+*Fehlerbeschreibung:* Der Client versucht, eine Verbindung über eine IP-Adresse herzustellen, die nicht zum Herstellen einer Verbindung mit dem Azure SQL-Datenbankserver autorisiert ist. Die Serverfirewall enthält keine IP-Adressregel, die einem Client die Kommunikation mit der SQL-Datenbank über eine bestimmte IP-Adresse erlaubt.
+
+*Fehlerbehebung:* Geben Sie als IP-Regel die IP-Adresse des Clients ein. Tun Sie dies im Bereich „Firewall“ des Azure-Portals.
+
+
+Eine Liste verschiedener Fehlermeldungen der SQL-Datenbank ist [hier][sql-database-develop-error-messages-419g] dokumentiert.
+
+
+
+
+
 <a name="anchor-how-to-by-using-firewall-portal-59j" />
 
-## <a name="how-to-create-a-virtual-network-rule-by-using-the-portal"></a>Erstellen einer Regel für ein virtuelles Netzwerk im Portal
+## <a name="portal-can-create-a-virtual-network-rule"></a>Erstellen einer Regel für ein virtuelles Netzwerk über das Portal
 
 In diesem Abschnitt wird veranschaulicht, wie Sie im [Azure-Portal][http-azure-portal-link-ref-477t] eine *Regel für ein virtuelles Netzwerk* in Ihrer Azure SQL-Datenbank-Instanz erstellen. Die Regel weist Ihre SQL-Datenbank-Instanz an, Nachrichten von einem bestimmten Subnetz zu akzeptieren, das als *Dienstendpunkt des virtuellen Netzwerks* gekennzeichnet ist.
 
@@ -232,6 +265,8 @@ Die Funktionen „Microsoft Azure Virtual Network-Dienstendpunkte“ und „Rege
 
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md
 
+[sql-database-develop-error-messages-419g]: sql-database-develop-error-messages.md
+
 [sql-db-vnet-service-endpoint-rule-powershell-md-52d]: sql-database-vnet-service-endpoint-rule-powershell.md
 
 [sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]: sql-database-vnet-service-endpoint-rule-powershell.md#a-verify-subnet-is-endpoint-ps-100
@@ -262,5 +297,4 @@ Die Funktionen „Microsoft Azure Virtual Network-Dienstendpunkte“ und „Rege
 
 - ARM templates
 -->
-
 

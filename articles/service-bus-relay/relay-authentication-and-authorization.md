@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/03/2017
+ms.date: 10/05/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 95589ca169926362fa77f0e307afd449014c8402
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.openlocfilehash: 4ef8cbf22f2fcd7017af16083240608e5ca0fb5e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure Relay-Authentifizierung und -Autorisierung
-Anwendungen können mithilfe der SAS-Authentifizierung (Shared Access Signature) bei Azure Relay authentifiziert werden. Die SAS-Authentifizierung ermöglicht Anwendungen ähnlich wie das [Service Bus-Messaging](../service-bus-messaging/service-bus-authentication-and-authorization.md) die Authentifizierung beim Azure Relay-Dienst mithilfe eines Zugriffsschlüssels, der für den Relaynamespace konfiguriert wird. Sie können diesen Schlüssel zum Generieren eines SAS-Tokens verwenden, das Clients für die Authentifizierung beim Relaydienst verwenden können.
+
+Anwendungen können mithilfe der SAS-Authentifizierung (Shared Access Signature) bei Azure Relay authentifiziert werden. Die SAS-Authentifizierung ermöglicht Anwendungen die Authentifizierung beim Azure Relay-Dienst mithilfe eines Zugriffsschlüssels, der für den Namespace „Relay“ konfiguriert wird. Sie können diesen Schlüssel zum Generieren eines SAS-Tokens verwenden, das Clients für die Authentifizierung beim Relaydienst verwenden können.
 
 ## <a name="shared-access-signature-authentication"></a>SAS-Authentifizierung (Shared Access Signature)
 Mit der [SAS-Authentifizierung](../service-bus-messaging/service-bus-sas.md) können Sie einem Benutzer Zugriff auf Azure Relay-Ressourcen mit spezifischen Rechten gewähren. Die SAS-Authentifizierung umfasst die Konfiguration eines kryptografischen Schlüssels mit den zugehörigen Rechten für eine Ressource. Clients können Zugriff auf diese Ressource erlangen, indem sie ein SAS-Token bereitstellen. Dieses setzt sich aus dem Ressourcen-URI, auf den zugegriffen wird, und einer Ablaufangabe zusammen, die mit dem konfigurierten Schlüssel signiert wird.

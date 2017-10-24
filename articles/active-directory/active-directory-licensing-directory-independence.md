@@ -12,18 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/27/2017
+ms.date: 10/10/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
+ms.openlocfilehash: 5c9225212e51d03ae40e3a55a6b9e6c0e74b5ced
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: d25d2c731034d0785bbd404ec693c4c41d913d01
-ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Grundlegendes zum Interagieren mehrerer Azure Active Directory-Mandanten
 
 In Azure Active Directory (Azure AD) ist jeder Mandant eine vollständig unabhängige Ressource: gleichgestellt, logisch unabhängig von anderen Mandanten, die Sie verwalten. Es gibt keine unter- und übergeordneten Beziehungen zwischen den Mandanten. Diese Unabhängigkeit zwischen den Mandanten beinhaltet Ressourcen-, Verwaltungs- und Synchronisierungsunabhängigkeit.
@@ -49,9 +47,8 @@ Sie können jeden Azure AD-Mandanten unabhängig voneinander konfigurieren, dami
 Um einen Azure AD-Mandanten im Azure-Portal hinzuzufügen, melden Sie sich mit einem globalen Azure AD-Administratorkonto beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie auf der linken Seite **Neu** aus.
 
 > [!NOTE]
-> Im Gegensatz zu anderen Azure-Ressourcen sind Ihre Mandanten keine untergeordneten Ressourcen eines Azure-Abonnements. Wenn Ihr Azure-Abonnement gekündigt oder abgelaufen ist, können Sie weiterhin mithilfe von Azure PowerShell, Azure Graph-API oder Office 365 Admin Center auf Ihre Mandantendaten zugreifen. Sie können dem Mandanten auch ein anderes Abonnement zuordnen.
+> Im Gegensatz zu anderen Azure-Ressourcen sind Ihre Mandanten keine untergeordneten Ressourcen eines Azure-Abonnements. Wenn Ihr Azure-Abonnement gekündigt oder abgelaufen ist, können Sie weiterhin mithilfe von Azure PowerShell, Azure Graph-API oder Office 365 Admin Center auf Ihre Mandantendaten zugreifen. Sie können [dem Mandanten auch ein anderes Abonnement zuordnen](active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine grobe Übersicht über Lizenzierungsprobleme und Best Practices im Zusammenhang mit Azure AD finden Sie unter [Worum handelt es sich bei der Lizenzierung von Azure Active Directory-Mandanten?](active-directory-licensing-whatis-azure-portal.md).
-
+Eine grobe Übersicht über Lizenzierungsprobleme und Best Practices im Zusammenhang mit Azure AD finden Sie unter [Grundlagen der gruppenbasierten Lizenzierung in Azure Active Directory](active-directory-licensing-whatis-azure-portal.md).

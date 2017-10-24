@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2017
 ms.author: abnarain
+ms.openlocfilehash: 0514710606b74db7c13f04e961347d215d2d283d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 00673cac31eb25bb8dd8228d6a36617c3812f5db
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung
 In diesem Artikel ist die grundlegenden Sicherheitsinfrastruktur beschrieben, die von Datenverschiebungsdiensten in Azure Data Factory verwendet wird, um Ihre Daten zu schützen. Azure Data Factory-Verwaltungsressourcen setzen auf der Azure Sicherheitsinfrastruktur auf und nutzen alle möglichen Sicherheitsmaßnahmen, die von Azure bereitgestellt werden.
 
@@ -97,9 +95,9 @@ Die Anmeldeinformationen für Ihre lokalen Datenspeicher sind immer verschlüsse
 
 1. Sie können **Anmeldeinformationen lokal speichern**. Wenn Sie Anmeldeinformationen lokal auf der selbstgehosteten Integrationslaufzeit verschlüsseln und speichern möchten, führen Sie die Schritte in [Verschlüsseln von Anmeldeinformationen für die selbstgehostete Integrationslaufzeit](encrypt-credentials-self-hosted-integration-runtime.md) aus. Diese Option wird von allen Connectors unterstützt. Die selbstgehostete Integrationslaufzeit verwendet Windows-[DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) zum Verschlüsseln der vertraulichen Daten/Anmeldeinformationen. 
 
-   Verwenden Sie das **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential**-Cmdlet, um Anmeldeinformationen des verknüpften Diensts bzw. vertrauliche Details im verknüpften Dienst zu verschlüsseln. Anschließend können Sie das zurückgegebene JSON (mit dem **EncryptedCredential**-Element in **connectionString**) verwenden, um mit dem **Set-AzureRmDataFactoryV2LinkedSevrice**-Cmdlet einen verknüpften Dienst zu erstellen.  
+   Verwenden Sie das **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential**-Cmdlet, um Anmeldeinformationen des verknüpften Diensts bzw. vertrauliche Details im verknüpften Dienst zu verschlüsseln. Anschließend können Sie das zurückgegebene JSON (mit dem **EncryptedCredential**-Element in **connectionString**) verwenden, um mit dem **Set-AzureRmDataFactoryV2LinkedSevrice**-Cmdlet einen verknüpften Dienst zu erstellen.  
 
-2. Wenn Sie das **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential**-Cmdlet nicht gemäß der obigen Beschreibung verwenden und stattdessen das **Set-AzureRmDataFactoryV2LinkedSevrice**-Cmdlet direkt mit den im JSON integrierten Verbindungszeichenfolgen/Anmeldeinformationen verwenden, wird der verknüpfte Dienst **verschlüsselt und im verwalteten Speicher von Azure Data Factory gespeichert**. Diese vertraulichen Informationen werden weiterhin mithilfe eines Zertifikats verschlüsselt, und diese Zertifikate werden von Microsoft verwaltet.
+2. Wenn Sie das **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential**-Cmdlet nicht gemäß der obigen Beschreibung verwenden und stattdessen das **Set-AzureRmDataFactoryV2LinkedSevrice**-Cmdlet direkt mit den im JSON integrierten Verbindungszeichenfolgen/Anmeldeinformationen verwenden, wird der verknüpfte Dienst **verschlüsselt und im verwalteten Speicher von Azure Data Factory gespeichert**. Diese vertraulichen Informationen werden weiterhin mithilfe eines Zertifikats verschlüsselt, und diese Zertifikate werden von Microsoft verwaltet.
 
 
 
@@ -186,4 +184,3 @@ Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Computers de
 Informationen zur Leistung der Kopieraktivität finden Sie im [Handbuch zur Leistung und Optimierung der Kopieraktivität](copy-activity-performance.md).
 
  
-

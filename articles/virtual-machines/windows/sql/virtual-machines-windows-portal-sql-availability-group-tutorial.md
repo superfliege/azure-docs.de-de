@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
 ms.openlocfilehash: 228ca9ca5fddc493d27bfd6a40df5ee7306d6aa9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
 
@@ -55,7 +55,7 @@ Vor Beginn des Tutorials müssen die [Schritte zum Erfüllen der Voraussetzungen
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
 
 <a name="CreateCluster"></a>
-##Erstellen des Clusters
+## Erstellen des Clusters
 
 Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Server-Failovercluster mit zwei SQL Server-Instanzen und einem Zeugenserver erstellen.  
 

@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/23/2017
 ms.author: bwren
+ms.openlocfilehash: 50713d69f6dce6b7b154b6b4a6df3f679eb7b7c7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 10b7f3ad23d9c5451bc7ff82b8927c260230f6da
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="transitioning-to-azure-log-analytics-new-query-language"></a>Übergang zur neuen Azure Log Analytics-Abfragesprache
 
 > [!NOTE]
@@ -41,7 +39,7 @@ Die folgende Tabelle zeigt einen Vergleich zwischen verschiedenen häufigen Abfr
 
 | Beschreibung | Alt | Neu |
 |:--|:--|:--|
-| Alle Tabellen durchsuchen      | Fehler | Suchen Sie „Fehler“ (ohne Berücksichtigung von Groß-/Kleinschreibung) |
+| Alle Tabellen durchsuchen      | error | Suchen Sie „Fehler“ (ohne Berücksichtigung von Groß-/Kleinschreibung) |
 | Auswählen von Daten aus einer Tabelle | Type=Event |  Ereignis |
 |                        | Type=Event &#124; select Source, EventLog, EventID | Event &#124; project Source, EventLog, EventID |
 |                        | Type=Event &#124; top 100 | Event &#124; take 100 |
@@ -50,7 +48,7 @@ Die folgende Tabelle zeigt einen Vergleich zwischen verschiedenen häufigen Abfr
 |                        | Type=Event Computer=RegEx("@contoso@")  | Event &#124; where Computer matches regex ".*contoso*" |
 | Datumsvergleich        | Type=Event TimeGenerated > NOW-1DAYS | Event &#124; where TimeGenerated > ago(1d) |
 |                        | Type=Event TimeGenerated>2017-05-01 TimeGenerated<2017-05-31 | Event &#124; where TimeGenerated between (datetime(2017-05-01) .. datetime(2017-05-31)) |
-| Boolescher Vergleich     | Type=Heartbeat IsGatewayInstalled=false  | Heartbeat | where IsGatewayInstalled == false |
+| Boolescher Vergleich     | Type=Heartbeat IsGatewayInstalled=false  | Heartbeat \| where IsGatewayInstalled == false |
 | Sortieren                   | Type=Event &#124; sort Computer asc, EventLog desc, EventLevelName asc | Event \| sort by Computer asc, EventLog desc, EventLevelName asc |
 | Unterscheiden               | Type=Event &#124; dedup Computer \| select Computer | Event &#124; summarize by Computer, EventLog |
 | Erweitern von Spalten         | Type=Perf CounterName="% Processor Time" &#124; EXTEND if(map(CounterValue,0,50,0,1),"HIGH","LOW") as UTILIZATION | Perf &#124; where CounterName == "% Processor Time" \| extend Utilization = iff(CounterValue > 50, "HIGH", "LOW") |
@@ -65,4 +63,3 @@ Die folgende Tabelle zeigt einen Vergleich zwischen verschiedenen häufigen Abfr
 ## <a name="next-steps"></a>Nächste Schritte
 - Sehen Sie sich ein [Tutorial zum Schreiben von Abfragen](https://go.microsoft.com/fwlink/?linkid=856078) an, in dem die neue Abfragesprache verwendet wird.
 - Details zu allen Befehlen, Operatoren und Funktionen der neuen Abfragesprache finden Sie in der [Referenz zur Abfragesprache](https://go.microsoft.com/fwlink/?linkid=856079).  
-

@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 10/09/2017
 ms.author: terrylan
+ms.openlocfilehash: 32735a7dfaafd8bbfb983dd809b2204fb1b2fa10
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 37419e40808fc8104cb89f6a742874ad6f8c838f
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Verwalten von Sicherheitsempfehlungen in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie Sicherheitsempfehlungen in Azure Security Center verwenden, um Ihre Azure-Ressourcen zu schützen.
@@ -43,13 +42,13 @@ Unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-c
 Aktuelle Richtlinienempfehlungen beziehen sich auf Systemupdates, Grundregeln, Antischadsoftware, [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) für Subnetze und Netzwerkschnittstellen, Überwachung der SQL-Datenbank, Transparent Data Encryption für die SQL-Datenbank und Web Application Firewalls.  [Einrichten von Sicherheitsrichtlinien](security-center-policies.md) enthält eine Beschreibung der einzelnen Empfehlungsoptionen.
 
 ### <a name="monitor-recommendations"></a>Überwachen von Empfehlungen
-Nach Einstellung einer Sicherheitsrichtlinie analysiert Security Center den Sicherheitsstatus Ihrer Ressourcen, um potenzielle Sicherheitsrisiken zu erkennen. Auf der Kachel **Empfehlungen** des Blatts **Security Center** können Sie die Gesamtzahl der von Security Center identifizierten Empfehlungen sehen.
+Nach Einstellung einer Sicherheitsrichtlinie analysiert Security Center den Sicherheitsstatus Ihrer Ressourcen, um potenzielle Sicherheitsrisiken zu erkennen. Auf der Kachel **Empfehlungen** unter **Übersicht** können Sie die Gesamtzahl der von Security Center identifizierten Empfehlungen sehen.
 
 ![Kachel „Empfehlungen“][1]
 
-So zeigen Sie die Details jeder Empfehlung an:
+Um die Details zu jeder Empfehlung anzuzeigen, wählen Sie unter **Übersicht** die Kachel **Empfehlungen**. Das Blatt **Empfehlungen** wird geöffnet.
 
-Wählen Sie auf dem Blatt **Security Center** die Kachel **Empfehlungen** aus. Das Blatt **Empfehlungen** wird geöffnet.
+![Empfehlungen filtern][2]
 
 Die Empfehlungen werden in einem Tabellenformat angezeigt, wobei jede Zeile eine bestimmte Empfehlung darstellt. Die Spalten dieser Tabelle sind:
 
@@ -73,17 +72,16 @@ Der folgenden Tabelle können Sie entnehmen, welche Empfehlungen verfügbar sind
 
 | Empfehlung | Beschreibung |
 | --- | --- |
-| [Sammlung von Daten für Abonnements aktivieren](security-center-enable-data-collection.md) |Empfiehlt Ihnen, in der Sicherheitsrichtlinie die Datensammlung für alle Abonnements und alle virtuellen Computer in Ihren Abonnements zu aktivieren. |
+| [Sammlung von Daten für Abonnements aktivieren](security-center-enable-data-collection.md) |Empfiehlt Ihnen, in der Sicherheitsrichtlinie die Datensammlung für alle Abonnements sowie alle virtuellen Azure-Computer (VMs) und Computer, die keine Azure-Computer sind, zu aktivieren. |
 | [Betriebssystem-Sicherheitsrisiken beheben](security-center-remediate-os-vulnerabilities.md) |Empfiehlt Ihnen, Ihre Betriebssystemkonfigurationen mit den empfohlenen Konfigurationsregeln in Einklang zu bringen und etwa nicht zuzulassen, dass Kennwörter gespeichert werden. |
-| [Systemupdates anwenden](security-center-apply-system-updates.md) |Empfiehlt Ihnen, fehlende Systemupdates und kritische Updates für virtuelle Computer bereitzustellen. |
+| [Systemupdates anwenden](security-center-apply-system-updates.md) |Empfiehlt Ihnen, fehlende Systemsicherheitsupdates und kritische Updates für Windows- und Linux-VMs und -Computer bereitzustellen. |
 | [JIT-Netzwerkzugriffssteuerung anwenden](security-center-just-in-time.md) | Empfiehlt Ihnen, Just-In-Time-VM-Zugriff anzuwenden. Das Just-In-Time-Feature befindet sich in der Vorschauphase und ist im Standard-Tarif von Security Center verfügbar. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md). |
 | [Neustart nach Systemupdates](security-center-apply-system-updates.md#reboot-after-system-updates) |Empfiehlt Ihnen, einen virtuellen Computer neu zu starten, um die Anwendung von Systemupdates abzuschließen. |
-| [Web Application Firewall hinzufügen](security-center-add-web-application-firewall.md) |Empfiehlt Ihnen, eine Web Application Firewall (WAF) für Webendpunkte bereitzustellen. Eine WAF-Empfehlung wird für jede öffentlich zugängliche IP-Adresse (sowohl auf Instanzebene als auch mit Lastenausgleich) angezeigt, die über eine zugeordnete Netzwerksicherheitsgruppe mit offenen eingehenden Webports (80, 443) verfügt. </br>Security Center empfiehlt die Bereitstellung einer WAF zum Schutz vor Angriffen auf Ihre Webanwendungen auf virtuellen Computern und in der App Service-Umgebung. Eine App Service-Umgebung ist eine Option des [Premium](https://azure.microsoft.com/pricing/details/app-service/)-Tarifs von Azure App Service, die eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von Azure App Service-Apps bereitstellt. Weitere Informationen zu ASE finden Sie unter [Dokumentation zur App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md).</br>Sie können mehrere Webanwendungen in Security Center schützen, indem Sie diese Anwendungen Ihren vorhandenen WAF-Bereitstellungen hinzufügen. |
+| [Web Application Firewall hinzufügen](security-center-add-web-application-firewall.md) |Empfiehlt Ihnen, eine Web Application Firewall (WAF) für Webendpunkte bereitzustellen. Eine WAF-Empfehlung wird für jede öffentlich zugängliche IP-Adresse (sowohl auf Instanzebene als auch mit Lastenausgleich) angezeigt, die über eine zugeordnete Netzwerksicherheitsgruppe mit offenen eingehenden Webports (80, 443) verfügt. </br>Security Center empfiehlt die Bereitstellung einer WAF zum Schutz vor Angriffen auf Ihre Webanwendungen auf virtuellen Computern und in der App Service-Umgebung. Eine App Service-Umgebung ist eine Option des [Premium](https://azure.microsoft.com/pricing/details/app-service/)-Tarifs von Azure App Service, die eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von Azure App Service-Apps bereitstellt. Weitere Informationen zu ASE finden Sie unter [Dokumentation zur App Service-Umgebung](../app-service/environment/intro.md).</br>Sie können mehrere Webanwendungen in Security Center schützen, indem Sie diese Anwendungen Ihren vorhandenen WAF-Bereitstellungen hinzufügen. |
 | [Finalize application protection (Anwendungsschutz abschließen)](security-center-add-web-application-firewall.md#finalize-application-protection) |Um die Konfiguration einer WAF abzuschließen, muss Datenverkehr an das WAF-Gerät umgeleitet werden. Nach dieser Empfehlung werden die erforderlichen Setupänderungen vorgenommen. |
 | [Firewall der nächsten Generation hinzufügen](security-center-add-next-generation-firewall.md) |Empfiehlt, dass Sie zum Verbessern Ihrer Sicherheitsmaßnahmen eine Firewall der nächsten Generation (NGFW) eines Microsoft-Partners hinzufügen |
 | [Datenverkehr nur durch Firewall der nächsten Generation leiten](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) |Empfiehlt, dass Sie die Regeln der Netzwerksicherheitsgruppe so konfigurieren, dass zu Ihrer VM eingehender Datenverkehr durch Ihre Firewall der nächsten Generation geleitet werden muss. |
 | [Endpoint Protection installieren](security-center-install-endpoint-protection.md) |Empfiehlt Ihnen, Antischadsoftware für virtuelle Maschinen bereitzustellen (nur Windows-VMs). |
-| [Endpoint Protection-Integritätswarnungen auflösen](security-center-resolve-endpoint-protection-health-alerts.md) |Empfiehlt, dass Sie Endpoint Protection-Fehler beheben. |
 | [Netzwerksicherheitsgruppen in Subnetzen oder auf virtuellen Computern aktivieren](security-center-enable-network-security-groups.md) |Empfiehlt, dass Sie NSGs in Subnetzen oder auf virtuellen Computern aktivieren. |
 | [Zugriff über Endpunkt mit Internetzugriff einschränken](security-center-restrict-access-through-internet-facing-endpoints.md) |Empfiehlt Ihnen, Regeln für eingehenden Datenverkehr für NSGs zu konfigurieren. |
 | [Aktivieren der Überwachung und Bedrohungserkennung auf SQL-Servern](security-center-enable-auditing-on-sql-servers.md) |Empfiehlt, die Überwachung und Bedrohungserkennung für Azure SQL-Server zu aktivieren. (Nur Azure SQL-Dienst. Schließt nicht die Ausführung von SQL auf Ihren virtuellen Computern mit ein.) |
@@ -101,7 +99,6 @@ Sie können Empfehlungen filtern und verwerfen.
 
 1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Filter** aus. Das Blatt **Filter** wird geöffnet. Sie können Werte für Schweregrad und Status auswählen, die Sie anzeigen möchten.
 
-    ![Empfehlungen filtern][2]
 2. Wenn Sie feststellen, dass eine Empfehlung nicht anwendbar ist, können Sie die Empfehlung verwerfen und dann aus der Ansicht filtern. Es gibt zwei Möglichkeiten, eine Empfehlung zu verwerfen. Klicken Sie mit der rechten Maustaste auf ein Element, und wählen Sie die **Verwerfen**. Oder bewegen Sie den Mauszeiger auf ein Element, klicken Sie auf die drei rechts angezeigten Punkte, und wählen Sie **Verwerfen**. Sie können verworfene Empfehlungen anzeigen, indem Sie auf **Filter** klicken und dann **Verworfen** auswählen.
 
     ![Empfehlung verwerfen][3]
@@ -125,4 +122,3 @@ In diesem Dokument wurden Ihnen die Sicherheitsempfehlungen in Security Center v
 [1]: ./media/security-center-recommendations/recommendations-tile.png
 [2]: ./media/security-center-recommendations/filter-recommendations.png
 [3]: ./media/security-center-recommendations/dismiss-recommendations.png
-

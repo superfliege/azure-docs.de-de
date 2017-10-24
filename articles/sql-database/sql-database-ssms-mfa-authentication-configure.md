@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 07/17/2017
+ms.date: 09/27/2017
 ms.author: rickbyh
+ms.openlocfilehash: f244fc5dada77d6601710b374aa6edeb607b11d6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: fd78b34e8bbefdaa79a73d69ff2a0e3c1c342e98
-ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurieren der mehrstufigen Authentifizierung für SQL Server Management Studio und Azure AD
 
@@ -65,9 +64,10 @@ Wenn die Überprüfung abgeschlossen ist, stellt SSMS normalerweise eine Verbind
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Übersicht über die mehrstufige Authentifizierung in Azure SQL-Datenbank finden Sie unter [Universelle Authentifizierung bei SQL-Datenbank und SQL Data Warehouse (SSMS-Unterstützung für MFA)](sql-database-ssms-mfa-authentication.md).
-* Erteilen Sie anderen Zugriff auf Ihre Datenbank: [SQL-Datenbank-Authentifizierung und -Autorisierung: Gewähren von Zugriff](sql-database-manage-logins.md)  
-Stellen Sie sicher, dass andere eine Verbindung durch die Firewall herstellen können: [Konfigurieren einer Firewallregel auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-configure-firewall-settings.md).
+- Eine Übersicht über die mehrstufige Authentifizierung in Azure SQL-Datenbank finden Sie unter [Universelle Authentifizierung bei SQL-Datenbank und SQL Data Warehouse (SSMS-Unterstützung für MFA)](sql-database-ssms-mfa-authentication.md).  
+- Erteilen Sie anderen Zugriff auf Ihre Datenbank: [SQL-Datenbank-Authentifizierung und -Autorisierung: Gewähren von Zugriff](sql-database-manage-logins.md)  
+- Stellen Sie sicher, dass andere eine Verbindung durch die Firewall herstellen können: [Konfigurieren einer Firewallregel auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-configure-firewall-settings.md).  
+- Bei Verwendung der Authentifizierung **Active Directory: universell mit MFA-Unterstützung** ist ab [SSMS 17.3](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) die ADAL-Ablaufverfolgung verfügbar. Die ADAL-Ablaufverfolgung ist standardmäßig deaktiviert. Sie können sie aktivieren, indem Sie unter **Azure-Dienste** > **Azure-Cloud** > **Ablaufverfolgungsebene für ADAL-Ausgabefenster** im Menü **Optionen** die **Tools** verwenden und im Menü **Ansicht** die Option **Ausgabe** aktivieren. Die Ablaufverfolgungen im Ausgabefenster sind verfügbar, wenn Sie die Option **Azure Active Directory** aktivieren.   
 
 
 [1]: ./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png
@@ -75,5 +75,4 @@ Stellen Sie sicher, dass andere eine Verbindung durch die Firewall herstellen k�
 [3]: ./media/sql-database-ssms-mfa-auth/3mfa-setup.png
 [4]: ./media/sql-database-ssms-mfa-auth/4mfa-verify-1.png
 [5]: ./media/sql-database-ssms-mfa-auth/5mfa-verify-2.png
-
 

@@ -10,17 +10,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 07/18/2017
+ms.date: 09/22/2017
+ms.openlocfilehash: 1f18a35a3c22ecdc379bdffa1ecacb931c62a59d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 42a6b1c37de08971674c8b38f1e13bfd657f8b03
-ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Herstellen einer Verbindung und Abfragen von Daten mithilfe von Go
-In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Windows, Linux (Ubuntu) und macOS (Apple) mithilfe von Code in der Programmiersprache [Go](https://golang.org/) eine Verbindung mit einer Azure-Datenbank für MySQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit der Entwicklung in Go vertraut sind, aber noch keine Erfahrung mit Azure-Datenbank für MySQL haben.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Windows, Linux (Ubuntu) und macOS (Apple) mithilfe von Code in der Programmiersprache [Go](https://golang.org/) eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Go-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
@@ -28,7 +26,7 @@ In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen e
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-go-and-mysql-connector"></a>Installieren von Go und dem MySQL-Connector
-Installieren Sie auf Ihrem Computer [Go](https://golang.org/doc/install) und den [Go-SQL-Treiber für MySQL](https://github.com/go-sql-driver/mysql#installation). Führen Sie je nach Plattform die folgenden Schritte aus:
+Installieren Sie auf Ihrem Computer [Go](https://golang.org/doc/install) und den [„go-sql“-Treiber für MySQL](https://github.com/go-sql-driver/mysql#installation). Führen Sie je nach Plattform die folgenden Schritte im entsprechenden Abschnitt aus:
 
 ### <a name="windows"></a>Windows
 1. [Laden Sie Go für Microsoft Windows herunter](https://golang.org/dl/), und installieren Sie es gemäß der [Installationsanleitung](https://golang.org/doc/install).
@@ -65,7 +63,7 @@ Installieren Sie auf Ihrem Computer [Go](https://golang.org/doc/install) und den
 
 ### <a name="apple-macos"></a>macOS (Apple)
 1. Laden Sie Go gemäß der [Installationsanleitung](https://golang.org/doc/install) für Ihre Plattform herunter, und führen Sie die Installation durch. 
-2. Starten Sie die Bash-Shell. 
+2. Starten Sie die Bash-Shell.
 3. Erstellen Sie in Ihrem Basisverzeichnis einen Ordner für Ihr Projekt. Beispiel: `mkdir -p ~/go/src/mysqlgo/`.
 4. Wechseln Sie zu dem Ordner. Beispiel: `cd ~/go/src/mysqlgo/`.
 5. Legen Sie die GOPATH-Umgebungsvariable so fest, dass sie auf ein gültiges Quellverzeichnis verweist (beispielsweise auf den Go-Ordner Ihres aktuellen Basisverzeichnisses). Führen Sie in der Bash-Shell `export GOPATH=~/go` aus, um das Go-Verzeichnis als GOPATH für die aktuelle Shellsitzung hinzuzufügen.
@@ -83,9 +81,9 @@ Installieren Sie auf Ihrem Computer [Go](https://golang.org/doc/install) und den
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank für MySQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie nach dem soeben erstellten Server (beispielsweise **myserver4demo**).
+2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie dann nach dem soeben erstellten Server (beispielsweise **myserver4demo**).
 3. Klicken Sie auf den Servernamen **myserver4demo**.
-4. Wählen Sie die Seite mit den **Eigenschaften** des Servers aus. Notieren Sie sich den **Servernamen** und den **Anmeldenamen des Serveradministrators**.
+4. Wählen Sie die Seite **Eigenschaften** des Servers aus, und notieren Sie sich den **Servernamen** und **den Anmeldenamen des Serveradministrators**.
  ![Azure-Datenbank für MySQL – Anmeldename des Serveradministrators](./media/connect-go/1_server-properties-name-login.png)
 5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Serveradministrator-Anmeldenamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
    
@@ -93,17 +91,17 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 ## <a name="build-and-run-go-code"></a>Erstellen und Ausführen von Go-Code 
 1. Golang-Code kann in einem einfachen Text-Editor wie dem Editor (Microsoft Windows), [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) oder [Nano](https://www.nano-editor.org/) (Ubuntu) oder TextEdit (macOS) geschrieben werden. Falls Sie eine umfangreichere interaktive Entwicklungsumgebung (Interactive Development Environment, IDE) bevorzugen, können Sie [Gogland](https://www.jetbrains.com/go/) von Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) von Microsoft oder [Atom](https://atom.io/) verwenden.
 2. Fügen Sie den Go-Code aus den Abschnitten weiter unten in Textdateien ein, und speichern Sie sie in Ihrem Projektordner mit der Dateierweiterung „\*.go“ – beispielsweise `%USERPROFILE%\go\src\mysqlgo\createtable.go` (Windows-Pfad) oder `~/go/src/mysqlgo/createtable.go` (Linux-Pfad).
-3. Suchen Sie im Code nach den Konstanten `HOST`, `DATABASE`, `USER` und `PASSWORD`, und ersetzen Sie die Beispielwerte durch Ihre eigenen Werte. 
-4. Starten Sie die Eingabeaufforderung oder die Bash-Shell. Wechseln Sie in das Verzeichnis Ihres Projektordners. Beispiel für Windows: `cd %USERPROFILE%\go\src\mysqlgo\`. Beispiel für Linux: `cd ~/go/src/mysqlgo/`.  Einige der genannten IDE-Editoren bieten Debug- und Laufzeitfunktionen ohne Shell-Befehle.
+3. Suchen Sie im Code nach den Konstanten `HOST`, `DATABASE`, `USER` und `PASSWORD`, und ersetzen Sie dann die Beispielwerte durch Ihre eigenen Werte. 
+4. Starten Sie die Eingabeaufforderung oder Bash-Shell. Wechseln Sie zu Ihrem Projektordner. Beispiel für Windows: `cd %USERPROFILE%\go\src\mysqlgo\`. Beispiel für Linux: `cd ~/go/src/mysqlgo/`.  Einige der genannten IDE-Editoren bieten Debug- und Laufzeitfunktionen ohne Shell-Befehle.
 5. Geben Sie den Befehl `go run createtable.go` ein, um den Code auszuführen und die Anwendung zu kompilieren und auszuführen. 
 6. Falls Sie aus dem Code eine native Anwendung erstellen möchten, führen Sie stattdessen `go build createtable.go` aus, und starten Sie anschließend `createtable.exe`, um die Anwendung auszuführen.
 
 ## <a name="connect-create-table-and-insert-data"></a>Herstellen der Verbindung, Erstellen der Tabelle und Einfügen von Daten
-Verwenden Sie den folgenden Code, um eine Verbindung mit dem Server herzustellen, eine Tabelle zu erstellen und die Daten unter Verwendung einer SQL-Anweisung vom Typ **INSERT** zu laden. 
+Verwenden Sie den folgenden Code, um eine Verbindung mit dem Server herzustellen, eine Tabelle zu erstellen und die Daten unter Verwendung einer SQL-Anweisung des Typs **INSERT** zu laden. 
 
 Der Code importiert drei Pakete: das [SQL-Paket](https://golang.org/pkg/database/sql/), den [Go-SQL-Treiber für MySQL](https://github.com/go-sql-driver/mysql#installation) als Treiber für die Kommunikation mit der Azure-Datenbank für MySQL und das [FMT-Paket](https://golang.org/pkg/fmt/) für Ein- und Ausgaben in der Befehlszeile.
 
-Der Code ruft die [sql.Open()](http://go-database-sql.org/accessing.html)-Methode auf, um eine Verbindung mit Azure-Datenbank für MySQL herzustellen, und überprüft die Verbindung mit der [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping)-Methode. Ein [Datenbankhandle](https://golang.org/pkg/database/sql/#DB) wird durchgängig für den Verbindungspool des Datenbankservers eingesetzt. Der Code ruft mehrmals die [Exec()](https://golang.org/pkg/database/sql/#DB.Exec)-Methode auf, um mehrere DDL-Befehle auszuführen. Außerdem verwendet der Code die Methoden [Prepare()](http://go-database-sql.org/prepared.html) und „Exec()“, um vorbereitete Anweisungen mit unterschiedlichen Parametern auszuführen und drei Zeilen einzufügen. Dabei wird jedes Mal mit einer benutzerdefinierten checkError()-Methode überprüft, ob ein Fehler aufgetreten ist, und der Vorgang ggf. mithilfe von „panic“ beendet.
+Der Code ruft die [sql.Open()](http://go-database-sql.org/accessing.html)-Methode auf, um eine Verbindung mit Azure Database for MySQL herzustellen, und überprüft die Verbindung mit der [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping)-Methode. Ein [Datenbankhandle](https://golang.org/pkg/database/sql/#DB) wird durchgängig für den Verbindungspool des Datenbankservers eingesetzt. Der Code ruft mehrmals die [Exec()](https://golang.org/pkg/database/sql/#DB.Exec)-Methode auf, um mehrere DDL-Befehle auszuführen. Außerdem verwendet der Code die Methoden [Prepare()](http://go-database-sql.org/prepared.html) und „Exec()“, um vorbereitete Anweisungen mit unterschiedlichen Parametern auszuführen und drei Zeilen einzufügen. Dabei wird jedes Mal mit einer benutzerdefinierten checkError()-Methode überprüft, ob ein Fehler aufgetreten ist, und der Vorgang ggf. mithilfe von „panic“ beendet.
 
 Ersetzen Sie die Konstanten `host`, `database`, `user` und `password` durch Ihre eigenen Werte. 
 
@@ -176,7 +174,7 @@ func main() {
 ```
 
 ## <a name="read-data"></a>Lesen von Daten
-Verwenden Sie den folgenden Code, um die Daten mit einer **SELECT**-SQL-Anweisung zu verbinden und zu lesen. 
+Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **SELECT** zu verbinden und zu lesen. 
 
 Der Code importiert drei Pakete: das [SQL-Paket](https://golang.org/pkg/database/sql/), den [Go-SQL-Treiber für MySQL](https://github.com/go-sql-driver/mysql#installation) als Treiber für die Kommunikation mit der Azure-Datenbank für MySQL und das [FMT-Paket](https://golang.org/pkg/fmt/) für Ein- und Ausgaben in der Befehlszeile.
 
@@ -356,4 +354,3 @@ func main() {
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
 > [Migrieren der Datenbank mit Export und Import](./concepts-migrate-import-export.md)
-

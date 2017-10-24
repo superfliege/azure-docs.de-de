@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
 ms.openlocfilehash: 3672beda8a502e5fe2c8182076a8edef7ee9ebf6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-a-serverless-app-in-visual-studio-with-logic-apps-and-functions"></a>Erstellen Sie eine serverlose App mit Logik-Apps und Functions in Visual Studio
 
@@ -46,7 +46,7 @@ Ressourcen werden in Azure innerhalb von Ressourcengruppen verwaltet.  Eine Ress
 1. Wählen Sie in der Kategorie **Cloud** die Option zum Erstellen eines **Ressourcengruppenprojekts**  
  * Wenn die Kategorie oder das Projekt nicht aufgelistet sind, prüfen Sie, ob Azure SDK für Visual Studio installiert ist
 1. Geben Sie dem Projekt einen Namen und Speicherort, und wählen Sie **Ok**, um Visual Studios-Eingabeaufforderungen für die Vorlagenauswahl zu erstellen.  Sie können von Leer, mit einer Logik-App oder mit einer sonstigen Ressource beginnen.  Hier verwenden wir eine Azure-Schnellstartvorlage für die ersten Schritte mit einer serverlosen App.
-1. Wählen Sie zum Anzeigen von Vorlagen für die **Azure Schnellstart** ![Vorlagen auswählen von Azure-Schnellstart][1]
+1. Wählen Sie die Vorlagenanzeige über **Azure-Schnellstart** ![Auswählen von Azure-Schnellstartvorlagen][1] aus.
 1. Wählen Sie die serverlose Schnellstartvorlage: **101-logic-app-and-function-app**, und klicken Sie auf **Ok**
 
 Die Schnellstartvorlage erstellt in Ihrem Ressourcengruppenprojekt eine Bereitstellungsvorlage.  Diese enthält eine einfache Logik-App, die einen Azure Functions-Aufruf startet und das Ergebnis zurückgibt.  Wenn Sie die Datei `azuredeploy.json` im Projektmappen-Explorer öffnen, werden die Ressourcen für die serverlose App angezeigt.
@@ -55,7 +55,7 @@ Die Schnellstartvorlage erstellt in Ihrem Ressourcengruppenprojekt eine Bereitst
 
 Um den visuellen Logik-App-Designer in Visual Studio öffnen zu können, muss eine zuvor bereitgestellte Azure-Ressourcengruppe vorhanden sein.  Mit dieser kann der Designer Verbindungen zu Ressourcen und Diensten in der Logik-App aufbauen und verwenden.  Um die ersten Schritte durchführen zu können, muss lediglich die erstellte Projektmappe bereitgestellt werden.
 
-1. Mit der rechten Maustaste des Projekts in Visual Studio, wählen **bereitstellen**, und erstellen Sie eine **neu** Bereitstellung ![neue Ressource Bereitstellung auswählen][2]
+1. Klicken Sie in Visual Studio mit der rechten Maustaste, wählen Sie **Bereitstellen**, und erstellen Sie eine **neue** Bereitstellung ![Auswählen einer neuen Ressourcenbereitstellung][2].
 1. Wählen Sie ein gültiges Azure-Abonnement und eine gültige Ressourcengruppe aus.
 1. Wählen Sie die Option **Bereitstellen** der Projektmappe aus.
 1. Geben Sie den Namen der Logik-App und der Azure Function-App ein.  Der Azure Function-Name muss nicht global eindeutig sein.

@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.date: 9/13/2017
 ms.custom: loading
 ms.author: cakarst;barbkess
+ms.openlocfilehash: e8ae0eb96200c167a8758df4ce20b51452cc59a4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 7594a0730477fe3f3bd34b0b6207478de70c7595
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-for-using-polybase-in-sql-data-warehouse"></a>Anleitung für die Verwendung von PolyBase in SQL Data Warehouse
 Diese Anleitung bietet praktische Informationen zur Verwendung von PolyBase in SQL Data Warehouse.
@@ -134,7 +133,7 @@ Zur Erzielung der optimalen Ladeleistung mit PolyBase wird Folgendes empfohlen:
 
 ## <a name="polybase-limitations"></a>Einschränkungen für PolyBase
 Für PolyBase in SQL DW gelten die folgenden Einschränkungen, die beim Entwerfen von Ladeaufträgen berücksichtigt werden müssen:
-- Eine einzelne Zeile kann nicht breiter als 1.000.000 Byte sein. Dies gilt unabhängig vom definierten Tabellenschema, einschließlich (n)varchar(max)-Spalten. Das heißt, dass (n)varchar(max)-Spalten in externen Tabellen eine maximale Breite von 1.000.000 Byte haben können und das durch den Datentyp definierte Limit von 2 GB nicht gilt.
+- Eine einzelne Zeile kann nicht breiter als 1.000.000 Byte sein. Dies gilt unabhängig vom definierten Tabellenschema.
 - Beim Exportieren von Daten aus SQL Server oder Azure SQL Data Warehouse in das ORC-Dateiformat können textlastige Spalten aufgrund von Java-Fehlern vom Typ „Nicht genügend Arbeitsspeicher“ auf weniger als 50 Spalten begrenzt werden. Dies können Sie umgehen, indem Sie nur eine Teilmenge der Spalten exportieren.
 
 
@@ -174,4 +173,3 @@ Weitere Informationen zum Verschieben von Daten nach SQL Data Warehouse finden S
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
 <!-- External Links -->
-

@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2017
+ms.date: 09/15/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f532f1aea9b8c4be6707862be4001099aa3c1d32
-ms.openlocfilehash: 1a6e5e915745dd3588fbc54b353daa947b1c4289
-ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
-
+ms.openlocfilehash: 726b59c45e2eb18eebe28a180db23336ae141408
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center
 In Azure Security Center wird die Bereitstellung von Sicherheitskontaktinformationen für Ihr Azure-Abonnement empfohlen (sofern noch nicht geschehen). Microsoft kontaktiert Sie anhand dieser Informationen, wenn Microsoft Security Response Center (MSRC) feststellt, dass Personen unrechtmäßig oder unbefugt auf Ihre Kundendaten zugegriffen haben. MSRC führt eine selektive Sicherheitsüberwachung im Azure-Netzwerk und in der Infrastruktur durch und empfängt Threat Intelligence-Daten und Missbrauchsmeldungen von Drittanbietern.
@@ -33,17 +31,18 @@ Eine E-Mail-Benachrichtigung wird beim ersten Auftreten einer Warnung am Tag und
 >
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
-1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Details für Sicherheitskontakt angeben**.
+1. Wählen Sie unter **Empfehlungen** die Option **Details für Sicherheitskontakt angeben**.
    ![Sicherheitskontakt bereitstellen][1]
-2. Das Blatt **Details für Sicherheitskontakt angeben**wird geöffnet. Wählen Sie das Azure-Abonnement aus, für das Sie Kontaktinformationen angeben möchten.
-   ![Details für Sicherheitskontakt angeben][2]
-3. Ein zweites Blatt **Details für Sicherheitskontakt angeben** wird geöffnet.
+2. Wählen Sie das Azure-Abonnement aus, für das Sie Kontaktinformationen angeben möchten.
+3. Daraufhin wird **Sicherheitsrichtlinie – E-Mail-Benachrichtigungen** geöffnet.
+
+   ![Sicherheitskontaktinformationen bereitstellen][2]
 
    * Geben Sie die E-Mail-Adressen der Sicherheitskontakte durch Kommas getrennt ein. Sie können beliebig viele E-Mail-Adressen eingeben.
    * Geben Sie eine internationale Telefonnummer für den Sicherheitskontakt ein.
    * Um E-Mails zu Warnungen mit hohem Schweregrad zu erhalten, aktivieren Sie die Option **E-Mails zu Warnungen an mich senden**.
    * In Zukunft werden Sie über die Option verfügen, E-Mail-Benachrichtigungen an Abonnementbesitzer zu senden. Diese Option ist derzeit abgeblendet.
-   * Wählen Sie **OK** , um die Sicherheitskontaktinformationen für Ihr Abonnement zu übernehmen.
+   * Wählen Sie **Speichern** aus, um die Sicherheitskontaktinformationen für Ihr Abonnement zu übernehmen.
 
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
@@ -59,4 +58,3 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png
 [2]:./media/security-center-provide-security-contacts/provide-contact-details.png
-

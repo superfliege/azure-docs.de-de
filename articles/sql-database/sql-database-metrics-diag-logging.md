@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
+ms.openlocfilehash: a56d48eaf335d9e78eeba99162cea7c61d96b7cb
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ef73f9036a91d5bac50597d1d96fe134225eef51
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank 
 Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwachung zu erleichtern. Sie können Azure SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
@@ -106,6 +105,17 @@ Verwenden Sie die folgenden Befehle, um die Metrik- und Diagnoseprotokollierung 
    ```
 
 Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen zu aktivieren.
+
+### <a name="to-configure-multiple-azure-subscriptions"></a>So konfigurieren Sie mehrere Azure-Abonnements
+
+Wenn mehrere Abonnements unterstützt werden, verwenden Sie das PowerShell-Skript aus [Enable Azure resource metrics logging using PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/) (Aktivieren der Protokollierung der Azure-Ressourcenmetriken mit PowerShell). Geben Sie die Ressourcen-ID des Arbeitsbereichs als Parameter beim Ausführen des Skripts zum Senden von Diagnosedaten aus Ressourcen in einem Azure-Abonnement an einen Arbeitsbereich in einem anderen Azure-Abonnement an.
+
+- Um mehrere Azure-Abonnements zu konfigurieren, verwenden Sie die folgenden Befehle:
+
+    ```powershell
+    PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/oms/providers/microsoft.operationalinsights/workspaces/omsws"
+    PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
+    ```
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -253,7 +263,7 @@ Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../s
 |TimeGenerated [UTC]|Zeitstempel für den Aufzeichnungsbeginn des Protokolls|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Kategorie|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
+|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
 |NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
 |Ressource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
@@ -304,7 +314,7 @@ Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../s
 |TimeGenerated [UTC]|Zeitstempel für den Aufzeichnungsbeginn des Protokolls|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Kategorie|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
+|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
 |NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
 |Ressource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
@@ -342,7 +352,7 @@ Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../s
 |TimeGenerated [UTC]|Zeitstempel für den Aufzeichnungsbeginn des Protokolls|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Kategorie|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
+|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
 |NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
 |Ressource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
@@ -371,7 +381,7 @@ Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../s
 |TimeGenerated [UTC]|Zeitstempel für den Aufzeichnungsbeginn des Protokolls|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Kategorie|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
+|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
 |NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
 |Ressource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
@@ -400,7 +410,7 @@ Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../s
 |TimeGenerated [UTC]|Zeitstempel für den Aufzeichnungsbeginn des Protokolls|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Kategorie|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
+|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
 |NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
 |Ressource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
@@ -423,7 +433,7 @@ Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../s
 |TimeGenerated [UTC]|Zeitstempel für den Aufzeichnungsbeginn des Protokolls|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Kategorie|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
+|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
 |NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
 |Ressource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
@@ -448,4 +458,3 @@ Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../s
    - [Was sind Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 - Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
-

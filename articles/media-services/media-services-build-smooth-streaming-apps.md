@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: e9cb2f03600d49123693fcc88742d6fc75d9de16
-ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
-
+ms.openlocfilehash: b4f8855fe6480bc58acfbbb53819f6eabe362bdb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Erstellen einer Smooth Streaming Windows Store-Anwendung
 
@@ -33,8 +32,11 @@ Dieses Lernprogramm enthält vier Lektionen:
 4. Auswählen von Smooth Streaming-Spuren
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Windows 8 32 Bit oder 64 Bit. Sie erhalten die [Windows 8 Enterprise-Evaluierungsversion](http://msdn.microsoft.com/evalcenter/jj554510.aspx) bei MSDN.
-* Visual Studio 2012 oder Visual Studio Express 2012 (oder höher). Sie können die Testversion [hier](http://www.microsoft.com/visualstudio/11/downloads)herunterladen.
+> [!NOTE]
+> Windows Store-Projekte der Version 8.1 und älter werden in Visual Studio 2017 nicht unterstützt.  Weitere Informationen finden Sie unter [Visual Studio 2017 – Zielplattformen und Kompatibilität](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
+
+* Windows 8 32 Bit oder 64 Bit.
+* Visual Studio-Versionen 2012 bis 2015.
 * [Microsoft Smooth Streaming Client SDK for Windows 8](http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Homehttp://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home).
 
 Die fertige Lösung für jede Lektion können Sie von der Website mit den MSDN-Codebeispielen für Entwickler (Code Gallery) herunterladen: 
@@ -59,7 +61,7 @@ Weitere Informationen zum Entwickeln von Windows Store-Anwendungen finden Sie un
 
 **So erstellen Sie ein Windows Store-Projekt**
 
-1. Starten Sie Visual Studio 2012 oder eine neuere Version.
+1. Führen Sie Visual Studio aus. Die Versionen 2012 bis 2015 werden unterstützt.
 2. Klicken Sie im Menü **DATEI** auf **Neu** und dann auf **Projekt**.
 3. Geben Sie im Dialogfeld „Neues Projekt“ die folgenden Werte ein, oder wählen Sie sie aus:
 
@@ -975,5 +977,4 @@ Sie haben Lektion 4 abgeschlossen.  In dieser Lektion haben Sie die Funktion zu
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-
 

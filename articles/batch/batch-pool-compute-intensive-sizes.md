@@ -12,13 +12,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 09/25/2017
 ms.author: danlep
-ms.openlocfilehash: c52a054e4fc8f61f871acd9f35b9a3e6247e48ef
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.openlocfilehash: 8a1097353d24ad4c807803511e93c90394816138
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
@@ -33,13 +33,9 @@ Dieser Artikel enthält Anweisungen und Anwendungsbeispiele für einige speziell
 
 ## <a name="subscription-and-account-limits"></a>Abonnements und Kontoeinschränkungen
 
-* **Kontingente:** Die Anzahl der Knoten, die Sie einem Batch-Pool hinzufügen können, kann durch ein oder mehrere Azure-Kontingenten eingeschränkt werden. Besonders wahrscheinlich sind solche Einschränkungen bei einer Auswahl von RDMA-fähigen, GPU-fähigen oder sonstigen Größen für virtuelle Computer mit mehreren Kernen. Die Kontingente können je nach Art des erstellten Batch-Kontos für das Konto selbst oder für Ihr Abonnement gelten.
+* **Kontingente** – Das [dedizierte Kernkontingent pro Batch-Konto](batch-quota-limit.md#resource-quotas) kann die Anzahl oder den Typ der Knoten, die Sie einem Batch-Pool hinzufügen können, beschränken. Besonders wahrscheinlich ist die Erreichung eines Kontingents bei einer Auswahl von RDMA-fähigen, GPU-fähigen oder sonstigen Größen für VMs mit mehreren Kernen. Dieses Kontingent beträgt standardmäßig 20 Kerne. Ein eigenes Kontingent gilt für [VMs mit niedriger Priorität](batch-low-pri-vms.md), sofern Sie diese verwenden. 
 
-    * Wenn Sie Ihr Batch-Konto in der Konfiguration **Batch-Dienst** erstellt haben, gilt als Einschränkung das [dedizierte Kernekontingent pro Batch-Konto](batch-quota-limit.md#resource-quotas). Dieses Kontingent beträgt standardmäßig 20 Kerne. Ein eigenes Kontingent gilt für [VMs mit niedriger Priorität](batch-low-pri-vms.md), sofern Sie diese verwenden. 
-
-    * Wenn Sie das Konto in der Konfiguration **Benutzerabonnement** erstellt haben, beschränkt Ihr Abonnement die Anzahl der VM-Kerne pro Region. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md). Für Ihr Abonnement gilt auch ein regionsbezogenes Kontingent für bestimmte VM-Größen, einschließlich HPC- und GPU-Instanzen. In der Konfiguration „Benutzerabonnement“ gelten keine zusätzlichen Kontingente für das Batch-Konto. 
-
-  Sie müssen u.U. Kontingente erhöhen, wenn Sie in Batch eine sehr spezialisierte VM-Größe verwenden. In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../azure-supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern.
+In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../azure-supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern.
 
 * **Regionale Verfügbarkeit:** Rechenintensive virtuelle Computer sind möglicherweise nicht in den Regionen verfügbar, in denen Sie die Batch-Konten erstellen. Informationen dazu, welche Größen verfügbar sind, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
 
@@ -97,13 +93,7 @@ Die Batch-APIs und -Tools bietet eine Reihe von Optionen für die Installation d
 
 * [Anwendungspaket:](batch-application-packages.md) Fügen Sie ein ZIP-Installationspaket für das Batch-Konto hinzu, und konfigurieren Sie einen Paketverweis im Pool. Diese Einstellung lädt das Paket auf alle Knoten im Pool hoc und entzippt es. Wenn das Paket ein Installationsprogramm ist, erstellen Sie eine Befehlszeile für die Startaufgabe, mit der die App im Hintergrund auf allen Knoten im Pool installiert wird. Installieren Sie optional das Paket, wenn eine Aufgabe für die Ausführung auf einem Knoten geplant ist.
 
-* [Benutzerdefiniertes Poolimage:](batch-api-basics.md#pool) Erstellen Sie ein benutzerdefiniertes Windows- oder Linux-VM-Image, das Treiber, Software und andere erforderliche Einstellungen für die Größe des virtuellen Computers enthält. Wenn Sie das Batch-Konto in der Konfiguration „Benutzerabonnement“ erstellt haben, geben Sie das benutzerdefinierte Image für den Batch-Pool an. (Benutzerdefinierte Images werden in Konten mit der Konfiguration „Batch-Dienst“ nicht unterstützt.) Benutzerdefinierte Images können nur für Pools mit der Konfiguration „Virtueller Computer“ verwendet werden.
-
-  > [!IMPORTANT]
-  > In Batch-Pools können Sie derzeit keine benutzerdefinierten Images verwenden, die mit Managed Disks oder mit Storage Premium erstellt wurden.
-  >
-
-
+* [Benutzerdefiniertes Poolimage:](batch-custom-images.md) Erstellen Sie ein benutzerdefiniertes Windows- oder Linux-VM-Image, das Treiber, Software und andere erforderliche Einstellungen für die Größe des virtuellen Computers enthält. 
 
 * [Batch Shipyard](https://github.com/Azure/batch-shipyard) konfiguriert automatisch GPU und RDMA für die transparente Arbeit mit Containerworkloads in Azure Batch. Batch Shipyard wird vollständig über Konfigurationsdateien gesteuert. Es gibt eine Vielzahl von Beispielkonfigurationen, die GPU- und RDMA-Workloads ermöglichen, z.B. das [CNTK GPU Recipe](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI), das GPU-Treiber auf virtuellen Computern der N-Serie vorkonfiguriert und die Software des Microsoft Cognitive Toolkit als Docker-Image lädt.
 
@@ -133,17 +123,14 @@ Um CUDA Anwendungen in einem Pool von Linux-NC-Knoten auszuführen, müssen Sie 
 
 1. Stellen Sie eine Azure-NC6-VM mit Ubuntu 16.04 LTS bereit. Sie können den virtuellen Computer beispielsweise in der Region „USA, Süden-Mitte“ erstellen. Erstellen Sie den virtuellen Computer unbedingt mit Storage Standard und *ohne* Managed Disks.
 2. Befolgen Sie die Schritte zum Herstellen der Verbindung mit dem virtuellen Computer und zum [Installieren der CUDA-Treiber](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms).
-3. Heben Sie die Bereitstellung des Linux-Agents auf, und erfassen Sie dann das Linux-VM-Image mithilfe von Befehlen der Azure CLI 1.0. Eine Anleitung finden Sie unter [Erfassen eines virtuellen Linux-Computers, der in Azure ausgeführt wird](../virtual-machines/linux/capture-image-nodejs.md). Notieren Sie sich den Image-URI.
-  > [!IMPORTANT]
-  > Verwenden Sie zum Erfassen des Images für Azure Batch keine Befehle von Azure CLI 2.0. Die CLI-2.0-Befehle erfassen derzeit nur virtuelle Computer, die mit Managed Disks erstellt wurden.
-  >
-4. Erstellen Sie ein Batch-Konto mit der Konfiguration „Benutzerabonnement“ in einer Region, die NC-VMs unterstützt.
-5. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool mit dem benutzerdefinierten Image mit der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
+3. Heben Sie die Bereitstellung des Linux-Agents auf, und [erfassen Sie dann das Linux-VM-Image](../virtual-machines/linux/capture-image.md).
+4. Erstellen Sie ein Batch-Konto in einer Region, die NC-VMs unterstützt.
+5. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit dem benutzerdefinierten Image](batch-custom-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
 
 | Einstellung | Wert |
 | ---- | ---- |
 | **Imagetyp** | Benutzerdefiniertes Image |
-| **Benutzerdefiniertes Image** | Image-URI der Form `https://yourstorageaccountdisks.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` |
+| **Benutzerdefiniertes Image** | Name des Image |
 | **Knoten-Agent-SKU** | batch.node.ubuntu 16.04 |
 | **Knotengröße** | NC6 Standard |
 

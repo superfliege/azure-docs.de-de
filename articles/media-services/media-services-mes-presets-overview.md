@@ -1,9 +1,9 @@
 ---
-title: "Aufgabenvoreinstellungen für MES (Media Encoder Standard) | Microsoft Docs"
-description: "Das Thema bietet eine Übersicht über die Aufgabenvoreinstellungen für MES (Media Encoder Standard)."
+title: "Aufgabenvoreinstellungen für Media Encoder Standard (MES) | Microsoft-Dokumentation"
+description: "Das Thema bietet eine Übersicht über die vom Dienst definierten Beispielvoreinstellungen für Media Encoder Standard (MES)."
 author: Juliako
-manager: cfowler
-editor: 
+manager: cfow
+editor: johndeu
 services: media-services
 documentationcenter: 
 ms.assetid: f243ed1c-ac9c-4300-a5f7-f092cf9853b9
@@ -12,29 +12,29 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 10/01/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: e9018ffa74c2895560adbd4c0d2b83ee67e9eb1c
-ms.contentlocale: de-de
-ms.lasthandoff: 03/03/2017
-
+ms.openlocfilehash: 5753b1dffe5a1a4ee069b83f58e9c2dac433b89d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="sample-presets-for-media-encoder-standard-mes"></a>Beispielvoreinstellungen für Media Encoder Standard (MES)
 
-# <a name="task-presets-for-mes-media-encoder-standard"></a>Aufgabenvoreinstellungen für MES (Media Encoder Standard)
+**Media Encoder Standard** bietet eine Reihe vom System vordefinierter Codierungsvoreinstellungen, die Sie beim Erstellen von Codierungsaufträgen verwenden können. Es wird empfohlen, die Voreinstellung „Adaptives Streaming“ zu verwenden, wenn Sie ein Video für das Streamen mit Media Services codieren möchten. Bei Angabe dieser Voreinstellung wird von Media Encoder Standard [automatisch eine Bitrate generiert](media-services-autogen-bitrate-ladder-with-mes.md). 
 
-**Media Encoder Standard** definiert eine Reihe von Codierungsvoreinstellungen, die Sie beim Erstellen von Codierungsaufträgen verwenden können. Es wird empfohlen, die Voreinstellung „Adaptives Streaming“ zu verwenden, wenn Sie ein Video für das Streamen mit Media Services codieren möchten. Bei Angabe dieser Voreinstellung wird von Media Encoder Standard [automatisch eine Bitrate generiert](media-services-autogen-bitrate-ladder-with-mes.md). 
-
-Wenn Sie eine Codierungsvoreinstellung anpassen müssen, sollten Sie eine der Codierungseinstellungen verwenden, die in diesem Abschnitt als Vorlage für die benutzerdefinierte Konfiguration definiert werden. Erläuterungen zur Bedeutung der einzelnen Elemente in diesen Voreinstellungen sowie gültige Werte für jedes Element finden Sie im Thema [Media Encoder Standard schema](media-services-mes-schema.md) (Media Encoder Standard-Schema).  
+### <a name="creating-custom-presets-from-samples"></a>Erstellen benutzerdefinierter Voreinstellungen anhand von Beispielen
+Media Services unterstützt die vollständige Anpassung aller Werte in Voreinstellungen zum Erfüllen Ihrer spezifischen Codierungsanforderungen. Wenn Sie eine Codierungsvoreinstellung anpassen müssen, sollten Sie mit einer der Systemvoreinstellungen beginnen, die in diesem Abschnitt als Vorlage für Ihre benutzerdefinierte Konfiguration angegeben sind. Erläuterungen zur Bedeutung der einzelnen Elemente in diesen Voreinstellungen sowie gültige Werte für jedes Element finden Sie im Thema [Media Encoder Standard schema](media-services-mes-schema.md) (Media Encoder Standard-Schema).  
   
 > [!NOTE]
->  Wenn Sie eine Voreinstellung für 4k-Codierungen verwenden, sollten Sie den reservierten Einheitentyp `S3` erhalten. Weitere Informationen finden Sie unter [Skalieren der Codierung](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).  
-  
-Bei der Arbeit mit Media Encoder Standard ist Drehung standardmäßig aktiviert. Wenn Ihr Video auf einem Smartphone oder anderen mobilen Gerät im Hochformat aufgezeichnet wurde, wird es durch diese Voreinstellungen standardmäßig vor der Codierung ins Querformat gedreht (im Gegensatz zur Arbeit mit Azure Media Encoder, wo die Drehung des Videos ein manueller Vorgang ist, wie in [diesem](http://azure.microsoft.com/blog/2014/08/21/advanced-encoding-features-in-azure-media-encoder/) Blog unter „Video Rotation“ dokumentiert).  
-  
-Verfügbare Vorgaben:  
-  
+>  Wenn Sie eine Voreinstellung für 4k-Codierungen verwenden, sollten Sie den reservierten Einheitentyp `S3` erhalten. Weitere Informationen finden Sie unter [Skalieren der Codierung](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+
+#### <a name="video-rotation-default-setting-in-presets"></a>Standardeinstellung für die Videodrehung in den Voreinstellungen:
+Bei der Arbeit mit Media Encoder Standard ist die Videodrehung standardmäßig aktiviert. Wenn Ihr Video im Hochformat auf einem Mobilgerät aufgezeichnet wurde, wird es vor der Codierung mit diesen Voreinstellungen in das Querformat gedreht.
+ 
+## <a name="available-presets"></a>Verfügbare Vorgaben: 
+
  [H264 Multiple Bitrate 1080p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md) erzeugt einen Satz von acht MP4-Dateien mit GOP-Ausrichtung mit Werten zwischen 6.000KBit/s und 400KBit/s sowie AAC 5.1-Audio.  
   
  [H264 Multiple Bitrate 1080p](media-services-mes-preset-H264-Multiple-Bitrate-1080p.md) erzeugt einen Satz von acht MP4-Dateien mit GOP-Ausrichtung mit Werten zwischen 6.000KBit/s und 400KBit/s sowie Stereo-AAC-Audio.  
@@ -86,4 +86,3 @@ Verfügbare Vorgaben:
  [H264 Single Bitrate Low Quality SD für Android](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md) erzeugt eine einzelne MP4-Datei mit einer Bitrate von 56KBit/s und Stereo-AAC-Audio.  
   
  Weitere Informationen im Zusammenhang mit Media Services-Encodern finden Sie unter [Azure On-Demand Media Encoder – Überblick und Vergleich](https://azure.microsoft.com/en-us/documentation/articles/media-services-encode-asset/).
-

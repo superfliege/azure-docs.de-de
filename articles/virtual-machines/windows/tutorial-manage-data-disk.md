@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: a7511a35a7b186fc424088e7ff5cbc933d325712
-ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 1d5a4c02209fb811f5dd33c26f9936a43372bc4d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-azure-disks-with-powershell"></a>Verwalten von Azure-Datenträgern mit PowerShell
 
 Virtuelle Azure-Computer verwenden Datenträger zum Speichern des Betriebssystems, der Anwendungen und der Daten der virtuellen Computer. Beim Erstellen eines virtuellen Computers muss darauf geachtet werden, eine für den erwarteten Workload geeignete Datenträgergröße und -konfiguration auszuwählen. Dieses Tutorial behandelt die Bereitstellung und Verwaltung der Datenträger von virtuellen Computern. Sie erhalten Informationen zu folgenden Themen:
@@ -33,9 +31,11 @@ Virtuelle Azure-Computer verwenden Datenträger zum Speichern des Betriebssystem
 > * Datenträger
 > * Standard- und Premium-Datenträger
 > * Datenträgerleistung
-> * Anfügen und Vorbereiten von Datenträgern
+> * Anfügen und Vorbereiten von Datenträgern für Daten
 
-Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
 
 ## <a name="default-azure-disks"></a>Azure-Standarddatenträger
 
@@ -91,7 +91,7 @@ Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe 
 | IOPS pro Datenträger | 500 | 2.300 | 5.000 |
 Durchsatz pro Datenträger | 100 MB/s | 150 MB/s | 200 MB/s |
 
-In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. An einen virtuellen Standard_GS5-Computer können beispielsweise 64 Datenträger angefügt werden. Wenn jeder dieser Datenträger die Größe des Typs P30 aufweisen, kann eine maximale Größe von 80.000 IOPS erreicht werden. Ausführliche Informationen zur maximalen IOPS-Anzahl pro virtuellem Computer finden Sie unter [Größen für virtuelle Linux-Computer](./sizes.md).
+In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. An einen virtuellen Standard_GS5-Computer können beispielsweise 64 Datenträger angefügt werden. Wenn jeder dieser Datenträger die Größe des Typs P30 aufweisen, kann eine maximale Größe von 80.000 IOPS erreicht werden. Ausführliche Informationen zur maximalen IOPS-Anzahl pro VM finden Sie unter [Größen für virtuelle Windows-Computer in Azure](./sizes.md).
 
 ## <a name="create-and-attach-disks"></a>Erstellen und Anfügen von Datenträgern
 
@@ -99,31 +99,31 @@ Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein
 
 Erstellen Sie mit [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) die anfängliche Konfiguration. Im folgenden Beispiel wird ein Datenträger mit einer Größe von 128 GB erstellt.
 
-```powershell
+```azurepowershell-interactive
 $diskConfig = New-AzureRmDiskConfig -Location EastUS -CreateOption Empty -DiskSizeGB 128
 ```
 
 Erstellen Sie den Datenträger mit dem Befehl [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk).
 
-```powershell
+```azurepowershell-interactive
 $dataDisk = New-AzureRmDisk -ResourceGroupName myResourceGroup -DiskName myDataDisk -Disk $diskConfig
 ```
 
 Rufen Sie mit dem Befehl [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) den virtuellen Computer ab, den Sie dem Datenträger hinzufügen möchten.
 
-```powershell
+```azurepowershell-interactive
 $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 ```
 
 Fügen Sie mit dem Befehl [Add-AzureRmVMDataDisk](/powershell/module/azurerm.compute/add-azurermvmdatadisk) den Datenträger der Konfiguration des virtuellen Computers hinzu.
 
-```powershell
+```azurepowershell-interactive
 $vm = Add-AzureRmVMDataDisk -VM $vm -Name myDataDisk -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 1
 ```
 
 Aktualisieren Sie den virtuellen Computer mit dem Befehl [Update-AzureRmVM](/powershell/module/azurerm.compute/add-azurermvmdatadisk).
 
-```powershell
+```azurepowershell-interactive
 Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm
 ```
 
@@ -135,7 +135,7 @@ Nach dem Anfügen eines Datenträgers an den virtuellen Computer muss das Betrie
 
 Erstellen Sie eine RDP-Verbindung mit dem virtuellen Computer. Öffnen Sie PowerShell, und führen Sie das folgende Skript aus.
 
-```powershell
+```azurepowershell-interactive
 Get-Disk | Where partitionstyle -eq 'raw' | `
 Initialize-Disk -PartitionStyle MBR -PassThru | `
 New-Partition -AssignDriveLetter -UseMaximumSize | `
@@ -157,4 +157,3 @@ Im nächsten Tutorial erfahren Sie, wie die VM-Konfiguration automatisiert werde
 
 > [!div class="nextstepaction"]
 > [Automatisieren der VM-Konfiguration](./tutorial-automate-vm-deployment.md)
-

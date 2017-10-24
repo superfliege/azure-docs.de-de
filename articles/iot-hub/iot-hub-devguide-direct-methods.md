@@ -15,16 +15,15 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 1fd0353bf805340a9c4d3151a9b85c329f7d2e96
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: fda1111877e5eb35fe246891fa7ff71ce6b5c20d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Verstehen und Aufrufen direkter Methoden von IoT Hub
 ## <a name="overview"></a>Übersicht
-IoT Hub gibt Ihnen die Möglichkeit, direkte Methoden auf Geräten von der Cloud aus aufzurufen. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt. Dies ist hilfreich für Szenarios, in denen die unmittelbare Vorgehensweise davon abhängt, ob das Gerät antworten konnte, z.B. beim Senden eines SMS-Weckrufs an ein Gerät, wenn es offline ist (da eine SMS teurer als ein Methodenaufruf ist).
+IoT Hub gibt Ihnen die Möglichkeit, direkte Methoden auf Geräten von der Cloud aus aufzurufen. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt. Diese Methode ist hilfreich für Szenarien, in denen die unmittelbare Vorgehensweise davon abhängt, ob das Gerät antworten konnte, z.B. beim Senden eines SMS-Weckrufs an ein Gerät, wenn es offline ist (da eine SMS teurer als ein Methodenaufruf ist).
 
 Jedes Gerätemethode hat ein einzelnes Gerät als Ziel. [Aufträge][lnk-devguide-jobs] bieten eine Möglichkeit zum Aufrufen von direkten Methoden auf mehreren Geräten und zum Planen von Methodenaufrufen für nicht verbundene Geräte.
 
@@ -45,7 +44,7 @@ Direkte Methoden werden auf dem Gerät implementiert und können für eine ordnu
 
 Direkte Methoden sind synchron und werden nach der Wartezeit (Standardeinstellung: 30 Sekunden, einstellbar bis 3.600 Sekunden) entweder mit einem Erfolg oder Fehler abgeschlossen. Direkte Methoden sind hilfreich bei interaktiven Szenarios, in denen ein Gerät genau dann agieren soll, wenn es online ist und Befehle empfängt, z.B. Einschalten eines Lichts von einem Telefon aus. In diesen Szenarios soll der Erfolg oder Misserfolg unmittelbar erkennbar sein, damit der Clouddienst so schnell wie möglich auf das Ergebnis reagieren kann. Das Gerät kann einen Nachrichtentext als Ergebnis der Methode zurückgeben, dies ist für die Methode aber nicht erforderlich. Es gibt keine Garantie für die Sortierung oder eine Parallelitätssemantik für Methodenaufrufe.
 
-Direkte Methodenaufrufe erfolgen von der Cloudseite nur über HTTP und von der Geräteseite über MQTT oder AMQP.
+Direkte Methoden erfolgen von der Cloudseite nur über HTTPS und von der Geräteseite über MQTT oder AMQP.
 
 Die Nutzlast für Methodenanforderungen und -antworten ist ein JSON-Dokument mit bis zu 8 KB.
 
@@ -54,7 +53,7 @@ Die folgenden Referenzthemen enthalten weitere Informationen zur Verwendung dire
 
 ## <a name="invoke-a-direct-method-from-a-back-end-app"></a>Aufrufen einer direkten Methode aus einer Back-End-App
 ### <a name="method-invocation"></a>Methodenaufruf
-Direkte Methodenaufrufe auf einem Gerät sind HTTP-Aufrufe, die Folgendes umfassen:
+Direkte Methodenaufrufe auf einem Gerät sind HTTPS-Aufrufe, die Folgendes umfassen:
 
 * Den spezifischen *URI* für das Gerät (`{iot hub}/twins/{device id}/methods/`)
 * Die POST-*Methode*
@@ -94,7 +93,7 @@ Die Back-End-App empfängt eine Antwort, die Folgendes umfasst:
 ### <a name="method-invocation"></a>Methodenaufruf
 Geräte empfangen direkte Methodenanforderungen zum MQTT-Thema: `$iothub/methods/POST/{method name}/?$rid={request id}`
 
-Der vom Gerät empfangene Haupttext weist das folgende Format auf:
+Der vom Gerät empfangene Text weist das folgende Format auf:
 
 ```
 {
@@ -143,4 +142,3 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-devguide-messages]: iot-hub-devguide-messaging.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
-

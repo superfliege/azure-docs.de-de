@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: e3a03a97b10e04fb85261620879b2102e1db8465
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung
 Die Azure AD Connect-Synchronisierung basiert auf der deklarativen Bereitstellung, die erstmals in Forefront Identity Manager 2010 eingeführt wurde. Sie ermöglicht Ihnen die Implementierung Ihrer gesamten Geschäftslogik zur Identitätsintegration, ohne kompilierten Code schreiben zu müssen.
@@ -68,10 +68,10 @@ Hier sehen Sie ein Beispiel, in dem die Metaverseattributdomäne mit dem NetBIOS
 ### <a name="operators"></a>Operatoren
 Folgende Operatoren können verwendet werden:
 
-* **Vergleich**: <, <=, <>, =, >, >=
+* **Vergleich**: &lt;, &lt;=, &lt;&gt;, =, &gt;, &gt;=
 * **Mathematik**: +, -, \*, -
-* **Zeichenfolge**: & (Verkettung)
-* **Logischer Ausdruck**: && (und), || (oder)
+* **Zeichenfolge**: &amp; (Verkettung)
+* **Logischer Ausdruck**: &amp;&amp; (und), || (oder)
 * **Auswertungsreihenfolge**: ( )
 
 Operatoren werden von links nach rechts ausgewertet und haben bei der Auswertung die gleiche Priorität. Dies bedeutet, dass der Multiplikator (\*) nicht vor der Subtraktion (-) ausgewertet wird. „2\*(5+3)“ ist nicht dasselbe wie „2\*5+3“. Die Klammern werden verwendet, um die Reihenfolge der Auswertung zu ändern, wenn die Auswertungsreihenfolge von links nach rechts nicht geeignet ist.
@@ -81,7 +81,7 @@ Die Funktionen können sowohl für einwertige als auch für mehrwertige Attribut
 
 Beispiel:   
 `Trim([proxyAddresses])` – Führt eine Trim-Funktion für jeden Wert im Attribut „proxyAddress“ aus.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`Für jeden Wert mit einer @-sign, ersetzen Sie die Domäne mit @contoso.com.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"` – Ersetzt für jeden Wert mit dem @-sign-Zeichen die Domäne durch „@contoso.com“.  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` – Sucht nach der SIP-Adresse und entfernt sie aus den Werten.
 
 ## <a name="next-steps"></a>Nächste Schritte

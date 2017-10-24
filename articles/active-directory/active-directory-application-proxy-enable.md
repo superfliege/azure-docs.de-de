@@ -3,7 +3,7 @@ title: "Azure AD-App-Proxy – erste Schritte und Installieren des Connectors | 
 description: "Aktivieren Sie den Anwendungsproxy über das Azure-Portal, und installieren Sie die Connectors für den Reverseproxy."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
 ms.service: active-directory
@@ -11,18 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
-ms.author: kgremban
+ms.date: 10/02/2017
+ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
+ms.openlocfilehash: 3b0a3e315ecd98565a852b3a8190d78ccdefe42d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 77acb23f33fd656a12c27107cb159613a8b2aec4
-ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors
 In diesem Artikel wird anhand der erforderlichen Schritte beschrieben, wie Sie den Microsoft Azure AD-Anwendungsproxy für Ihr Cloudverzeichnis in Azure AD aktivieren.
 
@@ -63,7 +61,7 @@ Zum Vorbereiten Ihrer Umgebung für den Azure AD-Anwendungsproxy, müssen Sie zu
    * ocsp.msocsp.com:80
    * www.microsoft.com:80
 
-4. Ihr Connector benötigt für den Registrierungsprozess Zugriff auf „login.windows.net“ und „login.microsoftonline.net“.
+4. Ihr Connector benötigt für den Registrierungsprozess Zugriff auf „login.windows.net“ und „login.microsoftonline.com“.
 
 5. Verwenden Sie den [Azure AD Application Proxy Connector Ports Test Tool (Testtool der Anwendungsproxy-Connectortools von Azure AD)](https://aadap-portcheck.connectorporttest.msappproxy.net/), um sicherzustellen, dass Ihr Connector den Anwendungsproxydienst erreichen kann. Stellen Sie zumindest sicher, dass die Region USA (Mitte) und die Ihnen am nächsten gelegene Region alle über grüne Häkchen verfügen. Darüber hinaus bedeuten mehr grüne Häkchen größere Resilienz.
 
@@ -108,4 +106,3 @@ Informationen zu Connectors und deren Aktualisierung finden Sie unter [Grundlege
 Nun können Sie [Anwendungen mit dem Anwendungsproxy veröffentlichen](application-proxy-publish-azure-portal.md).
 
 Wenn Sie über Anwendungen verfügen, die sich in separaten Netzwerken oder an unterschiedlichen Standorten befinden, verwenden Sie Connectorgruppen, um die verschiedenen Connectors in logischen Einheiten anzuordnen. Weitere Informationen zur Verwendung von Anwendungsproxy-Connectors finden Sie unter [Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Speicherorten mit Connectorgruppen](active-directory-application-proxy-connectors-azure-portal.md).
-

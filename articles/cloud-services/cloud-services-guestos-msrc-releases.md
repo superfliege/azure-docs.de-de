@@ -12,17 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/24/2017
+ms.date: 10/6/2017
 ms.author: raiye
+ms.openlocfilehash: b728e794132ab8eb91d5d77b3ed452f0c84b8823
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 09c433ccf54c84ee2ae40c3ba3ccd84e7462124c
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="september-guest-os"></a>Gastbetriebssystem September
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 17-09 | [4038782] |Windows 10-Updates |5.11 |12. September 2017 |
+| Rel 17-09 | [4038779], [4038786], [4038793] |Nur Windows-Sicherheit |2.66, 3.53, 4.46 |12. September 2017 |
+| Rel 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|.NET-Update von September |2.66, 3.53, 4.46 |12. September 2017 |
+| Rel 17-09 | [4036586] |Internet Explorer |2.66, 3.53, 4.46 |12. September 2017 |
+| CVE-2017-8704 | [4038782] |Denial of Service |5.11 |12. September 2017 |
+| N/V | [4034664] |Nicht sicherheitsrelevanter Rollup für August  |2.66 |8. August 2017 |
+| N/V | [4034665] |Nicht sicherheitsrelevanter Rollup für August |5.11 |8. August 2017 |
+| N/V | [4034681] |Nicht sicherheitsrelevanter Rollup für August |4.46 |8. August 2017 |
 
 ## <a name="august-guest-os"></a>Gastbetriebssystem August
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -34,9 +45,9 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-07 | [4034733] |Internet Explorer |2.65, 3.52, 4.45, 5.10 |8. August 2017 |
 | Rel 17-07 | [4034664], [4034665], [4034681] |Monatliche Windows-Rollups |2.65, 3.52, 4.45 |8. August 2017 |
 | Rel 17-07 | [4034668], [4034660], [4034658], [4034674] |Erneutes Release von CVE-2017-0071, erneutes Release von CVE-2017-0228 |5.10 |8. August 2017 |
-| Rel 17-07 | [4025341] |Nicht sicherheitsrelevanter Rollup für Juli |2.65 |8. August 2017 |
-| Rel 17-07 | [4025331] |Nicht sicherheitsrelevanter Rollup für Juli |3.52 |8. August 2017 |
-| Rel 17-07 | [4025336] |Nicht sicherheitsrelevanter Rollup für Juli |4.45 |8. August 2017 |
+| Rel 17-07 | [4025341] |Nicht sicherheitsrelevanter Rollup für Juli |2.65 |11. Juli 2017 |
+| Rel 17-07 | [4025331] |Nicht sicherheitsrelevanter Rollup für Juli |3.52 |11. Juli 2017 |
+| Rel 17-07 | [4025336] |Nicht sicherheitsrelevanter Rollup für Juli |4.45 |11. Juli 2017 |
 
 ## <a name="july-guest-os"></a>Gastbetriebssystem Juli
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -48,9 +59,9 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-07 | [4025376] |Blinken |3.51, 4.44, 5.9 |11. Juli 2017 |
 | Rel 17-07 | [4025252] |Internet Explorer |2.64, 3.51, 4.44 |11. Juli 2017 |
 | N/V | [4020322] |Zeitzonenupdate |2.64, 3.51, 4.44 |11. Juli 2017 |
-| N/V | [4022719] |Nicht sicherheitsrelevanter Rollup für Juni |2.64 |11. Juli 2017 |
-| – | [4022724] |Nicht sicherheitsrelevanter Rollup für Juni |3.51 |11. Juli 2017 |
-| N/V | [4022726] |Nicht sicherheitsrelevanter Rollup für Juni |4.44 |11. Juli 2017 |
+| N/V | [4022719] |Nicht sicherheitsrelevanter Rollup für Juni |2.64 |13. Juni 2017 |
+| N/V | [4022724] |Nicht sicherheitsrelevanter Rollup für Juni |3.51 |13. Juni 2017 |
+| N/V | [4022726] |Nicht sicherheitsrelevanter Rollup für Juni |4.44 |13. Juni 2017 |
 
 ## <a name="june-guest-os"></a>Gastbetriebssystem Juni
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -65,20 +76,20 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel. 17-06 | [4015217], [4015221], [4015583], [4015550], [4015219] |Neuveröffentlichung von CVE-2017-0167 |4.43, 5.8 |11. April 2017 |
 | – | [4023136] |Zeitzonenupdate  |2.63, 3.50, 4.43 |13. Juni 2017 |
 | – | [4019264] |Sicherheitsrelevanter Rollup für Mai |2.63 |13. Juni 2017 |
-| – | [4014545] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |13. Juni 2017 |
-| – | [4014508] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |13. Juni 2017 |
-| – | [4014511] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |13. Juni 2017 |
-| – | [4014514] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63|13. Juni 2017 |
-| – | [4019216] |Sicherheitsrelevanter Rollup für Mai |3.50 |13. Juni 2017 |
-| – | [4014503] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |13. Juni 2017 |
-| – | [4014506] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |13. Juni 2017 |
-| – | [4014509] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |13. Juni 2017 |
-| – | [4014513] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |13. Juni 2017 |
-| – | [4019215] |Sicherheitsrelevanter Rollup für Mai |4.43 |13. Juni 2017 |
-| – | [4014505] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |13. Juni 2017 |
-| – | [4014507] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |13. Juni 2017 |
-| – | [4014510] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |13. Juni 2017 |
-| – | [4014512] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |13. Juni 2017 |
+| – | [4014545] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |11. April 2017 |
+| N/V | [4014508] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |9. Mai 2017 |
+| N/V | [4014511] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |9. Mai 2017 |
+| N/V | [4014514] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |9. Mai 2017 |
+| N/V | [4019216] |Sicherheitsrelevanter Rollup für Mai |3.50 |9. Mai 2017 |
+| N/V | [4014503] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |9. Mai 2017 |
+| N/V | [4014506] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |9. Mai 2017 |
+| N/V | [4014509] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |9. Mai 2017 |
+| N/V | [4014513] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |9. Mai 2017 |
+| N/V | [4019215] |Sicherheitsrelevanter Rollup für Mai |4.43 |9. Mai 2017 |
+| N/V | [4014505] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
+| N/V | [4014507] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
+| N/V | [4014510] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
+| N/V | [4014512] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
 
 ## <a name="may-guest-os"></a>Gastbetriebssystem Mai
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -93,20 +104,20 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-05 | [4022345] |Microsoft-Sicherheitsempfehlung |5.7 | 9. Mai 2017 |
 | Rel 17-05 | [4021279] |.NET/ASP.NET Core – Empfehlung |2.62, 3.49, 4.42, 5.7 | 9. Mai 2017 |
 | – | [4012864] |Zeitzonenupdate |2.62, 3.49, 4.42 | 9. Mai 2017 |
-| – | [4014565] |Nicht sicherheitsrelevanter .NET-Rollup für April |2.62 | 9. Mai 2017 |
-| – | [4014559] |Nicht sicherheitsrelevanter .NET-Rollup für April |2.62 | 9. Mai 2017 |
-| – | [4015549] |Nicht sicherheitsrelevanter Rollup für April |2.62 | 9. Mai 2017 |
-| – | [4019990] |D3DCompiler-Update – Anforderung für .NET 4.7 |3.49 | 9. Mai 2017 |
-| – | [4014563] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 9. Mai 2017 |
-| – | [4014557] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 9. Mai 2017 |
-| – | [4014545] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 9. Mai 2017 |
-| – | [4014548] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 9. Mai 2017 |
-| – | [4015551] |Nicht sicherheitsrelevanter Rollup für April |3.49 | 9. Mai 2017 |
-| – | [3173424] |Wartungsstapelaktualisierung  |4.42 | 9. Mai 2017 |
-| – | [4014555] |Nicht sicherheitsrelevanter .NET-Rollup für April  |4.42 | 9. Mai 2017 |
-| – | [4014567] |Nicht sicherheitsrelevanter .NET-Rollup für April |4.42 | 9. Mai 2017 |
-| – | [4015550] |Nicht sicherheitsrelevanter Rollup für April |4.42 | 9. Mai 2017 |
-| – | [4013418] |Wartungsstapelaktualisierung |5.7 | 9. Mai 2017 |
+| – | [4014565] |Nicht sicherheitsrelevanter .NET-Rollup für April |2.62 | 11. April 2017 |
+| N/V | [4014559] |Nicht sicherheitsrelevanter .NET-Rollup für April |2.62 | 11. April 2017 |
+| N/V | [4015549] |Nicht sicherheitsrelevanter Rollup für April |2.62 | 11. April 2017 |
+| N/V | [4019990] |D3DCompiler-Update – Anforderung für .NET 4.7 |3.49 | 9. Mai 2017 |
+| – | [4014563] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 11. April 2017 |
+| N/V | [4014557] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 11. April 2017 |
+| N/V | [4014545] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 11. April 2017 |
+| N/V | [4014548] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 11. April 2017 |
+| N/V | [4015551] |Nicht sicherheitsrelevanter Rollup für April |3.49 | 11. April 2017 |
+| N/V | [3173424] |Wartungsstapelaktualisierung  |4.42 | 12. Juli 2016 |
+| N/V | [4014555] |Nicht sicherheitsrelevanter .NET-Rollup für April  |4.42 | 11. April 2017 |
+| N/V | [4014567] |Nicht sicherheitsrelevanter .NET-Rollup für April |4.42 | 11. April 2017 |
+| N/V | [4015550] |Nicht sicherheitsrelevanter Rollup für April |4.42 | 11. April 2017 |
+| N/V | [4013418] |Wartungsstapelaktualisierung |5.7 | 14. März 2017 |
 
 ## <a name="april-guest-os"></a>Gastbetriebssystem April
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -524,6 +535,23 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | – |[2999802] |In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | – |[2896881] |Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows |4.15, 3.22, 2.34 |13. Januar 2015 |
 
+
+[4038782]: http://support.microsoft.com/kb/4038782
+[4038779]: http://support.microsoft.com/kb/4038779
+[4038786]: http://support.microsoft.com/kb/4038786
+[4038793]: http://support.microsoft.com/kb/4038793
+[4040966]: http://support.microsoft.com/kb/4040966
+[4040960]: http://support.microsoft.com/kb/4040960
+[4040965]: http://support.microsoft.com/kb/4040965
+[4040959]: http://support.microsoft.com/kb/4040959
+[4033988]: http://support.microsoft.com/kb/4033988
+[4040955]: http://support.microsoft.com/kb/4040955
+[4040967]: http://support.microsoft.com/kb/4040967
+[4040958]: http://support.microsoft.com/kb/4040958
+[4036586]: http://support.microsoft.com/kb/4036586
+[4034664]: http://support.microsoft.com/kb/4034664
+[4034665]: http://support.microsoft.com/kb/4034665
+[4034681]: http://support.microsoft.com/kb/4034681
 
 [4034658]: http://support.microsoft.com/kb/4034658
 [4034679]: http://support.microsoft.com/kb/4034679
@@ -956,4 +984,3 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-explanation
-

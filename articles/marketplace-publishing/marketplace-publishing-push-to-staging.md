@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/17/2016
 ms.author: hascipio
 ms.openlocfilehash: 7db86716cdf8f9eb921c3c1813970acae7a3016b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>Abschließen der Angebotserstellung mit Marketinginhalten
 In diesem Schritt des Veröffentlichungsprozesses müssen Sie bestimmte Marketinginhalte sowie Details zu Ihrem Angebot und/oder SKUs im Azure Marketplace bereitstellen. So stellen Sie beispielsweise eine Beschreibung Ihres Produkts, Firmenlogos, Preispläne, detaillierte Informationen zu Plänen sowie weitere Informationen bereit, die zum Überführen Ihres Angebots und/oder Ihrer SKU in der Stagingumgebung erforderlich sind. Diese Informationen werden im Azure-Portal als Marketinginhalte verwendet. Sie starten diesen Prozess im [Veröffentlichungsportal][link-pubportal].
@@ -78,7 +78,7 @@ Alle in das Veröffentlichungsportal hochgeladen Logos müssen folgende Richtlin
 
 * Ein Herologo ist optional. Der Herausgeber muss kein Herologo hochladen. **Ist das Herosymbol jedoch einmal hochgeladen, dann kann es nicht mehr aus dem Veröffentlichungsportal gelöscht werden. Zu diesem Zeitpunkt muss der Partner die Azure Marketplace-Richtlinien für Herosymbole einhalten, sonst wird das Angebot nicht zur Produktion genehmigt.**
 * Anzeigename des Herausgebers, Plantitel und ausführliche Angebotsübersicht werden in weißer Schrift angezeigt. Daher sollten Sie helle Farben im Hintergrund des Herosymbols vermeiden. Schwarzer, weißer und transparenter Hintergrund ist für Herosymbole nicht zulässig.
-* Der Anzeigename des Herausgebers, der Plantitel, die ausführliche Angebotsübersicht und die Erstellen-Schaltfläche werden programmgesteuert in das Herologo eingebettet, wenn das Angebot live geschaltet wird. Sie sollten beim Entwerfen des Herologos keinen Text eingeben. Lassen Sie einfach Platz auf der rechten Seite, da der Text (also Anzeigename des Herausgebers, Plantitel, ausführliche Angebotsübersicht) von uns dort programmgesteuert eingefügt wird. Der Leerraum für den Text sollte 415 x 100 auf der rechten Seite betragen (und ist 370 Pixel von links versetzt).
+* Der Anzeigename des Herausgebers, der Plantitel, die ausführliche Angebotsübersicht und die Erstellen-Schaltfläche werden programmgesteuert in das Herologo eingebettet, wenn das Angebot live geschaltet wird. Sie sollten beim Entwerfen des Herologos keinen Text eingeben. Lassen Sie Platz auf der rechten Seite, da der Text (d.h. Anzeigename des Herausgebers, Plantitel, ausführliche Angebotsübersicht) programmgesteuert von uns dort eingefügt wird. Der Leerraum für den Text sollte 415 x 100 auf der rechten Seite betragen (und ist 370 Pixel von links versetzt).
   
   ![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-herobanner.png)
 
@@ -105,16 +105,16 @@ Geben Sie auf der Registerkarte **Rechtliche Hinweise** einen Link zu Ihren Rich
 
 **Hinweis:** Für VM-Angebote gilt: Sobald ein Angebot/eine SKU im Azure-Portal bereitgestellt wird, können Sie die unten angegebenen Felder nicht ändern:
 
-* **Angebotsbezeichner:** [Veröffentlichungsportal > „Virtual Machines“ > Ihr Angebot > Registerkarte „VM-Images“ > „Angebotsbezeichner“]
-* **SKU-Bezeichner:** [Veröffentlichungsportal > „Virtual Machines“ > Ihr Angebot > Registerkarte „SKUs“ > „SKU hinzufügen“]
-* **Herausgebernamespace:** [Veröffentlichungsportal > „Virtual Machines“ > Registerkarte „Vorgehensweise“ > „Informationen zu Ihrem Unternehmen“ (unter „Schritt 2: Registrieren Sie Ihr Unternehmen“) > „Herausgebernamespace“ > „Namespace“]
+* **Angebotsbezeichner:** [Veröffentlichungsportal &gt; „Virtual Machines“ &gt; Ihr Angebot &gt; Registerkarte „VM-Images“ &gt; „Angebotsbezeichner“]
+* **SKU-Bezeichner:** [Veröffentlichungsportal &gt; „Virtual Machines“ &gt; Ihr Angebot &gt; Registerkarte „SKUs“ &gt; „SKU hinzufügen“]
+* **Herausgebernamespace:** [Veröffentlichungsportal &gt; „Virtual Machines“ &gt; Registerkarte „Vorgehensweise“ &gt; „Informationen zu Ihrem Unternehmen“ (unter „Schritt 2: Registrieren Sie Ihr Unternehmen“) &gt; „Herausgebernamespace“ &gt; „Namespace“]
 
 Für VM-Angebote gilt: Sobald ein Angebot/eine SKU im Azure Marketplace aufgeführt wird, können Sie die unten angegebenen Felder nicht ändern:
 
-* **Angebotsbezeichner:** [Veröffentlichungsportal > „Virtual Machines“ > Ihr Angebot > „VM-Images“ > „Angebotsbezeichner“]
-* **SKU-Bezeichner:** [Veröffentlichungsportal > „Virtual Machines“ > Ihr Angebot > Registerkarte „SKUs“ > „SKU hinzufügen“]
-* **Herausgebernamespace:** [Veröffentlichungsportal > „Virtual Machines“ > Registerkarte „Vorgehensweise“ > „Informationen zu Ihrem Unternehmen“ (unter „Schritt 2: Registrieren“) > „Herausgebernamespace“ > „Namespace“]
-* **Ports:** [Veröffentlichungsportal > „Virtual Machines“ > Ihr Angebot > Registerkarte „VM-Images“ > „Offene Ports“]
+* **Angebotsbezeichner:** [Veröffentlichungsportal &gt; „Virtual Machines“ &gt; Ihr Angebot &gt; „VM-Images“ &gt; „Angebotsbezeichner“]
+* **SKU-Bezeichner:** [Veröffentlichungsportal &gt; „Virtual Machines“ &gt; Ihr Angebot &gt; Registerkarte „SKUs“ &gt; „SKU hinzufügen“]
+* **Herausgebernamespace:** [Veröffentlichungsportal &gt; „Virtual Machines“ &gt; Registerkarte „Vorgehensweise“ &gt; „Informationen zu Ihrem Unternehmen“ (unter „Schritt 2: Registrieren“) &gt; „Herausgebernamespace“ &gt; „Namespace“]
+* **Ports:** [Veröffentlichungsportal &gt; „Virtual Machines“ &gt; Ihr Angebot &gt; Registerkarte „VM-Images“ &gt; „Offene Ports“]
 * **Preisänderung bei aufgelisteten SKUs**
 * **Abrechnungsmodelländerung bei aufgelisteten SKUs**
 * **Entfernen von Abrechnungsregionen bei aufgelisteten SKUs**
@@ -157,10 +157,10 @@ Derzeit sind für virtuelle Computer **drei Arten von Abrechnungsmodellen**
 * **Abrechnungsmodelländerung bei aufgelisteten SKUs**
 * **Entfernen von Abrechnungsregionen bei aufgelisteten SKUs**
 * **Ändern der Anzahl der Datenträger bei aufgelisteten SKUs**
-* **Angebotsbezeichner:** [Veröffentlichungsportal > „Virtual Machines“ > Ihr Angebot > „VM-Images“ > „Angebotsbezeichner“]
-* **SKU-Bezeichner:** [Veröffentlichungsportal > „Virtual Machines“ > Ihr Angebot > Registerkarte „SKUs“ > „SKU hinzufügen“]
-* **Herausgebernamespace:** [Veröffentlichungsportal > „Virtual Machines“ > Registerkarte „Vorgehensweise“ > „Informationen zu Ihrem Unternehmen“ (unter „Schritt 2: Registrieren“) > „Herausgebernamespace“ > „Namespace“]
-* **Ports:** [Veröffentlichungsportal > „Virtual Machines“ > Ihr Angebot > Registerkarte „VM-Images“ > „Offene Ports“]
+* **Angebotsbezeichner:** [Veröffentlichungsportal &gt; „Virtual Machines“ &gt; Ihr Angebot &gt; „VM-Images“ &gt; „Angebotsbezeichner“]
+* **SKU-Bezeichner:** [Veröffentlichungsportal &gt; „Virtual Machines“ &gt; Ihr Angebot &gt; Registerkarte „SKUs“ &gt; „SKU hinzufügen“]
+* **Herausgebernamespace:** [Veröffentlichungsportal &gt; „Virtual Machines“ &gt; Registerkarte „Vorgehensweise“ &gt; „Informationen zu Ihrem Unternehmen“ (unter „Schritt 2: Registrieren“) &gt; „Herausgebernamespace“ &gt; „Namespace“]
+* **Ports:** [Veröffentlichungsportal &gt; „Virtual Machines“ &gt; Ihr Angebot &gt; Registerkarte „VM-Images“ &gt; „Offene Ports“]
 
 ### <a name="sell-to-countries-of-the-sku"></a>„Sell-to“-Länder der SKU
 Sie müssen sorgfältig überlegen, wo Sie die SKUs zur Verfügung stellen. Manche Länder sind klassifiziert als „Überweisung durch Microsoft“ und andere klassifiziert als „Überweisung durch ISV“.

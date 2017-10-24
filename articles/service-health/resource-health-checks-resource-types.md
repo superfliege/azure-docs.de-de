@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 03/19/2017
+ms.date: 10/09/2017
 ms.author: BernardoAMunoz
+ms.openlocfilehash: e8ce1f9b7129e272a7714b82ec1a91a928917d6c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: ed9c955096a5427e8184bb6c542ad85ff4c302be
-ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
 
@@ -60,6 +58,12 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Können Benutzer Daten zu Data Lake Store in der Region hochladen?</li><li>Können Benutzer Daten von Data Lake Store in der Region herunterladen?</li></ul>|
+
+## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
+
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Wird IoT Hub ausgeführt?</li></ul>|
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |Ausgeführte Überprüfungen|

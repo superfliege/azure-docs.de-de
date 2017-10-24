@@ -12,18 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: 9f9ff0674fd4e3f9b0598a982d81681eaa6d1997
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: d9cf205cd3e7a8017efbe9078ff495c04f065374
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-deploy-azure-file-sync-preview"></a>Bereitstellen der Azure-Dateisynchronisierung (Vorschau)
-Mit der Azure-Dateisynchronisierung (Vorschau) können Freigaben lokal oder in Azure repliziert werden, und der Zugriff darauf kann über SMB- oder NFS-Freigaben in Windows Server erfolgen. Die Azure-Dateisynchronisierung ist besonders nützlich in Szenarien, in denen weit entfernt von einem Azure-Rechenzentrum gespeicherte Daten abgerufen und geändert werden müssen, z.B. in einer Zweigstelle. Daten können zwischen mehreren Windows Server-Endpunkten repliziert werden, z.B. zwischen mehreren Zweigstellen.
+Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
 
 Es wird dringend empfohlen, vor dem Ausführen der Schritte in dieser Anleitung [Planning for an Azure Files deployment](storage-files-planning.md) (Planung für eine Azure Files-Bereitstellung, in englischer Sprache) und [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md) zu lesen.
 

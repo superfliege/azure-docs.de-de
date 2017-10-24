@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
+ms.openlocfilehash: c37180262981bbbcdecb0504e2717db27568586d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 6385dd99e3f5d96eee2cf50016e4af599d91b011
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
 Die Anwendung für die Patchorchestrierung ist eine Azure Service Fabric-Anwendung, mit der das Aufspielen von Betriebssystempatches in einem Service Fabric-Cluster ohne Ausfallzeiten automatisiert werden kann.
@@ -71,7 +69,7 @@ Für die App für die Patchorchestrierung muss der Reparatur-Manager-Systemdiens
 In Azure-Clustern auf Dauerhaftigkeitsstufe „Silver“ ist der Reparatur-Manager-Dienst standardmäßig aktiviert. Bei Azure-Clustern mit der Dauerhaftigkeitsstufe „Gold“ ist der Reparatur-Manager-Dienst möglicherweise aktiviert, abhängig davon, wann diese Cluster erstellt wurden. In Azure-Clustern auf Dauerhaftigkeitsstufe „Bronze“ ist der Reparatur-Manager-Dienst standardmäßig nicht aktiviert. Wenn der Dienst bereits aktiviert ist, wird er im Service Fabric Explorer im Abschnitt mit den Systemdiensten aufgeführt.
 
 ##### <a name="azure-portal"></a>Azure-Portal
-Sie können den Reparatur-Manager beim Einrichten des Clusters über das Azure-Portal aktivieren. Wählen Sie beim Konfigurieren des Clusters unter `Add on features` die Option `Include Repair Manager` aus.
+Sie können den Reparatur-Manager beim Einrichten des Clusters über das Azure-Portal aktivieren. Wählen Sie bei der Clusterkonfiguration unter **Add-On-Features** die Option **Reparatur-Manager einschließen**.
 ![Abbildung zur Aktivierung des Reparatur-Managers über das Azure-Portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
@@ -427,4 +425,3 @@ Ein Administrator muss eingreifen und ermitteln, weshalb die Integrität der Anw
 - Korrektur von Fehler im Zusammenhang mit dem Workflow für den Systemneustart.
 - Korrektur eines Fehlers bei der Erstellung von RM-Aufgaben, durch den die Integritätsüberprüfung während Reparaturvorbereitungsaufgaben nicht wie erwartet erfolgt ist.
 - Änderung des Startmodus für den Windows-Dienst „POANodeSvc“ von automatisch in verzögert automatisch.
-

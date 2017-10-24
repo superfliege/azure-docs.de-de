@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/26/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 506c23179d09e2e22065c8ba2bc85a341bb0ea09
-ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
-
+ms.openlocfilehash: 35aa45ce09b756dd7413a1df3d3c7b0c428b7a97
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – Häufig gestellte Fragen 
 Hier werden häufig gestellte Fragen zu Azure Security Center beantwortet. Azure Security Center ist ein Dienst, der Sie aufgrund von größerer Transparenz und besserer Kontrolle der Sicherheit Ihrer Microsoft Azure-Ressourcen dabei unterstützt, Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren.
@@ -43,7 +41,7 @@ Security Center wird in zwei Tarifen angeboten:
 
 Der **Free-Tarif** bietet einen Einblick in den Sicherheitszustand Ihrer Azure-Ressourcen, grundlegende Sicherheitsrichtlinien, Empfehlungen zur Sicherheit und die Integration in Sicherheitsprodukte und -Dienste von Partnern.
 
-Mit dem **Standard-Tarif** werden erweiterte Funktionen zur Bedrohungserkennung hinzugefügt, darunter Informationen zu Bedrohungen, Verhaltensanalysen, Erkennung von Anomalien, Sicherheitsincidents und Berichte zur Zuordnung von Bedrohungen. Der Standard-Tarif ist für die ersten 60 Tage kostenlos. Wenn Sie den Dienst über diese 60 Tage hinaus verwenden, beginnen wir automatisch mit der Berechnung des Diensts.  Wenn Sie ein Upgrade durchführen möchten, wählen Sie in der [Sicherheitsrichtlinie](security-center-policies.md#set-security-policies)die Tarifoption aus. Weitere Informationen finden Sie unter [Security Center-Preise](security-center-pricing.md).
+Mit dem **Standard-Tarif** werden erweiterte Funktionen zur Bedrohungserkennung hinzugefügt, darunter Informationen zu Bedrohungen, Verhaltensanalysen, Erkennung von Anomalien, Sicherheitsincidents und Berichte zur Zuordnung von Bedrohungen. Der Standard-Tarif ist für die ersten 60 Tage kostenlos. Wenn Sie den Dienst über diese 60 Tage hinaus verwenden, beginnen wir automatisch mit der Berechnung des Diensts.  Wenn Sie ein Upgrade durchführen möchten, wählen Sie in der Sicherheitsrichtlinie [Tarif](https://docs.microsoft.com/azure/security-center/security-center-pricing) aus.
 
 ## <a name="permissions"></a>Berechtigungen
 Azure Security Center verwendet die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-configure.md). Diese stellt [integrierte Rollen](../active-directory/role-based-access-built-in-roles.md) bereit, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können.
@@ -115,8 +113,8 @@ Azure Security Center überwacht die folgenden Azure-Ressourcen:
 * Virtuelle Azure-Netzwerke
 * Azure SQL-Dienst
 * Azure-Speicherkonto
-* Azure-Web-Apps (in [App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md))
-* Partnerlösungen, die in Ihr Azure-Abonnement integriert sind, z.B. die Firewall einer Webanwendung auf virtuellen Computern und in einer [App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md)
+* Azure-Web-Apps (in [App Service-Umgebung](../app-service/environment/intro.md))
+* Partnerlösungen, die in Ihr Azure-Abonnement integriert sind, z.B. die Firewall einer Webanwendung auf virtuellen Computern und in einer App Service-Umgebung
 
 ## <a name="virtual-machines"></a>Virtual Machines
 ### <a name="what-types-of-virtual-machines-are-supported"></a>Welche Typen von virtuellen Maschinen werden unterstützt?
@@ -132,4 +130,3 @@ Diese Meldung wird angezeigt, wenn keine Überprüfungsdaten für einen virtuell
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Warum erhalte ich die Meldung „VM-Agent fehlt“?
 Der VM-Agent muss auf virtuellen Computern installiert sein, um die Datensammlung zu ermöglichen. Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Informationen zum Installieren des VM-Agents auf anderen virtuellen Computern finden Sie im Blogbeitrag [VM Agent and Extensions](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)(VM-Agent und Erweiterungen).
-

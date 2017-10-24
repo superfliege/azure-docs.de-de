@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: devtiw
+ms.openlocfilehash: 2ccadfdec0e653264671f5a9a38d4541b0fc4e69
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: f66eabcbb386d5e7b31268a7b04063ff2cefbaf2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-disk-encryption-faq"></a>Häufig gestellte Fragen zu Azure Disk Encryption
 
@@ -122,6 +121,12 @@ Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Azure Disk Encry
 
 Wenn dieser Workflow nicht möglich ist, stellt die [Storage Service Encryption](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption) (SSE, Speicherdienstverschlüsselung) auf Ebene des Plattform-Speicherkontos möglicherweise eine Alternative zur vollständigen Datenträgerverschlüsselung mit dm-crypt dar.
 
+**F:** Um was handelt es sich beim Datenträger „Bek Volume“ bzw. „/mnt/azure_bek_disk“?
+
+**A:** „Bek volume“ für Windows oder „/mnt/azure_bek_disk“ für Linux ist ein lokales Datenvolume, auf dem die Verschlüsselungsschlüssel für verschlüsselte Azure-IaaS-VMs sicher gespeichert werden.
+> [!NOTE]
+> Löschen oder bearbeiten Sie keine Inhalte auf diesem Datenträger. Die Bereitstellung des Datenträgers kann nicht aufgehoben werden, da für Verschlüsselungsvorgänge auf der IaaS-VM der Verschlüsselungsschlüssel vorhanden sein muss.
+
 **F:** Wo kann ich Fragen stellen oder Feedback geben?
 
 **A:** Sie können im [Azure Disk Encryption-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureDiskEncryption) Fragen stellen und Feedback geben.
@@ -132,4 +137,3 @@ In diesem Artikel haben Sie Antworten auf die am häufigsten gestellten Fragen i
 - [Anwenden der Datenträgerverschlüsselung in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
 - [Verschlüsseln eines virtuellen Azure-Computers](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption)
 - [Datenverschlüsselung ruhender Azure-Daten](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
-

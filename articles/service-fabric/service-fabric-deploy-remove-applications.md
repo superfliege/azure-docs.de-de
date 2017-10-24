@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/29/2017
+ms.date: 10/05/2017
 ms.author: ryanwi
+ms.openlocfilehash: 6d0f85a839171c43d226741f54e0dc954b85601d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: e0e7bcee2697555b49455a414eabd02e3f573c40
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Bereitstellen und Entfernen von Anwendungen mit PowerShell
 > [!div class="op_single_selector"]
@@ -58,11 +57,6 @@ Beim Hochladen des Anwendungspakets wird das Paket an einem Speicherort gespeich
 Wenn Sie das Anwendungspaket lokal überprüfen möchten, verwenden Sie das Cmdlet [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps).
 
 Mit dem Befehl [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) wird das Anwendungspaket in den Clusterimagespeicher hochgeladen.
-Das Cmdlet **Get-ImageStoreConnectionStringFromClusterManifest** ist Teil des Service Fabric-SDK-PowerShell-Moduls und wird verwendet, um die Imagespeicher-Verbindungszeichenfolge abzurufen.  Um das SDK-Modul zu importieren, führen Sie Folgendes aus:
-
-```powershell
-Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
-```
 
 Angenommen, Sie erstellen und verpacken eine Anwendung namens *MyApplication* in Visual Studio 2015. Der Name des Anwendungstyps ist in der Datei „ApplicationManifest.xml“ standardmäßig als „MyApplicationType“ aufgeführt.  Das Anwendungspaket mit den erforderlichen Anwendungs- und Dienstmanifesten sowie Code-/Konfigurations-/Datenpaketen befindet sich in *C:\Benutzer\<Benutzername\>\Eigene Dokumente\Visual Studio 2015\Projekte\MeineAnwendung\MeineAnwendung\pkg\Debuggen*. 
 
@@ -135,21 +129,33 @@ Nachdem ein Paket komprimiert wurde, kann es bei Bedarf in einen oder in mehrere
 Im folgenden Beispiel wird das Paket in den Imagespeicher in einen Ordner mit dem Namen „MyApplicationV1“ hochgeladen:
 
 ```powershell
-PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)) -TimeoutSec 1800
-```
-
-Das Cmdlet **Get-ImageStoreConnectionStringFromClusterManifest** ist Teil des Service Fabric-SDK-PowerShell-Moduls und wird verwendet, um die Imagespeicher-Verbindungszeichenfolge abzurufen.  Um das SDK-Modul zu importieren, führen Sie Folgendes aus:
-
-```powershell
-Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
+PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -TimeoutSec 1800
 ```
 
 Wenn Sie den Parameter *-ApplicationPackagePathInImageStore* nicht angeben, wird das Anwendungspaket in den Ordner „Debug“ im Imagespeicher kopiert.
 
+>[!NOTE]
+>Wenn die PowerShell-Sitzung mit einem Service Fabric-Cluster verbunden ist, erkennt **Copy-ServiceFabricApplicationPackage** automatisch die entsprechende Verbindungszeichenfolge des Imagespeichers. Bei Service Fabric-Versionen, die älter als 5.6 sind, muss explizit das Argument **-ImageStoreConnectionString** angegeben werden.
+>
+>```powershell
+>PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)) -TimeoutSec 1800
+>```
+>
+>Das Cmdlet **Get-ImageStoreConnectionStringFromClusterManifest** ist Teil des Service Fabric-SDK-PowerShell-Moduls und wird verwendet, um die Imagespeicher-Verbindungszeichenfolge abzurufen.  Um das SDK-Modul zu importieren, führen Sie Folgendes aus:
+>
+>```powershell
+>Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
+>```
+>
+>Weitere Informationen zum Imagespeicher und zur Imagespeicher-Verbindungszeichenfolge finden Sie unter [Grundlegendes zur Imagespeicher-Verbindungszeichenfolge](service-fabric-image-store-connection-string.md).
+>
+>
+>
+
 Die Zeit zum Hochladen eines Pakets hängt von verschiedenen Faktoren ab. Zu einigen dieser Faktoren zählen die Anzahl der Dateien im Paket, die Paketgröße und die Dateigrößen. Die Netzwerkgeschwindigkeit zwischen dem Quellcomputer und dem Service Fabric-Cluster wirkt sich auch auf die Uploadzeit aus. Das Standardtimeout für [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) beträgt 30 Minuten.
 Abhängig von den beschriebenen Faktoren müssen Sie eventuell das Timeout erhöhen. Wenn Sie das Paket beim Aufrufen der Kopierfunktion komprimieren, müssen Sie auch die Zeit für die Komprimierung in Betracht ziehen.
 
-Weitere Informationen zum Imagespeicher und zur Imagespeicher-Verbindungszeichenfolge finden Sie unter [Grundlegendes zur Imagespeicher-Verbindungszeichenfolge](service-fabric-image-store-connection-string.md).
+
 
 ## <a name="register-the-application-package"></a>Registrieren des Anwendungspakets
 Der Anwendungstyp und die Version, der bzw. die im Anwendungsmanifest deklariert sind, werden beim Registrieren des Anwendungspakets verfügbar. Das System liest das im vorherigen Schritt hochgeladene Paket, überprüft es, verarbeitet den Inhalt des Pakets und kopiert das verarbeitete Paket an einen internen Systemspeicherort.  
@@ -175,6 +181,13 @@ ApplicationTypeName    : MyApplicationType
 ApplicationTypeVersion : 1.0.0
 Status                 : Available
 DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
+```
+
+## <a name="remove-an-application-package-from-the-image-store"></a>Entfernen eines Anwendungspakets aus dem Imagespeicher
+Es wird empfohlen, nach erfolgreicher Registrierung der Anwendung das Anwendungspaket zu entfernen.  Sie können Systemressourcen freigeben, indem Sie Anwendungspakete aus dem Imagespeicher löschen.  Die Speicherung nicht verwendeter Anwendungspakete nimmt Speicherplatz in Anspruch und führt zu Leistungsproblemen der Anwendung.
+
+```powershell
+PS C:\>Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApplicationV1
 ```
 
 ## <a name="create-the-application"></a>Erstellen der Anwendung
@@ -248,13 +261,6 @@ Führen Sie [Unregister-ServiceFabricApplicationType](/powershell/module/service
 
 ```powershell
 PS C:\> Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
-```
-
-## <a name="remove-an-application-package-from-the-image-store"></a>Entfernen eines Anwendungspakets aus dem Imagespeicher
-Wenn ein Anwendungspaket nicht mehr benötigt wird, können Sie es aus dem Imagespeicher löschen, um Systemressourcen freizugeben.
-
-```powershell
-PS C:\>Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest))
 ```
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -339,4 +345,3 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md
-

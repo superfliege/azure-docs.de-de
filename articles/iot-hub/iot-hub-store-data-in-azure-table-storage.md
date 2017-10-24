@@ -1,6 +1,6 @@
 ---
 title: Speichern Ihrer IoT Hub-Nachrichten im Azure-Datenspeicher | Microsoft-Dokumentation
-description: "Verwenden einer Azure-Funktions-App zum Speichern Ihrer IoT Hub-Nachrichten in Ihrem Azure-Tabellenspeicher. IoT Hub-Nachrichten enthalten Informationen wie Sensordaten, die von Ihrem IoT-Gerät gesendet werden."
+description: "Verwenden Sie das Nachrichtenrouting von IoT Hub, um Ihre IoT Hub-Nachrichten in Ihrem Azure-Blobspeicher zu speichern. IoT Hub-Nachrichten enthalten Informationen wie Sensordaten, die von Ihrem IoT-Gerät gesendet werden."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -13,18 +13,17 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2017
+ms.date: 10/04/2017
 ms.author: xshi
+ms.openlocfilehash: aa33800de82b27d4819fe0eade127c2a40e3a493
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 06503f9564e00ef62587d02f2da4778974e246c5
-ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-table-storage"></a>Speichern von IoT Hub-Nachrichten mit Sensordaten in Ihrem Azure-Tabellenspeicher
+# <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-blob-storage"></a>Speichern von IoT Hub-Nachrichten mit Sensordaten in Ihrem Azure-Blobspeicher
 
-![Lückenloses Diagramm](media/iot-hub-get-started-e2e-diagram/3.png)
+![Lückenloses Diagramm](media/iot-hub-store-data-in-azure-table-storage/1_route-to-storage.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -35,8 +34,7 @@ Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktions-App zum S
 ## <a name="what-you-do"></a>Aufgaben
 
 - Erstellen Sie ein Azure-Speicherkonto.
-- Vorbereiten Ihrer IoT Hub-Verbindung auf das Lesen von Nachrichten.
-- Erstellen und Bereitstellen einer Azure-Funktions-App.
+- Bereiten Sie Ihren IoT Hub zum Weiterleiten von Nachrichten an den Speicher vor.
 
 ## <a name="what-you-need"></a>Erforderliches Element
 
@@ -61,146 +59,34 @@ Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktions-App zum S
 
 3. Klicken Sie auf **Erstellen**.
 
-## <a name="prepare-your-iot-hub-connection-to-read-messages"></a>Vorbereiten Ihrer IoT Hub-Verbindung auf das Lesen von Nachrichten
+## <a name="prepare-your-iot-hub-to-route-messages-to-storage"></a>Vorbereiten Ihres IoT Hub zum Weiterleiten von Nachrichten an den Speicher
 
-IoT Hub macht einen integrierten, mit Event Hub kompatiblen Endpunkt verfügbar, der Anwendungen das Lesen von IoT Hub-Nachrichten ermöglicht. In der Zwischenzeit verwenden Anwendungen Consumergruppen zum Lesen von Daten in Ihrem IoT Hub. Bevor Sie eine Azure-Funktions-App zum Lesen von Daten von Ihrem IoT Hub erstellen, tun Sie Folgendes:
+IoT Hub unterstützt nativ das Weiterleiten von Nachrichten an den Azure-Speicher als Blobs.
 
-- Abrufen der Verbindungszeichenfolge Ihres IoT Hub-Endpunkts
-- Erstellen einer Consumergruppe für Ihren IoT Hub
+### <a name="add-storage-as-a-custom-endpoint"></a>Hinzufügen von Speicher als benutzerdefinierter Endpunkt
 
-### <a name="get-the-connection-string-of-your-iot-hub-endpoint"></a>Abrufen der Verbindungszeichenfolge Ihres IoT Hub-Endpunkts
+Navigieren Sie im Azure-Portal zu Ihrem IoT Hub. Klicken Sie auf **Endpunkte** > **Hinzufügen**. Benennen Sie den Endpunkt, und wählen Sie **Azure-Speichercontainer** als Typ des Endpunkts. Verwenden Sie die Auswahl, um das Speicherkonto auszuwählen, das Sie im vorherigen Abschnitt erstellt haben. Erstellen Sie einen Speichercontainer, wählen Sie ihn aus, und klicken Sie auf **OK**.
 
-1. Öffnen Sie Ihren IoT Hub.
+  ![Erstellen eines benutzerdefinierten Endpunkts in IoT Hub](media\iot-hub-store-data-in-azure-table-storage\2_custom-storage-endpoint.png)
 
-2. Klicken Sie im Bereich **IoT Hub** unter **Messaging** auf **Endpunkte**.
+### <a name="add-a-route-to-route-data-to-storage"></a>Hinzufügen einer Route zum Weiterleiten von Daten an den Speicher
 
-3. Klicken Sie im rechten Bereich unter **Integrierte Endpunkte** auf **Ereignisse**.
+Klicken Sie auf **Routen** > **Hinzufügen**, und geben Sie einen Namen für die Route ein. Wählen Sie **Gerätemeldungen** als Datenquelle aus, und wählen Sie den Speicherendpunkt, den Sie gerade erstellt haben, als Endpunkt in der Route aus. Geben Sie `true` als Abfragezeichenfolge ein, und klicken Sie dann auf **Speichern**.
 
-4. Notieren Sie im Bereich **Eigenschaften** die folgenden Werte:
-   - Event Hub-kompatibler Endpunkt
-   - Event Hub-kompatibler Name
+  ![Erstellen einer Route in IoT Hub](media\iot-hub-store-data-in-azure-table-storage\3_create-route.png)
+  
+### <a name="add-a-route-for-hot-path-telemetry-optional"></a>Hinzufügen einer Route für Langsamster-Pfad-Telemetrie (optional)
 
-   ![Abrufen der Verbindungszeichenfolge Ihres IoT Hub-Endpunkts im Azure-Portal](media\iot-hub-store-data-in-azure-table-storage\2_azure-portal-iot-hub-endpoint-connection-string.png)
-
-5. Klicken Sie im Bereich **IoT Hub** unter **Einstellungen** auf **Freigegebene Zugriffsrichtlinien**.
-
-6. Klicken Sie auf **iothubowner**.
-
-7. Notieren Sie den Wert **Primärschlüssel**.
-
-8. Erstellen Sie die Verbindungszeichenfolge Ihres IoT Hub-Endpunkts wie folgt:
-
-   `Endpoint=<Event Hub-compatible endpoint>;SharedAccessKeyName=iothubowner;SharedAccessKey=<Primary key>`
-
-   > [!NOTE]
-   > Ersetzen Sie `<Event Hub-compatible endpoint>` und `<Primary key>` durch die Werte, die Sie notiert haben.
-
-### <a name="create-a-consumer-group-for-your-iot-hub"></a>Erstellen einer Consumergruppe für Ihren IoT Hub
-
-1. Öffnen Sie Ihren IoT Hub.
-
-2. Klicken Sie im Bereich **IoT Hub** unter **Messaging** auf **Endpunkte**.
-
-3. Klicken Sie im rechten Bereich unter **Integrierte Endpunkte** auf **Ereignisse**.
-
-4. Geben Sie im Bereich **Eigenschaften** unter **Consumergruppen** einen Namen ein, den Sie sich notieren.
-
-5. Klicken Sie auf **Speichern**.
-
-## <a name="create-and-deploy-an-azure-function-app"></a>Erstellen und Bereitstellen einer Azure-Funktions-App
-
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Neu** > **Berechnen** > **Funktionen-App** > **Erstellen**.
-
-2. Geben Sie die erforderlichen Informationen für die Funktions-App ein.
-
-   ![Erstellen einer Funktions-App im Azure-Portal](media\iot-hub-store-data-in-azure-table-storage\3_azure-portal-create-function-app.png)
-
-   * **App-Name**: Der Name der Funktions-App. Der Name muss global eindeutig sein.
-
-   * **Ressourcengruppe**: Verwenden Sie dieselbe Ressourcengruppe wie für Ihren IoT Hub.
-
-   * **Speicherkonto**: Das Speicherkonto, das Sie erstellt haben.
-
-   * **An Dashboard anheften**: Aktivieren Sie diese Option für den leichteren Zugriff auf die Funktions-App über das Dashboard.
-
-3. Klicken Sie auf **Erstellen**.
-
-4. Sobald die Funktions-App erstellt ist, öffnen Sie sie.
-
-5. Erstellen Sie in der Funktions-App wie folgt eine neue Funktion:
-
-   a. Klicken Sie auf **Neue Funktion**.
-
-   b. Wählen Sie **JavaScript** für **Sprache** und **Datenverarbeitung** für **Szenario** aus.
-
-   c. Klicken Sie auf **Diese Funktion erstellen** und dann auf **Neue Funktion**.
-
-   d. Wählen Sie **JavaScript** als Sprache und **Datenverarbeitung** als Szenario aus.
-
-   e. Klicken Sie auf die Vorlage **EventHubTrigger-JavaScript**.
-
-   f. Geben Sie die erforderlichen Informationen für die Vorlage ein.
-
-      * **Funktion benennen**: Der Name der Funktion.
-
-      * **Event Hub-Name**: Der Event Hub-kompatible Name, den Sie vorher notiert haben.
-
-      * **Event Hub-Verbindung**: Klicken Sie auf **Neu**, um die Verbindungszeichenfolge des IoT Hub-Endpunkts hinzuzufügen, den Sie erstellt haben.
-
-   g. Klicken Sie auf **Erstellen**.
-
-6. Konfigurieren Sie wie folgt eine Ausgabe der Funktion:
-
-   a. Klicken Sie auf **Integrieren** > **Neue Ausgabe** > **Azure Table Storage** > **Auswählen**.
-
-      ![Hinzufügen eines Tabellenspeichers zu Ihrer Funktions-App im Azure-Portal](media\iot-hub-store-data-in-azure-table-storage\4_azure-portal-function-app-add-output-table-storage.png)
-
-   b. Geben Sie die erforderlichen Informationen ein.
-
-      * **Tabellenparametername**: Wählen Sie `outputTable`, der im Code der Azure-Funktion verwendet wird.
-      
-      * **Tabellenname**: Verwenden Sie `deviceData`.
-
-      * **Speicherkontoverbindung**: Klicken Sie auf **Neu**, wählen Sie Ihr Speicherkonto aus, oder geben Sie es ein. Wenn das Speicherkonto nicht angezeigt wird, siehe [Anforderungen an das Speicherkonto](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements).
-      
-   c. Klicken Sie auf **Speichern**.
-
-7. Klicken Sie unter **Trigger** auf **Azure Event Hub (eventHubMessages)**.
-
-8. **Event Hub-Consumergruppe**: Geben Sie den Namen der Consumergruppe ein, die Sie zuvor erstellt haben, und klicken Sie auf **Speichern**.
-
-9. Klicken Sie auf der linken Seite auf die von Ihnen erstellte Funktion und auf der rechten Seite dann auf **Dateien anzeigen**.
-
-10. Ersetzen Sie den Code in `index.js` durch den folgenden Code:
-
-   ```javascript
-   'use strict';
-
-   // This function is triggered each time a message is received in the IoT hub.
-   // The message payload is persisted in an Azure storage table
- 
-   module.exports = function (context, iotHubMessage) {
-    context.log('Message received: ' + JSON.stringify(iotHubMessage));
-    var date = Date.now();
-    var partitionKey = Math.floor(date / (24 * 60 * 60 * 1000)) + '';
-    var rowKey = date + '';
-    context.bindings.outputTable = {
-     "partitionKey": partitionKey,
-     "rowKey": rowKey,
-     "message": JSON.stringify(iotHubMessage)
-    };
-    context.done();
-   };
-   ```
-
-11. Klicken Sie auf **Speichern**.
-
-Sie haben soeben die Funktions-App erstellt. In ihr werden Nachrichten gespeichert, die Ihr IoT Hub in Ihrem Tabellenspeicher empfängt.
+Standardmäßig leitet IoT Hub alle Nachrichten, die nicht mit anderen Routen übereinstimmen, dem integrierten Endpunkt zu. Da alle Telemetrienachrichten jetzt der Regel entsprechen, die Nachrichten an den Speicher weiterleitet, müssen Sie für Nachrichten, die in den integrierten Endpunkt geschrieben werden sollen, eine andere Route hinzufügen. Es fallen keine zusätzlichen Gebühren zum Weiterleiten von Nachrichten an mehrere Endpunkte an.
 
 > [!NOTE]
-> Sie können auf die Schaltfläche **Ausführen** klicken, um die Funktions-App zu testen. Bei Klicken auf **Ausführen** wird die Testnachricht an Ihren IoT Hub gesendet. Der Eingang der Nachricht löst den Start der Funktions-App aus, die die Nachricht anschließend in Ihrem Tabellenspeicher speichert. Im Bereich **Protokolle** werden die Details des Prozesses aufgezeichnet.
+> Sie können diesen Schritt überspringen, wenn Sie keine zusätzliche Verarbeitung Ihrer Telemetrienachrichten ausführen.
 
-## <a name="verify-your-message-in-your-table-storage"></a>Überprüfen der Nachricht in Ihrem Tabellenspeicher
+Klicken Sie im Bereich „Routen“ auf **Hinzufügen**, und geben Sie einen Namen für die Route ein. Wählen Sie **Gerätemeldungen** als Datenquelle und **Ereignisse** als Endpunkt aus. Geben Sie `true` als Abfragezeichenfolge ein, und klicken Sie dann auf **Speichern**.
+
+  ![Erstellen einer Langsamster-Pfad-Route in IoT Hub](media\iot-hub-store-data-in-azure-table-storage\4_hot-path-route.png)
+
+## <a name="verify-your-message-in-your-storage-container"></a>Überprüfen der Nachricht in Ihrem Speichercontainer
 
 1. Führen Sie die Beispielanwendung auf Ihrem Gerät aus, um Nachrichten an Ihren IoT Hub zu senden.
 
@@ -208,13 +94,12 @@ Sie haben soeben die Funktions-App erstellt. In ihr werden Nachrichten gespeiche
 
 3. Öffnen Sie den Storage Explorer. Klicken Sie auf **Azure-Konto hinzufügen** > **Anmelden**, und melden Sie sich bei Ihrem Azure-Konto an.
 
-4. Klicken Sie auf Ihr Azure-Abonnement > **Speicherkonten** > Ihr Speicherkonto > **Tabellen** > **deviceData**.
+4. Klicken Sie auf Ihr Azure-Abonnement > **Speicherkonten** > Ihr Speicherkonto > **Blobcontainer** > Ihr Container.
 
-   Die Tabelle `deviceData` sollte protokollierte Nachrichten enthalten, die von Ihrem Gerät an Ihren IoT Hub gesendet wurden.
+   Der Blobcontainer sollte protokollierte Nachrichten enthalten, die von Ihrem Gerät an Ihren IoT Hub gesendet wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben Ihr Azure-Speicherkonto und die Azure-Funktions-App erfolgreich zum Speichern von Nachrichten in Ihrem Tabellenspeicher erstellt, die Ihr IoT Hub empfängt.
+Sie haben erfolgreich Ihr Azure-Speicherkonto erstellt und Nachrichten vom IoT Hub zu einem Blobcontainer in diesem Speicherkonto weitergeleitet.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

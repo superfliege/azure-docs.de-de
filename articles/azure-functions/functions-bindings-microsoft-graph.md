@@ -11,14 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mahender
+ms.openlocfilehash: 8cf2e4e9e9007549dbdc931b4485c4230c536479
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: b0eb0ac63c7dbb9d6cbba093937231e93670529e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-functions-microsoft-graph-bindings"></a>Microsoft Graph-Bindungen in Azure Functions
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
@@ -45,7 +43,11 @@ Microsoft Graph-Bindungen sind über _Bindungserweiterungen_ verfügbar. Bindung
 
 ### <a name="enabling-functions-20-preview"></a>Aktivieren von Functions 2.0 Preview
 
-Bindungserweiterungen sind nur für Azure Functions 2.0 Preview verfügbar. Legen Sie zum Aktivieren von Functions 2.0 die Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` auf „beta“ fest.  Weitere Informationen zum Konfigurieren von Anwendungseinstellungen finden Sie unter [Anwendungseinstellungen in Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings#settings).
+Bindungserweiterungen sind nur für Azure Functions 2.0 Preview verfügbar. 
+
+[!INCLUDE [functions-set-runtime-version](../../includes/functions-set-runtime-version.md)]
+
+Weitere Informationen finden Sie unter [How to target Azure Functions runtime versions](functions-versions.md) (Einstellung auf bestimmte Laufzeitversionen von Azure Functions).
 
 ### <a name="installing-the-extension"></a>Installieren der Erweiterung
 
@@ -1060,4 +1062,3 @@ public class UserSubscription {
 
 [HTTP-Trigger]: functions-bindings-http-webhook.md
 [Arbeiten mit Webhooks in Microsoft Graph]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks
-

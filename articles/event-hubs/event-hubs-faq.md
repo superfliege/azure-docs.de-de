@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2017
-ms.author: sethm;shvija
+ms.date: 10/05/2017
+ms.author: sethm
+ms.openlocfilehash: c4faa071c4f2401fe3e852e787e3b7d4da0c7d44
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: e208e970de58505553802a4ed27d7f9da4070866
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
 ## <a name="general"></a>Allgemein
@@ -44,7 +42,7 @@ Sie wählen die Event Hubs-Durchsatzeinheiten explizit aus, entweder über das A
 * Eingangsereignisse (Ereignisse, die von einem Ereignis-Hub genutzt werden) mit bis zu 2 MB pro Sekunde.
 * Bis zu 84 GB Ereignisspeicher (ausreichend für die Standardbeibehaltungsdauer im 24-Stunden-Format).
 
-Event Hubs-Durchsatzeinheiten werden stündlich abgerechnet, basierend auf der maximalen Anzahl an ausgewählten Einheiten in der betreffenden Stunde.
+Event Hubs-Durchsatzeinheiten werden stündlich abgerechnet, basierend auf der maximalen Anzahl an ausgewählten Einheiten in der betreffenden Stunde. Sie können bei zunehmender Nutzung automatisch [die Anzahl der Durchsatzeinheiten steigern](event-hubs-auto-inflate.md).
 
 ### <a name="how-are-event-hubs-throughput-unit-limits-enforced"></a>Wie werden Beschränkungen für Event Hubs-Durchsatzeinheiten durchgesetzt?
 Wenn der gesamte eingehende Durchsatz oder die gesamte eingehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Absender gedrosselt und erhalten die Fehlermeldung, dass das Eingangskontingent überschritten wurde.
@@ -53,6 +51,8 @@ Wenn der gesamte ausgehende Durchsatz oder die gesamte ausgehende Ereignisrate �
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-selected"></a>Gibt es eine Beschränkung für die Anzahl der Durchsatzeinheiten, die ausgewählt werden können?
 Es gibt ein Kontingent von 20 Durchsatzeinheiten pro Namespace. Sie können ein größeres Kontingent an Durchsatzeinheiten anfordern, indem Sie ein Supportticket ausfüllen. Über das Limit von 20 Durchsatzeinheiten hinaus sind Pakete in 20 bis 100 Durchsatzeinheiten verfügbar. Beachten Sie, dass es bei Verwendung von mehr als 20 Durchsatzeinheiten nicht die Möglichkeit gibt, die Anzahl der Durchsatzeinheiten zu ändern, ohne ein Supportticket auszufüllen.
+
+Sie können mit dem Feature [Automatische Vergrößerung](event-hubs-auto-inflate.md) bei zunehmender Nutzung automatisch die Anzahl der Durchsatzeinheiten steigern.
 
 ### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Kann ich eine einzelne AMQP-Verbindung zum Senden und Empfangen von mehreren Event Hubs verwenden?
 Ja, solange sich alle Event Hubs im gleichen Namespace befinden.
@@ -120,4 +120,4 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
 * [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Erstellen eines Event Hubs](event-hubs-create.md)
-
+* [Event Hubs Auto-inflate (Event Hubs – Automatische Vergrößerung)](event-hubs-auto-inflate.md)

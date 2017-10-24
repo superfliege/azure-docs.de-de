@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e81c5e943d8e9e9cc322d19900c48377f22a8968
-ms.openlocfilehash: 62e8cecf3177d08f2614bd76956b45da75af0947
-ms.contentlocale: de-de
-ms.lasthandoff: 07/17/2017
-
+ms.openlocfilehash: 5bc6f90100e5c09eac2b6e5d0e114d4445daa7c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Häufig gestellte Fragen zum bedingten Zugriff mit Azure Active Directory
 
@@ -55,10 +54,10 @@ Derzeit nicht.
 Derzeit werden Richtlinien für den bedingten Zugriff für Benutzer von iOS- und Android-Geräten selektiv erzwungen. Anwendungen auf anderen Geräteplattformen sind standardmäßig von der Richtlinie für den bedingten Zugriff für iOS- und Android-Geräte ausgenommen. Ein Mandantenadministrator kann die globale Richtlinie außer Kraft setzen, um Benutzern auf nicht unterstützten Plattformen den Zugriff zu verweigern.
 
 
-## <a name="how-do-conditional-access-policies-work-for-microsoft-teams"></a>Wie funktionieren Richtlinien für bedingten Zugriff für Microsoft Teams?  
+## <a name="how-do-conditional-access-policies-work-for-microsoft-teams"></a>Wie funktionieren Richtlinien für bedingten Zugriff für Microsoft Teams?
 
 Microsoft Teams basiert in Bezug auf wichtige Produktivitätsszenarien, z.B. Besprechungen, Kalender und Dateifreigabe, vor allem auf Exchange Online und SharePoint Online. Richtlinien für bedingten Zugriff, die für diese Cloud-Apps festgelegt werden, gelten für Microsoft Teams, wenn sich ein Benutzer anmeldet.
 
-Microsoft Teams wird für Richtlinien für bedingten Zugriff in Azure Active Directory auch separat als Cloud-App unterstützt. Richtlinien von Zertifizierungsstellen, die für eine Cloud-App festgelegt werden, gelten für Microsoft Teams, wenn sich ein Benutzer anmeldet.
+Microsoft Teams wird für Richtlinien für bedingten Zugriff in Azure Active Directory auch separat als Cloud-App unterstützt. Richtlinien für bedingten Zugriff, die für eine Cloud-App festgelegt werden, gelten für Microsoft Teams, wenn sich ein Benutzer anmeldet.
 
 Microsoft Teams-Desktopclients für Windows und Mac unterstützen die moderne Authentifizierung. Die moderne Authentifizierung ermöglicht die ADAL-basierte Anmeldung (Azure Active Directory Authentication Library) plattformübergreifend für Microsoft Office-Clientanwendungen. 

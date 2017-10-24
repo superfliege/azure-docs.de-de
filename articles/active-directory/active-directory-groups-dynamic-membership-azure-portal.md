@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
+ms.openlocfilehash: 3ff347ab23c9150246940f563e562c8de92be45d
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 44748f3152718f3cec348d7e2bdccdbe0f79091e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Erstellen attributbasierter Regeln für dynamische Gruppenmitgliedschaft in Azure Active Directory
 In Azure Active Directory (Azure AD) können Sie erweiterte Regeln für die Aktivierung von komplexen, attributbasierten dynamischen Mitgliedschaften für Gruppen erstellen. In diesem Artikel werden Attribute und Syntax zum Erstellen der Regeln für dynamische Mitgliedschaft für Benutzer oder Geräte erläutert.
@@ -40,17 +39,19 @@ Wenn sich Attribute eines Benutzers oder Geräts ändern, bewertet das System al
 ## <a name="to-create-an-advanced-rule"></a>Erstellen einer erweiterten Regel
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) über ein Konto an, das als globaler Administrator oder Benutzerkontoadministrator konfiguriert ist.
 2. Wählen Sie **Benutzer und Gruppen**.
-3. Wählen Sie **Alle Gruppen** aus.
+3. Wählen Sie **Alle Gruppen** und **Neue Gruppe** aus.
 
-   ![Öffnen des Blatts „Gruppen“](./media/active-directory-groups-dynamic-membership-azure-portal/view-groups-blade.png)
-4. Wählen Sie in **Alle Gruppen** die Option **Neue Gruppe** aus.
+   ![Neue Gruppe hinzufügen](./media/active-directory-groups-dynamic-membership-azure-portal/new-group-creation.png)
 
-   ![Neue Gruppe hinzufügen](./media/active-directory-groups-dynamic-membership-azure-portal/add-group-type.png)
-5. Geben Sie auf dem Blatt **Gruppe** einen Namen und eine Beschreibung für die neue Gruppe ein. Wählen Sie als **Mitgliedschaftstyp** entweder **Dynamischer Benutzer** oder **Dynamisches Gerät** aus, je nachdem, ob Sie eine Regel für Benutzer oder Geräte erstellen möchten. Wählen Sie anschließend **Dynamische Abfrage hinzufügen** aus. Informationen zu den Attributen für Geräteregeln finden Sie unter [Verwenden von Attributen zum Erstellen von Regeln für Geräteobjekte](#using-attributes-to-create-rules-for-device-objects).
+4. Geben Sie auf dem Blatt **Gruppe** einen Namen und eine Beschreibung für die neue Gruppe ein. Wählen Sie als **Mitgliedschaftstyp** entweder **Dynamischer Benutzer** oder **Dynamisches Gerät** aus, je nachdem, ob Sie eine Regel für Benutzer oder Geräte erstellen möchten. Wählen Sie anschließend **Dynamische Abfrage hinzufügen** aus. Mit dem Regel-Generator können Sie eine einfache Regel erstellen oder selbst eine erweiterte Regel schreiben. Dieser Artikel enthält weitere Informationen zu verfügbaren Benutzer- und Geräteattributen sowie Beispiele für erweiterte Regeln.
 
    ![Hinzufügen einer Regel für eine dynamische Mitgliedschaft](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
-6. Geben Sie auf dem Blatt **Regeln für dynamische Mitgliedschaft** Ihre Regel in das Feld **Erweiterte Regel für dynamische Mitgliedschaft hinzufügen** ein, drücken Sie die EINGABETASTE, und wählen Sie im unteren Bereich des Blatts die Option **Erstellen** aus.
-7. Wählen Sie **Erstellen** on the **Erstellen** aus, um die Gruppe zu erstellen.
+
+5. Wählen Sie nach der Erstellung der Regel unten auf dem Blatt **Abfrage hinzufügen**.
+6. Wählen Sie **Erstellen** on the **Erstellen** aus, um die Gruppe zu erstellen.
+
+> [!TIP]
+> Wenn die eingegebene erweiterte Regel falsch war, kann dies zu Fehlern bei der Gruppenerstellung führen. Oben rechts im Portal wird eine Benachrichtigung angezeigt, die erläutert, warum die Regel nicht vom System angenommen werden konnte. Lesen Sie sie sorgfältig, um zu erfahren, wie die Regel angepasst werden muss, damit sie gültig ist.
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>Erstellen des Texts einer erweiterten Regel
 Die erweiterte Regel, die Sie für die dynamischen Mitgliedschaften für Gruppen erstellen können, ist im Wesentlichen ein binärer Ausdruck, der aus drei Teilen besteht und ein wahres oder falsches Ergebnis liefert. Die drei Teile sind folgende:
@@ -276,7 +277,7 @@ Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaf
  ----- | ----- | ----------------
  accountEnabled | true false | (device.accountEnabled -eq true)
  displayName | Jeder string-Wert. |(device.displayName -eq "Rob Iphone”)
- deviceOSType | Jeder string-Wert. | (device.deviceOSType -eq "IOS")
+ deviceOSType | Jeder string-Wert. | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")
  deviceOSVersion | Jeder string-Wert. | (device.OSVersion -eq "9.1")
  deviceCategory | ein gültiger Gerätekategoriename | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | Jeder string-Wert. | (device.deviceManufacturer -eq "Samsung")
@@ -305,9 +306,7 @@ Das Azure-Portal wird derzeit aktualisiert, um diese Funktionalität zu unterst�
 **Verwenden von PowerShell zum Ändern der Mitgliedschaftsverwaltung für eine Gruppe**
 
 > [!NOTE]
-> Zum Ändern dynamischer Gruppeneigenschaften müssen Sie Cmdlets aus [Azure AD PowerShell Version 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) verwenden.
->
-> Derzeit enthält nur die neueste Vorschauversion der Bibliothek die erforderlichen Cmdlets. Das Installationspaket finden Sie [hier](https://www.powershellgallery.com/packages/AzureADPreview).
+> Zum Ändern dynamischer Gruppeneigenschaften müssen Sie Cmdlets aus [Azure AD PowerShell Version 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) verwenden. Das Installationspaket finden Sie [hier](https://www.powershellgallery.com/packages/AzureADPreview).
 
 Hier folgt ein Beispiel für Funktionen, die die Verwaltung der Mitgliedschaft für eine vorhandene Gruppe wechseln. Beachten Sie, dass darauf geachtet wird, die GroupTypes-Eigenschaft ordnungsgemäß zu ändern und alle Werte zu erhalten, die dort möglicherweise vorhanden sind und keine Beziehung zur dynamischen Mitgliedschaft aufweisen.
 
@@ -369,4 +368,3 @@ Diese Artikel enthalten zusätzliche Informationen zu Gruppen in Azure Active Di
 * [Verwalten der Einstellungen einer Gruppe](active-directory-groups-settings-azure-portal.md)
 * [Verwalten der Mitgliedschaften einer Gruppe](active-directory-groups-membership-azure-portal.md)
 * [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](active-directory-groups-dynamic-membership-azure-portal.md)
-

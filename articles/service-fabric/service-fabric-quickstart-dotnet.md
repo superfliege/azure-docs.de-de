@@ -12,17 +12,15 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/09/2017
+ms.date: 10/02/2017
 ms.author: mikhegn
-ms.custom: mvc
+ms.custom: mvc, devcenter
+ms.openlocfilehash: 3be8836ae6b877bc4caa98f0467147b008c42aa2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: d11b9af982112db8ba94b62110c18be843f1abb1
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-net-service-fabric-application-in-azure"></a>Erstellen einer .NET Service Fabric-Anwendung in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
 
@@ -135,7 +133,7 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 
 2. Tragen Sie den Verbindungsendpunkt des Clusters in das Feld **Verbindungsendpunkt** ein, und klicken Sie auf **Veröffentlichen**. Wenn Sie sich für den Partycluster registrieren, wird der Verbindungsendpunkt im Browser angegeben. Beispiel: `winh1x87d1d.westus.cloudapp.azure.com:19000`.
 
-3. Öffnen Sie einen Browser, und geben Sie die Clusteradresse ein, z.B. `http://winh1x87d1d.westus.cloudapp.azure.com`. Sie sollten jetzt sehen, dass die Anwendung im Cluster in Azure ausgeführt wird.
+3. Öffnen Sie einen Browser, und geben Sie die Clusteradresse gefolgt von „:8080“ ein, um die Anwendung im Cluster abzurufen (z.B. `http://winh1x87d1d.westus.cloudapp.azure.com:8080`). Sie sollten jetzt sehen, dass die Anwendung im Cluster in Azure ausgeführt wird.
 
 ![Front-End der Anwendung](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 

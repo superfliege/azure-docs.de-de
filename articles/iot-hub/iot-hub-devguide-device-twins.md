@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 454eb7b1f4f48e8a2a78bd3fcb6eb03b6097d44d
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: 257f661dbc5ff23db53591a1b2db59a8dbeac2dc
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 ## <a name="overview"></a>Übersicht
@@ -139,7 +138,7 @@ Im vorherigen Beispiel werden die gewünschten und gemeldeten Eigenschaften des 
 Mithilfe von Zwillingen können Sie Vorgänge mit langer Ausführungsdauer (beispielsweise Firmwareupdates) synchronisieren. Weitere Informationen zur Verwendung von Eigenschaften zum geräteübergreifenden Synchronisieren und Verfolgen von Vorgängen mit langer Ausführungsdauer finden Sie unter [Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten][lnk-twin-properties].
 
 ## <a name="back-end-operations"></a>Back-End-Vorgänge
-Das Lösungs-Back-End greift mithilfe folgender atomarer Vorgänge, die über HTTP verfügbar gemacht werden, auf den Gerätezwilling zu:
+Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über HTTPS verfügbar gemacht werden, auf den Gerätezwilling zu:
 
 1. **Abrufen des Gerätezwillings mittels ID**. Dieser Vorgang gibt das Dokument für den Gerätezwilling zurück – einschließlich Tags und gewünschter Eigenschaften, gemeldeter Eigenschaften und Systemeigenschaften.
 2. **Partielles Aktualisieren des Gerätezwillings**. Dieser Vorgang ermöglicht es dem Lösungs-Back-End, die Tags oder gewünschten Eigenschaften in einem Gerätezwilling teilweise zu aktualisieren. Bei der partiellen Aktualisierung handelt es sich um ein JSON-Dokument, das eine beliebige Eigenschaft hinzufügt oder aktualisiert. Auf `null` festgelegte Eigenschaften werden entfernt. Im folgenden Beispiel wird eine neue gewünschte Eigenschaft mit dem Wert `{"newProperty": "newValue"}` erstellt, der vorhandene Wert von `existingProperty` wird mit `"otherNewValue"` überschrieben, und `otherOldProperty` wird entfernt. Ansonsten werden an vorhandenen Eigenschaften oder Tags keine weiteren Änderungen vorgenommen:
@@ -369,4 +368,3 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
 
 [img-twin]: media/iot-hub-devguide-device-twins/twin.png
-

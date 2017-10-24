@@ -12,18 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: d8ac076334a7ed9476b4830596d6ea54c29c0e3c
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 3c003d498600a2cfd12ef2adfb7c16f9dfaddb37
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)
-Mit der Azure-Dateisynchronisierung (Vorschau) können die Freigaben auf Windows Server-Computern lokal oder in Azure repliziert werden. Sie und Ihre Benutzer greifen dann auf die Dateifreigabe über den Windows Server-Computer zu, z.B. über eine SMB- oder NFS-Freigabe. Dies ist besonders nützlich für Szenarien, in denen Daten weit entfernt von einem Azure-Rechenzentrum abgerufen und geändert werden, z.B. in einer Zweigstelle. Daten können zwischen mehreren Windows Server-Endpunkten repliziert werden, z.B. zwischen mehreren Zweigstellen. 
+Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
 
 Dieser Leitfaden beschreibt, was Sie beim Bereitstellen der Azure-Dateisynchronisierung berücksichtigen müssen. Es wird empfohlen, dass Sie den Leitfaden [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md) lesen. 
 
@@ -57,7 +55,7 @@ Ein Serverendpunkt stellt einen bestimmten Speicherort auf einem registrierten S
 Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, das ein Tiering von nur selten verwendeten oder aufgerufenen Dateien in Azure Files ermöglicht. Beim Tiering einer Datei ersetzt der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) die Datei lokal durch einen Zeiger oder Analysepunkt, der eine URL für die Datei in Azure Files darstellt. Für eine Tieringdatei ist das Attribut „offline“ in NTFS festgelegt, damit Anwendungen von Drittanbietern Tieringdateien identifizieren können. Wenn ein Benutzer eine Tieringdatei öffnet, ruft die Azure-Dateisynchronisierung nahtlos die Dateidaten aus Azure Files ab, ohne dass der Benutzer wissen muss, dass die Datei nicht lokal auf dem System gespeichert ist. Diese Funktionalität ist auch als hierarchisches Speichermanagement (HSM) bekannt.
 
 ## <a name="azure-file-sync-interoperability"></a>Interoperabilität der Azure-Dateisynchronisierung 
-Dieser Abschnitt behandelt die Interoperabilität der Azure-Dateisynchronisierung mit Windows Server-Features und -Rollen sowie Lösungen von Drittanbietern.
+Dieser Abschnitt behandelt die Interoperabilität von Azure File Sync mit Windows Server-Features und -Rollen sowie Lösungen von Drittanbietern.
 
 ### <a name="supported-versions-of-windows-server"></a>Unterstützte Windows Server-Versionen
 Zum gegenwärtigen Zeitpunkt werden die folgenden Versionen von Windows Server von der Azure-Dateisynchronisierung unterstützt:
@@ -67,10 +65,10 @@ Zum gegenwärtigen Zeitpunkt werden die folgenden Versionen von Windows Server v
 | Windows Server 2016 | Datacenter und Standard | Vollständig (Server mit einer Benutzeroberfläche) |
 | Windows Server 2012 R2 | Datacenter und Standard | Vollständig (Server mit einer Benutzeroberfläche) |
 
-Zukünftige Versionen von Windows Server werden hinzugefügt, sobald sie veröffentlicht werden. Ältere Versionen von Windows können aufgrund von Feedback der Benutzer hinzugefügt werden.
+Zukünftige Versionen von Windows Server werden hinzugefügt, sobald sie veröffentlicht werden. Ältere Versionen von Windows können basierend auf Feedbacks der Benutzer hinzugefügt werden.
 
 > [!Important]  
-> Es wird empfohlen, alle Windows Server-Computer, die für die Azure Synchronisierung verwendet werden, mit den neuesten Updates von Windows Update auf dem neuesten Stand zu halten. 
+> Es wird empfohlen, alle Windows Server-Computer, die für Azure File Sync verwendet werden, mit den neuesten Updates von Windows Update auf dem neuesten Stand zu halten. 
 
 ### <a name="file-system-features"></a>Features des Dateisystems
 | Feature | Status der Unterstützung | Hinweise |
@@ -139,14 +137,9 @@ Die Azure-Dateisynchronisierung ist nur in den folgenden Regionen als Vorschauve
 In der Vorschauversion wird nur die Synchronisierung mit einer Azure-Dateifreigabe in der gleichen Region wie der Speichersynchronisierungsdienst unterstützt.
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
-Updates für den Azure-Dateisynchronisierungs-Agent werden in regelmäßigen Abständen veröffentlicht, um neue Funktionen hinzuzufügen und die gefundenen Probleme zu beheben. Es wird empfohlen, Microsoft Update zu aktivieren, damit Sie alle Updates für den Azure-Dateisynchronisierungs-Agent erhalten, sobald wir sie veröffentlichen. Wir wissen allerdings, dass einige Organisationen Updates genau steuern möchten. Für Bereitstellungen mit älteren Versionen des Azure-Dateisynchronisierungs-Agents:
-
-- Der Speichersynchronisierungsdienst berücksichtigt die vorherige Hauptversion für drei Monate nach der Erstveröffentlichung einer neuen Hauptversion. Beispiel: Version 1.\* wird vom Speichersynchronisierungsdienst bis drei Monate nach der Veröffentlichung von Version 2.\* unterstützt.
-- Wenn drei Monate vergangen sind, beginnt der Speichersynchronisierungsdienst damit, registrierte Server, die die abgelaufene Version verwenden, für die Synchronisierung mit ihren Synchronisierungsgruppen zu blockieren.
-- Innerhalb der drei Monate für eine vorherige Hauptversion werden alle Fehlerbehebungen nur in der aktuellen Hauptversion implementiert.
+[!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)
 * [Bereitstellen von Azure Files](storage-files-deployment-guide.md)
 * [Bereitstellen der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md)
-

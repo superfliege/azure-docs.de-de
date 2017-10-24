@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
+ms.openlocfilehash: 32e92e6ffc376d27297810596691f0371770e86d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: 1c80229e2e5ec0c4ddf1f66099fa00ef145ec2ce
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-shared-access-signatures-sas"></a>Verwenden von Shared Access Signatures (SAS)
 
@@ -427,7 +426,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 Shared Access Signatures sind nützlich für die Vergabe eingeschränkter Berechtigungen für Ihr Speicherkonto an Clients, die keinen Zugriff auf Ihren Kontoschlüssel haben dürfen. Somit sind sie ein wichtiger Teil des Sicherheitsmodells für alle Anwendungen, die den Azure-Speicher verwenden. Wenn Sie den hier genannten Empfehlungen folgen, können Sie mit SAS eine größere Flexibilität für den Zugriff auf Ressourcen in Ihrem Speicherkonto erreichen, ohne die Sicherheit Ihrer Anwendung zu gefährden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+* [Shared Access Signatures, Teil 2: Erstellen und Verwenden einer SAS mit Blob Storage](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../blobs/storage-manage-access-to-resources.md)
 * [Delegieren des Zugriffs mit einer Shared Access Signature](http://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [Introducing Table and Queue SAS (Einführung in Tabellen- und Warteschlangen-SAS; in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
-

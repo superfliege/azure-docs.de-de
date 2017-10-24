@@ -13,19 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: bryanla
+ms.openlocfilehash: 3a81ab859bea5bfe53c7f761e0b40ad481c4c41a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 8b599c3e0e7d4fa3ae5bdb156191bff0553249ee
-ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-# <a name="configure-a-vm-managed-service-identity-msi-using-a-template"></a>Konfigurieren einer VM-MSI (Managed Service Identity, verwaltete Dienstidentität) mithilfe einer Vorlage
+# <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurieren einer verwalteten VM-Dienstidentität mithilfe einer Vorlage
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
 
-Eine verwaltete Dienstidentität stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
+Eine verwaltete Dienstidentität (Managed Service Identity, MSI) stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
 
 In diesem Artikel erfahren Sie, wie Sie MSI für einen virtuellen Azure-Computer mithilfe einer Azure Resource Manager-Bereitstellungsvorlage aktivieren und entfernen.
 
@@ -35,26 +33,26 @@ In diesem Artikel erfahren Sie, wie Sie MSI für einen virtuellen Azure-Computer
 
 ## <a name="enable-msi-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Aktivieren von MSI beim Erstellen eines virtuellen Azure-Computers oder auf einem vorhandenen virtuellen Computer
 
-Wie beim Azure-Portal und der Skripterstellung bieten Azure Resource Manager-Vorlagen die Möglichkeit, von einer Azure-Ressourcengruppe definierte neue bzw. geänderte Ressourcen bereitzustellen. Für die Vorlagenbearbeitung und -bereitstellung sind mehrere Optionen sowohl lokal als auch portal-/webbasiert verfügbar. Einige Beispiele:
+Wie beim Azure-Portal und der Skripterstellung bieten Azure Resource Manager-Vorlagen die Möglichkeit, von einer Azure-Ressourcengruppe definierte neue bzw. geänderte Ressourcen bereitzustellen. Für die Vorlagenbearbeitung und -bereitstellung sind mehrere Optionen sowohl lokal als auch portalbasiert verfügbar, einschließlich:
 
-   - Verwenden einer [benutzerdefinierten Vorlage vom Azure Marketplace](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template). Dies ermöglicht es Ihnen, eine ganz neue Vorlage zu erstellen oder eine Vorlage zu erstellen, die auf einer vorhandenen, oft verwendeten Vorlage oder einer [Schnellstartvorlage](https://azure.microsoft.com/documentation/templates/) basiert.
+   - Verwenden einer [benutzerdefinierten Vorlage vom Azure Marketplace](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template). Dies ermöglicht Ihnen, eine ganz neue Vorlage zu erstellen oder eine Vorlage, die auf einer vorhandenen, oft verwendeten Vorlage oder [Schnellstartvorlage](https://azure.microsoft.com/documentation/templates/) basiert.
    - Ableiten von einer vorhandenen Ressourcengruppe, indem eine Vorlage aus [der ursprünglichen Bereitstellung](../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history) oder aus dem [aktuellen Status der Bereitstellung](../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group) exportiert wird.
-   - Verwenden eines lokalen [JSON-Editors (z.B. VS Code)](../azure-resource-manager/resource-manager-create-first-template.md) und anschließendes Hochladen/Bereitstellen mithilfe von PowerShell oder CLI.
-   - Verwenden des [Azure-Ressourcengruppenprojekts](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) von Visual Studio für das Erstellen und das Bereitstellen der Vorlage.  
+   - Verwenden eines lokalen [JSON-Editors (z.B. VS Code)](../azure-resource-manager/resource-manager-create-first-template.md) und anschließendes Hochladen und Bereitstellen mithilfe von PowerShell oder CLI.
+   - Verwenden des [Azure-Ressourcengruppenprojekts](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) von Visual Studio für das Erstellen und Bereitstellen einer Vorlage.  
 
-Die Vorlagensyntax ist während der ursprünglichen Bereitstellung und der erneuten Bereitstellung identisch, unabhängig davon, für welche Möglichkeit Sie sich entscheiden. Das bedeutet, die Aktivierung von MSI auf einem neuen oder einem vorhandenen virtuellen Computer erfolgt auf dieselbe Weise. Standardmäßig führt Azure Resource Manager außerdem ein [inkrementelles Update](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) für Bereitstellungen durch:
+Unabhängig von der gewählten Option ist die Vorlagensyntax während der ursprünglichen und erneuten Bereitstellung identisch. Die MSI-Aktivierung erfolgt auf einer neuen oder vorhandenen VM auf dieselbe Weise. Standardmäßig führt Azure Resource Manager außerdem ein [inkrementelles Update](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) für Bereitstellungen durch:
 
-1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Sie müssen außerdem sicherstellen, dass Ihr Konto zu einer Rolle gehört, die Ihnen Schreibberechtigungen auf dem virtuellen Computer erteilt, z. B. „Mitwirkender für virtuelle Computer“.
+1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, durch die Sie Schreibberechtigungen auf dem virtuellen Computer erhalten (z.B. die Rolle „Mitwirkender für virtuelle Computer“).
 
-2. Nachdem die Vorlage in einen Editor geladen wurde, suchen Sie die gewünschte `Microsoft.Compute/virtualMachines`-Ressource im Abschnitt `resources`. Dieser Screenshot weicht möglicherweise geringfügig von der Darstellung bei Ihnen ab. Dies hängt davon ab, welchen Editor Sie verwenden und ob Sie eine Vorlage für eine neue oder eine vorhandene Bereitstellung bearbeiten:
+2. Nachdem die Vorlage in einen Editor geladen wurde, suchen Sie die gewünschte `Microsoft.Compute/virtualMachines`-Ressource im Abschnitt `resources`. Dieser Screenshot weicht möglicherweise geringfügig von der Darstellung bei Ihnen ab. Dies hängt davon ab, welchen Editor Sie verwenden und ob Sie eine Vorlage für eine neue oder eine vorhandene Bereitstellung bearbeiten.
 
    >[!NOTE] 
    > Dieses Beispiel setzt voraus, dass Variablen wie z. B. `vmName`, `storageAccountName`, und `nicName` in der Vorlage definiert wurden.
    >
 
-   ![Vorlage vor dem Screenshot – Suchen des virtuellen Computers](./media/msi-qs-configure-template-windows-vm/template-file-before.png) 
+   ![Screenshot der Vorlage – VM suchen](./media/msi-qs-configure-template-windows-vm/template-file-before.png) 
 
-3. Fügen Sie die `"identity"`-Eigenschaft auf derselben Ebene wie die `"type": "Microsoft.Compute/virtualMachines"`-Eigenschaft hinzu. Verwenden Sie hierfür die folgende Syntax:
+3. Fügen Sie die `"identity"`-Eigenschaft auf derselben Ebene wie die `"type": "Microsoft.Compute/virtualMachines"`-Eigenschaft hinzu. Verwenden Sie die folgende Syntax:
 
    ```JSON
    "identity": { 
@@ -62,7 +60,7 @@ Die Vorlagensyntax ist während der ursprünglichen Bereitstellung und der erneu
    },
    ```
 
-4. Fügen Sie dann die VM-MSI-Erweiterung als `resources`-Element hinzu. Verwenden Sie hierfür die folgende Syntax:
+4. Fügen Sie dann die VM-MSI-Erweiterung als `resources`-Element hinzu. Verwenden Sie die folgende Syntax:
 
    >[!NOTE] 
    > Im folgenden Beispiel wird angenommen, dass eine Windows-VM-Erweiterung (`ManagedIdentityExtensionForWindows`) bereitgestellt wird. Sie können die Konfiguration auch für Linux ausführen, indem Sie stattdessen `ManagedIdentityExtensionForLinux` für die Elemente `"name"` und `"type"` verwenden.
@@ -90,22 +88,19 @@ Die Vorlagensyntax ist während der ursprünglichen Bereitstellung und der erneu
    }
    ```
 
-5. Wenn Sie fertig sind, sollte Ihre Vorlage dem folgenden Beispiel ähneln:
+5. Wenn Sie fertig sind, sollte Ihre Vorlage wie folgt aussehen:
 
-   ![Vorlage nach dem Screenshot](./media/msi-qs-configure-template-windows-vm/template-file-after.png) 
+   ![Screenshot der Vorlage nach dem Update](./media/msi-qs-configure-template-windows-vm/template-file-after.png) 
 
 ## <a name="remove-msi-from-an-azure-vm"></a>Entfernen von MSI von einem virtuellen Azure-Computer
 
 Wenn MSI auf einem virtuellen Computer nicht mehr benötigt wird, gehen Sie wie folgt vor:
 
-1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, die Ihnen Schreibberechtigungen auf dem virtuellen Computer erteilt, z. B. „Mitwirkender für virtuelle Computer“.
+1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, durch die Sie Schreibberechtigungen auf dem virtuellen Computer erhalten (z.B. die Rolle „Mitwirkender für virtuelle Computer“).
 
 2. Entfernen Sie die zwei Elemente, die im vorherigen Abschnitt hinzugefügt wurden: die Eigenschaft `"identity"` des virtuellen Computers und die `"Microsoft.Compute/virtualMachines/extensions"`-Ressource.
 
 ## <a name="related-content"></a>Verwandte Inhalte
 
-- [Übersicht über verwaltete Dienstidentitäten](msi-overview.md)
-
-Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.
-
+- Ausführliche Informationen zu MSI finden Sie unter [Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen](msi-overview.md).
 

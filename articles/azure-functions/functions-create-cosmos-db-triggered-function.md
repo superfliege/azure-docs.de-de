@@ -13,15 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 10/02/2017
 ms.author: glenga
 ms.custom: 
+ms.openlocfilehash: 1ff4c2e024faba777fc479b3cd5864e097bbfce1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 04da2dda961eb2c6bc53f0aed1c0cd12372a2332
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Erstellen einer durch Azure Cosmos DB ausgelösten Funktion
 
@@ -66,11 +65,11 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
     | **Sammlungsname** | Items | Name der zu überwachenden Sammlung. |
     | **Erstellen der Leasesammlung, wenn sie nicht vorhanden ist** | Aktiviert | Die Sammlung ist noch nicht vorhanden und muss erstellt werden. |
 
-4. Wählen Sie neben **Azure Cosmos DB-Kontoverbindung** die Option **Neu** und anschließend **+ Neu erstellen** aus. 
+4. Wählen Sie neben **Azure Cosmos DB-Kontoverbindung** die Option **Neu** und anschließend ein bestehendes Cosmos DB-Konto oder **+ Neu erstellen** aus. 
  
     ![Konfigurieren der Azure Cosmos DB-Verbindung](./media/functions-create-cosmos-db-triggered-function/functions-create-CosmosDB.png)
 
-6. Verwenden Sie die Einstellungen für **Neues Konto** wie in der Tabelle angegeben.
+6. Wenn Sie ein neues Cosmos DB-Konto erstellen, verwenden Sie die **Neues Konto**-Einstellungen wie in der Tabelle angegeben.
 
     | Einstellung      | Empfohlener Wert  | Beschreibung                                |
     | ------------ | ---------------- | ------------------------------------------ |
@@ -151,4 +150,3 @@ Sie haben eine Funktion erstellt, die ausgeführt wird, wenn Ihrer Azure Cosmos 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
 Weitere Informationen zu Queue Storage-Auslösern finden Sie unter [Azure Storage-Warteschlangenbindungen in Azure Functions](functions-bindings-storage-queue.md).
-

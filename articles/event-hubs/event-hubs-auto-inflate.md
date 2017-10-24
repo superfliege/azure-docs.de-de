@@ -12,29 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/12/2017
-ms.author: shvija;sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: b085091ea7bfd601efb0eee84144ddd091422d6e
-ms.contentlocale: de-de
-ms.lasthandoff: 06/13/2017
-
-
+ms.date: 10/05/2017
+ms.author: sethm
+ms.openlocfilehash: 1cd31e0866ee6088483f88e8f80d01f75764c771
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatische Erweiterung der Azure Event Hub-Durchsatzeinheiten
 
-## <a name="overview"></a>Übersicht
+Azure Event Hubs ist eine extrem skalierbare Datenstreamingplattform. Daher erweitern Event Hubs-Kunden ihre Nutzung häufig nach der Integration des Dienstes. Für solche Erweiterungen müssen die vordefinierten Durchsatzeinheiten zur Skalierung von Event Hubs und zur Verarbeitung größerer Übertragungsraten erweitert werden. Mit der Funktion *Automatische Vergrößerung* von Event Hubs wird die Anzahl von Durchsatzeinheiten automatisch den Nutzungsanforderungen angepasst. Zusätzliche Durchsatzeinheiten verhindern Drosselungsszenarien, bei denen Folgendes vorliegt:
 
-Azure Event Hubs ist eine extrem skalierbare Datenstreamingplattform. Daher erweitern Event Hubs-Kunden ihre Nutzung häufig nach der Integration des Dienstes. Für solche Erweiterungen müssen die vordefinierten Durchsatzeinheiten (TUs, Throughput Units) zur Skalierung von Event Hubs und zur Verarbeitung größerer Übertragungsraten erweitert werden. Mit der Funktion *Automatische Vergrößerung* von Event Hubs wird die Anzahl von TUs automatisch an die Nutzungsanforderungen angepasst. Durch die Erweiterung von TUs werden Drosselungsszenarios verhindert, bei denen Folgendes vorliegt:
-
-* Die Datenerfassungsrate überschreitet die festgelegten TUs.
-* Die Rate für ausgehende Datenanforderungen überschreitet die festgelegten TUs.
+* Die Datenerfassungsrate überschreitet die festgelegten Durchsatzeinheiten.
+* Die Raten für ausgehende Datenanforderungen überschreiten die festgelegten Durchsatzeinheiten.
 
 ## <a name="how-auto-inflate-works"></a>Funktionsweise der automatischen Vergrößerung
 
-Der Datenverkehr von Event Hubs wird von Durchsatzeinheiten gesteuert. Eine einzelne TU lässt eingehenden Datenverkehr von 1 MB/s und die doppelte Menge an ausgehendem Datenverkehr zu. Standard Event Hubs kann mit 1 bis 20 Durchsatzeinheiten konfiguriert werden. Dank der automatischen Vergrößerung können Sie zunächst mit den mindestens erforderlichen Durchsatzeinheiten beginnen. Je nach der Zunahme des Datenverkehrs passt die Funktion die Durchsatzeinheiten automatisch bis zur maximal erforderlichen Anzahl an. Die automatische Vergrößerung hat folgende Vorteile:
+Der Datenverkehr von Event Hubs wird von Durchsatzeinheiten gesteuert. Eine einzelne Durchsatzeinheit lässt eingehenden Datenverkehr von 1 MB pro Sekunde und die doppelte Menge an ausgehendem Datenverkehr zu. Standard Event Hubs kann mit 1 bis 20 Durchsatzeinheiten konfiguriert werden. Dank der automatischen Vergrößerung können Sie zunächst mit den mindestens erforderlichen Durchsatzeinheiten beginnen. Je nach der Zunahme des Datenverkehrs passt die Funktion die Durchsatzeinheiten automatisch bis zur maximal erforderlichen Anzahl an. Die automatische Vergrößerung hat folgende Vorteile:
 
 - Effizienter Skalierungsmechanismus, der eine Vergrößerung entsprechend der Zunahme des Datenverkehrs ermöglicht
 - Automatische Skalierung bis zur festgelegten Obergrenze ohne Probleme aufgrund einer Drosselung
@@ -53,7 +48,7 @@ Sie können die Funktion zur automatischen Vergrößerung in einem Namespace bei
  
 ![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
-Wenn diese Option aktiviert ist, können Sie mit wenigen Durchsatzeinheiten beginnen und die Anzahl mit zunehmenden Nutzungsanforderungen anpassen. Die Obergrenze für die Vergrößerung hat keine Auswirkungen auf den Preis. Dieser hängt von der Anzahl von genutzten TUs pro Stunde ab.
+Wenn diese Option aktiviert ist, können Sie mit wenigen Durchsatzeinheiten beginnen und die Anzahl mit zunehmenden Nutzungsanforderungen anpassen. Die Obergrenze für die Vergrößerung hat keine Auswirkungen auf den Preis. Dieser hängt von der Anzahl von genutzten Durchsatzeinheiten pro Stunde ab.
 
 Sie können die automatische Vergrößerung auch über die Option **Skalieren** auf dem Blatt für Einstellungen im Portal aktivieren:
  
@@ -112,4 +107,3 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
 * [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Erstellen eines Event Hubs](event-hubs-create.md)
-

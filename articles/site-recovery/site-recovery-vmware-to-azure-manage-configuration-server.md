@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 06/29/2017
+ms.date: 10/06/2017
 ms.author: anoopkv
+ms.openlocfilehash: e4740c96383468713976e5a98881bec13b0c1921
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: ba236ad1327a7f3419d7c8cf7effc889a90dde61
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-a-configuration-server"></a>Verwalten eines Konfigurationsservers
 
 Der Konfigurationsserver fungiert als Koordinator zwischen den Site Recovery-Diensten und Ihrer lokalen Infrastruktur. In diesem Artikel wird beschrieben, wie Sie den Konfigurationsserver einrichten, konfigurieren und verwalten können.
@@ -113,7 +111,7 @@ ProxyPassword="Password"
 
 ## <a name="modify-user-accounts-and-passwords"></a>Ändern von Benutzerkonten und Kennwörtern
 
-„CSPSConfigTool.exe“ wird dazu verwendet, um Benutzerkonten zu verwalten, die für die **automatische Ermittlung von virtuellen VMware-Computern** und zum Durchführen der **Pushinstallation des Mobility Service auf geschützten Computern** verwendet werden. 
+„CSPSConfigTool.exe“ wird zur Verwaltung von Benutzerkonten verwendet, die für die **automatische Ermittlung von virtuellen VMware-Computern** und zum Durchführen der **Pushinstallation des Mobility Service auf geschützten Computern verwendet werden. 
 
 1. Melden Sie sich am Konfigurationsserver an.
 2. Starten Sie „CSPSConfigtool.exe“, indem Sie auf dem Desktop auf die Verknüpfung klicken.
@@ -145,7 +143,7 @@ ProxyPassword="Password"
 ## <a name="registering-a-configuration-server-with-a-different-recovery-services-vault"></a>Registrieren eines Konfigurationsservers bei einem anderen Recovery Services-Tresor
 
 > [!WARNING]
-> Die nachfolgenden Schritte trennen die Konfiguration vom aktuellen Tresor, und die Replikation aller geschützten virtuellen Computer unter dem Konfigurationsserver wird beendet.
+> In den nachfolgenden Schritten wird die Zuordnung der Konfiguration zum aktuellen Tresor getrennt und die Replikation aller geschützten virtuellen Computer unter dem Konfigurationsserver beendet.
 
 1. Melden Sie sich am Konfigurationsserver an.
 2. Führen Sie an einer Eingabeaufforderung mit Administratorrechten folgenden Befehl aus:
@@ -169,22 +167,25 @@ ProxyPassword="Password"
     net start obengine
     ```
 
-## <a name="updating-a-configuration-server"></a>Aktualisieren eines Konfigurationsservers
+## <a name="upgrading-a-configuration-server"></a>Durchführen eines Upgrades für einen Konfigurationsserver
 
 > [!WARNING]
-> Updates werden nur bis zur N-4. Version unterstützt. Wenn die neueste Version auf dem Markt z. B. 9.11 ist, können Sie aus Version 9.10, 9.9, 9.8 oder 9.7 ein direktes Update auf 9.11 ausführen. Wenn Sie aber eine beliebige Version kleiner oder gleich 9.6 verwenden, müssen Sie ein Update mindestens auf Version 9.7 ausführen, bevor Sie die neuesten Updates auf Ihren Konfigurationsserver anwenden können. Downloadlinks für frühere Versionen finden Sie unter [Updates für den Azure Site Recovery-Dienst](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+> Updates werden nur bis zur N-4. Version unterstützt. Wenn die neueste Version auf dem Markt z. B. 9.11 ist, können Sie aus Version 9.10, 9.9, 9.8 oder 9.7 ein direktes Update auf 9.11 ausführen. Wenn Sie jedoch Version 9.6 oder niedriger verwenden, müssen Sie mindestens auf Version 9.7 aktualisieren, bevor Sie die neuesten Updates auf Ihren Konfigurationsserver anwenden können. Downloadlinks für frühere Versionen finden Sie unter [Updates für den Azure Site Recovery-Dienst](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
 
 1. Laden Sie den Update-Installer auf Ihren Konfigurationsserver herunter.
-2. Starten Sie den Installer durch Doppelklicken auf den Installer.
+2. Starten Sie den Installer, indem Sie auf diesen doppelklicken.
 3. Der Installer erkennt die Version der Site Recovery-Komponenten, die auf Computer vorhanden sind und fordert zu einer Bestätigung auf. 
 4. Klicken Sie auf die Schaltfläche „OK“, um die Angabe zu bestätigen, und fahren Sie dann mit dem Upgrade fort.
 
 
-## <a name="decommissioning-a-configuration-server"></a>Außerbetriebnahme eines Konfigurationsservers
-Überprüfen Sie Folgendes vor der Außerbetriebnahme Ihres Konfigurationsservers.
-1. Deaktivieren Sie den Schutz für alle virtuellen Computer unter diesem Konfigurationsserver.
-2. Heben Sie alle Zuordnungen von Replikationsrichtlinien zum Konfigurationsserver auf.
-3. Löschen Sie alle vCenter-Server/vSphere-Hosts, die mit dem Konfigurationsserver verknüpft sind.
+## <a name="delete-or-unregister-a-configuration-server"></a>Löschen oder Aufheben der Registrierung eines Konfigurationsservers
+
+> [!WARNING]
+> Überprüfen Sie Folgendes vor der Außerbetriebnahme Ihres Konfigurationsservers.
+> 1. [Deaktivieren Sie den Schutz](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) für alle virtuellen Computer unter diesem Konfigurationsserver.
+> 2. [Heben Sie die Zuordnung von allen Replikationsrichtlinien zum Konfigurationsserver auf](site-recovery-setup-replication-settings-vmware.md#dissociate-a-configuration-server-from-a-replication-policy), oder [löschen](site-recovery-setup-replication-settings-vmware.md#delete-a-replication-policy) Sie sie.
+> 3. [Löschen](site-recovery-vmware-to-azure-manage-vCenter.md#delete-a-vcenter-in-azure-site-recovery) Sie alle vCenter-Server/vSphere-Hosts, die mit dem Konfigurationsserver verknüpft sind.
+
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>Löschen des Konfigurationsservers im Azure-Portal
 1. Navigieren Sie im Azure-Portal im Menü „Tresor“ zu **Site Recovery-Infrastruktur** > **Konfigurationsserver**.
@@ -193,9 +194,6 @@ ProxyPassword="Password"
 
   ![delete-configuration-server](./media/site-recovery-vmware-to-azure-manage-configuration-server/delete-configuration-server.PNG)
 4. Klicken Sie auf **Ja**, um das Löschen des Servers zu bestätigen.
-
-  >[!WARNING]
-  Wenn virtuelle Computer, Replikationsrichtlinien oder vCenter-Server/vSphere-Hosts diesem Konfigurationsserver zugeordnet sind, können Sie den Server nicht löschen. Löschen Sie diese Entitäten, bevor Sie versuchen, den Tresor zu löschen.
 
 ### <a name="uninstall-the-configuration-server-software-and-its-dependencies"></a>Deinstallieren von Software und Abhängigkeiten des Konfigurationsservers
   > [!TIP]
@@ -214,6 +212,31 @@ ProxyPassword="Password"
   ```
   reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
   ```
+
+## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Löschen oder Aufheben der Registrierung eines Konfigurationsservers (PowerShell)
+
+1. [Installieren](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) Sie das Azure PowerShell-Modul.
+2. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an:
+    
+    `Login-AzureRmAccount`
+3. Wählen Sie das Abonnement aus, unter dem der Tresor vorhanden ist.
+
+     `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
+3.  Richten Sie jetzt den Kontext für Ihren Tresor ein.
+    
+    ```
+    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
+    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+    ```
+4. Rufen Sie Ihren ausgewählten Konfigurationsserver ab.
+
+    `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
+6. Löschen Sie den Konfigurationsserver.
+
+    `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
+
+> [!NOTE]
+> Die **-Force**-Option im Cmdlet „Remove-AzureRmSiteRecoveryFabric“ kann verwendet werden, um das Entfernen bzw. Löschen des Konfigurationsservers zu erzwingen.
 
 ## <a name="renew-configuration-server-secure-socket-layerssl-certificates"></a>Erneuern von SSL-Zertifikaten (Secure Socket Layer) für den Konfigurationsserver
 Der Konfigurationsserver verfügt über einen integrierten Webserver, der die Aktivitäten von Mobility Service, Prozessserver und Masterzielserver, die mit dem Konfigurationsserver verbunden sind, orchestriert. Der Webserver des Konfigurationsservers verwendet ein SSL-Zertifikat zum Authentifizieren seiner Clients. Dieses Zertifikat hat eine Ablaufzeit von drei Jahren und kann jederzeit mithilfe des folgenden Verfahrens erneuert werden:
@@ -241,7 +264,7 @@ Für alle Installationen, die vor dem Mai 2016 durchgeführt wurden, wurde die G
   ![certificate-details](./media/site-recovery-vmware-to-azure-manage-configuration-server/ssl-cert-expiry-details.png)
 
   >[!TIP]
-  Möglicherweise wird anstelle der Schaltfläche **Jetzt verlängern** die Schaltfläche **Upgrade jetzt ausführen** angezeigt. Dies bedeutet, dass für einige Komponenten in Ihrer Umgebung noch kein Upgrade auf 9.4.xxxx.x oder höhere Versionen ausgeführt wurde.
+  Möglicherweise wird anstelle der Schaltfläche **Jetzt verlängern** die Schaltfläche **Upgrade jetzt ausführen** angezeigt. Die Schaltfläche „Jetzt Upgrade durchführen“ bedeutet, dass für einige Komponenten in Ihrer Umgebung noch kein Upgrade auf 9.4.xxxx.x oder höhere Versionen durchgeführt wurde.
 
 ## <a name="revive-a-configuration-server-if-the-secure-socket-layer-ssl-certificate-expired"></a>Erneutes Aktivieren eines Konfigurationsservers bei abgelaufenem SSL-Zertifikat (Secure Socket Layer)
 
@@ -268,4 +291,3 @@ Für alle Installationen, die vor dem Mai 2016 durchgeführt wurden, wurde die G
 
 ## <a name="common-issues"></a>Häufige Probleme
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
-

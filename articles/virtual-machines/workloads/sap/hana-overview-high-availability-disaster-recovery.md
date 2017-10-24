@@ -11,15 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/27/2016
+ms.date: 10/02/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 50917572ef8739ddc674d3592696a1ee4a8edc10
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: c7f3da9a92d5e9c60355c93a7205d16dc9ab8390
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA (große Instanzen) in Azure 
 
@@ -113,7 +112,7 @@ Die zugrunde liegende Speicherinfrastruktur von SAP HANA in Azure (große Instan
 
 Sie können Speichermomentaufnahmen für drei verschiedene Volumeklassen durchführen:
 
-- Eine kombinierte Momentaufnahme für „/hana/data“, „/hana/log“ und „/hana/shared“ (einschließlich „/usr/sap“). Für diese Momentaufnahme ist die Ausführung einer SAP HANA-Momentaufnahme erforderlich.
+- Eine kombinierte Momentaufnahme für „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“). Diese Momentaufnahme erfordert die Erstellung einer SAP HANA-Momentaufnahme als Vorbereitung für die Speichermomentaufnahme. Die SAP HANA-Momentaufnahme stellt sicher, dass die Datenbank aus Speichersicht in einem konsistenten Zustand verbleibt.
 - Eine separate Momentaufnahme für „/hana/logbackups“
 - Eine Betriebssystempartition (nur für Typ I von HANA (große Instanzen))
 
@@ -870,7 +869,6 @@ Latest Snapshot Replicated: snapmirror.c169b434-75c0-11e6-9903-00a098a13ceb_2154
 Size of Latest Snapshot Replicated: 244KB
 Current Lag Time between snapshots: -   ***Less than 90 minutes is acceptable***
 ```
-
 
 
 

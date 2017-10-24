@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/13/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 0cf9b83d7023641ec445a59a5e61d3da038695fa
-ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
-
+ms.openlocfilehash: df82afab2c38431e134146143524edc080ee38f9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-and-responding-to-security-alerts-in-operations-management-suite-security-and-audit-solution"></a>Überwachen von und Reagieren auf Sicherheitswarnungen in der Sicherheits- und Überwachungslösung von Operations Management Suite
 Dieses Dokument unterstützt Sie bei der Verwendung der Option Threat Intelligence in der Sicherheits- und Überwachungslösung von OMS für das Überwachen von und Reagieren auf Sicherheitswarnungen.
@@ -88,7 +86,7 @@ Die Karte **Informationen zu Bedrohungen** hilft Ihnen beim Auffinden der aktuel
 ### <a name="responding-to-distinct-malicious-ip-accessed"></a>Reagieren auf bestimmte böswillige IP-Adresse, auf die zugegriffen wurde
 In einigen Szenarien sehen Sie möglicherweise eine potenziell böswillige IP-Adresse, auf die einer der überwachten Computer zugegriffen hat:
 
-![Threat Intelligence-Karte](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig6.png)
+![Threat Intelligence-Karte](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig6.PNG)
 
 Diese Warnung und andere derselben Kategorie werden über die OMS-Sicherheit generiert, wobei [Microsoft Threat Intelligence](https://youtu.be/O4WtxgUrDc8) verwendet wird. Die Threat Intelligence-Daten werden von Microsoft gesammelt und von führenden Threat Intelligence-Anbietern erworben. Diese Daten werden regelmäßig aktualisiert und an sich schnell entwickelnde Bedrohungen angepasst. Es empfiehlt sich eine Kombination mit anderen Quellen von Sicherheitsinformationen, wenn eine Sicherheitswarnung [untersucht](https://blogs.technet.microsoft.com/msoms/2016/12/08/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) wird. 
 
@@ -104,5 +102,4 @@ In diesem Dokument haben Sie erfahren, wie Sie die Option **Threat Intelligence*
 * [Operations Management Suite (OMS) – Übersicht](operations-management-suite-overview.md)
 * [Erste Schritte mit der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-getting-started.md)
 * [Überwachen von Ressourcen in der Sicherheits- und Überwachungslösung der Operations Management Suite](oms-security-monitoring-resources.md)
-
 

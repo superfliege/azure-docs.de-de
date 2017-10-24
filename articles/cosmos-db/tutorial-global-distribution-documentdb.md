@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: f4d8efe9814bd28bb902567a23b541bc9b5414a1
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: 0ba30ca4687248a27d9fe72acdc65a95114a437f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-documentdb-api"></a>Einrichten der globalen Verteilung von Azure Cosmos DB mithilfe der DocumentDB-API
 
@@ -46,7 +45,7 @@ Das SDK sendet automatisch alle Schreibvorgänge an die aktuell für solche Vorg
 
 Alle Lesevorgänge werden an die erste verfügbare Region in der Liste der bevorzugten Regionen gesendet. Wenn bei der Anforderung ein Fehler auftritt, führt der Client ein Failover zur nächsten Region auf der Liste durch, usw.
 
-Die SDKs versuchen nur, in den in „PreferredLocations“ angegebenen Regionen Lesevorgänge auszuführen. Wenn ein Datenbankkonto in drei Regionen verfügbar ist, der Client aber nur zwei Leseregionen für PreferredLocations angibt, werden auch bei einem Failover keine Lesevorgänge außerhalb der Schreibregion verarbeitet.
+Die SDKs versuchen nur, in den in „PreferredLocations“ angegebenen Regionen Lesevorgänge auszuführen. Wenn ein Datenbankkonto in vier Regionen verfügbar ist, der Client aber nur zwei Leseregionen (non-write) für PreferredLocations angibt, werden keine Lesevorgänge aus einer Leseregion verarbeitet, die nicht in PreferredLocations angegeben ist. Wenn die in den PreferredLocations angegebenen Leseregionen nicht verfügbar sind, werden Lesevorgänge aus der Schreibregion verarbeitet.
 
 Die Anwendung kann die vom SDK ausgewählten aktuellen Schreib- und Leseendpunkte anhand von zwei Eigenschaften überprüfen: WriteEndpoint und ReadEndpoint. Diese stehen im SDK der Version 1.8 und höher zur Verfügung.
 
@@ -177,5 +176,4 @@ Sie können jetzt mit dem nächsten Tutorial fortfahren, um zu erfahren, wie Sie
 > [Lokales Entwickeln mit dem Emulator](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
-
 

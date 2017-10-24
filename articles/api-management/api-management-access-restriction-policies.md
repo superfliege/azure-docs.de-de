@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
+ms.openlocfilehash: a8bbe6c4f6919f150012163b0c7559d2986e072f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: 70cccd5ac7fbea36f02150e3da319a043c22c677
-ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -387,7 +386,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
     <!-- if there are multiple possible issuers, then add additional issuer elements -->  
   </issuers>  
   <required-claims>  
-    <claim name="name of the claim as it appears in the token" match="all|any">  
+    <claim name="name of the claim as it appears in the token" match="all|any" separator="separator character in a multi-valued claim">
       <value>claim value as it is expected to appear in the token</value>  
       <!-- if there is more than one allowed values, then add additional value elements -->  
     </claim>  
@@ -517,6 +516,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |require-expiration-time|Boolescher Wert. Gibt an, ob ein Ablaufanspruch im Token erforderlich ist.|Nein|true|
 |require-scheme|Der Name des Tokenschemas, z.B. „Bearer“. Wenn dieses Attribut festgelegt ist, stellt die Richtlinie sicher, das das angegebene Schema im Wert für den Autorisierungsheader vorhanden ist.|Nein|–|
 |require-signed-tokens|Boolescher Wert. Gibt an, ob ein Token signiert sein muss.|Nein|true|  
+|separator|Eine Zeichenfolge. Gibt ein Trennzeichen (z.B. „,“) zum Extrahieren eines Satzes von Werten aus einem mehrwertigen Anspruch an.|Nein|N/V| 
 |url|URL des Open ID-Konfigurationsendpunkts, von dem die Open ID-Konfigurationsmetadaten abgerufen werden können. Verwenden Sie für Azure Active Directory diese URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`. Verwenden Sie dabei den Namen Ihres Verzeichnismandanten, z.B. `contoso.onmicrosoft.com`.|Ja|N/V|  
   
 ### <a name="usage"></a>Verwendung  
@@ -528,4 +528,3 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Richtlinien finden Sie unter [Richtlinien in Azure API Management](api-management-howto-policies.md).  
-

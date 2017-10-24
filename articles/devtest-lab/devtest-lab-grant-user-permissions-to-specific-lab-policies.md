@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f1524fa83de6ce53f853ed6859de15076e20ea3b
-ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: fa7c1e4435106d0fc25cb7f77f195eb48705772d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Gewähren von Benutzerberechtigungen für bestimmte Labrichtlinien
 ## <a name="overview"></a>Übersicht
@@ -93,5 +92,4 @@ Nachdem Sie Benutzerberechtigungen für bestimmte Labrichtlinien gewährt haben,
 * [Erstellen einer Labvorlage](devtest-lab-create-template.md).
 * [Erstellen benutzerdefinierter Artefakte für Ihre VMs](devtest-lab-artifact-author.md).
 * [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md).
-
 

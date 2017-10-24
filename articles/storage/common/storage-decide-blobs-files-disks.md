@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: tamram
+ms.openlocfilehash: 9e8808a50e86e40af4991a6054a55ef57f744aae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: 192680cc3faee86c0a45bc9abe4b6579ec56f324
-ms.contentlocale: de-de
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger
 
 Microsoft Azure bietet verschiedenen Funktionen in Azure Storage zum Speichern und Zugreifen auf Ihre Daten in der Cloud. Dieser Artikel befasst sich mit Azure Files, Blobs und Datenträger und soll Sie bei der Entscheidung zwischen diesen Funktionen unterstützen.
@@ -70,7 +68,7 @@ In der folgenden Tabelle wird Azure Files mit Azure-Datenträger verglichen.
 |Authentifizierung|Integriert|Wird mit „net use“ eingerichtet|  
 |Cleanup|Automatisch|Manuell|  
 |Zugriff mithilfe von REST|Auf Dateien auf dem virtuellen Datenträger kann nicht zugegriffen werden.|Auf Dateien, die in einer Freigabe gespeicherte sind, kann zugegriffen werden.|  
-|Max. Größe|1-TB-Datenträger|5-TB-Dateifreigabe und eine 1 TB große Datei innerhalb der Freigabe|  
+|Max. Größe|4-TB-Datenträger|5-TB-Dateifreigabe und eine 1 TB große Datei innerhalb der Freigabe|  
 |Max. 8 KB IOPS|500 IOPS|1.000 IOPS|  
 |Durchsatz|Bis zu 60 MB/s pro Datenträger|Bis zu 60 MB/s pro Dateifreigabe|  
 
@@ -81,4 +79,3 @@ Bei der Entscheidung für die Art und Weise, wie Sie Ihre Daten speichern und au
 Einige SMB-Funktion sind nicht in der Cloud verfügbar. Weitere Informationen finden Sie unter [Features not supported by the Azure File service (Funktionen, die vom Azure-Dateidienst nicht unterstützt werden)](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
   
 Weitere Informationen zu Datenträgern finden Sie in den Artikeln [Informationen zu Datenträgern und VHDs für Azure-Linux-VMs](../../virtual-machines/windows/about-disks-and-vhds.md) und [Anfügen eines Datenträgers an einen virtuellen Windows-Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde](../../virtual-machines/windows/classic/attach-disk.md).
-

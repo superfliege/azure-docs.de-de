@@ -14,15 +14,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 10/06/2017
 ms.author: ankshah
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: e08c0ba9c1fc0bab72ae8c1158aafaad4f66920e
-ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
-
+ms.openlocfilehash: 8836cb516bf7669a2d17da7f87222960fc343042
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Azure Cosmos DB-Firewallunterstützung
 Zum Sichern von in einem Azure Cosmos DB-Datenbankkonto gespeicherten Daten bietet Azure Cosmos DB Unterstützung für ein auf einem Geheimnis basierendes [Autorisierungsmodell](https://msdn.microsoft.com/library/azure/dn783368.aspx), das einen starken hashbasierten Nachrichtenauthentifizierungscode (HMAC) nutzt. Azure Cosmos DB unterstützt nun neben dem auf einem Geheimnis basierenden Autorisierungsmodell durch Richtlinien gesteuerte IP-basierte Access Control für die eingehende Firewallunterstützung. Dieses Modell ähnelt den Firewallregeln eines herkömmlichen Datenbanksystems sehr und bietet zusätzliche Sicherheit für das Azure Cosmos DB-Datenbankkonto. Mit diesem Modell können Sie nun ein Azure Cosmos DB-Datenbankkonto so konfigurieren, dass es nur über eine genehmigte Gruppe von Computern und/oder Clouddiensten zugänglich ist. Für den Zugriff auf Azure Cosmos DB-Ressourcen über diese genehmigten Gruppen von Computern und Diensten muss der Aufrufer weiterhin ein gültiges Autorisierungstoken vorlegen.
@@ -67,10 +65,10 @@ Geben Sie im neuen Fenster an, ob das Azure-Portal auf das Konto zugreifen kann,
 > Wenn Sie eine IP-Zugriffssteuerungsrichtlinie aktivieren, müssen Sie die IP-Adresse für das Azure-Portal hinzufügen, damit der Zugriff weiterhin möglich ist. Die IP-Adressen des Portals lauten wie folgt:
 > |Region|IP-Adresse|
 > |------|----------|
-> |Alle Regionen, mit Ausnahme der unten angegebenen| 104.42.195.92|
+> |Alle Regionen, mit Ausnahme der unten angegebenen| 104.42.195.92, 40.76.54.131, 52.176.6.30, 52.169.50.45, 52.187.184.26|
 > |Deutschland|51.4.229.218|
 > |China|139.217.8.252|
-> |US Gov Arizona|52.244.48.71|
+> |US Gov|52.244.48.71|
 >
 
 ![Screenshot: Konfigurieren von Firewalleinstellungen im Azure-Portal](./media/firewall-support/azure-portal-firewall-configure.png)
@@ -86,5 +84,4 @@ Aus Sicherheitsgründen wird beim Zugriff über das SDK oder die REST-API von Co
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur netzwerkbezogenen Leistungssteigerung finden Sie unter [Tipps zur Leistungssteigerung](performance-tips.md).
-
 

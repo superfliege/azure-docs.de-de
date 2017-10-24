@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: adegeo
+ms.openlocfilehash: 371295efea1eab66361b9aba21a55bbd2826c69b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: fa7d9d3bef4cb326844ede76171e8c566e87116b
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Bereitstellen der App in VM-Skalierungsgruppen
 
 Dieser Artikel beschreibt verschiedene Möglichkeiten zum Installieren der Software zum Bereitstellungszeitpunkt der Skalierungsgruppe.
@@ -49,7 +47,7 @@ Führen Sie folgende Schritte aus:
 
 Weitere Informationen über Datenträger finden Sie unter [Managed Disks – Übersicht](../virtual-machines/windows/managed-disks-overview.md) und [Verwenden angefügter Datenträger](virtual-machine-scale-sets-attached-disks.md).
 
-## <a name="install-when-the-scale-set-is-provisioned"></a>Installieren nach der Bereitstellung der Skalierungsgruppe
+## <a name="already-provisioned"></a>Installieren nach der Bereitstellung der Skalierungsgruppe
 
 Auf eine VM-Skalierungsgruppe können VM-Erweiterungen angewendet werden. Mit VM-Erweiterungen können Sie die virtuellen Computer in einer Skalierungsgruppe als ganze Gruppe anpassen. Weitere Informationen zu Erweiterungen finden Sie unter [VM-Erweiterungen](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
@@ -228,5 +226,4 @@ Angenommen, Sie möchten das Betriebssystemimage aktualisieren, während gleichz
 [linux-vm-capture]: ../virtual-machines/linux/capture-image.md
 [windows-vm-capture]: ../virtual-machines/windows/capture-image.md 
 [vmss-create]: virtual-machine-scale-sets-create.md
-
 

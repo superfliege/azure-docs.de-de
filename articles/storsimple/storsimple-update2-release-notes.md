@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/24/2016
+ms.date: 09/25/2017
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ddd34019dbef06d324437dee1430488cb2c9a639
-
-
+ms.openlocfilehash: d03e45b839e3630e7f5df4b3144b823955920088
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>Versionsanmerkungen zu Update 2 der StorSimple 8000-Serie
 ## <a name="overview"></a>Übersicht
@@ -87,7 +87,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in die
 | 12 |Migration |Nach Abschluss die Migration darf das Gerät der 5000/7000 Serie nicht auf die migrierten Datencontainer zugreifen. |Es wird empfohlen, die migrierten Datencontainer zu löschen, nachdem die Migration vollständig abgeschlossen ist. |Ja |Nein |
 | 13 |Klonen und Notfallwiederherstellung |Ein StorSimple-Gerät mit Update 1 kann für ein Gerät, auf dem ältere Software als Update 1 ausgeführt wird, keinen Klonvorgang bzw. keine Notfallwiederherstellung durchführen. |Das Zielgerät muss auf Update 1 aktualisiert werden, damit diese Operationen ausgeführt werden können. |Ja |Ja |
 | 14 |Migration |Die Konfigurationssicherung für die Migration kann auf einem Gerät der Serie 5000-7000 fehlschlagen, wenn Volumegruppen ohne zugehörige Volumes vorhanden sind. |Löschen Sie die leeren Volumegruppen ohne zugehörige Volumes, und wiederholen Sie dann die Konfigurationssicherung. |Ja |Nein |
-| 15 |Azure PowerShell-Cmdlets und lokale Volumes |Sie können über Azure PowerShell-Cmdlets kein lokales Volume erstellen. (Alle Volumes, die Sie mithilfe von Azure PowerShell erstellen, sind mehrstufig.) |Verwenden Sie immer den StorSimple Manager-Dienst, um lokale Volumes zu konfigurieren. |Ja |Nein |
+| 15 |Azure PowerShell-Cmdlets und lokale Volumes |Sie können über Azure PowerShell-Cmdlets kein lokales Volume erstellen. (Alle Volumes, die Sie mithilfe von Azure PowerShell erstellen, sind mehrstufig.) Verwenden Sie darüber hinaus nicht die Azure PowerShell-Cmdlets zum Ändern der Eigenschaften eines lokalen Volumes, da dadurch das Volume ungewollt in ein mehrstufiges Volume geändert wird. |Verwenden Sie immer den StorSimple Manager-Dienst, um lokale Volumes zu konfigurieren oder zu ändern. |Ja |Nein |
 | 16 |Für lokale Volumes verfügbarer Speicherplatz |Wenn Sie ein lokales Volume löschen, wird der für neue Volumes verfügbare Speicherplatz möglicherweise nicht sofort aktualisiert. Der StorSimple Manager-Dienst aktualisiert den verfügbaren lokalen Speicherplatz ungefähr stündlich. |Warten Sie eine Stunde, bevor Sie versuchen, das neue Volume zu erstellen. |Ja |Nein |
 | 17 |Lokale Volumes |Der Wiederherstellungsauftrag macht die temporäre Momentaufnahmensicherung im Sicherungskatalog verfügbar, jedoch nur während der Dauer des Wiederherstellungsauftrags. Er macht außerdem eine Gruppe virtueller Datenträger mit dem Präfix **tmpCollection** auf der Seite **Sicherungsrichtlinien** verfügbar, jedoch nur während der Dauer des Wiederherstellungsauftrags. |Dieses Verhalten ist möglich, wenn der Wiederherstellungsauftrag nur lokale Volumes oder eine Mischung aus lokalen und mehrstufigen Volumes enthält. Wenn der Wiederherstellungsauftrag nur mehrstufige Volumes enthält, tritt dieses Verhalten nicht auf. Es ist kein Benutzereingriff erforderlich. |Ja |Nein |
 | 18 |Lokale Volumes |Wenn Sie einen Wiederherstellungsauftrag abbrechen und direkt danach ein Controllerfailover auftritt, zeigt der Wiederherstellungsauftrag **Fehler** anstelle von **Abgebrochen** an. Wenn es bei einem Wiederherstellungsauftrag zu einem Fehler kommt und direkt danach ein Controllerfailover auftritt, zeigt der Wiederherstellungsauftrag **Abgebrochen** anstelle von **Fehler** an. |Dieses Verhalten ist möglich, wenn der Wiederherstellungsauftrag nur lokale Volumes oder eine Mischung aus lokalen und mehrstufigen Volumes enthält. Wenn der Wiederherstellungsauftrag nur mehrstufige Volumes enthält, tritt dieses Verhalten nicht auf. Es ist kein Benutzereingriff erforderlich. |Ja |Nein |
@@ -106,10 +106,4 @@ Dieses Update kann nicht auf das virtuelle Gerät angewendet werden. Es müssen 
 
 ## <a name="next-step"></a>Nächster Schritt
 Erfahren Sie, wie Sie [Update 2 auf Ihrem StorSimple-Gerät installieren](storsimple-install-update-2.md) .
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

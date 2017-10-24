@@ -12,16 +12,14 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 09/22/2017
+ms.date: 10/07/2017
 ms.author: skwan
+ms.openlocfilehash: c091ea7cec35099d8ad2ab47361cd4c1278fdab6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 3cfd1eb55a031696635270a56ed5028e3b249543
-ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -58,6 +56,16 @@ Hierbei gilt:
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
+### <a name="automation-script-fails-when-attempting-schema-export-for-msi-extension"></a>Fehler in Verbindung mit dem „Automatisierungsskript“ bei dem Versuch, ein Schema für die MSI-Erweiterung zu exportieren
+
+Wenn verwaltete Dienstidentität auf einem virtuellen Computer aktiviert ist, wird der folgende Fehler bei dem Versuch angezeigt, das Feature „Automatisierungsskript“ für den virtuellen Computer oder seine Ressourcengruppe zu verwenden:
+
+![MSI-Automatisierungsskript-Exportfehler](media/msi-known-issues/automation-script-export-error.png)
+
+Das Schema der VM-Erweiterung „verwaltete Dienstidentität“ kann derzeit nicht in eine Ressourcengruppenvorlage exportiert werden. Die generierte Vorlage weist daher keine Konfigurationsparameter auf, die das Aktivieren der verwalteten Dienstidentität für die Ressource ermöglichen. Diese Abschnitte können anhand der Beispiele in [Konfigurieren einer VM-MSI (Managed Service Identity, verwaltete Dienstidentität) mithilfe einer Vorlage](msi-qs-configure-template-windows-vm.md) manuell hinzugefügt werden.
+
+Wenn die Schemaexportfunktionalität für die MSI-VM-Erweiterung verfügbar ist, wird sie in [Exportieren von Ressourcengruppen, die VM-Erweiterungen enthalten](../virtual-machines/windows/extensions-export-templates.md#supported-virtual-machine-extensions) aufgelistet.
+
 ### <a name="configuration-blade-does-not-appear-in-the-azure-portal"></a>Das Blatt „Konfiguration“ wird nicht im Azure-Portal angezeigt
 
 Wenn das Blatt „VM-Konfiguration“ auf Ihrem virtuellen Computer nicht angezeigt wird, wurde MSI in Ihrer Region noch nicht im Portal aktiviert.  Überprüfen Sie dies später erneut.  Sie können MSI für Ihren virtuellen Computer auch mit [PowerShell](msi-qs-configure-powershell-windows-vm.md) oder der [Azure-CLI](msi-qs-configure-cli-windows-vm.md) aktivieren.
@@ -87,4 +95,3 @@ Nachdem der virtuelle Computer gestartet wurde, kann das Tag mithilfe des folgen
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
-

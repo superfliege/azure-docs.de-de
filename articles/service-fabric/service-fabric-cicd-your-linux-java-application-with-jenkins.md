@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: saysa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 32d39e2c19348bc4a1ba218cfc411a70f9f212e3
-ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 8ba108ed107e2e023867bcc3b3b1b8cc159377ae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-java-application"></a>Verwenden von Jenkins zum Erstellen und Bereitstellen Ihrer Linux-Java-Anwendung
 Jenkins ist ein beliebtes Tool für Continuous Integration und Continuous Deployment für Ihre Apps. Hier wird beschrieben, wie Sie Ihre Azure Service Fabric-Anwendung mit Jenkins erstellen und bereitstellen.
@@ -51,6 +50,10 @@ cd service-fabric-java-getting-started/Services/JenkinsDocker/
 sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
 ```
 
+> [!NOTE]
+> Zum Bereitstellen von cifs-Freigaben müssen Sie das „cifs-utils“-Paket auf den Clusterknoten installiert haben. 
+>
+
 4. Aktualisieren Sie die Platzhalterwerte im ```setupentrypoint.sh```-Skript mit den entsprechenden azure-storage-Details.
 ```sh
 vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
@@ -69,7 +72,7 @@ Im Cluster wird ein Jenkins-Container installiert und kann mit dem Service Fabri
 1. Navigieren Sie im Browser zu ``http://PublicIPorFQDN:8081``. Hierdurch erhalten Sie den Pfad des ursprünglichen Administratorkennworts, das für die Anmeldung erforderlich ist. Sie können Jenkins weiterhin als Administratorbenutzer verwenden. Oder Sie können den Benutzer erstellen und ändern, nachdem Sie sich mit dem ursprünglichen Administratorkonto angemeldet haben.
 
    > [!NOTE]
-   > Stellen Sie sicher, dass Port 8081 als Anwendungsendpunkt-Port angegeben ist, während Sie den Cluster erstellen.
+   > Stellen Sie sicher, dass Port 8081 als Anwendungsendpunkt-Port angegeben ist, während Sie den Cluster erstellen (und dass der Port im Cluster geöffnet ist).
    >
 
 2. Rufen Sie mithilfe von ``docker ps -a`` die ID der Containerinstanz ab.
@@ -171,4 +174,3 @@ GitHub und Jenkins sind jetzt konfiguriert. Sie können erwägen, in Ihrem ``MyA
   <!-- Images -->
   [build-step]: ./media/service-fabric-cicd-your-linux-java-application-with-jenkins/build-step.png
   [post-build-step]: ./media/service-fabric-cicd-your-linux-java-application-with-jenkins/post-build-step.png
-

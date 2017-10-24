@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mimig
+ms.openlocfilehash: 192bdde86e12472a6fd87ba50fd597ea8b01247d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: 084dacc6a07b64500652481fbcabf1b0fc44306c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Serverloses Datenbank-Computing mithilfe von Azure Functions
 
 Das serverlose Computing beruht im Wesentlichen auf der Fähigkeit, sich auf einzelne Logikelemente zu konzentrieren, die wiederholbar und zustandslos sind. Diese Elemente erfordern keine Infrastrukturverwaltung, und Ressourcen werden von ihnen lediglich für die Sekunden oder sogar Millisekunden ihrer Ausführung verbraucht. Den Kern der serverlosen Computing-Aktivitäten stellen Funktionen dar, die von [Azure Functions](https://azure.microsoft.com/services/functions) im Azure-Ökosystem verfügbar gemacht werden.
@@ -136,7 +134,7 @@ Azure Cosmos DB empfiehlt sich als folgenden Gründen als Datenbank für Ihre Ar
 
 * **Globale Replikation**. Sie können Azure Cosmos DB-Daten [weltweit](distribute-data-globally.md) replizieren, um die Latenz zu verringern, wobei eine Geolokalisierung Ihrer Daten in größtmöglicher Nähe zu Ihren Benutzern erfolgt. Wie bei allen Azure Cosmos DB-Abfragen sind Daten aus ereignisgesteuerten Triggern Daten, die aus der Azure Cosmos DB in größter Nähe zum Benutzer gelesen werden.
 
-Wenn Sie die Integration mit Azure Functions zum Speichern von Daten einrichten möchten und keine tiefe Indizierung gewünscht wird, oder wenn Sie Anhänge und Mediendateien speichern müssen, ist der [Azure Blog Storage-Trigger](../azure-functions/functions-bindings-storage-blob.md) möglicherweise die bessere Wahl.
+Wenn Sie die Integration mit Azure Functions zum Speichern von Daten einrichten möchten und keine tiefe Indizierung gewünscht wird, oder wenn Sie Anhänge und Mediendateien speichern müssen, ist der [Azure Blob Storage-Trigger](../azure-functions/functions-bindings-storage-blob.md) möglicherweise die bessere Wahl.
 
 Vorteile von Azure Functions: 
 
@@ -159,7 +157,6 @@ Stellen wir nun eine echte Verbindung zwischen Azure Cosmos DB und Azure Functio
 
 
  
-
 
 
 

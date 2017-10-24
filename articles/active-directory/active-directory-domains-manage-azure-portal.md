@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: curtand;jeffsta
+ms.date: 10/10/2017
+ms.author: curtand
+ms.reviewer: elkuzmen
+ms.openlocfilehash: 1e58af1f8d26b03c07b27d69f13868bccaaa33aa
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 2f5a41907e9fa304444b369311e182d3f00ef619
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
 Ein Domänenname ist ein wichtiger Bestandteil des Bezeichners für viele Verzeichnisressourcen: Er ist Teil eines Benutzernamens oder einer E-Mail-Adresse für einen Benutzer, Teil der Adresse für eine Gruppe und kann Teil des App-ID-URI für eine Anwendung sein. Eine Ressource in Azure Active Directory (Azure AD) kann einen Domänennamen enthalten, für den bereits geprüft wurde, ob er zu dem Verzeichnis gehört, das die Ressource enthält. Nur ein globaler Administrator kann Domänenverwaltungsaufgaben in Azure AD ausführen.
@@ -28,12 +28,12 @@ Ein Domänenname ist ein wichtiger Bestandteil des Bezeichners für viele Verzei
 Wenn Ihr Verzeichnis erstellt wird, ist der anfängliche Domänenname (beispielsweise „contoso.onmicrosoft.com“) auch der primäre Domänenname. Die primäre Domäne ist der standardmäßige Domänenname für einen neuen Benutzer, wenn Sie einen neuen Benutzer erstellen. Durch das Festlegen eines primären Domänennamens wird die Erstellung neuer Benutzer durch einen Administrator im Portal optimiert. So ändern Sie den primären Domänennamen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
+2. Wählen Sie **Azure Active Directory**.
    
    ![Öffnen der Benutzerverwaltung](./media/active-directory-domains-add-azure-portal/user-management.png)
-3. Wählen Sie auf dem Blatt ***Verzeichnisname*** die Option **Domänennamen** aus.
-4. Wählen Sie auf dem Blatt ***Verzeichnisname* – Domänennamen** den Domänennamen aus, den Sie als primären Domänennamen festlegen möchten.
-5. Wählen Sie auf dem Blatt ***Domänenname*** (d.h. dem geöffneten Blatt mit Ihrem neuen Domänennamen im Titel) den Befehl **Als primär festlegen** aus. Bestätigen Sie Ihre Auswahl, wenn Sie dazu aufgefordert werden.
+3. Wählen Sie **Domänennamen**.
+4. Wählen Sie den Namen der Domäne aus, die als primäre Domäne festgelegt werden soll.
+5. Wählen Sie den Befehl **Als primär festlegen**. Bestätigen Sie Ihre Auswahl, wenn Sie dazu aufgefordert werden.
    
    ![Festlegen eines Domänennamens als primär](./media/active-directory-domains-manage-azure-portal/make-primary.png)
 
@@ -67,5 +67,4 @@ Die meisten Verwaltungsaufgaben für Domänennamen in Azure Active Directory kö
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen benutzerdefinierter Domänennamen](add-custom-domain.md)
-
 

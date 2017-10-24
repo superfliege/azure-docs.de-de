@@ -13,14 +13,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 07/13/2017
-ms.author: LADocs; dimazaid; estfan
+ms.date: 09/14/2017
+ms.author: LADocs; millopis; estfan
+ms.openlocfilehash: b3c1e2afadea91f010c3e4b43206b6d30a75ec38
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 34e68ae7d35019848b35c785a2715ec458dc6e73
-ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure-Logik-Apps
 
@@ -52,6 +51,7 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
 *   [Microsoft Power Apps lokales Datengateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
 
 <a name="requirements"></a>
+
 ## <a name="requirements"></a>Anforderungen
 
 **Minimum**:
@@ -75,9 +75,12 @@ Sie können das Gateway nicht auf einem Domänencontroller installieren.
 
 * Installieren Sie das Gateway nicht auf einem Computer, der ausgeschaltet wird, in den Ruhezustand versetzt wird oder keine Internetverbindung herstellt, da das Gateway unter diesen Umständen nicht ausgeführt werden kann. Darüber hinaus kann die Gatewayleistung bei Einsatz eines Drahtlosnetzwerks ggf. beeinträchtigt werden.
 
-* Während der Installation müssen Sie sich mit einem [Geschäfts-, Schul- oder Unikonto](https://docs.microsoft.com/azure/active-directory/sign-up-organization) anmelden, das von Azure Active Directory (Azure AD) verwaltet wird, und nicht mit einem Microsoft-Konto. 
+* Während der Installation müssen Sie sich mit einem [Geschäfts-, Schul- oder Unikonto](https://docs.microsoft.com/azure/active-directory/sign-up-organization) anmelden, das von Azure Active Directory (Azure AD) verwaltet wird, und nicht mit einem Microsoft-Konto.
 
-  Sie müssen dasselbe Geschäfts-, Schul- oder Unikonto später im Azure-Portal verwenden, wenn Sie eine Gatewayressource erstellen und Ihrer Gatewayinstallation zuordnen. Anschließend wählen Sie diese Gatewayressource aus, wenn Sie die Verbindung zwischen Ihrer Logik-App und der lokalen Datenquelle erstellen. [Warum muss ich ein Azure AD-Geschäfts-, -Schul- oder -Unikonto verwenden?](#why-azure-work-school-account)
+  > [!TIP]
+  > Wenn Sie ein Microsoft-Konto mit einem Visual Studio mit MSDN-Abonnement verwenden möchten, erstellen Sie zuerst [ein Verzeichnis (Mandant) im Azure Active Directory](../active-directory/develop/active-directory-howto-tenant.md) mit Ihrem Microsoft-Konto, oder verwenden Sie das Standardverzeichnis. Fügen Sie dem Verzeichnis einen Benutzer mit einem Kennwort hinzu, und erteilen Sie diesem Benutzer Zugriff auf Ihr Abonnement. Sie können sich dann während der Installation des Gateways mit diesem Benutzernamen und Kennwort anmelden.
+
+  Sie müssen später im Azure-Portal dasselbe Geschäfts-, Schul- oder Unikonto verwenden, wenn Sie eine Gatewayressource erstellen und Ihrer Gatewayinstallation zuordnen. Anschließend wählen Sie diese Gatewayressource aus, wenn Sie die Verbindung zwischen Ihrer Logik-App und der lokalen Datenquelle erstellen. [Warum muss ich ein Azure AD-Geschäfts-, -Schul- oder -Unikonto verwenden?](#why-azure-work-school-account)
 
   > [!TIP]
   > Wenn Sie sich für ein Office 365-Angebot registriert und nicht Ihre tatsächliche geschäftliche E-Mail-Adresse angegeben haben, kann Ihre Anmeldeadresse beispielsweise wie folgt aussehen: jeff@contoso.onmicrosoft.com. 
@@ -145,10 +148,20 @@ Um diese Aufgaben auszuführen, benötigen Sie den Wiederherstellungsschlüssel,
 
 4. Geben Sie den Wiederherstellungsschlüssel für das Gateway an, das Sie migrieren, wiederherstellen oder übernehmen möchten.
 
+<a name="windows-service-account"></a>
+
+## <a name="windows-service-account"></a>Windows-Dienstkonto
+
+Das lokale Datengateway wird als Windows-Dienst ausgeführt und ist so eingerichtet, dass es `NT SERVICE\PBIEgwService` für die Anmeldeinformationen des Windows-Diensts verwendet. Standardmäßig hat das Gateway die Berechtigung „Anmelden als Dienst“ für den Computer, auf dem Sie das Gateway installieren. Zum Erstellen und Verwalten des Gateways im Azure-Portal muss das Windows-Dienstkonto mindestens über die Berechtigungen **Mitwirkender** verfügen. 
+
+> [!NOTE]
+> Das Windows-Dienstkonto ist weder mit dem Konto, das zum Herstellen von Verbindungen mit den lokalen Datenquellen verwendet wird, noch mit dem Geschäfts-, Schul- oder Unikonto identisch, das Sie zum Anmelden bei Clouddiensten verwenden.
+
 <a name="restart-gateway"></a>
+
 ## <a name="restart-the-gateway"></a>Neustarten des Gateways
 
-Das Gateway wird als Windows-Dienst ausgeführt. Sie können den Dienst, so wie jeden anderen Windows-Dienst, auf mehrere Arten starten und beenden. Beispielsweise können Sie eine Eingabeaufforderung mit erhöhten Berechtigungen auf dem Computer öffnen, auf dem das Gateway ausgeführt wird, und einen dieser Befehle ausführen:
+Sie können den Dienst, so wie jeden anderen Windows-Dienst, auf mehrere Arten starten und beenden. Beispielsweise können Sie eine Eingabeaufforderung mit erhöhten Berechtigungen auf dem Computer öffnen, auf dem das Gateway ausgeführt wird, und einen dieser Befehle ausführen:
 
 * Führen Sie zum Beenden des Diensts den folgenden Befehl aus:
   
@@ -157,13 +170,6 @@ Das Gateway wird als Windows-Dienst ausgeführt. Sie können den Dienst, so wie 
 * Führen Sie zum Starten des Diensts den folgenden Befehl aus:
   
     `net start PBIEgwService`
-
-### <a name="windows-service-account"></a>Windows-Dienstkonto
-
-Das lokale Datengateway wird so eingerichtet, dass es `NT SERVICE\PBIEgwService` für die Anmeldeinformationen des Windows-Diensts verwendet. Standardmäßig hat das Gateway die Berechtigung „Anmelden als Dienst“ für den Computer, auf dem Sie das Gateway installieren.
-
-> [!NOTE]
-> Das Windows-Dienstkonto ist weder mit dem Konto, das zum Herstellen von Verbindungen mit den lokalen Datenquellen verwendet wird, noch mit dem Geschäfts-, Schul- oder Unikonto identisch, das Sie zum Anmelden bei Clouddiensten verwenden.
 
 ## <a name="configure-a-firewall-or-proxy"></a>Konfigurieren einer Firewall oder eines Proxys
 
@@ -336,4 +342,3 @@ Sie finden das Datenverwaltungsgateway- und PowerBIGateway-Protokoll unter **Anw
 * [Herstellen einer Verbindung mit dem lokalen Datengateway für Logik-Apps](../logic-apps/logic-apps-gateway-connection.md)
 * [Unternehmensintegrationsfeatures](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [Connectors für Azure Logic Apps](../connectors/apis-list.md)
-

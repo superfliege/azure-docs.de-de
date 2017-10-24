@@ -8,24 +8,23 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/29/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 4f85e27d01341d3d9d61d1984add32e72a53b6ac
-ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.date: 09/26/2017
+ms.openlocfilehash: 3aa9f90d5ca5ccd33273566795da3df2052ff7c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>PostgreSQL-Erweiterungen in Azure-Datenbank für PostgreSQL
-PostgreSQL bietet die Möglichkeit, die Funktionalität Ihrer Datenbank mithilfe von Erweiterungen zu erweitern. Durch Erweiterungen können mehrere SQL-bezogene Objekte in ein einziges Paket gebündelt, und über einen einzigen Befehl in die Datenbank geladen oder aus dieser entfernt werden. Werden Erweiterungen einmal in die Datenbank geladen, können sie wie ihre integrierten Funktionen eingesetzt werden. Weitere Informationen zu PostgreSQL-Erweiterungen finden Sie unter [Packen von zugehörigen Objekten in einer Erweiterung](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
+# <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL
+PostgreSQL bietet die Möglichkeit, die Funktionalität Ihrer Datenbank mithilfe von Erweiterungen zu erweitern. Durch Erweiterungen können mehrere SQL-bezogene Objekte zu einem einzigen Paket gebündelt und über einen einzigen Befehl in die Datenbank geladen oder aus dieser entfernt werden. Nach dem Laden in die Datenbank können Erweiterungen ebenso wie integrierte Features funktionieren. Weitere Informationen zu PostgreSQL-Erweiterungen finden Sie unter [Packen von zugehörigen Objekten in einer Erweiterung](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
 
 ## <a name="how-to-use-postgresql-extensions"></a>Wie werden PostgreSQL-Erweiterungen verwendet?
 Bevor Sie PostgreSQL-Erweiterungen verwenden können, müssen diese für Ihre Datenbank installiert werden. Um eine bestimmte Erweiterung zu installieren, führen Sie zum Laden der gepackten Objekte in Ihrer Datenbank den Befehl [CREATE EXTENSION](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) über das psql-Tool aus.
 
-Azure-Datenbank für PostgreSQL unterstützt eine Teilmenge der wichtigsten hier aufgeführten Erweiterungen. Andere Erweiterungen werden neben den hier aufgeführten nicht unterstützt. Mit dem Azure-Datenbank für PostgreSQL-Dienst können keine eigenen Erweiterungen erstellt werden.
+Azure-Datenbank für PostgreSQL unterstützt eine Teilmenge der wichtigsten hier aufgeführten Erweiterungen. Andere Erweiterungen außer den hier aufgeführten werden nicht unterstützt. Mit dem Azure Database for PostgreSQL-Dienst können Sie keine eigenen Erweiterungen erstellen.
 
 ## <a name="extensions-supported-by-azure-database-for-postgresql"></a>Unterstützte Erweiterungen in Azure-Datenbank für PostgreSQL
-In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen aufgeführt, die derzeit von Azure-Datenbank für PostgreSQL unterstützt werden. Sie können diese Informationen auch abrufen, indem Sie pg\_available\_extensions abfragen. 
+In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen aufgeführt, die derzeit von Azure-Datenbank für PostgreSQL unterstützt werden. Sie können diese Informationen auch abrufen, indem Sie „pg\_available\_extensions“ abfragen.
 
 ### <a name="data-types-extensions"></a>Datentypenerweiterungen
 
@@ -86,8 +85,7 @@ In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen 
 |---|---|
 | [PostGIS](http://www.postgis.net/), postgis\_topology, postgis\_tiger\_geocoder, postgis\_sfcgal | Räumliche und geografische Objekte für PostgreSQL |
 | address\_standardizer, address\_standardizer\_data\_us | Wird verwendet, um eine Adresse in dessen zugehörige Elemente zu analysieren. Wird als Unterstützung für den Normalisierungsschritt zur Geocodierung von Adressen verwendet. |
-| [pgrouting](http://pgrouting.org/) | Erweitert die PostGIS/PostgreSQL-Geodatenbank um die Bereitstellung von Funktionen zum räumlichen Routing |
+| [grouting](http://pgrouting.org/) | Erweitert die PostGIS/PostgreSQL-Geodatenbank um die Bereitstellung von Funktionen zum räumlichen Routing |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Fehlt eine Erweiterung, die Sie verwenden möchten? Dann informieren Sie uns darüber. Stimmen Sie in unserem [Kundenfeedback-Forum](https://feedback.azure.com/forums/597976-azure-database-for-postgresql) über vorhandene Anfragen ab, oder teilen Sie uns weitere Feedbacks und Wünsche mit.
-
+Wenn Sie eine Erweiterung fehlt, die Sie verwenden möchten, lassen Sie es uns wissen. Stimmen Sie in unserem [Kundenfeedback-Forum](https://feedback.azure.com/forums/597976-azure-database-for-postgresql) über vorhandene Anfragen ab, oder teilen Sie uns weiteres Feedback und Wünsche mit.

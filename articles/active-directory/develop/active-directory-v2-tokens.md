@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3d5ad974c01e0ee3954da4f990da87338b2d1756
-ms.openlocfilehash: 3a3d5c8bf4da9255015fab64f2b59637c4c030ea
-ms.contentlocale: de-de
-ms.lasthandoff: 02/23/2017
-
-
+ms.openlocfilehash: ec25d4375647a2c8983d7573b9912e544fc3e7b2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0-Tokenreferenz
 Der Azure Active Directory (Azure AD) v2.0-Endpunkt stellt bei jedem [Authentifizierungsfluss](active-directory-v2-flows.md) verschiedene Arten von Sicherheitstoken aus. Dieses Dokument beschreibt das Format, die Sicherheitsmerkmale und den Inhalt der einzelnen Tokentypen.
@@ -70,7 +68,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | nonce |`nonce` |`12345` |Mithilfe der Nonce sollen Tokenwiedergabeangriffe abgewehrt werden. Ihre App kann eine Nonce in einer Autorisierungsanforderung mithilfe des `nonce`-Abfrageparameters angeben. Der in der Anforderung angegebene Wert wird (unverändert) im `nonce`-Anspruch des ID-Tokens ausgegeben. Ihre App kann den Wert anhand des Werts überprüfen, der in der Anforderung angegeben ist. Dabei wird die Sitzung der App einem bestimmten ID-Token zugeordnet. Ihre App sollte diese Überprüfung während des Überprüfungsvorgangs des ID-Tokens ausführen. |
 | name |`name` |`Babe Ruth` |Der Namensanspruch gibt einen visuell lesbaren Wert an, der den Antragsteller des Tokens identifiziert. Der Wert ist nicht zwingend eindeutig, kann geändert werden und dient nur zu Anzeigezwecken. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 | email |`email` |`thegreatbambino@nyy.onmicrosoft.com` |Die primäre E-Mail-Adresse, die mit dem Benutzerkonto verknüpft ist (sofern vorhanden). Der Wert kann geändert werden und sich im Laufe der Zeit ändern. Der Bereich `email` ist erforderlich, um diesen Anspruch zu empfangen. |
-| preferred username |`preferred_username` |`thegreatbambino@nyy.onmicrosoft.com` |Der primäre Benutzername, der zum Darstellen des Benutzers im v2.0-Endpunkt verwendet wird. Dabei kann es sich um eine E-Mail-Adresse, eine Telefonnummer oder einen generischen Benutzernamen ohne bestimmtes Format handeln. Der Wert kann geändert werden und sich im Laufe der Zeit ändern. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
+| preferred username |`preferred_username` |`thegreatbambino@nyy.onmicrosoft.com` |Der primäre Benutzername, der zum Darstellen des Benutzers im v2.0-Endpunkt verwendet wird. Dabei kann es sich um eine E-Mail-Adresse, eine Telefonnummer oder einen generischen Benutzernamen ohne bestimmtes Format handeln. Der Wert kann geändert werden und sich im Laufe der Zeit ändern. Da er geändert werden kann, darf dieser Wert nicht verwendet werden, um Autorisierungsentscheidungen zu treffen. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 | subject |`sub` |`MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Er kann auch als Schlüssel in Datenbanktabellen verwendet werden. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. Der Antragsteller ist allerdings ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID.  Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch.  Dies kann abhängig von den Architektur- und Datenschutzanforderungen möglicherweise wünschenswert sein oder nicht. |
 | object ID |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | Der unveränderliche Bezeichner für ein Objekt im Microsoft-Identitätssystem, in diesem Fall ein Benutzerkonto.  Er kann auch verwendet werden, um Autorisierungsüberprüfungen auf sichere Weise durchzuführen, und er kann als Schlüssel in Datenbanktabellen genutzt werden. Diese ID identifiziert den Benutzer anwendungsübergreifend eindeutig: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten den gleichen Wert im `oid`-Anspruch.  Dies bedeutet, dass die ID bei Abfragen in Microsoft Online Services wie z.B. Microsoft Graph verwendet werden kann.  Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes Benutzerkonto zurück.  Da mit `oid` mehrere Apps Benutzer korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch zu erhalten. Beachten Sie Folgendes: Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. |
 
@@ -155,4 +153,3 @@ Die folgenden Tokengültigkeitsdauern werden nur zu Informationszwecken angegebe
 | Aktualisierungstoken (persönliche Konten) |Bis zu 1 Jahr |Ein einzelnes Aktualisierungstoken ist maximal 1 Jahr gültig. Das Aktualisierungstoken kann jedoch jederzeit aus verschiedenen Gründen ungültig werden. Ihre App muss daher ein Aktualisierungstoken verwenden, bis es fehlschlägt. |
 | Autorisierungscodes (Geschäfts- oder Schulkonten) |10 Minuten |Autorisierungscodes haben absichtlich eine kurze Gültigkeitsdauer. Sie müssen umgehend für Zugriffs- und Aktualisierungstoken eingelöst werden, wenn die Token empfangen werden. |
 | Autorisierungscodes (persönliche Konten) |5 Minuten |Autorisierungscodes haben absichtlich eine kurze Gültigkeitsdauer. Sie müssen umgehend für Zugriffs- und Aktualisierungstoken eingelöst werden, wenn die Token empfangen werden. Für persönliche Konten ausgestellte Autorisierungscodes können nur einmal verwendet werden. |
-

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 ms.openlocfilehash: 5e9c83cebec96c6bc8afd53b0c637d7af899746f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reserved-ip-addresses-classic"></a>Reservierten IP-Adressen (klassisch)
 
@@ -47,11 +47,11 @@ Lesen Sie für weitere Informationen zu IP-Adressen in Azure den Artikel [IP-Adr
 1. Kann ich eine reservierte IP-Adresse für alle Azure-Dienste verwenden? <br>
     Nein. Reservierte IPs können nur für virtuelle Computer und Clouddienst-Instanzenrollen, die über eine VIP verfügbar gemacht werden, verwendet werden.
 2. Wie viele reservierte IP-Adressen können verwendet werden? <br>
-    Einzelheiten finden Sie in der [Azure schränkt](../azure-subscription-service-limits.md#networking-limits) Artikel.
+    Weitere Informationen finden Sie im Artikel [Grenzwerte für Netzwerke](../azure-subscription-service-limits.md#networking-limits).
 3. Fällt für reservierte IPs eine Gebühr an? <br>
     Manchmal. Preisinformationen finden Sie auf der Seite [Preise für reservierte IP-Adressen](http://go.microsoft.com/fwlink/?LinkID=398482).
 4. Wie wird eine IP-Adresse reserviert? <br>
-    Verwenden Sie PowerShell, die [Azure Management-REST-API](https://msdn.microsoft.com/library/azure/dn722420.aspx), oder die [Azure-Portal](https://portal.azure.com) , eine IP-Adresse in einer Azure-Region zu reservieren. Ihrem Abonnement wird eine reservierte IP-Adresse zugeordnet.
+    Sie können PowerShell, die [Azure-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn722420.aspx) oder das [Azure-Portal](https://portal.azure.com) nutzen, um eine IP-Adresse in einer Azure-Region zu reservieren. Ihrem Abonnement wird eine reservierte IP-Adresse zugeordnet.
 5. Kann ich eine reservierte IP-Adresse mit auf Affinitätsgruppen basierenden VNets verwenden? <br>
     Nein. Reservierte IP-Adressen werden nur in regionalen VNets unterstützt. Für VNets, die Affinitätsgruppen zugeordnet sind, besteht keine Unterstützung reservierter IP-Adressen. Weitere Informationen zum Zuordnen eines VNets zu einer Region oder Affinitätsgruppe finden Sie im Artikel [Informationen zu regionalen VNets und Affinitätsgruppen](virtual-networks-migrate-to-regional-vnet.md).
 

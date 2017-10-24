@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: spelluru
+ms.openlocfilehash: 02d9102bfc9b0d8084988609282f2c78b5789e7e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: ddbba4b45c5c7cd8ee69390581cd78b820d19259
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk
 Sie müssen eine Azure-SSIS-Integrationslaufzeit mit einem Azure Virtual Network (VNet) verknüpfen, wenn eine der folgenden Bedingungen zutrifft: 
 
@@ -40,8 +38,9 @@ Wenn Ihre SSIS-Pakete auf lokale Datenspeicher zugreifen, verknüpfen Sie die Az
 - Wenn ein vorhandenes Azure Resource Manager VNet mit Ihrem lokalen Netzwerk verbunden ist, erstellen Sie zunächst ein [klassisches VNet](../virtual-network/virtual-networks-create-vnet-classic-pportal.md), mit dem Ihre Azure-SSIS-Integrationslaufzeit verknüpft werden kann. Konfigurieren Sie dann eine Verbindung zwischen [klassischem und Azure Resource Manager VNet](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
 ## <a name="domain-name-services-server"></a>Domain Name Service-Server 
-Wenn Sie einen eigenen DNS-Server (Domain Name Service) in einem VNet verwenden müssen, dem Ihre Azure-SSIS-Integrationslaufzeit beigetreten ist, befolgen Sie diese Anleitung und stellen Sie sicher, dass die Knoten Ihrer Azure-SSIS-Integrationslaufzeit im VNet Azure-Endpunkte auflösen können.
+Wenn Sie einen eigenen DNS-Server (Domain Name Service) in einem VNet verwenden müssen, dem Ihre Azure-SSIS-Integrationslaufzeit beigetreten ist, befolgen Sie diese Anleitung und [stellen Sie sicher, dass die Knoten Ihrer Azure-SSIS-Integrationslaufzeit im VNet Azure-Endpunkte auflösen können](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
 
+## <a name="network-security-group"></a>Netzwerksicherheitsgruppen (NSG)
 Wenn Sie die Netzwerksicherheitsgruppe (NSG) in einem VNet implementieren müssen, dem Ihre Azure-SSIS-Integrationslaufzeit beigetreten ist, können Sie den eingehenden/ausgehenden Datenverkehr über die folgenden Ports zulassen:
 
 | Ports | Richtung | Transportprotokoll | Zweck | Eingehende Quelle/Ausgehendes Ziel |
@@ -101,4 +100,3 @@ Weitere Informationen zur Azure-SSIS-Laufzeit finden Sie in den folgenden Themen
 - [Gewusst wie: Erstellen einer Azure-SSIS-Integrationslaufzeit](create-azure-ssis-integration-runtime.md): In diesem Artikel wird das Tutorial vertieft und er enthält Anweisungen zur Verwendung der verwalteten Azure SQL-Instanz (private Vorschau) und zum Verknüpfen der Integrationslaufzeit mit einem VNet. 
 - [Überwachen einer Azure-SSIS-Integrationslaufzeit](monitor-integration-runtime.md#azure-ssis-integration-runtime): In diesem Artikel wird das Abrufen von Informationen zu einer Azure-SSIS-Integrationslaufzeit veranschaulicht, und er enthält Beschreibungen der Status in den zurückgegebenen Informationen. 
 - [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie eine Azure-SSIS-Integrationslaufzeit beenden, starten oder entfernen. Es wird zudem gezeigt, wie Sie Ihre Azure-SSIS-Integrationslaufzeit horizontal hochskalieren, indem Sie der Integrationslaufzeit weitere Knoten hinzufügen. 
-

@@ -14,14 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: tamram
+ms.openlocfilehash: c768bdbb8e1ce2aae3eb5b6db0e48977366c83fb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1d9ccc1c81260379b5e645d338cbf1fa265e18d4
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Vorgehensweise beim Ausfall von Azure Storage
 Bei Microsoft arbeiten wir hart, um sicherzustellen, dass unsere Dienste immer verfügbar sind. Aufgrund höherer Gewalt können ungeplante Dienstausfälle in einer Region oder auch mehreren Regionen auftreten. Damit Sie mit diesen seltenen Vorkommen umgehen können, stellen wir Ihnen den folgenden allgemeinen Leitfaden für Azure Storage-Dienste zur Verfügung.
 
@@ -54,7 +52,7 @@ Wenn ein regionaler Notfall die primäre Region betrifft, versuchen wir zunächs
 Ein paar Punkte in Bezug auf das Geofailoverereignis des Speichers:
 
 * Das Geofailover des Speichers wird nur durch das Azure Storage-Team ausgelöst, es ist keine Kundenaktion erforderlich.
-* Ihre vorhandenen Speicherdienstendpunkte für Blobs, Tabellen, Warteschlangen und Dateien bleiben nach dem Failover unverändert. Der DNS-Eintrag muss aktualisiert werden, um aus der primären Region in die sekundäre zu wechseln.
+* Ihre vorhandenen Speicherdienstendpunkte für Blobs, Tabellen, Warteschlangen und Dateien bleiben nach dem Failover unverändert. Der von Microsoft bereitgestellte DNS-Eintrag muss aktualisiert werden, um einen Wechsel von der primären Region in die sekundäre zu ermöglichen.  Microsoft führt dieses Update automatisch im Rahmen des geografischen Failoverprozesses aus.
 * Vor und während des Geofailovers besitzen Sie keinen Schreibzugriff auf das Speicherkonto aufgrund der Auswirkung des Notfalls. Sie können jedoch weiterhin von der sekundären Region auslesen, wenn das Speicherkonto als RA-GRS konfiguriert wurde.
 * Wenn das Geofailover abgeschlossen wurde und die DNS-Änderungen übermittelt wurden, werden der Lese- und Schreibzugriff auf das Speicherkonto fortgesetzt; dies verweist auf Ihren bisherigen sekundären Endpunkt. 
 * Hinweis: Sie erhalten Schreibzugriff, wenn GRS oder RA-GRS für das Speicherkonto konfiguriert ist. 
@@ -71,5 +69,4 @@ Es gibt einige empfohlenen Vorgehensweisen, um die Speicherdaten in regelmäßig
 * Dateien – Verwenden Sie [AzCopy](storage-use-azcopy.md) oder [Azure PowerShell](storage-powershell-guide-full.md), um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren.
 
 Informationen zum Erstellen von Anwendungen, welche die RA-GRS-Funktion optimal nutzen, finden Sie unter [Entwerfen hochverfügbarer Anwendungen mithilfe des RA-GRS-Speichers](../storage-designing-ha-apps-with-ragrs.md).
-
 

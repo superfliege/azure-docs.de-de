@@ -10,15 +10,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: support-article
 ms.date: 07/12/2017
 ms.author: genli
+ms.openlocfilehash: 3b11dc6afac716ef391976093839547e8fd37a91
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 182a27e444c2f5db66d518a1a0c608d3e319d553
-ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Fehler „RequestDisallowedByPolicy“ bei Azure-Ressourcenrichtlinien
 
@@ -26,9 +25,9 @@ Dieser Artikel beschreibt die Ursache des Fehlers „RequestDisallowedByPolicy�
 
 ## <a name="symptom"></a>Symptom
 
-Wenn Sie versuchen, während der Bereitstellung eine Aktion auszuführen, erhalten Sie möglicherweise den Fehler **RequestDisallowedByPolicy**, der verhindert, dass die Aktion ausgeführt wird. Im Folgenden finden Sie ein Beispiel des Fehlers:
+Wenn Sie versuchen, während der Bereitstellung eine Aktion auszuführen, erhalten Sie möglicherweise den Fehler **RequestDisallowedByPolicy**, der verhindert, dass die Aktion abgeschlossen wird. Das folgende Beispiel zeigt den Fehler:
 
-```
+```json
 {
   "statusCode": "Forbidden",
   "serviceRequestId": null,
@@ -43,7 +42,7 @@ Verwenden Sie zum Abrufen von Details zur Richtlinie, die die Bereitstellung blo
 
 ### <a name="method-1"></a>Methode 1
 
-Geben Sie in PowerShell diese Richtlinienkennung als **Id**-Parameter an, um Details zur Richtlinie abzurufen, die Ihre Bereitstellung blockiert hat.
+Geben Sie in PowerShell diese Richtlinienkennung als `Id`-Parameter an, um Details zur Richtlinie abzurufen, die Ihre Bereitstellung blockiert.
 
 ```PowerShell
 (Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
@@ -59,16 +58,10 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Lösung
 
-Für Sicherheit und Kompatibilität kann Ihre IT-Abteilung eine Ressourcenrichtlinie erzwingen, die das Erstellen von öffentlichen IP-Adressen, Netzwerksicherheitsgruppen, benutzerdefinierten Routen oder Routentabellen verhindert. Im Beispiel der Fehlermeldung, das im Abschnitt „Symptome“ beschrieben wird, heißt die Richtlinie **regionPolicyDefinition**. Auch andere Namen sind möglich.
+Für Sicherheit und Kompatibilität kann Ihre IT-Abteilung eine Ressourcenrichtlinie erzwingen, die das Erstellen von öffentlichen IP-Adressen, Netzwerksicherheitsgruppen, benutzerdefinierten Routen oder Routentabellen verhindert. Die Fehlermeldung im Abschnitt **Symptoms** zeigt eine Richtlinie mit dem Namen **regionPolicyDefinition** an. Ihre Richtlinie hat möglicherweise einen anderen Namen.
 Zum Beheben dieses Problems arbeiten Sie mit Ihrer IT-Abteilung zusammen, um die Ressourcenrichtlinien zu überprüfen und zu bestimmen, wie die angeforderte Aktion in Übereinstimmung mit diesen Richtlinien ausgeführt werden kann.
-
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Übersicht über Ressourcenrichtlinien](resource-manager-policy.md)
-- [Häufige Bereitstellungsfehler: RequestDisallowedByPolicy](resource-manager-common-deployment-errors.md#requestdisallowedbypolicy)
-
- 
-
-
-
+- [Anzeigen der Richtlinienzuweisungen](resource-manager-policy-portal.md#view-policy-assignments)

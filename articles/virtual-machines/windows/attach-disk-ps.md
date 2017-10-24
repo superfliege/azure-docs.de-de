@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
+ms.openlocfilehash: 9ae27e6abc239fe76288e64a996ec39ba7782822
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9d16d16f0e57fab9f1827c37f181e579c627b3d9
-ms.openlocfilehash: e259a9cf42719fb0426dce09b5526fa43585bb26
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="attach-a-data-disk-to-a-windows-vm-using-powershell"></a>Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell
 
 In diesem Artikel wird beschrieben, wie Sie mithilfe von PowerShell neue und vorhandene Datenträger an einen virtuellen Windows-Computer anfügen können. Wenn Ihr virtueller Computer verwaltete Datenträger verwendet, können Sie weitere verwaltete Datenträger anfügen. Sie können auch nicht verwaltete Datenträger an einen virtuellen Computer anfügen, der nicht verwaltete Datenträger in einem Speicherkonto verwendet.
@@ -31,13 +29,9 @@ Lesen Sie die folgenden Tipps, bevor Sie mit diesem Vorgang fortfahren:
 * Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Für die Verwendung von Premium-Speicher benötigen Sie einen virtuellen Computer mit einer für Premium-Speicher geeigneten Größe, z.B. die DS- oder GS-Serie. Sie können Datenträger aus Premium- und aus Standard-Speicherkonten für diese virtuellen Computer verwenden. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../../storage/common/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="before-you-begin"></a>Voraussetzungen
-Wenn Sie PowerShell verwenden, vergewissern Sie sich, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren.
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
-```
-Weitere Informationen finden Sie unter [Azure PowerShell-Versionsverwaltung](/powershell/azure/overview).
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Hinzufügen eines leeren Datenträgers zu einem virtuellen Computer
@@ -46,7 +40,7 @@ Dieses Beispiel zeigt, wie Sie einem vorhandenen virtuellen Computer einen leere
 
 ### <a name="using-managed-disks"></a>Verwenden verwalteter Datenträger
 
-```powershell
+```azurepowershell-interactive
 $rgName = 'myResourceGroup'
 $vmName = 'myVM'
 $location = 'West Central US' 
@@ -86,7 +80,7 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-unmanaged-disks-in-a-storage-account"></a>Verwenden nicht verwalteter Datenträger in einem Speicherkonto
 
-```powershell
+```azurepowershell-interactive
     $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
     Add-AzureRmVMDataDisk -VM $vm -Name "disk-name" -VhdUri "https://mystore1.blob.core.windows.net/vhds/datadisk1.vhd" -LUN 0 -Caching ReadWrite -DiskSizeinGB 1 -CreateOption Empty
     Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
@@ -97,7 +91,7 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
 Nachdem Sie einen leeren Datenträger hinzugefügt haben, müssen Sie ihn initialisieren. Um den Datenträger zu initialisieren, können Sie sich bei einem virtuellen Computer anmelden und die Datenträgerverwaltung verwenden. Wenn Sie bei der Erstellung WinRM aktiviert und ein Zertifikat auf dem virtuellen Computer installiert haben, können Sie den Datenträger mit einem PowerShell-Remoteaufruf initialisieren. Alternativ können Sie auch eine benutzerdefinierte Skripterweiterung verwenden: 
 
-```powershell
+```azurepowershell-interactive
     $location = "location-name"
     $scriptName = "script-name"
     $fileName = "script-file-name"
@@ -106,7 +100,7 @@ Nachdem Sie einen leeren Datenträger hinzugefügt haben, müssen Sie ihn initia
         
 Der Skriptdateiinhalt für die Datenträgerinitialisierung kann etwa wie folgender Code aussehen:
 
-```powershell
+```azurepowershell-interactive
     $disks = Get-Disk | Where partitionstyle -eq 'raw' | sort number
 
     $letters = 70..89 | ForEach-Object { [char]$_ }
@@ -130,7 +124,7 @@ Sie können auch eine vorhandene VHD als verwalteten Datenträger an einen virtu
 
 ### <a name="using-managed-disks"></a>Verwenden verwalteter Datenträger
 
-```powershell
+```azurepowershell-interactive
 $rgName = 'myRG'
 $vmName = 'ContosoMdPir3'
 $location = 'West Central US' 
@@ -152,4 +146,3 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erstellen einer [Momentaufnahme](snapshot-copy-managed-disk.md)
-

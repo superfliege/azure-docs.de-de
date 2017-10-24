@@ -16,10 +16,10 @@ ms.custom: migrate
 ms.date: 11/29/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 860e50b532b4b0a21d3be54f087730070b0e56bb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Migrieren eines Data Warehouse zu Storage Premium
 Für Azure SQL Data Warehouse wurde vor Kurzem [Storage Premium eingeführt, um die Leistung besser vorhersagen zu können][premium storage for greater performance predictability]. Vorhandene Data Warehouses mit derzeit Standardspeicher können nun zu Storage Premium migriert werden. Sie können die automatische Migration nutzen. Wenn Sie aber den Migrationszeitpunkt bestimmen möchten (was eine gewisse Ausfallzeit mit sich bringt), können Sie die Migration selbst vornehmen.
@@ -101,7 +101,7 @@ Zwei Datenbanken auf demselben logischen Server können nicht den gleichen Namen
 
 Beispiel: Ihr vorhandenes Data Warehouse mit Standardspeicher hat derzeit den Namen „MyDW“.
 
-1. Benennen Sie "MyDW" mithilfe des folgenden ALTER DATABASE-Befehls um. (In diesem Beispiel fügen wir es "MyDW_BeforeMigration." umbenennen)  Mit diesem Befehl alle bestehende Transaktionen beendet und muss in der master-Datenbank erfolgreich ausgeführt werden.
+1. Benennen Sie "MyDW" mithilfe des folgenden ALTER DATABASE-Befehls um. (In diesem Beispiel benennen wir es in „MyDW_BeforeMigration“ um.) Dieser Befehl beendet alle vorhandenen Transaktionen und muss in der Masterdatenbank ausgeführt werden, um erfolgreich zu sein.
    ```
    ALTER DATABASE CurrentDatabasename MODIFY NAME = NewDatabaseName;
    ```

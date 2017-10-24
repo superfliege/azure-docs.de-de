@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/28/2017
 ms.author: asgang
+ms.openlocfilehash: b7b03442ba815c86e5defa1018b66f56c0b379df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: 468b99002b867768d1ef03ca3ef67946caa4919d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
@@ -103,4 +102,3 @@ Dieser Fehler kann aus mehreren Gründen vom Dienst ausgelöst werden. Wählen S
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Aktivieren der Replikation für virtuelle VMware-VMs](vmware-walkthrough-enable-replication.md)
-

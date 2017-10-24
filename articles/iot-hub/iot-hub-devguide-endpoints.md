@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2017
+ms.date: 09/19/2017
 ms.author: dobett
+ms.openlocfilehash: 47f8949139c48ffa79f5530552b0a2e27b0f9ee0
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: a5753df2ff6874d9574e268953792cac9765cc54
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
 
@@ -38,9 +37,9 @@ Azure IoT Hub ist ein mehrinstanzenfähiger Dienst, der seine Funktionen für za
 Die Endpunkte werden in der folgende Liste beschrieben:
 
 * **Ressourcenanbieter**. Der IoT Hub-Ressourcenanbieter macht eine [Azure Resource Manager][lnk-arm]-Schnittstelle verfügbar. Über diese Schnittstelle können Azure Abonnementbesitzer IoT Hub-Instanzen erstellen und löschen sowie IoT Hub-Eigenschaften aktualisieren. IoT Hub-Eigenschaften steuern [Sicherheitsrichtlinien auf Hubebene][lnk-accesscontrol] (im Gegensatz zur Zugriffssteuerung auf Geräteebene) und funktionale Optionen für das Messaging zwischen Cloud und Gerät (Cloud-to-Device, C2D) sowie Gerät und Cloud (Device-to-Cloud, D2C). Der IoT Hub-Ressourcenanbieter ermöglicht außerdem das [Exportieren von Geräteidentitäten][lnk-importexport].
-* **Geräteidentitätsverwaltung**. Jeder IoT Hub legt einen Satz an HTTP-REST-Endpunkten zum Verwalten von Geräteidentitäten offen (zum Erstellen, Abrufen, Aktualisieren und Löschen). [Geräteidentitäten][lnk-device-identities] werden zur Geräteauthentifizierung und für die Zugriffssteuerung eingesetzt.
-* **Verwaltung von Gerätezwillingen**. Jeder IoT-Hub macht eine Reihe von dienstseitigen HTTP-REST-Endpunkten zum Abfragen und Aktualisieren von [Gerätezwillingen][lnk-twins] (Updatetags und Eigenschaften) verfügbar.
-* **Auftragsverwaltung**. Jeder IoT-Hub macht eine Reihe von dienstseitigen HTTP-REST-Endpunkten zum Abfragen und Verwalten von [Aufträgen][lnk-jobs] verfügbar.
+* **Geräteidentitätsverwaltung**. Jede IoT Hub-Instanz macht eine Gruppe von HTTPS-REST-Endpunkten zum Verwalten von Geräteidentitäten (zum Erstellen, Abrufen, Aktualisieren und Löschen) verfügbar. [Geräteidentitäten][lnk-device-identities] werden zur Geräteauthentifizierung und für die Zugriffssteuerung eingesetzt.
+* **Verwaltung von Gerätezwillingen**. Jede IoT Hub-Instanz macht eine Gruppe von dienstseitigen HTTPS-REST-Endpunkten zum Abfragen und Aktualisieren von [Gerätezwillingen][lnk-twins] (Updatetags und Eigenschaften) verfügbar.
+* **Auftragsverwaltung**. Jede IoT Hub-Instanz macht eine Gruppe von dienstseitigen HTTPS-REST-Endpunkten zum Abfragen und Verwalten von [Aufträgen][lnk-jobs] verfügbar.
 * **Geräteendpunkte**. Für jedes Gerät in der Identitätsregistrierung macht IoT Hub eine Reihe von Endpunkten verfügbar:
 
   * *Senden von D2C-Nachrichten*. Ein Gerät verwendet diesen Endpunkt, um [D2C-Nachrichten zu senden][lnk-d2c].
@@ -49,9 +48,9 @@ Die Endpunkte werden in der folgende Liste beschrieben:
   * *Abrufen und Aktualisieren der Eigenschaften von Gerätezwillingen*. Ein Gerät verwendet diesen Endpunkt für den Zugriff auf die Eigenschaften seines [Gerätezwillings][lnk-twins].
   * *Empfangen von Anforderungen direkter Methoden*. Ein Gerät verwendet diesen Endpunkt zum Lauschen auf Anforderungen [direkter Methoden][lnk-methods].
 
-    Diese Endpunkte werden über die Protokolle [MQTT v3.1.1][lnk-mqtt], HTTP 1.1 und [AMQP 1.0][lnk-amqp] verfügbar gemacht. AMQP ist auch über [WebSockets][lnk-websockets] an Port 443 verfügbar.
+    Diese Endpunkte werden über die Protokolle [MQTT v3.1.1][lnk-mqtt], HTTPS 1.1 und [AMQP 1.0][lnk-amqp] verfügbar gemacht. AMQP ist auch über [WebSockets][lnk-websockets] an Port 443 verfügbar.
 
-* **Dienstendpunkte**. Jede IoT Hub-Instanz macht eine Reihe von Endpunkten verfügbar, über die Ihr Lösungs-Back-End mit Ihren Geräten kommunizieren kann. Diese Endpunkte werden bis auf eine Ausnahme unter Verwendung des [AMQP][lnk-amqp]-Protokolls verfügbar gemacht. Der Endpunkt für den Methodenaufruf wird über das HTTP-Protokoll verfügbar gemacht.
+* **Dienstendpunkte**. Jede IoT Hub-Instanz macht eine Reihe von Endpunkten verfügbar, über die Ihr Lösungs-Back-End mit Ihren Geräten kommunizieren kann. Diese Endpunkte werden bis auf eine Ausnahme unter Verwendung des [AMQP][lnk-amqp]-Protokolls verfügbar gemacht. Der Endpunkt für den Methodenaufruf wird über das HTTPS-Protokoll verfügbar gemacht.
   
   * *Empfangen von D2C-Nachrichten*. Dieser Endpunkt ist kompatibel mit [Azure Event Hubs][lnk-event-hubs]. Ein Back-End-Dienst kann ihn zum Lesen der [D2C-Nachrichten][lnk-d2c] verwenden, die Ihre Geräte senden. Zusätzlich zu diesem integrierten Endpunkt können Sie für Ihren IoT-Hub benutzerdefinierte Endpunkte erstellen.
   * *Senden von C2D-Nachrichten und Empfangen von Übermittlungsbestätigungen*. Diese Endpunkte ermöglichen Ihrem Lösungs-Back-End das Senden von zuverlässigen [C2D-Nachrichten][lnk-c2d] sowie das Empfangen zugehöriger Übermittlungs- oder Ablaufbestätigungen.
@@ -69,6 +68,7 @@ Sie können vorhandene Azure-Dienste in Ihrem Abonnement mit Ihrem IoT-Hub verkn
 
 IoT Hub unterstützt derzeit folgende Azure-Dienste als zusätzliche Endpunkte:
 
+* Azure Storage-Container
 * Event Hubs
 * Service Bus-Warteschlangen
 * Service Bus-Themen
@@ -77,10 +77,23 @@ IoT Hub benötigt Schreibzugriff auf diese Dienstendpunkte, damit das Nachrichte
 
 Wenn eine Nachricht mehreren Routen entspricht, die alle auf den gleichen Endpunkt verweisen, übermittelt IoT Hub die Nachricht nur einmal an diesen Endpunkt. Aus diesem Grund müssen Sie nicht die Deduplizierung für Ihre Service Bus-Warteschlange oder ein Thema konfigurieren. In partitionierten Warteschlangen garantiert die Partitionsaffinität die Nachrichtensortierung.
 
-> [!NOTE]
-> Für Service Bus-Warteschlangen und -Themen, die als IoT Hub-Endpunkte verwendet werden, dürfen **Sitzungen** oder **Duplikaterkennung** nicht aktiviert werden. Wenn eine dieser Optionen aktiviert ist, wird der Endpunkt im Azure-Portal als **Nicht erreichbar** angezeigt.
-
 Informationen zur Beschränkung der Anzahl von Endpunkten, die Sie hinzufügen können, finden Sie unter [Kontingente und Drosselung][lnk-devguide-quotas].
+
+### <a name="when-using-azure-storage-containers"></a>Gründe für die Verwendung von Azure Storage-Containern
+
+IoT Hub unterstützt nur das Schreiben von Daten in Azure Storage-Container als Blobs – und zwar im [Apache Avro](http://avro.apache.org/)-Format. Die IoT Hub-Instanz verarbeitet Nachrichten batchweise und schreibt Daten in ein Blob, wenn sie eine bestimmte Größe erreicht oder ein bestimmter Zeitraum verstrichen ist, je nachdem, welcher Fall zuerst eintritt. IoT Hub schreibt keine leeren Blobs, wenn keine Daten zum Schreiben vorhanden sind.
+
+IoT Hub folgt standardmäßig der nachstehenden Dateibenennungskonvention:
+
+```
+{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
+```
+
+Sie können eine beliebige Dateibenennungskonvention verwenden, müssen dabei jedoch alle aufgelisteten Tokens verwenden.
+
+### <a name="when-using-service-bus-queues-and-topics"></a>Gründe für die Verwendung von Service Bus-Warteschlangen und -Themen
+
+Für Service Bus-Warteschlangen und -Themen, die als IoT Hub-Endpunkte verwendet werden, dürfen **Sitzungen** oder **Duplikaterkennung** nicht aktiviert werden. Wenn eine dieser Optionen aktiviert ist, wird der Endpunkt im Azure-Portal als **Nicht erreichbar** angezeigt.
 
 ## <a name="field-gateways"></a>Bereichsgateways
 
@@ -125,4 +138,3 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
 [lnk-operations-mon]: iot-hub-operations-monitoring.md
-

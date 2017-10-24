@@ -3,8 +3,8 @@ title: Erste Schritte mit dem Speicher-Explorer (Vorschau) | Microsoft-Dokumenta
 description: Verwalten von Azure-Speicherressourcen mit dem Speicher-Explorer (Vorschauversion)
 services: storage
 documentationcenter: na
-author: kraigb
-manager: ghogen
+author: cawa
+manager: paulyuk
 editor: 
 ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
-ms.author: kraigb
+ms.author: cawa
+ms.openlocfilehash: 58ab8a9c5864ce0cb505b78fd087df2973a7e0d8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: bd8957f1257a5fdd867658be9c708bbdc8717f36
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>Erste Schritte mit dem Speicher-Explorer (Vorschau)
 ## <a name="overview"></a>Übersicht
@@ -43,6 +42,7 @@ Darüber hinaus können Sie mit Speicherkonten in Azure (global und national) ar
 * [Anfügen an externen Speicher:](#attach-or-detach-an-external-storage-account) Verwalten Sie Speicherressourcen eines anderen Azure-Abonnements oder in nationalen Azure-Clouds unter Verwendung von Name, Schlüssel und Endpunkten des Speicherkontos.
 * [Anfügen eines Speicherkontos unter Verwendung einer SAS:](#attach-storage-account-using-sas) Verwalten Sie Speicherressourcen eines anderen Azure-Abonnements unter Verwendung einer Shared Access Signature (SAS).
 * [Anfügen eines Diensts unter Verwendung einer SAS:](#attach-service-using-sas) Verwalten Sie einen bestimmten Speicherdienst (Blobcontainer, Warteschlange oder Tabelle) eines anderen Azure-Abonnements unter Verwendung einer SAS.
+* [Verbinden mit einem Azure Cosmos DB-Konto mithilfe einer Verbindungszeichenfolge](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): Verwalten Sie ein Cosmos DB-Konto mithilfe einer Verbindungszeichenfolge.
 
 ## <a name="connect-to-an-azure-subscription"></a>Herstellen einer Verbindung mit einem Azure-Abonnement
 > [!NOTE]
@@ -223,6 +223,17 @@ In diesem Kontext kann ein Dienst ein Blobcontainer, eine Warteschlange oder ein
 
     ![Ergebnis des Anfügens an einen freigegebenen Dienst unter Verwendung einer SAS][20]
 
+## <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>Herstellen einer Verbindung mit einem Azure Cosmos DB-Konto mithilfe einer Verbindungszeichenfolge
+Neben der Verwaltung von Azure Cosmos DB-Konten über das Azure-Abonnement kann eine Verbindung mit einer Azure Cosmos DB alternativ auch mit einer Verbindungszeichenfolge hergestellt werden. Gehen Sie folgendermaßen vor, um eine Verbindung mithilfe einer Verbindungszeichenfolge herzustellen.
+
+1. Suchen Sie in der linken Struktur nach **Lokal und angefügt**, klicken Sie mit der rechten Maustaste auf **Azure Cosmos DB-Konten**, und wählen Sie **Mit Azure-Cosmos-Datenbank verbinden** aus.
+
+    ![Herstellen einer Verbindung mit Azure Cosmos DB mithilfe einer Verbindungszeichenfolge][33]
+
+2. Wählen Sie die Azure Cosmos DB-API aus, fügen Sie Ihre **Verbindungszeichenfolge** ein, und klicken Sie dann auf **OK**, um eine Verbindung mit dem Azure Cosmos DB-Konto herzustellen. Informationen zum Abrufen der Verbindungszeichenfolge finden Sie unter [Abrufen der Verbindungszeichenfolge](https://docs.microsoft.com/en-us/azure/cosmos-db/manage-account#get-the--connection-string).
+
+    ![connection-string][32]
+
 ## <a name="search-for-storage-accounts"></a>Suchen nach Speicherkonten
 Wenn Sie über eine lange Liste mit Speicherkonten verfügen, können Sie ein bestimmtes Speicherkonto schnell ermitteln, indem Sie das Suchfeld oben im linken Bereich verwenden.
 
@@ -232,6 +243,7 @@ Wenn Sie Text in das Suchfeld eingeben, werden im linken Bereich die dem bislang
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwalten von Azure-Blobspeicherressourcen mit dem Speicher-Explorer (Vorschau)](vs-azure-tools-storage-explorer-blobs.md)
+* [Verwalten von Azure Cosmos DB in Azure Storage-Explorer (Vorschau)](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/settings-icon.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-account-link.png
@@ -260,4 +272,5 @@ Wenn Sie Text in das Suchfeld eingeben, werden im linken Bereich die dem bislang
 [29]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-azure-stack-account.png
 [30]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/select-accounts-azure-stack.png
 [31]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/azure-stack-storage-account-list.png
-
+[32]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connection-string.PNG
+[33]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-db-by-connection-string.PNG

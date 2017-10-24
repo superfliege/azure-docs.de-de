@@ -14,13 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 3185e006fa0448fe4eb7ddec612f302045c2d6cc
-ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
-
+ms.openlocfilehash: b84fe1036a50b5672f5b5f4d6df2f67a25a1be4e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-graph-net-api-download-and-release-notes"></a>Azure Cosmos DB Graph-.NET-API: Download und Versionshinweise
 
@@ -30,10 +28,39 @@ ms.lasthandoff: 05/10/2017
 |**API-Dokumentation**|[.NET API-Referenzdokumentation](https://aka.ms/acdbgraphapiref)|
 |**Schnellstart**|[Azure Cosmos DB: Erstellen einer Diagramm-App mit .NET und der Graph-API](create-graph-dotnet.md)|
 |**Tutorial**|[Azure CosmosDB: Erstellen eines Containers mit der Graph-API](tutorial-develop-graph-dotnet.md)|
-|**Aktuelles unterstütztes Framework**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
+|**Aktuelles unterstütztes Framework**| [Microsoft .NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+
 
 ## <a name="release-notes"></a>Versionshinweise
 
+### <a name="a-name030-preview030-preview"></a><a name="0.3.0-preview"/>0.3.0-Vorschau
+
+#### <a name="whats-new"></a>Neuigkeiten
+* Unterstützung für `.netstandard 1.6` wurde hinzugefügt.
+  * Erfordert `Microsoft.Azure.DocumentDB.Core >= 1.5.1`
+* Ein neuer `gremlin-groovy`-Parser zum Ersetzen des vorhandenen Parsers wurde hinzugefügt. Dieser Parser unterstützt einen Teil der `gremlin-groovy`-Syntax von Tinkerpop und enthält:
+  * Verdoppelung der Analyseleistung.
+  * Eine Reihe von Problemen mit Escapesequenzen in Zeichenfolgen, nicht ordnungsgemäß behandelten Literalwerten und andere Unregelmäßigkeiten im alten Parser wurden behoben.
+* Optimierungen für Edgeausnahmen wurden hinzugefügt.
+  *  Traversale Hops mit Filtern sollten diese Verbesserung erkennen, z.B.: `g.V('1').outE().has('name', 'marko').inV()`.
+* Optimierungen für Edgeausnahmen mit `limit()`-Schritt wurden hinzugefügt.
+
+#### <a name="breaking-changes"></a>Wichtige Änderungen
+* Unterstützung für .NET Framework 4.5.1 wurde entfernt.
+
+* Der neue Parser ist an der `gremlin-groovy`-Grammatik ausgerichtet. Dies hat zur Folge, dass einige Ausdrücke, die zuvor funktionierten, für den neuen Parser mehrdeutig sind. Beachten Sie etwa:
+  * `in` und `as` sind reservierte Schlüsselwörter in `gremlin-groovy`, sodass diese Schritte mit `.in()` oder `.as()` näher bestimmt werden müssen, um Syntaxfehler zu vermeiden. Beispiel: `g.V().repeat(in()).times(2)` -> _löst einen Syntaxfehler aus_  
+ `g.V().repeat(__.in()).times(2)` -> _ist erfolgreich_
+
+### <a name="a-name024-preview024-preview"></a><a name="0.2.4-preview"/>0.2.4-Vorschau
+
+### <a name="a-name022-preview022-preview"></a><a name="0.2.2-preview"/>0.2.2-Vorschau
+
+### <a name="a-name021-preview021-preview"></a><a name="0.2.1-preview"/>0.2.1-Vorschau
+
+### <a name="a-name020-preview020-preview"></a><a name="0.2.0-preview"/>0.2.0-Vorschau
+
+### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-preview
 * Erste Vorschauversion
 
 ## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
@@ -42,6 +69,17 @@ Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher 
 Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren. 
 
 Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
+
+<br/>
+
+| Version | Herausgabedatum | Deaktivierungstermine |
+| --- | --- | --- |
+| [0.3.0-Vorschau](#0.3.0-preview) |2. Oktober 2017 |--- |
+| [0.2.4-Vorschau](#0.2.4-preview) |4. August 2017 |--- |
+| [0.2.2-Vorschau](#0.2.2-preview) |23. Juni 2017 |--- |
+| [0.2.1-Vorschau](#0.2.2-preview) |8. Juni 2017 |--- |
+| [0.2.0-Vorschau](#0.2.2-preview) |10. Mai 2017 |--- |
+| [0.1.0-preview](#0.1.0-preview) |8. Mai 2017 |--- |
 
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zur Azure Cosmos DB Graph-API finden Sie unter [Einführung in Azure Cosmos DB: Graph-API](graph-introduction.md). 

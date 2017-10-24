@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/05/2017
 ms.author: samacha
+ms.openlocfilehash: f5a605e0b0809c27feedc98390175fd383a371eb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 8ea05e1c3419f3e9c6b5806c1a2d4035239809d8
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Datenverbindung: Erfahren Sie mehr über Datenstromeingaben aus Ereignissen in Stream Analytics
 Bei der Datenverbindung mit einem Stream Analytics-Auftrag handelt es sich um einen Datenstrom von Ereignissen aus einer Datenquelle, die als *Eingabe* des Auftrags bezeichnet wird. Stream Analytics bietet eine hervorragende Integration in Datenstromquellen von Azure wie [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) und [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/). Diese Eingabequellen können aus demselben Azure-Abonnement wie dem Ihres Analyseauftrags oder aus einem anderen Abonnement stammen.
@@ -35,6 +34,12 @@ Ein Datenstrom ist eine ungebundene Abfolge von Ereignissen im Verlauf der Zeit.
 Stream Analytics unterstützt auch Eingaben wie *Verweisdaten*. Dies sind Hilfsdaten, die entweder statisch sind oder sich langsam ändern. Sie werden normalerweise für die Durchführung von Korrelationen und Suchvorgängen verwendet. Beispielsweise können Sie Daten in der Datenstromeingabe mit den Daten in den Verweisdaten verknüpfen – ähnlich wie bei einer SQL-Verknüpfung zum Suchen statischer Werte. Azure-BLOB-Speicher ist derzeit die einzige unterstützte Eingabequelle für Verweisdaten. Blobs für Verweisdatenquellen sind auf eine Größe von 100 MB beschränkt.
 
 Informationen zum Erstellen von Verweisdateneingaben finden Sie unter [Verwenden von Verweisdaten](stream-analytics-use-reference-data.md).  
+
+## <a name="compression"></a>Komprimierung
+
+Azure Stream Analytics wird in Kürze eine Komprimierungsfunktion für alle Datenstrom-Eingabequellen (Event Hubs, IoT Hub und Blob Storage) bereitstellen. Bei dieser Funktion wird im Azure-Portal auf dem Blatt **Neue Eingabe** eine neue Dropdownoption hinzugefügt, über die Sie optional die Komprimierung von Datenströmen auswählen können. Zu den unterstützten Komprimierungstypen zählen zurzeit „Keine“, „GZip“ und „Deflate“. 
+
+Komprimierungen werden nicht parallel zur Avro-Serialisierung unterstützt und sind nicht auf Verweisdaten anwendbar. 
 
 ## <a name="create-data-stream-input-from-event-hubs"></a>Erstellen einer Datenstromeingabe aus Event Hubs
 
@@ -57,6 +62,7 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf dem Blatt **N
 | **Event Hub-Consumergruppe** (optional) |Die Consumergruppe, die zum Erfassen von Daten aus dem Event Hub verwendet werden soll. Wenn keine Consumergruppe angegeben wird, verwendet der Stream Analytics-Auftrag die Standardconsumergruppe an. Es wird empfohlen, für jeden Stream Analytics-Auftrag eine eigene Consumergruppe zu verwenden. |
 | **Ereignisserialisierungsformat** |Das Serialisierungsformat (JSON, CSV oder Avro) des eingehenden Datenstroms. |
 | **Codieren** | UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
+| **Compression** (optional) | Der Komprimierungstyp („Keine“, „GZip“ oder „Deflate“) des eingehenden Datenstroms |
 
 Wenn Ihre Daten aus einem Event Hub stammen, haben Sie Zugriff auf folgende Metadatenfelder in Ihrer Stream Analytics-Abfrage:
 
@@ -102,6 +108,7 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf dem Blatt **N
 | **Consumergruppe** (optional) |Die Consumergruppe, die zum Erfassen von Daten aus IoT Hub verwendet werden soll. Wenn keine Consumergruppe angegeben wird, verwendet der Stream Analytics-Auftrag die Standardconsumergruppe an. Es wird empfohlen, für jeden Stream Analytics-Auftrag eine andere Consumergruppe zu verwenden. |
 | **Ereignisserialisierungsformat** |Das Serialisierungsformat (JSON, CSV oder Avro) des eingehenden Datenstroms. |
 | **Codieren** |UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
+| **Compression** (optional) | Der Komprimierungstyp („Keine“, „GZip“ oder „Deflate“) des eingehenden Datenstroms |
 
 Wenn Ihre Daten aus IoT Hub stammen, haben Sie Zugriff auf folgende Metadatenfelder in Ihrer Stream Analytics-Abfrage:
 
@@ -144,6 +151,7 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf dem Blatt **N
 | **Zeitformat** (optional) |  Wenn Sie die Zeitvariable im Pfad verwenden, wird das Zeitformat, in dem die Dateien organisiert sind, verwendet. Der einzige derzeit unterstützte Wert ist `HH`. |
 | **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV oder Avro) für eingehende Datenströme. |
 | **Codieren** | Bei CSV und JSON ist UTF-8 gegenwärtig das einzige unterstützte Codierungsformat. |
+| **Compression** (optional) | Der Komprimierungstyp („Keine“, „GZip“ oder „Deflate“) des eingehenden Datenstroms |
 
 Wenn Ihre Daten aus einer Blob Storage-Quelle stammen, haben Sie Zugriff auf folgende Metadatenfelder in Ihrer Stream Analytics-Abfrage:
 
@@ -182,4 +190,3 @@ Sie haben sich mit Datenverbindungsoptionen in Azure für Ihre Stream Analytics-
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
-

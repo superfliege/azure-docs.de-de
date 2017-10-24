@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andredm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 0fa44799a0bd49d3d96a1916f32e6452405abce8
-ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
-
+ms.openlocfilehash: 22b62be1773c5042ecf6ee078e68a4ffdf791d53
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>Erhöhen der Rechte als Mandantenadministrator mit der rollenbasierten Zugriffssteuerung
 
@@ -27,7 +26,18 @@ Mit der rollenbasierten Zugriffssteuerung können Mandantenadministratoren vorü
 
 Dieses Feature ist wichtig, weil es dem Mandantenadministrator die Anzeige aller Abonnements ermöglicht, die in einer Organisation vorhanden sind. Zudem erlaubt es Automatisierungs-Apps (z.B. zur Fakturierung und Überwachung) den Zugriff auf alle Abonnements und die Bereitstellung einer exakten Übersicht über den Organisationsstatus im Hinblick auf Abrechnung oder Asset Management.  
 
-## <a name="how-to-use-elevateaccess-to-give-tenant-access"></a>Verwenden von elevateAccess zum Erteilen von Zugriff an den Mandanten
+## <a name="how-to-use-elevateaccess-for-tenant-access-with-azure-ad-admin-center"></a>Verwenden von elevateAccess für Zugriff von Mandanten mit Azure AD Admin Center
+
+Im [Azure Active Directory Admin Center](https://aad.portal.azure.com) können Sie dieses Feature unter **Eigenschaften** aufrufen.
+Das Feature heißt: **Ein globaler Administrator kann Azure-Abonnements verwalten**. Dies scheint auf den ersten Blick eine globale Eigenschaft für Azure Active Directory zu sein, sie funktioniert jedoch auf Benutzerbasis für den derzeit angemeldeten Benutzer. Wenn Sie in Azure Active Directory über globale Administratorrechte verfügen, können Sie das elevateAccess-Feature für den Benutzernamen aufrufen, mit dem Sie derzeit bei Azure Active Directory Admin Center angemeldet sind.
+
+Auswählen von **Ja** und dann **Speichern**: Dies **weist** die Rolle **Benutzerzugriffsadministrator** im Stamm „/“ (Stammbereich) dem Benutzernamen zu, mit dem Sie derzeit im Portal angemeldet sind.
+
+Auswählen von **Nein** und dann **Speichern**: Dies **entfernt** die Rolle **Benutzerzugriffsadministrator** im Stamm „/“ (Stammbereich) von dem Benutzernamen, mit dem Sie derzeit im Portal angemeldet sind.
+
+![Azure AD Admin Center – Eigenschaften – globaler Administrator kann Azure-Abonnement verwalten – Screenshot](./media/role-based-access-control-tenant-admin-access/aad-azure-portal-global-admin-can-manage-azure-subscriptions.png)
+
+## <a name="how-to-use-elevateaccess-to-give-tenant-access-with-the-rest-api"></a>Verwenden von elevateAccess zum Erteilen von Zugriff an Mandanten mit der REST-API
 
 Im grundlegenden Vorgang werden die folgenden Schritte verwendet:
 
@@ -56,7 +66,7 @@ Im grundlegenden Vorgang werden die folgenden Schritte verwendet:
 4. Widerrufen Sie Ihre Berechtigungen als Benutzerzugriffsadministrator, bis sie wieder benötigt werden.
 
 
-## <a name="how-to-undo-the-elevateaccess-action"></a>Rückgängigmachen der elevateAccess-Aktion
+## <a name="how-to-undo-the-elevateaccess-action-with-the-rest-api"></a>Rückgängigmachen der elevateAccess-Aktion mit der REST-API
 
 Beim Aufruf von *elevateAccess* erstellen Sie eine Rollenzuweisung für sich selbst. Um diese Berechtigungen zu widerrufen, müssen Sie die Zuweisung löschen.
 
@@ -107,4 +117,3 @@ Beim Aufruf von *elevateAccess* erstellen Sie eine Rollenzuweisung für sich sel
 - Weitere Informationen finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit REST](role-based-access-control-manage-access-rest.md).
 
 - [Verwalten von Zugriffszuweisungen](role-based-access-control-manage-assignments.md) im Azure-Portal
-

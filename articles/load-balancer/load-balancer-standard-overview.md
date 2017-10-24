@@ -14,20 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: kumud
+ms.openlocfilehash: 0ed8d3432a988c468260589cfe12090529c403d7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: 2728e8b1e190b4ecd0635925b96e97775564a2ee
-ms.contentlocale: de-de
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-load-balancer-standard-overview-preview"></a>Übersicht: Azure Load Balancer Standard (Preview)
 
 Die SKUs Azure Load Balancer Standard und Public IP Standard ermöglichen Ihnen zusammen das Erstellen hoch skalierbarer und zuverlässiger Architekturen.  Anwendungen, die Load Balancer Standard verwenden, bieten nicht nur geringe Latenz, hohen Durchsatz und Skalierung für Millionen von Datenflüssen für alle TCP- und UDP-Anwendungen, sondern können auch neue Funktionen nutzen.
 
 >[!NOTE]
-> Die Load Balancer Standard-SKU ist zurzeit als Vorschauversion verfügbar. Während der Vorschauphase weist das Feature unter Umständen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Features in Releases mit allgemeiner Verfügbarkeit auf. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Verwenden Sie die allgemein verfügbare [Load Balancer Basic-SKU](load-balancer-overview.md) für Ihre Produktionsdienste.
+> Die Load Balancer Standard-SKU ist zurzeit als Vorschauversion verfügbar. Während der Vorschauphase weist das Feature unter Umständen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Features in Releases mit allgemeiner Verfügbarkeit auf. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Verwenden Sie die allgemein verfügbare [Load Balancer Basic-SKU](load-balancer-overview.md) für Ihre Produktionsdienste.  Funktionen in dieser Vorschauversion wie z.B. [Verfügbarkeitszonen](https://aka.ms/availabilityzones) und [Ports mit Hochverfügbarkeit](https://aka.ms/haports) erfordern derzeit eine getrennte Anmeldung. Befolgen Sie zusätzlich zur Load Balancer [Standard-Vorschauversion](#preview-sign-up) die entsprechenden Hinweise zur Anmeldung.
 
 ## <a name="why-use-load-balancer-standard"></a>Gründe für die Verwendung von Load Balancer Standard
 
@@ -151,6 +149,8 @@ Da VNets und Subnetze niemals zoneneingeschränkt sind, müssen Sie einfach nur 
 #### <a name="zonal-deployments"></a>Zonale Bereitstellungen
 
 Optional können Sie für das Front-End eine bestimmte Zone verwenden, indem Sie ein zonales Front-End definieren.  Ein zonales Front-End wird nur von der festgelegten einzelne Verfügbarkeitszone versorgt. In Kombination mit zonalen VM-Instanzen können Sie Ressourcen mit bestimmten Zonen verbinden.
+
+Eine öffentliche IP-Adresse, die in einer bestimmten Zone erstellt wurde, ist immer nur in dieser Zone vorhanden.  Es ist nicht möglich, die Zone einer öffentlichen IP-Adresse zu ändern.  Wenn Sie eine öffentliche IP-Adresse wünschen, die Ressourcen in mehreren Zonen zugeordnet werden kann, sollten Sie stattdessen eine zonenredundante öffentliche IP-Adresse erstellen.
 
 Erstellen Sie eine zonale Public IP-Adresse in Verfügbarkeitszone 1 mit dem folgenden Code (fügen Sie allen ggf. vorhandenen Resource Manager-Vorlagen „zones“ und „sku“ hinzu):
 
@@ -290,11 +290,11 @@ Die SKU „Public IP Standard“ ist ein neues Angebot und zurzeit als Vorschauv
 
 Im Gegensatz zu Public IP Basic mit mehreren Zuordnungsmethoden verwendet Public IP Standard immer statische Zuordnung.
 
-Bei Verwendung in einer Region, die auch Verfügbarkeitszonen anbietet, ist Public IP Standard automatisch zonenstabil, sofern keine Deklaration als zonal erfolgt ist.
+Bei Verwendung in einer Region, die auch Verfügbarkeitszonen anbietet, ist Public IP Standard automatisch zonenstabil, sofern keine Deklaration als zonal erfolgt ist.  Eine zonale öffentliche IP kann nicht von einer Zone in eine andere geändert werden.
 
 ## <a name="migration-between-skus"></a>Migration zwischen SKUs
 
-Gehen Sie folgendermaßen vor, wenn Sie von einer Ressourcen-SKU zu einer anderen wechseln möchten:
+SKUs sind nicht änderbar.  Gehen Sie folgendermaßen vor, wenn Sie von einer Ressourcen-SKU zu einer anderen wechseln möchten:
 
 ### <a name="migrating-from-basic-to-standard-sku"></a>Migrieren von der SKU „Basic“ zu „Standard“
 
@@ -374,7 +374,7 @@ Für die Teilnahme an der Vorschau der Load Balancer Standard-SKU und der zugeh�
 >Registrierung der Load Balancer-Standardfeatures kann bis zu einer Stunde dauern.
 
 >[!NOTE]
->Wenn Sie Verfügbarkeitszonen mit Load Balancer und Public IP verwenden möchten, müssen Sie Ihr Abonnement auch für die Verfügbarkeitszonenvorschau registrieren.
+>Wenn Sie Load Balancer Standard mit [Verfügbarkeitszonen](https://aka.ms/availabilityzones) und [Ports mit Hochverfügbarkeit](https://aka.ms/haports) verwenden möchten, ist für diese Vorschauversionen eine separate Anmeldung erforderlich.  Befolgen Sie die entsprechenden Anweisungen.
 
 ## <a name="pricing"></a>Preise
 
@@ -401,5 +401,4 @@ Die folgenden Einschränkungen gelten für die Preview und können jederzeit ge�
 - Weitere Informationen zu [Load Balancer Basic](load-balancer-overview.md)
 - Weitere Informationen zu [Verfügbarkeitszonen](../availability-zones/az-overview.md)
 - Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) von Azure.
-
 

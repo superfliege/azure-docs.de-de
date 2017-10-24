@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: e4fe5400ffcf4446392015aada031dd4dfbf238a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.openlocfilehash: 91b2e72b9cc5f7b52dde09fb837cbc994d52a26c
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -72,7 +72,7 @@ Weitere Informationen zur Erstellung und Verwendung von Sicherheitstoken finden 
 
 ### <a name="protocol-specifics"></a>Protokolldetails
 
-Jedes unterstützte Protokoll, z.B. MQTT, AMQP und HTTP, transportiert Token auf unterschiedliche Weise.
+Jedes unterstützte Protokoll, z.B. MQTT, AMQP und HTTPS, transportiert Tokens auf unterschiedliche Weise.
 
 Bei Verwendung von MQTT weist das CONNECT-Paket die Geräte-ID als Client-ID, {iothubhostname}/{deviceId} im Feld „Benutzername“ und ein SAS-Token im Feld „Kennwort“ auf. {iothubhostname} sollte der vollständige CNAME des IoT Hubs (z.B. „contoso.azure-devices.net“) sein.
 
@@ -87,7 +87,7 @@ Für SASL PLAIN kann der **Benutzername** Folgendes sein:
 
 In beiden Fällen enthält das Kennwortfeld das Token gemäß der Beschreibung unter [IoT Hub-Sicherheitstoken][lnk-sas-tokens].
 
-HTTP implementiert die Authentifizierung, indem ein gültiges Token in den Anforderungsheader **Authorization** eingeschlossen wird.
+HTTPS implementiert die Authentifizierung, indem ein gültiges Token in den Anforderungsheader **Authorization** eingeschlossen wird.
 
 #### <a name="example"></a>Beispiel
 
@@ -115,7 +115,7 @@ Dieser Mechanismus ist mit einer [Event Hubs-Herausgeberrichtlinie][lnk-event-hu
 
 IoT Hub verwendet Sicherheitstoken zum Authentifizieren von Geräten und Diensten, um das Senden von Schlüsseln über das Netzwerk zu vermeiden. Darüber hinaus sind Sicherheitstoken im Hinblick auf Gültigkeitszeitraum und Bereich beschränkt. [Azure IoT SDKs][lnk-sdks] generieren Token automatisch, ohne dass eine spezielle Konfiguration erforderlich ist. In einigen Szenarien müssen Sie Sicherheitstoken allerdings direkt generieren und verwenden. Zu diesen Szenarien zählen:
 
-* Die direkte Verwendung von MQTT, AMQP oder HTTP
+* Die direkte Verwendung von MQTT-, AMQP- oder HTTPS-Oberflächen
 * Die Implementierung des Tokendienstmusters, wie unter [Benutzerdefinierte Geräteauthentifizierung][lnk-custom-auth] beschrieben
 
 IoT Hub ermöglicht Geräten darüber hinaus die Authentifizierung bei IoT Hub mithilfe von [X.509-Zertifikaten][lnk-x509].

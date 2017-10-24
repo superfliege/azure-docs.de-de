@@ -7,20 +7,18 @@ ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql
-ms.custom: mvc
+ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 06/20/2017
+ms.date: 09/20/2017
+ms.openlocfilehash: aeca003a9b031a48804a057b627714b554298645
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 6ffcf3b38a3d868dfa10ea2e2a9d097441387d4f
-ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Verwenden von Java zum Verbinden und Abfragen von Daten
-Dieser Schnellstart zeigt, wie Sie mit einer Java-Anwendung eine Verbindung mit einer Azure-Datenbank für MySQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Java-Entwicklung vertraut sind und noch keine Erfahrung mit Azure-Datenbank für MySQL haben.
+Dieser Schnellstart zeigt, wie Sie mit einer Java-Anwendung eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Java-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
@@ -38,7 +36,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie im linken Bereich auf **Alle Ressourcen**, und suchen Sie dann nach dem Server, den Sie erstellt haben (z.B. **myserver4demo**).
 3. Klicken Sie auf den Servernamen.
-4. Wählen Sie die Seite mit den **Eigenschaften** des Servers aus. Notieren Sie sich den **Servernamen** und den **Anmeldenamen des Serveradministrators**.
+4. Wählen Sie die Seite **Eigenschaften** des Servers aus, und notieren Sie sich den **Servernamen** und **den Anmeldenamen des Serveradministrators**.
  ![Servername für Azure-Datenbank für MySQL](./media/connect-java/1_server-properties-name-login.png)
 5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Serveradministrator-Anmeldenamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
 
@@ -396,4 +394,3 @@ public class DeleteTable {
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
 > [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md)
-

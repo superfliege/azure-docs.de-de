@@ -1,5 +1,4 @@
 ---
-
 title: Was ist die gruppenbasierte Lizenzierung in Azure Active Directory? | Microsoft Docs
 description: "Beschreibung der gruppenbasierten Lizenzierung in Azure Active Directory sowie ihrer Funktionsweise und bewährter Methoden"
 services: active-directory
@@ -18,15 +17,12 @@ ms.date: 06/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 52dd48ce4e4acaf48f31edc51bbb657f8cd249cd
-ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
-
+ms.openlocfilehash: d6c76af713a73b965e87a2f470125f2e65565975
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Grundlagen der gruppenbasierten Lizenzierung in Azure Active Directory
 
 Die Verwendung von zahlungspflichtigen Microsoft-Clouddiensten wie Office 365, Enterprise Mobility + Security, Dynamics CRM und ähnlichen Produkte erfordern Lizenzen. Diese Lizenzen werden jedem Benutzer zugewiesen, der Zugriff auf diese Dienste benötigt. Administratoren verwalten Lizenzen über eines der Verwaltungsportale (Office, Azure) und PowerShell-Cmdlets. Azure Active Directory (Azure AD) ist die zugrunde liegende Infrastruktur, die die Identitätsverwaltung aller Microsoft-Clouddienste unterstützt. Azure AD speichert Informationen zum Lizenzzuweisungsstatus für Benutzer.
@@ -55,6 +51,10 @@ Hier die Hauptmerkmale der gruppenbasierten Lizenzierung:
 
 - Während der öffentlichen Vorschauphase ist im Mandanten ein kostenpflichtiges oder Testabonnement für Azure AD Basic oder Premium Edition erforderlich, um die gruppenbasierte Lizenzverwaltung nutzen zu können.
 
+## <a name="your-feedback-is-welcome"></a>Wir freuen uns auf Ihr Feedback!
+
+Wenn Sie Feedback oder Featureanforderungen äußern möchten, nutzen Sie [dieses Forum](https://feedback.azure.com/forums/169401-azure-active-directory/category/317677-group-based-licensing).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu anderen Szenarien für die gruppenbasierte Lizenzverwaltung finden Sie unter:
@@ -64,4 +64,3 @@ Weitere Informationen zu anderen Szenarien für die gruppenbasierte Lizenzverwal
 * [Bestimmen und Beheben von Lizenzproblemen für eine Gruppe in Azure Active Directory](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung in Azure Active Directory](active-directory-licensing-group-migration-azure-portal.md)
 * [Gruppenbasierte Azure Active Directory-Lizenzierung – zusätzliche Szenarien](active-directory-licensing-group-advanced.md)
-

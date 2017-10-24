@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
+ms.openlocfilehash: efd2f1e471f67396d35f11f2eb1044a8afa469af
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ad43b5bb4f6f51f25acb9b2160661addab481762
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten (WebJob-Projekte)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -243,7 +242,8 @@ Im folgenden Beispiel wird aus einer Nachricht der Eingabewarteschlange eine neu
 Sie können die **IBinder**-Schnittstelle auch mit den Attributen **Table** und **Blob** verwenden.
 
 ## <a name="how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message"></a>Lesen und Bearbeiten von Blobs beim Verarbeiten einer Warteschlangennachricht
-Die Attribute **Blob** und **Table** ermöglichen Ihnen das Lesen und Schreiben von Blobs und Tabellen. Die Beispiele in diesem Abschnitt gelten für Blobs. Codebeispiele, die zeigen, wie Sie Prozesse auslösen, wenn Blobs erstellt oder aktualisiert werden, finden Sie unter [Verwenden von Azure Blob Storage mit dem WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md). Codebeispiele für das Lesen und Schreiben von Tabellen finden Sie unter [Verwenden von Azure Table Storage mit dem WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md).
+Die Attribute **Blob** und **Table** ermöglichen Ihnen das Lesen und Schreiben von Blobs und Tabellen. Die Beispiele in diesem Abschnitt gelten für Blobs. Codebeispiele, die zeigen, wie Prozesse beim Erstellen oder Aktualisieren von Blobs ausgelöst werden, finden Sie unter [Vorgehensweise zum Verwenden von Azure Blob Storage mit dem WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
+<!-- , and for code samples that read and write tables, see [How to use Azure table storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md). -->
 
 ### <a name="string-queue-messages-triggering-blob-operations"></a>Zeichenfolge-Warteschlangennachrichten, die Blobvorgänge auslösen
 Für eine Warteschlangennachricht, die eine Zeichenfolge enthält, ist **QueueTrigger** ein Platzhalter, der im Parameter **blobPath** des **Blob**-Attributs verwendet werden kann, der den Inhalt der Nachricht enthält.
@@ -258,7 +258,7 @@ Im folgenden Beispiel werden **Stream** -Objekte zum Lesen und Schreiben von Blo
             blobInput.CopyTo(blobOutput, 4096);
         }
 
-Der Attributkonstruktor **Blob** verwendet den Parameter **blobPath**, der den Container und den Blobnamen angibt. Weitere Informationen zu diesem Platzhalter finden Sie unter [Verwenden von Azure-Blobspeicher mit dem WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md).
+Der Attributkonstruktor **Blob** verwendet den Parameter **blobPath**, der den Container und den Blobnamen angibt. Weitere Informationen zu diesem Platzhalter finden Sie unter [Verwenden von Azure-Blobspeicher mit dem WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
 Wenn das Attribut ein **Stream**-Objekt anpasst, gibt ein anderer Konstruktorparameter den Modus **FileAccess** als Lesen, Schreiben oder Lesen/Schreiben an.
 
@@ -469,7 +469,7 @@ Methoden für die Konsolenausgabe, die Sie in einer Funktion oder in der **Main(
 
 Die Konsolenausgabe kann nicht an einen bestimmten Methodenaufruf geknüpft werden, da die Konsole als Singlethread ausgeführt wird, während viele Aufgaben ggf. gleichzeitig ausgeführt werden. Deshalb versieht das SDK jeden Funktionsaufruf mit einem eigenen eindeutigen Protokollschreibobjekt.
 
-Verwenden Sie zum Schreiben von [Ablaufverfolgungsprotokollen für die Anwendung](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview) **Console.Out** (erstellt als INFO markierte Protokolle) und **Console.Error** (erstellt als ERROR markierte Protokolle). Eine Alternative ist die [Verwendung von Trace oder TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), um zusätzlich zu INFO und FEHLER die Stufen AUSFÜHRLICH, WARNUNG und KRITISCH bereitzustellen. Ablaufverfolgungsprotokolle von Anwendungen werden in den Web-App-Protokolldateien, Azure-Tabellen oder Azure-Blobs angezeigt, je nachdem, wie Sie Ihre Azure-Web-App konfigurieren. Wie bei sämtlichen Konsolenausgaben werden die 100 letzten Anwendungsprotokolle auch auf der Seite "Dashboard" für den Webauftrag und nicht auf der Seite für die Funktionsaufruf angezeigt.
+Verwenden Sie zum Schreiben von [Ablaufverfolgungsprotokollen für die Anwendung](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview) **Console.Out** (erstellt als INFO markierte Protokolle) und **Console.Error** (erstellt als ERROR markierte Protokolle). Eine Alternative ist die [Verwendung von Trace oder TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), um zusätzlich zu INFO und FEHLER die Stufen AUSFÜHRLICH, WARNUNG und KRITISCH bereitzustellen. Ablaufverfolgungsprotokolle von Anwendungen werden in den Web-App-Protokolldateien, Azure-Tabellen oder Azure-Blobs angezeigt, je nachdem, wie Sie Ihre Azure-Web-App konfigurieren. Wie bei sämtlichen Konsolenausgaben werden die 100 letzten Anwendungsprotokolle auch auf der Seite "Dashboard" für den Webauftrag und nicht auf der Seite für die Funktionsaufruf angezeigt.
 
 Die Konsolenausgabe wird nur im Dashboard angezeigt, wenn das Programm in einem Azure-Webauftrag ausgeführt wird, und nicht, wenn die Anwendung lokal oder in einer anderen Umgebung ausgeführt wird.
 
@@ -513,5 +513,4 @@ Und in einer Azure-Tabelle sehen Protokolle für **Console.Out** und **Console.E
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurden Codebeispiele bereitgestellt, in denen veranschaulicht wird, wie häufige Szenarien für das Arbeiten mit Azure-Warteschlangen behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und des WebJobs SDK finden Sie unter [Dokumentationsressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
-
 

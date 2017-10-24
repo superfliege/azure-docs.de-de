@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Gruppeneinstellungen mit Azure Active Directory-Cmdlets | Microsoft-Dokumentation
+title: Konfigurieren von Gruppeneinstellungen mit PowerShell in Azure Active Directory | Microsoft-Dokumentation
 description: "Verwalten der Einstellungen für Gruppen mithilfe von Azure Active Directory-Cmdlets"
 services: active-directory
 documentationcenter: 
@@ -12,21 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 10/04/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;
+ms.openlocfilehash: 06384d1a1fb7fcc36e9ab97e38c6524a7e260140
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 28054e91e91933b939f4ba700e317d63a614e1d9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
 > [!IMPORTANT]
-> Dieser Inhalt gilt nur für Office 365-Gruppen. Um weitere Informationen dazu zu erhalten, wie Sie Benutzern die Erstellung von Sicherheitsgruppen ermöglichen, legen Sie `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True` wie unter [Set-MSOLCompanySettings](https://docs.microsoft.com/en-us/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) beschrieben fest. 
+> Dieser Inhalt gilt nur für Office 365-Gruppen. Um weitere Informationen dazu zu erhalten, wie Sie Benutzern die Erstellung von Sicherheitsgruppen ermöglichen, legen Sie `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True` wie unter [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) beschrieben fest. 
 
 Office 365-Gruppeneinstellungen werden mithilfe eines Settings- und eines SettingsTemplate-Objekts konfiguriert. Zu Beginn werden keine Einstellungsobjekte in Ihrem Verzeichnis angezeigt, da Ihr Verzeichnis mit den Standardeinstellungen konfiguriert ist. Um die Standardeinstellungen zu ändern, erstellen Sie mithilfe einer Einstellungsvorlage ein neues Einstellungsobjekt. Einstellungsvorlagen werden von Microsoft definiert. Es werden verschiedene Einstellungsvorlagen unterstützt. Zum Konfigurieren von Office 365-Gruppeneinstellungen für Ihr Verzeichnis verwenden Sie die Vorlage mit dem Namen „Group.Unified“. Zum Konfigurieren von Office 365-Gruppeneinstellungen für eine einzelne Gruppe verwenden Sie die Vorlage „Group.Unified.Guest“. Diese Vorlage dient zum Verwalten des Gastzugriffs auf eine Office 365-Gruppe. 
 
@@ -95,7 +94,9 @@ Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ defin
 |  <ul><li>UsageGuidelinesUrl<li>Typ: Zeichenfolge<li>Standardwert: “” |Ein Link zu den Nutzungsrichtlinien für die Gruppe. |
 |  <ul><li>ClassificationDescriptions<li>Typ: Zeichenfolge<li>Standardwert: “” | Eine durch Trennzeichen getrennte Liste mit Klassifizierungsbeschreibungen. |
 |  <ul><li>DefaultClassification<li>Typ: Zeichenfolge<li>Standardwert: “” | Die Klassifizierung, die als Standardklassifizierung einer Gruppe verwendet werden soll, falls keine angegeben wurde.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Typ: Zeichenfolge<li>Standardwert: “” |Noch nicht implementiert
+|  <ul><li>PrefixSuffixNamingRequirement<li>Typ: Zeichenfolge<li>Standardwert: “” | Nicht verwenden. Noch nicht implementiert. |
+| <ul><li>CustomBlockedWordsList<li>Typ: Zeichenfolge<li>Standardwert: “” | Nicht verwenden. Noch nicht implementiert. |
+| <ul><li>EnableMSStandardBlockedWords<li>Typ: Boolescher Wert<li>Standardwert: False. | Nicht verwenden
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Typ: Boolescher Wert<li>Standard: False | Boolescher Wert, der angibt, ob ein Gastbenutzer Besitzer von Gruppen sein kann. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Typ: Boolescher Wert<li>Standard: True | Boolescher Wert, der angibt, ob ein Gastbenutzer Zugriff auf den Inhalt einheitlicher Gruppen hat. |
 |  <ul><li>GuestUsageGuidelinesUrl<li>Typ: Zeichenfolge<li>Standardwert: “” | Die URL eines Links zu den Leitlinien für die Nutzung des Gastzugriffs. |
@@ -217,4 +218,3 @@ Weitere Informationen zu Azure Active Directory PowerShell finden Sie unter [Azu
 
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-

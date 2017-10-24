@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: tomfitz
+ms.openlocfilehash: 13154e41ebd4867de9af74340a69446400814f5a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 4f1d5f4cc48470f8906edb28628006dd1996bd3a
-ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI
 
@@ -79,55 +78,11 @@ az group deployment create \
 
 Das obige Beispiel erfordert einen URI mit öffentlichem Zugriff für die Vorlage, was in den meisten Szenarien funktioniert, da die Vorlage keine vertraulichen Daten enthalten sollte. Wenn Sie vertrauliche Daten (z.B. ein Administratorkennwort) angeben müssen, übergeben Sie diesen Wert als sicheren Parameter. Wenn Sie jedoch keinen öffentlichen Zugriff auf Ihre Vorlage wünschen, können Sie sie schützen, indem Sie sie in einem privaten Speichercontainer speichern. Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token (Shared Access Signature) erfordert, finden Sie unter [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-cli-sas-token.md).
 
-## <a name="deploy-template-from-cloud-shell"></a>Bereitstellen der Vorlage über Cloud Shell
+[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
-Mit [Cloud Shell](../cloud-shell/overview.md) können Sie Befehle der Azure-Befehlszeilenschnittstelle ausführen, um Ihre Vorlage bereitzustellen. Die Vorlage muss allerdings zuerst in die Dateifreigabe für Ihre Cloud Shell-Instanz geladen werden. Für den Fall, dass Sie Cloud Shell noch nicht verwendet haben, finden Sie unter [Übersicht über Azure Cloud Shell (Vorschau)](../cloud-shell/overview.md) Informationen zum Einrichten von Cloud Shell.
+Geben Sie in der Cloud Shell-Instanz folgende Befehle ein:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.   
-
-2. Wählen Sie Ihre Cloud Shell-Ressourcengruppe aus. Namensmuster: `cloud-shell-storage-<region>`.
-
-   ![Auswählen der Ressourcengruppe](./media/resource-group-template-deploy-cli/select-cs-resource-group.png)
-
-3. Wählen Sie das Speicherkonto für Ihre Cloud Shell-Instanz aus.
-
-   ![Auswählen des Speicherkontos](./media/resource-group-template-deploy-cli/select-storage.png)
-
-4. Wählen Sie **Dateien** aus.
-
-   ![Auswählen von Dateien](./media/resource-group-template-deploy-cli/select-files.png)
-
-5. Wählen Sie die Dateifreigabe für Cloud Shell aus. Namensmuster: `cs-<user>-<domain>-com-<uniqueGuid>`.
-
-   ![Auswählen der Dateifreigabe](./media/resource-group-template-deploy-cli/select-file-share.png)
-
-6. Wählen Sie **Verzeichnis hinzufügen** aus.
-
-   ![Hinzufügen des Verzeichnisses](./media/resource-group-template-deploy-cli/select-add-directory.png)
-
-7. Nennen Sie es **templates**, und wählen Sie **OK** aus.
-
-   ![Benennen des Verzeichnisses](./media/resource-group-template-deploy-cli/name-templates.png)
-
-8. Wählen Sie Ihr neues Verzeichnis aus.
-
-   ![Auswählen des Verzeichnisses](./media/resource-group-template-deploy-cli/select-templates.png)
-
-9. Wählen Sie die Option **Hochladen**.
-
-   ![Auswählen von „Hochladen“](./media/resource-group-template-deploy-cli/select-upload.png)
-
-10. Suchen Sie Ihre Vorlage, und laden Sie sie hoch.
-
-   ![Hochladen der Datei](./media/resource-group-template-deploy-cli/upload-files.png)
-
-11. Öffnen Sie die Eingabeaufforderung.
-
-   ![Öffnen von Cloud Shell](./media/resource-group-template-deploy-cli/start-cloud-shell.png)
-
-12. Geben Sie in der Cloud Shell-Instanz folgende Befehle ein:
-
-   ```azurecli
+   ```azurecli-interactive
    az group create --name examplegroup --location "South Central US"
    az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageAccountType=Standard_GRS
    ```
@@ -282,4 +237,3 @@ Bei den Beispielen in diesem Thema wird die folgende Vorlage verwendet. Kopieren
 * Tipps zum Beheben gängiger Azure-Bereitstellungsfehler finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token erfordert, finden Sie unter [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-cli-sas-token.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
-

@@ -11,19 +11,18 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
-ms.author: bwren
+ms.author: mbullwin
+ms.openlocfilehash: 525f67a856e5ffa9fcd3c8fd368a564adc2e99fd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 0761339dfdaaaed418a1414472393ce8e0f37b9c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 
 Wenn eine Ausnahme auftritt, können Sie automatisch eine Debugmomentaufnahme von Ihrer aktiven Webanwendung erfassen. Die Momentaufnahme zeigt den Status des Quellcodes und der Variablen in dem Moment, in dem die Ausnahme ausgelöst wurde. Der Momentaufnahmedebugger (Vorschau) in [Azure Application Insights](app-insights-overview.md) überwacht die Ausnahmetelemetrie aus Ihrer Web-App. Er erfasst Momentaufnahmen Ihrer am häufigsten ausgelösten Ausnahmen, damit Sie die erforderlichen Informationen zur Diagnose von Problemen in der Produktion erhalten. Binden Sie das [NuGet-Paket des Momentaufnahmesammlers](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre Anwendung ein, und konfigurieren Sie optional Parameter für die Datensammlung in [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Momentaufnahmen finden Sie im Application Insights-Portal unter [Ausnahmen](app-insights-asp-net-exceptions.md).
 
-Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Öffnen Sie zum Verbessern Ihrer Debugleistung mit Quellcode die Momentaufnahmen mit Visual Studio 2017 Enterprise, indem Sie [die Momentaufnahmedebugger-Erweiterung für Visual Studio herunterladen](https://aka.ms/snapshotdebugger).
+Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Öffnen Sie zum Verbessern Ihrer Debugleistung mit Quellcode die Momentaufnahmen mit Visual Studio 2017 Enterprise, indem Sie [die Momentaufnahmedebugger-Erweiterung für Visual Studio herunterladen](https://aka.ms/snapshotdebugger). In Visual Studio können Sie auch [Andockpunkte festlegen, um interaktiv Momentaufnahmen zu erstellen](https://aka.ms/snappoint), ohne auf eine Ausnahme zu warten.
 
 Die Momentaufnahmesammlung ist für folgende Anwendungen verfügbar:
 * .NET Framework- und ASP.NET-Anwendungen, die mit .NET Framework 4.5 oder höher ausgeführt werden
@@ -259,7 +258,6 @@ Wenn trotzdem keine Ausnahme mit dieser Momentaufnahme-ID angezeigt wird, wurde 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Legen Sie Fangpunkte in Ihrem Code fest](https://azure.microsoft.com/blog/snapshot-debugger-for-azure/), um Momentaufnahmen abzurufen, ohne auf eine Ausnahme warten zu müssen.
+* [Legen Sie Fangpunkte in Ihrem Code fest](https://docs.microsoft.com/en-us/visualstudio/debugger/debug-live-azure-applications), um Momentaufnahmen abzurufen, ohne auf eine Ausnahme warten zu müssen.
 * Unter [Diagnostizieren von Ausnahmen in Ihren Web-Apps](app-insights-asp-net-exceptions.md) erfahren Sie, wie Sie weitere Ausnahmen für Application Insights sichtbar machen. 
 * Die [intelligente Erkennung](app-insights-proactive-diagnostics.md) ermittelt automatisch Leistungsanomalien.
-

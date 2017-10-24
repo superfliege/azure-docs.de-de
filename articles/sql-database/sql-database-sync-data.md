@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
+ms.openlocfilehash: ed2266004e60843749233f92c8f4b069e4c17ba5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 926938a8ed20167e1f17a9883007cd993897f14a
-ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
 
@@ -98,11 +97,13 @@ Die Transaktionskonsistenz ist nicht garantiert, da die Datensynchronisierung au
 
 ### <a name="requirements"></a>Anforderungen
 
--   Jede Tabelle muss über einen Primärschlüssel verfügen.
+-   Jede Tabelle muss über einen Primärschlüssel verfügen. Ändern Sie nicht den Wert des Primärschlüssels in einer Zeile. Wenn Sie dies tun müssen, löschen Sie die Zeile, und erstellen Sie sie mit dem neuen Wert des Primärschlüssels neu. 
 
 -   Eine Tabelle kann keine Identitätsspalte enthalten, die kein Primärschlüssel ist.
 
 -   Die Namen von Objekten (Datenbanken, Tabellen und Spalten) dürfen nicht die druckbaren Zeichen Punkt (.), linke eckige Klammer ([) oder rechte eckige Klammer (]) enthalten.
+
+-   Die Momentaufnahmeisolation muss aktiviert sein. Weitere Informationen finden Sie unter [Momentaufnahmeisolation in SQL Server](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="limitations-on-service-and-database-dimensions"></a>Einschränkungen von Dienst- und Datenbankdimensionen
 
@@ -140,6 +141,11 @@ Diese Fehlermeldung besagt, dass eines der beiden folgenden Probleme vorliegt:
 ### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>Wie geht die Datensynchronisierung mit Zirkelbezügen um? Diese liegen vor, wenn dieselben Daten in mehreren Synchronisierungsgruppen synchronisiert werden und sich daher ständig ändern.
 Die Datensynchronisierung beseitigt Zirkelbezüge nicht. Vermeiden Sie sie deshalb unbedingt. 
 
+### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>Wie kann ich eine Datenbank durch Datensynchronisierung exportieren und importieren?
+Nachdem Sie eine Datenbank als BACPAC-Datei exportiert haben und zum Erstellen einer neuen Datenbank importieren, müssen Sie die folgenden zwei Schritte durchführen, um die Datensynchronisierung in der neuen Datenbank durchzuführen:
+1.  Bereinigen Sie in der **neuen Datenbank** mithilfe [dieses Skripts](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql) die Datensynchronisierungsobjekte und Seitentabellen. Dieses Skript löscht alle erforderlichen Datensynchronisierungsobjekte aus der Datenbank.
+2.  Erstellen Sie die Synchronisierungsgruppe mit der neuen Datenbank neu. Wenn Sie die alte Synchronisierungsgruppe nicht mehr benötigen, löschen Sie sie.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
@@ -159,4 +165,3 @@ Weitere Informationen zu SQL-Datenbank finden Sie unter:
 -   [Übersicht über die SQL-Datenbank](sql-database-technical-overview.md)
 
 -   [Datenbank-Lebenszyklusverwaltung](https://msdn.microsoft.com/library/jj907294.aspx)
-

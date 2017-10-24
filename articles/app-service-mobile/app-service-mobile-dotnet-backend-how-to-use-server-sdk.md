@@ -15,12 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
+ms.openlocfilehash: 1728e1d76f075eae8f5500afa34674785f8e3848
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: ebaeee9b68810d0e5d47da20373e7951c57147d4
-ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Arbeiten Sie mit der Back-End-Server-SDK für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -126,7 +125,7 @@ Die folgenden NuGet-basierten Erweiterungspakete bieten verschiedene mobile Funk
 * Mit [Microsoft.Azure.Mobile.Server.Login] wird die AppServiceLoginHandler.CreateToken()-Methode bereitgestellt. Dies ist eine statische Methode, die für Szenarien mit benutzerdefinierter Authentifizierung verwendet wird.
 
 ## <a name="publish-server-project"></a>Vorgehensweise: Veröffentlichen des Serverprojekts
-In diesem Abschnitt erfahren Sie, wie Sie Ihr .NET-Back-End-Projekt über Visual Studio veröffentlichen. Sie können Ihr Back-End-Projekt auch mithilfe von Git oder einer der anderen Methoden bereitstellen, die in der [Dokumentation zur Azure App Service-Bereitstellung](../app-service-web/web-sites-deploy.md)behandelt werden.
+In diesem Abschnitt erfahren Sie, wie Sie Ihr .NET-Back-End-Projekt über Visual Studio veröffentlichen. Sie können Ihr Back-End-Projekt auch über [Git](../app-service/app-service-deploy-local-git.md) oder eine der anderen dort verfügbaren Methoden bereitstellen.
 
 1. Erstellen Sie das Projekt in Visual Studio neu, um die NuGet-Pakete wiederherzustellen.
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und klicken Sie anschließend auf **Veröffentlichen**. Bei der erstmaligen Veröffentlichung müssen Sie ein Veröffentlichungsprofil definieren. Wenn Sie bereits ein Profil definiert haben, können Sie es auswählen und auf **Veröffentlichen** klicken.
@@ -413,16 +412,16 @@ Stellen Sie vor der Registrierung für Pushbenachrichtigungen von einem authenti
 ## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>Vorgehensweise: Debuggen und Problembehandlung des .NET-Server-SDKs
 Azure App Service stellt mehrere Debug- und Problembehandlungsverfahren für ASP.NET-Anwendungen bereit.
 
-* [Überwachen eines Azure App Service](../app-service-web/web-sites-monitor.md)
-* [Aktivieren der Diagnoseprotokollierung in Azure App Service](../app-service-web/web-sites-enable-diagnostic-log.md)
-* [Problembehandlung für einen Azure App Service in Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)
+* [Überwachen eines Azure App Service](../app-service/web-sites-monitor.md)
+* [Aktivieren der Diagnoseprotokollierung in Azure App Service](../app-service/web-sites-enable-diagnostic-log.md)
+* [Problembehandlung für einen Azure App Service in Visual Studio](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md)
 
 ### <a name="logging"></a>Protokollierung
 Zum Schreiben in App Service-Diagnoseprotokolle kann das standardmäßige Schreiben von ASP.NET-Ablaufverfolgungen verwendet werden. Um in die Protokolle schreiben zu können, müssen Sie in Ihrem Mobile App-Back-End die Diagnose aktivieren.
 
 Gehen Sie wie folgt vor, um die Diagnose zu aktivieren und in die Protokolle zu schreiben:
 
-1. Führen Sie die unter [Aktivieren der Diagnose](../app-service-web/web-sites-enable-diagnostic-log.md#enablediag)angegebenen Schritte aus.
+1. Führen Sie die unter [Aktivieren der Diagnose](../app-service/web-sites-enable-diagnostic-log.md#enablediag)angegebenen Schritte aus.
 2. Fügen Sie Ihrer Codedatei folgende using-Anweisung hinzu:
 
         using System.Web.Http.Tracing;
@@ -431,7 +430,7 @@ Gehen Sie wie folgt vor, um die Diagnose zu aktivieren und in die Protokolle zu 
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");
 4. Veröffentlichen Sie Ihr Serverprojekt neu, und greifen Sie auf das Mobile App-Back-End zu, um den Codepfad mit der Protokollierung auszuführen.
-5. Gehen Sie zum Herunterladen und Auswerten der Protokolle wie unter [Vorgehensweise: Herunterladen von Protokollen](../app-service-web/web-sites-enable-diagnostic-log.md#download)beschrieben vor.
+5. Gehen Sie zum Herunterladen und Auswerten der Protokolle wie unter [Vorgehensweise: Herunterladen von Protokollen](../app-service/web-sites-enable-diagnostic-log.md#download)beschrieben vor.
 
 ### <a name="local-debug"></a>Lokales Debuggen mit Authentifizierung
 Sie können zum Testen von Änderungen Ihre Anwendung vor der Veröffentlichung in der Cloud lokal ausführen. Für die meisten Azure Mobile Apps-Back-Ends drücken Sie in Visual Studio die Taste *F5* . Bei der Verwendung der Authentifizierung gibt es jedoch einige zusätzliche Aspekte zu berücksichtigen.
@@ -472,4 +471,3 @@ Verwenden Sie den Signaturschlüssel für den Parameter *authSigningKey* in Ihre
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx
-

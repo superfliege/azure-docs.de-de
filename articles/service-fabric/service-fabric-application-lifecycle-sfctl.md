@@ -8,12 +8,11 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: edwardsa
+ms.openlocfilehash: 6eb58b31f20f239d310415d44f61e7455918dae9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: c3a2eb3e6e54f952ef963bb2a0292d9ad7b53bc5
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli"></a>Verwalten einer Azure Service Fabric-Anwendung mithilfe der Azure Service Fabric CLI
 
@@ -31,14 +30,14 @@ Um eine neue Anwendung bereitzustellen, gehen Sie folgendermaßen vor:
 
 1. Laden Sie ein Anwendungspaket in den Service Fabric-Imagespeicher hoch.
 2. Stellen Sie einen Anwendungstyp bereit.
-3. Geben Sie eine Anwendung an, und erstellen Sie diese.
-4. Geben Sie Dienste an, und erstellen Sie diese.
+3. Löschen Sie den Inhalt des Imagespeichers.
+4. Geben Sie eine Anwendung an, und erstellen Sie diese.
+5. Geben Sie Dienste an, und erstellen Sie diese.
 
 Um eine vorhandene Anwendung zu entfernen, gehen Sie wie folgt vor:
 
 1. Löschen Sie die Anwendung.
 2. Heben Sie die Bereitstellung des zugeordneten Anwendungstyps auf.
-3. Löschen Sie den Inhalt des Imagespeichers.
 
 ## <a name="deploy-a-new-application"></a>Hinzufügen einer neuen Anwendung
 
@@ -65,6 +64,18 @@ sfctl application provision --application-type-build-path app_package_dir
 ```
 
 Der Wert für `application-type-build-path` ist der Name des Verzeichnisses, in das Sie Ihr Anwendungspaket hochgeladen haben.
+
+### <a name="delete-the-application-package"></a>Löschen des Anwendungspakets
+
+Es wird empfohlen, das Anwendungspaket nach erfolgreicher Registrierung der Anwendung zu entfernen.  Sie können Systemressourcen freigeben, indem Sie Anwendungspakete aus dem Imagespeicher löschen.  Nicht verwendete Anwendungspakete nehmen Speicherplatz in Anspruch und führen zu Leistungsproblemen der Anwendung. 
+
+Um das Anwendungspaket aus dem Imagespeicher zu löschen, verwenden Sie den folgenden Befehl:
+
+```azurecli
+sfctl store delete --content-path app_package_dir
+```
+
+`content-path` muss der Name des Verzeichnisses sein, das Sie beim Erstellen der Anwendung hochgeladen haben.
 
 ### <a name="create-an-application-from-an-application-type"></a>Erstellen einer Anwendung aus einem Anwendungstyp
 
@@ -127,18 +138,6 @@ sfctl application unprovision --application-type-name TestAppTye --application-t
 
 Der Typname und die Typversion müssen mit dem Namen und der Version im zuvor bereitgestellten Anwendungsmanifest übereinstimmen.
 
-### <a name="delete-the-application-package"></a>Löschen des Anwendungspakets
-
-Nachdem Sie die Bereitstellung des Anwendungstyps aufgehoben haben, können Sie das Anwendungspaket aus dem Imagespeicher löschen, wenn Sie es nicht mehr benötigen. Das Löschen von Anwendungspaketen gibt Speicherplatz frei. 
-
-Um das Anwendungspaket aus dem Imagespeicher zu löschen, verwenden Sie den folgenden Befehl:
-
-```azurecli
-sfctl store delete --content-path app_package_dir
-```
-
-`content-path` muss der Name des Verzeichnisses sein, das Sie beim Erstellen der Anwendung hochgeladen haben.
-
 ## <a name="upgrade-application"></a>Aktualisieren der Anwendung
 
 Nach Erstellung Ihrer Anwendung können Sie dieselben Schritte wiederholen, um eine zweite Version Ihrer Anwendung bereitzustellen. Anschließend können mit einem Service Fabric-Anwendungsupgrade eine Umstellung auf die Ausführung der zweiten Version der Anwendung vornehmen. Weitere Informationen finden Sie in der Dokumentation zu [Service Fabric-Anwendungsupgrades](service-fabric-application-upgrade.md).
@@ -148,6 +147,7 @@ Zur Durchführung eines Upgrades müssen Sie zunächst die nächste Version der 
 ```azurecli
 sfctl application upload --path ~/app_package_dir_2
 sfctl application provision --application-type-build-path app_package_dir_2
+sfctl store delete --content-path app_package_dir_2
 ```
 
 Dann wird empfohlen, ein überwachtes automatisches Upgrade ausführen und dann das Upgrade zu starten, indem Sie den folgenden Befehl ausführen:
@@ -169,4 +169,3 @@ Wenn schließlich ein Upgrade läuft und abgebrochen werden soll, können Sie mi
 * [Service Fabric CLI: Grundlagen](service-fabric-cli.md)
 * [Erste Schritte mit Service Fabric unter Linux](service-fabric-get-started-linux.md)
 * [Starten eines Service Fabric-Anwendungsupgrades](service-fabric-application-upgrade.md)
-

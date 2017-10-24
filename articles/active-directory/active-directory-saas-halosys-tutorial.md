@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/22/2017
 ms.author: jeedes
 ms.openlocfilehash: 18c5cd8eb4ca211f8ae2b8dd994c0e8c48625a2f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>Tutorial: Azure Active Directory-Integration mit Halosys
 
@@ -168,7 +168,7 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-Halosys-tutorial/create_aaduser_04.png) 
 
-5. Auf der **Teilen Sie uns über diesen Benutzer** Dialogfeld Seite, die folgenden Schritte aus: ![erstellen ein Azure AD-Testbenutzer](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
 
     a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
 

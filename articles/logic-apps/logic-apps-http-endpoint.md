@@ -16,14 +16,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: c92692db23ac59f67890e26cce6b2d3272e8901d
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: dab336da4e010d0a78de9a2bdd62536d8fdd9bf1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps
 
 Sie können synchrone HTTP-Endpunkte nativ als Trigger in Logik-Apps verfügbar machen, sodass Sie Ihre Logik-Apps über eine URL auslösen oder aufrufen können. Sie können Workflows auch durch die Verwendung eines Musters aufrufbarer Endpunkte in Ihren Logik-Apps schachteln.
@@ -86,7 +84,7 @@ Um einen HTTP-Endpunkt zu erstellen, fügen Sie einen Trigger hinzu, der eingehe
     generiert dieses Schema:
 
     ```json
-    }
+    {
        "type": "object",
        "properties": {
           "address": {
@@ -147,8 +145,7 @@ Wenn Sie möchten, dass Ihre HTTP-Endpunkt-URL Parameter akzeptiert, passen Sie 
 5. Schließen Sie in den **Hauptteil** Ihrer Antwort das Token für den Parameter ein, den Sie im relativen Pfad des Triggers angegeben haben.
 
     Um beispielsweise `Hello {customerID}` zurückzugeben, aktualisieren Sie den **Hauptteil** Ihrer Antwort mit `Hello {customerID token}`. 
-    In der dynamischen Inhaltsliste sollte Ihnen das `customerID` 
-   -Token zur Auswahl angezeigt werden.
+    In der eingeblendeten dynamischen Inhaltsliste sollte Ihnen das `customerID`-Token zur Auswahl angezeigt werden.
 
     ![Hinzufügen eines Parameters zum Antworthauptteil](./media/logic-apps-http-endpoint/relativeurlresponse.png)
 
@@ -320,4 +317,3 @@ Zur Optimierung von Azure Logic Apps und Connectors können Sie auf der [Benutze
 [1]: ./media/logic-apps-http-endpoint/manualtrigger.png
 [2]: ./media/logic-apps-http-endpoint/manualtriggerurl.png
 [3]: ./media/logic-apps-http-endpoint/response.png
-

@@ -1,6 +1,6 @@
 ---
-title: "Intelligent Insights für das Überwachen der Datenbanknutzung (Azure SQL-Datenbank) | Microsoft-Dokumentation"
-description: "Intelligent Insights informiert Sie über die Vorgänge Ihrer Datenbankleistung"
+title: "Überwachen der Datenbanknutzung mit Intelligent Insights – Azure SQL-Datenbank | Microsoft-Dokumentation"
+description: "Die in Intelligent Insights von Azure SQL-Datenbank integrierte Logik überwacht kontinuierlich die Datenbanknutzung durch künstliche Intelligenz und ermittelt Störungen, die zu schlechter Leistung führen."
 services: sql-database
 documentationcenter: 
 author: danimir
@@ -15,18 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 09/25/2017
 ms.author: v-daljep
+ms.openlocfilehash: 8e55fa02d5edda21fbf547397d63f9d1cf987a60
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c3b11dd50fa8c94d3bf80e02a8a319030c375133
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="intelligent-insights"></a>Intelligent Insights
 
-***&#8220;Intelligent Insights informiert Sie über die Vorgänge Ihrer Datenbankleistung.&#8221;***
+***&amp;#8220;Intelligent Insights informiert Sie über die Vorgänge Ihrer Datenbankleistung.&amp;#8221;***
 
-Die in Azure SQL-Datenbank integrierte Logik überwacht die Datenbanknutzung kontinuierlich über eine künstliche Intelligenz und ermittelt Störungen, die zu schlechter Leistung führen. Sobald diese ermittelt wurden, wird eine detaillierte Analyse ausgeführt, die ein Diagnoseprotokoll mit einer intelligenten Bewertung des Problems generiert. Die Bewertung besteht aus einer Analyse der Grundursache des Leistungsproblems der Datenbank und nach Möglichkeit Empfehlungen für Leistungsverbesserungen – dazu zählt ***&#8220;Intelligent Insights&#8221;***. 
+Die in Intelligent Insights von Azure SQL-Datenbank integrierte Logik überwacht kontinuierlich die Datenbanknutzung durch künstliche Intelligenz und ermittelt Störungen, die zu schlechter Leistung führen. Sobald diese ermittelt wurden, wird eine detaillierte Analyse ausgeführt, die ein Diagnoseprotokoll mit einer intelligenten Bewertung des Problems generiert. Die Bewertung besteht aus einer Analyse der Grundursache des Leistungsproblems der Datenbank und nach Möglichkeit Empfehlungen für Leistungsverbesserungen – dazu zählt ***&#8220;Intelligent Insights&#8221;***. 
 
 ## <a name="what-can-intelligent-insights-do-for-you"></a>Was kann Intelligent Insights für Sie tun?
 
@@ -157,10 +156,9 @@ Das Protokoll von Intelligent Insights gibt die Anzahl von fehlgeschlagenen Anfo
 Falls eine der überwachten kritischen Ausnahmen die vom System verwalteten absoluten Schwellenwerte erreicht, wird ein intelligenter Einblick mit Details zu den kritischen Ausnahmen generiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über das [Behandeln von Leistungsproblemen von Azure SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
+* Informationen zum [Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)
 * Verwenden des [Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank](sql-database-intelligent-insights-use-diagnostics-log.md)
 * Erfahren Sie mehr über das [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse](../log-analytics/log-analytics-azure-sql.md).
 * Erfahren Sie mehr über das [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
-
 
 

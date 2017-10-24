@@ -14,18 +14,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: byvinyal
+ms.openlocfilehash: 54c0c5050c812c2a59631541d94c553974acd2f7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 83cdc42d412f646ddf1ecd1b65bf9aa46983b26b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Statische Azure App Service-IP-Einschränkungen #
 
-Durch IP-Einschränkungen können Sie eine Liste von IP-Adressen definieren, für die der Zugriff auf Ihre App blockiert wird. Die Liste der blockierten IP-Adressen kann einzelne IP-Adressen oder einen Bereich von IP-Adressen enthalten, die von einer Subnetzmaske definiert werden.
+Durch IP-Einschränkungen können Sie eine Liste von IP-Adressen definieren, die auf Ihre App zugreifen dürfen. Die Liste der zugelassenen IP-Adressen kann einzelne IP-Adressen oder einen Bereich von IP-Adressen enthalten, die von einer Subnetzmaske definiert werden.
 
-Wenn von einem Client eine Anforderung an die App generiert wird, wird die IP-Adresse mit der Liste der blockierten IP-Adressen abgeglichen. Liegt eine Übereinstimmung vor, antwortet die App mit dem Statuscode [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403).
+Wenn von einem Client eine Anforderung an die App generiert wird, wird die IP-Adresse mit der Liste der zugelassenen IP-Adressen abgeglichen. Wenn die IP-Adresse nicht in der Liste enthalten ist, antwortet die App mit einem [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403)-Statuscode.
 
 IP-Einschränkungen werden auf denselben App Service-Planinstanzen ausgewertet, die Ihrer App zugewiesen sind.
 
@@ -40,4 +39,3 @@ In dieser Ansicht können Sie die Liste der IP-Einschränkungsregeln überprüfe
 Klicken Sie auf **[+] Hinzufügen**, um eine neue IP-Einschränkungsregel hinzuzufügen.
 
 ![Hinzufügen von IP-Einschränkungen](media/app-service-ip-restrictions/add-ip-restrictions.png)
-

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: miprasad
+ms.openlocfilehash: 2ee7ec91700c66d5bedd917d0203a726b5c5e300
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 55298a7ff96bd9662310fa6b5d1764370f500be5
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="customer-churn-prediction-using-azure-machine-learning"></a>Vorhersehen der Kundenabwanderung mithilfe von Azure Machine Learning
 
 Im Durchschnitt kostet die Bewahrung von Bestandskunden fünfmal weniger als die Gewinnung von Neukunden. Daher versuchen Marketingverantwortliche häufig, die Wahrscheinlichkeit einer Abwanderung von Kunden einzuschätzen und die notwendigen Maßnahmen zur Minimierung der Abwanderungsquote zu finden.
@@ -70,14 +68,14 @@ In dieser Lösung verwenden wir ein konkretes Beispiel für den Aufbau eines Mod
 
 Erstellen Sie ein neues Projekt mit diesem Beispiel als Vorlage:
 1.  Öffnen Sie Azure Machine Learning Workbench.
-2.  Klicken Sie auf der Seite **Projekte** auf die Schaltfläche **+**, und wählen Sie **Neues Projekt** aus.
+2.  Klicken Sie auf der Seite **Projekte** auf **+**, wählen Sie **Neues Projekt** aus, und signieren Sie es.
 3.  Geben Sie im Bereich **Neues Projekt erstellen** die Informationen für das neue Projekt ein.
 4.  Geben Sie im Suchfeld **Projektvorlagen suchen** den Suchbegriff „Customer Churn Prediction“ ein, und wählen Sie die Vorlage aus.
-5.  Klicken Sie auf **Erstellen**.
+5.  Klicken Sie auf **Erstellen**
 
 ## <a name="data-description"></a>Datenbeschreibung
 
-Das Dataset, das in der Lösung verwendet wird, stammt aus dem SIDKDD-Wettbewerb von 2009. Es heißt `CATelcoCustomerChurnTrainingSample.csv` und befindet sich im Ordner [`Data`](https://github.com/mezmicrosoft/MachineLearningSamples-ChurnPrediction/tree/master/Data). Das Dataset besteht aus heterogenen verrauschten Daten (numerische/Kategorievariablen) des französischen Telekommunikationsunternehmens Orange und ist anonymisiert.
+Das Dataset, das in der Lösung verwendet wird, stammt aus dem SIDKDD-Wettbewerb von 2009. Es heißt `CATelcoCustomerChurnTrainingSample.csv` und befindet sich im Ordner [`data`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/tree/master/data). Das Dataset besteht aus heterogenen verrauschten Daten (numerische/Kategorievariablen) des französischen Telekommunikationsunternehmens Orange und ist anonymisiert.
 
 Die Variablen erfassen demografische Kundeninformationen, Anrufstatistiken (wie z.B. durchschnittliche Anrufdauer, Anruffehlerquote usw.), Vertragsinformationen und Reklamationsstatistiken. Die Abwanderungsvariable ist binär (0 = nicht abgewandert, 1 = abgewandert).
 
@@ -85,27 +83,24 @@ Die Variablen erfassen demografische Kundeninformationen, Anrufstatistiken (wie 
 
 Die Ordnerstruktur ist wie folgt angeordnet:
 
-__Code__: Enthält den Code im Zusammenhang mit der Vorhersage der Kundenabwanderung mithilfe von Azure Machine Learning-Workbench
+__data__: Enthält das Dataset, das in der Lösung verwendet wird  
 
-__Data__: Enthält das Dataset, das in der Lösung verwendet wird  
-
-__Labs__: Enthält die praktischen Übungseinheiten
+__docs__: Enthält die praktischen Übungseinheiten
 
 Die Reihenfolge der praktische Übungseinheiten zum Ausführen der Lösung lautet wie folgt:
-1. Vorbereitung der Daten: Die Dateien im Zusammenhang mit der Vorbereitung der Daten im Ordner „Code“ heißen `CATelcoCustomerChurnTrainingSample.dprep`, `CATelcoCustomerChurnTrainingSample.dconn` und `CATelcoCustomerChurnTrainingSample.csv`.
-2. Modellierung und Auswertung: Die Hauptdatei im Zusammenhang mit der Modellierung und Auswertung im Ordner „Code“ heißt `CATelcoCustomerChurnModeling.py`.
-3. Modellierung und Auswertung in Docker: Die Hauptdatei für diese Aufgabe im Ordner „Code“ heißt `CATelcoCustomerChurnModelingDocker.py`.
+1. Vorbereitung der Daten: Die Hauptdatei im Zusammenhang mit der Vorbereitung der Daten im Ordner „data“ heißt `CATelcoCustomerChurnTrainingSample.csv`.
+2. Modellierung und Auswertung: Die Hauptdatei im Zusammenhang mit der Modellierung und Auswertung im Stammordner heißt `CATelcoCustomerChurnModeling.py`.
+3. Modellierung und Auswertung in Docker: Die Hauptdatei für diese Aufgabe im Stammordner heißt `CATelcoCustomerChurnModelingDocker.py`.
 4. Operationalisierung: Die wichtigsten Dateien für die Bereitstellung sind das Modell (`model.pkl`) und `churn_schema_gen.py`.
 
 | Reihenfolge| Dateiname | Zugehörige Dateien |
 |--|-----------|------|
-| 1 | [`DataPreparation.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/Docs/DataPreparation.md) | Data/CATelcoCustomerChurnTrainingSample.csv |
-| 2 | [`ModelingAndEvaluation.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/Docs/ModelingAndEvaluation.md) | Code/CATelcoCustomerChurnModeling.py |
-| 3 | [`ModelingAndEvaluationDocker.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/Docs/ModelingAndEvaluationDocker.md) | Code/CATelcoCustomerChurnModelingDocker.py |
-| 4 | [`Operationalization.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/Docs/Operationalization.md) | Code/model.pkl<br>Code/churn_schema_gen.py |
+| 1 | [`DataPreparation.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/DataPreparation.md) | data/CATelcoCustomerChurnTrainingSample.csv |
+| 2 | [`ModelingAndEvaluation.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/ModelingAndEvaluation.md) | CATelcoCustomerChurnModeling.py |
+| 3 | [`ModelingAndEvaluationDocker.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/ModelingAndEvaluationDocker.md) | CATelcoCustomerChurnModelingDocker.py |
+| 4 | [`Operationalization.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/Operationalization.md) | model.pkl<br>churn_schema_gen.py |
 
 Führen Sie die Übungseinheiten in der oben angegebenen Reihenfolge aus.
 
 ## <a name="conclusion"></a>Zusammenfassung
 In diesem praktische Szenario wurde veranschaulicht, wie mit Azure Machine Learning Workbench eine Vorhersage der Kundenabwanderung erfolgt. Wir haben zuerst die Daten bereinigt, um verrauschte und heterogene Daten herauszufiltern. Anschließend ist eine Feature-Entwicklung mit den Tools zur Datenvorbereitung erfolgt. Anschließend haben wir ein Klassifizierungsmodell mithilfe von Open-Source-Machine Learning-Tools erstellt und ausgewertet. Im Anschluss haben wir einen lokalen Docker-Container zum Bereitstellen des betriebsbereiten Modells in der Produktionsumgebung genutzt.
-

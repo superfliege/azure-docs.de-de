@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/27/2017
 ms.author: yushwang
+ms.openlocfilehash: db4d8837fb5c5d15364422e957e4914966215674
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 17211379ec61891982a02efca6730ca0da87c1ef
-ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Herstellen einer Verbindung zwischen Azure-VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten mit PowerShell
 
@@ -46,7 +45,7 @@ Azure unterstützt derzeit beide Modi von VPN-Gateways: routenbasierte VPN-Gatew
 
 |                          | **Richtlinienbasiertes VPN Gateway** | **Routenbasiertes VPN Gateway**               |
 | ---                      | ---                         | ---                                      |
-| **Azure-Gateway-SKU**    | Basic                       | Basic, Standard, HighPerformance         |
+| **Azure-Gateway-SKU**    | Basic                       | Basic, Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3 |
 | **IKE-Version**          | IKEv1                       | IKEv2                                    |
 | **Max. S2S-Verbindungen** | **1**                       | Basic/Standard: 10<br> HighPerformance: 30 |
 |                          |                             |                                          |
@@ -216,4 +215,3 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $con
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
 
 Ausführliche Informationen zu benutzerdefinierten IPsec/IKE-Richtlinien finden Sie unter [Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen](vpn-gateway-ipsecikepolicy-rm-powershell.md).
-

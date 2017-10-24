@@ -9,17 +9,15 @@ editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 07/12/2017
+ms.date: 09/22/2017
+ms.openlocfilehash: 2af5871e8bf67070c83b5faebc1f9e44b0de609e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 92c34e7ac074ded1702e0df96298d33c60227ab3
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Verwenden von PHP zum Verbinden und Abfragen von Daten
-Dieser Schnellstart zeigt, wie Sie mit einer [PHP](http://php.net/manual/intro-whatis.php)-Anwendung eine Verbindung mit einer Azure-Datenbank für MySQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit der Entwicklung per PHP vertraut sind, aber noch keine Erfahrung mit Azure-Datenbank für MySQL haben.
+Dieser Schnellstart zeigt, wie Sie mit einer [PHP](http://php.net/manual/intro-whatis.php)-Anwendung eine Verbindung mit einer Azure-Datenbank für MySQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der PHP-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
@@ -30,16 +28,16 @@ In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen e
 Installieren Sie PHP auf Ihrem eigenen Server, oder erstellen Sie eine Azure-[Web-App](../app-service/app-service-web-overview.md), die PHP enthält.
 
 ### <a name="macos"></a>macOS
-- Herunterladen der [Version PHP 7.1.4](http://php.net/downloads.php)
-- Installieren von PHP (Informationen zur weiteren Konfiguration finden Sie im [PHP-Handbuch](http://php.net/manual/install.macosx.php))
+- Laden Sie die [PHP-Version 7.1.4](http://php.net/downloads.php) herunter.
+- Installieren Sie PHP, und informieren Sie sich im [PHP-Handbuch](http://php.net/manual/install.macosx.php) über die weitere Konfiguration.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- Herunterladen von [Version PHP 7.1.4 Non-Thread Safe (x64)](http://php.net/downloads.php)
-- Installieren von PHP (Informationen zur weiteren Konfiguration finden Sie im [PHP-Handbuch](http://php.net/manual/install.unix.php))
+- Laden Sie die [PHP-Version 7.1.4 non-thread safe (x64)](http://php.net/downloads.php) herunter.
+- Installieren Sie PHP, und informieren Sie sich im [PHP-Handbuch](http://php.net/manual/install.unix.php) über die weitere Konfiguration.
 
 ### <a name="windows"></a>Windows
-- Herunterladen von [Version PHP 7.1.4 Non-Thread Safe (x64)](http://windows.php.net/download#php-7.1)
-- Installieren von PHP (Informationen zur weiteren Konfiguration finden Sie im [PHP-Handbuch](http://php.net/manual/install.windows.php))
+- Laden Sie die [PHP-Version 7.1.4 non-thread safe (x64)](http://windows.php.net/download#php-7.1) herunter.
+- Installieren Sie PHP, und informieren Sie sich im [PHP-Handbuch](http://php.net/manual/install.windows.php) über die weitere Konfiguration.
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank für MySQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
@@ -47,12 +45,12 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie im linken Bereich auf **Alle Ressourcen**, und suchen Sie dann nach dem Server, den Sie erstellt haben (z.B. **myserver4demo**).
 3. Klicken Sie auf den Servernamen.
-4. Wählen Sie die Seite mit den **Eigenschaften** des Servers aus. Notieren Sie sich den **Servernamen** und den **Anmeldenamen des Serveradministrators**.
+4. Wählen Sie die Seite **Eigenschaften** des Servers aus, und notieren Sie sich den **Servernamen** und **den Anmeldenamen des Serveradministrators**.
  ![Servername für Azure-Datenbank für MySQL](./media/connect-php/1_server-properties-name-login.png)
 5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Serveradministrator-Anmeldenamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
 
 ## <a name="connect-and-create-a-table"></a>Herstellen einer Verbindung und Erstellen einer Tabelle
-Verwenden Sie den folgenden Code, um mit der **CREATE TABLE**-SQL-Anweisung eine Verbindung herzustellen und eine Tabelle zu erstellen. 
+Verwenden Sie den folgenden Code, um mit der SQL-Anweisung des Typs **CREATE TABLE** eine Verbindung herzustellen und eine Tabelle zu erstellen. 
 
 Im Code wird die Klasse mit der **verbesserten MySQL-Erweiterung** (mysqli) verwendet, die in PHP enthalten ist. Im Code werden die Methoden [mysqli_init](http://php.net/manual/mysqli.init.php) und [mysqli_real_connect](http://php.net/manual/mysqli.real-connect.php) aufgerufen, um eine Verbindung mit MySQL herzustellen. Anschließend wird die [mysqli_query](http://php.net/manual/mysqli.query.php)-Methode aufgerufen, um die Abfrage auszuführen. Als Nächstes wird die [mysqli_close](http://php.net/manual/mysqli.close.php)-Methode aufgerufen, um die Verbindung zu schließen.
 
@@ -91,7 +89,7 @@ mysqli_close($conn);
 ```
 
 ## <a name="insert-data"></a>Einfügen von Daten
-Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und per **INSERT**-SQL-Anweisung Daten einzufügen.
+Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und mit einer SQL-Anweisung des Typs **INSERT** Daten einzufügen.
 
 Im Code wird die Klasse mit der **verbesserten MySQL-Erweiterung** (mysqli) verwendet, die in PHP enthalten ist. Im Code wird die [mysqli_prepare](http://php.net/manual/mysqli.prepare.php)-Methode verwendet, um eine vorbereitete INSERT-Anweisung zu erstellen, und anschließend werden die Parameter für jeden eingefügten Spaltenwert mit der [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php)-Methode gebunden. Im Code wird die Anweisung mit der [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php)-Methode ausgeführt, und anschließend wird die Anweisung mit der [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php)-Methode geschlossen.
 
@@ -128,7 +126,7 @@ mysqli_close($conn);
 ```
 
 ## <a name="read-data"></a>Lesen von Daten
-Verwenden Sie den folgenden Code, um die Daten mit einer **SELECT**-SQL-Anweisung zu verbinden und zu lesen.  Im Code wird die Klasse mit der **verbesserten MySQL-Erweiterung** (mysqli) verwendet, die in PHP enthalten ist. Im Code wird die [mysqli_query](http://php.net/manual/mysqli.query.php)-Methode zum Durchführen der SQL-Abfrage genutzt, und mit der [mysqli_fetch_assoc](http://php.net/manual/mysqli-result.fetch-assoc.php)-Methode werden die sich ergebenden Zeilen abgerufen.
+Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **SELECT** zu verbinden und zu lesen.  Im Code wird die Klasse mit der **verbesserten MySQL-Erweiterung** (mysqli) verwendet, die in PHP enthalten ist. Im Code wird die [mysqli_query](http://php.net/manual/mysqli.query.php)-Methode zum Durchführen der SQL-Abfrage genutzt, und mit der [mysqli_fetch_assoc](http://php.net/manual/mysqli-result.fetch-assoc.php)-Methode werden die sich ergebenden Zeilen abgerufen.
 
 Ersetzen Sie die Parameter „host“, „username“, „password“ und „db_name“ durch Ihre eigenen Werte. 
 
@@ -159,7 +157,7 @@ mysqli_close($conn);
 ```
 
 ## <a name="update-data"></a>Aktualisieren von Daten
-Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und die Daten per **UPDATE**-SQL-Anweisung zu aktualisieren.
+Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **UPDATE** zu verbinden und zu aktualisieren.
 
 Im Code wird die Klasse mit der **verbesserten MySQL-Erweiterung** (mysqli) verwendet, die in PHP enthalten ist. Im Code wird die [mysqli_prepare](http://php.net/manual/mysqli.prepare.php)-Methode verwendet, um eine vorbereitete UPDATE-Anweisung zu erstellen, und anschließend werden die Parameter für jeden aktualisierten Spaltenwert mit der [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php)-Methode gebunden. Im Code wird die Anweisung mit der [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php)-Methode ausgeführt, und anschließend wird die Anweisung mit der [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php)-Methode geschlossen.
 
@@ -197,7 +195,7 @@ mysqli_close($conn);
 
 
 ## <a name="delete-data"></a>Löschen von Daten
-Verwenden Sie den folgenden Code, um die Daten mit einer **DELETE**-SQL-Anweisung zu verbinden und zu lesen. 
+Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **DELETE** zu verbinden und zu lesen. 
 
 Im Code wird die Klasse mit der **verbesserten MySQL-Erweiterung** (mysqli) verwendet, die in PHP enthalten ist. Im Code wird die [mysqli_prepare](http://php.net/manual/mysqli.prepare.php)-Methode verwendet, um eine vorbereitete DELETE-Anweisung zu erstellen, und anschließend werden die Parameter für die WHERE-Klausel in der Anweisung mit der [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php)-Methode gebunden. Im Code wird die Anweisung mit der [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php)-Methode ausgeführt, und anschließend wird die Anweisung mit der [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php)-Methode geschlossen.
 
@@ -234,4 +232,3 @@ mysqli_close($conn);
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
 > [Erstellen einer PHP- und MySQL-Web-App in Azure](../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json)
-

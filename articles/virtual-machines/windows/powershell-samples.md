@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/05/2017
+ms.date: 09/20/2017
 ms.author: nepeters
 ms.custom: mvc
+ms.openlocfilehash: 6785194dc4db8378ad7eeb0f86f656901c2f36af
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ff8b741b04ff37fa1a5fbaddabdd588ab43f19c5
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Virtueller Azure-Computer – PowerShell-Beispiele
 
@@ -37,7 +36,11 @@ Die folgende Tabelle enthält Links zu Beispielen von PowerShell-Skripts, die vi
 | [Hochladen einer virtuellen Festplatte und Erstellen von virtuellen Computern](./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md) | Lädt eine lokale VHD-Datei in Azure hoch, erstellt ein Image der virtuellen Festplatte und erstellt dann einen virtuellen Computer aus diesem Image. |
 | [Erstellen eines virtuellen Computers von einem verwalteten Betriebssystemdatenträger](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt einen virtuellen Computer durch Anfügen eines vorhandenen verwalteten Datenträgers als Betriebssystemdatenträger. |
 | [Erstellen eines virtuellen Computers aus einer Momentaufnahme](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt einen virtuellen Computer aus einer Momentaufnahme, indem aus der Momentaufnahme zuerst ein verwalteter Datenträger erstellt und dieser neue verwaltete Datenträger anschließend als Betriebssystemdatenträger angefügt wird. |
-|**Verwalten von Storage**||
+|**Erstellen von virtuellen Computern mit dem Cmdlet „New-AzVM“**||
+| [Erstellen einer vollständig konfigurierten VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-auto.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine Ressourcengruppe, einen virtuellen Computer und alle zugehörigen Ressourcen.|
+| [Erstellen einer VM und Ausführen eines Konfigurationsskripts](./../scripts/virtual-machines-windows-powershell-sample-create-vm-iis-auto.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt einen virtuellen Computer und verwendet die benutzerdefinierte Azure-Skripterweiterung zum Installieren von IIS. |
+| [Erstellen einer VM und Ausführen einer DSC-Konfiguration](./../scripts/virtual-machines-windows-powershell-sample-create-iis-using-dsc-auto.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt einen virtuellen Computer und verwendet die Azure-DSC-Erweiterung (Desired State Configuration) zum Installieren von IIS. |
+|**Verwalten von Speicher**||
 | [Erstellen eines verwalteten Datenträgers aus einer VHD in demselben oder einem anderen Abonnement](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt einen verwalteten Datenträger aus einer bestimmten VHD als Betriebssystemdatenträger oder aus einer Daten-VHD als Datenträger für Daten in demselben oder einem anderen Abonnement.  |
 | [Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt einen verwalteten Datenträger aus einer Momentaufnahme. |
 | [Kopieren eines verwalteten Datenträgers in dasselbe oder ein anderes Abonnement](../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json) | Kopiert einen verwalteten Datenträger in dasselbe oder ein anderes Abonnement in derselben Region wie der übergeordnete Datenträger. 
@@ -49,5 +52,4 @@ Die folgende Tabelle enthält Links zu Beispielen von PowerShell-Skripts, die vi
 |**Überwachen virtueller Computer**||
 | [Überwachen einer VM mit der Operations Management Suite](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt einen virtuellen Computer, installiert den OMS-Agent (Operations Management Suite) und registriert die VM in einem OMS-Arbeitsbereich.  |
 | | |
-
 

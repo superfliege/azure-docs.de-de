@@ -13,14 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 09/06/2017
+ms.date: 09/15/2017
 ms.author: cakarst;barbkess
+ms.openlocfilehash: bb478484fba5a76fa12d5d1976919224965b6e0d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: c58aec1ea9bc79b335a115007500d77f8e752850
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Laden von Daten aus Azure Data Lake Store in SQL Data Warehouse
 Dieses Dokument enthält alle Schritte, die ausgeführt werden müssen, um Ihre eigenen Daten aus Azure Data Lake Store (ADLS) mithilfe von PolyBase in SQL Data Warehouse zu laden.
@@ -57,7 +56,7 @@ PolyBase verwendet externe T-SQL-Objekte, um den Speicherort und die Attribute d
 ###  <a name="create-a-credential"></a>Erstellen einer Anmeldeinformation
 Für den Zugriff auf Ihre Azure Data Lake Store-Instanz müssen Sie einen Datenbank-Hauptschlüssel erstellen, um die geheimen Anmeldeinformationen zu verschlüsseln, die Sie im nächsten Schritt verwenden.
 Anschließend erstellen Sie datenbankbezogene Anmeldeinformationen, in denen die in AAD eingerichteten Dienstprinzipal-Anmeldeinformationen gespeichert werden. Bei Benutzern, die die Verbindung mit Azure Storage Blob-Instanzen über PolyBase herstellen, unterscheidet sich die Syntax für die Anmeldeinformationen.
-Um eine Verbindung mit Azure Data Lake Store herzustellen, müssen Sie **zuerst** eine Azure Active Directory-Anwendung sowie einen Zugriffsschlüssel erstellen und der Anwendung Zugriff auf die Azure Data Lake-Ressource gewähren. Anweisungen zum Ausführen dieser Schritte finden Sie [hier](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-authenticate-using-active-directory).
+Um eine Verbindung mit Azure Data Lake Store herzustellen, müssen Sie **zuerst** eine Azure Active Directory-Anwendung sowie einen Zugriffsschlüssel erstellen und der Anwendung Zugriff auf die Azure Data Lake-Ressource gewähren. Anweisungen zum Durchführen dieser Schritte finden Sie [hier](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-authenticate-using-active-directory).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -170,7 +169,7 @@ Wird während des Ladevorgangs der Ablehnungswert erreicht, ist der Vorgang nich
 Wenn also beispielsweise eine Spalte fälschlicherweise mit einem int-Schema versehen wird, obwohl es sich bei den Daten in der Datei um eine Zeichenfolge handelt, können die Zeilen nicht geladen werden.
 
 Der Speicherort gibt das oberste Verzeichnis an, aus dem Daten gelesen werden sollen.
-Wenn in diesem Fall also „/DimProduct/“ über Unterverzeichnisse verfügt, importiert PolyBase alle Daten aus diesen Unterverzeichnissen.
+Wenn in diesem Fall also „/DimProduct/“ über Unterverzeichnisse verfügt, importiert PolyBase alle Daten aus diesen Unterverzeichnissen. Azure Data Lake Store steuert den Zugriff auf die Daten durch die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC). Dies bedeutet, dass der Dienstprinzipal mit Leseberechtigungen für die im Speicherortparameter definierten Verzeichnisse sowie die untergeordneten Ordner der endgültigen Verzeichnisse und Dateien ausgestattet sein muss. Dadurch kann PolyBase diese Daten zum Lesen authentifizieren und laden. 
 
 ## <a name="load-the-data"></a>Laden der Daten
 Verwenden Sie die Anweisung [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)], um Daten aus Azure Data Lake Store zu laden. Beim Laden mit CTAS wird die stark typisierte externe Tabelle verwendet, die Sie erstellt haben.
@@ -238,4 +237,3 @@ Das Laden von Daten ist der erste Schritt auf dem Weg zu einer Data Warehouse-L�
 <!--Other Web references-->
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
 [Load the full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
-

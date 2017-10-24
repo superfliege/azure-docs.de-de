@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 09/26/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 76987a6e91ae688b3856567073a7d27472e5ba09
-ms.openlocfilehash: 9245eb870f592ee0a1f1d6956ce3d573f4902485
-ms.lasthandoff: 01/28/2017
-
-
+ms.openlocfilehash: aad9e07e040bebe9572af1dd4a2f74b8b384f651
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Verwalten von Gruppenrichtlinien in einer durch Azure Active Directory Domain Services verwalteten Domäne
 Azure Active Directory Domain Services umfassen integrierte Gruppenrichtlinienobjekte (Group Policy Objects, GPOs) für die Container „AADDC Users“ und „AADDC Computers“. Sie können diese integrierten GPOs anpassen, um eine Gruppenrichtlinie in der verwalteten Domäne zu konfigurieren. Darüber hinaus können Mitglieder der Administratorengruppe für Azure AD-Domänencontroller benutzerdefinierte Organisationseinheiten (OEs) in der verwalteten Domäne erstellen. Sie können auch benutzerdefinierte GPOs erstellen und mit diesen benutzerdefinierten OEs verknüpfen. Benutzern, die zur Administratorengruppe für Azure AD-Domänencontroller gehören, werden Administratorrechte für Gruppenrichtlinien in der verwalteten Domäne gewährt.
@@ -45,11 +44,11 @@ Die erste Aufgabe besteht darin, einen virtuellen Windows Server-Computer einzur
 ## <a name="task-2---install-group-policy-tools-on-the-virtual-machine"></a>Aufgabe 2: Installieren von Gruppenrichtlinientools auf dem virtuellen Computer
 Führen Sie die folgenden Schritte aus, um die Tools für die Gruppenrichtlinienverwaltung auf dem virtuellen Computer zu installieren, der in die Domäne eingebunden ist.
 
-1. Wechseln Sie im klassischen Azure-Portal zum Knoten **Virtuelle Computer** . Wählen Sie den virtuellen Computer aus, den Sie in Aufgabe 1 erstellt haben, und klicken Sie auf der Befehlsleiste im unteren Fensterbereich auf **Verbinden** .
+1. Navigieren Sie zum Azure-Portal. Klicken Sie im linken Bereich auf **Alle Ressourcen**. Klicken Sie auf den virtuellen Computer, den Sie in Aufgabe 1 erstellt haben.
+2. Klicken Sie auf der Registerkarte „Übersicht“ auf die Schaltfläche **Verbinden**. Eine Remotedesktopprotokoll-Datei (RDP-Datei) wird erstellt und heruntergeladen.
 
     ![Verbindung mit virtuellem Windows-Computer herstellen](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-2. Sie werden aufgefordert, eine Datei mit der Erweiterung „.rdp“ zu öffnen oder zu speichern. Diese wird zum Herstellen der Verbindung mit dem virtuellen Computer verwendet. Klicken Sie auf die Datei, wenn der Download abgeschlossen ist.
-3. Verwenden Sie bei der Anmeldeaufforderung die Anmeldeinformationen eines Benutzers, der zur Administratorengruppe für Azure AD-Domänencontroller gehört. In unserem Fall verwenden wir zum Beispiel verwenden wir 'bob@domainservicespreview.onmicrosoft.com'.
+3. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Klicken Sie in der angezeigten Aufforderung auf **Verbinden**. Verwenden Sie bei der Anmeldeaufforderung die Anmeldeinformationen eines Benutzers, der zur Administratorengruppe für Azure AD-Domänencontroller gehört. In unserem Fall verwenden wir „bob@domainservicespreview.onmicrosoft.com“. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Klicken Sie auf „Ja“ bzw. „Weiter“, um mit dem Herstellen der Verbindung fortzufahren.
 4. Öffnen Sie auf dem Startbildschirm den **Server-Manager**. Klicken Sie im mittleren Bereich des Server-Manager-Fensters auf **Rollen und Features hinzufügen** .
 
     ![Server-Manager auf dem virtuellen Computer starten](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
@@ -127,4 +126,3 @@ Weitere Informationen zur Verwendung der [Gruppenrichtlinien-Verwaltungskonsole]
 * [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne der Azure AD-Domänendienste](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 * [Gruppenrichtlinien-Verwaltungskonsole.](https://technet.microsoft.com/library/cc753298.aspx)
-

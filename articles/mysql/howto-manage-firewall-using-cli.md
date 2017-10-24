@@ -9,23 +9,21 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 06/13/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 9a03722e9f71be307bdbf0b846a4cbf7b34cd7ff
-ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.date: 09/15/2017
+ms.openlocfilehash: bc7763981c27a3d37cc1bd16c0f8efc0b4c01ce0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-using-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für Azure-Datenbank für MySQL mithilfe der Azure CLI
-Mithilfe von Firewallregeln auf Serverebene können Administratoren den Zugriff auf einen Server für Azure-Datenbank für MySQL über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwalten. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewalls für Azure-Datenbank für MySQL finden Sie unter [Azure Database for MySQL server firewall rules](./concepts-firewall-rules.md) (Firewallregeln des Servers für Azure-Datenbank für MySQL).
+# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe der Azure CLI
+Mithilfe von Firewallregeln auf Serverebene können Administratoren den Zugriff auf eine Azure Database for MySQL-Serverinstanz über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwalten. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewalls für Azure-Datenbank für MySQL finden Sie unter [Azure Database for MySQL server firewall rules](./concepts-firewall-rules.md) (Firewallregeln des Servers für Azure-Datenbank für MySQL).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Installieren der Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * Installieren des Azure Python SDK für den PostgreSQL- und den MySQL-Dienst
-* Installieren der Azure CLI-Komponente für den PostgreSQL- und den MySQL-Dienst
-* Erstellen eines Servers für Azure-Datenbank für MySQL
+* Installieren Sie Azure CLI-Komponente für den PostgreSQL- und den MySQL-Dienst.
+* Erstellen eines Azure-Datenbank für MySQL-Servers
 
 ## <a name="firewall-rule-commands"></a>Befehle für Firewallregeln:
 Der Befehl **az mysql server firewall-rule** wird in der Azure CLI zum Erstellen, Löschen, Auflisten, Anzeigen und Aktualisieren von Firewallregeln verwendet.
@@ -33,24 +31,24 @@ Der Befehl **az mysql server firewall-rule** wird in der Azure CLI zum Erstellen
 Befehle:
 - **create**: Dient zum Erstellen einer Firewallregel für den Azure MySQL-Server.
 - **delete**: Dient zum Löschen einer Firewallregel für den Azure MySQL-Server.
-- **list**: Dient zum Auflisten der Firewallregeln für den Azure MySQL-Server.
-- **show** : Dient zum Anzeigen der Details einer Firewallregel für den Azure MySQL-Server.
+- **list: Dient zum Auflisten der Serverfirewallregeln für Azure MySQL-Server.
+- **show: Dient zum Anzeigen der Details einer Firewallregel für den Azure MySQL-Server.
 - **update**: Dient zum Aktualisieren der Firewallregel für den Azure MySQL-Server.
 
-## <a name="login-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Anmelden bei Azure und Auflisten der Server für Azure-Datenbank für MySQL
-Stellen Sie eine sichere Verbindung zwischen der Azure CLI und Ihrem Azure-Konto her. Verwenden Sie hierfür den Befehl **az login**.
+## <a name="log-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Anmelden bei Azure und Auflisten Ihrer Azure Database for MySQL-Serverinstanzen
+Stellen Sie mit dem Befehl **az login** eine sichere Verbindung zwischen der Azure CLI und Ihrem Azure-Konto her.
 
-1. Führen Sie den folgenden Befehl an der Befehlszeile aus:
+1. Führen Sie an der Befehlszeile den folgenden Befehl aus:
 ```azurecli
 az login
 ```
 Dieser Befehl gibt einen Code aus, der im nächsten Schritt verwendet wird.
 
-2. Öffnen Sie die Seite [https://aka.ms/devicelogin](https://aka.ms/devicelogin) in einem Webbrowser, und geben Sie den Code ein.
+2. Öffnen Sie in einem Webbrowser die Seite [https://aka.ms/devicelogin](https://aka.ms/devicelogin), und geben Sie den Code ein.
 
 3. Melden Sie sich an der Eingabeaufforderung mit Ihren Azure-Anmeldeinformationen an.
 
-4. Nachdem Ihre Anmeldung autorisiert wurde, wird eine Liste der Abonnements auf der Konsole ausgegeben. Kopieren Sie die ID des gewünschten Abonnements, um das aktuelle Abonnement festzulegen, das künftig verwendet werden soll.
+4. Nachdem Ihre Anmeldung autorisiert wurde, wird eine Liste der Abonnements in der Konsole ausgegeben. Kopieren Sie die ID des gewünschten Abonnements, um das aktuelle Abonnement festzulegen, das verwendet werden soll.
    ```azurecli-interactive
    az account set --subscription {your subscription id}
    ```
@@ -61,58 +59,57 @@ Dieser Befehl gibt einen Code aus, der im nächsten Schritt verwendet wird.
    az mysql server list --resource-group myResourceGroup
    ```
 
-   Notieren Sie das Namenattribut in der Auflistung. Mit diesem Attribut wird angegeben, welcher MySQL-Server verwendet werden soll. Bestätigen Sie ggf. die Details für diesen Server, um mithilfe des Namenattributs die Richtigkeit des Namens zu überprüfen:
+   Notieren Sie das Attribut „Name“ in der Auflistung. Mit diesem Attribut wird angegeben, welche Serverinstanz von MySQL verwendet werden soll. Bestätigen Sie ggf. die Details für diesen Server, um mithilfe des Attributs „Name“ die Richtigkeit des Namens zu überprüfen:
 
    ```azurecli-interactive
    az mysql server show --resource-group myResourceGroup --name mysqlserver4demo
    ```
 
-## <a name="list-firewall-rules-on-azure-database-for-mysql-server"></a>Auflisten der Firewallregeln auf dem Server für Azure-Datenbank für MySQL 
-Listen Sie mithilfe des Servernamens und des Ressourcengruppennamens die vorhandenen Firewallregeln auf dem Server auf. Beachten Sie, dass das Attribut des Servernamens im Switch **--server** und nicht im Switch **--name** angegeben ist.
+## <a name="list-firewall-rules-on-azure-database-for-mysql-server"></a>Auflisten der Firewallregeln für die Azure Database for MySQL-Instanz 
+Listen Sie mithilfe des Servernamens und des Ressourcengruppennamens die vorhandenen Firewallregeln auf dem Server auf. Beachten Sie, dass das Attribut mit dem Servernamen im Switch **--server** und nicht im Switch**--name** angegeben ist.
 ```azurecli-interactive
 az mysql server firewall-rule list --resource-group myResourceGroup --server mysqlserver4demo
 ```
-Die Ausgabe listet die Regeln (sofern vorhanden) standardmäßig im JSON-Format auf. Sie können mit dem Switch **--output table** ein besser lesbares Tabellenformat als die Ausgabe erzeugen.
+Die Ausgabe listet die Regeln (sofern vorhanden) standardmäßig im JSON-Format auf. Sie können mit dem Switch **--output table** Ergebnisse in einem besser lesbaren Tabellenformat ausgeben.
 ```azurecli-interactive
 az mysql server firewall-rule list --resource-group myResourceGroup --server mysqlserver4demo --output table
 ```
-## <a name="create-firewall-rule-on-azure-database-for-mysql-server"></a>Erstellen einer Firewallregel für Azure-Datenbank für MySQL-Server
-Erstellen Sie mithilfe des Azure MySQL-Servernamens und des Ressourcengruppennamens eine neue Firewallregel auf dem Server. Geben Sie einen Namen für die Regel sowie Start-IP und End-IP ein, um einen Bereich von IP-Adressen anzugeben, für die der Zugriff gewährt wird.
+## <a name="create-a-firewall-rule-on-azure-database-for-mysql-server"></a>Erstellen einer Firewallregel für die Azure Database for MySQL-Serverinstanz
+Erstellen Sie mithilfe des Azure MySQL-Servernamens und des Ressourcengruppennamens eine neue Firewallregel auf dem Server. Geben Sie einen Namen für die Regel sowie die Start-IP- und End-IP-Adresse ein, um einen Bereich von IP-Adressen anzugeben, denen der Zugriff gewährt wird.
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myResourceGroup  --server mysqlserver4demo --name "Firewall Rule 1" --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
 ```
-Damit nur einer einzelnen IP-Adresse Zugriff gewährt wird, geben Sie wie in diesem Beispiel dieselbe Adresse als Start-IP und End-IP an.
+Damit nur einer einzelnen IP-Adresse Zugriff gewährt wird, geben Sie wie in diesem Beispiel dieselbe Adresse als Start-IP- und End-IP-Adresse an.
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myResourceGroup  
 --server mysql --name "Firewall Rule with a Single Address" --start-ip-address 1.1.1.1 --end-ip-address 1.1.1.1
 ```
 Bei erfolgreicher Ausführung listet die Befehlsausgabe die Details der von Ihnen erstellten Firewallregel standardmäßig im JSON-Format auf. Falls ein Fehler auftritt, wird in der Ausgabe stattdessen eine Fehlermeldung angezeigt.
 
-## <a name="update-firewall-rule-on-azure-database-for-mysql-server"></a>Aktualisieren einer Firewallregel des Servers für Azure-Datenbank für MySQL 
-Aktualisieren Sie mithilfe des Azure MySQL-Servernamens und des Ressourcengruppennamens eine vorhandene Firewallregel auf dem Server. Geben Sie den Namen der vorhandenen Firewallregel als Eingabe und die zu aktualisierenden Attribute für Start-IP und End-IP ein.
+## <a name="update-a-firewall-rule-on-azure-database-for-mysql-server"></a>Aktualisieren einer Firewallregel für die Azure Database for MySQL-Serverinstanz 
+Aktualisieren Sie mithilfe des Azure MySQL-Servernamens und des Ressourcengruppennamens eine vorhandene Firewallregel auf dem Server. Geben Sie den Namen der vorhandenen Firewallregel als Eingabe sowie die zu aktualisierenden Attribute für die Start-IP- und End-IP-Adresse ein.
 ```azurecli-interactive
 az mysql server firewall-rule update --resource-group myResourceGroup --server mysqlserver4demo --name "Firewall Rule 1" --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
 ```
 Bei erfolgreicher Ausführung listet die Befehlsausgabe die Details der von Ihnen aktualisierten Firewallregel standardmäßig im JSON-Format auf. Falls ein Fehler auftritt, wird in der Ausgabe stattdessen eine Fehlermeldung angezeigt.
 
 > [!NOTE]
-> Falls die Firewallregel nicht vorhanden ist, wird sie vom Updatebefehl erstellt.
+> Falls die Firewallregel nicht vorhanden ist, wird sie vom Befehl „Update“ erstellt.
 
-## <a name="show-firewall-rule-details-on-azure-database-for-mysql-server"></a>Anzeigen von Firewallregeldetails auf dem Server für Azure-Datenbank für MySQL
+## <a name="show-firewall-rule-details-on-azure-database-for-mysql-server"></a>Anzeigen von Firewallregeldetails für die Azure Database for MySQL-Serverinstanz
 Zeigen Sie mithilfe des Azure MySQL-Servernamens und des Ressourcengruppennamens die Details der vorhandenen Firewallregel auf dem Server an. Geben Sie den Namen der vorhandenen Firewallregel als Eingabe an.
 ```azurecli-interactive
 az mysql server firewall-rule show --resource-group myResourceGroup --server mysqlserver4demo --name "Firewall Rule 1"
 ```
 Bei erfolgreicher Ausführung listet die Befehlsausgabe die Details der von Ihnen angegebenen Firewallregel standardmäßig im JSON-Format auf. Falls ein Fehler auftritt, wird in der Ausgabe stattdessen eine Fehlermeldung angezeigt.
 
-## <a name="delete-firewall-rule-on-azure-database-for-mysql-server"></a>Löschen einer Firewallregel auf dem Server für Azure-Datenbank für MySQL
+## <a name="delete-a-firewall-rule-on-azure-database-for-mysql-server"></a>Löschen einer Firewallregel für die Azure Database for MySQL-Serverinstanz
 Entfernen Sie mithilfe des Azure MySQL-Servernamens und des Ressourcengruppennamens eine vorhandene Firewallregel vom Server. Geben Sie den Namen der vorhandenen Firewallregel an.
 ```azurecli-interactive
 az mysql server firewall-rule delete --resource-group myResourceGroup --server mysqlserver4demo --name "Firewall Rule 1"
 ```
-Bei erfolgreicher Ausführung wird keine Ausgabe angezeigt. Bei einem Fehler wird eine Fehlermeldung zurückgegeben.
+Bei erfolgreicher Ausführung wird keine Ausgabe angezeigt. Bei einem Fehler wird eine Fehlermeldung angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zu den [Firewallregeln des Servers für Azure-Datenbank für MySQL](./concepts-firewall-rules.md)
-- [Erstellen und Verwalten von Firewallregeln für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./howto-manage-firewall-using-portal.md)
-
+- Weitere Informationen zu den [Firewallregeln einer Azure Database for MySQL-Serverinstanz](./concepts-firewall-rules.md).
+- [Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe des Azure-Portals](./howto-manage-firewall-using-portal.md)

@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
+ms.date: 09/26/2017
 ms.author: alkohli
+ms.openlocfilehash: edac2635086106f83b30316ab190bead5245f195
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: a64cf0ba2a4646a03c864193fb93de4f54f38039
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Migrieren von Abonnements und Speicherkonten, die dem StorSimple-Geräte-Manager-Dienst zugeordnet sind
 
@@ -33,11 +32,13 @@ Sie müssen möglicherweise den StorSimple-Dienst zu einer neuen Registrierung o
 | StorSimple-Dienst aus einem vorhandenen Konto zu einer neuen Registrierung    | Ja       | Nein       | **Kontoübertragung**<br>Verwendung:<li>Wenn Sie keine vollständige Registrierungsübertragung wünschen.</li><li>Sie möchten nur bestimmte Konten zu einer neuen Registrierung verschieben.</li>| **Schritt 1: Öffnen Sie ein Azure Enterprise Operation Support-Ticket.**<li>Wechseln Sie zu [http://aka.ms/AzureEnt](http://aka.ms/AzureEnt).</li><li>Wählen Sie **Registrierungsverwaltung** und dann **Übertragung eines EA-Kontos zu einer neuen Registrierung**.<br>**Schritt 2: Geben Sie die angeforderten Informationen an**<br>Inklusive:<li>Quellenregistrierungsnummer</li><li> Zielregistrierungsnummer</li><li>Datum des Inkrafttretens der Übertragung|
 | StorSimple-Dienst von einem Abonnement zu einem anderen Abonnement      | Nein        |    Ja         | Weder noch, dies ist ein manueller Prozess.|<li>Migrieren Sie die Daten aus dem StorSimple-Gerät.</li><li>Führen Sie eine Zurücksetzung des Geräts auf die Werkseinstellungen durch. Damit werden alle lokalen Daten auf dem Gerät gelöscht.</li><li>Registrieren Sie das Gerät mit dem neuen Abonnement bei einem StorSimple-Geräte-Manager-Dienst.</li><li>Migrieren Sie die Daten zurück zum Gerät.|
 | StorSimple-Gerät von einem StorSimple-Geräte-Manager-Dienst zu einem anderen Dienst in einer anderen Region      | Nein        | Ja            | Weder noch, dies ist ein manueller Prozess. |Wie oben.|
+| Speicherkonten in ein neues Abonnement oder eine neue Ressourcengruppe?     | Ja        | Nein             |Verschieben eines Speicherkontos in ein anderes Abonnement oder eine andere Ressourcengruppe |Wenn die Speicherkonto-Zugriffsschlüssel nach der Verschiebung aktualisiert werden, muss der Benutzer die Zugriffsschlüssel für das migrierte Speicherkonto manuell über den StorSimple-Geräte-Manager-Dienst konfigurieren.|
+| Klassisches Speicherkonto in ein Azure Resource Manager-Speicherkonto      | Ja        | Nein             |Migrieren von einem klassischen Speicherkonto zum Azure Resource Manager |<li>Ausführliche Anweisungen zum Migrieren eines Speicherkontos von einer klassischen Bereitstellung zum Azure Resource Manager finden Sie unter [Migrieren eines klassischen Speicherkontos](../virtual-machines/windows/migration-classic-resource-manager-ps.md#step-62-migrate-a-storage-account).</li><li> Wenn die Speicherkonto-Zugriffsschlüssel nach der Migration aktualisiert werden, muss der Benutzer die Zugriffsschlüssel für das migrierte Speicherkonto über den StorSimple-Geräte-Manager-Dienst synchronisieren. Dadurch wird sichergestellt, dass StorSimple-Geräte weiterhin ordnungsgemäß ausgeführt werden und diese ein Tiering für primäre bzw. Sicherungsdaten nach Azure durchführen können. Ausführliche Anweisungen zum Synchronisieren von Zugriffsschlüsseln finden Sie unter [Schlüsselrotation für Speicherkonten](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts).</li><li> Wenn das klassische Speicherkonto migriert wird, der zugrunde liegende virtuelle Computer jedoch weiterhin in der klassischen Bereitstellung verbleibt, sollte das Gerät Bei einem StorSimple Cloud Appliance ordnungsgemäß ausgeführt werden. Wenn der zugrunde liegende virtuelle Computer für das Cloudgerät migriert wird, werden die Funktionen zum Deaktivieren und Löschen nicht ordnungsgemäß ausgeführt.</li><li> Sie müssen ein neues StorSimple Appliance Cloud-Gerät im Azure-Portal erstellen und dann ein Failover von älteren Cloudgeräten durchführen. Sie können nicht mithilfe eines klassischen Speicherkontos ein StorSimple Cloud Appliance-Gerät im neuen Azure-Portal erstellen, da hierfür ein Azure Resource Manager-Speicherkonto erforderlich ist. Weitere Informationen finden Sie unter [Bereitstellen und Verwalten einer StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).</li>|Wie oben.|
 
 ## <a name="datacenter-changes"></a>Rechenzentrumsänderungen
 
 | Können Sie Folgendes verschieben?| Unterstützt|Ausfallzeit| Azure-Supportprozess| Vorgehensweise|
-|-----|-----|-----|-----|-----|-----|
+|-----|-----|-----|-----|-----|
 | Einen StorSimple-Dienst aus einem Azure-Rechenzentrum zu einem anderen | Nein | Ja |Weder noch, dies ist ein manueller Prozess.  |<li>Migrieren Sie die Daten aus dem StorSimple-Gerät.</li><li>Führen Sie eine Zurücksetzung des Geräts auf die Werkseinstellungen durch. Damit werden alle lokalen Daten auf dem Gerät gelöscht.</li><li>Registrieren Sie das Gerät mit dem neuen Abonnement bei einem neuen StorSimple-Geräte-Manager-Dienst.</li><li>Migrieren Sie die Daten zurück zum Gerät.|
 | Ein Speicherkonto aus einem Azure-Rechenzentrum zu einem anderen | Nein |Ja  |Weder noch, dies ist ein manueller Prozess.  | Wie oben.|
 

@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 09/23/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d215fd31ca4652437783ad630aee532a17cda611
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 8edf01d994e54a8f1af98861cb445a5909b6a1df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Verwalten einer durch die Azure Active Directory-Domänendienste verwalteten Domäne
 Dieser Artikel erläutert die Verwaltung einer durch die Azure Active Directory-Domänendienste verwalteten Domäne.
@@ -65,11 +64,11 @@ Sie können die [Remote Server Administration Tools (RSAT)](http://social.techne
 ## <a name="task-2---install-active-directory-administration-tools-on-the-virtual-machine"></a>Aufgabe 2: Installieren der Active Directory-Verwaltungstools auf dem virtuellen Computer
 Führen Sie die folgenden Schritte aus, um die Active Directory-Verwaltungstools auf dem virtuellen Computer zu installieren, der der Domäne beigetreten ist. Weitere Informationen zum Installieren und Verwenden der Remoteserver-Verwaltungstools finden Sie in TechNet im Artikel [Bereitstellen der Remoteserver-Verwaltungstools](https://technet.microsoft.com/library/hh831501.aspx).
 
-1. Wechseln Sie im klassischen Azure-Portal zum Knoten **Virtuelle Computer** . Wählen Sie den virtuellen Computer aus, den Sie in Aufgabe 1 erstellt haben, und klicken Sie auf der Befehlsleiste im unteren Fensterbereich auf **Verbinden** .
+1. Navigieren Sie zum Azure-Portal. Klicken Sie im linken Bereich auf **Alle Ressourcen**. Klicken Sie auf den virtuellen Computer, den Sie in Aufgabe 1 erstellt haben.
+2. Klicken Sie auf der Registerkarte „Übersicht“ auf die Schaltfläche **Verbinden**. Eine Remotedesktopprotokoll-Datei (RDP-Datei) wird erstellt und heruntergeladen.
 
     ![Verbindung mit virtuellem Windows-Computer herstellen](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-2. Sie werden aufgefordert, eine Datei mit der Erweiterung „.rdp“ zu öffnen oder zu speichern. Diese wird zum Herstellen der Verbindung mit dem virtuellen Computer verwendet. Warten Sie, bis der Download abgeschlossen ist, und klicken Sie dann auf die Datei, um sie zu öffnen.
-3. Verwenden Sie bei der Anmeldeaufforderung die Anmeldeinformationen eines Benutzers, der zur Administratorengruppe für Azure AD-Domänencontroller gehört. In unserem Fall verwenden wir zum Beispiel verwenden wir 'bob@domainservicespreview.onmicrosoft.com'.
+3. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Klicken Sie in der angezeigten Aufforderung auf **Verbinden**. Verwenden Sie bei der Anmeldeaufforderung die Anmeldeinformationen eines Benutzers, der zur Administratorengruppe für Azure AD-Domänencontroller gehört. In unserem Fall verwenden wir „bob@domainservicespreview.onmicrosoft.com“. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Klicken Sie auf „Ja“ bzw. „Weiter“, um mit dem Herstellen der Verbindung fortzufahren.
 4. Öffnen Sie auf dem Startbildschirm den **Server-Manager**. Klicken Sie im mittleren Bereich des Server-Manager-Fensters auf **Rollen und Features hinzufügen** .
 
     ![Server-Manager auf dem virtuellen Computer starten](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
@@ -120,4 +119,3 @@ Nachdem die AD-Verwaltungstools nun auf dem virtuellen Computer installiert sind
 * [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](active-directory-ds-getting-started.md)
 * [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne der Azure AD-Domänendienste](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Bereitstellen der Remoteserver-Verwaltungstools](https://technet.microsoft.com/library/hh831501.aspx)
-

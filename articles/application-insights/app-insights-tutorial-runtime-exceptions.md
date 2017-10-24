@@ -3,21 +3,19 @@ title: Diagnostizieren von Laufzeitausnahmen mit Azure Application Insights | Mi
 description: Tutorial zum Suchen und Diagnostizieren von Laufzeitausnahmen in Ihrer Anwendung mithilfe von Azure Application Insights
 services: application-insights
 keywords: 
-author: bwren
-ms.author: bwren
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/19/2017
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
+ms.openlocfilehash: 11e0f2f19acc843f1c558b5d0cfe84291035a6a5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 58c69e9c75f3a97c04b2c5b2e3b9acfc7065c658
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Suchen und Diagnostizieren von Laufzeitausnahmen mit Azure Application Insights
 
 Azure Application Insights erfasst Telemetriedaten Ihrer Anwendung, um Laufzeitausnahmen zu identifizieren und diagnostizieren.  Dieses Tutorial führt Sie mit Ihrer Anwendung durch diesen Vorgang.  Folgendes wird vermittelt:
@@ -39,11 +37,12 @@ Für dieses Tutorial benötigen Sie Folgendes:
     - ASP.NET und Webentwicklung
     - Azure-Entwicklung
 - Laden Sie den [Visual Studio Snapshot Debugger](http://aka.ms/snapshotdebugger) herunter, und installieren Sie diesen.
+- Aktivieren Sie [Debugmomentaufnahmen von Ausnahmen in .NET-Apps](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-snapshot-debugger).
 - Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](app-insights-asp-net.md). 
 - Das Tutorial verfolgt die Identifikation einer Ausnahme in Ihrer Anwendung, ändern Sie also den Code in Ihrer Entwicklungs- oder Testumgebung, um eine Ausnahme zu generieren. 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) im Azure-Portal an.
 
 
 ## <a name="analyze-failures"></a>Analysieren von Fehlern

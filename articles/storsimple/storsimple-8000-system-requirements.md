@@ -12,14 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/10/2017
+ms.date: 09/28/2017
 ms.author: alkohli
+ms.openlocfilehash: 485320e500d71bd85b69cfcd9628e133ad1c417c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 4c339c531dae5724a174c2b22cb379bdb3214a4f
-ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Software für StorSimple 8000-Serie, hohe Verfügbarkeit und Netzwerkanforderungen
 
@@ -76,7 +75,7 @@ Das StorSimple-Gerät ist ein gesperrtes Gerät. Allerdings müssen Ports in der
 
 <sup>2</sup> Wenn mehrere Ports eine Gatewaykonfiguration besitzen, wird die Reihenfolge des ausgehenden weitergeleiteten Datenverkehrs basierend auf der unten unter [Portweiterleitung](#routing-metric) beschriebenen Reihenfolge der Portweiterleitungen ermittelt.
 
-<sup>3</sup> Die festen IP-Adressen der Controller im StorSimple-Gerät müssen routingfähig sein und direkt oder über den konfigurierten Proxy eine Verbindung mit dem Internet herstellen können. Die festen IP-Adressen werden für Anwendung von Updates auf dem Gerät verwendet. Wenn die Gerätecontroller über die festen IP-Adressen keine Verbindung mit dem Internet herstellen können, können Sie das StorSimple-Gerät nicht aktualisieren.
+<sup>3</sup> Die festen IP-Adressen der Controller im StorSimple-Gerät müssen routingfähig sein und direkt oder über den konfigurierten Proxy eine Verbindung mit dem Internet herstellen können. Die festen IP-Adressen werden für die Bereitstellung der Updates für das Gerät sowie für die Garbage Collection verwendet. Wenn die Gerätecontroller über die festen IP-Adressen keine Verbindung mit dem Internet herstellen können, können Sie das StorSimple-Gerät nicht aktualisieren, und die Garbage Collection wird nicht ordnungsgemäß ausgeführt.
 
 > [!IMPORTANT]
 > Achten Sie darauf, dass SSL-Datenverkehr zwischen dem StorSimple-Gerät und Azure nicht durch die Firewall geändert oder entschlüsselt wird.
@@ -139,13 +138,13 @@ Der für Update 2 und höhere Versionen verwendete Routingmetrikalgorithmus läs
 
 * Der Clouddatenverkehr wird in folgender Reihenfolge über die Netzwerkschnittstellen weitergeleitet:
   
-    *Data 0 > Data 1 > Date 2 > Data 3 > Data 4 > Data 5*
+    *Data 0 &gt; Data 1 &gt; Date 2 &gt; Data 3 &gt; Data 4 &gt; Data 5*
   
     Dies lässt sich anhand des folgenden Beispiels erläutern:
   
     Stellen Sie sich ein StorSimple-Gerät mit zwei cloudfähigen Netzwerkschnittstellen vor, Data 0 und Data 5. Data 1 bis Data 4 sind nicht cloudfähig, weisen jedoch ein konfiguriertes Gateway auf. Der Datenverkehr für dieses Gerät wird in folgender Reihenfolge weitergeleitet:
   
-    *Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)*
+    *Data 0 (1) &gt; Data 5 (6) &gt; Data 1 (20) &gt; Data 2 (30) &gt; Data 3 (40) &gt; Data 4 (50)*
   
     *Die Zahlen in Klammern geben die jeweilige Routingmetrik an.*
   
@@ -249,4 +248,3 @@ Lesen Sie sich diese bewährten Methoden sorgfältig durch, um eine hohe Verfüg
 
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
-

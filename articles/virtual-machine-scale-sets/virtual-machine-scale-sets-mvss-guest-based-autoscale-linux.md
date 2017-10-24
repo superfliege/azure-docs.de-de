@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: negat
+ms.openlocfilehash: 98635ea6695fdb1e55456b5b6a293a3b4ad9d839
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ac0bbb4dbfccca3f3fc31526aeff11afe55d44be
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Autoskalierung mit Gastmetriken in einer Linux-Skalierungsgruppenvorlage
 
-Es gibt in Azure zwei Metriktypen, die aus virtuellen Computern und Skalierungsgruppen gesammelt werden: Einige stammen aus dem virtuellen Hostcomputer, andere aus dem virtuellen Gastcomputer. Hostmetriken setzen keine zusätzlichen Einstellungen voraus, weil sie vom virtuellen Hostcomputer gesammelt werden, während für Gastmetriken die [Windows Azure Diagnostics-Erweiterung](../virtual-machines/windows/extensions-diagnostics-template.md) oder die [Linux Azure Diagnostics-Erweiterung](../virtual-machines/linux/diagnostic-extension.md) im virtuellen Gastcomputer installiert werden muss. Ein häufiger Grund für die Verwendung von Gastmetriken anstatt von Hostmetriken ist, dass Gastmetriken eine größere Auswahl an Metriken bieten als Hostmetriken. Ein Beispiel dafür sind Speicherverbrauchsmetriken, die nur über Gastmetriken zur Verfügung stehen. Die unterstützten Hostmetriken finden Sie [hier](../monitoring-and-diagnostics/monitoring-supported-metrics.md), und häufig verwendete Gastmetriken finden Sie [hier](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md). In diesem Artikel wird gezeigt, wie Sie die [Vorlage für die kleinstmögliche Skalierungsgruppe](./virtual-machine-scale-sets-mvss-start.md) verändern müssen, um bei Linux-Skalierungsgruppen auf Gastmetriken basierende Autoskalierungsregeln verwenden zu können.
+Es gibt in Azure zwei Metriktypen, die aus virtuellen Computern und Skalierungsgruppen gesammelt werden: Einige stammen aus dem virtuellen Hostcomputer, andere aus dem virtuellen Gastcomputer. Grundsätzlich gilt: Wenn Sie standardmäßige CPU-, Datenträger- und Netzwerkmetriken verwenden, sind Hostmetriken wahrscheinlich eine gute Wahl. Wenn Sie jedoch eine größere Auswahl von Metriken benötigen, sind Gastmetriken aller Wahrscheinlichkeit nach besser geeignet. Werfen wir einen Blick auf die Unterschiede zwischen beiden Metriken:
+
+Hostmetriken sind einfacher und zuverlässiger. Sie erfordern keine zusätzlichen Konfigurationsschritte, weil sie von der Host-VM gesammelt werden, während für Gastmetriken die [Microsoft Azure-Diagnoseerweiterung](../virtual-machines/windows/extensions-diagnostics-template.md) oder die [Linux Azure-Diagnoseerweiterung](../virtual-machines/linux/diagnostic-extension.md) auf der Gast-VM installiert werden muss. Ein häufiger Grund für die Verwendung von Gastmetriken anstatt von Hostmetriken ist, dass Gastmetriken eine größere Auswahl an Metriken bieten als Hostmetriken. Ein Beispiel dafür sind Speicherverbrauchsmetriken, die nur über Gastmetriken zur Verfügung stehen. Die unterstützten Hostmetriken finden Sie [hier](../monitoring-and-diagnostics/monitoring-supported-metrics.md), und häufig verwendete Gastmetriken finden Sie [hier](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md). In diesem Artikel wird gezeigt, wie Sie die [Vorlage für die kleinstmögliche Skalierungsgruppe](./virtual-machine-scale-sets-mvss-start.md) verändern müssen, um bei Linux-Skalierungsgruppen auf Gastmetriken basierende Autoskalierungsregeln verwenden zu können.
 
 ## <a name="change-the-template-definition"></a>Ändern der Vorlagendefinition
 
@@ -189,4 +189,3 @@ Schließlich fügen wir eine `autoscaleSettings`-Ressource hinzu, damit wir basi
 ## <a name="next-steps"></a>Nächste Schritte
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
-

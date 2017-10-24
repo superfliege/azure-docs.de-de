@@ -14,26 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
+ms.openlocfilehash: 3010c298cf227c761288365e3663ffe3fb67d863
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
-ms.openlocfilehash: 64852471a848cb42fd8a2e67622d309d5e050cfd
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sfctl-compose"></a>sfctl compose
-Ermöglicht es, Docker Compose Anwendungen zu erstellen, zu löschen und zu verwalten.
+Ermöglicht es, Docker Compose-Bereitstellungen zu erstellen, zu löschen und zu verwalten.
 
 ## <a name="commands"></a>Befehle
 
 |Befehl|Beschreibung|
 | --- | --- |
-|    create| Erstellt eine Service Fabric-Anwendung aus einer Compose-Datei.|
-|    list  | Ruft die Liste der Compose-Anwendungen ab, die in dem Service Fabric-Cluster erstellt wurden.|
-|   remove| Löscht eine vorhandene Service Fabric-Compose-Anwendung aus dem Cluster.|
-|   status| Ruft Informationen zu einer Service Fabric-Compose-Anwendung ab.|
+|    create| Stellt eine Service Fabric-Anwendung aus einer Compose-Datei bereit.|
+|    list  | Ruft die Liste der Compose-Bereitstellungen ab, die in dem Service Fabric-Cluster erstellt wurden.|
+|   remove| Löscht eine vorhandene Service Fabric-Compose-Bereitstellung aus dem Cluster.|
+|   status| Ruft Informationen zu einer Service Fabric-Compose-Bereitstellung ab.|
 |Upgrade       | Startet ein Aktualisieren einer Compose-Bereitstellung im Service Fabric-Cluster.|
-|    upgrade-status| Ruft Details zu dem neuesten Upgrade ab, das für diese Service Fabric-Compose-Bereitstellung ausgeführt wurde.|
+|    upgrade-status| Ruft Details zu dem neuesten Upgrade ab, das für diese Compose-Bereitstellung von Service Fabric durchgeführt wurde.|
 
 
 ## <a name="sfctl-compose-create"></a>sfctl compose create
@@ -44,11 +43,11 @@ Erstellt eine Service Fabric-Compose-Bereitstellung.
 |Argument|Beschreibung|
 | --- | --- |
 | --file-path [erforderlich]| Pfad zur Docker Compose-Zieldatei.|
- |   --name [erforderlich]| Die Identität (ID) der Bereitstellung.|
-|    --encrypted-pass      | Bewirkt, dass anstelle der Aufforderung zur Eingabe des Containerregistrierungskennworts eine bereits verschlüsselte Passphrase verwendet wird.|
-|    --has-pass            | Fordert zur Eingabe eines Kennworts für die Containerregistrierung auf.|
-|    --timeout -t          | Servertimeout in Sekunden.  Standardwert: 60.|
- |   --user                | Der Benutzername, für den die Verbindung zur Containerregistrierung hergestellt werden soll.|
+ |   --deployment-name [erforderlich]| Der Name der Bereitstellung|
+|    --encrypted-pass             | Bewirkt, dass anstelle der Aufforderung zur Eingabe eines Containerregistrierungskennworts eine bereits verschlüsselte Passphrase verwendet wird.|
+|    --has-pass                   | Fordert zur Eingabe eines Kennworts für die Containerregistrierung auf.|
+|    --timeout -t                 | Servertimeout in Sekunden.  Standardwert: 60.|
+ |   --user                       | Der Benutzername, für den die Verbindung zur Containerregistrierung hergestellt werden soll.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -136,7 +135,7 @@ Startet ein Aktualisieren einer Compose-Bereitstellung im Service Fabric-Cluster
 |Argument|Beschreibung|
 | --- | --- |
 |    --file-path [erforderlich]| Pfad zur Docker Compose-Zieldatei.|
-|    --name [erforderlich]| Die Identität (ID) der Bereitstellung.|
+|    --deployment-name [erforderlich]| Der Name der Bereitstellung|
 |    --default-svc-type-health-map| JSON-codiertes Wörterbuch, in dem die Integritätsrichtlinie beschrieben ist, mit der die Integrität von Diensten bewertet wird.|
 |    --encrypted-pass             | Bewirkt, dass anstelle der Aufforderung zur Eingabe des Containerregistrierungskennworts eine bereits verschlüsselte Passphrase verwendet wird.|
  |   --failure-action             | Folgende Werte sind möglich: „Invalid“, „Rollback“, „Manual“.|

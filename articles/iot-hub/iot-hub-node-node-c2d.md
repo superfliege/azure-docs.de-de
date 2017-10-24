@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
+ms.openlocfilehash: 80f65e8e7fe562030c1e39787b910e2564969882
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: d1a1a03042d657231fe7704842b2635e8107623c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>Senden von C2D-Nachrichten mit IoT Hub (Node)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -81,7 +80,7 @@ In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie in [Erste Sc
     ```
    
    > [!NOTE]
-   > Wenn Sie anstelle von MQTT oder AMQP den HTTP-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (weniger als alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der MQTT-, AMQP- und HTTP-Unterstützung sowie zur IoT Hub-Drosselung finden Sie im [IoT Hub-Entwicklerhandbuch][IoT Hub developer guide - C2D].
+   > Wenn Sie anstelle von MQTT oder AMQP den HTTPS-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (seltener als alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der MQTT-, AMQP- und HTTPS-Unterstützung sowie zur IoT Hub-Drosselung finden Sie im [Entwicklungsleitfaden für IoT Hub][IoT Hub developer guide - C2D].
    > 
    > 
 
@@ -199,4 +198,3 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure-Portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
-

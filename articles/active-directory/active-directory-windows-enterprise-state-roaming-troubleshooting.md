@@ -4,8 +4,8 @@ description: "Enthält Antworten auf einige Fragen, die für IT-Administratoren 
 services: active-directory
 keywords: "Enterprise State Roaming-Einstellungen, Windows-Cloud, Häufig gestellte Fragen zu Enterprise State Roaming"
 documentationcenter: 
-author: tanning
-manager: swadhwa
+author: MarkusVi
+manager: femila
 editor: 
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
 ms.service: active-directory
@@ -13,37 +13,39 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 10/03/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 5d6b0869d2cf0e90b7b81b2304d95e01d1937925
-ms.lasthandoff: 03/18/2017
-
-
+ms.reviewer: tanning
+ms.custom: it-pro
+ms.openlocfilehash: ed25e6b922321fd4d8852860ad8817dc318d89ca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-#<a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Problembehandlung bei Enterprise State Roaming-Einstellungen in Azure Active Directory
+# <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Problembehandlung bei Enterprise State Roaming-Einstellungen in Azure Active Directory
 
 Dieses Thema enthält Informationen zur Behandlung und Diagnose von Problemen mit Enterprise State Roaming sowie eine Liste bekannter Probleme.
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>Vorbereitende Schritte zur Problembehandlung 
-Bevor Sie mit der Problembehandlung beginnen, stellen Sie sicher, dass der Benutzer und das Gerät ordnungsgemäß konfiguriert wurden und dass alle Anforderungen von Enterprise State Roaming vom Gerät und dem Benutzer erfüllt werden. 
+Bevor Sie mit der Problembehandlung beginnen, stellen Sie sicher, dass der Benutzer und das Gerät ordnungsgemäß konfiguriert wurden, und dass Gerät und Benutzer alle Anforderungen von Enterprise State Roaming erfüllen. 
 
 1. Windows 10 ist mit den neuesten Updates und mindestens Version 1511 (Betriebssystembuild 10586 oder höher) auf dem Gerät installiert. 
-2. Das Gerät gehört Azure AD oder einer Domäne an und ist bei Azure AD registriert.
-3. Im Azure Active Directory-Portal ist **Enterprise State Roaming** für das Verzeichnis unter **Konfigurieren** > **Geräte** > **Benutzer können Einstellungen und App-Daten des Unternehmens synchronisieren** aktiviert. Entweder werden alle Benutzer ausgewählt, oder der Benutzer wird für die Synchronisierung über die ausgewählte Option aktiviert und in die Sicherheitsgruppe aufgenommen.
-4. Dem Benutzer ist ein Azure Active Directory Premium-Abonnement zugewiesen.  
-5. Das Gerät wurde neu gestartet, und der Benutzer hat sich angemeldet, nachdem Enterprise State Roaming aktiviert wurde.
+2. Das Gerät ist in Azure AD oder Hybrid-Azure AD eingebunden. Weitere Informationen finden Sie unter [Einführung in die Geräteverwaltung in Azure Active Directory](device-management-introduction.md).
+3. Stellen Sie sicher, dass **Enterprise State Roaming** wie in [Aktivieren von Enterprise State Roaming in Azure Active Directory](active-directory-windows-enterprise-state-roaming-enable.md) beschrieben für den Mandanten in Azure AD aktiviert ist. Sie können das Roaming für alle Benutzer oder nur eine ausgewählte Gruppe von Benutzern aktivieren.
+4. Dem Benutzer muss bereits eine Azure Active Directory Premium-Lizenz zugewiesen worden sein.  
+25. Das Gerät muss neu gestartet werden, und der Benutzer muss sich zum Zugriff auf die Enterprise State Roaming-Funktionen erneut anmelden.
 
 ## <a name="information-to-include-when-you-need-help"></a>Erforderliche Informationen beim Anfordern von Hilfe
-Wenn Ihr Problem mithilfe der folgenden Anleitungen nicht gelöst wird, können Sie sich an einen unserer Supportmitarbeiter wenden. Hierbei sollten Sie die folgenden Informationen bereithalten:
+Wenn Ihr Problem mithilfe der folgenden Anleitungen nicht gelöst wird, können Sie sich an einen unserer Supportmitarbeiter wenden. Wenn Sie sich an den Support wenden, halten Sie die folgenden Informationen bereit:
 
-- **Allgemeine Beschreibung des Fehlers**: Werden dem Benutzer Fehlermeldungen angezeigt? Wenn keine Fehlermeldung angezeigt wird, beschreiben Sie das beobachtete unerwartete Verhalten so genau wie möglich. Welche Funktionen sind für die Synchronisierung aktiviert, und was möchte der Benutzer synchronisieren? Werden mehrere Funktionen nicht synchronisiert, oder nur eine?
-- **Betroffene Benutzer:** Funktioniert die Synchronisierung für einen oder mehrere Benutzer bzw. funktioniert sie nicht? Wie viele Geräte sind pro Benutzer betroffen? Werden alle nicht synchronisiert, oder werden einige synchronisiert und einige nicht?
-- **Informationen zum Benutzer**: Welche Identität verwendet der Benutzer, um sich beim Gerät anzumelden? Wie meldet sich der Benutzer beim Gerät an? Ist er Mitglied einer ausgewählten Sicherheitsgruppe, die synchronisieren darf? 
-- **Informationen zum Gerät**: Gehört dieses Gerät Azure AD oder einer Domäne an? Welche Builds sind auf dem Gerät installiert? Welches sind die neuesten Updates?
+* **Allgemeine Beschreibung des Fehlers**: Werden dem Benutzer Fehlermeldungen angezeigt? Wenn keine Fehlermeldung angezeigt wird, beschreiben Sie das beobachtete unerwartete Verhalten so genau wie möglich. Welche Funktionen sind für die Synchronisierung aktiviert, und was möchte der Benutzer synchronisieren? Werden mehrere Funktionen nicht synchronisiert, oder nur eine?
+* **Betroffene Benutzer:** Funktioniert die Synchronisierung für einen oder mehrere Benutzer bzw. funktioniert sie nicht? Wie viele Geräte sind pro Benutzer betroffen? Werden alle nicht synchronisiert, oder werden einige synchronisiert und einige nicht?
+* **Informationen zum Benutzer**: Welche Identität verwendet der Benutzer, um sich beim Gerät anzumelden? Wie meldet sich der Benutzer beim Gerät an? Ist er Mitglied einer ausgewählten Sicherheitsgruppe, die synchronisieren darf? 
+* **Informationen zum Gerät**: Gehört dieses Gerät Azure AD oder einer Domäne an? Welche Builds sind auf dem Gerät installiert? Welches sind die neuesten Updates?
 - **Datum/Uhrzeit/Zeitzone**: Wann genau (Tag und Uhrzeit) haben Sie den Fehler beobachtet (geben Sie auch die Zeitzone an)?
-- Diese Informationen helfen uns, Ihr Problem so schnell wie möglich zu beheben.
+
+Diese Informationen helfen uns, Ihr Problem so schnell wie möglich zu beheben.
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>Problembehandlung und Diagnose von Problemen
 Dieser Abschnitt enthält Vorschläge zum Beheben und Diagnostizieren von Problemen im Zusammenhang mit Enterprise State Roaming.
@@ -52,17 +54,17 @@ Dieser Abschnitt enthält Vorschläge zum Beheben und Diagnostizieren von Proble
 
 1. Melden Sie sich nach dem Einbinden Ihres Windows 10-PCs in eine Domäne, die Enterprise State Roaming zulässt, mit Ihrem Geschäftskonto an. Wechseln Sie zu **Einstellungen** > **Konten** > **Einstellungen synchronisieren**, und vergewissern Sie sich, dass die Synchronisierung und die einzelnen Einstellungen aktiviert sind und dass oben auf der Seite mit den Einstellungen angegeben ist, dass die Synchronisierung mit Ihrem Geschäftskonto durchgeführt wird. Überprüfen Sie unter **Einstellungen** > **Konten** > **Ihre Infos**, ob das gleiche Konto auch als Ihr Anmeldekonto verwendet wird. 
 2. Stellen Sie sicher, dass die Synchronisierung über mehrere Computer hinweg funktioniert, indem Sie einige Änderungen auf dem ursprünglichen Computer vornehmen, z.B. die Taskleiste auf dem Bildschirm nach rechts oder oben verschieben. Beobachten Sie, wie die Änderung innerhalb von fünf Minuten an den zweiten Computer weitergegeben wird. 
- - Durch Sperren und Entsperren des Bildschirms (Windows-Taste+L) kann eine Synchronisierung ausgelöst werden.
- - Sie müssen auf beiden Computern dasselbe Anmeldekonto für die Synchronisierung verwenden, da das Enterprise State Roaming an das Benutzerkonto und nicht das Computerkonto gebunden ist.
+  * Durch Sperren und Entsperren des Bildschirms (Windows-Taste+L) kann eine Synchronisierung ausgelöst werden.
+  * Sie müssen auf beiden Computern dasselbe Anmeldekonto für die Synchronisierung verwenden, da das Enterprise State Roaming an das Benutzerkonto und nicht das Computerkonto gebunden ist.
 
-**Mögliches Problem**: Auf der Seite mit den Einstellungen sind die Umschaltflächen ausgegraut, und anstelle eines Kontos wird der Text „Einige Windows-Funktionen sind nur verfügbar, wenn Sie ein Microsoft-Konto oder -Geschäftskonto verwenden“ wird angezeigt. Dieses Problem kann bei Geräten auftreten, die einer Domäne zugeordnet wurden und die in Azure AD registriert sind, aber die nicht erfolgreich bei Azure AD authentifiziert wurden. Eine mögliche Ursache ist, dass die Geräterichtlinie angewendet werden muss, aber diese Anwendung asynchron erfolgt und sich um einige Stunden verzögert. Um dieses Problem zu überprüfen, führen Sie die Schritte zum Überprüfen des Geräteregistrierungsstatus aus. So können Sie feststellen, ob dies der Fall ist.
+**Mögliches Problem**: Die Steuerelemente sind auf der Seite **Einstellungen** nicht verfügbar, und die Nachricht „Einige Windows-Funktionen sind nur verfügbar, wenn Sie ein Microsoft-Konto oder -Geschäftskonto verwenden“ wird angezeigt. Dieses Problem kann bei Geräten auftreten, die einer Domäne zugeordnet wurden und in Azure AD registriert sind, aber nicht erfolgreich bei Azure AD authentifiziert wurden. Eine mögliche Ursache ist, dass die Geräterichtlinie angewendet werden muss, aber diese Anwendung asynchron erfolgt und sich um einige Stunden verzögert. 
 
 ### <a name="verify-the-device-registration-status"></a>Überprüfen des Geräteregistrierungsstatus
 Für Enterprise State Roaming muss das Gerät bei Azure AD registriert sein. Zwar gelten diese Anweisungen nicht nur für Enterprise State Roaming, damit können Sie aber sicherstellen, dass der Windows 10-Client registriert ist, und den Fingerabdruck, die URL für Azure AD-Einstellungen, den NGC-Status und andere Informationen überprüfen.
 
-1.    Öffnen Sie die Eingabeaufforderung ohne erhöhte Rechte. Öffnen Sie dazu das Dialogfeld „Ausführen“ (Windows-Taste+R), und geben Sie zum Öffnen der Eingabeaufforderung „cmd“ ein.
-2.    Sobald die Eingabeaufforderung geöffnet ist, geben Sie *dsregcmd.exe /status* ein.
-3.    Erwartete Ausgabe: Der Wert des Felds **AzureAdJoined**muss „YES“ sein, der Wert des Felds **WamDefaultSet** muss „YES“, und der Wert des Felds **WamDefaultGUID** muss eine GUID sein, die auf „(AzureAd)“ endet.
+1.  Öffnen Sie die Eingabeaufforderung ohne erhöhte Rechte. Öffnen Sie dazu das Dialogfeld „Ausführen“ (Windows-Taste+R), und geben Sie zum Öffnen der Eingabeaufforderung „cmd“ ein.
+2.  Sobald die Eingabeaufforderung geöffnet ist, geben Sie *dsregcmd.exe /status* ein.
+3.  Erwartete Ausgabe: Der Wert des Felds **AzureAdJoined**muss „YES“ sein, der Wert des Felds **WamDefaultSet** muss „YES“, und der Wert des Felds **WamDefaultGUID** muss eine GUID sein, die auf „(AzureAd)“ endet.
 
 **Mögliches Problem**: **WamDefaultSet** und **AzureAdJoined** weisen „NO“ als Wert auf, das Gerät gehört der Domäne an und wurde bei Azure AD registriert, und das Gerät wird nicht synchronisiert. In diesem Fall muss das Gerät möglicherweise warten, bis die Richtlinie angewendet wird, oder die Authentifizierung für das Gerät schlägt beim Verbinden mit Azure AD fehl. Der Benutzer muss möglicherweise einige Stunden warten, bis die Richtlinie angewendet wird. Weitere mögliche Schritte zur Problembehandlung sind, erneut eine automatische Registrierung durch eine Abmeldung und erneute Anmeldung zu versuchen oder die Aufgabe in der Aufgabenplanung zu starten. In einigen Fällen kann das Problem behoben werden, indem *dsregcmd.exe /leave* in einem Eingabeaufforderungsfenster mit erhöhten Rechten ausgeführt wird, ein Neustart durchgeführt wird und die Registrierung erneut ausgeführt wird.
 
@@ -157,7 +159,7 @@ Bereinigen Sie im Bereinigungsschritt die folgenden Dateien:
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Ereignis-ID 6065: 80070533: Der Benutzer kann sich nicht anmelden, da das Konto momentan deaktiviert ist    
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Ereignis-ID 6065: 80070533: Der Benutzer kann sich nicht anmelden, da das Konto momentan deaktiviert ist  
 In der Ereignisanzeige kann dieser Fehler unter den Protokollen „SettingSync/Debug“ vorhanden sein, wenn die Anmeldeinformationen des Benutzers abgelaufen sind. Darüber hinaus kann er auftreten, wenn der Mandant AzureRMS nicht automatisch bereitgestellt hat. 
 
 **Empfohlene Maßnahme**  
@@ -165,8 +167,8 @@ Veranlassen Sie im ersten Fall, dass der Benutzer seine Anmeldeinformationen akt
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Ereignis-ID 1098: Fehler: 0xCAA5001C: Fehler beim Tokenmaklervorgang    
-In der Ereignisanzeige unter „AAD/Betriebsprotokolle“ kann dieser Fehler angezeigt werden (Ereignis 1104: Aufruf des AAD-Cloud-AP-Plug-Ins – Fehler beim Abrufen des Tokens: 0xC000005F). Dieses Problem tritt auf, wenn Berechtigungen oder Besitzattribute fehlen.     
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Ereignis-ID 1098: Fehler: 0xCAA5001C: Fehler beim Tokenmaklervorgang  
+In der Ereignisanzeige unter „AAD/Betriebsprotokolle“ kann dieser Fehler angezeigt werden (Ereignis 1104: Aufruf des AAD-Cloud-AP-Plug-Ins – Fehler beim Abrufen des Tokens: 0xC000005F). Dieses Problem tritt auf, wenn Berechtigungen oder Besitzattribute fehlen.  
 
 **Empfohlene Maßnahme**  
 Führen Sie die Schritte unter [KB3196528](https://support.microsoft.com/kb/3196528) aus.  
@@ -185,4 +187,3 @@ Führen Sie die Schritte unter [KB3196528](https://support.microsoft.com/kb/3196
 * [Roaming von Einstellungen und Daten – Häufig gestellte Fragen](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [Gruppenrichtlinien- und MDM-Einstellungen für Einstellungssynchronisierung](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10-Roamingeinstellungen – Referenz](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
-

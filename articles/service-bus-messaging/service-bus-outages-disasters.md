@@ -1,27 +1,27 @@
 ---
 title: "Schützen von Azure Service Bus-Anwendungen vor Ausfällen und Notfällen | Microsoft Docs"
-description: "Es werden Verfahren beschrieben, die Sie zum Schützen von Anwendungen vor einem potenziellen Service Bus-Ausfall verwenden können."
+description: "Verfahren, die Anwendungen vor einem potenziellen Service Bus-Ausfall schützen können."
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: tysonn
+editor: 
 ms.assetid: fd9fa8ab-f4c4-43f7-974f-c876df1614d4
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 10/06/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: bc84dbe5c26a834b2cff5f71ba5f541e94ba0b38
-ms.lasthandoff: 04/13/2017
-
-
+ms.openlocfilehash: 6dd9045d7aa8d4dc8b3a1acbe6f927e232d9b505
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Bewährte Methoden zum Schützen von Anwendungen vor Service Bus-Ausfällen und Notfällen
+
 Unternehmenswichtige Anwendungen müssen ohne Unterbrechung ausgeführt werden. Dies gilt auch bei ungeplanten Ausfällen oder in Notsituationen. In diesem Thema werden Verfahren beschrieben, mit denen Sie Service Bus-Anwendungen vor einem potenziellen Dienstausfall oder Notfällen schützen können.
 
 Ein Ausfall wird als vorübergehende Nichtverfügbarkeit von Azure Service Bus definiert. Der Ausfall kann nur einige Komponenten von Service Bus betreffen, z. B. einen Nachrichtenspeicher, oder auch das gesamte Rechenzentrum. Nachdem das Problem behoben wurde, ist Service Bus wieder verfügbar. In der Regel führt ein Ausfall nicht zum Verlust von Nachrichten oder anderen Daten. Ein Beispiel für den Ausfall einer Komponente ist die Nichtverfügbarkeit eines bestimmten Nachrichtenspeichers. Beispiele für den Ausfall eines gesamten Rechenzentrums sind ein Stromausfall im Rechenzentrum oder ein fehlerhafter Netzwerkswitch im Rechenzentrum. Ein Ausfall kann einige Minuten oder auch bis zu einigen Tagen dauern.
@@ -50,8 +50,6 @@ Weitere Informationen finden Sie im Abschnitt „Ausfall von Service Bus in eine
 Die Georeplikation von Relayendpunkten ermöglicht die Verwendung eines Diensts, mit dem ein Relayendpunkt verfügbar gemacht wird, damit er bei Service Bus-Ausfällen zugänglich ist. Zum Erzielen der Georeplikation muss der Dienst zwei Relayendpunkte in unterschiedlichen Namespaces erstellen. Die Namespaces müssen sich in unterschiedlichen Rechenzentren befinden, und die beiden Endpunkte müssen unterschiedliche Namen haben. Ein primärer Endpunkt kann beispielsweise unter **contosoPrimary.servicebus.windows.net/myPrimaryService** erreichbar sein, während der sekundäre Endpunkt unter **contosoSecondary.servicebus.windows.net/mySecondaryService** erreichbar ist.
 
 Der Dienst lauscht dann an beiden Endpunkten, und ein Client kann den Dienst über einen der beiden Endpunkte aufrufen. Eine Clientanwendung wählt ein Relayelement als primären Endpunkt und sendet dessen Anforderung an den aktiven Endpunkt. Wenn der Vorgang mit einem Fehlercode fehlschlägt, wird in diesem Fehler darauf hingewiesen, dass der Relayendpunkt nicht verfügbar ist. Die Anwendung öffnet einen Kanal zum Backup-Endpunkt und gibt die Anforderung neu heraus. An diesem Punkt tauschen der aktive Endpunkt und der Backup-Endpunkt die Rollen: Die Clientanwendung sieht den alten aktiven Endpunkt als neuen Backup-Endpunkt und den alten Backup-Endpunkt als neuen aktiven Endpunkt an. Wenn beide Sendevorgänge fehlschlagen, bleiben die Rollen der beiden Entitäten unverändert, und es wird ein Fehler zurückgegeben.
-
-Im Beispiel [Georeplikation mit Service Bus-Relay-Nachrichten][Geo-replication with Service Bus relayed Messages] wird gezeigt, wie Relays repliziert werden.
 
 ## <a name="protecting-queues-and-topics-against-datacenter-outages-or-disasters"></a>Schützen von Warteschlangen und Themen vor Rechenzentrumausfällen und Notfällen
 Um bei Verwendung des Brokermessaging Resilienz in Bezug auf Rechenzentrumausfälle zu erzielen, unterstützt Service Bus zwei Ansätze: *aktive* und *passive* Replikation. Bei beiden Ansätzen können Sie die Erstellung in beiden Namespaces durchführen, wenn eine Warteschlange oder ein Thema bei einem Rechenzentrumausfall verfügbar bleiben muss. Beide Entitäten können den gleichen Namen haben. Eine primäre Warteschlange kann beispielsweise unter **contosoPrimary.servicebus.windows.net/myQueue** erreichbar sein, während die sekundäre Warteschlange unter **contosoSecondary.servicebus.windows.net/myQueue** erreichbar ist.
@@ -93,10 +91,8 @@ Weitere Informationen zur Notfallwiederherstellung finden Sie in diesen Artikeln
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md
 [Partitioned messaging entities]: service-bus-partitioning.md
 [Asynchronous messaging patterns and high availability]: service-bus-async-messaging.md#failure-of-service-bus-within-an-azure-datacenter
-[Geo-replication with Service Bus Relayed Messages]: http://code.msdn.microsoft.com/Geo-replication-with-16dbfecd
 [BrokeredMessage.MessageId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId
 [BrokeredMessage.Label]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label
-[Geo-replication with Service Bus Brokered Messages]: http://code.msdn.microsoft.com/Geo-replication-with-f5688664
+[Geo-replication with Service Bus Brokered Messages]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
 [Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
 [Azure resiliency technical guidance]: /azure/architecture/resiliency
-

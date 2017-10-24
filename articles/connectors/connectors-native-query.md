@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
-ms.openlocfilehash: a992fa17a07d6167297c4cf5fe9fb3b58181d7df
-
-
+ms.openlocfilehash: a11ba47d6ec69d31360e9142b7bce97803809c57
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-query-action"></a>Erste Schritte mit der Abfrageaktion
 Mit der Abfrageaktion können Sie Batches und Arrays zum Ausführen von Workflows nutzen:
@@ -48,6 +48,8 @@ Im Folgenden wird erläutert, wie Sie die Aktion in einer Logik-App hinzufügen 
    
     Die Aktion gibt ein neues Array aus, das nur Ergebnisse enthält, die die Filteranforderungen erfüllen.
 6. Klicken Sie zum Speichern links oben auf die Symbolleiste. Dadurch wird Ihre Logik-App gespeichert und veröffentlicht (aktiviert).
+
+\* Wenn Sie einen HTTP-Endpunkt aufrufen und eine JSON-Antwort empfangen, analysieren Sie die JSON-Antwort mit der Aktion _JSON analysieren_. Ohne diesen Schritt erkennt _Array filtern_ nur Text und nicht die Struktur der JSON-Nutzlast.
 
 ## <a name="query-action"></a>Abfrageaktion
 Hier finden Sie Details zu der Aktion, die dieser Connector unterstützt. Der Connector verfügt über eine mögliche Aktion.
@@ -79,10 +81,4 @@ Im Folgenden werden die Ausgabedetails für die HTTP-Antwort angegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

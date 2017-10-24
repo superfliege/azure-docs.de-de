@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/03/2017
+ms.date: 09/27/2017
 ms.author: juliako;
+ms.openlocfilehash: b3584c5aa5405e7f5acdd9bc0a6573b4acbab855
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 0d071129944fb9298e8f0a7b8f3bb1dd2fcc4bd4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Bearbeiten von Gesichtern mit Azure Media Analytics
 ## <a name="overview"></a>Übersicht
@@ -134,7 +133,7 @@ Beispiel: „foo_IDList.txt“
 
 ## <a name="blur-types"></a>Typen von Weichzeichnern
 
-Im Modus **Kombiniert** oder **Bearbeiten** gibt es fünf verschiedene Weichzeichnermodi, zwischen denen Sie über die JSON-Eingabekonfiguration wählen können: **Low**, **Med**, **High**, **Debug** und **Black** (Niedrig, Medium, Hoch, Debug, Schwarz). Standardmäßig wird **Medium** verwendet.
+Im Modus **Kombiniert** oder **Bearbeiten** gibt es fünf verschiedene Weichzeichnermodi, zwischen denen Sie über die JSON-Eingabekonfiguration wählen können: **Low**, **Med**, **High**, **Box** und **Black** (Niedrig, Medium, Hoch, Feld, Schwarz). Standardmäßig wird **Medium** verwendet.
 
 Untenstehend finden Sie Beispiele für Weichzeichnertypen.
 
@@ -154,9 +153,9 @@ Untenstehend finden Sie Beispiele für Weichzeichnertypen.
 
 ![Hoch](./media/media-services-face-redaction/blur3.png)
 
-#### <a name="debug"></a>Debuggen
+#### <a name="box"></a>Box
 
-![Debuggen](./media/media-services-face-redaction/blur4.png)
+![Box](./media/media-services-face-redaction/blur4.png)
 
 #### <a name="black"></a>Schwarz
 
@@ -353,5 +352,4 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
 

@@ -16,21 +16,22 @@ ms.workload: service-fabric
 ms.date: 08/16/2017
 ms.author: ryanwi
 ms.custom: mvc
+ms.openlocfilehash: d4bc835399aef667cfb893e6473d84f57fc84a05
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: b109d1f3082fa3017f34bed685fd008ff3630394
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell-Beispiele
 
 Die folgende Tabelle enthält Links zu Beispielen von PowerShell-Skripts, die Service Fabric-Cluster, -Anwendungen und -Dienste erstellen und verwalten.
 
+[!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-powershell.md)]
+
 | | |
 |-|-|
 | **Cluster erstellen** ||
-| [Erstellen eines sicheren Clusters](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Erstellt einen Azure Service Fabric-Cluster. |
+| [Erstellen eines Clusters (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Erstellt einen Azure Service Fabric-Cluster. |
 | **Cluster verwalten** ||
 | [Hinzufügen eines Anwendungszertifikats](./scripts/service-fabric-powershell-add-application-certificate.md)| Fügt allen Knoten in einem Cluster ein X.509-Anwendungszertifikat hinzu. |
 | **Anwendungen verwalten** ||
@@ -38,4 +39,3 @@ Die folgende Tabelle enthält Links zu Beispielen von PowerShell-Skripts, die Se
 | [Upgraden einer Anwendung](./scripts/service-fabric-powershell-upgrade-application.md)| Upgraden einer Anwendung |
 | [Entfernen einer Anwendung](./scripts/service-fabric-powershell-remove-application.md)| Entfernt eine Anwendung aus einem Cluster.|
 | [Öffnen eines Ports im Lastenausgleichsmodul](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) | Öffnen Sie einen Anwendungsport im Azure-Lastenausgleichsmodul. |
-

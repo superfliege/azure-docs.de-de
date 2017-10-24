@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: juanpere
+ms.openlocfilehash: ed93463153e3fba154aae733da27dea3e8d47689
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 6e4ca8ad0c444930f5e45eed0a024412de82dbb1
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planen von Aufträgen auf mehreren Geräten
 ## <a name="overview"></a>Übersicht
@@ -33,7 +32,7 @@ Erwägen Sie das Arbeiten mit Aufträgen, wenn ein Lösungs-Back-End den Fortsch
 * Aufrufen direkter Methoden
 
 ## <a name="job-lifecycle"></a>Auftragslebenszyklus
-Aufträge werden vom Lösungs-Back-End eingeleitet und vom IoT Hub verwaltet.  Sie können einen Auftrag über einen dienstseitigen URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-11-14`) auslösen und den Fortschritt eines in der Ausführung befindlichen Auftrags über einen dienstseitigen URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-11-14`) abfragen.  Nach dem Initiieren eines Auftrags kann die Back-End-App den Ausführungsstatus durch das Abfragen von Aufträgen aktualisieren.
+Aufträge werden vom Lösungs-Back-End eingeleitet und vom IoT Hub verwaltet.  Sie können einen Auftrag über einen dienstseitigen URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-11-14`) auslösen und den Fortschritt eines in der Ausführung befindlichen Auftrags über einen dienstseitigen URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-11-14`) abfragen. Um den Status der zurzeit ausgeführten Aufträge nach der Initiierung eines Auftrags zu aktualisieren, führen Sie eine Auftragsabfrage aus.
 
 > [!NOTE]
 > Wenn Sie einen Auftrag initiieren, dürfen Eigenschaftennamen und -werte nur druckbare alphanumerische US-ASCII-Zeichen mit Ausnahme der folgenden enthalten: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
@@ -44,7 +43,7 @@ Aufträge werden vom Lösungs-Back-End eingeleitet und vom IoT Hub verwaltet.  S
 Die folgenden Referenzthemen enthalten weitere Informationen zur Verwendung von Aufträgen.
 
 ## <a name="jobs-to-execute-direct-methods"></a>Aufträge zum Ausführen direkter Methoden
-Es folgen die HTTP 1.1-Anforderungsdetails zum Ausführen einer [direkten Methode][lnk-dev-methods] auf einer Gruppe von Geräten mithilfe eines Auftrags:
+Der folgende Ausschnitt enthält die HTTPS 1.1-Anforderungsdetails, um eine [direkte Methode][lnk-dev-methods] für eine Gruppe von Geräten mithilfe eines Auftrags auszuführen:
 
     ```
     PUT /jobs/v2/<jobId>?api-version=2016-11-14
@@ -67,7 +66,7 @@ Es folgen die HTTP 1.1-Anforderungsdetails zum Ausführen einer [direkten Method
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        
     }
     ```
-Die Abfragebedingung kann auch wie unten dargestellt für eine einzelne Geräte-ID oder eine Liste mit Geräte-IDs gelten.
+Die Abfragebedingung kann auch wie unten dargestellt für eine einzelne Geräte-ID oder eine Liste mit Geräte-IDs gelten. Im Folgenden werden einige Beispiele vorgestellt:
 
 **Beispiele**
 ```
@@ -78,7 +77,7 @@ queryCondition = "deviceId IN ['MyDevice1']
 Im Artikel zur [IoT Hub-Abfragesprache][lnk-query] wird die IoT Hub-Abfragesprache ausführlicher erläutert.
 
 ## <a name="jobs-to-update-device-twin-properties"></a>Aufträge zum Aktualisieren der Eigenschaften von Gerätezwillingen
-Es folgen die HTTP 1.1-Anforderungsdetails zum Aktualisieren von Eigenschaften von Gerätezwillingen mithilfe eines Auftrags:
+Der folgende Ausschnitt enthält die HTTPS 1.1-Anforderungsdetails, um die Eigenschaften von Gerätezwillingen mithilfe eines Auftrags zu aktualisieren:
 
     ```
     PUT /jobs/v2/<jobId>?api-version=2016-11-14
@@ -98,7 +97,7 @@ Es folgen die HTTP 1.1-Anforderungsdetails zum Aktualisieren von Eigenschaften v
     ```
 
 ## <a name="querying-for-progress-on-jobs"></a>Abfragen des Fortschritts von Aufträgen
-Es folgen die HTTP 1.1-Anforderungsdetails für das [Abfragen von Aufträgen][lnk-query]:
+Der folgende Ausschnitt enthält die HTTPS 1.1-Anforderungsdetails für das [Abfragen von Aufträgen][lnk-query]:
 
     ```
     GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
@@ -112,7 +111,7 @@ Es folgen die HTTP 1.1-Anforderungsdetails für das [Abfragen von Aufträgen][ln
 Das „continuationToken“ wird aus der Antwort bereitgestellt.  
 
 ## <a name="jobs-properties"></a>Auftragseigenschaften
-Es folgt eine Liste von Eigenschaften und entsprechenden Beschreibungen, die beim Abfragen von Aufträgen oder Auftragsergebnissen verwendet werden können.
+Die folgende Liste enthält die Eigenschaften und entsprechenden Beschreibungen, die beim Abfragen von Aufträgen oder Auftragsergebnissen verwendet werden können.
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
@@ -120,15 +119,15 @@ Es folgt eine Liste von Eigenschaften und entsprechenden Beschreibungen, die bei
 | **startTime** |Von der Anwendung angegebene Startzeit (ISO-8601) für den Auftrag. |
 | **endTime** |Von IoT Hub angegebenes Datum (ISO-8601) für den Abschluss des Auftrags. Gilt nur, nachdem der Auftrag den Zustand „Abgeschlossen“ erreicht hat. |
 | **type** |Auftragstypen: |
-| **scheduledUpdateTwin**: Ein Auftrag zum Aktualisieren einer Gruppe gewünschter Eigenschaften oder Tags. | |
-| **scheduledDeviceMethod**: Ein Auftrag zum Aufrufen einer Gerätemethode für eine Gruppe von Gerätezwillingen. | |
+| | **scheduledUpdateTwin**: Ein Auftrag zum Aktualisieren einer Gruppe gewünschter Eigenschaften oder Tags. |
+| | **scheduledDeviceMethod**: Ein Auftrag zum Aufrufen einer Gerätemethode für eine Gruppe von Gerätezwillingen. |
 | **status** |Aktueller Status des Auftrags. Mögliche Werte für den Status: |
-| **pending**: Geplant und auf Auswahl durch den Auftragsdiensts wartend. | |
-| **scheduled**: Für einen Zeitpunkt in der Zukunft geplant. | |
-| **running**: Derzeit aktiver Auftrag. | |
-| **cancelled**: Auftrag wurde abgebrochen. | |
-| **failed**: Fehler beim Auftrag. | |
-| **completed**: Auftrag wurde abgeschlossen. | |
+| | **pending**: Geplant und auf Auswahl durch den Auftragsdienst wartend. |
+| | **scheduled**: Für einen Zeitpunkt in der Zukunft geplant. |
+| | **running**: Derzeit aktiver Auftrag. |
+| | **canceled**: Der Auftrag wurde abgebrochen. |
+| | **failed**: Fehler beim Auftrag. |
+| | **completed**: Auftrag wurde abgeschlossen. |
 | **deviceJobStatistics** |Statistiken zur Ausführung des Auftrags. |
 
 **deviceJobStatistics**-Eigenschaften.
@@ -167,4 +166,3 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-devguide]: iot-hub-devguide-device-twins.md
-

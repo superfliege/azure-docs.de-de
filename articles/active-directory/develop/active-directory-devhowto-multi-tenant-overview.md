@@ -15,19 +15,18 @@ ms.workload: identity
 ms.date: 09/26/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: b409aa762b60c6bed0ee26f4b9fa7c347d9eb997
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-ad-user-using-the-multi-tenant-application-pattern"></a>Anmelden von Azure Active Directory-Benutzern (AD) mit dem mehrinstanzenfähigen Anwendungsmuster
 Wenn Sie vielen Organisationen eine Software-as-a-Service-Anwendung anbieten, können Sie Ihre Anwendung so konfigurieren, dass Anmeldungen von beliebigen Azure AD-Mandanten akzeptiert werden.  In Azure AD wird die Konfiguration als mehrinstanzenfähige Anwendung bezeichnet.  Benutzer eines Azure AD-Mandanten können sich bei Ihrer Anwendung anmelden, nachdem sie zugestimmt haben, ihr Konto mit Ihrer Anwendung zu verwenden.  
 
 Wenn Sie eine Anwendung besitzen, die mit einem eigenen Kontosystem ausgestattet ist oder andere Arten von Anmeldungen über andere Cloudanbieter unterstützt, erweist sich das Hinzufügen des Azure AD-Anmeldecodes von beliebigen Mandanten als einfach. Registrieren Sie einfach Ihre App, fügen Sie den Anmeldecode über OAuth2, OpenID Connect oder SAML hinzu, und implementieren Sie die Schaltfläche „Mit Microsoft anmelden“ in Ihrer Anwendung. Klicken Sie auf die folgende Schaltfläche, um weitere Informationen zum Branding Ihrer Anwendung zu erhalten.
 
-[![Sign in button][AAD-Sign-In]][AAD-App-Branding]
+[![Anmeldungsschaltfläche][AAD-Sign-In]][AAD-App-Branding]
 
 In diesem Artikel wird davon ausgegangen, dass Sie mit der Erstellung einer Anwendung für einen Mandanten für Azure AD bereits vertraut sind.  Besuchen Sie andernfalls die [Startseite des Entwicklerhandbuchs][AAD-Dev-Guide], und nutzen Sie unsere Schnellstartanleitungen.
 
@@ -62,7 +61,7 @@ Die Anmeldeantwort an die Anwendung enthält dann ein Token, das den Benutzer da
 
 Wie bereits erwähnt, sollte von mehrinstanzenfähigen Anwendungen auch eine einheitliche Anmeldeoberfläche für Benutzer bereitgestellt werden, die die Brandingrichtlinien für Azure AD-Anwendungen erfüllt. Klicken Sie auf die folgende Schaltfläche, um weitere Informationen zum Branding Ihrer Anwendung zu erhalten.
 
-[![Sign in button][AAD-Sign-In]][AAD-App-Branding]
+[![Anmeldungsschaltfläche][AAD-Sign-In]][AAD-App-Branding]
 
 Wir sehen uns nun die Nutzung des Endpunkts „/common“ und Ihre Codeimplementierung genauer an.
 
@@ -240,7 +239,6 @@ Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und un
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
 [OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
-
 
 
 

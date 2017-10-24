@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit Azure Active Directory Domain Services | Microsoft-Dokumentation
-description: Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals (Vorschauversion)
+description: Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 09/26/2017
 ms.author: maheshu
+ms.openlocfilehash: 32d51f883ad92b5be6b1f455dfb1a865748f3102
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: f87bcf33d3b1eb21c7d84814e4c4086f664e293d
-ms.contentlocale: de-de
-ms.lasthandoff: 07/17/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals (Vorschauversion)
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 
 
 ## <a name="task-3-configure-administrative-group"></a>Aufgabe 3: Konfigurieren der administrativen Gruppe
@@ -55,13 +54,13 @@ Der Prozess der Bereitstellung Ihrer verwalteten Domänen kann bis zu einer Stun
 
 1. Während Ihre Bereitstellung ausgeführt wird, können Sie im Suchfeld **Search resources** (Ressourcen suchen) nach „Domänendienste“ suchen. Wählen Sie aus dem Suchergebnis **Azure AD Domain Services** aus. Das Blatt **Azure AD Domain Services** listet die verwaltete Domäne auf, die gerade bereitgestellt wird.
 
-    ![Suchen der verwalteten Domäne, die gerade bereitgestellt wird](./media/getting-started/domain-services-provisioning-state-find-resource.png)
+    ![Suchen der bereitgestellten verwalteten Domäne](./media/getting-started/domain-services-provisioning-state-find-resource.png)
 
-2. Klicken Sie auf den Namen der verwalteten Domäne (z.B. „contoso100.com“), um weitere Details zur Domäne anzuzeigen.
+2. Klicken Sie auf den Namen der verwalteten Domäne (z.B. „contoso100.com“), um weitere Details zu der verwalteten Domäne zu erfahren.
 
-    ![Domänendienste: Bereitstellungsstatus](./media/getting-started/domain-services-provisioning-state.png)
+    ![Domänendienste – Bereitstellungsstatus](./media/getting-started/domain-services-provisioning-state.png)
 
-3. Die Registerkarte **Overview** (Übersicht) zeigt an, dass die Domäne gerade bereitgestellt wird. Die verwaltete Domäne kann nicht konfiguriert werden, bis sie vollständig bereitgestellt ist. Es kann bis zu einer Stunde dauern, bis Ihre verwaltete Domäne vollständig bereitgestellt ist.
+3. Die Registerkarte **Übersicht** zeigt an, dass die verwaltete Domäne gerade bereitgestellt wird. Die verwaltete Domäne kann nicht konfiguriert werden, bis sie vollständig bereitgestellt ist. Es kann bis zu einer Stunde dauern, bis Ihre verwaltete Domäne vollständig bereitgestellt ist.
 
     ![Domänendienste: Registerkarte „Übersicht“ während des Bereitstellungszustands ](./media/getting-started/domain-services-provisioning-state-details.png)
 
@@ -74,6 +73,9 @@ Der Prozess der Bereitstellung Ihrer verwalteten Domänen kann bis zu einer Stun
     ![Domänendienste: Registerkarte „Übersicht“ nach der vollständigen Bereitstellung](./media/getting-started/domain-services-provisioned-properties.png)
 
 
+## <a name="need-help"></a>Sie brauchen Hilfe?
+Es dauert möglicherweise ein oder zwei Stunden, bis beide Domänencontroller für die verwaltete Domäne bereitgestellt werden. Wenn bei Ihrer Bereitstellung Fehler auftreten, oder sie im Status „Ausstehend“ steckenbleibt, [bitten Sie das Produktteam um Hilfe](active-directory-ds-contact-us.md).
+
+
 ## <a name="next-step"></a>Nächster Schritt
 [Aufgabe 4: Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk](active-directory-ds-getting-started-dns.md)
-

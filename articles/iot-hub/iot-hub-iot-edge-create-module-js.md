@@ -11,11 +11,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: sushi
-ms.openlocfilehash: ba466f47e157d805600c41fa3d84ed5a0363969c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.openlocfilehash: e23c4aa7bb3eb4fab18d5a13cbad28e07c18d8f2
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-nodejs"></a>Erstellen eines Azure IoT Edge-Moduls mit Node.js
 
@@ -121,7 +121,7 @@ Bei den Eingaben kann es sich um Daten von Hardware (z.B. eines Bewegungsmelders
 
 Die Ausgabe ist mit der Eingabe vergleichbar, da sie ein bestimmtes Hardwareverhalten (z.B. eine blinkende LED), eine Nachricht an andere Module oder sonstige Ausgaben (z.B. einen Druckvorgang über die Konsole) auslösen kann.
 
-Module kommunizieren über das Objekt `message` miteinander. Der **Inhalt** einer `message` ist ein Bytearray, das beliebige von Ihnen gewünschte Daten darstellen kann. In der `message` sind auch **Eigenschaften** vorhanden, die einfach eine Zuordnung von Zeichenfolgen darstellen. **Eigenschaften** können in Headern einer HTTP-Anforderung oder in den Metadaten einer Datei enthalten sein.
+Module kommunizieren über das Objekt `message` miteinander. Der **Inhalt** einer `message` ist ein Bytearray, das beliebige von Ihnen gewünschte Daten darstellen kann. In der `message` sind auch **Eigenschaften** vorhanden, die einfach eine Zuordnung von Zeichenfolgen darstellen. **Eigenschaften** können in Headern einer HTTPS-Anforderung oder in den Metadaten einer Datei enthalten sein.
 
 Um ein Azure IoT Edge-Modul in JS entwickeln zu können, müssen Sie ein neues Modulobjekt erstellen, das die erforderlichen `receive()`-Methoden implementiert. An dieser Stelle können Sie auch festlegen, dass die optionalen Methoden `create()`, `start()` oder `destroy()` implementiert werden soll. Der folgende Codeausschnitt zeigt die Grundstruktur des JS-Modulobjekts.
 

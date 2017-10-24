@@ -12,26 +12,26 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/25/2017
+ms.date: 10/02/2017
 ms.author: alkohli
+ms.openlocfilehash: 916884e3ee95284497cded73b28b22e83751f624
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 51fdaae3359c4e341431477ec5079473c345c32d
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Installieren von Update 5 auf Ihrem StorSimple-Gerät
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Tutorial wird beschrieben, wie Sie Update 5 auf einem StorSimple-Gerät mit einer früheren Softwareversion über das klassische Azure-Portal und mithilfe der Hotfixmethode ausführen. Die Hotfixmethode wird verwendet, wenn ein Gateway auf einer anderen Netzwerkschnittstelle als DATA 0 des StorSimple-Geräts konfiguriert ist und Sie versuchen, das Update von einer Softwareversion durchzuführen, die noch nicht Update 1 enthält.
+In diesem Tutorial wird beschrieben, wie Sie Update 5 auf einem StorSimple-Gerät mit einer früheren Softwareversion über das klassische Azure-Portal und mithilfe der Hotfixmethode ausführen. Der Hotfixmethode wird für die Installation von Update 5 auf einem Gerät verwendet, auf dem Versionen vor Update 3 ausgeführt werden. Die Hotfixmethode wird auch verwendet, wenn ein Gateway an einer anderen Netzwerkschnittstelle als DATA 0 des StorSimple-Geräts konfiguriert ist und Sie versuchen, eine Softwareversion zu aktualisieren, die noch nicht Update 1 enthält.
 
 Update 5 umfasst Updates für Gerätesoftware, Storport und Spaceport sowie Sicherheitsupdates für das Betriebssystem, allgemeine Betriebssystemupdates und Updates für Datenträgerfirmware.  Die Updates für Gerätesoftware, Spaceport, Storport, Sicherheit und andere Betriebssystemupdates sind unterbrechungsfreie Updates. Die unterbrechungsfreien und regulären Updates können über das klassische Azure-Portal oder die Hotfixmethode angewendet werden. Die Updates für die Datenträgerfirmware führen zu einer Betriebsunterbrechung und werden unter Verwendung der Hotfixmethode über die Windows PowerShell-Schnittstelle des Geräts angewendet, wenn sich das Gerät im Wartungsmodus befindet.
 
 > [!IMPORTANT]
 > * Vor der Installation wird ein Satz manueller und automatischer Vorabprüfungen durchgeführt, mit denen die Geräteintegrität in Bezug auf Hardwarestatus und Netzwerkkonnektivität ermittelt wird. Diese Vorabprüfungen werden nur ausgeführt, wenn Sie die Updates aus dem Azure-Portal ausführen.
-> * Wir empfehlen, die Software- und anderen regulären Updates über das klassische Azure-Portal zu installieren. Sie sollten nur dann die Windows PowerShell-Schnittstelle des Geräts (zum Installieren der Updates) verwenden, wenn die Vorabprüfung für das Gateway im Portal fehlschlägt. Abhängig von der Version, von der aus Sie aktualisieren, dauert die Installation des Updates mindestens vier Stunden. Wartungsmodusupdates müssen über die Windows PowerShell-Schnittstelle des Geräts ausgeführt werden. Da Updates im Wartungsmodus den Betrieb unterbrechen, führen sie zu einer Ausfallzeit für Ihr Gerät.
+> * Wenn auf Ihrem Gerät eine Version vor Update 3 ausgeführt wird, wird dringend empfohlen, Update 5 über die Hotfixmethode zu installieren. Wenn Sie Unterstützung beim Aktualisieren seitens des Supports benötigen, [erstellen Sie ein Supportticket](storsimple-8000-contact-microsoft-support.md).
+> * Wenn Update 3 oder höher ausgeführt wird, empfehlen wir, die Software- und anderen regulären Updates über das klassische Azure-Portal zu installieren. Abhängig von der Version, von der aus Sie aktualisieren, dauert die Installation des Updates mindestens vier Stunden. Wartungsmodusupdates müssen über die Windows PowerShell-Schnittstelle des Geräts ausgeführt werden. Da Updates im Wartungsmodus den Betrieb unterbrechen, führen sie zu einer Ausfallzeit für Ihr Gerät.
 > * Vergewissern Sie sich bei Verwendung des optionalen StorSimple Snapshot Managers, dass Sie die Snapshot Manager-Version auf Update 5 aktualisiert haben, bevor Sie das Gerät aktualisieren.
 
 
@@ -63,7 +63,7 @@ Die Softwareversionen, die mithilfe dieser Methode aktualisiert werden können, 
 * Update 4
 
 > [!NOTE]
-> Die empfohlene Methode zum Installieren von Update 5 ist die Installation über das klassische Azure-Portal. Gehen Sie wie folgt vor, falls beim Installieren über das klassische Azure-Portal ein Fehler bei der Gatewayprüfung auftritt. Die Überprüfung ist nicht erfolgreich, wenn Sie ein Gateway einer DATA 0-fremden Netzwerkschnittstelle zugewiesen haben und auf Ihrem Gerät eine Softwareversion vor Update 1 ausgeführt wird.
+> Die empfohlene Methode zum Installieren von Update 5 ist die Installation über das klassische Azure-Portal. Wenn jedoch eine Version vor Update 3 ausgeführt wird, wird dringend empfohlen, Update 5 über die Hotfixmethode zu installieren. Sie sollten dieses Verfahren auch dann verwenden, wenn die Gatewayprüfung bei dem Versuch, die Updates über das klassische Azure-Portal zu installieren, nicht erfolgreich war. Die Überprüfung ist nicht erfolgreich, wenn Sie ein Gateway einer DATA 0-fremden Netzwerkschnittstelle zugewiesen haben und auf Ihrem Gerät eine Softwareversion vor Update 1 ausgeführt wird.
 
 Das Hotfixverfahren umfasst die folgenden drei Schritte:
 
@@ -114,5 +114,4 @@ Führen Sie die folgenden Schritte aus, um diese Datei herunterzuladen und die H
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter [StorSimple 8000 Series Update 5 release notes](storsimple-update5-release-notes.md) (Versionshinweise zu Update 5 für die StorSimple 8000-Serie).
-
 

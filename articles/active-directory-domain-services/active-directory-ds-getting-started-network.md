@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit Azure Active Directory Domain Services | Microsoft-Dokumentation
-description: Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals (Vorschauversion)
+description: Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/26/2017
 ms.author: maheshu
+ms.openlocfilehash: 26fa86d166c54f48621ccbab13d1d17f465b7568
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: dd4a45c4eae6832026bce82670e914f5a02bbff7
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals (Vorschauversion)
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -34,6 +33,11 @@ Die nächste Konfigurationsaufgabe besteht in der Erstellung eines virtuellen Az
 1. Klicken Sie auf **Virtual Network** (Virtuelles Netzwerk), um ein virtuelles Netzwerk auszuwählen.
 2. Auf dem Blatt **Choose virtual network** (Virtuelles Netzwerk auswählen) sehen Sie alle bestehenden virtuellen Netzwerke. Sie können nur die virtuellen Netzwerke sehen, die zu der Ressourcengruppe und dem Azure-Speicherort gehören, die Sie auf der Seite **Grundlagen** des Assistenten ausgewählt haben.
 3. Wählen Sie dann das virtuelle Netzwerk aus, in dem Azure AD Domain Services aktiviert werden sollen. Sie können ein vorhandenes virtuelles Netzwerk auswählen oder ein neues erstellen.
+
+  > [!TIP]
+  > **Nach dem Aktivieren der Azure AD Domain Services können Sie Ihre verwaltete Domäne nicht mehr in ein anderes virtuelles Netzwerk verschieben.** Wählen Sie das rechte virtuelle Netzwerk aus, um Ihre verwaltete Domäne zu aktivieren. Nach der Erstellung einer verwalteten Domäne können Sie sie nicht in ein anderes virtuelles Netzwerk verschieben, ohne die verwaltete Domäne zu löschen. Bevor Sie fortfahren, sollten Sie den Artikel [Netzwerkaspekte für die Azure AD Domain Services](active-directory-ds-networking.md) lesen.  
+  >
+
 4. **Neues virtuelles Netzwerk erstellen:** Klicken Sie auf **Neu erstellen**, um ein neues virtuelles Netzwerk zu erstellen. Es wird dringend empfohlen, ein dediziertes Subnetz für Azure AD Domain Services zu verwenden. Erstellen Sie zum Beispiel ein Subnetz mit dem Namen „DomainServices“, um es für andere Administratoren verständlich zu machen, was innerhalb des Subnetzes bereitgestellt wird. Wenn Sie fertig sind, klicken Sie auf **OK**.
 
     ![Auswählen eines virtuellen Netzwerks](./media/getting-started/domain-services-blade-network-pick-vnet.png)
@@ -49,9 +53,8 @@ Die nächste Konfigurationsaufgabe besteht in der Erstellung eines virtuellen Az
   3. Stellen Sie sicher, dass das von Ihnen ausgewählte Subnetz über einen ausreichend verfügbaren Adressraum von mindestens 3-5 verfügbaren IP-Adressen verfügt.
   >
 
-6. Wenn Sie fertig sind, klicken Sie auf **OK**, um zur Seite **Administrator group** (Administratorgruppe) des Assistenten zu gelangen.
+6. Wenn Sie fertig sind, klicken Sie auf **OK**, um zur Seite **Administratorgruppe** des Assistenten zu gelangen.
 
 
 ## <a name="next-step"></a>Nächster Schritt
 [Task 3: configure administrative group and enable Azure AD Domain Services (Aufgabe 3: Konfigurieren einer administrativen Gruppe und Aktivieren von Azure AD Domain Services)](active-directory-ds-getting-started-admingroup.md)
-

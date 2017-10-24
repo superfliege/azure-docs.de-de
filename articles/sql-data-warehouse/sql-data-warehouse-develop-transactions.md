@@ -16,10 +16,10 @@ ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 ms.openlocfilehash: 29d53e18539f2c24dd64090b2ac6f9dd4c783961
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transactions-in-sql-data-warehouse"></a>Transaktionen in SQL Data Warehouse
 Wie zu erwarten, unterstützt SQL Data Warehouse Transaktionen als Teil der Data Warehouse-Workload. Um allerdings eine angemessene Leistung von SQL Data Warehouse sicherzustellen, wurden einige Features im Vergleich zu SQL Server eingeschränkt. In diesem Artikel werden die Unterschiede hervorgehoben und die anderen Features aufgelistet. 
@@ -35,7 +35,7 @@ Für die Tabelle unten gelten die folgenden Annahmen:
 * Gleichmäßige Verteilung der Daten 
 * Durchschnittliche Zeilenlänge beträgt 250 Byte
 
-| [DWU][DWU] | Obergrenze pro Verteilung (GB) | Anzahl der Verteilungen | Max. Transaktionsgröße (GB) | -Zeilen pro-Verteilung | Max. Zeilenzahl pro Transaktion |
+| [DWU][DWU] | Obergrenze pro Verteilung (GB) | Anzahl der Verteilungen | Max. Transaktionsgröße (GB) | Anzahl der Zeilen pro Verteilung | Max. Zeilenzahl pro Transaktion |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4.000.000 |240.000.000 |
 | DW200 |1,5 |60 |90 |6.000.000 |360.000.000 |

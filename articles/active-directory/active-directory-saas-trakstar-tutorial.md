@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 757429aa187e6536489b6636a0a11d122c7f9378
-ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
-
+ms.openlocfilehash: 19948f1e2e77c78b7ce8aed66a7bdb74ba8640dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>Tutorial: Azure Active Directory-Integration mit Trakstar
 
@@ -39,6 +37,7 @@ Für die Konfiguration der Azure AD-Integration mit Trakstar benötigen Sie Fol
 
 - Ein Azure AD-Abonnement
 - Ein Trakstar-Abonnement, für das einmaliges Anmelden aktiviert ist
+    - SSO ist in Trakstar ein kostenpflichtiges Feature. Um es in Ihrer Organisation zu aktivieren, wenden Sie sich an das [Trakstar Client-Supportteam](mailto:support@trakstar.com).
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -112,12 +111,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-trakstar-tutorial/tutorial_trakstar_url.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://app.trakstar.com/auth/saml/callback?namespace=<NAMESPACE>`.
+    a. Fügen Sie in das Textfeld **Anmelde-URL** den Wert, der in Trakstar in **ACS (Consumer) URL** (Settings > Authentication & SSO) enthalten ist, im folgenden Format ein: `https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<subdomain>.trakstar.com`
+    b. Behalten Sie im Textfeld **Bezeichner** folgenden Standardwert bei: `https://app.trakstar.com`
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an den [Trakstar-Support](mailto:integrations@trakstar.com), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Melden Sie sich bei Trakstar als Administrator an, um diese Werte abzurufen.
+    > Wenn die Registerkarte „Authentication & SSO“ nicht in „Settings“ angezeigt wird, steht Ihnen dieses Feature möglicherweise nicht zur Verfügung.
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
@@ -131,7 +131,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-trakstar-tutorial/tutorial_trakstar_configure.png) 
 
-7. Zum Konfigurieren des einmaligen Anmeldens bei **Trakstar** müssen Sie das heruntergeladene **Zertifikat (Base64)** sowie **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Trakstar-Supportteam](mailto:integrations@trakstar.com) senden. 
+7. Zum Konfigurieren des einmaligen Anmeldens bei **Trakstar** müssen Sie sich als Administrator anmelden und das **Zertifikat (Base64)**, **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** eingeben. 
 
 > [!TIP]
 > Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -170,7 +170,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-a-trakstar-test-user"></a>Erstellen eines Trakstar-Testbenutzers
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Trakstar. Wenden Sie sich an das [Supportteam von Trakstar](mailto:integrations@trakstar.com), um die Benutzer unter dem Trakstar-Konto hinzuzufügen. 
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Trakstar.
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
@@ -228,5 +228,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Trakstar“ klicken, sollten Sie a
 [201]: ./media/active-directory-saas-trakstar-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-trakstar-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-trakstar-tutorial/tutorial_general_203.png
-
 

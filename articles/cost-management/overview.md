@@ -5,19 +5,17 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2017
+ms.date: 09/29/2017
 ms.topic: overview
 ms.service: Cost Management
 manager: carmonm
 ms.custom: mvc
+ms.openlocfilehash: 9edcfa20b25d7048c2066fba86203a29ba1f84fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: d68e11757717ed23e2413c683d6e82c44c719010
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-azure-cost-management"></a>Was ist Azure-Kostenverwaltung?
 
 Azure-Kostenverwaltung von Cloudyn ermöglicht Ihnen das Nachverfolgen der Cloudnutzung und der Ausgaben für Ihre Azure-Ressourcen und andere Cloudanbieter, einschließlich AWS und Google. Leicht verständliche Dashboardberichte unterstützen Sie bei der Kostenzuteilung sowie bei Showbacks und verbrauchsbasierten Kostenzuteilungen. Die Kostenverwaltung unterstützt Sie beim Optimieren der Ausgaben für Ihre Cloud, indem nicht ausgelastete Ressourcen ermittelt werden, die Sie dann verwalten und anpassen können.
@@ -39,11 +37,11 @@ Die Kostenzuteilung verwaltet Kosten, indem Ihre Kosten basierend auf Ihrer Tagr
 
 Die Zugriffssteuerung unterstützt Sie beim Verwalten der Kosten, indem sichergestellt wird, dass Benutzer und Teams nur auf die Daten der Kostenverwaltung zugreifen können, die sie benötigen. Sie verwenden eine Entitätsstruktur, die Benutzerverwaltung und geplante Berichte mit Empfängerlisten, um den Zugriff zuzuweisen.
 
-Warnungen unterstützen Sie beim Verwalten der Kosten, indem Sie automatisch benachrichtigt werden, wenn ungewöhnliche Ausgaben oder eine Budgetüberschreitung auftreten. Durch Warnungen können auch andere Beteiligte automatisch über Anomalien bei den Ausgaben und das Risiko einer Budgetüberschreitung benachrichtigt werden. Verschiedene Berichte unterstützen Warnungen, die auf dem Budget und auf Kostenschwellenwerten basieren.
+Warnungen unterstützen Sie beim Verwalten der Kosten, indem Sie automatisch benachrichtigt werden, wenn ungewöhnliche Ausgaben oder eine Budgetüberschreitung auftreten. Durch Warnungen können auch andere Beteiligte automatisch über Anomalien bei den Ausgaben und das Risiko einer Budgetüberschreitung benachrichtigt werden. Verschiedene Berichte unterstützen Warnungen, die auf dem Budget und auf Kostenschwellenwerten basieren. Für Konten oder Abonnements von CSP-Partnern werden Warnungen jedoch derzeit nicht unterstützt.
 
 ## <a name="improve-efficiency"></a>Verbessern der Effizienz
 
-Mit der Kostenverwaltung können Sie die optimale Nutzung der VMs bestimmen, VMs im Leerlauf identifizieren oder VMs im Leerlauf und nicht angefügte Datenträger entfernen. Mithilfe der Informationen in den Berichten zu Größenempfehlungen und Ineffizienzen können Sie einen Plan erstellen, um die Größe von VMs im Leerlauf zu reduzieren oder diese zu entfernen.
+Mit der Kostenverwaltung können Sie die optimale Nutzung der VMs bestimmen, VMs im Leerlauf identifizieren oder VMs im Leerlauf und nicht angefügte Datenträger entfernen. Mithilfe der Informationen in den Berichten zu Größenempfehlungen und Ineffizienzen können Sie einen Plan erstellen, um die Größe von VMs im Leerlauf zu reduzieren oder diese zu entfernen. Für Konten oder Abonnements von CSP-Partnern werden Optimierungsberichte jedoch derzeit nicht unterstützt.
 
 ![Größenempfehlungen](.\media\overview\sizing.png)
 
@@ -54,4 +52,3 @@ Wenn Sie für AWS reservierte Instanzen bereitgestellt haben, können Sie die Nu
 Da Sie nun mit der Kostenverwaltung vertraut sind, sind die nächsten Schritte das Registrieren Ihrer Cloudumgebung und das Untersuchen Ihrer Daten.
 
 - [Register an individual Azure subscription (Registrieren eines einzelnen Azure-Abonnements)](quick-register-azure-sub.md)
-

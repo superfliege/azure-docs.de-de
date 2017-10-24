@@ -13,21 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/22/2017
+ms.date: 10/05/2017
 ms.author: cynthn
 ms.custom: mvc
+ms.openlocfilehash: e7780a29f6633b444608d96012fabe67b9b6d924
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 63fe3f165864f06228604cac56d06cc061ab25f5
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-use-availability-sets"></a>Verwenden von Verfügbarkeitsgruppen
 
 
-In diesem Tutorial erfahren Sie etwas darüber, wie Sie die Verfügbarkeit und Zuverlässigkeit Ihrer Virtual Machine-Lösungen in Azure mithilfe Verfügbarkeitsgruppen erhöhen. Verfügbarkeitsgruppen sorgen dafür, dass die von Ihnen in Azure bereitgestellten virtuellen Computer auf mehrere isolierte Hardwarecluster verteilt werden. Dadurch wird sichergestellt, dass bei einem Hardware- oder Softwarefehler in Azure nur ein Teil Ihrer virtuellen Computer beeinträchtigt wird und dass die Lösung insgesamt aus Sicht Ihrer Kunden verfügbar und betriebsbereit bleibt.
+In diesem Tutorial erfahren Sie, wie Sie die Verfügbarkeit und Zuverlässigkeit Ihrer Lösungen für virtuelle Computer in Azure mithilfe von sogenannten Verfügbarkeitsgruppen erhöhen. Verfügbarkeitsgruppen sorgen dafür, dass die von Ihnen in Azure bereitgestellten virtuellen Computer auf mehrere isolierte Hardwarecluster verteilt werden. Dadurch wird sichergestellt, dass sich Hardware- oder Softwarefehler in Azure nur auf einen Teil Ihrer VMs auswirken und die Lösung insgesamt verfügbar und betriebsbereit bleibt.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -43,11 +41,11 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="availability-set-overview"></a>Übersicht über Verfügbarkeitsgruppen
 
-Eine Verfügbarkeitsgruppe ist eine Funktion zur logischen Gruppierung, mit der Sie in Azure sicherstellen können, dass die darin enthaltenen VM-Ressourcen voneinander isoliert sind, wenn sie in einem Azure-Rechenzentrum bereitgestellt werden. Azure stellt sicher, dass die virtuellen Computer innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Compute-Racks, Speichereinheiten und Netzwerkswitches verteilt werden. Dadurch wird im Fall eines Hardware- oder Softwarefehlers in Azure nur ein Teil Ihrer virtuellen Computer beeinträchtigt, und die Anwendung insgesamt bleibt betriebsbereit und weiterhin für Ihre Kunden verfügbar. Verfügbarkeitsgruppen sind eine wesentliche Funktion für die Einrichtung zuverlässiger Cloudlösungen.
+Eine Verfügbarkeitsgruppe ist eine Funktion zur logischen Gruppierung, mit der Sie in Azure sicherstellen können, dass die darin enthaltenen VM-Ressourcen voneinander isoliert sind, wenn sie in einem Azure-Rechenzentrum bereitgestellt werden. Azure stellt sicher, dass die virtuellen Computer innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Compute-Racks, Speichereinheiten und Netzwerkswitches verteilt werden. Wenn ein Hardware- oder Softwarefehler in Azure auftritt, wird nur ein Teil Ihrer VMs beeinträchtigt, und die Anwendung insgesamt bleibt betriebsbereit und weiterhin für Ihre Kunden verfügbar. Verfügbarkeitsgruppen stellen eine wichtige Funktion für die Erstellung zuverlässiger Cloudlösungen dar.
 
-In einer typischen VM-basierten Lösung gibt es möglicherweise vier Front-End-Webserver und zwei Back-End-VMs, die eine Datenbank hosten. Sie können in Azure zwei Verfügbarkeitsgruppen definieren, bevor Sie Ihre virtuellen Computer bereitstellen: eine Verfügbarkeitsgruppe für die Ebene „Web“ und eine Verfügbarkeitsgruppe für die Ebene „Datenbank“. Bei der Erstellung eines neuen virtuellen Computers geben Sie dann die Verfügbarkeitsgruppe als Parameter für den Befehl „az vm create“ an, damit Azure automatisch sicherstellen kann, dass die virtuellen Computer, die Sie in der Verfügbarkeitsgruppe erstellen über mehrere physische Hardwareressourcen isoliert werden. Wenn bei der physischen Hardware, auf der Ihre Webserver- oder Datenbankserver-VMs ausgeführt werden, ein Problem auftritt, können Sie sich sicher sein, dass die anderen Instanzen Ihrer Webserver- und Datenbank-VMs weiterhin einwandfrei ausgeführt werden, da sie sich auf anderer Hardware befinden.
+In einer typischen VM-basierten Lösung gibt es möglicherweise vier Front-End-Webserver und zwei Back-End-VMs, die eine Datenbank hosten. Sie können in Azure zwei Verfügbarkeitsgruppen definieren, bevor Sie Ihre virtuellen Computer bereitstellen: eine Verfügbarkeitsgruppe für die Ebene „Web“ und eine Verfügbarkeitsgruppe für die Ebene „Datenbank“. Bei der Erstellung einer neuen VM können Sie dann die Verfügbarkeitsgruppe als Parameter für den Befehl „az vm create“ angeben, damit Azure automatisch sicherstellt, dass die in der Verfügbarkeitsgruppe erstellten VMs über mehrere physische Hardwareressourcen isoliert werden. Wenn bei der physischen Hardware, auf der Ihre Webserver- oder Datenbankserver-VMs ausgeführt werden, ein Problem auftritt, können Sie darauf vertrauen, dass die anderen Instanzen Ihrer Webserver- und Datenbank-VMs weiterhin einwandfrei ausgeführt werden, da sie sich auf anderer Hardware befinden.
 
-Sie sollten immer Verfügbarkeitsgruppen verwenden, wenn Sie zuverlässige VM-basierte Lösungen in Azure bereitstellen möchten.
+Verwenden Sie Verfügbarkeitsgruppen, wenn Sie zuverlässige VM-basierte Lösungen in Azure bereitstellen möchten.
 
 
 ## <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
@@ -69,33 +67,8 @@ az vm availability-set create \
     --platform-update-domain-count 2
 ```
 
-Mithilfe von Verfügbarkeitsgruppen können Sie Ressourcen in „Fehlerdomänen“ und „Updatedomänen“ isolieren. Eine **Fehlerdomäne** stellt eine isolierte Sammlung von Server-, Netzwerk- und Speicherressourcen dar. Im vorherigen Beispiel haben wir angegeben, dass unsere Verfügbarkeitsgruppe auf mindestens zwei Fehlerdomänen verteilt werden soll, wenn unsere VMs bereitgestellt werden. Wir geben auch an, dass wir unsere Verfügbarkeitsgruppe über zwei **Updatedomänen** verteilen möchten.  Zwei Updatedomänen stellen sicher, dass unsere VM-Ressourcen bei Softwareupdates in Azure isoliert sind. Damit wird verhindert, dass die zugrunde liegende Software auf allen VM gleichzeitig aktualisiert wird.
+Mithilfe von Verfügbarkeitsgruppen können Sie Ressourcen in Fehlerdomänen und Updatedomänen isolieren. Eine **Fehlerdomäne** stellt eine isolierte Sammlung von Server-, Netzwerk- und Speicherressourcen dar. Im vorherigen Beispiel haben wir angegeben, dass unsere Verfügbarkeitsgruppe auf mindestens zwei Fehlerdomänen verteilt werden soll, wenn unsere VMs bereitgestellt werden. Wir geben auch an, dass wir unsere Verfügbarkeitsgruppe über zwei **Updatedomänen** verteilen möchten.  Zwei Updatedomänen stellen sicher, dass unsere VM-Ressourcen bei Softwareupdates in Azure isoliert sind. Damit wird verhindert, dass die zugrunde liegende Software auf allen VM gleichzeitig aktualisiert wird.
 
-## <a name="configure-virtual-network"></a>Konfigurieren des virtuellen Netzwerks
-Vor der Bereitstellung mehrerer virtueller Computer und dem Testen des Load Balancers müssen Sie zunächst die unterstützenden virtuellen Netzwerkressourcen erstellen. Weitere Informationen zu virtuellen Netzwerken finden Sie im Tutorial [Verwalten von virtuellen Azure-Netzwerken](tutorial-virtual-network.md).
-
-### <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#create) ein virtuelles Netzwerk. Im folgenden Beispiel werden ein virtuelles Netzwerk mit dem Namen *myVnet* und einem Subnetz mit dem Namen *mySubnet* erstellt:
-
-```azurecli-interactive 
-az network vnet create \
-    --resource-group myResourceGroupAvailability \
-    --name myVnet \
-    --subnet-name mySubnet
-```
-Virtuelle NICs werden mit [az network nic create](/cli/azure/network/nic#create) erstellt. Im folgenden Beispiel werden drei virtuelle NICs erstellt (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen). Sie können jederzeit weitere virtuelle NICs und virtuelle Computer erstellen und dem Load Balancer hinzufügen:
-
-```bash
-for i in `seq 1 3`; do
-    az network nic create \
-        --resource-group myResourceGroupAvailability \
-        --name myNic$i \
-        --vnet-name myVnet \
-        --subnet mySubnet \
-        --lb-name myLoadBalancer \
-        --lb-address-pools myBackEndPool
-done
-```
 
 ## <a name="create-vms-inside-an-availability-set"></a>Erstellen von virtuellen Computern in einer Verfügbarkeitsgruppe
 
@@ -109,7 +82,6 @@ for i in `seq 1 2`; do
      --resource-group myResourceGroupAvailability \
      --name myVM$i \
      --availability-set myAvailabilitySet \
-     --nics myNic$i \
      --size Standard_DS1_v2  \
      --image Canonical:UbuntuServer:14.04.4-LTS:latest \
      --admin-username azureuser \
@@ -118,13 +90,15 @@ for i in `seq 1 2`; do
 done 
 ```
 
-Wir verfügen jetzt über zwei virtuelle Computer in unseren neu erstellten Verfügbarkeitsgruppe. Da sie sich in derselben Verfügbarkeitsgruppe befinden, stellt Azure sicher, dass die virtuellen Computer und alle ihre Ressourcen (einschließlich Datenträger) auf isolierte physische Hardware verteilt werden. Mithilfe dieser Verteilung wird eine deutlich höhere Verfügbarkeit unserer gesamten VM-Lösung sichergestellt.
+Wir verfügen jetzt über zwei virtuelle Computer in unseren neu erstellten Verfügbarkeitsgruppe. Da sie sich in derselben Verfügbarkeitsgruppe befinden, stellt Azure sicher, dass die VMs und alle ihre Ressourcen (einschließlich Datenträger) auf isolierte physische Hardware verteilt werden. Mithilfe dieser Verteilung wird eine deutlich höhere Verfügbarkeit unserer gesamten VM-Lösung sichergestellt.
 
-Sie werden beim Hinzufügen virtueller Computer feststellen, dass eine bestimmte Größe für virtuelle Computer nicht mehr für die Verwendung in der Verfügbarkeitsgruppe verfügbar ist. Dieses Problem kann auftreten, wenn nicht mehr genügend Kapazität für das Hinzufügen vorhanden ist, um die Isolationsregeln die Verfügbarkeitsgruppe weiter einzuhalten. Sie können die verfügbaren VM-Größen innerhalb einer vorhandenen Verfügbarkeitsgruppe mit dem `--availability-set list-sizes`-Parameter überprüfen.
+Im Portal sollten Sie bei der Verfügbarkeitsgruppe unter „Ressourcengruppen“ > „myResourceGroupAvailability“ > „myAvailabilitySet“ sehen können, dass die VMs auf zwei Fehler- und Updatedomänen verteilt sind.
+
+![Verfügbarkeitsgruppe im Portal](./media/tutorial-availability-sets/fd-ud.png)
 
 ## <a name="check-for-available-vm-sizes"></a>Prüfen der verfügbaren VM-Größen 
 
-Sie können der Verfügbarkeitsgruppe später weitere virtuelle Computer hinzufügen. Dazu müssen Sie jedoch wissen, welche VM-Größen in der Hardware verfügbar sind. Verwenden Sie [az vm availability-set list-sizes](/cli/azure/availability-set#list-sizes), um alle verfügbaren Größen im Hardwarecluster für die Verfügbarkeitsgruppe aufzulisten.
+Sie können der Verfügbarkeitsgruppe später weitere virtuelle Computer hinzufügen. Dazu müssen Sie jedoch wissen, welche VM-Größen in der Hardware verfügbar sind.  Verwenden Sie [az vm availability-set list-sizes](/cli/azure/availability-set#list-sizes), um alle verfügbaren Größen im Hardwarecluster für die Verfügbarkeitsgruppe aufzulisten.
 
 ```azurecli-interactive 
 az vm availability-set list-sizes \
@@ -146,5 +120,4 @@ Im nächsten Tutorial erhalten Sie Informationen zu VM-Skalierungsgruppen.
 
 > [!div class="nextstepaction"]
 > [Erstellen einer VM-Skalierungsgruppe](tutorial-create-vmss.md)
-
 

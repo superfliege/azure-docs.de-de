@@ -5,13 +5,12 @@ ms.service: key-vault
 author: BrucePerlerMS
 ms.author: bruceper
 manager: mbaldwin
-ms.date: 07/10/2017
+ms.date: 09/25/2017
+ms.openlocfilehash: 384b65bc89401780b174c143d84b3b8f552fba3d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: c873b153ef9c7d5f55672a5918c9dc4fb7256701
-ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen
 
@@ -22,7 +21,9 @@ Die Key Vault-Funktion für vorläufiges Löschen ermöglicht die Wiederherstell
 
 ## <a name="supporting-interfaces"></a>Unterstützende Schnittstellen
 
-Die Funktion für vorläufiges Löschen ist zunächst über die REST-, .NET-/C#- und PowerShell-Schnittstellen verfügbar. Ausführliche Informationen zu diesen Schnittstellen finden Sie in der [Referenz für Key Vault](https://docs.microsoft.com/azure/key-vault/).
+Die Funktion für vorläufiges Löschen ist zunächst über die REST-, .NET-/C#-, PowerShell- und CLI-Schnittstelle verfügbar.
+
+Allgemeine Informationen zu diesen Schnittstellen finden Sie in der [Referenz für Key Vault](https://docs.microsoft.com/azure/key-vault/).
 
 ## <a name="scenarios"></a>Szenarien
 
@@ -36,7 +37,7 @@ Azure-Schlüsseltresore sind nachverfolgte Ressourcen, die von Azure Resource Ma
 
 Bei diesem Feature ist der DELETE-Vorgang für einen Schlüsseltresor oder ein Key Vault-Objekt eine vorläufige Löschung, bei der die Ressourcen während einer bestimmten Aufbewahrungsdauer effektiv gespeichert werden, das Objekt aber scheinbar gelöscht wird. Der Dienst bietet darüber hinaus einen Mechanismus zur Wiederherstellung des gelöschten Objekts, bei dem der Löschvorgang im Wesentlichen rückgängig gemacht wird. 
 
-Vorläufiges Löschen ist ein optionales Key Vault-Verhalten und in dieser Version **nicht standardmäßig aktiviert**. Ausführliche Informationen zum Aktivieren des vorläufigen Löschens finden Sie in den speziellen Anweisungen in der Referenz für die Schnittstelle Ihrer Wahl in der [Referenz für Key Vault](https://docs.microsoft.com/azure/key-vault/).
+Vorläufiges Löschen ist ein optionales Key Vault-Verhalten und in dieser Version **nicht standardmäßig aktiviert**. 
 
 ### <a name="key-vault-recovery"></a>Wiederherstellung eines Schlüsseltresors
 
@@ -67,6 +68,10 @@ Das endgültige Löschen eines Schlüsseltresors kann über einen POST-Vorgang f
 
 Eine Ausnahme davon besteht, wenn das Azure-Abonnement als *nicht löschbar* markiert wurde. In diesem Fall kann der eigentliche Löschvorgang nur vom Dienst ausgeführt werden, und dies erfolgt als geplanter Prozess. 
 
+## <a name="next-steps"></a>Nächste Schritte
 
+Die folgenden zwei Handbücher stellen die primären Verwendungsszenarien für vorläufiges Löschen vor.
 
+- [Verwenden des vorläufigen Löschens in Key Vault mit PowerShell](key-vault-soft-delete-powershell.md) 
+- [Verwenden des vorläufigen Löschens in Key Vault mit der CLI](key-vault-soft-delete-cli.md)
 

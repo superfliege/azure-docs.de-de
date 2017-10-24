@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 07/11/2017
 ms.author: kdotchko
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 886bf3ce3979b7ef52ca29b7731562c5768596a2
-ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: 2dc0dcfd004a453df2c0ce64d0d92c6f533a54f6
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -62,7 +61,7 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
 * Verwenden Sie `{iothubhostname}/{device_id}/api-version=2016-11-14` für das Feld **Benutzername**, wobei {iothubhostname} der vollständige CNAME für den IoT Hub ist.
 
     Beispiel: Wenn der Name für den IoT Hub **contoso.azure devices.net** und der Name des Geräts **MyDevice01** lautet, sollte das vollständige Feld **Benutzername** den Namen `contoso.azure-devices.net/MyDevice01/api-version=2016-11-14` enthalten.
-* Verwenden Sie im Feld **Kennwort** ein SAS-Token. Das Format des SAS-Tokens ist das gleiche wie für die Protokolle HTTP und AMQP: <br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`.
+* Verwenden Sie im Feld **Kennwort** ein SAS-Token. Das Format des SAS-Tokens ist das gleiche wie das für die Protokolle HTTPS und AMQP:<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`.
 
     Weitere Informationen zum Generieren von SAS-Token finden Sie unter [Verwenden von IoT Hub-Sicherheitstoken][lnk-sas-tokens] im Abschnitt zu Geräten.
 
@@ -88,7 +87,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 ```
 
 > [!NOTE]
-> Dieses `{property_bag}`-Element verwendet die gleiche Codierung wie bei Abfragezeichenfolgen im HTTP-Protokoll.
+> Dieses `{property_bag}`-Element verwendet die gleiche Codierung wie bei Abfragezeichenfolgen im HTTPS-Protokoll.
 >
 >
 
@@ -221,7 +220,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-mqtt-org]: http://mqtt.org/
 [lnk-mqtt-docs]: http://mqtt.org/documentation
 [lnk-sample-node]: https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js
-[lnk-sample-java]: https://github.com/Azure/azure-iot-sdk-java/tree/master/device/samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/iothub/SendReceive.java
+[lnk-sample-java]: https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java
 [lnk-sample-c]: https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt
 [lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device/samples
 [lnk-sample-python]: https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples
@@ -242,4 +241,3 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-twin-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
 [lnk-devguide-twin]: iot-hub-devguide-device-twins.md
-

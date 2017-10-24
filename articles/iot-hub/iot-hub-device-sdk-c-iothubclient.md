@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: obloch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 2f1689a2f59b779c83b6be746edda915fd67a3db
-ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
-
+ms.openlocfilehash: 6e015d391067271cf71eb865af1b469135c8fcaa
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Azure IoT-Geräte-SDK für C – weitere Informationen zu IoTHubClient
 Im [ersten Artikel](iot-hub-device-sdk-c-intro.md) dieser Serie wurde das **Azure IoT-Geräte-SDK für C** vorgestellt. Wie in diesem Artikel beschrieben wurde, gibt es zwei Architekturebenen im SDK. Basis ist die **IoTHubClient** -Bibliothek, die die direkte Kommunikation mit IoT Hub verwaltet. Zudem gibt es die Bibliothek des **Serialisierungsprogramms** , die darauf aufbaut, um Serialisierungsdienste bereitzustellen. In diesem Artikel stellen wir weitere Details zur **IoTHubClient** -Bibliothek zur Verfügung.
@@ -260,10 +259,10 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 Es gibt eine Reihe von Optionen, die häufig verwendet werden:
 
-* **SetBatching** (boolesch): Bei **true** werden an den IoT Hub gesendete Daten in Batches gesendet. Bei **false**werden Nachrichten einzeln gesendet. Die Standardeinstellung ist **false**. Beachten Sie, dass die Option **SetBatching** nur für das HTTP-Protokoll und nicht für die Protokolle AMQP und MQTT gilt.
-* **Timeout** (ganze Zahl ohne Vorzeichen): Dieser Wert wird in Millisekunden dargestellt. Wenn das Senden einer HTTP-Anforderung oder der Empfang einer Antwort länger dauert, kommt es zu einem Timeout der Verbindung.
+* **SetBatching** (boolesch): Bei **true** werden an den IoT Hub gesendete Daten in Batches gesendet. Bei **false**werden Nachrichten einzeln gesendet. Die Standardeinstellung ist **false**. Beachten Sie, dass die Option **SetBatching** nur für das HTTPS-Protokoll und nicht für die Protokolle AMQP und MQTT gilt.
+* **Timeout** (ganze Zahl ohne Vorzeichen): Dieser Wert wird in Millisekunden dargestellt. Wenn das Senden einer HTTPS-Anforderung oder der Empfang einer Antwort länger dauert, kommt es zu einem Timeout der Verbindung.
 
-Die Batchverarbeitung ist eine wichtige Option. Standardmäßig übergibt die Bibliothek Eingangsereignisse einzeln (alles, was Sie an **IoTHubClient\_LL\_SendEventAsync** übergeben, ist ein einzelnes Ereignis). Aber wenn die Batchverarbeitungsoption auf **true**festgelegt ist, erfasst die Bibliothek so viele Ereignisse wie möglich aus dem Puffer (bis zur maximalen Nachrichtengröße, die der IoT Hub akzeptiert).  Der Ereignisbatch wird in einem einzigen HTTP-Aufruf an IoT Hub gesendet (die einzelnen Ereignisse werden in einem JSON-Array zusammengefasst). Mit der Batchverarbeitung erzielen Sie in der Regel große Leistungsgewinne, da Sie die Netzwerkroundtrips reduzieren. Zugleich wird die Bandbreite deutlich reduziert, da Sie einen Satz von HTTP-Headern mit einem Ereignisbatch senden, anstatt einen Satz von Headern für jedes einzelne Ereignis zu senden. In der Regel sollten Sie die Batchverarbeitung einsetzen, sofern kein bestimmter Grund dagegen spricht.
+Die Batchverarbeitung ist eine wichtige Option. Standardmäßig übergibt die Bibliothek Eingangsereignisse einzeln (alles, was Sie an **IoTHubClient\_LL\_SendEventAsync** übergeben, ist ein einzelnes Ereignis). Aber wenn die Batchverarbeitungsoption auf **true**festgelegt ist, erfasst die Bibliothek so viele Ereignisse wie möglich aus dem Puffer (bis zur maximalen Nachrichtengröße, die der IoT Hub akzeptiert).  Der Ereignisbatch wird in einem einzigen HTTPS-Aufruf an IoT Hub gesendet (die einzelnen Ereignisse werden in einem JSON-Array zusammengefasst). Mit der Batchverarbeitung erzielen Sie in der Regel große Leistungsgewinne, da Sie die Netzwerkroundtrips reduzieren. Zugleich wird die Bandbreite deutlich reduziert, da Sie eine Gruppe von HTTPS-Headern mit einem Ereignisbatch senden, anstatt eine Gruppe von Headern für jedes einzelne Ereignis zu senden. In der Regel sollten Sie die Batchverarbeitung einsetzen, sofern kein bestimmter Grund dagegen spricht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wird das Verhalten der **IoTHubClient**-Bibliothek im **Azure IoT-Geräte-SDK für C** ausführlich beschrieben. Diese Informationen sollten Ihnen eine umfassende Übersicht über die Funktionen der **IoTHubClient**-Bibliothek bieten. Im [nächsten Artikel](iot-hub-device-sdk-c-serializer.md) stellen wir ähnliche Details zur Bibliothek des **Serialisierungsprogramms** vor.
@@ -277,4 +276,3 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
 [lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
-

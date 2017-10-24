@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 10/03/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 7fc832ff23f5ad652df3cb9c689180c92952ba8e
-ms.contentlocale: de-de
-ms.lasthandoff: 04/26/2017
-
+ms.openlocfilehash: acfd26674aafab4ed1925d6b33967f917058b1be
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-application-upgrades"></a>Problembehandlung bei Anwendungsupgrades
 In diesem Artikel werden einige bekannte Probleme beim Upgrade einer Azure Service Fabric-Anwendung und ihre Behebung behandelt.
@@ -86,6 +85,8 @@ Mit dem Befehl **Get-ServiceFabricNode** kann überprüft werden, ob sich diese 
 *PreUpgradeSafetyCheck* als *UpgradePhase* bedeutet, dass vor der Durchführung des Upgrades Probleme bei der Vorbereitung der Upgradedomäne aufgetreten sind. In diesem Fall sind die häufigsten Probleme Fehler im Hintergrund oder bei der Herabstufung von primären Codepfaden.
 
 Der aktuelle **UpgradeState** ist *RollingBackCompleted*, d.h., das ursprüngliche Upgrade muss mit einer Rollback-**FailureAction** durchgeführt worden sein, sodass nach dem Fehler automatisch ein Rollback des Upgrades ausgeführt wurde. Wenn das ursprüngliche Upgrade mit einer manuellen **FailureAction** durchgeführt worden wäre, befände sich das Upgrade stattdessen in einem angehaltenen Zustand, um das Livedebuggen der Anwendung zuzulassen.
+
+In seltenen Fällen kann das Feld **UpgradeDomainProgressAtFailure** leer sein, wenn das gesamte Upgrade gerade in dem Moment ein Zeitlimit erreicht, in dem das System alle Aufgaben für die aktuelle Upgradedomäne erledigt hat. Versuchen Sie in diesem Fall, die Werte der Upgradeparameter **UpgradeTimeout** und **UpgradeDomainTimeout** zu erhöhen und dann das Upgrade zu wiederholen.
 
 ### <a name="investigate-health-check-failures"></a>Untersuchen von Fehlern bei der Integritätsprüfung
 Fehler bei der Integritätsprüfung können durch eine Vielzahl von Problemen ausgelöst werden, die auftreten können, nachdem alle Knoten in einer Upgradedomäne aktualisiert und alle Sicherheitsprüfungen erfolgreich durchgeführt wurden. Die Ausgabe im Anschluss an diesen Absatz ist typisch für einen Upgradefehler aufgrund fehlerhafter Integritätsprüfungen. Im Feld **UnhealthyEvaluations** wird entsprechend der angegebenen [Integritätsrichtlinie](service-fabric-health-introduction.md)eine Momentaufnahme aller fehlgeschlagenen Integritätsprüfungen zum Zeitpunkt des Upgradefehlers erfasst.
@@ -222,4 +223,3 @@ Steuern Sie die Upgrades von Anwendungen mithilfe von [Upgradeparametern](servic
 Machen Sie Ihre Anwendungsupgrades kompatibel, indem Sie sich mit der [Datenserialisierung](service-fabric-application-upgrade-data-serialization.md)vertraut machen.
 
 Informieren Sie sich in [weiterführenden Themen](service-fabric-application-upgrade-advanced.md)darüber, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen.
-

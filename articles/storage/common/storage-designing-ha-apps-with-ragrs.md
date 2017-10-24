@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 9/06/2017
 ms.author: tamram
+ms.openlocfilehash: 4100e8b90e37d6f4ab5123dfd682452c21c77998
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 57f458770ea5d57b4c155adf4fa793867f392c3b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS
 
@@ -38,7 +37,7 @@ Der Artikel enthält Codeausschnitte sowie am Ende einen Link zu einem vollstän
 
 ## <a name="key-features-of-ra-grs"></a>Wichtige Features von RA-GRS
 
-Berücksichtigen Sie diese wichtigen Punkte beim Entwerfen Ihrer Anwendung für RA-GRS:
+Berücksichtigen Sie beim Entwerfen Ihrer Anwendung für RA-GRS folgende wichtige Punkte:
 
 * Azure Storage verwaltet eine schreibgeschützte Kopie der Daten, die Sie in Ihrer primären Region speichern, in einer sekundären Region. Wie oben bereits erwähnt, bestimmt der Speicherdienst den Speicherort der sekundären Region.
 
@@ -244,4 +243,3 @@ Wenn Sie die Schwellenwerte für den Wechsel Ihrer Anwendung in den schreibgesch
 * Weitere Informationen zu georedundantem Lesezugriff, einschließlich eines weiteren Beispiels zum Festlegen von LastSyncTime, finden Sie unter [Windows Azure Storage Redundancy Options and Read Access Geo Redundant Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) (Windows Azure Storage-Redundanzoptionen und georedundanter Speicher mit Lesezugriff).
 
 * Ein vollständiges Beispiel zur Erläuterung des Wechsels zwischen den primären und sekundären Endpunkten finden Sie unter [Azure Samples – Using the Circuit Breaker Pattern with RA-GRS storage](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs) (Beispiele für Azure – Verwenden des Trennschalter-Musters mit RA-GRS-Speicher).
-

@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: bwren
+ms.openlocfilehash: 5b4b31b58c7a4bcb93277333502bc082da2062ed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: b0c45ff8c1d4c9d35fbb3c8839b38a20df277055
-ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="send-data-to-log-analytics-with-the-http-data-collector-api"></a>Senden von Daten an Log Analytics mit der HTTP-Datensammler-API
+# <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Senden von Daten an Log Analytics mit der HTTP-Datensammler-API (Public Preview)
 In diesem Artikel wird gezeigt, wie Sie die HTTP-Datensammler-API verwenden, um Daten von einem REST-API-Client an Log Analytics zu senden.  Es wird beschrieben, wie die von Ihrem Skript oder Ihrer Anwendung gesammelten Daten formatiert und in eine Anforderung eingefügt werden müssen, um diese dann von Log Analytics autorisieren zu lassen.  Die Beispiele werden für PowerShell, C# und Python angegeben.
+
+> [!NOTE]
+> Die HTTP-Datensammler-API von Log Analytics befindet sich in der Phase „Public Preview“.
 
 ## <a name="concepts"></a>Konzepte
 Sie können die HTTP-Datensammler-API verwenden, um Daten von einem Client, der die REST-API aufrufen kann, an Log Analytics zu senden.  Dabei kann es sich um ein Runbook in Azure Automation handeln, das Verwaltungsdaten aus Azure oder einer anderen Cloud sammelt, oder ein anderes Verwaltungssystem, das Log Analytics zum Konsolidieren und Analysieren von Daten verwendet.
@@ -325,7 +327,8 @@ namespace OIAPIExample
         {
             // Create a hash for the API signature
             var datestring = DateTime.UtcNow.ToString("r");
-            string stringToHash = "POST\n" + json.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
+            var jsonBytes = Encoding.UTF8.GetBytes(message);
+            string stringToHash = "POST\n" + jsonBytes.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
             string signature = "SharedKey " + customerId + ":" + hashedString;
 
@@ -462,4 +465,3 @@ post_data(customer_id, shared_key, body, log_type)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Verwenden Sie zum Abrufen von Daten aus dem Log Analytics-Repository die [Protokollsuch-API](log-analytics-log-search-api.md).
-

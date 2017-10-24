@@ -13,15 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 09/20/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 3fc0d34fdb617ebb1af9c9f33e018d5fe6ec9a7d
-ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
-
-
+ms.openlocfilehash: 7b435b6904b05228a63e3ed3a9fed78747b843c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit Konnektivität und Netzwerken in Microsoft Azure Cloud Services – Häufig gestellte Fragen (FAQs)
 
@@ -61,3 +59,50 @@ Weitere Informationen zur Funktionsweise von internen Lastenausgleichen finden S
 
 Standardmäßig wird ein 5-Tupel-Hash-Verteilungsalgorithmus (Quell-IP, Quellport, IP-Zieladresse, Zielport, Protokolltyp) zum Zuordnen des Datenverkehrs an verfügbare Server verwendet. Dabei wird Bindung nur in einer Transportsitzung angeboten. Pakete in derselben TCP- oder UDP-Sitzung werden an die gleiche Instanz der Rechenzentrums-IP (DIP) hinter dem Lastenausgleichs-Endpunkt geleitet. Wenn der Client die Verbindung schließt und erneut öffnet oder eine neue Sitzung über die gleiche Quell-IP startet, wird der Quellport geändert, sodass der Datenverkehr an einen anderen DIP-Endpunkt geleitet wird.
 
+## <a name="how-can-i-redirect-the-incoming-traffic-to-my-default-url-of-cloud-service-to-a-custom-url"></a>Wie kann ich den bei meiner Standard-URL des Clouddiensts eingehenden Datenverkehr zu einer benutzerdefinierten URL umleiten? 
+
+Das URL-Rewrite-Modul von IIS könnte zum Umleiten von Datenverkehr, der bei der Standard-URL für den Clouddienst (z.B. \*. cloudapp.net) eingeht, zu einem benutzerdefinierten DNS-Namen/einer benutzerdefinierten URL verwendet werden. Da das URL-Rewrite-Modul standardmäßig auf Webrollen aktiviert ist und seine Regeln in der „web.config“ der Anwendung konfiguriert sind, würde es auf dem virtuellen Computer unabhängig von Neustarts/Duchführungen von Reimages immer verfügbar sein. Weitere Informationen finden Sie unter:
+
+- [Creating Rewrite Rules for the URL Rewrite Module](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module) (Erstellen von Neuschreibungsregeln für das URL-Rewrite-Modul)
+- [Vorgehensweise beim Entfernen des Standardlinks](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
+
+## <a name="how-can-i-blockdisable-the-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Wie kann ich den bei der Standard-URL des Clouddiensts eingehenden Datenverkehr blockieren/deaktivieren? 
+
+Sie können verhindern, dass Datenverkehr bei der Standard-URL/dem Standardnamen des Clouddiensts (z.B. \*.cloudapp.net) eingeht, indem Sie unter der Website-Bindungskonfiguration in der Clouddienst-Definitionsdatei (*.csdef) wie nachfolgend beschrieben für den Hostheader einen benutzerdefinierten DNS-Namen (z.B. „www.MyCloudService.com“) festlegen: 
+ 
+
+    <?xml version="1.0" encoding="utf-8"?> 
+    <ServiceDefinition name="AzureCloudServicesDemo" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6"> 
+      <WebRole name="MyWebRole" vmsize="Small"> 
+        <Sites> 
+          <Site name="Web"> 
+            <Bindings> 
+              <Binding name="Endpoint1" endpointName="Endpoint1" hostHeader="www.MyCloudService.com" /> 
+            </Bindings> 
+          </Site> 
+        </Sites> 
+        <Endpoints> 
+          <InputEndpoint name="Endpoint1" protocol="http" port="80" /> 
+        </Endpoints> 
+        <ConfigurationSettings> 
+          <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" /> 
+        </ConfigurationSettings> 
+      </WebRole> 
+    </ServiceDefinition> 
+ 
+Wenn diese Hostheaderbindung über die CSDEF-Datei erzwungen wird, ist der Zugriff auf den Dienst nur über den benutzerdefinierten Namen „www.MyCloudService.com“ möglich, während alle eingehenden Anforderungen für die „*.cloudapp.net“-Domäne fehlschlagen. Wenn Sie jedoch einen benutzerdefinierten SLB-Test oder einen internen Lastenausgleich im Dienst verwenden, kann ein Konflikt zwischen dem Blockieren der Standard-URL/des Standardnamens des Diensts und dem Testverhalten auftreten. 
+
+## <a name="how-to-make-sure-the-public-facing-ip-address-of-a-cloud-service-aka-vip-never-changes-so-that-it-could-be-customarily-whitelisted-by-few-specific-clients"></a>Wie lässt sich sicherstellen, dass die öffentlich zugängliche IP-Adresse eines Clouddiensts (auch VIP genannt) sich nie ändert, sodass sie üblicherweise in der Zulassungsliste einiger bestimmter Clients enthalten sein kann?
+
+Damit die IP-Adresse Ihrer Clouddienste in Zulassungslisten enthalten ist, sollten Sie ihnen eine reservierte IP-Adresse zuordnen, da andernfalls die von Azure bereitgestellte virtuelle IP-Adresse aus dem Abonnement freigegeben wird, wenn Sie die Bereitstellung löschen. Beachten Sie, dass Sie für einen erfolgreichen VIP-Austausch für Produktions- und Stagingslots einzelne reservierte IP-Adressen benötigen, da andernfalls beim Austausch ein Fehler auftritt. Wie Sie eine IP-Adresse reservieren und Ihren Clouddiensten zuordnen, erfahren Sie in diesen Artikeln:  
+ 
+- [Reservieren der IP-Adresse eines vorhandenen Clouddiensts](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
+- [Zuordnen einer reservierten IP zu einem Clouddienst mit einer Dienstkonfigurationsdatei](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file) 
+
+Solange Sie über mehrere Instanzen für Ihre Rollen verfügen, dürfte die RIP-Zuordnung zu Ihrem Clouddienst keine Ausfallzeit verursachen. Alternativ können Sie den IP-Adressbereich Ihres Azure-Rechenzentrums auf die Zulassungsliste setzen. Alle Azure-IP-Adressbereiche finden Sie [hier](https://www.microsoft.com/en-us/download/details.aspx?id=41653). 
+
+Diese Datei enthält die IP-Adressbereiche (einschließlich Compute-, SQL- und Speicherbereiche), die in Microsoft Azure-Rechenzentren verwendet werden. Eine aktualisierte Datei mit den derzeit bereitgestellten Bereichen und alle anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Rechenzentren verwendet. Laden Sie die neue XML-Datei jede Woche herunter, und nehmen Sie die erforderlichen Änderungen an Ihrer Website vor, um in Azure ausgeführte Dienste ordnungsgemäß zu ermitteln. Diese Datei zum Aktualisieren der BGP-Ankündigung von Azure-Bereichen wird ExpressRoute-Benutzern jeweils in der ersten Woche des Monats angezeigt. 
+
+## <a name="how-can-i-use-azure-resource-manager-vnets-with-cloud-services"></a>Wie kann ich Azure Resource Manager-VNets mit Clouddiensten verwenden? 
+
+Clouddienste können nicht in Azure Resource Manager-VNets platziert werden, aber Azure Resource Manager-VNets und klassische VNets können mittels Peering verbunden werden. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md).

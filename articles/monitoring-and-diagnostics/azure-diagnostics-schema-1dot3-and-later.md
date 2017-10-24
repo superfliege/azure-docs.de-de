@@ -14,13 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 90d39f75f547eff9c87997eb83460875c12dcfe4
-ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
-
+ms.openlocfilehash: 2ee66e0f41868d7d5411605596a22c00b5712896
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Konfigurationsschema für Azure-Diagnose 1.3 und höher
 > [!NOTE]
@@ -526,7 +524,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Ermöglicht Ihnen das Generieren einer Leistungsindikatortabelle, die für schnelle Abfragen optimiert ist. Jeder Leistungsindikator, der im **PerformanceCounters**-Element definiert ist, wird in der Metriktabelle zusätzlich zur Leistungsindikatortabelle gespeichert.  
 
- Das **resourceId**-Attribut muss angegeben werden.  Die Ressourcen-ID des virtuellen Computers, auf dem Sie die Azure-Diagnose bereitstellen. Rufen Sie **resourceID** im [Azure-Portal](https://portal.azure.com) ab. Wählen Sie **Durchsuchen** -> **Ressourcengruppen** -> **<Name\>** aus. Klicken Sie auf die Kachel **Eigenschaften**, und kopieren Sie den Wert aus dem Feld **ID**.  
+ Das **resourceId**-Attribut muss angegeben werden.  Die Ressourcen-ID des virtuellen Computers oder der VM-Skalierungsgruppe, auf dem bzw. in der Sie die Azure-Diagnose bereitstellen. Rufen Sie **resourceID** im [Azure-Portal](https://portal.azure.com) ab. Wählen Sie **Durchsuchen** -> **Ressourcengruppen** -> **<Name\>** aus. Klicken Sie auf die Kachel **Eigenschaften**, und kopieren Sie den Wert aus dem Feld **ID**.  
 
 |Untergeordnete Elemente|Beschreibung|  
 |--------------------|-----------------|  
@@ -647,11 +645,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Untergeordnete Elemente|Beschreibung|  
 |--------------------|-----------------|  
-|**StorageAccount**|Das zu verwendende Speicherkonto. Die folgenden Attribute sind erforderlich:<br /><br /> - **name**: Der Name des Speicherkontos<br /><br /> - **key**: Der Schlüssel des Speicherkontos<br /><br /> - **endpoint**: Der Endpunkt für den Zugriff auf das Speicherkonto <br /><br /> -**sasToken** (in 1.8.1) – Sie können in der privaten Konfiguration ein SAS-Token anstelle eines Speicherkontoschlüssels angeben. Wenn er angegeben wird, wird der Speicherkontoschlüssel ignoriert. <br />Anforderungen für das SAS-Token: <br />– Es werden nur SAS-Kontotoken unterstützt <br />Die Diensttypen - *b*, *t* sind erforderlich. <br />Die Berechtigungen  - *a*, *c*, *u*, *w* sind erforderlich. <br />Die Ressourcentypen  - *c*, *o* sind erforderlich. <br /> – Unterstützt nur das HTTPS-Protokoll <br /> – Start und Ablaufzeit müssen gültig sein.|  
+|**StorageAccount**|Das zu verwendende Speicherkonto. Die folgenden Attribute sind erforderlich:<br /><br /> - **name**: Der Name des Speicherkontos<br /><br /> - **key**: Der Schlüssel des Speicherkontos<br /><br /> - **endpoint**: Der Endpunkt für den Zugriff auf das Speicherkonto <br /><br /> -**sasToken** (in 1.8.1) – Sie können in der privaten Konfiguration ein SAS-Token anstelle eines Speicherkontoschlüssels angeben. Wenn er angegeben wird, wird der Speicherkontoschlüssel ignoriert. <br />Anforderungen für das SAS-Token: <br />– Es werden nur SAS-Kontotoken unterstützt <br />Die Diensttypen - *b*, *t* sind erforderlich. <br /> Die Berechtigungen - *a*, *c*, *u*, *w* sind erforderlich. <br /> Die Ressourcentypen - *c*, *o* sind erforderlich. <br /> – Unterstützt nur das HTTPS-Protokoll <br /> – Start und Ablaufzeit müssen gültig sein.|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled-Element  
  *Tree: Root – DiagnosticsConfiguration – IsEnabled*
 
  Boolescher Wert. Verwenden Sie `true`, um die Diagnose zu aktivieren, oder `false`, um die Diagnose zu deaktivieren.
-
