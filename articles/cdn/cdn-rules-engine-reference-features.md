@@ -14,13 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
-ms.openlocfilehash: 6703247aa8b4a6d53ff22ea2d4f22eb4a746e370
-
-
+ms.openlocfilehash: ec2555df27f4b709d06b660bf161f741e5b86ea6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cdn-rules-engine-features"></a>Features des Azure CDN-Regelmoduls
 Dieses Thema bietet ausführliche Beschreibungen der verfügbaren Features für das Azure CDN-[Regelmodul](cdn-rules-engine.md) (Content Delivery Network).
 
@@ -131,8 +130,7 @@ Wichtige Informationen:
 
 - Die Option „Value“ definiert den Namen des Abfragezeichenfolgenparameters, über den ein Token angegeben werden kann.
 - Die Option „Value“ kann nicht auf „ec_token“ festgelegt werden.
-- Stellen Sie sicher, dass der in der Option „Value“ definierte Name nur 
-- gültige URL-Zeichen enthält.
+- Vergewissern Sie sich, dass der in der Option „Value“ definierte Name nur gültige URL-Zeichen enthält.
 
 Wert|Ergebnis
 ----|----
@@ -147,7 +145,7 @@ Diese Features dienen zum Anpassen des Zeitpunkts und der Art der Zwischenspeich
 
 Name | Zweck
 -----|--------
-Bandwidth Parameters | Bestimmt, ob Parameter zur Bandbreitenbeschränkung (z. B. „ec_rate“ und „ec_prebuf“) aktiv sein werden.
+Bandwidth Parameters | Bestimmt, ob Parameter zur Bandbreitenbeschränkung (beispielsweise „ec_rate“ und „ec_prebuf“) aktiv sein werden.
 Bandwidth Throttling | Schränkt die Bandbreite für die Antwort ein, die von unseren Edgeservern bereitgestellt wird.
 Bypass Cache | Bestimmt, ob die Anforderung unsere Cachetechnologie nutzen kann.
 Cache-Control Header Treatment | Steuert die Generierung von „Cache-Control“-Headern durch den Edgeserver, wenn das Feature „External Max-Age“ aktiv ist.
@@ -173,14 +171,14 @@ Stale While Revalidate | Verbessert die Leistung, indem unseren Edgeservern erla
 Comment | Dieses Feature erlaubt das Hinzufügen eines Hinweises in einer Regel.
 
 ###<a name="bandwidth-parameters"></a>Bandwidth Parameters
-**Zweck:** Legt fest, ob Parameter zur Bandbreitendrosselung (z.B. „ec_rate“ und „ec_prebuf“) aktiv sind.
+**Zweck:** Bestimmt, ob Parameter zur Bandbreitenbeschränkung (beispielsweise „ec_rate“ und „ec_prebuf“) aktiv sein werden.
 
 Parameter zur Bandbreitendrosselung legen fest, ob die Datenübertragungsrate für eine Clientanforderung auf eine benutzerdefinierte Rate beschränkt wird.
 
 Wert|Ergebnis
 --|--
 Aktiviert|Hiermit wird den Edgeservern erlaubt, die Anforderungen der Bandbreitendrosselung zu berücksichtigen.
-Deaktiviert|Veranlasst die Edgeserver dazu, Parameter zur Bandbreitendrosselung zu ignorieren. Der angeforderte Inhalt wird normal (d.h. ohne Drosselung der Bandbreite) verarbeitet.
+Deaktiviert|Veranlasst die Edgeserver dazu, Parameter zur Bandbreitendrosselung zu ignorieren. Der angeforderte Inhalt wird normal (also ohne Drosselung der Bandbreite) verarbeitet.
 
 **Standardverhalten:** Aktiviert.
 
@@ -247,9 +245,9 @@ Wenn Sie das Zwischenspeicherungsverhalten für Abfragezeichenfolgen duplizieren
 
 #### <a name="sample-scenarios"></a>Beispielszenarien
 
-Eine Beispielsyntax für dieses Feature wird unten gezeigt. Eine Beispielanforderung und der Standardcacheschlüssel werden unten gezeigt.
+Das folgende Verwendungsbeispiel für dieses Feature umfasst eine Beispielanforderung und den Standardcacheschlüssel:
 
-- **Beispielanforderung:** http://wpc.0001.&lt;Domäne&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=DE&userid=01
+- **Beispielanforderung:** http://wpc.0001.&lt;Domäne&gt;/800001/Origin/folder/asset.htm?sessionid=1234&amp;language=DE&amp;userid=01
 - **Standardcacheschlüssel:** /800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>Include
@@ -314,7 +312,7 @@ Ein Teilcachefehler beschreibt den Cachestatus für ein Asset, das nicht vollst�
 <!---
 This feature is not available for the ADN platform. The typical traffic on this platform consists of relatively small assets. The size of the assets served through these platforms helps mitigate the effects of partial cache misses, since the next request will typically result in the asset being cached on that POP.
 --->
-Ein Teilcachefehler tritt normalerweise auf, nachdem ein Benutzer einen Download abgebrochen hat, oder für Objekte, die ausschließlich über HTTP-Bereichsanforderungen angefordert werden. Dieses Feature eignet sich am besten für große Assets, die von den Benutzern in der Regel nicht komplett heruntergeladen werden (z.B. Videos). Dieses Feature ist daher auf der HTTP Large-Plattform standardmäßig aktiviert. Auf allen anderen Plattformen ist sie deaktiviert.
+Ein Teilcachefehler tritt normalerweise auf, nachdem ein Benutzer einen Download abgebrochen hat, oder für Objekte, die ausschließlich über HTTP-Bereichsanforderungen angefordert werden. Dieses Feature eignet sich am besten für große Assets, die von den Benutzern in der Regel nicht komplett heruntergeladen werden (beispielsweise Videos). Dieses Feature ist daher auf der HTTP Large-Plattform standardmäßig aktiviert. Auf allen anderen Plattformen ist sie deaktiviert.
 
 Es wird empfohlen, die Standardkonfiguration für die HTTP Large-Plattform beizubehalten, da sie die Last auf Ihrem Kundenursprungsserver verringert und die Geschwindigkeit erhöht, mit der Ihre Kunden Ihre Inhalte herunterladen.
 
@@ -330,7 +328,7 @@ Deaktiviert|Verhindert, dass ein Edgeserver einen Hintergrundabruf des Assets au
 ###<a name="compress-file-types"></a>Compress File Types
 **Zweck:** Definiert die Dateiformate, die auf dem Server komprimiert werden.
 
-Ein Dateiformat kann anhand seines Internetmedientyps (d.h. Content-Type) angegeben werden. Der Internetmedientyp entspricht plattformunabhängigen Metadaten, die unseren Servern das Identifizieren des Dateiformats eines bestimmten Assets ermöglichen. Eine Liste gängiger Internetmedientypen finden Sie unten.
+Ein Dateiformat kann anhand seines Internetmedientyps (beispielsweise „Content-Type“) angegeben werden. Der Internetmedientyp entspricht plattformunabhängigen Metadaten, die unseren Servern das Identifizieren des Dateiformats eines bestimmten Assets ermöglichen. Eine Liste gängiger Internetmedientypen finden Sie unten.
 
 Internetmedientyp|Beschreibung
 --|--
@@ -343,9 +341,9 @@ Wichtige Informationen:
 
 - Geben Sie mehrere Internetmedientypen an, indem Sie die einzelnen Typen durch ein einzelnes Leerzeichen voneinander trennen. 
 - Durch dieses Feature werden nur Objekte komprimiert, die weniger als 1 MB groß sind. Größere Assets werden durch unsere Server nicht komprimiert.
-- Bestimmte Inhaltstypen wie Bild-, Video- und Audiomedienobjekte (z.B. JPG, MP3, MP4 usw.) sind bereits komprimiert. Durch eine weitere Komprimierung dieser Assettypen wird die Dateigröße nicht merklich verringert. Aus diesem Grund wird empfohlen, die Komprimierung für diese Arten von Assets nicht zu aktivieren.
+- Bestimmte Inhaltstypen wie Bild-, Video- und Audiomedienobjekte (beispielsweise JPG, MP3 und MP4) sind bereits komprimiert. Durch eine weitere Komprimierung dieser Assettypen wird die Dateigröße nicht merklich verringert. Aus diesem Grund wird empfohlen, die Komprimierung für diese Arten von Assets nicht zu aktivieren.
 - Platzhalterzeichen, wie z.B. Sternchen, werden nicht unterstützt.
-- Bevor Sie dieses Feature einer Regel hinzufügen, stellen Sie sicher, dass die Option „Compression Disabled“ auf der Seite „Compression“ für die Plattform festgelegt ist, auf die diese Regel angewendet werden soll.
+- Bevor Sie dieses Feature einer Regel hinzufügen, vergewissern Sie sich, dass die Option „Compression Disabled“ auf der Seite „Compression“ für die Plattform festgelegt ist, auf die diese Regel angewendet werden soll.
 
 ###<a name="default-internal-max-age"></a>Default Internal Max-Age
 **Zweck:** Legt das Standardintervall für max-age für eine erneute Cacheüberprüfung vom Edgeserver zum Ursprungsserver fest. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein Edgeserver prüft, ob ein zwischengespeichertes Asset mit dem auf dem Ursprungsserver gespeicherten Asset übereinstimmt.
@@ -358,7 +356,7 @@ Wichtige Informationen:
 - Die Ergebnisse dieser Aktion haben keine erkennbaren Auswirkungen auf die Antwortheader und den von Edgeservern für Ihren Inhalt zurückgegebenen Inhalt. Sie können sich jedoch möglicherweise auf die Menge an Datenverkehr für die erneute Überprüfung auswirken, der von den Edgeservern an Ihren Ursprungsserver gesendet wird.
 - Konfigurieren Sie dieses Feature folgendermaßen:
     - Wählen Sie den Statuscode aus, für den ein interner Standardwert für max-age angewendet werden kann.
-    - Geben Sie einen ganzzahligen Wert an, und wählen Sie dann die gewünschte Zeiteinheit aus (d.h. Sekunden, Minuten, Stunden usw.). Dieser Wert definiert das interne Standardintervall für max-age.
+    - Geben Sie einen ganzzahligen Wert an, und wählen Sie dann die gewünschte Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden). Dieser Wert definiert das interne Standardintervall für max-age.
 
 - Durch Festlegen der Zeiteinheit auf „Off“ wird für Anforderungen, denen im Cache-Control- oder Expires-Header kein max-age-Hinweis zugewiesen wurde, ein internes max-age-Standardintervall von 7 Tagen festgelegt.
 - Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
@@ -394,7 +392,7 @@ Durch Aktivieren dieses Features werden die Header „Cache-Control:max-age“ u
 Wichtige Informationen:
 
 - Diese Aktion wirkt sich nicht auf erneute Cacheüberprüfungen vom Edgeserver zum Ursprungsserver aus. Diese Arten von erneuten Überprüfungen werden durch die vom Ursprungsserver empfangenen Cache-Control-/Expires-Header festgelegt und können mit den Features „Default Internal Max-Age“ und „Force Internal Max-Age“ angepasst werden.
-- Konfigurieren Sie dieses Feature, indem Sie einen ganzzahligen Wert angeben und die gewünschte Zeiteinheit auswählen (d.h. Sekunden, Minuten, Stunden usw.).
+- Konfigurieren Sie dieses Feature, indem Sie einen ganzzahligen Wert angeben und die gewünschte Zeiteinheit auswählen (beispielsweise Sekunden, Minuten oder Stunden).
 - Wenn Sie dieses Feature auf einen negativen Wert festlegen, senden unsere Edgeserver mit jeder Antwort an den Browser den Wert „Cache-Control:no-cache“ und eine Expires-Zeit, die in der Vergangenheit liegt. Auch wenn ein HTTP-Client die Antwort nicht zwischenspeichert, können unsere Edgeserver die Antwort vom Ursprungsserver trotz dieser Einstellung zwischenspeichern.
 - Durch Festlegen der Zeiteinheit auf „Off“ wird dieses Feature deaktiviert. Die mit der Antwort des Ursprungsservers zwischengespeicherten Cache-Control/Expires-Header werden an den Browser weitergegeben.
 
@@ -410,7 +408,7 @@ Wichtige Informationen:
 - Diese Funktion hat keine erkennbare Auswirkungen auf die Antwort, die durch einen Edgeserver an die anfordernde Person übermittelt wird. Allerdings kann sie sich auf die Menge des Datenverkehrs auswirken, der für die erneute Überprüfung von unseren Edgeservern an den Ursprungsserver gesendet wird.
 - Konfigurieren Sie dieses Feature folgendermaßen:
     - Wählen Sie den Statuscode aus, für den ein interner max-age-Wert angewendet werden kann.
-    - Geben Sie einen ganzzahligen Wert an, und wählen Sie die gewünschte Zeiteinheit aus (d.h. Sekunden, Minuten, Stunden usw.). Dieser Wert definiert das max-age-Intervall der Anforderung.
+    - Geben Sie einen ganzzahligen Wert an, und wählen Sie die gewünschte Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden). Dieser Wert definiert das max-age-Intervall der Anforderung.
 
 - Durch Festlegen der Zeiteinheit auf „Off“ wird dieses Feature deaktiviert. Ein internes max-age-Intervall wird den angeforderten Assets nicht zugewiesen. Wenn der ursprüngliche Header keine Anweisungen für die Zwischenspeicherung enthält, wird das Asset gemäß der aktiven Einstellung im Feature „Default Internal Max-Age“ zwischengespeichert.
 - Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
@@ -430,7 +428,7 @@ Wichtige Informationen:
 Wichtige Informationen:
 
 - Definieren Sie einen durch Leerzeichen getrennten Satz mit zulässigen H.264-Dateierweiterungen in der Option „File Extensions“. Die Option „File Extensions“ setzt das Standardverhalten außer Kraft. Behalten Sie die MP4- und F4V-Unterstützung bei, indem Sie beim Festlegen dieser Option diese Dateierweiterungen einschließen. 
-- Stellen Sie sicher, dass Sie die einzelnen Dateierweiterungen mit einen Punkt angeben (z.B. .mp4 .f4v).
+- Die einzelnen Dateierweiterungen müssen jeweils mit einem Punkt angegeben werden (beispielsweise „.mp4“ oder „.f4v“).
 
 **Standardverhalten:** Standardmäßig werden MP4- und F4V-Medien von HTTP Progressive Download unterstützt.
 
@@ -501,7 +499,7 @@ Wichtige Informationen:
 
 - Konfigurieren Sie dieses Feature folgendermaßen:
     - Wählen Sie den Statuscode aus, für den ein max-stale-Wert angewendet werden kann.
-    - Geben Sie einen ganzzahligen Wert an, und wählen Sie dann die gewünschte Zeiteinheit aus (d.h. Sekunden, Minuten, Stunden usw.). Dieser Wert definiert den internen max-stale-Wert, der angewendet wird.
+    - Geben Sie einen ganzzahligen Wert an, und wählen Sie dann die gewünschte Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden). Dieser Wert definiert den internen max-stale-Wert, der angewendet wird.
 
 - Durch Festlegen der Zeiteinheit auf „Off“ wird dieses Feature deaktiviert. Ein zwischengespeichertes Asset wird nicht über seine normale Ablaufzeit hinaus bedient.
 - Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
@@ -513,7 +511,7 @@ Wichtige Informationen:
     - URL Query Literal
     - URL Query Wildcard
 
-**Standardverhalten:** 2 Minuten
+**Standardverhalten:** Zwei Minuten
 
 ###<a name="partial-cache-sharing"></a>Partial Cache Sharing
 **Zweck:** Legt fest, ob eine Anforderung teilweise zwischengespeicherte Inhalte erstellen kann.
@@ -562,11 +560,11 @@ Definieren Sie einen durch Leerzeichen getrennten Satz mit den gewünschten Stat
 
 Wichtige Informationen:
 
-- Aktivieren Sie außerdem das Feature „Ignore Origin-No-Cache“. Wenn dieses Feature nicht aktiviert ist, werden andere Antworten als „200 – OK“ möglicherweise nicht zwischengespeichert.
+- Aktivieren Sie das Feature „Ignore Origin-No-Cache“. Wenn dieses Feature nicht aktiviert ist, werden andere Antworten als „200 – OK“ möglicherweise nicht zwischengespeichert.
 - Der Satz gültiger Statuscodes für dieses Feature ist: 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504 und 505.
 - Das Feature kann nicht verwendet werden, um die Zwischenspeicherung für Antworten zu deaktivieren, die einen Statuscode „200 – OK“ generieren.
 
-**Standardverhalten:** Die Zwischenspeicherung ist nur für Antworten aktiviert, die einen Statuscode „200 – OK“ generieren.
+**Standardverhalten:** Die Zwischenspeicherung ist nur für Antworten aktiviert, die den Statuscode „200 – OK“ generieren.
 ###<a name="stale-content-delivery-on-error"></a>Stale Content Delivery on Error
 **Zweck:** 
 
@@ -585,7 +583,7 @@ Deaktiviert|Der Fehler des Ursprungsservers wird an die anfordernde Person weite
 Wichtige Informationen:
 
 - Das Verhalten dieses Features hängt von der ausgewählten Zeiteinheit ab.
-    - **Time Unit:** Geben Sie einen Zeitraum an, und wählen Sie die Zeiteinheit aus (z.B. Sekunden, Minuten, Stunden usw.), um die Übermittlung veralteter Inhalte zu ermöglichen. Dieser Setuptyp ermöglicht dem CDN, die Zeitdauer zu verlängern, während der Inhalte übermittelt werden können, bevor eine Überprüfung gemäß der folgenden Formel erforderlich ist:**TTL** + **Stale While Revalidate Time** 
+    - **Time Unit:** Geben Sie einen Zeitraum an, und wählen Sie die Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden), um die Übermittlung veralteter Inhalte zu ermöglichen. Dieser Setuptyp ermöglicht dem CDN, die Zeitdauer zu verlängern, während der Inhalte übermittelt werden können, bevor eine Überprüfung gemäß der folgenden Formel erforderlich ist:**TTL** + **Stale While Revalidate Time** 
     - **Off:** Wählen Sie „Off“, um eine erneute Überprüfung anzufordern, bevor eine Anforderung von veralteten Inhalten verarbeitet werden darf.
         - Geben Sie keine Zeitspanne an, weil sie nicht anwendbar ist und ignoriert wird.
 
@@ -599,7 +597,7 @@ Ein Einsatzbereich für dieses Feature besteht darin, zusätzliche Informationen
 Wichtige Informationen:
 
 - Maximal 150 Zeichen können angegeben werden.
-- Stellen Sie sicher, dass nur alphanumerische Zeichen verwendet werden.
+- Verwenden Sie ausschließlich alphanumerische Zeichen.
 - Dieses Feature wirkt sich nicht auf das Verhalten der Regel aus. Es soll lediglich einen Bereich bereitstellen, in dem Sie Informationen zur zukünftigen Referenz oder als Hilfe bei der Problembehandlung für die Regel angeben können.
  
 ## <a name="headers"></a>Headers
@@ -664,12 +662,12 @@ Löschen|Löscht den angegebenen Anforderungsheader.|**Wert des Anforderungshead
 
 Wichtige Informationen:
 
-- Stellen Sie sicher, dass der in der Option „Name“ angegebene Wert genau mit dem gewünschten Anforderungsheader übereinstimmt.
+- Vergewissern Sie sich, dass der in der Option „Name“ angegebene Wert genau mit dem gewünschten Anforderungsheader übereinstimmt.
 - Die Groß-/Kleinschreibung wird bei der Identifikation eines Headers nicht berücksichtigt. Beispielsweise können alle folgenden Variationen des Cache-Control-Headernamens zur Identifizierung verwendet werden:
     - cache-control
     - CACHE-CONTROL
     - cachE-Control
-- Stellen Sie sicher, dass bei der Angabe eines Headernamens nur alphanumerische Zeichen, Bindestriche und Unterstriche verwendet werden.
+- Headernamen dürfen nur alphanumerische Zeichen, Bindestriche und Unterstriche enthalten.
 - Durch das Löschen eines Headers wird verhindert, dass er von unseren Edgeservern an einen Ursprungsserver weitergeleitet wird.
 - Die folgenden Header sind reserviert und können nicht von diesem Feature geändert werden:
     - forwarded
@@ -697,7 +695,7 @@ Löschen|Löscht den angegebenen Anforderungsheader.|**Wert des Anforderungshead
 
 Wichtige Informationen:
 
-- Stellen Sie sicher, dass der in der Option „Name“ angegebene Wert genau mit dem gewünschten Antwortheader übereinstimmt. 
+- Vergewissern Sie sich, dass der in der Option „Name“ angegebene Wert genau mit dem gewünschten Antwortheader übereinstimmt. 
 - Die Groß-/Kleinschreibung wird bei der Identifikation eines Headers nicht berücksichtigt. Beispielsweise können alle folgenden Variationen des Cache-Control-Headernamens zur Identifizierung verwendet werden:
     - cache-control
     - CACHE-CONTROL
@@ -727,7 +725,7 @@ Die Headernamensoption definiert den Namen des benutzerdefinierten Anforderungsh
 
 Anhand dieses Features kann ein Kundenursprungsserver Client-IP-Adressen über einen benutzerdefinierten Anforderungsheader ermitteln. Wenn die Anforderung aus dem Cache bedient wird, wird der Ursprungsserver nicht über die IP-Adresse des Clients informiert. Aus diesem Grund wird empfohlen, dieses Feature mit ADN oder Assets zu verwenden, die nicht zwischengespeichert werden.
 
-Stellen Sie sicher, dass der angegebene Headername nicht mit den folgenden Elementen übereinstimmt:
+Der angegebene Headername darf keinem der folgenden Namen entsprechen:
 
 - Namen von Standardanforderungsheadern. Eine Liste der Standardheadernamen ist in [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) zu finden.
 - Reservierte Headernamen:
@@ -765,7 +763,7 @@ Antwortheader|%{[ResponseHeader]()}[o]()| %{Age}o <br/> %{Content-Type}o <br/> %
 Wichtige Informationen:
 
 - Ein benutzerdefiniertes Protokollfeld kann eine beliebige Kombination aus Headerfeldern und Nur-Text enthalten.
-- Gültige Zeichen für dieses Feld sind: alphanumerische Zeichen (d.h. 0–9, a–Z und A–Z), Bindestriche, Doppelpunkte, Semikolons, Apostrophe, Kommas, Punkte, Unterstriche, Gleichheitszeichen, runde Klammern, eckige Klammern und Leerzeichen. Das Prozentzeichen und geschweifte Klammern sind nur zulässig, wenn sie zur Angabe eines Headerfelds verwendet werden.
+- Gültige Zeichen für dieses Feld sind: alphanumerische Zeichen (0–9, a–z und A–Z), Bindestriche, Doppelpunkte, Semikolons, Apostrophe, Kommas, Punkte, Unterstriche, Gleichheitszeichen, runde Klammern, eckige Klammern und Leerzeichen. Das Prozentzeichen und geschweifte Klammern sind nur zulässig, wenn sie zur Angabe eines Headerfelds verwendet werden.
 - Die Schreibweise für die einzelnen angegebenen Headerfelder muss mit dem gewünschten Anforderungs-/Antwortheadernamen übereinstimmen.
 - Wenn Sie mehrere Header angeben möchten, wird empfohlen, die einzelnen Header mit Trennzeichen anzugeben. Beispielsweise können Sie für jeden Header eine Abkürzung verwenden. Unten sehen Sie eine Beispielsyntax.
     - AE: %{Accept-Encoding}i A: %{Authorization}i CT: %{Content-Type}o 
@@ -927,8 +925,8 @@ Zur Konfiguration dieses Features müssen die folgenden Optionen festgelegt werd
 Option|Beschreibung
 -|-
 Code|Wählen Sie den Antwortcode aus, der an die anfordernde Person zurückgegeben wird.
-Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dies ist der Abschnitt „/XXXX/“ und Ihr Endpunktname. <br/> **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Stellen Sie sicher, dass die oben definierten URI-Kriterien der Anforderung (d.h. „Source & Pattern“) keinen Konflikt mit für diese Funktion definierten Übereinstimmungsbedingungen verursachen. <br/> - Stellen Sie sicher, dass ein Muster angegeben wird. Wenn Sie einen leeren Wert als Muster verwenden, werden Anforderungen nur mit dem Stammordner des ausgewählten Ursprungsservers (z.B. http://cdn.mydomain.com/) abgeglichen.
-Destination| Definieren Sie die URL, zu der die oben genannten Anforderungen umgeleitet werden. <br/> Stellen Sie diese URL unter Verwendung folgender Elemente dynamisch zusammen: <br/> - Muster für regulären Ausdruck <br/>- HTTP-Variablen <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. <br/> 
+Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dies ist der Abschnitt „/XXXX/“ und Ihr Endpunktname. <br/> **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) nicht mit für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. <br/> - Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
+Ziel| Definieren Sie die URL, zu der die oben genannten Anforderungen umgeleitet werden. <br/> Stellen Sie diese URL unter Verwendung folgender Elemente dynamisch zusammen: <br/> - Muster für regulären Ausdruck <br/>- HTTP-Variablen <br/> Fügen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert anhand der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. <br/> 
 Es wird dringend empfohlen, eine absolute URL zu verwenden. Bei Verwendung einer relativen URL werden CDN-URLs möglicherweise an einen ungültigen Pfad umgeleitet.
 
 **Beispielszenario**
@@ -964,8 +962,8 @@ Wichtige Informationen:
 
 Option|Beschreibung
 -|-
- Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/>     - **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dies ist der Abschnitt „/XXXX/“ und Ihr Endpunktname. <br/> - **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Stellen Sie sicher, dass die oben definierten URI-Kriterien der Anforderung (d.h. „Source & Pattern“) keinen Konflikt mit für diese Funktion definierten Übereinstimmungsbedingungen verursachen. Stellen Sie sicher, dass ein Muster angegeben wird. Wenn Sie einen leeren Wert als Muster verwenden, werden Anforderungen nur mit dem Stammordner des ausgewählten Ursprungsservers (z.B. http://cdn.mydomain.com/) abgeglichen. 
- Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - HTTP-Variablen <br/> <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. 
+ Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/>     - **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dies ist der Abschnitt „/XXXX/“ und Ihr Endpunktname. <br/> - **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) mit keinen für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen. 
+ Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - HTTP-Variablen <br/> <br/> Fügen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert anhand der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. 
  Dieses Feature ermöglicht unseren Edgeservern das Umschreiben der URL, ohne dass eine herkömmliche Umleitung durchgeführt werden muss. Dies bedeutet, dass die anfordernde Person den gleichen Antwortcode erhält, den sie auch bei Anforderung der umgeschriebenen URL erhalten hätte.
 
 **Beispielszenario 1**
@@ -1018,9 +1016,3 @@ Dieses Feature umfasst Übereinstimmungskriterien, die erfüllt sein müssen, be
 * [Übereinstimmungsbedingungen des Regelmoduls](cdn-rules-engine-reference-match-conditions.md)
 * [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
 * [Übersicht über das Azure CDN](cdn-overview.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
+ms.openlocfilehash: 0456cde7e30e9b25f8baebdcd15e0e029f89d7ff
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 39b79dce555ba1b57f48ca2b431c13b1c1e4d90b
-ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -85,6 +84,14 @@ ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.m
   * Dynamics 365 for Customer Service
   * Dynamics 365 for Field Service
   * Dynamics 365 for Project Service
+* Mit [Routenfiltern](#route-filters-for-microsoft-peering) erhalten Sie Zugriff auf die gleichen öffentlichen Dienste mit Microsoft-Peering:
+  * Power BI
+  * Dynamics 365 for Finance and Operations
+  * Die meisten Azure-Dienste, mit folgenden Ausnahmen:
+    * CDN
+    * Visual Studio Team Services-Auslastungstests
+    * Multi-Factor Authentication
+    * Traffic Manager
 
 ## <a name="data-and-connections"></a>Daten und Verbindungen
 
@@ -115,6 +122,10 @@ Ja. Jede ExpressRoute-Verbindung verfügt über ein redundantes Paar von Querver
 ### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>Geht die Konnektivität verloren, wenn einer meiner ExpressRoute-Links ausfällt?
 
 Wenn eine der Querverbindungen ausfällt, bleibt die Konnektivität bestehen. Es steht eine redundante Verbindung zur Verfügung, um die Auslastung des Netzwerks zu unterstützen. Sie können zudem mehrere Verbindungen an einem anderen Peeringstandort erstellen, um die Ausfallsicherheit bei einem Fehler sicherzustellen.
+
+## <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Wie stelle ich hohe Verfügbarkeit in einem mit ExpressRoute verbundenen virtuellen Netzwerk sicher?
+
+Hohe Verfügbarkeit erreichen Sie, indem Sie mehrere ExpressRoute-Verbindungen an verschiedenen Peeringstandorten mit Ihrem virtuellen Netzwerk verbinden. Wenn beispielsweise ein ExpressRoute-Standort ausfällt, erfolgt ein Failover der Verbindung auf einen anderen ExpressRoute-Standort. Standardmäßig wird Datenverkehr, der Ihr virtuelles Netzwerk verlässt, auf der Grundlage von ECMP (Equal Cost Multi-path Routing) weitergeleitet. Mit der Verbindungsgewichtung können Sie einer Verbindung den Vorzug geben. Weitere Details zur Verbindungsgewichtung finden Sie unter [Optimieren von ExpressRoute-Routing](expressroute-optimize-routing.md).
 
 ### <a name="onep2plink"></a>Wenn ich mich nicht am selben Standort wie ein Cloud Exchange befinde und mein Dienstanbieter Punkt-zu-Punkt-Verbindungen bereitstellt, muss ich zwei physische Verbindungen zwischen meinem lokalen Netzwerk und Microsoft anfordern?
 
@@ -162,9 +173,15 @@ Ja. Sie können bis zu 10 andere Azure-Abonnements autorisieren, eine einzige Ex
 
 Weitere Informationen finden Sie unter [Freigeben einer ExpressRoute-Verbindung für mehrere Abonnements](expressroute-howto-linkvnet-arm.md).
 
+### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>Ich verfüge über mehrere Azure-Abonnements, die unterschiedlichen Azure Active Directory-Mandanten oder Enterprise Agreement-Registrierungen zugeordnet sind. Kann ich virtuelle Netzwerke in separaten Mandanten und Registrierungen mit einer einzelnen ExpressRoute-Verbindung verbinden, die sich nicht im gleichen Mandanten bzw. nicht in der gleichen Registrierung befindet?
+
+Ja. ExpressRoute-Autorisierungen können ohne zusätzliche Konfigurationsschritte über die Grenzen von Abonnements, Mandanten und Registrierungen hinweg verwendet werden. 
+
+Weitere Informationen finden Sie unter [Freigeben einer ExpressRoute-Verbindung für mehrere Abonnements](expressroute-howto-linkvnet-arm.md).
+
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>Sind virtuelle Netzwerke, die mit der gleichen Verbindung verbunden sind, voneinander isoliert?
 
-Nr. Aus Routingsicht sind alle virtuellen Netzwerke, die mit derselben ExpressRoute-Verbindung verknüpft sind, Teil derselben Routingdomäne und nicht voneinander isoliert. Wenn Sie eine Isolierung der Routen benötigen, müssen Sie zuerst eine separate ExpressRoute-Verbindung erstellen.
+Nein. Aus Routingsicht sind alle virtuellen Netzwerke, die mit derselben ExpressRoute-Verbindung verknüpft sind, Teil derselben Routingdomäne und nicht voneinander isoliert. Wenn Sie eine Isolierung der Routen benötigen, müssen Sie zuerst eine separate ExpressRoute-Verbindung erstellen.
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Kann mehr als ein virtuelles Netzwerk mit mehr als einer ExpressRoute-Verbindung verbunden sein?
 
@@ -178,7 +195,7 @@ Ja. Wenn Sie über die BGP-Sitzung keine Standardrouten (0.0.0.0/0) oder Interne
 
 Ja. Sie können Standardrouten (0.0.0.0/0) ankündigen, um die Internetkonnektivität von virtuellen Computern in einem virtuellen Netzwerk zu blockieren und den gesamten Datenverkehr über die ExpressRoute-Verbindung zu leiten.
 
-Wenn Sie keine Standardrouten ankündigen, wird der Datenverkehr an Dienste, die über öffentliches Peering (z.B. Azure Storage und SQL-Datenbank) angeboten werden, wieder an Ihren Standort zurückgeleitet. Sie müssen Ihre Router so konfigurieren, dass der Datenverkehr über den öffentlichen Peeringpfad oder über das Internet an Azure zurückgegeben wird.
+Wenn Sie keine Standardrouten ankündigen, wird der Datenverkehr an Dienste, die über öffentliches Peering (z.B. Azure Storage und SQL-Datenbank) angeboten werden, wieder an Ihren Standort zurückgeleitet. Sie müssen Ihre Router so konfigurieren, dass der Datenverkehr über den öffentlichen Peeringpfad oder über das Internet an Azure zurückgegeben wird. Wenn Sie einen Dienstendpunkt (Vorschauversion) für den Dienst aktiviert haben, wird keine Weiterleitung des für den Dienst bestimmten Datenverkehrs an Ihren lokalen Standort erzwungen. Der Datenverkehr bleibt innerhalb des Azure-Backbonenetzwerks. Weitere Informationen zu Dienstendpunkten finden Sie unter [Dienstendpunkte von virtuellen Netzwerken (Vorschauversion)](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json).
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>Können virtuelle Netzwerke mit der gleichen ExpressRoute-Verbindung verknüpft sein und miteinander kommunizieren?
 
@@ -344,13 +361,12 @@ Jeder Kunde kann bei der Verwendung von Routenfiltern das Microsoft-Peering akti
 
 Nein, Sie benötigen keine Autorisierung für Dynamics 365. Sie können eine Regel erstellen und die Dynamics 365-Community ohne Autorisierung auswählen.
 
-### <a name="i-already-have-microsoft-peering-how-can-i-take-advantage-of-route-filters"></a>Ich verfüge bereits über die Möglichkeit zum Microsoft-Peering. Wie kann ich von Routenfilter profitieren?
+### <a name="i-enabled-microsoft-peering-prior-to-august-1st-2017-how-can-i-take-advantage-of-route-filters"></a>Ich habe Microsoft-Peering vor dem 1. August 2017 aktiviert. Wie kann ich Routenfilter nutzen?
 
-Sie können einen Routenfilter erstellen, die gewünschten Dienste auswählen und den Filter zu Ihrem Microsoft-Peering hinzufügen. Weitere Anweisungen finden Sie unter [Konfigurieren von Routenfiltern für das Microsoft-Peering](how-to-routefilter-powershell.md).
+Ihre vorhandene Verbindung kündigt weiterhin die Präfixe für Office 365 und Dynamics 365 an. Wenn Sie Ankündigungen für öffentliche Azure-Präfixe über das gleiche Microsoft-Peering hinzufügen möchten, können Sie einen Routenfilter erstellen, die anzukündigenden Dienste auswählen (einschließlich der benötigten Office 365-Dienste und Dynamics 365) und den Filter an Ihr Microsoft-Peering anfügen. Weitere Anweisungen finden Sie unter [Konfigurieren von Routenfiltern für das Microsoft-Peering](how-to-routefilter-powershell.md).
 
 ### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>An einem Standort besitze ich die Möglichkeit zum Microsoft-Peering. Nun versuche ich, es an einem anderen Standort zu aktivieren, sehe jedoch keine Präfixe.
 
 * Beim Microsoft-Peering von ExpressRoute-Verbindungen, die vor dem 1. August 2017 konfiguriert wurden, werden alle Dienstpräfixe über das Microsoft-Peering angekündigt, auch wenn keine Routenfilter definiert sind.
 
 * Beim Microsoft-Peering von ExpressRoute-Verbindungen, die am oder nach dem 1. August 2017 konfiguriert wurden, werden Präfixe erst angekündigt, wenn der Verbindung ein Routenfilter hinzugefügt wurde. Standardmäßig werden dabei keine Präfixe angezeigt.
-

@@ -3,7 +3,7 @@ title: Grundlegendes zu Azure AD-Anwendungsproxyconnectors | Microsoft-Dokumenta
 description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungsproxyconnectors.
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 ms.assetid: 
 ms.service: active-directory
@@ -11,18 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
-ms.author: kgremban
+ms.date: 10/03/2017
+ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
+ms.openlocfilehash: fdee5703adc76e750aebd83d4122e7b79244c0e2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: c18d0a2bff654573e6e28a7cd7fad853b3a11346
-ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
 Connectors sind die Komponenten, die den Azure AD-Anwendungsproxy erst möglich machen. Sie sind einfach aufgebaut, leicht bereitzustellen und zu verwalten und haben eine hohe Leistungsstärke. Dieser Artikel erläutert, was Connectors sind und wie sie funktionieren, und stellt einige Vorschläge für die Optimierung Ihrer Bereitstellung vor. 
@@ -70,6 +68,21 @@ Connectorgruppen erleichtern das Verwalten großer Bereitstellungen. Darüber hi
 
 Weitere Informationen zu Connectorgruppen finden Sie unter [Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen](active-directory-application-proxy-connectors-azure-portal.md).
 
+## <a name="capacity-planning"></a>Capacity Planning 
+
+Für Connectors findet innerhalb einer Connectorgruppe zwar ein automatischer Lastenausgleich statt, es muss aber auch sichergestellt werden, dass zwischen den Connectors genügend Kapazität zur Bewältigung des erwarteten Datenverkehrsvolumens vorhanden ist. Faustregel: Je mehr Benutzer Sie haben, desto größer muss der Computer dimensioniert sein. Die Tabelle weiter unten bietet einen Überblick über das Volumen, das von verschiedenen Computern bewältigt werden kann. Hinweis: Da Nutzungsmuster variieren und sich somit nicht für die Lastprognose eignen, basieren die Angaben nicht auf Benutzern, sondern jeweils auf den erwarteten Transaktionen pro Sekunde (TPS).  Abhängig von der Antwortgröße und der Antwortzeit der Back-End-Anwendung ist außerdem mit gewissen Abweichungen zu rechnen: Bei größeren Antworten und längeren Antwortzeiten verringert sich der TPS-Maximalwert.
+
+|Kerne|RAM|Erwartete Wartezeit (ms) – P99|TPS (maximal)|
+| ----- | ----- | ----- | ----- |
+|2|8|325|586|
+|4|16|320|1150|
+|8|32|270|1.190|
+|16|64|245|1200*|
+\* Bei diesem Computer galt ein Verbindungslimit von 200. Bei allen anderen Computern wurde das Standardlimit von 200 Verbindungen verwendet.
+ 
+>[!NOTE]
+>Das Standardlimit für Konfigurationen ist 200 (für zwei, vier und acht Kerne).  Bei Tests mit 16 Kernen wurde das Verbindungslimit auf 800 erhöht. Bei Computern mit vier, acht und 16 Kernen ist der Unterschied beim TPS-Maximalwert minimal. Sie unterscheiden sich hauptsächlich bei der erwarteten Wartezeit.  
+
 ## <a name="security-and-networking"></a>Sicherheit und Netzwerk
 
 Connectors können überall im Netzwerk installiert werden, sodass Anforderungen an den Anwendungsproxydienst gesendet werden können. Wichtig ist nur, dass der Computer, auf dem der Connector ausgeführt ist, ebenfalls Zugriff auf Ihre Apps hat. Sie können die Connectors in Ihrem Unternehmensnetzwerk oder auf einem virtuellen Computer installieren, der in der Cloud ausgeführt wird. Connectors können in einer demilitarisierten Zone (Demilitarized Zone, DMZ) ausgeführt werden, aber dies ist nicht notwendig, da der gesamte Datenverkehr ausgehend ist und das Netzwerk somit sicher bleibt.
@@ -89,6 +102,8 @@ Da Connectors zustandslos sind, wirkt sich die Anzahl von Benutzern oder Sitzung
 Die Connectorleistung wird durch die CPU und das Netzwerk bestimmt. Eine gute CPU-Leistung wird für die SSL-Verschlüsselung und -Entschlüsselung benötigt, und die Netzwerkeigenschaften sind wichtig, um eine gute Konnektivität für die Anwendungen und den Online-Dienst in Azure zu erzielen.
 
 Der Arbeitsspeicher ist für Connectors dagegen weniger wichtig. Der Online-Dienst übernimmt einen Großteil der Verarbeitung und den gesamten nicht authentifizierten Datenverkehr. Alle Schritte, die in der Cloud ausgeführt werden können, werden auch in der Cloud ausgeführt. 
+
+Der Lastenausgleich erfolgt zwischen Connectors einer bestimmten Connectorgruppe. Welcher Connector in der Gruppe zur Abwicklung einer bestimmten Anforderung verwendet wird, wird auf der Grundlage einer Variation des Roundrobin-Verfahrens bestimmt. Nach der Wahl eines Connectors bleibt die Sitzungsaffinität zwischen dem Benutzer und der Anwendung für die Dauer der Sitzung erhalten. Sollte der Connector oder der Computer aus irgendeinem Grund nicht mehr zur Verfügung stehen, wird der Datenverkehr an einen anderen Connector in der Gruppe geleitet. Aufgrund dieser Resilienz empfiehlt sich auch die Verwendung mehrerer Connectors.
 
 Ein weiterer Leistungsfaktor ist die Qualität der Netzwerkverbindung zwischen den Connectors, z.B.: 
 
@@ -151,5 +166,4 @@ Sie können den Zustand des Diensts im Fenster „Dienste“ untersuchen. Der Co
 * [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-working-with-proxy-servers.md)
 * [Beheben von Problemen mit Anwendungsproxys und Connectors](active-directory-application-proxy-troubleshoot.md)
 * [Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund](active-directory-application-proxy-silent-installation.md)
-
 

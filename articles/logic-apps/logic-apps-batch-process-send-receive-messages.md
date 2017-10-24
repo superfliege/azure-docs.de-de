@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/7/2017
 ms.author: LADocs; estfan; jonfan
+ms.openlocfilehash: c58cf6485a8a7248e5b8ffce0d279485a80f36ef
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 480ffce5dbe7c25181bb0ba5639de884e98ff4e6
-ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="send-receive-and-batch-process-messages-in-logic-apps"></a>Versand, Empfang und Batchverarbeitung von Nachrichten in Logik-Apps
 
 Nachrichten können in Gruppen verarbeitet werden. Hierzu können Sie Datenelemente (oder Nachrichten) an einen *Batch* senden und die Elemente dann als Batch verarbeiten. Dieser Ansatz ist hilfreich, wenn Datenelemente auf eine bestimmte Weise gruppiert und gemeinsam verarbeitet werden sollen. 
@@ -62,11 +60,20 @@ Logik-Apps für den Versand müssen wissen, wohin die Elemente gesendet werden s
 3. Geben Sie einen Namen und Freigabekriterien für den Batch an:
 
    * **Batchname**: Der Name zum Identifizieren des Batchs („TestBatch“ in diesem Beispiel).
+   * **Freigabekriterien**: Die Batchfreigabekriterien. Diese können auf der Nachrichtenanzahl, auf dem Zeitplan oder auf beidem basieren.
+   
+     ![Angeben von Details für den Batchtrigger](./media/logic-apps-batch-process-send-receive-messages/receive-batch-release-criteria.png)
+
    * **Nachrichtenanzahl**: Die Anzahl von Nachrichten, die in einem Batch gesammelt werden sollen, bevor er zur Verarbeitung freigegeben wird („5“ in diesem Beispiel).
 
-   ![Angeben von Details für den Batchtrigger](./media/logic-apps-batch-process-send-receive-messages/receive-batch-trigger-details.png)
+     ![Angeben von Details für den Batchtrigger](./media/logic-apps-batch-process-send-receive-messages/receive-batch-count-based.png)
 
-4. Fügen Sie eine weitere Aktion hinzu, die eine E-Mail sendet, wenn der Batchtrigger ausgelöst wird. Die Logik-App sendet eine E-Mail, sobald der Batch fünf Elemente enthält.
+   * **Zeitplan**: Der Batchfreigabezeitplan für die Verarbeitung („alle fünf Minuten“ in diesem Beispiel).
+
+     ![Angeben von Details für den Batchtrigger](./media/logic-apps-batch-process-send-receive-messages/receive-batch-schedule-based.png)
+
+
+4. Fügen Sie eine weitere Aktion hinzu, die eine E-Mail sendet, wenn der Batchtrigger ausgelöst wird. Die Logik-App sendet eine E-Mail, wenn der Batch fünf Elemente enthält oder fünf Minuten vergangen sind.
 
    1. Wählen Sie unter dem Batchtrigger die Optionen **+ Neuer Schritt** > **Aktion hinzufügen** aus.
 
@@ -194,4 +201,3 @@ Die Logik-App „BatchSender“ wird einmal pro Minute ausgeführt. Sie generier
 * [Erstellen von Workflowdefinitionen für Logik-Apps per JSON-Code](../logic-apps/logic-apps-author-definitions.md)
 * [Erstellen einer serverlosen App mit Azure Logic Apps und Functions](../logic-apps/logic-apps-serverless-get-started-vs.md)
 * [Ausnahmebehandlung und Fehlerprotokollierung für Logik-Apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-

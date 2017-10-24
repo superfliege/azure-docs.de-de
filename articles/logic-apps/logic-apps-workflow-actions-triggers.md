@@ -1,6 +1,6 @@
 ---
-title: "Workflowaktionen und -trigger – Azure Logic Apps | Microsoft-Dokumentation"
-description: 
+title: "Workflowtrigger und -aktionen – Azure Logic Apps | Microsoft-Dokumentation"
+description: "Hier erfahren Sie mehr über die Arten von Triggern und Aktionen, die Sie zur Erstellung und Automatisierung von Workflows und Prozessen mit Azure Logic Apps verwenden können."
 services: logic-apps
 author: MandiOhlinger
 manager: anneta
@@ -14,178 +14,243 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
+ms.openlocfilehash: 7e0266cdc477715a5d2f9067c6dcea73da9ba763
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: cc41bdb12cf11e60489e104af2df4dd0720dd91b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="triggers-and-actions-for-logic-app-workflows"></a>Trigger und Aktionen für Logik-App-Workflows
 
-# <a name="workflow-actions-and-triggers-for-azure-logic-apps"></a>Workflowaktionen und -trigger für Azure Logic Apps
-
-Logik-Apps bestehen aus Triggern und Aktionen. Es gibt sechs Arten von Triggern. Diese unterscheiden sich jeweils durch ihre Schnittstelle und ihr Verhalten. Weitere ausführliche Informationen finden Sie unter [Schema der Definitionssprache für Workflows für Azure Logic Apps](logic-apps-workflow-definition-language.md).  
+Alle Logik-Apps beginnen mit einem Trigger, auf den dann Aktionen folgen. In diesem Thema werden die Arten von Triggern und Aktionen beschrieben, die Sie zum Erstellen von Systemintegrationen und zum Automatisieren von Geschäftsworkflows oder -prozessen mit Logik-Apps verwenden können. 
   
-Lesen Sie weiter, um sich ausführlicher über Trigger und Aktionen zu informieren, und erfahren Sie, wie Sie Logik-Apps mit Triggern und Aktionen erstellen, um Ihre Geschäftsprozesse und Workflows zu verbessern.  
-  
-### <a name="triggers"></a>Trigger  
+## <a name="triggers-overview"></a>Übersicht über Trigger 
 
-Ein Trigger gibt die Aufrufe an, die eine Ausführung Ihres Logik-App-Workflows initiieren können. Die Ausführung Ihres Workflows kann auf zwei Arten initiiert werden:  
-  
--   Durch einen Abfragetrigger  
+Alle Logik-Apps beginnen mit einem Trigger. Dieser gibt die Aufrufe an, die die Ausführung einer Logik-App initiieren können. Die Ausführung Ihres Workflows kann auf zwei Arten initiiert werden:  
 
--   Durch einen Pushtrigger (mittels Aufruf der [Workflow Service-REST-API](https://docs.microsoft.com/rest/api/logic/workflows))  
+* Durch einen Abfragetrigger  
+* Durch einen Pushtrigger (der die [Workflow Service-REST-API](https://docs.microsoft.com/rest/api/logic/workflows) aufruft)  
   
 Alle Trigger enthalten folgende allgemeine Elemente:  
   
 ```json
-"<name-of-the-trigger>" : {
-    "type": "<type-of-trigger>",
-    "inputs": { <settings-for-the-call> },
+"trigger-name": {
+    "type": "trigger-type",
+    "inputs": { call-settings },
     "recurrence": {  
-        "frequency": "Second|Minute|Hour|Week|Month|Year",
-        "interval": "<recurrence interval in units of frequency>"
+        "frequency": "Second|Minute|Hour|Day|Week|Month",
+        "interval": recurrence-interval-based-on-frequency
     },
-    "conditions": [ <array-of-required-conditions > ],
-    "splitOn" : "<property to create runs for>",
-    "operationOptions": "<operation options on the trigger>"
+    "conditions": [ array-of-required-conditions ],
+    "splitOn": "property-used-for-creating-separate-workflows",
+    "operationOptions": "operation-options-for-trigger"
 }
 ```
 
-### <a name="trigger-types-and-their-inputs"></a>Triggertypen und -eingaben  
+### <a name="trigger-types-and-inputs"></a>Triggertypen und -eingaben  
 
-Folgende Arten von Triggern stehen zur Verfügung:
-  
--   **Request:** Macht die Logik-App zu einem aufrufbaren Endpunkt.  
-  
--   **Recurrence:** Wird auf der Grundlage eines definierten Zeitplans ausgelöst.  
-  
--   **HTTP:** Fragt einen HTTP-Webendpunkt ab. Der HTTP-Endpunkt muss einem bestimmten auslösenden Vertrag entsprechen – entweder durch Verwendung eines asynchronen Musters (202) oder durch Rückgabe eines Arrays.  
-  
--   **ApiConnection:** Führt genau wie der HTTP-Trigger eine Abfrage aus, nutzt dabei aber die [von Microsoft verwalteten APIs](https://docs.microsoft.com/azure/connectors/apis-list).  
-  
--   **HTTPWebhook:** Öffnet ähnlich wie der manuelle Trigger einen Endpunkt, ruft aber auch eine angegebene URL für die Registrierung/Aufhebung der Registrierung auf.  
-  
--   **ApiConnectionWebhook:** Nutzt genau wie der HTTPWebhook-Trigger die von Microsoft-verwalteten APIs.       
-    Jeder Triggertyp verfügt über einen anderen Satz von **Eingaben**, der sein Verhalten definiert.  
-  
-## <a name="request-trigger"></a>Anforderungstrigger  
+Jeder Triggertyp verfügt über eine andere Schnittstelle sowie über verschiedene *Eingaben*, die sein Verhalten definieren. 
 
-Dieser Trigger fungiert als Endpunkt, den Sie über eine HTTP-Anforderung aufrufen, um Ihre Logik-App aufzurufen. Das folgende Beispiel zeigt einen Anforderungstrigger:  
+| Triggertyp | Beschreibung | 
+| ------------ | ----------- | 
+| **Serie** | Wird auf der Grundlage eines definierten Zeitplans ausgelöst. Sie können ein Datum und eine Uhrzeit in der Zukunft festlegen, um diesen Trigger auszulösen. Je nach Häufigkeit können Sie auch Zeiten und Tage für die Workflowausführung angeben. | 
+| **Anforderung**  | Verwandelt Ihre Logik-App in einen aufrufbaren Endpunkt. (Wird auch als manueller Trigger bezeichnet.) | 
+| **HTTP** | Dient zum Überprüfen (oder *Abfragen*) eines HTTP-Webendpunkts. Der HTTP-Endpunkt muss einem bestimmten auslösenden Vertrag entsprechen – entweder durch Verwendung eines asynchronen Musters (202) oder durch Rückgabe eines Arrays. | 
+| **ApiConnection** | Vergleichbar mit dem HTTP-Trigger; führt ebenfalls eine Abfrage durch, verwendet aber [von Microsoft verwaltete APIs](../connectors/apis-list.md). | 
+| **HTTPWebhook** | Vergleichbar mit dem Anforderungstrigger; verwandelt Ihre Logik-App ebenfalls in einen aufrufbaren Endpunkt, ruft allerdings eine bestimmte URL für die Registrierung/Aufhebung der Registrierung auf. |
+| **ApiConnectionWebhook** | Vergleichbar mit dem **HTTPWebhook**-Trigger, verwendet aber von Microsoft verwaltete APIs. | 
+||| 
+
+Ausführlichere Informationen finden Sie unter [Schema der Definitionssprache für Workflows für Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md). 
+  
+## <a name="recurrence-trigger"></a>Recurrence-Trigger  
+
+Dieser Trigger wird auf der Grundlage der angegebenen Wiederholung und des angegebenen Zeitplans ausgeführt, wodurch Sie einen Workflow komfortabel in regelmäßigen Abständen ausführen können. Das folgende Beispiel zeigt einen einfachen Wiederholungstrigger, der täglich ausgeführt wird:
+
+```json
+"myRecurrenceTrigger": {
+    "type": "Recurrence",
+    "recurrence": {
+        "frequency": "Day",
+        "interval": 1
+    }
+}
+```
+Für die Triggerauslösung können Sie auch ein Startdatum und eine Startuhrzeit planen. Wenn Sie also beispielsweise jeden Montag einen wöchentlichen Bericht starten möchten, können Sie den Start der Logik-App wie im folgenden Beispiel auf einen bestimmten Montag festlegen: 
+
+```json
+"myRecurrenceTrigger": {
+    "type": "Recurrence",
+    "recurrence": {
+        "frequency": "Week",
+        "interval": "1",
+        "startTime" : "2017-09-18T00:00:00Z"
+    }
+}
+```
+
+Definition für diesen Trigger: 
+
+```json
+"myRecurrenceTrigger": {
+    "type": "Recurrence",
+    "recurrence": {
+        "frequency": "second|minute|hour|day|week|month",
+        "interval": recurrence-interval-based-on-frequency,
+        "schedule": {
+            // Applies only when frequency is Day or Week. Separate values with commas.
+            "hours": [ one-or-more-hour-marks ], 
+            // Applies only when frequency is Day or Week. Separate values with commas.
+            "minutes": [ one-or-more-minute-marks ], 
+            // Applies only when frequency is Week. Separate values with commas.
+            "weekDays": [ "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday" ] 
+        },
+        "startTime": "start-date-time-with-format-YYYY-MM-DDThh:mm:ss",
+        "timeZone": "specify-time-zone"
+    }
+}
+```
+
+| Elementname | Erforderlich | Typ | Beschreibung | 
+| ------------ | -------- | ---- | ----------- | 
+| frequency | Ja | String | Die Zeiteinheit für die Häufigkeit der Triggerauslösung. Zulässige Werte: „second“, „minute“, „hour“, „day“, „week“ oder „month“ | 
+| interval | Ja | Integer | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. <p>Zulässige Mindest- und Maximalintervalle: <p>-Month: 1–16 Monate </br>- Day: 1–500 Tage </br>- Hour: 1–12.000 Stunden </br>-Minute: 1–72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| timeZone | Nein | String | Nur relevant, wenn Sie eine Startzeit angeben, da dieser Trigger keine [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) akzeptiert. Geben Sie die anzuwendende Zeitzone an. | 
+| startTime | Nein | String | Geben Sie Startdatum und -uhrzeit im folgenden Format an: <p>JJJJ-MM-TTTHH:mm:ss (bei Angabe einer Zeitzone; beachten Sie dabei, dass „TT“ den Tag bezeichnet, während das dritte „T“ wie in den nachfolgenden Beispielen gezeigt nicht verändert werden darf) <p>Oder <p>JJJJ-MM-TTTHH:mm:ssZ (ohne Angabe einer Zeitzone) <p>Für „18. September 2017, 14:00 Uhr“ müssten Sie also beispielsweise „2017-09-18T14:00:00“ und eine Zeitzone (etwa „Pacific Standard Time“) angeben. Alternativ können Sie „2017-09-18T14:00:00Z“ ohne Zeitzone angeben. <p>**Hinweis:** Diese Startzeit muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), aber ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) angegeben werden. Wenn Sie keine Zeitzone angeben, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). <p>Bei einfachen Zeitpläne ist die Startzeit das erste Vorkommen. Bei komplexeren Zeitplänen wird der Trigger nicht vor der Startzeit ausgelöst. Weitere Informationen zu Startdatum und -uhrzeit finden Sie unter [Schedule tasks and workflows that run regularly with logic apps](../connectors/connectors-native-recurrence.md) (Planen von regelmäßig ausgeführten Aufgaben und Workflows mit Logik-Apps). | 
+| weekDays | Nein | Zeichenfolge oder Zeichenfolgenarray | Wenn Sie für `frequency` die Option „Week“ angeben, können Sie einen Tag oder eine kommagetrennte Liste mit Tagen für die Workflowausführung angeben: „Monday“, „Tuesday“, „Wednesday“, „Thursday“, „Friday“, „Saturday“ oder „Sunday“ | 
+| hours | Nein | Ganze Zahl oder Ganzzahlarray | Wenn Sie für `frequency` die Option „Day“ oder „Week“ angeben, können Sie eine ganze Zahl oder eine kommagetrennte Liste mit ganzen Zahlen von 0 bis 23 als die Stunden des Tages angeben, zu denen der Workflow ausgeführt werden soll. <p>Wenn Sie also etwa „10“, „12“ und „14“ angeben, erhalten Sie die vollen Stunden „10 Uhr“, „12 Uhr“ und „14 Uhr“. | 
+| minutes | Nein | Ganze Zahl oder Ganzzahlarray | Wenn Sie für `frequency` die Option „Day“ oder „Week“ angeben, können Sie eine ganze Zahl oder eine kommagetrennte Liste mit ganzen Zahlen von 0 bis 59 als die Minuten der Stunde angeben, zu denen der Workflow ausgeführt werden soll. <p>Wenn Sie also beispielsweise „30“ als Minutenwert angeben und das vorherige Beispiel für Stunden des Tages verwenden, erhalten Sie „10:30 Uhr“, „12:30 Uhr“ und „14:30 Uhr“. | 
+|||||| 
+
+Der folgende Wiederholungstrigger gibt beispielsweise an, dass die Logik-App frühestens ab dem 9. September 2017, 14:00 Uhr, wöchentlich jeden Montag um 10:30 Uhr, 12:30 Uhr und 14:30 Uhr (Pacific Standard Time) ausgeführt werden soll:
+
+``` json
+{
+    "triggers": {
+        "myRecurrenceTrigger": {
+            "type": "Recurrence",
+            "recurrence": {
+                "frequency": "Week",
+                "interval": 1,
+                "schedule": {
+                    "hours": [
+                        10,
+                        12,
+                        14
+                    ],
+                    "minutes": [
+                        30
+                    ],
+                    "weekDays": [
+                        "Monday"
+                    ]
+                },
+               "startTime": "2017-09-07T14:00:00",
+               "timeZone": "Pacific Standard Time"
+            }
+        }
+    }
+}
+```
+
+Weitere Informationen mit Wiederholungs- und Startzeitbeispielen für diesen Trigger finden Sie unter [Schedule tasks and workflows that run regularly with logic apps](../connectors/connectors-native-recurrence.md) (Planen von regelmäßig ausgeführten Aufgaben und Workflows mit Logik-Apps).
+
+## <a name="request-trigger"></a>Anforderungstrigger
+
+Dieser Trigger fungiert als Endpunkt, den Sie verwenden können, um Ihre Logik-App über eine HTTP-Anforderung aufzurufen. Das folgende Beispiel zeigt einen Anforderungstrigger:  
   
 ```json
-"<name-of-the-trigger>" : {
-    "type" : "request",
-    "kind": "http",
-    "inputs" : {
-        "schema" : {
-            "properties" : {
-                "myInputProperty1" : { "type" : "string" },
-                "myInputProperty2" : { "type" : "number" }
+"myRequestTrigger": {
+    "type": "Request",
+    "kind": "Http",
+    "inputs": {
+        "schema": {
+            "type": "Object",
+            "properties": {
+                "myInputProperty1": { "type" : "string" },
+                "myInputProperty2": { "type" : "number" }
             },
-        "required" : [ "myInputProperty1" ],
-        "type" : "object"
+            "required": [ "myInputProperty1" ]
         }
     }
 } 
 ```
 
-Zur Verfügung steht auch eine optionale Eigenschaft namens **schema**:  
+Dieser Trigger verfügt über eine optionale Eigenschaft namens *schema*:
   
-|Elementname|Erforderlich|Beschreibung|  
-|----------------|------------|---------------|  
-|schema|Nein|Ein JSON-Schema zur Validierung der eingehenden Anforderung. Hilfreich, um nachfolgende Workflowschritte darüber zu informieren, auf welche Eigenschaften verwiesen werden soll.|
+| Elementname | Erforderlich | Typ | Beschreibung |
+| ------------ | -------- | ---- | ----------- |
+| schema | Nein | Objekt | Ein JSON-Schema zur Validierung der eingehenden Anforderung. Hilfreich, um nachfolgende Workflowschritte darüber zu informieren, auf welche Eigenschaften verwiesen werden soll. | 
+||||| 
 
-Zum Aufrufen dieses Endpunkts muss die API *listCallbackUrl* aufgerufen werden. Weitere Informationen finden Sie unter [Workflows](https://docs.microsoft.com/rest/api/logic/workflows).  
-  
-## <a name="recurrence-trigger"></a>Recurrence-Trigger  
-
-Recurrence-Trigger werden auf der Grundlage eines definierten Zeitplans ausgeführt. Das folgende Beispiel zeigt einen solchen Trigger:  
-
-```json
-"dailyReport" : {
-    "type": "recurrence",
-    "recurrence": {
-        "frequency": "Day",
-        "interval": "1"
-    }
-}
-```
-
-Wie Sie sehen, handelt es sich hierbei um eine einfache Möglichkeit zur Ausführung eines Workflows.  
-  
-|Elementname|Erforderlich|Beschreibung|  
-|----------------|------------|---------------|  
-|frequency|Ja|Gibt an, wie oft der Trigger ausgeführt wird. Verwenden Sie ausschließlich folgende mögliche Werte: „second“, „minute“, „hour“, „day“, „week“, „month“ oder „year“|  
-|interval|Ja|Intervall mit der angegebenen Häufigkeit für die Wiederholung|  
-|startTime|Nein|Bei Angabe einer Startzeit ohne UTC-Abweichung wird die angegebene Zeitzone verwendet.|  
-|timeZone|no|Bei Angabe einer Startzeit ohne UTC-Abweichung wird die angegebene Zeitzone verwendet.|  
-  
-Sie können die Triggerausführung auch für einen Zeitpunkt in der Zukunft planen. Wenn Sie also beispielsweise jeden Montag einen wöchentlichen Bericht starten möchten, können Sie die Logik-App mithilfe des folgenden Triggers so planen, dass sie jeden Montag startet:  
-
-```json
-"dailyReport" : {
-    "type": "recurrence",
-    "recurrence": {
-        "frequency": "Week",
-        "interval": "1",
-        "startTime" : "2015-06-22T00:00:00Z"
-    }
-}
-```
+Zum Aufrufen dieses Endpunkts muss die API *listCallbackUrl* aufgerufen werden. Weitere Informationen finden Sie unter [Workflows](https://docs.microsoft.com/rest/api/logic/workflows).
 
 ## <a name="http-trigger"></a>HTTP-Trigger  
 
-HTTP-Trigger fragen einen angegebenen Endpunkt ab und überprüfen anhand der Antwort, ob der Workflow ausgeführt werden soll. Das Eingabeobjekt nimmt die Parameter an, die zum Erstellen eines HTTP-Aufrufs benötigt werden:  
+HTTP-Trigger fragen einen angegebenen Endpunkt ab und überprüfen anhand der Antwort, ob der Workflow ausgeführt werden soll. Hier verwendet das `inputs`-Objekt die folgenden, zum Erstellen eines HTTP-Aufrufs erforderlichen Parameter:  
+
+| Elementname | Erforderlich | Typ | Beschreibung | 
+| ------------ | -------- | ---- | ----------- | 
+| method | Ja | String | Zulässige HTTP-Methoden: „GET“, „POST“, „PUT“, „DELETE“, „PATCH“ oder „HEAD“ | 
+| uri | Ja| String | Der HTTP- oder HTTPS-Endpunkt, den der Trigger überprüft. Maximal zulässige Zeichenfolgengröße: 2 KB | 
+| Abfragen | Nein | Objekt | Stellt die Abfrageparameter dar, die Sie in die URL einbeziehen möchten. <p>`"queries": { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu. | 
+| headers | Nein | Objekt | Stellt die einzelnen Header dar, die in der Anforderung gesendet werden. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | Nein | Objekt | Stellt die an den Endpunkt gesendete Nutzlast dar. | 
+| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. | 
+| authentication | Nein | Objekt | Stellt die gewünschte Authentifizierungsmethode für die Anforderung dar. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). <p>Neben Scheduler wird auch noch folgende Eigenschaft unterstützt: `authority`. Ohne Angabe wird standardmäßig der Wert `https://login.windows.net` verwendet. Sie können aber einen anderen Wert verwenden (beispielsweise `https://login.windows\-ppe.net`). | 
+||||| 
+
+Eine *Wiederholungsrichtlinie* gilt für vorübergehende Fehler (HTTP-Statuscodes 408, 429 und 5xx) sowie für Verbindungsausnahmen. Sie können diese Richtlinie wie folgt mit dem `retryPolicy`-Objekt definieren:
   
-|Elementname|Erforderlich|Beschreibung|Typ|  
-|----------------|------------|---------------|--------|  
-|method|Ja|Mögliche HTTP-Methoden: GET, POST, PUT, DELETE, PATCH und HEAD|String|  
-|uri|Ja|Der HTTP- oder HTTPS-Endpunkt, der aufgerufen wird. Maximal 2 KB.|String|  
-|Abfragen|Nein|Ein Objekt, das die Abfrageparameter darstellt, die der URL hinzugefügt werden sollen. `"queries" : { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu.|Objekt|  
-|headers|Nein|Ein Objekt, das die einzelnen Header darstellt, die an die Anforderung gesendet werden. Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: `"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|Objekt|  
-|body|Nein|Ein Objekt, das die an den Endpunkt gesendete Nutzlast darstellt.|Objekt|  
-|retryPolicy|Nein|Ein Objekt zum Anpassen des Wiederholungsverhaltens bei Fehlern vom Typ „4xx“ oder „5xx“.|Objekt|  
-|Authentifizierung|Nein|Stellt die Methode dar, mit der die Anforderung authentifiziert werden soll. Ausführliche Informationen zu diesem Objekt finden Sie unter [Ausgehende Authentifizierung von Scheduler](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication). Neben Scheduler wird noch die Eigenschaft `authority` unterstützt. Ohne Angabe wird standardmäßig der Wert `https://login.windows.net` verwendet. Sie können aber eine andere Zielgruppe verwenden (beispielsweise `https://login.windows\-ppe.net`).|Objekt|  
+```json
+"retryPolicy": {
+    "type": "retry-policy-type",
+    "interval": retry-interval,
+    "count": number-of-retry-attempts
+}
+```
+ 
+Für den HTTP-Trigger muss die HTTP-API einem bestimmten Muster entsprechen, damit sie reibungslos mit Ihrer Logik-App zusammenarbeitet. Der Trigger erkennt folgende Eigenschaften:  
   
-Für den HTTP-Trigger muss die HTTP-API einem bestimmten Muster entsprechen, damit sie problemlos mit Ihrer Logik-App zusammenarbeitet. Es werden folgende Eigenschaften erkannt:  
+| Antwort | Erforderlich | Beschreibung | 
+| -------- | -------- | ----------- |  
+| Statuscode | Ja | Der Statuscode 200 (OK) bewirkt eine Ausführung. Alle anderen Statuscodes bewirken keine Ausführung. | 
+| Retry-After-Header | Nein | Die Anzahl von Sekunden bis zur erneuten Abfrage des Endpunkts durch die Logik-App. | 
+| Adressheader | Nein | Die URL, die im nächsten Abfrageintervall aufgerufen werden soll. Ohne Angabe wird die ursprüngliche URL verwendet. | 
+|||| 
+
+Im Anschluss finden Sie einige Beispiele für das Verhalten verschiedener Anforderungsarten:
   
-|Antwort|Erforderlich|Beschreibung|  
-|------------|------------|---------------|  
-|Statuscode|Ja|Statuscode 200 (\(OK\)), um eine Ausführung zu bewirken. Alle anderen Statuscodes bewirken keine Ausführung.|  
-|Retry\-After-Header|Nein|Anzahl von Sekunden bis zur erneuten Abfrage des Endpunkts durch die Logik-App.|  
-|Adressheader|Nein|Die URL, die im nächsten Abfrageintervall aufgerufen werden soll. Ohne Angabe wird die ursprüngliche URL verwendet.|  
+| Antwortcode | Wiederholungsintervall | Verhalten | 
+| ------------- | ----------- | -------- | 
+| 200 | -- | Führt den Workflow aus und sucht erst nach der definierten Wiederholung wieder nach weiteren Inhalten. | 
+| 200 | 10 Sekunden | Führt den Workflow aus und sucht nach zehn Sekunden nach weiteren Inhalten. |  
+| 202 | 60 Sekunden | Der Workflow wird nicht ausgelöst. Der nächste Versuch erfolgt gemäß der definierten Wiederholung in einer Minute. Wenn die definierte Wiederholung weniger als eine Minute beträgt, hat der Retry-After-Header Vorrang. Andernfalls wird die definierte Wiederholung verwendet. | 
+| 400 | -- | Ungültige Anforderung. Der Workflow wird nicht ausgeführt. Wenn keine `retryPolicy` definiert ist, wird die Standardrichtlinie verwendet. Wenn die Anzahl von Wiederholungen erreicht ist, sucht der Trigger nach der definierten Wiederholung erneut nach Inhalten. | 
+| 500 | --| Serverfehler. Der Workflow wird nicht ausgeführt. Wenn keine `retryPolicy` definiert ist, wird die Standardrichtlinie verwendet. Wenn die Anzahl von Wiederholungen erreicht ist, sucht der Trigger nach der definierten Wiederholung erneut nach Inhalten. | 
+|||| 
+
+HTTP-Triggerausgaben: 
   
-Im Anschluss finden Sie einige Beispiele für die unterschiedlichen Verhaltensweisen verschiedener Anforderungsarten:  
-  
-|Antwortcode|Retry\-After|Verhalten|  
-|-----------------|----------------|------------|  
-|200|\(keine\)|Führen Sie den Workflow aus, und suchen Sie gemäß der definierten Wiederholung erneut nach weiteren Inhalten.|  
-|200|10|Der Workflow wird ausgeführt, und in zehn Sekunden wird auf weitere Inhalte geprüft.|  
-|202|60|Der Workflow wird nicht ausgelöst. Der nächste Versuch wird gemäß der definierten Wiederholung in einer Minute ausgeführt. Wenn die definierte Wiederholung weniger als eine Minute beträgt, hat der Retry-After-Header Vorrang. Andernfalls wird die definierte Wiederholung eingehalten.|  
-|400|\(keine\)|Ungültige Anforderung. Der Workflow wird nicht ausgeführt. Falls keine **Wiederholungsrichtlinie** definiert ist, wird die Standardrichtlinie verwendet. Wenn die Anzahl von Wiederholungen erreicht ist, sucht der Trigger gemäß der definierten Wiederholung erneut nach Inhalten.|  
-|500|\(keine\)|Serverfehler. Der Workflow wird nicht ausgeführt.  Falls keine **Wiederholungsrichtlinie** definiert ist, wird die Standardrichtlinie verwendet. Wenn die Anzahl von Wiederholungen erreicht ist, sucht der Trigger gemäß der definierten Wiederholung erneut nach Inhalten.|  
-  
-Die Ausgabe eines HTTP-Triggers kann beispielsweise wie folgt aussehen:  
-  
-|Elementname|Beschreibung|Typ|  
-|----------------|---------------|--------|  
-|headers|Die Header der HTTP-Antwort.|Objekt|  
-|body|Der Text der HTTP-Antwort.|Objekt|  
-  
+| Elementname | Typ | Beschreibung |
+| ------------ | ---- | ----------- |
+| headers | Objekt | Die Header der HTTP-Antwort. | 
+| body | Objekt | Der Text der HTTP-Antwort. | 
+|||| 
+
 ## <a name="api-connection-trigger"></a>APIConnection-Trigger  
 
 Die Grundfunktion des APIConnection-Triggers ist mit der des HTTP-Triggers vergleichbar. Die Parameter zum Identifizieren der Aktion sind jedoch unterschiedlich. Beispiel:  
   
 ```json
-"dailyReport" : {
+"myDailyReportTrigger": {
     "type": "ApiConnection",
     "inputs": {
         "host": {
             "api": {
                 "runtimeUrl": "https://myarticles.example.com/"
-            },
-        }
+            }
+        },
         "connection": {
             "name": "@parameters('$connections')['myconnection'].name"
         }
@@ -197,37 +262,50 @@ Die Grundfunktion des APIConnection-Triggers ist mit der des HTTP-Triggers vergl
 }
 ```
 
-|Elementname|Erforderlich|Typ|Beschreibung|  
-|----------------|------------|--------|---------------|  
-|host|Ja||Das von „ApiApp“ gehostete Gateway und die ID.|  
-|method|Ja|String|Mögliche HTTP-Methoden: **GET**, **POST**, **PUT**, **DELETE**, **PATCH** und **HEAD**|  
-|Abfragen|Nein|Objekt|Stellt die Abfrageparameter dar, die der URL hinzugefügt werden sollen. `"queries" : { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu.|  
-|headers|Nein|Objekt|Stellt die einzelnen Header dar, die an die Anforderung gesendet werden. Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: `"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
-|body|Nein|Objekt|Stellt die an den Endpunkt gesendete Nutzlast dar.|  
-|retryPolicy|Nein|Objekt|Ermöglicht die Anpassung des Wiederholungsverhaltens bei Fehlern vom Typ „4xx“ oder „5xx“.|  
-|Authentifizierung|Nein|Objekt|Stellt die Methode dar, mit der die Anforderung authentifiziert werden soll. Ausführliche Informationen zu diesem Objekt finden Sie unter [Ausgehende Authentifizierung von Scheduler](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication).|  
+| Elementname | Erforderlich | Typ | Beschreibung | 
+| ------------ | -------- | ---- | ----------- | 
+| host | Ja | Objekt | Das gehostete Gateway und die ID für die API-App. | 
+| method | Ja | String | Zulässige HTTP-Methoden: „GET“, „POST“, „PUT“, „DELETE“, „PATCH“ oder „HEAD“ | 
+| Abfragen | Nein | Objekt | Stellt die Abfrageparameter dar, die Sie in die URL einbeziehen möchten. <p>`"queries": { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu. | 
+| headers | Nein | Objekt | Stellt die einzelnen Header dar, die in der Anforderung gesendet werden. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | Nein | Objekt | Stellt die an den Endpunkt gesendete Nutzlast dar. | 
+| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. | 
+| authentication | Nein | Objekt | Stellt die gewünschte Authentifizierungsmethode für die Anforderung dar. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). | 
+||||| 
+
+Eigenschaften für das `host`-Objekt:  
   
-Eigenschaften für „host“:  
+| Elementname | Erforderlich | Beschreibung | 
+| ------------ | -------- | ----------- | 
+| api runtimeUrl | Ja | Der Endpunkt für die verwaltete API. | 
+| connection name |  | Der Name der verwalteten API-Verbindung, die der Workflow verwendet. Muss auf einen Parameter namens `$connection` verweisen. |
+|||| 
+
+Eine *Wiederholungsrichtlinie* gilt für vorübergehende Fehler (HTTP-Statuscodes 408, 429 und 5xx) sowie für Verbindungsausnahmen. Sie können diese Richtlinie wie folgt mit dem `retryPolicy`-Objekt definieren:
   
-|Elementname|Erforderlich|Beschreibung|  
-|----------------|------------|---------------|  
-|api runtimeUrl|Ja|Der Endpunkt der verwalteten API.|  
-|connection name||Muss ein Verweis auf einen Parameter namens `$connection` sein und ist der Namen der vom Workflow verwendeten Verbindung mit der verwalteten API.|
+```json
+"retryPolicy": {
+    "type": "retry-policy-type",
+    "interval": retry-interval,
+    "count": number-of-retry-attempts
+}
+```
+
+Ausgaben für einen APIConnection-Trigger:
   
-Ausgaben eines APIConnection-Triggers:
-  
-|Elementname|Typ|Beschreibung|  
-|----------------|--------|---------------|  
-|headers|Objekt|Die Header der HTTP-Antwort.|  
-|body|Objekt|Der Text der HTTP-Antwort.|  
+| Elementname | Typ | Beschreibung |
+| ------------ | ---- | ----------- |
+| headers | Objekt | Die Header der HTTP-Antwort. | 
+| body | Objekt | Der Text der HTTP-Antwort. | 
+|||| 
   
 ## <a name="httpwebhook-trigger"></a>HTTPWebhook-Trigger  
 
-Der HTTPWebhook-Trigger öffnet ähnlich wie der manuelle Trigger einen Endpunkt, ruft aber auch eine angegebene URL für die Registrierung/Aufhebung der Registrierung auf. Das folgende Beispiel zeigt einen HTTPWebhook-Trigger:  
+Der HTTPWebhook-Trigger stellt ähnlich wie der Anforderungstrigger einen Endpunkt bereit, ruft aber auch eine angegebene URL für die Registrierung/Aufhebung der Registrierung auf. Das folgende Beispiel zeigt einen HTTPWebhook-Trigger:  
 
 ```json
-"myappspottrigger": {
-    "type": "httpWebhook",
+"myAppsSpotTrigger": {
+    "type": "HttpWebhook",
     "inputs": {
         "subscribe": {
             "method": "POST",
@@ -253,70 +331,70 @@ Der HTTPWebhook-Trigger öffnet ähnlich wie der manuelle Trigger einen Endpunkt
         }
     },
     "conditions": [ ]
-    }
+}
 ```
 
-Viele dieser Abschnitte sind optional, und das Verhalten des Webhooks hängt davon ab, welche Abschnitte angegeben bzw. nicht angegeben werden.  
-Eigenschaften eines Webhooks:  
+Viele dieser Abschnitte sind optional, und das Verhalten des HTTPWebhook-Triggers hängt davon ab, welche Abschnitte Sie angeben oder weglassen. Eigenschaften für den HTTPWebhook-Trigger:
   
-|Elementname|Erforderlich|Beschreibung|  
-|----------------|------------|---------------|  
-|subscribe|Nein|Die ausgehende Anforderung, die bei der Triggererstellung aufgerufen wird und die anfängliche Registrierung ausführt.|  
-|unsubscribe|Nein|Die ausgehende Anforderung beim Löschen des Triggers.|  
-  
--   **subscribe** ist der ausgehende Aufruf, der ausgeführt wird, um auf Ereignisse zu lauschen. Der Aufruf beginnt mit dem gleichen Parametersatz wie normale HTTP-Aktionen. Dieser ausgehende Aufruf wird bei jeder Veränderung des Workflows ausgeführt – beispielsweise bei einer Erneuerung der Anmeldeinformationen oder bei einer Änderung der Eingabeparameter des Triggers.
-  
-    Zur Unterstützung dieses Aufrufs steht eine neue Funktion zur Verfügung: `@listCallbackUrl()`. Diese Funktion gibt eine eindeutige URL für diesen spezifischen Trigger in diesem Workflow zurück. Er stellt den eindeutigen Bezeichner für die Endpunkte dar, die Dienst-REST verwenden.  
-  
--   **unsubscribe** wird aufgerufen, wenn ein Vorgang dazu führt, dass der Trigger ungültig wird. Hierzu zählen:  
-  
-    -   Löschen oder Deaktivieren des Triggers  
-  
-    -   Löschen oder Deaktivieren des Workflows  
-  
-    -   Löschen oder Deaktivieren des Abonnements  
-  
-    Die Aktion „unsubscribe“ wird von der Logik-App automatisch aufgerufen. Für diese Funktion werden die gleichen Parameter verwendet wie beim HTTP-Trigger.  
-  
-    Bei den Ausgaben des HTTPWebhook-Triggers handelt es sich um die Inhalte der eingehenden Anforderung:  
-  
-|Elementname|Typ|Beschreibung|  
-|-----------------|--------|---------------|  
-|headers|Objekt|Die Header der HTTP-Anforderung.|  
-|body|Objekt|Der Text der HTTP-Anforderung.|  
+| Elementname | Erforderlich | Beschreibung | 
+| ------------ | -------- | ----------- |  
+| subscribe | Nein | Gibt die ausgehende Anforderung an, die bei der Triggererstellung aufgerufen werden soll und die anfängliche Registrierung ausführt. | 
+| unsubscribe | Nein | Gibt die ausgehende Anforderung an, die beim Löschen des Triggers aufgerufen werden soll. | 
+|||| 
 
-Grenzwerte für eine Webhookaktion können auf die gleiche Weise angegeben werden wie [asynchrone Grenzwerte für HTTP](#asynchronous-limits).
+Grenzwerte für eine Webhookaktion können auf die gleiche Weise angegeben werden wie [asynchrone Grenzwerte für HTTP](#asynchronous-limits). Im Anschluss finden Sie weitere Informationen zu den Aktionen `subscribe` und `unsubscribe`:
+
+* `subscribe` wird aufgerufen, damit der Trigger damit beginnen kann, auf Ereignisse zu lauschen. Dieser ausgehende Aufruf beginnt mit den gleichen Parametern wie HTTP-Standardaktionen. Er wird bei jeder Veränderung des Workflows ausgeführt – beispielsweise bei einer Erneuerung der Anmeldeinformationen oder bei einer Änderung der Eingabeparameter des Triggers. 
   
+  Zur Unterstützung dieses Aufrufs gibt die Funktion `@listCallbackUrl()` eine eindeutige URL für diesen speziellen Trigger im Workflow zurück. Diese URL stellt den eindeutigen Bezeichner für die Endpunkte dar, die die REST-API des Diensts verwenden.
+  
+* `unsubscribe` wird automatisch aufgerufen, wenn ein Vorgang dazu führt, dass der Trigger ungültig wird. Hierzu zählen unter anderem folgende Vorgänge:
+
+  * Löschen oder Deaktivieren des Triggers 
+  * Löschen oder Deaktivieren des Workflows 
+  * Löschen oder Deaktivieren des Abonnements 
+  
+  Für diese Funktion werden die gleichen Parameter verwendet wie beim HTTP-Trigger.
+
+Im Anschluss finden Sie die Ausgaben des HTTPWebhook-Triggers und die Inhalte der eingehenden Anforderung:
+  
+| Elementname | Typ | Beschreibung |
+| ------------ | ---- | ----------- |
+| headers | Objekt | Die Header der HTTP-Antwort. | 
+| body | Objekt | Der Text der HTTP-Antwort. | 
+|||| 
 
 ## <a name="conditions"></a>Bedingungen  
 
 Bei jedem Trigger können Sie mithilfe einzelner oder mehrerer Bedingungen bestimmen, ob der Workflow ausgeführt werden soll. Beispiel:  
 
 ```json
-"dailyReport" : {
-    "type": "recurrence",
-    "conditions": [ {
-        "expression": "@parameters('sendReports')"
-    } ],
+"myDailyReportTrigger": {
+    "type": "Recurrence",
+    "conditions": [ 
+        {
+            "expression": "@parameters('sendReports')"
+        } 
+    ],
     "recurrence": {
         "frequency": "Day",
-        "interval": "1"
+        "interval": 1
     }
 }
 ```
 
-In diesem Fall wird der Bericht nur ausgelöst, wenn der Parameter `sendReports` des Workflows auf „true“ festgelegt ist. Bedingungen können außerdem auf den Statuscode des Triggers verweisen. So können Sie beispielsweise festlegen, dass ein Workflow nur gestartet werden soll, wenn Ihre Website den Statuscode 500 zurückgibt:
+In diesem Fall wird der Bericht nur ausgelöst, wenn der Parameter `sendReports` des Workflows auf „true“ festgelegt ist. Bedingungen können außerdem auf den Statuscode des Triggers verweisen. So können Sie beispielsweise festlegen, dass ein Workflow nur gestartet werden soll, wenn Ihre Website den Statuscode 500 zurückgibt. Beispiel:
   
-```  
-"conditions": [  
-        {  
-          "expression": "@equals(triggers().code, 'InternalServerError')"  
-        }  
-      ]  
+``` json
+"conditions": [ 
+    {  
+      "expression": "@equals(triggers().code, 'InternalServerError')"  
+    }  
+]  
 ```  
   
 > [!NOTE]  
-> Sobald ein Ausdruck \(auf beliebige Weise\) auf den Statuscode des Triggers verweist, wird das Standardverhalten \(nur bei 200 \(OK\) auslösen\) ersetzt. Wenn die Auslösung also beispielsweise sowohl für den Statuscode 200 als auch für den Statuscode 201 erfolgen soll, müssen Sie als Bedingung Folgendes einfügen: `@or(equals(triggers().code, 200),equals(triggers().code,201))`  
+> Sobald ein Ausdruck auf den Statuscode des Triggers verweist, wird das Standardverhalten „nur bei 200 (OK) auslösen“ ersetzt. Wenn die Auslösung also beispielsweise sowohl für den Statuscode 200 als auch für den Statuscode 201 erfolgen soll, müssen Sie als Bedingung Folgendes einfügen: `@or(equals(triggers().code, 200),equals(triggers().code,201))`
   
 ## <a name="start-multiple-runs-for-a-request"></a>Starten mehrerer Ausführungen für eine Anforderung
 
@@ -326,63 +404,69 @@ Bei `splitOn` geben Sie die Eigenschaft innerhalb der Antwortnutzlast mit dem El
   
 ```json
 {
-    "Status" : "success",
-    "Rows" : [
+    "status": "Succeeded",
+    "rows": [
         {  
             "id" : 938109380,
-            "name" : "mycoolrow"
+            "name" : "myFirstRow"
         },
         {
             "id" : 938109381,
-            "name" : "another row"
+            "name" : "mySecondRow"
         }
     ]
 }
 ```
   
-Ihre Logik-App benötigt lediglich den Inhalt von „Rows“. Somit können Sie Ihren Trigger wie im folgenden Beispiel erstellen:  
-  
+Ihre Logik-App benötigt lediglich den Inhalt von `rows`. Somit können Sie Ihren Trigger wie im folgenden Beispiel erstellen:  
+
 ```json
-"mysplitter" : {
-    "type" : "http",
+"mySplitterTrigger": {
+    "type": "Http",
     "recurrence": {
-        "frequency": "Minute",
-        "interval": "1"
+        "frequency": "minute",
+        "interval": 1
     },
-    "intputs" : {
-        "uri" : "https://mydomain.com/myAPI",
-        "method" : "GET"
+    "intputs": {
+        "uri": "https://mydomain.com/myAPI",
+        "method": "GET"
     },
-    "splitOn" : "@triggerBody()?.Rows"
+    "splitOn": "@triggerBody()?.rows"
 }
 ```
-  
-In der Workflowdefinition gibt `@triggerBody().name` dann für die erste Ausführung `mycoolrow` und für die zweite Ausführung `another row` zurück. Das folgende Beispiel zeigt die Triggerausgaben:  
-  
+> [!NOTE]  
+> Bei Verwendung von `SplitOn` können Sie keine Eigenschaften abrufen, die sich außerhalb des Arrays befinden. In diesem Beispiel können Sie also die `status`-Eigenschaft aus der von der API zurückgegebenen Antwort nicht abrufen.
+> In diesem Beispiel verwenden wir zudem den `?`-Operator, um einen Fehler zu vermeiden, wenn die `rows`-Eigenschaft nicht vorhanden ist. 
+
+In der Workflowdefinition gibt `@triggerBody().name` also für die erste Ausführung `myFirstRow` und für die zweite Ausführung `mySecondRow` zurück. Das folgende Beispiel zeigt die Triggerausgaben:  
+
 ```json
 {
-    "body" : {
-        "id" : 938109381,
-        "name" : "another row"
+    "body": {
+        "id": 938109380,
+        "name": "mySecondRow"
     }
 }
 ```
 
-Bei Verwendung von `SplitOn` können Sie also keine Eigenschaften außerhalb des Arrays abrufen (in diesem Fall das Feld `Status`).  
-  
-> [!NOTE]  
-> In diesem Beispiel verwenden wir den `?`-Operator, um einen Fehler zu vermeiden, wenn die `Rows`-Eigenschaft nicht vorhanden ist. 
+```json
+{
+    "body": {
+        "id": 938109381,
+        "name": "mySecondRow"
+    }
+}
+```
   
 ## <a name="single-run-instance"></a>Instanz mit einzelner Ausführung
 
-Sie können Trigger mit einer Wiederholungseigenschaft so konfigurieren, dass sie nur ausgelöst werden, wenn alle aktiven Ausführungen abgeschlossen sind. Falls eine geplante Wiederholung vorgesehen ist, während bereits eine Ausführung stattfindet, wird der Trigger übersprungen und im nächsten Wiederholungsintervall eine erneute Prüfung ausgeführt.
-
-Sie können diese Einstellung über die Vorgangsoptionen konfigurieren:
+Wiederholungstrigger können so konfiguriert werden, dass sie nur ausgelöst werden, wenn alle aktiven Ausführungen abgeschlossen sind. Falls eine geplante Wiederholung stattfindet, während bereits eine Workflowinstanz ausgeführt wird, wird der Trigger übersprungen und im nächsten Wiederholungsintervall eine erneute Prüfung durchgeführt.
+Diese Einstellung können Sie konfigurieren, indem Sie die `operationOptions`-Eigenschaft auf `singleInstance` festlegen:
 
 ```json
 "triggers": {
-    "mytrigger": {
-        "type": "http",
+    "myHTTPTrigger": {
+        "type": "Http",
         "inputs": { ... },
         "recurrence": { ... },
         "operationOptions": "singleInstance"
@@ -390,70 +474,80 @@ Sie können diese Einstellung über die Vorgangsoptionen konfigurieren:
 }
 ```
 
-## <a name="types-and-inputs"></a>Typen und Eingaben  
+## <a name="actions-overview"></a>Übersicht über Aktionen
 
-Es gibt viele Arten von Aktionen, die jeweils über ein eigenes Verhalten verfügen. Auflistungsaktionen können zahlreiche weitere Aktionen enthalten.
+Es gibt viele Arten von Aktionen, die jeweils über ein eigenes Verhalten verfügen. Jeder Aktionstyp verfügt über verschiedene Eingaben, die sein Verhalten definieren. Collection-Aktionen können zahlreiche weitere Aktionen enthalten. 
 
 ### <a name="standard-actions"></a>Standardaktionen  
 
--   **HTTP:** Diese Aktion ruft einen HTTP-Webendpunkt auf.  
-  
--   **ApiConnection:** Diese Aktion verhält sich wie die HTTP-Aktion, verwendet aber die von Microsoft verwalteten APIs.  
-  
--   **ApiConnectionWebhook:** Diese Aktion ist mit „HTTPWebhook“ vergleichbar, verwendet aber die von Microsoft verwalteten APIs.  
-  
--   **Response:** Diese Aktion definiert eine Antwort für einen eingehenden Aufruf.  
-  
--   **Wait:** Diese einfache Aktion wartet einen festen Zeitraum oder bis zu einer bestimmten Zeit.  
-  
--   **Workflow:** Diese Aktion stellt einen geschachtelten Workflow dar.  
+| Aktionstyp | Beschreibung | 
+| ----------- | ----------- | 
+| **HTTP** | Fragt einen HTTP-Webendpunkt ab. | 
+| **ApiConnection**  | Vergleichbar mit der HTTP-Aktion, verwendet aber [von Microsoft verwaltete APIs](https://docs.microsoft.com/azure/connectors/apis-list). | 
+| **ApiConnectionWebhook** | Vergleichbar mit „HTTPWebhook“, verwendet aber von Microsoft verwaltete APIs. | 
+| **Response** | Definiert die Antwort für einen eingehenden Aufruf. | 
+| **Function** | Stellt eine Azure-Funktion dar. | 
+| **Wait** | Wartet eine bestimmte Zeit oder bis zu einer bestimmten Zeit. | 
+| **Workflow** | Stellt einen geschachtelten Workflow dar. | 
+| **Compose** | Erstellt ein beliebiges Objekt auf der Grundlage der Aktionseingaben. | 
+| **Query** | Filtert ein Array auf der Grundlage einer Bedingung. | 
+| **Select** | Projiziert die einzelnen Elemente eines Arrays in einen neuen Wert. So können Sie beispielsweise ein Zahlenarray in ein Objektarray konvertieren. | 
+| **Tabelle** | Konvertiert ein Array von Elementen in eine CSV- oder HTML-Tabelle. | 
+| **Terminate** | Beendet eine Workflowausführung. | 
+||| 
 
--   **Function:** Diese Aktion stellt eine Azure-Funktion dar.
+### <a name="collection-actions"></a>Collection-Aktionen
 
-### <a name="collection-actions"></a>Auflistungsaktionen
+| Aktionstyp | Beschreibung | 
+| ----------- | ----------- | 
+| **Condition** | Wertet einen Ausdruck aus und führt abhängig vom Ergebnis die entsprechende Verzweigung aus. | 
+| **Scope** | Dient zum logischen Gruppieren anderer Aktionen. | 
+| **ForEach** | Diese Schleifenaktion durchläuft ein Array und führt interne Aktionen für die einzelnen Arrayelemente aus. | 
+| **Until** | Diese Schleifenaktion führt interne Aktionen aus, bis eine Bedingung erfüllt ist. | 
+||| 
 
--   **Scope:** Bei dieser Aktion handelt es sich um eine logische Gruppierung anderer Aktionen.
-
--   **Condition:** Diese Aktion wertet einen Ausdruck aus und führt die entsprechende Ergebnisverzweigung aus.
-
--   **ForEach:** Diese Schleifenaktion durchläuft ein Array und führt interne Aktionen für die einzelnen Elemente aus.
-
--   **Until:** Diese Schleifenaktion führt interne Aktionen aus, bis eine Bedingung erfüllt ist.
-  
-Jede Art von Aktion verfügt über einen anderen Satz von **Eingaben**, die das Verhalten einer Aktion definieren.  
-  
 ## <a name="http-action"></a>HTTP-Aktion  
 
-HTTP-Aktionen rufen einen angegebenen Endpunkt auf und überprüfen anhand der Antwort, ob der Workflow ausgeführt werden soll. Das Objekt **inputs** nimmt die Parameter an, die zum Erstellen des HTTP-Aufrufs benötigt werden:  
-  
-|Elementname|Erforderlich|Typ|Beschreibung|  
-|----------------|------------|--------|---------------|  
-|method|Ja|String|Mögliche HTTP-Methoden: **GET**, **POST**, **PUT**, **DELETE**, **PATCH** und **HEAD**|  
-|uri|Ja|string|Der HTTP- oder HTTPS-Endpunkt, der aufgerufen wird. Die maximale Länge beträgt 2 KB.|  
-|Abfragen|Nein|Objekt|Stellt die Abfrageparameter dar, die der URL hinzugefügt werden sollen. `"queries" : { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu.|  
-|headers|Nein|Objekt|Stellt die einzelnen Header dar, die an die Anforderung gesendet werden. Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: `"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
-|body|Nein|Objekt|Stellt die an den Endpunkt gesendete Nutzlast dar.|  
-|retryPolicy|Nein|Objekt|Ermöglicht die Anpassung des Wiederholungsverhaltens bei Fehlern vom Typ „4xx“ oder „5xx“.|  
-|operationsOptions|Nein|string|Definiert den Satz spezieller Verhaltensweisen, die überschrieben werden sollen.|  
-|Authentifizierung|Nein|Objekt|Stellt die Methode dar, mit der die Anforderung authentifiziert werden soll. Ausführliche Informationen zu diesem Objekt finden Sie unter [Ausgehende Authentifizierung von Scheduler](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication). Neben Scheduler wird noch die Eigenschaft `authority` unterstützt. Ohne Angabe wird standardmäßig der Wert `https://login.windows.net` verwendet. Sie können aber eine andere Zielgruppe verwenden (beispielsweise `https://login.windows\-ppe.net`).|  
-  
-HTTP-Aktionen \(und APIConnection-Aktionen\) unterstützen Wiederholungsrichtlinien. Eine Wiederholungsrichtlinie gilt für vorübergehende Fehler (HTTP-Statuscodes 408, 429 und 5xx) sowie für Verbindungsausnahmen. Diese Richtlinie wird mithilfe des Objekts *retryPolicy* beschrieben, das wie folgt definiert wird:
+HTTP-Aktionen rufen einen angegebenen Endpunkt auf und überprüfen anhand der Antwort, ob der Workflow ausgeführt werden soll. Beispiel:
   
 ```json
-"retryPolicy" : {
-    "type": "<type-of-retry-policy>",
-    "interval": <retry-interval>,
-    "count": <number-of-retry-attempts>
+"myLatestNewsAction": {
+    "type": "Http",
+    "inputs": {
+        "method": "GET",
+        "uri": "https://mynews.example.com/latest"
+    }
 }
 ```
-  
-Das Wiederholungsintervall wird im ISO 8601-Format angegeben. Der Mindestwert für dieses Intervall beträgt 20 Sekunden und ist gleichzeitig der Standardwert. Der Maximalwert ist eine Stunde. Die standardmäßige und maximale Wiederholungsanzahl beträgt vier Stunden. Ohne Angabe der Wiederholungsrichtliniendefinition wird eine `fixed`-Strategie mit Standardwerten für Wiederholungsanzahl und Intervall verwendet. Wenn Sie die Wiederholungsrichtlinie deaktivieren möchten, legen Sie den Typ auf `None` fest.  
-  
-Im folgenden Beispiel wiederholt die Aktion den Abruf der neuesten Nachrichten zweimal, falls ein vorübergehender Fehler vorliegt. Dabei werden insgesamt drei Ausführungen mit einer jeweils 30-sekündigen Verzögerung zwischen den einzelnen Versuchen verwendet:  
+
+Hier verwendet das `inputs`-Objekt die folgenden, zum Erstellen eines HTTP-Aufrufs erforderlichen Parameter: 
+
+| Elementname | Erforderlich | Typ | Beschreibung | 
+| ------------ | -------- | ---- | ----------- | 
+| method | Ja | String | Zulässige HTTP-Methoden: „GET“, „POST“, „PUT“, „DELETE“, „PATCH“ oder „HEAD“ | 
+| uri | Ja| String | Der HTTP- oder HTTPS-Endpunkt, den der Trigger überprüft. Maximal zulässige Zeichenfolgengröße: 2 KB | 
+| Abfragen | Nein | Objekt | Stellt die Abfrageparameter dar, die Sie in die URL einbeziehen möchten. <p>`"queries": { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu. | 
+| headers | Nein | Objekt | Stellt die einzelnen Header dar, die in der Anforderung gesendet werden. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | Nein | Objekt | Stellt die an den Endpunkt gesendete Nutzlast dar. | 
+| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. | 
+| operationsOptions | Nein | string | Definiert den Satz spezieller Verhaltensweisen, die überschrieben werden sollen. | 
+| Authentifizierung | Nein | Objekt | Stellt die gewünschte Authentifizierungsmethode für die Anforderung dar. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). <p>Neben Scheduler wird auch noch folgende Eigenschaft unterstützt: `authority`. Ohne Angabe wird standardmäßig der Wert `https://login.windows.net` verwendet. Sie können aber einen anderen Wert verwenden (beispielsweise `https://login.windows\-ppe.net`). | 
+||||| 
+
+HTTP-Aktionen und APIConnection-Aktionen unterstützen *Wiederholungsrichtlinien*. Eine Wiederholungsrichtlinie gilt für vorübergehende Fehler (HTTP-Statuscodes 408, 429 und 5xx) sowie für Verbindungsausnahmen. Sie können diese Richtlinie wie folgt mit dem `retryPolicy`-Objekt definieren:
   
 ```json
-"latestNews" : {
-    "type": "http",
+"retryPolicy": {
+    "type": "retry-policy-type",
+    "interval": retry-interval,
+    "count": number-of-retry-attempts
+}
+```
+Die folgende HTTP-Beispielaktion wiederholt den Abruf der neuesten Nachrichten zweimal, falls ein vorübergehender Fehler vorliegt. Dabei werden insgesamt drei Ausführungen mit einer jeweils 30-sekündigen Verzögerung zwischen den einzelnen Versuchen verwendet:
+  
+```json
+"myLatestNewsAction": {
+    "type": "Http",
     "inputs": {
         "method": "GET",
         "uri": "https://mynews.example.com/latest",
@@ -465,15 +559,18 @@ Im folgenden Beispiel wiederholt die Aktion den Abruf der neuesten Nachrichten z
     }
 }
 ```
+
+Das Wiederholungsintervall ist im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) angegeben. Der Mindestwert für dieses Intervall beträgt 20 Sekunden und ist gleichzeitig der Standardwert. Der Maximalwert ist eine Stunde. Die standardmäßige und maximale Wiederholungsanzahl beträgt vier Stunden. Ohne Angabe der Wiederholungsrichtliniendefinition wird eine `fixed`-Strategie mit Standardwerten für Wiederholungsanzahl und Intervall verwendet. Wenn Sie die Wiederholungsrichtlinie deaktivieren möchten, legen Sie den Typ auf `None` fest.
+
 ### <a name="asynchronous-patterns"></a>Asynchrone Muster
 
-Standardmäßig unterstützen alle HTTP-basierten Aktionen das Standardmuster für asynchrone Vorgänge. Wenn der Remoteserver also durch eine Antwort vom Typ „202 \(Akzeptiert\)“ angibt, dass die Anforderung zur Verarbeitung akzeptiert wird, fragt das Logic Apps-Modul weiterhin die im Adressheader der Antwort angegebene URL ab, bis ein Endzustand \(eine 202\-fremde Antwort\) erreicht ist.  
+Standardmäßig unterstützen alle HTTP-basierten Aktionen das Standardmuster für asynchrone Vorgänge. Wenn der Remoteserver also durch eine Antwort vom Typ „202 (ZULÄSSIG)“ angibt, dass die Anforderung zur Verarbeitung akzeptiert wird, fragt das Logic Apps-Modul die im Adressheader der Antwort angegebene URL ab, bis ein Endzustand (eine 202-fremde Antwort) erreicht ist.
   
-Wenn Sie dieses asynchrone Verhalten deaktivieren möchten, legen Sie in den Aktionseingaben eine `DisableAsyncPattern`-Option fest. In diesem Fall basiert die Ausgabe der Aktion auf der ersten 202-Antwort des Servers.  
+Wenn Sie dieses asynchrone Verhalten deaktivieren möchten, legen Sie `operationOptions` in den Aktionseingaben auf `DisableAsyncPattern` fest. In diesem Fall basiert die Ausgabe der Aktion auf der ersten 202-Antwort des Servers. Beispiel:
   
 ```json
-"invokeLongRunningOperation" : {
-    "type": "http",
+"invokeLongRunningOperationAction": {
+    "type": "Http",
     "inputs": {
         "method": "POST",
         "uri": "https://host.example.com/resources"
@@ -481,14 +578,15 @@ Wenn Sie dieses asynchrone Verhalten deaktivieren möchten, legen Sie in den Akt
     "operationOptions": "DisableAsyncPattern"
 }
 ```
+<a name="asynchronous-limits"></a>
 
 #### <a name="asynchronous-limits"></a>Asynchrone Grenzwerte
 
-Die Dauer eines asynchronen Musters kann auf ein bestimmtes Zeitintervall begrenzt werden.  Falls das Zeitintervall abläuft, ohne dass ein Endzustand erreicht wurde, wird der Status der Aktion als `Cancelled` mit dem Code `ActionTimedOut` markiert.  Der Grenzwert für das Timeout wird im ISO 8601-Format angegeben.  Grenzwerte können mit folgender Syntax angegeben werden:
+Die Dauer eines asynchronen Musters kann auf ein bestimmtes Zeitintervall begrenzt werden. Falls das Zeitintervall abläuft, ohne dass ein Endzustand erreicht wurde, wird der Status der Aktion mit einem `ActionTimedOut`-Code als `Cancelled` markiert. Der Grenzwert für das Timeout wird im ISO 8601-Format angegeben. Grenzwerte können wie folgt angegeben werden:
 
 ``` json
-"<action-name>": {
-    "type": "workflow|webhook|http|apiconnectionwebhook|apiconnection",
+"action-name": {
+    "type": "Workflow|Webhook|Http|ApiConnectionWebhook|ApiConnection",
     "inputs": { },
     "limit": {
         "timeout": "PT10S"
@@ -496,25 +594,14 @@ Die Dauer eines asynchronen Musters kann auf ein bestimmtes Zeitintervall begren
 }
 ```
   
-## <a name="api-connection"></a>APIConnection  
+## <a name="apiconnection-action"></a>APIConnection-Aktion
 
-Bei „APIConnection“ handelt es sich um eine Aktion, die auf einen von Microsoft verwalteten Connector verweist.
-Diese Aktion erfordert einen Verweis auf eine gültige Verbindung sowie Informationen zur benötigten API und zu den benötigten Parametern.
-
-|Elementname|Erforderlich|Typ|Beschreibung|  
-|----------------|------------|--------|---------------|  
-|host|Ja|Objekt|Stellt die Connectorinformationen wie Laufzeit-URL und Verweis auf das Verbindungsobjekt dar.|
-|method|Ja|String|Mögliche HTTP-Methoden: **GET**, **POST**, **PUT**, **DELETE**, **PATCH** und **HEAD**|  
-|path|Ja|string|Der Pfad des API-Vorgangs.|  
-|Abfragen|Nein|Objekt|Stellt die Abfrageparameter dar, die der URL hinzugefügt werden sollen. `"queries" : { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu.|  
-|headers|Nein|Objekt|Stellt die einzelnen Header dar, die an die Anforderung gesendet werden. Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: `"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
-|body|Nein|Objekt|Stellt die an den Endpunkt gesendete Nutzlast dar.|  
-|retryPolicy|Nein|Objekt|Ermöglicht die Anpassung des Wiederholungsverhaltens bei Fehlern vom Typ „4xx“ oder „5xx“.|  
-|operationsOptions|Nein|string|Definiert den Satz spezieller Verhaltensweisen, die überschrieben werden sollen.|  
+Die APIConnection-Aktion verweist auf einen von Microsoft verwalteten Connector. Diese Aktion erfordert einen Verweis auf eine gültige Verbindung sowie Informationen zur API und zu den Parametern.
+Beispiel für eine APIConnection-Aktion:
 
 ```json
 "Send_Email": {
-    "type": "apiconnection",
+    "type": "ApiConnection",
     "inputs": {
         "host": {
             "api": {
@@ -524,23 +611,48 @@ Diese Aktion erfordert einen Verweis auf eine gültige Verbindung sowie Informat
                 "name": "@parameters('$connections')['office365']['connectionId']"
             }
         },
-        "method": "post",
+        "method": "POST",
         "body": {
-            "Subject": "New Tweet from @{triggerBody()['TweetedBy']}",
+            "Subject": "New tweet from @{triggerBody()['TweetedBy']}",
             "Body": "@{triggerBody()['TweetText']}",
             "To": "me@example.com"
         },
         "path": "/Mail"
     },
     "runAfter": {}
-    }
+}
 ```
 
-## <a name="api-connection-webhook-action"></a>APIConnectionWebhook-Aktion
+| Elementname | Erforderlich | Typ | Beschreibung | 
+| ------------ | -------- | ---- | ----------- | 
+| host | Ja | Objekt | Stellt die Connectorinformationen dar (beispielsweise `runtimeUrl` und Verweis auf das Verbindungsobjekt). | 
+| method | Ja | String | Zulässige HTTP-Methoden: „GET“, „POST“, „PUT“, „DELETE“, „PATCH“ oder „HEAD“ | 
+| path | Ja | String | Der Pfad für den API-Vorgang. | 
+| Abfragen | Nein | Objekt | Stellt die Abfrageparameter dar, die Sie in die URL einbeziehen möchten. <p>`"queries": { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu. | 
+| headers | Nein | Objekt | Stellt die einzelnen Header dar, die in der Anforderung gesendet werden. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | Nein | Objekt | Stellt die an den Endpunkt gesendete Nutzlast dar. | 
+| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. | 
+| operationsOptions | Nein | string | Definiert den Satz spezieller Verhaltensweisen, die überschrieben werden sollen. | 
+| Authentifizierung | Nein | Objekt | Stellt die gewünschte Authentifizierungsmethode für die Anforderung dar. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). |
+||||| 
+
+Eine Wiederholungsrichtlinie gilt für vorübergehende Fehler (HTTP-Statuscodes 408, 429 und 5xx) sowie für Verbindungsausnahmen. Sie können diese Richtlinie wie folgt mit dem `retryPolicy`-Objekt definieren:
+  
+```json
+"retryPolicy": {
+    "type": "retry-policy-type",
+    "interval": retry-interval,
+    "count": number-of-retry-attempts
+}
+```
+
+## <a name="apiconnection-webhook-action"></a>APIConnectionWebhook-Aktion
+
+Die APIConnectionWebhook-Aktion verweist auf einen von Microsoft verwalteten Connector. Diese Aktion erfordert einen Verweis auf eine gültige Verbindung sowie Informationen zur API und zu den Parametern. Grenzwerte für eine Webhookaktion können auf die gleiche Weise angegeben werden wie [asynchrone Grenzwerte für HTTP](#asynchronous-limits).
 
 ```json
 "Send_approval_email": {
-    "type": "apiconnectionwebhook",
+    "type": "ApiConnectionWebhook",
     "inputs": {
         "host": {
             "api": {
@@ -565,85 +677,222 @@ Diese Aktion erfordert einen Verweis auf eine gültige Verbindung sowie Informat
 }
 ```
 
-Grenzwerte für eine Webhookaktion können auf die gleiche Weise angegeben werden wie [asynchrone Grenzwerte für HTTP](#asynchronous-limits).
-  
-## <a name="response-action"></a>Antwortaktion  
+| Elementname | Erforderlich | Typ | Beschreibung | 
+| ------------ | -------- | ---- | ----------- | 
+| host | Ja | Objekt | Stellt die Connectorinformationen dar (beispielsweise `runtimeUrl` und Verweis auf das Verbindungsobjekt). | 
+| path | Ja | String | Der Pfad für den API-Vorgang. | 
+| Abfragen | Nein | Objekt | Stellt die Abfrageparameter dar, die Sie in die URL einbeziehen möchten. <p>`"queries": { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu. | 
+| headers | Nein | Objekt | Stellt die einzelnen Header dar, die in der Anforderung gesendet werden. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | Nein | Objekt | Stellt die an den Endpunkt gesendete Nutzlast dar. | 
+| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. | 
+| operationsOptions | Nein | string | Definiert den Satz spezieller Verhaltensweisen, die überschrieben werden sollen. | 
+| Authentifizierung | Nein | Objekt | Stellt die gewünschte Authentifizierungsmethode für die Anforderung dar. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). |
+||||| 
 
-Dieser Aktionstyp enthält die gesamte Antwortnutzlast aus einer HTTP-Anforderung sowie einen Statuscode, Text und Header:  
+## <a name="response-action"></a>Response-Aktion  
+
+Diese Aktion enthält die gesamte Antwortnutzlast aus einer HTTP-Anforderung sowie `statusCode`, `body` und `headers`:
   
 ```json
-"myresponse" : {
-    "type" : "response",
-    "inputs" : {
-        "statusCode" : 200,
-        "body" : {
-            "contentFieldOne" : "value100",
-            "anotherField" : 10.001
+"myResponseAction": {
+    "type": "response",
+    "inputs": {
+        "statusCode": 200,
+        "body": {
+            "contentFieldOne": "value100",
+            "anotherField": 10.001
         },
-        "headers" : {
-            "x-ms-date" : "@utcnow()",
-            "Content-type" : "application/json"
+        "headers": {
+            "x-ms-date": "@utcnow()",
+            "Content-type": "application/json"
         }
     },
     "runAfter": {}
 }
 ```
+
+Bei der Response-Aktion müssen besondere Einschränkungen berücksichtigt werden, die bei anderen Aktionen nicht gelten:  
   
-Bei der Response-Aktion sind besondere Einschränkungen zu berücksichtigen, die für die anderen Aktionen nicht relevant sind. Dies gilt insbesondere in folgenden Fällen:  
+* Response-Aktionen können innerhalb einer Logik-App nicht in parallelen Verzweigungen verwendet werden, da die eingehende Anforderung eine deterministische Antwort erfordert.
   
--   Response-Aktionen können in einer Definition nicht parallel sein, da eine deterministische Reaktion auf die eingehende Anforderung erforderlich ist.  
+* Falls der Workflow eine Response-Aktion erreicht, nachdem die eingehende Anforderung bereits eine Antwort empfangen hat, wird die Response-Aktion als fehlerhaft oder als Konflikt betrachtet. Die Logik-App-Ausführung wird daraufhin als `Failed` gekennzeichnet.
   
--   Falls eine Response-Aktion erreicht wird, nachdem die eingehende Anforderung eine Antwort empfangen hat, wird die Aktion als fehlerhaft \(Konflikt\) betrachtet und die Ausführung folglich als `Failed` gekennzeichnet.  
-  
--   Der Trigger eines Workflows mit Response-Aktionen darf nicht `splitOn` enthalten, da ein einzelner Aufruf mehrere Ausführungen zur Folge hat. Dies muss beim Ausführen des PUT-Vorgangs für den Flow überprüft und einen Fehler aufgrund einer ungültigen Anforderung auslösen.  
-  
+* Bei einem Workflow mit Response-Aktionen kann in der Triggerdefinition der Befehl `splitOn` nicht verwendet werden, da der Aufruf mehrere Ausführungen erstellt. Bei Verwendung des Workflowvorgangs „PUT“ muss daher geprüft werden, ob dieser Fall vorliegt, und ggf. eine Antwort vom Typ „Ungültige Anforderung“ zurückgegeben werden.
+
+## <a name="function-action"></a>Function-Aktion   
+
+Mit dieser Aktion können Sie eine [Azure-Funktion](../azure-functions/functions-overview.md) darstellen und aufrufen. Beispiel:
+
+```json
+"my-Azure-Function-name": {
+   "type": "Function",
+    "inputs": {
+        "function": {
+            "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Web/sites/{your-Azure-function-app-name}/functions/{your-Azure-function-name}"
+        },
+        "queries": {
+            "extrafield": "specialValue"
+        },  
+        "headers": {
+            "x-ms-date": "@utcnow()"
+        },
+        "method": "POST",
+        "body": {
+            "contentFieldOne": "value100",
+            "anotherField": 10.001
+        }
+    },
+    "runAfter": {}
+}
+```
+| Elementname | Erforderlich | Typ | Beschreibung | 
+| ------------ | -------- | ---- | ----------- |  
+| Funktions-ID | Ja | String | Die Ressourcen-ID für die Azure-Funktion, die Sie aufrufen möchten. | 
+| method | Nein | String | Die HTTP-Methode zum Aufrufen der Funktion. Ohne Angabe wird standardmäßig „POST“ verwendet. | 
+| Abfragen | Nein | Objekt | Stellt die Abfrageparameter dar, die Sie in die URL einbeziehen möchten. <p>`"queries": { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu. | 
+| headers | Nein | Objekt | Stellt die einzelnen Header dar, die in der Anforderung gesendet werden. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | Nein | Objekt | Stellt die an den Endpunkt gesendete Nutzlast dar. | 
+|||||
+
+Beim Speichern Ihrer Logik-App überprüft Azure Logic Apps die referenzierte Funktion:
+
+* Sie müssen auf die Funktion zugreifen können.
+* Sie können nur HTTP-Standardtrigger oder generische JSON-Webhooktrigger verwenden.
+* Für die Funktion darf keine Route definiert sein.
+* Als Autorisierungsebene sind nur „function“ und „anonymous“ zulässig.
+
+Die Trigger-URL wird abgerufen, zwischengespeichert und zur Laufzeit verwendet. Sollte die zwischengespeicherte URL also aufgrund eines Vorgangs ungültig werden, tritt zur Laufzeit ein Fehler bei der Aktion auf. Speichern Sie zur Umgehung dieses Problems die Logik-App erneut. Dadurch wird die Trigger-URL erneut abgerufen und zwischengespeichert.
+
 ## <a name="wait-action"></a>Wait-Aktion  
 
-Die Aktion `wait` hält die Ausführung des Workflows für das angegebene Intervall an. Bei Verwendung des folgenden Ausschnitts wird beispielsweise 15 Minuten gewartet:  
+Diese Aktion hält die Ausführung des Workflows für das angegebene Intervall an. Im folgenden Beispiel wartet der Workflow 15 Minuten:
   
 ```json
-"waitForFifteenMinutes" : {
-    "type": "wait",
+"waitForFifteenMinutesAction": {
+    "type": "Wait",
     "inputs": {
         "interval": {
-            "unit" : "minute",
-            "count" : 15
+            "unit": "minute",
+            "count": 15
         }
     }
 }
-```  
+```
   
-Alternativ kann bis zu einem bestimmten Zeitpunkt gewartet werden, wie im folgenden Beispiel zu sehen:  
+Alternativ kann bis zu einem bestimmten Zeitpunkt gewartet werden, wie im folgenden Beispiel zu sehen:
   
 ```json
-"waitUntilOctober" : {
-    "type": "wait",
+"waitUntilOctoberAction": {
+    "type": "Wait",
     "inputs": {
         "until": {
-            "timestamp" : "2016-10-01T00:00:00Z"
+            "timestamp": "2017-10-01T00:00:00Z"
         }
     }
 }
 ```
   
 > [!NOTE]  
-> Die Wartezeit kann entweder mit dem Objekt **interval** oder mit dem Objekt **until** angegeben werden, aber nicht mit beiden.  
+> Die Wartezeit kann entweder mit dem `until`-Objekt oder mit dem `interval`-Objekt angegeben werden, aber nicht mit beiden.
   
-|Name|Erforderlich|Typ|Beschreibung|  
-|--------|------------|--------|---------------|  
-|interval|Nein|Objekt|Die Wartezeit auf der Grundlage des Zeitraums.|  
-|interval unit|Ja|String|Eine der folgenden Intervalloptionen: „second“, „minute“, „hour“, „day“, „week“, „month“ oder „year“.|  
-|interval count|Ja|String|Die Dauer auf der Grundlage den angegebenen internen Einheit.|  
-|until|Nein|Objekt|Die Wartezeit auf der Grundlage eines Zeitpunkts.|  
-|Zeitstempel für „until“|Ja|String|Der Zeitpunkt (UTC), zu dem die Wartezeit abläuft.|  
+| Elementname | Erforderlich | Typ | Beschreibung | 
+| ------------ | -------- | ---- | ----------- | 
+| until | Nein | Objekt | Die Wartezeit auf der Grundlage eines Zeitpunkts. | 
+| Zeitstempel für „until“ | Ja | String | Der Zeitpunkt (im [UTC-Datums-/Uhrzeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)), zu dem die Wartezeit abläuft. | 
+| interval | Nein | Objekt | Die Wartezeit auf der Grundlage von Intervalleinheit und Anzahl. | 
+| interval unit | Ja | String | Die Zeiteinheit. Zulässige Werte: „second“, „minute“, „hour“, „day“, „week“ oder „month“ | 
+| interval count | Ja | Integer | Eine positive ganze Zahl, die die Anzahl von Intervalleinheiten für die Wartezeit darstellt. | 
+||||| 
 
-## <a name="query-action"></a>Abfrageaktion
+## <a name="workflow-action"></a>Workflow-Aktion   
 
-Mit der Aktion `query` können Sie ein Array auf der Grundlage einer Bedingung filtern. Wenn Sie also beispielsweise Zahlen auswählen möchten, die größer 2 sind, können Sie Folgendes verwenden:
+Diese Aktion stellt einen weiteren Workflow dar. Logic Apps führt eine Zugriffsprüfung für den Workflow (genauer gesagt: für den Trigger) durch. Sie müssen also auf den Workflow zugreifen können.
+
+Die Ausgaben der Aktion basieren auf den Definitionen in der `response`-Aktion für den untergeordneten Workflow. Falls Sie keine `response`-Aktion definiert haben, sind die Ausgaben leer.
 
 ```json
-"FilterNumbers" : {
-    "type": "query",
+"myNestedWorkflowAction": {
+    "type": "Workflow",
+    "inputs": {
+        "host": {
+            "id": "/subscriptions/xxxxyyyyzzz/resourceGroups/rg001/providers/Microsoft.Logic/mywf001",
+            "triggerName": "mytrigger001"
+        },
+        "queries": {
+            "extrafield": "specialValue"
+        },  
+        "headers": {
+            "x-ms-date": "@utcnow()",
+            "Content-type": "application/json"
+        },
+        "body": {
+            "contentFieldOne": "value100",
+            "anotherField": 10.001
+        }
+    },
+    "runAfter": {}
+}
+```
+
+| Elementname | Erforderlich | Typ | Beschreibung | 
+| ------------ | -------- | ---- | ----------- |  
+| host id | Ja | String| Die Ressourcen-ID für den Workflow, den Sie aufrufen möchten. | 
+| host triggerName | Ja | String | Der Name des Triggers, den Sie aufrufen möchten. | 
+| Abfragen | Nein | Objekt | Stellt die Abfrageparameter dar, die Sie in die URL einbeziehen möchten. <p>`"queries": { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu. | 
+| headers | Nein | Objekt | Stellt die einzelnen Header dar, die in der Anforderung gesendet werden. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | Nein | Objekt | Stellt die an den Endpunkt gesendete Nutzlast dar. | 
+|||||   
+
+## <a name="compose-action"></a>Compose-Aktion
+
+Mit dieser Aktion können Sie ein beliebiges Objekt erstellen. Bei der Ausgabe handelt es sich um das Ergebnis der Auswertung der Aktionseingaben. 
+
+> [!NOTE]
+> Die `Compose`-Aktion kann zur Erstellung einer beliebigen Ausgabe verwendet werden. Hierzu zählen unter anderem Objekte und Arrays sowie jede andere Art von Ausgabe, die nativ von Logik-Apps unterstützt wird (etwa XML- und Binärelemente).
+
+Mithilfe der Compose-Aktion können Sie beispielsweise Ausgaben mehrerer Aktionen zusammenführen:
+
+```json
+"composeUserRecordAction": {
+    "type": "Compose",
+    "inputs": {
+        "firstName": "@actions('getUser').firstName",
+        "alias": "@actions('getUser').alias",
+        "thumbnailLink": "@actions('lookupThumbnail').url"
+    }
+}
+```
+
+## <a name="select-action"></a>Select-Aktion
+
+Mit dieser Aktion können Sie die einzelnen Elemente eines Arrays in einen neuen Wert projizieren.
+Zum Konvertieren eines Arrays von Zahlen in ein Array von Objekten können Sie beispielsweise Folgendes verwenden:
+
+```json
+"selectNumbersAction": {
+    "type": "Select",
+    "inputs": {
+        "from": [ 1, 3, 0, 5, 4, 2 ],
+        "select": { "number": "@item()" }
+    }
+}
+```
+
+| Name | Erforderlich | Typ | Beschreibung | 
+| ---- | -------- | ---- | ----------- | 
+| Aus | Ja | Array | Das Quellarray. |
+| select | Ja | Beliebig | Die Projektion, die auf die einzelnen Elemente des Quellarrays angewendet wird. |
+||||| 
+
+Die `select`-Aktion gibt ein Array aus, dessen Kardinalität mit der des Eingabearrays identisch ist. Jedes Element wird gemäß der Definition der `select`-Eigenschaft transformiert. Wenn die Eingabe ein leeres Array ist, wird auch ein leeres Array ausgegeben.
+
+## <a name="query-action"></a>Query-Aktion
+
+Mit dieser Aktion können Sie ein Array auf der Grundlage einer Bedingung filtern. Im folgenden Beispiel werden Zahlen größer zwei ausgewählt:
+
+```json
+"filterNumbersAction": {
+    "type": "Query",
     "inputs": {
         "from": [ 1, 3, 0, 5, 4, 2 ],
         "where": "@greater(item(), 2)"
@@ -656,100 +905,34 @@ Die Ausgabe der Aktion `query` ist ein Array mit Elementen aus dem Eingabearray,
 > [!NOTE]
 > Sollten keine Werte die Bedingung von `where` erfüllen, ist das Ergebnis ein leeres Array.
 
-|Name|Erforderlich|Typ|Beschreibung|
-|--------|------------|--------|---------------|
-|Aus|Ja|Array|Das Quellarray.|
-|Hierbei gilt:|Ja|String|Die Bedingung, die auf die einzelnen Elemente des Quellarrays angewendet werden soll.|
+| Name | Erforderlich | Typ | Beschreibung | 
+| ---- | -------- | ---- | ----------- | 
+| Aus | Ja | Array | Das Quellarray. |
+| Hierbei gilt: | Ja | String | Die Bedingung, die auf die einzelnen Elemente aus dem Quellarray angewendet wird. |
+||||| 
 
-## <a name="select-action"></a>Aktion select
+## <a name="table-action"></a>Table-Aktion
 
-Mit der Aktion `select` können Sie jedes Element eines Arrays in einen neuen Wert projizieren.
-Zum Konvertieren eines Arrays von Zahlen in ein Array von Objekten können Sie beispielsweise Folgendes verwenden:
+Mit dieser Aktion können Sie ein Array von Elementen in eine **CSV**- oder **HTML**-Tabelle konvertieren. Nehmen wir beispielsweise an, Sie verfügen über das folgende `@triggerBody()`-Array:
 
 ```json
-"SelectNumbers" : {
-    "type": "select",
-    "inputs": {
-        "from": [ 1, 3, 0, 5, 4, 2 ],
-        "select": { "number": "@item()" }
+[ 
+    {
+      "id": 0,
+      "name": "apples"
+    },
+    {
+      "id": 1, 
+      "name": "oranges"
     }
-}
+]
 ```
 
-Die Ausgabe der Aktion `select` ist ein Array mit der gleichen Kardinalität wie das Eingabearray, wobei jedes Element entsprechend der Definition durch die `select`-Eigenschaft transformiert wird. Wenn die Eingabe ein leeres Array ist, wird auch ein leeres Array ausgegeben.
-
-|Name|Erforderlich|Typ|Beschreibung|
-|--------|------------|--------|---------------|
-|Aus|Ja|Array|Das Quellarray.|
-|select|Ja|Beliebig|Die Projektion, die auf die einzelnen Elemente des Quellarrays angewendet werden soll.|
-
-## <a name="terminate-action"></a>Terminate-Aktion
-
-Die Terminate-Aktion beendet die Ausführung des Workflows. Dabei werden alle aktiven Aktionen abgebrochen und alle restlichen Aktionen übersprungen. Mit dem folgenden Codeausschnitt wird beispielsweise eine Ausführung mit dem Status **Fehler** beendet:
+Nehmen wir weiter an, Sie definieren eine Table-Aktion wie im folgenden Beispiel:
 
 ```json
-"HandleUnexpectedResponse" : {
-    "type": "terminate",
-    "inputs": {
-        "runStatus" : "failed",
-        "runError": {
-            "code": "UnexpectedResponse",
-            "message": "Received an unexpected response.",
-        }
-    }
-}
-```
-
-> [!NOTE]
-> Bereits abgeschlossene Aktionen sind von der Terminate-Aktion nicht betroffen.
-
-|Name|Erforderlich|Typ|Beschreibung|
-|--------|------------|--------|---------------|
-|runStatus|Ja|String|Der Zielstatus der Ausführung. Entweder **failed** oder **cancelled**.|
-|runError|Nein|Objekt|Die Fehlerdetails. Wird nur unterstützt, wenn **runStatus** auf **failed** festgelegt ist.|
-|Code für „runError“|Nein|String|Der Fehlercode für die Ausführung.|
-|runError message|Nein|String|Die Fehlermeldung für die Ausführung.|
-
-## <a name="compose-action"></a>Compose-Aktion
-
-Mit der Compose-Aktion können Sie ein beliebiges Objekt erstellen. Die Ausgabe der Compose-Aktion ist das Ergebnis der Eingabenauswertung. Mithilfe der Compose-Aktion können Sie beispielsweise Ausgaben mehrerer Aktionen zusammenführen:
-
-```json
-"composeUserRecord" : {
-    "type": "compose",
-    "inputs": {
-        "firstName": "@actions('getUser').firstName",
-        "alias": "@actions('getUser').alias",
-        "thumbnailLink": "@actions('lookupThumbnail').url"
-        }
-    }
-}
-```
-
-> [!NOTE]
-> Mit der Aktion **Compose** können Sie eine beliebige Ausgabe erstellen. Hierzu zählen unter anderem Objekte und Arrays sowie jede andere Art von Ausgabe, die nativ von Logik-Apps unterstützt wird (etwa XML- und Binärelemente).
-
-## <a name="table-action"></a>Aktion table
-
-Mit der Aktion `table` können Sie ein Array von Elementen in eine **CSV**- oder **HTML**-Tabelle konvertieren.
-
-Beispiel: @triggerBody() ist wie folgt definiert:
-
-```json
-[{
-  "id": 0,
-  "name": "apples"
-},{
-  "id": 1, 
-  "name": "oranges"
-}]
-```
-
-Die Aktion ist wie folgt definiert:
-
-```json
-"ConvertToTable" : {
-    "type": "table",
+"convertToTableAction": {
+    "type": "Table",
     "inputs": {
         "from": "@triggerBody()",
         "format": "html"
@@ -757,173 +940,174 @@ Die Aktion ist wie folgt definiert:
 }
 ```
 
-Dies ergibt:
+In diesem Beispiel ergibt sich folgende HTML-Tabelle: 
 
-<table><thead><tr><th>id</th><th>name</th></tr></thead><tbody><tr><td>0</td><td>apples</td></tr><tr><td>1</td><td>oranges</td></tr></tbody></table>"
+<table><thead><tr><th>id</th><th>name</th></tr></thead><tbody><tr><td>0</td><td>apples</td></tr><tr><td>1</td><td>oranges</td></tr></tbody></table>
 
-Sie können die Spalten zum Anpassen der Tabelle ausdrücklich angeben. Beispiel:
+Sie können die Tabelle anpassen, indem Sie die Spalten explizit angeben. Beispiel:
 
 ```json
-"ConvertToTable" : {
-    "type": "table",
+"ConvertToTableAction": {
+    "type": "Table",
     "inputs": {
         "from": "@triggerBody()",
         "format": "html",
-        "columns": [{
-          "header": "produce id",
-          "value": "@item().id"
-        },{
-          "header": "description",
-          "value": "@concat('fresh ', item().name)"
-        }]
+        "columns": [ 
+            {
+                "header": "Produce ID",
+                "value": "@item().id"
+            },
+            {
+              "header": "Description",
+              "value": "@concat('fresh ', item().name)"
+            }
+        ]
     }
 }
 ```
 
-Dies ergibt:
+In diesem Beispiel ergibt sich folgende HTML-Tabelle: 
 
-<table><thead><tr><th>produce id</th><th>Beschreibung</th></tr></thead><tbody><tr><td>0</td><td>fresh apples</td></tr><tr><td>1</td><td>fresh oranges</td></tr></tbody></table>"
+<table><thead><tr><th>Produce ID</th><th>Beschreibung</th></tr></thead><tbody><tr><td>0</td><td>fresh apples</td></tr><tr><td>1</td><td>fresh oranges</td></tr></tbody></table>
 
-Wenn der Eigenschaftswert `from` ein leeres Array ist, wird eine leere Tabelle ausgegeben.
+| Name | Erforderlich | Typ | Beschreibung | 
+| ---- | -------- | ---- | ----------- | 
+| Aus | Ja | Array | Das Quellarray. Wenn der Eigenschaftswert `from` ein leeres Array ist, wird eine leere Tabelle ausgegeben. | 
+| format | Ja | String | Das gewünschte Tabellenformat (**CSV** oder **HTML**). | 
+| columns | Nein | Array | Die gewünschten Tabellenspalten. Dient zum Überschreiben der Standardtabellenform. | 
+| column header | Nein | String | Die Spaltenüberschrift. | 
+| column value | Ja | String | Der Spaltenwert. | 
+||||| 
 
-|Name|Erforderlich|Typ|Beschreibung|
-|--------|------------|--------|---------------|
-|Aus|Ja|Array|Das Quellarray.|
-|format|Ja|String|Das Format, entweder **CSV** oder **HTML**.|
-|columns|Nein|Array|Die Spalten. Ermöglicht das Überschreiben des Standardformats der Tabelle.|
-|column header|Nein|String|Die Kopfzeile der Spalte.|
-|column value|Ja|String|Der Wert der Spalte.|
+## <a name="terminate-action"></a>Terminate-Aktion
 
-## <a name="workflow-action"></a>Workflow-Aktion   
+Diese Aktion beendet die Workflowausführung, bricht alle aktiven Aktionen ab und überspringt die restlichen Aktionen (sofern vorhanden). Die Terminate-Aktion hat keine Auswirkungen auf bereits abgeschlossene Aktionen.
 
-|Name|Erforderlich|Typ|Beschreibung|  
-|--------|------------|--------|---------------|  
-|host id|Ja|String|Die Ressourcen-ID des Workflows, den Sie aufrufen möchten.|  
-|host triggerName|Ja|String|Der Name des Triggers, den Sie aufrufen möchten.|  
-|Abfragen|Nein|Objekt|Stellt die Abfrageparameter dar, die der URL hinzugefügt werden sollen. `"queries" : { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu.|  
-|headers|Nein|Objekt|Stellt die einzelnen Header dar, die an die Anforderung gesendet werden. Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: `"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
-|body|Nein|Objekt|Stellt die an den Endpunkt gesendete Nutzlast dar.|  
-  
+Zum Beenden einer Ausführung mit dem Status „Failed“ können Sie beispielsweise Folgendes verwenden:
+
 ```json
-"mynestedwf" : {
-    "type" : "workflow",
-    "inputs" : {
-        "host" : {
-            "id" : "/subscriptions/xxxxyyyyzzz/resourceGroups/rg001/providers/Microsoft.Logic/mywf001",
-            "triggerName " : "mytrigger001"
-        },
-        "queries" : {
-            "extrafield" : "specialValue"
-        },  
-        "headers" : {
-            "x-ms-date" : "@utcnow()",
-            "Content-type" : "application/json"
-        },
-        "body" : {
-            "contentFieldOne" : "value100",
-            "anotherField" : 10.001
+"handleUnexpectedResponseAction": {
+    "type": "Terminate",
+    "inputs": {
+        "runStatus": "Failed",
+        "runError": {
+            "code": "UnexpectedResponse",
+            "message": "Received an unexpected response"
         }
-    },
-    "runAfter": {}
     }
-```
-  
-Für den Workflow \(genauer gesagt: für den Trigger\) wird eine Zugriffsprüfung ausgeführt. Sie benötigen daher Zugriff auf den Workflow.  
-  
-Die Ausgaben der Aktion `workflow` basieren auf der Definition in der Aktion `response` im untergeordneten Workflow. Falls Sie keine Aktion vom Typ `response` definiert haben, sind die Ausgaben leer.  
-
-## <a name="function-action"></a>Function-Aktion   
-
-|Name|Erforderlich|Typ|Beschreibung|  
-|--------|------------|--------|---------------|  
-|Funktions-ID|Ja|String|Die Ressourcen-ID der Funktion, den Sie aufrufen möchten.|  
-|method|Nein|String|Die HTTP-Methode zum Aufrufen der Funktion. Ohne Angabe wird standardmäßig `POST` verwendet.|  
-|Abfragen|Nein|Objekt|Stellt die Abfrageparameter dar, die der URL hinzugefügt werden sollen. `"queries" : { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu.|  
-|headers|Nein|Objekt|Stellt die einzelnen Header dar, die an die Anforderung gesendet werden. Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: `"headers" : { "Accept-Language": "en-us" }`.|  
-|body|Nein|Objekt|Stellt die an den Endpunkt gesendete Nutzlast dar.|  
-
-```json
-"myfunc" : {
-    "type" : "Function",
-    "inputs" : {
-        "function" : {
-            "id" : "/subscriptions/xxxxyyyyzzz/resourceGroups/rg001/providers/Microsoft.Web/sites/myfuncapp/functions/myfunc"
-        },
-        "queries" : {
-            "extrafield" : "specialValue"
-        },  
-        "headers" : {
-            "x-ms-date" : "@utcnow()"
-        },
-        "method" : "POST",
-    "body" : {
-            "contentFieldOne" : "value100",
-            "anotherField" : 10.001
-        }
-    },
-    "runAfter": {}
 }
 ```
 
-Wenn Sie die Logik-App speichern, werden für die Funktion, auf die verwiesen wird, einige Dinge überprüft:
--   Sie müssen auf die Funktion zugreifen können.
--   Nur der Standard-HTTP-Trigger und der generische JSON-Webhooktrigger sind zulässig.
--   Es darf keine Route definiert sein.
--   Als Autorisierungsebene sind nur „function“ und „anonymous“ zulässig.
+| Name | Erforderlich | Typ | Beschreibung | 
+| ---- | -------- | ---- | ----------- | 
+| runStatus | Ja | String | Der Status der Zielausführung (entweder `Failed` oder `Cancelled`). |
+| runError | Nein | Objekt | Die Fehlerdetails. Wird nur unterstützt, wenn `runStatus` auf `Failed` festgelegt ist. |
+| Code für „runError“ | Nein | String | Der Fehlercode der Ausführung. |
+| runError message | Nein | String | Die Fehlermeldung der Ausführung. |
+||||| 
 
-Die Auslöser-URL wird abgerufen, zwischengespeichert und zur Laufzeit verwendet. Sollte die zwischengespeicherte URL also aufgrund eines Vorgangs ungültig werden, tritt zur Laufzeit ein Fehler bei der Aktion auf. Speichern Sie zur Umgehung dieses Problems die Logik-App erneut. Dadurch wird die Auslöser-URL erneut abgerufen und zwischengespeichert.
+## <a name="collection-actions-overview"></a>Übersicht über Collection-Aktionen
 
-## <a name="collection-actions-scopes-and-loops"></a>Auflistungsaktionen (Bereiche und Schleifen)
+Einige Aktionen können weitere Aktionen enthalten. Auf Verweisaktionen in einer Auflistung kann direkt außerhalb der Auflistung verwiesen werden. Wenn Sie also etwa `Http` in einem Bereich (`scope`) definieren, ist `@body('http')` weiterhin im gesamten Workflow gültig. Aktionen in einer `runAfter`-Auflistungseigenschaft können nur mit anderen Aktionen in der gleichen Auflistung kombiniert werden.
 
-Einige Aktionstypen können andere Aktionen enthalten. Auf Verweisaktionen innerhalb einer Auflistung kann direkt außerhalb der Auflistung verwiesen werden. Wenn Sie `http` in einem Bereich definiert haben, ist `@body('http')` weiterhin überall in einem Workflow gültig. Aktionen innerhalb einer Auflistung können nur nach anderen Aktionen innerhalb der gleichen Auflistung ausgeführt werden (`runAfter`).
+## <a name="condition-if-action"></a>Bedingung: If-Aktion
+
+Mit dieser Aktion können Sie eine Bedingung auswerten und die Ausführung einer Verzweigung davon abhängig machen, ob die Auswertung des Ausdrucks `true` ergibt. 
+  
+```json
+"myCondition": {
+    "type": "If",
+    "actions": {
+        "if_true": {
+            "type": "Http",
+            "inputs": {
+                "method": "GET",
+                "uri": "http://myurl"
+            },
+            "runAfter": {}
+        }
+    },
+    "else": {
+        "actions": {
+            "if_false": {
+                "type": "Http",
+                "inputs": {
+                    "method": "GET",
+                    "uri": "http://myurl"
+                },
+                "runAfter": {}
+            }
+        }
+    },
+    "expression": "@equals(triggerBody(), json(true))",
+    "runAfter": {}
+}
+``` 
+
+| Name | Erforderlich | Typ | Beschreibung | 
+| ---- | -------- | ---- | ----------- | 
+| Aktionen | Ja | Objekt | Die internen Aktionen, die ausgeführt werden sollen, wenn `expression` als `true` ausgewertet wird. | 
+| expression | Ja | String | Der auszuwertende Ausdruck. |
+| else | Nein | Objekt | Die internen Aktionen, die ausgeführt werden sollen, wenn `expression` als `false` ausgewertet wird. |
+||||| 
+
+Erfolgreich ausgewertete Bedingungen werden als `Succeeded` markiert. Aktionen in den Objekten `actions` und `else` werden wie folgt ausgewertet: 
+
+* `Succeeded`, wenn sie erfolgreich ausgeführt wurden
+* `Failed`, wenn sie nicht erfolgreich ausgeführt wurden
+* `Skipped`, wenn die entsprechende Verzweigung nicht ausgeführt wird
+
+Die folgenden Beispiele veranschaulichen die Verwendung von Bedingungen durch Ausdrücke in einer Aktion:
+  
+| JSON-Wert | Ergebnis | 
+| ---------- | -------| 
+| `"expression": "@parameters('hasSpecialAction')"` | Jeder Wert, der als „true“ ausgewertet wird, bewirkt, dass diese Bedingung als erfüllt betrachtet wird. Unterstützt nur boolesche Ausdrücke. Andere Typen können mithilfe der Funktionen `empty` und `equals` in boolesche Werte konvertiert werden. | 
+| `"expression": "@greater(actions('act1').output.value, parameters('threshold'))"` | Unterstützt Vergleichsfunktionen. In diesem Beispiel wird die Aktion nur ausgeführt, wenn die Ausgabe von `act1` den Schwellenwert übersteigt. | 
+| `"expression": "@or(greater(actions('act1').output.value, parameters('threshold')), less(actions('act1').output.value, 100))"` | Unterstützt Logikfunktionen zur Erstellung geschachtelter boolescher Ausdrücke. In diesem Beispiel wird die Aktion nur ausgeführt, wenn die Ausgabe von `act1` den Schwellenwert übersteigt oder kleiner 100 ist. | 
+| `"expression": "@equals(length(actions('act1').outputs.errors), 0))"` | Mithilfe von Arrayfunktionen können Sie prüfen, ob ein Array Elemente enthält. In diesem Beispiel wird die Aktion ausgeführt, wenn das `errors`-Array leer ist. | 
+| `"expression": "parameters('hasSpecialAction')"` | Fehler: Keine gültige Bedingung, da „@“ für Bedingungen erforderlich ist. |  
+|||
 
 ## <a name="scope-action"></a>Scope-Aktion
 
-Mit der Aktion `scope` können Sie Aktionen in einem Workflow logisch gruppieren.
-
-|Name|Erforderlich|Typ|Beschreibung|  
-|--------|------------|--------|---------------|  
-|Aktionen|Ja|Objekt|Interne Aktionen, die innerhalb des Bereichs ausgeführt werden sollen.|
+Mit dieser Aktion können Sie Aktionen in einem Workflow logisch gruppieren.
 
 ```json
-{
-    "myScope": {
-        "type": "scope",
-        "actions": {
-            "call_bing": {
-                "type": "http",
-                "inputs": {
-                    "url": "http://www.bing.com"
-                }
+"myScope": {
+    "type": "Scope",
+    "actions": {
+        "call_bing": {
+            "type": "Http",
+             "inputs": {
+                "url": "http://www.bing.com"
             }
         }
     }
 }
 ```
 
+| Name | Erforderlich | Typ | Beschreibung | 
+| ---- | -------- | ---- | ----------- |  
+| Aktionen | Ja | Objekt | Die internen Aktionen, die innerhalb des Bereichs ausgeführt werden sollen. |
+||||| 
+
 ## <a name="foreach-action"></a>ForEach-Aktion
 
-Diese Schleifenaktion durchläuft ein Array und führt interne Aktionen für die einzelnen Elemente aus. Die foreach-Schleife wird standardmäßig parallel (20 gleichzeitige Ausführungen) ausgeführt. Ausführungsregeln können mithilfe des `operationOptions`-Parameters festgelegt werden.
-
-|Name|Erforderlich|Typ|Beschreibung|  
-|--------|------------|--------|---------------|  
-|Aktionen|Ja|Objekt|Interne Aktionen, die innerhalb der Schleife ausgeführt werden sollen.|
-|foreach|Ja|string|Das zu durchlaufende Array.|
-|operationOptions|no|string|Vorgangsoptionen für das Verhalten. Unterstützt derzeit nur `sequential` für eine sequenzielle Ausführung der Iterationen. (Standardverhalten: parallel)|
+Diese Schleifenaktion durchläuft ein Array und führt interne Aktionen für die einzelnen Arrayelemente aus. Die `foreach`-Schleife wird standardmäßig parallel ausgeführt und kann gleichzeitig 20 parallele Instanzen ausführen. Ausführungsregeln können mithilfe des `operationOptions`-Parameters festgelegt werden.
 
 ```json
-"forEach_email": {
-    "type": "foreach",
+"forEach_EmailAction": {
+    "type": "Foreach",
     "foreach": "@body('email_filter')",
     "actions": {
-        "send_email": {
+        "Send_email": {
             "type": "ApiConnection",
             "inputs": {
                 "body": {
                     "to": "@item()",
                     "from": "me@contoso.com",
                     "message": "Hello, thank you for ordering"
-                }
+                },
                 "host": {
                     "connection": {
                         "id": "@parameters('$connections')['office365']['connection']['id']"
@@ -932,35 +1116,34 @@ Diese Schleifenaktion durchläuft ein Array und führt interne Aktionen für die
             }
         }
     },
-    "runAfter":{
+    "runAfter": {
         "email_filter": [ "Succeeded" ]
     }
 }
 ```
 
+| Name | Erforderlich | Typ | Beschreibung | 
+| ---- | -------- | ---- | ----------- | 
+| Aktionen | Ja | Objekt | Die internen Aktionen, die innerhalb der Schleife ausgeführt werden sollen. | 
+| foreach | Ja | String | Das zu durchlaufende Array. | 
+| operationOptions | Nein | String | Dient zum Angeben von Vorgangsoptionen für die Verhaltensanpassung. Unterstützt derzeit nur `Sequential` für sequenziell ausgeführte Iterationen mit dem Standardverhalten „Parallel“. |
+||||| 
+
 ## <a name="until-action"></a>Until-Aktion
 
 Diese Schleifenaktion führt interne Aktionen aus, bis eine Bedingung erfüllt ist.
 
-|Name|Erforderlich|Typ|Beschreibung|  
-|--------|------------|--------|---------------|  
-|Aktionen|Ja|Objekt|Interne Aktionen, die innerhalb der Schleife ausgeführt werden sollen.|
-|expression|Ja|string|Der Ausdruck, der nach jeder Iteration ausgewertet werden soll.|
-|limit|Ja|Objekt|Die Grenzwerte für die Schleife. Es muss mindestens ein Grenzwert definiert werden.|
-|count|no|int|Der Grenzwert für die Anzahl von Iterationen, die ausgeführt werden können.|
-|timeout|no|string|Das Timeout für Schleifenausführung.  Angabe im ISO 8601-Format.|
-
-
 ```json
- "Until_succeeded": {
+ "runUntilSucceededAction": {
+    "type": "Until",
     "actions": {
         "Http": {
+            "type": "Http",
             "inputs": {
                 "method": "GET",
                 "uri": "http://myurl"
             },
-            "runAfter": {},
-            "type": "Http"
+            "runAfter": {}
         }
     },
     "expression": "@equals(outputs('Http')['statusCode', 200)",
@@ -968,64 +1151,20 @@ Diese Schleifenaktion führt interne Aktionen aus, bis eine Bedingung erfüllt i
         "count": 1000,
         "timeout": "PT1H"
     },
-    "runAfter": {},
-    "type": "Until"
+    "runAfter": {}
 }
 ```
 
-## <a name="conditions---if-action"></a>Bedingungen: If-Aktion
-
-Mit der `If`-Aktion können Sie eine Bedingung auswerten und die Ausführung einer Verzweigung davon abhängig machen, ob der Ausdruck als `true` ausgewertet wird.
-
-|Name|Erforderlich|Typ|Beschreibung|  
-|--------|------------|--------|---------------|  
-|Aktionen|Ja|Objekt|Interne Aktionen, die ausgeführt werden sollen, wenn der Ausdruck als `true` ausgewertet wird.|
-|expression|Ja|string|Der auszuwertende Ausdruck.|
-|else|no|Objekt|Interne Aktionen, die ausgeführt werden sollen, wenn der Ausdruck als `false` ausgewertet wird.|
-  
-```json
-"My_condition": {
-    "actions": {
-        "If_true": {
-            "inputs": {
-                "method": "GET",
-                "uri": "http://myurl"
-            },
-            "runAfter": {},
-            "type": "Http"
-        }
-    },
-    "else": {
-        "actions": {
-            "if_false": {
-                "inputs": {
-                    "method": "GET",
-                    "uri": "http://myurl"
-                },
-                "runAfter": {},
-                "type": "Http"
-            }
-        }
-    },
-    "expression": "@equals(triggerBody(), json(true))",
-    "runAfter": {},
-    "type": "If"
-}
-```  
-  
-Die Beispiele in der folgenden Tabelle veranschaulichen, wie Bedingungen Ausdrücke in einer Aktion verwenden können:  
-  
-|JSON-Wert|Ergebnis|  
-|--------------|----------|  
-|`"expression": "@parameters('hasSpecialAction')"`|Jeder Wert, der als „true“ ausgewertet wird, bewirkt, dass diese Bedingung als erfüllt betrachtet wird. Nur boolesche Ausdrücke werden unterstützt. Verwenden Sie die Funktionen `empty` und `equals`, um andere Typen in boolesche Werte zu konvertieren.|  
-|`"expression": "@greater(actions('act1').output.value, parameters('threshold'))"`|Vergleichsfunktionen werden unterstützt. In dem vorliegenden Beispiel wird die Aktion nur ausgeführt, wenn die Größe der Ausgabe von „act1“ den Schwellenwert übersteigt.|  
-|`"expression": "@or(greater(actions('act1').output.value, parameters('threshold')), less(actions('act1').output.value, 100))"`|Logikfunktionen werden ebenfalls unterstützt, um geschachtelte boolesche Ausdrücke zu erstellen. In diesem Fall wird die Aktion ausgeführt, wenn die Ausgabe von „act1“ über dem Schwellenwert oder unter 100 liegt.|  
-|`"expression": "@equals(length(actions('act1').outputs.errors), 0))"`|Mithilfe von Arrayfunktionen können Sie prüfen, ob ein Array Elemente enthält. In diesem Fall wird die Aktion ausgeführt, wenn das Fehlerarray leer ist.| 
-|`"expression": "parameters('hasSpecialAction')"`|Fehler: Keine gültige Bedingung, da „@“ für Bedingungen erforderlich ist.|  
-  
-Erfolgreich ausgewertete Bedingungen werden als `Succeeded` markiert. Aktionen innerhalb des Objekts `actions` oder `else` werden wie folgt ausgewertet: als `Succeeded`, wenn die Ausführung erfolgreich war, als `Failed`, wenn bei der Ausführung ein Fehler aufgetreten ist, oder als `Skipped`, wenn die Verzweigung nicht ausgeführt wird.
+| Name | Erforderlich | Typ | Beschreibung | 
+| ---- | -------- | ---- | ----------- | 
+| Aktionen | Ja | Objekt | Die internen Aktionen, die innerhalb der Schleife ausgeführt werden sollen. | 
+| expression | Ja | String | Der Ausdruck, der nach jeder Iteration ausgewertet werden soll. | 
+| limit | Ja | Objekt | Die Grenzwerte für die Schleife. Es muss mindestens ein Grenzwert definiert werden. | 
+| count | Nein | Integer | Der Grenzwert für die Anzahl durchzuführender Iterationen. | 
+| timeout | Nein | String | Das Zeitlimit (im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601)), das angibt, wie lange die Schleife ausgeführt werden soll. |
+||||| 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Workflow Service-REST-API](https://docs.microsoft.com/rest/api/logic/workflows)
-
+* [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md)
+* [Workflow-REST-API](https://docs.microsoft.com/rest/api/logic/workflows)
