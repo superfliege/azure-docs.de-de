@@ -12,17 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2017
+ms.date: 10/06/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: f7f5e2939ed09c0fbb4eb81f066075553376ff57
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 6f272136d535dddd9c8213293841ace203c042a1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partitionieren und Skalieren in Azure Cosmos DB
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ist ein weltweit verteilter Datenbankdienst mit mehreren Modellen, der Ihnen helfen soll, eine schnelle und vorhersagbare Leistung zu erzielen. Er wird nahtlos zusammen mit Ihrer Anwendung skaliert, während diese wächst. Dieser Artikel bietet eine Übersicht darüber, wie die Partitionierung für alle Datenmodelle in Azure Cosmos DB funktioniert. Außerdem wird beschrieben, wie Sie Azure Cosmos DB-Container zum effektiven Skalieren Ihrer Anwendungen konfigurieren können.
@@ -63,6 +61,12 @@ Azure Cosmos DB arbeitet mit hashbasierter Partitionierung. Wenn Sie ein Element
 >
 
 Azure Cosmos DB-Container können *feststehend* oder *unbegrenzt* erstellt werden. Container mit fester Größe weisen eine Obergrenze von 10 GB und 10.000 RUs/Sek. (Request Units, Anforderungseinheiten) auf. Bei einigen APIs kann der Partitionsschlüssel für Container mit fester Größe weggelassen werden. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 2.500 RU/s angeben.
+
+Sie sollten überprüfen, wie Ihre Daten auf Partitionen verteilt sind. Wechseln Sie zur Überprüfung im Portal zu Ihrem Azure Cosmos DB-Konto, und klicken Sie im Abschnitt **Überwachung** auf **Metrik**. Klicken Sie anschließend im rechten Bereich auf die Registerkarte **Speicher**, um anzuzeigen, wie Ihre Daten auf verschiedene physische Partitionen verteilt sind.
+
+![Ressourcenpartitionierung](./media/partition-data/partitionkey-example.png)
+
+Die linke Abbildung zeigt das Ergebnis eines ungeeigneten Partitionsschlüssels und die rechte Abbildung das Ergebnis eines geeigneten Partitionsschlüssels. Sie sehen, dass in der linken Abbildung die Daten nicht gleichmäßig auf die Partitionen verteilt sind. Es empfiehlt sich, die Daten zu verteilen, sodass das Diagramm der rechten Abbildung ähnelt.
 
 ## <a name="partitioning-and-provisioned-throughput"></a>Partitionierung und bereitgestellter Durchsatz
 Azure Cosmos DB ist auf vorhersagbare Leistung ausgelegt. Wenn Sie einen Container erstellen, reservieren Sie Durchsatz hinsichtlich der *[Anforderungseinheiten](request-units.md) (Request Units, RUs) pro Sekunde*. Jeder Anforderung wird eine Gebühr für Anforderungseinheiten zugewiesen, die sich proportional zur vom Vorgang genutzten Menge an Systemressourcen wie CPU, Arbeitsspeicher und E/A verhält. Der Lesevorgang eines Dokuments der Größe 1 KB mit einer Sitzungskonsistenz beansprucht eine Anforderungseinheit. Ein Lesevorgang entspricht einer RU, unabhängig von der Anzahl der gespeicherten Elemente oder der Anzahl gleichzeitiger Anforderungen, die parallel ausgeführt werden. Größere Elemente erfordern mehr Anforderungseinheiten. Wenn Sie die Größe Ihrer Entitäten sowie die von Ihrer Anwendung benötigte Anzahl an Lesevorgängen kennen, können Sie Ihrer Anwendung für den Lesevorgang exakt den benötigten Durchsatz bereitstellen. 
@@ -208,7 +212,6 @@ In diesem Artikel haben Sie eine Übersicht über Konzepte und bewährte Methode
 
 * Erfahren Sie mehr über den [bereitgestellten Durchsatz in Azure Cosmos DB](request-units.md).
 * Erfahren Sie mehr über die [globale Verteilung in Azure Cosmos DB](distribute-data-globally.md).
-
 
 
 

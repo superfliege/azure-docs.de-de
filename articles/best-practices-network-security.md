@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: fb5e399d4ab02a7f2805cc280b213bf5b44f6993
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-cloud-services-and-network-security"></a>Microsoft-Clouddienste und Netzwerksicherheit
 Microsoft Cloud Services bieten hyperskalierbare Dienste und Infrastrukturen, Features auf Unternehmensniveau und vielfältige Auswahlmöglichkeiten für Hybridkonnektivität. Kunden können entweder über das Internet oder mit Azure ExpressRoute auf diese Dienste zugreifen. Letzteres stellt private Netzwerkkonnektivität bereit. Microsoft Azure Platform ermöglicht Kunden eine nahtlose Erweiterung ihrer Infrastruktur auf die Cloud und den Aufbau mehrstufiger Architekturen. Zudem können Drittanbieter über Sicherheitsdienste und virtuelle Geräte erweiterte Funktionen anbieten. Dieses Whitepaper bietet einen Überblick über Aspekte zu Sicherheit und Architektur, die Kunden beim Einsatz von Microsoft-Clouddiensten über ExpressRoute berücksichtigen sollten. Außerdem behandelt es die Erstellung sicherer Dienste in virtuellen Azure-Netzwerken.
@@ -529,15 +529,15 @@ Durch das Hinzufügen einer privaten ExpressRoute-Peering-Netzwerkverbindung kan
 [5]: ./media/best-practices-network-security/dmzazure.png "Ein DMZ in einem virtuellen Azure-Netzwerk"
 [6]: ./media/best-practices-network-security/dmzhybrid.png "Hybridnetzwerk mit drei Sicherheitsgrenzen"
 [7]: ./media/best-practices-network-security/example1design.png "Eingehende DMZ mit NSG"
-[8]: ./media/best-practices-network-security/example2design.png "Eingehende DMZ mit virtuellem Netzwerkgerät und NSG"
-[9]: ./media/best-practices-network-security/example3design.png "Bidirektionale DMZ mit virtuellem Netzwerkgerät, NSG und benutzerdefiniertem Routing"
+[8]: ./media/best-practices-network-security/example2design.png "Eingehende DMZ mit NVA und NSG"
+[9]: ./media/best-practices-network-security/example3design.png "Bidirektionale DMZ mit virtuellem Netzwerkgerät, Netzwerksicherheitsgruppe und benutzerdefiniertem Routing"
 [10]: ./media/best-practices-network-security/example3firewalllogical.png "Logische Ansicht der Firewallregeln"
 [11]: ./media/best-practices-network-security/example3designoptions.png "DMZ mit einem über ein virtuelles Netzwerkgerät verbundenen Hybridnetzwerk"
 [12]: ./media/best-practices-network-security/example4designs2s.png "DMZ mit einem über ein Site-to-Site-VPN verbundenen virtuellen Netzwerkgerät"
 [13]: ./media/best-practices-network-security/example4networklogical.png "Logisches Netzwerk aus Sicht des virtuellen Netzwerkgeräts"
 [14]: ./media/best-practices-network-security/example5designoptions.png "DMZ mit einem über ein Site-to-Site-Hybridnetzwerk verbundenen Azure-Gateway"
 [15]: ./media/best-practices-network-security/example5designs2s.png "DMZ mit Azure-Gateway und Verwendung eines Site-to-Site-VPN"
-[16]: ./media/best-practices-network-security/example6designoptions.png "DMZ mit einem über ein ExpressRoute-Hybridnetzwerk verbundenen Azure-Gateway"
+[16]: ./media/best-practices-network-security/example6designoptions.png "DMZ mit einem über ExpressRoute verbundenen Azure-Gateway"
 [17]: ./media/best-practices-network-security/example6designexpressroute.png "DMZ mit Azure-Gateway und Verwendung einer ExpressRoute-Verbindung"
 
 <!--Link References-->

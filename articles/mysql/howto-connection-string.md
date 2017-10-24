@@ -8,28 +8,26 @@ editor: jasonwhowell
 manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/12/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 2f40da41bcfda7e35f6fc63ead5d055246ab390c
-ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
+ms.date: 09/15/2017
+ms.openlocfilehash: c9fe0a892bd5e81d2b33987b6ca55ec753550a01
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Herstellen einer Verbindung zwischen Anwendungen und Azure-Datenbank für MySQL
-In diesem Dokument sind alle von Azure-Datenbank für MySQL unterstützten Typen von Verbindungszeichenfolgen sowie Vorlagen und Beispiele aufgeführt. Ihre Verbindungszeichenfolge enthält möglicherweise andere Parameter und Einstellungen.
+In diesem Thema sind alle von Azure Database for MySQL unterstützten Typen von Verbindungszeichenfolgen sowie Vorlagen und Beispiele aufgeführt. Ihre Verbindungszeichenfolge enthält unter Umständen andere Parameter und Einstellungen.
 
 - Informationen zum Einholen des Zertifikats finden Sie unter [Vorgehensweise zum Konfigurieren von SSL](./howto-configure-ssl.md).
 - {your_host} = <servername>.mysql.database.azure.com
-- {your_user}@{servername} = userID-Format für die korrekte Authentifizierung.  Wird nur die userID verwendet, kommt es zu einem Authentifizierungsfehler.
+- {your_user}@{servername} = userID-Format für die korrekte Authentifizierung.  Wenn Sie nur die Benutzer-ID verwenden, tritt bei der Authentifizierung ein Fehler auf.
 
 ## <a name="adonet"></a>ADO.NET
 ```ado.net
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-In diesem Beispiel lautet der Servername `myserver4demo`, der Datenbankname `wpdb`, der Benutzername `WPAdmin` und das Kennwort `mypassword!2`. In dem Fall muss die Verbindungszeichenfolge wie folgt lauten:
+In diesem Beispiel lautet der Servername `myserver4demo`, der Datenbankname `wpdb`, der Benutzername `WPAdmin` und das Kennwort `mypassword!2`. Daher muss die Verbindungszeichenfolge wie folgt lauten:
 
 ```ado.net
 Server= "myserver4demo.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@myserver4demo"; Pwd="mypassword!2"; SslMode=Required;
@@ -66,10 +64,9 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Abrufen von Details zur Verbindungszeichenfolge aus dem Azure-Portal
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Azure-Datenbank für MySQL-Server, und klicken Sie dann auf **Verbindungszeichenfolgen**, um die Zeichenfolgenliste für Ihre Instanz abzurufen: ![Fenster „Verbindungszeichenfolgen“ im Azure-Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Azure Database for MySQL-Server, und klicken Sie dann auf **Verbindungszeichenfolgen**, um die Zeichenfolgenliste für Ihre Instanz abzurufen: ![Bereich „Verbindungszeichenfolgen“ im Azure-Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 Die Zeichenfolge enthält Details wie Treiber, Server und andere Parameter für die Datenbankverbindung. Passen Sie diese Beispiele mit Ihren eigenen Parametern an, z.B. Ihrem Datenbanknamen und Ihrem Kennwort. Sie können diese Zeichenfolge dann verwenden, um eine Verbindung zwischen Ihrem Code sowie Ihren Anwendungen und dem Server herzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu Verbindungsbibliotheken finden Sie unter [Konzepte – Verbindungsbibliotheken](./concepts-connection-libraries.md).
-

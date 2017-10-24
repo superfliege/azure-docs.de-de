@@ -73,26 +73,19 @@
       href: site-recovery-role-based-linked-access-control.md
     - name: Häufig gestellte Fragen
       href: site-recovery-faq.md
-    - name: Planen der Kapazität für VMware-Replikation in Azure
-      href: site-recovery-plan-capacity-vmware.md
-      items:
-        - name: Bereitstellungsplaner für die VMware-Replikation in Azure
-          href: site-recovery-deployment-planner.md
-    - name: Capacity Planner für die Hyper-V-Replikation
-      href: site-recovery-capacity-planner.md
 - name: Anleitungen
   items:
     - name: Notfallwiederherstellung
       items:
-        - name: In Azure für virtuelle VMware-Computer mit Unterstützung mehrerer Mandanten
+        - name: Virtuelle VMware-Computer mit Unterstützung mehrerer Mandanten in Azure
           href: site-recovery-multi-tenant-support-vmware-using-csp.md
-        - name: In Azure für Hyper-V-VMs
+        - name: Virtuelle Hyper-V-Computer in Azure
           href: tutorial-hyper-v-to-azure.md
-        - name: In Azure für physische Server
+        - name: Physische Server nach Azure
           href: tutorial-physical-to-azure.md
-        - name: An einem sekundären Standort für Hyper-V-VMs
+        - name: Virtuelle Hyper-V-Computer an einem sekundären Standort
           href: tutorial-vmm-to-vmm.md
-        - name: An einem sekundären Standort für VMware-VMs und physische Server
+        - name: Virtuelle VMware-Computer und physische Server an einem sekundären Standort
           href: tutorial-vmware-to-vmware.md
         - name: Durchführen eines Notfallwiederherstellungsverfahrens in Azure
           href: tutorial-dr-drill-azure.md
@@ -104,6 +97,20 @@
           href: tutorial-hyper-v-to-azure-failover-failback.md
         - name: Durchführen von Failover und Failback zwischen lokalen Standorten
           href: tutorial-vmm-to-vmm-failover-failback.md
+    - name: Kapazität und Skalierung
+      items:
+        - name: Planen der Kapazität für VMware-Replikation in Azure
+          href: site-recovery-plan-capacity-vmware.md
+        - name: Bereitstellungsplanertool für die VMware-Replikation in Azure
+          href: site-recovery-deployment-planner.md
+        - name: Planen der Kapazität für die Hyper-V-Replikation in Azure
+          href: site-recovery-capacity-planning-for-hyper-v-replication.md
+        - name: Kapazitätsplanungstool für die Hyper-V-Replikation in Azure
+          href: site-recovery-capacity-planner.md
+        - name: Horizontales Hochskalieren von Prozessservern für die VMware-Replikation
+          href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
+        - name: Leistungsskalierungstests für die Hyper-V-Replikation zwischen lokalen Standorten
+          href: site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md
     - name: Konfigurieren
       items:
         - name: Einrichten der Quellumgebung
@@ -120,6 +127,8 @@
               href: site-recovery-prepare-target-physical-to-azure.md
         - name: Konfigurieren der Replikationseinstellungen
           href: site-recovery-setup-replication-settings-vmware.md
+        - name: Ausschließen von Datenträgern von der Replikation
+          href: site-recovery-exclude-disk.md
         - name: Bereitstellen des Mobilitätsdiensts für die VMware-Replikation
           href: site-recovery-vmware-to-azure-install-mob-svc.md
           items:
@@ -157,9 +166,11 @@
         - name: Failback von Azure
           items:
             - name: Failback von Azure nach VMware
-              href: site-recovery-failback-azure-to-vmware.md
+              href: site-recovery-how-to-failback-azure-to-vmware.md
             - name: Failback von Azure nach Hyper-V
               href: site-recovery-failback-from-azure-to-hyper-v.md
+        - name: Einrichten eines Linux-Masterzielservers für Failbacks
+          href: site-recovery-how-to-install-linux-master-target.md
     - name: Automatisieren
       items:
         - name: Einrichten der Hyper-V-Replikation in Azure (ohne VMM) mit PowerShell
@@ -202,8 +213,6 @@
           href: site-recovery-vmware-setup-azure-ps-resource-manager.md
         - name: Verwalten des Konfigurationsservers
           href: site-recovery-vmware-to-azure-manage-configuration-server.md
-        - name: Verwalten eines horizontal hochskalierten Prozessservers
-          href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
         - name: Verwalten von vCenter-Servern
           href: site-recovery-vmware-to-azure-manage-vCenter.md
         - name: Entfernen von Servern und Deaktivieren des Schutzes

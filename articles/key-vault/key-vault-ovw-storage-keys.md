@@ -9,12 +9,11 @@ author: BrucePerlerMS
 ms.author: bruceper
 manager: mbaldwin
 ms.date: 09/14/2017
+ms.openlocfilehash: 83bcb339c16b8a1be15773ba35208461ecf8120e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: b7b8583e8923e65ff068a2bec060a27a14905485
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault-Speicherkontoschlüssel
 
@@ -139,10 +138,15 @@ Die Ausgabe des obigen Befehls enthält Ihren Dienstprinzipal, der *yourServiceP
 
 ### <a name="set-permissions"></a>Festlegen von Berechtigungen
 
-Stellen Sie sicher, dass für die Speicherberechtigungen *Alle* festgelegt ist.
+Stellen Sie sicher, dass für die Speicherberechtigungen *Alle* festgelegt ist. Sie können mithilfe der folgenden Befehle Ihre UserPrincipalId abrufen und Berechtigungen für den Tresor festlegen.
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'yourtest1' -ObjectId yourServicePrincipalId -PermissionsToStorage all
+Get-AzureRmADUser -SearchString "your name"
+```
+Suchen Sie nach Ihrem Namen, und rufen Sie die zugehörige ObjectId ab, die Sie für die Einstellungsberechtigungen für den Tresor benötigen.
+
+```powershell
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'yourtest1' -ObjectId yourUserPrincipalId -PermissionsToStorage all
 ```
 
 ### <a name="allow-access"></a>Zugriff zulassen
@@ -238,4 +242,3 @@ Das OBO-Token funktioniert nur bei Verwendung von nativen Erstanbieter-Clientanw
 
 - [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](https://docs.microsoft.com/rest/api/keyvault/)
 - [Key Vault-Teamblog](https://blogs.technet.microsoft.com/kv/)
-

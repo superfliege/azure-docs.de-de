@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 09/16/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2e78382b4cbfe7623eec1b2cd32a9eaea61e4709
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: c4a22b230cd630c413118ab798ff241527465554
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
 ## <a name="overview"></a>Übersicht
@@ -84,3 +83,13 @@ Mit Azure AD-Domänendiensten kommen Sie in den Genuss der folgenden Vorteile:
 * **Kompatibel:** Die Azure AD-Domänendienste basieren auf der bewährten, für Unternehmen konzipierten Infrastruktur von Windows Server Active Directory. Aus diesem Grund sind Ihre Anwendungen in höherem Maße mit Windows Server Active Directory-Features kompatibel. Derzeit sind nicht alle in Windows Server AD verfügbaren Features in den Azure AD-Domänendiensten verfügbar. Die verfügbaren Features sind aber mit den entsprechenden Windows Server AD-Features kompatibel, die Sie in Ihrer lokalen Infrastruktur nutzen. LDAP, Kerberos, NTLM, Gruppenrichtlinie und Domänenbeitritt sind ausgereifte Features, die über mehrere Windows Server-Versionen hinweg getestet und optimiert wurde.
 * **Kosteneffektivität:** Mit Azure AD-Domänendiensten können Sie den Infrastruktur- und Verwaltungsaufwand vermeiden, der mit der Verwaltung der Identitätsinfrastruktur zur Unterstützung herkömmlicher verzeichnisorientierter Anwendungen verbunden ist. Sie können diese Anwendungen auf die Azure-Infrastrukturdienste verlagern und von höheren Einsparungen bei den Betriebskosten profitieren.
 
+
+## <a name="next-steps"></a>Nächste Schritte
+### <a name="learn-more-about-azure-ad-domain-services"></a>Weitere Informationen zu Azure AD Domain Services
+* [Funktionen](active-directory-ds-features.md)
+* [Bereitstellungsszenarien](active-directory-ds-scenarios.md)
+* [So entscheiden Sie, ob Azure AD Domain Services für Ihren Anwendungsfall geeignet ist](active-directory-ds-comparison.md)
+* [Synchronisierung in einer durch Azure AD Domain Services verwalteten Domäne](active-directory-ds-synchronization.md)
+
+### <a name="get-started-with-azure-ad-domain-services"></a>Erste Schritte mit Azure AD Domain Services
+* [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals (Vorschauversion)](active-directory-ds-getting-started.md)

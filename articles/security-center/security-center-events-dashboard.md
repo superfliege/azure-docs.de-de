@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 10/05/2017
 ms.author: terrylan
+ms.openlocfilehash: 367067874b167268bd690a9e0b55412e92e08122
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 01ac75244839c0e3c1ac350d4271677feb21a9d7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Überwachen und Verarbeiten von Sicherheitsereignissen in Azure Security Center
 Das Ereignis-Dashboard enthält eine Übersicht über die Anzahl der im Laufe der Zeit erfassten Sicherheitsereignisse sowie eine Liste relevanter Ereignisse, die unter Umständen Ihre Aufmerksamkeit erfordern.  
@@ -48,13 +47,16 @@ Unter **Events dashboard** (Ereignis-Dashboard) wird eine Übersicht über die A
  - Zu relevanten Ereignissen ****zählen von Security Center bereitgestellte Ereignisabfragen sowie von Ihnen erstellte und hinzugefügte Ereignisabfragen. Das Dashboard bietet außerdem eine Kurzübersicht über die Anzahl der einzelnen relevanten Ereignisse.
  - Unter **All events by type** (Alle Ereignisse nach Typ) werden die empfangenen Ereignistypen und die Anzahl der einzelnen Typen angezeigt. Beispiele für Ereignistypen: SecurityEvent, CommonSecurityLog, WindowsFirewall und W3CIISLog.
 
+> [!NOTE]
+> Zu den relevanten Ereignissen zählt die [Web-Baselinebewertung](https://docs.microsoft.com/azure/operations-management-suite/oms-security-web-baseline-assessment). Das Ziel der Web-Baselinebewertung besteht darin, potenziell anfällige Webservereinstellungen zu finden.
+
 ## <a name="view-processed-event-details"></a>Anzeigen von Details zu verarbeiteten Ereignissen
-1. Klicken Sie im Hauptmenü von **Security Center** auf **Events Processed** (Verarbeitete Ereignisse).
-2. Unter Umständen wird die Arbeitsbereichsauswahl **Events Processed** (Verarbeitete Ereignisse) geöffnet. Wenn nur ein Arbeitsbereich vorhanden ist, wird diese Arbeitsbereichsauswahl nicht angezeigt. Wenn Sie über mehrere Arbeitsbereiche verfügen, müssen Sie einen Arbeitsbereich auswählen, um seine Details zu verarbeiteten Ereignissen anzuzeigen. Wählen Sie einen Arbeitsbereich aus der Liste aus, wenn mehrere Arbeitsbereiche vorhanden sind.
+1. Wählen Sie im **Security Center** im Hauptmenü die Option **Ereignisse** aus.
+2. Unter Umständen wird die Arbeitsbereichsauswahl **Ereignisdashboard** geöffnet. Wenn nur ein Arbeitsbereich vorhanden ist, wird diese Arbeitsbereichsauswahl nicht angezeigt. Wenn Sie über mehrere Arbeitsbereiche verfügen, müssen Sie einen Arbeitsbereich auswählen, um seine Details zu verarbeiteten Ereignissen anzuzeigen. Wählen Sie einen Arbeitsbereich aus der Liste aus, wenn mehrere Arbeitsbereiche vorhanden sind.
 
   ![Liste mit Arbeitsbereichen][3]
 
-3. Das Dashboard **Events Processed** (Verarbeitete Ereignisse) wird geöffnet und zeigt Ereignisdetails für den ausgewählten Arbeitsbereich an. Sie können die relevante Ereignissen und alle Ereignisse nach Typ anzeigen.  In diesem Beispiel wurde **Notable events** (Relevante Ereignisse) ausgewählt.
+3. Das **Ereignisdashboard** wird geöffnet und zeigt Ereignisdetails für den ausgewählten Arbeitsbereich an. Sie können die relevante Ereignissen und alle Ereignisse nach Typ anzeigen.  In diesem Beispiel wurde **Notable events** (Relevante Ereignisse) ausgewählt.
 
   ![Relevantes Ereignis][4]
 
@@ -67,7 +69,7 @@ Unter **Events dashboard** (Ereignis-Dashboard) wird eine Übersicht über die A
   ![Protokollsuche][6]
 
 ## <a name="add-a-notable-event"></a>Hinzufügen eines relevanten Ereignisses
-Security Center stellt vorkonfigurierte relevante Ereignisse bereit. Sie können mithilfe der [Log Analytics-Abfragesprache](../log-analytics/log-analytics-search-reference.md) auf der Grundlage Ihrer eigenen Abfrage relevante Ereignisse hinzufügen. Wir kehren zum Dashboard **Events Processed** (Verarbeitete Ereignisse) zurück, um ein relevantes Ereignis hinzuzufügen.
+Security Center stellt vorkonfigurierte relevante Ereignisse bereit. Sie können mithilfe der [Log Analytics-Abfragesprache](../log-analytics/log-analytics-search-reference.md) auf der Grundlage Ihrer eigenen Abfrage relevante Ereignisse hinzufügen. Wir kehren zum **Ereignisdashboard** zurück, um ein relevantes Ereignis hinzuzufügen.
 
 1. Klicken Sie auf **Add Notable Event** (Relevantes Ereignis hinzufügen).
 
@@ -80,7 +82,7 @@ Security Center stellt vorkonfigurierte relevante Ereignisse bereit. Sie können
 4. Klicken Sie auf **OK**.
 
 ## <a name="update-your-workspace-for-events-processing"></a>Aktualisieren des Arbeitsbereichs für die Ereignisverarbeitung
-Für Ihren Arbeitsbereich muss Log Analytics Version 2 ausgeführt werden, und für den Arbeitsbereich muss der Standard-Tarif von Security Center festgelegt sein, damit die Ereignisverarbeitung in Security Center verwendet werden kann. In der Arbeitsbereichsauswahl **Ereignisse** sind Arbeitsbereiche angegeben, die diese Anforderungen nicht erfüllen.
+Für Ihren Arbeitsbereich muss Log Analytics Version 2 ausgeführt werden, und für den Arbeitsbereich muss der Standard-Tarif von Security Center festgelegt sein, damit die Ereignisverarbeitung in Security Center verwendet werden kann. In der Arbeitsbereichsauswahl **Ereignisdashboard** sind Arbeitsbereiche angegeben, die diese Anforderungen nicht erfüllen.
 
 ![Arbeitsbereich erfüllt Anforderungen nicht.][9]
 
@@ -91,7 +93,7 @@ Gehen Sie wie folgt vor:
 - Wenn die Zeile des Arbeitsbereichs leer ist, erfüllt der Arbeitsbereich die Anforderungen, und bei Auswahl eines Arbeitsbereichs wird das Dashboard aufgerufen.
 
 > [!NOTE]
-> Die Spalte **EREIGNISSE** unter **Ereignisse** enthält die Anzahl von Ereignissen in jedem Arbeitsbereich.  Diese Spalte ist bei einigen Arbeitsbereiche leer, da für diese Arbeitsbereiche der Free-Tarif von Security Center gilt. Im Tarif „Free“ sammelt Security Center Ereignisse, sie werden jedoch nicht in Log Analytics gespeichert und sind nicht auf dem Dashboard verfügbar.
+> Die Spalte **EREIGNISSE** im **Ereignisdashboard** enthält die Anzahl von Ereignissen in jedem Arbeitsbereich.  Diese Spalte ist bei einigen Arbeitsbereiche leer, da für diese Arbeitsbereiche der Free-Tarif von Security Center gilt. Im Tarif „Free“ sammelt Security Center Ereignisse, sie werden jedoch nicht in Log Analytics gespeichert und sind nicht auf dem Dashboard verfügbar.
 >
 >
 
@@ -103,7 +105,7 @@ Gehen Sie wie folgt vor:
 
 ## <a name="upgrade-to-security-centers-standard-tier"></a>Upgrade auf den Standard-Tarif von Security Center
 1. Wählen Sie einen Arbeitsbereich, für den **UPGRADE PLAN** (TARIFUPGRADE) angezeigt wird.
-2. **Events dashboard** (Ereignis-Dashboard) wird geöffnet. Klicken Sie auf **Try the Events Processed dashboard** (Dashboard „Verarbeitete Ereignisse“ ausprobieren).
+2. **Events dashboard** (Ereignis-Dashboard) wird geöffnet. Wählen Sie **Ereignisdashboard ausprobieren** aus.
 
   ![Dashboard ausprobieren][11]
 
@@ -114,7 +116,7 @@ Gehen Sie wie folgt vor:
   ![Upgrade auf den Standard-Tarif][12]
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie gelernt, wie Sie das Dashboard „Events Processed“ (Verarbeitete Ereignisse) von Security Center verwenden. Weitere Informationen zur Funktionsweise des Dashboards und zum Schreiben eigener Ereignisabfragen finden Sie in den folgenden Ressourcen:
+In diesem Artikel haben Sie gelernt, wie Sie das Ereignisdashboard von Security Center verwenden. Weitere Informationen zur Funktionsweise des Dashboards und zum Schreiben eigener Ereignisabfragen finden Sie in den folgenden Ressourcen:
 
 - [Was ist Log Analytics?](../log-analytics/log-analytics-overview.md) – Übersicht über Log Analytics
 - [Grundlegendes zu Protokollsuchvorgängen in Log Analytics](../log-analytics/log-analytics-log-search-new.md) – In diesem Artikel wird beschrieben, wie Protokollsuchen in Log Analytics verwendet werden. Er enthält Konzepte, die Ihnen vor dem Erstellen einer Protokollsuche bekannt sein sollten.
@@ -137,4 +139,3 @@ Weitere Informationen zu Security Center finden Sie unter folgendem Link:
 [10]: ./media/security-center-events-dashboard/search-upgrade.png
 [11]: ./media/security-center-events-dashboard/try-dashboard.png
 [12]: ./media/security-center-events-dashboard/onboard-workspace.png
-

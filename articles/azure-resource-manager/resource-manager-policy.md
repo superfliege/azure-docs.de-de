@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2017
+ms.date: 10/09/2017
 ms.author: tomfitz
+ms.openlocfilehash: cfdbf35b76b6a7f3cddb2deb35dfc475e0fc600f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 0ee2624f45a1de0c23cae4538a38ae3e302eedd3
-ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resource-policy-overview"></a>Übersicht über Ressourcenrichtlinien
 Mithilfe von Ressourcenrichtlinien können Sie Konventionen für Ressourcen in Ihrer Organisation einrichten. Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass alle Ressourcen ein bestimmtes Tag aufweisen. Richtlinien werden von allen untergeordneten Ressourcen geerbt. Wenn also eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie auch für alle Ressourcen in der Ressourcengruppe.
@@ -32,11 +31,6 @@ Im Zusammenhang mit Richtlinien gibt es zwei wichtige Konzepte:
 Dieses Thema beschäftigt sich mit der Richtliniendefinition. Weitere Informationen zur Richtlinienzuweisung finden Sie unter [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md) und [Zuweisen und Verwalten von Richtlinien mit Skripts](resource-manager-policy-create-assign.md).
 
 Richtlinien werden beim Erstellen und Aktualisieren von Ressourcen (PUT- und PATCH-Vorgänge) ausgewertet.
-
-> [!NOTE]
-> Die Richtlinie wertet derzeit keine Ressourcentypen aus, die „tags“, „kind“ und „location“ nicht unterstützen, wie etwa der Ressourcentyp „Microsoft.Resources/deployments“. Diese Unterstützung wird zu einem späteren Zeitpunkt hinzugefügt. Um Probleme mit der Abwärtskompatibilität zu vermeiden, sollten Sie beim Erstellen von Richtlinien den Typ explizit angeben. Beispiel: Eine Richtlinie für Tags, in der keine Typen angegeben sind, wird auf alle Typen angewendet. In diesem Fall kann eine Vorlagenbereitstellung fehlschlagen, wenn eine geschachtelte Ressource vorhanden ist, die Tags nicht unterstützt, und der Ressourcentyp der Bereitstellung der Richtlinienauswertung hinzugefügt wurde. 
-> 
-> 
 
 ## <a name="how-is-it-different-from-rbac"></a>Worin unterscheidet sich dies von der rollenbasierten Zugriffssteuerung (RBAC)?
 Zwischen einer Richtlinie und der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) gibt es einige entscheidende Unterschiede. Bei RBAC stehen **Benutzeraktionen** in verschiedenen Bereichen im Mittelpunkt. Beispiel: Sie werden der Rolle „Mitwirkender“ für eine Ressourcengruppe in einem bestimmten Bereich hinzugefügt, um Änderungen an der Ressourcengruppe vornehmen zu können. Bei einer Richtlinie stehen **Ressourceneigenschaften** während der Bereitstellung im Mittelpunkt. Sie können beispielsweise über Richtlinien steuern, welche Ressourcentypen bereitgestellt werden können. Oder Sie können die Standorte einschränken, an denen die Ressourcen bereitgestellt werden können. Im Gegensatz zur RBAC stellen Richtlinien ein Standardsystem für das Zulassen und explizite Verweigern dar. 
@@ -67,6 +61,7 @@ Sie können diese Richtlinien über das [Portal](resource-manager-policy-portal.
 ## <a name="policy-definition-structure"></a>Struktur von Richtliniendefinitionen
 Eine Richtliniendefinition wird mithilfe von JSON erstellt. Die Richtliniendefinition enthält Elemente für Folgendes:
 
+* Modus
 * Parameter
 * Anzeigename
 * Beschreibung
@@ -79,6 +74,7 @@ Das folgende Beispiel zeigt eine Richtlinie, die einschränkt, wo Ressourcen ber
 ```json
 {
   "properties": {
+    "mode": "all",
     "parameters": {
       "allowedLocations": {
         "type": "array",
@@ -105,6 +101,12 @@ Das folgende Beispiel zeigt eine Richtlinie, die einschränkt, wo Ressourcen ber
   }
 }
 ```
+
+## <a name="mode"></a>Mode
+
+Es wird empfohlen, `mode` auf `all` zu setzen. Wenn Sie ihn auf **alle** setzen, werden Ressourcengruppen und alle Ressourcentypen für die Richtlinie ausgewertet. Das Portal verwendet **alle** für alle Richtlinien. Wenn Sie PowerShell oder Azure-CLI verwenden, müssen Sie den `mode`-Parameter angeben und auf **alle** setzen.
+ 
+Zuvor wurden Richtlinien nur nach Ressourcentypen ausgewertet, die Tags und den Speicherort unterstützten. Im `indexed`-Modus wird dieses Verhalten fortgesetzt. Bei Verwendung des **alle**-Modus werden Richtlinien auch anhand von Ressourcentypen ausgewertet, die Tags und den Speicherort nicht unterstützen. [Virtual Network-Subnetz](https://github.com/Azure/azure-policy-samples/tree/master/samples/Network/enforce-nsg-on-subnet) ist ein Beispiel für einen neu hinzugefügten Typ. Darüber hinaus werden Ressourcengruppen ausgewertet, wenn der Modus auf **alle** festgelegt ist. Sie können z.B. [Tags für eine Ressourcengruppe erzwingen](https://github.com/Azure/azure-policy-samples/tree/master/samples/ResourceGroup/enforce-resourceGroup-tags). 
 
 ## <a name="parameters"></a>Parameter
 Das Verwenden von Parametern vereinfacht die Richtlinienverwaltung, da die Anzahl von Richtliniendefinitionen reduziert wird. Sie definieren eine Richtlinie für eine Ressourceneigenschaft (beispielsweise, um die Orte einzuschränken, an denen Ressourcen bereitgestellt werden können) und schließen Parameter in die Definition ein. Diese Richtliniendefinition verwenden Sie dann auch für andere Szenarien, indem Sie beim Zuweisen der Richtlinie andere Werte (etwa eine Gruppe von Standorten für ein Abonnement) übergeben.
@@ -210,11 +212,13 @@ Folgende Felder werden unterstützt:
 * Eigenschaftenaliase – Eine Liste finden Sie unter [Aliase](#aliases).
 
 ### <a name="effect"></a>Effekt
-Für eine Richtlinie werden drei Arten von Wirkungen unterstützt: `deny`, `audit` und `append`. 
+Die Richtlinie unterstützt fünf Arten von Effekten: `deny`, `audit`, `append`, `AuditIfNotExists` und `DeployIfNotExists`. 
 
 * **Deny** generiert ein Ereignis im Überwachungsprotokoll, und die Anforderung ist nicht erfolgreich.
 * **Audit** generiert eine Warnung im Überwachungsprotokoll, und die Anforderung ist erfolgreich.
 * **Append** fügt der Anforderung den definierten Satz von Feldern hinzu. 
+* **AuditIfNotExists**: aktiviert die Überwachung, wenn eine Ressource nicht vorhanden ist.
+* **DeployIfNotExists**: stellt eine Ressource bereit, wenn sie nicht bereits vorhanden ist. Dieser Effekt wird derzeit nur über integrierte Richtlinien unterstützt.
 
 Für **append**müssen Sie die folgenden Details angeben:
 
@@ -229,6 +233,10 @@ Für **append**müssen Sie die folgenden Details angeben:
 ```
 
 Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein. 
+
+Mit **AuditIfNotExists** und **DeployIfNotExists** können Sie das Vorhandensein einer untergeordneten Ressource auswerten und eine Regel anwenden, wenn diese Ressource nicht vorhanden ist. Sie können z.B. erforderlich machen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird.
+
+Ein Beispiel für die Überwachung, wenn keine VM-Erweiterung bereitgestellt wird, finden Sie unter [Audit VM extensions (Überwachung-VM-Erweiterungen)](https://github.com/Azure/azure-policy-samples/blob/master/samples/Compute/audit-vm-extension/azurepolicy.json).
 
 ## <a name="aliases"></a>Aliase
 
@@ -347,20 +355,96 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 | Microsoft.Storage/storageAccounts/sku.name | Hiermit wird der SKU-Name festgelegt. |
 | Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | Hiermit wird festgelegt, dass nur HTTPS-Datenverkehr zum Speicherdienst zugelassen wird. |
 
+## <a name="policy-sets"></a>Richtliniensätze
 
-## <a name="policy-examples"></a>Beispiele für Richtlinien
+Richtliniensätze ermöglichen es Ihnen, mehrere verwandte Richtliniendefinitionen zu gruppieren. Der Richtliniensatz vereinfacht die Zuweisung und Verwaltung, da Sie mit der Gruppe als ein einzelnes Element arbeiten. Beispielsweise können Sie alle verknüpften Tagging-Richtlinien in einem einzelnen Richtliniensatz gruppieren. Statt jede Richtlinie einzeln zuzuweisen, wenden Sie den Richtliniensatz an.
+ 
+Im folgenden Beispiel wird veranschaulicht, wie ein Richtliniensatz zur Behandlung von zwei Tags („costCenter“ und „productName“) erstellt werden kann. Es werden zwei integrierte Richtlinien für das Anwenden des Standardwerts für den Tag und die Durchsetzung des Tagwerts verwendet. Die Richtlinie deklariert zwei Parameter, „costCenterValue“ und „productNameValue“ für Wiederverwendbarkeit. Es wird mehrmals auf die beiden integrierten Richtliniendefinitionen mit verschiedenen Parametern verwiesen. Für jeden Parameter können Sie entweder einen festen Wert bereitstellen, wie für „tagName“ gezeigt, oder einen Parameter aus dem Richtliniensatz, wie für „tagValue“ gezeigt.
 
-Die folgenden Themen enthalten Beispiele für Richtlinien:
+```json
+{
+    "properties": {
+        "displayName": "Billing Tags Policy",
+        "policyType": "Custom",
+        "description": "Specify cost Center tag and product name tag",
+        "parameters": {
+            "costCenterValue": {
+                "type": "String",
+                "metadata": {
+                    "description": "required value for Cost Center tag"
+                }
+            },
+            "productNameValue": {
+                "type": "String",
+                "metadata": {
+                    "description": "required value for product Name tag"
+                }
+            }
+        },
+        "policyDefinitions": [
+            {
+                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+                "parameters": {
+                    "tagName": {
+                        "value": "costCenter"
+                    },
+                    "tagValue": {
+                        "value": "[parameters('costCenterValue')]"
+                    }
+                }
+            },
+            {
+                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+                "parameters": {
+                    "tagName": {
+                        "value": "costCenter"
+                    },
+                    "tagValue": {
+                        "value": "[parameters('costCenterValue')]"
+                    }
+                }
+            },
+            {
+                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+                "parameters": {
+                    "tagName": {
+                        "value": "productName"
+                    },
+                    "tagValue": {
+                        "value": "[parameters('productNameValue')]"
+                    }
+                }
+            },
+            {
+                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+                "parameters": {
+                    "tagName": {
+                        "value": "productName"
+                    },
+                    "tagValue": {
+                        "value": "[parameters('productNameValue')]"
+                    }
+                }
+            }
+        ]
+    },
+    "id": "/subscriptions/<subscription-id>/providers/Microsoft.Authorization/policySetDefinitions/billingTagsPolicy",
+    "type": "Microsoft.Authorization/policySetDefinitions",
+    "name": "billingTagsPolicy"
+}
+```
 
-* Beispiele für Tagrichtlinien finden Sie unter [Anwenden von Ressourcenrichtlinien für Tags](resource-manager-policy-tags.md).
-* Beispiele für Benennungs- und Textmuster finden Sie unter [Anwenden von Ressourcen-Richtlinien für Namen und Text](resource-manager-policy-naming-convention.md).
-* Beispiele für Speicherrichtlinien finden Sie unter [Anwenden von Ressourcenrichtlinien auf Speicherkonten](resource-manager-policy-storage.md).
-* Beispiele für VM-Richtlinien finden Sie unter [Anwenden von Sicherheit und Richtlinien auf virtuelle Linux-Computer mit Azure Resource Manager](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) sowie unter [Anwenden von Sicherheit und Richtlinien auf virtuelle Windows-Computer mit Azure Resource Manager](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json).
+Sie fügen einen Richtliniensatz mit dem PowerShell-Befehl **New-AzureRMPolicySetDefinition** hinzu.
 
+Für REST-Vorgänge verwenden Sie die API-Version **2017-06-01-preview**, wie im folgenden Beispiel gezeigt:
+
+```
+PUT /subscriptions/<subId>/providers/Microsoft.Authorization/policySetDefinitions/billingTagsPolicySet?api-version=2017-06-01-preview
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Nach dem Definieren einer Richtlinienregel weisen Sie sie einem Bereich zu. Wenn Sie Richtlinien über das Portal zuweisen möchten, siehe [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md). Wenn Sie Richtlinien über die REST-API, PowerShell oder die Azure-CLI zuweisen möchten, siehe [Zuweisen und Verwalten von Richtlinien mit Skripts](resource-manager-policy-create-assign.md).
+* Beispiele für Richtlinien finden Sie unter [Azure resource policy GitHub repository (Azure Ressourcenrichtlinien-GitHub-Repository)](https://github.com/Azure/azure-policy-samples).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
 * Das Richtlinienschema wird unter [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json)veröffentlicht. 
-
 

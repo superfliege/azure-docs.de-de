@@ -12,18 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 09/29/2017
 ms.author: billmath
+ms.openlocfilehash: 9ded5e0199f5ca48e2a00d2afee0e4c13b3a3460
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: 9507a718ba982eb8b3381a6ef70156f075729161
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Passthrough-Authentifizierung mit Azure Active Directory: Technische Einzelheiten
-Der folgende Artikel enthält eine Übersicht über die Funktionsweise der Azure AD-Passthrough-Authentifizierung.  Ausführliche technische und sicherheitsbezogene Informationen finden Sie unter [**Azure Active Directory-Passthrough-Authentifizierung (PTA) – Ausführliche Informationen zur Sicherheit**](active-directory-aadconnect-pta-security-deep-dive.md).
+Der folgende Artikel enthält eine Übersicht über die Funktionsweise der Azure AD-Passthrough-Authentifizierung.  Ausführliche technische und sicherheitsbezogene Informationen finden Sie unter [**Azure Active Directory Pass-through Authentication security deep-dive**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) (Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit).
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Funktionsweise der Passthrough-Authentifizierung mit Azure Active Directory
 
@@ -46,11 +44,11 @@ Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte und Kompon
 ![Passthrough-Authentifizierung](./media/active-directory-aadconnect-pass-through-authentication/pta2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [**Aktuelle Einschränkungen**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarios
+- [**Aktuelle Einschränkungen**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarien
 - [**Schnellstart**](active-directory-aadconnect-pass-through-authentication-quick-start.md): Einrichten und Ausführen der Passthrough-Authentifizierung mit Azure AD
-- [**Häufig gestellte Fragen**](active-directory-aadconnect-pass-through-authentication-faq.md): Antworten auf häufig gestellte Fragen
+- [**Smart Lockout**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten
+- [**Häufig gestellte Fragen:**](active-directory-aadconnect-pass-through-authentication-faq.md) Antworten auf häufig gestellte Fragen
 - [**Problembehandlung**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Beheben häufig auftretender Probleme mit dieser Funktion
+- [**Ausführliche Informationen zur Sicherheit**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md): Zusätzliche ausführliche technische Informationen zum Feature
 - [**Nahtlose SSO mit Azure AD**](active-directory-aadconnect-sso.md): Informationen zu dieser Ergänzungsfunktion
-- [**Ausführliche Informationen zur Sicherheit**](active-directory-aadconnect-pta-security-deep-dive.md): Zusätzliche ausführliche technische Informationen zur Azure AD-Passthrough-Authentifizierung
 - [**UserVoice:**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen
-

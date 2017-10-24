@@ -9,14 +9,12 @@ ms.topic: azure-stack
 ms.date: 09/15/2017
 ms.author: erikje
 ms.custom: mvc
+ms.openlocfilehash: abca538f28bbc0a8f3f00311ca1a69d196f10272
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: 2c9aba69d8f1999f7086bd2bcd44d1c1472abec7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-with-the-azure-stack-portal"></a>Erstellen eines virtuellen Windows-Computers mit dem Azure Stack-Portal
 
 Sie können einen virtuellen Windows-Computer mit dem Azure Stack-Portal erstellen. Das Portal ist eine browserbasierte Benutzeroberfläche, in der Sie Ressourcen erstellen, konfigurieren und verwalten können.
@@ -35,7 +33,7 @@ Melden Sie sich beim Azure Stack-Portal an. Die Adresse des Azure Stack-Portals 
 2. Geben Sie unter **Grundlagen** Werte für **Name**, **Benutzername** und **Kennwort** ein. Wählen Sie ein **Abonnement**aus. Erstellen Sie eine **Ressourcengruppe**, oder wählen Sie eine vorhandene aus, wählen Sie einen **Speicherort** aus, und klicken Sie anschließend auf **OK**.
 
     ![](media/azure-stack-quick-windows-portal/image02.png)
-3. Klicken Sie unter **Größe auswählen** auf **A1 Standard** > **Auswählen**.
+3. Klicken Sie unter **Größe auswählen** auf **D1 Standard** > **Auswählen**.
     ![](media/azure-stack-quick-windows-portal/image03.png)
 4. Übernehmen Sie unter **Einstellungen** die Standardwerte, und klicken Sie auf **OK**.
     ![](media/azure-stack-quick-windows-portal/image04.png)
@@ -50,4 +48,3 @@ Wenn Sie Ressourcengruppe, VM und alle zugehörigen Ressourcen nicht mehr benöt
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Schnellstart haben Sie eine einfache Windows-VM bereitgestellt. Um weitere Informationen zu virtuellen Computern unter Azure Stack zu erhalten, fahren Sie mit [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md) (Überlegungen zu virtuellen Computern in Azure Stack) fort.
-

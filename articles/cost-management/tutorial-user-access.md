@@ -10,15 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
+ms.openlocfilehash: aca9f0b3320f298987cf39172fd4b043326a2f4b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: 32e5c2c7c058267c7a2c43d5264922c8a4cab83a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Kostenverwaltungsdaten
 
 Der Zugriff auf Kostenverwaltungsdaten wird über die Benutzer- oder Entitätsverwaltung bereitgestellt. Cloudyn-Benutzerkonten steuern den Zugriff auf *Entitäten* und administrative Funktionen. Es gibt zwei Arten des Zugriffs: Administrator und Benutzer. Sofern keine benutzerspezifische Änderung erfolgt, ermöglicht der Administratorzugriff eine unbeschränkte Nutzung sämtlicher Funktionen im Cloudyn-Portal, einschließlich Benutzerverwaltung, Empfängerlistenverwaltung und des Zugriffs auf alle Entitätsdaten auf Stammentitätsebene. Der Benutzerzugriff ist für Endbenutzer ausgelegt, die über ihren Zugriff auf Entitätsdaten Berichte anzeigen oder erstellen.
@@ -80,8 +77,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen eines Benutzers mit Benutzerzugriff
 > * Erstellen von Entitäten
 
-Lesen Sie in der Cloudyn-Dokumentation nach, um mehr über die ersten Schritte mit Cloudyn und über die Verwendung der Features von Cloudyn zu erfahren.
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie anhand von Verlaufsdaten Ausgaben vorhersagen.
 
 > [!div class="nextstepaction"]
-> [Cloudyn-Dokumentation](https://support.cloudyn.com/hc/)
-
+> [Vorhersage zukünftiger Ausgaben](tutorial-forecast-spending.md)

@@ -12,76 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 03/27/2017
+ms.date: 10/3/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: f57c88cbace41af233f542880c6199b3e278700e
-ms.openlocfilehash: c8d893dbac1a4f6cb3f05f857e186bca155e5865
-ms.lasthandoff: 02/17/2017
-
-
+ms.openlocfilehash: 471d68742668e2b1b1c72579cee9dd493f1bd042
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="remove-servers-and-disable-protection"></a>Entfernen von Servern und Deaktivieren des Schutzes
+In diesem Artikel erfahren Sie, wie Sie die Registrierung von Servern in einem Recovery Services-Tresor aufheben und wie Sie den Schutz für mit Site Recovery geschützte Computer deaktivieren.
 
-Der Azure Site Recovery-Dienst unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR). Dieser Dienst koordiniert Replikation, Failover und Wiederherstellung von virtuellen Computern und physischen Servern. Computer können in Azure oder in einem sekundären lokalen Rechenzentrum repliziert werden. Eine kurze Übersicht über das Gesamtthema finden Sie unter [Was ist Azure Site Recovery?](site-recovery-overview.md)
 
-In diesem Artikel erfahren Sie, wie Sie die Registrierung von Servern in einem Recovery Services-Tresor im Azure-Portal aufheben und wie Sie den Schutz für mit Site Recovery geschützte Computer deaktivieren.
-
-Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)veröffentlichen.
-
-## <a name="unregister-a-connected-configuration-server"></a>Aufheben der Registrierung eines verbundenen Konfigurationsservers
-
-Wenn Sie VMware-VMs oder physische Windows-/Linux-Server in Azure replizieren, können Sie die Registrierung des verbundenen Konfigurationsservers bei einem Tresor wie folgt aufheben:
-
-1. Deaktivieren Sie den Computerschutz. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Löschen**.
-2. Trennen Sie ggf. alle Richtlinien. Doppelklicken Sie unter **Site Recovery-Infrastruktur** > **Für VMware und physische Computer** > **Replikationsrichtlinien** auf die zugehörige Richtlinie. Klicken Sie mit der rechten Maustaste auf den Konfigurationsserver, und klicken Sie dann auf **Trennen**.
-3. Entfernen Sie alle zusätzlichen lokalen Prozess- oder Masterzielserver. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für VMware und physische Computer** > **Konfigurationsserver** mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Löschen**.
-4. Löschen Sie den Konfigurationsserver.
-5. Deinstallieren Sie den Mobilitätsdienst manuell, der auf dem Masterzielserver ausgeführt wird. (Dabei handelt es sich entweder um einen separaten Server, oder er wird auf dem Konfigurationsserver ausgeführt.)
-6. Deinstallieren Sie ggf. weitere Prozessserver.
-7. Deinstallieren Sie den Konfigurationsserver.
-8. Deinstallieren Sie auf dem Konfigurationsserver die Instanz von MySQL, die von Site Recovery installiert wurde.
-9. Löschen Sie in der Registrierung des Konfigurationsservers den Schlüssel ``HKEY_LOCAL_MACHINE\Software\Microsoft\Azure Site Recovery``.
-
-## <a name="unregister-a-unconnected-configuration-server"></a>Aufheben der Registrierung eines nicht verbundenen Konfigurationsservers
+## <a name="unregister-a--configuration-server"></a>Aufheben der Registrierung eines Konfigurationsservers
 
 Wenn Sie VMware-VMs oder physische Windows-/Linux-Server in Azure replizieren, können Sie die Registrierung des nicht verbundenen Konfigurationsservers bei einem Tresor wie folgt aufheben:
 
-1. Deaktivieren Sie den Computerschutz. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Löschen**. Wählen Sie **Verwaltung des Computers beenden** aus.
-2. Entfernen Sie alle zusätzlichen lokalen Prozess- oder Masterzielserver. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für VMware und physische Computer** > **Konfigurationsserver** mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Löschen**.
-3. Löschen Sie den Konfigurationsserver.
-4. Deinstallieren Sie den Mobilitätsdienst manuell, der auf dem Masterzielserver ausgeführt wird. (Dabei handelt es sich entweder um einen separaten Server, oder er wird auf dem Konfigurationsserver ausgeführt.)
-5. Deinstallieren Sie ggf. weitere Prozessserver.
-6. Deinstallieren Sie den Konfigurationsserver.
-7. Deinstallieren Sie auf dem Konfigurationsserver die Instanz von MySQL, die von Site Recovery installiert wurde.
-8. Löschen Sie in der Registrierung des Konfigurationsservers den Schlüssel ``HKEY_LOCAL_MACHINE\Software\Microsoft\Azure Site Recovery``.
+1. [Deaktivieren des Schutzes für virtuelle Computer](#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)
+2. [Aufheben der Zuordnung](site-recovery-setup-replication-settings-vmware.md#dissociate-a-configuration-server-from-a-replication-policy) und [Löschen](site-recovery-setup-replication-settings-vmware.md#delete-a-replication-policy) aller Replikationsrichtlinien
+3. [Löschen des Konfigurationsservers](site-recovery-vmware-to-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server)
 
-## <a name="unregister-a-connected-vmm-server"></a>Aufheben der Registrierung eines verbundenen VMM-Servers
-
-Es empfiehlt sich, die Registrierung des VMM-Servers aufzuheben, während dieser mit Azure verbunden ist. Dadurch wird sichergestellt, dass Einstellungen auf den VMM-Servern (und auf anderen VMM-Servern mit gekoppelten Clouds) ordnungsgemäß bereinigt werden. Nicht verbundene Server sollten nur im Falle eines dauerhaften Konnektivitätsproblems entfernt werden. Wenn der VMM-Server nicht verbunden ist, müssen Sie manuell ein Skript zum Bereinigen der Einstellungen ausführen.
-
-1. Beenden Sie die Replikation virtueller Computer in Clouds auf dem VMM-Server, den Sie entfernen möchten.
-2. Löschen Sie Netzwerkzuordnungen, die von Clouds auf dem VMM-Server verwendet werden, den Sie löschen möchten. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für System Center VMM** > **Netzwerkzuordnung** mit der rechten Maustaste auf die Netzwerkzuordnung, und klicken Sie dann auf **Löschen**.
-3. Heben Sie die Zuordnung zwischen Replikationsrichtlinien und Clouds auf dem VMM-Server auf, den Sie entfernen möchten.  Doppelklicken Sie unter **Site Recovery-Infrastruktur** > **Für System Center VMM** >  **Replikationsrichtlinien** auf die zugehörige Richtlinie. Klicken Sie mit der rechten Maustaste auf die Cloud, und klicken Sie dann auf **Zuordnung aufheben**.
-4. Löschen Sie den VMM-Server oder den aktiven VMM-Knoten. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für System Center VMM** > **VMM-Server** mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Löschen**.
-5. Deinstallieren Sie manuell den Anbieter auf dem VMM-Server. Wenn Sie einen Cluster verwenden, entfernen Sie ihn von allen Knoten.
-6. Wenn Sie eine Replikation nach Azure durchführen, müssen Sie den Microsoft Recovery Services-Agent manuell von Hyper-V-Hosts in den gelöschten Clouds entfernen.
-
-
-
-### <a name="unregister-an-unconnected-vmm-server"></a>Aufheben der Registrierung eines nicht verbundenen VMM-Servers
+## <a name="unregister-a-vmm-server"></a>Aufheben der Registrierung eines VMM-Servers
 
 1. Beenden Sie die Replikation virtueller Computer in Clouds auf dem VMM-Server, den Sie entfernen möchten.
 2. Löschen Sie Netzwerkzuordnungen, die von Clouds auf dem VMM-Server verwendet werden, den Sie löschen möchten. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für System Center VMM** > **Netzwerkzuordnung** mit der rechten Maustaste auf die Netzwerkzuordnung, und klicken Sie dann auf **Löschen**.
 3. Notieren Sie die ID des VMM-Servers.
 4. Heben Sie die Zuordnung zwischen Replikationsrichtlinien und Clouds auf dem VMM-Server auf, den Sie entfernen möchten.  Doppelklicken Sie unter **Site Recovery-Infrastruktur** > **Für System Center VMM** >  **Replikationsrichtlinien** auf die zugehörige Richtlinie. Klicken Sie mit der rechten Maustaste auf die Cloud, und klicken Sie dann auf **Zuordnung aufheben**.
 5. Löschen Sie den VMM-Server oder den aktiven Knoten. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für System Center VMM** > **VMM-Server** mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Löschen**.
-6. Laden Sie auf dem VMM-Server das [Bereinigungsskript](http://aka.ms/asr-cleanup-script-vmm) herunter, und führen Sie es aus. Öffnen Sie PowerShell mit der Option **Als Administrator ausführen**, um die Ausführungsrichtlinie für den Standardbereich (LocalMachine) zu ändern. Geben Sie im Skript die ID des VMM-Servers an, den Sie entfernen möchten. Das Skript entfernt die Informationen zu Registrierung und Cloudkopplung vom Server.
-5. Führen Sie das Bereinigungsskript auf allen anderen VMM-Servern aus, die Clouds enthalten, welche mit Clouds auf dem zu entfernenden VMM-Server gekoppelt sind.
+6. Wenn Ihr VMM-Server nicht verbunden war, laden Sie das [Bereinigungsskript](http://aka.ms/asr-cleanup-script-vmm) auf den VMM-Server herunter und führen es aus. Öffnen Sie PowerShell mit der Option **Als Administrator ausführen**, um die Ausführungsrichtlinie für den Standardbereich (LocalMachine) zu ändern. Geben Sie im Skript die ID des VMM-Servers an, den Sie entfernen möchten. Das Skript entfernt die Informationen zu Registrierung und Cloudkopplung vom Server.
+5. Führen Sie das Bereinigungsskript auf einem beliebigen sekundären VMM-Server aus.
 6. Führen Sie das Bereinigungsskript auf allen anderen passiven VMM-Clusterknoten aus, auf denen der Anbieter installiert ist.
 7. Deinstallieren Sie manuell den Anbieter auf dem VMM-Server. Wenn Sie einen Cluster verwenden, entfernen Sie ihn von allen Knoten.
-8. Wenn Sie eine Replikation nach Azure durchführen, können Sie den Microsoft Recovery Services-Agent von Hyper-V-Hosts in den gelöschten Clouds entfernen.
+8. Wenn Sie die Replikation Ihrer virtuellen Computer nach Azure durchführen, müssen Sie den Microsoft Recovery Services-Agent auf den Hyper-V-Hosts in den gelöschten Clouds deinstallieren.
 
 ## <a name="unregister-a-hyper-v-host-in-a-hyper-v-site"></a>Aufheben der Registrierung eines Hyper-V-Hosts an einem Hyper-V-Standort
 
@@ -89,12 +51,13 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
 
 1. Deaktivieren Sie die Replikation für Hyper-V-VMs, die sich auf dem Host befinden.
 2. Heben Sie die Zuordnung von Richtlinien für den Hyper-V-Standort auf. Doppelklicken Sie unter **Site Recovery-Infrastruktur** > **Für Hyper-V-Standorte** >  **Replikationsrichtlinien** auf die zugehörige Richtlinie. Klicken Sie mit der rechten Maustaste auf den Standort, und klicken Sie dann auf **Zuordnung aufheben**.
-3. Löschen Sie Hyper-V-Hosts. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für System Center VMM** > **Hyper-V-Hosts** mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Löschen**.
-4. Löschen Sie den Hyper-V-Standort, nachdem alle Hosts daraus entfernt wurden. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für System Center VMM** > **Hyper-V-Standorte** mit der rechten Maustaste auf den Standort, und klicken Sie dann auf **Löschen**.
-5. Führen Sie das folgende Skript auf jedem Hyper-V-Host aus, den Sie entfernt haben. Das Skript bereinigt die Einstellungen auf dem Server und hebt die Registrierung beim Tresor auf.
+3. Löschen Sie Hyper-V-Hosts. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für Hyper-V-Websites** > **Hyper-V-Hosts** mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Löschen**.
+4. Löschen Sie den Hyper-V-Standort, nachdem alle Hosts daraus entfernt wurden. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für Hyper-V-Websites** > **Hyper-V-Websites** mit der rechten Maustaste auf die Website, und klicken Sie dann auf **Löschen**.
+5. Wenn Ihr Hyper-V-Host den Status **Verbindung getrennt** aufweist, führen Sie das folgende Skript auf jedem Hyper-V-Host aus, den Sie entfernt haben. Das Skript bereinigt die Einstellungen auf dem Server und hebt die Registrierung beim Tresor auf.
 
 
-        `` pushd .
+
+        pushd .
         try
         {
              $windowsIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
@@ -172,69 +135,83 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
             $error[0]
             Write-Host "FAILED" -ForegroundColor "Red"
         }
-        popd``
+        popd
 
 
 
-## <a name="disable-protection-for-a-vmware-vm-or-physical-server"></a>Deaktivieren des Schutzes für eine VMware-VM oder einen physischen Server
+## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>Deaktivieren des Schutzes für eine VMware-VM oder einen physischen Server (VMware nach Azure)
 
-1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Löschen**.
-2. Wählen Sie unter **Computer entfernen** eine der folgenden Optionen aus:
-    - **Schutz für Computer deaktivieren (empfohlen)**. Verwenden Sie diese Option zum Beenden der Replikation des Computers. Site Recovery-Einstellungen werden automatisch bereinigt. Diese Option wird Ihnen nur unter folgenden Umständen angezeigt:
-        - **Sie haben die Größe des VM-Volumes geändert**: Wenn Sie die Größe eines Volumes ändern, wechselt der virtuelle Computer in einen kritischen Zustand. Wählen Sie diese Option, um den Schutz unter Beibehaltung der Wiederherstellungspunkte in Azure zu deaktivieren. Wenn Sie den Schutz für den Computer wieder aktivieren, werden die Daten für das angepasste Volume an Azure übertragen.
-        - **Sie haben vor kurzem ein Failover ausgeführt**: Nach dem Ausführen eines Failovers zum Testen der Umgebung wählen Sie diese Option aus, um den Schutz für lokale Computer erneut zu starten. Mit dieser Option werden die einzelnen virtuellen Computer deaktiviert, sodass Sie den Schutz für diese wieder aktivieren müssen. Das Deaktivieren des Computers mit dieser Einstellung wirkt sich nicht auf den replizierten virtuellen Computer in Azure aus. Deinstallieren Sie nicht den Mobilitätsdienst vom Computer.
-    - **Verwaltung des Computers beenden**. Wenn Sie diese Option auswählen, wird der Computer nur aus dem Tresor entfernt. Lokale Sicherheitseinstellungen für den Computer sind nicht betroffen. Um Einstellungen vom Computer und den Computer aus dem Azure-Abonnement zu entfernen, müssen Sie die Einstellungen bereinigen, indem Sie den Mobilitätsdienst deinstallieren.
+1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Replikation deaktivieren**.
+2. Wählen Sie auf der Seite **Replikation deaktivieren** eine der folgenden Optionen aus:
+    - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem Konfigurationsserver wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
+    - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem Konfigurationsserver wird **nicht** bereinigt. 
 
-## <a name="disable-protection-for-a-hyper-v-vm-in-a-vmm-cloud"></a>Deaktivieren des Schutzes für eine Hyper-V-VM in einer VMM-Cloud
+> [!NOTE]
+> Bei beiden Optionen wird der Mobility Service nicht von den geschützten Servern deinstalliert. Sie müssen die Deinstallation manuell vornehmen. Wenn Sie den Server erneut mit demselben Konfigurationsserver schützen möchten, können Sie die Deinstallation des Mobility Service überspringen.
 
-1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Löschen**.
-2. Wählen Sie unter **Computer entfernen** eine der folgenden Optionen aus:
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Deaktivieren des Schutzes für einen virtuellen Hyper-V-Computer (Hyper-V nach Azure)
 
-    - **Schutz für Computer deaktivieren (empfohlen)**. Verwenden Sie diese Option zum Beenden der Replikation des Computers. Site Recovery-Einstellungen werden automatisch bereinigt.
-    - **Verwaltung des Computers beenden**. Wenn Sie diese Option auswählen, wird der Computer nur aus dem Tresor entfernt. Lokale Sicherheitseinstellungen für den Computer sind nicht betroffen. Um Einstellungen vom Computer und den Computer aus dem Azure-Abonnement zu entfernen, müssen Sie die Einstellungen manuell mithilfe der folgenden Anweisungen bereinigen. Wenn Sie den virtuellen Computer und dessen Festplatten löschen, beachten Sie, dass diese am Zielspeicherort entfernt werden.
+> [!NOTE]
+> Gehen Sie folgendermaßen vor, wenn Sie Hyper-V-VMs ohne einen VMM-Server nach Azure replizieren. Wenn Sie Ihre virtuellen Computer von **System Center VMM nach Azure** replizieren, befolgen Sie die Anweisungen unter [Deaktivieren des Schutzes für einen virtuellen Hyper-V-Computer mit Replikation mithilfe von System Center VMM nach Azure](#disable-protection-for-a-hyper-v-virtual-machine-replicating-using-the-system-centet-vmm-to-azure-scenario)
 
-### <a name="clean-up-protection-settings---replication-to-a-secondary-vmm-site"></a>Bereinigen von Schutzeinstellungen – Replikation an einen sekundären VMM-Standort
+1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Replikation deaktivieren**.
+2. Unter **Replikation deaktivieren** können Sie folgende Optionen auswählen:
+     - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
+    - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird **nicht** bereinigt. 
 
-Wenn Sie **Verwaltung des Computers beenden** ausgewählt haben und eine Replikation an einen sekundären Standort durchführen, führen Sie dieses Skript auf dem primären Server aus, um die Einstellungen für den primären virtuellen Computer zu bereinigen. Klicken Sie in der VMM-Konsole auf die Schaltfläche „PowerShell“, um die VMM-PowerShell-Konsole zu öffnen. Ersetzen Sie „SQLVM1“ durch den Namen des virtuellen Computers.
-
-         ``$vm = get-scvirtualmachine -Name "SQLVM1"
-         Set-SCVirtualMachine -VM $vm -ClearDRProtection``
-2. Führen Sie auf dem sekundären VMM-Server das folgende Skript aus, um die Einstellungen für den sekundären virtuellen Computer zu bereinigen:
-
-        ``$vm = get-scvirtualmachine -Name "SQLVM1"
-        Remove-SCVirtualMachine -VM $vm -Force``
-3. Aktualisieren Sie auf dem sekundären VMM-Server die virtuellen Computer auf dem Hyper-V-Hostserver, damit der sekundäre virtuelle Computer in der VMM-Konsole neu erkannt wird.
-4. Mit den obigen Schritten werden die Replikationseinstellungen auf dem VMM-Server gelöscht. Wenn Sie die Replikation für den virtuelle Computer beenden möchten, führen Sie das folgende Skript auf dem primären und sekundären virtuellen Computer aus. Ersetzen Sie „SQLVM1“ durch den Namen des virtuellen Computers.
-
-        ``Remove-VMReplication –VMName “SQLVM1”``
-
-### <a name="clean-up-protection-settings---replication-to-azure"></a>Bereinigen von Schutzeinstellungen – Replikation nach Azure
-
-1. Wenn Sie **Verwaltung des Computers beenden** ausgewählt haben und die Replikation nach Azure durchführen, führen Sie dieses Skript mithilfe von PowerShell in der VMM-Konsole auf dem VMM-Quellserver aus.
-        ``$vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection``
-2. Mit den obigen Schritten werden die Replikationseinstellungen auf dem VMM-Server gelöscht. Um die Replikation für den virtuellen Computer zu beenden, der auf dem Hyper-V-Hostserver ausgeführt wird, führen Sie dieses Skript aus. Ersetzen Sie „SQLVM1“ durch den Namen Ihres virtuellen Computers und „host01.contoso.com“ durch den Namen des Hyper-V-Hostservers.
-
-        ``$vmName = "SQLVM1"
-        $hostName  = "host01.contoso.com"
-        $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'" -computername $hostName
-        $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  -computername $hostName
-        $replicationService.RemoveReplicationRelationship($vm.__PATH)``
+    > [!NOTE]
+    > Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen Hyper-V-Server zu bereinigen.
+1. Entfernen Sie auf dem Hyper-V-Quellhostserver die Replikation für den virtuellen Computer. Ersetzen Sie SQLVM1 durch den Namen des virtuellen Computers, und führen Sie das Skript in einer administrativen PowerShell aus.
 
 
-## <a name="disable-protection-for-a-hyper-v-vm-in-a-hyper-v-site"></a>Deaktivieren des Schutzes für eine Hyper-V-VM an einem Hyper-V-Standort
+    
+    $vmName = "SQLVM1"  $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'"  $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  $replicationService.RemoveReplicationRelationship($vm.__PATH)
+    
 
-Gehen Sie folgendermaßen vor, wenn Sie Hyper-V-VMs ohne einen VMM-Server nach Azure replizieren.
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>Deaktivieren des Schutzes für einen virtuellen Hyper-V-Computer mit Replikation mithilfe von System Center VMM nach Azure
 
-1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Löschen**.
-2. Unter **Computer entfernen** können Sie folgende Optionen auswählen:
+1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Replikation deaktivieren**.
+2. Wählen Sie unter **Replikation deaktivieren** eine der folgenden Optionen aus:
 
-   - **Schutz für Computer deaktivieren (empfohlen)**. Verwenden Sie diese Option zum Beenden der Replikation des Computers. Site Recovery-Einstellungen werden automatisch bereinigt.
-   - **Verwaltung des Computers beenden**. Wenn Sie diese Option auswählen, wird der Computer nur aus dem Tresor entfernt. Lokale Sicherheitseinstellungen für den Computer sind nicht betroffen. Um Einstellungen vom Computer und den virtuellen Computer aus dem Azure-Abonnement zu entfernen, müssen Sie die Einstellungen manuell bereinigen. Wenn Sie den virtuellen Computer und dessen Festplatten löschen, werden sie am Zielspeicherort entfernt.
-3. Wenn Sie **Verwaltung des Computers beenden** gewählt haben, führen Sie auf dem Hyper-V-Hostquellserver das folgende Skript aus, um die Replikation für den virtuellen Computer zu entfernen. Ersetzen Sie „SQLVM1“ durch den Namen des virtuellen Computers.
+    - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
+    - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird **nicht** bereinigt. 
 
-        $vmName = "SQLVM1"
-        $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'"
-        $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"
-        $replicationService.RemoveReplicationRelationship($vm.__PATH)
+    > [!NOTE]
+    > Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen VMM-Server zu bereinigen.
+3. Führen Sie dieses Skript auf dem VMM-Quellserver mithilfe von PowerShell (Administratorrechte erforderlich) an der VMM-Konsole aus. Ersetzen Sie den Platzhalter **SQLVM1** durch den Namen des virtuellen Computers.
+
+        $vm = get-scvirtualmachine -Name "SQLVM1"
+        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+4. Mit den obigen Schritten werden die Replikationseinstellungen auf dem VMM-Server gelöscht. Um die Replikation für den virtuellen Computer zu beenden, der auf dem Hyper-V-Hostserver ausgeführt wird, führen Sie dieses Skript aus. Ersetzen Sie „SQLVM1“ durch den Namen Ihres virtuellen Computers und „host01.contoso.com“ durch den Namen des Hyper-V-Hostservers.
+
+    
+    $vmName = "SQLVM1"  $hostName  = "host01.contoso.com"  $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'" -computername $hostName  $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  -computername $hostName  $replicationService.RemoveReplicationRelationship($vm.__PATH)
+    
+       
+ 
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>Deaktivieren des Schutzes für einen virtuellen Hyper-V-Computer mit Replikation auf einen sekundären VMM-Server mithilfe von System Center VMM nach Azure
+
+1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Replikation deaktivieren**.
+2. Wählen Sie unter **Replikation deaktivieren** eine der folgenden Optionen aus:
+
+    - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
+    - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird **nicht** bereinigt. Führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für einen lokalen virtuellen Computer zu bereinigen.
+> [!NOTE]
+> Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen VMM-Server zu bereinigen.
+
+3. Führen Sie dieses Skript auf dem VMM-Quellserver mithilfe von PowerShell (Administratorrechte erforderlich) an der VMM-Konsole aus. Ersetzen Sie den Platzhalter **SQLVM1** durch den Namen des virtuellen Computers.
+
+         $vm = get-scvirtualmachine -Name "SQLVM1"
+         Set-SCVirtualMachine -VM $vm -ClearDRProtection
+4. Führen Sie auf dem sekundären VMM-Server das folgende Skript aus, um die Einstellungen für den sekundären virtuellen Computer zu bereinigen:
+
+        $vm = get-scvirtualmachine -Name "SQLVM1"
+        Remove-SCVirtualMachine -VM $vm -Force
+5. Aktualisieren Sie auf dem sekundären VMM-Server die virtuellen Computer auf dem Hyper-V-Hostserver, damit der sekundäre virtuelle Computer in der VMM-Konsole neu erkannt wird.
+6. Mit den obigen Schritten werden die Replikationseinstellungen auf dem VMM-Server gelöscht. Wenn Sie die Replikation für den virtuelle Computer beenden möchten, führen Sie das folgende Skript auf dem primären und sekundären virtuellen Computer aus. Ersetzen Sie „SQLVM1“ durch den Namen des virtuellen Computers.
+
+        Remove-VMReplication –VMName “SQLVM1”
+
+
+
 

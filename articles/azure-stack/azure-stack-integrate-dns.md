@@ -5,17 +5,15 @@ services: azure-stack
 author: troettinger
 ms.service: azure-stack
 ms.topic: article
-ms.date: 9/25/2017
+ms.date: 10/10/2017
 ms.author: victorh
 keywords: 
+ms.openlocfilehash: 0a5a783751e4f0fa9f5fb43b22fa221dd9bf3444
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: bf41e2458ade0bc770eb0f9cd327f752e08358a9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-stack-datacenter-integration---dns"></a>Integration des Azure Stack-Datencenters – DNS
 
 *Gilt für: integrierte Azure Stack-Systeme*
@@ -68,9 +66,14 @@ Azure Stack enthält autoritative und rekursive DNS-Server. Die rekursiven Serve
 
 Zum Auflösen von DNS-Namen für Endpunkte außerhalb von Azure Stack (z.B. www.bing.com) müssen Sie DNS-Server bereitstellen, die Azure Stack für die Weiterleitung von DNS-Anforderungen verwenden kann, für die Azure Stack nicht autoritativ ist. Für die Bereitstellung sind die DNS-Server, an die Azure Stack Anforderungen weiterleitet, im Arbeitsblatt der Bereitstellung erforderlich (im Feld „DNS-Weiterleitung“). Geben Sie für die Fehlertoleranz mindestens zwei Server in diesem Feld an. Ohne diese Werte schlägt die Azure Stack-Bereitstellung fehl.
 
-### <a name="adding-dns-forwarding-servers-after-deployment"></a>Hinzufügen von DNS-Weiterleitungsservern nach der Bereitstellung
+### <a name="configure-conditional-dns-forwarding"></a>Konfigurieren der bedingten DNS-Weiterleitung
 
-Falls Sie oder Ihr ISP Ihre DNS-Infrastruktur aktualisieren, sollten Sie zusätzliche DNS-Server registrieren. Sie müssen die privilegierten Endpunkte verwenden, um DNS-Server hinzuzufügen, die rekursive Anforderungen weiterleiten.
+> [!IMPORTANT]
+> Diese Informationen gelten nur für eine AD FS-Bereitstellung.
+
+Um die Namensauflösung mit Ihrer vorhandenen DNS-Infrastruktur zu ermöglichen, konfigurieren Sie eine bedingte Weiterleitung.
+
+Zum Hinzufügen einer bedingten Weiterleitung müssen Sie den privilegierten Endpunkt verwenden.
 
 Verwenden Sie für diesen Vorgang einen Computer in Ihrem Datencenternetzwerk, der mit dem privilegierten Endpunkt in Azure Stack kommunizieren kann.
 
@@ -84,10 +87,8 @@ Verwenden Sie für diesen Vorgang einen Computer in Ihrem Datencenternetzwerk, d
 2. Nachdem Sie eine Verbindung mit dem privilegierten Endpunkt hergestellt haben, führen Sie folgenden PowerShell-Befehl aus. Ersetzen Sie die bereitgestellten Beispielwerte durch Ihren Domänennamen und die IP-Adressen des DNS-Servers, den Sie verwenden möchten.
 
    ```
-   Register-CustomDnsServer -CustomDomainName "contoso.com" -CustomDnsIPAddresses “192.168.1.1”,”192.168.1.2”
+   Register-CustomDnsServer -CustomDomainName "contoso.com" -CustomDnsIPAddresses "192.168.1.1","192.168.1.2"
    ```
-
-Nach dem Ausführen dieses Befehls können Azure Stack-Dienste und die virtuellen Benutzercomputer, die Azure Stack-DNS verwenden, die Namen der Azure Stack Endpunkte (z.B. die Portal- und API-Endpunkte) auflösen sowie alle öffentlichen IP-Adressen, die eine DNS-Namensbezeichnung besitzen.
 
 ## <a name="resolving-azure-stack-dns-names-from-outside-azure-stack"></a>Auflösen von Azure Stack-DNS-Namen von außerhalb von Azure Stack
 Die autoritativen Server enthalten die Informationen zu externen DNS-Zonen und zu allen vom Benutzer erstellten Zonen. Integrieren Sie diese Server, um die Zonendelegierung oder die bedingte Weiterleitung für das Auflösen von Azure Stack-DNS-Namen von außerhalb von Azure Stack zu aktivieren.
@@ -140,4 +141,3 @@ Die meisten DNS-Registrierungsstellen erfordern, dass Sie mindestens zwei DNS-Se
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Azure Stack datacenter integration - publish endpoints (Integration des Azure Stack-Datencenters – Veröffentlichen von Endpunkten)](azure-stack-integrate-endpoints.md)
-

@@ -3,7 +3,7 @@ title: " Wartung von Azure-VM-Warnungen mit Automation-Runbooks | Microsoft Docs
 description: Dieser Artikel beschreibt das Integrieren von Azure Virtual Machine-Warnungen in Azure Automation-Runbooks und die automatische Problembehandlung.
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 1f7baa7f-7283-4a4f-9385-3f5cd1062c7f
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/14/2016
+ms.date: 09/29/2017
 ms.author: csand;magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9abb6ee8eed01ef84ee10fc2c70ea23bf482dd1c
-
-
+ms.openlocfilehash: 18cccc88ab74235722e2f4886671fc483ab67da8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-automation-scenario---remediate-azure-vm-alerts"></a>Azure Automation-Szenario – Wartung nach Azure-VM-Warnungen
 In Azure Automation und Azure Virtual Machines wurde ein neues Feature veröffentlicht, mit dem Sie VM-Warnungen für die Ausführung von Automation-Runbooks konfigurieren können. Diese neue Funktion ermöglicht es Ihnen, als Reaktion auf VM-Warnungen automatisch eine Standardwartung durchzuführen, beispielsweise das Neustarten oder Beenden des virtuellen Computers.
@@ -36,14 +36,14 @@ Führen Sie die folgenden Schritte durch, um eine Warnung so zu konfigurieren, d
 > 
 
 1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Virtual Machines**.  
-2. Wählen Sie einen Ihrer virtuellen Computer aus.  Das Dashboardblatt des virtuellen Computers wird angezeigt, rechts davon das Blatt **Einstellungen** .  
-3. Wählen Sie auf dem Blatt **Einstellungen** unter dem Abschnitt „Überwachung“ die Option **Warnungsregeln** aus.
-4. Klicken Sie auf dem Blatt **Warnungsregeln** auf **Warnung hinzufügen**.
+2. Wählen Sie einen Ihrer virtuellen Computer aus.  
+3. Klicken Sie auf dem Bildschirm des virtuellen Computers im Abschnitt **Überwachung** auf **Warnungsregeln**.
+4. Klicken Sie im Bereich **Warnungsregeln** auf **Warnung hinzufügen**.
 
-Dadurch wird das Blatt **Warnungsregel hinzufügen** geöffnet. Auf diesem Blatt können Sie die Bedingungen für die Warnung konfigurieren und eine oder alle der folgenden Optionen wählen: eine E-Mail an jemanden senden, die Warnung über einen Webhook an ein anderes System weiterleiten und/oder als Reaktion auf das Problem ein Automation-Runbook ausführen.
+Dadurch wird die Seite **Warnungsregel hinzufügen** geöffnet. Auf dieser Seite können Sie die Bedingungen für die Warnung konfigurieren und eine oder alle der folgenden Optionen wählen: eine E-Mail an jemanden senden, die Warnung über einen Webhook an ein anderes System weiterleiten und/oder als Reaktion zur Behebung des Problems ein Automation-Runbook ausführen.
 
 ## <a name="configure-a-runbook"></a>Konfigurieren eines Runbooks
-Um ein Runbook zu konfigurieren, das ausgeführt wird, wenn der Warnungsschwellenwert für den virtuellen Computer erreicht ist, wählen Sie **Automation-Runbook**. Auf dem Blatt **Runbook konfigurieren** können Sie das auszuführende Runbook sowie das Automation-Konto auswählen, in dem das Runbook ausgeführt wird.
+Um ein Runbook zu konfigurieren, das ausgeführt wird, wenn der Warnungsschwellenwert für den virtuellen Computer erreicht ist, wählen Sie **Automation-Runbook**. Im Bereich **Runbook konfigurieren** können Sie das auszuführende Runbook sowie das Automation-Konto auswählen, in dem das Runbook ausgeführt wird.
 
 ![Konfigurieren eines Automation-Runbooks und Erstellen eines neuen Automation-Kontos](media/automation-azure-vm-alert-integration/ConfigureRunbookNewAccount.png)
 
@@ -56,7 +56,7 @@ Um ein Runbook zu konfigurieren, das ausgeführt wird, wenn der Warnungsschwelle
 
 Nach dem Auswählen eines der drei verfügbaren Runbooks wird die Dropdownliste **Automation-Konto** angezeigt. Darin können Sie ein Automation-Konto auswählen, das als ausführendes Konto für das Runbook verwendet wird. Runbooks müssen im Kontext eines [Automation-Kontos](automation-security-overview.md) ausgeführt werden, das Teil Ihres Azure-Abonnements ist. Sie können ein Automation-Konto auswählen, das Sie bereits erstellt haben, oder Sie können ein neues Automation-Konto erstellen.
 
-Die bereitgestellten Runbooks authentifizieren sich bei Azure über einen Dienstprinzipal. Wenn Sie das Runbook in einem Ihrer vorhandenen Automation-Konten ausführen möchten, erstellen wir automatisch den Dienstprinzipal für Sie. Wenn Sie ein neues Automation-Konto erstellen möchten, erstellen wir automatisch das Konto und den Dienstprinzipal. In beiden Fällen werden auch im Automation-Konto zwei Assets erstellt: Ein Zertifikatasset mit dem Namen **AzureRunAsCertificate** und ein Verbindungsasset mit dem Namen **AzureRunAsConnection**. Die Runbooks verwenden **AzureRunAsConnection** für die Authentifizierung bei Azure, um die Verwaltungsaktion für den virtuellen Computer auszuführen.
+Die bereitgestellten Runbooks authentifizieren sich bei Azure über einen Dienstprinzipal. Wenn Sie das Runbook in einem Ihrer vorhandenen Automation-Konten ausführen möchten, erstellen wir automatisch den Dienstprinzipal für Sie. Wenn Sie ein neues Automation-Konto erstellen möchten, erstellen wir automatisch das Konto und den Dienstprinzipal. In beiden Fällen werden im Automation-Konto auch zwei Assets erstellt: ein Zertifikatasset mit dem Namen **AzureRunAsCertificate** und ein Verbindungsasset mit dem Namen **AzureRunAsConnection**. Die Runbooks verwenden **AzureRunAsConnection** für die Authentifizierung bei Azure, um die Verwaltungsaktion für den virtuellen Computer auszuführen.
 
 > [!NOTE]
 > Der Dienstprinzipal wird im Rahmen des Abonnements erstellt und bekommt eine Teilnehmerrolle zugewiesen. Diese Rolle ist erforderlich, damit das Konto die Berechtigung zum Ausführen von Automation-Runbooks für die Verwaltung von virtuellen Azure-Computern erhält.  Die Erstellung eines Automaton-Kontos und/oder Dienstprinzipals ist eine einmalige Aufgabe. Nachdem sie erstellt wurden, können Sie dieses Konto zum Ausführen von Runbooks für andere Azure-VM-Warnungen verwenden.
@@ -67,11 +67,11 @@ Wenn Sie auf **OK** klicken, wird die Warnung konfiguriert, und wenn Sie die Opt
 
 ![Runbook, das konfiguriert wird](media/automation-azure-vm-alert-integration/RunbookBeingConfigured.png)
 
-Nach Abschluss der Konfiguration wird der Name des Runbooks auf dem Blatt **Warnungsregel hinzufügen** angezeigt.
+Nach Abschluss der Konfiguration wird der Name des Runbooks auf der Seite **Warnungsregel hinzufügen** angezeigt.
 
 ![Konfiguriertes Runbook](media/automation-azure-vm-alert-integration/RunbookConfigured.png)
 
-Klicken Sie auf dem Blatt **Warnungsregel hinzufügen** auf **OK**. Die Warnungsregel wird erstellt und aktiviert, wenn der virtuelle Computer ausgeführt wird.
+Klicken Sie auf der Seite **Warnungsregel hinzufügen** auf **OK**.  Die Warnungsregel wird erstellt und aktiviert, wenn der virtuelle Computer ausgeführt wird.
 
 ### <a name="enable-or-disable-a-runbook"></a>Aktivieren oder Deaktivieren eines Runbooks
 Wenn Sie ein Runbook für eine Warnung konfiguriert haben, können Sie es deaktivieren, ohne die Runbookkonfiguration zu entfernen. Dadurch kann die Warnung weiterhin ausgeführt werden, und Sie können vielleicht einige Warnungsregeln testen und das Runbook später wieder aktivieren.
@@ -119,7 +119,7 @@ Wenn der Automation-Webhook-Dienst die HTTP POST-Anforderung empfängt, extrahie
 
 ### <a name="example-runbook"></a>Beispiel für ein Runbook
 ```
-#  This runbook will restart an ARM (V2) VM in response to an Azure VM alert.
+#  This runbook restarts an ARM (V2) VM in response to an Azure VM alert.
 
 [OutputType("PSAzureOperationResponse")]
 
@@ -177,10 +177,4 @@ Bei der Konfiguration einer Warnung auf einem virtuellen Azure-Computer haben Si
 * Informationen über die ersten Schritte mit grafischen Runbooks finden Sie unter [Mein erstes grafisches Runbook](automation-first-runbook-graphical.md)
 * Informationen über die ersten Schritte mit PowerShell-Workflow-Runbooks finden Sie unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)
 * Informationen über die verschiedenen Runbooktypen, ihre Vorteile und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

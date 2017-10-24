@@ -16,14 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: donnam
+ms.openlocfilehash: ab438f804c28d5528901c405311424e0344e00fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 54c75a4c22f094ca50ab2cbf5449c5fa115b32a7
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 Azure Functions ermöglicht Ihnen das Schreiben von Code, in dem über *Trigger* und *Bindungen* auf Ereignisse in Azure und anderen Diensten reagiert wird. Dieser Artikel ist eine konzeptionelle Übersicht über Trigger und Bindungen für alle unterstützten Programmiersprachen. Hier sind die Funktionen beschrieben, die für alle Bindungen identisch sind.
 
@@ -43,21 +41,21 @@ In der folgenden Tabelle sind die Trigger und die Bindungen aufgeführt, die mit
 
 ### <a name="example-queue-trigger-and-table-output-binding"></a>Beispiel: Triggerwarteschlange und Tabellenausgabebindung
 
-Angenommen, Sie möchten immer dann eine neue Zeile in Azure Table Storage schreiben, wenn in Azure Queue Storage eine neue Nachricht eingetroffen ist. Dieses Szenario kann mit einem Azure-Warteschlangentrigger und einer Tabellenausgabebindung implementiert werden. 
+Angenommen, Sie möchten immer dann eine neue Zeile in Azure Table Storage schreiben, wenn in Azure Queue Storage eine neue Nachricht eingetroffen ist. Dieses Szenario kann mit einem Azure-Warteschlangentrigger und einer Azure Table Storage-Ausgabebindung implementiert werden. 
 
-Für einen Warteschlangentrigger sind die folgenden Informationen auf der Registerkarte **Integrieren** erforderlich:
+Für einen Azure Queue Storage-Trigger sind die folgenden Informationen auf der Registerkarte **Integrieren** erforderlich:
 
-* Der Name der App-Einstellung, die die Speicherkonto-Verbindungszeichenfolge für die Warteschlange enthält
+* Der Name der App-Einstellung, die die Azure Storage-Kontoverbindungszeichenfolge für Azure Queue Storage enthält
 * Der Name der Warteschlange
 * Der Bezeichner im Code, um den Inhalt der Warteschlangennachricht zu lesen, beispielsweise `order`
 
 Um in Azure Table Storage zu schreiben, verwenden Sie eine Ausgabebindung mit den folgenden Details:
 
-* Der Name der App-Einstellung, die die Speicherkonto-Verbindungszeichenfolge für die Tabelle enthält
+* Der Name der App-Einstellung, die die Azure Storage-Kontoverbindungszeichenfolge für Azure Table Storage enthält
 * Der Tabellenname
 * Der Bezeichner im Code, um Ausgabeelemente oder den Rückgabewert der Funktion zu erstellen
 
-In Bindungen werden App-Einstellungen für Verbindungszeichenfolgen verwendet, damit sichergestellt ist, dass *function.json* keine Geheimnisse eines Diensts enthält.
+Bindungen nutzen in den App-Einstellungen gespeicherte Verbindungszeichenfolgenwerte, um die bewährte Methode zu erzwingen, gemäß der *function.json* keine Dienstgeheimnisse, sondern nur die Namen der App-Einstellungen enthält.
 
 Verwenden Sie dann in Ihrem Code die Bezeichner, die Sie zum Einbinden von Azure Storage bereitgestellt haben.
 
@@ -168,7 +166,7 @@ public static Task<string> Run(WorkItem input, TraceWriter log)
 {
     string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
     log.Info($"C# script processed queue message. Item={json}");
-    return json;
+    return Task.FromResult(json);
 }
 ```
 
@@ -191,7 +189,7 @@ let Run(input: WorkItem, log: TraceWriter) =
 
 ## <a name="binding-datatype-property"></a>Binden der „dataType“-Eigenschaft
 
-Verwenden Sie die Typen in .NET, um den Datentyp für die Eingabedaten zu definieren. Verwenden Sie zum Beispiel `string`, um eine Bindung mit dem Text eines Warteschlangentriggers zu erstellen und ein Bytearray im Binärformat zu lesen.
+Verwenden Sie die Typen in .NET, um den Datentyp für die Eingabedaten zu definieren. Verwenden Sie zum Beispiel `string`, um eine Bindung mit dem Text eines Warteschlangentriggers zu erstellen – einem Bytearray zum Lesen im Binärformat und einem benutzerdefinierten Typ zum Deserialisieren in einem POCO-Objekt.
 
 Für dynamisch typisierte Sprachen wie JavaScript verwenden Sie die `dataType`-Eigenschaft in der Bindungsdefinition. Um beispielsweise den Inhalt einer HTTP-Anforderung im Binärformat zu lesen, verwenden Sie den Typ `binary`:
 
@@ -213,7 +211,7 @@ App-Einstellungen sind auch nützlich, wenn Sie die jeweilige Konfiguration ents
 
 App-Einstellungen werden immer dann aufgelöst, wenn ein Wert in Prozentzeichen steht, etwa `%MyAppSetting%`. Die `connection`Eigenschaft von Triggern und Bindungen ist ein Sonderfall, denn für sie werden Werte automatisch als App-Einstellungen aufgelöst. 
 
-Im folgenden Beispiel ist ein Warteschlangentrigger gezeigt, in dem die App-Einstellung `%input-queue-name%` verwendet wird, um die Warteschlange anzugeben, für die ausgelöst werden soll.
+Im folgenden Beispiel ist ein Azure Queue Storage-Trigger gezeigt, in dem die App-Einstellung `%input-queue-name%` verwendet wird, um die Warteschlange anzugeben, für die die Auslösung erfolgen werden soll.
 
 ```json
 {
@@ -233,7 +231,7 @@ Im folgenden Beispiel ist ein Warteschlangentrigger gezeigt, in dem die App-Eins
 
 Viele Trigger stellen zusätzlich zur Datennutzlast (z. B. die Warteschlangennachricht, von der eine Funktion ausgelöst wurde) weitere Metadatenwerte bereit. Diese Werte können als Eingabeparameter in C# und F# oder als Eigenschaften für das `context.bindings`-Objekt in JavaScript verwendet werden. 
 
-Beispielsweise unterstützt ein Warteschlangentrigger die folgenden Eigenschaften:
+Beispielsweise unterstützt ein Azure Queue Storage-Trigger die folgenden Eigenschaften:
 
 * QueueTrigger – Auslösen von Nachrichteninhalt, wenn gültige Zeichenfolge
 * DequeueCount
@@ -245,7 +243,7 @@ Beispielsweise unterstützt ein Warteschlangentrigger die folgenden Eigenschafte
 
 Details der Metadateneigenschaften für jeden Trigger sind im entsprechenden Referenzthema beschrieben. Dokumentation ist auch im Portal auf der Registerkarte **Integrieren** im Abschnitt **Dokumentation** verfügbar, der sich unter dem Bereich für Bindungskonfigurationen befindet.  
 
-Beispielsweise können Sie, da Blobtrigger einige Verzögerungen haben, einen Warteschlangentrigger verwenden, um Ihre Funktion auszuführen (weitere Informationen finden Sie unter [Storage-Blobtrigger](functions-bindings-storage-blob.md#storage-blob-trigger). Die Warteschlangennachricht würde den Namen der Blobdatei enthalten, für die ausgelöst werden soll. Durch Verwenden der `queueTrigger`-Metadateneigenschaft können Sie dieses Verhalten vollständig in Ihrer Konfiguration statt in Ihrem Code angeben.
+Da Blobtrigger einige Verzögerungen haben, können Sie beispielsweise einen Warteschlangentrigger verwenden, um Ihre Funktion auszuführen (siehe [Blob Storage-Trigger](functions-bindings-storage-blob.md#storage-blob-trigger)). Die Warteschlangennachricht würde den Namen der Blobdatei enthalten, für die ausgelöst werden soll. Durch Verwenden der `queueTrigger`-Metadateneigenschaft können Sie dieses Verhalten vollständig in Ihrer Konfiguration statt in Ihrem Code angeben.
 
 ```json
   "bindings": [
@@ -428,4 +426,3 @@ Weitere Informationen zu einer bestimmten Bindung finden Sie in den folgenden Ar
 - [Notification Hubs](functions-bindings-notification-hubs.md)
 - [Mobile Apps](functions-bindings-mobile-apps.md)
 - [Externe Datei](functions-bindings-external-file.md)
-

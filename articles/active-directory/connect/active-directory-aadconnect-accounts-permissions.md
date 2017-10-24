@@ -13,14 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 10/03/2017
 ms.author: billmath
+ms.openlocfilehash: b45e4096cb68c4b88d2d782427d66a11d1b86b33
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: fdd90721b6823c20c1ff27383769bfff24e80eae
-ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 Der Azure AD Connect-Installations-Assistent bietet zwei verschiedene Methoden:
@@ -97,6 +96,10 @@ Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funk
 
 ## <a name="upgrade"></a>Upgrade
 Wenn Sie Azure AD Connect auf eine höhere Version aktualisieren, benötigen Sie folgende Berechtigungen:
+
+>[!IMPORTANT]
+>Seit Build 1.1.484 tritt in Azure AD Connect ein Regressionsfehler auf, aufgrund dessen zum Aktualisieren der SQL-Datenbank Systemadministratorberechtigungen erforderlich sind.  Dieser Fehler tritt auch noch im aktuellen Bild 1.1.614 auf.  Für das Upgrade auf diesen Build benötigen Sie Systemadministratorberechtigungen.  dbo-Berechtigungen sind nicht ausreichend.  Wenn Sie versuchen, Azure AD Connect ohne Systemadministratorberechtigungen zu aktualisieren, tritt ein Fehler auf, und Azure AD Connect funktioniert anschließend nicht mehr ordnungsgemäß.  Microsoft ist sich dieses Problems bewusst und arbeitet an einer Lösung.
+
 
 | Prinzipal | Erforderliche Berechtigungen | Verwendung |
 | --- | --- | --- |
@@ -194,4 +197,3 @@ Um nicht verwendete Azure AD-Dienstkonten zu entfernen, führen Sie das folgende
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](../active-directory-aadconnect.md).
-

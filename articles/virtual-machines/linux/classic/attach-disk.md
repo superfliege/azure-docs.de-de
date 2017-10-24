@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 ms.openlocfilehash: 017ba7197e11c2b222082833d5acabb9e542b762
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>Gewusst wie: Anfügen eines Datenträgers an einen virtuellen Linux-Computer
 > [!IMPORTANT] 
@@ -53,7 +53,7 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
    
     OR
    
-    b) Verwenden Sie den Befehl `lsscsi`, um die Geräte-ID zu ermitteln. `lsscsi` kann entweder über `yum install lsscsi` (für auf Red Hat basierende Distributionen) oder über `apt-get install lsscsi` (für auf Debian basierende Distributionen) installiert werden. Den gesuchten Datenträger finden Sie anhand seiner *LUN* (Logical Unit Number) oder **logischen Gerätenummer**. Zum Beispiel kann die *LUN* für die angefügten Datenträger mit `azure vm disk list <virtual-machine>` angezeigt werden:
+    b) Verwenden Sie den Befehl `lsscsi` zum Ermitteln der Geräte-ID. `lsscsi` kann entweder über `yum install lsscsi` (für auf Red Hat basierende Distributionen) oder über `apt-get install lsscsi` (für auf Debian basierende Distributionen) installiert werden. Den gesuchten Datenträger finden Sie anhand seiner *LUN* (Logical Unit Number) oder **logischen Gerätenummer**. Zum Beispiel kann die *LUN* für die angefügten Datenträger mit `azure vm disk list <virtual-machine>` angezeigt werden:
 
     ```azurecli
     azure vm disk list myVM
@@ -89,7 +89,7 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
     sudo fdisk /dev/sdc
     ```
 
-4. Geben Sie bei Aufforderung  **n**  zum Erstellen einer Partition.
+4. Geben Sie nach Aufforderung **n** ein, um eine Partition zu erstellen.
 
     ![Gerät erstellen](./media/attach-disk/fdisknewpartition.png)
 
@@ -174,7 +174,7 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
     > [!NOTE]
     > Die Option `nofail` stellt sicher, dass der virtuelle Computer gestartet wird, selbst wenn das Dateisystem beschädigt oder der Datenträger zur Startzeit nicht vorhanden ist. Ohne diese Option können Verhalten auftreten, die unter [Cannot SSH to Linux VM due to FSTAB errors](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) (Aufgrund von FSTAB-Fehler keine SSH-Verbindung mit Linux-VM möglich) beschrieben sind.
 
-    Sie können nun testen, ob das Dateisystem ordnungsgemäß eingebunden wurde, indem Sie die Einbindung aufheben und wiederherstellen. Verwenden Sie dafür den zuvor erstellten Beispielbereitstellungspunkt `/datadrive`:
+    Sie können nun testen, ob das Dateisystem ordnungsgemäß eingebunden wurde, indem Sie die Einbindung aufheben und wiederherstellen, also den Beispieleinbindungspunkt `/datadrive` aus den vorangegangenen Schritte verwenden:
 
     ```bash
     sudo umount /datadrive

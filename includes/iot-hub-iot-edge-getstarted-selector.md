@@ -31,7 +31,7 @@ Das Modul „logger“ verarbeitet nur Nachrichten des Brokers. Es veröffentlic
 
 ![Funktionsweise der Weiterleitung von Nachrichten zwischen Modulen in Azure IoT Edge durch den Broker][5]
 
-Die Abbildung zeigt die Architektur des Hello World-Beispiels sowie die relativen Pfade zu den Quelldateien, die verschiedene Teile des Beispiels im [Repository][lnk-iot-edge] implementieren. Untersuchen Sie den Code selbst, oder verwenden Sie die unten stehenden Codeausschnitte als Leitfaden.
+Die vorstehende Abbildung zeigt die Architektur des „Hello World“-Beispiels sowie die relativen Pfade zu den Quelldateien, die verschiedene Teile des Beispiels im [Repository][lnk-iot-edge] implementieren. Untersuchen Sie den Code selbst, oder verwenden Sie die Codeausschnitte in diesem Artikel als Leitfaden.
 
 <!-- Images -->
 [4]: media/iot-hub-iot-edge-getstarted-selector/high_level_architecture.png

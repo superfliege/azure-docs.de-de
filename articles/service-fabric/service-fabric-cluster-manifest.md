@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2017
 ms.author: dekapur
+ms.openlocfilehash: 660e7b59ae0e92692121620341562e412a6e8eae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 30fadddabf89d379beffdf214cfe8a8145d7a29b
-ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuration-settings-for-standalone-windows-cluster"></a>Konfigurationseinstellungen für eigenständige Windows-Cluster
 In diesem Artikel wird beschrieben, wie Sie einen eigenständigen Service Fabric-Cluster mithilfe der Datei ***ClusterConfig.JSON*** konfigurieren. Sie können diese Datei zum Angeben von Informationen für Ihren eigenständigen Cluster verwenden, z.B. die Service Fabric-Knoten und ihre IP-Adressen, verschiedene Knotentypen im Cluster, die Sicherheitskonfigurationen sowie die Netzwerktopologie in Bezug auf Fehler-/Upgradedomänen.
 
-Wenn Sie [das eigenständige Service Fabric-Paket herunterladen](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), werden einige Beispiele der Datei „ClusterConfig.JSON“ auf Ihren Arbeitscomputer heruntergeladen. Die Beispiele mit *DevCluster* im Namen dienen Ihnen als Hilfe beim Erstellen eines Clusters mit allen drei Knoten auf demselben Computer, z.B. logischen Knoten. Davon muss mindestens ein Knoten als primärer Knoten gekennzeichnet sein. Dieser Cluster ist gut für eine Entwicklungs- oder Testumgebung geeignet und wird nicht als Produktionscluster unterstützt. Die Beispiele mit *MultiMachine* im Namen dienen Ihnen als Hilfe beim Erstellen eines Clusters in Produktionsqualität, bei dem jeder Knoten auf einem separaten Computer angeordnet ist.
+Wenn Sie [das eigenständige Service Fabric-Paket herunterladen](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), werden einige Beispiele der Datei „ClusterConfig.JSON“ auf Ihren Arbeitscomputer heruntergeladen. Die Beispiele mit *DevCluster* im Namen dienen Ihnen als Hilfe beim Erstellen eines Clusters mit allen drei Knoten auf demselben Computer, z.B. logischen Knoten. Davon muss mindestens ein Knoten als primärer Knoten gekennzeichnet sein. Dieser Cluster ist gut für eine Entwicklungs- oder Testumgebung geeignet und wird nicht als Produktionscluster unterstützt. Die Beispiele mit *MultiMachine* im Namen dienen Ihnen als Hilfe beim Erstellen eines Clusters in Produktionsqualität, bei dem jeder Knoten auf einem separaten Computer angeordnet ist. Die Anzahl von primären Knoten für diese Cluster basiert jeweils auf der [Zuverlässigkeitsstufe](#reliability). In Version 5.7, API-Version 05-2017 wurde die Eigenschaft für die Zuverlässigkeitsstufe entfernt. Stattdessen wird mit dem Code die optimale Leistungsstufe für Ihren Cluster berechnet. Verwenden Sie diese Eigenschaft nicht in der Codeversion 5.7 und höher.
+
 
 1. Mit *ClusterConfig.Unsecure.DevCluster.JSON* und *ClusterConfig.Unsecure.MultiMachine.JSON* wird veranschaulicht, wie Sie einen ungeschützten Test- bzw. Produktionscluster erstellen. 
 2. Mit *ClusterConfig.Windows.DevCluster.JSON* und *ClusterConfig.Windows.MultiMachine.JSON* wird veranschaulicht, wie Sie einen Test- oder Produktionscluster erstellen, der per [Windows-Sicherheit](service-fabric-windows-cluster-windows-security.md) geschützt ist.
@@ -197,5 +197,4 @@ Um bei eigenständigen Clustern die Containerunterstützung sowohl für Windows 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie die Datei „ClusterConfig.JSON“ vollständig entsprechend dem Setup für Ihren eigenständigen Cluster konfiguriert haben, können Sie den Cluster bereitstellen. Dazu befolgen Sie die Anweisungen im Artikel [Erstellen eines eigenständigen Service Fabric-Clusters](service-fabric-cluster-creation-for-windows-server.md), und anschließend [visualisieren Sie den Cluster mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
-
 

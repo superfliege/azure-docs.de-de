@@ -10,18 +10,18 @@
 
 Bei virtuellen Computern der B-Serie können Sie wählen, welche VM-Größe Ihnen die nötige Grundleistung für Ihre Workload bietet, und Sie haben die Möglichkeit, die CPU-Leistung um bis zu 100 Prozent einer vCPU vom Typ Intel® Broadwell E5-2673 v4 2,3 GHz oder Intel® Haswell 2,4 GHz E5-2673 v3 zu steigern.
 
-Virtuelle Computer der B-Serie sind ideal für Workloads, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, kleine Datenbanken sowie Entwicklungs- und Testumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Mit der B-Serie können Sie eine VM-Größe mit einer Grundleistung erwerben, wobei die VM-Instanz Guthaben bildet, wenn sie weniger als die Grundleistung beansprucht. Wenn für den virtuellen Computer Guthaben gebildet wurde, kann Leistung genutzt werden, die über die Grundleistung hinausgeht. Dabei können bis zu 100 Prozent der vCPU verwendet werden, wenn Ihre Anwendung mehr CPU-Leistung benötigt.
+Virtuelle Computer der B-Serie sind ideal für Workloads, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, kleine Datenbanken sowie Entwicklungs- und Testumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Mit der B-Serie können Sie eine VM-Größe mit einer Grundleistung erwerben, wobei die VM-Instanz Guthaben bildet, wenn sie weniger als die Grundleistung beansprucht. Wenn für den virtuellen Computer Guthaben gebildet wurde, kann Leistung genutzt werden, die über die Grundleistung hinausgeht. Dabei können bis zu 100 % der vCPU verwendet werden, wenn Ihre Anwendung mehr CPU-Leistung benötigt.
 
 Die B-Serie ist in sechs VM-Größen erhältlich:
 
 | Größe          | vCPUs | Arbeitsspeicher: GiB | Lokales SSD: GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Guthabenbildung/Stunde | Maximalguthaben |
 |---------------|--------|-------------|----------------|--------------------------------|---------------------------|-----------------------|--------------------|
-| Standard_B1s  | 1      | 1           | 4              | 10 %                            | 100 %                      | 6                     | 144                |
-| Standard_B1ms | 1      | 2           | 4              | 20 %                            | 100 %                      | 12                    | 288                |
-| Standard_B2s  | 2      | 4           | 8              | 40 %                            | 200 %                      | 24                    | 576                |
+| Standard_B1s  | 1      | 1           | 4              | 10%                            | 100 %                      | 6                     | 144                |
+| Standard_B1ms | 1      | 2           | 4              | 20%                            | 100 %                      | 12                    | 288                |
+| Standard_B2s  | 2      | 4           | 8              | 40%                            | 200 %                      | 24                    | 576                |
 | Standard_B2ms | 2      | 8           | 16             | 60 %                            | 200 %                      | 36                    | 864                |
-| Standard_B4ms | 4      | 16          | 32             | 90 %                            | 400 %                      | 54                    | 1296               |
-| Standard_B8ms | 8      | 32          | 64             | 135 %                           | 800 %                      | 81                    | 1944               |
+| Standard_B4ms | 4      | 16          | 32             | 90%                            | 400 %                      | 54                    | 1296               |
+| Standard_B8ms | 8      | 32          | 64             | 135%                           | 800 %                      | 81                    | 1944               |
 
 
 

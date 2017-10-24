@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 8e3f496c2868cc3430e0efd47805aec2205168aa
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Unterstützung mehrerer Domänen für den Verbund mit Azure AD
 Die folgende Dokumentation enthält eine Anleitung dazu, wie Sie mehrere Domänen der obersten Ebene und Unterdomänen verwenden, wenn Sie einen Verbund mit Office 365- oder Azure AD-Domänen erstellen.
@@ -66,7 +66,7 @@ Außerdem wird mit `-SupportMultipleDomain` sichergestellt, dass das AD FS-Syste
 
 Während der Authentifizierung in Azure AD oder Office 365 wird daher das IssuerUri-Element im Token des Benutzers verwendet, um die Domäne in Azure AD zu finden.  Wenn keine Übereinstimmung gefunden wird, schlägt die Authentifizierung fehl. 
 
-Z. B. wenn ein UPN des Benutzers ist bsimon@bmcontoso.com, das IssuerUri-Element in der Token AD FS-Problemen auf http://bmcontoso.com/adfs/services/trust festgelegt. Dies entspricht der Azure AD-Konfiguration und die Authentifizierung ist erfolgreich.
+Wenn der UPN eines Benutzers beispielsweise bsimon@bmcontoso.com lautet, wird das IssuerUri-Element in dem von AD FS ausgestellten Token auf „http://bmcontoso.com/adfs/services/trust“ festgelegt. Dies entspricht der Azure AD-Konfiguration und die Authentifizierung ist erfolgreich.
 
 Unten sehen Sie die angepasste Anspruchsregel, die diese Logik implementiert:
 

@@ -11,14 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jonor
+ms.openlocfilehash: 7dcc6b77bde8b8a7b485525105c1a07c53301f8e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: fd656c68b5c3b6858b0aa04c51bdd28f3f0adc24
-ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="microsoft-azure-virtual-data-center"></a>Virtuelle Microsoft Azure-Rechenzentren
 **Microsoft Azure**: Schneller agieren, Geld sparen, lokale Apps und Daten integrieren
 
@@ -347,16 +345,16 @@ Die folgenden Features wurden in diesem Dokument erläutert. Klicken Sie auf die
 
 <!--Image References-->
 [0]: ./media/networking-virtual-datacenter/redundant-equipment.png "Beispiele für Komponentenüberlappung" 
-[1]: ./media/networking-virtual-datacenter/vdc-high-level.png "Allgemeines Beispiel für virtuelles Hub- und Spoke-Rechenzentrum"
+[1]: ./media/networking-virtual-datacenter/vdc-high-level.png "Allgemeines Beispiel für ein virtuelles Hub- und Spoke-Rechenzentrum"
 [2]: ./media/networking-virtual-datacenter/hub-spokes-cluster.png "Cluster mit Hub und Spokes"
 [3]: ./media/networking-virtual-datacenter/spoke-to-spoke.png "Spoke-zu-Spoke"
 [4]: ./media/networking-virtual-datacenter/vdc-block-level-diagram.png "Blockebenenabbildung des virtuellen Rechenzentrums"
 [5]: ./media/networking-virtual-datacenter/users-groups-subsciptions.png "Benutzer, Gruppen, Abonnements und Projekte"
-[6]: ./media/networking-virtual-datacenter/infrastructure-high-level.png "Abbildung der allgemeinen Infrastruktur"
-[7]: ./media/networking-virtual-datacenter/highlevel-perimeter-networks.png "Abbildung der allgemeinen Infrastruktur"
+[6]: ./media/networking-virtual-datacenter/infrastructure-high-level.png "Diagramm zur allgemeinen Infrastruktur"
+[7]: ./media/networking-virtual-datacenter/highlevel-perimeter-networks.png "Diagramm zur allgemeinen Infrastruktur"
 [8]: ./media/networking-virtual-datacenter/vnet-peering-perimeter-neworks.png "VNET-Peering und Umkreisnetzwerke"
-[9]: ./media/networking-virtual-datacenter/high-level-diagram-monitoring.png "Übersichtsabbildung über die Überwachung"
-[10]: ./media/networking-virtual-datacenter/high-level-workloads.png "Übersichtsabbildung über Workloads"
+[9]: ./media/networking-virtual-datacenter/high-level-diagram-monitoring.png "Übersichtsdiagramm zur Überwachung"
+[10]: ./media/networking-virtual-datacenter/high-level-workloads.png "Übersichtsdiagramm zu Workloads"
 
 <!--Link References-->
 [Limits]: https://docs.microsoft.com/azure/azure-subscription-service-limits
@@ -382,9 +380,8 @@ Die folgenden Features wurden in diesem Dokument erläutert. Klicken Sie auf die
 [DiagLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs
 [NSGLog]: https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log
 [OMS]: https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview
-[WebApps]: https://docs.microsoft.com/azure/app-service-web/
+[WebApps]: https://docs.microsoft.com/azure/app-service/
 [HDI]: https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-introduction
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 
 [ServiceBus]: https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview
 [TM]: https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview
-

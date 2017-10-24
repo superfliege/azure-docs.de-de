@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/03/2017
 ms.author: sogup;markgal;arunak
+ms.openlocfilehash: c7eb4514dca806d6e6470091423785b30a7d4bcb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 28e8b0be0b69f279685109d611fbfb369b96101a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor
 
@@ -70,6 +69,7 @@ RecoveryServicesVaultUpgrade-1.0.2.ps1 **-SubscriptionID** `<subscriptionID>` **
 > Für Namen von Ressourcengruppen gelten Beschränkungen. Befolgen Sie die nachstehenden Anweisungen. Anderenfalls könnten Tresorupgrades fehlschlagen.
 >
 >Kunden der **Azure US-Regierung** müssen die Umgebung während der Ausführung des Skripts auf „AzureUSGovernment“ festlegen.
+>Kunden von **Azure China** müssen die Umgebung während der Ausführung des Skripts auf „AzureChinaCloud“ festlegen.
 
 Der folgende Codeausschnitt ist ein Beispiel dafür, wie Ihr PowerShell-Befehl aussehen könnte:
 
@@ -159,4 +159,3 @@ In den folgenden Artikeln erhalten Sie weitere Informationen:</br>
 [Sichern einer IaaS-VM](backup-azure-arm-vms-prepare.md)</br>
 [Sichern von Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>
 [Sichern von Windows Server](backup-configure-vault.md).
-

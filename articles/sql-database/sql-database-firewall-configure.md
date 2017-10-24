@@ -4,8 +4,8 @@ description: Erfahren Sie, wie eine SQL-Datenbankfirewall mit der Firewallregeln
 keywords: Datenbankfirewall
 services: sql-database
 documentationcenter: 
-author: BYHAM
-manager: craigg
+author: CarlRabeler
+manager: jhubbard
 editor: cgronlun
 tags: 
 ms.assetid: ac57f84c-35c3-4975-9903-241c8059011e
@@ -15,20 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 09/15/2017
-ms.author: rickbyh
+ms.date: 10/11/2017
+ms.author: carlrab
+ms.openlocfilehash: a99ef3117cba8fea6a69e8f5cef15cf8fe711715
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: a683481c9ebcdb8be6f9fefe442541e222482823
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Firewallregeln auf Server- und Datenbankebene für Azure SQL-Datenbank 
 
 Die Microsoft Azure SQL-Datenbank bietet einen relationalen Datenbankdienst für Azure und andere internetbasierte Anwendungen. Zum Schutz Ihrer Daten verhindern Firewalls jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Datenbankzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
 
-#### <a name="virtual-netowrk-rules-as-alternatives-to-ip-rules"></a>Virtuelle Netzwerkregeln als Alternative zu IP-Regeln
+#### <a name="virtual-network-rules-as-alternatives-to-ip-rules"></a>Regeln für virtuelle Netzwerke als Alternative zu IP-Regeln
 
 Zusätzlich zu den IP-Regeln verwaltet die Firewall ebenfalls *virtuelle Netzwerkregeln*. Virtuelle Netzwerkregeln basieren auf den Virtual Network-Dienstendpunkten. Virtuelle Netzwerkregeln sollten den IP-Regeln in manchen Fällen vorgezogen werden. Weitere Informationen finden Sie unter [Virtual Network service endpoints and rules for Azure SQL Database (Virtuelle Netzwerkdienstendpunkte und -regeln für Azure SQL)](sql-database-vnet-service-endpoint-rule-overview.md).
 
@@ -71,7 +70,7 @@ Um Anwendungen von Azure die Verbindung mit dem Azure SQL-Server zu ermöglichen
 > 
 
 ## <a name="creating-and-managing-firewall-rules"></a>Erstellen und Verwalten von Firewallregeln
-Die erste Firewalleinstellung auf Serverebene kann im [Azure-Portal](https://portal.azure.com/) oder programmgesteuert mithilfe von [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), der [Azure-CLI](/cli/azure/sql/server/firewall-rule#create) oder der [REST-API](https://docs.microsoft.com/rest/api/sql/firewallrules) erstellt werden. Nachfolgende Firewallregeln auf Serverebene können anhand dieser Methoden sowie über Transact-SQL erstellt und verwaltet werden. 
+Die erste Firewalleinstellung auf Serverebene kann im [Azure-Portal](https://portal.azure.com/) oder programmgesteuert mithilfe von [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), der [Azure-CLI](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) oder der [REST-API](https://docs.microsoft.com/rest/api/sql/firewallrules) erstellt werden. Nachfolgende Firewallregeln auf Serverebene können anhand dieser Methoden sowie über Transact-SQL erstellt und verwaltet werden. 
 
 > [!IMPORTANT]
 > Firewallregeln auf Datenbankebene können nur mit Transact-SQL erstellt und verwaltet werden. 
@@ -163,11 +162,11 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Verwalten von Firewallregeln mit Azure CLI
 | Cmdlet | Ebene | Beschreibung |
 | --- | --- | --- |
-| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#create) | Erstellt eine Firewallregel, die vom eingegebenen IP-Adressbereich aus den Zugriff auf alle SQL-Datenbanken auf dem Server ermöglicht.|
-| [az sql server firewall delete](/cli/azure/sql/server/firewall-rule#delete)| Löscht eine Firewallregel.|
-| [az sql server firewall list](/cli/azure/sql/server/firewall-rule#list)| Listet die Firewallregeln auf.|
-| [az sql server firewall rule show](/cli/azure/sql/server/firewall-rule#show)| Zeigt die Details einer Firewallregel.|
-| [ax sql server firewall rule update](/cli/azure/sql/server/firewall-rule#update)| Aktualisiert eine Firewallregel.
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Server|Erstellt eine Serverfirewallregel|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Server|Listet die Firewallregeln auf einem Server auf|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|Server|Zeigt die Details einer Firewallregel an|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|Server|Aktualisiert eine Firewallregel|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Server|Löscht eine Firewallregel|
 
 Im folgenden Beispiel wird mithilfe der Azure CLI eine Firewallregel auf Serverebene festgelegt: 
 
@@ -227,4 +226,3 @@ Wenn der Zugriff auf den Microsoft Azure SQL-Datenbankdienst nicht das erwartete
 
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
-

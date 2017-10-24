@@ -15,15 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: cbf9c552c4818b3925f449081539f1db6d61918e
-ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
-
+ms.openlocfilehash: 6a24e9598362b7c4ff9e2d3371d619fbbd41907f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Behandeln von Fehlern aufgrund eines ungültigen Gateways in Application Gateway
 
 Erfahren Sie mehr zur Problembehandlung bei Fehlern aufgrund eines ungültigen Gateways (502) in Application Gateway.
@@ -32,63 +29,48 @@ Erfahren Sie mehr zur Problembehandlung bei Fehlern aufgrund eines ungültigen G
 
 Nach dem Konfigurieren einer Application Gateway-Instanz tritt bei Benutzern unter Umständen folgender Fehler auf: „Serverfehler: 502 – Webserver hat als Gateway oder Proxyserver eine ungültige Antwort erhalten.“ Dieser Fehler kann folgende Hauptursachen haben:
 
-* Der [Back-End-Pool von Azure Application Gateway ist nicht konfiguriert oder leer](#empty-backendaddresspool).
-* Die virtuellen Computer oder Instanzen in der [VM-Skalierungsgruppe befinden sich nicht in einem fehlerfreien Zustand](#unhealthy-instances-in-backendaddresspool).
+* Eine NSG, eine benutzerdefinierte Route oder ein benutzerdefiniertes DNS blockiert den Zugriff auf Back-End-Poolmitglieder.
 * Virtuelle Back-End-Computer oder Instanzen der VM-Skalierungsgruppe [reagieren nicht auf die standardmäßige Integritätsüberprüfung](#problems-with-default-health-probe.md).
 * Benutzerdefinierte [Integritätsüberprüfungen sind ungültig oder nicht korrekt konfiguriert](#problems-with-custom-health-probe.md).
+* Der [Back-End-Pool von Azure Application Gateway ist nicht konfiguriert oder leer](#empty-backendaddresspool).
+* Die virtuellen Computer oder Instanzen in der [VM-Skalierungsgruppe befinden sich nicht in einem fehlerfreien Zustand](#unhealthy-instances-in-backendaddresspool).
 * Bei der [Anforderung tritt ein Timeout auf, oder es liegen Verbindungsprobleme](#request-time-out) bei Benutzeranforderungen vor.
 
-## <a name="empty-backendaddresspool"></a>Leerer Back-End-Adresspool
+## <a name="network-security-group-user-defined-route-or-custom-dns-issue"></a>Netzwerksicherheitsgruppe, benutzerdefinierte Route oder benutzerdefiniertes DNS-Problem
 
 ### <a name="cause"></a>Ursache
 
-Falls im Back-End-Adresspool für Application Gateway keine virtuellen Computer konfiguriert sind oder keine VM-Skalierungsgruppe konfiguriert ist, können Kundenanforderungen nicht weitergeleitet werden, und es tritt ein Fehler mit dem Hinweis auf ein ungültiges Gateway auf.
+Wenn der Zugriff auf Back-End durch Vorhandensein einer NSG, einer benutzerdefinierten Route oder eines benutzerdefinierten DNS blockiert ist, können Application Gateway-Instanzen nicht die Back-End-Pools erreichen, und es treten Fehler vom Typ 502 auf. Beachten Sie, dass die NSG/die UDR entweder in Application Gateway-Subnetz oder im Subnetz, in dem die Anwendung-VMs bereitgestellt werden, vorhanden sein kann. Auf ähnliche Weise kann das Vorhandensein des benutzerdefinierten DNS im VNET auch Probleme verursachen, wenn FQDN für Back-End-Poolmitglieder verwendet werden und nicht ordnungsgemäß durch den benutzerkonfigurierten DNS-Server für das VNET aufgelöst werden.
 
 ### <a name="solution"></a>Lösung
 
-Vergewissern Sie sich, dass der Back-End-Adresspool nicht leer ist. Hierzu können Sie entweder PowerShell, die Befehlszeilenschnittstelle oder das Portal verwenden.
+Überprüfen Sie die NSG-, UDR- und DNS-Konfiguration, indem Sie die folgenden Schritte durchlaufen:
+* Überprüfen Sie NSGs, die dem Application Gateway-Subnetz zugeordnet sind. Stellen Sie sicher, dass die Kommunikation mit Back-End nicht blockiert wird.
+* Überprüfen Sie die UDR, die dem Application Gateway-Subnetz zugeordnet sind. Stellen Sie sicher, dass UDR den Datenverkehr nicht weg vom Back-End-Subnetz lenkt: Überprüfen Sie z.B. das Routing zu virtuellen Geräten oder Standardrouten, die das Application Gateway-Subnetz über ExpressRoute/VPN angekündigt werden.
 
 ```powershell
-Get-AzureRmApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
+$vnet = Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName
+Get-AzureRmVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
 ```
 
-Die Ausgabe des vorherigen Cmdlets muss nicht leere Back-End-Adresspools enthalten. Im folgenden Beispiel werden zwei Pools zurückgegeben, die mit FQDN oder IP-Adressen für virtuelle Back-End-Computer konfiguriert sind. Der Bereitstellungszustand des Back-End-Adresspools muss „Succeeded“ lauten.
+* Überprüfen Sie die effektiven NSGs und Routen mit dem virtuellen Back-End-Computer.
 
-BackendAddressPoolsText:
+```powershell
+Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzureRmEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
+```
+
+* Überprüfen Sie das Vorhandensein eines benutzerdefinierten DNS im VNet. DNS kann überprüft werden, indem Sie einen Blick auf die Details der VNet-Eigenschaften in der Ausgabe werfen.
 
 ```json
-[{
-    "BackendAddresses": [{
-        "ipAddress": "10.0.0.10",
-        "ipAddress": "10.0.0.11"
-    }],
-    "BackendIpConfigurations": [],
-    "ProvisioningState": "Succeeded",
-    "Name": "Pool01",
-    "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
-    "Id": "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name>/backendAddressPools/pool01"
-}, {
-    "BackendAddresses": [{
-        "Fqdn": "xyx.cloudapp.net",
-        "Fqdn": "abc.cloudapp.net"
-    }],
-    "BackendIpConfigurations": [],
-    "ProvisioningState": "Succeeded",
-    "Name": "Pool02",
-    "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
-    "Id": "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name>/backendAddressPools/pool02"
-}]
+Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName 
+DhcpOptions            : {
+                           "DnsServers": [
+                             "x.x.x.x"
+                           ]
+                         }
 ```
-
-## <a name="unhealthy-instances-in-backendaddresspool"></a>Fehlerhafte Instanzen im Back-End-Adresspool
-
-### <a name="cause"></a>Ursache
-
-Wenn alle Instanzen des Back-End-Adresspools fehlerhaft sind, steht Application Gateway kein Back-End zur Weiterleitung von Benutzeranforderungen zur Verfügung. Dies kann auch der Fall sein, wenn zwar fehlerfreie Back-End-Instanzen vorhanden sind, diese aber nicht über die erforderliche Anwendung verfügen.
-
-### <a name="solution"></a>Lösung
-
-Stellen Sie sicher, dass die Instanzen fehlerfrei sind und die Anwendung ordnungsgemäß konfiguriert ist. Prüfen Sie, ob die Back-End-Instanzen auf ein Ping von einem anderen virtuellen Computer im gleichen virtuellen Netzwerk reagieren. Vergewissern Sie sich bei einer Konfiguration mit öffentlichem Endpunkt, dass eine an die Webanwendung gerichtete Browseranforderung verarbeitet werden kann.
+Falls vorhanden, stellen Sie sicher, dass der DNS-Server den FQDN von Back-End-Poolmitgliedern ordnungsgemäß auflösen kann.
 
 ## <a name="problems-with-default-health-probe"></a>Probleme mit der standardmäßigen Integritätsüberprüfung
 
@@ -147,14 +129,65 @@ Wenn eine Benutzeranforderung empfangen wird, wendet Application Gateway die kon
 
 ### <a name="solution"></a>Lösung
 
-Mit Application Gateway können Benutzer diese Einstellung über das BackendHttpSetting-Element konfigurieren und auf verschiedene Pools anwenden. Unterschiedliche Back-End-Adresspools können unterschiedliche Back-End-HTTP-Einstellungen und somit unterschiedliche Anforderungstimeouts besitzen.
+Mit Application Gateway können Benutzer diese Einstellung über das BackendHttpSetting-Element konfigurieren und auf verschiedene Pools anwenden. Bei unterschiedlichen Back-End-Pools können unterschiedliche Back-End-HTTP-Einstellungen und somit unterschiedliche Anforderungstimeouts konfiguriert sein.
 
 ```powershell
     New-AzureRmApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
 ```
 
+## <a name="empty-backendaddresspool"></a>Leerer Back-End-Adresspool
+
+### <a name="cause"></a>Ursache
+
+Falls im Back-End-Adresspool für Application Gateway keine virtuellen Computer konfiguriert sind oder keine VM-Skalierungsgruppe konfiguriert ist, können Kundenanforderungen nicht weitergeleitet werden, und es erscheint die Fehlermeldung „Ungültiges Gateway“.
+
+### <a name="solution"></a>Lösung
+
+Vergewissern Sie sich, dass der Back-End-Adresspool nicht leer ist. Hierzu können Sie entweder PowerShell, die Befehlszeilenschnittstelle oder das Portal verwenden.
+
+```powershell
+Get-AzureRmApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
+```
+
+Die Ausgabe des vorherigen Cmdlets muss nicht leere Back-End-Adresspools enthalten. Im folgenden Beispiel werden zwei Pools zurückgegeben, die mit FQDN oder IP-Adressen für virtuelle Back-End-Computer konfiguriert sind. Der Bereitstellungszustand des Back-End-Adresspools muss „Succeeded“ lauten.
+
+BackendAddressPoolsText:
+
+```json
+[{
+    "BackendAddresses": [{
+        "ipAddress": "10.0.0.10",
+        "ipAddress": "10.0.0.11"
+    }],
+    "BackendIpConfigurations": [],
+    "ProvisioningState": "Succeeded",
+    "Name": "Pool01",
+    "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+    "Id": "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name>/backendAddressPools/pool01"
+}, {
+    "BackendAddresses": [{
+        "Fqdn": "xyx.cloudapp.net",
+        "Fqdn": "abc.cloudapp.net"
+    }],
+    "BackendIpConfigurations": [],
+    "ProvisioningState": "Succeeded",
+    "Name": "Pool02",
+    "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+    "Id": "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name>/backendAddressPools/pool02"
+}]
+```
+
+## <a name="unhealthy-instances-in-backendaddresspool"></a>Fehlerhafte Instanzen im Back-End-Adresspool
+
+### <a name="cause"></a>Ursache
+
+Wenn alle Instanzen des Back-End-Adresspools fehlerhaft sind, steht Application Gateway kein Back-End zur Weiterleitung von Benutzeranforderungen zur Verfügung. Dies kann auch der Fall sein, wenn zwar fehlerfreie Back-End-Instanzen vorhanden sind, diese aber nicht über die erforderliche Anwendung verfügen.
+
+### <a name="solution"></a>Lösung
+
+Stellen Sie sicher, dass die Instanzen fehlerfrei sind und die Anwendung ordnungsgemäß konfiguriert ist. Prüfen Sie, ob die Back-End-Instanzen auf ein Ping von einem anderen virtuellen Computer im gleichen virtuellen Netzwerk reagieren. Vergewissern Sie sich bei einer Konfiguration mit öffentlichem Endpunkt, dass eine an die Webanwendung gerichtete Browseranforderung verarbeitet werden kann.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sollte sich das Problem mit den oben genannten Schritten nicht beheben lassen, erstellen Sie ein [Supportticket](https://azure.microsoft.com/support/options/).
-
 

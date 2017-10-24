@@ -14,30 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: bharatn
+ms.openlocfilehash: 3168a8129e2e73d7ab1de547679aabd10d8f7112
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 7897458e9e4a0bbe185bd3f7b4c133c1b26769f9
-ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
-Der in Azure Service Fabric integrierte Reverseproxy adressiert Microservices in dem Service Fabric-Cluster, der HTTP-Endpunkte verfügbar macht.
+Über den in Azure Service Fabric integrierten Reverseproxy können die in einem Service Fabric-Cluster ausgeführten Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren.
 
 ## <a name="microservices-communication-model"></a>Microservices-Kommunikationsmodell
-Microservices werden in Service Fabric in der Regel in einer Teilmenge der VMs im Cluster ausgeführt und können aus verschiedenen Gründen aus einer VM in eine andere verschoben werden. Deshalb können sich die Endpunkte für Microservices dynamisch ändern. Das Standardmuster für die Kommunikation mit dem Microservice ist die nachstehende Auflösungsschleife:
+Microservices in Service Fabric werden in einer Teilmenge der Knoten im Cluster ausgeführt und können aus verschiedenen Gründen zwischen den Knoten migriert werden. Deshalb können sich die Endpunkte für Microservices dynamisch ändern. Zur Ermittlung und Kommunikation mit anderen Diensten im Cluster müssen Microservices die folgenden Schritte durchlaufen:
 
-1. Lösen Sie den Speicherort des Diensts zunächst über den Naming Service auf.
+1. Auflösen des Dienstspeicherorts über den Naming Service
 2. Stellen Sie eine Verbindung mit dem Dienst her.
-3. Ermitteln Sie die Ursache von Verbindungsfehlern, und lösen Sie den Speicherort des Diensts bei Bedarf erneut auf.
+3. Umschließen der vorherigen Schritte in einer Schleife, mit der die Dienstauflösung und die für Verbindungsfehler anzuwendenden Wiederholungsrichtlinien implementiert werden
 
-Dieser Prozess umfasst im Allgemeinen das Umschließen der clientseitigen Kommunikationsbibliotheken in einer Wiederholungsschleife, die die Dienstauflösung und Wiederholungsrichtlinien implementiert.
 Weitere Informationen finden Sie unter [Herstellung einer Verbindung mit Diensten in Service Fabric und die Kommunikation mit diesen Diensten](service-fabric-connect-and-communicate-with-services.md).
 
 ### <a name="communicating-by-using-the-reverse-proxy"></a>Kommunizieren mithilfe des Reverseproxys
-Der Reverseproxy in Service Fabric wird auf allen Knoten im Cluster ausgeführt. Er übernimmt den gesamten Dienstauflösungsprozess im Auftrag des Clients und leitet anschließend die Clientanforderung weiter. Deshalb können im Cluster ausgeführte Clients alle clientseitigen HTTP-Kommunikationsbibliotheken nutzen, um mit dem Zieldienst über den Reverseproxy zu kommunizieren, der lokal auf dem gleichen Knoten ausgeführt wird.
+Der Reverseproxy ist ein Dienst, der auf allen Knoten ausgeführt wird und die Endpunktauflösung, die automatische Wiederholung und andere Verbindungsfehler für Clientdienste verarbeitet. Der Reverseproxy kann so konfiguriert werden, dass beim Verarbeiten von Anforderungen von Clientdiensten verschiedene Richtlinien angewendet werden. Durch Verwendung eines Reverseproxys kann der Clientdienst alle clientseitigen HTTP-Kommunikationsbibliotheken nutzen, ohne dass eine spezielle Auflösungs- und Wiederholungslogik im Dienst erforderlich ist. 
+
+Der Reverseproxy macht einen oder mehrere Endpunkte auf dem lokalen Knoten für Clientdienste verfügbar, die zum Senden von Anforderungen an andere Dienste verwendet werden können.
 
 ![Interne Kommunikation][1]
+
+> **Unterstützte Plattformen**
+>
+> Der Reverseproxy in Service Fabric unterstützt derzeit die folgenden Plattformen:
+> * *Windows-Cluster:* Windows 8 und höher oder Windows Server 2012 und höher
+> * *Linux-Cluster:* Der Reverseproxy ist derzeit für Linux-Cluster nicht verfügbar.
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>Zugreifen auf Microservices von außerhalb des Clusters
 Das Standardmodell für die externe Kommunikation für Microservices ist ein Aktivierungsmodell, was bedeutet, dass externe Clients nicht direkt auf die einzelnen Dienste zugreifen können. [Azure Load Balancer](../load-balancer/load-balancer-overview.md) ist eine Netzwerkgrenze zwischen Microservices und externen Clients, und er übernimmt die Netzwerkadressübersetzung und leitet externe Anforderungen an interne IP:Port-Endpunkte weiter. Damit externe Clients direkt auf den Endpunkt eines Microservice zugreifen können, müssen Sie den Load Balancer zunächst zum Weiterleiten von Datenverkehr an die einzelnen Ports konfigurieren, die der Dienst im Cluster verwendet. Darüber hinaus sind die meisten Microservices, insbesondere zustandsbehaftete Microservices, nicht auf allen Knoten des Clusters aktiv. Die Microservices können bei einem Failover zwischen Knoten verschoben werden. In solchen Fällen kann Load Balancer die Position des Zielknotens der Replikate, an die der Datenverkehr weitergeleitet werden soll, nicht effektiv bestimmen.
@@ -315,4 +321,3 @@ Zunächst rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möch
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png
-

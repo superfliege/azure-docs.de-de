@@ -17,10 +17,10 @@ ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.openlocfilehash: 079d16bbf75cd2b3b94269d684e1ae1a0e6aa967
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection Benachrichtigungen
 Von Azure AD Identity Protection werden zwei Arten von automatisierten Benachrichtigungs-E-Mails gesendet, die der Verwaltung von Benutzerrisiko- und Risikoereignissen dienen:
@@ -46,18 +46,18 @@ Sie hat folgenden Inhalt:
 
 Sie können das Senden einer wöchentlichen Übersichts-E-Mail deaktivieren.
 <br><br>
-![Benutzer Risiken](./media/active-directory-identityprotection-notifications/62.png "Benutzer Risiken")
+![Benutzerrisiken](./media/active-directory-identityprotection-notifications/62.png "Benutzerrisiken")
 <br>
 
-**So öffnen Sie das entsprechende Konfigurationsdialogfeld:**
+**Um den entsprechenden Konfigurationsdialog zu öffnen**:
 
 1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Einstellungen**.
    <br><br>
-   ![Richtlinie zum Risiko für Benutzer](./media/active-directory-identityprotection-notifications/401.png "Risiko-Benutzerrichtlinie")
+   ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection-notifications/401.png "Richtlinie zum Benutzerrisiko")
    <br>
 2. Klicken Sie im Abschnitt **Allgemein** auf **Benachrichtigungen**.
    <br><br>
-   ![Richtlinie zum Risiko für Benutzer](./media/active-directory-identityprotection-notifications/405.png "Risiko-Benutzerrichtlinie")
+   ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection-notifications/405.png "Richtlinie zum Benutzerrisiko")
    <br>
 
 ## <a name="see-also"></a>Weitere Informationen

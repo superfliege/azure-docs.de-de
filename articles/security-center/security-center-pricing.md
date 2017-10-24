@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center-Preise | Microsoft-Dokumentation
+title: "Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit | Microsoft-Dokumentation"
 description: "Dieser Artikel enthält Informationen zu den Preisen für Azure Security Center."
 services: security-center
 documentationcenter: na
@@ -12,16 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 09/15/2017
 ms.author: terrylan
+ms.openlocfilehash: 14513c37964246397d9f748322975ef40ef3e8ae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: cd4001a3280c83875f30b04d5d38caec26f4f0b1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-security-center-pricing"></a>Azure Security Center-Preise
+# <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit
 Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und erweiterten Schutz vor Bedrohungen für Workloads, die in Azure, lokal und in anderen Clouds ausgeführt werden. Security Center bietet Transparenz und Kontrolle für Hybridcloud-Workloads, aktive Abwehrmaßnahmen zur Verringerung Ihrer Anfälligkeit für Bedrohungen sowie eine intelligente Erkennung, damit Sie mit der schnellen Entwicklung bei Cyberangriffen Schritt halten können.
 
 ## <a name="pricing-tiers"></a>Tarife
@@ -68,4 +67,3 @@ In diesem Artikel wurden die Preise für Security Center vorgestellt. Weitere In
 
 <!--Image references-->
 [1]: ./media/security-center-pricing/get-standard.png
-

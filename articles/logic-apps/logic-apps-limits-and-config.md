@@ -1,6 +1,6 @@
 ---
-title: Logik-App-Grenzwerte und -Konfiguration | Microsoft-Dokumentation
-description: "Enthält eine Übersicht über die Dienstgrenzwerte und die Konfigurationswerte, die für Logik-Apps verfügbar sind."
+title: "Grenzwerte und Konfiguration – Azure Logic Apps | Microsoft-Dokumentation"
+description: "Dienstlimits und Konfigurationswerte für Azure Logic Apps"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -12,153 +12,173 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 09/25/2017
 ms.author: LADocs; jehollan
+ms.openlocfilehash: 4babb3033e75edc5c85ce89dac569b9f2beae9f7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 5d905d410e70c5b635a3f6221e7e0c0bda7ad140
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="logic-app-limits-and-configuration"></a>Logik-App-Grenzwerte und -Konfiguration
+# <a name="logic-apps-limits-and-configuration"></a>Logic Apps-Grenzwerte und -Konfiguration
 
-Nachfolgend sind die aktuellen Grenzwerte und Konfigurationsdetails für Azure Logic Apps angegeben.
+In diesem Thema werden die aktuellen Grenzwerte und Konfigurationsdetails für Azure Logic Apps beschrieben.
 
 ## <a name="limits"></a>Einschränkungen
 
 ### <a name="http-request-limits"></a>Grenzwerte für HTTP-Anforderungen
 
-Im Folgenden werden die Grenzwerte für eine einzelne HTTP-Anforderung und/oder einen Connectoraufruf aufgeführt.
+Diese Grenzwerte gelten für eine einzelne HTTP-Anforderung oder einen Connectoraufruf.
 
 #### <a name="timeout"></a>Timeout
 
-|Name|Begrenzung|Hinweise|
-|----|----|----|
-|Anforderungstimeout|120 Sekunden|Bei Bedarf können ein [asynchrones Muster](../logic-apps/logic-apps-create-api-app.md) oder eine [Until-Schleife](logic-apps-loops-and-scopes.md) zur Kompensation verwendet werden.|
+| Name | Begrenzung | Hinweise | 
+| ---- | ----- | ----- | 
+| Anforderungszeitlimit | 120 Sekunden | Bei Bedarf können ein [asynchrones Muster](../logic-apps/logic-apps-create-api-app.md) oder eine [Until-Schleife](logic-apps-loops-and-scopes.md) zur Kompensation verwendet werden. |
+|||| 
 
 #### <a name="message-size"></a>Nachrichtengröße
 
-|Name|Begrenzung|Hinweise|
-|----|----|----|
-|Nachrichtengröße|100 MB|Einige Connectors und APIs unterstützen unter Umständen nicht 100 MB. |
-|Grenzwert für die Auswertung von Ausdrücken|131.072 Zeichen|`@concat()`, `@base64()`, `string` dürfen diesen Grenzwert nicht überschreiten.|
+| Name | Begrenzung | Hinweise | 
+| ---- | ----- | ----- | 
+| Nachrichtengröße | 100 MB | Einige Connectors und APIs unterstützen 100 MB möglicherweise nicht. | 
+| Grenzwert für die Auswertung von Ausdrücken | 131.072 Zeichen | `@concat()`, `@base64()`, `string` dürfen diesen Grenzwert nicht überschreiten. | 
+|||| 
 
 #### <a name="retry-policy"></a>Wiederholungsrichtlinie
 
-|Name|Begrenzung|Hinweise|
-|----|----|----|
-|Wiederholungsversuche|10| Der Standardwert ist 4. Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
-|Maximale Wiederholungsverzögerung|1 Stunde|Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
-|Minimale Wiederholungsverzögerung|5 Sekunden|Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
+| Name | Begrenzung | Hinweise | 
+| ---- | ----- | ----- | 
+| Wiederholungsversuche | 90 | Der Standardwert ist 4. Sie können die Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](../logic-apps/logic-apps-workflow-actions-triggers.md) durchführen. | 
+| Maximale Wiederholungsverzögerung | 1 Tag | Sie können die Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](../logic-apps/logic-apps-workflow-actions-triggers.md) durchführen. | 
+| Minimale Wiederholungsverzögerung | 5 Sekunden | Sie können die Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](../logic-apps/logic-apps-workflow-actions-triggers.md) durchführen. |
+|||| 
 
 ### <a name="run-duration-and-retention"></a>Ausführungsdauer und Aufbewahrung
 
-Im Folgenden werden die Grenzwerte für eine einzelne Ausführung der Logik-App aufgeführt.
+Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App.
 
-|Name|Begrenzung|Hinweise|
-|----|----|----|
-|Ausführungsdauer|90 Tage||
-|Aufbewahrungsdauer im Speicher|90 Tage|Ab der Startzeit der Ausführung|
-|Min. Wiederholungsintervall|1 Sekunde|| 15 Sekunden für Logik-Apps mit App Service-Plan
-|Max. Wiederholungsintervall|500 Tage||
+| Name | Begrenzung | 
+| ---- | ----- | 
+| Ausführungsdauer | 90 Tage | 
+| Aufbewahrungsdauer im Speicher | 90 Tage ab der Startzeit der Ausführung | 
+| Min. Wiederholungsintervall | 1 Sekunde </br>Für Logik-Apps mit App Service-Plan: 15 Sekunden | 
+| Max. Wiederholungsintervall | 500 Tage | 
+||| 
 
-Wenn Sie davon ausgehen, dass die Grenzwerte für die Ausführungsdauer oder Speicheraufbewahrung im normalen Verarbeitungsfluss überschreiten, [wenden Sie sich an uns](mailto://logicappsemail@microsoft.com), damit wir Sie im Hinblick auf Ihre Anforderungen unterstützen können.
-
+Wenn die Grenzwerte für die Ausführungsdauer oder Speicheraufbewahrung im normalen Verarbeitungsfluss überschritten werden sollen, [wenden Sie sich an uns](mailto://logicappsemail@microsoft.com), damit wir Sie im Hinblick auf Ihre Anforderungen unterstützen können.
 
 ### <a name="looping-and-debatching-limits"></a>Grenzwerte für Schleifen und Auflösen von Batches
 
-Im Folgenden werden die Grenzwerte für eine einzelne Ausführung der Logik-App aufgeführt.
+Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App.
 
-|Name|Begrenzung|Hinweise|
-|----|----|----|
-|ForEach-Elemente|100.000|Bei Bedarf können Sie die [Abfrageaktion](../connectors/connectors-native-query.md) verwenden, um größere Arrays zu filtern.|
-|Until-Iterationen|5.000||
-|SplitOn-Elemente|100.000||
-|ForEach-Parallelität|50| Der Standardwert ist 20. Sie können diesen auf eine sequenzielle ForEeach-Schleife festlegen, indem Sie `"operationOptions": "Sequential"` zur `foreach`-Aktion hinzufügen. Alternativ können Sie ihn mit `runtimeConfiguration` auf eine bestimmte Parallelitätsstufe festlegen.|
-
+| Name | Begrenzung | Hinweise | 
+| ---- | ----- | ----- | 
+| ForEach-Elemente | 100.000 | Bei Bedarf können Sie die [Abfrageaktion](../connectors/connectors-native-query.md) verwenden, um größere Arrays zu filtern. | 
+| Until-Iterationen | 5.000 | | 
+| SplitOn-Elemente | 100.000 | | 
+| ForEach-Parallelität | 50 | Der Standardwert ist 20. <p>Legen Sie die Eigenschaft `runtimeConfiguration` in der Aktion `foreach` fest, um ein bestimmtes Maß an Parallelität in einer ForEach-Schleife zu definieren. <p>Legen Sie die Eigenschaft `operationOptions` in der Aktion `foreach` auf „Sequenziell“ fest, um eine ForEach-Schleife sequenziell auszuführen. | 
+|||| 
 
 ### <a name="throughput-limits"></a>Durchsatzlimits
 
-Im Folgenden werden die Grenzwerte für eine einzelne Instanz der Logik-App aufgeführt. 
+Folgende Grenzwerte gelten für eine einzelne Instanz der Logik-App.
 
-|Name|Begrenzung|Hinweise|
-|----|----|----|
-|Aktionsausführungen pro 5 Minuten |100.000|Bei Bedarf können Workflows auf mehrere Apps verteilt werden.|
-|Gleichzeitige ausgehende Aufrufe für Aktionen |ca. 2.500|Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer|
-|Gleichzeitige eingehende Aufrufe für Endpunkte zur Laufzeit |ca. 1.000|Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer|
-|Aufrufe zum Lesen von Endpunkten zur Laufzeit pro 5 Minuten |60.000|Bei Bedarf können Workflows auf mehrere Apps verteilt werden.|
-|Aufrufe zum Aufrufen von Endpunkten zur Laufzeit pro 5 Minuten |45.000|Bei Bedarf können Workflows auf mehrere Apps verteilt werden.|
+| Name | Begrenzung | Hinweise | 
+| ---- | ----- | ----- | 
+| Aktionsausführungen pro 5 Minuten | 100.000 | Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
+| Gleichzeitige ausgehende Aufrufe für Aktionen | ca. 2.500 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
+| Endpunkt zur Laufzeit: Gleichzeitige eingehende Aufrufe | ca. 1.000 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
+| Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten | 60.000 | Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
+| Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten | 45.000 | Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
+|||| 
 
-Wenn Sie davon ausgehen, dass dieser Grenzwert bei der normalen Verarbeitung überschritten wird, oder Auslastungstests ausführen möchten, die diesen Grenzwert für eine bestimmte Zeit überschreiten können, [wenden Sie sich an uns](mailto://logicappsemail@microsoft.com), damit wir Ihnen im Hinblick auf Ihre Anforderungen helfen können.
+Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten werden sollen oder Auslastungstests ausgeführt werden sollen, bei denen diese Grenzwerte möglicherweise überschritten werden, [wenden Sie sich an uns](mailto://logicappsemail@microsoft.com), damit wir Sie im Hinblick auf Ihre Anforderungen unterstützen können.
 
-### <a name="definition-limits"></a>Definitionslimits
+### <a name="logic-app-definition-limits"></a>Definitionslimits für die Logik-App
 
-Im Folgenden werden die Grenzwerte für eine einzelne Logik-App-Definition aufgeführt.
+Folgende Grenzwerte gelten für die Definition einer einzelnen Logik-App.
 
-|Name|Begrenzung|Hinweise|
-|----|----|----|
-|Aktionen pro Workflow|500|Bei Bedarf können Sie geschachtelte Workflows zur Erhöhung dieses Grenzwerts hinzufügen.|
-|Zulässige Schachtelungstiefe für Aktion|8|Bei Bedarf können Sie geschachtelte Workflows zur Erhöhung dieses Grenzwerts hinzufügen.|
-|Workflows pro Region und Abonnement|1000||
-|Trigger pro Workflow|10||
-|Bereichsumschaltbegrenzung|25||
-|Anzahl der Variablen pro Workflow|250||
-|Maximale Anzahl von Zeichen pro Ausdruck|8.192||
-|Max. `trackedProperties`-Größe in Zeichen|16.000|
-|`action`/`trigger` -Namensbeschränkung|80||
-|`description` |256||
-|`parameters` limit|50||
-|`outputs` limit|10||
+| Name | Begrenzung | Hinweise | 
+| ---- | ----- | ----- | 
+| Aktionen pro Workflow | 500 | Zur Erhöhung dieses Grenzwerts können Sie bei Bedarf geschachtelte Workflows hinzufügen. |
+| Zulässige Schachtelungstiefe für Aktion | 8 | Zur Erhöhung dieses Grenzwerts können Sie bei Bedarf geschachtelte Workflows hinzufügen. | 
+| Workflows pro Region und Abonnement | 1000 | | 
+| Trigger pro Workflow | 10 | | 
+| Bereichsumschaltbegrenzung | 25 | | 
+| Anzahl der Variablen pro Workflow | 250 | | 
+| Maximale Anzahl von Zeichen pro Ausdruck | 8.192 | | 
+| Max. `trackedProperties`-Größe in Zeichen | 16.000 | 
+| `action`/`trigger` -Namensbeschränkung | 80 | | 
+| `description` | 256 | | 
+| `parameters` limit | 50 | | 
+| `outputs` limit | 10 | | 
+|||| 
+
+<a name="custom-connector-limits"></a>
+
+### <a name="custom-connector-limits"></a>Grenzwerte für einen benutzerdefinierten Connector
+
+Folgende Grenzwerte gelten für benutzerdefinierte Connectors, die Sie über Web-APIs erstellen können.
+
+| Name | Begrenzung | 
+| ---- | ----- | 
+| Anzahl der erstellbaren benutzerdefinierten Connectors | 1.000 pro Azure-Abonnement | 
+| Anzahl der Anforderungen pro Minute für jede von einem benutzerdefinierten Connector erstellte Verbindung | 500 Anforderungen für jede von dem Connector erstellte Verbindung |
+||| 
 
 ### <a name="integration-account-limits"></a>Grenzwerte für Integrationskonten
 
-Hier sind die Grenzwerte für die Artefakte aufgeführt, die einem Integrationskonto hinzugefügt werden können.
+Die folgenden Grenzwerte gelten für Artefakte, die zu einem Integrationskonto hinzugefügt werden können.
 
-|Name|Begrenzung|Hinweise|
-|----|----|----|
-|Schema|8 MB|Sie können den [Blob-URI](logic-apps-enterprise-integration-schemas.md) zum Hochladen von Dateien verwenden, die größer als 2 MB sind. |
-|Zuordnung (XSLT-Datei)|2 MB| |
-|Aufrufe zum Lesen von Endpunkten zur Laufzeit pro 5 Minuten |60.000|Bei Bedarf können Workflows auf mehrere Konten verteilt werden.|
-|Aufrufe zum Aufrufen von Endpunkten zur Laufzeit pro 5 Minuten |45.000|Bei Bedarf können Workflows auf mehrere Konten verteilt werden.|
-|Aufrufe zum Nachverfolgen von Endpunkten zur Laufzeit pro 5 Minuten |45.000|Bei Bedarf können Workflows auf mehrere Konten verteilt werden.|
-|Gleichzeitige Aufrufe zum Blockieren von Endpunkten zur Laufzeit |ca. 1.000|Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer|
+| Name | Begrenzung | Hinweise | 
+| ---- | ----- | ----- | 
+| Schema | 8 MB | Sie können den [Blob-URI](../logic-apps/logic-apps-enterprise-integration-schemas.md) zum Hochladen von Dateien verwenden, die größer als 2 MB sind. | 
+| Zuordnung (XSLT-Datei) | 2 MB | | 
+| Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten | 60.000 | Bei Bedarf kann der Workload auf mehrere Konten verteilt werden. | 
+| Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten | 45.000 | Bei Bedarf kann der Workload auf mehrere Konten verteilt werden. | 
+| Endpunkt zur Laufzeit: Aufrufüberwachungen pro 5 Minuten | 45.000 | Bei Bedarf kann der Workload auf mehrere Konten verteilt werden. | 
+| Endpunkt zur Laufzeit: Gleichzeitige Aufrufe zum Blockieren | ca. 1.000 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
+|||| 
 
-Hier sind die Grenzwerte für die Anzahl von Artefakten aufgeführt, die einem Integrationskonto hinzugefügt werden können.
+Die folgenden Grenzwerte gelten für die Anzahl von Artefakten, die zu einem Integrationskonto hinzugefügt werden können.
 
-Tarif „Free“
+#### <a name="free-pricing-tier"></a>Tarif „Free“
 
-|Name|Begrenzung|Hinweise|
-|----|----|----|
-|Vereinbarungen|10||
-|Andere Artefakttypen|25|Zu den Typen zählen Partner, Schemas, Zertifikate und Zuordnungen. Die Anzahl von Artefakten, die für die jeweiligen Typen festgelegt werden können, ist auf die maximale Anzahl begrenzt.|
+| Name | Begrenzung | Hinweise | 
+| ---- | ----- | ----- | 
+| Vereinbarungen | 10 | | 
+| Andere Artefakttypen | 25 |Zu den Artefakttypen zählen Partner, Schemas, Zertifikate und Zuordnungen. Die Anzahl von Artefakten, die für die jeweiligen Typen festgelegt werden können, ist auf die maximale Anzahl begrenzt. | 
+|||| 
 
-Tarif „Standard“
+#### <a name="standard-pricing-tier"></a>Tarif „Standard“
 
-|Name|Begrenzung|Hinweise|
-|----|----|----|
-|Ein beliebiger Artefakttyp|500|Zu den Typen zählen Vereinbarungen, Partner, Schemas, Zertifikate und Zuordnungen. Die Anzahl von Artefakten, die für die jeweiligen Typen festgelegt werden können, ist auf die maximale Anzahl begrenzt.|
+| Name | Begrenzung | Hinweise | 
+| ---- | ----- | ----- | 
+| Ein beliebiger Artefakttyp | 500 | Zu den Artefakttypen zählen Vereinbarungen, Partner, Schemas, Zertifikate und Zuordnungen. Die Anzahl von Artefakten, die für die jeweiligen Typen festgelegt werden können, ist auf die maximale Anzahl begrenzt. | 
+|||| 
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>Nachrichtengröße für B2B-Protokolle (AS2, X12, EDIFACT)
 
-Im Folgenden sehen Sie die Grenzwerte für B2B-Protokolle:
+Folgende Grenzwerte gelten für B2B-Protokolle.
 
-|Name|Begrenzung|Hinweise|
-|----|----|----|
-|AS2|50 MB|Gilt für Decodieren und Codieren.|
-|X12|50 MB|Gilt für Decodieren und Codieren.|
-|EDIFACT|50 MB|Gilt für Decodieren und Codieren.|
+| Name | Begrenzung | Hinweise | 
+| ---- | ----- | ----- | 
+| AS2 | 50 MB | Gilt für das Decodieren und das Codieren | 
+| X12 | 50 MB | Gilt für das Decodieren und das Codieren | 
+| EDIFACT | 50 MB | Gilt für das Decodieren und das Codieren | 
+|||| 
 
-## <a name="configuration"></a>Konfiguration
+<a name="configuration"></a>
 
-### <a name="ip-address"></a>IP-Adresse
+## <a name="configuration-ip-addresses"></a>Konfiguration: IP-Adressen
 
-#### <a name="logic-app-service"></a>Logik-App-Dienst
+### <a name="logic-apps-service"></a>Logic Apps-Dienst
 
-Aufrufe, die direkt aus einer Logik-App erfolgen (d.h. über [HTTP](../connectors/connectors-native-http.md) oder [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)), oder andere HTTP-Anforderungen stammen von der in der folgenden Liste angegebenen IP-Adresse:
+Die direkten Aufrufe einer Logik-App, sprich Aufrufe über [HTTP](../connectors/connectors-native-http.md) oder [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) oder andere HTTP-Anforderungen, stammen von IP-Adressen in dieser Liste.
 
-|Logik-App-Region|Ausgehende IP-Adresse|
-|-----|----|
+|Logic Apps-Bereich|Ausgehende IP-Adresse|
+|-----------------|-----------|
 |Australien (Osten)|13.75.149.4, 104.210.91.55, 104.210.90.241|
 |Australien, Südosten|13.73.114.207, 13.77.3.139, 13.70.159.205|
 |Brasilien Süd|191.235.82.221, 191.235.91.7, 191.234.182.26|
@@ -183,13 +203,14 @@ Aufrufe, die direkt aus einer Logik-App erfolgen (d.h. über [HTTP](../connector
 |USA, Westen 2|13.66.210.167, 52.183.30.169, 52.183.29.132|
 |UK, Süden|51.140.74.14, 51.140.73.85, 51.140.78.44|
 |UK, Westen|51.141.54.185, 51.141.45.238, 51.141.47.136|
+| | |
 
-#### <a name="connectors"></a>Connectors
+### <a name="connectors"></a>Connectors
 
-Aufrufe, die über einen [Connector](../connectors/apis-list.md) durchgeführt werden, stammen von der in der folgenden Liste angegebenen IP-Adresse:
+Die Aufrufe der [Connectors](../connectors/apis-list.md) stammen von den IP-Adressen in dieser Liste.
 
-|Logik-App-Region|Ausgehende IP-Adresse|
-|-----|----|
+|Logic Apps-Bereich|Ausgehende IP-Adresse|
+|-----------------|-----------|
 |Australien (Osten)|40.126.251.213|
 |Australien (Südosten)|40.127.80.34|
 |Brasilien Süd|191.232.38.129|
@@ -212,12 +233,11 @@ Aufrufe, die über einen [Connector](../connectors/apis-list.md) durchgeführt w
 |USA (West)|104.40.51.248|
 |UK, Süden|51.140.80.51|
 |UK, Westen|51.141.47.105|
-
+| | | 
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- Befolgen Sie zum Einstieg in Logik-Apps das Tutorial [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).  
-- [Anzeigen allgemeiner Beispiele und Szenarien](../logic-apps/logic-apps-examples-and-scenarios.md)
-- [Sie können Geschäftsprozesse mit Logik-Apps automatisieren.](http://channel9.msdn.com/Events/Build/2016/T694) 
-- [Erfahren Sie, wie Sie Ihre Systeme in Logik-Apps integrieren.](http://channel9.msdn.com/Events/Build/2016/P462)
-
+* [Erstellen Ihrer ersten Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)  
+* [Allgemeine Beispiele und Szenarios](../logic-apps/logic-apps-examples-and-scenarios.md)
+* [Video: Automatisieren von Geschäftsprozessen mit Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694) 
+* [Video: Integrieren Ihrer Systeme in Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)

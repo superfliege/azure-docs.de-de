@@ -16,12 +16,11 @@ ms.topic: tutorial
 ms.date: 09/03/2017
 ms.author: cfowler
 ms.custom: mvc
+ms.openlocfilehash: 760772d1d1c79dd4a1114c36971de0b3693ab74f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 10795d59b019d7c683abfeea611d5909b88891ec
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-a-custom-docker-image-for-azure-web-app-for-containers"></a>Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps für Container
 
@@ -529,16 +528,16 @@ Der Befehl zeigt zwei Kennwörter, die mit dem Benutzernamen verwendet werden k�
 }
 ```
 
-Nun verfügen Sie über die erforderlichen Anmeldeinformationen und können sich mit dem `docker login`-Befehl bei der Azure Container Registry anmelden. Die URL für die Registrierung ist zur Anmeldung erforderlich. Verwenden Sie das Format `http://{azure-container-registry-name>.azurecr.io`.
+Nun verfügen Sie über die erforderlichen Anmeldeinformationen und können sich mit dem `docker login`-Befehl bei der Azure Container Registry anmelden. Der Servername muss angegeben werden, um sich einzuloggen. Verwenden Sie das Format `{azure-container-registry-name>.azurecr.io`.
 
 ```bash
 docker login <azure-container-registry-name>.azurecr.io --username <azure-container-registry-name> --password <password> 
 ```
 
-Vergewissern Sie sich, dass die Anmeldung erfolgreich war. Senden Sie das Image mithilfe des `docker push`-Befehls per Pushübertragung, und kennzeichnen Sie das Image mit der vollständigen URL der Registrierung, gefolgt von Name und Tag des Images.
+Vergewissern Sie sich, dass die Anmeldung erfolgreich war. Senden Sie das Image mithilfe des `docker push`-Befehls per Pushübertragung, und kennzeichnen Sie das Image mit dem Namen der Registrierung, gefolgt von Name und Tag des Image.
 
 ```bash
-docker push http://<azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
+docker push <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
 
 Überprüfen Sie durch Auflisten der ACR-Repositorys, ob die Pushübertragung der Registrierung erfolgreich einen Container hinzugefügt hat. 
@@ -623,4 +622,3 @@ Die Ausgabe des Befehls ähnelt der folgenden JSON-Zeichenfolge und zeigt an, da
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Azure App Service-Web-App für Container – FAQs](app-service-linux-faq.md)
-

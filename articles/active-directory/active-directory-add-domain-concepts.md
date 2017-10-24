@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 10/10/2017
 ms.author: curtand
-ms.openlocfilehash: 3c591680160101a91174868714392674c9aa7178
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.reviewer: elkuzmen
+ms.openlocfilehash: b0ba411dd40bbd063a328d61be899c1e70a96eda
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="conceptual-overview-of-custom-domain-names-in-azure-active-directory"></a>Konzeptioneller Überblick über benutzerdefinierte Domänennamen in Azure Active Directory
 Ein Domänenname kann ein wichtiger Bezeichner für viele Verzeichnisressourcen sein, z.B. als Teil folgender Elemente:
@@ -29,8 +30,8 @@ Ein Domänenname kann ein wichtiger Bezeichner für viele Verzeichnisressourcen 
 
 Eine Ressource in Azure Active Directory (Azure AD) kann einen Domänennamen enthalten, für den bereits geprüft wurde, ob er zu dem Verzeichnis gehört, das die Ressource enthält. Nur ein globaler Administrator kann Domänenverwaltungsaufgaben in Azure AD ausführen.
 
-> [!IMPORTANT]
-> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden. Informationen zum Verwalten der Domänennamen im Azure AD Admin Center finden Sie unter [Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory](active-directory-domains-manage-azure-portal.md).
+> [!TIP]
+> Informationen zum Verwalten der Domänennamen im [Azure AD Admin Center](https://aad.portal.azure.com) finden Sie unter [Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory](active-directory-domains-manage-azure-portal.md).
 
 Domänennamen in Azure AD sind global eindeutig. Ein benutzerdefinierter Domänenname kann nur von jeweils einem Azure AD-Mandanten verwendet werden. Wenn ein Azure AD-Verzeichnis einen Domänennamen überprüft hat, kann kein anderes Azure AD-Verzeichnis diesen Domänennamen überprüfen oder verwenden.
 
@@ -51,9 +52,7 @@ Azure AD überprüft den Besitz eines Domänennamens durch Suchen nach einem bes
 Das Hinzufügen eines DNS-Eintrags zur Zonendatei für den Domänenamen wirkt sich nicht auf andere Domänendienste wie z.B. E-Mail- oder Webhostingdienste aus.
 
 ## <a name="federated-and-managed-domain-names"></a>Verbund- und verwaltete Domänennamen
-In Azure AD kann ein benutzerdefinierter Domänenname konfiguriert werden, um Benutzern die Verbundanmeldung beim lokalen Active Directory und Azure AD zu ermöglichen. Zum Konfigurieren einer Domäne für einen Verbund müssen sowohl privilegierte Ressourcen in Azure AD als auch Ihr Windows Server Active Directory aktualisiert werden. Die Konfiguration einer Verbunddomäne muss über Azure AD Connect oder mithilfe von PowerShell abgeschlossen werden. Das Hinzufügen einer benutzerdefinierten Domäne zu einem Verbund kann nicht über das klassische Azure-Portal initiiert werden. Sehen Sie sich das Video [Configuring AD FS for user sign-in with Azure AD Connect](http://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) an, um mehr über das Konfigurieren der Active Directory-Verbunddienste für die Benutzeranmeldung über Azure AD Connect zu erfahren.
-
-Domänen, bei denen es sich nicht um Verbunddomänen handelt, werden auch als verwaltete Domänen bezeichnet. Der anfängliche Domänenname für ein Azure AD-Verzeichnis wird implizit als verwaltete Domäne ausgewertet.
+In Azure AD kann ein benutzerdefinierter Domänenname konfiguriert werden, um Benutzern die Verbundanmeldung beim lokalen Active Directory und Azure AD zu ermöglichen. Zum Konfigurieren einer Domäne für einen Verbund müssen sowohl privilegierte Ressourcen in Azure AD als auch Ihr Windows Server Active Directory aktualisiert werden. Die Konfiguration einer Verbunddomäne muss über Azure AD Connect oder mithilfe von PowerShell abgeschlossen werden. Das Hinzufügen einer benutzerdefinierten Domäne zu einem Verbund kann nicht über das klassische Azure-Portal initiiert werden. Domänen, bei denen es sich nicht um Verbunddomänen handelt, werden auch als verwaltete Domänen bezeichnet. Der anfängliche Domänenname für ein Azure AD-Verzeichnis wird implizit als verwaltete Domäne ausgewertet.
 
 ## <a name="primary-domain-names"></a>Primäre Domänennamen
 Der primäre Domänenname für ein Verzeichnis ist der als Standardwert für den Benutzernamensbestandteil „Domäne“ vorab ausgewählte Domänenname. Dieser wird verwendet, wenn ein Administrator im [Azure-Portal](https://portal.azure.com/) oder in einem anderen Portal wie beispielsweise dem Office 365-Verwaltungsportal oder dem Microsoft Intune-Portal einen neuen Benutzer erstellt. Ein Verzeichnis kann nur über einen primären Domänennamen verfügen. Ein Administrator kann den primären Domänennamen in eine beliebige andere überprüfte benutzerdefinierte Domäne (keine Verbunddomäne) oder in die anfängliche Domäne ändern.

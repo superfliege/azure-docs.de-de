@@ -13,18 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 10/9/2017
 ms.author: adpick
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 3e74bdd1faf268f33fdbbcc428b4b32212508c39
-ms.contentlocale: de-de
-ms.lasthandoff: 03/03/2017
-
+ms.openlocfilehash: 64bfd8581141001aa6c11ca17ec1af681054f490
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>Grundlegendes zur Abrechnung von Azure-Gebühren für externe Dienste
-Externe Dienste wurden in der Vergangenheit als Azure Marketplace-Angebote bezeichnet. Diese Dienste werden im Allgemeinen von Drittanbietern veröffentlicht und für Azure zur Verfügung gestellt, sind aber komplett in Azure integriert. Beispiele für externe Dienste, die Sie in Azure erwerben können, die jedoch nicht von Microsoft veröffentlicht werden, sind ClearDB und SendGrid.
+Externe Dienste werden von Drittanbietern im Azure Marketplace veröffentlicht. Beispiele für externe Dienste, die Sie in Azure erwerben können, die jedoch nicht von Microsoft veröffentlicht werden, sind ClearDB und SendGrid.
 
 Beim Bereitstellen eines neuen externen Diensts oder einer neuen externen Ressource wird eine Warnung angezeigt:
 
@@ -39,7 +38,6 @@ Beim Bereitstellen eines neuen externen Diensts oder einer neuen externen Ressou
 - Externe Dienste werden separat in Rechnung gestellt. Sie werden als einzelne Bestellungen innerhalb Ihres Azure-Abonnements behandelt. Der Abrechnungszeitraum für die einzelnen Dienste wird beim Erwerb des Diensts festgelegt. Dieser Zeitraum darf nicht mit dem Abrechnungszeitraum des Abonnements verwechselt werden, das zum Kauf des externen Diensts verwendet wurde. Sie erhalten separate Rechnungen, und Ihre Kreditkarte wird separat belastet.
 - Jeder externe Dienst verwendet ein eigenes Abrechnungsmodell. Für einige Dienste wird die nutzungsbasierte Bezahlung verwendet, anderen liegt ein monatliches Zahlungsmodell zugrunde. Für externe Azure-Dienste wird eine Kreditkarte benötigt, eine Zahlung per Rechnung ist nicht möglich.
 - Die kostenlosen monatlichen Gutschriften können nicht für externe Dienste verwendet werden. Wenn Sie ein Azure-Abonnement mit [kostenlosen Gutschriften](https://azure.microsoft.com/pricing/spending-limits/) verwenden, können diese Gutschriften nicht zum Begleichen von Rechnungen genutzt werden, die Sie für externe Dienste erhalten. Nutzen Sie eine Kreditkarte, um externe Dienste zu erwerben.
-
 
 ## <a name="view-external-service-spending-and-history-in-the-azure-portal"></a>Anzeigen der Ausgaben und des Verlaufs für externe Dienste im Azure-Portal
 Im [Azure-Portal](https://portal.azure.com/) kann eine Liste der externen Dienste angezeigt werden, die unter den einzelnen Abonnements erworben wurden: 
@@ -89,5 +87,4 @@ Wenn Sie einen externen Dienst kündigen möchten, löschen Sie die Ressource im
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
-
 

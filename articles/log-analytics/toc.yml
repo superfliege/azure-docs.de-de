@@ -11,6 +11,8 @@
       href: log-analytics-quick-collect-azurevm.md
     - name: Sammeln – Linux-Computer
       href: log-analytics-quick-collect-linux-computer.md
+    - name: Sammeln – Windows-Computer
+      href: log-analytics-quick-collect-windows-computer.md
 - name: Lernprogramme
   items:
     - name: 1 – Analysieren von Daten
@@ -25,6 +27,8 @@
       href: powershell-samples.md
 - name: Konzepte
   items:
+    - name: Upgrade des Arbeitsbereichs
+      href: log-analytics-log-search-upgrade.md
     - name: Häufig gestellte Fragen zu Log Analytics
       href: log-analytics-faq.md
     - name: Nutzung der Daten
@@ -35,10 +39,10 @@
       href: log-analytics-service-providers.md
     - name: Protokollsuche
       items:
-        - name: Häufig gestellte Fragen zur Protokollsuche
-          href: log-analytics-log-search-faq.md
         - name: Übersicht über Protokollsuchvorgänge
           href: log-analytics-log-search-new.md
+        - name: Häufig gestellte Fragen zur Protokollsuche
+          href: log-analytics-log-search-faq.md
         - name: Portale für die Protokollsuche
           href: log-analytics-log-search-portals.md
 - name: Anleitung
@@ -89,6 +93,20 @@
               href: log-analytics-custom-fields.md
     - name: Abfragen von Daten
       items:
+        - name: Dokumentation zur Sprache
+          href: 'https://docs.loganalytics.io'
+        - name: Wechsel von der Legacysprache
+          href: log-analytics-log-search-transition.md
+        - name: Arbeitsbereichsübergreifende Suchvorgänge
+          href: log-analytics-cross-workspace-search.md
+        - name: Ausführen von Aktionen aus Suchergebnissen
+          href: log-analytics-log-search-takeaction.md
+        - name: Verwenden von Computergruppen
+          href: log-analytics-computer-groups.md
+        - name: Flow-Connector
+          href: log-analytics-flow-tutorial.md
+    - name: Legacy-Protokollsuche
+      items:
         - name: Übersicht über Protokollsuchvorgänge
           href: log-analytics-log-searches.md
         - name: Suchreferenz
@@ -96,26 +114,18 @@
           items:
             - name: Reguläre Ausdrücke
               href: log-analytics-log-searches-regex.md
-            - name: Arbeitsbereichsübergreifende Suchvorgänge
-              href: log-analytics-cross-workspace-search.md
-        - name: Ausführen von Aktionen aus Suchergebnissen
-          href: log-analytics-log-search-takeaction.md
-        - name: Computergruppen
-          href: log-analytics-computer-groups.md
-    - name: Neue Protokollsuche
-      items:
-        - name: Upgraden Ihres Arbeitsbereichs
-          href: log-analytics-log-search-upgrade.md
-        - name: Wechsel von der Legacysprache
-          href: log-analytics-log-search-transition.md
-        - name: Flow-Connector
-          href: log-analytics-flow-tutorial.md
     - name: Daten analysieren
       items:
         - name: Dashboards
           href: log-analytics-dashboards.md
         - name: Ansicht-Designer
-          href: log-analytics-view-designer.md
+          items:
+            - name: Übersicht
+              href: log-analytics-view-designer.md
+            - name: Kachelreferenz
+              href: log-analytics-view-designer-tiles.md
+            - name: Referenz zur Visualisierungskomponente
+              href: log-analytics-view-designer-parts.md
         - name: Power BI
           href: log-analytics-powerbi.md
     - name: Erstellen von Warnungen
@@ -231,14 +241,12 @@
           href: log-analytics-api-alerts.md
 - name: Referenz
   items:
+    - name: Sprachreferenz
+      href: 'https://docs.loganalytics.io/docs/Language-Reference'
     - name: Azure PowerShell
       href: /powershell/module/azurerm.operationalinsights
     - name: REST
       href: /rest/api/loganalytics
-    - name: Referenz zur Kachel „Ansicht-Designer“
-      href: log-analytics-view-designer-tiles.md
-    - name: Referenz zur Visualisierungskomponente im Ansicht-Designer
-      href: log-analytics-view-designer-parts.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

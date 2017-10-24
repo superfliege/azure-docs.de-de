@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
+ms.openlocfilehash: 1c62d2390709577bfde6225b783642fb55396a6b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 3bc631606afbc93d5bca94f4955fd2ef816fa9fd
-ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Überwachen und Diagnostizieren der Anforderungsverarbeitung beim Reverseproxy
 
@@ -158,11 +157,11 @@ Im ersten Ereignis unten werden die Details der empfangenen Anforderung beim Rev
     
     Wenn die Sammlung nur für kritische Ereignisse/Fehlerereignisse aktiviert ist, sehen Sie ein Ereignis mit den Details zum Timeout und der Anzahl der Auflösungsversuche. 
     
-    Wenn der Dienst einen Statuscode 404 zurück an den Benutzer sendet, sollte der Header X-ServiceFabric eingeschlossen sein. Nach dem Beheben dieses Problems sehen Sie, dass der Reverseproxy den Statuscode zurück an den Client weiterleitet.  
+    Bei Diensten, die einen Statuscode 404 zurück an den Benutzer senden, sollte der Header „X-ServiceFabric“ in der Antwort hinzugefügt werden. Nach dem Hinzufügen des Headers zur Antwort leitet der Reverseproxy den Statuscode weiter an den Client.  
 
 4. Fälle, in denen der Client die Anforderung getrennt hat.
 
-    Das nachstehende Ereignis wird aufgezeichnet, wenn der Reverseproxy die Antwort an den Client weiterleitet, der Client jedoch die Verbindung trennt:
+    Das folgende Ereignis wird aufgezeichnet, wenn der Reverseproxy die Antwort an den Client weiterleitet, der Client jedoch die Verbindung trennt:
 
     ```
     {
@@ -180,6 +179,18 @@ Im ersten Ereignis unten werden die Details der empfangenen Anforderung beim Rev
       }
     }
     ```
+5. Reverseproxy gibt „404 FABRIC_E_SERVICE_DOES_NOT_EXIST“ zurück
+
+    Der Fehler „FABRIC_E_SERVICE_DOES_NOT_EXIST“ wird zurückgegeben, wenn das URI-Schema für den Dienstendpunkt im Dienstmanifest nicht angegeben ist.
+
+    ```
+    <Endpoint Name="ServiceEndpointHttp" Port="80" Protocol="http" Type="Input"/>
+    ```
+
+    Geben Sie zum Beheben des Problems das URI-Schema im Manifest an.
+    ```
+    <Endpoint Name="ServiceEndpointHttp" UriScheme="http" Port="80" Protocol="http" Type="Input"/>
+    ```
 
 > [!NOTE]
 > Ereignisse im Zusammenhang mit der Verarbeitung von Websocketanforderungen werden derzeit nicht protokolliert. Diese Funktion wird in der nächsten Version hinzugefügt.
@@ -189,4 +200,3 @@ Im ersten Ereignis unten werden die Details der empfangenen Anforderung beim Rev
 * Anzeigen von Service Fabric-Ereignisse in Visual Studio unter [Lokale Überwachung und Diagnose](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
 * Beispiele für Azure Resource Manager-Vorlagen zum Konfigurieren eines sicheren Reverseproxys mit den unterschiedlichen Optionen für die Dienstzertifikatüberprüfung finden Sie unter [Configure reverse proxy to connect to secure services](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) (Konfigurieren des Reverseproxys für die Verbindung mit sicheren Diensten).
 * Weitere Informationen erhalten Sie unter [Service Fabric-Reverseproxy](service-fabric-reverseproxy.md).
-

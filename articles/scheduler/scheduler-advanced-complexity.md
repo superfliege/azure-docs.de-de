@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
 ms.openlocfilehash: 20c3e3c1cb85308cad47054c2efa87f61cae0f22
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>Erstellen komplexer Zeitpläne und erweiterter Serien mit Azure Scheduler
 ## <a name="overview"></a>Übersicht
@@ -108,9 +108,9 @@ Die folgende Tabelle verdeutlicht, wie *startTime* die Ausführung eines Auftrag
 
 Das folgende Beispiel veranschaulicht, was passiert, wenn *startTime* in der Vergangenheit liegt und nur *recurrence*, aber kein *schedule* angegeben ist.  In diesem Beispiel wird davon ausgegangen, dass die aktuelle Zeit „2015-04-08-13:00“ ist, *startTime* auf „2015-04-07 14:00“ festgelegt ist und für *recurrence* ein Zwei-Tages-Intervall (mit „*frequency*: day“ und „*interval*: 2“) angegeben wurde. Beachten Sie, dass *startTime* in der Vergangenheit liegt.
 
-Unter diesen Bedingungen die *ersten Ausführung* werden 2015-04-09 um 14:00 Uhr\. Das Auftragszeitplanungs-Modul berechnet die Ausführungen von der Startzeit.  In der Vergangenheit liegende Instanzen werden verworfen. Das Modul verwendet die nächste in der Zukunft liegende Instanz.  In vorliegenden Fall ist *startTime* auf 14:00 Uhr am 7.4.2015 festgelegt. Die nächste Instanz folgt zwei Tage nach diesem Zeitpunkt, also am 9.4.2015 um 14:00 Uhr.
+Unter diesen Umständen ist die *erste Ausführung* am 9.4.2015 um 14:00 Uhr\. Das Scheduler-Modul berechnet die Ausführungen auf Grundlage der Startzeit.  In der Vergangenheit liegende Instanzen werden verworfen. Das Modul verwendet die nächste in der Zukunft liegende Instanz.  In vorliegenden Fall ist *startTime* auf 14:00 Uhr am 7.4.2015 festgelegt. Die nächste Instanz folgt zwei Tage nach diesem Zeitpunkt, also am 9.4.2015 um 14:00 Uhr.
 
-Beachten Sie, dass die erste Ausführung würde werden die gleiche, selbst wenn die StartTime 2015-04-05 14:00 Uhr oder 14:00\ 2015-04-01. Nach der ersten Ausführung werden die nachfolgenden Ausführungen auf der Grundlage des Zeitplans berechnet und erfolgen jeweils um 14:00 Uhr am 11.4.2015, am 13.4.2015, am 15.4.2015 usw.
+Beachten Sie, dass die erste Ausführung auch dann zu diesem Zeitpunkt stattfinden würde, wenn als Startzeit der 5.4.2015 oder der 1.4.2015 (jeweils 14:00 Uhr) angegeben wäre\. Nach der ersten Ausführung werden die nachfolgenden Ausführungen auf der Grundlage des Zeitplans berechnet und erfolgen jeweils um 14:00 Uhr am 11.4.2015, am 13.4.2015, am 15.4.2015 usw.
 
 Wenn für den Auftrag ein Zeitplan, aber keine Stunden- und/oder Minutenangabe festgelegt ist, werden standardmäßig die Stunden und/oder Minuten der ersten Ausführung verwendet.
 
@@ -128,13 +128,13 @@ Die folgende Tabelle enthält eine ausführliche Beschreibung der *Zeitplaneleme
 | **minutes** |Minuten der Stunde, in der der Auftrag ausgeführt wird |<ul><li>Ganze Zahl oder</li><li>Array mit ganzen Zahlen</li></ul> |
 | **hours** |Stunden des Tages, an dem der Auftrag ausgeführt wird |<ul><li>Ganze Zahl oder</li><li>Array mit ganzen Zahlen</li></ul> |
 | **weekDays** |Die Wochentage, an denen der Auftrag ausgeführt wird. Kann nur bei wöchentlicher Häufigkeit angegeben werden. |<ul><li>"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" oder "Sunday"</li><li>Array mit beliebigen der oben angegebenen Werte (maximale Arraygröße: 7)</li></ul>Die Groß-/Kleinschreibung wird *nicht* beachtet. |
-| **monthlyOccurrences** |Bestimmt, an welchen Tagen im Monat der Auftrag ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. |<ul><li>Array mit monthlyOccurrence-Objekten:</li></ul> <pre>{ "day": *day*,<br />  "occurrence": *occurrence*<br />}</pre><p> *Tag* ist der Wochentag, an dem der Auftrag ausgeführt wird. „{Sunday}“ steht beispielsweise für jeden Sonntag im Monat. Erforderlich.</p><p>*Vorkommen* steht für den Tag innerhalb des Monats. Mit „{Sunday, -1}“ wird beispielsweise der letzte Sonntag des Monats angegeben. Optional.</p> |
+| **monthlyOccurrences** |Bestimmt, an welchen Tagen im Monat der Auftrag ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. |<ul><li>Array mit monthlyOccurrence-Objekten:</li></ul> <pre>{ "day": *day*,<br />  "occurrence":*occurrence*<br />}</pre><p> *Tag* ist der Wochentag, an dem der Auftrag ausgeführt wird. „{Sunday}“ steht beispielsweise für jeden Sonntag im Monat. Erforderlich.</p><p>*Vorkommen* steht für den Tag innerhalb des Monats. Mit „{Sunday, -1}“ wird beispielsweise der letzte Sonntag des Monats angegeben. Optional.</p> |
 | **monthDays** |Der Tag des Monats, an dem der Auftrag ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. |<ul><li>Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31.</li><li>Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31.</li><li>Array mit den oben genannten Werten</li></ul> |
 
 ## <a name="examples-recurrence-schedules"></a>Beispiele: Wiederholungszeitpläne
 Im Anschluss folgen verschiedene Beispiele für Wiederholungszeitpläne, bei denen jeweils das schedule-Objekt und die dazugehörigen Elemente im Mittelpunkt stehen.
 
-Die Zeitpläne alle folgenden davon ausgehen, dass die *Intervall* auf 1 festgelegt ist\. Darüber hinaus eine davon ausgehen muss die richtige Häufigkeit in Übereinstimmung mit den neuerungen in der *Zeitplan* – z. B. eine Häufigkeit "Day" verwenden und haben eine "MonthDays" Änderung im Zeitplan kann nicht. Eine Beschreibung dieser Einschränkungen finden Sie weiter oben.
+Bei den folgenden Zeitplänen wird jeweils davon ausgegangen, dass *interval* auf „1“ festgelegt ist\. Darüber hinaus wird davon ausgegangen, dass für den *Zeitplan* jeweils eine passende Häufigkeit angegeben ist, da der Zeitplan bei Angabe einer täglichen Häufigkeit beispielsweise nicht mit „monthDays“ angepasst werden kann. Eine Beschreibung dieser Einschränkungen finden Sie weiter oben.
 
 | **Beispiel** | **Beschreibung** |
 |:--- |:--- |

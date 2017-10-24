@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
 ms.openlocfilehash: 017a8cabe81743af4c0cbb694098df799a904468
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Erstellen einer Organisationseinheit (OE) in einer durch Azure AD Domain Services verwalteten Domäne
 Zu den durch Azure AD Domain Services verwalteten Domänen gehören zwei integrierte Container mit den Bezeichnungen „AADDC Computers“ und „AADDC Users“. Der Container „AADDC Computers“ enthält Computerobjekte für alle Computer, die in die verwaltete Domäne eingebunden sind. Der Container „AADDC Users“ enthält die Benutzer und Gruppen im Azure AD-Mandanten. Gelegentlich kann es notwendig werden, Dienstkonten für die verwaltete Domäne zu erstellen, um Workloads bereitzustellen. Zu diesem Zweck können Sie eine benutzerdefinierte Organisationseinheit (OE) in der verwalteten Domäne erstellen und innerhalb dieser Organisationseinheit Dienstkonten erstellen. In diesem Artikel wird gezeigt, wie Sie in der verwalteten Domäne eine Organisationseinheit erstellen.
@@ -64,7 +64,7 @@ Nachdem Sie die AD-Verwaltungstools auf dem in die Domäne eingebundenen virtuel
     ![ADAC – Organisationseinheit erstellt](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
 
 ## <a name="permissionssecurity-for-newly-created-ous"></a>Berechtigungen und Sicherheit für neu erstellte Organisationseinheiten
-Standardmäßig erhält der Benutzer, der die benutzerdefinierte Organisationseinheit erstellt hat (und Mitglied der Gruppe „AAD DC Administrators“ ist), die Administratorrechte für die diese Organisationseinheit (Vollzugriff). Dieser Benutzer kann dann anderen Benutzern oder der Gruppe „AAD DC Administrators“ ganz nach Bedarf Berechtigungen erteilen. Wie im folgenden Screenshot, der Benutzer "bob@domainservicespreview.onmicrosoft.com" vollständige Steuerung erteilt, der die neue Organisationseinheit "MyCustomOU" erstellt hat.
+Standardmäßig erhält der Benutzer, der die benutzerdefinierte Organisationseinheit erstellt hat (und Mitglied der Gruppe „AAD DC Administrators“ ist), die Administratorrechte für die diese Organisationseinheit (Vollzugriff). Dieser Benutzer kann dann anderen Benutzern oder der Gruppe „AAD DC Administrators“ ganz nach Bedarf Berechtigungen erteilen. Wie im folgenden Screenshot ersichtlich hat der Benutzer bob@domainservicespreview.onmicrosoft.com, der die neue Organisationseinheit „MyCustomOU“ erstellt hat, vollständige Kontrolle darüber (Vollzugriff).
 
  ![ADAC – Sicherheit für neue Organisationseinheit](./media/active-directory-domain-services-admin-guide/create-ou-permissions.png)
 

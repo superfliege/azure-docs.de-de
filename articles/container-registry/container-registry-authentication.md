@@ -17,21 +17,18 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 9d7d2ae0e9b1f7850332d151d78a4a5fdb013777
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 75c5f00255e1a55dd84ba0cf17dbef56b0253334
-ms.contentlocale: de-de
-ms.lasthandoff: 09/22/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Authentifizieren mit einer privaten Docker-Containerregistrierung
 Sie melden sich mit dem Befehl `docker login` an, um Containerimages in einer Azure-Containerregistrierung zu verwenden. Sie können sich anmelden, indem Sie entweder einen **[Azure Active Directory-Dienstprinzipal](../active-directory/active-directory-application-objects.md)** oder ein registrierungsspezifisches **Administratorkonto** nutzen. Dieser Artikel enthält weitere Details zu diesen Identitäten.
 
-
-
 ## <a name="service-principal"></a>Dienstprinzipal
 
-Sie können Ihrer Registrierung einen [Dienstprinzipal zuweisen](container-registry-get-started-azure-cli.md#assign-a-service-principal) und für die grundlegende Docker-Authentifizierung verwenden. Die Nutzung eines Dienstprinzipals wird für die meisten Szenarien empfohlen. Geben Sie die App-ID und das Kennwort des Dienstprinzipals für den Befehl `docker login` ein. Dies wird im folgenden Beispiel veranschaulicht:
+Sie können Ihrer Registrierung einen Dienstprinzipal zuweisen und für die grundlegende Docker-Authentifizierung verwenden. Die Nutzung eines Dienstprinzipals wird für die meisten Szenarien empfohlen. Geben Sie die App-ID und das Kennwort des Dienstprinzipals für den Befehl `docker login` ein. Dies wird im folgenden Beispiel veranschaulicht:
 
 ```
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -42,7 +39,6 @@ Nach der Anmeldung speichert Docker die Anmeldeinformationen zwischen, sodass Si
 > [!TIP]
 > Bei Bedarf können Sie das Kennwort eines Dienstprinzipals neu generieren, indem Sie den Befehl `az ad sp reset-credentials` ausführen.
 >
-
 
 Dienstprinzipale ermöglichen den [rollenbasierten Zugriff](../active-directory/role-based-access-control-configure.md) auf eine Registrierung. Folgende Rollen sind verfügbar:
   * Leser (nur Pullzugriff)
@@ -58,11 +54,8 @@ Sie können einer Registrierung mehrere Dienstprinzipale zuweisen, damit Sie den
   * Lösungen für Continuous Integration und Continuous Deployment (z.B. Visual Studio Team Services oder Jenkins), mit denen Containerimages erstellt und per Pushvorgang in eine Registrierung übertragen werden.
 
 
-
-
-
 ## <a name="admin-account"></a>Administratorkonto
-Für jede von Ihnen erstellte Registrierung wird automatisch auch ein Administratorkonto erstellt. Das Konto ist standardmäßig deaktiviert, aber Sie können es aktivieren und die Anmeldeinformationen verwalten, z.B. über das [Portal](container-registry-get-started-portal.md#manage-registry-settings) oder mit den [Befehlen von Azure CLI 2.0](container-registry-get-started-azure-cli.md#manage-admin-credentials). Jedes Administratorkonto erhält zwei Kennwörter, die beide erneut generiert werden können. Die beiden Kennwörter ermöglichen es Ihnen, Verbindungen mit der Registrierung aufrechtzuerhalten, indem Sie ein Kennwort verwenden, während Sie das andere Kennwort neu generieren. Wenn das Konto aktiviert ist, können Sie den Benutzernamen und eines der Kennwörter an den Befehl `docker login` übergeben, um die Standardauthentifizierung für die Registrierung zu erhalten. Beispiel:
+Für jede von Ihnen erstellte Registrierung wird automatisch auch ein Administratorkonto erstellt. Das Konto ist standardmäßig deaktiviert, aber Sie können es aktivieren und die Anmeldeinformationen verwalten, z.B. über das [Portal](container-registry-get-started-portal.md#create-a-container-registry) oder mit den [Befehlen von Azure CLI 2.0](container-registry-get-started-azure-cli.md#create-a-container-registry). Jedes Administratorkonto erhält zwei Kennwörter, die beide erneut generiert werden können. Die beiden Kennwörter ermöglichen es Ihnen, Verbindungen mit der Registrierung aufrechtzuerhalten, indem Sie ein Kennwort verwenden, während Sie das andere Kennwort neu generieren. Wenn das Konto aktiviert ist, können Sie den Benutzernamen und eines der Kennwörter an den Befehl `docker login` übergeben, um die Standardauthentifizierung für die Registrierung zu erhalten. Beispiel:
 
 ```
 docker login myregistry.azurecr.io -u myAdminName -p myPassword1
@@ -72,8 +65,6 @@ docker login myregistry.azurecr.io -u myAdminName -p myPassword1
 > Das Administratorkonto ist dafür ausgelegt, dass ein einzelner Benutzer auf die Registrierung zugreift (hauptsächlich für Testzwecke). Es wird nicht empfohlen, die Anmeldeinformationen für das Administratorkonto an andere Benutzer weiterzugeben. Alle Benutzer werden von der Registrierung wie ein Benutzer angesehen. Wenn dieses Konto geändert oder deaktiviert wird, wird der Zugriff auf die Registrierung für alle Benutzer deaktiviert, die diese Anmeldeinformationen verwenden.
 >
 
-
 ### <a name="next-steps"></a>Nächste Schritte
 * [Freigeben Ihres ersten Image mit der Docker CLI](container-registry-get-started-docker-cli.md)
 * Weitere Informationen zur Authentifizierung in der Containerregistrierung (Vorschau) finden Sie in [diesem Blogbeitrag](https://blogs.msdn.microsoft.com/stevelasker/2016/11/17/azure-container-registry-user-accounts/).
-

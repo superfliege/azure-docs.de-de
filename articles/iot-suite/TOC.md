@@ -37,7 +37,7 @@
 ## [Geräteinformationen in der Remoteüberwachungslösung](iot-suite-remote-monitoring-device-info.md)
 ## [Bereitstellen eines Gateways für verbundene Factorys](iot-suite-connected-factory-gateway-deployment.md)
 ## [Anpassen einer verbundenen Factory](iot-suite-connected-factory-customize.md)
-
+## [Verwenden von OPC Publisher für eine verbundene Factory](iot-suite-connected-factory-publisher.md)
 # Referenz
 ## [Sicherheitsarchitektur](iot-security-architecture.md)
 ## [Bewährte Methoden für die Sicherheit](iot-security-best-practices.md)

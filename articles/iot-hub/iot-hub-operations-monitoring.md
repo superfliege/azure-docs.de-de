@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT Hub-Vorgangsüberwachung | Microsoft-Dokumentation"
+title: "Azure IoT Hub-Vorgangsüberwachung | Microsoft Docs"
 description: "Verwenden der Azure IoT Hub-Vorgangsüberwachung zum Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit."
 services: iot-hub
 documentationcenter: 
@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/25/2017
+ms.date: 10/10/2017
 ms.author: nberdy
+ms.openlocfilehash: 3eafa32907c8f68cfc44cb2771d625349ff42003
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: b6de5c5df5f9401a41be152bfa06eb994594e83d
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="iot-hub-operations-monitoring"></a>IoT Hub-Vorgangsüberwachung
 
 Die IoT Hub-Vorgangsüberwachung ermöglicht Ihnen das Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit. IoT Hub verfolgt Ereignisse in verschiedenen Vorgangskategorien nach. Sie können festlegen, dass Ereignisse aus einer oder mehreren Kategorien zur Verarbeitung an einen Endpunkt Ihres IoT-Hubs gesendet werden. Sie können die Daten auf Fehler überwachen oder eine komplexere auf Datenmustern basierende Verarbeitung einrichten.
+
+>[!NOTE]
+>Die Vorgangsüberwachung von IoT Hub ist veraltet und wird künftig aus IoT Hub entfernt. Informationen zur Überwachung der Vorgänge und Integrität von IoT Hub finden Sie unter [Monitor the health of Azure IoT Hub and diagnose problems quickly][lnk-monitor] (Überwachen der Integrität von Azure IoT Hub und schnelles Diagnostizieren von Problemen). Weitere Informationen zur Veraltungszeitachse finden Sie unter [Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health][lnk-blog-announcement] (Überwachen Ihrer Azure IoT-Lösungen mit Azure Monitor und Azure Resource Health).
 
 IoT Hub überwacht sechs Ereigniskategorien:
 
@@ -33,6 +35,9 @@ IoT Hub überwacht sechs Ereigniskategorien:
 * Verbindungen
 * Dateiuploads
 * Nachrichtenweiterleitung
+
+> [!IMPORTANT]
+> Die IoT Hub-Vorgangsüberwachung garantiert keine zuverlässige oder geordnete Bereitstellung von Ereignissen. Abhängig von der IoT Hub zugrunde liegenden Infrastruktur gehen manche Ereignisse unter Umständen verloren oder werden in falscher Reihenfolge bereitgestellt. Generieren Sie mithilfe der Vorgangsüberwachung Warnungen auf der Grundlage von Fehlersignalen. Hierzu zählen beispielsweise nicht erfolgreiche Verbindungsversuche oder häufige Unterbrechungen für bestimmte Geräte. Bei der Erstellung eines konsistenten Speichers für den Gerätezustand (beispielsweise eines Speichers, der den Verbindungsstatus eines Geräts nachverfolgt) sollten Sie sich nicht auf Vorgangsüberwachungsereignisse verlassen. 
 
 ## <a name="how-to-enable-operations-monitoring"></a>Aktivieren der Vorgangsüberwachung
 
@@ -294,6 +299,8 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [img-endpoints]: media/iot-hub-operations-monitoring/monitoring-endpoint.png
 [img-service-key]: media/iot-hub-operations-monitoring/service-key.png
 
+[lnk-blog-announcement]: https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health
+[lnk-monitor]: iot-hub-monitor-resource-health.md
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [lnk-diagnostic-metrics]: iot-hub-metrics.md
 [lnk-scaling]: iot-hub-scaling.md

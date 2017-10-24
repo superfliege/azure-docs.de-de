@@ -1,4 +1,4 @@
---- 
+---
 title: Kopieren einer Linux-VM mit Azure CLI 2.0 | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Kopie Ihrer Azure Linux-VM mithilfe von Azure CLI 2.0 und Managed Disks erstellen.
 services: virtual-machines-linux
@@ -12,16 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 09/25/2017
 ms.author: cynthn
+ms.openlocfilehash: 98b27f5f86cdb17893a5c98950a2299f8aa30105
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7983061a933370803669480296d7625106e1360c
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
----                    
-               
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
+---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-20-and-managed-disks"></a>Erstellen einer Kopie Ihrer Linux-VM mithilfe von Azure CLI 2.0 und Managed Disks
 
 
@@ -45,7 +43,9 @@ Heben Sie die Zuordnung des virtuellen Quellcomputers mit [az vm deallocate](/cl
 Im folgenden Beispiel wird die Zuordnung für die VM **myVM** in der Ressourcengruppe **myResourceGroup** aufgehoben:
 
 ```azurecli
-az vm deallocate --resource-group myResourceGroup --name myVM
+az vm deallocate \
+    --resource-group myResourceGroup \
+    --name myVM
 ```
 
 ## <a name="step-2-copy-the-source-vm"></a>Schritt 2: Kopieren des virtuellen Quellcomputers
@@ -58,7 +58,9 @@ Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über
 1.  Listen Sie die einzelnen virtuellen Computer und den Namen des dazugehörigen Betriebssystemdatenträgers mit [az vm list](/cli/azure/vm#list) auf. Im folgenden Beispiel werden alle virtuellen Computer in der Ressourcengruppe **myResourceGroup** aufgelistet:
     
     ```azurecli
-    az vm list -g myTestRG --query '[].{Name:name,DiskName:storageProfile.osDisk.name}' --output table
+    az vm list -g myResourceGroup \
+         --query '[].{Name:name,DiskName:storageProfile.osDisk.name}' \
+         --output table
     ```
 
     Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
@@ -72,7 +74,8 @@ Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über
 1.  Kopieren Sie den Datenträger, indem Sie einen neuen verwalteten Datenträger mit [az disk create](/cli/azure/disk#create) erstellen. Im folgenden Beispiel wird ein Datenträger mit dem Namen **myCopiedDisk** auf Grundlage des verwalteten Datenträgers **myDisk** erstellt:
 
     ```azurecli
-    az disk create --resource-group myResourceGroup --name myCopiedDisk --source myDisk
+    az disk create --resource-group myResourceGroup \
+         --name myCopiedDisk --source myDisk
     ``` 
 
 1.  Überprüfen Sie die verwalteten Datenträger jetzt in der Ressourcengruppe mit [az disk list](/cli/azure/disk#list). Im folgenden Beispiel werden alle verwalteten Datenträger in der Ressourcengruppe **myResourceGroup** aufgelistet:
@@ -80,8 +83,6 @@ Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über
     ```azurecli
     az disk list --resource-group myResourceGroup --output table
     ```
-
-1.  Fahren Sie mit [„Schritt 3: Einrichten eines virtuellen Netzwerks“](#step-3-set-up-a-virtual-network) fort.
 
 
 ## <a name="step-3-set-up-a-virtual-network"></a>Schritt 3: Einrichten eines virtuellen Netzwerks
@@ -96,23 +97,29 @@ Führen Sie die nächsten Schritte aus, wenn Sie eine VM-Infrastruktur für Ihre
 1.  Erstellen Sie das virtuelle Netzwerk mit [az network vnet create](/cli/azure/network/vnet#create). Im folgenden Beispiel werden ein virtuelles Netzwerk mit dem Namen **myVnet** und ein Subnetz mit dem Namen **mySubnet** erstellt:
 
     ```azurecli
-    az network vnet create --resource-group myResourceGroup --location westus --name myVnet \
-        --address-prefix 192.168.0.0/16 --subnet-name mySubnet --subnet-prefix 192.168.1.0/24
+    az network vnet create --resource-group myResourceGroup \
+        --location eastus --name myVnet \
+        --address-prefix 192.168.0.0/16 \
+        --subnet-name mySubnet \
+        --subnet-prefix 192.168.1.0/24
     ```
 
 1.  Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#create) eine öffentliche IP-Adresse. Im folgenden Beispiel wird eine öffentliche IP-Adresse namens **myPublicIP** mit dem DNS-Namen **mypublicdns** erstellt. (Der DNS-Name muss eindeutig sein. Geben Sie daher einen eindeutigen Namen an.)
 
     ```azurecli
-    az network public-ip create --resource-group myResourceGroup --location westus \
-        --name myPublicIP --dns-name mypublicdns --allocation-method static --idle-timeout 4
+    az network public-ip create --resource-group myResourceGroup \
+        --location eastus --name myPublicIP --dns-name mypublicdns \
+        --allocation-method static --idle-timeout 4
     ```
 
 1.  Erstellen Sie die NIC mit [az network nic create](/cli/azure/network/nic#create).
     Im folgenden Beispiel wird die NIC **myNic** erstellt, die an das Subnetz **mySubnet** angefügt ist:
 
     ```azurecli
-    az network nic create --resource-group myResourceGroup --location westus --name myNic \
-        --vnet-name myVnet --subnet mySubnet --public-ip-address myPublicIP
+    az network nic create --resource-group myResourceGroup \
+        --location eastus --name myNic \
+        --vnet-name myVnet --subnet mySubnet \
+        --public-ip-address myPublicIP
     ```
 
 ## <a name="step-4-create-a-vm"></a>Schritt 4: Erstellen eines virtuellen Computers
@@ -122,13 +129,12 @@ Sie können nun mit [az vm create](/cli/azure/vm#create) einen virtuellen Comput
 Geben Sie wie folgt den kopierten verwalteten Datenträger an, der als Betriebssystemdatenträger (--attach-os-disk) verwendet werden soll:
 
 ```azurecli
-az vm create --resource-group myResourceGroup --name myCopiedVM \
-    --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
-    --nics myNic --size Standard_DS1_v2 --os-type Linux \
+az vm create --resource-group myResourceGroup \
+    --name myCopiedVM --nics myNic \
+    --size Standard_DS1_v2 --os-type Linux \
     --attach-os-disk myCopiedDisk
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zur Verwendung der Azure-CLI für die Verwaltung des neuen virtuellen Computers finden Sie unter [Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus](../azure-cli-arm-commands.md).
-

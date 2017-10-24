@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 43ba592b6294a9a75a20dacd81953a77c241b89f
-ms.contentlocale: de-de
-ms.lasthandoff: 03/18/2017
-
-
+ms.openlocfilehash: 3c1e558c9d41e385f80939203a3457b74e30973b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="aspnet-web-app-sign-in-and-sign-out-with-azure-ad"></a>An- und Abmeldung bei ASP.NET-Web-Apps mit Azure AD
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -75,7 +73,7 @@ In diesem Schritt konfigurieren Sie die OWIN-Middleware für die Verwendung des 
      }
      ```
 
-4. Öffnen Sie die Datei „App_Start\Startup.Auth.cs“, und implementieren Sie anschließend die **ConfigureAuth(...)**-Methode. Die Parameter, die Sie in *OpenIDConnectAuthenticationOptions* bereitstellen, dienen als Koordinaten für die App zur Kommunikation mit Azure AD. Außerdem müssen Sie die Cookie-Authentifizierung einrichten, da die Middleware OpenID Connect im Hintergrund Cookies verwendet.
+4. Öffnen Sie die Datei „App_Start\Startup.Auth.cs“, und implementieren Sie anschließend die **ConfigureAuth(...)** -Methode. Die Parameter, die Sie in *OpenIDConnectAuthenticationOptions* bereitstellen, dienen als Koordinaten für die App zur Kommunikation mit Azure AD. Außerdem müssen Sie die Cookie-Authentifizierung einrichten, da die Middleware OpenID Connect im Hintergrund Cookies verwendet.
 
      ```C#
      public void ConfigureAuth(IAppBuilder app)
@@ -111,7 +109,7 @@ In diesem Schritt konfigurieren Sie die OWIN-Middleware für die Verwendung des 
 ## <a name="step-3-use-owin-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>Schritt 3: Erstellen von An- und Abmeldeanforderungen an Azure AD mit OWIN
 Die App ist nun ordnungsgemäß für die Kommunikation mit Azure AD über das Authentifizierungsprotokoll OpenID Connect konfiguriert. OWIN hat sich um alle Details der Erstellung von Authentifizierungsnachrichten, der Überprüfung der Azure AD-Token und der Verwaltung der Benutzersitzung gekümmert. Sie müssen lediglich dafür sorgen, dass sich Ihre Benutzer an- und abmelden können.
 
-1. Über Autorisierungstags in Ihren Controllern können Sie die Benutzer vor dem Zugriff auf bestimmte Seiten zur Anmeldung zwingen. Zu diesem Zweck öffnen Sie „Controllers\HomeController.cs“ und fügen dann das `[Authorize]`-Tag dem „About“-Controller hinzu.
+1. Über Autorisierungstags in Ihren Controllern können Sie die Benutzer vor dem Zugriff auf bestimmte Seiten zur Anmeldung zwingen. Zu diesem Zweck öffnen Sie „Controllers\HomeController.cs“ und fügen dann das `[Authorize]`-Tag zur About-Aktion hinzu.
 
      ```C#
      [Authorize]
@@ -195,4 +193,3 @@ Als Referenz stellen wir [ das vollständige Beispiel](https://github.com/AzureA
 Sie können nun mit den Themen für fortgeschrittenere Benutzer fortfahren. Sehen Sie sich z.B. das [Schützen einer Web-API mit Azure AD](active-directory-devquickstarts-webapi-dotnet.md) an.
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

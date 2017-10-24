@@ -3,7 +3,7 @@ title: Problembehandlung bei allgemeinen Azure Automation-Problemen | Microsoft-
 description: "Dieser Artikel enthält Informationen zum Behandeln und Beheben von häufig auftretenden Azure Automation-Fehlern."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: stevenka
 editor: tysonn
 tags: top-support-issue
@@ -14,15 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/26/2017
+ms.date: 09/22/2017
 ms.author: sngun; v-reagie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: 64548d91e98754210cc5185d9d759141cc0621d3
-ms.contentlocale: de-de
-ms.lasthandoff: 06/26/2017
-
-
+ms.openlocfilehash: 19b1d772236c14c8403d1056e5c9dcda7b741501
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Problembehandlung für allgemeine Probleme in Azure Automation 
 Dieser Artikel bietet Hilfe für die Problembehandlung häufiger Fehler, die in Azure Automation auftreten können, und enthält mögliche Lösungen zum Beheben dieser Fehler.
@@ -104,7 +102,7 @@ Sie können dieses Problem mit einer der folgenden drei Lösungen beheben:
 1. Melden Sie sich bei Ihrem Azure-Abonnement an.  
 2. Wählen Sie das Automation-Konto aus, das Sie aktualisieren möchten.  
 3. Klicken Sie auf **Einstellungen** > **Tarif und Nutzung** > **Tarif**.  
-4. Wählen Sie auf dem Blatt **Tarif wählen** die Option **Basic** aus.    
+4. Wählen Sie auf der Seite **Tarif auswählen** die Option **Basic** aus.    
 
 ### <a name="scenario-cmdlet-not-recognized-when-executing-a-runbook"></a>Szenario: Cmdlet wird beim Ausführen eines Runbooks nicht erkannt
 **Fehler**: Für Ihren Runbookauftrag tritt der folgende Fehler auf: ``<cmdlet name>``„Die Benennung ``<cmdlet name>`` wurde nicht als Name eines Cmdlets, einer Funktion, einer Skriptdatei oder eines ausführbaren Programms erkannt.“
@@ -119,9 +117,9 @@ Sie können dieses Problem mit einer der folgenden drei Lösungen beheben:
 * Wenn Sie das Runbook lokal in einer Hybrid Worker-Gruppe ausführen, stellen Sie sicher, dass das Modul/Cmdlet auf dem Computer installiert ist, auf dem der Hybrid Worker gehostet wird.
 
 ### <a name="scenario-a-long-running-runbook-consistently-fails-with-the-exception-the-job-cannot-continue-running-because-it-was-repeatedly-evicted-from-the-same-checkpoint"></a>Szenario: Ein lange ausgeführtes Runbook schlägt regelmäßig mit der Ausnahme „Der Auftrag kann nicht fortgesetzt werden, da er wiederholt am gleichen Prüfpunkt entfernt wurde“ fehl.
-**Ursache des Fehlers:** Dies ist das vorgesehene Verhalten aufgrund der Überwachung der gleichmäßigen Auslastung der Prozesse in Azure Automation, die ein Runbook automatisch beendet, wenn es länger als 3 Stunden ausgeführt wird. Die zurückgegebene Fehlermeldung bietet jedoch keine Optionen für weitere Schritte an. Ein Runbook kann aus verschiedenen Gründen ausgesetzt werden. Meistens wird das Beenden durch Fehler verursacht. Beispielsweise führen eine nicht abgefangene Ausnahme in einem Runbook, ein Netzwerkfehler oder der Absturz des Runbook Workers, der das Runbook ausführt, dazu, dass das Runbook angehalten und dann vom letzten Prüfpunkt an fortgesetzt wird.
+**Ursache des Fehlers:** Dies ist das vorgesehene Verhalten aufgrund der Überwachung der gleichmäßigen Auslastung der Prozesse in Azure Automation, die ein Runbook automatisch anhält, wenn es länger als drei Stunden ausgeführt wird. Die zurückgegebene Fehlermeldung bietet jedoch keine Optionen für weitere Schritte an. Ein Runbook kann aus verschiedenen Gründen ausgesetzt werden. Meistens wird das Beenden durch Fehler verursacht. Beispielsweise führen eine nicht abgefangene Ausnahme in einem Runbook, ein Netzwerkfehler oder der Absturz des Runbook Workers, der das Runbook ausführt, dazu, dass das Runbook angehalten und dann vom letzten Prüfpunkt an fortgesetzt wird.
 
-**Tipps zur Problembehandlung:** Zur Vermeidung dieses Problems wird empfohlen, Prüfpunkte in einem Workflow zu verwenden.  Weitere Informationen finden Sie unter [Grundlagen des Windows PowerShell-Workflows](automation-powershell-workflow.md#checkpoints).  Eine ausführlichere Erläuterung der gleichmäßigen Auslastung und von Prüfpunkten finden Sie in diesem Blogbeitrag zum [Verwenden von Prüfpunkten in Runbooks](https://azure.microsoft.com/en-us/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/).
+**Tipps zur Problembehandlung:** Zur Vermeidung dieses Problems wird empfohlen, Prüfpunkte in einem Workflow zu verwenden.  Weitere Informationen finden Sie unter [Grundlagen des PowerShell-Workflows](automation-powershell-workflow.md#checkpoints).  Eine ausführlichere Erläuterung der gleichmäßigen Auslastung und von Prüfpunkten finden Sie in diesem Blogbeitrag zum [Verwenden von Prüfpunkten in Runbooks](https://azure.microsoft.com/en-us/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/).
 
 ## <a name="common-errors-when-importing-modules"></a>Häufige Fehler beim Importieren von Modulen
 ### <a name="scenario-module-fails-to-import-or-cmdlets-cant-be-executed-after-importing"></a>Szenario: Fehler beim Modulimport oder Cmdlets können nach dem Importieren nicht ausgeführt werden
@@ -135,7 +133,7 @@ Sie können dieses Problem mit einer der folgenden drei Lösungen beheben:
 * Das Cmdlet **New-AzureRmAutomationModule** wird zum Hochladen des Moduls verwendet, und Sie haben nicht den vollständigen Speicherpfad angegeben oder das Modul nicht mit einer öffentlich zugänglichen URL geladen.  
 
 **Tipps zur Problembehandlung:**  
-Sie können dieses Problem wie folgt beheben:  
+Sie können dieses Problem mit jeder der folgenden Lösungen beheben:  
 
 * Stellen Sie sicher, dass das Modul das folgende Format beachtet:  
   Modulname.Zip **->** Modulname oder Versionsnummer **->** (Modulname.psm1, Modulname.psd1)
@@ -153,16 +151,16 @@ Sie können dieses Problem wie folgt beheben:
 * Stellen Sie sicher, dass Sie den Knoten mit dem „Knotenkonfigurationsnamen“ und nicht mit dem „Konfigurationsnamen“ zuweisen.  
 * Einem Knoten können Sie über das Azure-Portal oder mit einem PowerShell-Cmdlet eine Knotenkonfiguration zuweisen.
 
-  * Um über das Azure-Portal einem Knoten eine Knotenkonfiguration zuzuweisen, öffnen Sie das Blatt **DSC-Knoten**, wählen Sie dann einen Knoten aus, und klicken Sie auf die Schaltfläche **Knotenkonfiguration** zuweisen.  
+  * Um über das Azure-Portal einem Knoten eine Knotenkonfiguration zuzuweisen, öffnen Sie die Seite **DSC-Knoten**, wählen Sie dann einen Knoten aus, und klicken Sie auf die Schaltfläche **Knotenkonfiguration zuweisen**.  
   * Um einem Knoten mit einem PowerShell-Cmdlet eine Knotenkonfiguration zuzuweisen, verwenden Sie das Cmdlet **Set-AzureRmAutomationDscNode** .
 
 ### <a name="scenario--no-node-configurations-mof-files-were-produced-when-a-configuration-is-compiled"></a>Szenario: Bei der Kompilierung einer Konfiguration wurden keine Knotenkonfigurationen (MOF-Dateien) erstellt.
 **Fehler:** Der DSC-Kompilierungsauftrag wird mit dem folgenden Fehler angehalten: „Kompilierung erfolgreich abgeschlossen, ohne dass MOF-Dateien mit Knotenkonfigurationen erstellt wurden“.
 
-**Ursache des Fehlers:** Wenn der Ausdruck nach dem Schlüsselwort **Node** in der DSC-Konfiguration mit „$null“ ausgewertet wird, werden keine Knotenkonfigurationen erstellt.    
+**Ursache des Fehlers:** Wenn der Ausdruck nach dem **Knoten**-Schlüsselwort in der DSC-Konfiguration mit „$null“ ausgewertet wird, werden keine Knotenkonfigurationen erstellt.    
 
 **Tipps zur Problembehandlung:**  
-Sie können dieses Problem wie folgt beheben:  
+Sie können dieses Problem mit jeder der folgenden Lösungen beheben:  
 
 * Stellen Sie sicher, dass der Ausdruck neben dem Schlüsselwort **Node** in der Konfigurationsdefinition nicht mit „$null“ ausgewertet wird.  
 * Wenn Sie bei der Kompilierung der Konfiguration ConfigurationData übergeben, stellen Sie sicher, dass Sie die erwarteten Werte übergeben, die für die Konfiguration aus [ConfigurationData](automation-dsc-compile.md#configurationdata)erforderlich sind.
@@ -190,4 +188,3 @@ Wenn Sie die oben genannten Schritte zur Problembehandlung befolgt und keine Lö
 * Erstellen Sie einen Azure-Supportfall. Klicken Sie auf der [Azure-Support-Website](https://azure.microsoft.com/support/options/) unter **Technischer und Abrechnungssupport** auf **Support erhalten**.
 * Senden Sie im [Script Center](https://azure.microsoft.com/documentation/scripts/) eine Skriptanforderung, wenn Sie nach einer Azure Automation-Runbooklösung oder einem Integrationsmodul suchen.
 * Veröffentlichen Sie Feedback oder Vorschläge zu Features für Azure Automation unter [User Voice](https://feedback.azure.com/forums/34192--general-feedback)(Aussagen von Benutzern).
-

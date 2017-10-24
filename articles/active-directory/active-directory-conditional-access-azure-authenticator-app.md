@@ -16,10 +16,10 @@ ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
 ms.openlocfilehash: 60a5cc2ecc550c76ca3cb1f1d4d20070b3e3b035
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-authenticator-for-android"></a>Azure Authenticator für Android
 Ihr IT-Administrator hat Ihnen eventuell empfohlen, sich über den Microsoft Azure Authenticator für den Zugriff auf Ihre Arbeitsressourcen anzumelden. Diese Anwendung stellt die beiden folgenden Anmeldeoptionen zur Verfügung:
@@ -37,7 +37,7 @@ Die folgenden Anweisungen gelten für Telefone mit Samsung GS3 oder höher bzw. 
 
 1. Stimmen Sie auf dem Startbildschirm der App den Microsoft-Software-Lizenzbedingungen zu.
 2. Klicken Sie auf dem Bildschirm "Konto aktivieren" auf das Kontextmenü rechts, und wählen Sie **Geschäftskonto**aus.
-3. Hinzufügen eines Kontos Bildschirm Wählen ** Arbeit Konto **.
+3. Wählen Sie auf dem Bildschirm „Konto hinzufügen“ **Geschäftskonto** aus.
 4. Klicken Sie auf dem Bildschirm "Geräteadministrator aktivieren" auf **Aktivieren**.
 5. Aktivieren Sie auf dem Bildschirm "Datenschutzrichtlinien" das Kontrollkästchen, und klicken Sie auf **Bestätigen**.
 6. Geben Sie auf dem Bildschirm "Arbeitsbereichverknüpfung" die Benutzer-ID ein, die Ihre Organisation bereitgestellt hat, und klicken Sie auf **Verknüpfen**.

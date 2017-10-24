@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2017
+ms.date: 10/04/2017
 ms.author: alkohli
+ms.openlocfilehash: 51db9539451afafe7eddaaeef0e02328431611de
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 22bb4a32f006d7e49356743c2a87eb622a61d18e
-ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Bereitstellen des StorSimple-Geräte-Manager-Diensts für Geräte der StorSimple 8000-Serie
 
@@ -60,17 +59,22 @@ Für jeden StorSimple-Geräte-Manager-Dienst gibt es die folgenden Attribute:
 * **Abonnement:** das Abonnement für die Abrechnung, das mit Ihrem Dienst verbunden ist.
 
 ## <a name="move-a-service-to-azure-portal"></a>Verschieben eines Diensts in das Azure-Portal
-Geräte der StorSimple-Serie 8000 können jetzt im Azure-Portal verwaltet werden. Wenn es bereits einen Dienst zum Verwalten der StorSimple-Geräte gibt, wird empfohlen, den Dienst in das Azure-Portal zu verschieben. Das klassische Azure-Portal für den StorSimple-Manager-Dienst ist nur noch bis zum 30. September 2017 verfügbar.
+Geräte der StorSimple-Serie 8000 können jetzt im Azure-Portal verwaltet werden. Wenn es bereits einen Dienst zum Verwalten der StorSimple-Geräte gibt, wird empfohlen, den Dienst in das Azure-Portal zu verschieben. Das klassische Azure-Portal für den StorSimple Manager-Dienst wird nur noch bis zum 30. September 2017 unterstützt. Wenn Sie auf das neue Azure-Portal umsteigen möchten, finden Sie entsprechende Informationen unter [Überlegungen zur Umstellung](#considerations-for-transition). 
 
-Die Option für die Migration zum Azure-Portal wird nicht gleichzeitig für alle Benutzer verfügbar gemacht. Wenn keine Option zum Migrieren zum Azure-Portal angezeigt wird, Sie sich jedoch mit den Auswirkungen der Migration unter [Considerations for transition](#considerations-for-transition) (Überlegungen für die Umstellung) vertraut gemacht haben und die Migration durchführen möchten, können Sie eine [Anforderung übermitteln](https://aka.ms/ss8000-cx-signup).
+> [!NOTE]
+> Ab dem 5. Oktober 2017 werden Ihre klassischen StorSimple Device Manager automatisch in das neue Azure-Portal verschoben. Hierbei handelt es sich um einen Vorgang in mehreren Phasen. Sie werden über die Verschiebung per E-Mail und über Portalbenachrichtigungen informiert. Wenn Sie Fragen haben, finden Sie entsprechende Informationen unter [FAQ: Verschieben zum Azure-Portal](storsimple-8000-move-azure-portal-faq.md).
 
 ### <a name="considerations-for-transition"></a>Überlegungen zur Umstellung
 
 Überprüfen Sie die Auswirkungen der Migration in das neue Azure-Portal, bevor Sie den Dienst verschieben.
 
+> [!NOTE]
+> Die vorhandenen PowerShell-Cmdlets für die Verwaltung von Azure-Diensten werden nach dem Umstieg auf das neue Azure-Portal nicht mehr unterstützt. Aktualisieren Sie die Skripts so, dass Ihre Geräte über das Azure Resource Manager SDK verwaltet werden. Weitere Informationen finden Sie unter [Verwalten von StorSimple-Geräten mit SDK-basierten Azure Resource Manager-Skripts](storsimple-8000-automation-azurerm-scripts.md).
+> Im neuen Azure-Portal werden Geräte mit ausgeführtem Update 3.0 oder höher unterstützt. Wenn Ihr Gerät nicht auf dem neuesten Stand ist, wird dringend empfohlen, dass Sie so bald wie möglich Update 5 anwenden.
+
 #### <a name="before-you-transition"></a>Vor der Umstellung
 
-* Ihr Dienst wird mit Update 3.0 oder höher ausgeführt. Wenn auf Ihrem Gerät eine frühere Version ausgeführt wird, installieren Sie die neuesten Updates. Weitere Informationen finden Sie unter [Installieren von Update 4](storsimple-8000-install-update-4.md). Wenn Sie eine StorSimple Cloud Appliance (8010/8020) verwenden, erstellen Sie ein neues Cloudgerät mit Update 4.0. 
+* Ihr Dienst wird mit Update 3.0 oder höher ausgeführt. Wenn auf Ihrem Gerät eine frühere Version ausgeführt wird, installieren Sie die neuesten Updates. Weitere Informationen finden Sie unter [Installieren von Update 5](storsimple-8000-install-update-5.md). Wenn Sie eine StorSimple Cloud Appliance (8010/8020) verwenden, können Sie die Cloud Appliance nicht aktualisieren. Verwenden Sie die neueste Version der Software, um eine neue Cloud Appliance mit Update 5.0 zu erstellen und dann ein Failover für die neu erstellte Cloud Appliance auszuführen.
 
 * Nach erfolgter Umstellung auf das neue Azure-Portal können sie nicht mehr das klassische Azure-Portal zum Verwalten Ihres StorSimple-Geräts nutzen.
 
@@ -88,7 +92,7 @@ Die Option für die Migration zum Azure-Portal wird nicht gleichzeitig für alle
 
 * Sie können Ihre Geräte nicht mehr im klassischen Portal verwalten.
 
-* Die vorhandenen PowerShell-Cmdlets für die Verwaltung von Azure-Diensten werden nicht unterstützt. Aktualisieren Sie die Skripts so, dass Ihrer Geräte mit Azure Resource Manager verwaltet werden.
+* Die vorhandenen PowerShell-Cmdlets für die Verwaltung von Azure-Diensten werden nicht unterstützt. Aktualisieren Sie die Skripts so, dass Ihrer Geräte mit Azure Resource Manager verwaltet werden. Beispielskripts, die das Resource Manager SDK verwenden, finden Sie unter [storsimpledevicemgmttools github](https://github.com/anoobbacker/storsimpledevicemgmttools).
 
 * Ihre Dienst- und Gerätekonfiguration bleibt erhalten. Alle Ihre Volumes und Sicherungen werden auch auf das neue Azure-Portal umgestellt.
 
@@ -96,20 +100,20 @@ Die Option für die Migration zum Azure-Portal wird nicht gleichzeitig für alle
 
 Führen Sie die folgenden Schritte aus, um Ihren Dienst auf das Azure-Portal umzustellen.
 
-1. Wechseln Sie im klassischen Azure-Portal zu Ihrem vorhandenen StorSimple Manager-Dienst.
+1. Wechseln Sie im neuen Azure-Portal zu Ihrem vorhandenen StorSimple Manager-Dienst.
+    ![Weitere Dienste](./media/storsimple-8000-manage-service/service-browse01.png) ![Auswählen von Device Manager](./media/storsimple-8000-manage-service/service-browse02.png)
 
-2. Sie werden in einer Benachrichtigung informiert, dass der StorSimple-Geräte-Manager-Dienst jetzt im Azure-Portal verfügbar ist. Beachten Sie, dass der Dienst im Azure-Portal als StorSimple-Geräte-Manager-Dienst bezeichnet wird.
-
+2. Sie werden in einer Benachrichtigung informiert, dass der StorSimple-Geräte-Manager-Dienst jetzt im Azure-Portal verfügbar ist. Der Dienst wird im Azure-Portal als StorSimple Device Manager-Dienst bezeichnet.
     ![Benachrichtigung zur Migration](./media/storsimple-8000-manage-service/service-transition1.jpg)
-
+    
     1. Stellen Sie sicher, dass Sie die gesamten Auswirkungen der Migration geprüft haben.
     2. Überprüfen Sie die Liste der StorSimple-Geräte-Manager, die aus dem klassischen Portal verschoben werden.
 
 3. Klicken Sie auf **Migrieren**. Die Umstellung beginnt und kann einige Minuten in Anspruch nehmen.
 
-Sobald die Umstellung abgeschlossen ist, können Sie Ihre Geräte über den StorSimple-Geräte-Manager-Dienst im Azure-Portal verwalten.
+Sobald die Umstellung abgeschlossen ist, können Sie Ihre Geräte über den StorSimple-Geräte-Manager-Dienst im Azure-Portal verwalten. Wenn keine Option für die Migration zum Azure-Portal angezeigt wird, Sie die Verschiebung jedoch durchführen möchten, können Sie [eine Anfrage erstellen](https://aka.ms/ss8000-cx-signup).
 
-Im Azure-Portal werden nur die StorSimple-Geräte mit ausgeführtem Update 3.0 und höher unterstützt. Die Geräte mit früheren Versionen werden eingeschränkt unterstützt. Die folgende Tabelle fasst zusammen, welche Vorgänge auf Geräten mit Softwareversionen vor Update 3.0 unterstützt werden, nachdem die Umstellung vom klassischen Portal auf das Azure-Portal erfolgt ist.
+Im Azure-Portal werden nur die StorSimple-Geräte mit ausgeführtem Update 3.0 und höher unterstützt. Die Geräte mit früheren Versionen werden eingeschränkt unterstützt. In der folgenden Tabelle sind die Vorgänge aufgeführt, die auf Geräten mit Softwareversionen vor Update 3.0 unterstützt werden, nachdem die Umstellung auf das Azure-Portal erfolgt ist.
 
 | Vorgang                                                                                                                       | Unterstützt      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
@@ -247,16 +251,18 @@ Wenn Sie mehrere Geräte bei Ihrem StorSimple Manager-Dienst registriert haben, 
 
 Führen Sie die folgenden Schritte aus, um den Verschlüsselungsschlüssel für Dienstdaten auf Ihrem Gerät zu aktualisieren.
 
-#### <a name="to-update-the-service-data-encryption-key"></a>Aktualisieren des Verschlüsselungsschlüssels für Dienstdaten
+#### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>So aktualisieren Sie den Dienstdatenverschlüsselungs-Schlüssel auf physischen Geräten
 1. Verwenden Sie Windows PowerShell für StorSimple für die Verbindung mit der Konsole. Wählen Sie Option 1, um sich mit Vollzugriff anzumelden.
-2. Geben Sie an der Eingabeaufforderung Folgendes ein:
-   
-    `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+2. Geben Sie an der Eingabeaufforderung Folgendes ein: `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`.
 3. Geben Sie den Verschlüsselungsschlüssel für Dienstdaten ein, den Sie in [Schritt2: Verwenden Sie Windows PowerShell für StorSimple, um die Änderung des Verschlüsselungsschlüssels für Dienstdaten zu initialisieren.](#to-initiate-the-service-data-encryption-key-change)erhalten haben.
 
+#### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>So aktualisieren Sie den Dienstdatenverschlüsselungs-Schlüssel auf allen 8010/8020 Cloud Appliances
+1. Laden Sie das PowerShell-Skript [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) herunter, und richten Sie es ein. 
+2. Öffnen Sie PowerShell, und geben Sie an der Eingabeaufforderung Folgendes ein: `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+
+Mit diesem Skript wird sichergestellt, dass der Dienstdatenverschlüsselungs-Schlüssel in allen 8010/8020 Cloud Appliances unter dem Device Manager festgelegt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum [StorSimple-Bereitstellungsprozess](storsimple-8000-deployment-walkthrough-u2.md)
 * Weitere Informationen über das [Verwalten des StorSimple-Speicherkontos](storsimple-8000-manage-storage-accounts.md)
 * Weitere Informationen über das [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md)
-

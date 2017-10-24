@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: 2ebe71c96fd9076a48f689041634dbd23d3d8414
-ms.lasthandoff: 01/31/2017
-
+ms.openlocfilehash: 464e5e2b2d9678bef002497588eac60db074f9bb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management
 API Management bietet die Möglichkeit, den Zugriff auf den Back-End-Dienst einer API mithilfe von Clientzertifikaten abzusichern. Diese Anleitung beschreibt, wie Zertifikate im API-Herausgeberportal verwaltet werden und eine API zur Verwendung eines Zertifikats für den Zugriff auf ihren Back-End-Dienst konfiguriert wird.
 
 Weitere Informationen zur Verwaltung von Zertifikaten mit der API Management-REST-API finden Sie unter [Azure API Management-REST-API-Zertifikatsentität][Azure API Management REST API Certificate entity].
 
-## <a name="prerequisites"> </a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Diese Anleitung beschreibt, wie Sie Ihre Instanz des API Management-Diensts konfigurieren, um für den Zugriff auf den Back-End-Dienst einer API die Clientzertifikatauthentifizierung zu verwenden. Bevor Sie die Schritte in diesem Thema ausführen, müssen Sie Ihren Back-End-Dienst für die Clientzertifikatauthentifizierung konfiguriert haben und auf das Zertifikat und das Kennwort zum Hochladen in das API Management-Herausgeberportal zugreifen können (ausführliche Informationen zum Konfigurieren der Zertifikatauthentifizierung in Azure WebSites finden Sie in [diesem Artikel][to configure certificate authentication in Azure WebSites refer to this article]).
 
-## <a name="step1"> </a>Hochladen eines Clientzertifikats
+## <a name="step1"></a>Hochladen eines Clientzertifikats
 Klicken Sie zunächst im Azure-Portal für Ihren API Management-Dienst auf **Entwicklerportal**. Daraufhin gelangen Sie zum API Management-Herausgeberportal.
 
 ![API-Herausgeberportal][api-management-management-console]
@@ -67,7 +67,7 @@ Sobald das Zertifikat hochgeladen wurde, wird es auf der Registerkarte **Clientz
 > 
 > 
 
-## <a name="step1a"> </a>Löschen eines Clientzertifikats
+## <a name="step1a"></a>Löschen eines Clientzertifikats
 Um ein Zertifikat zu löschen, klicken Sie neben dem betreffenden Zertifikat auf **Löschen** .
 
 ![Löschen eines Zertifikats][api-management-certificate-delete]
@@ -80,7 +80,7 @@ Falls das Zertifikat von einer API verwendet wird, wird ein Warnbildschirm angez
 
 ![Bestätigen des Löschens][api-management-confirm-delete-policy]
 
-## <a name="step2"> </a>Konfigurieren einer API zum Verwenden eines Clientzertifikats für die Gatewayauthentifizierung
+## <a name="step2"></a>Konfigurieren einer API zum Verwenden eines Clientzertifikats für die Gatewayauthentifizierung
 Klicken Sie auf der linken Seite im Menü **API Management** auf **APIs**, auf die gewünschte API und dann auf die Registerkarte **Sicherheit**.
 
 ![API-Sicherheit][api-management-api-security]
@@ -106,6 +106,15 @@ Klicken Sie auf **Speichern** , um die Konfigurationsänderungen der API zu spei
 > 
 
 ![Zertifikatrichtlinie][api-management-certificate-policy]
+
+## <a name="self-signed-certificates"></a>Selbstsignierte Zertifikate
+
+Wenn Sie selbstsignierte Zertifikate verwenden, müssen Sie die Überprüfung der Zertifikatkette deaktivieren, damit API Management mit dem Back-End-System kommuniziert. Andernfalls wird der Fehlercode 500 zurückgegeben. Verwenden Sie zum Konfigurieren das PowerShell-Cmdlet [`New-AzureRmApiManagementBackend`](https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (für ein neues Back-End) oder [`Set-AzureRmApiManagementBackend`](https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (für ein vorhandenes Back-End), und legen Sie den Parameter `-SkipCertificateChainValidation` auf `True` fest.
+
+```
+$context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absichern von Back-End-Diensten es gibt, z. B. HTTP-Standardauthentifizierung oder Authentifizierung mit gemeinsamem geheimen Schlüssel.
@@ -142,7 +151,7 @@ Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absic
 
 [Azure API Management REST API Certificate entity]: http://msdn.microsoft.com/library/azure/dn783483.aspx
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[to configure certificate authentication in Azure WebSites refer to this article]: https://azure.microsoft.com/en-us/documentation/articles/app-service-web-configure-tls-mutual-auth/
+[to configure certificate authentication in Azure WebSites refer to this article]: ../app-service/app-service-web-configure-tls-mutual-auth.md
 
 [Prerequisites]: #prerequisites
 [Upload a client certificate]: #step1
@@ -150,7 +159,6 @@ Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absic
 [Configure an API to use a client certificate for gateway authentication]: #step2
 [Test the configuration by calling an operation in the Developer Portal]: #step3
 [Next steps]: #next-steps
-
 
 
 

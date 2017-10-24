@@ -12,18 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: 1ea7956e92dbc85f62383e4b041c4c830599f765
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: cf3f3cf63cafc3b883d26144a53066ee421eb2a6
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-file-sync-preview"></a>Problembehandlung bei der Azure-Dateisynchronisierung (Vorschau)
-Mit der Azure-Dateisynchronisierung (Vorschau) können die Freigaben auf Windows-Servern lokal oder in Azure repliziert werden. Sie und Ihre Benutzer greifen dann über den Windows-Server auf die Dateifreigabe zu, z.B. über eine SMB- oder NFS-Freigabe. Dies ist besonders nützlich für Szenarien, in denen Daten weit entfernt von einem Azure-Rechenzentrum abgerufen und geändert werden, z.B. in einer Zweigstelle. Daten können zwischen mehreren Windows Server-Endpunkten repliziert werden, z.B. zwischen mehreren Zweigstellen.
+Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers zu verzichten. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
 
 Dieser Artikel enthält Informationen zur Fehlerbehebung und Problemlösung für Ihre Bereitstellung der Azure-Dateisynchronisierung. Wenn dabei Fehler auftreten, wird in dieser Anleitung erläutert, wie Sie wichtige Protokolle aus dem System erfassen, die eine detailliertere Untersuchung der Probleme ermöglichen. Für die Azure-Dateisynchronisierung sind die folgenden Supportoptionen verfügbar:
 
@@ -37,7 +35,22 @@ Wenn bei der Installation des Agents für die Azure-Dateisynchronisierung ein Fe
 StorageSyncAgent.msi /l*v Installer.log
 ```
 
-Wenn der Installationsfehler auftritt, überprüfen Sie „installer.log“, um die Ursache zu ermitteln.
+Wenn der Installationsfehler auftritt, überprüfen Sie „installer.log“, um die Ursache zu ermitteln. 
+
+> [!Note]  
+> Bei der Agentinstallation treten Fehler auf, wenn Sie die Verwendung von Microsoft Update auswählen und der Windows Update-Dienst nicht ausgeführt wird.
+
+## <a name="cloud-endpoint-creation-fails-with-the-following-error-the-specified-azure-fileshare-is-already-in-use-by-a-different-cloudendpoint"></a>Fehler bei der Erstellung des Cloudendpunkts mit folgender Meldung: „The specified Azure FileShare is already in use by a different CloudEndpoint“ (Die angegebene Azure-Dateifreigabe wird bereits von einem anderen Cloudendpunkt verwendet)
+Dieser Fehler tritt auf, wenn die Azure-Dateifreigabe bereits von einem anderen Cloudendpunkt verwendet wird. 
+
+Wenn diese Fehlermeldung angezeigt wird und die Azure-Dateifreigabe aktuell von keinem Cloudendpunkt verwendet wird, führen Sie die Schritte unten aus, um die Azure File Sync-Metadaten in der Azure-Dateifreigabe zu löschen:
+
+> [!Warning]  
+> Wenn die Metadaten in einer Azure-Dateifreigabe gelöscht werden, die aktuell von einem Cloudendpunkt verwendet wird, treten bei Azure File Sync-Vorgängen Fehler auf. 
+
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure-Dateifreigabe.  
+2. Klicken Sie mit der rechten Maustaste auf die Azure-Dateifreigabe, und wählen Sie **Metadaten bearbeiten** aus.
+3. Klicken Sie mit der rechten Maustaste auf „SyncService“, und wählen Sie **Löschen** aus.
 
 ## <a name="server-is-not-listed-under-registered-servers-in-the-azure-portal"></a>Der Server ist im Azure-Portal nicht unter „Registrierte Server“ aufgeführt.
 Wenn ein Server nicht unter „Registrierte Server“ für einen Speichersynchronisierungsdienst aufgeführt wird, führen Sie die folgenden Schritte aus:
@@ -49,6 +62,16 @@ Wenn ein Server nicht unter „Registrierte Server“ für einen Speichersynchro
 ![Screenshot des Dialogfelds für die Serverregistrierung mit der Fehlermeldung „Dieser Server wurde bereits registriert“](media/storage-sync-files-troubleshoot/server-registration-1.png)
 
 Diese Meldung wird angezeigt, wenn der Server zuvor bei einem Speichersynchronisierungsdienst registriert wurde. Wenn Sie die Registrierung des Servers beim aktuellen Speichersynchronisierungsdienst aufheben und ihn bei einem neuen Speichersynchronisierungsdienst registrieren möchten, führen Sie die [Schritte zum Aufheben der Registrierung eines Servers bei der Azure-Dateisynchronisierung](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service) aus.
+
+Wenn der Server im Storage Sync-Dienst unter „Registrierte Server“ nicht aufgeführt ist, führen Sie die folgenden PowerShell-Befehle auf dem Server aus, für den die Registrierung aufgehoben werden soll:
+
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Reset-StorageSyncServer
+```
+
+> [!Note]  
+> Wenn der Server Teil eines Clusters ist, ist ein optionaler `Reset-StorageSyncServer -CleanClusterRegistration`-Parameter verfügbar, über den die Clusterregistrierung auch entfernt werden kann. Dieser Parameter sollte verwendet werden, wenn die Registrierung des letzten Knotens im Cluster aufgehoben wird.
 
 ## <a name="how-to-troubleshoot-sync-not-working-on-a-server"></a>Beheben von Synchronisierungsfehlern auf einem Server
 Wenn bei der Synchronisierung auf einem Server ein Fehler auftritt, führen Sie folgende Schritte aus:

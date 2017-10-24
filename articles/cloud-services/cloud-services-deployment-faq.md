@@ -13,15 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 9/20/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 9b788b1d95c821a4bb76cd4dea1d689d36e2f92b
-ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
-
-
+ms.openlocfilehash: 755b8e7414f6e77d0013d2678e8d4228091e1e4d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Bereitstellung in Microsoft Azure Cloud Services – Häufig gestellte Fragen (FAQs)
 
@@ -56,7 +54,7 @@ Besuchen Sie die Website [Microsoft Azure: Verfügbare Produkte nach Region](htt
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Warum schlägt die Bereitstellung eines Clouddiensts manchmal aufgrund von Grenzwerten/Kontingenten/Einschränkungen in meinem Abonnement oder Dienst fehl?
 Die Bereitstellung eines Clouddiensts schlägt manchmal fehl, wenn die erforderlichen Ressourcen für die Zuweisung das maximale oder standardmäßige Kontingent überschreiten, das für Ihren Dienst in Ihrer Region/Datencenterebene zulässig ist. Weitere Informationen finden Sie unter [Grenzwerte für Clouddienste](../azure-subscription-service-limits.md#cloud-services-limits).
 
-Sie können die aktuelle Nutzung oder das aktuelle Kontingent Ihres Abonnements im Portal überprüfen: Azure-Portal => Abonnements => \<entsprechendes Abonnement => „Nutzung + Kontingent“.
+Sie können die aktuelle Nutzung oder das aktuelle Kontingent Ihres Abonnements im Portal überprüfen: Azure-Portal  > Abonnements  > \<entsprechendes Abonnement> > „Nutzung + Kontingent“.
 
 Informationen zur Ressourcenauslastung und zum Verbrauch können auch über die Azure-Abrechnungs-APIs abgerufen werden. Weitere Informationen finden Sie unter [Azure-API zur Ressourcennutzung (Preview)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
 
@@ -65,5 +63,15 @@ Die Größe eines virtuellen Clouddienstcomputers kann nicht ohne erneute Bereit
 
 Weitere Informationen finden Sie unter [Aktualisieren eines Clouddiensts](cloud-services-update-azure-service.md).
 
- 
+## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Warum kann ich bei Verwendung eines Azure Resource Manager-Speicherkontos Cloud Services nicht über Dienstverwaltungs-APIs oder PowerShell bereitstellen? 
 
+Da es sich bei Cloud Services um eine klassische Ressource handelt, die nicht direkt mit dem Azure Resource Manager-Modell kompatibel ist, können Sie Cloud Services nicht mit den Azure Resource Manager-Speicherkonten verknüpfen. Hier sind einige Optionen angegeben: 
+ 
+- Bereitstellen über die REST-API
+
+    Bei der Bereitstellung über die Dienstverwaltungs-REST-API können Sie die Einschränkung umgehen, indem Sie eine SAS-URL zum Blobspeicher angeben. Diese Vorgehensweise kann sowohl für klassische Konten als auch für Azure Resource Manager-Speicherkonten verwendet werden. Weitere Informationen zur PackageUrl-Eigenschaft finden Sie [hier](https://msdn.microsoft.com/library/azure/ee460813.aspx).
+  
+- Bereitstellen über das [Azure-Portal](https://portal.azure.com)
+
+    Die Bereitstellung ist über das [Azure-Portal](https://portal.azure.com) möglich, da der Aufruf über einen Proxy/Shim erfolgt, wodurch die Kommunikation zwischen Azure Resource Manager-Ressourcen und klassischen Ressourcen ermöglicht wird. 
+ 

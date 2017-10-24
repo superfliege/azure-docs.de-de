@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
+ms.openlocfilehash: 412fc8b76d2b5ac45532d3ccb7a2ab7361d53596
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 7f4981feb0b2f524bab095d76000e01aa88bc81f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
 
@@ -98,7 +97,7 @@ Die folgende Tabelle enthält die Versionen von HDInsight, die derzeit im Azure-
 ## <a name="hdinsight-windows-retirement"></a>HDInsight-Windows-Deaktivierung
 Microsoft Azure HDInsight-Version 3.3 war die letzte Version von HDInsight unter Windows. Das Deaktivierungstermin für HDInsight unter Windows ist der 31. Juli 2018. Wenn Sie HDInsight-Cluster unter Windows 3.3 oder früheren Versionen haben, müssen Sie HDInsight vor dem 31. Juli 2018 in Linux migrieren (HDInsight Version 3.5 oder höher). Durch die Migration in das Linux-Betriebssystem können Sie weiterhin HDInsight-Cluster erstellen und in der Größe anpassen. Unterstützung für HDInsight Version 3.3 unter Windows ist am 27. Juni 2016 abgelaufen.
 
-Ab HDInsight Version 3.4 hat Microsoft HDInsight nur für das Linux-Betriebssystem bereitgestellt. Daher sind einige der Komponenten in HDInsight nur für Linux verfügbar. Dies schließt Apache Ranger, Kafka, Interactive Hive, Spark HDInsight-Anwendungen und Azure Data Lake Store als primäres Dateisystem ein. Zukünftige Releases von HDInsight stehen nur unter Linux zur Verfügung. Es wird keine zukünftige Version von HDInsight unter Windows geben. 
+Ab HDInsight Version 3.4 hat Microsoft HDInsight nur für das Linux-Betriebssystem bereitgestellt. Daher sind einige der Komponenten in HDInsight nur für Linux verfügbar. Dies schließt Apache Ranger, Kafka, Interactive Query, Spark HDInsight-Anwendungen und Azure Data Lake Store als primäres Dateisystem ein. Zukünftige Releases von HDInsight stehen nur unter Linux zur Verfügung. Es wird keine zukünftige Version von HDInsight unter Windows geben. 
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
@@ -135,7 +134,7 @@ Nein, die Preise für HDInsight sind für alle Betriebssysteme gleich.
 * Möglichkeit der aktiven Entwicklung durch die Open-Source-Community für Hadoop und neuere Big-Data-Technologien
 
 ### <a name="does-hdinsight-on-linux-provide-additional-functionality-beyond-what-is-available-in-hdinsight-on-windows"></a>Bietet HDInsight unter Linux zusätzliche Funktionalität, die über die unter Windows verfügbare hinausgeht?
-Ab HDInsight Version 3.4 hat Microsoft HDInsight nur für das Linux-Betriebssystem bereitgestellt. Daher sind einige der Komponenten in HDInsight nur für Linux verfügbar. Dies schließt Apache Ranger, Kafka, Interactive Hive, Spark HDInsight-Anwendungen und Azure Data Lake Store als primäres Dateisystem ein. 
+Ab HDInsight Version 3.4 hat Microsoft HDInsight nur für das Linux-Betriebssystem bereitgestellt. Daher sind einige der Komponenten in HDInsight nur für Linux verfügbar. Dies schließt Apache Ranger, Kafka, Interactive Query, Spark HDInsight-Anwendungen und Azure Data Lake Store als primäres Dateisystem ein. 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Die Vereinbarung zum Servicelevel (Service Level Agreement, SLA) für HDInsight-Clusterversionen
 Die Vereinbarung zum Servicelevel (Service Level Agreement, SLA) ist als _Supportfenster_ definiert. Ein Supportfenster ist ein Zeitraum, in dem eine HDInsight-Clusterversion vom Microsoft-Kundendienst und -Support unterstützt wird. Wenn die Version ein verstrichenes _Supportablaufdatum_ hat, befindet sich das HDInsight-Cluster außerhalb des Supportfensters. Weitere Informationen zu unterstützten Versionen finden Sie in der Liste der [unterstützten Versionen von HDInsight-Clustern](hdinsight-migrate-from-windows-to-linux.md). Das Supportablaufdatum für eine bestimmte HDInsight-Version X (nachdem eine neuere X+1-Version verfügbar ist) wird berechnet als das spätere Datum von:  
@@ -187,7 +186,7 @@ Die folgende Tabelle enthält die Clustertypen, die in HDInsight Premium unterst
 | HBase |Ja |Nein |
 | Storm |Ja |Nein |
 | R Server |Ja |Nein |
-| Interactive Hive (Vorschau) |Ja |Nein |
+| Interactive Query |Ja |Nein |
 | Kafka (Vorschau) |Ja |Nein | 
 
 ### <a name="support-for-azure-data-lake-store-in-hdinsight-premium"></a>Unterstützung für Azure Data Lake Store in HDInsight Premium
@@ -262,4 +261,3 @@ Die folgenden Tabellen enthalten die Standard-VM-Größen für HDInsight-Cluster
 [ambari-docs]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
 [zookeeper]: http://zookeeper.apache.org/
-

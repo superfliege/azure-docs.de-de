@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2017
+ms.date: 10/09/2017
 ms.author: jgao
+ms.openlocfilehash: fbd6ff573a1d4f7fe2754935dd8c199092076725
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 9d1b629ad05f45efc8d01799616c82b4a11ecaab
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -57,7 +56,7 @@ Es gibt drei Konfigurationsoptionen:
 
 Um Ihnen die Einrichtung der Umgebungen zu erleichtern, haben wir einige [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-overview.md) erstellt. Wenn Sie die Umgebungen mit anderen Methoden einrichten möchten, finden Sie hier weitere Informationen:
 
-- [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
+- [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 - [Erstellen von HBase-Clustern in Azure Virtual Network](hdinsight-hbase-provision-vnet.md)
 
 ### <a name="set-up-one-virtual-network"></a>Einrichten eines virtuellen Netzwerks
@@ -80,7 +79,7 @@ Die HBase-Replikation verwendet die IP-Adressen der virtuellen Zookeeper-Compute
 
 **So konfigurieren Sie statische IP-Adressen**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
 2. Wählen Sie im Menü auf der linken Seite die Option **Ressourcengruppen** aus.
 3. Wählen Sie die Ressourcengruppe, die den HBase-Zielcluster enthält. Dies ist die Ressourcengruppe, die Sie bei Verwendung der Resource Manager-Vorlage zum Erstellen der Umgebung angegeben haben. Sie können die Liste mithilfe des Filters eingrenzen. Es wird eine Liste der Ressourcen angezeigt, die die beiden virtuellen Netzwerke enthalten.
 4. Wählen Sie das virtuelle Netzwerk, das den HBase-Zielcluster enthält. Wählen Sie z.B. **xxxx-vnet2**. Es werden drei Geräte angezeigt, deren Namen mit **nic-zookeepermode-** beginnen. Diese drei Geräte sind die virtuellen Zookeeper-Computer.
@@ -97,11 +96,54 @@ Für das virtuelle Netzwerke übergreifende Szenario müssen Sie den **-ip**-Sch
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>Einrichten von zwei virtuellen Netzwerken in zwei verschiedenen Regionen
 
-Wählen Sie das folgende Bild, um zwei virtuelle Netzwerke in zwei verschiedenen Regionen zu erstellen. Die Vorlage ist in einem globalen Azure-Blobcontainer gespeichert.
+Klicken Sie auf die folgende Schaltfläche, um zwei virtuelle Netzwerke in zwei verschiedenen Regionen und die VPN-Verbindung zwischen den VNets zu erstellen. Die Vorlage wird in den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/) gespeichert.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fdeploy-hbase-geo-replication.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-geo%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-Erstellen Sie ein VPN-Gateway zwischen den beiden virtuellen Netzwerken. Anweisungen dazu finden Sie unter [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
+
+**VNet 1**
+
+| Eigenschaft | Wert |
+|----------|-------|
+| Standort | USA (Westen) |
+| VNet-Name | &lt;ClusterNamePrevix>-vnet1 |
+| Adressraumpräfix | 10.1.0.0/16 |
+| Subnetzname | Subnetz 1 |
+| Subnetzpräfix | 10.1.0.0/24 |
+| Subnetzname (Gateway) | GatewaySubnet (kann nicht geändert werden) |
+| Subnetzpräfix (Gateway) | 10.1.255.0/27 |
+| Gatewayname | vnet1gw |
+| Gatewaytyp | VPN |
+| Gateway-VPN-Typ | RouteBased |
+| Gateway-SKU | Basic |
+| Gateway-IP | vnet1gwip |
+| Clustername | &lt;ClusterNamePrefix>1 |
+| Clusterversion | 3.6 |
+| Clusterart | hbase |
+| Anzahl der Workerknoten im Cluster | 2 |
+
+
+**VNet 2**
+
+| Eigenschaft | Wert |
+|----------|-------|
+| Standort | USA (Ost) |
+| VNet-Name | &lt;ClusterNamePrevix>-vnet2 |
+| Adressraumpräfix | 10.2.0.0/16 |
+| Subnetzname | Subnetz 1 |
+| Subnetzpräfix | 10.2.0.0/24 |
+| Subnetzname (Gateway) | GatewaySubnet (kann nicht geändert werden) |
+| Subnetzpräfix (Gateway) | 10.2.255.0/27 |
+| Gatewayname | vnet2gw |
+| Gatewaytyp | VPN |
+| Gateway-VPN-Typ | RouteBased |
+| Gateway-SKU | Basic |
+| Gateway-IP | vnet1gwip |
+| Clustername | &lt;ClusterNamePrefix>2 |
+| Clusterversion | 3.6 |
+| Clusterart | hbase |
+| Anzahl der Workerknoten im Cluster | 2 |
 
 Die HBase-Replikation verwendet die IP-Adressen der virtuellen Zookeeper-Computer. Sie müssen statische IP-Adressen für die HBase-Zookeeper-Zielknoten einrichten. Informationen zum Einrichten einer statischen IP-Adresse finden Sie in diesem Artikel im Abschnitt [Einrichten von zwei virtuellen Netzwerken in der gleichen Region](#set-up-two-virtual-networks-in-the-same-region).
 
@@ -111,11 +153,11 @@ Für das virtuelle Netzwerke übergreifende Szenario müssen Sie den **-ip**-Sch
 
 Wenn Sie einen Cluster replizieren, müssen Sie die Tabellen angeben, die Sie replizieren möchten. In diesem Abschnitt laden Sie einige Daten in den Quellcluster. Im nächsten Abschnitt aktivieren Sie die Replikation zwischen den beiden Clustern.
 
-Um eine Tabelle namens [Kontakte](hdinsight-hbase-tutorial-get-started-linux.md) zu erstellen und einige Daten in diese Tabelle einzufügen, befolgen Sie die Anweisungen unter **Erste Schritte mit einem Apache HBase-Beispiel in HDInsight**.
+Wenn Sie eine Tabelle namens [Kontakte](hdinsight-hbase-tutorial-get-started-linux.md) erstellen und einige Daten in die Tabelle einfügen möchten, befolgen Sie die Anweisungen unter **HBase-Tutorial: Erste Schritte mit Apache HBase in HDInsight**.
 
 ## <a name="enable-replication"></a>Replikation aktivieren
 
-Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azure-Portal aufrufen. Informationen zum Ausführen einer Skriptaktion mithilfe von Azure PowerShell und dem Azure-Befehlszeilenschnittstellen-Tool (Azure CLI) finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
+Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azure-Portal aufrufen. Informationen zum Ausführen einer Skriptaktion mithilfe von Azure PowerShell und dem Azure CLI-Tool (Azure-Befehlszeilenschnittstellentool, Azure CLI) finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
 **So aktivieren Sie die HBase-Replikation über das Azure-Portal**
 
@@ -241,7 +283,6 @@ In diesem Tutorial haben Sie erfahren, wie Sie die HBase-Replikation innerhalb e
 * [Erste Schritte mit Apache HBase in HDInsight][hdinsight-hbase-get-started]
 * [Überblick über HDInsight HBase][hdinsight-hbase-overview]
 * [Erstellen von HBase-Clustern in Azure Virtual Network][hdinsight-hbase-provision-vnet]
-* [Analysieren von Twitter-Stimmungen in Echtzeit mit HBase][hdinsight-hbase-twitter-sentiment]
 * [Analysieren von Sensordaten mit Apache Storm, Event Hub und HBase in HDInsight (Hadoop)][hdinsight-sensor-data]
 
 [hdinsight-hbase-geo-replication-vnet]: hdinsight-hbase-geo-replication-configure-vnets.md
@@ -254,8 +295,6 @@ In diesem Tutorial haben Sie erfahren, wie Sie die HBase-Replikation innerhalb e
 [hdinsight-hbase-get-started]: hdinsight-hbase-tutorial-get-started-linux.md
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 [hdinsight-sensor-data]: hdinsight-storm-sensor-data-analysis.md
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
-

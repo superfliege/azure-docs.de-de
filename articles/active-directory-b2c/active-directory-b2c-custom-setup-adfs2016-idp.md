@@ -14,14 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: yoelh
+ms.openlocfilehash: 8713fc7dd27023e1244ccb00673dd1652689baf5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 6cd0d19e5fd90cb9fb6d3fc4c17119476d7b4f62
-ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Hinzufügen von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -155,8 +153,10 @@ Definieren Sie AD FS als Anspruchsanbieter, indem Sie den `<ClaimsProvider>`-Kno
 
 ## <a name="register-the-adfs-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>Registrieren des AD FS-Kontoanspruchsanbieters zum Registrieren oder Anmelden bei einer User Journey
 An diesem Punkt wurde der Identitätsanbieter eingerichtet.  Er ist jedoch nicht in den Bildschirmen zur Registrierung/Anmeldung verfügbar. Nun müssen Sie den AD FS-Kontoidentitätsanbieter Ihrer Benutzer-`SignUpOrSignIn`-User Journey hinzufügen. Um ihn verfügbar zu machen, erstellen wir ein Duplikat einer vorhandenen Vorlagen-User Journey.  Anschließend ändern wir es, sodass es den AD FS-Identitätsanbieter einbezieht:
-    >[!NOTE]
-    >If you previously copied the `<UserJourneys>` element from base file of your policy to the extension file (TrustFrameworkExtensions.xml) you can skip this section.
+
+>[!NOTE]
+>Wenn Sie zuvor das `<UserJourneys>`-Element aus der Basisdatei Ihrer Richtlinie in die Erweiterungsdatei (TrustFrameworkExtensions.xml) kopiert haben, können Sie diesen Abschnitt überspringen.
+
 1.  Öffnen Sie die Basisdatei Ihrer Richtlinie (z.B. „TrustFrameworkBase.xml“).
 2.  Suchen Sie das `<UserJourneys>`-Element, und kopieren Sie den gesamten Inhalt des `<UserJourneys>`-Knotens.
 3.  Öffnen Sie die Erweiterungsdatei (z.B. „TrustFrameworkExtensions.xml“), und suchen Sie nach dem Element `<UserJourneys>`. Wenn das Element nicht vorhanden ist, fügen Sie ein solches hinzu.
@@ -228,4 +228,3 @@ Vielleicht möchten Sie den AD FS-Kontoidentitätsanbieter auch Ihrer Benutzer-`
 
 ## <a name="download-the-complete-policy-files"></a>Herunterladen der vollständigen Richtliniendateien
 Optional: Sie sollten nach Abschluss der exemplarischen Vorgehensweise „Erste Schritte mit benutzerdefinierten Richtlinien“ Ihr Szenario mithilfe Ihrer eigenen Dateien mit benutzerdefinierten Richtlinien erstellen. [Richtlinienbeispieldateien dienen nur zur Referenz](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-adfs2016-app)
-

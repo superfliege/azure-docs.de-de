@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
+ms.openlocfilehash: 0ebf8964bc565e5d4f95fb1ad3edbc16f841851c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: d95f8d32d9aeca5202623909fcf78014fa2e4458
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>Bereitstellen eines Machine Learning-Modells als Webdienst
 
@@ -165,7 +164,7 @@ az ml service create realtime --image-id <image id> -n <service name>
 ```
 
 >[!NOTE] 
->Sie können auch einen einzelnen Befehl verwenden, um beide Aktionen auszuführen. Geben Sie „-h“ mit dem Befehl „create“ an, um mehr zu erfahren.
+>Sie können auch einen einzelnen Befehl verwenden, um die vorherigen vier Schritte auszuführen. Geben Sie „-h“ mit dem Befehl „create“ an, um mehr zu erfahren.
 
 ### <a name="8-test-the-service"></a>8. Testen des Diensts
 Geben Sie den folgenden Befehl an, um Informationen zum Aufrufen des Diensts zu erhalten:
@@ -188,4 +187,3 @@ az ml service run realtime -i <service id> -d "{\"input_df\": [{\"sepal length\"
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie Ihren Webdienst nun lokal getestet haben, können Sie ihn in einem Cluster für den großflächigen Einsatz bereitstellen. Weitere Informationen zum Einrichten eines Clusters für die Bereitstellung von Webdiensten finden Sie unter [Konfiguration der Modellverwaltung](model-management-configuration.md). 
-

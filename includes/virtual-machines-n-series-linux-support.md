@@ -11,7 +11,7 @@
 ### <a name="nc-instances---nvidia-tesla-drivers"></a>NC-Instanzen – NVIDIA Tesla-Treiber
 | Verteilung | Treiber |
 | --- | --- | 
-| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3<br/><br/> 7.3 (CentOS-basiert) | NVIDIA CUDA 8.0, Treiberbranch R375 |
+| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3<br/><br/> 7.3 (CentOS-basiert) | NVIDIA CUDA 9.0, Treiberbranch R384 |
 
 
 

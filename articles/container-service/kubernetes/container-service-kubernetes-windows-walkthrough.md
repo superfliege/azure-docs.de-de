@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
+ms.openlocfilehash: 467a08b1ba9f7c0070dfa0cf3df18326cf49ca70
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
-ms.openlocfilehash: 6a03f668c6b9e18bf80cb04ea9feddeef4b6bd9e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Bereitstellen eines Kubernetes-Clusters für Windows-Container
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Anleitung wird die Bereitstellung eines [Kubernetes](https://kubernetes.io/docs/home/)-Clusters in [Azure Container Service](../container-service-intro.md) über die Azure-Befehlszeilenschnittstelle beschrieben. Nach dem Bereitstellen des Clusters verbinden Sie diesen mit dem Kubernetes-Befehlszeilentool `kubectl` und stellen dann den ersten Windows-Container bereit.
@@ -168,7 +166,7 @@ Geben Sie den folgenden Befehl ein, um den Pod mit einer öffentlichen IP-Adress
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-Dieser Befehl bewirkt, dass Kubernetes einen Dienst und eine [Azure Load Balancer-Regel](container-service-kubernetes-load-balancing.md) mit einer öffentlichen IP-Adresse für den Dienst erstellt. 
+Dieser Befehl bewirkt, dass Kubernetes einen Dienst und eine Azure Load Balancer-Regel mit einer öffentlichen IP-Adresse für den Dienst erstellt. 
 
 Führen Sie den folgenden Befehl aus, um den Status des Diensts anzuzeigen.
 
@@ -203,4 +201,3 @@ In diesem Schnellstart haben Sie einen Kubernetes-Cluster bereitgestellt, mit `k
 
 > [!div class="nextstepaction"]
 > [Verwalten eines ACS Kubernetes-Clusters](container-service-tutorial-kubernetes-prepare-app.md)
-

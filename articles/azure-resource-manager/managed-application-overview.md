@@ -8,16 +8,14 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/09/2017
-ms.author: gauravbh; tomfitz
+ms.date: 09/19/2017
+ms.author: gauravbh
+ms.openlocfilehash: 96b07bb3b923a5120e3d43c3fa60b3b1308010b3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 7ace8e1ea8038e0748bfed00c0cc0a4fa340588b
-ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-managed-applications-overview"></a>Übersicht über verwaltete Azure-Anwendungen
 
 Anbieter, die Azure verwenden, können Kunden auf der ganzen Welt Lösungen anbieten. Beim Azure Marketplace handelt es sich um einen Katalog, der aus Hunderten komplexer, mehrere Ressourcen umfassender Vorlagen von Erst- und Drittanbietern besteht. Kunden können innerhalb weniger Minuten Bereitstellungen durchführen und mit der Verwendung von Platform as a Service(PaaS)- und Software-as-a-Service(SaaS)-Anwendungen beginnen. 
@@ -56,16 +54,14 @@ Informationen zur Nutzung einer verwalteten Anwendung aus dem Marketplace finden
 ## <a name="key-concepts"></a>Wichtige Begriffe
 
 ### <a name="managed-resource-group"></a>Verwaltete Ressourcengruppe
-In der verwalteten Ressourcengruppe werden alle Azure-Ressourcen, die in der Vorlage bereitgestellt werden, erstellt. Beispiel: Wenn das Gerät zum Erstellen eines Speicherkontos verwendet wird, enthält diese Ressourcengruppe die Speicherkontoressource. Sie enthält nicht die Geräteressource.
+In der verwalteten Ressourcengruppe werden alle Azure-Ressourcen, die in der Vorlage bereitgestellt werden, erstellt. Beispiel: Wenn die Anwendung zur Erstellung eines Speicherkontos verwendet wird, enthält diese Ressourcengruppe die Speicherkontoressource. Sie enthält nicht die Anwendungsressource.
 
-### <a name="appliance-package"></a>Gerätepaket
-Der Herausgeber erstellt ein Paket, das die Vorlagendateien und die createUIDefinition-Datei enthält. Es enthält im Einzelnen die folgenden Dateien:
+### <a name="application-package"></a>Anwendungspaket
+Der Herausgeber erstellt ein Paket, das die Vorlagendatei und die createUIDefinition-Datei enthält. Es enthält im Einzelnen die folgenden Dateien:
 
-- **applianceMainTemplate.json**: Die Vorlagendatei definiert alle vom Gerät bereitgestellten Ressourcen. Diese Datei ist eine reguläre Vorlagendatei, die zum Erstellen von Ressourcen verwendet wird.
+- **mainTemplate.json**: Die Vorlagendatei definiert alle von der Anwendung bereitgestellten Ressourcen. Diese Datei ist eine reguläre Vorlagendatei, die zum Erstellen von Ressourcen verwendet wird.
 
-- **MainTemplate.json**: Diese Vorlagendatei definiert die Geräteressource (Microsoft.Solutions/appliances). Eine in dieser Ressource definierte Schlüsseleigenschaft ist „ManagedResourceGroupId“. Diese Eigenschaft gibt an, welche Ressourcengruppe zum Hosten der tatsächlichen Ressourcen, die in „applianceMainTemplate.json“ definiert sind, verwendet wird.
-
-- **applianceCreateUIDefinition.json**: Diese Datei beschreibt, wie die Benutzeroberfläche, die für die in der Vorlage definierten Parameter erforderlich ist, gerendert wird.
+- **createUIDefinition.json**: Diese Datei beschreibt, wie die Benutzeroberfläche gerendert wird, die für die in der Vorlage definierten Parameter erforderlich ist.
 
 ### <a name="authorization"></a>Autorisierung
 Der Herausgeber muss die Berechtigungen angeben, die der Hersteller zum Verwalten der Ressourcen im Auftrag des Kunden benötigt. Diese Berechtigung gilt für die verwaltete Ressourcengruppe. Legen Sie die folgenden Werte fest:
@@ -81,4 +77,3 @@ Der Herausgeber muss die Berechtigungen angeben, die der Hersteller zum Verwalte
 * Informationen zum Veröffentlichen einer verwalteten Dienstkataloganwendung finden Sie unter [Erstellen und Veröffentlichen einer verwalteten Dienstkataloganwendung](managed-application-publishing.md).
 * Informationen zum Nutzen einer verwalteten Dienstkataloganwendung, finden Sie unter [Nutzen einer verwalteten Dienstkataloganwendung](managed-application-consumption.md).
 * Informationen zum Erstellen einer UI-Definitionsdatei finden Sie unter [Erste Schritte mit „CreateUiDefinition“](managed-application-createuidefinition-overview.md).
-

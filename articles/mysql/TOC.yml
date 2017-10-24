@@ -59,6 +59,8 @@
           href: concepts-supported-versions.md
         - name: Serverprotokolle
           href: concepts-server-logs.md
+        - name: Hohe Verfügbarkeit
+          href: concepts-high-availability.md
     - name: Ressourcen
       items:
         - name: Tarife
@@ -73,6 +75,8 @@
           href: concepts-firewall-rules.md
         - name: Konfigurieren von SSL
           href: concepts-ssl-connection-security.md
+    - name: Überwachen
+      href: concepts-monitoring.md
     - name: Entwicklung
       items:
         - name: Verbindungsbibliotheken
@@ -117,8 +121,14 @@
           href: howto-configure-server-parameters-using-cli.md
     - name: Zugreifen auf Serverprotokolle
       items:
+        - name: Azure-Portal
+          href: howto-configure-server-logs-in-portal.md
         - name: Azure-Befehlszeilenschnittstelle
           href: howto-configure-server-logs-in-cli.md
+    - name: Überwachen
+      items:
+        - name: Erstellen von Warnungen zu Metriken
+          href: howto-alert-on-metric.md
 - name: Referenz
   items:
     - name: Azure-Befehlszeilenschnittstelle

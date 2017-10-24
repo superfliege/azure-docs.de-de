@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: 122fa997ea11b369aae3c59edf0043ab19d21aea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.openlocfilehash: 37e9f06555063ceea00b9162c79344130414b82e
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Anpassen der Azure AD B2C-Benutzeroberfläche (UI)
 
@@ -27,6 +27,7 @@ Benutzerfreundlichkeit ist in einer kundenorientierten Anwendung entscheidend.  
 > [!NOTE]
 > Das in diesem Artikel beschriebene Feature „Seite für die Benutzeroberflächenanpassung“ gilt nicht für die Anmeldungsrichtlinie, die dazugehörige Seite zum Zurücksetzen des Kennworts und Bestätigungs-E-Mails.  Für diese Features wird stattdessen das [Unternehmensbrandingfeature](../active-directory/active-directory-add-company-branding.md) verwendet.
 >
+> Entsprechend gilt: Wenn ein Benutzer eine Richtlinie zum Bearbeiten des Profils *vor* der Anmeldung startet, wird der Benutzer auf eine Seite umgeleitet, die mit dem [Unternehmensbrandingfeature](../active-directory/active-directory-add-company-branding.md) angepasst werden kann.
 
 In diesem Artikel werden die folgenden Themen behandelt:
 

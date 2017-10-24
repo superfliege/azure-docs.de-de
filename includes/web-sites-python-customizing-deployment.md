@@ -1,30 +1,30 @@
-Azure bestimmt, dass Ihre Anwendung Python verwendet **Wenn beide Bedingungen erfüllt sind**:
+Azure bestimmt, dass Ihre Anwendung Python verwendet, **wenn beide der folgenden Bedingungen zutreffen**:
 
-* Requirements.txt-Datei im Stammordner
-* Jede py-Datei im Stammordner oder eine runtime.txt, der angibt, Python
+* requirements.txt-Datei im Stammordner
+* eine .py-Datei im Stammordner ODER eine runtime.txt-Datei, die Python angibt
 
-Wenn dies der Fall ist, wird ein Python Bereitstellungsskript verwendet die standardmäßige Synchronisierung von Dateien sowie zusätzliche Python-Vorgänge wie z. B. ausführt:
+Wenn dies der Fall ist, wird ein Python-Bereitstellungsskript verwendet, das die standardmäßige Synchronisierung von Dateien sowie zusätzliche Python-Vorgänge ausführt, beispielsweise:
 
-* Zur automatischen Verwaltung der virtuellen Umgebung
-* Installation von Paketen, die in der Verwendung von Pip requirements.txt aufgeführt
-* Erstellen der entsprechenden Web.config-Datei anhand der ausgewählten Python-Version.
-* Statische Dateien für Django Anwendungen sammeln
+* Automatische Verwaltung der virtuellen Umgebung
+* Installation von in requirements.txt aufgelisteten Paketen mit Pip
+* Die Erstellung der entsprechenden web.config basierend auf der ausgewählten Python-Version
+* Sammeln von statischen Dateien für Django-Anwendungen
 
-Sie können bestimmte Aspekte des Standard-Bereitstellungsschritte steuern, ohne dass das Skript anpassen.
+Sie können bestimmte Aspekte der Standardbereitstellungsschritte steuern, ohne das Skript anzupassen.
 
-Wenn Sie alle Python bestimmte Bereitstellungsschritte überspringen möchten, können Sie diese leere Datei erstellen:
+Wenn Sie alle Python-spezifischen Bereitstellungsschritte überspringen möchten, können Sie diese leere Datei erstellen:
 
     \.skipPythonDeployment
 
-Mehr Kontrolle über die Bereitstellung können Sie das Standard-Bereitstellungsskript überschreiben, indem Sie die folgenden Dateien erstellen:
+Für mehr Kontrolle über die Bereitstellung können Sie das Standardskript für die Bereitstellung überschreiben, indem Sie die folgenden Dateien erstellen:
 
     \.deployment
     \deploy.cmd
 
-Sie können die [Azure-Befehlszeilenschnittstelle] [ Azure command-line interface] zur Erstellung der Dateien.  Verwenden Sie diesen Befehl aus dem Projektordner aus:
+Sie können die Dateien mit der [Azure-Befehlszeilenschnittstelle][Azure command-line interface] erstellen.  Verwenden Sie diesen Befehl vom Projektordner aus:
 
     azure site deploymentscript --python
 
-Wenn diese Dateien nicht vorhanden sind, wird Azure eine temporäre Bereitstellungsskript erstellt und ausgeführt.  Es ist identisch mit dem Kennwort, die Sie mit den oben aufgeführten Befehl zu erstellen.
+Wenn diese Dateien nicht vorhanden sind, wird von Azure ein temporäres Bereitstellungsskript erstellt und ausgeführt.  Es ist identisch mit dem, das Sie mit dem oben aufgeführten Befehl erstellen.
 
 [Azure command-line interface]: http://azure.microsoft.com/downloads/

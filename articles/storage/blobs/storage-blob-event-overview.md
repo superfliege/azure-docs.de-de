@@ -8,14 +8,12 @@ ms.author: cbrooks
 ms.date: 08/25/2017
 ms.topic: article
 ms.service: storage
+ms.openlocfilehash: c760cf5a9bdd4b64a60470fa48cb9b57ec4ab5fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: b9b117bdeb62f5ebb2e4e3fbfe71572068927082
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="reacting-to-blob-storage-events-preview"></a>Reaktion auf Blob Storage-Ereignisse (Vorschau)
 
 Azure Blob Storage-Ereignisse ermöglichen Anwendungen, auf das Erstellen und Löschen von Blobs mit modernen serverlosen Architekturen und ohne komplizierten Code oder teure und ineffiziente Abrufdienste zu reagieren.  Stattdessen werden die Ereignisse per Push über [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) an Abonnenten wie [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) oder sogar Ihren eigenen benutzerdefinierten HTTP-Listener übertragen, und Sie zahlen nur für das, was Sie tatsächliche verwenden.
@@ -36,7 +34,7 @@ Abonnements werden dem Vorschauprogramm im Rahmen der verfügbaren Kapazität hi
 ```azurecli-interactive
 az feature show --name storageEventSubscriptions --namespace Microsoft.EventGrid
 ```
-Sobald Ihr Registrierungsstatus sich in „Registriert“ ändert, sind Sie zur Teilnahme am Vorschauprogramm zugelassen und können Blob Storage-Ereignisse für Konten in der Region *USA, Westen-Mitte* abonnieren.  Unter [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt](storage-blob-event-quickstart.md) finden Sie ein kurzes Beispiel.
+Nachdem sich Ihr Registrierungsstatus in „Registriert“ geändert hat, sind Sie zur Teilnahme am Vorschauprogramm zugelassen und können Blob Storage-Ereignisse für Konten in der Region ***USA, Westen-Mitte*** oder ***USA, Westen 2*** abonnieren.  Unter [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt](storage-blob-event-quickstart.md) finden Sie ein kurzes Beispiel.
 
 ## <a name="blob-storage-accounts"></a>Blob Storage-Konten
 Blob Storage-Ereignisse stehen in [BLOB-Speicherkonten](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) (und nicht in allgemeinen Speicherkonten) zur Verfügung.  BLOB-Speicherkonten sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von BLOB-Speicherkonten.

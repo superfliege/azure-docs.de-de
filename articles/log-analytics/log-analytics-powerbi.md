@@ -14,19 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: bwren
+ms.openlocfilehash: 271747e25f319c76195ec643025d24c6b7cdc9c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 98befb16d27387e8f65a27771a2a32c264119d74
-ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="export-log-analytics-data-to-power-bi"></a>Exportieren von Log Analytics-Daten nach Power BI
 
 >[!NOTE]
-> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, funktioniert dieses Verfahren zum Exportieren von Log Analytics-Daten in Power BI nicht mehr.  Alle vorhandenen Zeitpläne, die Sie vor dem Upgrade erstellt haben, werden deaktiviert. 
+> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, funktioniert dieses Verfahren zum Exportieren von Log Analytics-Daten in Power BI nicht mehr.  Alle vorhandenen Zeitpläne, die Sie vor dem Upgrade erstellt haben, werden deaktiviert. Darüber hinaus wird die Option zum Aktivieren der Power BI-Exportfunktion in den Einstellungen unter „Vorschaufeatures“ nicht mehr angezeigt, da dieses Feature in aktualisierten Arbeitsbereichen als Vollversion verfügbar ist. 
 >
 > Nach dem Upgrade verwendet Azure Log Analytics dieselbe Plattform wie Application Insights, und Sie verwenden zum Exportieren von Log Analytics-Abfragen nach Power BI dasselbe Verfahren wie zum [Exportieren von Application Insights-Abfragen nach Power BI](../application-insights/app-insights-export-power-bi.md#export-analytics-queries).  Sie können die Abfrage mithilfe der Analytics-Konsole exportieren, wie im genannten Artikel beschrieben, oder Sie können die Schaltfläche **Power BI** im oberen Bereich des Bildschirms im Protokollsuchportal auswählen.
+>
+> Benutzer müssen auf die Arbeitsbereichsressource in Azure zugreifen, um die Power BI-Exportfunktion in aktualisierten Arbeitsbereichen nutzen zu können. Ohne Zugriff wird Benutzern beim Importieren der Abfrage in Power BI Desktop eine Fehlermeldung mit dem Hinweis angezeigt, dass sie keinen Zugriff haben.
 
 
 
@@ -126,4 +127,3 @@ Speichern Sie den Bericht, indem Sie am oberen Bildschirmrand auf die Schaltflä
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr zu [Protokollsuchvorgängen](log-analytics-log-searches.md) zum Erstellen von Abfragen, die nach Power BI exportiert werden können.
 * Erfahren Sie mehr über [Power BI](http://powerbi.microsoft.com), um Visualisierungen anhand von Log Analytics-Exporten zu erstellen.
-

@@ -1,9 +1,9 @@
 ---
-title: "Azure-Instanzmetadatendienst für Linux-VMs | Microsoft-Dokumentation"
+title: Azure-Instanzmetadatendienst | Microsoft-Dokumentation
 description: "RESTful-Schnittstelle zum Abrufen von Informationen über Compute-, Netzwerk- und anstehende Wartungsereignisse einer Linux-VM."
 services: virtual-machines-linux
 documentationcenter: 
-author: harijay
+author: harijayms
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -12,17 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/11/2017
-ms.author: harijay
+ms.date: 10/10/2017
+ms.author: harijayms
+ms.openlocfilehash: 1ed64ece4d05dea93fd15e24aaf9921d8614277e
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: a61acbe0532ece3a6a26ceb366c12c69db4c304c
-ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/12/2017
 ---
-
-# <a name="azure-instance-metadata-service-for-linux-vms"></a>Azure-Instanzmetadatendienst für Linux-VMs
+# <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
 
 Der Azure-Instanzmetadatendienst stellt Informationen zum Ausführen von Instanzen virtueller Computer bereit, die zum Verwalten und Konfigurieren Ihrer virtuellen Computer verwendet werden können.
@@ -31,31 +29,31 @@ Hierzu gehören Informationen wie die SKU, die Netzwerkkonfiguration und bevorst
 Der Instanzmetadatendienst von Azure ist ein REST-Endpunkt, der für alle IaaS-VMs verfügbar ist, die mit dem neuen [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) erstellt wurden. Der Endpunkt steht unter einer bekannten, nicht routingfähigen IP-Adresse zur Verfügung (`169.254.169.254`), auf die nur innerhalb der VM zugegriffen werden kann.
 
 > [!IMPORTANT]
-> Dieser Dienst ist in den globalen Azure-Regionen **allgemein verfügbar**. Für Behörden, China und die deutsche Azure-Cloud ist dieser in der öffentlichen Vorschau verfügbar. Er empfängt regelmäßig Updates, um neue Informationen zu Instanzen virtueller Computer verfügbar zu machen. Auf dieser Seite werden die neuesten [Datenkategorien](#instance-metadata-data-categories) angezeigt.
+> Dieser Dienst ist in allen Azure-Regionen **allgemein verfügbar**.  Er empfängt regelmäßig Updates, um neue Informationen zu Instanzen virtueller Computer verfügbar zu machen. Auf dieser Seite werden die neuesten [Datenkategorien](#instance-metadata-data-categories) angezeigt.
 
 ## <a name="service-availability"></a>Dienstverfügbarkeit
-Der Dienst ist in allen globalen Azure-Regionen allgemein verfügbar. Der Dienst ist für Behörden, China oder Deutschland in der öffentlichen Vorschau verfügbar.
+Der Dienst ist in allen Azure-Regionen allgemein verfügbar. Unter Umständen sind nicht alle API-Versionen in allen Azure-Regionen verfügbar.
 
-Regionen                                        | Verfügbarkeit?
------------------------------------------------|-----------------------------------------------
-[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | Allgemein verfügbar 
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | In der Vorschau 
-[Azure China](https://www.azure.cn/)                                                           | In der Vorschau
-[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | In der Vorschau
+Regionen                                        | Verfügbarkeit?                                 | Unterstützte Versionen
+-----------------------------------------------|-----------------------------------------------|-----------------
+[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | Allgemein verfügbar   | 2017-04-02, 2017-08-01
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Allgemein verfügbar | 2017-04-02
+[Azure China](https://www.azure.cn/)                                                           | Allgemein verfügbar | 2017-04-02
+[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | Allgemein verfügbar | 2017-04-02
 
-Diese Tabelle wird aktualisiert, sobald der Dienst in anderen Azure-Clouds verfügbar ist.
+Diese Tabelle wird aktualisiert, wenn Dienstupdates oder neue unterstützte Versionen verfügbar sind.
 
 Um den Instanzmetadatendienst zu testen, erstellen Sie eine VM über den [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) oder das [Azure-Portal](http://portal.azure.com) in den oben genannten Regionen, und absolvieren Sie die folgenden Beispiele.
 
 ## <a name="usage"></a>Verwendung
 
 ### <a name="versioning"></a>Versionsverwaltung
-Für den Instanzmetadatendienst wird die Versionsverwaltung genutzt. Versionen sind obligatorisch, und die aktuelle Version ist `2017-04-02`.
+Für den Instanzmetadatendienst wird die Versionsverwaltung genutzt. Versionen sind obligatorisch, und die aktuelle Version in globalen Azure-Regionen ist `2017-08-01`. Aktuelle unterstützte Versionen: 2017-04-02, 2017-08-01
 
 > [!NOTE] 
 > In früheren Vorschauversionen von geplanten Ereignissen wird {latest} als „api-version“ unterstützt. Dieses Format wird nicht mehr unterstützt und wird zukünftig veraltet sein.
 
-Wenn wir neuere Versionen hinzufügen, kann auf ältere Versionen aus Kompatibilitätsgründen weiterhin zugegriffen werden, falls Ihre Skripts von bestimmten Datenformaten abhängig sind. Beachten Sie jedoch, dass die aktuelle Vorschauversion (2017-03-01) möglicherweise nicht verfügbar ist, sobald der Dienst allgemein zur Verfügung steht.
+Wenn wir neuere Versionen hinzufügen, kann auf ältere Versionen aus Kompatibilitätsgründen weiterhin zugegriffen werden, falls Ihre Skripts von bestimmten Datenformaten abhängig sind. Beachten Sie jedoch, dass die vorherige Vorschauversion (2017-03-01) möglicherweise nicht verfügbar ist, sobald der Dienst allgemein zur Verfügung steht.
 
 ### <a name="using-headers"></a>Verwenden von Headern
 Bei der Abfrage des Instanzmetadatendiensts müssen Sie den Header `Metadata: true` angeben, um sicherzustellen, dass die Anforderung nicht unbeabsichtigt umgeleitet wurde.
@@ -72,7 +70,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > Bei Instanzmetadatenabfragen ist Groß-/Kleinschreibung zu berücksichtigen.
 
 ### <a name="data-output"></a>Datenausgabe
-Standardmäßig gibt der Instanzmetadatendienst Daten im JSON-Format (`Content-Type: application/json`) zurück. Falls angefordert, können andere APIs jedoch Daten in verschiedenen Formaten zurückgeben.
+Standardmäßig gibt der Instanzmetadatendienst Daten im JSON-Format (`Content-Type: application/json`) zurück. Falls angefordert, geben andere APIs jedoch Daten in verschiedenen Formaten zurück.
 In der folgenden Tabelle werden andere Datenformate aufgeführt, die die APIs eventuell unterstützen.
 
 API | Standarddatenformat | Andere Formate
@@ -112,7 +110,7 @@ HTTP-Statuscode | Grund
 **Anforderung**
 
 ```
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-04-02"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
 ```
 
 **Antwort**
@@ -159,7 +157,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 **Anforderung**
 
 ```
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
 ```
 
 **Antwort**
@@ -170,17 +168,21 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 ```
 {
   "compute": {
-    "location": "westcentralus",
-    "name": "IMDSSample",
+    "location": "westus",
+    "name": "avset2",
     "offer": "UbuntuServer",
     "osType": "Linux",
-    "platformFaultDomain": "0",
-    "platformUpdateDomain": "0",
+    "placementGroupId": "",
+    "platformFaultDomain": "1",
+    "platformUpdateDomain": "1",
     "publisher": "Canonical",
-    "sku": "16.04.0-LTS",
-    "version": "16.04.201610200",
-    "vmId": "5d33a910-a7a0-4443-9f01-6a807801b29b",
-    "vmSize": "Standard_A1"
+    "resourceGroupName": "myrg",
+    "sku": "16.04-LTS",
+    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "tags": "",
+    "version": "16.04.201708030",
+    "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
+    "vmSize": "Standard_D1"
   },
   "network": {
     "interface": [
@@ -188,13 +190,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
         "ipv4": {
           "ipAddress": [
             {
-              "privateIpAddress": "10.1.0.4",
+              "privateIpAddress": "10.1.2.5",
               "publicIpAddress": "X.X.X.X"
             }
           ],
           "subnet": [
             {
-              "address": "10.1.0.0",
+              "address": "10.1.2.0",
               "prefix": "24"
             }
           ]
@@ -202,7 +204,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
         "ipv6": {
           "ipAddress": []
         },
-        "macAddress": "000D3AF806EC"
+        "macAddress": "000D3A36DDED"
       }
     ]
   }
@@ -277,26 +279,30 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ## <a name="instance-metadata-data-categories"></a>Datenkategorien von Instanzmetadaten
 Folgende Datenkategorien werden über den Instanzmetadatendienst zur Verfügung gestellt:
 
-Daten | Beschreibung
------|------------
-location | Azure-Region, in der die VM ausgeführt wird
-name | Name des virtuellen Computers 
-offer | Stellen Sie Informationen für das VM-Image bereit. Dieser Wert ist nur für Images vorhanden, die mithilfe des Azure-Imagekatalogs bereitgestellt werden.
-Herausgeber | Herausgeber des VM-Images
-sku | Spezifische SKU für das VM-Image  
-Version | Version des VM-Image 
-osType | Linux oder Windows 
-platformUpdateDomain |  [Updatedomäne](manage-availability.md), in der die VM ausgeführt wird
-platformFaultDomain | [Fehlerdomäne](manage-availability.md), in der die VM ausgeführt wird
-vmId | [Eindeutiger Bezeichner](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) für die VM
-vmSize | [Größe des virtuellen Computers](sizes.md)
-ipv4/privateIpAddress | Lokale IPv4-Adresse der VM 
-ipv4/publicIpAddress | Öffentliche IPv4-Adresse der VM
-subnet/address | Subnetzadresse der VM
-subnet/prefix | Subnetzpräfix, Beispiel 24
-ipv6/ipAddress | Lokale IPv6-Adresse der VM
-macAddress | VM-Mac-Adresse 
-scheduledevents | Derzeit in der öffentlichen Vorschau, siehe [scheduledevents](scheduled-events.md)
+Daten | Beschreibung | Eingeführt in Version 
+-----|-------------|-----------------------
+location | Azure-Region, in der die VM ausgeführt wird | 2017-04-02 
+Name | Name des virtuellen Computers | 2017-04-02
+offer | Stellen Sie Informationen für das VM-Image bereit. Dieser Wert ist nur für Images vorhanden, die mithilfe des Azure-Imagekatalogs bereitgestellt werden. | 2017-04-02
+Herausgeber | Herausgeber des VM-Images | 2017-04-02
+sku | Spezifische SKU für das VM-Image | 2017-04-02
+Version | Version des VM-Image | 2017-04-02
+osType | Linux oder Windows | 2017-04-02
+platformUpdateDomain |  [Updatedomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
+platformFaultDomain | [Fehlerdomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
+vmId | [Eindeutiger Bezeichner](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) für die VM | 2017-04-02
+vmSize | [Größe des virtuellen Computers](sizes.md) | 2017-04-02
+subscriptionId | Azure-Abonnement für den virtuellen Computer | 2017-08-01
+tags | [Tags](../../azure-resource-manager/resource-group-using-tags.md) für den virtuellen Computer  | 2017-08-01
+ResourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) für den virtuellen Computer | 2017-08-01
+placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
+ipv4/privateIpAddress | Lokale IPv4-Adresse der VM | 2017-04-02
+ipv4/publicIpAddress | Öffentliche IPv4-Adresse der VM | 2017-04-02
+subnet/address | Subnetzadresse der VM | 2017-04-02 
+subnet/prefix | Subnetzpräfix, Beispiel 24 | 2017-04-02 
+ipv6/ipAddress | Lokale IPv6-Adresse der VM | 2017-04-02 
+macAddress | VM-Mac-Adresse | 2017-04-02 
+scheduledevents | Derzeit in der öffentlichen Vorschau, siehe [scheduledevents](scheduled-events.md) | 2017-03-01
 
 ## <a name="example-scenarios-for-usage"></a>Beispielszenarien für die Verwendung  
 
@@ -371,7 +377,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Sprache | Beispiel 
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Go Lan   | https://github.com/Microsoft/azureimds/blob/master/imdssample.go            
+Go Lang  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go            
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
@@ -387,13 +393,15 @@ Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
    * Der Instanzmetadatendienst unterstützt derzeit nur Instanzen, die mit dem Azure Resource Manager erstellt wurden. In Zukunft können wir zusätzliche Unterstützung für Clouddienst-VMs bieten.
 3. Ich habe meinen virtuellen Computer vor einiger Zeit über den Azure Resource Manager erstellt. Warum sehe ich keine Computemetadateninformationen?
    * Fügen Sie für VMs, die nach September 2016 erstellt wurden, ein [Tag](../../azure-resource-manager/resource-group-using-tags.md) hinzu, damit Computemetadaten angezeigt werden. Fügen Sie bei älteren VMs (die vor September 2016 erstellt wurden) Erweiterungen oder Datenträger zur VM hinzu, bzw. entfernen Sie diese, um Metadaten zu aktualisieren.
-4. Warum erhalte ich die Fehlermeldung `500 Internal Server Error`?
+4. Nicht alle Daten wurden für die neue Version 2017-08-01 aufgefüllt.
+   * Fügen Sie für VMs, die nach September 2016 erstellt wurden, ein [Tag](../../azure-resource-manager/resource-group-using-tags.md) hinzu, damit Computemetadaten angezeigt werden. Fügen Sie bei älteren VMs (die vor September 2016 erstellt wurden) Erweiterungen oder Datenträger zur VM hinzu, bzw. entfernen Sie diese, um Metadaten zu aktualisieren.
+5. Warum erhalte ich die Fehlermeldung `500 Internal Server Error`?
    * Wiederholen Sie Ihre Anforderung basierend auf dem Exponential-Backoff-System. Wenden Sie sich an den Azure-Support, wenn das Problem weiterhin besteht.
-5. Wie kann ich weitere Fragen/Kommentare weiterleiten?
+6. Wie kann ich weitere Fragen/Kommentare weiterleiten?
    * Senden Sie Ihre Kommentare unter „http://feedback.azure.com“ an uns.
 7. Gilt dies auch für VM-Skalierungsgruppeninstanzen?
    * Ja, der Metadatendienst ist für Skalierungsgruppeninstanzen verfügbar. 
-6. Wie beziehe ich Support für den Dienst?
+8. Wie beziehe ich Support für den Dienst?
    * Um Support für den Dienst zu beziehen, erstellen Sie im Azure-Portal ein Supportproblem für die VM, auf der Sie nach wiederholten Versuchen keine Metadatenantwort erhalten. 
 
    ![Instanzmetadatenunterstützung](./media/instance-metadata-service/InstanceMetadata-support.png)
@@ -401,4 +409,3 @@ Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die API [Geplante Ereignisse](scheduled-events.md) **in der Public Preview**, die vom Instanzmetadatendienst bereitgestellt wird.
-

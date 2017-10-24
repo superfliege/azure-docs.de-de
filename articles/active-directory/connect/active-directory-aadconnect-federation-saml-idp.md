@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.openlocfilehash: 048697f87383662506fb851bb3ea510c2cddf043
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Verwenden eines SAML 2.0-Identitätsanbieters (IdP, Identity Provider) für einmaliges Anmelden
 
@@ -170,9 +170,9 @@ Sie führen eine Reihe von Cmdlets in der Windows PowerShell-Befehlszeilenschnit
 
 Jede Azure Active Directory-Domäne, für die Sie einen Verbund mithilfe Ihres SAML 2.0-Identitätsanbieters erstellen möchten, muss entweder als eine Domäne für einmaliges Anmelden hinzugefügt oder als Domäne für einmaliges Anmelden von einer Standarddomäne konvertiert werden. Durch das Hinzufügen oder Konvertieren einer Domäne wird eine Vertrauensstellung zwischen Ihrem SAML 2.0-Identitätsanbieter und Azure AD eingerichtet.
 
-Das folgende Verfahren führt Sie durch das Konvertieren einer vorhandenen Standarddomäne zu einer Verbunddomäne mithilfe von SAML 2.0 SP-Lite. Beachten Sie, dass Ihre Domäne ein Ausfall, die Benutzer auftritt ggf. Sie wirkt sich auf die zu 2 Stunden nach dem Ausführen dieses Schritts.
+Das folgende Verfahren führt Sie durch das Konvertieren einer vorhandenen Standarddomäne zu einer Verbunddomäne mithilfe von SAML 2.0 SP-Lite. Beachten Sie, dass es nach Ausführung dieses Schritts in Ihrer Domäne möglicherweise zu einem Ausfall kommen kann, der Benutzer bis zu zwei Stunden lang betreffen kann.
 
-## <a name="configuring-a-domain-in-your-azure-ad-directory-for-federation"></a>Konfigurieren einer Domäne in Ihrem Azure AD-Verzeichnis für den Verbund
+## <a name="configuring-a-domain-in-your-azure-ad-directory-for-federation"></a>Konfigurieren einer Domäne in Azure AD Directory für den Verbund
 
 
 1. Stellen Sie eine Verbindung mit Azure Active Directory als Mandantenadministrator her: Connect-MsolService.

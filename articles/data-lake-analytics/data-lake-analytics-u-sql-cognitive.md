@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie die Intelligenz kognitiver Funktionen in U-SQ
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
-manager: sukvg
+manager: jhubbard
 editor: cgronlun
 ms.assetid: 019c1d53-4e61-4cad-9b2c-7a60307cbe19
 ms.service: data-lake-analytics
@@ -14,143 +14,75 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: f77329f9838d6e824afa7234de90f62257a004de
-ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
-
+ms.openlocfilehash: a651fe045d7eb1265f698ebb89843fd4c2b1c436
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>Tutorial: Erste Schritte mit den kognitiven Funktionen von U-SQL
 
-Kognitive Funktionen für U-SQL ermöglichen Entwicklern den Einsatz von Intelligenz in ihren Big Data-Programmen. Der Gesamtprozess ist einfach:
+## <a name="overview"></a>Übersicht
+Kognitive Funktionen für U-SQL ermöglichen Entwicklern den Einsatz von Intelligenz in ihren Big Data-Programmen. 
+
+Die folgenden kognitiven Funktionen stehen zur Verfügung:
+* Bildverarbeitung: Gesichtserkennung
+* Bildverarbeitung: Gefühlserkennung
+* Bildverarbeitung: Objekterkennung (Markieren)
+* Bildverarbeitung: OCR (Optical Character Recognition; optische Zeichenerkennung)
+* Text: Schlüsselwortextraktion
+* Text: Stimmungsanalyse
+
+## <a name="how-to-use-cognitive-in-your-u-sql-script"></a>So verwenden Sie kognitive Funktionen in Ihrem U-SQL-Skript
+
+Der Gesamtprozess ist einfach:
 
 * Verwenden der REFERENCE ASSEMBLY-Anweisung zum Aktivieren der kognitiven Funktionen für das U-SQL-Skript
-* Aufrufen des PROCESS-Vorgangs zum Verwenden der kognitiven Funktionen 
+* Verwenden Sie die PROCESS-Anweisung für ein Eingaberowset mit einem kognitiven benutzerdefinierten Objekt (UDO), um ein Ausgaberowset zu erstellen.
 
-## <a name="imaging-scenarios"></a>Bildverarbeitungsszenarien
+### <a name="detecting-objects-in-images"></a>Erkennen von Objekten in Bildern
 
-### <a name="example-image-tagging"></a>Beispiel: Bildmarkierung
+Im folgenden Beispiel wird veranschaulicht, wie Sie kognitive Funktionen verwenden, um Objekte in Bildern zu erkennen.
 
-Das folgende Beispiel zeigt eine durchgängige Verwendung der Bildverarbeitungsfunktionen zum Erkennen von Objekten in Bildern.
+```
+REFERENCE ASSEMBLY ImageCommon;
+REFERENCE ASSEMBLY FaceSdk;
+REFERENCE ASSEMBLY ImageEmotion;
+REFERENCE ASSEMBLY ImageTagging;
+REFERENCE ASSEMBLY ImageOcr;
 
-    REFERENCE ASSEMBLY ImageCommon;
-    REFERENCE ASSEMBLY FaceSdk;
-    REFERENCE ASSEMBLY ImageEmotion;
-    REFERENCE ASSEMBLY ImageTagging;
-    REFERENCE ASSEMBLY ImageOcr;
+// Get the image data
 
-    @imgs =
-        EXTRACT FileName string, ImgData byte[]
-        FROM @"/images/{FileName:*}.jpg"
-        USING new Cognition.Vision.ImageExtractor();
+@imgs =
+    EXTRACT 
+        FileName string, 
+        ImgData byte[]
+    FROM @"/usqlext/samples/cognition/{FileName}.jpg"
+    USING new Cognition.Vision.ImageExtractor();
 
-    // Extract the number of objects on each image and tag them 
-    @objects =
-        PROCESS @imgs 
-        PRODUCE FileName,
-                NumObjects int,
-                Tags string
-        READONLY FileName
-        USING new Cognition.Vision.ImageTagger();
+//  Extract the number of objects on each image and tag them 
 
+@tags =
+    PROCESS @imgs 
+    PRODUCE FileName,
+            NumObjects int,
+            Tags SQL.MAP<string, float?>
+    READONLY FileName
+    USING new Cognition.Vision.ImageTagger();
 
-### <a name="extract-emotions-from-human-faces"></a>Extrahieren von Emotionen aus menschlichen Gesichtern 
+@tags_serialized =
+    SELECT FileName,
+           NumObjects,
+           String.Join(";", Tags.Select(x => String.Format("{0}:{1}", x.Key, x.Value))) AS TagsString
+    FROM @tags;
 
-    @emotions =
-        PROCESS @imgs
-        PRODUCE FileName string,
-                NumFaces int,
-                Emotion string
-        READONLY FileName
-        USING new Cognition.Vision.EmotionAnalyzer();
+OUTPUT @tags_serialized
+    TO "/tags.csv"
+    USING Outputers.Csv();
+```
+Schauen Sie sich z.B. die **U-SQL-/Kognitiven Beispiele** im Abschnitt **Nächste Schritte** an.
 
-### <a name="estimate-age-and-gender-for-human-faces"></a>Schätzen des Alters und Geschlecht anhand menschlicher Gesichter
-
-    @faces = 
-            PROCESS @imgs
-            PRODUCE FileName,
-                    NumFaces int,
-                    FaceAge string,
-                    FaceGender string
-            READONLY FileName
-            USING new Cognition.Vision.FaceDetector();
-
-### <a name="detect-text-in-images-ocr"></a>Erkennen von Text in Bildern (OCR)
-
-    @ocrs =
-            PROCESS @imgs
-            PRODUCE FileName,
-                    Text string
-            READONLY FileName
-            USING new Cognition.Vision.OcrExtractor();
-
-## <a name="text-scenarios"></a>Textszenarien
-
-### <a name="input-data"></a>Eingabedaten
-
-Angenommen, eine Eingabe besteht aus „Krieg und Frieden“ von Leo Tolstoi.
-
-    REFERENCE ASSEMBLY [TextCommon];
-    REFERENCE ASSEMBLY [TextSentiment];
-    REFERENCE ASSEMBLY [TextKeyPhrase];
-
-    @WarAndPeace =
-        EXTRACT No int,
-                Year string,
-                Book string,
-                Chapter string,
-                Text string
-        FROM @"/usqlext/samples/cognition/war_and_peace.csv"
-        USING Extractors.Csv();
-
-### <a name="extract-key-phrases-for-each-paragraph"></a>Extrahieren von Schlüsselwörtern für jeden Absatz
-
-    @keyphrase =
-        PROCESS @WarAndPeace
-        PRODUCE No,
-                Year,
-                Book,
-                Chapter,
-                Text,
-                KeyPhrase string
-        READONLY No,
-                Year,
-                Book,
-                Chapter,
-                Text
-        USING new Cognition.Text.KeyPhraseExtractor();
-
-    // Tokenize the key phrases.
-    @kpsplits =
-        SELECT No,
-            Year,
-            Book,
-            Chapter,
-            Text,
-            T.KeyPhrase
-        FROM @keyphrase
-            CROSS APPLY
-                new Cognition.Text.Splitter("KeyPhrase") AS T(KeyPhrase);
-    
-### <a name="perform-sentiment-analysis-on-each-paragraph"></a>Ausführen einer Stimmungsanalyse für jeden Absatz
-
-    @sentiment =
-        PROCESS @WarAndPeace
-        PRODUCE No,
-                Year,
-                Book,
-                Chapter,
-                Text,
-                Sentiment string,
-                Conf double
-        READONLY No,
-                Year,
-                Book,
-                Chapter,
-                Text
-        USING new Cognition.Text.SentimentAnalyzer(true);
-
-
+## <a name="next-steps"></a>Nächste Schritte
+* [Beispiele für U-SQL/Kognitive Beispiele](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
+* [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+* [Verwenden von U-SQL-Funktionen für Azure Data Lake Analytics-Aufträge](data-lake-analytics-use-window-functions.md)

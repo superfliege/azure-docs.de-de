@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: yurid
+ms.openlocfilehash: 53b6f03d43b5525e5c5dea42e6a9a36042b65d52
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 6af94c795ec5153013f4a9c5c937beed08f44e7a
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 Es gibt verschiedene Tools in Microsoft Azure, um Daten den Sicherheits- und Konformitätsanforderungen Ihres Unternehmens entsprechend zu schützen. Dieser Artikel konzentriert sich darauf, wie ruhende Daten in Microsoft Azure geschützt werden, erläutert die an der Implementierung des Datenschutzes beteiligten Komponenten und beleuchtet die Vor- und Nachteile verschiedener Ansätze zum Schlüsselverwaltungsschutz. 
@@ -273,12 +272,11 @@ Die clientseitige Verschlüsselung von Daten von SQL Azure wird durch die Funkti
 | Power BI                         |                | Ja                 | -                            | -                            | -      |
 | **IoT-Dienste**                     |                |                     |                              |                              |        |
 | IoT Hub                          |                | -                   | -                            | -                            | Ja    |
-| SERVICE BUS                      |                | -              | -                            | -                            | Ja    |
-| Event Hubs                       |                | -             | -                            | -                            | -      |
+| SERVICE BUS                      |                | Ja (Premium-Tarif)              | -                            | -                            | Ja    |
+| Event Hubs                       |                | Ja             | -                            | -                            | -      |
 
 
 ## <a name="conclusion"></a>Zusammenfassung
 
 Der Schutz von Kundendaten, die in Azure-Diensten gespeichert sind, ist für Microsoft von größter Bedeutung. Alle in Azure gehosteten Dienste sollen Optionen für die Verschlüsselung ruhender Daten bereitstellen. Grundlegende Dienste wie Azure Storage, SQL Azure und wichtige Dienste für die Analyse und Information bieten bereits Optionen für die Verschlüsselung ruhender Daten. Einige dieser Dienste unterstützen entweder vom Kunden gesteuerte Schlüssel und clientseitige Verschlüsselung oder vom Dienst verwaltete Schlüssel und serverseitige Verschlüsselung. Microsoft Azure-Dienste verbessern die Verfügbarkeit der Verschlüsselung ruhender Daten deutlich. Zudem sind für die nächsten Monate bereits neue Optionen für die Vorschau und die allgemeinen Verfügbarkeit geplant.
-
 

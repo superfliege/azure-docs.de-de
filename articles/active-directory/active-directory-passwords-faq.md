@@ -13,15 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/06/2017
 ms.author: joflore
 ms.custom: it-pro
+ms.openlocfilehash: a457ba3109625ab43ae3a88b95a3e7e1e9641921
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: fed9008d41b43b2c118aba4939260e819c211d67
-ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -178,7 +177,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F: Wie lange ist die Einmalkennung per E-Mail und SMS gültig?**
 
-  > **A:** Die Sitzungsdauer für das Zurücksetzen von Kennwörtern beträgt 105 Minuten. Vom Beginn des Vorgangs zur Kennwortzurücksetzung hat der Benutzer 105 Minuten Zeit, um das Kennwort zurückzusetzen. Die E-Mail- und SMS-Einmalkennungen sind nach Ablauf dieses Zeitraums ungültig.
+  > **A:** Die Sitzungsdauer für das Zurücksetzen von Kennwörtern beträgt 15 Minuten. Ab dem Beginn des Vorgangs zur Kennwortzurücksetzung hat der Benutzer 15 Minuten Zeit, das Kennwort zurückzusetzen. Die E-Mail- und SMS-Einmalkennungen sind nach Ablauf dieses Zeitraums ungültig.
   >
   >
 
@@ -280,4 +279,3 @@ Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung
 * [**Kennwortrückschreiben:**](active-directory-passwords-writeback.md) Funktionsweise des Kennwortrückschreibens in Ihrem lokalen Verzeichnis.
 * [**Ausführliche technische Informationen:**](active-directory-passwords-how-it-works.md) Schauen Sie hinter den Vorhang, um zu verstehen, wie alles funktioniert.
 * [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.
-

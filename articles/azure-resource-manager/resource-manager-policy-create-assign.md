@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 09/19/2017
 ms.author: tomfitz
+ms.openlocfilehash: 64bdd6ed41e98079c8d4112e895aaeddcd629282
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: f461efbc2a23f85e8b6d3fdec156a0df1636708a
-ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assign-and-manage-resource-policies"></a>Zuweisen und Verwalten von Ressourcenrichtlinien
 
@@ -31,6 +30,23 @@ Um eine Richtlinie zu implementieren, müssen Sie diese drei Schritte ausführen
 4. Weisen Sie die Richtlinie in beiden Fällen einem Bereich zu (z.B. einem Abonnement oder einer Ressourcengruppe). Jetzt werden die Regeln der Richtlinie erzwungen.
 
 In diesem Artikel werden hauptsächlich die Schritte zum Erstellen einer Richtliniendefinition und Zuweisen dieser Definition zu einem Bereich über REST-API, PowerShell oder Azure-CLI beschrieben. Wenn Sie es vorziehen, Richtlinien über das Portal zuzuweisen, finden Sie entsprechende Informationen in [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md). Der Schwerpunkt dieses Artikels liegt nicht auf der Syntax zum Erstellen der Richtliniendefinition. Weitere Informationen zur Richtliniensyntax finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
+
+## <a name="exclusion-scopes"></a>Ausschlussbereiche
+
+Beim Zuweisen einer Richtlinie können Sie einen Bereich ausschließen. Diese Option vereinfacht die Richtlinienzuweisung, da Sie eine Richtlinie auf Abonnementebene zuweisen, aber dabei angeben, auf welche Bereiche die Richtlinie nicht angewendet wird. Beispiel: Ihr Abonnement enthält eine Ressourcengruppe für die Netzwerkinfrastruktur. Anwendungsteams stellen ihre Ressourcen für andere Ressourcengruppen bereit. Diese Teams sollen keine Netzwerkressourcen erstellen können, die unter Umständen zu Sicherheitsproblemen führen. Allerdings möchten Sie in der Netzwerkressourcengruppe Netzwerkressourcen zulassen. Sie weisen die Richtlinie auf Abonnementebene zu, schließen jedoch die Netzwerkressourcengruppe aus. Sie können mehrere Unterbereiche angeben.
+
+```json
+{
+    "properties":{
+        "policyDefinitionId":"<ID for policy definition>",
+        "notScopes":[
+            "/subscriptions/<subid>/resourceGroups/networkresourceGroup1"
+        ]
+    }
+}
+```
+
+Wenn Sie in Ihrer Zuweisung einen Ausschlussbereich angeben, verwenden Sie die API-Version **2017-06-01-preview**.
 
 ## <a name="rest-api"></a>REST-API
 
@@ -168,8 +184,28 @@ Betrachten Sie vor dem Erstellen einer Richtliniendefinition die integrierten Ri
 ### <a name="create-policy-definition"></a>Erstellen einer Richtliniendefinition
 Sie können eine Richtliniendefinition über das Cmdlet `New-AzureRmPolicyDefinition` erstellen.
 
+Um eine Richtliniendefinition auf der Grundlage einer Datei zu erstellen, übergeben Sie den Pfad zur Datei. Verwenden Sie für eine externe Datei Folgendes:
+
 ```powershell
-$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy '{
+$definition = New-AzureRmPolicyDefinition `
+    -Name denyCoolTiering `
+    -DisplayName "Deny cool access tiering for storage" `
+    -Policy 'https://raw.githubusercontent.com/Azure/azure-policy-samples/master/samples/Storage/storage-account-access-tier/azurepolicy.rules.json'
+```
+
+Verwenden Sie für eine lokale Datei Folgendes:
+
+```powershell
+$definition = New-AzureRmPolicyDefinition `
+    -Name denyCoolTiering `
+    -Description "Deny cool access tiering for storage" `
+    -Policy "c:\policies\coolAccessTier.json"
+```
+
+Verwenden Sie zum Erstellen einer Richtliniendefinition mit einer Inline-Regel Folgendes:
+
+```powershell
+$definition = New-AzureRmPolicyDefinition -Name denyCoolTiering -Description "Deny cool access tiering for storage" -Policy '{
   "if": {
     "allOf": [
       {
@@ -195,12 +231,6 @@ $definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Pol
 ```            
 
 Die Ausgabe wird in einem `$definition`-Objekt gespeichert, das während der Richtlinienzuweisung verwendet wird. 
-
-Statt die JSON als Parameter anzugeben, können Sie den Pfad zu einer JSON-Datei bereitstellen, in der die Richtlinienregel enthalten ist.
-
-```powershell
-$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy "c:\policies\coolAccessTier.json"
-```
 
 Im folgenden Beispiel wird eine Richtliniendefinition mit Parametern erstellt:
 
@@ -319,8 +349,10 @@ Betrachten Sie vor dem Erstellen einer Richtliniendefinition die integrierten Ri
 
 Sie können eine Richtliniendefinition mit dem entsprechenden Befehl über Azure CLI erstellen.
 
+Verwenden Sie zum Erstellen einer Richtliniendefinition mit einer Inline-Regel Folgendes:
+
 ```azurecli
-az policy definition create --name coolAccessTier --description "Policy to specify access tier." --rules '{
+az policy definition create --name denyCoolTiering --description "Deny cool access tiering for storage" --rules '{
   "if": {
     "allOf": [
       {
@@ -371,5 +403,4 @@ az policy assignment delete --name coolAccessTier --scope /subscriptions/{subscr
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
-
 

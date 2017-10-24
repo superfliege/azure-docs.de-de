@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.openlocfilehash: ed42af90a9c467042ff2537a38646f59147fb5ad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: ea4421f7b22cf60b2c3e42b59057162ad56f412e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
 Azure Active Directory (AD) bietet verschiedene Methoden zum Sichern Ihrer App und Schutz eines Diensts.  Eines dieser besonderen Features ist der bedingte Zugriff.  Der bedingte Zugriff ermöglicht Entwicklern und Unternehmenskunden den Schutz von Diensten auf unterschiedliche Weise, einschließlich:
@@ -38,7 +36,7 @@ Wir analysieren dabei die Auswirkungen des Zugriffs auf Ressourcen, über die Si
 
 ## <a name="how-does-conditional-access-impact-an-app"></a>Welche Auswirkungen hat der bedingte Zugriff auf eine App?
 
-### <a name="app-topologies-impacted"></a>Beeinflusste App-Topologien
+### <a name="app-types-impacted"></a>Betroffene App-Typen
 
 In den meisten gängigen Fällen verändert der bedingte Zugriff das Verhalten einer App nicht. Er erfordert auch keine Änderungen seitens des Entwicklers.  Nur in bestimmten Fällen, wenn eine App im Hintergrund oder indirekt ein Token für einen Dienst anfordert, sind Änderungen am Code einer App erforderlich, um die besonderen Anforderungen des bedingten Zugriffs zu erfüllen.  Dafür kann manchmal nur das Ausführen einer Anforderung für die interaktive Anmeldung erforderlich sein. 
 
@@ -48,6 +46,7 @@ Insbesondere die folgenden Szenarien erfordern Code zum Behandeln der speziellen
 * Apps für den „Im Auftrag von“-Ablauf
 * Apps mit Zugriff auf mehrere Dienste/Ressourcen
 * Einzelseiten-Apps, die ADAL.js verwenden
+* Web-Apps, die eine Ressource aufrufen
 
 Sie können Richtlinien für den bedingten Zugriff auf die App anwenden, aber auch auf eine Web-API, auf die Ihre App zugreift. Weitere Informationen zum Konfigurieren einer Richtlinie für den bedingten Zugriff finden Sie unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](../active-directory-conditional-access-azuread-connected-apps.md#configure-per-application-access-rules).
 
@@ -58,8 +57,8 @@ Abhängig vom jeweiligen Szenario können Unternehmenskunden jederzeit Richtlini
 Einige Szenarien erfordern Änderungen am Code, um den bedingten Zugriff nutzen zu können, während andere ohne Änderungen funktionieren.  Hier finden Sie einige Szenarien, die den bedingten Zugriff für die mehrstufige Authentifizierung verwenden und Einblick in die Unterschiede geben.
 
 * Sie erstellen eine iOS-App mit nur einem Mandanten und wenden eine Richtlinie für den bedingten Zugriff an.  Die App meldet einen Benutzer an, aber fordert keinen Zugriff auf eine API an.  Wenn sich der Benutzer anmeldet, wird die Richtlinie automatisch aufgerufen. Der Benutzer muss eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ausführen. 
-* Sie erstellen eine mehrinstanzenfähige Web-App, die Microsoft Graph für den Zugriff auf Exchange und andere Dienste verwendet.  Ein Unternehmenskunde, der diese App verwendet, legt eine Richtlinie in SharePoint Online fest.  Wenn die Web-App ein Token für MS Graph anfordert, wird eine Richtlinie auf alle Microsoft-Dienste angewendet (insbesondere Dienste, auf die über Graph zugegriffen werden kann).  Dieser Endbenutzer wird zur mehrstufigen Authentifizierung aufgefordert. Sofern der Endbenutzer mit gültigen Token angemeldet wurde, wird eine Anspruchanforderung an die Web-App zurückgegeben.  
-* Sie erstellen eine native App, die einen Dienst der mittleren Ebene für den Zugriff auf Microsoft Graph verwendet.  Ein Unternehmenskunde, der diese App verwendet, wendet eine Richtlinie für Exchange Online an.  Wenn sich ein Endbenutzer anmeldet, fordert die native App Zugriff auf die mittlere Ebene an und sendet das Token.  Die mittlere Ebene führt den „Im Auftrag von“-Ablauf aus, um Zugriff auf MS Graph anzufordern.  An diesem Punkt wird der mittleren Ebene eine Anspruchanforderung übermittelt. Die mittlere Ebene sendet die Anforderung wieder an die native App, die ihrerseits die Richtlinie für den bedingten Zugriff erfüllen muss.
+* Sie erstellen eine mehrinstanzenfähige Web-App, die Microsoft Graph für den Zugriff auf Exchange und andere Dienste verwendet.  Ein Unternehmenskunde, der diese App verwendet, legt eine Richtlinie in Exchange fest.  Wenn die Web-App ein Token für MS Graph anfordert, erfolgt keine Abfrage an die App, um die Richtlinie einzuhalten.  Der Endbenutzer wird mit gültigen Token angemeldet. Wenn die App versucht, dieses Token für Microsoft Graph zum Zugreifen auf Exchange-Daten zu verwenden, wird über den Header ```WWW-Authenticate``` eine Anspruchsabfrage an die Web-App zurückgegeben.  Die App kann dann ```claims``` in einer neuen Anforderung verwenden, und der Endbenutzer wird dazu aufgefordert, die Bedingungen zu erfüllen. 
+* Sie erstellen eine native App, die einen Dienst der mittleren Ebene für den Zugriff auf eine Downstream-API verwendet.  Ein Unternehmenskunde, der diese App verwendet, wendet eine Richtlinie für die Downstream-API an.  Wenn sich ein Endbenutzer anmeldet, fordert die native App Zugriff auf die mittlere Ebene an und sendet das Token.  Die mittlere Ebene führt den „Im Auftrag von“-Ablauf aus, um Zugriff auf die Downstream-API anzufordern.  An diesem Punkt wird der mittleren Ebene eine Anspruchanforderung übermittelt. Die mittlere Ebene sendet die Anforderung wieder an die native App, die ihrerseits die Richtlinie für den bedingten Zugriff erfüllen muss.
 
 ### <a name="complying-with-a-conditional-access-policy"></a>Einhalten einer Richtlinie für den bedingten Zugriff
 
@@ -90,7 +89,7 @@ Die folgenden Informationen gelten nur in diesen speziellen Szenarien:
 
 In den folgenden Abschnitten werden häufiger auftretende Szenarien behandelt, die etwas komplexer sind.  Das grundlegende Prinzip dabei ist, dass Richtlinien für den bedingten Zugriff zu dem Zeitpunkt ausgewertet werden, zu dem das Token für einen Dienst mit einer Richtlinie für den bedingten Zugriff angefordert wird. Dies gilt jedoch nicht, wenn der Zugriff über Microsoft Graph erfolgt.
 
-### <a name="scenario-app-accessing-microsoft-graph"></a>Szenario: Apps mit Zugriff auf Microsoft Graph
+## <a name="scenario-app-accessing-microsoft-graph"></a>Szenario: Apps mit Zugriff auf Microsoft Graph
 
 In diesem Szenario wird der Fall behandelt, bei dem eine Web-App Zugriff auf Microsoft Graph anfordert. In diesem Fall könnte die Richtlinie für den bedingten Zugriff SharePoint, Exchange oder einem anderen Dienst, auf den als Workload über Microsoft Graph zugegriffen wird, zugewiesen sein.  In diesem Beispiel nehmen wir an, dass es eine Richtlinie für den bedingten Zugriff auf SharePoint Online ist.
 
@@ -109,9 +108,41 @@ www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/
 
 Die Anspruchanforderung ist im ```WWW-Authenticate```-Header enthalten. Durch eine Analyse kann der Anspruchparameter für die nächste Anforderung extrahiert werden.  Nachdem er an die neue Anforderung angefügt wurde, weiß Azure AD, dass die Richtlinie für den bedingten Zugriff ausgewertet werden muss, wenn der Benutzer sich anmeldet. Die App erfüllt damit die Richtlinie für den bedingten Zugriff.  Das Wiederholen der Anforderung an den SharePoint Online-Endpunkt ist erfolgreich.
 
-Codebeispiele, die veranschaulichen, wie die Anspruchanforderung behandelt werden sollte, finden Sie im [.NET-Desktopcodebeispiel](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) für ADAL .NET oder im [„Im-Auftrag-von“-Codebeispiel](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) für ADAL .NET.
+Der Header ```WWW-Authenticate``` hat eine eindeutige Struktur und kann nicht einfach zum Extrahieren von Werten analysiert werden.  Hier sehen Sie eine kurze Methode, die den Vorgang erleichtert:
 
-### <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Szenario: Apps für den „Im Auftrag von“-Ablauf
+    ```C#
+        /// <summary>
+        /// This method extracts the claims value from the 403 error response from MS Graph. 
+        /// </summary>
+        /// <param name="wwwAuthHeader"></param>
+        /// <returns>Value of the claims entry. This should be considered an opaque string. 
+        /// Returns null if the wwwAuthheader does not contain the claims value. </returns>
+        private String extractClaims(String wwwAuthHeader)
+        {
+            String ClaimsKey = "claims=";
+            String ClaimsSubstring = "";
+            if (wwwAuthHeader.Contains(ClaimsKey))
+            {
+                int Index = wwwAuthHeader.IndexOf(ClaimsKey);
+                ClaimsSubstring = wwwAuthHeader.Substring(Index, wwwAuthHeader.Length - Index);
+                string ClaimsChallenge;
+                if (Regex.Match(ClaimsSubstring, @"}$").Success)
+                {
+                    ClaimsChallenge = ClaimsSubstring.Split('=')[1];
+                }
+                else
+                {
+                    ClaimsChallenge = ClaimsSubstring.Substring(0, ClaimsSubstring.IndexOf("},") + 1);
+                }
+                return ClaimsChallenge;
+            }
+            return null; 
+        }
+    ```
+
+Codebeispiele, die veranschaulichen, wie die Anspruchsanforderung behandelt werden sollte, finden Sie im [„Im-Auftrag-von“-Codebeispiel](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) für ADAL .NET.
+
+## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Szenario: Apps für den „Im Auftrag von“-Ablauf
 
 In diesem Szenario wird der Fall behandelt, bei dem eine native App einen Webdienst bzw. eine API aufruft.  Der Dienst wiederum führt den [„Im-Auftrag-von“-Fluss](active-directory-authentication-scenarios.md#application-types-and-scenarios) aus, um einen Downstreamdienst aufzurufen.  In diesem Fall haben wir die Richtlinie für den bedingten Zugriff auf den Downstreamdienst (Web-API 2) angewendet und verwenden eine native App anstelle einer Server-/Daemon-App. 
 
@@ -135,7 +166,7 @@ In unserer Web-API 1 fangen wir den Fehler `error=interaction_required` ab, und 
 
 Wenn Sie dieses Szenario testen möchten, sehen Sie sich unser [.NET-Codebeispiel](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) an.  Es zeigt, wie die Anspruchanforderung von der Web-API 1 zurück an die native App übergeben und in der Client-App eine neue Anforderung erstellt wird. 
 
-### <a name="scenario-app-accessing-multiple-services"></a>Szenario: Apps mit Zugriff auf mehrere Dienste
+## <a name="scenario-app-accessing-multiple-services"></a>Szenario: Apps mit Zugriff auf mehrere Dienste
 
 In diesem Szenario wird der Fall behandelt, bei dem eine Web-App auf zwei Dienst zugreift, von denen für einen eine Richtlinie für den bedingten Zugriff gilt.  Abhängig von Ihrer App-Logik gibt es möglicherweise einen Pfad, in dem Ihre App keinen Zugriff auf beide Webdienste benötigt.  In diesem Szenario spielt die Reihenfolge, in der Sie ein Token anfordern, eine wichtige Rolle für den Endbenutzer.
 
@@ -156,7 +187,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 Wenn die App die ADAL-Bibliothek verwendet, wird bei einem Fehler beim Abrufen des Tokens immer interaktiv ein Wiederholungsversuch ausgeführt.  Bei dieser interaktiven Anforderung hat der Endbenutzer die Möglichkeit, die Anforderungen für den bedingten Zugriff zu erfüllen.  Dies gilt immer, außer wenn die Anforderung `AcquireTokenSilentAsync` oder `PromptBehavior.Never` lautet. In diesem Fall muss die App eine interaktive ```AcquireToken```-Anforderung ausführen, damit der Endbenutzer die Richtlinie erfüllen kann. 
 
-### <a name="scenario-single-page-app-spa-using-adaljs"></a>Szenario: Einzelseiten-App mit ADAL.js
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>Szenario: Einzelseiten-App mit ADAL.js
 
 In diesem Szenario werden Einzelseiten-Apps (Single Page App, SPA) behandelt, die ADAL.js für das Aufrufen einer Web-API, die durch den bedingten Zugriff geschützt ist, verwendet.  Dies ist eine einfache Architektur, die jedoch einige Feinheiten beinhaltet, die bei der Entwicklung für bedingten Zugriff berücksichtigt werden müssen.
 
@@ -191,4 +222,3 @@ Wenn Sie dieses Szenario testen möchten, sehen Sie sich unser [“Im-Auftrag-vo
 * Weitere Azure AD-Codebeispiele finden Sie im [GitHub-Repository mit Codebeispielen](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory). 
 * Weitere Informationen zum ADAL-SDK und zum Zugriff auf die Referenzdokumentation finden Sie in der [Bibliotheksanleitung](active-directory-authentication-libraries.md).
 * Weitere Informationen zu Szenarien mit mehreren Mandanten finden Sie unter [Anmelden von Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](active-directory-devhowto-multi-tenant-overview.md).
-

@@ -8,15 +8,13 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/13/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 8606067a8e82c6314ab931eb4816d45755a8e04f
-ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.date: 09/15/2017
+ms.openlocfilehash: ce6edbdffe9704383676e990865cd4e2958f30fe
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen
 In diesem Artikel werden zwei allgemeine Verfahren zum Sichern und Wiederherstellen von Datenbanken in Azure-Datenbank für MySQL beschrieben
 - Sichern und Wiederherstellen über die Befehlszeile (mithilfe von „mysqldump“) 
@@ -46,8 +44,8 @@ Sie können MySQL-Hilfsprogramme wie mysqldump und mysqlpump verwenden, um Daten
 ## <a name="performance-considerations"></a>Überlegungen zur Leistung
 Beachten Sie beim Sichern der Abbilder von großen Datenbanken die folgenden Aspekte, um die Leistung zu optimieren:
 -   Verwenden Sie die Option `exclude-triggers` in mysqldump, wenn Sie Sicherungsabbilder von Datenbanken erstellen. Schließen Sie Trigger aus Abbilddateien aus, um zu verhindern, dass die Triggerbefehle während der Wiederherstellung der Daten ausgelöst werden. 
--   Vermeiden Sie die Verwendung der Option `single-transaction` in mysqldump, wenn Sie sehr große Datenbanken sichern. Das Erstellen von Sicherungsabbildern für viele Tabellen innerhalb nur einer Transaktion führt dazu, dass bei der Wiederherstellung zusätzliche Speicher- und Arbeitsspeicherressourcen verbraucht werden, und es kann zu Leistungsverzögerungen oder Ressourceneinschränkungen kommen.
--   Verwenden Sie bei SQL-Ladevorgängen Einfügungen mit mehreren Werten, um beim Sichern von Datenbanken den Mehraufwand für die Ausführung von Anweisungen zu verringern. Wenn Sie Abbilddateien nutzen, die mit dem Hilfsprogramm mysqldump generiert wurden, sind Einfügungen mit mehreren Werten standardmäßig aktiviert. 
+-   Verwenden Sie die Option `single-transaction`, um den Transaktionsisolationsmodus auf REPEATABLE READ festzulegen und um die SQL-Anweisung START TRANSACTION an den Server zu senden, bevor die Daten gesichert werden. Durch das Sichern vieler Tabellen in einer Transaktion wird bei der Wiederherstellung zusätzlicher Speicher benötigt. Die Optionen `single-transaction` und `lock-tables` sind wechselseitig exklusiv, da LOCK TABLES dazu führt, dass alle ausstehenden Transaktionen implizit committet werden. Um große Tabellen zu sichern, kombinieren Sie die Optionen `single-transaction` und `quick`. 
+-   Verwenden Sie die Syntax für mehrere Zeilen `extended-insert`, die mehrere VALUE-Listen enthält. Dies führt zu einer kleineren Speicherabbilddatei und beschleunigt Einfügevorgänge beim erneuten Laden der Datei.
 -  Verwenden Sie in mysqldump die Option `order-by-primary`, wenn Sie Datenbanken sichern, damit die Skripterstellung für die Daten in der Primärschlüssel-Reihenfolge erfolgt.
 -   Verwenden Sie in mysqldump beim Erstellen von Sicherungsabbildern für Daten die Option `disable-keys`, um vor dem Laden Fremdschlüsseleinschränkungen zu deaktivieren. Das Deaktivieren von Fremdschlüsselüberprüfungen führt zu Leistungssteigerungen. Aktivieren Sie die Einschränkungen, und überprüfen Sie die Daten nach dem Laden, um die referentielle Integrität sicherzustellen.
 -   Verwenden Sie, falls zutreffend, partitionierte Tabellen.
@@ -126,4 +124,3 @@ Der Import der Datenbank ist mit dem Exportvorgang vergleichbar. Führen Sie fol
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Herstellen einer Verbindung zwischen Anwendungen und Azure-Datenbank für MySQL](./howto-connection-string.md)
-

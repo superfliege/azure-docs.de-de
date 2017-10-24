@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: glenga
+ms.openlocfilehash: f80f9f0e6d3fde438d27949a3fea001f37d59ee4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 2c90272a9d33795dca7839292bba38fa16fec3da
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
 ## <a name="what-is-azure"></a>Was ist Azure?
@@ -55,15 +53,9 @@ Azure bietet Dienste, die Ihre Anforderungen für Anwendungsentwicklung und Host
 
 Wenn Sie den schnellsten Weg zum Veröffentlichen Ihrer webbasierten Projekte wählen möchten, sehen Sie sich Azure App Service an. App Service erleichtert das Erweitern Ihrer Web-Apps zur Unterstützung Ihrer mobilen Clients und das Veröffentlichen einfach genutzter REST-APIs. Diese Plattform bietet die Authentifizierung durch soziale Netzwerke, auf Datenverkehr basierte automatische Skalierung, Tests in der Produktionsumgebung sowie kontinuierliche und containerbasierte Bereitstellung.
 
-Wenn Sie eine App in App Service erstellen, wählen Sie einen der folgenden Typen aus:
+Sie können Web-Apps, Back-Ends für mobile Apps und API-Apps erstellen.
 
-- [Web-Apps](../../app-service-web/app-service-web-overview.md): Damit können Sie Websites und Webanwendungen hosten, die in .NET, Java, PHP, Node.js und Python geschrieben sind.
-
-- [Mobile Apps](../../app-service-mobile/app-service-mobile-value-prop.md): Erweitert Web-Apps zur Unterstützung von Zugriff von mobilen Geräten aus. Dadurch wird die Authentifizierung mit sozialen Netzwerken und Azure Active Directory (Azure AD) ermöglicht, Back-End-Speicher bereitgestellt und die Integration mit [Azure Notification Hubs](../../notification-hubs/notification-hubs-push-notification-overview.md) für Pushbenachrichtigungen bereitgestellt.
-
-- [API-Apps](../../app-service-api/app-service-api-apps-why-best-platform.md): Damit können Sie sicher Ihre APIs in der Cloud mit Swagger-Metadaten verfügbar machen, sodass Clients diese einfach nutzten können.
-
-Da sich alle drei App-Typen die App Service-Runtime teilen, können Sie eine Website hosten, mobile Clients unterstützen und Ihre APIs in Azure verfügbar machen, und das alles vom gleichen Projekt oder der gleichen Lösung aus. Weitere Informationen zu App Service finden Sie unter [So funktioniert App Service](../../app-service/app-service-how-works-readme.md).
+Da sich alle drei App-Typen die App Service-Runtime teilen, können Sie eine Website hosten, mobile Clients unterstützen und Ihre APIs in Azure verfügbar machen, und das alles vom gleichen Projekt oder der gleichen Lösung aus. Weitere Informationen zu App Service erhalten Sie unter [Was ist Azure Web-Apps?](../../app-service/app-service-web-overview.md).
 
 App Service wurde mit Blick auf DevOps entworfen. App Service unterstützt verschiedene Tools für die Veröffentlichung und Continuous Integration-Bereitstellungen, einschließlich GitHub-Webhooks, Jenkins, Visual Studio Team Services, TeamCity und andere.
 
@@ -71,7 +63,7 @@ Sie können Ihre vorhandenen Anwendungen zu App Service migrieren, indem Sie das
 
 >**Einsatzgebiete**: Verwenden Sie App Service, wenn Sie vorhandene Webanwendungen zu Azure migrieren, und wenn Sie eine vollständig verwaltete Hostingplattform für Ihre Web-Apps benötigen. Sie können App Service auch verwenden, wenn Sie mobile Clients unterstützen oder REST-APIs mit Ihrer App verfügbar machen müssen.
 
->**Erste Schritte**: App Service erleichtert die Erstellung und Bereitstellung Ihrer ersten [Web-App](../../app-service-web/web-sites-dotnet-get-started.md), [mobilen App](../../app-service-mobile/app-service-mobile-ios-get-started.md) oder [API-App](../../app-service-api/app-service-api-dotnet-get-started.md).
+>**Erste Schritte**: App Service erleichtert die Erstellung und Bereitstellung Ihrer ersten [Web-App](../../app-service/app-service-web-get-started-dotnet.md), [mobilen App](../../app-service-mobile/app-service-mobile-ios-get-started.md) oder [API-App](../../app-service/app-service-web-tutorial-rest-api.md).
 
 >**Jetzt testen**: Mit App Service können Sie eine kurzlebige App bereitstellen, um die Plattform zu testen, ohne sich für ein Azure-Konto registrieren zu müssen. Testen Sie die Plattform und [erstellen Sie Ihre Azure App Service-App](https://tryappservice.azure.com/).
 
@@ -103,7 +95,7 @@ Service Fabric unterstützt WebAPI mit Open Web Interface für .NET (OWIN) und A
 
 >**Einsatzgebiete:** Service Fabric ist eine gute Wahl, wenn Sie eine Anwendung erstellen oder eine vorhandenen Anwendung neu erstellen, um eine Microservice-Architektur zu verwenden. Verwenden Sie Service Fabric, wenn Sie mehr Kontrolle über oder direkten Zugriff auf die zugrunde liegende Infrastruktur benötigen.
 
->**Erste Schritte:** [Erstellen Ihrer ersten Azure Service Fabric-Anwendung](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md).
+>**Erste Schritte:**[Erstellen Ihrer ersten Azure Service Fabric-Anwendung](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md).
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Verbessern Ihrer Anwendungen mit Azure-Diensten
 
@@ -130,7 +122,7 @@ Die meisten Anwendungen müssen Daten speichern, es ist also egal, wie Sie Ihre 
 
     >**Erste Schritte**: [Erstellen einer DocumentDB-C#-Konsolenanwendung](../../documentdb/documentdb-get-started.md). Wenn Sie ein MongoDB-Entwickler sind, lesen Sie [DocumentDB-Protokollunterstützung für MongoDB](../../documentdb/documentdb-protocol-mongodb.md).
 
-Sie können [Azure Data Factory](../../data-factory/data-factory-introduction.md) verwenden, um vorhandene lokale Daten in Azure zu verschieben. Wenn Sie nicht dazu bereit sind, Daten in die Cloud zu verschieben, können Sie mit [Hybridverbindungen](../../biztalk-services/integration-hybrid-connection-overview.md) in BizTalk Services eine Verbindung von Ihrer von App Service gehosteten App mit lokalen Ressourcen herstellen. Sie können von Ihren lokalen Anwendungen aus auch eine Verbindung mit Azure-Daten und Speicherdiensten herstellen.
+Sie können [Azure Data Factory](../../data-factory/introduction.md) verwenden, um vorhandene lokale Daten in Azure zu verschieben. Wenn Sie nicht dazu bereit sind, Daten in die Cloud zu verschieben, können Sie mit [Hybridverbindungen](../../biztalk-services/integration-hybrid-connection-overview.md) in BizTalk Services eine Verbindung von Ihrer von App Service gehosteten App mit lokalen Ressourcen herstellen. Sie können von Ihren lokalen Anwendungen aus auch eine Verbindung mit Azure-Daten und Speicherdiensten herstellen.
 
 #### <a name="docker-support"></a>Docker-Unterstützung
 
@@ -194,9 +186,9 @@ Wenn Ihre Anwendung in Azure eingerichtet ist und ausgeführt wird, müssen Sie 
 
 Unabhängig davon, ob Azure VMs bereitstellt oder Ihre Web-Apps mit Continuous Integration veröffentlicht, ist Azure in die meisten der gängigen DevOps-Tools integrierbar. Dank der Unterstützung für Tools wie Jenkins, GitHub, Puppet, Chef, TeamCity, Ansible, VSTS u.a. können Sie mit den Tools arbeiten, über die Sie bereits verfügen, und die bisherige Benutzerfreundlichkeit maximieren.
 
->**Jetzt testen:** [Testen Sie mehrere der DevOps-Integrationen](https://azure.microsoft.com/try/devops/).
+>**Jetzt testen:**[Testen Sie mehrere der DevOps-Integrationen](https://azure.microsoft.com/try/devops/).
 
->**Erste Schritte**: DevOps-Optionen für eine App Service-App können Sie hier anzeigen: [Kontinuierliche Bereitstellung in Azure App Service](../../app-service-web/app-service-continuous-deployment.md).
+>**Erste Schritte**: DevOps-Optionen für eine App Service-App können Sie hier anzeigen: [Kontinuierliche Bereitstellung in Azure App Service](../../app-service/app-service-continuous-deployment.md).
 
 
 ## <a name="azure-regions"></a>Azure-Regionen
@@ -333,4 +325,3 @@ Obwohl es schwierig ist, Kosten im Voraus zu schätzen, verfügt Azure über ein
 Nachdem Sie Ihre Anwendung oder Lösung in Azure bereitgestellt haben, können Sie Warnungen erstellen, die Sie per E-Mail benachrichtigen, wenn Sie sich den in der Warnung definierten Ausgabenlimits nähern.
 
 >**Erste Schritte**: Weitere Informationen finden Sie unter [Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements](../../billing-set-up-alerts.md).
-

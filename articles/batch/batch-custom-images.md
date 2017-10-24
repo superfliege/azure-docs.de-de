@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: tamram
-ms.openlocfilehash: 3d655766b4f2a5efb0c8c29ffa81a89f84b3e17c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.openlocfilehash: 0816c464b6b52747148cc42a55445048901e7595
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Verwenden eines benutzerdefinierten Images zum Erstellen eines VM-Pools
 
@@ -29,7 +29,7 @@ Zu den Gründen, die für die Verwendung eines benutzerdefinierten Images sprech
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Ein Batch-Konto, das mit dem Poolzuordnungsmodus „Benutzerabonnement“ erstellt wurde.** Wenn Sie VM-Pools auf der Grundlage eines benutzerdefinierten Images bereitstellen möchten, erstellen Sie Ihr Batch-Konto mit dem [Poolzuordnungsmodus](batch-api-basics.md#pool-allocation-mode) „Benutzerabonnement“. In diesem Modus werden Batch-Pools dem Abonnement zugeordnet, in dem sich das Konto befindet. Im Abschnitt [Konto](batch-api-basics.md#account) unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md) finden Sie Informationen zum Festlegen des Poolzuordnungsmodus beim Erstellen eines Batch-Kontos.
+- **Ein Batch-Konto, das mit dem Poolzuordnungsmodus „Benutzerabonnement“ erstellt wurde.** In diesem Modus werden Batch-Pools dem Abonnement zugeordnet, in dem sich das Konto befindet. Weitere Informationen finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md) im Abschnitt [Konto](batch-api-basics.md#account).
 
 - Ein **Azure Storage-Konto.** Um einen VM-Pool mithilfe eines benutzerdefinierten Images zu erstellen, benötigen Sie ein standardmäßiges, allgemeines Azure Storage-Konto im gleichen Abonnement und in der gleichen Region. Wenn Sie ein benutzerdefiniertes Image aus einer Azure-VM erstellen und das Image in das Speicherkonto kopieren, auf dem sich die VM-Betriebssystemdatenträger befinden, dann müssen Sie kein separates Speicherkonto erstellen. 
     

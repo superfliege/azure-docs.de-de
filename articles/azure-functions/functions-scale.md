@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: c1aa05bffb711351e0ddc544a476751690265de9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 41ebbe944213373c028b7410baa86e6c55db0d8c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-hosting-plans-comparison"></a>Vergleich von Hostingplänen für Azure Functions
 
@@ -37,9 +36,9 @@ Wenn Sie eine Funktions-App erstellen, müssen Sie einen Hostingplan für die in
 * Wie Hostinstanzen horizontal hochskaliert werden.
 * Die Ressourcen, die für jeden Host verfügbar sind.
 
-Derzeit müssen Sie den Plantyp während der Erstellung der Funktions-App auswählen. Sie können ihn anschließend nicht ändern. 
+Derzeit müssen Sie den Typ des Hostingplans während der Erstellung der Funktions-App auswählen. Sie können ihn anschließend nicht ändern. 
 
-Sie können zwischen verschiedenen Stufen im App Service-Plan skalieren. Im Verbrauchsplan verarbeitet Azure Functions automatisch alle Ressourcenzuordnungen.
+In einem App Service-Plan können Sie zwischen verschiedenen Stufen skalieren, um verschiedene Ressourcenmengen zuzuordnen. Im Verbrauchsplan verarbeitet Azure Functions automatisch alle Ressourcenzuordnungen.
 
 ## <a name="consumption-plan"></a>Verbrauchsplan
 
@@ -48,26 +47,28 @@ Bei Verwendung eines Verbrauchsplans werden Instanzen des Azure Functions-Hosts 
 > [!NOTE]
 > Das Standardtimeout für Funktionen in einem Verbrauchsplan beträgt 5 Minuten. Der Wert kann durch Ändern der Eigenschaft `functionTimeout` in [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) für die Funktions-App auf 10 Minuten erhöht werden.
 
-Die Abrechnung basiert auf der Ausführungszeit und dem verwendeten Arbeitsspeicher. Sie wird für alle Funktionen innerhalb einer Funktions-App zusammengefasst. Weitere Informationen finden Sie unter [Azure Functions – Preise].
+Die Abrechnung erfolgt auf der Grundlage der Anzahl von Ausführungen, der Ausführungszeit und des verwendeten Arbeitsspeichers. Die Abrechnung wird für alle Funktionen innerhalb einer Funktions-App aggregiert. Weitere Informationen finden Sie unter [Preisseite für Azure Functions].
 
-Der Verbrauchsplan ist der Standardplan. Er bietet folgende Vorteile:
+Der Verbrauchsplan ist der Standardhostingplan. Er bietet folgende Vorteile:
 - Sie bezahlen nur, wenn Ihre Funktionen ausgeführt werden.
 - Das horizontale Hochskalieren erfolgt automatisch – selbst in Zeiten hoher Lasten.
 
 ## <a name="app-service-plan"></a>App Service-Plan
 
-In einem App Service-Plan werden Ihre Funktions-Apps ähnlich wie Web-Apps auf dedizierten virtuellen Computern für Basic-, Standard-, Premium- oder isolierten SKUs ausgeführt. Die dedizierten virtuellen Computer werden Ihren App Service-Apps zugeordnet, sodass der Functions-Host immer ausgeführt wird.
+In einem App Service-Plan werden Ihre Funktions-Apps ähnlich wie Web-Apps, API-Apps und mobile Apps auf dedizierten virtuellen Computern für Basic-, Standard- oder Premium-SKUs oder isolierte SKUs ausgeführt. Die dedizierten virtuellen Computer werden Ihren App Service-Apps zugeordnet, sodass der Functions-Host immer ausgeführt wird.
 
 Entscheiden Sie sich in den folgenden Fällen für einen App Service-Plan:
 - Sie verfügen über nicht ausgelastete virtuelle Computer, auf denen bereits andere App Service-Instanzen ausgeführt werden.
 - Sie gehen davon aus, dass Ihre Funktionen-Apps kontinuierlich oder nahezu kontinuierlich ausgeführt werden. In diesem Fall kann ein App Service-Plan kostengünstiger sein.
 - Sie benötigen weitere CPU- oder Arbeitsspeicheroptionen zusätzlich zu den für den Verbrauchsplan bereitgestellten.
-- Sie benötigen eine längere Ausführungsdauer als die für den Verbrauchsplan zulässige Höchstdauer.
+- Sie benötigen eine längere Ausführungsdauer als die für den Verbrauchsplan zulässige Höchstdauer (10 Minuten).
 - Sie benötigen Funktionen, die nur mit einem App Service-Plan verfügbar sind, etwa Unterstützung für App Service-Umgebung, VNET/VPN-Konnektivität und größere virtuelle Computer. 
 
-Mit einem virtuellen Computer werden Kosten von der Laufzeit und der Arbeitsspeichergröße entkoppelt. Daher wird Ihnen nicht mehr berechnet als die Kosten für die VM-Instanz, die Sie belegen. Weitere Informationen zur Funktionsweise von App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+Mit einem virtuellen Computer werden Kosten von der Ausführungsanzahl, der Ausführungszeit und vom verwendeten Arbeitsspeicher entkoppelt. Daher wird Ihnen nicht mehr berechnet als die Kosten für die VM-Instanz, die Sie belegen. Weitere Informationen zur Funktionsweise von App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
-Mit einem App Service-Plan können Sie manuell horizontal hochskalieren, indem Sie weitere Instanzen von virtuellen Computern hinzufügen, oder Sie können die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json). Sie können auch zentral hochskalieren, indem Sie einen anderen App Service-Plan auswählen. Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](../app-service/web-sites-scale.md). Wenn Sie beabsichtigen, JavaScript-Funktionen für einen App Service-Plan zu verwenden, sollten Sie einen Plan mit einer kleineren Anzahl von Kernen auswählen. Weitere Informationen finden Sie in der [JavaScript-Referenz für Funktionen](functions-reference-node.md#choose-single-core-app-service-plans).  
+Mit einem App Service-Plan können Sie manuell horizontal hochskalieren, indem Sie weitere Instanzen von virtuellen Computern hinzufügen, oder Sie können die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json). Sie können auch zentral hochskalieren, indem Sie einen anderen App Service-Plan auswählen. Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](../app-service/web-sites-scale.md). 
+
+Wenn Sie beabsichtigen, JavaScript-Funktionen für einen App Service-Plan zu verwenden, sollten Sie einen Plan mit einer kleineren Anzahl von Kernen auswählen. Weitere Informationen finden Sie in der [JavaScript-Referenz für Funktionen](functions-reference-node.md#choose-single-core-app-service-plans).  
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 <a name="always-on"></a>
@@ -79,19 +80,19 @@ Always On ist nur bei einem App Service-Plan verfügbar. Bei einem Verbrauchspla
 
 ## <a name="storage-account-requirements"></a>Anforderungen an das Speicherkonto
 
-Sowohl bei einem Verbrauchs- als auch bei einem App Service-Plan erfordert eine Funktions-App ein Azure Storage-Konto, das Blob, Queue und Table Storage unterstützt. Intern verwendet Azure Functions Azure Storage für Vorgänge wie das Verwalten von Triggern und Ausführungen von Protokollierfunktionen. Manche Speicherkonten unterstützen keine Warteschlangen und Tabellen, wie z.B. reine Blobspeicherkonten (darunter Storage Premium) und allgemeine Speicherkonten mit zonenredundanter Speicherreplikation. Diese Konten werden aus dem Blatt **Speicherkonto** herausgefiltert, wenn Sie eine Funktions-App erstellen.
+Sowohl bei einem Verbrauchs- als auch bei einem App Service-Plan erfordert eine Funktions-App ein allgemeines Azure Storage-Konto, das Azure Blob, Queue, Files und Table Storage unterstützt. Intern verwendet Azure Functions Azure Storage für Vorgänge wie das Verwalten von Triggern und Ausführungen von Protokollierfunktionen. Manche Speicherkonten unterstützen keine Warteschlangen und Tabellen, wie z.B. reine Blobspeicherkonten (darunter Storage Premium) und allgemeine Speicherkonten mit zonenredundanter Speicherreplikation. Diese Konten werden aus dem Blatt **Speicherkonto** herausgefiltert, wenn Sie eine Funktions-App erstellen.
 
 Weitere Informationen zu Speicherkontentypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/common/storage-introduction.md#introducing-the-azure-storage-services).
 
 ## <a name="how-the-consumption-plan-works"></a>Funktionsweise des Verbrauchsplans
 
-Der Verbrauchsplan skaliert CPU- und Arbeitsspeicherressourcen automatisch, indem dem Functions-Host basierend auf der Anzahl der Ereignisse, nach denen die Funktionen ausgelöst werden, weitere Instanzen hinzugefügt werden. Jede Instanz des Functions-Hosts ist auf 1,5 GB Arbeitsspeicher beschränkt.
+Im Verbrauchsplan skaliert der Skalierungscontroller CPU- und Arbeitsspeicherressourcen automatisch, indem dem Functions-Host basierend auf der Anzahl der Ereignisse, nach denen die Funktionen ausgelöst werden, weitere Instanzen hinzugefügt werden. Jede Instanz des Functions-Hosts ist auf 1,5 GB Arbeitsspeicher beschränkt.
 
-Wenn Sie den verbrauchsbasierten Hostingplan verwenden, werden die Funktionscodedateien in Azure Files-Freigaben im Hauptspeicherkonto gespeichert. Wenn Sie das Hauptspeicherkonto löschen, wird dieser Inhalt ebenfalls gelöscht und kann nicht wiederhergestellt werden.
+Wenn Sie den verbrauchsbasierten Hostingplan verwenden, werden die Funktionscodedateien in Azure Files-Freigaben im Hauptspeicherkonto der Funktion gespeichert. Wenn Sie das Hauptspeicherkonto der Funktions-App löschen, werden die Funktionscodedateien gelöscht und können nicht wiederhergestellt werden.
 
 > [!NOTE]
 > Bei Verwendung eines Blobtriggers in einem Verbrauchsplan kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktions-App in den Leerlauf gewechselt ist. Sobald die Funktions-App ausgeführt wird, werden die Blobs sofort verarbeitet. Um diese anfängliche Verzögerung zu vermeiden, sollten Sie eine der folgenden Möglichkeiten erwägen:
-> - Verwenden Sie einen App Service-Plan mit aktivierter Option „Always On“.
+> - Hosten Sie die Funktions-App in einem App Service-Plan mit aktivierter Option „Always On“.
 > - Verwenden Sie einen anderen Mechanismus zum Auslösen der Blobverarbeitung, z.B. eine Warteschlangennachricht, die den Blobnamen enthält. Ein Beispiel finden Sie unter [Warteschlangentrigger mit Blobeingangsbindung](functions-bindings-storage-blob.md#input-sample).
 
 ### <a name="runtime-scaling"></a>Laufzeitskalierung
@@ -104,9 +105,8 @@ Die Skalierungseinheit ist die Funktionen-App. Bei einer horizontalen Hochskalie
 
 ### <a name="billing-model"></a>Abrechnungsmodell
 
-Die Abrechnung des Verbrauchsplans wird detailliert auf der [Azure Functions – Preise] beschrieben. Der Verbrauch wird auf Ebene der Funktions-App zusammengefasst, wobei nur die Zeit gezählt wird, für die der Funktionscode ausführt wurde. Folgende Einheiten werden für die Abrechnung verwendet: 
+Die Abrechnung des Verbrauchsplans wird detailliert auf der [Preisseite für Azure Functions] beschrieben. Der Verbrauch wird auf Ebene der Funktions-App zusammengefasst, wobei nur die Zeit gezählt wird, für die der Funktionscode ausführt wurde. Folgende Einheiten werden für die Abrechnung verwendet: 
 * **Ressourcenverbrauch in Gigabytesekunden (GB-s)** – berechnet als Kombination aus Arbeitsspeichergröße und Ausführungsdauer für alle Funktionen in einer Funktions-App. 
-* **Ausführungen** – werden bei jeder Ausführung einer Funktion als Antwort auf ein Ereignis gezählt, das durch eine Bindung ausgelöst wurde.
+* **Ausführungen** – werden bei jeder Ausführung einer Funktion als Antwort auf einen Ereignisauslöser gezählt.
 
-[Azure Functions – Preise]: https://azure.microsoft.com/pricing/details/functions
-
+[Preisseite für Azure Functions]: https://azure.microsoft.com/pricing/details/functions

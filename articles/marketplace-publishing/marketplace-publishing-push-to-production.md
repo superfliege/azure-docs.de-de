@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/02/2016
 ms.author: hascipio
 ms.openlocfilehash: 12dc81642905cd9449a1032c7ab57298e6b69ba8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-your-offer-to-the-azure-marketplace"></a>Bereitstellen Ihres Angebots im Azure Marketplace
 Wenn Sie nach dem Testen von Kundenszenarien, Marketinginhalten und Ähnlichem mit Ihrem Angebot zufrieden sind und es veröffentlichen möchten, verwenden Sie auf der Registerkarte **Veröffentlichen** die Option **Für Produktionsumgebungen freigeben**.  
@@ -69,7 +69,7 @@ Wenn Sie nach dem Testen von Kundenszenarien, Marketinginhalten und Ähnlichem m
 
 * Ein Herologo ist optional. Der Herausgeber muss kein Herologo hochladen. **Ist das Herosymbol jedoch einmal hochgeladen, dann kann es nicht mehr aus dem Veröffentlichungsportal gelöscht werden. Zu diesem Zeitpunkt muss der Partner die Azure Marketplace-Richtlinien für Herosymbole einhalten, sonst wird das Angebot nicht zur Produktion genehmigt.**
 * Anzeigename des Herausgebers, SKU-Titel und ausführliche Angebotsübersicht werden in weißer Schrift angezeigt. Daher sollten Sie helle Farben im Hintergrund des Herosymbols vermeiden. Schwarzer, weißer und transparenter Hintergrund ist für Herosymbole nicht zulässig.
-* Der Anzeigename des Herausgebers, der SKU-Titel, die ausführliche Angebotsübersicht und die Erstellen-Schaltfläche werden programmgesteuert in das Herologo eingebettet, wenn das Angebot live geschaltet wird. Sie sollten beim Entwerfen des Herologos keinen Text eingeben. Lassen Sie einfach Platz auf der rechten Seite, da der Text (also Anzeigename des Herausgebers, SKU-Titel, ausführliche Angebotsübersicht) von uns dort programmgesteuert eingefügt wird. Der Leerraum für den Text sollte 415 x 100 auf der rechten Seite betragen (und ist 370 Pixel von links versetzt).
+* Der Anzeigename des Herausgebers, der SKU-Titel, die ausführliche Angebotsübersicht und die Erstellen-Schaltfläche werden programmgesteuert in das Herologo eingebettet, wenn das Angebot live geschaltet wird. Sie sollten beim Entwerfen des Herologos keinen Text eingeben. Lassen Sie Platz auf der rechten Seite, da der Text (d.h. Anzeigename des Herausgebers, SKU-Titel, ausführliche Angebotsübersicht) programmgesteuert von uns dort eingefügt wird. Der Leerraum für den Text sollte 415 x 100 auf der rechten Seite betragen (und ist 370 Pixel von links versetzt).
 
 ## <a name="additional-production-checklist-for-already-listed-virtual-machine-offers"></a>Zusätzliche Produktionscheckliste für bereits aufgeführte VM-Angebote
 * Überprüfen Sie, ob bereits ein Angebot mit gleichem Angebotsnamen von Ihrem Unternehmen vorhanden ist. Wenn ja, sollten Sie eine neue Version der SKU dem vorhandenen Angebot hinzufügen, anstatt ein neues doppeltes Angebot zu erstellen.

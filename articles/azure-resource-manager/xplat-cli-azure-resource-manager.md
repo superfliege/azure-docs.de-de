@@ -11,18 +11,17 @@ ms.workload: multiple
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2017
+ms.date: 10/06/2017
 ms.author: tomfitz
+ms.openlocfilehash: c68f2a8b6e18dc2d51d8bbb5cd05bc037dc2fadb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 2e3fdf06316bbf68abefe06024f63668bdf07b05
-ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle
 
-In diesem Artikel erfahren Sie, wie Sie Ihre Lösungen mit der Azure CLI und Azure Resource Manager verwalten. Wenn Sie nicht mit Resource Manager vertraut sind, finden Sie weitere Informationen unter [Übersicht über Resource Manager](resource-group-overview.md). In diesem Thema geht es um Verwaltungsaufgaben. In diesem Tutorial führen Sie folgende Schritte aus:
+In diesem Artikel erfahren Sie, wie Sie Ihre Lösungen mit der Azure CLI und Azure Resource Manager verwalten. Wenn Sie nicht mit Resource Manager vertraut sind, finden Sie weitere Informationen unter [Übersicht über Resource Manager](resource-group-overview.md). Dieser Artikel befasst sich mit Verwaltungsaufgaben. In diesem Tutorial führen Sie folgende Schritte aus:
 
 1. Erstellen einer Ressourcengruppe
 2. Hinzufügen einer Ressource zur Ressourcengruppe
@@ -79,6 +78,7 @@ az account show
 ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+
 Bevor Sie Ressourcen für Ihr Abonnement bereitstellen, müssen Sie eine Ressourcengruppe erstellen, die die Ressourcen enthält.
 
 Verwenden Sie zum Erstellen einer Ressourcengruppe den Befehl **az group create**. Der Befehl verwendet den **name**-Parameter, um einen Namen für die Ressourcengruppe anzugeben, und den **location**-Parameter, um ihren Speicherort anzugeben.
@@ -115,6 +115,7 @@ az group list
 ```
 
 ## <a name="add-resources-to-a-resource-group"></a>Hinzufügen von Ressourcen zu einer Ressourcengruppe
+
 Um eine Ressource zur Ressourcengruppe hinzuzufügen, können Sie den Befehl **az resource create** oder einen Befehl verwenden, der spezifisch für den Typ der Ressource ist, die Sie erstellen (z.B. **az storage account create**). Sie finden es möglicherweise einfacher, einen für einen Ressourcentyp spezifischen Befehl zu verwenden, da er Parameter für die Eigenschaften enthält, die für die neue Ressource erforderlich sind. Für die Verwendung von **az resource create** müssen Sie alle Eigenschaften kennen, die ohne Aufforderung festgelegt werden müssen.
 
 Das Hinzufügen einer Ressource über ein Skript kann jedoch künftig für Verwirrung sorgen, da die neue Ressource nicht in einer Resource Manager-Vorlage vorhanden ist. Vorlagen ermöglichen Ihnen das zuverlässige und wiederholte Bereitstellen Ihrer Lösung.
@@ -133,7 +134,7 @@ az storage account show --name myuniquestorage --resource-group TestRG1
 
 ## <a name="add-a-tag"></a>Hinzufügen eines Tags
 
-Tags ermöglichen das Organisieren Ihrer Ressourcen gemäß unterschiedlichen Eigenschaften. Beispiel: Sie verfügen über verschiedene Ressourcen in verschiedenen Ressourcengruppen, die zur selben Abteilung gehören. Sie können für diese Ressourcen ein Abteilungstag und einen Wert anwenden, um zu markieren, dass sie derselben Kategorie angehören. Alternativ können Sie markieren, ob eine Ressource in einer Produktionsumgebung oder Testumgebung verwendet wird. In diesem Thema weisen Sie nur einer Ressource Tags zu. In Ihrer Umgebung ist es aber wahrscheinlich am sinnvollsten, allen Ressourcen Tags zuzuweisen.
+Tags ermöglichen das Organisieren Ihrer Ressourcen gemäß unterschiedlichen Eigenschaften. Beispiel: Sie verfügen über verschiedene Ressourcen in verschiedenen Ressourcengruppen, die zur selben Abteilung gehören. Sie können für diese Ressourcen ein Abteilungstag und einen Wert anwenden, um zu markieren, dass sie derselben Kategorie angehören. Alternativ können Sie markieren, ob eine Ressource in einer Produktionsumgebung oder Testumgebung verwendet wird. In diesem Artikel weisen Sie nur einer Ressource Tags zu. In Ihrer Umgebung ist es aber wahrscheinlich am sinnvollsten, allen Ihren Ressourcen Tags zuzuweisen.
 
 Der folgende Befehl wendet zwei Tags auf Ihr Speicherkonto an:
 
@@ -176,6 +177,14 @@ Verwenden Sie den Befehl **az resource list** zum Abrufen von Ressourcen für an
   ```azurecli-interactive
   az resource list --resource-type "Microsoft.Storage/storageAccounts"
   ```
+
+## <a name="get-resource-id"></a>Abrufen der Ressourcen-ID
+
+Viele Befehle übernehmen eine Ressourcen-ID als einen Parameter. Verwenden Sie zum Abrufen der ID für eine Ressource und zum Speichern in einer Variablen Folgendes:
+
+```azurecli-interactive
+webappID=$(az resource show -g exampleGroup -n exampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
+```
 
 ## <a name="lock-a-resource"></a>Sperren einer Ressource
 

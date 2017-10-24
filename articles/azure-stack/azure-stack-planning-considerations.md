@@ -12,14 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 10/09/2017
 ms.author: twooley
+ms.openlocfilehash: 790b65720a8457b780dc727b0f67fcd12aed31bc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
-ms.openlocfilehash: 54d9ba1ac1e46843740b7dcec2c9bef80b2325b4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="planning-considerations-for-azure-stack-integrated-systems"></a>Überlegungen zur Planung für integrierte Azure Stack-Systeme
 
@@ -110,7 +109,10 @@ In der folgenden Tabelle sind diese Entscheidungen zur Domänenbenennung zusamme
 
 ## <a name="certificate-requirements"></a>Zertifikatanforderungen
 
-Für die Bereitstellung müssen Sie SSL-Zertifikate (Secure Sockets Layer) für öffentliche Endpunkte anbieten. Zertifikate haben die folgenden Anforderungen:
+Für die Bereitstellung müssen Sie SSL-Zertifikate (Secure Sockets Layer) für öffentliche Endpunkte anbieten. Auf allgemeiner Ebene haben Zertifikate die folgenden Anforderungen:
+
+> [!IMPORTANT]
+> Die Zertifikatinformationen in diesem Artikel werden nur als Hilfestellungen bereitgestellt. Bevor Sie Zertifikate für Azure Stack erwerben, wenden Sie sich an Ihren OEM-Hardwarepartner. Er stellt Ihnen ausführliche Anleitungen und Anforderungen für Zertifikate bereit.
 
 - Sie können ein einzelnes Platzhalterzertifikat oder eine Reihe von dedizierten Zertifikaten verwenden und dann Platzhalter nur für Endpunkte wie Speicher und Key Vault einsetzen.
 - Zertifikate müssen von einer öffentlichen vertrauenswürdigen Zertifizierungsstelle oder Unternehmenszertifizierungsstelle ausgestellt werden.
@@ -126,7 +128,7 @@ In der folgenden Tabelle sind Dienste und Anzahl von öffentlichen Endpunkten au
 | Portal (Benutzer) | portal. [Region].[Externe_Domäne] |
 | Key Vault (Benutzer) | &#42;.vault.[Region].[Externe_Domäne] |
 | Key Vault (Administrator) | &#42;.adminvault.[Region].[Externe_Domäne] |
-| Speicher | &#42;blob.[Region].[Externe_Domäne]<br>&#42;table.[Region].[Externe_Domäne]<br>&#42;queue.[Region].[Externe_Domäne]  |
+| Speicher | &#42;.blob.[Region].[Externe_Domäne]<br>&#42;.table.[Region].[Externe_Domäne]<br>&#42;.queue.[Region].[Externe_Domäne]  |
 | Graph** | graph.[Region].[Externe_Domäne] |
 | AD FS** | adfs.[Region].[Externe_Domäne] |
 | | |
@@ -285,4 +287,3 @@ Sie können Azure Site Recovery oder unterstützte Produkte von Drittanbietern v
 
 - Informationen zu Anwendungsfällen, zum Erwerb, zu Partnern und zu OEM-Hardwareanbietern finden Sie auf der Produktseite von [Azure Stack](https://azure.microsoft.com/overview/azure-stack/).
 - Informationen zur Roadmap und geografischen Verfügbarkeit für integrierte Azure Stack-Systeme finden Sie im Whitepaper: [Azure Stack: Eine Erweiterung von Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
-

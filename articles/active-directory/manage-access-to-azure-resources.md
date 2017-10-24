@@ -12,20 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2017
+ms.date: 10/05/2017
 ms.author: skwan
+ms.openlocfilehash: e42bbed0a9e37a6632b2a71d2b3546fcbc38cdc7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 17879d69b95186848a81e4ff4afdf8fc0d1a511e
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-access-to-azure-resources-with-azure-active-directory"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit Azure Active Directory
 
-Die Identitäts- und Zugriffsverwaltung für Cloudressourcen ist eine wichtige Funktion für jede Organisation, die die Cloud nutzt.  Azure Active Directory (Azure AD) ist das Identitäts- und Zugriffssystem für Microsoft Azure.  
+Die Identitäts- und Zugriffsverwaltung für Cloudressourcen ist eine wichtige Funktion für jede Organisation, die die Cloud nutzt. Azure Active Directory (Azure AD) ist das Identitäts- und Zugriffssystem für Microsoft Azure.  
 
+Sehen Sie sich das folgende Video an, bevor Sie die praktischen Featurebereiche von Azure AD erkunden: Locking down access to the Azure Cloud using SSO, Roles Based Access Control, and Conditional (Sperren des Zugriffs auf die Azure-Cloud mithilfe von SSO, rollenbasierter Zugriffssteuerung und bedingtem Zugriff). In diesem Video erhalten Sie Informationen zu folgenden Punkten:
+
+- Bewährte Methoden für das Konfigurieren des einmaligen Anmeldens beim Azure-Portal mit lokaler Active Directory-Instanz
+- Verwenden von Azure RBAC für differenzierte Zugriffssteuerung auf Ressourcen in Abonnements
+- Erzwingen sicherer Authentifizierungsregeln mit bedingtem Azure AD-Zugriff
+- Konzept der verwalteten Dienstidentität, mit der Azure-Ressourcen automatisch für Azure-Dienste authentifiziert werden können und Entwickler keine API-Schlüssel oder -Geheimnisse verarbeiten müssen
+
+> [!VIDEO https://www.youtube.com/embed/FKBoWWKRnvI]
+
+## <a name="feature-areas"></a>Featurebereiche
 Azure AD bietet die folgenden Funktionen für die Verwaltung des Zugriffs auf Azure-Ressourcen:
 
 |||

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: glenga
+ms.openlocfilehash: ee64913629124f886e91478c21304956fbec9f90
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 06e85d02d82bcc7d57989c1dce97028b24b9f317
-ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="article-top"></a>Migrieren des vorhandenen Azure Mobile Service zu Azure App Service
 Mit der [allgemeinen Verfügbarkeit von Azure App Service]können Azure Mobile Services-Websites problemlos direkt migriert werden, um alle Features von Azure App Service zu nutzen.  Dieses Dokument erläutert, was Sie erwarten können, wenn Sie Ihre Website von Azure Mobile Services zu Azure App Service migrieren.
@@ -32,7 +31,7 @@ Die Migration Ihres Azure Mobile Service wandelt den Mobile Service in eine [Azu
 ## <a name="why-migrate"></a>Gründe zur Migration Ihrer Website
 Microsoft empfiehlt Ihnen, Ihren Azure Mobile Service zu migrieren, um die Features von Azure App Service zu nutzen, einschließlich:
 
-* Neue Hostfeatures, einschließlich [WebJobs] und [benutzerdefinierten Domänennamen].
+* Neue Hostfeatures, u.a. [WebJobs] und [benutzerdefinierte Domänennamen].
 * Überwachung und Problembehandlung mit New Relic oder [Application Insights].
 * Integrierte DevOps-Tools, einschließlich [Stagingslots], Rollback und Test in der Produktion.
 * [Automatische Skalierung], Lastenausgleich und [Leistungsüberwachung].
@@ -375,29 +374,26 @@ Ihre Anwendung wurde nicht nur zu App Service migriert, sondern Sie können soga
 <!-- Links -->
 [App Service – Preise]: https://azure.microsoft.com/en-us/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
-[Automatische Skalierung]: ../app-service-web/web-sites-scale.md
-[Azure App Service]: ../app-service/app-service-value-prop-what-is.md
-[Dokumentation zur Azure App Service-Bereitstellung]: ../app-service-web/web-sites-deploy.md
+[Automatische Skalierung]: ../app-service/web-sites-scale.md
+[Azure App Service]: ../app-service/app-service-web-overview.md
 [klassischen Azure-Portal]: https://manage.windowsazure.com
 [Azure-Portal]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/en-us/regions/
 [Azure Scheduler-Pläne]: ../scheduler/scheduler-plans-billing.md
-[fortlaufend bereitstellen]: ../app-service-web/app-service-continuous-deployment.md
+[fortlaufend bereitstellen]: ../app-service/app-service-continuous-deployment.md
 [Konvertieren Sie Ihre gemischten Namespaces]: https://azure.microsoft.com/en-us/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
-[benutzerdefinierten Domänennamen]: ../app-service-web/web-sites-custom-domain-name.md
+[benutzerdefinierte Domänennamen]: ../app-service/app-service-web-tutorial-custom-domain.md
 [Fiddler]: http://www.telerik.com/fiddler
 [allgemeinen Verfügbarkeit von Azure App Service]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[Protokollierung]: ../app-service-web/web-sites-enable-diagnostic-log.md
+[Protokollierung]: ../app-service/web-sites-enable-diagnostic-log.md
 [Mobile Apps-Node.js-SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services im Vergleich zu App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
-[Leistungsüberwachung]: ../app-service-web/web-sites-monitor.md
+[Leistungsüberwachung]: ../app-service/web-sites-monitor.md
 [Postman]: http://www.getpostman.com/
-[Stagingslots]: ../app-service-web/web-sites-staged-publishing.md
-[VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
-[WebJobs]: ../app-service-web/websites-webjobs-resources.md
+[Stagingslots]: ../app-service/web-sites-staged-publishing.md
+[VNet]: ../app-service/web-sites-integrate-with-vnet.md
 [XDT-Transformationsbeispielen]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [Funktionen]: ../azure-functions/functions-overview.md
-

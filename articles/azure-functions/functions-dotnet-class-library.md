@@ -14,14 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/09/2017
+ms.date: 10/10/2017
 ms.author: donnam
+ms.openlocfilehash: ad71a32d82e9b5aa4efda6d7ea67a9326ffcc4ff
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: f45b3f705ba3d11dd20221e3a7a465796d7a86a1
-ms.contentlocale: de-de
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>Verwenden von .NET-Klassenbibliotheken mit Azure Functions
 
@@ -31,8 +30,8 @@ Neben Skriptdateien unterstützt Azure Functions die Veröffentlichung einer Kla
 
 Für diesen Artikel ist Folgendes erforderlich:
 
-- [Visual Studio 2017 15.3 – Vorschau](https://www.visualstudio.com/vs/preview/). Installieren Sie die Workloads **ASP.NET und Webentwicklung** sowie **Azure-Entwicklung**.
-- [Azure Functions-Tools für Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=AndrewBHall-MSFT.AzureFunctionToolsforVisualStudio2017)
+- [Visual Studio 2017, Version 15.3](https://www.visualstudio.com/vs/) oder höher.
+- Installieren Sie die Workload **Azure-Entwicklung**.
 
 ## <a name="functions-class-library-project"></a>Funktionsklassenbibliotheks-Projekt
 
@@ -50,14 +49,15 @@ Beim Erstellen eines Azure Functions-Projekts wird eine *function.json*-Datei im
 
 Das NuGet-Paket [Microsoft\.NET\.Sdk\.Functions](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) führt diese Konvertierung aus. Die Quelle ist im GitHub-Repository [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk) verfügbar.
 
-## <a name="triggers-and-bindings"></a>Trigger und Bindungen
+## <a name="triggers-and-bindings"></a>Trigger und Bindungen 
 
 Die folgende Tabelle enthält die Trigger und Bindungen, die in einem Azure Functions-Klassenbibliotheksprojekt verfügbar sind. Alle Attribute sind im Namespace `Microsoft.Azure.WebJobs`.
 
 | Bindung | Attribut | NuGet-Paket |
 |------   | ------    | ------        |
 | [Blobspeichertrigger, Eingabe, Ausgabe](#blob-storage) | [BlobAttribute], [StorageAccountAttribute] | [Microsoft.Azure.WebJobs] | [Blobspeicher] |
-| [Cosmos DB-Eingabe- und Ausgabebindung](#cosmos-db) | [DocumentDBAttribute] | [Microsoft.Azure.WebJobs.Extensions.DocumentDB] | 
+| [Cosmos DB-Trigger](#cosmos-db) | [CosmosDBTriggerAttribute] | [Microsoft.Azure.WebJobs.Extensions.DocumentDB] | 
+| [Cosmos DB-Eingabe und -Ausgabe](#cosmos-db) | [DocumentDBAttribute] | [Microsoft.Azure.WebJobs.Extensions.DocumentDB] |
 | [Event Hubs: Trigger und Ausgabe](#event-hub) | [EventHubTriggerAttribute], [EventHubAttribute] | [Microsoft.Azure.WebJobs.ServiceBus] |
 | [Externe Datei: Ein- und Ausgabe](#api-hub) | [ApiHubFileAttribute] | [Microsoft.Azure.WebJobs.Extensions.ApiHub] |
 | [HTTP- und Webhooktrigger](#http) | [HttpTriggerAttribute] | [Microsoft.Azure.WebJobs.Extensions.Http] |
@@ -72,11 +72,11 @@ Die folgende Tabelle enthält die Trigger und Bindungen, die in einem Azure Func
 
 <a name="blob-storage"></a>
 
-### <a name="blob-storage-trigger-input-and-output-bindings"></a>Blobspeicher: Trigger, Eingabe- und Ausgabebindungen
+### <a name="blob-storage-trigger-input-bindings-and-output-bindings"></a>Blobspeicher: Trigger, Eingabebindungen und Ausgabebindungen
 
 Azure Functions unterstützt Trigger, Ein- und Ausgabebindungen für Azure Blob Storage. Weitere Informationen zu Bindungsausdrücken und Metadaten finden Sie unter [Azure Functions – Blob Storage-Bindungen](functions-bindings-storage-blob.md).
 
-Ein Blobtrigger wird mit dem `[BlobTrigger]`-Attribut definiert. Sie können mit dem Attribut `[StorageAccount]` das Speicherkonto definieren, das von einer gesamten Funktion oder Klasse verwendet wird.
+Ein Blobtrigger wird mit dem `[BlobTrigger]`-Attribut definiert. Sie können mit dem Attribut `[StorageAccount]` den App-Einstellungsnamen mit der Verbindungszeichenfolge für das Speicherkonto definieren, das von einer gesamten Funktion oder Klasse verwendet wird.
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -121,17 +121,30 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 
 <a name="cosmos-db"></a>
 
-### <a name="cosmos-db-input-and-output-bindings"></a>Cosmos DB-Eingabe- und Ausgabebindungen
+### <a name="cosmos-db-trigger-input-bindings-and-output-bindings"></a>Cosmos DB: Trigger, Eingabebindungen und Ausgabebindungen
 
-Azure Functions unterstützt Eingabe- und Ausgabebindungen für Cosmos DB. Weitere Informationen zu den Funktionen der Cosmos-DB-Bindung finden Sie unter [Cosmos DB-Bindungen in Azure Functions](functions-bindings-documentdb.md).
+Azure Functions unterstützt Trigger sowie Eingabe- und Ausgabebindungen für Cosmos DB. Weitere Informationen zu den Funktionen der Cosmos-DB-Bindung finden Sie unter [Cosmos DB-Bindungen in Azure Functions](functions-bindings-documentdb.md).
 
-Verwenden Sie zur Bindung an ein Cosmos-DB-Dokument das Attribut `[DocumentDB]` im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DocumentDB]. Das folgende Beispiel enthält einen Warteschlangentrigger und eine DocumentDB-API-Ausgabebindung:
+Verwenden Sie für die Auslösung aus einem Cosmos DB-Dokument das Attribut `[CosmosDBTrigger]` im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DocumentDB]. Das folgende Beispiel enthält einen Trigger von einer bestimmten `database` und `collection`. Die Einstellung `myCosmosDB` enthält die Verbindung mit der Cosmos DB-Instanz. 
+
+```csharp
+[FunctionName("DocumentUpdates")]
+public static void Run(
+    [CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
+IReadOnlyList<Document> documents, TraceWriter log)
+{
+        log.Info("Documents modified " + documents.Count);
+        log.Info("First document Id " + documents[0].Id);
+}
+```
+
+Verwenden Sie zur Bindung an ein Cosmos-DB-Dokument das Attribut `[DocumentDB]` im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DocumentDB]. Das folgende Beispiel weist einen Warteschlangentrigger und eine DocumentDB-API-Ausgabebindung auf.
 
 ```csharp
 [FunctionName("QueueToDocDB")]        
 public static void Run(
     [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem, 
-    [DocumentDB("ToDoList", "Items", ConnectionStringSetting = "DocDBConnection")] out dynamic document)
+    [DocumentDB("ToDoList", "Items", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
 {
     document = new { Text = myQueueItem, id = Guid.NewGuid() };
 }
@@ -232,7 +245,7 @@ Azure Functions unterstützt eine Ausgabebindung für Notification Hubs. Weitere
 
 Azure Functions unterstützt Trigger- und Ausgabebindungen für Azure-Warteschlangen. Weitere Informationen finden Sie unter [Azure Storage-Warteschlangenbindungen in Azure Functions](functions-bindings-storage-queue.md).
 
-Im folgenden Beispiel wird gezeigt, wie der Funktionsrückgabetyp mithilfe des `[Queue]`-Attributs mit der Warteschlangenausgaben-Bindung verwendet wird. Verwenden Sie zum Definieren eines Triggers für die Warteschlange das `[QueueTrigger]`-Attribut.
+Im folgenden Beispiel wird gezeigt, wie der Funktionsrückgabetyp mithilfe des `[Queue]`-Attributs mit der Warteschlangenausgaben-Bindung verwendet wird. 
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -246,7 +259,15 @@ public static class QueueFunctions
         log.Info($"C# function processed: {input.Text}");
         return input.Text;
     }
+}
 
+```
+
+Verwenden Sie zum Definieren eines Triggers für die Warteschlange das `[QueueTrigger]`-Attribut.
+```csharp
+[StorageAccount("AzureWebJobsStorage")]
+public static class QueueFunctions
+{
     // Queue trigger
     [FunctionName("QueueTrigger")]
     [StorageAccount("AzureWebJobsStorage")]
@@ -258,13 +279,16 @@ public static class QueueFunctions
 
 ```
 
+
 <a name="sendgrid"></a>
 
 ### <a name="sendgrid-output"></a>SendGrid-Ausgabe
 
 Azure Functions unterstützt eine SendGrid-Ausgabebindung für das programmgesteuerte Senden von E-Mail. Weitere Informationen finden Sie unter [SendGrid-Bindungen in Azure Functions](functions-bindings-sendgrid.md).
 
-Das Attribut `[SendGrid]` wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.SendGrid] definiert.
+Das Attribut `[SendGrid]` wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.SendGrid] definiert. Eine SendGrid-Bindung erfordert die Anwendungseinstellung `AzureWebJobsSendGridApiKey`, die Ihren SendGrid-API-Schlüssel enthält. Dies ist der Standardeinstellungsname für Ihren SendGrid-API-Schlüssel. Wenn Sie mehrere SendGrid-Schlüssel benötigen oder einen anderen Einstellungsnamen auswählen, können Sie diesen Namen über die `ApiKey`-Eigenschaft des Bindungsattributs `SendGrid` festlegen, wie im folgenden Beispiel gezeigt:
+
+    [SendGrid(ApiKey = "MyCustomSendGridKeyName")]
 
 Das folgende Beispiel zeigt die Verwendung eines Service Bus-Warteschlangentriggers und einer SendGrid-Ausgabebindung mit `SendGridMessage`:
 
@@ -289,6 +313,7 @@ public class OutgoingEmail
     public string Body { get; set; }
 }
 ```
+Beachten Sie, dass der SendGrid-API-Schlüssel für dieses Beispiel in einer Anwendung mit dem Namen `AzureWebJobsSendGridApiKey` gespeichert sein muss.
 
 <a name="service-bus"></a>
 
@@ -365,7 +390,7 @@ Azure Functions hat eine Timertriggerbindung, mit der Sie Ihren Funktionscode au
 
 Im Verbrauchsplan können Sie Zeitpläne mit einem [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression) definieren. Wenn Sie einen App Service-Plan verwenden, können Sie auch eine TimeSpan-Zeichenfolge einsetzen. 
 
-Das folgende Beispiel definiert einen Timertrigger, der alle 5 Minuten ausgeführt wird:
+Das folgende Beispiel definiert einen Timertrigger, der alle fünf Minuten ausgeführt wird:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
@@ -411,7 +436,7 @@ Weitere Informationen zum Verwenden von Azure Functions in C#-Skripts finden Sie
 
 <!-- NuGet packages --> 
 [Microsoft.Azure.WebJobs]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs/2.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.DocumentDB]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB/1.1.0-beta1
+[Microsoft.Azure.WebJobs.Extensions.DocumentDB]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB/1.1.0-beta4
 [Microsoft.Azure.WebJobs.ServiceBus]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/2.1.0-beta1
 [Microsoft.Azure.WebJobs.Extensions.MobileApps]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps/1.1.0-beta1
 [Microsoft.Azure.WebJobs.Extensions.NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs/1.1.0-beta1
@@ -426,6 +451,7 @@ Weitere Informationen zum Verwenden von Azure Functions in C#-Skripts finden Sie
 
 <!-- Links to source --> 
 [DocumentDBAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs
+[CosmosDBTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/Trigger/CosmosDBTriggerAttribute.cs
 [EventHubAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs
 [EventHubTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs
 [MobileTableAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs
@@ -441,4 +467,3 @@ Weitere Informationen zum Verwenden von Azure Functions in C#-Skripts finden Sie
 [HttpTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs
 [ApiHubFileAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.ApiHub/ApiHubFileAttribute.cs
 [TimerTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs
-

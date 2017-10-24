@@ -14,14 +14,12 @@ ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: gwallace
 ms.custom: mvc
+ms.openlocfilehash: a204498016ff837c5247009eaaffbd4f79285d0b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
-ms.openlocfilehash: b0b043f0e30eec7a9456ef15b28b9c89fccf33df
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Hochladen von Bilddaten in die Cloud mit Azure Storage
 
 Dieses Tutorial ist der erste Teil einer Serie. In diesem Tutorial wird gezeigt, wie eine Webanwendung bereitgestellt wird, die die Azure Storage-Clientbibliothek zum Hochladen von Bildern in ein Speicherkonto verwendet. Nachdem Sie das Tutorial abgeschlossen haben, verfügen Sie über eine Web-App, die Bilder in Azure Storage speichern und anzeigen kann.
@@ -31,7 +29,7 @@ Dieses Tutorial ist der erste Teil einer Serie. In diesem Tutorial wird gezeigt,
 Im ersten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines Speicherkontos
+> * Erstellen Sie ein Speicherkonto.
 > * Erstellen eines Containers und Festlegen von Berechtigungen
 > * Abrufen eines Zugriffsschlüssels
 > * Konfigurieren von Anwendungseinstellungen
@@ -46,18 +44,18 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
  
-Im folgenden Beispiel wird eine Ressourcengruppe namens `myResourceGroup` erstellt.   
+Im folgenden Beispiel wird eine Ressourcengruppe namens `myResourceGroup` erstellt.
  
 ```azurecli-interactive 
 az group create --name myResourceGroup --location westcentralus 
 ``` 
 
-## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
+## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
  
 Das Beispiel lädt Bilder in einen Blob-Container in einem Azure Storage-Konto hoch. Ein Speicherkonto stellt einen eindeutigen Namespace zum Speichern Ihrer Azure Storage-Datenobjekte sowie für den Zugriff darauf bereit. Erstellen Sie ein Speicherkonto in der Ressourcengruppe, die Sie erstellt haben, indem Sie den Befehl [az storage account create](/cli/azure/storage/account#create) verwenden. 
 
 > [!IMPORTANT] 
-> In Teil 2 des Tutorials verwenden Sie Ereignisabonnements für Blob Storage. Ereignisabonnements werden zurzeit nur für Blob Storage-Konten in Teilen der USA (Westen-Mitte und Westen) unterstützt. Aufgrund dieser Einschränkung müssen Sie ein Blob Storage-Konto erstellen, das von der Beispiel-App zum Speichern von Bildern und Miniaturansichten verwendet wird.   
+> In Teil 2 des Tutorials verwenden Sie Ereignisabonnements für Blob Storage. Ereignisabonnements werden zurzeit nur für Blob Storage-Konten in Teilen der USA (Westen-Mitte und Westen 2) unterstützt. Aufgrund dieser Einschränkung müssen Sie ein Blob Storage-Konto erstellen, das von der Beispiel-App zum Speichern von Bildern und Miniaturansichten verwendet wird.   
 
 Ersetzen Sie im folgenden Befehl den Platzhalter `<blob_storage_account>` durch Ihren eigenen global eindeutigen Namen für das Blob Storage-Konto.  
 
@@ -67,7 +65,7 @@ az storage account create --name <blob_storage_account> \
 --sku Standard_LRS --kind blobstorage --access-tier hot 
 ``` 
  
-## <a name="create-blob-storage-containers"></a>Erstellen von Blob Storage-Containern 
+## <a name="create-blob-storage-containers"></a>Erstellen von Blob Storage-Containern
  
 Die App verwendet zwei Container im Blob Storage-Konto. Container ähneln Ordnern und werden zum Speichern von Blobs verwendet. In den Container _images_ lädt die App Bilder mit voller Auflösung hoch. In einem späteren Teil der Serie lädt eine Azure-Funktions-App Miniaturansichten der Bilder mit geänderter Größe in den Container _thumbs_ hoch. 
 
@@ -107,7 +105,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App 
 
-Die Web-App bietet einen Hostingort für den Code der Beispiel-App, der aus dem GitHub-Beispielrepository bereitgestellt wird. Erstellen Sie eine [Web-App](../../app-service-web/app-service-web-overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp#create).  
+Die Web-App bietet einen Hostingort für den Code der Beispiel-App, der aus dem GitHub-Beispielrepository bereitgestellt wird. Erstellen Sie eine [Web-App](../../app-service/app-service-web-overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp#create).  
  
 Ersetzen Sie im folgenden Befehl `<web_app>` durch einen eindeutigen Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). Wenn `<web_app>` nicht eindeutig ist, wird die folgende Fehlermeldung angezeigt: _Eine Website mit dem Namen `<web_app>` ist bereits vorhanden._ Die Standard-URL der Web-App lautet `https://<web_app>.azurewebsites.net`.  
 
@@ -215,15 +213,14 @@ CDN kann zum Zwischenspeichern von Inhalt aus Ihrem Azure-Speicherkonto aktivier
 In Teil eins der Serie haben Sie erfahren, wie eine Web-App konfiguriert wird, die mit dem Speicher interagiert, und Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Erstellen eines Speicherkontos
+> * Erstellen Sie ein Speicherkonto.
 > * Erstellen eines Containers und Festlegen von Berechtigungen
 > * Abrufen eines Zugriffsschlüssels
 > * Konfigurieren von Anwendungseinstellungen
 > * Bereitstellen einer Web-App in Azure
 > * Interagieren mit der Webanwendung
 
-Fahren Sie mit Teil zwei der Serie fort, um zu erfahren, wie Event Grid zum Auslösen einer Azure-Funktion zur Größenänderung eines Bilds verwendet wird.  
+Fahren Sie mit Teil zwei der Serie fort, um zu erfahren, wie Event Grid zum Auslösen einer Azure-Funktion zur Größenänderung eines Bilds verwendet wird.
 
 > [!div class="nextstepaction"]
 > [Verwenden von Event Grid zum Auslösen einer Azure-Funktion zum Ändern der Größe eines hochgeladenen Bilds](../../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-

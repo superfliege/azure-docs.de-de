@@ -3,7 +3,7 @@ title: Untergeordnete Runbooks in Azure Automation | Microsoft Docs
 description: "Beschreibt die verschiedenen Methoden, die verwendet werden können, um ein Runbook in Azure Automation über ein anderes Runbook zu starten und Informationen zwischen über- und untergeordnetem Runbook freizugeben."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 919887b9-43e2-4c16-883c-f81807fe37db
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2017
 ms.author: magoedte;bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cf3d1ae66483fed4aa9cd31f674729e4b875653c
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 617e18f5435c7eacb7751ccca6ac2f3814745f04
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Untergeordnete Runbooks in Azure Automation
 Es ist eine bewährte Methode in Azure Automation, wieder verwendbare, modulare Runbooks mit einer diskreten Funktion zu schreiben, die von anderen Runbooks verwendet werden können. Ein übergeordnetes Runbook ruft häufig untergeordnete Runbooks zum Durchführen erforderlicher Funktionen auf. Zum Aufrufen eines untergeordneten Runbooks stehen zwei Methoden zur Auswahl, die sich erheblich unterscheiden. Um die beste Methode für Ihre verschiedenen Szenarien bestimmen zu können, sollten Sie sich daher zunächst mit diesen Unterschieden vertraut machen.
@@ -44,7 +43,7 @@ Bedeutung der Reihenfolge der Veröffentlichung:
 
 * Die Veröffentlichungsreihenfolge von Runbooks spielt nur für PowerShell-Workflow- und grafische PowerShell-Workflow-Runbooks eine Rolle.
 
-Wenn Sie ein untergeordnetes grafisches oder PowerShell-Workflow-Runbook mit Inlineausführung aufrufen, verwenden Sie einfach den Namen des Runbooks.  Wenn Sie in PowerShell ein untergeordnetes Runbook aufrufen, müssen Sie vor dessen Namen das folgende Präfix setzen: *.\\*  vorangestellt werden, um anzugeben, dass sich das Skript im lokalen Verzeichnis befindet. 
+Wenn Sie ein untergeordnetes grafisches oder PowerShell-Workflow-Runbook mit Inlineausführung aufrufen, verwenden Sie einfach den Namen des Runbooks.  Wenn Sie ein untergeordnetes PowerShell-Runbook aufrufen, müssen Sie seinem Namen *.\\* voranstellen, um anzugeben, dass sich das Skript im lokalen Verzeichnis befindet. 
 
 ### <a name="example"></a>Beispiel
 Im folgenden Beispiel wird ein untergeordnetes Testrunbook aufgerufen, das drei Parameter akzeptiert – ein komplexes Objekt, eine ganze Zahl und einen booleschen Wert. Die Ausgabe des untergeordneten Runbooks wird einer Variablen zugewiesen.  In diesem Fall ist das untergeordnete Runbook ein PowerShell-Workflow-Runbook.
@@ -87,5 +86,4 @@ Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen den
 ## <a name="next-steps"></a>Nächste Schritte
 * [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md)
 * [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md)
-
 

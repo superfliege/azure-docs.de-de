@@ -10,6 +10,8 @@
 | Gebietsschema des Betriebssystems | Englisch (en-us)|
 | VMware vSphere PowerCLI-Version | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
 | Windows Server-Rollen | Aktivieren Sie die folgenden Rollen nicht: <br> - Active Directory Domain Services <br>- Internetinformationsdienste <br> - Hyper-V |
+| Gruppenrichtlinien| Die folgenden Gruppenrichtlinien sollten auf dem Server nicht aktiviert werden. <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> **Hinweis:** Weitere Informationen zu diesen Gruppenrichtlinien finden Sie [hier](https://technet.microsoft.com/en-us/library/gg176671(v=ws.10).aspx).|
+| IIS-Konfiguration (Internetinformationsdienste) | - Keine bereits vorhandene Standardwebsite <br> - Aktivieren der [anonymen Authentifizierung](https://technet.microsoft.com/en-us/library/cc731244(v=ws.10).aspx) <br> - Aktivieren der Einstellung [FastCGI](https://technet.microsoft.com/en-us/library/cc753077(v=ws.10).aspx)  <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen<br>|
 | **Netzwerk** | |
 | Art der Netzwerkschnittstellenkarte | VMXNET3 |
 | Art der IP-Adresse | Statisch |

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: tamram
+ms.openlocfilehash: a3eb598b2dabd4986c72b8814926eb0944707050
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: 6fe7d46e39de204874c8bc91a0101b9e0541539b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Festlegen und Abrufen von Eigenschaften und Metadaten
 
@@ -29,16 +28,16 @@ Objekte in Azure Storage unterstützen zusätzlich zu den Daten, die sie enthalt
 
 * **Benutzerdefinierte Metadaten**: Benutzerdefinierte Metadaten sind Metadaten, die für eine bestimmte Ressource in Form von Name-Wert-Paaren angegeben werden. Sie können Metadaten verwenden, um weitere Werte zusammen mit einer Speicherressource zu speichern. Diese zusätzlichen Metadatenwerte sind nur für Ihre eigenen Zwecke und wirken sich nicht auf das Verhalten der Ressource aus.
 
-Das Abrufen von Eigenschafts- und Metadatenwerten einer Speicherressource ist ein zweistufiger Prozess. Bevor Sie diese Werte lesen können, müssen Sie sie explizit durch Aufrufen der **FetchAttributes** -Methode abrufen.
+Das Abrufen von Eigenschafts- und Metadatenwerten einer Speicherressource ist ein zweistufiger Prozess. Bevor Sie diese Werte lesen können, müssen Sie sie explizit durch Aufrufen der **FetchAttributesAsync**-Methode abrufen.
 
 > [!IMPORTANT]
-> Eigenschafts- und Metadatenwerte werden bei einer Speicherressource nicht aufgefüllt, sofern Sie nicht eine der **FetchAttributes** -Methoden aufrufen.
+> Eigenschafts- und Metadatenwerte werden bei einer Speicherressource nicht aufgefüllt, sofern Sie nicht eine der **FetchAttributesAsync**-Methoden aufrufen.
 >
 > Sie erhalten die Meldung `400 Bad Request`, wenn Name-Wert-Paare Nicht-ASCII-Zeichen enthalten. Name-Wert-Paare für Metadaten sind gültige HTTP-Header und müssen daher allen Einschränkungen für HTTP-Header entsprechen. Es wird daher empfohlen, für Namen und Werte mit Nicht-ASCII-Zeichen die URL- oder Base64-Codierung zu wählen.
 >
 
 ## <a name="setting-and-retrieving-properties"></a>Festlegen und Abrufen von Eigenschaften
-Zum Abrufen von Eigenschaftswerten rufen Sie die **FetchAttributes** -Methode für das Blob oder den Container auf, um die Eigenschaften aufzufüllen, und lesen anschließend die Werte.
+Zum Abrufen von Eigenschaftswerten rufen Sie die **FetchAttributesAsync**-Methode für das Blob oder den Container auf, um die Eigenschaften aufzufüllen, und lesen anschließend die Werte.
 
 Um Eigenschaften für ein Objekt festzulegen, geben Sie den Eigenschaftswert an und rufen dann die **SetProperties** -Methode auf.
 
@@ -59,7 +58,7 @@ CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 container.CreateIfNotExists();
 
 // Fetch container properties and write out their values.
-container.FetchAttributes();
+await container.FetchAttributesAsync();
 Console.WriteLine("Properties for container {0}", container.StorageUri.PrimaryUri.ToString());
 Console.WriteLine("LastModifiedUTC: {0}", container.Properties.LastModified.ToString());
 Console.WriteLine("ETag: {0}", container.Properties.ETag);
@@ -77,26 +76,26 @@ Sie können Metadaten als ein oder mehrere Name-Wert-Paare für ein Blob oder ei
 Das folgende Codebeispiel legt die Metadaten für einen Container fest. Mittels der **Hinzufügen** -Methode der Sammlung wird ein Wert festgelegt. Der andere Wert wird mit der impliziten Schlüssel-Wert-Syntax festgelegt. Beide eignen sich hierzu.
 
 ```csharp
-public static void AddContainerMetadata(CloudBlobContainer container)
+public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
 {
-    //Add some metadata to the container.
+    // Add some metadata to the container.
     container.Metadata.Add("docType", "textDocuments");
     container.Metadata["category"] = "guidance";
 
-    //Set the container's metadata.
-    container.SetMetadata();
+    // Set the container's metadata.
+    await container.SetMetadataAsync();
 }
 ```
 
 Zum Abrufen von Metadaten rufen Sie die **FetchAttributes**-Methode für das Blob oder den Container auf, um die **Metadaten**-Auflistung zu füllen, und lesen anschließend die Werte wie im unten stehenden Beispiel gezeigt.
 
 ```csharp
-public static void ListContainerMetadata(CloudBlobContainer container)
+public static async Task ListContainerMetadataAsync(CloudBlobContainer container)
 {
-    //Fetch container attributes in order to populate the container's properties and metadata.
-    container.FetchAttributes();
+    // Fetch container attributes in order to populate the container's properties and metadata.
+    await container.FetchAttributesAsync();
 
-    //Enumerate the container's metadata.
+    // Enumerate the container's metadata.
     Console.WriteLine("Container metadata:");
     foreach (var metadataItem in container.Metadata)
     {
@@ -109,4 +108,3 @@ public static void ListContainerMetadata(CloudBlobContainer container)
 ## <a name="next-steps"></a>Nächste Schritte
 * [Azure Storage-Clientbibliothek für .NET-Referenz](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
 * [Azure Storage-Clientbibliothek für .NET-NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.Storage/)
-

@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/10/2017
 ms.author: jeedes
 ms.openlocfilehash: c952975919cfd948f1b9ea93ff2ac2641a53f923
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Tutorial: Azure Active Directory-Integration mit Coupa
 In diesem Tutorial wird die Integration von Azure und Coupa erläutert.  
@@ -143,7 +143,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 **Führen Sie zum Zuweisen von Benutzern in Coupa folgende Schritte aus:**
 
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
-2. Auf der ** Coupa ** anwendungsintegrationsseite, klicken Sie auf **Zuweisen von Benutzern**.
+2. Klicken Sie auf der Anwendungsintegrationsseite für **Coupa** auf **Benutzer zuweisen**.
    
    ![Zuweisen von Benutzern](./media/active-directory-saas-coupa-tutorial/IC791911.png "Zuweisen von Benutzern")
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.

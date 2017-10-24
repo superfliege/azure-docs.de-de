@@ -11,14 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
+ms.openlocfilehash: fd63d53697ccd529c144482202e2fd8c6b184991
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 6e1fa23bffc03a8a77c0c9e3342609c042fc4a5b
-ms.contentlocale: de-de
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Informationen zum Verwenden der verwalteten Azure-Dienstidentität (öffentliche Vorschau) in App Service und Azure Functions
 
 > [!NOTE] 
@@ -29,6 +27,10 @@ In diesem Thema erfahren Sie, wie eine verwaltete App-Identität für App Servic
 ## <a name="creating-an-app-with-an-identity"></a>Erstellen einer App mit einer Identität
 
 Für die Erstellung einer App mit einer Identität muss eine zusätzliche Eigenschaft in der Anwendung festgelegt werden.
+
+> [!NOTE] 
+> Nur der primäre Slot für eine Website erhält die Identität. Verwaltete Dienstidentitäten für Bereitstellungsslots werden noch nicht unterstützt.
+
 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
@@ -46,7 +48,7 @@ Um eine verwaltete Dienstidentität im Portal einzurichten, erstellen Sie wie ge
 
 ### <a name="using-an-azure-resource-manager-template"></a>Verwenden einer Azure Resource Manager-Vorlage
 
-Mithilfe einer Azure Resource Manager-Vorlage kann die Bereitstellung Ihrer Azure-Ressourcen automatisiert werden. Weitere Informationen zum Bereitstellen von App Service und Azure Functions finden Sie unter [Automatisieren der Ressourcenbereitstellung in App Service](../app-service-web/app-service-deploy-complex-application-predictably.md) und [Automatisieren der Ressourcenbereitstellung in Azure Functions](../azure-functions/functions-infrastructure-as-code.md).
+Mithilfe einer Azure Resource Manager-Vorlage kann die Bereitstellung Ihrer Azure-Ressourcen automatisiert werden. Weitere Informationen zum Bereitstellen von App Service und Azure Functions finden Sie unter [Automatisieren der Ressourcenbereitstellung in App Service](../app-service/app-service-deploy-complex-application-predictably.md) und [Automatisieren der Ressourcenbereitstellung in Azure Functions](../azure-functions/functions-infrastructure-as-code.md).
 
 Ressourcen vom Typ `Microsoft.Web/sites` können mit einer Identität erstellt werden, indem die folgende Eigenschaft in der Ressourcendefinition eingeschlossen wird:
 ```json
@@ -145,6 +147,7 @@ Eine erfolgreiche 200 OK-Antwort enthält einen JSON-Text mit folgenden Eigensch
 > |resource|Der App-ID-URI des empfangenden Webdiensts.|
 > |token_type|Gibt den Wert des Tokentyps an. Bearertoken ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertokens finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertokens (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt).|
 
+
 Diese Antwort ist mit der [Antwort für die Zugriffstokenanforderung zwischen zwei AAD-Diensten](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#service-to-service-access-token-response) identisch.
 
 ### <a name="rest-protocol-examples"></a>Beispiele für REST-Protokolle
@@ -194,3 +197,11 @@ const getToken = function(resource, apiver, cb) {
 }
 ```
 
+PowerShell:
+```powershell
+$apiVersion = "2017-09-01"
+$resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
+$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=$apiVersion"
+$tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
+$accessToken = $tokenResponse.access_token
+```

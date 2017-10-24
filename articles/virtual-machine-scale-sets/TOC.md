@@ -21,19 +21,20 @@
 ### [Erstellen mit Visual Studio](virtual-machine-scale-sets-vs-create.md)
 ### [Erstellen mit Azure PowerShell oder der Azure CLI](virtual-machine-scale-sets-create.md)
 ### [Skalierungsgruppe mit verwalteten Datenträgern](virtual-machine-scale-sets-managed-disks.md)
-### [Linux-Skalierungsgruppe mit automatischer Skalierung](virtual-machine-scale-sets-linux-autoscale.md)
-### [Windows-Skalierungsgruppe mit automatischer Skalierung](virtual-machine-scale-sets-windows-autoscale.md)
+### [Automatisches Skalieren einer Skalierungsgruppe](virtual-machine-scale-sets-autoscale-overview.md)
+#### [Verwenden des Azure-Portals](virtual-machine-scale-sets-autoscale-portal.md)
+#### [Verwenden von Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
+#### [Verwenden von Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
+#### [Erweiterte automatische Skalierung](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Anwendungen in Skalierungsgruppen](virtual-machine-scale-sets-deploy-app.md)
 ### [Verwenden von Datenträgern mit Skalierungsgruppen](virtual-machine-scale-sets-attached-disks.md)
 ### [Verwenden umfangreicher Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md)
 ### [Konvertieren einer Skalierungsgruppenvorlage für die Verwendung verwalteter Datenträger](virtual-machine-scale-sets-convert-template-to-md.md)
 
-
-
 ## Verwalten
-### [Windows-Skalierungsgruppe unter Verwendung von Azure PowerShell](virtual-machine-scale-sets-windows-manage.md)
-### [Automatische Skalierung und Skalierungsgruppen](virtual-machine-scale-sets-autoscale-overview.md)
-### [Erweiterte automatische Skalierung](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
+### Allgemeine Verwaltungsaufgaben
+#### [Verwenden von Azure CLI 2.0](virtual-machine-scale-sets-manage-cli.md)
+#### [Verwenden von Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md)
 ### [Vertikale Skalierung in einer Skalierungsgruppe](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 ### [Upgrades für Skalierungsgruppen](virtual-machine-scale-sets-upgrade-scale-set.md)
 ### [Verwenden von DSC und Skalierungsgruppen](virtual-machine-scale-sets-dsc.md)

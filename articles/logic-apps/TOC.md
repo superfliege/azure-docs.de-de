@@ -5,8 +5,8 @@
 
 # Erste Schritte
 ## [Erstellen Ihrer ersten Logik-App](logic-apps-create-a-logic-app.md)
-## [Vorlagen für Logik-Apps](logic-apps-use-logic-app-templates.md)
-## [Erstellen von Logik-Apps aus Vorlagen](logic-apps-arm-provision.md)
+## [Erstellen von Logik-Apps aus Vorlagen](logic-apps-create-logic-apps-from-templates.md)
+## [Erstellen von Logik-Apps mithilfe von Resource Manager-Vorlagen](logic-apps-create-deploy-azure-resource-manager-templates.md)
 ## [Verschieben von MABS-Apps in Logik-Apps](logic-apps-move-from-mabs.md)
 
 # Anleitung

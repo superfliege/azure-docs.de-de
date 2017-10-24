@@ -13,15 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 02/03/2017
+ms.date: 10/09/2017
 ms.author: mobandyo;sirishap;bryanla
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09c18ca6a967c2930ddd2b16d37f0bc606712ea1
-ms.openlocfilehash: 125b777e0ab05066cf066789b603b8edb15a0936
-ms.contentlocale: de-de
-ms.lasthandoff: 02/08/2017
-
-
+ms.openlocfilehash: 7d66cac98afa72c807f597403b1e2bd278e45cec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Integration von Cloud Cruiser und Microsoft Azure-Abrechnungs-API
 In diesem Artikel wird beschrieben, wie die mit den neuen Microsoft Azure-Abrechnungs-APIs gesammelten Informationen in Cloud Cruiser für die Simulation und Analyse von Workflowkosten verwendet werden können.
@@ -29,7 +27,7 @@ In diesem Artikel wird beschrieben, wie die mit den neuen Microsoft Azure-Abrech
 ## <a name="azure-ratecard-api"></a>Azure-RateCard-API
 Mit der RateCard-API werden Gebühren- und Preisinformationen aus Azure bereitgestellt. Nachdem Sie sich mit den richtigen Anmeldeinformationen authentifiziert haben, können Sie die API abfragen, um Metadaten zu den unter Azure verfügbaren Diensten sowie die Gebühren zu erfassen, die Ihrer Angebots-ID zugeordnet sind.
 
-Im Folgenden finden Sie ein Beispiel für eine Antwort der API mit den Preisen für die Instanz „A0 (Windows)“:
+Die folgende Beispielantwort der API zeigt die Preise für die Instanz „A0 (Windows)“:
 
     {
         "MeterId": "0e59ad56-03e5-4c3d-90d4-6670874d7e29",
@@ -111,15 +109,15 @@ Zum Demonstrieren dieses Szenarios haben wir den folgenden Bericht erstellt:
 
 Das obere Diagramm zeigt einen Kostenvergleich, aufgeschlüsselt nach Diensten. Darin werden die Preise verglichen, die bei WAP (dunkelblau) und Azure (hellblau) für die Ausführung der Workload für jeden spezifischen Dienst berechnet werden.
 
-Das untere Diagramm zeigt die gleichen Daten, diesmal aber aufgeteilt nach Abteilung. Das Diagramm zeigt die Kosten, die für jede Abteilung für die Ausführung ihrer Workload in WAP und Azure anfallen, sowie die Unterschiede im Balken „Einsparungen“ (grün).
+Das untere Diagramm zeigt die gleichen Daten, diesmal aber aufgeteilt nach Abteilung. Die Kosten, die für jede Abteilung für die Ausführung ihrer Workload in WAP und Azure anfallen, sowie die Unterschiede (im grünen Balken „Einsparungen“) werden angezeigt.
 
 ## <a name="azure-usage-api"></a>Azure-Nutzungs-API
 ### <a name="introduction"></a>Einführung
-Microsoft hat vor Kurzem die Azure-Nutzungs-API vorgestellt, die Abonnenten den programmgesteuerten Abruf von Nutzungsdaten ermöglicht, um sich einen Einblick in ihre Ressourcennutzung zu verschaffen. Dies ist eine gute Nachricht für Cloud Cruiser-Kunden, die dank dieser API einen umfassenderen Datenbestand nutzen können.
+Microsoft hat vor Kurzem die Azure-Nutzungs-API vorgestellt, die Abonnenten den programmgesteuerten Abruf von Nutzungsdaten ermöglicht, um sich einen Einblick in ihre Ressourcennutzung zu verschaffen. Cloud Cruiser-Kunden können dank dieser API einen umfassenderen Datenbestand nutzen.
 
-Cloud Cruiser kann von der Integration mit der Nutzungs-API auf verschiedene Weise profitieren. Die über die API verfügbare Granularität (stündliche Verwendungsinformationen) und Informationen zu Ressourcenmetadaten liefern die benötigten Daten zur Unterstützung flexibler Showback- und Chargeback-Modelle. 
+Cloud Cruiser kann von der Integration mit der Nutzungs-API auf unterschiedliche Weise profitieren. Die über die API verfügbare Granularität (stündliche Verwendungsinformationen) und Informationen zu Ressourcenmetadaten liefern die benötigten Daten zur Unterstützung flexibler Showback- und Chargeback-Modelle. 
 
-In diesem Tutorial zeigen wir ein Beispiel, wie Cloud Cruiser von den Informationen profitieren kann, die die Nutzungs-API liefert. Genauer gesagt erstellen wir eine Ressourcengruppe in Azure, ordnen Tags für die Kontostruktur zu und beschreiben den Prozess zum Abrufen und Verarbeiten von Taginformationen in Cloud Cruiser.
+In diesem Tutorial zeigen wir ein Beispiel dafür, wie Cloud Cruiser von den Informationen profitieren kann, die die Nutzungs-API liefert. Genauer gesagt erstellen wir eine Ressourcengruppe in Azure, ordnen Tags für die Kontostruktur zu und beschreiben den Prozess zum Abrufen und Verarbeiten von Taginformationen in Cloud Cruiser.
 
 Das Ziel ist letztlich die Erstellung von Berichten wie dem folgenden und die Analyse von Kosten und Nutzung basierend auf der von den Tags aufgefüllten Kontostruktur.
 
@@ -131,7 +129,7 @@ Die Daten, die über die API der Azure-Nutzung verfügbar sind, enthalten nicht 
 * Tags werden den Ressourcen zum Zeitpunkt der Bereitstellung ordnungsgemäß zugeordnet.
 * Tags werden im Showback-/Chargeback-Prozess verwendet, um die Nutzung mit der Kontostruktur der Organisation zu verknüpfen.
 
-Diese beiden Anforderungen können eine Herausforderung darstellen, und zwar insbesondere dann, wenn es auf Bereitstellungs- und Abrechnungsseite manuelle Prozesse gibt. Falsch eingegebene, fehlerhafte oder sogar fehlende Tags sind häufig ein Grund für Beschwerden von Kunden, wenn Tags zum Einsatz kommen, und diese Fehler können die Abläufe auf Abrechnungsseite sehr erschweren.
+Diese beiden Anforderungen können eine Herausforderung darstellen, und zwar insbesondere dann, wenn es auf Bereitstellungs- und Abrechnungsseite manuelle Prozesse gibt. Falsch eingegebene, fehlerhafte oder sogar fehlende Tags sind häufig ein Grund für Beschwerden von Kunden, wenn Tags zum Einsatz kommen, und diese Fehler können die Abläufe auf Abrechnungsseite erschweren.
 
 Mithilfe der neuen Azure-Nutzungs-API kann Cloud Cruiser Informationen in Ressourcentags abrufen und über ein ausgeklügeltes ETL-Tool – so genannten Arbeitsmappen – diese gängigen Taggingfehler korrigieren. Über Transformationsschritte, in denen reguläre Ausdrücke und die Korrelation von Daten zum Einsatz kommen, kann Cloud Cruiser Ressourcen mit falschen Tags bestimmen und die richtigen Tags zuordnen. Dadurch wird die ordnungsgemäße Zuordnung der Ressourcen zum Nutzer sichergestellt.
 
@@ -178,10 +176,10 @@ Jede Arbeitsmappe kann über eine oder mehrere Sammlungen verfügen. So können 
 
 Beachten Sie, dass diese Arbeitsmappe bereits andere Blätter zum Importieren von Diensten aus Azure (*ImportServices*) sowie zum Verarbeiten der aus der Abrechnung-API stammenden Nutzungsdaten (*PublishData*) enthält.
 
-Als Nächstes verwenden wir die Nutzungs-API, um das Blatt *UsageAPI* aufzufüllen, und korrelieren diese Informationen mit den Nutzungsdaten aus der Abrechnung-API auf dem Blatt *PublishData*.
+Als Nächstes verwenden wir die Nutzungs-API, um das Blatt *UsageAPI* aufzufüllen, und korrelieren diese Informationen mit den Nutzungsdaten aus der Abrechnungs-API auf dem Blatt *PublishData*.
 
 ### <a name="processing-the-tag-information-from-the-usage-api"></a>Verarbeiten die Tag-Informationen aus der Nutzungs-API
-Nach dem Import der Daten in die Arbeitsmappe erstellen wir auf dem Blatt *UsageAPI* Transformationsschritte, um die von der API gelieferten Informationen zu verarbeiten. Im ersten Schritt verwenden wir einen Prozessor vom Typ „JSON Split“ zum Extrahieren der Tags aus einem einzelnen Feld und erstellen neue Felder für jedes einzelne Tag (Department, Project, Owner und Environment).
+Nach dem Importieren der Daten in die Arbeitsmappe erstellen wir auf dem Blatt *UsageAPI* Transformationsschritte, um die von der API gelieferten Informationen zu verarbeiten. Im ersten Schritt verwenden wir einen Prozessor vom Typ „JSON Split“ zum Extrahieren der Tags aus einem einzelnen Feld und erstellen neue Felder für jedes einzelne Tag (Department, Project, Owner und Environment).
 
 ![Abbildung 4: Erstellen neuer Felder für die Tag-Informationen][13]
 
@@ -201,13 +199,13 @@ Nun müssen wir nur noch einen Schritt hinzufügen, um die Nutzungsdaten zu ver�
 Das Beste ist, dass Sie diesen Prozess nur einmal durchlaufen müssen. Wenn die Arbeitsmappe vollständig ist, müssen Sie sie nur dem Scheduler hinzufügen, damit sie zur geplanten Uhrzeit stündlich oder täglich ausgeführt wird. Dann geht es nur noch darum, neue Berichte zu erstellen oder vorhandene anzupassen, um die Daten zu analysieren und daraus aussagekräftige Erkenntnisse aus Ihrer Cloudnutzung zu gewinnen.
 
 ### <a name="next-steps"></a>Nächste Schritte
-* Eine ausführliche Anleitung zur Erstellung von Cloud Cruiser-Arbeitsmappen und -Berichten finden Sie in der Cloud Cruiser- [Onlinedokumentation](http://docs.cloudcruiser.com/) (gültige Anmeldung erforderlich).  Weitere Informationen zu Cloud Cruiser erhalten Sie, indem Sie sich an [info@cloudcruiser.com](mailto:info@cloudcruiser.com)dient.
+* Eine ausführliche Anleitung zur Erstellung von Cloud Cruiser-Arbeitsmappen und -Berichten finden Sie in der [Onlinedokumentation](http://docs.cloudcruiser.com/) von Cloud Cruiser (gültige Anmeldung erforderlich).  Weitere Informationen zu Cloud Cruiser erhalten Sie, indem Sie sich an [info@cloudcruiser.com](mailto:info@cloudcruiser.com) wenden.
 * Eine Übersicht über die Azure-APIs zur Ressourcennutzung und Gebührenkarte (Resource Usage und RateCard) finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](billing-usage-rate-card-overview.md) .
 * Ausführlichere Informationen zu beiden APIs finden Sie unter [Azure-Abrechnungs-REST-API – Referenz](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c). Sie sind Teil der APIs, die vom Azure Resource Manager bereitgestellt werden.
 * Wenn Sie sich weiter mit Beispielcode beschäftigen möchten, sehen Sie sich die Codebeispiele für die Microsoft Azure-Abrechnungs-API unter [Azure-Codebeispiele](https://azure.microsoft.com/documentation/samples/?term=billing)an.
 
 ### <a name="learn-more"></a>Weitere Informationen
-* Weitere Informationen zum Azure-Ressourcen-Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-overview.md) .
+* Weitere Informationen zu Azure Resource Manager finden Sie im Artikel [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 <!--Image references-->
 
@@ -225,4 +223,3 @@ Das Beste ist, dass Sie diesen Prozess nur einmal durchlaufen müssen. Wenn die 
 [12]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/3_ImportIntoUsageAPISheet.png "Abbildung 12: In das Blatt „UsageAPI“ importierte Nutzungs-API-Daten"
 [13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "Abbildung 13: Erstellen neuer Felder für die Tag-Informationen"
 [14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "Abbildung 14: Auffüllen der Kontostruktur mit den Informationen aus den Suchvorgängen"
-

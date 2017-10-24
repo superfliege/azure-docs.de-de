@@ -1,6 +1,6 @@
 ---
 title: Einrichtung und Konfiguration der Azure Machine Learning-Modellverwaltung | Microsoft-Dokumentation
-description: Dieses Dokument beschreibt die Schritte und Konzepte zur Einrichtung und Konfiguration der Azure Machine Learning-Modellverwaltung.
+description: Dieses Dokument beschreibt die Schritte und Konzepte zur Einrichtung und Konfiguration der Modellverwaltung in Azure Machine Learning.
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
+ms.openlocfilehash: c89596a6d721c4cba899b8a6e2859ee36cba7b80
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 06fbf6019aa4a2ceab99a83efe072fc0b71bfbf4
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="model-management-setup"></a>Einrichtung der Modellverwaltung
 
@@ -39,7 +38,7 @@ Auf anderen Systemen müssen Sie die CLIs installieren.
 
 ### <a name="installing-or-updating-on-windows"></a>Installieren (oder Aktualisieren) unter Windows
 
-Installieren Sie Python über „https://www.python.org/“. Stellen Sie sicher, dass Sie das Installieren von „pip“ ausgewählt haben.
+Installieren Sie Python über https://www.python.org/. Stellen Sie sicher, dass Sie das Installieren von „pip“ ausgewählt haben.
 
 Öffnen Sie eine Eingabeaufforderung mithilfe der Option „Als Administrator ausführen“, und führen Sie die folgenden Befehle aus:
 
@@ -84,11 +83,11 @@ Beginnen Sie mit einer lokalen Bereitstellung. Überprüfen Sie, ob Ihr Modell u
 Zuallererst müssen Sie Ihre Bereitstellungsumgebung einrichten. Dieser Vorgang muss nur einmal erfolgen. Nachdem die Einrichtung abgeschlossen ist, können Sie die Umgebung für nachfolgende Bereitstellungen wiederverwenden. Im folgenden Abschnitt finden Sie weitere Details.
 
 Schritte im Anschluss an die Einrichtung der Umgebung:
-- Sie werden aufgefordert, sich bei Azure anzumelden. Öffnen Sie dazu in einem Webbrowser die Seite „https://aka.ms/devicelogin“, und geben Sie zur Authentifizierung den angegebenen Code ein.
-- Während des Authentifizierungsvorgangs werden Sie für die Authentifizierung zur Angabe eines Konto aufgefordert. Wichtig: Wählen Sie ein Konto mit einem gültigen Azure-Abonnement und ausreichenden Berechtigungen zum Erstellen von Ressourcen im Konto aus.Wenn die Anmeldung abgeschlossen ist, werden Ihre Abonnementinformationen angezeigt, und Sie werden gefragt, ob Sie mit dem ausgewählten Konto fortfahren möchten.
+- Sie werden aufgefordert, sich bei Azure anzumelden. Öffnen Sie dazu in einem Webbrowser die Seite https://aka.ms/devicelogin, und geben Sie zur Authentifizierung den angegebenen Code ein.
+- Während des Authentifizierungsvorgangs werden Sie für die Authentifizierung zur Angabe eines Kontos aufgefordert. Wichtig: Wählen Sie ein Konto mit einem gültigen Azure-Abonnement und ausreichenden Berechtigungen zum Erstellen von Ressourcen im Konto aus. Wenn die Anmeldung abgeschlossen ist, werden Ihre Abonnementinformationen angezeigt, und Sie werden gefragt, ob Sie mit dem ausgewählten Konto fortfahren möchten.
 
 ### <a name="environment-setup"></a>Einrichten der Umgebung
-Um den Installationsvorgang zu starten, müssen Sie den Umgebungsanbieter registrieren, indem Sie folgenden Befehl eingeben:
+Zum Starten des Einrichtungsvorgangs müssen Sie den Umgebungsanbieter registrieren, indem Sie folgenden Befehl eingeben:
 
 ```azurecli
 az provider register -n Microsoft.MachineLearningCompute
@@ -122,7 +121,7 @@ Wählen Sie die Clusterbereitstellung für Produktionsszenarien in großem Maßs
 Um den Webdienst in einer Produktionsumgebung bereitzustellen, legen Sie zuerst die Umgebung mit dem folgenden Befehl fest:
 
 ```azurecli
-az ml env setup -c --cluster-name [your environment name] --location [Azure region e.g. eastus2] [-g [resource group]]
+az ml env setup -c --name [your environment name] --location [Azure region e.g. eastus2] [-g [resource group]]
 ```
 
 Der Befehl zum Einrichten der Clusterumgebung erstellt die folgenden Ressourcen in Ihrem Abonnement:
@@ -132,7 +131,7 @@ Der Befehl zum Einrichten der Clusterumgebung erstellt die folgenden Ressourcen 
 - Eine Kubernetes-Bereitstellung in einem Azure Container Service-Cluster (ACS)
 - Application Insights
 
-Die Ressourcengruppe, das Speicherkonto und der ACR werden schnell erstellt. Die ACS-Bereitstellung kann bis zu 20 Minuten dauern. 
+Die Ressourcengruppe, das Speicherkonto und die ACR werden schnell erstellt. Die ACS-Bereitstellung kann bis zu 20 Minuten dauern. 
 
 Nach Abschluss der Einrichtung müssen Sie die für diese Bereitstellung zu verwendende Umgebung festlegen. Verwenden Sie den folgenden Befehl:
 
@@ -144,6 +143,9 @@ az ml env set -n [environment name] -g [resource group]
 > Nach Erstellen der Umgebung müssen Sie für nachfolgende Bereitstellungen nur den oben genannten Befehl „set“ angeben, um sie wiederzuverwenden.
 >
 
+>[!NOTE] 
+>Geben Sie ein SSL-Zertifikat an, um einen HTTPS-Endpunkt zu erstellen, wenn Sie einen Cluster mit den Optionen „--cert“ und „--cert-perm“ in „az ml env setup“ verwenden. So behandelt der Cluster Anforderungen in HTTPS, das durch das bereitgestellte Zertifikat gesichert wird. Erstellen Sie, nachdem die Einrichtung abgeschlossen wurde, einen CNAME DNS-Datensatz, der auf den vollqualifizierten Domänennamen (FQDN) des Clusters zeigt.
+
 ### <a name="create-an-account"></a>Erstellen eines Kontos
 Für die Bereitstellung von Modellen ist ein Konto erforderlich. Dieser Schritt muss pro Konto einmal erfolgen. Sie können dasselbe Konto in mehreren Bereitstellungen wiederverwenden.
 
@@ -153,7 +155,7 @@ Verwenden Sie den folgenden Befehl, um ein neues Konto zu erstellen:
 az ml account modelmanagement create -l [Azure region, e.g. eastus2] -n [your account name] -g [resource group name] --sku-instances [number of instances, e.g. 1] --sku-name [Pricing tier for example S1]
 ```
 
-Um ein vorhandenes Konto zu verwenden, geben Sie den folgenden Befehl an:
+Um ein vorhandenes Konto zu verwenden, geben Sie den folgenden Befehl ein:
 ```azurecli
 az ml account modelmanagement set -n [your account name] -g [resource group it was created in]
 ```
@@ -167,4 +169,3 @@ az ml service create realtime --model-file [model file/folder path] -f [scoring 
 
 ### <a name="next-steps"></a>Nächste Schritte
 Probieren Sie eines der vielen Beispiele im Katalog aus.
-

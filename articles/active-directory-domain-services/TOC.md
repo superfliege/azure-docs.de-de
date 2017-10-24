@@ -16,7 +16,9 @@
 # Anleitung
 ## Beitreten zu einer verwalteten Domäne
 ### [Virtueller Windows Server-Computer](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [Virtueller Windows Server-Computer mit PowerShell](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
+### [Virtueller Windows Server-Computer aus einer Vorlage](active-directory-ds-join-windows-vm-template.md)
+### [CentOS](active-directory-ds-join-centos-linux-vm.md)
+### [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
 ### [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
 ### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
 ## Verwalten einer verwalteten Domäne

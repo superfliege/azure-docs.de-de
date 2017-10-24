@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: jairoc
+ms.openlocfilehash: 3325aa48db36426a8cf1c9859390c357267ee5fa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 4580075df9fce74664b22aa24065ba1885692384
-ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -133,8 +132,9 @@ Mit dem folgenden Skript wird ein Beispiel für die Verwendung des Cmdlets veran
 
 Für das `Initialize-ADSyncDomainJoinedComputerSync`-Cmdlet gilt Folgendes:
 
-- Es verwendet das Active Directory-PowerShell-Modul, das von der Ausführung von Active Directory-Webdiensten auf einem Domänencontroller abhängig ist. Active Directory-Webdienste werden auf Domänencontrollern mit Windows Server 2008 R2 und höher unterstützt.
+- Es verwendet das Active Directory-PowerShell-Modul und die AD DS-Tools, die von der Ausführung von Active Directory-Webdiensten auf einem Domänencontroller abhängig sind. Active Directory-Webdienste werden auf Domänencontrollern mit Windows Server 2008 R2 und höher unterstützt.
 - Es wird nur von der **MSOnline PowerShell-Modulversion 1.1.166.0** unterstützt. Dieses Modul können Sie [hier](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185) herunterladen.   
+- Wenn die AD DS-Tools nicht installiert sind, tritt bei `Initialize-ADSyncDomainJoinedComputerSync` ein Fehler auf.  Die AD DS-Tools können über Server-Manager unter „Features“ > „Remoteserver-Verwaltungstools“ > „Rollenverwaltungstools“ installiert werden.
 
 Verwenden Sie für Domänencontroller mit Windows Server 2008 oder früher das unten angegebene Skript zum Erstellen des Dienstverbindungsendpunkts.
 
@@ -583,4 +583,3 @@ In der Ausgabe dieses Cmdlets werden Geräte angezeigt, die in Azure AD registri
 
 <!--Image references-->
 [1]: ./media/active-directory-conditional-access-automatic-device-registration-setup/12.png
-

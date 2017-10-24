@@ -12,14 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/19/2017
+ms.date: 09/28/2017
 ms.author: alkohli
+ms.openlocfilehash: 13ff24c24a881297775fa5f65821e53ceb83c351
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 01e1e7447d6951d1b2c89f3b0ef726af9c03fd66
-ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Ändern der StorSimple-Gerätekonfiguration
 
@@ -138,14 +137,14 @@ Für jede Netzwerkschnittstelle werden die folgenden Parameter angezeigt:
 
 ### <a name="configure-data-0"></a>Konfigurieren von DATA 0
 
-DATA 0 ist standardmäßig cloudfähig. Wenn Sie DATA 0 konfigurieren, müssen Sie auch zwei feste IP-Adressen konfigurieren, eine für jeden Controller. Diese festen IP-Adressen können verwendet werden, um direkt auf die Gerätecontroller zuzugreifen, und sind nützlich, wenn Sie Updates auf dem Gerät installieren oder zur Problembehandlung auf die Controller zugreifen möchten.
+DATA 0 ist standardmäßig cloudfähig. Wenn Sie DATA 0 konfigurieren, müssen Sie auch zwei feste IP-Adressen konfigurieren, eine für jeden Controller. Diese festen IP-Adressen können verwendet werden, um direkt auf die Gerätecontroller zuzugreifen, und sind nützlich, wenn Sie Updates auf dem Gerät installieren, damit die Garbage Collection problemlos ausgeführt wird, oder wenn Sie zur Problembehandlung auf die Controller zugreifen möchten.
 
 Sie können die festen IP-Controller über das Einstellungsblatt für DATA 0 neu konfigurieren.
 
 ![Netzwerkschnittstelle DATA 0 konfigurieren](./media/storsimple-8000-modify-device-config/modify-network-settings2.png)
 
 > [!NOTE]
-> Die festen IP-Adressen für den Controller werden dazu verwendet, die Updates für das Gerät vorzunehmen. Aus diesem Grund müssen die festen IP-Adressen routingfähig sein und eine Verbindung mit dem Internet herstellen können.
+> Die festen IP-Adressen für den Controller werden dazu verwendet, die Updates für das Gerät vorzunehmen, und sicherzustellen, dass Algorithmen zur Freigabe von Speicherplatz (Garbage Collection) ordnungsgemäß ausgeführt werden. Aus diesem Grund müssen die festen IP-Adressen routingfähig sein und eine Verbindung mit dem Internet herstellen können.
 
 ### <a name="configure-data-1---data-5"></a>Konfigurieren von DATA 1 – DATA 5
 
@@ -169,5 +168,4 @@ Führen Sie die folgenden Schritte aus, wenn Sie die VIPs für eine der Netzwerk
 
 * Informationen zum [Konfigurieren von MPIO für Ihr StorSimple-Gerät](storsimple-8000-configure-mpio-windows-server.md).
 * Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple-Geräte-Manager-Diensts verwalten](storsimple-8000-manager-service-administration.md).
-
 

@@ -1,3 +1,5 @@
+- name: Dokumentation für Azure Storage
+  href: /azure/storage/
 - name: Übersicht
   items:
     - name: Einführung
@@ -16,6 +18,8 @@
       href: storage-quickstart-blobs-cli.md
     - name: Arbeiten mit Blobs – .NET
       href: storage-quickstart-blobs-dotnet.md
+    - name: Arbeiten mit Blobs – Python
+      href: storage-quickstart-blobs-python.md
 - name: Lernprogramme
   items:
     - name: Hochladen und Verarbeiten eines Images
@@ -28,6 +32,12 @@
           href: storage-secure-access-application.md
         - name: 4 – Überwachung und Problembehandlung bei Speicher
           href: storage-monitor-troubleshoot-storage-application.md
+    - name: Entwerfen für Hochverfügbarkeit im Cloudspeicher
+      items:
+        - name: Hochverfügbarmachen einer Anwendung
+          href: storage-create-geo-redundant-storage.md
+        - name: Simulieren eines Fehlers im RA-GRS-Speicher
+          href: storage-simulate-failure-ragrs-account-app.md
     - name: Suchen von unstrukturierten Daten in Cloudspeicher
       href: storage-unstructured-search.md
 - name: Beispiele

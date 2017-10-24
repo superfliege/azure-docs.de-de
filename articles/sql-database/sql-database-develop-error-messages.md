@@ -14,14 +14,13 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 09/28/2017
 ms.author: sstein
+ms.openlocfilehash: 9f9dfd039b76e4bedfb7f59d042123fa54d6b615
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: bcf5f4027764b6be3880d597cdf85e83eb967169
-ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme
 
@@ -180,7 +179,7 @@ Die folgenden Fehler fallen in keine der vorherigen Kategorien.
 | 40607 |16 |Windows-Anmeldungen werden in dieser SQL Server-Version nicht unterstützt. |
 | 40611 |16 |Für Server können maximal 128 Firewallregeln definiert werden. |
 | 40614 |16 |Die IP-Endadresse der Firewallregel darf nicht vor der IP-Startadresse liegen. |
-| 40615 |16 |Der bei der Anmeldung angeforderte Server „{0}“ kann nicht geöffnet werden. Der Client mit der IP-Adresse „{1}“ hat keine Zugriffsberechtigung für den Server.  Aktivieren Sie den Zugriff über das SQL Azure-Portal, oder indem Sie „sp_set_firewall_rule“ für die master-Datenbank ausführen, um eine Firewallregel für diese IP-Adresse bzw. diesen IP-Adressbereich zu erstellen.  Es kann bis zu fünf Minuten dauert, bis diese Änderung wirksam wird. |
+| 40615 |16 |Der bei der Anmeldung angeforderte Server „{0}“ kann nicht geöffnet werden. Der Client mit der IP-Adresse „{1}“ hat keine Zugriffsberechtigung für den Server.<br /><br />Aktivieren Sie den Zugriff über das SQL-Datenbank-Portal, oder indem Sie sp\_set\_firewall\_rule für die master-Datenbank ausführen, um eine Firewallregel für diese IP-Adresse bzw. diesen IP-Adressbereich zu erstellen. Es kann bis zu fünf Minuten dauert, bis diese Änderung wirksam wird. |
 | 40617 |16 |Der mit „(Regelname)“ beginnende Name der Firewallregel ist zu lang. Die maximale Länge beträgt 128. |
 | 40618 |16 |Der Name für die Firewallregel darf nicht leer sein. |
 | 40620 |16 |Fehler bei der Anmeldung für den Benutzer „%.&#x2a;ls“. Fehler bei der Kennwortänderung. Kennwortänderungen während der Anmeldung werden in dieser SQL Server-Version nicht unterstützt. |
@@ -205,12 +204,12 @@ Die folgenden Fehler fallen in keine der vorherigen Kategorien.
 | 40651 |16 |Fehler beim Erstellen des Servers, weil das Abonnement (Abonnement-ID) deaktiviert ist. |
 | 40652 |16 |Der Server kann nicht verschoben oder erstellt werden, weil das Abonnement (Abonnement-ID) das Serverkontingent überschreitet. |
 | 40671 |17 |Kommunikationsfehler zwischen dem Gateway und dem Verwaltungsdienst. Versuchen Sie es später erneut. |
-| 40852 |16 |Die von der Anmeldung angeforderte Datenbank „%.*ls“ auf Server „%.*ls“ kann nicht geöffnet werden. Der Zugriff auf die Datenbank ist nur mit einer Verbindungszeichenfolge mit aktivierter Sicherheit zulässig. Um auf diese Datenbank zuzugreifen, ändern Sie die Verbindungszeichenfolgen so, dass der Server-FQDN „secure“ enthält – „Servername.database.windows.net“ muss in „Servername.database`secure`.windows.net“ geändert werden. |
+| 40852 |16 |Die von der Anmeldung angeforderte Datenbank „%.\*ls“ auf Server „%.\*ls“ kann nicht geöffnet werden. Der Zugriff auf die Datenbank ist nur mit einer Verbindungszeichenfolge mit aktivierter Sicherheit zulässig. Um auf diese Datenbank zuzugreifen, ändern Sie die Verbindungszeichenfolgen so, dass der Server-FQDN „secure“ enthält – „Servername.database.windows.net“ muss in „Servername.database`secure`.windows.net“ geändert werden. |
+| 40914 | 16 | Der bei der Anmeldung angeforderte Server „*[Servername]*“ kann nicht geöffnet werden. Dem Client ist der Zugriff auf den Server nicht gestattet.<br /><br />Um das Problem zu beheben, fügen Sie ggf. eine [Regel für ein virtuelles Netzwerk](sql-database-vnet-service-endpoint-rule-overview.md) hinzu. |
 | 45168 |16 |Das SQL Azure-System ist ausgelastet und richtet eine Obergrenze bei den gleichzeitigen DB CRUD-Vorgängen für einen Server ein (z. B. CREATE DATABASE). Für den in der Fehlermeldung angegebenen Server wurde die maximale Anzahl von gleichzeitigen Verbindungen überschritten. Versuchen Sie es später erneut. |
 | 45169 |16 |Das SQL Azure-System ist ausgelastet und richtet eine Obergrenze für die Anzahl der gleichzeitigen CRUD-Vorgänge für ein Abonnement ein (z.B. CREATE SERVER). Für das in der Fehlermeldung angegebene Abonnement wurde die maximale Anzahl von gleichzeitigen Verbindungen überschritten, und die Anforderung wurde verweigert. Versuchen Sie es später erneut. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen finden Sie unter [Features von Azure SQL-Datenbank](sql-database-features.md).
 * Weitere Informationen finden Sie unter [Dienstebenen](sql-database-service-tiers.md).
-
 

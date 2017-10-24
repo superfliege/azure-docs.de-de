@@ -20,6 +20,7 @@
 ### [Gleichzeitige Knotenaufgaben](batch-parallel-node-tasks.md)
 ### [Zählen von Aufgaben nach Zustand](batch-get-task-counts.md)
 ### [Erstellen eines Pools mit einem benutzerdefinierten Image](batch-custom-images.md)
+### [Erstellen eines Pools in einem virtuellen Netzwerk](batch-virtual-network.md)
 ### [Effiziente Listenabfragen](batch-efficient-list-queries.md)
 ### [Vorbereitung und Abschluss von Aufträgen](batch-job-prep-release.md)
 ### [Linux-Computeknoten](batch-linux-nodes.md)
@@ -62,6 +63,7 @@
 ## [Umgebungsvariablen für Azure Batch-Computeknoten](batch-compute-node-environment-variables.md)
 
 # Verwandte Themen
+## [Batch AI](../batch-ai/overview.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
 ## [Datenverarbeitung mit Batch und Data Factory](../data-factory/v1/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [Batch- und HPC-Lösungen in der Azure-Cloud](batch-hpc-solutions.md)

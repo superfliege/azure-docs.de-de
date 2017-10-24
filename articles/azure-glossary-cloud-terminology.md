@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
+ms.openlocfilehash: b55eed31ddb5be23dc28a23b2f0588b8c8ff8833
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 1607ca31a81c0941895611f626d54f6fbb294a20
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -37,7 +36,7 @@ Weitere Informationen finden Sie unter [Registrieren für ein Azure-Abonnement m
 Ein anderer Name für [App Service-App](#app-service-app).
 
 ## <a name="app-service-app"></a>App Service-App
-Die Computeressourcen, die [Azure App Service](app-service/app-service-value-prop-what-is.md) zum Hosten einer [Website oder Webanwendung](app-service-web/app-service-web-overview.md), einer [Web-API](app-service-api/app-service-api-apps-why-best-platform.md) oder eines [Back-Ends für mobile Apps](app-service-mobile/app-service-mobile-value-prop.md) bereitstellt. App Service-Apps werden auch als *App Services*, *Web-Apps*, *API-Apps* und *mobile Apps* bezeichnet.
+Die Computeressourcen, die [Azure App Service](app-service/app-service-web-overview.md) zum Hosten einer Website oder Webanwendung, einer Web-API oder eines [Back-Ends für mobile Apps](app-service-mobile/app-service-mobile-value-prop.md) bereitstellt. App Service-Apps werden auch als *App Services*, *Web-Apps*, *API-Apps* und *mobile Apps* bezeichnet.
 
 ## <a name="availability-set"></a>Verfügbarkeitsgruppe
 Eine Sammlung virtueller Computer, die gemeinsam verwaltet werden, um Anwendungsredundanz und -zuverlässigkeit zu bieten. Durch die Verwendung einer Verfügbarkeitsgruppe wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist.  
@@ -159,5 +158,4 @@ Ein anderer Name für [App Service-App](#app-service-app).
 * [Ressourcen für Ihren Einstieg in die Cloud](https://azure.microsoft.com/resources/)  
 * [Azure für Ihre Geschäftsanwendungen](https://azure.microsoft.com/overview/business-apps-on-azure/)
 * [Azure in Ihrem Rechenzentrum](https://azure.microsoft.com/overview/business-apps-on-azure/)
-
 

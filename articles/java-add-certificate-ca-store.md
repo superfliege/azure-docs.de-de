@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
+ms.openlocfilehash: b6e1a305e19415ab1c4b4c208dac98ad1e2689c6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 4f3ec837588c6e959e82108ca25ab4289e40d3f5
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="adding-a-certificate-to-the-java-ca-certificates-store"></a>Hinzufügen eines Zertifikats zum Java CA-Zertifikatspeicher
 In den folgenden Schritten wird gezeigt, wie ein Zertifikat der Zertifizierungsstelle (Certificate Authority, CA) zum Java CA-Zertifikatspeicher bzw. cacerts-Speicher hinzugefügt wird. Das verwendete Beispiel steht für das Zertifizierungsstellenzertifikat, das für den Twilio-Dienst erforderlich ist. Weiter unten in diesem Thema wird beschrieben, wie das Zertifizierungsstellenzertifikat für den Azure-Dienstbus installiert wird. 
@@ -27,7 +26,7 @@ In den folgenden Schritten wird gezeigt, wie ein Zertifikat der Zertifizierungss
 Sie können „keytool“ zum Hinzufügen des Zertifizierungsstellenzertifikats verwenden, bevor Sie das JDK komprimieren und zum Ordner **approot** des Azure-Projekts hinzufügen. Optional können Sie auch eine Azure-Startaufgabe ausführen, bei der zum Hinzufügen des Zertifikats „keytool“ zum Einsatz kommt. Bei diesem Beispiel wird davon ausgegangen, dass Sie ein Zertifizierungsstellenzertifikat hinzufügen, bevor das JDK gezippt wird. Darüber hinaus wird in diesem Beispiel ein bestimmtes Zertifizierungsstellenzertifikat verwendet. Die Schritte zum Abrufen eines anderen Zertifizierungsstellenzertifikats und Importieren dieses Zertifikats in den cacerts-Speicher sind allerdings nahezu identisch.
 
 ## <a name="to-add-a-certificate-to-the-cacerts-store"></a>So fügen Sie dem cacerts-Speicher ein Zertifikat hinzu
-1. Führen Sie bei einer Eingabeaufforderung, die für den Ordner **jdk\jre\lib\security** des JDK festgelegt ist, Folgendes aus, um die bereits installierten Zertifikate anzuzeigen:
+1. Führen Sie an einer Administratoreingabeaufforderung, die für den Ordner **jdk\jre\lib\security** des JDK festgelegt ist, Folgendes aus, um die bereits installierten Zertifikate anzuzeigen:
    
     `keytool -list -keystore cacerts`
    
@@ -56,5 +55,4 @@ Wenn Sie das Zertifikat "Baltimore CyberTrust Root" hinzufügen müssen, sei dar
 Weitere Informationen zu den von Azure verwendeten Stammzertifikaten finden Sie unter [Azure Root Certificate Migration](http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx)(in englischer Sprache).
 
 Weitere Informationen zu Java finden Sie im Artikel [Azure für Java-Entwickler](/java/azure).
-
 

@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 10/09/2017
 ms.author: johnkem
+ms.openlocfilehash: 31c4fc5b606bf96cec8c508f4a0ff7ecbaeae38a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: a28f971ae898ffdd1168550a909f2a48e1b3b652
-ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
 Viele Teams müssen den Zugriff auf Überwachungsdaten und -einstellungen streng regulieren. Wenn einige Ihrer Teammitglieder beispielsweise ausschließlich an der Überwachung arbeiten (Supporttechniker, DevOps-Techniker) oder wenn Sie einen verwalteten Dienstanbieter verwenden, sollten Sie diesen nur Zugriff auf Überwachungsdaten erteilen und deren Möglichkeit zum Erstellen, Ändern oder Löschen von Ressourcen einschränken. Dieser Artikel beschreibt, wie Sie schnell eine integrierte RBAC-Rolle zur Überwachung auf einen Benutzer in Azure anwenden oder Ihre eigene benutzerdefinierte Rolle für einen Benutzer erstellen, der eingeschränkte Überwachungsberechtigungen benötigt. Anschließend werden Sicherheitsaspekte für Ihre Azure Monitor-Ressourcen erörtert, und es wird beschrieben, wie Sie den Zugriff auf die darin enthaltenen Daten beschränken können.
@@ -75,15 +74,23 @@ Wenn die oben genannten vordefinierten Rollen nicht den genauen Anforderungen Ih
 
 | Vorgang | Beschreibung |
 | --- | --- |
-| Microsoft.Insights/AlertRules/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Warnungsregeln. |
+| Microsoft.Insights/ActionGroups/[Read, Write, Delete] |Lesen/Schreiben/Löschen einer Aktionsgruppe |
+| Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Aktivitätsprotokollwarnungen |
+| Microsoft.Insights/AlertRules/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Warnungsregeln (Metrikwarnungen) |
 | Microsoft.Insights/AlertRules/Incidents/Read |Auflisten von Incidents (Verlauf der ausgelösten Warnungsregel) für Warnungsregeln. Dies gilt nur für das Portal. |
 | Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Einstellungen für die automatische Skalierung. |
 | Microsoft.Insights/DiagnosticSettings/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Diagnoseeinstellungen. |
+| Microsoft.Insights/EventCategories/Read |Aufzählen aller im Aktivitätsprotokoll möglichen Kategorien Wird vom Azure-Portal verwendet |
 | Microsoft.Insights/eventtypes/digestevents/Read |Diese Berechtigung ist für Benutzer notwendig, die über das Portal auf Aktivitätsprotokolle zugreifen müssen. |
 | Microsoft.Insights/eventtypes/values/Read |Auflisten von Aktivitätsprotokollereignissen (Verwaltungsereignissen) in einem Abonnement. Diese Berechtigung gilt sowohl für den programmgesteuerten als auch für den Portalzugriff auf das Aktivitätsprotokoll. |
+| Microsoft.Insights/ExtendedDiagnosticSettings/[Read, Write, Delete] | Lesen/Schreiben/Löschen von Diagnoseeinstellungen für Netzwerkflussprotokolle |
 | Microsoft.Insights/LogDefinitions/Read |Diese Berechtigung ist für Benutzer notwendig, die über das Portal auf Aktivitätsprotokolle zugreifen müssen. |
+| Microsoft.Insights/LogProfiles/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Protokollprofilen (Streamen von Aktivitätsprotokollen an ein Ereignishub- oder Speicherkonto) |
+| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Metrikwarnungen in nahezu Echtzeit (öffentliche Vorschauversion) |
 | Microsoft.Insights/MetricDefinitions/Read |Lesen von Metrikdefinitionen (Liste der verfügbaren Metriktypen für eine Ressource). |
 | Microsoft.Insights/Metrics/Read |Lesen von Metriken für eine Ressource. |
+| Microsoft.Insights/Register/Action |Registrieren des Azure Monitor-Ressourcenanbieters |
+
 
 > [!NOTE]
 > Für den Zugriff auf Warnungen, Diagnoseeinstellungen und Metriken für eine Ressource ist es erforderlich, dass der Benutzer für den Ressourcentyp und den Bereich der jeweiligen Ressource über Lesezugriff verfügt. Für das Erstellen („Schreiben“) einer Diagnoseeinstellung oder eines Protokollprofils, bei der bzw. dem Daten in einem Speicherkonto archiviert oder an Event Hubs gestreamt werden, muss der Benutzer zudem die ListKeys-Berechtigung für die Zielressource besitzen.
@@ -170,5 +177,4 @@ Für Event Hubs können Sie einem ähnlichen Muster folgen, jedoch müssen Sie z
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zu RBAC und Berechtigungen in Resource Manager](../active-directory/role-based-access-control-what-is.md)
 * [Übersicht über die Überwachung in Microsoft Azure](monitoring-overview.md)
-
 

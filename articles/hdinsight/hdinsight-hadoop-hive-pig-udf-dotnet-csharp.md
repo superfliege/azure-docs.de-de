@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/04/2017
 ms.author: larryfr
+ms.openlocfilehash: b192b19c27045ab6a98baf382e467a0a74d30861
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 7643050c4ba8929abcf77476970a2f99e992579d
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>Verwenden benutzerdefinierter C#-Funktionen mit Hive- und Pig-Streaming für Hadoop in HDInsight
 
@@ -30,7 +29,7 @@ Erfahren Sie, wie Sie benutzerdefinierte C#-Funktionen (User-Defined Functions, 
 > [!IMPORTANT]
 > Die Schritte in diesem Artikel funktionieren Linux- und Windows-basierten HDInsight-Clustern. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md).
 
-Sowohl Hive als auch Pig kann Daten zur Verarbeitung an externe Anwendungen übergeben. Dieser Prozess wird als _Streaming_ bezeichnet. Wenn Sie eine .NET-Anwendung verwenden zu können, werden die Daten über STDIN an die Anwendung übergeben und die Ergebnisse von der Anwendung über STDOUT zurückgegeben. Zum Lesen und Schreiben von STDIN und STDOUT können Sie `Console.ReadLine()` und `Console.WriteLine()` von einer Konsolenanwendung aus verwenden.
+Sowohl Hive als auch Pig kann Daten zur Verarbeitung an externe Anwendungen übergeben. Dieser Prozess wird als _Streaming_ bezeichnet. Wenn Sie eine .NET-Anwendung verwenden, werden die Daten über STDIN an die Anwendung übergeben und die Ergebnisse von der Anwendung über STDOUT zurückgegeben. Zum Lesen und Schreiben von STDIN und STDOUT können Sie `Console.ReadLine()` und `Console.WriteLine()` von einer Konsolenanwendung aus verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +37,7 @@ Sowohl Hive als auch Pig kann Daten zur Verarbeitung an externe Anwendungen übe
 
     * Verwenden Sie eine beliebige IDE. Wir empfehlen [Visual Studio](https://www.visualstudio.com/vs) 2015, 2017 oder [Visual Studio-Code](https://code.visualstudio.com/). Für die Schritte in diesem Artikel wird Visual Studio 2017 verwendet.
 
-* Eine Möglichkeit, EXE-Dateien in den Cluster hochzuladen und Pig- und Hive-Aufträge auszuführen. Wir empfehlen die Data Lake-Tools für Visual Studio, Azure PowerShell und die Azure-CLI. In den Schritten in diesem Artikel werden die Data Lake-Tools für Visual Studio zum Hochladen der Dateien und zum Ausführen der Hive-Beispielabfrage verwendet.
+* Eine Möglichkeit, EXE-Dateien in den Cluster hochzuladen und Pig- und Hive-Aufträge auszuführen. Wir empfehlen die Data Lake-Tools für Visual Studio, Azure PowerShell und die Azure CLI. In den Schritten in diesem Artikel werden die Data Lake-Tools für Visual Studio zum Hochladen der Dateien und zum Ausführen der Hive-Beispielabfrage verwendet.
 
     Informationen zu anderen Methoden zum Ausführen von Hive-Abfragen und Pig-Aufträgen finden Sie in den folgenden Artikeln:
 
@@ -157,7 +156,7 @@ Weitere Informationen zu der mit den verschiedenen HDInsight-Versionen bereitges
     }
     ```
 
-    Diese Anwendung analysiert mit Pig gesendete Zeilen und formatiert Zeilen neu, die mit `java.lang.Exception` beginnen.
+    Dieser Code analysiert mit Pig gesendete Zeilen und formatiert Zeilen neu, die mit `java.lang.Exception` beginnen.
 
 3. Speichern Sie **Program.cs**, und erstellen Sie dann das Projekt neu.
 
@@ -270,4 +269,3 @@ Informationen zu anderen Möglichkeiten der Verwendung von Pig und Hive sowie In
 * [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md)
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md)
-

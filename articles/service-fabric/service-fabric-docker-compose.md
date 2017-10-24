@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric Docker Compose (Vorschau)
+title: Azure Service Fabric Docker Compose-Bereitstellung (Vorschau)
 description: "Azure Service Fabric akzeptiert das Docker Compose-Format für eine einfachere Orchestrierung vorhandener Container mithilfe von Service Fabric. Diese Unterstützung befindet sich derzeit in der Vorschauphase."
 services: service-fabric
 documentationcenter: .net
@@ -14,16 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2017
 ms.author: subramar
+ms.openlocfilehash: 92d1951de8c8c80f7b47033dc751cd65a63c43f6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 519bab9d226f9d00ae0fa21348823d2d6b6cd2c9
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="docker-compose-application-support-in-azure-service-fabric-preview"></a>Docker Compose-Anwendungsunterstützung in Service Fabric (Vorschauversion)
+# <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker Compose-Bereitstellungsunterstützung in Azure Service Fabric (Vorschau)
 
-Docker verwendet die Datei [„docker-compose.yml“](https://docs.docker.com/compose) zum Definieren von Anwendungen mit mehreren Containern. Damit Kunden, die mit Docker vertraut sind, vorhandene Containeranwendungen einfacher in Service Fabric orchestrieren können, haben wir eine Unterstützung für die Vorschauversion von Docker Compose nativ in die Plattform integriert. Service Fabric akzeptiert `docker-compose.yml`-Dateien ab Version 3 (und höher). 
+Docker verwendet die Datei [„docker-compose.yml“](https://docs.docker.com/compose) zum Definieren von Anwendungen mit mehreren Containern. Damit Kunden, die mit Docker vertraut sind, vorhandene Containeranwendungen einfacher in Azure Service Fabric orchestrieren können, haben wir eine Unterstützung für die Vorschauversion der Docker Compose-Bereitstellung nativ in die Plattform integriert. Service Fabric akzeptiert `docker-compose.yml`-Dateien ab Version 3 (und höher). 
 
 Da diese Unterstützung als Vorschauversion verfügbar ist, wird nur ein Teil der Compose-Direktiven unterstützt. So werden beispielsweise Anwendungsupgrades nicht unterstützt. Sie können jedoch jederzeit Anwendungen entfernen und bereitstellen, statt sie zu aktualisieren.
 
@@ -31,10 +30,12 @@ Wenn Sie diese Vorschauversion verwenden möchten, erstellen Sie Ihren Cluster m
 
 > [!NOTE]
 > Das Feature befindet sich derzeit in der Vorschauphase und wird in Produktionsumgebungen nicht unterstützt.
+> Die folgenden Beispiele basieren auf der Runtimeversion 6.0 und der SDK-Version 2.8.
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Bereitstellen einer Docker Compose-Datei in Service Fabric
 
-Die folgenden Befehle erstellen eine Service Fabric-Anwendung (die den Namen `TestContainerApp` hat), die wie jede andere Service Fabric-Anwendung überwacht und verwaltet werden kann. Sie können den jeweiligen Anwendungsnamen für Integritätsabfragen verwenden.
+Die folgenden Befehle erstellen eine Service Fabric-Anwendung (die den Namen `fabric:/TestContainerApp` hat), die wie jede andere Service Fabric-Anwendung überwacht und verwaltet werden kann. Sie können den jeweiligen Anwendungsnamen für Integritätsabfragen verwenden.
+Service Fabric erkennt „DeploymentName“ als Bezeichner der Compose-Bereitstellung.
 
 ### <a name="use-powershell"></a>Verwenden von PowerShell
 
@@ -47,7 +48,7 @@ New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose doc
 `RegistryUserName` und `RegistryPassword` verweisen auf den Benutzernamen und das Kennwort der Containerregistrierung. Nachdem Sie die Bereitstellung fertiggestellt haben, können Sie deren Status mit folgendem Befehl überprüfen:
 
 ```powershell
-Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp -GetAllPages
+Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp
 ```
 
 Um die Compose-Bereitstellung über PowerShell zu löschen, verwenden Sie den folgenden Befehl:
@@ -56,24 +57,48 @@ Um die Compose-Bereitstellung über PowerShell zu löschen, verwenden Sie den fo
 Remove-ServiceFabricComposeDeployment  -DeploymentName TestContainerApp
 ```
 
+Verwenden Sie den folgenden Befehl, um ein Compose-Bereitstellungsupgrade über PowerShell zu starten:
+
+```powershell
+Start-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp -Compose docker-compose-v2.yml -Monitored -FailureAction Rollback
+```
+
+Nachdem das Upgrade akzeptiert wurde, kann der Upgradestatus mit dem folgenden Befehl nachverfolgt werden:
+
+```powershell
+Get-ServiceFabricComposeDeploymentUpgrade -Deployment TestContainerApp
+```
+
 ### <a name="use-azure-service-fabric-cli-sfctl"></a>Verwenden der Azure Service Fabric CLI (sfctl)
 
 Verwenden Sie alternativ den folgenden Service Fabric CLI-Befehl:
 
 ```azurecli
-sfctl compose create --application-id TestContainerApp --compose-file docker-compose.yml [ [ --repo-user --repo-pass --encrypted ] | [ --repo-user ] ] [ --timeout ]
+sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
-Nachdem Sie die Anwendung erstellt haben, können Sie ihren Status mit folgendem Befehl überprüfen:
+Nachdem Sie die Bereitstellung erstellt haben, können Sie deren Status mit folgendem Befehl überprüfen:
 
 ```azurecli
-sfctl compose status --application-id TestContainerApp [ --timeout ]
+sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
-Um die Compose-Anwendung zu löschen, verwenden Sie den folgenden Befehl:
+Verwenden Sie den folgenden Befehl, um die Compose-Bereitstellung zu löschen:
 
 ```azurecli
-sfctl compose remove  --application-id TestContainerApp [ --timeout ]
+sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
+```
+
+Verwenden Sie den folgenden Befehl, um ein Compose-Bereitstellungsupgrade zu starten:
+
+```powershell
+sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
+```
+
+Nachdem das Upgrade akzeptiert wurde, kann der Upgradestatus mit dem folgenden Befehl nachverfolgt werden:
+
+```powershell
+sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 
 ## <a name="supported-compose-directives"></a>Unterstützte Compose-Direktiven
@@ -103,7 +128,7 @@ Wenn der in der Compose-Datei angegebene Dienstname ein vollqualifizierter Domä
 
 Wenn also der angegebene Anwendungsname z.B. `fabric:/SampleApp/MyComposeApp` lautet, wird `<ServiceName>.MyComposeApp.SampleApp` als DNS-Name registriert.
 
-## <a name="differences-between-compose-instance-definition-and-service-fabric-application-model-type-definition"></a>Unterschiede zwischen dem Compose- (Instanzdefinition) und dem Service Fabric-Anwendungsmodell (Typdefinition)
+## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Compose-Bereitstellung (Instanzdefinition) im Vergleich zum Service Fabric-App-Modell (Typdefinition)
 
 Eine „docker-compose.yml“-Datei beschreibt einen bereitstellbaren Satz von Containern, einschließlich ihrer Eigenschaften und Konfigurationen.
 Die Datei kann z.B. Umgebungsvariablen und Ports enthalten. Bereitstellungsparameter wie Platzierungsbeschränkungen, Ressourcengrenzwerte und DNS-Namen können ebenfalls in der Datei „docker-compose.yml“ angegeben werden.
@@ -118,4 +143,3 @@ Obwohl dieses Modell Flexibilität bietet, planen wir auch die Unterstützung ei
 
 * Weitere Informationen finden Sie unter [Service Fabric-Anwendungsmodell](service-fabric-application-model.md).
 * [Erste Schritte mit der Service Fabric CLI](service-fabric-cli.md)
-

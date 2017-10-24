@@ -39,7 +39,7 @@
         - name: Replikation
           href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Skalierbarkeits- und Leistungsziele
-          href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+          href: storage-files-scale-targets.md
         - name: Checkliste zu Leistung und Skalierbarkeit
           href: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Parallelität
@@ -172,6 +172,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=storage'
     - name: Azure Storage-Clienttools
       href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/windows-azure-storage'
     - name: Forum
       href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
     - name: Preise
@@ -180,8 +182,6 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=storage'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/windows-azure-storage'
     - name: Videos
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
     - name: Azure-Speicher-Explorer
@@ -224,3 +224,5 @@
           href: 'https://github.com/Azure/azure-storage-ruby'
         - name: iOS
           href: 'https://github.com/Azure/azure-storage-ios'
+    - name: Versionshinweise zu Azure File Sync
+      href: storage-files-release-notes.md

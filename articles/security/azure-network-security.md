@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/24/2017
 ms.author: TomSh
 ms.openlocfilehash: 6ab59dd02391287a1effc0b51502bb7eb90db319
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-network-security"></a>Azure-Netzwerksicherheit
 
@@ -75,7 +75,7 @@ In diesem Dokument werden die folgenden Unternehmensfunktionen für Azure-Netzwe
 
 ### <a name="basic-network-connectivity"></a>Grundlegende Netzwerkkonnektivität
 
-Mit dem Dienst [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) können Sie Azure-Ressourcen über virtuelle Netzwerke (VNets) sicher miteinander verbinden. Ein VNet ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Es handelt sich hierbei um eine logische Isolation der Azure-Netzwerkinfrastruktur für Ihr Abonnement. Sie können auch eine Verbindung herstellen VNets miteinander und mit Ihren lokalen Netzwerken mit Standort-zu-Standort-VPNs und dedizierte [WAN-Links](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
+Mit dem Dienst [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) können Sie Azure-Ressourcen über virtuelle Netzwerke (VNets) sicher miteinander verbinden. Ein VNet ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Es handelt sich hierbei um eine logische Isolation der Azure-Netzwerkinfrastruktur für Ihr Abonnement. Sie können VNETs auch miteinander und mit Ihren lokalen Netzwerken verbinden, indem Sie Site-to-Site-VPN-Verbindungen und dedizierte [WAN-Verbindungen](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) verwenden.
 
 ![Grundlegende Netzwerkkonnektivität](media/azure-network-security/azure-network-security-fig-2.png)
 

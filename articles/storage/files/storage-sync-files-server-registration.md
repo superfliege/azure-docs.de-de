@@ -12,18 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: 831623b0fa0d8c03713f608116709e6a590d93c6
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 0acf183fbaea99e4316b668a3da28d79b20b7bef
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="registerunregister-a-server-with-azure-file-sync-preview"></a>Registrieren/Aufheben der Registrierung eines Servers bei der Azure-Dateisynchronisierung (Vorschau)
-Mit der Azure-Dateisynchronisierung (Vorschau) können Freigaben lokal oder in Azure repliziert werden, und der Zugriff darauf kann über SMB- oder NFS-Freigaben in Windows Server erfolgen. Die Azure-Dateisynchronisierung ist besonders nützlich in Szenarien, in denen weit entfernt von einem Azure-Rechenzentrum gespeicherte Daten abgerufen und geändert werden müssen, z.B. in einer Zweigstelle. Daten können zwischen mehreren Windows Server-Endpunkten repliziert werden, z.B. zwischen mehreren Zweigstellen.
+Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers zu verzichten. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
 
 Im folgenden Artikel wird beschrieben, wie Sie einen Windows Server bei einem Speichersynchronisierungsdienst registrieren bzw. die Registrierung aufheben. Dies kann erforderlich sein, wenn ein Server außer Betrieb genommen oder ein neuer Serverendpunkt in einer Synchronisierungsgruppe hinzugefügt werden soll. Informationen über die End-to-End-Bereitstellung der Azure-Dateisynchronisierung finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
 

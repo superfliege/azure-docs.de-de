@@ -1,49 +1,49 @@
 
 <a name="cs_0_csharpprogramexample_h2"/>
 
-## <a name="c-program-example"></a>Beispiel für c#-Programm
+## <a name="c-program-example"></a>Beispiel für C#-Programm
 
-In den nächsten Abschnitten dieses Artikels vorhanden, ein C#-Programm, das ADO.NET zum Senden von Transact-SQL-Anweisungen an die SQL-Datenbank verwendet wird. Das C#-Programm führt folgenden Aktionen aus:
+In den nächsten Abschnitten dieses Artikels wird ein C#-Programm vorgestellt, bei dem ADO.NET zum Senden von Transact-SQL-Anweisungen an die SQL-Datenbank verwendet wird. Mit dem C#-Programm werden die folgenden Aktionen ausgeführt:
 
-1. [Stellt eine Verbindung her, um unsere SQL-Datenbank mithilfe von ADO.NET](#cs_1_connect).
-2. [Erstellt Tabellen](#cs_2_createtables).
-3. [Füllt die Tabellen mit Daten, indem Sie T-SQL-INSERT-Anweisungen ausgeben](#cs_3_insert).
-4. [Aktualisiert die Daten mithilfe einer Verknüpfung](#cs_4_updatejoin).
-5. [Löscht Daten mithilfe einer Verknüpfung](#cs_5_deletejoin).
-6. [Wählt die Datenzeilen mithilfe einer Verknüpfung](#cs_6_selectrows).
-7. Schließt die Verbindung (die alle temporären Tabellen in Tempdb löscht).
+1. [Herstellen einer Verbindung mit unserer SQL-Datenbank per ADO.NET](#cs_1_connect)
+2. [Erstellen von Tabellen](#cs_2_createtables)
+3. [Ausfüllen der Tabellen mit Daten, indem T-SQL-INSERT-Anweisungen ausgegeben werden](#cs_3_insert)
+4. [Aktualisieren der Daten per Verknüpfung (Join)](#cs_4_updatejoin)
+5. [Löschen der Daten per Verknüpfung (Join)](#cs_5_deletejoin)
+6. [Auswählen von Datenzeilen per Verknüpfung (Join)](#cs_6_selectrows)
+7. Schließen der Verbindung (temporäre Tabellen aus tempdb verwerfen)
 
-Das C#-Programm enthält:
+Das C#-Programm enthält Folgendes:
 
-- C#-Code für die Verbindung mit der Datenbank.
-- Methoden, die den T-SQL-Quellcode zurückgeben.
-- Zwei Methoden, die die T-SQL-Datenbank zu übermitteln.
+- C#-Code zum Herstellen der Verbindung mit der Datenbank
+- Methoden zum Zurückgeben des T-SQL-Quellcodes
+- Zwei Methoden zum Übermitteln von T-SQL an die Datenbank
 
-#### <a name="to-compile-and-run"></a>Zum Kompilieren und ausführen
+#### <a name="to-compile-and-run"></a>Kompilieren und Ausführen
 
-Dieses c#-Programm ist logisch eine CS-Datei. Jedoch hier das Programm physisch in Codeblöcke aufgeteilt werden mehrere, um jeden Block leichter erkennen und zu verstehen. Zum Kompilieren und dieses Programm auszuführen, führen Sie folgende Schritte aus:
+Dieses C#-Programm ist in logischer Hinsicht eine CS-Datei. Hier ist das Programm aber physisch in mehrere Codeblöcke unterteilt, damit jeder Block leichter zu sehen und zu verstehen ist. Gehen Sie wie folgt vor, um dieses Programm zu kompilieren und auszuführen:
 
-1. Erstellen Sie ein C#-Projekt in Visual Studio.
-    - Der Projekttyp muss eine *Konsole* -Anwendung einsetzen möchten, von etwas wie die folgende Hierarchie: **Vorlagen** > **Visual C#-** > **klassische Windows-Desktop** > **Konsolen-App ((.NET Framework)**.
-3. In der Datei **"Program.cs"**, löschen Sie die kleinen Starter Codezeilen.
-3. Klicken Sie in "Program.cs" Kopieren Sie und fügen Sie jeweils die folgenden Datenblöcke in derselben Reihenfolge an, die sie hier dargestellt sind.
-4. Bearbeiten Sie in "Program.cs" die folgenden Werte in der **Main** Methode:
+1. Erstellen Sie in Visual Studio ein C#-Projekt.
+    - Der Projekttyp sollte eine *Konsolenanwendung* sein und etwa folgende Hierarchie aufweisen: **Vorlagen** > **Visual C#** > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)**.
+3. Entfernen Sie in der Datei **Program.cs** die ersten kurzen Codezeilen.
+3. Führen Sie für „Program.cs“ für die folgenden Blöcke jeweils das Kopieren und Einfügen durch, und zwar in derselben Reihenfolge, die hier angegeben ist.
+4. Bearbeiten Sie in „Program.cs“ die folgenden Werte in der **Main**-Methode:
 
-   - **Cb. Datenquelle**
-   - **CD. Benutzer-ID**
-   - **Cb. Kennwort**
-   - **"InitialCatalog"**
+   - **cb.DataSource**
+   - **cd.UserID**
+   - **cb.Password**
+   - **InitialCatalog**
 
-5. Überprüfen Sie, ob die Assembly **"System.Data.dll"** verwiesen wird. Um zu überprüfen, erweitern Sie die **Verweise** Knoten in der **Projektmappen-Explorer** Bereich.
-6. Um das Programm in Visual Studio zu erstellen, klicken Sie auf die **erstellen** Menü.
-7. Um das Programm in Visual Studio ausführen möchten, klicken Sie auf die **starten** Schaltfläche. Die Berichtsausgabe wird in einem cmd.exe-Fenster angezeigt.
+5. Stellen Sie sicher, dass auf die Assembly **System.Data.dll** verwiesen wird. Erweitern Sie für die Sicherstellung den Knoten **Verweise** im **Projektmappen-Explorer**-Bereich.
+6. Klicken Sie zum Erstellen des Programms in Visual Studio auf das Menü **Erstellen**.
+7. Klicken Sie auf die Schaltfläche **Start**, um das Programm aus Visual Studio auszuführen. Die Berichtsausgabe wird in einem cmd.exe-Fenster angezeigt.
 
 > [!NOTE]
-> Sie haben die Möglichkeit der Bearbeitung des T-SQL, ein führendes hinzuzufügen  **#**  auf den Tabellennamen erstellt die sie als temporäre Tabellen in **Tempdb**. Dies kann zu Demonstrationszwecken nützlich sein, wenn keine Testdatenbank verfügbar ist. Temporäre Tabellen werden automatisch gelöscht, wenn die Verbindung geschlossen wird. Alle Verweise für die Fremdschlüssel sind für temporäre Tabellen nicht erzwungen.
+> Sie können den T-SQL-Code bearbeiten, um den Tabellennamen ein **#**-Zeichen voranzustellen, damit sie in **tempdb** als temporäre Tabellen erstellt werden. Dies kann zu Demonstrationszwecken nützlich sein, wenn keine Testdatenbank verfügbar ist. Temporäre Tabellen werden automatisch gelöscht, wenn die Verbindung geschlossen wird. Verweise (REFERENCES) für Fremdschlüssel werden für temporäre Tabellen nicht erzwungen.
 >
 
 <a name="cs_1_connect"/>
-### <a name="c-block-1-connect-by-using-adonet"></a>C#-Block 1: Herstellen einer Verbindung mithilfe von ADO.NET
+### <a name="c-block-1-connect-by-using-adonet"></a>C#-Block 1: Herstellen der Verbindung per ADO.NET
 
 - [Weiter](#cs_2_createtables)
 
@@ -99,9 +99,9 @@ namespace csharp_db_test
 
 
 <a name="cs_2_createtables"/>
-### <a name="c-block-2-t-sql-to-create-tables"></a>C#-Block 2: T-SQL zum Erstellen von Tabellen
+### <a name="c-block-2-t-sql-to-create-tables"></a>C#-Block 2: T-SQL-Code zum Erstellen von Tabellen
 
-- [Previous](#cs_1_connect) &nbsp; / &nbsp; [Next](#cs_3_insert)
+- [Vorheriger](#cs_1_connect)&nbsp; / &nbsp;[Nächster](#cs_3_insert)
 
 ```csharp
       static string Build_2_Tsql_CreateTables()
@@ -131,19 +131,19 @@ CREATE TABLE tabEmployee
       }
 ```
 
-#### <a name="entity-relationship-diagram-erd"></a>Entitätsbeziehungsdiagramm (ERD)
+#### <a name="entity-relationship-diagram-erd"></a>Entitätsbeziehungsdiagramm
 
-Der vorherigen CREATE TABLE-Anweisungen umfassen die **Verweise** Schlüsselwort zum Erstellen einer *Fremdschlüssel* (FS) die Beziehung zwischen zwei Tabellen.  Bei Verwendung von Tempdb kommentieren Sie Sie aus der `--REFERENCES` Schlüsselwort mit einem Paar von führenden Bindestriche enthalten.
+Die vorherigen CREATE TABLE-Anweisungen verfügen über das Schlüsselwort **REFERENCES**, um eine *Fremdschlüssel*-Beziehung (Foreign Key, FK) zwischen zwei Tabellen zu erstellen.  Bei Verwendung von tempdb kommentieren Sie das Schlüsselwort `--REFERENCES` aus, indem Sie zwei vorangestellte Bindestriche verwenden.
 
-Als Nächstes wird eine ERD, in dem die Beziehung zwischen den beiden Tabellen angezeigt. Die Werte in der #tabEmployee.DepartmentCode *untergeordneten* Spalte sind beschränkt auf die Werte in der #tabDepartment.Department *übergeordneten* Spalte.
+Als Nächstes ist hier in einem Entitätsbeziehungsdiagramm die Beziehung zwischen den beiden Tabellen dargestellt. Die Werte in der *untergeordneten* Spalte „#tabEmployee.DepartmentCode“ sind auf die Werte beschränkt, die in der *übergeordneten* Spalte „#tabDepartment.Department“ angegeben sind.
 
-![Fremdschlüssel für ERD anzeigen](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
+![Entitätsbeziehungsdiagramm mit Fremdschlüssel](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 
 <a name="cs_3_insert"/>
-### <a name="c-block-3-t-sql-to-insert-data"></a>C#-Block 3: T-SQL zum Einfügen von Daten
+### <a name="c-block-3-t-sql-to-insert-data"></a>C#-Block 3: T-SQL-Code zum Einfügen von Daten
 
-- [Previous](#cs_2_createtables) &nbsp; / &nbsp; [Next](#cs_4_updatejoin)
+- [Vorheriger](#cs_2_createtables)&nbsp; / &nbsp;[Nächster](#cs_4_updatejoin)
 
 
 ```csharp
@@ -173,9 +173,9 @@ INSERT INTO tabEmployee
 
 
 <a name="cs_4_updatejoin"/>
-### <a name="c-block-4-t-sql-to-update-join"></a>C#-Block 4: T-SQL-Update-Join
+### <a name="c-block-4-t-sql-to-update-join"></a>C#-Block 4: T-SQL-Code für Aktualisierung/Verknüpfung
 
-- [Previous](#cs_3_insert) &nbsp; / &nbsp; [Next](#cs_5_deletejoin)
+- [Vorheriger](#cs_3_insert)&nbsp; / &nbsp;[Nächster](#cs_5_deletejoin)
 
 
 ```csharp
@@ -201,9 +201,9 @@ UPDATE empl
 
 
 <a name="cs_5_deletejoin"/>
-### <a name="c-block-5-t-sql-to-delete-join"></a>C#-Block 5: T-SQL-Delete-Join
+### <a name="c-block-5-t-sql-to-delete-join"></a>C#-Block 5: T-SQL-Code für Löschung/Verknüpfung
 
-- [Previous](#cs_4_updatejoin) &nbsp; / &nbsp; [Next](#cs_6_selectrows)
+- [Vorheriger](#cs_4_updatejoin)&nbsp; / &nbsp;[Nächster](#cs_6_selectrows)
 
 
 ```csharp
@@ -233,9 +233,9 @@ DELETE tabDepartment
 
 
 <a name="cs_6_selectrows"/>
-### <a name="c-block-6-t-sql-to-select-rows"></a>C#-Block 6: T-SQL zum Auswählen von Zeilen
+### <a name="c-block-6-t-sql-to-select-rows"></a>C#-Block 6: T-SQL-Code zum Auswählen von Zeilen
 
-- [Previous](#cs_5_deletejoin) &nbsp; / &nbsp; [Next](#cs_6b_datareader)
+- [Vorheriger](#cs_5_deletejoin)&nbsp; / &nbsp;[Nächster](#cs_6b_datareader)
 
 
 ```csharp
@@ -261,11 +261,11 @@ SELECT
 
 
 <a name="cs_6b_datareader"/>
-### <a name="c-block-6b-executereader"></a>C#-Block 6: ExecuteReader
+### <a name="c-block-6b-executereader"></a>C#-Block 6b: ExecuteReader
 
-- [Previous](#cs_6_selectrows) &nbsp; / &nbsp; [Next](#cs_7_executenonquery)
+- [Vorheriger](#cs_6_selectrows)&nbsp; / &nbsp;[Nächster](#cs_7_executenonquery)
 
-Diese Methode ist dafür entworfen, die T-SQL SELECT-Anweisung ausführen, die erstellt wird die **Build_6_Tsql_SelectEmployees** Methode.
+Diese Methode ist für das Ausführen der T-SQL-SELECT-Anweisung ausgelegt, die mit der **Build_6_Tsql_SelectEmployees**-Methode erstellt wird.
 
 
 ```csharp
@@ -299,9 +299,9 @@ Diese Methode ist dafür entworfen, die T-SQL SELECT-Anweisung ausführen, die e
 <a name="cs_7_executenonquery"/>
 ### <a name="c-block-7-executenonquery"></a>C#-Block 7: ExecuteNonQuery
 
-- [Previous](#cs_6b_datareader) &nbsp; / &nbsp; [Next](#cs_8_output)
+- [Vorheriger](#cs_6b_datareader)&nbsp; / &nbsp;[Nächster](#cs_8_output)
 
-Diese Methode wird für Vorgänge aufgerufen werden, die den Dateninhalt der Tabellen zu ändern, ohne alle Datenzeilen zurückzugeben.
+Diese Methode wird für Vorgänge aufgerufen, bei denen der Dateninhalt von Tabellen geändert wird, ohne Datenzeilen zurückzugeben.
 
 
 ```csharp
@@ -335,11 +335,11 @@ Diese Methode wird für Vorgänge aufgerufen werden, die den Dateninhalt der Tab
 
 
 <a name="cs_8_output"/>
-### <a name="c-block-8-actual-test-output-to-the-console"></a>C#-Block 8: tatsächliche Test-Ausgabe in die Konsole
+### <a name="c-block-8-actual-test-output-to-the-console"></a>C#-Block 8: Tatsächliche Testausgabe auf der Konsole
 
-- [Vorherige](#cs_7_executenonquery)
+- [Vorheriger](#cs_7_executenonquery)
 
-In diesem Abschnitt zeichnet die Ausgabe, die das Programm an die Konsole gesendet. Der Guid-Werte unterschiedlich Testläufe ab.
+In diesem Abschnitt wird die Ausgabe erfasst, die vom Programm an die Konsole gesendet wurde. Nur die GUID-Werte variieren zwischen Testläufen.
 
 
 ```text

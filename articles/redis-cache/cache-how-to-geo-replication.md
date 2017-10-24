@@ -12,19 +12,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 09/15/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 71b0d4add7e642487f6d67cda692c500ee78b0e6
-ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
-
+ms.openlocfilehash: 332326ce4188385aa6e569c812e16c3daa68bd5d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-geo-replication-for-azure-redis-cache"></a>Vorgehensweise zum Konfigurieren der Georeplikation für Azure Redis Cache
 
-Die Georeplikation bietet einen Mechanismus zum Verknüpfen von zwei Azure Redis Cache-Instanzen im Premium-Tarif. Ein Cache wird als primärer verknüpfter Cache festgelegt und der andere als sekundärer verknüpfter Cache. Der sekundäre verknüpfte Cache ist schreibgeschützt, und die in den primären Cache geschriebenen Daten werden im sekundären verknüpften Cache repliziert. Über diese Funktion kann ein Cache über verschiedene Azure-Regionen hinweg repliziert werden. Dieser Artikel enthält eine Anleitung zum Konfigurieren der Georeplikation für Ihre Azure Redis Cache-Instanzen im Premium-Tarif.
+Die Georeplikation bietet einen Mechanismus zum Verknüpfen von zwei Azure Redis Cache-Instanzen im Premium-Tarif. Ein Cache wird als primärer verknüpfter Cache festgelegt und der andere als sekundärer verknüpfter Cache. Der sekundäre verknüpfte Cache ist schreibgeschützt. Und die in den primären Cache geschriebenen Daten werden im sekundären verknüpften Cache repliziert. Über diese Funktion kann ein Cache über verschiedene Azure-Regionen hinweg repliziert werden. Dieser Artikel enthält eine Anleitung zum Konfigurieren der Georeplikation für Ihre Azure Redis Cache-Instanzen im Premium-Tarif.
 
 ## <a name="geo-replication-prerequisites"></a>Voraussetzungen für die Georeplikation
 
@@ -103,6 +101,9 @@ Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für 
 - [Kann ich zwei Caches von unterschiedlicher Größe verknüpfen?](#can-i-link-two-caches-with-different-sizes)
 - [Kann ich die Georeplikation mit aktiviertem Clustering verwenden?](#can-i-use-geo-replication-with-clustering-enabled)
 - [Kann ich die Georeplikation bei meinen Caches in einem VNET verwenden?](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
+- [Was ist der Replikationszeitplan für die Redis-Georeplikation?](#what-is-the-replication-schedule-for-redis-geo-replication)
+- [Wie lange dauert die Georeplikation?](#how-long-does-geo-replication-replication-take)
+- [Ist der Wiederherstellungspunkt für die Replikation garantiert?](#is-the-replication-recovery-point-guaranteed)
 - [Kann ich die Georeplikation mit PowerShell oder der Azure CLI verwalten?](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
 - [Wie viel kostet die Replikation meiner Daten über verschiedene Azure-Regionen hinweg?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
 - [Warum ist bei dem Versuch, meinen verknüpften Cache zu löschen, ein Fehler beim Vorgang aufgetreten?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
@@ -141,6 +142,18 @@ Ja, die Georeplikation von Caches in VNETs wird unterstützt.
 - Es wird Unterstützung für die Georeplikation zwischen Caches im selben VNET geboten.
 - Die Georeplikation zwischen Caches in verschiedenen VNETs wird ebenfalls unterstützt, solange beide VNETs so konfiguriert sind, dass Ressourcen in den VNETs über TCP-Verbindungen eine Verbindung herstellen können.
 
+### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Was ist der Replikationszeitplan für die Redis-Georeplikation?
+
+Replikation erfolgt nicht nach einem bestimmten Zeitplan, sondern findet kontinuierlich und asynchron statt, d.h., alle Schreibvorgänge an der primären Datenbank werden sofort asynchron in die sekundäre Datenbank repliziert.
+
+### <a name="how-long-does-geo-replication-replication-take"></a>Wie lange dauert die Georeplikation?
+
+Die Replikation ist ein inkrementeller, asynchroner und kontinuierlicher Vorgang, und die in Anspruch genommene Zeit unterscheidet sich normalerweise nicht wesentlich von der Latenz zwischen Regionen. Unter bestimmten Umständen und zu bestimmten Zeiten muss für die sekundäre Datenbank eine vollständige Synchronisierung der Daten von der primären Datenbank erfolgen. Die Replikationszeit hängt in diesem Fall von mehreren Faktoren ab, z.B. der Last im primären Cache, der auf dem Cachecomputer verfügbaren Bandbreite, der Latenz zwischen den Regionen usw. Anhand einiger Tests haben wir beispielsweise herausgefunden, dass die Replikationszeit für ein vollständiges georepliziertes 53-GB-Paar in den Regionen „USA, Osten“ und „USA, Westen“ zwischen 5 und 10 Minuten betragen kann.
+
+### <a name="is-the-replication-recovery-point-guaranteed"></a>Ist der Wiederherstellungspunkt für die Replikation garantiert?
+
+Derzeit sind für Caches in einem georeplizierten Modus Persistenz und Import/Export deaktiviert. Für ein vom Kunden initiiertes Failover oder wenn eine Replikationsverknüpfung zwischen dem georeplizierten Paar unterbrochen wurde, behält die sekundäre Datenbank daher die Daten, die bis zu diesem Zeitpunkt vom primären Server synchronisiert wurden, im Arbeitsspeicher bei. In solchen Situationen kann kein Wiederherstellungspunkt gewährleistet werden.
+
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>Kann ich die Georeplikation mit PowerShell oder der Azure CLI verwalten?
 
 Gegenwärtig kann die Georeplikation nur über das Azure-Portal verwaltet werden.
@@ -167,5 +180,4 @@ Um das Failover zu initiieren, müssen Sie gegenwärtig die Verknüpfung für di
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über den [Premium-Tarif von Azure Redis Cache](cache-premium-tier-intro.md).
-
 

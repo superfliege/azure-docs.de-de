@@ -4,28 +4,28 @@ Im Anschluss sehen Sie ein Beispiel für die Ausgabe, die vom „Hallo Welt“-B
 
 ```json
 [{
-    "time": "Mon Apr 11 13:48:07 2016",
+    "time": "Mon Apr 11 13:42:50 2016",
     "content": "Log started"
 }, {
-    "time": "Mon Apr 11 13:48:48 2016",
+    "time": "Mon Apr 11 13:42:50 2016",
     "properties": {
         "helloWorld": "from Azure IoT Gateway SDK simple sample!"
     },
     "content": "aGVsbG8gd29ybGQ="
 }, {
-    "time": "Mon Apr 11 13:48:55 2016",
+    "time": "Mon Apr 11 13:42:55 2016",
     "properties": {
         "helloWorld": "from Azure IoT Gateway SDK simple sample!"
     },
     "content": "aGVsbG8gd29ybGQ="
 }, {
-    "time": "Mon Apr 11 13:49:01 2016",
+    "time": "Mon Apr 11 13:43:00 2016",
     "properties": {
         "helloWorld": "from Azure IoT Gateway SDK simple sample!"
     },
     "content": "aGVsbG8gd29ybGQ="
 }, {
-    "time": "Mon Apr 11 13:49:04 2016",
+    "time": "Mon Apr 11 13:45:00 2016",
     "content": "Log stopped"
 }]
 ```
@@ -36,11 +36,11 @@ In diesem Abschnitt werden einige wichtige Teile des Codes im hello\_world-Beisp
 
 ### <a name="iot-edge-gateway-creation"></a>IoT Edge-Gatewayerstellung
 
-Sie müssen einen *Gatewayprozess* implementieren. Dieses Programm erstellt die interne Infrastruktur (den Broker), lädt die IoT Edge-Module und konfiguriert den Gatewayprozess. IoT Edge stellt die Funktion **Gateway\_Create\_From\_JSON** bereit, mit der Sie einen Bootstrapvorgang für ein Gateway auf der Grundlage einer JSON-Datei ausführen können. Zur Verwendung der Funktion **Gateway\_Create\_From\_JSON** übergeben Sie ihr den Pfad zu einer JSON-Datei, die die zu ladenden IoT Edge-Module angibt.
+Implementieren Sie zum Erstellen eines Gateways einen *Gatewayprozess*. Dieses Programm erstellt die interne Infrastruktur (den Broker), lädt die IoT Edge-Module und konfiguriert den Gatewayprozess. IoT Edge stellt die Funktion **Gateway\_Create\_From\_JSON** bereit, mit der Sie einen Bootstrapvorgang für ein Gateway auf der Grundlage einer JSON-Datei ausführen können. Zur Verwendung der Funktion **Gateway\_Create\_From\_JSON** übergeben Sie ihr den Pfad zu einer JSON-Datei, die die zu ladenden IoT Edge-Module angibt.
 
 Sie finden den Code für den Gatewayprozess im *Hallo Welt*-Beispiel in der [main.c][lnk-main-c]-Datei. Zur besseren Lesbarkeit zeigt der folgende Ausschnitt eine verkürzte Version des Codes für den Gatewayprozess. Dieses Beispielprogramm erstellt ein Gateway und wartet dann darauf, dass der Benutzer die **EINGABETASTE** drückt, woraufhin es das Gateway entfernt.
 
-```c
+```C
 int main(int argc, char** argv)
 {
     GATEWAY_HANDLE gateway;
@@ -119,7 +119,7 @@ Der folgende Code zeigt den JSON-Code zum Konfigurieren der Verknüpfungen zwisc
 
 Den Code, der vom hello\_world-Modul zum Veröffentlichen von Nachrichten verwendet wird, finden Sie in der Datei [hello_world.c][lnk-helloworld-c]. Der folgende Codeausschnitt zeigt eine modifizierte Version des Codes mit zusätzlichen Kommentaren und entferntem Fehlerbehandlungscode zur besseren Lesbarkeit:
 
-```c
+```C
 int helloWorldThread(void *param)
 {
     // create data structures used in function.
@@ -165,24 +165,22 @@ int helloWorldThread(void *param)
 }
 ```
 
-### <a name="helloworld-module-message-processing"></a>Nachrichtenverarbeitung im hello\_world-Modul
-
 Das hello\_world-Modul verarbeitet keine Nachrichten, die andere IoT Edge-Module für den Broker veröffentlichen. Daher ist die Implementierung des Nachrichtenrückrufs im hello\_world-Modul eine no-op-Funktion.
 
-```c
+```C
 static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
 {
     /* No action, HelloWorld is not interested in any messages. */
 }
 ```
 
-### <a name="logger-module-message-publishing-and-processing"></a>Veröffentlichen und Verarbeiten von Nachrichten im Protokollierungsmodul
+### <a name="logger-module-message-processing"></a>Nachrichtenverarbeitung im Protokollierungsmodul
 
 Das Protokollierungsmodul empfängt Nachrichten vom Broker und schreibt sie in eine Datei. Es veröffentlicht keine Nachrichten. Aus diesem Grund ruft der Code des Protokollierungsmoduls nie die Funktion **Broker_Publish** auf.
 
 Die Funktion **Logger_Receive** in der Datei [logger.c][lnk-logger-c] ist der Rückruf, den der Broker aufruft, um Nachrichten an das Protokollierungsmodul zu übermitteln. Der folgende Codeausschnitt zeigt eine modifizierte Version mit zusätzlichen Kommentaren und entferntem Fehlerbehandlungscode zur besseren Lesbarkeit:
 
-```c
+```C
 static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
 {
 
@@ -223,7 +221,10 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie ein einfaches IoT Edge-Gateway ausgeführt, das Nachrichten in eine Protokolldatei schreibt. Informationen zum Ausführen eines Beispiels, das Nachrichten an einen IoT Hub sendet, finden Sie unter [IoT Edge – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Linux][lnk-gateway-simulated-linux] oder [IoT Edge – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Windows][lnk-gateway-simulated-windows].
+In diesem Artikel haben Sie ein einfaches IoT Edge-Gateway ausgeführt, das Nachrichten in eine Protokolldatei schreibt. Informationen zum Ausführen eines Beispiels, das Nachrichten an IoT Hub sendet, finden Sie unter:
+
+- [IoT Edge – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Linux][lnk-gateway-simulated-linux] 
+- [IoT Edge – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Windows][lnk-gateway-simulated-windows]
 
 
 <!-- Links -->

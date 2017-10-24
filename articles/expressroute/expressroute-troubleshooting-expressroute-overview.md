@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/01/2017
+ms.date: 09/26/2017
 ms.author: cherylmc
+ms.openlocfilehash: 2bcd95da36cd577ece8ad87d00c3e276f28ad340
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 5a6360b56963d219ab576fb3e2636b6c51dd72ac
-ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="verifying-expressroute-connectivity"></a>Überprüfen der ExpressRoute-Konnektivität
 Mit ExpressRoute wird ein lokales Netzwerk über eine private Verbindung, die über einen Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitert. ExpressRoute umfasst die drei folgenden separaten Netzwerkzonen:
@@ -172,14 +171,9 @@ Achten Sie besonders auf die folgenden Felder, um zu überprüfen, ob eine Expre
 Nachdem der Service Provider die Bereitstellung der ExpressRoute-Verbindung abgeschlossen hat, kann über die ExpressRoute-Verbindung zwischen MSEE-PRs (4) und MSEEs (5) eine Routingkonfiguration erstellt werden. Für jede ExpressRoute-Verbindung können ein, zwei oder drei Routingkontexte aktiviert werden: privates Azure-Peering (Datenverkehr zu privaten virtuellen Netzwerken in Azure), öffentliches Azure-Peering (Datenverkehr zu öffentlichen IP-Adressen in Azure) und Microsoft-Peering (Datenverkehr zu Office 365 und Dynamics 365). Weitere Informationen dazu, wie Sie die Routingkonfiguration erstellen und ändern, finden Sie im Artikel [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung][CreatePeering].
 
 ###<a name="verification-via-the-azure-portal"></a>Überprüfung über das Azure-Portal
->[!IMPORTANT]
->Es gibt einen bekannten Fehler im Azure-Portal, bei dem ExpressRoute-Peerings *NICHT* im Portal angezeigt werden, wenn sie vom Service Provider konfiguriert werden. Wenn ExpressRoute-Peerings über das Portal oder PowerShell hinzugefügt werden, *werden die Service Provider-Einstellungen überschrieben*. Diese Aktion verhindert das Routing über die ExpressRoute-Verbindung, und die Unterstützung des Service Providers ist erforderlich, um die Einstellungen wiederherzustellen und zum normalen Routingbetrieb zurückzukehren. Ändern Sie die ExpressRoute-Peerings nur, wenn sicher ist, dass der Service Provider nur Layer 2-Dienste bereitstellt!
->
->
 
-<p/>
 >[!NOTE]
->Wenn Layer 3 vom Dienstanbieter bereitgestellt wird und die Peerings im Portal leer sind, kann PowerShell verwendet werden, um die vom Dienstanbieter konfigurierten Einstellungen anzuzeigen.
+>Wenn vom Dienstanbieter Layer 3 bereitgestellt wird und die Peerings im Portal leer sind, aktualisieren Sie die Verbindungskonfiguration über die Schaltfläche „Aktualisieren“ im Portal. Mit diesem Vorgang wird für Ihre Verbindung die richtige Routingkonfiguration angewendet. 
 >
 >
 
@@ -410,7 +404,6 @@ Weitere Informationen oder Hilfe finden Sie unter den folgenden Links:
 [CreatePeering]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-routing-portal-resource-manager
 [OldPortal]: https://manage.windowsazure.com
 [ARP]: https://docs.microsoft.com/en-us/azure/expressroute/expressroute-troubleshooting-arp-resource-manager
-
 
 
 

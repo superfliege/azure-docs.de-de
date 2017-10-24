@@ -15,20 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
+ms.openlocfilehash: 3e54cb45cf002a183a5b0bd9b3082a235cd825f8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 2219aeb725b207fd92ff3e7603d7ee9c78f2844c
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="high-availability-ports-overview-preview"></a>Übersicht über Hochverfügbarkeitsports (Vorschauversion)
 
 Die Standard-SKU von Azure Load Balancer enthält Hochverfügbarkeitsports (High Availability, HA) – eine Funktion, mit der der Datenverkehr von allen Ports und für alle unterstützten Protokolle verteilt werden kann. Beim Konfigurieren eines internen Load Balancers können Benutzer eine Regel für Hochverfügbarkeitsports konfigurieren, die die Front-End- und Back-End-Ports auf **0** und die Protokolle auf **all** festlegt. So kann der gesamte Datenverkehr den internen Load Balancer passieren.
 
 >[!NOTE]
-> Das Feature für Hochverfügbarkeitsports ist derzeit als Vorschauversion verfügbar. Während der Vorschauphase ist das Feature unter Umständen nicht so verfügbar und zuverlässig wie Features in Versionen mit allgemeiner Verfügbarkeit. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Das Feature für Hochverfügbarkeitsports ist derzeit als Vorschauversion mit Load Balancer Standard verfügbar. Während der Vorschauphase weist das Feature unter Umständen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Features in Releases mit allgemeiner Verfügbarkeit auf. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Damit Sie Hochverfügbarkeitsports mit Load Balancer Standard-Ressourcen verwenden können, müssen Sie sich für die Load Balancer Standard-Vorschauversion registrieren. Befolgen Sie zusätzlich zur Load Balancer [Standard-Vorschauversion](https://aka.ms/lbpreview#preview-sign-up) die Hinweise zur Registrierung.
 
 Der Algorithmus für den Lastenausgleich bleibt unverändert, und das Ziel wird auf Grundlage des 5-Tupels <IP-Quelladresse, Quellport, IP-Zieladresse, Zielport, Protokoll> ausgewählt. Diese Konfiguration ermöglicht es einer einzelnen Lastenausgleichsregel, den gesamten verfügbaren Datenverkehr zu verarbeiten. Außerdem werden die Komplexität der Konfiguration und die Beschränkungen reduziert, die durch die maximale Anzahl von hinzufügbaren Lastenausgleichsregeln festgelegt werden können.
 
@@ -71,12 +69,17 @@ Für die Teilnahme an der Vorschau des Features für HA-Ports in der Load Balanc
 
     ```cli
     az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network 
-    ```
-## <a name="caveats"></a>Einschränkungen
+    ```  
+
+
+>[!NOTE]
+>Um dieses Feature verwenden zu können, müssen Sie sich zusätzlich zu Hochverfügbarkeitsports auch für die Load Balancer [Standard-Vorschauversion](https://aka.ms/lbpreview#preview-sign-up) registrieren. Die Registrierung für die Vorschauversion von Hochverfügbarkeitsports oder Load Balancer Standard kann bis zu einer Stunde dauern.
+
+## <a name="limitations"></a>Einschränkungen
 
 Hier finden Sie die unterstützten Konfigurationen oder Ausnahmen für Hochverfügbarkeitsports:
 
-- Eine einzelne Front-End-IP-Konfiguration kann nur entweder eine einzelne DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports (alle Ports) oder eine einzelne Nicht-DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports (alle Ports) haben, niemals beides gleichzeitig.
+- Eine einzelne Front-End-IP-Konfiguration kann nur entweder eine einzelne DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports (alle Ports) oder eine einzelne Nicht-DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports (alle Ports) enthalten, niemals beides gleichzeitig.
 - Eine einzelne Netzwerkschnittstellen-IP-Konfiguration kann nur eine Nicht-DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports haben. Für diese IP-Konfiguration können keine anderen Regeln konfiguriert werden.
 - Eine einzelne Netzwerkschnittstellen-IP-Konfiguration kann mindestens eine DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports haben, vorausgesetzt, dass alle ihre jeweiligen Front-End-IP-Konfigurationen eindeutig sind.
 - Zwei (oder mehr) Lastenausgleichsregeln, die auf denselben Back-End-Pool verweisen, können gleichzeitig vorhanden sein, wenn alle Lastenausgleichsregeln Hochverfügbarkeitsports (nur DSR) oder alle Regeln nur Nicht-Hochverfügbarkeitsports (DSR und Nicht-DSR) haben. Zwei solcher Lastenausgleichsregeln können nicht gleichzeitig vorhanden sein, wenn Hochverfügbarkeitsport- und Nicht-Hochverfügbarkeitsportregeln kombiniert wurden.
@@ -86,5 +89,4 @@ Hier finden Sie die unterstützten Konfigurationen oder Ausnahmen für Hochverf�
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Configure HA Ports on an Internal Load balancer (Konfigurieren von Hochverfügbarkeitsport auf einem internen Load Balancer)](load-balancer-configure-ha-ports.md)
-
 

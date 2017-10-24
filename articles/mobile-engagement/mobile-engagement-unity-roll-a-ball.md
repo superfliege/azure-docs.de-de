@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a id="unity-roll-a-ball"></a>Erstellen eines Unity Roll-a-Ball-Spiels
 Dieses Tutorial zeigt die wichtigsten Schritte für ein leicht abgewandeltes [Tutorial für ein Unity Roll-a-Ball-Spiel](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial). Dieses Beispielspiel besteht aus einem sphärischen „Player-Objekt“, das vom Benutzer der App gesteuert wird. Ziel des Spiels ist es, sammelbare Objekte zu „sammeln“, indem das Player-Objekt gegen diese Objekte stößt. Für dieses Tutorial werden Grundkenntnisse im Umgang mit der Unity-Editor-Umgebung vorausgesetzt. Sehen Sie sich bei Problemen das vollständige Tutorial an. 

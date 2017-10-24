@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
+ms.openlocfilehash: d3c8c79170e2f369a89c4ab0588e057d0228b573
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 03cb14b5710b6dd17599a3c4eab21380c76c2b40
-ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="understanding-outbound-connections-in-azure"></a>Grundlegendes zu ausgehenden Verbindungen in Azure
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
@@ -42,7 +40,7 @@ Wenn eine VM mit Endpunkten außerhalb von Azure im öffentlichen IP-Adressraum 
 
 In diesem Szenario gehört die VM nicht zu einem Azure Load Balancer-Pool, und ihr ist keine öffentliche IP-Adresse auf Instanzebene zugewiesen. Wenn der virtuelle Computer einen ausgehenden Datenfluss einleitet, übersetzt Azure die private IP-Quelladresse für den ausgehenden Datenfluss in eine öffentliche IP-Quelladresse. Die für diesen ausgehenden Datenfluss verwendete öffentliche IP-Adresse ist nicht konfigurierbar und wird nicht auf die Ressourcengrenze des Abonnements für öffentliche IP-Adressen angerechnet. Azure verwendet das Verfahren „Source Network Address Translation (SNAT, Übersetzung der Quellnetzwerkadresse)“ für diese Aufgabe. Kurzlebige Ports der öffentlichen IP-Adresse werden verwendet, um einzelne Datenflüsse zu unterscheiden, die von der VM stammen. Beim Erstellen von Datenflüssen weist SNAT kurzlebige Ports dynamisch zu. In diesem Kontext werden die kurzlebigen für SNAT verwendeten Ports als SNAT-Ports bezeichnet.
 
-SNAT Ports sind begrenzte Ressourcen, die sich erschöpfen können. Es ist wichtig, ihre Nutzung zu verstehen. Pro Datenfluss zu einer einzelnen IP-Zieladresse wird ein SNAT-Port genutzt. Für mehrere Datenflüsse zur gleichen IP-Zieladresse belegt jeder Datenfluss einen einzelnen SNAT-Port. Dadurch wird sichergestellt, dass die Datenflüsse eindeutig sind, wenn sie von der gleichen öffentlichen IP-Adresse stammen und die gleiche IP-Zieladresse haben. Mehrere Datenflüsse mit jeweils einer anderen IP-Zieladresse nutzen pro Ziel einen einzelnen SNAT-Port. Die IP-Zieladresse sorgt für Eindeutigkeit der Datenflüsse.
+SNAT Ports sind begrenzte Ressourcen, die sich erschöpfen können. Es ist wichtig, ihre Nutzung zu verstehen. Pro Datenfluss zu einer einzelnen IP-Zieladresse wird ein SNAT-Port genutzt. Für mehrere Datenflüsse zur gleichen IP-Zieladresse belegt jeder Datenfluss einen einzelnen SNAT-Port. Dadurch wird sichergestellt, dass die Datenflüsse eindeutig sind, wenn sie von der gleichen öffentlichen IP-Adresse stammen und die gleiche IP-Zieladresse haben. Mehrere Datenflüsse mit jeweils einer anderen IP-Zieladresse haben einen gemeinsamen SNAT-Port. Die IP-Zieladresse sorgt für Eindeutigkeit der Datenflüsse.
 
 Sie können [Log Analytics für Azure Load Balancer](load-balancer-monitor-log.md) und [Warnungsereignisprotokolle zum Überwachen auf Meldungen zur SNAT-Portauslastung](load-balancer-monitor-log.md#alert-event-log) verwenden. Sobald SNAT-Portressourcen erschöpft sind, sind ausgehende Datenflüsse erst wieder möglich, nachdem SNAT-Ports von vorhandenen Datenflüssen freigegeben wurden. Der Lastenausgleich verwendet ein vierminütiges Leerlauftimeout für die Freigabe von SNAT-Ports.
 
@@ -52,7 +50,7 @@ In diesem Szenario gehört die VM zum Azure Load Balancer-Pool.  Der VM ist kein
 
 Wenn die dem Lastenausgleich unterliegende VM einen ausgehenden Datenfluss erstellt, übersetzt Azure die private IP-Quelladresse des ausgehenden Datenflusses in die öffentliche IP-Adresse des öffentlichen Lastenausgleichs-Frond-End. Azure verwendet das Verfahren „Source Network Address Translation (SNAT, Übersetzung der Quellnetzwerkadresse)“ für diese Aufgabe. Kurzlebiger Ports der öffentlichen IP-Adresse des Lastenausgleichs werden verwendet, um einzelne Datenflüsse zu unterscheiden, die von der VM stammen. Beim Erstellen ausgehender Datenflüsse weist SNAT kurzlebige Ports dynamisch zu. In diesem Kontext werden die kurzlebigen für SNAT verwendeten Ports als SNAT-Ports bezeichnet.
 
-SNAT Ports sind begrenzte Ressourcen, die sich erschöpfen können. Es ist wichtig, ihre Nutzung zu verstehen. Pro Datenfluss zu einer einzelnen IP-Zieladresse wird ein SNAT-Port genutzt. Für mehrere Datenflüsse zur gleichen IP-Zieladresse belegt jeder Datenfluss einen einzelnen SNAT-Port. Dadurch wird sichergestellt, dass die Datenflüsse eindeutig sind, wenn sie von der gleichen öffentlichen IP-Adresse stammen und die gleiche IP-Zieladresse haben. Mehrere Datenflüsse mit jeweils einer anderen IP-Zieladresse nutzen pro Ziel einen einzelnen SNAT-Port. Die IP-Zieladresse sorgt für Eindeutigkeit der Datenflüsse.
+SNAT Ports sind begrenzte Ressourcen, die sich erschöpfen können. Es ist wichtig, ihre Nutzung zu verstehen. Pro Datenfluss zu einer einzelnen IP-Zieladresse wird ein SNAT-Port genutzt. Für mehrere Datenflüsse zur gleichen IP-Zieladresse belegt jeder Datenfluss einen einzelnen SNAT-Port. Dadurch wird sichergestellt, dass die Datenflüsse eindeutig sind, wenn sie von der gleichen öffentlichen IP-Adresse stammen und die gleiche IP-Zieladresse haben. Mehrere Datenflüsse mit jeweils einer anderen IP-Zieladresse haben einen gemeinsamen SNAT-Port. Die IP-Zieladresse sorgt für Eindeutigkeit der Datenflüsse.
 
 Sie können [Log Analytics für Azure Load Balancer](load-balancer-monitor-log.md) und [Warnungsereignisprotokolle zum Überwachen auf Meldungen zur SNAT-Portauslastung](load-balancer-monitor-log.md#alert-event-log) verwenden. Sobald SNAT-Portressourcen erschöpft sind, sind ausgehende Datenflüsse erst wieder möglich, nachdem SNAT-Ports von vorhandenen Datenflüssen freigegeben wurden. Der Lastenausgleich verwendet ein vierminütiges Leerlauftimeout für die Freigabe von SNAT-Ports.
 
@@ -79,4 +77,3 @@ Wenn [einem Lastenausgleich mehrere (öffentliche) IP-Adressen zugeordnet sind](
 Azure verwendet einen Algorithmus, um basierend auf der Größe des Pools die Anzahl der verfügbaren SNAT-Ports zu bestimmen.  Dies ist zu diesem Zeitpunkt nicht konfigurierbar.
 
 Es ist wichtig, zu beachten, dass die Anzahl der verfügbaren SNAT-Ports nicht direkt in die Anzahl der Verbindungen übersetzt wird. Weiter oben finden Sie Angaben darüber, wann und wie SNAT-Ports zugeordnet werden und wie diese begrenzte Ressource verwaltet wird.
-

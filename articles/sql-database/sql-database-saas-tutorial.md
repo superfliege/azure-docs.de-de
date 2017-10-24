@@ -1,5 +1,5 @@
 ---
-title: "Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-Anwendung, die Azure SQL-Datenbank verwendet | Microsoft-Dokumentation"
+title: "Tutorial für mehrinstanzenfähige SaaS-Anwendungen – Azure SQL-Datenbank | Microsoft-Dokumentation"
 description: "Es wird beschrieben, wie Sie die mehrinstanzenfähige Wingtip-SaaS-Anwendung bereitstellen und kennenlernen, mit der SaaS-Muster per Azure SQL-Datenbank dargestellt werden."
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
+ms.openlocfilehash: 2e6816ce2740b0325c6f59338f0365c6b40539f3
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 14d2fd007e88c9cb20cf2b4a24262e2bebc42d63
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="deploy-and-explore-a-multi-tenant-application-that-uses-azure-sql-database---wingtip-saas"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung, die Azure SQL-Datenbank verwendet – Wingtip SaaS
 
@@ -203,4 +202,3 @@ Arbeiten Sie nun das [Tutorial zum Bereitstellen und Katalogisieren von Mandante
 * Weitere Informationen zu Pools für elastische Datenbanken finden Sie unter [*Was ist ein Pool für elastische Azure SQL-Datenbanken*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)
 * Weitere Informationen zu elastischen Aufträgen finden Sie unter [*Verwalten horizontal hochskalierter Clouddatenbanken*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview)
 * Weitere Informationen zu mehrinstanzenfähigen SaaS-Anwendungen finden Sie unter [*Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen*](https://docs.microsoft.com/azure/sql-database/sql-database-design-patterns-multi-tenancy-saas-applications)
-

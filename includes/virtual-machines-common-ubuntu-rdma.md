@@ -1,0 +1,38 @@
+1. Installieren von dapl, rdmacm, ibverbs und mlx4
+
+  ```bash
+  sudo apt-get update
+
+  sudo apt-get install libdapl2 libmlx4-1
+
+  ```
+
+2. Aktivieren Sie RDMA in „/etc/waagent.conf“, indem Sie die folgenden Konfigurationszeilen auskommentieren. Sie benötigen Root-Zugriff zum Bearbeiten dieser Datei.
+  
+  ```
+  OS.EnableRDMA=y
+
+  OS.UpdateRdmaDriver=y
+  ```
+
+3. Fügen Sie die folgenden Speichereinstellungen in der Datei „/etc/security/limits.conf“ in KB hinzu, oder ändern Sie sie. Sie benötigen Root-Zugriff zum Bearbeiten dieser Datei. Zu Testzwecken können Sie „memlock“ auf unbegrenzt festlegen. Beispiel: `<User or group name>   hard    memlock   unlimited`.
+
+  ```
+  <User or group name> hard    memlock <memory required for your application in KB>
+
+  <User or group name> soft    memlock <memory required for your application in KB>
+  ```
+  
+4. Installieren Sie die Intel MPI-Bibliothek. Sie können die Bibliothek von Intel [erwerben und herunterladen](https://software.intel.com/intel-mpi-library/) oder die [kostenlose Evaluierungsversion](https://registrationcenter.intel.com/en/forms/?productid=1740) herunterladen.
+
+  ```bash
+ wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/11595/l_mpi_2017.3.196.tgz
+   ```
+ 
+ Die Installationsschritte finden Sie im [Installationshandbuch für die Intel MPI-Bibliothek](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html).
+
+5. Aktivieren Sie ptrace für Nicht-Root-Nicht-Debugger-Prozesse (erforderlich für die aktuelle Version von Intel MPI).
+ 
+  ```bash
+  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+  ```

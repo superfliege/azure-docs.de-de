@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 07/24/2017
 ms.author: seanmck
 ms.custom: mvc
+ms.openlocfilehash: b960d56188abf102cf4a8894582203205eaa9a03
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
-ms.openlocfilehash: 6f0a1e5263a034e825d4c12860fd6f97a4c556c6
-ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances und Containerorchestratoren
 
 Aufgrund ihrer kleinen Größe und Anwendungsorientierung sind Container gut für agile Delivery-Umgebungen und auf Microservice basierende Architekturen geeignet. Die Automatisierung und Verwaltung einer großen Anzahl von Containern und deren Interaktion wird als *Orchestrierung* bezeichnet. Zu den beliebten Containerorchestratoren zählen Kubernetes, DC/OS und Docker Swarm, die alle in [Azure Container Service](https://docs.microsoft.com/azure/container-service/) verfügbar sind.
@@ -66,9 +64,9 @@ Für stabile Workloads mit langer Ausführungszeit ist es normalerweise günstig
 
 ## <a name="sample-implementation-azure-container-instances-connector-for-kubernetes"></a>Beispiel für die Implementierung: Azure Container Instances-Connector für Kubernetes
 
-Um zu zeigen, wie Containerorchestrierungsplattformen in Azure Container Instances integriert werden können, haben wir damit begonnen, einen [Beispiel-Connector für Kubernetes][aci-connector-k8s] zu erstellen. 
+Um zu zeigen, wie Containerorchestrierungsplattformen in Azure Container Instances integriert werden können, haben wir damit begonnen, einen [Beispiel-Connector für Kubernetes][aci-connector-k8s] zu erstellen.
 
-Der Connector für Kubernetes imitiert das [Kubelet][kubelet-doc], indem er sich als Knoten mit unbegrenzter Kapazität registriert und die Erstellung von [Pods][pod-doc] als Containergruppen in Azure Container Instances erledigt. 
+Der Connector für Kubernetes imitiert das [Kubelet][kubelet-doc], indem er sich als Knoten mit unbegrenzter Kapazität registriert und die Erstellung von [Pods][pod-doc] als Containergruppen in Azure Container Instances erledigt.
 
 <!-- ![ACI Connector for Kubernetes][aci-connector-k8s-gif] -->
 
@@ -79,7 +77,7 @@ Connectors für andere Orchestratoren könnten auf ähnliche Weise gebaut und in
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erstellen Sie Ihren ersten Container mit Azure Container Instances mithilfe der [Kurzanleitung](container-instances-quickstart.md).
+Erstellen Sie Ihren ersten Container mit Azure Container Instances mithilfe der [Schnellstartanleitung](container-instances-quickstart.md).
 
 <!-- IMAGES -->
 [aci-connector-k8s-gif]: ./media/container-instances-orchestrator-relationship/aci-connector-k8s.gif

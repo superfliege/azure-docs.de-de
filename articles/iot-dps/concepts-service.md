@@ -5,21 +5,19 @@ services: iot-dps
 keywords: 
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 10/03/2017
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
+ms.openlocfilehash: 96c63e5d0379150ea619dbbe912a21e373f808af
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: 1a37f0753ab576aba9154e148b026b70877176f2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Konzepte beim IoT Hub Device Provisioning-Dienst
 
 Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, mit dem Sie Geräte ohne manuelles Eingreifen auf einem angegebenen IoT Hub konfigurieren können. Mit dem Device Provisioning-Dienst können Sie Millionen von Geräten auf sichere und skalierbare Weise bereitstellen.
@@ -53,14 +51,14 @@ Bei einer Registrierung handelt es sich um den Datensatz der Geräte oder Gerät
 
 ### <a name="enrollment-group"></a>Registrierungsgruppe
 
-Eine Registrierungsgruppe stellt eine Gruppe von Geräten dar, die einen bestimmten Nachweismechanismus gemeinsam nutzen. Alle Geräte in der Registrierungsgruppe stellen X.509-Zertifikate bereit, die von derselben Stammzertifizierungsstelle signiert wurden. Registrierungsgruppen können nur den X.509-Nachweismechanismus verwenden.
+Eine Registrierungsgruppe stellt eine Gruppe von Geräten dar, die einen bestimmten Nachweismechanismus gemeinsam nutzen. Alle Geräte in der Registrierungsgruppe stellen X.509-Zertifikate bereit, die von derselben Stammzertifizierungsstelle signiert wurden. Registrierungsgruppen können nur den X.509-Nachweismechanismus verwenden. Der Name und das Zertifikat der Registrierungsgruppe müssen alphanumerisch sein und dürfen nur Kleinbuchstaben enthalten. Bindestriche sind zulässig.
 
 > [!TIP]
 > Es empfiehlt sich, eine Registrierungsgruppe für eine große Anzahl von Geräten, die eine gewünschte Erstkonfiguration gemeinsam nutzen, oder für Geräte zu verwenden, die alle demselben Mandanten zugeordnet sind.
 
 ### <a name="individual-enrollment"></a>Individuelle Registrierung
 
-Eine individuelle Registrierung ist ein Eintrag für ein einzelnes Gerät, das registriert werden kann. Individuelle Registrierungen verwenden X.509-Zertifikate oder SAS-Token (in einem physischen oder virtuellen TPM) als Nachweismechanismen. Bei individuellen Registrierungen ist möglicherweise die gewünschte IoT Hub-Geräte-ID angegeben.
+Eine individuelle Registrierung ist ein Eintrag für ein einzelnes Gerät, das registriert werden kann. Individuelle Registrierungen verwenden X.509-Zertifikate oder SAS-Token (in einem physischen oder virtuellen TPM) als Nachweismechanismen. Die Registrierungs-ID in einer einzelnen Registrierung ist alphanumerisch und besteht aus Kleinbuchstaben und ggf. Bindestrichen. Bei individuellen Registrierungen ist möglicherweise die gewünschte IoT Hub-Geräte-ID angegeben.
 
 > [!TIP]
 > Individuelle Registrierungen sollten für Geräte, die besondere Erstkonfigurationen erfordern, oder für Geräte verwendet werden, die nur SAS-Token über das TPM oder das virtuelle TPM als Nachweismechanismus verwenden können.
@@ -72,4 +70,3 @@ Eine Registrierung ist der Datensatz eines Geräts, das über den Device Provisi
 ## <a name="operations"></a>Vorgänge
 
 Vorgänge stellen die Abrechnungseinheit des Device Provisioning-Diensts dar. Ein Vorgang entspricht der erfolgreichen Ausführung einer Anweisung für den Dienst. Vorgänge umfassen Registrierungen und erneute Registrierungen von Geräten sowie dienstseitige Änderungen wie das Hinzufügen und Aktualisieren von Registrierungslisteneinträgen.
-

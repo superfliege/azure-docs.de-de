@@ -13,35 +13,30 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/21/2017
+ms.date: 10/06/2017
 ms.author: owend
+ms.openlocfilehash: 31e4913aceb1c4b51ddc7cde6381bc21b50187c1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 514b5404e8cbfa0baa657eb41736e20cad502638
-ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen mit dem lokalen Azure-Datengateway
 Das lokale Datengateway fungiert als Brücke für eine sichere Datenübertragung zwischen lokalen Datenquellen und den Azure Analysis Services-Servern in der Cloud. Zusätzlich zur Verwendung von mehreren Azure Analysis Services-Servern in derselben Region funktioniert die neueste Version des Gateways auch mit Azure Logic Apps, Power BI, Power Apps und Microsoft Flow. Sie können einem einzelnen Gateway mehrere Dienste in derselben Region zuordnen. 
 
- Azure Analysis Services erfordert eine Gatewayressource in derselben Region. Wenn Sie z.B. über Azure Analysis Services-Server in der Region „USA, Osten 2“ verfügen, benötigen Sie eine Gatewayressource in der Region „USA, Osten 2“. Mehrere Server in der Region „USA, Osten 2“ können aber dasselbe Gateway verwenden.
-
 Das erstmalige Einrichten des Gateways ist ein Prozess mit vier Schritten:
 
-- **Herunterladen und Ausführen des Setupprogramms:** Bei diesem Schritt wird ein Gatewaydienst auf einem Computer in Ihrer Organisation installiert.
+- **Herunterladen und Ausführen des Setupprogramms:** Bei diesem Schritt wird ein Gatewaydienst auf einem Computer in Ihrer Organisation installiert. Sie melden sich bei Azure ebenfalls mit einem Konto in der Azure AD-Instanz Ihres [Mandanten](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) an. Azure B2B (Gast)-Konten werden nicht unterstützt.
 
-- **Registrieren des Gateways:** Bei diesem Schritt geben Sie einen Namen und einen Wiederherstellungsschlüssel für Ihr Gateway ein, wählen eine Region aus und registrieren Ihr Gateway beim Gateway-Clouddienst.
+- **Registrieren des Gateways:** Bei diesem Schritt geben Sie einen Namen und einen Wiederherstellungsschlüssel für Ihr Gateway ein, wählen eine Region aus und registrieren Ihr Gateway beim Gateway-Clouddienst. Die Gatewayressource **muss in der gleichen Region registriert werden** wie die Analysis Services-Server. 
 
 - **Erstellen einer Gatewayressource in Azure:** Bei diesem Schritt erstellen Sie eine Gatewayressource in Ihrem Azure-Abonnement.
 
-- **Verbinden Ihrer Server mit der Gatewayressource:** Nachdem Sie in Ihrem Abonnement eine Gatewayressource eingerichtet haben, können Sie damit beginnen, Ihre Server mit dieser zu verbinden.
-
-Nachdem Sie eine Gatewayressource für Ihr Abonnement konfiguriert haben, können Sie mehrere Server und andere Dienste mit dieser verbinden. Sie müssen nur dann ein weiteres Gateway installieren und zusätzliche Gatewayressourcen erstellen, wenn Sie über Server oder andere Dienste in einer anderen Region verfügen.
+- **Verbinden Ihrer Server mit der Gatewayressource:** Nachdem Sie in Ihrem Abonnement eine Gatewayressource eingerichtet haben, können Sie damit beginnen, Ihre Server mit dieser zu verbinden. Sie können mehrere Server und andere Ressourcen mit ihr verbinden, sofern sie sich in derselben Region befinden.
 
 Wenn Sie sofort beginnen möchten, lesen Sie unter [Installieren und Konfigurieren eines lokalen Datengateways](analysis-services-gateway-install.md) nach.
 
-## <a name="how-it-works"> </a>Funktionsweise
+## <a name="how-it-works"></a>Funktionsweise
 Das Gateway, das Sie auf einem Computer im Netzwerk Ihrer Organisation installieren, wird als Windows-Dienst mit dem Namen **Lokales Datengateway** ausgeführt. Dieser lokale Dienst wird über Azure Service Bus beim Gateway-Clouddienst registriert. Anschließend erstellen Sie eine Gatewayressource als Gateway-Clouddienst für Ihr Azure-Abonnement. Ihre Azure Analysis Services-Server werden dann mit der Gatewayressource verbunden. Wenn Modelle auf Ihrem Server für Abfragen oder die Verarbeitung mit Ihren lokalen Datenquellen verbunden werden müssen, durchläuft ein Abfrage- und Datenfluss die Gatewayressource, Azure Service Bus, den lokalen Datengateway-Dienst und Ihre Datenquellen. 
 
 ![So funktioniert's](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
@@ -55,12 +50,12 @@ Abfragen und Datenfluss:
 5. Das Gateway sendet die Abfrage zur Ausführung an die Datenquelle.
 6. Die Ergebnisse werden aus der Datenquelle zurück an das Gateway und dann an den Clouddienst und Ihren Server gesendet.
 
-## <a name="windows-service-account"> </a>Windows-Dienstkonto
+## <a name="windows-service-account"></a>Windows-Dienstkonto
 Das lokale Datengateway ist zur Verwendung von *NT SERVICE\PBIEgwService* für die Anmeldeinformationen für den Windows-Dienst konfiguriert. Standardmäßig verfügt es über das Recht „Anmelden als Dienst“ im Kontext des Computers, auf dem Sie das Gateway installieren. Diese Anmeldeinformationen sind nicht mit denen des Kontos identisch, das zum Verbinden mit lokalen Datenquellen oder dem Azure-Konto verwendet wird.  
 
 Wenn beim Proxyserver Authentifizierungsprobleme auftreten, sollten Sie das Windows-Dienstkonto in ein Domänenbenutzerkonto oder verwaltetes Dienstkonto ändern.
 
-## <a name="ports"> </a>Ports
+## <a name="ports"></a>Ports
 Das Gateway stellt eine ausgehende Verbindung mit dem Azure Service Bus her. Es kommuniziert über ausgehende Ports: TCP 443 (Standard), 5671, 5672, 9350 bis 9354.  Das Gateway benötigt keine eingehenden Ports.
 
 Es wird empfohlen, die IP-Adressen für Ihren Datenbereich in die Whitelist der Firewall aufzunehmen. Sie können die [Liste der IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) (in englischer Sprache) herunterladen. Diese Liste wird wöchentlich aktualisiert.
@@ -100,15 +95,15 @@ Sie können erzwingen, dass das Gateway mit Azure Service Bus über HTTPS (und n
 ### <a name="general"></a>Allgemein
 
 **F**: Benötige ich ein Gateway für Datenquellen in der Cloud, z.B. Azure SQL-Datenbank? <br/>
-**A**: Nein. Ein Gateway dient nur der Verbindung mit lokalen Datenquellen.
+**A**: Nein. Ein Gateway ist nur zum Herstellen einer Verbindung mit lokalen Datenquellen erforderlich.
 
 **F**: Muss das Gateway auf dem gleichen Computer wie die Datenquelle installiert werden? <br/>
-**A**: Nein. Das Gateway stellt mithilfe der bereitgestellten Verbindungsinformationen eine Verbindung mit der Datenquelle her. Stellen Sie sich das Gateway in diesem Sinne als Clientanwendung vor. Für das Gateway ist nur die Funktion zum Herstellen der Verbindung mit dem angegebenen Servernamen erforderlich, üblicherweise im gleichen Netzwerk.
+**A**: Nein. Das Gateway muss nur eine Verbindung mit dem Server herstellen können (üblicherweise im gleichen Netzwerk).
 
 <a name="why-azure-work-school-account"></a>
 
 **F**: Warum muss ich für die Anmeldung ein Geschäfts-, Schul- oder Unikonto verwenden? <br/>
-**A**: Sie können beim Installieren des lokalen Datengateways nur ein Azure-Geschäfts-, Schul- oder Unikonto verwenden. Ihr Anmeldekonto ist in einem Mandanten gespeichert, der von Azure Active Directory (Azure AD) verwaltet wird. Normalerweise entspricht der Benutzerprinzipalname (UPN) Ihres Azure AD-Kontos der E-Mail-Adresse.
+**A**: Sie können beim Installieren des lokalen Datengateways nur ein Geschäfts-, Schul- oder Unikonto verwenden. Dieses Konto muss sich darüber hinaus im gleichen Mandanten befinden wie das Abonnement, unter dem Sie die Gatewayressource konfigurieren. Ihr Anmeldekonto ist in einem Mandanten gespeichert, der von Azure Active Directory (Azure AD) verwaltet wird. Normalerweise entspricht der Benutzerprinzipalname (UPN) Ihres Azure AD-Kontos der E-Mail-Adresse.
 
 **F**: Wo werden meine Anmeldeinformationen gespeichert ? <br/>
 **A**: Die Anmeldeinformationen, die Sie für eine Datenquelle eingeben, werden verschlüsselt und im Gateway-Clouddienst gespeichert. Die Anmeldeinformationen werden im lokalen Datengateway entschlüsselt.
@@ -143,7 +138,7 @@ Sie können mithilfe des Drittanbietertools Azure Speed Test-App messen, wie hoc
 **F**: Welchen Vorteil hat der Wiederherstellungsschlüssel? <br/>
 **A**: Der Wiederherstellungsschlüssel bietet eine Möglichkeit zum Migrieren oder Wiederherstellen Ihrer Gatewayeinstellungen nach einem Notfall.
 
-## <a name="troubleshooting"> </a>Problembehandlung
+## <a name="troubleshooting"></a>Problembehandlung
 
 **F**: Wie kann ich feststellen, welche Abfragen an die lokale Datenquelle gesendet werden? <br/>
 **A**: Sie können die Abfrageablaufverfolgung aktivieren. Hierin sind die gesendeten Abfragen enthalten. Denken Sie daran, die Abfrageablaufverfolgung nach Abschluss der Problembehandlung wieder auf den ursprünglichen Wert zurückzusetzen. Wenn Sie die Abfrageablaufverfolgung aktiviert lassen, werden größere Protokolle erstellt.
@@ -151,7 +146,7 @@ Sie können mithilfe des Drittanbietertools Azure Speed Test-App messen, wie hoc
 Sie können auch Tools anzeigen, die Ihre Datenquelle für die Verfolgung von Abfrageabläufen bietet. Sie können z.B. Erweiterte Ereignisse oder SQL Profiler für SQL Server und Analysis Services verwenden.
 
 **F**: Wo sind die Gatewayprotokolle? <br/>
-**A**: Siehe „Protokolle“ weiter unten in diesem Thema.
+**A**: Siehe „Protokolle“ weiter unten in diesem Artikel.
 
 ### <a name="update"></a>Update auf die aktuelle Version
 
@@ -201,6 +196,6 @@ Telemetrie kann zur Überwachung und Problembehandlung verwendet werden. Standar
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+* [Installieren und Konfigurieren eines lokalen Datengateways](analysis-services-gateway-install.md)   
 * [Verwalten von Analysis Services](analysis-services-manage.md)
 * [Abrufen von Daten aus Azure Analysis Services](analysis-services-connect.md)
-

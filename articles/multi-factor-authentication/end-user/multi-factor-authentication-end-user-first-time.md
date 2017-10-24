@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: barlan
 ms.custom: end-user
+ms.openlocfilehash: 492d5dc4e20f67bcb9f72a022fec19f5ba86caac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: b05672744dadb15f2780af100f3dd41412e55265
-ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Einrichten meines Kontos für die Überprüfung in zwei Schritten
 Die Überprüfung in zwei Schritten ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert. Wenn Sie diesen Artikel lesen, haben Sie wahrscheinlich vom Administrator Ihres Geschäfts-, Schul- oder Unikontos eine E-Mail zum Thema Multi-Factor Authentication erhalten. Oder Sie haben eventuell versucht, sich anzumelden, und eine Nachricht mit der Aufforderung empfangen, eine zusätzliche Sicherheitsüberprüfung einzurichten. Wenn dies der Fall ist, **können Sie sich erst anmelden, nachdem Sie die automatische Registrierung abgeschlossen haben**.
@@ -30,7 +29,7 @@ Dieser Artikel unterstützt Sie beim Einrichten Ihres **Geschäfts-, Schul- oder
 
 ## <a name="set-up-your-account"></a>Einrichten Ihres Kontos
 
-Wenn Ihre IT-Abteilung das Starten mithilfe der Überprüfung in zwei Schritten erzwingt, wird auf einem Bildschirm angezeigt, dass **Ihr Administrator für dieses Konto die Einrichtung einer zusätzlichen Sicherheitsüberprüfung verlangt**:
+Wenn Ihre IT-Abteilung das Starten mithilfe der Überprüfung in zwei Schritten erzwingt, wird auf einem Bildschirm Folgendes angezeigt: **Ihr Administrator verlangt, dass Sie dieses Konto für eine zusätzliche Sicherheitsüberprüfung einrichten.**
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time/first.png)
 
@@ -107,4 +106,3 @@ Gehen Sie folgendermaßen vor, wenn Sie der mobilen Anwendung manuell ein Konto 
 * Ändern Sie Ihre bevorzugten Optionen und [verwalten Sie Ihre Einstellungen für die Überprüfung in zwei Schritten](multi-factor-authentication-end-user-manage-settings.md).
 * Richten Sie [App-Kennwörter](multi-factor-authentication-end-user-app-passwords.md) für native Geräte-Apps ein, die die Überprüfung in zwei Schritten nicht unterstützen.
 * Testen Sie die [Microsoft Authenticator-App](microsoft-authenticator-app-how-to.md) für die schnelle, sichere Authentifizierung, auch wenn kein Mobilfunkempfang möglich ist.
-

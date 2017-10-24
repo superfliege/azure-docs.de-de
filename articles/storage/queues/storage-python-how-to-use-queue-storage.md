@@ -3,7 +3,7 @@ title: Verwenden des Warteschlangenspeichers mit Python | Microsoft Docs
 description: "Erfahren Sie, wie Sie mit dem Azure-Warteschlangendienst mit Python Warteschlangen erstellen und löschen sowie Nachrichten einfügen, abrufen und löschen können."
 services: storage
 documentationcenter: python
-author: tamram
+author: robinsh
 manager: timlt
 editor: tysonn
 ms.assetid: cc0d2da2-379a-4b58-a234-8852b4e3d99d
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: tamram
+ms.author: robinsh
+ms.openlocfilehash: 8311d8e29845f2801c4b33f994512113044fcbf7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 963c11acb7939993568a774cd281145a8059b5a6
-ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Verwenden des Warteschlangenspeichers mit Python
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -32,6 +31,26 @@ In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure-War
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
+
+## <a name="download-and-install-azure-storage-sdk-for-python"></a>Herunterladen und Installieren des Azure Storage SDK für Python
+
+Das Azure Storage SDK für Python erfordert Python 2.7, 3.3, 3.4, 3.5 oder 3.6 und ist in 4 verschiedenen Paketen verfügbar: `azure-storage-blob`, `azure-storage-file`, `azure-storage-table` und `azure-storage-queue`. In diesem Tutorial wird das Paket `azure-storage-queue` verwendet.
+ 
+### <a name="install-via-pypi"></a>Installation über PyPI
+
+Geben Sie für die Installation über Python Package Index (PyPI) folgenden Befehl ein:
+
+```bash
+pip install azure-storage-queue
+```
+
+
+> [!NOTE]
+> Wenn Sie ein Upgrade des Azure Storage SDK für Python 0.36 oder früher durchführen, müssen Sie zunächst mit dem Befehl `pip uninstall azure-storage` die Deinstallation durchführen, da das Storage SDK für Python nicht mehr in einem einzelnen Paket veröffentlicht wird.
+> 
+> 
+
+Informationen zu alternativen Installationsmethoden finden Sie im [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python/) auf GitHub.
 
 ## <a name="how-to-create-a-queue"></a>Erstellen einer Warteschlange
 Das Objekt **QueueService** ermöglicht es Ihnen, mit Warteschlangen zu arbeiten. Der folgende Code erstellt ein **QueueService** -Objekt. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf Azure-Speicher zugreifen möchten, den folgenden Code hinzu:

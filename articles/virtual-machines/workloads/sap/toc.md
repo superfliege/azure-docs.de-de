@@ -20,9 +20,25 @@
 ## [Bereitstellungshandbuch für SAP IDES unter Windows/SQL Server SAP CALe](cal-ides-erp6-erp7-sp3-sql.md)
 ## [SAP NetWeaver auf virtuellen Linux-Computern in Azure](suse-quickstart.md)
 ## [Planen und Implementieren von SAP NetWeaver in Azure](planning-guide.md)
-## [Hochverfügbarkeit unter Windows](high-availability-guide.md)
-## [Hochverfügbarkeit unter SUSE Linux](high-availability-guide-suse.md)
-## [Multi-SID-Konfigurationen](high-availability-multi-sid.md)
+## Hochverfügbarkeit (High Availability, HA) unter Windows und Linux
+### [Übersicht](sap-high-availability-guide-start.md)
+### Hochverfügbarkeitsarchitektur
+#### [HA-Architektur und -Szenarien](sap-high-availability-architecture-scenarios.md)
+#### [Architektur und Szenarien für höhere Verfügbarkeit](sap-higher-availability-architecture-scenarios.md)
+#### [HA unter Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-high-availability-guide-wsfc-shared-disk.md)
+#### [HA unter Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-high-availability-guide-wsfc-file-share.md)
+#### [HA unter SUSE Linux für die (A)SCS-Instanz](high-availability-guide-suse.md)
+### Vorbereitung der Azure-Infrastruktur
+#### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-high-availability-infrastructure-wsfc-shared-disk.md)
+#### [Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-high-availability-infrastructure-wsfc-file-share.md)
+#### [SUSE Linux mit NFS für die (A)SCS-Instanz](high-availability-guide-suse.md)
+### SAP-Installation
+#### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-high-availability-installation-wsfc-shared-disk.md)
+#### [Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-high-availability-installation-wsfc-file-share.md)
+#### [SUSE Linux mit NFS für die (A)SCS-Instanz](high-availability-guide-suse.md)
+### SAP-Multi-SID
+#### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
+#### [Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-ascs-ha-multi-sid-wsfc-file-share.md)
 ## [Bereitstellungshandbuch](deployment-guide.md)
 ## [DBMS-Bereitstellungshandbuch](dbms-guide.md)
 ## [Azure Site Recovery für die SAP-Notfallwiederherstellung](../../../site-recovery/site-recovery-workload.md#protect-sap)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
 ms.openlocfilehash: e098e27e32f7b7ae2009580a430f262aa7225206
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-your-seller-insights-report"></a>Grundlegendes zu Verkäufer-Insights-Berichten
 **Was sind Verkäufer-Insights?**
@@ -84,8 +84,7 @@ Lesen Sie die rechtlichen Haftungsausschlüsse sorgfältig durch. Wenn Sie Frage
 Navigieren Sie zu „https://publish.windowsazure.com/“, und melden Sie sich mit den Anmeldeinformationen für Ihr Microsoft-Konto an.
 ![passwordreminder][7]
 
-Wählen Sie die Registerkarte **Herausgeber** aus.
-![selectpublisherstab][8]
+Klicken Sie auf die Registerkarte **Herausgeber**. ![registerkarteherausgeberauswählen][8]
 
 Suchen Sie die Herausgeber-ID in der URL:
 

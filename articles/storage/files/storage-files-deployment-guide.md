@@ -12,16 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: a594f31c002556f9a5fddaa17fb19273065eed47
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 499d10943f606a67ca04bfdf5f7cad44f9e20d07
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-deploy-azure-files"></a>Bereitstellen von Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. In diesem Artikel erfahren Sie, wie Sie Azure Files praktisch in Ihrer Organisation bereitstellen.
 
@@ -36,8 +34,10 @@ In diesem Artikel wird davon ausgegangen, dass Sie die folgenden Schritte bereit
 ## <a name="transfer-data-into-azure-files"></a>Übertragen von Daten in Azure Files
 Sobald Sie eine neue Azure-Dateifreigabe erstellt haben, können Sie vorhandene Dateien, die z.B. lokal gespeichert sind, in diese übertragen. In diesem Abschnitt erfahren Sie, wie Sie Daten mithilfe verschiedener gängiger Methoden, die im [Planungshandbuch](storage-files-planning.md#data-transfer-method) ausgeführt sind, in eine Azure-Dateifreigabe übertragen.
 
-### <a name="azure-file-sync-preview"></a>Azure-Dateisynchronisierung (Vorschau)
-Sie können die Azure-Dateisynchronisierung (Vorschau) verwenden, um Daten in eine Azure-Dateifreigabe zu übertragen, auch wenn Sie diesen Synchronisierungsmechanismus nicht langfristig einsetzen möchten. Weitere Informationen zur Verwendung der Azure-Dateisynchronisierung für den Datenimport in eine Azure-Dateifreigabe finden Sie unter [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md) und [Bereitstellen einer Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md).
+### <a name="azure-file-sync-preview"></a>Azure File Sync (Vorschau)
+Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers zu verzichten. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
+
+Sie können Azure File Sync verwenden, um Daten in eine Azure-Dateifreigabe zu übertragen, auch wenn Sie diesen Synchronisierungsmechanismus nicht langfristig einsetzen möchten. Weitere Informationen zur Verwendung von Azure File Sync für die Datenübertragung in eine Azure-Dateifreigabe finden Sie unter [Planung für eine Azure File Sync-Bereitstellung](storage-sync-files-planning.md) und [Bereitstellen von Azure File Sync](storage-sync-files-deployment-guide.md).
 
 ### <a name="azure-importexport"></a>Azure Import/Export
 Mit dem Azure Import/Export-Dienst können Sie große Datenmengen auf sichere Weise in eine Azure-Dateifreigabe übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. Einen ausführlichen Überblick über diesen Dienst finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Azure Storage](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).

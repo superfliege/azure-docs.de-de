@@ -1,63 +1,63 @@
-Einige Pakete können nicht mithilfe von Pip, die bei der Ausführung unter Azure installiert.  Es kann einfach sein, dass das Paket nicht auf die Python-Paketverzeichnis verfügbar ist.  Es ist möglicherweise, dass ein Compiler erforderlich ist (ein Compiler ist nicht verfügbar, auf dem Computer, auf die Web-app in Azure App Service ausgeführt).
+Einige Pakete möglicherweise bei der Ausführung auf Azure bei Verwendung von Pip nicht installiert.  Es kann einfach sein, dass das Paket nicht im Python-Paketindex verfügbar ist.  Möglicherweise ist ein Compiler erforderlich (ein Compiler ist auf dem Computer, auf dem die Web-App in Azure App Service ausgeführt wird, nicht verfügbar).
 
-In diesem Abschnitt sehen wir uns Methoden zum Umgang mit diesem Problem wäre.
+In diesem Abschnitt werden Methoden zur Behandlung dieses Problems vorgestellt.
 
-### <a name="request-wheels"></a>Anforderung Räder
-Wenn die Installation des Pakets einen Compiler erfordert, sollten Sie versuchen, wenden Sie sich an den Besitzer des Pakets, um anzufordern, Räder für das Paket zur Verfügung gestellt werden.
+### <a name="request-wheels"></a>Anfordern von Wheels
+Wenn die Installation des Pakets einen Compiler erfordert, sollten Sie sich an den Besitzer des Pakets wenden, um anzufordern, dass die Wheels für das Paket zur Verfügung gestellt werden.
 
-Mit der aktuellen Verfügbarkeit des [Microsoft Visual C++-Compiler für Python 2.7][Microsoft Visual C++ Compiler for Python 2.7], es ist jetzt einfacher zum Erstellen von Paketen, die über systemeigenen Code für Python 2.7 verfügen.
+Mit der Verfügbarkeit von [Microsoft Visual C++-Compiler für Python 2.7][Microsoft Visual C++ Compiler for Python 2.7] ist das Erstellen von Paketen, die nativen Code für Python 2.7 enthalten, jetzt einfacher.
 
-### <a name="build-wheels-requires-windows"></a>Erstellen von Räder (erfordert Windows)
-Hinweis: Wenn Sie diese Option verwenden zu können, stellen Sie sicher, kompilieren Sie das Paket mit einer Python-Umgebung, die Version die Plattform/Architektur/entspricht, die auf die Web-app in Azure App Service verwendet wird (Windows/32-bit/2.7 oder 3.4).
+### <a name="build-wheels-requires-windows"></a>Erstellen von Wheels (erfordert Windows)
+Hinweis: Achten Sie bei Verwendung dieser Option darauf, dass Sie das Paket mit einer Python-Umgebung kompilieren, die mit der Plattform/Architektur/Version übereinstimmt, die auf der Web-App in Azure App Service verwendet wird (Windows/32-Bit/2.7 oder 3.4).
 
-Wenn das Paket installieren nicht, da sie einen Compiler erfordert, können Sie den Compiler auf dem lokalen Computer installieren und erstellen ein Rad für das Paket, das Sie dann in Ihrem Repository enthalten.
+Wenn das Paket nicht installiert wird, weil es einen Compiler erfordert, können Sie den Compiler auf Ihrem lokalen Computer installieren und ein Wheel für das Paket erstellen, das dann in Ihrem Repository enthalten ist.
 
-Mac/Linux-Benutzer: Wenn Sie den Zugriff auf einen Windows-Computer besitzen, finden Sie unter [erstellen Sie einen virtuellen Computers unter Windows] [ Create a Virtual Machine Running Windows] zum Erstellen eines virtuellen Computers in Azure.  Sie können es verwenden, erstellen die Räder, fügen sie in das Repository und verwerfen den virtuellen Computer bei Bedarf. 
+Mac/Linux-Benutzer: Wenn Sie keinen Zugriff auf einen Windows-Computer haben, finden Sie Informationen zum Erstellen eines virtuellen Computers in Azure unter [Erstellen eines virtuellen Computers mit Windows][Create a Virtual Machine Running Windows].  Sie können damit Wheels erstellen, diese zum Repository hinzufügen und den virtuellen Computer ggf. verwerfen. 
 
-Sie können für Python 2.7, installieren [Microsoft Visual C++-Compiler für Python 2.7][Microsoft Visual C++ Compiler for Python 2.7].
+Für Python 2.7 können Sie [Microsoft Visual C++-Compiler für Python 2.7][Microsoft Visual C++ Compiler for Python 2.7] installieren.
 
-Für die Python-3.4, installieren Sie [Microsoft Visual C++ 2010 Express][Microsoft Visual C++ 2010 Express].
+Für Python 3.4 können Sie [Microsoft Visual C++ 2010 Express][Microsoft Visual C++ 2010 Express] installieren.
 
-Um Räder zu erstellen, benötigen Sie das Mausrad-Paket:
+Um die Wheels zu erstellen, benötigen Sie das Wheel-Paket:
 
     env\scripts\pip install wheel
 
-Verwenden Sie `pip wheel` um eine Abhängigkeit zu kompilieren:
+Verwenden Sie `pip wheel`, um eine Abhängigkeit zu kompilieren:
 
     env\scripts\pip wheel azure==0.8.4
 
-Dadurch wird eine .whl-Datei im Ordner "\wheelhouse" erstellt.  Die \wheelhouse-Ordner und dem Mausrad-Dateien an Ihr Repository hinzuzufügen.
+Dies erstellt eine .whl-Datei im Ordner \wheelhouse.  Fügen Sie den \wheelhouse-Ordner und die Wheel-Dateien zum Repository hinzu.
 
-Bearbeiten Sie Ihre requirements.txt hinzufügen der `--find-links` Option oben. Dies teilt Pip, um nach einer genauen Übereinstimmung im lokalen Ordner zu suchen, bevor die Python-Paketverzeichnis möchten.
+Bearbeiten Sie die Datei "requirements.txt", und fügen Sie die Option `--find-links` am Anfang ein. Dies weist Pip an, nach einer genauen Übereinstimmung im lokalen Ordner zu suchen, bevor es zum Python-Paketindex wechselt.
 
     --find-links wheelhouse
     azure==0.8.4
 
-Wenn Sie alle Ihre Abhängigkeiten beinhalten, im Ordner "\wheelhouse" und nicht die Python-Paketverzeichnis überhaupt verwenden möchten, können Sie erzwingen, dass Pip, um das Paket durch Hinzufügen von ignorieren `--no-index` an den Anfang der requirements.txt.
+Wenn alle Ihre Abhängigkeiten im \wheelhouse-Ordner enthalten sein sollen und Sie keinen Python-Paketindex verwenden möchten, können Sie erzwingen, dass Pip den Paketindex ignoriert, indem `--no-index` am Anfang von "requirements.txt" einfügen.
 
     --no-index
 
-### <a name="customize-installation"></a>Anpassen der installation
-Sie können anpassen, dass das Bereitstellungsskript zum Installieren eines Pakets in der virtuellen Umgebung mit einem alternativen Installationsprogramm wie leicht\_installieren.  Finden Sie unter deploy.cmd für ein Beispiel, das auskommentiert ist.  Stellen Sie sicher, dass solche Pakete in requirements.txt, um zu verhindern, dass Pip installiert werden nicht aufgelistet werden.
+### <a name="customize-installation"></a>Anpassen der Installation
+Sie können das Bereitstellungsskript zum Installieren eines Pakets in der virtuellen Umgebung mithilfe eines alternativen Installationsprogramms, wie z. B. „easy\_install“, anpassen.  Ein auskommentiertes Beispiel finden Sie unter "deploy.cmd".  Stellen Sie sicher, dass solche Pakete nicht in requirements.txt aufgelistet sind, um zu verhindern, dass Pip sie installiert.
 
-Fügen Sie an das Bereitstellungsskript Folgendes ein:
+Fügen Sie Folgendes zum Bereitstellungsskript hinzu:
 
     env\scripts\easy_install somepackage
 
-Sie können auch in der Lage sind, verwenden Sie einfach\_installieren, um über eine Exe-Installer (einige sind kompatibel, daher leicht zip\_Installation unterstützt werden).  Ihr Repository Installationsprogramm hinzu, und rufen Sie einfach\_installieren, indem Sie den Pfad zur ausführbaren Datei übergeben.
+Sie können „easy\_install“ möglicherweise auch verwenden, um mithilfe eines EXE-Installers zu installieren (einige sind ZIP-kompatibel und werden daher von „easy\_install“ unterstützt).  Fügen Sie das Installationsprogramm Ihrem Repository hinzu, und rufen Sie „easy\_install“ auf, indem Sie den Pfad zur ausführbaren Datei übergeben.
 
-Fügen Sie an das Bereitstellungsskript Folgendes ein:
+Fügen Sie Folgendes zum Bereitstellungsskript hinzu:
 
     env\scripts\easy_install "%DEPLOYMENT_SOURCE%\installers\somepackage.exe"
 
-### <a name="include-the-virtual-environment-in-the-repository-requires-windows"></a>Schließen Sie der virtuellen Umgebung in das Repository (erfordert Windows)
-Hinweis: Wenn Sie diese Option verwenden zu können, stellen Sie sicher auf eine virtuelle Umgebung zu verwenden, die Version die Plattform/Architektur/entspricht, die auf die Web-app in Azure App Service verwendet wird (Windows/32-bit/2.7 oder 3.4).
+### <a name="include-the-virtual-environment-in-the-repository-requires-windows"></a>Aufnehmen der virtuellen Umgebung in das Repository (erfordert Windows)
+Hinweis: Stellen Sie bei Verwendung dieser Option sicher, dass Sie eine virtuelle Umgebung verwenden, die mit der Plattform/Architektur/Version übereinstimmt, die auf der Web-App in Azure App Service verwendet wird (Windows/32-Bit/2.7 oder 3.4).
 
-Wenn Sie die virtuelle Umgebung im Repository einschließen, können Sie verhindern, dass das Bereitstellungsskript auf diese Weise virtuelle Umgebung Management in Azure durch eine leere Datei erstellen:
+Wenn Sie die virtuelle Umgebung in das Repository einschließen, können Sie verhindern, dass das Bereitstellungsskript die Verwaltung der virtuellen Umgebung auf Azure ausführt, indem Sie eine leere Datei erstellen:
 
     .skipPythonDeployment
 
-Es wird empfohlen, dass Sie die vorhandene virtuelle Umgebung in der app löschen, um zu verhindern, dass verbleibende Dateien bei die virtuelle Umgebung wurde automatisch verwaltet werden.
+Es wird empfohlen, dass Sie die vorhandene virtuelle Umgebung auf der App löschen, um übrig gebliebene Dateien aus der Zeit zu verhindern, als die virtuelle Umgebung automatisch verwaltet wurde.
 
 [Create a Virtual Machine Running Windows]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-hero-tutorial/
 [Microsoft Visual C++ Compiler for Python 2.7]: http://aka.ms/vcpython27

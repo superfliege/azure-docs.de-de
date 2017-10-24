@@ -65,12 +65,12 @@ Das Modul zur Zuordnung zwischen MAC&lt;-&gt;Adressen und IoT Hub-IDs ist **iden
 
 ### <a name="iot-hub-communication-module"></a>IoT Hub-Kommunikationsmodul
 
-Das IoT Hub-Kommunikationsmodul stellt eine einzelne HTTP-Verbindung zwischen dem Gateway und IoT Hub her. HTTP ist eines der drei Protokolle, die von IoT Hub gelesen werden können. Dieses Modul fasst die Verbindungen aller Geräte mittels Multiplexing zu einer einzelnen Verbindung zusammen, sodass Sie nicht für jedes Gerät eine Verbindung herstellen müssen. Dank dieses Konzepts können zahlreiche Geräte über ein einzelnes Gateway verbunden werden. 
+Das IoT Hub-Kommunikationsmodul stellt eine einzelne HTTPS-Verbindung zwischen dem Gateway und IoT Hub her. HTTPS ist eines der drei Protokolle, die von IoT Hub gelesen werden können. Dieses Modul fasst die Verbindungen aller Geräte mittels Multiplexing zu einer einzelnen Verbindung zusammen, sodass Sie nicht für jedes Gerät eine Verbindung herstellen müssen. Dank dieses Konzepts können zahlreiche Geräte über ein einzelnes Gateway verbunden werden. 
 
 In dem Beispiel gilt für das Modul Folgendes:
 
 1. Es akzeptiert Nachrichten mit einer Eigenschaft mit einem IoT Hub-Geräteschlüssel, die vom vorhergehenden Modul zugewiesen wurde. 
-1. Es sendet den Nachrichteninhalt unter Verwendung des HTTP-Protokolls an IoT Hub. 
+1. Es sendet den Nachrichteninhalt unter Verwendung des HTTPS-Protokolls an IoT Hub. 
 
 Das IoT Hub-Kommunikationsmodul ist **iothub.c** im Quellcode.
 

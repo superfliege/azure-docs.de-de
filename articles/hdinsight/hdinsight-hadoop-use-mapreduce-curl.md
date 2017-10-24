@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/12/2017
+ms.date: 10/03/2017
 ms.author: larryfr
+ms.openlocfilehash: 28d23cf397db204a22fea785521ea6a164d84374
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 8238bb829df95dcb8c99c0b7fff53c627a56f47c
-ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von REST
 
@@ -42,7 +41,7 @@ Erfahren Sie, wie mithilfe der WebHCat-REST-API MapReduce-Aufträge auf einem Ha
 > [!NOTE]
 > Wenn Sie Curl oder eine andere REST-Kommunikation mit WebHCat verwenden, müssen Sie die Anforderungen authentifizieren, indem Sie den Benutzernamen und das Kennwort des Administrators des HDInsight-Clusters bereitstellen. Sie müssen den Clusternamen als Teil des URI verwenden, der zum Senden der Anforderungen an den Server genutzt wird.
 >
-> Ersetzen Sie für die Befehle in diesem Abschnitt zur Authentifizierung im Cluster **BENUTZERNAME** durch den Benutzer und **KENNWORT** durch das Kennwort für das Benutzerkonto. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters.
+> Ersetzen Sie in den Befehlen in diesem Abschnitt **admin** durch den Benutzer, um eine Authentifizierung beim Cluster durchzuführen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters. Geben Sie das Kennwort für das Benutzerkonto ein, wenn Sie dazu aufgefordert werden.
 >
 > Die REST-API wird durch [Standardauthentifizierung](http://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Sie sollten Anforderungen immer über HTTPS stellen, um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
 
@@ -50,10 +49,10 @@ Erfahren Sie, wie mithilfe der WebHCat-REST-API MapReduce-Aufträge auf einem Ha
 1. Verwenden Sie den folgenden Befehl in einer Befehlszeile, um zu überprüfen, ob Sie die Verbindung zum HDInsight-Cluster herstellen können:
 
     ```bash
-    curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
+    curl -u admin -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
     ```
 
-    Sie sollten eine Antwort empfangen, die in etwa der folgenden JSON entspricht:
+    Sie erhalten eine Antwort, die in etwa dem folgenden JSON entspricht:
 
         {"status":"ok","version":"v1"}
 
@@ -62,12 +61,12 @@ Erfahren Sie, wie mithilfe der WebHCat-REST-API MapReduce-Aufträge auf einem Ha
    * **-u**: Gibt den Benutzernamen und das Kennwort für die Authentifizierung der Anforderung an
    * **-G**: Gibt an, dass dieser Vorgang eine GET-Anforderung ist.
 
-     Der Anfang des URIs, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, ist für alle Anforderungen identisch.
+   Der Anfang des URIs, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, ist für alle Anforderungen identisch.
 
 2. Verwenden Sie den folgenden Befehl, um einen MapReduce-Auftrag zu übermitteln.
 
     ```bash
-    curl -u USERNAME:PASSWORD -d user.name=USERNAME -d jar=/example/jars/hadoop-mapreduce-examples.jar -d class=wordcount -d arg=/example/data/gutenberg/davinci.txt -d arg=/example/data/CurlOut https://CLUSTERNAME.azurehdinsight.net/templeton/v1/mapreduce/jar
+    curl -u admin -d user.name=admin -d jar=/example/jars/hadoop-mapreduce-examples.jar -d class=wordcount -d arg=/example/data/gutenberg/davinci.txt -d arg=/example/data/CurlOut https://CLUSTERNAME.azurehdinsight.net/templeton/v1/mapreduce/jar
     ```
 
     Das Ende des URIs (/mapreduce/jar) weist WebHCat darauf hin, dass diese Anforderung einen MapReduce-Auftrag aus einer Klasse in einer JAR-Datei startet. Folgende Parameter werden in diesem Befehl verwendet:
@@ -78,14 +77,14 @@ Erfahren Sie, wie mithilfe der WebHCat-REST-API MapReduce-Aufträge auf einem Ha
     * **class**: Die Klasse, die die MapReduce-Logik enthält
     * **arg**: Die Argumente, die an den MapReduce-Auftrag übergeben werden, in diesem Fall die Eingabetextdatei und das Verzeichnis für die Ausgabe
 
-     Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann:
+   Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann:
 
        {"id":"job_1415651640909_0026"}
 
 3. Verwenden Sie den folgenden Befehl, um den Status des Auftrags zu prüfen:
 
     ```bash
-    curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
+    curl -G -u admin -d user.name=admin https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
     ```
 
     Ersetzen Sie **JOBID** durch den Wert, der im vorherigen Schritt zurückgegeben wurde. Wenn der Rückgabewert z. B. `{"id":"job_1415651640909_0026"}` lautet, ist die JOBID `job_1415651640909_0026`.

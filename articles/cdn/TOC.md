@@ -10,7 +10,7 @@
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Speicher](cdn-create-a-storage-account-with-cdn.md)
 ### [Cross-Origin Resource Sharing](cdn-cors.md)
-### [Zuordnen einer benutzerdefinierten Domäne zu CDN](cdn-map-content-to-custom-domain.md)
+### [Hinzufügen einer benutzerdefinierten Domäne zum CDN-Endpunkt](cdn-map-content-to-custom-domain.md)
 ### [Aktivieren von HTTPS für eine benutzerdefinierte Domäne](cdn-custom-ssl.md)
 ## Optimieren von Inhalten
 ### [Übersicht über die Optimierung](cdn-optimization-overview.md)
@@ -39,6 +39,7 @@
 ## Analysieren
 ### [Analysieren von Azure CDN-Verwendungsmustern](cdn-log-analysis.md)
 #### [Kernberichte aus Verizon](cdn-analyze-usage-patterns.md)
+#### [Benutzerdefinierte Berichte aus Verizon](cdn-verizon-custom-reports.md)
 #### [Azure-Diagnoseprotokolle](cdn-azure-diagnostic-logs.md)
 ### Analysetools für Azure CDN aus Verizon
 #### [Generieren von erweiterten HTTP-Berichten](cdn-advanced-http-reports.md)

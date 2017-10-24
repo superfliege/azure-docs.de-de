@@ -16,10 +16,10 @@ ms.date: 07/12/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.openlocfilehash: 2ecd07faed785fa6aa179ac1cca35a70d965e1dc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection-Playbook
 Dieses Playbook hilft Ihnen:
@@ -119,7 +119,7 @@ Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem
 2. Navigieren Sie zu **Identity Protection**.
 3. Klicken Sie auf dem Hauptblatt von **Azure AD Identity Protection** auf **Einstellungen**. 
 4. Klicken Sie auf dem Blatt **Portaleinstellungen** unter **Sicherheitsregeln** auf **Anmelderisiko**.
-5. Auf der ** Risiko anmelden ** Blatt select **auf** unter **Enable Rule**. 
+5. Wählen Sie auf dem Blatt **Anmelderisiko** unter **Regel aktivieren** die Option **Ein**. 
 6. Wählen Sie eine der folgenden Optionen:
    
    a. Wählen Sie unter **Anmeldung blockieren** die Option **Mittel**, um die Blockierung durchzuführen.

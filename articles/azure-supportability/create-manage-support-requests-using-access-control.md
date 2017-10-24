@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
 ms.openlocfilehash: 20ebd324cbf379980b43d255d468673de2b6d950
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure zum Steuern von Zugriffsrechten für die Erstellung und Verwaltung von Supportanfragen
 
@@ -90,7 +90,7 @@ Sie möchten Ihrem Kollegen Joe Zugriff gewähren, damit er Supporttickets für 
 
     ![Neue Supportanfrage](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. Klicken Sie auf "Alle Anforderungen unterstützt" Joe kann finden Sie unter der Liste der Supportanfragen für dieses Abonnement erstellt ![Fall Detailansicht](./media/create-manage-support-requests-using-access-control/case-details-view.png)
+8. Wenn Joe auf „Alle Supportanfragen“ klickt, wird ihm eine Liste mit Supportanfragen angezeigt, die für dieses Abonnement erstellt wurden. ![Ansicht mit Falldetails](./media/create-manage-support-requests-using-access-control/case-details-view.png)
 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Entziehen des Zugriffs auf Supportanfragen im Azure-Portal
 

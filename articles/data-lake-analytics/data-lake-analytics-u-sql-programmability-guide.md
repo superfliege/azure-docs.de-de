@@ -13,15 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: e4e298475d7be7d51c8bd55be498371ed6ce77a9
-ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
-
+ms.openlocfilehash: db49780e359258898a62f3b95e87f54b78055c86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="u-sql-programmability-guide"></a>U-SQL-Programmierbarkeitshandbuch
 
 U-SQL ist eine für Big Data-Workloads konzipierte Abfragesprache. Eines der einzigartigen Features von U-SQL ist die Kombination der SQL-ähnlichen deklarativen Sprache mit dem Erweiterungs- und Programmierbarkeitspotenzial von C#. In diesem Handbuch konzentrieren wir uns auf die durch C# ermöglichte Erweiterbarkeit und Programmierbarkeit der U-SQL-Sprache.
@@ -539,7 +536,7 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 Die `IFormatter`-Schnittstelle serialisiert und deserialisiert ein Objektdiagramm mit dem Stammtyp \<typeparamref name="T">.
 
-\<Typeparam Name = "T"> – der Stammtyp für Serialisierung und Deserialisierung des Objektgraphs.
+\<Typeparam Name = "T"&gt; – der Stammtyp für Serialisierung und Deserialisierung des Objektgraphs.
 
 * **Deserialize:** Deserialisiert die Daten im angegebenen Datenstrom und stellt das Objektdiagramm wieder her.
 
@@ -2123,7 +2120,7 @@ Das Attribut **SqlUserDefinedReducer** gibt an, dass der Typ als benutzerdefinie
 **SqlUserDefinedReducer** ist ein optionales Attribut für die Definition eines benutzerdefinierten Reducers. Es wird verwendet, um die IsRecursive-Eigenschaft zu definieren.
 
 * bool     IsRecursive    
-* **true**  = Gibt an, ob dieser Reducer idempotent ist.
+* **true** = Gibt an, ob dieser Reducer assoziativ und kommutativ ist.
 
 Die wichtigsten Programmierbarkeitsobjekte sind **input** und **output**. Das Eingabeobjekt dient zum Aufzählen von Eingabezeilen. Die Ausgabe dient zum Festlegen von Ausgabezeilen als Ergebnis der Reduzierungsaktivität.
 
@@ -2220,4 +2217,3 @@ OUTPUT @rs2
     TO @output_file 
     USING Outputters.Text();
 ```
-

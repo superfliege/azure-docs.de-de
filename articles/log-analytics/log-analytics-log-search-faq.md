@@ -11,16 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/09/2017
 ms.author: bwren
+ms.openlocfilehash: 356a73b406544b91191d5e9a03b2fa52ec501327
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 0ced7a128003402f74b847cc71e1c3ed21982651
-ms.contentlocale: de-de
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Neue Protokollsuche in Log Analytics – häufig gestellte Fragen und bekannte Probleme
 
 Dieser Artikel enthält häufig gestellte Fragen und bekannte Probleme im Hinblick auf das Upgrade von [Log Analytics auf die neue Abfragesprache](log-analytics-log-search-upgrade.md).  Sie sollten diesen Artikel lesen, bevor Sie sich entscheiden, Ihren Arbeitsbereich zu aktualisieren.
@@ -30,6 +28,10 @@ Dieser Artikel enthält häufig gestellte Fragen und bekannte Probleme im Hinbli
 
 ### <a name="question-i-have-a-lot-of-alert-rules-do-i-need-to-create-them-again-in-the-new-language-after-i-upgrade"></a>Frage: Ich habe viele Warnungsregeln. Muss ich diese erneut in der neuen Sprache erstellen, nachdem ich das Upgrade durchgeführt habe?  
 Nein, Ihre Warnungsregeln werden während des Upgrades automatisch in die neue Suchsprache konvertiert.  
+
+### <a name="question-i-have-alert-rules-with-webhook-and-runbook-actions-will-these-continue-to-work-when-i-upgrade"></a>Frage: Ich habe Warnungsregeln für Webhook- und Runbook-Aktionen. Funktionieren diese Regeln nach dem Upgrade noch?
+
+Nein. Es wurden einige Änderungen an den Webhook- und Runbook-Aktionen vorgenommen, aufgrund derer Sie möglicherweise die Payload anders verarbeiten müssen. Diese Änderungen wurden vorgenommen, um die verschiedenen Ausgabeformate zu standardisieren und die Größe der Payload zu reduzieren. Weitere Informationen zu diesen Formaten finden Sie unter [Add actions to alert rules in Log Analytics (Hinzufügen von Warnungsregeln in Log Analystics)](log-analytics-alerts-actions.md).
 
 
 ## <a name="computer-groups"></a>Computergruppen
@@ -48,7 +50,7 @@ Im Folgenden sehen Sie eine Beispielabfrage zum Erstellen einer neuen Computergr
 ## <a name="dashboards"></a>Dashboards
 
 ### <a name="question-can-i-still-use-dashboards-in-an-upgraded-workspace"></a>Frage: Kann ich in einem aktualisierten Arbeitsbereich weiterhin Dashboards verwenden?
-Sie können weiterhin alle Kacheln verwenden, die Sie unter **Mein Dashboard** hinzugefügt haben, bevor Ihr Arbeitsbereich aktualisiert wurde, aber Sie können diese Kacheln nicht bearbeiten und auch keine neuen hinzufügen.  Sie können weiterhin mit dem [Ansicht-Designer](log-analytics-view-designer.md) Ansichten erstellen und bearbeiten und auch Dashboards im Azure-Portal erstellen.
+Das Upgrade ist ein erster Schritt dahin, die Unterstützung von **Mein Dashboard** einzustellen.  Sie können weiterhin alle Kacheln verwenden, die Sie dem Dashboard hinzugefügt haben, bevor Ihr Arbeitsbereich aktualisiert wurde, aber Sie können diese Kacheln nicht bearbeiten und auch keine neuen hinzufügen.  Sie können weiterhin mit dem [Ansicht-Designer](log-analytics-view-designer.md), der über mehr Funktionen verfügt, Ansichten erstellen und bearbeiten und auch Dashboards im Azure-Portal erstellen.
 
 
 ## <a name="log-searches"></a>Protokollsuchvorgänge
@@ -58,6 +60,9 @@ Sie können den das Tool zum Konvertieren der Sprache auf der Seite der Protokol
 
 ### <a name="question-why-are-my-query-results-not-sorted"></a>Frage: Warum sind meine Abfrageergebnisse nicht sortiert?
 Ergebnisse werden in der neuen Abfragesprache standardmäßig nicht sortiert.  Verwenden Sie den [sort-Operator](https://go.microsoft.com/fwlink/?linkid=856079), um die Ergebnisse nach einer oder mehreren Eigenschaften zu sortieren.
+
+### <a name="question-where-did-the-metrics-view-go-after-i-upgraded"></a>Frage: Wo befindet sich die Metrikansicht nach dem Upgrade?
+In der Metrikansicht wurden Leistungsdaten aus einer Protokollsuche graphisch dargestellt.  Diese Ansicht ist nach dem Upgrade nicht mehr verfügbar.  Sie können den [Render-Operator](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) nutzen, um Ausgaben aus einer Abfrage in einem Zeitdiagramm zu formatieren.
 
 ### <a name="question-where-did-minify-go-after-i-upgraded"></a>Frage: Wo befindet sich „Minimieren“ nach dem Upgrade?
 „Minimieren“ ist ein Feature, mit dem eine Übersicht über Ihre Suchergebnisse angezeigt werden kann.  Nach dem Upgrade wird die Option „Minimieren“ nicht mehr im Portal für die Protokollsuche angezeigt.  Eine ähnliche Funktionalität erhalten Sie mit der neuen Suchsprache unter Verwendung von [reduce](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/reduce-operator) oder [autocluster_v2](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/evaluate-operator/autocluster). 
@@ -173,4 +178,3 @@ Wenn Sie in einer Ansicht unten im Bereich des Liniendiagramms auf die Option *A
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum [Upgrade Ihres Arbeitsbereichs auf die neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md).
-

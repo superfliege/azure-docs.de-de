@@ -12,18 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 10/02/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal
+ms.openlocfilehash: 168829494de33a21df68d3fc5e2a174f435c5ad5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: f2541b906a2c3a5bbdd384476ce99cad766a6c09
-ms.contentlocale: de-de
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="populate-groups-dynamically-based-on-object-attributes"></a>Dynamisches Auffüllen von Gruppen anhand von Objektattributen
 Im klassischen Azure-Portal haben Sie die Möglichkeit, komplexere attributbasierte, dynamische Mitgliedschaften für Azure Active Directory-Gruppen (Azure AD) zu aktivieren.  
 
@@ -266,26 +264,26 @@ Sie können eine Gruppe erstellen, die alle einem Manager direkt unterstellten M
 ## <a name="using-attributes-to-create-rules-for-device-objects"></a>Verwenden von Attributen zum Erstellen von Regeln für Geräteobjekte
 Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaft in einer Gruppe auswählt. Die folgenden Geräteattribute können verwendet werden:
 
-| Eigenschaften              | Zulässige Werte                  | Verwendung                                                       |
-|-------------------------|---------------------------------|-------------------------------------------------------------|
-| accountEnabled          | true false                      | (device.accountEnabled -eq true)                            |
-| displayName             | Jeder string-Wert.                | (device.displayName -eq "Rob Iphone”)                       |
-| deviceOSType            | Jeder string-Wert.                | (device.deviceOSType -eq "IOS")                             |
-| deviceOSVersion         | Jeder string-Wert.                | (device.OSVersion -eq "9.1")                                |
-| deviceCategory          | ein gültiger Gerätekategoriename    | (device.deviceCategory -eq "BYOD")                          |
-| deviceManufacturer      | Jeder string-Wert.                | (device.deviceManufacturer -eq "Microsoft")                 |
-| deviceModel             | Jeder string-Wert.                | (device.deviceModel -eq "IPhone 7+")                        |
-| deviceOwnership         | Personal, Unternehmen               | (device.deviceOwnership -eq "Company")                      |
-| domainName              | Jeder string-Wert.                | (device.domainName -eq "contoso.com")                       |
-| enrollmentProfileName   | Jeder string-Wert.                | (device.enrollmentProfileName -eq "")                       |
-| isRooted                | true false                      | (device.deviceOSType -eq true)                              |
-| managementType          | Jeder string-Wert.                | (device.managementType -eq "")                              |
-| organizationalUnit      | Jeder string-Wert.                | (device.organizationalUnit -eq "")                          |
-| deviceId                | Eine gültige deviceId                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
-| objectId                | Eine gültige objectId in AAD            | (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
+| Eigenschaften              | Zulässige Werte                     | Verwendung                                                       |
+|-------------------------|------------------------------------|-------------------------------------------------------------|
+| accountEnabled          | true false                         | (device.accountEnabled -eq true)                            |
+| displayName             | Jeder string-Wert.                   | (device.displayName -eq "Rob Iphone”)                       |
+| deviceOSType            | Jeder string-Wert.                   | (device.deviceOSType -eq "Android")                         |
+| deviceOSVersion         | Jeder string-Wert.                   | (device.OSVersion -eq "9.1")                                |
+| deviceCategory          | ein gültiger Gerätekategoriename       | (device.deviceCategory -eq "BYOD")                          |
+| deviceManufacturer      | Jeder string-Wert.                   | (device.deviceManufacturer -eq "Samsung")                   |
+| deviceModel             | Jeder string-Wert.                   | (device.deviceModel -eq "iPad Air”)                         |
+| deviceOwnership         | Personal, Unternehmen                  | (device.deviceOwnership -eq "Company")                      |
+| domainName              | Jeder string-Wert.                   | (device.domainName -eq "contoso.com")                       |
+| enrollmentProfileName   | Profilname für Apple-Geräteregistrierung    | (device.enrollmentProfileName -eq "DEP iPhones")       |
+| isRooted                | true false                         | (device.isRooted -eq true)                              |
+| managementType          | „MDM“ bei mobilen Geräten, „PC“ bei Computern, die vom Intune-PC-Agent verwaltet werden    | (device.managementType -eq "MDM")                  |
+| organizationalUnit      | ein beliebiger Zeichenfolgenwert, der mit dem Namen der Organisationseinheit übereinstimmt, die von einer lokalen Active Directory-Instanz festgelegt wurde | (device.organizationalUnit -eq "US PCs")      |
+| deviceId                | eine gültige Intune-Geräte-ID                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
+| objectId                | eine gültige Azure AD-Objekt-ID            | (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
 
 > [!NOTE]
-> Diese Geräteregeln können nicht mithilfe der Dropdownliste mit einfachen Regeln im klassischen Azure-Portal erstellt werden.
+> Geräteregeln können nicht mithilfe der Dropdownliste mit einfachen Regeln im klassischen Azure-Portal erstellt werden.
 >
 >
 
@@ -310,4 +308,3 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](active-directory-accessmanagement-groups-settings-cmdlets.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
