@@ -31,3 +31,5 @@
       href: 'https://azure.microsoft.com/pricing/details/cost-management'
     - name: Regionale Verfügbarkeit
       href: 'https://azure-staging.microsoft.com/en-us/regions/services/'
+    - name: Häufig gestellte Fragen
+      href: cost-mgt-faq.md
