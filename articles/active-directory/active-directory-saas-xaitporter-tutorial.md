@@ -159,7 +159,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Fügen Sie im Textfeld **Identity Provider Settings** (Identitätsanbietereinstellungen) die **Metadaten-URL** ein, die Sie in Azure kopiert haben, und klicken Sie auf **Fetch** (Abrufen).
 
-    c. Aktivieren Sie **Enable Autocreation of Users** (Automatische Erstellung von Benutzern ermöglichen).
+    c. Aktivieren Sie **Enable Autocreation of Users** (Automatische Erstellung von Benutzern aktivieren).
 
     d. Klicken Sie auf **OK**.
 
