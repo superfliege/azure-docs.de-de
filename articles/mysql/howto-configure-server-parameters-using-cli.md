@@ -9,15 +9,15 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 10/03/2017
-ms.openlocfilehash: 751cfe0b4c59226505d7606af24fc5465a0ef8b1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/12/2017
+ms.openlocfilehash: 3b811376e4c5445ee74124553c6bce247e4f8faf
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
-# <a name="customize-server-configuration-parameters-using-azure-cli"></a>Anpassen der Serverkonfigurationsparameter mithilfe der Azure CLI
-Sie können Konfigurationsparameter für eine Instanz von Azure Database for MySQL mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) auflisten, anzeigen und aktualisieren. Auf Serverebene ist eine Teilmenge der Modulkonfigurationen verfügbar, die geändert werden kann. 
+# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Anpassen der Serverkonfigurationsparameter mithilfe der Azure CLI
+Sie können Konfigurationsparameter für einen Azure Database for MySQL-Server mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) auflisten, anzeigen und aktualisieren. Auf Serverebene ist eine Teilmenge der Modulkonfigurationen verfügbar und kann geändert werden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
@@ -40,14 +40,14 @@ Dieses Beispiel zeigt Details des Serverkonfigurationsparameters **slow\_query\_
 ```azurecli-interactive
 az mysql server configuration show --name slow_query_log --resource-group myresourcegroup --server myserver4demo
 ```
-## <a name="modify-server-configuration-parameter-value"></a>Ändern des Werts von Serverkonfigurationsparametern
+## <a name="modify-a-server-configuration-parameter-value"></a>Ändern des Werts von Serverkonfigurationsparametern
 Sie können den Wert eines bestimmten Serverkonfigurationsparameters ändern und dadurch den zugrunde liegenden Konfigurationswert für das MySQL-Servermodul aktualisieren. Um die Konfiguration zu aktualisieren, führen Sie den Befehl [az mysql server configuration set](/cli/azure/mysql/server/configuration#set) aus. 
 
 So aktualisieren Sie den Serverkonfigurationsparameter **slow\_query\_log** für den Server **myserver4demo.mysql.database.azure.com** in der Ressourcengruppe **myresourcegroup**
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server myserver4demo --value ON
 ```
-Wenn Sie den Wert eines Konfigurationsparameters zurücksetzen möchten, lassen Sie einfach den optionalen Parameter `--value` weg. Dann wendet der Dienst den Standardwert an. Im obigen Beispiel sieht dies so aus:
+Wenn Sie den Wert eines Konfigurationsparameters zurücksetzen möchten, lassen Sie den optionalen Parameter `--value` weg. Der Dienst wendet dann den Standardwert an. Im obigen Beispiel sieht dies so aus:
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server myserver4demo
 ```

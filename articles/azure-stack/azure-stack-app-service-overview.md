@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: anwestg
-ms.openlocfilehash: c962af0977a09655d36d1c5dc3a948bb9278e6f4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 19b712d622276b6521317d79c68fc093dba547db
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Übersicht über App Service in Azure Stack
 
@@ -39,6 +39,7 @@ App Service verfügt über mehrere App-Typen, die jeweils zum Hosten einer besti
 
 - [Web-Apps:](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-overview) Hosten von Websites und Webanwendungen
 - [API-Apps:](https://docs.microsoft.com/en-us/azure/app-service-api/app-service-api-apps-why-best-platform) Hosten von RESTful-APIs
+- Azure Functions zum Hosten ereignisgesteuerter, serverloser Workloads
 
 Der Begriff „App“ bezieht sich hier auf die Hostingressourcen, die dediziert für die Ausführung einer Workload bestimmt sind. Wenn wir „Web-App“ als Beispiel nehmen, verstehen Sie darunter wahrscheinlich sowohl die Computeressourcen als auch die Anwendungscodeelemente, die zusammen für einen Browser die Funktionalität bereitstellen. In App Service handelt es sich bei einer Web-App aber um die Computeressourcen, die von Azure Stack zum Hosten Ihres Anwendungscodes bereitgestellt werden.
 
