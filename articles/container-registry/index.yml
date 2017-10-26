@@ -38,13 +38,15 @@ sections:
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph
-        text: 'Es wird beschrieben, wie Sie Azure Container Registry mit Azure Container Instances und Azure Container Service verwenden.'
+        text: 'Erfahren Sie anhand dieser Tutorials, wie Sie Azure Container Registry verwenden.'
       - type: list
         style: unordered
         className: spaced noBullet
         items:
+          - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">Georeplikation für Containerregistrierung</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Containerregistrierung mit Azure Container Instances</a>
           - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app">Containerregistrierung mit Azure Container Service</a>
+          - html: <a href="/azure/service-fabric/service-fabric-tutorial-create-container-images">Containerregistrierung mit Service Fabric</a>
   - title: Referenz
     items:
       - type: list

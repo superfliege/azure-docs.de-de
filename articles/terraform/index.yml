@@ -1,0 +1,66 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation zu Terraform in Azure
+metadata:
+  title: Dokumentation zu Terraform in Azure – Tutorials und Referenz
+  meta.description: Learn how to use Terraform to reliably provision virtual machines and other infrastructure on Azure.
+  services: terraform
+  author: rloutlaw
+  manager: justhe
+  ms.service: terraform
+  ms.tgt_pltfrm: na
+  ms.devlang: devops
+  ms.topic: landing-page
+  ms.date: 09/21/2017
+  ms.author: routlaw
+abstract:
+  description: 'Verwenden Sie Terraform für die zuverlässige Versionsverwaltung und Erstellung von Infrastrukturen in Azure. Hier erfahren Sie anhand unserer Schnellstartanleitungen und Tutorials, wie Sie Ressourcen erstellen, Azure-Terraform-Module verwenden und Ihre Infrastruktur mit Code verwalten.'
+  aside:
+    image:
+      alt: Terraform logo.
+      height: 110
+      src: media/Terraform_VerticalLogo_FullColor.svg
+      width: 250
+sections:
+  - title: Schnellstarts
+    items:
+      - type: paragraph
+        text: 'Konfigurieren Sie Terraform, und verwenden Sie das Tool zum Erstellen eines virtuellen Linux-Computers in Azure.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/media/index/azure_dev-9.svg'
+            text: Installieren und Konfigurieren von Terraform
+            href: 'https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/media/index/VirtualMachine.svg'
+            text: Erstellen eines virtuellen Linux-Computers
+            href: 'https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm'
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Hier erfahren Sie, wie Sie mit Terraform auf der Grundlage von Code eine Compute- und Netzwerkinfrastruktur in Azure erstellen.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/terraform/terraform-create-vm-cluster-module">Erstellen eines VM-Clusters mit Lastenausgleich mithilfe von Azure-Terraform-Modulen</a>
+          - html: <a href="/azure/terraform/terraform-create-vm-cluster-with-infrastructure">Erstellen eines VM-Clusters mit Lastenausgleich in Azure Cloud Shell</a>
+          - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl">Konfigurieren einer VM-Skalierungsgruppe mit Netzwerken und Speicher</a>
+  - title: Beispiele
+    items:
+      - type: paragraph
+        text: Beispielkonfigurationsvorlagen für allgemeine Bereitstellungsaufgaben
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples">GitHub</a>'
+  - title: Referenz
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Azure-Terraform-Module
+            html: '<p><a href="https://registry.terraform.io/modules/Azure/database/azurerm">Azure RM für Datenbank</a></p><p><a href="https://registry.terraform.io/modules/Azure/loadbalancer">Azure RM für Load Balancer</a></p><p><a href="https://registry.terraform.io/modules/Azure/computegroup">Azure RM-Computegruppe</a></p><p><a href="https://registry.terraform.io/modules/Azure/network">Azure RM-Netzwerk</a></p><p><a href="https://registry.terraform.io/modules/Azure/compute">Azure RM-Compute</a></p>'

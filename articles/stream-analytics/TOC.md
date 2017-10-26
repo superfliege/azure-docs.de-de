@@ -20,6 +20,7 @@
 ### [Beispieleingabedaten](stream-analytics-sample-data-input.md)
 ### [Gängige Abfragemuster](stream-analytics-stream-analytics-query-patterns.md)
 ### [Fensterfunktionen](stream-analytics-window-functions.md)
+
 ### [Verwenden von Referenzdaten](stream-analytics-use-reference-data.md)
 ### [Testen von Abfragen](stream-analytics-test-query.md)
 ### [Integrieren von JavaScript-UDFs](stream-analytics-javascript-user-defined-functions.md)
@@ -53,6 +54,7 @@
 ### [Auftragsdiagramm und Metriken](stream-analytics-job-diagram-with-metrics.md)
 ### [Debuggen von SELECT INTO](stream-analytics-select-into.md)
 ### [Behandlung der Ereignisreihenfolge](stream-analytics-out-of-order-and-late-events.md)
+### [Überlegungen zur Ereignissortierung](stream-analytics-out-of-order-and-late-events.md)
 ### [Grenzwerte für Event Hub-Leser](stream-analytics-event-hub-consumer-groups.md)
 ### [Diagnoseprotokolle](stream-analytics-job-diagnostic-logs.md)
 

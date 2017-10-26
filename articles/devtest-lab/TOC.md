@@ -14,7 +14,7 @@
 # Anleitungen
 ## Verwenden von virtuellen Computern in einem Lab
 ### [Erstellen virtueller Computer](devtest-lab-add-vm.md)
-### [Erstellen von anforderbaren virtuellen Computern](devtest-lab-add-claimable-vm.md)
+### [Erstellen und Verwalten von abrufbaren VMs](devtest-lab-add-claimable-vm.md)
 ### [Erstellen und Verwalten virtueller Computer mit der Azure CLI](devtest-lab-vmcli.md)
 ### [Neustarten eines virtuellen Computers](devtest-lab-restart-vm.md)
 

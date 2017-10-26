@@ -24,10 +24,16 @@
     - name: Wartungsrichtlinie
       href: azure-stack-servicing-policy.md
     - name: Versionshinweise
-      href: azure-stack-asdk-release-notes.md
+      items:
+        - name: Versionshinweise für Development Kit
+          href: azure-stack-asdk-release-notes.md
+        - name: Versionshinweise zu integrierten Systemen
+          items:
+            - name: Update 1710
+              href: azure-stack-update-1710.md
     - name: Wichtige Features und Konzepte
       href: azure-stack-key-features.md
-    - name: Architektur des Azure Stack Development Kits
+    - name: Architektur des Development Kits
       href: azure-stack-architecture.md
     - name: Verwaltungsgrundlagen
       href: azure-stack-manage-basics.md
@@ -51,10 +57,14 @@
           href: azure-stack-provision-vm.md
     - name: Rechenzentrumsintegration
       items:
-        - name: Integrieren des DNS
+        - name: DNS
           href: azure-stack-integrate-dns.md
+        - name: Identity
+          href: azure-stack-integrate-identity.md
         - name: Veröffentlichen von Endpunkten
           href: azure-stack-integrate-endpoints.md
+        - name: Sicherheit
+          href: azure-stack-integrate-security.md
     - name: Verwalten
       items:
         - name: Regionsverwaltung
@@ -83,6 +93,8 @@
               href: azure-stack-updates.md
             - name: Anwenden von Updates
               href: azure-stack-apply-updates.md
+            - name: Überwachen des Updatestatus
+              href: azure-stack-monitor-update.md
         - name: Überwachen von Integrität und Warnungen
           href: azure-stack-monitor-health.md
         - name: Verwalten von Netzwerkressourcen
@@ -95,8 +107,12 @@
           items:
             - name: Knotenaktionen
               href: azure-stack-node-actions.md
+            - name: Ersetzen des Knotens
+              href: azure-stack-replace-node.md
             - name: Austauschen des Datenträgers
               href: azure-stack-replace-disk.md
+            - name: Ersetzen der Komponente
+              href: azure-stack-replace-component.md
     - name: 'Sicherheit, Konformität und Identität'
       items:
         - name: Sicherheitsübersicht

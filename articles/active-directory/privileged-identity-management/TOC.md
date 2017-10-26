@@ -2,7 +2,7 @@
 ## [Schützen des privilegierten Zugriffs](active-directory-securing-privileged-access.md)
 ## [Was ist Azure AD PIM?](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Rollen](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Privileged Identity Management für Azure](azure-pim-resource-rbac.md)
+## [PIM für Azure-Ressourcen (Vorschauversion)](azure-pim-resource-rbac.md)
 ## [Genehmigungsworkflows in Privileged Identity Management](azure-ad-pim-approval-workflow.md)
 
 # Erste Schritte

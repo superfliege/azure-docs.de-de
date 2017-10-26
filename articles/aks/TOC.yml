@@ -1,0 +1,61 @@
+- name: Azure Container Service (AKS)
+  href: ./index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu AKS
+      href: intro-kubernetes.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Erstellen eines AKS-Clusters
+      href: kubernetes-walkthrough.md
+- name: Lernprogramme
+  items:
+    - name: '1: Vorbereiten der Anwendung für AKS'
+      href: tutorial-kubernetes-prepare-app.md
+    - name: 2. Erstellen der Containerregistrierung
+      href: tutorial-kubernetes-prepare-acr.md
+    - name: 3. Erstellen des Kubernetes-Clusters
+      href: tutorial-kubernetes-deploy-cluster.md
+    - name: 4. Ausführen der Anwendung
+      href: tutorial-kubernetes-deploy-application.md
+    - name: 5. Skalieren der Anwendung
+      href: tutorial-kubernetes-scale.md
+    - name: 6. Aktualisieren der Anwendung
+      href: tutorial-kubernetes-app-update.md
+    - name: '7: Überwachen mit Log Analytics'
+      href: tutorial-kubernetes-monitor.md
+    - name: '8: Aktualisieren eines Clusters'
+      href: tutorial-kubernetes-upgrade-cluster.md
+- name: Anleitungen
+  items:
+    - name: Skalieren eines AKS-Clusters
+      href: scale-cluster.md
+    - name: Aktualisieren eines AKS-Clusters
+      href: upgrade-cluster.md
+    - name: Ausführen von Anwendungen mit Helm
+      href: kubernetes-helm.md
+    - name: Entwickeln von Anwendungen mit Entwurf
+      href: kubernetes-draft.md
+    - name: Verwenden des Kubernetes-Dashboards
+      href: kubernetes-dashboard.md
+    - name: Erstellen eines Dienstprinzipals
+      href: kubernetes-service-principal.md
+- name: Referenz
+  items:
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/aks
+    - name: REST
+      href: /rest/api/container-service
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
+    - name: Videos
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'

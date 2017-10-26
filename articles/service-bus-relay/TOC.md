@@ -20,7 +20,9 @@
 ## Entwickeln
 ### [Verfügbare APIs](relay-api-overview.md)
 #### [.NET](relay-hybrid-connections-dotnet-api-overview.md)
-#### [Knoten](relay-hybrid-connections-node-ws-api-overview.md)
+#### [Node](relay-hybrid-connections-node-ws-api-overview.md)
+## Verwalten
+### [Überwachen von Event Hubs mit Azure-Überwachung](relay-metrics-azure-monitor.md)
 
 # Referenz
 ## .NET
