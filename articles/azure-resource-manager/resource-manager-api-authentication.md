@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/27/2016
 ms.author: dugill;tomfitz
-ms.openlocfilehash: 7830dc4774652f4d108e98660dce3bcea7b32d05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a4f60ce392c5f6c1a42f13187a0cc0fbd9f6d3e
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Verwenden der Resource Manager-Authentifizierungs-API für den Zugriff auf Abonnements
 ## <a name="introduction"></a>Einführung
@@ -87,7 +87,7 @@ Die Ergebnisse enthalten die AppID, die Sie beim Authentifizieren als Anwendung 
 ### <a name="optional-configuration---certificate-credential"></a>Optionale Konfiguration – Zertifikatanmeldeinformationen
 Azure AD unterstützt außerdem Zertifikatanmeldeinformationen für Anwendungen: Sie erstellen ein selbstsigniertes Zertifikat, behalten den privaten Schlüssel und fügen den öffentlichen Schlüssel der Azure AD-Anwendungsregistrierung hinzu. Zur Authentifizierung sendet Ihre Anwendung eine kleine Nutzlast an Azure AD, die mit Ihrem privaten Schlüssel signiert ist, und Azure AD überprüft die Signatur mithilfe des öffentlichen Schlüssels, den Sie registriert haben.
 
-Informationen zum Erstellen einer AD-App mit einem Zertifikat finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority) oder unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md#create-service-principal-with-certificate).
+Informationen zum Erstellen einer AD-App mit einem Zertifikat finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority) oder unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md).
 
 ## <a name="get-tenant-id-from-subscription-id"></a>Abrufen der Mandanten-ID ausgehend von der Abonnement-ID
 Um ein Token anzufordern, das zum Aufrufen von Resource Manager verwendet werden kann, benötigt Ihre Anwendung die Mandanten-ID des Azure AD-Mandanten, der das Azure-Abonnement hostet. In den meisten Fällen kennen Benutzer Ihre Abonnement-ID, unter Umständen kennen sie ihre Mandanten-ID für Azure Active Directory jedoch nicht. Fragen Sie den Benutzer nach der Abonnement-ID, um die Mandanten-ID abrufen zu können. Geben Sie die Abonnement-ID beim Senden einer Anforderung zum Abonnement an:

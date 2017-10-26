@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: cf25772bd9d92b59401aa5da76e6bbd5fa5ee3e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1d315cf63bcbf37b6b03b5a965ac615282526682
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten
 Eine Anwendung, die einmaliges Anmelden mit Azure Active Directory unterstützt, kann nur im [Azure AD-Katalog](https://azure.microsoft.com/marketplace/active-directory/all/)aufgelistet werden, wenn sie einen der folgenden Integrationsmodi implementiert:
@@ -64,10 +64,10 @@ Befolgen Sie zum Integrieren Ihrer Anwendung in Azure AD diese [Anweisungen für
 > 
 
 ## <a name="saml-integration"></a>Integration mithilfe von SAML
-Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten integriert werden. Dazu befolgen Sie [diese Anweisungen zum Hinzufügen einer benutzerdefinierten Anwendung](../active-directory-saas-custom-apps.md). Wenn Sie die Anwendungsintegration in Azure AD erfolgreich getestet haben, senden Sie die folgenden Informationen an <mailto:waadpartners@microsoft.com>.
+Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten integriert werden. Dazu befolgen Sie [diese Anweisungen zum Hinzufügen einer benutzerdefinierten Anwendung](../application-config-sso-how-to-configure-federated-sso-non-gallery.md). Wenn Sie die Anwendungsintegration in Azure AD erfolgreich getestet haben, senden Sie die folgenden Informationen an <mailto:waadpartners@microsoft.com>.
 
 * Stellen Sie Anmeldeinformationen für einen Testmandanten oder ein Testkonto mit Ihrer Anwendung bereit, die vom Azure AD-Team zum Testen der Integration verwendet werden können.  
-* Geben Sie die URL für einmaliges Anmelden mit SAML, die Aussteller-URL (Entitäts-ID) und die Antwort-URL (Assertion Consumer Service) für Ihre Anwendung an, wie [hier](../active-directory-saas-custom-apps.md)beschrieben. Wenn Sie diese Werte in der Regel als Teil einer SAML-Metadatendatei zur Verfügung stellen, senden Sie uns diese ebenfalls.
+* Geben Sie die URL für einmaliges Anmelden mit SAML, die Aussteller-URL (Entitäts-ID) und die Antwort-URL (Assertion Consumer Service) für Ihre Anwendung an, wie [hier](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)beschrieben. Wenn Sie diese Werte in der Regel als Teil einer SAML-Metadatendatei zur Verfügung stellen, senden Sie uns diese ebenfalls.
 * Beschreiben Sie kurz, wie Azure AD als Identitätsanbieter in ihrer Anwendung mithilfe von SAML 2.0 konfiguriert wird. Wenn Ihre Anwendung die Konfiguration von Azure AD als Identitätsanbieter über ein Self-Service-Verwaltungsportal unterstützt, stellen Sie sicher, dass dies mit den oben angegebenen Anmeldeinformation eingerichtet werden kann.
 * Stellen Sie folgende Informationen bereit:
 

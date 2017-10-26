@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga
-ms.openlocfilehash: 5517581f929ffce9e9184848049ce9832013277e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1594a27d50df9abdac27b342ad18363b974c8972
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Ausführen von Hintergrundaufgaben mit WebJobs in Azure App Service
 
@@ -43,7 +43,7 @@ Die folgende Tabelle beschreibt die Unterschiede zwischen *fortlaufenden* und *a
 | Unterstützen Remotedebuggen. | Bieten keine Unterstützung für Remotedebuggen.|
 
 > [!NOTE]
-> Nach 20 Minuten Inaktivität kann bei einer Web-App ein Timeout auftreten. Der Timer wird nur durch Anforderungen an die SCM-Website (Bereitstellung) oder die Web-App-Seiten im Portal zurückgesetzt. Dies ist nicht durch Anforderungen an den tatsächlichen Standort möglich. Wenn Ihre App fortlaufende oder geplante WebJobs ausführt, aktivieren Sie **Always On**, um sicherzustellen, dass die WebJobs zuverlässig ausgeführt werden. Dieses Feature steht nur in den [Tarifen](https://azure.microsoft.com/pricing/details/app-service/) „Basic“, „Standard“ und „Premium“ zur Verfügung.
+> Nach 20 Minuten Inaktivität kann bei einer Web-App ein Timeout auftreten. Der Timer wird nur durch Anforderungen an die SCM-Website (Bereitstellung) oder die Web-App-Seiten im Portal zurückgesetzt. Dies ist nicht durch Anforderungen an den tatsächlichen Standort möglich. Wenn Ihre App fortlaufende oder geplante WebJobs ausführt, aktivieren Sie **Always On**, um sicherzustellen, dass die WebJobs zuverlässig ausgeführt werden. Dieses Feature steht nur in den [Tarifen](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) „Basic“, „Standard“ und „Premium“ zur Verfügung.
 
 ## <a name="acceptablefiles"></a>Unterstützte Dateitypen für Skripts oder Programme
 
@@ -83,7 +83,7 @@ when making changes in one don't forget the other two.
    | **Name** | myContinuousWebJob | Ein Name, der innerhalb einer App Service-App eindeutig ist. Muss mit einem Buchstaben oder einer Ziffer beginnen und darf nur die Sonderzeichen „-“ und „_“ enthalten. |
    | **Dateiupload** | ConsoleApp.zip | Eine *ZIP*-Datei, die die ausführbare Datei oder Skriptdatei sowie für die Ausführung des Programms oder Skripts erforderliche Hilfsdateien enthält. Die unterstützten Typen von ausführbarer Datei oder Skriptdatei werden im Abschnitt [Unterstützte Dateitypen](#acceptablefiles) aufgeführt. |
    | **Typ** | Fortlaufend | Die [WebJob-Typen](#webjob-types) werden weiter oben in diesem Artikel beschrieben. |
-   | **Skalieren** | Mehrere Instanzen | Diese Option ist nur für fortlaufende WebJobs verfügbar. Legt fest, ob das Programm oder Skript auf allen Instanzen oder nur einer Instanz ausgeführt wird. Die Option zum Ausführen auf mehreren Instanzen gilt nicht für die [Tarife](https://azure.microsoft.com/pricing/details/app-service/) „Free“ oder „Shared“. |
+   | **Skalieren** | Mehrere Instanzen | Diese Option ist nur für fortlaufende WebJobs verfügbar. Legt fest, ob das Programm oder Skript auf allen Instanzen oder nur einer Instanz ausgeführt wird. Die Option zum Ausführen auf mehreren Instanzen gilt nicht für die [Tarife](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) „Free“ oder „Shared“. | 
 
 4. Klicken Sie auf **OK**.
 

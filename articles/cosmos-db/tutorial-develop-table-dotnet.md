@@ -12,14 +12,14 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 05/10/2017
+ms.date: 10/12/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 5322fa5cc8e841ecea97a69d15cf130a4426ad95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c969696b7489a9a8c45e10428cdeaa833f63d6d2
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET
 
@@ -43,7 +43,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 Azure Cosmos DB bietet die [Tabellen-API](table-introduction.md) (Vorschau) für Anwendungen, die einen Schlüssel-Wert-Speicher mit schemafreiem Design benötigen. Die SDKs und REST-APIs von [Azure Table Storage](../storage/common/storage-introduction.md) können zum Arbeiten mit Azure Cosmos DB verwendet werden. Mit Azure Cosmos DB können Sie Tabellen mit hohen Durchsatzanforderungen erstellen. Azure Cosmos DB unterstützt durchsatzoptimierte Tabellen (informell als „Premium Tables“ bezeichnet), die derzeit in der öffentlichen Vorschau verfügbar sind. 
 
-Sie können Azure Table Storage weiterhin für Tabellen mit hohen Speicheranforderungen und niedrigeren Durchsatzanforderungen verwenden. In einem zukünftigen Update von Azure Cosmos DB wird die Unterstützung speicheroptimierter Tabellen eingeführt, und für vorhandene und neue Azure Table Storage-Konten wird ein nahtloses Upgrade auf Azure Cosmos DB durchgeführt.
+Sie können Azure Table Storage weiterhin für Tabellen mit hohen Speicheranforderungen und niedrigeren Durchsatzanforderungen verwenden.
 
 Wenn Sie derzeit Azure Table Storage verwenden, bietet Ihnen der Wechsel zur „Premium Table“-Vorschau folgende Vorteile:
 

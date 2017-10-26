@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 97df68d446755414cbd427d59f399d6430580f42
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5d3f7fce863f6b868a03eff481ae0dda5a7a812
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?
 Einmaliges Anmelden bedeutet, dass Sie Zugriff auf sämtliche für Ihre Geschäftsaktivitäten benötigten Anwendungen und Ressourcen erhalten, indem Sie sich nur einmal mit einem einzigen Benutzerkonto anmelden. Nach der Anmeldung können Sie auf alle benötigten Anwendungen zugreifen, ohne sich ein zweites Mal (z. B. durch Eingabe eines Kennworts) authentifizieren zu müssen.
@@ -112,7 +112,7 @@ Wenn Sie Ihre Anwendung gefunden haben, können Sie mithilfe der Schrittanleitun
 ### <a name="application-not-in-the-gallery"></a>Die Anwendung ist nicht im Katalog enthalten?
 Wenn Sie Ihre Anwendung nicht im Azure AD-Anwendungskatalog finden, haben Sie folgende Möglichkeiten:
 
-* **Fügen Sie eine nicht gelistete App hinzu, die Sie verwenden** – Verwenden Sie die Kategorie "Benutzerdefiniert" im App-Katalog des Azure-Verwaltungsportals, um eine nicht gelistete Anwendung zu verbinden, die in Ihrer Organisation verwendet wird. Sie können jede Anwendung hinzufügen, die SAML 2.0 als Verbund-App unterstützt, oder jede Anwendung für die kennwortbasierte einmalige Anmeldung, die über eine HTML-basierte Anmeldeseite verfügt. Weitere Informationen finden Sie in diesem Artikel unter [Hinzufügen Ihrer eigenen Anwendung](active-directory-saas-custom-apps.md).
+* **Fügen Sie eine nicht gelistete App hinzu, die Sie verwenden** – Verwenden Sie die Kategorie "Benutzerdefiniert" im App-Katalog des Azure-Verwaltungsportals, um eine nicht gelistete Anwendung zu verbinden, die in Ihrer Organisation verwendet wird. Sie können jede Anwendung hinzufügen, die SAML 2.0 als Verbund-App unterstützt, oder jede Anwendung für die kennwortbasierte einmalige Anmeldung, die über eine HTML-basierte Anmeldeseite verfügt. Weitere Informationen finden Sie in diesem Artikel unter [Hinzufügen Ihrer eigenen Anwendung](application-config-sso-how-to-configure-federated-sso-non-gallery.md).
 * **Hinzufügen Ihrer eigenen, selbst entwickelten App** – Wenn Sie die Anwendung selbst entwickelt haben, befolgen Sie die Richtlinien in der Azure AD-Entwicklerdokumentation, um die einmalige Verbundanmeldung oder die Bereitstellung mithilfe der Azure AD Graph-API zu implementieren. Weitere Informationen finden Sie in den folgenden Ressourcen:
   
   * [Authentifizierungsszenarios für Azure AD](active-directory-authentication-scenarios.md)
