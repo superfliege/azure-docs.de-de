@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 10/11/2017
 ms.author: nitinme
-ms.openlocfilehash: f525bd81ebbc27a4730bdced5c8778b6f2ac69b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f6319dcf1ae66a686dd1c2ea2810b3041183098
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="filesystem-operations-on-azure-data-lake-store-using-net-sdk"></a>Dateisystemvorgänge in Azure Data Lake Store per .NET SDK
 > [!div class="op_single_selector"]
@@ -65,13 +65,17 @@ Eine Anleitung zum Durchführen von Kontoverwaltungsvorgängen in Data Lake Stor
 
         using System;
         using System.IO;
-        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+        using System.Linq;
+        using System.Text;
         using System.Threading;
-
+        using System.Collections.Generic;
+        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+                
+        using Microsoft.Rest;
+        using Microsoft.Rest.Azure.Authentication;
         using Microsoft.Azure.Management.DataLake.Store;
         using Microsoft.Azure.Management.DataLake.Store.Models;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
-        using Microsoft.Rest.Azure.Authentication;
 
 7. Deklarieren Sie die Variablen wie unten dargestellt, und geben Sie die Werte für die Platzhalter an. Stellen Sie außerdem sicher, dass der hier angegebene lokale Pfad und der Dateiname auf dem Computer vorhanden sind.
 
@@ -111,7 +115,7 @@ In den restlichen Abschnitten dieses Artikels erfahren Sie, wie Sie die verfügb
 Mit dem folgenden Codeausschnitt werden das Data Lake Store-Konto und die Dateisystem-Clientobjekte erstellt, die zum Ausführen von Anforderungen für den Dienst genutzt werden.
 
     // Create client objects
-    _adlsFileSystemClient = new DataLakeStoreFileSystemManagementClient(creds);
+    _adlsFileSystemClient = new DataLakeStoreFileSystemManagementClient(adlCreds);
 
 ## <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
 Fügen Sie Ihrer Klasse die folgende Methode hinzu: Im Codeausschnitt wird eine `CreateDirectory()`-Methode veranschaulicht, die Sie zum Erstellen eines Verzeichnisses in einem Data Lake Store-Konto verwenden können.
@@ -228,7 +232,7 @@ Fügen Sie Ihrer `Main()`-Methode den folgenden Codeausschnitt hinzu, um die `Do
     Console.ReadLine();
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Erste Schritte mit Azure Data Lake Store mithilfe des .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Kontoverwaltungsvorgänge in Azure Data Lake Store mit dem .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Data Lake Store .NET SDK Reference (Referenz zum Data Lake Store .NET SDK)](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>Nächste Schritte
