@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/29/2017
+ms.date: 10/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 27fe69753acc6fa047b5791a583d70e80318288a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 48990c57fb10127733623000a105507b5a48d900
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-python"></a>Authentifizierung von Endbenutzern bei Data Lake Store mithilfe von Python
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Beide Optionen werden in diesem Artikel erläutert. Informationen zur Authentifi
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Erstellen einer „nativen“ Azure Active Directory-Anwendung**. Sie müssen die Schritte unter [Authentifizierung von Endbenutzern bei Data Lake Store mithilfe von Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md) ausgeführt haben.
+* **Erstellen einer nativen Azure Active Directory-Anwendung.** Sie müssen die Schritte unter [End-user authentication with Data Lake Store using Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md) (Authentifizierung von Endbenutzern bei Data Lake Store mithilfe von Azure Active Directory) ausgeführt haben.
 
 ## <a name="install-the-modules"></a>Installieren der Module
 
@@ -104,13 +104,13 @@ Verwenden Sie den folgenden Codeausschnitt zur Authentifizierung bei Azure AD f�
     code = context.acquire_user_code(RESOURCE, client_id)
     print(code['message'])
     mgmt_token = context.acquire_token_with_device_code(RESOURCE, code, client_id)
-    credentials = AADTokenCredentials(mgmt_token, client_id)
+    armCreds = AADTokenCredentials(mgmt_token, client_id, resource = RESOURCE)
 
 ### <a name="for-filesystem-operations"></a>Für Dateisystemvorgänge
 
 Führen Sie hiermit die Authentifizierung bei Azure AD für Dateisystemvorgänge durch, die ein Data Lake Store-Konto betreffen. Sie können den folgenden Codeausschnitt verwenden, um Ihre Anwendung per Multi-Factor Authentication zu authentifizieren. Geben Sie die Werte unten für eine vorhandene **native** Azure AD-Anwendung an.
 
-    token = lib.auth(tenant_id='FILL-IN-HERE')
+    adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
 
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>Endbenutzerauthentifizierung ohne mehrstufige Authentifizierung
 

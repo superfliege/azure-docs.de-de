@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2017
+ms.date: 09/28/2017
 ms.author: magoedte
-ms.openlocfilehash: 953bb453b0a9635627fbbb6c3913d0cd757101c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d0345155b2c13bd0b4341ce53272e7d84cd233fb
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows- und Linux-Leistungsindikatoren in Log Analytics
 Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Log Analytics kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Log Analytics Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
@@ -207,23 +207,6 @@ Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgend
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, die Leistungsdatensätze abrufen.
 
 | Abfrage | Beschreibung |
-|:--- |:--- |
-| Type=Perf |Alle Leistungsdaten. |
-| Type=Perf Computer="MyComputer" |Alle Leistungsdaten eines bestimmten Computers. |
-| Type=Perf CounterName="Aktuelle Warteschlangenlänge" |Alle Leistungsdaten eines bestimmten Leistungsindikators. |
-| Type=Perf (ObjectName=Processor) CounterName="% Prozessorzeit" InstanceName=_Total &#124; measure Avg(Average) as AVGCPU by Computer |Durchschnittliche CPU-Nutzung aller Computer. |
-| Type=Perf (CounterName="% Prozessorzeit") &#124; measure max(Max) by Computer |Maximale CPU-Nutzung aller Computer. |
-| Type=Perf ObjectName=LogicalDisk CounterName="Aktuelle Warteschlangenlänge" Computer="MyComputerName" &#124; measure Avg(Average) by InstanceName |Durchschnittliche aktuelle Länge der Datenträgerwarteschlangen aller Instanzen eines bestimmten Computers |
-| Type=Perf CounterName="Übertragungen/s" &#124; measure percentile95(Average) by Computer |95. Perzentil der Datenträgerübertragungen pro Sekunde auf allen Computern. |
-| Type=Perf CounterName="% Prozessorzeit" InstanceName="_Total" &#124; measure avg(CounterValue) by Computer Interval 1HOUR |Durchschnittliche CPU-Nutzung pro Stunde auf allen Computern |
-| Type=Perf Computer="MyComputer" CounterName=%* InstanceName=_Total &#124; measure percentile70(CounterValue) by CounterName Interval 1HOUR |70. Perzentil pro Stunde jedes prozentualen Indikators für einen bestimmten Computer |
-| Type=Perf CounterName="% Prozessorzeit" InstanceName="_Total"  (Computer="MyComputer") &#124; measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR |Durchschnittliche, minimale, maximale und 75.-Perzentil-CPU-Nutzung pro Stunde für einen bestimmten Computer |
-| Type=Perf ObjectName="MSSQL$INST2:Databases" InstanceName=master | Alle Leistungsdaten aus dem Datenbank-Leistungsobjekt für die Masterdatenbank von der benannten SQL Server-Instanz INST2.  
-
->[!NOTE]
-> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden:
-
-> | Abfrage | Beschreibung |
 |:--- |:--- |
 | Perf |Alle Leistungsdaten. |
 | Perf &#124; where Computer == "MyComputer" |Alle Leistungsdaten eines bestimmten Computers. |

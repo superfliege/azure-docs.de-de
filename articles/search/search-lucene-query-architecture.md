@@ -12,11 +12,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
-ms.openlocfilehash: a016438070d13c22f309c5f32b940256069f2ee0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b2e66cd40c1b49832b865e5bf59edcf78996eb8
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Funktionsweise der Volltextsuche in Azure Search
 
@@ -183,11 +183,14 @@ Die Standardanalyse teilt den Eingabetext in die folgenden beiden Token auf und 
 }
 ~~~~
 
+<a name="exceptions"></a>
+
 ### <a name="exceptions-to-lexical-analysis"></a>Ausnahmen bei der lexikalischen Analyse 
 
 Die lexikalische Analyse gilt nur für Abfragetypen, für die vollständige Ausdrücke erforderlich sind – entweder eine Begriffsabfrage oder eine Ausdrucksabfrage. Dies gilt nicht für Abfragetypen mit unvollständigen Ausdrücken – Präfixabfrage, Platzerhalterabfrage, Abfrage regulärer Ausdrücke – oder für eine Fuzzyabfrage. Diese Abfragetypen, einschließlich der Präfixabfrage mit dem Ausdruck *air-condition\** in unserem Beispiel, werden der Abfragestruktur direkt hinzugefügt, und die Analysephase wird umgangen. Die einzige Transformation, die für die Abfrageausdrücke dieser Typen durchgeführt wird, ist die Umwandlung in Kleinbuchstaben.
 
 <a name="stage3"></a>
+
 ## <a name="stage-3-document-retrieval"></a>Phase 3: Dokumentabgleich/-abruf 
 
 Der Dokumentabruf bezieht sich auf das Suchen nach Dokumenten mit übereinstimmenden Ausdrücken im Index. Diese Phase lässt sich am besten anhand eines Beispiels beschreiben. Wir beginnen mit einem Hotelindex mit dem folgenden einfachen Schema: 

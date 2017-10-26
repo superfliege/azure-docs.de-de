@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 10/18/2017
 ms.author: curtand
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 6bfce3d4ec243779229cc4f39e1c22149229a66a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41f4ceea4842303760c5b156e90bd9e0746a7825
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>Schnellstart: Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in Azure AD
 Um Verwirrung zu vermeiden, möchten viele Unternehmen über alle verwalteten Websites und Dienste hinweg für ein einheitliches Erscheinungsbild sorgen. Dies ist in Azure Active Directory (Azure AD) möglich, da Sie die Darstellung der Anmeldeseite mit Ihrem Firmenlogo und Ihren benutzerdefinierten Farbschemas anpassen können. Die Anmeldeseite wird angezeigt, wenn Sie sich an Office 365 oder anderen webbasierten Anwendungen anmelden, die Azure AD als Identitätsanbieter verwenden. Sie interagieren mit dieser Seite, um Ihre Anmeldeinformationen einzugeben.
@@ -82,11 +82,11 @@ Die Azure AD-Anmeldung gewährt Benutzern die Möglichkeit, angemeldet zu bleibe
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
 
-   ![Öffnen der Benutzerverwaltung](./media/active-directory-branding-custom-signon-azure-portal/user-management.png)
+   ![Öffnen der Benutzerverwaltung](./media/customize-branding/user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Unternehmensbranding** aus.
 4. Wählen Sie auf dem Blatt **Benutzer und Gruppen – Unternehmensbranding** den Befehl **Bearbeiten** aus.
 
-    ![Bearbeiten des benutzerdefinierten Brandings](./media/active-directory-branding-custom-signon-azure-portal/edit-branding.png)
+    ![Bearbeiten des benutzerdefinierten Brandings](./media/customize-branding/edit-branding.png)
 5. Ändern Sie die Elemente, die Sie anpassen möchten. Alle Elemente sind optional.
 6. Klicken Sie auf **Speichern**.
 
@@ -97,11 +97,11 @@ Es kann bis zu einer Stunde dauern, bis Änderungen übernommen werden, die Sie 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit dem Konto eines globalen Administrators für das Verzeichnis an.
 2. Wählen Sie im Textfeld **Benutzer und Gruppen** aus, und drücken Sie die **EINGABETASTE**.
 
-   ![Öffnen der Benutzerverwaltung](./media/active-directory-branding-localize-azure-portal/user-management.png)
+   ![Öffnen der Benutzerverwaltung](./media/customize-branding/user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Unternehmensbranding** aus.
 4. Wählen Sie auf dem Blatt **Benutzer und Gruppen – Unternehmensbranding** den Befehl **Sprache hinzufügen** aus.
 
-    ![Hinzufügen sprachspezifischer Brandingelemente](./media/active-directory-branding-localize-azure-portal/add-language.png)
+    ![Hinzufügen sprachspezifischer Brandingelemente](./media/customize-branding/add-language.png)
 5. Ändern Sie die Elemente, die Sie anpassen möchten. Alle Elemente sind optional.
 6. Klicken Sie auf **Speichern**.
 

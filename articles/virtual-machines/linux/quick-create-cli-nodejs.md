@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-ms.openlocfilehash: e4ae8a3bd138da963d6d559b29484248b20b7075
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 71bb55ab4800389c956cebd00eb3e6e506610153
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-a-linux-vm-using-the-azure-cli-10"></a>Erstellen eines virtuellen Linux-Computers mit der Azure CLI 1.0
 
@@ -47,7 +47,7 @@ In der folgenden exemplarischen Vorgehensweise wird eine UbuntuLTS-VM bereitgest
 
 ## <a name="vm-quick-create-aliases"></a>Aliase für die Schnellerstellung mit „vm quick-create“
 
-Eine schnelle Möglichkeit zum Auswählen einer Distribution ist die Verwendung der entsprechenden Azure-CLI-Aliase für die am häufigsten verwendeten OS-Distributionen. Die folgende Tabelle enthält eine Liste der Aliase (ab Azure-CLI Version 0.10). Bei allen Bereitstellungen mit `quick-create` werden standardmäßig VMs mit SSD-Speicher (Solid State Drive) erstellt, die eine schnellere Bereitstellung und hohe Leistung für den Datenträgerzugriff bieten. (Diese Aliase stellen einen kleinen Teil der in Azure verfügbaren Distributionen dar. Sie können im Azure Marketplace auf weitere Images zugreifen, indem Sie [in PowerShell](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [im Internet nach einem Image suchen](https://azure.microsoft.com/marketplace/virtual-machines/). Sie können auch ein eigenes [benutzerdefiniertes Image hochladen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).)
+Eine schnelle Möglichkeit zum Auswählen einer Distribution ist die Verwendung der entsprechenden Azure-CLI-Aliase für die am häufigsten verwendeten OS-Distributionen. Die folgende Tabelle enthält eine Liste der Aliase (ab Azure-CLI Version 0.10). Bei allen Bereitstellungen mit `quick-create` werden standardmäßig VMs mit SSD-Speicher (Solid State Drive) erstellt, die eine schnellere Bereitstellung und hohe Leistung für den Datenträgerzugriff bieten. (Diese Aliase stellen einen kleinen Teil der in Azure verfügbaren Distributionen dar. Sie können im Azure Marketplace auf weitere Images zugreifen, indem Sie [in PowerShell](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [im Internet nach einem Image suchen](https://azure.microsoft.com/marketplace/virtual-machines/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Sie können auch ein eigenes [benutzerdefiniertes Image hochladen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).)
 
 | Alias | Herausgeber | Angebot | SKU | Version |
 |:--- |:--- |:--- |:--- |:--- |

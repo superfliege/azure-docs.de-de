@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2017
 ms.author: bwren
-ms.openlocfilehash: b7f28868e3ffdf95dbe39872f382e7c97eae692c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e3a4c631cd69921fec60b3ae33a23c4c7c369194
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="custom-logs-in-log-analytics"></a>Benutzerdefinierte Protokolle in Log Analytics
 Mithilfe der Datenquelle „Custom Logs“ (Benutzerdefinierte Protokolle) in Log Analytics können Ereignisse aus Textdateien auf Windows- und Linux-Computern gesammelt werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien.  Mithilfe des Log Analytics-Features [Benutzerdefinierte Felder](log-analytics-custom-fields.md) können gesammelte Datensätze im Protokoll individuell analysiert und einzelnen Feldern zugeordnet werden.
@@ -138,14 +138,6 @@ Datensätze aus benutzerdefinierten Protokollen werden genau wie Datensätze aus
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, die Datensätze aus benutzerdefinierten Protokollen abrufen:
 
 | Abfrage | Beschreibung |
-|:--- |:--- |
-| Type=MyApp_CL |Alle Ereignisse aus einem benutzerdefinierten Protokoll namens „MyApp_CL“. |
-| Type=MyApp_CL Severity_CF=error |Alle Ereignisse aus einem benutzerdefinierten Protokoll namens „MyApp_CL“ mit dem Wert *error* in einem benutzerdefinierten Feld namens *Severity_CF*. |
-
->[!NOTE]
-> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden.
-
-> | Abfrage | Beschreibung |
 |:--- |:--- |
 | MyApp_CL |Alle Ereignisse aus einem benutzerdefinierten Protokoll namens „MyApp_CL“. |
 | MyApp_CL &#124; where Severity_CF=="error" |Alle Ereignisse aus einem benutzerdefinierten Protokoll namens „MyApp_CL“ mit dem Wert *error* in einem benutzerdefinierten Feld namens *Severity_CF*. |

@@ -15,14 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: danlep
-ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 467a08b1ba9f7c0070dfa0cf3df18326cf49ca70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: H1Hack27Feb2017, mvc, devcenter
+ms.openlocfilehash: 7dd58ae747a1009b5db99e0fec741272d98b36ad
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Bereitstellen eines Kubernetes-Clusters für Windows-Container
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Anleitung wird die Bereitstellung eines [Kubernetes](https://kubernetes.io/docs/home/)-Clusters in [Azure Container Service](../container-service-intro.md) über die Azure-Befehlszeilenschnittstelle beschrieben. Nach dem Bereitstellen des Clusters verbinden Sie diesen mit dem Kubernetes-Befehlszeilentool `kubectl` und stellen dann den ersten Windows-Container bereit.
 

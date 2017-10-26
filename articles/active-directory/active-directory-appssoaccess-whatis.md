@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: f5d3f7fce863f6b868a03eff481ae0dda5a7a812
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 89bffc9726a2c54e59281045d16472335b2a7fed
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?
 Einmaliges Anmelden bedeutet, dass Sie Zugriff auf sämtliche für Ihre Geschäftsaktivitäten benötigten Anwendungen und Ressourcen erhalten, indem Sie sich nur einmal mit einem einzigen Benutzerkonto anmelden. Nach der Anmeldung können Sie auf alle benötigten Anwendungen zugreifen, ohne sich ein zweites Mal (z. B. durch Eingabe eines Kennworts) authentifizieren zu müssen.
@@ -75,12 +75,10 @@ In beiden Fällen werden Anmeldeinformationen verschlüsselt im Verzeichnis gesp
 Die kennwortbasierte einmalige Anmeldung nutzt eine Browsererweiterung, um die Anwendung und benutzerspezifische Informationen sicher aus Azure AD abzurufen und sie auf den Dienst anzuwenden. Die meisten von Azure AD unterstützten Drittanbieter-SaaS-Anwendungen unterstützen dieses Feature.
 
 Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
-
-* Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher (siehe auch [Bereitstellungshandbuch für Internet Explorer-Erweiterungen](active-directory-saas-ie-group-policy.md))
+* Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher
+* Edge in Windows 10 Anniversary Edition oder höher 
 * Chrome – unter Windows 7 oder höher und MacOS x oder höher
 * Firefox 26.0 oder höher – unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
-
-**Hinweis:** Die Erweiterung für die kennwortbasierte einmalige Anmeldung steht für Edge in Windows 10 zur Verfügung, sobald Browsererweiterungen von Edge unterstützt werden.
 
 ### <a name="existing-single-sign-on"></a>Vorhandenes einmaliges Anmelden
 Beim Konfigurieren der einmaligen Anmeldung für eine Anwendung bietet das Azure-Verwaltungsportal als dritte Möglichkeit die Option "Vorhandenes einmaliges Anmelden". Diese Option ermöglicht es dem Administrator, einfach eine Verknüpfung zu einer Anwendung zu erstellen, und sie für ausgewählte Benutzer im Zugriffsbereich zu platzieren.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: ladocs; jonfan; mandia
-ms.openlocfilehash: e58c6950d1d9420f32fc98ca917216dc5fae4fc3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df26e4669158e5aa9e3b9a7af888d0dbbba273dd
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="move-from-biztalk-services-to-logic-apps"></a>Verschieben von BizTalk Services nach Logic Apps
 
@@ -127,5 +127,5 @@ Um in BizTalk Services eine hohe Verfügbarkeit zu erzielen, verwenden Sie mehre
 
 ## <a name="next"></a>Next (Weiter)
 * [Was sind Logik-Apps?](logic-apps-what-are-logic-apps.md)
-* [Erstellen Ihres ersten Logik-App-Workflows zur Automatisierung von Prozessen zwischen Cloud-Apps und Cloud-Diensten](logic-apps-create-a-logic-app.md) oder [Konfigurieren eines Workflows mithilfe einer vorgefertigten Vorlage oder eines Musters für den schnellen Einstieg](logic-apps-use-logic-app-templates.md)  
+* [Erstellen Ihres ersten Logik-App-Workflows zur Automatisierung von Prozessen zwischen Cloud-Apps und Cloud-Diensten](logic-apps-create-a-logic-app.md) oder [Konfigurieren eines Workflows mithilfe einer vorgefertigten Vorlage oder eines Musters für den schnellen Einstieg](logic-apps-create-logic-apps-from-templates.md)  
 * [Liste mit den Connectors](../connectors/apis-list.md), die Sie in einer Logik-App verwenden können

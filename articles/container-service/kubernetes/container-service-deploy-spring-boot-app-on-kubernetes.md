@@ -15,13 +15,15 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.custom: mvc
-ms.openlocfilehash: 7f726436b2d459b8c16abb02e07de099abfd8974
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f06d2e3f9550c2afce2d52fdd060a5069629a63
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="deploy-a-spring-boot-application-on-a-kubernetes-cluster-in-the-azure-container-service"></a>Bereitstellen einer Spring Boot-Anwendung in einem Kubernetes-Cluster in Azure Container Service
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 Das **[Spring Framework]** ist ein gängiges Open-Source-Framework, mit dem Java-Entwickler Webanwendungen, mobile Anwendungen und API-Anwendungen erstellen können. In diesem Tutorial wird eine Beispiel-App verwendet, die mithilfe von [Spring Boot] erstellt wurde, einer konventionsbasierten Methode zur Verwendung von Spring für den schnellen Einstieg.
 

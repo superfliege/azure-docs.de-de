@@ -9,14 +9,14 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 10/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 358015d6cfd9961508b209f628b2d648a75e3c2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 709d23ab590c06d5da9b03e2767bc0be5905355b
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 
@@ -25,8 +25,6 @@ ms.lasthandoff: 10/11/2017
 Dieses Tutorial stellt Teil zwei einer Reihe von Tutorials zu Storage dar. Es erweitert das [vorherige Tutorial zu Storage][previous-tutorial], um serverlose automatische Miniaturansichtengenerierung mithilfe von Azure Event Grid und Azure Functions hinzuzufügen. Event Grid ermöglicht, dass [Azure Functions](..\azure-functions\functions-overview.md) auf Ereignisse von [Azure Blob Storage](..\storage\blobs\storage-blobs-introduction.md) reagieren kann und Miniaturansichten hochgeladener Bilder generiert. Ein Ereignisabonnement wird für das Blob Storage-Erstellungsereignis erstellt. Wenn ein Blob einem bestimmten Blob Storage-Container hinzugefügt wird, wird ein Funktionsendpunkt aufgerufen. Aus Event Grid an die Funktionsbindung übergebene Daten werden für den Zugriff auf das Blob und zum Generieren der Miniaturansicht verwendet. 
 
 Sie verwenden die Azure-CLI und das Azure-Portal, um die Größenänderungsfunktionalität einer vorhandenen Bildupload-App hinzuzufügen.
-
-[!INCLUDE [storage-events-note.md](../../includes/storage-events-note.md)]
 
 ![Veröffentlichte Web-App im Edge-Browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
@@ -42,7 +40,6 @@ In diesem Tutorial lernen Sie Folgendes:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 + Sie müssen das vorherige Blob Storage-Tutorial abgeschlossen haben: [Hochladen von Bilddaten in die Cloud mit Azure Storage][previous-tutorial]. 
-+ Sie müssen sich für die Blob Storage-Ereignisfunktionalität angemeldet und Zugriff darauf erhalten haben. [Fordern Sie Zugriff auf Blob Storage-Ereignisse](#request-storage-access) an, bevor Sie mit den weiteren Schritten in diesem Thema fortfahren.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -51,32 +48,6 @@ Für dieses Tutorial benötigen Sie Folgendes:
 Wenn Sie die CLI lokal installieren und verwenden möchten, ist es für dieses Thema erforderlich, die Azure CLI-Version 2.0.14 oder höher auszuführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 Falls Sie nicht Cloud Shell verwenden, müssen Sie sich erst mithilfe von `az login` anmelden.
-
-## <a name="enable-blob-storage-events"></a>Aktivieren von Blob Storage-Ereignissen
-
-Zu diesem Zeitpunkt müssen Sie den Zugriff auf das Blob Storage-Ereignisfeature anfordern.  
-
-### <a name="request-storage-access"></a>Anfordern des Zugriffs auf Blob Storage-Ereignisse
-
-Sie fordern den Zugriff mit dem Befehl `az feature register` an.
-
-> [!IMPORTANT]  
-> Wir akzeptieren Teilnehmer an der Preview von Blob Storage-Ereignissen in der Reihenfolge ihrer Teilnahmeanforderung. Sie müssen ggf. mit einer Verzögerung von 1 bis 2 Werktagen rechnen, bis Sie Zugriff auf dieses Feature erhalten. 
-
-```azurecli-interactive
-az feature register --name storageEventSubscriptions --namespace Microsoft.EventGrid
-```
-
-### <a name="check-access-status"></a>Überprüfen des Genehmigungsstatus
-
-Sie erhalten eine E-Mail von Microsoft, in der Sie benachrichtigt werden, dass Ihnen der Zugriff auf Blob Storage-Ereignisse gewährt wurde. Sie können den Status Ihrer Zugriffsanforderung jederzeit mit dem Befehl `az feature show` überprüfen.
-
-```azurecli-interactive
-az feature show --name storageEventSubscriptions --namespace Microsoft.EventGrid --query properties.state
-```
-Nachdem Ihnen der Zugriff auf das Feature Blob Storage-Ereignisse gewährt wurde, gibt dieser Befehl einen Wert `"Registered"` zurück. 
- 
-Nachdem Sie registriert wurden, können Sie dieses Tutorial fortsetzen.
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 

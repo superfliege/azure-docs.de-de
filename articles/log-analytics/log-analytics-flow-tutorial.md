@@ -10,22 +10,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: 329f3c66bc131a9555f1778acfcae5dd9c761f56
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9884b97aad8f022e6bc20b2a630ccdd07ebc64db
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatisieren von Log Analytics-Prozessen mit dem Connector für Microsoft Flow
 Mit [Microsoft Flow](https://ms.flow.microsoft.com) können Sie automatisierte Workflows erstellen, indem Sie Hunderte von Aktionen für eine Vielzahl von Diensten verwenden. Die Ausgabe einer Aktion kann als Eingabe einer anderen Aktion genutzt werden, damit Sie die Integration zwischen unterschiedlichen Diensten erstellen können.  Mit dem Azure Log Analytics-Connector für Microsoft Flow können Sie Workflows mit Daten erstellen, die von Protokollsuchen in Log Analytics abgerufen werden.
 
 Beispielsweise können Sie Microsoft Flow zum Verwenden von Log Analytics-Daten in einer E-Mail-Benachrichtigung aus Office 365, Erstellen eines Fehlers in Visual Studio Team Services oder Posten einer Slack-Nachricht nutzen.  Sie können einen Workflow auslösen, indem Sie einen einfachen Zeitplan oder eine Aktion in einem verbundenen Dienst verwenden, z.B. bei Erhalt einer E-Mail oder eines Tweets.  
-
-
-> [!NOTE]
-> Für den Azure Log Analytics-Connector für Microsoft Flow muss Ihr Arbeitsbereich auf die neue Log Analytics-Abfragesprache aktualisiert werden. Weitere Informationen zur neuen Sprache und zum Upgradeverfahren für den Arbeitsbereich finden Sie unter [Durchführen eines Upgrades für den Azure Log Analytics-Arbeitsbereich auf die neue Protokollsuche](log-analytics-log-search-upgrade.md).  
 
 Im Tutorial in diesem Artikel wird gezeigt, wie Sie einen Flow erstellen, bei dem die Ergebnisse einer Log Analytics-Protokollsuche automatisch per E-Mail gesendet werden. Dies ist nur ein Beispiel für die Nutzung von Log Analytics in Microsoft Flow. 
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: 29f64aeefc2a7deb1f84d759c2323347536b9c27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3690ec991add437afdaba3ef22022d49c962b34
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe von PowerShell
 
@@ -159,7 +159,7 @@ In den folgenden Schritten wird beschrieben, wie gemäß dem Szenario beispielha
     ```
 
     >[!NOTE]
-    >In diesem Artikel werden alle Konfigurationen einer einzigen Netzwerkkarte zugewiesen, aber Sie können jeder an den virtuellen Computer angefügten Netzwerkkarte mehrere IP-Konfigurationen zuweisen. Erfahren Sie im Artikel [Bereitstellen von Multi-NIC-VMs mit PowerShell](virtual-network-deploy-multinic-arm-ps.md), wie Sie einen virtuellen Computer mit mehreren NICs erstellen.
+    >In diesem Artikel werden alle Konfigurationen einer einzigen Netzwerkkarte zugewiesen, aber Sie können jeder an den virtuellen Computer angefügten Netzwerkkarte mehrere IP-Konfigurationen zuweisen. Erfahren Sie im Artikel [Bereitstellen von Multi-NIC-VMs mit PowerShell](../virtual-machines/windows/multiple-nics.md), wie Sie einen virtuellen Computer mit mehreren NICs erstellen.
 
 9. Erstellen Sie den virtuellen Computer mithilfe der folgenden Befehle:
 

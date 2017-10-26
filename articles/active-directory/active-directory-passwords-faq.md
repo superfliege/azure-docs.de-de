@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/06/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: a457ba3109625ab43ae3a88b95a3e7e1e9641921
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fda60c9dfde64c526ad4cbf7fc4ccc5b56becafb
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -56,10 +56,6 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 * **F: Können meine Benutzer Daten so registrieren, dass anderen Benutzern diese Daten nicht angezeigt werden?**
 
   > **A:** Ja. Wenn Benutzer Daten über das Registrierungsportal für die Kennwortzurücksetzung registrieren, werden diese in privaten Authentifizierungsfeldern gespeichert, die nur für globale Administratoren und den Benutzer selbst sichtbar sind.
-    >
-    > [!NOTE]
-    > Wenn ein **Azure-Administratorkonto** eine Authentifizierungstelefonnummer registriert, wird sie auch in das Feld „Mobiltelefon“ eingetragen und ist sichtbar.
-    >
   >
   >
 * **F: Müssen meine Benutzer registriert werden, damit sie das Zurücksetzen von Kennwörtern verwenden können?**

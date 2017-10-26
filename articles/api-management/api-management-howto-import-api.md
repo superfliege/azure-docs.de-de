@@ -3,7 +3,7 @@ title: Importieren einer API in Azure API Management | Microsoft-Dokumentation
 description: "Erfahren Sie, wie eine API und die zugehörigen Vorgänge in Azure API Management importiert werden."
 services: api-management
 documentationcenter: 
-author: steved0x
+author: juliako
 manager: erikre
 editor: 
 ms.assetid: 40398b0a-ac2c-43f0-89e1-07e4abbf502f
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: c851b88fc1067e65044266d07775717c028e75d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc56c9a91979ec2ec06b2d63a22b2ded68c0dce1
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="how-to-import-the-definition-of-an-api-with-operations-in-azure-api-management"></a>Importieren einer API-Definition mit Operationen in Azure API Management
 In API Management können Sie neue APIs entweder manuell erstellen und Operationen manuell hinzufügen, oder Sie können die API zusammen mit den Operationen in einem Schritt importieren.

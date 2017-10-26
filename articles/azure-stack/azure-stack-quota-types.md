@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/23/2017
 ms.author: erikje
-ms.openlocfilehash: 33906514955b76a3d6587b19899a0c76a09018a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9bb048ece32bf5b34e05d7459488aa0f24d0d44
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="quota-types-in-azure-stack"></a>Kontingenttypen in Azure Stack
 
@@ -29,10 +29,10 @@ ms.lasthandoff: 10/11/2017
 ## <a name="compute-quota-types"></a>Computekontingenttypen
 | **Typ** | **Standardwert** | **Beschreibung** |
 | --- | --- | --- |
-| Maximale Anzahl von virtuellen Computern |50 | Die maximale Anzahl von virtuellen Computern, die ein Abonnement an diesem Speicherort erstellen kann |
-| Maximale Anzahl von Kernen virtueller Computer |100 | Die maximale Anzahl von Kernen, die ein Abonnement an diesem Speicherort erstellen kann (ein virtueller A3-Computer hat beispielsweise vier Kerne) |
-| Maximale Anzahl von Verfügbarkeitsgruppen |10 | Die maximale Anzahl von Verfügbarkeitsgruppen, die an diesem Speicherort erstellt werden können |
-| Maximale Anzahl von Skalierungsgruppen für virtuelle Computer |100 | Die maximale Anzahl von Skalierungsgruppen für virtuelle Computer, die an diesem Speicherort erstellt werden können |
+| Maximale Anzahl von virtuellen Computern | 20 | Die maximale Anzahl von virtuellen Computern, die ein Abonnement an diesem Speicherort erstellen kann |
+| Maximale Anzahl von Kernen virtueller Computer | 50 | Die maximale Anzahl von Kernen, die ein Abonnement an diesem Speicherort erstellen kann (ein virtueller A3-Computer hat beispielsweise vier Kerne) |
+| Maximale Anzahl von Verfügbarkeitsgruppen | 10 | Die maximale Anzahl von Verfügbarkeitsgruppen, die an diesem Speicherort erstellt werden können |
+| Maximale Anzahl von Skalierungsgruppen für virtuelle Computer | 20 | Die maximale Anzahl von Skalierungsgruppen für virtuelle Computer, die an diesem Speicherort erstellt werden können |
 
 > [!NOTE]
 > Computekontingente werden in dieser technischen Vorschau nicht erzwungen.

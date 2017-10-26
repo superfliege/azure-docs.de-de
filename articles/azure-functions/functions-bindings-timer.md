@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: ed4afa2b946fe11d5802a95f8a490f3419dc0f39
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 12beb090a95a31c7e83ae03a920016bdfbf474e3
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-functions-timer-trigger"></a>Azure Functions-Trigger mit Timer
 
@@ -54,7 +54,7 @@ Der Wert von `schedule` ist ein [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cro
 >[!NOTE]   
 >In vielen der CRON-Ausdrücke, die Sie online finden, ist das `{second}`-Feld weggelassen. Wenn Sie aus einem von ihnen kopieren, müssen Sie eine Anpassung für das zusätzliche `{second}`-Feld vornehmen. Spezifische Beispiele finden Sie unten unter [Beispiele für Zeitpläne](#examples).
 
-Als Standardzeitzone wird in Verbindung mit den CRON-Ausdrücken die Coordinated Universal Time (UTC) verwendet. Wenn Sie möchten, dass Ihr CRON-Ausdruck auf einer anderen Zeitzone basiert, erstellen Sie eine neue App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE`. Legen Sie den Wert auf den Namen der gewünschten Zeitzone gemäß [Microsoft Time Zone Index](https://msdn.microsoft.com/library/ms912391.aspx) (Microsoft-Zeitzonenindex) fest. 
+Als Standardzeitzone wird in Verbindung mit den CRON-Ausdrücken die Coordinated Universal Time (UTC) verwendet. Wenn Sie möchten, dass Ihr CRON-Ausdruck auf einer anderen Zeitzone basiert, erstellen Sie eine neue App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE`. Legen Sie den Wert auf den Namen der gewünschten Zeitzone gemäß [Microsoft Time Zone Index](https://technet.microsoft.com/library/cc749073(v=ws.10).aspx) (Microsoft-Zeitzonenindex) fest. 
 
 Beispiel: *Eastern Normalzeit* ist UTC-05:00. Wenn Sie Ihren Trigger mit Timer täglich um 10:00 Uhr EST auslösen möchten, verwenden Sie den folgenden CRON-Ausdruck, der die UTC-Zeitzone berücksichtigt:
 

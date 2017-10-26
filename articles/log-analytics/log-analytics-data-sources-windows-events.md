@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/15/2017
+ms.date: 09/28/2017
 ms.author: bwren
-ms.openlocfilehash: 1be8500ec2cb78ef0edf57f4d8561336cf00ebcb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ddead0903c7c5f29bc996e305699ced596d0a4f5
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Datenquellen für Windows-Ereignisprotokolle in Log Analytics
 Windows-Ereignisprotokolle sind eine der häufigsten [Datenquellen](log-analytics-data-sources.md) zum Sammeln von Daten mithilfe von Windows-Agents, da viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
@@ -65,17 +65,6 @@ Windows-Ereignisdatensätze weisen den Typ **Event** auf und besitzen die in der
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, die Windows-Ereignisdatensätze abrufen.
 
 | Abfrage | Beschreibung |
-|:--- |:--- |
-| Type=Event |Alle Windows-Ereignisse. |
-| Type=Event EventLevelName=error |Alle Windows-Ereignisse mit dem Schweregrad „error“. |
-| Type=Event &#124; Measure count() by Source |Anzahl von Windows-Ereignissen nach Quelle. |
-| Type=Event EventLevelName=error &#124; Measure count() by Source |Anzahl von Windows-Fehlerereignissen nach Quelle. |
-
-
->[!NOTE]
-> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden:
->
->| Abfrage | Beschreibung |
 |:---|:---|
 | Ereignis |Alle Windows-Ereignisse. |
 | Event &#124; where EventLevelName == "error" |Alle Windows-Ereignisse mit dem Schweregrad „error“. |

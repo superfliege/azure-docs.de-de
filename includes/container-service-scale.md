@@ -1,4 +1,3 @@
-# <a name="scale-agent-nodes-in-a-container-service-cluster"></a>Skalieren von Agentknoten in einem Container Service-Cluster
 Nach dem [Bereitstellen eines Azure Container Service-Clusters](../articles/container-service/dcos-swarm/container-service-deployment.md) müssen Sie eventuell die Anzahl von Agent-Knoten ändern. Möglicherweise benötigen Sie mehr Agents, damit Sie mehr Containeranwendungen oder -instanzen ausführen können. 
 
 Sie können die Anzahl von Agent-Knoten in einem DC/OS-, Docker Swarm- oder Kubernetes-Cluster über das Azure-Portal oder mithilfe von Azure CLI 2.0 ändern. 

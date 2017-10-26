@@ -10,11 +10,11 @@ ms.topic: hero-article
 ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 7bb74f297d52fb25171817175cce64187b397c38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ea281e9c83bb37f78c248c6c4011a7da60b45c01
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Erstellen eines Jenkins-Servers auf einem virtuellen Azure-Linux-Computer über das Azure-Portal
 
@@ -41,7 +41,7 @@ Füllen Sie auf der Registerkarte **Grundeinstellungen konfigurieren** die folge
 * Geben Sie einen **Benutzernamen** ein. Der Benutzername muss [bestimmte Anforderungen](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) erfüllen.
 * Wählen unter **Authentifizierungstyp** die Option **Kennwort** aus, und geben Sie ein Kennwort ein. Das Kennwort muss einen Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten.
 * Geben Sie unter **Ressourcengruppe** die Zeichenfolge **myJenkinsResourceGroup** ein.
-* Wählen Sie in der Dropdownliste **Standort** die [Azure-Region](https://azure.microsoft.com/regions/) **USA, Osten** aus.
+* Wählen Sie in der Dropdownliste **Standort** die [Azure-Region](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) **USA, Osten** aus.
 
 Wählen Sie **OK** aus, um zur Registerkarte **Weitere Optionen konfigurieren** zu gelangen. Geben Sie einen eindeutigen Domänennamen zur Identifizierung des Jenkins-Servers ein, und wählen Sie **OK** aus.
 

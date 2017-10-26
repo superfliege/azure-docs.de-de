@@ -15,11 +15,11 @@ ms.date: 06/16/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.openlocfilehash: 6e4e09f8539aad56f92ad9137f4a6b9eb0d82370
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a2fb7413fa1391969d00ad281fd1ade3e0f40a8
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Aktualisieren des Azure Multi-Factor Authentication-Servers
 
@@ -29,7 +29,7 @@ Wenn Sie ein Upgrade von v6.x oder niedriger auf v7.x oder höher durchführen, 
 
 ## <a name="install-the-latest-version-of-azure-mfa-server"></a>Installieren der neuesten Version von Azure MFA-Server
 
-1. Befolgen Sie die Anweisungen in [Herunterladen des Azure Multi-Factor Authentication-Servers](multi-factor-authentication-get-started-server.md#download-the-azure-multi-factor-authentication-server), um die neueste Version von Azure MFA-Server zu erhalten.
+1. Befolgen Sie die Anweisungen in [Herunterladen des Azure Multi-Factor Authentication-Servers](multi-factor-authentication-get-started-server.md#download-the-mfa-server), um die neueste Version von Azure MFA-Server zu erhalten.
 2. Erstellen Sie eine Sicherung der Datendatei von MFA-Server, die sich unter „C:\Programme\Multi-Factor Authentication-Server\Daten\PhoneFactor.pfdata“ befindet (der Standard-Installationsspeicherort), auf Ihrem MFA-Masterserver.
 3. Wenn Sie für eine hohe Verfügbarkeit mehrere Server ausführen, ändern Sie die Clientsysteme, die eine Authentifizierung bei MFA-Server durchführen so, dass sie keinen Datenverkehr an die Server senden, die gerade aktualisiert werden. Wenn Sie einen Lastenausgleich verwenden, entfernen Sie einen MFA-Server aus dem Lastenausgleich, führen Sie das Upgrade durch, und fügen Sie den Server anschließend wieder zur Farm hinzu.
 4. Führen Sie das neue Installationsprogramm für jeden MFA-Server aus. Aktualisieren Sie untergeordnete Server zuerst, da diese die alten Datendateien lesen können, die vom Master repliziert werden. 

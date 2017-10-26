@@ -2,7 +2,7 @@
 | --- | --- | --- |
 | Batch-Konten pro Region und Abonnement | 3 |50 |
 | Dedizierte Kerne pro Batch-Konto | 20 | –<sup>1</sup> |
-| Kerne mit niedriger Priorität pro Batch-Konto | 50 | N/V<sup>2</sup> |
+| Kerne mit niedriger Priorität pro Batch-Konto | 20 | N/V<sup>2</sup> |
 | Aktive Aufträge und Auftragszeitpläne<sup>3</sup> pro Batch-Konto | 20 | 5000<sup>4</sup> |
 | Pools pro Batch-Konto | 20 | 2500 |
 

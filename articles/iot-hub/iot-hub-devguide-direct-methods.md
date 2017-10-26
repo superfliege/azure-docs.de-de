@@ -12,24 +12,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/25/2017
+ms.date: 10/19/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1fd0353bf805340a9c4d3151a9b85c329f7d2e96
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: d23bf20e4483b102fe5d946cb017dce1769b39a1
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Verstehen und Aufrufen direkter Methoden von IoT Hub
-## <a name="overview"></a>Übersicht
 IoT Hub gibt Ihnen die Möglichkeit, direkte Methoden auf Geräten von der Cloud aus aufzurufen. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt. Diese Methode ist hilfreich für Szenarien, in denen die unmittelbare Vorgehensweise davon abhängt, ob das Gerät antworten konnte, z.B. beim Senden eines SMS-Weckrufs an ein Gerät, wenn es offline ist (da eine SMS teurer als ein Methodenaufruf ist).
 
 Jedes Gerätemethode hat ein einzelnes Gerät als Ziel. [Aufträge][lnk-devguide-jobs] bieten eine Möglichkeit zum Aufrufen von direkten Methoden auf mehreren Geräten und zum Planen von Methodenaufrufen für nicht verbundene Geräte.
 
 Jeder Benutzer mit der Berichtigung **Dienstverbindung** für IoT Hub kann eine Methode auf einem Gerät aufrufen.
 
-### <a name="when-to-use"></a>Einsatzgebiete
 Direkte Methoden entsprechen einem Anforderung-Antwort-Schema und sind für Kommunikation bestimmt, die sofortige Bestätigung ihres Ergebnisses erfordert, in der Regel über interaktive Steuerung des Geräts, z.B. Einschalten eines Lüfters.
 
 Falls Sie weitere Informationen zur Verwendung von gewünschten Eigenschaften, direkten Methoden oder C2D-Nachrichten benötigen, hilft Ihnen das Thema [Leitfaden zur C2D-Kommunikation][lnk-c2d-guidance] weiter.
@@ -48,9 +46,6 @@ Direkte Methoden erfolgen von der Cloudseite nur über HTTPS und von der Geräte
 
 Die Nutzlast für Methodenanforderungen und -antworten ist ein JSON-Dokument mit bis zu 8 KB.
 
-## <a name="reference-topics"></a>Referenzthemen:
-Die folgenden Referenzthemen enthalten weitere Informationen zur Verwendung direkter Methoden.
-
 ## <a name="invoke-a-direct-method-from-a-back-end-app"></a>Aufrufen einer direkten Methode aus einer Back-End-App
 ### <a name="method-invocation"></a>Methodenaufruf
 Direkte Methodenaufrufe auf einem Gerät sind HTTPS-Aufrufe, die Folgendes umfassen:
@@ -60,16 +55,16 @@ Direkte Methodenaufrufe auf einem Gerät sind HTTPS-Aufrufe, die Folgendes umfas
 * *Header*, die Autorisierung, Anforderungs-ID, Inhaltstyp und Inhaltscodierung enthalten
 * Einen transparenten JSON-*Haupttext* im folgenden Format:
 
-```
-{
-    "methodName": "reboot",
-    "responseTimeoutInSeconds": 200,
-    "payload": {
-        "input1": "someInput",
-        "input2": "anotherInput"
-    }
-}
-```
+   ```
+   {
+       "methodName": "reboot",
+       "responseTimeoutInSeconds": 200,
+       "payload": {
+           "input1": "someInput",
+           "input2": "anotherInput"
+       }
+   }
+   ```
 
 Timeout in Sekunden. Wenn kein Timeout festgelegt ist, lautet der Standardwert 30 Sekunden.
 
@@ -80,12 +75,12 @@ Die Back-End-App empfängt eine Antwort, die Folgendes umfasst:
 * *Header*, die ETag, Anforderungs-ID, Inhaltstyp und Inhaltscodierung enthalten
 * Einen JSON-*Haupttext* im folgenden Format:
 
-```
-{
-    "status" : 201,
-    "payload" : {...}
-}
-```
+   ```
+   {
+       "status" : 201,
+       "payload" : {...}
+   }
+   ```
 
    `status` und `body` werden vom Gerät bereitgestellt und für die Antwort mit dem Statuscode und/oder der Beschreibung des Geräts verwendet.
 

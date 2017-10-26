@@ -10,7 +10,7 @@
 | Reservierte IPs pro Abonnement |20 |100 |
 | Zertifikate für gehostete Dienste pro Abonnement |400 |400 |
 | [Affinitätsgruppen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) pro Abonnement |256 |256 |
-| Warnungsregeln pro Abonnement |250 |250 |
+
 
 <sup>1</sup> Zusätzliche kleine Instanzen zählen als ganzer Prozessorkern im Sinn des Limits, obwohl nur ein Teil eines Kerns verwendet wird.
 

@@ -11,20 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: db271f5157fee29a5cc0c4534768bdb3c769ba74
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5f040d1480433ccf4c0b2b22c0cf1e25a7151d74
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>Grundlegendes zu Protokollsuchvorgängen in Log Analytics
-
-> [!NOTE]
-> Dieser Artikel beschreibt Protokollsuchen in Azure Log Analytics mithilfe der neuen Abfragesprache.  Weitere Informationen zur neuen Sprache und zum Upgradeverfahren für den Arbeitsbereich finden Sie unter [Upgrade des Azure Log Analytics-Arbeitsbereichs auf die neue Protokollsuche](log-analytics-log-search-upgrade.md).  
->
-> Wenn für Ihren Arbeitsbereich noch kein Upgrade auf die neue Abfragesprache durchgeführt wurde, lesen Sie [Suchen von Daten mithilfe der Protokollsuche in Log Analytics](log-analytics-log-searches.md).
 
 Sie benötigen eine Protokollsuche zum Abrufen von Daten aus Log Analytics.  Wenn Sie Daten im Portal analysieren, eine Warnungsregel für die Benachrichtigung bei einer bestimmten Bedingung konfigurieren oder Daten mithilfe der Log Analytics-API abrufen, verwenden Sie jeweils eine Protokollsuche, um die gewünschten Daten anzugeben.  In diesem Artikel wird beschrieben, wie Protokollsuchen in Log Analytics verwendet werden. Er enthält Konzepte, die Ihnen vor dem Erstellen bekannt sein sollten. Im Abschnitt [Nächste Schritte](#next-steps) finden Sie ausführliche Informationen zum Erstellen und Bearbeiten von Protokollsuchen sowie Verweise auf die Abfragesprache.
 

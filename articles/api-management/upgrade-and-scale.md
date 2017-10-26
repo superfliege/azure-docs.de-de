@@ -11,11 +11,11 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: apimpm
-ms.openlocfilehash: cf5cd03bd9147ac81b07dc453a919a3c74de44fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22cc917eb6f296724bf535e48b0dd6ba8927e5d3
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="upgrade-and-scale-an-api-management-instance"></a>Aktualisieren und Skalieren einer API Management-Instanz 
 
@@ -23,10 +23,10 @@ Kunden können eine APIM-Instanz (API Management) skalieren, indem sie Einheiten
 
 Die Kapazität und der Preis der einzelnen Einheiten richtet sich nach dem **Tarif** der Einheit. Sie können zwischen drei Tarifen wählen: **Developer**, **Standard** und **Premium**. Wenn Sie die Kapazität für einen Dienst eines Tarifs erhöhen müssen, sollten Sie eine Einheit hinzufügen. Falls der Tarif, der in Ihrer APIM-Instanz derzeit ausgewählt ist, das Hinzufügen von weiteren Einheiten nicht zulässt, müssen Sie ein Upgrade auf einen höheren Tarif durchführen. 
 
-Der Preis jeder Einheit, die Möglichkeit zum Hinzufügen bzw. Entfernen von Einheiten und das Vorhandensein bestimmter Features (z.B. Bereitstellung in mehreren Regionen) richtet sich nach dem Tarif, den Sie für Ihre APIM-Instanz gewählt haben. Im Artikel zu den [Preisdetails](https://azure.microsoft.com/pricing/details/api-management/) wird beschrieben, welchen Preis pro Einheit und welche Features Sie pro Tarif erhalten. 
+Der Preis jeder Einheit, die Möglichkeit zum Hinzufügen bzw. Entfernen von Einheiten und das Vorhandensein bestimmter Features (z.B. Bereitstellung in mehreren Regionen) richtet sich nach dem Tarif, den Sie für Ihre APIM-Instanz gewählt haben. Im Artikel zu den [Preisdetails](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) wird beschrieben, welchen Preis pro Einheit und welche Features Sie pro Tarif erhalten. 
 
 >[!NOTE]
->Im Artikel zu den [Preisdetails](https://azure.microsoft.com/pricing/details/api-management/) sind ungefähre Werte für die Einheitenkapazität der einzelnen Tarife angegeben. Um noch genauere Werte zu erhalten, sollten Sie sich ein realistisches Szenario für Ihre APIs ansehen. Informationen hierzu finden Sie unten im Abschnitt „Planen der Kapazität“.
+>Im Artikel zu den [Preisdetails](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) sind ungefähre Werte für die Einheitenkapazität der einzelnen Tarife angegeben. Um noch genauere Werte zu erhalten, sollten Sie sich ein realistisches Szenario für Ihre APIs ansehen. Informationen hierzu finden Sie unten im Abschnitt „Planen der Kapazität“.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

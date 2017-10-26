@@ -3,7 +3,7 @@ title: "Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory â€
 description: Erfahren Sie, wie Benutzer mithilfe von Active Directory in Azure API Management autorisiert werden.
 services: api-management
 documentationcenter: API Management
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 33a69a83-94f2-4e4e-9cef-f2a5af3c9732
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 2fa5c021d9f493004a5beab02529c70b600b9a0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e8bc33ddf38657fe2d0d84a7bf64d4177d51572
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 > [!WARNING]
 > Die Integration von Azure Active Directory ist nur in den Tarifen [Developer und Premium](https://azure.microsoft.com/en-us/pricing/details/api-management/) enthalten.

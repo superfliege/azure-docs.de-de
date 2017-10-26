@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2017
+ms.date: 09/28/2017
 ms.author: bwren
-ms.openlocfilehash: 2114bdafb3b9fe2eb0632271840b8b70a76d10f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20155e7f0ad817993b5926a1a83b8683ab124075
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="iis-logs-in-log-analytics"></a>IIS-Protokolle in Log Analytics
 IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Log Analytics gesammelt werden können.  
@@ -69,17 +69,6 @@ IIS-Protokolldatensätze weisen den Typ **W3CIISLog** auf und besitzen die in de
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die IIS-Protokolldatensätze abrufen.
 
 | Abfrage | Beschreibung |
-|:--- |:--- |
-| Type=W3CIISLog |Alle IIS-Protokolldatensätze. |
-| Type=W3CIISLog scStatus=500 |Alle IIS-Protokolleinträge mit dem Rückgabestatus 500 |
-| Type=W3CIISLog &#124; Measure count() by cIP |Anzahl der IIS-Protokolleinträge nach Client-IP-Adresse. |
-| Type=W3CIISLog csHost="www.contoso.com" &#124; Measure count() by csUriStem |Anzahl der IIS-Protokolleinträge nach URL für den Host www.contoso.com. |
-| Type=W3CIISLog &#124; Measure Sum(csBytes) by Computer &#124; top 500000 |Gesamtzahl an Bytes, die von jedem IIS-Computer empfangen wurden. |
-
->[!NOTE]
-> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden.
-
-> | Abfrage | Beschreibung |
 |:--- |:--- |
 | W3CIISLog |Alle IIS-Protokolldatensätze. |
 | W3CIISLog &#124; where scStatus==500 |Alle IIS-Protokolleinträge mit dem Rückgabestatus 500 |

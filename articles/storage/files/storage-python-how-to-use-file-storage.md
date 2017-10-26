@@ -14,18 +14,17 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: robinsh
-ms.openlocfilehash: 48bfe97c42cad237ad7b395eeeac4e993201848a
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 17fdbbe2ea1d22c6f0ac287c4afbe17a44563f41
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="develop-for-azure-files-with-python"></a>Entwickeln für Azure Files mit Python
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
-## <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
 Dieses Tutorial veranschaulicht die grundlegende Verwendung von Python bei der Entwicklung von Anwendungen oder Diensten, die Azure Files zum Speichern von Dateidaten verwenden. In diesem Tutorial erstellen wir eine einfache Konsolenanwendung und zeigen Ihnen, wie Sie grundlegende Aktionen mit Python und Azure Files ausführen:
 
 * Erstellen von Azure-Dateifreigaben

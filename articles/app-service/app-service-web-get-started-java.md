@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 6/7/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d12e3be2d6658d2a6cc18ed6ad9a149235b8b581
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ac8ef479be5a93b2c4baa76279c8d3e53389409a
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Erstellen Ihrer ersten Java-Web-App in Azure
 
@@ -105,7 +105,7 @@ Im Dialogfeld **Create App Service** (App Service erstellen):
 
   * **Create new** (Neu erstellen): Behalten Sie den Standardwert, d.h. den Namen des App Service-Plans, bei.
   * **Location** (Standort): Wählen Sie **West Europe** (Europa, Westen) oder einen Standort in Ihrer Nähe aus.
-  * **Pricing tier** (Tarif): Wählen Sie die Option „Free“ aus. Eine Beschreibung der Features finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
+  * **Pricing tier** (Tarif): Wählen Sie die Option „Free“ aus. Eine Beschreibung der Features finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
    ![Dialogfeld „App Service erstellen“](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 

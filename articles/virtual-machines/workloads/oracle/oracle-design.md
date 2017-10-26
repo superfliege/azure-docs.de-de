@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/22/2017
 ms.author: rclaus
-ms.openlocfilehash: 1af7e1d40a0eb129875dd6a30ac899f2025bee13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8f858bf249c4b56ad4fe60654ab489676eceb1f
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 
@@ -115,7 +115,7 @@ Die folgenden Diagramme zeigen das gesamte E/A-Volumen der Lese- und Schreibvorg
 
 #### <a name="2-choose-a-vm"></a>2. Auswählen einer VM
 
-Basierend auf den Informationen aus dem AWR-Bericht wählen Sie im nächsten Schritt eine VM mit ähnlicher Größe aus, die Ihren Anforderungen entspricht. Eine Liste der verfügbaren VMs finden Sie im Artikel [Memory optimized](https://docs.microsoft.com/azure/virtual-machinFine tune es/virtual-machines-windows-sizes-memory) (Optimierter Speicher).
+Basierend auf den Informationen aus dem AWR-Bericht wählen Sie im nächsten Schritt eine VM mit ähnlicher Größe aus, die Ihren Anforderungen entspricht. Eine Liste der verfügbaren VMs finden Sie im Artikel [Memory optimized](../../linux/sizes-memory.md) (Optimierter Speicher).
 
 #### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. Optimieren der VM-Größe mit ähnlicher, auf der ACU basierender VM-Serie
 

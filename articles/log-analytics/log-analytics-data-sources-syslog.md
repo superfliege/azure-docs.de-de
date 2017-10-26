@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2017
+ms.date: 09/28/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 7513f405d5c7c05a8e6e2b7b0e6313f23a319c84
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 061c32fe39530f8b67899b1b9e1104e7fe006380
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Syslog-Datenquellen in Log Analytics
 Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux.  Anwendungen senden Nachrichten, die auf dem lokalen Computer gespeichert oder an einen Syslog-Sammler übermittelt werden können.  Wenn der OMS-Agent für Linux installiert ist, konfiguriert er den lokalen Syslog-Daemon zum Weiterleiten von Nachrichten an den Agent.  Der Agent sendet die Nachricht dann an Log Analytics, wo ein entsprechender Datensatz im OMS-Repository erstellt wird.  
@@ -198,16 +198,6 @@ Syslog-Datensätze sind vom Typ **Syslog** und besitzen die in der folgenden Tab
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die Syslog-Protokolldatensätze abrufen.
 
 | Abfrage | Beschreibung |
-|:--- |:--- |
-| Type=Syslog |Alle Syslog-Datensätze. |
-| Type=Syslog SeverityLevel=error |Alle Syslog-Datensätze mit Fehlerschweregrad. |
-| Type=Syslog &#124; measure count() by Computer |Anzahl der Syslog-Datensätze je Computer. |
-| Type=Syslog &#124; measure count() by Facility |Anzahl der Syslog-Datensätze je Einrichtung. |
-
->[!NOTE]
-> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden:
-
-> | Abfrage | Beschreibung |
 |:--- |:--- |
 | syslog |Alle Syslog-Datensätze. |
 | Syslog &#124; where SeverityLevel == "error" |Alle Syslog-Datensätze mit Fehlerschweregrad. |
