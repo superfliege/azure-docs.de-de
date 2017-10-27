@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/25/2017
-ms.openlocfilehash: 273b94e9a53e36d7e8c699d3b7fa4305b881a001
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d86f3bdf19603d2f92fc1a704376beefd7323c0
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="classifying-iris-part-2-build-a-model"></a>Klassifizieren von Iris, Teil 2: Erstellen eines Modells
 Azure Machine Learning-Dienste (Vorschau) sind eine integrierte End-to-End-Lösung für den Bereich Data Science und Advanced Analytics, mit der professionelle Datenanalysten Daten vorbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
@@ -58,7 +58,7 @@ Wenn Sie mit der Ausführung des Skripts in einem Docker-Container auf einem vir
    - Lädt das Datenvorbereitungspaket **iris.dprep** zum Erstellen eines [Pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html). 
 
         >[!NOTE]
-        >Wir verwenden das zum Beispielprojekt gehörende Datenvorbereitungspaket `iris.dprep`, das identisch sein sollte mit der Datei `iris-1.dprep`, die Sie in Teil 1 dieser Tutorialreihe erstellt haben.
+        >Wir verwenden das zum Beispielprojekt gehörende Datenvorbereitungspaket `iris.dprep`, das identisch sein sollte mit der Datei `iris-1.dprep`, die Sie in Teil 1 dieses Tutorials erstellt haben.
 
    - Fügt zufällige Funktionen hinzu, um die Lösung des Problems zu erschweren. (Zufälligkeit ist erforderlich, da Iris ein kleines DataSet ist, das mit nahezu 100%iger Genauigkeit einfach klassifiziert werden kann.)
 

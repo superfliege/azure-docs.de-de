@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/26/2017
+ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: 99a377db6341d90d263b98e14227db61dd9beabd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c381489c3cb5b42505d0cdf01618edb370793304
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="get-started-with-service-bus-queues"></a>Erste Schritte mit Service Bus-Warteschlangen
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -56,7 +56,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
 
 ### <a name="add-the-service-bus-nuget-package"></a>Hinzufügen des NuGet-Pakets "Service Bus"
 1. Klicken Sie mit der rechten Maustaste auf das neu erstellte Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
-2. Klicken Sie auf die Registerkarte **Durchsuchen**, suchen Sie nach **Microsoft Azure Service Bus**, und wählen Sie anschließend das Element **WindowsAzure.ServiceBus** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach dieses Dialogfeld.
+2. Klicken Sie auf die Registerkarte **Durchsuchen**, suchen Sie nach **WindowsAzure.ServiceBus**, und wählen Sie anschließend das Element **WindowsAzure.ServiceBus** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach dieses Dialogfeld.
    
     ![Auswählen eines NuGet-Pakets][nuget-pkg]
 
@@ -115,7 +115,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
         }
     }
     ```
-3. Führen Sie das Programm aus, und prüfen Sie im Azure-Portal Folgendes: Klicken Sie auf dem Blatt **Übersicht** auf den Namen Ihrer Warteschlange im Namespace. Das Blatt **Essentials** der Warteschlange wird angezeigt. Unter **Anzahl aktiver Nachrichten** sollte nun der Wert „1“ angezeigt werden. Jedes Mal, wenn Sie die Absenderanwendung ausführen, ohne Nachrichten abzurufen, erhöht sich dieser Wert um 1. Beachten Sie auch, dass die aktuelle Größe der Warteschlange jedes Mal inkrementell zunimmt, wenn die App der Warteschlange eine Nachricht hinzufügt.
+3. Führen Sie das Programm aus, und prüfen Sie im Azure-Portal Folgendes: Klicken Sie im Fenster **Übersicht** auf den Namen Ihrer Warteschlange im Namespace. Das Fenster **Essentials** der Warteschlange wird angezeigt. Unter **Anzahl aktiver Nachrichten** sollte nun der Wert „1“ angezeigt werden. Jedes Mal, wenn Sie die Absenderanwendung ausführen, ohne Nachrichten abzurufen, erhöht sich dieser Wert um 1. Beachten Sie auch, dass die aktuelle Größe der Warteschlange jedes Mal inkrementell zunimmt, wenn die App der Warteschlange eine Nachricht hinzufügt.
    
       ![Nachrichtengröße][queue-message]
 
@@ -178,7 +178,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
    
     ![Warteschlangenlänge][queue-message-receive]
 
-Glückwunsch! Sie haben eine Warteschlange erstellt, eine Nachricht gesendet und eine Nachricht empfangen.
+Glückwunsch! Sie haben eine Warteschlange erstellt, eine Nachricht an diese Warteschlange gesendet und eine Nachricht aus dieser Warteschlange empfangen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -189,4 +189,4 @@ Sehen Sie sich das [GitHub-Repository mit Beispielen](https://github.com/Azure/a
 [nuget-pkg]: ./media/service-bus-dotnet-get-started-with-queues/nuget-package.png
 [queue-message]: ./media/service-bus-dotnet-get-started-with-queues/queue-message.png
 [queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive.png
-[github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
+

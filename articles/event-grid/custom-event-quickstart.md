@@ -1,20 +1,20 @@
 ---
-title: "Benutzerdefinierte Ereignisse für Azure Event Grid | Microsoft-Dokumentation"
-description: "Verwenden Sie Azure Event Grid, um ein Thema zu veröffentlichen, und abonnieren Sie dieses Ereignis."
+title: "Benutzerdefinierte Ereignisse für Azure Event Grid mit der Befehlszeilenschnittstelle | Microsoft-Dokumentation"
+description: "Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren."
 services: event-grid
 keywords: 
 author: djrosanova
 ms.author: darosa
-ms.date: 08/15/2017
+ms.date: 10/11/2017
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: cd285471196f75f6a8c8ead0e2895fd71414f223
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d969b44bdfa610b18f3f934b48d987cb1735155f
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
-# <a name="create-and-route-custom-events-with-azure-event-grid"></a>Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure Event Grid
+# <a name="create-and-route-custom-events-with-azure-cli-and-event-grid"></a>Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure CLI und Event Grid
 
 Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel erstellen Sie mithilfe der Azure-Befehlszeilenschnittstelle ein benutzerdefiniertes Thema, abonnieren dieses Thema und lösen das Ereignis aus, um das Ergebnis anzuzeigen. Ereignisse werden üblicherweise an einen Endpunkt gesendet, der auf das Ereignis reagiert (beispielsweise ein Webhook oder eine Azure-Funktion). Der Einfachheit halber senden wir die Ereignisse in diesem Artikel allerdings an eine URL, die die Nachrichten lediglich sammelt. Diese URL wird mithilfe eines Open Source-Drittanbietertools namens [RequestBin](https://requestb.in/) erstellt.
 
@@ -117,6 +117,6 @@ az group delete --name gridResourceGroup
 Sie haben gelernt, wie Sie Themen und Ereignisabonnements erstellen. Nun können Sie sich ausführlicher darüber informieren, welche Möglichkeiten Event Grid bietet:
 
 - [An introduction to Azure Event Grid](overview.md) (Einführung in Azure Event Grid)
-- [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt (Vorschauversion)](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
+- [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 - [Monitor virtual machine changes with Azure Event Grid and Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md) (Überwachen von Änderungen an virtuellen Computer mit Azure Event Grid und Logic Apps)
 - [Streamen von Big Data in ein Data Warehouse](event-grid-event-hubs-integration.md)

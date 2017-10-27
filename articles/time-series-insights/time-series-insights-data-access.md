@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/01/2017
 ms.author: omravi
-ms.openlocfilehash: 5258bf5de6f7aa1ea246f1235e7d362b1b7d0181
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a0f04d79ac5487a347e28445c1a6677d5b8b16a
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>Gewähren von Datenzugriff für eine Time Series Insights-Umgebung über das Azure-Portal
 
@@ -41,13 +41,14 @@ Die beiden Arten von Richtlinien ermöglichen eine klare Trennung zwischen dem Z
 ## <a name="grant-data-access"></a>Gewähren des Datenzugriffs
 Die folgenden Schritte zeigen, wie Sie einem Benutzerprinzipal Datenzugriff gewähren:
 
-1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2.  Klicken Sie im Azure-Portal im Menü auf der linken Seite auf „Alle Ressourcen“.
-3.  Wählen Sie Ihre Time Series Insights-Umgebung aus.
+1.  Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+2.  Geben Sie „Time Series“ ins Suchfenster ein.
+3.  Klicken Sie auf die Time Series-Umgebung.
+4.  Wählen Sie Ihre Time Series Insights-Umgebung in der Liste aus.
 
   ![Verwalten der Time Series Insights-Quelle – Umgebung](media/data-access/getstarted-grant-data-access1.png)
 
-4.  Wählen Sie „Datenebenenzugriff“ aus, und klicken Sie anschließend auf „Hinzufügen“.
+4.  Klicken Sie auf „Datenzugriffsrichtlinien“ und anschließend auf „Hinzufügen“.
 
   ![Verwalten der Time Series Insights-Quelle – Hinzufügen](media/data-access/getstarted-grant-data-access2.png)
 

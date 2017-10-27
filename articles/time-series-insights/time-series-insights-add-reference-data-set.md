@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: venkatja
-ms.openlocfilehash: 574f3c5b3a889733f47d729c795ec39009f2ef4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b94ca172dba71b407ee5e9a40c283a97602efd17
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Erstellen eines Verweisdatasets für Ihre Time Series Insights-Umgebung über das Ibiza-Portal
 
@@ -27,8 +27,8 @@ Ein Verweisdataset ist eine Sammlung von Elementen, die mit den Ereignissen aus 
 
 ## <a name="steps-to-add-a-reference-data-set-to-your-environment"></a>Schritte zum Hinzufügen eines Verweisdatasets zu Ihrer Umgebung
 
-1. Melden Sie sich beim [Ibiza-Portal](https://portal.azure.com) an.
-2. Klicken Sie im Ibiza-Portal im Menü auf der linken Seite auf „Alle Ressourcen“.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+2. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf „Alle Ressourcen“.
 3. Wählen Sie Ihre Time Series Insights-Umgebung aus.
 
     ![Erstellen des Time Series Insights-Verweisdatasets](media/add-reference-data-set/getstarted-create-reference-data-set-1.png)
@@ -38,7 +38,7 @@ Ein Verweisdataset ist eine Sammlung von Elementen, die mit den Ereignissen aus 
     ![Erstellen des Time Series Insights-Verweisdatasets – Details](media/add-reference-data-set/getstarted-create-reference-data-set-2.png)
 
 5. Geben Sie den Namen des Verweisdatasets an.
-6. Geben Sie den Namen des Schlüssels und dessen Typ an. Dieser Name und Typ wird verwendet, um die richtige Eigenschaft aus dem Ereignis in der Ereignisquelle auszuwählen. Wenn Sie beispielsweise den Schlüsselnamen „DeviceId“ und den Typ „Zeichenfolge“ angeben, sucht das Time Series Insights-Erfassungsmodul im eingehenden Ereignis nach einer Eigenschaft mit dem Namen „DeviceId“ vom Typ „String“. Sie können mehrere Schlüssel zur Verknüpfung mit dem Ereignis angeben. Beim Vergleichen der Eigenschaftsnamen wird die Groß-/Kleinschreibung beachtet.
+6. Geben Sie den Namen des Schlüssels und dessen Typ an. Dieser Name und Typ werden verwendet, um die richtige Eigenschaft aus dem Ereignis in der Ereignisquelle auszuwählen. Wenn Sie beispielsweise den Schlüsselnamen „DeviceId“ und den Typ „Zeichenfolge“ angeben, sucht das Time Series Insights-Erfassungsmodul im eingehenden Ereignis nach einer Eigenschaft mit dem Namen „DeviceId“ vom Typ „String“. Sie können mehrere Schlüssel zur Verknüpfung mit dem Ereignis angeben. Beim Vergleichen der Schlüsselnamen wird die Groß-/Kleinschreibung beachtet.
 
      ![Erstellen des Time Series Insights-Verweisdatasets – Details](media/add-reference-data-set/getstarted-create-reference-data-set-3.png)
 

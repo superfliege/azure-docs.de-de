@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/08/2017
 ms.author: renash
-ms.openlocfilehash: 81de67334f66a61582bb2c5d5a2303cf3a1a086c
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 712f66ade5709311721e5a4a8416f305f2e16e6b
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="introduction-to-azure-files"></a>Einführung in Azure Files
 Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (auch als Common Internet File System oder CIFS bezeichnet) zugegriffen werden kann. Azure-Dateifreigaben können gleichzeitig durch die Cloud oder lokale Bereitstellungen von Windows, Linux und macOS eingebunden werden. Außerdem können Azure-Dateifreigaben auf Windows Server-Instanzen per Azure-Dateisynchronisierung (Vorschauversion) zwischengespeichert werden, um in der Nähe des Datennutzungsorts für schnellen Zugriff zu sorgen.
@@ -57,6 +57,6 @@ Verwendungsmöglichkeiten für Azure-Dateifreigaben:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Create a File Share in Azure File storage](storage-how-to-create-file-share.md) (Erstellen einer Dateifreigabe in Azure File Storage)
-* [Mount an Azure File share and access the share in Windows](storage-how-to-use-files-windows.md) (Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows)
-* [Verwenden des Azure-Dateispeichers unter Linux](storage-how-to-use-files-linux.md)
-* [Mount Azure File share over SMB with macOS](storage-how-to-use-files-mac.md) (Einbinden einer Azure-Dateifreigabe über SMB unter macOS)
+* [Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows](storage-how-to-use-files-windows.md)
+* [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md)
+* [Einbinden einer Azure-Dateifreigabe über SMB mit macOS](storage-how-to-use-files-mac.md)

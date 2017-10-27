@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/27/2017
-ms.openlocfilehash: 2325d0ffd369d85b9a21e2274a98dcb673d240e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 56a79906a0f43f06d35db703d641f547e7bdf868
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="classifying-iris-part-3-deploy-a-model"></a>Klassifizieren von Schwertlilien, Teil 3: Bereitstellen eines Modells
 Azure Machine Learning-Dienste (Vorschauversion) ist eine integrierte End-to-End Data Science- und erweiterte Analyselösung für professionelle Data Scientists zum Vorbereiten von Daten, Entwickeln von Experimenten und Bereitstellen von Modellen auf Cloudniveau.
@@ -193,6 +193,9 @@ Legen Sie nach Abschluss der Einrichtung die Umgebungsvariablen, die für die Op
    ```
 
 Sie können nun den Echtzeit-Webdienst erstellen.
+
+>[!NOTE]
+>Für nachfolgende Webdienstbereitstellungen können Sie das Konto und die Umgebung für die Modellverwaltung wiederverwenden. Sie müssen sie nicht für jeden Webdienst erstellen. Einem Konto oder einer Umgebung können mehrere Webdienste zugeordnet sein.
 
 ## <a name="create-a-real-time-web-service-in-one-command"></a>Erstellen eines Echtzeit-Webdiensts mit einem Befehl
 1. Verwenden Sie den folgenden Befehl, um einen Echtzeit-Webdienst zu erstellen:

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: 42a2542b7564f1692146b3e3927792ac339f30be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c1ac13d50180909bbe55b01f47721387d1195d7
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Bereitstellen einer Azure Service Fabric-Containeranwendung unter Linux in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -29,7 +29,7 @@ In diesem Schnellstart wird veranschaulicht, wie Sie Linux-Container in einem Se
 
 In dieser Schnellstartanleitung wird Folgendes vermittelt:
 > [!div class="checklist"]
-> * Bereitstellen von Linux-Containern in Service Fabric
+> * Bereitstellen der Container in einem Linux-Service Fabric-Cluster in Azure
 > * Skalieren und Durchführen des Failovers für Container in Service Fabric
 
 ## <a name="prerequisite"></a>Voraussetzung
@@ -52,6 +52,10 @@ cd service-fabric-dotnet-containers/Linux/container-tutorial/Voting
 
 ## <a name="deploy-the-containers-to-a-service-fabric-cluster-in-azure"></a>Bereitstellen der Container in einem Service Fabric-Cluster in Azure
 Für die Anwendungsbereitstellung in einem Cluster in Azure können Sie einen eigenen Cluster oder einen Partycluster verwenden.
+
+> [!Note]
+> Die Anwendung muss in einem Cluster in Azure und nicht in einem Service Fabric-Cluster auf dem lokalen Entwicklungscomputer bereitgestellt werden. 
+>
 
 Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet werden. Sie werden vom Service Fabric-Team verwaltet, und alle Interessenten können Anwendungen bereitstellen und sich mit der Plattform vertraut machen. [Befolgen Sie die Anweisungen](http://aka.ms/tryservicefabric), um Zugriff auf einen Partycluster zu erhalten. 
 

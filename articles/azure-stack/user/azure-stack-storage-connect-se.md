@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: xiaofmao
-ms.openlocfilehash: 8cd52e9561f2ad92664c01959df8919aa56e8738
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c7e6d70148d39fd74f6409a0a239833f8e9f7614
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription"></a>Herstellen einer Verbindung von Storage-Explorer mit einem Azure Stack-Abonnement
 
@@ -42,7 +42,7 @@ Für das Azure Stack Development Kit müssen Sie das Stammzertifikat der Azure S
 
 1. Öffnen Sie `mmc.exe` auf einem Azure Stack-Hostcomputer oder einem lokalen Computer, der über eine VPN-Verbindung mit Azure Stack verfügt. 
 
-2. Wählen Sie unter **Datei** die Option **Snap-In hinzufügen/entfernen** aus, und fügen Sie anschließend **Zertifikate** zum Verwalten des **Computerkontos** von **Lokaler Computer** hinzu.
+2. Wählen Sie unter **Datei** die Option **Snap-In hinzufügen/entfernen** aus, und fügen Sie anschließend **Zertifikate** zum Verwalten **des Benutzerkontos** hinzu.
 
 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: fad13053895c5d6e3c41835fea3cf0bdd3380cd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 486e2b2da7a78cdc39743e60f4140fc58275a8fc
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="getting-started-with-azure-automation"></a>Erste Schritte mit Azure Automation
 
@@ -59,6 +59,7 @@ Ein Computer, der für die Ausführung von Hybrid Runbook-Aufträgen vorgesehen 
 
 * Windows Server 2012 oder höher
 * Windows PowerShell 4.0 oder höher.  Aufgrund der höheren Zuverlässigkeit wird die Installation von Windows PowerShell 5.0 auf dem Computer empfohlen. Sie können die neue Version aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=50395) herunterladen.
+* .NET Framework 4.6.2 oder höher
 * Mindestens zwei Kerne
 * Mindestens 4 GB RAM
 

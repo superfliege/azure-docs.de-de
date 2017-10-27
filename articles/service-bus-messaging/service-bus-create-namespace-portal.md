@@ -12,17 +12,17 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: c8654ed547a9001e2e968d2a45d990a73ef27d3b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 38c79495683f0aa619247d486bfb8d843dfdfdc0
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Erstellen eines Service Bus-Namespace mithilfe des Azure-Portals
 
-Ein Namespace ist ein Bereichscontainer für alle Messagingkomponenten. Ein einzelner Namespace kann mehrere Warteschlangen und Themen enthalten, und Namespaces fungieren häufig als Anwendungscontainer. Es gibt zwei verschiedene Verfahren zum Erstellen von Service Bus-Namespaces:
+Ein Namespace ist ein Bereichscontainer für alle Messagingkomponenten. Ein einzelner Namespace kann mehrere Warteschlangen und Themen enthalten, und Namespaces fungieren häufig als Anwendungscontainer. Es gibt zwei Verfahren zum Erstellen von Service Bus-Namespaces:
 
 1. Azure-Portal (dieser Artikel)
 2. [Resource Manager-Vorlagen][create-namespace-using-arm]
@@ -35,7 +35,7 @@ Glückwunsch! Sie haben nun einen Service Bus Messaging-Namespace erstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [GitHub-Beispiele][github-samples] an, die einige erweiterte Features von Azure Service Bus Messaging veranschaulichen.
+Sehen Sie sich die [GitHub-Beispiele][github-samples] an, die einige erweiterte Features von Service Bus Messaging veranschaulichen.
 
 [create-namespace-using-arm]: service-bus-resource-manager-overview.md
 [github-samples]: https://github.com/Azure/azure-service-bus/tree/master/samples

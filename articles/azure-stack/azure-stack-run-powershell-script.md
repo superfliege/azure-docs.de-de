@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen des Azure Stack Development Kit | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie Azure Stack Development Kit vorbereiten und das PowerShell-Skript zum Bereitstellen von Azure Stack Development Kit ausführen."
+description: "Erfahren Sie, wie Sie das Azure Stack Development Kit vorbereiten und das PowerShell-Skript zum Bereitstellen von Azure Stack Development Kit ausführen."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
-ms.openlocfilehash: b8497f0331e9b7d19eed2e1c254849a1619f496a
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: b67cabf0ecdb48f137bfcfbce95eee568a1c298d
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Bereitstellen des Azure Stack Development Kit
 
@@ -31,14 +31,14 @@ Um das [Azure Stack Development Kit](azure-stack-poc.md) bereitstellen zu könne
 3. [Stellen Sie das Development Kit](#deploy-the-development-kit) auf dem Development Kit-Host bereit.
 
 > [!NOTE]
-> Um auch dann optimale Ergebnisse zu erzielen, wenn Sie eine nicht verbundene Azure Stack-Umgebung verwenden möchten, sollten Sie die Bereitstellung durchführen, während Sie mit dem Internet verbunden sind. Auf diese Weise kann die Evaluierungsversion von Windows Server 2016 zum Zeitpunkt der Bereitstellung aktiviert werden. Wenn die Windows Server 2016-Evaluierungsversion innerhalb von 10 Tagen nicht aktiviert ist, wird sie beendet.
+> Um auch dann optimale Ergebnisse zu erzielen, wenn Sie eine nicht verbundene Azure Stack-Umgebung verwenden möchten, sollten Sie die Bereitstellung durchführen, während Sie mit dem Internet verbunden sind. Auf diese Weise kann die Evaluierungsversion von Windows Server 2016 zum Zeitpunkt der Bereitstellung aktiviert werden.
 > 
 > 
 
 ## <a name="download-and-extract-the-development-kit"></a>Herunterladen und Extrahieren des Development Kit
 1. Bevor Sie den Download starten, stellen Sie sicher, dass Ihr Computer die folgenden Voraussetzungen erfüllt:
 
-   * Auf dem Computer müssen mindestens 60GB freier Speicherplatz auf dem Datenträger verfügbar sein.
+   * Auf dem Computer müssen mindestens 60 GB freier Speicherplatz auf dem Datenträger verfügbar sein.
    * [.NET Framework 4.6 (oder eine höhere Version)](https://aka.ms/r6mkiy) muss installiert sein.
 
 2. [Wechseln Sie zur Seite „Erste Schritte“](https://azure.microsoft.com/overview/azure-stack/try/?v=try), geben Sie Ihre Daten ein, und klicken Sie auf **Übermitteln**.
@@ -46,11 +46,11 @@ Um das [Azure Stack Development Kit](azure-stack-poc.md) bereitstellen zu könne
 4. Führen Sie die heruntergeladene Datei „AzureStackDownloader.exe“ aus.
 5. Führen Sie im Fenster **Downloadprogramm für Azure Stack Development Kit** die Schritte 1 bis 5 aus.
 6. Nachdem der Download abgeschlossen ist, klicken Sie auf **Ausführen**, um „MicrosoftAzureStackPOC.exe“ zu starten.
-7. Überprüfen Sie den Lizenzbedingungen-Bildschirm und die Informationen des Self-Extractor-Assistenten, und klicken Sie dann auf **Weiter**.
+7. Lesen Sie die Lizenzbedingungen und die Informationen des Self-Extractor-Assistenten, und klicken Sie dann auf **Weiter**.
 8. Überprüfen Sie den Datenschutzbestimmungen-Bildschirm und die Informationen des Self-Extractor-Assistenten, und klicken Sie dann auf **Weiter**.
 9. Wählen Sie das Ziel für die zu extrahierenden Dateien aus, und klicken Sie auf **Weiter**.
    * Die Standardeinstellung ist: <drive letter>:\<aktueller Ordner>\Microsoft Azure Stack
-10. Überprüfen Sie den Zielspeicherort-Bildschirm und die Informationen des Self-Extractor-Assistenten, und klicken Sie dann auf **Extrahieren**, um die Dateien „CloudBuilder.vhdx“ (~25GB) und „ThirdPartyLicenses.rtf“ zu extrahieren. Dieser Vorgang nimmt einige Zeit in Anspruch.
+10. Überprüfen Sie den Zielspeicherort, lesen Sie die Informationen des Self-Extractor-Assistenten, und klicken Sie dann auf **Extrahieren**, um die Dateien „CloudBuilder.vhdx“ (ca. 25 GB) und „ThirdPartyLicenses.rtf“ zu extrahieren. Dieser Vorgang nimmt einige Zeit in Anspruch.
 
 > [!NOTE]
 > Nachdem Sie die Dateien extrahiert haben, können Sie die EXE- und BIN-Dateien löschen, um auf dem Computer Speicherplatz wiederherzustellen. Alternativ können Sie diese Dateien zu einem anderen Speicherort verschieben, sodass Sie die Dateien nicht erneut herunterladen müssen, wenn eine erneute Bereitstellung erforderlich ist.
@@ -62,7 +62,7 @@ Um das [Azure Stack Development Kit](azure-stack-poc.md) bereitstellen zu könne
 2. Stellen Sie sicher, dass der Development Kit-Host die [Mindestanforderungen](azure-stack-deploy.md) erfüllt. Mit dem [Deployment Checker for Azure Stack Development Kit](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) (Bereitstellungsprüfer für Azure Stack Development Kit) können Sie prüfen, ob Ihre Anforderungen erfüllt sind.
 3. Melden Sie sich als lokaler Administrator bei Ihrem Development Kit-Host an.
 4. Kopieren Sie die CloudBuilder.vhdx-Datei in das Stammverzeichnis von Laufwerk C:\ (C:\CloudBuilder.vhdx), oder verschieben Sie sie dorthin.
-5. Führen Sie das folgende Skript zum Herunterladen der Development Kit-Installationsdatei (asdk-installer.ps1) in den Ordner „c:\AzureStack_Installer“ auf Ihrem Development Kit-Host aus.
+5. Führen Sie das folgende Skript zum Herunterladen der Development Kit-Installationsdatei („asdk-installer.ps1“) in den Ordner „C:\AzureStack_Installer“ auf Ihrem Development Kit-Host aus.
     ```powershell
     # Variables
     $Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/Deployment/asdk-installer.ps1'
@@ -75,7 +75,7 @@ Um das [Azure Stack Development Kit](azure-stack-poc.md) bereitstellen zu könne
     Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
     ```
 6. Öffnen Sie eine PowerShell-Konsole mit erhöhten Rechten, führen Sie das Skript „C:\AzureStack_Installer\asdk-installer.ps1“ aus, und klicken Sie auf **Umgebung vorbereiten**.
-7. Navigieren Sie auf der Seite **Cloudbuilder-VHDX erstellen** des Installationsprogramms zu der cloudbuilder.vhdx-Datei, die Sie in den vorherigen Schritten heruntergeladen haben, und wählen Sie sie aus.
+7. Navigieren Sie auf der Seite **Cloudbuilder-VHDX erstellen** des Installationsprogramms zur zuvor heruntergeladenen Datei „cloudbuilder.vhdx“, und wählen Sie sie aus.
 8. Optional: Aktivieren Sie das Kontrollkästchen **Treiber hinzufügen**, um einen Ordner mit weiteren Treibern anzugeben, die Sie auf dem Host installieren möchten.
 9. Geben Sie auf der Seite **Optionale Einstellungen** das lokale Administratorkonto für den Development Kit-Host an. Wenn Sie diese Anmeldeinformationen nicht angeben, benötigen Sie während des folgenden Installationsvorgangs KVM-Zugriff auf den Host.
 10. Außerdem haben Sie die Möglichkeit, auf der Seite **Optionale Einstellungen** Folgendes festzulegen:
@@ -97,9 +97,9 @@ Um das [Azure Stack Development Kit](azure-stack-poc.md) bereitstellen zu könne
     > [!IMPORTANT]
     > Für Azure Active Directory-Bereitstellungen benötigt Azure Stack entweder direkten Zugriff auf das Internet oder Zugriff über einen transparenten Proxy. Die Bereitstellung unterstützt genau einen Netzwerkadapter für das Netzwerk. Wenn Sie mehrere Netzwerkadapter haben, stellen Sie vor dem Ausführen des Bereitstellungsskripts im nächsten Abschnitt sicher, dass nur einer aktiviert ist (und alle anderen deaktiviert sind).
     
-2. Öffnen Sie eine PowerShell-Konsole mit erhöhten Rechten > führen Sie das \AzureStack_Installer\asdk-installer.ps1-Skript aus (das sich auf einem anderen Laufwerk in „Cloudbuilder.vhdx“ befinden kann) > klicken Sie auf **Installieren**.
+2. Öffnen Sie eine PowerShell-Konsole mit erhöhten Rechten, führen Sie das Skript „\AzureStack_Installer\asdk-installer.ps1“ (dieses befindet sich möglicherweise auf einem anderen Laufwerk in „Cloudbuilder.vhdx“), und klicken Sie auf **Installieren**.
 3. Wählen Sie im Feld **Typ** die Option **Azure Cloud** oder **AD FS**.
-    - **Azure Cloud**: Azure Active Directory ist der Identitätsanbieter. Verwenden Sie diesen Parameter, um ein bestimmtes Verzeichnis anzugeben, in dem das AAD-Konto über globale Administratorberechtigungen verfügt. Vollständiger Name eines AAD Directory-Mandanten im Format „onmicrosoft.com“. 
+    - **Azure Cloud**: Azure Active Directory ist der Identitätsanbieter. Verwenden Sie diesen Parameter, um ein bestimmtes Verzeichnis anzugeben, in dem das AAD-Konto über globale Administratorberechtigungen verfügt. Vollständiger Name eines AAD-Verzeichnismandanten. Beispiel: .onmicrosoft.com. 
     - **AD FS**: Der standardmäßige Stampverzeichnisdienst ist der Identitätsanbieter, das Standardkonto für die Anmeldung ist azurestackadmin@azurestack.local, und das Kennwort ist dasjenige, das Sie als Teil des Setups angegeben haben.
 4. Geben Sie unter **Lokales Administratorkennwort** im Feld **Kennwort** das lokale Administratorkennwort ein (das mit dem derzeit konfigurierten lokalen Administratorkennwort übereinstimmen muss), und klicken Sie dann auf **Weiter**.
 5. Wählen Sie einen für das Development Kit zu verwendenden Netzwerkadapter aus, und klicken Sie dann auf **Weiter**.
@@ -142,6 +142,10 @@ Alternativ können Sie von Grund auf [erneut bereitstellen](azure-stack-redeploy
 
 Um sicherzustellen, dass das Kennwort für den Development Kit-Host nicht zu früh abläuft, führen Sie nach der Bereitstellung folgende Schritte aus:
 
+So ändern Sie die Kennwortablaufrichtlinie in Powershell:
+1. Führen Sie im Powershell-Fenster den folgenden Befehl aus: Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurestack.local
+
+So ändern Sie die Kennwortablaufrichtlinie manuell:
 1. Öffnen Sie auf dem Development Kit-Host die **Gruppenrichtlinienverwaltung**, und navigieren Sie zu **Gruppenrichtlinienverwaltung** – **Gesamtstruktur: azurestack.local** – **Domänen** – **azurestack.local**.
 2. Klicken Sie mit der rechten Maustaste auf **Standarddomänenrichtlinie**, und klicken Sie auf **Bearbeiten**.
 3. Navigieren Sie im Gruppenrichtlinienverwaltungs-Editor zu **Computerkonfiguration** – **Richtlinien** – **Windows-Einstellungen** – **Sicherheitseinstellungen** – **Kontorichtlinien** – **Kennwortrichtlinie**.

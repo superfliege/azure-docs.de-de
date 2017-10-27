@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/15/2017
+ms.date: 10/12/2017
 ms.author: sethm
-ms.openlocfilehash: af8b10f0a460e695a39879718174e81f78934ef8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b71814756a52f56ac6d0bb72a2f4bb1b1c2ea0b2
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="azure-service-bus"></a>Azure-Servicebus
 
@@ -58,15 +58,15 @@ Der Vorgang ist einfach: Ein Sender sendet eine Nachricht an eine Service Bus-Wa
 
 Jede Nachricht besteht aus zwei Teilen: einem Satz von Eigenschaften (jede davon ist ein Paar aus Schlüssel und Wert) und einer Nutzlast der Nachricht. Die Nutzlast kann binärer Art, Text oder sogar XML sein. Die Art der Verwendung richtet sich danach, welche Aufgaben in der Anwendung ausgeführt werden sollen. Wenn eine Anwendung z.B. eine Nachricht über einen kürzlich erfolgten Verkauf sendet, kann die Nachricht die Eigenschaften **Verkäufer=„Ava“** und **Menge=10000 enthalten**. Der Nachrichtentext kann ein gescanntes Bild des unterzeichneten Verkaufsvertrags enthalten oder auch leer sein.
 
-Ein Empfänger kann eine Nachricht von einem Servicebus auf zwei verschiedene Arten lesen. Bei Verwendung der ersten Option, *[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, wird eine Nachricht aus der Warteschlange entfernt und sofort gelöscht. Diese Option ist unkompliziert, aber wenn der Empfänger ausfällt, bevor die Verarbeitung der Nachricht abgeschlossen ist, geht die Nachricht verloren. Da die Nachricht dann aus der Warteschlange entfernt worden ist, kann kein anderer Empfänger auf sie zugreifen. 
+Ein Empfänger kann eine Nachricht von einem Servicebus auf zwei verschiedene Arten lesen. Bei Verwendung der ersten Option (*[ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode)*) wird eine Nachricht aus der Warteschlange empfangen und sofort gelöscht. Diese Option ist unkompliziert, aber wenn der Empfänger ausfällt, bevor die Verarbeitung der Nachricht abgeschlossen ist, geht die Nachricht verloren. Da die Nachricht dann aus der Warteschlange entfernt worden ist, kann kein anderer Empfänger auf sie zugreifen. 
 
-Die zweite Option, *[PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, dient zur Lösung dieses Problems. Wie bei **ReceiveAndDelete** wird auch bei **PeekLock** eine gelesene Nachricht aus der Warteschlange entfernt. Die Nachricht wird allerdings nicht gelöscht, sondern gesperrt und für andere Empfänger unsichtbar gemacht. Anschließend wird auf eines von drei Ereignissen gewartet.
+Die zweite Option, *[PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)*, dient zur Lösung dieses Problems. Wie bei **ReceiveAndDelete** wird auch bei **PeekLock** eine gelesene Nachricht aus der Warteschlange entfernt. Die Nachricht wird allerdings nicht gelöscht, sondern gesperrt und für andere Empfänger unsichtbar gemacht. Anschließend wird auf eines von drei Ereignissen gewartet.
 
-* Wenn der Empfänger die Nachricht erfolgreich verarbeitet, wird die Meldung [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) ausgegeben, und die Warteschlange löscht die Nachricht. 
-* Wenn der Empfänger entscheidet, dass er die Nachricht nicht erfolgreich verarbeiten kann, wird die Meldung [Abandon()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) ausgegeben. In diesem Falle hebt die Warteschlange die Sperrung der Nachricht auf und macht sie für andere Empfänger verfügbar.
+* Wenn der Empfänger die Nachricht erfolgreich verarbeitet, wird die Meldung [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) ausgegeben, und die Warteschlange löscht die Nachricht. 
+* Wenn der Empfänger entscheidet, dass er die Nachricht nicht erfolgreich verarbeiten kann, wird die Meldung [Abandon()](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) ausgegeben. In diesem Falle hebt die Warteschlange die Sperrung der Nachricht auf und macht sie für andere Empfänger verfügbar.
 * Wenn der Empfänger innerhalb eines konfigurierbaren Zeitraums (standardmäßig 60 Sekunden) keine der beiden Meldungen aufruft, nimmt die Warteschlange an, dass der Empfänger ausgefallen ist. In diesem Fall verhält sie sich so, als hätte der Empfänger **Abandon**aufgerufen, sodass die Nachricht für andere Empfänger verfügbar wird.
 
-Beachten Sie, was geschieht: Dieselbe Nachricht kann zweimal ausgegeben werden, möglicherweise sogar an zwei verschiedene Empfänger. Anwendungen, die Service Bus-Warteschlangen verwenden, müssen darauf vorbereitet sein. Um die Erkennung von Duplikaten zu erleichtern, verfügt jede Nachricht über die eindeutige Eigenschaft [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) , die standardmäßig gleich bleibt – unabhängig davon, wie oft die Nachricht aus einer Warteschlange gelesen wird. 
+Beachten Sie, was geschieht: Dieselbe Nachricht kann zweimal ausgegeben werden, möglicherweise sogar an zwei verschiedene Empfänger. Anwendungen, die Service Bus-Warteschlangen verwenden, müssen darauf vorbereitet sein. Um die Erkennung von Duplikaten zu erleichtern, verfügt jede Nachricht über die eindeutige Eigenschaft [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid#Microsoft_Azure_ServiceBus_Message_MessageId) , die standardmäßig gleich bleibt – unabhängig davon, wie oft die Nachricht aus einer Warteschlange gelesen wird. 
 
 Warteschlangen sind in einigen Situationen sinnvoll. Sie ermöglichen eine Kommunikation zwischen Anwendungen auch dann, wenn beide zur selben Zeit ausgeführt werden, was bei Batch- und Mobilanwendungen sehr praktisch sein kann. Eine Warteschlange mit mehreren Empfängern bietet auch automatischen Lastenausgleich, da gesendete Nachrichten zwischen diesen Empfängern verteilt werden.
 
@@ -84,7 +84,7 @@ Ein *Thema* ähnelt in vielen Punkten einer Warteschlange. Sender schicken Nachr
 * Abonnent 2 empfängt Nachrichten, die die Eigenschaft *Verkäufer=„Ruby“* und/oder eine Eigenschaft namens *Menge* haben, deren Wert größer ist als 100.000. Ruby könnte die Vertriebschefin sein, die sowohl ihre eigenen Verkäufe als auch diejenigen anderer Verkäufer ab einer bestimmten Menge sehen möchte.
 * Abonnent 3 hat seinen Filter auf *True* gesetzt, was bedeutet, dass er alle Nachrichten empfängt. Diese Anwendung könnte z. B. zum Verwalten eines Überwachungspfads zuständig sein. Daher muss sie alle Nachrichten sehen können.
 
-Wie bei Warteschlangen können Abonnenten eines Themas Nachrichten entweder über [ReceiveAndDelete oder über PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) lesen. Anders als bei Warteschlangen kann jedoch eine einzelne an ein Thema gesendete Nachricht von mehreren Abonnements empfangen werden. Dieser Ansatz, der allgemein als *Veröffentlichen und Abonnieren* (oder *Pub/Sub*) bezeichnet wird, ist sinnvoll, wenn mehrere Anwendungen an den gleichen Nachrichten interessiert sind. Durch Definition eines passenden Filters kann jeder Abonnent genau den Teil aus der Nachricht herausziehen, den er mitbekommen muss.
+Wie bei Warteschlangen können Abonnenten eines Themas Nachrichten entweder über [ReceiveAndDelete oder über PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) lesen. Anders als bei Warteschlangen kann jedoch eine einzelne an ein Thema gesendete Nachricht von mehreren Abonnements empfangen werden. Dieser Ansatz, der allgemein als *Veröffentlichen und Abonnieren* (oder *Pub/Sub*) bezeichnet wird, ist sinnvoll, wenn mehrere Anwendungen an den gleichen Nachrichten interessiert sind. Durch Definition eines passenden Filters kann jeder Abonnent genau den Teil aus der Nachricht herausziehen, den er mitbekommen muss.
 
 ## <a name="relays"></a>Relays
 

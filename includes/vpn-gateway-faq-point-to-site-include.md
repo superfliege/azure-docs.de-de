@@ -1,3 +1,5 @@
+Diese häufig gestellten Fragen beziehen sich auf P2S-Verbindungen, die das klassische Bereitstellungsmodell verwenden.
+
 ### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a>Welche Clientbetriebssysteme kann ich bei Point-to-Site-Verbindungen verwenden?
 
 Folgende Clientbetriebssysteme werden unterstützt:

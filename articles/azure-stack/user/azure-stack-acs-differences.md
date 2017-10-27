@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: xiaofmao
-ms.openlocfilehash: 381950321ac3a5ea8a43b76f3fba868da4be4682
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4d6fb44fd6fd2261059ca45093d8b49345adfa74
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack-Speicher: Unterschiede und Überlegungen
 
@@ -40,6 +40,7 @@ Dieser Artikel beschreibt die bekannten Unterschiede des Azure Stack-Speichers i
 |Verwaltete Datenträger|Unterstützung für Premium und Standard|Noch nicht unterstützt
 |Blobname|1.024 Zeichen (2.048 Bytes)|880 Zeichen (1.760 Bytes)
 |Maximale Blockblobgröße|4,75 TB (100 MB X 50.000 Blöcke)|50.000 x 4 MB (ca. 195 GB)
+|Seitenblob-Momentaufnahmenkopie|Die Sicherung nicht verwalteter Azure-VM-Datenträger, die an einen ausgeführten virtuellen Computer angefügt sind, wird unterstützt.|Noch nicht unterstützt
 |Inkrementelle Momentaufnahmenkopie des Seitenblobs|Unterstützung für Premium- und Standard-Azure-Seitenblobs|Noch nicht unterstützt
 |Maximale Seitenblobgröße|8 TB|1 TB
 |Seitenblob – Seitengröße|512 Bytes|4 KB

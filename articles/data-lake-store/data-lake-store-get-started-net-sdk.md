@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 10/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 861f6b54130f9954c5e565346afd9a8f8e034b3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb9be26d3affe898bbbb66ead242dbdb59436bb6
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-net-sdk"></a>Kontoverwaltungsvorgänge in Azure Data Lake Store mit dem .NET SDK
 > [!div class="op_single_selector"]
@@ -63,13 +63,17 @@ Eine Anleitung zum Durchführen von Datenverwaltungsvorgängen in Data Lake Stor
 
         using System;
         using System.IO;
-        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+        using System.Linq;
+        using System.Text;
         using System.Threading;
-
+        using System.Collections.Generic;
+        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+                
+        using Microsoft.Rest;
+        using Microsoft.Rest.Azure.Authentication;
         using Microsoft.Azure.Management.DataLake.Store;
         using Microsoft.Azure.Management.DataLake.Store.Models;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
-        using Microsoft.Rest.Azure.Authentication;
 
 7. Deklarieren Sie die Variablen, und geben Sie die Werte für Platzhalter an. Stellen Sie außerdem sicher, dass der angegebene lokale Pfad und der Dateiname auf dem Computer vorhanden sind.
 
@@ -105,7 +109,7 @@ In den restlichen Abschnitten dieses Artikels erfahren Sie, wie Sie die verfügb
 Im folgenden Codeausschnitt wird das Data Lake Store-Kontoclientobjekt erstellt, das zum Senden von Kontoverwaltungsanforderungen an den Dienst verwendet wird, z.B. Konto erstellen, Konto löschen usw.
 
     // Create client objects and set the subscription ID
-    _adlsClient = new DataLakeStoreAccountManagementClient(creds) { SubscriptionId = _subId };
+    _adlsClient = new DataLakeStoreAccountManagementClient(armCreds) { SubscriptionId = _subId };
     
 ## <a name="create-a-data-lake-store-account"></a>Erstellen eines Data Lake-Speicherkontos
 Im folgenden Codeausschnitt wird ein Data Lake Store-Konto in dem Azure-Abonnement erstellt, das Sie angegeben haben, als Sie das Data Lake Store-Kontoclientobjekt erstellt haben.

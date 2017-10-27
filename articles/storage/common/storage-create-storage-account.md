@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 f1_keywords: sql13.swb.windowsazurestorage.connect.f1
-ms.date: 01/23/2017
+ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: cdca35f8ae339d02b44490cd61e2684d81d88365
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db878f257f64ccc573a220c675cd373539dd5b17
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="about-azure-storage-accounts"></a>Informationen zu Azure-Speicherkonten
+
 [!INCLUDE [storage-selector-portal-create-storage-account](../../../includes/storage-selector-portal-create-storage-account.md)]
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -32,6 +33,7 @@ Ein Azure-Speicherkonto stellt einen eindeutigen Namespace zum Speichern Ihrer A
 [!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
 ## <a name="storage-account-billing"></a>Speicherkontoabrechnung
+
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
 
 > [!NOTE]
@@ -60,8 +62,8 @@ Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie 
 
 
 ## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Wählen Sie im Menü „Hub“ die Option **Neu** -> **Speicher** -> **Speicherkonto**.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+2. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Weitere Dienste**. Scrollen Sie anschließend nach unten zu **Speicher** und klicken Sie auf **Speicherkonten**. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
 3. Geben Sie einen Namen für Ihr Speicherkonto ein. Unter [Speicherkontoendpunkte](#storage-account-endpoints) finden Sie Details dazu, wie der Name des Speicherkontos zum Adressieren Ihrer Objekte in Azure Storage verwendet wird.
    
    > [!NOTE]
