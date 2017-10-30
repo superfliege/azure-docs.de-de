@@ -105,6 +105,8 @@
       items:
         - name: Azure-Portal
           href: howto-restore-server-portal.md
+        - name: Azure-Befehlszeilenschnittstelle
+          href: howto-restore-server-cli.md
     - name: Herstellen einer Verbindung mit Anwendungen
       items:
         - name: Verbindungszeichenfolgen

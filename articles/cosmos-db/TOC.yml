@@ -139,6 +139,7 @@
     - name: Entwickeln
       items:
         - name: DocumentDB-API
+          href: documentdb-index.md
           items:
             - name: Ressourcen
               href: documentdb-resources.md
@@ -213,6 +214,7 @@
                 - name: 'Ausmusterung von S1, S2, S3'
                   href: performance-levels.md
         - name: MongoDB-API
+          href: mongodb-index.md
           items:
             - name: Herstellen einer Verbindung mit Ihrem MongoDB-Konto
               href: connect-mongodb-account.md
