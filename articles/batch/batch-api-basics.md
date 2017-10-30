@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 010/04/2017
+ms.date: 10/12/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f182dff164b8baa7e2144231667adbd12fcc717d
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f277f59982251eb66ca02e72b4ced7f765935b9d
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
 
@@ -75,7 +75,7 @@ Ein Azure Batch-Konto können Sie über das [Azure-Portal](batch-account-create-
 Sie können mehrere Batch-Workloads in einem Batch-Konto ausführen oder Ihre Workloads auf Batch-Konten in demselben Abonnement, aber verschiedenen Azure-Regionen aufteilen.
 
 > [!NOTE]
-> Wenn Sie ein Batch-Konto erstellen, sollten Sie im Allgemeinen den Standardmodus **Batch-Dienst** verwenden, in dem Pools im Hintergrund in von Azure verwalteten Abonnements zugeordnet werden. Die Alternative (der Modus **Benutzerabonnement**) wird nicht mehr empfohlen. In diesem Modus werden virtuelle Batch-Computer und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird.
+> Wenn Sie ein Batch-Konto erstellen, sollten Sie im Allgemeinen den Standardmodus **Batch-Dienst** verwenden, in dem Pools im Hintergrund in von Azure verwalteten Abonnements zugeordnet werden. Die Alternative (der Modus **Benutzerabonnement**) wird nicht mehr empfohlen. In diesem Modus werden virtuelle Batch-Computer und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Wenn Sie ein Batch-Konto im Benutzerabonnementmodus erstellen möchten, müssen Sie das Konto auch einer Azure Key Vault-Instanz zuordnen.
 >
 
 
@@ -129,7 +129,7 @@ Wenn Sie einen Batch-Pool erstellen, können Sie die Konfiguration für virtuell
 
 - Die **Konfiguration „Virtueller Computer“** gibt an, dass der Pool aus virtuellen Azure-Computern besteht. Diese virtuellen Computer können aus Linux- oder Windows-Images erstellt werden. 
 
-    Beim Erstellen eines Pools auf Basis der Konfiguration „Virtueller Computer“ müssen Sie nicht nur die Knotengröße und die Quelle der Images für deren Erstellen angeben, sondern auch die **VM-Imagereferenz** und die **Knoten-Agent-SKU** von Batch, die auf den Knoten installiert werden soll. Weitere Informationen zum Angeben dieser Pooleigenschaften finden Sie unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md).
+    Beim Erstellen eines Pools auf Basis der Konfiguration „Virtueller Computer“ müssen Sie nicht nur die Knotengröße und die Quelle der Images für deren Erstellen angeben, sondern auch die **VM-Imagereferenz** und die **Knoten-Agent-SKU** von Batch, die auf den Knoten installiert werden soll. Weitere Informationen zum Angeben dieser Pooleigenschaften finden Sie unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md). Sie können optional leere Datenträger an virtuelle Poolcomputer anfügen, die auf der Grundlage von Marketplace-Images erstellt wurden, oder Datenträger in benutzerdefinierte Images einschließen, die zum Erstellen der virtuellen Computer verwendet werden.
 
 - Die **Konfiguration „Cloud Services“** gibt an, dass der Pool aus Azure Cloud Services-Knoten besteht. Bei „Cloud Services“ werden *ausschließlich* Windows-Serverknoten bereitgestellt.
 
@@ -148,9 +148,11 @@ Wenn Sie ein benutzerdefiniertes Image verwenden möchten, müssen Sie es zunäc
 
 Ausführliche Informationen zu den Anforderungen und Schritten finden Sie unter [Verwenden eines benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
 
+#### <a name="container-support-in-virtual-machine-pools"></a>Containerunterstützung in VM-Pools
 
+Wenn Sie mithilfe der Batch-APIs einen VM-Konfigurationspool erstellen, können Sie den Pool zum Ausführen von Aufgaben in Docker-Containern einrichten. Aktuell müssen Sie den Pool unter Verwendung des Images „Windows Server 2016 Datacenter mit Containern“ aus dem Azure Marketplace erstellen oder ein benutzerdefiniertes VM-Image mit Docker Community Edition und allen erforderlichen Treibern bereitstellen. Die Pooleinstellungen müssen eine [Containerkonfiguration](/rest/api/batchservice/pool/add#definitions_containerconfiguration) enthalten, die bei der Poolerstellung Containerimages auf die virtuellen Computer kopiert. Für den Pool ausgeführte Aufgaben können dann auf die Containerimages und auf die Containerausführungsoptionen verweisen.
 
-### <a name="compute-node-type-and-target-number-of-nodes"></a>Art des Serverknotens und vorgegebene Anzahl von Knoten
+## <a name="compute-node-type-and-target-number-of-nodes"></a>Art des Serverknotens und vorgegebene Anzahl von Knoten
 
 Wenn Sie einen Pool erstellen, können Sie die gewünschte Art von Serverknoten und jeweils die vorgegebene Anzahl von Knoten angeben. Es gibt zwei Arten von Serverknoten:
 
@@ -258,6 +260,7 @@ Beim Erstellen eines Tasks können Sie Folgendes angeben:
 * Die von Ihrer Anwendung benötigten **Umgebungsvariablen** . Weitere Informationen finden Sie im Abschnitt [Umgebungseinstellungen für Tasks](#environment-settings-for-tasks) .
 * Die **Einschränkungen** , mit denen der Task ausgeführt werden soll. Beispielsweise enthalten Einschränkungen die maximale Ausführungsdauer des Tasks, die maximale Anzahl von Wiederholungen für einen nicht erfolgreichen Task und die maximal zulässige Beibehaltungsdauer für Dateien im Arbeitsverzeichnis des Tasks.
 * **Anwendungspakete** für die Bereitstellung auf dem Computeknoten, auf dem der Task ausgeführt werden soll. [Anwendungspakete](#application-packages) bieten eine vereinfachte Bereitstellung und Versionsverwaltung der Anwendungen, die von Ihren Tasks ausgeführt werden. Anwendungspakete auf Task-Ebene sind insbesondere in Umgebungen mit gemeinsam genutzten Pools praktisch, bei denen verschiedene Aufträge in einem Pool ausgeführt werden und der Pool nach Abschluss des Auftrags nicht gelöscht wird. Wenn Ihr Auftrag über weniger Tasks als Knoten im Pool verfügt, können Task-Anwendungspakete die Datenübertragung minimieren, da Ihre Anwendung nur auf den Knoten bereitgestellt wird, die Tasks ausführen.
+* Ein Verweis auf ein **Containerimage** in Docker Hub oder eine private Registrierung und zusätzliche Einstellungen zum Erstellen eines Docker-Containers, in dem die Aufgabe für den Knoten ausgeführt wird. Diese Informationen werden nur angegeben, wenn der Pool mit einer Containerkonfiguration eingerichtet ist.
 
 Zusätzlich zu Tasks, die Sie zur Berechnung auf einem Knoten definieren, werden vom Batch-Dienst die folgenden speziellen Tasks bereitgestellt:
 
@@ -386,39 +389,12 @@ Zur Bewältigung einer variablen, kontinuierlichen Auslastung wird in der Regel 
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>Virtuelles Netzwerk (VNET) und Firewallkonfiguration 
 
-Wenn Sie in Batch einen Computeknotenpool bereitstellen, können Sie den Pool einem Subnetz eines [virtuellen Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) zuordnen. Weitere Informationen zum Erstellen eines VNETs mit Subnetzen finden Sie unter [Erstellen eines virtuellen Netzwerks mit mehreren Subnetzen](../virtual-network/virtual-networks-create-vnet-arm-pportal.md). 
+Wenn Sie in Batch einen Computeknotenpool bereitstellen, können Sie den Pool einem Subnetz eines [virtuellen Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) zuordnen. Zur Verwendung eines Azure VNets muss die Batch-Client-API die Azure AD-Authentifizierung (Active Directory) verwenden. Die Azure Batch-Unterstützung für Azure AD ist unter [Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory](batch-aad-auth.md) dokumentiert.  
 
-VNET-Anforderungen:
+### <a name="vnet-requirements"></a>VNET-Anforderungen
+[!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
-* Das virtuelle Netzwerk muss sich in der gleichen **Azure-Region** und im gleichen **Azure-Abonnement** befinden wie das Azure Batch-Konto.
-
-* Für Pools, die mit einer VM-Konfiguration erstellt wurden, werden nur virtuelle Netzwerke unterstützt, die auf ARM (Azure Resource Manager) basieren. Für Pools, die mit einer Clouddienstkonfiguration erstellt wurden, werden sowohl ARM-basierte als auch klassische virtuelle Netzwerke unterstützt. 
-
-* Zur Verwendung eines ARM-basierten Netzwerks muss die Batch-Client-API die [Azure Active Directory-Authentifizierung](batch-aad-auth.md) verwenden. Zur Verwendung eines klassischen virtuellen Netzwerks muss der Dienstprinzipal „MicrosoftAzureBatch“ für das angegebene virtuelle Netzwerk über die rollenbasierte Zugriffssteuerungsrolle „Mitwirkender für klassische virtuelle Computer“ verfügen. 
-
-* Im angegebenen Subnetz müssen genügend freie **IP-Adressen** für die Gesamtanzahl von Zielknoten (Summe der Pooleigenschaften `targetDedicatedNodes` und `targetLowPriorityNodes`) zur Verfügung stehen. Wenn das Subnetz nicht über genügend freie IP-Adressen verfügt, belegt der Batch-Dienst teilweise die Computeknoten im Pool und gibt einen Anpassungsfehler zurück.
-
-* Das angegebene Subnetz muss die Kommunikation mit dem Batch-Dienst zulassen, um Aufgaben für die Computeknoten planen zu können. Falls die Kommunikation mit den Computeknoten durch eine dem VNET zugeordnete **Netzwerksicherheitsgruppe (NSG)** verhindert wird, legt der Batch-Dienst den Zustand der Computeknoten auf **Nicht verwendbar** fest.
-
-* Falls dem angegebenen VNET eine **Netzwerksicherheitsgruppe (NSG)** und/oder eine **Firewall** zugeordnet ist, müssen einige reservierte Systemports für die eingehende Kommunikation aktiviert werden:
-
-- Aktivieren Sie für Pools, die mit einer VM-Konfiguration erstellt wurden, die Ports 29876 und 29877 sowie den Port 22 für Linux und den Port 3389 für Windows. 
-- Aktivieren Sie für Pools, die mit einer Clouddienstkonfiguration erstellt wurden, die Ports 10100, 20100 und 30100. 
-- Aktivieren Sie ausgehende Verbindungen mit Azure Storage an Port 443. Stellen Sie außerdem sicher, dass Ihr Azure Storage-Endpunkt von benutzerdefinierten DNS-Servern aufgelöst werden kann, die Ihr VNET bedienen. Insbesondere eine URL im Format `<account>.table.core.windows.net` muss auflösbar sein.
-
-    Die folgende Tabelle beschreibt die eingehenden Ports, die Sie für Pools aktivieren müssen, die Sie mit der Konfiguration der Konfiguration des virtuellen Computers erstellt haben:
-
-    |    Zielport(s)    |    Quell-IP-Adresse      |    Fügt Batch NSGs hinzu?    |    Erforderlich für die Verwendung des virtuellen Computers?    |    Aktion von Benutzer   |
-    |---------------------------|---------------------------|----------------------------|-------------------------------------|-----------------------|
-    |    <ul><li>Für Pools, die mit der Konfiguration des virtuellen Computers erstellt wurden: 29876, 29877</li><li>Für Pools, die mit der Clouddienstkonfiguration erstellt wurden: 29876, 29877: 10100, 20100, 30100</li></ul>         |    Nur IP-Adressen der Batch-Dienstrolle |    Ja. Batch fügt NSGs auf der Ebene der Netzwerkschnittstellen (NIC) hinzu, die virtuellen Computern angefügt sind. Diese NSGs lassen nur Datenverkehr von IP-Adressen der Batch-Dienstrolle zu. Auch wenn Sie diese Ports für das gesamte Web öffnen, wird der Datenverkehr an der Netzwerkschnittstellen blockiert. |    Ja  |  Sie müssen keine NSG angeben, da der Batch nur Batch-IP-Adressen zulässt. <br /><br /> Wenn Sie jedoch eine NSG angeben, stellen Sie sicher, dass diese Ports für eingehenden Datenverkehr geöffnet sind. <br /><br /> Bei Angabe von „*“ als Quell-IP in Ihrer NSG fügt Batch NSGs weiterhin auf der Ebene der Netzwerkschnittstellen (NIC) hinzu, die virtuellen Computern angefügt sind. |
-    |    3389, 22               |    Benutzercomputer, die für das Debuggen verwendet werden, sodass Sie remote auf den virtuellen Computer zugreifen können.    |    Nein                                    |    Nein                     |    Fügen Sie NSG hinzu, wenn Sie den Remotezugriff (RDP/SSH) auf den virtuellen Computer zulassen möchten.   |                 
-
-    Die folgende Tabelle beschreibt den ausgehenden Port, den Sie aktivieren müssen, um den Zugriff auf Azure Storage zuzulassen:
-
-    |    Ausgehende Ports    |    Ziel    |    Fügt Batch NSGs hinzu?    |    Erforderlich für die Verwendung des virtuellen Computers?    |    Aktion von Benutzer    |
-    |------------------------|-------------------|----------------------------|-------------------------------------|------------------------|
-    |    443    |    Azure Storage    |    Nein    |    Ja    |    Wenn Sie NSGs hinzufügen, stellen Sie sicher, dass dieser Port für den ausgehenden Datenverkehr geöffnet ist.    |
-
+Weitere Informationen zum Einrichten eines Batch-Pools in einem VNet finden Sie unter [Create an Azure Batch pool in a virtual network](batch-virtual-network.md) (Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk).
 
 ## <a name="scaling-compute-resources"></a>Skalieren von Computeressourcen
 Mit der [automatischen Skalierung](batch-automatic-scaling.md)kann der Batch-Dienst die Anzahl von Computeknoten in einem Pool dynamisch an die aktuelle Workload und die Ressourcenverwendung Ihres Computeszenarios anpassen. So können Sie die Gesamtkosten für die Ausführung Ihrer Anwendung senken, indem Sie nur die erforderlichen Ressourcen verwenden und nicht benötigte Ressourcen freigeben.
@@ -525,11 +501,7 @@ Wenn bei einigen Ihrer Tasks Fehler auftreten, kann Ihre Batch-Clientanwendung o
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über die [Batch-APIs und Tools](batch-apis-tools.md), die für die Erstellung von Batch-Lösungen verfügbar sind.
 * Lesen Sie sich [Erste Schritte mit der Azure-Batch-Bibliothek für .NET](batch-dotnet-get-started.md)mit einer Schritt-für-Schritt-Anleitung für eine Batch-Beispielanwendung durch. Es gibt auch eine [Python-Version](batch-python-tutorial.md) des Tutorials, in der eine Workload auf Linux-Computeknoten ausgeführt wird.
-* Laden Sie das [Batch-Explorer][github_batchexplorer]-Beispielprojekt herunter, und erstellen Sie es, um es während der Entwicklung Ihrer Batch-Lösungen zu verwenden. Mit dem Batch-Explorer können Sie die folgenden Aktionen und viele mehr ausführen:
-
-  * Überwachen und Bearbeiten von Pools, Aufträgen und Tasks in Ihrem Batch-Konto
-  * Herunterladen von `stdout.txt`, `stderr.txt` und anderen Dateien von Knoten
-  * Erstellen von Benutzern auf Knoten und Herunterladen von RDP-Dateien für die Remoteanmeldung
+* Laden Sie für die Entwicklung von Batch-Lösungen [BatchLabs][batch_labs] herunter, und installieren Sie es. Mit BatchLabs können Sie Azure Batch-Anwendungen erstellen, debuggen und überwachen. 
 * Informieren Sie sich über das [Erstellen von Pools mit Linux-Computeknoten](batch-linux-nodes.md).
 * Besuchen Sie das [Azure Batch-Forum][batch_forum] auf der MSDN-Website. Das Forum ist ein guter Ort für Fragen – ganz gleich, ob Sie Anfänger oder Experte sind.
 
@@ -541,7 +513,7 @@ Wenn bei einigen Ihrer Tasks Fehler auftreten, kann Ihre Batch-Clientanwendung o
 [msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_sample_taskdeps]:  https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
-[github_batchexplorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
+[batch_labs]: https://azure.github.io/BatchLabs/
 [batch_net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [msdn_env_vars]: https://msdn.microsoft.com/library/azure/mt743623.aspx
 [net_cloudjob_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobmanagertask.aspx

@@ -1,6 +1,6 @@
 ---
-title: "Erstellen Ihres ersten automatisierten Workflows zwischen Systemen und Clouddiensten – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Automatisieren von Geschäftsprozessen und Workflows für Systemintegrations- und EAI-Szenarien (Enterprise Application Integration) durch Erstellen und Ausführen von Logik-Apps"
+title: "Automatisieren von Workflows zwischen Systemen und Clouddiensten – Azure Logic Apps | Microsoft-Dokumentation"
+description: "Es wird beschrieben, wie Sie Logik-Apps zum Automatisieren von Workflows für Szenarien mit Systemintegration und Enterprise Application Integration (EAI) automatisieren."
 author: ecfan
 manager: anneta
 editor: 
@@ -13,221 +13,243 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/18/2017
+ms.date: 10/20/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: d62255ba6e3d5bdfbd792a47f3a92d4c88876742
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5906605192f9b03f612e6ca3a445434a23713d7f
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
-# <a name="create-your-first-logic-app-for-automating-workflows-and-processes-through-the-azure-portal"></a>Erstellen Ihrer ersten Logik-App zum Automatisieren von Workflows und Prozessen über das Azure-Portal
+# <a name="automate-your-first-workflow-to-process-data-with-a-logic-app"></a>Automatisieren Ihres ersten Workflows zum Verarbeiten von Daten mit einer Logik-App
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) können Sie automatisierte Workflows erstellen und ausführen, um Systeme und Dienste ganz ohne Programmieraufwand zu integrieren. Dieses Tutorial zeigt, wie einfach sich Aufgaben mit einem Workflow automatisieren lassen. Dazu wird eine einfache Logik-App erstellt, die einen RSS-Feed auf einer Website auf neue Inhalte prüft und für jedes neue Feedelement eine E-Mail sendet. 
+Sie können Workflows und Geschäftsprozesse mit [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) automatisieren, um Systeme und Dienste schneller für Ihre Organisation zu integrieren. In dieser Schnellstartanleitung erfahren Sie, wie einfach das Erstellen und Ausführen eines automatisierten Workflows ist, indem Sie eine Logik-App erstellen. Die Beispiel-App veranschaulicht, wie Sie einen Workflow automatisieren, der einen Website-RSS-Feed auf neue Elemente überprüft und für jedes Element eine E-Mail sendet.
 
-![Übersicht – Beispiel für eine erste Logik-App](./media/logic-apps-create-a-logic-app/logic-app-overview.png)
+Mit der Logik-App in diesem Beispiel wird etwa folgende E-Mail gesendet:
 
-In diesem Tutorial lernen Sie Folgendes:
+![Gesendete E-Mail bei neuem RSS-Feedelement](./media/logic-apps-create-a-logic-app/rss-feed-email.png)
+
+Hier ist der allgemeine Logik-App-Workflow angegeben, den Sie erstellen:
+
+![Übersicht – Logik-App-Beispiel](./media/logic-apps-create-a-logic-app/logic-app-simple-overview.png)
+
+In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen einer leeren Logik-App
-> * Hinzufügen eines Triggers, damit die Logik-App startet, wenn ein neues RSS-Feedelement veröffentlicht wird
-> * Hinzufügen einer Aktion, damit eine E-Mail mit Details zu dem RSS-Feedelement gesendet wird
-> * Ausführen und Testen der Logik-App
+> * Fügen Sie einen Trigger hinzu, mit dem der Workflow jeweils gestartet wird, wenn im RSS-Feed ein neues Element erscheint.
+> * Fügen Sie eine Aktion hinzu, mit der eine E-Mail mit Details zum RSS-Feedelement gesendet wird.
+> * Führen Sie Ihren Logik-App-Workflow aus.
+
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Sie können sich aber auch [für ein Abonnement mit nutzungsbasierter Bezahlung registrieren](https://azure.microsoft.com/pricing/purchase-options/).
-
-* Ein E-Mail-Konto bei [einem beliebigen von Azure Logic Apps unterstützten E-Mail-Anbieter](../connectors/apis-list.md) für den Versand von Benachrichtigungen. Sie können beispielsweise Office 365 Outlook, Outlook.com, Gmail oder einen anderen unterstützten Anbieter verwenden. Dieses Tutorial verwendet Office 365 Outlook.
+* Ein E-Mail-Konto bei einem beliebigen von Azure Logic Apps unterstützten E-Mail-Anbieter für den Versand von Benachrichtigungen. Beispiele: Office 365 Outlook, Outlook.com oder Google Mail. Weitere unterstützte E-Mail-Connectors finden Sie im [Artikel zu den Connectors](https://docs.microsoft.com/connectors/). In dieser Schnellstartanleitung wird Office 365 Outlook verwendet.
 
   > [!TIP]
   > Besitzer eines privaten [Microsoft-Kontos](https://account.microsoft.com/account) verfügen über ein Outlook.com-Konto. Falls Sie über ein Geschäfts-, Schul- oder Unikonto für Azure verfügen, besitzen Sie ein Office 365 Outlook-Konto.
 
-* Einen Link zum RSS-Feed einer Website. Dieses Beispiel verwendet die [RSS-Feeds für Topmeldungen von der CNN.com-Website](http://rss.cnn.com/rss/cnn_topstories.rss): `http://rss.cnn.com/rss/cnn_topstories.rss`
+* Einen Link zum RSS-Feed einer Website. In diesem Beispiel wird der [RSS-Feed für Topmeldungen von der CNN.com-Website](http://feeds.reuters.com/reuters/topNews) verwendet: `http://feeds.reuters.com/reuters/topNews`
 
-## <a name="1-create-a-blank-logic-app"></a>1. Erstellen einer leeren Logik-App 
+Für diesen Schnellstart muss kein Code geschrieben werden, aber Logic Apps unterstützt andere Szenarien mit Code, z.B. das Ausführen Ihres eigenen Codes über eine Logik-App mit [Azure Functions](../azure-functions/functions-overview.md).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com "Azure-Portal") an.
+## <a name="create-a-blank-logic-app"></a>Erstellen einer leeren Logik-App 
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com "Azure-Portal") an. 
 
 2. Navigieren Sie über das Hauptmenü von Azure zu **Neu** > **Enterprise Integration** > **Logik-App**.
 
-   ![Azure-Portal, Neu, Enterprise Integration, Logik-App](media/logic-apps-create-a-logic-app/azure-portal-create-logic-app.png)
+   ![Azure-Portal, Neu, Enterprise Integration, Logik-App](./media/logic-apps-create-a-logic-app/azure-portal-create-logic-app.png)
 
-3. Erstellen Sie Ihre Logik-App mit den Einstellungen aus der Tabelle.
+3. Erstellen Sie Ihre Logik-App mit den Einstellungen in der Tabelle unter dieser Abbildung:
 
    ![Angeben von Details zur Logik-App](./media/logic-apps-create-a-logic-app/logic-app-settings.png)
 
    | Einstellung | Empfohlener Wert | Beschreibung | 
    | ------- | --------------- | ----------- | 
    | **Name** | *Name Ihrer Logik-App* | Geben Sie einen eindeutigen Namen für die Logik-App an. | 
-   | **Abonnement** | *Ihr Azure-Abonnement* | Wählen Sie das gewünschte Azure-Abonnement aus. | 
-   | **Ressourcengruppe** | *Ihre Azure-Ressourcengruppe* | Erstellen Sie eine Azure-Ressourcengruppe, oder wählen Sie eine aus. Mit einer Azure-Ressourcengruppe lassen sich verwandte Azure-Ressourcen leichter organisieren und verwalten. | 
-   | **Standort** | *Ihre Azure-Region* | Wählen Sie die Datencenterregion für die Bereitstellung Ihrer Logik-App aus. | 
+   | **Abonnement** | *Name-Ihres-Azure-Abonnements* | Wählen Sie das gewünschte Azure-Abonnement aus. | 
+   | **Ressourcengruppe** | *Name-Ihrer-Azure-Ressourcengruppe* | Erstellen Sie eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) für diese Logik-App und zum Organisieren aller Ressourcen, die der App zugeordnet sind. | 
+   | **Standort** | *Ihre-Azure-Datencenterregion* | Wählen Sie die Datencenterregion für die Bereitstellung Ihrer Logik-App aus, z.B. „USA, Westen“. | 
+   | **Log Analytics** | Aus | Aktivieren Sie die Diagnoseprotokollierung für Ihre Logik-App, aber behalten Sie für diesen Schnellstart die Einstellung **Aus** bei. | 
    |||| 
 
-4. Aktivieren Sie abschließend das Kontrollkästchen **An Dashboard anheften**, und klicken Sie auf **Erstellen**.
+4. Wählen Sie die Option **An Dashboard anheften**, wenn Sie fertig sind. Ihre Logik-App wird dann automatisch in Ihrem Azure-Dashboard angezeigt und nach der Bereitstellung geöffnet. Wählen Sie **Erstellen**.
 
-   Sie haben nun eine Azure-Ressource für Ihre Logik-App erstellt. 
-   Nachdem Azure Ihre Logik-App bereitgestellt hat, zeigt der Designer für Logik-Apps Vorlagen für allgemeine Muster an, die Ihnen einen schnelleren Einstieg ermöglichen.
+   > [!NOTE]
+   > Wenn Sie Ihre Logik-App nicht anheften möchten, müssen Sie sie nach der Bereitstellung manuell suchen und öffnen, um fortfahren zu können.
 
-   > [!NOTE] 
-   > Wenn Sie das Kontrollkästchen **An Dashboard anheften** aktivieren, wird Ihre Logik-App nach der Bereitstellung auf dem Azure-Dashboard angezeigt und automatisch im Designer für Logik-Apps geöffnet. Andernfalls können Sie nach der Logik-App suchen und sie manuell öffnen.
+   Nachdem Ihre Logik-App von Azure bereitgestellt wurde, wird der Designer für Logik-Apps geöffnet, und es wird eine Seite mit einem Einführungsvideo angezeigt. 
+   Unterhalb des Videos sind Vorlagen für häufig verwendete Logik-App-Muster angegeben. 
+   In diesem Schnellstart wird Ihre Logik-App von Grund auf erstellt. 
 
-5. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App** aus, um Ihre Logik-App neu zu erstellen.
+5. Scrollen Sie weiter, um den Inhalt nach dem Einführungsvideo und den häufig verwendeten Triggern anzuzeigen. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App**.
 
-   ![Auswählen der Logik-App-Vorlage](./media/logic-apps-create-a-logic-app/choose-logic-app-template.png)
+   ![Auswählen der Vorlage „Leere Logik-App“](./media/logic-apps-create-a-logic-app/choose-logic-app-template.png)
 
-   Der Designer für Logik-Apps zeigt nun die verfügbaren [*Connectors*](../connectors/apis-list.md) und die dazugehörigen [*Trigger*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts) zum Starten des Logik-App-Workflows an.
+   Im Designer für Logik-Apps werden die verfügbaren Connectors mit den dazugehörigen Triggern angezeigt, die zum Starten von Logik-App-Workflows verwendet werden.
 
    ![Logik-App-Trigger](./media/logic-apps-create-a-logic-app/logic-app-triggers.png)
 
-## <a name="2-add-a-trigger-for-starting-the-workflow"></a>2. Hinzufügen eines Triggers zum Starten des Workflows
+## <a name="add-a-trigger-to-detect-new-items"></a>Hinzufügen eines Triggers zum Erkennen neuer Elemente
 
-Jede Logik-App muss mit einem [*Trigger*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts) gestartet werden. Der Trigger wird ausgelöst, wenn ein bestimmtes Ereignis eintritt oder neue Daten die festgelegte Bedingung erfüllen. Das Logic Apps-Modul erstellt dann eine Logik-App-Instanz zur Ausführung Ihres Workflows. Bei jeder Triggerauslösung wird eine weitere separate Instanz erstellt, die Ihren Logik-App-Workflow ausführt.
+Jeder Logik-App-Workflow beginnt mit einem [Trigger](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts). Der Trigger wird ausgelöst, wenn ein bestimmtes Ereignis eintritt oder neue Daten die von Ihnen festgelegte Bedingung erfüllen. Bei jeder Auslösung des Triggers erstellt das Logic Apps-Modul eine Logik-App-Instanz, mit der Ihr Workflow gestartet und ausgeführt wird.
 
-1. Geben Sie im Suchfeld die Zeichenfolge „rss“ als Filter ein. Wählen Sie den folgenden Trigger aus: **RSS – Beim Veröffentlichen eines Feedelements**. 
+1. Geben Sie im Suchfeld den Begriff „rss“ als Filter ein. Wählen Sie den folgenden Trigger aus: **RSS – Beim Veröffentlichen eines Feedelements**. 
 
    ![Trigger „RSS – Beim Veröffentlichen eines Feedelements“ auswählen](./media/logic-apps-create-a-logic-app/rss-trigger.png)
 
-2. Geben Sie den Link für den RSS-Feed der Website an, den Sie überwachen möchten (beispielsweise `http://rss.cnn.com/rss/cnn_topstories.rss`). Legen Sie das Intervall und die Frequenz für die Wiederholung fest. In diesem Beispiel legen wir die Eigenschaften so fest, dass der Feed einmal täglich geprüft wird. 
+2. Geben Sie den Link für den RSS-Feed an, den Sie überwachen möchten, z.B. `http://feeds.reuters.com/reuters/topNews`. Legen Sie das Intervall und die Häufigkeit für die Wiederholung fest. In diesem Beispiel wird der Feed alle fünf Minuten überprüft.
 
    ![Einrichten eines Triggers mit RSS-Feed, Häufigkeit und Intervall](./media/logic-apps-create-a-logic-app/rss-trigger-setup.png)
 
-3. Speichern Sie Ihre Arbeit. Wählen Sie auf der Symbolleiste des Designers **Speichern**.
-Klicken Sie zum Reduzieren und Ausblenden der Triggerdetails auf die Titelleiste des Triggers.
+   Logic Apps erstellt eine Verbindung mit dem RSS-Feed.
+
+   > [!TIP]
+   > Zum Vereinfachen Ihrer Ansicht im Designer können Sie die Details einer Form reduzieren und ausblenden, indem Sie einfach in die Titelleiste der Form klicken.
+
+3. Speichern Sie Ihre Arbeit. Wählen Sie auf der Symbolleiste des Designers **Speichern**. 
 
    ![Speichern Ihrer Logik-App](./media/logic-apps-create-a-logic-app/save-logic-app.png)
 
-   Ihre Logik-App ist nun aktiv, prüft aber bislang nur den RSS-Feed auf neue Elemente, da dem Workflow noch keine Aktionen hinzugefügt wurden. 
+   Ihre Logik-App befindet sich jetzt im Livemodus, aber es wird vorerst nur der RSS-Feed überprüft. Wir fügen daher eine Aktion hinzu, die reagiert, wenn der Trigger ausgelöst wird.
 
-## <a name="3-add-an-action-that-responds-to-the-trigger"></a>3. Hinzufügen einer Aktion als Reaktion auf den Trigger
+## <a name="add-an-action-to-send-email"></a>Hinzufügen einer Aktion zum Senden einer E-Mail
 
-Fügen Sie als Nächstes eine [*Aktion*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts) hinzu. Hierbei handelt es sich um eine Aufgabe, die Ihr Logik-App-Workflow ausführen soll. In diesem Beispiel fügen wir eine Aktion hinzu, die eine E-Mail sendet, wenn im RSS-Feed ein neues Element vorhanden ist.
+Nachdem Sie nun über einen Trigger verfügen, können Sie eine [Aktion](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts) hinzufügen, mit der eine E-Mail gesendet wird, wenn im RSS-Feed ein neues Element erscheint. Ihr Workflow führt diese Aktion durch, nachdem der Trigger ausgelöst wurde.
 
 1. Klicken Sie im Designer für Logik-Apps unter dem Trigger auf **+ Neuer Schritt** > **Aktion hinzufügen**.
 
    ![Hinzufügen einer Aktion](./media/logic-apps-create-a-logic-app/add-new-action.png)
 
-   Der Designer zeigt [verfügbare Connectors](../connectors/apis-list.md) an, damit Sie eine Aktion auswählen können, die ausgeführt werden soll, wenn Ihr Trigger ausgelöst wird.
+   Im Designer werden die Aktionen angezeigt, die von Ihrer Logik-App durchgeführt werden können, wenn der Trigger ausgelöst wird.
 
-   ![Aktion aus der Liste auswählen](./media/logic-apps-create-a-logic-app/logic-app-actions.png)
+   ![Auswählen eines Eintrags aus der Liste mit den Aktionen](./media/logic-apps-create-a-logic-app/logic-app-actions.png)
 
-2. Geben Sie im Suchfeld den Begriff „E-Mail senden“ als Filter ein. Suchen Sie abhängig von Ihrem E-Mail-Anbieter nach dem entsprechenden Connector, und wählen Sie diesen aus. Wählen Sie anschließend die Aktion „E-Mail senden“ für Ihren Connector aus. Beispiel: 
+2. Geben Sie im Suchfeld den Begriff „E-Mail senden“ als Filter ein. Suchen Sie nach dem gewünschten E-Mail-Connector, und wählen Sie ihn aus. Wählen Sie anschließend die Aktion „E-Mail senden“ für diesen Connector aus. Beispiel: 
 
-   * Wählen Sie für ein Geschäfts-, Schul- oder Unikonto in Azure den Office 365 Outlook-Connector aus. 
-   * Wählen Sie für persönliche Microsoft-Konten den Outlook.com-Connector aus. 
-   * Wählen Sie für Gmail-Konten den Gmail-Connector aus. 
+   * Wählen Sie für Geschäfts-, Schul- oder Unikonten für Azure die Option „Office 365 Outlook“. 
+   * Wählen Sie für persönliche Microsoft-Konten die Option „Outlook.com“. 
+   * Wählen Sie für Google Mail-Konten die Option „Google Mail“. 
 
-   Wir fahren mit dem Office 365 Outlook-Connector fort. 
-   Wenn Sie einen anderen Anbieter verwenden, werden dieselben Schritte durchgeführt, allerdings kann das Erscheinungsbild der Benutzeroberfläche eventuell abweichen. 
+   In dieser Schnellstartanleitung wird Office 365 Outlook verwendet. 
+   Wenn Sie einen anderen E-Mail-Anbieter verwenden, werden dieselben Schritte ausgeführt, aber das Erscheinungsbild der Benutzeroberfläche kann eventuell abweichen. 
 
    ![Aktion „Office 365 Outlook – E-Mail senden“ auswählen](./media/logic-apps-create-a-logic-app/actions.png)
 
 3. Wenn Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, melden Sie sich mit dem Benutzernamen und dem Kennwort für Ihr E-Mail-Konto an. 
 
-4. Geben Sie die Details aus der Tabelle an, und wählen Sie die gewünschten Felder für die E-Mail aus.
+   Logic Apps erstellt eine Verbindung mit Ihrem E-Mail-Konto.
 
-   | Aufgabe | Schritte | 
-   | -- | ----- | 
-   | Auswählen verfügbarer Felder für Ihren Workflow | Klicken Sie auf ein Bearbeitungsfeld, sodass die Liste **Dynamischer Inhalt** geöffnet wird, oder klicken Sie auf **Dynamischen Inhalt hinzufügen**. | 
-   | Anzeigen weiterer verfügbarer Felder | Klicken Sie in der Liste **Dynamischer Inhalt** für die einzelnen Abschnitte auf **See more** (Mehr anzeigen).  | 
-   | Hinzufügen von Leerzeilen in einem Bearbeitungsfeld | Drücken Sie UMSCHALT+EINGABE. | 
-   | Schließen der Liste **Dynamischer Inhalt** | Klicken Sie erneut auf **Dynamischen Inhalt hinzufügen**. | 
-   ||| 
+4. Geben Sie nun die Daten an, die Sie in die E-Mail einbinden möchten. 
 
-   ![Auswählen der Daten, die die E-Mail enthalten soll](./media/logic-apps-create-a-logic-app/rss-action-setup.png)
+   1. Geben Sie im Feld **An** die E-Mail-Adresse des Empfängers ein. 
+   Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben.
 
-   | Einstellung | Empfohlener Wert | Beschreibung | 
-   | ------- | --------------- | ----------- | 
-   | **An** | *E-Mail-Adresse des Empfängers* | Geben Sie die E-Mail-Adresse des Empfängers ein. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. | 
-   | **Betreff** | Neuer CNN-Beitrag: **Feedtitel** | Geben Sie den Inhalt des Betreffs der E-Mail ein. <p>Verwenden Sie in diesem Tutorial den vorgeschlagenen Text, und wählen Sie das Feld **Feedtitel** des Triggers aus, das den Titel des Feedelements anzeigt. | 
-   | **Text** | Titel: **Feedtitel** <p>Veröffentlichungsdatum: **Datum der Feedveröffentlichung** <p>Link: **Link zum primären Feed** | Geben Sie den Inhalt des Texts der E-Mail ein. <p>Geben Sie für dieses Tutorial den vorgeschlagenen Text ein, und wählen Sie folgende Triggerfelder aus: <p>- **Feedtitel:** Zeigt erneut den Titel des Feedelements an. </br>- **Datum der Feedveröffentlichung:** Zeigt den Veröffentlichungszeitpunkt (Datum und Uhrzeit) des Elements an. </br>- **Link zum primären Feed:** Zeigt die URL für das Feedelement an. | 
-   |||| 
+   2. Geben Sie im Feld **Betreff** den Betreff der E-Mail ein. 
+   Geben Sie für dieses Beispiel wie gezeigt „New RSS item:“ (Neues RSS-Element:) ein:
 
-   > [!NOTE] 
-   > Wenn Sie ein Feld auswählen, das ein Array speichert, schließt der Designer die Aktion automatisch in eine ForEach-Schleife ein, die auf das Array verweist. Auf diese Weise führt Ihre Logik-App diese Aktion für jedes Arrayelement durch.
+      ![Eingeben des E-Mail-Betreffs](./media/logic-apps-create-a-logic-app/logic-app-add-subject.png)
 
-5. Speichern Sie Ihre Änderungen, wenn Sie fertig sind. Wählen Sie auf der Symbolleiste des Designers **Speichern**.
+      Wenn Sie in das Bearbeitungsfeld klicken, wird die Liste **Dynamischen Inhalt hinzufügen** geöffnet. Sie können dann die verfügbaren Datenfelder auswählen, die in Ihre Aktion eingebunden werden sollen. 
+      Wenn die Liste mit dem dynamischen Inhalt nicht geöffnet wird, können Sie unter dem jeweiligen Bearbeitungsfeld die Option **Dynamischen Inhalt hinzufügen** wählen.
+
+   3. Wählen Sie in der Liste **Dynamischen Inhalt hinzufügen** die Option **Feedtitel**, mit der der Titel des Elements in die E-Mail eingefügt wird.
+
+      ![Eingeben des E-Mail-Betreffs](./media/logic-apps-create-a-logic-app/logic-app-select-field.png)
+
+      Wenn der Vorgang abgeschlossen ist, sieht der Betreff der E-Mail wie in diesem Beispiel aus:
+
+      ![Hinzugefügter Feedtitel](./media/logic-apps-create-a-logic-app/added-feed-title.png)
+
+      > [!NOTE] 
+      > Wenn Sie ein Feld auswählen, das ein Array enthält, z.B. **categories-item**, fügt der Designer automatisch eine For-Each-Schleife für die Aktion hinzu, mit der auf das Feld verwiesen wird. Auf diese Weise kann Ihre Logik-App diese Aktion für jedes Arrayelement durchführen. 
+      > 
+      > Wählen Sie zum Entfernen der Schleife die Auslassungspunkte (**...**) in der Titelleiste der Schleife und dann **Löschen**.
+
+   4. Geben Sie im Feld **Body** (Text) den Inhalt für den E-Mail-Text ein. 
+   Geben Sie für dieses Beispiel diesen Text ein bzw. wählen Sie diese Felder aus:
+
+      ![Hinzufügen des Inhalts für den E-Mail-Text](./media/logic-apps-create-a-logic-app/logic-app-complete.png)
+
+      | Feld | Beschreibung | 
+      | ----- | ----------- | 
+      | **Feedtitel** | Titel des Elements anzeigen | 
+      | **Feed veröffentlicht am** | Datum und Uhrzeit der Elementveröffentlichung anzeigen | 
+      | **Link zum primären Feed** | URL für das Element anzeigen | 
+      ||| 
+
+      > [!TIP]
+      > Drücken Sie UMSCHALT+EINGABETASTE, um in einem Bearbeitungsfeld leere Zeilen hinzuzufügen. 
+      
+5. Speichern Sie Ihre Arbeit. Wählen Sie auf der Symbolleiste des Designers **Speichern**.
 
    ![Fertige Logik-App](./media/logic-apps-create-a-logic-app/save-complete-logic-app.png)
 
-   Um nun Ihre Logik-App zu testen, fahren Sie mit dem nächsten Abschnitt fort.
+## <a name="run-your-logic-app-workflow"></a>Ausführen Ihres Logik-App-Workflows
 
-## <a name="4-run-and-test-your-workflow"></a>4. Ausführen und Testen des Workflows
+Wählen Sie in der Symbolleiste des Designers die Option **Ausführen**, um Ihre Logik-App manuell zu starten. Andernfalls können Sie warten, bis die Logik-App gemäß dem von Ihnen festgelegten Zeitplan ausgeführt wird.
 
-1. Sie können Ihre Logik-App zu Testzwecken manuell ausführen. Klicken Sie hierzu auf der Symbolleiste des Designers auf **Ausführen**. Alternativ kann Ihre Logik-App den angegebenen RSS-Feed auch gemäß dem eingerichteten Zeitplan überprüfen.
+![Logik-App ausführen](./media/logic-apps-create-a-logic-app/run-complete-logic-app.png)
 
-   ![Logik-App ausführen](./media/logic-apps-create-a-logic-app/run-complete-logic-app.png)
+Falls der RSS-Feed über neue Elemente verfügt, sendet Ihre Logik-App für jedes neue Element eine E-Mail. Hier ist beispielsweise ein Beispiel für eine Outlook-E-Mail angegeben, die von dieser Logik-App gesendet wird:
 
-   Wenn Ihre Logik-App neue Elemente findet, sendet sie eine E-Mail mit den von Ihnen ausgewählten Daten. Beispiel:
+![Gesendete E-Mail bei neuem RSS-Feedelement](./media/logic-apps-create-a-logic-app/rss-feed-email.png)
 
-   ![Gesendete E-Mail bei neuem RSS-Feedelement](./media/logic-apps-create-a-logic-app/rss-feed-email.png)
+Falls der Feed keine neuen Elemente enthält, überspringt die Logik-App den Schritt zum Senden einer E-Mail und wartet auf das nächste Intervall, um die Prüfung zu wiederholen. 
 
-   Sollte Ihre Logik-App keine neuen Elemente finden, überspringt sie die Aktion zum Senden einer E-Mail und wiederholt die Prüfung im nächsten Intervall. 
+> [!TIP]
+> Überprüfen Sie Ihren Ordner mit den Junk-E-Mails, falls Sie keine E-Mails erhalten. Wenn Sie unsicher sind, ob Ihre Logik-App richtig ausgeführt wurde, helfen Ihnen die Informationen unter [Diagnostizieren von Fehlern bei Logik-Apps](../logic-apps/logic-apps-diagnosing-failures.md) weiter.
 
-2. Klicken Sie zum Überprüfen des Ausführungs- und Triggerverlaufs Ihrer Logik-App in Ihrem Logik-App-Menü auf **Übersicht**.
-Um weitere Details einer Ausführung anzuzeigen, wählen Sie die Zeile dieser Ausführung.
-
-   ![Überwachen und Anzeigen des Ausführungs- und Triggerverlaufs Ihrer Logik-App](./media/logic-apps-create-a-logic-app/logic-app-run-trigger-history.png)
-
-   > [!TIP]
-   > Sollten Sie nicht die erwarteten Daten vorfinden, klicken Sie auf der Symbolleiste auf **Aktualisieren**.
-
-   Die Ausführungsdetails geben unabhängig vom Erfolg der Ausführung Aufschluss über die erfolgreichen oder nicht erfolgreichen Schritte. 
-
-   ![Details für eine Logik-App-Ausführung anzeigen](./media/logic-apps-create-a-logic-app/logic-app-run-details.png)
-
-   Weitere Informationen zum Status sowie zum Ausführungs- und Triggerverlauf Ihrer Logik-App sowie Informationen zum Diagnostizieren Ihrer Logik-App finden Sie unter [Diagnostizieren von Fehlern bei Logik-Apps](../logic-apps/logic-apps-diagnosing-failures.md).
-
-3. Um die Eingaben und Ausgaben für die einzelnen Schritte anzuzeigen, erweitern Sie den Schritt, den Sie überprüfen möchten. Diese Informationen helfen Ihnen bei der Diagnose und beim Debuggen von Problemen in Ihrer Logik-App. Beispiel:
-
-   ![Schrittdetails anzeigen](./media/logic-apps-create-a-logic-app/logic-app-run-details-expanded.png)
-
-   Weitere Informationen finden Sie unter [Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md).
-
-Damit haben Sie Ihre erste einfache Logik-App erstellt und ausgeführt. Dieses Beispiel zeigt, wie einfach Sie ganz ohne Programmieraufwand Workflows zur Automatisierung von Prozessen erstellen können, um Systeme und Dienste zu integrieren.
-
-> [!NOTE]
-> Ihre Logik-App wird weiter ausgeführt, bis Sie sie deaktivieren. Informationen zum vorübergehenden Deaktivieren Ihrer App finden Sie im nächsten Abschnitt.
+Glückwunsch! Sie haben Ihre erste Logik-App erstellt und ausgeführt. In diesem Schnellstart wurde gezeigt, wie einfach und schnell Sie automatisierte Workflows zum Integrieren von Systemen und Diensten erstellen können.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-In diesem Tutorial werden Ressourcen verwendet und Aktionen durchgeführt, für die unter Umständen Gebühren in Ihrem Azure-Abonnement anfallen. Wenn Sie mit der Durchführung des Tutorials und dem Testen fertig sind, deaktivieren oder löschen Sie unbedingt alle Ressourcen, für die keine Gebühren anfallen sollen.
+Ihre Logik-App wird weiter ausgeführt, und unter Umständen fallen Gebühren für Ihr Azure-Abonnement an, bis Sie die App deaktivieren oder löschen. Wenn Sie Verbindungen für Ihre Logik-App erstellen, bleiben diese außerdem auch nach dem Löschen der Logik-App erhalten. 
 
-Sie können die Ausführung Ihrer Logik-App und das Senden von E-Mail durch die Logik-App stoppen, ohne die App zu löschen. Wählen Sie in Ihrem Logik-App-Menü **Übersicht**. Wählen Sie auf der Symbolleiste **Deaktivieren** aus.
+Wenn Sie fertig sind, sollten Sie unbedingt alle Ressourcen deaktivieren oder löschen, für deren Gebühren Sie nicht aufkommen möchten bzw. die Sie nicht beibehalten möchten. Sie können alle für diesen Schnellstart erstellten Ressourcen löschen, indem Sie die Azure-Ressourcengruppe löschen, die Sie für die Logik-App erstellt haben. 
 
-![Deaktivieren der Logik-App](./media/logic-apps-create-a-logic-app/turn-off-disable-logic-app.png)
+### <a name="delete-resource-group"></a>Ressourcengruppe löschen
 
-## <a name="faq"></a>Häufig gestellte Fragen
+Falls Sie keinerlei Daten dieser Logik-App beibehalten möchten, können Sie die Ressourcengruppe, die Sie für diesen Schnellstart erstellt haben, und alle dazugehörigen Ressourcen löschen. Informieren Sie sich unter [Verwalten von Ressourcen](../azure-resource-manager/resource-group-portal.md#manage-resources) darüber, wie Sie Azure-Ressourcengruppen verwalten.
 
-**F:** Welche Aktionen kann ich noch für meine Logik-App ausführen? </br>
-**A:** Sie können Ihre Logik-App beispielsweise bearbeiten, ihre JSON-Definition anzeigen, das Aktivitätsprotokoll prüfen oder die Logik-App löschen.
+1. Wählen Sie im Azure-Menü die Option **Ressourcengruppen**.
 
-Für weitere Logik-App-Verwaltungsaufgaben stehen im Logik-App-Menü folgende Befehle zur Verfügung:
+2. Wählen Sie die Ressourcengruppe aus, die Sie löschen möchten. Wählen Sie im Ressourcengruppenmenü die Option **Übersicht**, falls sie noch nicht ausgewählt wurde. 
 
-| Aufgabe | Schritte | 
-| ---- | ----- | 
-| Anzeigen von Status, Ausführungs- und Triggerverlauf und allgemeinen Informationen zu Ihrer App | Wählen Sie **Übersicht** aus. | 
-| Bearbeiten Ihrer App | Wählen Sie **Logik-App-Designer** aus. | 
-| Anzeigen der JSON-Definition Ihres App-Workflows | Wählen Sie **Logik-App-Codeansicht** aus. | 
-| Anzeigen der Vorgänge, die von Ihrer Logik-App ausgeführt wurden | Wählen Sie **Aktivitätsprotokoll** aus. | 
-| Anzeigen älterer Versionen für Ihre Logik-App | Wählen Sie **Versionen** aus. | 
-| Vorübergehendes Deaktivieren Ihrer App | Wählen Sie **Übersicht** und anschließend auf der Symbolleiste die Option **Deaktivieren** aus. | 
-| Löschen Ihrer App | Wählen Sie **Übersicht** und anschließend auf der Symbolleiste die Option **Löschen** aus. Geben Sie den Namen der Logik-App ein, und wählen Sie **Löschen**. | 
-||| 
+3. Prüfen Sie in der Gruppe, die Sie löschen möchten, alle Ressourcen. Wählen Sie in der Symbolleiste der Ressourcengruppe die Option **Ressourcengruppe löschen**, wenn Sie fertig sind.
+
+### <a name="turn-off-logic-app"></a>Deaktivieren der Logik-App
+
+Deaktivieren Sie Ihre Logik-App, um die Ausführung zu beenden, ohne Ihre Arbeit zu löschen. 
+
+Wählen Sie in Ihrem Logik-App-Menü **Übersicht**. Wählen Sie auf der Symbolleiste **Deaktivieren** aus.
+
+  ![Deaktivieren der Logik-App](./media/logic-apps-create-a-logic-app/turn-off-disable-logic-app.png)
+
+  > [!TIP]
+  > Wenn das Logik-App-Menü nicht angezeigt wird, können Sie zum Azure-Dashboard zurückwechseln und versuchen, Ihre Logik-App wieder zu öffnen.
+
+### <a name="delete-logic-app"></a>Löschen der Logik-App
+
+Sie können auch nur Ihre Logik-App löschen und alle dazugehörigen Ressourcen beibehalten, z.B. die von Ihnen erstellten Verbindungen.
+
+1. Wählen Sie im Logik-App-Menü die Option **Übersicht**. Wählen Sie in der Symbolleiste die Option **Löschen**. 
+
+   ![Löschen Ihrer Logik-App](./media/logic-apps-create-a-logic-app/delete-logic-app.png)
+
+   > [!TIP]
+   > Wenn das Logik-App-Menü nicht angezeigt wird, können Sie zum Azure-Dashboard zurückwechseln und versuchen, Ihre Logik-App wieder zu öffnen.
+
+2. Bestätigen Sie, dass Sie die Logik-App löschen möchten, und wählen Sie dann die Option **Löschen**.
 
 ## <a name="get-support"></a>Support
 
-* Sollten Sie Fragen zur Azure Logic Apps haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-
-* Sie möchten zur Verbesserung von Azure Logic Apps und der Connectors beitragen? Auf der [Benutzerfeedbackwebsite für Azure Logic Apps](http://aka.ms/logicapps-wish) können Sie über Ideen abstimmen oder selbst Ideen einreichen.
+* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Wenn Sie Features vorschlagen oder Ihre Stimme abgeben möchten, können Sie dies auf der [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish) durchführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen Ihrer Logik-App mit Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)
-* [Hinzufügen von Bedingungen und Ausführen von Workflows](../logic-apps/logic-apps-use-logic-app-features.md)
-*   [Logik-App-Vorlagen](../logic-apps/logic-apps-use-logic-app-templates.md)
-* [Erstellen einer Logik-App mithilfe einer Vorlage](../logic-apps/logic-apps-arm-provision.md)
-* [Preismodell für Logik-Apps](../logic-apps/logic-apps-pricing.md) 
-* [Logik-Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps)
+> [!div class="nextstepaction"]
+> [Create logic app workflows from prebuilt templates](../logic-apps/logic-apps-create-logic-apps-from-templates.md) (Erstellen von Logik-App-Workflows aus vorgefertigten Vorlagen)

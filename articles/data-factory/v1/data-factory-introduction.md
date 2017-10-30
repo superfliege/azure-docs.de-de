@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 08/14/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8d4d574dee4b993d8a464482b244e1f63ade8a57
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9fcfea96516e0cde6329ef9dd4b9024a1b448c5b
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,23 +27,33 @@ ms.lasthandoff: 10/11/2017
 > * [Version 2 – Vorschauversion](../introduction.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschauphase finden Sie weitere Informationen unter [Einführung in Data Factory V2](../introduction.md).
+> Dieser Artikel gilt für Version 1 von Azure Data Factory, die derzeit allgemein verfügbar ist (General Availability, GA). Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschauphase finden Sie weitere Informationen unter [Einführung in Data Factory V2](../introduction.md).
 
 
 ## <a name="what-is-azure-data-factory"></a>Was ist Azure Data Factory?
-Wie werden vorhandene Daten in Zeiten von Big Data in Unternehmen genutzt? Ist es möglich, in der Cloud generierte Daten zu erweitern, indem Referenzdaten von lokalen Datenquellen oder anderen unterschiedlichen Datenquellen verwendet werden? Eine Spiele-Unternehmen erfasst beispielsweise viele Protokolle, die von Spielen in der Cloud erstellt werden. Es möchte diese Protokolle analysieren, um Informationen zu den Vorlieben der Kunden, der Demografie, dem Nutzungsverhalten usw. zu erhalten und so Up-Selling- und Cross-Selling-Chancen zu identifizieren, neue überzeugende Features zu erstellen, die das Unternehmenswachstum fördern, und die Benutzerfreundlichkeit zu verbessern. 
+Wie werden vorhandene Daten in Zeiten von Big Data in Unternehmen genutzt? Ist es möglich, in der Cloud generierte Daten zu erweitern, indem Referenzdaten von lokalen Datenquellen oder anderen unterschiedlichen Datenquellen verwendet werden? 
 
-Zum Analysieren dieser Protokolle benötigt das Unternehmen Referenzdaten, wie etwa Informationen zu den Kunden, zum Spiel und zur Marketingkampagne, die in einem lokalen Datenspeicher gespeichert sind. Daher möchte das Unternehmen Protokolldaten aus dem Clouddatenspeicher und Referenzdaten aus dem lokalen Datenspeicher erfassen. Anschließend werden die Daten mithilfe von Hadoop in der Cloud (Azure HDInsight) verarbeitet, und die Ergebnisdaten werden in einem Data Warehouse in der Cloud wie etwa Azure SQL Data Warehouse oder in einem lokalen Datenspeicher wie SQL Server veröffentlicht. Das Unternehmen möchte diesen Workflow einmal wöchentlich ausführen. 
+Ein Spiele-Unternehmen erfasst beispielsweise Protokolle, die von Spielen in der Cloud erstellt werden. Das Unternehmen möchte diese Protokolle analysieren, um Erkenntnisse zu Vorlieben von Kunden, zu demografischen Daten, zum Nutzungsverhalten usw. zu erhalten. Außerdem möchte es Upselling- und Cross-Selling-Möglichkeiten ermitteln, mitreißende neue Features entwickeln, um das Unternehmenswachstum voranzutreiben, und die Benutzerfreundlichkeit für Kunden erhöhen. 
 
-Hierfür ist eine Plattform erforderlich, mit der das Unternehmen einen Workflow erstellen kann, der Daten aus lokalen Quellen sowie aus Clouddatenspeichern erfassen kann, Daten mithilfe vorhandener Compute Services wie Hadoop umwandelt oder verarbeitet und die Ergebnisse lokal oder in einem Clouddatenspeicher veröffentlicht, damit sie von BI-Anwendungen genutzt werden können. 
+Zum Analysieren dieser Protokolle benötigt das Unternehmen die Referenzdaten (beispielsweise Informationen zu den Kunden, zum Spiel und zur Marketingkampagne), die in einem lokalen Datenspeicher gespeichert sind. Daher möchte das Unternehmen Protokolldaten aus dem Clouddatenspeicher und Referenzdaten aus dem lokalen Datenspeicher erfassen. 
+
+Als Nächstes sollen die Daten mit Hadoop in der Cloud (Azure HDInsight) verarbeitet werden. Das Unternehmen möchte die Ergebnisdaten in einem Data Warehouse in der Cloud, z.B. Azure SQL Data Warehouse, oder einem lokalen Speicher wie SQL Server veröffentlichen. Dieser Workflow soll einmal pro Woche ausgeführt werden. 
+
+Das Unternehmen benötigt eine Plattform, auf der ein Workflow erstellt werden kann, mit dem das Erfassen von Daten aus Datenspeichern lokal oder in der Cloud möglich ist. Außerdem soll es möglich sein, Daten mit vorhandenen Compute Services wie Hadoop zu transformieren und zu verarbeiten und die Ergebnisse in einem Datenspeicher lokal oder in der Cloud zu veröffentlichen, damit sie von BI-Anwendungen genutzt werden können. 
 
 ![Übersicht über Data Factory](media/data-factory-introduction/what-is-azure-data-factory.png) 
 
-Azure Data Factory ist eine Plattform, die für solche Szenarien optimal geeignet ist. Sie ist ein **cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und -transformationen zu orchestrieren und zu automatisieren**. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können.  
+Azure Data Factory ist die optimale Plattform für diese Szenarien. Es ist ein *cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und -transformationen zu orchestrieren und zu automatisieren*. Mit Azure Data Factory können Sie die folgenden Aufgaben durchführen: 
 
-Dies ist eher eine Extract-and-Load (EL)- und eine Transform-and-Load (TL)-Plattform als eine traditionelle Extract-Transform-and-Load (ETL)-Plattform. Die ausgeführten Transformationen dienen vielmehr zum Transformieren/Verarbeiten von Daten mithilfe von Compute Services als zum Ausführen von Transformationen wie beim Hinzufügen abgeleiteter Spalten, Zählen der Zeilenanzahl, Sortieren von Daten usw. 
+- Erstellen und Planen von datengesteuerten Workflows (so genannte Pipelines), die Daten aus unterschiedlichen Datenspeichern erfassen können
 
-Die Daten, die derzeit in Azure Data Factory von Workflows genutzt und erstellt werden, sind **Zeitsegmentdaten** (stündlich, täglich, wöchentlich usw.). Eine Pipeline kann z.B. einmal täglich Eingabedaten lesen, Daten verarbeiten und Ausgabedaten erstellen. Sie können einen Workflow auch nur einmal ausführen.  
+- Verarbeiten oder Transformieren der Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning
+
+-  Veröffentlichen von Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse für die Nutzung durch BI-Anwendungen (Business Intelligence)  
+
+Dies ist eher eine EL- (Extract-and-Load) und TL-Plattform (Transform-and-Load) als eine traditionelle ETL-Plattform (Extract-Transform-and-Load). Die Transformationen verarbeiten Daten mit Compute Services, anstatt abgeleitete Spalten hinzuzufügen, die Anzahl von Zeilen zu zählen, Daten zu sortieren usw. 
+
+Die Daten, die derzeit in Azure Data Factory von Workflows genutzt und erstellt werden, sind *Zeitsegmentdaten* (stündlich, täglich, wöchentlich usw.). Eine Pipeline kann beispielsweise unter Umständen einmal täglich Eingabedaten lesen, Daten verarbeiten und Ausgabedaten erstellen. Sie können einen Workflow auch nur einmal ausführen.  
   
 
 ## <a name="how-does-it-work"></a>Wie funktioniert Application Insights? 
@@ -52,65 +62,74 @@ Die Pipelines (datengesteuerten Workflows) in Azure Data Factory führen in der 
 ![Drei Phasen von Azure Data Factory](media/data-factory-introduction/three-information-production-stages.png)
 
 ### <a name="connect-and-collect"></a>Herstellen einer Verbindung und Sammeln von Daten
-In Unternehmen sind verschiedene Typen von Daten in unterschiedlichen Quellen gespeichert. Der erste Schritt zur Erstellung eines Informationssystems für die Produktion umfasst das Herstellen der Verbindung mit allen erforderlichen Daten- und Verarbeitungsquellen, z.B. SaaS-Dienste, Dateifreigaben, FTP und Webdienste, und das Verschieben der Daten an einen zentralen Standort zur weiteren Verarbeitung nach Bedarf.
+In Unternehmen sind verschiedene Typen von Daten in unterschiedlichen Quellen gespeichert. Der erste Schritt bei der Erstellung eines Informationssystems für die Produktion umfasst das Herstellen der Verbindung mit allen erforderlichen Daten- und Verarbeitungsquellen. Dies sind beispielsweise die Quellen SaaS-Dienste (Software-as-a-Service), Dateifreigaben, FTP und Webdienste. Verschieben Sie die Daten anschließend zur weiteren Verarbeitung an einen zentralen Ort.
 
-Ohne Data Factory müssen Unternehmen benutzerdefinierte Komponenten für die Datenverschiebung erstellen oder benutzerdefinierte Dienste schreiben, um diese Datenquellen und die Verarbeitung zu integrieren. Dies ist mit Kostenaufwand verbunden, und Systeme dieser Art lassen sich nur schwer integrieren und verwalten. Häufig fehlen für Unternehmen geeignete Überwachungs- und Warnfunktionen sowie die Steuerungsmöglichkeiten eines vollständig verwalteten Diensts.
+Ohne Data Factory müssen Unternehmen benutzerdefinierte Komponenten für die Datenverschiebung erstellen oder benutzerdefinierte Dienste schreiben, um diese Datenquellen und die Verarbeitung zu integrieren. Das Integrieren und Verwalten dieser Systeme ist teuer und aufwändig. Außerdem fehlen hierfür häufig für Unternehmen geeignete Überwachungs- und Warnfunktionen sowie die Steuerungsmöglichkeiten eines vollständig verwalteten Diensts.
 
-Mit Data Factory können Sie die Kopieraktivität in einer Datenpipeline nutzen, um Daten sowohl aus lokalen als auch aus Cloud-Quelldatenspeichern zur weiteren Analyse in einen zentralen Datenspeicher in der Cloud zu verschieben. Beispielsweise können Sie Daten in einem Azure Data Lake Store sammeln und später transformieren, indem Sie einen Azure Data Lake Analytics-Computedienst verwenden. Oder sammeln Sie Daten in einer Azure Blob Storage-Instanz, und transformieren Sie sie später mit einem Azure HDInsight Hadoop-Cluster.
+Mit Data Factory können Sie die Kopieraktivität in einer Datenpipeline nutzen, um Daten sowohl aus lokalen als auch aus Cloud-Quelldatenspeichern zur weiteren Analyse in einen zentralen Datenspeicher in der Cloud zu verschieben. 
+
+Beispielsweise können Sie Daten in Azure Data Lake Store sammeln und später transformieren, indem Sie einen Azure Data Lake Analytics-Computedienst verwenden. Oder sammeln Sie Daten in einem Azure-Blobspeicher, und transformieren Sie sie später mit einem Azure HDInsight Hadoop-Cluster.
 
 ### <a name="transform-and-enrich"></a>Transformieren und Erweitern
-Wenn Daten in einem zentralen Datenspeicher in der Cloud gespeichert sind, sollen die erfassten Daten mithilfe von Compute Services wie HDInsight Hadoop, Spark, Data Lake Analytics und Machine Learning verarbeitet oder transformiert werden. Darauf folgt das Erstellen transformierter Daten nach einem verwaltbaren und gesteuerten Zeitplan, um Produktionsumgebungen mit vertrauenswürdigen Daten zu versorgen. 
+Wenn Daten in einem zentralen Datenspeicher in der Cloud gespeichert sind, können Sie sie mit Compute Services wie HDInsight Hadoop, Spark, Data Lake Analytics oder Machine Learning verarbeiten oder übertragen. Darauf folgt das Erstellen transformierter Daten nach einem verwaltbaren und gesteuerten Zeitplan, um Produktionsumgebungen mit vertrauenswürdigen Daten zu versorgen. 
 
 ### <a name="publish"></a>Veröffentlichen 
-Stellen Sie transformierte Daten aus der Cloud für lokale Quellen wie SQL Server bereit, oder behalten Sie sie in den Cloudspeicherquellen, um Sie für Business Intelligence (BI)- und Analysetools sowie andere Anwendungen zur Nutzung verfügbar zu machen.
+Stellen Sie transformierte Daten aus der Cloud auf lokalen Quellen bereit, z.B. SQL Server. Alternativ dazu können Sie sie auch auf Ihren Cloudspeicherquellen belassen, damit sie mit BI-Anwendungen und Analysetools sowie anderen Anwendungen genutzt werden können.
 
-## <a name="key-components"></a>Hauptkomponenten
-Ein Azure-Abonnement kann über mindestens eine Azure Data Factory-Instanz (oder Data Factory) verfügen. Azure Data Factory besteht aus vier Hauptkomponenten, die zusammen die Plattform bereitstellen, auf der Sie datengesteuerte Workflows mit Schritten zum Verschieben und Transformieren von Daten zusammenstellen können. 
+## <a name="key-components"></a>Wichtige Komponenten
+Ein Azure-Abonnement kann über mindestens eine Azure Data Factory-Instanz (oder Data Factory) verfügen. Azure Data Factory besteht aus vier Hauptkomponenten. Zusammen stellen sie die Plattform dar, auf der Sie datengesteuerte Workflows mit Schritten zum Verschieben und Transformieren von Daten zusammenstellen können. 
 
 ### <a name="pipeline"></a>Pipeline
-Eine Data Factory kann eine oder mehrere Pipelines aufweisen. Eine Pipeline ist eine Gruppe mit Aktivitäten. Gemeinsam führen die Aktivitäten einer Pipeline eine Aufgabe durch. Eine Pipeline kann beispielsweise eine Gruppe mit Aktivitäten enthalten, die Daten aus einem Azure-Blob erfasst, und anschließend eine Hive-Abfrage in einem HDInsight-Cluster ausführen, um die Daten zu partitionieren. Der Vorteil hierbei ist, dass die Pipeline Ihnen das Verwalten der Aktivitäten als Gruppe ermöglicht – anstatt für jede Aktivität einzeln. Beispielsweise können Sie die Pipeline bereitstellen und planen, anstatt dies für die Aktivitäten jeweils individuell durchzuführen. 
+Eine Data Factory kann eine oder mehrere Pipelines haben. Eine Pipeline ist eine Gruppe mit Aktivitäten. Gemeinsam führen die Aktivitäten einer Pipeline eine Aufgabe durch. 
+
+Eine Pipeline kann beispielsweise eine Gruppe mit Aktivitäten enthalten, die Daten aus einem Azure-Blob erfasst, und anschließend eine Hive-Abfrage in einem HDInsight-Cluster ausführen, um die Daten zu partitionieren. Der Vorteil hierbei ist, dass die Pipeline Ihnen das Verwalten der Aktivitäten als Gruppe ermöglicht – anstatt für jede Aktivität einzeln. Beispielsweise können Sie die Pipeline bereitstellen und planen, anstatt voneinander unabhängige Aktivitäten zu planen. 
 
 ### <a name="activity"></a>Aktivität
-Eine Pipeline kann über eine oder mehrere Aktivitäten verfügen. Aktivitäten definieren die Aktionen, die Sie auf Ihre Daten anwenden. Beispielsweise können Sie eine Kopieraktivität verwenden, um Daten zwischen zwei Datenspeichern zu kopieren. Analog dazu können Sie eine Hive-Aktivität verwenden, die eine Hive-Abfrage für einen Azure-HDInsight-Cluster ausführt, um Ihre Daten zu transformieren oder zu analysieren. Data Factory unterstützt zwei Arten von Aktivitäten: Datenverschiebungen und Datentransformationen.
+Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Aktivitäten definieren die Aktionen, die Sie auf Ihre Daten anwenden. Beispielsweise können Sie eine Kopieraktivität verwenden, um Daten zwischen zwei Datenspeichern zu kopieren. Auf ähnliche Weise können Sie eine Hive-Aktivität verwenden. Eine Hive-Aktivität führt eine Hive-Abfrage in einem Azure HDInsight-Cluster aus, um Ihre Daten zu transformieren oder zu analysieren. Data Factory unterstützt zwei Arten von Aktivitäten: Datenverschiebungen und Datentransformationen.
 
 ### <a name="data-movement-activities"></a>Datenverschiebungsaktivitäten
-Die Kopieraktivität in Data Factory kopiert die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher. Data Factory unterstützt die folgenden Datenspeicher. Daten aus beliebigen Quellen können in beliebige Senken geschrieben werden. Klicken Sie auf einen Datenspeicher, um zu erfahren, wie Daten in diesen/aus diesem Speicher kopiert werden.
+Die Kopieraktivität in Data Factory kopiert die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher. Daten aus beliebigen Quellen können in beliebige Senken geschrieben werden. Wählen Sie einen Datenspeicher aus, um zu erfahren, wie Daten in diesen bzw. aus diesem Speicher kopiert werden. Data Factory unterstützt die folgenden Datenspeicher:
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 
-Weitere Informationen finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
+Weitere Informationen finden Sie unter [Verschieben von Daten mit der Kopieraktivität](data-factory-data-movement-activities.md).
 
 ### <a name="data-transformation-activities"></a>Datentransformationsaktivitäten
 [!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
 
-Weitere Informationen finden Sie im Artikel [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md).
+Weitere Informationen finden Sie unter [Transformieren von Daten in Azure Data Factory](data-factory-data-transformation-activities.md).
 
 ### <a name="custom-net-activities"></a>Benutzerdefinierte .NET-Aktivitäten
-Falls Sie Daten in einen/aus einem Datenspeicher verschieben müssen, der von der Kopieraktivität nicht unterstützt wird, oder Daten mit Ihrer eigenen Logik transformieren möchten, erstellen Sie eine **benutzerdefinierte .NET-Aktivität**. Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
+Erstellen Sie eine benutzerdefinierte .NET-Aktivität, falls Sie Daten in einen bzw. aus einem Datenspeicher verschieben müssen, der von der Kopieraktivität nicht unterstützt wird, oder Daten mit Ihrer eigenen Logik transformieren möchten. Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
 
-### <a name="datasets"></a>Datasets
-Eine Aktivität verwendet keine oder mehrere Datasets als Eingaben und erzeugt mindestens ein Dataset als Ausgabe. Datasets stellen Datenstrukturen in den Datenspeichern dar, die einfach auf die Daten zeigen bzw. verweisen, die Sie in Ihren Aktivitäten als Eingaben oder Ausgaben verwenden möchten. Ein Azure-Blob-Dataset kann beispielsweise den Blobcontainer und -ordner in Azure Blob Storage angeben, aus dem die Pipeline die Daten lesen soll. Oder ein Azure SQL-Tabellendataset gibt die Tabelle an, in die die Aktivität die Ausgabedaten schreibt. 
+### <a name="datasets"></a>DATASETS
+Eine Aktivität verwendet keine oder mehrere Datasets als Eingaben und erzeugt mindestens ein Dataset als Ausgabe. Bei Datasets handelt es sich um Datenstrukturen in den Datenspeichern. Diese Strukturen zeigen bzw. verweisen auf die Daten, die Sie in Ihren Aktivitäten verwenden möchten (z.B. Ein- oder Ausgaben). 
+
+Ein Azure-Blob-Dataset kann beispielsweise den Blobcontainer und -ordner in Azure Blob Storage angeben, aus dem die Pipeline die Daten lesen soll. Oder ein Azure SQL-Tabellendataset gibt die Tabelle an, in die die Aktivität die Ausgabedaten schreibt. 
 
 ### <a name="linked-services"></a>Verknüpfte Dienste
-Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. Sie können sich dies wie folgt vorstellen: Ein verknüpfter Dienst definiert die Verbindung mit der Datenquelle, und ein Dataset stellt die Struktur der Daten dar. So gibt etwa ein verknüpfter Azure Storage-Dienst die Verbindungszeichenfolge an, um eine Verbindung mit einem Azure Storage-Konto herzustellen. Und ein Azure-Blobdataset gibt den Blobcontainer und den Ordner an, der die Daten enthält.   
+Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. Sie können sich dies wie folgt vorstellen: Ein verknüpfter Dienst definiert die Verbindung mit der Datenquelle, und ein Dataset stellt die Struktur der Daten dar. 
 
-(Beispiele: Azure Storage, lokale SQL Server-Instanz, Azure HDInsight) Verknüpfte Dienste haben in Data Factory zwei Zwecke:
+So gibt etwa ein verknüpfter Azure Storage-Dienst die Verbindungszeichenfolge an, mit der eine Verbindung mit einem Azure Storage-Konto hergestellt wird. Ein Azure-Blobdataset gibt den Blobcontainer und den Ordner an, der die Daten enthält.   
 
-* Sie stellen einen **Datenspeicher** dar (beispielsweise eine lokale SQL Server-Instanz, eine Oracle-Datenbank, eine Dateifreigabe oder ein Azure Blob Storage-Konto). Eine Liste mit unterstützten Datenspeichern finden Sie im Abschnitt [Datenverschiebungsaktivitäten](#data-movement-activities) .
-* Sie stellen eine **Computeressource** dar, die die Ausführung einer Aktivität hosten kann. So wird beispielsweise die HDInsightHive-Aktivität in einem HDInsight-Hadoop-Cluster ausgeführt. Eine Liste mit unterstützten Computeumgebungen finden Sie unter [Datentransformationsaktivitäten](#data-transformation-activities).
+Verknüpfte Dienste werden in Data Factory aus zwei Gründen verwendet:
+
+* Sie stellen einen *Datenspeicher* dar, der beispielsweise eine lokale SQL Server-Datenbank, eine Oracle-Datenbank, eine Dateifreigabe oder ein Azure Blob Storage-Konto enthalten kann (aber nicht darauf beschränkt ist). Eine Liste mit unterstützten Datenspeichern finden Sie im Abschnitt [Datenverschiebungsaktivitäten](#data-movement-activities) .
+
+* Sie stellen eine *Computeressource* dar, die die Ausführung einer Aktivität hosten kann. So wird beispielsweise die HDInsightHive-Aktivität in einem HDInsight-Hadoop-Cluster ausgeführt. Eine Liste mit unterstützten Compute-Umgebungen finden Sie unter [Datentransformationsaktivitäten](#data-transformation-activities).
 
 ### <a name="relationship-between-data-factory-entities"></a>Beziehung zwischen Data Factory-Entitäten
+
 ![Diagramm: Data Factory, ein Clouddaten-Integrationsdienst – Grundlegende Konzepte](./media/data-factory-introduction/data-integration-service-key-concepts.png)
-**Abbildung 2.** Beziehungen zwischen Dataset, Aktivität, Pipeline und verknüpftem Dienst
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
-Derzeit können Data Factorys in den Regionen **USA, Westen**, **USA, Osten** und **Europa, Norden** erstellt werden. Eine Data Factory kann jedoch auf Datenspeicher und Compute Services in anderen Azure-Regionen zugreifen, um Daten zwischen Datenspeichern zu verschieben oder Daten mithilfe von Computediensten zu verarbeiten.
+Derzeit können Data Factorys in den Regionen „USA, Westen“, „USA, Osten“ und „Europa, Norden“ erstellt werden. Eine Data Factory kann aber auf Datenspeicher und Compute Services in anderen Azure-Regionen zugreifen, um Daten zwischen Datenspeichern zu verschieben oder Daten mithilfe von Computediensten zu verarbeiten.
 
-In Azure Data Factory selbst werden keine Daten gespeichert. Der Dienst ermöglicht das Erstellen von datengesteuerten Workflows, um die Verschiebung von Daten zwischen [unterstützten Datenspeichern](#data-movement-activities) und die Verarbeitung von Daten mithilfe von [Compute Services](#data-transformation-activities) in anderen Regionen oder in einer lokalen Umgebung zu orchestrieren. Außerdem können Sie mit programmgesteuerten und UI-basierten Mechanismen [Workflows überwachen und verwalten](data-factory-monitor-manage-pipelines.md) .
+In Azure Data Factory selbst werden keine Daten gespeichert. Sie können datengesteuerte Workflows erstellen, um die Verschiebung der Daten zwischen [unterstützten Datenspeichern](#data-movement-activities) zu orchestrieren. Außerdem können Sie Daten verarbeiten, indem Sie [Compute Services](#data-transformation-activities) in anderen Regionen oder in einer lokalen Umgebung verwenden. Außerdem können Sie mit programmgesteuerten und UI-basierten Mechanismen [Workflows überwachen und verwalten](data-factory-monitor-manage-pipelines.md).
 
-Data Factory ist zwar nur in den Regionen **USA, Westen**, **USA, Osten** und **Europa, Norden** verfügbar, der Datenverschiebungsdienst für Data Factory steht jedoch [global](data-factory-data-movement-activities.md#global) in verschiedenen Regionen zur Verfügung. Wenn sich ein Datenspeicher hinter einer Firewall befindet, werden die Daten stattdessen von einem in der lokalen Umgebung installierten [Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) verschoben.
+Data Factory ist nur in den Regionen „USA, Westen“, „USA, Osten“ und „Europa, Norden“ verfügbar. Der Dienst für die Datenverschiebung in Data Factory ist aber [global](data-factory-data-movement-activities.md#global) in mehreren Regionen verfügbar. Wenn sich ein Datenspeicher hinter einer Firewall befindet, werden die Daten stattdessen von einem in der lokalen Umgebung installierten [Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) verschoben.
 
-Nehmen wir beispielsweise an, dass Ihre Computeumgebungen wie Azure HDInsight-Cluster und Azure Machine Learning außerhalb der Region „Europa, Westen“ ausgeführt werden. Sie können eine Azure Data Factory-Instanz in der Region „Europa, Norden“ erstellen und mit ihr Aufträge in Ihren Computeumgebungen in der Region „Europa, Westen“ planen. Es dauert ein paar Millisekunden, bis Data Factory den Auftrag in Ihrer Computeumgebung ausgelöst hat. Die Dauer für die Ausführung des Auftrags in Ihrer Computeumgebung ändert sich aber nicht.
+Nehmen wir beispielsweise an, dass Ihre Compute-Umgebungen wie Azure HDInsight-Cluster und Azure Machine Learning in der Region „Europa, Westen“ angeordnet sind. Sie können eine Azure Data Factory-Instanz in „Europa, Norden“ erstellen und verwenden. Anschließend können Sie sie nutzen, um Aufträge in Ihren Compute-Umgebungen in „Europa, Westen“ zu planen. Es dauert ein paar Millisekunden, bis Data Factory den Auftrag in Ihrer Compute-Umgebung ausgelöst hat. Die Dauer für die Ausführung des Auftrags in Ihrer Compute-Umgebung ändert sich aber nicht.
 
 ## <a name="get-started-with-creating-a-pipeline"></a>Erste Schritte beim Erstellen einer Pipeline
 Verwenden Sie diese Tools oder APIs, um Datenpipelines in Azure Data Factory zu erstellen: 
@@ -120,12 +139,12 @@ Verwenden Sie diese Tools oder APIs, um Datenpipelines in Azure Data Factory zu 
 - PowerShell
 - .NET API
 - REST-API
-- Azure Resource Manager-Vorlage 
+- Azure Resource Manager-Vorlage
 
 Informationen zum Erstellen von Data Factorys mit Datenpipelines erhalten Sie anhand von Schritt-für-Schritt-Anleitungen in den folgenden Tutorials:
 
 | Lernprogramm: | Beschreibung |
 | --- | --- |
-| [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |In diesem Tutorial erstellen Sie eine Data Factory mit einer Pipeline, mit der **Daten aus Blob Storage in SQL-Datenbank verschoben werden** . |
-| [Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md) |In diesem Tutorial erstellen Sie Ihre erste Azure Data Factory mit einer Datenpipeline zur **Datenverarbeitung** , indem ein Hive-Skript in einem Azure HDInsight (Hadoop)-Cluster ausgeführt wird. |
-| [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) |In diesem Tutorial erstellen Sie eine Data Factory mit einer Pipeline, die Daten aus einer **lokalen** SQL Server-Datenbank in ein Azure-Blob **verschiebt**. Im Rahmen der exemplarischen Vorgehensweise installieren und konfigurieren Sie das Datenverwaltungsgateway auf Ihrem Computer. |
+| [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Erstellen Sie eine Pipeline, mit der Daten aus Blobspeicher in eine SQL-Datenbank verschoben werden. |
+| [Tutorial: Build your first pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters) |Erstellen Sie Ihre erste Azure Data Factory mit einer Datenpipeline für die Datenverarbeitung, indem ein Hive-Skript in einem Azure HDInsight-Cluster (Hadoop) ausgeführt wird. |
+| [Move data between an on-premises data store and a cloud data store by using Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) (Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway) |Erstellen Sie eine Data Factory mit einer Pipeline, die Daten aus einer lokalen SQL Server-Datenbank in ein Azure-Blob verschiebt. Im Rahmen der exemplarischen Vorgehensweise installieren und konfigurieren Sie das Datenverwaltungsgateway auf Ihrem Computer. |

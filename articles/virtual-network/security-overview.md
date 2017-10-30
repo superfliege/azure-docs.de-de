@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 98559cbb0acab91c4b2c30c6d0129e955eef85f9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c5b5d79a18d8c4d370b1deb506285519fdbfbcf8
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="network-security"></a>Netzwerksicherheit
 
@@ -151,7 +151,10 @@ Wenn Sie andere Regeln erstellen und andere Anwendungssicherheitsgruppen als Zie
  
 Informationen zu den Grenzwerten beim Erstellen von Anwendungssicherheitsgruppen und zum Angeben in Sicherheitsregeln finden Sie unter [Einschränkungen bei Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-Anwendungssicherheitsgruppen sind als Vorschauversion verfügbar. Vor der Verwendung von Anwendungssicherheitsgruppen müssen Sie diese entsprechend registrieren, indem Sie die Schritte 1 bis 5 unter [Create a network security group with application security groups](create-network-security-group-preview.md#powershell) (Erstellen einer Netzwerksicherheitsgruppe mit Anwendungssicherheitsgruppen) ausführen und die Informationen unter [Vorschaufeatures](#preview-features) lesen. Während der Vorschauphase sind Anwendungssicherheitsgruppen auf den Bereich des virtuellen Netzwerks beschränkt. Virtuelle Netzwerke, die über Querverweise auf Anwendungssicherheitsgruppen einer Netzwerksicherheitsgruppe per Peering miteinander verknüpft sind, werden nicht angewendet. 
+Anwendungssicherheitsgruppen sind als Vorschauversion verfügbar. Vor der Verwendung von Anwendungssicherheitsgruppen müssen Sie diese entsprechend registrieren, indem Sie die Schritte 1 bis 5 unter [Create a network security group with application security groups](create-network-security-group-preview.md#powershell) (Erstellen einer Netzwerksicherheitsgruppe mit Anwendungssicherheitsgruppen) ausführen und die Informationen unter [Vorschaufeatures](#preview-features) lesen. Für Anwendungssicherheitsgruppen gelten folgende Einschränkungen:
+
+-   Alle Netzwerkschnittstellen innerhalb einer Anwendungssicherheitsgruppe müssen sich im gleichen virtuellen Netzwerk befinden. Einer Anwendungssicherheitsgruppe können keine Netzwerkschnittstellen aus verschiedenen virtuellen Netzwerken hinzugefügt werden. Das virtuelle Netzwerk, in dem sich die erste Netzwerkschnittstelle befindet, die der Anwendungssicherheitsgruppe zugewiesen wurde, definiert das virtuelle Netzwerk, in dem sich alle später zugewiesenen Netzwerkschnittstellen befinden müssen.
+- Wenn Sie Anwendungssicherheitsgruppen als Quelle und Ziel in einer Sicherheitsregel angeben, müssen sich die Netzwerkschnittstellen in beiden Anwendungssicherheitsgruppen im gleichen virtuellen Netzwerk befinden. Wenn also beispielsweise ASG1 Netzwerkschnittstellen aus VNet1 und ASG2 Netzwerkschnittstellen aus VNet2 enthält, kann ASG1 nicht als Quelle und ASG2 nicht als Ziel in einer Regel zugewiesen werden, da sich alle Netzwerkschnittstellen in VNet1 befinden müssen. 
 
 Features, die sich in der Vorschauphase befinden, weisen nicht den gleichen Grad an Verfügbarkeit und Zuverlässigkeit wie bereits allgemein verfügbare Features auf. Vor der Verwendung von Anwendungssicherheitsgruppen müssen Sie diese zuerst entsprechend registrieren. Die Features sind nur in der folgenden Region verfügbar: USA, Westen-Mitte.
 

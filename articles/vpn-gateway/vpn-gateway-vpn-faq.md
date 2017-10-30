@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/30/2017
+ms.date: 10/19/2017
 ms.author: cherylmc,yushwang
-ms.openlocfilehash: b12eab7a430e620d0b6e872551c0252ccb5d4c14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8af984a7321d99faecb9d79903a442c938460919
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
@@ -70,6 +70,15 @@ Richtlinienbasierte Gateways implementieren richtlinienbasierte VPNs verwendet. 
 
 Routenbasierte Gateways implementieren die routenbasierten VPNs. Bei routingbasierten VPNs werden Pakete auf der Grundlage der Routen der IP-Weiterleitungs- oder -Routingtabelle an die entsprechenden VPN-Tunnelschnittstellen weitergeleitet. An den Tunnelschnittstellen werden die Pakete dann ver- bzw. entschlüsselt. Die Richtlinie bzw. der Datenverkehrselektor für routenbasierte VPNs werden im Any-to-Any-Format (bzw. als Platzhalter) konfiguriert.
 
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Kann ich meine richtlinienbasiertes VPN-Gateway zu einem routenbasierten aktualisieren?
+Nein. Ein Azure-VNET-Gatewaytyp kann nicht von richtlinienbasiert zu routenbasiert geändert werden oder umgekehrt. Das Gateway muss gelöscht und neu erstellt werden. Dieser Prozess dauert etwa 60 Minuten. Die IP-Adresse des Gateways und der vorinstallierte Schlüssel (PSK) werden nicht beibehalten.
+1. Löschen Sie alle Verbindungen, die dem zu löschenden Gateway zugeordnet sind.
+2. Löschen des Gateways:
+* [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+* [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+* [Azure Powershell – klassisch](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+3. [Erstellen Sie ein neues Gateway des gewünschten Typs, und schließen Sie das VPN-Setup ab.](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+
 ### <a name="do-i-need-a-gatewaysubnet"></a>Benötige ich ein Gatewaysubnetz?
 
 Ja. Das Gatewaysubnetz enthält die IP-Adressen, die von den Diensten des virtuellen Netzwerkgateways verwendet werden. Sie müssen ein Gatewaysubnetz für Ihr VNet erstellen, um ein virtuelles Netzwerkgateway konfigurieren zu können. Alle Gatewaysubnetze müssen den Namen „GatewaySubnet“ besitzen, damit sie einwandfrei funktionieren. Verwenden Sie für Ihr Gatewaysubnetz keinen anderen Namen. Zudem dürfen keine VMs oder anderen Komponenten im Gatewaysubnetz bereitgestellt werden.
@@ -110,7 +119,6 @@ Für die Authentifizierung können nur vorinstallierte Schlüssel (Pre-Shared Ke
 #### <a name="classic-deployment-model"></a>Klassisches Bereitstellungsmodell
 
 * Azure-Portal: Navigieren Sie zum klassischen virtuellen Netzwerk und dann zu „VPN-Verbindungen“ > „Standort-zu-Standort-VPN-Verbindungen“ > „Name des lokalen Standorts“ > „Lokaler Standort“ > „Clientadressraum“. 
-* Klassisches Portal: Fügen Sie die einzelnen Bereiche, die über das Gateway für Ihr virtuelles Netzwerk gesendet werden sollen, auf der Seite „Netzwerke“ unter „Lokale Netzwerke“ hinzu. 
 
 ### <a name="can-i-configure-force-tunneling"></a>Kann ich Tunnelerzwingung konfigurieren?
 
@@ -160,9 +168,13 @@ Auch andere VPN-Softwarelösungen können mit unserem Gateway verwendet werden, 
 
 ## <a name="P2S"></a>Point-to-Site – native Azure-Zertifikatauthentifizierung
 
+Dieser Abschnitt gilt für das Ressourcen-Manager-Bereitstellungsmodell.
+
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
 ## <a name="P2SRADIUS"></a>Point-to-Site – RADIUS-Authentifizierung
+
+Dieser Abschnitt gilt für das Ressourcen-Manager-Bereitstellungsmodell.
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 

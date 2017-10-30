@@ -1,6 +1,6 @@
 ---
 title: "Connectors für Azure Logic Apps | Microsoft-Dokumentation"
-description: Bei der Erstellung von Logik-Apps stehen zahlreiche von Microsoft verwaltete Connectors zur Auswahl.
+description: Bei der Erstellung von Logik-Apps stehen zahlreiche Microsoft-Connectors zur Auswahl.
 services: logic-apps
 documentationcenter: 
 author: MandiOhlinger
@@ -15,19 +15,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: c14ac7592efabfec8668d7437463e2d8771ee072
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 36d3474c2b8dde0355a265c149fe6ba1920a9f22
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="connectors-list"></a>Liste mit den Connectors
-> [!TIP]
-> Die [vollständige Liste von A bis Z](#az) (in diesem Thema) enthält alle verfügbaren Connectors, die Sie in Ihren Logik-Apps verwenden können. Im Artikel mit den [Connectordetails](/connectors/) sind alle in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen für jeden Connector aufgeführt.
+Die in der Swagger-Beschreibung der einzelnen Connectors definierten Trigger und Aktionen sowie mögliche Connectoreinschränkungen finden Sie unter [Connectors](/connectors/).
 
-Connectors sind ein wesentlicher Bestandteil der Logik-App-Erstellung. Mithilfe dieser Connectors können Sie Ihre lokalen und cloudbasierten Anwendungen deutlich erweitern und Daten, die Sie erstellen, sowie Daten, über die Sie bereits verfügen, für verschiedenste Dinge nutzen. Connectors sind in folgenden Kategorien verfügbar: 
+Connectors sind ein wesentlicher Bestandteil der Logik-App-Erstellung. Mithilfe dieser Connectors können Sie Ihre lokalen und cloudbasierten Anwendungen erweitern und neu erstellte oder bereits vorhandene Daten für verschiedenste Dinge nutzen. Die Connectors stehen entweder als integrierte Aktionen oder als verwaltete Connectors zur Verfügung.
 
-* **Standardconnectors:** Automatisch verfügbar und enthalten, wenn Sie Logik-Apps verwenden. Beispiele wären etwa Service Bus, Power BI, Oracle Database, OneDrive und viele mehr.
+**Integrierte Aktionen:** Das Logic Apps-Modul bietet integrierte Aktionen für die Kommunikation mit Endpunkten und die Ausführung von Aufgaben. Mit diesen Aktionen können Sie beispielsweise HTTP-Endpunkte, Azure Functions und Azure API Management-Vorgänge aufrufen sowie Nachrichten mit Datenvorgängen und Variablen anpassen.
+
+**Verwaltete Connectors:** Diese ermöglichen den Zugriff auf APIs für verschiedene Dienste durch Erstellung von API-Verbindungen, die vom Logic Apps-Dienst gehostet und verwaltet werden. Bei verwalteten Connectors wird zwischen folgenden Kategorien unterschieden:
+
+* **Standardconnectors:** Automatisch verfügbar und enthalten, wenn Sie Logik-Apps verwenden. Beispiele wären etwa Service Bus, Power BI und OneDrive.
+
+* **Lokale Connectors:** Stellen über das [lokale Datengateway][gatewaydoc] eine Verbindung mit lokalen Serveranwendungen her. Lokale Connectors umfassen unter anderem Konnektivität mit Serveranwendungen wie SharePoint Server, SQL Server, Oracle-Datenbank und Dateifreigaben.
 
 * **Integrationskonto-Connectors**: Diese Connectors sind verfügbar, wenn Sie ein Integrationskonto erwerben. Mithilfe dieser Connectors können Sie XML transformieren und überprüfen, B2B-Nachrichten mit AS2/X12/EDIFACT verarbeiten sowie Flatfiles codieren und decodieren. Bei Verwendung von BizTalk Server können Sie Ihre BizTalk-Workflows mit diesen Connectors sehr gut in Azure erweitern.  
 
@@ -35,22 +40,41 @@ Connectors sind ein wesentlicher Bestandteil der Logik-App-Erstellung. Mithilfe 
 
 * **Enterprise-Connectors:** Unter anderem für MQ und SAP. Hierfür fallen zusätzliche Kosten an. 
 
-Ausführlichere Informationen zu den Kosten finden Sie unter [Logik-Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/) sowie unter [Preismodell für Logik-Apps](../logic-apps/logic-apps-pricing.md). 
+Weitere Informationen zu den Kosten finden Sie in den [Preisdetails](https://azure.microsoft.com/pricing/details/logic-apps/) und im [Preismodell](../logic-apps/logic-apps-pricing.md) für Logic Apps. 
 
 ## <a name="popular-connectors"></a>Bekannte Connectors
-Es gibt Tausende von Anwendungen und Millionen von Ausführungen, die mithilfe dieser Connectors erfolgreich Daten und Informationen verarbeiten. Die folgende Tabelle enthält die bekanntesten Connectors und einige Favoriten unserer Benutzer:
+Es gibt Tausende von Anwendungen und Millionen von Ausführungen, die mithilfe dieser Connectors erfolgreich Daten und Informationen verarbeiten. 
+
+### <a name="built-in-actions"></a>Integrierte Aktionen
+Das Logic Apps-Modul bietet Aktionen zum Bearbeiten von Daten, zum Kommunizieren über HTTP sowie zum Steuern des Ablaufs der Logik-App-Definition. Zu diesen Aktionen zählen beispielsweise folgende:
 
 | |  |  |  |
 | --- | --- | --- | --- |
-| [![API-Symbol][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc] | Dieser Connector ist interessant, wenn Sie Aufgaben mit Ihrem Speicherkonto automatisieren möchten. Er unterstützt CRUD-Vorgänge (Create, Read, Update, Delete; Erstellen, Lesen, Aktualisieren, Löschen). | [![API-Symbol][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | Erstellen Sie Funktionen, die benutzerdefinierte Ausschnitte von C#- oder Node.js-Code ausführen, und verwenden Sie diese Funktionen dann in Ihren Logik-Apps.  |
-| [![API-Symbol][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | Einer der am stärksten nachgefragten Connectors. Er verfügt unter anderem über Trigger und Aktionen zum Automatisieren von Workflows mit Leads. | [![API-Symbol][Event-Hubs-icon]<br/>**Event Hubs**][event-hubs-doc] | Nutzen und veröffentlichen Sie Ereignisse auf einem Event Hub. So können Sie beispielsweise mithilfe von Event Hubs eine Ausgabe Ihrer Logik-App abrufen und die Ausgabe anschließend an einen Echtzeitanalyseanbieter senden. |
-| [![API-Symbol][FTPicon]<br/>**FTP**][FTPdoc] | Wenn auf Ihren FTP-Server über das Internet zugegriffen werden kann, können Sie Workflows für die Verwendung von Dateien und Ordnern automatisieren. <br/><br/>Mit dem SFTP-Connector ist auch SFTP verfügbar. | [![API-Symbol][HTTPicon]<br/>**HTTP**][httpdoc] | Verwenden Sie Logik-Apps, um über HTTP mit einem beliebigen Endpunkt zu kommunizieren. |
-| [![API-Symbol][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | Zahlreiche Trigger und noch mehr Aktionen für die Verwendung von Office 365-E-Mails und -Ereignissen innerhalb Ihrer Workflows. <br/><br/>Dieser Connector bietet auch eine Aktion vom Typ *Genehmigungs-E-Mail* zur Genehmigung von Urlaubsanträgen, Spesenabrechnungen und Ähnlichem. <br/><br/>Mit dem Office 365-Benutzer-Connector sind auch Office 365-Benutzer verfügbar.| [![API-Symbol][HTTP-Requesticon]<br/>**Anforderung/Antwort**][HTTP-Requestdoc] | Dieser Connector stellt eine HTTPS-URL bereit. Die Logik-App startet, wenn sie eine an diese URL gerichtete Anforderung empfängt. |
-| [![API-Symbol][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | Melden Sie sich einfach mit Ihrem Salesforce-Konto an, um unter anderem auf Objekte (beispielsweise Leads) zugreifen zu können. |  [![API-Symbol][Service-Busicon]<br/>**Service Bus**][Service-Busdoc] | Der am häufigsten verwendete Connector in Logik-Apps. Er enthält Trigger und Aktionen für asynchrones Messaging sowie zum Veröffentlichen/Abonnieren mit Warteschlangen, Abonnements und Themen. |
-|  [![API-Symbol][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | Wenn Sie SharePoint verwenden und etwas automatisieren möchten, sollten Sie sich diesen Connector näher ansehen. Er eignet sich sowohl für lokale SharePoint-Instanzen als auch für SharePoint Online. | [![API-Symbol][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | Einer der am häufigsten verwendeten Connectors. Er kann eine Verbindung mit einer lokalen SQL Server-Instanz sowie mit Azure SQL-Datenbank herstellen. | 
-| [![API-Symbol][Twittericon]<br/>**Twitter**][Twitterdoc] | Melden Sie sich einfach mit einem Twitter-Konto an, und starten Sie einen neuen Workflow, wenn ein neuer Tweet gepostet wird. Die Tweets können dann in einer SQL-Datenbank oder in einer SharePoint-Liste gespeichert werden. | | | 
+| [![API-Symbol][HTTPicon]<br/>**HTTP**][httpdoc] | Verwenden Sie Logik-Apps, um über HTTP mit einem beliebigen Endpunkt zu kommunizieren.| [![API-Symbol][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | Erstellen Sie Funktionen, die benutzerdefinierte Ausschnitte von C#- oder Node.js-Code ausführen, und verwenden Sie diese Funktionen dann in Ihren Logik-Apps.  |
+| [![API-Symbol][HTTP-Requesticon]<br/>**Anforderung**][HTTP-Requestdoc] | Stellt eine aufrufbare HTTPS-URL bereit, die üblicherweise als Webhook in anderen Anwendungen verwendet wird. Die Logik-App startet, wenn sie eine an diese URL gerichtete Anforderung empfängt. | [![API-Symbol][Recurrenceicon]<br/>**Zeitplan**][recurrencedoc] | Dient zum Starten von Logik-Apps auf der Grundlage einfacher oder komplexer Wiederholungszeitpläne. So können Sie beispielsweise einen ganz einfachen Zeitplan mit einer täglichen Wiederholung oder einen komplexen Zeitplan erstellen, bei dem die Wiederholung jeweils stündlich zwischen 9:00 Uhr und 17:00 Uhr am letzten Freitag des Monats stattfindet. |
+| [![API-Symbol][CallLogicApp-icon]<br/>**Logik-<br/>App aufrufen**][nested-logic-appdoc] | Dient zum Aufrufen einer geschachtelten Logik-App. Jede Logik-App mit einem Anforderungstrigger kann als geschachtelte Logik-App aufgerufen werden.| [![API-Symbol][API/Web-Appicon]<br/>**API-App**][api/web-appdoc] | Dient zum Aufrufen einer App Service-API-App. API-Apps mit Swagger werden genau wie andere erstklassige Aktionen gerendert.|
 
-## <a name="integration-account-connectors"></a>Integrationskonto-Connectors 
+### <a name="standard-connectors"></a>Standardconnectors
+Die folgende Tabelle enthält die bekanntesten Connectors und einige Favoriten unserer Benutzer:
+
+| |  |  |  |
+| --- | --- | --- | --- |
+| [![API-Symbol][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc] | Dieser Connector ist interessant, wenn Sie Aufgaben mit Ihrem Speicherkonto automatisieren möchten. Er unterstützt CRUD-Vorgänge (Create, Read, Update, Delete; Erstellen, Lesen, Aktualisieren, Löschen). | [![API-Symbol][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | Einer der am stärksten nachgefragten Connectors. Er verfügt unter anderem über Trigger und Aktionen zum Automatisieren von Workflows mit Leads. |
+| [![API-Symbol][Event-Hubs-icon]<br/>**Event Hubs**][event-hubs-doc] | Nutzen und veröffentlichen Sie Ereignisse auf einem Event Hub. So können Sie beispielsweise mithilfe von Event Hubs eine Ausgabe Ihrer Logik-App abrufen und die Ausgabe anschließend an einen Echtzeitanalyseanbieter senden. | [![API-Symbol][FTPicon]<br/>**FTP**][FTPdoc] | Wenn auf Ihren FTP-Server über das Internet zugegriffen werden kann, können Sie Workflows für die Verwendung von Dateien und Ordnern automatisieren. <br/><br/>Mit dem SFTP-Connector ist auch SFTP verfügbar. |
+| [![API-Symbol][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | Zahlreiche Trigger und noch mehr Aktionen für die Verwendung von Office 365-E-Mails und -Ereignissen innerhalb Ihrer Workflows. <br/><br/>Dieser Connector bietet auch eine Aktion vom Typ *Genehmigungs-E-Mail* zur Genehmigung von Urlaubsanträgen, Spesenabrechnungen und Ähnlichem. <br/><br/>Mit dem Office 365-Benutzer-Connector sind auch Office 365-Benutzer verfügbar.| [![API-Symbol][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | Melden Sie sich einfach mit Ihrem Salesforce-Konto an, um unter anderem auf Objekte (beispielsweise Leads) zugreifen zu können. | 
+| [![API-Symbol][Service-Busicon]<br/>**Service Bus**][Service-Busdoc] | Der am häufigsten verwendete Connector in Logik-Apps. Er enthält Trigger und Aktionen für asynchrones Messaging sowie zum Veröffentlichen/Abonnieren mit Warteschlangen, Abonnements und Themen. |  [![API-Symbol][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | Wenn Sie SharePoint verwenden und etwas automatisieren möchten, sollten Sie sich diesen Connector näher ansehen. Er eignet sich sowohl für lokale SharePoint-Instanzen als auch für SharePoint Online. |
+| [![API-Symbol][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | Einer der am häufigsten verwendeten Connectors. Er kann eine Verbindung mit einer lokalen SQL Server-Instanz sowie mit Azure SQL-Datenbank herstellen. | [![API-Symbol][Twittericon]<br/>**Twitter**][Twitterdoc] | Melden Sie sich einfach mit einem Twitter-Konto an, und starten Sie einen neuen Workflow, wenn ein neuer Tweet gepostet wird. Die Tweets können dann in einer SQL-Datenbank oder in einer SharePoint-Liste gespeichert werden. | 
+
+### <a name="on-premises-connectors"></a>Lokale Connectors 
+
+Lokale Connectors ermöglichen den Zugriff auf Daten auf lokalen Servern.  Für die Verbindungsherstellung mit einem lokalen Server wird ein [lokales Datengateway][gatewaydoc] benötigt, das einen sicheren Kommunikationskanal bereitstellt, ohne die Netzwerkinfrastruktur konfigurieren zu müssen.  Zu diesen Connectors zählen beispielsweise folgende:
+
+|  |  |  |  |
+| --- | --- | --- | --- |
+| [![API-Symbol][db2icon]<br/>**DB2**][db2doc] | [![API-Symbol][oracle-DB-icon]<br/>**Oracle-Datenbank**][oracle-db-doc] | [![API-Symbol][sharepointicon]<br/>**SharePoint</br> Server**][sharepointserver] | [![API-Symbol][filesystem-icon]<br/>**Datei-</br> system**][filesystemdoc] |
+[![API-Symbol][sql-servericon]<br/>**SQL</br> Server**][sql-serverdoc] | ![API-Symbol][Biztalk-Servericon]<br/>**BizTalk</br> Server**| |
+
+### <a name="integration-account-connectors"></a>Integrationskonto-Connectors 
 
 Das Enterprise Integration Pack (EIP) umfasst Connectors, die in der BizTalk Server-Community bestens bekannt sind. Beim Kauf eines [Integrationskontos](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) erhalten Sie auch folgende Connectors: 
 
@@ -60,27 +84,13 @@ Das Enterprise Integration Pack (EIP) umfasst Connectors, die in der BizTalk Ser
 [![API-Symbol][flatfileicon]<br/>**Flatfile-</br>Codierung**][flatfiledoc] | [![API-Symbol][flatfiledecodeicon]<br/>**Flatfile-</br>Decodierung**][flatfiledecodedoc] | [![API-Symbol][integrationaccounticon]<br/>**Integrations-<br/>konto**][integrationaccountdoc] | [![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc] |
 | [![API-Symbol][x12icon]<br/>**X12-</br>Decodierung**][x12decode] | [![API-Symbol][x12icon]<br/>**X12-</br>Codierung**][x12encode] | [![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc] | |
 
-## <a name="enterprise-connectors"></a>Enterprise-Connectors
+### <a name="enterprise-connectors"></a>Enterprise-Connectors
 
 Stellen Sie in Ihren Logik-Apps eine Verbindung mit Ihren Unternehmensanwendungen her.
 
 |  |  |
 | --- | --- |
 |[![API-Symbol][MQicon]<br/>**MQ**][mqdoc]|[![API-Symbol][SAPicon]<br/>**SAP**][sapconnector]|
-
-
-## <a name="az"></a>Vollständige Liste von A bis Z
-
-Im Artikel zu den [Connectordetails](/connectors/) sind alle in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen für jeden Connector aufgeführt.
-
-| | | | | | | | | | | | | |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [**1**](#1) | [**A**](#a) | [**B**](#b) | [**C**](#c) | [**D**](#d) | [**E**](#e) | [**F**](#f) | [**G**](#g) | [**H**](#h) | [**I**](#i) | [**J**](#j) | [**L**](#l) | [**M**](#m) |
-| [**N**](#n) | [**O**](#o) | [**P**](#p) | [**R**](#r) | [**S**](#s) | [**T**](#t) | [**U**](#u) | [**V**](#v) | [**W**](#w) | [**X**](#x) | [**Y**](#y) | [**Z**](#z) | | 
-
-| | |
-|---|---|
-|<a name="1"></a>10to8 Termin planen10to8<br/><br/><a name="a"></a>Act!<br/>Adobe Creative Cloud<br/>appFigures<br/>[AS2][as2doc]<br/>Asana<br/>Azure Active Directory (AD)<br/>Azure API Management<br/>Azure App Services<br/>Azure-Anwendung<br/>Azure-Automatisierung<br/>[Azure Blob Storage][azureblobstoragedoc]<br/>Azure Data Lake<br/>Azure DocumentDB (Cosmos DB)<br/>[Azure Functions][azure-functionsdoc]<br/>[Azure Logic Apps][nested-logic-appdoc]<br/>AzureML<br/>Azure-Warteschlangen<br/>Azure-Ressourcen-Manager<br/>[Azure SQL-Datenbank][sql-serverdoc]<br/><br/><a name="b"></a>Basecamp 2<br/>Basecamp 3<br/>Batch<br/>Benchmark Email<br/>Bing-Suche<br/>Bitbucket<br/>Bitly<br/>BizTalk Server<br/>Blogger<br/>Box<br/>Buffer<br/><br/><a name="c"></a>Calendly<br/>Campfire<br/>Capsule CRM<br/>Chatter<br/>Cognito Forms<br/>Cognitive Services – Maschinelles Sehen-API<br/>Cognitive Services – Gesichtserkennungs-API<br/>Cognitive Services – LUIS<br/>Cognitive Services – Textanalyse<br/>Common Data Service<br/>Konvertierung von Inhalten<br/>Control-Terminate<br/>[Benutzerdefinierte APIs/Web-Apps][api/web-appdoc]<br/><br/><a name="d"></a>Datenvorgänge<br/>[DB2][db2doc]<br/>Disqus<br/>DocuSign<br/>Do Until<br/>Dropbox<br/>[Dynamics 365 CRM Online][Dynamics-365doc]<br/>Dynamics 365 for Financials<br/>Dynamics 365 for Operations<br/>Dynamics NAV<br/><br/><a name="e"></a>Easy Redmine<br/>EDIFACT<br/>[Event Hubs][event-hubs-doc]<br/>Eventbrite<br/><br/><a name="f"></a>Facebook<br/>[Dateisystem][filesystemdoc]<br/>[Flatfile][flatfiledoc]<br/>FreshBooks<br/>Freshdesk<br/>FreshService<br/>[FTP][ftpdoc]<br/><br/><a name="g"></a>GitHub<br/>Gmail<br/>Google Kalender<br/>Google Kontakte<br/>Google Drive<br/>Google Tabellen<br/>Google Aufgaben<br/>GoToMeeting<br/>GoToTraining<br/>GoToWebinar<br/><br/><a name="h"></a>Harvest<br/>HelloSign<br/>HipChat<br/>[HTTP][httpdoc]<br/>[HTTP + Swagger][http-swaggerdoc]<br/>[HTTP Webhook][webhookdoc]<br/><br/><a name="i"></a>[Informix][informixdoc]<br/>Infusionsoft<br/>Inoreader<br/>Insightly<br/>Instagram<br/>Instapaper<br/>Integrationskonto<br/>Intercom | <a name="j"></a>JotForm<br/>JIRA<br/><br/><a name="l"></a>LeanKit<br/>LiveChat<br/><br/><a name="m"></a>MailChimp<br/>Mandrill<br/>Mittel<br/>Microsoft Forms<br/>Microsoft Teams<br/>Microsoft Translator<br/>[MQ][mqdoc]<br/>MSN Wetter<br/>Muhimbi PDF<br/>MySQL<br/><br/><a name="n"></a>Nexmo<br/><br/><a name="o"></a>[Office 365 Outlook][office365-outlookdoc]<br/>Office 365-Benutzer<br/>Office 365 Video<br/>OneDrive<br/>OneDrive for Business<br/>OneNote (Business)<br/>[Oracle Database][oracle-db-doc]<br/>Outlook Customer Manager<br/>Outlook-Aufgaben<br/>Outlook.com<br/><br/><a name="p"></a>PagerDuty<br/>Parserr<br/>Paylocity<br/>Pinterest<br/>Pipedrive<br/>Pivotal Tracker<br/>Planner<br/>PostgreSQL<br/>Power BI<br/>Project Online<br/><br/><a name="r"></a>Redmine<br/>[Anforderung/Antwort][http-requestdoc]<br/>RSS<br/><br/><a name="s"></a>[Salesforce][salesforcedoc]<br/>[SAP Application Server][sapconnector]<br/>[SAP Message Server][sapconnector]<br/>[Zeitplan][recurrencedoc]<br/>Umfang<br/>SendGrid<br/>Senden von Nachrichten an einen Batch<br/>[Service Bus][service-busdoc]<br/>SFTP<br/>[SharePoint Online][sharepointdoc]<br/>[SharePoint Server][sharepointserver]<br/>Puffer<br/>Smartsheet<br/>SMTP<br/>SparkPost<br/>[SQL Server][sql-serverdoc]<br/>Stripe<br/>SurveyMonkey<br/>Switch Case<br/><br/><a name="t"></a>Teamwork-Projekte<br/>Teradata<br/>Todoist<br/>Toodledo<br/>[XML-Transformation][xmltransformdoc]<br/>Trello<br/>Twilio<br/>[Twitter][twitterdoc]<br/>Typeform<br/><br/><a name="u"></a>UserVoice<br/><br/><a name="v"></a>Variablen<br/>Vimeo<br/>Visual Studio Team Services<br/><br/><a name="w"></a>WebMerge<br/>WordPress<br/>Wunderlist<br/><br/><a name="x"></a>[X12][x12doc]<br/>[XML-Überprüfung][xmlvalidatedoc]<br/><br/><a name="y"></a>Yammer<br/>YouTube<br/><br/><a name="z"></a>Zendesk |
 
 > [!TIP]
 > Wenn Sie sich zunächst mit Azure Logic Apps vertraut machen möchten, ehe Sie sich für ein Azure-Konto registrieren, können Sie [Logic Apps testen](https://tryappservice.azure.com/?appservice=logic). Sie können sofort eine kurzlebige Starter-Logik-App erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
@@ -120,9 +130,9 @@ Logic Apps verfügt über integrierte Aktionen zum Ändern oder Bearbeiten der N
 
 ## <a name="custom-connectors-and-azure-certification"></a>Benutzerdefinierte Connectors und Azure-Zertifizierung 
 
-Zum Aufrufen von APIs, die benutzerdefinierten Code ausführen oder nicht als Connector verfügbar sind, können Sie die Logic Apps-Plattform erweitern, indem Sie [REST-basierte API-Apps als benutzerdefinierte Connectors](../logic-apps/logic-apps-create-api-app.md) erstellen. 
+Zum Aufrufen von APIs, die benutzerdefinierten Code ausführen oder nicht als Connector verfügbar sind, können Sie die Logic Apps-Plattform erweitern, indem Sie [REST-basierte API-Apps erstellen](../logic-apps/logic-apps-create-api-app.md). Sie können auch eigene [benutzerdefinierte Connectors](../logic-apps/custom-connector-overview.md) erstellen, die für jede beliebige Logik-App in Ihrem Abonnement verfügbar gemacht werden können.
 
-Wenn Sie Ihre benutzerdefinierten API-Apps öffentlich machen und für die Nutzung in Azure zur Verfügung stellen möchten, können Sie Ihre Vorschläge an das [Microsoft Azure Certified-Programm](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/) übermitteln.
+Wenn Sie Ihre benutzerdefinierten API-Apps öffentlich machen und für die Verwendung in Azure zur Verfügung stellen möchten, können Sie [Ihre Connectors zur Zertifizierung an Microsoft übermitteln](../logic-apps/custom-connector-submit-certification.md).
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
@@ -139,6 +149,7 @@ Fehlt noch ein Connector-Thema oder Details, die Ihrer Meinung nach wichtig sind
 
 <!--Connectors Documentation-->
 
+[gatewaydoc]: ../logic-apps/logic-apps-gateway-connection.md "Herstellen einer Verbindung mit lokalen Datenquellen über Logik-Apps mit dem lokalen Datengateway"
 [api/web-appdoc]: ../logic-apps/logic-apps-custom-hosted-api.md "Integration von Logik-Apps in App Service-API-Apps"
 [azureblobstoragedoc]: ./connectors-create-api-azureblobstorage.md "Verwalten von Dateien in Ihrem Blobcontainer mit Azure Blob Storage-Connector"
 [azure-functionsdoc]: ../logic-apps/logic-apps-azure-functions.md "Integration von Logik-Apps in Azure Functions"
@@ -216,6 +227,7 @@ Fehlt noch ein Connector-Thema oder Details, die Ihrer Meinung nach wichtig sind
 
 <!--Icon references-->
 [appFiguresicon]: ./media/apis-list/appfigures.png
+[AppServices-icon]: ./media/apis-list/AppServices.png
 [Asanaicon]: ./media/apis-list/asana.png
 [Azure-Automation-icon]: ./media/apis-list/azure-automation.png
 [AzureBlobStorageicon]: ./media/apis-list/azureblob.png
@@ -240,6 +252,8 @@ Fehlt noch ein Connector-Thema oder Details, die Ihrer Meinung nach wichtig sind
 [Easy-Redmineicon]: ./media/apis-list/easyredmine.png
 [Event-Hubs-icon]: ./media/apis-list/eventhubs.png
 [Facebookicon]: ./media/apis-list/facebook.png
+[FileSystem-icon]: ./media/apis-list/filesystem.png
+[FileSystemIcon]: ./media/apis-list/filesystem.png
 [FTPicon]: ./media/apis-list/ftp.png
 [GitHubicon]: ./media/apis-list/github.png
 [Google-Calendaricon]: ./media/apis-list/googlecalendar.png
@@ -293,10 +307,10 @@ Fehlt noch ein Connector-Thema oder Details, die Ihrer Meinung nach wichtig sind
 [YouTubeicon]: ./media/apis-list/youtube.png
 
 <!-- Primitive Icons -->
-[API/Web-Appicon]: ./media/apis-list/api.png
+[API/Web-Appicon]: ./media/apis-list/appservices.png
 [Azure-Functionsicon]: ./media/apis-list/function.png
+[CallLogicApp-icon]: ./media/apis-list/calllogicapp.png
 [Delayicon]: ./media/apis-list/delay.png
-[FileSystemIcon]: ./media/apis-list/filesystem.png
 [HTTPicon]: ./media/apis-list/http.png
 [HTTP-Requesticon]: ./media/apis-list/request.png
 [HTTP-Responseicon]: ./media/apis-list/response.png

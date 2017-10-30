@@ -12,16 +12,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 04/11/2017
+ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: 8b502f5ac5d89801d390a872e7a8b06e094ecbba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 754548a0beb4251d0fa4eef1fba73aabf02151ec
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>.NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen
-## <a name="introduction"></a>Einführung
+
 Mit Visual Studio und dem kostenlosen Azure SDK für .NET können Sie schnell und einfach für Microsoft Azure entwickeln. In diesem Tutorial werden Sie durch die Schritte zum Erstellen einer Anwendung geführt, von der mehrere in der lokalen Umgebung ausgeführte Azure-Ressourcen verwendet werden.
 
 Sie lernen Folgendes:
@@ -68,7 +68,7 @@ Bevor Sie mit der Entwicklung von Azure-Anwendungen beginnen können, müssen Si
 5. Nach Abschluss der Installation haben Sie alles zur Hand, was Sie benötigen, um mit der Entwicklung der App zu beginnen. Das SDK enthält Tools, mit denen Sie ganz leicht Azure-Anwendungen in Visual Studio entwickeln können.
 
 ## <a name="create-a-namespace"></a>Erstellen eines Namespace
-Der nächste Schritt ist die Einrichtung des Dienstnamespace und das Abrufen eines SAS (Shared Access Signature)-Schlüssels. Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert einen SAS-Schlüssel, wenn ein Namespace erstellt wird. Namespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Service Bus bei der Anwendung authentifiziert.
+Der nächste Schritt ist das Erstellen eines *Namespace* und das Abrufen eines [SAS (Shared Access Signature)-Schlüssels](service-bus-sas.md) für diesen Namespace. Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert einen SAS-Schlüssel, wenn ein Namespace erstellt wird. Namespace-Name und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Service Bus bei der Anwendung authentifiziert.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -83,7 +83,7 @@ Anschließend fügen Sie Code hinzu, mit dem Elemente an eine Service Bus-Wartes
 2. Klicken Sie im Menü **Installierte Vorlagen** unter **Visual C#** auf **Cloud** und anschließend auf **Azure-Clouddienst**. Geben Sie dem Projekt den Namen **MultiTierApp**. Klicken Sie dann auf **OK**.
    
    ![][9]
-3. Doppelklicken Sie in den **.NET Framework 4.5**-Rollen auf **ASP.NET-Webrolle**.
+3. Doppelklicken Sie im Bereich **Rollen** auf **ASP.NET-Webrolle**.
    
    ![][10]
 4. Zeigen Sie auf **WebRole1** unter **Azure-Clouddienst-Lösung**, klicken Sie auf das Stiftsymbol, und geben Sie der Webrolle den Namen **FrontendWebRole**. Klicken Sie dann auf **OK**. (Achten Sie darauf „Frontend“ mit kleinem „e“ einzugeben, nicht als „FrontEnd“.)
@@ -92,12 +92,12 @@ Anschließend fügen Sie Code hinzu, mit dem Elemente an eine Service Bus-Wartes
 5. Klicken Sie im Dialogfeld **Neues ASP.NET-Projekt** in der Liste **Vorlage auswählen** auf **MVC**.
    
    ![][12]
-6. Klicken Sie ebenfalls im Dialogfeld **Neues ASP.NET-Projekt** auf die Schaltfläche **Authentifizierung ändern**. Klicken Sie im Dialogfeld **Authentifizierung ändern** auf **Keine Authentifizierung** und dann auf **OK**. Für dieses Tutorial stellen Sie eine App bereit, für die keine Benutzeranmeldung erforderlich ist.
+6. Klicken Sie ebenfalls im Dialogfeld **Neues ASP.NET-Projekt** auf die Schaltfläche **Authentifizierung ändern**. Stellen Sie sicher, dass im Dialogfeld **Authentifizierung ändern** die Option **Keine Authentifizierung** ausgewählt wurde, und klicken Sie dann auf **OK**. Für dieses Tutorial stellen Sie eine App bereit, für die keine Benutzeranmeldung erforderlich ist.
    
     ![][16]
 7. Klicken Sie im Dialogfeld **Neues ASP.NET-Projekt** auf **OK**, um das Projekt zu erstellen.
 8. Klicken Sie im **Projektmappen-Explorer** im Projekt **FrontendWebRole** mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
-9. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus`. Wählen Sie das Paket **WindowsAzure.ServiceBus**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
+9. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach **WindowsAzure.ServiceBus**. Wählen Sie das Paket **WindowsAzure.ServiceBus**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
    
    ![][13]
    
@@ -182,12 +182,12 @@ In diesem Abschnitt erstellen Sie die verschiedenen Seiten, aus denen Ihre Anwen
 5. Erstellen Sie anschließend die Ansicht für die zuvor erstellte `Submit()`-Methode. Klicken Sie mit der rechten Maustaste in die `Submit()`-Methode (Überladung von `Submit()` ohne Parameter), und wählen Sie **Ansicht hinzufügen**.
    
    ![][14]
-6. Ein Dialogfeld zum Erstellen der Ansicht wird geöffnet. Wählen Sie in der Liste **Vorlage** die Option **Erstellen** aus. Klicken Sie in der Liste **Modellklasse** auf die **OnlineOrder**-Klasse.
+6. Ein Dialogfeld zum Erstellen der Ansicht wird geöffnet. Wählen Sie in der Liste **Vorlage** die Option **Erstellen** aus. Wählen Sie in der Liste **Modellklasse** die **OnlineOrder**-Klasse aus.
    
    ![][15]
 7. Klicken Sie auf **Hinzufügen**.
 8. Ändern Sie nun den angezeigten Namen Ihrer Anwendung. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **Views\Shared\\_Layout.cshtml**, um sie im Visual Studio-Editor zu öffnen.
-9. Ersetzen Sie alle Vorkommnisse von **My ASP.NET Application** durch **LITWARE's Products**.
+9. Ersetzen Sie alle Vorkommnisse von **My ASP.NET Application** durch **Northwind Traders Products**.
 10. Entfernen Sie die Links **Home**, **About** und **Contact**. Löschen Sie den hervorgehobenen Code:
     
     ![][28]
@@ -361,9 +361,9 @@ Sie werden nun die Workerrolle zur Verarbeitung der übermittelten Nachrichten e
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Servicebus finden Sie in den folgenden Ressourcen:  
 
-* [Dokumentation zu Azure Service Bus][sbdocs]  
+* [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
+* [Erste Schritte mit der Verwendung von Service Bus-Warteschlangen][sbacomqhowto]
 * [Service Bus-Dienstseite][sbacom]  
-* [Verwenden von Service Bus-Warteschlangen][sbacomqhowto]  
 
 Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:  
 
@@ -390,7 +390,6 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
 [26]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
 [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
 
-[sbdocs]: /azure/service-bus-messaging/  
 [sbacom]: https://azure.microsoft.com/services/service-bus/  
 [sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
 [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36

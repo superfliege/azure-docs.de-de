@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fa08049fd0b13945de307e9d28224ea0d5a1307
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 303ead6e1d98d464aeba2687c2a72a38bc1ce209
+ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Was sind VM-Skalierungsgruppen in Azure?
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Gruppe von identischen virtuellen Computern bereitstellen und verwalten können. Da alle virtuellen Computer in einer Skalierungsgruppe gleich konfiguriert sind, ermöglichen Skalierungsgruppen eine echte automatische Skalierung ohne Vorabbereitstellung virtueller Computer. Das erleichtert die Erstellung umfangreicher Dienste, die auf hohe Rechenleistung, Big Data und Workloads in Containern ausgelegt sind.
@@ -33,7 +33,7 @@ Die folgenden Videos enthalten weitere Informationen zu Skalierungsgruppen:
 * [VM-Skalierungsgruppen mit Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
 ## <a name="creating-and-managing-scale-sets"></a>Erstellen und Verwalten von Skalierungsgruppen
-Eine Skalierungsgruppe können Sie im [Azure-Portal](https://portal.azure.com) wie folgt erstellen: Wählen Sie **Neu** aus, und geben Sie **Skalierung** in die Suchleiste ein. In den Ergebnissen wird **VM-Skalierungsgruppe** aufgeführt. Sie können anschließend die Pflichtfelder ausfüllen, um Ihre Skalierungsgruppe anzupassen und bereitzustellen. Im Portal stehen auch Optionen zum Einrichten grundlegender Regeln für die automatische Skalierung auf der Grundlage der CPU-Auslastung zur Verfügung. 
+Eine Skalierungsgruppe können Sie im [Azure-Portal](https://portal.azure.com) wie folgt erstellen: Wählen Sie **Neu** aus, und geben Sie **Skalierung** in die Suchleiste ein. In den Ergebnissen wird **VM-Skalierungsgruppe** aufgeführt. Sie können anschließend die Pflichtfelder ausfüllen, um Ihre Skalierungsgruppe anzupassen und bereitzustellen. Im Portal stehen auch Optionen zum Einrichten grundlegender Regeln für die automatische Skalierung auf der Grundlage der CPU-Auslastung zur Verfügung. Ihre Skalierungsgruppe können Sie über das Azure-Portal, mithilfe von [Azure PowerShell-Cmdlets](virtual-machine-scale-sets-windows-manage.md) oder mithilfe der Azure CLI 2.0 verwalten.
 
 Skalierungsgruppen können in einer [Verfügbarkeitszone](../availability-zones/az-overview.md) bereitgestellt werden.
 
@@ -46,8 +46,23 @@ Eine Reihe von Beispielvorlagen für VM-Skalierungsgruppen finden Sie im [GitHub
 
 Bei den Schnellstartvorlagenbeispielen steht in der Infodatei für jede Vorlage eine Schaltfläche vom Typ „In Azure bereitstellen“ zur Verfügung, die eine Verknüpfung mit dem Portalbereitstellungsfeature herstellt. Zum Bereitstellen der Skalierungsgruppe klicken Sie auf diese Schaltfläche und geben dann alle Parameter an, die im Portal erforderlich sind. 
 
-## <a name="scaling-a-scale-set-out-and-in"></a>Horizontales Hoch- und Herunterskalieren einer Skalierungsgruppe
-Sie können die Kapazität einer Skalierungsgruppe im Azure-Portal ändern, indem Sie unter **Einstellungen** auf den Abschnitt **Skalierung** klicken. 
+
+## <a name="autoscale"></a>Autoscale
+Die Anzahl von VM-Instanzen in Ihrer Skalierungsgruppe kann automatisch angepasst werden, um eine konsistente Anwendungsleistung zu gewährleisten. Diese automatische Skalierung verringert den Verwaltungsaufwand im Zusammenhang mit der Überwachung und Anpassung Ihrer Skalierungsgruppe, wenn sich der Kundenbedarf im Laufe der Zeit verändert. Sie definieren Regeln, die auf Leistungsmetriken, der Anwendungsantwort oder einem festen Zeitplan basieren, und Ihre Skalierungsgruppe wird automatisch nach Bedarf skaliert.
+
+Für einfache Regeln zur automatischen Skalierung können Sie hostbasierte Leistungsmetriken wie CPU-Auslastung oder Datenträger-E/A verwenden. Diese hostbasierten Metriken stehen direkt zur Verfügung – ganz ohne zusätzliche Agents oder die Installation und Konfiguration von Erweiterungen. Regeln zur automatischen Skalierung mit hostbasierten Metriken können mit einem der folgenden Tools erstellt werden:
+
+- [Azure-Portal](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
+- [Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
+
+Zur Verwendung präziserer Leistungsmetriken können Sie die Azure-Diagnoseerweiterung für VM-Instanzen in Ihrer Skalierungsgruppe installieren und konfigurieren. Mit der Azure-Diagnoseerweiterung können Sie zusätzliche Leistungsmetriken wie etwa die Arbeitsspeichernutzung innerhalb der einzelnen VM-Instanzen erfassen. Diese Leistungsmetriken werden an ein Azure-Speicherkonto gestreamt, und Sie erstellen Regeln zur automatischen Skalierung, die diese Daten nutzen. Weitere Informationen finden Sie in den Artikeln zum Aktivieren der Azure-Diagnoseerweiterung auf einem [virtuellen Linux-Computer](../virtual-machines/linux/diagnostic-extension.md) oder auf einem [virtuellen Windows-Computer](../virtual-machines/windows/ps-extensions-diagnostics.md).
+
+Zur Überwachung der eigentlichen Anwendungsleistung können Sie in Ihrer Anwendung ein kleines Instrumentierungspaket für Application Insights installieren und konfigurieren. Detaillierte Leistungsmetriken für die Reaktionszeit der Anwendung oder die Anzahl von Sitzungen können dann von Ihrer App zurückgestreamt werden. Anschließend können Sie Regeln zur automatischen Skalierung mit definierten Schwellenwerten für die Leistung auf der Anwendungsebene erstellen. Weitere Informationen zu Application Insights finden Sie unter [Was ist Application Insights?](../application-insights/app-insights-overview.md).
+
+
+## <a name="manually-scaling-a-scale-set-out-and-in"></a>Manuelles horizontales Hoch- und Herunterskalieren einer Skalierungsgruppe
+Sie können die Kapazität einer Skalierungsgruppe manuell im Azure-Portal ändern, indem Sie unter **Einstellungen** auf den Abschnitt **Skalierung** klicken. 
 
 Wenn Sie die Kapazität einer Skalierungsgruppe über die Befehlszeile ändern möchten, können Sie den Befehl **scale** der [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-cli) verwenden. Verwenden Sie beispielsweise den folgenden Befehl, um für eine Skalierungsgruppe eine Kapazität von zehn virtuellen Computern festzulegen:
 
@@ -67,26 +82,6 @@ Wenn Sie die Anzahl virtueller Computern in einer Skalierungsgruppe mit einer Az
 
 Wenn Sie eine Azure Resource Manager-Vorlage erneut bereitstellen, um die Kapazität zu ändern, können Sie eine viel kleinere Vorlage definieren, die nur das **SKU**-Eigenschaftspaket mit der aktualisierten Kapazität enthält. Ein entsprechendes Beispiel finden Sie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing).
 
-## <a name="autoscale"></a>Autoscale
-
-Eine Skalierungsgruppe kann bei der Erstellung im Azure-Portal optional mit Einstellungen für die automatische Skalierung konfiguriert werden. Die Anzahl virtueller Computer kann dann auf der Grundlage der CPU-Auslastung erhöht oder verringert werden. 
-
-Viele der Skalierungsgruppenvorlagen in den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) definieren Einstellungen für die automatische Skalierung. Außerdem können Sie Einstellungen für die automatische Skalierung einer vorhandenen Skalierungsgruppe hinzufügen. Das folgende Azure PowerShell-Skript fügt beispielsweise einer Skalierungsgruppe eine CPU-basierte automatische Skalierung hinzu:
-
-```PowerShell
-
-$subid = "yoursubscriptionid"
-$rgname = "yourresourcegroup"
-$vmssname = "yourscalesetname"
-$location = "yourlocation" # e.g. southcentralus
-
-$rule1 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/virtualMachineScaleSets/$vmssname -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:05:00 -ScaleActionCooldown 00:05:00 -ScaleActionDirection Increase -ScaleActionValue 1
-$rule2 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/virtualMachineScaleSets/$vmssname -Operator LessThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:05:00 -ScaleActionCooldown 00:05:00 -ScaleActionDirection Decrease -ScaleActionValue 1
-$profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity 2 -MaximumCapacity 10 -MinimumCapacity 2 -Rules $rule1,$rule2 -Name "autoprofile1"
-Add-AzureRmAutoscaleSetting -Location $location -Name "autosetting1" -ResourceGroup $rgname -TargetResourceId /subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/virtualMachineScaleSets/$vmssname -AutoscaleProfiles $profile1
-```
-
-Eine Liste mit gültigen Metriken für die Skalierung finden Sie unter [Unterstützte Metriken von Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md) (unter der Überschrift „Microsoft.Compute/virtualMachineScaleSets“). Es sind auch komplexere Optionen für die automatische Skalierung verfügbar – etwa für die automatische Skalierung nach Zeitplan und für die Verwendung von Webhooks zur Integration in Warnsysteme.
 
 ## <a name="monitoring-your-scale-set"></a>Überwachen der Skalierungsgruppe
 Im [Azure-Portal](https://portal.azure.com) werden die Skalierungsgruppen und die dazugehörigen Eigenschaften aufgeführt. Darüber hinaus unterstützt das Portal auch Verwaltungsvorgänge. Sie können Verwaltungsvorgänge sowohl für Skalierungsgruppen als auch für einzelne virtuelle Computer innerhalb einer Skalierungsgruppe ausführen. Darüber hinaus wird im Portal ein Graph zur Ressourcennutzung bereitgestellt, den Sie anpassen können. 
