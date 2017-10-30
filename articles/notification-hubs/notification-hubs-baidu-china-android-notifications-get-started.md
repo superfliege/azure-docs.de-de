@@ -3,7 +3,7 @@ title: Erste Schritte mit Azure Notification Hubs mit Baidu | Microsoft Docs
 description: "In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Azure Notification Hubs mit Baidu Pushbenachrichtigungen an Android-Geräte senden."
 services: notification-hubs
 documentationcenter: android
-author: ysxu
+author: kpiteira
 manager: erikre
 editor: 
 ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
@@ -12,25 +12,25 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
-ms.date: 08/19/2016
-ms.author: yuaxu
-ms.openlocfilehash: df3bbda15e1245b6068c2b8290d0c96856051f1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 08/29/2017
+ms.author: kapiteir
+ms.openlocfilehash: 91f20a6e0ff6c2dd512879e9ab3c9369dab5d8ff
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Erste Schritte mit Notification Hubs mit Baidu
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-## <a name="overview"></a>Übersicht
-Baidu Cloud Push ist ein chinesischer Clouddienst, mit dem Sie Pushbenachrichtigungen an mobile Geräte senden können. Dieser Dienst ist in China nützlich, da hier neben Android-Geräten verschiedene App-Stores und Pushdienste vorhanden sind, die in der Regel nicht mit GCM (Google Cloud Messaging) verbunden sind, und die Übermittlung von Pushbenachrichtigungen an Android daher recht komplex ist.
+Baidu Cloud Push ist ein chinesischer Clouddienst, mit dem Sie Pushbenachrichtigungen an mobile Geräte senden können. 
+
+Da Google Play und FCM (Firebase Cloud Messaging) in China nicht verfügbar sind, müssen andere App-Stores und Pushdienste verwendet werden. Baidu ist einer davon. Er wird momentan von Notification Hub verwendet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Tutorial ist Folgendes erforderlich:
 
-* Android SDK (es wird davon ausgegangen, dass Sie Eclipse verwenden), das Sie von der <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android-Website</a> herunterladen können
-* [Mobile Services Android SDK]
+* Android SDK (wir gehen davon aus, dass Sie Android Studio verwenden), das Sie von der <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android-Website</a> herunterladen können
 * [Baidu Push Android SDK]
 
 > [!NOTE]
@@ -41,327 +41,439 @@ Für dieses Tutorial ist Folgendes erforderlich:
 ## <a name="create-a-baidu-account"></a>Erstellen eines Baidu-Kontos
 Zum Verwenden von Baidu müssen Sie über ein Baidu-Konto verfügen. Wenn Sie bereits ein Konto haben, melden Sie sich beim [Baidu-Portal] an, und fahren Sie mit dem nächsten Schritt fort. Andernfalls finden Sie nachfolgend die entsprechenden Anweisungen zum Erstellen eines Baidu-Kontos.  
 
-1. Wechseln Sie zum [Baidu-Portal], und klicken Sie auf den Link **登录** (**Anmeldung**). Klicken Sie auf **立即注册** , um den Registrierungsprozess für ein Konto zu starten.
+1. Wechseln Sie zum [Baidu-Portal], und klicken Sie auf den Link **登录** (**Anmeldung**). Klicken Sie auf **立即注册** (**Jetzt registrieren**), um den Registrierungsprozess für ein Konto zu starten.
    
-   ![][1]
-2. Geben Sie die erforderlichen Details (Telefon, E-Mail-Adresse, Kennwort und Überprüfungscode) ein, und klicken **Sie** auf die Anmeldeschaltfläche.
+    ![Baidu: Registrierung](./media/notification-hubs-baidu-get-started/BaiduRegistration.png)
+
+2. Geben Sie die erforderlichen Details (Telefonnummer, E-Mail-Adresse, Kennwort und Überprüfungscode) ein, und klicken Sie auf **注册** (Registrieren).
    
-   ![][2]
-3. Sie erhalten eine E-Mail an die eingegebene E-Mail-Adresse mit einem Link zur Aktivierung Ihres Baidu-Kontos.
+    ![Baidu: Registrierungseingabe](./media/notification-hubs-baidu-get-started/BaiduRegistrationInput.png)
+
+3. Sie erhalten unter der eingegebenen E-Mail-Adresse eine E-Mail mit einem Link zur Aktivierung Ihres Baidu-Kontos.
    
-   ![][3]
+    ![Baidu: Registrierungsbestätigung](./media/notification-hubs-baidu-get-started/BaiduConfirmation.png)
+
 4. Melden Sie sich bei Ihrem E-Mail-Konto an, öffnen Sie die Baidu-Aktivierungsmail, und klicken Sie auf den Aktivierungslink, um Ihr Baidu-Konto zu aktivieren.
    
-   ![][4]
+    ![Baidu: Aktivierungs-E-Mail](./media/notification-hubs-baidu-get-started/BaiduActivationEmail.png)
 
 Nachdem Sie Ihr Baidu-Konto aktiviert haben, melden Sie sich beim [Baidu-Portal]an.
-
-## <a name="register-as-a-baidu-developer"></a>Registrieren als Baidu-Entwickler
-1. Klicken Sie nach dem Anmelden am [Baidu-Portal] auf **更多>>** (**Mehr**).
-   
-      ![][5]
-2. Scrollen Sie im Abschnitt **站长与开发者服务 (Webmaster- und Entwicklerdienste)** nach unten, und klicken Sie auf **百度开放云平台** (**Offene Baidu-Cloudplattform**).
-   
-      ![][6]
-3. Klicken Sie auf der nächsten Seite oben rechts auf **开发者服务** (**Entwicklerdienste**).
-   
-      ![][7]
-4. Klicken Sie auf der nächsten Seite im Menü in der oberen rechten Ecke auf **注册开发者** (**Registrierte Entwickler**).
-   
-      ![][8]
-5. Geben Sie Name, eine Beschreibung und eine Mobiltelefonnummer für die Zusendung einer SMS an, und klicken Sie dann auf **送验证码** (**Verifizierungscode senden**). Bei internationalen Telefonnummern müssen Sie die Landeskennzahl in Klammern setzen. Ein Beispiel für eine Nummer in den USA ist **(1)1234567890**.
-   
-      ![][9]
-6. Sie sollten dann eine Textnachricht mit einer Überprüfungsnummer erhalten, wie im folgenden Beispiel gezeigt:
-   
-      ![][10]
-7. Geben Sie die Überprüfungsnummer aus der Nachricht in **验证码** (**Bestätigungscode**) ein.
-8. Schließen Sie die Entwicklerregistrierung ab, indem Sie die Baidu-Vereinbarung akzeptieren und auf **提交** (**Senden**) klicken. Bei erfolgreicher Registrierung wird die folgende Seite angezeigt:
-   
-      ![][11]
 
 ## <a name="create-a-baidu-cloud-push-project"></a>Erstellen eines Baidu-Cloud-Push-Projekts
 Wenn Sie ein Baidu-Cloud-Push-Projekt erstellen, erhalten Sie Ihre App-ID, einen API-Schlüssel und einen geheimen Schlüssel.
 
 1. Klicken Sie nach dem Anmelden am [Baidu-Portal] auf **更多>>** (**Mehr**).
    
-      ![][5]
-2. Scrollen Sie im Abschnitt **站长与开发者服务** (**Webmaster- und Entwicklerdienste**) nach unten, und klicken Sie auf **百度开放云平台** (**Offene Baidu-Cloudplattform**).
-   
-      ![][6]
-3. Klicken Sie auf der nächsten Seite oben rechts auf **开发者服务** (**Entwicklerdienste**).
-   
-      ![][7]
-4. Klicken Sie auf der nächsten Seite im Abschnitt **云服务** (**Clouddienste**) auf **云推送** (**Cloud Push**).
-   
-      ![][12]
-5. Wenn Sie als Entwickler registriert wurden, wird im oberen Menü **管理控制台** (**Verwaltungskonsole**) angezeigt. Klicken Sie auf **开发者服务管理** (**Entwicklerdienstverwaltung**).
-   
-      ![][13]
-6. Klicken Sie auf der nächsten Seite auf **创建工程** (**Projekt erstellen**).
-   
-      ![][14]
-7. Geben Sie einen Anwendungsnamen ein, und klicken Sie auf **创建** (**Erstellen**).
-   
-      ![][15]
-8. Nach erfolgreicher Erstellung eines Baidu Cloud Push-Projekts wird eine Seite mit **App-ID**, **API-Schlüssel** und **Geheimer Schlüssel** angezeigt. Notieren Sie den API-Schlüssel und den geheimen Schlüssel, die später verwendet werden.
-   
-      ![][16]
-9. Konfigurieren Sie das Projekt für Pushbenachrichtigungen, indem Sie im linken Bereich auf **云推送** (**Cloud Push**) klicken.
-   
-      ![][31]
-10. Klicken Sie auf der nächsten Seite auf die Schaltfläche **推送设置** (**Einstellungen für Push**).
-    
-    ![][32]  
-11. Fügen Sie auf der Konfigurationsseite den Paketnamen, den Sie in Ihrem Android-Projekt verwenden möchten, im Feld **应用包名** (**Anwendungspaket**) hinzu, und klicken Sie anschließend auf **保存设置** (**Speichern**).  
-    
-    ![][33]
+    ![Registrierung: Mehr](./media/notification-hubs-baidu-get-started/BaiduRegistrationMore.png)
 
-Die Nachricht **保存成功！** (**Speichern war erfolgreich!**) wird angezeigt.
+2. Scrollen Sie im Abschnitt **站长与开发者服务** (**Webmaster- und Entwicklerdienste**) nach unten, und klicken Sie auf **百度云推送** (**Baidu-Cloud-Push**).
+   
+    ![Baidu Open Cloud-Plattform](./media/notification-hubs-baidu-get-started/BaiduOpenCloudPlatform.png)
 
-## <a name="configure-your-notification-hub"></a>Konfigurieren Ihres Notification Hub
-1. Melden Sie sich beim [klassischen Azure-Portal]an, und klicken Sie im unteren Teil des Bildschirms auf **+NEW** .
-2. Klicken Sie auf **App Services**, auf **Service Bus**, auf **Notification Hub** und anschließend auf **Schnellerfassung**.
-3. Geben Sie einen Namen für Ihren **Notification Hub** ein, wählen Sie die **Region** und den **Namespace** aus, in dem dieser Notification Hub erstellt wird, und klicken Sie dann auf **Neuen Benachrichtigungs-Hub erstellen**.  
+3. Klicken Sie auf der nächsten Seite rechts oben auf **登录** (**Anmelden**).
    
-      ![][17]
-4. Klicken Sie auf den Namespace, in dem Sie den Notification Hub erstellt haben, und klicken Sie dann oben auf **Notification Hubs** .
+    ![Baidu: Anmeldung](./media/notification-hubs-baidu-get-started/BaiduLogin.png)
+
+4. Klicken Sie auf der Seite anschließend auf **创建应用** (**Anwendung erstellen**).
+
+    ![Baidu: Anwendung erstellen](./media/notification-hubs-baidu-get-started/BaiduCreateApplication.png)
+
+5. Klicken Sie auf der nächsten Seite auf **创建新应用** (Neue Anwendung erstellen).
    
-      ![][18]
-5. Wählen Sie den erstellten Notification Hub aus, und klicken Sie im Hauptmenü auf **Konfigurieren** .
+    ![Baidu: Neue Anwendung erstellen](./media/notification-hubs-baidu-get-started/BaiduCreateNewApplication.png)
+
+6. Geben Sie einen Anwendungsnamen ein, und klicken Sie auf **创建** (Erstellen).
    
-      ![][19]
-6. Scrollen Sie nach unten zum Abschnitt **Baidu-Benachrichtigungseinstellungen** , und geben Sie den API-Schlüssel und den geheimen Schlüssel ein, die Sie zuvor über die Baidu-Konsole für Ihr Baidu-Cloud-Pushprojekt erhalten haben. Klicken Sie auf **Speichern**.
+    ![](./media/notification-hubs-baidu-get-started/BaiduCreateApplicationDoCreate.png)
+
+7. Nach erfolgreicher Erstellung eines Baidu Cloud Push-Projekts wird eine Seite mit **App-ID**, **API-Schlüssel** und **Geheimer Schlüssel** angezeigt. Notieren Sie sich den API-Schlüssel und den geheimen Schlüssel für später.
    
-      ![][20]
-7. Klicken Sie oben auf die Registerkarte **Dashboard** für den Notification Hub und dann auf **Verbindungszeichenfolge anzeigen**.
+    ![Baidu: Pushgeheimnisse](./media/notification-hubs-baidu-get-started/BaiduGetSecrets.png)
+
+8. Konfigurieren Sie das Projekt für Pushbenachrichtigungen, indem Sie im linken Bereich auf **创建通知** (Benachrichtigung erstellen) klicken.
    
-      ![][21]
-8. Notieren Sie sich die Werte für **DefaultListenSharedAccessSignature** und **DefaultFullSharedAccessSignature** im Fenster **Verbindungsinformationen aufrufen**.
-   
-    ![][22]
+    ![](./media/notification-hubs-baidu-get-started/BaiduCreateNotification.png)
+
+
+## <a name="configure-a-new-notification-hub"></a>Konfigurieren eines neuen Notification Hubs
+[!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
+
+
+&emsp;&emsp;6. Klicken Sie in Ihrem Notification Hub auf **Notification Services** und anschließend auf **Baidu (Android China)**.
+
+&emsp;&emsp;![Azure Notification Hubs – Baidu](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
+
+&emsp;&emsp;7. Scrollen Sie nach unten zum Abschnitt mit den Baidu-Benachrichtigungseinstellungen. Geben Sie den API-Schlüssel und den geheimen Schlüssel aus der Baidu-Konsole in das Baidu Cloud Push-Projekt ein. Klicken Sie anschließend auf „Speichern“.
+
+&emsp;&emsp;![Azure Notification Hubs – Baidu: Geheimnisse](./media/notification-hubs-baidu-get-started/NotificationHubBaiduConfigure.png)
+
+Ihr Notification Hub ist jetzt für die Zusammenarbeit mit Baidu konfiguriert. Außerdem verfügen Sie über die **Verbindungszeichenfolgen**, um Ihre App für das Senden und Empfangen von Pushbenachrichtigungen zu registrieren.
+
+Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `DefaultFullSharedAccessSignature` aus dem Fenster „Verbindungsinformationen aufrufen“.
 
 ## <a name="connect-your-app-to-the-notification-hub"></a>Verbinden Ihrer App mit dem Notification Hub
-1. Erstellen Sie in Eclipse ADT ein neues Android-Projekt (**File** > **New** > **Android Application Project**).
-   
-    ![][23]
-2. Geben Sie unter **Application Name** einen Anwendungsnamen ein, und stellen Sie sicher, dass die SDK-Version unter **Minimum Required SDK** auf **API 16: Android 4.1** festgelegt ist.
-   
-    ![][24]
-3. Klicken Sie auf **Next**, und befolgen Sie die Anweisungen des Assistenten, bis das Fenster **Create Activity** angezeigt wird. Stellen Sie sicher, dass **Blank Activity** ausgewählt ist, und wählen Sie abschließend **Finish** aus, um eine neue Android-Anwendung zu erstellen.
-   
-    ![][25]
-4. Stellen Sie sicher, dass **Project Build Target** richtig festgelegt ist.
-   
-    ![][26]
-5. Laden Sie die Datei „notification-hubs-0.4.jar“ aus dem **Notification-Hubs-Android-SDK auf Bintray** auf der Registerkarte [Files](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4)herunter. Fügen Sie die Datei dem Ordner **libs** Ihres Eclipse-Projekts hinzu, und aktualisieren Sie den Ordner *libs* .
-6. Laden Sie das [Baidu Push Android SDK] herunter, und entpacken Sie es. Öffnen Sie den Ordner **libs**, und kopieren Sie die JAR-Datei **pushservice-x.y.z** und die Ordner **armeabi** & **mips** in den Ordner **libs** Ihrer Android-Anwendung.
-7. Öffnen Sie die Datei **AndroidManifest.xml** Ihres Android-Projekts, und fügen Sie die Berechtigungen hinzu, die für das Baidu SDK erforderlich sind.
-   
-        <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-        <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-        <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-        <uses-permission android:name="android.permission.VIBRATE" />
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-        <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
-        <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-8. Fügen Sie dem **application**-Element in der Datei **AndroidManifest.xml** die Eigenschaft **android:name** hinzu, und ersetzen Sie dabei *yourprojectname* durch Ihren Projektnamen (z.B. **com.example.BaiduTest**). Stellen Sie sicher, dass dieser Projektname mit dem Namen übereinstimmt, den Sie in der Baidu-Konsole konfiguriert haben.
-   
-        <application android:name="yourprojectname.DemoApplication"
-9. Fügen Sie innerhalb des Anwendungselements nach dem Aktivitätselement **.MainActivity** die folgende Konfiguration hinzu, und ersetzen Sie dabei *yourprojectname* durch Ihren Projektnamen (z.B. **com.example.BaiduTest**):
-   
-        <receiver android:name="yourprojectname.MyPushMessageReceiver">
-            <intent-filter>
-                <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
-                <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
-                <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
-            </intent-filter>
-        </receiver>
-   
-        <receiver android:name="com.baidu.android.pushservice.PushServiceReceiver"
-            android:process=":bdservice_v1">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
-            </intent-filter>
-        </receiver>
-   
-        <receiver android:name="com.baidu.android.pushservice.RegistrationReceiver"
-            android:process=":bdservice_v1">
-            <intent-filter>
-                <action android:name="com.baidu.android.pushservice.action.METHOD" />
-                <action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-   
-        <service
-            android:name="com.baidu.android.pushservice.PushService"
-            android:exported="true"
-            android:process=":bdservice_v1"  >
-            <intent-filter>
-                <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
-            </intent-filter>
-        </service>
-10. Fügen Sie dem Projekt eine neue Klasse mit dem Namen **ConfigurationSettings.java** hinzu.
-    
-     ![][28]
-    
-     ![][29]
-11. Fügen Sie der Klasse folgenden Code hinzu:
-    
-        public class ConfigurationSettings {
-                public static String API_KEY = "...";
-                public static String NotificationHubName = "...";
-                public static String NotificationHubConnectionString = "...";
-            }
-    
-    Legen Sie für den Wert von **API_KEY** den Wert fest, den Sie zuvor aus dem Baidu Cloud-Projekt abgerufen haben, für **NotificationHubName** Ihren Notification Hub-Namen aus dem klassischen Azure-Portal und für **NotificationHubConnectionString** die „DefaultListenSharedAccessSignature“ aus dem klassischen Azure-Portal.
-12. Fügen Sie eine neue Klasse namens **DemoApplication.java**mit dem folgenden Code hinzu:
-    
-        import com.baidu.frontia.FrontiaApplication;
-    
-        public class DemoApplication extends FrontiaApplication {
-            @Override
-            public void onCreate() {
-                super.onCreate();
-            }
+1. Erstellen Sie in Android Studio ein neues Android-Projekt („Datei“ > „Neu“ > „Neues Projekt“).
+
+    ![Azure Notification Hubs – Baidu: Neues Projekt](./media/notification-hubs-baidu-get-started/AndroidNewProject.png)
+
+2.  Geben Sie einen Anwendungsnamen ein, und vergewissern Sie sich, dass die erforderliche SDK-Mindestversion auf „API 16: Android 4.1“ festgelegt ist. **Vergewissern Sie sich außerdem, dass Ihr Paketname (应用包名) mit dem Namen im Baidu Cloud Push-Portal übereinstimmt.**
+
+    ![Azure Notification Hubs – Baidu: SDK-Mindestversion 1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png)
+    ![Azure Notification Hubs – Baidu: SDK-Mindestversion 2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+
+3.  Klicken Sie auf „Weiter“, und befolgen Sie die Anweisungen des Assistenten, bis das Fenster „Aktivität erstellen“ angezeigt wird. Vergewissern Sie sich, dass „Blank Activity“ (Leere Aktivität) ausgewählt ist, und klicken Sie abschließend auf „Fertig stellen“, um eine neue Android-Anwendung zu erstellen.
+
+    ![Azure Notification Hubs – Baidu: Aktivität hinzufügen](./media/notification-hubs-baidu-get-started/AndroidAddActivity.png)
+
+4.  Vergewissern Sie sich, dass das Buildziel des Projekts korrekt festgelegt ist.
+
+5.  Fügen Sie anschließend Azure Notification Hubs-Bibliotheken hinzu. Fügen Sie in der Datei `Build.Gradle` für die App im Abschnitt „dependencies“ die folgenden Zeilen hinzu:
+
+    ```javascript
+    compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
+    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+    ```
+
+    Fügen Sie nach dem Abschnitt „dependencies“ das folgende Repository hinzu:
+
+    ```javascript
+    repositories {
+        maven {
+            url "http://dl.bintray.com/microsoftazuremobile/SDK"
         }
-13. Fügen Sie eine weitere neue Klasse namens **MyPushMessageReceiver.java**mit dem folgenden Code hinzu. Dies ist die Klasse, die die vom Baidu-Push-Server empfangenen Pushbenachrichtigungen verarbeitet.
+    }
+    ```
+
+    Zu Vermeidung des Listenkonflikts müssen wir in **Manifest.xml** den folgenden Code hinzufügen:
+
+    ```xml
+    <manifest package="YOUR.PACKAGE.NAME"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    ```
+
+    Im Tag `<application/>` muss außerdem folgender Code eingefügt werden:
+
+    ```xml
+    <application
+        tools:replace="android:allowBackup,icon,theme,label">
+    ```
+
+6.  Laden Sie das [Baidu Push Android SDK] herunter, und entzippen Sie es. Kopieren Sie die Datei `pushservice-x.y.z jar` in den Ordner „libs“. Kopieren Sie anschließend die Dateien mit der Dateinamenerweiterung `.so` in die Ordner vom Typ `src/main/jniLibs` Ihrer Android-Anwendung. (Erstellen Sie hierzu einen neuen Ordner.)
+
+    ![Azure Notification Hubs – Baidu: SDK-Bibliotheken](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
+
+7. Klicken Sie mit der rechten Maustaste im Ordner „libs“ auf die Datei „pushervice-x.y.z.jar“, und klicken Sie auf „Add as Library“ (Als Bibliothek hinzufügen), um diese Bibliothek in das Projekt einzuschließen.
+
+    ![Azure Notification Hubs – Baidu: Als Bibliothek hinzufügen](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
+
+8. Öffnen Sie die Datei **AndroidManifest.xml** Ihres Android-Projekts, und fügen Sie die Berechtigungen hinzu, die für das Baidu SDK erforderlich sind. **Ersetzen Sie `YOURPACKAGENAME` durch Ihren Paketnamen.**
+
+    ```xml
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    !! <uses-permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.YOURPACKAGENAME" />
+    !!<permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.YOURPACKAGENAME"android:protectionLevel="normal" />
+
+    ```
+
+9. Fügen Sie innerhalb des Anwendungselements nach dem Aktivitätselement `.MainActivity` die folgende Konfiguration hinzu, und ersetzen Sie dabei *yourprojectname* durch Ihren Projektnamen (beispielsweise `com.example.BaiduTest`):
+
+    ```xml
+    <activity
+        android:name="com.baidu.android.pushservice.richmedia.MediaViewActivity"
+        android:configChanges="orientation|keyboardHidden"
+        android:label="MediaViewActivity" />
+    <activity
+        android:name="com.baidu.android.pushservice.richmedia.MediaListActivity"
+        android:configChanges="orientation|keyboardHidden"
+        android:label="MediaListActivity"
+        android:launchMode="singleTask" />
+ 
+    <!-- Push application definition message -->
+    <receiver android:name=".MyPushMessageReceiver">
+        <intent-filter>
+
+            <!-- receive push message-->
+            <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
+            <!-- receive bind,unbind,fetch,delete.. message-->
+            <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
+            <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
+        </intent-filter>
+    </receiver>
+
+    <receiver
+        android:name="com.baidu.android.pushservice.PushServiceReceiver"
+        android:process=":bdservice_v1">
+        <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
+            <action android:name="com.baidu.android.pushservice.action.media.CLICK" />
+            <action android:name="android.intent.action.MEDIA_MOUNTED" />
+            <action android:name="android.intent.action.USER_PRESENT" />
+            <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+            <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+        </intent-filter>
+    </receiver>
+
+    <receiver
+        android:name="com.baidu.android.pushservice.RegistrationReceiver"
+        android:process=":bdservice_v1">
+        <intent-filter>
+            <action android:name="com.baidu.android.pushservice.action.METHOD" />
+            <action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+            <data android:scheme="package" />
+        </intent-filter>
+    </receiver>
+
+    <service
+        android:name="com.baidu.android.pushservice.PushService"
+        android:exported="true"
+        android:process=":bdservice_v1">
+        <intent-filter>
+            <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
+        </intent-filter>
+    </service>
+
+    <service
+        android:name="com.baidu.android.pushservice.CommandService"
+        android:exported="true" />
+
+    <!-- Adapt the ContentProvider declaration required for the Android N system, and the write permissions include the application package name-->
+    <provider
+        android:name="com.baidu.android.pushservice.PushInfoProvider"
+        android:authorities="com.baidu.push.example.bdpush"
+        android:exported="true"
+        android:protectionLevel="signature"
+        android:writePermission="baidu.push.permission.WRITE_PUSHINFOPROVIDER. yourprojectname  " />
+
+    <!-- API Key of the Baidu application -->
+    <meta-data
+        android:name="api_key"
+        !!   android:value="api_key" />
+    </application>
+    ```
+
+10. Fügen Sie dem Projekt eine neue Klasse namens `ConfigurationSettings.java` hinzu.
+
+    ```java
+    public class ConfigurationSettings {
+        public static String API_KEY = "...";
+        public static String NotificationHubName = "...";
+        public static String NotificationHubConnectionString = "...";
+    }
+    ```
     
-        import java.util.List;
-        import android.content.Context;
-        import android.os.AsyncTask;
-        import android.util.Log;
-        import com.baidu.frontia.api.FrontiaPushMessageReceiver;
-        import com.microsoft.windowsazure.messaging.NotificationHub;
+    Legen Sie den Wert der `API_KEY`-Zeichenfolge auf den API-Schlüssel aus dem Baidu-Cloudprojekt fest.
     
-        public class MyPushMessageReceiver extends FrontiaPushMessageReceiver {
-            /** TAG to Log */
-            public static NotificationHub hub = null;
-            public static String mChannelId, mUserId;
-            public static final String TAG = MyPushMessageReceiver.class
-                    .getSimpleName();
-    
-            @Override
-            public void onBind(Context context, int errorCode, String appid,
-                    String userId, String channelId, String requestId) {
-                String responseString = "onBind errorCode=" + errorCode + " appid="
-                        + appid + " userId=" + userId + " channelId=" + channelId
-                        + " requestId=" + requestId;
-                Log.d(TAG, responseString);
-                mChannelId = channelId;
-                mUserId = userId;
-    
-                try {
-                    if (hub == null) {
-                        hub = new NotificationHub(
-                                ConfigurationSettings.NotificationHubName,
-                                ConfigurationSettings.NotificationHubConnectionString,
-                                context);
-                        Log.i(TAG, "Notification hub initialized");
-                    }
-                } catch (Exception e) {
-                   Log.e(TAG, e.getMessage());
+    Legen Sie den Wert der `NotificationHubName`-Zeichenfolge auf Ihren Notification Hub-Namen aus dem [Azure-Portals] und anschließend `NotificationHubConnectionString` auf `DefaultListenSharedAccessSignature` aus dem [Azure-Portals] fest.
+
+11. Öffnen Sie „MainActivity.java“, und fügen Sie der onCreate-Methode Folgendes hinzu:
+
+    ```java
+    PushManager.startWork(this, PushConstants.LOGIN_TYPE_API_KEY,  API_KEY );
+    ```
+
+12. Fügen Sie eine neue Klasse namens `MyPushMessageReceiver.java` sowie den folgenden Code dafür hinzu. Dies ist die Klasse, die die vom Baidu-Push-Server empfangenen Pushbenachrichtigungen verarbeitet.
+
+    ```java
+    package your.package.name;
+
+    import android.content.Context;
+    import android.content.Intent;
+    import android.os.AsyncTask;
+    import android.text.TextUtils;
+    import android.util.Log;
+
+    import com.baidu.android.pushservice.PushMessageReceiver;
+    import com.microsoft.windowsazure.messaging.NotificationHub;
+    import org.json.JSONException;
+    import org.json.JSONObject;
+
+    import java.util.List;
+
+    public class MyPushMessageReceiver extends PushMessageReceiver {
+
+        public static final String TAG = MyPushMessageReceiver.class
+                .getSimpleName();
+        public static NotificationHub hub = null;
+        public static String mChannelId, mUserId;
+
+        @Override
+        public void onBind(Context context, int errorCode, String appid,
+                        String userId, String channelId, String requestId) {
+            String responseString = "onBind errorCode=" + errorCode + " appid="
+                    + appid + " userId=" + userId + " channelId=" + channelId
+                    + " requestId=" + requestId;
+            Log.d(TAG, responseString);
+
+            if (errorCode == 0) {
+                // Binding successful
+                Log.d(TAG, " Binding successful");
+            }
+            try {
+                if (hub == null) {
+                    hub = new NotificationHub(
+                            ConfigurationSettings.NotificationHubName,
+                            ConfigurationSettings.NotificationHubConnectionString,
+                            context);
+                    Log.i(TAG, "Notification hub initialized");
                 }
-    
-                registerWithNotificationHubs();
+            } catch (Exception e) {
+                Log.e(TAG, e.getMessage());
             }
-    
-            private void registerWithNotificationHubs() {
-               new AsyncTask<Void, Void, Void>() {
-                  @Override
-                  protected Void doInBackground(Void... params) {
-                     try {
-                         hub.registerBaidu(mUserId, mChannelId);
-                         Log.i(TAG, "Registered with Notification Hub - '"
-                                 + ConfigurationSettings.NotificationHubName + "'"
-                                 + " with UserId - '"
-                                 + mUserId + "' and Channel Id - '"
-                                 + mChannelId + "'");
-                     } catch (Exception e) {
-                         Log.e(TAG, e.getMessage());
-                     }
-                     return null;
-                 }
-               }.execute(null, null, null);
+            mChannelId = channelId;
+            mUserId = userId;
+
+            registerWithNotificationHubs();
+        }
+        private void registerWithNotificationHubs() {
+
+            new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
+                    try {
+                        hub.registerBaidu(mUserId, mChannelId);
+                        Log.i(TAG, "Registered with Notification Hub - '"
+                                + ConfigurationSettings.NotificationHubName + "'"
+                                + " with UserId - '"
+                                + mUserId + "' and Channel Id - '"
+                                + mChannelId + "'");
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage());
+                    }
+                    return null;
+                }
+            }.execute(null, null, null);
+        }
+
+        @Override
+        public void onMessage(Context context, String message,
+                            String customContentString) {
+            String messageString = " onMessage=\"" + message
+                    + "\" customContentString=" + customContentString;
+            Log.d(TAG, messageString);
+            if (!TextUtils.isEmpty(customContentString)) {
+                JSONObject customJson = null;
+                try {
+                    customJson = new JSONObject(customContentString);
+                    String myvalue = null;
+                    if (!customJson.isNull("mykey")) {
+                        myvalue = customJson.getString("mykey");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
-    
-            @Override
-            public void onSetTags(Context context, int errorCode,
-                    List<String> sucessTags, List<String> failTags, String requestId) {
-                String responseString = "onSetTags errorCode=" + errorCode
-                        + " sucessTags=" + sucessTags + " failTags=" + failTags
-                        + " requestId=" + requestId;
-                Log.d(TAG, responseString);
-            }
-    
-            @Override
-            public void onDelTags(Context context, int errorCode,
-                    List<String> sucessTags, List<String> failTags, String requestId) {
-                String responseString = "onDelTags errorCode=" + errorCode
-                        + " sucessTags=" + sucessTags + " failTags=" + failTags
-                        + " requestId=" + requestId;
-                Log.d(TAG, responseString);
-            }
-    
-            @Override
-            public void onListTags(Context context, int errorCode, List<String> tags,
-                    String requestId) {
-                String responseString = "onListTags errorCode=" + errorCode + " tags="
-                        + tags;
-                Log.d(TAG, responseString);
-            }
-    
-            @Override
-            public void onUnbind(Context context, int errorCode, String requestId) {
-                String responseString = "onUnbind errorCode=" + errorCode
-                        + " requestId = " + requestId;
-                Log.d(TAG, responseString);
-            }
-    
-            @Override
-            public void onNotificationClicked(Context context, String title,
-                    String description, String customContentString) {
-                String notifyString = "title=\"" + title + "\" description=\""
-                        + description + "\" customContent=" + customContentString;
-                Log.d(TAG, notifyString);
-            }
-    
-            @Override
-            public void onMessage(Context context, String message,
-                    String customContentString) {
-                String messageString = "message=\"" + message + "\" customContentString=" + customContentString;
-                Log.d(TAG, messageString);
+
+        }
+
+        @Override
+        public void onNotificationArrived(Context context, String title, String description, String customContentString) {
+            String notifyString = " Notice Arrives onNotificationArrived  title=\"" + title
+                    + "\" description=\"" + description + "\" customContent="
+                    + customContentString;
+            Log.d(TAG, notifyString);
+            if (!TextUtils.isEmpty(customContentString)) {
+                JSONObject customJson = null;
+                try {
+                    customJson = new JSONObject(customContentString);
+                    String myvalue = null;
+                    if (!customJson.isNull("mykey")) {
+                        myvalue = customJson.getString("mykey");
+                    }
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         }
-14. Öffnen Sie **MainActivity.java**, und fügen Sie der **onCreate**-Methode Folgendes hinzu:
-    
-            PushManager.startWork(getApplicationContext(),
-                    PushConstants.LOGIN_TYPE_API_KEY, ConfigurationSettings.API_KEY);
-15. Öffnen Sie am Anfang die folgenden import-Anweisungen:
-    
-            import com.baidu.android.pushservice.PushConstants;
-            import com.baidu.android.pushservice.PushManager;
+
+        @Override
+        public void onNotificationClicked(Context context, String title, String description, String customContentString) {
+            String notifyString = " onNotificationClicked title=\"" + title + "\" description=\""
+                    + description + "\" customContent=" + customContentString;
+            Log.d(TAG, notifyString);
+            Intent intent = new Intent(context.getApplicationContext(),MainActivity.class);
+            intent.putExtra("title",title);
+            intent.putExtra("description",description);
+            intent.putExtra("isFromNotify",true);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.getApplicationContext().startActivity(intent);
+
+        }
+
+        @Override
+        public void onSetTags(Context context, int errorCode,
+                            List<String> successTags, List<String> failTags, String requestId) {
+            String responseString = "onSetTags errorCode=" + errorCode
+                    + " successTags=" + successTags + " failTags=" + failTags
+                    + " requestId=" + requestId;
+            Log.d(TAG, responseString);
+
+        }
+
+        @Override
+        public void onDelTags(Context context, int errorCode,
+                            List<String> successTags, List<String> failTags, String requestId) {
+            String responseString = "onDelTags errorCode=" + errorCode
+                    + " successTags=" + successTags + " failTags=" + failTags
+                    + " requestId=" + requestId;
+            Log.d(TAG, responseString);
+
+        }
+
+        @Override
+        public void onListTags(Context context, int errorCode, List<String> tags,
+                            String requestId) {
+            String responseString = "onListTags errorCode=" + errorCode + " tags="
+                    + tags;
+            Log.d(TAG, responseString);
+
+        }
+
+        @Override
+        public void onUnbind(Context context, int errorCode, String requestId) {
+            String responseString = "onUnbind errorCode=" + errorCode
+                    + " requestId = " + requestId;
+            Log.d(TAG, responseString);
+
+            if (errorCode == 0) {
+                // Unbinding is successful
+                Log.d(TAG, " Unbinding is successful ");
+            }
+        }
+    }
+    ```
 
 ## <a name="send-notifications-to-your-app"></a>Senden von Benachrichtigungen an Ihre App
-Sie können den Empfang von Benachrichtigungen in Ihrer App schnell testen, indem Sie wie im Bildschirm unten abgebildet Benachrichtigungen im [Azure-Portal](https://portal.azure.com/) mithilfe der Schaltfläche **Senden** im Notification Hub senden:
 
-![](./media/notification-hubs-baidu-get-started/notification-hub-test-send-baidu.png)
+Sie können den Empfang von Benachrichtigungen über das [Azure-Portals] testen. Verwenden Sie dazu die Schaltfläche **Senden** auf dem Notification Hub-Konfigurationsbildschirm, wie auf den folgenden Screenshots zu sehen:
 
-Pushbenachrichtigungen werden normalerweise in einem Back-End-Dienst wie z. B. Mobile Services oder ASP.NET mit einer kompatiblen Bibliothek gesendet. Sie können Benachrichtigungsmeldungen zudem direkt über die REST-API senden, wenn für Ihr Back-End keine Bibliothek verfügbar ist.
+![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
+![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
 
-In diesem Tutorial veranschaulichen wir der Einfachheit halber nur das Testen der Client-App, indem wir Benachrichtigungen mit dem .NET SDK für Notification Hubs in einer Konsolenanwendung senden anstatt über einen Back-End-Dienst. Es wird empfohlen, das Tutorial [Verwenden von Notification Hubs für Pushbenachrichtigungen an Benutzer](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) als nächsten Schritt zum Senden von Benachrichtigungen von einem ASP.NET-Back-End zu nutzen. Sie können aber die folgenden Vorgehensweisen zum Senden von Benachrichtigungen verwenden:
+Pushbenachrichtigungen werden normalerweise in einem Back-End-Dienst wie z. B. Mobile Services oder ASP.NET mit einer kompatiblen Bibliothek gesendet. Falls für Ihr Back-End keine Bibliothek verfügbar ist, können Sie Benachrichtigungsmeldungen direkt über die REST-API senden.
 
+Der Einfachheit halber wird in diesem Tutorial das Senden einer Benachrichtigung mit dem .NET SDK über eine Konsolen-App gezeigt. Es empfiehlt sich jedoch, als Nächstes das Tutorial [Verwenden von Notification Hubs für Pushbenachrichtigungen an Benutzer](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) zum Senden von Benachrichtigungen über ein ASP.NET-Back-End zu absolvieren. 
+
+Benachrichtigungen können auf unterschiedliche Weise gesendet werden:
 * **REST-Schnittstelle**: Sie können die Benachrichtigung auf allen Back-End-Plattformen unterstützen, indem Sie die [REST-Schnittstelle](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx) verwenden.
 * **Microsoft Azure Notification Hubs .NET SDK**: Führen Sie im Nuget-Paket-Manager für Visual Studio die Option [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)aus.
 * **Node.js**: [Verwenden von Notification Hubs mit Node.js](notification-hubs-nodejs-push-notification-tutorial.md)
@@ -373,7 +485,8 @@ In diesem Abschnitt zeigen wir das Senden einer Benachrichtigung über eine .NET
 
 1. Erstellen einer neuen Visual C#-Konsolenanwendung:
    
-    ![][30]
+    ![](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
+
 2. Legen Sie im Fenster der Paket-Manager-Konsole als **Standardprojekt** das neue Konsolenanwendungsprojekt fest, und führen Sie dann im Konsolenfenster den folgenden Befehl aus:
    
         Install-Package Microsoft.Azure.NotificationHubs
@@ -381,68 +494,43 @@ In diesem Abschnitt zeigen wir das Senden einer Benachrichtigung über eine .NET
     Diese Anweisung fügt mithilfe des <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.NotificationHubs-NuGet-Pakets</a> einen Verweis auf das Azure Notification Hubs-SDK hinzu.
    
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
-3. Öffnen Sie die Datei **Program.cs** , und fügen Sie die folgende „using“-Anweisung hinzu:
+
+3. Öffnen Sie die Datei `Program.cs`, und fügen Sie die folgende using-Anweisung hinzu:
    
-        using Microsoft.Azure.NotificationHubs;
-4. Fügen Sie der `Program`-Klasse die folgende Methode hinzu, und ersetzen Sie dabei *DefaultFullSharedAccessSignatureSASConnectionString* und *NotificationHubName* durch die Ihnen vorliegenden Werte.
+    ```csharp
+    using Microsoft.Azure.NotificationHubs;
+    ```
+
+4. Fügen Sie in Ihrer `Program`-Klasse die folgende Methode hinzu, und ersetzen Sie `DefaultFullSharedAccessSignatureSASConnectionString` und `NotificationHubName` durch Ihre Werte.
    
-        private static async void SendNotificationAsync()
-        {
-            NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("DefaultFullSharedAccessSignatureSASConnectionString", "NotificationHubName");
-            string message = "{\"title\":\"((Notification title))\",\"description\":\"Hello from Azure\"}";
-            var result = await hub.SendBaiduNativeNotificationAsync(message);
-        }
-5. Fügen Sie folgende Zeilen zur **Main** -Methode hinzu:
-   
-         SendNotificationAsync();
-         Console.ReadLine();
+    ```csharp
+    private static async void SendNotificationAsync()
+    {
+        NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("DefaultFullSharedAccessSignatureSASConnectionString", "NotificationHubName");
+        string message = "{\"title\":\"((Notification title))\",\"description\":\"Hello from Azure\"}";
+        var result = await hub.SendBaiduNativeNotificationAsync(message);
+    }
+    ```
+
+5. Fügen Sie folgende Zeilen zur `Main` -Methode hinzu:
+
+    ```csharp
+    SendNotificationAsync();
+    Console.ReadLine();
+    ```
 
 ## <a name="test-your-app"></a>Testen Ihrer App
+
 Um die App mit einem Telefon zu testen, müssen Sie dieses über ein USB-Kabel mit Ihrem Computer verbinden. Dadurch wird die App auf das Telefon geladen.
 
-Um die App mit dem Emulator zu testen, klicken Sie in der oberen Eclipse-Symbolleiste auf **Ausführen**, und wählen Sie die App aus: Der Emulator wird gestartet, und die App wird geladen und ausgeführt.
+Um die App mit dem Emulator zu testen, klicken Sie in der oberen Symbolleiste von Android Studio auf **Ausführen**, und wählen Sie die App aus: Der Emulator wird gestartet, und die App wird geladen und ausgeführt.
 
-Die App ruft die "userId" und "channelId" vom Baidu-Pushbenachrichtigungsdienst ab und registriert sich beim Notification Hub.
+Die App ruft `userId` und `channelId` vom Baidu-Pushbenachrichtigungsdienst ab und registriert sich beim Notification Hub.
 
-Zum Senden einer Testbenachrichtigung können Sie die Registerkarte „Debuggen“ des klassischen Azure-Portals verwenden. Wenn Sie die .NET-Konsolenanwendung für Visual Studio entwickelt haben, drücken Sie einfach in Visual Studio die Taste F5, um die Anwendung auszuführen. Die Anwendung sendet eine Benachrichtigung, die im oberen Infobereich des Geräts oder Emulators angezeigt wird.
-
-<!-- Images. -->
-[1]: ./media/notification-hubs-baidu-get-started/BaiduRegistration.png
-[2]: ./media/notification-hubs-baidu-get-started/BaiduRegistrationInput.png
-[3]: ./media/notification-hubs-baidu-get-started/BaiduConfirmation.png
-[4]: ./media/notification-hubs-baidu-get-started/BaiduActivationEmail.png
-[5]: ./media/notification-hubs-baidu-get-started/BaiduRegistrationMore.png
-[6]: ./media/notification-hubs-baidu-get-started/BaiduOpenCloudPlatform.png
-[7]: ./media/notification-hubs-baidu-get-started/BaiduDeveloperServices.png
-[8]: ./media/notification-hubs-baidu-get-started/BaiduDeveloperRegistration.png
-[9]: ./media/notification-hubs-baidu-get-started/BaiduDevRegistrationInput.png
-[10]: ./media/notification-hubs-baidu-get-started/BaiduDevRegistrationConfirmation.png
-[11]: ./media/notification-hubs-baidu-get-started/BaiduDevConfirmationFinal.png
-[12]: ./media/notification-hubs-baidu-get-started/BaiduCloudPush.png
-[13]: ./media/notification-hubs-baidu-get-started/BaiduDevSvcMgmt.png
-[14]: ./media/notification-hubs-baidu-get-started/BaiduCreateProject.png
-[15]: ./media/notification-hubs-baidu-get-started/BaiduCreateProjectInput.png
-[16]: ./media/notification-hubs-baidu-get-started/BaiduProjectKeys.png
-[17]: ./media/notification-hubs-baidu-get-started/AzureNHCreation.png
-[18]: ./media/notification-hubs-baidu-get-started/NotificationHubs.png
-[19]: ./media/notification-hubs-baidu-get-started/NotificationHubsConfigure.png
-[20]: ./media/notification-hubs-baidu-get-started/NotificationHubBaiduConfigure.png
-[21]: ./media/notification-hubs-baidu-get-started/NotificationHubsConnectionStringView.png
-[22]: ./media/notification-hubs-baidu-get-started/NotificationHubsConnectionString.png
-[23]: ./media/notification-hubs-baidu-get-started/EclipseNewProject.png
-[24]: ./media/notification-hubs-baidu-get-started/EclipseProjectCreation.png
-[25]: ./media/notification-hubs-baidu-get-started/EclipseBlankActivity.png
-[26]: ./media/notification-hubs-baidu-get-started/EclipseProjectBuildProperty.png
-[27]: ./media/notification-hubs-baidu-get-started/EclipseBaiduReferences.png
-[28]: ./media/notification-hubs-baidu-get-started/EclipseNewClass.png
-[29]: ./media/notification-hubs-baidu-get-started/EclipseConfigSettingsClass.png
-[30]: ./media/notification-hubs-baidu-get-started/ConsoleProject.png
-[31]: ./media/notification-hubs-baidu-get-started/BaiduPushConfig1.png
-[32]: ./media/notification-hubs-baidu-get-started/BaiduPushConfig2.png
-[33]: ./media/notification-hubs-baidu-get-started/BaiduPushConfig3.png
+Über die Registerkarte „Debuggen“ des [Azure-Portals] können Sie eine Testbenachrichtigung senden. Wenn Sie die .NET-Konsolenanwendung für Visual Studio entwickelt haben, drücken Sie einfach in Visual Studio die Taste F5, um die Anwendung auszuführen. Die Anwendung sendet eine Benachrichtigung, die im oberen Infobereich des Geräts oder Emulators angezeigt wird.
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Baidu Push Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
-[klassischen Azure-Portal]: https://manage.windowsazure.com/
+[Baidu Push Android SDK]: http://push.baidu.com/sdk/push_client_sdk_for_android
+[Azure-Portals]: https://portal.azure.com/
 [Baidu-Portal]: http://www.baidu.com/
