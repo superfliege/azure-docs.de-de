@@ -15,7 +15,7 @@
       href: container-registry-get-started-powershell.md
 - name: Lernprogramme
   items:
-    - name: Georeplikation
+    - name: Georeplikation (Vorschau)
       items:
         - name: '1: Vorbereiten der Containerregistrierung'
           href: container-registry-tutorial-prepare-registry.md
