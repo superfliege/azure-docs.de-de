@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/31/2017
 ms.author: billmath
-ms.openlocfilehash: a84096ba53a308855beedd76d9dec827c025cd57
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 81bacc39d974dfbd1b2aa8dce9e629c508203811
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Technische Referenz für den generischen SQL-Connector
 Dieser Artikel beschreibt den generischen SQL-Connector. Der Artikel bezieht sich auf folgende Produkte:
@@ -291,7 +291,7 @@ Bei Verwendung der Option „Stored Procedure“ (Gespeicherte Prozedur) werden 
 * **Add SP Name**(Name der gespeicherten Prozedur zum Hinzufügen): Diese gespeicherte Prozedur wird ausgeführt, wenn der Connector ein Objekt erhält, das in die entsprechende Tabelle eingefügt werden soll.
 * **Update SP Name**(Name der gespeicherten Prozedur zum Aktualisieren): Diese gespeicherte Prozedur wird ausgeführt, wenn der Connector ein Objekt erhält, das in der entsprechenden Tabelle aktualisiert werden soll.
 * **Delete SP Name**(Name der gespeicherten Prozedur zum Löschen): Diese gespeicherte Prozedur wird ausgeführt, wenn der Connector ein Objekt erhält, das in der entsprechenden Tabelle gelöscht werden soll.
-* Attribut aus dem Schema, das als Parameterwert für die gespeicherte Prozedur verwendet wird. Beispiel: `EmployeeName: INPUT: @EmployeeName` („EmployeeName“ ist im Connectorschema ausgewählt, und der Connector ersetzt den entsprechenden Wert im Zuge des Exportvorgangs.)
+* Attribut aus dem Schema, das als Parameterwert für die gespeicherte Prozedur verwendet wird. Beispiel: `@EmployeeName: INPUT: EmployeeName` („EmployeeName“ ist im Connectorschema ausgewählt, und der Connector ersetzt den entsprechenden Wert im Zuge des Exportvorgangs.)
 * Geben Sie zum Ausführen einer parametrisierten gespeicherten Prozedur Parameter im Format `[Name]:[Direction]:[Value]` an. Geben Sie die Parameter jeweils in eine separate Zeile ein. (Drücken Sie STRG+EINGABETASTE, um eine neue Zeile zu erhalten.)
 
 **SQL query**  
