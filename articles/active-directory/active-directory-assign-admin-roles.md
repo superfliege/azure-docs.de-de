@@ -3,7 +3,7 @@ title: Zuweisen von Administratorrollen in Azure Active Directory | Microsoft Do
 description: "Eine Administratorrolle kann zum Erstellen oder Bearbeiten von Benutzern, zum Zuweisen von Administratorrollen zu anderen Personen, zum Zurücksetzen von Benutzerkennwörtern sowie zum Verwalten von Benutzerlizenzen oder Domänen verwendet werden. Ein Benutzer, dem eine Administratorrolle zugewiesen wurde, verfügt für alle Dienste, die Ihre Organisation abonniert hat, über die gleichen Berechtigungen."
 services: active-directory
 documentationcenter: 
-author: curtand
+author: LizCasey
 manager: femila
 editor: 
 ms.assetid: 7fc27e8e-b55f-4194-9b8f-2e95705fb731
@@ -17,11 +17,11 @@ ms.author: curtand
 ms.reviewer: Vince.Smith
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.openlocfilehash: 8e50ea660df0a3ca1fbd23f7b610a7e57eb737d1
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 7c866842c2d090c27c77b2ef5c236bda893022c4
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Zuweisen von Administratorrollen in Azure Active Directory
 > [!div class="op_single_selector"]
