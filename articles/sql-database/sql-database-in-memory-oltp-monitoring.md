@@ -9,17 +9,17 @@ editor:
 ms.assetid: b617308e-692c-4938-8fa2-070034a3ecef
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: data-management
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jodebrui
-ms.openlocfilehash: e953b60493c5a7c7a7ad74533471bd321d42abef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 613a9ced91d71cc9a65ea67e6ede1a78a03b4bd5
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Überwachen des In-Memory-OLTP-Speichers
 Bei der Verwendung von [In-Memory-OLTP](sql-database-in-memory.md)befinden sich die Daten der speicheroptimierten Tabellen und Tabellenvariablen im In-Memory-OLTP-Speicher. Jeder Premium-Tarif weist eine maximale In-Memory-OLTP-Speichergröße auf, die in „Ressourceneinschränkungen für Azure SQL-Datenbank“ in den Abschnitten zu den [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels) und [Ressourceneinschränkungen für elastische Pools](sql-database-resource-limits.md#elastic-pool-change-storage-size) dokumentiert ist. Wenn dieses Limit überschritten wird, treten bei Einfüge- und Aktualisierungsvorgängen möglicherweise Fehler auf (Fehlercode: 41823). An diesem Punkt müssen Sie entweder Daten löschen, um Speicherplatz freizugeben, oder ein Upgrade der Leistungsstufe Ihrer Datenbank durchführen.
