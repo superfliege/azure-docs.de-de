@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: jdial
-ms.openlocfilehash: 8e464348660114f5e99b4739bb7761b7e53ebf99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 544ba6484b23da425d53594622122b1e18b92359
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="virtual-appliance-scenario"></a>Szenario für virtuelle Geräte
 Als gängiges Szenario müssen größere Azure-Kunden eine Anwendung mit zwei Ebenen bereitstellen, die über das Internet verfügbar ist und gleichzeitig den Zugriff auf die Back-End-Ebene über ein lokales Rechenzentrum ermöglicht. In diesem Dokument wird schrittweise ein Szenario mit benutzerdefinierten Routen (User Defined Routes, UDR), einem VPN-Gateway und virtuellen Netzwerkgeräten zum Bereitstellen einer Umgebung mit zwei Ebenen erläutert, die folgende Anforderungen erfüllt:
@@ -70,7 +70,7 @@ Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
   * **AZF3**. Verwaltungsfirewall, auf die Administratoren über das lokale Rechenzentrum zugreifen können und die mit einem Verwaltungssubnetz verbunden ist, über das alle Firewallgeräte verwaltet werden. Vorlagen für virtuelle Geräte mit zwei Netzwerkkarten finden Sie im Marketplace, oder Sie können sie direkt vom Geräteanbieter anfordern.
 
 ## <a name="user-defined-routing-udr"></a>Benutzerdefiniertes Routing
-Jedes Subnetz in Azure kann mit einer benutzerdefinierten Routingtabelle verknüpft werden, in der definiert wird, wie der im jeweiligen Subnetz initiierte Datenverkehr weitergeleitet wird. Wenn keine benutzerdefinierten Routen definiert sind, werden Standardrouten verwendet, um die Weiterleitung des Datenverkehrs zwischen den Subnetzen zu ermöglichen. Weiterführende Informationen zu benutzerdefinierten Routen finden Sie unter [Was sind benutzerdefinierte Routen und IP-Weiterleitung?](virtual-networks-udr-overview.md#ip-forwarding).
+Jedes Subnetz in Azure kann mit einer benutzerdefinierten Routingtabelle verknüpft werden, in der definiert wird, wie der im jeweiligen Subnetz initiierte Datenverkehr weitergeleitet wird. Wenn keine benutzerdefinierten Routen definiert sind, werden Standardrouten verwendet, um die Weiterleitung des Datenverkehrs zwischen den Subnetzen zu ermöglichen. Weiterführende Informationen zu benutzerdefinierten Routen finden Sie unter [Was sind benutzerdefinierte Routen und IP-Weiterleitung?](virtual-networks-udr-overview.md).
 
 Um sicherzustellen, dass die Kommunikation basierend auf der letzten oben angeführten Anforderung über das richtige Firewallgerät erfolgt, müssen Sie in **azurevnet**die folgende Routingtabelle mit benutzerdefinierten Routen erstellen.
 
@@ -110,7 +110,7 @@ Benutzerdefinierte Routen und die IP-Weiterleitung sind Features, die Sie kombin
 
 Dieser virtuelle Computer muss eingehenden Datenverkehr empfangen können, der nicht an ihn selbst adressiert ist. Damit ein virtueller Computer an andere Ziele gerichteten Datenverkehr empfangen kann, müssen Sie für den virtuellen Computer die IP-Weiterleitung aktivieren. Hierbei handelt es sich um eine Azure-Einstellung, keine Einstellung im Gastbetriebssystem. Auf dem virtuellen Gerät muss dennoch eine Anwendung zum Verarbeiten und zur entsprechenden Weiterleitung des eingehenden Datenverkehrs ausgeführt werden.
 
-Weitere Informationen zur IP-Weiterleitung finden Sie unter [Was sind benutzerdefinierte Routen und IP-Weiterleitung?](virtual-networks-udr-overview.md#ip-forwarding).
+Weitere Informationen zur IP-Weiterleitung finden Sie unter [Was sind benutzerdefinierte Routen und IP-Weiterleitung?](virtual-networks-udr-overview.md).
 
 Als Beispiel soll die folgende Konfiguration in einem Azure-VNET dienen:
 

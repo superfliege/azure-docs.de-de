@@ -86,6 +86,7 @@
 ### Hochladen von Dateien von Geräten
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
+#### [Node.js](iot-hub-node-node-file-upload.md)
 ### Erste Schritte mit Gerätezwillingen
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-twin-getstarted.md)
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-twin-getstarted.md)

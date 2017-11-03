@@ -9,17 +9,17 @@ editor:
 ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: cfdf50bdf1eece98a02cdbe56e52e1b2dda2b200
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 6d5fc10b5186f2830f724325846a485e4064d12b
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank 
 Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwachung zu erleichtern. Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
@@ -184,7 +184,7 @@ Das Überwachen einer SQL-Datenbankflotte mit Log Analytics ist einfach. Es sind
 
 2. Wählen Sie **Überwachung und Verwaltung** aus.
 
-3. Wählen Sie **Log Analytics** aus.
+3. Wählen Sie **Log Analytics**.
 
 4. Tragen Sie in das Log Analytics-Formular die erforderlichen zusätzlichen Informationen ein: Name des Arbeitsbereichs, Abonnement, Ressourcengruppe, Ort und Tarif.
 
@@ -243,7 +243,7 @@ Einfacher ausgedrückt:
 insights-{metrics|logs}-{category name}/resourceId=/{resource Id}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Ein Blobname für Minutenmetriken kann beispielsweise wie folgt lauten:
+Ein Blob-Name für Minutenmetriken kann beispielsweise wie folgt lauten:
 
 ```powershell
 insights-metrics-minute/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.SQL/ servers/Server1/databases/database1/y=2016/m=08/d=22/h=18/m=00/PT1H.json
@@ -278,8 +278,8 @@ Weitere Informationen zum [Herunterladen von Metrik- und Diagnoseprotokollen aus
 |TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Category|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
-|OperationName|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
+|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
+|NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
 |Ressource|Der Name der Ressource.|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
 |SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
@@ -328,11 +328,11 @@ Weitere Informationen zu [Laufzeitstatistikdaten des Abfragespeichers](https://d
 |SourceSystem|Immer: Azure|
 |TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
 |Typ|Immer: AzureDiagnostics|
-|ResourceProvider|Der Name des Ressourcenanbieters. Immer: MICROSOFT.SQL|
-|Category|Der Name der Kategorie. Immer: QueryStoreWaitStatistics|
-|OperationName|Der Name des Vorgangs. Immer: QueryStoreWaitStatistics|
-|Resource|Der Name der Ressource.|
-|ResourceType|Der Name des Ressourcentyps. Immer: SERVERS/DATABASES|
+|ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
+|Category (Kategorie)|Name der Kategorie Immer: QueryStoreWaitStatistics|
+|NameVorgang|Name des Vorgangs. Immer: QueryStoreWaitStatistics|
+|Ressource|Name der Ressource|
+|ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
 |SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
 |ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
 |LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
@@ -367,9 +367,9 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 |TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Category|Name der Kategorie Immer: Errors|
-|OperationName|Der Name des Vorgangs. Immer: ErrorEvent|
-|Resource|Name der Ressource|
+|Category (Kategorie)|Name der Kategorie Immer: Errors|
+|NameVorgang|Name des Vorgangs. Immer: ErrorEvent|
+|Ressource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
 |SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
 |ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
@@ -377,7 +377,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 |ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
 |DatabaseName_s|Der Name der Datenbank.|
 |ResourceId|Der Ressourcen-URI.|
-|Message|Die Fehlermeldung im Nur-Text-Format.|
+|Nachricht|Die Fehlermeldung im Nur-Text-Format.|
 |user_defined_b|Das benutzerdefiniertes Fehlerbit.|
 |error_number_d|Der Fehlercode.|
 |Severity|Der Schweregrad des Fehlers.|
@@ -396,9 +396,9 @@ Weitere Informationen zu [SQL Server-Fehlermeldungen](https://msdn.microsoft.com
 |TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Category|Name der Kategorie Immer: DatabaseWaitStatistics|
-|OperationName|Name des Vorgangs. Immer: DatabaseWaitStatisticsEvent|
-|Resource|Name der Ressource|
+|Category (Kategorie)|Name der Kategorie Immer: DatabaseWaitStatistics|
+|NameVorgang|Name des Vorgangs. Immer: DatabaseWaitStatisticsEvent|
+|Ressource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
 |SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
 |ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
@@ -425,9 +425,9 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Category|Name der Kategorie Immer: Timeouts|
-|OperationName|Name des Vorgangs. Immer: TimeoutEvent|
-|Resource|Name der Ressource|
+|Category (Kategorie)|Name der Kategorie Immer: Timeouts|
+|NameVorgang|Name des Vorgangs. Immer: TimeoutEvent|
+|Ressource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
 |SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
 |ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
@@ -448,9 +448,9 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Category|Name der Kategorie Immer: Blocks|
-|OperationName|Name des Vorgangs. Immer: BlockEvent|
-|Resource|Name der Ressource|
+|Category (Kategorie)|Name der Kategorie Immer: Blocks|
+|NameVorgang|Name des Vorgangs. Immer: BlockEvent|
+|Ressource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
 |SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
 |ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|

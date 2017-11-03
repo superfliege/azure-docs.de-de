@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 141e3c571d744470fd07e99538b6e38d4144e8d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 29823708b2d26a383b76e371499859e57f470c6f
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>Problembehandlung bei Routen mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Routingtabellen sind Subnetzen zugeordnet und gelten für alle Netzwerkschnittst
 
 * **Systemrouten:** Standardmäßig verfügt jedes in einem virtuellen Azure-Netzwerk (VNET) erstellte Subnetz über Systemroutingtabellen, über die lokaler VNET-Datenverkehr, lokaler Datenverkehr durch VPN-Gateways und Internetdatenverkehr ermöglicht wird. Auch für per Peering verknüpfte VNETs sind Systemrouten vorhanden.
 * **BGP-Routen:** werden über ExpressRoute- oder Standort-zu-Standort-VPN-Verbindungen an Netzwerkschnittstellen weitergegeben. Weitere Informationen zum BGP-Routing finden Sie in den Artikeln [Übersicht über BGP mit Azure-VPN-Gateways](../vpn-gateway/vpn-gateway-bgp-overview.md) und [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md).
-* **Benutzerdefinierte Routen (UDR):** Bei Verwendung virtueller Netzwerkgeräte oder der Tunnelerzwingung zur Umleitung des Datenverkehrs an ein lokales Netzwerk über eine Standort-zu-Standort-VPN-Verbindung sind der Routingtabelle des Subnetzes möglicherweise benutzerdefinierte Routen zugeordnet. Wenn Sie nicht mit benutzerdefinierten Routen vertraut sind, finden Sie entsprechende Informationen im Artikel zu [benutzerdefinierten Routen](virtual-networks-udr-overview.md#user-defined-routes) .
+* **Benutzerdefinierte Routen (UDR):** Bei Verwendung virtueller Netzwerkgeräte oder der Tunnelerzwingung zur Umleitung des Datenverkehrs an ein lokales Netzwerk über eine Standort-zu-Standort-VPN-Verbindung sind der Routingtabelle des Subnetzes möglicherweise benutzerdefinierte Routen zugeordnet. Wenn Sie nicht mit benutzerdefinierten Routen vertraut sind, finden Sie entsprechende Informationen im Artikel zu [benutzerdefinierten Routen](virtual-networks-udr-overview.md#user-defined) .
 
 Aufgrund der verschiedenen Routen, die auf eine Netzwerkschnittstelle angewendet werden können, lassen sich die effektiven Aggregatrouten unter Umständen schwer ermitteln. Für die Problembehandlung der Netzwerkverbindung von virtuellen Computern können Sie alle effektiven Routen für eine Netzwerkschnittstelle im Azure Resource Manager-Bereitstellungsmodell anzeigen.
 
