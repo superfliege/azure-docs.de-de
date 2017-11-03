@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.openlocfilehash: 8143cf739f475ebfa6e65dc43945174304ffbb3b
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: bfbfc5b46985d3413510ba69cbdfc688f46f0f1b
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie
 In diesem Dokument erfahren Sie, wie Sie die verschiedenen Fabric-Einstellungen und die Fabric-Upgraderichtlinie für Ihren Service Fabric-Cluster anpassen. Die Anpassungen können über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage vorgenommen werden.
@@ -61,7 +61,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | ApplicationLogsFormatVersion |Ganze Zahl, Standardwert 0 | Dynamisch |Version für das Format der Anwendungsprotokolle. Unterstützte Werte sind 0 und 1. Version 1 umfasst mehr Felder aus dem ETW-Ereignisdatensatz als Version 0. |
 | ClusterId |String | Dynamisch |Die eindeutige ID des Clusters. Diese wird generiert, wenn der Cluster erstellt wird. |
 | EnableTelemetry |Boolesch, Standardwert „true“ | Dynamisch |Damit werden Telemetriedaten aktiviert oder deaktiviert. |
-| EnableCircularTraceSession |Boolesch, Standardwert „false“ | Statisch |Das Flag gibt an, ob zirkuläre Ablaufverfolgungssitzungen verwendet werden sollen. |
+| EnableCircularTraceSession |Boolesch, Standardwert „false“ | statischen |Das Flag gibt an, ob zirkuläre Ablaufverfolgungssitzungen verwendet werden sollen. |
 
 ### <a name="section-name-traceetw"></a>Name des Abschnitts: Trace/Etw
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -85,46 +85,46 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | ServiceRunAsAccountName |String | Nicht zulässig |Der Kontoname, unter dem der Fabric-Hostdienst ausgeführt werden soll. |
 | SkipFirewallConfiguration |Boolesch, Standardwert „false“ | Nicht zulässig |Gibt an, ob Firewalleinstellungen vom System festgelegt werden müssen oder nicht. Dies gilt nur, wenn Sie die Windows-Firewall verwenden. Wenn Sie Firewalls von Drittanbietern verwenden, müssen Sie die Ports für das System und die zu verwendenden Anwendungen öffnen. |
 |NodesToBeRemoved|string, Standardwert ""| Dynamisch |Der Knoten, die als Teil des Konfigurationsupgrades entfernt werden sollen. (Nur für eigenständige Bereitstellungen)|
-|ContainerNetworkSetup|Boolesch, Standardwert FALSE| Statisch |Gibt an, ob ein Containernetzwerk eingerichtet werden soll.|
-|ContainerNetworkName|string, Standardwert L""| Statisch |Der zu verwendende Netzwerkname, wenn ein Containernetzwerk eingerichtet wird.|
+|ContainerNetworkSetup|Boolesch, Standardwert FALSE| statischen |Gibt an, ob ein Containernetzwerk eingerichtet werden soll.|
+|ContainerNetworkName|string, Standardwert L""| statischen |Der zu verwendende Netzwerkname, wenn ein Containernetzwerk eingerichtet wird.|
 
 ### <a name="section-name-transactionalreplicator"></a>Name des Abschnitts: TransactionalReplicator
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| MaxCopyQueueSize |Uint, Standardwert 16384 | Statisch |Dies ist der maximale Wert. Er definiert die Anfangsgröße für die Warteschlange, die Replikationsvorgänge verwaltet. Beachten Sie, dass der Wert eine Potenz von 2 sein muss. Wenn während der Laufzeit die Warteschlange auf diese Größe anwächst, werden Vorgänge zwischen den primären und sekundären Replikatoren gedrosselt. |
-| BatchAcknowledgementInterval | Zeit in Sekunden, Standardwert 0,015 | Statisch | Geben Sie die Zeitspanne in Sekunden an. Bestimmt die Zeitdauer, die der Replikator nach dem Empfang eines Vorgangs wartet, bevor er eine Bestätigung sendet. Für andere Vorgänge, die während dieses Zeitraums empfangen werden, werden die Bestätigungen in einer einzelnen Nachricht zurückgesendet. Dadurch wird der Netzwerkverkehr verringert, jedoch möglicherweise auch der Durchsatz des Replikators. |
-| MaxReplicationMessageSize |Uint, Standardwert 52428800 | Statisch | Maximale Nachrichtengröße für Replikationsvorgänge. Der Standardwert ist 50 MB. |
-| ReplicatorAddress |string, Standardwert „localhost:0“ | Statisch | Der Endpunkt in Form einer Zeichenfolge – „IP:Port“. Wird vom Windows Fabric-Replikator verwendet, um Verbindungen mit anderen Replikaten herzustellen, um Vorgänge zu senden/zu empfangen. |
-| InitialPrimaryReplicationQueueSize |Uint, Standardwert 64 | Statisch |Dieser Wert definiert die Anfangsgröße für die Warteschlange, die Replikationsvorgänge auf dem primären Replikator verwaltet. Beachten Sie, dass der Wert eine Potenz von 2 sein muss.|
-| MaxPrimaryReplicationQueueSize |Uint, Standardwert 8192 | Statisch |Dies ist die maximale Anzahl von Vorgängen, die in der primären Replikationswarteschlange vorhanden sein können. Beachten Sie, dass der Wert eine Potenz von 2 sein muss. |
-| MaxPrimaryReplicationQueueMemorySize |Uint, Standardwert 0 | Statisch |Dies ist der maximale Wert für die primäre Replikationswarteschlange in Bytes. |
-| InitialSecondaryReplicationQueueSize |Uint, Standardwert 64 | Statisch |Dieser Wert definiert die Anfangsgröße für die Warteschlange, die Replikationsvorgänge auf dem sekundären Replikator verwaltet. Beachten Sie, dass der Wert eine Potenz von 2 sein muss. |
-| MaxSecondaryReplicationQueueSize |Uint, Standardwert 16384 | Statisch |Dies ist die maximale Anzahl von Vorgängen, die in der sekundären Replikationswarteschlange vorhanden sein können. Beachten Sie, dass der Wert eine Potenz von 2 sein muss. |
-| MaxSecondaryReplicationQueueMemorySize |Uint, Standardwert 0 | Statisch |Dies ist der maximale Wert für die sekundäre Replikationswarteschlange in Bytes. |
-| SecondaryClearAcknowledgedOperations |Boolesch, Standardwert „false“ | Statisch |Boolescher Wert, der steuert, ob die Vorgänge auf dem sekundären Replikator gelöscht werden, sobald sie auf dem primären Replikator bestätigt wurden (auf den Datenträger geleert wurden). Die Festlegung auf TRUE kann zu zusätzlichen Datenträger-Lesevorgängen auf dem neuen primären Replikator führen, wenn Replikate nach einem Failover wiederhergestellt werden. |
+| MaxCopyQueueSize |Uint, Standardwert 16384 | statischen |Dies ist der maximale Wert. Er definiert die Anfangsgröße für die Warteschlange, die Replikationsvorgänge verwaltet. Beachten Sie, dass der Wert eine Potenz von 2 sein muss. Wenn während der Laufzeit die Warteschlange auf diese Größe anwächst, werden Vorgänge zwischen den primären und sekundären Replikatoren gedrosselt. |
+| BatchAcknowledgementInterval | Zeit in Sekunden, Standardwert 0,015 | statischen | Geben Sie die Zeitspanne in Sekunden an. Bestimmt die Zeitdauer, die der Replikator nach dem Empfang eines Vorgangs wartet, bevor er eine Bestätigung sendet. Für andere Vorgänge, die während dieses Zeitraums empfangen werden, werden die Bestätigungen in einer einzelnen Nachricht zurückgesendet. Dadurch wird der Netzwerkverkehr verringert, jedoch möglicherweise auch der Durchsatz des Replikators. |
+| MaxReplicationMessageSize |Uint, Standardwert 52428800 | statischen | Maximale Nachrichtengröße für Replikationsvorgänge. Der Standardwert ist 50 MB. |
+| ReplicatorAddress |string, Standardwert „localhost:0“ | statischen | Der Endpunkt in Form einer Zeichenfolge – „IP:Port“. Wird vom Windows Fabric-Replikator verwendet, um Verbindungen mit anderen Replikaten herzustellen, um Vorgänge zu senden/zu empfangen. |
+| InitialPrimaryReplicationQueueSize |Uint, Standardwert 64 | statischen |Dieser Wert definiert die Anfangsgröße für die Warteschlange, die Replikationsvorgänge auf dem primären Replikator verwaltet. Beachten Sie, dass der Wert eine Potenz von 2 sein muss.|
+| MaxPrimaryReplicationQueueSize |Uint, Standardwert 8192 | statischen |Dies ist die maximale Anzahl von Vorgängen, die in der primären Replikationswarteschlange vorhanden sein können. Beachten Sie, dass der Wert eine Potenz von 2 sein muss. |
+| MaxPrimaryReplicationQueueMemorySize |Uint, Standardwert 0 | statischen |Dies ist der maximale Wert für die primäre Replikationswarteschlange in Bytes. |
+| InitialSecondaryReplicationQueueSize |Uint, Standardwert 64 | statischen |Dieser Wert definiert die Anfangsgröße für die Warteschlange, die Replikationsvorgänge auf dem sekundären Replikator verwaltet. Beachten Sie, dass der Wert eine Potenz von 2 sein muss. |
+| MaxSecondaryReplicationQueueSize |Uint, Standardwert 16384 | statischen |Dies ist die maximale Anzahl von Vorgängen, die in der sekundären Replikationswarteschlange vorhanden sein können. Beachten Sie, dass der Wert eine Potenz von 2 sein muss. |
+| MaxSecondaryReplicationQueueMemorySize |Uint, Standardwert 0 | statischen |Dies ist der maximale Wert für die sekundäre Replikationswarteschlange in Bytes. |
+| SecondaryClearAcknowledgedOperations |Boolesch, Standardwert „false“ | statischen |Boolescher Wert, der steuert, ob die Vorgänge auf dem sekundären Replikator gelöscht werden, sobald sie auf dem primären Replikator bestätigt wurden (auf den Datenträger geleert wurden). Die Festlegung auf TRUE kann zu zusätzlichen Datenträger-Lesevorgängen auf dem neuen primären Replikator führen, wenn Replikate nach einem Failover wiederhergestellt werden. |
 | MaxMetadataSizeInKB |Ganze Zahl, Standardwert 4 |Nicht zulässig|Maximale Größe der Metadaten des Protokolldatenstroms. |
 | MaxRecordSizeInKB |Uint, Standardwert 1024 |Nicht zulässig| Maximale Größe des Datensatzes eines Protokolldatenstroms. |
-| CheckpointThresholdInMB |Ganze Zahl, Standardwert 50 |Statisch|Ein Prüfpunkt wird initiiert, wenn die Protokollnutzung diesen Wert überschreitet. |
-| MaxAccumulatedBackupLogSizeInMB |Ganze Zahl, Standardwert 800 |Statisch|Die maximale kumulierte Größe von Sicherungsprotokollen in einer bestimmten Sicherungsprotokollkette (in MB). Die Anforderung einer inkrementellen Sicherung ist nicht erfolgreich, wenn die inkrementelle Sicherung ein Sicherungsprotokoll generiert, durch das die kumulierte Größe der Sicherungsprotokolle seit der entsprechenden vollständigen Sicherung diese Größe überschreitet. In einem solchen Fall muss der Benutzer eine vollständige Sicherung durchführen. |
+| CheckpointThresholdInMB |Ganze Zahl, Standardwert 50 |statischen|Ein Prüfpunkt wird initiiert, wenn die Protokollnutzung diesen Wert überschreitet. |
+| MaxAccumulatedBackupLogSizeInMB |Ganze Zahl, Standardwert 800 |statischen|Die maximale kumulierte Größe von Sicherungsprotokollen in einer bestimmten Sicherungsprotokollkette (in MB). Die Anforderung einer inkrementellen Sicherung ist nicht erfolgreich, wenn die inkrementelle Sicherung ein Sicherungsprotokoll generiert, durch das die kumulierte Größe der Sicherungsprotokolle seit der entsprechenden vollständigen Sicherung diese Größe überschreitet. In einem solchen Fall muss der Benutzer eine vollständige Sicherung durchführen. |
 | MaxWriteQueueDepthInKB |Ganze Zahl, Standardwert 0 |Nicht zulässig| Ganze Zahl für die maximale Tiefe der Schreibwarteschlange, die für die zentrale Protokollierung verwendet werden kann, entsprechend der Angabe in Kilobytes für das Protokoll, das diesem Replikat zugeordnet ist. Dieser Wert ist die maximale Anzahl von Bytes, die während der Updates für die zentrale Protokollierung ausstehend sein können. Der Wert kann 0 sein, damit die zentrale Protokollierung einen geeigneten Wert berechnet, oder ein Vielfaches von 4. |
 | SharedLogId |String |Nicht zulässig|Freigegebener Protokollbezeichner. Dies ist eine GUID, und sie sollte für jedes freigegebene Protokoll eindeutig sein. |
 | SharedLogPath |String |Nicht zulässig|Pfad zum freigegebenen Protokoll. Wenn dieser Wert leer ist, wird das freigegebene Standardprotokoll verwendet. |
-| SlowApiMonitoringDuration |Zeit in Sekunden, Standardwert 300 |Statisch| Geben Sie für die API eine Dauer an, bevor eine Warnung zu einem Integritätsereignis ausgelöst wird.|
-| MinLogSizeInMB |Ganze Zahl, Standardwert 0 |Statisch|Die minimale Größe des Transaktionsprotokolls. Das Protokoll kann auf keine Größe unterhalb dieser Einstellung gekürzt werden. 0 gibt an, dass die minimale Protokollgröße durch den Replikator anhand anderer Einstellungen bestimmt wird. Bei einem höheren Wert erhöht sich die Möglichkeit zur Erstellung von Teilkopien und inkrementellen Sicherungen, da sich dadurch das Risiko verringert, dass relevante Protokolldatensätze abgeschnitten werden. |
+| SlowApiMonitoringDuration |Zeit in Sekunden, Standardwert 300 |statischen| Geben Sie für die API eine Dauer an, bevor eine Warnung zu einem Integritätsereignis ausgelöst wird.|
+| MinLogSizeInMB |Ganze Zahl, Standardwert 0 |statischen|Die minimale Größe des Transaktionsprotokolls. Das Protokoll kann auf keine Größe unterhalb dieser Einstellung gekürzt werden. 0 gibt an, dass die minimale Protokollgröße durch den Replikator anhand anderer Einstellungen bestimmt wird. Bei einem höheren Wert erhöht sich die Möglichkeit zur Erstellung von Teilkopien und inkrementellen Sicherungen, da sich dadurch das Risiko verringert, dass relevante Protokolldatensätze abgeschnitten werden. |
 
 ### <a name="section-name-fabricclient"></a>Name des Abschnitts: FabricClient
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| NodeAddresses |string, Standardwert "" |Statisch|Eine Sammlung von Adressen (Verbindungszeichenfolgen) auf unterschiedlichen Knoten, die für die Kommunikation mit dem Naming Service verwendet werden können. Anfangs stellt der Client eine Verbindung her, indem er eine der Adressen nach dem Zufallsprinzip auswählt. Wenn mehr als eine Verbindungszeichenfolge angegeben wird und eine Verbindung aufgrund eines Kommunikations- oder Timeoutfehlers nicht hergestellt werden kann, wechselt der Client zur nächsten Adresse in der Reihe. Details zur Semantik von Wiederholungsversuchen finden Sie im Abschnitt zu Wiederholungsversuchen für Naming Service-Adressen. |
+| NodeAddresses |string, Standardwert "" |statischen|Eine Sammlung von Adressen (Verbindungszeichenfolgen) auf unterschiedlichen Knoten, die für die Kommunikation mit dem Naming Service verwendet werden können. Anfangs stellt der Client eine Verbindung her, indem er eine der Adressen nach dem Zufallsprinzip auswählt. Wenn mehr als eine Verbindungszeichenfolge angegeben wird und eine Verbindung aufgrund eines Kommunikations- oder Timeoutfehlers nicht hergestellt werden kann, wechselt der Client zur nächsten Adresse in der Reihe. Details zur Semantik von Wiederholungsversuchen finden Sie im Abschnitt zu Wiederholungsversuchen für Naming Service-Adressen. |
 | ConnectionInitializationTimeout |Zeit in Sekunden, Standardwert 2 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Timeoutintervall für Verbindungen für jeden Versuch eines Clients, eine Verbindung mit dem Gateway zu öffnen. |
-| PartitionLocationCacheLimit |Ganze Zahl, Standardwert 100000 |Statisch|Anzahl der für die Dienstlösung zwischengespeicherten Partitionen (bei 0 gilt keine Begrenzung). |
+| PartitionLocationCacheLimit |Ganze Zahl, Standardwert 100000 |statischen|Anzahl der für die Dienstlösung zwischengespeicherten Partitionen (bei 0 gilt keine Begrenzung). |
 | ServiceChangePollInterval |Zeit in Sekunden, Standardwert 120 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Intervall zwischen aufeinanderfolgenden Abrufen von Dienständerungen vom Client an das Gateway für Benachrichtigungsrückrufe zu registrierten Dienständerungen. |
-| KeepAliveIntervalInSeconds |Ganze Zahl, Standardwert 20 |Statisch|Das Intervall, in dem der FabricClient-Transport Keep-Alive-Nachrichten an das Gateway sendet. Bei 0 ist „keepAlive“ deaktiviert. Der Wert muss eine positive Zahl sein. |
+| KeepAliveIntervalInSeconds |Ganze Zahl, Standardwert 20 |statischen|Das Intervall, in dem der FabricClient-Transport Keep-Alive-Nachrichten an das Gateway sendet. Bei 0 ist „keepAlive“ deaktiviert. Der Wert muss eine positive Zahl sein. |
 | HealthOperationTimeout |Zeit in Sekunden, Standardwert 120 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Timeout für eine an den Integritätsdienst gesendete Berichtsnachricht. |
 | HealthReportSendInterval |Zeit in Sekunden, Standardwert 30 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Intervall, in dem Berichtskomponenten kumulierte Integritätsberichte an den Integritätsdienst senden. |
 | HealthReportRetrySendInterval |Zeit in Sekunden, Standardwert 30 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Intervall, in dem Berichtskomponenten kumulierte Integritätsberichte erneut an den Integritätsdienst senden. |
 | RetryBackoffInterval |Zeit in Sekunden, Standardwert 3 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Backoffintervall vor der Wiederholung des Vorgangs. |
-| MaxFileSenderThreads |Uint, Standardwert 10 |Statisch|Die maximale Anzahl von Dateien, die gleichzeitig übertragen werden. |
+| MaxFileSenderThreads |Uint, Standardwert 10 |statischen|Die maximale Anzahl von Dateien, die gleichzeitig übertragen werden. |
 
 ### <a name="section-name-common"></a>Name des Abschnitts: Common
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -134,30 +134,30 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ### <a name="section-name-healthmanager"></a>Name des Abschnitts: HealthManager
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| EnableApplicationTypeHealthEvaluation |Boolesch, Standardwert „false“ |Statisch|Evaluierungsrichtlinie für die Clusterintegrität, wird für die Integritätsevaluierung pro Anwendungstyp aktiviert. |
+| EnableApplicationTypeHealthEvaluation |Boolesch, Standardwert „false“ |statischen|Evaluierungsrichtlinie für die Clusterintegrität, wird für die Integritätsevaluierung pro Anwendungstyp aktiviert. |
 
 ### <a name="section-name-nodedomainids"></a>Name des Abschnitts: NodeDomainIds
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| UpgradeDomainId |string, Standardwert "" |Statisch|Beschreibt die Upgradedomäne, zu der ein Knoten gehört. |
-| PropertyGroup |NodeFaultDomainIdCollection |Statisch|Beschreibt die Fehlerdomäne, zu der ein Knoten gehört. Die Fehlerdomäne wird durch einen URI definiert, der die Position des Knotens im Datencenter beschreibt.  Fehlerdomänen-URIs weisen das Format fd:/fd/ gefolgt von einem URI-Pfadsegment auf.|
+| UpgradeDomainId |string, Standardwert "" |statischen|Beschreibt die Upgradedomäne, zu der ein Knoten gehört. |
+| PropertyGroup |NodeFaultDomainIdCollection |statischen|Beschreibt die Fehlerdomäne, zu der ein Knoten gehört. Die Fehlerdomäne wird durch einen URI definiert, der die Position des Knotens im Datencenter beschreibt.  Fehlerdomänen-URIs weisen das Format fd:/fd/ gefolgt von einem URI-Pfadsegment auf.|
 
 ### <a name="section-name-nodeproperties"></a>Name des Abschnitts: NodeProperties
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| PropertyGroup |NodePropertyCollectionMap |Statisch|Eine Sammlung der Zeichenfolgen von Schlüssel-Wert-Paaren für Knoteneigenschaften. |
+| PropertyGroup |NodePropertyCollectionMap |statischen|Eine Sammlung der Zeichenfolgen von Schlüssel-Wert-Paaren für Knoteneigenschaften. |
 
 ### <a name="section-name-nodecapacities"></a>Name des Abschnitts: NodeCapacities
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| PropertyGroup |NodeCapacityCollectionMap |Statisch|Eine Sammlung von Knotenkapazitäten für verschiedene Metriken. |
+| PropertyGroup |NodeCapacityCollectionMap |statischen|Eine Sammlung von Knotenkapazitäten für verschiedene Metriken. |
 
 ### <a name="section-name-fabricnode"></a>Name des Abschnitts: FabricNode
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| StateTraceInterval |Zeit in Sekunden, Standardwert 300 |Statisch|Geben Sie die Zeitspanne in Sekunden an. Das Intervall für die Ablaufverfolgung des Knotenstatus auf allen Knoten und aktiven Knoten in FM/FMM. |
-| StartApplicationPortRange |Ganze Zahl, Standardwert 0 |Statisch|Start der Anwendungsports, die vom Hostingsubsystem verwaltet werden. Erforderlich, wenn EndpointFilteringEnabled beim Hosting „true“ ist. |
-| EndApplicationPortRange |Ganze Zahl, Standardwert 0 |Statisch|Ende (nicht inklusiv) der Anwendungsports, die vom Hostingsubsystem verwaltet werden. Erforderlich, wenn EndpointFilteringEnabled beim Hosting „true“ ist. |
+| StateTraceInterval |Zeit in Sekunden, Standardwert 300 |statischen|Geben Sie die Zeitspanne in Sekunden an. Das Intervall für die Ablaufverfolgung des Knotenstatus auf allen Knoten und aktiven Knoten in FM/FMM. |
+| StartApplicationPortRange |Ganze Zahl, Standardwert 0 |statischen|Start der Anwendungsports, die vom Hostingsubsystem verwaltet werden. Erforderlich, wenn EndpointFilteringEnabled beim Hosting „true“ ist. |
+| EndApplicationPortRange |Ganze Zahl, Standardwert 0 |statischen|Ende (nicht inklusiv) der Anwendungsports, die vom Hostingsubsystem verwaltet werden. Erforderlich, wenn EndpointFilteringEnabled beim Hosting „true“ ist. |
 | ClusterX509StoreName |string, Standardwert „My“ |Dynamisch|Der Name des X.509-Zertifikatspeichers, der das Clusterzertifikat zum Sichern der Kommunikation innerhalb des Clusters enthält. |
 | ClusterX509FindType |string, Standardwert „FindByThumbprint“ |Dynamisch|Gibt an, wie nach dem Clusterzertifikat im durch ClusterX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: „FindByThumbprint“, „FindBySubjectName“. Wenn es bei „FindBySubjectName“ mehrere Übereinstimmungen gibt, wird das Zertifikat mit dem längsten Ablaufdatum verwendet. |
 | ClusterX509FindValue |string, Standardwert "" |Dynamisch|Suchfilterwert, der zum Suchen des Clusterzertifikats verwendet wird. |
@@ -225,17 +225,17 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |Nicht zulässig| Geben Sie die Zeitspanne in Sekunden an. Wenn in einem Naming Service ein Quorumverlust auftritt, wird dieser Timer gestartet.  Nach dessen Ablauf betrachtet FM die ausgefallenen Replikate als verloren und versucht, das Quorum wiederherzustellen. Beachten Sie, dass dies zu Datenverlusten führen kann. |
 |StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert 3600,0 * 2 |Nicht zulässig| Geben Sie die Zeitspanne in Sekunden an. Wenn ein Naming Service-Replikat nach einem Ausfall wieder aktiv ist, wurde es möglicherweise bereits ersetzt.  Dieser Timer bestimmt, wie lange FM das Reservereplikat beibehält, bevor es verworfen wird. |
 |PlacementConstraints | string, Standardwert "" |Nicht zulässig| Platzierungseinschränkung für den Naming Service. |
-|ServiceDescriptionCacheLimit | Ganze Zahl, Standardwert 0 |Statisch| Die maximale Anzahl von Einträgen, die im LRU-Dienstbeschreibungscache im Naming Service-Speicher beibehalten werden (bei 0 gilt keine Begrenzung). |
-|RepairInterval | Zeit in Sekunden, Standardwert 5 |Statisch| Geben Sie die Zeitspanne in Sekunden an. Intervall, in dem die Korrektur von Benennungsinkonsistenzen zwischen dem Autoritätsbesitzer und dem Namensbesitzer gestartet wird. |
+|ServiceDescriptionCacheLimit | Ganze Zahl, Standardwert 0 |statischen| Die maximale Anzahl von Einträgen, die im LRU-Dienstbeschreibungscache im Naming Service-Speicher beibehalten werden (bei 0 gilt keine Begrenzung). |
+|RepairInterval | Zeit in Sekunden, Standardwert 5 |statischen| Geben Sie die Zeitspanne in Sekunden an. Intervall, in dem die Korrektur von Benennungsinkonsistenzen zwischen dem Autoritätsbesitzer und dem Namensbesitzer gestartet wird. |
 |MaxNamingServiceHealthReports | Ganze Zahl, Standardwert 10 |Dynamisch|Die maximale Anzahl von langsamen Vorgängen, die der Naming Service-Speicher gleichzeitig als fehlerhaft meldet. Bei 0 werden alle langsamen Vorgänge gesendet. |
-| MaxMessageSize |Ganze Zahl, Standardwert 4*1024*1024 |Statisch|Die maximale Nachrichtengröße für die Clientknotenkommunikation, wenn Benennungen verwendet werden. DOS-Angriffsbekämpfung, Standardwert 4 MB. |
+| MaxMessageSize |Ganze Zahl, Standardwert 4\*1024\*1024 |statischen|Die maximale Nachrichtengröße für die Clientknotenkommunikation, wenn Benennungen verwendet werden. DOS-Angriffsbekämpfung, Standardwert 4 MB. |
 | MaxFileOperationTimeout |Zeit in Sekunden, Standardwert 30 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das maximale Timeout, das für den Vorgang des Dateispeicherdiensts zulässig ist. Anforderungen, die einen höheren Timeoutwert angeben, werden zurückgewiesen. |
 | MaxOperationTimeout |Zeit in Sekunden, Standardwert 600 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das maximale Timeout, das für Clientvorgänge zulässig ist. Anforderungen, die einen höheren Timeoutwert angeben, werden zurückgewiesen. |
 | MaxClientConnections |Ganze Zahl, Standardwert 1000 |Dynamisch|Die maximal zulässige Anzahl von Clientverbindungen pro Gateway. |
 | ServiceNotificationTimeout |Zeit in Sekunden, Standardwert 30 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Timeout, das verwendet wird, wenn Dienstbenachrichtigungen an den Client übermittelt werden. |
 | MaxOutstandingNotificationsPerClient |Ganze Zahl, Standardwert 1000 |Dynamisch|Die maximale Anzahl von ausstehenden Benachrichtigungen, bevor eine Clientregistrierung erzwungenermaßen vom Gateway geschlossen wird. |
 | MaxIndexedEmptyPartitions |Ganze Zahl, Standardwert 1000 |Dynamisch|Die maximale Anzahl von leeren Partitionen, die im Benachrichtigungscache indiziert bleiben, um Clients zu synchronisieren, die erneut eine Verbindung herstellen. Leere Partitionen oberhalb dieser Anzahl werden in aufsteigender Reihenfolge der Suchversionen aus dem Index entfernt. Clients, die erneut Verbindungen herstellen, können weiterhin synchronisiert werden und versäumte Aktualisierungen leerer Partitionen empfangen. Das Synchronisierungsprotokoll wird jedoch umfangreicher. |
-| GatewayServiceDescriptionCacheLimit |Ganze Zahl, Standardwert 0 |Statisch|Die maximale Anzahl von Einträgen, die im LRU-Dienstbeschreibungscache im Naming Gateway beibehalten werden (bei 0 gilt keine Begrenzung). |
+| GatewayServiceDescriptionCacheLimit |Ganze Zahl, Standardwert 0 |statischen|Die maximale Anzahl von Einträgen, die im LRU-Dienstbeschreibungscache im Naming Gateway beibehalten werden (bei 0 gilt keine Begrenzung). |
 | PartitionCount |Ganze Zahl, Standardwert 3 |Nicht zulässig|Die Anzahl der zu erstellenden Partitionen des Naming Service-Speichers. Jede Partition besitzt einen einzelnen Partitionsschlüssel, der dessen Index entspricht. Daher sind Partitionsschlüssel [0; PartitionCount) vorhanden. Durch Erhöhen der Anzahl von Naming Service-Partitionen kann der Naming Service in größerem Maßstab ausgeführt werden, indem die durchschnittliche Menge von Daten verringert wird, die von sichernden Replikatgruppen gespeichert werden. Dies erhöht jedoch die Auslastung von Ressourcen (da Dienstreplikate im Umfang von PartitionCount × ReplicaSetSize beibehalten werden müssen).|
 
 ### <a name="section-name-runas"></a>Name des Abschnitts: RunAs
@@ -269,10 +269,10 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ### <a name="section-name-httpgateway"></a>Name des Abschnitts: HttpGateway
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|IsEnabled|Boolesch, Standardwert „false“ |Statisch| Aktiviert bzw. deaktiviert „HttpGateway“. „HttpGateway“ ist standardmäßig deaktiviert. |
-|ActiveListeners |Uint, Standardwert 50 |Statisch| Anzahl der Lesevorgänge, die an die HTTP-Serverwarteschlange gesendet werden sollen. Dadurch wird die Anzahl gleichzeitiger Anforderungen gesteuert, die von HttpGateway erfüllt werden können. |
+|IsEnabled|Boolesch, Standardwert „false“ |statischen| Aktiviert bzw. deaktiviert „HttpGateway“. „HttpGateway“ ist standardmäßig deaktiviert. |
+|ActiveListeners |Uint, Standardwert 50 |statischen| Anzahl der Lesevorgänge, die an die HTTP-Serverwarteschlange gesendet werden sollen. Dadurch wird die Anzahl gleichzeitiger Anforderungen gesteuert, die von HttpGateway erfüllt werden können. |
 |MaxEntityBodySize |Uint, Standardwert 4194304 |Dynamisch|Gibt die maximale Größe des Texts an, der von einer HTTP-Anforderung erwartet werden kann. Der Standardwert ist 4 MB. Httpgateway erzeugt für eine Anforderung einen Fehler, wenn der Text größer als dieser Wert ist. Die minimale Blockgröße beim Lesen beträgt 4096 Bytes. Der Wert muss also größer oder gleich 4096. |
-|HttpGatewayHealthReportSendInterval |Zeit in Sekunden, Standardwert 30 |Statisch|Geben Sie die Zeitspanne in Sekunden an. Das Intervall, in dem das HTTP-Gateway kumulierte Integritätsberichte an den Integritätsdienst sendet. |
+|HttpGatewayHealthReportSendInterval |Zeit in Sekunden, Standardwert 30 |statischen|Geben Sie die Zeitspanne in Sekunden an. Das Intervall, in dem das HTTP-Gateway kumulierte Integritätsberichte an den Integritätsdienst sendet. |
 
 ### <a name="section-name-ktllogger"></a>Name des Abschnitts: KtlLogger
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -281,26 +281,26 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |WriteBufferMemoryPoolMinimumInKB |Ganze Zahl, Standardwert 8388608 |Dynamisch|Die Anzahl an KB, die anfänglich für den Schreibpuffer-Speicherpool reserviert wird. Verwenden Sie 0, um eine Begrenzung anzugeben. Der Standardwert muss mit SharedLogSizeInMB weiter unten konsistent sein. |
 |WriteBufferMemoryPoolMaximumInKB | Ganze Zahl, Standardwert 0 |Dynamisch|Die Anzahl an KB, bis zu der der Schreibpuffer-Speicherpool anwachsen kann. Verwenden Sie 0, um keine Begrenzung anzugeben. |
 |MaximumDestagingWriteOutstandingInKB | Ganze Zahl, Standardwert 0 |Dynamisch|Die Anzahl an KB, die das freigegebene Protokoll dem dedizierten Protokoll voraus sein darf. Verwenden Sie 0, um keine Begrenzung anzugeben.
-|SharedLogPath |string, Standardwert "" |Statisch|Pfad und Dateiname für den Speicherort des freigegebenen Protokollcontainers. Verwenden Sie "", um den Standardpfad im Fabricdatenstamm zu nutzen. |
-|SharedLogId |string, Standardwert "" |Statisch|Eindeutige GUID für den freigegebenen Protokollcontainer. Verwenden Sie "", wenn Sie den Standardpfad im Fabricdatenstamm nutzen. |
-|SharedLogSizeInMB |Ganze Zahl, Standardwert 8192 |Statisch|Die Anzahl an MB, die für den freigegebenen Protokollcontainer reserviert wird. |
+|SharedLogPath |string, Standardwert "" |statischen|Pfad und Dateiname für den Speicherort des freigegebenen Protokollcontainers. Verwenden Sie "", um den Standardpfad im Fabricdatenstamm zu nutzen. |
+|SharedLogId |string, Standardwert "" |statischen|Eindeutige GUID für den freigegebenen Protokollcontainer. Verwenden Sie "", wenn Sie den Standardpfad im Fabricdatenstamm nutzen. |
+|SharedLogSizeInMB |Ganze Zahl, Standardwert 8192 |statischen|Die Anzahl an MB, die für den freigegebenen Protokollcontainer reserviert wird. |
 
 ### <a name="section-name-applicationgatewayhttp"></a>Name des Abschnitts: ApplicationGateway/Http
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|IsEnabled |Boolesch, Standardwert „false“ |Statisch| Aktiviert bzw. deaktiviert HttpApplicationGateway. HttpApplicationGateway ist standardmäßig deaktiviert, und diese Konfiguration muss zur Aktivierung festgelegt werden. |
-|NumberOfParallelOperations | Uint, Standardwert 5000 |Statisch|Anzahl der Lesevorgänge, die an die HTTP-Serverwarteschlange gesendet werden sollen. Dadurch wird die Anzahl gleichzeitiger Anforderungen gesteuert, die von HttpGateway erfüllt werden können. |
+|IsEnabled |Boolesch, Standardwert „false“ |statischen| Aktiviert bzw. deaktiviert HttpApplicationGateway. HttpApplicationGateway ist standardmäßig deaktiviert, und diese Konfiguration muss zur Aktivierung festgelegt werden. |
+|NumberOfParallelOperations | Uint, Standardwert 5000 |statischen|Anzahl der Lesevorgänge, die an die HTTP-Serverwarteschlange gesendet werden sollen. Dadurch wird die Anzahl gleichzeitiger Anforderungen gesteuert, die von HttpGateway erfüllt werden können. |
 |DefaultHttpRequestTimeout |Zeit in Sekunden. Standardwert 120 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an.  Gibt das standardmäßige Anforderungstimeout für die HTTP-Anforderungen an, die im HTTP-App-Gateway verarbeitet werden. |
 |ResolveServiceBackoffInterval |Zeit in Sekunden, Standardwert 5 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an.  Gibt das standardmäßige Backoffintervall an, nach dem ein fehlerhafter Vorgang zum Auflösen von Diensten wiederholt wird. |
 |BodyChunkSize |Uint, Standardwert 16384 |Dynamisch| Gibt die Größe des Blocks in Bytes an, der zum Lesen des Texts verwendet wird. |
-|GatewayAuthCredentialType |string, Standardwert „None“ |Statisch| Gibt den Typ der Sicherheitsanmeldeinformationen an, die am HTTP-App-Gatewayendpunkt verwendet werden sollen. Gültige Werte sind None/X509. |
+|GatewayAuthCredentialType |string, Standardwert „None“ |statischen| Gibt den Typ der Sicherheitsanmeldeinformationen an, die am HTTP-App-Gatewayendpunkt verwendet werden sollen. Gültige Werte sind None/X509. |
 |GatewayX509CertificateStoreName |string, Standardwert „My“ |Dynamisch| Name des X.509-Zertifikatspeichers, der das Zertifikat für das HTTP-App-Gateway enthält. |
 |GatewayX509CertificateFindType |string, Standardwert „FindByThumbprint“ |Dynamisch| Gibt an, wie nach dem Zertifikat im durch GatewayX509CertificateStoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |
 |GatewayX509CertificateFindValue | string, Standardwert "" |Dynamisch| Suchfilterwert, der zum Suchen des HTTP-App-Gatewayzertifikats verwendet wird. Dieses Zertifikat ist für den HTTPS-Endpunkt konfiguriert und kann bei Bedarf auch von den Diensten zum Überprüfen der Identität der App verwendet werden. Nach FindValue wird zuerst gesucht. Wenn nicht vorhanden, wird nach FindValueSecondary gesucht. |
 |GatewayX509CertificateFindValueSecondary | string, Standardwert "" |Dynamisch|Suchfilterwert, der zum Suchen des HTTP-App-Gatewayzertifikats verwendet wird. Dieses Zertifikat ist für den HTTPS-Endpunkt konfiguriert und kann bei Bedarf auch von den Diensten zum Überprüfen der Identität der App verwendet werden. Nach FindValue wird zuerst gesucht. Wenn nicht vorhanden, wird nach FindValueSecondary gesucht.|
 |HttpRequestConnectTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(5)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an.  Gibt das Verbindungstimeout für die HTTP-Anforderungen an, die vom HTTP-App-Gateway gesendet werden.  |
-|RemoveServiceResponseHeaders|string, Standardwert L "Date; Server"|Statisch|Durch Semikolons/Kommas getrennte Liste mit Antwortheadern, die aus der Dienstantwort entfernt werden, bevor die Weiterleitung an den Client erfolgt. Wenn dieser Wert auf eine leere Zeichenfolge festgelegt ist, werden alle vom Dienst zurückgegebenen Header unverändert übergeben. z.B.: Datum und die Server nicht überschreiben |
-|ApplicationCertificateValidationPolicy|string, Standardwert L"None"|Statisch| ApplicationCertificateValidationPolicy: None: Serverzertifikat nicht überprüfen, Anforderung ist erfolgreich. ServiceCertificateThumbprints: Die durch Kommas getrennte Liste der Fingerabdrücke der Remotezertifikate, denen der Reverseproxy vertrauen kann, finden Sie unter „config ServiceCertificateThumbprints“. ServiceCommonNameAndIssuer: Den Antragstellernamen und den Ausstellerfingerabdruck des Remotezertifikats, denen der Reverseproxy vertrauen kann, finden Sie unter „config ServiceCommonNameAndIssuer“. |
+|RemoveServiceResponseHeaders|string, Standardwert L "Date; Server"|statischen|Durch Semikolons/Kommas getrennte Liste mit Antwortheadern, die aus der Dienstantwort entfernt werden, bevor die Weiterleitung an den Client erfolgt. Wenn dieser Wert auf eine leere Zeichenfolge festgelegt ist, werden alle vom Dienst zurückgegebenen Header unverändert übergeben. z.B.: Datum und die Server nicht überschreiben |
+|ApplicationCertificateValidationPolicy|string, Standardwert L"None"|statischen| ApplicationCertificateValidationPolicy: None: Serverzertifikat nicht überprüfen, Anforderung ist erfolgreich. ServiceCertificateThumbprints: Die durch Kommas getrennte Liste der Fingerabdrücke der Remotezertifikate, denen der Reverseproxy vertrauen kann, finden Sie unter „config ServiceCertificateThumbprints“. ServiceCommonNameAndIssuer: Den Antragstellernamen und den Ausstellerfingerabdruck des Remotezertifikats, denen der Reverseproxy vertrauen kann, finden Sie unter „config ServiceCommonNameAndIssuer“. |
 |ServiceCertificateThumbprints|string, Standardwert L""|Dynamisch| |
 |CrlCheckingFlag|uint, Standardwert 0 x 40000000 |Dynamisch| Flags für die Überprüfung der Anwendungs- bzw. Dienstzertifikatkette, z. B. Zertifikatsperrlistenüberprüfung 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY. Bei Festlegen des Werts auf 0 wird die Zertifikatsperrlistenüberprüfung deaktiviert. Die vollständige Liste der unterstützten Werte wird durch dwFlags von CertGetCertificateChain dokumentiert: http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |IgnoreCrlOfflineError|Boolesch, Standardwert TRUE|Dynamisch|Gibt an, ob ein Zertifikatsperrlisten-Offlinefehler bei der Überprüfung des Anwendungs- bzw. Dienstzertifikats ignoriert werden soll. |
@@ -315,43 +315,43 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ### <a name="section-name-management"></a>Name des Abschnitts: Management
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| ImageStoreConnectionString |SecureString |Statisch|Die Verbindungszeichenfolge für das Stammverzeichnis für ImageStore. |
+| ImageStoreConnectionString |SecureString |statischen|Die Verbindungszeichenfolge für das Stammverzeichnis für ImageStore. |
 | ImageStoreMinimumTransferBPS | Ganze Zahl, Standardwert 1024 |Dynamisch|Die minimale Übertragungsrate zwischen dem Cluster und ImageStore. Dieser Wert wird verwendet, um das Timeout zu bestimmen, wenn auf den externen ImageStore zugegriffen wird. Ändern Sie diesen Wert nur, wenn die Latenz zwischen dem Cluster und ImageStore hoch ist, damit der Cluster mehr Zeit für Downloads aus dem externen ImageStore erhält. |
 |AzureStorageMaxWorkerThreads | Ganze Zahl, Standardwert 25 |Dynamisch|Die maximale Anzahl von parallelen Workerthreads. |
 |AzureStorageMaxConnections | Ganze Zahl, Standardwert 5000 |Dynamisch|Die maximale Anzahl gleichzeitiger Verbindungen mit Azure Storage. |
 |AzureStorageOperationTimeout | Zeit in Sekunden, Standardwert 6000 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Timeout für den Abschluss des xstore-Vorgangs. |
-|ImageCachingEnabled | Boolesch, Standardwert „true“ |Statisch|Diese Konfiguration ermöglicht es, das Zwischenspeichern zu aktivieren oder zu deaktivieren. |
-|DisableChecksumValidation | Boolesch, Standardwert „false“ |Statisch| Diese Konfiguration ermöglicht es, die Prüfsummenüberprüfung während der Anwendungsbereitstellung zu aktivieren oder zu deaktivieren. |
-|DisableServerSideCopy | Boolesch, Standardwert „false“ |Statisch|Diese Konfiguration aktiviert oder deaktiviert serverseitiges Kopieren des Anwendungspakets in ImageStore während der Anwendungsbereitstellung. |
+|ImageCachingEnabled | Boolesch, Standardwert „true“ |statischen|Diese Konfiguration ermöglicht es, das Zwischenspeichern zu aktivieren oder zu deaktivieren. |
+|DisableChecksumValidation | Boolesch, Standardwert „false“ |statischen| Diese Konfiguration ermöglicht es, die Prüfsummenüberprüfung während der Anwendungsbereitstellung zu aktivieren oder zu deaktivieren. |
+|DisableServerSideCopy | Boolesch, Standardwert „false“ |statischen|Diese Konfiguration aktiviert oder deaktiviert serverseitiges Kopieren des Anwendungspakets in ImageStore während der Anwendungsbereitstellung. |
 
 ### <a name="section-name-healthmanagerclusterhealthpolicy"></a>Name des Abschnitts: HealthManager/ClusterHealthPolicy
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| ConsiderWarningAsError |Boolesch, Standardwert „false“ |Statisch|Evaluierungsrichtlinie für die Clusterintegrität: Warnungen werden als Fehler behandelt. |
-| MaxPercentUnhealthyNodes | Ganze Zahl, Standardwert 0 |Statisch|Evaluierungsrichtlinie für die Clusterintegrität: Maximaler Prozentsatz fehlerhafter Knoten, die für einen als fehlerfrei geltenden Cluster zulässig sind. |
-| MaxPercentUnhealthyApplications | Ganze Zahl, Standardwert 0 |Statisch|Evaluierungsrichtlinie für die Clusterintegrität: Maximaler Prozentsatz fehlerhafter Anwendungen, die für einen als fehlerfrei geltenden Cluster zulässig sind. |
+| ConsiderWarningAsError |Boolesch, Standardwert „false“ |statischen|Evaluierungsrichtlinie für die Clusterintegrität: Warnungen werden als Fehler behandelt. |
+| MaxPercentUnhealthyNodes | Ganze Zahl, Standardwert 0 |statischen|Evaluierungsrichtlinie für die Clusterintegrität: Maximaler Prozentsatz fehlerhafter Knoten, die für einen als fehlerfrei geltenden Cluster zulässig sind. |
+| MaxPercentUnhealthyApplications | Ganze Zahl, Standardwert 0 |statischen|Evaluierungsrichtlinie für die Clusterintegrität: Maximaler Prozentsatz fehlerhafter Anwendungen, die für einen als fehlerfrei geltenden Cluster zulässig sind. |
 
 ### <a name="section-name-healthmanagerclusterupgradehealthpolicy"></a>Abschnittsname: HealthManager/ClusterUpgradeHealthPolicy
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|MaxPercentDeltaUnhealthyNodes|Ganze Zahl, Standardwert 10|Statisch|Evaluierungsrichtlinie für die Clusterupgradeintegrität: Maximaler Prozentsatz des Deltas nicht integrer Knoten, die für einen als integer geltenden Cluster zulässig sind. |
-|MaxPercentUpgradeDomainDeltaUnhealthyNodes|Ganze Zahl, Standardwert 15|Statisch|Evaluierungsrichtlinie für die Clusterupgradeintegrität: Maximaler Prozentsatz des Deltas nicht integrer Knoten in einer Upgradedomäne, die für einen als integer geltenden Cluster zulässig sind. |
+|MaxPercentDeltaUnhealthyNodes|Ganze Zahl, Standardwert 10|statischen|Evaluierungsrichtlinie für die Clusterupgradeintegrität: Maximaler Prozentsatz des Deltas nicht integrer Knoten, die für einen als integer geltenden Cluster zulässig sind. |
+|MaxPercentUpgradeDomainDeltaUnhealthyNodes|Ganze Zahl, Standardwert 15|statischen|Evaluierungsrichtlinie für die Clusterupgradeintegrität: Maximaler Prozentsatz des Deltas nicht integrer Knoten in einer Upgradedomäne, die für einen als integer geltenden Cluster zulässig sind. |
 
 ### <a name="section-name-faultanalysisservice"></a>Name des Abschnitts: FaultAnalysisService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 | TargetReplicaSetSize |Ganze Zahl, Standardwert 0 |Nicht zulässig|NOT_PLATFORM_UNIX_START, TargetReplicaSetSize für FaultAnalysisService. |
 | MinReplicaSetSize |Ganze Zahl, Standardwert 0 |Nicht zulässig|MinReplicaSetSize für FaultAnalysisService. |
-| ReplicaRestartWaitDuration |Zeit in Sekunden, Standardwert 60 Minuten|Statisch|Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für FaultAnalysisService. |
-| QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |Statisch|Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für FaultAnalysisService. |
-| StandByReplicaKeepDuration| Zeit in Sekunden, Standardwert (60*24*7) Minuten |Statisch|Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für FaultAnalysisService. |
-| PlacementConstraints | string, Standardwert ""|Statisch| PlacementConstraints für FaultAnalysisService. |
-| StoredActionCleanupIntervalInSeconds | Ganze Zahl, Standardwert 3600 |Statisch|Gibt an, wie häufig der Speicher bereinigt wird.  Nur Aktionen in einem Endzustand und die mindestens vor CompletedActionKeepDurationInSeconds abgeschlossen wurden, werden entfernt. |
-| CompletedActionKeepDurationInSeconds | Ganze Zahl, Standardwert 604800 |Statisch| Ungefähr für diese Dauer sollten Aktionen gespeichert werden, die in einem Endzustand sind.  Dies hängt auch von StoredActionCleanupIntervalInSeconds ab, da die Bereinigung nur in diesem Intervall erfolgt. 604800 sind 7 Tage. |
-| StoredChaosEventCleanupIntervalInSeconds | Ganze Zahl, Standardwert 3600 |Statisch|Mit dieser Häufigkeit wird der Speicher auf Bereinigungen überwacht. Wenn die Anzahl der Ereignisse größer als 30000 ist, wird die Bereinigung gestartet. |
-|DataLossCheckWaitDurationInSeconds|Ganze Zahl, Standardwert 25|Statisch|Die Gesamtzeit in Sekunden, die das System auf Datenverluste wartet.  Dies wird intern verwendet, wenn die StartPartitionDataLossAsync()-API aufgerufen wird. |
-|DataLossCheckPollIntervalInSeconds|Ganze Zahl, Standardwert 5|Statisch|Dies ist der Zeitraum zwischen den Überprüfungen, die das System während des Wartens auf Datenverluste ausführt.  Die Häufigkeit, mit der die Anzahl der Datenverluste pro interner Iteration überprüft wird, ist DataLossCheckWaitDurationInSeconds/this. |
-|ReplicaDropWaitDurationInSeconds|Ganze Zahl, Standardwert 600|Statisch|Dieser Parameter wird verwendet, wenn die Datenverlust-API aufgerufen wird.  Er steuert, wie lange das System wartet, bis ein Replikat gelöscht wird, nachdem intern „remove replica“ für das Replikat aufgerufen wurde. |
+| ReplicaRestartWaitDuration |Zeit in Sekunden, Standardwert 60 Minuten|statischen|Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für FaultAnalysisService. |
+| QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |statischen|Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für FaultAnalysisService. |
+| StandByReplicaKeepDuration| Zeit in Sekunden, Standardwert (60*24*7) Minuten |statischen|Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für FaultAnalysisService. |
+| PlacementConstraints | string, Standardwert ""|statischen| PlacementConstraints für FaultAnalysisService. |
+| StoredActionCleanupIntervalInSeconds | Ganze Zahl, Standardwert 3600 |statischen|Gibt an, wie häufig der Speicher bereinigt wird.  Nur Aktionen in einem Endzustand und die mindestens vor CompletedActionKeepDurationInSeconds abgeschlossen wurden, werden entfernt. |
+| CompletedActionKeepDurationInSeconds | Ganze Zahl, Standardwert 604800 |statischen| Ungefähr für diese Dauer sollten Aktionen gespeichert werden, die in einem Endzustand sind.  Dies hängt auch von StoredActionCleanupIntervalInSeconds ab, da die Bereinigung nur in diesem Intervall erfolgt. 604800 sind 7 Tage. |
+| StoredChaosEventCleanupIntervalInSeconds | Ganze Zahl, Standardwert 3600 |statischen|Mit dieser Häufigkeit wird der Speicher auf Bereinigungen überwacht. Wenn die Anzahl der Ereignisse größer als 30000 ist, wird die Bereinigung gestartet. |
+|DataLossCheckWaitDurationInSeconds|Ganze Zahl, Standardwert 25|statischen|Die Gesamtzeit in Sekunden, die das System auf Datenverluste wartet.  Dies wird intern verwendet, wenn die StartPartitionDataLossAsync()-API aufgerufen wird. |
+|DataLossCheckPollIntervalInSeconds|Ganze Zahl, Standardwert 5|statischen|Dies ist der Zeitraum zwischen den Überprüfungen, die das System während des Wartens auf Datenverluste ausführt.  Die Häufigkeit, mit der die Anzahl der Datenverluste pro interner Iteration überprüft wird, ist DataLossCheckWaitDurationInSeconds/this. |
+|ReplicaDropWaitDurationInSeconds|Ganze Zahl, Standardwert 600|statischen|Dieser Parameter wird verwendet, wenn die Datenverlust-API aufgerufen wird.  Er steuert, wie lange das System wartet, bis ein Replikat gelöscht wird, nachdem intern „remove replica“ für das Replikat aufgerufen wurde. |
 
 ### <a name="section-name-filestoreservice"></a>Name des Abschnitts: FileStoreService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -359,43 +359,43 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | NamingOperationTimeout |Zeit in Sekunden, Standardwert 60 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Timeout für die Durchführung des Benennungsvorgangs. |
 | QueryOperationTimeout | Zeit in Sekunden, Standardwert 60 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Timeout für die Durchführung des Abfragevorgangs. |
 | MaxCopyOperationThreads | Uint, Standardwert 0 |Dynamisch| Die maximale Anzahl von parallelen Dateien, die der sekundäre Replikator vom primären Server kopieren kann. 0 = Anzahl von Kernen. |
-| MaxFileOperationThreads | Uint, Standardwert 100 |Statisch| Die maximale Anzahl von parallelen Threads, die FileOperations (Kopieren/Verschieben) auf dem primären Replikator durchführen dürfen. 0 = Anzahl von Kernen. |
-| MaxStoreOperations | Uint, Standardwert 4096 |Statisch|Die maximale Anzahl von parallelen Speichertransaktionen, die auf dem primären Replikator zulässig sind. 0 = Anzahl von Kernen. |
-| MaxRequestProcessingThreads | Uint, Standardwert 200 |Statisch|Die maximale Anzahl von parallelen Threads, die zum Verarbeiten von Anforderungen auf dem primären Replikator zulässig sind. 0 = Anzahl von Kernen. |
+| MaxFileOperationThreads | Uint, Standardwert 100 |statischen| Die maximale Anzahl von parallelen Threads, die FileOperations (Kopieren/Verschieben) auf dem primären Replikator durchführen dürfen. 0 = Anzahl von Kernen. |
+| MaxStoreOperations | Uint, Standardwert 4096 |statischen|Die maximale Anzahl von parallelen Speichertransaktionen, die auf dem primären Replikator zulässig sind. 0 = Anzahl von Kernen. |
+| MaxRequestProcessingThreads | Uint, Standardwert 200 |statischen|Die maximale Anzahl von parallelen Threads, die zum Verarbeiten von Anforderungen auf dem primären Replikator zulässig sind. 0 = Anzahl von Kernen. |
 | MaxSecondaryFileCopyFailureThreshold | Uint, Standardwert 25|Dynamisch|Die maximale Anzahl von Wiederholungsversuchen beim Kopieren von Dateien auf den sekundären Replikator, bevor aufgegeben wird. |
-| AnonymousAccessEnabled | Boolesch, Standardwert „true“ |Statisch|Aktivieren/deaktivieren Sie anonymen Zugriff auf die FileStoreService-Freigaben. |
-| PrimaryAccountType | string, Standardwert "" |Statisch|Der primäre AccountType des Prinzipals für die ACL von FileStoreService-Freigaben. |
-| PrimaryAccountUserName | string, Standardwert "" |Statisch|Der primäre Kontobenutzername des Prinzipals für die ACL von FileStoreService-Freigaben. |
-| PrimaryAccountUserPassword | SecureString, Standardwert ist leer |Statisch|Das primäre Kontokennwort des Prinzipals für die ACL von FileStoreService-Freigaben. |
-| PrimaryAccountNTLMPasswordSecret | SecureString, Standardwert ist leer |Statisch| Der geheime Schlüssel des Kennworts, der als Startwert verwendet wird, um bei Verwendung der NTLM-Authentifizierung das gleiche Kennwort zu generieren. |
-| PrimaryAccountNTLMX509StoreLocation | string, Standardwert „LocalMachine“|Statisch| Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für PrimaryAccountNTLMPasswordSecret zu generieren. |
-| PrimaryAccountNTLMX509StoreName | string, Standardwert „MY“|Statisch| Der Speichername des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für PrimaryAccountNTLMPasswordSecret zu generieren. |
-| PrimaryAccountNTLMX509Thumbprint | string, Standardwert ""|Statisch|Der Fingerabdruck des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für PrimaryAccountNTLMPasswordSecret zu generieren. |
-| SecondaryAccountType | string, Standardwert ""|Statisch| Der sekundäre AccountType des Prinzipals für die ACL von FileStoreService-Freigaben. |
-| SecondaryAccountUserName | string, Standardwert ""| Statisch|Der sekundäre Kontobenutzername des Prinzipals für die ACL von FileStoreService-Freigaben. |
-| SecondaryAccountUserPassword | SecureString, Standardwert ist leer |Statisch|Das sekundäre Kontokennwort des Prinzipals für die ACL von FileStoreService-Freigaben.  |
-| SecondaryAccountNTLMPasswordSecret | SecureString, Standardwert ist leer |Statisch| Der geheime Schlüssel des Kennworts, der als Startwert verwendet wird, um bei Verwendung der NTLM-Authentifizierung das gleiche Kennwort zu generieren. |
-| SecondaryAccountNTLMX509StoreLocation | string, Standardwert „LocalMachine“ |Statisch|Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
-| SecondaryAccountNTLMX509StoreName | string, Standardwert „MY“ |Statisch|Der Speichername des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
-| SecondaryAccountNTLMX509Thumbprint | string, Standardwert ""| Statisch|Der Fingerabdruck des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
-|CommonNameNtlmPasswordSecret|SecureString, Standardwert Common::SecureString(L"")| Statisch|Der geheime Schlüssel des Kennworts, der als Startwert verwendet wird, um bei Verwendung der NTLM-Authentifizierung das gleiche Kennwort zu generieren. |
-|CommonName1Ntlmx509StoreLocation|string, Standardwert L"LocalMachine"|Statisch|Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName1NtlmPasswordSecret zu generieren. |
-|CommonName1Ntlmx509StoreName|string, Standardwert L"MY"| Statisch|Der Speichername des X509-Zertifikats, der verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName1NtlmPasswordSecret zu generieren. |
-|CommonName1Ntlmx509CommonName|string, Standardwert L""|Statisch| Der CN (allgemeiner Name) des X509-Zertifikats, der verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName1NtlmPasswordSecret zu generieren. |
-|CommonName2Ntlmx509StoreLocation|string, Standardwert L"LocalMachine"| Statisch|Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName2NtlmPasswordSecret zu generieren. |
-|CommonName2Ntlmx509StoreName|string, Standardwert L"MY"|Statisch| Der Speichername des X509-Zertifikats, der verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName2NtlmPasswordSecret zu generieren. |
-|CommonName2Ntlmx509CommonName|string, Standardwert L""|Statisch|Der CN (allgemeiner Name) des X509-Zertifikats, der verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName2NtlmPasswordSecret zu generieren. |
+| AnonymousAccessEnabled | Boolesch, Standardwert „true“ |statischen|Aktivieren/deaktivieren Sie anonymen Zugriff auf die FileStoreService-Freigaben. |
+| PrimaryAccountType | string, Standardwert "" |statischen|Der primäre AccountType des Prinzipals für die ACL von FileStoreService-Freigaben. |
+| PrimaryAccountUserName | string, Standardwert "" |statischen|Der primäre Kontobenutzername des Prinzipals für die ACL von FileStoreService-Freigaben. |
+| PrimaryAccountUserPassword | SecureString, Standardwert ist leer |statischen|Das primäre Kontokennwort des Prinzipals für die ACL von FileStoreService-Freigaben. |
+| PrimaryAccountNTLMPasswordSecret | SecureString, Standardwert ist leer |statischen| Der geheime Schlüssel des Kennworts, der als Startwert verwendet wird, um bei Verwendung der NTLM-Authentifizierung das gleiche Kennwort zu generieren. |
+| PrimaryAccountNTLMX509StoreLocation | string, Standardwert „LocalMachine“|statischen| Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für PrimaryAccountNTLMPasswordSecret zu generieren. |
+| PrimaryAccountNTLMX509StoreName | string, Standardwert „MY“|statischen| Der Speichername des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für PrimaryAccountNTLMPasswordSecret zu generieren. |
+| PrimaryAccountNTLMX509Thumbprint | string, Standardwert ""|statischen|Der Fingerabdruck des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für PrimaryAccountNTLMPasswordSecret zu generieren. |
+| SecondaryAccountType | string, Standardwert ""|statischen| Der sekundäre AccountType des Prinzipals für die ACL von FileStoreService-Freigaben. |
+| SecondaryAccountUserName | string, Standardwert ""| statischen|Der sekundäre Kontobenutzername des Prinzipals für die ACL von FileStoreService-Freigaben. |
+| SecondaryAccountUserPassword | SecureString, Standardwert ist leer |statischen|Das sekundäre Kontokennwort des Prinzipals für die ACL von FileStoreService-Freigaben.  |
+| SecondaryAccountNTLMPasswordSecret | SecureString, Standardwert ist leer |statischen| Der geheime Schlüssel des Kennworts, der als Startwert verwendet wird, um bei Verwendung der NTLM-Authentifizierung das gleiche Kennwort zu generieren. |
+| SecondaryAccountNTLMX509StoreLocation | string, Standardwert „LocalMachine“ |statischen|Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
+| SecondaryAccountNTLMX509StoreName | string, Standardwert „MY“ |statischen|Der Speichername des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
+| SecondaryAccountNTLMX509Thumbprint | string, Standardwert ""| statischen|Der Fingerabdruck des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für SecondaryAccountNTLMPasswordSecret zu generieren. |
+|CommonNameNtlmPasswordSecret|SecureString, Standardwert Common::SecureString(L"")| statischen|Der geheime Schlüssel des Kennworts, der als Startwert verwendet wird, um bei Verwendung der NTLM-Authentifizierung das gleiche Kennwort zu generieren. |
+|CommonName1Ntlmx509StoreLocation|string, Standardwert L"LocalMachine"|statischen|Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName1NtlmPasswordSecret zu generieren. |
+|CommonName1Ntlmx509StoreName|string, Standardwert L"MY"| statischen|Der Speichername des X509-Zertifikats, der verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName1NtlmPasswordSecret zu generieren. |
+|CommonName1Ntlmx509CommonName|string, Standardwert L""|statischen| Der CN (allgemeiner Name) des X509-Zertifikats, der verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName1NtlmPasswordSecret zu generieren. |
+|CommonName2Ntlmx509StoreLocation|string, Standardwert L"LocalMachine"| statischen|Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName2NtlmPasswordSecret zu generieren. |
+|CommonName2Ntlmx509StoreName|string, Standardwert L"MY"|statischen| Der Speichername des X509-Zertifikats, der verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName2NtlmPasswordSecret zu generieren. |
+|CommonName2Ntlmx509CommonName|string, Standardwert L""|statischen|Der CN (allgemeiner Name) des X509-Zertifikats, der verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName2NtlmPasswordSecret zu generieren. |
 
 ### <a name="section-name-imagestoreservice"></a>Name des Abschnitts: ImageStoreService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| Aktiviert |Boolesch, Standardwert „false“ |Statisch|Das Flag „Enabled“ für ImageStoreService. Standardwert: FALSE |
+| Aktiviert |Boolesch, Standardwert „false“ |statischen|Das Flag „Enabled“ für ImageStoreService. Standardwert: FALSE |
 | TargetReplicaSetSize | Ganze Zahl, Standardwert 7 |Nicht zulässig|TargetReplicaSetSize für ImageStoreService. |
 | MinReplicaSetSize | Ganze Zahl, Standardwert 3 |Nicht zulässig|MinReplicaSetSize für ImageStoreService. |
-| ReplicaRestartWaitDuration | Zeit in Sekunden, Standardwert 60,0 * 30 |Statisch|Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für ImageStoreService. |
-| QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |Statisch| Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für ImageStoreService. |
-| StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert 3600,0 * 2 |Statisch| Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für ImageStoreService. |
-| PlacementConstraints | string, Standardwert "" |Statisch| PlacementConstraints für ImageStoreService. |
+| ReplicaRestartWaitDuration | Zeit in Sekunden, Standardwert 60,0 * 30 |statischen|Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für ImageStoreService. |
+| QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |statischen| Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für ImageStoreService. |
+| StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert 3600,0 * 2 |statischen| Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für ImageStoreService. |
+| PlacementConstraints | string, Standardwert "" |statischen| PlacementConstraints für ImageStoreService. |
 
 ### <a name="section-name-imagestoreclient"></a>Name des Abschnitts: ImageStoreClient
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -409,19 +409,19 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ### <a name="section-name-tokenvalidationservice"></a>Name des Abschnitts: TokenValidationService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| Anbieter |string, Standardwert „DSTS“ |Statisch|Durch Trennzeichen getrennte Liste von zu aktivierenden Tokenvalidierungsanbietern (gültige Anbieter sind: DSTS, AAD). Derzeit kann immer nur ein einzelnen Anbieter aktiviert werden. |
+| Anbieter |string, Standardwert „DSTS“ |statischen|Durch Trennzeichen getrennte Liste von zu aktivierenden Tokenvalidierungsanbietern (gültige Anbieter sind: DSTS, AAD). Derzeit kann immer nur ein einzelnen Anbieter aktiviert werden. |
 
 ### <a name="section-name-upgradeorchestrationservice"></a>Name des Abschnitts: UpgradeOrchestrationService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 | TargetReplicaSetSize |Ganze Zahl, Standardwert 0 |Nicht zulässig|TargetReplicaSetSize für UpgradeOrchestrationService. |
 | MinReplicaSetSize |Ganze Zahl, Standardwert 0 |Nicht zulässig|MinReplicaSetSize für UpgradeOrchestrationService.
-| ReplicaRestartWaitDuration | Zeit in Sekunden, Standardwert 60 Minuten|Statisch| Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für UpgradeOrchestrationService. |
-| QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |Statisch| Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für UpgradeOrchestrationService. |
-| StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert 60*24*7 Minuten |Statisch| Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für UpgradeOrchestrationService. |
-| PlacementConstraints | string, Standardwert "" |Statisch| PlacementConstraints für UpgradeOrchestrationService. |
-| AutoupgradeEnabled | Boolesch, Standardwert „true“ |Statisch| Automatische Abruf- und Aktualisierungsaktion basierend auf einer Datei für den Zielzustand. |
-| UpgradeApprovalRequired | Boolesch, Standardwert „false“ | Statisch|Einstellung, damit bei der Codeaktualisierung die Genehmigung durch den Administrator erforderlich ist, bevor fortgefahren werden kann. |
+| ReplicaRestartWaitDuration | Zeit in Sekunden, Standardwert 60 Minuten|statischen| Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für UpgradeOrchestrationService. |
+| QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |statischen| Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für UpgradeOrchestrationService. |
+| StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert 60*24*7 Minuten |statischen| Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für UpgradeOrchestrationService. |
+| PlacementConstraints | string, Standardwert "" |statischen| PlacementConstraints für UpgradeOrchestrationService. |
+| AutoupgradeEnabled | Boolesch, Standardwert „true“ |statischen| Automatische Abruf- und Aktualisierungsaktion basierend auf einer Datei für den Zielzustand. |
+| UpgradeApprovalRequired | Boolesch, Standardwert „false“ | statischen|Einstellung, damit bei der Codeaktualisierung die Genehmigung durch den Administrator erforderlich ist, bevor fortgefahren werden kann. |
 
 ### <a name="section-name-upgradeservice"></a>Name des Abschnitts: UpgradeService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -430,22 +430,22 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | TargetReplicaSetSize | Ganze Zahl, Standardwert 3 |Nicht zulässig| TargetReplicaSetSize für UpgradeService. |
 | MinReplicaSetSize | Ganze Zahl, Standardwert 2 |Nicht zulässig| MinReplicaSetSize für UpgradeService. |
 | CoordinatorType | string, Standardwert „WUTest“|Nicht zulässig|CoordinatorType für UpgradeService. |
-| BaseUrl | string, Standardwert "" |Statisch|BaseUrl für UpgradeService. |
-| ClusterId | string, Standardwert "" |Statisch|ClusterId für UpgradeService. |
+| BaseUrl | string, Standardwert "" |statischen|BaseUrl für UpgradeService. |
+| ClusterId | string, Standardwert "" |statischen|ClusterId für UpgradeService. |
 | X509StoreName | string, Standardwert „My“|Dynamisch|X509StoreName für UpgradeService. |
 | X509StoreLocation | string, Standardwert "" |Dynamisch| X509StoreLocation für UpgradeService. |
 | X509FindType | string, Standardwert ""|Dynamisch| X509FindType für UpgradeService. |
 | X509FindValue | string, Standardwert "" |Dynamisch| X509FindValue für UpgradeService. |
 | X509SecondaryFindValue | string, Standardwert "" |Dynamisch| X509SecondaryFindValue für UpgradeService. |
 | OnlyBaseUpgrade | Boolesch, Standardwert „false“ |Dynamisch|OnlyBaseUpgrade für UpgradeService. |
-| TestCabFolder | string, Standardwert "" |Statisch| TestCabFolder für UpgradeService. |
+| TestCabFolder | string, Standardwert "" |statischen| TestCabFolder für UpgradeService. |
 
 ### <a name="section-name-security"></a>Name des Abschnitts: Security
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ClusterCredentialType|string, Standardwert L"None"|Nicht zulässig|Gibt den Typ der Sicherheitsanmeldeinformationen an, die verwendet werden sollen, um den Cluster zu sichern. Gültige Werte sind „None/X509/Windows“ |
-|ServerAuthCredentialType|string, Standardwert L"None"|Statisch|Gibt den Typ der Sicherheitsanmeldeinformationen an, die verwendet werden sollen, um die Kommunikation zwischen FabricClient und dem Cluster zu sichern. Gültige Werte sind „None/X509/Windows“ |
-|ClientRoleEnabled|Boolesch, Standardwert FALSE|Statisch|Gibt an, ob die Rolle „Client“ aktiviert ist. Bei Festlegung auf TRUE werden Clients anhand ihrer Identitäten Rollen zugewiesen. Für V2 bedeutet die Aktivierung, dass Clients, die nicht in AdminClientCommonNames/AdminClientIdentities enthalten sind, nur schreibgeschützte Vorgänge ausführen können. |
+|ServerAuthCredentialType|string, Standardwert L"None"|statischen|Gibt den Typ der Sicherheitsanmeldeinformationen an, die verwendet werden sollen, um die Kommunikation zwischen FabricClient und dem Cluster zu sichern. Gültige Werte sind „None/X509/Windows“ |
+|ClientRoleEnabled|Boolesch, Standardwert FALSE|statischen|Gibt an, ob die Rolle „Client“ aktiviert ist. Bei Festlegung auf TRUE werden Clients anhand ihrer Identitäten Rollen zugewiesen. Für V2 bedeutet die Aktivierung, dass Clients, die nicht in AdminClientCommonNames/AdminClientIdentities enthalten sind, nur schreibgeschützte Vorgänge ausführen können. |
 |ClusterCertThumbprints|string, Standardwert L""|Dynamisch|Fingerabdrücke von Zertifikaten, die dem Cluster beitreten dürfen. Eine durch Kommas getrennte Liste. |
 |ServerCertThumbprints|string, Standardwert L""|Dynamisch|Fingerabdrücke von Serverzertifikaten, die vom Cluster für die Kommunikation mit Clients verwendet werden. Clients verwenden diese Angabe, um den Cluster zu authentifizieren. Es handelt sich um eine durch Kommas getrennte Liste. |
 |ClientCertThumbprints|string, Standardwert L""|Dynamisch|Fingerabdrücke von Zertifikaten, die vom Clients für die Kommunikation mit dem Cluster verwendet werden. Cluster verwenden diese Angabe, um eingehende Verbindungen zu autorisieren. Es handelt sich um eine durch Kommas getrennte Liste. |
@@ -455,23 +455,23 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |IgnoreSvrCrlOfflineError|Boolesch, Standardwert TRUE|Dynamisch|Gibt an, ob ein Zertifikatsperrlisten-Offlinefehler ignoriert werden soll, wenn die Clientseite eingehende Serverzertifikate überprüft. Der Standardwert ist TRUE. Für Angriffe mit gesperrten Serverzertifikaten ist eine Gefährdung des DNS erforderlich. Dies ist schwieriger als mit gesperrten Clientzertifikaten. |
 |CrlDisablePeriod|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(15)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Gibt an, wie lange die Zertifikatsperrlistenüberprüfung für ein bestimmtes Zertifikat nach einem Offlinefehler deaktiviert wird, wenn der Zertifikatsperrlisten-Offlinefehler ignoriert werden kann. |
 |CrlOfflineHealthReportTtl|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(1440)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. |
-|CertificateHealthReportingInterval|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(3600 * 8)|Statisch|Geben Sie die Zeitspanne in Sekunden an. Gibt das Intervall für Zertifikatintegritätsberichte an. Der Standardwert ist 8 Stunden. Bei Festlegung auf 0 werden Zertifikatintegritätsberichte deaktiviert. |
-|CertificateExpirySafetyMargin|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(43200)|Statisch|Geben Sie die Zeitspanne in Sekunden an. Sicherheitsspanne für den Zertifikatablauf. Der Status des Integritätsberichts des Zertifikats ändert sich aus „OK“ in „Warning“, wenn das Ablaufdatum diese Angabe überschreitet. Der Standardwert sind 30 Tage. |
-|ClientClaimAuthEnabled|Boolesch, Standardwert FALSE|Statisch|Gibt an, ob auf Clients anspruchsbasierte Authentifizierung aktiviert ist. Durch Festlegung auf TRUE wird implizit ClientRoleEnabled festlegt. |
+|CertificateHealthReportingInterval|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(3600 * 8)|statischen|Geben Sie die Zeitspanne in Sekunden an. Gibt das Intervall für Zertifikatintegritätsberichte an. Der Standardwert ist 8 Stunden. Bei Festlegung auf 0 werden Zertifikatintegritätsberichte deaktiviert. |
+|CertificateExpirySafetyMargin|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(43200)|statischen|Geben Sie die Zeitspanne in Sekunden an. Sicherheitsspanne für den Zertifikatablauf. Der Status des Integritätsberichts des Zertifikats ändert sich aus „OK“ in „Warning“, wenn das Ablaufdatum diese Angabe überschreitet. Der Standardwert sind 30 Tage. |
+|ClientClaimAuthEnabled|Boolesch, Standardwert FALSE|statischen|Gibt an, ob auf Clients anspruchsbasierte Authentifizierung aktiviert ist. Durch Festlegung auf TRUE wird implizit ClientRoleEnabled festlegt. |
 |ClientClaims|string, Standardwert L""|Dynamisch|Alle möglichen Ansprüche, die von Clients zum Herstellen einer Verbindung mit dem Gateway erwartet werden. Dies ist eine ODER-Liste: ClaimsEntry || ClaimsEntry || ClaimsEntry... Jeder ClaimsEntry ist eine UND-Liste: ClaimType=ClaimValue && ClaimType=ClaimValue && ClaimType=ClaimValue... |
 |AdminClientClaims|string, Standardwert L""|Dynamisch|Alle möglichen Ansprüche, die von Administratorclients erwartet werden. Gleiches Format wie ClientClaims. Diese Liste wird intern ClientClaims hinzugefügt. Es besteht daher keine Notwendigkeit, die gleichen Einträge auch ClientClaims hinzuzufügen. |
 |ClusterSpn|string, Standardwert L""|Nicht zulässig|Der Dienstprinzipalname des Clusters, wenn Fabric als einzelner Domänenbenutzer (gMSA-/Domänenbenutzerkonto) ausgeführt wird. Es handelt sich um den SPN der Leaselistener und der Listener in „fabric.exe“: Verbundlistener, interne Replikationslistener, Dienstlistener zur Laufzeit und Naming Gateway-Listener. Diese Angabe sollte leer bleiben, wenn Fabric als Computerkonten ausgeführt wird. In diesem Fall wird der Computelistener-SPN aus der Listenertransportadresse verbunden. |
 |ClusterIdentities|string, Standardwert L""|Dynamisch|Windows-Identitäten der Clusterknoten, für die Autorisierung der Clustermitgliedschaft verwendet. Es handelt sich um eine durch Kommas getrennte Liste. Jeder Eintrag ist ein Domänenkonto- oder Gruppenname. |
 |ClientIdentities|string, Standardwert L""|Dynamisch|Windows-Identitäten von FabricClient. Naming Gateway verwendet diese Angaben zum Autorisieren eingehender Verbindungen. Es handelt sich um eine durch Kommas getrennte Liste. Jeder Eintrag ist ein Domänenkonto- oder Gruppenname. Der Einfachheit halber ist das Konto, das „fabric.exe“ ausführt, automatisch zulässig. Dies gilt auch für die Gruppen ServiceFabricAllowedUsers und ServiceFabricAdministrators. |
 |AdminClientIdentities|string, Standardwert L""|Dynamisch|Windows-Identitäten der Fabric-Clients in der Rolle „Administrator“. Wird verwendet, um privilegierte Fabric-Vorgänge zu autorisieren. Es handelt sich um eine durch Kommas getrennte Liste. Jeder Eintrag ist ein Domänenkonto- oder Gruppenname. Der Einfachheit halber wird dem Konto, das „fabric.exe“ ausführt, automatisch die Rolle „Administrator“ zugewiesen. Dies gilt auch für die Gruppe ServiceFabricAdministrators. |
-|AADTenantId|string, Standardwert L""|Statisch|Mandanten-ID (GUID) |
-|AADClusterApplication|string, Standardwert L""|Statisch|Web-API-Anwendungsname oder -ID, der bzw. die den Cluster darstellt. |
-|AADClientApplication|string, Standardwert L""|Statisch|Der Name der nativen Clientanwendung oder -ID, die Fabric-Clients darstellt. |
-|X509Folder|string, Standarwert /var/lib/waagent|Statisch|Der Ordner, in dem X509 Zertifikate und private Schlüssel gespeichert sind. |
-|FabricHostSpn| string, Standardwert L"" |Statisch| Der Dienstprinzipalname von FabricHost, wenn Fabric als einzelner Domänenbenutzer (gMSA-/Domänenbenutzerkonto) und FabricHost unter dem Computerkonto ausgeführt wird. Es handelt sich um den SPN von IPC-Listenern für FabricHost. Standardmäßig sollte diese Angabe leer bleiben, weil FabricHost unter dem Computerkonto ausgeführt wird |
-|DisableFirewallRuleForPublicProfile| Boolesch, Standardwert TRUE | Statisch|Gibt an, ob die Firewallregel das öffentliche Profil nicht aktiviert werden soll. |
-|DisableFirewallRuleForPrivateProfile| Boolesch, Standardwert TRUE |Statisch| Gibt an, ob die Firewallregel das private Profil nicht aktiviert werden soll. | 
-|DisableFirewallRuleForDomainProfile| Boolesch, Standardwert TRUE |Statisch| Gibt an, ob die Firewallregel das Domänenprofil nicht aktiviert werden soll. |
+|AADTenantId|string, Standardwert L""|statischen|Mandanten-ID (GUID) |
+|AADClusterApplication|string, Standardwert L""|statischen|Web-API-Anwendungsname oder -ID, der bzw. die den Cluster darstellt. |
+|AADClientApplication|string, Standardwert L""|statischen|Der Name der nativen Clientanwendung oder -ID, die Fabric-Clients darstellt. |
+|X509Folder|string, Standarwert /var/lib/waagent|statischen|Der Ordner, in dem X509 Zertifikate und private Schlüssel gespeichert sind. |
+|FabricHostSpn| string, Standardwert L"" |statischen| Der Dienstprinzipalname von FabricHost, wenn Fabric als einzelner Domänenbenutzer (gMSA-/Domänenbenutzerkonto) und FabricHost unter dem Computerkonto ausgeführt wird. Es handelt sich um den SPN von IPC-Listenern für FabricHost. Standardmäßig sollte diese Angabe leer bleiben, weil FabricHost unter dem Computerkonto ausgeführt wird |
+|DisableFirewallRuleForPublicProfile| Boolesch, Standardwert TRUE | statischen|Gibt an, ob die Firewallregel das öffentliche Profil nicht aktiviert werden soll. |
+|DisableFirewallRuleForPrivateProfile| Boolesch, Standardwert TRUE |statischen| Gibt an, ob die Firewallregel das private Profil nicht aktiviert werden soll. | 
+|DisableFirewallRuleForDomainProfile| Boolesch, Standardwert TRUE |statischen| Gibt an, ob die Firewallregel das Domänenprofil nicht aktiviert werden soll. |
 |SettingsX509StoreName| string, Standardwert L"MY"| Dynamisch|Der X509-Zertifikatspeicher, der von Fabric für den Konfigurationsschutz verwendet wird. |
 
 ### <a name="section-name-securityadminclientx509names"></a>Abschnittsname: Security/AdminClientX509Names
@@ -625,17 +625,17 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 |GlobalMovementThrottleThreshold | Uint, Standardwert 1000 |Dynamisch| Maximale Anzahl von zulässigen Datenverschiebungen in der Lastenausgleichsphase im letzten von GlobalMovementThrottleCountingInterval angegebenen Intervall. |
 |GlobalMovementThrottleThresholdForPlacement | Uint, Standardwert 0 |Dynamisch| Maximale Anzahl von zulässigen Datenverschiebungen in der Platzierungsphase im letzten von GlobalMovementThrottleCountingInterval angegebenen Intervall. Bei 0 gilt keine Begrenzung.|
 |GlobalMovementThrottleThresholdForBalancing | Uint, Standardwert 0 | Dynamisch|Maximale Anzahl von zulässigen Datenverschiebungen in der Lastenausgleichsphase im letzten von GlobalMovementThrottleCountingInterval angegebenen Intervall. Bei 0 gilt keine Begrenzung. |
-|GlobalMovementThrottleCountingInterval | Zeit in Sekunden, Standardwert 600 |Statisch| Geben Sie die Zeitspanne in Sekunden an. Geben Sie die Länge des letzten Intervalls an, für das Datenverschiebungen pro Domänenreplikat nachverfolgt werden sollen (wird zusammen mit GlobalMovementThrottleThreshold verwendet). Kann auf 0 festgelegt werden, um die globale Drosselung vollständig zu ignorieren. |
+|GlobalMovementThrottleCountingInterval | Zeit in Sekunden, Standardwert 600 |statischen| Geben Sie die Zeitspanne in Sekunden an. Geben Sie die Länge des letzten Intervalls an, für das Datenverschiebungen pro Domänenreplikat nachverfolgt werden sollen (wird zusammen mit GlobalMovementThrottleThreshold verwendet). Kann auf 0 festgelegt werden, um die globale Drosselung vollständig zu ignorieren. |
 |MovementPerPartitionThrottleThreshold | Uint, Standardwert 50 |Dynamisch| Für eine Partition werden keine Datenverschiebungen im Zusammenhang mit dem Lastenausgleich ausgeführt, wenn die Anzahl der Datenverschiebungen im Zusammenhang mit dem Lastenausgleich für Replikate dieser Partition im letzten von MovementPerPartitionThrottleCountingInterval angegebenen Intervall den Wert von MovementPerFailoverUnitThrottleThreshold erreicht oder überschritten hat. |
-|MovementPerPartitionThrottleCountingInterval | Zeit in Sekunden, Standardwert 600 |Statisch| Geben Sie die Zeitspanne in Sekunden an. Geben Sie die Länge des letzten Intervalls an, für das Datenverschiebungen pro Replikat für jede Partition nachverfolgt werden sollen (wird zusammen mit MovementPerPartitionThrottleThreshold verwendet). |
+|MovementPerPartitionThrottleCountingInterval | Zeit in Sekunden, Standardwert 600 |statischen| Geben Sie die Zeitspanne in Sekunden an. Geben Sie die Länge des letzten Intervalls an, für das Datenverschiebungen pro Replikat für jede Partition nachverfolgt werden sollen (wird zusammen mit MovementPerPartitionThrottleThreshold verwendet). |
 |PlacementSearchTimeout | Zeit in Sekunden, Standardwert 0,5 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Beim Platzieren von Diensten wird für maximal diese Zeitspanne gesucht, bevor ein Ergebnis zurückgegeben wird. |
 |UseMoveCostReports | Boolesch, Standardwert „false“ | Dynamisch|Weist LB an, das Kostenelement der Bewertungsfunktion zu ignorieren. Dies führt möglicherweise zu mehr Datenverschiebungen für eine Platzierung mit besserem Lastenausgleich. |
 |PreventTransientOvercommit | Boolesch, Standardwert „false“ | Dynamisch|Bestimmt, ob PLB sofort Ressourcen nutzen soll, die von den initiierten Datenverschiebungen freigegeben werden. Standardmäßig kann PLB Datenverschiebungen aus und in einen Knoten initiieren, sodass eine vorübergehende Überlastung entstehen kann. Wenn dieser Parameter auf TRUE festgelegt wird, wird diese Art von Überlastungen verhindert, und eine bedarfsgesteuerte Defragmentierung (placementWithMove) wird deaktiviert. |
 |InBuildThrottlingEnabled | Boolesch, Standardwert „false“ |Dynamisch| Bestimmen Sie, ob die integrierte Drosselung aktiviert wird. |
-|InBuildThrottlingAssociatedMetric | string, Standardwert "" |Statisch| Der zugehörige Metrikname für diese Drosselung. |
+|InBuildThrottlingAssociatedMetric | string, Standardwert "" |statischen| Der zugehörige Metrikname für diese Drosselung. |
 |InBuildThrottlingGlobalMaxValue | Ganze Zahl, Standardwert 0 |Dynamisch|Die maximale, global zulässige Anzahl von integrierten Replikaten. |
 |SwapPrimaryThrottlingEnabled | Boolesch, Standardwert „false“|Dynamisch| Bestimmen Sie, ob die Drosselung beim Austausch des primären Replikats aktiviert wird. |
-|SwapPrimaryThrottlingAssociatedMetric | string, Standardwert ""|Statisch| Der zugehörige Metrikname für diese Drosselung. |
+|SwapPrimaryThrottlingAssociatedMetric | string, Standardwert ""|statischen| Der zugehörige Metrikname für diese Drosselung. |
 |SwapPrimaryThrottlingGlobalMaxValue | Ganze Zahl, Standardwert 0 |Dynamisch| Die maximale, global zulässige Anzahl von primären Replikaten für den Austausch. |
 |PlacementConstraintPriority | Ganze Zahl, Standardwert 0 | Dynamisch|Bestimmt die Priorität der Platzierungseinschränkung: 0: stark; 1: schwach; negativ: Ignorieren. |
 |PreferredLocationConstraintPriority | Ganze Zahl, Standardwert 2| Dynamisch|Bestimmt die Priorität der bevorzugten Speicherorteinschränkung: 0: stark; 1: schwach; 2: Optimierung; negativ: Ignorieren. |
@@ -653,7 +653,7 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 |InterruptBalancingForAllFailoverUnitUpdates | Boolesch, Standardwert „false“ | Dynamisch|Bestimmt, ob jede Art von Aktualisierung der Failovereinheiten schnelle oder langsame Lastenausgleiche unterbrechen soll. Bei „false“ werden Lastenausgleiche unterbrochen, wenn die Failovereinheit erstellt/gelöscht wird, ihr Replikate fehlen bzw. sie einen geänderten Speicherort für das primäre Replikat oder eine geänderte Anzahl von Replikaten aufweist. Lastenausgleiche werden in anderen Fällen NICHT unterbrochen: wenn die Failovereinheit über zusätzliche Replikate verfügt, ein Replikatflag geändert wurde, nur die Partitionsversion geändert wurde oder in anderen Fällen. |
 |GlobalMovementThrottleThresholdPercentage|double, Standardwert 0|Dynamisch|Maximale Anzahl der Gesamtbewegungen, die in Phasen für Lastenausgleich und Platzierung (ausgedrückt als Prozentwert der Gesamtanzahl der Replikate im Cluster) im letzten durch GlobalMovementThrottleCountingInterval angegebenen Intervall zulässig sind. Bei 0 gilt keine Begrenzung. Wenn diese Angabe und GlobalMovementThrottleThreshold festgelegt sind, wird der konservativere Grenzwert verwendet.|
 |GlobalMovementThrottleThresholdPercentageForBalancing|double, Standardwert 0|Dynamisch|Maximale Anzahl der Bewegungen, die in der Phase für Lastenausgleich (ausgedrückt als Prozentwert der Gesamtanzahl der Replikate im PLB) im letzten durch GlobalMovementThrottleCountingInterval angegebenen Intervall zulässig sind. Bei 0 gilt keine Begrenzung. Wenn sowohl diese Einstellung als auch „GlobalMovementThrottleThresholdForBalancing“ festgelegt sind, wird der konservativere Grenzwert verwendet.|
-|AutoDetectAvailableResources|Boolesch, Standardwert TRUE|Statisch|Diese Konfiguration löst eine automatische Erkennung der verfügbaren Ressourcen auf dem Knoten (CPU und Arbeitsspeicher) aus. Wenn diese Konfiguration auf TRUE festgelegt ist, lesen wir reale Kapazitäten aus und korrigieren sie, wenn der Benutzer fehlerhafte Knotenkapazitäten angegeben oder keine Kapazitäten definiert hat. Wenn diese Konfiguration auf FALSE festgelegt ist, geben wir eine Warnung aus, dass der Benutzer fehlerhafte Knotenkapazitäten angegeben hat; korrigieren diese aber nicht. Dies bedeutet, dass der Benutzer die Kapazitäten nutzen möchte, die als größer als die tatsächlichen Kapazitäten des Knotens angegeben wurden, oder wenn Kapazitäten nicht definiert sind; wird von einer unbegrenzten Kapazität ausgegangen. |
+|AutoDetectAvailableResources|Boolesch, Standardwert TRUE|statischen|Diese Konfiguration löst eine automatische Erkennung der verfügbaren Ressourcen auf dem Knoten (CPU und Arbeitsspeicher) aus. Wenn diese Konfiguration auf TRUE festgelegt ist, lesen wir reale Kapazitäten aus und korrigieren sie, wenn der Benutzer fehlerhafte Knotenkapazitäten angegeben oder keine Kapazitäten definiert hat. Wenn diese Konfiguration auf FALSE festgelegt ist, geben wir eine Warnung aus, dass der Benutzer fehlerhafte Knotenkapazitäten angegeben hat; korrigieren diese aber nicht. Dies bedeutet, dass der Benutzer die Kapazitäten nutzen möchte, die als größer als die tatsächlichen Kapazitäten des Knotens angegeben wurden, oder wenn Kapazitäten nicht definiert sind; wird von einer unbegrenzten Kapazität ausgegangen. |
 
 ### <a name="section-name-hosting"></a>Name des Abschnitts: Hosting
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -672,18 +672,18 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 |DeploymentRetryBackoffInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(10)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Backoffintervall für den Fehler bei der Bereitstellung. Bei jedem Continuous Deployment-Fehler wiederholt das System die Bereitstellung bis zu MaxDeploymentFailureCount Mal. Das Wiederholungsintervall ist das Produkt aus dem Continuous Deployment-Fehler und dem Backoffintervall der Bereitstellung. |
 |EnableActivateNoWindow| Boolesch, Standardwert FALSE|Dynamisch| Der aktivierte Prozess wird im Hintergrund ohne Konsole erstellt. |
 |EnableProcessDebugging|Boolesch, Standardwert FALSE|Dynamisch| Ermöglicht das Starten von Anwendungshosts unter dem Debugger. |
-|EndpointProviderEnabled| Boolesch, Standardwert FALSE|Statisch| Ermöglicht die Verwaltung von Endpunktressourcen durch Fabric. Erfordert die Angabe des Start- und Endportbereichs dder Anwendungen in FabricNode. |
-|FabricContainerAppsEnabled| Boolesch, Standardwert FALSE|Statisch| |
-|FirewallPolicyEnabled|Boolesch, Standardwert FALSE|Statisch| Ermöglicht das Öffnen von Firewallports für die Endpunktressourcen mit expliziten Ports, die in ServiceManifest angegeben werden. |
+|EndpointProviderEnabled| Boolesch, Standardwert FALSE|statischen| Ermöglicht die Verwaltung von Endpunktressourcen durch Fabric. Erfordert die Angabe des Start- und Endportbereichs dder Anwendungen in FabricNode. |
+|FabricContainerAppsEnabled| Boolesch, Standardwert FALSE|statischen| |
+|FirewallPolicyEnabled|Boolesch, Standardwert FALSE|statischen| Ermöglicht das Öffnen von Firewallports für die Endpunktressourcen mit expliziten Ports, die in ServiceManifest angegeben werden. |
 |GetCodePackageActivationContextTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die CodePackageActivationContext-Aufrufe. Dies gilt nicht für Ad-hoc-Dienste. |
-|IPProviderEnabled|Boolesch, Standardwert FALSE|Statisch|Ermöglicht die Verwaltung von IP-Adressen. |
-|NTLMAuthenticationEnabled|Boolesch, Standardwert FALSE|Statisch| Ermöglicht die Unterstützung für die Verwendung von NTLM durch die Codepakete, die als andere Benutzer ausgeführt werden, damit die Prozesse computerübergreifend sicher kommunizieren können. |
-|NTLMAuthenticationPasswordSecret|SecureString, Standardwert Common::SecureString(L"")|Statisch|Eine verschlüsselte Zeichenfolge, der verwendet wird, um das Kennwort für NTLM-Benutzer zu generieren. Muss festgelegt werden, wenn NTLMAuthenticationEnabled auf TRUE festgelegt ist. Wird vom Bereitsteller überprüft. |
+|IPProviderEnabled|Boolesch, Standardwert FALSE|statischen|Ermöglicht die Verwaltung von IP-Adressen. |
+|NTLMAuthenticationEnabled|Boolesch, Standardwert FALSE|statischen| Ermöglicht die Unterstützung für die Verwendung von NTLM durch die Codepakete, die als andere Benutzer ausgeführt werden, damit die Prozesse computerübergreifend sicher kommunizieren können. |
+|NTLMAuthenticationPasswordSecret|SecureString, Standardwert Common::SecureString(L"")|statischen|Eine verschlüsselte Zeichenfolge, der verwendet wird, um das Kennwort für NTLM-Benutzer zu generieren. Muss festgelegt werden, wenn NTLMAuthenticationEnabled auf TRUE festgelegt ist. Wird vom Bereitsteller überprüft. |
 |NTLMSecurityUsersByX509CommonNamesRefreshInterval|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(3)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Umgebungsspezifische Einstellungen. Das regelmäßige Intervall, in dem das Hosting auf neue Zertifikate für die FileStoreService-NTLM-Konfiguration scannt. |
 |NTLMSecurityUsersByX509CommonNamesRefreshTimeout|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(4)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das Timeout für die Konfiguration von NTLM-Benutzern mit allgemeinen Zertifikatnamen. Die NTLM-Benutzer sind für FileStoreService-Freigaben erforderlich. |
 |RegisterCodePackageHostTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für den FabricRegisterCodePackageHost-Synchronisierungsaufruf. Dies gilt für nur Multicode-Paketanwendungshosts wie FWP. |
 |RequestTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(30)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Dies stellt das Timeout für die Kommunikation zwischen dem Anwendungshost des Benutzers und dem Fabric-Prozess für verschiedene hostingbezogene Vorgänge dar, z. B. für Factoryregistrierung und Runtimeregistrierung. |
-|RunAsPolicyEnabled| Boolesch, Standardwert FALSE|Statisch| Ermöglicht das Ausführen von Codepaketen als anderer lokaler Benutzer als der Benutzer, unter dem der Fabric-Prozess ausgeführt wird. Um diese Richtlinie zu aktivieren, muss Fabric als SYSTEM oder als Benutzer mit SeAssignPrimaryTokenPrivilege ausgeführt werden. |
+|RunAsPolicyEnabled| Boolesch, Standardwert FALSE|statischen| Ermöglicht das Ausführen von Codepaketen als anderer lokaler Benutzer als der Benutzer, unter dem der Fabric-Prozess ausgeführt wird. Um diese Richtlinie zu aktivieren, muss Fabric als SYSTEM oder als Benutzer mit SeAssignPrimaryTokenPrivilege ausgeführt werden. |
 |ServiceFactoryRegistrationTimeout| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für den Register(Stateless/Stateful)ServiceFactory-Synchronisierungsaufruf. |
 |ServiceTypeDisableGraceInterval|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(30)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Zeitintervall, nach dem der Diensttyp deaktiviert werden kann. |
 
@@ -741,8 +741,8 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 ### <a name="section-name-dnsservice"></a>Abschnittsname: DnsService
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|IsEnabled|Boolesch, Standardwert FALSE|Statisch| |
-|InstanceCount|Ganze Zahl, Standardwert -1|Statisch|  |
+|IsEnabled|Boolesch, Standardwert FALSE|statischen| |
+|InstanceCount|Ganze Zahl, Standardwert -1|statischen|  |
 
 ### <a name="section-name-metricactivitythresholds"></a>Abschnittsname: MetricActivityThresholds
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
@@ -762,25 +762,25 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 ### <a name="section-name-replication"></a>Abschnittsname: Replication
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|MaxCopyQueueSize|uint, Standardwert 1024|Statisch|Dies ist der maximale Wert. Er definiert die Anfangsgröße für die Warteschlange, die Replikationsvorgänge verwaltet.  Beachten Sie, dass der Wert eine Potenz von 2 sein muss.  Wenn während der Laufzeit die Warteschlange auf diese Größe anwächst, werden Vorgänge zwischen den primären und sekundären Replikatoren gedrosselt.|
-|BatchAcknowledgementInterval|TimeSpan, Standardwert Common::TimeSpan::FromMilliseconds(15)|Statisch|Geben Sie die Zeitspanne in Sekunden an. Bestimmt die Zeitdauer, die der Replikator nach dem Empfang eines Vorgangs wartet, bevor er eine Bestätigung sendet. Für andere Vorgänge, die während dieses Zeitraums empfangen werden, werden die Bestätigungen in einer einzelnen Nachricht zurückgesendet. Dadurch wird der Netzwerkverkehr verringert, jedoch möglicherweise auch der Durchsatz des Replikators.|
-|MaxReplicationMessageSize|uint, Standardwert 52428800|Statisch|Maximale Nachrichtengröße für Replikationsvorgänge. Der Standardwert ist 50 MB.|
-|ReplicatorAddress|string, Standardwert L"localhost:0"|Statisch|Der Endpunkt in Form einer Zeichenfolge – „IP:Port“. Wird vom Windows Fabric-Replikator verwendet, um Verbindungen mit anderen Replikaten herzustellen, um Vorgänge zu senden/zu empfangen.|
-|ReplicatorListenAddress|string, Standardwert L"localhost:0"|Statisch|Der Endpunkt in Form einer Zeichenfolge – „IP:Port“. Wird vom Windows Fabric-Replikator verwendet, um Vorgänge von anderen Replikaten zu empfangen.|
-|ReplicatorPublishAddress|string, Standardwert L"localhost:0"|Statisch|Der Endpunkt in Form einer Zeichenfolge – „IP:Port“. Wird vom Windows Fabric-Replikator verwendet, um Vorgänge an andere Replikate zu senden.|
-|MaxPrimaryReplicationQueueSize|uint, Standardwert 1024|Statisch|Dies ist die maximale Anzahl von Vorgängen, die in der primären Replikationswarteschlange vorhanden sein können. Beachten Sie, dass der Wert eine Potenz von 2 sein muss.|
-|MaxPrimaryReplicationQueueMemorySize|uint, Standardwert 0|Statisch|Dies ist der maximale Wert für die primäre Replikationswarteschlange in Bytes.|
-|MaxSecondaryReplicationQueueSize|uint, Standardwert 2048|Statisch|Dies ist die maximale Anzahl von Vorgängen, die in der sekundären Replikationswarteschlange vorhanden sein können. Beachten Sie, dass der Wert eine Potenz von 2 sein muss.|
-|MaxSecondaryReplicationQueueMemorySize|uint, Standardwert 0|Statisch|Dies ist der maximale Wert für die sekundäre Replikationswarteschlange in Bytes.|
-|QueueHealthMonitoringInterval|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(30)|Statisch|Geben Sie die Zeitspanne in Sekunden an. Dieser Wert bestimmt den Zeitraum, der vom Replikator verwendet wird, um alle Warnungs-/Fehlerintegritätsereignisse in den Warteschlangen des Replikationsvorgangs zu überwachen. Der Wert „0“ deaktiviert die Systemüberwachung. |
-|QueueHealthWarningAtUsagePercent|uint, Standardwert 80|Statisch|Dieser Wert bestimmt die Verwendung der Replikationswarteschlange (in Prozent), nach der eine Warnung zu hoher Warteschlangenverwendung gemeldet wird. Dies geschieht nach einem Toleranzintervall, das durch QueueHealthMonitoringInterval angegeben wird. Wenn die Warteschlangenverwendung im Toleranzintervall unter diesen Prozentsatz fällt|
-|RetryInterval|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(5)|Statisch|Geben Sie die Zeitspanne in Sekunden an. Wenn ein Vorgang nicht ausgeführt oder abgelehnt wurde, bestimmt dieser Zeitgeber, wie oft der Replikator das Senden des Vorgangs erneut versucht.|
+|MaxCopyQueueSize|uint, Standardwert 1024|statischen|Dies ist der maximale Wert. Er definiert die Anfangsgröße für die Warteschlange, die Replikationsvorgänge verwaltet.  Beachten Sie, dass der Wert eine Potenz von 2 sein muss.  Wenn während der Laufzeit die Warteschlange auf diese Größe anwächst, werden Vorgänge zwischen den primären und sekundären Replikatoren gedrosselt.|
+|BatchAcknowledgementInterval|TimeSpan, Standardwert Common::TimeSpan::FromMilliseconds(15)|statischen|Geben Sie die Zeitspanne in Sekunden an. Bestimmt die Zeitdauer, die der Replikator nach dem Empfang eines Vorgangs wartet, bevor er eine Bestätigung sendet. Für andere Vorgänge, die während dieses Zeitraums empfangen werden, werden die Bestätigungen in einer einzelnen Nachricht zurückgesendet. Dadurch wird der Netzwerkverkehr verringert, jedoch möglicherweise auch der Durchsatz des Replikators.|
+|MaxReplicationMessageSize|uint, Standardwert 52428800|statischen|Maximale Nachrichtengröße für Replikationsvorgänge. Der Standardwert ist 50 MB.|
+|ReplicatorAddress|string, Standardwert L"localhost:0"|statischen|Der Endpunkt in Form einer Zeichenfolge – „IP:Port“. Wird vom Windows Fabric-Replikator verwendet, um Verbindungen mit anderen Replikaten herzustellen, um Vorgänge zu senden/zu empfangen.|
+|ReplicatorListenAddress|string, Standardwert L"localhost:0"|statischen|Der Endpunkt in Form einer Zeichenfolge – „IP:Port“. Wird vom Windows Fabric-Replikator verwendet, um Vorgänge von anderen Replikaten zu empfangen.|
+|ReplicatorPublishAddress|string, Standardwert L"localhost:0"|statischen|Der Endpunkt in Form einer Zeichenfolge – „IP:Port“. Wird vom Windows Fabric-Replikator verwendet, um Vorgänge an andere Replikate zu senden.|
+|MaxPrimaryReplicationQueueSize|uint, Standardwert 1024|statischen|Dies ist die maximale Anzahl von Vorgängen, die in der primären Replikationswarteschlange vorhanden sein können. Beachten Sie, dass der Wert eine Potenz von 2 sein muss.|
+|MaxPrimaryReplicationQueueMemorySize|uint, Standardwert 0|statischen|Dies ist der maximale Wert für die primäre Replikationswarteschlange in Bytes.|
+|MaxSecondaryReplicationQueueSize|uint, Standardwert 2048|statischen|Dies ist die maximale Anzahl von Vorgängen, die in der sekundären Replikationswarteschlange vorhanden sein können. Beachten Sie, dass der Wert eine Potenz von 2 sein muss.|
+|MaxSecondaryReplicationQueueMemorySize|uint, Standardwert 0|statischen|Dies ist der maximale Wert für die sekundäre Replikationswarteschlange in Bytes.|
+|QueueHealthMonitoringInterval|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(30)|statischen|Geben Sie die Zeitspanne in Sekunden an. Dieser Wert bestimmt den Zeitraum, der vom Replikator verwendet wird, um alle Warnungs-/Fehlerintegritätsereignisse in den Warteschlangen des Replikationsvorgangs zu überwachen. Der Wert „0“ deaktiviert die Systemüberwachung. |
+|QueueHealthWarningAtUsagePercent|uint, Standardwert 80|statischen|Dieser Wert bestimmt die Verwendung der Replikationswarteschlange (in Prozent), nach der eine Warnung zu hoher Warteschlangenverwendung gemeldet wird. Dies geschieht nach einem Toleranzintervall, das durch QueueHealthMonitoringInterval angegeben wird. Wenn die Warteschlangenverwendung im Toleranzintervall unter diesen Prozentsatz fällt|
+|RetryInterval|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(5)|statischen|Geben Sie die Zeitspanne in Sekunden an. Wenn ein Vorgang nicht ausgeführt oder abgelehnt wurde, bestimmt dieser Zeitgeber, wie oft der Replikator das Senden des Vorgangs erneut versucht.|
 
 ### <a name="section-name-transport"></a>Abschnittsname: Transport
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie** |**Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|ResolveOption|string, Standardwert L"unspecified"|Statisch|Bestimmt, wie der FQDN aufgelöst wird.  Gültige Werte sind „unspecified/ipv4/ipv6“. |
-|ConnectionOpenTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(60)|Statisch|Geben Sie die Zeitspanne in Sekunden an. Timeout für das Einrichten der Verbindung auf der eingehenden und annehmenden Seite (einschließlich der Sicherheitsaushandlung im sicheren Modus). |
+|ResolveOption|string, Standardwert L"unspecified"|statischen|Bestimmt, wie der FQDN aufgelöst wird.  Gültige Werte sind „unspecified/ipv4/ipv6“. |
+|ConnectionOpenTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(60)|statischen|Geben Sie die Zeitspanne in Sekunden an. Timeout für das Einrichten der Verbindung auf der eingehenden und annehmenden Seite (einschließlich der Sicherheitsaushandlung im sicheren Modus). |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Lesen Sie die folgenden Artikel, um weitere Informationen zur Clusterverwaltung zu enthalten:
