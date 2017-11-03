@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: ramankum
-ms.openlocfilehash: 213b00b4f94ef6181c4c1629c97729a8843bd230
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: e9caa732526c4cf446e9c70ed0a030df81c172dd
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Konvertieren zwischen dem Standardspeicher und Storage Premium für verwaltete Azure-Datenträger
 
-Für verwaltete Datenträger stehen zwei Speicheroptionen zur Verfügung: [Premium](../../storage/storage-premium-storage.md) (SSD-basiert) und [Standard](../../storage/storage-standard-storage.md) (HDD-basiert). Entsprechend Ihren Leistungsanforderungen können Sie problemlos zwischen beiden Optionen wechseln – und das bei minimaler Downtime. Diese Funktion ist nicht für nicht verwaltete Datenträger verfügbar. Sie können jedoch problemlos eine [Konvertierung in verwaltete Datenträger ](convert-unmanaged-to-managed-disks.md) durchführen, um einfach zwischen beiden Optionen zu wechseln.
+Für verwaltete Datenträger stehen zwei Speicheroptionen zur Verfügung: [Premium](premium-storage.md) (SSD-basiert) und [Standard](standard-storage.md) (HDD-basiert). Entsprechend Ihren Leistungsanforderungen können Sie problemlos zwischen beiden Optionen wechseln – und das bei minimaler Downtime. Diese Funktion ist nicht für nicht verwaltete Datenträger verfügbar. Sie können jedoch problemlos eine [Konvertierung in verwaltete Datenträger ](convert-unmanaged-to-managed-disks.md) durchführen, um einfach zwischen beiden Optionen zu wechseln.
 
 In diesem Artikel wird die Konvertierung zwischen dem Standardspeicher und Storage Premium für verwaltete Datenträger mithilfe von Azure PowerShell erläutert. Wenn Sie PowerShell installieren oder aktualisieren ausführen müssen, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps.md) Informationen dazu.
 

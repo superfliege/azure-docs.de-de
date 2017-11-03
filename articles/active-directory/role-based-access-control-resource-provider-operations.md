@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
-ms.openlocfilehash: 95c6a1e9cfadeb19a0ec5a53fffb15ef220bfec0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9fe7a5f254d8b384cae10ecd34e0bdafa433ff13
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
@@ -167,31 +167,6 @@ In diesem Dokument werden die Vorgänge aufgeführt, die jedem Microsoft Azure R
 |/service/reports/byTime/read|Dient zum Abrufen von nach Zeiträumen aggregierten Berichten.|
 |/service/reports/byApi/read|Dient zum Abrufen von nach APIs aggregierten Berichten.|
 |/service/reports/byProduct/read|Dient zum Abrufen von nach Produkten aggregierten Berichten.|
-
-## <a name="microsoftappservice"></a>Microsoft.AppService
-
-| Vorgang | Beschreibung |
-|---|---|
-|/appidentities/Read|Gibt die beim Gateway registrierte Ressource (Website) zurück.|
-|/appidentities/Write|Erstellt eine neue App-Identität.|
-|/appidentities/Delete|Löscht eine vorhandene App-Identität.|
-|/deploymenttemplates/listMetadata/Action|Listet UI-Metadaten im Zusammenhang mit dem API-App-Paket auf.|
-|/deploymenttemplates/generate/Action|Gibt eine Bereitstellungsvorlage zum Bereitstellen von API-App-Instanzen zurück.|
-|/gateways/Read|Gibt die Gatewayinstanz zurück.|
-|/gateways/Write|Erstellt ein neues Gateway oder aktualisiert ein bereits vorhandenes.|
-|/gateways/Delete|Löscht eine vorhandene Gatewayinstanz.|
-|/gateways/listLoginUris/Action|Füllt den Tokenspeicher auf und gibt OAuth-Anmelde-URIs zurück.|
-|/gateways/listKeys/Action|Gibt Gatewaygeheimnisse zurück.|
-|/gateways/tokens/Write|Erstellt ein neues Zumo-Token mit dem angegebenen Namen.|
-|/gateways/registrations/Read|Gibt die beim Gateway registrierte Ressource (Website) zurück.|
-|/gateways/registrations/Write|Registriert eine Ressource (Website) beim Gateway.|
-|/gateways/registrations/Delete|Hebt die Registrierung einer Ressource (Website) beim Gateway auf.|
-|/apiapps/Read|Gibt die API-App-Instanz zurück.|
-|/apiapps/Write|Erstellt eine neue API-App oder aktualisiert eine bereits vorhandene.|
-|/apiapps/Delete|Löscht eine vorhandene API-App-Instanz.|
-|/apiapps/listStatus/Action|Gibt den API-App-Status zurück.|
-|/apiapps/listKeys/Action|Gibt API-App-Geheimnisse zurück.|
-|/apiapps/apidefinitions/Read|Gibt die API-Definition der API-App zurück.|
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 

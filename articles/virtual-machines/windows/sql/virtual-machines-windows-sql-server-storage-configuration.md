@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: ninarn
-ms.openlocfilehash: f10bac1189c94a581487d19fc0cc129acec6a636
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20fbc21224410456919e82f3a63c506eb6e573e4
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Speicherkonfiguration für SQL Server-VMs
 Wenn Sie in Azure einen virtuellen SQL Server-Computer konfigurieren, unterstützt Sie das Portal beim Automatisieren Ihrer Speicherkonfiguration. Hierzu gehören auch das Anfügen von Speicher an die VM, das Verfügbarmachen dieses Speichers für SQL Server und die anschließende Konfiguration, um eine Optimierung in Bezug auf Ihre besonderen Leistungsanforderungen zu erzielen.
@@ -32,7 +32,7 @@ Zur Verwendung der Einstellungen für die automatische Speicherkonfiguration mus
 
 * Bereitstellung mit einem [SQL Server-Katalogimage](virtual-machines-windows-sql-server-iaas-overview.md#option-1-create-a-sql-vm-with-per-minute-licensing)
 * Verwendung des [Resource Manager-Bereitstellungsmodells](../../../azure-resource-manager/resource-manager-deployment-model.md)
-* Verwendung von [Storage Premium](../../../storage/common/storage-premium-storage.md)
+* Verwendung von [Storage Premium](../premium-storage.md)
 
 ## <a name="new-vms"></a>Neue virtuelle Computer
 In den folgenden Abschnitten wird beschrieben, wie Speicher für neue virtuelle SQL Server-Computer konfiguriert wird.
@@ -104,7 +104,7 @@ Dieser Abschnitt dient als Referenz für die Änderungen der Speicherkonfigurati
 
 * Falls Sie weniger als zwei TB Speicher für Ihre VM ausgewählt haben, erstellt Azure keinen Speicherpool.
 * Falls Sie mindestens zwei TB Speicher für Ihre VM ausgewählt haben, konfiguriert Azure einen Speicherpool. Im nächsten Abschnitt dieses Themas sind die Details der Speicherpoolkonfiguration angegeben.
-* Bei der automatischen Speicherkonfiguration werden immer [Storage Premium](../../../storage/common/storage-premium-storage.md) -P30-Datenträger verwendet. Daher besteht eine 1:1-Zuordnung zwischen der ausgewählten TB-Menge und der Anzahl von Datenträgern, die an die VM angefügt sind.
+* Bei der automatischen Speicherkonfiguration werden immer [Storage Premium](../premium-storage.md) -P30-Datenträger verwendet. Daher besteht eine 1:1-Zuordnung zwischen der ausgewählten TB-Menge und der Anzahl von Datenträgern, die an die VM angefügt sind.
 
 Preisinformationen finden Sie auf der Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage) auf der Registerkarte **Disk Storage** .
 

@@ -3,8 +3,8 @@ title: Wiederherstellen von Dateien auf einem virtuellen Computer mit Azure Back
 description: "Informationen zum Ausführen von Wiederherstellungen auf Dateiebene auf einer Azure-VM mit Sicherungs- und Wiederherstellungsdiensten."
 services: backup, virtual-machines
 documentationcenter: virtual-machines
-author: iainfoulds
-manager: jeconnoc
+author: markgalioto
+manager: carmonm
 editor: 
 tags: azure-resource-manager, virtual-machine-backup
 ms.assetid: 
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/29/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: abad99f862e3831e70254e76e768e4eb7b2a5053
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1bbae56b70c50fcf691db47efd9dc587686e7da
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Wiederherstellen von Dateien auf einem virtuellen Computer in Azure
 Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder einzelne Dateien wiederherstellen. In diesem Artikel wird erläutert, wie Sie einzelne Dateien wiederherstellen. In diesem Tutorial lernen Sie Folgendes:

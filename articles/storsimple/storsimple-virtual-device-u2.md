@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
-ms.openlocfilehash: 4ed93f9783efcd700db18aa21b5867c951bd2b97
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 29f33d01cc6b640a566dc371f4b9c704978da091
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>Bereitstellen und Verwalten eines virtuellen StorSimple-Geräts in Azure
 ## <a name="overview"></a>Übersicht
@@ -33,7 +33,7 @@ Das virtuelle StorSimple-Gerät steht in zwei Modellen zur Verfügung, dem Stand
 | **Azure-VM** |Standard_A3 (4 Kerne, 7 GB Arbeitsspeicher) |Standard_DS3 (4 Kerne, 14 GB Arbeitsspeicher) |
 | **Versionskompatibilität** |Versionen unter Vorgängerversionen von Update 2 oder höher |Versionen unter Update 2 oder höher |
 | **Regionale Verfügbarkeit** |Alle Azure-Regionen |Alle Azure-Regionen, die Storage Premium und DS3-Azure-VMs unterstützen<br></br> Verwenden Sie [diese Liste](https://azure.microsoft.com/en-us/regions/services), um zu ermitteln, ob in Ihrer Region sowohl *Virtuelle Computer > DS-Serie* als auch *Storage > Disk Storage* verfügbar ist. |
-| **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/common/storage-create-storage-account.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br>Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](../storage/common/storage-premium-storage.md) |
+| **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/common/storage-create-storage-account.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br>Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](../virtual-machines/windows/premium-storage.md) |
 | **Informationen zu Workloads** |Abrufen von Dateien aus Sicherungskopien auf Elementebene |Cloudentwicklungs- und Testszenarien, niedrige Latenz und Workloads mit höherer Leistung  <br></br>Sekundäres Gerät für die Notfallwiederherstellung |
 
 <sup>1</sup>*Ehemals 1100*.
@@ -82,7 +82,7 @@ Bevor Sie das virtuelle Gerät bereitstellen, müssen Sie in Ihrer Umgebung die 
 Nehmen Sie vor dem Erstellen eines virtuellen Geräts die folgenden Updates für den Azure StorSimple-Dienst vor:
 
 * Fügen Sie den virtuellen Computern, die als Hostserver für Ihr virtuelles Gerät fungieren sollen, [Zugriffssteuerungsdatensätze](storsimple-manage-acrs.md) hinzu.
-* Verwenden Sie ein [Speicherkonto](storsimple-manage-storage-accounts.md#add-a-storage-account) in derselben Region wie das virtuelle Gerät. Speicherkonten in anderen Regionen können zu Leistungseinbußen führen. Sie können ein Storage Standard- oder Premium-Konto mit dem virtuellen Gerät verwenden. Weitere Informationen zum Erstellen eines [Storage Standard-Kontos](../storage/common/storage-create-storage-account.md) oder eines [Storage Premium-Kontos](../storage/common/storage-premium-storage.md).
+* Verwenden Sie ein [Speicherkonto](storsimple-manage-storage-accounts.md#add-a-storage-account) in derselben Region wie das virtuelle Gerät. Speicherkonten in anderen Regionen können zu Leistungseinbußen führen. Sie können ein Storage Standard- oder Premium-Konto mit dem virtuellen Gerät verwenden. Weitere Informationen zum Erstellen eines [Storage Standard-Kontos](../storage/common/storage-create-storage-account.md) oder eines [Storage Premium-Kontos](../virtual-machines/windows/premium-storage.md).
 * Verwenden Sie zum Erstellen des virtuellen Geräts ein anderes Speicherkonto als das, das für die Daten verwendet wird. Die Verwendung ein und desselben Speicherkontos kann zu Leistungseinbußen führen.
 
 Stellen Sie vorab sicher, dass die folgenden Informationen vorliegen:
