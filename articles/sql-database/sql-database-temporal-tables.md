@@ -12,14 +12,14 @@ ms.custom: develop databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: sql-database
+ms.workload: On Demand
 ms.date: 01/10/2017
 ms.author: bonova
-ms.openlocfilehash: d84db682089c65c2716d2d9bd92f7bc0ac47af27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 58f97c142ba0b9282d8988fc1bc037b9c0c69986
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank
 Temporale Tabellen sind eine neue Programmierfunktion der Azure SQL-Datenbank, mit der Sie den vollständigen Verlauf von Änderungen in Ihren Daten ohne benutzerdefinierte Codierung nachverfolgen und analysieren können. Temporale Tabellen enthalten Daten, die eng mit dem zeitlichen Kontext verbunden sind, sodass gespeicherte Fakten nur im angegebenen Zeitraum als gültig interpretiert werden können. Diese Eigenschaft von temporalen Tabellen ermöglicht eine effiziente zeitbasierte Analyse und Einblicke in die Datenentwicklung.

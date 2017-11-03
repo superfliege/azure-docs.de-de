@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 2c384e27798bc4920ef73af1084600fdc4047f86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9e3d88abe751b37700590cc68c458f208d5868d2
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="register-custom-connectors-in-azure-logic-apps"></a>Registrieren benutzerdefinierter Connectors in Azure Logic Apps
 
@@ -58,8 +58,8 @@ Um Ihren benutzerdefinierten Connector registrieren zu können, benötigen Sie d
    | -------- | --------------- | ----------- | 
    | **Name** | *Name des benutzerdefinierten Connectors* | Geben Sie einen Namen für den Connector an. | 
    | **Abonnement** | *Name des Azure-Abonnements* | Wählen Sie Ihr Azure-Abonnement. | 
-   | **Ressourcengruppe** | *Name der Azure Ressourcengruppe* | Erstellen Sie eine Azure-Ressourcengruppe zum Organisieren Ihrer Azure-Ressourcen, oder wählen Sie eine aus. | 
-   | **Location** | *Bereitstellungsregion* | Wählen Sie eine Bereitstellungsregion für den Connector aus. | 
+   | **Ressourcengruppe** | *Name der Azure-Ressourcengruppe* | Erstellen Sie eine Azure-Ressourcengruppe zum Organisieren Ihrer Azure-Ressourcen, oder wählen Sie eine aus. | 
+   | **Standort** | *Bereitstellungsregion* | Wählen Sie eine Bereitstellungsregion für den Connector aus. | 
    |||| 
 
    Nachdem Azure den Connector bereitgestellt hat, wird das Menü des benutzerdefinierten Connectors automatisch geöffnet. 
@@ -107,7 +107,7 @@ Geben Sie nun die OpenAPI-Datei oder Postman Collection zum Erstellen Ihres Conn
 
 1. Wählen Sie nun **Sicherheit**, damit Sie die Authentifizierung, die Ihr Connector verwendet, überprüfen oder beschreiben können. Die Authentifizierung stellt sicher, dass die Identitäten Ihrer Benutzer zwischen Ihrem Dienst und beliebigen Clients ordnungsgemäß übertragen werden.
 
-   ![Authentifizierungstyp](./media/logic-apps-custom-connector-register/security.png)
+   ![Authentifizierungsart](./media/logic-apps-custom-connector-register/security.png)
 
    * Wenn Sie eine OpenAPI-Datei hochladen, erkennt der Registrierungs-Assistent automatisch den Authentifizierungstyp, den Ihre Web-API verwendet. Er füllt den Abschnitt **Sicherheit** im Assistenten auf der Grundlage des `securityDefinitions`-Objekts in dieser Datei auf. Hier ist zum Beispiel ein Abschnitt, der die Verwendung von OAuth2.0 angibt:
 
@@ -151,6 +151,8 @@ Geben Sie nun die OpenAPI-Datei oder Postman Collection zum Erstellen Ihres Conn
    ![Connectordefinition](./media/logic-apps-custom-connector-register/definition.png)
 
 2. Wenn Sie optional vorhandene Aktionen und Trigger bearbeiten oder neue hinzufügen möchten, fahren Sie mit diesen Schritten fort.
+
+<a name="add-action-or-trigger"></a> 
 
 #### <a name="edit-or-add-actions-for-your-connector"></a>Bearbeiten oder Hinzufügen von Aktionen für den Connector
 
