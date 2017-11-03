@@ -3,7 +3,7 @@ title: SCOM-Integration in Application Insights | Microsoft Docs
 description: "Nutzen Sie als SCOM-Benutzer Application Insights zur Überwachung der Leistung und zur Diagnose von Problem. Umfassende Dashboards, intelligente Warnungen, leistungsstarke Diagnosetools und Analyseabfragen."
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 606e9d03-c0e6-4a77-80e8-61b75efacde0
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2016
-ms.author: bwren
-ms.openlocfilehash: 9c205465981fabdbb696cdc44f765532bbb992b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 35ea37b751909e14e616a965462b832e4e51bae0
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Überwachung der Anwendungsleistung mithilfe von Application Insights für SCOM
 Falls Sie Ihre Server mithilfe von System Center Operations Manager (SCOM) verwalten, können Sie zum Überwachen der Leistung sowie zum Diagnostizieren von Leistungsproblemen [Azure Application Insights](app-insights-asp-net.md)verwenden. Application Insights überwacht eingehende Anforderungen, ausgehende REST- und SQL-Aufrufe sowie Ausnahmen und Protokollablaufverfolgungen Ihrer Webanwendung. Die Lösung stellt Metrikdiagramme und intelligente Warnungen für Dashboards bereit und bietet leistungsfähige diagnostische Suchfunktionen und analytische Abfragen für die Telemetriedaten. 

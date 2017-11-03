@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
-ms.openlocfilehash: 5e8a62bb180de7288531139594cb61440cab04c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 934580f6fcfdbff6e61626ed685459478559717d
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-and-linux-vm-storage"></a>Azure- und Linux-VM-Speicher
 Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Dauerhaftigkeit, Verfügbarkeit und Skalierbarkeit benötigen, um die Anforderungen ihrer Kunden zu erfüllen.  Mit Azure Storage können Entwickler nicht nur umfangreiche Anwendungen für neue Szenarien entwickeln, es bildet auch die Speichergrundlage für Azure Virtual Machines.
@@ -91,7 +91,7 @@ Features von Storage Premium:
 * Storage Premium-Datenträger: Azure Storage Premium unterstützt VM-Datenträger, die an virtuelle Azure-Computer der DS-, DSv2- oder GS-Serie angefügt werden können.
 * Storage Premium-Seitenblob: Storage Premium unterstützt Azure-Seitenblobs. Sie werden verwendet, um persistente Datenträger für virtuelle Azure-Computer zu speichern.
 * Lokal redundanter Storage Premium: Ein Storage Premium-Konto unterstützt nur den lokal redundanten Speicher (LRS) als die Replikatsoption und verwaltet drei Kopien der Daten innerhalb einer einzelnen Region.
-* [Storage Premium](../../storage/common/storage-premium-storage.md)
+* [Storage Premium](../windows/premium-storage.md)
 
 ## <a name="premium-storage-supported-vms"></a>Durch Storage Premium unterstützte virtuelle Computer
 Storage Premium unterstützt virtuelle Azure-Computer der DS-, DSv2-, GS- und Fs-Serie. Mit durch Storage Premium unterstützten virtuellen Computern können Sie Standard- und Premium-Speicherdatenträger verwenden. Sie können jedoch keine Storage Premium-Datenträger mit Serien von virtuellen Computern verwenden, die nicht mit Storage Premium kompatibel sind.

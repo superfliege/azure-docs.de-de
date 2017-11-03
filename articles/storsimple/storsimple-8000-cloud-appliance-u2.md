@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/10/2017
 ms.author: alkohli
-ms.openlocfilehash: e7f58c8c1414f41d1d43e98b2faa327165f6eb75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ece5b1b2ba8e4d26fe633fe7c7c60f4187f9d6b
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Bereitstellen und Verwalten einer StorSimple Cloud Appliance in Azure (ab Update 3)
 
@@ -44,7 +44,7 @@ Die StorSimple Cloud Appliance steht in zwei Modellen zur Verfügung, dem Standa
 | **Maximale Kapazität** |30 TB |64 TB |
 | **Azure-VM** |Standard_A3 (4 Kerne, 7 GB Arbeitsspeicher)| Standard_DS3 (4 Kerne, 14 GB Arbeitsspeicher)|
 | **Regionale Verfügbarkeit** |Alle Azure-Regionen |Azure-Regionen, die Storage Premium und DS3-Azure-VMs unterstützen<br></br>Verwenden Sie [diese Liste](https://azure.microsoft.com/regions/services/), um zu ermitteln, ob in Ihrer Region sowohl **Virtuelle Computer > DS-Serie** als auch **Storage > Disk Storage** verfügbar ist. |
-| **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/common/storage-create-storage-account.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br>Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](../storage/common/storage-premium-storage.md) |
+| **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/common/storage-create-storage-account.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br>Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](../virtual-machines/windows/premium-storage.md) |
 | **Informationen zu Workloads** |Abrufen von Dateien aus Sicherungskopien auf Elementebene |Entwicklungs- und Testszenarien für die Cloud <br></br>Workloads mit geringer Wartezeit und höherer Leistung<br></br>Sekundäres Gerät für die Notfallwiederherstellung |
 
 <sup>1</sup>*Ehemals 1100*.
@@ -93,7 +93,7 @@ Bevor Sie das Cloudgerät bereitstellen, müssen Sie in Ihrer Umgebung die folge
 Führen Sie für Ihren StorSimple-Geräte-Manager-Dienst die folgenden Updates durch, bevor Sie ein Cloudgerät erstellen:
 
 * Fügen Sie den virtuellen Computern, die als Hostserver für Ihr Cloudgerät fungieren sollen, [Zugriffssteuerungsdatensätze](storsimple-8000-manage-acrs.md) hinzu.
-* Verwenden Sie ein [Speicherkonto](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) in derselben Region wie das Cloudgerät. Speicherkonten in anderen Regionen können zu Leistungseinbußen führen. Sie können ein Standard- oder Storage Premium-Konto für das Cloudgerät verwenden. Weitere Informationen zum Erstellen eines [Storage Standard-Kontos](../storage/common/storage-create-storage-account.md) oder eines [Storage Premium-Kontos](../storage/common/storage-premium-storage.md).
+* Verwenden Sie ein [Speicherkonto](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) in derselben Region wie das Cloudgerät. Speicherkonten in anderen Regionen können zu Leistungseinbußen führen. Sie können ein Standard- oder Storage Premium-Konto für das Cloudgerät verwenden. Weitere Informationen zum Erstellen eines [Storage Standard-Kontos](../storage/common/storage-create-storage-account.md) oder eines [Storage Premium-Kontos](../virtual-machines/windows/premium-storage.md).
 * Verwenden Sie zum Erstellen des Cloudgeräts ein anderes Speicherkonto als das Konto, das für die Daten verwendet wird. Die Verwendung ein und desselben Speicherkontos kann zu Leistungseinbußen führen.
 
 Stellen Sie vorab sicher, dass die folgenden Informationen vorliegen:

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: ralfwi
-ms.openlocfilehash: 497e5fa57e3d6703a0fcea3b3fa7a58b35f8175a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d205c3d30cc862bdb61585972c9e9837772f3804
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-germany-storage-services"></a>Speicherdienste von Azure Deutschland
 ## <a name="storage"></a>Storage
@@ -45,7 +45,7 @@ Die Speicherdienstverschlüsselung schützt ruhende Daten in Azure Storage-Konte
 | [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |Allgemein verfügbar | Allgemein verfügbar |
 | [Hot/Cold Blob Storage](../storage/blobs/storage-blob-storage-tiers.md) |Allgemein verfügbar |Allgemein verfügbar |
 | [Storage Service Encryption](../storage/common/storage-service-encryption.md) |Allgemein verfügbar |Allgemein verfügbar |
-| [Storage Premium](../storage/common/storage-premium-storage.md) |Allgemein verfügbar |Allgemein verfügbar |
+| [Storage Premium](../virtual-machines/windows/premium-storage.md) |Allgemein verfügbar |Allgemein verfügbar |
 | Import/Export |Nicht verfügbar |Nicht verfügbar |
 | StorSimple |Nicht verfügbar |Nicht verfügbar |
 

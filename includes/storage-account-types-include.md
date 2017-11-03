@@ -4,7 +4,7 @@ Zwei Typen von Speicherkonten stehen zur Verfügung:
 Ein allgemeines Speicherkonto bietet Ihnen Zugriff auf Azure Storage-Dienste wie Tabellen, Warteschlangen, Dateien, Blobs und Datenträger von virtuellen Azure-Computern in einem einzigen Konto. Diese Art von Speicherkonto umfasst zwei Leistungsstufen:
 
 * Storage Standard ermöglicht Ihnen das Speichern von Tabellen, Warteschlangen, Dateien, Blobs und Datenträgern von virtuellen Azure-Computern.
-* Storage Premium unterstützt derzeit nur Datenträger von virtuellen Azure-Computern. Eine ausführliche Übersicht über Azure Premium Storage finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/common/storage-premium-storage.md) .
+* Storage Premium unterstützt derzeit nur Datenträger von virtuellen Azure-Computern. Eine ausführliche Übersicht über Azure Premium Storage finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/virtual-machines/windows/premium-storage.md) .
 
 ### <a name="blob-storage-accounts"></a>BLOB-Speicherkonten
 BLOB-Speicherkonten sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind mit Ihren bereits vorhandenen allgemeinen Speicherkonten vergleichbar und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von BLOB-Speicherkonten.

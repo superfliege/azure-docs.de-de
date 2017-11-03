@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: raynew
-ms.openlocfilehash: 9764e48e04eb0c83afea09934ce64d2485ab15d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1647e9d69da3e991bec4e00b3a1083a254fa9550
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-your-secondary-on-premises-site"></a>Einrichten der Notfallwiederherstellung für Hyper-V-VMs auf Ihrem sekundären lokalen Standort
 
@@ -40,7 +40,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 - Überprüfen Sie [Architektur und Komponenten des Szenarios](concepts-hyper-v-to-secondary-architecture.md).
 - Überprüfen Sie die [Supportanforderungen](site-recovery-support-matrix-to-sec-site.md) für alle Komponenten.
-- Stellen Sie sicher, dass VMM-Server und Hyper-V-Hosts den [Supportanforderungen](site-recovery-support-matrix-to-sec-site.md#on-premises-servers) entsprechen.
+- Stellen Sie sicher, dass VMM-Server und Hyper-V-Hosts den [Supportanforderungen](site-recovery-support-matrix-to-sec-site.md) entsprechen.
 - Überprüfen Sie, ob die virtuellen Computer, die Sie replizieren möchten, die Anforderungen für [Unterstützung replizierter Computer](site-recovery-support-matrix-to-sec-site.md#support-for-replicated-machine-os-versions) erfüllen.
 - Bereiten Sie VMM-Server für die Netzwerkzuordnung vor.
 
