@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: ad25663f97b83f11f14eeb8bb07dac46f6c080d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2705e97bd5b259ef68090e5688df57e0d3478f30
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: häufig gestellte Fragen
 Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory Domain Services beantwortet. Die Seite wird bei Bedarf aktualisiert.
@@ -49,7 +49,7 @@ Der Dienst selbst bietet keine direkte Unterstützung für dieses Szenario. Ihre
 Die PowerShell-/automatisierte Bereitstellung der Azure AD Domain Services ist derzeit nicht verfügbar.
 
 #### <a name="is-azure-ad-domain-services-available-in-the-new-azure-portal"></a>Sind die Azure AD Domain Services im neuen Azure-Portal verfügbar?
-Ja. Die Azure AD Domain Services können im [Azure-Portal](https://portal.azure.com) konfiguriert werden. Wir gehen davon aus, dass wir die Unterstützung des [klassischen Azure-Portals](https://manage.windowsazure.com) in der Zukunft beenden werden.
+Ja. Die Azure AD Domain Services können im [Azure-Portal](https://portal.azure.com) konfiguriert werden. Das [klassische Azure-Portal](https://manage.windowsazure.com) wird nicht mehr unterstützt.
 
 #### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Kann ich Azure AD Domain Services mithilfe einer Resource Manager-Vorlage aktivieren?
 Nein. Einige Aufgaben müssen im Rahmen der Aktivierung von Azure AD Domain Services ausgeführt werden. Diese Aufgaben sind über eine Resource Manager-Vorlage nicht möglich. Verwenden Sie das neue Azure-Portal, um Azure AD Domain Services für Ihr Verzeichnis zu aktivieren.

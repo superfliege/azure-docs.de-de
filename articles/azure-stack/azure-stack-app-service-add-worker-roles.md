@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: anwestg
-ms.openlocfilehash: dbb6d956a615482e42745296c94b2c07c0086653
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 30ab325488684a26a6ef442e7c8241526a66aa4c
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
-# <a name="app-service-on-azure-stack-add-more-worker-roles"></a>App Service in Azure Stack: Hinzufügen von weiteren Workerrollen
+# <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>App Service für Azure Stack: Hinzufügen von weiteren Infrastruktur- oder Workerrollen
 
-Dieses Dokument enthält eine Anleitung zum Skalieren der Workerrollen für App Service in Azure Stack. Es werden die Schritte zum Erstellen von zusätzlichen Workerrollen aufgeführt, um Anwendungen beliebiger Größe zu unterstützen.
+Dieses Dokument enthält Anleitungen zum Skalieren der Infrastruktur- und Workerrollen für App Service in Azure Stack. Es werden die Schritte zum Erstellen von zusätzlichen Workerrollen aufgeführt, um Anwendungen beliebiger Größe zu unterstützen.
 
 > [!NOTE]
-> Wenn Ihre Azure Stack POC-Umgebung nicht mehr als 96 GB RAM aufweist, können beim Hinzufügen von zusätzlicher Kapazität Schwierigkeiten auftreten.
+> Wenn Ihre Azure Stack-Umgebung nicht mehr als 96 GB RAM aufweist, können beim Hinzufügen von zusätzlicher Kapazität Schwierigkeiten auftreten.
 
 Standardmäßig unterstützt App Service in Azure Stack kostenlose und gemeinsam genutzte Workerebenen. Um andere Workerebenen hinzufügen zu können, müssen Sie weitere Workerrollen hinzufügen.
 
@@ -36,27 +36,33 @@ Azure App Service in Azure Stack stellt alle Rollen mithilfe von VM-Skalierungsg
 Direktes Hinzufügen von zusätzlichen Workern über den Administrator des App Service-Ressourcenanbieters
 
 1. Melden Sie sich beim Azure Stack-Verwaltungsportal als Dienstadministrator an.
+
 2. Navigieren Sie zu **App Services**.
 
-  ![](media/azure-stack-app-service-add-worker-roles/image01.png)
+    ![](media/azure-stack-app-service-add-worker-roles/image01.png)
+  
 3. Klicken Sie auf **Rollen**. Eine Übersicht mit allen bereitgestellten App Service-Rollen wird angezeigt.
-4. Klicken Sie auf **Instanzen skalieren**.
 
-  ![](media/azure-stack-app-service-add-worker-roles/image02.png)
-5. Unter **Instanzen skalieren**:
-    1. Wählen Sie den **Rollentyp** aus. In dieser Vorschauversion ist diese Option auf Webworker beschränkt.
-    2. Wählen Sie die **Workerebene** aus, auf der Sie diesen Worker bereitstellen möchten. Die Standardoptionen lauten „Klein“, „Mittel“, „Groß“ und „Shared“ (Gemeinsam genutzt). Wenn Sie Ihre eigenen Workerebenen erstellt haben, können Sie diese ebenfalls auswählen.
-    3. Geben Sie an, wie viele zusätzliche **Rolleninstanzen** Sie hinzufügen möchten.
-    4. Klicken Sie auf **OK**, um die zusätzlichen Worker bereitzustellen.
+4. Klicken Sie mit der rechten Maustaste auf die Zeile des Typs, den Sie skalieren möchten, und klicken Sie dann auf **ScaleSet**.
+
+    ![](media/azure-stack-app-service-add-worker-roles/image02.png)
+  
+5. Klicken Sie auf **Skalierung**, wählen Sie die Anzahl der Instanzen aus, auf die skaliert werden soll, und klicken Sie dann auf **Speichern**.
+    
     ![](media/azure-stack-app-service-add-worker-roles/image03.png)
+
 6. App Service in Azure Stack fügt jetzt die zusätzlichen VMs hinzu, konfiguriert sie, installiert die gesamte erforderliche Software und kennzeichnet sie als bereit, wenn dieser Prozess abgeschlossen ist. Dieser Prozess kann ca. 80 Minuten dauern.
-7. Sie können den Bereitschaftsstatus der neuen Worker auf dem Blatt **Rollen** überwachen.
+
+7. Sie können den Bereitschaftsstatus der neuen Rollen überwachen, indem Sie die Worker auf dem Blatt **Rollen** anzeigen.
 
 Nachdem die Worker vollständig bereitgestellt wurden und einsatzbereit sind, werden sie für die Benutzer verfügbar gemacht, damit diese ihre Workloads darauf bereitstellen können. Unten sehen Sie ein Beispiel für die verschiedenen Tarife, die standardmäßig verfügbar sind. Die Option zum Auswählen des entsprechenden Tarifs ist nicht verfügbar, wenn für eine bestimmte Workerebene keine Worker vorhanden sind.
+
 ![](media/azure-stack-app-service-add-worker-roles/image04.png)
 
 >[!NOTE]
 > Um die Rollen „Management“, „Front-End“ oder „Herausgeber“ horizontal hochzuskalieren, müssen Sie die entsprechende VM-Skalierungsgruppe horizontal hochskalieren. Wir fügen die Möglichkeit, diese Rollen über die App Service-Verwaltung horizontal hochzuskalieren, in einer zukünftigen Version hinzu.
+
+Um die Rollen „Management“, „Front-End“ oder „Herausgeber“ horizontal hochzuskalieren, befolgen Sie die gleichen Schritte und wählen dabei den entsprechenden Rollentyp aus. Controller werden nicht als Skalierungsgruppen bereitgestellt. Aus diesem Grund sollten zwei Controller zum Installationszeitpunkt für alle Produktionsbereitstellungen bereitgestellt werden.
 
 ### <a name="next-steps"></a>Nächste Schritte
 

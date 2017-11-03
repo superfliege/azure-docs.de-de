@@ -1,5 +1,5 @@
 ---
-title: "Zuordnen von Azure CDN-Inhalten zu einer benutzerdefinierten Domäne | Microsoft-Dokumentation"
+title: "Hinzufügen einer benutzerdefinierten Domäne zum CDN-Endpunkt | Microsoft-Dokumentation"
 description: "Hier erhalten Sie Informationen zum Zuordnen von CDN-Inhalten zu einer benutzerdefinierten Domäne."
 services: cdn
 documentationcenter: 
@@ -12,72 +12,100 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 10/09/2017
 ms.author: mazha
-ms.openlocfilehash: cd6db44f7776859d1e6a893543cf0666182ca41a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8c5dd3ddd03b3531e4ffb7b622110a2ea997f9ae
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
-# <a name="map-azure-cdn-content-to-a-custom-domain"></a>Zuordnen von CDN-Inhalt (Content Delivery Network) zu einer benutzerdefinierten Domäne
-Sie können einem CDN-Endpunkt (Content Delivery Network, Netzwerk für die Inhaltsübermittlung) eine benutzerdefinierte Domäne zuordnen, damit in URLs für zwischengespeicherte Inhalte anstatt einer Unterdomäne von „azureedge.net“ Ihr eigener Domänenname verwendet wird.
+# <a name="add-a-custom-domain-to-your-cdn-endpoint"></a>Hinzufügen einer benutzerdefinierten Domäne zum CDN-Endpunkt
+Nachdem Sie ein Profil erstellt haben, erstellen Sie in der Regel auch mindestens einen CDN-Endpunkt (eine Unterdomäne von „azureedge.net“) zum Übermitteln Ihrer Inhalte über HTTP und HTTPS. Dieser Endpunkt ist standardmäßig in allen Ihren URLs enthalten, z.B. `http(s)://contoso.azureedge.net/photo.png`). Der Einfachheit halber bietet Azure CDN die Möglichkeit, eine benutzerdefinierte Domäne (z.B. `www.contoso.com`) Ihrem Endpunkt zuzuordnen. Mit dieser Option verwenden Sie eine benutzerdefinierte Domäne statt des Endpunkts, um Ihre Inhalte zu übermitteln. Diese Option ist beispielsweise hilfreich, wenn Ihr eigener Domänennamen Ihren Kunden zu Brandingzwecken angezeigt werden soll.
 
-Es gibt zwei Möglichkeiten, einem CDN-Endpunkt eine benutzerdefinierte Domäne zuzuordnen:
+Wenn Sie nicht bereits über eine benutzerdefinierte Domäne verfügen, müssen Sie zunächst bei einem Domänenanbieter eine erwerben. Nachdem Sie eine benutzerdefinierte Domäne erhalten haben, gehen Sie folgendermaßen vor:
+1. [Greifen Sie auf die DNS-Einträge Ihres Domänenanbieters zu](#step-1-access-dns-records-by-using-your-domain-provider)
+2. [Erstellen Sie die CNAME-DNS-Einträge](#step-2-create-the-cname-dns-records)
+    - Option 1: Direkte Zuordnung Ihrer benutzerdefinierten Domäne zum CDN-Endpunkt
+    - Option 2: Zuordnung Ihrer benutzerdefinierten Domäne zum CDN-Endpunkt mithilfe von „cdnverify“ 
+3. [Aktivieren der Zuordnung von CNAME-Einträgen in Azure](#step-3-enable-the-cname-record-mapping-in-azure)
+4. [Überprüfen, ob die benutzerdefinierte Unterdomäne auf Ihren CDN-Endpunkt verweist](#step-4-verify-that-the-custom-subdomain-references-your-cdn-endpoint)
+5. [(Abhängiger Schritt) Zuordnen der permanenten benutzerdefinierten Domäne zum CDN-Endpunkt](#step-5-dependent-step-map-the-permanent-custom-domain-to-the-cdn-endpoint)
 
-1. [Registrieren eines CNAME-Eintrags bei Ihrer Domänenregistrierungsstelle und Zuordnen Ihrer benutzerdefinierten Domäne und Unterdomäne zum CDN-Endpunkt](#register-a-custom-domain-for-an-azure-cdn-endpoint).
-   
-    Ein CNAME-Eintrag ist ein DNS-Feature, das eine Quelldomäne wie `www.contosocdn.com` oder `cdn.contoso.com` einer Zieldomäne zuordnet. In diesem Fall ist die Quelldomäne Ihre benutzerdefinierte Domäne und Unterdomäne (eine Unterdomäne wie **www** oder **cdn** ist immer erforderlich). Die Zieldomäne entspricht Ihrem CDN-Endpunkt.  
-   
-    Die Zuordnung der benutzerdefinierten Domäne zum CDN-Endpunkt kann jedoch zu einer kurzzeitigen Downtime für die Domäne führen, während Sie die Domäne im Azure-Portal registrieren.
-2. [Hinzufügen eines zwischengeschalteten Registrierungsschritts mithilfe von **cdnverify**](#register-a-custom-domain-for-an-azure-cdn-endpoint-using-the-intermediary-cdnverify-subdomain)
-   
-    Wenn Ihre benutzerdefinierte Domäne zurzeit eine Anwendung unterstützt, die unter einer Vereinbarung zum Servicelevel (SLA, Service Level Agreement) ohne Ausfallzeit läuft, können Sie mithilfe der Azure-Unterdomäne **cdnverify** einen Zwischenschritt für die Registrierung bereitstellen, damit Benutzer während der DNS-Zuordnung auf die Domäne zugreifen können.  
+## <a name="step-1-access-dns-records-by-using-your-domain-provider"></a>Schritt 1: Zugreifen auf DNS-Datensätze mithilfe Ihres Domänenanbieters
 
-Nachdem Sie Ihre benutzerdefinierte Domäne mit einem der oben genannten Verfahren registriert haben, sollten Sie [überprüfen, ob die benutzerdefinierte Unterdomäne auf Ihren CDN-Endpunkt verweist](#verify-that-the-custom-subdomain-references-your-cdn-endpoint).
+Wenn Sie Azure zum Hosten Ihrer [DNS-Domänen](https://docs.microsoft.com/en-us/azure/dns/dns-overview) verwenden, müssen Sie das DNS des Domänenanbieters an eine Azure DNS-Instanz delegieren. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns).
+
+Wenn Sie andernfalls Ihren Domänenanbieter verwenden, um Ihre DNS-Domäne zu behandeln, melden Sie sich bei der Website des Domänenanbieters an. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen mithilfe der Dokumentation des Anbieters, oder suchen Sie nach Bereichen der Website mit der Bezeichnung **Domänennamen**, **DNS**, oder **Namensserververwaltung**. Die Seite für DNS-Einträge finden Sie häufig in Ihren Kontoinformationen und beim Suchen nach einem Link wie **Eigene Domänen**. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen.
 
 > [!NOTE]
-> Sie müssen einen CNAME-Eintrag bei der Domänenregistrierungsstelle registrieren, um die Domäne dem CDN-Endpunkt zuzuordnen. CNAME-Einträge ordnen bestimmte Unterdomänen wie `www.contoso.com` oder `cdn.contoso.com` zu. Es ist nicht möglich, einen CNAME-Eintrag einer Stammdomäne wie `contoso.com`zuzuordnen.
-> 
-> Sie müssen einem CDN-Endpunkt eine dedizierte Unterdomäne zuordnen. Der erstellte CNAME-Eintrag leitet sämtlichen Datenverkehr für die Unterdomäne an den angegebenen Endpunkt weiter.  Wenn Sie dem CDN-Endpunkt beispielsweise die Unterdomäne `www.contoso.com` zuordnen, können Sie diese Unterdomäne keinem anderen Microsoft Azure-Endpunkt, z.B. einem Speicherkonto- oder Clouddienst-Endpunkt, zuordnen. Innerhalb einer Domäne können Sie jedoch verschiedene Unterdomänen für unterschiedliche Dienstendpunkte verwenden. Außerdem haben Sie die Möglichkeit, demselben CDN-Endpunkt verschiedene Unterdomänen zuzuordnen.
-> 
-> Beachten Sie, dass es bei **Azure CDN von Verizon**-Endpunkten (Standard und Premium) bis zu **90 Minuten** dauern kann, Änderungen der benutzerdefinierten Domäne an die CDN-Edgeknoten weiterzugeben.
-> 
-> 
+> Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie einen gesonderten Link **Änderungen speichern** wählen. 
 
-## <a name="register-a-custom-domain-for-an-azure-cdn-endpoint"></a>Registrieren einer benutzerdefinierten Domäne für einen Azure CDN-Endpunkt
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie auf **Durchsuchen**, auf **CDN-Profile** und anschließend auf das CDN-Profil mit dem Endpunkt, das Sie einer benutzerdefinierten Domäne zuordnen möchten.  
-3. Klicken Sie auf dem Blatt **CDN-Profil** auf den CDN-Endpunkt, den Sie der Unterdomäne zuordnen möchten.
-4. Klicken Sie am oberen Rand des Blatts für den Endpunkt auf die Schaltfläche **Benutzerdefinierte Domäne hinzufügen** .  Auf dem Blatt **Benutzerdefinierte Domäne hinzufügen** sehen Sie den vom CDN-Endpunkt abgeleiteten Hostnamen, den Sie zum Erstellen eines neuen CNAME-Eintrags verwenden können. Die Hostnamensadresse wird im Format **&lt;EndpointName>.azureedge.net** angezeigt.  Sie können diesen Hostnamen kopieren, um ihn für den CNAME-Eintrag zu verwenden.  
-5. Navigieren Sie zur Website der Domänenregistrierungsstelle, und suchen Sie den Abschnitt für die Erstellung von DNS-Einträgen. Diese finden Sie beispielsweise in einem Abschnitt mit der Bezeichnung **Domänenname**, **DNS** oder **Namenserververwaltung**.
-6. Suchen Sie den Abschnitt zur Verwaltung von CNAMEs. Öffnen Sie ggf. die Seite mit erweiterten Einstellungen, und suchen Sie nach den Wörtern CNAME, Alias oder Unterdomänen.
-7. Erstellen Sie einen neuen CNAME-Eintrag, der die ausgewählte Unterdomäne (z.B. **www** oder **cdn**) dem im Blatt **Benutzerdefinierte Domänen hinzufügen** bereitgestellten Hostnamen zuordnet. 
-8. Kehren Sie zum Blatt **Benutzerdefinierte Domänen hinzufügen** zurück, und geben Sie den Namen der benutzerdefinierten Domäne einschließlich Unterdomäne in das Dialogfeld ein. Geben Sie z.B. den Domänennamen im Format `www.contoso.com` oder `cdn.contoso.com` ein.   
-   
-   Azure überprüft, ob der CNAME-Eintrag für den eingegebenen Domänennamen vorhanden ist. Wenn der CNAME-Eintrag ordnungsgemäß ist, wird Ihre benutzerdefinierte Domäne überprüft.  Bei **Azure CDN von Verizon** -Endpunkten (Standard und Premium) kann es bis zu 90 Minuten dauern, Einstellungen der benutzerdefinierten Domäne an alle CDN-Edgeknoten weiterzugeben.  
-   
-   Es kann eine Weile dauern, bis der CNAME-Eintrag an alle Namensserver im Internet weitergegeben wird. Wenn die Domäne nicht sofort erkannt wird, Sie aber sicher sind, dass der CNAME-Eintrag richtig ist, warten Sie einige Minuten, und überprüfen Sie die Domäne dann erneut.
 
-## <a name="register-a-custom-domain-for-an-azure-cdn-endpoint-using-the-intermediary-cdnverify-subdomain"></a>Registrieren einer benutzerdefinierten Domäne für einen Azure CDN-Endpunkt mithilfe der übergangsweise verwendeten Unterdomäne "cdnverify"
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie auf **Durchsuchen**, auf **CDN-Profile** und anschließend auf das CDN-Profil mit dem Endpunkt, das Sie einer benutzerdefinierten Domäne zuordnen möchten.  
-3. Klicken Sie auf dem Blatt **CDN-Profil** auf den CDN-Endpunkt, den Sie der Unterdomäne zuordnen möchten.
-4. Klicken Sie am oberen Rand des Blatts für den Endpunkt auf die Schaltfläche **Benutzerdefinierte Domäne hinzufügen** .  Auf dem Blatt **Benutzerdefinierte Domäne hinzufügen** sehen Sie den vom CDN-Endpunkt abgeleiteten Hostnamen, den Sie zum Erstellen eines neuen CNAME-Eintrags verwenden können. Die Hostnamensadresse wird im Format **&lt;EndpointName>.azureedge.net** angezeigt.  Sie können diesen Hostnamen kopieren, um ihn für den CNAME-Eintrag zu verwenden.
-5. Navigieren Sie zur Website der Domänenregistrierungsstelle, und suchen Sie den Abschnitt für die Erstellung von DNS-Einträgen. Diese finden Sie beispielsweise in einem Abschnitt mit der Bezeichnung **Domänenname**, **DNS** oder **Namenserververwaltung**.
-6. Suchen Sie den Abschnitt zur Verwaltung von CNAMEs. Möglicherweise müssen Sie eine Seite mit erweiterten Einstellungen aufrufen und nach den Wörtern **CNAME**, **Alias** oder **Unterdomänen** suchen.
-7. Erstellen Sie einen neuen CNAME-Eintrag, und geben Sie einen Unterdomänenalias ein, der die Unterdomäne **cdnverify** enthält. Die angegebene Unterdomäne kann beispielsweise das Format **cdnverify.www** oder **cdnverify.cdn** aufweisen. Geben Sie anschließend den Hostnamen an (dies ist Ihr CDN-Endpunkt). Verwenden Sie dabei das Format **cdnverify.&lt;Endpunktname>.azureedge.net**. Die DNS-Zuordnung sollte wie folgt aussehen: `cdnverify.www.consoto.com   CNAME   cdnverify.consoto.azureedge.net`  
-8. Kehren Sie zum Blatt **Benutzerdefinierte Domänen hinzufügen** zurück, und geben Sie den Namen der benutzerdefinierten Domäne einschließlich Unterdomäne in das Dialogfeld ein. Geben Sie z.B. den Domänennamen im Format `www.contoso.com` oder `cdn.contoso.com` ein. Beachten Sie, dass es in diesem Schritt nicht erforderlich ist, der Unterdomäne **decdnverify** voranzustellen.  
-   
-    Azure überprüft, ob der CNAME-Eintrag für den eingegebenen Domänennamen "cdnverify" vorhanden ist.
-9. Die benutzerdefinierte Domäne wurde jetzt zwar von Azure überprüft, aber der an die Domäne gerichtete Datenverkehr wird noch nicht an Ihren CDN-Endpunkt weitergeleitet. Nachdem Sie lange genug für das Weitergeben der benutzerdefinierten Domäneneinstellungen an die Edgeknoten des CDN gewartet haben (90 Minuten für **Azure CDN von Verizon**, 1-2 Minuten für **Azure CDN von Akamai**), kehren Sie zur Website Ihrer DNS-Registrierungsstelle zurück, und erstellen Sie einen weiteren CNAME-Eintrag, der Ihre Unterdomäne Ihrem CDN-Endpunkt zuordnet. Geben Sie die Unterdomäne beispielsweise als **www** oder **cdn** und den Hostnamen als **&lt;Endpunktname>.azureedge.net** an. Mit diesem Schritt ist die Registrierung Ihrer benutzerdefinierten Domäne abgeschlossen.
-10. Zuletzt können Sie den mithilfe von **cdnverify**erstellten CNAME-Eintrag löschen, da er nur als Übergangslösung benötigt wurde.  
+## <a name="step-2-create-the-cname-dns-records"></a>Schritt 2: Erstellen Sie die CNAME-DNS-Einträge
 
-## <a name="verify-that-the-custom-subdomain-references-your-cdn-endpoint"></a>überprüfen, ob die benutzerdefinierte Unterdomäne auf Ihren CDN-Endpunkt verweist
-* Nachdem Sie die Registrierung der benutzerdefinierten Domäne abgeschlossen haben, können Sie über die benutzerdefinierte Domäne auf den im CDN-Endpunkt zwischengespeicherten Inhalt zugreifen.
-  Stellen Sie zunächst sicher, dass öffentliche Inhalte zum Zwischenspeichern auf dem Endpunkt verfügbar sind. Wenn der CDN-Endpunkt beispielsweise einem Speicherkonto zugeordnet ist, wird der Inhalt vom CDN in öffentlichen Blobcontainern zwischengespeichert. Zum Testen der benutzerdefinierten Domäne müssen Sie sicherstellen, dass der Container den öffentlichen Zugriff zulässt und dass er mindestens ein Blob enthält.
-* Navigieren Sie in Ihrem Browser mithilfe der benutzerdefinierten Domäne zur Adresse des Blobs. Wenn die benutzerdefinierte Domäne beispielsweise `cdn.contoso.com` ist, ähnelt die URL eines zwischengespeicherten Blobs der folgenden URL: http://cdn.contoso.com/mypubliccontainer/acachedblob.jpg
+Bevor Sie eine benutzerdefinierte Domäne mit einem Azure CDN-Endpunkt verwenden können, müssen Sie zunächst einen kanonischen Namenseintrag (CNAME) bei Ihrem Domänenanbieter erstellen. Ein CNAME-Eintrag ist ein Eintrag in das Domain Name System (DNS), der eine Quelldomäne durch Angeben eines Aliasdomänennamens für den „kanonischen“ oder „echten“ Domänennamen einer Zieldomäne zuordnet. Für Azure CDN ist die Quelldomäne Ihre benutzerdefinierte Domäne (und die Unterdomäne), und die Zieldomäne entspricht Ihrem CDN-Endpunkt. Azure CDN überprüft den CNAME-DNS-Eintrag, wenn Sie die benutzerdefinierte Domäne dem Endpunkt von Portal oder API hinzufügen. 
+
+Ein CNAME-Eintrag ordnet eine bestimmte Domäne und Unterdomäne zu, z.B. `www.contoso.com` oder `cdn.contoso.com`; es ist nicht möglich, einen CNAME-Eintrag einer Stammdomäne wie `contoso.com` zuzuordnen. Eine Unterdomäne kann nur einem CDN-Endpunkt zugordnet werden, und der von Ihnen erstellte CNAME-Eintrag leitet sämtlichen Datenverkehr für die Unterdomäne an den angegebenen Endpunkt weiter. Wenn Sie dem CDN-Endpunkt beispielsweise die Unterdomäne `www.contoso.com` zuordnen, können Sie diese Unterdomäne keinem anderen Azure-Endpunkt, z.B. einem Speicherkonto- oder Clouddienst-Endpunkt, zuordnen. Innerhalb einer Domäne können Sie jedoch verschiedene Unterdomänen für unterschiedliche Dienstendpunkte verwenden. Außerdem haben Sie die Möglichkeit, demselben CDN-Endpunkt verschiedene Unterdomänen zuzuordnen.
+
+Verwenden Sie eine der folgenden Optionen, um Ihre benutzerdefinierte Domäne einem CDN-Endpunkt zuzuordnen:
+
+- Option 1: Direkte Zuordnung. Wenn kein Produktionsdatenverkehr auf der benutzerdefinierten Domäne ausgeführt wird, können Sie eine benutzerdefinierte Domäne direkt einem CDN-Endpunkt zuordnen. Die Zuordnung der benutzerdefinierten Domäne zum CDN-Endpunkt kann jedoch zu einer kurzzeitigen Downtime für die Domäne führen, während Sie die Domäne im Azure-Portal registrieren. Ihr CNAME-Zuordnungseintrag muss folgendes Format aufweisen: 
+ 
+  | NAME             | TYPE  | VALUE                  |
+  |------------------|-------|------------------------|
+  | www\.consoto.com | CNAME | consoto\.azureedge.net |
+
+
+- Option 2: Zuordnung mit der **cdnverify**-Unterdomäne. Wenn Produktionsdatenverkehr, der nicht unterbrochen werden kann, auf der benutzerdefinierten Domäne ausgeführt wird, können Sie eine temporäre CNAME-Zuordnung zu Ihrem CDN-Endpunkt erstellen. Mit dieser Option nutzen Sie die **cdnverify**-Unterdomäne von Azure, um einen vorübergehenden Registrierungsschritt bereitzustellen, damit Benutzer während der DNS-Zuordnung ohne Unterbrechung auf Ihre Domäne zugreifen können.
+
+   1. Erstellen Sie einen neuen CNAME-Eintrag, und geben Sie einen Unterdomänenalias ein, der die Unterdomäne **cdnverify** enthält. Beispielsweise **cdnverify.www** oder **cdnverify.cdn**. 
+   2. Geben Sie den Hostnamen, der Ihr CDN-Endpunkt ist, im folgenden Format an: `cdnverify.<EndpointName>.azureedge.net`. Ihr CNAME-Zuordnungseintrag muss folgendes Format aufweisen: 
+
+   | NAME                       | TYPE  | VALUE                            |
+   |----------------------------|-------|----------------------------------|
+   | cdnverify.www\.consoto.com | CNAME | cdnverify.consoto\.azureedge.net | 
+
+
+## <a name="step-3-enable-the-cname-record-mapping-in-azure"></a>Schritt 3: Aktivieren der Zuordnung von CNAME-Einträgen in Azure
+
+Nachdem Sie Ihre benutzerdefinierte Domäne in einem der vorherigen Schritte registriert haben, können Sie dann das Feature „benutzerdefinierte Domäne“ in Azure CDN aktivieren. 
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu dem CDN-Profil mit dem Endpunkt, den Sie einer benutzerdefinierten Domäne zuordnen möchten.  
+2. Wählen Sie auf dem Blatt **CDN-Profil** den CDN-Endpunkt, den Sie der Unterdomäne zuordnen möchten.
+3. Klicken Sie in der oberen linken Ecke des Endpunktblatts auf **Benutzerdefinierte Domäne**. 
+
+   ![Schaltfläche „Benutzerdefinierte Domäne“](./media/cdn-map-content-to-custom-domain/cdn-custom-domain-button.png)
+
+4. Geben Sie im Textfeld **Benutzerdefinierter Hostname** Ihre benutzerdefinierte Domäne einschließlich der Unterdomäne ein. Beispiel: `www.contoso.com` oder `cdn.contoso.com`.
+
+   ![Dialogfeld „Hinzufügen eines benutzerdefinierten Domänennamens“](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain-dialog.png)
+
+5. Klicken Sie auf **Hinzufügen**.
+
+   Azure überprüft, ob der CNAME-Eintrag für den eingegebenen Domänennamen vorhanden ist. Wenn der CNAME-Eintrag korrekt ist, wird Ihre benutzerdefinierte Domäne überprüft. Es kann eine Weile dauern, bis der CNAME-Eintrag an alle Namensserver verteilt ist. Wenn die Domäne nicht sofort erkannt wird, stellen Sie sicher, dass der CNAME-Eintrag richtig ist, warten Sie einige Minuten, und überprüfen Sie die Domäne dann erneut. Bei **Azure CDN von Verizon**-Endpunkten (Standard und Premium) kann es bis zu 90 Minuten dauern, Einstellungen der benutzerdefinierten Domäne an alle CDN-Edgeknoten weiterzugeben.  
+
+
+## <a name="step-4-verify-that-the-custom-subdomain-references-your-cdn-endpoint"></a>Schritt 4: Überprüfen Sie, ob die benutzerdefinierte Unterdomäne auf Ihren CDN-Endpunkt verweist
+
+Nachdem Sie die Registrierung der benutzerdefinierten Domäne abgeschlossen haben, stellen Sie sicher, dass die benutzerdefinierte Unterdomäne auf Ihren CDN-Endpunkt verweist.
+ 
+1. Stellen Sie sicher, dass öffentliche Inhalte zum Zwischenspeichern auf dem Endpunkt verfügbar sind. Wenn der CDN-Endpunkt beispielsweise einem Speicherkonto zugeordnet ist, wird der Inhalt vom CDN in öffentlichen Blobcontainern zwischengespeichert. Zum Testen der benutzerdefinierten Domäne stellen Sie sicher, dass der Container den öffentlichen Zugriff zulässt und mindestens ein Blob enthält.
+
+2. Navigieren Sie in Ihrem Browser mithilfe der benutzerdefinierten Domäne zur Adresse des Blobs. Wenn Ihre benutzerdefinierte Domäne z.B. `cdn.contoso.com` ist, sollte die URL für das zwischengespeicherte Blob der folgenden URL ähneln: `http://cdn.contoso.com/mypubliccontainer/acachedblob.jpg`.
+
+
+## <a name="step-5-dependent-step-map-the-permanent-custom-domain-to-the-cdn-endpoint"></a>Schritt 5 (abhängiger Schritt): Zuordnen der permanenten benutzerdefinierten Domäne zum CDN-Endpunkt
+
+Dieser Schritt ist abhängig von Schritt 2, Option 2 (Zuordnung mit der **cdnverify**-Unterdomäne). Wenn Sie die temporäre **cdnverify**-Unterdomäne verwendet und überprüft haben, ob sie funktioniert, können Sie die permanente benutzerdefinierte Domäne dem CDN-Endpunkt zuordnen.
+
+1. Erstellen Sie auf der Website Ihres Domänenanbieters einen CNAME-DNS-Eintrag, um die permanente benutzerdefinierte Domäne dem CDN-Endpunkt zuzuordnen. Ihr CNAME-Zuordnungseintrag muss folgendes Format aufweisen: 
+ 
+   | NAME             | TYPE  | VALUE                  |
+   |------------------|-------|------------------------|
+   | www\.consoto.com | CNAME | consoto\.azureedge.net |
+2. Löschen Sie den CNAME-Eintrag mit der **cdnverify**-Unterdomäne, die Sie zuvor erstellt haben.
 
 ## <a name="see-also"></a>Weitere Informationen
 [Aktivieren des CDN (Content Delivery Network) für Azure](cdn-create-new-endpoint.md)  
-
+[Delegieren einer Domäne an Azure DNS](../dns/dns-domain-delegation.md)

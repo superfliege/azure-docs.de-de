@@ -1,9 +1,9 @@
 ---
-title: "Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Hier erhalten Sie Informationen zum Konfigurieren der Azure SQL-Datenbankressourcen zum Speichern von Statistiken für Ressourcenverbrauch, Konnektivität und Abfrageausführung."
+title: Azure SQL-Datenbankmetriken und Diagnoseprotokollierung | Microsoft Docs
+description: "Hier erhalten Sie Informationen zum Konfigurieren von Azure SQL-Datenbank zum Speichern von Statistiken für Ressourcenverbrauch, Konnektivität und Abfrageausführung."
 services: sql-database
 documentationcenter: 
-author: vvasic
+author: veljko-msft
 manager: jhubbard
 editor: 
 ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
@@ -15,58 +15,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: a56d48eaf335d9e78eeba99162cea7c61d96b7cb
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: cfdf50bdf1eece98a02cdbe56e52e1b2dda2b200
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank 
-Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwachung zu erleichtern. Sie können Azure SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
-- **Azure Storage:** für die Archivierung großer Mengen von Telemetriedaten zu einem kleinen Preis
-- **Azure Event Hub**: Für die Integration von Telemetriedaten von Azure SQL-Datenbank in Ihrer benutzerdefinierten Überwachungslösung oder Hotpipelines
-- **Azure Log Analytics**: Für eine einsatzbereite Überwachungslösung mit Funktionen für Berichterstellung, Warnungen und Problemlösung 
+Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwachung zu erleichtern. Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
+
+* **Azure Storage**: Wird für die Archivierung großer Mengen von Telemetriedaten zu einem kleinen Preis verwendet.
+* **Azure Event Hubs**: Wird für die Integration von Telemetriedaten von SQL-Datenbank in Ihrer benutzerdefinierte Überwachungslösung oder Hotpipelines verwendet.
+* **Azure Log Analytics**: Wird für eine einsatzbereite Überwachungslösung mit Funktionen für Berichterstellung, Warnungen und Problemlösung verwendet.
 
     ![Architektur](./media/sql-database-metrics-diag-logging/architecture.png)
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
 Die Protokollierung von Metriken und Diagnosen ist standardmäßig nicht aktiviert. Sie können die Protokollierung von Metriken und Diagnosen mit einer der folgenden Methoden aktivieren und verwalten:
+
 - Azure-Portal
 - PowerShell
 - Azure-Befehlszeilenschnittstelle
-- REST-API 
-- Resource Manager-Vorlage
+- Azure Monitor-REST-API 
+- Azure Resource Manager-Vorlage
 
 Wenn Sie die Protokollierung von Metriken und Diagnosen aktivieren, müssen Sie die Azure-Ressource angeben, in der die ausgewählten Daten erfasst werden. Verfügbare Optionen:
+
 - Log Analytics
-- Event Hub
-- Azure Storage 
+- Event Hubs
+- Speicher 
 
 Sie können eine neue Azure-Ressource bereitstellen oder eine vorhandene Ressource auswählen. Nachdem Sie die Speicherressource ausgewählt haben, müssen Sie angeben, welche Daten erfasst werden sollen. Verfügbare Optionen:
 
-- **[1-minute metrics](sql-database-metrics-diag-logging.md#1-minute-metrics)** (Minutenmetriken) – Enthält DTU-Prozentsatz, DTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesenen physischen Daten, Prozentsatz für Protokollschreibvorgang, Verbindungen mit Status Erfolgreich/Fehlgeschlagen/Durch Firewall blockiert, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent, XTP-Speicher in Prozent
-- **[QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics)**: Enthält Informationen zu den Laufzeitstatistiken der Abfrage, z.B. CPU-Nutzung, Abfragedauer usw.
-- **[QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics)**: Enthält Informationen zu den Wartestatistiken der Abfrage, die angibt, worauf Ihre Abfragen warten, z.B. CPU, Protokolle, Sperrungen usw.
-- **[Errors](sql-database-metrics-diag-logging.md#errors-dataset)**: Enthält Informationen zu den SQL-Fehlern, die auf dieser Datenbank aufgetreten sind.
-- **[DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-waits-dataset)**: Enthält Informationen dazu, wie lange eine Datenbank jeweils auf die verschiedenen Wartezeittypen gewartet hat.
-- **[Timeouts](sql-database-metrics-diag-logging.md#timeouts-dataset)**: Enthält Informationen dazu, wie lange eine Datenbank jeweils auf die verschiedenen Wartezeittypen gewartet hat.
-- **[Blockings](sql-database-metrics-diag-logging.md#blockings-dataset)**: Enthält Informationen zu blockierenden Ereignissen, die auf einer Datenbank aufgetreten sind.
-- **[SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset)**: Enthält Intelligent Insights. [Learn more about Intelligent Insights (Weitere Informationen zu Intelligent Insights)](sql-database-intelligent-insights.md)
+- [1-minute metrics (Minutenmetriken)](sql-database-metrics-diag-logging.md#1-minute-metrics): Enthält DTU-Prozentsatz, DTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesenen physischen Daten, Prozentsatz für Protokollschreibvorgang, Verbindungen mit Status Erfolgreich/Fehlgeschlagen/Durch Firewall blockiert, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent und XTP-Speicher in Prozent.
+- [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): Enthält Informationen zu den Laufzeitstatistiken der Abfrage, z.B. CPU-Nutzung und Abfragedauer.
+- [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): Enthält Informationen zu den Wartestatistiken der Abfrage, die angibt, worauf Ihre Abfragen warten, z.B. CPU, Protokolle und Sperrungen.
+- [Errors](sql-database-metrics-diag-logging.md#errors-dataset): Enthält Informationen zu den SQL-Fehlern, die für diese Datenbank aufgetreten sind.
+- [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-waits-dataset): Enthält Informationen dazu, wie lange eine Datenbank jeweils auf die verschiedenen Wartezeittypen gewartet hat.
+- [Timeouts](sql-database-metrics-diag-logging.md#timeouts-dataset): Enthält Informationen zu Timeouts, die für eine Datenbank aufgetreten sind.
+- [Blockings](sql-database-metrics-diag-logging.md#blockings-dataset): Enthält Informationen zu blockierenden Ereignissen, die für eine Datenbank aufgetreten sind.
+- [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Enthält Intelligent Insights. [Weitere Informationen zu Intelligent Insights](sql-database-intelligent-insights.md).
 
-Wenn Sie Event Hub oder ein AzureStorage-Konto angeben, können Sie eine Aufbewahrungsrichtlinie einrichten, um anzugeben, dass Daten ab einem bestimmten ausgewählten Alter gelöscht werden sollen. Wenn Sie Log Analytics angeben, hängt die Aufbewahrungsrichtlinie vom ausgewählten Tarif ab. Weitere Informationen erhalten Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/). 
+Wenn Sie Event Hubs oder ein Speicherkonto auswählen, können Sie eine Aufbewahrungsrichtlinie angeben. Diese Richtlinie löscht Daten, die älter als ein ausgewählter Zeitraums sind. Wenn Sie Log Analytics angeben, hängt die Aufbewahrungsrichtlinie vom ausgewählten Tarif ab. Weitere Informationen finden Sie unter [Log Analytics-Preise](https://azure.microsoft.com/pricing/details/log-analytics/). 
 
-Es wird empfohlen, sowohl den Artikel [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) als auch den Artikel [Übersicht über Azure-Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) durchzulesen, um sich mit dem Aktivieren der Protokollierung vertraut zu machen und ein Verständnis der von den verschiedenen Azure-Diensten unterstützten Metriken und Protokollkategorien zu erlangen.
+Informationen zum Aktivieren der Protokollierung und zum Verständnis der Metriken und Protokollkategorien, die von den verschiedenen Azure-Diensten unterstützt werden, finden Sie in den folgenden empfohlenen Themen: 
+
+* [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+* [Übersicht über Azure-Diagnose](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Um die Sammlung von Metrik- und Diagnoseprotokollen im Azure-Portal zu aktivieren, navigieren Sie zur Seite der Azure SQL-Datenbank oder des Pools für elastische Datenbanken, und klicken Sie auf **Diagnoseeinstellungen**.
+1. Um die Erfassung von Metriken und Diagnoseprotokollen im Portal zu aktivieren, navigieren Sie zur Seite der SQL-Datenbank oder des Pools für elastische Datenbanken, und wählen Sie dann **Diagnoseeinstellungen** aus.
 
    ![Aktivieren im Azure-Portal](./media/sql-database-metrics-diag-logging/enable-portal.png)
 
-Erstellen Sie Diagnoseeinstellungen oder bearbeiten Sie vorhandene, indem Sie das Ziel und die Telemetrie auswählen.
+2. Erstellen Sie Diagnoseeinstellungen, oder bearbeiten Sie vorhandene, indem Sie das Ziel und die Telemetrie auswählen.
 
-   ![Konfigurieren von Azure-Diagnoseeinstellungen](./media/sql-database-metrics-diag-logging/diagnostics-portal.png)
+   ![Diagnoseeinstellungen](./media/sql-database-metrics-diag-logging/diagnostics-portal.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -78,7 +84,7 @@ Verwenden Sie die folgenden Befehle, um die Metrik- und Diagnoseprotokollierung 
    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
    ```
 
-   Die Speicherkonto-ID (StorageAccountId) ist die Ressourcen-ID für das Speicherkonto, an das die Protokolle gesendet werden sollen.
+   Die Speicherkonto-ID ist die Ressourcen-ID für das Speicherkonto, an das die Protokolle gesendet werden sollen.
 
 - Verwenden Sie den folgenden Befehl, um das Streamen von Diagnoseprotokollen an eine Event Hub-Instanz zu aktivieren:
 
@@ -86,7 +92,7 @@ Verwenden Sie die folgenden Befehle, um die Metrik- und Diagnoseprotokollierung 
    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
-   Die Service Bus-Regel-ID (ServiceBusRuleId) ist eine Zeichenfolge im folgenden Format:
+   Die Azure Service Bus-Regel-ID ist eine Zeichenfolge mit dem folgenden Format:
 
    ```powershell
    {service bus resource ID}/authorizationrules/{key name}
@@ -98,7 +104,7 @@ Verwenden Sie die folgenden Befehle, um die Metrik- und Diagnoseprotokollierung 
    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
-- Sie können die Ressourcen-ID mit folgendem Befehl aus Ihrem Log Analytics-Arbeitsbereich abrufen:
+- Sie können die Ressourcen-ID mit dem folgenden Befehl aus Ihrem Log Analytics-Arbeitsbereich abrufen:
 
    ```powershell
    (Get-AzureRmOperationalInsightsWorkspace).ResourceId
@@ -106,20 +112,22 @@ Verwenden Sie die folgenden Befehle, um die Metrik- und Diagnoseprotokollierung 
 
 Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen zu aktivieren.
 
-### <a name="to-configure-multiple-azure-subscriptions"></a>So konfigurieren Sie mehrere Azure-Abonnements
+### <a name="to-configure-multiple-azure-resources"></a>So konfigurieren Sie mehrere Azure-Ressourcen
 
-Wenn mehrere Abonnements unterstützt werden, verwenden Sie das PowerShell-Skript aus [Enable Azure resource metrics logging using PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/) (Aktivieren der Protokollierung der Azure-Ressourcenmetriken mit PowerShell). Geben Sie die Ressourcen-ID des Arbeitsbereichs als Parameter beim Ausführen des Skripts zum Senden von Diagnosedaten aus Ressourcen in einem Azure-Abonnement an einen Arbeitsbereich in einem anderen Azure-Abonnement an.
+Wenn mehrere Abonnements unterstützt werden, verwenden Sie das PowerShell-Skript aus [Enable Azure resource metrics logging using PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/) (Aktivieren der Protokollierung der Azure-Ressourcenmetriken mit PowerShell).
 
-- Um mehrere Azure-Abonnements zu konfigurieren, verwenden Sie die folgenden Befehle:
+Geben Sie die Arbeitsbereichressourcen-ID &lt;$WSID&gt; als Parameter an, wenn Sie das Skript („Enable-AzureRMDiagnostics.ps1“) ausführen, um Diagnosedaten von mehreren Ressourcen an den Arbeitsbereich zu senden. Um die Arbeitsbereich-ID &lt;$WSID&gt; abzurufen, an die Sie Diagnosedaten senden möchten, ersetzen Sie &lt;$WSID&gt; durch die Abonnement-ID, ersetzen Sie &lt;RG_NAME&gt; durch den Namen der Ressourcengruppe, und ersetzen Sie &lt;WS_NAME&gt; durch den Namen des Arbeitsbereichs im folgenden Skript.
+
+- Um mehrere Azure-Ressourcen zu konfigurieren, verwenden Sie die folgenden Befehle:
 
     ```powershell
-    PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/oms/providers/microsoft.operationalinsights/workspaces/omsws"
+    PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/<RG_NAME>/providers/microsoft.operationalinsights/workspaces/<WS_NAME>"
     PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
     ```
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Verwenden Sie die folgenden Befehle, um die Metrik- und Diagnoseprotokollierung mit der Azure-CLI zu aktivieren:
+Verwenden Sie die folgenden Befehle, um die Metrik- und Diagnoseprotokollierung mit der Azure CLI zu aktivieren:
 
 - Verwenden Sie den folgenden Befehl, um das Speichern von Diagnoseprotokollen in einem Speicherkonto zu aktivieren:
 
@@ -127,7 +135,7 @@ Verwenden Sie die folgenden Befehle, um die Metrik- und Diagnoseprotokollierung 
    azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
    ```
 
-   Die Speicherkonto-ID (StorageAccountId) ist die Ressourcen-ID für das Speicherkonto, an das die Protokolle gesendet werden sollen.
+   Die Speicherkonto-ID ist die Ressourcen-ID für das Speicherkonto, an das die Protokolle gesendet werden sollen.
 
 - Verwenden Sie den folgenden Befehl, um das Streamen von Diagnoseprotokollen an eine Event Hub-Instanz zu aktivieren:
 
@@ -135,7 +143,7 @@ Verwenden Sie die folgenden Befehle, um die Metrik- und Diagnoseprotokollierung 
    azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
    ```
 
-   Die Service Bus-Regel-ID (ServiceBusRuleId) ist eine Zeichenfolge im folgenden Format:
+   Die Service Bus-Regel-ID ist eine Zeichenfolge mit dem folgenden Format:
 
    ```azurecli-interactive
    {service bus resource ID}/authorizationrules/{key name}
@@ -158,47 +166,52 @@ Informieren Sie sich darüber, wie Sie [Diagnoseeinstellungen mithilfe der Azure
 Informieren Sie sich darüber, wie Sie [Diagnoseeinstellungen beim Erstellen von Ressourcen mithilfe der Resource Manager-Vorlage aktivieren](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md). 
 
 ## <a name="stream-into-log-analytics"></a>Streamen nach Log Analytics 
-Metrik- und Diagnoseprotokolle für Azure SQL-Datenbank können mithilfe der integrierten Option „An Log Analytics senden“ im Portal in Log Analytics gestreamt werden, oder durch Aktivieren von Log Analytics in einer Diagnoseeinstellung über Azure PowerShell-Cmdlets, die Azure-CLI oder die Azure Monitor-REST-API.
+SQL-Datenbankmetriken und -Diagnoseprotokolle können in Log Analytics gestreamt werden, indem die integrierte Option **An Log Analytics senden** im Portal verwendet wird. Sie können Log Analytics auch aktivieren, indem Sie eine Diagnoseeinstellung über PowerShell-Cmdlets, die Azure CLI oder die Azure Monitor-REST-API verwenden.
 
 ### <a name="installation-overview"></a>Übersicht über die Installation
 
-Das Überwachen der Azure SQL-Datenbankflotte mit Log Analytics ist einfach. Es sind drei Schritte erforderlich:
+Das Überwachen einer SQL-Datenbankflotte mit Log Analytics ist einfach. Es sind drei Schritte erforderlich:
 
-1. Erstellen von Log Analytics-Ressourcen
-2. Konfigurieren von Datenbanken zum Aufzeichnen von Metrik- und Diagnoseprotokollen in der erstellten Log Analytics-Instanz
-3. Installieren Sie die **Azure SQL-Analyse**-Lösung aus dem Katalog in Log Analytics
+1. Erstellen einer Log Analytics-Ressource.
 
-### <a name="create-log-analytics-resource"></a>Erstellen von Log Analytics-Ressourcen
+2. Konfigurieren von Datenbanken zum Aufzeichnen von Metrik- und Diagnoseprotokollen in der erstellten Log Analytics-Ressource.
 
-1. Klicken Sie im linken Menü auf **Neu**.
-2. Klicken Sie auf **Überwachung und Verwaltung**.
-3. Klicken Sie auf **Log Analytics**.
-4. Füllen Sie das Log Analytics-Formular mit den erforderlichen zusätzlichen Informationen: Name des Arbeitsbereichs, Abonnement, Ressourcengruppe, Ort und Tarif.
+3. Installieren der **Azure SQL-Analyse**-Lösung aus dem Katalog in Log Analytics.
+
+### <a name="create-a-log-analytics-resource"></a>Erstellen einer Log Analytics-Ressource
+
+1. Wählen Sie im Menü auf der linken Seite **Neu** aus.
+
+2. Wählen Sie **Überwachung und Verwaltung** aus.
+
+3. Wählen Sie **Log Analytics** aus.
+
+4. Tragen Sie in das Log Analytics-Formular die erforderlichen zusätzlichen Informationen ein: Name des Arbeitsbereichs, Abonnement, Ressourcengruppe, Ort und Tarif.
 
    ![Log Analytics](./media/sql-database-metrics-diag-logging/log-analytics.png)
 
-### <a name="configure-databases-to-record-metrics-and-diagnostic-logs"></a>Konfigurieren von Datenbanken zum Aufzeichnen von Metrik- und Diagnoseprotokollen
+### <a name="configure-databases-to-record-metrics-and-diagnostics-logs"></a>Konfigurieren von Datenbanken zum Aufzeichnen von Metrik- und Diagnoseprotokollen
 
-Das Azure-Portal stellt die einfachste Möglichkeit dar, das Verzeichnis zu konfigurieren, in dem Datenbanken ihre Metriken aufzeichnen. Navigieren Sie im Azure-Portal zu Ihrer Azure SQL-Datenbankressource, und klicken Sie auf **Diagnoseeinstellungen**. 
+Das Azure-Portal stellt die einfachste Möglichkeit dar, das Verzeichnis zu konfigurieren, in dem Datenbanken ihre Metriken aufzeichnen. Navigieren Sie im Portal zu Ihrer SQL-Datenbankressource, und wählen Sie **Diagnoseeinstellungen** aus. 
 
-### <a name="install-the-azure-sql-analytics-solution-from-gallery"></a>Installieren der Azure SQL-Analyselösung aus dem Katalog  
+### <a name="install-the-sql-analytics-solution-from-the-gallery"></a>Installieren der Azure SQL-Analyselösung aus dem Katalog
 
-1. Installieren Sie die Azure SQL-Analyse-Lösung, sobald die Log Analytics-Ressource erstellt wurde und die Daten in diese fließen. Dieser Vorgang kann über den **Lösungskatalog** ausgeführt werden. Dieser findet sich auf der OMS-Startseite und im seitlichen Menü. Suchen Sie im Katalog nach dem Eintrag **Azure SQL-Analyse**, klicken Sie darauf, und klicken Sie dann auf **Hinzufügen**.
+1. Installieren Sie die Lösung „Azure SQL-Analyse“, nachdem Sie die Log Analytics-Ressource erstellt haben und Daten in diese fließen. Wählen Sie auf der Startseite der Operations Management Suite im seitlichen Menü die Option **Lösungskatalog** aus. Wählen Sie im Katalog die Lösung **Azure SQL-Analyse** aus, und wählen Sie dann **Hinzufügen** aus.
 
    ![Überwachungslösung](./media/sql-database-metrics-diag-logging/monitoring-solution.png)
 
-2. Auf der OMS-Startseite wird eine neue Kachel mit dem Namen **Azure SQL-Analyse** angezeigt. Wenn Sie diese Kachel auswählen, wird das Azure SQL-Analyse-Dashboard geöffnet.
+2. Auf Ihrer Startseite der Operations Management Suite wird die Kachel **Azure SQL-Analyse** angezeigt. Wählen Sie diese Kachel aus, um das SQL-Analysedashboard zu öffnen.
 
-### <a name="using-azure-sql-analytics-solution"></a>Verwenden der Azure SQL-Analyselösung
+### <a name="use-the-sql-analytics-solution"></a>Verwenden der Lösung „SQL-Analyse“
 
-Azure SQL-Analyse stellt ein hierarchisches Dashboard dar, in dem Sie die Hierarchie der Azure SQL-Datenbankressourcen durchsuchen können. [Click here to learn how to use Azure SQL Analytics solution (Klicken Sie hier, um mehr über die Verwendung von Azure SQL-Analyse zu erfahren)](../log-analytics/log-analytics-azure-sql.md).
+Die SQL-Analyse stellt ein hierarchisches Dashboard dar, in dem Sie die Hierarchie der Azure SQL-Datenbankressourcen durchsuchen können. Informationen zum Verwenden der Lösung „SQL-Analyse“ finden Sie unter [Überwachen der SQL-Datenbank mithilfe der Lösung „SQL-Analyse“](../log-analytics/log-analytics-azure-sql.md).
 
-## <a name="stream-into-azure-event-hub"></a>Streamen nach Azure Event Hub
+## <a name="stream-into-event-hubs"></a>Streamen an Event Hubs
 
-Metrik- und Diagnoseprotokolle für Azure SQL-Datenbank können mithilfe der integrierten Option „An einen Event Hub streamen“ im Portal in Event Hub gestreamt werden, oder durch Aktivieren der Service Bus-Regel-ID in einer Diagnoseeinstellung über Azure PowerShell-Cmdlets, die Azure-CLI oder die Azure Monitor-REST-API. 
+SQL-Datenbankmetriken und -Diagnoseprotokolle können in Event Hubs gestreamt werden, indem die integrierte Option **An einen Event Hub streamen** im Portal verwendet wird. Sie können die Service Bus-Regel-ID auch aktivieren, indem Sie eine Diagnoseeinstellung über PowerShell-Cmdlets, die Azure CLI oder die Azure Monitor-REST-API verwenden. 
 
-### <a name="what-to-do-with-metrics-and-diagnostic-logs-in-event-hub"></a>Welche Vorgänge können mit Metrik- und Diagnoseprotokollen in Event Hub ausgeführt werden?
-Wenn die ausgewählten Daten nach Event Hub gestreamt werden, sind Sie der Einrichtung fortgeschrittener Überwachungsszenarien ein ganzes Stück näher gekommen. Event Hubs fungiert als „Eingangstür“ für eine Ereignispipeline. Nach der Erfassung in Event Hubs können Sie Daten mit einem beliebigen Echtzeit-Analyseanbieter oder mit Batchverarbeitungs-/Speicheradaptern umwandeln und speichern. Event Hubs entkoppelt die Erzeugung eines Datenstroms von Ereignissen von der Nutzung dieser Ereignisse, sodass  Ereignisconsumer nach einem eigenen Zeitplan auf Ereignisse zugreifen können. Weitere Informationen zu Event Hub finden Sie unter:
+### <a name="what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs"></a>Welche Vorgänge können mit Metrik- und Diagnoseprotokollen in Event Hub ausgeführt werden?
+Nachdem die ausgewählten Daten an Event Hubs gestreamt wurden, sind Sie der Einrichtung fortgeschrittener Überwachungsszenarien ein ganzes Stück näher gekommen. Event Hubs fungiert als Eingangsportal für eine Ereignispipeline. Nachdem Daten in einem Event Hub erfasst wurden, können sie transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradaptern gespeichert werden. Event Hubs entkoppelt die Produktion eines Ereignisdatenstroms von der Nutzung dieser Ereignisse. Auf diese Weise können Ereignisconsumer auf die Ereignisse gemäß ihrem eigenen Zeitplan zugreifen. Weitere Informationen zu Event Hubs finden Sie hier:
 
 - [Was sind Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
@@ -206,17 +219,19 @@ Wenn die ausgewählten Daten nach Event Hub gestreamt werden, sind Sie der Einri
 
 Im Anschluss finden Sie eine kleine Auswahl von Verwendungsmöglichkeiten für das Streamen:
 
--             Anzeigen der Dienstintegrität durch Streamen von Daten zum langsamsten Pfad an PowerBI: Mithilfe von Event Hubs, Stream Analytics und PowerBI können Sie sich anhand Ihrer Metrik- und Diagnosedaten problemlos und nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. [Stream Analytics und Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md) bietet eine gute Übersicht über die Einrichtung von Event Hubs, die Verarbeitung von Daten mit Stream Analytics und die Verwendung von PowerBI als Ausgabe.
--             Streamen von Protokollen in Protokollierungs- und Telemetrie-Streams von Drittanbietern: Mithilfe des Event Hubs-Streamings können Sie Ihre Metrik- und Diagnoseprotokolle in verschiedene Überwachungs- und Protokollanalyselösungen von Drittanbietern übertragen. 
--             Erstellen einer benutzerdefinierten Telemetrie- und Protokollierungsplattform: Event Hubs ermöglicht dank des hochgradig skalierbaren Veröffentlichen/Abonnieren-Konzepts eine flexible Erfassung von Diagnoseprotokollen. Dies ist interessant, wenn Sie bereits über eine benutzerdefinierte Telemetrieplattform verfügen oder eine solche Plattform erstellen möchten. Informationen zur Verwendung von Event Hubs für eine globale Telemetrieplattform finden Sie in der [Anleitung von Dan Rosanova](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+* **Anzeigen der Dienstintegrität durch Streamen von Daten zum langsamsten Pfad an PowerBI**. Mithilfe von Event Hubs, Stream Analytics und PowerBI können Sie sich anhand Ihrer Metrik- und Diagnosedaten problemlos und nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. [Stream Analytics und Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md) bietet eine gute Übersicht über die Einrichtung von Event Hubs, die Verarbeitung von Daten mit Stream Analytics und die Verwendung von PowerBI als Ausgabe.
 
-## <a name="stream-into-azure-storage"></a>Streamen nach Azure Storage
+* **Streamen von Protokollen in Protokollierungs- und Telemetriedatenströme von Drittanbietern**. Mithilfe des Event Hubs-Streamings können Sie Ihre Metrik- und Diagnoseprotokolle in verschiedene Überwachungs- und Protokollanalyselösungen von Drittanbietern übertragen. 
 
-Azure SQL-Datenbank-Metrik- und Diagnoseprotokolle können mithilfe der integrierten Option „In ein Speicherkonto archivieren“ im Azure-Portal in Azure Storage gespeichert werden, oder durch Aktivieren von Azure Storage in einer Diagnoseeinstellung über Azure PowerShell-Cmdlets, die Azure-CLI oder die Azure Monitor-REST-API.
+* **Erstellen einer benutzerdefinierten Telemetrie- und Protokollierungsplattform** Event Hubs ermöglicht dank des hochgradig skalierbaren Veröffentlichen/Abonnieren-Konzepts eine flexible Erfassung von Diagnoseprotokollen. Dies ist interessant, wenn Sie bereits über eine benutzerdefinierte Telemetrieplattform verfügen oder eine solche Plattform erstellen möchten. Informationen zur Verwendung von Event Hubs für eine globale Telemetrieplattform finden Sie in der [Anleitung von Dan Rosanova](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
-### <a name="schema-of-metrics-and-diagnostic-logs-in-the-storage-account"></a>Schema der Metrik- und Diagnoseprotokolle im Speicherkonto
+## <a name="stream-into-storage"></a>Streamen in den Speicher
 
-Wenn Sie die Sammlung von Metrik- und Diagnoseprotokollen eingerichtet haben, wird ein Speichercontainer im ausgewählten Speicherkonto erstellt, wenn die ersten Datenzeilen verfügbar sind. Die Struktur dieser Blobs sieht wie folgt aus:
+SQL-Datenbankmetriken und -Diagnoseprotokolle können in Storage mithilfe der integrierten Option **In ein Speicherkonto archivieren** im Portal gespeichert werden. Sie können Storage auch aktivieren, indem Sie eine Diagnoseeinstellung über PowerShell-Cmdlets, die Azure CLI oder die Azure Monitor-REST-API verwenden.
+
+### <a name="schema-of-metrics-and-diagnostics-logs-in-the-storage-account"></a>Schema der Metrik- und Diagnoseprotokolle im Speicherkonto
+
+Nachdem Sie die Sammlung von Metrik- und Diagnoseprotokollen eingerichtet haben, wird ein Speichercontainer im ausgewählten Speicherkonto erstellt, wenn die ersten Datenzeilen verfügbar sind. Die Struktur dieser Blobs sieht wie folgt aus:
 
 ```powershell
 insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/ RESOURCEGROUPS/{resource group name}/PROVIDERS/Microsoft.SQL/servers/{resource_server}/ databases/{database_name}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
@@ -228,21 +243,21 @@ Einfacher ausgedrückt:
 insights-{metrics|logs}-{category name}/resourceId=/{resource Id}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Ein Blob-Name für Minutenmetriken kann beispielsweise wie folgt lauten:
+Ein Blobname für Minutenmetriken kann beispielsweise wie folgt lauten:
 
 ```powershell
 insights-metrics-minute/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.SQL/ servers/Server1/databases/database1/y=2016/m=08/d=22/h=18/m=00/PT1H.json
 ```
 
-Wenn Sie die Daten aus dem Pool für elastische Datenbanken aufzeichnen möchten, weicht der Blob-Name etwas ab:
+Wenn Sie die Daten aus dem Pool für elastische Datenbanken aufzeichnen möchten, weicht der Blobname etwas ab:
 
 ```powershell
 insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/ RESOURCEGROUPS/{resource group name}/PROVIDERS/Microsoft.SQL/servers/{resource_server}/ elasticPools/{elastic_pool_name}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-### <a name="download-metrics-and-logs-from-azure-storage"></a>Herunterladen von Metriken und Protokollen aus Azure Storage
+### <a name="download-metrics-and-logs-from-storage"></a>Herunterladen von Metriken und Protokollen aus Storage
 
-Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
+Weitere Informationen zum [Herunterladen von Metrik- und Diagnoseprotokollen aus Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs).
 
 ## <a name="metrics-and-logs-available"></a>Verfügbare Metriken und Protokolle
 
@@ -250,7 +265,7 @@ Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../s
 
 |**Ressource**|**Metriken**|
 |---|---|
-|Datenbank|DTU-Prozentsatz, DTU-Verwendung, DTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesen physischen Daten, Prozentsatz für Protokollschreibvorgang, Verbindungen mit Status Erfolgreich/Fehlgeschlagen/Durch Firewall blockiert, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent, XTP-Speicher in Prozent, Deadlocks |
+|Datenbank|DTU-Prozentsatz, DTU-Verwendung, DTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesen physischen Daten, Prozentsatz für Protokollschreibvorgang, Verbindungen mit Status Erfolgreich/Fehlgeschlagen/Durch Firewall blockiert, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent, XTP-Speicher in Prozent und Deadlocks |
 |Elastischer Pool|eDTU-Prozentsatz, eDTU-Verwendung, eDTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesen physischen Daten, Prozentsatz für Protokollschreibvorgang, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent, Speicherbegrenzung, XTP-Speicher in Prozent |
 |||
 
@@ -258,24 +273,24 @@ Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../s
 
 |Eigenschaft|Beschreibung|
 |---|---|
-|TenantId|Ihre Mandanten-ID|
+|TenantId|Ihre Mandanten-ID.|
 |SourceSystem|Immer: Azure|
-|TimeGenerated [UTC]|Zeitstempel für den Aufzeichnungsbeginn des Protokolls|
+|TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
-|NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
-|Ressource|Name der Ressource|
+|Category|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
+|OperationName|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
+|Ressource|Der Name der Ressource.|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
-|SubscriptionId|GUID des Abonnements, zu der die Datenbank gehört.|
-|ResourceGroup|Name der Ressourcengruppe, zu der die Datenbank gehört.|
-|LogicalServerName_s|Name des Servers, zu dem die Datenbank gehört.|
-|ElasticPoolName_s|Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden)|
-|DatabaseName_s|Name der Datenbank|
-|ResourceId|Ressourcen-URI|
-|query_hash_s|Abfragehash|
-|query_plan_hash_s|Hash des Abfrageplans|
-|statement_sql_handle_s|SQL-Anweisungshandle|
+|SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
+|ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
+|LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
+|ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
+|DatabaseName_s|Der Name der Datenbank.|
+|ResourceId|Der Ressourcen-URI.|
+|query_hash_s|Der Abfragehash.|
+|query_plan_hash_s|Der Hash des Abfrageplans.|
+|statement_sql_handle_s|Das SQL-Anweisungshandle.|
 |interval_start_time_d|Beginn des DateTimeOffsets des Intervalls in Anzahl von Takten von 1900-1-1.|
 |interval_end_time_d|Ende des DateTimeOffsets des Intervalls in Anzahl von Takten von 1900-1-1.|
 |logical_io_writes_d|Gesamtzahl von logischen E/A-Schreibvorgängen|
@@ -284,7 +299,7 @@ Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../s
 |max_physical_io_reads_d|Maximale Anzahl von logischen E/A-Lesevorgängen pro Ausführung|
 |logical_io_reads_d|Gesamtzahl von logischen E/A-Lesevorgängen|
 |max_logical_io_reads_d|Maximale Anzahl von logischen E/A-Lesevorgängen pro Ausführung|
-|execution_type_d|Ausführungstyp|
+|execution_type_d|Der Ausführungstyp.|
 |count_executions_d|Anzahl von Ausführungen der Abfrage|
 |cpu_time_d|Verwendete CPU-Gesamtzeit der Abfrage in Mikrosekunden|
 |max_cpu_time_d|Maximal verwendete CPU-Zeit durch eine einzelne Ausführung in Mikrosekunden|
@@ -300,161 +315,167 @@ Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../s
 |max_num_physical_io_reads_d|Maximale Anzahl von physischen Lesevorgängen pro Ausführung|
 |log_bytes_used_d|Gesamtmenge der verwendeten Protokollbytes|
 |max_log_bytes_used_d|Maximale Menge der verwendeten Protokollbytes pro Ausführung|
-|query_id_d|ID der Abfrage im Abfragespeicher|
-|plan_id_d|ID des Plans im Abfragespeicher|
+|query_id_d|Die ID der Abfrage im Abfragespeicher.|
+|plan_id_d|Die ID des Plans im Abfragespeicher.|
 
-[Learn more about Query Store runtime statistics data (Weitere Informationen zu Laufzeitstatistikdaten für den Abfragespeicher)](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql)
+Weitere Informationen zu [Laufzeitstatistikdaten des Abfragespeichers](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql).
 
 ### <a name="query-store-wait-statistics"></a>Wartestatistiken des Abfragespeichers
 
 |Eigenschaft|Beschreibung|
 |---|---|
-|TenantId|Ihre Mandanten-ID|
+|TenantId|Ihre Mandanten-ID.|
 |SourceSystem|Immer: Azure|
-|TimeGenerated [UTC]|Zeitstempel für den Aufzeichnungsbeginn des Protokolls|
+|TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
 |Typ|Immer: AzureDiagnostics|
-|ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
-|NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
-|Ressource|Name der Ressource|
-|ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
-|SubscriptionId|GUID des Abonnements, zu der die Datenbank gehört.|
-|ResourceGroup|Name der Ressourcengruppe, zu der die Datenbank gehört.|
-|LogicalServerName_s|Name des Servers, zu dem die Datenbank gehört.|
-|ElasticPoolName_s|Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden)|
-|DatabaseName_s|Name der Datenbank|
-|ResourceId|Ressourcen-URI|
+|ResourceProvider|Der Name des Ressourcenanbieters. Immer: MICROSOFT.SQL|
+|Category|Der Name der Kategorie. Immer: QueryStoreWaitStatistics|
+|OperationName|Der Name des Vorgangs. Immer: QueryStoreWaitStatistics|
+|Resource|Der Name der Ressource.|
+|ResourceType|Der Name des Ressourcentyps. Immer: SERVERS/DATABASES|
+|SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
+|ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
+|LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
+|ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
+|DatabaseName_s|Der Name der Datenbank.|
+|ResourceId|Der Ressourcen-URI.|
 |wait_category_s|Kategorie des Wartevorgangs|
 |is_parameterizable_s|Parametrisierbarkeit der Abfrage|
 |statement_type_s|Anweisungstyp|
 |statement_key_hash_s|Schlüsselhash der Anweisung|
-|exec_type_d|Ausführungstyp|
+|exec_type_d|Der Ausführungstyp.|
 |total_query_wait_time_ms_d|Gesamtwartezeit der Abfrage für die bestimmte Wartekategorie|
-|max_query_wait_time_ms_d|Maximale Wartezeit der Abfrage in einer einzelnen Ausführung der bestimmten Wartekategorie|
+|max_query_wait_time_ms_d|Die maximale Wartezeit der Abfrage in einer einzelnen Ausführung der bestimmten Wartekategorie.|
 |query_param_type_d|0|
 |query_hash_s|Abfragehash im Abfragespeicher|
-|query_plan_hash_s|Hash des Abfrageplans im Abfragespeicher|
-|statement_sql_handle_s|Anweisungshandle im Abfragespeicher|
+|query_plan_hash_s|Der Hash des Abfrageplans im Abfragespeicher.|
+|statement_sql_handle_s|Das Anweisungshandle im Abfragespeicher.|
 |interval_start_time_d|Beginn des DateTimeOffsets des Intervalls in Anzahl von Takten von 1900-1-1.|
 |interval_end_time_d|Ende des DateTimeOffsets des Intervalls in Anzahl von Takten von 1900-1-1.|
-|count_executions_d|Anzahl von Ausführungen der Abfrage|
-|query_id_d|ID der Abfrage im Abfragespeicher|
-|plan_id_d|ID des Plans im Abfragespeicher|
+|count_executions_d|Die Anzahl von Ausführungen der Abfrage.|
+|query_id_d|Die ID der Abfrage im Abfragespeicher.|
+|plan_id_d|Die ID des Plans im Abfragespeicher.|
 
-[Klicken Sie hier, um weitere Informationen zu Wartestatistikdaten des Abfragespeichers zu erhalten.](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql)
+Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql).
 
 ### <a name="errors-dataset"></a>Fehlerdataset
 
 |Eigenschaft|Beschreibung|
 |---|---|
-|TenantId|Ihre Mandanten-ID|
+|TenantId|Ihre Mandanten-ID.|
 |SourceSystem|Immer: Azure|
-|TimeGenerated [UTC]|Zeitstempel für den Aufzeichnungsbeginn des Protokolls|
+|TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
-|NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
-|Ressource|Name der Ressource|
+|Category|Name der Kategorie Immer: Errors|
+|OperationName|Der Name des Vorgangs. Immer: ErrorEvent|
+|Resource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
-|SubscriptionId|GUID des Abonnements, zu der die Datenbank gehört.|
-|ResourceGroup|Name der Ressourcengruppe, zu der die Datenbank gehört.|
-|LogicalServerName_s|Name des Servers, zu dem die Datenbank gehört.|
-|ElasticPoolName_s|Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden)|
-|DatabaseName_s|Name der Datenbank|
-|ResourceId|Ressourcen-URI|
-|Nachricht|Fehlermeldungen in Nur-Text|
-|user_defined_b|Benutzerdefiniertes Fehlerbit|
-|error_number_d|Fehlercode|
-|Severity|Schweregrad des Fehlers|
-|state_d|Status des Fehlers|
-|query_hash_s|Abfragehash der fehlgeschlagenen Abfrage (falls vorhanden)|
-|query_plan_hash_s|Hash des Abfrageplans der fehlgeschlagenen Abfrage (falls vorhanden)|
+|SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
+|ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
+|LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
+|ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
+|DatabaseName_s|Der Name der Datenbank.|
+|ResourceId|Der Ressourcen-URI.|
+|Message|Die Fehlermeldung im Nur-Text-Format.|
+|user_defined_b|Das benutzerdefiniertes Fehlerbit.|
+|error_number_d|Der Fehlercode.|
+|Severity|Der Schweregrad des Fehlers.|
+|state_d|Der Status des Fehlers.|
+|query_hash_s|Der Abfragehash der fehlerhaften Abfrage (falls vorhanden).|
+|query_plan_hash_s|Der Hash des Abfrageplans der fehlerhaften Abfrage (falls vorhanden).|
 
-[SQL Server error messages (Fehlermeldungen von SQL Server)](https://msdn.microsoft.com/en-us/library/cc645603.aspx)
+Weitere Informationen zu [SQL Server-Fehlermeldungen](https://msdn.microsoft.com/en-us/library/cc645603.aspx).
 
-### <a name="database-waits-dataset"></a>Wartedataset der Datenbank
+### <a name="database-wait-statistics-dataset"></a>Dataset zur Wartestatistik der Datenbank
 
 |Eigenschaft|Beschreibung|
 |---|---|
-|TenantId|Ihre Mandanten-ID|
+|TenantId|Ihre Mandanten-ID.|
 |SourceSystem|Immer: Azure|
-|TimeGenerated [UTC]|Zeitstempel für den Aufzeichnungsbeginn des Protokolls|
+|TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
-|NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
-|Ressource|Name der Ressource|
+|Category|Name der Kategorie Immer: DatabaseWaitStatistics|
+|OperationName|Name des Vorgangs. Immer: DatabaseWaitStatisticsEvent|
+|Resource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
-|SubscriptionId|GUID des Abonnements, zu der die Datenbank gehört.|
-|ResourceGroup|Name der Ressourcengruppe, zu der die Datenbank gehört.|
-|LogicalServerName_s|Name des Servers, zu dem die Datenbank gehört.|
-|ElasticPoolName_s|Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden)|
-|DatabaseName_s|Name der Datenbank|
-|ResourceId|Ressourcen-URI|
-|wait_type_s|Name des Wartetyps|
+|SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
+|ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
+|LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
+|ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
+|DatabaseName_s|Der Name der Datenbank.|
+|ResourceId|Der Ressourcen-URI.|
+|wait_type_s|Der Name des Wartetyps.|
 |start_utc_date_t [UTC]|Gemessener Zeitraum der Startzeit|
 |end_utc_date_t [UTC]|Gemessener Zeitraum der Endzeit|
 |delta_max_wait_time_ms_d|Maximale Wartezeit pro Ausführung|
-|delta_signal_wait_time_ms_d|Gesamte Signalwartezeit|
-|delta_wait_time_ms_d|Gesamtwartezeit im Zeitraum|
-|delta_waiting_tasks_count_d|Anzahl von wartenden Aufgaben|
+|delta_signal_wait_time_ms_d|Die gesamte Signalwartezeit.|
+|delta_wait_time_ms_d|Die Gesamtwartezeit im Zeitraum.|
+|delta_waiting_tasks_count_d|Die Anzahl der wartenden Aufgaben.|
 
-[Klicken Sie hier, um mehr über Datenbankwartestatistiken zu erfahren.](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)
+Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql).
 
-### <a name="timeouts-dataset"></a>Dataset der Timeouts
+### <a name="time-outs-dataset"></a>Dataset zu Timeouts
 
 |Eigenschaft|Beschreibung|
 |---|---|
-|TenantId|Ihre Mandanten-ID|
+|TenantId|Ihre Mandanten-ID.|
 |SourceSystem|Immer: Azure|
-|TimeGenerated [UTC]|Zeitstempel für den Aufzeichnungsbeginn des Protokolls|
+|TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
-|NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
-|Ressource|Name der Ressource|
+|Category|Name der Kategorie Immer: Timeouts|
+|OperationName|Name des Vorgangs. Immer: TimeoutEvent|
+|Resource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
-|SubscriptionId|GUID des Abonnements, zu der die Datenbank gehört.|
-|ResourceGroup|Name der Ressourcengruppe, zu der die Datenbank gehört.|
-|LogicalServerName_s|Name des Servers, zu dem die Datenbank gehört.|
-|ElasticPoolName_s|Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden)|
-|DatabaseName_s|Name der Datenbank|
-|ResourceId|Ressourcen-URI|
-|error_state_d|Fehlerstatuscode|
-|query_hash_s|Abfragehash (falls verfügbar)|
-|query_plan_hash_s|Hash des Abfrageplans (falls verfügbar)|
+|SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
+|ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
+|LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
+|ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
+|DatabaseName_s|Der Name der Datenbank.|
+|ResourceId|Der Ressourcen-URI.|
+|error_state_d|Der Fehlerstatuscode.|
+|query_hash_s|Der Abfragehash (falls verfügbar).|
+|query_plan_hash_s|Der Hash des Abfrageplans (falls verfügbar).|
 
 ### <a name="blockings-dataset"></a>Dataset der Blockierungen
 
 |Eigenschaft|Beschreibung|
 |---|---|
-|TenantId|Ihre Mandanten-ID|
+|TenantId|Ihre Mandanten-ID.|
 |SourceSystem|Immer: Azure|
-|TimeGenerated [UTC]|Zeitstempel für den Aufzeichnungsbeginn des Protokolls|
+|TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
 |Typ|Immer: AzureDiagnostics|
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
-|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics|
-|NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent|
-|Ressource|Name der Ressource|
+|Category|Name der Kategorie Immer: Blocks|
+|OperationName|Name des Vorgangs. Immer: BlockEvent|
+|Resource|Name der Ressource|
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
-|SubscriptionId|GUID des Abonnements, zu der die Datenbank gehört.|
-|ResourceGroup|Name der Ressourcengruppe, zu der die Datenbank gehört.|
-|LogicalServerName_s|Name des Servers, zu dem die Datenbank gehört.|
-|ElasticPoolName_s|Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden)|
-|DatabaseName_s|Name der Datenbank|
-|ResourceId|Ressourcen-URI|
-|lock_mode_s|Von der Abfrage verwendeter Sperrmodus|
+|SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
+|ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
+|LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
+|ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
+|DatabaseName_s|Der Name der Datenbank.|
+|ResourceId|Der Ressourcen-URI.|
+|lock_mode_s|Der Von der Abfrage verwendeter Sperrmodus.|
 |resource_owner_type_s|Besitzer der Sperre|
 |blocked_process_filtered_s|Blockierter XML-Prozessbericht|
-|duration_d|Dauer der Sperre in Millisekunden|
+|duration_d|Die Dauer der Sperre in Millisekunden.|
 
 ### <a name="intelligent-insights-dataset"></a>Dataset von Intelligent Insights
-[Klicken Sie hier, um mehr über das Protokollformat von Intelligent Insights zu erfahren.](sql-database-intelligent-insights-use-diagnostics-log.md)
+Weitere Informationen zum [Protokollformat von Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie sowohl den Artikel [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) als auch den Artikel [Übersicht über Azure-Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) durch, um sich mit dem Aktivieren der Protokollierung vertraut zu machen und ein Verständnis der von den verschiedenen Azure-Diensten unterstützten Metriken und Protokollkategorien zu erlangen.
-- Lesen Sie diese Artikel durch, um sich über Event Hubs zu informieren:
-   - [Was sind Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
-   - [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-- Siehe [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
+Weitere Informationen zum Aktivieren der Protokollierung und zum Verständnis der Metriken und Protokollkategorien, die von den verschiedenen Azure-Diensten unterstützt werden, finden Sie in den folgenden Themen:
+
+ * [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+ * [Übersicht über Azure-Diagnose](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+
+Weitere Informationen zu Event Hubs finden Sie hier:
+
+* [Was ist Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
+* [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+
+Weitere Informationen zu Storage finden Sie unter [Herunterladen von Metrik- und Diagnoseprotokollen aus Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs).

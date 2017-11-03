@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev;paulsh
-ms.openlocfilehash: 0decb8918a544114316569720aa5deede692d5f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 650b11d66f3ca32266b9842af77c909e125b4e4d
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Data Science mit einer Linux Data Science Virtual Machine in Azure
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie mehrere häufige Data Science-Aufgaben mit der Linux Data Science-VM ausführen. Bei der Linux Data Science Virtual Machine (DSVM) handelt es sich um das Image eines virtuelles Computers, das unter Azure verfügbar ist und mit einer Sammlung von Tools vorinstalliert wird, die häufig für die Datenanalyse und Machine Learning verwendet werden. Die wichtigsten Softwarekomponenten sind im Thema [Bereitstellen der Linux Data Science Virtual Machine](linux-dsvm-intro.md) einzeln aufgeführt. Das VM-Image erleichtert Ihnen den Start, und für den Data Science-Vorgang sind nur wenige Minuten erforderlich, ohne dass die Tools einzeln installiert und konfiguriert werden müssen. Sie können die VM bei Bedarf leicht zentral hochskalieren und beenden, wenn sie nicht verwendet wird. Diese Ressource ist also sowohl flexibel als auch kosteneffizient.
@@ -32,7 +32,8 @@ Bevor Sie eine Linux Data Science Virtual Machine verwenden können, benötigen 
 
 * Ein **Azure-Abonnement**. Wenn Sie noch kein Abonnement besitzen, helfen Ihnen die Informationen unter [Erstellen Sie noch heute Ihr kostenloses Azure-Konto](https://azure.microsoft.com/free/)weiter.
 * Eine [**Linux Data Science-VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informationen zur Bereitstellung dieses virtuellen Computers finden Sie unter [Bereitstellen der Linux Data Science Virtual Machine](linux-dsvm-intro.md).
-* [X2Go](http://wiki.x2go.org/doku.php) auf dem Computer mit geöffneter XFCE-Sitzung. Informationen zur Installation und Konfiguration eines **X2Go-Clients** finden Sie unter [Installieren und Konfigurieren des X2Go-Clients](linux-dsvm-intro.md#installing-and-configuring-x2go-client). 
+* [X2Go](http://wiki.x2go.org/doku.php) auf dem Computer mit geöffneter XFCE-Sitzung. Informationen zur Installation und Konfiguration eines **X2Go-Clients** finden Sie unter [Installieren und Konfigurieren des X2Go-Clients](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
+* Schalten Sie zum reibungsloseren Scrollen auf VMs mit Firefox-Browsern das Flag „gfx.xrender.enabled“ in „about:config“ um. [Weitere Informationen finden Sie hier.](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/) Sie könnten auch *mousewheel.enable_pixel_scrolling* auf „False“ festlegen. [Die entsprechenden Anweisungen finden Sie hier.](https://support.mozilla.org/en-US/questions/981140)
 * Ein **AzureML-Konto**. Melden Sie sich auf der [AzureML-Startseite](https://studio.azureml.net/)für ein neues Konto an, wenn Sie noch kein Konto haben. Als Starthilfe wird ein kostenloser Tarif angeboten.
 
 ## <a name="download-the-spambase-dataset"></a>Herunterladen des Datasets „spambase“

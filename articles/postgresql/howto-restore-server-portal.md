@@ -9,16 +9,16 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/20/2017
-ms.openlocfilehash: 3fbdb7741481bd3620466c3489d3609f9ea6961f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f1ffa20b58c52558e880ed6a0ef4ca674173973
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure-Datenbank für PostgreSQL mit dem Azure-Portal
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL mit dem Azure-Portal
 
 ## <a name="backup-happens-automatically"></a>Automatische Sicherung
-Bei der Verwendung von Azure-Datenbank für PostgreSQL erstellt der Datenbankdienst automatisch alle fünf Minuten eine Sicherung des Diensts. 
+Bei der Verwendung von Azure Database for PostgreSQL erstellt der Datenbankdienst automatisch alle fünf Minuten eine Sicherung des Servers. 
 
 Die Sicherungen sind im Basic-Tarif sieben Tage und im Standard-Tarif 35 Tage lang verfügbar. Weitere Informationen finden Sie im Artikel zu den [Dienstebenen für Azure-Datenbank für PostgreSQL](concepts-service-tiers.md).
 
@@ -31,11 +31,11 @@ Beispiel: Wenn eine Tabelle heute um 12 Uhr versehentlich gelöscht wurde, könn
 
 Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem bestimmten Zeitpunkt wiederhergestellt:
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Suchen Sie den Server für Azure-Datenbank für PostgreSQL. Klicken Sie im Azure-Portal im linken Menü auf **All Resources** (Alle Ressourcen), und geben Sie den Namen ein (z.B. **mypgserver-20170401**), um nach dem vorhandenen Server zu suchen. Klicken Sie auf den Servernamen in den Suchergebnissen. Die Seite **Übersicht** für Ihren Server wird geöffnet und enthält Optionen für die weitere Konfiguration.
+2. Suchen Sie den Server für Azure-Datenbank für PostgreSQL. Klicken Sie im Azure-Portal im linken Menü auf **All Resources** (Alle Ressourcen), und geben Sie den Namen des Servers ein (z.B. **mypgserver-20170401**), um nach dem vorhandenen Server zu suchen. Klicken Sie auf den im Suchergebnis aufgelisteten Servernamen. Die Seite **Übersicht** für Ihren Server wird geöffnet und enthält Optionen für die weitere Konfiguration.
 
    ![Azure-Portal – Suchen nach Ihrem Server](media/postgresql-howto-restore-server-portal/1-locate.png)
 
-3. Klicken Sie oben auf dem Serverübersichtsblatt auf der Symbolleiste auf **Wiederherstellen**. Das Blatt „Wiederherstellen“ wird geöffnet.
+3. Klicken Sie auf der Symbolleiste des Serverübersichtsblatts auf **Wiederherstellen**. Das Blatt „Wiederherstellen“ wird geöffnet.
 
    ![Azure-Datenbank für PostgreSQL – Übersicht – Schaltfläche „Wiederherstellen“](./media/postgresql-howto-restore-server-portal/2_server.png)
 
@@ -44,7 +44,7 @@ Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem bes
    ![Azure-Datenbank für PostgreSQL – Wiederherstellungsinformationen ](./media/postgresql-howto-restore-server-portal/3_restore.png)
   - **Wiederherstellungspunkt**: Wählen Sie einen Zeitpunkt vor der Änderung des Servers aus.
   - **Zielserver**: Geben Sie einen neuen Servernamen für die Wiederherstellung ein.
-  - **Speicherort**: Sie können die Region nicht auswählen. Standardmäßig ist dieser Wert mit dem Quellserver identisch.
+  - **Standort**: Sie können die Region nicht auswählen. Standardmäßig ist dieser Wert mit dem Wert für den Quellserver identisch.
   - **Tarif**: Sie können diesen Wert beim Wiederherstellen eines Servers nicht ändern. Er ist mit dem Wert für den Quellserver identisch. 
 
 5. Klicken Sie auf **OK**, um den Zustand eines Servers zu einem bestimmten Zeitpunkt wiederherzustellen. 

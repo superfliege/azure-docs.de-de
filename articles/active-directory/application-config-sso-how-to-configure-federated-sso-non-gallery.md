@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: da7bc05c6452cde4d0236806f249559f178dd4e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 781d06d2a8234d4cedf546ef059d49b7ece8783d
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog enthaltene Anwendung
 
-Zum Konfigurieren einer Anwendung, die nicht im Katalog enthalten ist, benötigen Sie Azure AD Premium, und die Anwendung muss SAML 2.0 unterstützen. Weitere Informationen zu Azure AD-Versionen finden Sie in der [Preisübersicht für Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
+Wenn Sie einmaliges Anmelden für eine Anwendung konfigurieren möchten, die nicht aus dem Katalog stammt, *ohne Code zu schreiben*, müssen Sie über ein Abonnement oder Azure AD Premium verfügen, und die Anwendung muss SAML 2.0 unterstützen. Weitere Informationen zu Azure AD-Versionen finden Sie in der [Preisübersicht für Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="overview-of-steps-required"></a>Übersicht über die erforderlichen Schritte
-Im Folgenden finden Sie eine allgemeine Übersicht über die erforderlichen Schritte zum Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog aufgeführte (z.B. benutzerdefinierte) Anwendung.
+Im Folgenden finden Sie eine allgemeine Übersicht über die erforderlichen Schritte zum Konfigurieren des einmaligen Anmeldens mit SAML 2.0 im Verbund für eine nicht im Katalog aufgeführte (z.B. benutzerdefinierte) Anwendung.
 
 -   [Konfigurieren der Metadatenwerte für die Anwendung in Azure AD (Anmelde-URL, ID, Antwort-URL)](#_Configuring_single_sign-on)
 

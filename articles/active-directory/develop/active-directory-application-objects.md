@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2017
+ms.date: 10/19/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 53ab4c04901994982b451149c4a82a5b72c9fc82
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b00acc192e868a7c1ade9fc68cf4d3ca04f1a070
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory (Azure AD)
 In einigen Fällen kann der Begriff „Anwendung“ im Kontext von Azure AD falsch verstanden werden. Das Ziel dieses Artikels ist die Veranschaulichung der konzeptuellen und konkreten Aspekte der Azure AD-Anwendungsintegration, gefolgt von einer Erläuterung der Registrierung und Zustimmung zu einer [mehrinstanzenfähigen Anwendung](active-directory-dev-glossary.md#multi-tenant-application).
@@ -34,7 +34,9 @@ Wenn Sie eine Azure AD-Anwendung im [Azure-Portal][AZURE-Portal] registrieren, w
 Eine Azure AD-Anwendung ist durch ein eindeutiges Anwendungsobjekt definiert. Es befindet sich im Azure AD-Mandanten, in dem die Anwendung registriert ist und der als „Heimmandant“ der Anwendung bezeichnet wird. Die [Application-Entität][AAD-Graph-App-Entity] von Azure AD Graph definiert das Schema für die Eigenschaften eines Anwendungsobjekts. 
 
 #### <a name="service-principal-object"></a>Dienstprinzipalobjekt
-Das Dienstprinzipalobjekt definiert die Richtlinie und Berechtigungen für den Einsatz einer Anwendung in einem bestimmten Mandanten und stellt die Basis für einen Sicherheitsprinzipal bereit, der die Anwendung zur Laufzeit repräsentiert. Die [ServicePrincipal-Entität][AAD-Graph-Sp-Entity] von Azure AD Graph definiert das Schema für die Objekteigenschaften eines Dienstprinzipalobjekts. 
+Um auf Ressourcen zugreifen zu können, die von einem Azure AD-Mandanten geschützt werden, muss die Entität, die Zugriff benötigt, durch einen Sicherheitsprinzipal dargestellt werden. Dies gilt für Benutzer (Benutzerprinzipal) und Anwendungen (Dienstprinzipal). Der Sicherheitsprinzipal definiert die Richtlinie für den Zugriff und Berechtigungen für den Benutzer/die Anwendung in diesem Mandanten. Dies aktiviert die Kernfunktionen wie die Authentifizierung des Benutzers/der Anwendung während der Anmeldung und die Autorisierung beim Zugriff auf Ressourcen.
+
+Wenn eine Anwendung die Berechtigung zum Zugriff auf Ressourcen in einem Mandanten erhält (bei der Registrierung oder [Zustimmung](active-directory-dev-glossary.md#consent)), wird ein Dienstprinzipalobjekt erstellt. Die [ServicePrincipal-Entität][AAD-Graph-Sp-Entity] von Azure AD Graph definiert das Schema für die Objekteigenschaften eines Dienstprinzipalobjekts.  
 
 #### <a name="application-and-service-principal-relationship"></a>Beziehung zwischen Anwendung und Dienstprinzipal
 Stellen Sie sich das Anwendungsobjekt als *globale* Darstellung Ihrer Anwendung zur Verwendung über alle Mandanten hinweg und den Dienstprinzipal als *lokale* Darstellung zur Verwendung in einem bestimmten Mandanten vor. Das Anwendungsobjekt fungiert als Vorlage, aus der allgemeine und Standardeigenschaften zur Verwendung im entsprechenden Dienstprinzipal *abgeleitet* werden. Für ein Anwendungsobjekt bestehen daher eine 1:1-Beziehung mit der Softwareanwendung und eine 1:viele-Beziehung mit den entsprechenden Dienstprinzipalobjekten.

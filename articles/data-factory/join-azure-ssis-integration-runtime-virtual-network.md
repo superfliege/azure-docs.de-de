@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: spelluru
-ms.openlocfilehash: 02d9102bfc9b0d8084988609282f2c78b5789e7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8a58f55bd627594145661e1c8d5c1da360cd1e30
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk
 Sie müssen eine Azure-SSIS-Integrationslaufzeit mit einem Azure Virtual Network (VNet) verknüpfen, wenn eine der folgenden Bedingungen zutrifft: 
@@ -26,6 +26,9 @@ Sie müssen eine Azure-SSIS-Integrationslaufzeit mit einem Azure Virtual Network
 - Sie möchten aus SSIS-Paketen, die in einer Azure-SSIS-Integrationslaufzeit ausgeführt werden, eine Verbindung mit lokalen Datenspeichern herstellen.
 
  Mit Azure Data Factory Version 2 (Vorschau) können Sie eine Azure-SSIS-Integrationslaufzeit mit einem klassischen VNet verknüpfen. Derzeit wird ein Azure Resource Manager VNet noch nicht unterstützt. Sie können das Problem jedoch umgehen, wie im folgenden Abschnitt gezeigt. 
+
+ > [!NOTE]
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 (GA) des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.
 
 Wenn SSIS-Pakete nur auf Public Cloud-Datenspeicher zugreifen, müssen Sie die Azure-SSIS-Integrationslaufzeit nicht mit einem VNet verknüpfen. Wenn SSIS-Pakete auf lokale Datenspeicher zugreifen, müssen Sie die Azure-SSIS-Integrationslaufzeit mit einem VNet verknüpfen, das mit dem lokalen Netzwerk verbunden ist. Wenn der SSIS-Katalog in Azure SQL-Datenbank gehostet wird, das nicht im VNet enthalten ist, müssen Sie entsprechende Ports öffnen. Wenn der SSIS-Katalog in einer verwalteten Azure SQL-Instanz gehostet wird, die sich in einem klassischen VNet befindet, können Sie die Azure-SSIS-Integrationslaufzeit mit demselben klassischen VNet oder einem anderen klassischen VNet verknüpfen, das über eine Klasse-zu-klassisch-VNet-Verbindung mit dem VNet verfügt, das die verwaltete Azure SQL-Instanz aufweist. Die folgenden Abschnitte enthalten hierzu weitere Informationen.  
 

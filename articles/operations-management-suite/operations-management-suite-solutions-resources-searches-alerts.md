@@ -1,6 +1,6 @@
 ---
 title: "Gespeicherte Suchen und Warnungen in OMS-Lösungen | Microsoft-Dokumentation"
-description: "Lösungen in OMS enthalten in der Regel gespeicherte Suchen in Log Analytics zum Analysieren der von der Lösung erfassten Daten.  Sie können auch Warnungen zur Benachrichtigung des Benutzers definieren oder als Reaktion auf ein schwerwiegendes Problem automatisch Maßnahmen ergreifen.  Dieser Artikel beschreibt das Definieren von in Log Analytics gespeicherten Suchen und Warnungen in einer ARM-Vorlage, damit sie in Verwaltungslösungen aufgenommen werden können."
+description: "Lösungen in OMS enthalten in der Regel gespeicherte Suchen in Log Analytics zum Analysieren der von der Lösung erfassten Daten.  Sie können auch Warnungen zur Benachrichtigung des Benutzers definieren oder als Reaktion auf ein schwerwiegendes Problem automatisch Maßnahmen ergreifen.  Dieser Artikel beschreibt das Definieren von in Log Analytics gespeicherten Suchen und Warnungen in einer Resource Manager-Vorlage, damit sie in Verwaltungslösungen aufgenommen werden können."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/24/2017
+ms.date: 10/16/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21c42a747a08c5386c65d10190baf0054a7adef8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b2388626dd68ea1911cdfb3d6a84e70f6bf3cc6
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der OMS-Verwaltungslösung (Vorschau)
 
@@ -32,15 +32,30 @@ ms.lasthandoff: 10/11/2017
 > Die Beispiele in diesem Artikel verwenden Parameter und Variablen, die entweder erforderlich sind oder für Verwaltungslösungen gelten und unter [Creating management solutions in Operations Management Suite (OMS) (Erstellen von Verwaltungslösungen in der Operations Management Suite (OMS))](operations-management-suite-solutions-creating.md) beschrieben sind.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird davon ausgegangen, dass Sie schon mit der [Erstellung einer Verwaltungslösung](operations-management-suite-solutions-creating.md) und der Struktur einer [ARM-Vorlage](../resource-group-authoring-templates.md) und Lösungsdatei vertraut sind.
+In diesem Artikel wird davon ausgegangen, dass Sie schon mit der [Erstellung einer Verwaltungslösung](operations-management-suite-solutions-creating.md) und der Struktur einer [Resource Manager-Vorlage](../resource-group-authoring-templates.md) und Lösungsdatei vertraut sind.
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
-Alle Ressourcen in Log Analytics befinden sich in einem [Arbeitsbereich](../log-analytics/log-analytics-manage-access.md).  Wie unter [OMS-Arbeitsbereich und Automation-Konto](operations-management-suite-solutions.md#oms-workspace-and-automation-account) beschrieben, ist der Arbeitsbereich nicht in der Verwaltungslösung enthalten, muss aber vor der Installation der Lösung vorhanden sein.  Ist es nicht verfügbar, schlägt die Installation der Lösung fehl.
+Alle Ressourcen in Log Analytics befinden sich in einem [Arbeitsbereich](../log-analytics/log-analytics-manage-access.md).  Wie unter [OMS-Arbeitsbereich und Automation-Konto](operations-management-suite-solutions.md#oms-workspace-and-automation-account) beschrieben, ist der Arbeitsbereich nicht in der Verwaltungslösung enthalten, muss aber vor der Installation der Lösung vorhanden sein.  Ist er nicht verfügbar, schlägt die Installation der Lösung fehl.
 
 Der Name des Arbeitsbereichs ist im Namen jeder Log Analytics-Ressource enthalten.  Dafür sorgt wie in diesem Beispiel einer savedsearch-Ressource der Parameter **Arbeitsbereich** in der Lösung.
 
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
+
+## <a name="log-analytics-api-version"></a>Log Analytics-API-Version
+Alle in einer Resource Manager-Vorlage definierten Log Analytics-Ressourcen verfügen über die Eigenschaft **apiVersion**, die die Version der API definiert, die von der Ressource verwendet werden soll.  Diese Version unterscheidet sich für Ressourcen, die die [ältere und die aktualisierte Abfragesprache](../log-analytics/log-analytics-log-search-upgrade.md) verwenden.  
+
+ In der folgenden Tabelle werden die Log Analytics-API-Versionen für ältere und aktualisierte Arbeitsbereiche angegeben sowie Beispieabfragen zum Festlegen der jeweiligen Syntax. 
+
+| Arbeitsbereichsversion | API-Version | Beispielabfrage |
+|:---|:---|:---|
+| V1 (Legacy)   | 2015-11-01-preview | Type=Event EventLevelName = Error             |
+| V2 (Upgrade) | 2017-03-15-preview | Event &#124; where EventLevelName == "Error"  |
+
+Beachten Sie folgende Vorlagen, für die Arbeitsbereiche von unterschiedlichen Versionen unterstützt werden.
+
+- Vorlagen, die ältere Abfragesprachen verwenden, können in einem älteren oder aktualisierten Arbeitsbereich installiert werden.  Wenn Sie in einem aktualisierten Arbeitsbereich installiert werden, werden Abfragen während der Ausführung durch den Benutzer in die neue Sprache konvertiert.
+- Vorlagen, die die aktualisierte Abfragesprache verwenden, können nur in aktualisierten Arbeitsbereichen installiert werde.
 
 
 ## <a name="saved-searches"></a>Gespeicherte Suchen
@@ -65,7 +80,7 @@ Ressourcen für [Gespeicherte Suchen in Log Analytics](../log-analytics/log-anal
 
 
 
-Die Eigenschaften einer gespeicherten Suche sind in der folgenden Tabelle beschrieben: 
+Die Eigenschaften einer gespeicherten Suche sind in der folgenden Tabelle beschrieben. 
 
 | Eigenschaft | Beschreibung |
 |:--- |:--- |
@@ -81,8 +96,8 @@ Die Eigenschaften einer gespeicherten Suche sind in der folgenden Tabelle beschr
 
 Warnungsregeln in einer Verwaltungslösung bestehen aus den folgenden drei verschiedenen Ressourcen:
 
-- **Gespeicherte Suche.**  Definiert die Protokollsuche, die ausgeführt wird.  Mehrere Warnungsregeln können gemeinsam eine einzelne gespeicherte Suche verwenden.
-- **Zeitplan.**  Definiert, wie oft die Protokollsuche ausgeführt wird.  Jede Warnungsregel weist nur einen einzigen Zeitplan auf.
+- **Gespeicherte Suche.**  Definiert die Protokollsuche, die ausgeführt wird  Mehrere Warnungsregeln können gemeinsam eine einzelne gespeicherte Suche verwenden.
+- **Zeitplan.**  Definiert, wie oft die Protokollsuche ausgeführt wird  Jede Warnungsregel weist nur einen einzigen Zeitplan auf.
 - **Warnungsaktion.**  Jede Warnregel weist eine Aktionsressource mit dem Typ **Warnung** auf, die die Details der Warnung, etwa die Kriterien dafür, wann ein Warnungsdatensatz erstellt wird, und den Schweregrad der Warnung definiert.  Die Aktionsressource definiert optional eine Antwort per E-Mail und Runbook.
 - **Webhook-Aktion (optional).**  Wenn die Warnungsregel einen Webhook aufruft, ist eine zusätzliche Aktionsressource vom Typ **Webhook** erforderlich.    
 
@@ -213,7 +228,7 @@ Dieser Abschnitt ist optional.  Beziehen Sie diesen Abschnitt mit ein, wenn nach
 
 | Elementname | Erforderlich | Beschreibung |
 |:--|:--|:--|
-| Empfänger | Ja | Durch Kommas getrennte Liste der E-Mail-Adressen, an die eine Benachrichtigung gesendet wird, wenn eine Warnung wie im folgenden Beispiel erstellt wird:<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
+| Empfänger | Ja | Durch Kommas getrennte Liste der E-Mail-Adressen, an die eine Benachrichtigung gesendet wird, wenn eine Warnung wie im folgenden Beispiel erstellt wird.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
 | Betreff | Ja | Die Betreffzeile der E-Mail |
 | Anhang | Nein | Anlagen werden derzeit nicht unterstützt.  Wenn dieses Element enthalten ist, muss es **Keine** lauten. |
 

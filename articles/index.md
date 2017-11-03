@@ -3,11 +3,11 @@ layout: HubPage
 hide_bc: True
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
-ms.openlocfilehash: 9752a75dc20ec7f92b87ddb50ed74208982bd92e
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 5ca26e7fc6230140ee424e35a8d174613a4a93f4
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/27/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -503,6 +503,12 @@ ms.lasthandoff: 10/24/2017
                                             <a href="/azure/germany/">
                                                 <img src="media/index/azure-germany.svg" alt="" />
                                                 <p>Azure Deutschland</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/china/">
+                                                <img src="media/index/azure-germany.svg" alt="" />
+                                                <p>Microsoft Azure China 21Vianet</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1209,7 +1215,13 @@ ms.lasthandoff: 10/24/2017
                                         <li>
                                             <a href="/azure/azure-resource-manager/">
                                                 <img src="media/index/azuredefaultblack.svg" alt="" />
-                                                <p>Azure-Ressourcen-Manager</p>
+                                                <p>Azure Resource Manager</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/managed-applications">
+                                                <img src="media/index/i_managed-application.svg" alt="" />
+                                                <p>Verwaltete Anwendungen</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -3629,18 +3641,18 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/azure-resource-manager/">
+                                <a href="/azure/managed-applications">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/azuredefaultblack.svg" alt="" />
+                                                        <img src="media/index/i_managed-application.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure-Ressourcen-Manager</h3>
-                                                    <p>Bereitstellen und Verwalten von Azure-Ressourcen</p>
+                                                    <h3>Verwaltete Anwendungen</h3>
+                                                    <p>Verwalten von bereitgestellten Lösungen für Ihre Kunden</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3725,6 +3737,25 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 <div class="cardText">
                                                     <h3>Microsoft Azure Deutschland</h3>
                                                     <p>Erstellen und Hosten von Anwendungen in Übereinstimmung mit deutschen Bestimmungen sowie wichtige internationale Standards mit zusätzlicher Kontrolle durch einen Datentreuhänder</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/china/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-germany.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Microsoft Azure China 21Vianet</h3>
+                                                    <p>Erstellen und Hosten von Anwendungen, die den Richtlinien und Datenverarbeitungsvorschriften der Regierung in China entsprechen</p>
                                                 </div>
                                             </div>
                                         </div>

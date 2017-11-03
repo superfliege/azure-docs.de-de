@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1aac856d154724e3dcd282e2d34c27571cd1cb02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e8c2248c064a7ec934dd8ef3e926f3325a05395
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit (Vorschauversion)
-Dieser Artikel enthält hilfreiche Informationen zum Konfigurieren einer Lösung für hohe Verfügbarkeit und Skalierbarkeit mit dem Datenverwaltungsgateway.    
+Dieser Artikel enthält hilfreiche Informationen zum Konfigurieren einer Lösung für Hochverfügbarkeit und Skalierbarkeit mit dem Datenverwaltungsgateway/Integration.    
 
 > [!NOTE]
-> In diesem Artikel wird davon ausgegangen, dass Sie bereits mit den Grundlagen des Datenverwaltungsgateways vertraut sind. Falls nicht, helfen Ihnen die Informationen unter [Datenverwaltungsgateway](data-factory-data-management-gateway.md) weiter.
+> In diesem Artikel wird davon ausgegangen, dass Sie bereits mit den Grundlagen von Integration Runtime (ehemals Datenverwaltungsgateway) vertraut sind. Falls nicht, helfen Ihnen die Informationen unter [Datenverwaltungsgateway](data-factory-data-management-gateway.md) weiter.
 
 >**Dieses Vorschaufeature wird offiziell in Datenverwaltungsgateway Version 2.12.xxxx.x und höher unterstützt**. Stellen Sie sicher, dass Sie Version 2.12.xxxx.x oder höher verwenden. Laden Sie die aktuelle Version von Datenverwaltungsgateway [hier](https://www.microsoft.com/download/details.aspx?id=39717) herunter.
 
@@ -155,14 +155,21 @@ Sie können ein vorhandenes Gateway aktualisieren, um das Feature für hohe Verf
 - Fügen Sie mindestens zwei Knoten hinzu, um eine hohe Verfügbarkeit sicherzustellen.  
 
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL-Zertifikatanforderungen
-Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schützen der Kommunikation zwischen Gatewayknoten verwendet wird:
+Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schützen der Kommunikation zwischen Integration Runtime-Knoten verwendet wird:
 
-- Das Zertifikat muss ein öffentlich vertrauenswürdiges Zertifikat vom Typ „X509 v3“ sein.
-- Alle Gatewayknoten müssen dieses Zertifikat als vertrauenswürdig ansehen. 
-- Wir empfehlen Ihnen die Verwendung von Zertifikaten, die von einer öffentlichen Zertifizierungsstelle (Drittanbieter) ausgestellt werden.
+- Das Zertifikat muss ein öffentlich vertrauenswürdiges Zertifikat vom Typ „X509 v3“ sein. Wir empfehlen Ihnen die Verwendung von Zertifikaten, die von einer öffentlichen Zertifizierungsstelle (Drittanbieter) ausgestellt werden.
+- Jeder Integration Runtime-Knoten muss diesem Zertifikat und dem Clientcomputer, der die Anwendung für die Anmeldeinformationsverwaltung ausführt, vertrauen. 
+> [!NOTE]
+> Die Anwendung für die Anmeldeinformationsverwaltung wird beim sicheren Festlegen von Anmeldeinformationen über den Kopier-Assistenten/das Azure-Portal verwendet. Dies kann auf jedem Computer im gleichen Netzwerk wie der lokale/private Datenspeicher ausgelöst werden.
+- Platzhalterzertifikate werden unterstützt. Wenn der FQDN **node1.domain.contoso.com** lautet, können Sie ***.domain.contoso.com** als Antragstellernamen des Zertifikats verwenden.
+- SAN-Zertifikate sind nicht empfehlenswert, da nur das letzte Element des alternativen Antragstellernamens verwendet wird und alle anderen aufgrund von aktuellen Einschränkungen ignoriert werden. Beispiel: Wenn Sie ein SAN-Zertifikat mit den SANs **node1.domain.contoso.com** und **node2.domain.contoso.com** haben, können Sie dieses Zertifikat nur auf dem Computer mit dem FQDN **node2.domain.contoso.com** verwenden.
 - Unterstützt alle Schlüsselgrößen, die von Windows Server 2012 R2 für SSL-Zertifikate unterstützt werden.
-- Unterstützt keine Zertifikate, die CNG-Schlüssel verwenden.
-- Platzhalterzertifikate werden unterstützt. 
+- Zertifikate mit CNG-Schlüsseln werden nicht unterstützt. Unterstützt keine Zertifikate, die CNG-Schlüssel verwenden.
+
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>Häufig gestellte Frage: Wann sollte ich diese Verschlüsselung nicht aktivieren?
+Das Aktivieren der Verschlüsselung kann einen gewissen Aufwand für Ihre Infrastruktur (die das öffentliche Zertifikat besitzt) bedeuten, daher sollten Sie in den folgenden Fällen auf das Aktivieren der Verschlüsselung verzichten:
+- Wenn Integration Runtime in einem vertrauenswürdigen Netzwerk oder einem Netzwerk mit transparenter Verschlüsselung wie IP/SEC ausgeführt wird. Da diese Kanalkommunikation auf Ihr vertrauenswürdiges Netzwerk beschränkt ist, ist eventuell keine zusätzliche Verschlüsselung erforderlich.
+- Wenn Integration Runtime nicht in einer Produktionsumgebung ausgeführt wird. Dies hilft bei der Reduzierung des Aufwands für TLS/SSL-Zertifikate.
 
 
 ## <a name="monitor-a-multi-node-gateway"></a>Überwachen eines Gateways mit mehreren Knoten

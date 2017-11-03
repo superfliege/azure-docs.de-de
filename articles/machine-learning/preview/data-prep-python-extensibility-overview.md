@@ -1,5 +1,5 @@
 ---
-title: Verwenden der Python-Erweiterbarkeit mit Azure Machine Learning Data Preparation | Microsoft-Dokumentation
+title: Verwenden der Python-Erweiterbarkeit mit der Azure Machine Learning-Datenvorbereitung | Microsoft Docs
 description: "Dieses Dokument bietet eine Übersicht und einige detaillierte Beispiele, wie Sie Python-Code verwenden, um die Funktionen der Datenvorbereitung zu erweitern."
 services: machine-learning
 author: euangMS
@@ -12,36 +12,39 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 4e1935a7830b8174796ac12792fbbc0ed110d081
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53771c407fedc53f27a38ec3fe9b381d6b8c0dad
+ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
-# <a name="data-prep-python-extensions"></a>Python-Erweiterungen für die Datenvorbereitung
-Die Datenvorbereitung enthält Erweiterbarkeit auf mehreren Ebenen, um Funktionslücken zwischen integrierten Funktionen zu füllen. In diesem Dokument wird die Erweiterbarkeit mithilfe des Python-Skripts erläutert. 
+# <a name="data-preparations-python-extensions"></a>Python-Erweiterungen für die Datenvorbereitung
+Die Azure Machine Learning-Datenvorbereitung enthält Erweiterbarkeit auf mehreren Ebenen, um Funktionslücken zwischen integrierten Funktionen zu füllen. In diesem Dokument wird die Erweiterbarkeit mithilfe des Python-Skripts erläutert. 
 
 ## <a name="custom-code-steps"></a>Benutzerdefinierte Codeschritte 
-Die Datenvorbereitung verfügt über folgende benutzerdefinierte Schritte, mit denen Sie Benutzercode schreiben können: 
-1. Dateileser*
-2. Writer*
-3. Spalte hinzufügen
-4. Erweiterter Filter
-5. Datenfluss transformieren
-6. Partition transformieren
+Die Datenvorbereitung verfügt über folgende benutzerdefinierte Schritte, mit denen Sie Benutzercode schreiben können:
 
-*Diese Schritte werden aktuell nicht in einer Spark-Ausführung unterstützt. 
+* Dateileser*
+* Writer*
+* Spalte hinzufügen
+* Erweiterter Filter
+* Datenfluss transformieren
+* Partition transformieren
+
+*Diese Schritte werden aktuell nicht in einer Spark-Ausführung unterstützt.
 
 ## <a name="code-block-types"></a>Codeblocktypen 
 Wir unterstützen für jeden dieser Schritte zwei Codeblocktypen. Zum einen unterstützen wir einen bloßen Python-Ausdruck, der unverändert ausgeführt wird. Und zum anderen unterstützen wir ein Python-Modul, in dem wir eine bestimmte Funktion mit einer bekannten Signatur in dem von Ihnen angegebenen Code aufrufen.
 
-Sie können z.B. eine neue Spalte hinzufügen, die das Protokoll einer anderen Spalte durch die folgenden zwei Arten berechnet: Ausdruck: 
+Sie können z.B. eine neue Spalte hinzufügen, die das Protokoll einer anderen Spalte auf die folgenden zwei Arten berechnet:
+
+Ausdruck 
 
 ```python    
     math.log(row["Score"])
 ```
 
-Modul: 
+Modul 
     
 ```python
 def newvalue(row): 
@@ -49,12 +52,14 @@ def newvalue(row):
 ```
 
 
-Bei der Transformation „Spalte hinzufügen“ im Modulmodus wird davon ausgegangen, dass eine Funktion mit dem Namen `newvalue` gefunden wird, die eine Zeilenvariable akzeptiert und den Wert für die Spalte zurückgibt. Dieses Modul kann eine beliebige Anzahl von Python-Code mit anderen Funktionen, Importen usw. enthalten. 
+Bei der Transformation „Spalte hinzufügen“ im Modulmodus wird davon ausgegangen, dass eine Funktion mit dem Namen `newvalue` gefunden wird, die eine Zeilenvariable akzeptiert und den Wert für die Spalte zurückgibt. Dieses Modul kann eine beliebige Anzahl von Python-Code mit anderen Funktionen, Importen usw. enthalten.
 
-Genauer Informationen zu jedem Erweiterungspunkt werden in den folgenden Abschnitten diskutiert: 
+Die Details zu den einzelnen Erweiterungspunkten werden in den folgenden Abschnitten erläutert. 
 
 ## <a name="imports"></a>Importe 
-Wenn Sie den Ausdrucksblocktyp verwenden, können Sie immer noch Importanweisungen zu Ihrem Code hinzufügen, aber sie müssen alle in den oberen Zeilen Ihres Codes gruppiert werden. Richtig: 
+Wenn Sie den Ausdrucksblocktyp verwenden, können Sie Ihrem Code noch immer **import**-Anweisungen hinzufügen. Diese müssen alle in der oberen Zeilen Ihres Codes gruppiert werden.
+
+Richtig 
 
 ```python
 import math 
@@ -63,7 +68,7 @@ math.log(row["Score"])
 ```
  
 
-Fehler  
+Falsch  
 
 ```python
 import math  
@@ -72,7 +77,7 @@ import numpy
 ```
  
  
-Wenn Sie den Modulblocktyp verwenden, können Sie bei der Verwendung der Importanweisung den normalen Python-Regeln folgen. 
+Wenn Sie den Modulblocktyp verwenden, können Sie bei der Verwendung der **import**-Anweisung den normalen Python-Regeln folgen. 
 
 ## <a name="default-imports"></a>Standardimporte
 Die folgenden Importe sind immer enthalten und in Ihrem Code verwendbar. Sie müssen diese nicht erneut importieren. 
@@ -88,13 +93,13 @@ import scipy as sp
 ```
   
 
-## <a name="installing-new-packages"></a>Installieren neuer Pakete
-Zur Verwendung eines Pakets, dass nicht standardmäßig installiert ist, müssen Sie es zunächst in den Umgebungen installieren, welche die Datenvorbereitung verwenden. Diese Installation muss sowohl auf Ihrem lokalen Computer als auch in allen Computezielen durchgeführt werden, in denen Sie ausführen möchten.
+## <a name="install-new-packages"></a>Installieren neuer Pakete
+Wenn Sie ein Paket verwenden möchten, das nicht standardmäßig installiert ist, müssen Sie es zunächst in den Umgebungen installieren, die die Datenvorbereitung verwenden. Diese Installation muss auf Ihrem lokalen Computer und in allen Computezielen erfolgen, in denen die Ausführung erfolgen soll.
 
 Sie müssen die Datei „conda_dependencies.yml“ im Ordner „aml_config“ im Stamm Ihres Projekts ändern, um Ihre Pakete in einem Computeziel zu installieren.
 
 ### <a name="windows"></a>Windows 
-Sie finden den Speicherort unter Windows, indem Sie nach der App-spezifischen Installation von Python und dem zugehörigen Skriptverzeichnis suchen. Der Standardspeicherort lautet:  
+Sie finden den Speicherort unter Windows, indem Sie nach der App-spezifischen Installation von Python und dem zugehörigen Skriptverzeichnis suchen. Dies ist der Standardspeicherort:  
 
 `C:\Users\<user>\AppData\Local\AmlWorkbench\Python\Scripts.` 
 
@@ -107,7 +112,7 @@ oder
 `pip install <libraryname> `
 
 ### <a name="mac"></a>Mac 
-Sie finden den Speicherort unter Mac, indem Sie nach der App-spezifischen Installation von Python und dem zugehörigen Skriptverzeichnis suchen. Der Standardspeicherort lautet: 
+Sie finden den Speicherort auf einem Mac, indem Sie nach der App-spezifischen Installation von Python und dem zugehörigen Skriptverzeichnis suchen. Dies ist der Standardspeicherort: 
 
 `/Users/<user>/Library/Caches/AmlWorkbench>/Python/bin` 
 
@@ -120,9 +125,9 @@ oder
 `./pip install <libraryname>`
 
 ## <a name="column-data"></a>Spaltendaten 
-Auf Spaltendaten kann aus einer Zeile zugegriffen werden, indem die Punktnotation oder die Schlüssel-Wert-Notation verwendet wird. Auf Spaltennamen, die Leerzeichen oder Sonderzeichen enthalten, kann nicht mithilfe der Punktnotation zugegriffen werden. Die `row`-Variable sollte immer in beiden Modi der Python-Erweiterungen (Modul und Ausdruck) definiert sein. 
+Auf Spaltendaten kann aus einer Zeile zugegriffen werden, indem die Punktnotation oder die Schlüssel-Wert-Notation verwendet wird. Auf Spaltennamen, die Leerzeichen oder Sonderzeichen enthalten, kann nicht mithilfe der Punktnotation zugegriffen werden. Die Variable `row` sollte immer in beiden Modi der Python-Erweiterungen (Modul und Ausdruck) definiert sein. 
 
-Beispiele: 
+Beispiele 
 
 ```python
     row.ColumnA + row.ColumnB  
@@ -131,25 +136,26 @@ Beispiele:
 
 ## <a name="file-reader"></a>Dateileser 
 ### <a name="purpose"></a>Zweck 
-Mit diesem Erweiterungspunkt können Sie den Prozess des Lesens einer Datei in einen Datenfluss vollständig steuern. Das System ruft Ihren Code auf und übergibt die Liste der zu verarbeitenden Dateien, und Ihr Code muss einen Pandas-Datenrahmen erstellen und zurückgeben. 
+Mit dem Dateileser-Erweiterungspunkt können Sie den Prozess des Lesens einer Datei in einen Datenfluss vollständig steuern. Das System ruft Ihren Code auf und übergibt die Liste der Dateien, die verarbeitet werden sollen. Ihr Code muss einen Pandas-Datenrahmen erstellen und zurückgeben. 
 
 >[!NOTE]
->Dieser Erweiterungspunkt funktioniert nicht in Spark. 
+>Dieser Erweiterungspunkt funktioniert in Spark nicht. 
 
 
 ### <a name="how-to-use"></a>Verwendung 
-Sie greifen über den Assistenten der offenen Datenquelle auf diesen Erweiterungspunkt zu. Wählen Sie auf der ersten Seite die Datei und anschließend den Dateispeicherort aus. Öffnen Sie auf der Seite „Auswählen der Dateiparameter“ aus der Dropdownliste den Dateityp, und wählen Sie „Benutzerdefinierte Datei (Skript)“ aus. 
+Sie greifen über den Assistenten zum **Öffnen der Datenquelle** auf diesen Erweiterungspunkt zu. Wählen Sie **Datei**  auf der ersten Seite und anschließend den Dateispeicherort aus. Wählen Sie auf der Seite **Dateiparameter auswählen** in der Dropdownliste **Dateityp** die Option **Benutzerdefinierte Datei (Skript)** aus. 
 
-Ihrem Code wird ein Pandas-Datenrahmen mit dem Namen „df“ gegeben, der Informationen über die Dateien enthält, die Sie lesen müssen. Wenn Sie ein Verzeichnis mit mehreren Dateien öffnen, enthält der Datenrahmen mehr als eine Zeile.  
+Ihr Code erhält einen Pandas-Datenrahmen mit dem Namen „df“, der Informationen zu den Dateien enthält, die Sie lesen müssen. Wenn Sie ein Verzeichnis mit mehreren Dateien öffnen, enthält der Datenrahmen mehrere Zeilen.  
 
-Dieser Datenrahmen verfügt über die folgenden Spalten: 
-- Path: Die zu lesende Datei
-- PathHint: Der Speicherort der Datei Werte: „Local“, „AzureBlobStorage“, „AzureDataLakeStorage“
-- AuthenticationType: Der Typ der Authentifizierung, der für den Zugriff auf die Datei verwendet wird. Werte: „None“, „SasToken“, „OAuthToken“
-- AuthenticationValue: Enthält „Npne“ oder das Token, welches verwendet werden soll
+Dieser Datenrahmen verfügt über die folgenden Spalten:
+
+- „Path“: Die zu lesende Datei.
+- „PathHint“: Der Speicherort der Datei. Werte: „Local“, „AzureBlobStorage“ und „AzureDataLakeStorage“.
+- „AuthenticationType“: Der Typ der Authentifizierung, der für den Zugriff auf die Datei verwendet wird. Werte: „None“, „SasToken“ und „OAuthToken“.
+- „AuthenticationValue“: Enthält „None“ oder das zu verwendende Token.
 
 ### <a name="syntax"></a>Syntax 
-Ausdruck: 
+Ausdruck 
 
 ```python
     paths = df['Path'].tolist()  
@@ -157,7 +163,7 @@ Ausdruck:
 ```
 
 
-Modul:  
+Modul  
 ```python
 PathHint = Local  
 def read(df):  
@@ -169,23 +175,23 @@ def read(df):
 
 ## <a name="writer"></a>Writer 
 ### <a name="purpose"></a>Zweck 
-Mit dem Writer-Erweiterungspunkt können Sie den Prozess des Schreibens von Daten aus einem Datenfluss vollständig steuern. Das System ruft Ihren Code auf und übergibt einen Datenrahmen, und Ihr Code kann diesen Datenrahmen verwenden, um Daten nach Ihren Bedürfnissen zu schreiben. 
+Mit dem Writer-Erweiterungspunkt können Sie den Prozess des Schreibens von Daten aus einem Datenfluss vollständig steuern. Das System ruft Ihren Code ab und übergibt einen Datenrahmen. Ihr Code kann den Datenrahmen zum beliebigen Schreiben von Daten verwenden. 
 
 >[!NOTE]
->Dieser Writer-Erweiterungspunkt funktioniert nicht in Spark. 
+>Der Writer-Erweiterungspunkt funktioniert in Spark nicht.
 
 
 ### <a name="how-to-use"></a>Verwendung 
-Sie können diesen Erweiterungspunkt mithilfe des Blocks „Schreibdatenfluss (Skript)“ hinzufügen. Er ist im Transformationsmenü der obersten Ebene verfügbar. 
+Sie können diesen Erweiterungspunkt mithilfe des Blocks „Datenfluss schreiben (Skript)“ hinzufügen. Er ist im Menü **Transformationen** der obersten Ebene verfügbar.
 
 ### <a name="syntax"></a>Syntax 
-Ausdruck: 
+Ausdruck
 
 ```python
     df.to_csv('c:\\temp\\output.csv')
 ```
 
-Modul:
+Modul
 
 ```python
 def write(df):  
@@ -194,23 +200,23 @@ def write(df):
 ```
  
  
-Dieser benutzerdefinierte Schreibblock kann mitten in einer Liste von Schritten vorhanden sein. Wenn Sie also ein Modul verwenden, muss Ihre Schreibfunktion den Datenrahmen zurückgeben, der als Eingabe für den folgenden Schritt gilt. 
+Dieser benutzerdefinierte Schreibblock kann in der Mitte einer Liste von Schritten vorhanden sein. Wenn Sie ein Modul verwenden, muss die write-Funktion den Datenrahmen zurückgeben, der die Eingabe für den folgenden Schritt darstellt. 
 
-## <a name="add-column"></a>Hinzufügen einer Spalte 
+## <a name="add-column"></a>Spalte hinzufügen 
 ### <a name="purpose"></a>Zweck
-Mit diesem Erweiterungspunkt können Sie einen Python-Code schreiben, um eine neue Spalte zu berechnen. Der von Ihnen geschriebene Code kann auf die ganze Zeile zugreifen. Er muss einen neuen Spaltenwert für jede Zeile zurückgeben. 
+Mit dem Erweiterungspunkt „Spalte hinzufügen“ können Sie Python-Code schreiben, der eine neue Spalte berechnet. Der von Ihnen geschriebene Code kann auf die ganze Zeile zugreifen. Er muss einen neuen Spaltenwert für jede Zeile zurückgeben. 
 
 ### <a name="how-to-use"></a>Verwendung
-Sie können diesen Erweiterungspunkt mithilfe des Blocks „Spalte hinzufügen (Skript)“ hinzufügen. Er ist im Transformationsmenü der obersten Ebene sowie im Spaltenkontextmenü verfügbar. 
+Sie können diesen Erweiterungspunkt mithilfe des Blocks „Spalte hinzufügen (Skript)“ hinzufügen. Er ist im Menü **Transformationen** der obersten Ebene sowie im Kontextmenü **Spalte** verfügbar. 
 
 ### <a name="syntax"></a>Syntax
-Ausdruck: 
+Ausdruck
 
 ```python
     math.log(row["Score"])
 ```
 
-Modul: 
+Modul 
 
 ```python
 def newvalue(row):  
@@ -220,20 +226,20 @@ def newvalue(row):
 
 ## <a name="advanced-filter"></a>Erweiterter Filter
 ### <a name="purpose"></a>Zweck 
-Mit diesem Erweiterungspunkt können Sie einen benutzerdefinierten Filter schreiben. Sie haben Zugriff auf die gesamte Zeile, und Ihr Code muss TRUE (einschließlich der Zeile) oder FALSE (ausschließlich der Zeile) zurückgeben. 
+Mit dem Erweiterungspunkt „Erweiterter Filter“ können Sie einen benutzerdefinierten Filter schreiben. Sie besitzen Zugriff auf die gesamte Zeile, und Ihr Code muss TRUE (Einschließen der Zeile) oder FALSE (Ausschließen der Zeile) zurückgeben. 
 
 ### <a name="how-to-use"></a>Verwendung
-Sie können diesen Erweiterungspunkt mithilfe des Blocks „Erweiterter Filter (Skript)“ hinzufügen. Er ist im Transformationsmenü der obersten Ebene verfügbar. 
+Sie können diesen Erweiterungspunkt mithilfe des Blocks „Erweiterter Filter (Skript)“ hinzufügen. Er ist im Menü **Transformationen** der obersten Ebene verfügbar. 
 
 ### <a name="syntax"></a>Syntax
 
-Ausdruck: 
+Ausdruck
 
 ```python
     row["Score"] > 95
 ```
 
-Modul:  
+Modul  
 
 ```python
 def includerow(row):  
@@ -241,20 +247,20 @@ def includerow(row):
 ```
  
 
-## <a name="transform-dataflow"></a>Transformieren des Datenflusses
+## <a name="transform-dataflow"></a>Datenfluss transformieren
 ### <a name="purpose"></a>Zweck 
-Mit dem Erweiterungspunkt können Sie den Datenfluss vollständig transformieren. Sie haben Zugriff auf einen Pandas-Datenrahmen, der alle Spalten und Zeilen enthält, die Sie verarbeiten, und Ihr Code muss einen Pandas-Datenrahmen mit den neuen Daten zurückgeben. 
+Mit dem Erweiterungspunkt „Datenfluss transformieren“ können Sie den Datenfluss vollständig transformieren. Sie besitzen Zugriff auf einen Pandas-Datenrahmen, der alle Spalten und Zeilen enthält, die Sie verarbeiten. Ihr Code muss einen Pandas-Datenrahmen mit den neuen Daten zurückgeben. 
 
 >[!NOTE]
->In Python müssen alle Daten in einen Arbeitsspeicher in einem Pandas-Datenrahmen geladen werden, wenn diese Erweiterung verwendet wird. 
-
-In Spark werden alle Daten in einem einzelnen Workerknoten gesammelt. Wenn die Daten sehr groß sind, kann dies dazu führen, dass ein Worker nicht genügend Arbeitsspeicher hat. Verwenden Sie dies mit Bedacht.
+>In Python müssen alle Daten in einem Pandas-Datenrahmen in den Arbeitsspeicher geladen werden, wenn diese Erweiterung verwendet wird. 
+>
+>In Spark werden alle Daten in einem einzelnen Workerknoten gesammelt. Wenn die Daten sehr groß sind, kann es vorkommen, dass ein Worker nicht über genügend Arbeitsspeicher verfügt. Verwenden Sie dies mit Bedacht.
 
 ### <a name="how-to-use"></a>Verwendung 
-Sie können diesen Erweiterungspunkt mithilfe des Blocks „Datenfluss transformieren (Skript)“ hinzufügen. Er ist im Transformationsmenü der obersten Ebene verfügbar. 
+Sie können diesen Erweiterungspunkt mithilfe des Blocks „Datenfluss transformieren (Skript)“ hinzufügen. Er ist im Menü **Transformationen** der obersten Ebene verfügbar. 
 ### <a name="syntax"></a>Syntax 
 
-Ausdruck: 
+Ausdruck
 
 ```python
     df['index-column'] = range(1, len(df) + 1)  
@@ -262,7 +268,7 @@ Ausdruck:
 ```
  
 
-Modul: 
+Modul 
 
 ```python
 def transform(df):  
@@ -272,20 +278,20 @@ def transform(df):
 ```
   
 
-## <a name="transform-partition"></a>Transformieren der Partition  
+## <a name="transform-partition"></a>Partition transformieren  
 ### <a name="purpose"></a>Zweck 
-Mit diesem Erweiterungspunkt können Sie eine Partition des Datenflusses transformieren. Sie haben Zugriff auf einen Pandas-Datenrahmen, der alle Spalten und Zeilen für diese Partition enthält, und Ihr Code muss einen Pandas-Datenrahmen mit den neuen Daten zurückgeben. 
+Mit dem Erweiterungspunkt „Partition transformieren“ können Sie eine Partition des Datenflusses transformieren. Sie besitzen Zugriff auf einen Pandas-Datenrahmen, der alle Spalten und Zeilen für die betreffende Partition enthält. Ihr Code muss einen Pandas-Datenrahmen mit den neuen Daten zurückgeben. 
 
 >[!NOTE]
->Abhängig von der Größe Ihrer Daten erhalten Sie in Python möglicherweise eine einzelne Partition oder mehrere Partitionen. In Spark arbeiten Sie mit einem Datenrahmen, der die Daten für eine Partition in einem vorhandenen Workerknoten enthält. Sie können in beiden Fällen nicht davon ausgehen, dass Sie Zugriff auf das komplette Dataset haben. 
+>Abhängig von der Größe Ihrer Daten erhalten Sie in Python möglicherweise eine einzelne Partition oder mehrere Partitionen. In Spark arbeiten Sie mit einem Datenrahmen, der die Daten für eine Partition auf einem vorhandenen Workerknoten enthält. Sie können in beiden Fällen nicht davon ausgehen, dass Sie Zugriff auf das gesamte Dataset besitzen. 
 
 
 ### <a name="how-to-use"></a>Verwendung
-Sie können diesen Erweiterungspunkt mithilfe des Blocks „Partition transformieren (Skript)“ hinzufügen. Er ist im Transformationsmenü der obersten Ebene verfügbar. 
+Sie können diesen Erweiterungspunkt mithilfe des Blocks „Partition transformieren (Skript)“ hinzufügen. Er ist im Menü **Transformationen** der obersten Ebene verfügbar. 
 
 ### <a name="syntax"></a>Syntax 
 
-Ausdruck: 
+Ausdruck 
 
 ```python
     df['partition-id'] = index  
@@ -294,7 +300,7 @@ Ausdruck:
 ```
  
 
-Modul: 
+Modul 
 
 ```python
 def transform(df, index):
@@ -307,18 +313,18 @@ def transform(df, index):
 
 ## <a name="datapreperror"></a>DataPrepError  
 ### <a name="error-values"></a>Fehlerwerte  
-In der Datenvorbereitung ist das Konzept der Fehlerwerte vorhanden. Deren Erstellung und Existenzgrund wird hier beschrieben: <link to error values doc> 
+Die Datenvorbereitung verwendet ein Konzept, das als „Fehlerwerte“ bezeichnet wird. 
 
-Im benutzerdefinierten Python-Code können Fehlerwerte auftreten. Sie sind Instanzen einer Python-Klasse mit dem Namen `DataPrepError`. Diese Klasse umschließt eine Python-Ausnahme und besitzt einige Eigenschaften, die Informationen über den Fehler, der bei der Verarbeitung des ursprünglichen Werts aufgetreten ist, und den ursprünglichen Wert enthalten. 
+In benutzerdefiniertem Python-Code können Fehlerwerte auftreten. Sie sind Instanzen einer Python-Klasse mit dem Namen `DataPrepError`. Diese Klasse dient als Wrapper für eine Python-Ausnahme und weist mehrere Eigenschaften auf. Die Eigenschaften enthalten Informationen zum Fehler, der bei der Verarbeitung des ursprünglichen Werts aufgetreten ist, sowie zum ursprünglichen Wert. 
 
 
-### <a name="datapreperror-class-definition"></a>Klassendefinition von DataPrepError
+### <a name="datapreperror-class-definition"></a>DataPrepError-Klassendefinition
 ```python 
 class DataPrepError(Exception): 
     def __bool__(self): 
         return False 
 ``` 
-Die Erstellung von DataPrepError im Python-Framework der Datenvorbereitung sieht allgemein folgendermaßen aus: 
+Die Erstellung von „DataPrepError“ im Python-Framework der Datenvorbereitung sieht in der Regel folgendermaßen aus: 
 ```python 
 DataPrepError({ 
    'message':'Cannot convert to numeric value', 
@@ -328,10 +334,10 @@ DataPrepError({
 }) 
 ``` 
 #### <a name="how-to-use"></a>Verwendung 
-Mithilfe der zuvor erwähnten Erstellungsmethode kann Python in einem Erweiterungspunkt ausgeführt werden, um DataPrepErrors als Rückgabewerte zu generieren. Es ist sehr viel wahrscheinlicher, dass DataPrepErrors auftreten, wenn Daten in einem Erweiterungspunkt verarbeitet werden. An diesem Punkt muss der benutzerdefinierte Python-Code DataPrepError als einen gültigen Datentyp behandeln. 
+Mithilfe der zuvor erwähnten Erstellungsmethode kann Python in einem Erweiterungspunkt ausgeführt werden, um „DataPrepErrors“ als Rückgabewerte zu generieren. Es ist sehr viel wahrscheinlicher, dass „DataPrepErrors“ auftreten, wenn Daten an einem Erweiterungspunkt verarbeitet werden. An diesem Punkt muss der benutzerdefinierte Python-Code „DataPrepError“ als einen gültigen Datentyp behandeln.
 
 #### <a name="syntax"></a>Syntax 
-Ausdruck:  
+Ausdruck 
 ```python 
     if (isinstance(row["Score"], DataPrepError)): 
         row["Score"].originalValue 
@@ -344,7 +350,7 @@ Ausdruck:
     else: 
         row["Score"] 
 ``` 
-Modul:  
+Modul 
 ```python 
 def newvalue(row): 
     if (isinstance(row["Score"], DataPrepError)): 

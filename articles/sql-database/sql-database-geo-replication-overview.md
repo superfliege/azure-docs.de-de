@@ -1,6 +1,6 @@
 ---
 title: "Failovergruppen und aktive Georeplikation – Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Gruppen für automatisches Failover mit aktiver Georeplikation ermöglichen Ihnen die Einrichtung von vier Replikaten Ihrer Datenbank in einem beliebigen Azure-Rechenzentrum und automatisches Failover bei einem Ausfall."
+description: "Verwenden von automatischen Failovergruppen mit aktiver Georeplikation und Aktivieren von automatischem Failover bei Ausfällen"
 services: sql-database
 documentationcenter: na
 author: anosov1960
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 10/11/2017
 ms.author: sashan
-ms.openlocfilehash: 0725d5747ab343dcf99ad8f2dc0e47d7304c9f1e
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 0b424e2b260ec527f33cdbfe49d1d981b14edfda
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Übersicht: Failovergruppen und aktive Georeplikation
 Mit der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Datenbanken am gleichen oder an verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen für Abfragen und Failover zur Verfügung, wenn ein Rechenzentrum ausgefallen oder keine Verbindung mit der primären Datenbank möglich ist. Das Failover muss durch die Anwendung des Benutzers manuell eingeleitet werden. Nach einem Failover hat die neue primäre Datenbank einen anderen Verbindungsendpunkt. 
@@ -65,7 +65,7 @@ Das Feature der aktiven Georeplikation bietet die folgenden wichtigen Möglichke
 * **Lesbare sekundäre Datenbanken:** Eine Anwendung kann für schreibgeschützte Vorgänge auf eine sekundäre Datenbank zugreifen, indem sie die Sicherheitsprinzipale für den Zugriff auf die primäre Datenbank oder andere Sicherheitsprinzipale verwendet. Die sekundären Datenbanken werden im Momentaufnahme-Isolationsmodus betrieben. Auf diese Weise wird sichergestellt, dass die Replikation von Aktualisierungen der primären Datenbank (Protokollwiedergabe) nicht durch Abfragen verzögert wird, die für die sekundäre Datenbank ausgeführt werden.
 
    > [!NOTE]
-   > Die Protokollwiedergabe wird in der sekundären Datenbank verzögert, wenn sie Schemaaktualisierungen von der primären Datenbank erhält, die eine Schemasperre für die sekundäre Datenbank erfordern. 
+   > Die Protokollwiedergabe wird in der sekundären Datenbank verzögert, wenn Schemaupdates für die primäre Datenbank vorhanden sind. In diesem Fall ist eine Schemasperre für die sekundäre Datenbank erforderlich. 
    > 
 
 * **Mehrere lesbare sekundäre Datenbanken**: Mehrere sekundäre Datenbanken sorgen für mehr Redundanz und einen besseren Schutz der primären Datenbank und Anwendung. Wenn mehrere sekundäre Datenbanken vorhanden sind, bleibt die Anwendung auch bei Ausfall einer der sekundären Datenbanken geschützt. Wenn es nur eine sekundäre Datenbank gibt und diese ausfällt, ist die Anwendung bis zum Erstellen einer neuen sekundären Datenbank einem höheren Risiko ausgesetzt.

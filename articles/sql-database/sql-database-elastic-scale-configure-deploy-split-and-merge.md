@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen eines Split-Merge-Diensts | Microsoft-Dokumentation
-description: "Aufteilen und Zusammenführen mit Tools für elastische Datenbanken"
+description: Verwenden Sie das Split-Merge-Tool, um Daten zwischen Sharddatenbanken zu verschieben.
 services: sql-database
 documentationcenter: 
 author: ddove
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 6e2fea882c248fa095a9d450ed54a7b4e64b45e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db26b7a99a7fd8bb7cb5c3d4937c44686fc68222
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="deploy-a-split-merge-service"></a>Bereitstellen eines Split-Merge-Diensts
 Mit dem Split-Merge-Tool können Sie Daten zwischen Sharddatenbanken verschieben. Siehe [Skalierung mit dem Split-Merge-Tool für elastische Datenbanken](sql-database-elastic-scale-overview-split-and-merge.md)

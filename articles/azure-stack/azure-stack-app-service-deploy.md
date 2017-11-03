@@ -12,13 +12,13 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: 5d8de03b92fd4cc41d7a2d077053da3b8769da50
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 2dd5fe36105f4013c36dd4dc952424d5672ba91f
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Hinzufügen eines App Service-Ressourcenanbieters zu Azure Stack
 
@@ -42,7 +42,7 @@ Das Installieren des App Service-Ressourcenanbieters in Ihrer Azure Stack-Umgebu
 
 Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgenden Schritte aus:
 
-1. Führen Sie „appservice.exe“ als Administrator (azurestack\AzureStackAdmin) aus.
+1. Führen Sie „appservice.exe“ als Administrator (azurestack\CloudAdmin) aus.
 
 2. Klicken Sie auf **Bereitstellung von App Service in Ihrer Azure Stack-Cloud**.
 
@@ -59,7 +59,7 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 6. Auf der nächsten Seite:
     1. Klicken Sie neben dem Feld **Azure Stack-Abonnements** auf die Schaltfläche **Verbinden**.
         - Wenn Sie Azure Active Directory (Azure AD) verwenden, geben Sie das Azure AD-Administratorkonto, das Sie bei der Bereitstellung von Azure Stack angegeben haben, und das zugehörige Kennwort ein. Klicken Sie auf **Anmelden**.
-        - Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden, geben Sie Ihr Administratorkonto an. Beispiel: azurestackadmin@azurestack.local. Geben Sie Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
+        - Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden, geben Sie Ihr Administratorkonto an. Beispiel: cloudadmin@azurestack.local. Geben Sie Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
     2. Wählen Sie im Feld **Azure Stack-Abonnements** Ihr Abonnement aus.
     3. Wählen Sie im Feld **Azure Stack-Standorte** den Standort aus, der der Region entspricht, in der die Bereitstellung erfolgen soll. Wählen Sie z.B. **lokal** aus, wenn Ihre Bereitstellung im Azure Stack Development Kit erfolgt.
     4. Geben Sie einen **Ressourcengruppennamen** für Ihre App Service-Bereitstellung ein. Dieser ist standardmäßig auf **APPSERVICE\<REGION\>** festgelegt.
@@ -69,7 +69,7 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image03.png)
 
-7. Geben Sie die Informationen für die Dateifreigabe ein, und klicken Sie dann auf **Weiter**.
+7. Geben Sie die Informationen für die Dateifreigabe ein, und klicken Sie dann auf **Weiter**. In der Adresse der Dateifreigabe muss der vollqualifizierte Domänenname des Dateiservers (z.B. „\\\appservicefileserver.local.cloudapp.azurestack.external\websites“) oder die IP-Adresse (z.B. „\\\10.0.0.1\websites“) verwendet werden.
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image04.png)
 
@@ -83,7 +83,7 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image05.png)
 
-9. Klicken Sie für jede der drei Zertifikatsdateien auf **Durchsuchen**, und navigieren Sie zu der entsprechenden Zertifikatsdatei. Sie müssen auch das Kennwort für die einzelnen Zertifikate angeben. Diese Zertifikate haben Sie im Schritt [Erstellen der erforderlichen Zertifikate](azure-stack-app-service-deploy.md#create-the-required-certificates) erstellt. Klicken Sie auf **Weiter**, nachdem Sie alle Informationen eingegeben haben.
+9. Klicken Sie für jede der drei Zertifikatsdateien auf **Durchsuchen**, und navigieren Sie zu der entsprechenden Zertifikatsdatei. Sie müssen das Kennwort für jedes Zertifikat angeben. Diese Zertifikate haben Sie im Schritt [Erstellen der erforderlichen Zertifikate](azure-stack-app-service-deploy.md#create-the-required-certificates) erstellt. Klicken Sie auf **Weiter**, nachdem Sie alle Informationen eingegeben haben.
 
     | Box | Beispielname für eine Zertifikatsdatei |
     | --- | --- |
@@ -99,14 +99,14 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image07.png)    
 
-11. Überprüfen Sie die Optionen für Rolleninstanz und SKU. Die Standardwerte werden mit den als Minimum empfohlenen Instanz-SKUs für jede Rolle aufgefüllt. Eine Übersicht über die Kern- und Arbeitsspeichervoraussetzungen wird angezeigt, um Sie bei der Bereitstellung zu unterstützen. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Weiter**.
+11. Überprüfen Sie die Optionen für Rolleninstanz und SKU. Als Standardwerte werden die Mindestanzahl der Instanz und die Mindest-SKU für jede Rolle in einer ASDK-Bereitstellung verwendet. Eine Übersicht über die Kern- und Arbeitsspeichervoraussetzungen wird angezeigt, um Sie bei der Bereitstellung zu unterstützen. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Weiter**.
 
     > [!NOTE]
     > Befolgen Sie bei Produktionsbereitstellungen die Anweisungen unter [Kapazitätsplanung für Azure App Service-Serverrollen in Azure Stack](azure-stack-app-service-capacity-planning.md).
     > 
     >
 
-    | Rolle | Empfohlene Mindestanzahl von Instanzen | Empfohlene Mindestanzahl von SKUs | Hinweise |
+    | Rolle | Mindestanzahl der Instanzen | Mindest-SKU | Hinweise |
     | --- | --- | --- | --- |
     | Controller | 1 | Standard_A1 – (1 Kern, 1.792 MB) | Verwaltet und wartet die Integrität der App Service-Cloud |
     | Verwaltung | 1 | Standard_A2 – (2 Kerne, 3.584 MB) | Verwaltet die Azure Resource Manager- und API-Endpunkte, die Portalerweiterungen (Administrator-, Mandanten, Functions-Portal) und den Datendienst von App Service. Zur Unterstützung eines Failovers erhöhen Sie die empfohlenen Instanzen auf 2. |
@@ -115,6 +115,9 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
     | Freigegebener Worker | 1 | Standard_A1 – (1 Kern, 1.792 MB) | Hostet Web oder -API-Anwendungen und Azure Functions-Apps. Sie können ggf. weitere Instanzen hinzufügen. Als Operator können Sie Ihr Angebot definieren und eine SKU-Ebene auswählen. Die Ebenen müssen mindestens einen Kern aufweisen. |
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image08.png)    
+
+    > [!NOTE]
+    > **Windows Server 2016 Core ist kein unterstütztes Plattformimage für die Verwendung mit Azure App Service für Azure Stack**.
 
 12. Wählen Sie im Feld **Plattformimage auswählen** aus den VM-Images, die im Computeressourcenanbieter für die App Service-Cloud verfügbar sind, Ihr VM-Bereitstellungsimage für Windows Server 2016 aus. Klicken Sie auf **Weiter**.
 
@@ -147,7 +150,7 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
 2. Überprüfen Sie in der Übersicht unter „Status“, ob für **Status** die Option **Alle Rollen sind bereit** angezeigt wird.
 
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image12.png)    
+    ![App Service-Verwaltung](media/azure-stack-app-service-deploy/image12.png)    
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Testen von App Service in Azure Stack
 

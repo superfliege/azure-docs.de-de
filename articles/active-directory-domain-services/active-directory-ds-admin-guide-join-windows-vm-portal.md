@@ -12,23 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: ce50c678247226b629490a2bd8ba2935ed229f06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5f661dba2e647ac905e7d84927fdbf6dbc76094f
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne
-> [!div class="op_single_selector"]
-> * [Azure-Portal – Windows](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-> * [PowerShell – Windows](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
->
->
-
-<br>
-
 Dieser Artikel zeigt Ihnen, wie Sie mithilfe des Azure-Portals einen neuen virtuellen Windows Server-Computer bereitstellen. Danach erfahren Sie, wie Sie den virtuellen Computer in eine verwaltete Domäne von Azure AD Domain Services einbinden.
 
 ## <a name="step-1-create-the-windows-server-virtual-machine"></a>Schritt 1: Erstellen des virtuellen Windows Server-Computers
@@ -57,7 +49,7 @@ Führen Sie die folgenden Schritte durch, um einen virtuellen Windows-Computer z
 
     > [!TIP]
     > **Wählen Sie das richtige virtuelle Netzwerk und Subnetz aus.**
-    > Wählen Sie entweder das virtuelle Netzwerk aus, in dem Ihre verwaltete Domäne bereitgestellt wird, oder ein virtuelles Netzwerk, das mithilfe von Peering damit verbunden ist. Wenn Sie ein anderes virtuelles Netzwerk auswählen, können Sie dieses nicht mit der verwalteten Domäne verknüpfen.
+    > Wählen Sie entweder das virtuelle Netzwerk aus, in dem Ihre verwaltete Domäne bereitgestellt wird, oder ein virtuelles Netzwerk, das mithilfe von Peering damit verbunden ist. Wenn Sie ein unverbundenes virtuelles Netzwerk auswählen, können Sie die VM nicht mit der verwalteten Domäne verknüpfen.
     > Es wird empfohlen, Ihre verwaltete Domäne in einem dedizierten Subnetz bereitzustellen. Wählen Sie daher nicht das Subnetz aus, in dem Sie die verwaltete Domäne aktiviert haben.
 
 7. Überprüfen Sie auf der Seite **Purchase** (Kauf) die Einstellungen, und klicken Sie zum Bereitstellen des virtuellen Computers auf **OK**.
@@ -128,7 +120,7 @@ Wenn ein Dialogfeld angezeigt wird, in dem Anmeldeinformationen für den Domäne
 Führen Sie folgende Schritte aus, wenn Probleme mit Anmeldeinformationen auftreten und ein Domänenbeitritt nicht möglich ist.
 
 * Verwenden Sie das UPN-Format für die Angabe von Anmeldeinformationen. Der „SAMAccountName“ für Ihr Konto wird möglicherweise automatisch generiert, wenn mehrere Benutzer in Ihrem Mandanten das gleiche UPN-Präfix verwenden oder wenn Ihr UPN-Präfix übermäßig lang ist. Das Format „SAMAccountName“ für Ihr Konto ist möglicherweise anders als Sie erwarten bzw. unterscheidet sich von dem, was Sie in Ihrer lokalen Domäne verwenden.
-* Verwenden Sie die Anmeldeinformationen eines Benutzerkontos, das der Gruppe „AAD DC Administratoren“ angehört, um der verwalteten Domäne Computer hinzuzufügen.
+* Versuchen Sie, die Anmeldeinformationen eines Benutzerkontos zu verwenden, das zur Administratorengruppe für Azure AD-Domänencontroller gehört.
 * Stellen Sie sicher, dass Sie die [Aktivierung der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md) in Übereinstimmung mit den Schritten durchgeführt haben, die im Leitfaden zu den ersten Schritten angegeben sind.
 * Verwenden Sie den UPN des Benutzers bei der Anmeldung exakt so, wie er in Azure AD konfiguriert ist (z.B. „bob@domainservicespreview.onmicrosoft.com“).
 * Stellen Sie sicher, dass Sie lange genug warten, damit die Kennwortsynchronisierung abgeschlossen ist, wie im Leitfaden „Erste Schritte“ angegeben.

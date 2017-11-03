@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 10/12/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0f35030b90cbd854512fb6b9a8ef564584fc101b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46a72a15ba35119ecb5640cb0b22cd2a0fc56a27
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Verschieben von Daten aus PostgreSQL mithilfe von Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +44,7 @@ Das Gateway ist auch erforderlich, wenn die PostgreSQL-Datenbank auf einem virtu
 > Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
 ## <a name="supported-versions-and-installation"></a>Unterstützte Versionen und Installation
-Damit sich das Datenverwaltungsgateway mit der PostgreSQL-Datenbank verbindet, installieren Sie den [Ngpsql-Datenanbieter für PostgreSQL](http://go.microsoft.com/fwlink/?linkid=282716) 2.0.12 oder höher auf dem System mit dem Datenverwaltungsgateway. PostgreSQL-Version 7.4 oder höher wird unterstützt.
+Damit sich das Datenverwaltungsgateway mit der PostgreSQL-Datenbank verbindet, installieren Sie eine Version des [Ngpsql-Datenanbieters für PostgreSQL](http://go.microsoft.com/fwlink/?linkid=282716) zwischen 2.0.12 und 3.1.9 auf dem System mit dem Datenverwaltungsgateway. PostgreSQL-Version 7.4 oder höher wird unterstützt.
 
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen PostgreSQL-Datenspeicher verschiebt. 
@@ -102,7 +102,7 @@ Wenn eine Quelle vom Typ **RelationalSource** (wozu PostgreSQL gehört) verwende
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: "query": "select * from \"MySchema\".\"MyTable\"". |Nein (wenn **tableName** von **Dataset** angegeben ist) |
+| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nein (wenn **tableName** von **Dataset** angegeben ist) |
 
 > [!NOTE]
 > Bei Schema- und Tabellennamen wird zwischen Groß- und Kleinschreibung unterschieden. Schließen Sie die Namen in der Abfrage in `""` (doppelte Anführungszeichen) ein.  
@@ -310,13 +310,13 @@ Beim Verschieben von Daten in PostgreSQL werden die folgenden Zuordnungen zwisch
 | abstime | |Datetime | &nbsp;
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
-| bit [ (n) ] | |Byte[], String | &nbsp;
+| bit [(n)] | |Byte[], String | &nbsp;
 | bit varying [ (n) ] |varbit |Byte[], String |
 | Boolescher Wert |bool |Boolescher Wert |
 | box | |Byte[], String |&nbsp;
 | bytea | |Byte[], String |&nbsp;
-| character [ (n) ] |char [ (n) ] |String |
-| character varying [ (n) ] |varchar [ (n) ] |String |
+| character [(n)] |char [(n)] |String |
+| character varying [(n)] |varchar [(n)] |String |
 | cid | |String |&nbsp;
 | cidr | |String |&nbsp;
 | circle | |Byte[], String |&nbsp;
@@ -328,14 +328,14 @@ Beim Verschieben von Daten in PostgreSQL werden die folgenden Zuordnungen zwisch
 | int4range | |String |&nbsp;
 | int8range | |String |&nbsp;
 | integer |int, int4 |Int32 |
-| interval [ fields ] [ (p) ] | |Timespan |&nbsp;
+| interval [fields] [(p)] | |Timespan |&nbsp;
 | json | |String |&nbsp;
 | jsonb | |Byte[] |&nbsp;
 | line | |Byte[], String |&nbsp;
 | lseg | |Byte[], String |&nbsp;
 | macaddr | |Byte[], String |&nbsp;
 | money | |Decimal |&nbsp;
-| numeric [ (p, s) ] |decimal [ (p, s) ] |Decimal |
+| numeric [(p, s)] |decimal [(p, s)] |Decimal |
 | numrange | |String |&nbsp;
 | oid | |Int32 |&nbsp;
 | path | |Byte[], String |&nbsp;

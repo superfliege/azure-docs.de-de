@@ -13,15 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: spelluru
-ms.openlocfilehash: 780e5673b5ed159a7f170373d54fea7c1713a910
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc0ed958a9e1018ed9f06fdcc94873ae5420ba95
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="manage-an-azure-ssis-integration-runtime"></a>Verwalten einer Azure-SSIS-Integrationslaufzeit
 Der Artikel [Erstellen einer Azure-SSIS-Integrationslaufzeit](create-azure-ssis-integration-runtime.md) erläutert die Erstellung einer Azure-SSIS-Integrationslaufzeit mithilfe von Azure Data Factory. Dieser Artikel stellt durch die Bereitstellung von Informationen zum Beenden, Starten, erneuten Konfigurieren oder Entfernen einer Azure-SSIS-Integrationslaufzeit eine Ergänzung dar.  
 
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 (GA) des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.
 
 ## <a name="stop"></a>Beenden 
 Beendet die Azure-SSIS-Integrationslaufzeit. Dieser Befehl gibt alle Knoten frei und beendet die Abrechnung.

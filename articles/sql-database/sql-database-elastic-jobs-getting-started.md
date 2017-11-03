@@ -1,6 +1,6 @@
 ---
 title: "Erste Schritte mit Aufträgen für die elastische Datenbank | Microsoft Docs"
-description: "Verwenden von Aufträgen für die elastische Datenbank"
+description: "Verwenden Sie Aufträgen für elastische Datenbanken zum Ausführen von T-SQL-Skripts, die sich über mehrere Datenbanken erstrecken."
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-ms.openlocfilehash: 05c20e880d4eb1eacdecc0c4c7e7491dfe1e6a89
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1b5a77782b64873a753f19863459f9cdfcd70cc
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Erste Schritte mit Aufträgen für die elastische Datenbank
-Aufträge für die elastische Datenbank (Vorschau) für Azure SQL-Datenbank ermöglicht die zuverlässige Ausführung von T-SQL-Skripts, die mehrere Datenbanken überspannen, und stellt automatische Wiederholung und ggf. Abschlussgarantien bereit. Weitere Informationen zu Aufträgen für die elastische Datenbank finden Sie auf der [Übersichtsseite zum Feature](sql-database-elastic-jobs-overview.md).
+Aufträge für die elastische Datenbank (Vorschau) für Azure SQL-Datenbank ermöglicht die zuverlässige Ausführung von T-SQL-Skripts, die mehrere Datenbanken überspannen, und stellt automatische Wiederholung und ggf. Abschlussgarantien bereit. Weitere Informationen zu den Features von Aufträgen für die elastische Datenbank finden Sie unter [Elastische Aufträge](sql-database-elastic-jobs-overview.md).
 
-Dieses Thema erweitert das Beispiel unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md). Wenn Sie das Beispiel durchgearbeitet haben, haben Sie gelernt, wie Sie Aufträge zum Verwalten einer Gruppe aufeinander bezogener Datenbanken erstellen und verwalten können. Es ist nicht erforderlich, die Tools für die elastische Skalierung zu verwenden, um die Vorteile der elastischen Aufträge zu nutzen.
+Dieser Artikel erweitert das Beispiel unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md). Wenn Sie das Beispiel durchgearbeitet haben, haben Sie gelernt, wie Sie Aufträge zum Verwalten einer Gruppe aufeinander bezogener Datenbanken erstellen und verwalten können. Es ist nicht erforderlich, die Tools für die elastische Skalierung zu verwenden, um die Vorteile der elastischen Aufträge zu nutzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Laden Sie das Beispiel [Erste Schritte mit den Tools für die elastische Datenbank](sql-database-elastic-scale-get-started.md)herunter, und führen Sie es aus.
@@ -31,7 +31,7 @@ Laden Sie das Beispiel [Erste Schritte mit den Tools für die elastische Datenba
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Erstellen eines Shardzuordnungs-Managers mithilfe der Beispiel-App
 Hier erstellen Sie einen Shardzuordnungs-Manager und mehrere Shards und fügen anschließend Daten in die Shards ein. Wenn Sie bereits über Shards verfügen, die Shardingdaten enthalten, können Sie die folgenden Schritte überspringen und zum nächsten Abschnitt wechseln.
 
-1. Erstellen Sie die Beispielanwendung aus **Erste Schritte mit den Tools für die elastische Datenbank** , und führen Sie sie aus. Führen Sie die Schritte bis Schritt 7 im Abschnitt [Herunterladen und Ausführen der Beispiel-App](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) aus. Am Ende von Schritt 7 wird die folgende Eingabeaufforderung angezeigt:
+1. Erstellen Sie die Beispielanwendung aus **Erste Schritte mit den Tools für die elastische Datenbank** , und führen Sie sie aus. Führen Sie die Schritte bis Schritt 7 im Abschnitt [Herunterladen und Ausführen der Beispiel-App](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) aus. Am Ende von Schritt 7 wird die folgende Eingabeaufforderung angezeigt:
 
    ![Eingabeaufforderung](./media/sql-database-elastic-query-getting-started/cmd-prompt.png)
 
@@ -226,7 +226,7 @@ Das folgende PowerShell-Skript kann zum Anzeigen der Ausführungsdetails einer A
    ```
 
 ## <a name="retrieve-failures-within-job-task-executions"></a>Abrufen von Ausführungsfehlern innerhalb von Auftragsaufgaben
-Das Objekt „JobTaskExecution“ enthält eine Eigenschaft für den Lebenszyklus der Aufgabe und darüber hinaus eine Message-Eigenschaft. Bei einem Ausführungsfehler einer Auftragsaufgabe wird die Eigenschaft „Lifecycle“ auf *Failed* festgelegt, und die Eigenschaft „Message“ übernimmt die resultierende Ausnahmenachricht und deren Stapel als Inhalt. Wenn ein Auftrag nicht erfolgreich abgeschlossen wurde, müssen die Details der Auftragsaufgaben angezeigt werden, die für einen bestimmten Auftrag nicht erfolgreich abgeschlossen wurden.
+Das Objekt „JobTaskExecution“ enthält eine Eigenschaft für den Lebenszyklus der Aufgabe und darüber hinaus eine Message-Eigenschaft. Bei einem Ausführungsfehler für eine Auftragsaufgabe wird die Eigenschaft „Lifecycle“ auf *Failed* und die Eigenschaft „Message“ auf die sich ergebende Ausnahmemeldung und deren Stapel festgelegt. Wenn ein Auftrag nicht erfolgreich abgeschlossen wurde, müssen die Details der Auftragsaufgaben angezeigt werden, die für einen bestimmten Auftrag nicht erfolgreich abgeschlossen wurden.
 
    ```
     $jobExecutionId = "{Job Execution Id}"
@@ -297,12 +297,12 @@ Aktualisieren Sie die gewünschte Ausführungsrichtlinie:
    ```
 
 ## <a name="cancel-a-job"></a>Abbrechen eines Auftrags
-Aufträge für die elastische Datenbank unterstützen Abbruchanforderungen für Aufträge.  Wenn Aufträge für die elastische Datenbank eine Abbruchanforderung für einen aktuell ausgeführten Auftrag erkennen, versuchen sie, den Auftrag zu beenden.
+Aufträge für die elastische Datenbank unterstützen Abbruchanforderungen für Aufträge.  Wenn Aufträge für die elastische Datenbank eine Abbruchanforderung für einen aktuell ausgeführten Auftrag erkennen, wird versucht, den Auftrag zu beenden.
 
 Der Abbruch kann von Aufträgen für die elastische Datenbank auf zwei verschiedene Arten ausgeführt werden:
 
 1. Abbruch aktuell ausgeführter Aufgaben: Wenn ein Abbruch erkannt wird, während eine Aufgabe aktuell ausgeführt wird, wird ein Abbruch innerhalb des aktuell ausgeführten Aspekts der Aufgabe versucht.  Beispiel: Wenn ein versuchter Abbruch sich auf eine aktuell ausgeführte Abfrage mit langer Laufzeit bezieht, wird versucht, die Abfrage abzubrechen.
-2. Stornierung von Aufgabenwiederholungen: Wenn ein Abbruch vom Steuerthread erkannt wird, bevor die Ausführung einer Aufgabe gestartet wurde, verhindert der Steuerthread das Starten der Aufgabe und erklärt die Anforderung für storniert.
+2. Abbruch von Aufgabenwiederholungen: Wird vom Steuerthread ein Abbruch erkannt, bevor die Ausführung einer Aufgabe gestartet wurde, verhindert der Steuerthread das Starten der Aufgabe und erklärt die Anforderung für abgebrochen.
 
 Wenn für einen übergeordneten Auftrag ein Auftragsabbruch angefordert wird, wird die Abbruchanforderung für den übergeordneten Auftrag und für alle seine untergeordneten Aufträge berücksichtigt.
 
@@ -384,7 +384,7 @@ Verwenden Sie das Cmdlet **New-AzureSqlJob** , um einen Auftrag für eine Gruppe
 ## <a name="data-collection-across-databases"></a>Datenbankübergreifende Datensammlung
 **Aufträge für die elastische Datenbank** unterstützt das übergreifende Ausführen einer Abfrage für eine Gruppe von Datenbanken und sendet die Ergebnisse an eine Tabelle einer angegebenen Datenbank zurück. Anschließend kann eine Abfrage für die Tabelle ausgeführt werden, um die Ergebnisse der Abfrage für die einzelnen Datenbanken anzuzeigen. Dadurch wird ein asynchrones Verfahren zum übergreifenden Ausführen einer Abfrage in vielen Datenbanken bereitgestellt. Auftretende Fehler, wie die vorübergehende Nichtverfügbarkeit einer Datenbank, werden automatisch mithilfe von Wiederholungsversuchen behandelt.
 
-Die angegebene Zieltabelle wird automatisch erstellt, wenn sie noch nicht vorhanden ist, und entspricht dem Schema der zurückgegebenen Ergebnismenge. Wenn bei einer Skriptausführung mehrere Ergebnismengen zurückgegeben werden, sendet Aufträge für die elastische Datenbank nur die erste an die angegebene Zieltabelle.
+Die angegebene Zieltabelle wird automatisch erstellt, wenn sie noch nicht vorhanden ist, und entspricht dem Schema der zurückgegebenen Ergebnismenge. Wenn bei einer Skriptausführung mehrere Resultsets zurückgegeben werden, senden Aufträge für die elastische Datenbank nur das erste Resultset an die angegebene Zieltabelle.
 
 Das folgende PowerShell-Skript kann verwendet werden, um ein Skript auszuführen, das die Ergebnisse in einer angegebenen Tabelle sammelt. Das Skript geht davon aus, dass ein T-SQL-Skript erstellt wurde, das eine einzelne Ergebnismenge ausgibt, und ein benutzerdefiniertes Datenbanksammlungsziel erstellt wurde.
 

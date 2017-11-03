@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2017
+ms.date: 10/11/2017
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 5b2fa44eaf801715d50282b4c1460c58d3631637
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41a9df712b07253d9f5f9db8542fb9917592320f
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Registrieren eines Azure Enterprise Agreements und Anzeigen von Kostendaten
 
@@ -41,6 +41,8 @@ Sie verwenden Ihr Enterprise Agreement, um sich bei der Azure-Kostenverwaltung v
 7. Unter **Andere Beteiligte einladen** können Sie Benutzer hinzufügen, indem Sie ihre E-Mail-Adressen eingeben. Klicken Sie auf **Weiter**, wenn Sie fertig sind. Es dauert ungefähr zwei Stunden, bis alle Ihre Abrechnungsdaten Cloudyn hinzugefügt wurden.
 8. Klicken Sie auf **Zu Cloudyn wechseln**, um das Cloudyn-Portal zu öffnen. Auf der Seite **Cloudkontenverwaltung** sollten Ihre registrierten EA-Kontoinformationen angezeigt werden.
 
+Ein Videotutorial über das Registrieren von Enterprise Agreement finden Sie unter [How to Find Your EA Enrollment ID and API Key for use in Azure Cost Management Powered by Cloudyn (Suchen Ihrer EA-Registrierungs-ID und Ihres API-Schlüssels für die Verwendung in Azure Cost Management von Cloudyn)](https://youtu.be/u_phLs_udig).
+
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -48,4 +50,4 @@ Sie verwenden Ihr Enterprise Agreement, um sich bei der Azure-Kostenverwaltung v
 In diesem Schnellstart haben Sie Ihre Azure Enterprise Agreement-Informationen verwendet, um sich bei der Kostenverwaltung zu registrieren. Außerdem haben Sie sich am Cloudyn-Portal angemeldet und die Anzeige von Kostendaten gestartet. Weitere Informationen zur Azure-Kostenverwaltung von Cloudyn finden Sie im Tutorial zur Kostenverwaltung.
 
 > [!div class="nextstepaction"]
-> [Anzeigen von Kostendaten](./tutorial-review-usage.md)
+> [Überprüfen der Nutzung und der Kosten](./tutorial-review-usage.md)

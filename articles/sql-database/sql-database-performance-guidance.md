@@ -1,6 +1,6 @@
 ---
 title: Anweisungen zur Leistungsoptimierung bei Azure SQL-Datenbank | Microsoft-Dokumentation
-description: "Mit den Informationen in diesem Artikel können Sie ermitteln, welche Dienstebene für Ihre Anwendung am besten geeignet ist. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung empfohlen, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen."
+description: Weitere Informationen zur Verwendung von Empfehlungen zur Verbesserung der Abfrageleistung von Azure SQL-Datenbank.
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 02/09/2017
 ms.author: carlrab
-ms.openlocfilehash: dc0244f0e0949b172c391825057f5c14893a5158
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31130c261bb7ee12b38e199c2a3bb71d7f8fc4b8
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Optimieren der Leistung bei Azure SQL-Datenbank
 

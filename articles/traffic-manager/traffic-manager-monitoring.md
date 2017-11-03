@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: 5ce000814f2f5899a7338fdefb39c4873c006b1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3b30aa04854b779c25582abafc0f9ebba65b71ba
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -131,7 +131,7 @@ Wenn ein Endpunkt den Status „Heruntergestuft“ aufweist, wird er nicht mehr 
 
 * **Priorität**. Endpunkte bilden eine mit Prioritäten versehene Liste. Der erste verfügbare Endpunkt der Liste wird immer zurückgegeben. Wenn ein Endpunkt sich im Status „Heruntergestuft“ befindet, wird der nächste verfügbare Endpunkt zurückgegeben.
 * **Gewichtet**. Alle verfügbaren Endpunkte werden basierend auf der ihnen zugewiesenen Gewichtung und den Gewichtungen der anderen verfügbaren Endpunkte zufällig ausgewählt.
-* **Leistung**. Der Endpunkt, der dem Endbenutzer am nächsten liegt, wird zurückgegeben. Wenn dieser Endpunkt nicht verfügbar ist, wird aus allen anderen verfügbaren Endpunkten zufällig ein Endpunkt ausgewählt. Durch das zufällige Auswählen eines Endpunkts wird ein überlappender Fehler verhindert, der auftreten kann, wenn der nächstgelegene Endpunkt überlastet wird. Sie können alternative Failoverpläne für das leistungsorientierte Datenverkehrsrouting mithilfe von [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region) konfigurieren.
+* **Leistung**. Der Endpunkt, der dem Endbenutzer am nächsten liegt, wird zurückgegeben. Wenn dieser Endpunkt nicht verfügbar ist, verschiebt Traffic Manager den Datenverkehr an die Endpunkte in der nächstgelegenen Azure-Region. Sie können alternative Failoverpläne für das leistungsorientierte Datenverkehrsrouting mithilfe von [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region) konfigurieren.
 * **Geografisch**. Der zugeordnete Endpunkt zum Bereitstellen des geografischen Standorts basierend auf den IPs der Abfrageanforderung wird zurückgegeben. Falls dieser Endpunkt nicht verfügbar ist, wird kein anderer Endpunkt für das Failover ausgewählt, da ein geografischer Standort nur einem Endpunkt eines Profils zugeordnet werden kann (weitere Details unter [Häufig gestellte Fragen (FAQ) zu Traffic Manager](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)). Als bewährte Methode bei der Verwendung des geografischen Routings empfehlen wir Kunden, geschachtelte Traffic Manager-Profile mit mehr als einem Endpunkt zu verwenden.
 
 Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md).

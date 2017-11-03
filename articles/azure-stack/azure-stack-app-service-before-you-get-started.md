@@ -12,13 +12,13 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: 8ebac8ca3bed6825ff9170a305a44ad58ec0da31
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: f2e7b5b96b70333ae4ee92d24c354960008c7f00
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Vor den ersten Schritten mit App Service in Azure Stack
 
@@ -32,15 +32,18 @@ Azure App Service in Azure Stack setzt eine Reihe von erforderlichen Schritten v
 - Erstellen einer Azure Active Directory-Anwendung
 - Erstellen einer Active Directory-Verbunddienste-Anwendung
 
-## <a name="download-the-azure-app-service-on-azure-stack-helper-scripts"></a>Herunterladen der Hilfsskripts für Azure App Service in Azure Stack
+## <a name="download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts"></a>Herunterladen des Installationsprogramms und der Hilfsskripts für Azure App Service in Azure Stack
 
-1. Laden Sie die [Hilfsskripts für die Bereitstellung von App Service in Azure Stack](http://aka.ms/appsvconmasrc1helper) herunter.
-2. Extrahieren Sie die Dateien aus der ZIP-Datei der Hilfsskripts. Die folgende Datei- und Ordnerstruktur wird entpackt:
-  - Create-AppServiceCerts.ps1
+1. Laden Sie die [Hilfsskripts für die Bereitstellung von App Service in Azure Stack](https://aka.ms/appsvconmashelpers) herunter.
+2. Laden Sie das [Installationsprogramm für App Service in Azure Stack](https://aka.ms/appsvconmasinstaller) herunter.
+3. Extrahieren Sie die Dateien aus der ZIP-Datei der Hilfsskripts. Die folgende Datei- und Ordnerstruktur wird entpackt:
+  - Common.ps1
   - Create-AADIdentityApp.ps1
   - Create-ADFSIdentityApp.ps1
+  - Create-AppServiceCerts.ps1
+  - Get-AzureStackRootCert.ps1
+  - Remove-AppService.ps1
   - Module
-    - AzureStack.Identity.psm1
     - GraphAPI.psm1
     
 ## <a name="high-availability"></a>Hohe Verfügbarkeit
@@ -63,9 +66,9 @@ Dieses erste Skript erstellt zusammen mit der Azure Stack-Zertifizierungsstelle 
 | ftp.appservice.local.azurestack.external.pfx | SSL-Zertifikat für App Service-Herausgeber |
 | Sso.appservice.local.azurestack.external.pfx | Zertifikat der App Service-Identitätsanwendung |
 
-Führen Sie das Skript auf dem Azure Stack Development Kit-Host aus, und stellen Sie sicher, dass Sie PowerShell als azurestack\AzureStackAdmin ausführen.
+Führen Sie das Skript auf dem Azure Stack Development Kit-Host aus, und stellen Sie sicher, dass Sie PowerShell als azurestack\CloudAdmin ausführen.
 
-1. Führen Sie in einer als azurestack\AzureStackAdmin ausgeführten PowerShell-Sitzung das Skript „Create-AppServiceCerts.ps1“ in dem Ordner aus, in den Sie die Hilfsskripts extrahiert haben. Das Skript erstellt in dem Ordner, der vom Skript zum Erstellen der von App Service benötigten Zertifikate verwendet wird, vier Zertifikate.
+1. Führen Sie in einer als azurestack\CloudAdmin ausgeführten PowerShell-Sitzung das Skript „Create-AppServiceCerts.ps1“ in dem Ordner aus, in den Sie die Hilfsskripts extrahiert haben. Das Skript erstellt in dem Ordner, der vom Skript zum Erstellen der von App Service benötigten Zertifikate verwendet wird, vier Zertifikate.
 2. Geben Sie ein Kennwort ein, um die PFX-Dateien zu schützen, und notieren Sie das Kennwort. Sie müssen es im Installationsprogramm für App Service in Azure Stack eingeben.
 
 #### <a name="create-appservicecertsps1-parameters"></a>Create-AppServiceCerts.ps1 – Parameter
@@ -74,7 +77,6 @@ Führen Sie das Skript auf dem Azure Stack Development Kit-Host aus, und stellen
 | --- | --- | --- | --- |
 | pfxPassword | Erforderlich | Null | Kennwort zum Schutz des privaten Zertifikatschlüssels |
 | DomainName | Erforderlich | local.azurestack.external | Azure Stack-Region und Domänensuffix |
-| CertificateAuthority | Erforderlich | AzS-CA01.azurestack.local | Endpunkt der Zertifizierungsstelle |
 
 ### <a name="certificates-required-for-a-production-deployment-of-azure-app-service-on-azure-stack"></a>Erforderliche Zertifikate für eine Produktionsentwicklung von Azure App Service in Azure Stack
 
@@ -97,7 +99,7 @@ Das API-Zertifikat wird der Verwaltungsrolle zugeordnet und vom Ressourcenanbiet
 
 | Format | Beispiel |
 | --- | --- |
-| API.appservice.\<Region\>.\<Domänenname\>.\<Erweiterung\> | api.appservice.redmond.azurestack.external |
+| api.appservice.\<Region\>.\<Domänenname\>.\<Erweiterung\> | api.appservice.redmond.azurestack.external |
 
 #### <a name="publishing-certificate"></a>Veröffentlichungszertifikat
 
@@ -120,21 +122,24 @@ Das Zertifikat für die Identität muss einen Antragsteller enthalten und dem fo
 
 #### <a name="extract-the-azure-stack-azure-resource-manager-root-certificate"></a>Extrahieren des Azure Resource Manager-Stammzertifikats für Azure Stack
 
-Führen Sie in einer als azurestack\AzureStackAdmin ausgeführten PowerShell-Sitzung das Skript „Get-AzureStackRootCert.ps1“ in dem Ordner aus, in den Sie die Hilfsskripts extrahiert haben. Das Skript erstellt in dem Ordner, der vom Skript zum Erstellen der von App Service benötigten Zertifikate verwendet wird, vier Zertifikate.
+Führen Sie in einer als azurestack\CloudAdmin ausgeführten PowerShell-Sitzung das Skript „Get-AzureStackRootCert.ps1“ in dem Ordner aus, in den Sie die Hilfsskripts extrahiert haben. Das Skript erstellt in dem Ordner, der vom Skript zum Erstellen der von App Service benötigten Zertifikate verwendet wird, vier Zertifikate.
 
 | Parameter für „Get-AzureStackRootCert.ps1“ | Erforderlich/optional | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
-| EmergencyConsole | Erforderlich | AzS-ERCS01 | Notfallkonsole auf dem privilegierten Endpunkt |
-| CloudAdminCredential | Erforderlich | AzureStack\AzureStackAdmin | Anmeldeinformationen für das Domänenkonto des Azure Stack-Cloudadministrators |
+| PrivelegedEndpoint | Erforderlich | AzS-ERCS01 | Privilegierter Endpunkt |
+| CloudAdminCredential | Erforderlich | AzureStack\CloudAdmin | Anmeldeinformationen für das Domänenkonto des Azure Stack-Cloudadministrators |
 
 
 ## <a name="prepare-the-file-server"></a>Vorbereiten des Dateiservers
 
-Azure App Service erfordert die Verwendung eines Dateiservers. Für Produktionsbereitstellungen muss dieser für hohe Verfügbarkeit konfiguriert und in der Lage sein, Fehler zu beheben.
+Azure App Service erfordert die Verwendung eines Dateiservers. Für Produktionsbereitstellungen muss der Dateiserver für Hochverfügbarkeit konfiguriert und in der Lage sein, Fehler zu beheben.
 
-Für die Verwendung mit Azure Stack Development Kit-Bereitstellungen können Sie diese ARM-Beispielbereitstellungsvorlage verwenden, um einen Einzelknoten-Dateiserver bereitzustellen: https://aka.ms/appsvconmasdkfstemplate.
+Für die ausschließliche Verwendung mit Azure Stack Development Kit-Bereitstellungen können Sie diese Azure Resource Manager-Beispielbereitstellungsvorlage verwenden, um einen Einzelknoten-Dateiserver bereitzustellen: https://aka.ms/appsvconmasdkfstemplate.
 
 ### <a name="provision-groups-and-accounts-in-active-directory"></a>Bereitstellen von Gruppen und Konten in Active Directory
+
+>[!NOTE]
+> Führen Sie bei der Konfiguration des Dateiservers in einer Administratoreingabeaufforderungs-Sitzung alle der folgenden Befehle aus.  **Verwenden Sie NICHT PowerShell.**
 
 1. Erstellen Sie die folgenden globalen Active Directory-Sicherheitsgruppen:
     - FileShareOwners
@@ -157,16 +162,22 @@ Für die Verwendung mit Azure Stack Development Kit-Bereitstellungen können Sie
 Führen Sie in einer Arbeitsgruppe net- und WMIC-Befehle aus, um Gruppen und Konten bereitzustellen.
 
 1. Führen Sie die folgenden Befehle aus, um die Konten FileShareOwner und FileShareUser zu erstellen. Ersetzen Sie <password> durch Ihre eigenen Werte.
-    - net user FileShareOwner <password> /add /expires:never /passwordchg:no
-    - net user FileShareUser <password> /add /expires:never /passwordchg:no
+``` DOS
+net user FileShareOwner <password> /add /expires:never /passwordchg:no
+net user FileShareUser <password> /add /expires:never /passwordchg:no
+```
 2. Legen Sie für die Kennwörter der Konten fest, dass sie nie ablaufen, indem Sie die folgenden WMIC-Befehle ausführen:
-    - WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
-    - WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
+``` DOS
+WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
+WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
+```
 3. Erstellen Sie die lokalen Gruppen FileShareUsers und FileShareOwners, und fügen Sie diesen die Konten aus dem ersten Schritt hinzu.
-    - net localgroup FileShareUsers /add
-    - net localgroup FileShareUsers FileShareUser /add
-    - net localgroup FileShareOwners /add
-    - net localgroup FileShareOwners FileShareOwner /add
+``` DOS
+net localgroup FileShareUsers /add
+net localgroup FileShareUsers FileShareUser /add
+net localgroup FileShareOwners /add
+net localgroup FileShareOwners FileShareOwner /add
+```
 
 ### <a name="provision-the-content-share"></a>Bereitstellen der Inhaltsfreigabe
 
@@ -176,7 +187,7 @@ Die Inhaltsfreigabe enthält die Websiteinhalte des Mandanten. Das Verfahren zum
 
 Führen Sie auf einem einzelnen Dateiserver die folgenden Befehle an einer Eingabeaufforderung mit erhöhten Rechten aus. Ersetzen Sie den Wert für <C:\WebSites> durch die entsprechenden Pfade in Ihrer Umgebung.
 
-```powershell
+```DOS
 set WEBSITES_SHARE=WebSites
 set WEBSITES_FOLDER=<C:\WebSites>
 md %WEBSITES_FOLDER%
@@ -192,7 +203,7 @@ Damit die Windows-Remoteverwaltung ordnungsgemäß funktioniert, müssen Sie die
 
 Führen Sie die folgenden Befehle an einer Eingabeaufforderung mit erhöhten Rechten auf dem Dateiserver oder auf einem beliebigen Knoten des Dateiserver-Failoverclusters aus. Ersetzen Sie den Wert für <DOMAIN> durch den Domänennamen, den Sie verwenden möchten.
 
-```powershell
+```DOS
 set DOMAIN=<DOMAIN>
 net localgroup Administrators %DOMAIN%\FileShareOwners /add
 ```
@@ -201,7 +212,7 @@ net localgroup Administrators %DOMAIN%\FileShareOwners /add
 
 Führen Sie den folgenden Befehl auf dem Dateiserver an einer Eingabeaufforderung mit erhöhten Rechten aus.
 
-```powershell
+```DOS
 net localgroup Administrators FileShareOwners /add
 ```
 
@@ -210,7 +221,7 @@ net localgroup Administrators FileShareOwners /add
 Führen Sie die folgenden Befehle an einer Eingabeaufforderung mit erhöhten Rechten auf dem Dateiserver oder auf dem Knoten des Dateiserver-Failoverclusters, der zurzeit der Besitzer der Clusterressource ist, aus. Ersetzen Sie die kursiven Werte durch die Werte für Ihre Umgebung.
 
 #### <a name="active-directory"></a>Active Directory
-```powershell
+```DOS
 set DOMAIN=<DOMAIN>
 set WEBSITES_FOLDER=<C:\WebSites>
 icacls %WEBSITES_FOLDER% /reset
@@ -222,7 +233,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 ```
 
 #### <a name="workgroup"></a>Arbeitsgruppe
-```powershell
+```DOS
 set WEBSITES_FOLDER=<C:\WebSites>
 icacls %WEBSITES_FOLDER% /reset
 icacls %WEBSITES_FOLDER% /grant Administrators:(OI)(CI)(F)
@@ -258,13 +269,13 @@ Administratoren müssen SSO zu folgenden Zwecken konfigurieren:
 
 Folgen Sie diesen Schritten:
 
-1. Öffnen Sie eine PowerShell-Instanz als azurestack\azurestackadmin.
-2. Wechseln Sie zum Speicherort der Skripts, die im [Vorbereitungsschritt](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-app-service-deploy#download-required-components) heruntergeladen und extrahiert wurden.
-3. [Installieren](azure-stack-powershell-install.md) und [konfigurieren Sie eine Azure Stack-PowerShell-Umgebung](azure-stack-powershell-configure-admin.md).
-4. Führen Sie in der gleichen PowerShell-Sitzung das Skript **Create-AADIdentityApp.ps1** aus. Wenn Sie zur Eingabe Ihrer Azure AD-Mandanten-ID aufgefordert werden, geben Sie die Azure AD-Mandanten-ID ein, die Sie für Ihre Azure Stack-Bereitstellung verwenden, z.B.: myazurestack.onmicrosoft.com.
+1. Öffnen Sie eine PowerShell-Instanz als azurestack\cloudadmin.
+2. Wechseln Sie zum Speicherort der Skripts, die im [Vorbereitungsschritt](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts) heruntergeladen und extrahiert wurden.
+3. [Installieren Sie Azure Stack PowerShell](azure-stack-powershell-install.md).
+4. Führen Sie das Skript **Create-AADIdentityApp.ps1** aus. Wenn Sie zur Eingabe Ihrer Azure AD-Mandanten-ID aufgefordert werden, geben Sie die Azure AD-Mandanten-ID ein, die Sie für Ihre Azure Stack-Bereitstellung verwenden, z.B.: myazurestack.onmicrosoft.com.
 5. Geben Sie im Fenster **Anmeldeinformationen** das Administratorkonto und -kennwort Ihres Azure AD-Diensts ein. Klicken Sie auf **OK**.
-6. Geben Sie den Zertifikatdateipfad und das Zertifikatkennwort für das [zuvor erstellte Zertifikat](azure-stack-app-service-deploy.md) ein. Das für diesen Schritt standardmäßig erstellte Zertifikat lautet sso.appservice.local.azurestack.external.pfx.
-7. Das Skript erstellt eine neue Anwendung im Azure AD des Mandanten und generiert ein neues PowerShell-Skript namens **UpdateConfigOnController.ps1**. Notieren Sie sich die Anwendungs-ID, die in der PowerShell-Ausgabe zurückgegeben wird. Sie benötigen diese Informationen, um in Schritt 11 danach suchen zu können.
+6. Geben Sie den Zertifikatdateipfad und das Zertifikatkennwort für das [zuvor erstellte Zertifikat](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack) ein. Das für diesen Schritt standardmäßig erstellte Zertifikat lautet sso.appservice.local.azurestack.external.pfx.
+7. Das Skript erstellt eine neue Anwendung in Azure AD des Mandanten. Notieren Sie sich die Anwendungs-ID, die in der PowerShell-Ausgabe zurückgegeben wird. Sie benötigen diese Informationen bei der Installation.
 8. Öffnen Sie ein neues Browserfenster, und melden Sie sich als **Azure Active Directory-Dienstadministrator** beim Azure-Portal (portal.azure.com) an.
 9. Öffnen Sie den Azure AD-Ressourcenanbieter.
 10. Klicken Sie auf **App-Registrierungen**.
@@ -272,11 +283,12 @@ Folgen Sie diesen Schritten:
 12. Klicken Sie in der Liste auf **Anwendung**.
 13. Klicken Sie auf **Erforderliche Berechtigungen** > **Berechtigungen erteilen** > **Ja**.
 
-| Parameter für „CreateIdentityApp.ps1“ | Erforderlich/optional | Standardwert | Beschreibung |
+| Parameter von „Create-AADIdentityApp.ps1“ | Erforderlich/optional | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
 | DirectoryTenantName | Erforderlich | Null | Azure AD-Mandanten-ID; GUID oder Zeichenfolge angeben, z.B.: myazureaaddirectory.onmicrosoft.com |
-| TenantAzure Resource ManagerEndpoint | Erforderlich | management.local.azurestack.external | Der Azure Resource Manager-Endpunkt des Mandanten |
-| AzureStackCredential | Erforderlich | Null | Azure AD-Administrator |
+| AdminArmEndpoint | Erforderlich | Null | Der Azure Resource Manager-Administratorendpunkt, z.B. „adminmanagement.local.azurestack.external“ |
+| TenantARMEndpoint | Erforderlich | Null | Azure Resource Manager-Endpunkt des Mandanten, z.B. „management.local.azurestack.external“ |
+| AzureStackAdminCredential | Erforderlich | Null | Administratoranmeldeinformationen für den Azure AD-Dienst |
 | CertificateFilePath | Erforderlich | Null | Pfad zur zuvor generierten Zertifikatsdatei für die Identitätsanwendung |
 | CertificatePassword | Erforderlich | Null | Kennwort zum Schutz des privaten Zertifikatschlüssels |
 
@@ -294,16 +306,16 @@ Administratoren müssen SSO zu folgenden Zwecken konfigurieren:
 Folgen Sie diesen Schritten:
 
 1. Öffnen Sie eine PowerShell-Instanz als azurestack\azurestackadmin.
-2. Wechseln Sie zum Speicherort der Skripts, die im [Vorbereitungsschritt](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-app-service-deploy#download-required-components) heruntergeladen und extrahiert wurden.
-3. [Installieren](azure-stack-powershell-install.md) und [konfigurieren Sie eine Azure Stack-PowerShell-Umgebung](azure-stack-powershell-configure-admin.md).
-4.  Führen Sie in der gleichen PowerShell-Sitzung das Skript **Create-ADFSIdentityApp.ps1** aus.
+2. Wechseln Sie zum Speicherort der Skripts, die im [Vorbereitungsschritt](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts) heruntergeladen und extrahiert wurden.
+3. [Installieren Sie Azure Stack PowerShell](azure-stack-powershell-install.md).
+4.  Führen Sie das Skript **Create-ADFSIdentityApp.ps1** aus.
 5.  Geben Sie im Fenster **Anmeldeinformationen** das Administratorkonto und -kennwort Ihrer AD FS-Cloud ein. Klicken Sie auf **OK**.
-6.  Geben Sie den Zertifikatdateipfad und das Zertifikatkennwort für das [zuvor erstellte Zertifikat](azure-stack-app-service-deploy.md) ein. Das für diesen Schritt standardmäßig erstellte Zertifikat lautet sso.appservice.local.azurestack.external.pfx.
+6.  Geben Sie den Zertifikatdateipfad und das Zertifikatkennwort für das [zuvor erstellte Zertifikat](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack) ein. Das für diesen Schritt standardmäßig erstellte Zertifikat lautet sso.appservice.local.azurestack.external.pfx.
 
-| Parameter für „CreateIdentityApp.ps1“ | Erforderlich/optional | Standardwert | Beschreibung |
+| Parameter von „Create-ADFSIdentityApp.ps1“ | Erforderlich/optional | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
-| AdminARMEndpoint | Erforderlich | Null | Der Azure Resource Manager-Endpunkt des Administrators. Beispiel: adminmanagement.local.azurestack.external |
-| PrivilegedEndpoint | Erforderlich | Null | Privilegierter Endpunkt auf der Notfallkonsole. Beispiel: AzD-ERCS01 |
+| AdminArmEndpoint | Erforderlich | Null | Der Azure Resource Manager-Endpunkt des Administrators. Beispiel: adminmanagement.local.azurestack.external |
+| PrivilegedEndpoint | Erforderlich | Null | Privilegierter Endpunkt, z.B. „AzS-ERCS01“ |
 | CloudAdminCredential | Erforderlich | Null | Anmeldeinformationen für das Domänenkonto des Azure Stack-Cloudadministrators. Beispiel: Azurestack\CloudAdmin |
 | CertificateFilePath | Erforderlich | Null | Pfad zur PFX-Zertifikatdatei der Identitätsanwendung |
 | CertificatePassword | Erforderlich | Null | Kennwort zum Schutz des privaten Zertifikatschlüssels |

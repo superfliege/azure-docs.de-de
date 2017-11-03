@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: sethm
-ms.openlocfilehash: 2c509b56282ace92e536dc85f1a28f83a4701940
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 49f2992245d694f85b7b1f1c34339f1445c9d699
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="azure-service-bus-geo-disaster-recovery-preview"></a>Georedundante Notfallwiederherstellung in Azure Service Bus (Vorschau)
 
@@ -29,7 +29,7 @@ Die Vorschauversion der georedundanten Notfallwiederherstellung ist derzeit nur 
 
 Im Artikel [Bewährte Methoden zum Schützen von Anwendungen vor Service Bus-Ausfällen und Notfällen](service-bus-outages-disasters.md) wird zwischen „Ausfällen“ und „Notfällen“ unterschieden. Dieser Unterschied muss beachtet werden. Ein *Ausfall* ist die vorübergehende Nichtverfügbarkeit von Azure Service Bus und kann einige Komponenten des Diensts, z.B. einen Nachrichtenspeicher, oder selbst das gesamte Rechenzentrum betreffen. Nachdem das Problem behoben wurde, ist Service Bus jedoch wieder verfügbar. In der Regel führt ein Ausfall nicht zum Verlust von Nachrichten oder anderen Daten. Ein Beispiel für einen Ausfall ist ein Stromausfall im Rechenzentrum.
 
-Ein *Notfall* wird als dauerhafter Verlust einer Service Bus-[Skalierungseinheit](service-bus-architecture.md#service-bus-scale-units) oder eines Rechenzentrums definiert. Das Rechenzentrum kann danach wieder zur Verfügung stehen oder für Stunden oder Tage ausfallen. Häufig gehen bei einem Notfall einige oder alle Nachrichten oder anderen Daten verloren. Beispiele für Notfälle sind Feuer, Überflutung und Erdbeben.
+Ein *Notfall* wird als dauerhafter oder längerer Verlust einer Service Bus-[Skalierungseinheit](service-bus-architecture.md#service-bus-scale-units) oder eines Rechenzentrums definiert. Das Rechenzentrum kann danach wieder zur Verfügung stehen oder für Stunden oder Tage ausfallen. Beispiele für Notfälle sind Feuer, Überflutung und Erdbeben. Ein Notfall, der dauerhaft wird, kann möglicherweise zum Verlust einiger Nachrichten oder anderer Daten führen. In den meisten Fällen kommt es allerdings zu keinem Datenverlust, und Nachrichten können wiederhergestellt werden, sobald das Rechenzentrum gesichert ist.
 
 Die Funktion der georedundanten Notfallwiederherstellung von Azure Service Bus ist eine Lösung zur Notfallwiederherstellung. Die Konzepte und der Workflow, die in diesem Artikel beschrieben werden, gelten für Notfallszenarien und nicht für vorübergehende Ausfälle.  
 
@@ -45,7 +45,7 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 
 -  *Metadaten:* Ihre Darstellung von Objekten in Azure Service Bus. Derzeit werden nur Metadaten unterstützt.
 
--  *Failover:* Der Vorgang zum Aktivieren des sekundären Namespace. Sie müssen Nachrichten aus dem ehemals primären Namespace pullen, nachdem dieser wieder verfügbar geworden ist, und den Namespace dann löschen. Zum Erstellen eines weiteren Failovers fügen Sie der Kopplung einen neuen sekundären Namespace hinzu.
+-  *Failover:* Der Vorgang zum Aktivieren des sekundären Namespace. Sie müssen Nachrichten aus dem ehemals primären Namespace pullen, nachdem dieser wieder verfügbar geworden ist, und den Namespace dann löschen. Zum Erstellen eines weiteren Failovers fügen Sie der Kopplung einen neuen sekundären Namespace hinzu. Wenn Sie den zuvor primären Namespace nach einem Failover wiederverwenden möchten, müssen Sie zunächst alle vorhandenen Entitäten aus dem Namespace entfernen. Stellen Sie sicher, dass Sie alle Nachrichten empfangen, bevor Sie dies tun.
 
 ## <a name="failover-workflow"></a>Failoverworkflow
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 28c589b6821526fa6b91dc558a08ef2fb68f97df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d8a5f3c915b1e3b6e11cec9c5540fa192f5f85dd
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Prüfpunkte und Wiedergabe in Durable Functions (Azure Functions)
 
@@ -79,7 +79,7 @@ Nach Abschluss des Vorgangs sieht der Verlauf der obigen Funktion in Azure Table
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     | 
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | """Hello London!"""                                       |                     | 
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | Completed           | 
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | Abgeschlossen           | 
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     | 
 
 Einige Hinweise zu den Spaltenwerten:
@@ -115,7 +115,7 @@ Mit dem Wiedergabeverhalten sind Einschränkungen des Codetyps verbunden, der in
 
   Nicht deterministische Vorgänge müssen in Aktivitätsfunktionen durchgeführt werden. Dies schließt alle Interaktionen mit anderen Eingabe- oder Ausgabebindungen ein. So wird sichergestellt, dass alle nicht deterministischen Werte bei der ersten Ausführung einmal generiert und im Ausführungsverlauf gespeichert werden. Bei den nachfolgenden Ausführungen wird der gespeicherte Wert dann automatisch verwendet.
 
-* Der Orchestratorcode sollte **nicht blockierend** sein. Beispielsweise sollten `Thread.Sleep` oder gleichwertige APIs nicht verwendet werden.
+* Der Orchestratorcode sollte **nicht blockierend** sein. Das bedeutet beispielsweise keine E/A und keine Aufrufe an `Thread.Sleep` oder entsprechende APIs.
 
   Wenn für einen Orchestrator eine Verzögerung erforderlich ist, kann die [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_)-API genutzt werden.
 

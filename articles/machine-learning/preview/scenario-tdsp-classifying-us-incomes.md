@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
-ms.openlocfilehash: c0fbd9b3e6f9f9f4f7a5d3e6bda18ce1312650e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3e92687657b4e80e75fd869da454970622f7178c
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Einkommensklassifizierung mit dem Team Data Science-Prozessprojekt (TDSP)
 
@@ -63,7 +63,7 @@ Wenn Sie Ihr Projekt und seine Inhalte speichern möchten, benötigen Sie ein Re
 * [FAQ – Erste Schritte](frequently-asked-questions.md)
 * [Übersicht](overview-what-is-azure-ml.md)
 * [Installation](quickstart-installation.md)
-* [Ausführung](experiment-execution-configuration.md)
+* [Ausführung](experimentation-service-configuration.md)
 * [Verwenden von TDSP](https://aka.ms/how-to-use-tdsp-in-aml)
 * [Lesen und Schreiben von Dateien](how-to-read-write-files.md)
 * [Using Git with Azure Machine Learning (Verwenden von Git mit Azure Machine Learning)](using-git-ml-project.md)
@@ -108,7 +108,7 @@ Das Projekt wird nach den [hier](https://aka.ms/how-to-use-tdsp-in-aml) bereitge
 <img src="./media/scenario-tdsp-classifying-us-incomes/instantiation-4.png" width="900" height="700">
 
 ### <a name="execution"></a>Ausführung
-In diesem Beispiel führen wir Code in der **lokalen Serverumgebung** aus. Weitere Details zu [Ausführungsoptionen](experiment-execution-configuration.md) finden Sie in den Azure Machine Learning-Dokumenten.
+In diesem Beispiel führen wir Code in der **lokalen Serverumgebung** aus. Weitere Details zu [Ausführungsoptionen](experimentation-service-configuration.md) finden Sie in den Azure Machine Learning-Dokumenten.
 
 Es ist einfach, ein Python-Skript in einer lokalen Python-Laufzeit auszuführen:
 

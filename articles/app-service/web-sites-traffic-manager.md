@@ -15,27 +15,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: fb7d391e3118a9dccde5501c3f30c6f580932a30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93645aa5765d533b45fe2266f061ad61c0bf45d7
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="controlling-azure-web-app-traffic-with-azure-traffic-manager"></a>Steuern des Azure-Web-App-Verkehrs mit Azure Traffic Manager
 > [!NOTE]
-> Dieser Artikel bietet zusammenfassende Informationen zu Microsoft Azure Traffic Manager im Hinblick auf Azure Web Service-Web-Apps. Weitere Informationen über Azure Traffic Manager selbst finden Sie unter den Links am Ende dieses Artikels.
+> Dieser Artikel bietet zusammenfassende Informationen zu Microsoft Azure Traffic Manager im Hinblick auf Azure-Web-Apps. Weitere Informationen über Azure Traffic Manager selbst finden Sie unter den Links am Ende dieses Artikels.
 > 
 > 
 
 ## <a name="introduction"></a>Einführung
-Mit Azure Traffic Manager können Sie steuern, wie Anforderungen von Webclients auf Web-Apps in Azure Web Service verteilt werden. Wenn einem Azure Traffic Manager-Profil Azure-Web-App-Endpunkte hinzugefügt werden, verfolgt Azure Traffic Manager den Status Ihrer Web-Apps (aktiv, angehalten oder gelöscht), sodass der gewünschte Endpunkt als Empfänger des Verkehrs gewählt werden kann.
+Mit Azure Traffic Manager können Sie steuern, wie Anforderungen von Webclients auf Web-Apps in Azure Web Service verteilt werden. Wenn einem Azure Traffic Manager-Profil Web-App-Endpunkte hinzugefügt werden, verfolgt Azure Traffic Manager den Status Ihrer Web-Apps (aktiv, angehalten oder gelöscht), sodass der gewünschte Endpunkt als Empfänger des Verkehrs gewählt werden kann.
 
-## <a name="load-balancing-methods"></a>Lastenausgleichsmethoden
-Azure Traffic Manager verwendet drei verschiedene Lastenausgleichsmethoden. Diese werden in der folgenden Liste beschrieben, soweit sie Azure-Web-Apps betreffen.
+## <a name="routing-methods"></a>Routingmethoden
+Azure Traffic Manager verwendet drei verschiedene Routingmethoden. Diese Methoden werden in der folgenden Liste beschrieben, soweit sie Azure-Web-Apps betreffen.
 
-* **Failover:** Wenn Sie in verschiedenen Regionen über Web-App-Klone verfügen, können Sie mit dieser Methode eine Web-App konfigurieren, um den gesamten Webclient-Datenverkehr zu bedienen. Dann können Sie eine andere Web-App in einer anderen Region konfigurieren, um den Datenverkehr zu verarbeiten, falls die erste Web-App nicht verfügbar sein sollte.
-* **RoundRobin**Wenn Sie über Web-App-Klone in verschiedenen Regionen verfügen, können Sie mit dieser Methode den Verkehr gleichmäßig auf die Web-Apps in unterschiedlichen Regionen verteilen.
-* **Leistung**:Mithilfe der Leistungsmethode wird der Verkehr anhand der kürzesten Roundtripzeit an Clients verteilt. Die Leistungsmethode kann für Web-Apps innerhalb derselben Region oder in verschiedenen Regionen verwendet werden.
+* **[Priorität](#priority):** Verwenden einer primären Web-App für den gesamten Datenverkehr und Bereitstellen von Sicherungen für den Fall, dass die primäre oder die Sicherungs-Web-Apps nicht verfügbar sind.
+* **[Gewichtet](#weighted):** Verteilung des Datenverkehrs auf eine Gruppe von Web-Apps, entweder gleichmäßig oder gewichtet, gemäß Ihrer Definition.
+* **[Leistung](#performance):** Wenn Sie Web-Apps an unterschiedlichen geografischen Standorten besitzen, verwenden Sie die „nächstgelegene“ Web-App im Hinblick auf die niedrigste Netzwerklatenz.
+* **[Geografisch](#geographic):** Leiten Sie Benutzer basierend auf dem geografischen Standort, von dem ihre DNS-Abfrage stammt, zu bestimmten Web-Apps. 
+
+Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md).
 
 ## <a name="web-apps-and-traffic-manager-profiles"></a>Web-Apps und Traffic Manager-Profile
 Für die Konfiguration zur Steuerung des Web-App-Verkehrs erstellen Sie ein Profil in Azure Traffic Manager, das eine der drei zuvor beschriebenen Lastenausgleichsmethoden verwendet. Fügen Sie dann dem Profil die Endpunkte (in diesem Fall Web-Apps) hinzu, für die Sie den Verkehr steuern möchten. Der Web-App-Status (aktiv, angehalten oder gelöscht) wird regelmäßig an das Profil übermittelt, sodass Azure Traffic Manager den Verkehr entsprechend leiten kann.
@@ -46,7 +49,7 @@ Beachten Sie die folgenden Aspekte, wenn Sie Azure Traffic Manager mit Azure ver
 * Bei Bereitstellungen in derselben Region, die Azure-Web-Apps zusammen mit anderen Azure-Cloud-Diensten verwenden, können Sie beide Endpunkttypen kombinieren, um Hybridszenarios zu ermöglichen.
 * Sie können in einem Profil nur einen Web-App-Endpunkt pro Region angeben. Wenn Sie eine Web-App als Endpunkt für eine Region auswählen, stehen die verbleibenden Websites in dieser Region nicht mehr für dieses Profil zur Auswahl zur Verfügung.
 * Die Web-App-Endpunkte, die Sie in einem Azure Traffic Manager-Profil festlegen, werden im Abschnitt **Domänennamen** auf der Konfigurationsseite für die Web-App im Profil angezeigt, dort jedoch nicht konfiguriert.
-* Nachdem Sie einem Profil eine Web-App hinzugefügt haben, wird in der **Website-URL** im Dashboard der Portalseite der Web-App die benutzerdefinierte Domänen-URL der Web-App angezeigt, wenn Sie diese eingerichtet haben. Anderenfalls wird die URL des Traffic Manager-Profils angezeigt (z. B. `contoso.trafficmgr.com`). Sowohl der direkte Domänenname der Web-App als auch die Traffic Manager-URL werden auf der Konfigurationsseite der Web-App im Abschnitt **Domänennamen** angezeigt.
+* Nachdem Sie einem Profil eine Web-App hinzugefügt haben, wird in der **Website-URL** im Dashboard der Portalseite der Web-App die benutzerdefinierte Domänen-URL der Web-App angezeigt, wenn Sie diese eingerichtet haben. Anderenfalls wird die URL des Traffic Manager-Profils angezeigt (z.B. `contoso.trafficmgr.com`). Sowohl der direkte Domänenname der Web-App als auch die Traffic Manager-URL werden auf der Konfigurationsseite der Web-App im Abschnitt **Domänennamen** angezeigt.
 * Ihre benutzerdefinierten Domänennamen funktionieren wie erwartet. Sie fügen sie Ihren Web-Apps hinzu, müssen jedoch auch die DNS-Zuordnung konfigurieren, um auf die Traffic Manager-URL zu verweisen. Informationen zum Einrichten einer benutzerdefinierten Domäne für eine Azure-Web-App finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Azure-Website](app-service-web-tutorial-custom-domain.md).
 * Sie können einem Azure Traffic Manager-Profil nur Web-Apps hinzufügen, die sich im Standard- oder Premium-Modus befinden.
 

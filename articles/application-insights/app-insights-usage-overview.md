@@ -1,6 +1,6 @@
 ---
-title: "Verwendungsanalyse für Webanwendungen mit Azure Application Insights | Microsoft-Dokumentation"
-description: Verstehen Sie Ihre Benutzer und wie sie Ihre Web-App verwenden.
+title: Verwendungsanalyse mit Azure Application Insights | Microsoft Docs
+description: Verstehen Sie Ihre Benutzer und wie sie Ihre App verwenden.
 services: application-insights
 documentationcenter: 
 author: botatoes
@@ -10,17 +10,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 10/10/2017
 ms.author: bwren
-ms.openlocfilehash: edf15e72c822ea5e045895c6f03477c613c0a6c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6985467658ae8a52d3c963dd1965c0711cac4ca7
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
-# <a name="usage-analysis-for-web-applications-with-application-insights"></a>Verwendungsanalyse für Webanwendungen mit Application Insights
+# <a name="usage-analysis-with-application-insights"></a>Verwendungsanalyse mit Application Insights
 
-Welche Funktionen Ihrer Web-App sind die beliebtesten? Erreichen die Benutzer mit Ihrer App ihre Ziele? Brechen sie an bestimmten Stellen ab, und kehren sie später zurück?  Mit [Azure Application Insights](app-insights-overview.md) erhalten Sie wertvolle Einblicke in die Nutzung Ihrer Web-App durch die Benutzer. Bei jeder Aktualisierung Ihrer App können Sie beurteilen, wie gut sie für Benutzer funktioniert. Mit diesem Wissen können Sie datengesteuerte Entscheidungen über die nächsten Entwicklungszyklen treffen.
+Welche Funktionen Ihrer Web- oder mobilen App sind die beliebtesten? Erreichen die Benutzer mit Ihrer App ihre Ziele? Brechen sie an bestimmten Stellen ab, und kehren sie später zurück?  Mit [Azure Application Insights](app-insights-overview.md) erhalten Sie wertvolle Einblicke in die Nutzung Ihrer App durch die Benutzer. Bei jeder Aktualisierung Ihrer App können Sie beurteilen, wie gut sie für Benutzer funktioniert. Mit diesem Wissen können Sie datengesteuerte Entscheidungen über die nächsten Entwicklungszyklen treffen.
 
 ## <a name="send-telemetry-from-your-app"></a>Senden von Telemetriedaten aus der App
 
@@ -34,8 +34,9 @@ Sie erzielen optimale Ergebnisse, wenn Sie Application Insights im Servercode de
 
     ![Kopieren Sie das Skript in die Kopfzeile der Masterwebseite.](./media/app-insights-usage-overview/02-monitor-web-page.png)
 
+3. **Code der mobilen App:** Verwenden Sie das Mobile Center-SDK zum Erfassen von Ereignissen von Ihrer App und Senden von Kopien dieser Ereignisse zur Analyse an Application Insights durch [Befolgen dieser Anleitung](app-insights-mobile-center-quickstart.md).
 
-3. **Abrufen von Telemetriedaten:** Führen Sie das Projekt einige Minuten lang im Debugmodus aus, und suchen Sie dann im Blatt „Übersicht“ von Application Insights nach Ergebnissen.
+4. **Abrufen von Telemetriedaten:** Führen Sie das Projekt einige Minuten lang im Debugmodus aus, und suchen Sie dann im Blatt „Übersicht“ von Application Insights nach Ergebnissen.
 
     Veröffentlichen Sie die App, um die Leistung der App zu überwachen und zu ermitteln, was die Benutzer mit Ihrer App tun.
 
@@ -53,7 +54,7 @@ In Benutzer- und Sitzungsberichte werden Ihre Daten nach Seiten oder benutzerdef
 
 Aus den Informationen auf der rechten Seite gehen interessante Muster im Datensatz hervor.  
 
-* Der Bericht **Benutzer** zählt die eindeutigen Benutzer, die innerhalb der ausgewählten Zeiträume auf Ihre Seiten zugreifen. (Benutzer werden mithilfe von Cookies gezählt. Wenn eine Person mit verschiedenen Browsern oder Clientcomputern auf Ihre Website zugreift oder ihre Cookies löscht, wird sie mehrfach gezählt.)
+* Der Bericht **Benutzer** zählt die eindeutigen Benutzer, die innerhalb der ausgewählten Zeiträume auf Ihre Seiten zugreifen. Für Web-Apps werden Benutzer mithilfe von Cookies gezählt. Wenn eine Person mit verschiedenen Browsern oder Clientcomputern auf Ihre Website zugreift oder ihre Cookies löscht, wird sie mehrfach gezählt.
 * Der Bericht **Sitzungen** zählt die Benutzersitzungen, die auf Ihre Website zugreifen. Eine Sitzung ist ein Zeitraum der Aktivität eines Benutzers, der von einem Zeitraum der Inaktivität von mehr als eine halben Stunde beendet wird.
 
 [Weitere Informationen zu den Tools für Benutzer, Sitzungen und Ereignisse](app-insights-usage-segmentation.md)  
@@ -94,20 +95,20 @@ Die Vermerkdauer-Steuerelemente oben ermöglichen Ihnen das Definieren bestimmte
 
 ## <a name="custom-business-events"></a>Benutzerdefinierte Geschäftsereignisse
 
-Um ein genaues Verständnis davon zu erhalten, was Benutzer mit Ihrer Web-App machen, ist es hilfreich, Codezeilen einzufügen, um benutzerdefinierte Ereignisse zu protokollieren. Diese Ereignisse können alles nachverfolgen – von detaillierten Benutzeraktionen wie das Klicken auf bestimmte Schaltflächen bis hin zu aussagekräftigeren Geschäftsereignissen wie das Tätigen eines Kaufs oder das Gewinnen eines Spiels. 
+Um ein genaues Verständnis davon zu erhalten, was Benutzer mit Ihrer App machen, ist es hilfreich, Codezeilen einzufügen, um benutzerdefinierte Ereignisse zu protokollieren. Diese Ereignisse können alles nachverfolgen – von detaillierten Benutzeraktionen wie das Klicken auf bestimmte Schaltflächen bis hin zu aussagekräftigeren Geschäftsereignissen wie das Tätigen eines Kaufs oder das Gewinnen eines Spiels. 
 
 Seitenaufrufe können zwar in einigen Fällen nützliche Ereignisse darstellen, im Allgemeinen ist dies jedoch nicht der Fall. Ein Benutzer kann eine Produktseite öffnen, ohne das Produkt zu kaufen. 
 
 Mit bestimmten Geschäftsereignisse können Sie den Aufenthalt von Benutzern auf Ihrer Website in einem Diagramm darstellen. Sie können deren Einstellungen für unterschiedliche Optionen ermitteln und herausfinden, wo sie abbrechen oder Schwierigkeiten haben. Mit diesem Wissen können Sie fundierte Entscheidungen über die Prioritäten in Ihrem Entwicklungs-Backlog treffen.
 
-Ereignisse können auf der Webseite protokolliert werden:
+Ereignisse können von der Clientseite der App aus protokolliert werden:
 
 ```JavaScript
 
     appInsights.trackEvent("ExpandDetailTab", {DetailTab: tabName});
 ```
 
-Oder auf der Serverseite der Web-App:
+Oder von der Serverseite:
 
 ```C#
     var tc = new Microsoft.ApplicationInsights.TelemetryClient();

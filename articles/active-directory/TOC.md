@@ -208,7 +208,7 @@
 #### [Verwalten der Bereitstellung von Benutzerkonten](active-directory-enterprise-apps-manage-provisioning.md)
 #### [Verwalten des einmaligen Anmeldens für Unternehmens-Apps](active-directory-enterprise-apps-manage-sso.md)
 #### [Erweiterte Zertifikatsignatur für SAML-Apps](active-directory-enterprise-apps-advance-certificate-options.md)
-####[ Ausblenden der Benutzeroberfläche eines Benutzers in Azure Active Directory](active-directory-coreapps-hide-third-party-app.md)
+#### [Ausblenden einer Drittanbieter-App auf der Benutzeroberfläche](active-directory-coreapps-hide-third-party-app.md)
 
 ### [Verwalten des Zugriffs auf Apps](active-directory-managing-access-to-apps.md)
 #### [Self-Service-Zugriff](active-directory-self-service-application-access.md)

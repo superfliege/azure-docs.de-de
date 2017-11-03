@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 9/25/2017
+ms.date: 10/23/2017
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: afeec92c40262903e6cfd3c6d75a595fead616e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f6fce4a3230c98295afb19e633bf2801c115831f
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Verfügbarmachen von virtuellen Computern für Ihre Azure Stack-Benutzer
 
@@ -51,7 +51,7 @@ Sie können jetzt die Einrichtung für Ihre Benutzer durchführen. Wenn Sie den 
 
    Angebote sind Gruppen mit einem oder mehreren Plänen, die Anbieter Benutzern zum Erwerben oder Abonnieren anbieten.
 
-   a. Führen Sie die [Anmeldung](azure-stack-connect-azure-stack.md) am Portal als Cloudadministrator durch, und klicken Sie anschließend auf **Neu** > **Mandantenangebote + Pläne** > **Angebot**.
+   a. Führen Sie die [Anmeldung](azure-stack-connect-azure-stack.md) am Portal als Cloudadministrator durch, und klicken Sie anschließend auf **Neu** > **Angebote + Pläne** > **Angebot**.
    ![Neues Angebot](media/azure-stack-tutorial-tenant-vm/image01.png)
 
    b. Geben Sie im Abschnitt **Neues Angebot** die Werte für **Anzeigename** und **Ressourcenname** ein, und wählen Sie anschließend eine neue oder vorhandene **Ressourcengruppe** aus. Der Anzeigename ist der verständliche Anzeigename des Angebots. Nur der Cloudbetreiber kann den Ressourcennamen sehen. Es handelt sich um den Namen, mit dem Administratoren das Angebot als Azure-Ressourcen-Manager-Ressource bearbeiten.
@@ -132,21 +132,23 @@ Nachdem Sie ein Angebot erstellt haben, können Sie es testen. Melden Sie sich a
 
    Sie können sich jetzt als Benutzer am Portal anmelden, um mit dem Abonnement einen virtuellen Computer bereitzustellen. 
 
-   a. Melden Sie sich beim Portal als Benutzer an, und klicken Sie dann auf **Neu** > **Compute** > **Windows Server 2016 Datacenter Eval**.
+   a. Melden Sie sich am Benutzerportal als Benutzer an.
       - Für ein integriertes System variiert die URL basierend auf der Region Ihres Operators und dem externen Domänenamen und hat das Format https://portal.&lt;*Region*&gt;.&lt; *FQDN*&gt;.
    - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse „https://portal.local.azurestack.external“.
 
-   b. Geben Sie im Abschnitt **Grundlagen** einen **Namen**, **Benutzernamen** und ein **Kennwort** ein. Wählen Sie unter **VM-Datenträgertyp** die Option **HDD**. Wählen Sie ein **Abonnement**aus. Erstellen Sie eine **Ressourcengruppe**, oder wählen Sie eine vorhandene aus, und klicken Sie anschließend auf **OK**.  
+   b.  Klicken Sie im Dashboard auf **Neu** > **Compute** > **Windows Server 2016 Datacenter Eval**, und klicken Sie dann auf **Erstellen**.
 
-   c. Klicken Sie im Abschnitt **Größe auswählen** auf **A1 Basic** und dann auf **Auswählen**.  
+   c. Geben Sie im Abschnitt **Grundlagen** einen **Namen**, einen **Benutzernamen** und ein **Kennwort** ein, wählen Sie ein **Abonnement** aus, erstellen Sie eine **Ressourcengruppe** (oder wählen Sie eine vorhandene Ressourcengruppe aus), und klicken Sie dann auf **OK**.
 
-   d. Klicken Sie im Abschnitt **Einstellungen** auf **Virtuelles Netzwerk**. Klicken Sie im Abschnitt **Virtuelles Netzwerk auswählen** auf **Neu erstellen**. Übernehmen Sie im Abschnitt **Virtuelles Netzwerk erstellen** alle Standardeinstellungen, und klicken Sie auf **OK**. Klicken Sie im Abschnitt **Einstellungen** auf **OK**.
+   d. Klicken Sie im Abschnitt **Größe auswählen** auf **A1 Standard** und dann auf **Auswählen**.  
+
+   e. Klicken Sie im Abschnitt **Einstellungen** auf **Virtuelles Netzwerk**. Klicken Sie im Abschnitt **Virtuelles Netzwerk auswählen** auf **Neu erstellen**. Übernehmen Sie im Abschnitt **Virtuelles Netzwerk erstellen** alle Standardeinstellungen, und klicken Sie auf **OK**. Klicken Sie im Abschnitt **Einstellungen** auf **OK**.
 
    ![Virtuelles Netzwerk erstellen](media/azure-stack-provision-vm/image04.png)
 
-   e. Klicken Sie im Abschnitt **Zusammenfassung** auf **OK**, um den virtuellen Computer zu erstellen.  
+   f. Klicken Sie im Abschnitt **Zusammenfassung** auf **OK**, um den virtuellen Computer zu erstellen.  
 
-   f. Klicken Sie zum Anzeigen Ihres neuen virtuellen Computers auf **Alle Ressourcen**, und suchen Sie dann nach dem virtuellen Computer. Klicken Sie auf seinen Namen.
+   g. Klicken Sie zum Anzeigen des neuen virtuellen Computers auf **Alle Ressourcen**, und suchen Sie dann nach dem virtuellen Computer. Klicken Sie auf seinen Namen.
 
     ![Alle Ressourcen](media/azure-stack-provision-vm/image06.png)
 

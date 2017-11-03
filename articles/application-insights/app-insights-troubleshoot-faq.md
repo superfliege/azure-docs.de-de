@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: bwren
-ms.openlocfilehash: 0b6f9e8192a4c6808beb61acb0f93ef5ec73e956
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ff3a0b5f64adff535123cf0ea8ca766ed2b8d5be
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Häufig gestellte Fragen
 
@@ -104,7 +104,7 @@ Von Server-Web-Apps:
 * HTTP-Anforderungen
 * [Abhängigkeiten](app-insights-asp-net-dependencies.md) Aufrufe von SQL-Datenbanken, HTTP-Aufrufe externer Dienste, Aufrufe von Azure Cosmos DB, Tabellen, Blob Storage und Warteschlangen. 
 * [Ausnahmen](app-insights-asp-net-exceptions.md) und Stapelüberwachungen.
-* [Leistungsindikatoren](app-insights-performance-counters.md) – bei Verwendung von [Statusmonitor](app-insights-monitor-performance-live-website-now.md), Azure-Überwachung („app-insights-azure-web-apps.md“) oder [collectd-Writer für Application Insights](app-insights-java-collectd.md).
+* [Leistungsindikatoren](app-insights-performance-counters.md): Bei Verwendung von [Statusmonitor](app-insights-monitor-performance-live-website-now.md), [Azure-Überwachung](app-insights-azure-web-apps.md) oder [collectd-Writer von Application Insights](app-insights-java-collectd.md).
 * [Benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md), die Sie codieren.
 * [Ablaufverfolgungsprotokolle](app-insights-asp-net-trace-logs.md), wenn Sie den entsprechenden Sammler konfigurieren.
 
@@ -186,7 +186,7 @@ Verwenden Sie eine einzelne Ressource für alle Komponenten oder Rollen in einem
 * Das JavaScript-SDK legt im Webclient ein Benutzercookie zum Identifizieren wiederkehrender Benutzer und ein Sitzungscookie zum Gruppieren von Aktivitäten fest.
 * Wenn kein clientseitiges Skript vorhanden ist, können Sie [Cookies auf dem Server festlegen](http://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
 * Wenn ein realer Benutzer Ihre Website in verschiedenen Browsern, beim InPrivate- oder Inkognito-Browsing oder auf unterschiedlichen Computern verwendet, wird er mehrmals gezählt.
-* Um einen angemeldeten Benutzer auf verschiedenen Computern und in verschiedenen Browser zu identifizieren, legen Sie [setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users) fest.
+* Um einen angemeldeten Benutzer auf verschiedenen Computern und in verschiedenen Browsern zu identifizieren, fügen Sie einen Aufruf von [setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users) hinzu.
 
 ## <a name="q17"></a> Habe ich alles in Application Insights aktiviert?
 | Diese Daten sollten angezeigt werden | So erhalten Sie die Daten | Deshalb benötigen Sie die Daten |
@@ -204,7 +204,7 @@ Verwenden Sie eine einzelne Ressource für alle Komponenten oder Rollen in einem
 
 Durch [Sampling](app-insights-sampling.md) wird die Anzahl der Telemetrieelemente (Anforderungen, benutzerdefinierte Ereignisse usw.), die tatsächlich von der App an das Portal gesendet werden, verringert. In „Suchen“ wir die Anzahl der tatsächlich empfangenen Elemente angezeigt. In Metrikdiagrammen, in denen die Anzahl der Ereignisse angezeigt wird, wird die Anzahl der ursprünglich eingetretenen Ereignisse angezeigt. 
 
-Jedes übertragene Element verfügt über die `itemCount`-Eigenschaft, die angibt, wie viele ursprüngliche Ereignisse das Element darstellt. Sie können die folgende Abfrage in Analytics ausführen, um zu sehen, wie Sampling erfolgt:
+Jedes übertragene Element verfügt über eine `itemCount`-Eigenschaft, die angibt, wie viele ursprüngliche Ereignisse das Element darstellt. Sie können die folgende Abfrage in Analytics ausführen, um zu sehen, wie Sampling erfolgt:
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()

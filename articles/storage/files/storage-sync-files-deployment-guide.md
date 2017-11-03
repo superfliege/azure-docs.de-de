@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 9f9ff0674fd4e3f9b0598a982d81681eaa6d1997
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: b31b6ae413f72c626e2601ba860aad44ddaa29cd
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="how-to-deploy-azure-file-sync-preview"></a>Bereitstellen der Azure-Dateisynchronisierung (Vorschau)
 Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
@@ -117,6 +117,9 @@ Im daraufhin angezeigte Bereich „Serverendpunkt hinzufügen“ müssen die fol
 - **Freier Speicherplatz auf Volume**: Die Menge des freien Speicherplatzes auf dem Volume, auf dem sich der Serverendpunkt befindet. Wenn z.B. für ein Volume mit einem einzigen Serverendpunkt „Freier Speicherplatz auf Volume“ auf 50 % festgelegt ist, wird ungefähr die Hälfte der Daten in Azure Files ausgelagert. Beachten Sie, dass die Azure-Dateifreigabe immer eine vollständige Kopie der Daten in der Synchronisierungsgruppe enthält, unabhängig davon, ob Cloudtiering aktiviert ist.
 
 Klicken Sie auf „Erstellen“, um den Serverendpunkt hinzuzufügen. Ihre Dateien bleiben jetzt zwischen der Azure-Dateifreigabe und dem Windows-Server synchron. 
+
+> [!Important]  
+> Sie können Änderungen an jedem Cloud- oder Serverendpunkt in der Synchronisierungsgruppe vornehmen und Ihre Dateien mit den anderen Endpunkten in der Synchronisierungsgruppe synchronisieren. Wenn Sie eine Änderung direkt am Cloudendpunkt (Azure-Dateifreigabe) vornehmen, beachten Sie, dass Änderungen zunächst von einem Azure File Sync-Auftrag zum Erkennen von Änderungen entdeckt werden müssen, der für einen Cloudendpunkt nur einmal alle 24 Stunden ausgelöst wird. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Azure Files](storage-files-faq.md#afs-change-detection).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Hinzufügen/Entfernen eines Azure-Dateisynchronisierungsserver-Endpunkts](storage-sync-files-server-endpoint.md)

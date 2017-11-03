@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 9e75f83755424b1b89e7649af98c0347fc5e1c59
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdaf09d5558e0453b826b9a3e52500379ced5422
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Erstellen einer ASE mit einer Azure Resource Manager-Vorlage
 
@@ -48,7 +48,7 @@ Eine Resource Manager-Vorlage, die eine ASE erstellt, und die zugehörige Parame
 
 Wenn Sie eine ILB-ASE erstellen möchten, verwenden Sie diese [Beispiele][quickstartilbasecreate] für Resource Manager-Vorlagen. Diese sind für diesen Anwendungsfall bestimmt. Die meisten Parameter in der Datei *azuredeploy.parameters.json* gelten für die Erstellung sowohl einer ILB-ASE als auch einer externen ASE. In der folgenden Liste sind die Parameter aufgeführt, die für die Erstellung einer ILB-ASE eine besondere Bedeutung haben bzw. nur dafür benötigt werden:
 
-* *interalLoadBalancingMode*: Sollte in den meisten Fällen auf „3“ festgelegt werden. Dies bedeutet, dass sowohl der HTTP-/HTTPS-Datenverkehr über die Ports 80/443 als auch über die Steuer-/Datenkanalports, auf denen der FTP-Dienst in der ASE lauscht, an eine per ILB zugeordnete interne Adresse des virtuellen Netzwerks gebunden sind. Wenn diese Eigenschaft auf „2“ festgelegt wird, sind nur die Ports, die sich auf den FTP-Dienst beziehen (sowohl Steuer- als auch Datenkanäle) an eine ILB-Adresse gebunden. Der HTTP-/HTTPS-Datenverkehr verbleibt an der öffentlichen VIP.
+* *interalLoadBalancingMode*: Sollte in den meisten Fällen auf „3“ festgelegt werden. Dies bedeutet, dass sowohl der HTTP/HTTPS-Datenverkehr über die Ports 80/443 als auch die Steuer-/Datenkanalports, auf die der FTP-Dienst in der ASE lauscht, an eine per ILB zugeordnete Adresse des virtuellen Netzwerks gebunden sind. Wenn diese Eigenschaft auf „2“ festgelegt wird, sind nur die Ports, die sich auf den FTP-Dienst beziehen (sowohl Steuer- als auch Datenkanäle) an eine ILB-Adresse gebunden. Der HTTP-/HTTPS-Datenverkehr verbleibt an der öffentlichen VIP.
 * *dnsSuffix*: Dieser Parameter definiert die Standardstammdomäne, die der ASE zugewiesen wird. In der öffentlichen Variante von Azure App Service lautet die Standardstammdomäne für alle Web-Apps *azurewebsites.net*. Da eine ILB-ASE sich intern im virtuellen Netzwerk eines Kunden befindet, wäre es nicht sinnvoll, die Standardstammdomäne des öffentlichen Diensts zu verwenden. Stattdessen sollte eine ILB-ASE über eine Standardstammdomäne verfügen, für die die Verwendung im internen virtuellen Netzwerk eines Unternehmens sinnvoll ist. Die Contoso Corporation könnte beispielsweise die Standardstammdomäne *internal-contoso.com* für Apps verwenden, für die beabsichtigt ist, dass sie nur im virtuellen Netzwerk von Contoso auflösbar und zugänglich sind. 
 * *ipSslAddressCount*: Für diesen Parameter wird in der Datei *azuredeploy.json* automatisch der Wert 0 verwendet, da ILB-ASEs nur über eine einzige ILB-Adresse verfügen. Es gibt keine expliziten IP-SSL-Adressen für eine ILB-ASE. Daher muss der IP-SSL-Adresspool für eine ILB-ASE auf 0 (null) festgelegt werden. Andernfalls tritt ein Bereitstellungsfehler auf. 
 
