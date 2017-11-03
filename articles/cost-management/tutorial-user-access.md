@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/19/2017
+ms.date: 10/11/2017
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: aca9f0b3320f298987cf39172fd4b043326a2f4b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a42f3b51bf6d888d0d5602887ed317c6164391ef
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Kostenverwaltungsdaten
 
@@ -49,6 +49,8 @@ Typische Benutzer, die Zugriff auf Kostenverwaltungsdaten wie Dashboards oder Be
 
 ![Neuen Benutzer mit Benutzerzugriff erstellen](.\media\tutorial-user-access\new-user-access.png)
 
+Ein Videotutorial über das Hinzufügen von Benutzern finden Sie unter [Adding Users to Azure Cost Management Powered by Cloudyn (Hinzufügen von Benutzern zu Azure Cost Management von Cloudyn)](https://youtu.be/Nzn7GLahx30).
+
 ## <a name="create-entities"></a>Erstellen von Entitäten
 
 Wenn Sie Ihre Kostenentitätshierarchie definieren, besteht eine bewährte Methode darin, die Struktur Ihrer Organisation zu identifizieren.
@@ -67,6 +69,10 @@ Klicken Sie neben **Entities** (Entitäten) auf **Add Entity** (Entität hinzuf�
 
 **Speichern** Sie nach Abschluss die Entität.
 
+
+Ein Videotutorial über das Erstellen einer Kostenentitätshierarchie finden Sie unter [Creating a Cost Entity Hierarchy in Azure Cost Management Powered by Cloudyn (Erstellen einer Kostenentitätshierarchie in Azure Cost Management von Cloudyn)](https://youtu.be/dAd9G7u0FmU).
+
+Wenn Sie ein Nutzer von Azure Enterprise Agreement sind, finden Sie ein Videotutorial über das Zuordnen von Konten und Abonnements zu Entitäten unter [Connecting to Azure Resource Manager with Azure Cost Management Powered by Cloudyn (Herstellen einer Verbindung mit Azure Resource Manager mit Azure Cost Management von Cloudyn)](https://youtu.be/oCIwvfBB6kk).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

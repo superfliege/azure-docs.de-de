@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 10/12/2017
 ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: fdee5703adc76e750aebd83d4122e7b79244c0e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9dce8c3132b60b0b0c44f9f9d1e9cf01f68fa280
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -78,10 +78,10 @@ Für Connectors findet innerhalb einer Connectorgruppe zwar ein automatischer La
 |4|16|320|1150|
 |8|32|270|1.190|
 |16|64|245|1200*|
-\* Bei diesem Computer galt ein Verbindungslimit von 200. Bei allen anderen Computern wurde das Standardlimit von 200 Verbindungen verwendet.
+\* Bei diesem Computer galt ein Verbindungslimit von 800. Bei allen anderen Computern wurde das Standardlimit von 200 Verbindungen verwendet.
  
 >[!NOTE]
->Das Standardlimit für Konfigurationen ist 200 (für zwei, vier und acht Kerne).  Bei Tests mit 16 Kernen wurde das Verbindungslimit auf 800 erhöht. Bei Computern mit vier, acht und 16 Kernen ist der Unterschied beim TPS-Maximalwert minimal. Sie unterscheiden sich hauptsächlich bei der erwarteten Wartezeit.  
+>Bei Computern mit vier, acht und 16 Kernen ist der Unterschied beim TPS-Maximalwert minimal. Sie unterscheiden sich hauptsächlich bei der erwarteten Wartezeit.  
 
 ## <a name="security-and-networking"></a>Sicherheit und Netzwerk
 

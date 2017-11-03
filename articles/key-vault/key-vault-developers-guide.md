@@ -7,13 +7,13 @@ manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 08/04/2017
+ms.date: 10/12/2017
 ms.author: bruceper
-ms.openlocfilehash: fec4769c0bd571edea84dd2f766bb907d8819be5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d617726a4ee9335728ab82104efbd845e3b0d05
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -28,7 +28,7 @@ Allgemeine Informationen zu Azure Key Vault finden Sie unter [Was ist der Schlü
 
 ## <a name="public-previews"></a>Öffentliche Vorschauversionen
 
-Wir veröffentlichen in regelmäßigen Abständen eine öffentliche Vorschau des neuen Key Vault-Features. Testen Sie diese, und teilen Sie uns Ihre Meinung über azurekeyvault@microsoft.com mit, unsere E-Mail-Adresse für Feedback.
+Wir veröffentlichen in regelmäßigen Abständen eine öffentliche Vorschau des neuen Key Vault-Features. Testen Sie diese, und teilen Sie uns Ihre Meinung über die folgende E-Mail-Adresse für Feedback mit: azurekeyvault@microsoft.com.
 
 ### <a name="storage-account-keys---july-10-2017"></a>Speicherkontoschlüssel – 10. Juli 2017
 
@@ -52,40 +52,61 @@ Im Video erwähnte Ressourcen:
 
 ## <a name="creating-and-managing-key-vaults"></a>Erstellen und Verwalten von Schlüsseltresoren
 
-Bevor Sie mit Azure Key Vault in Ihrem Code arbeiten, können Sie Tresore über REST, Resource Manager-Vorlagen, PowerShell oder die Befehlszeilenschnittstelle (CLI) erstellen und verwalten, wie in den folgenden Artikeln beschrieben:
+Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mithilfe von MSI (Managed Service Identity, verwaltete Dienstidentität) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
 
-- [Erstellen und Verwalten von Schlüsseltresoren über REST](https://docs.microsoft.com/rest/api/keyvault/)
+Weitere Informationen zu MSI finden Sie im Artikel [Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/msi-overview).
+
+Weitere Informationen zur Arbeit mit AAD finden Sie im Artikel [Integrieren von Anwendungen in Azure Active Directory](/active-directory/develop/active-directory-integrating-applications).
+
+Bevor Sie mit Schlüsseln, Geheimnissen oder Zertifikaten in Ihrem Schlüsseltresor arbeiten können, müssen Sie diesen über die CLI, PowerShell, Azure Resource Manager-Vorlagen oder REST erstellen und verwalten. Die jeweilige Vorgehensweise wird in den folgenden Artikeln beschrieben:
+
+- [Erstellen und Verwalten von Schlüsseltresoren über die CLI](key-vault-manage-with-cli2.md)
 - [Erstellen und Verwalten von Schlüsseltresoren mit PowerShell](key-vault-get-started.md)
-- [Erstellen und Verwalten von Schlüsseltresoren über die Befehlszeilenschnittstelle](key-vault-manage-with-cli2.md)
 - [Erstellen eines Schlüsseltresors und Hinzufügen eines Geheimnisses über eine Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-template-keyvault.md)
+- [Erstellen und Verwalten von Schlüsseltresoren über REST](https://docs.microsoft.com/rest/api/keyvault/)
 
-> [!NOTE]
-> Vorgänge für Schlüsseltresore werden über AAD authentifiziert und über eine eigene Zugriffsrichtlinie des Schlüsseltresors autorisiert, die pro Tresor definiert wird.
 
 ## <a name="coding-with-key-vault"></a>Programmieren mit dem Schlüsseltresor
 
-Das Key Vault-Verwaltungssystem für Programmierer besteht aus mehreren Schnittstellen auf Grundlage von REST. Über die REST-Schnittstelle können Sie auf alle Ihre Ressourcen für Schlüsseltresore zugreifen: Schlüssel, Geheimnisse und Zertifikate. [Referenz für die Key Vault-REST-API](https://docs.microsoft.com/rest/api/keyvault/). 
+Das Key Vault-Verwaltungssystem für Programmierer besteht aus mehreren Schnittstellen. Dieser Abschnitt enthält Links zu allen unterstützen Programmier- und Skriptsprachen und zu einigen Codebeispielen. 
 
-### <a name="supported-programming-languages"></a>Unterstützte Programmiersprachen
+### <a name="supported-programming-and-scripting-languages"></a>Unterstützte Programmier- und Skriptsprachen
+
+#### <a name="rest"></a>REST
+
+Über die REST-Schnittstelle können Sie auf sämtliche Key Vault-Ressourcen wie Schlüsseltresore, Schlüssel, Geheimnisse zugreifen. 
+
+[Referenz für die Key Vault-REST-API](https://docs.microsoft.com/rest/api/keyvault/). 
 
 #### <a name="net"></a>.NET
 
-- [.NET-API-Referenz für Key Vault](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault) 
+[.NET-API-Referenz für Key Vault](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault) 
 
 Weitere Informationen über die .NET SDK-Version 2.x finden Sie in den [Anmerkungen zu dieser Version](key-vault-dotnet2api-release-notes.md).
 
 #### <a name="java"></a>Java
 
-- [Java SDK für Key Vault](https://docs.microsoft.com/java/api/com.microsoft.azure.keyvault)
+[Java SDK für Key Vault](https://docs.microsoft.com/java/api/overview/azure/keyvault)
 
 #### <a name="nodejs"></a>Node.js
 
-Tresorverwaltungs-API und Tresorobjekt-API sind in Node.js getrennt. Die Key Vault-Verwaltung ermöglicht das Erstellen und Aktualisieren Ihres Schlüsseltresors. Die Key Vault-Betrieb-API ist für die Arbeit mit Tresorobjekten wie Schlüsseln, Geheimnissen und Zertifikaten vorgesehen. 
+Die Key Vault-Verwaltungs-API und die Key Vault-Objekt-API sind in Node.js getrennt. In den folgenden Übersichtsartikeln erhalten Sie weitere Informationen zu beiden. 
 
-- [Node.js-API-Referenz für die Key Vault-Verwaltung](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest/)
-- [Node.js-API-Referenz für den Key Vault-Betrieb](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest/) 
+[Azure Key Vault-Module für Node.js](https://docs.microsoft.com/nodejs/api/overview/azure/key-vault)
 
-### <a name="quick-start"></a>Schnellstart
+#### <a name="python"></a>Python
+
+[Azure Key Vault-Bibliotheken für Python](https://docs.microsoft.com/python/api/overview/azure/key-vault)
+
+#### <a name="azure-cli-2"></a>Azure CLI 2
+
+[Azure CLI für Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
+
+#### <a name="azure-powershell"></a>Azure PowerShell 
+
+[Azure PowerShell für Key Vault](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault)
+
+### <a name="quick-start-guides"></a>Schnellstarthandbücher
 
 - [Erstellen eines Schlüsseltresors](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 - [Erste Schritte mit Key Vault in Node.js](https://azure.microsoft.com/en-us/resources/samples/key-vault-node-getting-started/)

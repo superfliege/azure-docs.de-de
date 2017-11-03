@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 10/17/2017
 ms.author: bwren
-ms.openlocfilehash: 356a73b406544b91191d5e9a03b2fa52ec501327
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bf48cbc52a1ed96ed1bb49b1879d5cd7aece945c
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Neue Protokollsuche in Log Analytics – häufig gestellte Fragen und bekannte Probleme
 
@@ -94,6 +94,18 @@ Die Legacy-[Protokollsuch-API](log-analytics-log-search-api.md) funktioniert nic
 Einen Vergleich der beiden Portale finden Sie unter [Portale zum Erstellen und Bearbeiten von Protokollabfragen in Azure Log Analytics](log-analytics-log-search-portals.md).  Jedes Portal verfügt über spezielle Vorteile, daher können Sie das am besten für Ihre Anforderungen geeignete verwenden.  Häufig werden Abfragen im Advanced Analytics-Portal geschrieben und an anderen Stellen eingefügt, z.B. im Ansicht-Designer.  Lesen Sie in diesem Fall die [zu berücksichtigenden Aspekte](log-analytics-log-search-portals.md#advanced-analytics-portal).
 
 
+### <a name="question--after-upgrade-i-get-an-error-trying-to-run-queries-and-am-also-seeing-errors-in-my-views"></a>Frage: Nach dem Upgrade erhalte ich eine Fehlermeldung bei dem Versuch, Abfragen auszuführen, und sehe auch Fehlermeldungen in meinen Ansichten.
+
+Ihr Browser erfordert Zugriff auf die folgenden Adressen, um Log Analytics-Abfragen nach dem Upgrade auszuführen.  Wenn der Browser über eine Firewall auf das Azure-Portal zugreift, müssen Sie den Zugriff auf diese Adressen aktivieren.
+
+| Uri | IP | Ports |
+|:---|:---|:---|
+| portal.loganalytics.io | Dynamisch | 80, 443 |
+| api.loganalytics.io    | Dynamisch | 80, 443 |
+| docs.loganalytics.io   | Dynamisch | 80, 443 |
+
+
+
 ## <a name="power-bi"></a>Power BI
 
 ### <a name="question-does-anything-change-with-powerbi-integration"></a>Frage: Ändert sich etwas bei der Power BI-Integration?
@@ -103,10 +115,12 @@ Ja.  Sobald für Ihren Arbeitsbereich ein Upgrade durchgeführt wurde, funktioni
 Derzeit gilt eine Größenbeschränkung von 8 MB für Log Analytics-Abfragen, die nach Power BI exportiert werden können.  Dieses Limit wird demnächst erhöht.
 
 
-##<a name="powershell-cmdlets"></a>PowerShell-Cmdlets
+## <a name="powershell-cmdlets"></a>PowerShell-Cmdlets
 
 ### <a name="question-does-the-log-search-powershell-cmdlet-get-updated-after-i-upgrade"></a>Frage: Wird das PowerShell-Cmdlet für die Protokollsuche nach dem Upgrade aktualisiert?
-Das Cmdlet [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/Get-AzureRmOperationalInsightsSearchResults) wurde noch nicht auf die neue Suchsprache aktualisiert.  Verwenden Sie deshalb auch nach einem Upgrade Ihres Arbeitsbereichs weiterhin die alte Abfragesprache mit diesem Cmdlet.  Eine aktualisierte Dokumentation wird nach dem Update des Cmdlets verfügbar gemacht.
+Die [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/Get-AzureRmOperationalInsightsSearchResults) sind veraltet, wenn das Upgrade aller Arbeitsbereiche abgeschlossen ist.  Verwenden Sie das [Invoke-LogAnalyticsQuery](https://dev.loganalytics.io/documentation/Tools/PowerShell-Cmdlets)-Cmdlet für Protokollsuchen in aktualisierten Arbeitsbereichen.
+
+
 
 
 ## <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
@@ -159,11 +173,9 @@ Nein. Die verfügbaren Protokolldaten, die für Ihre Arbeitsbereich-Suchvorgäng
 ### <a name="question-what-happens-if-i-dont-upgrade-my-workspace"></a>Frage: Was passiert, wenn ich kein Upgrade für meinen Arbeitsbereich durchführe?  
 Die ältere Protokollsuche wird in den kommenden Monaten als veraltet gekennzeichnet. Arbeitsbereiche, die zu dieser Zeit noch nicht upgegradet worden sind, erhalten automatisch ein Upgrade.
 
-### <a name="question-i-didnt-choose-to-upgrade-but-my-workspace-has-been-upgraded-anyway-what-happened"></a>Frage: Ich wollte kein Upgrade durchführen, jedoch wurde trotzdem eines für meinen Arbeitsbereich durchgeführt. Was ist passiert?  
-Es kann sein, dass ein anderer Administrator dieses Arbeitsbereichs ein Upgrade durchgeführt hat. Beachten Sie, dass ein Arbeitsbereich automatisch upgegradet wird, wenn die neue Sprache allgemein verfügbar wird.  
+### <a name="question-can-i-revert-back-after-i-upgrade"></a>Frage: Ist eine Wiederherstellung nach einem Upgrade möglich?
+Vor der allgemeinen Verfügbarkeit könnten Sie Ihren Arbeitsbereich nach dem Upgrade wiederherstellen.  Da die neue Sprache jetzt allgemein verfügbar ist, wurde diese Möglichkeit aufgehoben, da wir beginnen, die veraltete Plattform außer Kraft zu setzen.
 
-### <a name="question-i-have-upgraded-by-mistake-and-now-need-to-cancel-it-and-restore-everything-back-what-should-i-do"></a>Frage: Ich habe aus Versehen ein Upgrade durchgeführt und muss es jetzt abbrechen und alles wiederherstellen. Wie soll ich vorgehen?  
-Kein Problem.  Wir erstellen vor dem Upgrade eine Momentaufnahme Ihres Arbeitsbereichs, damit Sie ihn wiederherstellen können. Bedenken Sie, dass Suchvorgänge, Warnungen oder Ansichten, die Sie nach dem Upgrade gespeichert haben, trotzdem verloren gehen.  Um Ihre Arbeitsbereichsumgebung wiederherzustellen, befolgen Sie die Vorgehensweise unter [Kann ich nach einem Upgrade die vorherige Version wiederherstellen?](log-analytics-log-search-upgrade.md#can-i-go-back-after-i-upgrade).
 
 
 ## <a name="views"></a>Ansichten

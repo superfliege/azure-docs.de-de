@@ -11,13 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 10/13/2017
 ms.author: dobett
-ms.openlocfilehash: f17f3084138d667b2584142ed90ecc8fc1586189
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f864ca586e8e607168ae7b46a1eaa297eca1cfb8
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt
 
@@ -40,16 +40,18 @@ IoT Hub stellt den integrierten Endpunkt **messages/events** für Ihre Back-End-
 
 Wenn Sie das [Azure Service Bus-SDK für .NET][lnk-servicebus-sdk] oder den [Event Hubs-Ereignisprozessorhost][lnk-eventprocessorhost] verwenden, können Sie eine beliebige IoT Hub-Verbindungszeichenfolge mit den richtigen Berechtigungen verwenden. Anschließend verwenden Sie **messages/events** als Event Hub-Name.
 
-Wenn Sie SDKs (oder Produktintegrationen) verwenden, die nicht IoT Hub-fähig sind, müssen Sie einen Event Hub-kompatiblen Endpunkt und den Event Hub-kompatiblen Namen aus den IoT Hub-Einstellungen im [Azure-Portal][lnk-management-portal] abrufen:
+Wenn Sie SDKs (oder Produktintegrationen) verwenden, die nicht IoT Hub-fähig sind, müssen Sie einen Event Hub-kompatiblen Endpunkt und den Event Hub-kompatiblen Namen aus den IoT Hub-Einstellungen abrufen:
 
-1. Klicken Sie auf dem Blatt „IoT Hub“ auf **Endpunkte**.
-1. Klicken Sie im Abschnitt **Integrierte Endpunkte** auf **Ereignisse**. Das Blatt enthält die folgenden Werte: **Event Hub-kompatibler Endpunkt**, **Event Hub-kompatibler Name**, **Partitionen**, **Aufbewahrungszeit** und **Consumergruppen**.
+1. Melden Sie sich beim [Azure-Portal][lnk-management-portal] an, und navigieren Sie zu Ihrem IoT Hub.
+1. Klicken Sie auf **Endpunkte**.
+1. Klicken Sie im Abschnitt **Integrierte Endpunkte** auf **Ereignisse**. 
+1. Eine Eigenschaftenseite wird geöffnet und enthält die folgenden Werte: **Event Hub-kompatibler Endpunkt**, **Event Hub-kompatibler Name**, **Partitionen**, **Aufbewahrungszeit** und **Consumergruppen**.
 
     ![D2C-Einstellungen][img-eventhubcompatible]
 
-Für das IoT Hub SDK ist der IoT Hub-Endpunktname erforderlich. Er lautet **messages/events** (wie auf dem Blatt **Endpunkte** zu sehen).
+Für das IoT Hub SDK ist der IoT Hub-Endpunktname erforderlich. Er lautet **messages/events** (wie unter **Endpunkte** angegeben).
 
-Wenn das von Ihnen verwendete SDK einen Wert für **Hostname** oder **Namespace** benötigt, entfernen Sie das Schema aus dem **Event Hub-kompatiblen Endpunkt**. Wenn es sich bei Ihrem Event Hub-kompatiblen Endpunkt beispielsweise um **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** handelt, lautet der **Hostname** **iothub-ns-myiothub-1234.servicebus.windows.net**, und der **Namespace** lautet **iothub-ns-myiothub-1234**.
+Wenn das von Ihnen verwendete SDK einen Wert für **Hostname** oder **Namespace** benötigt, entfernen Sie das Schema aus dem **Event Hub-kompatiblen Endpunkt**. Wenn es sich bei Ihrem Event Hub-kompatiblen Endpunkt beispielsweise um **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** handelt, lautet der **Hostname** **iothub-ns-myiothub-1234.servicebus.windows.net**. Der **Namespace** ist **iothub-ns-myiothub-1234**.
 
 Sie können in diesem Fall eine SAS-Richtlinie für den gemeinsamen Zugriff mit den **ServiceConnect**-Berechtigungen zur Verbindungsherstellung mit dem angegebenen Event Hub verwenden.
 

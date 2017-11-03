@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/03/2017
+ms.date: 10/17/2017
 ms.author: skwan
-ms.openlocfilehash: 3974c3b0e22e95b8dd4a07a923fbbfc2fe7f8961
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 803d0ad64d331dd331e5bab718484cb2fc8247d5
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen
 
@@ -51,11 +51,14 @@ Testen Sie ein Tutorial für verwaltete Dienstidentitäten, um mehr über End-to
 | Für MSI aktivierte Ressourcen | Lernen Sie Folgendes: |
 | ------- | -------- |
 | Azure-VM (Windows) | [Zugreifen auf Azure Resource Manager mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-arm.md) |
-|                    | [Zugreifen auf Azure Storage mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-storage.md) |
+|                    | [Zugreifen auf Azure Storage über einen Zugriffsschlüssel mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-storage.md) |
+|                    | [Zugreifen auf Azure Storage über SAS mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-storage-sas.md) |
+|                    | [Zugreifen auf Azure SQL mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-sql.md) |
 |                    | [Access a non-Azure AD resource with a Windows VM Managed Service Identity and Azure Key Vault (Zugreifen auf eine Nicht-Azure-Ressource mit einer Windows-VM-MSI und Azure Key Vault)](msi-tutorial-windows-vm-access-nonaad.md) |
 | Azure-VM (Linux)   | [Zugreifen auf Azure Resource Manager mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-arm.md) |
-|                    | [Zugreifen auf Azure Storage mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-storage.md) |
-|                    | [Zugreifen auf eine Nicht-Azure-Ressource mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-nonaad.md) |
+|                    | [Zugreifen auf Azure Storage über einen Zugriffsschlüssel mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-storage.md) |
+|                    | [Zugreifen auf Azure Storage über SAS mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-storage-sas.md) |
+|                    | [Zugreifen auf eine Nicht-Azure AD-Ressource mit einer Linux-VM-MSI und Azure Key Vault](msi-tutorial-linux-vm-access-nonaad.md) |
 | Azure App Service  | [Use Managed Service Identity with Azure App Service or Azure Functions (Verwenden von verwalteten Dienstidentitäten mit Azure App Service oder Azure Functions)](/azure/app-service/app-service-managed-service-identity) |
 | Azure Function     | [Use Managed Service Identity with Azure App Service or Azure Functions (Verwenden von verwalteten Dienstidentitäten mit Azure App Service oder Azure Functions)](/azure/app-service/app-service-managed-service-identity) |
 
@@ -82,6 +85,7 @@ Die folgenden Dienste unterstützen die Azure AD-Authentifizierung und wurden mi
 | Azure Resource Manager | https://management.azure.com/ | Verfügbar | September 2017 | [Azure-Portal](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure-Befehlszeilenschnittstelle](msi-howto-assign-access-CLI.md) |
 | Azure Key Vault | https://vault.azure.net/ | Verfügbar | September 2017 | |
 | Azure Data Lake | https://datalake.azure.net/ | Verfügbar | September 2017 | |
+| Azure SQL | https://database.windows.net/ | Verfügbar | Oktober 2017 | |
 
 ## <a name="how-much-does-managed-service-identity-cost"></a>Wie viel kosten verwaltete Dienstidentitäten?
 

@@ -9,16 +9,16 @@ editor:
 ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
-pms.tgt_pltfrm: na
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/20/2017
 ms.author: twooley
-ms.openlocfilehash: 8fbed3c15b385e385e64093331df37363a558185
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b00bd606faaffaad30ff6cea3bcf47dc85282f69
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="apply-updates-in-azure-stack"></a>Anwenden von Updates in Azure Stack
 
@@ -37,6 +37,9 @@ Wenn ein Microsoft-Updatepaket für Azure Stack verfügbar ist, laden Sie das Pa
 ## <a name="import-and-install-updates"></a>Importieren und Installieren von Updates
 
 Das folgende Verfahren zeigt, wie Updatepakete im Administratorportal importiert und installiert werden.
+
+> [!IMPORTANT]
+> Es wird dringend empfohlen, dass Sie die Benutzer über alle Wartungsvorgänge unterrichten und normale Wartungsfenster so weit wie möglich außerhalb der Geschäftszeiten planen. Wartungsvorgänge können sowohl Benutzerworkloads als auch Portalvorgänge beeinträchtigen.
 
 1. Klicken Sie im Administratorportal auf **Weitere Dienste**. Klicken Sie anschließend in der Kategorie **Daten und Speicher** auf **Speicherkonten**. (Oder beginnen Sie im Filterfeld mit der Eingabe von **Speicherkonten**, und wählen Sie dann die entsprechende Option aus.)
 
@@ -73,4 +76,5 @@ Das folgende Verfahren zeigt, wie Updatepakete im Administratorportal importiert
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Übersicht zum Verwalten von Updates in Azure Stack](azure-stack-updates.md)
 - [Azure Stack-Wartungsrichtlinie](azure-stack-servicing-policy.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 5afe01e713516277abc3c2dfcccfc6d36cfc70d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8da2bc9645e432ddf0e9f627c7b5e30c44fd74b6
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>Überwachen und Gewinnen von Erkenntnissen zu Logik-App-Ausführungen mit Operations Management Suite (OMS) und Log Analytics
 
@@ -97,7 +97,7 @@ Sie müssen über einen OMS-Arbeitsbereich verfügen, bevor Sie beginnen können
 
 2. Wählen Sie die Kachel **Logic Apps Management** (Logik-App-Verwaltung), um eine Zusammenfassung mit weiteren Details zu Ihren Logik-App-Ausführungen anzuzeigen.
 
-   Hier sind Ihre Logik-App-Ausführungen nach Name oder Ausführungsstatus gruppiert.
+   Hier sind Ihre Logik-App-Ausführungen nach Name oder Ausführungsstatus gruppiert. Sie sehen auch Details zu den Fehlern in Aktionen oder Triggern für die Logik-App-Ausführungen.
 
    ![Statuszusammenfassung für Ihre Logik-App-Ausführungen](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-runs-summary.png)
    
@@ -107,8 +107,16 @@ Sie müssen über einen OMS-Arbeitsbereich verfügen, bevor Sie beginnen können
 
    ![Anzeigen von Ausführungen für eine Logik-App oder einen Status](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
 
-   > [!NOTE]
-   > In der Spalte **Erneute Übermittlung** wird „Ja“ für die Ausführungen angezeigt, die sich aus einer erneut übermittelten Ausführung ergeben haben.
+   Es gibt zwei erweiterte Optionen auf dieser Seite:
+   * **Überwachte Eigenschaften:** In dieser Spalte werden überwachte Eigenschaften, die nach Aktionen gruppiert sind, für die Logik-App angezeigt. Wählen Sie zum Anzeigen der überwachten Eigenschaften **Ansicht** aus. Sie können die überwachten Eigenschaften mit dem Spaltenfilter durchsuchen.
+   
+     ![Anzeigen der überwachten Eigenschaften für eine Logik-App](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
+
+     Alle neu hinzugefügten überwachten Eigenschaften werden möglicherweise erst nach 10 bis 15 Minuten erstmalig angezeigt. Erfahren Sie mehr über das [Hinzufügen überwachter Eigenschaften zu Ihrer Logik-App](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
+
+   * **Erneut übermitteln:** Sie können eine oder mehrere Logik-App-Ausführungen erneut übermitteln, die fehlgeschlagen sind, erfolgreich waren oder noch ausgeführt werden. Aktivieren Sie die Kontrollkästchen für die Ausführungen, die Sie erneut übermitteln möchten, und wählen Sie **Erneut übermitteln** aus. 
+
+     ![Erneutes Übermitteln von Logik-App-Ausführungen](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
 4. Zum Filtern dieser Ergebnisse können Sie sowohl die clientseitige als auch die serverseitige Filterung durchführen.
 
@@ -122,14 +130,23 @@ Sie müssen über einen OMS-Arbeitsbereich verfügen, bevor Sie beginnen können
    
      ![Ändern des Zeitfensters](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
  
-5. Wählen Sie eine Zeile aus, um für eine bestimmte Ausführung alle Aktionen und die dazugehörigen Details anzuzeigen. Die Seite „Protokollsuche“ wird geöffnet. 
+5. Um alle Aktionen und deren Details für eine bestimmte Ausführung anzuzeigen, wählen Sie eine Zeile für eine Logik-App-Ausführung aus.
 
-   * Wählen Sie **Tabelle**, um diese Informationen in einer Tabelle anzuzeigen.
+   Hier ist ein Beispiel mit allen Aktionen für eine bestimmte Logik-App-Ausführung dargestellt:
+
+   ![Anzeigen von Aktionen für eine Logik-App-Ausführung](media/logic-apps-monitor-your-logic-apps-oms/logic-app-action-details.png)
+   
+6. Um auf einer Ergebnisseite die Abfrage hinter den Ergebnissen anzuzeigen oder um alle Ergebnisse anzuzeigen, wählen Sie **Alle anzeigen** aus. Damit wird die Seite der Protokollsuche geöffnet.
+   
+   ![„Alle anzeigen“ auf Ergebnisseiten](media/logic-apps-monitor-your-logic-apps-oms/logic-app-seeall.png)
+   
+   Auf der Seite „Protokollsuche“:
+   * Um die Abfrageergebnisse in einer Tabelle anzuzeigen, wählen Sie **Tabelle** aus.
    * Sie können die Abfragezeichenfolge in der Suchleiste bearbeiten, um die Abfrage zu ändern. 
    Wählen Sie **Erweiterte Analyse**, falls Sie mehr Optionen benötigen.
 
      ![Anzeigen von Aktionen und Details für eine Logik-App-Ausführung](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
-
+     
      Hier auf der Azure Log Analytics-Seite können Sie Abfragen aktualisieren und die Ergebnisse der Tabelle anzeigen. 
      Für diese Abfrage wird die [Kusto-Abfragesprache](https://docs.loganalytics.io/docs/Language-Reference) verwendet. Sie können diese Sprache bearbeiten, wenn Sie unterschiedliche Ergebnisse anzeigen möchten. 
 
@@ -138,3 +155,4 @@ Sie müssen über einen OMS-Arbeitsbereich verfügen, bevor Sie beginnen können
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Überwachen von B2B-Nachrichten](../logic-apps/logic-apps-monitor-b2b-message.md)
+

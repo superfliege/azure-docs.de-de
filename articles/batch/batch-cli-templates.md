@@ -9,19 +9,19 @@ ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
-ms.date: 07/20/2017
+ms.date: 10/17/2017
 ms.author: markscu
-ms.openlocfilehash: 6b91466da46d1f4ca9f25bf1718be783603efc58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87ec0e1b6d01fc5d13e9b9f46987e416d8e1958f
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung (Vorschau)
 
 Mithilfe der Azure CLI können Batch-Aufträge ausgeführt werden, ohne Code zu schreiben.
 
-Mit der Azure CLI können Vorlagendateien erstellt und verwendet werden, die die Erstellung von Batch-Pools, -Aufträgen und -Aufgaben ermöglichen. Auftragseingabedateien können problemlos in das Speicherkonto hochgeladen werden, das dem Batch-Konto und den heruntergeladenen Auftragsausgabedateien zugeordnet ist.
+Erstellen und verwenden Sie die Vorlagendateien mit der Azure CLI zum Erstellen von Batch-Pools, -Aufträgen und -Aufgaben. Auftragseingabedateien können problemlos in das Speicherkonto hochgeladen werden, das dem Batch-Konto und den heruntergeladenen Auftragsausgabedateien zugeordnet ist.
 
 ## <a name="overview"></a>Übersicht
 
@@ -50,10 +50,10 @@ Für die Vorlagen- und Dateiübertragungsfunktionen muss keine Erweiterung insta
 
 Anweisungen zum Installieren der Azure CLI finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Nachdem die Azure CLI installiert wurde, kann die Batch-Erweiterung mit dem folgenden CLI-Befehl installiert werden:
+Nachdem die Azure CLI installiert wurde, kann die Batch-Erweiterung der aktuellen Version mit dem folgenden CLI-Befehl installiert werden:
 
 ```azurecli
-az component update --add batch-extensions --allow-third-party
+az extension add --source https://github.com/Azure/azure-batch-cli-extensions/releases/download/azure-batch-cli-extensions-2.0.0/azure_batch_cli_extensions-2.0.0-py2.py3-none-any.whl
 ```
 
 Weitere Informationen über die Batch-Erweiterung finden Sie unter [Microsoft Azure Batch-CLI-Erweiterungen für Windows, Mac und Linux](https://github.com/Azure/azure-batch-cli-extensions#microsoft-azure-batch-cli-extensions-for-windows-mac-and-linux).
@@ -106,7 +106,7 @@ Im Folgenden wird ein Beispiel für eine Vorlage vorgestellt, die einen Pool von
         "poolId": {
             "type": "string",
             "metadata": {
-                "description": "The pool id "
+                "description": "The pool ID "
             }
         }
     },

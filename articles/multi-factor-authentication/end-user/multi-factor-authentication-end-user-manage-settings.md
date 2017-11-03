@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 2328fe6e6b35ce523f8bf90cbe6159c7ba23d697
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87b1b6b03f5aaab5da6491c86132d4193693055a
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Verwalten der Einstellungen für die Überprüfung in zwei Schritten
 Dieser Artikel enthält Antworten auf Fragen zum Aktualisieren der Einstellungen für die Überprüfung in zwei Schritten oder die Multi-Factor Authentication. Wenn bei der Anmeldung bei Ihrem Konto Probleme auftreten, finden Sie Hilfe unter [Probleme bei der Überprüfung in zwei Schritten](multi-factor-authentication-end-user-troubleshoot.md).
@@ -28,7 +28,7 @@ Dieser Artikel enthält Antworten auf Fragen zum Aktualisieren der Einstellungen
 ## <a name="where-to-find-the-settings-page"></a>So finden Sie die Seite mit den Einstellungen
 Je nach der Konfiguration von Azure Multi-Factor Authentication in Ihrem Unternehmen gibt es mehrere Stellen, an denen Sie Einstellungen wie Ihre Telefonnummer ändern können.
 
-Wenn der IT-Administrator eine bestimmte URL oder Schritte zum Verwalten der Überprüfung in zwei Schritten gesendet hat, befolgen Sie diese Anweisungen. Andernfalls sollten sich die Schritte mit den folgenden Anweisungen durchführen lassen. Wenn Sie diese Anweisungen befolgen, jedoch nicht die gleichen Optionen angezeigt werden, hat Ihr Unternehmen bzw. Ihre Bildungseinrichtung ein eigenes Portal konfiguriert. Erkundigen Sie sich bei Ihrem Administrator nach dem Link zu Ihrem Azure Multi-Factor Authentication-Portal.
+Wenn der Unternehmenssupport eine bestimmte URL oder Schritte zum Verwalten der Überprüfung in zwei Schritten gesendet hat, befolgen Sie diese Anweisungen. Andernfalls sollten sich die Schritte mit den folgenden Anweisungen durchführen lassen. Wenn Sie diese Anweisungen befolgen, jedoch nicht die gleichen Optionen angezeigt werden, hat Ihr Unternehmen bzw. Ihre Bildungseinrichtung ein eigenes Portal konfiguriert. Erkundigen Sie sich bei Ihrem Administrator nach dem Link zu Ihrem Azure Multi-Factor Authentication-Portal.
 
 1. Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.  
 2. Wählen Sie oben rechts Ihren Kontonamen aus, und wählen Sie dann **Profil**.  

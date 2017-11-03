@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 10/16/2017
 ms.author: twooley
-ms.openlocfilehash: 790b65720a8457b780dc727b0f67fcd12aed31bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8484f7947f23a00c05b34babf13cd75f9d227740
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="planning-considerations-for-azure-stack-integrated-systems"></a>Überlegungen zur Planung für integrierte Azure Stack-Systeme
 
@@ -115,8 +115,7 @@ Für die Bereitstellung müssen Sie SSL-Zertifikate (Secure Sockets Layer) für 
 > Die Zertifikatinformationen in diesem Artikel werden nur als Hilfestellungen bereitgestellt. Bevor Sie Zertifikate für Azure Stack erwerben, wenden Sie sich an Ihren OEM-Hardwarepartner. Er stellt Ihnen ausführliche Anleitungen und Anforderungen für Zertifikate bereit.
 
 - Sie können ein einzelnes Platzhalterzertifikat oder eine Reihe von dedizierten Zertifikaten verwenden und dann Platzhalter nur für Endpunkte wie Speicher und Key Vault einsetzen.
-- Zertifikate müssen von einer öffentlichen vertrauenswürdigen Zertifizierungsstelle oder Unternehmenszertifizierungsstelle ausgestellt werden.
-- Das Zertifikat kann nicht von einer Zwischenzertifizierungsstelle ausgestellt werden.
+- Zertifikate müssen von einer öffentlichen vertrauenswürdigen Zertifizierungsstelle (ZS) oder einer vom Kunden verwalteten ZS ausgestellt werden.
  
 In der folgenden Tabelle sind Dienste und Anzahl von öffentlichen Endpunkten aufgeführt, die für die anfängliche Azure Stack-Bereitstellung entsprechende Zertifikate erfordern. 
 

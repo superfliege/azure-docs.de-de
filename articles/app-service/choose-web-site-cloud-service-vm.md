@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3fca6023fedcfc64ecfe66c0f4ed60a495953cfb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: edd5099d2804fdb5867b4be5b11a361004db1665
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich
 ## <a name="overview"></a>Übersicht
@@ -40,7 +40,7 @@ In der folgenden Tabelle werden die Funktionen von App Service, Cloud Services, 
 | Skalierung auf größere Computer ohne erneute Bereitstellung |X | | |X | |
 | Webserverinstanzen weisen gemeinsame Inhalte und eine gemeinsame Konfiguration auf. Dies bedeutet, dass Sie sie bei einer Skalierung nicht neu bereitstellen oder neu konfigurieren müssen. |X | | |X | |
 | Mehrere Bereitstellungsumgebungen (Produktion und Staging) |X |X | |X |Mit Service Fabric können Sie mehrere Umgebungen für Ihre Apps erstellen oder parallel verschiedene Versionen einer App bereitstellen. |
-| Automatische Aktualisierungsverwaltung für das Betriebssystem |X |X | | |Automatische Betriebssystemupdates sind für eine zukünftige Service Fabric-Version geplant. |
+| Automatische Aktualisierungsverwaltung für das Betriebssystem |X |X | | |Teilweise durch die Patch Orchestration Application (POA) und in der Zukunft vollständig. |
 | Nahtloser Plattformwechsel (einfacher Wechsel zwischen 32 Bit und 64 Bit) |X |X | | | |
 | Bereitstellung von Code mit GIT, FTP |X | |X | | |
 | Bereitstellung von Code mit Web Deploy |X | |X | |Cloud Services unterstützt die Verwendung von Web Deploy, um Updates für einzelne Rolleninstanzen bereitzustellen. Ein Einsatz für die Erstbereitstellung einer Rolle ist jedoch nicht möglich. Wenn Sie Web Deploy für eine Aktualisierung verwenden, müssen Sie jeweils eine separate Bereitstellung für jede Instanz einer Rolle vornehmen. Es sind mehrere Instanzen sind erforderlich, um für die Cloud Services-SLA für Produktionsumgebungen qualifiziert zu sein. |

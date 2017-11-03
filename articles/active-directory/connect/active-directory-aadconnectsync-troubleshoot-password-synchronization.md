@@ -14,14 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 33fa6a8867764975a57b8727e7705529d1d7506a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3bb2883257896c72cc616ea7476f3d25ee6aa4b
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="troubleshoot-password-synchronization-with-azure-ad-connect-sync"></a>Problembehandlung der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung
-Dieses Thema enthält Schritte zum Behandeln von Problemen mit der Kennwortsynchronisierung. Wenn Kennwörter nicht wie erwartet synchronisiert werden, kann dies für eine Teilmenge von Benutzern oder für alle Benutzer der Fall sein. Für die Bereitstellung von Azure Active Directory (Azure AD) Connect mit Version 1.1.524.0 oder höher gibt es nun ein Diagnose-Cmdlet, mit dem Sie Probleme bei der Kennwortsynchronisierung behandeln können:
+Dieses Thema enthält Schritte zum Behandeln von Problemen mit der Kennwortsynchronisierung. Wenn Kennwörter nicht wie erwartet synchronisiert werden, kann dies für eine Teilmenge von Benutzern oder für alle Benutzer der Fall sein.
+
+Verwenden Sie für die Bereitstellung von Azure Active Directory (Azure AD) Connect mit Version 1.1.614.0 oder höher die Problembehandlungsaufgabe im Assistenten, um Probleme bei der Kennwortsynchronisierung zu behandeln:
+
+* Wenn das Problem darin besteht, dass gar keine Kennwörter synchronisiert werden, lesen Sie den Abschnitt [Kennwörter werden nicht synchronisiert: Problembehandlung mit der Problembehandlungsaufgabe](#no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task).
+
+* Wenn Sie ein Problem mit einzelnen Objekte haben, lesen Sie den Abschnitt [Ein einzelnes Objekt synchronisiert keine Kennwörter: Problembehandlung mit der Problembehandlungsaufgabe](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task).
+
+Für die Bereitstellung mit Version 1.1.524.0 oder höher gibt es nun ein Diagnose-Cmdlet, mit dem Sie Probleme bei der Kennwortsynchronisierung behandeln können:
 
 * Wenn das Problem darin besteht, dass gar keine Kennwörter synchronisiert werden, lesen Sie den Abschnitt [Kennwörter werden nicht synchronisiert: Problembehandlung mit dem Diagnose-Cmdlet](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet).
 
@@ -33,25 +41,33 @@ Bei älteren Versionen von Azure AD Connect-Bereitstellungen:
 
 * Wenn Sie ein Problem mit einzelnen Objekte haben, lesen Sie den Abschnitt [Ein einzelnes Objekt synchronisiert keine Kennwörter: Schritte zur manuellen Problembehandlung](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps).
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Kennwörter werden nicht synchronisiert: Problembehandlung mit dem Diagnose-Cmdlet
-Mithilfe des Cmdlets `Invoke-ADSyncDiagnostics` können Sie herausfinden, warum keine Kennwörter synchronisiert werden.
+
+
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task"></a>Kennwörter werden nicht synchronisiert: Problembehandlung mit der Problembehandlungsaufgabe
+Mithilfe der Problembehandlungsaufgabe können Sie herausfinden, warum keine Kennwörter synchronisiert werden.
 
 > [!NOTE]
-> Das Cmdlet `Invoke-ADSyncDiagnostics` ist nur für Azure AD Connect Version 1.1.524.0 oder höher verfügbar.
+> Die Problembehandlungsaufgabe ist nur für Azure AD Connect Version 1.1.614.0 oder höher verfügbar.
 
-### <a name="run-the-diagnostics-cmdlet"></a>Ausführen des Diagnose-Cmdlets
+### <a name="run-the-troubleshooting-task"></a>Ausführen der Problembehandlungsaufgabe
 So behandeln Sie Probleme für den Fall, dass keine Kennwörter synchronisiert werden:
 
 1. Öffnen Sie mit der Option **Als Administrator ausführen** eine neue Windows PowerShell-Sitzung auf Ihrem Azure AD Connect-Server.
 
 2. Führen Sie `Set-ExecutionPolicy RemoteSigned` oder `Set-ExecutionPolicy Unrestricted` aus.
 
-3. Führen Sie `Import-Module ADSyncDiagnostics` aus.
+3. Starten Sie den Azure AD Connect-Assistenten.
 
-4. Führen Sie `Invoke-ADSyncDiagnostics -PasswordSync` aus.
+4. Navigieren Sie zur Seite **Weitere Aufgaben**, wählen Sie **Problembehandlung**, und klicken Sie auf **Weiter**.
 
-### <a name="understand-the-results-of-the-cmdlet"></a>Grundlegendes zu den Ergebnissen des Cmdlets
-Das Diagnose-Cmdlet führt folgende Überprüfungen durch:
+5. Klicken Sie auf der Seite „Problembehandlung“ auf **Starten**, um das Menü zur Problembehandlung in PowerShell zu starten.
+
+6. Wählen Sie im Hauptmenü **Problembehandlung bei der Kennwortsynchronisierung**.
+
+7. Wählen Sie im Untermenü **Die Kennwortsynchronisierung funktioniert überhaupt nicht**.
+
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>Grundlegendes zu den Ergebnissen der Problembehandlungsaufgabe
+Die Problembehandlungsaufgabe führt die folgenden Überprüfungen durch:
 
 * Überprüft, dass die Kennwortsynchronisierungsfunktion für Ihren Azure AD-Mandanten aktiviert ist.
 
@@ -73,7 +89,7 @@ Die folgende Abbildung zeigt die Ergebnisse des Cmdlets für eine einzelne Domä
 
 ![Diagnoseausgabe für die Kennwortsynchronisierung](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalgeneral.png)
 
-Im restlichen Teil dieses Abschnitts werden bestimmte Ergebnisse, die vom Cmdlet zurückgegeben werden, und die entsprechenden Probleme beschrieben.
+Im restlichen Teil dieses Abschnitts werden bestimmte Ergebnisse, die von der Aufgabe zurückgegeben werden, und die entsprechenden Probleme beschrieben.
 
 #### <a name="password-synchronization-feature-isnt-enabled"></a>Kennwortsynchronisierungsfunktion ist nicht aktiviert
 Wenn Sie die Kennwortsynchronisierung mithilfe des Azure AD Connect-Assistenten nicht aktiviert haben, wird folgende Fehlermeldung zurückgegeben:
@@ -100,32 +116,34 @@ Wenn das AD DS-Konto, das vom lokalen Active Directory-Connector zum Synchronisi
 
 ![Falsche Anmeldeinformationen](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalaccountincorrectcredential.png)
 
-## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Ein einzelnes Objekt synchronisiert keine Kennwörter: Problembehandlung mit dem Diagnose-Cmdlet
-Mithilfe des Cmdlets `Invoke-ADSyncDiagnostics` können Sie bestimmen, warum ein Objekt keine Kennwörter synchronisiert.
+
+
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task"></a>Ein einzelnes Objekt synchronisiert keine Kennwörter: Problembehandlung mit der Problembehandlungsaufgabe
+
+Mithilfe der Problembehandlungsaufgabe können Sie bestimmen, warum ein Objekt keine Kennwörter synchronisiert.
 
 > [!NOTE]
-> Das Cmdlet `Invoke-ADSyncDiagnostics` ist nur für Azure AD Connect Version 1.1.524.0 oder höher verfügbar.
+> Die Problembehandlungsaufgabe ist nur für Azure AD Connect Version 1.1.614.0 oder höher verfügbar.
 
 ### <a name="run-the-diagnostics-cmdlet"></a>Ausführen des Diagnose-Cmdlets
-So behandeln Sie Probleme für den Fall, dass keine Kennwörter synchronisiert werden:
+So behandeln Sie Probleme für ein bestimmtes Benutzerobjekt:
 
 1. Öffnen Sie mit der Option **Als Administrator ausführen** eine neue Windows PowerShell-Sitzung auf Ihrem Azure AD Connect-Server.
 
 2. Führen Sie `Set-ExecutionPolicy RemoteSigned` oder `Set-ExecutionPolicy Unrestricted` aus.
 
-3. Führen Sie `Import-Module ADSyncDiagnostics` aus.
+3. Starten Sie den Azure AD Connect-Assistenten.
 
-4. Führen Sie das folgende Cmdlet aus:
-   ```
-   Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
-   ```
-   Beispiel:
-   ```
-   Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
-   ```
+4. Navigieren Sie zur Seite **Weitere Aufgaben**, wählen Sie **Problembehandlung**, und klicken Sie auf **Weiter**.
 
-### <a name="understand-the-results-of-the-cmdlet"></a>Grundlegendes zu den Ergebnissen des Cmdlets
-Das Diagnose-Cmdlet führt folgende Überprüfungen durch:
+5. Klicken Sie auf der Seite „Problembehandlung“ auf **Starten**, um das Menü zur Problembehandlung in PowerShell zu starten.
+
+6. Wählen Sie im Hauptmenü **Problembehandlung bei der Kennwortsynchronisierung**.
+
+7. Wählen Sie im Untermenü **Kennwort ist für ein bestimmtes Benutzerkonto nicht synchronisiert**.
+
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>Grundlegendes zu den Ergebnissen der Problembehandlungsaufgabe
+Die Problembehandlungsaufgabe führt die folgenden Überprüfungen durch:
 
 * Überprüft den Status des Active Directory-Objekts im Active Directory-Connectorbereich, in der Metaverse und im Azure AD-Connectorbereich.
 
@@ -153,6 +171,52 @@ Gegenwärtig bietet Azure AD Connect keine Unterstützung für die Synchronisier
 Standardmäßig speichert Azure AD Connect sieben Tage lang die Ergebnisse der Kennwortsynchronisierungsversuche. Wenn keine Ergebnisse für das ausgewählten Active Directory-Objekt verfügbar sind, wird die folgende Warnung zurückgegeben:
 
 ![Diagnoseausgabe für ein einzelnes Objekt – kein Kennwortsynchronisierungsverlauf](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjectnohistory.png)
+
+
+
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Kennwörter werden nicht synchronisiert: Problembehandlung mit dem Diagnose-Cmdlet
+Mithilfe des Cmdlets `Invoke-ADSyncDiagnostics` können Sie herausfinden, warum keine Kennwörter synchronisiert werden.
+
+> [!NOTE]
+> Das Cmdlet `Invoke-ADSyncDiagnostics` ist nur für Azure AD Connect Version 1.1.524.0 oder höher verfügbar.
+
+### <a name="run-the-diagnostics-cmdlet"></a>Ausführen des Diagnose-Cmdlets
+So behandeln Sie Probleme für den Fall, dass keine Kennwörter synchronisiert werden:
+
+1. Öffnen Sie mit der Option **Als Administrator ausführen** eine neue Windows PowerShell-Sitzung auf Ihrem Azure AD Connect-Server.
+
+2. Führen Sie `Set-ExecutionPolicy RemoteSigned` oder `Set-ExecutionPolicy Unrestricted` aus.
+
+3. Führen Sie `Import-Module ADSyncDiagnostics` aus.
+
+4. Führen Sie `Invoke-ADSyncDiagnostics -PasswordSync`aus.
+
+
+
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Ein einzelnes Objekt synchronisiert keine Kennwörter: Problembehandlung mit dem Diagnose-Cmdlet
+Mithilfe des Cmdlets `Invoke-ADSyncDiagnostics` können Sie bestimmen, warum ein Objekt keine Kennwörter synchronisiert.
+
+> [!NOTE]
+> Das Cmdlet `Invoke-ADSyncDiagnostics` ist nur für Azure AD Connect Version 1.1.524.0 oder höher verfügbar.
+
+### <a name="run-the-diagnostics-cmdlet"></a>Ausführen des Diagnose-Cmdlets
+So behandeln Sie Probleme für den Fall, dass keine Kennwörter für einen Benutzer synchronisiert werden:
+
+1. Öffnen Sie mit der Option **Als Administrator ausführen** eine neue Windows PowerShell-Sitzung auf Ihrem Azure AD Connect-Server.
+
+2. Führen Sie `Set-ExecutionPolicy RemoteSigned` oder `Set-ExecutionPolicy Unrestricted` aus.
+
+3. Führen Sie `Import-Module ADSyncDiagnostics` aus.
+
+4. Führen Sie das folgende Cmdlet aus:
+   ```
+   Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
+   ```
+   Beispiel:
+   ```
+   Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
+   ```
+
 
 
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Kennwörter werden nicht synchronisiert: Schritte zur manuellen Problembehandlung

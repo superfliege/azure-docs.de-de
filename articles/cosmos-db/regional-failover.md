@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2017
+ms.date: 10/17/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d8ba08bc9f99cb77c9f03949fc5db299eb222c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93a9bf568b1047e1af4e7825c3ca99bf11945560
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Automatische regionale Failover für die Geschäftskontinuität in Azure Cosmos DB
 Azure Cosmos DB vereinfacht die globale Verteilung von Daten, indem es vollständig verwaltete [Datenbankkonten in mehreren Regionen](distribute-data-globally.md) bietet, die für eine sorgfältig austarierte Balance zwischen Konsistenz, Verfügbarkeit und Leistung mit den entsprechenden Garantien sorgen. Cosmos DB-Konten bieten hohe Verfügbarkeit, Latenzen im einstelligen Millisekundenbereich, mehrere [klar abgegrenzte Konsistenzebenen](consistency-levels.md), transparentes regionales Failover mit Multihosting-APIs sowie die Fähigkeit, Durchsatz und Speicher für alle Konten weltweit flexibel zu skalieren. 
@@ -85,19 +85,40 @@ Sobald die betroffene Region nach dem Ausfall wiederhergestellt wurde, werden al
 
 **Was passiert beim Ausfall einer Schreibregion?**
 
-Wenn die betroffene Region die aktuelle Schreibregion für ein bestimmtes Azure Cosmos DB-Konto ist, wird die Region automatisch als offline gekennzeichnet. Danach wird eine andere Region zur Schreibregion für jedes betroffene Cosmos DB-Konto hochgestuft. Sie können die Reihenfolge der Regionsauswahl für Ihre Cosmos DB-Konten vollständig über das Azure-Portal oder [programmgesteuert](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange) steuern. 
+Wenn die betroffene Region die aktuelle Schreibregion ist und für das Azure Cosmos DB-Konto die Funktion „automatisches Failover“ aktiviert ist, wird die Region automatisch als offline gekennzeichnet. Danach wird eine andere Region zur Schreibregion für das betroffene Cosmos DB-Konto hochgestuft. Sie können die Funktion „automatisches Failover“ aktivieren und die Reihenfolge der Regionsauswahl für Ihre Azure Cosmos DB-Konten vollständig über das Azure-Portal oder [programmgesteuert](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange) steuern. 
 
 ![Failoverprioritäten für Azure Cosmos DB](./media/regional-failover/failover-priorities.png)
 
-Während eines automatischen Failovers wählt Cosmos DB anhand der angegebenen Prioritätsreihenfolge automatisch die nächste Schreibregion für ein bestimmtes Cosmos DB-Konto. 
+Während eines automatischen Failovers wählt Azure Cosmos DB anhand der angegebenen Prioritätsreihenfolge automatisch die nächste Schreibregion für ein bestimmtes Azure Cosmos DB-Konto aus. Anwendungen können die Eigenschaft „WriteEndpoint“ der Klasse „DocumentClient“ verwenden, um eine Änderung der Schreibregion zu ermitteln.
 
 ![Ausfälle von Schreibregionen in Azure Cosmos DB](./media/regional-failover/write-region-failures.png)
 
 Sobald die betroffene Region nach dem Ausfall wiederhergestellt wurde, werden alle betroffenen Cosmos DB-Konten in der Region vom Dienst automatisch wiederhergestellt. 
 
-* Cosmos DB-Konten, deren vorherige Schreibregion sich in der betroffenen Region befand, bleiben auch nach der Wiederherstellung der Region in einem Offlinemodus mit Leseverfügbarkeit. 
-* Sie können diese Region abfragen, um während des Ausfalls nicht replizierte Schreibvorgänge zu verarbeiten, indem diese mit den in der aktuellen Schreibregion verfügbaren Daten verglichen werden. Je nach den Anforderungen Ihrer Anwendung können Sie Daten zusammenführen und/oder Konflikte auflösen und den finalen Satz an Änderungen dann in die aktuelle Schreibregion schreiben. 
-* Nachdem Sie das Zusammenführen von Änderungen abgeschlossen haben, können Sie die betroffene Region wieder online schalten, indem Sie die Region aus Ihrem Cosmos DB-Konto entfernen und diesem danach wieder hinzufügen. Sobald die Region wieder hinzugefügt wurde, können Sie sie erneut als Schreibregion konfigurieren, indem Sie über das Azure-Portal oder [programmgesteuert](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate) ein manuelles Failover durchführen.
+* Daten, die in der vorherigen Schreibregion vorhanden sind und nicht während des Ausfalls in Leseregionen repliziert wurden, werden als Konflikt-Feed veröffentlicht. Anwendungen können das Konflikt-Feed lesen, Konflikte, die auf anwendungsabhängiger Logik basieren, lösen, und aktualisierte Daten nach Bedarf in das Azure Cosmos DB-Konto zurückschreiben. 
+* Die vorherige Schreibregion wird als Leseregion wiederhergestellt und automatisch wieder online gestellt. 
+* Sie können die Leseregion, die automatisch wieder online gestellt wurde, erneut als Schreibregion konfigurieren, indem Sie über das Azure-Portal oder [programmgesteuert](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate) ein manuelles Failover durchführen.
+
+Im folgenden Codeausschnitt wird dargestellt, wie Konflikte verarbeitet werden sollen, nachdem die betroffene Region nach dem Ausfall wieder hergestellt worden ist.
+
+```cs
+string conflictsFeedContinuationToken = null;
+do
+{
+    FeedResponse<Conflict> conflictsFeed = client.ReadConflictFeedAsync(collectionLink,
+        new FeedOptions { RequestContinuation = conflictsFeedContinuationToken }).Result;
+
+    foreach (Conflict conflict in conflictsFeed)
+    {
+        Document doc = conflict.GetResource<Document>();
+        Console.WriteLine("Conflict record ResourceId = {0} ResourceType= {1}", conflict.ResourceId, conflict.ResourceType);
+
+        // Perform application specific logic to process the conflict record / resource
+    }
+
+    conflictsFeedContinuationToken = conflictsFeed.ResponseContinuation;
+} while (conflictsFeedContinuationToken != null);
+```
 
 ## <a id="ManualFailovers"></a>Manuelle Failover
 

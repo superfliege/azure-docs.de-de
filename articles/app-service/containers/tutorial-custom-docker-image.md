@@ -1,6 +1,6 @@
 ---
-title: "Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps für Container | Microsoft-Dokumentation"
-description: "Informationen zum Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps für Container."
+title: "Verwenden eines benutzerdefinierten Docker-Images für Web-App für Container | Microsoft Docs"
+description: "Verwenden eines benutzerdefinierten Docker-Images für Web-App für Container."
 keywords: Azure App Service, Web-App, Linux, Docker, Container
 services: app-service
 documentationcenter: 
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 09/03/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 760772d1d1c79dd4a1114c36971de0b3693ab74f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc268bce48a42607d4404758e744a006dfbd6c19
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="use-a-custom-docker-image-for-azure-web-app-for-containers"></a>Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps für Container
+# <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Verwenden eines benutzerdefinierten Docker-Images für Web-App für Container
 
 [Introduction to Azure Web App for Containers](app-service-linux-intro.md) (Einführung zu Azure-Web-App für Container) bietet integrierte Docker-Images unter Linux mit Unterstützung für bestimmte Versionen wie PHP 7.0 und Node.js 4.5. „Web-App für Container“ nutzt die Containertechnologie von Docker, um sowohl integrierte als auch benutzerdefinierte Images als „Platform as a Service“ zu hosten. In diesem Tutorial erfahren Sie, wie Sie ein benutzerdefiniertes Docker-Image für die Verwendung in „Web-App für Container“ erstellen, das einem gängigen Muster entspricht, wenn kein integriertes Image für Ihre Sprache vorhanden ist, oder Ihre Anwendung eine bestimmte Konfiguration erfordert, die innerhalb der integrierten Images nicht bereitgestellt wird.
 
@@ -210,7 +210,7 @@ v1: digest: sha256:a910d5b77e6960c01745a87c35f3d1a13ba73231ac9a4664c5011b1422d59
 
 ## <a name="create-web-app-for-containers"></a>Erstellen einer Web-App für Container
 
-Mithilfe von Azure-Web-Apps können Sie native Linux-Anwendungen in der Cloud hosten. Um eine Web-App für Container zu erstellen, müssen Sie Azure CLI-Befehle ausführen, die eine Gruppe erstellen, dann einen Dienstplan und schließlich die Web-App selbst. Führen Sie zunächst den [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create)-Befehl aus, und übergeben Sie ihm einen Speicherort und einen eindeutigen Namen.
+Sie können native Linux-Anwendungen in der Cloud mithilfe von Azure App Service unter Linux hosten. Um eine Web-App für Container zu erstellen, müssen Sie Azure CLI-Befehle ausführen, die eine Gruppe erstellen, dann einen Dienstplan und schließlich die Web-App selbst. Führen Sie zunächst den [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create)-Befehl aus, und übergeben Sie ihm einen Speicherort und einen eindeutigen Namen.
 
 ```azurecli-interactive
 az group create --location "West Europe" --name myResourceGroup
@@ -220,7 +220,7 @@ Daraufhin wird etwa folgende Ausgabe angezeigt:
 
 ```json
 {
-  "id": "/subscriptions/432849d3e4-4f90-a782-87c11e-5e59d6dd/resourceGroups/myResourceGroup",
+  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup",
   "location": "westeurope",
   "managedBy": null,
   "name": "myResourceGroup",
@@ -245,8 +245,7 @@ Das Erstellen eines Dienstplans führt zu Ergebnissen, die dem folgenden Beispie
   "appServicePlanName": "myServicePlan",
   "geoRegion": "West Europe",
   "hostingEnvironmentProfile": null,
-  "id": "/subscriptions/resourceGroups/myResourceGroup/provide
-rs/Microsoft.Web/serverfarms/myServicePlan",
+  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myServicePlan",
   "kind": "linux",
   "location": "West Europe", 
   "resourceGroup": "myResourceGroup",
@@ -292,7 +291,7 @@ Der Befehl zum Erstellen einer Web-App erzeugt die hier gezeigte Ausgabe:
   ],
   "hostNamesDisabled": false,
   "hostingEnvironmentProfile": null,
-  "id": "/subscriptions/5e59d6dd-d3e4-4f90-a782-43284987c11e/resourceGroups/myResourceGroup/providers/Microsoft.
+  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup/providers/Microsoft.
 Web/sites/<web-app-name>",
   "lastModifiedTimeUtc": "2017-08-08T21:09:33.693333",
   "location": "West Europe",
@@ -462,7 +461,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 77 root      20   0   21920   2304   1972 R  0.0  0.1   0:00.00 top
 ```
 
-Glückwunsch! Sie haben ein benutzerdefiniertes Docker-Image für eine Azure-Web-App für Container konfiguriert.
+Glückwunsch! Sie haben ein benutzerdefiniertes Docker-Image für eine Web-App für Container konfiguriert.
 
 ## <a name="push-a-docker-image-to-private-registry-optional"></a>Pushübertragung eines Docker-Images an eine private Registrierung (optional)
 
@@ -486,7 +485,7 @@ Use an existing service principal and assign access:
 {
   "adminUserEnabled": false,
   "creationDate": "2017-08-09T04:21:09.654153+00:00",
-  "id": "/subscriptions/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/{azure-container-registry-name>",
+  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/<azure-container-registry-name>",
   "location": "westeurope",
   "loginServer": "<azure-container-registry-name>.azurecr.io",
   "name": "<azure-container-registry-name>",
@@ -621,4 +620,4 @@ Die Ausgabe des Befehls ähnelt der folgenden JSON-Zeichenfolge und zeigt an, da
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Azure App Service-Web-App für Container – FAQs](app-service-linux-faq.md)
+[Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](app-service-linux-faq.md)

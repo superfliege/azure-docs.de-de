@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2017
+ms.date: 10/19/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6e9c7b71fa6fc78f97c0144c735fc44778181d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32e63b250467f5733b2e691614fe52f96f2f9d91
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz
 
@@ -28,8 +28,6 @@ Jede IoT Hub-Instanz verfügt über eine Identitätsregistrierung, in der Inform
 Bei der in der Identitätsregistrierung gespeicherten Geräte-ID wird die Groß-/Kleinschreibung beachtet.
 
 Ganz allgemein handelt es sich bei der Identitätsregistrierung um eine REST-fähige Sammlung von Identitätsressourcen. Wenn Sie der Identitätsregistrierung einen Eintrag hinzufügen, erstellt IoT Hub eine Gruppe gerätespezifischer Ressourcen (beispielsweise die Warteschlange mit In-flight-Nachrichten von der Cloud an das Gerät).
-
-### <a name="when-to-use"></a>Einsatzgebiete
 
 Verwenden Sie die Identitätsregistrierung für Folgendes:
 
@@ -72,16 +70,15 @@ Eine IoT-Lösung verfügt in der Regel über einen lösungsspezifischen Speicher
 Sie können Geräte deaktivieren, indem Sie die **status**-Eigenschaft für eine Identität in der Identitätsregistrierung aktualisieren. Typischerweise wird diese Eigenschaft in zwei Szenarien verwendet:
 
 * Während eines Vorgangs zur Bereitstellungsorchestrierung. Weitere Informationen finden Sie unter [Gerätebereitstellung][lnk-guidance-provisioning].
-* Wenn aus einem beliebigen Grund die Sicherheit eines Geräts als gefährdet eingestuft oder das Gerät nicht mehr als autorisiert betrachtet wird.
+* Wenn Sie aus irgendeinem Grund der Meinung sind, dass ein Gerät beeinträchtigt ist oder nicht autorisiert wurde
 
 ## <a name="import-and-export-device-identities"></a>Importieren und Exportieren von Geräteidentitäten
 
-Sie können einen Massenexport von Geräteidentitäten aus der Identitätsregistrierung eines IoT-Hubs durchführen. Hierbei werden asynchrone Vorgänge im [Endpunkt des IoT Hub-Ressourcenanbieters][lnk-endpoints] verwendet. Exportvorgänge sind Aufträge mit langer Ausführungszeit, die einen vom Kunden bereitgestellten Blobcontainer zum Speichern von Geräteidentitätsdaten verwenden, die aus der Identitätsregistrierung gelesen werden.
+Sie können einen Massenexport von Geräteidentitäten aus der Identitätsregistrierung einer IoT Hub-Instanz durchführen. Hierbei werden asynchrone Vorgänge im [Endpunkt des IoT Hub-Ressourcenanbieters][lnk-endpoints] verwendet. Exportvorgänge sind Aufträge mit langer Ausführungszeit, die einen vom Kunden bereitgestellten Blobcontainer zum Speichern von Geräteidentitätsdaten verwenden, die aus der Identitätsregistrierung gelesen werden.
 
-Sie können einen Massenimport von Geräteidentitäten in die Identitätsregistrierung eines IoT-Hubs durchführen. Hierbei werden asynchrone Vorgänge im [Endpunkt des IoT Hub-Ressourcenanbieters][lnk-endpoints] verwendet. Importvorgänge sind Aufträge mit langer Ausführungszeit, die Daten in einem vom Kunden bereitgestellten Blobcontainer verwenden, um Geräteidentitätsdaten in die Identitätsregistrierung zu schreiben.
+Sie können einen Massenimport von Geräteidentitäten in die Identitätsregistrierung einer IoT Hub-Instanz durchführen. Hierbei werden asynchrone Vorgänge im [Endpunkt des IoT Hub-Ressourcenanbieters][lnk-endpoints] verwendet. Importvorgänge sind Aufträge mit langer Ausführungszeit, die Daten in einem vom Kunden bereitgestellten Blobcontainer verwenden, um Geräteidentitätsdaten in die Identitätsregistrierung zu schreiben.
 
-* Ausführliche Informationen zu den Import- und Export-APIs finden Sie unter den [REST-APIs für den IoT Hub-Ressourcenanbieter][lnk-resource-provider-apis].
-* Weitere Informationen zum Ausführen von Import- und Exportaufträgen finden Sie unter [Massenverwaltung von IoT Hub-Geräte-Identitäten][lnk-bulk-identity].
+Ausführliche Informationen zu den Import- und Export-APIs finden Sie unter den [REST-APIs für den IoT Hub-Ressourcenanbieter][lnk-resource-provider-apis]. Weitere Informationen zum Ausführen von Import- und Exportaufträgen finden Sie unter [Massenverwaltung von IoT Hub-Geräte-Identitäten][lnk-bulk-identity].
 
 ## <a name="device-provisioning"></a>Gerätebereitstellung
 
@@ -143,17 +140,13 @@ Hauptteil: Dieser Abschnitt liegt im JSON-Format vor und stellt den Zwilling der
 }
 ```
 
-## <a name="reference-topics"></a>Referenzthemen:
-
-Die folgenden Referenzthemen enthalten weitere Informationen zur Verwendung der Identitätsregistrierung.
-
 ## <a name="device-identity-properties"></a>Geräteidentitätseigenschaften
 
 Geräteidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften dargestellt:
 
 | Eigenschaft | Optionen | Beschreibung |
 | --- | --- | --- |
-| deviceId |erforderlich, bei Aktualisierungen schreibgeschützt |Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`besteht. |
+| deviceId |erforderlich, bei Aktualisierungen schreibgeschützt |Eine Zeichenfolge (bis zu 128 Zeichen lang) mit Beachtung von Groß-/Kleinschreibung, die aus alphanumerischen 7-Bit-ASCII-Zeichen sowie bestimmten Sonderzeichen (`- : . + % _ # * ? ! ( ) , = @ ; $ '`) besteht. |
 | generationId |erforderlich, schreibgeschützt |Eine vom IoT-Hub generierte Zeichenfolge mit Berücksichtigung der Groß-/Kleinschreibung und einer Länge von bis zu 128 Zeichen. Dieser Wert dient zur Unterscheidung von Geräten mit derselben **deviceId**, wenn diese gelöscht und neu erstellt wurden. |
 | etag |erforderlich, schreibgeschützt |Eine Zeichenfolge, die gemäß [RFC7232][lnk-rfc7232] ein schwaches ETag für die Geräteidentität darstellt. |
 | auth |optional |Ein zusammengesetztes Objekt, das Authentifizierungsinformationen und Sicherheitsdaten enthält. |

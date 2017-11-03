@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: yushwang
-ms.openlocfilehash: bb3129f70f5eeed99d5889226aa6727f675b6217
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 434f84dc6244eddce9b172a617722b218360ffc2
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Hinzufügen einer Standort-zu-Standort-Verbindung mit einem VNet über eine vorhandene VPN-Gatewayverbindung (klassisch)
 
@@ -70,11 +70,11 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 Sie verfügen bereits über ein Standort-zu-Standort-VPN mit einem Gateway mit dynamischem Routing. In diesem Fall können Sie direkt mit dem [Exportieren der Konfigurationseinstellungen für das virtuelle Netzwerk](#export)fortfahren. Andernfalls führen Sie die folgenden Schritte aus:
 
 ### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>Wenn Sie bereits über ein virtuelles Standort-zu-Standort-Netzwerk verfügen, für dieses aber ein Gateway mit statischem (richtlinienbasiertem) Routing konfiguriert ist, gehen Sie wie folgt vor:
-1. Ändern Sie den Gatewaytyp in dynamisches Routing. Für ein VPN mit mehreren Standorten ist ein Gateway mit dynamischem Routing (auch als „routenbasiert“ bezeichnet) erforderlich. Um den Gatewaytyp zu ändern, müssen Sie zuerst das vorhandene Gateway löschen und dann ein neues erstellen. Anweisungen finden Sie unter [Gewusst wie: Ändern des VPN-Routingtyps für Ihr Gateway](vpn-gateway-configure-vpn-gateway-mp.md).  
-2. Konfigurieren Sie das neue Gateway, und erstellen Sie den VPN-Tunnel. Anweisungen dazu finden Sie unter [Konfigurieren eines VPN Gateways im klassischen Azure-Portal](vpn-gateway-configure-vpn-gateway-mp.md). Ändern Sie zunächst den Gatewaytyp in dynamisches Routing.
+1. Ändern Sie den Gatewaytyp in dynamisches Routing. Für ein VPN mit mehreren Standorten ist ein Gateway mit dynamischem Routing (auch als „routenbasiert“ bezeichnet) erforderlich. Um den Gatewaytyp zu ändern, müssen Sie zuerst das vorhandene Gateway löschen und dann ein neues erstellen.
+2. Konfigurieren Sie das neue Gateway, und erstellen Sie den VPN-Tunnel. Eine Anleitung finden Sie im Abschnitt [Angeben der SKU und des VPN-Typs](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Achten Sie darauf, als Routingtyp „Dynamisch“ anzugeben.
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Wenn Sie nicht über ein virtuelles Standort-zu-Standort-Netzwerk verfügen, gehen Sie wie folgt vor:
-1. Erstellen Sie anhand der folgenden Anweisungen das virtuelle Standort-zu-Standort-Netzwerk: [Erstellen eines virtuellen Netzwerks mit einer Standort-zu-Standort-VPN-Verbindung im klassischen Azure-Portal](vpn-gateway-site-to-site-create.md).  
+1. Erstellen Sie mithilfe der Anweisungen unter [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung](vpn-gateway-site-to-site-create.md) das Site-to-Site-VPN-Netzwerk.  
 2. Konfigurieren Sie anhand der folgenden Anweisungen ein Gateway mit dynamischem Routing: [Konfigurieren eines VPN Gateways](vpn-gateway-configure-vpn-gateway-mp.md). Denken Sie daran, **dynamisches Routing** als Gatewaytyp auszuwählen.
 
 ## <a name="export"></a>2. Exportieren der Netzwerkkonfigurationsdatei
@@ -157,7 +157,7 @@ Zum Hinzufügen zusätzlicher Standortverweise (Erstellen einer Konfiguration mi
 ```
 
 ## <a name="5-import-the-network-configuration-file"></a>5. Importieren der Netzwerkkonfigurationsdatei
-Importieren Sie die Netzwerkkonfigurationsdatei. Wenn Sie diese Datei mit den Änderungen importieren, werden die neuen Tunnel hinzugefügt. Die Tunnel verwenden das dynamische Gateway, das Sie zuvor erstellt haben. Zum Importieren der Datei können Sie entweder das klassische Portal oder PowerShell verwenden.
+Importieren Sie die Netzwerkkonfigurationsdatei. Wenn Sie diese Datei mit den Änderungen importieren, werden die neuen Tunnel hinzugefügt. Die Tunnel verwenden das dynamische Gateway, das Sie zuvor erstellt haben. Sie können PowerShell verwenden, um die Datei zu importieren.
 
 ## <a name="6-download-keys"></a>6. Herunterladen der Schlüssel
 Nachdem die neuen Tunnel hinzugefügt wurden, rufen Sie mit dem PowerShell-Cmdlet „Get-AzureVNetGatewayKey“ die vorinstallierten IPsec-/IKE-Schlüssel für jeden Tunnel ab.

@@ -1,6 +1,6 @@
 ---
 title: "Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit"
-description: "Erfahren Sie, wie Sie mithilfe von elastischen Datenbanktools in Verbindung mit zeilenbasierter Sicherheit eine Anwendung mit einer hochgradig skalierbaren Datenebene in einer Azure SQL-Datenbank erstellen, die mehrinstanzenfähige Shards unterstützt."
+description: "Verwenden Sie Tools für elastische Datenbanken mit Sicherheit auf Zeilenebene zum Erstellen einer Anwendung mit einer hochgradig skalierbaren Datenschicht."
 metakeywords: azure sql database elastic tools multi tenant row level security rls
 services: sql-database
 documentationcenter: 
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: thmullan;torsteng
-ms.openlocfilehash: 73f1210b8d1f5ceca8fac9534d498bdc23d96d48
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 621cae68927bffcfe7f3f49d11826ca3bb2f2c4c
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
-[Elastische Datenbanktools](sql-database-elastic-scale-get-started.md) und die [zeilenbasierte Sicherheit (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/dn765131) bieten leistungsstarke Funktionen für die flexible und effiziente Skalierung der Datenebene einer mehrinstanzenfähigen Anwendung mit Azure SQL-Datenbank. Weitere Informationen finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md) . 
+[Elastische Datenbanktools](sql-database-elastic-scale-get-started.md) und die [zeilenbasierte Sicherheit (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/dn765131) bieten leistungsstarke Funktionen für die flexible und effiziente Skalierung der Datenebene einer mehrinstanzenfähigen Anwendung mit Azure SQL-Datenbank. Weitere Informationen finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md). 
 
 In diesem Artikel wird veranschaulicht, wie diese Technologien zusammen verwendet werden, um eine Anwendung mit einer hochgradig skalierbaren Datenebene zu erstellen, die mehrinstanzenfähige Shards mithilfe von **ADO.NET SqlClient** und/oder **Entity Framework** unterstützt.  
 
-* **Elastische Datenbanktools** ermöglichen Entwicklern eine Skalierung der Datenebene einer Anwendung über Sharding-Methoden nach Branchenstandard unter Verwendung von Bibliotheken für .NET und Azure-Dienstvorlagen. Die Verwaltung von Shards mit der elastischen Datenbank-Clientbibliothek hilft bei der Automatisierung und Optimierung zahlreicher infrastruktureller Aufgaben, die i. d. R. Sharding zugeordnet werden. 
+* **Elastische Datenbanktools** ermöglichen Entwicklern eine Skalierung der Datenschicht einer Anwendung über Sharding-Methoden nach Branchenstandard unter Verwendung von Bibliotheken für .NET und Azure-Dienstvorlagen. Die Verwaltung von Shards mit der elastischen Datenbank-Clientbibliothek hilft bei der Automatisierung und Optimierung zahlreicher infrastruktureller Aufgaben, die i. d. R. Sharding zugeordnet werden. 
 * **zeilenbasierte Sicherheit (RLS)** ermöglicht Entwicklern das Speichern von Daten für mehrere Mandanten in derselben Datenbank mithilfe von Sicherheitsrichtlinien zum Filtern von Zeilen, die nicht zum Mandanten gehören, der eine Abfrage ausführt. Durch das Zentralisieren der Datenzugriffslogik mit RLS innerhalb der Datenbank statt in der Anwendung wird die Wartung vereinfacht und das Fehlerrisiko bei zunehmender Größe der Codebase einer Anwendung verringert. 
 
 Durch die gemeinsame Verwendung dieser Funktionen kann eine Anwendung von Kosteneinsparungen und Effizienz profitieren, da Daten für mehrere Mandanten in derselben Shard-Datenbank gespeichert werden. Gleichzeitig verfügt eine Anwendung weiterhin über die Flexibilität, isolierte Einzelinstanzen-Shards für "Premium"-Mandanten anzubieten, die zuverlässigere Leistungsgarantien erfordern, da mehrinstanzenfähige Shards keine gleichmäßige Ressourcenverteilung zwischen Mandanten gewährleisten.  
@@ -59,13 +59,13 @@ Beachten Sie, dass diese gesamten Tests ein Problem aufzeigen, da RLS noch nicht
 Nach dem Herstellen einer Verbindung mit einer Shard-Datenbank mithilfe der datenabhängigen Routing-APIs der Clientbibliothek für elastische Datenbanken muss die Anwendung noch die Datenbank anweisen, welche Mandanten-ID diese Verbindung verwendet, sodass eine RLS-Sicherheitsrichtlinie zu anderen Mandanten gehörende Zeilen herausfiltern kann. Die empfohlene Vorgehensweise zur Übergabe dieser Informationen besteht im Speichern der aktuellen Mandanten-ID für diese Verbindung in [SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806.aspx). (Hinweis: Sie können auch [CONTEXT_INFO](https://msdn.microsoft.com/library/ms180125.aspx) verwenden, SESSION_CONTEXT ist jedoch eine bessere Option, da sie einfacher zu verwenden ist, standardmäßig NULL zurückgibt und Schlüssel-Wert-Paare unterstützt.)
 
 ### <a name="entity-framework"></a>Entity Framework
-Für Anwendungen, die Entity Framework verwenden, ist die einfachste Herangehensweise, SESSION_CONTEXT in der ElasticScaleContext-Überschreibung festzulegen, wie unter [Datenabhängiges Routing mit EF DbContext](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext) beschrieben. Vor der Rückgabe der über datenabhängiges Routing vermittelten Verbindung erstellen Sie einfach einen SqlCommand, der die „TenantId“ im SESSION_CONTEXT auf den „shardingKey“ festlegt, der für diese Verbindung angegeben wurde, und führen ihn aus. Auf diese Weise müssen Sie nur einmal Code zum Festlegen von SESSION_CONTEXT schreiben. 
+Für Anwendungen, die Entity Framework verwenden, ist die einfachste Herangehensweise, SESSION_CONTEXT in der ElasticScaleContext-Überschreibung festzulegen, wie unter [Datenabhängiges Routing mit EF DbContext](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext) beschrieben. Vor der Rückgabe der über datenabhängiges Routing vermittelten Verbindung erstellen Sie einen „SqlCommand“, der die „TenantId“ im SESSION_CONTEXT auf den „shardingKey“ festlegt, der für diese Verbindung angegeben wurde, und führen ihn aus. Auf diese Weise müssen Sie nur einmal Code zum Festlegen von SESSION_CONTEXT schreiben. 
 
 ```
 // ElasticScaleContext.cs 
 // ... 
-// C'tor for data dependent routing. This call will open a validated connection routed to the proper 
-// shard by the shard map manager. Note that the base class c'tor call will fail for an open connection 
+// C'tor for data-dependent routing. This call opens a validated connection routed to the proper 
+// shard by the shard map manager. Note that the base class c'tor call fails for an open connection 
 // if migrations need to be done and SQL credentials are used. This is the reason for the  
 // separation of c'tors into the DDR case (this c'tor) and the internal c'tor for new shards. 
 public ElasticScaleContext(ShardMap shardMap, T shardingKey, string connectionStr)
@@ -166,7 +166,7 @@ public static SqlConnection OpenConnectionForTenant(ShardMap shardMap, int tenan
 // ...
 
 // Example query via ADO.NET SqlClient
-// If row-level security is enabled, only Tenant 4's blogs will be listed
+// If row-level security is enabled, only Tenant 4's blogs are listed
 SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 {
     using (SqlConnection conn = OpenConnectionForTenant(sharding.ShardMap, tenantId4, connStrBldr.ConnectionString))
@@ -189,7 +189,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>Erstellen einer Sicherheitsrichtlinie, um die Zeilen zu filtern, auf die jeder Mandant zugreifen kann
 Da die Anwendung nun SESSION_CONTEXT vor dem Abfragen auf die aktuelle „TenantId“ festlegt, kann eine RLS-Sicherheitsrichtlinie Abfragen filtern und Zeilen ausschließen, die eine andere TenantId aufweisen.  
 
-RLS ist in T-SQL implementiert: Eine benutzerdefinierte Funktion definiert die Zugriffslogik, und eine Sicherheitsrichtlinie bindet diese Funktion an eine beliebige Anzahl von Tabellen. Für dieses Projekt stellt die Funktion einfach sicher, dass die Anwendung (statt eines anderen SQL-Benutzers) mit der Datenbank verbunden wird, und die im SESSION_CONTEXT gespeicherte „TenantId“ mit der „TenantId“ einer bestimmten Zeile übereinstimmt. Durch ein Filterprädikat können Zeilen, die diese Bedingungen erfüllen, durch den Filter für SELECT-, UPDATE- und DELETE-Abfragen übergeben werden. Ein Blockprädikat verhindert, dass Zeilen, die diese Bedingungen verletzen, EINGEFÜGT oder AKTUALISIERT werden. Wenn SESSION_CONTEXT nicht festgelegt wurde, wird NULL zurückgegeben. Darüber hinaus sind Zeilen nicht sichtbar oder können nicht eingefügt werden. 
+RLS ist in T-SQL implementiert: Eine benutzerdefinierte Funktion definiert die Zugriffslogik, und eine Sicherheitsrichtlinie bindet diese Funktion an eine beliebige Anzahl von Tabellen. Für dieses Projekt stellt die Funktion sicher, dass die Anwendung (statt eines anderen SQL-Benutzers) mit der Datenbank verbunden wird, und die im SESSION_CONTEXT gespeicherte „TenantId“ mit der „TenantId“ einer bestimmten Zeile übereinstimmt. Durch ein Filterprädikat können Zeilen, die diese Bedingungen erfüllen, durch den Filter für SELECT-, UPDATE- und DELETE-Abfragen übergeben werden. Ein Blockprädikat verhindert, dass für Zeilen, die diese Bedingungen verletzen, ein INSERT- oder UPDATE-Vorgang ausgeführt wird. Wenn SESSION_CONTEXT nicht festgelegt wurde, wird NULL zurückgegeben. Darüber hinaus sind Zeilen nicht sichtbar und können nicht eingefügt werden. 
 
 Um RLS zu aktivieren, führen Sie auf allen Shards das folgende T-SQL-Skript mithilfe von Visual Studio (SSDT), SSMS oder dem PowerShell-Skript aus, das im Projekt enthalten ist. (Bei Verwendung von [elastischen Datenbankaufträgen](sql-database-elastic-jobs-overview.md) können Sie es zur Automatisierung der Ausführung dieses T-SQL-Skripts auf allen Shards verwenden): 
 
@@ -219,9 +219,9 @@ GO
 > 
 > 
 
-Wenn Sie die Beispielanwendung jetzt erneut ausführen, können Mandanten nur Zeilen anzeigen, die zu ihnen gehören. Darüber hinaus kann die Anwendung keine Zeilen einfügen, die Mandanten gehören, die nicht derzeit mit der Sharddatenbank verbunden sind. Zudem können sichtbare Zeilen nicht mit einer anderen „TenantId“ aktualisiert werden. Wenn die Anwendung versucht, eine dieser Aktionen auszuführen, wird eine "DbUpdateException" ausgelöst.
+Wenn Sie die Beispielanwendung jetzt erneut ausführen, können Mandanten nur Zeilen anzeigen, die zu ihnen gehören. Darüber hinaus kann die Anwendung keine Zeilen einfügen, die Mandanten gehören, die nicht derzeit mit der Sharddatenbank verbunden sind. Zudem können sichtbare Zeilen nicht mit einer anderen „TenantId“ aktualisiert werden. Wenn die Anwendung versucht, eine dieser Aktionen auszuführen, wird eine „DbUpdateException“ ausgelöst.
 
-Wenn Sie später eine neue Tabelle hinzufügen, ÄNDERN Sie einfach die Sicherheitsrichtlinie und fügen Filter- und Blockprädikate der neuen Tabelle hinzu: 
+Wenn Sie später eine neue Tabelle hinzufügen, führen Sie einfach einen ALTER-Vorgang für die Sicherheitsrichtlinie und aus fügen Filter- und Blockprädikate der neuen Tabelle hinzu: 
 
 ```
 ALTER SECURITY POLICY rls.tenantAccessPolicy     
@@ -261,7 +261,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ```
 
 > [!NOTE]
-> Bei der Verwendung von Standardeinschränkungen für ein Entity Framework-Projekt wird empfohlen, dass Sie NICHT die Mandanten-ID-Spalte in Ihr EF-Datenmodell einbeziehen. Dies liegt daran, dass Entity Framework-Abfragen automatisch Standardwerte bereitstellen, die die in T-SQL erstellten Standardeinschränkungen mit SESSION_CONTEXT außer Kraft setzen. Um Standardeinschränkungen im Beispielprojekt zu verwenden, sollten Sie z. B. "TenantId" (die Mandanten-ID) aus "DataClasses.cs" entfernen (und "Add-Migration" in der Paket-Manager-Konsole ausführen) sowie T-SQL verwenden, um sicherzustellen, dass das Feld nur in den Datenbanktabellen vorhanden ist. Auf diese Weise wird EF beim Einfügen von Daten nicht automatisch falsche Standardwerte übergeben. 
+> Bei der Verwendung von Standardeinschränkungen für ein Entity Framework-Projekt wird empfohlen, dass Sie NICHT die Mandanten-ID-Spalte in Ihr EF-Datenmodell einbeziehen. Dies liegt daran, dass Entity Framework-Abfragen automatisch Standardwerte bereitstellen, die die in T-SQL erstellten Standardeinschränkungen mit SESSION_CONTEXT überschreiben. Um Standardeinschränkungen im Beispielprojekt zu verwenden, sollten Sie z. B. "TenantId" (die Mandanten-ID) aus "DataClasses.cs" entfernen (und "Add-Migration" in der Paket-Manager-Konsole ausführen) sowie T-SQL verwenden, um sicherzustellen, dass das Feld nur in den Datenbanktabellen vorhanden ist. Auf diese Weise stellt EF beim Einfügen von Daten automatisch falsche Standardwerte bereit. 
 > 
 > 
 
@@ -296,9 +296,9 @@ GO
 ```
 
 
-### <a name="maintenance"></a>Wartung
-* **Neue Shards hinzufügen**: Sie müssen das T-SQL-Skript zum Aktivieren von RLS auf allen neuen Shards ausführen. Andernfalls werden Abfragen für diese Shards nicht gefiltert.
-* **Neue Tabellen hinzufügen**: Sie müssen den Sicherheitsrichtlinien aller Shards ein Filter- und Blockprädikat hinzufügen, wenn eine neue Tabelle erstellt wird. Andernfalls werden Abfragen für die neue Tabelle nicht gefiltert. Dies kann mithilfe eines DDL-Triggers automatisiert werden, wie im Blogbeitrag [Apply Row-Level Security automatically to newly created tables (Automatisches Anwenden der Sicherheit auf Zeilenebene auf neu erstellte Tabellen, in englischer Sprache)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx) beschrieben.
+### <a name="maintenance"></a>Wartung 
+* **Neue Shards hinzufügen**: Führen Sie das T-SQL-Skript zum Aktivieren von RLS auf allen neuen Shards aus. Andernfalls werden Abfragen für diese Shards nicht gefiltert.
+* **Neue Tabellen hinzufügen**: Fügen Sie den Sicherheitsrichtlinien aller Shards ein Filter- und Blockprädikat hinzu, wenn eine neue Tabelle erstellt wird. Andernfalls werden Abfragen für die neue Tabelle nicht gefiltert. Dies kann mithilfe eines DDL-Triggers automatisiert werden, wie im Blogbeitrag [Apply Row-Level Security automatically to newly created tables (Automatisches Anwenden der Sicherheit auf Zeilenebene auf neu erstellte Tabellen, in englischer Sprache)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx) beschrieben.
 
 ## <a name="summary"></a>Zusammenfassung
 Elastische Datenbanktools und zeilenbasierte Sicherheit können zusammen zum horizontalen Skalieren der Datenebene einer Anwendung mit Unterstützung für Shards mit sowohl mehreren als einzelnen Mandanten verwendet werden. Mehrinstanzenfähige Shards können zum effizienten Speichern von Daten (insbesondere in Fällen, in denen eine große Anzahl von Mandanten über wenige Datenzeilen verfügt) verwendet werden, während Shards mit einzelnen Instanzen zur Unterstützung von Premium-Mandanten mit strengeren Anforderungen an Leistung und Isolation verwendet werden können.  Weitere Informationen finden Sie unter [Sicherheit auf Zeilenebene](https://msdn.microsoft.com/library/dn765131). 

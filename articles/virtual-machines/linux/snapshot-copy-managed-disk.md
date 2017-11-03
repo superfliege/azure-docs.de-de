@@ -1,8 +1,8 @@
 ---
-title: "Kopieren eines verwalteten Azure-Datenträgers für die Sicherung | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie eine Kopie eines verwalteten Azure-Datenträgers für die Sicherung oder Behandlung von Datenträgerproblemen erstellen."
+title: Erstellen einer Momentaufnahme einer VHD in Azure | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie eine Kopie einer VHD in Azure als Sicherung oder für die Behandlung von Problemen erstellen."
 documentationcenter: 
-author: squillace
+author: cynthn
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -11,27 +11,23 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 2/6/2017
-ms.author: rasquill
-ms.openlocfilehash: c91367ef11c9d531bebac7c069d2df586607ec29
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/09/2017
+ms.author: cynthn
+ms.openlocfilehash: da00c48f7da5a9be146f4fdb626c93db746c0f9b
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
-# <a name="create-a-copy-of-a-vhd-stored-as-an-azure-managed-disk-by-using-managed-snapshots"></a>Erstellen einer Kopie einer als verwalteter Azure-Datenträger gespeicherten VHD mithilfe verwalteter Momentaufnahmen
-Erstellen Sie eine Momentaufnahme eines verwalteten Datenträgers für die Sicherung oder einen verwalteten Datenträger aus der Momentaufnahme, und fügen Sie ihn an einen virtuellen Testcomputer an, um Probleme zu behandeln. Eine verwaltete Momentaufnahme ist eine vollständige zeitpunktgebundene Kopie eines verwalteten VM-Datenträgers. Es wird eine schreibgeschützte Kopie Ihrer VHD erstellt, die als verwalteter Standard-Datenträger gespeichert wird. 
+# <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme 
 
-Informationen zu Preisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/managed-disks/). <!--Add link to topic or blog post that explains managed disks. -->
-
-Sie können eine Momentaufnahme des verwalteten Datenträgers im Azure-Portal oder mithilfe von Azure CLI 2.0 erstellen.
+Erstellen Sie eine Momentaufnahme eines Betriebssystem oder eines VHD-Datenträgers für die Sicherung oder zum Behandeln von VM-Problemen. Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer virtuellen Festplatte. 
 
 ## <a name="use-azure-cli-20-to-take-a-snapshot"></a>Erstellen einer Momentaufnahme mithilfe von Azure CLI 2.0
 
-> [!NOTE] 
-> Für das folgende Beispiel muss Azure CLI 2.0 installiert sein, und Sie müssen bei Ihrem Azure-Konto angemeldet sein.
+Für das folgende Beispiel muss Azure CLI 2.0 installiert sein, und Sie müssen bei Ihrem Azure-Konto angemeldet sein. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
-Die folgenden Schritte zeigen, wie Sie mithilfe des Befehls `az snapshot create` mit dem `--source-disk`-Parameter eine Momentaufnahme eines verwalteten Betriebssystemdatenträgers erstellen. Beim folgenden Beispiel wird davon ausgegangen, dass ein virtueller Computer namens `myVM` vorhanden ist, der mit einem verwalteten Betriebssystemdatenträger in der Ressourcengruppe `myResourceGroup` erstellt wurde.
+Die folgenden Schritte zeigen, wie Sie mithilfe des Befehls `az snapshot create` mit dem `--source-disk`-Parameter eine Momentaufnahme erstellen. Beim folgenden Beispiel wird davon ausgegangen, dass ein virtueller Computer namens `myVM` vorhanden ist, der mit einem verwalteten Betriebssystemdatenträger in der Ressourcengruppe `myResourceGroup` erstellt wurde.
 
 ```azure-cli
 # take the disk id with which to create a snapshot
@@ -80,4 +76,8 @@ Die Ausgabe sollte ungefähr wie folgt aussehen:
 
 Wenn Sie vorhaben, die Momentaufnahme zum Erstellen eines verwalteten Datenträgers zu nutzen und an eine VM anzufügen, die hohe Leistung benötigt, verwenden Sie den Parameter `--sku Premium_LRS` mit dem Cmdlet `az snapshot create`. Dadurch wird die Momentaufnahme so erstellt, dass sie als verwalteter Premium-Datenträger gespeichert wird. Verwaltete Premium-Datenträger bieten eine bessere Leistung, da es sich um SSDs (Solid-State Drives) handelt. Allerdings sind sie auch teurer als Standard-Datenträger (HDDs).
 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+ Erstellen Sie einen virtuellen Computer aus einer Momentaufnahme, indem Sie aus der Momentaufnahme einen verwalteten Datenträger erstellen und diesen neuen verwalteten Datenträger anschließend als den Betriebssystemdatenträger anfügen. Weitere Informationen finden Sie im Skript [Erstellen eines virtuellen Computers aus einer Momentaufnahme](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json).
 

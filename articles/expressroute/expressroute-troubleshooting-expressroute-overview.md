@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2bcd95da36cd577ece8ad87d00c3e276f28ad340
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 960ea1540d644b6f41b95ab7df61cf91adcbb4ad
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="verifying-expressroute-connectivity"></a>Überprüfen der ExpressRoute-Konnektivität
 Mit ExpressRoute wird ein lokales Netzwerk über eine private Verbindung, die über einen Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitert. ExpressRoute umfasst die drei folgenden separaten Netzwerkzonen:
@@ -281,7 +281,7 @@ Verwenden Sie die folgenden Befehle, um die Konfigurationsdetails für das Micro
 >
 
 ## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>Überprüfen von ARP zwischen Microsoft und dem Service Provider
-In diesem Abschnitt werden PowerShell-Befehle (klassisch) verwendet. Stellen Sie bei Verwendung von Azure Resource Manager-PowerShell-Befehlen sicher, dass Sie über das [klassische Azure-Portal][OldPortal] über Administrator-/Co-Administratorzugriff auf das Abonnement verfügen. Informationen zur Problembehandlung mithilfe von Azure Resource Manager-Befehlen finden Sie im Dokument [Abrufen von ARP-Tabellen im Resource Manager-Bereitstellungsmodell][ARP].
+In diesem Abschnitt werden PowerShell-Befehle (klassisch) verwendet. Stellen Sie bei der Verwendung von PowerShell-Befehlen mit Azure Resource Manager sicher, dass Sie über einen Administrator- bzw. Co-Administratorzugriff auf das Abonnement verfügen. Informationen zur Problembehandlung mithilfe von Azure Resource Manager-Befehlen finden Sie im Dokument [Abrufen von ARP-Tabellen im Resource Manager-Bereitstellungsmodell][ARP].
 
 >[!NOTE]
 >Zum Abrufen von ARP-Daten können Sie sowohl das Azure-Portal als auch Azure Resource Manager-PowerShell-Befehle verwenden. Falls für die Azure Resource Manager-PowerShell-Befehle Fehler auftreten, sollte es mit klassischen PowerShell-Befehlen funktionieren. Die klassischen PowerShell-Befehle können auch für Azure Resource Manager-ExpressRoute-Verbindungen verwendet werden.
@@ -314,7 +314,7 @@ Das folgende Beispiel zeigt die Antwort auf den Befehl für den Fall, dass kein 
 >
 
 ## <a name="validate-bgp-and-routes-on-the-msee"></a>Überprüfen von BGP und Routen auf dem MSEE
-In diesem Abschnitt werden PowerShell-Befehle (klassisch) verwendet. Stellen Sie bei Verwendung von Azure Resource Manager-PowerShell-Befehlen sicher, dass Sie über das [klassische Azure-Portal][OldPortal] über Administrator-/Co-Administratorzugriff auf das Abonnement verfügen.
+In diesem Abschnitt werden PowerShell-Befehle (klassisch) verwendet. Stellen Sie bei der Verwendung von PowerShell-Befehlen mit Azure Resource Manager sicher, dass Sie über einen Administrator- bzw. Co-Administratorzugriff auf das Abonnement verfügen.
 
 >[!NOTE]
 >Zum Abrufen von BGP-Informationen können Sie sowohl das Azure-Portal als auch Azure Resource Manager-PowerShell-Befehle verwenden. Falls für die Azure Resource Manager-PowerShell-Befehle Fehler auftreten, sollte es mit klassischen PowerShell-Befehlen funktionieren. Die klassischen PowerShell-Befehle können auch für Azure Resource Manager-ExpressRoute-Verbindungen verwendet werden.

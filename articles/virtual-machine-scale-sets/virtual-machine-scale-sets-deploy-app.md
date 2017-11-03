@@ -1,10 +1,10 @@
 ---
-title: Bereitstellen einer App in VM-Skalierungsgruppen
-description: Verwenden Sie Erweiterungen zum Bereitstellen einer App in Azure VM-Skalierungsgruppen.
+title: Bereitstellen einer Anwendung in einer Azure-VM-Skalierungsgruppe | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie Anwendungen auf Instanzen von virtuellen Linux- und Windows-Computern in einer Skalierungsgruppe bereitstellen.
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: thraka
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
@@ -13,217 +13,214 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2017
-ms.author: adegeo
-ms.openlocfilehash: 371295efea1eab66361b9aba21a55bbd2826c69b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/13/2017
+ms.author: iainfou
+ms.openlocfilehash: 0ff8a178d883e3b51294485e556e65da52dbf327
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Bereitstellen der App in VM-Skalierungsgruppen
+Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In diesem Artikel werden Möglichkeiten zum Erstellen eines benutzerdefinierten VM-Image für Instanzen in einer Skalierungsgruppe oder zum automatischen Ausführen von Installationsskripts auf vorhandenen VM-Instanzen aufgezeigt. Außerdem erfahren Sie, wie Sie Anwendungs- oder Betriebssystemupdates für eine Skalierungsgruppe verwalten.
 
-Dieser Artikel beschreibt verschiedene Möglichkeiten zum Installieren der Software zum Bereitstellungszeitpunkt der Skalierungsgruppe.
 
-Es empfiehlt sich, den Artikel [Übersicht über das Entwerfen von Skalierungsgruppen](virtual-machine-scale-sets-design-overview.md) zu lesen, in dem einige der Beschränkungen durch VM-Skalierungsgruppen beschrieben werden.
+## <a name="build-a-custom-vm-image"></a>Erstellen eines benutzerdefinierten VM-Image
+Wenn Sie eines der Azure-Plattformimages zum Erstellen der Instanzen in Ihrer Skalierungsgruppe erstellen, wird keine zusätzliche Software installiert oder konfiguriert. Sie können die Installation dieser Komponenten automatisieren, aber dies erhöht den Zeitaufwand für die Bereitstellung von VM-Instanzen in Ihren Skalierungsgruppen. Wenn Sie viele Konfigurationsänderungen auf die VM-Instanzen anwenden, fällt Verwaltungsaufwand für diese Konfigurationsskripts und -aufgaben an.
 
-## <a name="capture-and-reuse-an-image"></a>Erfassen und Wiederverwenden eines Images
+Zum Reduzieren der Konfigurationsverwaltung und der Zeit für die Bereitstellung einer VM können Sie ein benutzerdefiniertes VM-Image erstellen, das für die Ausführung Ihrer Anwendung bereitsteht, sobald in der Skalierungsgruppe eine Instanz bereitgestellt wird. Der gesamte Prozess zum Erstellen eines benutzerdefinierten VM-Image für Skalierungsgruppeninstanzen lautet wie folgt:
 
-Sie können einen virtuellen Computer in Azure verwenden, um ein Basisimage für die Skalierungsgruppe vorzubereiten. Bei diesem Vorgang wird ein verwalteter Datenträger in Ihrem Speicherkonto erstellt, auf den Sie als Basisimage für Ihre Skalierungsgruppe verweisen können. 
+1. Zum Erstellen eines benutzerdefinierten VM-Image für Ihre Skalierungsgruppeninstanzen erstellen Sie eine VM und melden sich daran an und führen anschließend die Installation und Konfiguration für die Anwendung durch. Sie können Packer verwenden, um ein [Linux](../virtual-machines/linux/build-image-with-packer.md)- oder [Windows](../virtual-machines/windows/build-image-with-packer.md)-VM-Image zu definieren und zu erstellen. Oder Sie können die VM manuell erstellen und konfigurieren:
 
-Führen Sie folgende Schritte aus:
+    - Erstellen Sie eine Linux-VM mit [Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md), [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md) oder über das [Portal](../virtual-machines/linux/quick-create-portal.md).
+    - Erstellen Sie eine Windows-VM mit [Azure PowerShell](../virtual-machines/windows/quick-create-powershell.md), [Azure CLI 2.0](../virtual-machines/windows/quick-create-cli.md) oder über das [Portal](../virtual-machines/windows/quick-create-portal.md).
+    - Melden Sie sich an einer [Linux](../virtual-machines/linux/mac-create-ssh-keys.md#use-the-ssh-key-pair)- oder [Windows](../virtual-machines/windows/connect-logon.md)-VM an.
+    - Installieren und konfigurieren Sie die erforderlichen Anwendungen und Tools. Wenn Sie bestimmte Versionen einer Bibliothek oder Laufzeit benötigen, können Sie mit einem benutzerdefinierten VM-Image eine Version definieren. 
 
-1. Erstellen eines virtuellen Azure-Computers
-   * [Linux][linux-vm-create]
-   * [Windows][windows-vm-create]
+2. Erfassen Sie Ihre VM mit [Azure CLI 2.0](../virtual-machines/linux/capture-image.md) oder [Azure PowerShell](../virtual-machines/windows/capture-image.md). In diesem Schritt wird das benutzerdefinierte VM-Image erstellt, mit dem dann Instanzen in einer Skalierungsgruppe bereitgestellt werden.
 
-2. Melden Sie sich remote beim virtuellen Computer an, und passen Sie das System nach Wunsch an.
+3. [Erstellen Sie eine Skalierungsgruppe](virtual-machine-scale-sets-create.md), und geben Sie das benutzerdefinierte VM-Image an, das in den vorherigen Schritten erstellt wurde.
 
-   Bei Bedarf können Sie Ihre Anwendung jetzt installieren. Beachten Sie jedoch, dass es in diesem Fall möglicherweise komplizierter wird, die Anwendung zu aktualisieren, da Sie sie eventuell erst entfernen müssen, wenn Sie sie jetzt installieren. Stattdessen können Sie in diesem Schritt alle Voraussetzungen für Ihre Anwendung installieren, z.B. eine bestimmte Runtime oder ein Betriebssystemfeature.
 
-3. Befolgen Sie das Tutorial „Erfassen eines Computers“ für [Linux][linux-vm-capture] oder [Windows][windows-vm-capture].
+## <a name="already-provisioned"></a>Installieren einer App mit der benutzerdefinierten Skripterweiterung
+Die benutzerdefinierte Skripterweiterung lädt Skripts auf Azure-VMs herunter und führt sie aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Skripts können aus Azure Storage oder GitHub heruntergeladen oder dem Azure-Portal zur Laufzeit für die Erweiterung bereitgestellt werden.
 
-4. Erstellen Sie eine [VM-Skalierungsgruppe][vmss-create] mit dem Bild-URI, den Sie im vorherigen Schritt erfasst haben.
+Die benutzerdefinierte Skripterweiterung kann in Azure Resource Manager-Vorlagen integriert und auch mithilfe der Azure-Befehlszeilenschnittstelle, mithilfe von PowerShell, über das Azure-Portal oder unter Verwendung der REST-API für virtuelle Azure-Computer ausgeführt werden. 
 
-Weitere Informationen über Datenträger finden Sie unter [Managed Disks – Übersicht](../virtual-machines/windows/managed-disks-overview.md) und [Verwenden angefügter Datenträger](virtual-machine-scale-sets-attached-disks.md).
+Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/windows/extensions-customscript.md).
 
-## <a name="already-provisioned"></a>Installieren nach der Bereitstellung der Skalierungsgruppe
 
-Auf eine VM-Skalierungsgruppe können VM-Erweiterungen angewendet werden. Mit VM-Erweiterungen können Sie die virtuellen Computer in einer Skalierungsgruppe als ganze Gruppe anpassen. Weitere Informationen zu Erweiterungen finden Sie unter [VM-Erweiterungen](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
+In PowerShell wird eine Hashtabelle zum Speichern der herunterzuladenden Tabelle und des auszuführenden Befehls verwendet. Das folgende Beispiel:
 
-Abhängig davon, ob Ihr Betriebssystem auf Linux oder Windows basiert, können Sie drei Haupterweiterungen verwenden.
+- Die VM-Instanzen werden angewiesen, ein Skript aus GitHub herunterzuladen: *https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate-iis.ps1*
+- Die Erweiterung wird so festgelegt, dass ein Installationsskript ausgeführt wird: `powershell -ExecutionPolicy Unrestricted -File automate-iis.ps1`
+- Mit [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) werden Informationen zu einer Skalierungsgruppe abgerufen.
+- Mit [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) wird die Erweiterung auf die VM-Instanzen angewendet.
 
-### <a name="windows"></a>Windows
-
-Für ein Windows-basiertes Betriebssystem verwenden Sie eine der Erweiterungen **Custom Script v1.8** oder **PowerShell DSC**.
-
-#### <a name="custom-script"></a>Custom Script
-
-Die benutzerdefinierte Skripterweiterung führt ein Skript auf jeder VM-Instanz in der Skalierungsgruppe aus. Eine Konfigurationsdatei oder Variable gibt an, welche Dateien auf den virtuellen Computer heruntergeladen werden und welcher Befehl dann ausgeführt wird. Auf diese Weise können Sie beispielsweise ein Installationsprogramm, ein Skript, eine Batchdatei oder eine ausführbare Datei ausführen.
-
-PowerShell verwendet eine Hashtabelle für die Einstellungen. In diesem Beispiel wird die benutzerdefinierte Skripterweiterung zum Ausführen eines PowerShell-Skripts, das IIS installiert, konfiguriert.
+Die benutzerdefinierte Skripterweiterung wird auf die *myScaleSet*-VM-Instanzen in der Ressourcengruppe mit dem Namen *myResourceGroup* angewendet. Geben Sie Ihre eigenen Namen wie folgt ein:
 
 ```powershell
-# Setup extension configuration hashtable variable
+# Define the script for your Custom Script Extension to run
 $customConfig = @{
-  "fileUris" = @("https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/temp/install-iis.ps1");
-  "commandToExecute" = "PowerShell -ExecutionPolicy Unrestricted .\install-iis.ps1 >> `"%TEMP%\StartupLog.txt`" 2>&1";
-};
+    "fileUris" = (,"https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate-iis.ps1");
+    "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File automate-iis.ps1"
+}
 
-# Add the extension to the config
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmssConfig -Publisher Microsoft.Compute -Type CustomScriptExtension -TypeHandlerVersion 1.8 -Name "customscript1" -Setting $customConfig
+# Get information about the scale set
+$vmss = Get-AzureRmVmss `
+                -ResourceGroupName "myResourceGroup" `
+                -VMScaleSetName "myScaleSet"
 
-# Send the new config to Azure
-Update-AzureRmVmss -ResourceGroupName $rg -Name "MyVmssTest143"  -VirtualMachineScaleSet $vmssConfig
+# Add the Custom Script Extension to install IIS and configure basic website
+$vmss = Add-AzureRmVmssExtension `
+    -VirtualMachineScaleSet $vmss `
+    -Name "customScript" `
+    -Publisher "Microsoft.Compute" `
+    -Type "CustomScriptExtension" `
+    -TypeHandlerVersion 1.8 `
+    -Setting $customConfig
+
+# Update the scale set and apply the Custom Script Extension to the VM instances
+Update-AzureRmVmss `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myScaleSet" `
+    -VirtualMachineScaleSet $vmss
 ```
 
->[!IMPORTANT]
->Verwenden Sie den Schalter `-ProtectedSetting` für Einstellungen, die möglicherweise vertrauliche Informationen enthalten.
-
----------
+Wenn als Upgraderichtlinie für Ihre Skalierungsgruppe *manuell* festgelegt ist, sollten Sie Ihre VM-Instanzen mit [Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance) aktualisieren. Mit diesem Cmdlet wird die aktualisierte Konfiguration für die Skalierungsgruppe auf die VM-Instanzen angewendet und Ihre Anwendung installiert.
 
 
-Die Azure-Befehlszeilenschnittstelle verwendet eine JSON-Datei für die Einstellungen. In diesem Beispiel wird die benutzerdefinierte Skripterweiterung zum Ausführen eines PowerShell-Skripts, das IIS installiert, konfiguriert. Speichern Sie die folgende JSON-Datei als _settings.json_.
+### <a name="use-azure-cli-20"></a>Verwenden von Azure CLI 2.0
+Zum Verwenden der benutzerdefinierten Skripterweiterung mit der Azure CLI erstellen Sie eine JSON-Datei, mit der definiert wird, welche Dateien beschafft und welche Befehle ausgeführt werden sollen. Diese JSON-Definitionen können für die Bereitstellungen von Skalierungsgruppen übergreifend wiederverwendet werden, um einheitliche Anwendungsinstallationen zu erhalten.
+
+Erstellen Sie in der aktuellen Shell eine Datei namens *customConfig.json*, und fügen Sie die folgende Konfiguration ein. Erstellen Sie die Datei beispielsweise in Cloud Shell, nicht auf dem lokalen Computer. Dazu können Sie einen beliebigen Editor verwenden. Geben Sie `sensible-editor cloudConfig.json` ein, um die Datei zu erstellen und eine Liste der verfügbaren Editoren anzuzeigen.
 
 ```json
 {
-  "fileUris": [
-    "https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/temp/install-iis.ps1"
-  ],
-  "commandToExecute": "PowerShell -ExecutionPolicy Unrestricted .\install-iis.ps1 >> \"%TEMP%\StartupLog.txt\" 2>&1"
+  "fileUris": ["https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate_nginx.sh"],
+  "commandToExecute": "./automate_nginx.sh"
 }
 ```
 
-Führen Sie dann diesen Azure CLI-Befehl aus.
+Wenden Sie die Konfiguration der benutzerdefinierten Skripterweiterung auf die VM-Instanzen in Ihrer Skalierungsgruppe an, indem Sie [az vmss extension set](/cli/azure/vmss/extension#set) verwenden. Im folgenden Beispiel wird die Konfiguration *customConfig.json* auf die *myScaleSet*-VM-Instanzen in der Ressourcengruppe *myResourceGroup* angewendet. Geben Sie Ihre eigenen Namen wie folgt ein:
 
 ```azurecli
-az vmss extension set --publisher Microsoft.Compute --version 1.8 --name CustomScriptExtension --resource-group myResourceGroup --vmss-name myScaleSet --settings @settings.json
+az vmss extension set \
+    --publisher Microsoft.Azure.Extensions \
+    --version 2.0 \
+    --name CustomScript \
+    --resource-group myResourceGroup \
+    --vmss-name myScaleSet \
+    --settings @customConfig.json
 ```
 
->[!IMPORTANT]
->Verwenden Sie den Schalter `--protected-settings` für Einstellungen, die möglicherweise vertrauliche Informationen enthalten.
+Wenn als Upgraderichtlinie für Ihre Skalierungsgruppe *manuell* festgelegt ist, sollten Sie Ihre VM-Instanzen mit [az vmss update-instances](/cli/azure/vmss#update-instances) aktualisieren. Mit diesem Cmdlet wird die aktualisierte Konfiguration für die Skalierungsgruppe auf die VM-Instanzen angewendet und Ihre Anwendung installiert.
 
-### <a name="powershell-dsc"></a>PowerShell DSC
 
-Sie können PowerShell DSC zum Anpassen der VM-Instanzen für Skalierungsgruppen verwenden. Die **DSC**-Erweiterung, die von **Microsoft.Powershell** veröffentlicht wird, stellt die bereitgestellte DSC-Konfiguration auf jeder VM-Instanz bereit und führt sie aus. Eine Konfigurationsdatei oder Variable teilt der Erweiterung mit, wo sich das *ZIP*-Paket befindet und welche Kombination aus _Skriptfunktionen_ ausgeführt werden soll.
+## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Installieren einer App auf einer Windows-VM mit PowerShell DSC
+[PowerShell DSC (Desired State Configuration)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) ist eine Verwaltungsplattform zum Definieren der Konfiguration von Zielcomputern. DSC-Konfigurationen definieren, was auf einem Computer installiert und wie der Host konfiguriert werden soll. Ein LCM-Modul (Local Configuration Manager) wird auf jedem Zielknoten ausgeführt, der angeforderte Aktionen auf der Grundlage gepushter Konfigurationen verarbeitet.
 
-PowerShell verwendet eine Hashtabelle für die Einstellungen. In diesem Beispiel wird ein DSC-Paket bereitgestellt, das IIS installiert.
+Mit der Erweiterung PowerShell DSC können Sie VM-Instanzen in einer Skalierungsgruppe mit PowerShell anpassen. Das folgende Beispiel:
+
+- Die VM-Instanzen werden angewiesen, ein DSC-Paket von GitHub herunterzuladen: *https://github.com/iainfoulds/azure-samples/raw/master/dsc.zip*
+- Die Erweiterung wird so festgelegt, dass ein Installationsskript ausgeführt wird: `configure-http.ps1`
+- Mit [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) werden Informationen zu einer Skalierungsgruppe abgerufen.
+- Mit [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) wird die Erweiterung auf die VM-Instanzen angewendet.
+
+Die DSC-Erweiterung wird auf die *myScaleSet*-VM-Instanzen in der Ressourcengruppe mit dem Namen *myResourceGroup* angewendet. Geben Sie Ihre eigenen Namen wie folgt ein:
 
 ```powershell
-# Setup extension configuration hashtable variable
+# Define the script for your Desired Configuration to download and run
 $dscConfig = @{
   "wmfVersion" = "latest";
   "configuration" = @{
-    "url" = "https://github.com/MicrosoftDocs/azure-cloud-services-files/raw/temp/dsc.zip";
+    "url" = "https://github.com/iainfoulds/azure-samples/raw/master/dsc.zip";
     "script" = "configure-http.ps1";
     "function" = "WebsiteTest";
   };
 }
 
-# Add the extension to the config
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmssConfig -Publisher Microsoft.Powershell -Type DSC -TypeHandlerVersion 2.24 -Name "dsc1" -Setting $dscConfig
+# Get information about the scale set
+$vmss = Get-AzureRmVmss `
+                -ResourceGroupName "myResourceGroup" `
+                -VMScaleSetName "myScaleSet"
 
-# Send the new config to Azure
-Update-AzureRmVmss -ResourceGroupName $rg -Name "myscaleset1"  -VirtualMachineScaleSet $vmssConfig
+# Add the Desired State Configuration extension to install IIS and configure basic website
+$vmss = Add-AzureRmVmssExtension `
+    -VirtualMachineScaleSet $vmss `
+    -Publisher Microsoft.Powershell `
+    -Type DSC `
+    -TypeHandlerVersion 2.24 `
+    -Name "DSC" `
+    -Setting $dscConfig
+
+# Update the scale set and apply the Desired State Configuration extension to the VM instances
+Update-AzureRmVmss `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myScaleSet"  `
+    -VirtualMachineScaleSet $vmss
 ```
 
->[!IMPORTANT]
->Verwenden Sie den Schalter `-ProtectedSetting` für Einstellungen, die möglicherweise vertrauliche Informationen enthalten.
+Wenn als Upgraderichtlinie für Ihre Skalierungsgruppe *manuell* festgelegt ist, sollten Sie Ihre VM-Instanzen mit [Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance) aktualisieren. Mit diesem Cmdlet wird die aktualisierte Konfiguration für die Skalierungsgruppe auf die VM-Instanzen angewendet und Ihre Anwendung installiert.
 
------------
 
-Die Azure-Befehlszeilenschnittstelle verwendet eine JSON-Datei für die Einstellungen. In diesem Beispiel wird ein DSC-Paket bereitgestellt, das IIS installiert. Speichern Sie die folgende JSON-Datei als _settings.json_.
+## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Installieren einer App auf einer Linux-VM mit „cloud-init“
+[Cloud-init](https://cloudinit.readthedocs.io/latest/) ist ein weit verbreiteter Ansatz zum Anpassen einer Linux-VM beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs ausgeführt wird, müssen Sie keine zusätzlichen Schritte oder erforderlichen Agents auf Ihre Konfiguration anwenden.
 
-```json
-{
-  "wmfVersion": "latest",
-  "configuration": {
-    "url": "https://github.com/MicrosoftDocs/azure-cloud-services-files/raw/temp/dsc.zip",
-    "script": "configure-http.ps1",
-    "function": "WebsiteTest"
-  }
-}
-```
+Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install**, um ein Paket zu installieren. Stattdessen können Sie eine Liste mit zu installierenden Paketen definieren. „cloud-init“ verwendet automatisch das native Paketverwaltungstool für die ausgewählte Distribution.
 
-Führen Sie dann diesen Azure CLI-Befehl aus.
+Weitere Informationen sowie die Beispieldatei *cloud-init.txt* finden Sie unter [Anpassen einer Linux-VM in Azure mit cloud-init](../virtual-machines/linux/using-cloud-init.md).
 
-```azurecli
-az vmss extension set --publisher Microsoft.Powershell --version 2.24 --name DSC --resource-group myResourceGroup --vmss-name myScaleSet --settings @settings.json
-```
-
->[!IMPORTANT]
->Verwenden Sie den Schalter `--protected-settings` für Einstellungen, die möglicherweise vertrauliche Informationen enthalten.
-
-### <a name="linux"></a>Linux
-
-Linux kann bei der Erstellung die Erweiterung **Custom Script v2.0** oder **cloud-init** verwenden.
-
-Ein benutzerdefiniertes Skript ist eine einfache Erweiterung, die Dateien in die Instanzen des virtuellen Computers herunterlädt und einen Befehl ausführt.
-
-#### <a name="custom-script"></a>Custom Script
-
-Speichern Sie die folgende JSON-Datei als _settings.json_.
-
-```json
-{
-  "fileUris": [
-    "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/installserver.sh",
-    "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/workserver.py"
-  ],
-  "commandToExecute": "bash installserver.sh"
-}
-```
-
-Verwenden Sie die Azure-Befehlszeilenschnittstelle, um diese Erweiterung einer vorhandenen VM-Skalierungsgruppe hinzuzufügen. Jeder virtuelle Computer in der Skalierungsgruppe führt die Erweiterung automatisch aus.
-
-```azurecli
-az vmss extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --resource-group myResourceGroup --vmss-name myScaleSet --settings @settings.json
-```
-
->[!IMPORTANT]
->Verwenden Sie den Schalter `--protected-settings` für Einstellungen, die möglicherweise vertrauliche Informationen enthalten.
-
-#### <a name="cloud-init"></a>cloud-init
-
-cloud-init wird beim Erstellen der Skalierungsgruppe verwendet. Erstellen Sie zunächst eine lokale Datei mit dem Namen _cloud-init.txt_, und fügen Sie ihr die Konfiguration hinzu. Ein Beispiel finden Sie in [dieser Übersicht](https://gist.github.com/Thraka/27bd66b1fb79e11904fb62b7de08a8a6#file-cloud-init-txt).
-
-Verwenden Sie die Azure-Befehlszeilenschnittstelle, um eine Skalierungsgruppe zu erstellen. Das Feld `--custom-data` akzeptiert den Dateinamen eines cloud-init-Skripts.
+Fügen Sie zum Erstellen einer Skalierungsgruppe und Verwenden einer cloud-init-Datei dem Befehl [az vmss create](/cli/azure/vmss#create) den Parameter `--custom-data` hinzu, und geben Sie den Namen einer cloud-init-Datei an. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* in *myResourceGroup* erstellt, und VM-Instanzen werden mit einer Datei mit dem Namen *cloud-init.txt* konfiguriert. Geben Sie Ihre eigenen Namen wie folgt ein:
 
 ```azurecli
 az vmss create \
-  --resource-group myResourceGroupScaleSet \
+  --resource-group myResourceGroup \
   --name myScaleSet \
-  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+  --image UbuntuLTS \
   --upgrade-policy-mode automatic \
   --custom-data cloud-init.txt \
   --admin-username azureuser \
-  --generate-ssh-keys      
+  --generate-ssh-keys
 ```
 
-## <a name="how-do-i-manage-application-updates"></a>Wie verwalte ich Anwendungsupdates?
 
-Wenn Sie Ihre Anwendung über eine Erweiterung bereitgestellt haben, ändern Sie die Definition leicht. Diese Änderung bewirkt, dass die Erweiterung für alle Instanzen der virtuellen Computer erneut bereitgestellt wird. Es **muss** ein Element der Erweiterung geändert werden, z.B. indem eine Datei umbenannt wird, andernfalls erkennt Azure nicht, dass die Erweiterung geändert wurde.
+## <a name="install-applications-as-a-set-scales-out"></a>Installieren von Anwendungen beim horizontalen Hochskalieren einer Gruppe
+Mit Skalierungsgruppen können Sie die Anzahl von VM-Instanzen erhöhen, von denen Ihre Anwendung ausgeführt wird. Dieser Prozess des horizontalen Hochskalierens kann manuell oder automatisch basierend auf Metriken, z.B. CPU- oder Arbeitsspeichernutzung, gestartet werden.
 
-Wenn Sie die Anwendung in Ihr eigenes Betriebssystemimage integriert haben, verwenden Sie für Anwendungsupdates eine Pipeline für automatische Bereitstellungen. Entwerfen Sie Ihre Architektur so, dass der schnelle Austausch einer bereitgestellten Skalierungsgruppe in der Produktion erleichtert wird. Ein gutes Beispiel dieses Verfahrens ist die [Azure Spinnaker-Treibermethode](https://github.com/spinnaker/deck/tree/master/app/scripts/modules/azure) - [http://www.spinnaker.io/](http://www.spinnaker.io/).
+Wenn Sie eine benutzerdefinierte Skripterweiterung auf die Skalierungsgruppe angewendet haben, wird die Anwendung auf jeder neuen VM-Instanz installiert. Falls die Skalierungsgruppe auf einem benutzerdefinierten Image mit einer Vorinstallation der Anwendung basiert, wird jede neue VM-Instanz in einem verwendungsbereiten Zustand bereitgestellt. 
 
-[Packer](https://www.packer.io/) und [Terraform](https://www.terraform.io/) unterstützen Azure Resource Manager, sodass Sie Images auch „als Code“ definieren und in Azure erstellen und dann die VHD in der Skalierungsgruppe verwenden können. Dadurch entstehen jedoch Probleme mit Marketplace-Images, in denen Erweiterungen/benutzerdefinierte Skripts wichtiger werden, da Sie Marketplace-Elemente nicht direkt bearbeiten.
-
-## <a name="what-happens-when-a-scale-set-scales-out"></a>Was geschieht, wenn eine Skalierungsgruppe horizontal hochskaliert wird?
-Wenn Sie einer Skalierungsgruppe virtuelle Computer hinzufügen, wird die Anwendung automatisch installiert. Wenn z.B. Erweiterungen für die Skalierungsgruppe definiert wurden, werden sie auf einem neuen virtuellen Computer jedes Mal ausgeführt, wenn er erstellt wird. Wenn die Skalierungsgruppe auf einem benutzerdefinierten Image basiert, ist jeder neue virtuelle Computer eine Kopie des benutzerdefinierten Quellimages. Wenn die virtuellen Computer der Skalierungsgruppe Containerhosts sind, können Sie beispielsweise Startcode einrichten, der die Container in einer benutzerdefinierten Skripterweiterung lädt. Oder eine Erweiterung kann einen Agent installieren, der bei einem Clusterorchestrator registriert wird, z.B. bei Azure Container Service.
+Wenn es sich bei den VM-Instanzen der Skalierungsgruppe um Containerhosts handelt, können Sie die benutzerdefinierte Skripterweiterung verwenden, um die benötigten Containerimages zu pullen und auszuführen. Mit der benutzerdefinierten Skripterweiterung kann die neue VM-Instanz auch bei einem Orchestrator, z.B. Azure Container Service, registriert werden.
 
 
-## <a name="how-do-you-roll-out-an-os-update-across-update-domains"></a>Wie verteilen Sie ein Betriebssystemupdate auf Updatedomänen?
-Angenommen, Sie möchten das Betriebssystemimage aktualisieren, während gleichzeitig die VM-Skalierungsgruppe weiterhin ausgeführt wird. PowerShell und die Azure-Befehlszeilenschnittstelle können Images des virtuellen Computers nacheinander aktualisieren. Der Artikel [Upgraden einer VM-Skalierungsgruppe](./virtual-machine-scale-sets-upgrade-scale-set.md) bietet ebenfalls weitere Informationen zu den verfügbaren Optionen zum Ausführen von Betriebssystemupgrades in einer VM-Skalierungsgruppe.
+## <a name="deploy-application-updates"></a>Bereitstellen von Anwendungsupdates
+Wenn Sie den Anwendungscode, Bibliotheken oder Pakete aktualisieren, können Sie den aktuellen Anwendungszustand auf VM-Instanzen in einer Skalierungsgruppe pushen. Bei Verwendung der benutzerdefinierten Skripterweiterung werden Updates Ihrer Anwendung nicht automatisch bereitgestellt. Ändern Sie die Konfiguration des benutzerdefinierten Skripts beispielsweise so, dass auf ein Installationsskript verwiesen wird, das über einen aktualisierten Versionsnamen verfügt. Im vorherigen Beispiel wird für die benutzerdefinierte Skripterweiterung wie folgt ein Skript mit dem Namen *automate_nginx.sh* verwendet:
+
+```json
+{
+  "fileUris": ["https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate_nginx.sh"],
+  "commandToExecute": "./automate_nginx.sh"
+}
+```
+
+Alle Updates, die Sie an Ihrer Anwendung vornehmen, werden nur dann für die benutzerdefinierte Skripterweiterung verfügbar gemacht, wenn sich das Installationsskript ändert. Ein Ansatz besteht darin, eine Versionsnummer einzubinden, die gemäß den Releases Ihrer Anwendung erhöht wird. Die benutzerdefinierte Skripterweiterung kann nun wie folgt auf *automate_nginx_v2.sh* verweisen:
+
+```json
+{
+  "fileUris": ["https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate_nginx_v2.sh"],
+  "commandToExecute": "./automate_nginx_v2.sh"
+}
+```
+
+Die benutzerdefinierte Skripterweiterung wird jetzt für die VM-Instanzen ausgeführt, um die aktuellen Anwendungsupdates anzuwenden.
+
+
+### <a name="install-applications-with-os-updates"></a>Installieren von Anwendungen mit Betriebssystemupdates
+Wenn neue Releases von Betriebssystemen verfügbar sind, können Sie ein neues benutzerdefiniertes Image verwenden oder erstellen und [Betriebssystemupgrades](virtual-machine-scale-sets-upgrade-scale-set.md) für eine Skalierungsgruppe bereitstellen. Jede VM-Instanz wird auf das aktuelle Image aktualisiert, das Sie angegeben haben. Sie können ein benutzerdefiniertes Image mit der vorinstallierten Anwendung, der benutzerdefinierten Skripterweiterung oder PowerShell DSC verwenden, damit die Anwendung automatisch verfügbar ist, wenn Sie das Upgrade durchführen. Unter Umständen müssen Sie die Anwendungswartung planen, wenn Sie diesen Prozess durchführen, um sicherzustellen, dass keine Probleme aufgrund der Kompatibilität von Versionen auftreten.
+
+Wenn Sie ein benutzerdefiniertes VM-Image mit vorinstallierter Anwendung verwenden, können Sie die Anwendungsupdates in eine Bereitstellungspipeline integrieren, um die neuen Images zu erstellen und Betriebssystemupgrades für die gesamte Skalierungsgruppe bereitzustellen. Bei diesem Ansatz kann die Pipeline die aktuellen Builds der Anwendung nutzen, ein VM-Image erstellen und überprüfen und anschließend die VM-Instanzen in der Skalierungsgruppe aktualisieren. Zum Ausführen einer Bereitstellungspipeline, mit der Anwendungsupdates über benutzerdefinierte VM-Images hinweg erstellt und bereitgestellt werden, können Sie [Visual Studio Team Services](https://www.visualstudio.com/team-services/), [Spinnaker](https://www.spinnaker.io/) oder [Jenkins](https://jenkins.io/) verwenden.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-* [Verwalten einer Skalierungsgruppe mithilfe von PowerShell](virtual-machine-scale-sets-windows-manage.md)
-* [Erstellen einer Skalierungsgruppenvorlage](virtual-machine-scale-sets-mvss-start.md)
-
-
-[linux-vm-create]: ../virtual-machines/linux/tutorial-manage-vm.md
-[windows-vm-create]: ../virtual-machines/windows/tutorial-manage-vm.md
-[linux-vm-capture]: ../virtual-machines/linux/capture-image.md
-[windows-vm-capture]: ../virtual-machines/windows/capture-image.md 
-[vmss-create]: virtual-machine-scale-sets-create.md
-
+Beim Erstellen und Bereitstellen von Anwendungen in Ihren Skalierungsgruppen helfen Ihnen die Informationen unter [Überlegungen zum Entwurf von Skalierungsgruppen](virtual-machine-scale-sets-design-overview.md) weiter. Weitere Informationen zum Verwalten Ihrer Skalierungsgruppe finden Sie unter [Manage a virtual machine scale set with Azure PowerShell](virtual-machine-scale-sets-windows-manage.md) (Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell).

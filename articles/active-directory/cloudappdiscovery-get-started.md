@@ -1,35 +1,35 @@
 ---
-title: Einrichten von Cloud App Discovery in Azure Active Directory | Microsoft-Dokumentation
-description: Bietet Informationen zum Suchen und Verwalten von Anwendungen mit Cloud App Discovery, zu den Vorteilen und zu der Funktionsweise.
+title: Einrichten des Cloud App Discovery-Diensts in Azure Active Directory | Microsoft Docs
+description: "Suchen Sie nach und verwalten Sie Anwendungen mit Cloud App Discovery, um aussagekräftige Informationen zur Cloudverwendung und Schatten-IT bereitzustellen."
 services: active-directory
 keywords: Cloud App Discovery, Verwalten von Anwendungen
 documentationcenter: 
 author: curtand
 manager: femila
+tags: ignite
 ms.assetid: db968bf5-22ae-489f-9c3e-14df6e1fef0a
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/18/2017
 ms.author: curtand
 ms.reviewer: nigu
-ms.openlocfilehash: af54b77dc985f2ca6abeab29165278dfa598f5e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c09410bc6ed8b4eac4316e206c75db84ef0b07fb
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Einrichten von Cloud App Discovery in Azure AD
 
-Die neuen Cloud App Discovery-Verbesserungen in Azure AD sind jetzt mit einer Azure Active Directory Premium P1-Lizenz verfügbar. Diese Verbesserungen basieren auf der Integration mit Microsoft Cloud App Security. Cloud App Discovery vergleicht Ihre Datenverkehrsprotokolle mit dem Cloud App Security-Katalog, in dem mehr als 15.000 Cloud-Apps enthalten sind, um stets Informationen zur Cloud-Verwendung und Schatten-IT für Sie bereitzustellen. 
+Cloud App Discovery in Azure AD basiert jetzt auf der Integration von verfügbaren Daten aus Microsoft Cloud App Security. Cloud App Discovery vergleicht Ihre Datenverkehrsprotokolle mit dem Cloud App Security-Katalog, in dem mehr als 15.000 Cloud-Apps enthalten sind, um aktuelle Informationen zur Cloudverwendung und Schatten-IT für Sie bereitzustellen. In diesem Artikel wird der Einrichtungsvorgang beschrieben. Außerdem enthält er Links zu den detaillierten Informationen zu jedem Schritt. Zudem stellt er Firewall- und Proxyinformationen sowie Protokolldateiunterstützung bereit.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Ihre Organisation muss eine Azure AD Premium P1-Lizenz haben, um dieses Produkt nutzen zu können. Weitere Informationen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
-
-Um Cloud App Discovery einzurichten, müssen Sie ein globaler Administrator oder ein Benutzer mit Leseberechtigung für Sicherheitsfunktionen in Azure Active Directory sein. Ein Benutzer mit einer Administratorrolle verfügt in allen Diensten, die Ihre Organisation abonniert hat, über die gleichen Berechtigungen.
+* Ihre Organisation muss eine Azure AD Premium P1-Lizenz haben, um dieses Produkt nutzen zu können. Weitere Informationen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+* Um Cloud App Discovery einzurichten, müssen Sie ein globaler Administrator oder ein Benutzer mit Leseberechtigung für Sicherheitsfunktionen in Azure Active Directory sein.
 
 ## <a name="setup-steps"></a>Einrichtungsschritte
 
@@ -65,7 +65,7 @@ Cloud App Discovery verwendet die Daten aus Ihren Datenverkehrsprotokollen. Je m
 * Die Menge der hoch- oder heruntergeladen Daten erlaubt einen Einblick in Nutzungsmuster von Cloud-Apps
 * Ausgeführte Aktion (zugelassen/blockiert)
 
-Cloud App Discovery kann keine Attribute anzeigen oder analysieren, die nicht in den Protokollen enthalten sind. Beispielsweise enthält das Standardprotokollformat **Cisco ASA Firewall** weder die **Menge der hochgeladenen Bytes pro Transaktion**, noch den **Benutzernamen** oder die **Ziel-URL**, sondern nur die Ziel-IP-Adresse. Daher haben Sie aus dieser Datenquelle möglicherweise weniger Einblicke in die Cloud-Apps. Legen Sie für Cisco ASA-Firewalls die Informationsebene auf 6.1 fest.
+Cloud App Discovery kann keine Attribute anzeigen oder analysieren, die nicht in Ihren Protokollen enthalten sind. Beispielsweise enthält das Standardprotokollformat **Cisco ASA Firewall** weder die **Menge der hochgeladenen Bytes pro Transaktion**, noch den **Benutzernamen** oder die **Ziel-URL**, sondern nur die Ziel-IP-Adresse. Daher haben Sie aus dieser Datenquelle möglicherweise weniger Einblicke in die Cloud-Apps. Legen Sie für Cisco ASA-Firewalls die Informationsebene auf 6.1 fest.
 
 Um erfolgreich einen Cloud App Discovery-Bericht zu erstellen, müssen Ihre Datenverkehrsprotokolle den folgenden Bedingungen entsprechen:
 

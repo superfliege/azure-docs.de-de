@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/06/2017
+ms.date: 10/11/2017
 ms.author: owend
-ms.openlocfilehash: 31e4913aceb1c4b51ddc7cde6381bc21b50187c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 47f05a22811307617f475e79145f70a0233f5895
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen mit dem lokalen Azure-Datengateway
 Das lokale Datengateway fungiert als Brücke für eine sichere Datenübertragung zwischen lokalen Datenquellen und den Azure Analysis Services-Servern in der Cloud. Zusätzlich zur Verwendung von mehreren Azure Analysis Services-Servern in derselben Region funktioniert die neueste Version des Gateways auch mit Azure Logic Apps, Power BI, Power Apps und Microsoft Flow. Sie können einem einzelnen Gateway mehrere Dienste in derselben Region zuordnen. 
@@ -139,6 +139,9 @@ Sie können mithilfe des Drittanbietertools Azure Speed Test-App messen, wie hoc
 **A**: Der Wiederherstellungsschlüssel bietet eine Möglichkeit zum Migrieren oder Wiederherstellen Ihrer Gatewayeinstellungen nach einem Notfall.
 
 ## <a name="troubleshooting"></a>Problembehandlung
+
+**F**: Warum wird mein Gateway nicht in der Liste der Gatewayinstanzen angezeigt, wenn ich versuche, die Gatewayressource in Azure zu erstellen? <br/>
+**A**: Es gibt zwei mögliche Gründe. Erstens könnte bereits eine Ressource für das Gateway im aktuellen oder einem anderen Abonnement erstellt sein. Um diese Möglichkeit auszuschließen, zählen Sie Ressourcen des Typs **Lokale Datengateways** aus dem Portal auf. Stellen Sie sicher, dass Sie beim Aufzählen aller Ressourcen alle Abonnements auswählen. Beachten Sie: Sobald die Ressource erstellt wurde, wird das Gateway in der Benutzeroberfläche „Gatewayressource erstellen“ nicht in der Liste der Gatewayinstanzen angezeigt. Die zweite Möglichkeit ist, dass die Azure AD-Identität des Benutzers, der das Gateway installiert hat, nicht dem Benutzer entspricht, der beim Azure-Portal angemeldet ist. Um dieses Problem zu beheben, melden Sie sich mit demselben Konto beim Verwaltungsportal an, wie der Benutzer, der das Gateway installiert hat.
 
 **F**: Wie kann ich feststellen, welche Abfragen an die lokale Datenquelle gesendet werden? <br/>
 **A**: Sie können die Abfrageablaufverfolgung aktivieren. Hierin sind die gesendeten Abfragen enthalten. Denken Sie daran, die Abfrageablaufverfolgung nach Abschluss der Problembehandlung wieder auf den ursprünglichen Wert zurückzusetzen. Wenn Sie die Abfrageablaufverfolgung aktiviert lassen, werden größere Protokolle erstellt.

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2017
+ms.date: 10/17/2017
 ms.author: helaw
-ms.openlocfilehash: 5787b25fb1dd7331e561798152678ed187e24d54
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96d5cdfc28759fd516eab5fd97c6cf444af08cf6
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Bereitstellen des Anwendungszugriffs auf Azure Stack
 
@@ -72,32 +72,55 @@ Fahren Sie nach Abschluss des Vorgangs mit dem [Zuweisen einer Rolle für Ihre A
 ## <a name="create-service-principal-for-ad-fs"></a>Erstellen eines Dienstprinzipals für AD FS
 Wenn Sie Azure Stack mit AD FS bereitgestellt haben, können Sie PowerShell verwenden, um einen Dienstprinzipal zu erstellen, eine Rolle für den Zugriff zuzuweisen und die Anmeldung über PowerShell mit dieser Identität durchzuführen.
 
-### <a name="before-you-begin"></a>Voraussetzungen
+Das Skript wird über den privilegierten Endpunkt auf einem virtuellen ERCS-Computer ausgeführt.
 
-[Laden Sie die Tools, die für die Arbeit mit Azure Stack erforderlich sind, auf Ihren lokalen Computer herunter.](azure-stack-powershell-download.md)
 
-### <a name="import-the-identity-powershell-module"></a>Importieren des PowerShell-Moduls „Identity“
-Navigieren Sie nach dem Herunterladen der Tools zum Downloadordner, und importieren Sie das PowerShell-Modul „Identity“, indem Sie den folgenden Befehl verwenden:
+Anforderungen:
+- Ein zertifiziertes Gerät ist erforderlich.
 
-```PowerShell
-Import-Module .\Identity\AzureStack.Identity.psm1
-```
+**Parameter**
 
-Beim Importieren des Moduls erhalten Sie ggf. den folgenden Fehler: „AzureStack.Connect.psm1 is not digitally signed. The script will not execute on the system“ (AzureStack.Connect.psm1 ist nicht digital signiert. Das Skript wird auf dem System nicht ausgeführt.) Zum Beheben dieses Problems können Sie eine Ausführungsrichtlinie festlegen, um das Ausführen des Skripts mit dem folgenden Befehl in einer PowerShell-Sitzung mit erhöhten Rechten zu ermöglichen:
+Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter erforderlich:
 
-```PowerShell
-Set-ExecutionPolicy Unrestricted
-```
 
-### <a name="create-the-service-principal"></a>Erstellen des Dienstprinzipals
-Sie können einen Dienstprinzipal erstellen, indem Sie den folgenden Befehl ausführen. Achten Sie hierbei darauf, dass Sie den Parameter *DisplayName* aktualisieren:
-```powershell
-$servicePrincipal = New-AzSADGraphServicePrincipal `
- -DisplayName "<YourServicePrincipalName>" `
- -AdminCredential $(Get-Credential) `
- -AdfsMachineName "AZS-ADFS01" `
- -Verbose
-```
+|Parameter|Beschreibung|Beispiel|
+|---------|---------|---------|
+|Name|Name des SPN-Kontos|MyAPP|
+|ClientCertificates|Array von Zertifikatobjekten|X.509-Zertifikat|
+|ClientRedirectUris<br>(Optional)|Umleitungs-URI der Anwendung|         |
+
+**Beispiel**
+
+1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten, und führen Sie die folgenden Befehle aus:
+
+   > [!NOTE]
+   > In diesem Beispiel wird ein selbstsigniertes Zertifikat erstellt. Wenn Sie diese Befehle in einer Produktionsbereitstellung ausführen, rufen Sie mit „Get-Certificate“ das Zertifikatsobjekt für das Zertifikat ab, das Sie verwenden möchten.
+
+   ```
+   $creds = Get-Credential
+
+   $session = New-PSSession -ComputerName <IP Address of ECRS> -ConfigurationName PrivilegedEndpoint -Credential $creds
+
+   $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=testspn2" -KeySpec KeyExchange
+
+   Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name 'MyApp' -ClientCertificates $using:cert}
+
+   $session|remove-pssession
+
+   ```
+
+2. Nach Abschluss der Automatisierung zeigt es die für die Verwendung des SPN erforderlichen Details an. 
+
+   Beispiel:
+
+   ```
+   ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
+   ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
+   Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
+   ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
+   PSComputerName        : azs-ercs01
+   RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
+   ```
 ### <a name="assign-a-role"></a>Zuweisen einer Rolle
 Nach dem Erstellen des Dienstprinzipals müssen Sie [ihn einer Rolle zuweisen](azure-stack-create-service-principals.md#assign-role-to-service-principal).
 

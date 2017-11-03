@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: aa7c0738120ecda8d43669725748585e1ad5a581
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ef6e649d2f5563ea066b70d5ef3f80c5af36ce23
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Auffächerungsszenario (nach innen und außen) in Durable Functions – Beispiel der Cloudsicherung
 
@@ -97,12 +97,12 @@ Bei der Implementierung wird die Datei vom Datenträger geladen. Gleichzeitig we
 > [!NOTE]
 > Dies ist ein gutes Beispiel für das Verschieben von Eingabe-/Ausgabevorgängen in die Funktion `activityTrigger`. Die Arbeit kann nicht nur auf viele verschiedene virtuelle Computer verteilt werden, sondern Sie können auch den Fortschritt überprüfen. Wenn der Hostprozess aus irgendeinem Grund beendet wird, wissen Sie, welche Uploads bereits abgeschlossen wurden.
 
-## <a name="running-the-sample"></a>Ausführen des Beispiels
+## <a name="run-the-sample"></a>Ausführen des Beispiels
 
-Wenn Sie die über HTTP ausgelösten Funktionen verwenden, die im Beispiel enthalten sind, können Sie mit der Orchestrierung beginnen, indem Sie folgende HTTP POST-Anforderung verwenden.
+Sie können die Orchestrierung starten, indem Sie die folgende HTTP POST-Anforderung senden.
 
 ```
-POST http://{host}/orchestrators/E2_BackupSiteContent HTTP/1.1
+POST http://{host}/orchestrators/E2_BackupSiteContent
 Content-Type: application/json
 Content-Length: 20
 
@@ -112,7 +112,7 @@ Content-Length: 20
 > [!NOTE]
 > Die Funktion `HttpStart`, die Sie aufrufen, kann nur mit JSON-formatiertem Inhalt verwendet werden. Aus diesem Grund ist der Header `Content-Type: application/json` erforderlich und der Verzeichnispfad als JSON-Zeichenfolge codiert.
 
-Dies löst den Orchestrator `E2_BackupSiteContent` aus und übergibt die Zeichenfolge `D:\home\LogFiles` als Parameter. Die Antwort enthält einen Link, über den der Status dieses Sicherungsvorgangs abgerufen werden kann:
+Diese HTTP-Anforderung löst den Orchestrator `E2_BackupSiteContent` aus und übergibt die Zeichenfolge `D:\home\LogFiles` als Parameter. Die Antwort enthält einen Link, über den der Status des Sicherungsvorgangs abgerufen werden kann:
 
 ```
 HTTP/1.1 202 Accepted
@@ -158,9 +158,7 @@ So sieht die Orchestrierung als einzelne C#-Datei in einem Visual Studio-Projekt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Jetzt sollten Sie über ein besseres Verständnis der wesentlichen Orchestrierungsfunktionen von Durable Functions verfügen. Die nachfolgenden Beispiele beinhalten erweiterte Features und Szenarios.
+In diesem Beispiel wurde das Implementieren das Auffächerungsmusters angezeigt. Das nächste Beispiel veranschaulicht das Implementieren des [zustandsbehafteten Singleton-Musters](durable-functions-singletons.md) in einer [externen Orchestrierung](durable-functions-eternal-orchestrations.md).
 
 > [!div class="nextstepaction"]
 > [Ausführen des zustandsbehafteten Singleton-Beispiels](durable-functions-counter.md)
-
-

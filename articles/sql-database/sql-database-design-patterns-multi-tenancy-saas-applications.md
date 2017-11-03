@@ -1,6 +1,6 @@
 ---
 title: "Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "In diesem Artikel werden die Anforderungen und allgemeinen Datenarchitekturmuster von mehrinstanzenfähigen Datenbankanwendungen, die in einer Cloudumgebung ausgeführt werden, sowie die verschiedenen Vor- und Nachteile dieser Muster erläutert. Außerdem wird beschrieben, wie diese Anforderungen mit den elastischen Pools und elastischen Tools von Azure SQL-Datenbank ohne Kompromisse erfüllt werden können."
+description: "Informationen zu den Anforderungen und allgemeinen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software-as-a-Service), die in einer Cloudumgebung ausgeführt werden."
 keywords: 
 services: sql-database
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: sqldb-design
 ms.date: 02/01/2017
 ms.author: srinia
-ms.openlocfilehash: 0f6ba62a01f3211ccaae6b6c48f72e0de54aad78
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d8e3a05ae067fc9b2d52e47c4c49759c940477e
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="design-patterns-for-multi-tenant-saas-applications-and-azure-sql-database"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank
 Dieser Artikel enthält Informationen zu den Anforderungen und allgemeinen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software-as-a-Service), die in einer Cloudumgebung ausgeführt werden. Zudem werden die zu berücksichtigenden Faktoren sowie die Vor- und Nachteile verschiedener Entwurfsmuster erläutert. Pools und Tools für elastische Datenbanken in Azure SQL-Datenbank können Ihnen dabei helfen, Ihre spezifischen Anforderungen zu erfüllen, ohne Abstriche bei anderen Zielen zu machen.

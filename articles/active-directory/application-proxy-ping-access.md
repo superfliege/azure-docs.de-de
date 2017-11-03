@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2017
+ms.date: 10/11/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 58034ab8830cf655199875b448948ea14dc04a70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f6e6bb39164f9b3dea206ebcf850ee98e2506dcf
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess
 
@@ -108,6 +108,9 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 
   ![Auswählen von Berechtigungen](./media/application-proxy-ping-access/select-permissions.png)
 
+17. Erteilen Sie Berechtigungen, bevor Sie den Berechtigungenbildschirm schließen. 
+![Erteilen von Berechtigungen](media/application-proxy-ping-access/grantperms.png)
+
 ### <a name="collect-information-for-the-pingaccess-steps"></a>Erfassen von Informationen für die Schritte in PingAccess
 
 1. Wählen Sie auf dem Blatt mit den App-Einstellungen die Option **Eigenschaften**. 
@@ -132,7 +135,7 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 
 ### <a name="optional---update-graphapi-to-send-custom-fields"></a>Optional – Aktualisieren von GraphAPI zum Senden von benutzerdefinierten Feldern
 
-Eine Liste von Sicherheitstoken, die Azure AD für die Authentifizierung sendet, finden Sie unter [Azure AD-Tokenreferenz](./develop/active-directory-token-and-claims.md). Wenn Sie einen benutzerdefinierten Anspruch benötigen, der andere Token sendet, verwenden Sie GraphAPI, um das App-Feld *acceptMappedClaims* auf **True** festzulegen. Sie können den Azure AD Graph-Tester oder MS Graph für diese Konfiguration verwenden. 
+Eine Liste von Sicherheitstoken, die Azure AD für die Authentifizierung sendet, finden Sie unter [Azure AD-Tokenreferenz](./develop/active-directory-token-and-claims.md). Wenn Sie einen benutzerdefinierten Anspruch benötigen, der andere Token sendet, verwenden Sie GraphAPI, um das App-Feld *acceptMappedClaims* auf **True** festzulegen. Sie können nur den Azure AD Graph Explorer für diese Konfiguration verwenden. 
 
 In diesem Beispiel wird der Graph-Tester verwendet:
 
@@ -143,6 +146,14 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
   "acceptMappedClaims":true
 }
 ```
+
+>[!NOTE]
+>Um einen benutzerdefinierten Anspruch zu verwenden, benötigen Sie auch eine für diese Anwendung definierte und ihr zugewiesene benutzerdefinierte Richtlinie.  Diese Richtlinie sollte alle erforderlichen benutzerdefinierten Attribute enthalten.
+>
+>Richtliniendefinition und Zuweisung können über PowerShell, Azure AD Graph Explorer oder MS Graph ausgeführt werden.  Wenn Sie dies in PowerShell tun, müssen Sie möglicherweise zuerst `New-AzureADPolicy ` verwenden und dann der Anwendung mit `Set-AzureADServicePrincipalPolicy` zuweisen.  Weitere Informationen finden Sie unter [Zuweisung von Anspruchszuordnungsrichtlinien](active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+
+### <a name="optional---use-a-custom-claim"></a>Optional – Verwenden eines benutzerdefinierten Anspruchs
+Damit Ihre Anwendung einen benutzerdefinierten Anspruch verwenden und zusätzliche Felder beinhalten kann, achten Sie darauf, dass Sie auch [eine Richtlinie für die Zuordnung benutzerdefinierter Ansprüche erstellt und der Anwendung zugeordnet haben ](active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 ## <a name="download-pingaccess-and-configure-your-app"></a>Herunterladen von PingAccess und Konfigurieren der App
 

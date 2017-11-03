@@ -1,6 +1,6 @@
 ---
 title: Erstellen und Verwalten von Azure SQL-Servern und -Datenbanken | Microsoft-Dokumentation
-description: Erfahren Sie mehr zu Azure SQL-Datenbankservern und Datenbankkonzepten sowie zum Erstellen und Verwalten von Servern und Datenbanken mithilfe des Azure-Portals, PowerShell, der Azure CLI, Transact-SQL und der REST-API.
+description: Informationen zum Azure SQL-Datenbankserver und zu Datenbankkonzepten sowie zum Erstellen und Verwalten von Servern und Datenbanken.
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: dbc01dac6cf31916bef1cba9432e5653751dc625
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 345a3bf0ff417b35c2abaa26352cff3359997544
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Erstellen und Verwalten von Azure SQL-Datenbankservern und -datenbanken
 

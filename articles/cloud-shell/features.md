@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/16/2017
 ms.author: juluk
-ms.openlocfilehash: 158b0b65ba53630050275c910f2a7acfc39b8759
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 23faadc38fde75d4c83361465fdacc76d42d7523
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Features und Tools für Bash in Azure Cloud Shell
 
@@ -52,8 +52,8 @@ Dateien außerhalb von `$Home` und der Zustand des Computers werden nicht sitzun
 
 |Kategorie   |Name   |
 |---|---|
-|Linux-Shellinterpreter|Bash<br> sh               |
-|Azure-Tools            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) und [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard) <br>    |
+|Linux-Tools            |Bash<br> sh<br> tmux<br> dig<br>               |
+|Azure-Tools            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) und [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard) <br> [Service Fabric-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) <br>    |
 |Text-Editoren           |Vim<br> Nano<br> Emacs       |
 |Quellcodeverwaltung         |Git                    |
 |Buildtools            |Make<br> Maven<br> npm<br> pip         |
@@ -65,11 +65,11 @@ Dateien außerhalb von `$Home` und der Zustand des Computers werden nicht sitzun
 
 |Sprache   |Version   |
 |---|---|
-|.NET       |1.01       |
+|.NET       |2.0.0       |
 |Go         |1.7        |
 |Java       |1.8        |
 |Node.js    |6.9.4      |
-|PowerShell  |[6.0 (Beta)](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[6.0 (Beta)](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 und 3.5 (Standard)|
 
 ## <a name="next-steps"></a>Nächste Schritte

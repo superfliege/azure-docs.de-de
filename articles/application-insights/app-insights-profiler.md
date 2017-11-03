@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
-ms.openlocfilehash: 5d9a5b0dbd0b2a95bbb3cae37aea27908addc3c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eca593890b6b030caa0acb9ede90ca24fe136ca0
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>Profilerstellung für Live-Azure-Web-Apps mit Application Insights
 
@@ -45,9 +45,9 @@ Mit Application Insights konfigurierte Web-Apps sind auf dem Blatt „Konfigurie
 
 Steuern Sie auf dem Blatt „Konfigurieren“ mithilfe der Schaltfläche *Enable Profiler* (Profiler aktivieren) oder *Disable Profiler* (Profiler deaktivieren) den Profiler für alle verknüpften Web-Apps.
 
-
-
 ![Blatt „Konfigurieren“][linked app services]
+
+Im Gegensatz zu Web-Apps, die über App Service-Pläne gehostet werden, werden in *Azure Compute*-Ressourcen gehostete Anwendungen (z.B.: Virtual Machine, VM-Skalierungsgruppe, Service Fabric, Cloud-Dienste) nicht direkt von Azure verwaltet. In diesem Fall muss keine Verknüpfung mit einer Web-App hergestellt werden, und Sie müssen nur klicken, um Profiler auf dem Bildschirm zu aktivieren.
 
 ## <a name="disable-the-profiler"></a>Deaktivieren von Profiler
 Wenn Sie Profiler für eine einzelne App Service-Instanz beenden oder neu starten möchten, finden Sie ihn **in der App Service-Ressource** unter **Webaufträge**. Wenn Sie ihn löschen möchten, suchen Sie unter **Erweiterungen**.

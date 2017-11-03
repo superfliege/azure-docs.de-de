@@ -3,7 +3,7 @@ title: Azure IoT-Protokollgateway | Microsoft Docs
 description: "Erfahren Sie, wie Sie mit einem Azure IoT-Protokollgateway die IoT Hub-Funktionen und die unterstützten Protokolle erweitern, damit Geräte Verbindungen mit Ihrem Hub mithilfe von Protokollen, die nicht nativ von IoT Hub unterstützt werden, herstellen können."
 services: iot-hub
 documentationcenter: 
-author: kdotchkoff
+author: fsautomata
 manager: timlt
 editor: 
 ms.assetid: 555e59ae-3136-4533-8ba8-f3a3b6acf648
@@ -13,18 +13,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/11/2017
-ms.author: kdotchko
-ms.openlocfilehash: ad2d33b0e8f02facd6f0d20bf7f5b7838747cdaf
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.author: elioda
+ms.openlocfilehash: 1ed8ec28b95bbc91b731fd7bb7b3f1f6654e7fcf
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # Unterstützen zusätzlicher Protokolle für IoT Hub
-Azure IoT Hub bietet nativ Unterstützung für die Kommunikation über die Protokolle MQTT, AMQP und HTTPS. In einigen Fällen können Geräte oder Bereichsgateways möglicherweise keines dieser Standardprotokolle verwenden und erfordern eine Protokollanpassung. In solchen Fällen können Sie ein benutzerdefiniertes Gateway verwenden. Ein benutzerdefiniertes Gateway kann die Protokollanpassung für IoT Hub-Endpunkte ermöglichen und für den IoT Hub-Datenverkehr als Brücke fungieren. Sie können das [Azure IoT-Protokollgateway](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) als benutzerdefiniertes Gateways zum Ermöglichen der Protokollanpassung für IoT Hub verwenden.
+Azure IoT Hub bietet nativ Unterstützung für die Kommunikation über die Protokolle MQTT, AMQP und HTTPS. In einigen Fällen können Geräte oder Bereichsgateways möglicherweise keines dieser Standardprotokolle verwenden und erfordern eine Protokollanpassung. In solchen Fällen können Sie ein benutzerdefiniertes Gateway verwenden. Ein benutzerdefiniertes Gateway dient für den IoT Hub-Datenverkehr als Brücke und ermöglicht damit die Protokollanpassung für IoT Hub-Endpunkte. Sie können das [Azure IoT-Protokollgateway](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) als benutzerdefiniertes Gateways zum Ermöglichen der Protokollanpassung für IoT Hub verwenden.
 
 ## Azure IoT-Protokollgateway
-Das Azure IoT-Protokollgateway ist ein Framework zur Protokollanpassung für die hoch skalierbare, bidirektionale Gerätekommunikation mit IoT Hub. Das Protokollgateway ist eine Passthrough-Komponente, die Geräteverbindungen über ein bestimmtes Protokoll akzeptiert. Es fungiert als Brücke für den Datenverkehr zum IoT Hub über AMQP 1.0. Das Azure IoT-Protokollgateway steht als Open-Source-Softwareprojekt zur Verfügung und ermöglicht eine flexible Unterstützung verschiedener Protokolle und Protokollversionen.
+Das Azure IoT-Protokollgateway ist ein Framework zur Protokollanpassung für die hoch skalierbare, bidirektionale Gerätekommunikation mit IoT Hub. Das Protokollgateway ist eine Passthrough-Komponente, die Geräteverbindungen über ein bestimmtes Protokoll akzeptiert. Es fungiert als Brücke für den Datenverkehr zum IoT Hub über AMQP 1.0. 
 
 Sie können das Protokollgateway in Azure auf hochgradig skalierbare Weise mithilfe von Azure Service Fabric, Azure Cloud Services-Workerrollen oder virtuellen Windows-Computern bereitstellen. Darüber hinaus kann das Protokollgateway in lokalen Umgebungen wie z. B. Bereichsgateways bereitgestellt werden.
 
@@ -32,7 +32,7 @@ Das Azure IoT-Protokollgateway bietet einen MQTT-Protokolladapter, mit dem Sie b
 
 Der MQTT-Adapter veranschaulicht außerdem das Programmiermodell zum Erstellen von Protokolladaptern für andere Protokolle. Darüber hinaus unterstützt das Programmiermodell des Azure IoT-Protokollgateways die Integration benutzerdefinierter Komponenten für spezielle Verarbeitungsaufgaben – zum Beispiel benutzerdefinierte Authentifizierung, Nachrichtentransformationen, Komprimierung/Dekomprimierung oder Verschlüsselung/Entschlüsselung des Datenverkehrs zwischen Geräten und IoT Hub.
 
-Für mehr Flexibilität werden das Protokollgateway und die MQTT-Implementierung als Open-Source-Softwareprojekt bereitgestellt. Auf diese Weise können Sie die Implementierung nach Bedarf anpassen.
+Für mehr Flexibilität werden das Azure IoT-Protokollgateway und die MQTT-Implementierung als Open-Source-Softwareprojekt bereitgestellt. Mit diesem können Sie verschiedene Protokolle und Protokollversionen unterstützen oder die Implementierung für Ihr Szenario anpassen. 
 
 ## Nächste Schritte
 Weitere Informationen über das Azure IoT-Protokollgateway sowie dessen Verwendung und Bereitstellung im Rahmen Ihrer IoT-Lösung finden Sie unter:
@@ -43,7 +43,7 @@ Weitere Informationen über das Azure IoT-Protokollgateway sowie dessen Verwendu
 Weitere Informationen zum Planen Ihrer IoT Hub-Bereitstellung finden Sie unter:
 
 * [Vergleich mit Event Hubs][lnk-compare]
-* [Skalierung, hohe Verfügbarkeit und Notfallwiederherstellung][lnk-scaling]
+* [Skalierung, Hochverfügbarkeit und Notfallwiederherstellung][lnk-scaling]
 * [IoT Hub-Entwicklerhandbuch][lnk-devguide]
 
 [lnk-compare]: iot-hub-compare-event-hubs.md

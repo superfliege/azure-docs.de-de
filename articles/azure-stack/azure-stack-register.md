@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: erikje
-ms.openlocfilehash: b5f112f2d5b96843e7863aa664eec4847c58e950
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3282b9d4cdf67035d966cf934a7d8574eae6ae34
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>Registrieren Sie Azure Stack in Ihrem Azure-Abonnement.
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Für Azure Active Directory-Bereitstellungen können Sie [Azure Stack](azure-stack-poc.md) in Azure registrieren, um Marketplace-Elemente aus Azure herunterzuladen, und um das Senden von Berichten zu Geschäftsdaten an Microsoft einzurichten. 
+Sie können [Azure Stack](azure-stack-poc.md) in Azure registrieren, um Marketplace-Elemente aus Azure herunterzuladen und das Senden von Berichten zu Geschäftsdaten an Microsoft einzurichten. 
 
 > [!NOTE]
 >Die Registrierung wird empfohlen, da sie dadurch wichtige Azure Stack-Funktionen testen können, wie z.B. die Marketplace-Syndikation oder Nutzungsberichte. Nachdem Sie Azure Stack registrieren, wird Ihre Nutzung an den Azure-Commerce übermittelt. Dies wird im Abonnement angezeigt, das Sie zur Registrierung verwendet haben. Die übermittelte Nutzung durch Benutzer des Azure Stack Development Kits wird diesen nicht in Rechnung gestellt.
@@ -56,7 +56,7 @@ Wenn Ihr Azure-Abonnement diese Anforderungen nicht erfüllt, können Sie [hier 
 Beispiel: 
 ```Powershell
 Login-AzureRmAccount -EnvironmentName "AzureCloud"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack -Force
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
 ```
 
 
@@ -73,22 +73,21 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack -Force
     - *YourCloudAdminCredential* ist ein PowerShell-Objekt, das die Anmeldeinformationen für die lokale Domäne „Domäne\cloudadmin“ enthält (beim Development Kit ist dies „azurestack\cloudadmin“).
     - *YourAzureSubscriptionID* ist die ID des Azure-Abonnements, das Sie zur Registrierung von Azure Stack verwenden möchten.
     - *YourAzureDirectoryTenantName* ist der Name des Azure-Mandantenverzeichnisses, in dem Sie Ihre Registrierungsressource erstellen möchten.
-    - *YourPrivilegedEndpoint* ist der Name des Computers mit gerade ausreichendem Zugriff, der auch als die Notfallkonsolen-VM bezeichnet wird.
+    - *YourPrivilegedEndpoint* ist der Name des [privilegierten Endpunkts](azure-stack-privileged-endpoint.md).
 
     ```powershell
     Add-AzsRegistration -CloudAdminCredential $YourCloudAdminCredential -AzureDirectoryTenantName $YourAzureDirectoryTenantName  -AzureSubscriptionId $YourAzureSubscriptionId -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Development 
     ```
- 
-5. Drücken Sie bei beiden Aufforderungen die EINGABETASTE.
-6. Geben Sie im Popup-Anmeldefenster die Anmeldeinformationen Ihres Azure-Abonnements ein.
-
-
+5. Geben Sie im Popup-Anmeldefenster die Anmeldeinformationen Ihres Azure-Abonnements ein.
 
 ## <a name="verify-the-registration"></a>Überprüfen der Registrierung
 
 1. Melden Sie sich im Administratorportal (https://adminportal.local.azurestack.external) an.
 2. Klicken Sie auf **Weitere Dienste** > **Marketplace Management** (Marketplace-Verwaltung) > **Add from Azure** (Aus Azure hinzufügen).
 3. Wenn Sie eine Liste der in Azure verfügbaren Elemente sehen (z.B. WordPress), war die Aktivierung erfolgreich.
+
+> [!NOTE]
+> Nachdem die Registrierung abgeschlossen ist, wird die aktive Warnung für die Nichtregistrierung nicht mehr angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

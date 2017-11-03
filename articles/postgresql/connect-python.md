@@ -11,11 +11,11 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/15/2017
-ms.openlocfilehash: 342e7dfd35ce890cda4a1d98613592353a63d7e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e1a334f4dd4d142c923fababc336897d9020fad
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure-Datenbank für PostgreSQL: Verwenden von Python zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von [Python](https://python.org) eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Außerdem wird gezeigt, wie Sie SQL-Anweisungen verwenden, um Daten in der Datenbank über macOS, Ubuntu Linux und Windows-Plattformen abzufragen, einzufügen, zu aktualisieren und zu löschen. Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Python-Entwicklung vertraut sind und noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
@@ -52,7 +52,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie nach dem Server **mypgserver-20170401**, den Sie soeben erstellt haben.
 3. Klicken Sie auf den Servernamen **mypgserver-20170401**.
-4. Wählen Sie die Seite **Übersicht** des Servers aus, und notieren Sie sich den Servernamen**** und**** den Anmeldenamen des Serveradministrators.
+4. Wählen Sie die Seite **Übersicht** des Servers aus, und notieren Sie sich den **Servernamen** und den **Anmeldenamen des Serveradministrators**.
  ![Azure-Datenbank für PostgreSQL – Anmeldename des Serveradministrators](./media/connect-python/1-connection-string.png)
 5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Serveradministrator-Anmeldenamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
 
@@ -61,8 +61,8 @@ Dieses Thema enthält insgesamt vier Codebeispiele, die jeweils eine bestimmte F
 
 - Erstellen Sie mithilfe Ihres bevorzugten Text-Editors eine neue Datei.
 - Kopieren Sie eines der Codebeispiele aus den folgenden Abschnitten in die Textdatei. Ersetzen Sie die Parameter **host**, **dbname**, **user** und **password** durch die Werte, die Sie beim Erstellen des Servers und der Datenbank angegeben haben.
-- Speichern Sie die Datei mit der Erweiterung „.py“ (Beispiel: postgres.py) in Ihrem Projektordner. Achten Sie unter dem Windows-Betriebssystem darauf, dass beim Speichern die UTF-8-Codierung ausgewählt ist. 
-- Starten Sie die Eingabeaufforderung oder die Bash-Shell, und wechseln Sie zu Ihrem Projektordner (Beispiel: `cd postgres`).
+- Speichern Sie die Datei mit der Erweiterung „.py“ (Beispiel: postgres.py) in Ihrem Projektordner. Achten Sie bei der Ausführung unter Windows darauf, dass beim Speichern die UTF-8-Codierung ausgewählt wird. 
+- Starten Sie die Eingabeaufforderung, das Terminal oder die Bash-Shell, und wechseln Sie zu Ihrem Projektordner (Beispiel: `cd postgres`).
 -  Geben Sie zum Ausführen des Codes den Python-Befehl und anschließend den Dateinamen ein (Beispiel: `Python postgres.py`).
 
 > [!NOTE]

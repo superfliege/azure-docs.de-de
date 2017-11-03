@@ -1,6 +1,6 @@
 ---
-title: "Bereitstellung von Azure-Web-App unter Linux – benutzerdefiniertes Image oder integriertes Plattformimage?  | Microsoft Docs"
-description: "Erwägungen bei der Entscheidung zwischen benutzerdefinierter Docker-Containerbereitstellung und einem integrierten Anwendungsframework"
+title: 'Bereitstellung von Azure App Service unter Linux: benutzerdefiniertes Image oder integriertes Plattformimage?  | Microsoft Docs'
+description: "Erwägungen bei der Entscheidung zwischen benutzerdefinierter Docker-Containerbereitstellung und einem integrierten Anwendungsframework für App Service für Linux"
 keywords: Azure App Service, Web-App, Linux, OSS
 services: app-service
 documentationCenter: 
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: nickwalk
-ms.openlocfilehash: 322533a9dce54222943f8b2a3d653780a674c8a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4a04bba2375b5a107bc3cb8cdc1a75d037c50af6
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="custom-image-or-built-in-platform-image"></a>Benutzerdefiniertes Image oder integriertes Plattformimage?
 
-[Web-App unter Linux](app-service-linux-intro.md) bietet zwei verschiedene Pfade für die Veröffentlichung Ihrer Anwendung im Web:
+[App Service unter Linux](app-service-linux-intro.md) bietet zwei verschiedene Möglichkeiten für die Veröffentlichung Ihrer Anwendung im Web:
 
 - **Bereitstellung mit benutzerdefinierten Images:** Wandeln Sie Ihre App in ein Docker-Image um, das alle Dateien und Abhängigkeiten in einem ausführbereiten Paket enthält.
 - **App-Bereitstellung mit einem integrierten Plattformimage:** Unsere integrierten Plattformimages enthalten allgemeine Web-App-Runtimes und Abhängigkeiten wie Node und PHP. Verwenden Sie eine der [Azure App Service-Bereitstellungsmethoden](../app-service-deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) zum Bereitstellen Ihrer App im Speicher Ihrer Web-App, und führen Sie sie dann mithilfe eines integrierten Plattformimages aus.

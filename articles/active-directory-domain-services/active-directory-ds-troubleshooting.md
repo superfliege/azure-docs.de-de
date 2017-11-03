@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: d6695b0c40f56093e8701dfe6394143268114453
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34335db77a5e414af4cfa77d6223ab5290bae614
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – Leitfaden zur Problembehandlung
 Dieser Artikel enthält Tipps zur Behandlung von Problemen, die beim Einrichten oder Verwalten der Azure Active Directory Domain Services auftreten können.
@@ -141,7 +141,7 @@ Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei 
 
   * Sie haben die [neueste empfohlene Version von Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594) bereitgestellt bzw. das Update darauf durchgeführt.
   * Sie haben Azure AD Connect so konfiguriert, dass [eine vollständige Synchronisierung ausgeführt wird](active-directory-ds-getting-started-password-sync.md).
-  * Je nach Größe Ihres Verzeichnisses kann es einige Zeit dauern, bis die Benutzerkonten und Anmeldeinformationshashes in den Azure AD Domain Services verfügbar sind. Warten Sie lange genug, bevor Sie versuchen, die Authentifizierung erneut durchzuführen (abhängig von der Größe Ihres Verzeichnisses – für große Verzeichnisse zwischen einigen Stunden und ein bis zwei Tagen).
+  * Je nach Größe Ihres Verzeichnisses kann es einige Zeit dauern, bis die Benutzerkonten und Anmeldeinformationshashes in den Azure AD Domain Services verfügbar sind. Achten Sie darauf, dass Sie lange genug warten, bevor Sie erneut versuchen, die Authentifizierung durchzuführen.
   * Wenn das Problem nach Überprüfung der oben genannten Schritte weiterhin auftritt, starten Sie den Microsoft Azure AD Sync-Dienst neu. Öffnen Sie auf Ihrem Synchronisierungscomputer eine Eingabeaufforderung, und führen Sie die folgenden Befehle aus:
 
     1. net stop 'Microsoft Azure AD Sync'

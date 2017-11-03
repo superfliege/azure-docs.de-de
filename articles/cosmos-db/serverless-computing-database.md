@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/24/2017
 ms.author: mimig
-ms.openlocfilehash: 192bdde86e12472a6fd87ba50fd597ea8b01247d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9bcecff4031bcf51e3885ad98da69d9be41b397
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Serverloses Datenbank-Computing mithilfe von Azure Functions
 
@@ -101,7 +101,7 @@ Wenn ein Benutzer in Einzelhandelsimplementierungen seinem Einkaufskorb einen Ar
 
 **Implementierung:** Mehrere Azure Cosmos DB-Trigger überwachen eine Sammlung
 
-1. Sie können mehrere Azure Functions erstellen, indem Sie jeder davon Azure Cosmos DB-Trigger hinzufügen – diese überwachen alle denselben Änderungsfeed von Einkaufswagendaten. 
+1. Sie können mehrere Azure Functions erstellen, indem Sie jeder davon Azure Cosmos DB-Trigger hinzufügen – diese überwachen alle denselben Änderungsfeed von Einkaufswagendaten. Beachten Sie, dass eine neue Leasesammlung für jede Funktion erforderlich ist, wenn mehrere Funktionen auf den gleichen Änderungsfeed lauschen.
 2. Wenn dem Einkaufswagen eines Benutzers ein neuer Artikel hinzugefügt wird, wird jede Funktion unabhängig vom Änderungsfeed aus dem Einkaufswagen-Container aufgerufen.
     * Eine Funktion kann anhand des Inhalts des aktuellen Einkaufswagens die Anzeige weiterer Artikel ändern, an denen der Benutzer möglicherweise auch interessiert ist.
     * Von einer anderen Funktion können die Gesamtzahlen des Bestands aktualisiert werden.

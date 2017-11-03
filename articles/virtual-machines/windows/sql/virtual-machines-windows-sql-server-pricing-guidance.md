@@ -3,7 +3,7 @@ title: "Effektives Verwalten der Kosten für SQL Server auf virtuellen Azure-Com
 description: "Enthält bewährte Methoden zum Auswählen des richtigen Preismodells für virtuelle SQL Server-Computer."
 services: virtual-machines-windows
 documentationcenter: na
-author: luisherring
+author: rothja
 manager: jhubbard
 editor: 
 tags: azure-service-management
@@ -13,30 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/18/2017
+ms.date: 10/17/2017
 ms.author: jroth
-ms.openlocfilehash: 29a92f0c70bffedeb75c50b7fc3b687ee5ee227d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 391f30e0c81aeaf313d58f1f4af877b5be9ed919
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Preisinformationen für virtuelle Azure-Computer mit SQL Server
 
-Dieses Thema bietet Preisinformationen für virtuelle SQL Server-Computer in Azure. Verschiedene Optionen wirken sich auf die Kosten aus, und es ist wichtig, das richtige Image auszuwählen, damit Kosten und Geschäftsanforderungen im Gleichgewicht sind.
+Dieser Artikel enthält Preisinformationen zu virtuellen SQL Server-Computern in Azure. Verschiedene Optionen wirken sich auf die Kosten aus, und es ist wichtig, das richtige Image auszuwählen, damit Kosten und Geschäftsanforderungen im Gleichgewicht sind.
 
 ## <a name="free-licensed-sql-server-editions"></a>SQL Server-Editionen mit kostenlosen Lizenzen
 
-Wenn Sie Funktionen entwickeln oder testen oder eine Machbarkeitsstudie erstellen möchten, verwenden Sie die **SQL Server Developer Edition** mit kostenloser Lizenz. Diese Edition bietet den vollständigen Funktionsumfang der SQL Server Enterprise Edition, daher können Sie jede beliebige Anwendung damit erstellen. Die Edition darf allerdings nicht in der Produktion ausgeführt werden. Bei einem virtuellen SQL Server Developer-Computer werden nur die Kosten des virtuellen Computers berechnet, nicht die SQL Server-Lizenzierung.
+Wenn Sie Funktionen entwickeln oder testen oder eine Machbarkeitsstudie erstellen möchten, verwenden Sie die **SQL Server Developer Edition** mit kostenloser Lizenz. Diese Edition bietet den vollständigen Funktionsumfang der SQL Server Enterprise Edition, daher können Sie jede beliebige Anwendung damit erstellen. Sie darf allerdings nicht in der Produktion ausgeführt werden. Bei einem virtuellen SQL Server Developer-Computer werden nur die Kosten des virtuellen Computers berechnet, nicht die SQL Server-Lizenzierung.
 
 Wenn Sie eine kleine Arbeitsauslastung in der Produktion ausführen möchten (<4 Kerne, <1 GB Arbeitsspeicher, <10 GB/Datenbank), verwenden Sie die **SQL Server Express Edition** mit kostenloser Lizenz. Bei einem virtuellen SQL Server Express-Computer werden nur die Kosten des virtuellen Computers berechnet, nicht die SQL-Lizenzierung.
 
 Für solche Entwicklungs- oder Testarbeitsauslastungen oder Arbeitsauslastungen mit geringem Umfang können Sie auch Geld sparen, indem Sie eine kleinere VM-Größe auswählen, die für diese Arbeitsauslastungen ausreichend ist. Die Größe DS1v2 beispielsweise eignet sich für diese Art Arbeitsauslastungen.
 
-Informationen zum Erstellen eines virtuellen Azure-Computers mit SQL Server 2016 mit einem dieser Images finden Sie unter den folgenden Links:
+Informationen zum Erstellen eines virtuellen Azure-Computers mit SQL Server 2017 mit einem dieser Images finden Sie unter den folgenden Links:
 
-- [Virtueller Azure-Computer mit SQL Server 2016 Developer](https://ms.portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP1DeveloperWindowsServer2016-ARM)
-- [Virtueller Azure-Computer mit SQL Server 2016 Express](https://ms.portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP1ExpressWindowsServer2016-ARM)
+| Plattform | Kostenlos lizenzierte Images |
+|---|---|
+| Windows Server 2016 | [Virtueller Azure-Computer mit SQL Server 2017 Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016)<br/>[Virtueller Azure-Computer mit SQL Server 2017 Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016) |
+| Red Hat Enterprise Linux | [Virtueller Azure-Computer mit SQL Server 2017 Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonRedHatEnterpriseLinux74)<br/>[Virtueller Azure-Computer mit SQL Server 2017 Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonRedHatEnterpriseLinux74) |
+| SUSE Linux Enterprise Server | [Virtueller Azure-Computer mit SQL Server 2017 Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonSLES12SP2)<br/>[Virtueller Azure-Computer mit SQL Server 2017 Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2) |
+| Ubuntu | [Virtueller Azure-Computer mit SQL Server 2017 Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonUbuntuServer1604LTS)<br/>[Virtueller Azure-Computer mit SQL Server 2017 Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonUbuntuServer1604LTS) |
 
 ## <a name="paid-sql-server-editions"></a>Kostenpflichtige SQL Server-Editionen
 
@@ -48,33 +52,37 @@ Für umfangreichere Arbeitsauslastungen in der Produktion verwenden Sie eine der
 | Standard | Kleine bis mittelgroße Arbeitsauslastungen |
 | Enterprise | Umfangreiche oder geschäftskritische Arbeitsauslastungen|
 
-Es gibt zwei Möglichkeiten, für die Lizenzierung dieser SQL Server-Editionen zu zahlen: *Nutzungsbasierte Bezahlung* oder *Bring Your Own License (BYOL)*.
+Es gibt zwei Möglichkeiten, für die Lizenzierung dieser SQL Server-Editionen zu zahlen: *Nutzungsbasierte Bezahlung* oder *BYOL (Bring Your Own License)*.
 
 ### <a name="pay-per-usage"></a>Nutzungsbasierte Bezahlung
 
-Die **Bezahlung für SQL Server-Lizenzen je nach Nutzung** bedeutet, dass die minutenbasierten Kosten für die Ausführung des virtuellen Azure-Computers die Kosten für die SQL Server-Lizenz einschließen. Die Preise für die verschiedenen SQL-Server-Editionen (Web, Standard, Enterprise) finden Sie auf der [Preisseite für virtuelle Azure-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-standard). Die Kosten sind für alle SQL Server-Versionen (2008 R2 bis 2016) gleich. Ebenso wie bei der SQL Server-Lizenzierung im Allgemeinen richten sich die Lizenzierungskosten pro Minute nach der Anzahl der VM-Kerne.
+Die **Bezahlung für SQL Server-Lizenzen je nach Nutzung** bedeutet, dass die minutenbasierten Kosten für die Ausführung des virtuellen Azure-Computers die Kosten für die SQL Server-Lizenz einschließen. Die Preise für die verschiedenen SQL-Server-Editionen (Web, Standard, Enterprise) finden Sie auf der [Preisseite für virtuelle Azure-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-standard). Die Kosten sind für alle SQL Server-Versionen (2012 SP3 bis 2017) gleich. Ebenso wie bei der SQL Server-Lizenzierung im Allgemeinen richten sich die Lizenzierungskosten pro Minute nach der Anzahl der VM-Kerne.
 
 Die nutzungsbasierte Bezahlung der SQL Server-Lizenzierung empfiehlt sich in folgenden Fällen:
 
 - Temporär oder regelmäßig auftretende Arbeitsauslastungen. Beispiele: eine App, die jedes Jahr einige Monate lang ein Ereignis unterstützen muss, oder Geschäftsanalysen, die jeden Montag ausgeführt werden.
 - Arbeitsauslastungen mit unbekannter Lebensdauer oder unbekanntem Umfang. Beispiele: eine App, die einige Monate lang nicht benötigt wird, oder eine App, die je nach Bedarf mehr oder weniger Computeleistung benötigt.
 
-Informationen zum Erstellen eines virtuellen Azure-Computers mit SQL Server 2016 mit einem dieser Images mit nutzungsbasierter Bezahlung finden Sie unter den folgenden Links:
+Informationen zum Erstellen eines virtuellen Azure-Computers mit SQL Server 2017 mit einem dieser Images mit nutzungsbasierter Bezahlung finden Sie unter den folgenden Links:
 
-- [Virtueller Azure-Computer mit SQL Server 2016 Web](https://ms.portal.azure.com/#create/Microsoft.SQLServer2016SP1WebWindowsServer2016)
-- [Virtueller Azure-Computer mit SQL Server 2016 Standard](https://ms.portal.azure.com/#create/Microsoft.SQLServer2016SP1StandardWindowsServer2016)
-- [Virtueller Azure-Computer mit SQL Server 2016 Enterprise](https://ms.portal.azure.com/#create/Microsoft.SQLServer2016SP1EnterpriseWindowsServer2016)
+| Plattform | Lizenzierte Images |
+|---|---|
+| Windows Server 2016 | [Virtueller Azure-Computer mit SQL Server 2017 Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016)<br/>[Virtueller Azure-Computer mit SQL Server 2017 Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016)<br/>[Virtueller Azure-Computer mit SQL Server 2017 Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016) |
+| Red Hat Enterprise Linux | [Virtueller Azure-Computer mit SQL Server 2017 Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonRedHatEnterpriseLinux74)<br/>[Virtueller Azure-Computer mit SQL Server 2017 Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonRedHatEnterpriseLinux74)<br/>[Virtueller Azure-Computer mit SQL Server 2017 Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonRedHatEnterpriseLinux74) |
+| SUSE Linux Enterprise Server | [Virtueller Azure-Computer mit SQL Server 2017 Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonSLES12SP2)<br/>[Virtueller Azure-Computer mit SQL Server 2017 Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonSLES12SP2)<br/>[Virtueller Azure-Computer mit SQL Server 2017 Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonSLES12SP2) |
+| Ubuntu | [Virtueller Azure-Computer mit SQL Server 2017 Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS)<br/>[Virtueller Azure-Computer mit SQL Server 2017 Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS)<br/>[Virtueller Azure-Computer mit SQL Server 2017 Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) |
 
 > [!IMPORTANT]
-> Wenn Sie im Azure-Portal einen virtuellen SQL Server-Computer erstellen, werden bei den voraussichtlichen monatlichen Kosten auf dem Blatt **Größe auswählen** die SQL Server-Lizenzierungskosten nicht berücksichtigt. Hierbei handelt es sich ausschließlich um die Kosten für den virtuellen Computer.
+> Wenn Sie einen virtuellen SQL Server-Computer im Portal erstellen, zeigt das Fenster **Größe auswählen** geschätzte Kosten an. Es ist wichtig zu beachten, dass diese Schätzung nur die Kosten für die Ausführung des virtuellen Computers zusammen mit den Windows-Lizenzierungskosten für virtuelle Windows-Computer berücksichtigt. Sie umfasst nicht die zusätzlichen SQL Server-Lizenzierungskosten für eine Web, Standard oder Enterprise Edition. Sie enthält auch keine zusätzlichen Lizenzierungskosten für Linux-Betriebssysteme von Drittanbietern für virtuelle Linux-Computer. Um die genaueste Preisschätzung zu erhalten, wählen Sie Ihr Betriebssystem und die SQL Server-Edition auf der Seite zur Preisfindung für [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) und [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) aus.
 >
 > ![Blatt zum Auswählen der VM-Größe](./media/virtual-machines-windows-sql-server-pricing-guidance/sql-vm-choose-size-pricing-estimate.png)
->
->Bei der Express Edition und der Developer Edition von SQL Server mit kostenlosen Lizenzen sind das die voraussichtlichen Gesamtkosten. Für die Editionen Web, Standard und Enterprise finden Sie die zusätzlichen SQL-Lizenzierungskosten auf der [Preisseite für virtuelle Windows-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Wählen Sie auf der Preisseite die gewünschte Edition von SQL Server aus.
 
 ### <a name="bring-your-own-license-byol"></a>Bring Your Own License (BYOL)
 
 Das Konzept der **Verwendung eigener SQL-Lizenzen über die „Lizenzmobilität“**, auch als **BYOL** bezeichnet, bedeutet, dass Sie eine vorhandene SQL Server-Volumenlizenz mit Software Assurance auf einem virtuellen Azure-Computer nutzen. Bei einem virtuellen SQL Server-Computer mit BYOL-Modell werden nur die Kosten für die Ausführung des Computers berechnet, nicht für die SQL Server-Lizenzierung. Dies setzt voraus, dass Sie bereits über ein Volumenlizenzprogramm Lizenzen und Software Assurance erworben haben.
+
+> [!NOTE]
+> BYOL-Images sind zurzeit nur für virtuelle Windows-Computer verfügbar. Sie können SQL Server jedoch manuell auf einem virtuellen Nur-Linux-Computer installieren. Weitere Informationen finden Sie in den Richtlinien in den [Häufig gestellten Fragen (FAQ) zu virtuellen Linux-Computern](../../linux/sql/sql-server-linux-faq.md).
 
 Die Verwendung eigener SQL-Lizenzen über die „Lizenzmobilität“ empfiehlt sich in folgenden Fällen:
 
@@ -87,7 +95,7 @@ Um BYOL mit einem virtuellen SQL Server-Computer zu verwenden, müssen Sie über
 |-----|-----|
 | **Kostenersparnis** | Die Nutzung eigener SQL Server-Lizenzen ist kostengünstiger als die nutzungsbasierte Bezahlung, wenn eine Arbeitsauslastung SQL Server Standard oder Enterprise *länger als 10 Monate* kontinuierlich ausführt. |
 | **Langfristige Einsparungen** | Im Durchschnitt ist es in den ersten drei Jahren *pro Jahr um 30%* günstiger, eine SQL Server-Lizenz zu erwerben oder zu verlängern. Nach drei Jahren müssen Sie die Lizenz nicht mehr verlängern, sondern zahlen nur noch für Software Assurance. Ab diesem Punkt ist BYOL *200% günstiger*. |
-| **Kostenloses passives sekundäres Replikat** | Ein weiterer Vorteil der Nutzung eigener Lizenzen ist die [kostenlose Lizenz für ein passives sekundäres Replikat](https://azure.microsoft.com/pricing/licensing-faq/) pro SQL Server-Instanz, um eine hohe Verfügbarkeit sicherzustellen. Damit halbieren sich die Lizenzierungskosten einer hochverfügbaren SQL Server-Bereitstellung (z.B. mit AlwaysOn-Verfügbarkeitsgruppen). Die Berechtigungen zum Ausführen des passiven sekundären Replikats werden über den Software Assurance-Vorteil für Failoverserver bereitgestellt. |
+| **Kostenloses passives sekundäres Replikat** | Ein weiterer Vorteil der Nutzung eigener Lizenzen ist die [kostenlose Lizenz für ein passives sekundäres Replikat](https://azure.microsoft.com/pricing/licensing-faq/) pro SQL Server-Instanz, um eine hohe Verfügbarkeit sicherzustellen. Damit halbieren sich die Lizenzierungskosten einer hochverfügbaren SQL Server-Bereitstellung (etwa mit AlwaysOn-Verfügbarkeitsgruppen). Die Berechtigungen zum Ausführen des passiven sekundären Replikats werden über den Software Assurance-Vorteil für Failoverserver bereitgestellt. |
 
 Um einen virtuellen Azure-Computer mit SQL Server 2016 mit einem dieser BYOL-Images zu erstellen, verwenden Sie die VMs mit dem Präfix „{BYOL}“:
 
@@ -97,7 +105,27 @@ Um einen virtuellen Azure-Computer mit SQL Server 2016 mit einem dieser BYOL-Ima
 > [!NOTE]
 > Informieren Sie uns innerhalb von 10 Tagen, wie viele SQL Server-Lizenzen Sie in Azure verwenden werden. Unter den Links zu den oben genannten Images finden Sie Anweisungen dazu.
 
-## <a name="avoid-unecessary-costs"></a>Vermeiden unnötiger Kosten
+## <a name="avoid-unnecessary-costs"></a>Vermeiden unnötiger Kosten
+
+Um unnötige Kosten zu vermeiden, wählen Sie eine optimale Größe für virtuelle Computer aus, und ziehen Sie vorübergehendes Herunterfahren für nicht kontinuierlich ausgeführte Arbeitsauslastungen in Betracht.
+
+### <a id="machinesize"></a>Richtige Größe Ihres virtuellen Computers
+
+Die Kosten der Lizenzierung für SQL Server beziehen sich direkt auf die Anzahl der Kerne. Wählen Sie eine Größe der virtuellen Computer aus, die mit den erwarteten Anforderungen für CPU, Arbeitsspeicher, Speicher und E/A-Bandbreite übereinstimmt. Eine vollständige Liste der Computergrößenoptionen finden Sie unter [Größen virtueller Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) und [Größen virtueller Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+
+Es sind neue Größen für Computer verfügbar, die für bestimmte Arten von SQL Server-Arbeitsauslastungen gut geeignet sind. Dieser Computergrößen verwalten einen hohen Grad an Arbeitsspeicher, Speicher und E/A-Bandbreite, verfügen jedoch über eine niedrigere Anzahl virtualisierter Kerne. Betrachten Sie etwa das folgende Beispiel:
+
+| Größe des virtuellen Computers | vCPUs | Arbeitsspeicher | Max. Anzahl Datenträger | Maximaler E/A-Durchsatz | SQL-Lizenzierungskosten | Gesamtkosten (Compute und Lizenzierung) |
+|---|---|---|---|---|---|---|
+| **Standard_DS14v2** | 16 | 112 GB | 32 | 51.200 IOPS oder 768 MB/s | | |
+| **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51.200 IOPS oder 768 MB/s | 75 % niedriger | 57 % niedriger |
+
+> [!IMPORTANT]
+> Dies ist ein Point-in-Time-Beispiel. Die neuesten Spezifikationen finden Sie in den Artikeln zu den Computergrößen und auf der Azure-Preisseite für [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) und [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+
+Im Beispiel oben können Sie sehen, dass die Spezifikationen für **Standard_DS14v2** und **Standard_DS14-4v2** bis auf die vCPUs identisch sind. Das Suffix **-4v2** am Ende der Computergröße **Standard_DS14-4v2** gibt die Anzahl der aktiven vCPUs an. Da die Lizenzierungskosten für SQL Server an die Anzahl der Kerne gebunden sind, reduziert dies die Kosten des virtuellen Computers in Szenarien erheblich, in denen die zusätzlichen vCPUs nicht benötigt werden. Dies ist ein Beispiel, und es gibt viele Computergrößen mit eingeschränkten vCPUs, die mit diesem Suffixmuster identifiziert werden. Weitere Informationen finden Sie im Blogbeitrag [Ankündigung neuer Größen für virtuelle Azure-Computer für kostengünstigeres Arbeiten mit der Datenbank](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
+
+### <a name="shut-down-your-vm-when-possible"></a>Herunterfahren Ihres virtuellen Computers, wenn möglich
 
 Wenn Sie Arbeitsauslastungen verwenden, die nicht kontinuierlich ausgeführt werden, sollten Sie erwägen, den virtuellen Computer während der inaktiven Zeiträume herunterzufahren. Sie bezahlen nur für die tatsächliche Nutzung.
 
@@ -118,4 +146,4 @@ Allgemeine Informationen zu den Preisen in Azure finden Sie unter [Vermeiden une
 
 Die neuesten Preisinformationen für virtuelle Computer, einschließlich SQL Server, finden Sie auf der [Preisseite für virtuelle Azure-Computer](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-standard).
 
-Weitere Themen zu virtuellen SQL Server-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
+Erfahren Sie mehr über virtuelle SQL Server-Computer: [virtuelle SQL Server Windows-Computer](virtual-machines-windows-sql-server-iaas-overview.md) und [virtuelle SQL Server Linux-Computer](../../linux/sql/sql-server-linux-virtual-machines-overview.md).

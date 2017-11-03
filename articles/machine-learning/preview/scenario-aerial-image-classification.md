@@ -8,11 +8,11 @@ ms.topic: article
 ms.service: machine-learning
 services: machine-learning
 ms.date: 09/15/2017
-ms.openlocfilehash: 43b124fc3eb72adc5d299b218c9e16ec83d1a240
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6b673527d77550d4213e6d742156ccc525f6b44
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="aerial-image-classification"></a>Klassifizierung von Luftbildern
 
@@ -44,7 +44,7 @@ In diesem Beispiel sind die Bilddaten und vortrainierten Modelle in einem Azure-
 
 ![Schematische Darstellung der Luftbilderklassifizierung in der Praxis](media/scenario-aerial-image-classification/scenario-schematic.PNG)
 
-In den [ausführlichen Anweisungen](https://github.com/MicrosoftDocs/azure-docs-pr/tree/release-ignite-aml-v2/articles/machine-learning/) erfahren Sie zunächst, wie ein Azure-Speicherkonto und ein Spark-Cluster erstellt und vorbereitet werden, einschließlich Datenübertragung und Installation der Abhängigkeit. Anschließend wird beschrieben, wie Trainingsaufträge gestartet und die Leistung der resultierenden Modelle verglichen werden. Schließlich wird veranschaulicht, wie das ausgewählte Modell auf eine große Bildzusammenstellung im Spark-Cluster angewendet wird und die Vorhersageergebnisse lokal analysiert werden.
+In diesen schrittweisen Anleitungen erfahren Sie, wie ein Azure-Speicherkonto und ein Spark-Cluster erstellt und vorbereitet werden, einschließlich Datenübertragung und Installation der Abhängigkeit. Anschließend wird beschrieben, wie Trainingsaufträge gestartet und die Leistung der resultierenden Modelle verglichen werden. Schließlich wird veranschaulicht, wie das ausgewählte Modell auf eine große Bildzusammenstellung im Spark-Cluster angewendet wird und die Vorhersageergebnisse lokal analysiert werden.
 
 
 ## <a name="set-up-the-execution-environment"></a>Einrichten der Ausführungsumgebung
@@ -78,55 +78,62 @@ Erstellen Sie ein neues Projekt mit diesem Beispiel als Vorlage:
 1. Gehen Sie zu „Datei -> Eingabeaufforderung öffnen“, um in Ihrem Azure Machine Learning Workbench-Projekt eine Befehlszeilenschnittstelle (CLI) zu öffnen.
 1. Melden Sie sich in der Befehlszeilenschnittstelle mithilfe des folgenden Befehls bei Ihrem Azure-Konto an:
 
-    ````
+    ```
     az login
     ```
 
-    You are asked to visit a URL and type in a provided temporary code; the website requests your Azure account credentials.
+    Sie werden aufgefordert, eine URL zu besuchen und einen bereitgestellten temporären Code einzugeben. Die Website fordert die Anmeldeinformationen für Ihr Azure-Konto an.
     
-1. When login is complete, return to the CLI and run the following command to determine which Azure subscriptions are available to your Azure account:
+1. Nachdem die Anmeldung abgeschlossen ist, kehren Sie zur CLI zurück und führen den folgenden Befehl aus, um zu ermitteln, welche Azure-Abonnements für Ihr Azure-Konto verfügbar sind:
 
     ```
     az account list
     ```
 
-    This command lists all subscriptions associated with your Azure account. Find the ID of the subscription you would like to use. Write the subscription ID where indicated in the following command, then set the active subscription by executing the command:
+    Dieser Befehl listet alle Abonnements auf, die Ihrem Azure-Konto zugeordnet sind. Suchen Sie nach der ID des Abonnements, das Sie verwenden möchten. Fügen Sie die Abonnement-ID wie angegeben in den folgenden Befehl ein, und legen Sie dann das aktive Abonnement durch Ausführen des folgenden Befehls fest:
 
     ```
     az account set --subscription [subscription ID]
     ```
 
-1. The Azure resources created in this example are stored together in an Azure resource group. Choose a unique resource group name and write it where indicated, then execute both commands to create the Azure resource group:
+1. Die in diesem Beispiel erstellten Azure-Ressourcen werden zusammen in einer Azure-Ressourcengruppe gespeichert. Wählen Sie einen eindeutigen Ressourcengruppennamen aus, und fügen Sie ihn wie angegeben ein. Führen Sie dann beide Befehle aus, um die Azure-Ressourcengruppe zu erstellen:
 
     ```
     set AZURE_RESOURCE_GROUP=[resource group name]
     az group create --location eastus --name %AZURE_RESOURCE_GROUP%
     ```
 
-#### Create the storage account
+#### <a name="create-the-storage-account"></a>Erstellen des Speicherkontos
 
-We now create the storage account that hosts project files that must be accessed by the HDInsight Spark.
+Wir erstellen nun das Speicherkonto, das die Projektdateien hostet, auf die HDInsight Spark zugreifen muss.
 
-1. Choose a unique storage account name and write it where indicated in the following `set` command, then create an Azure storage account by executing both commands:
+1. Wählen Sie einen eindeutigen Speicherkontonamen aus, und fügen Sie diesen wie angegeben in den folgenden Befehl `set` ein. Erstellen Sie dann ein Azure-Speicherkonto, indem Sie beide Befehle ausführen:
 
     ```
     set STORAGE_ACCOUNT_NAME=[storage account name]
     az storage account create --name %STORAGE_ACCOUNT_NAME% --resource-group %AZURE_RESOURCE_GROUP% --sku Standard_LRS
     ```
 
-1. Issue the following command to list the storage account keys:
+1. Geben Sie den folgenden Befehl aus, um die Speicherkontoschlüssel aufzulisten:
 
     ```
     az storage account keys list --resource-group %AZURE_RESOURCE_GROUP% --account-name %STORAGE_ACCOUNT_NAME%
     ```
 
-    Record the value of `key1` as the storage key in the following command, then run the command to store the value.
+    Notieren Sie sich den Wert von `key1` als Speicherschlüssel im folgenden Befehl, und führen Sie dann den Befehl zum Speichern des Werts aus.
     ```
     set STORAGE_ACCOUNT_KEY=[storage account key]
     ```
-1. In your favorite text editor, load the `settings.cfg` file from the Azure Machine Learning Workbench project's "Code" subdirectory, and insert the storage account name and key as indicated. Save and close the `settings.cfg` file.
-1. If you have not already done so, download and install the [AzCopy](http://aka.ms/downloadazcopy) utility. Ensure that the AzCopy executable is on your system path by typing "AzCopy" and pressing Enter to show its documentation.
-1. Issue the following commands to copy all of the sample data, pretrained models, and model training scripts to the appropriate locations in your storage account:
+1. Laden Sie die Datei `settings.cfg` aus dem Unterverzeichnis „Code“ des Azure Machine Learning Workbench-Projekts in Ihrem bevorzugten Text-Editor, und fügen Sie den Speicherkontonamen und Schlüssel wie angegeben ein. Die geänderten Zeilen in der Datei sollte etwa wie folgt aussehen:
+    ```
+    [Settings]
+        # Credentials for the Azure Storage account
+        storage_account_name = storacctname
+        storage_account_key = kpI...88 chars total...Q==
+    ```
+    Speichern und schließen Sie die `settings.cfg`-Datei.
+1. Wenn nicht bereits geschehen, laden Sie das Hilfsprogramm [AzCopy](http://aka.ms/downloadazcopy) herunter und installieren es. Stellen Sie sicher, dass sich die ausführbare AzCopy-Datei in Ihrem Systempfad befindet, indem Sie „AzCopy“ eingeben und die EINGABETASTE drücken, um die zugehörige Dokumentation anzuzeigen.
+1. Geben Sie die folgenden Befehle aus, um alle Beispieldaten, vortrainierten Modelle und Modelltrainingsskripts in die entsprechenden Speicherorte in Ihrem Speicherkonto zu kopieren:
 
     ```
     AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/test /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.blob.core.windows.net/test /DestKey:%STORAGE_ACCOUNT_KEY% /S
@@ -135,15 +142,15 @@ We now create the storage account that hosts project files that must be accessed
     AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/pretrainedmodels /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.blob.core.windows.net/pretrainedmodels /DestKey:%STORAGE_ACCOUNT_KEY% /S
     ```
 
-    Expect file transfer to take up to 20 minutes. While you wait, you can proceed to the following section. You may need to open another Command Line Interface through Workbench and redefine the temporary variables there.
+    Gehen Sie davon aus, dass die Dateiübertragung bis zu 20 Minuten in Anspruch nimmt. Während Sie warten, können Sie mit dem folgenden Abschnitt fortfahren. Sie müssen möglicherweise eine weitere Befehlszeilenschnittstelle über Workbench öffnen und die temporären Variablen dort neu definieren.
 
-#### Create the HDInsight Spark cluster
+#### <a name="create-the-hdinsight-spark-cluster"></a>Erstellen des HDInsight Spark-Clusters
 
-Our recommended method to create an HDInsight cluster uses the HDInsight Spark cluster Resource Manager template included in the "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" subfolder of this project.
+Die empfohlene Methode zum Erstellen eines HDInsight-Clusters verwendet die Resource Manager-Vorlage des HDInsight Spark-Clusters, die im Unterordner „Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning“ dieses Projekts enthalten ist.
 
-1. The HDInsight Spark cluster template is the "template.json" file under the "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" subfolder of this project. By default, the template creates a Spark cluster with 40 worker nodes. If you must adjust that number, open the template in your favorite text editor and replace all instances of "40" with the worker node number of your choice.
-    - You may encounter out-of-memory errors if the number of worker nodes you choose is small. To combat memory errors, you may run the training and operationalization scripts on a subset of the available data as described later in this document.
-2. Choose a unique name and password for the HDInsight cluster and write them where indicated in the following command. Then create the cluster by issuing the following command:
+1. Die HDInsight Spark-Clustervorlage ist die Datei „template.json“ im Unterordner „Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning“ dieses Projekts. Die Vorlage erstellt standardmäßig einen Spark-Cluster mit 40 Workerknoten. Wenn Sie diese Anzahl anpassen müssen, öffnen Sie die Vorlage in Ihrem bevorzugten Text-Editor, und ersetzen Sie alle Instanzen von „40“ durch die Workerknotenanzahl Ihrer Wahl.
+    - Wenn die Anzahl der ausgewählten Workerknoten klein ist, können ggf. Fehler des Typs „Nicht genügend Arbeitsspeicher“ auftreten. Um Speicherfehlern zu begegnen, können Sie die Trainings- und Operationalisierungsskripts für eine Teilmenge der verfügbaren Daten ausführen. Dies wird weiter unten in diesem Dokument beschrieben.
+2. Wählen Sie einen eindeutigen Namen und ein Kennwort für den HDInsight-Cluster aus, und fügen Sie diese Angaben wie angegeben in den folgenden Befehl ein. Erstellen Sie dann den Cluster, indem Sie den folgenden Befehl ausgeben:
 
     ```
     set HDINSIGHT_CLUSTER_NAME=[HDInsight cluster name]
@@ -151,120 +158,120 @@ Our recommended method to create an HDInsight cluster uses the HDInsight Spark c
     az group deployment create --resource-group %AZURE_RESOURCE_GROUP% --name hdispark --template-file "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning\template.json" --parameters storageAccountName=%STORAGE_ACCOUNT_NAME%.blob.core.windows.net storageAccountKey=%STORAGE_ACCOUNT_KEY% clusterName=%HDINSIGHT_CLUSTER_NAME% clusterLoginPassword=%HDINSIGHT_CLUSTER_PASSWORD%
     ```
 
-Your cluster's deployment may take up to 30 minutes (including provisioning and script action execution).
+Die Bereitstellung des Clusters kann bis zu 30 Minuten (einschließlich Ausführen von Bereitstellung und Skriptaktionen) dauern.
 
-### Prepare the Azure Machine Learning Workbench execution environment
+### <a name="prepare-the-azure-machine-learning-workbench-execution-environment"></a>Vorbereiten der Azure Machine Learning Workbench-Ausführungsumgebung
 
-#### Register the HDInsight cluster as an Azure Machine Learning Workbench compute target
+#### <a name="register-the-hdinsight-cluster-as-an-azure-machine-learning-workbench-compute-target"></a>Registrieren des HDInsight-Clusters als Azure Machine Learning Workbench-Computeziel
 
-Once HDInsight cluster creation is complete, register the cluster as a compute target for your project as follows:
+Nach dem Abschluss der Erstellung des HDInsight-Clusters registrieren Sie den Cluster wie folgt als Computeziel für Ihr Projekt:
 
-1.  Issue the following command from the Azure Machine Learning Command Line Interface:
+1.  Geben Sie den folgenden Befehl in der Azure Machine Learning-Befehlszeilenschnittstelle aus:
 
     ```
     az ml computetarget attach --name myhdi --address %HDINSIGHT_CLUSTER_NAME%-ssh.azurehdinsight.net --username sshuser --password %HDINSIGHT_CLUSTER_PASSWORD% -t cluster
     ```
 
-    This command adds two files, `myhdi.runconfig` and `myhdi.compute`, to your project's `aml_config` folder.
+    Dieser Befehl fügt dem Ordner `aml_config` des Projekts zwei Dateien (`myhdi.runconfig` und `myhdi.compute`) hinzu.
 
-1. Open the `myhdi.compute` file in your favorite text editor. Modify the `yarnDeployMode: cluster` line to read `yarnDeployMode: client`, then save and close the file.
-1. Run the following command to prepare your environment for use:
+1. Öffnen Sie die Datei `myhdi.compute` in einem Text-Editor Ihrer Wahl. Ändern Sie die Zeile `yarnDeployMode: cluster` so, dass sie `yarnDeployMode: client` lautet, und speichern und schließen Sie die Datei dann.
+1. Führen Sie den folgenden Befehl aus, um Ihre Umgebung für die Verwendung vorzubereiten:
    ```
    az ml experiment prepare -c myhdi
    ```
 
-#### Install local dependencies
+#### <a name="install-local-dependencies"></a>Installieren lokaler Abhängigkeiten
 
-Open a CLI from Azure Machine Learning Workbench and install dependencies needed for local execution by issuing the following command:
+Öffnen Sie eine CLI aus Azure Machine Learning Workbench, und installieren Sie die Abhängigkeiten, die für die lokale Ausführung benötigt werden, indem Sie den folgenden Befehl ausgeben:
 
 ```
 pip install matplotlib azure-storage==0.36.0 pillow scikit-learn
 ```
 
-## Data acquisition and understanding
+## <a name="data-acquisition-and-understanding"></a>Datenerfassung und -auswertung
 
-This scenario uses publicly available aerial imagery data from the [National Agriculture Imagery Program](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/) at 1-meter resolution. We have generated sets of 224 pixel x 224 pixel PNG files cropped from the original NAIP data and sorted according to land use labels from the [National Land Cover Database](https://www.mrlc.gov/nlcd2011.php). A sample image with label "Developed" is shown at full size:
+Dieses Szenario verwendet öffentlich verfügbare Luftbilddaten aus dem US-amerikanischen [National Agriculture Imagery Program](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/) mit einer Auflösung von einem Meter. Wir haben Sammlungen von PNG-Dateien (224 Pixel x 224 Pixel) aus den ursprünglichen NAIP-Daten ausgeschnitten und nach den Flächennutzungskennzeichnungen aus der US-amerikanischen [National Land Cover-Datenbank](https://www.mrlc.gov/nlcd2011.php) sortiert. Ein Beispielbild mit der Bezeichnung „Developed“ wird in voller Größe angezeigt:
 
-![A sample tile of developed land](media/scenario-aerial-image-classification/sample-tile-developed.png)
+![Eine Beispielkachel für einen besiedelten Landstrich](media/scenario-aerial-image-classification/sample-tile-developed.png)
 
-Class-balanced sets of ~44k and 11k images are used for model training and validation, respectively. We demonstrate model deployment on a ~67k image set tiling Middlesex County, MA -- home of Microsoft's New England Research and Development (NERD) center. For more information on how these image sets were constructed, see the [Embarrassingly Parallel Image Classification git repository](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification).
+Klassenabgeglichene Sätze mit Bildern von ungefähr 44k und 11k werden für das Modelltraining bzw. die -validierung verwendet. Wir zeigen die Modellbereitstellung anhand einer Bildsammlung mit ungefähr 67k, die die Region Middlesex County (Massachusetts, USA) zeigt (den Sitz des New England Research and Development Center (NERD) von Microsoft). Weitere Informationen zum Aufbau dieser Bildsammlungen finden Sie unter [Git-Repository: Embarrassingly Parallel Image Classification (verblüffend parallele Bildklassifikation)](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification).
 
-![Location of Middlesex County, Massachusetts](media/scenario-aerial-image-classification/middlesex-ma.png)
+![Lage der Region Middlesex County (Massachusetts, USA)](media/scenario-aerial-image-classification/middlesex-ma.png)
 
-During setup, the aerial image sets used in this example were transferred to the storage account that you created. The training, validation, and operationalization images are all 224 pixel x 224 pixel PNG files at a resolution of one pixel per square meter. The training and validation images have been organized into subfolders based on their land use label. (The land use labels of the operationalization images are unknown and in many cases ambiguous; some of these images contain multiple land types.) For more information on how these image sets were constructed, see the [Embarrassingly Parallel Image Classification git repository](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification).
+Während des Setups wurden die in diesem Beispiel verwendeten Sammlungen von Luftbildaufnahmen in das Speicherkonto übertragen, das Sie erstellt haben. Die Trainings-, Überprüfungs- und Operationalisierungsbilder sind alle PNG-Dateien (224 Pixel x 224 Pixel) mit einer Auflösung von einem Pixel pro Quadratmeter. Die Trainings- und Überprüfungsbilder wurden in Unterordnern basierend auf ihrer Flächennutzungskennzeichnung organisiert. (Die Flächennutzungskennzeichnungen der Operationalisierungsbilder sind unbekannt und in vielen Fällen nicht eindeutig, einige dieser Bilder enthalten mehrere Flächenarten). Weitere Informationen zum Aufbau dieser Bildsammlungen finden Sie unter [Git-Repository: Embarrassingly Parallel Image Classification (verblüffend parallele Bildklassifikation)](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification).
 
-To view example images in your Azure storage account (optional):
-1. Log in to the [Azure portal](https://portal.azure.com).
-1. Search for the name of your storage account in the search bar along the top of your screen. Click on your storage account in the search results.
-2. Click on the "Blobs" link in the storage account's main pane.
-3. Click on the container named "train." You should see a list of directories named according to land use.
-4. Click on any of these directories to load the list of images it contains.
-5. Click on any image and download it to view the image.
-6. If desired, click on the containers named "test" and "middlesexma2016" to view their contents as well.
+So zeigen Sie Beispielbilder in Ihrem Azure-Speicherkonto an (optional):
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie in der Suchleiste am oberen Rand des Bildschirms nach dem Namen Ihres Speicherkontos. Klicken Sie in den Suchergebnissen auf Ihr Speicherkonto.
+2. Klicken Sie auf den Link „Blobs“ im Hauptbereich des Speicherkontos.
+3. Klicken Sie auf den Container mit dem Namen „train“. Es sollte eine Liste von Verzeichnissen angezeigt werden, die gemäß der Flächennutzung benannt sind.
+4. Klicken Sie auf eines dieser Verzeichnisse, um die Liste der darin enthaltenen Bilder zu laden.
+5. Klicken Sie auf ein beliebiges Bild, und laden Sie es herunter, um das Bild anzuzeigen.
+6. Falls gewünscht, klicken Sie auf die Container mit den Namen „test“ und „middlesexma2016“, um auch deren Inhalt anzuzeigen.
 
-## Modeling
+## <a name="modeling"></a>Modellierung
 
-### Training models with MMLSpark
-The `run_mmlspark.py` script in the "Code\02_Modeling" subfolder of the Workbench project is used to train an [MMLSpark](https://github.com/Azure/mmlspark) model for image classification. The script first featurizes the training set images using an image classifier DNN pretrained on the ImageNet dataset (either AlexNet or an 18-layer ResNet). The script then uses the featurized images to train an MMLSpark model (either a random forest or a logistic regression model) to classify the images. The test image set is then featurized and scored with the trained model. The accuracy of the model's predictions on the test set is calculated and logged to Azure Machine Learning Workbench's run history feature. Finally, the trained MMLSpark model and its predictions on the test set are saved to blob storage.
+### <a name="training-models-with-mmlspark"></a>Trainieren von Modellen mit MMLSpark
+Das Skript `run_mmlspark.py` im Unterordner „Code\02_Modeling“ des Workbench-Projekts dient zum Trainieren eines [MMLSpark](https://github.com/Azure/mmlspark)-Modells für die Bildklassifizierung. Das erste Skript versieht die Bilder der Trainingssammlung mithilfe eines Bildklassifizierungs-DNN, das mit dem ImageNet-Dataset (AlexNet oder ein ResNet mit 18 Schichten) vorab trainiert wurde, mit Funktionen. Das Skript verwendet dann die mit Funktionen versehenen Bilder zum Trainieren eines MMLSpark-Modells (einer zufälligen Gesamtstruktur oder eines logistischen Regressionsmodells), um die Bilder zu klassifizieren. Die Testbildsammlung wird dann mit Funktionen versehen und mit dem trainierten Modell bewertet. Die Genauigkeit der Vorhersagen des Modells für die Testsammlung wird berechnet und im Feature „Ausführungsverlauf“ von Azure Machine Learning Workbench protokolliert. Schließlich werden das trainierte MMLSpark-Modell und seine Vorhersagen für die Testsammlung im Blobspeicher gespeichert.
 
-Select a unique output model name for your trained model, a pretrained model type, and an MMLSpark model type. Write your selections where indicated in the following command template, then begin retraining by executing the command from an Azure ML Command Line Interface:
+Wählen Sie einen eindeutigen Ausgabemodellnamen für das trainierte Modell, einen vortrainierten Modelltyp und einen MMLSpark-Modelltyp aus. Fügen Sie Ihre Auswahl wie angegeben in die folgenden Befehlsvorlage ein, und beginnen Sie dann mit dem erneuten Training, indem Sie den folgenden Befehl in einer Azure ML-Befehlszeilenschnittstelle ausführen:
 
 ```
 az ml experiment submit -c myhdi Code\02_Modeling\run_mmlspark.py --config_filename Code/settings.cfg --output_model_name [unique model name, alphanumeric characters only] --pretrained_model_type {alexnet,resnet18} --mmlspark_model_type {randomforest,logisticregression}
 ```
 
-An additional `--sample_frac` parameter can be used to train and test the model with a subset of available data. Using a small sample fraction decreases runtime and memory requirements at the expense of trained model accuracy. For more information on this and other parameters, run `python Code\02_Modeling\run_mmlspark.py -h`.
+Ein zusätzlicher Parameter `--sample_frac` kann zum Trainieren und Testen des Modells mit einer Teilmenge der verfügbaren Daten verwendet werden. Mit einem kleinen Beispielbruchteil verringern sich die Laufzeit- und Arbeitsspeicheranforderungen zu Lasten der Genauigkeit des trainierten Modells. Wenn Sie weitere Informationen zu diesem und anderen Parametern benötigen, führen Sie `python Code\02_Modeling\run_mmlspark.py -h` aus.
 
-Users are encouraged to run this script several times with different input parameters. The performance of the resulting models can then be compared in Azure Machine Learning Workbench's Run History feature.
+Benutzer sollten dieses Skript mehrere Male mit verschiedenen Eingabeparametern ausführen. Die Leistung der sich ergebenden Modelle kann dann im Feature „Ausführungsverlauf“ von Azure Machine Learning Workbench verglichen werden.
 
-### Comparing model performance using the Workbench Run History feature
+### <a name="comparing-model-performance-using-the-workbench-run-history-feature"></a>Vergleichen der Modellleistung mithilfe des Features „Ausführungsverlauf“ von Workbench
 
-After you have executed two or more training runs of either type, navigate to the Run History feature in Workbench by clicking the clock icon along the left-hand menu bar. Select `run_mmlspark.py` from the list of scripts at left. A pane loads comparing the test set accuracy for all runs. To see more detail, scroll down and click on the name of an individual run.
+Nachdem Sie mindestens zwei Trainingsläufe dieses Typs ausgeführt haben, navigieren Sie durch Klicken auf das Uhrsymbol auf der linken Menüleiste in Workbench zum Feature „Ausführungsverlauf“. Wählen Sie `run_mmlspark.py` aus der Liste der Skripts auf der linken Seite aus. Es wird ein Bereich geladen, der die Genauigkeit der Testmenge für alle Ausführungen vergleicht. Um weitere Details anzuzeigen, scrollen Sie nach unten und klicken auf den Namen einer einzelnen Ausführung.
 
-## Deployment
+## <a name="deployment"></a>Bereitstellung
 
-To apply one of your trained models to aerial images tiling Middlesex County, MA using remote execution on HDInsight, insert your desired model's name into the following command and execute it:
+Zum Anwenden eines trainierten Modells auf Luftbilder der Region Middlesex County (Massachusetts, USA) mit Remoteausführung für HDInsight fügen Sie den Namen des gewünschten Modells in den folgenden Befehl ein und führen den Befehl dann aus:
 
 ```
 az ml experiment submit -c myhdi Code\03_Deployment\batch_score_spark.py --config_filename Code/settings.cfg --output_model_name [trained model name chosen earlier]
 ```
 
-An additional `--sample_frac` parameter can be used to operationalize the model with a subset of available data. Using a small sample fraction decreases runtime and memory requirements at the expense of prediction completeness. For more information on this and other parameters, run `python Code\03_Deployment\batch_score_spark -h`.
+Ein zusätzlicher Parameter `--sample_frac` kann zum Operationalisieren des Modells mit einer Teilmenge der verfügbaren Daten verwendet werden. Mit einem kleinen Beispielbruchteil verringern sich die Laufzeit- und Arbeitsspeicheranforderungen zu Lasten der Vollständigkeit der Vorhersage. Wenn Sie weitere Informationen zu diesem und anderen Parametern benötigen, führen Sie `python Code\03_Deployment\batch_score_spark -h` aus.
 
-This script writes the model's predictions to your storage account. The predictions can be examined as described in the next section.
+Dieses Skript schreibt die Vorhersagen des Modells in Ihr Speicherkonto. Die Vorhersagen können wie im nächsten Abschnitt beschrieben untersucht werden.
 
-## Visualization
+## <a name="visualization"></a>Visualisierung
 
-The "Model prediction analysis" Jupyter notebook in the "Code\04_Result_Analysis" subfolder of the Workbench project visualizes a model's predictions. Load and run the notebook as follows:
-1. Open the project in Workbench and click on the folder ("Files") icon along the left-hand menu to load the directory listing.
-2. Navigate to the "Code\04_Result_Analysis" subfolder and click on the notebook named "Model prediction analysis." A preview rendering of the notebook should be displayed.
-3. Click "Start Notebook Server" to load the notebook.
-4. In the first cell, enter the name of the model whose results you would like to analyze where indicated.
-5. Click on "Cell -> Run All" to execute all cells in the notebook.
-6. Read along with the notebook to learn more about the analyses and visualizations it presents.
+Das Jupyter Notebook „Model prediction analysis“ im Unterordner „Code\04_Result_Analysis“ des Workbench-Projekts visualisiert die Vorhersagen eines Modells. Laden Sie das Notebook wie folgt, und führen Sie es aus:
+1. Öffnen Sie das Projekt in Workbench, und klicken Sie auf das Ordnersymbol („Dateien“) im Menü auf der linken Seite, um die Verzeichnisliste zu laden.
+2. Navigieren Sie zum Unterordner „Code\04_Result_Analysis“, und klicken Sie auf das Notebook mit dem Namen „Model prediction analysis“. Eine Vorschau des Notebooks sollte angezeigt werden.
+3. Klicken Sie auf „Notebook-Server starten“ um das Notebook zu laden.
+4. Geben Sie den Namen des Modells, dessen Ergebnisse analysiert werden sollen, wie angegeben in die erste Zelle ein.
+5. Klicken Sie auf „Zelle“ > „Alle ausführen“, um alle Zellen im Notebook auszuführen.
+6. Lesen Sie zusammen mit dem Notebook weitere Informationen, um mehr über die Analysen und Visualisierungen zu erfahren, die es bereitstellt.
 
-## Cleanup
-When you have completed the example, we recommend that you delete all of the resources you have created by executing the following command from the Azure Command Line Interface:
+## <a name="cleanup"></a>Cleanup
+Nachdem Sie das Beispiel abgeschlossen haben, wird empfohlen, alle von Ihnen erstellten Ressourcen zu löschen, indem Sie den folgenden Befehl in der Azure-Befehlszeilenschnittstelle ausführen:
 
   ```
   az group delete --name %AZURE_RESOURCE_GROUP%
   ```
 
-## References
+## <a name="references"></a>Referenzen
 
-- [The Embarrassingly Parallel Image Classification repository](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification)
-   - Describes dataset construction from freely available imagery and labels
-- [MMLSpark](https://github.com/Azure/mmlspark) GitHub repository
-   - Contains additional examples of model training and evaluation with MMLSpark
+- [The Embarrassingly Parallel Image Classification Repository (Repository für verblüffend parallele Bildklassifikation)](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification)
+   - Beschreibt die Dataseterstellung aus kostenlos verfügbarem Bildmaterial und Kennzeichnungen.
+- [MMLSpark](https://github.com/Azure/mmlspark)-GitHub-Repository
+   - Enthält weitere Beispiele für das Modelltraining und die -auswertung mit MMLSpark.
 
-## Conclusions
+## <a name="conclusions"></a>Zusammenfassung
 
-Azure Machine Learning Workbench helps data scientists easily deploy their code on remote compute targets. In this example, local code was deployed for remote execution on an HDInsight cluster. Azure Machine Learning Workbench's run history feature tracked the performance of multiple models and helped us identify the most accurate model. Workbench's Jupyter notebooks feature helped visualize our models' predictions in an interactive, graphical environment.
+Mit Azure Machine Learning Workbench können Datenanalysten ihren Code auf einfache Weise auf Remotecomputezielen bereitstellen. In diesem Beispiel wurde lokaler Code für die Remoteausführung auf einem HDInsight-Cluster bereitgestellt. Über das Feature „Ausführungsverlauf“ von Azure Machine Learning Workbench wurde die Leistung mehrerer Modelle nachverfolgt und das präziseste Modell identifiziert. Das Feature „Jupyter Notebooks“ von Workbench war bei der Visualisierung der Vorhersagen unserer Modelle in einer interaktiven, grafischen Umgebung hilfreich.
 
-## Next steps
-To dive deeper into this example:
-- In Azure Machine Learning Workbench's Run History feature, click the gear symbols to select which graphs and metrics are displayed.
-- Examine the sample scripts for statements calling the `run_logger`. Check that you understand how each metric is being recorded.
-- Examine the sample scripts for statements calling the `blob_service`. Check that you understand how trained models and predictions are stored and retrieved from the cloud.
-- Explore the contents of the containers created in your blob storage account. Ensure that you understand which script or command is responsible for creating each group of files.
-- Modify the training script to train a different MMLSpark model type or to change the model hyperparameters. Use the run history feature to determine whether your changes increased or decreased the model's accuracy.
+## <a name="next-steps"></a>Nächste Schritte
+Wenn Sie sich ausführlicher mit diesem Beispiel beschäftigen möchten:
+- Klicken Sie im Feature „Ausführungsverlauf“ von Azure Machine Learning Workbench auf die Zahnradsymbole, um die anzuzeigenden Diagramme und Metriken auszuwählen.
+- Untersuchen Sie die Beispielskripts für Anweisungen, die `run_logger` aufrufen. Stellen Sie sicher, dass Sie verstehen, wie jede Metrik aufgezeichnet wird.
+- Untersuchen Sie die Beispielskripts für Anweisungen, die `blob_service` aufrufen. Stellen Sie sicher, dass Sie verstehen, wie trainierte Modelle und Vorhersagen in der Cloud gespeichert und aus ihr abgerufen werden.
+- Untersuchen Sie den Inhalt der Container, die in Ihrem Blobspeicherkonto erstellt werden. Stellen Sie sicher, dass Sie verstehen, welches Skript oder welcher Befehl für das Erstellen jeder Gruppe von Dateien verantwortlich ist.
+- Ändern Sie das Trainingsskript so,dass ein anderer Typ von MMLSpark-Modell trainiert wird, oder ändern Sie die Modellhyperparameter. Verwenden Sie das Feature „Ausführungsverlauf“, um zu ermitteln, ob Ihre Änderungen die Genauigkeit des Modells erhöht oder verringert haben.

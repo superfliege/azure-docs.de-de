@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/06/2017
+ms.date: 10/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6d65480c53f905b393409dfdd9952618ab6cb64
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d936cf467ee7043b171cfc845f247f891f52f599
+ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="add-actions-to-alert-rules-in-log-analytics"></a>Hinzufügen von Aktionen zu Warnungsregeln in Log Analytics
 Wenn eine [Warnung in Log Analytics erstellt wird](log-analytics-alerts.md), können Sie optional [eine Warnungsregel konfigurieren](log-analytics-alerts.md), um eine oder mehrere Aktionen auszuführen.  Dieser Artikel beschreibt die verschiedenen verfügbaren Aktionen und Details zu ihrer jeweiligen Konfiguration.
@@ -112,10 +112,10 @@ Runbook-Aktionen erfordern die in der folgenden Tabelle aufgeführten Eigenschaf
 
 Bei Runbookaktionen wird das Runbook mit einem [Webhook](../automation/automation-webhooks.md) gestartet.  Wenn Sie die Warnungsregel erstellen, wird für das Runbook automatisch ein neuer Webhook mit dem Namen **OMS Alert Remediation** gefolgt von einer GUID erstellt.  
 
-Sie können die Parameter des Runbooks nicht direkt ausfüllen, aber der [$WebhookData-Parameter](../automation/automation-webhooks.md) enthält die Details zur Warnung, einschließlich der Ergebnisse der Protokollsuche, die sie ausgelöst hat.  Das Runbook muss **$WebhookData** als Parameter definieren, damit ein Zugriff auf die Eigenschaften der Warnung möglich ist.  Die Warnungsdaten sind im JSON-Format in der Eigenschaft **SearchResults** der **RequestBody**-Eigenschaft des **$WebhookData**-Parameters verfügbar.  Darin enthalten sind die Eigenschaften, die in der folgenden Tabelle aufgeführt sind.
+Sie können die Parameter des Runbooks nicht direkt ausfüllen, aber der [$WebhookData-Parameter](../automation/automation-webhooks.md) enthält die Details zur Warnung, einschließlich der Ergebnisse der Protokollsuche, die sie ausgelöst hat.  Das Runbook muss **$WebhookData** als Parameter definieren, damit ein Zugriff auf die Eigenschaften der Warnung möglich ist.  Die Warnungsdaten sind jetzt in einer einzelnen Eigenschaft mit dem Namen **SearchResult** (für Runbookaktionen und Webhookaktionen mit Standardnutzlast) oder **SearchResults** (Webhookaktionen mit benutzerdefinierter Nutzlast einschließlich **IncludeSearchResults: true**) in der **RequestBody**-Eigenschaft von **$WebhookData** im Json-Format verfügbar.  Darin enthalten sind die Eigenschaften, die in der folgenden Tabelle aufgeführt sind.
 
 >[!NOTE]
-> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, hat sich die Runbooknutzlast geändert.  Details des Formats werden in [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) beschrieben.  Ein Beispiel finden Sie unten in den [Beispielen](#sample-payload).
+> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, hat sich die Runbooknutzlast geändert.  Details des Formats werden in [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) beschrieben.  Ein Beispiel finden Sie unten in den [Beispielen](#sample-payload).  
 
 | Knoten | Beschreibung |
 |:--- |:--- |
@@ -125,12 +125,17 @@ Sie können die Parameter des Runbooks nicht direkt ausfüllen, aber der [$Webho
 
 Das folgende Runbook würde beispielsweise die von der Protokollsuche zurückgegebenen Datensätze extrahieren und basierend auf dem Typ der einzelnen Datensätze verschiedene Eigenschaften zuweisen.  Beachten Sie, dass das Runbook mit der Konvertierung von **RequestBody** aus dem JSON-Format beginnt, damit es in PowerShell als Objekt verarbeitet werden kann.
 
+>[!NOTE]
+> Beide dieser Runbooks verwenden **SearchResult**, also die Eigenschaft, die Ergebnisse für Runbookaktionen und Webhookaktionen mit Standardnutzlast enthält.  Wenn das Runbook aus einer Webhookantwort mit einer benutzerdefinierten Nutzlast aufgerufen würde, müssten Sie diese Eigenschaft in **SearchResults** ändern.
+
+Das folgende Runbook funktioniert mit der Nutzlast aus einem [veralteten Log Analytics-Arbeitsbereich](log-analytics-log-search-upgrade.md).
+
     param ( 
         [object]$WebhookData
     )
 
     $RequestBody = ConvertFrom-JSON -InputObject $WebhookData.RequestBody
-    $Records     = $RequestBody.SearchResults.value
+    $Records     = $RequestBody.SearchResult.value
 
     foreach ($Record in $Records)
     {
@@ -152,11 +157,61 @@ Das folgende Runbook würde beispielsweise die von der Protokollsuche zurückgeg
         }
     }
 
+Das folgende Runbook funktioniert mit der Nutzlast aus einem [aktualisierten Log Analytics-Arbeitsbereich](log-analytics-log-search-upgrade.md).
+
+    param ( 
+        [object]$WebhookData
+    )
+
+    $RequestBody = ConvertFrom-JSON -InputObject $WebhookData.RequestBody
+
+    # Get all metadata properties    
+    $AlertRuleName = $RequestBody.AlertRuleName
+    $AlertThresholdOperator = $RequestBody.AlertThresholdOperator
+    $AlertThresholdValue = $RequestBody.AlertThresholdValue
+    $AlertDescription = $RequestBody.Description
+    $LinktoSearchResults =$RequestBody.LinkToSearchResults
+    $ResultCount =$RequestBody.ResultCount
+    $Severity = $RequestBody.Severity
+    $SearchQuery = $RequestBody.SearchQuery
+    $WorkspaceID = $RequestBody.WorkspaceId
+    $SearchWindowStartTime = $RequestBody.SearchIntervalStartTimeUtc
+    $SearchWindowEndTime = $RequestBody.SearchIntervalEndtimeUtc
+    $SearchWindowInterval = $RequestBody.SearchIntervalInSeconds
+
+    # Get detailed search results
+    if($RequestBody.SearchResult -ne $null)
+    {
+        $SearchResultRows    = $RequestBody.SearchResult.tables[0].rows 
+        $SearchResultColumns = $RequestBody.SearchResult.tables[0].columns;
+
+        foreach ($SearchResultRow in $SearchResultRows)
+        {   
+            $Column = 0
+            $Record = New-Object –TypeName PSObject 
+        
+            foreach ($SearchResultColumn in $SearchResultColumns)
+            {
+                $Name = $SearchResultColumn.name
+                $ColumnValue = $SearchResultRow[$Column]
+                $Record | Add-Member –MemberType NoteProperty –Name $name –Value $ColumnValue -Force
+                        
+                $Column++
+            }
+
+            # Include code to work with the record. 
+            # For example $Record.Computer to get the computer property from the record.
+            
+        }
+    }
+
+
 
 ## <a name="sample-payload"></a>Beispielnutzlast
 In diesem Abschnitt wird die Beispielnutzlast für Webhook- und Runbookaktionen sowohl in einem Vorgänger- als auch [aktualisierten Log Analytics-Arbeitsbereich](log-analytics-log-search-upgrade.md) gezeigt.
 
 ### <a name="webhook-actions"></a>Webhookaktionen
+In beiden Beispielen wird **SearchResult** verwendet, also die Eigenschaft, die Ergebnisse für Webhookaktionen mit Standardnutzlast enthält.  Wenn der Webhook eine benutzerdefinierte Nutzlast verwendet hat, die Suchergebnisse enthält, wäre diese Eigenschaft **SearchResults**.
 
 #### <a name="legacy-workspace"></a>Vorgängerarbeitsbereich.
 Es folgt eine Beispielnutzlast für eine Webhookaktion in einem Vorgängerarbeitsbereich.
@@ -376,7 +431,7 @@ Es folgt eine Beispielnutzlast für eine Webhookaktion in einem aktualisierten A
 Es folgt eine Beispielnutzlast für eine Runbookaktion in einem Vorgängerarbeitsbereich.
 
     {
-        "SearchResults": {
+        "SearchResult": {
             "id": "subscriptions/subscriptionID/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspace-workspaceID/search/searchGUID|10.1.0.7|TimeStamp",
             "__metadata": {
                 "resultType": "raw",

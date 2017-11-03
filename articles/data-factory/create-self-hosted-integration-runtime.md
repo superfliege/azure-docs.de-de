@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 18f5aea960bca34699d2d265d4801797291a3e3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 63e4bb600d053a43c500b601a3942eb96ac16b07
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit
-Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integrationslaufzeit finden Sie unter [Integration Runtime Overview](concepts-integration-runtime.md) (Übersicht über Integrationslaufzeit). 
+Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integrationslaufzeit finden Sie unter [Integration Runtime Overview](concepts-integration-runtime.md) (Übersicht über Integrationslaufzeit).
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 der Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 (GA) des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.
@@ -30,20 +30,20 @@ Mit einer selbstgehosteten Integrationslaufzeit können Kopieraktivitäten zwisc
 In diesem Dokument wird beschrieben, wie Sie die selbstgehostete Integrationslaufzeit erstellen und konfigurieren können.
 
 ## <a name="high-level-steps-to-install-self-hosted-ir"></a>Allgemeine Schritte zum Installieren der selbstgehosteten Integrationslaufzeit
-1.  Erstellen Sie eine selbstgehostete Integrationslaufzeit. Hier ist ein PowerShell-Beispiel angegeben: 
+1.  Erstellen Sie eine selbstgehostete Integrationslaufzeit. Hier ist ein PowerShell-Beispiel angegeben:
 
     ```powershell
-    New-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
 2.  Laden Sie die selbstgehostete Integrationslaufzeit herunter, und installieren Sie sie (auf dem lokalen Computer).
-3.  Rufen Sie den Authentifizierungsschlüssel ab, und registrieren Sie die selbstgehostete Integrationslaufzeit mit dem Schlüssel. Hier ist ein PowerShell-Beispiel angegeben: 
+3.  Rufen Sie den Authentifizierungsschlüssel ab, und registrieren Sie die selbstgehostete Integrationslaufzeit mit dem Schlüssel. Hier ist ein PowerShell-Beispiel angegeben:
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
-    
+
 ## <a name="command-flow-and-data-flow"></a>Befehls- und Datenfluss
-Wenn Sie die Daten zwischen der lokalen Umgebung und der Cloud verschieben, wird für die Aktivität eine selbstgehostete Integrationslaufzeit verwendet, um die Daten aus der lokalen Datenquelle in die Cloud zu übertragen (und umgekehrt). 
+Wenn Sie die Daten zwischen der lokalen Umgebung und der Cloud verschieben, wird für die Aktivität eine selbstgehostete Integrationslaufzeit verwendet, um die Daten aus der lokalen Datenquelle in die Cloud zu übertragen (und umgekehrt).
 
 Hier ist ein allgemeiner Datenfluss als Zusammenfassung der Schritte zum Kopieren per selbstgehosteter Integrationslaufzeit angegeben:
 
@@ -66,18 +66,18 @@ Hier ist ein allgemeiner Datenfluss als Zusammenfassung der Schritte zum Kopiere
 - Behandeln Sie Ihre Datenquelle wie eine lokale Datenquelle (die sich hinter einer Firewall befindet), selbst wenn Sie **ExpressRoute**verwenden. Verwenden Sie die selbstgehostete Integrationslaufzeit, um die Konnektivität zwischen dem Dienst und der Datenquelle herzustellen.
 - Sie müssen die selbstgehostete Integrationslaufzeit auch verwenden, wenn sich der Datenspeicher in der Cloud auf einem **virtuellen Azure IaaS-Computer** befindet.
 
-## <a name="prerequisites"></a>Voraussetzungen 
+## <a name="prerequisites"></a>Voraussetzungen
 
-- Die unterstützten **Betriebssystemversionen** sind Windows 7, Windows 8/8.1, Windows 10, Windows Server 2008 R2, Windows Server 2012 und Windows Server 2012 R2. Die Installation der selbstgehosteten Integrationslaufzeit auf einem **Domänencontroller wird nicht unterstützt**.
+- Die unterstützten **Betriebssystemversionen** sind Windows 7 Service Pack 1, Windows 8.1, Windows 10, Windows Server 2008 R2 SP1, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016. Die Installation der selbstgehosteten Integrationslaufzeit auf einem **Domänencontroller wird nicht unterstützt**.
 - Sie benötigen **mindestens .NET Framework 4.6.1**. Wenn Sie die selbstgehostete Integrationslaufzeit auf einem Windows 7-Computer installieren, sollten Sie .NET Framework 4.6.1 oder höher installieren. Ausführlichere Informationen finden Sie unter [Systemanforderungen für .NET Framework](/dotnet/framework/get-started/system-requirements) .
-- Die empfohlene **Konfiguration** für den Computer mit der selbstgehosteten Integrationslaufzeit lautet wie folgt: mindestens 2 GHz, vier Kerne, 8 GB RAM und Datenträger mit 80 GB.
+- Die empfohlene **Konfiguration** für den Computer mit der selbstgehosteten Integrationslaufzeit lautet wie folgt: mindestens 2 GHz, 4 Kerne, 8 GB RAM und Datenträger mit 80 GB.
 - Wenn sich der Hostcomputer im Ruhezustand befindet, reagiert die selbstgehostete Integrationslaufzeit nicht auf Datenanforderungen. Aus diesem Grund sollten Sie vor der Installation der selbstgehosteten Integrationslaufzeit einen entsprechenden Energiesparplan auf dem Computer konfigurieren. Wenn für den Computer der Ruhezustand konfiguriert ist, wird bei der Installation der selbstgehosteten Integrationslaufzeit eine Meldung angezeigt.
 - Sie müssen der Administrator des Computers sein, um die selbstgehostete Integrationslaufzeit erfolgreich installieren und konfigurieren zu können.
 - Da die Kopieraktivität mit einer bestimmten Häufigkeit ausgeführt wird, folgt die Ressourcenverwendung (CPU, Arbeitsspeicher) auf dem Computer dem gleichen Muster mit Spitzen- und Leerlaufzeiten. Die Ressourcenverwendung hängt auch stark von der Datenmenge ab, die verschoben wird. Wenn mehrere Kopieraufträge in Bearbeitung sind, steigt die Ressourcenverwendung zu Spitzenzeiten an.
 
 ## <a name="installation-best-practices"></a>Bewährte Methoden für die Installation
 Sie können die selbstgehostete Integrationslaufzeit installieren, indem Sie aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) ein MSI-Setuppaket herunterladen. Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](tutorial-hybrid-copy-powershell.md) finden Sie eine Schritt-für-Schritt-Anleitung.
-  
+
 - Konfigurieren Sie den Energiesparplan auf dem Hostcomputer für die selbstgehostete Integrationslaufzeit, damit der Computer nicht in den Ruhezustand versetzt wird. Wenn der Hostcomputer in den Ruhezustand versetzt wird, wechselt die selbstgehostete Integrationslaufzeit in den Offlinemodus.
 - Sichern Sie regelmäßig die Anmeldeinformationen, die der selbstgehosteten Integrationslaufzeit zugeordnet sind.
 
@@ -103,14 +103,14 @@ Sie können die selbstgehostete Integrationslaufzeit installieren, indem Sie aus
 
 
 ## <a name="high-availability-and-scalability"></a>Hochverfügbarkeit und Skalierbarkeit
-Eine selbstgehostete Integrationslaufzeit kann mehreren lokalen Computern zugeordnet werden. Diese Computer werden als Knoten bezeichnet. Einer selbstgehosteten Integrationslaufzeit können bis zu vier Knoten zugeordnet sein. Die Vorteile der Nutzung mehrerer Knoten (lokale Computer mit installiertem Gateway) für ein logisches Gateway sind: 
+Eine selbstgehostete Integrationslaufzeit kann mehreren lokalen Computern zugeordnet werden. Diese Computer werden als Knoten bezeichnet. Einer selbstgehosteten Integrationslaufzeit können bis zu vier Knoten zugeordnet sein. Die Vorteile der Nutzung mehrerer Knoten (lokale Computer mit installiertem Gateway) für ein logisches Gateway sind:
 1. Höhere Verfügbarkeit der selbstgehosteten Integrationslaufzeit, damit es sich nicht mehr um die einzige Fehlerquelle (Single Point of Failure) in Ihrer Big Data-Lösung oder Clouddatenintegration mit Azure Data Factory handelt. Auf diese Weise wird die Kontinuität mit bis zu vier Knoten sichergestellt.
 2. Verbesserung in Bezug auf die Leistung und den Durchsatz während der Datenverschiebung zwischen lokalen und Clouddatenspeichern. Informieren Sie sich über [Leistungsvergleiche](copy-activity-performance.md).
 
-Sie können mehrere Knoten zuordnen, indem Sie einfach die Software für die selbstgehostete Integrationslaufzeit aus dem [Download Center](https://www.microsoft.com/download/details.aspx?id=39717) installieren und registrieren und einen der Authentifizierungsschlüssel verwenden, der mit dem New-AzureRmDataFactoryV2IntegrationRuntimeKey-Cmdlet ermittelt wurde. Dies ist im entsprechenden [Tutorial](tutorial-hybrid-copy-powershell.md) beschrieben. 
+Sie können mehrere Knoten zuordnen, indem Sie einfach die Software für die selbstgehostete Integrationslaufzeit aus dem [Download Center](https://www.microsoft.com/download/details.aspx?id=39717) installieren und registrieren und einen der Authentifizierungsschlüssel verwenden, der mit dem New-AzureRmDataFactoryV2IntegrationRuntimeKey-Cmdlet ermittelt wurde. Dies ist im entsprechenden [Tutorial](tutorial-hybrid-copy-powershell.md) beschrieben.
 
 > [!NOTE]
-> Für die Zuordnung zu den einzelnen Knoten müssen Sie nicht jeweils eine neue selbstgehostete Integrationslaufzeit erstellen. 
+> Für die Zuordnung zu den einzelnen Knoten müssen Sie nicht jeweils eine neue selbstgehostete Integrationslaufzeit erstellen.
 
 ## <a name="system-tray-icons-notifications"></a>Symbole und Benachrichtigungen in der Taskleiste
 Wenn Sie den Cursor auf das Taskleistensymbol bzw. die Benachrichtigungsmeldung bewegen, können Sie auf Details zum Status der selbstgehosteten Integrationslaufzeit zugreifen.
@@ -137,7 +137,7 @@ Auf Ebene der **Windows-Firewall** (Computerebene) sind diese ausgehenden Ports 
 >
 > Für einige Clouddatenbanken (z.B. Azure SQL-Datenbank, Azure Data Lake usw.) müssen Sie die IP-Adresse des Computers mit der selbstgehosteten Integrationslaufzeit für die Firewallkonfiguration ggf. auf eine Whitelist setzen.
 
-### <a name="copy-data-from-a-source-to-a-sink"></a>Kopieren von Daten von einer Quelle in eine Senke 
+### <a name="copy-data-from-a-source-to-a-sink"></a>Kopieren von Daten von einer Quelle in eine Senke
 Stellen Sie sicher, dass die Firewallregeln für die Unternehmensfirewall, die Windows-Firewall auf dem Computer mit der selbstgehosteten Integrationslaufzeit und den Datenspeicher selbst richtig aktiviert sind. Bei Aktivierung dieser Regeln kann die selbstgehostete Integrationslaufzeit erfolgreich eine Verbindung mit der Quelle und der Senke herstellen. Aktivieren Sie die Regeln für jeden Datenspeicher, der am Kopiervorgang beteiligt ist.
 
 Führen Sie beispielsweise die folgenden Schritte aus, um Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbanksenke oder eine Azure SQL Data Warehouse-Senke** zu kopieren:
@@ -200,8 +200,8 @@ Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswähle
               <proxy bypassonlocal="true" proxyaddress="http://proxy.domain.org:8888/" />
         </defaultProxy>
     </system.net>
-    ``` 
-    
+    ```
+
     Zusätzliche Eigenschaften sind im Proxytag zulässig, um die erforderlichen Einstellungen anzugeben, z. B. scriptLocation. Die Syntax finden Sie unter [<proxy>-Element (Netzwerkeinstellungen)](https://msdn.microsoft.com/library/sa91de1e.aspx).
 
     ```xml
@@ -221,7 +221,7 @@ Wenn Sie ähnliche Fehler wie die unten aufgeführten feststellen, liegt dies me
 2.  Wenn Sie den Konfigurations-Manager für die Integrationslaufzeit öffnen, wird der Status als **Getrennt** oder **Verbindung wird hergestellt** angezeigt. Beim Anzeigen der Windows-Ereignisprotokolle sehen Sie unter „Ereignisanzeige“ > „Anwendungs- und Dienstprotokolle“ > „Microsoft-Integrationslaufzeit“ beispielsweise folgende Fehlermeldung:
 
     ```
-    Unable to connect to the remote server 
+    Unable to connect to the remote server
     A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
     ```
 
@@ -239,4 +239,3 @@ Falls Sie den Port 8060 auf dem Computer für die selbstgehostete Integrationsla
 
 ## <a name="next-steps"></a>Nächste Schritte
 Das folgende Tutorial enthält eine Schritt-für-Schritt-Anleitung: [Tutorial: Kopieren von lokalen Daten in die Cloud](tutorial-hybrid-copy-powershell.md).
-

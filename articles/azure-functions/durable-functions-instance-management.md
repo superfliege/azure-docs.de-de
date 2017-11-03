@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 8c9085042496fef4c499f57e874e0b8ba059fd65
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 734853dbee7a6f216763cd82d424c9e639b1f8c9
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Verwalten von Instanzen in Durable Functions (Azure Functions)
 
@@ -64,7 +64,7 @@ module.exports = function (context, input) {
 ```
 
 > [!NOTE]
-> Im Allgemeinen sollten Sie einen zufälligen Bezeichner für die Instanz-ID verwenden. Dies gewährleistet eine gleichmäßige Lastenverteilung, wenn Orchestratorfunktionen mehrere virtuelle Computer übergreifend skaliert werden. Wenn die ID aus einer externen Quelle stammen muss oder bei der Implementierung des [Singleton-Orchestrator](durable-functions-counter.md)-Musters sollten nicht zufällige Instanz-IDs verwendet werden.
+> Sie sollten einen zufälligen Bezeichner für die Instanz-ID verwenden. Dies gewährleistet eine gleichmäßige Lastenverteilung, wenn Orchestratorfunktionen mehrere virtuelle Computer übergreifend skaliert werden. Wenn die ID aus einer externen Quelle stammen muss oder bei der Implementierung des [Singleton-Orchestrator](durable-functions-singletons.md)-Musters sollten nicht zufällige Instanz-IDs verwendet werden.
 
 ## <a name="querying-instances"></a>Abfragen von Instanzen
 

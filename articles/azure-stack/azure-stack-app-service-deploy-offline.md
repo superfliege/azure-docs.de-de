@@ -12,13 +12,13 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: d2214b914899b24dfb36873e0083632a7deaba52
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ee171708364c3e29476302bef04a715df650b9b
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Hinzufügen eines App Service-Ressourcenanbieters zu einer getrennten, durch AD FS gesicherten Azure Stack-Umgebung
 
@@ -51,7 +51,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
 
 ## <a name="complete-the-offline-installation-of-app-service-on-azure-stack"></a>Abschließen der Offlineinstallation von App Service in Azure Stack
 
-1. Führen Sie „appservice.exe“ auf dem getrennten Azure Stack-Hostcomputer als azurestack\administrator aus.
+1. Führen Sie „appservice.exe“ auf dem getrennten Azure Stack-Hostcomputer als „azurestack\clouadmin“ aus.
 
 2. Klicken Sie auf **Erweitert** > **Offlineinstallation abschließen**.
 
@@ -72,7 +72,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
 7. Auf der nächsten Seite:
     1. Klicken Sie neben dem Feld **Azure Stack-Abonnements** auf die Schaltfläche **Verbinden**.
         - Wenn Sie Azure Active Directory (Azure AD) verwenden, geben Sie das Azure AD-Administratorkonto, das Sie bei der Bereitstellung von Azure Stack angegeben haben, und das zugehörige Kennwort ein. Klicken Sie auf **Anmelden**.
-        - Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden, geben Sie Ihr Administratorkonto an. Beispiel: azurestackadmin@azurestack.local. Geben Sie Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
+        - Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden, geben Sie Ihr Administratorkonto an. Beispiel: cloudadmin@azurestack.local. Geben Sie Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
     2. Wählen Sie im Feld **Azure Stack-Abonnements** Ihr Abonnement aus.
     3. Wählen Sie im Feld **Azure Stack-Standorte** den Standort aus, der der Region entspricht, in der die Bereitstellung erfolgen soll. Wählen Sie z.B. **lokal** aus, wenn Ihre Bereitstellung im Azure Stack Development Kit erfolgt.
     4. Geben Sie einen **Ressourcengruppennamen** für Ihre App Service-Bereitstellung ein. Dieser ist standardmäßig auf **APPSERVICE\<MOBILE\>** festgelegt.
@@ -82,7 +82,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image03.png)
 
-8. Geben Sie die Informationen für die Dateifreigabe ein, und klicken Sie dann auf **Weiter**.
+8. Geben Sie die Informationen für die Dateifreigabe ein, und klicken Sie dann auf **Weiter**. In der Adresse der Dateifreigabe muss der vollständig qualifizierte Domänennamen des Dateiservers verwendet werden, z.B. „\\\appservicefileserver.local.cloudapp.azurestack.external\websites“, oder die IP-Adresse, z.B. „\\\10.0.0.1\websites“.
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image04.png)
 
@@ -112,9 +112,14 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image07.png)    
 
-12. Überprüfen Sie die Optionen für Rolleninstanz und SKU. Die Standardwerte werden mit den als Minimum empfohlenen Instanz-SKUs für jede Rolle aufgefüllt. Eine Übersicht über die Kern- und Arbeitsspeichervoraussetzungen wird angezeigt, um Sie bei der Bereitstellung zu unterstützen. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Weiter**.
+12. Überprüfen Sie die Optionen für Rolleninstanz und SKU. Als Standardwerte werden die Mindestanzahl der Instanz und die Mindest-SKU für jede Rolle in einer ASDK-Bereitstellung verwendet. Eine Übersicht über die Kern- und Arbeitsspeichervoraussetzungen wird angezeigt, um Sie bei der Bereitstellung zu unterstützen. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Weiter**.
 
-    | Rolle | Empfohlene Mindestanzahl von Instanzen | Empfohlene Mindestanzahl von SKUs | Hinweise |
+     > [!NOTE]
+     > Befolgen Sie bei Produktionsbereitstellungen die Anweisungen unter [Kapazitätsplanung für Azure App Service-Serverrollen in Azure Stack](azure-stack-app-service-capacity-planning.md).
+     > 
+     >
+
+    | Rolle | Mindestanzahl der Instanzen | Mindest-SKU | Hinweise |
     | --- | --- | --- | --- |
     | Controller | 1 | Standard_A1 – (1 Kern, 1.792 MB) | Verwaltet und wartet die Integrität der App Service-Cloud |
     | Verwaltung | 1 | Standard_A2 – (2 Kerne, 3.584 MB) | Verwaltet die Azure Resource Manager- und API-Endpunkte, die Portalerweiterungen (Administrator-, Mandanten, Functions-Portal) und den Datendienst von App Service. Zur Unterstützung eines Failovers erhöhen Sie die empfohlenen Instanzen auf 2. |
@@ -125,7 +130,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image08.png)    
 
     > [!NOTE]
-    > In den Technical Previews stellt das Installationsprogramm des App Service-Ressourcenanbieters auch eine Standard-A1-Instanz bereit, die als einfacher Dateiserver zur Unterstützung von Azure Resource Manager fungiert. Diese Instanz wird im SDK für einen Knoten beibehalten. Bei allgemeiner Verfügbarkeit ermöglicht das App Service-Installationsprogramm die Verwendung eines hochverfügbaren Dateiservers für Produktionsworkloads.
+    > **Windows Server 2016 Core ist kein unterstütztes Plattformimage für die Verwendung mit Azure App Service in Azure Stack**.
 
 13. Wählen Sie im Feld **Plattformimage auswählen** aus den VM-Images, die im Computeressourcenanbieter für die App Service-Cloud verfügbar sind, Ihr VM-Bereitstellungsimage für Windows Server 2016 aus. Klicken Sie auf **Weiter**.
 
@@ -154,19 +159,11 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
 
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>Überprüfen der Installation von App Service in Azure Stack
 
-1. Navigieren Sie im Azure Stack-Administratorportal zu der Ressourcengruppe, die vom Installationsprogramm erstellt wurde. Diese Gruppe lautet standardmäßig **APPSERVICE-LOCAL**.
+1. Navigieren Sie im Azure Stack-Verwaltungsportal zu **Verwaltung – App Service**.
 
-2. Suchen Sie **CN0-VM**. Um eine Verbindung mit dem virtuellen Computer herzustellen, klicken Sie auf dem Blatt **Virtueller Computer** auf **Verbinden**.
+2. Überprüfen Sie in der Übersicht unter „Status“, ob für **Status** die Option **Alle Rollen sind bereit** angezeigt wird.
 
-3. Doppelklicken Sie auf dem Desktop dieses virtuellen Computers auf **Webcloud-Verwaltungskonsole**.
-
-4. Wechseln Sie zu **Verwaltete Server**.
-
-5. Wenn bei allen Computern für einen oder mehrere Worker der Status **Bereit** angezeigt wird, fahren Sie mit Schritt 6 fort.
-
-6. Schließen Sie den Remotedesktopcomputer, und kehren Sie zu dem Computer zurück, auf dem Sie das App Service-Installationsprogramm ausgeführt haben.
-
-    ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/managed-servers.png)    
+    ![App Service-Verwaltung](media/azure-stack-app-service-deploy/image12.png)    
 
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Testen von App Service in Azure Stack

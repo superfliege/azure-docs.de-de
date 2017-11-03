@@ -1,6 +1,6 @@
 ---
 title: "Konfigurieren Ihres eigenständigen Azure Service Fabric-Clusters | Microsoft-Dokumentation"
-description: "Dieser Artikel beschreibt, wie Sie einen eigenständigen oder privaten Service Fabric-Cluster konfigurieren."
+description: "Dieser Artikel beschreibt, wie Sie einen eigenständigen oder lokalen Azure Service Fabric-Cluster konfigurieren."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/02/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 660e7b59ae0e92692121620341562e412a6e8eae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aeb4be94ea12c01f4ecd5652fa3b3243351e4853
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="configuration-settings-for-standalone-windows-cluster"></a>Konfigurationseinstellungen für eigenständige Windows-Cluster
 In diesem Artikel wird beschrieben, wie Sie einen eigenständigen Service Fabric-Cluster mithilfe der Datei ***ClusterConfig.JSON*** konfigurieren. Sie können diese Datei zum Angeben von Informationen für Ihren eigenständigen Cluster verwenden, z.B. die Service Fabric-Knoten und ihre IP-Adressen, verschiedene Knotentypen im Cluster, die Sicherheitskonfigurationen sowie die Netzwerktopologie in Bezug auf Fehler-/Upgradedomänen.
@@ -26,9 +26,9 @@ In diesem Artikel wird beschrieben, wie Sie einen eigenständigen Service Fabric
 Wenn Sie [das eigenständige Service Fabric-Paket herunterladen](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), werden einige Beispiele der Datei „ClusterConfig.JSON“ auf Ihren Arbeitscomputer heruntergeladen. Die Beispiele mit *DevCluster* im Namen dienen Ihnen als Hilfe beim Erstellen eines Clusters mit allen drei Knoten auf demselben Computer, z.B. logischen Knoten. Davon muss mindestens ein Knoten als primärer Knoten gekennzeichnet sein. Dieser Cluster ist gut für eine Entwicklungs- oder Testumgebung geeignet und wird nicht als Produktionscluster unterstützt. Die Beispiele mit *MultiMachine* im Namen dienen Ihnen als Hilfe beim Erstellen eines Clusters in Produktionsqualität, bei dem jeder Knoten auf einem separaten Computer angeordnet ist. Die Anzahl von primären Knoten für diese Cluster basiert jeweils auf der [Zuverlässigkeitsstufe](#reliability). In Version 5.7, API-Version 05-2017 wurde die Eigenschaft für die Zuverlässigkeitsstufe entfernt. Stattdessen wird mit dem Code die optimale Leistungsstufe für Ihren Cluster berechnet. Verwenden Sie diese Eigenschaft nicht in der Codeversion 5.7 und höher.
 
 
-1. Mit *ClusterConfig.Unsecure.DevCluster.JSON* und *ClusterConfig.Unsecure.MultiMachine.JSON* wird veranschaulicht, wie Sie einen ungeschützten Test- bzw. Produktionscluster erstellen. 
+1. Mit *ClusterConfig.Unsecure.DevCluster.JSON* und *ClusterConfig.Unsecure.MultiMachine.JSON* wird veranschaulicht, wie Sie einen ungeschützten Test- bzw. Produktionscluster erstellen.
 2. Mit *ClusterConfig.Windows.DevCluster.JSON* und *ClusterConfig.Windows.MultiMachine.JSON* wird veranschaulicht, wie Sie einen Test- oder Produktionscluster erstellen, der per [Windows-Sicherheit](service-fabric-windows-cluster-windows-security.md) geschützt ist.
-3. Mit *ClusterConfig.X509.DevCluster.JSON* und *ClusterConfig.X509.MultiMachine.JSON* wird veranschaulicht, wie Sie einen Test- oder Produktionscluster erstellen, der per [Sicherheit auf Basis des X509-Zertifikats](service-fabric-windows-cluster-x509-security.md) geschützt ist. 
+3. Mit *ClusterConfig.X509.DevCluster.JSON* und *ClusterConfig.X509.MultiMachine.JSON* wird veranschaulicht, wie Sie einen Test- oder Produktionscluster erstellen, der per [Sicherheit auf Basis des X509-Zertifikats](service-fabric-windows-cluster-x509-security.md) geschützt ist.
 
 Als Nächstes werden die verschiedenen Abschnitte der Datei ***ClusterConfig.JSON*** beschrieben.
 

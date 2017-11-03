@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/13/2017
 ms.author: sngun
-ms.openlocfilehash: 5555ee022e74b5d4791c5826ef80b166c4990a61
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3014b8a424e554f3c46f1c7e76eab586d089e059
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="install-powershell-for-azure-stack"></a>Installieren von PowerShell für Azure Stack  
 
@@ -57,6 +57,9 @@ In den folgenden Abschnitten werden die Schritte beschrieben, die zum Installier
 
 Mit Azure Stack kompatible AzureRM-Module werden über API-Versionsprofile installiert. Für Azure Stack ist das API-Versionsprofil **2017-03-09-profile** erforderlich, das durch Installation des AzureRM.Bootstrapper-Moduls zur Verfügung gestellt wird. Informationen zu API-Versionsprofilen und den von ihnen bereitgestellten Cmdlets finden Sie unter [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md) (Verwalten von API-Versionsprofilen in Azure Stack). Zusätzlich zu den AzureRM-Modulen müssen die Azure Stack-spezifischen PowerShell-Module installiert werden. Führen Sie zum Installieren dieser Module auf der Entwicklungsarbeitsstation das folgende PowerShell-Skript aus:
 
+> [!IMPORTANT]
+> Das Release des PowerShell-Moduls AzureRM 1.2.11 enthält eine Liste mit wichtigen Änderungen. Um ein Upgrade aus Version 1.2.10 auszuführen, lesen Sie das Migrationshandbuch unter [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration).
+
   ```powershell
   # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
   Install-Module `
@@ -68,7 +71,7 @@ Mit Azure Stack kompatible AzureRM-Module werden über API-Versionsprofile insta
 
   Install-Module `
     -Name AzureStack `
-    -RequiredVersion 1.2.10
+    -RequiredVersion 1.2.11
   ```
 
 Führen Sie den folgenden Befehl aus, um die Installation zu überprüfen:
@@ -83,6 +86,9 @@ Führen Sie den folgenden Befehl aus, um die Installation zu überprüfen:
 
 In einem nicht verbundenen Szenario müssen Sie zuerst die PowerShell-Module auf einen Computer mit Internetverbindung herunterladen und sie dann für die Installation in das Azure Stack Development Kit übertragen.
 
+> [!IMPORTANT]
+> Das Release des PowerShell-Moduls AzureRM 1.2.11 enthält eine Liste mit wichtigen Änderungen. Um ein Upgrade aus Version 1.2.10 auszuführen, lesen Sie das Migrationshandbuch unter [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration).
+
 1. Melden Sie sich bei einem Computer mit Internetverbindung an, und laden Sie mithilfe des folgenden Skripts die AzureRM- und AzureStack-Pakete auf den lokalen Computer herunter:
 
    ```powershell
@@ -94,7 +100,7 @@ In einem nicht verbundenen Szenario müssen Sie zuerst die PowerShell-Module auf
      -Name AzureRM `
      -Path $Path `
      -Force `
-     -RequiredVersion 1.2.10
+     -RequiredVersion 1.2.11
 
    Save-Package `
      -ProviderName NuGet `
@@ -102,7 +108,7 @@ In einem nicht verbundenen Szenario müssen Sie zuerst die PowerShell-Module auf
      -Name AzureStack `
      -Path $Path `
      -Force `
-     -RequiredVersion 1.2.10 
+     -RequiredVersion 1.2.11 
    ```
 
 2. Kopieren Sie die heruntergeladenen Pakete auf ein USB-Gerät.

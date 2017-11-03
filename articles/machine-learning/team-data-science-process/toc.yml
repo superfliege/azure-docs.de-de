@@ -34,7 +34,7 @@
 - name: Lernprogramme
   href: walkthroughs.md
   items:
-    - name: Azure Machine Learning Workbench
+    - name: Azure Machine Learning
       href: walkthroughs-aml-with-tdsp.md
       items:
         - name: Klassifizierung der Einkommen in den USA
@@ -219,16 +219,37 @@
                   href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
 - name: Ressourcen
   items:
-    - name: TDSP-Tools und -Hilfsprogramme – GitHub
-      href: 'https://github.com/Azure/Azure-TDSP-Utilities'
+    - name: TDSP-Tools und -Hilfsprogramme
       items:
-        - name: Neueste Hilfsprogramme für den Team Data Science-Prozess
+        - name: Von GitHub herunterladen
+          href: 'https://github.com/Azure/Azure-TDSP-Utilities'
+        - name: Data Science Utilities v.0.11 für TDSP
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/'
+        - name: Aktuelle Hilfsprogramme für TDSP
           href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
-    - name: Blog zu Cortana Intelligence und Machine Learning
-      href: 'https://blogs.technet.microsoft.com/machinelearning/'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-machine-learning'
-    - name: Videos
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
+    - name: Blogs
+      items:
+        - name: Neueste Updates für TDSP
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/10/09/the-microsoft-team-data-science-process-tdsp-recent-updates/'
+        - name: Verwenden von TDSP in Azure Machine Learning
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/09/25/using-the-team-data-science-process-tdsp-in-azure-machine-learning/'
+        - name: Planungsvorlage für Data Science-Projekt
+          href: 'https://blogs.msdn.microsoft.com/buckwoody/2017/10/24/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/'
+        - name: Blog zu Cortana Intelligence und Machine Learning
+          href: 'https://blogs.technet.microsoft.com/machinelearning/'
+    - name: 'Organisationen, die TDSP verwenden'
+      items:
+        - name: Neue Signatur
+          href: 'https://newsignature.com/services/professional-services/advanced-analytics/'
+        - name: Blue Granite
+          href: 'https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations'
+        - name: Microsoft-Beratungsdienste
+          href: 'https://www.microsoft.com/en-us/microsoftservices/business-analytics.aspx'
+    - name: Verwandte Microsoft-Ressourcen
+      items:
+        - name: MSDN-Forum
+          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
+        - name: Stack Overflow
+          href: 'http://stackoverflow.com/questions/tagged/azure-machine-learning'
+        - name: Videos
+          href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
