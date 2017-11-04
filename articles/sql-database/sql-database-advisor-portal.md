@@ -1,6 +1,6 @@
 ---
 title: "Anwenden von Empfehlungen zur Leistung für Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Sie können im Azure-Portal Empfehlungen zur Leistungsverbesserung erhalten, die die Leistung Ihrer Azure SQL-Datenbank verbessern können, oder Sie können in Ihrer Workload erkannte Probleme beheben."
+description: "Im Azure-Portal erhalten Sie Empfehlungen zur Leistungsverbesserung, mit denen Sie die Leistung Ihrer Azure SQL-Datenbank optimieren können."
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -12,14 +12,14 @@ ms.custom: monitor & tune
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 018afaa8b08bd001e55693390e80c8e2c4f33a30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c621fc557ed466ddf2b514136a32d98be454325
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Suchen und Anwenden von Empfehlungen zur Leistung
 
@@ -35,9 +35,9 @@ Verwenden Sie die folgenden Schritte, um Empfehlungen zur Leistung im Azure-Port
 2. Klicken Sie auf **Weitere Dienste** > **SQL-Datenbanken**, und klicken Sie auf Ihre Datenbank.
 3. Navigieren Sie zu **Empfehlungen zur Leistung**, um die verfügbaren Empfehlungen für die ausgewählte Datenbank anzuzeigen.
 
-Empfehlungen zur Leistung werden in der Tabelle angezeigt, so ähnlich wie in folgender Abbildung dargestellt:
+Empfehlungen zur Leistung werden in einer Tabelle angezeigt, ähnlich wie in folgender Abbildung dargestellt:
 
-![Empfehlungen](./media/sql-database-advisor-portal/recommendations.png)
+![Recommendations](./media/sql-database-advisor-portal/recommendations.png)
 
 Empfehlungen werden nach möglichen Auswirkungen auf die Leistung in die folgenden Kategorien unterteilt:
 
@@ -49,7 +49,7 @@ Empfehlungen werden nach möglichen Auswirkungen auf die Leistung in die folgend
 
 
 > [!NOTE]
-> Azure SQL-Datenbank muss Aktivitäten mindestens einen Tag lang überwachen, um einige Empfehlungen aufstellen zu können. Der Azure SQL-Datenbank kann leichter für konsistente Abfragemuster optimiert werden als für zufällige, unregelmäßige Aktivitätsspitzen. Wenn gerade keine Empfehlungen verfügbar sind, sollte der Grund in einer Meldung auf der Seite **Empfehlungen zur Leistung** erläutert werden.
+> Azure SQL-Datenbank muss Aktivitäten mindestens einen Tag lang überwachen, um einige Empfehlungen aufstellen zu können. Der Azure SQL-Datenbank kann leichter für konsistente Abfragemuster optimiert werden als für zufällige, unregelmäßige Aktivitätsspitzen. Wenn gerade keine Empfehlungen verfügbar sind, wird der Grund dafür auf der Seite **Empfehlungen zur Leistung** erläutert.
 > 
 
 Außerdem können Sie hier die Verlaufsdaten der Vorgänge sehen. Wählen Sie eine Empfehlung oder einen Status aus, um weitere Details anzuzeigen.
@@ -72,8 +72,8 @@ Die Datenbank bleibt online, während die Empfehlung angewendet wird. Eine Empfe
 ### <a name="apply-an-individual-recommendation"></a>Anwenden einzelner Empfehlungen
 Sie können Empfehlungen nacheinander anzeigen und akzeptieren.
 
-1. Klicken Sie auf dem Blatt **Empfehlungen** auf eine Empfehlung.
-2. Klicken Sie auf dem Blatt **Details** auf **Anwenden**.
+1. Wählen Sie auf der Seite **Empfehlungen** eine Empfehlung aus.
+2. Klicken Sie auf der Seite **Details** auf **Anwenden**.
    
     ![Anwenden einer Empfehlung](./media/sql-database-advisor-portal/apply.png)
 
@@ -83,11 +83,11 @@ Die ausgewählte Empfehlung wird auf die Datenbank angewendet.
 Wenn die Liste der Empfehlungen Einträge enthält, die Sie aus der Liste entfernen möchten, können Sie die Empfehlung verwerfen:
 
 1. Wählen Sie in der Liste **Empfehlungen** eine Empfehlung aus, um die Details zu öffnen.
-2. Klicken Sie auf dem Blatt **Details** auf **Verwerfen**.
+2. Klicken Sie auf der Seite **Details** auf **Verwerfen**.
 
 Falls gewünscht, können Sie verworfene Einträge wieder zur Liste **Empfehlungen** hinzufügen:
 
-1. Klicken Sie auf dem Blatt **Empfehlungen** auf **Verworfene anzeigen**.
+1. Klicken Sie auf der Seite **Empfehlungen** auf **Verworfene anzeigen**.
 2. Wählen Sie einen verworfenen Eintrag aus der Liste, um dessen Details anzuzeigen.
 3. Klicken Sie optional auf **"Verwerfen" rückgängig machen**, um den Eintrag wieder der Hauptliste der **Empfehlungen** hinzuzufügen.
 
@@ -95,7 +95,7 @@ Falls gewünscht, können Sie verworfene Einträge wieder zur Liste **Empfehlung
 ### <a name="enable-automatic-tuning"></a>Aktivieren der automatischen Optimierung
 Sie können den Azure SQL-Datenbank so konfigurieren, dass Empfehlungen automatisch implementiert werden. Sobald Empfehlungen zur Verfügung stehen, werden sie automatisch angewendet. Wie bei allen vom Dienst verwalteten Empfehlungen wird eine Empfehlung rückgängig gemacht, wenn sie sich negativ auf die Leistung auswirkt.
 
-1. Klicken Sie auf dem Blatt **Empfehlungen** auf **Automatisieren**:
+1. Klicken Sie auf der Seite **Empfehlungen** auf **Automatisieren**:
    
     ![Ratgebereinstellungen](./media/sql-database-advisor-portal/settings.png)
 2. Zu automatisierende Aktionen auswählen:
@@ -110,7 +110,7 @@ Wählen Sie eine beliebige Empfehlung aus, und klicken Sie auf **Skript anzeigen
 ### <a name="canceling-recommendations"></a>Abbrechen von Empfehlungen
 Empfehlungen, die den Status **Ausstehend**, **Wird geprüft** oder **Erfolg** aufweisen, können abgebrochen werden. Empfehlungen mit dem Status **Wird ausgeführt** können nicht abgebrochen werden.
 
-1. Wählen Sie im Bereich **Optimierungsverlauf** eine Empfehlung aus, um das Blatt **Empfehlungsdetails** zu öffnen.
+1. Wählen Sie im Bereich **Optimierungsverlauf** eine Empfehlung aus, um die Seite **Empfehlungsdetails** zu öffnen.
 2. Klicken Sie auf **Abbrechen** , um den Vorgang zum Anwenden der Empfehlung abzubrechen.
 
 ## <a name="monitoring-operations"></a>Überwachen von Vorgängen
@@ -131,23 +131,23 @@ Klicken Sie auf eine in Bearbeitung befindliche Empfehlung in der Liste, um weit
 ![Empfohlene Indizes](./media/sql-database-advisor-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>Zurücksetzen einer Empfehlung
-Wenn Sie die Empfehlungen zur Leistung verwendet habe, um die Empfehlung anzuwenden (also nicht das T-SQL-Skript manuell ausgeführt haben), wird die Empfehlung automatisch rückgängig gemacht, wenn sie sich negativ auf die Leistung auswirkt. Wenn Sie aus irgendeinem Grund eine Empfehlung zurücksetzen möchten, können Sie Folgendes tun.
+Wenn Sie die Empfehlungen zur Leistung verwendet haben, um die Empfehlung anzuwenden (also nicht das T-SQL-Skript manuell ausgeführt haben), wird die Empfehlung automatisch rückgängig gemacht, wenn die Änderung sich negativ auf die Leistung auswirkt. Wenn Sie eine Empfehlung aus irgendeinem Grund einfach zurücksetzen möchten, können Sie folgendermaßen vorgehen:
 
 1. Wählen Sie eine erfolgreich angewendete Empfehlung im Bereich **Optimierungsverlauf** aus.
-2. Klicken Sie auf dem Blatt **Details zur Empfehlung** auf **Zurücksetzen**.
+2. Klicken Sie auf der Seite **Details zur Empfehlung** auf **Zurücksetzen**.
 
 ![Empfohlene Indizes](./media/sql-database-advisor-portal/details.png)
 
 ## <a name="monitoring-performance-impact-of-index-recommendations"></a>Überwachen der Auswirkung von Indexempfehlungen auf die Leistung
-Nachdem Empfehlungen erfolgreich implementiert wurden (zurzeit nur Indexvorgänge und Empfehlungen zum Parametrisieren von Abfragen), können Sie auf dem Blatt „Details zur Empfehlung“ auf **Details abfragen** klicken, um über [Query Performance Insight](sql-database-query-performance.md) die Statistik zur Abfrageleistung zu öffnen und die Auswirkung Ihrer häufigsten Abfragen auf die Leistung anzuzeigen.
+Nachdem Empfehlungen erfolgreich implementiert wurden (zurzeit nur Empfehlungen für Indexvorgänge und zum Parametrisieren von Abfragen), können Sie auf der Seite mit den Details zur Empfehlung auf **Details abfragen** klicken, um [Query Performance Insights](sql-database-query-performance.md) zu öffnen und die Auswirkungen Ihrer häufigsten Abfragen auf die Leistung anzuzeigen.
 
 ![Überwachen der Auswirkung auf die Leistung](./media/sql-database-advisor-portal/query-insights.png)
 
 ## <a name="summary"></a>Zusammenfassung
-Azure SQL-Datenbank bietet Empfehlungen zur Leistungsverbesserung für die SQL-Datenbank. Durch das Bereitstellen von T-SQL-Skripts sowie individueller und vollständig automatisierter Optionen, erhalten Sie wertvolle Unterstützung bei der Optimierung Ihrer Datenbank und damit Ihrer Abfrageleistung.
+Azure SQL-Datenbank bietet Empfehlungen zur Leistungsverbesserung für die SQL-Datenbank. Durch das Bereitstellen von T-SQL-Skripts erhalten Sie wertvolle Unterstützung bei der Optimierung Ihrer Datenbank und damit Ihrer Abfrageleistung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Überwachen Sie Ihre Empfehlungen, und wenden Sie sie weiterhin an, um die Leistung zu optimieren. Datenbankworkloads sind dynamisch und ändern sich ständig. Azure SQL-Datenbank setzt die Überwachung fort und bietet Empfehlungen, durch die die Leistung Ihrer Datenbank erhöht werden kann. 
+Überwachen Sie Ihre Empfehlungen, und wenden Sie sie weiterhin an, um die Leistung zu optimieren. Datenbankworkloads sind dynamisch und ändern sich ständig. Azure SQL-Datenbank setzt die Überwachung fort und bietet Empfehlungen, mit denen sich die Leistung Ihrer Datenbank verbessern lässt. 
 
 * Weitere Informationen zur automatischen Optimierung von Azure SQL-Datenbank finden Sie im Artikel zur [Automatischen Optimierung](sql-database-automatic-tuning.md).
 * Einen Überblick der Empfehlungen zur Leistung von Azure SQL-Datenbank finden Sie im Artikel zu [Empfehlungen zur Leistung](sql-database-advisor.md).

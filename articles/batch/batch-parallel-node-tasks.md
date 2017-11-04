@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15854aa0f2665f921f3435bc298737671f2e1a6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eae6359b5fb36bd0317391ce2330afb7dd7bfe3b
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Gleichzeitige Ausführung von Tasks zur optimalen Nutzung von Batch-Computeknoten 
 
@@ -124,16 +124,13 @@ Die zweite Ausführung des Beispiels zeigt eine deutliche Verringerung der Aufga
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
-### <a name="batch-explorer-heat-map"></a>Heat Map für Batch Explorer
-Der [Azure Batch Explorer][batch_explorer], eine der [Beispielanwendungen][github_samples] von Azure Batch, enthält ein *Heat Map*-Funktion, die die Aufgabenausführung veranschaulicht. Wenn Sie die [ParallelTasks][parallel_tasks_sample]-Beispielanwendung ausführen, können Sie die Heat Map-Funktion für eine einfache Visualisierung der Ausführung paralleler Aufgaben auf jedem Knoten verwenden.
+### <a name="batchlabs-heat-map"></a>BatchLabs-Wärmebild
+[BatchLabs][batch_labs] ist ein kostenloses eigenständiges Clienttool mit zahlreichen Features, das Sie beim Erstellen, Debuggen und Überwachen von Azure Batch-Anwendungen unterstützt. BatchLabs enthält ein *Wärmebild*-Feature, das die Visualisierung der Aufgabenausführung ermöglicht. Wenn Sie die [ParallelTasks][parallel_tasks_sample]-Beispielanwendung ausführen, können Sie die Heat Map-Funktion für eine einfache Visualisierung der Ausführung paralleler Aufgaben auf jedem Knoten verwenden.
 
-![Heat Map für Batch Explorer][1]
-
-*Heat Map von Batch-Explorer zeigt einen Pool mit vier Knoten, wobei jeder Knoten derzeit vier Aufgaben ausführt*
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
-[batch_explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
+[batch_labs]: https://azure.github.io/BatchLabs/
 [cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [enable_autoscaling]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 [fill_type]: https://msdn.microsoft.com/library/microsoft.azure.batch.common.computenodefilltype.aspx
@@ -144,4 +141,3 @@ Der [Azure Batch Explorer][batch_explorer], eine der [Beispielanwendungen][githu
 [poolcreate_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx
 [task_schedule]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudpool.taskschedulingpolicy.aspx
 
-[1]: ./media/batch-parallel-node-tasks\heat_map.png

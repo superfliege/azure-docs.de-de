@@ -63,6 +63,27 @@
       href: regions-and-availability.md
     - name: Arten und Größen von virtuellen Computern
       href: sizes.md
+      items:
+        - name: Allgemeiner Zweck
+          href: sizes-general.md
+          items:
+            - name: Burstable-Computer der B-Serie
+              href: b-series-burstable.md
+        - name: Computeoptimiert
+          href: sizes-compute.md
+        - name: Arbeitsspeicheroptimiert
+          href: sizes-memory.md
+        - name: Speicheroptimiert
+          href: sizes-storage.md
+        - name: GPU-optimiert
+          href: sizes-gpu.md
+          items:
+            - name: Einrichten von GPU-Treibern
+              href: n-series-driver-setup.md
+        - name: High Performance Computing
+          href: sizes-hpc.md
+        - name: Azure-Computeeinheiten (ACU)
+          href: sizes-general.md
     - name: Unterstützte Distributionen
       href: endorsed-distros.md
     - name: Wartung und Updates

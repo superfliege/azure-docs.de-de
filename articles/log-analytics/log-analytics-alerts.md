@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 10/13/2017
 ms.author: bwren
-ms.openlocfilehash: e03911d589aaab0d0e80da5d58f14d6df417f4be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee11f64484a66fad06b6536a18f9b3e239fa40d5
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>Grundlegendes zu Warnungen in Log Analytics
 
@@ -76,15 +76,18 @@ Es kann auch vorkommen, dass Sie eine Warnung erstellen möchten, ohne dass ein 
 
 Falls beispielsweise eine Warnung erfolgen soll, wenn der Prozessor zu mehr als 90 Prozent ausgelastet ist, können Sie eine Abfrage wie die folgende verwenden und dabei den Schwellenwert für die Warnungsregel auf **Größer als 0** festlegen:
 
-    Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
+    Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90
+
+    
 
 Falls eine Warnung erfolgen soll, wenn der Prozessor innerhalb eines bestimmten Zeitfensters im Schnitt zu mehr als 90 Prozent ausgelastet ist, können Sie wie im folgenden Beispiel eine Abfrage mit dem [measure-Befehl](log-analytics-search-reference.md#commands) verwenden und dabei den Schwellenwert für die Warnungsregel auf **Größer als 0** festlegen:
 
-    Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
+    Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90
 
+    
 >[!NOTE]
-> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden: `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90`
-> `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90`
+> Falls für Ihren Arbeitsbereich noch kein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden: `Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90`
+> `Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90`
 
 
 ## <a name="metric-measurement-alert-rules"></a>Warnungsregeln des Typs „Metrische Maßeinheit“
@@ -107,7 +110,7 @@ Der Schwellenwert für Warnungsregeln des Typs „Metrische Maßeinheit“ wird 
 #### <a name="example"></a>Beispiel
 Angenommen, Sie wünschen sich eine Warnung, wenn ein beliebiger Computer binnen 30 Minuten dreimal die Prozessornutzung von 90 % überschreitet.  Dazu erstellen Sie eine Warnungsregel mit den folgenden Details.  
 
-**Abfrage:** Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer Interval 5minute<br>
+**Abfrage:** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer<br>
 **Zeitfenster:** 30 Minuten<br>
 **Warnungshäufigkeit:** 5 Minuten<br>
 **Aggregatwert:** Größer als 90<br>

@@ -9,11 +9,9 @@
    
    * Klicken Sie auf der Seite **Voraussetzungen** auf **Weiter**.
    * Akzeptieren Sie auf der Seite **Auswählen des Installationstyps** die Standardeinstellung **Rollenbasierte oder featurebasierte Installation**. Klicken Sie auf **Weiter**.
-
      
        ![Hinzufügen von Rollen und Features – Assistent 2](./media/storsimple-install-mpio-windows-server/IC740999.png)
    * Wählen Sie auf der Seite **Zielserver auswählen** die Option **Einen Server aus Serverpool auswählen** aus. Ihr Hostserver sollte automatisch ermittelt werden. Klicken Sie auf **Weiter**.
-
    * Klicken Sie auf der Seite **Serverrollen auswählen** auf **Weiter**.
    * Wählen Sie auf der Seite **Auswählen von Features** die Option **Multipfad-E/A** aus, und klicken Sie dann auf **Weiter**.
      

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2017
+ms.date: 10/19/2017
 ms.author: dobett
-ms.openlocfilehash: 91b2e72b9cc5f7b52dde09fb837cbc994d52a26c
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: a038a46c98af5b434456e1bb979fc6cd8e009d76
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -31,8 +31,6 @@ Dieser Artikel beschreibt Folgendes:
 * Festlegen des Geltungsbereichs für Anmeldeinformationen zum Begrenzen des Zugriffs auf bestimmte Ressourcen.
 * IoT Hub-Unterstützung für X.509-Zertifikate.
 * Benutzerdefinierte Authentifizierungsmechanismen, die auf vorhandene Geräteidentitätsregistrierungen Authentifizierungsschemas zurückgreifen.
-
-### <a name="when-to-use"></a>Einsatzgebiete
 
 Sie müssen über Berechtigungen für den Zugriff auf IoT Hub-Endpunkte verfügen. Beispielsweise muss ein Gerät ein Token mit den Anmeldeinformationen zusammen mit jeder an IoT Hub gesendeten Nachricht enthalten.
 
@@ -193,6 +191,39 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     return 'SharedAccessSignature ' + urlencode(rawtoken)
 ```
 
+Die Funktion in C# zum Generieren eines Sicherheitstokens ist wie folgt:
+
+```C#
+using System;
+using System.Globalization;
+using System.Net;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
+
+public static string generateSasToken(string resourceUri, string key, string policyName, int expiryInSeconds = 3600)
+{
+    TimeSpan fromEpochStart = DateTime.UtcNow - new DateTime(1970, 1, 1);
+    string expiry = Convert.ToString((int)fromEpochStart.TotalSeconds + expiryInSeconds);
+
+    string stringToSign = WebUtility.UrlEncode(resourceUri).ToLower() + "\n" + expiry;
+
+    HMACSHA256 hmac = new HMACSHA256(Convert.FromBase64String(key));
+    string signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
+
+    string token = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}", WebUtility.UrlEncode(resourceUri).ToLower(), WebUtility.UrlEncode(signature), expiry);
+
+    if (!String.IsNullOrEmpty(policyName))
+    {
+        token += "&skn=" + policyName;
+    }
+
+    return token;
+}
+
+```
+
+
 > [!NOTE]
 > Da der Gültigkeitszeitraum des Tokens auf dem IoT Hub-Computer überprüft wird, muss die Abweichung der Uhr des Computers, auf dem das Token generiert wird, minimal sein.
 
@@ -210,7 +241,7 @@ Die geräteseitigen Endpunkte sind (unabhängig vom Protokoll):
 | Endpunkt | Funktionalität |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |Senden von Gerät-an-Cloud-Nachrichten. |
-| `{iot hub host name}/devices/{deviceId}/devicebound` |Empfangen von Cloud-an-Gerät-Nachrichten. |
+| `{iot hub host name}/devices/{deviceId}/messages/devicebound` |Empfangen von Cloud-an-Gerät-Nachrichten. |
 
 ### <a name="use-a-symmetric-key-in-the-identity-registry"></a>Verwenden eines symmetrischen Schlüssels in der Identitätsregistrierung
 
@@ -383,7 +414,7 @@ Damit ein Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie es d
 
 ### <a name="comparison-with-a-custom-gateway"></a>Vergleich mit einem benutzerdefinierten Gateway
 
-Das Tokendienstmuster ist der empfohlene Weg zur Implementierung einer benutzerdefinierten Identitätsregistrierung bzw. eines Authentifizierungsschemas mit IoT Hub. Dieses Muster wird empfohlen, da der größte Teil des Lösungsdatenverkehrs weiterhin über IoT Hub abgewickelt wird. Wenn das benutzerdefinierte Authentifizierungsschema allerdings so eng mit dem Protokoll verknüpft ist, muss der gesamte Datenverkehr unter Umständen durch ein *benutzerdefiniertes Gateway* verarbeitet werden. Ein Beispiel eines solchen Szenarios ist die Verwendung von [Transport Layer Security (TLS) und vorinstallierten Schlüsseln (PSKs)][lnk-tls-psk]. Weitere Informationen finden Sie im Thema [Protokollgateway][lnk-protocols].
+Das Tokendienstmuster ist der empfohlene Weg zur Implementierung einer benutzerdefinierten Identitätsregistrierung bzw. eines Authentifizierungsschemas mit IoT Hub. Dieses Muster wird empfohlen, da der größte Teil des Lösungsdatenverkehrs weiterhin über IoT Hub abgewickelt wird. Wenn das benutzerdefinierte Authentifizierungsschema allerdings so eng mit dem Protokoll verknüpft ist, muss der gesamte Datenverkehr unter Umständen durch ein *benutzerdefiniertes Gateway* verarbeitet werden. Ein Beispiel eines solchen Szenarios ist die Verwendung von [Transport Layer Security (TLS) und vorinstallierten Schlüsseln (PSKs)][lnk-tls-psk]. Weitere Informationen finden Sie im Artikel zum [Protokollgateway][lnk-protocols].
 
 ## <a name="reference-topics"></a>Referenzthemen:
 
@@ -412,13 +443,13 @@ Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie gelernt haben, wie Sie den Zugriff auf IoT Hub beschränken, sind möglicherweise die folgenden Themen im IoT Hub-Entwicklerhandbuch für Sie interessant:
+Nachdem Sie gelernt haben, wie Sie den Zugriff auf IoT Hub steuern, sind möglicherweise die folgenden Themen im IoT Hub-Entwicklerhandbuch für Sie interessant:
 
 * [Grundlegendes zu Gerätezwillingen – Vorschau][lnk-devguide-device-twins]
 * [Aufrufen einer direkten Methode auf einem Gerät][lnk-devguide-directmethods]
 * [Planen von Aufträgen auf mehreren Geräten][lnk-devguide-jobs]
 
-Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möchten, sind möglicherweise die folgenden IoT Hub-Tutorials für Sie interessant:
+Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möchten, sehen Sie sich die folgenden IoT Hub-Tutorials an:
 
 * [Erste Schritte mit Azure IoT Hub][lnk-getstarted-tutorial]
 * [Senden von Cloud-zu-Gerät-Nachrichten mit IoT Hub][lnk-c2d-tutorial]

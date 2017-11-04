@@ -1,5 +1,5 @@
 ---
-title: "Verwalten von Partnerlösungen in Azure Security Center | Microsoft Docs"
+title: "Verwalten von verbundenen Partnerlösungen in Azure Security Center | Microsoft-Dokumentation"
 description: "Dieses Dokument beschreibt, wie Sie mithilfe von Azure Security Center auf einen Blick den Integritätsstatus Ihrer Partnerlösungen prüfen können, die in Ihr Azure-Abonnement integriert sind."
 services: security-center
 documentationcenter: na
@@ -12,62 +12,61 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 10/16/2017
 ms.author: terrylan
-ms.openlocfilehash: 3ff38892f198ab5dfb9e08c1c01b942810a40260
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 181e1e00716987732ee809df6171c2f71087f3e1
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
-# <a name="monitoring-partner-solutions-with-azure-security-center"></a>Überwachen von Partnerlösungen mit Azure Security Center
-In diesem Dokument erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen in Azure Security Center überwacht wird.
-
-> [!NOTE]
-> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Dieses Dokument ist keine Schritt-für-Schritt-Anleitung.
->
->
+# <a name="managing-connected-partner-solutions-with-azure-security-center"></a>Verwalten von verbundenen Partnerlösungen in Azure Security Center
+Dieser Artikel führt Sie durch die Schritte zum Verwalten und Überwachen von verbundenen Sicherheitslösungen in Azure Security Center.
 
 ## <a name="monitoring-partner-solutions"></a>Überwachen von Partnerlösungen
-Auf der Kachel **Sicherheitslösungen** können Sie unter **Übersicht** auf einen Blick den Integritätsstatus Ihrer Partnerlösungen prüfen, die in Ihr Azure-Abonnement integriert sind.
+So überwachen Sie den Integritätsstatus von verbundenen Sicherheitslösungen und führen die grundlegende Verwaltung durch:
 
-![Kachel „Partnerlösungen“][1]
+1. Wählen Sie unter **Security Center – Übersicht** die Option **Sicherheitslösungen**.
 
-So zeigen der Integrität Ihrer Partnerlösungen an:
+  ![Auswählen von „Sicherheitslösungen“][1]
 
-1. Wählen Sie die Kachel **Sicherheitslösungen** aus. **Sicherheitslösungen** wird mit einer Liste der Partnerlösungen geöffnet, die mit Security Center verbunden sind.
+  Der Abschnitt **Verbunde Lösungen** enthält Sicherheitslösungen, die mit Security Center verbunden sind, sowie Informationen zum Integritätsstatus der einzelnen Lösungen.
 
-   ![Partnerlösungen][3]
+  ![Partnerlösungen][2]
 
    Eine Partnerlösung kann den folgenden Status aufweisen:
 
-   * Geschützt (grün): Es liegt kein Integritätsproblem vor.
+   * Fehlerfrei (grün): Es liegt kein Integritätsproblem vor.
    * Fehlerhaft (rot): Es liegt ein Integritätsproblem vor, das sofort untersucht werden muss.
-   * Melden beendet (orange): Die Lösung hat das Melden der Integrität beendet.
-   * Unbekannter Schutzstatus (orange): Der Integritätsstatus der Lösung ist derzeit unbekannt, da beim Hinzufügen einer neuen Ressource zur vorhandenen Lösung ein Fehler aufgetreten ist.
-   * Nicht gemeldet (grau): Die Lösung hat noch keine Meldung berichtet. Der Status einer Lösung kann unter Umständen noch nicht gemeldet worden sein, wenn die Verbindung kürzlich hergestellt wurde und die Bereitstellung noch nicht abgeschlossen ist.
+   * Integritätsprobleme (orange): Die Lösung hat das Melden der Integrität beendet.
+   * Nicht gemeldet (grau): Die Lösung hat noch nichts berichtet. Der Status einer Lösung kann unter Umständen noch nicht gemeldet worden sein, wenn die Verbindung kürzlich hergestellt wurde und die Bereitstellung noch nicht abgeschlossen ist, oder es sind keine Integritätsdaten verfügbar.
 
-2. Wählen Sie eine Partnerlösung aus. Auf einem Blatt werden der Status der Partnerlösung und die zugeordneten Ressourcen der Lösung angezeigt. Wählen Sie die Option **Lösungskonsole** , um die Verwaltungsoberfläche des Partners für diese Lösung zu öffnen.
+   > [!NOTE]
+   > Wenn keine Integritätsstatusdaten verfügbar sind, zeigt Security Center das Datum und die Uhrzeit des letzten empfangenen Ereignisses an, um anzugeben, ob die Lösung Berichte übermittelt. Wenn keine Integritätsdaten verfügbar sind und innerhalb der letzten 14 Tage keine Warnungen empfangen wurden, gibt Security Center an, dass die Lösung fehlerhaft ist oder nicht berichtet.
+   >
+   >
 
-   ![Details der Partnerlösung][4]
-3. Wechseln Sie zurück zum Blatt **Qualys**, und wählen Sie **Virtuellen Computer verknüpfen** aus. Das Blatt **Anwendungen verknüpfen** wird geöffnet. Hier können Sie Ressourcen mit der Partnerlösung verknüpfen.
+2. Wählen Sie **ANSICHT**, um zusätzliche Informationen und Optionen anzuzeigen, darunter:
 
-   ![Verknüpfen Sie Ressourcen mit Partnerlösungen][5]
+  - **Lösungskonsole**. Öffnet die Verwaltungsoberfläche für diese Lösung.
+  - **Virtuellen Computer verknüpfen**. Öffnet das Blatt „Anwendungen verknüpfen“. Hier können Sie Ressourcen mit der Partnerlösung verknüpfen.
+  - **Lösung löschen**.
+  - **Konfigurieren**.
+
+   ![Details der Partnerlösung][3]
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument wurde die Kachel **Sicherheitslösungen** in Security Center vorgestellt. Unter [Partner- und Lösungsintegration](security-center-partner-integration.md) erfahren Sie mehr zur Integration mit Partnern zum Verbessern der allgemeinen Sicherheit.
+In diesem Artikel haben Sie gelernt, verbundene Sicherheitslösungen in Security Center zu verwalten und zu überwachen. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:
-
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-* [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
-* [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) : Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) : Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-* [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
+* [Integrieren von Sicherheitslösungen in Azure Security Center](security-center-partner-integration.md) – erfahren Sie, wie Sie eine Verbindung mit Sicherheitslösungen herstellen und sie verwalten.
+* [Verbinden von Microsoft Advanced Threat Analytics mit Azure Security Center](security-center-ata-integration.md) – erfahren Sie, wie Sie eine Verbindung mit Warnungen von ATA herstellen.
+* [Verbinden von Azure Active Directory Identity Protection mit Azure Security Center](security-center-aadip-integration.md) – erfahren Sie, wie Sie eine Verbindung mit Warnungen von Azure AD Identity Protection herstellen.
+* [Integrieren von Sicherheitslösungen in Azure Security Center](security-center-partner-integration.md) – verschaffen Sie sich einen Überblick über die Integration anderer Sicherheitslösungen.
+* [Verwalten von und Reagieren auf Sicherheitswarnungen:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+* [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+* [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
 
 <!--Image references-->
 [1]: ./media/security-center-partner-solutions/partner-solutions-tile.png
-[3]: ./media/security-center-partner-solutions/partner-solutions.png
-[4]: ./media/security-center-partner-solutions/partner-solutions-detail.png
-[5]: ./media/security-center-partner-solutions/link-applications.png
+[2]: ./media/security-center-partner-solutions/partner-solutions.png
+[3]: ./media/security-center-partner-solutions/partner-solutions-detail.png

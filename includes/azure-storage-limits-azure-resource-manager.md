@@ -1,4 +1,4 @@
-Die folgenden Grenzwerte gelten nur bei Verwendung des Azure-Ressourcen-Managers und von Azure-Ressourcengruppen.
+Die folgenden Limits gelten nur, wenn Verwaltungsvorgänge mithilfe von Azure Resource Manager ausgeführt werden.
 
 | Ressource | Standardlimit |
 | --- | --- |

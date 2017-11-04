@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 1ba4d68ba93073ebe3516c4fe886c7845080c534
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04d660d5fdd878788c09e46b078b2e2b043b7dbb
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="durable-functions-overview-azure-functions"></a>Übersicht zu Durable Functions (Azure Functions)
 
@@ -130,7 +130,7 @@ Content-Type: application/json
 
 Da der Status von der Durable Functions-Laufzeit verwaltet wird, müssen Sie keinen eigenen Mechanismus zur Statusnachverfolgung implementieren.
 
-Obwohl die Erweiterung Durable Functions über integrierte Webhooks zur Verwaltung lange ausgeführter Orchestrierungen verfügt, können Sie dieses Muster unter Verwendung Ihrer eigenen Funktionstrigger (z.B. HTTP, Warteschlange oder Event Hub) und der `orchestrationClient`-Bindung selbst implementieren.
+Obwohl die Erweiterung Durable Functions über integrierte Webhooks zur Verwaltung lange ausgeführter Orchestrierungen verfügt, können Sie dieses Muster unter Verwendung Ihrer eigenen Funktionstrigger (z.B. HTTP, Warteschlange oder Event Hub) und der `orchestrationClient`-Bindung selbst implementieren. Sie können z. B. eine Warteschlangennachricht verwenden, um die Beendigung auszulösen.  Sie könnten auch anstelle der integrierten Webhooks, die einen generierten Schlüssel für die Authentifizierung verwenden, einen HTTP-Trigger verwenden, der durch eine Azure Active Directory-Authentifizierungsrichtlinie geschützt ist. 
 
 ```cs
 // HTTP-triggered function to start a new orchestrator function instance.
@@ -161,7 +161,7 @@ Das folgende Diagramm veranschaulicht eine Funktion, die während der Verarbeitu
 
 ![Diagramm eines zustandsbehafteten Singletons](media/durable-functions-overview/stateful-singleton.png)
 
-Durable Functions ist zwar keine Implementierung des Akteurmodells, aber Orchestratorfunktionen weisen viele ähnliche Laufzeiteigenschaften auf. Beispielsweise werden sie lange (möglicherweise endlos) ausgeführt, sind zustandsbehaftet, zuverlässig, Singlethreadfunktionen, haben einen transparenten Speicherort und sind global adressierbar. Dies qualifiziert Orchestratorfunktionen ohne die Notwendigkeit eines separaten Frameworks für „Akteur“-ähnliche Szenarien.
+Durable Functions ist zwar keine Implementierung des Akteurmodells, aber Orchestratorfunktionen weisen viele ähnliche Laufzeiteigenschaften auf. Beispielsweise werden sie lange (möglicherweise endlos) ausgeführt, sind zustandsbehaftet, zuverlässig, Singlethreadfunktionen, haben einen transparenten Speicherort und sind global adressierbar. Dies qualifiziert Orchestratorfunktionen für „Akteur“-ähnliche Szenarien.
 
 Gewöhnliche Funktionen sind zustandslos und daher nicht zum Implementieren eines zustandsbehafteten Singletonmusters geeignet. Jedenfalls vereinfacht die Erweiterung Durable Functions die Implementierung des statusbehafteten Singletonmusters enorm. Der folgende Code ist eine einfache Orchestratorfunktion, die einen Leistungsindikator implementiert.
 

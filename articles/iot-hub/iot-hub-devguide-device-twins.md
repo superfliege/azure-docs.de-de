@@ -12,24 +12,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 10/19/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 454eb7b1f4f48e8a2a78bd3fcb6eb03b6097d44d
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: afadedf72562452e4d57d4545efe59cd8d37c907
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
-## <a name="overview"></a>Übersicht
-*Gerätezwillinge* sind JSON-Dokumente, in denen Gerätestatusinformationen (Metadaten, Konfigurationen und Bedingungen) gespeichert werden. IoT Hub speichert einen Gerätezwilling für jedes Gerät, das Sie mit IoT Hub verbinden. Dieser Artikel beschreibt Folgendes:
 
-* Die Struktur des Gerätezwillings (*Tags*, *gewünschte Eigenschaften* und *gemeldete Eigenschaften*)
+*Gerätezwillinge* sind JSON-Dokumente, in denen Gerätestatusinformationen gespeichert werden, einschließlich Metadaten, Konfigurationen und Bedingungen. Azure IoT Hub pflegt einen Gerätezwilling für jedes Gerät, das Sie mit IoT Hub verbinden. Dieser Artikel beschreibt Folgendes:
+
+* Die Struktur des Gerätezwillings: *Tags*, *gewünschte Eigenschaften* und *gemeldete Eigenschaften*.
 * Die Vorgänge, die Geräte-Apps und Back-Ends auf Gerätezwillingen ausführen können
 
-
-### <a name="when-to-use"></a>Einsatzgebiete
 Verwenden Sie Gerätezwillinge für Folgendes:
 
 * Speichern gerätespezifischer Metadaten in der Cloud – beispielsweise den Aufstellungsort eines Automaten.
@@ -46,13 +44,13 @@ Auf Gerätezwillingen werden gerätespezifische Informationen gespeichert, auf d
 * Geräte und Back-Ends können mit ihnen Gerätezustände und -konfigurationen synchronisieren.
 * Das Lösungs-Back-End kann mit ihnen lang andauernde Vorgänge abfragen und als Ziel verwenden.
 
-Der Lebenszyklus eines Gerätezwillings ist mit der entsprechenden [Geräteidentität][lnk-identity] verknüpft. Gerätezwillinge werden implizit erstellt und gelöscht, wenn in IoT Hub eine Geräteidentität neu erstellt oder gelöscht wird.
+Der Lebenszyklus eines Gerätezwillings ist mit der entsprechenden [Geräteidentität][lnk-identity] verknüpft. Gerätezwillinge werden implizit erstellt und gelöscht, wenn in IoT Hub eine Geräteidentität erstellt oder gelöscht wird.
 
 Ein Gerätezwilling ist ein JSON-Dokument, das Folgendes enthält:
 
 * **Tags:** Ein Abschnitt des JSON-Dokuments, in dem das Lösungs-Back-End Lese- und Schreibvorgänge ausführen kann. Tags sind für Geräte-Apps nicht sichtbar.
-* **Gewünschte Eigenschaften:** Werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Gerätekonfigurationen oder -zuständen verwendet. Gewünschte Eigenschaften können nur vom Lösungs-Back-End festgelegt und von der Geräte-App gelesen werden. Die Geräte-App kann auch in Echtzeit über Änderungen an den gewünschten Eigenschaften benachrichtigt werden.
-* **Gemeldete Eigenschaften:** Werden in Verbindung mit gewünschten Eigenschaften zum Synchronisieren von Gerätekonfigurationen oder -zuständen verwendet. Gemeldete Eigenschaften können nur von der Geräte-App festgelegt und vom Lösungs-Back-End gelesen und abgefragt werden.
+* **Gewünschte Eigenschaften:** Werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Gerätekonfigurationen oder -zuständen verwendet. Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die von der Geräte-App gelesen werden können. Die Geräte-App kann auch Benachrichtigungen über Änderungen an den gewünschten Eigenschaften erhalten.
+* **Gemeldete Eigenschaften** Werden in Verbindung mit gewünschten Eigenschaften zum Synchronisieren von Gerätekonfigurationen oder -zuständen verwendet. Die Geräte-App kann gemeldete Eigenschaften festlegen, die vom Lösungs-Back-End gelesen und abgefragt werden können.
 
 Darüber hinaus enthält der Stamm des JSON-Dokuments für einen Gerätezwilling die schreibgeschützten Eigenschaften der zugehörigen Geräteidentität aus der [Identitätsregistrierung][lnk-identity].
 
@@ -140,8 +138,8 @@ Mithilfe von Zwillingen können Sie Vorgänge mit langer Ausführungsdauer (beis
 ## <a name="back-end-operations"></a>Back-End-Vorgänge
 Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über HTTPS verfügbar gemacht werden, auf den Gerätezwilling zu:
 
-1. **Abrufen des Gerätezwillings mittels ID**. Dieser Vorgang gibt das Dokument für den Gerätezwilling zurück – einschließlich Tags und gewünschter Eigenschaften, gemeldeter Eigenschaften und Systemeigenschaften.
-2. **Partielles Aktualisieren des Gerätezwillings**. Dieser Vorgang ermöglicht es dem Lösungs-Back-End, die Tags oder gewünschten Eigenschaften in einem Gerätezwilling teilweise zu aktualisieren. Bei der partiellen Aktualisierung handelt es sich um ein JSON-Dokument, das eine beliebige Eigenschaft hinzufügt oder aktualisiert. Auf `null` festgelegte Eigenschaften werden entfernt. Im folgenden Beispiel wird eine neue gewünschte Eigenschaft mit dem Wert `{"newProperty": "newValue"}` erstellt, der vorhandene Wert von `existingProperty` wird mit `"otherNewValue"` überschrieben, und `otherOldProperty` wird entfernt. Ansonsten werden an vorhandenen Eigenschaften oder Tags keine weiteren Änderungen vorgenommen:
+* **Abrufen des Gerätezwillings mittels ID**. Dieser Vorgang gibt das Dokument für den Gerätezwilling zurück – einschließlich Tags sowie gewünschter und gemeldeter Systemeigenschaften.
+* **Partielles Aktualisieren des Gerätezwillings**. Dieser Vorgang ermöglicht es dem Lösungs-Back-End, die Tags oder gewünschten Eigenschaften in einem Gerätezwilling teilweise zu aktualisieren. Bei der partiellen Aktualisierung handelt es sich um ein JSON-Dokument, das eine beliebige Eigenschaft hinzufügt oder aktualisiert. Auf `null` festgelegte Eigenschaften werden entfernt. Im folgenden Beispiel wird eine neue gewünschte Eigenschaft mit dem Wert `{"newProperty": "newValue"}` erstellt, der vorhandene Wert von `existingProperty` wird mit `"otherNewValue"` überschrieben, und `otherOldProperty` wird entfernt. Ansonsten werden an vorhandenen Eigenschaften oder Tags keine weiteren Änderungen vorgenommen:
    
         {
             "properties": {
@@ -154,9 +152,9 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
                 }
             }
         }
-3. **Ersetzen gewünschter Eigenschaften**. Dieser Vorgang ermöglicht dem Lösungs-Back-End, alle vorhandenen gewünschten Eigenschaften vollständig zu überschreiben und ein neues JSON-Dokument für `properties/desired` bereitzustellen.
-4. **Ersetzen von Tags**. Dieser Vorgang ermöglicht es dem Lösungs-Back-End, alle vorhandenen Tags vollständig zu überschreiben und ein neues JSON-Dokument für `tags` bereitzustellen.
-5. **Zwillingsbenachrichtigungen empfangen**. Mit diesem Vorgang kann das Lösungs-Back-End benachrichtigt werden, wenn der Zwilling geändert wird. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen die Datenquelle auf *twinChangeEvents* festlegen. Standardmäßig werden keine Zwillingsbenachrichtigungen gesendet, und es existieren noch keine solchen Routen. Wenn die Änderungsrate zu hoch ist, oder andere Gründe wie z.B. interne Fehler vorliegen, sendet der IoT Hub möglicherweise nur eine Benachrichtigung, die alle Änderungen enthält. Wenn Ihre Anwendung zuverlässige Prüfungen und Protokolle aller Zwischenzustände benötigt, empfehlen wir Ihnen, D2C-Nachrichten zu verwenden. Die Zwillingsbenachrichtung umfasst Eigenschaften und einen Textkörper.
+* **Ersetzen gewünschter Eigenschaften**. Dieser Vorgang ermöglicht dem Lösungs-Back-End, alle vorhandenen gewünschten Eigenschaften vollständig zu überschreiben und ein neues JSON-Dokument für `properties/desired` bereitzustellen.
+* **Ersetzen von Tags**. Dieser Vorgang ermöglicht es dem Lösungs-Back-End, alle vorhandenen Tags vollständig zu überschreiben und ein neues JSON-Dokument für `tags` bereitzustellen.
+* **Zwillingsbenachrichtigungen empfangen**. Mit diesem Vorgang kann das Lösungs-Back-End benachrichtigt werden, wenn der Zwilling geändert wird. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen die Datenquelle auf *twinChangeEvents* festlegen. Standardmäßig werden keine Zwillingsbenachrichtigungen gesendet, und es existieren noch keine solchen Routen. Wenn die Änderungsrate zu hoch ist, oder andere Gründe wie interne Fehler vorliegen, sendet der IoT Hub möglicherweise nur eine Benachrichtigung, die alle Änderungen enthält. Wenn Ihre Anwendung zuverlässige Prüfungen und Protokolle aller Zwischenzustände benötigt, empfehlen wir Ihnen, D2C-Nachrichten zu verwenden. Die Zwillingsbenachrichtung umfasst Eigenschaften und einen Textkörper.
 
     - Eigenschaften
 
@@ -197,7 +195,7 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
     ``` 
 
 Alle oben genannten Vorgänge unterstützen [optimistische Parallelität][lnk-concurrency] und erfordern die Berechtigung **ServiceConnect**, wie im Artikel [Sicherheit][lnk-security] definiert.
-
+ 
 Neben diesen Vorgängen kann das Lösungs-Back-End auch folgende Aktionen ausführen:
 
 * Abfragen der Gerätezwillinge mithilfe der SQL-ähnlichen [IoT Hub-Abfragesprache][lnk-query]
@@ -206,23 +204,19 @@ Neben diesen Vorgängen kann das Lösungs-Back-End auch folgende Aktionen ausfü
 ## <a name="device-operations"></a>Gerätevorgänge
 Die Geräte-App greift mithilfe folgender atomarer Vorgänge auf den Gerätezwilling zu:
 
-1. **Abrufen des Gerätezwillings**. Dieser Vorgang gibt das Dokument für den Gerätezwilling für das derzeit verbundene Gerät zurück – einschließlich Tags und gewünschter Eigenschaften, gemeldeter Eigenschaften und Systemeigenschaften.
-2. **Teilweises Aktualisieren gemeldeter Eigenschaften**. Dieser Vorgang ermöglicht die teilweise Aktualisierung der gemeldeten Eigenschaften des derzeit verbundenen Geräts. Dabei wird das gleiche JSON-Updateformat wie bei der partiellen Aktualisierung der gewünschten Eigenschaften durch das Lösungs-Back-End verwendet.
-3. **Beobachten gewünschter Eigenschaften**. Das derzeit verbundene Gerät kann benachrichtigt werden, sobald die gewünschten Eigenschaften aktualisiert werden. Das Gerät erhält die gleiche Form der Aktualisierung (partielle oder vollständige Ersetzung), die durch das Lösungs-Back-End ausgeführt wird.
+* **Abrufen des Gerätezwillings**. Dieser Vorgang gibt das Dokument für den Gerätezwilling für das derzeit verbundene Gerät zurück, einschließlich Tags sowie gewünschter und gemeldeter Systemeigenschaften.
+* **Teilweises Aktualisieren gemeldeter Eigenschaften**. Dieser Vorgang ermöglicht die teilweise Aktualisierung der gemeldeten Eigenschaften des derzeit verbundenen Geräts. Dabei wird das gleiche JSON-Updateformat wie bei der partiellen Aktualisierung der gewünschten Eigenschaften durch das Lösungs-Back-End verwendet.
+* **Beobachten gewünschter Eigenschaften**. Das derzeit verbundene Gerät kann benachrichtigt werden, sobald die gewünschten Eigenschaften aktualisiert werden. Das Gerät erhält die gleiche Form der Aktualisierung (partielle oder vollständige Ersetzung), die durch das Lösungs-Back-End ausgeführt wird.
 
 Alle oben genannten Vorgänge erfordern die Berechtigung **DeviceConnect**, wie im Artikel [Sicherheit][lnk-security] definiert.
 
 Die [Azure IoT-Geräte-SDKs][lnk-sdks] vereinfachen die Verwendung der oben genannten Vorgänge mit vielen Sprachen und Plattformen. Weitere Informationen zu den Details der IoT Hub-Grundtypen für die Synchronisierung gewünschter Eigenschaften finden Sie im [Ablauf zur Wiederherstellung der Geräteverbindung][lnk-reconnection].
 
-
-## <a name="reference-topics"></a>Referenzthemen:
-Die folgenden Referenzthemen enthalten weitere Informationen zum Steuern des Zugriffs auf Ihren IoT Hub.
-
 ## <a name="tags-and-properties-format"></a>Format von Tags und Eigenschaften
-Tags, gewünschte und gemeldete Eigenschaften sind JSON-Objekte mit den folgenden Einschränkungen:
+Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mit den folgenden Einschränkungen:
 
 * Alle Schlüssel in JSON-Objekten sind UTF-8 UNICODE-Zeichenfolgen mit 64 Bytes, bei denen die Groß- und Kleinschreibung berücksichtigt werden muss. UNICODE-Steuerzeichen (Segmente C0 und C1) sowie `'.'`, `' '` und `'$'` gehören nicht zu den zulässigen Zeichen.
-* Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays sind nicht zulässig.
+* Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays sind nicht zulässig. Der maximale Wert für ganze Zahlen ist 4503599627370495 und der minimale Wert für ganze Zahlen ist -4503599627370496.
 * Alle JSON-Objekte in Tags, gewünschten und gemeldeten Eigenschaften können eine maximale Tiefe von 5 haben. Das folgende Objekt ist z.B. gültig:
 
         {
@@ -243,11 +237,11 @@ Tags, gewünschte und gemeldete Eigenschaften sind JSON-Objekte mit den folgende
             ...
         }
 
-* Alle Zeichenfolgenwerte können höchstens 512Byte lang sein.
+* Alle Zeichenfolgenwerte können höchstens 4 KB lang sein.
 
 ## <a name="device-twin-size"></a>Größe des Gerätezwillings
-IoT Hub erzwingt eine Größenbegrenzung von 8 KB für die Werte von `tags`, `properties/desired` und `properties/reported`, ausgenommen schreibgeschützte Elemente.
-Die Größe wird durch Zusammenzählen aller Zeichen mit Ausnahme von UNICODE-Steuerzeichen (Segmente C0 und C1) und Leerzeichen `' '` außerhalb einer Zeichenfolgenkonstante berechnet.
+IoT Hub erzwingt eine Größenbegrenzung von 8 KB für die Gesamtwerte von `tags`, `properties/desired` und `properties/reported`, ausgenommen schreibgeschützte Elemente.
+Die Größe wird durch Zusammenzählen aller Zeichen mit Ausnahme von UNICODE-Steuerzeichen (Segmente C0 und C1) und Leerzeichen außerhalb von Zeichenfolgenkonstanten berechnet.
 IoT Hub gibt für alle Vorgänge, die die Größe dieser Dokumente über den Grenzwert hinaus erhöhen würden, einen Fehler zurück.
 
 ## <a name="device-twin-metadata"></a>Metadaten des Gerätezwillings

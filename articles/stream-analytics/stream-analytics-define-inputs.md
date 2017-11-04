@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/05/2017
 ms.author: samacha
-ms.openlocfilehash: f5a605e0b0809c27feedc98390175fd383a371eb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 652137cf7a41f8d90a56aebe9f82fd37d5e4683d
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Datenverbindung: Erfahren Sie mehr über Datenstromeingaben aus Ereignissen in Stream Analytics
 Bei der Datenverbindung mit einem Stream Analytics-Auftrag handelt es sich um einen Datenstrom von Ereignissen aus einer Datenquelle, die als *Eingabe* des Auftrags bezeichnet wird. Stream Analytics bietet eine hervorragende Integration in Datenstromquellen von Azure wie [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) und [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/). Diese Eingabequellen können aus demselben Azure-Abonnement wie dem Ihres Analyseauftrags oder aus einem anderen Abonnement stammen.
@@ -37,7 +37,7 @@ Informationen zum Erstellen von Verweisdateneingaben finden Sie unter [Verwenden
 
 ## <a name="compression"></a>Komprimierung
 
-Azure Stream Analytics wird in Kürze eine Komprimierungsfunktion für alle Datenstrom-Eingabequellen (Event Hubs, IoT Hub und Blob Storage) bereitstellen. Bei dieser Funktion wird im Azure-Portal auf dem Blatt **Neue Eingabe** eine neue Dropdownoption hinzugefügt, über die Sie optional die Komprimierung von Datenströmen auswählen können. Zu den unterstützten Komprimierungstypen zählen zurzeit „Keine“, „GZip“ und „Deflate“. 
+Azure Stream Analytics unterstützt die Komprimierung für alle Datenstrom-Eingabequellen (Event Hubs, IoT Hub und Blob Storage). Bei dieser Funktion wird im Azure-Portal auf dem Blatt **Neue Eingabe** eine neue Dropdownoption hinzugefügt, über die Sie optional die Komprimierung von Datenströmen auswählen können. Zu den unterstützten Komprimierungstypen zählen zurzeit „Keine“, „GZip“ und „Deflate“. 
 
 Komprimierungen werden nicht parallel zur Avro-Serialisierung unterstützt und sind nicht auf Verweisdaten anwendbar. 
 
@@ -81,6 +81,10 @@ SELECT
     PartitionId
 FROM Input
 ````
+
+> [!NOTE]
+> Bei Verwendung von Event Hub als Endpunkt für IoT Hub-Routen können Sie mithilfe der [GetMetadataPropertyValue-Funktion](https://msdn.microsoft.com/en-us/library/azure/mt793845.aspx) auf die IoT Hub-Metadaten zugreifen.
+> 
 
 ## <a name="create-data-stream-input-from-iot-hub"></a>Erstellen einer Datenstromeingabe aus IoT Hub
 Azure IoT Hub ist ein hochgradig skalierbares Erfassungsmodul für das Veröffentlichen und Abonnieren von Ereignissen, das für IoT-Szenarien optimiert ist.

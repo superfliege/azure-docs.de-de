@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
-ms.openlocfilehash: 9eacb57b5a00ff11739695ed3311be0c638ba25f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22e4d491bfb9e61294ccdaaa36abbf38b9b662ac
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell"></a>Features und Tools für PowerShell in Azure Cloud Shell
 
@@ -91,7 +91,7 @@ Diese Befehle basieren auf dem PowerShell-Remoting und erfordern die PowerShell-
 
 |**Kategorie**    |**Name**                                 |
 |----------------|-----------------------------------------|
-|Azure-Tools     |[Azure PowerShell (4.3.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1) |
+|Azure-Tools     |[Azure PowerShell (4.4.0)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.0)<br> [Azure-Befehlszeilenschnittstelle (2.0.18)](https://docs.microsoft.com/en-us/cli/azure/overview)|
 |Text-Editoren    |Vim<br> Nano                             |
 |Paket-Manager |PowerShellGet<br> PackageManagement<br> npm<br> pip |
 |Quellcodeverwaltung  |Git                                      |
@@ -109,5 +109,6 @@ Diese Befehle basieren auf dem PowerShell-Remoting und erfordern die PowerShell-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Schnellstart mit PowerShell in Cloud Shell](quickstart-powershell.md) <br>
+[Schnellstart mit PowerShell in Cloud Shell](quickstart-powershell.md)
+
 [Informationen zu Azure PowerShell](https://docs.microsoft.com/powershell/azure/)

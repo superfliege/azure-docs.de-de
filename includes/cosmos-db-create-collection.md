@@ -1,18 +1,23 @@
 Sie können nun mithilfe des Daten-Explorer-Tools im Azure-Portal eine Datenbank und eine Sammlung erstellen. 
 
-1. Klicken Sie im Azure-Portal im linken Navigationsmenü auf **Daten-Explorer (Vorschau)**. 
+1. Klicken Sie auf **Daten-Explorer** > **Neue Sammlung**. 
+    
+    Der Bereich **Sammlung hinzufügen** wird ganz rechts angezeigt. Möglicherweise müssen Sie nach rechts scrollen, damit Sie ihn sehen.
 
-2. Klicken Sie auf dem Blatt **Daten-Explorer (Vorschau)** auf **Neue Sammlung**, und geben Sie dann die folgenden Informationen an:
+    ![Daten-Explorer im Azure-Portal, Blatt „Sammlung hinzufügen“](./media/cosmos-db-create-collection/azure-cosmosdb-data-explorer.png)
 
-    ![Blatt „Daten-Explorer“ im Azure-Portal](./media/cosmos-db-create-collection/azure-cosmosdb-data-explorer.png)
+2. Geben Sie auf der Seite **Sammlung hinzufügen** die Einstellungen für die neue Sammlung ein.
 
     Einstellung|Empfohlener Wert|Beschreibung
     ---|---|---
-    Datenbank-ID|Aufgaben|Der Name Ihrer neuen Datenbank. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder /, \\, #, ? noch nachgestellte Leerzeichen enthalten.
-    Sammlungs-ID|Items|Der Name Ihrer neuen Sammlung. Für Sammlungsnamen gelten dieselben Zeichenanforderungen wie bei Datenbank-IDs.
-    Speicherkapazität| Fixed (10 GB)|Verwenden Sie den Standardwert. Dieser Wert gibt die Speicherkapazität der Datenbank an.
-    Durchsatz|400 RU|Verwenden Sie den Standardwert. Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten.
-    Partitionsschlüssel|/category|Ein Partitionsschlüssel, der Daten gleichmäßig auf alle Partitionen verteilt. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung einer leistungsfähigen Sammlung. Weitere Informationen finden Sie unter [Entwerfen für Partitionierung](../articles/cosmos-db/partition-data.md#designing-for-partitioning).    
-3. Klicken Sie nach dem Ausfüllen des Formulars auf **OK**.
+    Datenbank-ID|Aufgaben|Geben Sie *Tasks* als Namen für die neue Datenbank ein. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder /, \\, #, ? noch nachgestellte Leerzeichen enthalten.
+    Sammlungs-ID|Items|Geben Sie *Items* als Namen für die neue Sammlung ein. Für Sammlungs-IDs gelten dieselben Zeichenanforderungen wie für Datenbanknamen.
+    Speicherkapazität| Fixed (10 GB)|Ändern Sie den Wert in **Fest (10 GB)**. Dieser Wert gibt die Speicherkapazität der Datenbank an.
+    Durchsatz|400 RU|Ändern Sie den Durchsatz in 400 Anforderungseinheiten pro Sekunde (RU/s). Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten.
+    Partitionsschlüssel|/category|Ein Partitionsschlüssel, der Daten gleichmäßig auf alle Partitionen verteilt. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung einer leistungsfähigen Sammlung. Weitere Informationen finden Sie unter [Entwerfen für Partitionierung](../articles/cosmos-db/partition-data.md#designing-for-partitioning).
 
-Im Daten-Explorer werden die neue Datenbank und die neue Sammlung angezeigt. 
+    Klicken Sie auf **OK**.
+
+    Im Daten-Explorer werden die neue Datenbank und die neue Sammlung angezeigt.
+
+    ![Daten-Explorer mit der neuen Datenbank und der neuen Sammlung](./media/cosmos-db-create-collection/azure-cosmos-db-new-collection.png)

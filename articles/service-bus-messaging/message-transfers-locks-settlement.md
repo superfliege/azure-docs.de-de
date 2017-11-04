@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: sethm
-ms.openlocfilehash: a4d14aef8d24f1754db6370505e3f5f8e54d0278
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: edb6e207852fa59d5828906c891693f367739c9c
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Nachrichtenübertragungen, Sperren und Abgleich
 
@@ -25,7 +25,7 @@ Die wichtigste Funktion eines Nachrichtenbrokers wie z.B. Service Bus besteht da
 
 Wenn ein Client eine Nachricht sendet, möchte er normalerweise wissen, ob die Nachricht ordnungsgemäß an den Broker übertragen und vom Broker akzeptiert wurde oder ob ein Fehler aufgetreten ist. Diese positive oder negative Bestätigung gleicht die Kenntnis des Clients und des Brokers über den Übertragungsstatus der Nachricht ab und wird daher als *Abgleich* bezeichnet.
 
-Wenn der Broker eine Nachricht an einen Client überträgt, möchten der Broker und der Client ebenso darüber übereinkommen, ob die Nachricht erfolgreich verarbeitet wurde und daher entfernt werden kann oder ob bei der Übertragung oder Verarbeitung der Nachricht ein Fehler aufgetreten ist und die Nachricht daher möglicherweise erneut übertragen werden muss.
+Wenn der Broker eine Nachricht an einen Client überträgt, möchten der Broker und der Client ebenso darüber übereinkommen, ob die Nachricht erfolgreich verarbeitet wurde und daher entfernt werden kann, oder ob bei der Übertragung oder Verarbeitung der Nachricht ein Fehler aufgetreten ist und die Nachricht daher möglicherweise erneut übertragen werden muss.
 
 ## <a name="settling-send-operations"></a>Abgleichen von Sendevorgängen
 

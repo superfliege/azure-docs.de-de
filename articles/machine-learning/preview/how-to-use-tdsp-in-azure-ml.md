@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2017
+ms.date: 10/16/2017
 ms.author: bradsev
-ms.openlocfilehash: d47c219dfd1e62351d7113d930b17ac45f64c369
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: efb681b85d3d7434e3114b8576abc64d00891f03
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Strukturieren von Projekten mit Team Data Science-Prozessvorlagen
 
@@ -28,23 +28,24 @@ Dieses Dokument enthält Anleitungen zum Erstellen von Data Science-Projekten in
 ## <a name="what-is-the-team-data-science-process"></a>Was ist der Team Data Science-Prozess (TDSP)?
 Beim TDSP handelt es sich um einen agilen, iterativen Data Science-Prozess zum Ausführen und Bereitstellen erweiterter Analysemethoden. Der Prozess dient zum Verbessern der Zusammenarbeit und Effizienz von Data Science-Teams in Unternehmen. Es werden diese Ziele mit vier Hauptkomponenten unterstützt:
 
-   * Eine Standarddefinition des [Data Science-Lebenszyklus](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md).
+   * Eine Standarddefinition des [Data Science-Lebenszyklus](../team-data-science-process/lifecycle.md).
    * Standardisierte Projektstruktur, [Projektdokumentation und Berichterstellungsvorlagen](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
-   * Infrastruktur und Ressourcen für die Projektausführung, z.B. die Compute- und Speicherinfrastruktur und Coderepositorys.
+   * Infrastruktur und Ressourcen für die Projektausführung, z.B. jeweils die Compute- und Speicherinfrastruktur und Coderepositorys.
    * [Tools und Hilfsprogramme](https://github.com/Azure/Azure-TDSP-Utilities) für Data Science-Projektaufgaben, wie z.B.:
-      - Gemeinsame Versionskontrolle und Code Review
+      - Gemeinsame Versionskontrolle
+      - Code Review
       - Durchsuchen und Modellieren von Daten
       - Arbeitsplanung
 
-Eine umfassende Erläuterung zu TDSP finden Sie unter [Übersicht über den Team Data Science-Prozess](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/README.md).
+Eine umfassende Erläuterung zu TDSP finden Sie unter [Team Data Science Process overview (Übersicht über Team Data Science-Prozesse)](../team-data-science-process/overview.md).
 
 ## <a name="why-should-you-use-the-tdsp-structure-and-templates"></a>Warum sollten Sie die TDSP-Struktur und -Vorlagen verwenden?
-Die Standardisierung der Struktur, des Lebenszyklus und der Dokumentation von Data Science-Projekten erleichtern die effektive Zusammenarbeit in Data Science-Teams. Die Fähigkeit zum Erstellen Azure Machine Learning-Projekten mithilfe einer TDSP-Vorlage bietet ein Framework für koordinierte Teamarbeit.
+Die Standardisierung der Struktur, des Lebenszyklus und der Dokumentation von Data Science-Projekten erleichtern die effektive Zusammenarbeit in Data Science-Teams. Das Erstellen von Machine Learning-Projekten mit der TDSP-Vorlage, um ein Framework für koordinierte Teamarbeit zu bieten.
 
 Wir haben zuvor ein [GitHub-Repository für die TDSP-Projektstruktur und -Vorlagen](https://github.com/Azure/Azure-TDSP-ProjectTemplate) veröffentlicht, um Sie beim Erreichen dieser Ziele zu unterstützen. Bis jetzt war es jedoch nicht möglich, die TDSP-Struktur und -Vorlagen in einem Data Science-Tool zu instanziieren. Es ist nun möglich, ein Machine Learning-Projekt zu erstellen, das die TDSP-Struktur und die Dokumentationsvorlagen instanziiert. 
 
 ## <a name="things-to-note-before-creating-a-new-project"></a>Was Sie vor dem Erstellen eines neuen Projekts beachten sollten
-Notieren oder überprüfen Sie Folgendes, *bevor* Sie ein neues Projekt erstellen:
+Überprüfen Sie die folgenden Kriterien, *bevor* Sie ein neues Projekt erstellen:
 * Überprüfen Sie die [TDSP Machine Learning](https://aka.ms/tdspamlgithubrepo)-Vorlage.
 * Inhalte (außer denen, die im Ordner „docs“ bereits vorhanden sind) müssen kleiner als 25 MB sein. Siehe den Hinweis, der auf diese Liste folgt.
 * Der Ordner „sample\_data“ ist nur für kleine Datendateien (weniger als 5 MB) gedacht, mit denen Sie Ihren Code testen oder eine frühen Entwicklung starten können.
@@ -52,7 +53,7 @@ Notieren oder überprüfen Sie Folgendes, *bevor* Sie ein neues Projekt erstelle
 * Informationen zum Umgang mit großen Dateien und Ausgaben in Machine Learning finden Sie unter [Beibehalten von Änderungen und Arbeiten mit großen Dateien](http://aka.ms/aml-largefiles).
 
 > [!NOTE]
-> Achten Sie darauf, dass die Datei „readme.md“ und alle auf die Dokumentation bezogenen Inhalte (Text, Markdowns, Bilder, andere Dokumentdateien), die *nicht* während der Ausführung des Projekts verwendet werden, sich im Ordner „docs“ (Kleinbuchstaben) befinden. Der Ordner „docs“ ist ein spezieller Ordner, der von der Machine Learning-Ausführung ignoriert wird, sodass die Inhalte in diesem Ordner nicht unnötig auf das Computeziel kopiert werden. Objekte in diesem Ordner werden auch nicht auf die 25-MB-Obergrenze für die Projektgröße angerechnet. Der Ordner „docs“ ist z.B. der Speicherort für große Bilddateien, die Sie in Ihrer Dokumentation benötigen. Diese Dateien werden von Git weiterhin im Ausführungsverlauf nachverfolgt. 
+> Alle auf die Dokumentation bezogenen Inhalte (Text, Markdowns, Bilder, andere Dokumentdateien), die *nicht* während der Ausführung des Projekts verwendet werden, müssen sich im Ordner „docs“ (Kleinbuchstaben) befinden. Der Ordner „docs“ ist ein spezieller Ordner, der von der Machine Learning-Ausführung ignoriert wird, sodass die Inhalte in diesem Ordner nicht unnötig auf das Computeziel kopiert werden. Objekte in diesem Ordner werden auch nicht auf die 25-MB-Obergrenze für die Projektgröße angerechnet. Der Ordner „docs“ ist z.B. der Speicherort für große Bilddateien, die Sie in Ihrer Dokumentation benötigen. Diese Dateien werden von Git weiterhin im Ausführungsverlauf nachverfolgt. 
 
 ## <a name="instantiate-the-tdsp-structure-and-templates-from-the-machine-learning-template-gallery"></a>Instanziieren der TDSP-Struktur und -Vorlagen aus dem Machine Learning-Vorlagenkatalog
 Führen Sie folgende Schritte zum Erstellen eines neuen Projekts mit der TDSP-Struktur und den Dokumentationsvorlagen aus.
@@ -80,7 +81,7 @@ Führen Sie folgende Schritte zum Erstellen eines neuen Projekts mit der TDSP-St
 
 
 ## <a name="examine-the-tdsp-project-structure"></a>Überprüfen der TDSP-Projektstruktur
-Nachdem Ihr neues Projekt erstellt wurde, können Sie die Struktur überprüfen (siehe den linken Bereich der nachstehenden Abbildung). Sie enthält alle Aspekte einer standardisierten Dokumentation zum Verstehen geschäftlicher Aspekte. Dazu gehören die Phasen des TDSP-Lebenszyklus, der Datenspeicherort, Definitionen und die Architektur dieser Dokumentationsvorlage. 
+Nachdem Ihr neues Projekt erstellt worden ist, können Sie die Struktur überprüfen (siehe den linken Bereich der nachstehenden Abbildung). Sie enthält alle Aspekte einer standardisierten Dokumentation zum Verstehen geschäftlicher Aspekte. Dazu gehören die Phasen des TDSP-Lebenszyklus, der Datenspeicherort, Definitionen und die Architektur dieser Dokumentationsvorlage. 
 
 Die dargestellte Struktur wird von der TDSP-Struktur abgeleitet, die in der [TDSP-Projektstruktur, den Dokumenten und Artefaktvorlagen](https://github.com/Azure/Azure-TDSP-ProjectTemplate), bei diversen Modifikationen, veröffentlicht wird. Beispielsweise wurden einige der Dokumentationsvorlagen in einem Markdown namens [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) zusammengeführt. 
 
@@ -94,14 +95,14 @@ Die TDSP-Projektvorlage enthält die folgenden Ordner auf oberster Ebene:
 
 
 ## <a name="use-the-tdsp-structure-and-templates"></a>Verwenden der TDSP-Struktur und -Vorlagen
-Sie müssen die Struktur und Vorlagen mit projektspezifischen Informationen ergänzen. Von Ihnen wird erwartet, dass Sie diese mit Code und den für Ausführung und Lieferung Ihres Projekts erforderlichen Informationen füllen. Bei der Datei [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) handelt es sich um eine Vorlage, die mit Informationen geändert werden muss, die relevant für Ihr Projekt sind. Diese enthält eine Reihe von Fragen, die Sie beim Ausfüllen der Informationen für jede der vier Phasen des [TDSP-Lebenszyklus](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md) unterstützen.
+Sie müssen die Struktur und Vorlagen mit projektspezifischen Informationen ergänzen. Von Ihnen wird erwartet, dass Sie diese mit dem Code und den für Ausführung und Lieferung Ihres Projekts erforderlichen Informationen füllen. Bei der Datei [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) handelt es sich um eine Vorlage, die mit Informationen geändert werden muss, die relevant für Ihr Projekt sind. Diese enthält eine Reihe von Fragen, die Sie beim Ausfüllen der Informationen für jede der vier Phasen des [TDSP-Lebenszyklus](../team-data-science-process/lifecycle.md) unterstützen.
 
 Ein Beispiel, wie eine Projektstruktur während der Ausführung bzw. nach Fertigstellung eines Projektes aussieht, ist in der folgenden Abbildung im linken Bereich dargestellt. Dieses Projekt stammt aus dem Beispielprojekt des [Team Data Science-Prozesses: Klassifizieren von Einkommen aus den Volkszählungsdaten der USA in Azure Machine Learning](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome).
 
 ![Beispielstruktur eines Projekts](./media/how-to-use-tdsp-in-azure-ml/instantiation-4.png)
 
 ## <a name="document-your-project"></a>Dokumentieren Ihres Projekts
-Weitere Informationen zum Dokumentieren Ihres Projekts finden Sie unter [TDSP-Dokumentationsvorlagen](https://github.com/Azure/Azure-TDSP-ProjectTemplate). In der aktuellen TDSP-Dokumentationsvorlage für Machine Learning wird empfohlen, dass Sie alle Informationen in der Datei [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) angeben. Diese Vorlage muss mit projektspezifischen Informationen ausgefüllt werden. 
+Weitere Informationen zum Dokumentieren Ihres Projekts finden Sie unter [TDSP-Dokumentationsvorlagen](https://github.com/Azure/Azure-TDSP-ProjectTemplate). In der aktuellen TDSP-Dokumentationsvorlage für Machine Learning wird empfohlen, dass Sie alle Informationen in der Datei [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) angeben. Diese Vorlage sollte mit projektspezifischen Informationen ausgefüllt werden. 
 
 Wir bieten auch die Vorlage [ProjectLearnings](https://aka.ms/tdspamlgithubrepoprojectlearnings). Mithilfe dieser Vorlage können Sie Informationen angeben, die nicht im primären Projektdokument angegeben werden sollen, aber dennoch nützlich für das Dokument sind. 
 

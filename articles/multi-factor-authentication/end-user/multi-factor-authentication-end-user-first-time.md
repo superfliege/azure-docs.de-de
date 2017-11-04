@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 492d5dc4e20f67bcb9f72a022fec19f5ba86caac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b5233b7b667998f6fd3ff8a5db1946b120211c1
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Einrichten meines Kontos für die Überprüfung in zwei Schritten
 Die Überprüfung in zwei Schritten ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert. Wenn Sie diesen Artikel lesen, haben Sie wahrscheinlich vom Administrator Ihres Geschäfts-, Schul- oder Unikontos eine E-Mail zum Thema Multi-Factor Authentication erhalten. Oder Sie haben eventuell versucht, sich anzumelden, und eine Nachricht mit der Aufforderung empfangen, eine zusätzliche Sicherheitsüberprüfung einzurichten. Wenn dies der Fall ist, **können Sie sich erst anmelden, nachdem Sie die automatische Registrierung abgeschlossen haben**.
@@ -29,7 +29,7 @@ Dieser Artikel unterstützt Sie beim Einrichten Ihres **Geschäfts-, Schul- oder
 
 ## <a name="set-up-your-account"></a>Einrichten Ihres Kontos
 
-Wenn Ihre IT-Abteilung das Starten mithilfe der Überprüfung in zwei Schritten erzwingt, wird auf einem Bildschirm Folgendes angezeigt: **Ihr Administrator verlangt, dass Sie dieses Konto für eine zusätzliche Sicherheitsüberprüfung einrichten.**
+Wenn die Supportabteilung Ihres Unternehmens das Starten mithilfe der Überprüfung in zwei Schritten erzwingt, wird auf einem Bildschirm Folgendes angezeigt: **Ihr Administrator verlangt, dass Sie dieses Konto für eine zusätzliche Sicherheitsüberprüfung einrichten**:
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time/first.png)
 

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 10/16/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 033ef0cdd607ced5de6c975e071e0ce37e677201
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e38a92fc48636476f00fe18c735901d906799fde
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>Erstellen einer Containerregistrierung mit dem Azure-Portal
 
@@ -39,11 +39,13 @@ Klicken Sie auf **Neu** > **Container** > **Azure Container Registry**.
 
 ![Erstellen einer Containerregistrierung über das Azure-Portal][qs-portal-01]
 
-Geben Sie Werte für **Registrierungsname** und **Ressourcengruppe** ein. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Erstellen Sie eine neue Ressourcengruppe namens `myResourceGroup`, und wählen Sie für **SKU** die Option „Klassisch“ aus. Klicken Sie auf **Erstellen**, um die ACR-Instanz bereitzustellen.
+Geben Sie Werte für **Registrierungsname** und **Ressourcengruppe** ein. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Erstellen Sie eine neue Ressourcengruppe namens `myResourceGroup`, und wählen Sie für **SKU** die Option „Basic“ aus. Klicken Sie auf **Erstellen**, um die ACR-Instanz bereitzustellen.
 
 ![Erstellen einer Containerregistrierung über das Azure-Portal][qs-portal-03]
 
-Azure Container Registry ist derzeit in mehreren SKUs verfügbar: `Classic`, `Basic`, `Standard` und `Premium`. In `Basic`, `Standard` und `Premium` stehen zwar erweiterte Funktionen wie verwalteter Speicher und Webhooks zur Verfügung, diese befinden sich allerdings noch in der Vorschauphase und sind in einigen Azure-Regionen nicht verfügbar. In dieser Schnellstartanleitung entscheiden wir uns für die SKU `Classic`, da diese in allen Regionen verfügbar ist.
+In dieser Schnellstartanleitung erstellen wir eine *Basic*-Registrierung. Azure Container Registry steht in mehreren unterschiedlichen SKUs zur Verfügung, die in der folgenden Tabelle kurz beschrieben werden. Ausführliche Details zu den einzelnen Einträgen finden Sie unter [Containerregistrierungs-SKUs](container-registry-skus.md).
+
+[!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
 Wenn die Meldung **Bereitstellung erfolgreich** erscheint, wählen Sie die Containerregistrierung im Portal aus, und klicken Sie anschließend auf **Zugriffsschlüssel**.
 
@@ -53,7 +55,7 @@ Klicken Sie unter **Administratorbenutzer** auf **Aktivieren**. Notieren Sie sic
 
 * Anmeldeserver
 * Benutzername
-* Kennwort
+* password
 
 Diese Werte benötigen Sie in den folgenden Schritten, wenn Sie über die Docker-Befehlszeilenschnittstelle Aktionen für Ihre Registrierung ausführen.
 

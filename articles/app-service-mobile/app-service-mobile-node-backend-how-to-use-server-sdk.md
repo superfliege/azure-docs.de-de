@@ -3,8 +3,8 @@ title: "Vorgehensweise beim Arbeiten mit dem Node.js Back-End Server SDK für Mo
 description: "Informationen zum Arbeiten mit dem Node.js-Back-End-Server SDK für Azure Mobile App Service-Apps."
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: elamalani
+manager: elamalani
 editor: 
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
 ms.service: app-service-mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 8265aaa275b3f6e528ec729ff1325200e9ead524
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ab1a9dfa71c4b633392ef839bb848347fdd26431
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="how-to-use-the-azure-mobile-apps-nodejs-sdk"></a>Verwenden des Azure Mobile Apps SDK für Node.js
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -793,9 +793,13 @@ Folgende Artikel helfen Ihnen beim Einstieg in die Problembehandlung Ihres Node.
 Node.js-Anwendungen haben Zugriff auf viele Tools für die Diagnoseprotokollierung.  Intern nutzt das Azure Mobile Apps Node.js SDK [Winston] für die Diagnoseprotokollierung.  Die Protokollierung wird automatisch aktiviert, indem der Debugmodus aktiviert oder die App-Einstellung **MS_DebugMode** im [Azure-Portal] auf „true“ festgelegt wird. Generierte Protokolle werden im [Azure-Portal]in den Diagnoseprotokollen angezeigt.
 
 ### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>Vorgehensweise: Verwenden von Easy Tables im Azure-Portal
-Mit Easy Tables können Sie direkt im Portal Tabellen erstellen und verwenden. Sie können mit dem App Service-Editor sogar Tabellenvorgänge bearbeiten.
+Mit Easy Tables können Sie direkt im Portal Tabellen erstellen und verwenden. Sie können Datasets im CSV-Format in Easy Tables hochladen. Beachten Sie, dass Sie keine Namen von Eigenschaften (im CSV-Dataset) verwenden können, die mit den Namen von Systemeigenschaften des Azure Mobile Apps-Back-End in Konflikt stehen. Dies sind folgende Namen von Systemeigenschaften:
+* createdAt
+* updatedAt
+* deleted
+* Version
 
-Wenn Sie in den Einstellungen für die Back-End-Website auf **Easy Tables** klicken, können Sie eine Tabelle hinzufügen, ändern oder löschen. Sie sehen auch, dass Daten in der Tabelle enthalten sind.
+Sie können mit dem App Service-Editor sogar Tabellenvorgänge bearbeiten. Wenn Sie in den Einstellungen für die Back-End-Website auf **Easy Tables** klicken, können Sie eine Tabelle hinzufügen, ändern oder löschen. Sie sehen auch, dass Daten in der Tabelle enthalten sind.
 
 ![Verwenden von Easy Tables](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-tables.png)
 

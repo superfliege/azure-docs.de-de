@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: 3aaec8f9b6a3bbcf814f771405c3b589de6f7ae0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 159bb0500dd98a428d60d6aeb78767a3460b40dc
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="sqlfilter-syntax"></a>SqlFilter-Syntax
 
-*SqlFilter* ist eine Instanz der [SqlFilter-Klasse](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) und stellt einen auf der SQL-Sprache basierenden Filterausdruck dar, der gegen [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ausgewertet wird. SqlFilter unterstützt eine Teilmenge des SQL-92-Standards.  
+Ein *SqlFilter*-Objekt ist eine Instanz der [SqlFilter-Klasse](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) und stellt einen auf der SQL-Sprache basierenden Filterausdruck dar, der mit [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ausgewertet wird. SqlFilter unterstützt eine Teilmenge des SQL-92-Standards.  
   
  Dieses Thema enthält Details zur SqlFilter-Grammatik.  
   
@@ -280,5 +280,6 @@ Beachten Sie die folgende [SqlFilter](/dotnet/api/microsoft.servicebus.messaging
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [SqlFilter-Klasse](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLFilter-Klasse (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLFilter-Klasse (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.filters.sqlfilter)
 - [SQLRuleAction class (SQLRuleAction-Klasse)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)

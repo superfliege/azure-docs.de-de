@@ -8,4 +8,4 @@ Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGr
 az group create --name myResourceGroup --location "West Europe"
 ```
 
-Im Allgemeinen erstellen Sie Ressourcengruppen und Ressourcen in einer Region in Ihrer Nähe. Wenn Sie alle unterstützten Speicherorte für die Azure-Web-Apps anzeigen möchten, führen Sie den Befehl `az appservice list-locations` aus. 
+Im Allgemeinen erstellen Sie Ressourcengruppen und Ressourcen in einer Region in Ihrer Nähe. Wenn Sie alle unterstützten Standorte für App Service-Pläne anzeigen möchten, führen Sie den Befehl `az appservice list-locations` aus.

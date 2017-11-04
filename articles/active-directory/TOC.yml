@@ -62,6 +62,12 @@
           href: msi-howto-assign-access-powershell.md
         - name: Verwenden der Azure-Befehlszeilenschnittstelle
           href: msi-howto-assign-access-cli.md
+    - name: Zugreifen auf Azure Data Lake Store per VM-MSI
+      items:
+        - name: Von einem virtuellen Windows-Computer
+          href: msi-tutorial-windows-vm-access-datalake.md
+        - name: Von einem virtuellen Linux-Computer
+          href: msi-tutorial-linux-vm-access-datalake.md
     - name: Zugreifen auf Azure Resource Manager per VM-MSI
       items:
         - name: Von einem virtuellen Windows-Computer

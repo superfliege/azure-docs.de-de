@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 10/11/2017
 ms.author: bwren
-ms.openlocfilehash: bf237a837297cb8f1ab3a3340139133adcd2b244
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d679ca7a01a96bd398b26e6a545e33674ae33390
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>Suchen von Daten mit Protokollsuchen in Log Analytics
 
 >[!NOTE]
-> Dieser Artikel beschreibt Protokollsuchen mithilfe der aktuellen Abfragesprache in Azure Log Analytics.  Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, lesen Sie [Informationen zu Protokollsuchen in Log Analytics (neu)](log-analytics-log-search-new.md).
+> Dieser Artikel beschreibt Protokollsuchen mithilfe der alten Abfragesprache in Azure Log Analytics.  Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, lesen Sie [Informationen zu Protokollsuchen in Log Analytics (neu)](log-analytics-log-search-new.md).
 
 
 Der Kern von Log Analytics ist die Protokollsuchfunktion, die Ihnen das Kombinieren und Korrelieren beliebiger Computerdaten aus mehreren Quellen in Ihrer Umgebung ermöglicht. Lösungen werden auch von der Protokollsuche beim Bereitstellen von Metriken unterstützt, die eine Pivotierung in Bezug auf einen bestimmten Problembereich bieten.

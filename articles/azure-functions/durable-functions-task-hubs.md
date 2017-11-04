@@ -14,21 +14,34 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 313daf1c105caa8569ed43e59d9e18f184599214
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b241bad7b0060551eba5e78efbb1b729bf5d0098
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Aufgabenhubs in Durable Functions (Azure Functions)
 
-Ein *Aufgabenhub* für [Durable Functions](durable-functions-overview.md) ist ein logischer Container für Orchestrierungen und Aktivitäten im Kontext eines einzelnen Azure-Speicherkontos. Mehrere Funktionen und sogar Funktionen-Apps können im selben Hub vorhanden sein, und der Aufgabenhub dient häufig als Anwendungscontainer.
+Ein *Aufgabenhub* in [Durable Functions](durable-functions-overview.md) ist ein logischer Container für Azure Storage-Ressourcen, die zur Orchestrierung verwendet werden. Orchestrator- und Aktivitätsfunktionen können nur miteinander interagieren, wenn sie zum selben Aufgabenhub gehören.
 
-Aufgabenhubs müssen nicht explizit erstellt werden. Sie werden automatisch von der Laufzeit unter Verwendung eines Namens initialisiert, der in der *host.json*-Datei deklariert wird. Jeder Aufgabenhub verfügt über einen eigenen Satz von Speicherwarteschlangen, -tabellen und -blobs in einem einzelnen Speicherkonto. Alle Funktionen-Apps, die in einem bestimmten Aufgabenhub ausgeführt werden, nutzen dieselben Speicherressourcen. Orchestrator- und Aktivitätsfunktionen können nur miteinander interagieren, wenn sie zum selben Aufgabenhub gehören.
+Jede Funktions-App verfügt über einen separaten Aufgabenhub. Wenn mehrere Funktions-Apps ein Speicherkonto gemeinsam nutzen, enthält das Speicherkonto mehrere Aufgabenhubs. Das folgende Diagramm veranschaulicht einen Aufgabenhub pro Funktions-App in freigegebenen und dedizierten Speicherkonten.
 
-## <a name="configuring-a-task-hub-in-hostjson"></a>Konfigurieren eines Aufgabenhubs in „host.json“
+![Diagramm mit freigegebenen und dedizierten Speicherkonten](media/durable-functions-task-hubs/task-hubs-storage.png)
 
-Ein Aufgabenhubname kann in der Datei *host.json* einer Funktionen-App wie folgt konfiguriert werden.
+## <a name="azure-storage-resources"></a>Azure Storage-Ressourcen
+
+Ein Aufgabenhub umfasst folgende Speicherressourcen: 
+
+* Mindestens eine Steuerwarteschlange.
+* Eine Arbeitselement-Warteschlange.
+* Eine Verlaufstabelle.
+* Einen Speichercontainer, der mindestens ein Lease-Blob enthält.
+
+Alle diese Ressourcen werden automatisch im standardmäßigen Azure Storage-Konto erstellt, wenn Orchestrator- oder Aktivitätsfunktionen ausgeführt werden oder ihre Ausführung geplant wird. Im Artikel [Performance and Scale](durable-functions-perf-and-scale.md) (Leistung und Skalierung) wird erläutert, wie diese Ressourcen verwendet werden.
+
+## <a name="task-hub-names"></a>Aufgabenhubnamen
+
+Aufgabenhubs werden über den Namen identifiziert, der in der Datei *host.json* deklariert ist, wie im folgenden Beispiel gezeigt:
 
 ```json
 {
@@ -38,24 +51,12 @@ Ein Aufgabenhubname kann in der Datei *host.json* einer Funktionen-App wie folgt
 }
 ```
 
-Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn nicht angegeben, lautet der standardmäßige Aufgabenhubname für eine Funktionen-App **DurableFunctionsHub**.
+Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn kein Name angegeben ist, wird der Standardname **DurableFunctionsHub** verwendet.
 
 > [!NOTE]
-> Wenn Sie über mehrere Funktionen-Apps verfügen, die ein gemeinsames Speicherkonto nutzen, sollten Sie für jede Funktionen-App einen anderen Aufgabenhubnamen konfigurieren. Dadurch wird sichergestellt, dass die Funktionen-Apps ordnungsgemäß voneinander isoliert sind.
-
-## <a name="azure-storage-resources"></a>Azure Storage-Ressourcen
-
-Ein Aufgabenhub umfasst mehrere Azure Storage-Ressourcen:
-
-* Mindestens eine Steuerwarteschlange.
-* Eine Arbeitselement-Warteschlange.
-* Eine Verlaufstabelle.
-* Einen Speichercontainer, der mindestens ein Lease-Blob enthält.
-
-Alle diese Ressourcen werden automatisch im standardmäßigen Azure Storage-Konto erstellt, wenn Orchestrator- oder Aktivitätsfunktionen ausgeführt werden oder ihre Ausführung geplant wird. Im Artikel [Performance and scale in Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md) (Leistung und Skalierung in Durable Functions [Azure Functions]) wird erläutert, wie diese Ressourcen verwendet werden.
+> Die einzelnen Aufgabenhubs werden über den Namen unterschieden, wenn in einem freigegebenen Speicherkonto mehrere Aufgabenhubs vorhanden sind. Wenn sich mehrere Funktions-Apps ein freigegebenes Speicherkonto teilen, müssen Sie für die einzelnen Aufgabenhubs in der Datei *host.json* unterschiedliche Namen konfigurieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Versioning in Durable Functions (Azure Functions)](durable-functions-versioning.md) (Versionsverwaltung in Durable Functions [Azure Functions])
-

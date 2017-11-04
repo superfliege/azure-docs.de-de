@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 0eb031893d53f09097b696e18f6c129be061136a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 913805901bf8131e4908be03e9213539a26205ed
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funktionsverkettung in Durable Functions – „Hello Sequence“-Beispiel
 
@@ -26,7 +26,7 @@ Bei der Funktionsverkettung geht es um das Muster für die Ausführung einer Fun
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Befolgen Sie die Anleitung unter [Installieren der Erweiterung Durable Functions und Beispiele – Azure](durable-functions-install.md), um das Beispiel einzurichten.
+* Befolgen Sie die Anweisungen unter [Install Durable Functions](durable-functions-install.md) (Installieren von Durable Functions), um das Beispiel einzurichten.
 
 ## <a name="the-functions"></a>Die Funktionen
 
@@ -71,13 +71,16 @@ Die Implementierung von `E1_SayHello` ist ein relativ einfacher Zeichenfolgen-Fo
 
 Diese Funktion verfügt über den Parameter [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html). Er wird genutzt, um Eingaben zu erhalten, die über den [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_)-Aufruf der Orchestratorfunktion übergeben wurden.
 
-## <a name="running-the-orchestration"></a>Ausführen der Orchestrierung
+## <a name="run-the-sample"></a>Ausführen des Beispiels
 
-Führen Sie den folgenden HTTP-Aufruf durch, um die `E1_HelloSequence`-Orchestrierung auszuführen.
+Senden Sie die folgende HTTP POST-Anforderung, um die `E1_HelloSequence`-Orchestrierung auszuführen.
 
 ```
-POST http://{app-name}.azurewebsites.net/orchestrators/E1_HelloSequence
+POST http://{host}/orchestrators/E1_HelloSequence
 ```
+
+Wenn Sie das Beispiel z. B. in einer Funktions-App namens „myfunctionapp“ ausführen, ersetzen Sie „{host}“ durch „myfunctionapp.azurewebsites.net“.
+
 Das Ergebnis ist eine HTTP 202-Antwort, die wie folgt aussehen kann (hier gekürzt):
 
 ```
@@ -120,7 +123,7 @@ So sieht die Orchestrierung als einzelne C#-Datei in einem Visual Studio-Projekt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie verfügen jetzt über Grundkenntnisse in Bezug auf die Funktionsweise von Durable Functions. Es wurde ein einfaches Beispiel verwendet, und es wurden nur einige der verfügbaren Features gezeigt. Die nachfolgenden Beispiele sind stärker an die Praxis angelehnt und verdeutlichen eine größere Funktionsbandbreite.
+In diesem Beispiel wird eine einfache Funktionsverkettungsorchestrierung veranschaulicht. Im nächsten Beispiel wird die Implementierung des Musters „Auffächern nach außen/innen“ gezeigt. 
 
 > [!div class="nextstepaction"]
 > [Beispiel für „Auffächern nach außen/innen“ ausführen](durable-functions-cloud-backup.md)

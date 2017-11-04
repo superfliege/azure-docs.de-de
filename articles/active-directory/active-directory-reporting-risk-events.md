@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 71ab5cb02ac70871fb8207ab9220b45d1c842dde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a454199137f8ccc99ddbef66758fd1cabd8fd486
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory-Risikoereignisse
 
@@ -29,10 +29,9 @@ Derzeit werden von Azure Active Directory sechs Typen von Risikoereignissen erka
 - [Benutzer mit kompromittierten Anmeldeinformationen](#leaked-credentials) 
 - [Anmeldungen von anonymen IP-Adressen](#sign-ins-from-anonymous-ip-addresses) 
 - [Unmöglicher Ortswechsel zu atypischen Orten](#impossible-travel-to-atypical-locations) 
-- [Anmeldungen von unbekannten Standorten](#sign-in-from-unfamiliar-locations)
 - [Anmeldungen von infizierten Geräten](#sign-ins-from-infected-devices) 
 - [Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten](#sign-ins-from-ip-addresses-with-suspicious-activity) 
-
+- [Anmeldungen von unbekannten Standorten](#sign-in-from-unfamiliar-locations) (ausschließlich für **Azure Active Directory Premium P2** Editionen)
 
 ![Risikoereignis](./media/active-directory-reporting-risk-events/91.png)
 

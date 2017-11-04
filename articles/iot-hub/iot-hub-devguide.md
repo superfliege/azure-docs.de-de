@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 10/13/2017
 ms.author: dobett
-ms.openlocfilehash: 07497231e2cfab86082c5a0d1f4a4ec8ab31f6a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 27b296092335ec5b95e8f259756aaf9572da1c16
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Entwicklungsleitfaden für Azure IoT Hub
 
@@ -48,9 +48,9 @@ Dieses IoT Hub-Entwicklerhandbuch umfasst die folgenden Artikel:
 * Unter [Aufrufen einer direkten Methode auf einem Gerät (Vorschau)][devguide-directmethods] werden der Lebenszyklus einer direkten Methode beschrieben, und es wird erläutert, wie Methoden auf einem Gerät von Ihrer Back-End-App aufgerufen und die direkte Methode auf Ihrem Gerät verarbeitet wird.
 * Unter [Schedule jobs on multiple devices][devguide-jobs] (Planen von Aufträgen auf mehreren Geräten) wird beschrieben, wie Sie Aufträge auf mehreren Geräten planen können. Der Artikel erläutert das Übermitteln von Aufträgen zum Erledigen von Aufgaben wie dem Ausführen einer direkten Methode und Aktualisieren eines Geräts mithilfe eines Gerätezwillings. Außerdem wird erklärt, wie der Status eines Auftrags abgefragt wird.
 * In [Referenz – Auswählen eines Kommunikationsprotokolls][devguide-protocol] werden die Kommunikationsprotokolle beschrieben, die IoT Hub für die Gerätekommunikation unterstützt. Außerdem werden die Ports aufgeführt, die geöffnet werden müssen.
-* Unter [Reference - IoT Hub endpoints][devguide-endpoints] (Referenz – IoT Hub-Endpunkte) werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt. Außerdem wird beschrieben, wie Sie zusätzliche Endpunkte in Ihrem IoT Hub erstellen können, und wie Sie mit einem Feldgateway die Gerätekonnektivität mit Ihren IoT Hub-Endpunkten in nicht standardmäßigen Szenarien aktivieren.
+* Unter [Reference - IoT Hub endpoints][devguide-endpoints] (Referenz – IoT Hub-Endpunkte) werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt. Außerdem wird beschrieben, wie Sie zusätzliche Endpunkte in Ihrem IoT-Hub erstellen können, und wie Sie mit einem Feldgateway die Konnektivität mit Ihren IoT Hub-Endpunkten in nicht standardmäßigen Szenarien aktivieren.
 * Unter [Referenz – IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting][devguide-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von Ihrem Hub Informationen über Gerätezwillinge und Aufträge abrufen können.
-* Unter [Reference - quotas and throttling][devguide-quotas] (Referenz – Kontingente und Drosselung) sind die im IoT Hub-Dienst festgelegten Kontingente samt Drosselungsverhalten zusammengefasst, die beim Überschreiten eines Kontingents erwartet werden können.
+* Unter [Referenz: IoT Hub-Kontingente und -Drosselung][devguide-quotas] sind die im IoT Hub-Dienst festgelegten Kontingente und Drosselung zusammengefasst, die beim Überschreiten eines Kontingents auftritt.
 * [Referenz – Preise][devguide-pricing] enthält allgemeine Informationen zu verschiedenen SKUs und Preise für IoT Hub sowie Details zur Erfassung der verschiedenen IoT Hub-Funktionen als Nachrichten durch IoT Hub.
 * Unter [Referenz – Geräte- und Dienst-SDKs][devguide-sdks] sind die Azure IoT SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit Ihrer IoT Hub-Instanz verwenden können. Der Artikel enthält Links zur online verfügbaren API-Dokumentation.
 * [IoT Hub-MQTT-Unterstützung][devguide-mqtt] enthält detaillierte Informationen zur Unterstützung des MQTT-Protokolls durch IoT Hub. Der Artikel beschreibt die Unterstützung des in die Azure IoT SDKs integrierten MQTT-Protokolls und bietet Informationen zur direkten Verwendung des MQTT-Protokolls.

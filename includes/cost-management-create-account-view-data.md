@@ -31,3 +31,5 @@ In der folgenden Abbildung sind die Kosten für Azure-Ressourcen dargestellt, di
 Klicken Sie mit der rechten Maustaste auf einen Ressourcentyp, und wählen Sie **Cost Entities** (Kostenentitäten), um die Kostenentitäten und die Dienste anzuzeigen, die die Ressource genutzt haben. Die Dienste „VM“ und „Workers“ haben in diesem Beispiel in DevOps 486,60 bzw. 435,71 US-Dollar verbraucht. Die Gesamtsumme beträgt 922 US-Dollar.
 
 ![Kostenentitäten und Dienste](./media/cost-management-create-account-view-data/actual-cost-05.png)
+
+Ein Videotutorial zum Anzeigen von Cloudabrechnungsdaten finden Sie unter [Analyzing your cloud billing data with Azure Cost Management by Cloudyn](https://youtu.be/G0pvI3iLH-Y) (Analysieren Ihrer Cloudabrechnungsdaten mit Azure Cost Management von Cloudyn).

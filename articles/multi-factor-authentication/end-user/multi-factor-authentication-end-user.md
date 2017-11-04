@@ -15,11 +15,11 @@ ms.date: 06/15/2017
 ms.author: barlan
 ms.reviewer: yossib
 ms.custom: end-user
-ms.openlocfilehash: 5b6694afc0bafaf2be5f98c625dd6724b91234fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb6e652794de6cda8b5fc7c7e466f880833a1a14
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Was ist Azure Multi-Factor Authentication?
 Sie haben eine E-Mail von einem IT-Mitarbeiter erhalten oder Ihr Vorgesetzter hat Ihnen gesagt, dass für Ihr Konto eine zusätzliche Sicherheitsüberprüfung hinzugefügt wurde.  Was bedeutet dies?
@@ -33,7 +33,7 @@ Als Erstes müssen Sie den Registrierungsprozess durchführen.  Bevor Sie mit di
 * **Mobile Anwendung mit einer Benachrichtigung oder Überprüfungscode** – Wenn Sie die mobile App verwenden, wählen Sie aus, ob Sie eine Benachrichtigung, auf die Sie antworten, oder einen Überprüfungscode erhalten möchten.
 
 > [!NOTE]
-> Ihre IT-Abteilung hat möglicherweise eine oder mehrere der oben genannten Optionen deaktiviert.  Wenn dies der Fall ist, sind diese Optionen bei der Registrierung nicht verfügbar.  
+> Der Support Ihres Unternehmens hat möglicherweise eine oder mehrere der oben genannten Optionen deaktiviert.  Wenn dies der Fall ist, sind diese Optionen bei der Registrierung nicht verfügbar.  
 
 Nachdem Sie sich für eine Bestätigungsmethode entschieden haben, können Sie sich registrieren. Rufen Sie den Link [Setupfunktionalität](multi-factor-authentication-end-user-first-time.md) auf, um eine ausführliche Anleitung des Registrierungsprozesses zu lesen.
 
@@ -46,4 +46,4 @@ Wählen Sie eines dieser Themen aus, um zu beginnen.
 | [Anmeldevorgang](multi-factor-authentication-end-user-signin.md) |Zeigt Ihnen, wie die Anmeldung über die verschiedenen Methoden wie Telefon oder App abläuft. |
 | [Ändern der Einstellungen](multi-factor-authentication-end-user-manage-settings.md) |Hier erfahren Sie, wie Sie Ihre Einstellungen wie die Telefonnummer oder die bevorzugte Registrierungsmethode ändern können. |
 | [Hilfe zu App-Kennwörtern](multi-factor-authentication-end-user-app-passwords.md) |Hier erhalten Sie Informationen zum Erstellen und Verwenden von App-Kennwörtern. |
-| [Verwenden der mobilen App](microsoft-authenticator-app-how-to.md) |Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
+| [Verwenden der mobilen App](microsoft-authenticator-app-how-to.md) |Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |

@@ -39,19 +39,24 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Anwendungssicherheitsgruppen, die in allen Sicherheitsregeln einer Netzwerksicherheitsgruppe angegeben werden können |50 |100 |
 | Benutzerdefinierte Routentabellen |100 |200 |
 | Benutzerdefinierte Routen pro Routentabelle |100 |400 |
-| Öffentliche IP-Adressen – dynamisch |(Basic) |60 |Support kontaktieren |
+| Öffentliche IP-Adressen – dynamisch |(Basic) 60 |Support kontaktieren |
 | Öffentliche IP-Adressen – statisch |(Basic) 20 |Support kontaktieren |
 | Öffentliche IP-Adressen – statisch |(Standard) 20 |Support kontaktieren |
-| Load Balancers (intern und mit Internetzugriff, Basic und Standard) |100 |1000 |
-| Load Balancer-Regeln (Basic) pro Lastenausgleichsmodul |150 |250 |
-| Load Balancer-Regeln (Standard) pro Lastenausgleichsmodul | 1250 | 1500|
-| Load Balancer-Regeln (Basic) pro IP-Konfiguration |250 |250 |
-| Öffentliche Front-End-IP pro Load Balancer (Basic) |10 |30 |
-| Öffentliche Front-End-IP pro Load Balancer (Standard) | 10 | 600 |
-| Private Front-End-IP pro Load Balancer (Basic) |10 |Support kontaktieren |
-| Private Front-End-IP pro Load Balancer (Standard) | 10 | 600 |
 | Punkt-zu-Standort-Stammzertifikate pro VPN Gateway |20 |20 |
 
+#### <a name="load-balancer"></a>Load Balancer-Grenzwerte
+
+| Ressource | Standardlimit | Maximales Limit |
+| --- | --- | --- |
+| Load Balancer | 100 | 1000 |
+| Regeln pro Ressource, Basic | 150 | 250 |
+| Regeln pro Ressource, Standard | 1250 | 1500 |
+| Regeln pro IP-Konfiguration | 299 |299 |
+| Front-End-IP-Konfiguration, Basic | 10 | Support kontaktieren |
+| Front-End-IP-Konfiguration, Standard | 10 | 600 |
+| Back-End-Pool, Basic | 100, eine Verfügbarkeitsgruppe | - |
+| Back-End-Pool, Standard | 1000, einzelnes VNET | Support kontaktieren |
+| Hochverfügbarkeitsports, Standard | 1 pro internem Front-End | - |
 
 [Wenden Sie sich an den Support](../articles/azure-supportability/resource-manager-core-quotas-request.md ), falls Sie Limits der Standardwerte erhöhen müssen.
 

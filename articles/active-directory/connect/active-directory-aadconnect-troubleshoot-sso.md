@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 7eea3621a52bf13dc44e89c342c503905ff24a0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b383a21500c753d8d2fe6747756541a3ff94ef02
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problembehandlung beim nahtlosen einmaligen Anmelden mit Azure Active Directory
 
@@ -28,8 +28,9 @@ In diesem Artikel finden Sie Informationen zur Problembehandlung bei bekannten P
 
 - Die Aktivierung der nahtlosen einmaligen Anmeldung kann in seltenen Fällen bis zu 30 Minuten dauern.
 - Edge-Browser wird nicht unterstützt.
-- Bei der Lizenzaktivierung für Office-Clients, insbesondere in Szenarios mit freigegebenen Computern, werden Benutzer zur erneuten Anmeldung aufgefordert.
-- Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus. und 
+- Beim Starten von Office-Clients, insbesondere in Szenarien mit freigegebenen Computern, werden Benutzer zur erneuten Anmeldung aufgefordert. Benutzer müssen regelmäßig ihren Benutzernamen, aber keine Kennwörter eingeben.
+- Wenn nahtloses einmaliges Anmelden erfolgreich ausgeführt wurde, erhält der Benutzer nicht die Möglichkeit, die Option „Angemeldet bleiben“ auszuwählen. Aufgrund dieses Verhaltens funktionieren Zuordnungsszenarien für SharePoint und OneDrive nicht.
+- Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus.
 - Dies gilt auch für den Internet Explorer, wenn der erweiterte Schutzmodus aktiviert ist.
 - Das nahtlose einmalige Anmelden funktioniert nicht in mobilen Browsern unter iOS und Android.
 - Wenn Sie 30 und mehr AD-Gesamtstrukturen synchronisieren, kann die nahtlose einmalige Anmeldung nicht mit Azure AD Connect aktiviert werden. Zur Problembehebung können Sie die Funktion auf Ihrem Mandanten [manuell aktivieren](#manual-reset-of-azure-ad-seamless-sso).

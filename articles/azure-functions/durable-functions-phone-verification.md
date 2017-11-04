@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 1dacbc59704d16451a5268c0aa4df2ab4e5b3112
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cfb6758703ebf3ce0458a4e1ad74324a4ccc2ece
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Benutzerinteraktion in Durable Functions: Beispiel zur Telefonüberprüfung
 
@@ -85,7 +85,7 @@ Der Benutzer erhält eine SMS-Nachricht mit einem vierstelligen Code. Zum Abschl
 > [!WARNING]
 > Es ist wichtig, [Timer über eine CancellationTokenSource abzubrechen](durable-functions-timers.md), wenn Sie diese nicht mehr benötigen, z.B. wenn wie im obigen Beispiel eine Abfragerückmeldung akzeptiert wurde.
 
-## <a name="sending-the-sms-message"></a>Senden der SMS-Nachricht
+## <a name="send-the-sms-message"></a>Senden der SMS-Nachricht
 
 Die Funktion **E4_SendSmsChallenge** sendet die SMS-Nachricht mit dem vierstelligen Code über die Twilio-Bindung an den Benutzer. Die Datei *function.json* wird wie folgt definiert:
 
@@ -97,7 +97,7 @@ Dies ist der Code, der den vierstelligen Abfragecode generiert und die SMS-Nachr
 
 Die Funktion **E4_SendSmsChallenge** wird nur einmal aufgerufen, selbst dann, wenn der Prozess abstürzt oder wiedergegeben wird. Dies ist gut, da auf diese Weise sichergestellt wird, dass der Benutzer nicht mehrere SMS-Nachrichten erhält. Der Rückgabewert `challengeCode` wird automatisch gespeichert, sodass die Orchestratorfunktion immer weiß, wie der korrekte Code lautet.
 
-## <a name="running-the-sample"></a>Ausführen des Beispiels
+## <a name="run-the-sample"></a>Ausführen des Beispiels
 
 Wenn Sie die über HTTP ausgelösten Funktionen verwenden, die im Beispiel enthalten sind, können Sie mit der Orchestrierung beginnen, indem Sie folgende HTTP POST-Anforderung senden.
 
@@ -152,10 +152,6 @@ Content-Length: 145
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
 
-## <a name="wrapping-up"></a>Zusammenfassung
-
-Jetzt kennen Sie einige der erweiterten Funktionen von Durable Functions besser, insbesondere die Funktionen `WaitForExternalEvent` und `CreateTimer`. Sie haben gesehen, wie diese mit `Task.WaitAny` kombiniert werden können, um ein zuverlässiges Zeitlimitsystem zu implementieren. Dies ist bei der Interaktion mit realen Personen häufig hilfreich.
-
 ## <a name="visual-studio-sample-code"></a>Visual Studio-Beispielcode
 
 So sieht die Orchestrierung als einzelne C#-Datei in einem Visual Studio-Projekt aus:
@@ -164,6 +160,7 @@ So sieht die Orchestrierung als einzelne C#-Datei in einem Visual Studio-Projekt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Weitere Informationen zu Durable Functions-Bindungen](durable-functions-bindings.md)
+In diesem Beispiel werden einige der erweiterten Funktionen von Durable Functions veranschaulicht, insbesondere `WaitForExternalEvent` und `CreateTimer`. Sie haben gesehen, wie diese mit `Task.WaitAny` kombiniert werden können, um ein zuverlässiges Zeitlimitsystem zu implementieren. Dies ist bei der Interaktion mit realen Personen häufig hilfreich. Weitere Informationen zur Verwendung von Durable Functions finden Sie in einer Reihe von Artikeln, die detaillierte Erläuterungen zu bestimmten Themen bieten.
 
+> [!div class="nextstepaction"]
+> [Zum ersten Artikel der Reihe wechseln](durable-functions-bindings.md)

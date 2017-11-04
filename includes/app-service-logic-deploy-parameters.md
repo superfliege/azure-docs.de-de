@@ -1,13 +1,10 @@
-Mit dem Azure-Ressourcen-Manager definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt namens "Parameters", der alle Parameterwerte enthält.
-Definieren Sie einen Parameter für die Werte, die basierend auf dem bereitgestellten Projekt oder der bereitgestellten Umgebung variieren. Definieren Sie keine Parameter für Werte, die sich nicht ändern. Jeder Parameterwert wird in der Vorlage verwendet, um die bereitgestellten Ressourcen zu definieren. 
+Sie können mit Azure Resource Manager Parameter für die Werte, die beim Bereitstellen der Vorlage verwendet werden, definieren. Die Vorlage enthält einen Abschnitt namens `parameters`, der alle Parameterwerte enthält. Jeder Parameterwert wird in der Vorlage verwendet, um die bereitgestellten Ressourcen zu definieren.
 
-Verwenden Sie beim Definieren von Parametern das Feld **allowedValues** , um anzugeben, welche Werte eine Benutzer während der Bereitstellung angeben kann. Verwenden Sie das Feld **defaultValue** , um dem Parameter einen Wert zuweisen, wenn kein Wert während der Bereitstellung angegeben wird.
+> [!NOTE]
+> Definieren Sie keine Parameter für Werte, die sich nicht ändern. Definieren Sie Parameter nur für Werte, die abhängig vom bereitzustellenden Projekt oder abhängig von der Zielumgebung für die Bereitstellung variieren.
 
-Nachfolgend wird jeder der in der Vorlage verwendeten Parameter beschrieben.
+Folgendes gilt beim Definieren von Parametern:
 
-### <a name="logicappname"></a>logicAppName
-Der Name der zu erstellenden Logik-App.
+* Verwenden Sie das Feld **allowedValues**, um anzugeben, welche Werte Benutzer während der Bereitstellung angeben können.
 
-    "logicAppName": {
-        "type": "string"
-    }
+* Verwenden Sie das Feld **defaultValue**, um dem Parameter Standardwerte zuzuweisen, falls im Rahmen der Bereitstellung kein Wert angegeben wurde. 

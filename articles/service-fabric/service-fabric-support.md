@@ -3,7 +3,7 @@ title: "Informationen zu Supportoptionen für Azure Service Fabric | Microsoft-D
 description: "Unterstützte Azure Service Fabric-Clusterversionen und Links zu Dateisupporttickets"
 services: service-fabric
 documentationcenter: .net
-author: pkc
+author: pkcsf
 manager: timlt
 editor: 
 ms.assetid: 
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/15/2017
+ms.date: 10/12/2017
 ms.author: pkc
-ms.openlocfilehash: cd01d79c83749b38cc72a468e167ade5e264e1c4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bc0f70e99be04cd646c0b7c610f7c6e4a74dfc2
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="azure-service-fabric-support-options"></a>Supportoptionen für Azure Service Fabric
 
@@ -72,10 +72,11 @@ In der folgenden Liste sind die unterstützten Service Fabric-Versionen und das 
 | --- | --- | --- |
 | Alle Clusterversionen vor 5.3.121 |Alle Versionen bis einschließlich Version 2.3 |20. Januar 2017 |
 | 5.3.* |Alle Versionen bis einschließlich Version 2.3 |24. Februar 2017 |
-| 5.4.* |Alle Versionen bis einschließlich Version 2.4 |10. Mai 2017     |
+| 5.4.* |Alle Versionen bis einschließlich Version 2.4 |10. Mai 2017       |
 | 5.5.* |Alle Versionen bis einschließlich Version 2.5 |10. August 2017    |
-| 5.6.* |Alle Versionen bis einschließlich Version 2.6 |13. Oktober 2017    |
-| 5.7.* |Alle Versionen bis einschließlich Version 2.7 |Aktuelle Version, daher kein Datum des Ablaufs des Supports
+| 5.6.* |Alle Versionen bis einschließlich Version 2.6 |13. Oktober 2017   |
+| 5.7.* |Alle Versionen bis einschließlich Version 2.7 |15. Dezember 2017  |
+| 6.0.* |Alle Versionen bis einschließlich Version 2.8 |Aktuelle Version, daher kein Datum des Ablaufs des Supports
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric-Vorschauversionen – nicht für den Einsatz in Produktionsumgebungen unterstützt.
 Von Zeit zu Zeit veröffentlichen wir Versionen, die wichtige Features besitzen, die als Vorschauversionen veröffentlicht werden und für die wir gerne Feedback möchten. Diese Vorschauversionen sollten nur zu Testzwecken verwendet werden. Ihr Produktionscluster muss immer als unterstütze stabile Service Fabric-Version ausgeführt werden. Eine Vorschauversion beginnt immer mit einer großen und kleinen Versionsnummer von 255. Wenn Sie z.B. eine Service Fabric-Version 255.255.5703.949 vor sich haben, befindet sich diese Produktversion in er Vorschau und darf nur in Testclustern verwendet werden. Diese Produktversionen werden auch im [Service Fabric-Teamblog](https://blogs.msdn.microsoft.com/azureservicefabric) bekannt gegeben und besitzen Details zu den enthaltenen Features.

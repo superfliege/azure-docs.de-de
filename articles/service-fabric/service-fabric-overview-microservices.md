@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: 91f4d1658875245f023e7546650e7b2592b48af1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f69f594d058ba061cec116f87435c96280e19f93
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen
 Für Softwareentwickler gibt es nichts Neues, was das Einbeziehen einer Anwendung in Komponententeile betrifft. Es handelt sich hierbei um ein zentrales Paradigma der Objektorientierung, von Softwareabstrahierungen und der „Komponentisierung“. Heute erfolgt diese Faktorisierung meist in Form von Klassen und Schnittstellen zwischen freigegebenen Bibliotheken und Technologieebenen. In der Regel wird ein mehrstufiger Ansatz mit einem Back-End-Speicher, einer Geschäftslogik auf der mittleren Ebene und einer Front-End-Benutzeroberfläche verwendet. Was sich im Laufe der letzten Jahre *doch* geändert hat, ist die Tatsache, dass wir als Entwickler verteilte Anwendungen erstellen, die für die Cloud bestimmt und geschäftlich geboten sind.
@@ -147,10 +147,10 @@ Service Fabric verfügt über drei allgemeine Bereiche für die Unterstützung d
 ### <a name="migrating-existing-applications-to-service-fabric"></a>Migrieren von vorhandenen Anwendungen zu Service Fabric
 Ein wichtiger Ansatz in Service Fabric ist das Wiederverwenden von vorhandenem Code, der durch neue Microservices aktualisiert werden kann. Es gibt fünf Phasen der Aktualisierung von Anwendungen. Sie können mit jeder beliebigen Phase beginnen und aufhören. Dies sind die Phasen:
 
-1) Nehmen Sie eine herkömmliche monolithische Anwendung
-2) Lift and Shift: Verwenden Sie Container oder ausführbare Gastanwendungsdateien, um vorhandenen Code in Service Fabric zu hosten.
-3) Aktualisierung: Hinzufügen von neuen Microservices gemeinsam mit vorhandenem Code in Containern 
-4) Innovation: Aufteilen der monolithischen Anwendung in Microservices je nach Bedarf
+1) Nehmen Sie eine herkömmliche monolithische Anwendung  
+2) Lift and Shift: Verwenden Sie Container oder ausführbare Gastanwendungsdateien, um vorhandenen Code in Service Fabric zu hosten.  
+3) Aktualisierung: Hinzufügen von neuen Microservices gemeinsam mit vorhandenem Code in Containern  
+4) Innovation: Aufteilen der monolithischen Anwendung in Microservices je nach Bedarf  
 5) Umwandlung in Microservices: Umwandeln vorhandener monolithischer Anwendungen oder Erstellen neuer Anwendungen
 
 ![Migration zu Microservices][Image3]

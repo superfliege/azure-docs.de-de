@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/12/2017
 ms.author: billmath
-ms.openlocfilehash: 7a886cdb0c36008bdb66592a8d3428889739627e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5feadd851b166d0a9a77bd1d124cdd599d5d701
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -91,6 +91,8 @@ Hier ist beschrieben, wie Authentifizierungs-Agents die Registrierung unter Azur
 4. Azure AD überprüft das Zugriffstoken in der Registrierungsanforderung und stellt sicher, dass die Anforderung von einem globalen Administrator stammt.
 5. Azure AD signiert dann ein Zertifikat zur digitalen Identität und sendet es zurück an den Authentifizierungs-Agent.
     - Das Zertifikat wird über die **Stammzertifizierungsstelle (CA) von Azure AD** signiert. Beachten Sie, dass diese Zertifizierungsstelle _nicht_ im Store mit den **vertrauenswürdigen Stammzertifizierungsstellen**  von Windows enthalten ist.
+    - Diese Zertifizierungsstelle wird nur von der Passthrough-Authentifizierung verwendet. Sie wird nur während der Registrierung des Authentifizierungs-Agents verwendet, um Zertifikatsignieranforderungen (CSRs) zu signieren.
+    - Diese Zertifizierungsstelle wird von keinem anderen Dienst in Azure AD verwendet.
     - Der Antragsteller des Zertifikats (**Distinguished Name, DN**) ist auf Ihre **Mandanten-ID** festgelegt. Dies ist eine GUID, mit der Ihr Mandant eindeutig identifiziert wird. Die Nutzung des Zertifikats ist somit nur auf Ihren Mandanten beschränkt.
 6. Azure AD speichert den öffentlichen Schlüssel des Authentifizierungs-Agents in einer Azure SQL-Datenbank, auf die nur Azure AD Zugriff hat.
 7. Das Zertifikat (ausgestellt in Schritt 5) wird auf dem lokalen Server im **Windows-Zertifikatspeicher** gespeichert (Speicherort: **[CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE)**) und sowohl vom Authentifizierungs-Agent als auch von der Updater-Anwendung verwendet.
@@ -133,6 +135,7 @@ Bei der Passthrough-Authentifizierung wird eine Anforderung zur Benutzeranmeldun
 9. Der Authentifizierungs-Agent ermittelt den verschlüsselten Kennwortwert für den dazugehörigen öffentlichen Schlüssel (per Bezeichner) und entschlüsselt ihn mit dem entsprechenden privaten Schlüssel.
 10. Der Authentifizierungs-Agent versucht, den Benutzernamen und das Kennwort für Ihre lokale Active Directory-Instanz zu validieren, indem die **[Win32 LogonUser-API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)** verwendet wird (mit Festlegung des Parameters **dwLogonType** auf **LOGON32_LOGON_NETWORK**). 
     - Dies ist dieselbe API, die von Active Directory-Verbunddienste (AD FS) in einem Szenario mit Verbundanmeldung zum Anmelden genutzt wird.
+    - Dies beruht auf dem Standardauflösungsvorgang in Windows Server, um den Domänencontroller zu suchen.
 11. Der Authentifizierungs-Agent erhält das Ergebnis von Active Directory (Erfolg, Benutzername oder Kennwort fehlerhaft, Kennwort abgelaufen, Benutzer gesperrt usw.).
 12. Der Authentifizierungs-Agent leitet das Ergebnis über einen ausgehenden gegenseitig authentifizierten HTTPS-Kanal (Port 443) zurück an den Azure AD STS. Bei der gegenseitigen Authentifizierung wird dasselbe Zertifikat verwendet, das zuvor während der Registrierung für den Authentifizierungs-Agent ausgestellt wurde.
 13. Der Azure AD STS überprüft, ob das Ergebnis mit der jeweiligen Anmeldeanforderung auf Ihrem Mandanten korreliert.
@@ -191,7 +194,7 @@ Ein Authentifizierungs-Agent wird wie folgt automatisch aktualisiert:
 ## <a name="next-steps"></a>Nächste Schritte
 - [**Aktuelle Einschränkungen**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarien
 - [**Schnellstart**](active-directory-aadconnect-pass-through-authentication-quick-start.md): Einrichten und Ausführen der Passthrough-Authentifizierung mit Azure AD
-- [**Smart Lockout**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten
+- [**Smart Lockout**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten.
 - [**Funktionsweise**](active-directory-aadconnect-pass-through-authentication-how-it-works.md): Grundlegende Funktionsweise der Passthrough-Authentifizierung mit Azure AD
 - [**Häufig gestellte Fragen:**](active-directory-aadconnect-pass-through-authentication-faq.md) Antworten auf häufig gestellte Fragen
 - [**Problembehandlung**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Beheben häufig auftretender Probleme mit dieser Funktion

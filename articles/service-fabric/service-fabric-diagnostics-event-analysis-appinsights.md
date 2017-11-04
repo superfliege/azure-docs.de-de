@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/26/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 4085a607b800f4f4f155cdc266bc203b0858fd7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34f14f42150e46edae2d1352827f96a411117a62
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
@@ -38,6 +38,9 @@ Zum Konfigurieren von AI mit Ihrem Ereignisaggregationstool benötigen Sie den A
 
 ### <a name="configuring-ai-with-wad"></a>Konfigurieren von AI mit WAD
 
+>[!NOTE]
+>Dies gilt gegenwärtig nur für Windows-Cluster.
+
 Es gibt zwei bevorzugte Möglichkeiten zum Senden von Daten von WAD an Azure AI. Dies erfolgt durch Hinzufügen einer AI-Senke in der WAD-Konfiguration, wie in [diesem Artikel](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) ausführlich beschrieben.
 
 #### <a name="add-an-ai-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Hinzufügen eines AI-Instrumentierungsschlüssels beim Erstellen eines Clusters im Azure-Portal
@@ -50,7 +53,7 @@ Wenn beim Erstellen eines Clusters die Diagnose aktiviert ist („Ein“), wird 
 
 Fügen Sie in „WadCfg“ der Resource Manager-Vorlage durch Einfügen der folgenden beiden Änderungen eine Senke („Sink“) hinzu:
 
-1. Fügen Sie die Senkenkonfiguration hinzu:
+1. Fügen Sie die Konfiguration der Senke hinzu, sobald das Deklarieren von `DiagnosticMonitorConfiguration` abgeschlossen ist:
 
     ```json
     "SinksConfig": {
@@ -64,7 +67,7 @@ Fügen Sie in „WadCfg“ der Resource Manager-Vorlage durch Einfügen der folg
 
     ```
 
-2. Fügen Sie die Senke in „DiagnosticMonitorConfiguration“ ein, indem Sie die folgende Zeile in „DiagnosticMonitorConfiguration“ von „WadCfg“ hinzufügen:
+2. Nehmen Sie die Senke in `DiagnosticMonitorConfiguration` auf, indem Sie die folgende Zeile in `DiagnosticMonitorConfiguration` von `WadCfg` hinzufügen (unmittelbar bevor `EtwProviders` deklariert werden):
 
     ```json
     "sinks": "applicationInsights"

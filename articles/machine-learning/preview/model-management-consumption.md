@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: fc4d793bcf402a3e742fae2b2c0052f2d60d1b47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b2f806b81bbc6d9328ab179644b79b97d68e7b9
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="consuming-web-services"></a>Nutzen von Webdiensten
 Sobald Sie ein Modell als in Echtzeit arbeitenden Webdienst bereitgestellt haben, können Sie Daten an ihn senden und Vorhersagen von verschiedenen Plattformen und Anwendungen abrufen. Der in Echtzeit arbeitende Webdienst macht eine REST-API zum Abrufen von Vorhersagen verfügbar. Sie können Daten im ein- oder mehrzeiligen Format an den Webdienst senden, um eine oder mehrere Vorhersagen gleichzeitig zu erhalten.
@@ -102,6 +102,7 @@ namespace MyFirstService
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(SERVICE_URL);
+            //For local web service, comment out this line.
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", API_KEY);
 
             var inputJson = new List<RequestPayload>();
@@ -147,7 +148,7 @@ namespace MyFirstService
 Verwenden Sie Python, um in Echtzeit eine Anforderung an den Webdienst zu senden. 
 
 1. Kopieren Sie das folgende Codebeispiel in eine neue Python-Datei.
-2. Aktualisieren Sie die Parameter „data“, „url“ und „api_key“.
+2. Aktualisieren Sie die Parameter „data“, „url“ und „api_key“. Entfernen Sie für lokale Webdienste die „Authorization“-Header.
 3. Führen Sie den Code aus. 
 
 ```python

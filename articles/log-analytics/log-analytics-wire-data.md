@@ -12,26 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
-ms.author: banders
-ms.openlocfilehash: ce8065d777bb315d4f9589d1b24a5152296facfe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/19/2017
+ms.author: magoedte;banders
+ms.openlocfilehash: 3bb4c82268fe7805227c213000dc803307876fe7
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0-Lösung (Vorschauversion) in Log Analytics
 
 ![Wire Data-Symbol](./media/log-analytics-wire-data/wire-data2-symbol.png)
 
-Bei Wire Data handelt es sich um zusammengefasste Netzwerk- und Leistungsdaten von Computern mit OMS-Agents, z.B. Operations Manager, Agents mit Windows-Verbindung und Linux-Agents. Netzwerkdaten werden mit Ihren sonstigen Protokolldaten kombiniert, um Ihnen das Korrelieren von Daten zu ermöglichen.
+Daten zur Kommunikation sind konsolidierte Netzwerk- und Leistungsdaten, die von mit Windows verbundenen und Linux verbundenen Computern mit dem OMS-Agent gesammelt werden, einschließlich der in Ihrer Umgebung von Operations Manager überwachten Computer. Netzwerkdaten werden mit Ihren sonstigen Protokolldaten kombiniert, um Ihnen das Korrelieren von Daten zu ermöglichen.
 
-Zusätzlich zu den OMS-Agents verwendet die Wire Data-Lösung Microsoft Dependency-Agents, die Sie auf Computern in Ihrer IT-Infrastruktur installieren. Dependency-Agents überwachen Netzwerkdaten, die für die Netzwerkschichten 2 und 3 des [OSI-Modells](https://en.wikipedia.org/wiki/OSI_model) an ihre Computer und von ihnen gesendet werden, z.B. die verschiedenen verwendeten Protokolle und Ports. Die Daten werden dann mit Agents an Log Analytics gesendet.
+Zusätzlich zum OMS-Agent verwendet die Wire Data-Lösung Microsoft Dependency-Agents, die Sie auf Computern in Ihrer IT-Infrastruktur installieren. Dependency-Agents überwachen Netzwerkdaten, die für die Netzwerkschichten 2 und 3 des [OSI-Modells](https://en.wikipedia.org/wiki/OSI_model) an ihre Computer und von ihnen gesendet werden, z.B. die verschiedenen verwendeten Protokolle und Ports. Die Daten werden dann mit Agents an Log Analytics gesendet.  
 
 > [!NOTE]
 > Sie können die vorherige Version der Wire Data-Lösung nicht neuen Arbeitsbereichen hinzufügen. Wenn Sie die ursprüngliche Wire Data-Lösung aktiviert haben, können Sie diese Lösung weiterhin verwenden. Um jedoch Wire Data 2.0 zu verwenden, müssen Sie zuerst die ursprüngliche Version entfernen.
 
-Standardmäßig erfasst Log Analytics protokollierte Daten für CPU, Arbeitsspeicher, Datenträger und Netzwerk von Indikatoren, die in Windows integriert sind. Die Erfassung von Netzwerkdaten und anderen Daten wird für jeden Agent in Echtzeit durchgeführt, einschließlich der vom Computer verwendeten Subnetze und Anwendungsebenenprotokolle. Auf der Seite „Einstellungen“ können Sie auf der Registerkarte „Protokolle“ weitere Leistungsindikatoren hinzufügen.
+Standardmäßig protokolliert Log Analytics Daten für CPU, Arbeitsspeicher, Datenträger sowie Netzwerkleistungsdaten von Leistungsindikatoren, die in Windows und Linux integriert sind. Zudem werden Daten von anderen Leistungsindikatoren protokolliert, die Sie angeben können. Die Erfassung von Netzwerkdaten und anderen Daten wird für jeden Agent in Echtzeit durchgeführt, einschließlich der vom Computer verwendeten Subnetze und Anwendungsebenenprotokolle.  Wire Data untersucht Netzwerkdaten auf Anwendungsebene und nicht unten auf der TCP-Transportebene.  Die Lösung betrachtet keine einzelnen ACKs und SYNs.  Sobald der Handshake abgeschlossen ist, wird er als Liveverbindung betrachtet und als „Verbunden“ gekennzeichnet. Diese Liveverbindung bleibt so lange bestehen, wie beide Seiten zustimmen, dass der Socket offen ist und Daten in beide Richtungen übertragen werden können.  Sobald eine Seite die Verbindung schließt, wird sie als „Getrennt“ markiert.  Aus diesem Grund wird nur die Bandbreite von erfolgreich abgeschlossenen Paketen gezählt, während erneut gesendete oder fehlerhafte Pakete nicht gemeldet werden.
 
 Wenn Sie [sFlow](http://www.sflow.org/) oder andere Software mit dem [NetFlow-Protokoll von Cisco](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html) verwendet haben, werden Ihnen die in den Daten zur Kommunikation angezeigten Statistiken und Daten bekannt vorkommen.
 
@@ -50,7 +50,7 @@ Beispiele für die Typen von integrierten Abfragen von Protokollsuchen:
 
 Wenn Sie mit Wire Data eine Suche durchführen, können Sie Daten filtern und gruppieren, um Informationen zu den wichtigsten Agents und Protokollen anzuzeigen. Außerdem können Sie sich ansehen, wann bestimmte Computer (IP-Adressen/MAC-Adressen) miteinander kommuniziert haben, wie lange dies gedauert hat und wie viele Daten gesendet wurden. Im Grunde genommen zeigen Sie die Metadaten zum Netzwerkdatenverkehr an. Dies ist ein suchbasierter Vorgang.
 
-Da Sie Metadaten anzeigen, ist der Vorgang nicht unbedingt gut für die eingehende Problembehandlung geeignet. Bei Wire Data in Log Analytics wird keine vollständige Erfassung aller Netzwerkdaten durchgeführt. Die eingehende Problembehandlung auf Paketebene ist also nicht vorgesehen. Der Vorteil einer Verwendung des Agents gegenüber anderen Erfassungsmethoden besteht darin, dass Sie keine Appliances installieren, Netzwerkswitches neu konfigurieren oder komplizierten Konfigurationen durchführen müssen. Wire Data ist einfach Agent-basiert. Sie installieren den Agent auf einem Computer, um damit den Netzwerkdatenverkehr zu überwachen. Ein weiterer Vorteil ergibt sich, wenn Sie Workloads überwachen möchten, die bei Cloudanbietern, Hostinganbietern oder unter Microsoft Azure ausgeführt werden und bei denen sich die Fabric-Ebene nicht im Besitz des Benutzers befindet.
+Da Sie Metadaten anzeigen, ist der Vorgang nicht unbedingt gut für die eingehende Problembehandlung geeignet. Bei Wire Data in Log Analytics wird keine vollständige Erfassung aller Netzwerkdaten durchgeführt.  Die eingehende Problembehandlung auf Paketebene ist nicht vorgesehen. Der Vorteil einer Verwendung des Agents gegenüber anderen Erfassungsmethoden besteht darin, dass Sie keine Appliances installieren, Netzwerkswitches neu konfigurieren oder komplizierten Konfigurationen durchführen müssen. Wire Data ist einfach Agent-basiert. Sie installieren den Agent auf einem Computer, um damit den Netzwerkdatenverkehr zu überwachen. Ein weiterer Vorteil ergibt sich, wenn Sie Workloads überwachen möchten, die bei Cloudanbietern, Hostinganbietern oder unter Microsoft Azure ausgeführt werden und bei denen sich die Fabric-Ebene nicht im Besitz des Benutzers befindet.
 
 ## <a name="connected-sources"></a>Verbundene Quellen
 
@@ -59,7 +59,7 @@ Wire Data ruft ihre Daten vom Microsoft Dependency-Agent ab. Der Dependency-Agen
 | **Verbundene Quelle** | **Unterstützt** | **Beschreibung** |
 | --- | --- | --- |
 | Windows-Agents | Ja | Wire Data analysiert und erfasst Daten von Windows-Agent-Computern. <br><br> Zusätzlich zum [OMS-Agent](log-analytics-windows-agents.md) erfordern Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems). |
-| Linux-Agents | Ja | Wire Data analysiert und erfasst Daten von Linux-Agent-Computern.<br><br> Zusätzlich zum [OMS-Agent](log-analytics-linux-agents.md) erfordern Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems). |
+| Linux-Agents | Ja | Wire Data analysiert und erfasst Daten von Linux-Agent-Computern.<br><br> Zusätzlich zum [OMS-Agent](log-analytics-quick-collect-linux-computer.md) erfordern Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems). |
 | System Center Operations Manager-Verwaltungsgruppe | Ja | Wire Data analysiert und erfasst Daten von Windows- und Linux-Agents in einer verbundenen [System Center Operations Manager-Verwaltungsgruppe](log-analytics-om-agents.md). <br><br> Es ist eine direkte Verbindung des System Center Operations Manager-Agents mit Log Analytics erforderlich. Daten werden von der Verwaltungsgruppe an Log Analytics weitergeleitet. |
 | Azure-Speicherkonto | Nein | Da Wire Data Daten von Agent-Computern erfasst, sind keine Daten aus Azure Storage zu erfassen. |
 
@@ -208,8 +208,8 @@ Der Dependency-Agent wird auf Windows-Computern mithilfe von „InstallDependenc
 
 Führen Sie die folgenden Schritte aus, um den Dependency-Agent auf jedem Windows-Computer zu installieren:
 
-1. Stellen Sie mithilfe der Anweisungen unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](log-analytics-windows-agents.md) sicher, dass der OMS-Agent installiert ist.
-2. Laden Sie den Windows-Agent über den Link aus dem vorherigen Abschnitt herunter, und führen Sie ihn dann mithilfe des folgenden Befehls aus: „InstallDependencyAgent-Windows.exe“.
+1. Installieren Sie den OMS-Agent mithilfe der in [Sammeln von Daten von Windows-Computern, die in Ihrer Umgebung gehostet werden](log-analytics-windows-agents.md) aufgeführten Schritte.
+2. Laden Sie den Dependency-Agent von Windows über den Link aus dem vorherigen Abschnitt herunter, und führen Sie ihn dann mithilfe des folgenden Befehls aus: `InstallDependencyAgent-Windows.exe`.
 3. Folgen Sie den Anweisungen des Assistenten, um den Assistenten zu installieren.
 4. Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Windows-Agents lautet das Protokollverzeichnis „%Programfiles%\Microsoft Dependency Agent\logs“.
 
@@ -234,8 +234,8 @@ Der Dependency-Agent wird auf Linux-Computern mit „InstallDependencyAgent-Linu
 
 Führen Sie die folgenden Schritte aus, um den Dependency-Agent auf jedem Linux-Computer zu installieren:
 
-1. Installieren Sie den AMS-Agent mithilfe der Anweisungen unter [Verbinden Ihrer Linux-Computer mit Operations Management Suite (OMS)](log-analytics-agent-linux.md).
-2. Laden Sie den Linux-Dependency-Agent über den Link aus dem vorherigen Abschnitt herunter, und installieren Sie ihn dann mithilfe des folgenden Befehls als Root: „InstallDependencyAgent-Linux64.bin“.
+1. Installieren Sie den OMS-Agent mithilfe der in [Sammeln von Daten von Linux-Computern, die in Ihrer Umgebung gehostet werden](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) aufgeführten Schritte.
+2. Laden Sie den Dependency-Agent von Linux über den Link aus dem vorherigen Abschnitt herunter, und installieren Sie ihn dann mithilfe des folgenden Befehls als Root: „InstallDependencyAgent-Linux64.bin“.
 3. Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Linux-Agents lautet das Protokollverzeichnis: „/var/opt/microsoft/dependency-agent/log“.
 
 Um eine Liste der Installationsflags anzuzeigen, führen Sie das Installationsprogramm wie folgt mit dem `-help`-Flag aus.
