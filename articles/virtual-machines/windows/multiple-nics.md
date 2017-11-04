@@ -14,16 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 9e84e18c5d6c205d320c6c9c565ce6723d8fa6e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 941791ba398a3abbaa5137c36391fd23789cd3b1
+ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Erstellen und Verwalten eines virtuellen Windows-Computers mit mehrere Netzwerkkarten
 Virtuelle Computer (VMs) in Azure können über mehrere virtuelle Netzwerkkarten (Network Interface Cards, NICs) verfügen. Häufige Szenarien hierfür sind z.B. unterschiedliche Subnetze für Front-End- und Back-End-Verbindung oder ein Netzwerk für eine Überwachungs- oder Sicherungslösung. In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Außerdem erfahren Sie, wie Sie Netzwerkkarten zu einem vorhandenen virtuellen Computer hinzufügen oder davon entfernen. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
-
-Ausführliche Informationen wie u.a. das Erstellen mehrerer Netzwerkkarten in Ihren eigenen PowerShell-Skripts finden Sie unter [Bereitstellen virtueller Computer mit mehreren Netzwerkkarten](../../virtual-network/virtual-network-deploy-multinic-arm-ps.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Stellen Sie sicher, dass Sie die [neueste Azure PowerShell-Version installiert und konfiguriert](/powershell/azure/overview) haben.
@@ -78,7 +76,7 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-Üblicherweise erstellen Sie auch eine [Netzwerksicherheitsgruppe](../../virtual-network/virtual-networks-nsg.md) oder einen [Lastenausgleich](../../load-balancer/load-balancer-overview.md), um den Datenverkehr zwischen den virtuellen Computern zu verwalten und zu verteilen. Im [detaillierteren Artikel zu virtuellen Computern mit mehreren Netzwerkkarten](../../virtual-network/virtual-network-deploy-multinic-arm-ps.md) finden Sie ausführlichere Informationen zum Erstellen einer Netzwerksicherheitsgruppe und zum Zuweisen von Netzwerkkarten.
+In der Regel erstellen Sie auch eine [Netzwerksicherheitsgruppe](../../virtual-network/virtual-networks-nsg.md), um den Netzwerkdatenverkehr zur VM zu filtern, und einen [Lastenausgleich](../../load-balancer/load-balancer-overview.md) zum Verteilen des Datenverkehrs auf mehrere VMs.
 
 ### <a name="create-the-virtual-machine"></a>Erstellen des virtuellen Computers
 Beginnen Sie jetzt damit, Ihre VM-Konfiguration zu erstellen. Jede VM-Größe weist eine maximale Anzahl von Netzwerkkarten auf, die Sie einem virtuellen Computer hinzufügen können. Weitere Informationen finden Sie unter [Windows-VM-Größen](sizes.md) .

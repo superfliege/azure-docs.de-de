@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: wgries
-ms.openlocfilehash: b11cd632fc4735648581e77eb2570dd32604067d
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: c4f997b994bb337ad8a886d7ad09791cb587d4f9
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Standardprotokoll SMB zugegriffen werden kann. Da Azure Files vollständig verwaltet ist, ist die Bereitstellung in Produktionsszenarien wesentlich einfacher als das Bereitstellen und Verwalten eines Dateiservers oder NAS-Geräts. In diesem Artikel werden die Aspekte behandelt, die beim Bereitstellen einer Azure-Dateifreigabe in der Produktionsumgebung Ihrer Organisation zu berücksichtigen sind.
@@ -63,7 +63,7 @@ Azure Files bietet mehrere integrierte Optionen zum Gewährleisten der Datensich
     * Clients, die die SMB 3.0-Verschlüsselung unterstützen, senden und empfangen Daten über einen verschlüsselten Kanal.
     * Clients, die SMB 3.0 nicht unterstützen, können innerhalb des Rechenzentrums über SMB 2.1 oder SMB 3.0 unverschlüsselt kommunizieren. Beachten Sie, dass Clients zwischen Rechenzentren nicht unverschlüsselt über SMB 2.1 oder SMB 3.0 kommunizieren dürfen.
     * Clients können über die REST-API „File“ mit HTTP oder HTTPS kommunizieren.
-* Verschlüsselung ruhender Daten: Alle Daten werden mit vollständig verwalteten Schlüsseln verschlüsselt. Durch Verschlüsselung ruhender Daten erhöhen sich weder die Speicherkosten, noch wird die Leistung verringert. 
+* Verschlüsselung für ruhende Daten ([Azure Storage Service Encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Wir befassen uns gerade mit der Aktivierung der Storage Service Encryption (SSE) auf der zugrunde liegenden Azure Storage-Plattform. Dies bedeutet, dass die Verschlüsselung standardmäßig für alle Speicherkonten aktiviert wird. Wenn Sie in einer Region mit standardmäßiger Verschlüsselung ruhender Daten ein neues Speicherkonto erstellen, müssen Sie zur Aktivierung keine Schritte unternehmen. Ruhende Daten werden mit vollständig verwalteten Schlüsseln verschlüsselt. Durch Verschlüsselung ruhender Daten erhöhen sich weder die Speicherkosten, noch wird die Leistung verringert. 
 * Optionale Anforderung der Verschlüsselung von Daten während der Übertragung: Bei Auswahl dieser Option lässt Azure Files keinen Zugriff auf die Daten über unverschlüsselte Kanäle zu. Konkret sind bei verschlüsselten Verbindungen nur HTTPS und SMB 3.0 zugelassen. 
 
     > [!Important]  

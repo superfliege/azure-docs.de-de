@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/12/2017
 ms.author: billmath
-ms.openlocfilehash: 7bb8868ab813d0de992e92a921b2d204b0ac60c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d57235671389e02c7d397b1244cdddb7a20067cc
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -127,6 +127,10 @@ Es dauert einige Zeit, bis die Konfiguration wirksam wird – der Zeitraum häng
 
 Je nach Problem müssen Sie an verschiedenen Stellen nach Protokollen von Passthrough-Authentifizierungs-Agents suchen.
 
+### <a name="azure-ad-connect-logs"></a>Azure AD Connect-Protokolle
+
+Prüfen Sie bei Fehlern im Zusammenhang mit der Installation die Azure AD Connect-Protokolle unter **%ProgramData%\AADConnect\trace-\*.log**.
+
 ### <a name="authentication-agent-event-logs"></a>Ereignisprotokolle von Authentifizierungs-Agents
 
 Öffnen Sie bei Fehlern in Zusammenhang mit dem Authentifizierungs-Agent die Ereignisanzeige auf dem Server unter **Anwendungs- und Dienstprotokolle\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**, und prüfen Sie sie.
@@ -135,7 +139,7 @@ Aktivieren Sie für die detaillierte Analyse da Protokoll „Session“ (Sitzung
 
 ### <a name="detailed-trace-logs"></a>Ausführliche Ablaufverfolgungsprotokolle
 
-Um Benutzeranmeldefehler zu beheben, suchen Sie unter **%programdata%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** nach Ablaufverfolgungsprotokollen. Diese Protokolle enthalten die Gründe, warum eine bestimmte Benutzeranmeldung mittels der Passthrough-Authentifizierungsfunktion fehlgeschlagen ist. Diese Fehler werden auch den Gründe für benutzerseitige Anmeldefehler zugeordnet, die zuvor in der [Tabelle](#sign-in-failure-reasons-on-the-Azure-portal) gezeigt wurden. Es folgt ein Beispiel für einen Protokolleintrag:
+Um Benutzeranmeldefehler zu beheben, suchen Sie unter **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** nach Ablaufverfolgungsprotokollen. Diese Protokolle enthalten die Gründe, warum eine bestimmte Benutzeranmeldung mittels der Passthrough-Authentifizierungsfunktion fehlgeschlagen ist. Diese Fehler werden auch den Gründe für benutzerseitige Anmeldefehler zugeordnet, die zuvor in der [Tabelle](#sign-in-failure-reasons-on-the-Azure-portal) gezeigt wurden. Es folgt ein Beispiel für einen Protokolleintrag:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

@@ -11,35 +11,47 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2017
+ms.date: 10/12/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: accf292f70bf0eafdefc00c3feeaf8e346605401
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: faee3bc9b0b1a10a48a514d830af5045cb047e02
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
-Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active Directory-Berichten.  
-Weitere Informationen finden Sie unter [Azure Active Directory-Berichte](active-directory-reporting-azure-portal.md). 
+Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active Directory-Berichten (Azure AD). Weitere Informationen finden Sie unter [Azure Active Directory-Berichterstellung](active-directory-reporting-azure-portal.md). 
+
+**F: Ich verwende die Endpunkt-APIs von https://graph.windows.net/&lt;Mandantenname&gt;/reports/ zum programmgesteuerten Abrufen der Azure AD-Überwachungsberichte und integrierten Anwendungsnutzungsberichte in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
+
+**A:** In der [API-Referenzdokumentation](https://developer.microsoft.com/graph/) finden Sie Informationen dazu, wie Sie die neuen APIs für den Zugriff auf [Aktivitätsberichte](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) verwenden können. Dieser Endpunkt verfügt über zwei Berichte (Überwachung und Anmeldevorgänge), die alle Daten des alten API-Endpunkts enthalten. Dieser neue Endpunkt verfügt auch über einen Bericht zu Anmeldeaktivitäten für die Azure AD Premium-Lizenz, über den Sie Informationen zur App-Nutzung, Gerätenutzung und Benutzeranmeldung abrufen können.
+
+
+--- 
+
+**F: Ich verwende die Endpunkt-APIs von https://graph.windows.net/&lt;Mandantenname&gt;/reports/ zum programmgesteuerten Abrufen der Azure AD-Sicherheitsberichte (bestimmte Erkennungstypen, z.B. kompromittierte Anmeldeinformationen oder Anmeldungen über anonyme IP-Adressen) in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
+
+**A:** Sie können die [API für Identity Protection-Risikoereignisse](active-directory-identityprotection-graph-getting-started.md) für den Zugriff auf Sicherheitserkennungen über Microsoft Graph verwenden. Dieses neue Format ermöglicht höhere Flexibilität beim Abfragen von Daten mit erweiterter Filterung, Feldauswahl und vielem mehr, und standardisiert Risikoereignisse in einem Typ zur einfacheren Integration in SIEMs und andere Tools zur Datensammlung. Da die Daten in einem anderen Format vorliegen, können Sie Ihre alten Abfragen nicht durch eine neue Abfrage ersetzen. Allerdings [verwendet die neue API Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), den Microsoft-Standard für diese APIs wie z.B. Office 365 oder Azure AD. So können Sie entweder Ihre aktuellen MS Graph-Investitionen erweitern oder die Umstellung auf diese neue Standardplattform beginnen.
+
+--- 
 
 **F: Wie lange werden Aktivitätsprotokolldaten (Überwachung und Anmeldevorgänge) im Azure-Portal aufbewahrt?** 
 
-**A:** 7 Tage für unsere Kunden im Tarif „Free“. Nach einem Wechsel zu einer Azure AD Premium 1- oder Premium 2-Lizenz können Sie bis zu 30 Tage auf Daten zugreifen. Weitere Informationen zur Aufbewahrung finden Sie unter [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md).
+**A:** 7 Tage für unsere Kunden im Tarif „Free“. Durch Erwerb einer Azure AD Premium 1- oder Premium 2-Lizenz können Sie bis zu 30 Tage auf Daten zugreifen. Weitere Informationen zur Aufbewahrung von Berichten finden Sie unter [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md).
 
 --- 
 
 **F: Wie lange dauert es, bis nach Abschluss einer Aufgabe Aktivitätsdaten angezeigt werden?**
 
-**A:** Für Aktivitätsüberwachungsprotokolle fällt eine Latenz von 15 Minuten bis zu einer Stunde an. Für Aktivitätsprotokolle für Anmeldevorgänge fällt bei den meisten Datensätzen eine Latenz von 15 Minuten und bei einigen wenigen Datensätzen von bis zu 2 Stunden an.
+**A:** Für Aktivitätsüberwachungsprotokolle fällt eine Wartezeit von 15 Minuten bis zu einer Stunde an. Aktivitätsprotokolle für Anmeldevorgänge können von 15 Minuten bis zu 2 Stunden bei einigen Datensätzen in Anspruch nehmen.
 
 ---
 
-**F: Muss ich ein globaler Administrator sein, um die Aktivitätsprotokolle im Azure-Portal anzeigen oder die Daten über die API abzurufen?**
+**F: Muss ich ein globaler Administrator sein, um die Anmeldeaktivitäten im Azure-Portal anzuzeigen oder die Daten über die API abzurufen?**
 
-**A:** Nein. Sie müssen entweder ein **Benutzer mit Leseberechtigung für Sicherheitsfunktionen**, **Sicherheitsadministrator** oder **globaler Administrator** sein, um Berichtsdaten im Azure-Portal anzeigen oder über die API darauf zugreifen zu können.
+**A:** Nein. Sie müssen ein **Benutzer mit Leseberechtigung für Sicherheitsfunktionen**, **Sicherheitsadministrator** oder **globaler Administrator** sein, um Berichtsdaten im Azure-Portal oder über die API abrufen zu können.
 
 ---
 

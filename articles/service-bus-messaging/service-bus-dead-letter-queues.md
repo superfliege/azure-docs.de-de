@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2017
-ms.author: clemensv;sethm
-ms.openlocfilehash: c16bcf30ab96f79e59404a41852e4cd227e28b08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/12/2017
+ms.author: sethm
+ms.openlocfilehash: e5070e225387f5d4ae9d49234b4e260a57436291
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Übersicht über Service Bus-Warteschlangen für unzustellbare Nachrichten
 
@@ -32,13 +32,13 @@ Die Warteschlange für unzustellbare Nachrichten dient zum Speichern von Nachric
 
 Im Hinblick auf API und Protokoll ähnelt die Warteschlange für unzustellbare Nachrichten weitgehend anderen Warteschlangen, mit der Ausnahme, dass Nachrichten nur durch die übergeordnete Entität über den Vorgang für unzustellbare Nachrichten gesendet werden können. Darüber hinaus ist die Gültigkeitsdauer nicht relevant, und eine Nachricht kann nicht von einer Warteschlange für unzustellbare Nachrichten aus als unzustellbar gekennzeichnet werden. Die Warteschlange für unzustellbare Nachrichten bietet vollständige Unterstützung für die Peek/Lock-Übermittlung und Transaktionsvorgänge.
 
-Beachten Sie, dass die Warteschlange für unzustellbare Nachrichten nicht automatisch bereinigt wird. Nachrichten verbleiben in dieser Warteschlange, bis Sie sie explizit daraus abrufen und für die unzustellbare Nachricht [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CompleteAsync) aufrufen.
+Beachten Sie, dass die Warteschlange für unzustellbare Nachrichten nicht automatisch bereinigt wird. Nachrichten verbleiben in dieser Warteschlange, bis Sie sie explizit daraus abrufen und für die unzustellbare Nachricht [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) aufrufen.
 
 ## <a name="moving-messages-to-the-dlq"></a>Verschieben von Nachrichten in die Warteschlange für unzustellbare Nachrichten
 
 Es gibt verschiedene Aktivitäten in Service Bus, durch welche Nachrichten aus dem Messagingmodul selbst per Push in die Warteschlange für unzustellbare Nachrichten übertragen werden. Eine Anwendung kann Nachrichten auch explizit in die Warteschlange für unzustellbare Nachrichten verschieben. 
 
-Während die Nachricht vom Broker verschoben wird, werden ihr zwei Eigenschaften hinzugefügt, wenn der Broker die interne Version der [DeadLetter](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeadLetter_System_String_System_String_)-Methode für die Nachricht aufruft: `DeadLetterReason` und `DeadLetterErrorDescription`.
+Während die Nachricht vom Broker verschoben wird, werden ihr zwei Eigenschaften hinzugefügt, wenn der Broker die interne Version der [DeadLetter](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync)-Methode für die Nachricht aufruft: `DeadLetterReason` und `DeadLetterErrorDescription`.
 
 Anwendungen können ihre eigenen Codes für die `DeadLetterReason`-Eigenschaft definieren, aber das System legt die folgenden Werte fest.
 
@@ -52,9 +52,9 @@ Anwendungen können ihre eigenen Codes für die `DeadLetterReason`-Eigenschaft d
 | Explizites Markieren von Nachrichten als unzustellbar durch Anwendung |Gemäß Anwendung |Gemäß Anwendung |
 
 ## <a name="exceeding-maxdeliverycount"></a>Überschreiten von MaxDeliveryCount
-Warteschlangen und Abonnements haben die Eigenschaft [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) bzw. [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_MaxDeliveryCount). Der jeweilige Standardwert ist 10. Jedes Mal, wenn eine Nachricht unter einer Sperre übermittelt wurde ([ReceiveMode.PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)), aber entweder explizit abgebrochen wurde oder die Sperre abgelaufen ist, wird der Wert [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) für die Nachricht erhöht. Wenn [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) den Wert [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) überschreitet, wird die Nachricht in die Warteschlange für unzustellbare Nachrichten verschoben, und der Ursachencode `MaxDeliveryCountExceeded` wird angegeben.
+Warteschlangen und Abonnements haben die Eigenschaft [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) bzw. [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount). Der jeweilige Standardwert ist 10. Jedes Mal, wenn eine Nachricht unter einer Sperre übermittelt wurde ([ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)), aber entweder explizit abgebrochen wurde oder die Sperre abgelaufen ist, wird der Wert [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) für die Nachricht erhöht. Wenn [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) den Wert [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) überschreitet, wird die Nachricht in die Warteschlange für unzustellbare Nachrichten verschoben, und der Ursachencode `MaxDeliveryCountExceeded` wird angegeben.
 
-Dieses Verhalten kann nicht deaktiviert werden, aber Sie können [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) auf eine sehr hohe Zahl festlegen.
+Dieses Verhalten kann nicht deaktiviert werden, aber Sie können [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) auf eine sehr hohe Zahl festlegen.
 
 ## <a name="exceeding-timetolive"></a>Überschreiten von TimeToLive
 Wenn die Eigenschaft [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) bzw. [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnMessageExpiration) auf **TRUE** festgelegt ist (die Standardeinstellung lautet **FALSE**), werden alle ablaufenden Nachrichten in die Warteschlange für unzustellbare Nachrichten verschoben, und der Ursachencode `TTLExpiredException` wird angegeben.
@@ -75,7 +75,7 @@ Nachrichten werden in den folgenden Situationen an die Warteschlange für unzust
 - Die Zielwarteschlange oder das Zielthema wurde deaktiviert oder gelöscht.
 - Die Zielwarteschlange oder das Zielthema überschreitet die maximale Entitätsgröße.
 
-Zum Abrufen dieser unzustellbaren Nachrichten können Sie mithilfe der [FormatTransferDeadletterPath](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_FormatTransferDeadLetterPath_System_String_)-Hilfsmethode einen Empfänger erstellen.
+Zum Abrufen dieser unzustellbaren Nachrichten können Sie mithilfe der [FormatTransferDeadletterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formattransferdeadletterpath)-Hilfsmethode einen Empfänger erstellen.
 
 ## <a name="example"></a>Beispiel
 Der folgende Codeausschnitt erstellt einen Nachrichtenempfänger. In der Nachrichtenempfangsschleife für die Hauptwarteschlange ruft der Code die Nachricht mit [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_Receive_System_TimeSpan_) ab. Dadurch wird der Broker aufgefordert, sofort alle bereitstehenden Nachrichten bzw. kein Ergebnis zurückzugeben. Wenn der Code eine Nachricht empfängt, wird diese sofort abgebrochen und `DeliveryCount` wird erhöht. Sobald das System die Nachricht in die Warteschlange für unzustellbare Nachrichten verschiebt, ist die Hauptwarteschlange leer und die Schleife wird beendet, da [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_ReceiveAsync_System_TimeSpan_) den Wert **null** zurückgibt.

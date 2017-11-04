@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 9ded5e0199f5ca48e2a00d2afee0e4c13b3a3460
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c7863e38671349b6424ee08330da8aaa49cb2a70
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Passthrough-Authentifizierung mit Azure Active Directory: Technische Einzelheiten
-Der folgende Artikel enthält eine Übersicht über die Funktionsweise der Azure AD-Passthrough-Authentifizierung.  Ausführliche technische und sicherheitsbezogene Informationen finden Sie unter [**Azure Active Directory Pass-through Authentication security deep-dive**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) (Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit).
+Der folgende Artikel enthält eine Übersicht über die Funktionsweise der Azure AD-Passthrough-Authentifizierung.  Ausführliche technische und sicherheitsbezogene Informationen finden Sie im Artikel [**Ausführliche Informationen zur Sicherheit**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md).
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Funktionsweise der Passthrough-Authentifizierung mit Azure Active Directory
 
@@ -31,11 +31,11 @@ Wenn ein Benutzer versucht, sich bei einer durch Azure Active Directory (Azure A
 2. Wenn der Benutzer nicht bereits angemeldet ist, wird er zur Azure AD-Anmeldeseite umgeleitet.
 3. Der Benutzer gibt auf der Seite „Azure AD-Anmeldung“ seinen Benutzernamen und sein Kennwort ein und klickt anschließend auf die Schaltfläche „Anmelden“.
 4. Nach dem Empfang der Anmeldeanforderung platziert Azure AD den Benutzernamen und das (mit einem öffentlichen Schlüssel verschlüsselte) Kennwort in eine Warteschlange.
-5. Ein lokaler Passthrough-Authentifizierungs-Agent führt einen ausgehenden Aufruf an die Warteschlange durch und ruft den Benutzernamen und das verschlüsselte Kennwort ab.
+5. Ein lokaler Authentifizierungs-Agent ruft den Benutzernamen und das verschlüsselte Kennwort aus der Warteschlange ab.
 6. Der Agent entschlüsselt das Kennwort mithilfe des privaten Schlüssels.
 7. Der Agent überprüft dann mithilfe von Standard-Windows-APIs den Benutzernamen und das Kennwort in Active Directory (ein ähnlicher Mechanismus wie bei Active Directory Federation Services). Beim Benutzernamen kann es sich entweder um den lokalen Standard-Benutzernamen (in der Regel `userPrincipalName`) handeln oder um ein anderes (als `Alternate ID` bezeichnetes) Attribut, das in Azure AD Connect konfiguriert ist.
 8. Der lokale Active Directory-Domänencontroller (DC) wertet dann die Anforderung aus und gibt die entsprechende Antwort (Erfolg, Fehler, Kennwort abgelaufen oder Benutzer gesperrt) an den Agenten zurück.
-9. Der Agent gibt diese Antwort wiederum an Azure AD zurück.
+9. Der Authentifizierungs-Agent gibt diese Antwort wiederum an Azure AD zurück.
 10. Azure AD wertet die Antwort aus und gibt eine entsprechende Antwort an den Benutzer. So wird z.B. der Benutzer sofort angemeldet, oder es wird eine Multi-Factor Authentication (MFA) angefordert.
 11. Wenn die Anmeldung erfolgreich ist, kann der Benutzer auf die Anwendung zugreifen.
 
@@ -46,9 +46,9 @@ Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte und Kompon
 ## <a name="next-steps"></a>Nächste Schritte
 - [**Aktuelle Einschränkungen**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarien
 - [**Schnellstart**](active-directory-aadconnect-pass-through-authentication-quick-start.md): Einrichten und Ausführen der Passthrough-Authentifizierung mit Azure AD
-- [**Smart Lockout**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten
+- [**Smart Lockout**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten.
 - [**Häufig gestellte Fragen:**](active-directory-aadconnect-pass-through-authentication-faq.md) Antworten auf häufig gestellte Fragen
 - [**Problembehandlung**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Beheben häufig auftretender Probleme mit dieser Funktion
-- [**Ausführliche Informationen zur Sicherheit**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md): Zusätzliche ausführliche technische Informationen zum Feature
+- [**Ausführliche Informationen zur Sicherheit**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md): zusätzliche ausführliche technische Informationen zum Feature.
 - [**Nahtlose SSO mit Azure AD**](active-directory-aadconnect-sso.md): Informationen zu dieser Ergänzungsfunktion
 - [**UserVoice:**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/6/2017
+ms.date: 10/22/2017
 ms.author: raiye
-ms.openlocfilehash: 7d3541e6c437212139553d975fa756084da4f757
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a42f4b981883881681a7e7ecdb102ee28772c49
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem deaktiviert wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
@@ -106,7 +106,7 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 ## <a name="family-4-releases"></a>Releases von Familie 4
 **Windows Server 2012 R2**
 
-Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
+Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 > [!NOTE]
 > Änderungen bei Datumsangaben mit einem * bleiben vorbehalten
@@ -133,7 +133,7 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 ## <a name="family-3-releases"></a>Releases von Familie 3
 **Windows Server 2012**
 
-Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
+Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 > [!NOTE]
 > Änderungen bei Datumsangaben mit einem * bleiben vorbehalten
@@ -160,7 +160,7 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 ## <a name="family-2-releases"></a>Releases von Familie 2
 **Windows Server 2008 R2 SP1**
 
-Unterstützt .NET 3.5, 4.0, 4.5, 4.5.1, 4.5.2
+Installierte .NET Framework-Versionen: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 > [!NOTE]
 > Änderungen bei Datumsangaben mit einem * bleiben vorbehalten

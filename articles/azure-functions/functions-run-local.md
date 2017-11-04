@@ -3,7 +3,7 @@ title: "Lokales Entwickeln und Ausführen von Azure Functions | Microsoft Docs"
 description: "Erfahren Sie, wie Sie Azure-Funktionen auf dem lokalen Computer codieren und testen, bevor Sie sie in Azure Functions ausführen."
 services: functions
 documentationcenter: na
-author: lindydonna
+author: ggailey777
 manager: cfowler
 editor: 
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: b6ab081311822abd9c0a24b4cc241291bf56af68
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 35fd47025ca0dba1edbe1d7dd3ee0172fc45d6f5
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Lokales Codieren und Testen von Azure Functions
 
@@ -142,7 +142,7 @@ Einstellungen in der Datei „local.settings.json“ werden nur bei der lokalen 
 
 Wenn keine gültige Speicherverbindungszeichenfolge für **AzureWebJobsStorage** festgelegt ist, wird die folgende Fehlermeldung angezeigt:  
 
->Missing value for AzureWebJobsStorage in local.settings.json (Fehlender Wert für AzureWebJobsStorage in local.settings.json). Dies ist für alle Nicht-HTTP-Trigger erforderlich. Sie können „func azure functionary fetch-app-settings <functionAppName>“ ausführen oder eine Verbindungszeichenfolge in „local.settings.json“ angeben.
+>Missing value for AzureWebJobsStorage in local.settings.json (Fehlender Wert für AzureWebJobsStorage in local.settings.json). Dies ist für alle Nicht-HTTP-Trigger erforderlich. Sie können „func azure functionapp fetch-app-settings <functionAppName>“ ausführen oder eine Verbindungszeichenfolge in „local.settings.json“ eingeben.
   
 [!INCLUDE [Note to not use local storage](../../includes/functions-local-settings-note.md)]
 
@@ -266,13 +266,13 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azu
 Beachten Sie, dass Sie GET-Anforderungen über einen Browser ausführen können, indem Sie Daten in der Abfragezeichenfolge übergeben. Für alle anderen HTTP-Methoden müssen Sie cURL, Fiddler, Postman oder ein ähnliches HTTP-Testtool verwenden.  
 
 #### <a name="non-http-triggered-functions"></a>Nicht über HTTP ausgelöste Funktionen
-Für alle Arten von Funktionen mit Ausnahme von HTTP-Triggern und Webhooks können Sie Funktionen lokal testen, indem Sie einen Verwaltungsendpunkt aufrufen. Wenn Sie diesen Endpunkt auf dem lokalen Server aufrufen, wird die Funktion ausgelöst. Optional können Sie Testdaten an die Ausführung übergeben. Diese Funktionalität ähnelt der Registerkarte **Test** im Azure-Portal.  
+Für alle Arten von Funktionen mit Ausnahme von HTTP-Triggern und Webhooks können Sie Funktionen lokal testen, indem Sie einen Verwaltungsendpunkt aufrufen. Wenn Sie diesen Endpunkt mit einer HTTP POST-Anforderung auf dem lokalen Server aufrufen, wird die Funktion ausgelöst. Optional können Sie Testdaten im Hauptteil der POST-Anforderung an die Ausführung übergeben. Diese Funktionalität ähnelt der Registerkarte **Test** im Azure-Portal.  
 
-Sie rufen den folgenden Administratorendpunkt zum Auslösen von Nicht-HTTP-Funktionen mit einer HTTP POST-Anforderung auf:
+Sie rufen den folgenden Administratorendpunkt zum Auslösen von Nicht-HTTP-Funktionen auf:
 
     http://localhost:{port}/admin/functions/{function_name}
 
-Auch wenn Sie Testdaten an den Administratorendpunkt einer Funktion übergeben, müssen Sie die Daten im Hauptteil einer POST-Anforderungsnachricht bereitstellen. Der Nachrichtentext muss das folgende JSON-Format aufweisen:
+Wenn Sie Testdaten an den Administratorendpunkt einer Funktion übergeben möchten, müssen Sie die Daten im Hauptteil einer POST-Anforderungsnachricht bereitstellen. Der Nachrichtentext muss das folgende JSON-Format aufweisen:
 
 ```JSON
 {

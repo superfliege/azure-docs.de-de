@@ -11,14 +11,14 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 06/29/2017
-ms.openlocfilehash: 9beb92895056b51f40988fc6c47dfa6f80ca3294
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20dbc4bbe66ec311afcc238b25a6c1f6f6a40829
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-database-for-postgresql-use-php-to-connect-and-query-data"></a>Azure-Datenbank für PostgreSQL: Verwenden von PHP zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
-Dieser Schnellstart zeigt, wie Sie mit einer [PHP](http://php.net/manual/intro-whatis.php)-Anwendung eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit der Entwicklung unter Verwendung der Sprache PHP vertraut sind, aber noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
+Dieser Schnellstart zeigt, wie Sie mit einer [PHP](http://php.net/manual/intro-whatis.php)-Anwendung eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der PHP-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for PostgreSQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: kakhan
-ms.openlocfilehash: ebf3062ab0600b0ae722c78d07095970001a0a23
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb1f3f01f896cc03fde13f11457be4740fa2720a
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer
 Bei Microsoft Azure wird sehr darauf geachtet, den Schutz Ihrer Daten und die Datenhoheit sicherzustellen. Außerdem können Sie für Ihre unter Azure gehosteten Daten eine Reihe von modernen Techniken zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln und Steuern und Überprüfen des Datenzugriffs nutzen. So können Azure-Kunden flexibel eine Lösung auswählen, die Ihre Anforderungen am besten erfüllt. In diesem Artikel stellen wir Ihnen die neue Technologie „Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer“ vor, die zum Schützen und Absichern Ihrer Daten dient, um Vorgaben in den Bereichen Unternehmenssicherheit und Compliance zu erfüllen. Der Artikel enthält eine ausführliche Anleitung zur Verwendung der Funktionen einer Azure-Datenträgerverschlüsselung, z. B. die unterstützten Szenarien und die Benutzeroberflächen.
@@ -40,8 +40,8 @@ Die Azure Disk Encryption-Lösung unterstützt die folgenden Kundenszenarien:
 * Deaktivieren der Verschlüsselung auf Windows-IaaS-VMs
 * Deaktivieren der Verschlüsselung auf Datenlaufwerken für Linux-IaaS-VMs
 * Aktivieren der Verschlüsselung virtueller Computer auf verwalteten Datenträgern
-* Aktualisieren von Verschlüsselungseinstellungen einer vorhandenen verschlüsselten VM ohne Storage Premium
-* Sichern und Wiederherstellen verschlüsselter VMs, die mit dem Schlüsselverschlüsselungsschlüssel verschlüsselt wurden
+* Aktualisieren von Verschlüsselungseinstellungen eines vorhandenen verschlüsselten virtuellen Computers (mit oder ohne Storage Premium)
+* Sichern und Wiederherstellen verschlüsselter virtueller Computer
 
 Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, wenn sie in Microsoft Azure aktiviert sind:
 
@@ -54,8 +54,10 @@ Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, w
 * Aktivieren der Verschlüsselung auf Volumes mit Einbindungspfaden
 * Aktivieren der Verschlüsselung auf Linux-VMs mit Datenträgerstriping (RAID) mithilfe von mdadm
 * Aktivieren der Verschlüsselung auf Linux-VMs mit LVM für Datenträger
+* Aktivieren der Verschlüsselung unter Linux LVM 7.3 für Betriebssystemdatenträger und normale Datenträger 
 * Aktivieren der Verschlüsselung auf Windows-VMs mit Speicherplätzen
-* Aktualisieren von Verschlüsselungseinstellungen einer vorhandenen verschlüsselten VM ohne Storage Premium
+* Aktualisieren von Verschlüsselungseinstellungen eines vorhandenen verschlüsselten virtuellen Computers (mit oder ohne Storage Premium)
+* Sichern und Wiederherstellen verschlüsselter virtueller Computer in Szenarien mit und ohne Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK)
 * Alle öffentlichen Azure-Regionen und AzureGov-Regionen werden unterstützt.
 
 Die Lösung unterstützt nicht die folgenden Szenarien, Features und Technologien:
@@ -64,15 +66,9 @@ Die Lösung unterstützt nicht die folgenden Szenarien, Features und Technologie
 * Deaktivieren der Verschlüsselung auf Betriebssystemlaufwerken für virtuelle Linux-IaaS-Computer
 * Deaktivieren der Verschlüsselung auf einem Datenlaufwerk, wenn das Betriebssystemlaufwerk für Linux-IaaS-VMs verschlüsselt ist
 * Virtuelle IaaS-Computer, die mithilfe der klassischen Methode zum Erstellen von virtuellen Computern erstellt werden
-* Das Aktivieren der Verschlüsselung benutzerdefinierter Images auf Windows- und Linux-IaaS-VMs wird NICHT unterstützt. Das Aktivieren der Verschlüsselung auf Linux-LVM-Betriebssystemdatenträgern wird derzeit nicht unterstützt. Diese Unterstützung wird bald erhältlich sein.
+* Das Aktivieren der Verschlüsselung benutzerdefinierter Images auf Windows- und Linux-IaaS-VMs wird NICHT unterstützt.
 * Integration in den lokalen Schlüsselverwaltungsdienst
 * Azure Files (freigegebenes Dateisystem), Netzwerkdateisystem (NFS), dynamische Volumes und Windows-VMs, die mit softwarebasierten RAID-Systemen konfiguriert sind
-* Sichern und Wiederherstellen verschlüsselter VMs, die ohne Schlüsselverschlüsselungsschlüssel verschlüsselt wurden
-* Aktualisieren von Verschlüsselungseinstellungen einer vorhandenen Storage Premium-VM
-
-> [!NOTE]
-> Das Sichern und Wiederherstellen verschlüsselter virtueller Computer wird nur für virtuelle Computer unterstützt, die mit der KEK-Konfiguration (Key Encryption Key, Schlüsselverschlüsselungsschlüssel) verschlüsselt sind. Für virtuelle Computer ohne KEK-Verschlüsselung wird es nicht unterstützt. KEK ist ein optionaler Parameter zum Aktivieren der Verschlüsselung des virtuellen Computers. Diese Unterstützung ist in Kürze verfügbar.
-> Das Aktualisieren von Verschlüsselungseinstellungen einer vorhandenen verschlüsselten Storage Premium-VM wird nicht unterstützt. Diese Unterstützung ist in Kürze verfügbar.
 
 ### <a name="encryption-features"></a>Verschlüsselungsfunktionen
 Beim Aktivieren und Bereitstellen von Azure Disk Encryption für virtuelle Azure-IaaS-Computer werden je nach bereitgestellter Konfiguration die folgenden Funktionen aktiviert:
@@ -85,9 +81,6 @@ Beim Aktivieren und Bereitstellen von Azure Disk Encryption für virtuelle Azure
 * Meldung des Verschlüsselungsstatus des verschlüsselten virtuellen IaaS-Computers
 * Entfernen der Konfigurationseinstellungen für die Datenträgerverschlüsselung vom virtuellen IaaS-Computer
 * Sichern und Wiederherstellen verschlüsselter virtueller Computer mit dem Azure Backup-Dienst
-
-> [!NOTE]
-> Das Sichern und Wiederherstellen verschlüsselter virtueller Computer wird nur für virtuelle Computer unterstützt, die mit der KEK-Konfiguration (Key Encryption Key, Schlüsselverschlüsselungsschlüssel) verschlüsselt sind. Für virtuelle Computer ohne KEK-Verschlüsselung wird es nicht unterstützt. KEK ist ein optionaler Parameter zum Aktivieren der Verschlüsselung des virtuellen Computers.
 
 Azure Disk Encryption für IaaS-VMs für die Windows- und Linux-Lösung beinhaltet:
 
@@ -157,6 +150,7 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
 | Ubuntu | 12.10 | Datenträger |
 | Ubuntu | 12.04 | Datenträger |
 | RHEL | 7.3 | Betriebssystem- und andere Datenträger |
+| RHEL | LVM 7.3 | Betriebssystem- und andere Datenträger |
 | RHEL | 7.2 | Betriebssystem- und andere Datenträger |
 | RHEL | 6,8 | Betriebssystem- und andere Datenträger |
 | RHEL | 6.7 | Datenträger |
@@ -223,7 +217,7 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
 * Die BitLocker-Richtlinie auf in die Domäne eingebundenen virtuellen Computern mit einer benutzerdefinierten Gruppenrichtlinie muss die folgende Einstellung enthalten: `Configure user storage of bitlocker recovery information -> Allow 256-bit recovery key`. Für Azure Disk Encryption tritt ein Fehler auf, wenn die Einstellungen für die benutzerdefinierte Gruppenrichtlinie für BitLocker inkompatibel sind. Auf Computern ohne korrekte Richtlinieneinstellung ist es unter Umständen erforderlich, die neue Richtlinie anzuwenden, die Aktualisierung der neuen Richtlinie zu erzwingen (gpupdate.exe /force) und anschließend einen Neustart durchzuführen.  
 * Informationen zum Erstellen einer Azure AD-Anwendung, zum Erstellen eines neuen Schlüsseltresors oder zum Einrichten eines vorhandenen Schlüsseltresors und Aktivieren der Verschlüsselung finden Sie auf der Seite zum für [Azure Disk Encryption erforderlichen PowerShell-Skript](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1).
 * Um die Datenträgerverschlüsselung mithilfe der Azure-CLI zu konfigurieren, benötigen Sie [dieses Bash-Skript](https://github.com/ejarvi/ade-cli-getting-started).
-* Wenn Sie mit Azure Disk Encryption verschlüsselte virtuelle Computer mit dem Azure Backup-Dienst sichern und wiederherstellen möchten, verschlüsseln Sie Ihre VMs mithilfe der Azure Disk Encryption-Schlüsselkonfiguration. Der Azure Backup-Dienst unterstützt nur virtuelle Computer, die mit der KEK-Konfiguration verschlüsselt sind. Siehe [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup-Verschlüsselung](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption).
+* Wenn Sie mit Azure Disk Encryption verschlüsselte virtuelle Computer mit dem Azure Backup-Dienst sichern und wiederherstellen möchten, verschlüsseln Sie Ihre VMs mithilfe der Azure Disk Encryption-Schlüsselkonfiguration. Der Azure Backup-Dienst unterstützt verschlüsselte virtuelle Computer mit und ohne KEK-Konfiguration. Siehe [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup-Verschlüsselung](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption).
 
 * Beachten Sie beim Verschlüsseln eines Volumes mit Linux-Betriebssystem, dass derzeit am Ende des Prozesses ein VM-Neustart erforderlich ist. Der Neustart kann per Portal, PowerShell oder CLI durchgeführt werden.   Zum Nachverfolgen des Verschlüsselungsstatus können Sie regelmäßig die Statusmeldung abfragen, die von „Get-AzureRmVMDiskEncryptionStatus“ (https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) zurückgegeben wird.  Nach Abschluss der Verschlüsselung wird dies in der Statusmeldung angegeben, die von diesem Befehl zurückgegeben wird.  Beispiel: „ProgressMessage: OS disk successfully encrypted, please reboot the VM“ (ProgressMessage: Verschlüsselung des Betriebssystemdatenträgers erfolgreich, VM neu starten). Die VM kann dann neu gestartet und verwendet werden.  
 
@@ -233,10 +227,7 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
 
 * Azure Disk Encryption wird nur für Images des Azure-Katalogs unterstützt, die die oben erwähnten Voraussetzungen erfüllen. Benutzerdefinierte Images werden aufgrund von benutzerdefinierten Partitionsschemas und Prozessverhalten, die auf diesen Images ggf. vorhanden sind, nicht unterstützt. Auch auf Katalogimages basierende VMs, die die Voraussetzungen anfänglich erfüllt haben, aber nach der Erstellung geändert wurden, können inkompatibel sein.  Aus diesem Grund besteht das vorgeschlagene Verfahren zum Verschlüsseln einer Linux-VM darin, mit einem sauberen Katalogimage zu beginnen, die VM zu verschlüsseln und der VM dann nach Bedarf benutzerdefinierte Software oder Daten hinzuzufügen.  
 
-* Es muss ein lokales Datenvolume für Azure Disk Encryption (d.h. BEK-Volume für Windows-IaaS-VMs und „/mnt/Azure_bek_disk“ für Linux-IaaS-VMs) vorhanden sein, um den Verschlüsselungsschlüssel sicher zu speichern. Löschen oder bearbeiten Sie keine Inhalte auf diesem Datenträger. Die Bereitstellung des Datenträgers kann nicht aufgehoben werden, da für Verschlüsselungsvorgänge auf der IaaS-VM der Verschlüsselungsschlüssel vorhanden sein muss. Die auf dem Volume befindliche Infodatei enthält weitere Einzelheiten.
-
-> [!NOTE]
-> Das Sichern und Wiederherstellen verschlüsselter virtueller Computer wird nur für virtuelle Computer unterstützt, die mit der KEK-Konfiguration (Key Encryption Key, Schlüsselverschlüsselungsschlüssel) verschlüsselt sind. Für virtuelle Computer ohne KEK-Verschlüsselung wird es nicht unterstützt. „KEK“ ist ein optionaler Parameter zum Aktivieren der VM.
+* Zur sicheren Speicherung des Verschlüsselungsschlüssels müssen Azure Disk Encryption und ein lokales Datenvolume (BEK-Volume für Windows-IaaS-VMs und „/mnt/Azure_bek_disk“ für Linux-IaaS-VMs) vorhanden sein. Löschen oder bearbeiten Sie keine Inhalte auf diesem Datenträger. Die Bereitstellung des Datenträgers kann nicht aufgehoben werden, da für Verschlüsselungsvorgänge auf der IaaS-VM der Verschlüsselungsschlüssel vorhanden sein muss. Die auf dem Volume befindliche Infodatei enthält weitere Einzelheiten.
 
 #### <a name="set-up-the-azure-ad-application-in-azure-active-directory"></a>Einrichten der Azure AD-Anwendung in Azure Active Directory
 Wenn Sie die Verschlüsselung auf einem ausgeführten virtuellen Computer in Azure aktivieren müssen, werden die Verschlüsselungsschlüssel von Azure Disk Encryption generiert und in Ihren Schlüsseltresor geschrieben. Das Verwalten von Verschlüsselungsschlüsseln im Schlüsseltresor erfordert eine Azure AD-Authentifizierung.
@@ -606,7 +597,7 @@ In der folgenden Tabelle werden Parameter der Resource Manager-Vorlage für vorh
 | AADClientSecret | Clientgeheimnis der Azure AD-Anwendung, die über Berechtigungen zum Schreiben von Geheimnissen in den Schlüsseltresor verfügt. |
 | keyVaultName | Der Name des Schlüsseltresors, in den der BitLocker-Schlüssel hochgeladen werden soll. Dieser kann mit dem Cmdlet `(Get-AzureRmKeyVault -ResourceGroupName <yourResourceGroupName>). Vaultname` abgerufen werden. |
 |  keyEncryptionKeyURL | Die URL des KEK, der zum Verschlüsseln des generierten BitLocker-Schlüssels verwendet wird. Dieser Parameter ist optional, wenn Sie in der Dropdownliste „UseExistingKek“ die Option **nokek** auswählen. Wenn Sie in der Dropdownliste „UseExistingKek“ die Option **kek** auswählen, müssen Sie den Wert _keyEncryptionKeyURL_ eingeben. |
-| volumeType | Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige unterstützte Werte sind _OS_ oder _All_ (für RHEL 7.2, CentOS 7.2 und Ubuntu 16.04) und _Data_ (für alle anderen Distributionen). |
+| volumeType | Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige unterstützte Werte sind _OS_ und _All_. (Weitere Informationen finden Sie weiter oben im Abschnitt mit den Voraussetzungen unter den unterstützten Linux-Distributionen und deren Versionen für Betriebssystemdatenträger und normale Datenträger.) |
 | sequenceVersion | Sequenzversion des BitLocker-Vorgangs. Diese Versionsnummer sollte jedes Mal erhöht werden, wenn auf demselben virtuellen Computer ein Vorgang für eine Datenträgerverschlüsselung durchgeführt wird. |
 | vmName | Der Name des virtuellen Computers, auf dem der Verschlüsselungsvorgang durchgeführt wird. |
 | passPhrase | Geben Sie eine sichere Passphrase als Datenverschlüsselungsschlüssel ein. |
@@ -749,7 +740,7 @@ Nutzen Sie die ARM-Vorlage für verwaltete Azure-Datenträger zum Erstellen eine
   >Es ist obligatorisch, außerhalb von Azure Disk Encryption und vor der Aktivierung von Azure Disk Encryption eine Momentaufnahme bzw. Sicherung einer VM zu erstellen, die auf einem verwalteten Datenträger basiert.  Sie können über das Portal eine Momentaufnahme des verwalteten Datenträgers erstellen oder Azure Backup verwenden.  Mit Sicherungen ist dafür gesorgt, dass eine Wiederherstellungsoption verfügbar ist, falls während der Verschlüsselung ein unerwarteter Fehler auftritt.  Nach der Erstellung einer Sicherung kann das Set-AzureRmVMDiskEncryptionExtension-Cmdlet verwendet werden, um verwaltete Datenträger durch das Angeben des Parameters „-skipVmBackup“ zu verschlüsseln.  Dieser Befehl führt für VMs, die auf verwalteten Datenträgern basieren, zu einem Fehler, bis eine Sicherung erstellt und dieser Parameter angegeben wurde.    
  
 ### <a name="update-encryption-settings-of-an-existing-encrypted-non-premium-vm"></a>Aktualisieren von Verschlüsselungseinstellungen einer vorhandenen verschlüsselten VM ohne Storage Premium
-  Verwenden Sie die vorhandenen unterstützten Azure Disk Encryption-Schnittstellen für die VM-Ausführung (PowerShell-Cmdlets, CLI oder ARM-Vorlagen) zum Aktualisieren der Verschlüsselungseinstellungen wie AAD-Client-ID/-Geheimnis, Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK), BitLocker-Verschlüsselungsschlüssel für Windows-VMs oder Passphrase für Linux-VM usw. Die Einstellung zum Aktualisieren der Verschlüsselung wird nur für VMs ohne Storage Premium unterstützt. Für Storage Premium-VMs wird sie nicht unterstützt.
+  Verwenden Sie die vorhandenen unterstützten Azure Disk Encryption-Schnittstellen für die VM-Ausführung (PowerShell-Cmdlets, CLI oder ARM-Vorlagen) zum Aktualisieren der Verschlüsselungseinstellungen wie AAD-Client-ID/-Geheimnis, Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK), BitLocker-Verschlüsselungsschlüssel für Windows-VMs oder Passphrase für Linux-VM usw. Die Einstellung zum Aktualisieren der Verschlüsselung wird für virtuelle Computer mit und ohne Storage Premium unterstützt.
 
 ## <a name="appendix"></a>Anhang
 ### <a name="connect-to-your-subscription"></a>Verbinden mit Ihrem Abonnement

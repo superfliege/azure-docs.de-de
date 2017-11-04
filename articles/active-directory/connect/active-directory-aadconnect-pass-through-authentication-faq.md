@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: e0c93cefb135d3ea1c5f0a3797602124aed85c5c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1bd58797124210f7c31e90fb20d728289a04ba2
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -30,7 +30,7 @@ Das hängt von Ihrer lokalen Umgebung und den Anforderungen Ihres Unternehmens a
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Ist die Passthrough-Authentifizierung ein kostenloses Feature?
 
-Ja, es handelt sich um eine kostenlose Funktion, sodass Sie keine kostenpflichtigen Azure AD-Versionen benötigen. Die Funktion bleibt auch kostenlos, wenn sie allgemein verfügbar wird.
+Ja, es handelt sich um eine kostenlose Funktion, sodass Sie keine kostenpflichtigen Azure AD-Versionen benötigen.
 
 ## <a name="is-pass-through-authentication-available-in-microsoft-cloud-germanyhttpwwwmicrosoftdecloud-deutschland-and-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Ist die Passthrough-Authentifizierung in [Microsoft Cloud Deutschland](http://www.microsoft.de/cloud-deutschland) und [Microsoft Azure Government Cloud](https://azure.microsoft.com/features/gov/) verfügbar?
 
@@ -46,7 +46,7 @@ Ja. Die Passthrough-Authentifizierung unterstützt `Alternate ID` als Benutzerna
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Kann die Kennworthashsynchronisierung als Fallback auf die Passthrough-Authentifizierung verwendet werden?
 
-Nein. Die Kennworthashsynchronisierung ist kein generisches Fallback auf die Passthrough-Authentifizierung. Es dient nur als Fallback für [Szenarios, die zurzeit noch nicht von der Passthrough-Authentifizierung unterstützt werden](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für eine [hohe Verfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) konfigurieren.
+Nein. Bei der Pass-Through-Authentifizierung wird _kein_ automatisches Failover auf die Kennworthashsynchronisierung ausgeführt. Es dient nur als Fallback für [Szenarios, die zurzeit noch nicht von der Passthrough-Authentifizierung unterstützt werden](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für eine [hohe Verfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) konfigurieren.
 
 ## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../active-directory-application-proxy-get-started.md)-Connector auf demselben Server wie dem eines Passthrough-Authentifizierungs-Agents installieren?
 
@@ -97,7 +97,7 @@ Ja. Umgebungen mit mehreren Gesamtstrukturen werden unterstützt, wenn Gesamtstr
 
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>Wie viele Passthrough-Authentifizierungs-Agents muss ich installieren?
 
-Mit der Installation von mehreren Passthrough-Authentifizierungs-Agents wird für [Hochverfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) gesorgt. Es wird aber kein Lastenausgleich bereitgestellt. Letztlich verarbeiten möglicherweise ein oder zwei Authentifizierungs-Agents den Großteil der Anmeldeanforderungen.
+Mit der Installation von mehreren Passthrough-Authentifizierungs-Agents wird für [Hochverfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) gesorgt. Es wird aber kein deterministischer Lastenausgleich zwischen den Authentifizierungs-Agents bereitgestellt.
 
 Berücksichtigen Sie die Spitzenlast und durchschnittliche Last in Bezug auf die Anmeldeanforderungen, die Sie für Ihren Mandanten erwarten. Als Richtwert gilt, dass ein einzelner Authentifizierungs-Agent auf einem Standardserver mit einer CPU mit vier Cores und 16 GB RAM pro Sekunde 300.000 bis 400.000 Authentifizierungen verarbeiten kann. Für die meisten Kunden reichen zwei oder drei Authentifizierungs-Agents insgesamt aus, um Hochverfügbarkeit und genügend Kapazität zu erzielen.
 

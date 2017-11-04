@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2017
+ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 668fc5ae4f964bd776904c3a9dbc2b203689d50c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a3d9c2c08a3b23530ab772e5f0532ac2f9dcc9a3
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Tutorial: Azure Active Directory-Integration mit Skillport
 
@@ -110,20 +110,23 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skillport-tutorial/tutorial_skillport_url.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
+    a. Geben Sie im Textfeld **Anmelde-URL** diese URL ein:
       
-      Rechenzentrum in Europa: `https://<subdomain>.skillport.eu`
+      Rechenzentrum in Europa: `https://adfs.skillport.eu`
    
-      Rechenzentrum in den USA:`https://<subdomain>.skillport.com`
-   
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach einem der folgenden Muster ein:
-    
-      Rechenzentrum in Europa: `https://<subdomain>.skillport.eu/adfs/ls/`
-    
-      Rechenzentrum in den USA:`https://<subdomain>.skillport.com/sp/ACS.saml2`
+      Rechenzentrum in den USA:`https://sso.skillport.com`
 
-    > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Antwort-URL und die tatsächliche Anmelde-URL ersetzt werden. Wenden Sie sich an den [Skillport-Support](https://www.skillsoft.com/contact.asp), um diese Werte zu erhalten.
+    b. Geben Sie im Textfeld **Bezeichner** die folgende URL ein:
+      
+      Rechenzentrum in Europa: `http://adfs.skillport.eu/adfs/services/trust`
+   
+      Rechenzentrum in den USA:`https://sso.skillport.com`
+   
+    c. Geben Sie im Textfeld **Antwort-URL** folgende URL ein:
+    
+      Rechenzentrum in Europa: ` https://adfs.skillport.eu/adfs/ls/`
+    
+      Rechenzentrum in den USA:`https://sso.skillport.com/sp/ACS.saml2`
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 

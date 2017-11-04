@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 4f4fa884694dc8dad6349e3835e7c7ba2c4d2bdf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbedb87722d1c230f3b8003cadd069947881f25d
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
 
@@ -43,7 +43,11 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 ### <a name="in-your-on-premises-environment"></a>In Ihrer lokalen Umgebung
 
 1. Identifizieren Sie einen Server mit Windows Server 2012 R2 oder höher, auf dem Azure AD Connect ausgeführt werden soll. Fügen Sie den Server derselben AD-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen.
-2. Installieren Sie die [aktuelle Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) auf dem Server, den Sie im vorherigen Schritt ausgewählt haben. Wenn Azure AD Connect bereits ausgeführt wird, vergewissern Sie sich, dass die Version 1.1.557.0 oder höher lautet.
+2. Installieren Sie die [aktuelle Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) auf dem Server, den Sie im vorherigen Schritt ausgewählt haben. Wenn Azure AD Connect bereits ausgeführt wird, vergewissern Sie sich, dass die Version 1.1.644.0 oder höher lautet.
+
+    >[!NOTE]
+    >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die **Kennworthashsynchronisierung** auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Pass-Through-Authentifizierung verwenden möchten, finden Sie weitere Informationen dazu in den [Versionshinweisen zu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
+
 3. Identifizieren Sie einen weiteren Server mit Windows Server 2012 R2 oder höher, auf dem der eigenständige Authentifizierungs-Agent ausgeführt werden soll. Die Version des Authentifizierungs-Agents muss 1.5.193.0 oder höher sein. Dieser Server wird benötigt, um die hohe Verfügbarkeit von Anmeldeanforderungen sicherzustellen. Fügen Sie den Server derselben AD-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen.
 4. Wenn zwischen Ihren Servern und Azure AD eine Firewall eingerichtet wurde, müssen Sie die folgenden Elemente konfigurieren:
    - Stellen Sie sicher, dass Authentifizierung-Agents **ausgehende** Anforderungen an Azure AD über die folgenden Ports senden können:
@@ -87,7 +91,7 @@ Wählen Sie den [benutzerdefinierten Installationspfad](active-directory-aadconn
 
 ![Azure AD Connect – Benutzeranmeldung](./media/active-directory-aadconnect-sso/sso3.png)
 
-Wenn Sie Azure AD Connect bereits installiert haben (per [Expressinstallation](active-directory-aadconnect-get-started-express.md) oder [benutzerdefinierter Installation](active-directory-aadconnect-get-started-custom.md)), wählen Sie in Azure AD Connect die Option **Benutzeranmeldeseite ändern** aus, und klicken Sie auf **Weiter**. Wählen Sie anschließend **Passthrough-Authentifizierung** als Anmeldemethode aus. Nach erfolgreicher Durchführung wird auf demselben Server wie Azure AD Connect ein Passthrough-Authentifizierungs-Agent installiert, und das Feature wird auf Ihrem Mandanten aktiviert.
+Wenn Sie Azure AD Connect bereits installiert haben (per [Expressinstallation](active-directory-aadconnect-get-started-express.md) oder [benutzerdefinierter Installation](active-directory-aadconnect-get-started-custom.md)), wählen Sie in Azure AD Connect die Aufgabe **Benutzeranmeldung ändern** aus, und klicken Sie auf **Weiter**. Wählen Sie anschließend **Passthrough-Authentifizierung** als Anmeldemethode aus. Nach erfolgreicher Durchführung wird auf demselben Server wie Azure AD Connect ein Passthrough-Authentifizierungs-Agent installiert, und das Feature wird auf Ihrem Mandanten aktiviert.
 
 ![Azure AD Connect – Benutzeranmeldung ändern](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
@@ -128,11 +132,11 @@ Wenn Sie die Bereitstellung der Passthrough-Authentifizierung in einer Produktio
 >Sie können den Authentifizierungs-Agent auch [hier](https://aka.ms/getauthagent) herunterladen. _Ehe_ Sie den Authentifizierungs-Agent installieren, müssen Sie die [Nutzungsbedingungen](https://aka.ms/authagenteula) lesen und akzeptieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [**Smart Lockout**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten
+- [**Smart Lockout**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten.
 - [**Aktuelle Einschränkungen**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarien
 - [**Technische Einzelheiten**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) – Funktionsweise dieses Features verstehen
 - [**Häufig gestellte Fragen**](active-directory-aadconnect-pass-through-authentication-faq.md) – Antworten auf häufig gestellte Fragen
 - [**Problembehandlung**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Beheben häufig auftretender Probleme mit dieser Funktion
-- [**Ausführliche Informationen zur Sicherheit**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md): Zusätzliche ausführliche technische Informationen zum Feature
+- [**Ausführliche Informationen zur Sicherheit**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md): zusätzliche ausführliche technische Informationen zum Feature.
 - [**Nahtlose SSO mit Azure AD**](active-directory-aadconnect-sso.md): Informationen zu dieser Ergänzungsfunktion
 - [**UserVoice:**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: renash
-ms.openlocfilehash: 6643dad5ea3ba703e26f5708cdd2e925f702847f
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 33b64e1ad3fd5a2a6954a02da0fb303acca54c40
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="work-with-azure-file-share-snapshots-preview"></a>Arbeiten mit Azure-Dateifreigabemomentaufnahmen (Vorschau)
 Azure-Dateifreigabemomentaufnahmen (Vorschau) sind schreibgeschützte Versionen einer Azure-Dateifreigabe, die zu einem bestimmten Zeitpunkt erstellt wird. Nachdem eine Freigabemomentaufnahme erstellt wurde, kann sie zwar gelesen, kopiert oder gelöscht, aber nicht geändert werden. Freigabemomentaufnahmen bieten eine Möglichkeit, die Freigabe so zu sichern, wie sie zu einem bestimmten Zeitpunkt dargestellt wird. In diesem Artikel erfahren Sie, wie Azure-Dateifreigabemomentaufnahmen erstellt, verwaltet und gelöscht werden. Weitere Informationen zu Freigabemomentaufnahmen finden Sie unter [Freigabemomentaufnahme – Übersicht](storage-snapshots-files.md) oder [Häufig gestellte Fragen zu Azure Files](storage-files-faq.md).
@@ -72,9 +72,10 @@ $share.IsSnapshot
 $snapshot=$share.Snapshot()
 
 ```
-## <a name="list-share-snapshots-browse-share-snapshot-contents-and-restore-from-snapshots"></a>Auflisten von Freigabemomentaufnahmen, Durchsuchen des Inhalts von Freigabemomentaufnahmen und Wiederherstellen von Momentaufnahmen
 
-Sie können die mit Ihrer Dateifreigabe verknüpften Freigabemomentaufnahmen mithilfe der Integration „Vorherige Versionen“ unter Windows, über REST, die Clientbibliothek, PowerShell und das Portal auflisten. Sobald die Azure-Dateifreigabe bereitgestellt ist, können Sie alle vorherigen Versionen der Datei mithilfe der SMB-Integration „Vorherige Versionen“ anzeigen. Sobald die Azure-Dateifreigabe bereitgestellt ist, können Sie alle vorherigen Versionen des Verzeichnisses mithilfe der SMB-Integration „Vorherige Versionen“ anzeigen. In den folgenden Abschnitten erfahren Sie, wie mit dem Azure-Portal, Windows und der Azure CLI 2.0 Freigabemomentaufnahmen aufgelistet, durchsucht und wiederhergestellt werden.
+## <a name="common-share-snapshot-operations"></a>Allgemeine Vorgänge zu Freigabemomentaufnahmen
+
+Sie können die mit Ihrer Dateifreigabe verknüpften Freigabemomentaufnahmen mithilfe der Registerkarte „Vorherige Versionen“ unter Windows, über REST, die Clientbibliothek, PowerShell und das Portal auflisten. Sobald die Azure-Dateifreigabe bereitgestellt ist, können Sie alle vorherigen Versionen der Datei mithilfe der Registerkarte „Vorherige Versionen“ unter Windows anzeigen. In den folgenden Abschnitten erfahren Sie, wie mit dem Azure-Portal, Windows und der Azure CLI 2.0 Freigabemomentaufnahmen aufgelistet, durchsucht und wiederhergestellt werden.
 
 ### <a name="share-snapshot-operations-in-portal"></a>Vorgänge zu Freigabemomentaufnahmen im Portal
 

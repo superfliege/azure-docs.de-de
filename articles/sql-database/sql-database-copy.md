@@ -1,6 +1,6 @@
 ---
 title: Kopieren einer Azure SQL-Datenbank | Microsoft Docs
-description: Erstellen der Kopie einer Azure SQL-Datenbank
+description: Erstellen Sie eine hinsichtlich Transaktionen konsistente Kopie einer vorhandenen Azure SQL-Datenbank auf demselben oder einem anderen Server.
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -12,14 +12,14 @@ ms.custom: load & move data
 ms.devlang: NA
 ms.date: 06/15/2017
 ms.author: carlrab
-ms.workload: data-management
+ms.workload: On Demand
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.openlocfilehash: 8c1e3c80b9f24089dc99463d6ea8ae5d0ea7b19d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7999c52a81165a9f8efb2f1302d04c9cb851faca
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="copy-an-azure-sql-database"></a>Kopieren einer Azure SQL-Datenbank
 

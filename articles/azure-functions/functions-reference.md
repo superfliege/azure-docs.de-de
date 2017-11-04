@@ -14,13 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/30/2017
+ms.date: 10/12/2017
 ms.author: chrande
-ms.openlocfilehash: 1cb2ec7aa927eceafdf91c35c1184fceecddc49a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf965170e0c645e77a9b8829a10a18b29889a061
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
@@ -95,7 +95,7 @@ Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-A
 3. Navigieren Sie zu `D:\home\site\wwwroot\`, um *host.json* zu aktualisieren, oder zu `D:\home\site\wwwroot\<function_name>`, um die Dateien einer Funktion zu aktualisieren.
 4. Verschieben Sie eine Datei per Drag & Drop, die Sie im Dateiraster in den entsprechenden Ordner hochladen möchten. Es gibt zwei Bereiche im Dateiraster, in denen Sie eine Datei ablegen können. Für *ZIP* -Dateien wird ein Feld mit der Bezeichnung „Zum Hochladen und Entzippen hier ablegen“ angezeigt. Legen Sie Dateien anderer Dateitypen im Dateiraster ab, jedoch außerhalb des Felds zum Entzippen.
 
-<!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --DonnaM -->
+<!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
 #### <a name="to-use-continuous-deployment"></a>Verwenden der kontinuierlichen Bereitstellung
 Befolgen Sie die Anweisungen im Thema [Continuous deployment for Azure Functions](functions-continuous-deployment.md)(Kontinuierliche Bereitstellung für Azure Functions).
@@ -105,7 +105,7 @@ Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer 
 
 ## <a name="functions-runtime-versioning"></a>Versionsverwaltung der Functions-Runtime
 
-Sie können die Version der Functions-Runtime mit der App-Einstellung `FUNCTIONS_EXTENSION_VERSION` konfigurieren. Der Wert „~1“ bedeutet beispielsweise, dass für Ihre Funktionen-App „1“ als deren Hauptversion verwendet wird. Funktionen-Apps werden auf jede neue Nebenversion aktualisiert, wenn sie freigegeben werden. Die genaue Version Ihrer Funktionen-App können Sie auf der Registerkarte **Einstellungen** im Azure-Portal anzeigen.
+Sie können die Version der Functions-Runtime mit der App-Einstellung `FUNCTIONS_EXTENSION_VERSION` konfigurieren. Der Wert „~1“ bedeutet beispielsweise, dass für Ihre Funktionen-App „1“ als deren Hauptversion verwendet wird. Funktionen-Apps werden auf jede neue Nebenversion aktualisiert, wenn sie freigegeben werden. Weitere Informationen finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](functions-versions.md), einschließlich der Informationen zum Anzeigen der genauen Version Ihrer Funktions-App.
 
 ## <a name="repositories"></a>Repositorys
 Der Code für Azure Functions ist Open Source und in GitHub-Repositorys gespeichert:

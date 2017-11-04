@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 10/17/2017
 ms.author: sethm
-ms.openlocfilehash: 3061b8e44a14a609c485f04f073b3f8019ed8790
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 632af7294a7e6766d791d1d9ab08f98308fb2c02
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Verwenden von Service Bus-Themen und -Abonnements mit Java
 
@@ -38,7 +38,7 @@ Ein Themenabonnement ähnelt einer virtuellen Warteschlange, die Kopien der Nach
 Mit Service Bus-Themen und -Abonnements können Sie viele Nachrichten an eine große Anzahl von Benutzern und Anwendungen verarbeiten.
 
 ## <a name="create-a-service-namespace"></a>Erstellen eines Dienstnamespaces
-Um zu Service Bus-Themen und -Abonnements in Azure verwenden zu können, müssen Sie zunächst einen Namespace erstellen, der einen Bereichscontainer zum Adressieren von Service Bus-Ressourcen in Ihrer Anwendung bereitstellt.
+Um Service Bus-Themen und -Abonnements in Azure verwenden zu können, müssen Sie zunächst einen *Namespace* erstellen, der einen Bereichscontainer zum Adressieren von Service Bus-Ressourcen in Ihrer Anwendung bereitstellt.
 
 So erstellen Sie einen Namespace
 
@@ -154,7 +154,7 @@ service.sendTopicMessage("TestTopic", message);
 An Service Bus-Themen gesendete Nachrichten sind Instanzen der [BrokeredMessage][BrokeredMessage] Klasse. [BrokeredMessage][BrokeredMessage]* Objekte enthalten eine Reihe von Standardmethoden (wie etwa **setLabel** und **TimeToLive**), ein Wörterbuch für die Aufnahme benutzerdefinierter, anwendungsspezifischer Eigenschaften und einen Hauptteil mit beliebigen Anwendungsdaten. Eine Anwendung kann den Textkörper der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt an den Konstruktor von [BrokeredMessage][BrokeredMessage] übergeben wird. Der entsprechende **DataContractSerializer** wird dann zum Serialisieren des Objekts verwendet. Alternativ kann ein **java.io.InputStream** bereitgestellt werden.
 
 Das folgende Beispiel veranschaulicht, wie fünf Testnachrichten an den **MessageSender** `TestTopic` gesendet werden, der im vorherigen Codeausschnitt abgerufen wurde.
-Beachten Sie, wie der Eigenschaftswert **MessageNumber** jeder Nachricht gemäß der Iteration der Schleife variiert (dadurch wird bestimmt, welche Abonnements die Nachricht erhalten):
+Beachten Sie, wie der Eigenschaftswert **MessageNumber** jeder Nachricht gemäß der Iteration der Schleife variiert (dieser Wert bestimmt, welche Abonnements die Nachricht erhalten):
 
 ```java
 for (int i=0; i<5; i++)  {
@@ -172,7 +172,7 @@ Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im 
 ## <a name="how-to-receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
 Verwenden Sie ein **ServiceBusContract**-Objekt, um Nachrichten aus einem Abonnement zu empfangen. Empfangene Nachrichten können in zwei unterschiedlichen Modi verwendet werden: **ReceiveAndDelete** und **PeekLock** (Standard).
 
-Bei Verwendung des **ReceiveAndDelete**-Modus ist der Nachrichtenempfang ein Single-Shot-Vorgang. Das heißt, wenn Service Bus eine Leseanforderung für eine Nachricht erhält, wird die Nachricht als verarbeitet gekennzeichnet und an die Anwendung zurückgesendet. Der **ReceiveAndDelete**-Modus ist das einfachste Modell. Er wird am besten für Szenarios eingesetzt, bei denen es eine Anwendung tolerieren kann, wenn eine Nachricht bei Auftreten eines Fehlers nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da die Nachricht von Service Bus als verarbeitet gekennzeichnet wurde, wird die vor dem Absturz verarbeitete Nachricht nicht berücksichtigt, wenn die Anwendung neu gestartet und die Verarbeitung von Nachrichten wieder aufgenommen wird.
+Bei Verwendung des **ReceiveAndDelete**-Modus ist der Nachrichtenempfang ein Single-Shot-Vorgang. Das heißt, wenn Service Bus eine Leseanforderung für eine Nachricht erhält, wird die Nachricht als verarbeitet gekennzeichnet und an die Anwendung zurückgesendet. Der **ReceiveAndDelete**-Modus ist das einfachste Modell. Er wird am besten für Szenarios eingesetzt, bei denen eine Anwendung tolerieren kann, wenn eine Nachricht bei Auftreten eines Fehlers nicht verarbeitet wird. Beispiel: Stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da die Nachricht von Service Bus als verarbeitet gekennzeichnet wurde, wird die vor dem Absturz verarbeitete Nachricht nicht berücksichtigt, wenn die Anwendung neu gestartet und die Verarbeitung von Nachrichten wieder aufgenommen wird.
 
 Im **PeekLock**-Modus ist der Empfangsvorgang zweistufig. Dadurch können Anwendungen unterstützt werden, die das Auslassen bzw. Fehlen von Nachrichten nicht zulassen können. Wenn Service Bus eine Anfrage erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie dann zurück an die Anwendung. Nachdem die Anwendung die Verarbeitung der Nachricht abgeschlossen hat (oder sie zwecks zukünftiger Verarbeitung zuverlässig gespeichert hat), führt sie die zweite Phase des Empfangsprozesses durch Aufrufen von **Delete** für die empfangene Nachricht durch. Wenn Service Bus den **Delete**-Aufruf erkennt, wird die Nachricht als verwendet markiert und aus dem Thema entfernt.
 
@@ -236,7 +236,7 @@ Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen 
 
 Mit einer innerhalb des Themas gesperrten Nachricht ist außerdem eine Zeitlimitüberschreitung verknüpft. Wenn die Anwendung die Nachricht nicht verarbeiten kann, bevor die Zeitlimitüberschreitung der Sperre abläuft (z.B. wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, sodass sie wieder empfangen werden kann.
 
-Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Ausgabe der **deleteMessage**-Anforderung abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als **At Least Once Processing**(Verarbeitung mindestens einmal) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen möglicherweise erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der Methode **getMessageId** der Nachricht erzielt, die über mehrere Zustellversuche hinweg konstant bleibt.
+Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Ausgabe der **deleteMessage**-Anforderung abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dieser Prozess wird häufig als **At Least Once Processing** (Mindestens einmalige Verarbeitung) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei eine Nachricht in bestimmten Situationen unter Umständen erneut übermittelt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der Methode **getMessageId** der Nachricht erzielt, die über mehrere Zustellversuche hinweg konstant bleibt.
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
 Der einfachste Weg zum Löschen von Themen und Abonnements sind **ServiceBusContract**-Objekte. Durch das Löschen eines Themas werden auch alle Abonnements gelöscht, die mit dem Thema registriert sind. Abonnements können auch unabhängig gelöscht werden.
@@ -257,8 +257,8 @@ Nachdem Sie nun mit den Grundlagen von Service Bus-Warteschlangen vertraut sind,
 [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
 [Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter 
-[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
+[SqlFilter]: /dotnet/api/microsoft.azure.servicebus.filters.sqlfilter
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.filters.sqlfilter.sqlexpression
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 
 [0]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-13.png

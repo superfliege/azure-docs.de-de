@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: 756565b3da6e0a818d1ee3d5e17f942d96be14f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31f5a11cda1827a0a50fd2be0b7260daedf26e24
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 in Microsoft Azure Service Bus: anforderungs-/antwortbasierte Vorgänge
 
 In diesem Thema wird die Liste der anforderungs-/antwortbasierten Vorgänge in Microsoft Azure Service Bus definiert. Diese Informationen basieren auf dem Entwurf der AMQP Management Version 1.0.  
   
-Eine ausführliche Anleitung zum AMQP 1.0-Wire-Protokoll, die erläutert, wie Service Bus die technische Spezifikation für OASIS AMQP implementiert und darauf aufbaut, finden Sie unter [AMQP 1.0 in Azure Service Bus and Event Hubs protocol guide (AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden)](service-bus-amqp-protocol-guide.md).  
+Eine ausführliche Anleitung zum AMQP 1.0-Wire-Protokoll, die erläutert, wie Service Bus die technische Spezifikation für OASIS AMQP implementiert und darauf aufbaut, finden Sie unter [AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden][Leitfaden zum AMQP 1.0-Protokoll].  
   
 ## <a name="concepts"></a>Konzepte  
   
@@ -618,9 +618,9 @@ Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:
 Klicken Sie auf die folgenden Links, um mehr über AMQP und Service Bus zu erfahren:
 
 * [Übersicht über Service Bus AMQP]
-* [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]
+* [Leitfaden zum AMQP 1.0-Protokoll]
 * [AMQP in Service Bus für Windows Server]
 
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
-[AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
+[Leitfaden zum AMQP 1.0-Protokoll]: service-bus-amqp-protocol-guide.md
 [AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.asp

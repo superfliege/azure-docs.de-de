@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
-ms.author: billmath
-ms.openlocfilehash: 328e2039bbaa8988dc35b46712fd0de6f8bcbee8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/119/2017
+ms.author: barclayn
+ms.openlocfilehash: 15155fd9e1ab2dd6d58bcaf85a465c0585d3bc41
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Technische Referenz für den Lotus Domino-Connector
 Dieser Artikel beschreibt den Lotus Domino-Connector. Der Artikel bezieht sich auf folgende Produkte:
@@ -39,7 +39,7 @@ Im Anschluss finden Sie einen allgemeinen Überblick über die von der aktuellen
 | Verbundene Datenquelle |Server:  <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>Client:<li>Lotus Domino 8.5.x</li><li>Lotus Notes 9.x</li> |
 | Szenarios |<li>Objektlebenszyklusverwaltung</li><li>Gruppenverwaltung</li><li>Kennwortverwaltung</li> |
 | Vorgänge |<li>Vollständiger Import und Deltaimport</li><li>Export</li><li>Kennwort auf HTTP-Kennwort festlegen und ändern</li> |
-| Schema |<li>Person (Roamingbenutzer, Kontakt (Person ohne Zertifikat))</li><li>Group</li><li>Ressource (Ressource, Raum, Onlinebesprechung)</li><li>Mail-In-Datenbank</li><li>Dynamische Ermittlung von Attributen für unterstützte Objekte</li> |
+| Schema |<li>Person (Roamingbenutzer, Kontakt (Person ohne Zertifikat))</li><li>Group</li><li>Ressource (Ressource, Raum, Onlinebesprechung)</li><li>Mail-In-Datenbank</li><li>Dynamische Ermittlung von Attributen für unterstützte Objekte</li><li>Unterstützung von bis zu 250 benutzerdefinierten Zertifizierern mit einer Organisation und Organisationseinheiten (OU)</li> |
 
 Der Lotus Domino-Connector verwendet für die Kommunikation mit dem Lotus Domino-Server den Lotus Notes-Client. Aufgrund dieser Abhängigkeit muss auf dem Synchronisierungsserver ein unterstützter Lotus Notes-Client installiert sein. Die Kommunikation zwischen Client und Server wird über die .NET-Interop-Schnittstelle für Lotus Notes (Interop.domino.dll) implementiert. Diese Schnittstelle ermöglicht die Kommunikation zwischen der Microsoft-.NET-Plattform und dem Lotus Notes-Client und unterstützt den Zugriff auf Lotus Domino-Dokumente und -Sichten. Abhängig von der ausgewählten Deltaimportmethode kann für den Deltaimport ggf. auch die native C++-Schnittstelle verwendet werden.
 

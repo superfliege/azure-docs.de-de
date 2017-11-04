@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 9d91c59d3e4d73879d95ab193949d54f7b86d6cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8975a82c5573cc0c284e1fc76cd0ef2c19fbbd72
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
@@ -32,10 +32,13 @@ Um die nahtlose einmalige Anmeldung bereitzustellen, führen Sie die folgenden S
 
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
-1. Richten Sie Ihren Azure AD Connect-Server ein: Wenn Sie die [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md) als Anmeldemethode verwenden, ist keine weitere Aktion erforderlich. Wenn die [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) Ihre Anmeldemethode ist und eine Firewall zwischen Azure AD Connect und Azure AD vorhanden ist, sollten Sie Folgendes sicherstellen:
-- Sie verwenden die Version 1.1.484.0 oder höher von Azure AD Connect.
-- Azure AD Connect kann mit `*.msappproxy.net`-URLs und über Port 443 kommunizieren. Diese Voraussetzung gilt nur, wenn Sie das Feature aktivieren, nicht für tatsächliche Benutzeranmeldungen.
-- Azure AD Connect kann direkte IP-Verbindungen zu den [IP-Bereichen des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) herstellen. Auch diese Voraussetzung gilt nur, wenn Sie das Feature aktivieren.
+1. Richten Sie Ihren Azure AD Connect-Server ein: Wenn Sie die [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md) als Anmeldemethode verwenden, ist keine zusätzliche Überprüfung der Voraussetzungen erforderlich. Wenn die [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) Ihre Anmeldemethode ist und eine Firewall zwischen Azure AD Connect und Azure AD vorhanden ist, sollten Sie Folgendes sicherstellen:
+- Sie verwenden die Version 1.1.644.0 oder höher von Azure AD Connect. 
+- Wenn Ihre Firewall oder ihr Proxy DNS-Whitelisting zulässt, beschränken Sie Verbindungen auf URLs von **\*.msappproxy.net** über den Port 443 mittels Whitelist. Ist dies nicht der Fall, aktivieren Sie den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden. Diese Voraussetzung gilt nur, wenn Sie das Feature aktivieren, nicht für tatsächliche Benutzeranmeldungen.
+
+    >[!NOTE]
+    >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie weitere Informationen dazu in den [Versionshinweisen zu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
+
 2. Für jede AD-Gesamtstruktur, die Sie mit Azure AD (über Azure AD Connect) synchronisieren und für deren Benutzer Sie die nahtlose einmalige Anmeldung aktivieren möchten, benötigen Sie die Anmeldeinformationen des Domänenadministrators.
 
 ## <a name="step-2-enable-the-feature"></a>Schritt 2: Aktivieren des Features
@@ -73,6 +76,8 @@ Zum Durchführen des Rollouts für das Feature müssen Sie den Intranetzoneneins
 - https://autologon.microsoftazuread-sso.com
 - https://aadg.windows.net.nsatc.net
 
+Darüber hinaus müssen Sie eine Richtlinieneinstellung für eine Intranetzone (mithilfe der Gruppenrichtlinie) namens „Aktualisierungen der Statusleiste per Skript zulassen“ aktivieren.
+
 >[!NOTE]
 > Die folgenden Anweisungen funktionieren nur für Internet Explorer und Google Chrome unter Windows (wenn ein Satz von URLs vertrauenswürdiger Websites wie für Internet Explorer freigegeben wird). Lesen Sie im nächsten Abschnitt die Anweisungen zum Einrichten von Mozilla Firefox und Google Chrome auf Mac.
 
@@ -85,7 +90,7 @@ Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zo
 1. Öffnen Sie das Gruppenrichtlinienverwaltungstool.
 2. Bearbeiten Sie die Gruppenrichtlinie, die auf einige oder alle Benutzer angewendet wird. In diesem Beispiel verwenden wir die **Default Domain Policy** (Standarddomänenrichtlinie).
 3. Navigieren Sie zu **Benutzerkonfiguration\Administrative Vorlagen\Windows-Komponenten\Internet Explorer\Internetsystemsteuerung\Sicherheitsseite**, und wählen Sie die Option **Liste der Site zu Zonenzuweisungen**.
-![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso6.png)  
+![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso6.png)
 4. Aktivieren Sie die Richtlinie, und geben Sie in das Dialogfeld die folgenden Werte (Azure AD-URLs, in denen Kerberos-Tickets weitergeleitet werden) und Daten ein (*1* gibt die Intranetzone an).
 
         Value: https://autologon.microsoftazuread-sso.com
@@ -96,8 +101,11 @@ Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zo
 > Wenn Sie das nahtlose einmalige Anmelden z.B. für einige Benutzer verbieten möchten, weil sich diese Benutzer beispielsweise auf freigegebenen Kiosken anmelden, legen Sie die vorherigen Werte auf *4* fest. Diese Aktion fügt der Zone eingeschränkter Sites die Azure AD-URLs hinzu, und löst für das nahtlose einmalige Anmelden ständig einen Fehler aus.
 
 5. Klicken **Sie** zweimal nacheinander auf **OK**.
-
 ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso7.png)
+6. Navigieren Sie zu **Benutzerkonfiguration\Administrative Vorlagen\Windows-Komponenten\Internet Explorer\Internetsystemsteuerung\Sicherheitsseite\Intranetzone**, und wählen Sie die Option **Aktualisierungen der Statusleiste per Skript zulassen** aus.
+![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso11.png)
+7. Aktivieren Sie die Richtlinieneinstellung, und klicken Sie auf **OK**.
+![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso12.png)
 
 ### <a name="browser-considerations"></a>Überlegungen zum Browser
 
@@ -151,7 +159,7 @@ In Schritt 2 erstellt Azure AD Connect Computerkonten (die Azure AD repräsentie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [**Technische Einzelheiten**](active-directory-aadconnect-sso-how-it-works.md) – Funktionsweise dieses Features verstehen
-- [**Häufig gestellte Fragen**](active-directory-aadconnect-sso-faq.md) – Antworten auf häufig gestellte Fragen
-- [**Problembehandlung**](active-directory-aadconnect-troubleshoot-sso.md) – Beheben von häufig auftretenden Problemen mit diesem Feature
-- [**UserVoice:**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen
+- [Technische Einzelheiten](active-directory-aadconnect-sso-how-it-works.md): Funktionsweise dieses Features verstehen
+- [Häufig gestellte Fragen](active-directory-aadconnect-sso-faq.md): Antworten auf häufig gestellte Fragen
+- [Problembehandlung](active-directory-aadconnect-troubleshoot-sso.md): Beheben häufig auftretender Probleme mit dieser Funktion
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Verfassen neuer Featureanforderungen

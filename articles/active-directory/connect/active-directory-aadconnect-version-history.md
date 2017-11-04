@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2017
 ms.author: billmath
-ms.openlocfilehash: 6e526e10ac5e3307aeefcdd22840a3e6a6ec843d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 370f8973b9b8a0cd0c5220a35218efe81bfd07e0
+ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Versionsveröffentlichungsverlauf
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
 
 Dieser Artikel soll Ihnen helfen, die Versionen zu verfolgen, die veröffentlicht wurden, und zu wissen, ob Sie auf die neueste Version aktualisieren müssen oder nicht.
-
->[!IMPORTANT]
->Seit Build 1.1.484 tritt in Azure AD Connect ein Regressionsfehler auf, aufgrund dessen zum Aktualisieren der SQL-Datenbank Systemadministratorberechtigungen erforderlich sind.  Dieser Fehler tritt auch noch im aktuellen Bild 1.1.614 auf.  Für das Upgrade auf diesen Build benötigen Sie Systemadministratorberechtigungen.  dbo-Berechtigungen sind nicht ausreichend.  Wenn Sie versuchen, Azure AD Connect ohne Systemadministratorberechtigungen zu aktualisieren, tritt ein Fehler auf, und Azure AD Connect funktioniert anschließend nicht mehr ordnungsgemäß.  Microsoft ist sich dieses Problems bewusst und arbeitet an einer Lösung.
 
 Liste der verwandten Themen:
 
@@ -37,12 +34,77 @@ Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisi
 Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates erforderlichen Berechtigungen finden Sie unter [Konten und Berechtigungen](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 Download| [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771).
 
+
+## <a name="116470"></a>1.1.647.0
+Status: 19. Oktober 2017
+
+> [!IMPORTANT]
+> Es besteht ein bekanntes Kompatibilitätsproblem zwischen Azure AD Connect Version 1.1.647.0 und Azure AD Connect Health-Agent (für die Synchronisierung) Version 3.0.127.0. Durch dieses Problem wird verhindert, dass der Health-Agent Integritätsdaten zum Azure AD Connect-Synchronisierungsdienst (einschließlich Objektsynchronisierungsfehlern und Ausführungsverlaufsdaten) an den Azure AD Health-Dienst sendet. Überprüfen Sie die aktuelle Version des auf Ihrem Azure AD Connect-Server installierten Azure AD Connect Health-Agents, bevor Sie Ihre Bereitstellung von Azure AD Connect manuell auf Version 1.1.647.0 aktualisieren. Hierzu können Sie zu *Systemsteuerung → Software* wechseln und die Anwendung *Microsoft Azure AD Connect Health-Agent für die Synchronisierung* suchen. Wenn Version 3.0.127.0 installiert ist, wird empfohlen, dass Sie auf die nächste verfügbare Version von Azure AD Connect warten, bevor Sie das Upgrade durchführen. Wenn eine andere Version des Health-Agents als 3.0.127.0 installiert ist, können Sie mit dem manuellen direkten Upgrade fortfahren. Beachten Sie, dass sich dieses Problem nicht auf das Swing-Upgrade oder auf Kunden auswirkt, die eine neue Installation von Azure AD Connect durchführen.
+>
+>
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+#### <a name="fixed-issues"></a>Behobene Probleme
+* Es wurde ein Problem mit der Aufgabe *Benutzeranmeldung ändern* im Azure AD Connect-Assistenten behoben:
+
+  * Das Problem tritt auf, wenn in einer vorhandenen Bereitstellung von Azure AD Connect die Kennwortsynchronisierung **aktiviert** ist und Sie versuchen, die Benutzeranmeldemethode als *Pass-Through-Authentifizierung* festzulegen. Vor dem Anwenden der Änderung wird im Assistenten fälschlicherweise die Aufforderung *Disable Password Synchronization* (Kennwortsynchronisierung deaktivieren) angezeigt. Die Kennwortsynchronisierung bleibt jedoch nach Anwendung der Änderung aktiviert. Durch diese Fehlerbehebung wird die Aufforderung im Assistenten nicht mehr angezeigt.
+
+  * Standardmäßig wird die Kennwortsynchronisierung im Assistenten nicht deaktiviert, wenn Sie die Benutzeranmeldemethode über die Aufgabe *Benutzeranmeldung ändern* aktualisieren. Dadurch werden Unterbrechungen für Kunden vermieden, die die Kennwortsynchronisierung beibehalten möchten, obwohl sie die Pass-Through-Authentifizierung oder den Verbund als primäre Benutzeranmeldemethode aktivieren.
+  
+  * Wenn Sie die Kennwortsynchronisierung nach dem Aktualisieren der Benutzeranmeldemethode deaktivieren möchten, müssen Sie die Aufgabe *Synchronisierungskonfiguration anpassen* im Assistenten ausführen. Deaktivieren Sie beim Navigieren zur Seite *Optionale Features* die Option *Kennwortsynchronisierung*.
+  
+  * Beachten Sie, dass das gleiche Problem auch auftritt, wenn Sie das nahtlose einmalige Anmelden aktivieren oder deaktivieren. Dies ist insbesondere der Fall, wenn Sie über eine vorhandene Bereitstellung von Azure AD Connect mit aktivierter Kennwortsynchronisierung verfügen und die Benutzeranmeldemethode bereits als *Pass-Through-Authentifizierung* konfiguriert ist. Über die Aufgabe *Benutzeranmeldung ändern* versuchen Sie, die Option *Enable Seamless Single Sign-On* (Nahtloses einmaliges Anmelden aktivieren) zu aktivieren oder zu deaktivieren, während die Benutzeranmeldemethode als „Pass-Through-Authentifizierung“ konfiguriert bleibt. Vor dem Anwenden der Änderung wird im Assistenten fälschlicherweise die Aufforderung *Disable Password Synchronization* (Kennwortsynchronisierung deaktivieren) angezeigt. Die Kennwortsynchronisierung bleibt jedoch nach Anwendung der Änderung aktiviert. Durch diese Fehlerbehebung wird die Aufforderung im Assistenten nicht mehr angezeigt.
+
+* Es wurde ein Problem mit der Aufgabe *Benutzeranmeldung ändern* im Azure AD Connect-Assistenten behoben:
+
+   * Das Problem tritt auf, wenn in einer vorhandenen Bereitstellung von Azure AD Connect die Kennwortsynchronisierung **deaktiviert** ist und Sie versuchen, die Benutzeranmeldemethode als *Pass-Through-Authentifizierung* festzulegen. Bei Anwendung der Änderung wird im Assistenten sowohl die Pass-Through-Authentifizierung als auch die Kennwortsynchronisierung aktiviert. Durch diese Fehlerbehebung wird im Assistenten die Kennwortsynchronisierung nicht mehr aktiviert.
+
+  * Bisher war die Kennwortsynchronisierung eine Voraussetzung für die Aktivierung der Pass-Through-Authentifizierung. Beim Festlegen der *Pass-Through-Authentifizierung* als Benutzeranmeldemethode wurde im Assistenten sowohl die Pass-Through-Authentifizierung als auch die Kennwortsynchronisierung aktiviert. Vor Kurzem wurde die Kennwortsynchronisierung als Voraussetzung entfernt. Im Rahmen der Azure AD Connect Version 1.1.557.0 wurde eine Änderung an Azure AD Connect vorgenommen, sodass die Kennwortsynchronisierung nicht aktiviert wird, wenn Sie die Benutzeranmeldemethode als *Pass-Through-Authentifizierung* festlegen. Die Änderung wurde jedoch nur auf die Azure AD Connect-Installation angewendet. Durch diese Fehlerbehebung wird diese Änderung auch auf die Aufgabe *Benutzeranmeldung ändern* angewendet.
+  
+  * Beachten Sie, dass das gleiche Problem auch auftritt, wenn Sie das nahtlose einmalige Anmelden aktivieren oder deaktivieren. Dies ist insbesondere der Fall, wenn Sie über eine vorhandene Bereitstellung von Azure AD Connect mit deaktivierter Kennwortsynchronisierung verfügen und die Benutzeranmeldemethode bereits als *Pass-Through-Authentifizierung* konfiguriert ist. Über die Aufgabe *Benutzeranmeldung ändern* versuchen Sie, die Option *Enable Seamless Single Sign-On* (Nahtloses einmaliges Anmelden aktivieren) zu aktivieren oder zu deaktivieren, während die Benutzeranmeldemethode als „Pass-Through-Authentifizierung“ konfiguriert bleibt. Bei Anwendung der Änderung wird im Assistenten die Kennwortsynchronisierung aktiviert. Durch diese Fehlerbehebung wird im Assistenten die Kennwortsynchronisierung nicht mehr aktiviert. 
+
+* Es wurde ein Problem behoben, durch das beim Upgrade von Azure AD Connect ein Fehler mit der Fehlermeldung *Unable to upgrade the Synchronization Service* (Upgrade des Synchronisierungsdiensts nicht möglich) verursacht wurde. Darüber hinaus kann der Synchronisierungsdienst aufgrund des Ereignisfehlers *The service was unable to start because the version of the database is newer than the version of the binaries installed* (Der Dienst kann nicht gestartet werden, da die Version der Datenbank neuer ist als die Version der installierten Binärdateien.) nicht mehr gestartet werden. Das Problem tritt auf, wenn der Administrator, der das Upgrade durchführt, nicht über die Berechtigung „sysadmin“ für den SQL Server verfügt, der von Azure AD Connect verwendet wird. Durch diese Fehlerbehebung muss der Administrator in Azure AD Connect für das Upgrade nur über die Berechtigung „db_owner“ für die ADSync-Datenbank verfügen.
+
+* Es wurde ein Problem mit dem Azure AD Connect-Upgrade behoben, das Kunden betraf, die [Nahtloses einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso) aktiviert haben. Nach dem Upgrade von Azure AD Connect wird das nahtlose einmalige Anmelden im Azure AD Connect-Assistenten fälschlicherweise als deaktiviert angezeigt, obwohl das Feature aktiviert und voll funktionsfähig bleibt. Durch diese Fehlerbehebung wird das Feature im Assistenten jetzt korrekt als aktiviert angezeigt.
+
+* Es wurde ein Problem behoben, das dazu führte, dass im Azure AD Connect-Assistenten auf der Seite *Bereit zur Konfiguration* immer die Aufforderung *Quellanker konfigurieren* angezeigt wurde, auch dann, wenn keine Änderungen am Quellanker vorgenommen wurden.
+
+* Beim Durchführen eines manuellen direkten Upgrades von Azure AD Connect muss der Kunde die Anmeldeinformationen des globalen Administrators des entsprechenden Azure AD-Mandanten angeben. Bisher konnten Upgrades auch durchgeführt werden, wenn die Anmeldeinformationen des globalen Administrators eines anderen Azure AD-Mandanten angegeben wurden. Obwohl das Upgrade scheinbar erfolgreich abgeschlossen wird, werden bestimmte Konfigurationen mit dem Upgrade nicht korrekt beibehalten. Durch diese Änderung lässt der Assistent die Fortsetzung des Upgrades nicht zu, wenn die angegebenen Anmeldeinformationen nicht mit dem Azure AD-Mandanten übereinstimmen.
+
+* Es wurde redundante Logik entfernt, über die der Azure AD Connect Health-Dienst zu Beginn eines manuellen Upgrades unnötigerweise neu gestartet wurde.
+
+
+#### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
+* Es wurde Logik hinzugefügt, um die erforderlichen Schritte zum Einrichten von Azure AD Connect mit der Cloud von Microsoft Deutschland zu vereinfachen. Bisher mussten Sie bestimmte Registrierungsschlüssel auf dem Azure AD Connect-Server aktualisieren, damit Azure AD Connect ordnungsgemäß mit der Cloud von Microsoft Deutschland ausgeführt wurde (wie in diesem Artikel beschrieben). Azure AD Connect kann jetzt anhand der beim Setup angegebenen Anmeldeinformationen des globalen Administrators automatisch erkennen, wenn sich Ihr Mandant in der Cloud von Microsoft Deutschland befindet.
+
+### <a name="azure-ad-connect-sync"></a>Azure AD Connect-Synchronisierung
+>[!NOTE]
+> Hinweis: Der Synchronisierungsdienst verfügt über eine WMI-Schnittstelle, über die Sie Ihren eigenen benutzerdefinierten Scheduler entwickeln können. Diese Schnittstelle ist inzwischen veraltet und wird in zukünftigen Versionen von Azure AD Connect, die nach dem 30. Juni 2018 ausgeliefert werden, entfernt. Kunden, die den Synchronisierungszeitplan anpassen möchten, sollten den [integrierten Scheduler (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) verwenden.
+
+#### <a name="fixed-issues"></a>Behobene Probleme
+* Wenn der Azure AD Connect-Assistent das erforderliche AD Connector-Konto zum Synchronisieren von Änderungen aus dem lokalen Active Directory erstellt, wird dem Konto die zum Lesen von PublicFolder-Objekten erforderliche Berechtigung nicht ordnungsgemäß zugewiesen. Dieses Problem betrifft die Expressinstallation und die benutzerdefinierte Installation. Das Problem wird mit dieser Änderung behoben.
+
+* Es wurde ein Problem behoben, das dazu führte, dass die Problembehandlungsseite des Azure AD Connect-Assistenten für Administratoren, die Windows Server 2016 ausführen, nicht korrekt dargestellt wurde.
+
+#### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
+* Bei der Problembehandlung der Kennwortsynchronisierung über die Problembehandlungsseite des Azure AD Connect-Assistenten werden jetzt domänenspezifische Statuswerte zurückgegeben.
+
+* Wenn Sie bisher versucht haben, die Kennworthashsynchronisierung zu aktivieren, wurde in Azure AD Connect nicht überprüft, ob das AD Connector-Konto über die erforderlichen Berechtigungen zum Synchronisieren von Kennworthashes aus dem lokalen AD verfügt. Dies wird jetzt im Azure AD Connect-Assistenten überprüft, und Sie werden gewarnt, wenn das AD-Connector-Konto nicht über ausreichende Berechtigungen verfügt.
+
+### <a name="ad-fs-management"></a>AD FS-Verwaltung
+#### <a name="fixed-issue"></a>Behobenes Problem
+* Es wurde ein Problem bei der Verwendung des Features [msDS-ConsistencyGuid als Quellanker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-msds-consistencyguid-as-sourceanchor) behoben. Dieses Problem betrifft Kunden, die *Verbund mit AD FS* als Benutzeranmeldemethode konfiguriert haben. Beim Ausführen der Aufgabe *Quellanker konfigurieren* im Assistenten wird in Azure AD Connect „*ms-DS-ConsistencyGuid“ als Quellattribut für „immutableId“ verwendet. Als Teil dieser Änderung wird in Azure AD Connect versucht, die Anspruchsregeln für „ImmutableId“ in AD FS zu aktualisieren. Bei diesem Schritt traten jedoch Fehler auf, da Azure AD Connect nicht über die erforderlichen Administratoranmeldeinformationen zum Konfigurieren von AD FS verfügte. Durch diese Fehlerbehebung werden Sie in Azure AD Connect jetzt aufgefordert, die Administratoranmeldeinformationen für AD FS einzugeben, wenn Sie die Aufgabe *Quellanker konfigurieren* ausführen.
+
+
+
 ## <a name="116140"></a>1.1.614.0
 Status: 5. September 2017
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="known-issues"></a>Bekannte Probleme
+* Es besteht ein bekanntes Problem, durch das beim Upgrade von Azure AD Connect ein Fehler mit der Fehlermeldung *Unable to upgrade the Synchronization Service* (Upgrade des Synchronisierungsdiensts nicht möglich) verursacht wird. Darüber hinaus kann der Synchronisierungsdienst aufgrund des Ereignisfehlers *The service was unable to start because the version of the database is newer than the version of the binaries installed* (Der Dienst kann nicht gestartet werden, da die Version der Datenbank neuer ist als die Version der installierten Binärdateien.) nicht mehr gestartet werden. Das Problem tritt auf, wenn der Administrator, der das Upgrade durchführt, nicht über die Berechtigung „sysadmin“ für den SQL Server verfügt, der von Azure AD Connect verwendet wird. dbo-Berechtigungen sind nicht ausreichend.
+
 * Es besteht ein bekanntes Problem mit dem Azure AD Connect-Upgrade, das Kunden betrifft, die [Nahtloses einmaliges Anmelden](active-directory-aadconnect-sso.md) aktiviert haben. Nach dem Aktualisieren von Azure AD Connect wird das Feature im Assistenten als deaktiviert angezeigt, obwohl das Feature aktiviert bleibt. In einem zukünftigen Release wird dieses Problem behoben. Kunden, die wg. dieses Anzeigeproblems besorgt sind, können es manuell beheben, indem sie „Nahtloses einmaliges Anmelden“ im Assistenten aktivieren.
 
 #### <a name="fixed-issues"></a>Behobene Probleme

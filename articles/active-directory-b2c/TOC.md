@@ -1,6 +1,9 @@
 # [Übersicht](active-directory-b2c-overview.md)
 
 # Erste Schritte
+## [Testversion für eine Azure AD-B2C-Web-App](active-directory-b2c-quickstarts-web-app.md)
+## [Testversion für eine Azure AD-B2C-Desktop-App](active-directory-b2c-quickstarts-desktop-app.md)
+## [Testversion für eine einseitige Azure AD-B2C-App](active-directory-b2c-quickstarts-spa.md)
 ## [Erstellen eines Azure AD B2C-Verzeichnisses](active-directory-b2c-get-started.md)
 ## [Registrieren Ihrer Anwendung](active-directory-b2c-app-registration.md)
 ## [Integrierte Richtlinien](active-directory-b2c-reference-policies.md)

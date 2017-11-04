@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 10/17/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eacecb9f084ead76633cf802751d3a603cb2f0d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 727041edf457ef55a39eb91ba2369c163f5b4712
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Verschieben von Daten aus DB2 mithilfe der Kopieraktivität von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -82,7 +82,7 @@ Die folgende Tabelle enthält die JSON-Eigenschaften, die spezifisch für einen 
 
 | Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
-| **type** |Diese Eigenschaft muss auf **OnPremisesDB2** festgelegt werden. |Ja |
+| **type** |Diese Eigenschaft muss auf **OnPremisesDb2** festgelegt werden. |Ja |
 | **server** |Der Name des DB2-Servers |Ja |
 | **database** |Der Name der DB2-Datenbank |Ja |
 | **schema** |Der Name des Schemas in der DB2-Datenbank. Diese Eigenschaft erfordert die Beachtung der Groß-/Kleinschreibung. |Nein |
@@ -110,11 +110,7 @@ Wenn bei der Kopieraktivität „source“ den Typ **RelationalSource** aufweist
 | **query** |Verwendet die benutzerdefinierte Abfrage zum Lesen der Daten. |SQL-Abfragezeichenfolge. Beispiel: `"query": "select * from "MySchema"."MyTable""` |Nein (wenn die **tableName**-Eigenschaft eines DataSets angegeben wurde) |
 
 > [!NOTE]
-> Bei Schema- und Tabellennamen wird zwischen Groß- und Kleinschreibung unterschieden. Schließen Sie in der Abfrageanweisung Eigenschaftennamen in doppelte Anführungszeichen ("") ein. Beispiel:
->
-> ```sql
-> "query": "select * from "DB2ADMIN"."Customers""
-> ```
+> Bei Schema- und Tabellennamen wird zwischen Groß- und Kleinschreibung unterschieden. Schließen Sie in der Abfrageanweisung Eigenschaftennamen in doppelte Anführungszeichen ("") ein.
 
 ## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>JSON-Beispiel: Kopieren von Daten aus DB2 nach Azure Blob Storage
 Dieses Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Das Beispiel veranschaulicht das Kopieren von Daten aus einer DB2-Datenbank nach Blob Storage. Allerdings können mithilfe der Kopieraktivität von mithilfe von Azure Data Factory Daten in [alle unterstützten Datenspeicher-Senkentypen](data-factory-data-movement-activities.md#supported-data-stores-and-formats) kopiert werden.

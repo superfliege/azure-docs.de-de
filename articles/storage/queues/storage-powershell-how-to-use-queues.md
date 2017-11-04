@@ -1,6 +1,6 @@
 ---
 title: "Ausführen von Vorgängen für Azure Queue Storage mit PowerShell | Microsoft-Dokumentation"
-description: "Tutorial: Ausführen von Vorgängen für Azure Queue Storage mit PowerShell"
+description: "Ausführen von Vorgängen für Azure Queue Storage mit PowerShell"
 services: storage
 documentationcenter: storage
 author: robinsh
@@ -11,18 +11,18 @@ ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.openlocfilehash: 357d8db329a6a3c782753804d681029fdb07b5f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 85678452e84a65bd81472396f8ebbb91091a2095
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Ausführen von Vorgängen für Azure Queue Storage mit Azure PowerShell
 
-Azure Queue Storage ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Weitere Informationen finden Sie unter [Introduction to Azure Queues (Einführung in Azure-Warteschlangen)](storage-queues-introduction.md). In diesem Tutorial werden häufige Vorgänge für Queue Storage behandelt. Folgendes wird vermittelt:
+Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Weitere Informationen finden Sie unter [Introduction to Azure Queues (Einführung in Azure-Warteschlangen)](storage-queues-introduction.md). In dieser Anleitung werden häufige Vorgänge für Queue Storage behandelt. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen einer Warteschlange
@@ -32,7 +32,9 @@ Azure Queue Storage ist ein Dienst zur Speicherung großer Anzahlen von Nachrich
 > * Löschen einer Nachricht 
 > * Löschen einer Warteschlange
 
-Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+Für diese Anleitung ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+
+Es gibt keine PowerShell-Cmdlets für die Datenebene für Warteschlangen. Sie müssen die .NET-Speicherclientbibliothek wie in PowerShell verwenden, um Vorgänge auf Datenebene durchführen zu können, z. B. Nachricht hinzufügen, Nachricht lesen und Nachricht löschen. Sie erstellen ein Nachrichtenobjekt und können dann Befehle wie „AddMessage“ verwenden, um Vorgänge für diese Nachricht auszuführen. In diesem Artikel erfahren Sie, wie Sie dabei vorgehen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -44,7 +46,7 @@ Login-AzureRmAccount
 
 ## <a name="retrieve-list-of-locations"></a>Abrufen der Standortliste
 
-Wenn Sie sich nicht sicher sind, welche Region Sie verwenden sollen, können Sie die verfügbaren Regionen auflisten. Sobald die Liste angezeigt wird, wählen Sie die gewünschte Region aus. In diesem Tutorial wird **EastUs** verwendet. Speichern Sie diesen Wert für die zukünftige Verwendung in der Variable **Standort**.
+Wenn Sie sich nicht sicher sind, welche Region Sie verwenden sollen, können Sie die verfügbaren Regionen auflisten. Sobald die Liste angezeigt wird, wählen Sie die gewünschte Region aus. In dieser Übung wird **eastus** verwendet. Speichern Sie diesen Wert für die zukünftige Verwendung in der Variable **Standort**.
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -71,8 +73,7 @@ $storageAccountName = "howtoqueuestorage"
 $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName `
   -Location $location `
-  -SkuName Standard_LRS `
-  -Kind Storage
+  -SkuName Standard_LRS
 
 $ctx = $storageAccount.Context
 ```
@@ -104,7 +105,7 @@ Get-AzureStorageQueue -Context $ctx | select Name
 
 ## <a name="add-a-message-to-a-queue"></a>Hinzufügen von Nachrichten zu einer Warteschlange
 
-Um eine Nachricht zu einer Warteschlange hinzuzufügen, erstellen Sie zuerst eine neue Instanz der [Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage](http://msdn.microsoft.com/library/azure/jj732474.aspx)-Klasse. Anschließend rufen Sie die [AddMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.addmessage.aspx) -Methode auf. Eine CloudQueueMessage kann entweder aus einer Zeichenfolge (im UTF-8-Format) oder aus einem Bytearray erstellt werden.
+Vorgänge, die sich auf die tatsächlichen Nachrichten in der Warteschlange auswirken, verwenden die .NET-Speicherclientbibliothek, wie sie in PowerShell bereitgestellt wird. Um eine Nachricht zu einer Warteschlange hinzuzufügen, erstellen Sie eine neue Instanz des Nachrichtenobjekts, [Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage](http://msdn.microsoft.com/library/azure/jj732474.aspx)-Klasse. Anschließend rufen Sie die [AddMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.addmessage.aspx) -Methode auf. Eine CloudQueueMessage kann entweder aus einer Zeichenfolge (im UTF-8-Format) oder aus einem Bytearray erstellt werden.
 
 Im folgenden Beispiel wird veranschaulicht, wie eine Nachricht zu Ihrer Warteschlange hinzugefügt wird.
 
@@ -124,17 +125,17 @@ $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQ
 $queue.CloudQueue.AddMessage($QueueMessage)
 ```
 
-Wenn Sie [Azure Storage-Explorer](http://storageexplorer.com) verwenden, können Sie sich mit Ihrem Azure-Konto verbinden, die Warteschlangen im Speicherkonto anzeigen und für eine davon einen Drilldown durchführen, um die Nachrichten in der Warteschlange anzuzeigen. 
+Wenn Sie [Azure Storage-Explorer](http://storageexplorer.com) verwenden, können Sie sich mit Ihrem Azure-Konto verbinden, die Warteschlangen im Speicherkonto anzeigen und für eine Warteschlange einen Drilldown durchführen, um die Nachrichten in der Warteschlange anzuzeigen. 
 
 ## <a name="read-a-message-from-the-queue-then-delete-it"></a>Lesen und Löschen einer Nachricht aus der Warteschlange
 
 Nachrichten werden in der Reihenfolge „Best Try“, „First In“, „First Out“ gelesen. Dies ist nicht gewährleistet. Wenn Sie eine Nachricht aus der Warteschlange lesen, wird diese unsichtbar für alle anderen Prozesse, die die Warteschlange betrachten. Dadurch wird sichergestellt, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt.  
 
-Diese **Unsichtbarkeitszeit** definiert, wie lange die Nachricht unsichtbar bleibt, bevor sie wieder für die Verarbeitung verfügbar ist. Der Standardwert ist 30 Sekunden. 
+Dieses **Unsichtbarkeitstimeout** definiert, wie lange die Nachricht unsichtbar bleibt, bevor sie wieder für die Verarbeitung verfügbar ist. Der Standardwert ist 30 Sekunden. 
 
 Dieser Code liest eine Nachricht aus der Warteschlange in zwei Schritten. Wenn Sie die [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.GetMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.getmessage.aspx)-Methode aufrufen, erhalten Sie die nächste Nachricht in der Warteschlange. Die für **GetMessage** zurückgegebene Nachricht ist für andere Codes nicht mehr sichtbar, die Nachrichten aus dieser Warteschlange lesen. Um die Nachricht endgültig aus der Warteschlange zu entfernen, rufen Sie die [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.DeleteMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.deletemessage.aspx)-Methode auf. 
 
-Im folgenden Beispiel lesen Sie die drei Warteschlangennachrichten durch und warten dann zehn Sekunden (die Unsichtbarkeitszeit). Dann lesen Sie die drei Nachrichten erneut und löschen diese anschließend, indem Sie **DeleteMessage** aufrufen. Wenn Sie versuchen, die Warteschlange zu lesen, nachdem die Nachrichten gelöscht wurden, wird „$queueMessage“ als NULL zurückgegeben.
+Im folgenden Beispiel lesen Sie die drei Warteschlangennachrichten durch und warten dann zehn Sekunden (das Unsichtbarkeitstimeout). Dann lesen Sie die drei Nachrichten erneut und löschen diese anschließend, indem Sie **DeleteMessage** aufrufen. Wenn Sie versuchen, die Warteschlange zu lesen, nachdem die Nachrichten gelöscht wurden, wird „$queueMessage“ als NULL zurückgegeben.
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue
@@ -178,7 +179,7 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes über die grundlegende Verwaltung von Queue Storage mit PowerShell gelernt:
+In dieser Anleitung haben Sie Folgendes über die grundlegende Verwaltung von Queue Storage mit PowerShell gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Warteschlange

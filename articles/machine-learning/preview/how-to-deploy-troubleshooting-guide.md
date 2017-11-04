@@ -10,17 +10,39 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/05/2017
-ms.openlocfilehash: 066a6a223692055c7855abc63667e345ee8dc2d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/09/2017
+ms.openlocfilehash: b9287c7151c96aaccbcda81c111cfe36ead5ab38
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
-# <a name="model-management-troubleshooting"></a>Problembehandlung bei der Modellverwaltung
+# <a name="troubleshooting-service-deployment-and-environment-setup"></a>Problembehandlung bei der Dienstbereitstellung und Umgebungseinrichtung
+Folgende Informationen können dabei helfen, beim Einrichten der Modellverwaltungsumgebung die Ursache von Fehlern zu finden.
+
+## <a name="model-management-environment"></a>Modellverwaltungsumgebung
+### <a name="owner-permission-required"></a>Erforderliche Besitzerberechtigung
+Sie müssen über die Berechtigung „Besitzer“ im Azure-Abonnement verfügen, um den Machine Learning Compute-Dienst zu registrieren.
+
+Sie benötigen die Besitzerberechtigung auch, um einen Cluster für die Bereitstellung Ihrer Webdienste einzurichten.
+
+### <a name="resource-availability"></a>Ressourcenverfügbarkeit
+In Ihrem Abonnement müssen genügend Ressourcen verfügbar sein, damit Sie die Umgebungsressourcen bereitstellen können.
+
+### <a name="subscription-caps"></a>Abonnementobergrenzen
+Möglicherweise wurde für Ihr Abonnement eine Obergrenze in Bezug auf die Abrechnung festgelegt, die verhindert, dass Sie die Umgebungsressourcen bereitstellen können. Entfernen Sie diese Obergrenze, um die Bereitstellung zu ermöglichen.
+
+### <a name="enable-debug-and-verbose-options"></a>Aktivieren der Optionen „debug“ und „verbose“
+Verwenden Sie die Flags `--debug` und `--verbose` im setup-Befehl, um Debug- und Ablaufverfolgungsinformationen anzuzeigen, während die Umgebung bereitgestellt wird.
+
+```
+az ml env setup -l <loation> -n <name> -c --debug --verbose 
+```
+
+## <a name="service-deployment"></a>Dienstbereitstellung
 Die folgenden Informationen sollen Sie beim Ermitteln der Ursache von Fehlern beim Bereitstellen oder beim Aufrufen des Webdiensts unterstützen.
- 
-## <a name="1-service-logs"></a>1. Dienstprotokolle
+
+### <a name="service-logs"></a>Dienstprotokolle
 Die Option `logs` der Dienst-Befehlszeilenschnittstelle liefert Protokolldaten von Docker und Kubernetes.
 
 ```
@@ -33,7 +55,7 @@ Weitere Protokolleinstellungen erhalten Sie mithilfe der Option `--help` (oder `
 az ml service logs realtime -h
 ```
 
-## <a name="2-debug-and-verbose-options"></a>2. Optionen „debug“ und „verbose“
+### <a name="debug-and-verbose-options"></a>Optionen „debug“ und „verbose“
 Verwenden Sie das Flag `--debug`, um Debugprotokolle anzuzeigen, während der Dienst bereitgestellt wird.
 
 ```
@@ -46,7 +68,7 @@ Verwenden Sie das Flag `--verbose`, um zusätzliche Details anzuzeigen, während
 az ml service create realtime -m <modelfile>.pkl -f score.py -n <service name> -r python --verbose
 ```
 
-## <a name="3-app-insights"></a>3. App Insights
+### <a name="enable-request-logging-in-app-insights"></a>Aktivieren der Anforderungsprotokollierung in App Insights
 Legen Sie das Flag `-l` beim Erstellen eines Webdiensts auf „true“ fest, um die Protokollierung auf der Anforderungsebene zu aktivieren. Die Anforderungsprotokolle werden in die App Insights-Instanz für Ihre Umgebung in Azure geschrieben. Verwenden Sie für die Suche nach dieser Instanz den Umgebungsnamen, den Sie bei Verwendung des Befehls `az ml env setup` verwendet haben.
 
 - Legen Sie `-l` auf „true“ fest, wenn Sie den Dienst erstellen.
@@ -55,7 +77,7 @@ Legen Sie das Flag `-l` beim Erstellen eines Webdiensts auf „true“ fest, um 
 - Alternativ können Sie auch zu `Analytics` > `Exceptions` > `exceptions take | 10` navigieren.
 
 
-## <a name="4-error-handling-in-script"></a>4. Fehlerbehandlung im Skript
+### <a name="add-error-handling-in-scoring-script"></a>Hinzufügen der Fehlerbehandlung im Bewertungsskript
 Verwenden Sie die Ausnahmebehandlung der Funktion **run** Ihres Skripts `scoring.py`, um die Fehlermeldung als Teil Ihrer Webdienstausgabe zurückzugeben.
 
 Beispiel für Python:
@@ -66,7 +88,7 @@ Beispiel für Python:
         return(str(e))
 ```
 
-## <a name="5-other-common-problems"></a>5. Andere allgemeine Probleme
+## <a name="other-common-problems"></a>Andere allgemeine Probleme
 - Sollte der Befehl `env setup` nicht erfolgreich sein, vergewissern Sie sich, dass in Ihrem Abonnement genügend Kerne verfügbar sind.
 - Verwenden Sie im Webdienstnamen keinen Unterstrich (wie in *my_webservice*).
 - Sollte beim Aufrufen des Webdiensts der Fehler **502 - Ungültiges Gateway** auftreten, wiederholen Sie den Vorgang. Der Fehler bedeutet in der Regel, dass der Container noch nicht im Cluster bereitgestellt wurde.

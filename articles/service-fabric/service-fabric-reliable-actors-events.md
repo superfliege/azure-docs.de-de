@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/13/2017
+ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: d936670c548ff709fc2e935d3f28d94e4bde8a04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 779d39e2910d0de25ee07b8fae3ca7a0e9772776
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="actor-events"></a>Actor-Ereignisse
-Actor-Ereignisse bieten eine Möglichkeit zum Senden von Best-Effort-Nachrichten vom Actor an die Clients. Actor-Ereignisse dienen der Actor-Client-Kommunikation und sollten nicht für die Actor-Actor-Kommunikation verwendet werden.
+Actor-Ereignisse bieten eine Möglichkeit zum Senden von Best-Effort-Nachrichten vom Actor an die Clients. Actor-Ereignisse dienen der Actor-Client-Kommunikation und sollten nicht für die Kommunikation zwischen Actors verwendet werden.
 
 Die folgenden Codeausschnitte zeigen, wie Sie Actor-Ereignisse in Ihrer Anwendung verwenden können.
 
@@ -95,7 +95,7 @@ return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler()
 
 Im Failover-Fall kann ein Failover des Actors zu einem anderen Prozess oder Knoten erfolgen. Der Actor-Proxy verwaltet die aktiven Abonnements und verlängert automatisch deren Abonnement. Sie können das Intervall für die Abonnementverlängerung über die API `ActorProxyEventExtensions.SubscribeAsync<TEvent>` steuern. Zum Kündigen des Abonnements verwenden Sie die API `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` .
 
-Veröffentlichen Sie auf dem Actor die Ereignisse einfach in der Reihenfolge ihres Auftretens. Wenn für das Ereignis Abonnenten vorhanden sind, sendet die Actors-Laufzeit ihnen die Benachrichtigung.
+Veröffentlichen Sie auf dem Actor die Ereignisse in der Reihenfolge ihres Auftretens. Wenn für das Ereignis Abonnenten vorhanden sind, sendet die Actors-Laufzeit ihnen die Benachrichtigung.
 
 ```csharp
 var ev = GetEvent<IGameEvents>();

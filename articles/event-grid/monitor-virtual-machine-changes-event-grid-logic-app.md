@@ -11,11 +11,11 @@ ms.service: logic-apps
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 4d4c16860dbec10162797a13c8f9f57106abd17f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b9c7c9502be1a9d8681a304a6663c23c02c0298
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Überwachen von Änderungen an einem virtuellen Computer mit Azure Event Grid und Logic Apps
 
@@ -225,29 +225,26 @@ Fügen Sie nun eine [*Aktion*](../logic-apps/logic-apps-what-are-logic-apps.md#l
 
 Herzlichen Glückwunsch! Sie haben eine Logik-App erstellt und ausgeführt, die Ressourcenereignisse durch einen Ereignisraster überwacht und Ihnen eine E-Mail sendet, wenn derartige Ereignisse auftreten sollten. Außerdem haben Sie erfahren, wie einfach Sie Workflows zur Automatisierung von Prozessen und Integration von Systemen sowie Clouddiensten erstellen können.
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-In diesem Tutorial werden Ressourcen verwendet und Aktionen durchgeführt, für die Gebühren in Ihrem Azure-Abonnement anfallen. Wenn Sie mit der Durchführung des Tutorials und dem Testen fertig sind, deaktivieren oder löschen Sie unbedingt alle Ressourcen, für deren Gebühren Sie nicht aufkommen möchten.
-
-Sie können die Ausführung Ihrer Logik-App und das Senden von E-Mail durch die Logik-App stoppen, ohne die App zu löschen. Wählen Sie in Ihrem Logik-App-Menü **Übersicht**. Wählen Sie auf der Symbolleiste **Deaktivieren** aus.
-
-![Deaktivieren der Logik-App](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
-
-## <a name="faq"></a>Häufig gestellte Fragen
-
-**F**: Welche anderen Aufgaben zur Überwachung virtueller Computer kann ich mithilfe von Ereignisrastern und Logik-Apps durchführen? </br>
-**A**: Sie können andere Konfigurationsänderungen überwachen wie etwa Folgende:
+Sie können andere Konfigurationsänderungen mit Ereignisrastern und Logik-Apps überwachen wie etwas Folgende:
 
 * Ein virtueller Computer erhält rollenbasierte Zugriffssteuerungsrechte (Role-Based Access Control, RBAC).
 * Es werden Änderungen an einer Netzwerksicherheitsgruppe (Network Security Group, NSG) in einer Netzwerkschnittstelle (Network Interface, NIC) vorgenommen.
 * Datenträger für einen virtuellen Computer werden hinzugefügt oder entfernt.
 * Der NIC eines virtuellen Computers wird eine öffentliche IP-Adresse zugewiesen.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+In diesem Tutorial werden Ressourcen verwendet und Aktionen durchgeführt, für die Gebühren in Ihrem Azure-Abonnement anfallen. Wenn Sie mit der Durchführung des Tutorials und dem Testen fertig sind, deaktivieren oder löschen Sie unbedingt alle Ressourcen, für deren Gebühren Sie nicht aufkommen möchten.
+
+* Deaktivieren Sie Ihre Logik-App, um die Ausführung zu beenden, ohne Ihre Arbeit zu löschen. Wählen Sie in Ihrem Logik-App-Menü **Übersicht**. Wählen Sie auf der Symbolleiste **Deaktivieren** aus.
+
+  ![Deaktivieren der Logik-App](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
+
+  > [!TIP]
+  > Falls das Logik-App-Menü nicht angezeigt wird, können Sie zum Azure-Dashboard zurückkehren und Ihre Logik-App erneut öffnen.
+
+* Wählen Sie im Menü der Logik-App die Option **Übersicht**, um die Logik-App dauerhaft zu löschen. Wählen Sie in der Symbolleiste die Option **Löschen** aus. Bestätigen Sie, dass Sie die Logik-App löschen möchten, und wählen Sie dann die Option **Löschen** aus.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Event Grid – Übersicht](../event-grid/overview.md)
-* [Event Grid – Begriffe](../event-grid/concepts.md)
-* [Schnellstart: Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Event Grid](../event-grid/custom-event-quickstart.md)
-* [Event Grid-Ereignisschema](../event-grid/event-schema.md)
-* [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md)
-* [Erstellen von Logik-App-Workflows mit vordefinierten Vorlagen](../logic-apps/logic-apps-use-logic-app-templates.md)
+* [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Event Grid](../event-grid/custom-event-quickstart.md)

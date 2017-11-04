@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren des Lastenausgleichs-Verteilungsmodus | Microsoft Docs
-description: "Konfigurieren des Verteilungsmodus für den Azure Load Balancer zur Unterstützung von Quell-IP-Affinität"
+title: Konfigurieren des Azure Load Balancer-Verteilungsmodus | Microsoft-Dokumentation
+description: "Konfigurieren des Verteilungsmodus für Azure Load Balancer zur Unterstützung von Quell-IP-Affinität"
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,57 +13,51 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: a6b3c346358e0aed4c60c4903932236edc237379
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d04a469c04553b7d6a14df7054ad5ef795baa500
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="configure-the-distribution-mode-for-load-balancer"></a>Konfigurieren des Verteilungsmodus für den Lastenausgleich
+# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurieren des Verteilungsmodus für Azure Load Balancer
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 ## <a name="hash-based-distribution-mode"></a>Modus der hashbasierten Verteilung
 
-Standardmäßig wird ein Fünf-Tupel-Hash-Verteilungsalgorithmus (Quell-IP, Quellport, IP-Zieladresse, Zielport, Protokolltyp) verwendet, um den Datenverkehr verfügbaren Servern zuzuordnen. Dabei wird Bindung nur in einer Transportsitzung angeboten. Pakete in der gleichen Sitzung werden an die gleiche Instanz der Rechenzentrums-IP (DIP) hinter dem Lastenausgleichs-Endpunkt geleitet. Wenn der Client eine neue Sitzung über die gleiche Quell-IP startet, wird der Quellport geändert, wodurch der Datenverkehr an einen anderen DIP-Endpunkt geleitet wird.
+Der Standardverteilungsmodus für Azure Load Balancer ist ein 5-Tupel-Hash. Das Tupel besteht aus Quell-IP, Quellport, Ziel-IP, Zielport und Protokolltyp. Der Hash wird dazu verwendet, den Datenverkehr den verfügbaren Servern zuzuordnen, und der Algorithmus bietet nur innerhalb einer Transportsitzung eine entsprechende Bindung. Pakete in der gleichen Sitzung werden an die gleiche Instanz der Rechenzentrums-IP (DIP) hinter dem Lastenausgleichs-Endpunkt geleitet. Wenn der Client eine neue Sitzung über die gleiche Quell-IP startet, wird der Quellport geändert, wodurch der Datenverkehr an einen anderen DIP-Endpunkt geleitet wird.
 
-![Lastenausgleich auf Hashbasis](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
-
-Abbildung 1: Fünf-Tupel-Verteilung
+![Modus der 5-Tupel-Hash-basierten Verteilung](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
 ## <a name="source-ip-affinity-mode"></a>Modus „Quell-IP-Affinität“
 
-Uns steht ein weiterer Verteilungsmodus namens Quell-IP-Affinität (auch Sitzungsaffinität oder Client-IP-Affinität genannt) zur Verfügung. Azure Load Balancer kann für die Verwendung von zwei Tupeln (Quell-IP, Ziel-IP) oder drei Tupeln (Quell-IP, Ziel-IP, Protokoll) konfiguriert werden, um Datenverkehr den verfügbaren Servern zuzuordnen. Mithilfe der Quell-IP-Affinität werden Verbindungen, die vom gleichen Clientcomputer initiiert werden, an den gleichen DIP-Endpunkt geleitet.
+Load Balancer kann auch mithilfe des Verteilungsmodus „Quell-IP-Affinität“ konfiguriert werden. Dieser Verteilungsmodus ist auch als Sitzungsaffinität oder Client-IP-Affinität bekannt. Der Modus verwendet einen 2-Tupel-Hash (Quell-IP und Ziel-IP) oder 3-Tupel-Hash (Quell-IP, Ziel-IP und Protokolltyp) zum Zuordnen des Datenverkehrs zu verfügbaren Servern. Mithilfe der Quell-IP-Affinität werden Verbindungen, die vom gleichen Clientcomputer initiiert werden, an den gleichen DIP-Endpunkt geleitet.
 
-Das folgende Diagramm veranschaulicht eine Konfiguration mit zwei Tupeln. Beachten Sie, dass die beiden Tupel durch den Lastenausgleich zum ersten virtuellen Computer (VM1) führen, der dann durch VM2 und VM3 abgesichert wird.
+Die folgende Abbildung veranschaulicht eine Konfiguration mit zwei Tupeln. Beachten Sie, dass die beiden Tupel durch den Lastenausgleich zum ersten virtuellen Computer (VM1) führen. VM1 wird dann durch VM2 und VM3 abgesichert.
 
-![Sitzungsaffinität](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
+![Verteilungsmodus „2-Tupel-Sitzungsaffinität“](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
-Abbildung 2: Zwei-Tupel-Verteilung
+Mit dem Modus „Quell-IP-Affinität“ wird das Problem der Inkompatibilität zwischen Azure Load Balancer und Remotedesktopgateway (RD-Gateway) gelöst. Mit diesem Modus können Sie eine RD-Gatewayfarm in einem einzelnen Clouddienst erstellen.
 
-Mit der Quell-IP-Affinität wird das Problem der Inkompatibilität zwischen Azure Load Balancer und RD-Gateway (Remotedesktop) gelöst. Jetzt können Sie eine RD-Gatewayfarm in einem einzelnen Clouddienst erstellen.
+Ein weiterer Anwendungsfall ist das Hochladen von Medien. Der Datenupload erfolgt über UDP, während die Steuerungsebene über TCP realisiert wird:
 
-Ein anderer Anwendungsfall ist das Hochladen von Medien, wobei der Datenupload über UDP erfolgt, während die Steuerungsebene über TCP realisiert wird:
-
-* Ein Client initiiert zunächst eine TCP-Sitzung mit der öffentlichen Adresse mit Lastenausgleich, wird dann an eine bestimmte DIP-Adresse geleitet, und dieser Kanal bleibt zur Überwachung des Zustands der Verbindung aktiv.
-* Eine neue UDP-Sitzung des gleichen Clientcomputers wird auf dem gleichen öffentlichen Endpunkt mit Lastenausgleich initiiert. Es wird hier davon ausgegangen, dass diese Verbindung auch an den gleichen DIP-Endpunkt geleitet wird wie die vorherige TCP-Verbindung, sodass der Medienupload mit hohem Durchsatz ausgeführt werden kann, während ein Steuerungskanal über TCP erhalten bleibt.
+* Ein Client initiiert eine TCP-Sitzung zur öffentlichen Adresse mit Lastenausgleich und wird zu einer bestimmten DIP-Adresse geleitet. Der Kanal bleibt zur Überwachung der Verbindungsintegrität aktiv.
+* Es wird eine neue UDP-Sitzung vom gleichen Clientcomputer zum gleichen öffentlichen Endpunkt mit Lastenausgleich initiiert. Die Verbindung wird zum gleichen DIP-Endpunkt wie bei der vorherigen TCP-Verbindung geleitet. Das Hochladen von Medien kann mit hohem Durchsatz erfolgen, während gleichzeitig ein Steuerkanal über TCP betrieben wird.
 
 > [!NOTE]
-> Bei einer Änderung der Lastenausgleichsgruppe (Entfernen oder Hinzufügen eines virtuellen Computers) wird die Verteilung der Clientanforderungen neu berechnet. Sie können sich nicht darauf verlassen, dass neue Verbindungen von vorhandenen Clients beim gleichen Server landen. Darüber hinaus kann die Verwendung des Quell-IP-Affinitäts-Verteilungsmodus zu einer ungleichen Verteilung des Datenverkehrs führen. Clients, die hinter Proxys ausgeführt werden, können als eine einzige Clientanwendung betrachtet werden.
+> Bei einer Änderung der Lastenausgleichsgruppe durch Entfernen oder Hinzufügen eines virtuellen Computers wird die Verteilung der Clientanforderungen neu berechnet. Sie können sich nicht darauf verlassen, dass neue Verbindungen von vorhandenen Clients beim gleichen Server landen. Darüber hinaus kann die Verwendung des Quell-IP-Affinitäts-Verteilungsmodus zu einer ungleichen Verteilung des Datenverkehrs führen. Clients, die hinter Proxys ausgeführt werden, können als eine einzige Clientanwendung betrachtet werden.
 
-## <a name="configuring-source-ip-affinity-settings-for-load-balancer"></a>Konfigurieren von Quell-IP-Affinitätseinstellungen für Lastenausgleich
+## <a name="configure-source-ip-affinity-settings"></a>Konfigurieren der Einstellungen für die Quell-IP-Affinität
 
-Für virtuelle Computer können Sie per PowerShell die Timeouteinstellungen ändern:
-
-Fügen Sie einem virtuellen Computer einen Azure-Endpunkt hinzu, und legen Sie den Lastenausgleichs-Verteilungsmodus fest.
+Verwenden Sie für virtuelle Computer Azure PowerShell, um die Timeouteinstellungen zu ändern. Fügen Sie einem virtuellen Computer einen Azure-Endpunkt hinzu, und konfigurieren Sie den Verteilungsmodus für den Lastenausgleich:
 
 ```powershell
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-„LoadBalancerDistribution“ kann für eine Zwei-Tupel-Konfiguration (Quell-IP, Ziel-IP) auf „sourceIP“, für eine Drei-Tupel-Konfiguration (Quell-IP, Ziel-IP, Protokoll) auf „sourceIPProtocol“ oder gar nicht festgelegt werden, um das Standardverhalten (Fünf-Tupel-Lastenausgleich) zu verwenden.
+Legen Sie den Wert des `LoadBalancerDistribution`-Elements für den gewünschten Umfang des Lastenausgleichs fest. Geben Sie „sourceIP“ für den 2-Tupel-Lastenausgleich (Quell-IP und Ziel-IP) an. Geben Sie „sourceIPProtocol“ für den 3-Tupel-Lastenausgleich (Quell-IP, Ziel-IP und Protokolltyp) an. Geben Sie keinen Wert an, um das Standardverhalten, den 5-Tupel-Lastenausgleich, zu verwenden.
 
-Verwenden Sie Folgendes, um eine Lastenausgleichs-Verteilungsmoduskonfiguration für einen Endpunkt abzurufen:
+Abrufen einer Lastenausgleichs-Verteilungsmoduskonfiguration für einen Endpunkt mithilfe der folgenden Einstellungen:
 
     PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
@@ -85,19 +79,20 @@ Verwenden Sie Folgendes, um eine Lastenausgleichs-Verteilungsmoduskonfiguration 
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-Wenn das Element "LoadBalancerDistribution" nicht vorhanden ist, verwendet der Azure-Lastenausgleich den standardmäßigen 5-Tupel-Algorithmus.
+Wenn das Element `LoadBalancerDistribution` nicht vorhanden ist, verwendet Azure Load Balancer den standardmäßigen 5-Tupel-Algorithmus.
 
-### <a name="set-the-distribution-mode-on-a-load-balanced-endpoint-set"></a>Festlegen des Verteilungsmodus für einen Endpunktsatz mit Lastenausgleich
+### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Konfigurieren des Verteilungsmodus für einen Endpunktsatz mit Lastenausgleich
 
-Wenn Endpunkte Bestandteil eines Endpunktsatzes mit Lastenausgleich sind, muss der Verteilungsmodus für den Endpunktsatz mit Lastenausgleich festgelegt werden:
+Wenn Endpunkte Bestandteil eines Endpunktsatzes mit Lastenausgleich sind, muss der Verteilungsmodus für den Endpunktsatz mit Lastenausgleich konfiguriert werden:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 
-### <a name="cloud-service-configuration-to-change-distribution-mode"></a>Clouddienstkonfiguration zum Ändern des Verteilungsmodus
+### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Konfigurieren des Verteilungsmodus für Cloud Services-Endpunkte
 
-Sie können das Azure SDK für .NET 2.5 verwenden, um Ihren Clouddienst zu aktualisieren. Endpunkteinstellungen für Cloud-Dienste werden in der CSDEF-Datei vorgenommen. Um den Lastenausgleichs-Verteilungsmodus für eine Bereitstellung mit Cloud-Diensten zu aktualisieren, ist ein Upgrade der Bereitstellung erforderlich.
+Verwenden Sie das Azure SDK für .NET 2.5, um Ihren Clouddienst zu aktualisieren. Die Endpunkteinstellungen für Cloud Services werden in der CSDEF-Datei vorgenommen. Um den Lastenausgleichs-Verteilungsmodus für eine Cloud Services-Bereitstellung zu aktualisieren, ist ein Upgrade der Bereitstellung erforderlich.
+
 Nachfolgend sehen Sie ein Beispiel für in der CSDEF-Datei vorgenommene Änderungen für Endpunkteinstellungen:
 
 ```xml
@@ -120,11 +115,13 @@ Nachfolgend sehen Sie ein Beispiel für in der CSDEF-Datei vorgenommene Änderun
 
 ## <a name="api-example"></a>API-Beispiel
 
-Sie können die Lastenausgleichsverteilung mithilfe der Dienstverwaltungs-API konfigurieren. Stellen Sie sicher, dass der `x-ms-version`-Header eingefügt und auf Version `2014-09-01` oder höher festgelegt wird.
+Im folgenden Beispiel wird gezeigt, wie der Lastenausgleichs-Verteilungsmodus für einen bestimmten Satz mit Lastenausgleich in einer Bereitstellung neu konfiguriert wird. 
 
-### <a name="update-the-configuration-of-the-specified-load-balanced-set-in-a-deployment"></a>Aktualisieren der Konfiguration für den angegebenen Endpunktsatz mit Lastenausgleich in einer Bereitstellung
+### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Ändern des Verteilungsmodus für einen bereitgestellten Satz mit Lastenausgleich
 
-#### <a name="request-example"></a>Anforderungsbeispiel
+Verwenden Sie das klassische Azure-Bereitstellungsmodell, um eine vorhandene Bereitstellungskonfiguration zu ändern. Fügen Sie den Header `x-ms-version` hinzu, und legen Sie den Wert auf Version 2014-09-01 oder höher fest.
+
+#### <a name="request"></a>Anforderung
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
     Content-Type: application/xml
@@ -147,7 +144,7 @@ Sie können die Lastenausgleichsverteilung mithilfe der Dienstverwaltungs-API ko
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-Der Wert von „LoadBalancerDistribution“ kann „sourceIP“ (Zwei-Tupel-Affinität) oder „sourceIPProtocol“ (Drei-Tupel-Affinität) lauten oder nicht festgelegt werden (keine Affinität, also Fünf Tupel).
+Legen Sie gemäß der vorherigen Beschreibung für den Wert des `LoadBalancerDistribution`-Elements „sourceIP“ für die 2-Tupel-Affinität oder „sourceIPProtocol“ für die 3-Tupel-Affinität fest, oder geben Sie keinen Wert (keine Affinität) an (5-Tupel-Affinität).
 
 #### <a name="response"></a>Antwort
 
@@ -161,8 +158,6 @@ Der Wert von „LoadBalancerDistribution“ kann „sourceIP“ (Zwei-Tupel-Affi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Interner Lastenausgleich (Übersicht)](load-balancer-internal-overview.md)
-
-[Erste Schritte zum Konfigurieren des Lastenausgleichs für Internetverbindungen](load-balancer-get-started-internet-arm-ps.md)
-
-[Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
+* [Interner Azure Load Balancer (Übersicht)](load-balancer-internal-overview.md)
+* [Erste Schritte zum Konfigurieren eines Lastenausgleichs mit Internetzugriff](load-balancer-get-started-internet-arm-ps.md)
+* [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)

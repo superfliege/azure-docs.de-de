@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: d62bc24a0439aa8c11ced9d5f42917f9b6de1f24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec7d51d3f30eb3417a48fbf8d31a9b8359e39ab9
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="stateful-singletons-in-durable-functions---counter-sample"></a>Zustandsbehaftete Singletons in Durable Functions: Zählerbeispiel
 
@@ -67,12 +67,12 @@ Ein eindeutiges Merkmal dieser Orchestratorfunktion ist, dass sie effektiv keine
 > [!NOTE]
 > Neben endlosen Orchestrierungen gibt es weitere Anwendungsfälle für die Methode `ContinueAsNew`. Weitere Informationen finden Sie unter [Endlose Orchestrierungen](durable-functions-eternal-orchestrations.md).
 
-## <a name="running-the-sample"></a>Ausführen des Beispiels
+## <a name="run-the-sample"></a>Ausführen des Beispiels
 
-Wenn Sie die über HTTP ausgelösten Funktionen verwenden, die im Beispiel enthalten sind, können Sie mit der Orchestrierung beginnen, indem Sie folgende HTTP POST-Anforderung verwenden. Damit `counterState` bei 0 (null) beginnen kann (der Standardwert für `int`), umfasst dieser Inhalt keine Anforderung.
+Sie können die Orchestrierung starten, indem Sie die folgende HTTP POST-Anforderung senden. Damit `counterState` bei 0 (null) beginnen kann (der Standardwert für `int`), umfasst dieser Inhalt keine Anforderung.
 
 ```
-POST http://{host}/orchestrators/E3_Counter HTTP/1.1
+POST http://{host}/orchestrators/E3_Counter
 Content-Length: 0
 ```
 
@@ -82,13 +82,17 @@ Content-Length: 719
 Content-Type: application/json; charset=utf-8
 Location: http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 
-{"id":"bcf6fb5067b046fbb021b52ba7deae5a","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
+{
+  "id":"bcf6fb5067b046fbb021b52ba7deae5a",
+  "statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}",
+  "sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}",
+  "terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
 Die Instanz **E3_Counter** wird gestartet und wartet anschließend darauf, dass über `RaiseEventAsync` oder über den HTTP POST-Webhook **SendEventUrl** ein Ereignis gesendet wird. Auf diesen Webhook wird in der 202-Antwort verwiesen. Gültige `eventName`-Werte sind *incr*, *decr* und *end*.
 
 ```
-POST http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey} HTTP/1.1
+POST http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 Content-Type: application/json
 Content-Length: 6
 
@@ -128,14 +132,9 @@ Sie können weiterhin neue Vorgänge an diese Instanz senden und beobachten, wie
 > [!WARNING]
 > Zum Zeitpunkt des Schreibens liegen beim Aufrufen von `ContinueAsNew` bekannte Racebedingungen vor, während gleichzeitig Nachrichten wie externe Ereignisse oder Beendigungsanforderungen verarbeitet werden. Aktuelle Informationen zu diesen Racebedingungen finden Sie in diesem [GitHub-Problem](https://github.com/Azure/azure-functions-durable-extension/issues/67).
 
-## <a name="wrapping-up"></a>Zusammenfassung
-
-Jetzt kennen Sie einige der erweiterten Funktionen von Durable Functions besser, insbesondere die Funktionen `WaitForExternalEvent` und `ContinueAsNew`. Mit diesen Tools können Sie verschiedene Formen der zustandsbehafteten Singletons, z.B. Zähler und Aggregatoren, schreiben.
-
 ## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Beispiel wurde veranschaulicht, wie [externe Ereignisse](durable-functions-external-events.md) behandelt und [endlose Orchestrierungen](durable-functions-eternal-orchestrations.md) in [zustandsbehaftete Singletons](durable-functions-singletons.md) implementiert werden. Das nächste Beispiel zeigt, wie externe Ereignisse und [permanente Timer](durable-functions-timers.md) verwendet werden, um Benutzerinteraktionen zu verarbeiten.
 
 > [!div class="nextstepaction"]
 > [Ausführen des Beispiels für Benutzerinteraktion](durable-functions-phone-verification.md)
-
-
-

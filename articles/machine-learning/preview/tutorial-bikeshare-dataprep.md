@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: 722657c9bbae23a051a63972a8800d3cc40e7e40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d1845e27c6b0fff66b80a683f59d14238e2ad71
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>Bikesharing-Tutorial: Erweiterte Datenvorbereitung mit der Azure Machine Learning Workbench
 Azure Machine Learning-Dienste (Vorschau) ist eine integrierte, End-to-End Data Science- und erweiterte Analyselösung für professionelle Datenspezialisten zum Vorbereiten von Daten, Entwickeln von Experimenten und Bereitstellen von Modellen auf Cloudniveau.
@@ -211,7 +211,7 @@ Die Spalte __REPORTTYPE__ wird nicht mehr benötigt. Klicken Sie mit der rechten
    ![Abbildung der Option „Spalte entfernen“](media/tutorial-bikeshare-dataprep/weatherremovereporttype.png)
 
 ## <a name="change-datatypes-and-remove-errors"></a>Ändern von Datentypen und Entfernen von Fehlern
-1. Wenn Sie beim Auswählen von Spaltenüberschriften __STRG__ drücken, können Sie mehrere Spalten gleichzeitig auswählen. Verwenden Sie diese Option, um die folgenden Spaltenüberschriften auswählen:
+1. Wenn Sie beim Auswählen von Spaltenüberschriften die Taste __STRG (bzw. auf einem Mac die Befehlstaste ⌘)__ drücken, können Sie mehrere Spalten gleichzeitig auswählen. Verwenden Sie diese Option, um die folgenden Spaltenüberschriften auswählen:
    * **HOURLYDRYBULBTEMPF**
    * **HOURLYRelativeHumidity**
    * **HOURLYWindSpeed**
@@ -263,6 +263,9 @@ Zum Verwenden der Daten in einer Prognose für Zwei-Stunden-Zeitblöcke müssen 
    > [!NOTE]
    > Azure ML Workbench erzeugt ein Programm auf der Grundlage der von Ihnen angegebenen Beispiele und wendet dasselbe Programm auf die restlichen Zeilen an. Alle übrigen Zeilen werden gemäß dem angegebenen Beispiel automatisch aufgefüllt. Die Workbench analysiert zudem die Daten und versucht, Grenzfälle zu ermitteln. 
 
+   > [!IMPORTANT]
+   > Die Identifizierung von Grenzfällen funktioniert auf einem Mac in der aktuellen Workbench-Version möglicherweise nicht. Überspringen Sie auf einem Mac __Schritt 3__ und __Schritt 4__ unten. Klicken Sie stattdessen auf __OK__, sobald alle Zeilen mit den abgeleiteten Werten aufgefüllt wurden.
+   
 3. Der Text **Analyzing Data** (Daten werden analysiert) über dem Raster zeigt an, dass die Workbench versucht, Grenzfälle zu ermitteln. Nach Abschluss des Vorgangs wechselt der Status zu **Review next suggested row** (Nächste vorgeschlagene Zeile prüfen) oder **No suggestions** (Keine Vorschläge). In diesem Beispiel wird **Review next suggested row** (Nächste vorgeschlagene Zeile prüfen) zurückgegeben.
 
 4. Wählen Sie zum Prüfen der vorgeschlagenen Änderungen die Option **Review next suggested row** (Nächste vorgeschlagene Zeile prüfen) aus. Die zu prüfende und ggf. zu korrigierende Zelle wird in der Anzeige hervorgehoben.
@@ -291,6 +294,12 @@ Zum Verwenden der Daten in einer Prognose für Zwei-Stunden-Zeitblöcke müssen 
    Die Workbench bestimmt die Transformation anhand des angegebenen Beispiels. In diesem Beispiel erhalten wir folgendes Ergebnis: Das Datumsformat wird geändert, und das Datum wird mit dem Zwei-Stunden-Fenster verkettet.
 
    ![Abbildung des Beispiels „Jan 01, 2015 12AM-2AM“](media/tutorial-bikeshare-dataprep/wetherdatehourrangeexample.png)
+
+   > [!IMPORTANT]
+   > Führen Sie auf einem Mac statt __Schritt 8__ den folgenden Schritt aus.
+   >
+   > * Wechseln Sie zur ersten Zeile, die `Feb 01, 2015 12AM-2AM` enthält. Dies sollte __Zeile 15__ sein. Ändern Sie den Wert zu `Jan 02, 2015 12AM-2AM`, und drücken Sie die __EINGABETASTE__. 
+   
 
 8. Warten Sie, bis der Status von **Analyzing Data** (Daten werden analysiert) zu **Review next suggested row** (Nächste vorgeschlagene Zeile prüfen) wechselt. Dies kann einige Sekunden dauern. Klicken Sie auf den Statuslink, um zur vorgeschlagenen Zeile zu wechseln. 
 
@@ -393,7 +402,7 @@ Für die Datenvorbereitung ist eine Reihe von hilfreichen Visualisierungen (als 
 1. Wählen Sie die Spalten **start station latitude** und **start station longitude** gleichzeitig aus. Klicken Sie mit der rechten Maustaste auf eine der Spalten, und wählen Sie die Option **Map** (Karte) aus.
 
     > [!TIP]
-    > Halten Sie für die Mehrfachauswahl __STRG__ gedrückt, und wählen Sie die Spaltenüberschriften der Spalten aus.
+    > Halten Sie für die Mehrfachauswahl die Taste __STRG (bzw. auf einem Mac die Befehlstaste ⌘)__ gedrückt, und wählen Sie die Spaltenüberschriften der Spalten aus.
 
     ![Abbildung der Kartenvisualisierung](media/tutorial-bikeshare-dataprep/launchMapInspector.png)
 
@@ -507,6 +516,11 @@ Verwenden Sie abgeleitete Spalten, um die Nachfrage nach Fahrrädern für einen 
 
     ![Abbildung der Beispieldaten](media/tutorial-bikeshare-dataprep/tripdataderivebyexamplefirstexample.png)
 
+   > [!IMPORTANT]
+   > Führen Sie auf einem Mac statt __Schritt 3__ den folgenden Schritt aus.
+   >
+   > * Wechseln Sie zur ersten Zeile, die `Jan 01, 2017 1AM-2AM` enthält. Dies sollte __Zeile 14__ sein. Ändern Sie den Wert zu `Jan 01, 2017 12AM-2AM`, und drücken Sie die __EINGABETASTE__. 
+
 3. Warten Sie, bis die Anwendung die Werte für alle Zeilen berechnet hat. Dies kann einige Sekunden dauern. Klicken Sie nach Abschluss der Analyse auf den Link __Review next suggested row__ (Nächste vorgeschlagene Zeile prüfen), um die Daten zu überprüfen.
 
    ![Abbildung der abgeschlossenen Analyse mit Link für Überprüfung](media/tutorial-bikeshare-dataprep/tripdatabyexanalysiscomplete.png)
@@ -558,7 +572,7 @@ Führen Sie die folgenden Schritte aus, um die Wetterdaten mit den Fahrtdaten zu
 
     ![Abbildung der Spalte „Period“](media/tutorial-bikeshare-dataprep/featurehourrange.png)
 
-3. Drücken Sie zum Entfernen der Spalten **Date Hour Range** und **Date Hour Range** die **STRG-TASTE**, und wählen Sie die beiden Spaltenüberschriften aus. Klicken Sie mit der rechten Maustaste, und wählen Sie die Option **Remove column** (Spalte entfernen) aus.
+3. Drücken Sie zum Entfernen der Spalten **Date Hour Range** und **rDate Hour Range** die Taste **STRG (bzw. auf einem Mac die Befehlstaste ⌘)**, und wählen Sie die Spaltenüberschriften aus. Klicken Sie mit der rechten Maustaste, und wählen Sie die Option **Remove column** (Spalte entfernen) aus.
 
 ## <a name="read-data-from-python"></a>Auslesen der Daten aus Python
 

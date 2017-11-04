@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer Node.js-Web-App in einem Linux-Container in Azure | Microsoft-Dokumentation
-description: "Stellen Sie in wenigen Minuten Ihre erste „Hallo Welt“-Node.js-App in einer Azure App Service-Web-App bereit."
+title: Erstellen einer Node.js-App in Azure App Service unter Linux | Microsoft-Dokumentation
+description: "Stellen Sie in wenigen Minuten Ihre erste Node.js-App „Hallo Welt“ in Azure App Service unter Linux bereit."
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -15,15 +15,15 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 571ae5eabae93cf0a7fa98110f8329eac1a74b12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5346e9d872f852502890d4bd2868b5343e0045c8
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="create-a-nodejs-web-app-in-a-linux-container-in-azure"></a>Erstellen einer Node.js-Web-App in einem Linux-Container in Azure
+# <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Erstellen einer Node.js-Web-App in Azure App Service unter Linux
 
-[Web-Apps für Container](app-service-linux-intro.md) bieten einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter dem Linux-Betriebssystem. In diesem Schnellstartartikel wird erläutert, wie Sie eine Node.js-App in Azure-Web-Apps für Container bereitstellen. Sie erstellen die Web-App mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) und stellen mit Git den Node.js-Code für die Web-App bereit.
+[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter Linux-Betriebssystemen. Dieser Schnellstart veranschaulicht das Bereitstellen einer Node.js-App in App Service unter Linux mit einem integrierten Image. Sie erstellen die Web-App mit integriertem Image mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) und stellen mit Git den Node.js-Code für die Web-App bereit.
 
 ![In Azure ausgeführte Beispiel-App](media/quickstart-nodejs/hello-world-in-browser.png)
 
@@ -78,11 +78,11 @@ Drücken Sie in Ihrem Terminalfenster **STRG+C**, um den Webserver zu beenden.
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Erstellen einer Web-App
+## <a name="create-a-web-app-with-built-in-image"></a>Erstellen einer Web-App mit einem integrierten Image
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-linux-nodejs-no-h.md)]
 
-Navigieren Sie zu der Website, um sich Ihre neu erstellte Web-App anzusehen. Ersetzen Sie _&lt;App-Name>_ durch einen eindeutigen App-Namen.
+Browsen Sie zu der Website, um Ihre neu erstellte Web-App mit integriertem Image anzuzeigen. Ersetzen Sie _&lt;App-Name>_ durch einen eindeutigen App-Namen.
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -134,11 +134,11 @@ Navigieren Sie in Ihrem Webbrowser zu der bereitgestellten Anwendung.
 http://<app_name>.azurewebsites.net
 ```
 
-Der Node.js-Beispielcode wird in einer Azure App Service-Web-App ausgeführt.
+Der Node.js-Beispielcode wird in einer Web-App mit integriertem Image ausgeführt.
 
 ![In Azure ausgeführte Beispiel-App](media/quickstart-nodejs/hello-world-in-browser.png)
 
-**Glückwunsch!** Sie haben Ihre erste Node.js-App für App Service bereitgestellt.
+**Glückwunsch!** Sie haben Ihre erste Node.js-App für App Service unter Linux bereitgestellt.
 
 ## <a name="update-and-redeploy-the-code"></a>Aktualisieren und erneutes Bereitstellen des Codes
 

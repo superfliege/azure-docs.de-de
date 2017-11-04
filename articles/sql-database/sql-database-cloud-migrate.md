@@ -1,6 +1,6 @@
 ---
 title: Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie SQL Server-Datenbanken zu Azure SQL-Datenbank in der Cloud migriert werden. Verwenden Sie Datenbankmigrationstools, um vor der Datenbankmigration die Kompatibilität zu testen."
+description: Hier erfahren Sie, wie SQL Server-Datenbanken zu Azure SQL-Datenbank in der Cloud migriert werden.
 keywords: Datenbankmigration,SQL Server-Datenbankmigration,Datenbankmigrationstools,Migrieren einer Datenbank,Migrieren einer SQL-Datenbank
 services: sql-database
 documentationcenter: 
@@ -9,18 +9,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 9cf09000-87fc-4589-8543-a89175151bc2
 ms.service: sql-database
-ms.custom: load & move data
+ms.custom: migrate
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
-ms.openlocfilehash: 90c78007368c2679e1c5afdb9369869adde77f0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6147c5d24214933566e0a909ac99c817350578c7
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank in der Cloud
 Dieser Artikel enthält Informationen zu den beiden Hauptmethoden, mit denen eine SQL Server-Datenbank (ab SQL Server 2005) zu Azure SQL-Datenbank migriert wird. Die erste Methode ist einfacher, aber auch mit einer gewissen (möglicherweise sogar erheblichen) Ausfallzeit während der Migration verbunden. Die zweite Methode ist komplexer, verringert aber deutlich die Ausfallzeit während der Migration.
@@ -44,7 +44,7 @@ Die folgende Liste enthält den allgemeinen Workflow für die Migration einer SQ
 3. Erstellen Sie eine transaktionskonsistente Kopie der zu migrierenden Quelldatenbank – und stellen Sie sicher, dass an der Quelldatenbank keine weiteren Änderungen vorgenommen werden. (Alternativ können weitere Änderungen nach Abschluss der Migration manuell angewendet werden.) Eine Datenbank kann auf unterschiedliche Weise stillgelegt werden – vom Deaktivieren der Clientkonnektivität bis hin zum Erstellen einer [Datenbankmomentaufnahme](https://msdn.microsoft.com/library/ms175876.aspx).
 4. Stellen Sie die Transact-SQL-Skripts bereit, um die Korrekturen auf die Datenbankkopie anzuwenden.
 5. [Exportieren](sql-database-export.md) Sie die Datenbankkopie in eine BACPAC-Datei auf einem lokalen Laufwerk.
-6. [Importieren](sql-database-import.md) Sie die BACPAC-Datei als neue Azure SQL-Datenbank mithilfe eines BACPAC-Importtools. Wir empfehlen „SQLPackage.exe“, da es die beste Leistung bietet.
+6. [Importieren](sql-database-import.md) Sie die BACPAC-Datei mithilfe eines BACPAC-Importtools als neue Azure SQL-Datenbank. Als Tool empfiehlt sich „SQLPackage.exe“, da es die beste Leistung bietet.
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>Optimieren der Datenübertragungsleistung während der Migration 
 

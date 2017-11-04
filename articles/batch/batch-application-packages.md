@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 07/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: afcc04c80ec15872a22de5d5969a7ef6a583562f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1f9951c9cc1b9380e166834afaeb18a4687e2d8
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
 
@@ -262,11 +262,11 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Bei Linux-Knoten weicht das Format geringfügig ab. Punkte (.), Bindestriche (-) und Nummernzeichen (#) werden in der Umgebungsvariable zu Unterstrichen vereinfacht. Beispiel:
+Bei Linux-Knoten weicht das Format geringfügig ab. Punkte (.), Bindestriche (-) und Nummernzeichen (#) werden in der Umgebungsvariable zu Unterstrichen vereinfacht. Beachten Sie, dass die Groß-/Kleinschreibung der Anwendungs-ID beibehalten wird. Beispiel:
 
 ```
 Linux:
-AZ_BATCH_APP_PACKAGE_APPLICATIONID_version
+AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
 `APPLICATIONID` und `version` sind Werte, die der Anwendung und Paketversion entsprechen, die Sie für die Bereitstellung angegeben haben. Wenn Sie beispielsweise festgelegt haben, dass Version 2.7 der Anwendung *Blender* auf Windows-Knoten installiert werden soll, verwenden Ihre Taskbefehlszeilen diese Umgebungsvariable, um auf die Dateien zuzugreifen:
@@ -276,11 +276,11 @@ Windows:
 AZ_BATCH_APP_PACKAGE_BLENDER#2.7
 ```
 
-Geben Sie die Umgebungsvariable bei Linux-Knoten im folgenden Format an:
+Geben Sie die Umgebungsvariable bei Linux-Knoten im folgenden Format an. Ersetzen Sie Punkte (.), Bindestriche (-) und Nummernzeichen (#) durch Unterstriche, und behalten Sie die Groß-/Kleinschreibung der Anwendungs-ID bei:
 
 ```
 Linux:
-AZ_BATCH_APP_PACKAGE_BLENDER_2_7
+AZ_BATCH_APP_PACKAGE_blender_2_7
 ``` 
 
 Wenn Sie ein Anwendungspaket hochladen, können Sie eine Standardversion festlegen, die für Ihre Serverknoten bereitgestellt werden soll. Wenn Sie eine Standardversion für eine Anwendung angegeben haben, können Sie beim Verweisen auf die Anwendung das Versionssuffix weglassen. Sie können die Standardanwendungsversion im Azure-Portal auf dem Blatt „Anwendungen“ angeben, wie unter [Hochladen und Verwalten von Anwendungen](#upload-and-manage-applications) gezeigt.

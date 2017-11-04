@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.openlocfilehash: f1ab98ab173edc794bfabdf55d950ac689a37c0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a07ff578c6afeedc6f3806d52bfe5aef6945c04
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager-Datenverkehrsansicht
 
@@ -31,8 +31,8 @@ Traffic Manager stellt Ihnen ein Routing auf DNS-Ebene zur Verfügung, sodass Ih
 
 Die Datenverkehrsansicht ermöglicht Folgendes:
 - Verstehen, wo sich Ihre Benutzergruppen befinden (bis zur Granularitätsebene eines lokalen DNS-Resolvers)
-- Bestimmen des Volumens des Datenverkehrs, der aus diesen Regionen stammt
-- Ermitteln der repräsentativen Wartezeit dieser Benutzer
+- Anzeigen des Umfangs des Datenverkehrs (als DNS-Abfragen beobachtet, die von Azure Traffic Manager bearbeitet wurden), der aus diesen Regionen stammt.
+-  Erhalten von Einblicken hinsichtlich der repräsentativen Wartezeit dieser Benutzer.
 - Detailliertes Untersuchen der spezifischen Datenverkehrsmuster jeder Benutzergruppen in Azure-Regionen, in denen Sie Endpunkte haben 
 
 So können Sie z.B. in der Datenverkehrsansicht nachvollziehen, welche Regionen zwar ein großes Volumen an Datenverkehr haben, aber unter längeren Wartezeiten leiden. Als Nächstes können Sie diese Informationen nutzen, um Ihre Expansion in neue Azure-Regionen zu planen, damit diese Benutzer kürzere Wartezeiten haben.

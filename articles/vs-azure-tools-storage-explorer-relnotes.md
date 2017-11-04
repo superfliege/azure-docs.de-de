@@ -14,25 +14,85 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 6010c0ef002730fd4a0020e0e2d61a6176a11cba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1a3370d29b47da752e4ab1ea67ccc1a4cdd94df
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Versionshinweise für Microsoft Azure-Speicher-Explorer (Vorschauversion)
 
-Dieser Artikel enthält die Versionshinweise für Azure-Speicher-Explorer 0.8.16 (Vorschauversion) sowie die Versionshinweise für frühere Versionen.
+Dieser Artikel enthält die Versionshinweise für Azure Storage-Explorer 0.9.0 (Vorschauversion) sowie die Versionshinweise für frühere Versionen.
 
 Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie unter Windows, MacOS und Linux komfortabel mit Azure Storage-Daten arbeiten können.
+
+## <a name="version-091--090-preview"></a>Version 0.9.1/0.9.0 (Vorschauversion)
+10/20/2017
+
+### <a name="download-azure-storage-explorer-091-preview"></a>Herunterladen von Azure Storage-Explorer 0.9.1 (Vorschauversion)
+- [Azure Storage-Explorer 0.9.1 (Vorschauversion) für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage-Explorer 0.9.1 (Vorschauversion) für Macintosh](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage-Explorer 0.9.1 (Vorschauversion) für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Neu
+* Unterstützung der Vorschau für Azure Cosmos DB:
+    * [Onlinedokumentation](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * Erstellen von Datenbanken und Sammlungen
+    * Bearbeiten von Daten
+    * Abfragen, Erstellen oder Löschen von Dokumenten
+    * Aktualisieren von gespeicherten Prozeduren, benutzerdefinierten Funktionen oder Triggern
+    * Verwenden von Verbindungszeichenfolgen zum Verbinden und Verwalten Ihrer Datenbanken
+* Die Leistung beim Hochladen/Herunterladen zahlreicher kleiner Blobs wurde verbessert.
+* Es wurde die Aktion „Alle wiederholen“ hinzugefügt, falls in einer Upload- oder Downloadgruppe für Blobs Fehler auftreten.
+* Storage-Explorer hält jetzt die Iteration beim Hochladen/Herunterladen von Blobs an, wenn erkennt wird, dass Ihre Netzwerkverbindung unterbrochen ist. Sie können die Iteration dann fortsetzen, sobald die Verbindung wiederhergestellt wurde.
+* Die Optionen „Alle schließen“, „Andere schließen“ und „Schließen“ wurden für Registerkarten zum Kontextmenü hinzugefügt.
+* Storage-Explorer verwendet jetzt native Dialogfelder und native Kontextmenüs.
+* Storage-Explorer ist jetzt leichter zugänglich. Die Verbesserungen umfassen:
+    * Verbesserte Unterstützung für die Sprachausgabe für NVDA unter Windows und für VoiceOver unter Mac
+    * Verbesserte Designs mit hohem Kontrast
+    * Fehlerbehebungen für TAB-TASTE und Tastaturfokus
+
+### <a name="fixes"></a>Fehlerbehebungen
+* Wenn Sie versucht haben, einen Blob mit einem ungültigen Windows-Dateinamen zu öffnen oder herunterzuladen, ist bei dem Vorgang ein Fehler aufgetreten. Storage-Explorer erkennt jetzt, ob ein Blobname ungültig ist und fragt Sie, ob Sie den Blob codieren oder überspringen möchten. Storage-Explorer erkennt zudem, ob ein Dateiname codiert ist und fragt Sie, ob Sie den Dateinamen vor dem Hochladen decodieren möchten.
+* Der Editor für den Blobzielcontainer würde beim Hochladen des Blobs in einigen Fällen nicht ordnungsgemäß aktualisiert werden. Dies wurde korrigiert.
+* Die Unterstützung für verschiedene Typen von Verbindungszeichenfolgen und SAS-URIs ist rückläufig. Wir haben alle bekannten Probleme behandelt. Senden Sie jedoch weiterhin Feedback, wenn weitere Probleme auftreten.
+* Die Updatebenachrichtigung hat für einige Benutzer in Version 0.9.0 nicht funktioniert. Dieses Problem wurde behoben. Die von diesem Fehler betroffenen Benutzer können die neueste Version von Storage-Explorer [hier](https://azure.microsoft.com/en-us/features/storage-explorer/) herunterladen.
+
+### <a name="known-issues"></a>Bekannte Probleme
+* Storage-Explorer unterstützt keine ADFS-Konten.
+* Tastenkombinationen für „Explorer anzeigen“ und „Kontenverwaltung anzeigen“ sollten entsprechend STRG/BEFEHL+UMSCHALT+E oder STRG/BEFEHL+UMSCHALT+A sein.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung in Speicher-Explorer unwirksam gemacht wird.
+* Im Bereich mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+```
+./StorageExplorer.exe --disable-gpu
+```
+* Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Für Benutzer unter Ubuntu 17.04 müssen Sie GConf installieren; hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-0816-preview"></a>Version 0.8.16 (Vorschauversion)
 21.08.2017
 
 ### <a name="download-azure-storage-explorer-0816-preview"></a>Herunterladen des Azure-Speicher-Explorers 0.8.16 (Vorschauversion)
-- [Azure-Speicher-Explorer 0.8.16 (Vorschauversion) für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure-Speicher-Explorer 0.8.16 (Vorschauversion) für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure-Speicher-Explorer 0.8.16 (Vorschauversion) für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+* [Azure Storage-Explorer 0.8.16 (Vorschauversion) für Windows herunterladen](https://go.microsoft.com/fwlink/?LinkId=809306)
+* [Azure Storage-Explorer 0.8.16 (Vorschauversion) für Macintosh herunterladen](https://go.microsoft.com/fwlink/?LinkId=809307)
+* [Azure Storage-Explorer 0.8.16 (Vorschauversion) für Linux herunterladen](https://go.microsoft.com/fwlink/?LinkId=809308)
 
 ### <a name="new"></a>Neu
 * Beim Öffnen eines Blobs fordert Speicher-Explorer Sie zum Hochladen der heruntergeladenen Datei auf, wenn eine Änderung erkannt wird
@@ -41,13 +101,13 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 
 
 ### <a name="fixes"></a>Fehlerbehebungen
-* Bei einigen Blobtypen führt die Auswahl von „Ersetzen“ während eines Uploadkonflikts manchmal zu einem Neustart des Uploads. 
+* Bei einigen Blobtypen führt die Auswahl von „Ersetzen“ während eines Uploadkonflikts manchmal zu einem Neustart des Uploads.
 * In Version 0.8.15 wurden Uploads manchmal bei 99 Prozent angehalten.
 * Beim Hochladen von Dateien in eine Dateifreigabe trat beim Upload ein Fehler auf, wenn Sie ein noch nicht vorhandenes Verzeichnis ausgewählt haben.
 * Speicher-Explorer hat falsche Zeitstempel für Shared Access Signatures und Tabellenabfragen generiert.
 
 
-Bekannte Probleme
+### <a name="known-issues"></a>Bekannte Probleme
 * Derzeit kann keine Verbindungszeichenfolge mit Name und Schlüssel verwendet werden. Dies wird im nächsten Release behoben. Bis dahin können Sie die Anfügefunktion mit Name und Schlüssel verwenden.
 * Wenn Sie versuchen, eine Datei mit einem ungültigen Windows-Dateinamen zu öffnen, wird für den Download der Fehler „Datei nicht gefunden“ angezeigt.
 * Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Dies ist eine Einschränkung der Azure Storage-Knotenbibliothek.
@@ -71,43 +131,9 @@ Bekannte Probleme
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-0814-preview"></a>Version 0.8.14 (Vorschauversion)
-22.06.2017
-
-### <a name="download-azure-storage-explorer-0814-preview"></a>Herunterladen des Azure-Speicher-Explorers 0.8.14 (Vorschauversion)
-* [Azure-Speicher-Explorer 0.8.14 (Vorschauversion) für Windows herunterladen](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [Azure-Speicher-Explorer 0.8.14 (Vorschauversion) für Macintosh herunterladen](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [Azure-Speicher-Explorer 0.8.14 (Vorschauversion) für Linux herunterladen](https://go.microsoft.com/fwlink/?LinkId=809308)
-
-### <a name="new"></a>Neu
-
-* Die Electron-Version wurde auf 1.7.2 aktualisiert, sodass verschiedene wichtige Sicherheitsupdates genutzt werden können
-* Sie können nun rasch über das Hilfemenü auf den Onlineleitfaden zur Problembehandlung zugreifen
-* Speicher-Explorer – [Leitfaden zur Problembehandlung][2]
-* [Anweisungen][3] zum Herstellen einer Verbindung mit einem Azure Stack-Abonnement
-
-### <a name="known-issues"></a>Bekannte Probleme
-
-* Schaltflächen im Dialogfeld zum Bestätigen des Löschens von Ordnern reagieren nicht auf Mausklicks unter Linux. Die Problemumgehung besteht darin, die Eingabetaste zu verwenden
-* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung in Speicher-Explorer unwirksam gemacht wird
-* Wenn mehr als drei Gruppen von Blobs oder Dateien gleichzeitig hochgeladen werden, können Fehler auftreten
-* Im Panel mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern
-* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
-* Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt. 
-* Für die Ubuntu 14.04-Installation muss ein Update oder Upgrade der gcc-Version ausgeführt werden – Schritte zum Ausführen eines Upgrades finden Sie unten:
-
-    ```
-    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    sudo apt-get update
-    sudo apt-get upgrade
-    sudo apt-get dist-upgrade
-    ```
-
-
-
-
 ## <a name="previous-releases"></a>Vorgängerversionen
 
+* [Version 0.8.14](#version-0814)
 * [Version 0.8.13](#version-0813)
 * [Version 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
 * [Version 0.8.9 / 0.8.8](#version-089--088)
@@ -124,6 +150,33 @@ Bekannte Probleme
 * [Version 0.7.20160105.0](#version-07201601050)
 * [Version 0.7.20151116.0](#version-07201511160)
 
+
+### <a name="version-0814"></a>Version 0.8.14
+22.06.2017
+
+### <a name="new"></a>Neu
+
+* Die Electron-Version wurde auf 1.7.2 aktualisiert, sodass verschiedene wichtige Sicherheitsupdates genutzt werden können
+* Sie können nun rasch über das Hilfemenü auf den Onlineleitfaden zur Problembehandlung zugreifen
+* Speicher-Explorer – [Leitfaden zur Problembehandlung][2]
+* [Anweisungen][3] zum Herstellen einer Verbindung mit einem Azure Stack-Abonnement
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+* Schaltflächen im Dialogfeld zum Bestätigen des Löschens von Ordnern reagieren nicht auf Mausklicks unter Linux. Die Problemumgehung besteht darin, die Eingabetaste zu verwenden
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung in Speicher-Explorer unwirksam gemacht wird
+* Wenn mehr als drei Gruppen von Blobs oder Dateien gleichzeitig hochgeladen werden, können Fehler auftreten
+* Im Panel mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
+* Für die Ubuntu 14.04-Installation muss ein Update oder Upgrade der gcc-Version ausgeführt werden – Schritte zum Ausführen eines Upgrades finden Sie unten:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
 
 ### <a name="version-0813"></a>Version 0.8.13
 05/12/2017
@@ -149,7 +202,7 @@ Bekannte Probleme
 * Wenn mehr als drei Gruppen von Blobs oder Dateien gleichzeitig hochgeladen werden, können Fehler auftreten
 * Im Panel mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern
 * Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
-* Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt. 
+* Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
 * Für die Ubuntu 14.04-Installation muss ein Update oder Upgrade der gcc-Version ausgeführt werden – Schritte zum Ausführen eines Upgrades finden Sie unten:
 
     ```
@@ -171,7 +224,7 @@ Bekannte Probleme
 * Das linke Panel kann nun reduziert werden
 * Die Ermittlung wird nun gleichzeitig mit dem Download ausgeführt
 * Bestimmen Sie anhand von Statistiken im Blobcontainer, Dateifreigabe- und Tabellen-Editor die Größe Ihrer Ressource oder Auswahl
-* Sie können sich nun bei auf Azure Active Directory (AAD) basierenden Azure Stack-Konten anmelden. 
+* Sie können sich nun bei auf Azure Active Directory (AAD) basierenden Azure Stack-Konten anmelden.
 * Sie können nun Archivdateien mit einer Größe von mehr als 32 MB in Storage Premium-Konten hochladen
 * Verbesserte Unterstützung für Barrierefreiheit
 * Sie können nun vertrauenswürdige Base-64-codierte X.509-SSL-Zertifikate hinzufügen, indem Sie „Bearbeiten“ -&gt; „SSL-Zertifikate“ -&gt; „Zertifikate importieren“ auswählen
@@ -182,8 +235,8 @@ Bekannte Probleme
 * Behoben: Beim Generieren einer SAS für Emulator-Warteschlangen und -Tabellen wurde früher eine ungültige URL erhalten
 * Behoben: Storage Premium-Konten können nun erweitert werden, während ein Proxy aktiviert ist
 * Behoben: Die Schaltfläche „Anwenden“ auf der Seite zum Verwalten von Konten funktionierte nicht, wenn ein oder kein Konto ausgewählt war
-* Behoben: Das Hochladen von Blobs, die Konfliktlösungen benötigen, schlug u.U. fehl – behoben in 0.8.11 
-* Behoben: Senden von Feedback war fehlerhaft in 0.8.11 – behoben in 0.8.12 
+* Behoben: Das Hochladen von Blobs, die Konfliktlösungen benötigen, schlug u.U. fehl – behoben in 0.8.11
+* Behoben: Senden von Feedback war fehlerhaft in 0.8.11 – behoben in 0.8.12
 
 #### <a name="known-issues"></a>Bekannte Probleme
 
@@ -192,7 +245,7 @@ Bekannte Probleme
 * Wenn mehr als drei Gruppen von Blobs oder Dateien gleichzeitig hochgeladen werden, können Fehler auftreten.
 * Im Panel mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern.
 * Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
-* Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt. 
+* Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
 * Für die Ubuntu 14.04-Installation muss ein Update oder Upgrade der gcc-Version ausgeführt werden – Schritte zum Ausführen eines Upgrades finden Sie unten:
 
     ```
@@ -274,7 +327,7 @@ Bekannte Probleme
 * Sie können jetzt mehrere Editoren auf unterschiedlichen Registerkarten öffnen. Einmal klicken, um eine temporäre Registerkarte zu öffnen, und doppelklicken, um eine dauerhafte Registerkarte zu öffnen. Sie können auch auf die temporäre Registerkarte klicken, um sie zu einer dauerhaften Registerkarte zu machen
 * Es wurden merkliche Verbesserungen der Leistung und Stabilität für Uploads und Downloads erzielt, vor allem für große Dateien auf schnellen Computern
 * Erstellen von leeren „virtuellen“ Ordnern in Blobcontainern ist jetzt möglich
-* Die bereichsbezogene Suche mit der neuen, verbesserten Teilzeichenfolgen-Suche wurde hinzugefügt, sodass Sie nun über zwei Suchoptionen verfügen: 
+* Die bereichsbezogene Suche mit der neuen, verbesserten Teilzeichenfolgen-Suche wurde hinzugefügt, sodass Sie nun über zwei Suchoptionen verfügen:
     * Globale Suche: Hier können Sie einfach einen Suchbegriff in das Suchtextfeld eingeben
     * Bereichsbezogene Suche: Klicken Sie auf das Lupensymbol neben einem Knoten, und fügen Sie dann einen Suchbegriff am Ende des Pfads hinzu, bzw. klicken Sie mit der rechten Maustaste, und wählen Sie die Option „Ab hier suchen“ aus
 * Wir haben verschiedene Designs hinzugefügt: Hell (Standard), Dunkel, Hoher Kontrast (Schwarz) und Hoher Kontrast (Weiß). Navigieren Sie zu „Bearbeiten“ -&gt; „Designs“, um die Designeinstellung zu ändern
@@ -292,12 +345,12 @@ Bekannte Probleme
 * Behoben: Öffnen des Abfragepanels für eine leere Tabelle war nicht möglich
 * Behoben: Diverse Fehler bei der Suche
 * Behoben: Beim Klicken auf „Mehr laden“ wurde die Anzahl der geladenen Ressourcen wurde von 50 auf 100 erhöht
-* Behoben: Wenn bei der ersten Ausführung die Anmeldung bei einem Konto erfolgt, werden nun standardmäßig sämtliche Abonnements für das betreffende Konto ausgewählt 
+* Behoben: Wenn bei der ersten Ausführung die Anmeldung bei einem Konto erfolgt, werden nun standardmäßig sämtliche Abonnements für das betreffende Konto ausgewählt
 
 #### <a name="known-issues"></a>Bekannte Probleme
 
 * Diese Version von Speicher-Explorer wird nicht unter Ubuntu 14.04 ausgeführt
-* Wenn mehrere Registerkarten für dieselbe Ressource geöffnet werden sollen, klicken Sie nicht ständig auf die gleiche Ressource. Klicken Sie auf eine andere Ressource, wechseln Sie zurück, und klicken Sie dann auf die ursprüngliche Ressource, um sie in einer weiteren Registerkarte zu öffnen 
+* Wenn mehrere Registerkarten für dieselbe Ressource geöffnet werden sollen, klicken Sie nicht ständig auf die gleiche Ressource. Klicken Sie auf eine andere Ressource, wechseln Sie zurück, und klicken Sie dann auf die ursprüngliche Ressource, um sie in einer weiteren Registerkarte zu öffnen
 * Der Schnellzugriff funktioniert nur mit abonnementbasierten Elementen. Lokale Ressourcen oder Ressourcen, die per Schlüssel oder SAS-Token angefügt werden, werden in dieser Version nicht unterstützt
 * Beim Schnellzugriff kann das Navigieren zur Zielressource einige Sekunden dauern. Dies hängt davon ab, wie viele Ressourcen Sie verwenden
 * Wenn mehr als drei Gruppen von Blobs oder Dateien gleichzeitig hochgeladen werden, können Fehler auftreten
@@ -462,7 +515,7 @@ Bekannte Probleme
 
 ### <a name="known-issues-amp-mitigations"></a>Bekannte Probleme &amp; Lösungen
 
-* Herunterladen von großen Blobdateien funktioniert nicht ordnungsgemäß – es wird empfohlen, AzCopy zu verwenden, während wir dieses Problem beheben 
+* Herunterladen von großen Blobdateien funktioniert nicht ordnungsgemäß – es wird empfohlen, AzCopy zu verwenden, während wir dieses Problem beheben
 * Kontoanmeldeinformationen werden weder abgerufen noch zwischengespeichert, wenn der Basisordner nicht gefunden wurde bzw. in den Basisordner nicht geschrieben werden kann
 * Wenn beim Hinzufügen, Bearbeiten oder Importieren einer Entität mit einer Eigenschaft mit einem mehrdeutigen Wert wie „1“ oder „1,0“ versucht wird, diese als `Edm.String` zu senden, wird der Wert über die Client-API als Edm.Double zurückgegeben
 * Beim Importieren von CSV-Dateien mit mehrzeiligen Datensätzen werden die Daten möglicherweise aufgeteilt oder verschlüsselt
@@ -490,7 +543,7 @@ Bekannte Probleme
 
 #### <a name="fixes"></a>Fehlerbehebungen
 
-* Behoben: Das Hochladen oder Herunterladen einer großen Anzahl von Blobs (500+) bewirkt gelegentlich, dass die App einen weißen Bildschirm aufweist 
+* Behoben: Das Hochladen oder Herunterladen einer großen Anzahl von Blobs (500+) bewirkt gelegentlich, dass die App einen weißen Bildschirm aufweist
 * Behoben: Beim Festlegen der öffentlichen Zugriffsebene für Blobcontainer wird der neue Wert erst aktualisiert, wenn der Fokus auf den Container neu festgelegt wird. Zudem wird im Dialogfeld standardmäßig „No public access“ (Kein öffentlicher Zugriff) und nicht der tatsächliche aktuelle Wert angezeigt.
 * Bessere Gesamtunterstützung von Tastatur/Barrierefreiheit und Benutzeroberfläche
 * Langer Breadcrumb-Verlaufstext wird mit Leerraum umbrochen
@@ -500,7 +553,7 @@ Bekannte Probleme
 
 #### <a name="known-issues"></a>Bekannte Probleme
 
-* Für die Linux-Installation muss ein Update oder Upgrade der gcc-Version ausgeführt werden – Schritte zum Ausführen eines Upgrades finden Sie unten: 
+* Für die Linux-Installation muss ein Update oder Upgrade der gcc-Version ausgeführt werden – Schritte zum Ausführen eines Upgrades finden Sie unten:
     * `sudo add-apt-repository ppa:ubuntu-toolchain-r/test`
     * `sudo apt-get update`
     * `sudo apt-get upgrade`

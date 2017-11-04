@@ -25,7 +25,8 @@
 #### [Secure connectors with Azure AD](custom-connector-azure-active-directory-authentication.md) (Sichere Connectors mit Azure AD)
 #### [Describe APIs with Postman](custom-connector-api-postman-collection.md) (Beschreiben von APIs mit Postman)
 #### [Extend OpenAPI for custom connectors](custom-connector-openapi-extensions.md) (Erweitern von OpenAPI für benutzerdefinierte Connectors)
-#### [Register your connector](logic-apps-custom-connector-register.md) (Registrieren Ihres Connectors)
+#### [Erstellen und Registrieren eines OpenAPI-Connectors](logic-apps-custom-connector-register.md)
+#### [Erstellen und Registrieren eines SOAP-Connectors](logic-apps-soap-connector-create-register.md)
 #### [Certify your connector](custom-connector-submit-certification.md) (Zertifizieren Ihres Connectors)
 #### [FAQ for custom connectors](custom-connector-faq.md) (FAQ für benutzerdefinierte Connectors)
 ### Entwickeln von benutzerdefinierten APIs

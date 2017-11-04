@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: bc801ed3dac213dacac5ee14e1b4e73b87ecc7bd
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: ab0aa377f9803d74d8a7a94bdb4c7b780e3ae41d
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Auswahl zwischen Flow, Logic Apps, Functions und WebJobs
 In diesem Artikel werden die folgenden Dienste in der Microsoft Cloud verglichen und gegenübergestellt, die alle zur Behebung von Integrationsproblemen und zur Automatisierung von Geschäftsprozessen dienen:
@@ -50,7 +50,7 @@ Anhand der folgenden Tabelle können Sie ermitteln, ob Flow oder Logic Apps für
 | Zielgruppe |Büroangestellte, geschäftliche Benutzer |IT-Experten, Entwickler |
 | Szenarios |Self-Service |Unternehmenskritisch |
 | Designtool |Im Browser und in der mobilen App, nur über die Benutzeroberfläche |Im Browser und [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Codeansicht](../logic-apps/logic-apps-author-definitions.md) verfügbar |
-| DevOps |Ad-hoc-Entwicklung in der Produktion |Quellcodeverwaltung, Tests, Support, Automatisierung und Verwaltung in [Azure Resource Management](../logic-apps/logic-apps-arm-provision.md) |
+| DevOps |Ad-hoc-Entwicklung in der Produktion |Quellcodeverwaltung, Tests, Support, Automatisierung und Verwaltung in [Azure Resource Management](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
 | Administratorerfahrung |[https://flow.microsoft.com](https://flow.microsoft.com) |[https://portal.azure.com](https://portal.azure.com) |
 | Sicherheit |Standardmethoden: [Datensouveränität](https://wikipedia.org/wiki/Technological_Sovereignty), [Verschlüsselung ruhender Daten](https://wikipedia.org/wiki/Data_at_rest#Encryption) für vertrauliche Daten usw. |Sicherheitsgarantie von Azure: [Azure Security](https://www.microsoft.com/trustcenter/Security/AzureSecurity), [Security Center](https://azure.microsoft.com/services/security-center/), [Überwachungsprotokolle](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) und vieles mehr. |
 
@@ -66,6 +66,7 @@ Azure Functions und WebJobs in Azure App Service können gemeinsam beschrieben w
 
 Functions ist die natürliche Weiterentwicklung von WebJobs, wobei die größten Vorteile von WebJobs übernommen und verbessert werden. Die Verbesserungen umfassen: 
 
+* Modell „[Serverlose](https://azure.microsoft.com/overview/serverless-computing/)-App“
 * Optimierte Entwicklung, Tests und Codeausführung direkt im Browser.
 * Standardmäßige Integration in mehr Azure-Dienste und Drittanbieterdienste wie [GitHub WebHooks](https://developer.github.com/webhooks/creating/).
 * Nutzungsbasierte Bezahlung; es fallen keine Kosten für einen [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)an.

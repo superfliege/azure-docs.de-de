@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
-ms.openlocfilehash: 191dd7240ad15b4936a72bc27a2d0162350f3afb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 214f05f45f59b0403e6902988f9184d6b62618bd
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service
 
-In diesem Tutorial schützen Sie Ihre Web-App, indem Sie ein SSL-Zertifikat für Ihre Instanz von **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** erwerben, sicher in [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) speichern und einer benutzerdefinierten Domäne zuordnen.
+In diesem Tutorial wird gezeigt, wie Sie Ihre Web-App schützen, indem Sie ein SSL-Zertifikat für Ihre Instanz von **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** erwerben, sicher in [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) speichern und einer benutzerdefinierten Domäne zuordnen.
 
 ## <a name="step-1---log-in-to-azure"></a>Schritt 1: Anmelden bei Azure
 
@@ -38,7 +38,7 @@ Ein SSL-Zertifikat können Sie bestellen, indem Sie im **Azure-Portal** ein neue
 Geben Sie einen aussagekräftigen **Namen** für Ihr SSL-Zertifikat sowie den **Domänennamen** ein.
 
 > [!NOTE]
-> Dies ist einer der wichtigsten Teile des Einkaufsvorgangs. Achten Sie darauf, dass Sie den richtigen Hostnamen (benutzerdefinierte Domäne) eingeben, den Sie mit diesem Zertifikat schützen möchten. Fügen Sie dem Hostnamen **NICHT** WWW an. 
+> Dieser Schritt ist einer der wichtigsten Teile des Einkaufsvorgangs. Achten Sie darauf, dass Sie den richtigen Hostnamen (benutzerdefinierte Domäne) eingeben, den Sie mit diesem Zertifikat schützen möchten. Fügen Sie dem Hostnamen **NICHT** WWW an. 
 >
 
 Wählen Sie Ihr **Abonnement**, Ihre **Ressourcengruppe** und Ihre **Zertifikat-SKU** aus.
@@ -53,15 +53,15 @@ Wählen Sie Ihr **Abonnement**, Ihre **Ressourcengruppe** und Ihre **Zertifikat-
 > [Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) ist ein Azure-Dienst zum Schutz von kryptografischen Schlüsseln und Geheimnissen, die von Cloudanwendungen und -diensten verwendet werden.
 >
 
-Öffnen Sie nach Erwerb des SSL-Zertifikats das Ressourcenblatt [App Service-Zertifikate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders).
+Öffnen Sie nach Erwerb des SSL-Zertifikats die Seite [App Service-Zertifikate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders).
 
 ![Bild von Bereitschaft zum Speichern in KV einfügen](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-Der Zertifikatstatus lautet **Ausstehende Ausstellung**, da Sie noch ein paar Schritte ausführen müssen, bevor Sie das Zertifikat verwenden können.
+Der Zertifikatsstatus lautet **Ausstehende Ausstellung**, da Sie noch ein paar Schritte ausführen müssen, bevor Sie das Zertifikat verwenden können.
 
-Klicken Sie auf dem Blatt „Zertifikateigenschaften“ auf **Zertifikatkonfiguration** und anschließend auf **Schritt 1: Speichern**, um dieses Zertifikat in Azure Key Vault zu speichern.
+Klicken Sie auf der Seite „Zertifikateigenschaften“ auf **Zertifikatkonfiguration** und anschließend auf **Schritt 1: Speichern**, um dieses Zertifikat in Azure Key Vault zu speichern.
 
-Klicken Sie auf dem Blatt **Key Vault-Status** auf **Key Vault-Repository**, um einen bereits vorhandenen Schlüsseltresor zum Speichern dieses Zertifikats auszuwählen, ODER klicken Sie auf **Neuen Schlüsseltresor erstellen**, um einen neuen Schlüsseltresor im gleichen Abonnement und in der gleichen Ressourcengruppe zu erstellen.
+Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um einen bereits vorhandenen Schlüsseltresor zum Speichern dieses Zertifikats auszuwählen, ODER klicken Sie auf **Neuen Schlüsseltresor erstellen**, um einen neuen Schlüsseltresor im gleichen Abonnement und in der gleichen Ressourcengruppe zu erstellen.
 
 > [!NOTE]
 > Die Kosten für die Speicherung des Zertifikats sind bei Azure Key Vault sehr gering.
@@ -75,9 +75,9 @@ Nach der Wahl des Key Vault-Repositorys für die Speicherung des Zertifikats sol
 ## <a name="step-4---verify-the-domain-ownership"></a>Schritt 4: Überprüfen des Domänenbesitzes
 
 > [!NOTE]
-> Von App Service-Zertifikaten werden drei Arten von Domänenüberprüfungen unterstützt: Domänenüberprüfung, Überprüfung per E-Mail und manuelle Überprüfung. Diese werden im Abschnitt [Erweitert](#advanced) ausführlicher erläutert.
+> Von App Service-Zertifikaten werden drei Arten von Domänenüberprüfungen unterstützt: Domänenüberprüfung, Überprüfung per E-Mail und manuelle Überprüfung. Diese Überprüfungstypen werden im Abschnitt [Erweitert](#advanced) ausführlicher erläutert.
 
-Klicken Sie auf dem Blatt **Zertifikatkonfiguration**, das Sie in Schritt 3 verwendet haben, auf **Schritt 2: Überprüfen**.
+Klicken Sie auf der Seite **Zertifikatkonfiguration**, die Sie in Schritt 3 verwendet haben, auf **Schritt 2: Überprüfen**.
 
 Die **Domänenüberprüfung** ist **NUR DANN** der zweckmäßigste Prozess, wenn Sie **[Ihre benutzerdefinierte Domäne von Azure App Service erworben](custom-dns-web-site-buydomains-web-app.md)** haben.
 Klicken Sie auf die Schaltfläche **Überprüfen**, um diesen Schritt abzuschließen.
@@ -150,7 +150,7 @@ Wenn Sie die Überprüfungs-E-Mail erneut senden müssen, klicken Sie auf die Sc
 
 1. Erstellen der HTML-Datei **starfield.html**
 
-1. Der Inhalt dieser Datei muss exakt dem Namen des Domänenüberprüfungstokens entsprechen. (Sie können das Token vom Blatt mit dem Domänenüberprüfungsstatus kopieren.)
+1. Der Inhalt dieser Datei muss exakt dem Namen des Domänenüberprüfungstokens entsprechen. (Sie können das Token von der Seite mit dem Domänenüberprüfungsstatus kopieren.)
 
 1. Aktualisieren Sie diese Datei im Stammverzeichnis des Webservers, der Ihre Domäne hostet: `/.well-known/pki-validation/starfield.html`
 
@@ -181,13 +181,21 @@ Diese IP-Adresse unterscheidet sich von der virtuellen IP-Adresse, die zuvor zum
 
 ## <a name="rekey-and-sync-the-certificate"></a>Erneute Schlüsselerstellung für das Zertifikat und Synchronisierung
 
-Wenn Sie erneut einen Schlüssel für Ihr Zertifikat erstellen müssen, wählen Sie auf dem Blatt **Zertifikateigenschaften** die Option **Erstellung neuer Schlüssel und Synchronisierung** aus.
+Wenn Sie erneut einen Schlüssel für Ihr Zertifikat erstellen müssen, wählen Sie auf der Seite **Zertifikateigenschaften** die Option **Erstellung neuer Schlüssel und Synchronisierung** aus.
 
 Klicken Sie auf die Schaltfläche **Erneute Schlüsselerstellung**, um den Prozess zu initiieren. Dieser Prozess kann 1 bis 10 Minuten in Anspruch nehmen.
 
 ![Bild von erneuter Schlüsselerstellung für SSL einfügen](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
 Bei erneuter Schlüsselerstellung für Ihr Zertifikat wird von der Zertifizierungsstelle ein neues Zertifikat ausgestellt.
+
+<a name="notrenewed"></a>
+## <a name="why-is-my-ssl-certificate-not-auto-renewed"></a>Warum wird mein SSL-Zertifikat nicht automatisch verlängert?
+
+Wenn Ihr SSL-Zertifikat für die automatische Verlängerung konfiguriert ist, aber nicht automatisch verlängert wird, liegt möglicherweise eine ausstehende Domänenüberprüfung vor. Beachten Sie Folgendes: 
+
+- Für GoDaddy (wird zum Generieren von App Service-Zertifikaten verwendet) ist alle drei Jahre eine Überprüfung der Domäne erforderlich. Der Domänenadministrator erhält alle drei Jahre eine E-Mail mit dem Hinweis, die Domäne zu überprüfen. Wenn E-Mail oder Domäne nicht überprüft werden, kann das App Service-Zertifikat nicht automatisch verlängert werden. 
+- Alle App Service-Zertifikate, die vor dem 31. März 2017 ausgestellt wurden, erfordern bei der nächsten Verlängerung eine erneute Überprüfung der Domäne (selbst wenn die automatische Verlängerung des Zertifikats aktiviert ist). Dies ist das Ergebnis einer GoDaddy-Richtlinienänderung. Überprüfen Sie Ihre E-Mail, und führen Sie diese einmalige Domänenüberprüfung durch, um die automatische Verlängerung des App Service-Zertifikats fortzusetzen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

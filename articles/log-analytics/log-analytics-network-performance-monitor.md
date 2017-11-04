@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 10/18/2017
 ms.author: banders
-ms.openlocfilehash: c6568e491429f6046ab164ab5eacd0ae5846e201
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 10e8eeaade5d51b1a15c30802b28600bcf6c72d9
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="network-performance-monitor-solution-in-log-analytics"></a>Netzwerkleistungsmonitor-Lösung in Azure Log Analytics
 
@@ -92,28 +92,24 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
     >[!NOTE]
     >Die Agents für Windows-Serverbetriebssysteme unterstützen sowohl TCP-als auch ICMP-Protokolle für synthetische Transaktionen. Die Agents für Windows-Clientbetriebssysteme unterstützen jedoch nur ICMP als Protokolle für synthetische Transaktionen.
 
-2. Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem Arbeitsbereich die Netzwerkleistungsmonitor-Lösung hinzu.  
-   ![Symbol des Netzwerkleistungsmonitors](./media/log-analytics-network-performance-monitor/npm-symbol.png)
-3. Im OMS-Portal sehen Sie eine neue Kachel mit der Bezeichnung **Netzwerkleistungsmonitor** und der Meldung *Für die Lösung ist eine weitere Konfiguration erforderlich*. Sie müssen die Lösung konfigurieren, um Netzwerke basierend auf von Agents ermittelten Subnetzwerken und Knoten hinzuzufügen. Klicken Sie auf **Netzwerkleistungsmonitor**, um mit dem Konfigurieren des Standardnetzwerks zu beginnen.  
-   ![Für die Lösung ist eine weitere Konfiguration erforderlich](./media/log-analytics-network-performance-monitor/npm-config.png)
+2. Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem Arbeitsbereich die Netzwerkleistungsmonitor-Lösung hinzu.<br><br> ![Symbol des Netzwerkleistungsmonitors](./media/log-analytics-network-performance-monitor/npm-symbol.png)  
+3. Im OMS-Portal sehen Sie eine neue Kachel mit der Bezeichnung **Netzwerkleistungsmonitor** und der Meldung *Für die Lösung ist eine weitere Konfiguration erforderlich*. Klicken Sie auf die Kachel, um zur Registerkarte **Bereitstellung** zu navigieren, und wählen Sie das Protokoll für die synthetischen Transaktionen zur Überwachung Ihres Netzwerks aus.  Lesen Sie [Wählen des richtigen Protokolls: ICMP oder TCP](#choose-the-right-protocol-icmp-or-tcp), um das richtige Protokoll für Ihr Netzwerk auszuwählen.<br><br> ![Lösung erfordert Protokollauswahl](media/log-analytics-network-performance-monitor/log-analytics-netmon-perf-welcome.png)<br><br>
 
-### <a name="configure-the-solution-with-a-default-network"></a>Konfigurieren der Lösung mit einem Standardnetzwerk
-Auf der Konfigurationsseite sehen Sie ein einziges Netzwerk, dieses hat den Namen **Default** (Standard). Wenn Sie noch keine Netzwerke definiert haben, sind alle automatisch ermittelten Subnetze im Standardnetzwerk enthalten.
-
-Immer dann, wenn Sie ein Netzwerk erstellen, fügen Sie diesem ein Subnetz hinzu, und dieses Subnetz wird aus dem Standardnetzwerk entfernt. Wenn Sie ein Netzwerk löschen, werden alle seine Subnetze automatisch an das Standardnetzwerk zurückgegeben.
-
-Das Standardnetzwerk ist also der Container für alle Subnetze, die nicht in einem benutzerdefinierten Netzwerk enthalten sind. Sie können das Standardnetzwerk weder bearbeiten noch löschen. Es verbleibt stets im System. Sie können jedoch beliebig viele Netzwerke erstellen.
-
-In den meisten Fällen sind die Subnetze in Ihrer Organisation in mehreren Netzwerken angeordnet, und Sie sollten ein oder mehrere Netzwerke erstellen, um Ihre Subnetze logisch zu gruppieren.
+4. Nach Auswahl des Protokolls werden Sie zur Seite **OMS-Übersicht** umgeleitet. Während die Lösung Daten aus Ihrem Netzwerk zusammenfasst, wird auf der Übersichtskachel „Netzwerkleistungsmonitor“ die Meldung *Datenaggregation wird durchgeführt.* angezeigt.<br><br> ![Lösung fasst Daten zusammen](media/log-analytics-network-performance-monitor/log-analytics-netmon-tile-status-01.png)<br><br>
+5. Sobald die Daten gesammelt und indiziert sind, ändert sich die Übersichtskachel und weist darauf hin, dass Sie zusätzliche Konfigurationsschritte ausführen müssen.<br><br> ![Lösungskachel erfordert weitere Konfiguration](media/log-analytics-network-performance-monitor/log-analytics-netmon-tile-status-02.png)<br><br>
+6. Klicken Sie auf die Kachel, und starten Sie die Konfiguration der Lösung mit den folgenden Schritten.
 
 ### <a name="create-new-networks"></a>Erstellen neuer Netzwerke
-Ein Netzwerk im Netzwerkleistungsmonitor ist ein Container für Subnetze. Sie können ein Netzwerk mit einem beliebigen Namen erstellen und Subnetze zum Netzwerk hinzufügen. Sie können z.B. ein Netzwerk namens *Gebäude1* erstellen und anschließend Subnetze hinzufügen, oder Sie können ein Netzwerk namens *DMZ* erstellen und anschließend alle der demilitarisierten Zone angehörenden Subnetze zu diesem Netzwerk hinzufügen.
+Ein Netzwerk im Netzwerkleistungsmonitor ist ein logischer Container für Subnetze. Sie können ein Netzwerk mit einem Anzeigenamen erstellen und entsprechend Ihrer Geschäftslogik Subnetze hinzufügen. Sie können z.B. ein Netzwerk mit dem Namen *London* erstellen und alle Subnetze in Ihrem Londoner Rechenzentrum hinzufügen, oder ein Netzwerk mit dem Namen *ContosoFrontEnd* und diesem Netzwerk alle Subnetze hinzufügen, die das Front-End Ihrer App mit dem Namen „Contoso“ bedienen.
+Auf der Konfigurationsseite sehen Sie auf der Registerkarte „Netzwerke“ ein einziges Netzwerk mit dem Namen **Standard**. Wenn Sie noch keine Netzwerke erstellt haben, sind alle automatisch ermittelten Subnetze im Netzwerk „Standard“ enthalten.
+Immer dann, wenn Sie ein Netzwerk erstellen, fügen Sie diesem ein Subnetz hinzu, und dieses Subnetz wird aus dem Standardnetzwerk entfernt. Wenn Sie ein Netzwerk löschen, werden alle seine Subnetze automatisch an das Standardnetzwerk zurückgegeben.
+Das Netzwerk „Standard“ ist also der Container für alle Subnetze, die nicht in einem benutzerdefinierten Netzwerk enthalten sind. Sie können das Standardnetzwerk weder bearbeiten noch löschen. Es verbleibt stets im System. Sie können jedoch beliebig viele benutzerdefinierte Netzwerke erstellen.
+In den meisten Fällen sind die Subnetze in Ihrer Organisation in mehreren Netzwerken angeordnet, und Sie sollten ein oder mehrere Netzwerke erstellen, um Ihre Subnetze gemäß Ihrer Geschäftslogik zu gruppieren.
 
 #### <a name="to-create-a-new-network"></a>So erstellen Sie ein neues Netzwerk
 1. Klicken Sie auf **Netzwerk hinzufügen**, und geben Sie den Netzwerknamen und eine Beschreibung ein.
 2. Wählen Sie ein oder mehrere Subnetze aus, und klicken Sie anschließend auf **Hinzufügen**.
-3. Klicken Sie zum Speichern der Konfiguration auf **Speichern**.  
-   ![Netzwerk hinzufügen](./media/log-analytics-network-performance-monitor/npm-add-network.png)
+3. Klicken Sie zum Speichern der Konfiguration auf **Speichern**.<br><br> ![Netzwerk hinzufügen](./media/log-analytics-network-performance-monitor/npm-add-network.png)
 
 ### <a name="wait-for-data-aggregation"></a>Warten auf die Datenaggregation
 Nachdem Sie die Konfiguration erstmals gespeichert haben, beginnt die Lösung, Informationen zu Netzwerkpaketverlusten und zur Latenz zwischen den Knoten zu sammeln, auf denen Agents installiert sind. Dieser Prozess kann eine gewisse Zeit in Anspruch nehmen, gelegentlich sogar mehr als 30 Minuten. Während dieses Zustands zeigt die Kachel des Netzwerkleistungsmonitors auf der Übersichtsseite die Meldung *Datenaggregation wird durchgeführt* an.
@@ -135,8 +131,7 @@ Alle Subnetze, in denen mindestens ein Agent installiert wurde, werden auf der R
 1. Aktivieren bzw. deaktivieren Sie das Kontrollkästchen neben der **Subnetzwerk-ID**, und stellen Sie dann sicher, dass je nach Bedarf **Zur Überwachung verwenden** aktiviert oder deaktiviert ist. Sie können mehrere Subnetze aktivieren oder deaktivieren. Deaktivierte Subnetzwerke werden nicht überwacht, da die Agents dahingehend aktualisiert werden, dass sie keine Pings anderer Agents mehr ausführen.
 2. Wählen Sie die Knoten aus, die Sie für ein bestimmtes Subnetzwerk überwachen möchten, indem Sie das Subnetzwerk aus der Liste auswählen und die erforderlichen Knoten von der Liste mit den nicht überwachten Knoten in die Liste mit den überwachten Knoten verschieben.
    Falls gewünscht können Sie eine benutzerdefinierte **Beschreibung** des Subnetzwerks hinzufügen.
-3. Klicken Sie zum Speichern der Konfiguration auf **Speichern**.  
-   ![Subnetz bearbeiten](./media/log-analytics-network-performance-monitor/npm-edit-subnet.png)
+3. Klicken Sie zum Speichern der Konfiguration auf **Speichern**.<br><br> ![Subnetz bearbeiten](./media/log-analytics-network-performance-monitor/npm-edit-subnet.png)
 
 ### <a name="choose-nodes-to-monitor"></a>Auswählen zu überwachender Knoten
 Alle Knoten, auf denen ein Agent installiert ist, werden auf der Registerkarte **Knoten** aufgeführt.
@@ -144,25 +139,28 @@ Alle Knoten, auf denen ein Agent installiert ist, werden auf der Registerkarte *
 #### <a name="to-enable-or-disable-monitoring-for-nodes"></a>So aktivieren bzw. deaktivieren Sie die Überwachung für Knoten
 1. Aktivieren bzw. deaktivieren Sie die Knoten, die überwacht werden sollen bzw. deren Überwachung beendet werden soll.
 2. Aktivieren bzw. deaktivieren Sie nach Bedarf **Zur Überwachung verwenden**.
-3. Klicken Sie auf **Speichern**.  
-   ![Knotenüberwachung aktivieren](./media/log-analytics-network-performance-monitor/npm-enable-node-monitor.png)
+3. Klicken Sie auf **Speichern**.<br><br> ![Knotenüberwachung aktivieren](./media/log-analytics-network-performance-monitor/npm-enable-node-monitor.png)
 
 ### <a name="set-monitoring-rules"></a>Festlegen von Überwachungsregeln
-Wenn ein Schwellenwert überschritten wird, generiert der Netzwerkleistungsmonitor Integritätsereignisse bezüglich der Konnektivität zwischen einem Knotenpaar oder einem Subnetzwerk- oder Netzwerkverbindungspaar. Diese Schwellenwerte können automatisch vom System erlernt werden, oder Sie können die Werte so konfigurieren, dass benutzerdefinierte Warnungsregeln verwendet werden.
+Der Netzwerkleistungsmonitor generiert Integritätsereignisse, wenn der Schwellenwert der Leistung von Netzwerkverbindungen zwischen 2 Subnetzwerken oder 2 Netzwerken verletzt wird. Diese Schwellenwerte können automatisch vom System erlernt werden, oder Sie können benutzerdefinierte Schwellenwerte festlegen.
+Das System erstellt automatisch eine Standardregel, die immer dann ein Integritätsereignis generiert, wenn der Verlust oder die Latenz zwischen einem Netzwerk-/Subnetzwerkverbindungspaar den vom System erlernten Schwellenwert überschreitet. Dies erleichtert der Lösung die Überwachung Ihrer Netzwerkinfrastruktur, solange Sie noch nicht alle Überwachungsregeln explizit erstellt haben. Wenn die Standardregel aktiviert ist, senden alle Knoten synthetische Transaktionen an alle anderen Knoten, die Sie für die Überwachung aktiviert haben. Die Standardregel ist bei kleinen Netzwerken nützlich, z.B. in einem Szenario, in dem auf einer kleinen Anzahl von Servern ein Microservice ausgeführt wird, und Sie die Konnektivität aller Server miteinander sicherstellen möchten.
 
-Die *Standardregel* wird vom System erstellt. Sie generiert immer dann ein Integritätsereignis, wenn der Verlust oder die Latenz zwischen einem Netzwerk- oder Subnetzwerkverbindungspaar den vom System erlernten Schwellenwert überschreitet. Sie können die Standardregel deaktivieren und benutzerdefinierte Überwachungsregeln erstellen.
+>[!NOTE]
+>Sie sollten die Standardregel unbedingt deaktivieren und benutzerdefinierte Überwachungsregeln erstellen, insbesondere bei großen Netzwerken, in denen Sie eine große Anzahl von Knoten zum Überwachen verwenden. Dies reduziert den von der Lösung generierten Datenverkehr und hilft Ihnen, die Überwachung Ihres Netzwerks zu organisieren.
+
+Erstellen Sie benutzerdefinierte Überwachungsregeln gemäß Ihrer Geschäftslogik. Wenn Sie z.B. die Leistung der Netzwerkkonnektivität zwischen 2 Bürostandorten und dem Unternehmenshauptsitz überwachen möchten, gruppieren Sie alle Subnetze in Bürostandort1 im Netzwerk O1, alle Subnetze in Bürostandort2 im Netzwerk O2 und alle Subnetze im Unternehmenshauptsitz im Netzwerk H. Erstellen Sie 2 Überwachungsregeln – eine für die Verbindung zwischen O1 und H und die andere für die Verbindung zwischen O2 und H.
+
 
 #### <a name="to-create-custom-monitoring-rules"></a>So erstellen Sie benutzerdefinierte Überwachungsregeln
 1. Klicken Sie auf der Registerkarte **Überwachen** auf **Regel hinzufügen**, und geben Sie den Regelnamen und eine Beschreibung ein.
 2. Wählen Sie das zu überwachende Netzwerk- oder Subnetzwerkverbindungspaar aus den Listen aus.
 3. Wählen Sie zunächst aus der Dropdownliste „Netzwerk“ das Netzwerk aus, in dem das erste relevante Subnetz bzw. die ersten relevanten Subnetze enthalten ist/sind. Wählen Sie anschließend das Subnetzwerk bzw. die Subnetzwerke in der entsprechenden Dropdownliste „Subnetzwerke“ aus.
    Wählen Sie **Alle Subnetzwerke** aus, wenn alle Subnetzwerke in einer Netzwerkverbindung überwacht werden sollen. Wählen Sie analog die übrigen relevanten Subnetzwerke aus. Ferner können Sie auf **Ausnahme hinzufügen** klicken, um die Überwachung bestimmter Subnetzwerkverbindungen aus Ihrer Auswahl zu entfernen.
-4. Wählen Sie zwischen für die Ausführung synthetischer Transaktionen zwischen den Protokollen ICMP und TCP.
+4. Für die Ausführung synthetischer Transaktionen [wählen Sie zwischen den Protokollen ICMP und TCP](#choose-the-right-protocol-icmp-or-tcp).
 5. Wenn keine Integritätsereignisse für die von Ihnen ausgewählten Elemente erstellt werden sollen, deaktivieren Sie das Kontrollkästchen **Integritätsüberwachung für die mit dieser Regel abgedeckten Verbindungen aktivieren**.
 6. Wählen Sie Überwachungsbedingungen aus.
    Sie können benutzerdefinierte Schwellenwerte für das Generieren von Integritätsereignissen festlegen, indem Sie Schwellenwerte eingeben. Sobald der Wert einer Bedingung den für Sie festgelegten Schwellenwert für das ausgewählte Netzwerk-/Subnetzwerkpaar überschreitet, wird ein Integritätsereignis generiert.
-7. Klicken Sie zum Speichern der Konfiguration auf **Speichern**.  
-   ![Benutzerdefinierte Überwachungsregel erstellen](./media/log-analytics-network-performance-monitor/npm-monitor-rule.png)
+7. Klicken Sie zum Speichern der Konfiguration auf **Speichern**.<br><br> ![Benutzerdefinierte Überwachungsregel erstellen](./media/log-analytics-network-performance-monitor/npm-monitor-rule.png)
 
 Nachdem Sie eine Überwachungsregel gespeichert haben, können Sie diese Regel in die Warnungsverwaltung integrieren, indem Sie auf **Warnung erstellen** klicken. Beim Erstellen einer Warnungsregel werden die Suchabfrage und andere erforderliche Parameter automatisch ausgefüllt. Mithilfe einer Warnungsregel können Sie neben den vorhandenen Warnungen in NPM auch E-Mail-basierte Warnungen erhalten. Warnungen können auch Problembehandlungsaktionen mit Runbooks auslösen oder mithilfe von Webhooks in vorhandene Dienstverwaltungslösungen integriert werden. Zum Bearbeiten der Warnungseinstellungen klicken Sie auf die Option zum **Verwalten von Warnungen**.
 
@@ -192,7 +190,9 @@ Sie können zum Konfigurieren von Firewallregeln auf Ihren Computern Windows Pow
 Im Gegensatz dazu arbeitet ICMP nicht mit einem Port. In den meisten Unternehmensumgebungen ist ICMP-Datenverkehr durch die Firewalls zulässig, damit Sie Netzwerkdiagnosetools wie das Hilfsprogramm Ping einsetzen können. Wenn Sie also einen Computer von einem anderen aus pingen können, lässt sich das ICMP-Protokoll nutzen, ohne dass Firewalls manuell konfiguriert werden müssen.
 
 > [!NOTE]
-> Falls Sie nicht sicher sind, welches Protokoll Sie verwenden sollen, wählen Sie zum Einstieg ICMP. Wenn Sie mit den Ergebnissen nicht zufrieden sind, können Sie später immer noch zu TCP wechseln.
+> Einige Firewalls blockieren möglicherweise ICMP, was zur Neuübertragung führen kann, sodass eine große Anzahl von Ereignissen in Ihrem Sicherheitsinformations- und Ereignisverwaltungssystem auftritt. Stellen Sie sicher, dass das Protokoll, das Sie auswählen, nicht durch eine Netzwerkfirewall/NSG blockiert wird, da NPM andernfalls das Netzwerksegment nicht überwachen kann.  Aus diesem Grund sollten Sie TCP für die Überwachung verwenden. Sie sollten ICMP in Szenarien verwenden, wo Sie TCP nicht verwenden können, z.B.:
+> * Wenn Sie Windows-clientbasierte Knoten verwenden, da TCP-RAW-Sockets im Windows-Client nicht zulässig sind
+> * Wenn Ihre Netzwerkfirewall/NSG TCP blockiert
 
 
 #### <a name="how-to-switch-the-protocol"></a>Informationen zum Wechseln des Protokolls
@@ -205,8 +205,6 @@ Wenn Sie sich während der Bereitstellung für ICMP entscheiden, können Sie jed
 3.  Klicken Sie auf **Speichern**, um die Einstellung zu übernehmen.
 
 Auch wenn die Standardregel ein bestimmtes Protokoll angibt, können Sie neue Regeln mit einem anderen Protokoll erstellen. Sie können sogar eine Kombination aus Regeln erstellen, bei der einige der Regeln ICMP und andere TCP verwenden.
-
-
 
 
 ## <a name="data-collection-details"></a>Details zur Datensammlung
@@ -292,20 +290,14 @@ Alle auf dem Dashboard des Netzwerkleistungsmonitors und auf den Drilldownseiten
 ## <a name="investigate-the-root-cause-of-a-health-alert"></a>Untersuchen der Ursache einer Integritätswarnung
 Nachdem Sie nun mit dem Netzwerkleistungsmonitor vertraut sind, erfahren Sie in diesem Abschnitt anhand eines Beispiels, wie Sie auf einfache Weise die Ursachen eines Integritätsereignisses untersuchen.
 
-1. Auf der Übersichtsseite erhalten Sie mithilfe der Kachel **Netzwerkleistungsmonitor** einen unverzüglichen Überblick über die Integrität Ihres Netzwerks. Beachten Sie, dass von den 6 überwachten Subnetzwerkverbindungen 2 Verbindungen fehlerhaft sind. Dies macht eine Untersuchung erforderlich. Klicken Sie auf die Kachel, um das Lösungsdashboard anzuzeigen.  
-   ![Kachel des Netzwerkleistungsmonitors](./media/log-analytics-network-performance-monitor/npm-investigation01.png)
-2. Im folgenden Beispielbild sehen Sie, dass ein Integritätsereignis vorhanden ist – ein fehlerhafter Netzwerklink. Sie möchten dieses Problem untersuchen und klicken dazu auf die Netzwerkverbindung **DMZ2-DMZ1**, um die Ursache des Problems herauszufinden.  
-   ![Beispiel für eine fehlerhafte Netzwerkverbindung](./media/log-analytics-network-performance-monitor/npm-investigation02.png)
-3. Auf der Drilldownseite werden alle Subnetzwerkverbindungen der Netzwerkverbindung **DMZ2-DMZ1** angezeigt. Sie sehen, dass die Latenz beider Subnetzwerkverbindungen den Schwellenwert überschritten hat und die Netzwerkverbindung somit fehlerhaft ist. Sie können auch die Latenztrends der beiden Subnetzwerkverbindungen anzeigen. Mit dem Zeitauswahl-Steuerelement im Diagramm können Sie sich auf den gewünschten Zeitraum konzentrieren. Sie können sehen, zu welcher Tageszeit die Latenz ihren Höchstwert erreicht hat. Sie können anschließend die Protokolle für diesen Zeitraum durchgehen, um das Problem zu untersuchen. Klicken Sie auf **Knotenverbindungen anzeigen**, um einen weiteren Drilldown auszuführen.  
-   ![Beispiel für fehlerhafte Subnetzverbindungen](./media/log-analytics-network-performance-monitor/npm-investigation03.png)
-4. Ähnlich wie bei der vorherigen Seite werden auf der Drilldownseite der Subnetzwerkverbindung die enthaltenen Knotenverbindungen aufgeführt. Sie können ähnliche Aktionen wie im vorherigen Schritt ausführen. Klicken Sie auf **Topologie anzeigen**, um die Topologie zwischen den beiden Knoten anzuzeigen.  
-   ![Beispiel für fehlerhafte Knotenverbindungen](./media/log-analytics-network-performance-monitor/npm-investigation04.png)
-5. Alle Pfade zwischen den beiden ausgewählten Knoten werden in die Topologiekarte gezeichnet. Sie können die Hop-by-Hop-Topologie der Routen zwischen zwei Knoten in der Topologiekarte grafisch darstellen. So wissen Sie genau, wie viele Routen es zwischen den beiden Knoten gibt und welche Pfade die Datenpakete verwenden. Leistungsengpässe im Netzwerk werden rot gekennzeichnet. Sie finden eine fehlerhafte Netzwerkverbindung bzw. ein fehlerhaftes Netzwerkgerät, indem Sie in der Topologiekarte nach rot gekennzeichneten Elementen suchen.  
-   ![Beispiel für eine Ansicht mit einer fehlerhaften Topologie](./media/log-analytics-network-performance-monitor/npm-investigation05.png)
+1. Auf der Übersichtsseite erhalten Sie mithilfe der Kachel **Netzwerkleistungsmonitor** einen unverzüglichen Überblick über die Integrität Ihres Netzwerks. Beachten Sie, dass von den 6 überwachten Subnetzwerkverbindungen 2 Verbindungen fehlerhaft sind. Dies macht eine Untersuchung erforderlich. Klicken Sie auf die Kachel, um das Lösungsdashboard anzuzeigen.<br><br> ![Kachel des Netzwerkleistungsmonitors](./media/log-analytics-network-performance-monitor/npm-investigation01.png)  
+2. Im folgenden Beispielbild sehen Sie, dass ein Integritätsereignis vorhanden ist – ein fehlerhafter Netzwerklink. Sie möchten dieses Problem untersuchen und klicken dazu auf die Netzwerkverbindung **DMZ2-DMZ1**, um die Ursache des Problems herauszufinden.<br><br> ![Beispiel für eine fehlerhafte Netzwerkverbindung](./media/log-analytics-network-performance-monitor/npm-investigation02.png)  
+3. Auf der Drilldownseite werden alle Subnetzwerkverbindungen der Netzwerkverbindung **DMZ2-DMZ1** angezeigt. Sie sehen, dass die Latenz beider Subnetzwerkverbindungen den Schwellenwert überschritten hat und die Netzwerkverbindung somit fehlerhaft ist. Sie können auch die Latenztrends der beiden Subnetzwerkverbindungen anzeigen. Mit dem Zeitauswahl-Steuerelement im Diagramm können Sie sich auf den gewünschten Zeitraum konzentrieren. Sie können sehen, zu welcher Tageszeit die Latenz ihren Höchstwert erreicht hat. Sie können anschließend die Protokolle für diesen Zeitraum durchgehen, um das Problem zu untersuchen. Klicken Sie auf **Knotenverbindungen anzeigen**, um einen weiteren Drilldown auszuführen.<br><br> ![Beispiel für fehlerhafte Subnetzverbindungen](./media/log-analytics-network-performance-monitor/npm-investigation03.png) 
+4. Ähnlich wie bei der vorherigen Seite werden auf der Drilldownseite der Subnetzwerkverbindung die enthaltenen Knotenverbindungen aufgeführt. Sie können ähnliche Aktionen wie im vorherigen Schritt ausführen. Klicken Sie auf **Topologie anzeigen**, um die Topologie zwischen den beiden Knoten anzuzeigen.<br><br> ![Beispiel für fehlerhafte Knotenverbindungen](./media/log-analytics-network-performance-monitor/npm-investigation04.png)  
+5. Alle Pfade zwischen den beiden ausgewählten Knoten werden in die Topologiekarte gezeichnet. Sie können die Hop-by-Hop-Topologie der Routen zwischen zwei Knoten in der Topologiekarte grafisch darstellen. So wissen Sie genau, wie viele Routen es zwischen den beiden Knoten gibt und welche Pfade die Datenpakete verwenden. Leistungsengpässe im Netzwerk werden rot gekennzeichnet. Sie finden eine fehlerhafte Netzwerkverbindung bzw. ein fehlerhaftes Netzwerkgerät, indem Sie in der Topologiekarte nach rot gekennzeichneten Elementen suchen.<br><br> ![Beispiel für eine Ansicht mit einer fehlerhaften Topologie](./media/log-analytics-network-performance-monitor/npm-investigation05.png)  
 6. Verlust, Latenz und Anzahl der Hops in jedem Pfad können im Bereich **Aktion** überprüft werden. Verwenden Sie die Bildlaufleiste, um die Details dieser fehlerhaften Pfade anzuzeigen.  Verwenden Sie die Filter, um die Pfade mit dem fehlerhaften Hop auszuwählen, sodass die Topologie nur für die ausgewählten Pfade dargestellt wird. Mit dem Mausrad können Sie die Topologiekarte vergrößern oder verkleinern.
 
-   In der Abbildung unten ist anhand der rot gekennzeichneten Pfade und Hops deutlich erkennbar, wo die Ursache für die Problembereiche im betreffenden Abschnitt des Netzwerks liegt. Durch Klicken auf einen Knoten in der Topologiekarte werden die Eigenschaften des Knotens einschließlich FQDN und IP-Adresse angezeigt. Durch Klicken auf einen Hop wird die IP-Adresse des Hops angezeigt.  
-   ![Fehlerhafte Topologie – Beispiel für Pfaddetails](./media/log-analytics-network-performance-monitor/npm-investigation06.png)
+   In der Abbildung unten ist anhand der rot gekennzeichneten Pfade und Hops deutlich erkennbar, wo die Ursache für die Problembereiche im betreffenden Abschnitt des Netzwerks liegt. Durch Klicken auf einen Knoten in der Topologiekarte werden die Eigenschaften des Knotens einschließlich FQDN und IP-Adresse angezeigt. Durch Klicken auf einen Hop wird die IP-Adresse des Hops angezeigt.<br><br> ![Fehlerhafte Topologie – Beispiel für Pfaddetails](./media/log-analytics-network-performance-monitor/npm-investigation06.png)
 
 ## <a name="provide-feedback"></a>Feedback geben
 

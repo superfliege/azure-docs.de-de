@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/03/2017
+ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 27013ca9724cf2f57fc85f5f4ccb71921ca57a3b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9cd70b048d454009d8741f394fed0b6b93fcab7
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Tutorial: Azure Active Directory-Integration mit Promapp
 
@@ -106,40 +106,57 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_samlbase.png)
 
-3. Führen Sie auf der Seite **Domäne und URLs für Promapp** die folgenden Schritte aus:
+3. Führen Sie im Abschnitt **Domäne und URLs für Promapp** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`.
+    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein:
+    | |
+    |--|
+    | `https://demo.promapp.com/TENANTNAME`|
+    | `https://go.promapp.com/TENANTNAME`|
+    | `https://demoau.promapp.com/TENANTNAME`|
+    | `https://au.promapp.com/TENANTNAME`|
+    | `https://demous.promapp.com/TENANTNAME`|
+    | `https://us.promapp.com/TENANTNAME`|
+    | `https://dev.promapp.com/TENANTNAME`|
+    | `https://test.promapp.com/TENANTNAME`|
+    | `https://staging.promapp.com/TENANTNAME`|
+    
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx`
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://DOMAINNAME.promapp.com/TENANTNAME`
+4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url1.png)
+
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`.
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Promapp-Client](https://www.promapp.com/about-us/contact-us/), um diese Werte zu erhalten.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an das [Supportteam für den Promapp-Client](https://www.promapp.com/about-us/contact-us/), um diese Werte zu erhalten.
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+6. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-promapp-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **Promapp-Konfiguration** auf **Promapp konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+7. Klicken Sie im Abschnitt **Promapp-Konfiguration** auf **Promapp konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_configure.png) 
 
-7. Melden Sie sich bei Ihrer Promapp-Unternehmenswebsite als Administrator an. 
+8. Melden Sie sich bei Ihrer Promapp-Unternehmenswebsite als Administrator an. 
 
-8. Klicken Sie oben im Menü auf **Administrator**. 
+9. Klicken Sie oben im Menü auf **Administrator**. 
    
     ![Azure AD – einmaliges Anmelden][12]
 
-9. Klicken Sie auf **Konfigurieren**. 
+10. Klicken Sie auf **Konfigurieren**. 
    
     ![Azure AD – einmaliges Anmelden][13]
 
-10. Führen Sie im Dialogfeld **Security** die folgenden Schritte aus:
+11. Führen Sie im Dialogfeld **Security** die folgenden Schritte aus:
    
     ![Azure AD – einmaliges Anmelden][14]
     
@@ -147,7 +164,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     b. Wählen Sie für **SSO-Modus** die Option **Optional** aus, und klicken Sie dann auf **Speichern**.
 
-    c. Öffnen Sie das heruntergeladene Zertifikat im Editor, kopieren Sie seinen Inhalt mit Ausnahme der ersten Zeile (-----BEGIN CERTIFICATE-----) und der letzten Zeile (-----END CERTIFICATE-----), und fügen Sie ihn in das Textfeld **SSO-x.509-Zertifikat** ein. Klicken Sie anschließend auf **Speichern**.
+    > [!NOTE]
+    > **Optionaler** Modus dient nur zu Testzwecken. Sobald Sie mit der Konfiguration zufrieden sind, wählen Sie den Modus **Erforderlich** aus, um für alle Benutzer die Authentifizierung mithilfe von Azure AD zu erzwingen.
+
+    c. Öffnen Sie das heruntergeladene Zertifikat in Editor, kopieren Sie den Zertifikatsinhalt mit Ausnahme der ersten Zeile (-----**BEGIN CERTIFICATE**-----) und der letzten Zeile (-----**END CERTIFICATE**-----), und fügen Sie ihn in das Textfeld **SSO-x.509-Zertifikat** ein. Klicken Sie anschließend auf **Speichern**.
         
 > [!TIP]
 > Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -222,7 +242,9 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Promapp“ klicken, sollten Sie automatisch bei Ihrer Promapp-Anwendung angemeldet werden.
+So testen Sie Ihre Anwendung im **IDP**-initiierten Modus: Wenn Sie im Zugriffsbereich auf die Kachel „Promapp“ klicken, sollten Sie automatisch bei Ihrer Promapp-Anwendung angemeldet werden.
+
+Sie müssen die Authentifizierung über Ihre Promapp-Site initiieren, um die Anwendung im **SP**-initiierten Modus zu testen. Dazu können Sie das Kennwortfeld bei der Anmeldung leer lassen, während der Modus **Optional** aktiviert ist.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/20/2017
 ms.author: billmath
-ms.openlocfilehash: 7f1a3303eff9c413602e745b702baa659343eba6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 675f5b31eb60a75e060a397f01777e427c068c64
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Office 365 und Azure Active Directory
 ## <a name="overview"></a>Übersicht
@@ -158,9 +158,18 @@ Aktualisieren Sie Office 365 wie folgt mit den neuen Tokensignaturzertifikaten f
 > [!NOTE]
 > Wenn Sie mehrere Domänen der obersten Ebene unterstützen müssen, z.B. „contoso.com“ und „fabrikam.com“, müssen Sie den **SupportMultipleDomain**-Switch mit den Cmdlets verwenden. Weitere Informationen finden Sie unter [Unterstützung mehrerer Domänen der obersten Ebene](active-directory-aadconnect-multiple-domains.md).
 >
->
+
 
 ## Reparieren einer Azure AD-Vertrauensstellung mit Azure AD Connect <a name="connectrenew"></a>
 Wenn Sie Ihre AD FS-Farm und die Azure AD-Vertrauensstellung unter Verwendung von Azure AD Connect konfiguriert haben, können Sie mit Azure AD Connect erkennen, ob Sie für Ihre Tokensignaturzertifikate Maßnahmen ergreifen müssen. Falls Sie die Zertifikate erneuern müssen, können Sie dafür Azure AD Connect nutzen.
 
 Weitere Informationen finden Sie unter [Reparieren der Vertrauensstellung](active-directory-aadconnect-federation-management.md).
+
+## <a name="ad-fs-and-azure-ad-certificate-update-steps"></a>Schritte zum Aktualisieren von AD FS- und Azure AD-Zertifikaten
+Tokensignaturzertifikate sind X509-Standardzertifikate, mit denen alle Token sicher signiert werden, die vom Verbundserver ausstellt werden. Tokenentschlüsselungszertifikate sind X509-Standardzertifikate, mit denen alle eingehenden Token entschlüsselt werden. 
+
+Standardmäßig ist AD FS so konfiguriert, dass die Zertifikate für die Tokensignatur und Tokenentschlüsselung automatisch generiert werden, sowohl bei der Erstkonfiguration als auch zu dem Zeitpunkt, wenn sich die Zertifikate dem Ablaufdatum nähern.
+
+Azure AD versucht 30 Tage vor Ablauf des aktuellen Zertifikats, ein neues Zertifikat von Ihren Verbunddienstmetadaten abzurufen. Falls zu diesem Zeitpunkt kein neues Zertifikat verfügbar ist, setzt Azure AD die Überwachung der Metadaten in regelmäßigen täglichen Intervallen fort. Sobald das neue Zertifikat in den Metadaten verfügbar ist, werden die Verbundeinstellungen für die Domäne mit den neuen Zertifikatsinformationen aktualisiert. Sie können mit `Get-MsolDomainFederationSettings` überprüfen, ob das neue Zertifikat in NextSigningCertificate/SigningCertificate angezeigt wird.
+
+Weitere Informationen zu Tokensignaturzertifikaten in AD FS finden Sie unter [Abrufen und Konfigurieren von Tokensignaturzertifikaten und Tokenentschlüsselungszertifikaten für AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)

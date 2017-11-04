@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer PHP-Web-App in einem Linux-Container in Azure | Microsoft-Dokumentation
-description: "Stellen Sie in wenigen Minuten Ihre erste „Hallo Welt“-PHP-App in einer Azure App Service-Web-App bereit."
+title: Erstellen einer PHP-Web-App und Bereitstellen dieser in App Service unter Linux | Microsoft-Dokumentation
+description: "Stellen Sie in wenigen Minuten Ihre erste PHP-App vom Typ „Hello World“ in einer App Service unter Linux bereit."
 services: app-service\web
 documentationcenter: 
 author: syntaxc4
@@ -15,19 +15,19 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 2d5c8901e3deb126e216b58264c820b374b5670b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 47b3f3b0a0faab6daa4ff64230128fc0ad3510e9
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="create-a-php-web-app-in-a-linux-container-in-azure"></a>Erstellen einer PHP-Web-App in einem Linux-Container in Azure
+# <a name="create-a-php-web-app-in-app-service-on-linux"></a>Erstellen einer PHP-Web-App in App Service unter Linux
 
-[Web-Apps für Container](app-service-linux-intro.md) bieten einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter dem Linux-Betriebssystem. In diesem Schnellstarttutorial wird erläutert, wie Sie eine PHP-App in Azure-Web-Apps für Container bereitstellen. Sie erstellen die Web-App mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) in Cloud Shell und stellen mit Git den PHP-Code für die Web-App bereit.
+[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter dem Linux-Betriebssystem. In diesem Schnellstart-Tutorial wird erläutert, wie Sie eine PHP-App in Azure App Service unter Linux bereitstellen. Sie erstellen die Web-App mit integriertem Image mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) in Cloud Shell und stellen mit Git den PHP-Code für die Web-App bereit.
 
 ![In Azure ausgeführte Beispiel-App]](media/quickstart-php/hello-world-in-browser.png)
 
-Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden. 
+Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -71,19 +71,17 @@ Drücken Sie in Ihrem Terminalfenster **STRG+C**, um den Webserver zu beenden.
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Erstellen einer Web-App
+## <a name="create-a-web-app-with-built-in-image"></a>Erstellen einer Web-App mit integriertem Image
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-linux-php-no-h.md)] 
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-no-h.md)] 
 
-Navigieren Sie zu der Website, um sich Ihre neu erstellte Web-App anzusehen. Ersetzen Sie _&lt;App-Name>_ durch einen eindeutigen App-Namen.
+Browsen Sie zu der Website, um Ihre neu erstellte Web-App mit integriertem Image anzuzeigen. Ersetzen Sie _&lt;App-Name>_ durch einen eindeutigen App-Namen.
 
 ```bash
 http://<app name>.azurewebsites.net
 ```
 
 ![Leere Web-App-Seite](media/quickstart-php/app-service-web-service-created.png)
-
-Sie haben eine leere neue Web-App in einem Linux-Container mit aktivierter Git-Bereitstellung erstellt.
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -120,11 +118,11 @@ Navigieren Sie in Ihrem Webbrowser zu der bereitgestellten Anwendung.
 http://<app_name>.azurewebsites.net
 ```
 
-Der PHP-Beispielcode wird in einer Azure App Service-Web-App ausgeführt.
+Der PHP-Beispielcode wird in einer Web-App mit integriertem Image ausgeführt.
 
 ![In Azure ausgeführte Beispiel-App](media/quickstart-php/hello-world-in-browser.png)
 
-**Glückwunsch!** Sie haben Ihre erste PHP-App für App Service bereitgestellt.
+**Glückwunsch!** Sie haben Ihre erste PHP-App für App Service unter Linux bereitgestellt.
 
 ## <a name="update-locally-and-redeploy-the-code"></a>Lokales Aktualisieren und erneutes Bereitstellen des Codes
 

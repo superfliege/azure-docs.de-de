@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 00a6749d00c6e66a957b0a89c6658511a1bafe4d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a9d455203e50da47208ef1494d38a950161bee1
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Sollte ich den v2.0-Endpunkt verwenden?
 Beim Erstellen von Anwendungen, die in Azure Active Directory integriert werden, müssen Sie entscheiden, ob der v2.0-Endpunkt und die Authentifizierungsprotokolle Ihren Anforderungen entsprechen. Der ursprüngliche Azure Active Directory-Endpunkt wird weiterhin vollständig unterstützt und umfasst in gewisser Hinsicht mehr Funktionen als v2.0. Allerdings werden mit dem v2.0-Endpunkt [bedeutende Vorteile](active-directory-v2-compare.md) für Entwickler eingeführt.
@@ -80,6 +80,8 @@ In diesem Fall verweisen Sie auf eine DNS-Unterdomäne von login.contoso.com. We
 `https://login-west.contoso.com`  
 
 Die beiden letztgenannten URIs können hinzugefügt werden, da es sich hierbei um Unterdomänen des ersten Umleitungs-URI „contoso.com“ handelt. Diese Einschränkung wird in einer zukünftigen Version aufgehoben.
+
+Beachten Sie zudem, dass Sie nur 20 Antwort-URLs für eine bestimmte Anwendung verwenden können.
 
 Informationen zum Registrieren einer App im Anwendungsregistrierungsportal finden Sie unter [Registrieren einer App mit dem v2.0-Endpunkt](active-directory-v2-app-registration.md).
 

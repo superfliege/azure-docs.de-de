@@ -112,24 +112,23 @@
 #### [Anmeldebeispiele](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [Verwenden von Zertifikaten](active-directory-reporting-api-with-certificates.md)
 
-## [Verwalten von Kennwörtern](active-directory-passwords-overview.md)
+## Verwalten von Kennwörtern
+### [Übersicht über Kennwörter](active-directory-passwords-overview.md)
 ### Benutzerdokumente
 #### [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
 #### [Bewährte Methoden für Kennwörter](active-directory-secure-passwords.md)
 #### [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
-### [Lizenzieren von SSPR](active-directory-passwords-licensing.md)
-### [Bereitstellen von SSPR](active-directory-passwords-best-practices.md)
+### [SSPR – So funktioniert‘s](active-directory-passwords-how-it-works.md)
+### [SSPR-Bereitstellungshandbuch](active-directory-passwords-best-practices.md)
+### [SSPR-Richtlinien ](active-directory-passwords-policy.md)
+### [SSPR-Anpassung](active-directory-passwords-customize.md)
+### [SSPR-Datenanforderungen](active-directory-passwords-data.md)
+### [SSPR-Berichterstellung](active-directory-passwords-reporting.md)
 ### IT-Administratoren: Zurücksetzen von Kennwörtern
 #### [Azure-Portal](active-directory-users-reset-password-azure-portal.md)
-#### [Klassisches Azure-Portal](active-directory-create-users-reset-password.md)
-### [Grundlegendes zu SSPR-Richtlinien](active-directory-passwords-policy.md)
-### [Grundlegendes zur Kennwortzurücksetzung](active-directory-passwords-how-it-works.md)
-### [Anpassen von SSPR](active-directory-passwords-customize.md)
-### [Von SSPR verwendete Daten](active-directory-passwords-data.md)
-### [Berichte zu SSPR](active-directory-passwords-reporting.md)
-### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+#### [klassischen Azure-Portal](active-directory-create-users-reset-password.md)
+### [Lizenzieren von SSPR](active-directory-passwords-licensing.md)
 ### [Kennwortrückschreiben](active-directory-passwords-writeback.md)
-### [Kennworthashsynchronisierung](./connect/active-directory-aadconnectsync-implement-password-synchronization.md#how-password-synchronization-works)
 ### [Problembehandlung](active-directory-passwords-troubleshoot.md)
 ### [HÄUFIG GESTELLTE FRAGEN](active-directory-passwords-faq.md)
 
@@ -313,8 +312,6 @@
 ##### [Problembehandlung](active-directory-conditional-access-device-remediation.md)
 #### [Technische Referenz](active-directory-conditional-access-technical-reference.md)
 #### [Häufig gestellte Fragen](active-directory-conditional-faqs.md)
-#### [Klassisches Portal](active-directory-conditional-access.md)
-##### [Erste Schritte](active-directory-conditional-access-azuread-connected-apps.md)
 
 ### Windows Hello
 #### [Authentifizierung ohne Kennwort](active-directory-azureadjoin-passport.md)

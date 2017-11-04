@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 10/16/2017
 ms.author: richrund
-ms.openlocfilehash: 37ecfe2762bd239a0abf6015ef6ffd6a5132bb7a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f522a672d1691990bec3e63a41b2ed7e81058ad
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics mithilfe von Azure Resource Manager-Vorlagen
 Sie können [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
@@ -36,6 +36,17 @@ Sie können [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource
 * Konfiguration von Log Analytics zum Indizieren der Daten, die mit der Azure-Diagnose gesammelt werden
 
 Dieser Artikel enthält Vorlagenbeispiele, die einen Teil der Konfiguration veranschaulichen, die Sie mit Vorlagen ausführen können.
+
+## <a name="api-versions"></a>API-Versionen
+Das Beispiel in diesem Artikel bezieht sich auf einen [aktualisierten Log Analytics-Arbeitsbereich](log-analytics-log-search-upgrade.md).  Um einen Legacy-Arbeitsbereich zu verwenden, müssten Sie die Syntax der Abfragen in die Legacy-Sprache übertragen und die API-Version für jede Ressource ändern.  Die folgende Tabelle enthält die API-Versionen für die Ressourcen, die in diesem Beispiel verwendet werden.
+
+| Ressource | Ressourcentyp | Legacy-API-Version | Aktualisierte API-Version |
+|:---|:---|:---|:---|
+| Arbeitsbereich   | workspaces    | 2015-11-01-preview | 2017-03-15-preview |
+| Suche      | savedSearches | 2015-11-01-preview | 2017-03-15-preview |
+| Datenquelle | datasources   | 2015-11-01-preview | 2015-11-01-preview |
+| Lösung    | solutions     | 2015-11-01-preview | 2015-11-01-preview |
+
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs
 Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
@@ -122,7 +133,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
   },
   "resources": [
     {
-      "apiVersion": "2015-11-01-preview",
+      "apiVersion": "2017-03-15-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -134,7 +145,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
       },
       "resources": [
         {
-          "apiVersion": "2015-11-01-preview",
+          "apiVersion": "2017-03-15-preview",
           "name": "VMSS Queries2",
           "type": "savedSearches",
           "dependsOn": [
@@ -144,7 +155,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
             "Category": "VMSS",
             "ETag": "*",
             "DisplayName": "VMSS Instance Count",
-            "Query": "Type:Event Source=ServiceFabricNodeBootstrapAgent | dedup Computer | measure count () by Computer",
+            "Query": "Event | where Source == "ServiceFabricNodeBootstrapAgent" | summarize AggregatedValue = count() by Computer",
             "Version": 1
           }
         },

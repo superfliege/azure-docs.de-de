@@ -13,11 +13,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: routlaw
-ms.openlocfilehash: f8812c2e8ac3398dabd17feaf97897efca5566f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc9a1b6061c41cd623e1ddb3bb9dbb87530a13d5
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 > [!div class="op_single_selector"]
@@ -218,16 +218,17 @@ Ausgaben können sowohl im Rückgabewert als auch in Ausgabeparametern angegeben
 
 Der Rückgabewert ist die einfachste Ausgabeform. Sie geben nur den Wert eines beliebigen Typs zurück, und die Azure Functions-Runtime versucht, den tatsächlichen Typ zurückzumarshallen (z.B. eine HTTP-Antwort). In der Datei `functions.json` verwenden Sie `$return` als Namen der Ausgabebindung.
 
-Mit dem Typ `OutputParameter<T>`, der im Paket `azure-functions-java-core` definiert ist, können mehrere Ausgabewerte erzeugt werden. Wenn Sie eine HTTP-Antwort erstellen und eine Nachricht mithilfe von Push in eine Warteschlange übertragen müssen, können Sie Folgendes schreiben:
+Mit dem Typ `OutputBinding<T>`, der im Paket `azure-functions-java-core` definiert ist, können mehrere Ausgabewerte erzeugt werden. Wenn Sie eine HTTP-Antwort erstellen und eine Nachricht mithilfe von Push in eine Warteschlange übertragen müssen, können Sie Folgendes schreiben:
 
 ```java
 package com.example;
 
-import com.microsoft.azure.serverless.functions.OutputParameter;
+import com.microsoft.azure.serverless.functions.OutputBinding;
 import com.microsoft.azure.serverless.functions.annotation.BindingName;
 
 public class MyClass {
-    public static String echo(String body, @BindingName("message") OutputParameter<String> queue) {
+    public static String echo(String body, 
+    @QueueOutput(queueName = "messages", connection = "AzureWebJobsStorage", name = "queue") OutputBinding<String> queue) {
         String result = "Hello, " + body + ".";
         queue.setValue(result);
         return result;
@@ -235,7 +236,7 @@ public class MyClass {
 }
 ```
 
-Des Weiteren können Sie die Ausgabebindung in der Datei `function.json` definieren:
+Dadurch sollte die Ausgabebindung in der Datei `function.json` definiert werden:
 
 ```json
 {
@@ -251,10 +252,10 @@ Des Weiteren können Sie die Ausgabebindung in der Datei `function.json` definie
     },
     {
       "type": "queue",
-      "name": "message",
+      "name": "queue",
       "direction": "out",
-      "queueName": "myqueue",
-      "connection": "ExampleStorageAccount"
+      "queueName": "messages",
+      "connection": "AzureWebJobsStorage"
     },
     {
       "type": "http",

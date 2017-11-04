@@ -12,116 +12,112 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/04/2017
+ms.date: 10/16/2017
 ms.author: pratshar
-ms.openlocfilehash: 54f62af6abcdd38254fd5379b95baa05656dc90b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9902af83125f596f6dd5a1a6c955d00e9b5a87bc
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="test--failover-to-azure-in-site-recovery"></a>Testfailover auf Azure in Site Recovery
 
 
 
-Dieser Artikel enthält Informationen und Anweisungen zum Ausführen eines Testfailovers oder eines DR-Drills von virtuellen Computern und physischen Servern, die mit Site Recovery und Azure als Wiederherstellungsstandort geschützt sind.
+Dieser Artikel beschreibt die Ausführung einer Übung zur Notfallwiederherstellung in Azure mithilfe eines Site Recovery-Testfailovers.  
 
-Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)veröffentlichen.
-
-Ein Testfailover wird ausgeführt, um Ihre Replikationsstrategie zu überprüfen oder einen Notfallwiederherstellungsdrill ohne Datenverlust oder Ausfallzeiten durchzuführen. Die Ausführung eines Testfailovers hat keinerlei Auswirkungen auf die laufende Replikation oder Ihre Produktionsumgebung. Ein Testfailover kann auf einem virtuellen Computer oder in einem [Wiederherstellungsplan](site-recovery-create-recovery-plans.md) ausgeführt werden. Beim Auslösen eines Testfailovers müssen Sie das Netzwerk angeben, mit dem virtuelle Testcomputer eine Verbindung herstellen. Nach dem Auslösen eines Testfailovers können Sie den Fortschritt auf der Seite **Aufträge** nachverfolgen.  
-
-
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
-Das Testfailover wird in allen Bereitstellungsszenarien außer bei einer [Legacybereitstellung eines VMware-Standorts in Azure](site-recovery-vmware-to-azure-classic-legacy.md) unterstützt. Das Testfailover wird außerdem nicht unterstützt, wenn für den virtuellen Computer ein Failover auf Azure ausgeführt wurde.  
+Sie führen ein Testfailover aus, um Ihre Replikations- und Notfallwiederherstellungs-Strategie ohne Datenverlust oder Ausfallzeiten zu überprüfen. Ein Testfailover hat keinerlei Auswirkungen auf die laufende Replikation oder Ihre Produktionsumgebung. Sie können ein Testfailover auf einem bestimmten virtuellen Computer (VM) ausführen oder nach einem [Wiederherstellungsplan](site-recovery-create-recovery-plans.md), der mehrere VMs enthält. 
 
 
 ## <a name="run-a-test-failover"></a>Durchführen eines Test-Failovers
-Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan durchführen. Alternativ können Sie auch ein Testfailover für einen einzelnen Computer mithilfe der entsprechenden Option darauf ausführen.
+Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan durchführen. 
 
 ![Testfailover](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
-1. Wählen Sie **Wiederherstellungspläne** > *Name des Wiederherstellungsplans* aus. Klicken Sie auf **Testfailover**.
-1. Wählen Sie einen **Wiederherstellungspunkt** für ein Failover aus. Sie können eine der folgenden Optionen auswählen:
-    1.  **Latest processed** (Zuletzt verarbeitet): Diese Option führt ein Failover für alle virtuellen Computer des Wiederherstellungsplans auf den letzten Wiederherstellungspunkt durch, der bereits vom Site Recovery-Dienst verarbeitet wurde. Wenn Sie das Testfailover für einen virtuellen Computer durchführen, wird zusätzlich der Zeitstempel des zuletzt verarbeiteten Wiederherstellungspunkts angezeigt. Wenn Sie das Failover eines Wiederherstellungsplans durchführen, können Sie zu einzelnen virtuellen Computern wechseln und die Kachel **Neueste Wiederherstellungspunkte** anzeigen, um die entsprechenden Informationen abzurufen. Da keine Zeit mit der Verarbeitung nicht verarbeiteter Daten verbracht wird, bietet diese Option die Möglichkeit zum Failover mit geringem RTO-Wert (Recovery Time Objective, angestrebte Wiederherstellungszeit).
-    1.  **Latest app-consistent** (Neueste anwendungskonsistente Elemente): Diese Option führt ein Failover für alle virtuellen Computer des Wiederherstellungsplans auf den letzten anwendungskonsistenten Wiederherstellungspunkt durch, der bereits von Site Recovery verarbeitet wurde. Wenn Sie das Testfailover für einen virtuellen Computer ausführen, wird zusätzlich der Zeitstempel des letzten anwendungskonsistenten Wiederherstellungspunkts angezeigt. Wenn Sie das Failover eines Wiederherstellungsplans durchführen, können Sie zu einzelnen virtuellen Computern wechseln und die Kachel **Neueste Wiederherstellungspunkte** anzeigen, um die entsprechenden Informationen abzurufen.
-    1.  **Latest** (Neueste): Diese Option verarbeitet zuerst alle Daten, die an einen Site Recovery-Dienst gesendet wurden, um vor dem Failover einen Wiederherstellungspunkt für jeden virtuellen Computer zu erstellen. Diese Option bietet die niedrigste RPO (Recovery Point Objective), da der nach dem Failover erstellte virtuelle Computer über alle Daten verfügt, die bei Auslösung des Failovers im Site Recovery-Dienst repliziert wurden.
-    1.  **Latest multi-VM processed** (Zuletzt verarbeitet, Multi-VM): Diese Option steht nur für Wiederherstellungspläne zur Verfügung, bei denen für mindestens einen virtuellen Computer die Multi-VM-Konsistenz aktiviert ist. Virtuelle Computer, die Teil einer Replikationsgruppe sind, führen ein Failover auf den neuesten allgemeinen Wiederherstellungspunkt mit Multi-VM-Konsistenz durch. Andere virtuelle Computer führen ein Failover auf ihren neuesten verarbeiteten Wiederherstellungspunkt durch.  
-    1.  **Latest multi-VM processed** (Zuletzt verarbeitet, Multi-VM-Anwendungskonsistenz): Diese Option steht nur für Wiederherstellungspläne zur Verfügung, bei denen für mindestens einen virtuellen Computer die Multi-VM-Konsistenz aktiviert ist. Virtuelle Computer, die Teil einer Replikationsgruppe sind, führen ein Failover auf den neuesten allgemeinen Wiederherstellungspunkt mit Multi-VM-Anwendungskonsistenz durch. Andere virtuelle Computer führen ein Failover auf ihren neuesten anwendungskonsistenten Wiederherstellungspunkt durch. 
-    1.  **Benutzerdefiniert**: Beim Ausführen des Testfailovers für einen virtuellen Computer können Sie diese Option verwenden, um ein Failover auf einen bestimmten Wiederherstellungspunkt durchzuführen.
-1. Wählen Sie ein **virtuelles Azure-Netzwerk** aus: Stellen Sie ein virtuelles Azure-Netzwerk bereit, in dem die virtuellen Testcomputer erstellt werden. Site Recovery versucht, virtuelle Testcomputer in einem Subnetz mit demselben Namen und derselben IP zu erstellen, die in den Einstellungen des virtuellen Computers unter **Compute und Netzwerk** angegeben sind. Wenn das Subnetz mit demselben Namen nicht im virtuellen Azure-Netzwerk für das Testfailover verfügbar ist, wird ein virtueller Testcomputer im ersten Subnetz (in alphabetischer Reihenfolge) erstellt. Wenn dieselbe IP-Adresse nicht im Subnetz verfügbar ist, erhält der virtuelle Computer eine andere verfügbare IP-Adresse im Subnetz. Weitere Informationen finden Sie in [diesem](#creating-a-network-for-test-failover) Abschnitt.
-1. Wenn Sie ein Failover auf Azure ausführen und die Datenverschlüsselung aktiviert ist, wählen Sie unter **Verschlüsselungsschlüssel** das Zertifikat aus, das beim Aktivieren der Datenverschlüsselung im Rahmen der Anbieterinstallation ausgestellt wurde. Wenn Sie die Verschlüsselung auf dem virtuellen Computer nicht aktiviert haben, können Sie diesen Schritt ignorieren.
-1. Verfolgen Sie den Verlauf des Failovers auf der Registerkarte **Aufträge** . Der Test-Replikatcomputer wird im Azure-Portal angezeigt.
-1. Zum Initiieren einer RDP-Verbindung auf dem virtuellen Computer müssen Sie auf der Netzwerkschnittstelle des virtuellen Computers, für den ein Failover durchgeführt wurde, [eine öffentliche IP hinzufügen](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine). Wenn Sie ein Failover auf einen klassischen virtuellen Computer durchführen, müssen Sie an Port 3389 [einen Endpunkt hinzufügen](../virtual-machines/windows/classic/setup-endpoints.md).
-1. Klicken Sie anschließend auf dem Wiederherstellungsplan auf **Cleanup-Test-Failover** (Testfailover bereinigen). Erfassen und speichern Sie unter **Notizen** alle Beobachtungen im Zusammenhang mit dem Test-Failover. Dadurch werden die während des Testfailovers erstellten virtuellen Computer gelöscht.
+1. Klicken Sie im Azure-Portal in der Site Recovery auf **Wiederherstellungspläne** > *wiederherstellungsplan_name* > **Testfailover**.
+2. Wählen Sie einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
+    - **Letzte Verarbeitung:** Mit dieser Option wird ein Failover aller VMs im Plan auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Um den letzten Wiederherstellungspunkt für eine bestimmte VM zu finden, überprüfen Sie **Letzte Wiederherstellungspunkte** in den Einstellungen der VM. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
+    - **Letzte App-Konsistenz**: Mit dieser Option wird ein Failover aller VMs im Plan auf den letzten app-konsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Um den letzten Wiederherstellungspunkt für eine bestimmte VM zu finden, überprüfen Sie **Letzte Wiederherstellungspunkte** in den Einstellungen der VM. 
+    - **Neueste**: Diese Option verarbeitet zuerst alle Daten, die an einen Site Recovery-Dienst gesendet wurden, um vor dem Failover einen Wiederherstellungspunkt für jede VM zu erstellen. Diese Option bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
+    - **Letzte Verarbeitung mit mehreren VMs**: Diese Option steht nur für Wiederherstellungspläne mit einer oder mehreren VMs zur Verfügung, bei denen Multi-VM-Konsistenz aktiviert ist. VMs, für die die Einstellung aktiviert ist, führen ein Failover auf den letzten allgemeinen Wiederherstellungspunkt mit Multi-VM-Konsistenz durch. Andere VMs führen ein Failover auf den letzten verarbeiteten Wiederherstellungspunkt durch.  
+    - **Letzte App-Konsistenz mit mehreren VMs**: Diese Option steht nur für Wiederherstellungspläne mit einer oder mehreren VMs zur Verfügung, bei denen Multi-VM-Konsistenz aktiviert ist. VMs, die Teil einer Replikationsgruppe sind, führen ein Failover auf den letzten allgemeinen Wiederherstellungspunkt mit Multi-VM-Anwendungskonsistenz durch. Andere VMs führen ein Failover auf ihren letzten anwendungskonsistenten Wiederherstellungspunkt durch. 
+    - **Benutzerdefinierte**: Verwenden Sie diese Option für ein Failover einer bestimmten VM auf einen bestimmten Wiederherstellungspunkt.
+3. Wählen Sie ein virtuelles Azure-Netzwerk aus, in dem Test-VMs erstellt werden.
 
+    - Site Recovery versucht, Test-VMs in einem Subnetz mit demselben Namen und derselben IP-Adresse zu erstellen, die in den Einstellungen der VM unter **Compute und Netzwerk** angegeben sind.
+    - Wenn ein Subnetz identischen Namens nicht im virtuellen Azure-Netzwerk für das Testfailover verfügbar ist, wird die Test-VM im (nach alphabetischer Reihenfolge) ersten Subnetz erstellt.
+    - Wenn dieselbe IP-Adresse nicht im Subnetz verfügbar ist, erhält die VM im Subnetz eine andere verfügbare IP-Adresse. [Weitere Informationen](#creating-a-network-for-test-failover).
+4. Wenn Sie ein Failover auf Azure ausführen und die Datenverschlüsselung aktiviert ist, wählen Sie unter **Verschlüsselungsschlüssel** das Zertifikat aus, das beim Aktivieren der Verschlüsselung im Rahmen der Anbieterinstallation ausgestellt wurde. Sie können diesen Schritt ignorieren – Verschlüsselung ist nicht aktiviert.
+5. Verfolgen Sie den Verlauf des Failovers auf der Registerkarte **Aufträge** . Der Test-Replikatcomputer wird im Azure-Portal angezeigt.
+6. Zum Initiieren einer RDP-Verbindung mit der Azure-VM müssen Sie auf der Netzwerkschnittstelle der VM, für die ein Failover durchgeführt wurde, [eine öffentliche IP-Adresse hinzufügen](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine). 
+7. Wenn alles wie erwartet funktioniert, klicken Sie auf **Testfailover bereinigen**. Dadurch werden die während des Testfailovers erstellten VMs gelöscht.
+8. Erfassen und speichern Sie unter **Notizen** alle Beobachtungen im Zusammenhang mit dem Testfailover. 
 
-> [!TIP]
-> Site Recovery versucht, virtuelle Testcomputer in einem Subnetz mit demselben Namen und derselben IP zu erstellen, die in den Einstellungen des virtuellen Computers unter **Compute und Netzwerk** angegeben sind. Wenn das Subnetz mit demselben Namen nicht im virtuellen Azure-Netzwerk für das Testfailover verfügbar ist, wird ein virtueller Testcomputer im ersten Subnetz (in alphabetischer Reihenfolge) erstellt. Wenn die Ziel-IP Teil des ausgewählten Subnetzes ist, versucht Site Recovery, die Testfailover-VM mit der Ziel-IP zu erstellen. Wenn die Ziel-IP nicht Teil des ausgewählten Subnetzes ist, wird die Testfailover-VM mit einer beliebigen verfügbaren IP im ausgewählten Subnetz erstellt.
->
->
-
-## <a name="test-failover-job"></a>Testfailoverauftrag
 
 ![Testfailover](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
-Die Auslösung eines Testfailovers ist mit den folgenden Schritten verbunden:
+Wenn ein Testfailover ausgelöst wird, geschieht Folgendes:
 
-1. Prüfung der erforderlichen Komponenten: Mit diesem Schritt wird sichergestellt, dass alle Bedingungen erfüllt sind, die für das Failover erforderlich sind.
-1. Failover: In diesem Schritt werden die Daten verarbeitet und vorbereitet, damit daraus ein virtueller Azure-Computer erstellt werden kann. Wenn Sie den Wiederherstellungspunkt **Latest** (Neueste) gewählt haben, wird in diesem Schritt ein Wiederherstellungspunkt aus den Daten erstellt, die an den Dienst gesendet wurden.
-1. Start: In diesem Schritt wird ein virtueller Azure-Computer aus den Daten erstellt, die im vorherigen Schritt verarbeitet wurden.
+1. **Voraussetzungen**: Eine Überprüfung der Voraussetzungen wird ausgeführt, um sicherzustellen, dass alle Bedingungen für ein Failover erfüllt sind.
+2. **Failover**: Das Failover verarbeitet die Daten und bereitet sie vor, sodass auf ihrer Basis eine Azure-VM erstellt werden kann.
+3. **Neueste**: Wenn Sie den neuesten Wiederherstellungspunkt gewählt haben, wird ein Wiederherstellungspunkt aus den Daten erstellt, die an den Dienst gesendet wurden.
+4. **Start**: In diesem Schritt wird ein virtueller Azure-Computer aus den Daten erstellt, die im vorherigen Schritt verarbeitet wurden.
 
-## <a name="time-taken-for-failover"></a>Zeitaufwand für das Failover
+### <a name="failover-timing"></a>Failovertiming
 
-In bestimmten Fällen erfordert das Failover virtueller Computer einen zusätzliche Zwischenschritt, der in der Regel ca. 8 bis 10 Minuten dauert. Das gilt für die folgenden Fälle:
+In den folgenden Szenarien erfordert das Failover einen zusätzliche Zwischenschritt, der in der Regel ca. 8 bis 10 Minuten dauert:
 
-* VMware-VMs mit Mobility Service-Version niedriger als 9.8
+* VMware-VMs, auf denen eine niedrigere Mobility Service-Version als 9.8 ausgeführt wird
 * Physische Server
 * VMware-Linux-VMs
 * Als physische Server geschützte Hyper-V-VMs
-* VMware-VMs, bei denen die folgenden Treiber nicht als Starttreiber vorhanden sind
+* VMware-VM, auf der die folgenden Treiber keine Starttreiber sind:
     * storvsc
     * vmbus
     * storflt
     * intelide
     * atapi
-* VMware-VMs, bei denen der DHCP-Dienst nicht aktiviert ist, unabhängig davon, ob DHCP oder statischen IP-Adressen verwendet werden
+* VMware-VMs, bei denen DHCP nicht aktiviert ist, unabhängig davon, ob DHCP oder statische IP-Adressen verwendet werden.
 
 In allen anderen Fällen ist dieser Zwischenschritt nicht erforderlich und der Zeitaufwand für das Failover deutlich niedriger.
 
 
-## <a name="creating-a-network-for-test-failover"></a>Erstellen eines Netzwerks für Testfailover
-Beim Durchführen eines Testfailovers wird empfohlen, ein Netzwerk zu wählen, das vom Site Recovery-Netzwerk für die Produktion isoliert ist, das Sie in den Einstellungen für den virtuellen Computer unter **Compute und Netzwerk** angegeben haben. Standardmäßig ist ein virtuelles Azure-Netzwerk beim Erstellen von anderen Netzwerken isoliert. Dieses Netzwerk sollte Ihr Produktionsnetzwerk imitieren:
+## <a name="create-a-network-for-test-failover"></a>Erstellen eines Netzwerks für Testfailover
 
-1. Das Testnetzwerk muss dieselbe Anzahl von Subnetzen wie in Ihrem Produktionsnetzwerk und dieselben Namen wie die Subnetze in Ihrem Produktionsnetzwerk aufweisen.
-1. Das Testnetzwerk muss denselben IP-Adressbereich wie Ihr Produktionsnetzwerk verwenden.
-1. Aktualisieren Sie den DNS des Testnetzwerks entsprechend der IP-Adresse, die Sie als Ziel-IP für den virtuellen DNS-Computer in den Einstellungen unter **Compute und Netzwerk** angegeben haben. Unter [Überlegungen zum Testfailover für Active Directory](site-recovery-active-directory.md#test-failover-considerations) finden Sie weitere Details.
+Für Testfailover sollten Sie ein Netzwerk wählen, das von dem in den Einstellungen **Compute und Netzwerk** für jede VM angegebenen Produktionswiederherstellungsstandort-Netzwerk isoliert ist. Standardmäßig ist ein virtuelles Azure-Netzwerk beim Erstellen von anderen Netzwerken isoliert. Das Testnetzwerk sollte Ihr Produktionsnetzwerk imitieren:
+
+- Das Testnetzwerk muss dieselbe Anzahl von Subnetzen wie das Produktionsnetzwerk besitzen. Subnetze müssen die gleichen Namen aufweisen.
+- Das Testnetzwerk muss den gleichen IP-Adressbereich verwenden.
+- Aktualisieren Sie das DNS des Testnetzwerks mit der IP-Adresse, die in den Einstellungen **Compute und Netzwerk** für die DNS-VM angegeben ist. Unter [Überlegungen zum Test-Failover](site-recovery-active-directory.md#test-failover-considerations) finden Sie weitere Details.
 
 
-## <a name="test-failover-to-a-production-network-on-recovery-site"></a>Testfailover auf ein Produktionsnetzwerk am Wiederherstellungsstandort
-Beim Durchführen eines Testfailovers wird empfohlen, ein anderes Netzwerk als das Site Recovery-Netzwerk für die Produktion zu wählen, das Sie in den Einstellungen für den virtuellen Computer unter **Compute und Netzwerk** angegeben haben. Beachten Sie folgende Punkte, wenn Sie wirklich die End-to-End-Netzwerkkonnektivität auf einem virtuellen Computer bewerten möchten, für den ein Failover durchgeführt wurde:
+## <a name="test-failover-to-a-production-network-in-the-recovery-site"></a>Testfailover auf ein Produktionsnetzwerk am Wiederherstellungsstandort
 
-1. Der primäre virtuelle Computer muss heruntergefahren werden, wenn Sie das Testfailover durchführen. Andernfalls werden zwei virtuelle Computer mit derselben Identität gleichzeitig im selben Netzwerk ausgeführt, was unerwünschte Folgen nach sich ziehen kann.
-1. Änderungen, die Sie auf virtuellen Computern mit Testfailover vornehmen, würden verloren gehen, wenn Sie die virtuellen Computer mit Testfailover bereinigen. Diese Änderungen werden nicht wieder auf dem primären virtuellen Computer repliziert.
-1. Diese Art des Testens von Leads führt zu einem Ausfall Ihrer Produktionsanwendung. Benutzer der Anwendung sollten aufgefordert werden, die Anwendung während des DR-Drills nicht zu verwenden.  
+Sie sollten zwar ein von Ihrem Produktionsnetzwerk getrenntes Testnetzwerk verwenden, wenn Sie jedoch unbedingt eine Notfallwiederherstellung in Ihrem Produktionsnetzwerk üben möchten, beachten Sie Folgendes: 
+
+- Die primäre VM muss heruntergefahren sein, wenn Sie das Testfailover durchführen. Andernfalls werden zwei VMs mit derselben Identität gleichzeitig im selben Netzwerk ausgeführt. Dies kann unerwartete Folgen haben.
+- Alle Änderungen an den für das Testfailover erstellten VMs gehen verloren, wenn Sie das Failover bereinigen. Diese Änderungen werden nicht wieder auf der primären VM repliziert.
+- Das Testen in Ihrer Produktionsumgebung führt zu einem Ausfall Ihrer Produktionsanwendung. Benutzer sollten keine auf VMs ausgeführten Apps verwenden, während das Testfailover läuft.  
 
 
 
 ## <a name="prepare-active-directory-and-dns"></a>Vorbereiten von Active Directory und DNS
-Wenn Sie ein Test-Failover durchführen möchten, um eine Anwendung zu testen, muss in der Testumgebung eine Kopie der Active Directory-Produktionsumgebung vorhanden sein. Unter [Überlegungen zum Testfailover für Active Directory](site-recovery-active-directory.md#test-failover-considerations) finden Sie weitere Details.
+
+Wenn Sie ein Testfailover durchführen möchten, um eine Anwendung zu testen, muss in der Testumgebung eine Kopie der Active Directory-Produktionsumgebung vorhanden sein. Unter [Überlegungen zum Test-Failover](site-recovery-active-directory.md#test-failover-considerations) finden Sie weitere Informationen.
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
 
-Wenn Sie nach dem Failover per RDP eine Verbindung mit Azure-VMs herstellen möchten, müssen Sie die in der Tabelle zusammengefassten Aktionen durchführen.
+Wenn Sie nach dem Failover per RDP eine Verbindung mit Azure-VMs herstellen möchten, müssen Sie die in der Tabelle zusammengefassten Voraussetzungen erfüllen.
 
 **Failover** | **Standort** | **Aktionen**
 --- | --- | ---
-**Virtueller Azure-Computer unter Windows** | Lokaler Computer vor dem Failover | Aktivieren Sie für den Zugriff auf den virtuellen Azure-Computer über das Internet RDP. Stellen Sie sicher, dass TCP- und UDP-Regeln für **Öffentlich** hinzugefügt werden und dass RDP unter **Windows-Firewall** > **Zugelassene Apps** für alle Profile zugelassen ist.<br/><br/> Aktivieren Sie für den Zugriff über eine Standort-zu-Standort-Verbindung RDP auf dem Computer, und stellen Sie sicher, dass RDP unter **Windows-Firewall** -> **Zugelassene Apps und Features** für die Netzwerke vom Typ **Domäne und Privat** zugelassen ist.<br/><br/>  Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135).<br/><br/> Stellen Sie sicher, dass auf dem virtuellen Computer keine ausstehenden Windows-Updates vorhanden sind, wenn Sie ein Failover auslösen. Ansonsten wird Windows Update möglicherweise während des Failovers gestartet, und Sie können sich nicht mehr am virtuellen Computer anmelden, bis das Update abgeschlossen ist. <br/><br/>
-**Virtueller Azure-Computer unter Windows** | Auf der Azure-VM nach einem Failover | Für einen klassischen virtuellen Computer[fügen Sie einen öffentlichen Endpunkt](../virtual-machines/windows/classic/setup-endpoints.md) für das RDP-Protokoll (Port 3389) hinzu.<br/><br/>  Auf einem virtuellen Resource Manager-Computer [fügen Sie eine öffentliche IP-Adresse hinzu](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine).<br/><br/> In den Netzwerksicherheitsgruppen-Regeln auf dem virtuellen Computer nach dem Failover und für das Azure-Subnetz, mit dem der virtuelle Computer verbunden ist, müssen eingehende Verbindungen über den RDP-Port zulässig sein.<br/><br/> Für einen virtuellen Resource Manager-Computer finden Sie unter **Startdiagnose** einen Screenshot des virtuellen Computers.<br/><br/> Wenn Sie keine Verbindung herstellen können, stellen Sie sicher, dass der virtuelle Computer ausgeführt wird, und sehen sich dann diese [Tipps zur Problembehandlung](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) an.<br/><br/>
-**Virtueller Azure-Computer unter Linux** | Lokaler Computer vor dem Failover | Stellen Sie sicher, dass der Secure Shell-Dienst auf der Azure-VM so festgelegt ist, dass er beim Systemstart automatisch gestartet wird.<br/><br/> Überprüfen Sie, ob die Firewallregeln eine SSH-Verbindung damit zulassen.
-**Virtueller Azure-Computer unter Linux** | Azure-VM nach einem Failover | In den Netzwerksicherheitsgruppen-Regeln auf dem virtuellen Computer nach dem Failover und für das Azure-Subnetz, mit dem der virtuelle Computer verbunden ist, müssen eingehende Verbindungen über den SSH-Port zulässig sein.<br/><br/> Für einen klassischen virtuellen Computer sollte ein [öffentlicher Endpunkt hinzugefügt](../virtual-machines/windows/classic/setup-endpoints.md) werden, um eingehende Verbindungen für den SSH-Port (standardmäßig TCP-Port 22) zuzulassen.<br/><br/> Auf einem virtuellen Resource Manager-Computer [fügen Sie eine öffentliche IP-Adresse hinzu](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine).<br/><br/> Für einen virtuellen Resource Manager-Computer finden Sie unter **Startdiagnose** einen Screenshot des virtuellen Computers.<br/><br/>
+**Virtueller Azure-Computer unter Windows** | Lokaler Computer vor dem Failover | Aktivieren Sie für den Zugriff auf die Azure-VM über das Internet RDP, stellen Sie sicher, dass TCP- und UDP-Regeln für **Öffentlich** hinzugefügt werden, und dass RDP unter **Windows-Firewall** > **Zugelassene Apps** für alle Profile zugelassen ist.<br/><br/> Aktivieren Sie für den Zugriff auf die Azure-VM über eine Standort-zu-Standort-Verbindung RDP auf dem Computer, und stellen Sie sicher, dass RDP unter **Windows-Firewall** -> **Zugelassene Apps und Features** für Netzwerke vom Typ **Domäne und Privat** zugelassen ist.<br/><br/>  Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135).<br/><br/> Stellen Sie sicher, dass auf der VM keine ausstehenden Windows-Updates vorhanden sind, wenn Sie ein Failover auslösen. Ansonsten wird Windows Update möglicherweise während des Failovers gestartet, und Sie können sich nicht mehr bei der VM anmelden, bis das Update abgeschlossen ist. 
+**Virtueller Azure-Computer unter Windows** | Azure-VM nach einem Failover |  Fügen Sie der VM eine [öffentliche IP-Adresse](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine) hinzu.<br/><br/> In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover (und für das Azure-Subnetz, mit dem sie verbunden ist) müssen eingehende Verbindungen über den RDP-Port zulässig sein.<br/><br/> Aktivieren Sie die **Startdiagnose**, um einen Screenshot der VM anzuzeigen.<br/><br/> Wenn Sie keine Verbindung herstellen können, überprüfen Sie, ob die VM ausgeführt wird, und sehen sich dann diese [Tipps zur Problembehandlung](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) an.
+**Virtueller Azure-Computer unter Linux** | Lokaler Computer vor dem Failover | Stellen Sie sicher, dass der Secure Shell-Dienst auf der VM so festgelegt ist, dass er beim Systemstart automatisch gestartet wird.<br/><br/> Überprüfen Sie, ob die Firewallregeln eine SSH-Verbindung damit zulassen.
+**Virtueller Azure-Computer unter Linux** | Azure-VM nach einem Failover | In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover (und für das Azure-Subnetz, mit dem sie verbunden ist) müssen eingehende Verbindungen über den SSH-Port zulässig sein.<br/><br/> Fügen Sie der VM eine [öffentliche IP-Adresse](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine) hinzu.<br/><br/> Aktivieren Sie die **Startdiagnose**, um einen Screenshot der VM anzuzeigen.<br/><br/>
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sobald Sie ein Testfailover erfolgreich durchgeführt haben, können Sie ein [Failover](site-recovery-failover.md) versuchen.
+Nachdem Sie eine Übung zur Notfallwiederherstellung abgeschlossen haben, informieren Sie sich über andere [Failover](site-recovery-failover.md)-Typen.

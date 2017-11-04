@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/16/2017
 ms.author: juluk
-ms.openlocfilehash: fb242abfbea79bc8c242a7a89b3d775cf74a0617
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59cd03f6e04e9b096fe740e8a7140e602c0baa58
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Verwenden des Azure Cloud Shell-Fensters
 
@@ -56,10 +56,10 @@ Achten Sie beim Beenden einer Sitzung darauf, jedes Sitzungsfenster zu schließe
 
 ## <a name="changing-the-text-size"></a>Ändern der Textgröße
 ![](media/using-the-shell-window/text-size.png)
-* Klicken Sie oben links im Fenster auf das Einstellungssymbol, und bewegen Sie dann den Mauszeiger über die Option "Textgröße", und wählen Sie die gewünschte Textgröße aus.
+* Klicken Sie oben links im Fenster auf das Einstellungssymbol, und bewegen Sie dann den Mauszeiger über die Option "Textgröße", und wählen Sie die gewünschte Textgröße aus. Ihre Auswahl wird sitzungsübergreifend beibehalten.
 
 ## <a name="exit-command"></a>Befehl „Beenden“
-Ausführen von `exit` beendet die aktive Sitzung. Dieses Verhalten tritt standardmäßig nach 10 Minuten ohne Interaktion auf.
+Ausführen von `exit` beendet die aktive Sitzung. Dieses Verhalten tritt standardmäßig nach 20 Minuten ohne Interaktion auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

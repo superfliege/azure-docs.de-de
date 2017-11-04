@@ -215,7 +215,6 @@ Führen Sie die folgenden Schritte aus, um Ihre StorSimple-Volumes auf einem Win
     
     ![Assistent für neue Volumes 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image30.png)
 13. Geben Sie die Parameter zum Formatieren des Volumes ein. **Unter Windows Server wird nur NTFS unterstützt.** Legen Sie die Größe der Zuordnungseinheit auf 64 KB fest. Geben Sie eine Bezeichnung für das Volume an. Als bewährte Methode wird empfohlen, den gleichen Volume-Namen zu verwenden wie auf Ihrem StorSimple Virtual Array. Klicken Sie auf **Weiter**.
-
     
     ![Assistent für neue Volumes 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/image31.png)
 14. Überprüfen Sie die Werte für Ihr Volume, und klicken Sie dann auf **Fertig stellen**.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 902e5bdfbbf04ab70989be8c41e16eb69e475908
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c32ac27187a88dd13bb747f541968d2e81c5064
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -57,6 +57,10 @@ Beispiel:
 | 3 | 51 | 1 Server für Active Directory-Verbunddienste (AD FS), 1 AD FS-Proxy und 1 Domänencontroller |
 | 4 | 76 | 1 AD FS-Server, 1 AD FS-Proxy und 2 Domänencontroller |
 | 5 | 101 | 1 Azure AD Connect-Server, 1 AD FS-Server, 1 AD FS-Proxy und 2 Domänencontroller |
+
+**F: Unterstützt Azure AD Connect Health die Azure Deutschland Cloud?**
+
+Azure AD Connect Health verfügt über eine [Installation](active-directory-aadconnect-health-agent-install.md) für Azure Deutschland. Alle Daten für deutsche Cloudkunden werden in der Azure Deutschland Cloud gespeichert.
 
 
 ## <a name="installation-questions"></a>Fragen zur Installation

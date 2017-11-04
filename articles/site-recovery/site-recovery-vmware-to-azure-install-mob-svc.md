@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: eb2fbd16980eadfce15227b6ba07f00c47b672ee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e3b26c7f34a8fd3d027464cb7a3704c7960b67c6
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="install-mobility-service-vmware-or-physical-to-azure"></a>Installieren von Mobility Service (VMware oder physisch in Azure)
 Azure Site Recovery Mobility Service erfasst Datenschreibvorgänge auf einem Computer und leitet sie dann an den Prozessserver weiter. Stellen Sie Mobility Service auf jedem Computer (VMware-VM oder physischer Server) bereit, den Sie in Azure replizieren möchten. Sie können die Mobility Service auf den Servern bereitstellen, die Sie mithilfe der folgenden Methoden schützen möchten:
@@ -93,8 +93,12 @@ Nachdem Mobility Service installiert wurde, klicken Sie im Azure-Portal auf die 
 
 1. Navigieren Sie im Azure-Portal zur Ansicht „<Your Vault> -> Replizierte Elemente“.
 2. Wenn der **Konfigurationsserver** bereits auf die neueste Version aktualisiert wurde, sollte eine Benachrichtigung angezeigt werden, dass ein *neues Update für den Site Recovery-Replikations-Agent verfügbar ist. Klicken Sie zum Installieren*
+   
+     ![ReplicatedItems](.\media\site-recovery-vmware-to-azure-install-mob-svc\replicated-item-notif.png)
 3. Klicken Sie auf die Benachrichtigung, um die Auswahlseite für den virtuellen Computer zu öffnen.
 4. Wählen Sie die virtuellen Computer aus, für die Sie den Mobility Service aktualisieren möchten, und klicken Sie dann auf die Schaltfläche „OK“.
+
+     ![ReplicatedItemsVMList](.\media\site-recovery-vmware-to-azure-install-mob-svc\update-okpng.png)
 5. Dadurch wird der Aktualisierungsauftrag für den Mobility Service für jeden der ausgewählten virtuellen Computer gestartet.
 
 > [!NOTE]

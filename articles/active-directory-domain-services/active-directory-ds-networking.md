@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 09/23/2017
 ms.author: maheshu
-ms.openlocfilehash: e274e0806e99cce484f6ff03803c03bf0034dcd6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5f9236c5cf660be00db6e09d61df617b64d978e9
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Netzwerkaspekte für die Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Auswählen eines virtuellen Azure-Netzwerks
@@ -26,7 +26,7 @@ Die folgenden Richtlinien dienen Ihnen als Hilfe bei der Auswahl eines virtuelle
 
 ### <a name="type-of-azure-virtual-network"></a>Typ des virtuellen Azure-Netzwerks
 * **Virtuelle Netzwerke mit Resource Manager:** Azure AD Domain Services können in virtuellen Netzwerken aktiviert werden, die mit Azure Resource Manager erstellt wurden.
-* Sie können die Azure AD Domain Services in einem klassischen virtuellen Azure-Netzwerk aktivieren. Unterstützung für klassische virtuelle Netzwerke wird jedoch bald veraltet sein. Sie sollten virtuelle Resource Manager-Netzwerke für neu erstellte verwaltete Domänen verwenden.
+* Sie können die Azure AD Domain Services nicht in einem klassischen virtuellen Azure-Netzwerk aktivieren.
 * Sie können keine Verbindungen anderer virtueller Netzwerke mit dem virtuellen Netzwerk herstellen, in dem die Azure AD Domain Services aktiviert sind. Weitere Informationen finden Sie im Abschnitt [Netzwerkkonnektivität](active-directory-ds-networking.md#network-connectivity).
 * **Regionale virtuelle Netzwerke**: Wenn Sie ein vorhandenes virtuelles Netzwerk verwenden möchten, sollten Sie sicherstellen, dass es sich um ein regionales virtuelles Netzwerk handelt.
 
@@ -53,7 +53,7 @@ Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/virtual-networks-nsg.m
 
 ![Empfohlener Subnetzentwurf](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
 
-### <a name="best-practices-for-choosing-a-subnet"></a>Best Practices zur Auswahl eines Subnetzes
+### <a name="guidelines-for-choosing-a-subnet"></a>Richtlinien für das Auswählen eines Subnetzes
 * Stellen Sie Azure AD Domain Services in einem **separaten dedizierten Subnetz** in Ihrem virtuellen Azure-Netzwerk bereit.
 * Wenden Sie auf das dedizierte Subnetz für Ihre verwaltete Domäne keine Netzwerksicherheitsgruppen an. Wenn Sie Netzwerksicherheitsgruppen auf das dedizierte Netzwerk anwenden müssen, stellen Sie sicher, dass Sie **keine Ports blockieren, die für den Dienst und zum Verwalten Ihrer Domäne benötigt werden**.
 * Schränken Sie die Anzahl verfügbarer IP-Adressen im dedizierten Subnetz für Ihre verwaltete Domäne nicht zu stark ein. Diese Einschränkung verhindert, dass der Dienst zwei Domänencontroller für Ihre verwaltete Domäne zur Verfügung stellt.
@@ -76,7 +76,7 @@ Die folgenden Ports werden für Azure AD Domain Services benötigt, um Ihre verw
 
 Port 5986 dient zum Ausführen von Verwaltungsaufgaben mithilfe von PowerShell-Remoting in Ihrer verwalteten Domäne. Die Domänencontroller für die verwaltete Domäne lauschen in der Regel nicht an diesem Port. Der Dienst öffnet diesen Port auf Controllern der verwalteten Domäne nur, wenn ein Verwaltungs- oder Wartungsvorgang für die verwaltete Domäne ausgeführt werden muss. Nach Abschluss des Vorgangs schließt der Dienst diesen Port auf den Controllern der verwalteten Domäne.
 
-Port 3389 wird für Remotedesktopverbindungen mit der verwalteten Domäne verwendet. Dieser Port bleibt in der verwalteten Domäne auch weitgehend deaktiviert. Der Dienst aktiviert diesen Port nur, wenn wir zur Problembehandlung eine Verbindung mit der verwalteten Domäne herstellen müssen. Dies geschieht in der Regel als Reaktion auf eine von Ihnen initiierte Serviceanfrage. Dieser Mechanismus wird nicht fortlaufend verwendet, da Verwaltungs- und Überwachungsaufgaben mithilfe von PowerShell-Remoting ausgeführt werden. Dieser Port wird nur in dem seltenen Fall verwendet, dass für die erweiterte Problembehandlung eine Remoteverbindung mit der verwalteten Domäne hergestellt werden muss. Der Port wird geschlossen, sobald die Problembehandlung abgeschlossen ist.
+Port 3389 wird für Remotedesktopverbindungen mit der verwalteten Domäne verwendet. Dieser Port bleibt in der verwalteten Domäne auch weitgehend deaktiviert. Der Dienst aktiviert diesen Port nur, wenn zur Problembehandlung eine Verbindung mit der verwalteten Domäne hergestellt werden muss. Dies erfolgt als Reaktion auf eine von Ihnen initiierte Serviceanforderung. Dieser Mechanismus wird nicht fortlaufend verwendet, da Verwaltungs- und Überwachungsaufgaben mithilfe von PowerShell-Remoting ausgeführt werden. Dieser Port wird nur in dem seltenen Fall verwendet, dass für die erweiterte Problembehandlung eine Remoteverbindung mit der verwalteten Domäne hergestellt werden muss. Der Port wird geschlossen, sobald die Problembehandlung abgeschlossen ist.
 
 
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Beispiel-NSG für virtuelle Netzwerke in Azure AD Domain Services

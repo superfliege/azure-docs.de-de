@@ -17,21 +17,21 @@ ms.workload: na
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 8a65635de3e5d95eb9e6ea8e9d4cbc6f6a36431e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41f26a4b03a6431aaad21bda6336b8840d2d923f
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="an-introduction-to-azure-functions"></a>Einführung in Azure Functions  
-Azure Functions ist eine Lösung, mit der Sie ganz einfach kleinere Codeelemente (Funktionen) in der Cloud ausführen können. Sie können sich auf das Schreiben des Codes beschränken, der für das jeweilige Problem erforderlich ist, ohne sich über eine gesamte Anwendung oder die Infrastruktur für ihre Ausführung Gedanken machen zu müssen. Mit Functions können Entwickler noch produktiver arbeiten und ihre bevorzugte Programmiersprache verwenden, z.B. C#, F#, Node.js, Java, Python oder PHP. Bezahlen Sie nur für die Zeit, in der Ihr Code ausgeführt wird, und setzen Sie auf die flexiblen Möglichkeiten zur Skalierung von Azure. Mit Azure Functions können Sie in Microsoft Azure serverlose Anwendungen entwickeln.
+Azure Functions ist eine Lösung, mit der Sie ganz einfach kleinere Codeelemente (Funktionen) in der Cloud ausführen können. Sie können sich auf das Schreiben des Codes beschränken, der für das jeweilige Problem erforderlich ist, ohne sich über eine gesamte Anwendung oder die Infrastruktur für ihre Ausführung Gedanken machen zu müssen. Mit Functions können Entwickler noch produktiver arbeiten und ihre bevorzugte Programmiersprache verwenden, z.B. C#, F#, Node.js, Java oder PHP. Bezahlen Sie nur für die Zeit, in der Ihr Code ausgeführt wird, und setzen Sie auf die flexiblen Möglichkeiten zur Skalierung von Azure. Mit Azure Functions können Sie in Microsoft Azure [serverlose](https://azure.microsoft.com/overview/serverless-computing/) Anwendungen entwickeln.
 
 Dieses Thema bietet einen allgemeinen Überblick über Azure Functions. Unter [Erstellen Sie Ihre erste Funktion in Azure Functions](functions-create-first-azure-function.md)können Sie sich direkt mit der Verwendung von Azure Functions vertraut machen. Technische Informationen zu Functions finden Sie in der [Entwicklerreferenz](functions-reference.md).
 
 ## <a name="features"></a>Features
 Azure Functions bietet unter anderem folgende zentrale Features:
 
-* **Choice of language** (Freie Sprachwahl): Schreiben Sie Funktionen mit C#, F#, Node.js, Python, PHP, Batch, Bash oder einem beliebigen ausführbaren Programm.
+* **Freie Sprachwahl**: Schreiben Sie Funktionen mit C#, F#, Node.js, Java, PHP, Batch, Bash oder einem beliebigen ausführbaren Programm.
 * **Preismodell mit nutzungsbasierter Bezahlung** : Bezahlen Sie nur für die Zeit, in der Ihr Code ausgeführt wird. Informationen hierzu finden Sie unter der Hostingoption „Verbrauchstarif“ im [Preisabschnitt](#pricing).  
 * **Eigene Abhängigkeiten** : Functions unterstützt NuGet und NPM, sodass Sie Ihre bevorzugten Bibliotheken verwenden können.  
 * **Integrierte Sicherheit** : Schützen Sie per HTTP ausgelöste Funktionen mit OAuth-Anbietern wie Azure Active Directory, Facebook, Google, Twitter und Microsoft-Konto.  
@@ -40,7 +40,7 @@ Azure Functions bietet unter anderem folgende zentrale Features:
 * **Open Source** : Die Laufzeit von Functions ist eine Open-Source-Anwendung und [auf GitHub verfügbar](https://github.com/azure/azure-webjobs-sdk-script).  
 
 ## <a name="what-can-i-do-with-functions"></a>Welche Möglichkeiten bestehen mit Functions?
-Azure Functions ist eine hervorragende Lösung zum Verarbeiten von Daten, Integrieren von Systemen, Arbeiten mit dem Internet der Dinge (Internet of Things, IoT) und Erstellen einfacher APIs und Microservices. Erwägen Sie die Verwendung von Functions für Aufgaben wie die Bild- oder Auftragsverarbeitung oder die Dateiwartung bzw. für alle Aufgaben, die Sie nach einem Zeitplan durchführen möchten. 
+Functions ist eine hervorragende Lösung zum Verarbeiten von Daten, Integrieren von Systemen, Arbeiten mit dem Internet der Dinge (Internet of Things, IoT) und Erstellen einfacher APIs und Microservices. Erwägen Sie die Verwendung von Functions für Aufgaben wie die Bild- oder Auftragsverarbeitung oder die Dateiwartung bzw. für alle Aufgaben, die Sie nach einem Zeitplan durchführen möchten. 
 
 In Functions stehen unter anderem folgende Vorlagen für zentrale Szenarien zur Verfügung:
 
@@ -50,7 +50,7 @@ In Functions stehen unter anderem folgende Vorlagen für zentrale Szenarien zur 
 * **Generic webhook** (Generischer Webhook): Dient zum Verarbeiten von Webhook-HTTP-Anforderungen von einem beliebigen Dienst mit Webhook-Unterstützung. Ein Beispiel finden Sie unter [Erstellen einer Funktion, die durch einen generischen Webhook ausgelöst wird](functions-create-generic-webhook-triggered-function.md).
 * **CosmosDBTrigger**: Verarbeitet Azure Cosmos-DB-Dokumente, wenn diese hinzugefügt oder in Auflistungen in einer NoSQL-Datenbank aktualisiert werden. Ein Beispiel finden Sie unter [Create a function triggered by Azure Cosmos DB (Erstellen einer Funktion, die von Azure Cosmos-DB ausgelöst wird)](functions-create-cosmos-db-triggered-function.md).
 * **BlobTrigger** : Dient zum Verarbeiten von Azure Storage-Blobs beim Hinzufügen zu Containern. Sie können diese Funktion beispielsweise zum Anpassen der Größe von Bildern verwenden. Weitere Informationen finden Sie unter [Azure Functions – Blob Storage-Bindungen](functions-bindings-storage-blob.md).
-* **QueueTrigger** : Dient zum Reagieren auf eingehende Meldungen der Azure Storage-Warteschlange. Ein Beispiel finden Sie unter [Erstellen einer Funktion, die eine Verbindung mit anderen Azure-Diensten herstellt, mithilfe von Azure Functions](functions-create-an-azure-connected-function.md).
+* **QueueTrigger** : Dient zum Reagieren auf eingehende Meldungen der Azure Storage-Warteschlange. Ein Beispiel finden Sie unter [Create a function triggered by Azure Cosmos DB (Erstellen einer Funktion, die von Azure Queue Storage ausgelöst wird)](functions-create-storage-queue-triggered-function.md).
 * **EventHubTrigger**: Reagiert auf Ereignisse, die an einen Azure Event Hub übermittelt werden. Dies ist besonders für Anwendungsinstrumentierung, Benutzeroberflächen oder Workflowverarbeitung sowie für Internet of Things (IoT)-Szenarios geeignet. Weitere Informationen finden Sie unter [Event Hubs-Bindungen für Azure Functions](functions-bindings-event-hubs.md).
 * **ServiceBusQueueTrigger**: Dient zum Verknüpfen Ihres Codes mit anderen Azure-Diensten oder lokalen Diensten durch Lauschen auf Meldungswarteschlangen. Weitere Informationen finden Sie unter [Service Bus-Bindungen von Azure Functions](functions-bindings-service-bus.md).
 * **ServiceBusTopicTrigger**: Dient zum Verknüpfen Ihres Codes mit anderen Azure-Diensten oder lokalen Diensten durch Abonnieren von Themen. Weitere Informationen finden Sie unter [Service Bus-Bindungen von Azure Functions](functions-bindings-service-bus.md).
@@ -58,10 +58,11 @@ In Functions stehen unter anderem folgende Vorlagen für zentrale Szenarien zur 
 Azure Functions unterstützt *Trigger* zum Starten der Codeausführung sowie *Bindungen* zur Vereinfachung der Programmierung für Eingabe- und Ausgabedaten. Eine ausführliche Beschreibung der Trigger und Bindungen von Azure Functions finden Sie in der [Entwicklerreferenz zu Triggern und Bindungen in Azure Functions](functions-triggers-bindings.md).
 
 ## <a name="integrations"></a>Integrationen
-Azure Functions kann in eine Reihe von Azure- und Drittanbieterdiensten integriert werden. Diese können Sie zum Auslösen Ihrer Funktion und zum Starten der Ausführung oder als Ein- und Ausgabe für Ihren Code verwenden. Azure Functions unterstützt folgende Dienstintegrationen: 
+Azure Functions kann in eine Reihe von Azure- und Drittanbieterdiensten integriert werden. Diese können Sie zum Auslösen Ihrer Funktion und zum Starten der Ausführung oder als Ein- und Ausgabe für Ihren Code verwenden. Azure Functions unterstützt folgende Dienstintegrationen:
 
 * Azure Cosmos DB
 * Azure Event Hubs 
+* Azure Event Grid
 * Azure Mobile Apps (Tabellen)
 * Azure Notification Hubs
 * Azure Service Bus (Warteschlangen und Themen)
