@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/27/2017
-ms.openlocfilehash: 56a79906a0f43f06d35db703d641f547e7bdf868
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 048d734277f855086a48ad00a52b873adbf419b4
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="classifying-iris-part-3-deploy-a-model"></a>Klassifizieren von Schwertlilien, Teil 3: Bereitstellen eines Modells
 Azure Machine Learning-Dienste (Vorschauversion) ist eine integrierte End-to-End Data Science- und erweiterte Analyselösung für professionelle Data Scientists zum Vorbereiten von Daten, Entwickeln von Experimenten und Bereitstellen von Modellen auf Cloudniveau.
@@ -85,15 +85,15 @@ Zum Bereitstellen des Webdiensts zusammen mit der Modelldatei benötigen Sie auc
 
    ![Bewertungsdatei](media/tutorial-classifying-iris/model_data_collection.png)
 
-4. Führen Sie das Skript aus, um die Schemadatei abzurufen. Wählen Sie in der Befehlsleiste die Umgebung **local** und das Skript **iris_score.py** aus, und klicken Sie anschließend auf die Schaltfläche **Ausführen**. 
+4. Führen Sie das Skript aus, um die Schemadatei abzurufen. Wählen Sie in der Befehlsleiste die Umgebung **local** und das Skript **iris-score.py** aus, und klicken Sie anschließend auf die Schaltfläche **Ausführen**. 
 
 5. Mit diesem Skript wird im Ordner **outputs** eine JSON-Datei erstellt, mit der das für das Modell benötigte Eingabedatenschema erfasst wird.
 
-6. Beachten Sie rechts im Machine Learning Workbench-Fenster den Bereich „Aufträge“. Warten Sie, bis für den aktuellen Auftrag **iris\_score.py** in Grün der Status **Abgeschlossen** angezeigt wird. Klicken Sie anschließend für die aktuelle Auftragsausführung auf den Hyperlink **iris\_score.py [1]**, um die Ausführungsdetails für die **iris_score.py**-Ausführung anzuzeigen. 
+6. Beachten Sie rechts im Machine Learning Workbench-Fenster den Bereich „Aufträge“. Warten Sie, bis für den aktuellen Auftrag **iris-score.py** in Grün der Status **Abgeschlossen** angezeigt wird. Klicken Sie anschließend auf den Hyperlink **iris-score.py [1]** für die aktuelle Auftragsausführung, um die Ausführungsdetails für die **iris-score.py**-Ausführung anzuzeigen. 
 
 7. Wählen Sie auf der Seite „Run Properties“ (Ausführungseigenschaften) im Abschnitt **Ausgaben** die neu erstellte Datei **service_schema.json** aus. Wählen Sie die Datei aus, indem Sie das **Häkchen** setzen, und klicken Sie auf **Herunterladen**. Speichern Sie die Datei im Stammverzeichnis Ihres Projekts.
 
-8. Wechseln Sie zurück zur vorherigen Registerkarte, auf der Sie das Skript **iris_score.py** geöffnet haben. 
+8. Wechseln Sie zurück zur vorherigen Registerkarte, auf der Sie das Skript **iris-score.py** geöffnet haben. 
 
    Beachten Sie die Nutzung der Datensammlung, mit der Sie Modelleingaben und Vorhersagen für den Webdienst erfassen können. Die folgenden Punkte sind für die Datensammlung von besonderem Interesse:
 
@@ -120,6 +120,9 @@ Zum Bereitstellen des Webdiensts zusammen mit der Modelldatei benötigen Sie auc
    ```
 
 Als Nächstes können Sie Ihre Umgebung für die Operationalisierung des Modells vorbereiten.
+
+>[!NOTE]
+>Für die Bereitstellung von Modellen benötigen Sie Besitzerzugriff auf ein Azure-Abonnement.
 
 ## <a name="prepare-to-operationalize-locally"></a>Vorbereiten der lokalen Operationalisierung
 Verwenden Sie für Docker-Container auf Ihrem lokalen Computer die Bereitstellung vom Typ _Lokaler Modus_.
@@ -201,7 +204,7 @@ Sie können nun den Echtzeit-Webdienst erstellen.
 1. Verwenden Sie den folgenden Befehl, um einen Echtzeit-Webdienst zu erstellen:
 
    ```azurecli
-   az ml service create realtime -f iris_score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
+   az ml service create realtime -f iris-score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
    ```
    Hierbei wird eine Webdienst-ID zur späteren Verwendung generiert.
 
@@ -241,7 +244,7 @@ Alternativ zum obigen Befehl **az ml service create realtime** können Sie die S
    Verwenden Sie zum Erstellen eines Manifests diesen Befehl, und geben Sie die Modell-ID aus dem vorherigen Schritt an:
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f iris_score.py -r python -i <model ID> -s service_schema.json
+   az ml manifest create --manifest-name <new manifest name> -f iris-score.py -r python -i <model ID> -s service_schema.json
    ```
    Mit diesem Befehl wird eine Manifest-ID generiert.
 

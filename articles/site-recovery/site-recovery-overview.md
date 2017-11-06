@@ -1,5 +1,5 @@
 ---
-title: Was ist Azure Site Recovery? | Microsoft Docs
+title: Informationen zu Azure Site Recovery | Microsoft Docs
 description: "Enthält eine Übersicht über den Azure Site Recovery-Dienst und eine Zusammenfassung der Bereitstellungsszenarien."
 services: site-recovery
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/25/2017
+ms.date: 11/01/2017
 ms.author: raynew
-ms.openlocfilehash: aa657c92f347f7529affee78ad1842e5e066b74d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: MVC
+ms.openlocfilehash: 90f9fe5775f493298dad3b12f2be9d6da6cb480e
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="what-is-site-recovery"></a>Was ist Site Recovery?
+# <a name="about-site-recovery"></a>Informationen zu Azure Site Recovery
 
 Willkommen beim Azure Site Recovery-Dienst! Dieser Artikel enthält eine kurze Übersicht über den Dienst.
 
@@ -62,19 +63,15 @@ Site Recovery kann die Replikation für folgende Bereiche verwalten:
 
 **Unterstützt** | **Details**
 --- | ---
-**Was kann ich replizieren?** | Azure-VMs zwischen Azure-Regionen (Vorschau)<br/><br/>  Lokale VMware-VMs, Hyper-V-VMs, physische Server (Windows und Linux) in Azure<br/<br/> Lokale VMware VMs, Hyper-V-VMs, physische Server an einem sekundären Ort. Für Hyper-V-VMs wird die Replikation an einem sekundären Ort nur unterstützt, wenn Hyper-V-Hosts per System Center VMM verwaltet werden.
+**Was kann ich replizieren?** | Virtuelle Azure-Computer zwischen Azure-Regionen<br/><br/>  Lokale VMware-VMs, Hyper-V-VMs, physische Server (Windows und Linux) in Azure<br/><br/> Lokale VMware VMs, Hyper-V-VMs, physische Server in Virtual Machine Manager (VMM)
 **Welche Regionen werden für Site Recovery unterstützt?** | [Unterstützte Regionen](https://azure.microsoft.com/regions/services/) |
-**Welche Betriebssysteme benötigen replizierte Computer?** | [Azure-VM-Anforderungen](site-recovery-support-matrix-azure-to-azure.md#support-for-replicated-machine-os-versions)<br></br>[VMware-VM-Anforderungen](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> Für virtuelle Hyper-V-Computer wird jedes [Gastbetriebssystem](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) unterstützt, das auch von Azure und Hyper-V unterstützt wird.<br/><br/> [Anforderungen physischer Server](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
+**Welche Betriebssysteme benötigen replizierte Computer?** | [Azure-VM-Anforderungen](site-recovery-support-matrix-azure-to-azure.md#support-for-replicated-machine-os-versions)</br></br>[VMware-VM-Anforderungen](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> Für virtuelle Hyper-V-Computer wird jedes [Gastbetriebssystem](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) unterstützt, das auch von Azure und Hyper-V unterstützt wird.<br/><br/> [Anforderungen physischer Server](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
 **Welche VMware-Server/-Hosts benötige ich?** | VMware-VMs können sich auf [unterstützten vSphere-Hosts/vCenter-Servern](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers) befinden.
-**Welche Workloads kann ich replizieren?** | Sie können jede Workload replizieren, die auf einem unterstützten Replikationscomputer ausgeführt wird. Darüber hinaus hat das Site Recovery-Team App-spezifische Tests für eine [Reihe von Apps](site-recovery-workload.md#workload-summary) durchgeführt.
+
+**Welche Workloads kann ich replizieren?** Sie können jede Workload replizieren, die auf einem unterstützten Replikationscomputer ausgeführt wird. Darüber hinaus hat das Site Recovery-Team App-spezifische Tests für eine [Reihe von Apps](site-recovery-workload.md#workload-summary) durchgeführt.
 
 
-## <a name="azure-portal-considerations"></a>Aspekte des Azure-Portals
-
-* Site Recovery kann im [Azure-Portal](https://portal.azure.com) bereitgestellt werden.
-* Im klassischen Azure-Portal können Sie Site Recovery mit dem klassischen Dienstverwaltungsmodell verwalten.
-- Das klassische Portal sollte nur zur Verwaltung bereits vorhandener Site Recovery-Bereitstellungen verwendet werden. Über das klassische Portal können keine neuen Tresore erstellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich ausführlicher über [Workloadunterstützung](site-recovery-workload.md).
-* Informieren Sie sich über die ersten Schritte der [Azure-VM-Replikation zwischen Regionen](site-recovery-azure-to-azure.md), [VMware-Replikation in Azure](vmware-walkthrough-overview.md) oder [Hyper-V-Replikation in Azure](hyper-v-site-walkthrough-overview.md).
+* [Erste Schritte](azure-to-azure-quickstart.md) mit der Replikation virtueller Azure-Computer zwischen Regionen 

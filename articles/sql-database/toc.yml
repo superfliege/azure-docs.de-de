@@ -309,6 +309,10 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure-Automatisierung
           href: sql-database-manage-automation.md
+        - name: Bewährte Methoden für die SQL-Datensynchronisierung
+          href: sql-database-best-practices-data-sync.md
+        - name: Problembehandlung der SQL-Datensynchronisierung
+          href: sql-database-troubleshoot-data-sync.md
     - name: Horizontales Skalieren
       items:
         - name: Erstellen einer App mit Sharding

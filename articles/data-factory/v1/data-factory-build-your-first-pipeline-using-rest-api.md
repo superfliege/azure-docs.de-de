@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/10/2017
+ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: b3531579f65d08e7dcc453502899970d89b82bcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a6b52f56647a8bc018c4cf56e996877c1c0d2e6
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Tutorial: Erstellen der ersten Azure Data Factory mit der Data Factory-REST-API
 > [!div class="op_single_selector"]
@@ -32,6 +32,9 @@ ms.lasthandoff: 10/11/2017
 >
 >
 
+
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung von Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Erstellen einer Data Factory und Pipeline mit dem .NET SDK](../quickstart-create-data-factory-rest-api.md).
 
 In diesem Artikel verwenden Sie die Data Factory-REST-API zum Erstellen Ihrer ersten Azure Data Factory. Falls Sie das Tutorial mit anderen Tools/SDKs absolvieren möchten, wählen Sie in der Dropdownliste eine andere Option aus.
 

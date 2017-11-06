@@ -11,16 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: powershell
 ms.topic: hero-article
-ms.date: 09/06/2017
+ms.date: 10/06/2017
 ms.author: spelluru
-ms.openlocfilehash: c7ae13cd07d9f85376b664a0d51564f90c35f97e
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: a225b9285294f32fd7183390a73f55ae64bf232a
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="deploy-sql-server-integration-services-packages-to-azure"></a>Bereitstellen von SQL Server Integration Services-Paketen in Azure
-Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können. 
+
+[!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
+
+#### <a name="this-tutorial"></a>Dieses Tutorial
+
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) weiter.
 
 In diesem Tutorial werden die Schritte für die Bereitstellung einer Azure-SSIS-Integrationslaufzeit (Integration Runtime, IR) in Azure Data Factory beschrieben. Anschließend können Sie SQL Server Data Tools (SSDT) oder SQL Server Management Studio (SSMS) zum Bereitstellen von SQL Server Integration Services-Paketen (SSIS) für diese Runtime in Azure verwenden. In diesem Tutorial führen Sie die folgenden Schritte aus:
 

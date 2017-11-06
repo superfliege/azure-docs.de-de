@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 010/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: f19b58ad8f12169acefd74bfe86a28ad950dad34
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e31d58de113f737a48b6d3091650226f04ec69a
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="about-point-to-site-vpn"></a>Informationen zu Point-to-Site-VPN
 
-Mit einer P2S-VPN-Gatewayverbindung (Point-to-Site) können Sie von einem einzelnen Clientcomputer aus eine sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine P2S-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Diese Lösung ist nützlich für Telearbeiter, die an einem Remotestandort (beispielsweise zu Hause oder in einer Konferenz) eine Verbindung mit Azure-VNETs herstellen möchten. Wenn nur einige wenige Clients eine Verbindung mit einem VNET herstellen müssen, ist ein P2S-VPN (und nicht ein S2S-VPN) ebenfalls eine nützliche Lösung.
+Mit einer P2S-VPN-Gatewayverbindung (Point-to-Site) können Sie von einem einzelnen Clientcomputer aus eine sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine P2S-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Diese Lösung ist nützlich für Telearbeiter, die an einem Remotestandort (beispielsweise zu Hause oder in einer Konferenz) eine Verbindung mit Azure-VNETs herstellen möchten. Wenn nur einige wenige Clients eine Verbindung mit einem VNET herstellen müssen, ist ein P2S-VPN (und nicht ein S2S-VPN) ebenfalls eine nützliche Lösung. Dieser Artikel gilt für das Resource Manager-Bereitstellungsmodell.
 
 ## <a name="protocol"></a>Welches Protokoll verwendet P2S?
 
@@ -36,7 +36,7 @@ P2S-VPN kann eins der folgenden Protokolle verwenden:
 Konfigurieren Sie in einer gemischten Clientumgebung mit Windows- und Mac-Geräten sowohl SSTP als auch IKEv2.
 
 >[!NOTE]
->IKEv2 für P2S befindet sich derzeit in der Vorschauphase.
+>IKEv2 für P2S liegt derzeit in der Vorschauversion vor und ist für das Azure Resource Manager-Bereitstellungsmodell verfügbar.
 >
 
 ## <a name="authentication"></a>Wie werden P2S-VPN-Clients authentifiziert?

@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2017
 ms.author: billmath
-ms.openlocfilehash: d803e814828132aa5c8355de6192e45cd9e902b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebeff09a16ca7ecb4214cbccb31ffcfb2c512f7c
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-ad-access-reviews-preview"></a>Azure AD-Zugriffsüberprüfungen (Vorschauversion)
 
-Mithilfe von Zugriffsüberprüfungen können Unternehmen Gruppenmitgliedschaften und den Zugriff auf Unternehmensanwendungen effizient verwalten. 
+Mithilfe von Azure Active Directory-Zugriffsüberprüfungen (Azure AD) können Unternehmen Gruppenmitgliedschaften und den Zugriff auf Unternehmensanwendungen effizient verwalten. 
 
 ## <a name="what-can-you-do-with-access-reviews"></a>Verwendungsmöglichkeiten für Zugriffsüberprüfungen
    
-- Mithilfe von Zugriffsüberprüfungen für Anwendungszugriff und Gruppenmitgliedschaften können Sie den Zugriff von Gastbenutzern neu zertifizieren. Dabei können die Prüfer auf der Grundlage hilfreicher Informationen effizient entscheiden, ob Gäste weiter Zugriff haben sollen.
+- Sie können den Gastbenutzerzugriff erneut bestätigen, indem Sie den Zugriff auf Anwendungen und Gruppenmitgliedschaften im Rahmen einer Zugriffsüberprüfung überprüfen. Prüfer können anhand der Erkenntnisse effizient entscheiden, ob Gäste weiterhin Zugriff haben sollen.
       
 - Mithilfe von Zugriffsüberprüfungen können Sie den Anwendungszugriff von Mitarbeitern sowie deren Gruppenmitgliedschaften neu zertifizieren.
    

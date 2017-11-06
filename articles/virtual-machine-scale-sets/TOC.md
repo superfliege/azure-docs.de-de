@@ -36,6 +36,7 @@
 #### [Verwenden von Azure CLI 2.0](virtual-machine-scale-sets-manage-cli.md)
 #### [Verwenden von Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md)
 ### [Vertikale Skalierung in einer Skalierungsgruppe](virtual-machine-scale-sets-vertical-scale-reprovision.md)
+### [Automatische Betriebssystemupgrades](virtual-machine-scale-sets-automatic-upgrade.md)
 ### [Upgrades für Skalierungsgruppen](virtual-machine-scale-sets-upgrade-scale-set.md)
 ### [Verwenden von DSC und Skalierungsgruppen](virtual-machine-scale-sets-dsc.md)
 ### [Netzwerke für Skalierungsgruppen](virtual-machine-scale-sets-networking.md)

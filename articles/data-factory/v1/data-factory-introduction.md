@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/14/2017
+ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9fcfea96516e0cde6329ef9dd4b9024a1b448c5b
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 6205f64f11d9029adf1f7f96baf780b82738a44a
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/21/2017
 > * [Version 2 – Vorschauversion](../introduction.md)
 
 > [!NOTE]
-> Dieser Artikel gilt für Version 1 von Azure Data Factory, die derzeit allgemein verfügbar ist (General Availability, GA). Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschauphase finden Sie weitere Informationen unter [Einführung in Data Factory V2](../introduction.md).
+> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschauphase finden Sie weitere Informationen unter [Einführung in Data Factory V2](../introduction.md).
 
 
 ## <a name="what-is-azure-data-factory"></a>Was ist Azure Data Factory?
@@ -92,7 +92,7 @@ Die Kopieraktivität in Data Factory kopiert die Daten aus einem Quelldatenspeic
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 
-Weitere Informationen finden Sie unter [Verschieben von Daten mit der Kopieraktivität](data-factory-data-movement-activities.md).
+Weitere Informationen finden Sie unter [Transformieren von Daten in Azure Data Factory](data-factory-data-movement-activities.md).
 
 ### <a name="data-transformation-activities"></a>Datentransformationsaktivitäten
 [!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]

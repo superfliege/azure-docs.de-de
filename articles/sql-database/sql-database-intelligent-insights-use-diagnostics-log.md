@@ -12,24 +12,24 @@ ms.custom: monitor & tune
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: NA
+ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 4890baa4ead3323834a82b3f9340cf751bf0c755
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 358986f58c431aebfe7b41daa8c40ba641dc408a
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="use-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank
+# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank
 
-Auf dieser Seite finden Sie Informationen zur Verwendung des von [Intelligent Insights](sql-database-intelligent-insights.md) erstellten Diagnoseprotokolls zur Leistung von Azure SQL-Datenbank, zu seinem Format und den Daten, die es für benutzerdefinierte Entwicklungsanforderungen enthält. Dieses Diagnoseprotokoll kann an [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gesendet werden.
+Auf dieser Seite finden Sie Informationen zur Verwendung des von [Intelligent Insights](sql-database-intelligent-insights.md) erstellten Diagnoseprotokolls zur Leistung von Azure SQL-Datenbank, zu dessen Format und den Daten, die es für benutzerdefinierte Entwicklungsanforderungen enthält. Sie können dieses Diagnoseprotokoll an [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen senden.
 
 ## <a name="log-header"></a>Protokollheader
 
-Das Diagnoseprotokoll nutzt das JSON-Standardformat zum Ausgeben von Intelligent Insights-Ergebnissen. Die genaue Kategorieeigenschaft für den Zugriff auf das Intelligent Insights-Protokoll ist der feste Wert **SQLInsights**.
+Das Diagnoseprotokoll nutzt das JSON-Standardformat zum Ausgeben von Intelligent Insights-Ergebnissen. Die genaue Kategorieeigenschaft für den Zugriff auf ein Intelligent Insights-Protokoll ist der feste Wert „SQLInsights“.
 
-Der Header des Protokolls ist allgemein und besteht aus dem Zeitstempel (TimeGenerated) der Erstellung eines Eintrags, einschließlich einer Ressourcen-ID (ResourceId), die auf eine bestimmte Azure SQL-Datenbank-Instanz verweist, zu der der Eintrag gehört. „Category“ (Kategorie), „Level“ (Ebene) und „OperationName“ (Vorgangsname) sind feste Eigenschaften, deren Wert sich nicht ändert. Sie geben an, dass der Protokolleintrag Informationszwecken dient und aus Intelligent Insights (SQLInsights) stammt.
+Die Kopfzeile des Protokolls ist allgemein gehalten und besteht aus dem Zeitstempel (TimeGenerated), der Ihnen anzeigt, wann ein Eintrag erstellt wurde. Sie beinhaltet außerdem eine Ressourcen-ID (ResourceId), die auf genau die SQL-Datenbank verweist, auf die sich der Eintrag bezieht. Die Kategorie (Category), Ebene (Level) und der Vorgangsname (OperationName) sind feste Eigenschaften, deren Werte sich nicht verändern. Sie deuten darauf hin, dass ein Protokolleintrag Informationen enthält und aus Intelligent Insights (SQLInsights) stammt.
 
 ```json
 "TimeGenerated" : "2017-9-25 11:00:00", // time stamp of the log entry
@@ -41,41 +41,42 @@ Der Header des Protokolls ist allgemein und besteht aus dem Zeitstempel (TimeGen
 
 ## <a name="issue-id-and-database-affected"></a>Problem-ID und betroffene Datenbank
 
-Die ID zur Bestimmung des Problems (IssueId_d) bietet eine Möglichkeit zum besonderen Nachverfolgen von Leistungsproblemen bis zu ihrer Lösung. Intelligent Insights versieht den Lebenszyklus eines Problems mit den Angaben „Active“ (Aktiv), Verifying (Wird überprüft) und „Completed“ (Abgeschlossen). In jeder dieser Phasen kann Intelligent Insights mehrere Ereignisdatensätze im Protokoll aufzeichnen. Für jeden dieser Einträge bleibt die ID-Nummer des Problems eindeutig. Intelligent Insights verfolgt das Problem in seinem gesamten Lebenszyklus und ermöglicht alle 15 Minuten einen Einblick in das Diagnoseprotokoll.
+Die ID zur Bestimmung des Problems (issueId_d) bietet eine Möglichkeit zum eindeutigen Nachverfolgen von Leistungsproblemen, bis sie gelöst werden können. Intelligent Insights versieht jeden Lebenszyklus eines Problems mit den Angaben „Active“ (Aktiv), „Verifying“ (Wird überprüft) oder „Complete“ (Abgeschlossen). In jeder dieser Statusphasen kann Intelligent Insights mehrere Ereignisdatensätze im Protokoll aufzeichnen. Für jeden dieser Einträge bleibt die ID-Nummer des Problems eindeutig. Intelligent Insights verfolgt das Problem in seinem gesamten Lebenszyklus und generiert alle 15 Minuten einen Einblick in das Diagnoseprotokoll.
 
-Sobald ein Leistungsproblem erkannt wurde und solange es vorliegt, wird das Problem unter der Eigenschaft „Status“ als „Active“ (Aktiv) gemeldet. Sobald ein erkanntes Problem behandelt wird, wird es überprüft und unter der Eigenschaft „Status“ als „Verifying“ (Wird überprüft) gemeldet. Sobald das Problem nicht mehr vorhanden ist, wird es unter der Eigenschaft „Status“ als „Completed“ (Abgeschlossen) gemeldet.
+Nachdem ein Leistungsproblem erkannt wurde und solange es vorliegt, wird das Problem in der Eigenschaft „Status“ (status_s) als „Active“ (Aktiv) gemeldet. Sobald ein erkanntes Problem behandelt wird, wird es überprüft und in der Eigenschaft „Status“ (status_s) als „Verifying“ (Wird überprüft) gemeldet. Wenn das Problem nicht mehr vorhanden ist, wird es in der Eigenschaft „Status“ (status_s) als „Complete“ (Abgeschlossen) gemeldet.
+
 Neben der „Issue ID“ (Problem-ID) meldet das Diagnoseprotokoll den Zeitstempel des Starts (intervalStartTime_t) und Endes (intervalEndTime_t) des jeweiligen Ereignisses, das in Zusammenhang mit einem im Diagnoseprotokoll gemeldeten Problem steht.
 
-Die Eigenschaft „ElasticPoolName_s“ (Name des Pools für elastische Datenbanken) gibt an, zu welchem Pool für elastische Datenbanken die problematische Datenbank gehört. Wenn die Datenbank nicht zu einem Pool für elastische Datenbanken gehört, hat diese Eigenschaft keinen Wert. Die Datenbank, in der ein Problem erkannt wurde, wird in der Eigenschaft „DatabaseName_s“ (Datenbankname) angegeben.
+Die Eigenschaft „elastischer Pool“ (elasticPoolName_s) gibt an, zu welchem elastischen Pool die problematische Datenbank gehört. Wenn die Datenbank nicht zu einem elastischen Pool gehört, hat diese Eigenschaft keinen Wert. Die Datenbank, in der ein Problem erkannt wurde, wird in der Eigenschaft „Datenbankname“ (databaseName_s) angegeben.
 
 ```json
-"intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported timestamp
-"intervalEndTme_t":"2017-9-25 12:00", // end of the issue reported timestamp
+"intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
+"intervalEndTme_t":"2017-9-25 12:00", // end of the issue reported time stamp
 "elasticPoolName_s" : "", // resource elastic pool (if applicable) 
 "databaseName_s" : "db_name",  // database name
 "issueId_d" : 1525, // unique ID of the issue detected
-"status_s" : "Active" // status of the issue – possible values: Active, Verifying and Complete
+"status_s" : "Active" // status of the issue – possible values: "Active", "Verifying", and "Complete"
 ```
 
 ## <a name="detected-issues"></a>Erkannte Probleme
 
-Der nächste Abschnitt eines Intelligent Insights-Leistungsprotokolls enthält Leistungsprobleme, die mithilfe integrierter künstlicher Intelligenz erkannt wurden. Erkennungen werden in der JSON-Eigenschaft „detections_s“ offengelegt, die aus der Kategorie eines Problems (category), der Auswirkungen des Problems (impact), betroffenen Abfragen sowie Metriken besteht. Es muss angemerkt werden, dass die Eigenschaft „detections_s“ mehrere erkannte Leistungsprobleme enthalten kann.
+Der nächste Abschnitt des Intelligent Insights-Leistungsprotokolls enthält Leistungsprobleme, die mithilfe integrierter künstlicher Intelligenz erkannt wurden. Die Erkenntnisse werden in den Eigenschaften im JSON-Diagnoseprotokoll angegeben. Sie bestehen aus der Kategorie eines Problems, den Auswirkungen dieses Problems, den betroffenen Abfragen und den Metriken. Möglicherweise enthalten die Erkenntniseigenschaften mehrere erkannte Leistungsprobleme.
 
 Erkannte Leistungsprobleme werden mit der folgenden Struktur der Eigenschaft „detections_s“ gemeldet:
 
 ```json
 "detections_s" : [{
 "impact" : 1 to 3, // impact of the issue detected, possible values 1-3 (1 low, 2 moderate, 3 high impact)
-"category" : "Detectable performance pattern", // tperformance issue detected, see the table
+"category" : "Detectable performance pattern", // performance issue detected, see the table
 "details": <Details outputted> // details of an issue (see the table)
 }] 
 ```
 
-Erkennbare Leistungsmuster und Details, die im Diagnoseprotokoll ausgegeben werden, befinden sich in der nachstehenden Tabelle.
+Erkennbare Leistungsmuster und die Details, die an das Diagnoseprotokoll ausgegeben werden, werden in der folgenden Tabelle bereitgestellt.
 
 ### <a name="detection-category"></a>Erkennungskategorie
 
-Die Eigenschaft „Category“ (Kategorie) beschreibt eine Kategorie erkennbarer Leistungsmuster. In der folgenden Tabelle finden Sie alle möglichen Kategorien erkennbarer Leistungsmuster. Weitere Details finden Sie auf der Seite [Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
+Die Eigenschaft „Category“ (Kategorie) beschreibt die Kategorie erkennbarer Leistungsmuster. In der folgenden Tabelle finden Sie alle möglichen Kategorien erkennbarer Leistungsmuster. Nähere Informationen finden Sie unter [Troubleshoot database performance issues with Intelligent Insights (Behandeln von Problemen mit der Leistung mithilfe von Intelligent Insights)](sql-database-intelligent-insights-troubleshoot-performance.md).
 
 Je nach erkanntem Leistungsproblem unterscheiden sich die in der Diagnoseprotokolldatei ausgegebenen Details.
 
@@ -91,21 +92,21 @@ Je nach erkanntem Leistungsproblem unterscheiden sich die in der Diagnoseprotoko
 | Neue Abfrage | <li>Abfragehash der neuen Abfragen</li> |
 | Ungewöhnliche Statistik bei Wartezeiten | <li>Ungewöhnliche Wartetypen</li><li>Abfragehashes</li><li>Abfragewartezeiten</li> |
 | TempDB-Konflikt | <li>Abfragehashes von Abfragen, die einen Konflikt verursachen</li><li>Anteil der Abfrage an der gesamten Wartezeit aufgrund des Seitenlatchkonflikts in der Datenbank [%]</li> |
-| Mangel an DTUs im Pool für elastische Datenbanken | <li>Pool für elastische Datenbanken</li><li>Datenbank mit dem höchsten DTU-Verbrauch</li><li>Prozentsatz der vom größten Consumer genutzten Pool-DTUs</li> |
-| Planregression | <li>Abfragehash</li><li>IDs von guten Plänen</li><li>IDs von schlechten Plänen</li><li>Abfragehashes</li> |
-| Änderung eines Werts der datenbankweit gültigen Konfiguration | <li>Datenbankweit gültige Konfiguration ändert sich im Vergleich mit den Standardwerten</li> |
+| Mangel an DTUs im Pool für elastische Datenbanken | <li>Elastischer Pool</li><li>Datenbank mit dem höchsten DTU-Verbrauch</li><li>Prozentsatz der vom größten Consumer genutzten Pool-DTUs</li> |
+| Planregression | <li>Abfragehashes</li><li>IDs von guten Plänen</li><li>IDs von schlechten Plänen</li> |
+| Änderung eines Werts der datenbankweit gültigen Konfiguration | <li>Die datenbankweit gültige Konfiguration ändert sich im Vergleich mit den Standardwerten</li> |
 | Langsamer Client | <li>Abfragehashes</li><li>Wartezeiten</li> |
 | Tarifdowngrade | <li>Textbenachrichtigung</li> |
 
 ### <a name="impact"></a>Auswirkung
 
-Die Eigenschaft „Impact“ (Auswirkung) beschreibt den Anteil eines erkannten Verhaltens am Datenbankproblem auf einer Skala von 1 bis 3. Dabei steht 3 für den höchsten Anteil, 2 für eine mittelhohen Anteil und 1 für den niedrigsten Anteil. Der Wert von „Impact“ kann entsprechend Ihren Anforderungen als Eingabe in eine benutzerdefinierte Warnungsautomatisierung verwendet werden. Die Eigenschaft „QueryHashes“ (Abfragehashes) gibt eine Liste der Abfragehashes zurück, die von einer bestimmten Erkennung betroffen waren.
+Die Eigenschaft „Impact“ (Auswirkung) beschreibt, inwieweit ein erkanntes Verhalten zu dem Problem mit der Datenbank beigetragen hat. Die Auswirkungen liegen in einem Bereich zwischen 1 und 3. Dabei steht 3 für den höchsten Anteil, 2 für einen mittelhohen Anteil und 1 für den niedrigsten Anteil. Der Wert von „Impact“ kann entsprechend Ihren Anforderungen als Eingabe in eine benutzerdefinierte Warnungsautomatisierung verwendet werden. Die Eigenschaft „QueryHashes“ (Abfragehashes) gibt eine Liste der Abfragehashes zurück, die von einer bestimmten Erkennung betroffen waren.
 
 ### <a name="impacted-queries"></a>Betroffene Abfragen
 
-Der nächste Abschnitt eines Intelligent Insights-Protokolls enthält Informationen zu bestimmten Abfragen, die von den erkannten Leistungsproblemen betroffen waren. Diese Informationen werden als ein Array von Objekten offengelegt, das in die Eigenschaft „impact_s“ eingebettet ist. Die Eigenschaft „impact“ besteht aus Entitäten und Metriken. Entitäten beziehen sich auf eine bestimmte Abfrage (type: Query) und eindeutige unter dem Eigenschaftswert „Value“ offengelegte Abfragehashes. Darüber hinaus folgen auf alle offengelegten Abfragen eine Metrik und ein Wert, die zusammen auf ein erkanntes Leistungsproblem deuten.
+Der nächste Abschnitt des Intelligent Insights-Protokolls enthält Informationen zu bestimmten Abfragen, die von den erkannten Leistungsproblemen betroffen waren. Diese Informationen werden als ein Array von Objekten offengelegt, das in die Eigenschaft „impact_s“ eingebettet ist. Die Eigenschaft „Impact“ (Auswirkung) besteht aus Entitäten und Metriken. Entitäten verweisen auf eine bestimmte Abfrage (Typ: Abfrage). Der eindeutige Abfragehash wird in der Eigenschaft „Value“ (Wert) angegeben. Darüber hinaus folgen auf alle offengelegten Abfragen eine Metrik und ein Wert, die zusammen auf ein erkanntes Leistungsproblem hindeuten.
 
-Im folgenden Protokollbeispiel lässt sich feststellen, dass bei der Abfrage mit dem Hash „0x9102EXZ4“ eine längere Ausführungsdauer (Metric: DurationIncreaseSeconds) mit dem Wert 110 Sekunden erkannt wurde. Dies bedeutet, dass die Ausführung dieser bestimmten Abfrage 110 Sekunden länger gedauert hat. Wichtig ist der Hinweis, dass mehrere Abfragen erkannt werden können, weshalb dieser bestimmte Protokollabschnitt mehrere Abfrageeinträge enthalten kann.
+Im folgenden Protokollbeispiel wurde erkannt, dass sich die Ausführungsdauer der Abfrage mit dem Hash 0x9102EXZ4 verlängert hat (Metrik: DurationIncreaseSeconds). Der Wert von 110 Sekunden weist darauf hin, dass die Ausführung genau dieser Abfrage 110 Sekunden länger gedauert hat. Da mehrere Abfragen erkannt werden können, enthält dieser bestimmte Protokollabschnitt möglicherweise mehrere Abfrageeinträge.
 
 ```json
 "impact" : [{
@@ -119,9 +120,9 @@ Im folgenden Protokollbeispiel lässt sich feststellen, dass bei der Abfrage mit
 
 ### <a name="metrics"></a>Metriken
 
-Die Maßeinheit für jede gemeldete Metrik wird unter der Eigenschaft „metric“ (Metrik) mit den möglichen Werten (Sekunden, Zahl und Prozent) angegeben. Der Wert einer gemessenen Metrik wird von der Eigenschaft „value“ (Wert) gemeldet.
+Die Maßeinheit für jede gemeldete Metrik wird unter der Eigenschaft „Metric“ (Metrik) mit den möglichen Werten (Sekunden, Zahl und Prozent) angegeben. Der Wert einer gemessenen Metrik wird von der Eigenschaft „Value“ (Wert) gemeldet.
 
-Die Eigenschaft „DurationIncreaseSeconds“ arbeitet mit der Maßeinheit Sekunden. Für „CriticalErrorCount“ ist die Maßeinheit die Anzahl der Fehler.
+Die Eigenschaft „DurationIncreaseSeconds“ gibt die Maßeinheit in Sekunden zurück. Die Maßeinheit „CriticalErrorCount“ stellt die Anzahl der Fehler in einer Zahl dar.
 
 ```json
 "metric" : "DurationIncreaseSeconds", // issue metric type – possible values: DurationIncreaseSeconds, CriticalErrorCount, WaitingSeconds
@@ -130,7 +131,7 @@ Die Eigenschaft „DurationIncreaseSeconds“ arbeitet mit der Maßeinheit Sekun
 
 ## <a name="root-cause-analysis-and-improvement-recommendations"></a>Fehlerursachenanalyse und Verbesserungsempfehlungen
 
-Der letzte Teil des Intelligent Insights-Leistungsprotokolls ist die Fehlerursachenanalyse einer erkannten Leistungsminderung in benutzerfreundlicher Sprache mithilfe der Eigenschaft „rootCauseAnalysis_s“. Verbesserungsempfehlungen befinden sich, sofern möglich, in dem im Protokoll aufgezeichneten Text.
+Der letzte Teil des Intelligent Insights-Leistungsprotokolls bezieht sich auf die automatische Fehlerursachenanalyse der erkannten Leistungsminderung. Die Information erscheint in benutzerfreundlicher Sprache in der Eigenschaft „Fehlerursachenanalyse“ (rootCauseAnalysis_s). Das Protokoll enthält, wenn möglich, Verbesserungsempfehlungen.
 
 ```json
 // example of reported root cause analysis of the detected performance issue, in a human-readable format
@@ -138,13 +139,13 @@ Der letzte Teil des Intelligent Insights-Leistungsprotokolls ist die Fehlerursac
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Das Intelligent Insights-Leistungsprotokoll kann an [Azure Log Analytics]( https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gesendet werden.
+Sie können das Intelligent Insights-Leistungsprotokoll mit [Azure Log Analytics]( https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Kennenlernen der [Intelligent Insights](sql-database-intelligent-insights.md)-Konzepte
-- Informationen zum [Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)
-- Informationen zum [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql)
-- [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+- Erfahren Sie mehr über die [Intelligent Insights](sql-database-intelligent-insights.md)-Konzepte.
+- Erfahren Sie mehr über das [Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
+- Erfahren Sie mehr über das [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql).
+- Erfahren Sie mehr über das [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
 
 

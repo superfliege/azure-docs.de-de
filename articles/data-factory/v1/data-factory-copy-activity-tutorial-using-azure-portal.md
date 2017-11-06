@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/10/2017
+ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 91c9f6d495655dd4ae267125836881d0948c13b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ff1206296103f1bc4710c857c648b100c37f17e
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>Tutorial: Verwenden des Azure-Portals zum Erstellen einer Data Factory-Pipeline zum Kopieren von Daten 
 > [!div class="op_single_selector"]
@@ -32,7 +32,9 @@ ms.lasthandoff: 10/11/2017
 > * [REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
-> 
+
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung von Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Erstellen einer Data Factory und Pipeline mit dem .NET SDK](../quickstart-create-data-factory-dot-net.md). 
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe des [Azure-Portals](https://portal.azure.com) eine Data Factory mit einer Pipeline erstellen, die Daten aus einem Azure-Blobspeicher in eine Azure SQL-Datenbank kopiert. Wenn Sie mit Azure Data Factory nicht vertraut sind, lesen Sie vor der Durchführung dieses Tutorials den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md).   
 

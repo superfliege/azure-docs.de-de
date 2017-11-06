@@ -11,16 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/14/2017
+ms.date: 10/06/2017
 ms.author: jingwang
-ms.openlocfilehash: 9aac9c9bcc609a91415438279419d4cc8e237fcb
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 95d1dce536f8f8f0fc8d93f201520fd84f0f7629
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="copy-data-between-on-premises-and-cloud"></a>Kopieren von Daten zwischen lokalen Quellen und der Cloud
-Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können.
+
+[!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
+
+#### <a name="this-tutorial"></a>Dieses Tutorial umfasst folgende Punkte
+
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) weiter.
 
 In diesem Tutorial verwenden Sie Azure PowerShell, um eine Data Factory-Pipeline zu erstellen, die Daten aus einer lokalen SQL Server-Datenbank in einen Azure Blob Storage verschiebt. Sie erstellen und verwenden eine selbstgehostete Integration Runtime (IR) von Azure Data Factory, die eine Integration von lokalen Datenspeichern und Clouddatenspeichern ermöglicht.  Informationen zur Verwendung von anderen Tools/SDKs zum Erstellen einer Data Factory finden Sie unter [Schnellstarts](quickstart-create-data-factory-dot-net.md).
 
@@ -33,7 +39,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 > * Erstellen des verknüpften Azure Storage-Diensts.
 > * Erstellen von SQL Server- und Azure Storage-Datasets.
 > * Erstellen einer Pipeline mit Kopieraktivität zum Verschieben der Daten
-> * Starten einer Pipelineausführung.
+> * Starten einer Pipelineausführung
 > * Überwachen der Pipeline- und Aktivitätsausführungen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -488,7 +494,7 @@ Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von ei
 > * Erstellen des verknüpften Azure Storage-Diensts.
 > * Erstellen von SQL Server- und Azure Storage-Datasets.
 > * Erstellen einer Pipeline mit Kopieraktivität zum Verschieben der Daten
-> * Starten einer Pipelineausführung.
+> * Starten einer Pipelineausführung
 > * Überwachen der Pipeline- und Aktivitätsausführungen.
 
 Im Artikel [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats) finden Sie eine Liste der Datenspeicher, die als Quellen und Senken von Azure Data Factory unterstützt werden.

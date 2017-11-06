@@ -13,16 +13,23 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 09/26/2017
 ms.author: jingwang
-ms.openlocfilehash: efcdcac0edcdc3e3bd87dae89609e04985a3579e
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 82c6f69e886bfe86b2839e7efc3579782c8c3dce
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-a-data-factory-and-pipeline-using-powershell"></a>Erstellen einer Data Factory und Pipeline mithilfe von PowerShell
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [Version 1: Allgemein verfügbare Version](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Version 2 – Vorschauversion](quickstart-create-data-factory-powershell.md)
+
 Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können. 
 
 Diese Schnellstartanleitung beschreibt, wie Sie PowerShell verwenden, um eine Azure Data Factory zu erstellen. Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von einem Speicherort in einen anderen.
+
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, lesen Sie [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

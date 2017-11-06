@@ -37,6 +37,8 @@
       href: kubernetes-helm.md
     - name: Entwickeln von Anwendungen mit Entwurf
       href: kubernetes-draft.md
+    - name: Dauerhafte Speicherung von Daten mit Azure Files
+      href: azure-files.md
     - name: Verwenden des Kubernetes-Dashboards
       href: kubernetes-dashboard.md
     - name: Erstellen eines Dienstprinzipals

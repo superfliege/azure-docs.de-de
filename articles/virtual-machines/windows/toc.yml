@@ -82,6 +82,13 @@
       href: maintenance-and-updates.md
     - name: Speicher
       href: about-disks-and-vhds.md
+      items:
+        - name: Storage Premium
+          href: premium-storage.md
+        - name: Storage Premium-Leistung
+          href: premium-storage-performance.md
+        - name: Standardspeicher
+          href: standard-storage.md
     - name: Netzwerk
       href: network-overview.md
     - name: Automatisch skalierende Anwendungen
@@ -235,12 +242,16 @@
           href: detach-disk.md
         - name: Ändern der Größe eines Datenträgers
           href: expand-os-disk.md
+        - name: Sicherung und Notfallwiederherstellung für Datenträger
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Erstellen einer Momentaufnahme eines Datenträgers
           href: snapshot-copy-managed-disk.md
         - name: Sichern nicht verwalteter Datenträger
           href: incremental-snapshots.md
         - name: Konvertieren von Datenträgern zwischen Standard und Premium
           href: convert-disk-storage.md
+        - name: Migrieren zu Storage Premium mit Azure Site Recovery
+          href: migrate-to-premium-storage-using-azure-site-recovery.md
         - name: Verwenden von File Storage
           href: mount-azure-file-storage.md
         - name: Bereitstellen von Datenträgern mit Vorlage

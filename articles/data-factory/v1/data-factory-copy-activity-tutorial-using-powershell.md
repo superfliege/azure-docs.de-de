@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/10/2017
+ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 27b645ccf9d90285581c0ebf25cc77761c900b2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dda7a18625fbabb3fcf44261753aa523bb010615
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Tutorial: Erstellen einer Data Factory-Pipeline zum Verschieben von Daten mithilfe von Azure PowerShell
 > [!div class="op_single_selector"]
@@ -31,8 +31,9 @@ ms.lasthandoff: 10/11/2017
 > * [Azure Resource Manager-Vorlage](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
->
->
+
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung von Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Erstellen einer Data Factory und Pipeline mit dem .NET SDK](../quickstart-create-data-factory-powershell.md). 
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von PowerShell eine Data Factory mit einer Pipeline erstellen, die Daten aus Azure Blob Storage in Azure SQL-Datenbank kopiert. Wenn Sie mit Azure Data Factory nicht vertraut sind, lesen Sie vor der Durchführung dieses Tutorials den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md).   
 
