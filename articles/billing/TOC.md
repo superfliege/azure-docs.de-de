@@ -35,9 +35,9 @@
 ### [Verknüpfen des Office 365-Mandanten](billing-add-office-365-tenant-to-azure-subscription.md)
 ### [Zahlen für Abonnements per Rechnung](billing-how-to-pay-by-invoice.md)
 ## Problembehandlung
-### [Probleme bei der Registrierung](billing-troubleshoot-azure-sign-up-issues.md)
-### [Karte abgelehnt](billing-credit-card-fails-during-azure-sign-up.md)
-### [Probleme bei der Anmeldung](billing-cannot-login-subscription.md)
+### [Probleme bei der Registrierung](https://support.microsoft.com/en-us/help/4042959)
+### [Karte abgelehnt](https://support.microsoft.com/en-us/help/4042960)
+### [Probleme bei der Anmeldung](https://support.microsoft.com/en-us/help/4042961)
 ### [Keine Abonnements gefunden](billing-no-subscriptions-found.md)
 ### [Enterprise-Kostenansicht deaktiviert](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/18/2017
+ms.date: 10/19/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 9a92bf402863fd1ee688fba7c20d3a2cd3e299da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9cb2bfe459421ee6e28b9d83dffc569b7592c1f
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Einrichten einer Notfallwiederherstellung für Azure-VMs in eine sekundäre Azure-Region (Vorschau)
 
@@ -129,7 +129,11 @@ Site Recovery ruft eine Liste der virtuellen Computer ab, die dem Abonnement und
 
 Site Recovery erstellt Standardeinstellungen und Replikationsrichtlinien für die Zielregion. Sie können die Einstellungen abhängig von Ihren Anforderungen ändern.
 
+1. Klicken Sie auf **Einstellungen**, um die Zieleinstellungen anzuzeigen.
+2. Um die Standardeinstellungen für das Ziel außer Kraft zu setzen, klicken Sie auf **Anpassen**. 
+
 ![Konfigurieren von Einstellungen](./media/azure-to-azure-tutorial-enable-replication/settings.png)
+
 
 - **Zielspeicherort**: Die Zielregion, die zur Notfallwiederherstellung verwendet wird. Der Zielspeicherort sollte mit dem Speicherort des Site Recovery-Tresors übereinstimmen.
 
@@ -142,7 +146,7 @@ Site Recovery erstellt Standardeinstellungen und Replikationsrichtlinien für di
 
 - **Zielspeicherkonten**: Standardmäßig erstellt Site Recovery ein neues Speicherkonto in der Zielregion, um das Quell-VM-Speicherkonto zu spiegeln.
 
-- **Zielverfügbarkeitsgruppen**: Standardmäßig erstellt Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe mit dem Suffix „asr“.
+- **Zielverfügbarkeitsgruppen**: Standardmäßig erstellt Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe mit dem Suffix „asr“. Sie können Verfügbarkeitsgruppen nur dann hinzufügen, wenn virtuelle Computer zu einer Gruppe in der Quellregion gehören.
 
 - **Replikationsrichtlinienname**: Name der Richtlinie.
 

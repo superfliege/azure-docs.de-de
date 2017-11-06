@@ -79,8 +79,6 @@
   items:
     - name: Notfallwiederherstellung
       items:
-        - name: Virtuelle VMware-Computer mit Unterstützung mehrerer Mandanten in Azure
-          href: site-recovery-multi-tenant-support-vmware-using-csp.md
         - name: Virtuelle Hyper-V-Computer in Azure
           href: tutorial-hyper-v-to-azure.md
         - name: Physische Server nach Azure
@@ -99,6 +97,8 @@
           href: tutorial-hyper-v-to-azure-failover-failback.md
         - name: Durchführen von Failover und Failback zwischen lokalen Standorten
           href: tutorial-vmm-to-vmm-failover-failback.md
+        - name: Virtuelle VMware-Computer mit Unterstützung mehrerer Mandanten in Azure
+          href: site-recovery-multi-tenant-support-vmware-using-csp.md
     - name: Kapazität und Skalierung
       items:
         - name: Planen der Kapazität für VMware-Replikation in Azure
@@ -203,6 +203,8 @@
           href: 'site-recovery-workload.md#protect-exchange'
         - name: SAP
           href: site-recovery-sap.md
+        - name: Dateiserver
+          href: file-server-disaster-recovery.md
         - name: IIS-basierte Webanwendungen
           href: site-recovery-iis.md
         - name: Citrix XenApp und XenDesktop
