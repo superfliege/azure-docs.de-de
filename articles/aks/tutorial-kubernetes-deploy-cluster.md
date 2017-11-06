@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 9e48d490b998fb57c604f2f5b2717e65d28dce1a
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 7f9991d2254011080185a555f5351dce85f73704
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Bereitstellen eines Azure Container Service-Clusters (AKS)
 
@@ -38,6 +38,15 @@ In den nachfolgenden Tutorials wird die Azure Vote-Anwendung im Cluster bereitge
 
 In vorherigen Tutorials wurde ein Containerimage erstellt und in eine Azure Container Registry-Instanz hochgeladen. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages](./tutorial-kubernetes-prepare-app.md) zurück.
 
+## <a name="enabling-aks-preview-for-your-azure-subscription"></a>Aktivieren der AKS-Vorschau für Ihr Azure-Abonnement
+Während AKS in der Vorschau ist, erfordert das Erstellen neuer Cluster ein Featureflag für Ihr Abonnement. Sie können dieses Feature für eine beliebige Anzahl von Abonnements anfordern, die Sie verwenden möchten. Verwenden Sie den `az provider register`-Befehl zum Registrieren des AKS-Anbieters:
+
+```azurecli-interactive
+az provider register -n Microsoft.ContainerService
+```
+
+Nach dem Registrieren können Sie jetzt einen Kubernetes-Cluster mit AKS erstellen.
+
 ## <a name="create-kubernetes-cluster"></a>Erstellen eines Kubernetes-Clusters
 
 Das folgende Beispiel erstellt einen Cluster mit dem Namen `myK8sCluster` in einer Ressourcengruppe namens `myResourceGroup`. Diese Ressourcengruppe wurde im [vorherigen Tutorial](./tutorial-kubernetes-prepare-acr.md) erstellt.
@@ -50,12 +59,12 @@ Nach einigen Minuten ist die Bereitstellung abgeschlossen, und es werden Informa
 
 ## <a name="install-the-kubectl-cli"></a>Installieren der Befehlszeilenschnittstelle „kubectl“
 
-Zum Herstellen der Verbindung mit dem Kubernetes-Cluster auf Ihrem Clientcomputer verwenden Sie den Kubernetes-Befehlszeilenclient [kubectl](https://kubernetes.io/docs/user-guide/kubectl/). 
+Zum Herstellen der Verbindung mit dem Kubernetes-Cluster auf Ihrem Clientcomputer verwenden Sie den Kubernetes-Befehlszeilenclient [kubectl](https://kubernetes.io/docs/user-guide/kubectl/).
 
 Bei Verwendung von Azure Cloud Shell ist „kubectl“ bereits installiert. Führen Sie für eine lokale Installation den folgenden Befehl aus:
 
 ```azurecli
-az aks install-cli 
+az aks install-cli
 ```
 
 ## <a name="connect-with-kubectl"></a>Verbinden mit kubectl
