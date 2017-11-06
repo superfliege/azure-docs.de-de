@@ -6,6 +6,7 @@
 ## [Erstellen einer .NET-Anwendung](service-fabric-quickstart-dotnet.md)
 ## [Bereitstellen einer Linux-Containeranwendung](service-fabric-quickstart-containers-linux.md)
 ## [Bereitstellen einer Windows-Containeranwendung](service-fabric-quickstart-containers.md)
+## [Bereitstellen einer Java-Anwendung](service-fabric-quickstart-java.md)
 
 # Lernprogramme
 ## Bereitstellen einer .NET-App
@@ -28,7 +29,9 @@
 ### 1 – Erstellen eines Clusters in Azure
 #### [1a – Erstellen eines Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 #### [1b – Erstellen eines Linus-Clusters](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
-### [2 – Deploy API Management with Service Fabric](service-fabric-tutorial-deploy-api-management.md) (2 – Bereitstellen von API Management mit Service Fabric)
+### [2 – Skalieren des Clusters](service-fabric-tutorial-scale-cluster.md)
+### [3 – Bereitstellen von API Management mit Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+
 
 # Beispiele
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=service-fabric)

@@ -79,8 +79,8 @@
       href: concepts-monitoring.md
     - name: Entwicklung
       items:
-        - name: Verbindungsbibliotheken
-          href: concepts-connection-libraries.md
+        - name: Kompatibilität von Treibern und Tools
+          href: concepts-compatibility.md
         - name: Anwendungsentwicklung
           href: concepts-database-application-development.md
     - name: Migrieren Ihrer Datenbank

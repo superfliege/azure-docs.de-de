@@ -150,6 +150,12 @@
           href: log-analytics-alerts-webhooks.md
         - name: Lösung Warnungsverwaltung
           href: log-analytics-solution-alert-management.md
+    - name: Verwalten
+      items:
+        - name: Verwalten der Arbeitsbereichskosten
+          href: log-analytics-manage-cost-storage.md
+        - name: Löschen eines Arbeitsbereichs
+          href: log-analytics-manage-del-workspace.md
     - name: Verwenden von Lösungen
       items:
         - name: Übersicht über Lösungen

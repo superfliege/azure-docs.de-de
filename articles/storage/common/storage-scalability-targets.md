@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 07/12/2017
 ms.author: tamram
-ms.openlocfilehash: 1ed933493da1842201bb9293f514ea4d0e7a75ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 805b0eee46846345ee1f33faf0c28393c3e8ebb1
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -36,8 +36,27 @@ In diesem Thema werden die Skalierbarkeits- und Leistungsaspekte von Microsoft A
 
 Wenn die Anforderungen Ihrer Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreiten, können Sie die Anwendung so erstellen, dass mehrere Speicherkonten verwendet werden, und die Datenobjekte in diesen Speicherkonten partitionieren. Informationen zu Volumenpreisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/) .
 
-## <a name="scalability-targets-for-blobs-queues-tables-and-files"></a>Skalierbarkeitsziele für Blobs, Warteschlangen, Tabellen und Dateien
+## <a name="scalability-targets-for-a-storage-account"></a>Skalierbarkeitsziele für ein Speicherkonto
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
+
+[!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
+
+## <a name="azure-blob-storage-scale-targets"></a>Skalierbarkeitsziele für Azure Blob Storage
+[!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
+
+## <a name="azure-files-scale-targets"></a>Skalierbarkeitsziele für Azure Files
+Weitere Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Files und Azure File Sync finden Sie unter [Azure Files scalability and performance targets (Skalierbarkeits- und Leistungsziele für Azure Files)](../files/storage-files-scale-targets.md).
+
+[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
+
+### <a name="azure-file-sync-scale-targets"></a>Skalierbarkeitsziele für Azure File Sync
+[!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
+
+## <a name="azure-queue-storage-scale-targets"></a>Skalierbarkeitsziele für Azure Queue Storage
+[!INCLUDE [storage-queues-scale-targets](../../../includes/storage-queues-scale-targets.md)]
+
+## <a name="azure-table-storage-scale-targets"></a>Skalierbarkeitsziele für Azure-Tabellen
+[!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 <!-- conceptual info about disk limits -- applies to unmanaged and managed -->
 ## <a name="scalability-targets-for-virtual-machine-disks"></a>Skalierbarkeitsziele für Festplatten virtueller Computer
@@ -54,31 +73,10 @@ Weitere Informationen finden Sie unter [Windows VM-Größen](../../virtual-machi
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="scalability-targets-for-azure-resource-manager"></a>Skalierbarkeitsziele für Azure-Ressourcen-Manager
-[!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
-
-## <a name="partitions-in-azure-storage"></a>Partitionen in Azure Storage
-Jedes Objekt, das Daten enthält, die in Azure Storage (Blobs, Nachrichten, Entitäten und Dateien) gespeichert werden, gehört zu einer Partition und wird durch einen Partitionsschlüssel identifiziert. Die Partition bestimmt, wie in Azure Storage der Lastenausgleich für Blobs, Nachrichten, Entitäten und Dateien auf Servern erfolgt, sodass die Datenverkehrsanforderungen dieser Objekte erfüllt werden. Der Partitionsschlüssel ist einmalig und wird verwendet, um ein Blob, eine Nachricht oder Entität zu finden.
-
-In der Tabelle oben unter [Skalierbarkeitsziele für Standardspeicherkonten](#standard-storage-accounts) sind die Leistungsziele für eine einzelne Partition für jeden Dienst aufgeführt.
-
-Partitionen wirken sich wie folgt auf den Lastenausgleich und die Skalierbarkeit der einzelnen Speicherdienste aus:
-
-* **Blobs**: Der Partitionsschlüssel für ein Blob setzt sich aus dem Kontonamen, Containernamen und dem Blobnamen zusammen. Dies bedeutet, dass jedes Blob seine eigene Partition aufweisen kann, wenn die Last auf den Blob danach verlangt. Blobs können über mehrere Server verteilt werden, um den Zugriff darauf horizontal hochzuskalieren, aber ein einzelnes Blob kann nur von einem einzelnen Server bedient werden. Blobs können zwar logisch in Blob-Containern zusammengefasst werden, allerdings wirkt sich dies nicht auf die Partitionierung einer solchen Gruppierung aus.
-* **Dateien**: Der Partitionsschlüssel für eine Datei ist der Kontoname plus der Name der Dateifreigabe. Dies bedeutet, dass alle Dateien in einer Dateifreigabe sich auch in einer einzelnen Partition befinden.
-* **Nachrichten:** Der Partitionsschlüssel für eine Nachricht setzt sich aus dem Kontonamen und dem Warteschlangennamen zusammen. Damit werden alle Nachrichten in einer Warteschlange in eine einzelnen Partition gruppiert und von einem einzelnen Server bedient. Verschiedene Warteschlangen können von verschiedenen Servern verarbeitet werden, um einen Lastenausgleich für die gegebene Anzahl von Warteschlangen eines Speicherkonto durchzuführen .
-* **Entitäten:** Der Partitionsschlüssel für eine Entität setzt sich aus dem Kontonamen, dem Tabellennamen und dem Partitionsschlüssel zusammen, wobei der Partitionsschlüssel der Wert der erforderlichen benutzerdefinierten **PartitionKey**-Eigenschaft der Entität ist. Alle Entitäten mit dem gleichen Partitionsschlüsselwert werden in derselben Partition gruppiert und von demselben Partitionsserver bedient. Dies ist ein wichtiger Punkt, der beim Entwurf von Anwendungen zu berücksichtigt werden muss. In der Anwendung sollten die Vorteile bezüglich der Skalierbarkeit, den die Verteilung von Entitäten auf mehrere Partitionen bietet, und die Vorteile bezüglich des Datenzugriffs, den die Gruppierung von Entitäten in einer einzelnen Partition bietet, gegeneinander abgewogen werden.  
-
-Ein wichtiger Vorteil der Gruppierung mehrerer Entitäten einer Tabelle in einer einzelnen Partition besteht darin, dass es möglich ist, kleine Batchvorgänge in verschiedenen Entitäten in der gleichen Partition auszuführen, da sich eine Partition auf einem einzelnen Server befindet. Falls Sie daher Batchvorgänge für eine Gruppe von Entitäten ausführen möchten, empfiehlt es sich daher, sie mit dem gleichen Partitionsschlüssel zu gruppieren. 
-
-Andererseits kann für Entitäten, die in derselben Tabelle enthalten sind, jedoch verschiedenen Partitionierungsschlüssel haben, ein Lastausgleich auf verschiedenen Servern vorgenommen werden, sodass sich eine höherer Skalierbarkeit ergibt.
-
-Detailierte Empfehlungen für das Entwerfen einer Partitionierungsstrategie für Tabellen finden Sie [hier](https://msdn.microsoft.com/library/azure/hh508997.aspx).
-
 ## <a name="see-also"></a>Weitere Informationen
 * [Speicher – Preisdetails](https://azure.microsoft.com/pricing/details/storage/)
 * [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md)
-* [Premium-Speicher: Hochleistungsspeicher für Workloads in Azure Virtual Machine](../storage-premium-storage.md)
+* [Premium-Speicher: Hochleistungsspeicher für Workloads in Azure Virtual Machine](../../virtual-machines/windows/premium-storage.md)
 * [Azure Storage-Replikation](../storage-redundancy.md)
 * [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage-performance-checklist.md)
 * [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

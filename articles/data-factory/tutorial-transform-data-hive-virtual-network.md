@@ -11,34 +11,40 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/10/2017
+ms.date: 10/06/2017
 ms.author: shengc
-ms.openlocfilehash: ec472ea9f45a4c8bc18d065001eae381a275d185
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 85ffb49314c475c23081ad37eacba3fac7351dd7
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten in Azure Virtual Network mithilfe einer Hive-Aktivität in Azure Data Factory
-Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können. 
+
+[!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
+
+#### <a name="this-tutorial"></a>Dieses Tutorial umfasst folgende Punkte
+
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) weiter.
 
 In diesem Tutorial verwenden Sie Azure PowerShell, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Hive-Aktivität in einem HDInsight-Cluster transformiert, der sich in einem Azure Virtual Network befindet. In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory. 
-> * Erstellen und Einrichten einer selbstgehosteten Integration Runtime.
-> * Erstellen und Bereitstellen von verknüpften Diensten.
-> * Erstellen und Bereitstellen einer Pipeline, die eine Hive-Aktivität enthält.
-> * Starten einer Pipelineausführung.
-> * Überwachen der Pipelineausführung. 
-> * Überprüfen der Ausgabe. 
+> * Erstellen und Einrichten einer selbstgehosteten Integration Runtime
+> * Erstellen und Bereitstellen von verknüpften Diensten
+> * Erstellen und Bereitstellen einer Pipeline, die eine Hive-Aktivität enthält
+> * Starten einer Pipelineausführung
+> * Überwachen der Pipelineausführung 
+> * Überprüfen der Ausgabe 
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- **Azure Storage-Konto**. Erstellen Sie ein Hive-Skript, und laden Sie es in den Azure Storage hoch. Die Ausgabe des Hive-Skripts wird in diesem Storage-Konto gespeichert. In diesem Beispiel verwendet der HDInsight-Cluster dieses Azure Storage-Konto als primären Speicher. 
-- **Azure Virtual Network.** Wenn Sie noch nicht über ein Azure Virtual Network verfügen, erstellen Sie anhand [dieser Anweisungen](../virtual-network/virtual-network-get-started-vnet-subnet.md). In diesem Beispiel befindet sich HDInsight in einem Azure Virtual Network. Hier finden Sie die Beispielkonfiguration von Azure Virtual Network. 
+- **Azure Storage-Konto**. Erstellen Sie ein Hive-Skript, und laden Sie es in Azure Storage hoch. Die Ausgabe des Hive-Skripts wird in diesem Storage-Konto gespeichert. In diesem Beispiel verwendet der HDInsight-Cluster dieses Azure Storage-Konto als primären Speicher. 
+- **Azure Virtual Network.** Wenn Sie noch nicht über ein Azure Virtual Network verfügen, erstellen Sie ein solches anhand [dieser Anweisungen](../virtual-network/virtual-network-get-started-vnet-subnet.md). In diesem Beispiel befindet sich HDInsight in einem Azure Virtual Network. Hier finden Sie die Beispielkonfiguration von Azure Virtual Network. 
 
     ![Virtuelles Netzwerk erstellen](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
 - **HDInsight-Cluster.** Erstellen Sie einen HDInsight-Cluster, und binden Sie ihn in das virtuelle Netzwerk ein, das Sie im vorherigen Schritt erstellt haben. Befolgen Sie dazu die Anweisungen in diesem Artikel: [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Hier finden Sie die Beispielkonfiguration von HDInsight in einem virtuellen Netzwerk. 
@@ -152,7 +158,7 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
 ## <a name="author-linked-services"></a>Erstellen verknüpfter Dienste
 
 In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste und stellen sie bereit:
-- Einen verknüpften Azure Storage-Dienst, der ein Azure Storage-Konto mit der Data Factory verbindet. Dies ist der primäre Speicher, der von Ihrem HDInsight-Cluster verwendet wird. In diesem Fall verwenden wir dieses Azure Storage-Konto auch zum Speichern des Hive-Skript und der Skriptausgabe.
+- Einen verknüpften Azure Storage-Dienst, der ein Azure Storage-Konto mit der Data Factory verbindet. Dies ist der primäre Speicher, der von Ihrem HDInsight-Cluster verwendet wird. In diesem Fall verwenden wir dieses Azure Storage-Konto auch zum Speichern des Hive-Skripts und der Skriptausgabe.
 - Einen verknüpften HDInsight-Dienst. Azure Data Factory übermittelt das Hive-Skript zur Ausführung an diesen HDInsight-Cluster.
 
 ### <a name="azure-storage-linked-service"></a>Mit Azure Storage verknüpfter Dienst
@@ -265,7 +271,7 @@ In diesem Schritt erstellen Sie eine neue Pipeline mit einer Hive-Aktivität. Di
 
 Beachten Sie folgende Punkte:
 
-- **scriptPath** zeigt auf den Pfad zu dem Hive-Skript im Azure Storage-Konto, das Sie für „MyStorageLinkedService“ verwendet haben. Beim Pfad wird Groß-/Kleinschreibung beachtet.
+- **scriptPath** zeigt auf den Pfad zu dem Hive-Skript im Azure Storage-Konto, das Sie für „MyStorageLinkedService“ verwendet haben. Beim Pfad wird die Groß-/Kleinschreibung beachtet.
 - **Output** ist ein im Hive-Skript verwendetes Argument. Verwenden Sie das Format `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`, um auf einen vorhandenen Ordner in Ihrem Azure Storage zu zeigen. Beim Pfad wird die Groß-/Kleinschreibung beachtet. 
 
 Wechseln Sie zu dem Ordner, in dem Sie die JSON-Dateien erstellt haben, und führen Sie den folgenden Befehl aus, um die Pipeline bereitzustellen: 
@@ -277,7 +283,7 @@ Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGrou
 
 ## <a name="start-the-pipeline"></a>Starten der Pipeline 
 
-1. Starten Sie eine Pipelineausführung. Die ID der Pipelineausführung wird für die zukünftige Überwachung ebenfalls erfasst.
+1. Starten einer Pipelineausführung Die ID der Pipelineausführung wird für die zukünftige Überwachung ebenfalls erfasst.
 
     ```powershell
     $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
@@ -383,12 +389,12 @@ In diesem Tutorial haben Sie die folgenden Schritte ausgeführt:
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory. 
-> * Erstellen und Einrichten einer selbstgehosteten Integration Runtime.
-> * Erstellen und Bereitstellen von verknüpften Diensten.
-> * Erstellen und Bereitstellen einer Pipeline, die eine Hive-Aktivität enthält.
-> * Starten einer Pipelineausführung.
-> * Überwachen der Pipelineausführung. 
-> * Überprüfen der Ausgabe. 
+> * Erstellen und Einrichten einer selbstgehosteten Integration Runtime
+> * Erstellen und Bereitstellen von verknüpften Diensten
+> * Erstellen und Bereitstellen einer Pipeline, die eine Hive-Aktivität enthält
+> * Starten einer Pipelineausführung
+> * Überwachen der Pipelineausführung 
+> * Überprüfen der Ausgabe 
 
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie mithilfe eines Spark-Clusters in Azure Daten transformieren:
 

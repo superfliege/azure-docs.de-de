@@ -13,31 +13,33 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/28/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 4cfc1652377f0cfd059e336aec6994b40d32c559
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e28324fe0d7e52f1721af6cd835369f024d4c58f
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="roll-out-password-reset-for-users"></a>Rollout der Kennwortzurücksetzung für Benutzer
+# <a name="how-to-successfully-rollout-self-service-password-reset"></a>Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung
 
 Die meisten Kunden führen die hier angegebenen Schritte aus, um für ein reibungsloses Rollout der SSPR-Funktionalität (Self-Service Password Reset, Self-Service-Kennwortzurücksetzung) zu sorgen.
 
-1. [Aktivieren Sie die Kennwortzurücksetzung in Ihrem Verzeichnis](active-directory-passwords-getting-started.md).
-2. [Konfigurieren Sie die lokalen AD-Berechtigungen für das Kennwortrückschreiben](active-directory-passwords-how-it-works.md#active-directory-permissions).
+1. [Aktivieren Sie die Kennwortzurücksetzung in Ihrem Verzeichnis.](active-directory-passwords-getting-started.md)
+2. [Konfigurieren Sie die lokalen AD-Berechtigungen für das Kennwortrückschreiben.](active-directory-passwords-writeback.md#active-directory-permissions)
 3. [Konfigurieren Sie das Kennwortrückschreiben](active-directory-passwords-writeback.md#configuring-password-writeback), um Kennwörter aus Azure AD wieder in Ihr lokales Verzeichnis zu schreiben.
-4. [Weisen Sie die erforderlichen Lizenzen zu, und überprüfen Sie sie](active-directory-passwords-licensing.md).
-5. Wenn Sie das Rollout in Etappen durchführen möchten, können Sie die Kennwortzurücksetzung optional auf eine Gruppe von Benutzern begrenzen, um das Feature nach und nach einzuführen. Ändern Sie hierzu die Umschaltoption **Self-Service-Kennwortzurücksetzung aktiviert** von **Jeder** in **Eine Gruppe**, und wählen Sie eine Sicherheitsgruppe aus, die für die Kennwortzurücksetzung aktiviert werden soll. Allen Mitgliedern dieser Gruppe müssen Lizenzen zugewiesen sein. Dies ist eine gute Gelegenheit, um die [gruppenbasierte Lizenzierung](active-directory-passwords-licensing.md#enable-group-or-user-based-licensing) umzusetzen.
-6. Geben Sie basierend auf Ihrer Richtlinie die mindestens erforderlichen [Authentifizierungsdaten](active-directory-passwords-data.md) ein.
-7. Schulen Sie Ihre Benutzer in der Nutzung von SSPR, indem Sie ihnen eine Anleitung senden, in der die Registrierung und Zurücksetzung beschrieben ist.
-    > [!NOTE]
-    > Testen Sie SSPR nicht als Administrator, sondern als normaler Benutzer, da Microsoft für Azure-Administratorkonten strenge Anforderungen an die Authentifizierung stellt. Weitere Informationen zur Richtlinie für Administratorkennwörter finden Sie in [diesem ausführlichen Artikel](active-directory-passwords-how-it-works.md).
+4. [Weisen Sie die erforderlichen Lizenzen zu, und überprüfen Sie sie.](active-directory-passwords-licensing.md)
+5. Wenn Sie das SSPR-Rollout in Etappen durchführen möchten, können Sie den Zugriff auf eine Gruppe von Benutzern begrenzen und somit ein Pilotprojekt mit einer bestimmten Gruppe verwenden. Ändern Sie hierzu die Umschaltoption **Self-Service-Kennwortzurücksetzung aktiviert** in **Selected** (Ausgewählte), und wählen Sie eine Sicherheitsgruppe aus, die für die Kennwortzurücksetzung aktiviert werden soll. 
+6. Geben Sie [Authentifizierungsdaten](active-directory-passwords-data.md) für Ihre Benutzer an, etwa ihre geschäftliche Telefonnummer, die Mobilfunknummer und eine alternative E-Mail-Adresse.
+7. [Passen Sie die Azure AD-Anmeldung mit Ihrem Unternehmensbranding an.](active-directory-passwords-customize.md)
+8. Schulen Sie Ihre Benutzer in der Nutzung von SSPR, indem Sie ihnen eine Anleitung senden, in der die Registrierung und Zurücksetzung beschrieben ist.
+9. Sie können einen beliebigen Zeitpunkt für das Erzwingen der Registrierung angeben und außerdem festlegen, dass Benutzer ihre Authentifizierungsinformationen nach einem bestimmten Zeitraum neu bestätigen müssen.
+10. Sie können den Verlauf der Registrierung und Nutzung durch die Benutzer verfolgen, indem Sie die [Berichterstellungsfunktion von Azure AD](active-directory-passwords-reporting.md) verwenden.
+11. Wenn Sie bereit sind, legen Sie den Umschalter **Self-Service-Kennwortzurücksetzung aktiviert** auf **Alle** fest. 
 
-8. Sie können einen beliebigen Zeitpunkt für das Erzwingen der Registrierung angeben und außerdem festlegen, dass Benutzer ihre Authentifizierungsinformationen nach einem bestimmten Zeitraum neu bestätigen müssen. Falls Sie nicht möchten, dass Benutzer sich registrieren müssen, können Sie die [Kennwortzurücksetzung bereitstellen, ohne dass eine Registrierung von Endbenutzern erforderlich ist](active-directory-passwords-data.md).
-9. Sie können den Verlauf der Registrierung und Nutzung durch die Benutzer verfolgen, indem Sie die [Berichterstellungsfunktion von Azure AD](active-directory-passwords-reporting.md) verwenden.
+    > [!IMPORTANT]
+    > Testen Sie SSPR nicht als Administrator, sondern als normaler Benutzer, da Microsoft für Azure-Administratorkonten strenge Anforderungen an die Authentifizierung stellt. Weitere Informationen zur Richtlinie für Administratorkennwörter finden Sie in [diesem ausführlichen Artikel](active-directory-passwords-how-it-works.md).
 
 ## <a name="email-based-rollout"></a>E-Mail-basierte Einführung
 
@@ -47,13 +49,17 @@ Viele Kunden sind der Meinung, dass eine E-Mail-Kampagne mit einfachen Anweisung
 * E-Mail-Vorlage **Available Now** (Jetzt verfügbar): Kann am Tag der Einführung eingesetzt werden, um Benutzer zum Registrieren und Bestätigen ihrer Authentifizierungsdaten zu bewegen, damit sie SSPR bei Bedarf nutzen können.
 * E-Mail-Vorlage **Sign up Reminder** (Erinnerung an Registrierung): Kann einige Tage bzw. Wochen nach der Bereitstellung eingesetzt werden, um Benutzer an das Registrieren und Bestätigen ihrer Authentifizierungsdaten zu erinnern.
 
+![E-Mail][Email]
+
 ## <a name="creating-your-own-password-portal"></a>Erstellen eines eigenen Kennwortportals
 
 Viele der größeren Microsoft-Kunden entscheiden sich für das Hosten einer Webseite und das Erstellen eines DNS-Stammeintrags, z.B. „https://passwords.contoso.com“. Sie fügen auf dieser Seite Links hinzu, die zu folgenden Ressourcen führen: Azure AD-Kennwortzurücksetzung, Registrierung für die Kennwortzurücksetzung, Portale für die Kennwortänderung und andere organisationsbezogene Informationen. Auf diese Weise können Sie in der E-Mail-Korrespondenz oder auf ausgegebenen Flyern dann immer eine einheitliche URL angeben, unter der Benutzer alle Informationen zur Nutzung der Dienste finden.
 
-* Portal für die Kennwortzurücksetzung: https://passwordreset.microsoftonline.com/
+* Kennwortzurücksetzungsportal: https://aka.ms/sspr
 * Portal zur Registrierung für die Kennwortzurücksetzung: http://aka.ms/ssprsetup
 * Portal für die Änderung des Kennworts: https://account.activedirectory.windowsazure.com/ChangePassword.aspx
+
+Wir haben eine Beispielseite erstellt, die Sie gemäß den Anforderungen Ihrer Organisation anpassen können. Sie steht auf [GitHub](https://github.com/ajamess/password-reset-page) zum Download zur Verfügung.
 
 ## <a name="using-enforced-registration"></a>Verwenden der erzwungenen Registrierung
 
@@ -73,15 +79,15 @@ Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
+* [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
+* [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
+* [Haben Sie eine Frage zur Lizenzierung?](active-directory-passwords-licensing.md)
+* [Welche Daten werden von SSPR verwendet, und welche Daten sollten Sie für Ihre Benutzer angeben?](active-directory-passwords-data.md)
+* [Welche Richtlinienoptionen stehen mit SSPR zur Verfügung?](active-directory-passwords-policy.md)
+* [Worum handelt es sich beim Rückschreiben von Kennwörtern, und warum sollte ich mir Gedanken darüber machen?](active-directory-passwords-writeback.md)
+* [Wie melde ich eine Aktivität bei SSPR?](active-directory-passwords-reporting.md)
+* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
+* [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
+* [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
 
-* [**Schnellstart:**](active-directory-passwords-getting-started.md) Informieren Sie sich schnell über die Self-Service-Kennwortverwaltung von Azure AD. 
-* [**Lizenzierung:**](active-directory-passwords-licensing.md) Konfigurieren Sie Ihre Azure AD-Lizenzierung.
-* [**Daten:**](active-directory-passwords-data.md) Erfahren Sie, welche Daten erforderlich sind und wie sie für die Kennwortverwaltung verwendet werden.
-* [**Anpassung:**](active-directory-passwords-customize.md) Passen Sie das Aussehen und Verhalten von SSPR für Ihr Unternehmen an.
-* [**Richtlinie:**](active-directory-passwords-policy.md) Machen Sie sich mit den Azure AD-Kennwortrichtlinien vertraut, und legen Sie sie fest.
-* [**Kennwortrückschreiben:**](active-directory-passwords-writeback.md) Hier wird die Funktionsweise des Kennwortrückschreibens in Ihrem lokalen Verzeichnis beschrieben.
-* [**Berichterstellung:**](active-directory-passwords-reporting.md) Ermitteln Sie, ob, wann und wo Ihre Benutzer auf SSPR-Funktionen zugreifen.
-* [**Ausführliche technische Informationen:**](active-directory-passwords-how-it-works.md) Steigen Sie tiefer ein, um zu verstehen, wie alles funktioniert.
-* [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? - Antworten auf Fragen, die Sie schon immer stellen wollten
-* [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.
+[Email]: ./media/active-directory-passwords-best-practices/sspr-emailtemplates.png "Passen Sie diese E-Mail-Vorlagen den Anforderungen Ihrer Organisation entsprechend an."

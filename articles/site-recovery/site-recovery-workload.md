@@ -1,6 +1,6 @@
 ---
-title: "Welche Workloads können mit Azure Site Recovery geschützt werden?"
-description: "Azure Site Recovery schützt Ihre Workloads und Anwendungen durch Koordinieren von Replikation, Failover und Wiederherstellung lokaler virtueller Computer und physischer Server in Azure oder an einem sekundären lokalen Standort."
+title: "Welche Workloads können mit Azure Site Recovery geschützt werden? | Microsoft Docs"
+description: "Hier werden die Workloads beschrieben, die mithilfe der Notfallwiederherstellung mit dem Azure Site Recovery-Dienst geschützt werden können."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,20 +12,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/08/2017
+ms.date: 10/30/2017
 ms.author: raynew
-ms.openlocfilehash: d7cb95d0e099d5e0357ce8871f02c894acfdc9b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3987b50a7a1798d2094e8271ad2cc317c7f472ef
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Welche Workloads können mit Azure Site Recovery geschützt werden?
-In diesem Artikel werden Workloads und Anwendungen beschrieben, die Sie mit dem Azure Site Recovery-Dienst replizieren können.
 
-Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)veröffentlichen.
+In diesem Artikel werden Workloads und Anwendungen beschrieben, die Sie mit dem [Azure Site Recovery-Dienst](site-recovery-overview.md) replizieren können.
+
+
 
 ## <a name="overview"></a>Übersicht
+
 Unternehmen benötigen eine Strategie für die Bereiche Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR), damit Workloads und Daten bei geplanten und ungeplanten Ausfallzeiten gesichert bleiben und die regulären Arbeitsbedingungen so schnell wie möglich wiederhergestellt werden können.
 
 Site Recovery ist ein Azure-Dienst als Beitrag zu Ihrer BCDR-Strategie. Mithilfe von Site Recovery können Sie anwendungsorientierte Replikation in der Cloud oder an einem sekundären Standort bereitstellen. Unabhängig davon, ob Ihre Apps Windows- oder Linux-basiert sind, auf physischen Servern ausgeführt werden oder virtuelle VMware- oder Hyper-V-Computer sind, gilt Folgendes: Sie können Site Recovery verwenden, um die Replikation zu orchestrieren, Tests für die Notfallwiederherstellung durchzuführen und Failover und Failbacks auszuführen.
@@ -33,6 +35,7 @@ Site Recovery ist ein Azure-Dienst als Beitrag zu Ihrer BCDR-Strategie. Mithilfe
 Site Recovery ist in Microsoft-Anwendungen wie SharePoint, Exchange, Dynamics, SQL Server und Active Directory integriert. Microsoft arbeitet außerdem eng mit führenden Herstellern wie Oracle, SAP und Red Hat zusammen. Sie können Replikationslösungen für jede App speziell anpassen.
 
 ## <a name="why-use-site-recovery-for-application-replication"></a>Gründe für die Verwendung von Site Recovery für die Anwendungsreplikation
+
 Site Recovery trägt wie folgt zum Schutz und zur Wiederherstellung auf Anwendungsebene bei:
 
 * App-unabhängige Bereitstellung von Replikation für alle Workloads, die auf einem unterstützten Computer ausgeführt werden
@@ -157,4 +160,5 @@ Weitere Informationen zur Lizenzierung für Client-/Serverdesktopcomputer in Azu
 Weitere Informationen zum Schutz von Citrix XenApp- und XenDesktop-Bereitstellungen finden Sie [hier](site-recovery-citrix-xenapp-and-xendesktop.md). Alternativ können Sie das [Whitepaper von Citrix](https://aka.ms/citrix-xenapp-xendesktop-with-asr) lesen. Es enthält die gleichen Informationen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Überprüfen der Voraussetzungen](site-recovery-prereq.md)
+
+[Erste Schritte](azure-to-azure-quickstart.md) mit der Replikation virtueller Azure-Computer

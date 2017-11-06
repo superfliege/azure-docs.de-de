@@ -69,7 +69,7 @@
 #### [Benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 ### Filter in Azure Search
 #### [Übersicht](search-filters.md)
-#### [Facet-Filter](search-filters-facets.md)
+#### [Facettenfilter](search-filters-facets.md)
 #### [Sprachfilter](search-filters-language.md)
 #### [Einschränkung aus Sicherheitsgründen](search-security-trimming-for-azure-search.md)
 #### [Referenz zur Ausdruckssyntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
@@ -78,6 +78,7 @@
 ### [Vorschläge](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [Facettennavigation](search-faceted-navigation.md)
 ### [Synonymvorschau](search-synonyms.md)
+### [Vorschaufunktion von moreLikeThis](search-more-like-this.md)
 
 # Referenz
 
@@ -86,7 +87,7 @@
 ## [Python (Verwaltung)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
 ## [REST](/rest/api/searchservice)
 ## [REST (Verwaltung)](/rest/api/searchmanagement)
-## [Dienst-REST (Vorschau)](search-api-2015-02-28-preview.md)
+## [Dienst-REST (Vorschau)](search-api-2016-09-01-preview.md)
 
 # Ressourcen
 

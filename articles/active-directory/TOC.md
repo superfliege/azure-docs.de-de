@@ -48,7 +48,6 @@
 #### [Azure PowerShell-Beispiele für die gruppenbasierte Lizenzierung](active-directory-licensing-ps-examples.md)
 #### [Referenz zu Produkten und Serviceplänen in Azure AD](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Verwalten von Benutzerprofilen](active-directory-users-profile-azure-portal.md)
-### [Zurücksetzen eines Kennworts](active-directory-users-reset-password-azure-portal.md)
 ### [Verwalten von Benutzerarbeitsinformationen](active-directory-users-work-info-azure-portal.md)
 ### [Freigeben von Konten](active-directory-sharing-accounts.md)
 
@@ -126,7 +125,6 @@
 ### [SSPR-Berichterstellung](active-directory-passwords-reporting.md)
 ### IT-Administratoren: Zurücksetzen von Kennwörtern
 #### [Azure-Portal](active-directory-users-reset-password-azure-portal.md)
-#### [klassischen Azure-Portal](active-directory-create-users-reset-password.md)
 ### [Lizenzieren von SSPR](active-directory-passwords-licensing.md)
 ### [Kennwortrückschreiben](active-directory-passwords-writeback.md)
 ### [Problembehandlung](active-directory-passwords-troubleshoot.md)
@@ -242,6 +240,7 @@
 ### [Mehrere Verzeichnisse](active-directory-licensing-directory-independence.md)
 ### [O365-Verzeichnisse](active-directory-manage-o365-subscription.md)
 ### [Self-Service-Registrierung](active-directory-self-service-signup.md)
+#### [Übernehmen eines nicht verwalteten Verzeichnisses](domains-admin-takeover.md)
 ### [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
 #### [Aktivieren](active-directory-windows-enterprise-state-roaming-enable.md)
 #### [Gruppenrichtlinieneinstellungen](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
