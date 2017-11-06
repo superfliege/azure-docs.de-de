@@ -134,6 +134,8 @@
       items:
         - name: Archivieren
           href: monitoring-archive-diagnostic-logs.md
+        - name: An Log Analytics senden
+          href: monitor-stream-diagnostic-logs-log-analytics.md
         - name: Stream für Event Hubs
           href: monitoring-stream-diagnostic-logs-to-event-hubs.md
         - name: Aktivieren der Diagnoseeinstellungen mithilfe von Resource Manager-Vorlagen

@@ -71,15 +71,10 @@
 
 ## Festlegen von Ressourcenrichtlinien
 ### [Was sind Ressourcenrichtlinien?](resource-manager-policy.md)
-### [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md)
 ### [Zuweisen von Richtlinien über Skripts](resource-manager-policy-create-assign.md)
 ### Beispiele
 #### [Tags](resource-manager-policy-tags.md)
 #### [Benennungskonventionen](resource-manager-policy-naming-convention.md)
-#### [Netzwerk](resource-manager-policy-network.md)
-#### [Speicher](resource-manager-policy-storage.md)
-#### [Linux-VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-#### [Windows-VM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 ## Audit
 ### [Anzeigen von Aktivitätsprotokollen](resource-group-audit.md)

@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/10/2017
-ms.openlocfilehash: f806a8c1f06a58d0c8440d54c91ecfa41988d8ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a76e816f9b1fa484789f548899d7e8e7043febb
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Erstellen eines Azure-Datenbank für PostgreSQL-Servers im Azure-Portal
 
@@ -232,7 +232,7 @@ So löschen Sie ausschließlich den neu erstellten Server
 
     ![Die Schaltfläche „Löschen“](./media/quickstart-create-database-portal/12-delete.png)
 
-3. Bestätigen Sie, dass Sie den Server wirklich löschen möchten, und zeigen Sie die darunter liegenden betroffenen Datenbanken an. Geben Sie den Servernamen (in unserem Beispiel **mypgserver-20170401**) in das Textfeld ein. Klicken Sie auf **Löschen**.
+3. Bestätigen Sie den Servernamen, den Sie löschen möchten, und zeigen Sie die betroffenen Datenbanken auf diesem Server an. Geben Sie den Servernamen (in unserem Beispiel **mypgserver-20170401**) in das Textfeld ein. Klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.openlocfilehash: 2aa9d10749b54537495ad3e09566c43718f67a9e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f1c8241d0d7e68abd175c7c1c3b023d18b24a68
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="design-your-first-azure-database-for-postgresql-using-the-azure-portal"></a>Entwerfen Ihrer ersten Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals
 
@@ -22,8 +22,8 @@ Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hoch ver
 
 In diesem Tutorial verwenden Sie das Azure-Portal, um Folgendes zu lernen:
 > [!div class="checklist"]
-> * Erstellen einer Azure-Datenbank für PostgreSQL
-> * Konfigurieren der Serverfirewall 
+> * Erstellen einer Azure-Datenbank für PostgreSQL-Server
+> * Konfigurieren der Serverfirewall
 > * Erstellen einer Datenbank mit dem Hilfsprogramm [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html)
 > * Laden von Beispieldaten
 > * Abfragen von Daten
@@ -54,9 +54,9 @@ Erstellen Sie einen Azure-Datenbank für PostgreSQL-Server in diesen Schritten:
     - PostgreSQL-Version
 
   > [!IMPORTANT]
-  > Der hier angegebene Benutzername bzw. das Kennwort für den Serveradministrator sind erforderlich, um später in diesem Schnellstart die Anmeldung am Server und an den dazugehörigen Datenbanken durchzuführen. Behalten Sie diese Angaben im Kopf, oder notieren Sie sie zur späteren Verwendung.
+  > Der hier angegebene Benutzername und das Kennwort für den Serveradministrator sind erforderlich, um später in diesem Schnellstart die Anmeldung am Server und bei den zugehörigen Datenbanken auszuführen. Behalten Sie diese Angaben im Kopf, oder notieren Sie sie zur späteren Verwendung.
 
-4.  Klicken Sie auf **Tarif**, um die Dienstebene und die Leistungsstufe für die neue Datenbank anzugeben. Wählen Sie für diesen Schnellstart Ebene **Basic**, **50 Compute-Einheiten** und **50 GB** enthaltenen Speicher aus.
+4.  Klicken Sie auf **Tarif**, um die Dienstebene und die Leistungsstufe für die neue Datenbank anzugeben. Wählen Sie für diesen Schnellstart den Tarif **Basic**, **50 Compute-Einheiten** und **50 GB** enthaltenen Speicher aus.
  ![Azure-Datenbank für PostgreSQL – Auswahl der Dienstebene](./media/tutorial-design-database-using-azure-portal/2-service-tier.png)
 5.  Klicken Sie auf **OK**.
 6.  Klicken Sie auf **Erstellen**, um den Server bereitzustellen. Die Bereitstellung dauert einige Minuten.
@@ -71,14 +71,14 @@ Erstellen Sie einen Azure-Datenbank für PostgreSQL-Server in diesen Schritten:
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurieren einer Firewallregel auf Serverebene
 
-Der Azure-Datenbank für PostgreSQL-Dienst erstellt eine Firewall auf der Serverebene. Diese Firewall verhindert, dass externe Anwendungen und Tools eine Verbindung mit dem Server und Datenbanken auf dem Server herstellen – sofern keine Firewallregel erstellt wird, um die Firewall für bestimmte IP-Adressen zu öffnen. 
+Der Azure-Datenbank für PostgreSQL-Dienst erstellt eine Firewall auf der Serverebene. Diese Firewall hindert standardmäßig alle externen Anwendungen und Tools daran, eine Verbindung mit dem Server und den Datenbanken auf dem Server herzustellen (sofern keine Firewallregel erstellt wird, um die Firewall für einen bestimmten Bereich von IP-Adressen zu öffnen). 
 
 1.  Klicken Sie nach Abschluss der Bereitstellung im linken Menü auf **Alle Ressourcen**, und geben Sie den Namen **mypgserver-20170401** ein, um nach dem neu erstellten Server zu suchen. Klicken Sie auf den im Suchergebnis aufgelisteten Servernamen. Die Seite **Übersicht** für Ihren Server wird geöffnet und enthält Optionen für die weitere Konfiguration.
  
  ![Azure-Datenbank für PostgreSQL – Suchen nach dem Server ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 2.  Wählen Sie auf dem Serverblatt **Verbindungssicherheit** aus. 
-3.  Klicken Sie in das Textfeld unter **Regelname**, und fügen Sie eine neue Firewallregel hinzu, um den IP-Adressbereich auf die Whitelist für die Konnektivität zu setzen. Für dieses Tutorial lassen wir durch Eingabe von **Regelname = AllowAllIps**, **Start-IP = 0.0.0.0** und **End-IP = 255.255.255.255** alle IP-Adressen zu und klicken dann auf **Speichern**. Sie können eine Firewallregel festlegen, die einen Bereich von IP-Adressen abdeckt, mit denen Verbindungen aus dem Netzwerk hergestellt werden können.
+3.  Klicken Sie in das Textfeld unter **Regelname**, und fügen Sie eine neue Firewallregel hinzu, um den IP-Adressbereich auf die Whitelist für die Konnektivität zu setzen. Für dieses Tutorial lassen wir durch Eingabe von **Regelname = AllowAllIps**, **Start-IP = 0.0.0.0** und **End-IP = 255.255.255.255** alle IP-Adressen zu und klicken dann auf **Speichern**. Sie können eine bestimmte Firewallregel festlegen, die einen kleineren Bereich von IP-Adressen abdeckt, mit denen Verbindungen aus dem Netzwerk hergestellt werden können.
  
  ![Azure-Datenbank für PostgreSQL – Erstellen von Firewallregeln](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 
@@ -105,7 +105,7 @@ Sobald wir unsere Azure-Datenbank für PostgreSQL-Server erstellt haben, wird di
 
 ## <a name="connect-to-postgresql-database-using-psql-in-cloud-shell"></a>Herstellen einer Verbindung mit der PostgreSQL-Datenbank mithilfe von psql in Cloud Shell
 
-Wir stellen jetzt mit dem Befehlszeilen-Hilfsprogramm psql eine Verbindung mit der Azure-Datenbank für PostgreSQL-Server her. 
+Stellen Sie jetzt mit dem Befehlszeilen-Hilfsprogramm [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) eine Verbindung mit dem Azure Database for PostgreSQL-Server her. 
 1. Starten Sie die Azure Cloud Shell über das Terminalsymbol im oberen Navigationsbereich.
 
    ![Azure-Datenbank für PostgreSQL – Azure Cloud Shell-Terminalsymbol](./media/tutorial-design-database-using-azure-portal/7-cloud-shell.png)
@@ -159,28 +159,28 @@ INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150);
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);
 ```
 
-Die Tabelle, die Sie zuvor erstellt haben, enthält nun zwei Zeilen mit Beispieldaten.
+Die Bestandstabelle, die Sie zuvor erstellt haben, enthält nun zwei Zeilen mit Beispieldaten.
 
 ## <a name="query-and-update-the-data-in-the-tables"></a>Abfragen und Aktualisieren der Daten in den Tabellen
-Führen Sie die folgende Abfrage aus, um Informationen aus der Datenbanktabelle abzurufen. 
+Führen Sie die folgende Abfrage aus, um Informationen aus der Bestandsdatenbanktabelle abzurufen. 
 ```sql
 SELECT * FROM inventory;
 ```
 
-Sie können auch die Daten in den Tabellen aktualisieren.
+Sie können die Daten in der Tabelle auch aktualisieren.
 ```sql
 UPDATE inventory SET quantity = 200 WHERE name = 'banana';
 ```
 
-Die Zeile wird entsprechend aktualisiert, wenn Sie Daten abrufen.
+Die aktualisierten Werte werden angezeigt, wenn Sie die Daten abrufen.
 ```sql
 SELECT * FROM inventory;
 ```
 
 ## <a name="restore-data-to-a-previous-point-in-time"></a>Wiederherstellung des Zustands der Daten zu einem früheren Zeitpunkt
-Stellen Sie sich vor, Sie haben versehentlich diese Tabelle gelöscht. Dies ist eine Situation, in der Sie die Datenbank nicht einfach wiederherstellen können. Die Azure-Datenbank für PostgreSQL ermöglicht Ihnen, zu einem beliebigen Zeitpunkt (innerhalb der letzten 7 Tage [Basic] und 35 Tage [Standard]) zurückzugehen und den Status dieses Zeitpunkts auf einem neuen Server wiederherzustellen. Sie können diesen neuen Server zur Wiederherstellung gelöschter Daten verwenden. Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem Zeitpunkt wiederhergestellt, der vor dem Hinzufügen der Tabelle liegt.
+Stellen Sie sich vor, Sie haben versehentlich diese Tabelle gelöscht. Dies ist eine Situation, in der Sie die Datenbank nicht einfach wiederherstellen können. Die Azure-Datenbank für PostgreSQL ermöglicht Ihnen, zu einem beliebigen Zeitpunkt (innerhalb der letzten 7 Tage [Basic] und 35 Tage [Standard]) zurückzugehen und den Status dieses Zeitpunkts auf einem neuen Server wiederherzustellen. Sie können diesen neuen Server zur Wiederherstellung gelöschter Daten verwenden. Mithilfe der folgenden Schritte wird der Server **mypgserver-20170401** zu einem Zeitpunkt wiederhergestellt, der vor dem Hinzufügen der Bestandstabelle liegt.
 
-1.  Klicken Sie auf der Azure-Datenbank für PostgreSQL-Seite für Ihren Server auf der Symbolleiste auf **Wiederherstellen**. Die Seite **Wiederherstellen** wird geöffnet.
+1.  Klicken Sie auf der Seite **Übersicht** von Azure Database for PostgreSQL für Ihren Server auf der Symbolleiste auf **Wiederherstellen**. Die Seite **Wiederherstellen** wird geöffnet.
   ![Azure-Portal – Optionen des Wiederherstellungsformulars](./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png)
 2.  Geben Sie im Formular **Wiederherstellen** die erforderlichen Informationen ein:
 
@@ -189,17 +189,17 @@ Stellen Sie sich vor, Sie haben versehentlich diese Tabelle gelöscht. Dies ist 
   - **Zielserver**: Geben Sie einen neuen Servernamen für die Wiederherstellung ein.
   - **Speicherort**: Sie können die Region nicht auswählen. Standardmäßig ist dieser Wert mit dem Quellserver identisch.
   - **Tarif**: Sie können diesen Wert beim Wiederherstellen eines Servers nicht ändern. Er ist mit dem Wert für den Quellserver identisch. 
-3.  Klicken Sie auf **OK**, um den Status des Servers [für einen Zeitpunkt wiederherzustellen](./howto-restore-server-portal.md), der vor dem Löschen der Tabellen liegt. Beim Wiederherstellen eines Servers im Zustand eines anderen Zeitpunkts wird ein Duplikat des ursprünglichen Servers im Zustand des von Ihnen angegebenen Zeitpunkts als neuer Server erstellt, vorausgesetzt, dass dieser Zeitpunkt innerhalb der für Ihre [Dienstebene](./concepts-service-tiers.md) geltenden Beibehaltungsdauer liegt.
+3.  Klicken Sie auf **OK**, um den [Server zu einem Zeitpunkt wiederherzustellen](./howto-restore-server-portal.md), der vor dem Löschen der Tabelle liegt. Beim Wiederherstellen eines Servers im Zustand eines anderen Zeitpunkts wird ein Duplikat des ursprünglichen Servers im Zustand des von Ihnen angegebenen Zeitpunkts als neuer Server erstellt, vorausgesetzt, dass dieser Zeitpunkt innerhalb der für Ihre [Dienstebene](./concepts-service-tiers.md) geltenden Beibehaltungsdauer liegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie gelernt, wie Sie das Azure-Portal und andere Hilfsprogramme für Folgendes verwenden:
 > [!div class="checklist"]
-> * Erstellen einer Azure-Datenbank für PostgreSQL
-> * Konfigurieren der Serverfirewall 
+> * Erstellen einer Azure-Datenbank für PostgreSQL-Server
+> * Konfigurieren der Serverfirewall
 > * Erstellen einer Datenbank mit dem Hilfsprogramm [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html)
 > * Laden von Beispieldaten
 > * Abfragen von Daten
 > * Aktualisieren von Daten
 > * Wiederherstellen von Daten
 
-Um als Nächstes zu erfahren, wie Sie Azure CLI verwenden, um ähnliche Aufgaben auszuführen, absolvieren Sie dieses Tutorial: [Entwerfen Ihrer ersten Azure-Datenbank für PostgreSQL mithilfe von Azure CLI](tutorial-design-database-using-azure-cli.md).
+Wenn Sie im Anschluss erfahren möchten, wie Sie Azure CLI verwenden, um ähnliche Aufgaben auszuführen, können Sie dieses Tutorial nutzen: [Entwerfen Ihrer ersten Azure Database for PostgreSQL mithilfe von Azure CLI](tutorial-design-database-using-azure-cli.md).

@@ -1,6 +1,6 @@
 ---
 title: Einzelne Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Verwalten einer einzelnen Azure SQL-Datenbank.
+description: "Verwalten Sie die Dienstebene, Leistungsstufe und Speicherkapazität für eine einzelne Azure SQL-Datenbank."
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -12,14 +12,14 @@ ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: On Demand
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: 70f512ef5742346df742e0718e2ccffd076a979e
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: f2dca5ac40dff077f9e5ce983b15fcb5b2624a14
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank
 
@@ -101,7 +101,7 @@ Verwenden Sie diese REST-API-Anforderungen, um Dienstebenen, Leistungsstufen und
 |[Datenbanken – Auflisten nach Pool für elastische Datenbanken](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem elastischen Pool zurück.|
 |[Datenbanken – Auflisten nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/listbyrecommendedelasticpool)|Gibt eine Liste von Datenbanken in einem empfohlenen Pool für elastische Datenbanken zurück|
 |[Datenbanken – Auflisten nach Server](/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
-|[Datenbanken - Update]((/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank|
+|[Datenbanken – Aktualisieren](/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank|
 
 
 

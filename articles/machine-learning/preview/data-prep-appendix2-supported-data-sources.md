@@ -1,6 +1,6 @@
 ---
-title: "Unterstützte Datenquellen für die Azure Machine Learning-Datenvorbereitung | Microsoft-Dokumentation"
-description: "Dieses Dokument enthält eine vollständige Liste mit unterstützten Datenquellen, die für die Azure ML-Datenvorbereitung verfügbar sind."
+title: "Unterstützte Datenquellen für die Azure Machine Learning-Datenvorbereitung | Microsoft Docs"
+description: "Dieses Dokument enthält eine vollständige Liste mit unterstützten Datenquellen, die für die Azure Machine Learning-Datenvorbereitung verfügbar sind."
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -12,29 +12,29 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 0a77b31e07f118155094fab4d3393ffdb37c9c6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ef4c5c33d98cfeb566e8fe23bda9e0d3f041781
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="supported-data-sources-for-this-release"></a>Unterstützte Datenquellen für dieses Release 
-Das folgende Dokument enthält die Liste der derzeit in der Datenvorbereitung unterstützten Datenquellen.
+Das folgende Dokument enthält die Liste der zurzeit in der Azure Machine Learning-Datenvorbereitung unterstützten Datenquellen.
 
-Die unterstützten Datenquellen für dieses Release sind im Folgenden aufgelistet.
+Die unterstützten Datenquellen für dieses Release werden im Folgenden aufgelistet.
 
 ## <a name="types"></a>Typen 
-### <a name="directory-vs-file"></a>Verzeichnis im Vergleich zur Datei
-Dateien/Verzeichnisse – wählen Sie eine einzelne Datei, und lesen Sie sie in die Datenvorbereitung ein; der Dateityp wird analysiert, um die Standardparameter für die Dateiverbindung auf dem nächsten Bildschirm zu bestimmen. Wählen Sie ein Verzeichnis oder einen Satz von Dateien in einem Verzeichnis (Mehrfachauswahl möglich); bei jedem Ansatz werden die Dateien als ein einzelner Datenfluss eingelesen, wobei die Dateien, aneinander angefügt werden (ggf. mit entfernten Headern).
+### <a name="directory-versus-file"></a>Verzeichnis oder Datei
+*Dateien/Verzeichnisse*: Wählen Sie eine einzelne Datei aus, und lesen Sie sie in die Datenvorbereitung ein. Der Dateityp wird analysiert, um die Standardparameter für die Dateiverbindung auf dem nächsten Bildschirm zu bestimmen. Wählen Sie ein Verzeichnis oder eine Gruppe von Dateien in einem Verzeichnis (die Dateiauswahl ermöglicht die Mehrfachauswahl) aus. Jeder dieser Ansätze führt dazu, dass die Dateien als einzelner Datenfluss gelesenen werden, in dem die Dateien aneinander (Header bei Bedarf entfernt) angefügt sind.
 
-Die unterstützten Dateitypen sind:
-- Mit Trennzeichen (CSC, TSC, TXT usw.), 
+Die folgenden Dateitypen sind verfügbar:
+- Mit Trennzeichen (CSV-, TSV-, TXT-Datei usw.) 
 - Feste Breite
-- Nur Text
+- Nur-Text
 - JSON-Datei
 
 ### <a name="csv-file"></a>CSV-Datei
-Lesen einer durch Kommas getrennten Datei aus dem Speicher
+Liest eine CSV-Datei aus dem Speicher.
 
 #### <a name="options"></a>Optionen
 - Trennzeichen
@@ -45,7 +45,7 @@ Lesen einer durch Kommas getrennten Datei aus dem Speicher
 - Zu überspringende Zeilen
 
 ### <a name="tsv-file"></a>TSV-Datei
-Lesen einer durch Tabs getrennten Datei aus dem Speicher
+Liest eine TSV-Datei aus dem Speicher.
 
 #### <a name="options"></a>Optionen
 - Kommentar
@@ -53,8 +53,8 @@ Lesen einer durch Tabs getrennten Datei aus dem Speicher
 - Dateicodierung
 - Zu überspringende Zeilen
 
-### <a name="excel-xlsxlsx"></a>Excel-Dateien (.xls/xlsx)
-Lesen einer Excel-Datei, jeweils ein Blatt bei Angabe von Blattname oder -nummer
+### <a name="excel-xlsxlsx"></a>Excel (XLS-/XLSX-Datei)
+Liest eine Excel-Datei blattweise durch Angabe von Blattname oder -nummer.
 
 #### <a name="options"></a>Optionen
 - Blattname/-nummer
@@ -62,30 +62,31 @@ Lesen einer Excel-Datei, jeweils ein Blatt bei Angabe von Blattname oder -nummer
 - Zu überspringende Zeilen
 
 ### <a name="json-file"></a>JSON-Datei
-Lesen einer JSON-Datei aus dem Speicher; beachten Sie, dass die Datei beim Lesen „vereinfacht“ wird
+List eine JSON-Datei aus dem Speicher. Beachten Sie, dass die Datei beim Lesen „vereinfacht“ wird.
 
 #### <a name="options"></a>Optionen
-- Keine
+Keine
 
 ### <a name="parquet"></a>Parquet
-Lesen eines Parquet-Datasets, entweder einzelne Datei oder Ordner.
+Liest ein PARQUET-Dataset (eine einzelne Datei oder einen Ordner).
 
-Das PARQUET-Format kann in verschiedenen Formen im Speicher vorliegen. Bei kleineren Datasets wird in einigen Fällen eine einzelne PARQUET-Datei verwendet. Das Lesen von einzelnen PARQUET-Dateien bzw. Schreiben in einzelne PARQUET-Dateien wird von verschiedenen Python-Bibliotheken unterstützt. Derzeit verwendet AMLWB für das Lesen der PARQUET-Datei bei der lokalen interaktiven Verwendung die PyArrow-Python-Bibliothek. Es werden sowohl einzelne PARQUET-Dateien unterstützt (solange sie als solche, nicht als Teil eines größeren Datasets geschrieben wurden) als auch PARQUET-Datasets. Ein PARQUET-Dataset ist eine Sammlung mehrerer PARQUET-Datei, die jeweils eine kleinere Partition eines größeren Datasets darstellen. Datasets sind in der Regel in einem Ordner enthalten und das PARQUET-Standardausgabeformat für allgemeine Plattformen wie Spark und Hive.
+Das PARQUET-Format kann in verschiedenen Formen im Speicher vorliegen. Für kleinere Datasets wird manchmal eine einzelne PARQUET-Datei verwendet. Verschiedene Python-Bibliotheken unterstützen das Lesen oder Schreiben in eine einzelne PARQUET-Datei. Zurzeit verwendet Azure Machine Learning Workbench für das Lesen der PARQUET-Datei bei der lokalen interaktiven Verwendung die PyArrow-Python-Bibliothek. Es werden einzelne PARQUET-Dateien unterstützt (solange sie als solche und nicht als Teil eines größeren Datasets geschrieben wurden). Darüber hinaus werden PARQUET-Datasets unterstützt. 
+
+Ein PARQUET-Dataset ist eine Sammlung mehrerer PARQUET-Dateien, die jeweils eine kleinere Partition eines größeren Datasets darstellen. Datasets sind in der Regel in einem Ordner enthalten. Sie stellen das PARQUET-Standardausgabeformat für allgemeine Plattformen wie Spark und Hive dar.
 
 >[!NOTE]
->Beim Lesen von PARQUET-Daten, die in einem Ordner mit mehreren PARQUET-Dateien enthalten sind, ist es am sichersten, das Verzeichnis zum Lesen zu wählen und die Option „Parquet Dataset“ zu aktivieren. Dies veranlasst PyArrow, den gesamten Ordner statt der einzelnen Dateien zu lesen, sodass die Unterstützung für das Lesen komplizierterer Möglichkeiten der PARQUET-Speicherung auf dem Datenträger (z.B. Ordnerpartitionierung) sichergestellt ist.**
+>Beim Lesen von PARQUET-Daten, die in einem Ordner mit mehreren PARQUET-Dateien enthalten sind, ist es am sichersten, das Verzeichnis zum Lesen auszuwählen und die Option **Parquet Dataset** zu aktivieren. Auf diese Weise liest PyArrow den gesamten Ordner anstelle einzelner Dateien. Auf diese Weise wird sichergestellt, dass Unterstützung für das Lesen komplizierterer Möglichkeiten der Speicherung von PARQUET-Dateien auf dem Datenträger (z. B. Ordnerpartitionierung) vorhanden ist.
 
-Ausführung mit horizontaler Skalierung basiert auf den PARQUET-Lesefunktionen von Spark und unterstützt einzelne Dateien sowie Ordner, auf ähnliche Weise wie lokal interaktiv.
+Die Ausführung mit horizontaler Skalierung basiert auf den PARQUET-Lesefunktionen von Spark und unterstützt einzelne Dateien sowie Ordner.
 
 #### <a name="options"></a>Optionen
-- Parquet Dataset
-  - Diese Option bestimmt, ob AMLWB ein bestimmtes Verzeichnis erweitert, und versucht, jede Datei darin einzeln zu lesen (nicht aktivierter Modus) oder das Verzeichnis als ganzen Dataset zu behandeln und PyArrow die beste Möglichkeit zum Interpretieren der Dateien herausfinden zu lassen (aktivierter Modus).
+*Parquet Dataset*: Diese Option bestimmt, ob Azure Machine Learning-Workbench den aktivierten oder nicht aktivierten Modus verwendet. Der nicht aktivierte Modus erweitert ein bestimmtes Verzeichnis und versucht, jede Datei einzeln zu lesen. Der aktivierte Modus behandelt das Verzeichnis als ganzes Dataset und lässt PyArrow die beste Möglichkeit zum Interpretieren der Dateien herausfinden.
 
 
 ## <a name="locations"></a>Standorte
 ### <a name="local"></a>Lokal
-Lokale Festplatte oder zugeordneter Netzwerkspeicherort
+Lokale Festplatte oder zugeordneter Netzwerkspeicherort.
 
-### <a name="azure-blob"></a>Azure-BLOB
-Für Azure Storage (BLOB) ist ein Azure-Abonnement erforderlich.
+### <a name="azure-blob-storage"></a>Azure-Blobspeicher
+Erfordert ein Azure-Abonnement.
 

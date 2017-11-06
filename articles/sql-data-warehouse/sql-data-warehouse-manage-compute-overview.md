@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 03/22/2017
+ms.date: 3/23/2017
 ms.author: elbutter
-ms.openlocfilehash: abe22f542a79714f6e894870872ee6b76ffe7633
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d0d3b94fb50155ce0579d32e8ff78a47b9e3589
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 
 In der Architektur von SQL Data Warehouse werden Speicher- und Computeressourcen voneinander getrennt, sodass diese unabhängig voneinander skaliert werden können. Daher können die Computeressourcen skaliert werden, um Leistungsanforderungen unabhängig von der Datenmenge zu erfüllen. Eine logische Konsequenz dieser Architektur ist es, dass die [Abrechnung][billed] für Compute- und Speicherressourcen unabhängig voneinander erfolgt. 
 
-Diese Übersicht erläutert, wie die horizontale Hochskalierung bei SQL Data Warehouse funktioniert und wie Sie die SQL Data Warehouse-Funktionen zum Anhalten, Fortsetzen und Skalieren verwenden. Informationen zur Beziehung zwischen DWUs und Leistung finden Sie auf der Seite [Data Warehouse-Einheiten (DWUs)][data warehouse units (DWUs)]. 
+Diese Übersicht erläutert, wie die horizontale Hochskalierung bei SQL Data Warehouse funktioniert und wie Sie die SQL Data Warehouse-Funktionen zum Anhalten, Fortsetzen und Skalieren verwenden. 
 
 ## <a name="how-compute-management-operations-work-in-sql-data-warehouse"></a>Funktionsweise der Computeverwaltung in SQL Data Warehouse
 Die Architektur für SQL Data Warehouse besteht aus einem Steuerknoten, mehreren Computeknoten und der Speicherebene, die sich über 60 Verteilungen erstreckt. 
@@ -86,10 +86,10 @@ Jeder dieser Vorgänge kann mehrere Minuten in Anspruch nehmen. Wenn Sie das Ska
 
 ## <a name="scale-compute"></a>Skalieren von Computeressourcen
 
-Die Leistung in SQL Data Warehouse wird in [Data Warehouse-Einheiten (Data Warehouse Units, DWUs)][data warehouse units (DWUs)] gemessen. Dies ist eine abstrahierte Maßeinheit für Computeressourcen wie z.B. CPU, Arbeitsspeicher und E/A-Bandbreite. Um die Systemleistung zu skalieren, stehen Benutzern verschiedene Möglichkeiten zur Verfügung: das Portal, T-SQL und REST-APIs. 
+Die Leistung in SQL Data Warehouse wird in Data Warehouse-Einheiten [Data Warehouse Units, (DWUs)][Data Warehouse Units, (DWUs)] gemessen. Dies ist eine abstrahierte Maßeinheit für Computeressourcen wie z.B. CPU, Arbeitsspeicher und E/A-Bandbreite. Um die Systemleistung zu skalieren, stehen Benutzern verschiedene Möglichkeiten zur Verfügung: das Portal, T-SQL und REST-APIs. 
 
 ### <a name="how-do-i-scale-compute"></a>Wie skaliere ich Computeressourcen?
-Die Computeleistung für SQL Data Warehouse wird durch Ändern der DWU-Einstellung verwaltet. Die Leistung steigt [linear][linearly], wenn Sie für bestimmte Vorgänge weitere DWUs hinzufügen.  Wir bieten DWU-Pakete, die sicherstellen, dass sich die Leistung merklich ändert, wenn Sie Ihr System zentral hoch- oder herunterskalieren. 
+Die Computeleistung für SQL Data Warehouse wird durch Ändern der DWU-Einstellung verwaltet. Die Leistung steigt linear, wenn Sie für bestimmte Vorgänge weitere DWUs hinzufügen.  Wir bieten DWU-Pakete, die sicherstellen, dass sich die Leistung merklich ändert, wenn Sie Ihr System zentral hoch- oder herunterskalieren. 
 
 Zum Anpassen der DWUs können Sie eine beliebige dieser individuellen Methoden verwenden.
 
@@ -181,9 +181,7 @@ Informationen zu zusätzlichen zentralen Leistungskonzepten finden Sie in den fo
 <!--Image reference-->
 
 <!--Article references-->
-[data warehouse units (DWUs)]: ./sql-data-warehouse-overview-what-is.md#predictable-and-scalable-performance-with-data-warehouse-units
-[billed]: https://azure.microsoft.com/en-us/pricing/details/sql-data-warehouse/
-[linearly]: ./sql-data-warehouse-overview-what-is.md#predictable-and-scalable-performance-with-data-warehouse-units
+[billed]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Scale compute power with Azure portal]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-power
 [Scale compute power with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#scale-compute-bk
 [Scale compute power with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#scale-compute-bk

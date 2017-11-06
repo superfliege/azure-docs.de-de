@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/29/2017
+ms.date: 10/17/2017
 ms.author: mikerou
-ms.openlocfilehash: 46b0b62f92abbac57bc27bbcdd5821eafedf5519
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d123a3d06420194d2918b71c98152cd2ea03457
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Programmgesteuertes Skalieren eines Service Fabric-Clusters 
 
@@ -29,7 +29,7 @@ In vielen Szenarien ist die manuelle oder automatisch geregelte Skalierung eine 
 
 - Das manuelle Skalieren erfordert, dass Sie sich anmelden und Skalierungsvorgänge explizit anfordern. Wenn Skalierungsvorgänge häufig oder zu unvorhersehbaren Zeiten erforderlich sind, ist dieser Ansatz u.U. keine geeignete Lösung.
 - Wenn Regeln für automatische Skalierung eine Instanz aus einer VM-Skalierungsgruppe entfernen, entfernen sie nicht automatisch Informationen dieses Knotens aus dem zugeordneten Service Fabric-Cluster, es sei denn, der Knotentyp weist die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ auf. Da Regeln für automatische Skalierung auf Skalierungsgruppenebene gelten (anstatt auf Service Fabric-Ebene), können sie Service Fabric-Knoten entfernen, ohne diese ordnungsgemäß heruntergefahren. Diese grobe Knotenentfernung hinterlässt Service Fabric-Knoten nach Vorgängen zum horizontalen Herunterskalieren in verwaistem Zustand. Eine Person (oder ein Dienst) müsste den Zustand entfernter Knoten im Service Fabric-Cluster in regelmäßigen Abständen bereinigen.
-  - Hinweis: Ein Knotentyp mit Dauerhaftigkeitsstufe „Gold“ oder „Silber“ bereinigt entfernte Knoten automatisch.  
+  - Ein Knotentyp mit der Dauerhaftigkeitsstufe „Gold“ oder „Silber“ bereinigt entfernte Knoten automatisch. Daher ist keine weitere Bereinigung erforderlich.
 - Zwar werden [viele Metriken](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md) von Regeln für automatische Skalierung unterstützt, es handelt sich jedoch immer noch um einen begrenzten Satz. Wenn Ihr Szenario die Skalierung basierend auf einer Metrik erfordert, die in diesem Satz nicht enthalten ist, sind Regeln für automatische Skalierung möglicherweise keine gute Wahl.
 
 Aufgrund dieser Einschränkungen möchten Sie möglicherweise stärker benutzerdefinierte Modelle für die automatische Skalierung implementieren. 
@@ -46,7 +46,7 @@ Verwenden Sie für die Interaktion mit dem Service Fabric-Cluster selbst [System
 Natürlich muss der Skalierungscode nicht als Dienst im Cluster ausgeführt werden, um skaliert zu werden. Sowohl `IAzure` als auch `FabricClient` können eine Remoteverbindung mit ihren jeweils zugeordneten Azure-Ressoucen herstellen, damit der Skalierungsdienst einfach eine Konsolenanwendung oder ein Windows-Dienst sein kann, die bzw. der außerhalb der Service Fabric-Anwendung ausgeführt werden kann. 
 
 ## <a name="credential-management"></a>Verwaltung von Anmeldeinformationen
-Eine Herausforderung beim Schreiben von einem Dienst für die Skalierung besteht darin, dass der Dienst ohne eine interaktive Anmeldung Zugriff auf VM-Skalierungsgruppenressourcen haben muss. Der Zugriff auf den Service Fabric-Cluster ist einfach, wenn der Skalierungsdienst seine eigene Service Fabric-Anwendung ändert, für den Zugriff auf die Skalierungsgruppe jedoch Anmeldeinformationen erforderlich sind. Für die Anmeldung können Sie einen mit [Azure CLI 2.0](https://github.com/azure/azure-cli) erstellen [Dienstprinzipal](https://github.com/Azure/azure-sdk-for-net/blob/Fluent/AUTH.md#creating-a-service-principal-in-azure) verwenden.
+Eine Herausforderung beim Schreiben von einem Dienst für die Skalierung besteht darin, dass der Dienst ohne eine interaktive Anmeldung Zugriff auf VM-Skalierungsgruppenressourcen haben muss. Der Zugriff auf den Service Fabric-Cluster ist einfach, wenn der Skalierungsdienst seine eigene Service Fabric-Anwendung ändert, für den Zugriff auf die Skalierungsgruppe jedoch Anmeldeinformationen erforderlich sind. Für die Anmeldung können Sie einen mit [Azure CLI 2.0](https://github.com/azure/azure-cli) erstellen [Dienstprinzipal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) verwenden.
 
 Ein Dienstprinzipal kann mit den folgenden Schritten erstellt werden:
 
@@ -85,7 +85,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Alternativ kann die Größe der VM-Skalierungsgruppe auch mit PowerShell-Cmdlets verwaltet werden. [`Get-AzureRmVmss`](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmss) kann das Objekt der VM-Skalierungsgruppe abrufen. Die aktuelle Kapazität wird in der Eigenschaft `.sku.capacity` gespeichert. Nach der Änderung der Kapazität in den gewünschten Wert kann die VM-Skalierungsgruppe mit dem Befehl [`Update-AzureRmVmss`](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermvmss) in Azure aktualisiert werden.
+Alternativ kann die Größe der VM-Skalierungsgruppe auch mit PowerShell-Cmdlets verwaltet werden. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) kann das Objekt der VM-Skalierungsgruppe abrufen. Die aktuelle Kapazität ist über die Eigenschaft `.sku.capacity` verfügbar. Nach der Änderung der Kapazität in den gewünschten Wert kann die VM-Skalierungsgruppe mit dem Befehl [`Update-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) in Azure aktualisiert werden.
 
 Wie beim manuellen Hinzufügen eines Knotens sollte zum Starten eines neuen Service Fabric-Knotens nur das Hinzufügen einer Skalierungsgruppe erforderlich sein, da die Skalierungsgruppenvorlage Erweiterungen beinhaltet, um dem Service Fabric-Cluster automatisch neue Instanzen hinzuzufügen. 
 
@@ -105,7 +105,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-Beachten Sie, dass Knoten mit *Ausgangswert* scheinbar nicht immer der Konvention folgen, dass die IDs größerer Instanzen zuerst entfernt werden.
+Beachten Sie, dass sich Startknoten unterscheiden. Sie folgen nicht notwendigerweise der Konvention, dass die größeren Instanz-IDs zuerst entfernt werden.
 
 Sobald der zu entfernende Knoten gefunden wurde, kann er mit denselben `FabricClient`- und `IAzure`-Instanzen wie zuvor deaktiviert und entfernt werden.
 

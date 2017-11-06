@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/31/2017
 ms.author: sujayt
-ms.openlocfilehash: f52520f88d36914d4cad7c8aea4fb21e44b3cc9d
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 34255e8ada8dfb00b3c02ca2ab22f94bd3e0954d
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren aus Azure in Azure
 
@@ -145,8 +145,8 @@ Mit Site Recovery migrierte virtuelle Computer | Unterstützt | Wenn ein VMware-
 
 **Konfiguration** | **Unterstützt/Nicht unterstützt.** | **Hinweise:**
 --- | --- | ---
-Maximale Datenträgergröße für das Betriebssystem | 1023 GB | Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
-Maximale Größe des Datenträgers für Daten | 1023 GB | Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
+Maximale Datenträgergröße für das Betriebssystem | 2.048 GB | Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
+Maximale Größe des Datenträgers für Daten | 4095 GB | Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
 Anzahl von Datenträgern für Daten | Bis zu 64, sofern von einer bestimmten Größe für virtuelle Azure-Computer unterstützt | Weitere Informationen finden Sie unter [Größen für virtuelle Azure-Computer](../virtual-machines/windows/sizes.md).
 Temporärer Datenträger | Immer von der Replikation ausgeschlossen | Temporäre Datenträger sind immer von der Replikation ausgeschlossen. Gemäß den Azure-Richtlinien sollten Sie keine persistenten Daten auf einem temporären Datenträger speichern. Unter [Temporärer Datenträger für virtuelle Azure-Computer](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk) finden Sie weitere Informationen.
 Datenänderungsrate auf dem Datenträger | Maximal 6 Mbit/s pro Datenträger | Wenn die durchschnittliche Datenänderungsrate auf dem Datenträger dauerhaft über 6 Mbit/s liegt, kann die Replikation nicht folgen. Wenn nur gelegentlich viele Daten anfallen und die Datenänderungsrate zeitweise über 6 Mbit/s liegt und dann zurückgeht, kann die Replikation folgen. In diesem Fall kann es möglicherweise zu etwas verzögerten Wiederherstellungspunkten kommen.

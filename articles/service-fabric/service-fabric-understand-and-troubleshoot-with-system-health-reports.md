@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: oanapl
-ms.openlocfilehash: 21f04c1b01033adcef7b7d73c710dd2b4590f76f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b02b1260cedcade9bf69a99453ab0f5aa2c3c7b1
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Verwenden von Systemintegritätsberichten für die Problembehandlung
 Azure Service Fabric-Komponenten erstellen direkt Integritätsberichte für alle Entitäten im Cluster. Im [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden Entitäten basierend auf den Systemberichten erstellt und gelöscht. Darüber hinaus werden sie in einer Hierarchie organisiert, in der Interaktionen zwischen den Entitäten erfasst werden.
@@ -101,6 +101,13 @@ Der Service Fabric Load Balancer gibt eine Warnung aus, wenn eine Verletzung ein
 * **SourceId**: System.PLB
 * **Property**: Beginnt mit **Capacity**.
 * **Next steps**: Überprüfen Sie die bereitgestellten Metriken, und zeigen Sie die aktuelle Kapazität auf dem Knoten an.
+
+### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>Nichtübereinstimmung der Knotenkapazität für Ressourcenkontrollmetriken
+System.Hosting gibt eine Warnung aus, wenn definierte Knotenkapazitäten im Clustermanifest größer sind als die tatsächlichen Knotenkapazitäten für Ressourcenkontrollmetriken (Arbeitsspeicher und CPU-Kerne). Der Integritätsbericht wird angezeigt, wenn das erste Dienstpaket, das [Ressourcenkontrolle](service-fabric-resource-governance.md) verwendet, für einen angegebenen Knoten registriert wird.
+
+* **SourceId**: System.Hosting
+* **Eigenschaft**: ResourceGovernance
+* **Nächste Schritte**: Dies kann ein Problem darstellen, weil die Kontrolle von Dienstpaketen nicht wie erwartet erzwungen wird und [Ressourcenkontrolle](service-fabric-resource-governance.md) nicht ordnungsgemäß funktioniert. Aktualisieren Sie das Clustermanifest mit den richtigen Knotenkapazitäten für diese Metriken, oder geben Sie sie überhaupt nicht an, und lassen Sie Service Fabric verfügbare Ressourcen automatisch erkennen.
 
 ## <a name="application-system-health-reports"></a>Systemintegritätsberichte für Anwendungen
 **System.CM**steht für den Cluster-Manager-Dienst und ist die Autorität, die die Informationen zu einer Anwendung verwaltet.
@@ -815,6 +822,13 @@ System.Hosting meldet einen Fehler, wenn die Überprüfung während des Upgrades
 * **SourceId**: System.Hosting
 * **Property**: Verwendet das Präfix **FabricUpgradeValidation** und enthält die Upgradeversion.
 * **Description**: Verweist auf den aufgetretenen Fehler.
+
+### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>Nicht definierte Kapazität des Knotens für Ressourcenkontrollmetriken
+System.Hosting gibt eine Warnung aus, wenn im Clustermanifest keine Knotenkapazitäten definiert sind und die Konfiguration für die automatische Erkennung deaktiviert ist. Service Fabric gibt eine Integritätswarnung aus, wenn ein Dienstpaket, das [Ressourcenkontrolle](service-fabric-resource-governance.md) verwendet, für einen angegebenen Knoten registriert wird.
+
+* **SourceId**: System.Hosting
+* **Eigenschaft**: ResourceGovernance
+* **Nächste Schritte**: Die bevorzugte Methode für die Umgehung dieses Problems besteht darin, das Clustermanifest so zu ändern, dass die automatische Erkennung der verfügbaren Ressourcen aktiviert wird. Eine andere Möglichkeit besteht im Aktualisieren des Clustermanifests mit richtig angegebenen Knotenkapazitäten für diese Metriken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Anzeigen von Service Fabric-Integritätsberichten](service-fabric-view-entities-aggregated-health.md)
