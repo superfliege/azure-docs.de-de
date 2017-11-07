@@ -12,22 +12,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/17
+ms.date: 10/24/2017
 ms.author: elioda
-ms.openlocfilehash: a7650104eda58923558892f6f0f6666d16dbce28
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd047b8618f6e6814e0656ac2ab19e30016016fa
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
-# <a name="reference---iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>Referenz – IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting
+# <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting
 
 IoT Hub bietet eine leistungsstarke, SQL-ähnliche Sprache zum Abrufen von Informationen zu [Gerätezwillingen][lnk-twins], [Aufträgen][lnk-jobs] und [Nachrichtenrouting][lnk-devguide-messaging-routes]. Dieser Artikel enthält Folgendes:
 
 * Eine Einführung in die wichtigsten Features der IoT Hub-Abfragesprache
 * Eine ausführliche Beschreibung der Sprache
 
-## <a name="get-started-with-device-twin-queries"></a>Erste Schritte mit Gerätezwillingsabfragen
+## <a name="device-twin-queries"></a>Gerätezwillingabfragen
 [Gerätezwillinge][lnk-twins] können beliebige JSON-Objekte als Tags und Eigenschaften enthalten. In IoT Hub können Sie Gerätezwillinge als einzelnes JSON-Dokument abfragen, das alle Informationen zum Gerätezwilling enthält.
 Angenommen, Ihre IoT Hub-Gerätezwillinge weisen die folgende Struktur auf:
 
@@ -80,15 +80,14 @@ SELECT * FROM devices
 > [!NOTE]
 > [Azure IoT SDKs][lnk-hub-sdks] unterstützen das Paging von umfangreichen Ergebnissen.
 
-IoT Hub ermöglicht beim Abrufen von Gerätezwillingen das Filtern mit beliebigen Bedingungen. Beispielsweise
+IoT Hub ermöglicht beim Abrufen von Gerätezwillingen das Filtern mit beliebigen Bedingungen. Verwenden Sie z. B. die folgende Abfrage, um Gerätezwillinge zu erhalten, bei denen das Tag **location.region** auf **US** festgelegt ist:
 
 ```sql
 SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-werden die Gerätezwillinge abgerufen, deren Tag **location.region** auf **US** festgelegt ist.
-Boolesche Operatoren und arithmetische Vergleiche werden ebenfalls unterstützt. Beispielsweise
+Boolesche Operatoren und arithmetische Vergleiche werden ebenfalls unterstützt. Verwenden Sie z. B. die folgende Abfrage, um Gerätezwillinge in den USA abzurufen, die so konfiguriert sind, dass sie Telemetriedaten häufiger als jede Minute senden:
 
 ```sql
 SELECT * FROM devices
@@ -96,23 +95,23 @@ WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
-werden alle Gerätezwillinge abgerufen, die sich in den USA befinden und so konfiguriert sind, dass Telemetriedaten seltener als minütlich gesendet werden. Zur Vereinfachung können auch Arraykonstanten mit den Operatoren **IN** und **NIN** (nicht IN) verwendet werden. Beispielsweise
+Zur Vereinfachung können auch Arraykonstanten mit den Operatoren **IN** und **NIN** (nicht IN) verwendet werden. Verwenden Sie z. B. die folgende Abfrage, um Gerätezwillinge abzurufen, die WLAN- oder Kabelverbindungen melden:
 
 ```sql
 SELECT * FROM devices
 WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-werden alle Gerätezwillinge abgerufen, die WLAN oder eine kabelgebundene Verbindung gemeldet haben. Es ist häufig erforderlich, alle Gerätezwillinge zu ermitteln, die eine bestimmte Eigenschaft enthalten. IoT Hub unterstützt zu diesem Zweck die Funktion `is_defined()`. Beispielsweise
+Es ist häufig erforderlich, alle Gerätezwillinge zu ermitteln, die eine bestimmte Eigenschaft enthalten. IoT Hub unterstützt zu diesem Zweck die Funktion `is_defined()`. Verwenden Sie z. B. die folgende Abfrage, um Gerätezwillinge abzurufen, die die `connectivity`-Eigenschaft definieren:
 
 ```SQL
 SELECT * FROM devices
 WHERE is_defined(properties.reported.connectivity)
 ```
 
-werden alle Gerätezwillinge abgerufen, mit denen die gemeldete `connectivity`-Eigenschaft definiert wird. Die vollständige Referenz zu den Filtermöglichkeiten finden Sie im Abschnitt zur [WHERE-Klausel][lnk-query-where].
+Die vollständige Referenz zu den Filtermöglichkeiten finden Sie im Abschnitt zur [WHERE-Klausel][lnk-query-where].
 
-Gruppierungen und Aggregationen werden ebenfalls unterstützt. Beispiel:
+Gruppierungen und Aggregationen werden ebenfalls unterstützt. Verwenden Sie z. B. die folgende Abfrage, um die Anzahl von Geräten mit dem jeweiligen Status für die Telemetriekonfiguration zu ermitteln:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -121,7 +120,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-Gibt die Anzahl der Geräte in jedem Telemetriekonfigurationsstatus zurück.
+Diese Gruppierungsabfrage würde ein ähnliches Ergebnis wie im folgenden Beispiel zurückgegeben. Hier melden drei Geräte eine erfolgreiche Konfiguration, zwei wenden die Konfiguration noch an und ein Gerät hat einen Fehler gemeldet. 
 
 ```json
 [
@@ -140,8 +139,6 @@ Gibt die Anzahl der Geräte in jedem Telemetriekonfigurationsstatus zurück.
 ]
 ```
 
-Das vorausgehende Beispiel veranschaulicht eine Situation, in der drei Geräte eine erfolgreiche Konfiguration gemeldet haben, zwei die Konfiguration noch übernehmen und eines einen Fehler gemeldet hat.
-
 ### <a name="c-example"></a>C#-Beispiel
 Die Abfragefunktion wird durch das [C#-Dienst-SDK][lnk-hub-sdks] in der **RegistryManager**-Klasse verfügbar gemacht.
 Es folgt ein Beispiel für eine einfache Abfrage:
@@ -158,8 +155,8 @@ while (query.HasMoreResults)
 }
 ```
 
-Beachten Sie, wie das **query**-Objekt mit einer Seitengröße (bis zu 1.000) instanziiert wird und dann mehrere Seiten durch mehrmaliges Aufrufen der **GetNextAsTwinAsync**-Methoden abgerufen werden können.
-Beachten Sie, dass das query-Objekt mehrmals **Next\*** verfügbar macht – je nach der für die Abfrage benötigten Deserialisierung, z.B. Gerätezwillings- oder Auftragsobjekte oder reiner JSON-Code für Projektionen.
+Beachten Sie, wie das **query**-Objekt mit einer Seitengröße (bis zu 100) instanziiert wird und dann mehrere Seiten durch mehrmaliges Aufrufen der **GetNextAsTwinAsync**-Methoden abgerufen werden können.
+Beachten Sie, dass das query-Objekt mehrmals **Next*** verfügbar macht – je nach der für die Abfrage benötigten Deserialisierung, z. B. Gerätezwillings- oder Auftragsobjekte oder reiner JSON-Code für Projektionen.
 
 ### <a name="nodejs-example"></a>Node.js-Beispiel
 Die Abfragefunktion wird durch das [Azure IoT-Dienst-SDK für Node.js][lnk-hub-sdks] im **Registry-Objekt** verfügbar gemacht.
@@ -184,8 +181,8 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-Beachten Sie, wie das **query**-Objekt mit einer Seitengröße (bis zu 1.000) instanziiert wird und dann mehrere Seiten durch mehrmaliges Aufrufen der **nextAsTwin**-Methoden abgerufen werden können.
-Beachten Sie, dass das query-Objekt mehrmals **Next\*** verfügbar macht – je nach der für die Abfrage benötigten Deserialisierung, z.B. Gerätezwillings- oder Auftragsobjekte oder reiner JSON-Code für Projektionen.
+Beachten Sie, wie das **query**-Objekt mit einer Seitengröße (bis zu 100) instanziiert wird und dann mehrere Seiten durch mehrmaliges Aufrufen der **nextAsTwin**-Methoden abgerufen werden können.
+Beachten Sie, dass das query-Objekt mehrmals **Next*** verfügbar macht – je nach der für die Abfrage benötigten Deserialisierung, z. B. Gerätezwillings- oder Auftragsobjekte oder reiner JSON-Code für Projektionen.
 
 ### <a name="limitations"></a>Einschränkungen
 > [!IMPORTANT]
@@ -242,7 +239,7 @@ WHERE devices.jobs.deviceId = 'myDeviceId'
 
 Beachten Sie, wie diese Abfrage den gerätespezifischen Status (und möglicherweise die direkte Antwortmethode) jedes zurückgegebenen Auftrags bereitstellt.
 Es ist auch möglich, mit beliebigen booleschen Bedingungen alle Objekteigenschaften in der Sammlung **devices.jobs** zu filtern.
-Die folgende Abfrage
+Verwenden Sie z. B. die folgende Abfrage, um alle abgeschlossenen Aktualisierungsaufträge von Gerätezwillingen abzurufen, die nach September 2016 für ein bestimmtes Gerät erstellt wurden:
 
 ```sql
 SELECT * FROM devices.jobs
@@ -252,9 +249,7 @@ WHERE devices.jobs.deviceId = 'myDeviceId'
     AND devices.jobs.createdTimeUtc > '2016-09-01'
 ```
 
-ruft beispielsweise alle abgeschlossen Gerätezwilling-Aktualisierungsaufträge für das Gerät **myDeviceId** ab, die nach September 2016 erstellt wurden.
-
-Die Ergebnisse pro Gerät können auch in einem einzelnen Auftrag abgerufen werden.
+Sie können auch die Ergebnisse pro Gerät eines einzelnen Auftrags abrufen.
 
 ```sql
 SELECT * FROM devices.jobs
@@ -268,11 +263,11 @@ Derzeit wird für Abfragen von **devices.jobs** Folgendes nicht unterstützt:
 * Bedingungen, die zusätzlich zu Auftragseigenschaften auf einen Gerätezwilling verweisen (siehe vorausgehender Abschnitt).
 * Durchführung von Aggregationen, z.B. Zählen, Durchschnittsbildung, Gruppieren.
 
-## <a name="get-started-with-device-to-cloud-message-routes-query-expressions"></a>Erste Schritte mit D2C-Nachrichtenrouten-Abfrageausdrücken
+## <a name="device-to-cloud-message-routes-query-expressions"></a>D2C-Nachrichtenrouten-Abfrageausdrücke
 
 Mit [D2C-Routen][lnk-devguide-messaging-routes] können Sie IoT Hub dazu konfigurieren, D2C-Nachrichten basierend auf Ausdrücken, die für einzelne Nachrichten ausgewertet werden, an verschiedene Endpunkte zu senden.
 
-Die [Routenbedingung][lnk-query-expressions] verwendet die gleiche IoT Hub-Abfragesprache wie Bedingungen in Zwillings- und Auftragsabfragen. Routenbedingungen werden anhand von Nachrichtenheadern und Nachrichtentext ausgewertet. Ihr Abfrageausdruck für das Routing kann nur Nachrichtenheader, nur den Nachrichtentext oder sowohl Nachrichtenheader als auch Nachrichtentext umfassen. IoT Hub geht von einem bestimmten Schema für die Header und Nachrichtentexte aus, um Nachrichten weiterzuleiten. In den folgenden Abschnitten wird beschrieben, was für das ordnungsgemäße Routing in IoT Hub erforderlich ist:
+Die [Routenbedingung][lnk-query-expressions] verwendet die gleiche IoT Hub-Abfragesprache wie Bedingungen in Zwillings- und Auftragsabfragen. Routenbedingungen werden anhand von Nachrichtenheadern und Nachrichtentext ausgewertet. Ihr Abfrageausdruck für das Routing kann nur Nachrichtenheader, nur den Nachrichtentext oder sowohl Nachrichtenheader als auch Nachrichtentext umfassen. IoT Hub geht von einem bestimmten Schema für Header und Nachrichtentext aus, um Nachrichten zu routen. In den folgenden Abschnitten wird beschrieben, was für IoT Hub für das ordnungsgemäße Routing erforderlich ist.
 
 ### <a name="routing-on-message-headers"></a>Routing nach Nachrichtenheader
 
@@ -330,7 +325,7 @@ Im Abschnitt [Ausdrücke und Bedingungen][lnk-query-expressions] finden Sie die 
 
 ### <a name="routing-on-message-bodies"></a>Routing nach Nachrichtentext
 
-IoT Hub kann nur basierend auf dem Inhalt des Nachrichtentexts weiterleiten, wenn der Nachrichtentext ordnungsgemäß in einem der Formate UTF-8, UTF-16 oder UTF-32 JSON-codiert wurde. Sie müssen den Inhaltstyp der Nachricht auf `application/json` und die Inhaltscodierung im Nachrichtenheader auf eine der unterstützten UTF-Codierungen festlegen, damit IoT Hub die Nachricht basierend auf dem Inhalt des Nachrichtentexts weiterleiten kann. Wenn einer der Header nicht angegeben wurde, versucht IoT Hub nicht, etwaige Abfrageausdrücke im Zusammenhang mit dem Text für die Meldung auszuwerten. Wenn Ihre Nachricht keine JSON-Nachricht ist oder wenn die Nachricht den Inhaltstyp und die Inhaltscodierung nicht angibt, können Sie trotzdem das Nachrichtenrouting für das Weiterleiten der Nachricht basierend auf den Nachrichtenheadern verwenden.
+IoT Hub kann nur basierend auf dem Inhalt des Nachrichtentexts weiterleiten, wenn der Nachrichtentext ordnungsgemäß in einem der Formate UTF-8, UTF-16 oder UTF-32 JSON-codiert wurde. Legen Sie den Inhaltstyp der Nachricht auf `application/json` und die Inhaltscodierung im Nachrichtenheader auf eine der unterstützten UTF-Codierungen fest. Wenn einer der Header nicht angegeben wurde, versucht IoT Hub nicht, etwaige Abfrageausdrücke im Zusammenhang mit dem Text für die Meldung auszuwerten. Wenn Ihre Nachricht keine JSON-Nachricht ist oder wenn die Nachricht den Inhaltstyp und die Inhaltscodierung nicht angibt, können Sie trotzdem das Nachrichtenrouting für das Weiterleiten der Nachricht basierend auf den Nachrichtenheadern verwenden.
 
 Sie können im Abfrageausdruck `$body` für das Weiterleiten der Nachricht verwenden. Sie können einen einfachen Textverweis, einen Textarrayverweis oder mehrere Textverweise in den Abfrageausdruck einfügen. Der Abfrageausdruck kann auch einen Textverweis mit einem Verweis auf den Nachrichtenheader kombinieren. Die folgenden Abfrageausdrücke sind beispielsweise sämtlich gültig:
 
@@ -343,7 +338,7 @@ $body.Weather.Temperature = 50 AND Status = 'Active'
 ```
 
 ## <a name="basics-of-an-iot-hub-query"></a>Grundlagen von IoT Hub-Abfragen
-Jede IoT Hub-Abfrage besteht aus einer SELECT- und einer FROM-Klausel sowie optionalen WHERE- und GROUP BY-Klauseln. Jede Abfrage wird für eine Sammlung von JSON-Dokumenten ausgeführt, z.B. Gerätezwillinge. Die FROM-Klausel zeigt die Dokumentsammlung an, die durchlaufen werden soll (**devices** oder **devices.jobs**). Anschließend wird der Filter in der WHERE-Klausel angewendet. Mit Aggregationen werden die Ergebnisse dieses Schritts gemäß der GROUP BY-Klausel gruppiert, und es wird für jede Gruppe eine Zeile gemäß der SELECT-Klausel generiert.
+Jede IoT Hub-Abfrage besteht aus einer SELECT- und einer FROM-Klausel mit optionalen WHERE- und GROUP BY-Klauseln. Jede Abfrage wird für eine Sammlung von JSON-Dokumenten ausgeführt, z.B. Gerätezwillinge. Die FROM-Klausel zeigt die Dokumentsammlung an, die durchlaufen werden soll (**devices** oder **devices.jobs**). Anschließend wird der Filter in der WHERE-Klausel angewendet. Mit Aggregationen werden die Ergebnisse dieses Schritts gemäß der GROUP BY-Klausel gruppiert, und es wird für jede Gruppe eine Zeile gemäß der SELECT-Klausel generiert.
 
 ```sql
 SELECT <select_list>
@@ -361,7 +356,7 @@ Die **WHERE <Filterbedingung>**-Klausel ist optional. Sie gibt eine oder mehrere
 Die zulässigen Bedingungen werden im Abschnitt [Ausdrücke und Bedingungen][lnk-query-expressions] beschrieben.
 
 ## <a name="select-clause"></a>Die SELECT-Klausel
-Die SELECT-Klausel (**SELECT <Liste>**) ist obligatorisch und gibt an, welche Werte von der Abfrage abgerufen werden. Sie gibt die JSON-Werte an, mit denen die neuen JSON-Objekte erstellt werden sollen.
+Die **SELECT <Liste>**-Klausel ist obligatorisch und gibt an, welche Werte von der Abfrage abgerufen werden. Sie gibt die JSON-Werte an, mit denen die neuen JSON-Objekte erstellt werden sollen.
 Für jedes Element der gefilterten (und optional gruppierten) Teilmenge der FROM-Sammlung generiert die Projektionsphase ein neues JSON-Objekt, das aus den in der SELECT-Klausel angegebenen Werten erstellt wird.
 
 Dies ist die Grammatik der SELECT-Klausel:
@@ -386,9 +381,9 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-Dabei bezieht sich **attribute_name** auf jede Eigenschaft des JSON-Dokuments in der FROM-Sammlung. Im Abschnitt [Erste Schritte mit Gerätezwillingsabfragen][lnk-query-getstarted] finden Sie einige Beispiele für SELECT-Klauseln.
+**Attribute_name** bezieht sich auf jede Eigenschaft des JSON-Dokuments in der FROM-Sammlung. Im Abschnitt [Erste Schritte mit Gerätezwillingsabfragen][lnk-query-getstarted] finden Sie einige Beispiele für SELECT-Klauseln.
 
-Derzeit werden andere Auswahlklauseln als **SELECT\*** nur in Aggregatabfragen für Gerätezwillinge unterstützt.
+Derzeit werden andere Auswahlklauseln als **SELECT*** nur in Aggregatabfragen für Gerätezwillinge unterstützt.
 
 ## <a name="group-by-clause"></a>GROUP BY-Klausel
 Die **GROUP BY <Gruppierungsspezifikation>**-Klausel ist ein optionaler Schritt, der nach dem in der WHERE-Klausel angegebenen Filter und vor der in der SELECT-Klausel angegebenen Projektion ausgeführt werden kann. Sie gruppiert Dokumente anhand des Werts eines Attributs. Diese Gruppen werden verwendet, um aggregierte Werte gemäß der SELECT-Klausel zu generieren.
@@ -411,14 +406,14 @@ GROUP BY <group_by_element>
     | < group_by_element > '.' attribute_name
 ```
 
-Dabei bezieht sich **attribute_name** auf jede Eigenschaft des JSON-Dokuments in der FROM-Sammlung.
+**Attribute_name** bezieht sich auf jede Eigenschaft des JSON-Dokuments in der FROM-Sammlung.
 
 Die GROUP BY-Klausel wird derzeit nur für Abfragen von Gerätezwillingen unterstützt.
 
 ## <a name="expressions-and-conditions"></a>Ausdrücke und Bedingungen
 Auf hoher Ebene wird ein *Ausdruck*:
 
-* in eine Instanz eines JSON-Typs (z.B. boolescher Wert, Zahl, Zeichenfolge, Array oder Objekt) ausgewertet und
+* in eine Instanz eines JSON-Typs (z. B. boolescher Wert, Zahl, Zeichenfolge, Array oder Objekt) ausgewertet.
 * durch das Ändern von Daten aus dem JSON-Dokument des Geräts und Konstanten mit integrierten Operatoren und Funktionen definiert.
 
 *Bedingungen* sind Ausdrücke, die als boolescher Wert ausgewertet werden. Jede Konstante außer dem booleschen Wert **true** wird als **false** betrachtet (einschließlich **NULL**, **undefiniert**, jeder Objekt- oder Arrayinstanz, jeder Zeichenfolge und selbstverständlich des booleschen Werts **false**).
@@ -451,7 +446,7 @@ Die Syntax für Ausdrücke lautet:
 <array_constant> ::= '[' <constant> [, <constant>]+ ']'
 ```
 
-Hinweis:
+Informationen dazu, wofür die einzelnen Symbole in der Ausdruckssyntax stehen, finden Sie in der folgenden Tabelle:
 
 | Symbol | Definition |
 | --- | --- |
@@ -460,14 +455,14 @@ Hinweis:
 | function_name| Eine beliebige im Abschnitt [Funktionen](#functions) aufgelistete Funktion. |
 | decimal_literal |Ein Gleitkommawert, ausgedrückt in Dezimalschreibweise. |
 | hexadecimal_literal |Eine Zahl, ausgedrückt durch die Zeichenfolge „0x“ gefolgt von einer Zeichenfolge von Hexadezimalzahlen. |
-| string_literal |Zeichenfolgenliterale sind Unicode-Zeichenfolgen, die durch eine Sequenz aus null oder mehr Unicode-Zeichen oder Escapesequenzen dargestellt werden. Zeichenfolgenliterale werden in einfache Anführungszeichen (Apostrophen: ') oder doppelte Anführungszeichen (Anführungszeichen: ") eingeschlossen. Zulässige Escapezeichen: `\'`, `\"`, `\\`, `\uXXXX` für Unicode-Zeichen, die durch 4 Hexadezimalstellen definiert werden. |
+| string_literal |Zeichenfolgenliterale sind Unicode-Zeichenfolgen, die durch eine Sequenz aus null oder mehr Unicode-Zeichen oder Escapesequenzen dargestellt werden. Zeichenfolgenliterale werden in einfache Anführungszeichen oder doppelte Anführungszeichen eingeschlossen. Zulässige Escapezeichen: `\'`, `\"`, `\\`, `\uXXXX` für Unicode-Zeichen, die durch 4 Hexadezimalstellen definiert werden. |
 
 ### <a name="operators"></a>Operatoren
 Die folgenden Operatoren werden unterstützt:
 
 | Familie | Operatoren |
 | --- | --- |
-| Arithmetik |+,-,*,/,% |
+| Arithmetik |+, -, *, /, % |
 | Logisch |AND, OR, NOT |
 | Vergleich |=, !=, <, >, <=, >=, <> |
 
@@ -509,7 +504,7 @@ In Routenbedingungen werden die folgenden Zeichenfolgenfunktionen unterstützt:
 
 | Funktion | Beschreibung |
 | -------- | ----------- |
-| CONCAT(x, …) | Gibt eine Zeichenfolge zurück, die das Ergebnis der Verkettung von zwei oder mehr Zeichenfolgenwerten darstellt. |
+| CONCAT(x, y, …) | Gibt eine Zeichenfolge zurück, die das Ergebnis der Verkettung von zwei oder mehr Zeichenfolgenwerten darstellt. |
 | LENGTH(x) | Gibt die Anzahl der Zeichen im angegebenen Zeichenfolgenausdruck zurück.|
 | LOWER(x) | Gibt eine Zeichenfolge zurück, nachdem Großbuchstaben in Kleinbuchstaben konvertiert wurden. |
 | UPPER(x) | Gibt eine Zeichenfolge zurück, nachdem Kleinbuchstaben in Großbuchstaben konvertiert wurden. |
