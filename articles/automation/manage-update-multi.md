@@ -1,24 +1,24 @@
 ---
 title: "Verwalten von Updates für mehrere virtuelle Azure-Computer | Microsoft-Dokumentation"
-description: Informationen zum Integrieren virtueller Azure-Computer zum Verwalten von Updates.
-services: operations-management-suite
+description: "In diesem Thema wird beschrieben, wie Sie Updates für virtuelle Computer verwalten."
+services: automation
 documentationcenter: 
 author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
-ms.service: operations-management-suite
+ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/25/2017
-ms.author: eslesar
-ms.openlocfilehash: 89bf87f27fdf276068cba261fc6ae1660307e0b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/31/2017
+ms.author: magoedte;eslesar
+ms.openlocfilehash: 80a6caff51631637825d560d270198be0336e806
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Verwalten von Updates für mehrere virtuelle Azure-Computer
 
@@ -27,10 +27,46 @@ In Ihrem [Azure Automation](automation-offering-get-started.md)-Konto können Si
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Damit Sie die Schritte in dieser Anleitung ausführen können, brauchen Sie Folgendes:
+Zum Verwenden der Updateverwaltung benötigen Sie Folgendes:
 
-* Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](automation-sec-configure-azure-runas-account.md)(Ausführendes Azure-Konto).
-* Einen virtuellen Computer gemäß dem Azure Resource Manager-Modell (nicht klassisch). Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+* Ein Azure Automation-Konto. Eine Anleitung zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Erste Schritte mit Azure Automation](automation-offering-get-started.md).
+
+* Einen virtuellen Computer bzw. einen Computer, auf dem eines der unterstützten Betriebssysteme installiert ist.
+
+## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
+
+Die Updateverwaltung wird für die unten angegebenen Betriebssysteme unterstützt.
+
+### <a name="windows"></a>Windows
+
+* Windows Server 2008 und höher und Updatebereitstellungen für Windows Server 2008 R2 SP1 und höher.  Server Core- und Nano Server-Installationsoptionen werden nicht unterstützt.
+
+    > [!NOTE]
+    > Damit die Bereitstellung von Updates für Windows Server 2008 R2 SP1 unterstützt wird, sind .NET Framework 4.5 und WMF 5.0 oder höher erforderlich.
+    > 
+* Windows-Clientbetriebssysteme werden nicht unterstützt.
+
+Windows-Agents müssen entweder für die Kommunikation mit einem WSUS-Server (Windows Server Update Services) konfiguriert sein oder über Zugriff auf Microsoft-Update verfügen.
+
+> [!NOTE]
+> Der Windows-Agent kann nicht gleichzeitig mit System Center Configuration Manager verwaltet werden.
+>
+
+### <a name="linux"></a>Linux
+
+* CentOS 6 (x86/x64) und 7 (x64)  
+* Red Hat Enterprise 6 (x86/x64) und 7 (x64)  
+* SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)  
+* Ubuntu 12.04 LTS und höher (x86/x64)   
+
+> [!NOTE]  
+> Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewendet werden, konfigurieren Sie das „Unattended-Upgrade“-Paket erneut, um automatische Updates zu deaktivieren. Informationen zu dieser Konfiguration finden Sie im [Thema zu automatischen Updates im Ubuntu-Serverhandbuch](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+
+Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.
+
+> [!NOTE]
+> Ein OMS-Agent für Linux, der für das Melden an mehrere OMS-Arbeitsbereiche konfiguriert ist, wird für diese Lösung nicht unterstützt.  
+>
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Aktivieren der Updateverwaltung für virtuelle Azure-Computer
 
@@ -45,9 +81,36 @@ Damit Sie die Schritte in dieser Anleitung ausführen können, brauchen Sie Folg
 
 Die Updateverwaltung ist für Ihren virtuellen Computer aktiviert.
 
+## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Aktivieren der Updateverwaltung für VMs und Computer, die nicht Azure unterstehen
+
+Eine Anleitung zur Aktivierung der Updateverwaltung für Windows-VMs und -Computer, die nicht Azure unterstehen, finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../log-analytics/log-analytics-windows-agents.md).
+
+Eine Anleitung zur Aktivierung der Updateverwaltung für Linux-VMs und -Computer, die nicht Azure unterstehen, finden Sie unter [Verbinden Ihrer Linux-Computer mit Operations Management Suite (OMS)](../log-analytics/log-analytics-agent-linux.md).
+
 ## <a name="view-update-assessment"></a>Anzeigen der Updatebewertung
 
 Sobald die **Updateverwaltung** aktiviert ist, wird der Bildschirm **Updateverwaltung** angezeigt. Auf der Registerkarte **Fehlende Updates** wird eine Liste der fehlenden Updates angezeigt.
+
+## <a name="data-collection"></a>Datensammlung
+
+Mit Agents, die auf VMs und Computern installiert sind, werden Daten zu Updates gesammelt und an die Azure-Updateverwaltung gesendet.
+
+### <a name="supported-agents"></a>Unterstützte Agents
+
+In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Lösung unterstützt werden.
+
+| Verbundene Quelle | Unterstützt | Beschreibung |
+| --- | --- | --- |
+| Windows-Agents |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates aus Windows-Agents und initiiert die Installation von erforderlichen Updates. |
+| Linux-Agents |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Linux-Agents und initiiert die Installation von erforderlichen Updates für unterstützte Distributionen. |
+| Operations Manager-Verwaltungsgruppe |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Agents in einer verbundenen Verwaltungsgruppe. |
+| Azure-Speicherkonto |Nein |Azure-Speicher enthält keine Informationen zu Systemupdates. |
+
+### <a name="collection-frequency"></a>Sammlungshäufigkeit
+
+Für jeden verwalteten Windows-Computer wird zweimal pro Tag ein Scanvorgang durchgeführt. Alle 15 Minuten wird die Windows-API aufgerufen, um den letzten Updatezeitpunkt abzufragen und zu ermitteln, ob sich der Status geändert hat. Wenn ja, wird ein Konformitätsscan initiiert.  Für jeden verwalteten Linux-Computer wird alle drei Stunden ein Scanvorgang durchgeführt.
+
+Es kann zwischen 30 Minuten und sechs Stunden dauern, bis im Dashboard aktualisierte Daten von verwalteten Computern angezeigt werden.
 
 ## <a name="schedule-an-update-deployment"></a>Planen einer Updatebereitstellung
 
@@ -107,6 +170,8 @@ Klicken Sie auf die Kachel **Ausgabe**, um den Auftragsdatenstrom des Runbooks a
 
 Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern aus der Bereitstellung anzuzeigen.
 
+Ausführliche Informationen zu den Protokollen, zur Ausgabe und zu den Fehlerinformationen finden Sie unter [Lösung für die Updateverwaltung in OMS](../operations-management-suite/oms-solution-update-management.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Updateverwaltung finden Sie unter [Updateverwaltung](../operations-management-suite/oms-solution-update-management.md).
+* Weitere Informationen zur Updateverwaltung finden Sie unter [Lösung für die Updateverwaltung in OMS](../operations-management-suite/oms-solution-update-management.md).

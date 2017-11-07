@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 6befc5b26f2b01113f1aa813125b33eb66ad6f6a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdf078a0cebf3c36d5916035fb5fd7e47d231abe
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Schema der Definitionssprache für Workflows für Azure Logic Apps
 
@@ -167,7 +167,7 @@ Sie können auch Funktionen innerhalb von Ausdrücken aufrufen. Die folgende Tab
 |Ausdruck|Auswertung|  
 |----------------|----------------|  
 |"@function('Hello')"|Ruft das Funktionselement der Definition mit dem Zeichenfolgenliteral „Hello“ als ersten Parameter auf.|  
-|"@function('It's Cool!')"|Ruft das Funktionselement der Definition mit dem Zeichenfolgenliteral „It's Cool!“ als ersten Parameter auf.|  
+|"@function('It''s Cool!')"|Ruft das Funktionselement der Definition mit dem Zeichenfolgenliteral „It's Cool!“ als ersten Parameter auf.|  
 |"@function().prop1"|Gibt den Wert der Eigenschaft „prop1“ des `myfunction`-Elements der Definition zurück.|  
 |"@function('Hello').prop1"|Ruft das Funktionselement der Definition mit dem Zeichenfolgenliteral „Hello“ als ersten Parameter auf und gibt die Eigenschaft „prop1“ des Objekts zurück.|  
 |"@function(parameters('Hello'))"|Wertet den Parameter „Hello“ aus und übergibt den Wert an die Funktion.|  

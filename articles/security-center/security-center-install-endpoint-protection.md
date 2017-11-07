@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 10/23/2017
 ms.author: terrylan
-ms.openlocfilehash: b3b4a6df431ccdb882dd354aac9cb86a96a81b11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abbcb0a8e0206d78ca94520dfa81ab92506c47af
+ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Behandeln von Endpoint Protection-Problemen mit Azure Security Center
 Azure Security Center überwacht den Status des Antischadsoftware-Schutzes und meldet diesen auf dem Blatt „Endpoint protection issues“ (Endpoint Protection-Probleme). Security Center hebt Probleme wie erkannte Bedrohungen und unzureichenden Schutz hervor, die Ihre virtuellen Computer (VMs) und physischen Computer anfällig für Antischadsoftwarebedrohungen machen können. Mithilfe der Informationen unter **Endpoint protection issues** (Endpoint Protection-Probleme) können Sie die Behandlung der erkannten Probleme planen.
@@ -33,6 +33,11 @@ Security Center meldet folgende Endpoint Protection-Probleme:
    - Kein Echtzeitschutz: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese ist jedoch nicht für Echtzeitschutz konfiguriert.   Der Dienst wurde möglicherweise deaktiviert, oder Security Center kann den Status nicht abrufen, da die Lösung nicht unterstützt wird. Eine Liste mit unterstützten Lösungen finden Sie unter [Partnerintegration in Azure Security Center](security-center-partner-integration.md).
    - Keine Berichterstattung: Von der installierten Antischadsoftware-Lösung werden keine Daten gemeldet.
    - Unbekannt: Eine Antischadsoftware-Lösung ist installiert, aber der Status ist unbekannt, oder es wird ein unbekannter Fehler gemeldet.
+
+   > [!NOTE]
+   > Eine Liste der Sicherheitslösungen für den Endpunktschutz, die in Security Center integriert sind, finden Sie unter [Integrieren von Sicherheitslösungen](security-center-partner-integration.md#integrated-azure-security-solutions).
+   >
+   >
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
 Endpoint Protection-Probleme werden in Security Center als Empfehlung präsentiert.  Wenn Ihre Umgebung für Antischadsoftwarebedrohungen anfällig ist, wird diese Empfehlung unter **Empfehlungen** und unter **Compute** angezeigt. Zum Anzeigen des Dashboards **Endpoint protection issues** (Endpoint Protection-Probleme) muss der Compute-Workflow verwendet werden.

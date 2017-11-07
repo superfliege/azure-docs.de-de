@@ -10,13 +10,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/25/2017
 ms.author: johnkem
-ms.openlocfilehash: a4ceb822e0ec3e1c1dc31ece1db761834e795f6c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 91129da9ef7791a506292d9e13e386a25ee341a8
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie.
@@ -407,6 +407,93 @@ Diese Kategorie enthält Datensätze von Ereignissen im Zusammenhang mit automat
 | properties.LastScaleActionTime | Der Zeitstempel des Zeitpunkts, zu dem die automatische Skalierung aufgetreten ist. |
 | status |Zeichenfolge, die den Status des Vorgangs beschreibt. Gängige Werte sind z.B.: Started, In Progress, Succeeded, Failed, Active, Resolved. |
 | subStatus | In der Regel für die automatische Skalierung null. |
+| eventTimestamp |Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat. |
+| submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
+| subscriptionId |Azure-Abonnement-ID |
+
+## <a name="security"></a>Sicherheit
+Diese Kategorie enthält den Datensatz, der von Warnungen in Azure Security Center generiert wurde. Ein Beispiel für den Typ der Ereignisse, die in dieser Kategorie angezeigt werden, ist „Verdächtige Datei mit doppelter Erweiterung ausgeführt“.
+
+### <a name="sample-event"></a>Beispielereignis
+```json
+{
+    "channels": "Operation",
+    "correlationId": "965d6c6a-a790-4a7e-8e9a-41771b3fbc38",
+    "description": "Suspicious double extension file executed. Machine logs indicate an execution of a process with a suspicious double extension.\r\nThis extension may trick users into thinking files are safe to be opened and might indicate the presence of malware on the system.",
+    "eventDataId": "965d6c6a-a790-4a7e-8e9a-41771b3fbc38",
+    "eventName": {
+        "value": "Suspicious double extension file executed",
+        "localizedValue": "Suspicious double extension file executed"
+    },
+    "category": {
+        "value": "Security",
+        "localizedValue": "Security"
+    },
+    "eventTimestamp": "2017-10-18T06:02:18.6179339Z",
+    "id": "/subscriptions/d4742bb8-c279-4903-9653-9858b17d0c2e/providers/Microsoft.Security/locations/centralus/alerts/965d6c6a-a790-4a7e-8e9a-41771b3fbc38/events/965d6c6a-a790-4a7e-8e9a-41771b3fbc38/ticks/636439033386179339",
+    "level": "Informational",
+    "operationId": "965d6c6a-a790-4a7e-8e9a-41771b3fbc38",
+    "operationName": {
+        "value": "Microsoft.Security/locations/alerts/activate/action",
+        "localizedValue": "Microsoft.Security/locations/alerts/activate/action"
+    },
+    "resourceGroupName": "myResourceGroup",
+    "resourceProviderName": {
+        "value": "Microsoft.Security",
+        "localizedValue": "Microsoft.Security"
+    },
+    "resourceType": {
+        "value": "Microsoft.Security/locations/alerts",
+        "localizedValue": "Microsoft.Security/locations/alerts"
+    },
+    "resourceId": "/subscriptions/d4742bb8-c279-4903-9653-9858b17d0c2e/providers/Microsoft.Security/locations/centralus/alerts/2518939942613820660_a48f8653-3fc6-4166-9f19-914f030a13d3",
+    "status": {
+        "value": "Active",
+        "localizedValue": "Active"
+    },
+    "subStatus": {
+        "value": null
+    },
+    "submissionTimestamp": "2017-10-18T06:02:52.2176969Z",
+    "subscriptionId": "d4742bb8-c279-4903-9653-9858b17d0c2e",
+    "properties": {
+        "accountLogonId": "0x2r4",
+        "commandLine": "c:\\mydirectory\\doubleetension.pdf.exe",
+        "domainName": "hpc",
+        "parentProcess": "unknown",
+        "parentProcess id": "0",
+        "processId": "6988",
+        "processName": "c:\\mydirectory\\doubleetension.pdf.exe",
+        "userName": "myUser",
+        "UserSID": "S-3-2-12",
+        "ActionTaken": "Detected",
+        "Severity": "High"
+    },
+    "relatedEvents": []
+}
+
+```
+
+### <a name="property-descriptions"></a>Beschreibungen der Eigenschaften
+| Elementname | Beschreibung |
+| --- | --- |
+| channels | Immer „Vorgang“ |
+| correlationId | Eine GUID im Zeichenfolgenformat. |
+| Beschreibung |Statische Beschreibung des Sicherheitsereignisses. |
+| eventDataId |Eindeutiger Bezeichner des Sicherheitsereignisses. |
+| eventName |Anzeigename des Sicherheitsereignisses. |
+| id |Eindeutiger Ressourcenbezeichner des Sicherheitsereignisses. |
+| level |Ebene des Ereignisses. Einer der folgenden Werte: „Kritisch“, „Fehler“, „Warnung“, „Information“ oder „Ausführlich“. |
+| ResourceGroupName |Name der Ressourcengruppe für die Ressource. |
+| resourceProviderName |Name des Ressourcenanbieters für die Azure Security Center. Immer „Microsoft.Security“. |
+| resourceType |Der Typ der Ressource, die das Sicherheitsereignis generiert hat, z. B. „Microsoft.Security/locations/alerts“. |
+| resourceId |Ressourcen-ID der Sicherheitswarnung. |
+| operationId |Eine GUID, die von den Ereignissen eines einzelnen Vorgangs gemeinsam genutzt wird. |
+| operationName |Name des Vorgangs. |
+| Eigenschaften |Satz mit `<Key, Value>`-Paaren (Wörterbuch), die Details des Ereignisses beschreiben. Diese Eigenschaften variieren je nach Typ der Sicherheitswarnung. Eine Beschreibung der Warnungstypen, die aus Security Center stammen, finden Sie [auf dieser Seite](../security-center/security-center-alerts-type.md). |
+| properties.Severity |Der Schweregrad. Mögliche Werte sind „Hoch“, „Mittel“ oder „Niedrig“. |
+| status |Zeichenfolge, die den Status des Vorgangs beschreibt. Gängige Werte sind z.B.: Started, In Progress, Succeeded, Failed, Active, Resolved. |
+| subStatus | Für Sicherheitsereignisse in der Regel NULL. |
 | eventTimestamp |Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat. |
 | submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
 | subscriptionId |Azure-Abonnement-ID |

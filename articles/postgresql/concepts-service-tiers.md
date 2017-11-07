@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: article
 ms.date: 05/31/2017
-ms.openlocfilehash: 59ac187e50527517c402a5cc2aa871717dde5650
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ebdced6ac748245faed90949fd0e76c0eacb2d3
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Optionen und Leistung von Azure-Datenbank für PostgreSQL: Überblick über die verfügbaren Funktionen in den einzelnen Tarifen
 Wenn Sie eine Azure-Datenbank für PostgreSQL erstellen, treffen Sie drei Hauptentscheidungen zur Konfiguration der Ressourcen, die diesem Server zugeordnet werden. Diese Entscheidungen beeinflussen die Leistung und Skalierung des Servers.
@@ -27,7 +27,7 @@ Für jeden Tarif stehen je nach Anforderungen der Workload verschiedene Leistung
 > [!IMPORTANT]
 > Solange der Dienst als öffentliche Vorschauversion verfügbar ist, besteht keine garantierte Vereinbarung zum Servicelevel (SLA).
 
-Sie können in einer Instanz von Azure-Datenbank für PostgreSQL-Server eine oder mehrere Datenbanken verwenden. Sie können eine Einzeldatenbank pro Server erstellen, die alle Ressourcen nutzt, oder Sie können mehrere Datenbanken erstellen, um die Ressourcen gemeinsam zu verwenden. 
+Sie können in einer Instanz von Azure-Datenbank für PostgreSQL-Server eine oder mehrere Datenbanken verwenden. Sie können eine Einzeldatenbank pro Server erstellen, damit die Datenbank alle Serverressourcen nutzt, oder Sie können mehrere Datenbanken erstellen, um die Serverressourcen gemeinsam zu verwenden. 
 
 ## <a name="choose-a-pricing-tier"></a>Auswählen eines Tarifs
 In der Vorschauversion gibt es für Azure-Datenbank für PostgreSQL zwei Tarife: Basic und Standard. Der Tarif Premium ist noch nicht verfügbar, wird aber in Kürze angeboten. 
@@ -97,7 +97,7 @@ Sie wählen den Tarif und die Leistungsebene anfänglich beim Erstellen Ihrer In
 
 Das Skalieren der Compute-Einheiten erfolgt unabhängig von der maximalen Speichergröße, die Sie ausgewählt haben.
 
-Wenn Sie die Leistungsebene einer Datenbank ändern, wird im Hintergrund ein Replikat der ursprünglichen Datenbank mit der neuen Leistungsebene erstellt, und anschließend werden die Verbindungen auf dieses Replikat umgestellt. Während dieses Vorgangs gehen keine Daten verloren. Allerdings sind die Verbindungen zur Datenbank inaktiv, während kurz auf das Replikat umgestellt wird. Daher werden möglicherweise einige aktive Transaktionen zurückgesetzt. Dieses Zeitfenster variiert, ist aber durchschnittlich kleiner als vier Sekunden und in mehr als 99 % der Fälle kürzer als 30 Sekunden. Falls im Moment der Verbindungstrennung viele Transaktionen stattfinden, ist das Zeitfenster unter Umständen größer.
+Wenn Sie die Leistungsebene einer Datenbank ändern, wird im Hintergrund ein Replikat der ursprünglichen Datenbank mit der neuen Leistungsebene erstellt, und anschließend werden die Verbindungen auf dieses Replikat umgestellt. Während dieses Vorgangs gehen keine Daten verloren. Allerdings sind die Verbindungen zur Datenbank inaktiv, während kurz auf das Replikat umgestellt wird. Daher werden möglicherweise einige aktive Transaktionen zurückgesetzt. Dieses Zeitfenster variiert, ist aber durchschnittlich kleiner als vier Sekunden und in mehr als 99 % der Fälle kürzer als 30 Sekunden. Falls im Moment der Verbindungstrennung viele Transaktionen stattfinden, ist das Zeitfenster unter Umständen größer.
 
 Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Tarif des Servers vor und nach der Änderung ab. Beispielsweise sollte ein Server beim Ändern von Computeeinheiten in den oder aus dem Tarif Standard bzw. innerhalb dieses Tarifs in wenigen Minuten zentral hochskalieren. Die neuen Eigenschaften für den Server werden erst angewendet, wenn die Änderungen abgeschlossen sind.
 

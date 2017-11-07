@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: kumud
-ms.openlocfilehash: 868d3ee973a03aca82c9775371d9832b7a063e9a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5751cd111d2b1c8a4db2fc3b39f2108e73e9508f
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -251,6 +251,10 @@ Traffic Manager antwortet mit dem DNS-Namen des Endpunkts. Ein IPv6-Endpunkt kan
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Kann ich Traffic Manager mit mehr als einer Web-App in derselben Region verwenden?
 
 Normalerweise wird Traffic Manager verwendet, um Datenverkehr an Anwendungen zu leiten, die in verschiedenen Regionen bereitgestellt wurden. Traffic Manager kann aber auch eingesetzt werden, wenn eine Anwendung über mehr als eine Bereitstellung in derselben Region verfügt. Die Traffic Manager-Azure-Endpunkte lassen es nicht zu, dass demselben Traffic Manager-Profil mehr als ein Web-App-Endpunkt für dieselbe Azure-Region hinzugefügt wird.
+
+### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>Wie werden die Azure-Endpunkte meines Traffic Manager-Profils in eine andere Ressourcengruppe verschoben?
+
+Azure-Endpunkte, die einem Traffic Manager-Profil zugeordnet sind, werden über ihre Ressourcen-IDs nachverfolgt. Wenn eine Azure-Ressource, die als Endpunkt (z. B. öffentliche IP-Adresse, klassischer Clouddienst, WebApp oder anderes Traffic Manager-Profil, das in geschachtelte Weise verwendet wird) verwendet wird, in eine andere Ressourcengruppe verschoben wird, ändert sich ihre Ressourcen-ID. In diesem Szenario müssen Sie das Traffic Manager-Profil derzeit aktualisieren, indem Sie zuerst die Endpunkte löschen und sie dann wieder zum Profil hinzufügen. 
 
 ##  <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 

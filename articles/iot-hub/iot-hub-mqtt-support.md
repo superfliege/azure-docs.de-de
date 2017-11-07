@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/11/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11c35e895d061e6876ac18814025c814449351af
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: f1a3ce746601dc42f04f021f3ba142688abdb7e7
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -77,6 +77,42 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
      Der folgende Teil des Tokens wird im Feld **Kennwort** verwendet, um über MQTT eine Verbindung herzustellen: `SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`.
 
 Für die MQTT-Pakete CONNECT und DISCONNECT löst IoT Hub ein Ereignis im Kanal **Vorgangsüberwachung** aus, das zusätzliche Informationen liefert, mit deren Hilfe Sie Verbindungsprobleme beheben können.
+
+### <a name="tlsssl-configuration"></a>TLS/SSL-Konfiguration
+
+Damit Sie das MQTT-Protokoll direkt verwenden können, *muss* Ihr Client die Verbindung über TLS/SSL herstellen. Wenn Sie versuchen, dies zu überspringen, treten Verbindungsfehler auf.
+
+Möglicherweise müssen Sie das DigiCert Baltimore-Stammzertifikat herunterladen und darauf verweisen, um eine TLS-Verbindung herstellen zu können. Dies ist das Zertifikat, mit dem Azure die Verbindung sichert. Es befindet sich im [Azure-iot-sdk-c-Repository][lnk-sdk-c-certs]. Weitere Informationen zu diesen Zertifikaten finden Sie auf der [Digicert-Website][lnk-digicert-root-certs].
+
+Ein Beispiel zur Implementierung mithilfe der Python-Version der [Paho MQTT-Bibliothek][lnk-paho] von der Eclipse Foundation könnte wie folgt aussehen.
+
+Installieren Sie zunächst die Paho-Bibliothek aus Ihrer Befehlszeilenumgebung:
+
+```
+>pip install paho-mqtt
+```
+
+Implementieren Sie anschließend den Client in einem Python-Skript:
+
+```
+from paho.mqtt import client as mqtt
+import ssl
+  
+path_to_root_cer = "...local\\path\\to\\digicert.cer"
+device_id = "<device id from device registry>"
+sas_token = "<generated SAS token>"
+subdomain = "<iothub subdomain>"
+
+client = mqtt.Client(client_id=device_id, protocol=mqtt.MQTTv311)
+
+client.username_pw_set(username=subdomain+".azure-devices.net/" + device_id, password=sas_token)
+
+client.tls_set(ca_certs=path_to_root_cert, certfile=None, keyfile=None, cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1, ciphers=None)
+client.tls_insecure_set(False)
+
+client.connect(subdomain+".azure-devices.net", port=8883)
+```
+
 
 ### <a name="sending-device-to-cloud-messages"></a>Senden von D2C-Nachrichten
 
@@ -241,3 +277,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-twin-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
 [lnk-devguide-twin]: iot-hub-devguide-device-twins.md
+[lnk-sdk-c-certs]: https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c
+[lnk-digicert-root-certs]: https://www.digicert.com/digicert-root-certificates.htm
+[lnk-paho]: https://pypi.python.org/pypi/paho-mqtt
