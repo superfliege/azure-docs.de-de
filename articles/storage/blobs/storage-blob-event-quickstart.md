@@ -8,18 +8,15 @@ ms.author: cbrooks
 ms.date: 08/18/2017
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 1a489f199bcc955fd14e82d16670d854305b00c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f364d7b25a75012f33a282111c9624d51b65b42f
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-preview"></a>Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt (Vorschauversion)
 
 Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel abonnieren Sie mithilfe der Azure-Befehlszeilenschnittstelle Blob Storage-Ereignisse und lösen das Ereignis aus, um das Ergebnis anzuzeigen. 
-
-> [!IMPORTANT]
-> Für dieses Tutorial müssen Sie für die Vorschauversion von Blob Storage-Ereignissen registriert sein.  Weitere Informationen zum Vorschauprogramm finden Sie [hier](storage-blob-event-overview.md#join-the-preview).
 
 Ereignisse werden üblicherweise an einen Endpunkt gesendet, der auf das Ereignis reagiert (beispielsweise ein Webhook oder eine Azure-Funktion). Zur Vereinfachung des Beispiels in diesem Artikel senden wir die Ereignisse an eine URL, die die Nachrichten lediglich sammelt. Diese URL wird mithilfe eines Open Source-Drittanbietertools namens [RequestBin](https://requestb.in/) erstellt.
 
@@ -55,7 +52,7 @@ Zum Verwenden von Azure Storage benötigen Sie ein Speicherkonto.  Blob Storage-
 BLOB-Speicherkonten sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind mit Ihren bereits vorhandenen allgemeinen Speicherkonten vergleichbar und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von BLOB-Speicherkonten.
 
 > [!NOTE]
-> In der Vorschauversion stehen Blob Storage-Ereignisse nur für Speicherkonten am Standort **westcentralus** zur Verfügung.
+> Event Grid befindet sich derzeit in der Vorschauphase und ist nur für Speicherkonten in den Regionen **westcentralus** oder **westus2** verfügbar.
 
 Ersetzen Sie `<storage_account_name>` durch einen eindeutigen Namen für Ihr Speicherkonto und `<resource_group_name>` durch die zuvor erstellte Ressourcengruppe.
 
