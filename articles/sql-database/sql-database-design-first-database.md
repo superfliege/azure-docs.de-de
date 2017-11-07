@@ -1,6 +1,6 @@
 ---
 title: Entwurf Ihrer ersten Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihre erste Azure SQL-Datenbank erstellen.
+description: Erfahren Sie, wie Sie Ihre erste Azure SQL-Datenbank im Azure-Portal und mit SQL Server Management Studio entwerfen.
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -13,14 +13,14 @@ ms.custom: mvc,develop databases
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: Active
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: 3a58c50d1187b9cca9490ad725b14617b4a98efe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e4848eb366faea134a484c8a494fed6a83203116
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="design-your-first-azure-sql-database"></a>Entwurf Ihrer ersten Azure SQL-Datenbank
 

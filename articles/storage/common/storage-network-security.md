@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: de52e9cb32e28d2f40a56743ed759b5d5d0a63f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8117a5ef9bc4f785256a7a7d70f459529c771a56
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage (Vorschau)
 Azure Storage bietet ein mehrstufiges Sicherheitsmodell, mit dem Sie Ihre Speicherkonten für eine bestimmte Gruppe zulässiger Netzwerke sichern können.  Wenn Netzwerkregeln konfiguriert sind, können nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen.  Anwendungen, die aus einem zulässigen Netzwerk aufgerufen werden, erfordern für den Zugriff auf das Speicherkonto weiterhin eine ordnungsgemäße Autorisierung (einen gültigen Zugriffsschlüssel oder ein gültiges SAS-Token).
@@ -44,7 +44,7 @@ Netzwerkregeln können auf vorhandene Speicherkonten oder während der Erstellun
 
 Sobald Netzwerkregeln angewendet werden, werden sie für alle Anforderungen erzwungen.  SAS-Token, die Zugriff auf einen Dienst unter einer bestimmten IP-Adresse gewähren, **beschränken** den Zugriff des Tokeninhabers, gewähren jedoch keinen neuen Zugriff außerhalb der konfigurierten Netzwerkregeln. 
 
-Datenverkehr virtueller Computer (einschließlich Bereitstellungsvorgängen, des Aufhebens von Bereitstellungen und Datenträger-E/A) ist von Netzwerkregeln **nicht** betroffen.  In der Vorschauversion wird die Sicherung nicht verwalteter Datenträger für geschützte Speicherkonten nicht unterstützt.  Der REST-Zugriff auf Seitenblobs (für Datenträger virtueller Computer verwendet) wird durch Netzwerkregeln geschützt.
+Datenverkehr virtueller Computer (einschließlich Bereitstellungsvorgängen, des Aufhebens von Bereitstellungen und Datenträger-E/A) ist von Netzwerkregeln **nicht** betroffen.  Der REST-Zugriff auf Seitenblobs wird durch Netzwerkregeln geschützt.
 
 Die Funktion „Firewalls und virtuelle Netzwerke“ wird von klassischen Speicherkonten **nicht** unterstützt.
 
@@ -305,6 +305,7 @@ Wenn die Ausnahme „Vertrauenswürdige Microsoft-Dienste“ aktiviert ist, wird
 |Azure HDInsight|Microsoft.HDInsight|Clusterbereitstellung und -installation.  [Weitere Informationen](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-blob-storage).|
 |Azure-Netzwerke|Microsoft.Networking|Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs.  [Weitere Informationen](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-packet-capture-overview).|
 |Azure SQL Data Warehouse|Microsoft.Sql|Import und Export von Daten.  [Weitere Informationen](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-overview-load#load-from-azure-blob-storage).|
+|Azure Backup|Microsoft.RecoveryServices|Sicherung und Wiederherstellung von nicht verwalteten Datenträgern.  [Weitere Informationen](https://docs.microsoft.com/en-us/azure/backup/backup-introduction-to-azure-backup).|
 ||||
 
 ### <a name="storage-analytics-data-access"></a>Zugriff auf Storage Analytics-Daten

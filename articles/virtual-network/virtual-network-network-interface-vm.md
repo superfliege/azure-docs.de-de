@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: 57f95b765b1b116814683a6643db16091c3041f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7df1dfbea8c985907d5330819dc1e7bf1578aafa
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="add-network-interfaces-to-or-remove-from-virtual-machines"></a>Virtuelle Computer: Hinzufügen oder Entfernen von Netzwerkschnittstellenkarten
 
@@ -49,7 +49,7 @@ Sie können Azure PowerShell oder die CLI verwenden, um eine Netzwerkschnittstel
 - Alle VM-Größen unterstützen mindestens zwei Netzwerkschnittstellen, doch einige VM-Größen unterstützen mehr als zwei Netzwerkschnittstellen. In der Vergangenheit unterstützten einige VM-Größen nur eine Netzwerkschnittstelle. Weitere Informationen zur unterstützten Anzahl an Netzwerkschnittstellen der einzelnen VM-Größen finden Sie im entsprechenden Artikel für [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 - In der Vergangenheit konnten Netzwerkschnittstellen nur zu virtuellen Computern hinzugefügt werden, die mehrere Netzwerkschnittstellen unterstützten und mit mindestens zwei Netzwerkschnittstellen erstellt wurden. Es konnte keine Netzwerkschnittstelle zu einem virtuellen Computer hinzugefügt werden, der mit einer Netzwerkschnittstelle erstellt wurde, auch wenn die Größe des virtuellen Computers mehrere Netzwerkschnittstellen unterstützte. Im Gegenzug konnten Sie nur Netzwerkschnittstellen von einem virtuellen Computer mit mindestens drei Netzwerkschnittstellen entfernen, da virtuelle Computer, die mit zwei Netzwerkschnittstellen erstellt wurden, immer mindestens zwei Netzwerkschnittstellen haben mussten. Keine dieser Einschränkungen trifft noch zu. Sie können jetzt einen virtuellen Computer mit einer beliebigen Anzahl von Netzwerkschnittstellen erstellen (bis zu der Anzahl, die von der VM-Größe unterstützt wird) und eine beliebige Anzahl von Netzwerkschnittstellen hinzufügen oder entfernen (bei VMs im Zustand „Beendet [Zuordnung aufgehoben]“), solange der virtuelle Computer immer mindestens eine Netzwerkschnittstelle aufweist.
 - Standardmäßig wird die erste Netzwerkschnittstelle eines virtuellen Computers als *primäre* Netzwerkschnittstelle definiert. Alle anderen Netzwerkschnittstellen auf dem virtuellen Computer sind *sekundäre* Netzwerkschnittstellen.
-- Primären Netzwerkschnittstellen wird von Azure-DHCP-Server ein Standardgateway zugewiesen, sekundären Netzwerkschnittstellen hingegen nicht. Da sekundären Netzwerkschnittstellen kein Standardgateway zugewiesen wird, können sie standardmäßig nicht mit Ressourcen außerhalb ihres Subnetzes kommunizieren. Um sekundäre Netzwerkschnittstellen in einer Windows-VM für die Kommunikation mit Ressourcen außerhalb ihres Subnetzes zu aktivieren, fügen Sie mit dem über eine Windows-Befehlszeile eingegebenen Befehl `route add` dem Betriebssystem Routen hinzu. Da Linux-VMs standardmäßig „schwaches“ Hostrouting verwenden, wird empfohlen, den Datenverkehr für sekundäre Netzwerkschnittstellen auf ein einzelnes Subnetz zu beschränken. Wenn für sekundäre Netzwerkschnittstellen Verbindungen mit Adressen außerhalb des Subnetzes erforderlich sind, aktivieren Sie das richtlinienbasierte Routing, um sicherzustellen, dass für ein- und ausgehenden Datenverkehr dieselbe Netzwerkschnittstelle verwendet wird.
+- Primären Netzwerkschnittstellen wird von Azure-DHCP-Server ein Standardgateway zugewiesen, sekundären Netzwerkschnittstellen hingegen nicht. Da sekundären Netzwerkschnittstellen kein Standardgateway zugewiesen wird, können sie standardmäßig nicht mit Ressourcen außerhalb ihres Subnetzes kommunizieren. Wenn Sie sekundäre Netzwerkschnittstellen in die Lage versetzen möchten, mit Ressourcen außerhalb ihres Subnetzes zu kommunizieren, siehe [Routing innerhalb des Betriebssystems eines virtuellen Computers mit mehreren Netzwerkschnittstellen](#routing-within-a-virtual-machine-operating-system-with-multiple-network-interfaces).
 - Standardmäßig wird sämtlicher ausgehende Datenverkehr des virtuellen Computers über die IP-Adresse gesendet, die der primären IP-Konfiguration der primären Netzwerkschnittstelle zugewiesen ist. Sie können im Betriebssystem des virtuellen Computers steuern, welche IP-Adresse für ausgehenden Datenverkehr verwendet wird. Doch standardmäßig erfolgt dies über die primäre Netzwerkschnittstelle.
 - In der Vergangenheit mussten alle virtuellen Computer in der gleichen Verfügbarkeitsgruppe über eine einzelne Netzwerkschnittstelle (oder über mehrere Netzwerkschnittstellen) verfügen. In einer Verfügbarkeitsgruppe können nun VMs mit bis zu der von der VM-Größe unterstützten Anzahl an Netzwerkschnittstellen vertreten sein. Sie können eine VM erst einer Verfügbarkeitsgruppe hinzufügen, nachdem sie erstellt wurde. Weitere Informationen zu Verfügbarkeitsgruppen finden Sie im Artikel [Verwalten der Verfügbarkeit von VMs in Azure](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
 - Netzwerkschnittstellen in derselben VM können zwar mit unterschiedlichen Subnetzen eines VNet verbunden sein, die Netzwerkschnittstellen müssen jedoch alle mit dem gleichen VNet verbunden sein.
@@ -60,6 +60,68 @@ Sie können Azure PowerShell oder die CLI verwenden, um eine Netzwerkschnittstel
 ## <a name="vm-create"></a>Hinzufügen vorhandener Netzwerkschnittstellen zu einer neuen VM
 
 Bei der Erstellung eines virtuellen Computers im Portal wird eine Netzwerkschnittstelle mit Standardeinstellungen generiert, die für Sie zu dem virtuellen Computer hinzugefügt wird. Über das Azure-Portal ist es nicht möglich, vorhandene Netzwerkschnittstellen an einen neuen virtuellen Computer anzufügen oder einen virtuellen Computer mit mehreren Netzwerkschnittstellen zu erstellen. Verwenden Sie hierfür die CLI oder PowerShell. Sie können einer VM beliebig viele Netzwerkschnittstellen entsprechend der von der erstellten VM-Größe unterstützten Anzahl hinzufügen. Weitere Informationen zur unterstützten Anzahl an Netzwerkschnittstellen der einzelnen VM-Größen finden Sie im entsprechenden Artikel für [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Die Netzwerkschnittstellen, die Sie zu einem virtuellen Computer hinzufügen, können derzeit zu keinem anderen virtuellen Computer hinzugefügt werden. Weitere Informationen zum Erstellen von Netzwerkschnittstellen finden Sie im Artikel [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md#create-a-network-interface).
+
+### <a name="routing-within-a-virtual-machine-operating-system-with-multiple-network-interfaces"></a>Routing innerhalb des Betriebssystems eines virtuellen Computers mit mehreren Netzwerkschnittstellen
+
+Azure weist der ersten (primären) Netzwerkschnittstelle, die an den virtuellen Computer angefügt ist, ein Standardgateway zu. Azure weist zusätzlichen (sekundären) Netzwerkschnittstellen, die an einen virtuellen Computer angefügt sind, kein Standardgateway zu. Daher können Sie standardmäßig nicht mit Ressourcen außerhalb des Subnetzes kommunizieren, in dem sich eine sekundäre Netzwerkschnittstelle befindet. Sekundäre Netzwerkschnittstellen können jedoch mit Ressourcen außerhalb ihres Subnetzes kommunizieren. Die Schritte zum Aktivieren der Kommunikation unterscheiden sich allerdings je nach Betriebssystem.
+
+### <a name="windows"></a>Windows
+
+Führen Sie an einer Windows-Eingabeaufforderung die folgenden Schritte aus:
+
+1. Führen Sie den Befehl `route print` aus, der für einen virtuellen Computer mit zwei angefügten Netzwerkschnittstellen eine Ausgabe ähnlich der folgenden zurückgibt:
+
+    ```
+    ===========================================================================
+    Interface List
+    3...00 0d 3a 10 92 ce ......Microsoft Hyper-V Network Adapter #3
+    7...00 0d 3a 10 9b 2a ......Microsoft Hyper-V Network Adapter #4
+    ===========================================================================
+    ```
+ 
+    In diesem Beispiel ist **Microsoft Hyper-V Network Adapter #4** (Schnittstelle 7) die sekundäre Netzwerkschnittstelle, der kein Standardgateway zugeordnet ist.
+
+2. Führen Sie an einer Eingabeaufforderung den Befehl `ipconfig` aus, um zu prüfen, welche IP-Adresse der sekundären Netzwerkschnittstelle zugewiesen ist. In diesem Beispiel ist 192.168.2.4 der Schnittstelle 7 zugewiesen. Für die sekundäre Netzwerkschnittstelle wird keine Standardgateway-Adresse zurückgegeben.
+
+3. Um den gesamten Datenverkehr für Adressen außerhalb des Subnetzes der sekundären Netzwerkschnittstelle an das Gateway des Subnetzes zu leiten, führen Sie den folgenden Befehl aus:
+
+    ```
+    route add -p 0.0.0.0 MASK 0.0.0.0 192.168.2.1 METRIC 5015 IF 7
+    ```
+
+    Die Gatewayadresse für das Subnetz ist die erste IP-Adresse (mit der Endung .1) im für das Subnetz definierten Adressbereich. Wenn Sie nicht den gesamten Datenverkehr außerhalb des Subnetzes weiterleiten möchten, können Sie stattdessen einzelne Routen zu bestimmten Zielen hinzufügen. Wenn Sie beispielsweise nur den Datenverkehr von der sekundären Netzwerkschnittstelle an das Netzwerk 192.168.3.0 weiterleiten möchten, geben Sie den folgenden Befehl ein:
+
+      ```
+      route add -p 192.168.3.0 MASK 255.255.255.0 192.168.2.1 METRIC 5015 IF 7
+      ```
+  
+4. Um beispielsweise eine erfolgreiche Kommunikation mit einer Ressource im Netzwerk 192.168.3.0 zu bestätigen, geben Sie den folgenden Befehl ein, um 192.168.3.4 über die Schnittstelle 7 (192.168.2.4) zu pingen:
+
+    ```
+    ping 192.168.3.4 -S 192.168.2.4
+    ```
+
+    Möglicherweise müssen Sie ICMP über die Windows-Firewall des Geräts öffnen, das Sie mit dem folgenden Befehl pingen:
+  
+      ```
+      netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
+      ```
+  
+5. Um zu bestätigen, dass die hinzugefügte Route in der Routentabelle enthalten ist, geben Sie den Befehl `route print` ein, der eine Ausgabe ähnlich dem folgenden Text liefert:
+
+    ```
+    ===========================================================================
+    Active Routes:
+    Network Destination        Netmask          Gateway       Interface  Metric
+              0.0.0.0          0.0.0.0      192.168.1.1      192.168.1.4     15
+              0.0.0.0          0.0.0.0      192.168.2.1      192.168.2.4   5015
+    ```
+
+    Die mit *192.168.1.1* unter **Gateway** aufgeführte Route ist die Route, die standardmäßig für die primäre Netzwerkschnittstelle vorhanden ist. Die Route mit *192.168.2.1* unter **Gateway** ist die von Ihnen hinzugefügte Route.
+
+### <a name="linux"></a>Linux
+
+Da standardmäßig „schwaches“ Hostrouting verwendet wird, empfiehlt es sich, Datenverkehr für sekundäre Netzwerkschnittstellen zwischen Ressourcen im selben Subnetz zu beschränken. Wenn Sie eine Kommunikation außerhalb des Subnetzes für sekundäre Netzwerkschnittstellen benötigen, müssen Sie Routingregeln erstellen, die es dem virtuellen Computer ermöglichen, Datenverkehr über eine bestimmte Netzwerkschnittstelle zu senden und zu empfangen. Andernfalls kann Datenverkehr, der beispielsweise zu „eth1“ gehört, von der definierten Standardroute nicht ordnungsgemäß verarbeitet werden. Informationen zum Konfigurieren von Routingregeln finden Sie unter [Konfigurieren von Linux für mehrere NICs](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics).
 
 > [!WARNING]
 > Wenn einer Netzwerkschnittstelle eine private IPv6-Adresse zugewiesen ist, können Sie diese Netzwerkschnittstelle nur dem virtuellen Computer hinzufügen, wenn Sie diesen erstellen. Beim Erstellen des virtuellen Computer oder nach dem Erstellen des virtuellen Computers können Sie nicht mehrere Netzwerkschnittstellen an den virtuellen Computer anfügen, solange eine IPv6-Adresse einer Netzwerkschnittstelle zugewiesen ist, die an einen virtuellen Computer angefügt ist. Weitere Informationen zum Zuweisen von IP-Adressen an Netzwerkschnittstellen finden Sie unter [IP-Adressen für Netzwerkschnittstellen](virtual-network-network-interface-addresses.md).
@@ -74,6 +136,8 @@ Bei der Erstellung eines virtuellen Computers im Portal wird eine Netzwerkschnit
 ## <a name="vm-add-nic"></a>Hinzufügen einer Netzwerkschnittstelle zu einem vorhandenen virtuellen Computer
 
 Sie können einem virtuellen Computer so viele Netzwerkschnittstellen hinzufügen, wie entsprechend der jeweiligen Größe des virtuellen Computers unterstützt werden. Weitere Informationen zur unterstützten Anzahl an Netzwerkschnittstellen der einzelnen VM-Größen finden Sie im entsprechenden Artikel für [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Die VM, zu der Sie eine Netzwerkschnittstelle hinzufügen möchten, muss die Anzahl der Netzwerkschnittstellen unterstützen, die Sie hinzufügen möchten, und sich im Zustand „Beendet (Zuordnung aufgehoben)“ befinden. Die gewünschten Netzwerkschnittstellen können derzeit zu keinem anderen virtuellen Computer hinzugefügt werden. Netzwerkschnittstellen können zu einem vorhandenen virtuellen Computer nicht über das Azure-Portal hinzugefügt werden. Um Netzwerkschnittstellen einem vorhandenen virtuellen Computer hinzuzufügen, müssen Sie die CLI oder PowerShell verwenden. 
+
+Azure weist der ersten (primären) Netzwerkschnittstelle, die an den virtuellen Computer angefügt ist, ein Standardgateway zu. Azure weist zusätzlichen (sekundären) Netzwerkschnittstellen, die an einen virtuellen Computer angefügt sind, kein Standardgateway zu. Daher können Sie standardmäßig nicht mit Ressourcen außerhalb des Subnetzes kommunizieren, in dem sich eine sekundäre Netzwerkschnittstelle befindet. Sekundäre Netzwerkschnittstellen können jedoch mit Ressourcen außerhalb ihres Subnetzes kommunizieren. Wenn sekundäre Netzwerkschnittstellen mit Ressourcen außerhalb ihres Subnetzes kommunizieren können sollen, siehe [Routing innerhalb des Betriebssystems eines virtuellen Computers mit mehreren Netzwerkschnittstellen](#routing-within-a virtual-machine-operating-system-with-multiple-network-interfaces).
 
 > [!WARNING]
 > Eine Netzwerkschnittstelle verfügt über eine zugewiesene private IPv6-Adresse und kann nicht einem vorhandenen virtuellen Computer angefügt werden. Sie können nur eine Netzwerkschnittstelle mit einer zugewiesenen privaten IPv6-Adresse an einen virtuellen Computer anfügen, wenn Sie einen virtuellen Computer erstellen. Weitere Informationen zum Zuweisen von IP-Adressen an Netzwerkschnittstellen finden Sie unter [IP-Adressen für Netzwerkschnittstellen](virtual-network-network-interface-addresses.md).
@@ -90,7 +154,7 @@ Sie können die derzeit zu einem virtuellen Computer hinzugefügten Netzwerkschn
 1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement die Rolle „Besitzer“, „Mitwirkender“ oder „Netzwerkmitwirkender“ zugewiesen ist, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen zu Konten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Virtuelle Computer* ein. Wenn **Virtuelle Computer** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 3. Klicken Sie auf dem daraufhin angezeigten Blatt **Virtuelle Computer** auf den Namen des virtuellen Computers, für den Sie die Netzwerkschnittstellen anzeigen möchten.
-4. Klicken Sie auf dem Blatt „Virtueller Computer“, das für den ausgewählten virtuellen Computer angezeigt wird, im Abschnitt **EINSTELLUNGEN** auf **Netzwerkschnittstellen**. Informationen über Netzwerkschnittstellen finden Sie im Artikel [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md). Weitere Informationen zum Hinzufügen, Ändern und Entfernen von IP-Adressen, die einer Netzwerkschnittstelle zugewiesen sind, finden Sie im Artikel [Manage IP addresses (Verwalten von IP-Adressen)](virtual-network-network-interface-addresses.md).
+4. Klicken Sie auf dem Blatt „Virtueller Computer“, das für den ausgewählten virtuellen Computer angezeigt wird, im Abschnitt **EINSTELLUNGEN** auf **Netzwerk**. Informationen über Netzwerkschnittstellen finden Sie im Artikel [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md). Weitere Informationen zum Hinzufügen, Ändern und Entfernen von IP-Adressen, die einer Netzwerkschnittstelle zugewiesen sind, finden Sie im Artikel [Manage IP addresses (Verwalten von IP-Adressen)](virtual-network-network-interface-addresses.md).
 
 **Befehle**
 
@@ -106,9 +170,9 @@ Der virtuelle Computer, von dem Sie eine Netzwerkschnittstelle entfernen (trenne
 1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement die Rolle „Besitzer“, „Mitwirkender“ oder „Netzwerkmitwirkender“ zugewiesen ist, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen zu Konten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Virtuelle Computer* ein. Wenn **Virtuelle Computer** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 3. Klicken Sie auf dem daraufhin angezeigten Blatt **Virtuelle Computer** auf den Namen des virtuellen Computers, von dem Sie eine Netzwerkschnittstelle entfernen möchten.
-4. Klicken Sie auf dem Blatt „Virtueller Computer“, das für den ausgewählten virtuellen Computer angezeigt wird, im Abschnitt **EINSTELLUNGEN** auf **Netzwerkschnittstellen**. Informationen über Netzwerkschnittstellen finden Sie im Artikel [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md). Weitere Informationen zum Hinzufügen, Ändern und Entfernen von IP-Adressen, die einer Netzwerkschnittstelle zugewiesen sind, finden Sie im Artikel [Manage IP addresses (Verwalten von IP-Adressen)](virtual-network-network-interface-addresses.md).
-5. Klicken Sie auf dem angezeigten Netzwerkschnittstellenblatt rechts neben der Netzwerkschnittstelle, die Sie trennen möchten, auf die Auslassungspunkte (**...**).
-6. Klicken Sie auf **Trennen**. Falls an den virtuellen Computer nur eine einzelne Netzwerkschnittstelle angefügt ist, steht die Option **Trennen** nicht zur Verfügung. Klicken Sie im angezeigten Bestätigungsfeld auf **Ja** .
+4. Klicken Sie auf dem Blatt „Virtueller Computer“, das für den ausgewählten virtuellen Computer angezeigt wird, im Abschnitt **EINSTELLUNGEN** auf **Netzwerk**. Informationen über Netzwerkschnittstellen finden Sie im Artikel [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md). Weitere Informationen zum Hinzufügen, Ändern und Entfernen von IP-Adressen, die einer Netzwerkschnittstelle zugewiesen sind, finden Sie im Artikel [Manage IP addresses (Verwalten von IP-Adressen)](virtual-network-network-interface-addresses.md).
+5. Klicken Sie auf **Netzwerkschnittstelle trennen**.
+6. Wählen Sie in der Dropdownliste die Netzwerkschnittstelle aus, die Sie trennen möchten, und klicken Sie auf **OK**.
 
 **Befehle**
 

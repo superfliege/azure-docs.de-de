@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b695a6e07007d4a4cad2d58795e279c5d30fcd4d
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 6d53d08156d0e5d1d070361db5b74d201f18a224
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung
 Wenn Sie von Benutzern verlangen, ihre persönlichen Geräte mithilfe des Geräteregistrierungsdiensts mit Azure Active Directory (Azure AD) über den Arbeitsplatz einzubinden, können deren Geräte als Ihrer Organisation bekannt markiert werden. Im Folgenden wird eine Schritt-für-Schritt-Anleitung aufgeführt, die zeigt, wie Sie mithilfe der Active Directory-Verbunddienste (AD FS) unter Windows Server 2012 R2 den bedingten Zugriff auf lokale Anwendungen ermöglichen.
@@ -220,8 +220,5 @@ In den vorhergehenden Befehlen gibt **Name der Vertrauensstellung der vertrauend
 **yourdomain.com** steht für den Domänennamen, den Sie mit Azure Active Directory konfiguriert haben (z.B. „contoso.com“).
 Stellen Sie sicher, dass alle Zeilenumbrüche (sofern vorhanden) aus dem HTML-Inhalt entfernt wurden, den Sie an das Cmdlet **Set-AdfsRelyingPartyWebContent** übergeben.
 
-Wenn Benutzer nun über ein Gerät auf Ihre Anwendung zugreifen, das nicht mit dem Azure Active Directory-Geräteregistrierungsdienst registriert ist, wird eine Seite angezeigt, die dem folgenden Screenshot ähnelt.
-
-![Screenshot eines Fehlers, den Benutzer erhalten, wenn sie ihr Gerät nicht mit Azure AD registriert haben](./media/active-directory-conditional-access/error-azureDRS-device-not-registered.gif)
-
+Wenn Benutzer nun über ein Gerät auf Ihre Anwendung zugreifen, das nicht mit dem Azure Active Directory-Geräteregistrierungsdienst registriert ist, wird ihnen ein Fehler angezeigt.
 

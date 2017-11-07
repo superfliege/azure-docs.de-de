@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/21/2017
+ms.date: 10/23/2017
 ms.author: cherylmc
-ms.openlocfilehash: ad5700f1a85567a3e7f4ef80b778183929cb0d68
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2100b2b8710207ddb5d1848f11f4d6133f1dfd91
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
 
@@ -85,12 +85,12 @@ Die folgende Tabelle enthält ein Beispiel dafür, wie die Beispiel-VNETs und lo
 
 In diesem Abschnitt erstellen Sie das lokale Netzwerk (den lokalen Standort) und das Gateway des virtuellen Netzwerks für das klassische VNET. Wenn Sie nicht über ein klassisches VNET verfügen und diese Schritte als Übung ausführen, können Sie mithilfe der Informationen [dieses Artikels](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) und den oben genannten [Beispieleinstellungswerten](#values) ein VNET erstellen.
 
-Wenn Sie das Portal verwenden, um ein klassisches virtuelles Netzwerk zu erstellen, müssen Sie mit den folgenden Schritten zum Blatt „Virtuelles Netzwerk“ navigieren, da sonst die Option für das Erstellen eines klassischen virtuellen Netzwerks nicht angezeigt wird:
+Wenn Sie das Portal verwenden, um ein klassisches virtuelles Netzwerk zu erstellen, müssen Sie mit den folgenden Schritten zur Seite „Virtuelles Netzwerk“ navigieren, da sonst die Option für das Erstellen eines klassischen virtuellen Netzwerks nicht angezeigt wird:
 
-1. Klicken Sie auf „+“, um das Blatt „Neu“ zu öffnen.
+1. Klicken Sie auf „+“, um die Seite „Neu“ zu öffnen.
 2. Geben Sie im Feld „Marketplace durchsuchen“ die Zeichenfolge „Virtuelles Netzwerk“ ein. Wenn Sie stattdessen „Netzwerk“ -> „Virtuelles Netzwerk“ auswählen, wird die Option für das Erstellen eines klassischen virtuellen Netzwerks nicht angezeigt.
-3. Klicken Sie in der zurückgegebenen Liste auf „Virtuelles Netzwerk“, um das Blatt „Virtuelles Netzwerk“ zu öffnen. 
-4. Wählen Sie im Blatt „Virtuelles Netzwerk“ die Option „Klassisch“ aus, um ein klassisches virtuelles Netzwerk zu erstellen. 
+3. Klicken Sie in der zurückgegebenen Liste auf „Virtuelles Netzwerk“, um die Seite „Virtuelles Netzwerk“ zu öffnen. 
+4. Wählen Sie auf der Seite „Virtuelles Netzwerk“ die Option „Klassisch“ aus, um ein klassisches virtuelles Netzwerk zu erstellen. 
 
 Wenn Sie bereits ein VNET mit einem VPN-Gateway besitzen, stellen Sie sicher, dass das Gateway dynamisch ist. Falls es sich um ein statisches Gateway handelt, müssen Sie das VPN-Gateway zuerst löschen. Anschließend können Sie fortfahren.
 
@@ -101,35 +101,35 @@ Die Screenshots dienen lediglich zur Veranschaulichung. Achten Sie darauf, dass 
 Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an.
 
 1. Navigieren Sie zu **Alle Ressourcen** und suchen Sie in der Liste nach **ClassicVNet**.
-2. Klicken Sie auf dem Blatt **Übersicht** im Abschnitt **VPN-Verbindungen** auf die Grafik **Gateway**, um ein Gateway zu erstellen.
+2. Klicken Sie auf die Seite **Übersicht** im Abschnitt **VPN-Verbindungen** auf die Grafik **Gateway**, um ein Gateway zu erstellen.
 
     ![Konfigurieren von VPN-Gateways](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "Konfigurieren von VPN-Gateways")
-3. Wählen Sie auf dem Blatt **Neue VPN-Verbindung** unter **Verbindungstyp** die Option **Standort-zu-Standort** aus.
-4. Klicken Sie unter **Lokaler Standort** auf **Erforderliche Einstellungen konfigurieren**. Daraufhin wird das Blatt **Lokaler Standort** geöffnet.
-5. Erstellen Sie auf dem Blatt **Lokaler Standort** einen Namen, um auf das Resource Manager-VNET zu verweisen. Beispiel: „RMVNetLocal“.
+3. Wählen Sie auf die Seite **Neue VPN-Verbindung** unter **Verbindungstyp** die Option **Standort-zu-Standort** aus.
+4. Klicken Sie unter **Lokaler Standort** auf **Erforderliche Einstellungen konfigurieren**. Daraufhin wird die Seite **Lokaler Standort** geöffnet.
+5. Erstellen Sie auf die Seite **Lokaler Standort** einen Namen, um auf das Ressourcen-Manager-VNET zu verweisen. Beispiel: „RMVNetLocal“.
 6. Wenn das VPN-Gateway für das Resource Manager-VNET bereits eine öffentliche IP-Adresse aufweist, verwenden Sie diesen Wert für das Feld **IP-Adresse des VPN-Gateways**. Wenn Sie diese Schritte als Übung ausführen oder Sie noch kein Gateway für virtuelle Netzwerke für Ihr Resource Manager-VNET besitzen, können Sie eine Platzhalter-IP-Adresse erstellen. Stellen Sie sicher, dass die Platzhalter-IP-Adresse ein gültiges Format aufweist. Später ersetzen Sie die Platzhalter-IP-Adresse durch die öffentliche IP-Adresse des Gateways für das virtuelle Resource Manager-Netzwerk.
 7. Verwenden Sie für **Clientadressraum** die Werte für die IP-Adressräume des virtuellen Netzwerks für das Resource Manager-VNET. Diese Einstellung wird verwendet, um die Adressräume für die Weiterleitung an das virtuelle Resource Manager-Netzwerk anzugeben.
-8. Klicken Sie auf **OK**, um die Werte zu speichern und zum Blatt **Neue VPN-Verbindung** zurückzukehren.
+8. Klicken Sie auf **OK**, um die Werte zu speichern und zur Seite **Neue VPN-Verbindung** zurückzukehren.
 
 ### <a name="classicgw"></a>2. Erstellen des Gateways für das lokale Netzwerk
 
-1. Aktivieren Sie auf dem Blatt **Neue VPN-Verbindung** das Kontrollkästchen **Gateway sofort erstellen**, und klicken Sie auf **Optionale Gatewaykonfiguration**, um das Blatt **Gatewaykonfiguration** zu öffnen. 
+1. Aktivieren Sie auf der Seite **Neue VPN-Verbindung** das Kontrollkästchen **Gateway sofort erstellen**, und klicken Sie auf **Optionale Gatewaykonfiguration**, um die Seite **Gatewaykonfiguration** zu öffnen. 
 
-    ![Öffnen des Blatts „Gatewaykonfiguration“](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "Öffnen des Blatts „Gatewaykonfiguration“")
-2. Klicken Sie auf **Subnetz – Erforderliche Einstellungen konfigurieren**, um das Blatt **Subnetz hinzufügen** zu öffnen. Der **Name** ist bereits mit dem erforderlichen Wert **GatewaySubnet** konfiguriert.
+    ![Öffnen der Seite „Gatewaykonfiguration“](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "Öffnen der Seite „Gatewaykonfiguration“")
+2. Klicken Sie auf **Subnetz – Erforderliche Einstellungen konfigurieren**, um die Seite **Subnetz hinzufügen** zu öffnen. Der **Name** ist bereits mit dem erforderlichen Wert **GatewaySubnet** konfiguriert.
 3. **Adressbereich** bezieht sich auf den Bereich für das Gatewaysubnetz. Obwohl Sie ein Gatewaysubnetz mit einem /29-Adressbereich (3 Adressen) erstellen können, wird empfohlen, ein Gatewaysubnetz mit einer höheren Anzahl von IP-Adressen zu erstellen. Dadurch werden zukünftige Konfigurationen unterstützt, die möglicherweise eine höhere Anzahl von verfügbaren IP-Adressen erfordern. Verwenden Sie möglichst /27 oder /28. Sie können die [Beispielwerte](#values) nutzen, wenn Sie diese Schritte als Übung verwenden. Klicken Sie auf **OK**, um das Gatewaysubnetz zu erstellen.
-4. Auf dem Blatt **Gatewaykonfiguration** bezieht sich **Größe** auf die Gateway-SKU. Wählen Sie die Gateway-SKU für das VPN-Gateway aus.
-5. Vergewissern Sie sich, dass für **Routingtyp** der Wert **Dynamisch** festgelegt wurde, und klicken Sie auf **OK**, um zum Blatt **Neue VPN-Verbindung** zurückzukehren.
-6. Klicken Sie auf dem Blatt **Neue VPN-Verbindung** auf **OK**, um mit dem Erstellen des VPN-Gateways zu beginnen. Die Erstellung eines VPN-Gateways kann bis zu 45 Minuten dauern.
+4. Auf der Seite **Gatewaykonfiguration** bezieht sich **Größe** auf die Gateway-SKU. Wählen Sie die Gateway-SKU für das VPN-Gateway aus.
+5. Vergewissern Sie sich, dass für **Routingtyp** der Wert **Dynamisch** festgelegt wurde, und klicken Sie auf **OK**, um zur Seite **Neue VPN-Verbindung** zurückzukehren.
+6. Klicken Sie auf der Seite **Neue VPN-Verbindung** auf **OK**, um mit dem Erstellen des VPN-Gateways zu beginnen. Die Erstellung eines VPN-Gateways kann bis zu 45 Minuten dauern.
 
 ### <a name="ip"></a>3. Kopieren der öffentlichen IP-Adresse für das Gateway für virtuelle Netzwerke
 
 Nachdem das Gateway für das virtuelle Netzwerk erstellt wurde, können Sie die Gateway-IP-Adresse anzeigen. 
 
 1. Navigieren Sie zum klassischen VNET, und klicken Sie auf **Übersicht**.
-2. Klicken Sie auf **VPN-Verbindungen**, um das Blatt „VPN-Verbindungen“ zu öffnen. Auf dem Blatt „VPN-Verbindungen“ können Sie die öffentliche IP-Adresse anzeigen. Dies ist die öffentliche IP-Adresse, die dem Gateway Ihres virtuellen Netzwerks zugewiesen ist. 
+2. Klicken Sie auf **VPN-Verbindungen**, um die Seite „VPN-Verbindungen“ zu öffnen. Auf der Seite „VPN-Verbindungen“ können Sie die öffentliche IP-Adresse anzeigen. Dies ist die öffentliche IP-Adresse, die dem Gateway Ihres virtuellen Netzwerks zugewiesen ist. 
 3. Notieren Sie die IP-Adresse, oder kopieren Sie sie. Sie verwenden sie in späteren Schritten bei der Arbeit mit den Konfigurationseinstellungen für das Gateway für das lokale Resource Manager-Netzwerk. Sie können auch den Status der Gatewayverbindungen anzeigen. Beachten Sie, dass der lokale Netzwerkstandort als „Verbindung wird hergestellt“ aufgeführt wird. Der Status ändert sich nach dem Erstellen der Verbindungen.
-4. Schließen Sie das Blatt, nachdem Sie die IP-Adresse des Gateways kopiert haben.
+4. Schließen Sie die Seite, nachdem Sie die IP-Adresse des Gateways kopiert haben.
 
 ## <a name="rmvnet"></a>Abschnitt 2 – Konfigurieren der Einstellungen für das Resource Manager-VNET
 
@@ -167,17 +167,17 @@ Wenn Sie diese Schritte als Übung durchführen, verwenden Sie folgende Einstell
 In diesem Abschnitt ersetzen Sie die Platzhalter-IP-Adresse, die Sie beim Festlegen der Einstellungen für den lokalen Standort verwendet haben, durch die IP-Adresse des Resource Manager-VPN-Gateways. In diesem Abschnitt werden die klassischen PowerShell-Cmdlets (SM) verwendet.
 
 1. Navigieren Sie im Azure-Portal zum klassischen virtuellen Netzwerk.
-2. Klicken Sie auf dem Blatt für Ihr virtuelles Netzwerk auf **Übersicht**.
+2. Klicken Sie auf der Seite für Ihr virtuelles Netzwerk auf **Übersicht**.
 3. Klicken Sie unter **VPN-Verbindungen** auf den Namen des lokalen Standorts in der Abbildung.
 
     ![VPN-Verbindungen](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-Verbindungen")
-4. Klicken Sie auf dem Blatt **Standort-zu-Standort-VPN-Verbindungen** auf den Namen des Standorts.
+4. Klicken Sie auf der Seite **Standort-zu-Standort-VPN-Verbindungen** auf den Namen des Standorts.
 
     ![Standortname](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "Lokaler Standortname")
-5. Klicken Sie auf dem Blatt „Verbindung“ für den lokalen Standort auf den Namen des lokalen Standorts, um das Blatt **Lokaler Standort** zu öffnen.
+5. Klicken Sie auf der Seite „Verbindung“ für den lokalen Standort auf den Namen des lokalen Standorts, um die Seite **Lokaler Standort** zu öffnen.
 
     ![Öffnen von „Lokaler Standort“](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Öffnen von „Lokaler Standort“")
-6. Ersetzen Sie auf dem Blatt **Lokaler Standort** die **IP-Adresse des VPN-Gateways** durch die IP-Adresse des Resource Manager-Gateways.
+6. Ersetzen Sie auf der Seite **Lokaler Standort** die **IP-Adresse des VPN-Gateways** durch die IP-Adresse des Ressourcen-Manager-Gateways.
 
     ![Gateway-IP-Adresse](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "Gateway-IP-Adresse")
 7. Klicken Sie auf **OK**, um die IP-Adresse zu aktualisieren.
@@ -187,12 +187,12 @@ In diesem Abschnitt ersetzen Sie die Platzhalter-IP-Adresse, die Sie beim Festle
 In den folgenden Schritten konfigurieren Sie mithilfe des Azure-Portals die Verbindung zwischen dem Resource Manager-VNET und dem klassischen VNET.
 
 1. Suchen Sie unter **Alle Ressourcen** nach dem lokalen Netzwerkgateway. In unserem Beispiel handelt es sich beim lokalen Netzwerkgateway um **ClassicVNetLocal**.
-2. Klicken Sie auf **Konfiguration** und stellen Sie sicher, dass es sich beim IP-Adresswert um das VPN-Gateway für das klassische VNET handelt. Aktualisieren Sie diesen bei Bedarf und klicken Sie dann auf **Speichern**. Schließen Sie das Blatt.
+2. Klicken Sie auf **Konfiguration** und stellen Sie sicher, dass es sich beim IP-Adresswert um das VPN-Gateway für das klassische VNET handelt. Aktualisieren Sie diesen bei Bedarf und klicken Sie dann auf **Speichern**. Schließen Sie die Seite.
 3. Klicken Sie unter **Alle Ressourcen** auf das lokale Netzwerkgateway.
-4. Klicken Sie auf **Verbindungen**, um das Blatt „Verbindungen“ zu öffnen.
-5. Klicken Sie auf dem Blatt **Verbindungen** auf **+**, um eine Verbindung hinzuzufügen.
-6. Geben Sie auf dem Blatt **Verbindung hinzufügen** einen Namen für die Verbindung ein. Beispiel: „RMtoClassic“.
-7. **Standort-zu-Standort-** ist bereits auf diesem Blatt ausgewählt.
+4. Klicken Sie auf **Verbindungen**, um die Seite „Verbindungen“ zu öffnen.
+5. Klicken Sie auf der Seite **Verbindungen** auf **+**, um eine Verbindung hinzuzufügen.
+6. Geben Sie auf der Seite **Verbindung hinzufügen** einen Namen für die Verbindung ein. Beispiel: „RMtoClassic“.
+7. **Standort-zu-Standort-** ist bereits auf dieser Seite ausgewählt.
 8. Wählen Sie das Gateway des virtuellen Netzwerks aus, das Sie diesem Standort zuweisen möchten.
 9. Erstellen Sie einen **gemeinsam verwendeten Schlüssel**. Dieser Schlüssel wird auch bei der Verbindung verwendet, die Sie zwischen dem klassischen VNET und dem Resource Manager-VNET erstellen. Sie können den Schlüssel generieren oder einen solchen erstellen. In unserem Beispiel wird „abc123“ verwendet, aber Sie können (und sollten) einen komplexeren Wert verwenden.
 10. Klicken Sie auf **OK**, um die Verbindung zu erstellen.
