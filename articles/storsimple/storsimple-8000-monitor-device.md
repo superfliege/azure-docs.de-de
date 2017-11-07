@@ -4,7 +4,7 @@ description: "Beschreibt, wie Sie den StorSimple-Geräte-Manager-Dienst verwende
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,15 +12,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/02/2017
+ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: c8f731502d6589bfa908aa26cf418a65b18be635
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 679c1fc8775ad4481bc99c9aea79fe16e9bcac8f
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Überwachen von StorSimple-Geräten
+
 ## <a name="overview"></a>Übersicht
 Sie können den StorSimple-Geräte-Manager-Dienst verwenden, um bestimmte Geräte innerhalb Ihrer StorSimple-Lösung zu überwachen. Sie können benutzerdefinierte Diagramme basierend auf Metriken zu EA-Leistung, Kapazitätsauslastung, Netzwerkdurchsatz und Geräteleistung erstellen und an das Dashboard anheften. Weitere Informationen finden Sie unter [Anpassen des Portals-Dashboards](../azure-portal/azure-portal-dashboards.md).
 
@@ -44,6 +45,19 @@ In der Voreinstellung wird die Nutzung für die letzten 24 Stunden gemeldet. Sie
 * Letzte 90 Tage
 * Letztes Jahr
 
+Für die Nutzungsdiagramme werden zwei wichtige Metriken gemeldet, Wachstum und Bereich. Der Bereich bezieht sich auf den maximalen Wert und die minimalen Werte der Nutzung, die über den ausgewählten Zeitraum (z. B. „Letzte 7 Tage“) gemeldet werden.
+
+Das Wachstum bezieht sich auf die Erhöhung der Nutzung vom ersten Tag bis zum letzten Tag über den ausgewählten Zeitraum. 
+
+Das Wachstum und der Bereich können auch durch die folgenden Formeln dargestellt werden:
+
+```
+Range = {Usage(minimum), Usage(maximum)}
+
+Growth = Usage(Last day) - Usage(first day)
+
+Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
+```
 
 Der primäre, Cloud- und lokale Speicherverbrauch kann wie folgt beschrieben werden:
 

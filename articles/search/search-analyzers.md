@@ -12,22 +12,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 09/11/2017
 ms.author: heidist
-ms.openlocfilehash: f9e456a57bae4aab25ef85c93132308f2c442c0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1b9dea2978c11955da3ea4df8b90dc10a866d3f1
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="analyzers-in-azure-search"></a>Analysemodule in Azure Search
 
-Ein *Analyzer* ist eine Komponente der [Volltextsuche](search-lucene-query-architecture.md), mit dem Text in Abfragezeichenfolgen und indizierten Dokumenten verarbeitet wird. Bei der Indizierung transformiert ein Analyzer Text in *Token*, die als *mit Token versehene Ausdrücke* in den Index geschrieben werden. Bei der Suche führt ein Analyzer die gleichen Transformationen für *Abfrageausdrücke* durch, was die Basis für den Abgleich mit Ausdrücken im Index ist.
-
-Typische Transformationen während der Analyse:
+Ein *Analyzer* ist eine Komponente der [Volltextsuche](search-lucene-query-architecture.md), mit dem Text in Abfragezeichenfolgen und indizierten Dokumenten verarbeitet wird. Typische Transformationen während der Analyse:
 
 + Nicht unbedingt benötigte Wörter (Stoppwörter) und Satzzeichen werden entfernt.
 + Wörter mit Bindestrichen und Ausdrücke werden in Einzelwörter unterteilt.
 + Wörter in Großbuchstaben werden in Kleinbuchstaben umgewandelt.
 + Wörter werden auf ihre jeweilige Stammform reduziert, sodass unabhängig von der Zeitform eine Übereinstimmung gefunden werden kann.
+
+Linguistische Analyzer konvertieren eine Texteingabe in primitive oder Stammformulare, die beim Speichern und Abrufen von Informationen effizient sind. Die Konvertierung erfolgt während der Indizierung, wenn der Index erstellt wird, und dann erneut bei der Suche, wenn der Index gelesen wird. Sie erhalten die erwarteten Suchergebnisse eher, wenn Sie denselben Textanalyzer für beide Vorgänge verwenden.
 
 Standardmäßig verwendet Azure Search der [Standardanalyzer von Lucene](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html). Dieser Standard kann feldspezifisch überschrieben werden. Dieser Artikel beschreibt die Bandbreite der Möglichkeiten und bietet bewährte Methoden für benutzerdefinierte Analysen. Außerdem finden Sie Beispielkonfigurationen für gängige Szenarien.
 
@@ -53,12 +53,12 @@ Sie können eine vordefinierte Analyse (beispielsweise **pattern** oder **stop**
 
 3. Das Hinzufügen eines Analyzers zu einer Felddefinition verursacht einen Schreibvorgang im Index. Wenn Sie einem vorhandenen Index einen **Analyzer** hinzufügen, beachten Sie die folgenden Schritte:
  
- | Szenario | Schritte |
- |----------|-------|
- | Hinzufügen eines neuen Felds | Wenn das Feld noch nicht im Schema vorhanden ist, ist keine Feldüberarbeitung vorzunehmen. Die Textanalyse erfolgt, wenn Sie Dokumente hinzufügen oder aktualisieren, die Inhalte für das neue Feld bereitstellen. Verwenden Sie für diese Aufgabe [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) und [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).|
- | Hinzufügen eines Analyzers zu einem vorhandenen indizierten Feld | Der invertierte Index für dieses Feld muss von Grund auf neu erstellt werden, und Dokumentinhalte für dieses Feld müssen neu indiziert werden. <br/> <br/>Für Indizes in der aktiven Entwicklung [löschen](https://docs.microsoft.com/rest/api/searchservice/delete-index) und [erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) Sie den Index, um die neue Felddefinition zu übernehmen. <br/> <br/>Für Indizes in der Produktion sollten Sie ein neues Feld erstellen, um die überarbeitete Definition anzugeben und verwenden zu können. Verwenden Sie [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) und [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents), um das neue Feld zu integrieren. Später können Sie den Index als Bestandteil der geplanten Indexwartung bereinigen, um veraltete Felder zu entfernen. |
+ | Szenario | Auswirkung | Schritte |
+ |----------|--------|-------|
+ | Hinzufügen eines neuen Felds | Minimal | Wenn das Feld im Schema noch nicht vorhanden ist, muss keine Feldüberarbeitung vorgenommen werden, da das Feld in Ihrem Index noch nicht physisch vorhanden ist. Verwenden Sie für diese Aufgabe [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) und [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).|
+ | Hinzufügen eines Analyzers zu einem vorhandenen indizierten Feld | Neu erstellen | Der invertierte Index für dieses Feld muss von Grund auf neu erstellt werden, und der Inhalt für diese Felder muss neu indiziert werden. <br/> <br/>Für Indizes in der aktiven Entwicklung [löschen](https://docs.microsoft.com/rest/api/searchservice/delete-index) und [erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) Sie den Index, um die neue Felddefinition zu übernehmen. <br/> <br/>Für Indizes in der Produktion sollten Sie ein neues Feld erstellen, um die überarbeitete Definition anzugeben und verwenden zu können. Verwenden Sie [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) und [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents), um das neue Feld zu integrieren. Später können Sie den Index als Bestandteil der geplanten Indexwartung bereinigen, um veraltete Felder zu entfernen. |
 
-## <a name="best-practices"></a>Bewährte Methoden
+## <a name="tips-and-best-practices"></a>Tipps und bewährte Methoden
 
 Dieser Abschnitt enthält Tipps zur Verwendung von Analyzern.
 
@@ -72,12 +72,13 @@ Allgemeine Regel: Verwenden Sie für die Indizierung und für Abfragen die gleic
 
 Wenn Sie die Standardanalyse überschreiben, muss der Index neu erstellt werden. Überlegen Sie sich möglichst während der aktiven Entwicklung, welche Analysen Sie verwenden möchten, bevor Sie einen Index in die Produktionsumgebung einbringen.
 
-### <a name="compare-analyzers-side-by-side"></a>Gegenüberstellen von Analysen
+### <a name="inspect-tokenized-terms"></a>Überprüfen von tokenisierten Begriffen
 
-Wir empfehlen die Verwendung der [Analyse-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer). Die Antwort besteht aus Token, die von einem spezifischen Analyzer für den von Ihnen angegebenen Text generiert werden. 
+Wenn eine Suche nicht die erwarteten Ergebnisse zurückgibt, ist das wahrscheinlichste Szenario, dass Abweichungen zwischen Begriffseingaben für die Abfrage und tokenisierten Begriffen im Index vorliegen. Wenn die Token nicht identisch sind, können Übereinstimmungen nicht materialisiert werden. Zur Überprüfung der Tokenizer-Ausgabe wird empfohlen, die [Analyse-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) als Untersuchungstool zu verwenden. Die Antwort besteht aus Token, die von einem bestimmten Analyzer generiert wurden.
 
-> [!Tip]
-> Die [Search Analyzer Demo](http://alice.unearth.ai/) zeigt eine Gegenüberstellung der Lucene-Standardanalyse, der Lucene-Englischanalyse und der Verarbeitung natürlicher Sprache (Englisch) von Microsoft. Die Ergebnisse für Ihre Sucheingaben werden für die einzelnen Analysen nebeneinander angezeigt.
+### <a name="compare-english-analyzers"></a>Vergleichen von englischen Analyzern
+
+Die [Search Analyzer Demo](http://alice.unearth.ai/) ist eine Demo eines Drittanbieters, die eine Gegenüberstellung der Lucene-Standardanalyse, der Lucene-Englischanalyse und der Verarbeitung natürlicher Sprache (Englisch) von Microsoft zeigt. Der Index ist vorgegeben. Er enthält Text aus einer bekannten Geschichte. Für jede von Ihnen bereitgestellte Sucheingabe werden Ergebnisse der einzelnen Analyzer in angrenzenden Bereichen angezeigt. Dadurch erhalten Sie einen Eindruck davon, wie dieselbe Zeichenfolge von den einzelnen Analyzern verarbeitet wird. 
 
 ## <a name="examples"></a>Beispiele
 

@@ -11,14 +11,14 @@ ms.custom: mvc
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 06/23/2017
-ms.openlocfilehash: 730a3f464b4437c260d09abc026a186a0e26293c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca51cc33561817e36ebaba9a9146bebf9d5d5d96
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-database-for-postgresql-use-java-to-connect-and-query-data"></a>Azure-Datenbank für PostgreSQL: Verwenden von Java zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
-Dieser Schnellstart zeigt, wie Sie mit einer Java-Anwendung eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Java-Entwicklung vertraut sind und noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
+Dieser Schnellstart zeigt, wie Sie mit einer Java-Anwendung eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Java-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for PostgreSQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
@@ -40,7 +40,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Serveradministrator-Anmeldenamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
 
 ## <a name="connect-create-table-and-insert-data"></a>Herstellen der Verbindung, Erstellen der Tabelle und Einfügen von Daten
-Verwenden Sie den folgenden Code, um die Verbindung herzustellen und die Daten zu laden, indem Sie die Funktion mit einer **INSERT**-SQL-Anweisung nutzen. Die Methoden [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) und [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) werden verwendet, um die Verbindung für die Tabelle herzustellen, sie zu verwerfen und sie zu erstellen. Mit dem [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html)-Objekt werden die Einfügebefehle erstellt, und setString() und setInt() werden zum Binden der Parameterwerte genutzt. Mit der [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html)-Methode wird der Befehl für jeden Parametersatz ausgeführt. 
+Verwenden Sie den folgenden Code, um die Verbindung herzustellen und die Daten in die Datenbank zu laden, indem Sie die Funktion mit einer **INSERT**-SQL-Anweisung nutzen. Die Methoden [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) und [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) werden verwendet, um die Verbindung für die Tabelle mit der Datenbank herzustellen, sie zu verwerfen und sie zu erstellen. Mit dem [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html)-Objekt werden die Einfügebefehle erstellt, und setString() und setInt() werden zum Binden der Parameterwerte genutzt. Mit der [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html)-Methode wird der Befehl für jeden Parametersatz ausgeführt. 
 
 Ersetzen Sie die Parameter „host“, „database“, „user“ und „password“ durch die Werte, die Sie beim Erstellen Ihres eigenen Servers und der Datenbank angegeben haben.
 
@@ -140,7 +140,7 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>Lesen von Daten
-Verwenden Sie den folgenden Code, um die Daten mit einer **SELECT**-SQL-Anweisung zu lesen. Die Methoden [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) und [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) werden eingesetzt, um die Verbindung für die SELECT-Anweisung herzustellen und sie zu erstellen und auszuführen. Die Ergebnisse werden mit einem [ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html)-Objekt verarbeitet. 
+Verwenden Sie den folgenden Code, um die Daten mit einer **SELECT**-SQL-Anweisung zu lesen. Die Methoden [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) und [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) werden verwendet, um die Verbindung mit der Datenbank herzustellen sowie die SELECT-Anweisung zu erstellen und auszuführen. Die Ergebnisse werden mit einem [ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html)-Objekt verarbeitet. 
 
 Ersetzen Sie die Parameter „host“, „database“, „user“ und „password“ durch die Werte, die Sie beim Erstellen Ihres eigenen Servers und der Datenbank angegeben haben.
 
@@ -227,7 +227,7 @@ public class ReadTable {
 ```
 
 ## <a name="update-data"></a>Aktualisieren von Daten
-Verwenden Sie den folgenden Code, um die Daten mit einer **UPDATE**-SQL-Anweisung zu ändern. Die Methoden [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) und [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) werden verwendet, um die Verbindung für die UPDATE-Anweisung herzustellen und sie vorzubereiten und auszuführen. 
+Verwenden Sie den folgenden Code, um die Daten mit einer **UPDATE**-SQL-Anweisung zu ändern. Die Methoden [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) und [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) werden verwendet, um die Verbindung mit der Datenbank für die UPDATE-Anweisung herzustellen und sie vorzubereiten und auszuführen. 
 
 Ersetzen Sie die Parameter „host“, „database“, „user“ und „password“ durch die Werte, die Sie beim Erstellen Ihres eigenen Servers und der Datenbank angegeben haben.
 
@@ -307,7 +307,7 @@ public class UpdateTable {
 }
 ```
 ## <a name="delete-data"></a>Löschen von Daten
-Verwenden Sie den folgenden Code, um Daten mit einer **DELETE**-SQL-Anweisung zu entfernen. Die Methoden [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) und [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) werden verwendet, um die Verbindung für die DELETE-Anweisung herzustellen und sie vorzubereiten und auszuführen. 
+Verwenden Sie den folgenden Code, um Daten mit einer **DELETE**-SQL-Anweisung zu entfernen. Die Methoden [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) und [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) werden verwendet, um die Verbindung mit der Datenbank für die DELETE-Anweisung herzustellen und sie vorzubereiten und auszuführen. 
 
 Ersetzen Sie die Parameter „host“, „database“, „user“ und „password“ durch die Werte, die Sie beim Erstellen Ihres eigenen Servers und der Datenbank angegeben haben.
 

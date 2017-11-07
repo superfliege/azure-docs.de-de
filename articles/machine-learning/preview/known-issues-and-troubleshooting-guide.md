@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: f79910ba4fea81e88fce90dd67ba7cb4db2e8220
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f39faea6b7e0886d63085b752f9532a7010ea941
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning-Workbench – bekannte Probleme und Anleitung zur Problembehandlung 
 Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu suchen und zu beheben, die bei der Verwendung der Anwendung Azure Machine Learning Workbench auftreten können. 
@@ -82,7 +82,10 @@ Wenn Sie in Azure ML Workbench arbeiten, können Sie uns auch ein Stirnrunzeln (
 
 - Umwandlungen von Textclustern werden unter Mac nicht unterstützt.
 
-- Die RevoScalePy-Bibliothek wird nur unter Windows oder Linux (in Docker-Containern) unterstützt. Unter macOS wird sie nicht unterstützt.
+- Die RevoScalePy-Bibliothek wird nur unter Windows und Linux (in Docker-Containern) unterstützt. Unter macOS wird sie nicht unterstützt.
+
+## <a name="file-name-too-long-on-windows"></a>Dateiname unter Windows zu lang
+Wenn Sie die Workbench unter Windows verwenden, kann das Problem der Standardbeschränkung der Dateinamenlänge auf maximal 260 Zeichen auftreten, was zum irreführenden Fehler „Das System kann den angegebenen Pfad nicht finden“ führen könnte. Sie können die Einstellung eines Registrierungsschlüssels ändern, um viel längere Dateipfadnamen zu gestatten. Ausführliche Informationen zum Festlegen des Registrierungsschlüssels _MAX_PATH_ finden Sie in [diesem Artikel](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath).
 
 ## <a name="docker-error-read-connection-refused"></a>Docker-Fehler „read: connection refused“
 Bei der Ausführung für einen lokalen Docker-Container kann es vorkommen, dass der folgende Fehler angezeigt wird: 

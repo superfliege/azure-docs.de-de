@@ -1,55 +1,77 @@
 ---
-title: Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit Java | Microsoft Docs
+title: "Erste Schritte zur Verwendung des Java-SDK für Azure Media Services | Microsoft-Dokumentation"
 description: "In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe von Java einen einfachen Dienst zur Übermittlung von VoD-Inhalten (Video-on-Demand) mit der AMS-Anwendung (Azure Media Services) implementieren."
 services: media-services
 documentationcenter: java
 author: juliako
 manager: cfowler
-editor: 
+editor: johndeu
 ms.assetid: b884bd61-dbdb-42ea-b170-8fb02e7fded7
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 01/10/2017
+ms.date: 10/26/2017
 ms.author: juliako
-ms.openlocfilehash: 2294f3de094389f8aa500c75472e753339b18358
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad022eb8d3a0a22e679962d75c05eed799976ece
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-java"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit Java
+# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Erste Schritte mit dem Java-Client-SDK für Azure Media Services
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe von Java einen einfachen Dienst zur Übermittlung von VoD-Inhalten (Video-on-Demand) mit der AMS-Anwendung (Azure Media Services) implementieren.
+In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe des Java-Client-SDK einen einfachen Dienst zur Übermittlung von VoD-Inhalten (Video-on-Demand) mit Azure Media Services implementieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
+Zum Abschließen dieses Tutorials müssen folgende Voraussetzungen erfüllt sein:
 
-* Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/). 
+* Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
 * Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
-* Die Azure-Bibliotheken für Java, die Sie im [Azure Developer Center für Java][Azure Java Developer Center] installieren können.
+* Das aktuelle [Azure Media Services-Java-SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
-## <a name="how-to-use-media-services-with-java"></a>Gewusst wie: Verwenden von Media Services mit Java
+## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>Gewusst wie: Importieren des Pakets mit dem Azure Media Services-Java-Client-SDK
+
+Fügen Sie einen Verweis auf die aktuelle Version (0.9.8) des `azure-media`-Pakets aus dem [Azure Media Services-Java-SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest) hinzu, um mit der Verwendung des Media Services-SDK für Java zu beginnen.
+
+Wenn Sie `gradle` als Erstellungstool verwenden, müssen Sie der Datei `build.gradle` die folgende Abhängigkeit hinzufügen:
+
+    compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
+
+>[!IMPORTANT]
+>Ab Version `0.9.8` des `azure-media`-Pakets verfügt das SDK über Unterstützung für AAD-Authentifizierung (Azure Active Directory), und die Unterstützung für die Azure ACS-Authentifizierung (Access Control Service) wurde entfernt. Ab dem 1. Juni 2018 gelten die ACS-Dienste als veraltet. Es wird empfohlen, möglichst bald zum Azure AD-Authentifizierungsmodell zu migrieren. Ausführliche Informationen zur Migration finden Sie im Artikel [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
 
 >[!NOTE]
->Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
+>Sie finden den Quellcode des Azure Media Services-Java-SDK in unserem [GitHub-Repository](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Achten Sie darauf, dass Sie die Umstellung auf Branch 0.9 durchführen, nicht auf die Masterbranch. 
+
+## <a name="how-to-use-azure-media-services-with-java"></a>Gewusst wie: Verwenden von Azure Media Services mit Java
 
 >[!NOTE]
->Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen finden Sie in [diesem](media-services-dotnet-manage-entities.md#limit-access-policies) Thema.
+>Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen.
 
 Im Code weiter unten wird ein Medienobjekt erstellt, eine Mediendatei in das Medienobjekt hochgeladen, eine Aufgabe zur Transformation des Medienobjekts ausgeführt und ein Locator erstellt, um Ihr Video zu streamen.
 
-Zur Verwendung dieses Codes benötigen Sie ein Media Services-Konto. Informationen zum Einrichten eines Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services-Kontos](media-services-portal-create-account.md).
+Richten Sie zur Verwendung dieses Codes ein Media Services-Konto ein. Informationen zum Einrichten eines Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services-Kontos](media-services-portal-create-account.md).
 
-Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen Werte an. Im Code wird außerdem eine lokal gespeicherte Datei verwendet. Hier müssen Sie eine eigene Datei angeben.
+Der Code stellt eine Verbindung mit der Azure Media Services-API her, indem die Authentifizierung per Azure AD-Dienstprinzipal verwendet wird. Erstellen Sie eine Azure AD-Anwendung, und geben Sie die Werte für die folgenden Variablen im Code an:
+* `tenant`: Die Azure AD-Mandantendomäne, in der sich die Azure AD-Anwendung befindet.
+* `clientId`: Die Client-ID der Azure AD-Anwendung.
+* `clientKey`: Der Clientschlüssel der Azure AD-Anwendung.
+* `restApiEndpoint`: Der REST-API-Endpunkt des Azure Media Services-Kontos.
+
+Sie können eine Azure AD-Anwendung erstellen und die obigen Konfigurationswerte über das Azure-Portal erhalten. Weitere Informationen finden Sie im Abschnitt **Dienstprinzipalauthentifizierung** unter [Erste Schritte mit der Azure AD-Authentifizierung mithilfe des Azure-Portals](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
+
+Im Code wird außerdem eine lokal gespeicherte Videodatei verwendet. Sie müssen den Code bearbeiten, um Ihre eigene lokale Datei zum Hochladen bereitzustellen.
 
     import java.io.*;
+    import java.net.URI;
     import java.security.NoSuchAlgorithmException;
     import java.util.EnumSet;
+    import java.util.concurrent.ExecutorService;
+    import java.util.concurrent.Executors;
 
     import com.microsoft.windowsazure.Configuration;
     import com.microsoft.windowsazure.exception.ServiceException;
@@ -57,6 +79,10 @@ Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen 
     import com.microsoft.windowsazure.services.media.MediaContract;
     import com.microsoft.windowsazure.services.media.MediaService;
     import com.microsoft.windowsazure.services.media.WritableBlobContainerContract;
+    import com.microsoft.windowsazure.services.media.authentication.AzureAdClientSymmetricKey;
+    import com.microsoft.windowsazure.services.media.authentication.AzureAdTokenCredentials;
+    import com.microsoft.windowsazure.services.media.authentication.AzureAdTokenProvider;
+    import com.microsoft.windowsazure.services.media.authentication.AzureEnvironments;
     import com.microsoft.windowsazure.services.media.models.AccessPolicy;
     import com.microsoft.windowsazure.services.media.models.AccessPolicyInfo;
     import com.microsoft.windowsazure.services.media.models.AccessPolicyPermission;
@@ -75,34 +101,48 @@ Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen 
     import com.microsoft.windowsazure.services.media.models.MediaProcessorInfo;
     import com.microsoft.windowsazure.services.media.models.Task;
 
-    public class HelloMediaServices
+    public class Program
     {
         // Media Services account credentials configuration
-        private static String mediaServiceUri = "https://media.windows.net/API/";
-        private static String oAuthUri = "https://wamsprodglobal001acs.accesscontrol.windows.net/v2/OAuth2-13";
-        private static String clientId = "account name";
-        private static String clientSecret = "account key";
-        private static String scope = "urn:WindowsAzureMediaServices";
+        private static String tenant = "tenant.domain.com";
+        private static String clientId = "<client id>";
+        private static String clientKey = "<client key>";
+        private static String restApiEndpoint = "https://account_name.restv2.region_name.media.azure.net/api/";
+
+        // Media Services API
         private static MediaContract mediaService;
 
         // Encoder configuration
+        // This is using the default Adaptive Streaming encoding preset. 
+        // You can choose to use a custom preset, or any other sample defined preset. 
+        // In addition you can use other processors, like Speech Analyzer, or Redactor if desired.
         private static String preferedEncoder = "Media Encoder Standard";
         private static String encodingPreset = "Adaptive Streaming";
 
         public static void main(String[] args)
         {
+            ExecutorService executorService = Executors.newFixedThreadPool(1);
 
             try {
-                // Set up the MediaContract object to call into the Media Services account
-                Configuration configuration = MediaConfiguration.configureWithOAuthAuthentication(
-                mediaServiceUri, oAuthUri, clientId, clientSecret, scope);
+                // Setup Azure AD Service Principal Symmetric Key Credentials
+                AzureAdTokenCredentials credentials = new AzureAdTokenCredentials(
+                        tenant,
+                        new AzureAdClientSymmetricKey(clientId, clientKey),
+                        AzureEnvironments.AZURE_CLOUD_ENVIRONMENT);
+
+                AzureAdTokenProvider provider = new AzureAdTokenProvider(credentials, executorService);
+
+                // Create a new configuration with the credentials
+                Configuration configuration = MediaConfiguration.configureWithAzureAdTokenProvider(
+                        new URI(restApiEndpoint),
+                        provider);
+
+                // Create the media service provisioned with the new configuration
                 mediaService = MediaService.create(configuration);
 
-
                 // Upload a local file to an Asset
-                AssetInfo uploadAsset = uploadFileAndCreateAsset("BigBuckBunny.mp4");
+                AssetInfo uploadAsset = uploadFileAndCreateAsset("Video Name", "C:/path/to/video.mp4");
                 System.out.println("Uploaded Asset Id: " + uploadAsset.getId());
-
 
                 // Transform the Asset
                 AssetInfo encodedAsset = encode(uploadAsset);
@@ -120,11 +160,12 @@ Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen 
             } catch (Exception e) {
                 System.out.println("Exception encountered.");
                 System.out.println(e.toString());
+            } finally {
+                executorService.shutdown();
             }
-
         }
 
-        private static AssetInfo uploadFileAndCreateAsset(String fileName)
+        private static AssetInfo uploadFileAndCreateAsset(String assetName, String fileName)
             throws ServiceException, FileNotFoundException, NoSuchAlgorithmException {
 
             WritableBlobContainerContract uploader;
@@ -133,7 +174,7 @@ Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen 
             LocatorInfo uploadLocator = null;
 
             // Create an Asset
-            resultAsset = mediaService.create(Asset.create().setName(fileName).setAlternateId("altId"));
+            resultAsset = mediaService.create(Asset.create().setName(assetName).setAlternateId("altId"));
             System.out.println("Created Asset " + fileName);
 
             // Create an AccessPolicy that provides Write access for 15 minutes
@@ -147,15 +188,15 @@ Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen 
             // Create the Blob Writer using the Locator
             uploader = mediaService.createBlobWriter(uploadLocator);
 
-            File file = new File("BigBuckBunny.mp4"); 
+            File file = new File(fileName);
 
             // The local file that will be uploaded to your Media Services account
             InputStream input = new FileInputStream(file);
 
             System.out.println("Uploading " + fileName);
 
-            // Upload the local file to the asset
-            uploader.createBlockBlob(fileName, input);
+            // Upload the local file to the media asset
+            uploader.createBlockBlob(file.getName(), input);
 
             // Inform Media Services about the uploaded files
             mediaService.action(AssetFile.createFileInfos(resultAsset.getId()));
@@ -227,7 +268,7 @@ Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen 
             AccessPolicyInfo originAccessPolicy;
             LocatorInfo originLocator = null;
 
-            // Create a 30-day readonly AccessPolicy
+            // Create a 30-day read only AccessPolicy
             double durationInMinutes = 60 * 24 * 30;
             originAccessPolicy = mediaService.create(
                     AccessPolicy.create("Streaming policy", durationInMinutes, EnumSet.of(AccessPolicyPermission.READ)));
@@ -256,7 +297,6 @@ Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen 
                 }
             }
         }
-
     }
 
 
@@ -267,10 +307,15 @@ Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-Media Services-Javadoc-Dokumentation finden Sie in den [Azure-Bibliotheken für Java-Dokumentation][Azure Libraries for Java documentation].
+Weitere Informationen zur Entwicklung von Java-Apps in Azure finden Sie unter [Azure Java Developer Center][Azure Java Developer Center] und [Azure für Java-Entwickler][Azure for Java developers].
+
+
+Media Services-Javadoc-Dokumentation finden Sie in den [Azure-Bibliotheken für Java-Dokumentation][Azure-Bibliotheken für Java-Dokumentation].
 
 <!-- URLs. -->
 
+[Azure Media Services SDK Maven Package]: https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest
 [Azure Java Developer Center]: http://azure.microsoft.com/develop/java/
-[Azure Libraries for Java documentation]: http://dl.windowsazure.com/javadoc/
+[Azure for Java developers]: https://docs.microsoft.com/java/azure/
 [Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
+

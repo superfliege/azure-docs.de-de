@@ -9,12 +9,12 @@ manager: jhubbard
 ms.service: postgresql
 ms.custom: 
 ms.topic: article
-ms.date: 05/15/2017
-ms.openlocfilehash: 685aa4c2f75b7c3260ca737f7c786157480b2d90
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/01/2017
+ms.openlocfilehash: 3173964f0315559b0839fd7e659f8f3bd2c30b2a
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>Konfigurieren von SSL-Konnektivität in Azure-Datenbank für PostgreSQL
 Azure-Datenbank für PostgreSQL stellt Verbindungen zwischen Clientanwendungen und dem PostgreSQL-Dienst hauptsächlich mittels Secure Sockets Layer (SSL) her. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.
@@ -30,7 +30,7 @@ Entsprechend enthalten Verbindungszeichenfolgen, die im Azure-Portal unter dem S
 Sie können die Erzwingung von SSL-Verbindungen optional deaktivieren. Microsoft Azure empfiehlt, die Einstellung **SSL-Verbindung erzwingen** immer zu aktivieren, um die Sicherheit zu erhöhen.
 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
-Rufen Sie Ihren Azure-Datenbank für PostgreSQL-Server auf, und klicken Sie auf **Verbindungssicherheit**. Verwenden Sie die Umschaltfläche, um die Einstellung **SSL-Verbindung erzwingen** zu aktivieren bzw. zu deaktivieren. Klicken Sie anschließend auf **Speichern**. 
+Rufen Sie Ihren Azure-Datenbank für PostgreSQL-Server auf, und klicken Sie auf **Verbindungssicherheit**. Verwenden Sie die Umschaltfläche, um die Einstellung **SSL-Verbindung erzwingen** zu aktivieren/deaktivieren. Klicken Sie dann auf **Speichern**. 
 
 ![Verbindungssicherheit – Erzwingung von SSL deaktivieren](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
@@ -44,7 +44,7 @@ az postgres server update --resource-group myresourcegroup --name mypgserver-201
 ```
 
 ## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>Sicherstellen, dass die Anwendung oder das Framework SSL-Verbindungen unterstützt
-Viele gängige Anwendungsframeworks, die PostgreSQL für Datenbankdienste verwenden, z.B. Drupal und Django, aktivieren SSL nicht standardmäßig während der Installation. SSL-Verbindungen müssen nach der Installation oder über bestimmte anwendungsspezifische CLI-Befehle aktiviert werden. Wenn Ihr PostgreSQL-Server SSL-Verbindungen erzwingt und die zugehörige Anwendung nicht ordnungsgemäß konfiguriert wurde, kann die Anwendung möglicherweise keine Verbindung mit dem Datenbankserver herstellen. Lesen Sie in der Dokumentation Ihrer Anwendung nach, wie SSL-Verbindungen aktiviert werden.
+Viele gängige Anwendungsframeworks, die PostgreSQL für ihre Datenbankdienste verwenden, z. B. Drupal und Django, aktivieren SSL nicht standardmäßig während der Installation. SSL-Verbindungen müssen nach der Installation oder über bestimmte CLI-Befehle die Anwendung aktiviert werden. Wenn Ihr PostgreSQL-Server SSL-Verbindungen erzwingt und die zugehörige Anwendung nicht ordnungsgemäß konfiguriert wurde, kann die Anwendung möglicherweise keine Verbindung mit dem Datenbankserver herstellen. Lesen Sie in der Dokumentation Ihrer Anwendung nach, wie SSL-Verbindungen aktiviert werden.
 
 
 ## <a name="applications-that-require-certificate-verification-for-ssl-connectivity"></a>Anwendungen, die eine Zertifikatüberprüfung für SSL-Verbindungen erfordern
@@ -59,11 +59,11 @@ Zum Decodieren der Zertifikatdatei, die Ihre Anwendung für die sichere Verbindu
 #### <a name="for-linux-os-x-or-unix"></a>Bei Linux, Mac OS X oder Unix
 Die OpenSSL-Bibliotheken finden Sie im Quellcode direkt bei der [OpenSSL Software Foundation](http://www.openssl.org). Die folgenden Anweisungen führen Sie durch die erforderlichen Schritte zum Installieren von OpenSSL auf Ihrem Linux-Computer. In diesem Artikel werden Befehle verwendet, die nachweislich auf Ubuntu 12.04 und höher ausgeführt werden.
 
-Öffnen Sie eine Terminalsitzung, und installieren Sie OpenSSL.
+Öffnen Sie eine Terminalsitzung, und laden Sie OpenSSL herunter.
 ```bash
 wget http://www.openssl.org/source/openssl-1.1.0e.tar.gz
 ``` 
-Extrahieren Sie die Dateien aus dem Downloadpaket.
+Extrahieren Sie die Dateien aus dem heruntergeladenen Paket.
 ```bash
 tar -xvzf openssl-1.1.0e.tar.gz
 ```
@@ -86,7 +86,7 @@ Nach Abschluss der Kompilierung können Sie OpenSSL als ausführbare Datei insta
 ```bash
 make install
 ```
-Um sicherzustellen, dass OpenSSL erfolgreich in Ihrem System installiert wurde, führen Sie den folgenden Befehl aus, und überprüfen Sie, ob Sie dieselbe Ausgabe erhalten.
+Zum Sicherstellen, dass OpenSSL erfolgreich in Ihrem System installiert wurde, führen Sie dem folgenden Befehl aus und überprüfen, ob Sie die gleiche Ausgabe erhalten.
 
 ```bash
 /usr/local/openssl/bin/openssl version
@@ -105,7 +105,7 @@ Die Installation von OpenSSL auf einem Windows-PC kann mit folgenden Methoden du
 Die heruntergeladene Stamm-CA-Datei weist ein verschlüsseltes Format auf. Verwenden Sie OpenSSL, um die Zertifikatdatei zu decodieren. Führen Sie hierzu folgenden OpenSSL-Befehl aus:
 
 ```dos
-OpenSSL>x509 -inform DER -in BaltimoreCyberTrustRoot.cer -text -out root.crt
+openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
 ```
 
 ### <a name="connecting-to-azure-database-for-postgresql-with-ssl-certificate-authentication"></a>Herstellen einer Verbindung mit Azure-Datenbank für PostgreSQL mit SSL-Zertifikatauthentifizierung
@@ -141,4 +141,4 @@ Um pgAdmin 4 für die Herstellung einer sicheren Verbindung über SSL zu konfigu
 ![Screenshot von pgAdmin – Verbindung – SSL-Modus erforderlich](./media/concepts-ssl-connection-security/2-pgadmin-ssl.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Überprüfen verschiedener Anwendungskonnektivitätsoptionen gemäß [Datenverbindungsbibliotheken für Azure-Datenbank für PostgreSQL](concepts-connection-libraries.md)
+Überprüfen verschiedener Anwendungskonnektivitätsoptionen gemäß [Datenverbindungsbibliotheken für Azure Database for PostgreSQL](concepts-connection-libraries.md).
