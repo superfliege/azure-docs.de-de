@@ -166,6 +166,8 @@
           href: compute-linked-services.md
     - name: Ablaufsteuerung
       items:
+        - name: Aktivität „Falls-Bedingung“
+          href: control-flow-if-condition-activity.md
         - name: Webaktivität
           href: control-flow-web-activity.md
         - name: Lookup-Aktivität
