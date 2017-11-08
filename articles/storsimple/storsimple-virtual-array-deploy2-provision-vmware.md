@@ -120,8 +120,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image15.png)
 15. Das Fenster **Neuen virtuellen Computer erstellen** wird angezeigt. Wählen Sie auf der Seite **Konfiguration** die Option **Benutzerdefiniert**. Klicken Sie auf **Weiter**.
-    
-![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
+    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
 16. Geben Sie auf der Seite **Name und Speicherort** den Namen der virtuellen Maschine an. Dieser Name sollte mit dem Ordnernamen übereinstimmen, den Sie in Schritt 8 angegeben haben (empfohlene bewährte Methode).
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image17.png)
