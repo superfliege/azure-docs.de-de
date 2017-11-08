@@ -8,7 +8,6 @@
 ## [Features &amp; tools in Bash](features.md) (Features und Tools in Bash)
 ## [Features &amp; tools in PowerShell](features-powershell.md) (Features und Tools in PowerShell)
 ## [Einschränkungen](limitations.md)
-## [Problembehandlung](troubleshooting.md)
 
 # Vorgehensweise
 ## [Persisting storage in Bash](persisting-shell-storage.md) (Beibehalten von Speicher in Bash)
@@ -16,6 +15,8 @@
 ## [Verwenden des Fensters](using-the-shell-window.md)
 
 # [Preise](pricing.md)
+
+# [Problembehandlung](troubleshooting.md)
 
 # Referenz
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure)

@@ -71,7 +71,6 @@
 
 ## Festlegen von Ressourcenrichtlinien
 ### [Was sind Ressourcenrichtlinien?](resource-manager-policy.md)
-### [Zuweisen von Richtlinien über Skripts](resource-manager-policy-create-assign.md)
 ### Beispiele
 #### [Tags](resource-manager-policy-tags.md)
 #### [Benennungskonventionen](resource-manager-policy-naming-convention.md)
