@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 5b28e15d643497dbdf827b3976ad7dcdc73507b1
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 1e715b54c78d42d88d2082e9b0e9f942bec72abd
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -31,7 +31,7 @@ Nach der Bereitstellung möchten viele Organisationen wissen, wie oder ob SSPR t
 Die folgenden Fragen können mit Berichten beantwortet werden, die im [Azure-Portal] (https://portal.azure.com/) vorhanden sind.
 
 > [!NOTE]
-> Sie müssen [ein globaler Administrator](active-directory-assign-admin-roles.md#assign-or-remove-administrator-roles) sein und müssen aktivieren, dass diese Daten im Auftrag Ihres Unternehmens erfasst werden, indem Sie die Registerkarte „Berichterstellung“ oder Überwachungsprotokolle mindestens einmal besuchen. Bis dahin werden für Ihre Organisation keine Daten gesammelt.
+> Sie müssen [ein globaler Administrator](active-directory-assign-admin-roles.md) sein und müssen aktivieren, dass diese Daten im Auftrag Ihres Unternehmens erfasst werden, indem Sie die Registerkarte „Berichterstellung“ oder Überwachungsprotokolle mindestens einmal besuchen. Bis dahin werden für Ihre Organisation keine Daten gesammelt.
 
 * Wie viele Personen haben sich für die Kennwortzurücksetzung registriert?
 * Wer hat sich für das Zurücksetzen von Kennwörtern registriert?
@@ -78,13 +78,7 @@ Derzeit ruft die API für Azure AD-Berichte und -Ereignisse bis zu **75.000 Einz
 
 Wenn Sie weiter zurückliegende Daten abrufen oder speichern möchten, sollten Sie sie in einer externen Datenbank speichern und mithilfe der API die resultierenden Deltas abfragen. Es empfiehlt sich, mit dem Abrufen der Daten zu beginnen, wenn in Ihrer Organisation die SSPR-Verwendung gestartet wird. Speichern Sie die Daten extern, und verfolgen Sie ab diesem Punkt die Deltas nach.
 
-## <a name="how-to-download-password-reset-registration-events-quickly-with-powershell"></a>Schnelles Herunterladen von Ereignissen im Zusammenhang mit der Registrierung für die Kennwortzurücksetzung mit PowerShell
-
-Neben der direkten Verwendung der API für Azure AD-Berichte und -Ereignisse können Sie auch das folgende PowerShell-Skript verwenden, um aktuelle Registrierungsereignisse in Ihrem Verzeichnis herunterzuladen. Dadurch können Sie ermitteln, wer sich kürzlich registriert hat, oder sich vergewissern, dass das Rollout Ihrer Kennwortzurücksetzung wie erwartet erfolgt.
-
-* [PowerShell-Skript: Aktivität zur Registrierung für die Self-Service-Kennwortzurücksetzung von Azure AD](https://gallery.technet.microsoft.com/scriptcenter/azure-ad-self-service-e31b8aee)
-
-### <a name="description-of-report-columns-in-azure-portal"></a>Beschreibung der Berichtsspalten im Azure-Portal
+## <a name="description-of-report-columns-in-azure-portal"></a>Beschreibung der Berichtsspalten im Azure-Portal
 
 In der folgende Liste werden alle Berichtsspalten im Detail beschrieben:
 
@@ -93,7 +87,7 @@ In der folgende Liste werden alle Berichtsspalten im Detail beschrieben:
 * **Datum und Uhrzeit** – Datum und Uhrzeit des Versuchs.
 * **Registrierte Daten** – Die Authentifizierungsdaten, die vom Benutzer während der Registrierung für die Kennwortzurücksetzung bereitgestellt wurden.
 
-### <a name="description-of-report-values-in-azure-portal"></a>Beschreibung der Berichtswerte im Azure-Portal
+## <a name="description-of-report-values-in-azure-portal"></a>Beschreibung der Berichtswerte im Azure-Portal
 
 Die folgende Tabelle beschreibt die verschiedenen Werte, die für die einzelnen Spalten zulässig sind:
 
@@ -198,13 +192,13 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Wie führe ich ein erfolgreiches Rollout der SSPR durch?](active-directory-passwords-best-practices.md)
-* [Setzen Sie Ihr Kennwort zurück bzw. ändern Sie es](active-directory-passwords-update-your-own-password.md).
-* [Registrieren Sie sich für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md).
-* [Haben Sie eine Frage zur Lizenzierung?](active-directory-passwords-licensing.md)
-* [Welche Daten werden von SSPR verwendet, und welche Daten sollten Sie für Ihre Benutzer angeben?](active-directory-passwords-data.md)
-* [Welche Authentifizierungsmethoden sind für Benutzer verfügbar?](active-directory-passwords-how-it-works.md#authentication-methods)
-* [Welche Richtlinienoptionen stehen mit SSPR zur Verfügung?](active-directory-passwords-policy.md)
+* [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](active-directory-passwords-best-practices.md)
+* [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md)
+* [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
+* [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](active-directory-passwords-licensing.md)
+* [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](active-directory-passwords-data.md)
+* [Authentifizierungsmethoden](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](active-directory-passwords-policy.md)
 * [Worum handelt es sich beim Rückschreiben von Kennwörtern, und warum sollte ich mir Gedanken darüber machen?](active-directory-passwords-writeback.md)
 * [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
