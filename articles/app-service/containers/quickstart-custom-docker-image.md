@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 09/05/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: eadc0f7eb20b9e8d1cacc79b2907559e2b2535a2
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: c85f79cc14cdcecd2a05fc0ff91c4864b9fba277
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="run-a-custom-docker-hub-image-in-web-app-for-containers"></a>Ausführen eines benutzerdefinierten Docker Hub-Images in Web-App für Container
 
@@ -42,7 +42,7 @@ Erstellen Sie eine [Web-App](../app-service-web-overview.md) im App Service-Plan
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name elnably/dockerimagetest
 ```
 
-Im vorhergehenden Befehl verweist `--deployment-container-image-name` auf das öffentliche Image des Docker-Hubs [https://hub.docker.com/r/elnably/dockerimagetest/](https://hub.docker.com/r/elnably/dockerimagetest/). Den jeweiligen Inhalt können Sie unter [https://github.com/rachelappel/docker-image](https://github.com/rachelappel/docker-image) prüfen.
+Im vorhergehenden Befehl verweist `--deployment-container-image-name` auf das öffentliche Image des Docker-Hubs [https://hub.docker.com/r/elnably/dockerimagetest/](https://hub.docker.com/r/elnably/dockerimagetest/). Den jeweiligen Inhalt können Sie unter [https://github.com/ahmedelnably/dockerimagetest](https://github.com/ahmedelnably/dockerimagetest) prüfen.
 
 Nach Erstellung der Web-App zeigt die Azure CLI eine Ausgabe wie im folgenden Beispiel an:
 

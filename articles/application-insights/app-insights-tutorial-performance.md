@@ -3,18 +3,18 @@ title: Diagnostizieren von Leistungsproblemen mit Azure Application Insights | M
 description: Tutorial zum Suchen und Diagnostizieren von Leistungsproblemen in Ihrer Anwendung mithilfe von Azure Application Insights
 services: application-insights
 keywords: 
-author: bwren
-ms.author: bwren
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/18/2017
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 411e10367f02846261f9fcc7717b5abb147b2c09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0edec15c7f14ee5338555b03700b7be32c3a1023
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Suchen und Diagnostizieren von Leistungsproblemen mit Azure Application Insights
 
@@ -35,13 +35,13 @@ Für dieses Tutorial benötigen Sie Folgendes:
     - ASP.NET und Webentwicklung
     - Azure-Entwicklung
 - Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](app-insights-asp-net.md).
-- [Aktivieren Sie Application Insights Profiler](app-insights-profiler.md#enable-the-profiler) für Ihre Anwendung. 
+- [Aktivieren Sie Application Insights Profiler](app-insights-profiler.md#installation) für Ihre Anwendung.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) im Azure-Portal an.
 
-## <a name="identify-slow-server-operations"></a>Identifizieren langsamer Servervorgänge 
-Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in Ihrer Anwendung.  Durch Identifizieren der Vorgänge mit der längsten Dauer können Sie potenzielle Probleme diagnostizieren oder die aktuelle Entwicklung bestmöglich auf die Verbesserung der allgemeinen Leistung der Anwendung ausrichten. 
+## <a name="identify-slow-server-operations"></a>Identifizieren langsamer Servervorgänge
+Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in Ihrer Anwendung.  Durch Identifizieren der Vorgänge mit der längsten Dauer können Sie potenzielle Probleme diagnostizieren oder die aktuelle Entwicklung bestmöglich auf die Verbesserung der allgemeinen Leistung der Anwendung ausrichten.
 
 1. Wählen Sie zuerst **Application Insights** und anschließend Ihr Abonnement aus.  
 1. Um den Bereich **Leistung** zu öffnen, klicken Sie entweder im Menü **Untersuchen** auf die Option **Leistung** oder auf das Diagramm **Serverantwortzeit**.
@@ -59,14 +59,14 @@ Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in
 4.  Klicken Sie auf einen Vorgang, um seinen Leistungsbereich auf der rechten Seite anzuzeigen. Hier wird die Dauerverteilung verschiedener Abfragen dargestellt.  Benutzer bemerken Leistungseinbußen in der Regel bei einer Verzögerung von ca. einer halben Sekunde. Legen Sie die Dauer also auf mehr als 500 Millisekunden fest.  
 
     ![Dauerverteilung](media/app-insights-tutorial-performance/duration-distribution.png)
-  
+
 5.  In diesem Beispiel sehen Sie, dass die Verarbeitungsdauer für eine erhebliche Anzahl von Anforderungen bei über einer Sekunde liegt. Die Details dieses Vorgangs lassen sich durch Klicken auf **Vorgangsdetails** aufrufen.
 
     ![Vorgangsdetails](media/app-insights-tutorial-performance/operation-details.png)
-    
+
 6.  Die Informationen, die Sie bisher gesammelt haben, bestätigen, dass es Leistungseinbußen gibt. Sie erzählen jedoch wenig über die Grundursache.  Hier kommt der **Profiler** ins Spiel: Er zeigt den tatsächlichen Code, der für den Vorgang ausgeführt wurde, und den Zeitaufwand für die einzelnen Schritte an. Einige Vorgänge haben möglicherweise keine Ablaufverfolgung, da der Profiler in regelmäßigen Abständen ausgeführt wird.  Im Laufe der Zeit sollten weitere Vorgänge aber Ablaufverfolgungen erhalten.  Um den Profiler für den Vorgang zu starten, klicken Sie auf **Profiler-Ablaufverfolgungen**.
 5.  Die Ablaufverfolgung zeigt die einzelnen Ereignisse für jeden Vorgang an, damit Sie die Grundursache für die Dauer des gesamten Vorgangs diagnostizieren können.  Klicken Sie auf eines der obersten Beispiele, die am längsten dauern.
-6.  Klicken Sie auf **Langsamsten Pfad anzeigen**, um den Pfad der Ereignisse zu markieren, die für die hohe Gesamtdauer des Vorgangs verantwortlich sind.  In diesem Beispiel sehen Sie, dass eine Ausnahme ausgelöst wurde, die mehr als zwei Sekunden auf eine Ressource gewartet hat.
+6.  Klicken Sie auf **Langsamsten Pfad anzeigen**, um den Pfad der Ereignisse zu markieren, die für die hohe Gesamtdauer des Vorgangs verantwortlich sind.  In diesem Beispiel können Sie sehen, dass der langsamste Aufruf von der Methode *FabrikamFiberAzureStorage.GetStorageTableData* stammt. Der Teil, der den Großteil der Zeit beansprucht, ist die Methode *CloudTable.CreateIfNotExist*. Wenn diese Codezeile bei jedem Aufruf der Funktion ausgeführt wird, werden unnötige Netzwerkaufruf- und CPU-Ressourcen verbraucht. Die beste Möglichkeit zum Korrigieren des Code besteht darin, diese Zeile in eine Startmethode einzufügen, die nur einmal ausgeführt wird. 
 
     ![Profilerdetails](media/app-insights-tutorial-performance/profiler-details.png)
 
@@ -84,25 +84,25 @@ Application Insights Analytics bietet eine umfangreiche Abfragesprache, mit der 
     ![Schaltfläche „Analytics“](media/app-insights-tutorial-performance/server-analytics-button.png)
 
 2. Application Insights Analytics wird mit einer Abfrage für jede der Ansichten im Bereich geöffnet.  Sie können diese Abfragen ohne weitere Veränderungen ausführen oder sie Ihren Anforderungen entsprechend ändern.  Die erste Abfrage zeigt die Dauer dieses Vorgangs im Zeitverlauf an.
-    
+
     ![Analyse](media/app-insights-tutorial-performance/server-analytics.png)
 
 
-## <a name="identify-slow-client-operations"></a>Identifizieren langsamer Clientvorgänge 
-Zusätzlich zum Ermitteln von optimierbaren Serverprozessen kann Application Insights die Perspektive des Clientbrowsers analysieren.  So können Sie nicht nur mögliche Verbesserungen an Clientkomponenten, sondern auch Probleme mit verschiedenen Browsern oder verschiedenen Standorten identifizieren. 
+## <a name="identify-slow-client-operations"></a>Identifizieren langsamer Clientvorgänge
+Zusätzlich zum Ermitteln von optimierbaren Serverprozessen kann Application Insights die Perspektive des Clientbrowsers analysieren.  So können Sie nicht nur mögliche Verbesserungen an Clientkomponenten, sondern auch Probleme mit verschiedenen Browsern oder verschiedenen Standorten identifizieren.
 
 1. Wählen Sie unter **Untersuchen** die Option **Browser** aus, um die Browserzusammenfassung zu öffnen.  Dies ist eine grafische Zusammenfassung der verschiedenen Telemetrien Ihrer Anwendung aus der Perspektive des Browsers.
 
     ![Browserzusammenfassung](media/app-insights-tutorial-performance/browser-summary.png)
- 
+
 2.  Scrollen Sie nach unten bis zu **Welche meiner Seiten sind am langsamsten?**.  Damit rufen Sie eine Liste der Anwendungsseiten auf, die am langsamsten von Clients geladen werden.  Mit diesen Informationen können Sie die Seiten priorisieren, die die größten Auswirkungen auf Benutzer haben.
 3.  Klicken Sie auf eine der Seiten, um den Bereich **Seitenansicht** zu öffnen.  Im Beispiel wird die Seite **/FabrikamProd** im Durchschnitt sehr langsam geladen.  Der Bereich **Seitenansicht** stellt Details zu dieser Seite bereit, z.B. eine Aufschlüsselung der verschiedenen Zeiträume.
 
     ![Seitenansicht](media/app-insights-tutorial-performance/page-view.png)
- 
+
 4.  Klicken Sie auf die höchste Dauer, um die Details dieser Anforderungen aufzurufen.  Klicken Sie dann auf die einzelnen Anforderungen, um die Details zum Client anzuzeigen, der die Seite anfordert, z.B. den Browsertyp und dessen Standort.  Diese Informationen können Ihnen dabei helfen, zu bestimmen, ob Leistungsprobleme mit bestimmten Clienttypen zu tun haben.
 
-    ![Anforderungsdetails](media/app-insights-tutorial-performance/request-details.png) 
+    ![Anforderungsdetails](media/app-insights-tutorial-performance/request-details.png)
 
 ## <a name="use-analytics-data-for-client"></a>Verwenden von Analysedaten für Clients
 So wie bei den für die Serverleistung gesammelten Daten stellt Application Insights alle Clientdaten für tiefgehende Analysen mit Analytics zur Verfügung.

@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d8ad132ec47a81971a3405970eeddab3b1598ff3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eee8ee3af5918ddbe7393ff2574833f798ffcb19
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways
 Dieser Artikel enthält Informationen zur Problembehandlung bei der Verwendung des Datenverwaltungsgateways.
 
 > [!NOTE]
-> Ausführliche Informationen zum Gateway finden Sie im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md). Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) finden Sie eine exemplarische Vorgehensweise zum Verschieben von Daten aus einer lokalen SQL Server-Datenbank in einen Microsoft Azure-Blobspeicher mithilfe des Gateways.
->
->
+> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die derzeit in der Vorschauversion verfügbar ist, finden Sie weitere Informationen unter [Selbstgehostete Integration Runtime in Version 2 von Data Factory](../create-self-hosted-integration-runtime.md).
+
+Ausführliche Informationen zum Gateway finden Sie im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md). Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) finden Sie eine exemplarische Vorgehensweise zum Verschieben von Daten aus einer lokalen SQL Server-Datenbank in einen Microsoft Azure-Blobspeicher mithilfe des Gateways.
 
 ## <a name="failed-to-install-or-register-gateway"></a>Fehler beim Installieren oder Registrieren des Gateways
 ### <a name="1-problem"></a>1. Problem

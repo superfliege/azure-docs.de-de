@@ -1,5 +1,6 @@
 Wenn für Ihren virtuellen Computer in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie unter Umständen Problembehandlungsschritte für die virtuelle Festplatte ausführen. Ein allgemeines Beispiel wäre etwa ein fehlerhaftes Anwendungsupdate, das den Start des virtuellen Computers verhindert. In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal eine Verbindung zwischen Ihrer virtuellen Festplatte und einem anderen virtuellen Computer herstellen, alle Fehler beheben und anschließend den ursprünglichen virtuellen Computer neu erstellen.
 
+
 ## <a name="recovery-process-overview"></a>Übersicht über den Wiederherstellungsprozess
 Der Problembehebungsprozess sieht wie folgt aus:
 

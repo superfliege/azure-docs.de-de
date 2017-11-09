@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: dde9d9b8be1faede7d2e9e45597070e6ce51ac02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26ce9e96dd4df170e80c2c61dcc08c70357eec22
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Beschreiben eines Service Fabric-Clusters
 Der Service Fabric-Cluster-Ressourcen-Manager stellt verschiedene Methoden zum Beschreiben eines Clusters bereit. Zur Laufzeit nutzt der Clusterressourcen-Manager diese Informationen, um die hohe Verfügbarkeit der Dienste sicherzustellen, die im Cluster ausgeführt werden. Beim Erzwingen dieser wichtigen Regeln wird auch versucht, den Ressourcenverbrauch innerhalb des Clusters zu optimieren.
@@ -39,7 +39,7 @@ Es ist wichtig, dass Fehlerdomänen richtig eingerichtet werden, da Service Fabr
 > [!WARNING]
 > Es ist wichtig, dass die für Service Fabric angegebenen Informationen zur Fehlerdomäne korrekt sind. Angenommen, die Knoten Ihres Service Fabric-Clusters werden auf zehn virtuellen Computern (VMs) ausgeführt, die auf fünf physischen Hosts betrieben werden. In diesem Fall gibt es trotz der zehn VMs lediglich fünf verschiedene Fehlerdomänen (der obersten Ebene). Die gemeinsame Verwendung eines physischen Hosts bewirkt, dass VMs dieselbe Stamm-Fehlerdomäne gemeinsam nutzen, da die VMs bei einem Ausfall ihres physischen Hosts koordiniert ausfallen.  
 >
-> Service Fabric erwartet keine Änderung der Fehlerdomäne eines Knotens. Bei anderen Mechanismen zum Sicherstellen der Hochverfügbarkeit der VMs, z.B. [HA-VMs](https://technet.microsoft.com/en-us/library/cc967323.aspx), erfolgt die transparente Migration der VMs von einem Host zu einem anderen. Von diesen Mechanismen wird der ausgeführte Code im virtuellen Computer weder neu konfiguriert noch benachrichtigt. Somit werden **nicht** als Umgebungen für den Betrieb von Service Fabric-Clusters unterstützt. Service Fabric sollte die einzige eingesetzte Hochverfügbarkeitstechnologie sein. Mechanismen wie die Livemigration von VMs, SANs usw. sind nicht erforderlich. Bei Verwendung mit Service Fabric _mindern_ diese Mechanismen die Anwendungsverfügbarkeit und -zuverlässigkeit, da sie eine zusätzliche Komplexität mit sich bringen, zentrale Fehlerquellen einführen und Zuverlässigkeits- und Verfügbarkeitsstrategien nutzen, die mit denen in Service Fabric in Konflikt stehen. 
+> Service Fabric erwartet keine Änderung der Fehlerdomäne eines Knotens. Bei anderen Mechanismen zum Sicherstellen der Hochverfügbarkeit der VMs, z.B. [HA-VMs](https://technet.microsoft.com/en-us/library/cc967323.aspx), können Konflikte mit Service Fabric auftreten, da sie die transparente Migration der VMs von einem Host zu einem anderen nutzen. Von diesen Mechanismen wird der ausgeführte Code im virtuellen Computer weder neu konfiguriert noch benachrichtigt. Somit werden **nicht** als Umgebungen für den Betrieb von Service Fabric-Clusters unterstützt. Service Fabric sollte die einzige eingesetzte Hochverfügbarkeitstechnologie sein. Mechanismen wie die Livemigration von VMs, SANs usw. sind nicht erforderlich. Bei Verwendung mit Service Fabric _mindern_ diese Mechanismen die Anwendungsverfügbarkeit und -zuverlässigkeit, da sie eine zusätzliche Komplexität mit sich bringen, zentrale Fehlerquellen einführen und Zuverlässigkeits- und Verfügbarkeitsstrategien nutzen, die mit denen in Service Fabric in Konflikt stehen. 
 >
 >
 

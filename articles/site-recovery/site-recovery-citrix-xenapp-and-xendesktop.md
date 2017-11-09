@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: ponatara
-ms.openlocfilehash: dc064352b1841ff346b705dc63186b12d79350b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52b123b598226e7b03ea9a31c40dd192fd76b191
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Replizieren einer Citrix XenApp- und and XenDesktop-Bereitstellung mit mehreren Schichten mit Azure Site Recovery
 
@@ -74,7 +74,7 @@ Da XenApp 7.7 und höher in Azure unterstützt wird, kann nur für Bereitstellun
 
 1. Schutz und Wiederherstellung von lokalen Bereitstellungen mithilfe von Computern mit Serverbetriebssystemen zum Übermitteln von in XenApp veröffentlichten Apps und Desktops werden unterstützt.
 
-2. Schutz und Wiederherstellung von lokalen Bereitstellungen mit Computern mit Desktopbetriebssystemen zum Übermitteln von Desktop VDI für virtuelle Clientdesktops, einschließlich Windows 10, werden nicht unterstützt. Dies liegt daran, dass ASR die Wiederherstellung von Computern mit Desktopbetriebssystemen nicht unterstützt.  Außerdem werden einige Versionen von virtuellen Clientdesktops (z.B. Windows 7) für die Lizenzierung in Azure noch nicht unterstützt. Weitere Informationen zur Lizenzierung für Client-/Serverdesktopcomputer in Azure finden Sie [hier](https://azure.microsoft.com/pricing/licensing-faq/).
+2. Schutz und Wiederherstellung von lokalen Bereitstellungen mit Computern mit Desktopbetriebssystemen zum Übermitteln von Desktop VDI für virtuelle Clientdesktops, einschließlich Windows 10, werden nicht unterstützt. Dies liegt daran, dass ASR die Wiederherstellung von Computern mit Desktopbetriebssystemen nicht unterstützt.  Außerdem werden einige Betriebssysteme von virtuellen Clientdesktops (z.B. Windows 7) für die Lizenzierung in Azure noch nicht unterstützt. Weitere Informationen zur Lizenzierung für Client-/Serverdesktopcomputer in Azure finden Sie [hier](https://azure.microsoft.com/pricing/licensing-faq/).
 
 3.  Azure Site Recovery kann keine lokalen MCS- oder PVS-Klone replizieren und schützen.
 Sie müssen diese Klone mithilfe der Azure RM-Bereitstellung über den Delivery Controller neu erstellen.

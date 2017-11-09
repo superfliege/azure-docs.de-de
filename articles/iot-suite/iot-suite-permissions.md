@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2017
+ms.date: 09/28/2017
 ms.author: dobett
-ms.openlocfilehash: f67c7bfa3f0ea7b720c8684cc0c501be3e464373
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 84d2bcc4ccc102f03d878bfede43672158469190
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>Berechtigungen für die Website „azureiotsuite.com“
 
@@ -46,18 +46,14 @@ Weitere Informationen zu Administratorrollen in AAD finden Sie unter [Zuweisen v
 Pro AAD-Mandant kann es viele globale Administratoren geben:
 
 * Wenn Sie einen AAD-Mandanten erstellen, sind Sie standardmäßig der globale Administrator dieses Mandanten.
-* Der globale Administrator kann eine vorkonfigurierte Lösung bereitstellen und erhält die Rolle **Administrator** für die Anwendung innerhalb des AAD-Mandanten.
-* Wenn ein anderer Benutzer im selben AAD-Mandanten eine Anwendung erstellt, ist **ReadOnly** die Standardrolle, die dem globalen Administrator zugewiesen wird.
-* Ein globaler Administrator kann Benutzer über das [Azure-Portal][lnk-portal] Rollen für Anwendungen zuweisen.
+* Der globale Administrator kann eine vorkonfigurierte Basic- und Standard-Lösung bereitstellen.
 
 ### <a name="domain-user"></a>Domänenbenutzer
 
 Pro AAD-Mandant können zahlreiche Domänenbenutzer vorhanden sein:
 
-* Domänenbenutzer können eine vorkonfigurierte Lösung über die Website [azureiotsuite.com][lnk-azureiotsuite] bereitstellen. Standardmäßig wird dem Domänenbenutzer in der bereitgestellten Anwendung die **Administratorrolle** erteilt.
-* Ein Domänenbenutzer kann mithilfe des Skripts „build.cmd“ im Repository [azure-iot-remote-monitoring][lnk-rm-github-repo], [azure-iot-predictive-maintenance][lnk-pm-github-repo] oder [azure-iot-connected-factory][lnk-cf-github-repo] eine Anwendung erstellen. Die dem Domänenbenutzer erteilte Standardrolle ist jedoch **schreibgeschützt**, da der Domänenbenutzer keine Berechtigung zum Zuweisen von Rollen besitzt.
-* Wenn ein anderer Benutzer im AAD-Mandanten eine Anwendung erstellt, wird dem Domänenbenutzer standardmäßig die Rolle **ReadOnly** für diese Anwendung zugewiesen.
-* Ein Domänenbenutzer kann keine Rollen für Anwendungen zuweisen und daher keine Benutzer oder Rollen für Benutzer für eine Anwendung hinzufügen, auch wenn diese sie bereitgestellt haben.
+* Domänenbenutzer können eine vorkonfigurierte Basic-Lösung über die Website [azureiotsuite.com][lnk-azureiotsuite] bereitstellen.
+* Domänenbenutzer können eine vorkonfigurierte Basic-Lösung über die Befehlszeilenschnittstelle erstellen.
 
 ### <a name="guest-user"></a>Gastbenutzer
 
@@ -74,55 +70,11 @@ Azure-Administratorrollen steuern die Fähigkeit, einem AD-Mandanten ein Azure-A
 
 Weitere Informationen zu den Azure-Administratorrollen finden Sie im Artikel [Hinzufügen oder Ändern des Co-Administrators, Dienstadministrators und Kontoadministrators in Azure][lnk-admin-roles].
 
-## <a name="application-roles"></a>Anwendungsrollen
-
-Anwendungsrollen steuern den Zugriff auf Geräte in Ihrer vorkonfigurierten Lösung.
-
-In einer bereitgestellten Anwendung werden zwei definierte Rollen und eine implizite Rolle definiert:
-
-* **Administrator:** Hat Vollzugriff zum Hinzufügen, Verwalten und Entfernen von Geräten sowie zum Ändern von Einstellungen.
-* **ReadOnly:** Kann Geräte, Regeln, Aktionen, Aufträge und Telemetrie anzeigen.
-
-Sie finden die Berechtigungen, die jeder Rolle zugewiesen sind, in der Quelldatei [RolePermissions.cs][lnk-resource-cs].
-
-### <a name="changing-application-roles-for-a-user"></a>Ändern von Anwendungsrollen eines Benutzers
-
-Mithilfe des folgenden Verfahrens können Sie einen Benutzer in Ihrem Active Directory zum Administratoren Ihrer vorkonfigurierten Lösung ernennen.
-
-Sie müssen globaler AAD-Administrator sein, um Rollen für einen Benutzer zu ändern:
-
-1. Öffnen Sie das [Azure-Portal][lnk-portal].
-2. Wählen Sie **Azure Active Directory**.
-3. Vergewissern Sie sich, dass Sie das Verzeichnis verwenden, das Sie auf azureiotsuite.com ausgewählt haben, als Sie Ihre Lösung bereitgestellt haben. Wenn Sie mehrere Verzeichnisse haben, die Ihrem Abonnement zugeordnet sind, können Sie zwischen diesen wechseln, wenn Sie auf Ihren Kontonamen in der oberen rechten Ecke des Portals klicken.
-4. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
-4. Zeigen Sie **Alle Anwendungen** mit dem Status **Beliebig**an. Suchen Sie dann nach einer Anwendung mit dem Namen Ihrer vorkonfigurierten Lösung.
-5. Klicken Sie auf den Namen der Anwendung, der mit dem Namen der vorkonfigurierten Lösung übereinstimmt.
-6. Klicken Sie auf **Benutzer und Gruppen**.
-7. Wählen Sie den Benutzer aus, dessen Rolle gewechselt werden soll.
-8. Klicken Sie auf **Zuweisen**, wählen Sie die Rolle (beispielsweise **Admin**) aus, die sie dem Benutzer zuweisen möchten, und klicken Sie anschließend auf das Häkchen.
-
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 ### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-aad-tenant-how-do-i-complete-this-task"></a>Ich bin Dienstadministrator und möchte die Verzeichniszuordnung zwischen meinem Abonnement und einen bestimmten AAD-Mandanten ändern. Wie führe ich diese Aufgabe aus?
 
-1. Wechseln Sie zum [klassischen Azure-Portal][lnk-classic-portal], und klicken Sie links in der Liste der Dienste auf **Einstellungen**.
-2. Wählen Sie das Abonnement aus, dessen Verzeichniszuordnung Sie ändern möchten.
-3. Klicken Sie auf **Verzeichnis bearbeiten**.
-4. Wählen Sie in der Dropdownliste das **Verzeichnis** aus, das Sie verwenden möchten. Klicken Sie auf den Vorwärtspfeil.
-5. Bestätigen Sie die Verzeichniszuordnung und die betroffenen Co-Administratoren. Wenn eine Verschiebung aus einem anderen Verzeichnis erfolgt, werden alle Co-Administratoren aus dem ursprünglichen Verzeichnis entfernt.
-
-### <a name="im-a-domain-usermember-on-the-aad-tenant-and-ive-created-a-preconfigured-solution-how-do-i-get-assigned-a-role-for-my-application"></a>Ich bin Domänenbenutzer/-mitglied des AAD-Mandanten und habe eine vorkonfigurierte Lösung erstellt. Wie wird mir eine Rolle für meine Anwendung zugewiesen?
-
-Bitten Sie einen globalen Administrator, Sie zu einem globalen Administrator des AAD-Mandanten zu machen, und weisen Sie dann Benutzern selbst Rollen zu. Alternativ können Sie auch einen globalen Administrator bitten, Ihnen direkt eine Rolle zuzuweisen. Wenn Sie den AAD-Mandanten ändern möchten, in dem Ihre vorkonfigurierte Lösung bereitgestellt wurde, sehen Sie sich die nächste Frage an.
-
-### <a name="how-do-i-switch-the-aad-tenant-my-remote-monitoring-preconfigured-solution-and-application-are-assigned-to"></a>Wie ändere ich den AAD-Mandanten, dem meine vorkonfigurierte Lösung und Anwendung für die Remoteüberwachung zugewiesen sind?
-
-Sie können unter <https://github.com/Azure/azure-iot-remote-monitoring> eine Cloudbereitstellung ausführen und eine erneute Bereitstellung mit einem neu erstellten AAD-Mandanten durchführen. Da Sie standardmäßig ein globaler Administrator sind, wenn Sie einen AAD-Mandanten erstellen, haben Sie das Recht zum Hinzufügen von Benutzern und Zuweisen von Rollen zu diesen Benutzern.
-
-1. Erstellen Sie ein AAD-Verzeichnis im [Azure-Portal][lnk-portal].
-2. Navigieren Sie zu <https://github.com/Azure/azure-iot-remote-monitoring>.
-3. Führen Sie `build.cmd cloud [debug | release] {name of previously deployed remote monitoring solution}` aus (z. B. `build.cmd cloud debug myRMSolution`).
-4. Legen Sie bei Aufforderung die **tenantid** auf den neu erstellten Mandanten anstatt auf den vorherigen Mandanten fest.
+Informationen dazu finden Sie unter [Hinzufügen eines vorhandenen Abonnements zu Ihrem Azure AD-Verzeichnis](../active-directory/active-directory-how-subscriptions-associated-directory.md#to-add-an-existing-subscription-to-your-azure-ad-directory).
 
 ### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organisational-account"></a>Ich möchte bei Anmeldung über ein Organisationskonto einen Dienstadministrator oder Co-Administrator ändern.
 
@@ -151,7 +103,6 @@ Wenn Sie mehr über IoT Suite erfahren möchten, lesen Sie, wie Sie [eine vorkon
 [lnk-pm-github-repo]: https://github.com/Azure/azure-iot-predictive-maintenance
 [lnk-cf-github-repo]: https://github.com/Azure/azure-iot-connected-factory
 [lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles.md
-[lnk-classic-portal]: https://manage.windowsazure.com/
 [lnk-portal]: https://portal.azure.com/
 [lnk-create-edit-users]: ../active-directory/active-directory-create-users.md
 [lnk-assign-app-roles]: ../active-directory/active-directory-coreapps-assign-user-azure-portal.md

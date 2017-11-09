@@ -4,7 +4,7 @@ description: Ein lokales Gateway ist erforderlich, wenn der Analysis Services-Se
 services: analysis-services
 documentationcenter: 
 author: minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: cd596155-b608-4a34-935e-e45c95d884a9
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/11/2017
+ms.date: 10/30/2017
 ms.author: owend
-ms.openlocfilehash: 47f05a22811307617f475e79145f70a0233f5895
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 0b11c005ddcf4a3416104e7cef39a7ce97957ba3
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen mit dem lokalen Azure-Datengateway
 Das lokale Datengateway fungiert als Brücke für eine sichere Datenübertragung zwischen lokalen Datenquellen und den Azure Analysis Services-Servern in der Cloud. Zusätzlich zur Verwendung von mehreren Azure Analysis Services-Servern in derselben Region funktioniert die neueste Version des Gateways auch mit Azure Logic Apps, Power BI, Power Apps und Microsoft Flow. Sie können einem einzelnen Gateway mehrere Dienste in derselben Region zuordnen. 
@@ -129,6 +129,9 @@ Sie können mithilfe des Drittanbietertools Azure Speed Test-App messen, wie hoc
 
 **F**: Kann der Gateway-Windows-Dienst mit einem Azure Active Directory-Konto ausgeführt werden? <br/>
 **A**: Nein. Der Windows-Dienst benötigt ein gültiges Windows-Konto. Standardmäßig wird er mit der Dienst-SID „NT SERVICE\PBIEgwService“ ausgeführt.
+
+**F**: Wie übernehme ich ein Gateway? <br/>
+**A**: Um ein Gateway übernehmen zu können, müssen Sie in Azure Besitzer der Gatewayressource sein und über den Wiederherstellungsschlüssel verfügen. Sie können das Gateway übernehmen, indem Sie unter Einstellungen > Programme „Einrichtung/Änderung“ ausführen. Besitzer von Gatewayressourcen können unter Zugriffssteuerung festgelegt werden.
 
 ### <a name="high-availability"></a>Hohe Verfügbarkeit und Notfallwiederherstellung
 

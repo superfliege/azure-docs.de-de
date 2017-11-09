@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: denlee
-ms.openlocfilehash: 8ecbb478c81cde25bbd0d1c9ee07ae02b07f8cc7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7500ed798519671ba864cc185efffa0f93a8be70
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>Beschleunigen der Big Data-Echtzeitanalyse mit dem Spark-Connector für Azure Cosmos DB
 
@@ -44,7 +44,7 @@ Der Connector verwendet die folgenden Komponenten:
 
 * [Apache Spark](http://spark.apache.org/) ist ein leistungsstarkes Open-Source-Verarbeitungsmodul, das für hohe Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen konzipiert wurde.
 
-* [Apache Spark on Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md), sodass Sie Apache Spark in der Cloud mithilfe von [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/) für unternehmenskritische Bereitstellungen bereitstellen können.
+* [Apache Spark on Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md), sodass Sie Apache Spark in der Cloud mithilfe von [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/) für unternehmenskritische Bereitstellungen bereitstellen können.
 
 Offiziell unterstützte Versionen:
 
@@ -351,4 +351,4 @@ Laden Sie – falls noch nicht geschehen – den Spark-Connector für Azure Cosm
 * [Beispiele für verteilte Aggregationen](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
 * [Beispielskripts und Notebooks](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
-Es kann auch ratsam sein, die Informationen unter [Apache Spark SQL, DataFrames, and Datasets Guide](http://spark.apache.org/docs/latest/sql-programming-guide.html) (Leitfaden zu Apache Spark SQL, DataFrames und Datasets) und den Artikel [Apache Spark on Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) zu lesen.
+Es kann auch ratsam sein, die Informationen unter [Apache Spark SQL, DataFrames, and Datasets Guide](http://spark.apache.org/docs/latest/sql-programming-guide.html) (Leitfaden zu Apache Spark SQL, DataFrames und Datasets) und den Artikel [Apache Spark on Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) zu lesen.

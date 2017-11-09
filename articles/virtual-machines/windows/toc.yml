@@ -380,6 +380,8 @@
           href: how-to-use-perfInsights.md
         - name: VM-Erweiterung für Leistungsdiagnose
           href: performance-diagnostics-vm-extension.md
+        - name: Verwenden der geschachtelten Virtualisierung
+          href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: Referenz
   items:
     - name: Azure-Befehlszeilenschnittstelle

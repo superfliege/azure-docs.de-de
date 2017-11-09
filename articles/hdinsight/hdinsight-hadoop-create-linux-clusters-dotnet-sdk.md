@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/17/2017
+ms.date: 11/06/2017
 ms.author: jgao
-ms.openlocfilehash: ccd3a0c777510e0694170b2f9acc8da0e7dcde9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 78d5c2f37add456fbb5891f76039b453e731a4a8
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Erstellen von Linux-basierten Clustern in HDInsight mit dem .NET SDK
 
@@ -90,7 +90,7 @@ Hier erfahren Sie, wie Sie einen Hadoop-Cluster in einem Azure HDInsight-Cluster
             private const string NewClusterLocation = "EAST US 2";     // Must be the same as the default Storage account
             private const OSType NewClusterOSType = OSType.Linux;
             private const string NewClusterType = "Hadoop";
-            private const string NewClusterVersion = "3.5";
+            private const string NewClusterVersion = "3.6";
             private const string NewClusterUsername = "admin";
             private const string NewClusterPassword = "<Enter HTTP User Password>";
             private const string NewClusterSshUserName = "sshuser";
@@ -379,29 +379,29 @@ Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich d
 Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die folgenden Informationen, um zu erfahren, wie Sie mit Ihrem Cluster arbeiten. 
 
 ### <a name="hadoop-clusters"></a>Hadoop-Cluster
-* [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md)
-* [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
-* [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md)
+* [Verwenden von Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
+* [Verwenden von Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
+* [Verwenden von MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="hbase-clusters"></a>HBase-Cluster
-* [Erste Schritte mit HBase in HDInsight](hdinsight-hbase-tutorial-get-started-linux.md)
-* [Entwickeln von Java-Anwendungen für HBase in HDInsight](hdinsight-hbase-build-java-maven-linux.md)
+* [Erste Schritte mit HBase in HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Entwickeln von Java-Anwendungen für HBase in HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="storm-clusters"></a>Storm-Cluster
-* [Entwickeln von Java-Topologien für Storm in HDInsight](hdinsight-storm-develop-java-topology.md)
-* [Verwenden von Python-Komponenten in Storm in HDInsight](hdinsight-storm-develop-python-topology.md)
-* [Bereitstellen und Überwachen von Topologien mit Storm in HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md)
+* [Entwickeln von Java-Topologien für Storm in HDInsight](storm/apache-storm-develop-java-topology.md)
+* [Verwenden von Python-Komponenten in Storm in HDInsight](storm/apache-storm-develop-python-topology.md)
+* [Bereitstellen und Überwachen von Topologien mit Storm in HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
 
 ### <a name="spark-clusters"></a>Spark-Cluster
-* [Erstellen einer eigenständigen Anwendung mit Scala](hdinsight-apache-spark-create-standalone-application.md)
-* [Remoteausführung von Aufträgen in einem Spark-Cluster mithilfe von Livy](hdinsight-apache-spark-livy-rest-interface.md)
-* [Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](hdinsight-apache-spark-use-bi-tools.md)
-* [Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
-* [Spark-Streaming: Erstellen von Echtzeitstreaminganwendungen mithilfe von Spark in HDInsight](hdinsight-apache-spark-eventhub-streaming.md)
+* [Erstellen einer eigenständigen Anwendung mit Scala](spark/apache-spark-create-standalone-application.md)
+* [Remoteausführung von Aufträgen in einem Spark-Cluster mithilfe von Livy](spark/apache-spark-livy-rest-interface.md)
+* [Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](spark/apache-spark-use-bi-tools.md)
+* [Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Spark-Streaming: Erstellen von Echtzeitstreaminganwendungen mithilfe von Spark in HDInsight](spark/apache-spark-eventhub-streaming.md)
 
 ### <a name="run-jobs"></a>Ausführen von Aufträgen
-* [Run Hive jobs in HDInsight using .NET SDK (Ausführen von Hive-Aufträgen in HDInsight mit dem .NET SDK)](hdinsight-hadoop-use-hive-dotnet-sdk.md)
-* [Ausführen von Pig-Aufträgen mithilfe des .NET SDK in HDInsight](hdinsight-hadoop-use-pig-dotnet-sdk.md)
-* [Run Sqoop jobs in HDInsight using .NET SDK (Ausführen von Sqoop-Aufträgen in HDInsight mithilfe des .NET SDK)](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
+* [Run Hive jobs in HDInsight using .NET SDK (Ausführen von Hive-Aufträgen in HDInsight mit dem .NET SDK)](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
+* [Ausführen von Pig-Aufträgen mithilfe des .NET SDK in HDInsight](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)
+* [Run Sqoop jobs in HDInsight using .NET SDK (Ausführen von Sqoop-Aufträgen in HDInsight mithilfe des .NET SDK)](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
 * [Run Oozie jobs in HDInsight (Ausführen von Oozie-Aufträgen in HDInsight)](hdinsight-use-oozie.md)
 

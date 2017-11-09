@@ -13,14 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
 ms.author: shlo
-ms.openlocfilehash: dbf0a12ec1a5348e7c73248cc389ec1a5a5d4a75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 274c003e0697ba08d010c3bf13724461a4b624ee
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Systemvariablen
 Dieser Artikel beschreibt die Systemvariablen, die von Azure Data Factory unterstützt werden. Sie können diese Variablen in Ausdrücken verwenden, wenn Sie Data Factory-Entitäten definieren. 
+
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (GA) ist, lesen Sie [Funktionen und Variablen in Data Factory V1](v1/data-factory-functions-variables.md).
+
 
 ## <a name="pipeline-scope"></a>Pipelinebereich:
 

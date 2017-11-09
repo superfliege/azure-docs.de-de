@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 06/29/2017
+ms.date: 10/30/2017
 ms.author: anoopkv
-ms.openlocfilehash: e3b26c7f34a8fd3d027464cb7a3704c7960b67c6
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: aa7bb25387efbc603dac9aaa0a56b3e30d0bfb4d
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="install-mobility-service-vmware-or-physical-to-azure"></a>Installieren von Mobility Service (VMware oder physisch in Azure)
 Azure Site Recovery Mobility Service erfasst Datenschreibvorgänge auf einem Computer und leitet sie dann an den Prozessserver weiter. Stellen Sie Mobility Service auf jedem Computer (VMware-VM oder physischer Server) bereit, den Sie in Azure replizieren möchten. Sie können die Mobility Service auf den Servern bereitstellen, die Sie mithilfe der folgenden Methoden schützen möchten:
@@ -50,13 +50,16 @@ Führen Sie diese erforderlichen Schritte aus, bevor Sie Mobility Service manuel
 
 | Vorlagenname des Installationsprogramms| Betriebssystem |
 |---|--|
-|Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 SP1 (64 Bit) </br> Windows Server 2012 (64 Bit) </br> Windows Server 2012 R2 (64 Bit) |
-|Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4, 6.5, 6.6, 6.7, 6.8 (nur 64 Bit) </br> CentOS 6.4, 6.5, 6.6, 6.7, 6.8 (nur 64 Bit) |
-|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1, 7.2 (nur 64 Bit) </br> CentOS 7.0, 7.1, 7.2 (nur 64 Bit)</br> CentOs 7.3 (nur Migration) |
+|Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 SP1 (64 Bit) </br> Windows Server 2012 (64 Bit) </br> Windows Server 2012 R2 (64 Bit) </br> Windows Server 2016 (64 Bit) |
+|Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4, 6.5, 6.6, 6.7, 6.8, 6.9 (nur 64 Bit) </br> CentOS 6.4, 6.5, 6.6, 6.7, 6.8, 6.9 (nur 64 Bit) |
+|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1, 7.2, 7.3 (nur 64 Bit) </br> CentOS 7.0, 7.1, 7.2, 7.3 (nur 64 Bit) |
 |Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 (nur 64 Bit)|
 |Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4 (nur 64 Bit)|
 |Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit)|
 |Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04 (nur 64 Bit)|
+|Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS Server (nur 64 Bit)|
+|Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7 (nur 64-Bit)|
+|Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8 (nur 64 Bit)|
 
 
 ## <a name="install-mobility-service-manually-by-using-the-gui"></a>Manuelles Installieren von Mobility Service über die grafische Benutzeroberfläche (GUI)
@@ -93,7 +96,7 @@ Nachdem Mobility Service installiert wurde, klicken Sie im Azure-Portal auf die 
 
 1. Navigieren Sie im Azure-Portal zur Ansicht „<Your Vault> -> Replizierte Elemente“.
 2. Wenn der **Konfigurationsserver** bereits auf die neueste Version aktualisiert wurde, sollte eine Benachrichtigung angezeigt werden, dass ein *neues Update für den Site Recovery-Replikations-Agent verfügbar ist. Klicken Sie zum Installieren*
-   
+
      ![ReplicatedItems](.\media\site-recovery-vmware-to-azure-install-mob-svc\replicated-item-notif.png)
 3. Klicken Sie auf die Benachrichtigung, um die Auswahlseite für den virtuellen Computer zu öffnen.
 4. Wählen Sie die virtuellen Computer aus, für die Sie den Mobility Service aktualisieren möchten, und klicken Sie dann auf die Schaltfläche „OK“.
@@ -102,7 +105,7 @@ Nachdem Mobility Service installiert wurde, klicken Sie im Azure-Portal auf die 
 5. Dadurch wird der Aktualisierungsauftrag für den Mobility Service für jeden der ausgewählten virtuellen Computer gestartet.
 
 > [!NOTE]
-> [Hier finden Sie weitere Informationen](site-recovery-vmware-to-azure-manage-configuration-server.md) zum Aktualisieren des Kennworts für das Konto zum Installieren des Mobility Service. 
+> [Hier finden Sie weitere Informationen](site-recovery-vmware-to-azure-manage-configuration-server.md) zum Aktualisieren des Kennworts für das Konto zum Installieren des Mobility Service.
 
 ## <a name="uninstall-mobility-service-on-a-windows-server-computer"></a>Deinstallieren von Mobility Service auf einem Windows Server-Computer
 Verwenden Sie eine der folgenden Methoden, um Mobility Service auf einem Windows Server-Computer zu deinstallieren.

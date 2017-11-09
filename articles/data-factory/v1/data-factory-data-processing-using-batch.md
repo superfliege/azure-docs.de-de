@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 10/15/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 75213a4d0297c96ec32200158d8b60db4b8b2da4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ceef65eaf195b605fada2f8dfe511fe33a5daa0
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="process-large-scale-datasets-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Data Factory und Batch
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung von Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](../transform-data-using-dotnet-custom-activity.md).
+
 In diesem Artikel wird die Architektur einer Beispiellösung beschrieben, mit der umfangreiche Datasets auf automatische und geplante Weise verschoben und verarbeitet werden. Darüber hinaus enthält der Artikel eine umfassende exemplarische Vorgehensweise zur Implementierung der Lösung mit Azure Data Factory und Azure Batch.
 
 Er ist länger als viele andere Artikel, weil sich die exemplarische Vorgehensweise auf eine vollständige Beispiellösung bezieht. Falls Sie mit Batch und Data Factory noch nicht vertraut sind, können Sie sich darüber informieren, wie diese Dienste funktionieren und zusammenarbeiten. Wenn Sie sich mit den Diensten auskennen und eine Lösung entwerfen bzw. erstellen, können Sie sich auf den [Architekturabschnitt](#architecture-of-sample-solution) des Artikels konzentrieren. Falls Sie einen Prototyp oder eine Lösung entwickeln, können Sie auch die Schritt-für-Schritt-Anleitung in der [exemplarischen Vorgehensweise](#implementation-of-sample-solution) ausprobieren. Wir freuen uns über Ihre Kommentare hierzu und darüber, wie Sie die Informationen nutzen.
@@ -85,7 +88,7 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie in wenigen Minuten e
 Sie nutzen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account). Die Beispiellösung verwendet Blob-Speicher.
 
 #### <a name="azure-batch-account"></a>Azure Batch-Konto
-Erstellen Sie über das [Azure-Portal](http://manage.windowsazure.com/) ein Azure Batch-Konto. Weitere Informationen finden Sie unter [Erstellen und Verwalten eines Azure Batch-Kontos](../../batch/batch-account-create-portal.md). Notieren Sie den Azure Batch-Kontonamen und -Kontoschlüssel. Sie können auch das [New-AzureBatchAccount-Cmdlet](https://msdn.microsoft.com/library/mt603749.aspx) verwenden, um ein Azure Batch-Konto zu erstellen. Unter [Erste Schritte mit Azure Batch-PowerShell-Cmdlets](../../batch/batch-powershell-cmdlets-get-started.md) erhalten Sie weitere Einzelheiten zur Verwendung dieses Cmdlets.
+Erstellen Sie über das [Azure-Portal](http://portal.azure.com/) ein Azure Batch-Konto. Weitere Informationen finden Sie unter [Erstellen und Verwalten eines Azure Batch-Kontos](../../batch/batch-account-create-portal.md). Notieren Sie den Azure Batch-Kontonamen und -Kontoschlüssel. Sie können auch das [New-AzureBatchAccount-Cmdlet](https://msdn.microsoft.com/library/mt603749.aspx) verwenden, um ein Azure Batch-Konto zu erstellen. Unter [Erste Schritte mit Azure Batch-PowerShell-Cmdlets](../../batch/batch-powershell-cmdlets-get-started.md) erhalten Sie weitere Einzelheiten zur Verwendung dieses Cmdlets.
 
 Die Beispiellösung verwendet Azure Batch (indirekt über eine Azure Data Factory-Pipeline) zum parallelen Verarbeiten von Daten in einem Computeknotenpool, einer verwalteten Auflistung von virtuellen Maschinen.
 

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: ashishtha
-ms.openlocfilehash: d08a9a7cc82095b0a90abd98bd4f6d13cdadb671
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 704d76808fbc5f7bde98d2fca291ac7c2796db88
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -163,7 +163,7 @@ Auswirkungen der Änderung der Anzahl von Datenknoten variieren für die von HDI
     >balancer
     ```
 
-    Weitere Informationen zur Verwendung von HBase-Shell finden Sie unter [Erste Schritte mit einem Apache HBase-Beispiel in HDInsight](hdinsight-hbase-tutorial-get-started-linux.md).
+    Weitere Informationen zur Verwendung von HBase-Shell finden Sie unter [Erste Schritte mit einem Apache HBase-Beispiel in HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md).
 
 * Storm
 
@@ -209,7 +209,7 @@ Es gibt viele Methoden, mit denen Sie den Prozess programmieren können:
 * Verwenden Sie Azure Data Factory. Siehe [Erstellen von bedarfsgesteuerten Linux-basierten Hadoop-Clustern in HDInsight mit Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) zum Erstellen bedarfsgesteuerter verknüpfter HDInsight-Dienste.
 * Verwenden Sie Azure PowerShell.  Weitere Informationen hierzu finden Sie unter [Analysieren von Flugverspätungsdaten mit Hive in HDInsight](hdinsight-analyze-flight-delay-data.md).
 * Verwenden Sie die Azure-Befehlszeilenschnittstelle. Weitere Informationen hierzu finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md).
-* Verwenden das Sie HDInsight .NET-SDK. Weitere Informationen hierzu finden Sie unter [Übermitteln von Hadoop-Aufträgen in HDInsight](hdinsight-submit-hadoop-jobs-programmatically.md).
+* Verwenden das Sie HDInsight .NET-SDK. Weitere Informationen hierzu finden Sie unter [Übermitteln von Hadoop-Aufträgen in HDInsight](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 Die Preisinformationen finden Sie unter [HDInsight Preise](https://azure.microsoft.com/pricing/details/hdinsight/). Informationen zum Löschen eines Clusters aus dem Portal finden Sie unter [Löschen von Clustern](#delete-clusters)
 
@@ -341,7 +341,7 @@ Der Abschnitt **Nutzung** auf dem Blatt für den HDInsight-Cluster enthält Info
 
 ## <a name="connect-to-a-cluster"></a>Herstellen der Verbindung zu einem Cluster
 
-* [Verwenden von Hive mit HDInsight](hdinsight-hadoop-use-hive-ambari-view.md)
+* [Verwenden von Hive mit HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -353,10 +353,10 @@ In diesem Artikel haben Sie einige grundlegende administrative Funktionen kennen
 * [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md)
 * [Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md)
-* [Verwenden von Hive in HDInsight](hdinsight-use-hive.md)
-* [Verwenden von Pig in HDInsight](hdinsight-use-pig.md)
-* [Verwenden von Sqoop in HDInsight](hdinsight-use-sqoop.md)
-* [Erste Schritte mit Azure HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
+* [Verwenden von Hive in HDInsight](hadoop/hdinsight-use-hive.md)
+* [Verwenden von Pig in HDInsight](hadoop/hdinsight-use-pig.md)
+* [Verwenden von Sqoop in HDInsight](hadoop/hdinsight-use-sqoop.md)
+* [Erste Schritte mit Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Welche Hadoop-Version wird in Azure HDInsight verwendet?](hdinsight-component-versioning.md)
 
 [azure-portal]: https://portal.azure.com

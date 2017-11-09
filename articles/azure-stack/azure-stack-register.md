@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 10/27/2017
 ms.author: erikje
-ms.openlocfilehash: 3282b9d4cdf67035d966cf934a7d8574eae6ae34
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 24cde66a132ae2e1ba0eb9b1564915746e5ca448
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>Registrieren Sie Azure Stack in Ihrem Azure-Abonnement.
 
@@ -72,7 +72,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
 4. Führen Sie das Modul Add-AzsRegistration aus dem Skript „RegisterWithAzure.psm1“ heraus aus. Ersetzen Sie die folgenden Platzhalter: 
     - *YourCloudAdminCredential* ist ein PowerShell-Objekt, das die Anmeldeinformationen für die lokale Domäne „Domäne\cloudadmin“ enthält (beim Development Kit ist dies „azurestack\cloudadmin“).
     - *YourAzureSubscriptionID* ist die ID des Azure-Abonnements, das Sie zur Registrierung von Azure Stack verwenden möchten.
-    - *YourAzureDirectoryTenantName* ist der Name des Azure-Mandantenverzeichnisses, in dem Sie Ihre Registrierungsressource erstellen möchten.
+    - *YourAzureDirectoryTenantName* ist der Name des Azure-Mandantenverzeichnisses, das Ihrem Azure-Abonnement zugeordnet ist. Die Registrierungsressource wird in diesem Verzeichnismandanten erstellt. 
     - *YourPrivilegedEndpoint* ist der Name des [privilegierten Endpunkts](azure-stack-privileged-endpoint.md).
 
     ```powershell

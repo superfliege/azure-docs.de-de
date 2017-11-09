@@ -12,16 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 10/15/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 092b7651543bd67e6536088952303045cfaf8717
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8398a261ca33060b7709d818cb64bb1e8e2058b1
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Laden von 1 TB in Azure SQL Data Warehouse in weniger als 15 Minuten mit Data Factory
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen unter [Copy data to or from Azure SQL Data Warehouse by using Data Factory version 2 (Kopieren von Daten in oder aus Azure SQL Data Warehouse mithilfe von Version 2 von Data Factory)](../connector-azure-sql-data-warehouse.md).
+
+
 [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ist eine cloudbasierte Datenbank für das horizontale Hochskalieren, mit der sehr große Datenvolumen verarbeitet werden können, und zwar sowohl relational als auch nicht relational.  SQL Data Warehouse basiert auf MPP-Architektur (Massively Parallel Processing), und ist für Data Warehouse-Workloads für Unternehmen optimiert.  Es bietet Cloudelastizität mit der Flexibilität, Speicher zu skalieren und unabhängig zu berechnen.
 
 Die ersten Schritte mit Azure SQL Data Warehouse sind jetzt mithilfe von **Azure Data Factory** einfacher als je zuvor.  Azure Data Factory ist ein vollständig verwalteter cloudbasierter Daten-Integrationsdienst, der verwendet werden kann, um SQL Data Warehouse mit den Daten Ihres bestehenden Systems aufzufüllen. Dieser Dienst spart Ihnen wertvolle Zeit beim Bewerten von SQL Data Warehouse und Erstellen von Analyselösungen. Die wichtigsten Vorteile beim Laden von Daten in Azure SQL Data Warehouse mithilfe von Azure Data Factory sind:

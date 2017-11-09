@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/01/2017
+ms.date: 10/31/2017
 ms.author: cherylmc
-ms.openlocfilehash: 3b2126b1ecd1613950bbf311ae08fafd4af0d51f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d5127c7fa512bad49817fa4c8edf3a16ca2f7d60
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Arbeiten mit SKUs für virtuelle Netzwerkgateways (Legacy-SKUs)
 
@@ -39,7 +39,12 @@ Dieser Artikel enthält Informationen über die Legacy-SKUs (alte SKUs) für vir
 
 ## <a name="resize"></a>Ändern der Größe eines Gateways (Ändern einer Gateway-SKU)
 
-Sie können die Größe einer Gateway-SKU innerhalb einer SKU-Familie ändern. Wenn Sie z.B. eine Standard-SKU haben, können Sie die Größe in eine HighPerformance-SKU ändern. Die Größe Ihrer VPN-Gateways kann zwischen den alten SKUs und den neuen SKU-Familien nicht geändert werden. Beispielsweise können Sie nicht von einer Standard-SKU zu einer VpnGw2-SKU wechseln. 
+Sie können die Größe einer Gateway-SKU innerhalb einer SKU-Familie ändern. Wenn Sie z.B. eine Standard-SKU haben, können Sie die Größe in eine HighPerformance-SKU ändern. Die Größe Ihrer VPN-Gateways kann zwischen den alten SKUs und den neuen SKU-Familien nicht geändert werden. Beispielsweise können Sie nicht von einer Standard-SKU zu einer VpnGw2-SKU wechseln.
+
+>[!IMPORTANT]
+>Wenn Sie die Größe eines Gateways ändern, tritt während der Größenänderung eine Ausfallzeit von 20-30 Minuten bei diesem Gateway auf.
+>
+>
 
 Um die Größe einer Gateway-SKU für das klassische Bereitstellungsmodell zu ändern, verwenden Sie den folgenden Befehl:
 

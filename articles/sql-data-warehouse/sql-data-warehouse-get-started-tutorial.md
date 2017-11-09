@@ -13,13 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: quickstart
-ms.date: 01/26/2017
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 39efa954fa1eb3d7d93dbeceac48b96d865349ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/06/2017
+ms.author: elbutter
+ms.openlocfilehash: 791990b6c544a416fc73bea69dc884e0b49d088e
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="get-started-with-sql-data-warehouse"></a>Erste Schritte mit SQL Data Warehouse
 
@@ -198,7 +198,7 @@ Nun können Sie Daten in Ihr Data Warehouse laden. In diesem Schritt wird gezeig
     WITH
     (
         TYPE = Hadoop,
-        LOCATION = 'wasbs://2013@nytpublic.blob.core.windows.net/'
+        LOCATION = 'wasbs://2013@nytaxiblob.blob.core.windows.net/'
     );
     ```
 
@@ -239,7 +239,7 @@ Nun können Sie Daten in Ihr Data Warehouse laden. In diesem Schritt wird gezeig
     ```
 5. Erstellen Sie die externen Tabellen. In diesen Tabellen wird auf Daten verwiesen, die in Azure Blob Storage gespeichert sind. Führen Sie die folgenden T-SQL-Befehle aus, um mehrere externe Tabellen zu erstellen, die alle auf das Azure-Blob verweisen, das wir zuvor in der externen Datenquelle definiert haben.
 
-```sql
+  ```sql
     CREATE EXTERNAL TABLE [ext].[Date] 
     (
         [DateID] int NOT NULL,
@@ -405,14 +405,14 @@ Nun können Sie Daten in Ihr Data Warehouse laden. In diesem Schritt wird gezeig
     )
     WITH
     (
-        LOCATION = 'Weather2013',
+        LOCATION = 'Weather',
         DATA_SOURCE = NYTPublic,
         FILE_FORMAT = uncompressedcsv,
         REJECT_TYPE = value,
         REJECT_VALUE = 0
     )
     ;
-```
+  ```
 
 ### <a name="import-the-data-from-azure-blob-storage"></a>Importieren Sie die Daten aus Azure Blob Storage.
 
@@ -430,7 +430,7 @@ SQL Data Warehouse unterstützt eine Schlüsselanweisung mit dem Namen „CREATE
     AS SELECT * FROM [ext].[Date]
     OPTION (LABEL = 'CTAS : Load [dbo].[Date]')
     ;
-    
+
     CREATE TABLE [dbo].[Geography]
     WITH
     ( 
@@ -441,7 +441,7 @@ SQL Data Warehouse unterstützt eine Schlüsselanweisung mit dem Namen „CREATE
     SELECT * FROM [ext].[Geography]
     OPTION (LABEL = 'CTAS : Load [dbo].[Geography]')
     ;
-    
+
     CREATE TABLE [dbo].[HackneyLicense]
     WITH
     ( 
@@ -451,7 +451,7 @@ SQL Data Warehouse unterstützt eine Schlüsselanweisung mit dem Namen „CREATE
     AS SELECT * FROM [ext].[HackneyLicense]
     OPTION (LABEL = 'CTAS : Load [dbo].[HackneyLicense]')
     ;
-    
+
     CREATE TABLE [dbo].[Medallion]
     WITH
     (
@@ -461,7 +461,7 @@ SQL Data Warehouse unterstützt eine Schlüsselanweisung mit dem Namen „CREATE
     AS SELECT * FROM [ext].[Medallion]
     OPTION (LABEL = 'CTAS : Load [dbo].[Medallion]')
     ;
-    
+
     CREATE TABLE [dbo].[Time]
     WITH
     (
@@ -471,7 +471,7 @@ SQL Data Warehouse unterstützt eine Schlüsselanweisung mit dem Namen „CREATE
     AS SELECT * FROM [ext].[Time]
     OPTION (LABEL = 'CTAS : Load [dbo].[Time]')
     ;
-    
+
     CREATE TABLE [dbo].[Weather]
     WITH
     ( 
@@ -481,7 +481,7 @@ SQL Data Warehouse unterstützt eine Schlüsselanweisung mit dem Namen „CREATE
     AS SELECT * FROM [ext].[Weather]
     OPTION (LABEL = 'CTAS : Load [dbo].[Weather]')
     ;
-    
+
     CREATE TABLE [dbo].[Trip]
     WITH
     (
@@ -495,9 +495,9 @@ SQL Data Warehouse unterstützt eine Schlüsselanweisung mit dem Namen „CREATE
 
 2. Sehen Sie Ihren Daten beim Laden zu.
 
-   Sie laden mehrere GB an Daten und komprimieren diese in hoch performante gruppierte Columnstore-Indizes. Führen Sie die folgende Abfrage mit dynamischen Verwaltungssichten (DMVs) aus, um den Status des Ladevorgangs anzuzeigen. Nach dem Starten der Abfrage können Sie sich einen Kaffee und einen Imbiss holen, während SQL Data Warehouse einige anstrengende Arbeit erledigt.
-    
-    ```sql
+  Sie laden mehrere GB an Daten und komprimieren diese in hoch performante gruppierte Columnstore-Indizes. Führen Sie die folgende Abfrage mit dynamischen Verwaltungssichten (DMVs) aus, um den Status des Ladevorgangs anzuzeigen. Nach dem Starten der Abfrage können Sie sich einen Kaffee und einen Imbiss holen, während SQL Data Warehouse einige anstrengende Arbeit erledigt.
+
+  ```sql
     SELECT
         r.command,
         s.request_id,
@@ -523,7 +523,8 @@ SQL Data Warehouse unterstützt eine Schlüsselanweisung mit dem Namen „CREATE
     ORDER BY
         nbr_files desc, 
         gb_processed desc;
-    ```
+  ```
+
 
 3. Zeigen Sie alle Systemabfragen an.
 
@@ -563,7 +564,7 @@ Zunächst skalieren wir den Vorgang zentral auf 100 DWUs herunter, damit wir ein
     > [!NOTE]
     > Abfragen können nicht ausgeführt werden, während die Skalierung geändert wird. Eine Skalierung **beendet** aktuell ausgeführte Abfragen. Sie können diese neu starten, wenn der Vorgang abgeschlossen ist.
     >
-    
+
 5. Führen Sie einen Scanvorgang für die Taxi-Verkehrsdaten durch, indem Sie die erste Million der Einträge für alle Spalten auswählen. Falls Sie sich nicht so lange aufhalten möchten, können Sie auch weniger Zeilen wählen. Notieren Sie sich, wie lange dieser Vorgang dauert.
 
     ```sql
@@ -626,11 +627,11 @@ Zunächst skalieren wir den Vorgang zentral auf 100 DWUs herunter, damit wir ein
 
     > [!NOTE]
     > In SQL DW wird normalerweise keine automatische Verwaltung von Statistiken für Sie durchgeführt. Statistiken sind wichtig für die Abfrageleistung, und es wird dringend empfohlen, Statistiken zu erstellen und zu aktualisieren.
-    > 
+    >
     > **Die größten Vorteile ergeben sich, wenn Sie Statistiken für Spalten in Verknüpfungen, in der WHERE-Klausel verwendete Spalten und Spalten in GROUP BY nutzen.**
     >
 
-3. Führen Sie die Abfrage aus „Voraussetzungen“ erneut aus, und achten Sie auf Leistungsunterschiede. Die Unterschiede der Abfrageleistung sind nicht so drastisch wie beim zentralen Hochskalieren, aber es sollte eine Beschleunigung zu beobachten sein. 
+4. Führen Sie die Abfrage aus „Voraussetzungen“ erneut aus, und achten Sie auf Leistungsunterschiede. Die Unterschiede der Abfrageleistung sind nicht so drastisch wie beim zentralen Hochskalieren, aber es sollte eine Beschleunigung zu beobachten sein. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Container Instances-Tutorial – Vorbereiten Ihrer App | Azure-Dokumentation"
+title: "Azure Container Instances-Tutorial – Vorbereiten Ihrer App"
 description: "Vorbereiten einer App für die Bereitstellung in Azure Container Instances"
 services: container-instances
 documentationcenter: 
 author: seanmck
 manager: timlt
-editor: 
+editor: mmacy
 tags: 
 keywords: 
 ms.assetid: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 10/26/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: ca4cd00b3e9e58fd1137b896e7aac96549bf6d05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52d99411b2dc9ae9c3f2ebd3b9f346973a91e7c9
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-container-for-deployment-to-azure-container-instances"></a>Erstellen von Containern für die Bereitstellung in Azure Container Instances
 
-Azure Container Instances ermöglicht die Bereitstellung von Docker-Containern in der Azure-Infrastruktur ohne Bereitstellung virtueller Computer oder Einführung eines übergeordneten Diensts. In diesem Tutorial erstellen Sie eine einfache Webanwendung in Node.js und verpacken sie in einem Container, der mithilfe von Azure Container Instances ausgeführt werden kann. Das Tutorial enthält Informationen zu Folgendem:
+Azure Container Instances ermöglicht die Bereitstellung von Docker-Containern in der Azure-Infrastruktur ohne Bereitstellung virtueller Computer oder Einführung eines übergeordneten Diensts. In diesem Tutorial erstellen Sie eine kleine Webanwendung in Node.js und verpacken sie in einem Container, der mithilfe von Azure Container Instances ausgeführt werden kann. Folgendes wird behandelt:
 
 > [!div class="checklist"]
-> * Klonen der Anwendungsquelle von GitHub  
+> * Klonen der Anwendungsquelle von GitHub
 > * Erstellen von Containerimages aus der Anwendungsquelle
 > * Testen der Images in einer lokalen Docker-Umgebung
 
@@ -36,11 +36,13 @@ In späteren Tutorials laden Sie eigene Images in eine Azure Container Registry-
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Tutorial wird vorausgesetzt, dass zentrale Docker-Begriffe wie Container und Containerimages sowie grundlegende Docker-Befehle bekannt sind. Eine Einführung in die Grundlagen der Container finden Sie bei Bedarf unter [Get started with Docker (Erste Schritte mit Docker)]( https://docs.docker.com/get-started/). 
+Für dieses Tutorial müssen Sie mindestens Version 2.0.20 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu.
+
+In diesem Tutorial wird vorausgesetzt, dass zentrale Docker-Begriffe wie Container und Containerimages sowie grundlegende `docker`-Befehle bekannt sind. Eine Einführung in die Grundlagen der Container finden Sie bei Bedarf unter [Get started with Docker (Erste Schritte mit Docker)]( https://docs.docker.com/get-started/).
 
 Für dieses Tutorial ist eine Docker-Entwicklungsumgebung erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac](https://docs.docker.com/docker-for-mac/)-, [Windows](https://docs.docker.com/docker-for-windows/)- oder [Linux](https://docs.docker.com/engine/installation/#supported-platforms)-System konfiguriert werden kann.
 
-Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der einzelnen Schritte dieses Tutorials erforderlich sind. Aus diesem Grund wird empfohlen, eine vollständige Docker-Entwicklungsumgebung zu verwenden.
+Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der einzelnen Schritte dieses Tutorials erforderlich sind. Aus diesem Grund empfehlen wir Ihnen eine lokale Installation der Azure CLI und der Docker-Entwicklungsumgebung.
 
 ## <a name="get-application-code"></a>Abrufen von Anwendungscode
 
@@ -58,7 +60,7 @@ git clone https://github.com/Azure-Samples/aci-helloworld.git
 
 Die Dockerfile-Datei aus dem Beispielrepository zeigt, wie der Container erstellt wird. Ausgangspunkt ist ein [offizielles Node.js-Image][dockerhub-nodeimage] auf der Grundlage von [Alpine Linux](https://alpinelinux.org/) (einer kleinen Distribution, die sich gut für Container eignet). Anschließend werden die Anwendungsdateien in den Container kopiert und Abhängigkeiten mithilfe des Knotenpaket-Managers installiert, bevor schließlich die Anwendung gestartet wird.
 
-```
+```Dockerfile
 FROM node:8.2.0-alpine
 RUN mkdir -p /usr/src/app
 COPY ./app/* /usr/src/app/
@@ -103,9 +105,9 @@ Rufen Sie im Browser „http://localhost: 8080“ auf, um sich zu vergewissern, 
 In diesem Tutorial haben Sie ein Containerimage erstellt, das in Azure Container Instances bereitgestellt werden kann. Die folgenden Schritte wurden ausgeführt:
 
 > [!div class="checklist"]
-> * Klonen der Anwendungsquelle von GitHub  
-> * Erstellen von Containerimages aus der Anwendungsquelle
-> * Lokales Testen des Containers
+> * Anwendungsquelle von GitHub wurde geklont.
+> * Containerimages aus der Anwendungsquelle wurden erstellt.
+> * Container wurde lokal getestet.
 
 Wechseln Sie zum nächsten Tutorial, und erfahren Sie, wie Containerimages in einer Azure Container Registry gespeichert werden.
 
@@ -113,7 +115,7 @@ Wechseln Sie zum nächsten Tutorial, und erfahren Sie, wie Containerimages in ei
 > [Übertragen von Images zu Azure Container Registry mithilfe von Push](./container-instances-tutorial-prepare-acr.md)
 
 <!-- LINKS -->
-[dockerhub-nodeimage]: https://hub.docker.com/r/library/node/tags/8.2.0-alpine/
+[dockerhub-nodeimage]: https://store.docker.com/images/node
 
 <!--- IMAGES --->
 [aci-tutorial-app]:./media/container-instances-quickstart/aci-app-browser.png

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 811a2538f0a138074feea1bd4608a7ba00660fd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f74a953d04e8633e802b33903de603b39ac08e9b
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>Kopieren von Daten nach bzw. aus Data Lake Store mit Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -84,9 +84,11 @@ Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren S
 * Anwendungsschlüssel 
 * Mandanten-ID
 
-> [!IMPORTANT]
-> Stellen Sie bei Verwendung des Kopier-Assistenten zum Erstellen von Datenpipelines sicher, dass Sie für den Dienstprinzipal im Rahmen der Zugriffssteuerung (Identitäts- und Zugriffsverwaltung) für das Data Lake Store-Konto mindestens die Rolle **Leser** gewähren. Gewähren Sie dem Dienstprinzipal mindestens die Berechtigung **Lesen und Ausführen** für Ihren Data Lake Store-Stamm („/“) und die untergeordneten Elemente. Andernfalls wird unter Umständen die Meldung „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt.<br/><br/>
-Nachdem Sie einen Dienstprinzipal in Azure AD neu erstellt oder aktualisiert haben, kann es einige Minuten dauern, bis die Änderungen wirksam werden. Überprüfen Sie die Konfiguration des Dienstprinzipals und der Data Lake Store-Zugriffssteuerungsliste (ACL). Wenn die Meldung „Die angegebenen Anmeldeinformationen sind ungültig“ weiterhin angezeigt wird, sollten Sie einen Moment warten und den Vorgang dann wiederholen.
+> [!TIP]
+> Erteilen Sie dem Dienstprinzipal die korrekte Berechtigung in Azure Data Lake Store:
+>- Wenn Sie Pipelines mithilfe des Kopier-Assistenten erstellen, erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**. Erteilen Sie außerdem für Ihren Data Lake Store-Stamm („/“) und die untergeordneten Elemente mindestens die Berechtigung **Lesen und Ausführen**. Andernfalls wird unter Umständen die Meldung „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt.
+>- Wenn Sie Data Lake Store als Quelle verwenden möchten, erteilen Sie mindestens die Datenzugriffsberechtigung **Lesen und Ausführen**, um den Inhalt eines Ordners aufzulisten und zu kopieren, oder die Berechtigung **Lesen**, um eine einzelne Datei zu kopieren. Es gelten keine Anforderungen für die Zugriffssteuerung auf Kontoebene.
+>- Wenn Sie Data Lake Store als Senke verwenden möchten, erteilen Sie mindestens die Datenzugriffsberechtigung **Schreiben und Ausführen** für die Erstellung untergeordneter Elemente im Ordner. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quellen als auch Senken befinden sich in der Cloud), um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen, erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**. Falls Sie die Verwendung dieser IAM-Rolle vermeiden möchten, geben Sie in der Kopieraktivität [executionLocation](data-factory-data-movement-activities.md#global) mit dem Standort Ihrer Data Lake Store-Instanz an.
 
 Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eigenschaften angeben:
 

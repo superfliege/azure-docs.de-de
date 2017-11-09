@@ -13,18 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 10963ab0b84b48c35df3022649363bbc8fc112a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b28e15d643497dbdf827b3976ad7dcdc73507b1
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
 Nach der Bereitstellung möchten viele Organisationen wissen, wie oder ob SSPR tatsächlich verwendet wird. Azure AD stellt Berichtsfunktionen bereit, mit denen Sie Fragen mithilfe vordefinierter Berichte beantworten, die ordnungsgemäße Lizenzierung ermitteln und benutzerdefinierte Abfragen erstellen können.
+
+![Berichterstellung][Reporting]
 
 Die folgenden Fragen können mit Berichten beantwortet werden, die im [Azure-Portal] (https://portal.azure.com/) vorhanden sind.
 
@@ -39,6 +41,10 @@ Die folgenden Fragen können mit Berichten beantwortet werden, die im [Azure-Por
 * Welche Probleme treten häufig für Benutzer oder Administratoren bei dem Versuch auf, das Kennwort zurückzusetzen?
 * Welche Administratoren setzen häufig ihre eigenen Kennwörter zurück?
 * Gibt es verdächtige Aktivitäten beim Zurücksetzen des Kennworts?
+
+## <a name="power-bi-content-pack"></a>Power BI-Inhaltspaket
+
+Als Power BI-Benutzer können Sie ein Inhaltspaket für Azure AD nutzen, dass eine benutzerfreundliche Berichterstellung für SSPR ermöglicht. Weitere Informationen zum Verwenden und Bereitstellen des Inhaltspakets finden Sie im Artikel [Verwenden des Azure Active Directory-Power BI-Inhaltspakets](active-directory-reporting-power-bi-content-pack-how-to.md). Sie können dann Ihre eigenen Dashboards erstellen und diese mit anderen Personen in Ihrer Organisation gemeinsam nutzen.
 
 ## <a name="how-to-view-password-management-reports-in-the-azure-portal"></a>Anzeigen von Kennwortverwaltungsberichten im Azure-Portal
 
@@ -94,77 +100,6 @@ Die folgende Tabelle beschreibt die verschiedenen Werte, die für die einzelnen 
 | Column | Zulässige Werte und ihre Bedeutung |
 | --- | --- |
 | Registrierte Daten |**Alternative E-Mail-Adresse** – Benutzer hat für die Authentifizierung eine alternative E-Mail-Adresse oder eine E-Mail-Adresse zur Authentifizierung verwendet.<p><p>**Bürotelefon** – Benutzer hat seine Bürotelefonnummer zur Authentifizierung verwendet.<p>**Mobiltelefon** – Benutzer hat sein Mobiltelefon oder sein Authentifizierungstelefon zum Authentifizieren verwendet.<p>**Sicherheitsfragen** – Benutzer hat Sicherheitsfragen zur Authentifizierung verwendet.<p>**Eine beliebige Kombination der oben genannten Daten (z.B. alternative E-Mail-Adresse und Mobiltelefon)** – Tritt auf, wenn eine Richtlinie für die zweistufige Überprüfung angegeben ist, und zeigt, welche beiden Methoden der Benutzer zur Authentifizierung seiner Anforderung zum Zurücksetzen des Kennworts verwendet hat. |
-
-## <a name="view-password-reset-activity-in-the-classic-portal"></a>Anzeigen der Kennwortzurücksetzungsaktivität im klassischen Portal
-
-Dieser Bericht zeigt alle Versuche der Kennwortzurücksetzung an, die in Ihrer Organisation erfolgt sind.
-
-* **Max. Zeitraum**: 30 Tage
-* **Max. Anzahl von Zeilen**: 75.000
-* **Zum Herunterladen**: Ja, über eine CSV-Datei
-
-### <a name="description-of-report-columns-in-azure-classic-portal"></a>Beschreibung der Berichtsspalten im klassischen Azure-Portal
-
-In der folgende Liste werden alle Berichtsspalten im Detail beschrieben:
-
-1. **Benutzer** – Der Benutzer, der versucht hat, ein Kennwort zurückzusetzen (basierend auf dem Feld "Benutzer-ID", das bereitgestellt wird, wenn der Benutzer ein Kennwort zurückzusetzen versucht).
-2. **Rolle** – Die Rolle des Benutzers im Verzeichnis.
-3. **Datum und Uhrzeit** – Datum und Uhrzeit des Versuchs.
-4. **Verwendete Methoden** – Die Authentifizierungsmethoden, die der Benutzer für diesen Zurücksetzungsvorgang verwendet hat.
-5. **Ergebnis** – Das Ergebnis des Vorgangs zum Zurücksetzen des Kennworts.
-6. **Details** – Die Einzelheiten dazu, warum die Kennwortzurücksetzung zu dem entsprechenden Wert geführt hat.  Enthält auch alle Maßnahmen, die Sie ergreifen können, um einen unerwarteten Fehler zu beheben.
-
-### <a name="description-of-report-values-in-azure-classic-portal"></a>Beschreibung der Berichtswerte im klassischen Azure-Portal
-
-Die folgende Tabelle beschreibt die verschiedenen Werte, die für die einzelnen Spalten zulässig sind:
-
-| Column | Zulässige Werte und ihre Bedeutung |
-| --- | --- |
-| Verwendete Methoden |**Alternative E-Mail-Adresse** – Benutzer hat für die Authentifizierung eine alternative E-Mail-Adresse oder eine E-Mail-Adresse zur Authentifizierung verwendet.<p>**Bürotelefon** – Benutzer hat seine Bürotelefonnummer zur Authentifizierung verwendet.<p>**Mobiltelefon** – Benutzer hat sein Mobiltelefon oder sein Authentifizierungstelefon zum Authentifizieren verwendet.<p>**Sicherheitsfragen** – Benutzer hat Sicherheitsfragen zur Authentifizierung verwendet.<p>**Eine beliebige Kombination der oben genannten Daten (z.B. alternative E-Mail-Adresse und Mobiltelefon)** – Tritt auf, wenn eine Richtlinie für die zweistufige Überprüfung angegeben ist, und zeigt, welche beiden Methoden der Benutzer zur Authentifizierung seiner Anforderung zum Zurücksetzen des Kennworts verwendet hat. |
-| Ergebnis |**Vorzeitig beendet** – Der Benutzer hat die Kennwortzurücksetzung gestartet, den Vorgang jedoch mittendrin beendet und nicht abgeschlossen.<p>**Blockiert** – Das Konto des Benutzers wurde an der Kennwortzurücksetzung gehindert, weil die Seite zur Kennwortzurücksetzung oder eine einzelne Überprüfungsmethode zur Kennwortzurücksetzung in einem Zeitraum von 24 Stunden zu häufig verwendet wurde.<p>**Abgebrochen** – Der Benutzer hat die Kennwortzurücksetzung gestartet, aber dann auf die Schaltfläche „Abbrechen“ geklickt, um die Sitzung mittendrin abzubrechen. <p>**Administrator kontaktiert** – Beim Benutzer ist während der Sitzung ein Problem aufgetreten, das er nicht auflösen konnte. Daher hat der Benutzer auf den Link Wenden Sie sich an Ihren Administrator geklickt, statt die Kennwortzurücksetzung abzuschließen.<p>**Fehler** – Der Benutzer konnte ein Kennwort nicht zurücksetzen, wahrscheinlich weil der Benutzer nicht für die Verwendung dieses Features konfiguriert wurde (z.B. keine Lizenz, fehlende Informationen für die Authentifizierung, Kennwort lokal verwaltet ohne Aktivierung der Rückschreibungsfunktion).<p>**Erfolgreich** – Die Kennwortzurücksetzung war erfolgreich. |
-| Details |Beachten Sie die folgende Tabelle. |
-
-### <a name="allowed-values-for-details-column"></a>Zulässige Werte für die Spalte "Details"
-
-Nachfolgend finden Sie die Liste der Ergebnistypen, die Sie im Bericht zur Aktivität "Zurücksetzen des Kennworts" erwarten können:
-
-| Details | Ergebnistyp |
-| --- | --- |
-| Benutzer hat nach Abschluss der Überprüfung per E-Mail vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat nach Abschluss der Überprüfung per Mobiltelefon-SMS vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat nach Abschluss der Überprüfung per Mobiltelefon-Sprachanruf vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat nach Abschluss der Überprüfung per Bürotelefon-Sprachanruf vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat nach Abschluss der Überprüfung per Sicherheitsfragen vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat nach Eingabe der Benutzer-ID vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat nach dem Start der Überprüfung per E-Mail vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat nach dem Start der Überprüfung per Mobiltelefon-SMS vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat nach dem Start der Überprüfung per Mobiltelefon-Sprachanruf vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat nach dem Start der Überprüfung per Bürotelefon-Sprachanruf vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat nach dem Start der Überprüfung per Sicherheitsfragen vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat vor Auswahl eines neuen Kennworts vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat während Auswahl eines neuen Kennworts vorzeitig beendet. |Vorzeitig beendet |
-| Benutzer hat zu viele ungültige SMS-Überprüfungscodes eingegeben und ist für 24 Stunden blockiert. |Blockiert |
-| Benutzer hat die Überprüfung per Mobiltelefon-Sprachanruf zu oft versucht und ist für 24 Stunden blockiert. |Blockiert |
-| Benutzer hat die Überprüfung per Bürotelefon-Sprachanruf zu oft versucht und ist für 24 Stunden blockiert. |Blockiert |
-| Benutzer hat zu häufig versucht, die Sicherheitsfragen zu beantworten, und ist für 24 Stunden blockiert. |Blockiert |
-| Benutzer hat zu oft versucht, eine Telefonnummer zu überprüfen, und ist für 24 Stunden blockiert. |Blockiert |
-| Benutzer hat vor Übergabe der erforderlichen Authentifizierungsmethoden abgebrochen. |Canceled |
-| Benutzer hat vor Übermittlung eines neuen Kennworts abgebrochen. |Canceled |
-| Benutzer hat nach Versuch der Überprüfung per E-Mail den Administrator kontaktiert. |Administrator kontaktiert |
-| Benutzer hat nach Versuch der Überprüfung per Mobiltelefon-SMS den Administrator kontaktiert. |Administrator kontaktiert |
-| Benutzer hat nach Versuch der Überprüfung per Mobiltelefon-Sprachanruf den Administrator kontaktiert. |Administrator kontaktiert |
-| Benutzer hat nach Versuch der Überprüfung per Bürotelefon-Sprachanruf den Administrator kontaktiert. |Administrator kontaktiert |
-| Benutzer hat nach Versuch der Überprüfung per Sicherheitsfrage den Administrator kontaktiert. |Administrator kontaktiert |
-| Die Kennwortzurücksetzung ist für diesen Benutzer nicht aktiviert. Aktivieren Sie die Kennwortzurücksetzung auf der Konfigurationsregisterkarte, um dieses Problem zu beheben. |Fehler |
-| Der Benutzer hat keine Lizenz. Sie können dem Benutzer eine Lizenz hinzufügen, um dieses Problems zu beheben. |Fehler |
-| Benutzer hat versucht, die Zurücksetzung von einem Gerät ohne aktivierte Cookies durchzuführen. |Fehler |
-| Im Benutzerkonto sind nicht genügend Authentifizierungsmethoden definiert. Fügen Sie Authentifizierungsinformationen hinzu, um dieses Problem zu beheben. |Fehler |
-| Das Kennwort des Benutzers wird lokal verwaltet. Sie können die Kennwortrückschreibung aktivieren, um dieses Problem zu beheben. |Fehler |
-| Wir konnten den Dienst zum Zurücksetzen Ihres lokalen Kennworts nicht erreichen. Überprüfen Sie das Ereignisprotokoll des Synchronisierungscomputers. |Fehler |
-| Beim Zurücksetzen des lokalen Kennworts des Benutzers ist ein Problem aufgetreten. Überprüfen Sie das Ereignisprotokoll des Synchronisierungscomputers. |Fehler |
-| Der Benutzer ist kein Mitglied der Benutzergruppe für Kennwortzurücksetzung. Fügen Sie diesen Benutzer dieser Gruppe hinzu, um dieses Problem zu beheben. |Fehler |
-| Die Kennwortzurücksetzung wurde für diesen Mandanten vollständig deaktiviert. [Hier](http://aka.ms/ssprtroubleshoot) finden Sie Informationen zur Lösung des Problems. |Fehler |
-| Benutzer hat das Kennwort erfolgreich zurückgesetzt. |Erfolgreich |
 
 ## <a name="self-service-password-management-activity-types"></a>Aktivitätstypen für die Self-Service-Kennwortverwaltung
 
@@ -263,15 +198,16 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD
+* [Wie führe ich ein erfolgreiches Rollout der SSPR durch?](active-directory-passwords-best-practices.md)
+* [Setzen Sie Ihr Kennwort zurück bzw. ändern Sie es](active-directory-passwords-update-your-own-password.md).
+* [Registrieren Sie sich für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md).
+* [Haben Sie eine Frage zur Lizenzierung?](active-directory-passwords-licensing.md)
+* [Welche Daten werden von SSPR verwendet, und welche Daten sollten Sie für Ihre Benutzer angeben?](active-directory-passwords-data.md)
+* [Welche Authentifizierungsmethoden sind für Benutzer verfügbar?](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Welche Richtlinienoptionen stehen mit SSPR zur Verfügung?](active-directory-passwords-policy.md)
+* [Worum handelt es sich beim Rückschreiben von Kennwörtern, und warum sollte ich mir Gedanken darüber machen?](active-directory-passwords-writeback.md)
+* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
+* [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
+* [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
 
-* [Verknüpfung mit Überwachungsprotokollen der Benutzerverwaltung:](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Audit) Wechseln Sie direkt zu den Überwachungsprotokollen der Benutzerverwaltung Ihres Mandanten.
-* [**Schnellstart:**](active-directory-passwords-getting-started.md) Informieren Sie sich schnell über die Self-Service-Kennwortverwaltung von Azure AD. 
-* [**Lizenzierung:**](active-directory-passwords-licensing.md) Konfigurieren Sie Ihre Azure AD-Lizenzierung.
-* [**Daten:**](active-directory-passwords-data.md) Erfahren Sie, welche Daten erforderlich sind und wie sie für die Kennwortverwaltung verwendet werden.
-* [**Rollout:**](active-directory-passwords-best-practices.md) Mithilfe der hier enthaltenen Anleitungen können Sie SSPR planen und für Ihre Benutzer bereitstellen.
-* [**Anpassung:**](active-directory-passwords-customize.md) Passen Sie das Aussehen und Verhalten von SSPR für Ihr Unternehmen an.
-* [**Ausführliche technische Informationen:**](active-directory-passwords-how-it-works.md) Schauen Sie hinter den Vorhang, um zu verstehen, wie alles funktioniert.
-* [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? - Antworten auf Fragen, die Sie schon immer stellen wollten
-* [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.
-* [**Richtlinie:**](active-directory-passwords-policy.md): Verstehen Sie Azure AD-Kennwortrichtlinien, und legen Sie sie fest.
+[Reporting]: ./media/active-directory-passwords-reporting/sspr-reporting.png "Beispiel für Protokolle zur Überwachung der SSPR-Aktivität in Azure AD"

@@ -4,7 +4,7 @@ description: "Übersicht über Azure Active Directory Domain Services"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 0d47178f-773e-45f9-9ff4-9e8cffa4ffa2
 ms.service: active-directory-ds
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2017
+ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: c4a22b230cd630c413118ab798ff241527465554
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be18ee0266a97057499baccc5bb39a35224336d7
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="azure-ad-domain-services"></a>Azure AD Domain Services
+# <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory-Domänendienste (AD)
 ## <a name="overview"></a>Übersicht
 Mithilfe von Azure-Infrastrukturdiensten können Sie eine Vielzahl von Computinglösungen auf flexible Weise bereitstellen. Dank Azure Virtual Machines können Sie Ihre Produkte praktisch sofort bereitstellen und erhalten eine minutengenaue Abrechnung. Mit der Unterstützung für Windows, Linux, SQL Server, Oracle, IBM, SAP und BizTalk ist die Bereitstellung jeder Workload in jeder Sprache auf fast jedem Betriebssystem möglich. Diese Vorteile versetzen Sie in die Lage, lokal bereitgestellte Legacyanwendungen zu Azure zu migrieren, um Betriebskosten zu sparen.
 
@@ -35,6 +35,10 @@ Administratoren nutzen häufig eine der folgenden Lösungen, um die Identitätsa
 All diese Ansätze sind mit hohen Kosten und hohem Verwaltungsaufwand verbunden. Administratoren müssen Domänencontroller mithilfe von virtuellen Azure-Computern bereitstellen. Sie müssen diese virtuellen Computer außerdem verwalten, schützen, patchen, überwachen und sichern und die Problembehandlung dafür durchführen. Aufgrund der Abhängigkeit von VPN-Verbindungen vom lokalen Verzeichnis sind unter Azure bereitgestellte Workloads für vorübergehende Netzwerkprobleme oder -ausfälle anfällig. Diese Netzwerkausfälle führen zu einer kürzere Betriebszeit und Zuverlässigkeit für diese Anwendungen.
 
 Die Azure AD-Domänendienste sind für die Bereitstellung einer deutlich einfacheren Alternative konzipiert.
+
+### <a name="watch-an-introductory-video"></a>Sehen Sie sich das Einführungsvideo an
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T1Nd9APNceQ" frameborder="0" allowfullscreen></iframe>
+
 
 ## <a name="introducing-azure-ad-domain-services"></a>Einführung in Azure AD-Domänendienste
 Azure AD Domain Services stellen verwaltete Domänendienste bereit, z.B. Domänenbeitritt, Gruppenrichtlinie, LDAP, Kerberos/NTLM-Authentifizierung, die mit Windows Server Active Directory vollständig kompatibel sind. Sie können diese Domänendienste nutzen, ohne dass Sie Domänencontroller in der Cloud bereitstellen, verwalten und patchen müssen. Die Azure AD-Domänendienste können in Ihren vorhandenen Azure AD-Mandanten integriert werden, wodurch es Benutzern ermöglicht wird, sich mit ihren Unternehmensanmeldeinformationen anzumelden. Außerdem können Sie vorhandene Gruppen und Benutzerkonten verwenden, um den Zugriff auf Ressourcen zu schützen. So stellen Sie sicher, dass die Verlagerung von lokalen Ressourcen auf Azure-Infrastrukturdienste reibungsloser verläuft.

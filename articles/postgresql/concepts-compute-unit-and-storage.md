@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 3c8f6a66b3dd1564bc5eafbecafee6e2f1542caa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbb9f733455fa0492358b24b178c8c637ff08c71
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="explaining-compute-units-in-azure-database-for-postgresql"></a>Erläuterungen zu Computeeinheiten in Azure-Datenbank für PostgreSQL
 In diesem Artikel werden das Konzept der Computeeinheiten und die Folgen bei Überschreitung der maximalen Anzahl von Computeeinheiten durch eine Workload erläutert.
@@ -21,7 +21,7 @@ In diesem Artikel werden das Konzept der Computeeinheiten und die Folgen bei Üb
 ## <a name="what-are-compute-units"></a>Was sind Compute-Einheiten?
 Compute-Einheiten sind eine Maßeinheit für den CPU-Verarbeitungsdurchsatz, der für einen einzelnen Azure-Datenbank für PostgreSQL-Server garantiert zur Verfügung steht. Eine Compute-Einheit stellt eine kombinierte Maßeinheit für CPU- und Speicherressourcen dar. Im Allgemeinen entsprechen 50 Computeeinheiten einem halben Kern. 100 Computeeinheiten entsprechen einem Kern. 2000 Computeeinheiten entsprechen 20 Kernen, die als garantierter Verarbeitungsdurchsatz für Ihre Server zur Verfügung stehen.
 
-Die Speichermenge pro Computeeinheit ist für die Tarife Basic und Standard optimiert. Eine Verdoppelung der Compute-Einheiten durch das Erhöhen der Leistungsebene entspricht der Verdoppelung des Ressourcensatzes, der für den jeweiligen Azure-Datenbank für PostgreSQL-Server verfügbar ist.
+Die Speichermenge pro Computeeinheit ist für die Tarife Basic und Standard optimiert. Eine Verdoppelung der Computeeinheiten durch Erhöhen der Leistungsebene entspricht der Verdoppelung der CPU-Anzahl und Arbeitsspeichermenge, die für diese einzelne Azure Database for PostgreSQL verfügbar sind.
 
 800 Computeeinheiten im Tarif Standard stellen beispielsweise 8-mal mehr CPU-Durchsatz und Arbeitsspeicher bereit als eine Konfiguration im Tarif Standard mit 100 Computeeinheiten. Während 100 Computeeinheiten im Tarif Standard denselben CPU-Durchsatz wie 100 Computeeinheiten im Tarif Basic bieten, beträgt die im Tarif Standard vorkonfigurierte Speichermenge das Doppelte der im Tarif Basic konfigurierten Speichermenge. Aus diesem Grund bietet der Tarif Standard eine bessere Workloadleistung und niedrigere Transaktionslatenzen als der Tarif Basic mit denselben Computeeinheiten.
 

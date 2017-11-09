@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/12/2017
 ms.author: larryfr
-ms.openlocfilehash: 7b41afdbb019f8533a49db3ebd37ff144186f956
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 97b89b9c6ef88c1611ccad7963a0aa8e7eb82318
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>Verwenden von Apache Kafka (Vorschau) mit Storm in HDInsight
 
@@ -341,6 +341,6 @@ Da mit den Schritten in diesem Dokument beide Cluster in derselben Azure-Ressour
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Beispieltopologien, die mit Storm in HDInsight verwendet werden können, finden Sie unter [Beispiel-Storm-Topologien und -Komponenten für Apache Storm auf HDInsight](hdinsight-storm-example-topology.md).
+Weitere Beispieltopologien, die mit Storm in HDInsight verwendet werden können, finden Sie unter [Beispiel-Storm-Topologien und -Komponenten für Apache Storm auf HDInsight](storm/apache-storm-example-topology.md).
 
-Informationen zur Bereitstellung und Überwachung von Topologien in Linux-basiertem HDInsight finden Sie unter [Bereitstellen und Verwalten von Apache Storm-Topologien in Linux-basiertem HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md).
+Informationen zur Bereitstellung und Überwachung von Topologien in Linux-basiertem HDInsight finden Sie unter [Bereitstellen und Verwalten von Apache Storm-Topologien in Linux-basiertem HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md).

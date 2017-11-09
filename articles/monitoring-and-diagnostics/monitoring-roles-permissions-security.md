@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 31c4fc5b606bf96cec8c508f4a0ff7ecbaeae38a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8767073bb7a6723088bb2727346d23ec8872cd1
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
 Viele Teams müssen den Zugriff auf Überwachungsdaten und -einstellungen streng regulieren. Wenn einige Ihrer Teammitglieder beispielsweise ausschließlich an der Überwachung arbeiten (Supporttechniker, DevOps-Techniker) oder wenn Sie einen verwalteten Dienstanbieter verwenden, sollten Sie diesen nur Zugriff auf Überwachungsdaten erteilen und deren Möglichkeit zum Erstellen, Ändern oder Löschen von Ressourcen einschränken. Dieser Artikel beschreibt, wie Sie schnell eine integrierte RBAC-Rolle zur Überwachung auf einen Benutzer in Azure anwenden oder Ihre eigene benutzerdefinierte Rolle für einen Benutzer erstellen, der eingeschränkte Überwachungsberechtigungen benötigt. Anschließend werden Sicherheitsaspekte für Ihre Azure Monitor-Ressourcen erörtert, und es wird beschrieben, wie Sie den Zugriff auf die darin enthaltenen Daten beschränken können.
@@ -37,12 +37,12 @@ Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überw
 * Anzeigen von Einstellungen für die automatische Skalierung.
 * Anzeigen von Warnaktivitäten und -einstellungen.
 * Zugreifen auf Application Insights-Daten und Anzeigen von Daten in der AI-Analyse.
-* Durchsuchen von Arbeitsbereichsdaten von Log Analytics (OMS), einschließlich Nutzungsdaten für den Arbeitsbereich.
-* Anzeigen von Verwaltungsgruppen in Log Analytics (OMS).
-* Abrufen des Suchschemas von Log Analytics (OMS).
-* Auflisten von Intelligence Packs zu Log Analytics (OMS).
-* Abrufen und Ausführen gespeicherter Suchvorgänge von Log Analytics (OMS).
-* Abrufen der Speicherkonfiguration von Log Analytics (OMS).
+* Durchsuchen von Arbeitsbereichsdaten von Log Analytics, einschließlich Nutzungsdaten für den Arbeitsbereich
+* Anzeigen von Verwaltungsgruppen in Log Analytics
+* Abrufen des Suchschemas von Log Analytics
+* Auflisten von Intelligence Packs zu Log Analytics
+* Abrufen und Ausführen gespeicherter Suchvorgänge von Log Analytics
+* Abrufen der Speicherkonfiguration von Log Analytics
 
 > [!NOTE]
 > Diese Rolle erteilt keinen Lesezugriff für Protokolldaten, die an einen Event Hub gestreamt oder in einem Speicherkonto gespeichert wurden. [Unten](#security-considerations-for-monitoring-data) finden Sie Informationen zum Konfigurieren des Zugriffs auf diese Ressourcen.
@@ -57,10 +57,10 @@ Personen, denen die Rolle für Überwachungsmitwirkende zugewiesen wird, können
 * Festlegen des [Protokollprofils](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) für ein Abonnement.*
 * Festlegen von Warnaktivitäten und -einstellungen.
 * Erstellen von Application Insights-Webtests und -Komponenten.
-* Auflisten vorinstallierter Arbeitsbereichsschlüssel aus Log Analytics (OMS).
-* Aktivieren oder Deaktivieren von Intelligence Packs zu Log Analytics (OMS).
-* Erstellen, Löschen und Ausführen gespeicherter Suchvorgänge von Log Analytics (OMS).
-* Erstellen und Löschen der Speicherkonfiguration von Log Analytics (OMS).
+* Auflisten gemeinsam verwendeter Arbeitsbereichsschlüssel aus Log Analytics
+* Aktivieren oder Deaktivieren von Intelligence Packs zu Log Analytics
+* Erstellen, Löschen und Ausführen gespeicherter Suchvorgänge von Log Analytics
+* Erstellen und Löschen der Speicherkonfiguration von Log Analytics
 
 *Dem Benutzer muss außerdem gesondert die ListKeys-Berechtigung für die Zielressource (Speicherkonto oder Event Hub-Namespace) erteilt werden, um ein Protokollprofil oder eine Diagnoseeinstellung festzulegen.
 

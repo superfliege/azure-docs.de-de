@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 51db9539451afafe7eddaaeef0e02328431611de
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 2d6c1737edbc4e69dd7de4c8ce3d7b0899bfae51
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Bereitstellen des StorSimple-Geräte-Manager-Diensts für Geräte der StorSimple 8000-Serie
 
@@ -74,7 +74,7 @@ Geräte der StorSimple-Serie 8000 können jetzt im Azure-Portal verwaltet werden
 
 #### <a name="before-you-transition"></a>Vor der Umstellung
 
-* Ihr Dienst wird mit Update 3.0 oder höher ausgeführt. Wenn auf Ihrem Gerät eine frühere Version ausgeführt wird, installieren Sie die neuesten Updates. Weitere Informationen finden Sie unter [Installieren von Update 5](storsimple-8000-install-update-5.md). Wenn Sie eine StorSimple Cloud Appliance (8010/8020) verwenden, können Sie die Cloud Appliance nicht aktualisieren. Verwenden Sie die neueste Version der Software, um eine neue Cloud Appliance mit Update 5.0 zu erstellen und dann ein Failover für die neu erstellte Cloud Appliance auszuführen.
+* Ihr Dienst wird mit Update 3.0 oder höher ausgeführt. Wenn auf Ihrem Gerät eine ältere Version ausgeführt wird, sollten Sie unbedingt Update 5 über die Hotfixmethode installieren. Weitere Informationen finden Sie unter [Installieren von Update 5](storsimple-8000-install-update-5.md). Wenn Sie eine StorSimple Cloud Appliance (8010/8020) verwenden, können Sie die Cloud Appliance nicht aktualisieren. Verwenden Sie die neueste Version der Software, um eine neue Cloud Appliance mit Update 5.0 zu erstellen und dann ein Failover für die neu erstellte Cloud Appliance auszuführen.
 
 * Nach erfolgter Umstellung auf das neue Azure-Portal können sie nicht mehr das klassische Azure-Portal zum Verwalten Ihres StorSimple-Geräts nutzen.
 

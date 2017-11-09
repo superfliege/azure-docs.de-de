@@ -37,3 +37,4 @@ sections:
           - html: <a href="tutorial-review-usage">Review usage and costs to detect anomalies and efficiencies</a> (Überprüfen von Verbrauch und Kosten zum Erkennen von Anomalien und Effizienz)
           - html: <a href="tutorial-user-access">Assign access to Cost Management data</a> (Zuweisen des Zugriffs auf die Kostenverwaltungsdaten)
           - html: <a href="tutorial-forecast-spending">Vorhersage zukünftiger Ausgaben</a>
+          - html: <a href="tutorial-manage-costs">Verwalten von Kosten mit Kostenzuteilung sowie Showback- und Chargeback-Berichten</a>

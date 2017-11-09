@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: e460e734973622fb0d5745adfc4c1aa0178dd22e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ce4d6d9024dc4ce3956220eb0678a6295b0b7ab
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="password-writeback-overview"></a>Übersicht über die Kennwortrückschreibung
 
@@ -90,11 +90,41 @@ Bei den folgenden Schritten wird davon ausgegangen, dass Azure AD Connect bereit
 6. Aktivieren Sie auf dem Bildschirm „Optionale Features“ das Kontrollkästchen **Kennwortrückschreiben**, und klicken Sie auf **Weiter**.
    ![Aktivieren des Kennwortrückschreibens in Azure AD Connect][Writeback]
 7. Klicken Sie auf dem Bildschirm „Bereit zur Konfiguration“ auf **Konfigurieren**, und warten Sie, bis der Vorgang abgeschlossen ist.
-8. Wenn die Konfiguration abgeschlossen ist, können Sie auf **Beenden** klicken.
+8. Wenn die Konfiguration abgeschlossen ist, klicken Sie auf **Beenden**.
+
+## <a name="active-directory-permissions"></a>Active Directory-Berechtigungen
+
+Das im Azure AD Connect-Dienstprogramm angegebene Konto muss über Berechtigungen zum Zurücksetzen und Ändern des Kennworts sowie über Schreibberechtigungen für LockoutTime und Schreibberechtigungen für „pwdLastSet“ und erweiterte Rechte entweder für das Stammobjekt **jeder Domäne** in dieser Gesamtstruktur **ODER** für die Benutzerorganisationseinheiten verfügen, die innerhalb des Bereichs für die SSPR liegen sollen.
+
+Wenn Sie nicht sicher sind, auf welches Konto sich die oben genannten Angaben beziehen, öffnen Sie die Azure Active Directory Connect-Konfigurationsoberfläche, und klicken Sie auf die Option „Aktuelle Konfiguration anzeigen“. Das Konto, dem Sie Berechtigungen hinzufügen müssen, wird unter „Synchronisierte Verzeichnisse“ angezeigt.
+
+Durch das Festlegen dieser Berechtigungen kann das MA-Dienstkonto für jede Gesamtstruktur Kennwörter im Namen der Benutzerkonten innerhalb dieser Gesamtstruktur verwalten. **Wenn Sie diese Berechtigungen nicht gewähren, erhalten die Benutzer – obwohl das Zurückschreiben scheinbar ordnungsgemäß konfiguriert ist – Fehler bei dem Versuch, ihre lokalen Kennwörter über die Cloud verwalten.**
+
+> [!NOTE]
+> Es kann bis zu einer Stunde oder länger dauern, bis diese Berechtigungen auf alle Objekte in Ihrem Verzeichnis repliziert wurden.
+>
+
+So richten Sie die entsprechenden Berechtigungen für das Rückschreiben von Kennwörtern ein
+
+1. Öffnen Sie „Active Directory-Benutzer und -Computer“ mit einem Konto, das über geeignete Berechtigungen für die Domänenverwaltung verfügt.
+2. Vergewissern Sie sich, dass im Menü „Ansicht“ die Option „Erweiterte Features“ aktiviert ist.
+3. Klicken Sie im linken Bereich mit der rechten Maustaste auf das Objekt, das den Stamm der Domäne repräsentiert, und wählen Sie Eigenschaften aus.
+    * Klicken Sie auf die Registerkarte „Sicherheit“.
+    * Klicken Sie dann auf „Erweitert“.
+4. Klicken Sie auf der Registerkarte „Berechtigungen“ auf „Hinzufügen“.
+5. Wählen Sie das Konto aus, dem Berechtigungen zugewiesen werden sollen (vom Azure AD Connect-Setup).
+6. Wählen Sie im Dropdownfeld „Gilt für“ den Eintrag „Nachfolgerbenutzerobjekt“ aus.
+7. Aktivieren Sie unter „Berechtigungen“ Folgendes:
+    * Abgelaufenes Kennwort wiederherstellen
+    * Kennwort zurücksetzen
+    * Kennwort ändern
+    * lockoutTime schreiben
+    * pwdLastSet schreiben
+8. Klicken Sie auf „Übernehmen/OK“, um die Änderungen zu übernehmen und alle geöffneten Dialogfelder zu schließen.
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Lizenzierungsanforderungen für das Kennwortrückschreiben
 
-Informationen zur Lizenzierung finden Sie im Thema [Erforderliche Lizenzen für das Kennwortrückschreiben](active-directory-passwords-licensing.md#licenses-required-for-password-writeback) oder auf den folgenden Websites:
+Informationen zur Lizenzierung finden Sie unter [Erforderliche Lizenzen für das Kennwortrückschreiben](active-directory-passwords-licensing.md#licenses-required-for-password-writeback) oder auf den folgenden Websites.
 
 * [Website mit Preisen für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
@@ -159,9 +189,9 @@ Das Kennwortrückschreiben ist ein äußerst sicherer Dienst.  Zum Schutz Ihrer 
 Die Verschlüsselungsschritte, die eine vom Benutzer übermittelte Kennwortzurücksetzungsanforderung vor dem Erreichen Ihrer lokalen Umgebung durchläuft, um ein Höchstmaß an Dienstzuverlässigkeit und Sicherheit zu gewährleisten, werden im Folgenden beschrieben.
 
 * **Schritt 1: Kennwortverschlüsselung mit 2048-Bit-RSA-Schlüssel:** Wenn ein Benutzer ein zurückzuschreibendes Kennwort an die lokale Umgebung übermittelt, wird zunächst das eigentliche Kennwort mit einem 2048-Bit-RSA-Schlüssel verschlüsselt.
-* **Schritt 2: Verschlüsselung auf Paketebene mit AES-GCM:** Als Nächstes wird das gesamte Paket (bestehend aus Kennwort und den erforderlichen Metadaten) mithilfe von AES-GCM verschlüsselt. So wird verhindert, dass jemand mit direktem Zugriff auf den zugrunde liegenden ServiceBus-Kanal den Inhalt anzeigen und/oder manipulieren kann.
-* **Schritt 3: Abwicklung der gesamten Kommunikation über TLS/SSL:** Die gesamte Kommunikation wird mit ServiceBus über einen TLS/SSL-Kanal abgewickelt. Dadurch wird der Inhalt vor nicht autorisierten Dritten geschützt.
-* **Automatischer Schlüsselrollover im Abstand von sechs Monaten:** Alle sechs Monate (sowie bei jeder Deaktivierung/Reaktivierung des Kennwortrückschreibens in Azure AD Connect) erfolgt ein Rollover aller entsprechenden Schlüssel, um ein Höchstmaß an Dienstzuverlässigkeit und Sicherheit zu erreichen.
+* **Schritt 2: Verschlüsselung auf Paketebene mit AES-GCM:** Als Nächstes wird das gesamte Paket (bestehend aus Kennwort und den erforderlichen Metadaten) mithilfe von AES-GCM verschlüsselt. Diese Verschlüsselung verhindert, dass jemand mit direktem Zugriff auf den zugrunde liegenden ServiceBus-Kanal den Inhalt anzeigen und/oder manipulieren kann.
+* **Schritt 3: Abwicklung der gesamten Kommunikation über TLS/SSL:** Die gesamte Kommunikation wird mit ServiceBus über einen TLS/SSL-Kanal abgewickelt. Diese Verschlüsselung schützt den Inhalt vor nicht autorisierten Dritten.
+* **Automatischer Schlüsselrollover im Abstand von sechs Monaten**: Alle sechs Monate (sowie bei jeder Deaktivierung/Reaktivierung des Kennwortrückschreibens in Azure AD Connect) erfolgt ein automatischer Rollover aller Schlüssel, um ein Höchstmaß an Dienstzuverlässigkeit und Sicherheit zu erreichen.
 
 ### <a name="password-writeback-bandwidth-usage"></a>Bandbreitennutzung für das Kennwortrückschreiben
 
@@ -182,17 +212,16 @@ Die Größe der einzelnen oben beschriebenen Nachrichten beträgt in der Regel w
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
-
-* [**Schnellstart:**](active-directory-passwords-getting-started.md) Informieren Sie sich schnell über die Self-Service-Kennwortverwaltung von Azure AD. 
-* [**Lizenzierung:**](active-directory-passwords-licensing.md) Konfigurieren Sie Ihre Azure AD-Lizenzierung.
-* [**Daten:**](active-directory-passwords-data.md) Erfahren Sie, welche Daten erforderlich sind und wie sie für die Kennwortverwaltung verwendet werden.
-* [**Rollout:**](active-directory-passwords-best-practices.md) Mithilfe der hier enthaltenen Anleitungen können Sie SSPR planen und für Ihre Benutzer bereitstellen.
-* [**Anpassung:**](active-directory-passwords-customize.md) Passen Sie das Aussehen und Verhalten von SSPR für Ihr Unternehmen an.
-* [**Richtlinie:**](active-directory-passwords-policy.md) Machen Sie sich mit den Azure AD-Kennwortrichtlinien vertraut, und legen Sie sie fest.
-* [**Berichterstellung:**](active-directory-passwords-reporting.md) Ermitteln Sie, ob, wann und wo Ihre Benutzer auf SSPR-Funktionen zugreifen.
-* [**Ausführliche technische Informationen:**](active-directory-passwords-how-it-works.md) Steigen Sie tiefer ein, um zu verstehen, wie alles funktioniert.
-* [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? - Antworten auf Fragen, die Sie schon immer stellen wollten
-* [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.
+* [Wie führe ich ein erfolgreiches Rollout der SSPR durch?](active-directory-passwords-best-practices.md)
+* [Setzen Sie Ihr Kennwort zurück bzw. ändern Sie es](active-directory-passwords-update-your-own-password.md).
+* [Registrieren Sie sich für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md).
+* [Haben Sie eine Frage zur Lizenzierung?](active-directory-passwords-licensing.md)
+* [Welche Daten werden von SSPR verwendet, und welche Daten sollten Sie für Ihre Benutzer angeben?](active-directory-passwords-data.md)
+* [Welche Authentifizierungsmethoden sind für Benutzer verfügbar?](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Welche Richtlinienoptionen stehen mit SSPR zur Verfügung?](active-directory-passwords-policy.md)
+* [Wie melde ich eine Aktivität bei SSPR?](active-directory-passwords-reporting.md)
+* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
+* [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
+* [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
 
 [Writeback]: ./media/active-directory-passwords-writeback/enablepasswordwriteback.png "Aktivieren des Kennwortrückschreibens in Azure AD Connect"

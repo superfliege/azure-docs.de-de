@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a92b2875df3ceaeb4de21f24aa484196a82d825d
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: a9b321fcf8a8d1234989a9433da227142d954cb4
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Erstellen einer Node.js- und MongoDB-Web-App in Azure App Service unter Linux
 
@@ -207,7 +207,7 @@ Führen Sie in einem lokalen Terminalfenster den folgenden Befehl aus, um Skript
 gulp prod
 ```
 
-Führen Sie in einem lokalen Terminalfenster den folgenden Befehl aus, um die in _config/env/production.js_ konfigurierte Verbindungszeichenfolge zu verwenden. Ignorieren Sie den Zertifikatfehler und die config.domain-Warnung.
+Führen Sie in einem lokalen Terminalfenster den folgenden Befehl aus, um die in _config/env/local-production.js_ konfigurierte Verbindungszeichenfolge zu verwenden. Ignorieren Sie den Zertifikatfehler und die config.domain-Warnung.
 
 ```bash
 NODE_ENV=production node server.js
@@ -246,11 +246,11 @@ In diesem Schritt stellen Sie die mit MongoDB verbundene Node.js-Anwendung in Az
 
 ### <a name="create-a-linux-based-web-app"></a>Erstellen einer auf Linux basierenden Web-App
 
-[!INCLUDE [Create a linux based web app](../../../includes/app-service-web-create-web-app-linux-nodejs-no-h.md)]
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-no-h.md)] 
 
 ### <a name="configure-an-environment-variable"></a>Konfigurieren einer Umgebungsvariablen
 
-_config/env/local-production.js_ befindet sich nicht im Git-Repository. Daher verwenden Sie für Ihre Azure-Web-App die App-Einstellungen zum Definieren der MongoDB-Verbindungszeichenfolge.
+Standardmäßig integriert das MEAN.js-Projekt die Datei _config/env/local-production.js_ nicht in das Git-Repository. Daher verwenden Sie für Ihre Azure-Web-App die App-Einstellungen zum Definieren der MongoDB-Verbindungszeichenfolge.
 
 Verwenden Sie zum Festlegen der App-Einstellungen den [az webapp config appsettings update](/cli/azure/webapp/config/appsettings#update)-Befehl in der Cloud Shell.
 
@@ -262,7 +262,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 Im Node.js-Code greifen Sie auf diese App-Einstellung mit `process.env.MONGODB_URI` zu, genauso wie Sie auf eine Umgebungsvariable zugreifen würden. 
 
-Öffnen Sie in Ihrem lokalen MEAN.js-Repository erneut die Datei _config/env/production.js_, die eine für die Produktionsumgebung spezifische Konfiguration aufweist. Beachten Sie, dass die MEAN.js-Standard-App bereits für die Verwendung der `MONGODB_URI`-Umgebungsvariablen konfiguriert ist, die Sie erstellt haben.
+Öffnen Sie in Ihrem lokalen MEAN.js-Repository die Datei _config/env/production.js_ (nicht _config/env/local-production.js_), die eine für die Produktionsumgebung spezifische Konfiguration aufweist. Beachten Sie, dass die MEAN.js-Standard-App bereits für die Verwendung der `MONGODB_URI`-Umgebungsvariablen konfiguriert ist, die Sie erstellt haben.
 
 ```javascript
 db: {

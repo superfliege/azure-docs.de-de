@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.openlocfilehash: 6e6e7a199547135bd9695ff0867e8d5a98341b12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ec2eaaf4e8d54e7b1ea3d272c47eac96451f317
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>Plattformen und Tools für Data Science-Teamprojekte
 
@@ -61,7 +61,7 @@ Apache Spark ist ein Open-Source-Framework für die Parallelverarbeitung, das di
 
 Wenn Sie einen Spark-Cluster in HDInsight erstellen, erstellen Sie damit Azure-Serverressourcen, für die Spark installiert und konfiguriert ist. Die Erstellung eines Spark-Clusters in HDInsight dauert etwa zehn Minuten. Speichern Sie die zu verarbeitenden Daten in Azure Blob Storage. Informationen zur Verwendung von Azure Blob Storage mit einem Cluster finden Sie unter [Verwenden von Azure Storage mit Azure HDInsight-Clustern](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 
-Das TDSP-Team von Microsoft hat zwei umfassende exemplarische Vorgehensweisen zur Erstellung von Data Science-Lösungen mit Azure HDInsight Spark-Clustern veröffentlicht: eine für Python und eine für Scala. Weitere Informationen zu **Spark-Clustern** in Azure HDInsight finden Sie in der [Einführung in Spark in HDInsight](../../hdinsight/hdinsight-apache-spark-overview.md). Informationen zum Erstellen einer Data Science-Lösung mit **Python** für einen Azure HDInsight Spark-Cluster finden Sie in der [Übersicht über Data Science mit Spark in Azure HDInsight](spark-overview.md). Informationen zum Erstellen einer Data Science-Lösung mit **Scala** für einen Azure HDInsight Spark-Cluster finden Sie unter [Data Science unter Verwendung von Scala und Spark in Azure](scala-walkthrough.md). 
+Das TDSP-Team von Microsoft hat zwei umfassende exemplarische Vorgehensweisen zur Erstellung von Data Science-Lösungen mit Azure HDInsight Spark-Clustern veröffentlicht: eine für Python und eine für Scala. Weitere Informationen zu **Spark-Clustern** in Azure HDInsight finden Sie in der [Einführung in Spark in HDInsight](../../hdinsight/spark/apache-spark-overview.md). Informationen zum Erstellen einer Data Science-Lösung mit **Python** für einen Azure HDInsight Spark-Cluster finden Sie in der [Übersicht über Data Science mit Spark in Azure HDInsight](spark-overview.md). Informationen zum Erstellen einer Data Science-Lösung mit **Scala** für einen Azure HDInsight Spark-Cluster finden Sie unter [Data Science unter Verwendung von Scala und Spark in Azure](scala-walkthrough.md). 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
@@ -86,7 +86,7 @@ Hive ermöglicht Ihnen die Strukturierung größtenteils unstrukturierter Daten.
 
 Datenspezialisten können mit Hive benutzerdefinierte Python-Funktionen in Hive-Abfragen ausführen, um Datensätze zu verarbeiten. Dadurch wird der Funktionsumfang von Hive-Abfragen in der Datenanalyse erheblich erweitert. Datenspezialisten können insbesondere skalierbare Features in Sprachen entwickeln, mit denen sie am besten vertraut sind: das SQL-ähnliche HiveQL und Python. 
 
-Weitere Informationen zu Azure HDInsight Hive-Clustern finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](../../hdinsight/hdinsight-use-hive.md). Informationen zum Erstellen einer umfassenden skalierbaren Data Science-Lösung mit Azure HDInsight Hive-Clustern finden Sie unter [Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern](hive-walkthrough.md).
+Weitere Informationen zu Azure HDInsight Hive-Clustern finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](../../hdinsight/hadoop/hdinsight-use-hive.md). Informationen zum Erstellen einer umfassenden skalierbaren Data Science-Lösung mit Azure HDInsight Hive-Clustern finden Sie unter [Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern](hive-walkthrough.md).
 
 
 ## <a name="azure-file-storage"></a>Azure File Storage 

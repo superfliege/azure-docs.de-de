@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/06/2017
+ms.date: 10/01/2017
 ms.author: maroche
-ms.openlocfilehash: 7259505b68202f3741e64e86555d2e3f968b8951
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2eab8ce96399c7d6da9b4afbccdfd8b836f0c9f3
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Neuerungen in Azure Data Catalog
 Updates für **Azure Data Catalog** werden in regelmäßigen Abständen veröffentlicht. Nicht jede Version umfasst neue Funktionen für Benutzer, da sich einige Versionen auf Back-End-Dienstfunktionen konzentrieren. Auf dieser Seite werden neue Funktionen für Benutzer aufgezeigt, die dem Dienst Azure Data Catalog hinzugefügt wurden.
@@ -239,7 +239,7 @@ September 2015 wurden Azure Data Catalog die folgenden Funktionen hinzugefügt:
 * Unterstützung für das Registrieren und Ermitteln von Azure SQL Data Warehouse-Objekten und -Datenbanken. Weitere Informationen zu Azure SQL Data Warehouse finden Sie unter [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 * Unterstützung für das Registrieren und Ermitteln von SQL Server Analysis Services-Modellen und SQL Server Reporting Services-Servern als Container. Azure Data Catalog erstellt beim Registrieren von SSAS- und SSRS-Objekten einen Eintrag für das SSAS-Modell und den SSRS-Server sowie für die Berichte und andere Objekte. Die Container können über das Azure Data Catalog-Portal ermittelt und mit Anmerkungen versehen werden. Benutzer können neben den Inhalten des Katalogs auch die Inhalte eines Modells oder Servers durchsuchen und filtern.
 * Unterstützung für das Registrieren und die Ermittlung von SQL Server Analysis Services-Objekten über HTTP/HTTPS. Benutzer können jetzt mithilfe einer URL (z.B. https://servername/olap/msmdpump.dll) anstelle eines Servernamens eine Verbindung mit SSAS-Servern herstellen und die Standardauthentifizierung und anonyme Verbindungen zusätzlich zur Windows-Authentifizierung verwenden. Weitere Informationen zu HTTP/HTTPS-Verbindungen mit SSAS finden Sie unter [Konfigurieren des HTTP-Zugriffs auf Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx).
-* Unterstützung für die Hive-Datenquellen auf HDInsight. Benutzer können jetzt Hive-Tabellen für Apache Hive in Hadoop in HDInsight-Datenquellen registrieren und ermitteln. Weitere Informationen zu Hive in HDInsight finden Sie im [HDInsight Documentation Center](../hdinsight/hdinsight-use-hive.md).
+* Unterstützung für die Hive-Datenquellen auf HDInsight. Benutzer können jetzt Hive-Tabellen für Apache Hive in Hadoop in HDInsight-Datenquellen registrieren und ermitteln. Weitere Informationen zu Hive in HDInsight finden Sie im [HDInsight Documentation Center](../hdinsight/hadoop/hdinsight-use-hive.md).
 * Unterstützung für das Registrieren und Ermitteln von Oracle-Datenbanken und HDFS-Clustern als Container Beim Registrieren von Oracle-Tabellen und -Sichten oder HDFS erstellt Azure Data Catalog einen Eintrag für die Datenbank sowie für die Tabellen und Sichten. Die Datenbank kann über das Azure Data Catalog-Portal ermittelt und mit Anmerkungen versehen werden. Benutzer können neben den Inhalten des Katalogs auch die Inhalte einer Datenbank oder eines Clusters durchsuchen und filtern.
 * Unterstützung für die manuelle Registrierung unbekannter Datenquellentypen Benutzer können über das Azure Data Catalog-Portal manuell Datenquelleninformationen eingeben, sodass Datenquellen, die nicht explizit vom Quellregistrierungstool unterstützt werden, mit Anmerkungen versehen und ermittelt werden können.
 * Unterstützung für das Registrieren und Ermitteln von SQL Server-Datenbanken als Container Beim Registrieren von SQL Server-Tabellen und -Sichten erstellt Azure Data Catalog einen Eintrag für die Datenbank, Tabellen und Sichten. Die Datenbank kann über das Azure Data Catalog-Portal ermittelt und mit Anmerkungen versehen werden. Benutzer können neben den Inhalten des Katalogs auch die Inhalte einer Datenbank durchsuchen und filtern.

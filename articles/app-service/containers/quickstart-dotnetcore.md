@@ -1,10 +1,10 @@
 ---
-title: Erstellen einer .NET Core-Web-App in einem Linux-Container in Azure | Microsoft-Dokumentation
-description: "Stellen Sie in nur wenigen Minuten Ihre erste .NET Core-App „Hallo Welt“ für Web-Apps für Container bereit."
+title: Erstellen einer .NET Core-Web-App und Bereitstellen dieser in App Service unter Linux | Microsoft-Dokumentation
+description: "Stellen Sie in nur wenigen Minuten Ihre erste .NET Core-App „Hallo Welt“ in App Service unter Linux bereit."
 keywords: Azure App Service, Web-App, DotNet, Core, Linux, OSS
 services: app-service
 documentationCenter: 
-authors: cephalin
+author: cephalin
 manager: syntaxc4
 editor: 
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
@@ -16,19 +16,19 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 47e7db5462ecf3a2211538b1f46ed0571980b15b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a8000cadd6f6d7204e1790df62443a7ac7598c9
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="create-a-net-core-web-app-in-a-linux-container-in-azure"></a>Erstellen einer .NET Core-Web-App in einem Linux-Container in Azure
+# <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>Erstellen einer .NET Core-Web-App in App Service unter Linux
 
-[Web-Apps für Container](app-service-linux-intro.md) bieten einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter dem Linux-Betriebssystem. In diesem Schnellstartartikel wird erläutert, wie eine [.NET Core](https://docs.microsoft.com/aspnet/core/)-App in Azure-Web-Apps für Container erstellt wird. Sie erstellen die Web-App mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) und stellen mit Git den .NET Core-Code für die Web-App bereit.
+[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter Linux-Betriebssystemen. In diesem Schnellstartartikel wird erläutert, wie Sie eine [.NET Core](https://docs.microsoft.com/aspnet/core/)-App in App Service unter Linux erstellen. Sie erstellen die Web-App mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) und stellen mit Git den .NET Core-Code für die Web-App bereit.
 
 ![In Azure ausgeführte Beispiel-App](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
-Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden. 
+Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,20 +39,20 @@ So führen Sie diesen Schnellstart durch:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-app-locally"></a>Lokales Erstellen der App ##
+## <a name="create-the-app-locally"></a>Lokales Erstellen der App
 
-Erstellen Sie in einem Terminalfenster auf Ihrem Computer ein Verzeichnis mit dem Namen `hellodotnetcore`, und wechseln Sie dorthin. 
+Erstellen Sie in einem Terminalfenster auf Ihrem Computer ein Verzeichnis mit dem Namen `hellodotnetcore`, und wechseln Sie dorthin.
 
 ```bash
 md hellodotnetcore
 cd hellodotnetcore
-``` 
+```
 
 Erstellen Sie eine neue .NET Core-Web-App.
 
 ```bash
 dotnet new web
-``` 
+```
 
 ## <a name="run-the-app-locally"></a>Lokales Ausführen der App
 
@@ -79,27 +79,23 @@ git commit -m "first commit"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)] 
+[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group.md)] 
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group.md)]
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)] 
+[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Erstellen einer Web-App
+## <a name="create-a-web-app-with-built-in-image"></a>Erstellen einer Web-App mit integriertem Image
 
-Erstellen Sie eine [Web-App](../app-service-web-overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp#create). Vergessen Sie nicht, `<app name>` durch einen eindeutigen App-Namen zu ersetzen.
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-no-h.md)]
 
-Die Runtime im folgenden Befehl ist auf `DOTNETCORE|1.1` festgelegt. Führen Sie zum Anzeigen aller unterstützten Runtimes den Befehl [az webapp list-runtimes](/cli/azure/webapp#list-runtimes) aus.
+Wechseln Sie zu Ihrer neu erstellten Web-App. Ersetzen Sie _&lt;App-Name>_ durch einen eindeutigen App-Namen.
 
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --runtime "DOTNETCORE|1.1" --deployment-local-git
+```bash
+http://<app name>.azurewebsites.net
 ```
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-result.md)] 
-
 ![Leere Web-App-Seite](media/quickstart-dotnetcore/dotnet-browse-created.png)
-
-Sie haben eine leere neue Web-App in einem Linux-Container mit aktivierter Git-Bereitstellung erstellt.
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -140,11 +136,11 @@ Navigieren Sie in Ihrem Webbrowser zu der bereitgestellten Anwendung.
 http://<app_name>.azurewebsites.net
 ```
 
-Der Node.js-Beispielcode wird in einer Azure App Service-Web-App ausgeführt.
+Der Node.js-Beispielcode wird in einer Web-App mit integriertem Image ausgeführt.
 
 ![In Azure ausgeführte Beispiel-App](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
-**Glückwunsch!** Sie haben Ihre erste Node.js-App für App Service bereitgestellt.
+**Glückwunsch!** Sie haben Ihre erste Node.js-App für App Service unter Linux bereitgestellt.
 
 ## <a name="update-and-redeploy-the-code"></a>Aktualisieren und erneutes Bereitstellen des Codes
 
@@ -184,4 +180,4 @@ Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App ange
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen einer .NET Core- und SQL-Datenbank-Web-App in Azure-Web-Apps für Container](tutorial-dotnetcore-sqldb-app.md)
+> [Erstellen einer .NET Core- und SQL-Datenbank-Web-App in Azure App Service unter Linux](tutorial-dotnetcore-sqldb-app.md)

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/29/2017
+ms.date: 10/31/2017
 ms.author: maquaran
-ms.openlocfilehash: 239b590a1e3a83fe0205dd8169697db745d7f75e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8c5a081105d37b8f1c78e90d9ccb8d945099b621
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="documentdb-net-change-feed-processor-sdk-download-and-release-notes"></a>DocumentDB .NET Change Feed Processor-SDK: Download und Anmerkungen zur Version
 > [!div class="op_single_selector"]
@@ -31,21 +31,20 @@ ms.lasthandoff: 10/11/2017
 > * [REST](https://docs.microsoft.com/rest/api/documentdb/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/documentdbresourceprovider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
 
-<table>
-
-<tr><td>**SDK-Download**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)</td></tr>
-
-<tr><td>**API-Dokumentation**</td><td>[Referenzdokumentation zum Ändern der Feedprozessorbibliotheks-API](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)</td></tr>
-
-<tr><td>**Erste Schritte**</td><td>[Erste Schritte mit dem DocumentDB .NET Change Feed Processor-SDK](change-feed.md)</td></tr>
-
-<tr><td>**Aktuelles unterstütztes Framework**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
-</table></br>
+|   |   |
+|---|---|
+|**SDK-Download**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
+|**API-Dokumentation**|[Referenzdokumentation zum Ändern der Feedprozessorbibliotheks-API](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
+|**Erste Schritte**|[Erste Schritte mit dem DocumentDB .NET Change Feed Processor-SDK](change-feed.md)|
+|**Aktuelles unterstütztes Framework**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
+* Unterstützung für .NET Standard 2.0 wurde hinzugefügt. Das Paket unterstützt nun die Frameworkmoniker `netstandard2.0` und `net451`.
+* Kompatibel mit [DocumentDB .NET SDK](documentdb-sdk-dotnet.md), Version 1.17.0 und höher
+* Kompatibel mit [DocumentDB .NET Core SDK](documentdb-sdk-dotnet-core.md), Version 1.5.1 und höher
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 * Ein Problem bei der Kalkulierung der geschätzten verbleibenden Arbeit wurde behoben, wenn der Änderungsfeed leer war oder keine Arbeit ausstand.
@@ -70,6 +69,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.2.0](#1.2.0) |31. Oktober 2017 |--- |
 | [1.1.1](#1.1.1) |29. August 2017 |--- |
 | [1.1.0](#1.1.0) |13. August 2017 |--- |
 | [1.0.0](#1.0.0) |7. Juli 2017 |--- |

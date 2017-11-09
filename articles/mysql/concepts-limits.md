@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/8/2017
-ms.openlocfilehash: dc5ad012398b7d07886cd22c20975e61f820d7e0
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.date: 10/26/2017
+ms.openlocfilehash: b3fba38cacf5b5abcdea7f0def8c1d39e653f0a8
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="limitations-in-azure-database-for-mysql-preview"></a>Beschränkungen in Azure-Datenbank für MySQL (Vorschau)
 Der Azure-Datenbank für MySQL-Dienst ist in der öffentlichen Vorschau verfügbar. In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben. Sehen Sie sich auch die [allgemeinen Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) an, die für das MySQL-Datenbankmodul gelten.
@@ -30,7 +30,7 @@ In jedem Diensttarif ist eine maximale Anzahl von Verbindungen, Computeeinheiten
 | 100 Compute-Einheiten (Basic)    | 100 Verbindungen   |
 | 100 Compute-Einheiten (Standard) | 200 Verbindungen   |
 | 200 Compute-Einheiten (Standard) | 400 Verbindungen   |
-| 400 Compute-Einheiten (Standard) | 400 Verbindungen   |
+| 400 Compute-Einheiten (Standard) | 800 Verbindungen   |
 | 800 Compute-Einheiten (Standard) | 1.600 Verbindungen  |
 | **Max. Anzahl von Compute-Einheiten**      |                   |
 | Basic-Dienstebene         | 100 Compute-Einheiten |

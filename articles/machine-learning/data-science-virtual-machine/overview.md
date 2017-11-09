@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 10/27/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 8398af10d4826373e16420be3309c6ae8246ca4b
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: a8b9efffd6373ee33026e915b0a14e15d41295b3
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Einführung in Azure Data Science Virtual Machine für Linux und Windows
 
@@ -46,30 +46,30 @@ Unternehmens-Trainer und Lehrer, die Data Science Klassen unterrichten, stellen 
 Data Science Hackathons/Wettbewerbe oder umfangreiche Datenmodelle und Auswertungen erfordern skalierte Hardwarekapazität, in der Regel für kurze Zeit. Die Data Science-VM kann dazu beitragen, die Data Science-Umgebung bei Bedarf schnell auf skalierten Servern zu replizieren, auf denen Experimente ausgeführt werden können, die leistungsstarke Computing-Ressourcen erfordern.
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Kurzfristige Experimente und Auswertungen
-Die Data Science-VM kann zur Auswertung oder zum Lernen von Tools wie Microsoft R Server, SQL Server, Visual Studio Tools, Jupyter, vertieftes Lernen/ML-Toolkits und neue Tools, die in der Community beliebt sind, mit minimalem Einrichtaufwand verwendet werden. Da die Data Science-VM schnell eingerichtet werden kann, kann sie in anderen kurzfristigen Szenarios wie z.B. der Replikation veröffentlichter Experimente, Ausführen von Demos, dem Folgen exemplarischer Vorgehensweisen in Online-Sitzungen oder für Konferenz-Demos verwendet werden.
+Die Data Science-VM kann zur Auswertung oder zum Lernen von Tools wie Microsoft ML Server, SQL Server, Visual Studio-Tools, Jupyter, Deep Learning-/ML-Toolkits und neue Tools, die in der Community beliebt sind, mit minimalem Einrichtungsaufwand verwendet werden. Da die Data Science-VM schnell eingerichtet werden kann, kann sie in anderen kurzfristigen Szenarios wie z.B. der Replikation veröffentlichter Experimente, Ausführen von Demos, dem Folgen exemplarischer Vorgehensweisen in Online-Sitzungen oder für Konferenz-Demos verwendet werden.
 
 ### <a name="deep-learning"></a>Deep Learning
 Der virtuelle Computer für Data Science kann zum Modelltraining mit Deep Learning-Algorithmen auf Basis von GPU-Hardware (Grafikprozessoren) verwendet werden. Durch die Skalierungsfunktionen für VMs der Azure-Cloud hilft die DSVM Ihnen, GPU-basierte Hardware in der Cloud nach Bedarf einsetzen zu können. Sie können zu einer GPU-basierten VM wechseln, wenn Sie große Modelle trainieren oder schnelle Berechnungen benötigen, während Sie den gleichen Betriebssystem-Datenträger beibehalten.  Die Windows Server 2016-Edition von DSVM enthält vorinstallierte GPU-Treiber und -Frameworks und eine GPU-Version der Deep Learning-Algorithmen. Unter Linux ist Deep Learning für GPUs nur in der Edition [Data Science Virtual Machine für Linux (Ubuntu)](http://aka.ms/dsvm/ubuntu) aktiviert. Sie können die Ubuntu-Edition oder die Windows Server 2016-Editionen der Data Science-VM auf virtuellen Azure-Computern ohne GPU-Aktivierung bereitstellen. In diesem Fall werden jedoch die Deep Learning-Frameworks auf den CPU-Modus zurückgesetzt. Wir haben bereits in der Vergangenheit für Windows Server 2012 ein [Deep Learning-Toolkit](http://aka.ms/dsvm/deeplearning) veröffentlicht. Nun wird allerdings empfohlen, dass Sie Windows Server 2016 für Windows-basierte Deep Learning-Workloads verwenden. Die DSVM-Edition für Linux auf CentOS-Basis enthält nur die CPU-Builds einiger Deep Learning-Tools (Microsoft Cognitive Toolkit, Tensorflow, MXNet). Diese sind jedoch nicht mit dem GPU-Treiber und den Frameworks vorinstalliert. 
 
 ## <a name="whats-included-in-the-data-science-vm"></a>Was ist in der Data Science-VM enthalten?
-Der virtuelle Computer für Data Science hat viele beliebte Data Science- und Deep Learning-Tools bereits installiert und konfiguriert. Darüber hinaus enthält er Tools, die die Arbeit mit verschiedenen Azure-Daten und Analyse-Produkten erleichtern. Sie können Vorhersagemodelle für umfangreiche Datasets mithilfe von Microsoft R Server oder SQL Server 2016 untersuchen und erstellen. Eine Reihe von anderen Tools der Open-Source-Community und von Microsoft sind ebenfalls enthalten, sowie Beispiel-Code und Notebooks. Die folgende Tabelle enthält eine Aufzählung und einen Vergleich der wichtigsten Komponenten Windows- und Linux-Editionen des virtuellen Computers für Data Science.
+Der virtuelle Computer für Data Science hat viele beliebte Data Science- und Deep Learning-Tools bereits installiert und konfiguriert. Darüber hinaus enthält er Tools, die die Arbeit mit verschiedenen Azure-Daten und Analyse-Produkten erleichtern. Sie können Vorhersagemodelle für umfangreiche Datasets mithilfe von Microsoft ML Server (R, Python) oder SQL Server 2017 untersuchen und erstellen. Eine Reihe von anderen Tools der Open-Source-Community und von Microsoft sind ebenfalls enthalten, sowie Beispiel-Code und Notebooks. Die folgende Tabelle enthält eine Aufzählung und einen Vergleich der wichtigsten Komponenten Windows- und Linux-Editionen des virtuellen Computers für Data Science.
 
 
 | **Tool**                                                           | **Windows-Edition** | **Linux-Edition** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | [Microsoft R Open](https://mran.microsoft.com/open/) mit verbreiteten vorinstallierten Paketen   |J                      | J             |
-| [Microsoft R Server](https://msdn.microsoft.com/microsoft-r/) Developer Edition enthält: <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-getting-started) Paralleles und verteiltes Hochleistungs-R-Framework<br />  &nbsp;&nbsp;&nbsp;&nbsp;*   [MicrosoftML](https://msdn.microsoft.com/microsoft-r/microsoftml-introduction) – neue moderne ML-Algorithmen von Microsoft <br />  &nbsp;&nbsp;&nbsp;&nbsp;*   [Operationalisierung von R](https://msdn.microsoft.com/microsoft-r/operationalize/about)                                            |J                      | J <br/> (MicrosoftML noch nicht verfügbar)|
+| [Microsoft ML Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) Developer Edition enthält: <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler): paralleles und verteiltes Hochleistungsframework (R und Python)<br />  &nbsp;&nbsp;&nbsp;&nbsp;*   [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package) – neue moderne ML-Algorithmen von Microsoft <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [R- und Python-Operationalisierung](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |J                      | J |
 | [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) Pro-Plus mit gemeinsamer Aktivierung: Excel, Word und PowerPoint   |J                      |N              |
 | [Anaconda Python](https://www.continuum.io/) 2.7 und 3.5 mit beliebten vorinstallierten Paketen    |J                      |J              |
 | [JuliaPro](https://juliacomputing.com/products/juliapro.html) mit beliebten vorinstallierten Paketen                         |J                      |J              |
-| Relationale Datenbanken                                                            | [SQL Server 2016 SP1](https://www.microsoft.com/sql-server/sql-server-2016) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (nur CentOS) |
+| Relationale Datenbanken                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (nur CentOS) |
 | Datenbanktools                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp, sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * ODBC/JDBC-Treiber| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/) (Abfrage-Tool), <br /> * bcp, sqlcmd <br /> * ODBC/JDBC-Treiber|
-| Skalierbare In-Database-Analyse mit SQL Server R Services | J     |N              |
+| Skalierbare In-Database-Analyse mit SQL Server-ML-Diensten (R, Python) | J     |N              |
 | **[Jupyter-Notebook-Server](http://jupyter.org/) mit folgenden Kernels,**                                  | J     | J |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* R | J | J |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Python 2.7 &amp; 3.5 | J | J |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Julia | J | J |
-|     &nbsp;&nbsp;&nbsp;&nbsp;* PySpark | N | J |
+|     &nbsp;&nbsp;&nbsp;&nbsp;* PySpark | J | J |
 |     &nbsp;&nbsp;&nbsp;&nbsp;*   [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) | N | Y (nur Ubuntu) |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* SparkR     | N | J |
 | JupyterHub (Notebook-Server für mehrere Benutzer)| N | J |

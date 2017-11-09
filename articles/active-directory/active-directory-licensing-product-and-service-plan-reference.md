@@ -1,6 +1,6 @@
 ---
-title: "Referenz zu Produkten und Serviceplänen in Azure Active Directory | Microsoft-Dokumentation"
-description: "Referenz zu Produkten und Serviceplänen"
+title: "Produktnamen und Serviceplanbezeichner für die Lizenzierung in Azure Active Directory | Microsoft-Dokumentation"
+description: Bezeichnerzuordnung zum Verwalten der Azure AD-Lizenzierung im Azure-Portal, im Office 365-Portal, in PowerShell oder in Microsoft Graph
 services: active-directory
 keywords: "Servicepläne für die Azure Active Directory-Lizenzierung"
 documentationcenter: 
@@ -13,33 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/11/2017
+ms.date: 10/26/2017
 ms.author: piotrci
-ms.openlocfilehash: e796c03f4477b431907d8b5fbd6065239bb1d40e
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: b2c540c69a95f0912a71c25ddc70061fa8043aa4
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="reference-for-products-and-service-plans-in-azure-active-directory"></a>Referenz zu Produkten und Serviceplänen in Azure Active Directory
+# <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Produktnamen und Serviceplanbezeichner für die Lizenzierung
 
-Dieser Artikel enthält Referenzinformationen, die sich möglicherweise als hilfreich erweisen, wenn Sie sich mit der Lizenzverwaltung für Microsoft Online Services befassen.
+Bei der Verwaltung von Lizenzen im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) oder im Office 365-Portal werden Ihnen Produktnamen wie *Office 365 Enterprise E3* angezeigt. Wenn Sie PowerShell-Cmdlets (PowerShell 1.0) verwenden, wird dasselbe Produkt über den konkreten, jedoch weniger benutzerfreundlichen Namen *ENTERPRISEPACK* identifiziert. Wenn Sie PowerShell-Cmdlets (PowerShell 2.0) oder Microsoft Graph verwenden, wird dasselbe Produkt über den GUID-Wert *6fd2c87f-b296-42f0-b197-1e91e994b900* identifiziert. In der folgenden Tabelle sind die am häufigsten verwendeten Microsoft-Onlinedienstprodukte sowie ihre verschiedenen ID-Werte aufgeführt:
 
-## <a name="product-names-and-identifiers-used-in-azure-ad"></a>In Azure AD verwendete Produktnamen und Bezeichner
-
-Bei der Verwaltung von Lizenzen in [Azure](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) oder Office-Portalen werden benutzerfreundliche Produktnamen angezeigt, z. B. *Office 365 Enterprise E3*. Wenn Sie jedoch Cmdlets von PowerShell, Version 1.0, verwenden, wird dasselbe Produkt über einen weniger benutzerfreundlichen Namen identifiziert: *ENTERPRISEPACK*. Wenn Sie PowerShell 2.0 oder Microsoft Graph verwenden, wird dasselbe Produkt über einen GUID-Wert identifiziert: *6fd2c87f-b296-42f0-b197-1e91e994b900*. Dasselbe gilt für im Produkt enthaltene Servicepläne.
-
-In der folgenden Tabelle sind die am häufigsten verwendeten Produkte von Microsoft Online Services sowie ihre verschiedenen ID-Werte aufgeführt.
-
-- **Produktname**: Diese Werte werden in Verwaltungsportalen angezeigt.
-- **Zeichenfolgen-ID**: Diese werden von Cmdlets von PowerShell 1.0 verwendet, wenn Vorgänge für Lizenzen durchgeführt werden.
-- **GUID-ID**: Diese werden von Azure AD Graph und Microsoft Graph verwendet.
-- **Enthaltene Servicepläne**: Eine Liste der im Produkt enthaltenen Servicepläne. Die Zeichenfolgen-ID und GUID-ID werden aufgeführt.
+- **Produktname**: wird in Verwaltungsportalen verwendet
+- **Zeichenfolgen-ID**: wird von PowerShell-Cmdlets (PowerShell 1.0) verwendet, wenn Vorgänge für Lizenzen durchgeführt werden
+- **GUID-ID**: GUID, die von Azure AD Graph und Microsoft Graph verwendet wird
+- **Enthaltene Servicepläne**: eine Liste der im Produkt enthaltenen Servicepläne, die der Zeichenfolgen-ID und der GUID entsprechen
 
 >[!NOTE]
->Diese Informationen sind zum aktuellen Zeitpunkt, dem 11. Oktober 2017, zutreffend. Die Tabelle enthält eine Auswahl der am häufigsten verwendeten Produkte.
+>Diese Informationen sind zum aktuellen Zeitpunkt, dem 11. Oktober 2017, zutreffend.
 
-| Produktname | Zeichenfolgen-ID | GUID-ID| Enthaltene Servicepläne |
+| Produktname | Zeichenfolgen-ID | GUID | Enthaltene Servicepläne |
 | --- | --- | --- |--- |
 | AZURE ACTIVE DIRECTORY BASIC  | AAD_BASIC | 2b9c8e7c-319c-43a2-a2a0-48c5c6161de7  | AAD_BASIC (c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe)
 | AZURE ACTIVE DIRECTORY PREMIUM P1 | AAD_PREMIUM   | 078d2b04-f1bd-4111-bbd4-b4b1b354cef4  | AAD_PREMIUM (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>MFA_PREMIUM (8a256a2b-b617-496d-b51b-e76466e88db0)
@@ -103,7 +97,7 @@ In der folgenden Tabelle sind die am häufigsten verwendeten Produkte von Micros
 
 ## <a name="service-plans-that-cannot-be-assigned-at-the-same-time"></a>Servicepläne, die nicht zur selben Zeit zugewiesen werden können
 
-Einige Produkte enthalten Servicepläne, die sich gegenseitig ausschließen. Sie können nicht gleichzeitig zu demselben Benutzer zugewiesen werden. Wenn Ihr Mandant z. B. über *Office 365 Enterprise E1* und *Office 365 Enterprise E3* verfügt und Sie versuchen, beide Lizenzen demselben Benutzer zuzuweisen, führt der Vorgang zu einem Fehler. Der Grund hierfür ist, dass das E3-Produkt die folgenden Servicepläne enthält, die mit den jeweiligen E1-Entsprechungen in Konflikt stehen:
+Einige Produkte enthalten Servicepläne, die nicht gleichzeitig demselben Benutzer zugewiesen werden können. Wenn Ihr Mandant z. B. über *Office 365 Enterprise E1* und *Office 365 Enterprise E3* verfügt und Sie versuchen, beide Lizenzen demselben Benutzer zuzuweisen, führt der Vorgang zu einem Fehler. Der Grund hierfür ist, dass das E3-Produkt die folgenden Servicepläne enthält, die mit den jeweiligen E1-Entsprechungen in Konflikt stehen:
 
 -   SharePoint Online (Plan 2) steht in Konflikt mit SharePoint Online (Plan 1).
 -   Exchange Online (Plan 2) steht in Konflikt mit Exchange Online (Plan 1).
@@ -121,7 +115,7 @@ In diesem Abschnitt sind die am häufigsten verwendeten Servicepläne, die sich 
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
-| Serviceplanname | GUID-ID |
+| Serviceplanname | GUID |
 | --- | --- |
 | CRMIUR    | c42a56bd-9e70-4ace-be17-dc8eeae369d7 |
 | CRMPLAN1  | 119cf168-b6cf-41fb-b82e-7fee7bae5814 |
@@ -137,7 +131,7 @@ Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
-| Serviceplanname | GUID-ID |
+| Serviceplanname | GUID |
 | --- | --- |
 | EXCHANGE_B_STANDARD   | 90927877-dcff-4af6-b346-2332c0b15bb7 |
 | EXCHANGE_L_STANDARD   | d42bdbd6-c335-4231-ab3d-c8f348d5aff5 |
@@ -152,7 +146,7 @@ Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
-| Serviceplanname | GUID-ID |
+| Serviceplanname | GUID |
 | --- | --- |
 | INTUNE_A  | c1ec4a95-1f05-45b3-a911-aa3fa01094f5 |
 | INTUNE_A_VL   | 3e170737-c728-4eae-bbb9-3f3360f7184c |
@@ -162,7 +156,7 @@ Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
-| Serviceplanname | GUID-ID |
+| Serviceplanname | GUID |
 | --- | --- |
 | ONEDRIVEENTERPRISE    | afcafa6a-d966-4462-918c-ec0b4e0fe642 |
 | SHAREPOINT_S_DEVELOPER    | a361d6e2-509e-4e25-a8ad-950060064ef4 |
@@ -178,7 +172,7 @@ Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
-| Serviceplanname | GUID-ID |
+| Serviceplanname | GUID |
 | --- | --- |
 | MCOIMP    | afc06cb0-b4f4-4473-8286-d644f70d8faf |
 | MCOSTANDARD_MIDMARKET | b2669e95-76ef-4e7e-a367-002f60a39f3e |
@@ -187,7 +181,7 @@ Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
-| Serviceplanname | GUID-ID |
+| Serviceplanname | GUID |
 | --- | --- |
 | MCOPSTN1  | 4ed3ff63-69d7-4fb7-b984-5aec7f605ca8 |
 | MCOPSTN2  | 5a10155d-f5c1-411a-a8ec-e99aae125390 |
@@ -196,7 +190,7 @@ Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
-| Serviceplanname | GUID-ID |
+| Serviceplanname | GUID |
 | --- | --- |
 | YAMMER_ENTERPRISE | 7547a3fe-08ee-4ccb-b430-5077c5041653 |
 | YAMMER_EDU    | 2078e8df-cff6-4290-98cb-5408261a760a |

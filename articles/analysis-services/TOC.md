@@ -20,6 +20,7 @@
 ## [Installieren und Konfigurieren eines lokalen Datengateways](analysis-services-gateway-install.md)
 ## [Abrufen von Clientbibliotheken](analysis-services-data-providers.md)
 ## [Sichern und Wiederherstellen](analysis-services-backup.md)
+## [Konfigurieren der horizontalen Skalierung von Abfragereplikaten](analysis-services-scale-out.md)
 ## [Herstellen einer Verbindung mit Excel](analysis-services-connect-excel.md)
 ## [Herstellen einer Verbindung mit Power BI](analysis-services-connect-pbi.md)
 ## [Erstellen einer ODC-Datei](analysis-services-odc.md)

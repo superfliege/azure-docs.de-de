@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 741cce6f2c81efed1e4bd0547fcb46a231815263
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e4dbf1fa32f916a206e4f8d796218ab809835ad
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Ausführen von Hadoop MapReduce-Beispielen in Windows-basiertem HDInsight
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -37,14 +37,14 @@ Wir haben verschiedene Beispiele bereitgestellt, um Ihnen die ersten Schritte be
 
 Im Internet finden Sie umfangreiche Dokumentationen zu Hadoop-verwandten Technologien, wie z. B. javabasierte MapReduce-Programmierung und Streaming, sowie Dokumentationen zu Cmdlets, die in Windwos PowerShell-Skripts verwendet werden. Weitere Informationen zu diesen Ressourcen finden Sie unter:
 
-* [Entwickeln von Java MapReduce-Programmen für Hadoop in HDInsight](hdinsight-develop-deploy-java-mapreduce-linux.md)
-* [Übermitteln von Hadoop-Aufträgen in HDInsight](hdinsight-submit-hadoop-jobs-programmatically.md)
+* [Entwickeln von Java MapReduce-Programmen für Hadoop in HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Übermitteln von Hadoop-Aufträgen in HDInsight](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Einführung in Azure HDInsight][hdinsight-introduction]
 
 Mittlerweile entscheiden sich viele Benutzer lieber für Hive und Pig als für MapReduce.  Weitere Informationen finden Sie unter:
 
-* [Verwenden von Hive in HDInsight](hdinsight-use-hive.md)
-* [Verwenden von Pig in HDInsight](hdinsight-use-pig.md)
+* [Verwenden von Hive in HDInsight](hadoop/hdinsight-use-hive.md)
+* [Verwenden von Pig in HDInsight](hadoop/hdinsight-use-pig.md)
 
 **Voraussetzungen**:
 
@@ -62,7 +62,7 @@ Um ein MapReduce-Projekt zu übermitteln, erstellen Sie zunächst eine MapReduce
 
 Den Quellcode finden Sie in [Anhang A](#apendix-a---the-word-count-MapReduce-program-in-java).
 
-Anweisungen zum Entwickeln eines Java MapReduce-Programms finden Sie unter [Entwickeln von Java MapReduce-Programmen für Hadoop in HDInsight](hdinsight-develop-deploy-java-mapreduce-linux.md)
+Anweisungen zum Entwickeln eines Java MapReduce-Programms finden Sie unter [Entwickeln von Java MapReduce-Programmen für Hadoop in HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
 **So übermitteln Sie einen MapReduce-Auftrag zur Wortzählung**
 
@@ -127,7 +127,7 @@ Anweisungen zum Entwickeln eines Java MapReduce-Programms finden Sie unter [Entw
 Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie Map- und Reduce-Funktionen in anderen Sprache als Java schreiben können.
 
 > [!NOTE]
-> Die Schritte in diesem Lernprogramm gelten nur für Windows-basierte HDInsight-Cluster. Ein Beispiel für das Streaming bei Linux-basierten HDInsight-Clustern finden Sie unter [Entwickeln von Python-Streamingprogrammen für HDInsight](hdinsight-hadoop-streaming-python.md).
+> Die Schritte in diesem Lernprogramm gelten nur für Windows-basierte HDInsight-Cluster. Ein Beispiel für das Streaming bei Linux-basierten HDInsight-Clustern finden Sie unter [Entwickeln von Python-Streamingprogrammen für HDInsight](hadoop/apache-hadoop-streaming-python.md).
 
 In diesem Beispiel sind sowohl Mapper als auch Reducer ausführbare Dateien, die die Eingabe (zeilenweise) von [stdin][stdin-stdout-stderr] lesen und die Ausgabe über [stdout][stdin-stdout-stderr] ausgeben. Das Programm zählt alle Wörter im Text.
 
@@ -986,12 +986,12 @@ public class TeraSort extends Configured implements Tool {
 
 [hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn479185.aspx
 
-[hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
-[hdinsight-introduction]: hdinsight-hadoop-introduction.md
+[hdinsight-submit-jobs]: hadoop/submit-apache-hadoop-jobs-programmatically.md
+[hdinsight-introduction]:hadoop/apache-hadoop-introduction.md
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
-[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
+[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 
 [hdinsight-samples]: hdinsight-run-samples.md
 [hdinsight-sample-10gb-graysort]: #hdinsight-sample-10gb-graysort
@@ -999,8 +999,8 @@ public class TeraSort extends Configured implements Tool {
 [hdinsight-sample-pi-estimator]: #hdinsight-sample-pi-estimator
 [hdinsight-sample-wordcount]: #hdinsight-sample-wordcount
 
-[hdinsight-use-hive]: hdinsight-use-hive.md
-[hdinsight-use-pig]: hdinsight-use-pig.md
+[hdinsight-use-hive]: hadoop/hdinsight-use-hive.md
+[hdinsight-use-pig]: hadoop/hdinsight-use-pig.md
 
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline

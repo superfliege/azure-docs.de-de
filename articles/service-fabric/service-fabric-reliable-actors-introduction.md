@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: e89be04a0d6fe90a89e293e67d42f0204eb7000a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 640e051a909b1b9457b20cbd507b418342297c6e
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Einführung in Service Fabric Reliable Actors
 Reliable Actors ist ein Service Fabric-Anwendungsframework, das auf dem Muster [Virtueller Akteur](http://research.microsoft.com/en-us/projects/orleans/) basiert. Die Reliable Actors-API bietet ein Singlethread-Programmiermodell, das auf der Skalierbarkeit und Zuverlässigkeit aufbaut, die Service Fabric gewährleistet.
@@ -143,7 +143,7 @@ Die Actors-Laufzeit lässt standardmäßig Eintrittsinvarianz zu. Dies bedeutet:
 Die Actors-Laufzeit bietet diese Parallelitätsgarantien in Situationen, in denen sie den Aufruf dieser Methoden steuert. Beispielsweise bietet sie diese Garantien für die Methodenaufrufe, die als Antwort auf eine Clientanforderung erfolgen, sowie für Timer- und Erinnerungsrückrufe. Wenn jedoch der Actor-Code diese Methoden außerhalb der von der Actors-Laufzeit bereitgestellten Mechanismen direkt aufruft, kann die Laufzeit keine Parallelitätsgarantien bieten. Wenn z. B. die Methode im Kontext eines Tasks aufgerufen wird, der nicht mit dem von den Actor-Methoden zurückgegebenen Task verknüpft ist, kann die Laufzeitumgebung keine Parallelitätsgarantien bieten. Auch wenn die Methode von einem Thread aufgerufen wird, den der Actor selbst erstellt, kann die Laufzeit keine Parallelitätsgarantien bieten. Zum Durchführen von Hintergrundoperationen sollten Akteure daher [Actor-Timer oder Actor-Erinnerungen](service-fabric-reliable-actors-timers-reminders.md) verwenden, bei denen die Turn-basierte Parallelität berücksichtigt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Beginnen Sie, indem Sie Ihren ersten Reliable Actors-Dienst erstellen:
+Beginnen Sie, indem Sie Ihren ersten Reliable Actors-Dienst erstellen:
    * [Erste Schritte mit Reliable Actors in .NET](service-fabric-reliable-actors-get-started.md)
    * [Erste Schritte mit Reliable Actors in Java](service-fabric-reliable-actors-get-started-java.md)
 

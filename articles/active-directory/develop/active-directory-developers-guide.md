@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: dce813b885d492343428428056a2e8aada27b461
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1baf98616eb48bd3ae45b78ab1ac31e711fa655d
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory für Entwickler
 Azure Active Directory ist ein Cloudidentitätsdienst, mit dem Entwickler die sichere Anmeldung für alle Benutzer durchführen können, die über ein Geschäfts-, Schul- oder Unikonto von Microsoft verfügen.  Hier wird gezeigt, wie Sie Ihrer Anwendung die Azure AD-Unterstützung hinzufügen, indem Sie branchenübliche Authentifizierungsprotokolle, OAuth und OpenID Connect verwenden.
@@ -59,16 +59,9 @@ Diese Artikel enthalten ausführliche Informationen zu APIs, Protokollmeldungen 
 | [Glossar](active-directory-dev-glossary.md)                                      | Begriffe und Definitionen von Wörtern, die in dieser Dokumentation verwendet werden |
 | [Weiteres Referenzmaterial...](active-directory-developers-guide-index.md#reference)|     |
 
-## <a name="help--support"></a>Hilfe und Support
-Hier sind die besten Hilferessourcen für die Entwicklung mit Azure Active Directory angegeben.
-
-|  |  
-|---|
-|[Tags `azure-active-directory` und `adal` von Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+or+adal)      |
-|[Feedback zu Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences)|
-| [Testen Sie Microsoft Dev Chat (für begrenzte Zeit kostenlos)](http://aka.ms/devchat) |
-
-<br />
 
 > [!NOTE]
 > Wenn Sie die Anmeldung für persönliche Microsoft-Konten durchführen möchten, kann es ratsam sein, den [Azure AD v2.0-Endpunkt](active-directory-appmodel-v2-overview.md) zu verwenden.  Der Azure AD v2.0-Endpunkt wird für die Zusammenführung von persönlichen Microsoft-Konten und Microsoft-Geschäftskonten (aus Azure AD) in einem gemeinsamen Authentifizierungssystem genutzt.
+
+
+[!INCLUDE  [Help and Support Options](../../../includes/active-directory-develop-help-support-include.md)]

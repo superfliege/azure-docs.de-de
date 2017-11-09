@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: alexwe
-ms.openlocfilehash: 65a149b0d291bc650e0937c7ef3f90600f54c669
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 8ff991ffb05bb92f047cc8dfc40e80b704379898
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen – öffentliche Vorschau
 
@@ -160,7 +160,10 @@ Unabhängig davon, ob vertrauenswürdige IPs aktiviert sind, ist die Überprüfu
 5. Wählen Sie unter „Multi-Factor Authentication“ die Option **Diensteinstellungen verwalten**.
 6. Auf der Seite „Diensteinstellungen“ haben Sie unter „Vertrauenswürdige IPs“ zwei Optionen:
    
-   * **Für Anforderungen von Partnerbenutzern, die aus meinem Intranet stammen**: Aktivieren Sie das Kontrollkästchen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die Überprüfung in zwei Schritten mithilfe eines von AD FS ausgestellten Anspruchs.
+   * **Für Anforderungen von Partnerbenutzern, die aus meinem Intranet stammen**: Aktivieren Sie das Kontrollkästchen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die Überprüfung in zwei Schritten mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Sie sollten in AD FS die folgende Regel erstellen, wenn sie noch nicht vorhanden ist: „c:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);“
+
+
+
    * **Für Anforderungen aus einem bestimmten Bereich öffentlicher IPs**: Geben Sie mithilfe der CIDR-Notation die IP-Adressen in das Textfeld ein. Beispiel: xxx.xxx.xxx.0/24 für IP-Adressen im Bereich xxx.xxx.xxx. 1 – xxx.xxx.xxx. 254 oder xxx.xxx.xxx.xxx/32 für eine einzelne IP-Adresse. Sie können bis zu 50 IP-Adressbereiche eingeben. Benutzer, die sich über diese IP-Adressen anmelden, umgehen die Überprüfung in zwei Schritten.
 7. Klicken Sie auf **Speichern**.
 8. Sobald die Updates angewendet wurden, klicken Sie auf **Schließen**.

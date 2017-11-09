@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 10/26/2017
 ms.author: twooley
-ms.openlocfilehash: 6b54bb616accb926af9364865bf4108fe0aa3bc8
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: d91a23ae4eb5aee14d3d2fef74467e7f33c458cc
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="azure-stack-1710-update-build-201710201"></a>Azure Stack 1710 Update (Build 20171020.1)
+# <a name="azure-stack-1710-update-build-201710201"></a>Azure Stack Update 1710 (Build 20171020.1)
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
@@ -55,9 +55,12 @@ Dieses Update enthält die folgenden Qualitätsverbesserungen und Fehlerbehebung
 
 Dieser Abschnitt enthält bekannte Probleme, die bei der Installation von Update 1710 auftreten können.
 
+> [!IMPORTANT]
+> Wenn das Update fehlschlägt, müssen Sie beim erneuten Durchführen des Updates das Cmdlet `Resume-AzureStackUpdate` vom privilegierten Endpunkt verwenden. Führen Sie das Update nicht über das Administratorportal aus. (Dabei handelt es sich um ein bekanntes Problem dieses Releases.) Weitere Informationen finden Sie unter [Überwachen von Änderungen in Azure Stack mithilfe des privilegierten Endpunkts](azure-stack-monitor-update.md).
+
 | Symptom  | Ursache  | Lösung |
 |---------|---------|---------|
-|Beim Durchführen eines Updates kann im Schritt „Storage Hosts Restart Storage Node“ des Plans mit den Updateaktionen ein Fehler der folgenden Art auftreten:<br><br>**{"name":"Restart Storage Hosts","description":"Restart Storage Hosts.","errorMessage":"Type 'Restart' of Role 'BareMetal' raised an exception:\n\nThe computer HostName-05 is skipped. Fail to retrieve its LastBootUpTime via the WMI service with the following error message: The RPC server is unavailable. (Exception from HRESULT: 0x800706BA).\nat Restart-Host** | Die Ursache dieses Problems ist ein potenzieller Fehler in einigen Konfigurationen. | 1. Melden Sie sich an der BMC-Weboberfläche (Baseboard Management Controller, Baseboard-Verwaltungscontroller) an, und starten Sie den in der Fehlermeldung angegebenen Host neu.<br><br>2. Fahren Sie mit dem Update fort. |
+|Beim Durchführen eines Updates kann im Schritt „Storage Hosts Restart Storage Node“ des Plans mit den Updateaktionen ein Fehler der folgenden Art auftreten:<br><br>**{"name":"Restart Storage Hosts","description":"Restart Storage Hosts.","errorMessage":"Type 'Restart' of Role 'BareMetal' raised an exception:\n\nThe computer HostName-05 is skipped. Fail to retrieve its LastBootUpTime via the WMI service with the following error message: The RPC server is unavailable. (Exception from HRESULT: 0x800706BA).\nat Restart-Host** | Die Ursache dieses Problems ist ein potenzieller Fehler in einigen Konfigurationen. | 1. Melden Sie sich an der BMC-Weboberfläche (Baseboard Management Controller, Baseboard-Verwaltungscontroller) an, und starten Sie den in der Fehlermeldung angegebenen Host neu.<br><br>2. Führen Sie das Update erneut über den privilegierten Endpunkt durch. |
 | Beim Durchführen eines Updates scheint der Updateprozess zu hängen und wird nach dem Schritt „Step: Running step 2.4 - Install update“ des Plans mit den Updateaktionen nicht fortgesetzt.<br><br>Auf diesen Schritt folgt dann eine Reihe von Kopierprozessen für NUPKG-Dateien auf die Dateifreigaben der internen Infrastruktur. Beispiel:<br><br>**Copying 1 files from content\PerfCollector\VirtualMachines to \VirtualMachineName-ERCS03\C$\TraceCollectorUpdate\PerfCounterConfiguration**  | Das Problem wird verursacht, wenn zu viele Protokolldateien auf einem virtuellen Computer der Infrastruktur vorhanden sind und ein Problem mit dem SOFS (Scale-Out File Server, Dateiserver mit horizontaler Skalierung) von Windows Server besteht, der in einem nachfolgenden Update bereitgestellt wird. | Wenden Sie sich an den Microsoft-Kundendienst und -Support (CSS), um Hilfe zu erhalten. | 
 | Beim Durchführen eines Updates tritt während des Schritts „Step: Running step 2.13.2 - Update *VM-Name*“ des Plans mit den Updateaktionen ein Fehler der folgenden Art auf: (Der Name des virtuellen Computers kann variieren.)<br><br>**ActionPlanInstanceWarning ece/MachineName: WarningMessage:Task: Invocation of interface 'LiveUpdate' of role 'Cloud\Fabric\WAS' failed:<br>Type 'LiveUpdate' of Role 'WAS' raised an exception:<br>ERROR during storage initialization: An error occurred while trying to make an API call to Microsoft Storage service: {"Message":"A timeout occurred while communicating with Service Fabric. Exception Type: TimeoutException. Exception message: Operation timed out."}**  | Das Problem wird durch eine E/A-Zeitüberschreitung in Windows Server verursacht, die in einem nachfolgenden Update behoben sein wird. | Wenden Sie sich an Microsoft CSS, um Hilfe zu erhalten.
 | Beim Durchführen eines Updates kann während des Schritts „Step 21 Restart SQL server VMs“ ein Fehler der folgenden Art auftreten:<br><br>**Type 'LiveUpdateRestart' of Role 'VirtualMachines' raised an exception:<br>VerboseMessage:[VirtualMachines:LiveUpdateRestart] Querying for VM MachineName-Sql01. - 10/13/2017 5:11:50 PM VerboseMessage:[VirtualMachines:LiveUpdateRestart] VM is marked as HighlyAvailable. - 10/13/2017 5:11:50 PM VerboseMessage:[VirtualMachines:LiveUpdateRestart] at MS.Internal.ServerClusters.ExceptionHelp.Build at MS.Internal.ServerClusters.ClusterResource.BeginTakeOffline(Boolean force) at Microsoft.FailoverClusters.PowerShell.StopClusterResourceCommand.BeginTimedOperation() at Microsoft.FailoverClusters.PowerShell.TimedCmdlet.WrappedProcessRecord() at Microsoft.FailoverClusters.PowerShell.FCCmdlet.ProcessRecord() - 10/13/2017 5:11:50 PM WarningMessage:Task: Invocation of interface 'LiveUpdateRestart' of role 'Cloud\Fabric\VirtualMachines' failed:** | Dieses Problem kann auftreten, wenn der virtuelle Computer nicht neu gestartet werden konnte. | Wenden Sie sich an Microsoft CSS, um Hilfe zu erhalten.

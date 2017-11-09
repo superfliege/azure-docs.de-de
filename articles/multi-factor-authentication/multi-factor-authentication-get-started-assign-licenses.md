@@ -3,7 +3,7 @@ title: "Zuweisen von Lizenzen für Azure MFA | Microsoft-Dokumentation"
 description: "Erfahren Sie wie Sie Benutzerlizenzen für Microsoft Azure Multi-Factor Authentication zuweisen."
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 514ef423-8ee6-4987-8a4e-80d5dc394cf9
 ms.service: multi-factor-authentication
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/13/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: yossib
 ms.custom: it-pro
 ROBOTS: NOINDEX
-ms.openlocfilehash: 45522bf526c4aeab1d6ccc8891a55a0436ff9320
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 86e8e5ce183d11a76fb679da0e6c707383ce86d0
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="assigning-an-azure-mfa-azure-ad-premium-or-enterprise-mobility-license-to-users"></a>Zuweisen einer Azure MFA-, Azure AD Premium- oder Enterprise Mobility-Lizenz zu Benutzern
 Wenn Sie Azure MFA-, Azure AD Premium- oder Enterprise Mobility Suite-Lizenzen erworben haben, müssen Sie keinen Multi-Factor Auth-Anbieter erstellen. Nachdem Sie Ihren Benutzern die Lizenzen zugewiesen haben, können Sie sie für MFA aktivieren.

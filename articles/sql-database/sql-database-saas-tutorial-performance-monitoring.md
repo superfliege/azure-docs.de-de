@@ -10,17 +10,17 @@ editor:
 ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: data-management
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 10/31/2017
 ms.author: sstein
-ms.openlocfilehash: f05e769a8c5d26c0149dcba05c0973de4bd30313
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 1509a4f05ceb3a54aad790553183616c97b4bee2
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 
@@ -204,16 +204,19 @@ In dieser Übung werden die Auswirkungen simuliert, wenn der Ticketverkauf für 
 1. Führen Sie das Skript mit **F5** aus.
 
 
-1. Im [Azure-Portal](https://portal.azure.com) öffnen Sie **Pool1**.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Liste der Datenbanken auf dem Server *tenants1*. 
+1. Klicken Sie auf die Datenbank **contosoconcerthall**.
+1. Klicken Sie auf den Pool, in dem sich **contosoconcerthall** befindet. Suchen Sie den Pool im Abschnitt **Pool für elastische Datenbanken**.
+
 1. Prüfen Sie das Diagramm **Überwachung des Pools für elastische Datenbanken**, und achten Sie auf eine erhöhte Pool-eDTU-Nutzung. Nach ein oder zwei Minuten sollte die höhere Auslastung sichtbar werden, und Sie sollten schnell erkennen, dass der Pool eine Auslastung von 100 % erreicht.
-1. In der Anzeige **Überwachung der elastischen Datenbank** werden die meist verwendeten Datenbanken der letzten Stunde angezeigt. Die Datenbank *contosoconcerthall* sollte in Kürze unter den fünf meist verwendeten Datenbanken angezeigt werden.
-1. Klicken Sie auf das Diagramm **Überwachung der elastischen** **Datenbank**. Hierdurch wird die Seite **Datenbank-Ressourcennutzung** geöffnet, mit der Sie beliebige Datenbanken überwachen können. Dadurch können Sie die Anzeige für die Datenbank *contosoconcerthall* isolieren.
-1. Klicken Sie in der Liste der Datenbanken auf **contosoconcerthall**.
-1. Klicken Sie auf **Tarif (DTUs skalieren)**, um die Seite **Leistung konfigurieren** zu öffnen. Auf dieser können Sie eine eigenständige Leistungsebene für die Datenbank festlegen.
-1. Klicken Sie auf die Registerkarte **Standard**, um die Skalierungsoptionen des Standard-Tarifs zu öffnen.
-1. Schieben Sie den **DTU-Schieberegler** nach rechts, um **100** DTUs auszuwählen. Beachten Sie, dass dies dem Dienstziel **S3** entspricht.
-1. Klicken Sie auf **Anwenden**, um die Datenbank aus dem Pool zu verschieben und als *Standard S3*-Datenbank festzulegen.
-1. Sobald die Skalierung abgeschlossen ist, überprüfen Sie auf den Blättern des Pools für elastische Datenbanken und der Datenbank die Auswirkung auf die Datenbank „contosoconcerthall“ und auf Pool1.
+2. In der Anzeige **Überwachung der elastischen Datenbank** werden die meist verwendeten Datenbanken der letzten Stunde angezeigt. Die Datenbank *contosoconcerthall* sollte in Kürze unter den fünf meist verwendeten Datenbanken angezeigt werden.
+3. Klicken Sie auf das Diagramm **Überwachung der elastischen** **Datenbank**. Hierdurch wird die Seite **Datenbank-Ressourcennutzung** geöffnet, mit der Sie beliebige Datenbanken überwachen können. Dadurch können Sie die Anzeige für die Datenbank *contosoconcerthall* isolieren.
+4. Klicken Sie in der Liste der Datenbanken auf **contosoconcerthall**.
+5. Klicken Sie auf **Tarif (DTUs skalieren)**, um die Seite **Leistung konfigurieren** zu öffnen. Auf dieser können Sie eine eigenständige Leistungsebene für die Datenbank festlegen.
+6. Klicken Sie auf die Registerkarte **Standard**, um die Skalierungsoptionen des Standard-Tarifs zu öffnen.
+7. Schieben Sie den **DTU-Schieberegler** nach rechts, um **100** DTUs auszuwählen. Beachten Sie, dass dies dem Dienstziel **S3** entspricht.
+8. Klicken Sie auf **Anwenden**, um die Datenbank aus dem Pool zu verschieben und als *Standard S3*-Datenbank festzulegen.
+9. Sobald die Skalierung abgeschlossen ist, überprüfen Sie auf den Blättern des Pools für elastische Datenbanken und der Datenbank die Auswirkung auf die Datenbank „contosoconcerthall“ und auf Pool1.
 
 Sobald die erhöhte Last der Datenbank „contosoconcerthall“ nachlässt, sollten Sie die Datenbank sofort wieder zum Pool hinzufügen, um die Kosten zu senken. Wenn unklar ist, wann dieser Zeitpunkt eintreten wird, können Sie eine Benachrichtigung für die Datenbank festlegen, die ausgelöst wird, wenn ihre DTU-Nutzung unter den Höchstwert pro Datenbank für den Pool sinkt. Das Verschieben einer Datenbank in einen Pool wird im Schritt 5 beschrieben.
 

@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: bc7763981c27a3d37cc1bd16c0f8efc0b4c01ce0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66d192287eeaaaa82c0f61f8aa13b8bf7bf8cd47
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe der Azure CLI
 Mithilfe von Firewallregeln auf Serverebene können Administratoren den Zugriff auf eine Azure Database for MySQL-Serverinstanz über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwalten. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewalls für Azure-Datenbank für MySQL finden Sie unter [Azure Database for MySQL server firewall rules](./concepts-firewall-rules.md) (Firewallregeln des Servers für Azure-Datenbank für MySQL).
@@ -31,8 +31,8 @@ Der Befehl **az mysql server firewall-rule** wird in der Azure CLI zum Erstellen
 Befehle:
 - **create**: Dient zum Erstellen einer Firewallregel für den Azure MySQL-Server.
 - **delete**: Dient zum Löschen einer Firewallregel für den Azure MySQL-Server.
-- **list: Dient zum Auflisten der Serverfirewallregeln für Azure MySQL-Server.
-- **show: Dient zum Anzeigen der Details einer Firewallregel für den Azure MySQL-Server.
+- **list**: Dient zum Auflisten der Serverfirewallregeln für Azure MySQL-Server.
+- **show**: Dient zum Anzeigen der Details einer Firewallregel für den Azure MySQL-Server.
 - **update**: Dient zum Aktualisieren der Firewallregel für den Azure MySQL-Server.
 
 ## <a name="log-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Anmelden bei Azure und Auflisten Ihrer Azure Database for MySQL-Serverinstanzen

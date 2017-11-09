@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2017
+ms.date: 10/31/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: e38a92fc48636476f00fe18c735901d906799fde
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 514fa3490e480647f0923c99bd9606a3726d4d30
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>Erstellen einer Containerregistrierung mit dem Azure-Portal
 
@@ -65,11 +65,11 @@ Diese Werte benötigen Sie in den folgenden Schritten, wenn Sie über die Docker
 
 Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich bei der ACR-Instanz anmelden. Verwenden Sie hierzu den Befehl [docker login](https://docs.docker.com/engine/reference/commandline/login/). Ersetzen Sie *username* (Benutzername), *password* (Kennwort) und *login server* (Anmeldeserver) durch die Werte, die Sie sich im vorherigen Schritt notiert haben.
 
-```
+```bash
 docker login --username <username> --password <password> <login server>
 ```
 
-Nach Abschluss des Vorgangs wird eine Erfolgsmeldung zurückgegeben.
+Der Befehl gibt nach Abschluss des Vorgangs `Login Succeeded` zurück. Möglicherweise wird auch eine Sicherheitswarnung angezeigt, in der die Verwendung des `--password-stdin`-Parameters empfohlen wird. Obwohl in diesem Artikel nicht auf dessen Verwendung eingegangen werden kann, wird empfohlen, diese bewährte Methode anzuwenden. Weitere Informationen zum Befehl [docker login](https://docs.docker.com/engine/reference/commandline/login/) finden Sie in der entsprechenden Referenzdokumentation.
 
 ## <a name="push-image-to-acr"></a>Übertragen eines Images an ACR mithilfe von Push
 

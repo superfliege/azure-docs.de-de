@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 1e286044fb1a1b367fcac2dc14c47f68d5ed120d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a6a7c6bdf3deaee3a3949fe409a7fab6b7664695
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="sign-in-microsoft-account--azure-ad-users-in-a-single-app"></a>Anmelden von Benutzern mit Microsoft-Konto und aus Azure AD bei einer einzelnen Anwendung
 In der Vergangenheit musste ein App-Entwickler, der sowohl Unterstützung für persönliche Microsoft-Konten als auch Geschäftskonten über Azure Active Directory benötigte, die Integration für zwei separate Systeme bereitstellen.  Für den **Azure AD v2.0-Endpunkt** wurde eine neue Authentifizierungs-API-Version eingeführt, über die Sie Anmeldungen mit beiden Arten von Konten durch eine einfache Integration bereitstellen können.  Apps, die den v2.0-Endpunkt verwenden, können auch REST-APIs aus [Microsoft Graph](https://graph.microsoft.io) mit beiden Kontotypen nutzen.
@@ -49,13 +49,8 @@ Die folgenden Links bieten ausführliche Informationen zur Plattform:
 * [Bereiche, Berechtigungen und Zustimmung im v2.0-Endpunkt](active-directory-v2-scopes.md)
 * [Microsoft Graph](https://graph.microsoft.io)
 
-## <a name="help--support"></a>Hilfe und Support
-Hier sind die besten Hilferessourcen für die Entwicklung mit Azure Active Directory angegeben.
-
-* [Tags `azure-active-directory` und `adal` von Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+or+adal)
-* [Feedback zu Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences)
-
-
 > [!NOTE]
 > Wenn Sie nur Geschäfts- und Schulkonten aus Azure Active Directory anmelden müssen, sollten Sie für den Einstieg unser [Azure AD-Entwicklerhandbuch](active-directory-developers-guide.md) lesen.  Der v2.0-Endpunkt ist für die Verwendung durch Entwickler vorgesehen, die sich explizit bei persönlichen Microsoft-Konten anmelden müssen.
 
+
+[!INCLUDE  [Help and Support Options](../../../includes/active-directory-develop-help-support-include.md)]

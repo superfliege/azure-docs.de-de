@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/04/2017
 ms.author: larryfr
-ms.openlocfilehash: 29f245fdeaadd6f95755f7fd7564dfa7f6b2981f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: befd03d94f816cb2b59219cd9f1f9af238949592
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
@@ -39,9 +39,9 @@ In vielen Schritten in diesem Dokument werden die folgenden Hilfsprogramme verwe
 
 ## <a name="users"></a>Benutzer
 
-Sofern es nicht [in eine Domäne eingebunden](hdinsight-domain-joined-introduction.md) ist, sollte HDInsight als **Einzelbenutzersystem** betrachtet werden. Ein SSH-Einzelbenutzerkonto wird mit dem Cluster mit Administratorrechten erstellt. Zusätzliche SSH-Konten können erstellt werden, haben jedoch auch Administratorzugriff auf den Cluster.
+Sofern es nicht [in eine Domäne eingebunden](./domain-joined/apache-domain-joined-introduction.md) ist, sollte HDInsight als **Einzelbenutzersystem** betrachtet werden. Ein SSH-Einzelbenutzerkonto wird mit dem Cluster mit Administratorrechten erstellt. Zusätzliche SSH-Konten können erstellt werden, haben jedoch auch Administratorzugriff auf den Cluster.
 
-In die Domäne eingebundenes HDInsight bietet Unterstützung mehrerer Benutzer sowie präzisere Einstellungen für Berechtigungen und Rollen. Weitere Informationen finden Sie unter [Manage Domain-joined HDInsight clusters](hdinsight-domain-joined-manage.md) (Verwalten von in die Domäne eingebundenen HDInsight-Clustern).
+In die Domäne eingebundenes HDInsight bietet Unterstützung mehrerer Benutzer sowie präzisere Einstellungen für Berechtigungen und Rollen. Weitere Informationen finden Sie unter [Manage Domain-joined HDInsight clusters](./domain-joined/apache-domain-joined-manage.md) (Verwalten von in die Domäne eingebundenen HDInsight-Clustern).
 
 ## <a name="domain-names"></a>Domänennamen
 
@@ -277,6 +277,6 @@ Um eine andere Version einer Komponente zu verwenden, laden Sie die benötigte V
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Migrieren von Windows-basiertem HDInsight zum Linux-basierten](hdinsight-migrate-from-windows-to-linux.md)
-* [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md)
-* [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
-* [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
+* [Verwenden von Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
+* [Verwenden von Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
+* [Verwenden von MapReduce-Aufträgen mit HDInsight](hadoop/hdinsight-use-mapreduce.md)

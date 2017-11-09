@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 10/30/2017
 ms.author: arramac
-ms.openlocfilehash: 0971959fb168d92096531d1c081666cf301608cf
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: e21925b8f84f0805f41fd698965cac09286b92c1
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB
 
@@ -157,7 +157,7 @@ Dieser Abschnitt führt Sie durch das Arbeiten mit einem Änderungsfeed mithilfe
 
 Wenn Sie über mehrere Reader verfügen, können Sie mit **ChangeFeedOptions** die Leselast auf verschiedene Threads oder Clients verteilen.
 
-Das war schon alles, und mit diesen wenigen Codezeilen können Sie beginnen, den Änderungsfeed zu lesen. Sie erhalten den vollständigen in diesem Artikel verwendeten Code im [azure-cosmos-db-DocumentFeed-GitHub-Repository](https://github.com/rsarosh/azure-cosmos-db-DocumentFeed).
+Das war schon alles, und mit diesen wenigen Codezeilen können Sie beginnen, den Änderungsfeed zu lesen. Sie erhalten den vollständigen in diesem Artikel verwendeten Code im [GitHub-Repository](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor).
 
 Im Code von Schritt 4 oben enthält **ResponseContinuation** in der letzten Zeile die letzte logische Sequenznummer (Logical Sequence Number, LSN) des Dokuments, die Sie verwenden werden, wenn Sie das nächste Mal nach dieser Sequenznummer neue Dokumente lesen. Mithilfe von **StartTime** von **ChangeFeedOption** können Sie den Zeitraum erweitern, um die Dokumente zu erhalten. Wenn also **ResponseContinuation** NULL ist, Ihre **StartTime** jedoch zeitlich zurückliegt, erhalten Sie alle Dokumente, die seit **StartTime** geändert wurden. Wenn aber **ResponseContinuation** einen Wert enthält, erhalten Sie vom System alle Dokumente ab dieser LSN.
 
@@ -278,7 +278,7 @@ Weitere Informationen zur Verwendung der Change Feed Processor-Bibliothek bieten
 
 * [DocumentDB .NET Change Feed Processor-SDK: Download und Anmerkungen zur Version](documentdb-sdk-dotnet-changefeed.md) 
 * [NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
-* [Beispielcode zu den obigen Schritten 1 bis 6](https://github.com/rsarosh/Cosmos-ChangeFeedProcessor)
+* [Beispielcode zu den obigen Schritten 1 bis 6](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
 * [Zusätzliche Beispiele auf GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
 
 Weitere Informationen zur Verwendung des Änderungfeeds mittels SDK bieten Ihnen folgende Ressourcen:

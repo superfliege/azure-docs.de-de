@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: dd1e22cd538d9113062b77ea2d7ecc18d63fe528
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77567302c529e6e06e58534ffc9db44c9a85bdb7
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="schedule-tasks-and-workflows-that-run-regularly-with-logic-apps"></a>Planen von regelmäßig ausgeführten Aufgaben und Workflows mit Logik-Apps
 
@@ -98,7 +98,7 @@ Sie können diese Eigenschaften für den Wiederholungstrigger konfigurieren.
 
 | Name | Erforderlich | Eigenschaftenname | Typ | Beschreibung | 
 |----- | -------- | ------------- | ---- | ----------- | 
-| **Häufigkeit** | Ja | frequency | String | Die Zeiteinheit für die Wiederholung: **Second** (Sekunde), **Minute** (Minute), **Hour** (Stunde), **Day** (Tag), **Week** (Woche) oder **Month** (Monat) | 
+| **Frequency** | Ja | frequency | String | Die Zeiteinheit für die Wiederholung: **Second** (Sekunde), **Minute** (Minute), **Hour** (Stunde), **Day** (Tag), **Week** (Woche) oder **Month** (Monat) | 
 | **Intervall** | Ja | interval | Integer | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. <p>Das Standardintervall beträgt 1. Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1 - 9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 | **Zeitzone** | Nein | timeZone | String | Nur relevant, wenn Sie eine Startzeit angeben, da dieser Trigger keine [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) akzeptiert. Wählen Sie die anzuwendende Zeitzone aus. | 
 | **Startzeit** | Nein | startTime | String | Geben Sie eine Startzeit im folgenden Format ein: <p>JJJJ-MM-TTThh:mm:ss (bei Auswahl einer Zeitzone) <p>Oder <p>JJJJ-MM-TTThh:mm:ssZ (wenn keine Zeitzone ausgewählt wird) <p>Für „18. September 2017, 14:00 Uhr“ müssten Sie also beispielsweise „2017-09-18T14:00:00“ und eine Zeitzone (z.B. „Pacific Time“) auswählen. Alternativ können Sie „2017-09-18T14:00:00Z“ ohne Zeitzone angeben. <p>**Hinweis:** Diese Startzeit muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, aber ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). <p>Bei einfachen Zeitplänen ist die Startzeit das erste Vorkommen. Bei komplexeren Zeitplänen wird der Trigger nicht vor der Startzeit ausgelöst. [*Wie kann ich Startdatum und -uhrzeit verwenden?*](#start-time) | 
@@ -162,7 +162,7 @@ Hier ist ein Beispiel für die Definition eines Wiederholungstriggers angegeben:
 | Ausführung täglich um 8:30 Uhr (ohne Startdatum und -uhrzeit) | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8 | 30 | Dieser Zeitplan wird täglich um 8:30 Uhr basierend auf dem angegebenen Zeitplan ausgeführt. | 
 | Ausführung täglich um 8:30 Uhr (mit Startdatum und -uhrzeit) | 1 | Day (Tag) | *startDate*T08:30:00Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird am angegebenen Startdatum um 8:30 Uhr gestartet. | 
 | Ausführung täglich um 8:30 und 16:30 Uhr | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8, 16 | 30 | | 
-| Ausführung täglich um 8:30 und 16:45 Uhr | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8, 16 | 30, 45 | | 
+| Ausführung täglich um 8:30 Uhr, 8:45 Uhr, 16:30 Uhr und 16:45 Uhr | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8, 16 | 30, 45 | | 
 | Ausführung jeden Samstag um 17:00 Uhr (ohne Startdatum und -uhrzeit) | 1 | Woche | {keine} | „Saturday“ (Samstag) | 17 | 00 | Dieser Zeitplan wird jeden Samstag um 17:00 Uhr ausgeführt. | 
 | Ausführung jeden Samstag um 17:00 Uhr (mit Startdatum und -uhrzeit) | 1 | Woche | *startDate*T17:00:00Z | „Saturday“ (Samstag) | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet, also hier am 9. September 2017 um 17:00 Uhr. Zukünftige Wiederholungen werden jeden Samstag um 17:00 Uhr ausgeführt. | 
 | Ausführung jeden Dienstag und Donnerstag um 17:00 Uhr | 1 | Woche | {keine} | „Tuesday“ (Dienstag), „Thursday“ (Donnerstag) | 17 | {keine} | Dieser Zeitplan wird jeden Dienstag und Donnerstag um 17:00 Uhr ausgeführt. | 

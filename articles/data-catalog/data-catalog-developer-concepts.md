@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/03/2017
+ms.date: 10/15/2017
 ms.author: spelluru
-ms.openlocfilehash: f48eb610b47820e6d7438520a00a5e6dfe879e01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e3c26c2358c15d18c71b82fe1f389c039ecbd97b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog – Entwicklerkonzepte
 **Azure Data Catalog** von Microsoft ist ein vollständig verwalteter Clouddienst mit Funktionen für die Datenquellenermittlung und das Crowdsourcing von Datenquellenmetadaten. Entwickler können den Dienst über die REST-APIs nutzen. Eine erfolgreiche Integration von **Azure Data Catalog**setzt voraus, dass die Entwickler mit den implementierten Konzepten vertraut sind.
@@ -279,7 +279,7 @@ Mit den Sichtelementanforderungen **PUT** und **POST** können Sie Rollen und Be
 > 
 > **Besitzer** gilt nur für ein Stammelement.
 > 
-> Bei der Erstellung eines Elements im Katalog wird standardmäßig der entsprechende **Mitwirkende** als derzeit authentifizierter Benutzer festgelegt. Soll ein Element für jeden Benutzer aktualisierbar sein, muss **Mitwirkender** in der Eigenschaft **roles** bei der Erstveröffentlichung des Elements auf den speziellen Sicherheitsprinzipal &lt;Everyone&gt; festgelegt werden (wie im folgenden Beispiel zu sehen). **Mitwirkender** kann nicht geändert werden (auch nicht vom **Administrator** oder **Besitzer**) und bleibt während der gesamten Lebensdauer eines Elements unverändert.**** Der einzige unterstützte Wert zum expliziten Festlegen des **Mitwirkenden** ist &lt;Everyone&gt;: Der **Mitwirkende** kann also nur ein Benutzer, der ein Element erstellt hat, oder &lt;Everyone&gt; sein.
+> Bei der Erstellung eines Elements im Katalog wird standardmäßig der entsprechende **Mitwirkende** als derzeit authentifizierter Benutzer festgelegt. Soll ein Element für jeden Benutzer aktualisierbar sein, muss **Mitwirkender** in der Eigenschaft **roles** bei der Erstveröffentlichung des Elements auf den speziellen Sicherheitsprinzipal &lt;Everyone&gt; festgelegt werden (wie im folgenden Beispiel zu sehen). **Mitwirkender** kann nicht geändert werden (auch nicht vom **Administrator** oder **Besitzer**) und bleibt während der gesamten Lebensdauer eines **Elements unverändert**. Der einzige unterstützte Wert zum expliziten Festlegen des **Mitwirkenden** ist &lt;Everyone&gt;: Der **Mitwirkende** kann also nur ein Benutzer, der ein Element erstellt hat, oder &lt;Everyone&gt; sein.
 > 
 > 
 

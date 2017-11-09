@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 29733f6f6b725dd4735219ed221431805558a5e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b84c365defbaadbc83c86e6e387c15a63e0f17ce
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinieren von ScaleR und SparkR in HDInsight
 
@@ -552,7 +552,7 @@ In diesem Artikel haben wir gezeigt, wie die Verwendung von SparkR für die Date
 
 - Allgemeine Informationen zu R Server finden Sie im Artikel [Get started with Microsoft R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) (Erste Schritte mit Microsoft R).
 
-- Weitere Informationen zu R Server in HDInsight finden Sie unter [R Server in Azure HDInsight – Übersicht ](hdinsight-hadoop-r-server-overview.md) und [R Server in Azure HDInsight](hdinsight-hadoop-r-server-get-started.md).
+- Weitere Informationen zu R Server in HDInsight finden Sie unter [R Server in Azure HDInsight – Übersicht ](r-server/r-server-overview.md) und [R Server in Azure HDInsight](r-server/r-server-get-started.md).
 
 Weitere Informationen zur Verwendung von SparkR finden Sie unter:
 

@@ -1,5 +1,5 @@
 ---
-title: "Tutorial für Azure Container Instances – Bereitstellungs-App | Microsoft-Dokumentation"
+title: "Tutorial für Azure Container Instances – Bereitstellungs-App"
 description: "Tutorial für Azure Container Instances – Bereitstellungs-App"
 services: container-instances
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 10/26/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 47208c60b316b580af8bf22d4f90d330ce285f7a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3b651526f5ee3197e7d04accb6a87e2f10bf0791
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="deploy-a-container-to-azure-container-instances"></a>Bereitstellen eines Containers für Azure Container Instances
 
@@ -32,31 +32,39 @@ Dies ist der letzte Teil eines dreiteiligen Tutorials. In vorhergehenden Abschni
 > * Anzeigen der Anwendung im Browser
 > * Anzeigen der Containerprotokolle
 
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Für dieses Tutorial müssen Sie mindestens Version 2.0.20 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu.
+
+Für dieses Tutorial ist eine Docker-Entwicklungsumgebung erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac](https://docs.docker.com/docker-for-mac/)-, [Windows](https://docs.docker.com/docker-for-windows/)- oder [Linux](https://docs.docker.com/engine/installation/#supported-platforms)-System konfiguriert werden kann.
+
+Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der einzelnen Schritte dieses Tutorials erforderlich sind. Aus diesem Grund empfehlen wir Ihnen eine lokale Installation der Azure CLI und der Docker-Entwicklungsumgebung.
+
 ## <a name="deploy-the-container-using-the-azure-cli"></a>Bereitstellen des Containers mithilfe der Azure-Befehlszeilenschnittstelle
 
 Mithilfe der Azure-Befehlszeilenschnittstelle kann ein Container mit einem einzelnen Befehl in Azure Container Instances bereitgestellt werden. Da das Containerimage in der privaten Azure Container Registry gehostet wird, müssen Sie die erforderlichen Anmeldeinformationen einschließen, um darauf zugreifen zu können. Bei Bedarf können Sie diese abfragen wie weiter unten dargestellt.
 
 Anmeldeserver für die Containerregistrierung (durch den Namen Ihrer Registrierung ersetzen):
 
-```azurecli-interactive
+```azurecli
 az acr show --name <acrName> --query loginServer
 ```
 
 Kennwort der Containerregistrierung:
 
-```azurecli-interactive
+```azurecli
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
 Um das Containerimage aus der Containerregistrierung mit einer Ressourcenanforderung von 1 CPU-Kern und 1 GB Speicher bereitzustellen, führen Sie den folgenden Befehl aus:
 
-```azurecli-interactive
+```azurecli
 az container create --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public -g myResourceGroup
 ```
 
-Innerhalb weniger Sekunden erhalten Sie eine erste Antwort von Azure Resource Manager. Verwenden Sie zum Anzeigen des Status der Bereitstellung Folgendes:
+Innerhalb weniger Sekunden sollten Sie eine erste Antwort vom Azure Resource Manager erhalten. Verwenden Sie zum Anzeigen des Status der Bereitstellung Folgendes:
 
-```azurecli-interactive
+```azurecli
 az container show --name aci-tutorial-app --resource-group myResourceGroup --query state
 ```
 
@@ -78,7 +86,7 @@ az container show --name aci-tutorial-app --resource-group myResourceGroup --que
 
 Sie können auch die Protokollausgabe des Containers anzeigen:
 
-```azurecli-interactive
+```azurecli
 az container logs --name aci-tutorial-app -g myResourceGroup
 ```
 

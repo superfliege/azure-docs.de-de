@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/26/2017
 ms.author: billmath
-ms.openlocfilehash: e8321c3d16253226a5931cacbce6fa5d50b697bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abf234caa4c26cf3554911aabb839c696b1ba8cb
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Besondere Überlegungen zu Instanzen
 Azure AD Connect wird am häufigsten mit der weltweiten Instanz von Azure AD und Office 365 verwendet. Es gibt jedoch noch weitere Instanzen, und für diese gelten andere Anforderungen an URLs sowie weitere besondere Überlegungen.
@@ -50,15 +50,12 @@ Diese Cloud wurde von früheren Versionen von DirSync unterstützt. Ab Build 1.1
 | --- |
 | \*.microsoftonline.com |
 | \*.microsoftonline.us |
+| \*.windows.net (erforderlich für die automatische Erkennung von Azure AD-Behördenmandanten) |
 | \*.gov.us.microsoftonline.com |
 | +Zertifikatsperrlisten |
 
-Azure AD Connect kann nicht automatisch erkennen, dass sich Ihr Azure AD-Mandant in der Government-Cloud befindet. Sie müssen daher folgende Aktionen ausführen, wenn Sie Azure AD Connect installieren.
-
-1. Starten Sie die Azure AD Connect-Installation.
-2. Wenn die erste Seite angezeigt wird, auf der Sie aufgefordert werden, den Endbenutzer-Lizenzvertrag zu akzeptieren, fahren Sie nicht fort, sondern lassen Sie den Installations-Assistenten offen.
-3. Starten Sie den Registrierungs-Editor, und ändern Sie den Registrierungsschlüssel `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` in den Wert `2`.
-4. Wechseln Sie zurück zum Azure AD Connect-Installations-Assistenten, akzeptieren Sie den Endbenutzer-Lizenzvertrag, und fahren Sie fort. Stellen Sie sicher, dass bei der Installation der Installationspfad zur **benutzerdefinierten Konfiguration** verwendet wird (nicht die Expressinstallation). Setzen Sie die Installation dann wie gewohnt fort.
+> [!NOTE]
+> Wie bei Version 1.1.647.0 von AAD Connect ist die Festlegung des AzureInstance-Werts in der Registrierung nicht mehr erforderlich, sofern *. windows.net auf Ihren Proxyservern geöffnet ist.
 
 In der Microsoft Azure Government-Cloud derzeit nicht enthaltene Features:
 

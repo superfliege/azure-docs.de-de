@@ -12,14 +12,14 @@ ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
-ms.date: 10/23/2017
+ms.workload: Active
+ms.date: 10/25/2017
 ms.author: carlrab
-ms.openlocfilehash: c5853b7f4af02e096a0678de14abd5c0b3d7ab0c
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: 1505b85a8828cd64045a982ece48e49d85ea3314
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-sql-database-features"></a>Funktionen von Azure SQL-Datenbank
 
@@ -41,6 +41,8 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | Hochverfügbarkeit ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-geo-replication-overview.md). |
 | [Anfügen einer Datenbank](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nein |
 | [Anwendungsrollen](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) | Ja |
+|[Überwachung](/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [Ja](sql-database-auditing.md)|
+| [Automatische Optimierung](/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ja](sql-database-automatic-tuning.md)|
 | [BACPAC Datei (Export)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ja (siehe [SQL-­Datenbank-Export](sql-database-export.md)) |
 | [BACPAC Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ja (siehe [SQL-­Datenbank-Import](sql-database-import.md)) |
 | [Befehl „BACKUP“](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Nein (siehe [Automatisierte Sicherungen](sql-database-automated-backups.md)) |
@@ -69,6 +71,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [DML-Anweisungen](https://docs.microsoft.com/sql/t-sql/queries/queries) | Ja |
 | [DML-Trigger](https://docs.microsoft.com/en-us/sql/relational-databases/triggers/create-dml-triggers) | Die meisten (siehe einzelne Anweisungen) | 
 | [DMVs](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | Einige (siehe einzelne DMVs) |
+|[Dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking)|[Ja](sql-database-dynamic-data-masking-get-started.md)|
 | [Ereignisbenachrichtigungen](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Nein (siehe [Warnungen](sql-database-insights-alerts-portal.md)) |
 | [Ausdrücke](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Ja |
 | [Erweiterte Ereignisse](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Siehe [Erweiterte Ereignisse in der SQL-Datenbank](sql-database-xevent-db-diff-from-svr.md) |

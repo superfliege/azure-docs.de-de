@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 1b6e368df4914e58eb3f8d6481132f25d27312b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 030fb1d87547a4fc78d54a855bca961202f28837
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="customize-azure-ad-functionality-for-self-service-password-reset"></a>Anpassen von Azure AD-Funktionen für die Self-Service-Kennwortzurücksetzung
 
@@ -28,7 +28,11 @@ IT-Experten, die die Self-Service-Kennwortzurücksetzung bereitstellen möchten,
 
 ## <a name="customize-the-contact-your-administrator-link"></a>Anpassen des Kontakts Ihres Administratorlinks
 
-Auch wenn SSPR nicht aktiviert ist, wird den Benutzern im Portal für die Kennwortzurücksetzung ein Link „Wenden Sie sich an Ihren Administrator“ angezeigt.  Durch Klicken auf diesen Link werden Ihre Administratoren per E-Mail um Unterstützung beim Ändern des Kennworts des Benutzers gebeten. Diese E-Mail wird in der folgenden Reihenfolge an die folgenden Empfänger gesendet:
+Auch wenn SSPR nicht aktiviert ist, wird den Benutzern im Portal für die Kennwortzurücksetzung ein Link „Wenden Sie sich an Ihren Administrator“ angezeigt.  Durch Klicken auf diesen Link werden Ihre Administratoren per E-Mail um Unterstützung beim Ändern des Benutzerkennworts gebeten, oder es wird eine von Ihnen festgelegte URL an Ihre Benutzer gesendet. Es wird empfohlen, diesen Link für Ihre Benutzer beispielsweise auf eine vertraute E-Mail-Adresse oder Website für den Support festzulegen.
+
+![Kontakt][Contact]
+
+Diese E-Mail wird in der folgenden Reihenfolge an die folgenden Empfänger gesendet:
 
 1. Wenn die Rolle **Kennwortadministrator** zugewiesen ist, werden die Administratoren mit dieser Rolle benachrichtigt
 2. Falls keine Kennwortadministratoren zugewiesen sind, werden die Administratoren mit der Rolle **Benutzeradministrator** benachrichtigt
@@ -96,16 +100,17 @@ Sie können das Namensattribut unter **Azure Active Directory > Properties (Azur
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
+* [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](active-directory-passwords-best-practices.md)
+* [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md)
+* [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
+* [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](active-directory-passwords-licensing.md)
+* [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](active-directory-passwords-data.md)
+* [Authentifizierungsmethoden](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](active-directory-passwords-policy.md)
+* [Übersicht über die Kennwortrückschreibung](active-directory-passwords-writeback.md)
+* [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](active-directory-passwords-reporting.md)
+* [Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD](active-directory-passwords-how-it-works.md)
+* [Problembehandlung für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-troubleshoot.md)
+* [Häufig gestellte Fragen zur Kennwortverwaltung](active-directory-passwords-faq.md)
 
-* [**Schnellstart:**](active-directory-passwords-getting-started.md) Informieren Sie sich schnell über die Self-Service-Kennwortverwaltung von Azure AD. 
-* [**Lizenzierung:**](active-directory-passwords-licensing.md) Konfigurieren Sie Ihre Azure AD-Lizenzierung.
-* [**Daten:**](active-directory-passwords-data.md) Erfahren Sie, welche Daten erforderlich sind und wie sie für die Kennwortverwaltung verwendet werden.
-* [**Rollout:**](active-directory-passwords-best-practices.md) Mithilfe der hier enthaltenen Anleitungen können Sie SSPR planen und für Ihre Benutzer bereitstellen.
-* [**Richtlinie:**](active-directory-passwords-policy.md) Verstehen Sie Azure AD-Kennwortrichtlinien, und legen Sie sie fest.
-* [**Kennwortrückschreiben:**](active-directory-passwords-writeback.md) Hier wird die Funktionsweise des Kennwortrückschreibens in Ihrem lokalen Verzeichnis beschrieben.
-* [**Berichterstellung:**](active-directory-passwords-reporting.md) Ermitteln Sie, ob, wann und wo Ihre Benutzer auf SSPR-Funktionen zugreifen.
-* [**Ausführliche technische Informationen:**](active-directory-passwords-how-it-works.md) Steigen Sie tiefer ein, um zu verstehen, wie alles funktioniert.
-* [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? - Antworten auf Fragen, die Sie schon immer stellen wollten
-* [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.
-
+[Contact]: ./media/active-directory-passwords-customize/sspr-contact-admin.png "Beispiel-E-Mail zum Anfordern von Administratorunterstützung bei der Kennwortzurücksetzung"

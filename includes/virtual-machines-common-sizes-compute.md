@@ -1,10 +1,29 @@
 <!-- F-series, Fs-series* -->
 
-Die F-Serie basiert auf dem Intel Xeon® E5-2673 v3-Prozessor (Haswell) mit 2,4 GHz, der mit der Intel Turbo Boost Technology 2.0 Taktfrequenzen von 3,1 GHz erreichen kann. Dies ist die gleiche CPU-Leistung wie bei virtuellen Computern (VMs) der Dv2-Serie.  Die F-Serie hat einen niedrigeren Listenpreis pro Stunde und bietet auf Basis der Azure-Compute-Einheit (Azure Compute Unit, ACU) das beste Preis-Leistungs-Verhältnis pro vCPU im Azure-Portfolio. 
+Die Fsv2-Serie basiert auf dem Prozessor Intel® Xeon® Platinum 8168 mit einer Basiskernfrequenz von 2,7 GHz und einer maximalen Einzelkern-Turbofrequenz von 3,7 GHz. Intel® AVX-512-Anweisungen, die auf Intel Scalable Processors neu sind, können bei Gleitkommaoperationen mit einfacher und doppelter Genauigkeit mit Vektorverarbeitungeworkloads die Leistung verdoppeln. D.h., sie bewältigen alle Rechenworkloads wirklich schnell. 
+
+Die Fsv2-Serie hat einen niedrigeren Listenpreis pro Stunde und bietet auf Basis der Azure-Compute-Einheit (Azure Compute Unit, ACU) das beste Preis-Leistungs-Verhältnis pro vCPU im Azure-Portfolio. 
+
+Die F-Serie basiert auf dem Intel Xeon® E5-2673 v3-Prozessor (Haswell) mit 2,4 GHz, der mit der Intel Turbo Boost Technology 2.0 Taktfrequenzen von 3,1 GHz erreichen kann. Dies ist die gleiche CPU-Leistung wie bei virtuellen Computern (VMs) der Dv2-Serie.  
 
 Virtuelle Computer der F-Serie sind eine hervorragende Wahl für Workloads, die schnellere CPUs erfordern, aber nicht so viel Arbeitsspeicher oder temporären Speicher pro vCPU benötigen.  Bei Arbeitslasten wie Analysen, Gamingservern, Webservern und Batchverarbeitung kommen die Vorteile und der Nutzen der F-Serie besonders gut zum Tragen.
 
 Die Fs-Serie verfügt zusätzlich zum Premium-Speicher über alle Vorteile der F-Serie.
+
+# <a name="fsv2-series"></a>Fsv2-Serie
+
+ACU: 195 – 210
+
+| Größe             | vCPUs | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
+|------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|------------------------------------------------|
+| Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4.000 (32)                                                             | Moderat                                       |
+| Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8.000 (64)                                                             | Moderat                                       |
+| Standad_F8s_v2   | 8      | 16          | 64             | 16             | 16.000 (128)                                                           | Hoch                                           |
+| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32.000 (256)                                                           | Hoch                                           |
+| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64.000 (512)                                                           | Äußerst hoch                                 |
+| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128.000 (1024)                                                         | Äußerst hoch                                 |
+| Standard_F72s_v2 | 72     | 144         | 576            | 32             | 144.000 (1520)                                                         | Äußerst hoch                                 |
+
 
 ## <a name="fs-series"></a>Fs-Serie*
 

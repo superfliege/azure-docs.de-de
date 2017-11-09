@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 07759a590e3a4e061a1c5727428d2c7c2a655f51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93850a7c9e3d9d69b0da22ebd0656ae40cee2e63
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>Verwenden des Jupyter-Notebooks in Azure Machine Learning Workbench
 
@@ -39,7 +39,7 @@ Weitere Informationen finden Sie in der offiziellen [Jupyter-Dokumentation](http
 Sie können in Azure ML Workbench auf viele verschiedene Kernels zugreifen, indem Sie einfach im `aml_config`-Ordner des Projekts Ausführungskonfigurationen und Computeziele konfigurieren. Das Hinzufügen eines neuen Computeziels mithilfe des `az ml computetarget attach`-Befehls entspricht dem Hinzufügen eines neuen Kernels.
 
 >[!NOTE]
->Unter [Overview of Azure Machine Learning experiment execution service](experiment-execution-configuration.md) (Übersicht über den Experimentausführungsdienst von Azure Machine Learning) finden Sie weitere Informationen zu Ausführungskonfigurationen und Computezielen.
+>Unter [Overview of Azure Machine Learning experiment execution service](experimentation-service-configuration.md) (Übersicht über den Experimentausführungsdienst von Azure Machine Learning) finden Sie weitere Informationen zu Ausführungskonfigurationen und Computezielen.
 
 ### <a name="kernel-naming-convention"></a>Kernelbenennungskonvention
 Der Kernel werden normalerweise im Format „\<Projektname > \<Name der Ausführungskonfiguration>“ benannt. Wenn Sie z.B. eine Ausführungskonfiguration mit dem Namen _docker-python_ in einem Projekt mit dem Namen _myIris_ haben, können Sie einen Kernel mit dem Namen „myIris docker-python“ in der Kernelliste finden, wenn Sie ein Jupyter-Notebook öffnen.
@@ -107,5 +107,5 @@ Sie können jetzt auf eine `.ipynb`-Notebook-Datei klicken, sie öffnen und den 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informationen zum Verwenden des Jupyter-Notebooks finden Sie in der [offiziellen Jupyter-Dokumentation](http://jupyter-notebook.readthedocs.io/en/latest/).    
-- Weitere Informationen zur Ausführungsumgebung von Azure ML-Experimenten finden Sie unter [Overview of Azure Machine Learning experiment execution service](experiment-execution-configuration.md) (Übersicht über den Dienst zur Ausführung von Azure Machine Learning-Experimenten).
+- Weitere Informationen zur Ausführungsumgebung von Azure ML-Experimenten finden Sie unter [Konfigurieren des Azure Machine Learning-Experimentieren-Diensts](experimentation-service-configuration.md).
 
