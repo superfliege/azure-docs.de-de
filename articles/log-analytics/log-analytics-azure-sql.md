@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: 1b0d0fa1afc94d5261443f6b08cb6f0c3518f3eb
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: a1214d8327075ee081124d42aeb78846e09ff588
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL Analytics (Vorschau) in Log Analytics
 
@@ -102,7 +102,16 @@ Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Pers
 
 Jede Perspektive bietet Zusammenfassungen zum Abonnement, Server, elastischen Pool und zur Datenbankebene. Darüber hinaus zeigt jede Perspektive auf der rechten Seite einen speziellen Bericht an. Durch die Auswahl eines Abonnements, Servers, Anwendungspools oder einer Datenbank aus der Liste wird der Drilldown nach fortgesetzt.
 
-| Perspektive | Beschreibung | | Ressource nach Typ | Perspektive, die alle überwachten Ressourcen zählt. Der Drilldown enthält die Zusammenfassung von DTU- und GB- Metriken. | | Einblicke | Stellt den hierarchischen Drilldown in Intelligent Insights bereit. Weitere Informationen zu Intelligent Insights. | | Fehler | Stellt den hierarchischen Drilldown in SQL-Fehlern bereit, die in den Datenbanken aufgetreten sind. | | Timeouts | Stellt den hierarchischen Drilldown in SQL-Timeouts bereit, die in den Datenbanken aufgetreten sind. | | Blockierungen | Stellt den hierarchischen Drilldown in SQL-Blockierungen bereit, die in den Datenbanken aufgetreten sind. | | Datenbankwartevorgänge | Stellt den hierarchischen Drilldown in SQL-Wartestatistiken auf Datenbankebene bereit. Enthält Zusammenfassungen der gesamten Wartezeit sowie die Wartezeit pro Wartetyp. | | Abfragedauer | Stellt den hierarchischen Drilldown in den Statistiken zur Abfrageausführung bereit, z.B. Abfragedauer, CPU-Auslastung, Daten-E/A-Auslastung und Protokoll-E/A-Auslastung. | | Abfragewartevorgänge | Stellt den hierarchischen Drilldown in den Statistiken zu Abfragewartevorgängen nach Wartekategorie bereit. |
+| Perspektive | Beschreibung |
+| --- | --- |
+| Ressource nach Typ | Perspektive, die alle überwachten Ressourcen zählt. Der Drilldown enthält die Zusammenfassung von DTU- und GB- Metriken. |
+| Erkenntnisse | Stellt den hierarchischen Drilldown in Intelligent Insights bereit. Weitere Informationen zu Intelligent Insights. |
+| Errors | Stellt den hierarchischen Drilldown in SQL-Fehler bereit, die in den Datenbanken aufgetreten sind. |
+| Zeitlimits | Stellt den hierarchischen Drilldown in SQL-Zeitlimits bereit, die in den Datenbanken aufgetreten sind. |
+| Blockierungen | Stellt den hierarchischen Drilldown in SQL-Blockierungen bereit, die in den Datenbanken aufgetreten sind. |
+| Datenbankwartevorgänge | Stellt den hierarchischen Drilldown in SQL-Wartestatistiken auf Datenbankebene bereit. Enthält Zusammenfassungen der gesamten Wartezeit sowie die Wartezeit pro Wartetyp. |
+| Abfragedauer | Stellt den hierarchischen Drilldown in die Statistiken zur Abfrageausführung bereit, z.B. Abfragedauer, CPU-Auslastung, Daten-E/A-Auslastung und Protokoll-E/A-Auslastung. |
+| Abfragewartevorgänge | Stellt den hierarchischen Drilldown in die Statistiken zu Abfragewartevorgängen nach Wartekategorie bereit. |
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights-Bericht
 
