@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: maheshu
-ms.openlocfilehash: b73bfc7703d79681f0de345f4ec994da540aa2a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fc1aa4d778a6232258470fc9a58a98906c86ec7b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>Bereitstellungsszenarien und Anwendungsfälle
 In diesem Abschnitt betrachten wir einige Szenarien und Anwendungsfälle, die von der Verwendung der Azure Active Directory (AD) Domain Services profitieren.
@@ -85,4 +85,4 @@ Weitere Informationen zu diesem Bereitstellungsszenario finden Sie unter [Integr
 ## <a name="domain-joined-hdinsight-clusters-preview"></a>In die Domäne eingebundene HDInsight-Cluster (Vorschau)
 Bei Aktivierung von Apache Ranger können Sie einen Azure HDInsight-Cluster einrichten, der in eine mit Azure AD Domain Services verwaltete Domäne eingebettet ist. Erstellen und Anwenden von Hive-Richtlinien durch Apache Ranger, und Erteilen der Erlaubnis an Nutzer (z.B. Datenanalysten), sich mithilfe von ODBC-basierten Tools, z.B. Excel, Tableau usw. mit Hive zu verbinden. Microsoft arbeitet daran, schon bald andere Workloads, wie z.B. HBase, Spark und Storm zu in HDInsight mit Domänenverknüpfung hinzuzufügen.
 
-Weitere Informationen zu diesem Bereitstellungsszenario finden Sie im Artikel zum [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern](../hdinsight/hdinsight-domain-joined-configure.md).
+Weitere Informationen zu diesem Bereitstellungsszenario finden Sie im Artikel zum [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern](../hdinsight/domain-joined/apache-domain-joined-configure.md).

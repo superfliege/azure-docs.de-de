@@ -136,11 +136,30 @@
 ## [Integration in API Management](service-fabric-api-management-overview.md)
 
 ## Überwachen und Diagnostizieren
-### [Übersicht](service-fabric-diagnostics-overview.md)
-### [Integritätsmodell](service-fabric-health-introduction.md)
-### [Diagnose für zustandsbehaftete Reliable Services](service-fabric-reliable-services-diagnostics.md)
-### [Diagnose in Reliable Actors](service-fabric-reliable-actors-diagnostics.md)
-### [Leistungsindikatoren für Reliable Services-Remoting](service-fabric-reliable-serviceremoting-diagnostics.md)
+### [Überwachen und Diagnostizieren von Anwendungen](service-fabric-diagnostics-overview.md)
+### Generieren von Ereignissen
+#### [Generieren von Ereignissen auf Plattformebene](service-fabric-diagnostics-event-generation-infra.md)
+##### [Betriebskanal](service-fabric-diagnostics-event-generation-operational.md)
+##### [Reliable Services-Ereignisse](service-fabric-reliable-services-diagnostics.md)
+##### [Reliable Actors-Ereignisse](service-fabric-reliable-actors-diagnostics.md)
+##### [Leistungsmetriken](service-fabric-diagnostics-event-generation-perf.md)
+##### [Überwachung von Dienstremoting](service-fabric-reliable-serviceremoting-diagnostics.md)
+#### [Generieren von Ereignissen auf Anwendungsebene](service-fabric-diagnostics-event-generation-app.md)
+### Untersuchen der Anwendungs- und Clusterintegrität
+#### [Überwachen der Service Fabric-Integrität](service-fabric-health-introduction.md)
+#### [Melden und Überprüfen der Dienstintegrität](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+#### [Hinzufügen von benutzerdefinierten Berichten zur Integrität](service-fabric-report-health.md)
+#### [Behandeln von Problemen anhand von Berichten zur Systemintegrität](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+#### [Anzeigen von Integritätsberichten](service-fabric-view-entities-aggregated-health.md)
+### Aggregieren von Ereignissen
+#### [Aggregieren von Ereignissen mit EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md)
+#### Aggregieren von Ereignissen mit der Azure-Diagnose
+##### [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
+##### [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
+### Analysieren von Ereignissen
+#### [Analysieren von Ereignissen mit Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
+#### [Analysieren von Ereignissen mit OMS](service-fabric-diagnostics-event-analysis-oms.md)
+### [Behandeln von Problemen mit dem lokalen Cluster](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # Anleitungen
 ## Einrichten der Entwicklungsumgebung
@@ -317,30 +336,12 @@
 #### [Dienstverschiebung](service-fabric-cluster-resource-manager-movement-cost.md)
 
 ## Überwachen und Diagnostizieren
-### [Überwachen und Diagnostizieren von Anwendungen](service-fabric-diagnostics-overview.md)
-### Generieren von Ereignissen
-#### [Generieren von Ereignissen auf Plattformebene](service-fabric-diagnostics-event-generation-infra.md)
-##### [Betriebskanal](service-fabric-diagnostics-event-generation-operational.md)
-##### [Reliable Services-Ereignisse](service-fabric-reliable-services-diagnostics.md)
-##### [Reliable Actors-Ereignisse](service-fabric-reliable-actors-diagnostics.md)
-##### [Leistungsmetriken](service-fabric-diagnostics-event-generation-perf.md)
-#### [Generieren von Ereignissen auf Anwendungsebene](service-fabric-diagnostics-event-generation-app.md)
-### Untersuchen der Anwendungs- und Clusterintegrität
-#### [Überwachen der Service Fabric-Integrität](service-fabric-health-introduction.md)
-#### [Melden und Überprüfen der Dienstintegrität](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-#### [Hinzufügen von benutzerdefinierten Berichten zur Integrität](service-fabric-report-health.md)
-#### [Behandeln von Problemen anhand von Berichten zur Systemintegrität](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
-#### [Anzeigen von Integritätsberichten](service-fabric-view-entities-aggregated-health.md)
-#### [Überwachen von Windows Server-Containern](service-fabric-diagnostics-containers-windowsserver.md)
-### Aggregieren von Ereignissen
-#### [Aggregieren von Ereignissen mit EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md)
-#### Aggregieren von Ereignissen mit der Azure-Diagnose
-##### [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
-##### [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
-### Analysieren von Ereignissen
-#### [Analysieren von Ereignissen mit Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
-#### [Analysieren von Ereignissen mit OMS](service-fabric-diagnostics-event-analysis-oms.md)
-### [Behandeln von Problemen mit dem lokalen Cluster](service-fabric-troubleshoot-local-cluster-setup.md)
+### OMS
+#### [Einrichten von OMS Log Analytics](service-fabric-diagnostics-oms-setup.md)
+#### [Hinzufügen des OMS-Agents](service-fabric-diagnostics-oms-agent.md)
+#### [Überwachen von Containern](service-fabric-diagnostics-oms-containers.md)
+### Leistungsüberwachung
+#### [Leistungsüberwachung mit WAD](service-fabric-diagnostics-perf-wad.md)
 
 # Referenz
 ## [Azure PowerShell](/powershell/module/azurerm.servicefabric/)

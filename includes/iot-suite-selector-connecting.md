@@ -1,73 +1,71 @@
 > [!div class="op_single_selector"]
 > * [C unter Windows](../articles/iot-suite/iot-suite-connecting-devices.md)
 > * [C unter Linux](../articles/iot-suite/iot-suite-connecting-devices-linux.md)
-> * [Node.js](../articles/iot-suite/iot-suite-connecting-devices-node.md)
-> 
-> 
+> * [Node.js (generisch)](../articles/iot-suite/iot-suite-connecting-devices-node.md)
+> * [Node.js auf Raspberry Pi](../articles/iot-suite/iot-suite-connecting-pi-node.md)
+> * [C auf Raspberry Pi](../articles/iot-suite/iot-suite-connecting-pi-c.md)
 
-## <a name="scenario-overview"></a>Übersicht über das Szenario
-In diesem Szenario erstellen Sie ein Gerät, das die folgenden Telemetriedaten an die [vorkonfigurierte Lösung][lnk-what-are-preconfig-solutions] für die Remoteüberwachung sendet:
+In diesem Tutorial implementieren Sie ein **Kühlgerät**, das die folgenden Telemetriedaten an die [vorkonfigurierte Lösung](../articles/iot-suite/iot-suite-what-are-preconfigured-solutions.md) für die Remoteüberwachung sendet:
 
-* Externe Temperatur
-* Interne Temperatur
+* Temperatur
+* Druck
 * Luftfeuchtigkeit
 
-Zur Vereinfachung erzeugt der Code auf dem Gerät Beispielwerte. Sie sollten das Beispiel jedoch erweitern, indem Sie echte Sensoren an Ihr Gerät anschließen und tatsächliche Telemetriedaten senden.
+Der Einfachheit halber generiert der Code Beispieltelemetriewerte für den **Kühler**. Sie können das Beispiel noch erweitern, indem Sie echte Sensoren an Ihr Gerät anschließen und echte Telemetriedaten senden.
 
-Das Gerät kann auch auf Methoden antworten, die über das Lösungsdashboard aufgerufen werden, und auf die gewünschten Eigenschaftswerte, die im Lösungsdashboard festgelegt werden.
+Das Beispielgerät führt auch folgende Vorgänge durch:
 
-Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].
+* Sendet Metadaten an die Lösung, um die jeweiligen Funktionen zu beschreiben
+* Antwortet auf Aktionen, die in der Lösung von der Seite **Geräte** ausgelöst wurden
+* Antwortet auf Konfigurationsänderungen, die von der Seite **Geräte** in der Lösung gesendet werden
+
+Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](http://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="before-you-start"></a>Vorbereitung
+
 Bevor Sie Code für Ihr Gerät schreiben, müssen Sie Ihre vorkonfigurierte Lösung für die Remoteüberwachung und ein neues benutzerdefiniertes Gerät in dieser Lösung bereitstellen.
 
 ### <a name="provision-your-remote-monitoring-preconfigured-solution"></a>Bereitstellen der vorkonfigurierten Lösung für die Remoteüberwachung
-Das von Ihnen in diesem Tutorial erstellte Gerät sendet Daten an eine Instanz der vorkonfigurierten Lösung für die [Remoteüberwachung][lnk-remote-monitoring]. Führen Sie die folgenden Schritte aus, wenn Sie die vorkonfigurierte Lösung für die Remoteüberwachung noch nicht in Ihrem Azure-Konto bereitgestellt haben:
 
-1. Klicken Sie auf der Seite <https://www.azureiotsuite.com/> auf **+**, um eine Lösung zu erstellen.
-2. Klicken Sie im Bereich **Remoteüberwachung** auf **Auswählen**, um die Lösung zu erstellen.
-3. Geben Sie auf der Seite **Create Remote monitoring solution** (Remoteüberwachungslösung erstellen) einen **Lösungsnamen** Ihrer Wahl ein, wählen Sie die gewünschte **Region** für die Bereitstellung aus, und wählen Sie dann das gewünschte Azure-Abonnement aus. Klicken Sie dann auf **Lösung erstellen**.
-4. Warten Sie, bis der Bereitstellungsvorgang abgeschlossen ist.
-
-> [!WARNING]
-> Die vorkonfigurierten Lösungen verwenden abrechenbare Azure-Dienste. Achten Sie darauf, die vorkonfigurierte Lösung aus dem Abonnement zu entfernen, wenn Sie fertig sind, um unnötige Gebühren zu vermeiden. Sie können eine vorkonfigurierte Lösung vollständig aus Ihrem Abonnement entfernen, indem Sie auf die Seite <https://www.azureiotsuite.com/> zugreifen.
-> 
-> 
+Das von Ihnen in diesem Tutorial erstellte **Kühlgerät** sendet Daten an eine Instanz der vorkonfigurierten Lösung für die [Remoteüberwachung](../articles/iot-suite/iot-suite-remote-monitoring-explore.md). Wenn Sie die vorkonfigurierte Lösung für die Remoteüberwachung noch nicht in Ihrem Azure-Konto bereitgestellt haben, lesen Sie den Artikel [Deploy the remote monitoring preconfigured solution](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md) (Bereitstellen der vorkonfigurierten Lösung für die Remoteüberwachung).
 
 Wenn der Bereitstellungsprozess für die Remoteüberwachungslösung abgeschlossen ist, klicken Sie auf **Starten** , um das Lösungsdashboard im Browser zu öffnen.
 
-![Lösungsdashboard][img-dashboard]
+![Das Lösungsdashboard](media/iot-suite-selector-connecting/dashboard.png)
 
 ### <a name="provision-your-device-in-the-remote-monitoring-solution"></a>Bereitstellen des Geräts in der Remoteüberwachungslösung
+
 > [!NOTE]
-> Wenn Sie bereits ein Gerät in der Lösung bereits bereitgestellt haben, können Sie diesen Schritt überspringen. Für das Erstellen der Clientanwendung müssen Sie die Anmeldeinformationen des Geräts kennen.
-> 
-> 
+> Wenn Sie bereits ein Gerät in der Lösung bereits bereitgestellt haben, können Sie diesen Schritt überspringen. Für das Erstellen der Clientanwendung benötigen Sie die Anmeldeinformationen für das Gerät.
 
-Damit ein Gerät eine Verbindung mit der vorkonfigurierten Lösung herstellen kann, muss es sich mit gültigen Anmeldeinformationen bei IoT Hub identifizieren können. Sie können die Anmeldeinformationen für das Gerät aus dem Lösungsdashboard abrufen. Sie fügen die Anmeldeinformationen für das Gerät später in diesem Tutorial zu Ihrer Clientanwendung hinzu.
+Damit ein Gerät eine Verbindung mit der vorkonfigurierten Lösung herstellen kann, muss es sich mit gültigen Anmeldeinformationen bei IoT Hub identifizieren können. Sie können die Anmeldeinformationen für das Gerät von der Seite **Geräte** der Lösung abrufen. Sie fügen die Anmeldeinformationen für das Gerät später in diesem Tutorial zu Ihrer Clientanwendung hinzu.
 
-Um Ihrer Remoteüberwachungslösung ein Gerät hinzuzufügen, führen Sie im Lösungsdashboard die folgenden Schritte aus:
+Um Ihrer Lösung für die Remoteüberwachung ein Gerät hinzuzufügen, führen Sie in der Lösung auf der Seite **Geräte** die folgenden Schritte durch:
 
-1. Klicken Sie in der linken unteren Ecke des Dashboards auf **Gerät hinzufügen**.
-   
-   ![Hinzufügen eines Geräts][1]
-2. Klicken Sie im Bereich **Benutzerdefiniertes Gerät** auf **Neue hinzufügen**.
-   
-   ![Hinzufügen eines benutzerdefinierten Geräts][2]
-3. Wählen Sie die Option **Ich möchte meine eigene Geräte-ID definieren**. Geben Sie eine Geräte-ID wie **mydevice** ein, und klicken Sie auf **ID prüfen**, um zu prüfen, ob der Name bereits verwendet wird. Klicken Sie dann auf **Erstellen**, um das Gerät bereitzustellen.
-   
-   ![Hinzufügen einer Geräte-ID][3]
-4. Notieren Sie sich die Anmeldeinformationen des Geräts (Geräte-ID, IoT Hub-Hostname und Geräteschlüssel). Ihre Clientanwendung benötigt diese Werte, um eine Verbindung mit der Remoteüberwachungslösung herzustellen. Klicken Sie anschließend auf **Fertig**.
-   
-    ![Anzeigen von Geräteanmeldeinformationen][4]
-5. Wählen Sie Ihr Gerät im Lösungsdashboard in der Liste mit den Geräten aus. Klicken Sie anschließend im Bereich **Gerätedetails** auf **Gerät aktivieren**. Der Status Ihres Geräts lautet jetzt **Wird ausgeführt**. Die Remoteüberwachungslösung kann jetzt Telemetriedaten von Ihrem Gerät empfangen und Methoden auf dem Gerät aufrufen.
+1. Wählen Sie **Bereitstellen** und unter **Gerätetyp** dann **Physisch**:
 
-[img-dashboard]: ./media/iot-suite-selector-connecting/dashboard.png
-[1]: ./media/iot-suite-selector-connecting/suite0.png
-[2]: ./media/iot-suite-selector-connecting/suite1.png
-[3]: ./media/iot-suite-selector-connecting/suite2.png
-[4]: ./media/iot-suite-selector-connecting/suite3.png
+    ![Bereitstellen eines physischen Geräts](media/iot-suite-selector-connecting/devicesprovision.png)
 
-[lnk-what-are-preconfig-solutions]: ../articles/iot-suite/iot-suite-what-are-preconfigured-solutions.md
-[lnk-remote-monitoring]: ../articles/iot-suite/iot-suite-remote-monitoring-sample-walkthrough.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+1. Geben Sie als Geräte-ID **Physical-chiller** ein. Wählen Sie die Optionen **Symmetrischer Schlüssel** und **Schlüssel automatisch generieren**:
+
+    ![Auswählen von Geräteoptionen](media/iot-suite-selector-connecting/devicesoptions.png)
+
+Um die Anmeldeinformationen zu ermitteln, anhand derer Ihr Gerät eine Verbindung mit der vorkonfigurierten Lösung herstellen muss, navigieren Sie in Ihrem Browser zum Azure-Portal. Melden Sie sich bei Ihrem Abonnement an.
+
+1. Suchen Sie die Ressourcengruppe mit den Azure-Diensten, die Ihre Lösung für die Remoteüberwachung verwendet. Die Ressourcengruppe weist denselben Namen wie die Lösung für die Remoteüberwachung auf, die Sie bereitgestellt haben.
+
+1. Navigieren Sie in dieser Ressourcengruppe zu IoT Hub. Wählen Sie dann **Device Explorer**:
+
+    ![Device Explorer](media/iot-suite-selector-connecting/deviceexplorer.png)
+
+1. Wählen Sie die **Geräte-ID**, die Sie in der Lösung für die Remoteüberwachung auf der Seite **Geräte** erstellt haben.
+
+1. Notieren Sie sich die Werte für die **Geräte-ID** und den **Primärschlüssel**. Sie verwenden diese Werte, wenn Sie einen Code hinzufügen, um eine Verbindung zwischen Ihrem Gerät und der Lösung herzustellen.
+
+Sie haben nun ein physisches Gerät in der vorkonfigurierten Lösung für die Remoteüberwachung bereitgestellt. In den folgenden Abschnitten implementieren Sie die Clientanwendung, die mithilfe der Anmeldeinformationen für das Gerät eine Verbindung mit Ihrer Lösung herstellt.
+
+Die Clientanwendung implementiert das integrierte Gerätemodell des **Kühlers**. Das Gerätemodell einer vorkonfigurierten Lösung gibt folgende Informationen im Zusammenhang mit einem Gerät an:
+
+* Die Eigenschaften, die das Gerät der Lösung meldet. Beispiel: Ein **Kühlgerät** meldet Informationen zur Firmware und zum Standort.
+* Die Arten von Telemetriedaten, die das Gerät an die Lösung sendet. Beispiel: Ein **Kühlgerät** sendet Temperatur-, Luftfeuchtigkeits- und Druckwerte.
+* Die Methoden, die Sie mit der Lösung zur Ausführung auf dem Gerät planen können. Beispiel: Ein **Kühlgerät** muss die Methoden **Reboot**, **FirmwareUpdate**, **EmergencyValveRelease** und  **IncreasePressuree** implementieren.

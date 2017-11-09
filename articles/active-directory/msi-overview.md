@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/17/2017
+ms.date: 10/31/2017
 ms.author: skwan
-ms.openlocfilehash: 803d0ad64d331dd331e5bab718484cb2fc8247d5
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 473a9e3aa3b6ad79a5f50a37c8aadc1bba79f5ae
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/01/2017
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen
 
@@ -50,12 +50,14 @@ Testen Sie ein Tutorial für verwaltete Dienstidentitäten, um mehr über End-to
 <br><br>
 | Für MSI aktivierte Ressourcen | Lernen Sie Folgendes: |
 | ------- | -------- |
-| Azure-VM (Windows) | [Zugreifen auf Azure Resource Manager mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-arm.md) |
+| Azure-VM (Windows) | [Zugreifen auf Azure Data Lake Store mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-datalake.md) |
+|                    | [Zugreifen auf Azure Resource Manager mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-arm.md) |
+|                    | [Zugreifen auf Azure SQL mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-sql.md) |
 |                    | [Zugreifen auf Azure Storage über einen Zugriffsschlüssel mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-storage.md) |
 |                    | [Zugreifen auf Azure Storage über SAS mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-storage-sas.md) |
-|                    | [Zugreifen auf Azure SQL mit einer Windows-VM-MSI](msi-tutorial-windows-vm-access-sql.md) |
 |                    | [Access a non-Azure AD resource with a Windows VM Managed Service Identity and Azure Key Vault (Zugreifen auf eine Nicht-Azure-Ressource mit einer Windows-VM-MSI und Azure Key Vault)](msi-tutorial-windows-vm-access-nonaad.md) |
-| Azure-VM (Linux)   | [Zugreifen auf Azure Resource Manager mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-arm.md) |
+| Azure-VM (Linux)   | [Zugreifen auf Azure Data Lake Store mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-datalake.md) |
+|                    | [Zugreifen auf Azure Resource Manager mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-arm.md) |
 |                    | [Zugreifen auf Azure Storage über einen Zugriffsschlüssel mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-storage.md) |
 |                    | [Zugreifen auf Azure Storage über SAS mit einer Linux-VM-MSI](msi-tutorial-linux-vm-access-storage-sas.md) |
 |                    | [Zugreifen auf eine Nicht-Azure AD-Ressource mit einer Linux-VM-MSI und Azure Key Vault](msi-tutorial-linux-vm-access-nonaad.md) |

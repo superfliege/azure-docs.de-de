@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d64425d067df92998538c78d1ca3a1650502b77a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 35b8a443f9105fd2c39445c48b6ddf02cf357022
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – Häufig gestellte Fragen
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung von Version 2 des Data Factory-Diensts in der Vorschau lesen Sie die Informationen zu [häufig gestellten Fragen zu Data Factory Version 2](../frequently-asked-questions.md).
+
 ## <a name="general-questions"></a>Allgemeine Fragen
 ### <a name="what-is-azure-data-factory"></a>Was ist Azure Data Factory?
 Data Factory ist ein cloudbasierter Datenintegrationsdienst, der das **Verschieben und Transformieren von Daten automatisiert**. Genau wie ein Betrieb, in dem Anlagen Rohmaterialien verarbeiten und in Endprodukte umwandeln, organisiert Data Factory vorhandene Dienste so, dass Rohdaten gesammelt und in nutzbare Informationen transformiert werden.

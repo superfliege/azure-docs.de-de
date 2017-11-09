@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/15/2017
+ms.date: 11/01/2017
 ms.author: maroche
-ms.openlocfilehash: fd687bb74a22b0483225c509171edaa67f1c49d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8176a952107a630d42d557e568a230f1cdc840aa
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="how-to-connect-to-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
 ## <a name="introduction"></a>Einführung
@@ -65,7 +65,7 @@ Um es einfacher zu machen für Benutzer, die eine Datenquelle finden, aber keine
  ![Verbindungsinformationen mit Anweisungen zum Anfordern des Zugriffs](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
 ## <a name="summary"></a>Zusammenfassung
-Durch die Registrierung einer Datenquelle in **Azure Data Catalog** werden strukturelle und beschreibende Metadaten aus der Datenquelle in den Katalogdienst kopiert, sodass die darin enthaltenen Daten leichter auffindbar sind. Nachdem eine Datenquelle registriert und gefunden wurde, können Benutzer über das Menü „Öffnen in“ im **Azure Data Catalog**-Portal oder mit ihren bevorzugten Tools eine Verbindung mit der Datenquelle herstellen.
+Durch die Registrierung einer Datenquelle in **Azure Data Catalog** werden strukturelle und beschreibende Metadaten aus der Datenquelle in den Katalogdienst kopiert, sodass die darin enthaltenen Daten leichter auffindbar sind. Nachdem eine Datenquelle registriert und gefunden wurde, können Benutzer über das Menü „Öffnen in“ im **Azure Data Catalog**-Portal oder mit ihren bevorzugten Tools eine Verbindung mit der Datenquelle herstellen. oder mit ihren bevorzugten Tools eine Verbindung mit der Datenquelle herstellen.
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md) .

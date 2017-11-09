@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: victorh
 keywords: 
-ms.openlocfilehash: 56cf1fad074754f1ddf9452d6d96f3d6c1028afe
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: e43b9c7a854bc7150247a2b92d2d37ad6d74c705
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack-Datencenterintegration: Identität
 
@@ -26,7 +26,7 @@ Die folgende Tabelle zeigt die Unterschiede zwischen den Auswahlmöglichkeiten f
 ||Physisch getrennt|Physisch verbunden|
 |---------|---------|---------|
 |Abrechnung|Muss „Capacity“ sein<br> Nur Enterprise Agreement (EA)|„Capacity“ oder nutzungsbasiert<br>EA oder Cloud Solution Provider (CSP)|
-|Identität|Muss AD FS sein|Azure AD oder AD FS|
+|Identity|Muss AD FS sein|Azure AD oder AD FS|
 |Marketplace-Syndikation|Derzeit nicht verfügbar|Unterstützt<br>BYOL Lizenzierung|
 |Registrierung|Empfohlen, erfordert Wechselmedium<br> und ein separates verbundenes Gerät.|Automatisiert|
 |Patch und Update|Erforderlich, erfordert Wechselmedium<br> und ein separates verbundenes Gerät.|Updatepaket kann direkt aus dem Internet<br> in Azure Stack heruntergeladen werden.|
@@ -103,7 +103,7 @@ Verwenden Sie für diesen Vorgang einen Computer in Ihrem Datencenternetzwerk, d
 Der Graph-Dienst in Azure Stack verwendet die folgenden Protokolle und Ports für die Kommunikation mit dem Ziel-Active Directory:
 
 
-|Typ|Port|Protokoll|
+|Typ|Port|Protocol|
 |---------|---------|---------|
 |LDAP|389|TCP und UDP|
 |LDAP SSL|636|TCP|

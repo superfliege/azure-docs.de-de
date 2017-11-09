@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d3c8c79170e2f369a89c4ab0588e057d0228b573
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93e6c87a9d445ca448509a256247fb5e4749ec1c
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="understanding-outbound-connections-in-azure"></a>Grundlegendes zu ausgehenden Verbindungen in Azure
 
@@ -42,7 +42,7 @@ In diesem Szenario gehört die VM nicht zu einem Azure Load Balancer-Pool, und i
 
 SNAT Ports sind begrenzte Ressourcen, die sich erschöpfen können. Es ist wichtig, ihre Nutzung zu verstehen. Pro Datenfluss zu einer einzelnen IP-Zieladresse wird ein SNAT-Port genutzt. Für mehrere Datenflüsse zur gleichen IP-Zieladresse belegt jeder Datenfluss einen einzelnen SNAT-Port. Dadurch wird sichergestellt, dass die Datenflüsse eindeutig sind, wenn sie von der gleichen öffentlichen IP-Adresse stammen und die gleiche IP-Zieladresse haben. Mehrere Datenflüsse mit jeweils einer anderen IP-Zieladresse haben einen gemeinsamen SNAT-Port. Die IP-Zieladresse sorgt für Eindeutigkeit der Datenflüsse.
 
-Sie können [Log Analytics für Azure Load Balancer](load-balancer-monitor-log.md) und [Warnungsereignisprotokolle zum Überwachen auf Meldungen zur SNAT-Portauslastung](load-balancer-monitor-log.md#alert-event-log) verwenden. Sobald SNAT-Portressourcen erschöpft sind, sind ausgehende Datenflüsse erst wieder möglich, nachdem SNAT-Ports von vorhandenen Datenflüssen freigegeben wurden. Der Lastenausgleich verwendet ein vierminütiges Leerlauftimeout für die Freigabe von SNAT-Ports.
+Sie können [Log Analytics für Azure Load Balancer](load-balancer-monitor-log.md) und [Warnungsereignisprotokoll](load-balancer-monitor-log.md#alert-event-log) zum Überwachen der Integrität ausgehender Verbindungen verwenden. Sobald SNAT-Portressourcen erschöpft sind, sind ausgehende Datenflüsse erst wieder möglich, nachdem SNAT-Ports von vorhandenen Datenflüssen freigegeben wurden. Der Lastenausgleich verwendet ein vierminütiges Leerlauftimeout für die Freigabe von SNAT-Ports.  Lesen Sie [VM mit öffentlicher IP-Adresse auf Instanzebene (mit oder ohne Lastenausgleich)](#vm-with-an-instance-level-public-ip-address-with-or-without-load-balancer) im folgenden Abschnitt sowie [Verwalten der SNAT-Auslastung](#snatexhaust).
 
 ## <a name="load-balanced-vm-with-no-instance-level-public-ip-address"></a>VM mit Lastenausgleich ohne öffentliche IP-Adresse auf Instanzebene
 
@@ -52,11 +52,11 @@ Wenn die dem Lastenausgleich unterliegende VM einen ausgehenden Datenfluss erste
 
 SNAT Ports sind begrenzte Ressourcen, die sich erschöpfen können. Es ist wichtig, ihre Nutzung zu verstehen. Pro Datenfluss zu einer einzelnen IP-Zieladresse wird ein SNAT-Port genutzt. Für mehrere Datenflüsse zur gleichen IP-Zieladresse belegt jeder Datenfluss einen einzelnen SNAT-Port. Dadurch wird sichergestellt, dass die Datenflüsse eindeutig sind, wenn sie von der gleichen öffentlichen IP-Adresse stammen und die gleiche IP-Zieladresse haben. Mehrere Datenflüsse mit jeweils einer anderen IP-Zieladresse haben einen gemeinsamen SNAT-Port. Die IP-Zieladresse sorgt für Eindeutigkeit der Datenflüsse.
 
-Sie können [Log Analytics für Azure Load Balancer](load-balancer-monitor-log.md) und [Warnungsereignisprotokolle zum Überwachen auf Meldungen zur SNAT-Portauslastung](load-balancer-monitor-log.md#alert-event-log) verwenden. Sobald SNAT-Portressourcen erschöpft sind, sind ausgehende Datenflüsse erst wieder möglich, nachdem SNAT-Ports von vorhandenen Datenflüssen freigegeben wurden. Der Lastenausgleich verwendet ein vierminütiges Leerlauftimeout für die Freigabe von SNAT-Ports.
+Sie können [Log Analytics für Azure Load Balancer](load-balancer-monitor-log.md) und [Warnungsereignisprotokoll](load-balancer-monitor-log.md#alert-event-log) zum Überwachen der Integrität ausgehender Verbindungen verwenden. Sobald SNAT-Portressourcen erschöpft sind, sind ausgehende Datenflüsse erst wieder möglich, nachdem SNAT-Ports von vorhandenen Datenflüssen freigegeben wurden. Der Lastenausgleich verwendet ein vierminütiges Leerlauftimeout für die Freigabe von SNAT-Ports.  Lesen Sie den folgenden Abschnitt sowie [Verwalten der SNAT-Auslastung](#snatexhaust).
 
 ## <a name="vm-with-an-instance-level-public-ip-address-with-or-without-load-balancer"></a>VM mit öffentlicher IP-Adresse auf Instanzebene (mit oder ohne Lastenausgleich)
 
-In diesem Szenario ist der VM eine öffentliche IP-Adresse auf Instanzebene (Instance Level Public IP, ILPIP) zugewiesen. Es ist unerheblich, ob der virtuelle Computer einen Lastenausgleich hat oder nicht. Wenn eine öffentliche IP-Adresse auf Instanzebene verwendet wird, kommt SNAT nicht zum Einsatz. Die VM nutzt die öffentliche IP-Adresse auf Instanzebene für alle ausgehenden Datenflüsse. Wenn Ihre Anwendung viele ausgehende Datenflüsse auslöst und SNAT überlastet sein sollte, sollten Sie das Zuweisen einer öffentlichen IP-Adresse auf Instanzebene erwägen, um SNAT-Engpässe zu vermeiden.
+In diesem Szenario ist der VM eine öffentliche IP-Adresse auf Instanzebene (Instance Level Public IP, ILPIP) zugewiesen. Es ist unerheblich, ob der virtuelle Computer einen Lastenausgleich hat oder nicht. Wenn eine öffentliche IP-Adresse auf Instanzebene verwendet wird, kommt SNAT nicht zum Einsatz. Die VM nutzt die öffentliche IP-Adresse auf Instanzebene für alle ausgehenden Datenflüsse. Wenn Ihre Anwendung viele ausgehende Datenflüsse auslöst und SNAT überlastet sein sollte, sollten Sie das Zuweisen einer öffentlichen IP-Adresse auf Instanzebene erwägen, um SNAT-Engpässe zu mindern.
 
 ## <a name="discovering-the-public-ip-used-by-a-given-vm"></a>Ermitteln der von einer bestimmten VM verwendeten öffentlichen IP-Adresse
 
@@ -66,14 +66,31 @@ Es gibt viele Möglichkeiten, die öffentliche IP-Quelladresse einer ausgehenden
 
 ## <a name="preventing-public-connectivity"></a>Verhindern öffentlicher Verbindungen
 
-Mitunter ist es nicht wünschenswert, dass eine VM einen ausgehenden Datenfluss erstellen darf. Oder ggf. gibt es eine Anforderung zum Festlegen, welche Ziele ausgehende Datenflüsse erreichen dürfen. In diesem Fall verwenden Sie [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) zum Bestimmen der Ziele, die die VM erreichen kann. Wenn Sie eine Netzwerksicherheitsgruppe einer VM mit Lastenausgleich zuordnen, müssen Sie die [Standardtags](../virtual-network/virtual-networks-nsg.md#default-tags) und [Standardregeln](../virtual-network/virtual-networks-nsg.md#default-rules) beachten.
+Mitunter ist es nicht wünschenswert, dass eine VM einen ausgehenden Datenfluss erstellen darf, oder ggf. besteht die Anforderung, zu verwalten, welche Ziele mit ausgehenden Datenflüsse erreicht werden können, oder bei welchen Zielen eingehende Datenflüsse beginnen können. In diesem Fall verwenden Sie [Netzwerksicherheitsgruppen (NSG)](../virtual-network/virtual-networks-nsg.md) sowohl zum Verwalten der Ziele, die die VM erreichen kann, als auch des öffentlichen Ziels, das eingehende Datenflüsse initiieren kann. Wenn Sie eine Netzwerksicherheitsgruppe einer VM mit Lastenausgleich zuordnen, müssen Sie die [Standardtags](../virtual-network/virtual-networks-nsg.md#default-tags) und [Standardregeln](../virtual-network/virtual-networks-nsg.md#default-rules) beachten.
 
 Sie müssen sicherstellen, dass die VM Anforderungen von Integritätstests von Azure Load Balancer empfangen kann. Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Standardtag AZURE_LOADBALANCER blockiert, misslingt Ihr VM-Integritätstests, weshalb die VM mit „Außer Betrieb“ markiert wird. Der Lastenausgleich beendet das Senden neuer Datenflüsse an diese VM.
+
+## <a name="snatexhaust"></a>Verwalten der SNAT-Auslastung
+
+Für SNAT verwendete kurzlebige Ports sind eine erschöpfbare Ressource, wie in [Eigenständige VM ohne öffentliche IP-Adresse auf Instanzebene](#standalone-vm-with-no-instance-level-public-ip-address) und [VM mit Lastenausgleich ohne öffentliche IP-Adresse auf Instanzebene](#standalone-vm-with-no-instance-level-public-ip-address) beschrieben.  
+
+Wenn Sie wissen, dass Sie viele ausgehende Verbindungen zum gleichen Ziel initiieren werden, Fehler bei ausgehenden Verbindungen feststellen, oder vom Support darauf hingewiesen werden, dass Sie zu viele SNAT-Ports in Anspruch nehmen, stehen Ihnen mehrere Abhilfeoptionen zur Verfügung.  Überprüfen Sie diese Optionen, und entscheiden Sie, welche für Ihr Szenario am besten geeignet ist.  Möglicherweise erleichtern eine oder mehrere Ihnen die Verwaltung dieses Szenarios.
+
+### <a name="assign-an-instance-level-public-ip-to-each-vm"></a>Zuweisen einer öffentlichen IP-Adresse auf Instanzebene an jeden virtuellen Computer
+So erhalten Sie das Szenario [VM mit öffentlicher IP-Adresse auf Instanzebene (mit oder ohne Lastenausgleich)](#vm-with-an-instance-level-public-ip-address-with-or-without-load-balancer).  Alle kurzlebigen Ports der für jede VM verwendeten öffentlichen IP-Adresse sind für die VM verfügbar (im Gegensatz zu Szenarien, in denen kurzlebige Ports einer öffentlichen IP-Adresse gemeinsam mit allen VMs genutzt werden, die dem jeweiligen Back-End-Pool zugeordnet sind).
+
+### <a name="modify-application-to-use-connection-pooling"></a>Ändern der Anwendung für die Verwendung von Verbindungspooling
+Sie können den Bedarf an kurzlebigen Ports, die für SNAT verwendet werden, durch Einsatz von Verbindungspooling in der Anwendung reduzieren.  Zusätzliche Datenflüsse zu dem gleichen Ziel erfordern zusätzliche Ports.  Wenn Sie denselben Fluss für mehrere Anforderungen wiederverwenden, wird für Ihre mehrfachen Anforderungen ein einzelner Port genutzt.
+
+### <a name="modify-application-to-use-less-aggressive-retry-logic"></a>Ändern der Anwendung für die Verwendung weniger aggressiver Wiederholungslogik
+Sie können den Bedarf an kurzlebigen Ports durch Verwendung einer weniger aggressiven Wiederholungslogik reduzieren.  Wenn die für SNAT verwendeten kurzlebigen Ports erschöpft sind, führen aggressive oder Brute-Force-Wiederholungsversuche ohne Verfalls- und Backofflogik zu anhaltender Erschöpfung.  Für kurzlebige Ports ist ein (nicht veränderbarer) 4-Minuten-Leerlauftimeout festgelegt, und wenn die Wiederholungen zu aggressiv sind, ist kein Regenerieren von der Erschöpfung von selbst mehr möglich.
 
 ## <a name="limitations"></a>Einschränkungen
 
 Wenn [einem Lastenausgleich mehrere (öffentliche) IP-Adressen zugeordnet sind](load-balancer-multivip-overview.md), sind diese öffentlichen IP-Adressen Kandidaten für ausgehende Datenflüsse.
 
 Azure verwendet einen Algorithmus, um basierend auf der Größe des Pools die Anzahl der verfügbaren SNAT-Ports zu bestimmen.  Dies ist zu diesem Zeitpunkt nicht konfigurierbar.
+
+Ausgehende Verbindungen haben einen 4-Minuten-Leerlauftimeout.  Dieser ist nicht veränderbar.
 
 Es ist wichtig, zu beachten, dass die Anzahl der verfügbaren SNAT-Ports nicht direkt in die Anzahl der Verbindungen übersetzt wird. Weiter oben finden Sie Angaben darüber, wann und wie SNAT-Ports zugeordnet werden und wie diese begrenzte Ressource verwaltet wird.

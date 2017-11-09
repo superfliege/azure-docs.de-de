@@ -3,8 +3,8 @@ title: Erstellen einer Node.js-Web-App in Azure | Microsoft-Dokumentation
 description: "Stellen Sie in wenigen Minuten Ihre erste „Hallo Welt“-Node.js-App in einer Azure App Service-Web-App bereit."
 services: app-service\web
 documentationcenter: 
-author: syntaxc4
-manager: erikre
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 05/05/2017
-ms.author: cfowler
+ms.date: 10/26/2017
+ms.author: cephalin;cfowler
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 09d925ab33800ac71e5fb6def916a6748d1d02a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e5193460bf46c2b826cad371e4549a9690180f17
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Erstellen einer Node.js-Web-App in Azure
 
@@ -48,8 +48,6 @@ Führen Sie in einem Terminalfenster den folgenden Befehl aus, um das Beispiel-A
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
-
-Sie verwenden dieses Terminalfenster, um alle Befehle in diesem Schnellstart auszuführen.
 
 Navigieren Sie zum Verzeichnis mit dem Beispielcode.
 
@@ -84,10 +82,6 @@ Drücken Sie in Ihrem Terminalfenster **STRG+C**, um den Webserver zu beenden.
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)] 
 
 ![Leere Web-App-Seite](media/app-service-web-get-started-php/app-service-web-service-created.png)
-
-Sie haben nun eine neue leere Web-App in Azure erstellt.
-
-[!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
 [!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -147,7 +141,7 @@ Der Node.js-Beispielcode wird in einer Azure App Service-Web-App ausgeführt.
 response.end("Hello Azure!");
 ```
 
-Führen Sie für Ihre Änderungen in Git einen Commit aus, und übertragen Sie dann die Codeänderungen mithilfe von Push an Azure.
+Committen Sie Ihre Änderungen im lokalen Terminalfenster in Git, und übertragen Sie die Codeänderungen mithilfe von Push an Azure.
 
 ```bash
 git commit -am "updated output"

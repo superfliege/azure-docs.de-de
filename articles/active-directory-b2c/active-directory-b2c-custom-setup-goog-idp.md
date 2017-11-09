@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: yoelh
-ms.openlocfilehash: e0aaf710d230f7667fff32b50ddb64104509d740
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d84dde1f70023abcfd0c15f5425d3cbaeb8c765
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Hinzufügen von Google+ als OAuth2-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien
 
@@ -98,7 +98,7 @@ Verbund mit Google+-Konten erfordert einen geheimen Clientschlüssel für das Go
 4.  Verwenden Sie für **Optionen** die Option **Manuell**.
 5.  Verwenden Sie für **Name** den Wert `GoogleSecret`.  
     Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
-6.  Geben Sie in das Feld **Geheimnis** Ihr Microsoft-Anwendungsgeheimnis aus „https://apps.dev.microsoft.com“ ein.
+6.  Geben Sie in das Feld **Geheimnis** das zuvor kopierte Geheimnis Ihrer Google-Anwendung aus der [Google-Entwicklerkonsole](https://console.developers.google.com/) ein.
 7.  Verwenden Sie für **Schlüsselverwendung**, die Option **Signatur**.
 8.  Klicken Sie auf **Erstellen**
 9.  Vergewissern Sie sich, dass Sie den Schlüssel `B2C_1A_GoogleSecret` erstellt haben.

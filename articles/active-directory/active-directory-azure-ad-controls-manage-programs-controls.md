@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: f6d7c2a1a3e3bf78b568f2f6b079476e403b9911
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9e96d0a68c2ebd2c05887c71a4054e0ec35b7bc9
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="manage-programs-and-their-controls"></a>Verwalten von Programmen und ihren Steuerelementen 
 
-Azure AD enthält Zugriffsüberprüfungen für Gruppenmitglieder und den Anwendungszugriff. Diese sind Beispiele für Steuerelemente, die sicherstellen, dass Sie im Blick behalten können, wer Zugriff besitzt. Diese Steuerelemente ermöglichen Unternehmen das effiziente Verwalten ihrer Governance-, Risikomanagement und Konformitätsanforderungen.  
+Azure Active Directory (Azure AD) enthält Zugriffsüberprüfungen von Gruppenmitgliedern und Anwendungszugriff. Diese Beispiele für Steuerelemente sichern den Überblick, wer auf Gruppenmitgliedschaften und Anwendungen Ihrer Organisation zugreifen kann. Diese Steuerelemente ermöglichen Organisationen das effiziente Verwalten ihrer Governance-, Risikomanagement- und Konformitätsanforderungen.
 
-## <a name="how-to-manage-programs-and-their-controls"></a>So verwalten Sie Programme und Steuerelemente
-Sie können die Nachverfolgung und das Erfassen von Zugriffsüberprüfungen für verschiedene Zwecke vereinfachen, indem Sie diese Aufgaben in Programmen organisieren.  Jede Zugriffsüberprüfung kann mit einem Programm verknüpft werden, sodass bei der Vorbereitung von Berichten für einen Prüfer nur die Zugriffsüberprüfungen angezeigt werden, die für eine bestimmte Initiative innerhalb des Bereichs liegen.
+## <a name="create-and-manage-programs-and-their-controls"></a>Erstellen und Verwalten von Programmen und ihren Steuerelementen
+Sie können die Nachverfolgung und das Erfassen von Zugriffsüberprüfungen für verschiedene Zwecke vereinfachen, indem Sie diese Aufgaben in Programmen organisieren. Jede Zugriffsüberprüfung kann mit einem Programm verknüpft werden. Wenn Sie dann Berichte für einen Auditor vorbereiten, sind nur die Zugriffsüberprüfungen im Bereich einer bestimmten Initiative sichtbar.
 
-Um eine Liste der Programme anzuzeigen, navigieren Sie zur Seite [Zugriffsüberprüfung](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) und wechseln dann auf die Registerkarte **Programme**.
+Um eine Liste der Programme anzuzeigen, navigieren Sie zur Seite [Zugriffsüberprüfungen](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), und wählen Sie **Programme**.
 
-Ein Programm (Standardprogramm“) ist immer vorhanden.  Wenn Sie die Rolle eines globalen Administrators ausüben, können Sie weitere Programme erstellen.  Sie können z. B. ein Programm für jede Konformitätsinitiative oder für jedes Geschäftsziel verwenden.
+**Standardprogramm** ist immer vorhanden. Wenn Sie die Rolle eines globalen Administrators ausüben, können Sie weitere Programme erstellen. Sie können z.B. ein Programm für jede Konformitätsinitiative oder für jedes Geschäftsziel verwenden.
 
 Wenn ein Programm nicht mehr benötigt wird und keine Steuerelemente mit ihm verknüpft sind, können Sie es löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen einer Zugriffsüberprüfung für Mitglieder einer Gruppe oder den Zugriff auf eine Anwendung](active-directory-azure-ad-controls-create-access-review.md)
+[Erstellen einer Zugriffsüberprüfung für Mitglieder einer Gruppe oder den Zugriff auf eine Anwendung](active-directory-azure-ad-controls-create-access-review.md)
 

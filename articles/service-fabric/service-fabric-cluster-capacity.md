@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: chackdan
-ms.openlocfilehash: 04964175f06675a486fcf252f194f0d790acea4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7c4a00d2c9be2d6b4d3d0b4dfb152deb2d0e217
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Nachfolgend sind einige Aspekte aufgeführt, die Sie dabei berücksichtigen müssen.
@@ -92,6 +92,11 @@ Sie können die Dauerhaftigkeitsstufe für jeden Ihrer Knotentypen auswählen. F
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>Empfehlungen, wann die Dauerhaftigkeitsstufe „Silber“ oder „Gold“ verwendet werden soll
 
 Verwenden Sie die Silber- oder Gold-Dauerhaftigkeit für alle Knotentypen, die zustandsbehaftete Dienste hosten, für die Sie eine häufige horizontale Herunterskalierung (Reduzierung der VM-Instanzanzahl) erwarten und Sie bevorzugen, dass sich Bereitstellungsvorgänge zugunsten einer Vereinfachung dieser Herunterskalierungsvorgänge verzögern. Die Szenarien mit horizontaler Hochskalierung (Hinzufügen von virtuellen Computerinstanzen) haben keinen Einfluss auf Ihre Wahl der Dauerhaftigkeitsstufe, dies ist nur bei horizontaler Hochskalierung der Fall.
+
+### <a name="changing-durability-levels"></a>Ändern von Dauerhaftigkeitsstufen
+- Knotentypen mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ können nicht auf „Bronze“ herabgestuft werden.
+- Das Upgrade von „Bronze“ auf „Silber“ oder „Gold“ kann einige Stunden dauern.
+- Stellen Sie beim Ändern der Dauerhaftigkeitsstufe sicher, dass sie sowohl in der Service Fabric-Erweiterungskonfiguration in der VMSS-Ressource als auch in der Knotentypdefinition in der Service Fabric-Clusterressource aktualisiert wird. Diese Werte müssen übereinstimmen.
 
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Betriebsempfehlungen für den Knotentyp, dessen Dauerhaftigkeitsstufe Sie auf „Silber“ oder „Gold“ festgelegt haben.
 

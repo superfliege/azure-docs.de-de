@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 0117398a1ad2a8519f50732d173bec9fbb7411b5
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: d3178413e894c095235dde067b369e3554375aa6
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Fragen zum Azure VM Backup-Dienst
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen, damit Sie sich schnell mit den Komponenten von Azure VM Backup vertraut machen können. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -59,6 +59,9 @@ Die Datenträgerwiederherstellung sollte in folgenden Fällen verwendet werden:
   * Zum Steuern der Namenskonvention für erstellte Ressourcen
   * Zum Hinzufügen des virtuellen Computers zu einer Verfügbarkeitsgruppe
   * Für eine beliebige andere Konfiguration, die nur über PowerShell/eine deklarative Vorlagendefinition erreicht werden kann
+  
+### <a name="can-i-use-backups-of-unmanaged-disk-vm-to-restore-after-i-upgrade-my-disks-to-managed-disks"></a>Kann ich Sicherungen einer VM eines nicht verwalteten Datenträgers zur Wiederherstellung verwenden, nachdem ich meine Datenträger zu verwalteten Datenträgern upgegradet habe?
+Ja, Sie können Sicherungen verwenden, die vor der Migration von nicht verwalteten zu verwalteten Datenträgern erstellt wurden. Ein Auftrag zum Wiederherstellen einer VM erstellt standardmäßig eine VM mit nicht verwalteten Datenträgern. Sie können die Funktion „Datenträger wiederherstellen“ verwenden, um Datenträger wiederherzustellen. Diese können Sie verwenden, um eine VM auf verwalteten Datenträgern zu erstellen. 
 
 ## <a name="manage-vm-backups"></a>Verwalten von VM-Sicherungen
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>Was passiert, wenn ich eine Sicherungsrichtlinie für VMs ändere?

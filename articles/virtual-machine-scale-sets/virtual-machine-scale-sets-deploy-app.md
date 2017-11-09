@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 0ff8a178d883e3b51294485e556e65da52dbf327
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 7e03d5e2bbdb1b3b206fa7fa455f7dce7951f02b
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Bereitstellen der App in VM-Skalierungsgruppen
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In diesem Artikel werden Möglichkeiten zum Erstellen eines benutzerdefinierten VM-Image für Instanzen in einer Skalierungsgruppe oder zum automatischen Ausführen von Installationsskripts auf vorhandenen VM-Instanzen aufgezeigt. Außerdem erfahren Sie, wie Sie Anwendungs- oder Betriebssystemupdates für eine Skalierungsgruppe verwalten.
@@ -172,7 +172,7 @@ Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. ni
 
 Weitere Informationen sowie die Beispieldatei *cloud-init.txt* finden Sie unter [Anpassen einer Linux-VM in Azure mit cloud-init](../virtual-machines/linux/using-cloud-init.md).
 
-Fügen Sie zum Erstellen einer Skalierungsgruppe und Verwenden einer cloud-init-Datei dem Befehl [az vmss create](/cli/azure/vmss#create) den Parameter `--custom-data` hinzu, und geben Sie den Namen einer cloud-init-Datei an. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* in *myResourceGroup* erstellt, und VM-Instanzen werden mit einer Datei mit dem Namen *cloud-init.txt* konfiguriert. Geben Sie Ihre eigenen Namen wie folgt ein:
+Fügen Sie zum Erstellen einer Skalierungsgruppe und zum Verwenden einer cloud-init-Datei dem Befehl [az vmss create](/cli/azure/vmss#create) den Parameter `--custom-data` hinzu, und geben Sie den Namen einer cloud-init-Datei an. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* in *myResourceGroup* erstellt, und VM-Instanzen werden mit einer Datei mit dem Namen *cloud-init.txt* konfiguriert. Geben Sie Ihre eigenen Namen wie folgt ein:
 
 ```azurecli
 az vmss create \

@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 177627d8f72dbd04fb918ac7ece18321246a9c62
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a44fdbfb973d75c21aa87e9b9d0eea8fb2b3392
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen) 
 
@@ -40,8 +40,7 @@ Nachdem der Kauf von SAP HANA in Azure (große Instanzen) zwischen Ihnen und dem
 - Geschäftliche Kontaktinformationen (samt E-Mail-Adresse und Telefonnummer)
 - Technische Kontaktinformationen (samt E-Mail-Adresse und Telefonnummer)
 - Technische Kontaktinformationen zum Netzwerk (samt E-Mail-Adresse und Telefonnummer)
-- Region der Azure-Bereitstellung („USA, Westen“, „USA, Osten“, „Australien, Osten“, „Australien, Südosten“, „Europa, Westen“ und „Europa, Norden“ ab Juli) 
-- 2017)
+- Region der Azure-Bereitstellung („USA, Westen“, „USA, Osten“, „Australien, Osten“, „Australien, Südosten“, „Europa, Westen“ und „Europa, Norden“ ab Juli 2017)
 - SKU für SAP HANA in Azure (große Instanzen) (Konfiguration)
 - Wie bereits im Dokument mit der Übersicht und Architektur für HANA (große Instanzen) ausgeführt, für jede Azure-Region, in der eine Bereitstellung erfolgt:
     - Ein /29-IP-Adressbereich für ER-P2P-Verbindungen, über die Azure-VNets mit HANA (große Instanzen) verbunden werden

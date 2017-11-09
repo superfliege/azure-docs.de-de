@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 11/01/2017
 ms.author: jingwang
-ms.openlocfilehash: e4f92c0c4d9307837ef6c760acd8eaa846938ded
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e6e56dd7ce1a16cadf35f9efe959ac490a65071
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Store mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -51,6 +51,11 @@ Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren S
 - Anwendungs-ID
 - Anwendungsschlüssel
 - Mandanten-ID
+
+[!TIP]
+> Stellen Sie sicher, dass Sie dem Dienstprinzipal die entsprechende Berechtigung in Azure Data Lake Store erteilen:
+>- Erteilen Sie als Quelle mindestens die Datenzugriffsberechtigung **Lesen und Ausführen**, um den Inhalt eines Ordners aufzulisten und zu kopieren, oder die Berechtigung zum **Lesen**, um eine einzelne Datei zu kopieren. Es gelten keine Anforderungen für die Zugriffssteuerung auf Kontoebene.
+>- Erteilen Sie als Senke mindestens die Datenzugriffsberechtigung **Schreiben und Ausführen**, um untergeordnete Elemente im Ordner zu erstellen. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quellen als auch Senken befinden sich in der Cloud), um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen, gewähren Sie in der Kontozugriffssteuerung (IAM) mindestens die **Leser**-Rolle. Wenn Sie diese IAM-Rolle vermeiden möchten, [erstellen Sie eine Azure IR-Instanz](create-azure-integration-runtime.md#create-azure-ir) mit dem Standort von Data Lake Store, und ordnen Sie sie wie im folgenden Beispiel im verknüpften Data Lake Store-Dienst zu.
 
 Folgende Eigenschaften werden unterstützt:
 

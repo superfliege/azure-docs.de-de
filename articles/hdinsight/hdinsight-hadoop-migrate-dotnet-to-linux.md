@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/04/2017
 ms.author: larryfr
-ms.openlocfilehash: df931d0f76498506cfc946501e4d385d0dfead80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 978606aa5f16842f8198ee67a65b476b4f560ab7
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrieren von .NET-Lösungen für Windows-basierte HDInsight-Cluster zu Linux-basierten HDInsight-Clustern
 
@@ -33,7 +33,7 @@ Mono-Version 4.2.1 ist in HDInsight-Version 3.5 enthalten. Weitere Informationen
 Weitere Informationen zur Kompatibilität von Mono und .NET finden Sie im Dokument [Compatibility (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) (Kompatibilität von Mono).
 
 > [!IMPORTANT]
-> Das SCP.NET-Framework ist kompatibel mit Mono. Weitere Informationen zur Verwendung von SCP.NET mit Mono finden Sie unter [Verwenden von Visual Studio zum Entwickeln von C#-Topologien für Apache Storm in HDInsight](hdinsight-storm-develop-csharp-visual-studio-topology.md).
+> Das SCP.NET-Framework ist kompatibel mit Mono. Weitere Informationen zur Verwendung von SCP.NET mit Mono finden Sie unter [Verwenden von Visual Studio zum Entwickeln von C#-Topologien für Apache Storm in HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md).
 
 ## <a name="automated-portability-analysis"></a>Automatisierte Portabilitätsanalyse
 
@@ -74,8 +74,8 @@ Weitere Informationen zum Zugriff auf Protokolle finden Sie in den folgenden Art
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwenden von C# mit MapReduce in HDInsight](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [Verwenden von C# mit MapReduce in HDInsight](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [Verwenden benutzerdefinierter C#-Funktionen mit Hive und Pig](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Verwenden benutzerdefinierter C#-Funktionen mit Hive und Pig](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Entwickeln von C#-Topologien für Storm in HDInsight](hdinsight-storm-develop-csharp-visual-studio-topology.md)
+* [Entwickeln von C#-Topologien für Storm in HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)

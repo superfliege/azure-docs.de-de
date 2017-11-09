@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 11/03/2017
 ms.author: kgremban
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: fa8f63c8da5019ed42ea8ec067d3d3d174976dd8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5eb681e5f5c3b5944ff2d101056ae7c7cd60fac2
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 
@@ -49,9 +49,6 @@ Bei einer RDS-Bereitstellung werden die Rollen „RD-Web“ und „RD-Gateway“
 - Sie sollten bereits [RDS bereitgestellt](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) und das [Anwendungsproxy aktiviert](active-directory-application-proxy-enable.md) haben.
 
 - In diesem Szenario wird davon ausgegangen, dass Ihre Endbenutzer mit dem Internet Explorer auf Windows 7- oder Windows 10-Desktops verwenden, die über die Seite von RD-Web eine Verbindung herstellen. Weitere Informationen zur Unterstützung anderer Betriebssysteme finden Sie unter [Unterstützung für andere Clientkonfigurationen](#support-for-other-client-configurations).
-
-  >[!NOTE]
-  >Das Windows 10 Creators Update wird derzeit nicht unterstützt.
 
 - Aktivieren Sie im Internet Explorer das RDS-ActiveX-Add-On.
 

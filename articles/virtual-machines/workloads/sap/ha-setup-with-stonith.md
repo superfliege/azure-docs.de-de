@@ -11,16 +11,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/01/2017
+ms.date: 10/31/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6db4a9308ede1744081f114c61f1ca0c303706e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9122cbb66c6089009dccccea9b985e3521d45179
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="high-availability-setup-in-suse-using-the-stonith"></a>Hochverfügbarkeitskonfiguration unter SUSE mit STONITH
+# <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Hochverfügbarkeitskonfiguration unter SUSE mit STONITH
 Dieses Dokument enthält detaillierte Schritt-für-Schritt-Anweisungen zur Konfiguration der Hochverfügbarkeit unter dem Betriebssystem SUSE mit dem STONITH-Gerät.
 
 **Haftungsausschluss:** *Dieser Leitfaden ist im Rahmen von Tests der Konfiguration in der Microsoft HANA-Umgebung für große Instanzen entstanden, die erfolgreich ausgeführt wird. Da das Microsoft Service Management-Team für große HANA-Instanzen kein Betriebssystem unterstützt, müssen Sie sich möglicherweise an SUSE wenden, um weitere Informationen zur Fehlerbehebung oder Klärung zur Betriebssystemebene zu erhalten. Das Microsoft Service Management-Team konfiguriert das STONITH-Gerät, unterstützt Sie im vollen Umfang bei der Behandlung von Problemen mit dem STONITH-Gerät und kann hierzu zu Rate gezogen werden.*
@@ -34,24 +34,25 @@ Um mit SUSE-Clustern die Hochverfügbarkeit zu konfigurieren, müssen folgende V
 - NTP (Zeitserver) ist eingerichtet.
 - Sie haben die aktuelle Version der SUSE-Dokumentation für die Hochverfügbarkeitskonfiguration gelesen und verstanden.
 
-### <a name="setup-details"></a>Details zur Konfiguration
-- In diesem Handbuch wird die folgende Konfiguration verwendet:
-- Betriebssystem: SUSE 12 SP1
-- Große HANA-Instanzen: 2 x S192 (4 Sockets, 2 TB)
+### <a name="set-up-details"></a>Einzelheiten zur Konfiguration
+- In diesem Leitfaden wird die folgende Konfiguration verwendet:
+- Betriebssystem: SLES 12 SP1 für SAP
+- Große HANA-Instanzen: 2 x S192 (vier Sockets, 2 TB)
 - HANA-Version: HANA 2.0 SP1
 - Servernamen: „sapprdhdb95“ (node1) und „sapprdhdb96“ (node2)
 - STONITH-Gerät: iSCSI-basiertes STONITH-Gerät
-- NTP-Konfiguration auf einem der HANA-Knoten (große Instanz)
+- Konfiguration von NTP auf einem der HANA-Knoten (große Instanz)
 
 Wenn Sie große HANA-Instanzen mit HSR einrichten, können Sie beim Microsoft Service Management-Team eine Anfrage zur Konfiguration von STONITH einreichen. Wenn Sie bereits ein Bestandskunde sind, der große HANA-Instanzen bereitgestellt hat, und das STONITH-Gerät für Ihre vorhandenen Blades konfigurieren müssen, müssen Sie für das Microsoft Service Management-Team folgende Informationen im Serviceanforderungsformular (Service Request Form, SRF) angeben. Sie können das SRF-Formular über den Technical Account Manager oder Ihren Microsoft-Kontakt für das Onboarding großer HANA-Instanzen anfordern. Neukunden können STONITH-Geräte bei der Bereitstellung anfordern. Die Eingaben sind im Bereitstellungsanforderungsformular verfügbar.
 
 - Servername und Server-IP-Adresse (z.B. „myhanaserver1“, „10.35.0.1“)
 - Standort (z.B. „USA, Osten“)
-- Kundenname (z.B. „Microsoft“)
+- Name des Kunden (z.B. „Microsoft“)
+- SID – HANA-Systembezeichner (z.B. „H11“)
 
 Sobald das STONITH-Gerät konfiguriert ist, erhalten Sie vom Microsoft Service Management-Team den SBD-Gerätenamen und die IP-Adresse des iSCSI-Speichers, mit denen Sie das STONITH-Gerät konfigurieren können. 
 
-Führen Sie zum Konfigurieren der End-to-End-Hochverfügbarkeit mit STONITH folgende Schritte durch:
+Für die Konfiguration der End-to-End-Hochverfügbarkeit mit STONITH müssen folgende Schritte durchgeführt werden:
 
 1.  Identifizieren des SBD-Geräts
 2.  Initialisieren des SBD-Geräts
@@ -65,14 +66,18 @@ Führen Sie zum Konfigurieren der End-to-End-Hochverfügbarkeit mit STONITH folg
 ## <a name="1---identify-the-sbd-device"></a>1.   Identifizieren des SBD-Geräts
 In diesem Abschnitt wird beschrieben, wie das SBD-Gerät für Ihre Konfiguration ermittelt wird, nachdem das Microsoft Service Management-Team das STONITH-Gerät konfiguriert hat. **Dieser Abschnitt gilt nur für Bestandskunden.** Wenn Sie ein Neukunde sind, stellt Ihnen das Microsoft Service Management-Team den SBD-Gerätenamen zur Verfügung. Sie können diesen Abschnitt dann überspringen.
 
-1.1 Ändern Sie */etc/iscsi/initiatorname.isci* in *iqn.1996-04.de.suse:01: <Tenant><Location><SID><NodeNumber>*.  
-Diese Zeichenfolge wird vom Microsoft Service Management-Team bereitgestellt. Dieser Schritt muss auf **beiden** Knoten durchgeführt werden, jedoch variiert die Knotenanzahl auf jedem Knoten.
+1.1 Ändern Sie */etc/iscsi/initiatorname.isci* in 
+``` 
+iqn.1996-04.de.suse:01:<Tenant><Location><SID><NodeNumber> 
+```
+
+Diese Zeichenfolge wird vom Microsoft Service Management-Team bereitgestellt. Ändern Sie die Datei auf **beiden** Knoten, die Knotenanzahl variiert jedoch je nach Knoten.
 
 ![initiatorname.png](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1.2 Ändern Sie */etc/iscsi/iscsid.conf*: Legen Sie *node.session.timeo.replacement_timeout=5* und *node.startup = automatic* fest. Dieser Schritt muss auf **beiden** Knoten durchgeführt werden.
+1.2 Ändern Sie */etc/iscsi/iscsid.conf*: Legen Sie *node.session.timeo.replacement_timeout=5* und *node.startup = automatic* fest. Ändern Sie die Datei auf **beiden** Knoten.
 
-1.3 Führen Sie den Ermittlungsbefehl aus. Es werden vier Sitzungen angezeigt. Dieser Schritt muss auf beiden Knoten durchgeführt werden.
+1.3 Führen Sie den Ermittlungsbefehl aus. Es werden vier Sitzungen angezeigt. Führen Sie ihn auf beiden Knoten aus.
 
 ```
 iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
@@ -80,14 +85,14 @@ iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
 
 ![iSCSIadmDiscovery.png](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
 
-1.4 Führen Sie den Befehl zum Anmelden beim iSCSI-Gerät aus. Es werden vier Sitzungen angezeigt. Dieser Schritt muss auf **beiden** Knoten durchgeführt werden.
+1.4 Führen Sie den Befehl zum Anmelden beim iSCSI-Gerät aus. Es werden vier Sitzungen angezeigt. Führen Sie ihn auf **beiden** Knoten aus.
 
 ```
 iscsiadm -m node -l
 ```
 ![iSCSIadmLogin.png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1.5 Führen Sie das Skript zum erneuten Prüfen aus: *rescan-scsi-bus.sh*.  Hierdurch werden die neuen für Sie erstellten Datenträger angezeigt.  Führen Sie es auf beiden Knoten aus. Sie sollten eine LUN-Nummer größer als Null sehen (z.B. 1, 2).
+1.5 Führen Sie das Skript zum erneuten Prüfen aus: *rescan-scsi-bus.sh*.  Dieses Skript zeigt die neuen für Sie erstellten Datenträger an.  Führen Sie ihn auf beiden Knoten aus. Sie sollten eine LUN-Nummer größer als Null sehen (z.B. 1, 2).
 
 ```
 rescan-scsi-bus.sh
@@ -120,7 +125,7 @@ sbd -d <SBD Device Name> dump
 ## <a name="3---configuring-the-cluster"></a>3.   Konfigurieren des Clusters
 In diesem Abschnitt werden die Schritte zum Konfigurieren des SUSE-Hochverfügbarkeitsclusters beschrieben.
 ### <a name="31-package-installation"></a>3.1 Paketinstallation
-3.1.1 Überprüfen Sie, ob die Muster „ha_sles“ und „SAPHanaSR-doc“ installiert sind. Wenn dies nicht der Fall ist, installieren Sie sie. Dieser Schritt muss auf **beiden** Knoten durchgeführt werden.
+3.1.1 Überprüfen Sie, ob die Muster „ha_sles“ und „SAPHanaSR-doc“ installiert sind. Wenn sie nicht installiert sein sollten, installieren Sie sie. Installieren Sie sie auf **beiden** Knoten.
 ```
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
@@ -129,7 +134,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
 ![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3.2 Einrichten des Clusters
-3.2.1 Sie können das Cluster entweder mit dem Befehl *ha-cluster-init* oder dem Assistenten yast2 konfigurieren. In diesem Fall haben wir den Assistenten yast2 verwendet. Führen Sie diesen Schritt **nur auf dem primären Knoten** durch.
+3.2.1 Sie können den Cluster entweder mit dem Befehl *ha-cluster-init* oder dem Assistenten yast2 konfigurieren. In diesem Fall haben wir den Assistenten yast2 verwendet. Führen Sie diesen Schritt **nur auf dem primären Knoten** durch.
 
 Navigieren Sie zu „yast2“ > „Hochverfügbarkeit“ > „Cluster“. ![yast-control-center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![yast-hawk-install.png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
@@ -170,7 +175,7 @@ modprobe softdog
 ```
 ![modprobe-softdog.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
 
-4.2 Aktualisieren Sie die Datei */etc/sysconfig/sbd* wie folgt auf **beiden** Knoten.
+4.2 Aktualisieren Sie die Datei */etc/sysconfig/sbd* wie folgt auf **beiden** Knoten:
 ```
 SBD_DEVICE="<SBD Device Name>"
 ```
@@ -182,7 +187,7 @@ modprobe softdog
 ```
 ![modprobe-softdog-command.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
-4.4 Stellen Sie sicher, dass Softdog wie folgt auf **beiden** Knoten ausgeführt wird.
+4.4 Stellen Sie sicher, dass Softdog wie folgt auf **beiden** Knoten ausgeführt wird:
 ```
 lsmod | grep dog
 ```
@@ -212,7 +217,7 @@ sbd  -d <SBD Device Name> list
 ```
 ![sbd-list-message.png](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
 
-4.9 Um die SBD-Konfiguration zu übernehmen, aktualisieren Sie die Datei */etc/sysconfig/sbd* wie folgt. Dieser Schritt muss auf **beiden** Knoten durchgeführt werden.
+4.9 Um die SBD-Konfiguration zu übernehmen, aktualisieren Sie die Datei */etc/sysconfig/sbd* wie folgt. Aktualisieren Sie die Datei auf **beiden** Knoten.
 ```
 SBD_DEVICE=" <SBD Device Name>" 
 SBD_WATCHDOG="yes" 
@@ -256,7 +261,7 @@ crm_mon
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. Konfigurieren von Clustereigenschaften und -ressourcen 
 In diesem Abschnitt werden die Schritte zum Konfigurieren von Clusterressourcen beschrieben.
-In diesem Beispiel haben wir folgende Ressource eingerichtet. Der Rest kann (bei Bedarf) anhand des Hochverfügbarkeitsleitfadens für SUSE konfiguriert werden. Sie müssen diese Konfiguration nur auf **einem der Knoten** ausführen. Führen Sie die folgende Konfiguration auf dem primären Knoten aus:
+In diesem Beispiel haben wir folgende Ressource eingerichtet. Der Rest kann (bei Bedarf) anhand des Hochverfügbarkeitsleitfadens für SUSE konfiguriert werden. Führen Sie die Konfiguration nur auf **einem der Knoten** aus. Führen Sie die folgende Konfiguration auf dem primären Knoten aus:
 
 - Cluster-Bootstrap
 - STONITH-Gerät
@@ -264,7 +269,7 @@ In diesem Beispiel haben wir folgende Ressource eingerichtet. Der Rest kann (bei
 
 
 ### <a name="71-cluster-bootstrap-and-more"></a>7.1 Cluster-Bootstrap etc.
-Fügen Sie ein Cluster-Bootstrap hinzu. Erstellen Sie die Datei, und fügen Sie den Text wie folgt hinzu.
+Fügen Sie ein Cluster-Bootstrap hinzu. Erstellen Sie die Datei, und fügen Sie den Text wie folgt hinzu:
 ```
 sapprdhdb95:~ # vi crm-bs.txt
 # enter the following to crm-bs.txt
@@ -337,7 +342,7 @@ Beenden Sie nun den Pacemaker-Dienst auf **node2** und die Ressourcen, für die 
 
 
 ## <a name="9-troubleshooting"></a>9. Problembehandlung
-In diesem Abschnitt werden einige Fehlerzenarien beschrieben, die bei der Einrichtung auftreten können. Diese Probleme müssen nicht zwingend bei Ihnen auftreten.
+In diesem Abschnitt werden einige Fehlerszenarien beschrieben, die bei der Einrichtung auftreten können. Diese Probleme müssen nicht zwingend bei Ihnen auftreten.
 
 ### <a name="scenario-1-cluster-node-not-online"></a>Szenario 1: Der Clusterknoten ist nicht online.
 Wenn der Knoten im Cluster-Manager nicht als online angezeigt wird, können Sie Folgendes versuchen, um ihn wieder online zu schalten.
@@ -376,7 +381,7 @@ In diesem Dokument haben wir den grafischen yast2-Bildschirm zum Konfigurieren d
 
 Wenn yast2 nicht mit der grafischen Ansicht geöffnet wird, führen Sie die folgenden Schritte durch.
 
-Installieren Sie die erforderlichen Pakete. Sie müssen als „root“-Benutzer angemeldet sein und die SMT-Konfiguration durchgeführt haben, um die Pakete herunterladen bzw. installieren zu können.
+Installieren Sie die erforderlichen Pakete. Sie müssen als „root“-Benutzer angemeldet sein und SMT für den Download bzw. die Installation der Pakete konfiguriert haben.
 
 Navigieren Sie zum Installieren der Pakete zur Option „Empfohlene Pakete installieren...“ unter „yast“ > „Software“ > „Softwareverwaltung“ > „Abhängigkeiten“. Der folgende Screenshot zeigt die erwarteten Bildschirme.
 >[!NOTE]

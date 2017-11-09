@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/01/2017
+ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: b19aaa652f2c15573ded632ca1348e1a6752f080
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a63a15782b85a48552fd913d5d3f8aaaae7db44
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="build-a-web-service-front-end-for-your-application-using-aspnet-core"></a>Erstellen eines Webdienst-Front-Ends für Ihre Anwendung mithilfe von ASP.NET Core
 Standardmäßig enthalten Azure Service Fabric-Dienste keine öffentliche Web-Schnittstelle. Um die Funktionalität Ihrer Anwendung für HTTP-Clients verfügbar zu machen, müssen Sie ein Webprojekt als Einstiegspunkt erstellen und dann darüber mit den einzelnen Diensten kommunizieren.
@@ -210,12 +210,6 @@ Der zustandsbehaftete Dienst ist nun bereit, Datenverkehr von anderen Diensten �
     ![Anzeige des zustandsbehafteten Zählerwerts im Browser][browser-aspnet-counter-value]
    
     Aktualisieren Sie den Browser regelmäßig, um den aktuellen Zählerwert anzuzeigen.
-
-## <a name="kestrel-and-weblistener"></a>Kestrel und WebListener
-
-Der standardmäßige, als Kestrel bekannte ASP.NET Core-Webserver wird [derzeit für die Verarbeitung direkten Internetverkehrs nicht unterstützt](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel). Daher verwendet die zustandslose Dienstvorlage von ASP.NET Core standardmäßig [WebListener](https://docs.microsoft.com/aspnet/core/fundamentals/servers/weblistener) für Service Fabric. 
-
-Weitere Informationen zu „Kestrel“ und „WebListener“ in Service Fabric-Diensten finden Sie unter [ASP.NET Core in zuverlässigen Service Fabric-Diensten](service-fabric-reliable-services-communication-aspnetcore.md).
 
 ## <a name="connecting-to-a-reliable-actor-service"></a>Herstellen einer Verbindung mit einem Reliable Actor-Dienst
 Dieses Tutorial konzentriert sich auf das Hinzufügen des Web-Front-Ends, das mit einem zustandsbehafteten Dienst kommuniziert. Allerdings können Sie ein sehr ähnliches Modell befolgen, um mit Akteuren zu sprechen. Wenn Sie ein Reliable Actor-Projekt erstellen, generiert Visual Studio automatisch ein Schnittstellenprojekt für Sie. Diese Schnittstelle können Sie verwenden, um einen Akteur-Proxy im Webprojekt für die Kommunikation mit den Akteur zu generieren. Der Kommunikationskanal wird automatisch bereitgestellt. Es ist also nicht erforderlich, Vorgänge wie die `ServiceRemotingListener` -Einrichtung wie beim zustandsbehafteten Dienst in diesem Tutorial durchzuführen.

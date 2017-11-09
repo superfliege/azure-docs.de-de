@@ -12,14 +12,14 @@ ms.custom: business continuity
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: NA
+ms.workload: Active
 ms.date: 10/11/2017
 ms.author: sashan
-ms.openlocfilehash: 0b424e2b260ec527f33cdbfe49d1d981b14edfda
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: ef9463e464928b8fa8e64019037a41711cb77830
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Übersicht: Failovergruppen und aktive Georeplikation
 Mit der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Datenbanken am gleichen oder an verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen für Abfragen und Failover zur Verfügung, wenn ein Rechenzentrum ausgefallen oder keine Verbindung mit der primären Datenbank möglich ist. Das Failover muss durch die Anwendung des Benutzers manuell eingeleitet werden. Nach einem Failover hat die neue primäre Datenbank einen anderen Verbindungsendpunkt. 
@@ -116,6 +116,8 @@ Beachten Sie, dass das Failover die Aktualisierung von DNS-Einträgen einschlie�
 Beachten Sie, dass die Anwendung in der DR-Region nicht unbedingt in eine andere Verbindungszeichenfolge verwenden muss.  
 - **Vorbereiten auf Datenverluste:** Wenn ein Ausfall erkannt wird, löst SQL automatisch ein Lese-/Schreib-Failover aus, sofern nach unseren Erkenntnissen keine Daten verloren gegangen sind. Andernfalls wartet es für den mit **GracePeriodWithDataLossHours** festgelegten Zeitraum. Wenn Sie **GracePeriodWithDataLossHours** angegeben haben, müssen Sie auf Datenverluste vorbereitet sein. Bei Ausfällen priorisiert Azure grundsätzlich die Verfügbarkeit. Wenn keine Datenverluste auftreten dürfen, legen Sie **GracePeriodWithDataLossHours** auf eine ausreichend große Zahl fest, z.B. 24 Stunden. 
 
+> [!IMPORTANT]
+> Bei Pools für elastische Datenbanken mit 800 oder weniger DTUs und mehr als 250 Datenbanken, die die Georeplikation verwenden, können Probleme wie längere geplante Failover und Leistungseinbußen auftreten.  Diese Probleme treten häufiger bei schreibintensiven Workloads auf, wenn Georeplikations-Endpunkte geographisch weit auseinander liegen, oder wenn mehrere sekundäre Endpunkte für jede Datenbank verwendet werden.  Ein Anzeichen für derartige Probleme ist eine steigende Verzögerung bei der Georeplikation.  Diese Verzögerung können Sie mit [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) überwachen.  Wenn diese Probleme auftreten, können Sie sie entschärfen, indem Sie z.B. die Anzahl von Pool-DTUs erhöhen oder die Anzahl von Datenbanken für die Georeplikation im gleichen Pool verringern.
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade oder Downgrade einer primären Datenbank
 Sie können für eine primäre Datenbank ein Upgrade oder Downgrade auf eine andere Leistungsstufe (im gleichen Diensttarif) ausführen, ohne die Verbindung mit sekundären Datenbanken zu trennen. Bei einem Upgrade wird empfohlen, zuerst das Upgrade für die sekundäre Datenbank und anschließend das Upgrade für die primäre Datenbank auszuführen. Drehen Sie bei einem Downgrade die Reihenfolge um: Führen Sie zuerst das Downgrade für die primäre und anschließend das Downgrade für die sekundäre Datenbank aus. Wenn Sie ein Upgrade oder Downgrade der Datenbank auf eine andere Dienstebene durchführen, wird diese Empfehlung erzwungen. 

@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 6ffcfcb7ed071a12b0b3495ad534fd00f6d6ad99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a97c6af38b1d3191447ad16a789a034a9d475422
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Wie und warum werden Anwendungen zu Azure AD hinzugefügt?
 Wenn Sie in Ihrer Instanz von Azure Active Directory eine Anwendungsliste anzeigen, fragen Sie sich vielleicht zunächst, woher die Anwendungen stammen und warum sie dort angezeigt werden.  Dieser Artikel beschreibt im Überblick, wie Anwendungen im Verzeichnis dargestellt werden, und vermittelt Kontext, anhand dem Sie besser verstehen, wie die Anwendungen in Ihr Verzeichnis kamen.
@@ -84,8 +84,8 @@ Sie selbst können zum Beispiel folgende Anwendungen hinzufügen:
   * Transformationsregeln für Ansprüche
   * Attributzuordnungen (Benutzerbereitstellung)
 * Weitere Informationen zu Dienstprinzipalen und Anwendungsobjekten finden Sie in der Referenzdokumentation zur Azure AD Graph-REST-API.  *Hinweis*: Die Dokumentation zur Azure AD Graph-API ist das Dokument, das zurzeit am nächsten an eine Schemareferenz für Azure AD herankommt.  
-  * [Anwendung](https://msdn.microsoft.com/library/azure/dn151677.aspx)
-  * [Dienstprinzipal](https://msdn.microsoft.com/library/azure/dn194452.aspx)
+  * [Anwendung](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [Dienstprinzipal](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="how-are-apps-added-to-my-azure-ad-instance"></a>Wie werden Anwendungen meiner Azure AD-Instanz hinzugefügt?
 Es gibt viele Möglichkeiten, eine Anwendung in Azure AD hinzuzufügen:

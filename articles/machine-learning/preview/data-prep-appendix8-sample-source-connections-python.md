@@ -1,6 +1,6 @@
 ---
 title: "Beispiele für zusätzliche mögliche Quelldatenverbindungen für die Azure Machine Learning-Datenvorbereitung | Microsoft-Dokumentation"
-description: "Dieses Dokument enthält eine Reihe von Beispielen für mögliche Quelldatenverbindungen für die Azure ML-Datenvorbereitung."
+description: "Dieses Dokument enthält eine Reihe von Beispielen für Quelldatenverbindungen, die mit der Azure Machine Learning-Datenvorbereitung möglich sind."
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -12,25 +12,25 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 550cca100314009f63eec2136e8c65426d8bf07f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9aaf4329b25cb189146949afed89cf15619ba592
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="sample-of-custom-source-connections-python"></a>Beispiele für benutzerdefinierte Quellverbindungen (Python) 
-Lesen Sie vor diesem Anhang den Artikel [Python-Erweiterbarkeit – Übersicht](data-prep-python-extensibility-overview.md).
+Lesen Sie vor diesem Anhang den Artikel [Python-Erweiterungen für die Datenvorbereitung](data-prep-python-extensibility-overview.md).
 
-## <a name="loading-data-from-dataworld"></a>Laden von Daten aus data.world
+## <a name="load-data-from-dataworld"></a>Laden von Daten aus „data.world“
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
 #### <a name="register-yourself-at-dataworld"></a>Registrieren bei data.world
-Ein API-Token ist erforderlich, das von der data.world-Website bezogen werden kann.
+Sie benötigen ein API-Token von der data.world-Website.
 
 #### <a name="install-dataworld-library"></a>Installieren der data.world-Bibliothek
 
-Öffnen Sie über _Datei > Befehlszeilenschnittstelle öffnen_ die Befehlszeilenschnittstelle von Azure Machine Learning Workbench.
+Öffnen Sie über **File** > **Open command-line interface** die Befehlszeilenschnittstelle von Azure Machine Learning Workbench.
 
 ```console
 pip install git+git://github.com/datadotworld/data.world-py.git
@@ -45,24 +45,24 @@ Nun sollten Sie data.world-Bibliotheken importieren können.
 
 #### <a name="load-data-into-data-preparation"></a>Laden von Daten bei der Datenvorbereitung
 
-Erstellen Sie einen neuen skriptbasierten Datenfluss, und laden Sie mithilfe des folgenden Skripts die Daten aus data.world.
+Erstellen Sie einen neuen skriptbasierte Datenfluss. Laden Sie dann mithilfe des folgenden Skripts Daten aus „data.world“.
 
 ```python
 #paths = df['Path'].tolist()
 
 import datadotworld as dw
 
-#load the dataset
+#Load the dataset.
 lds = dw.load_dataset('data-society/the-simpsons-by-the-data')
 
-#Load specific data frame from the dataset
+#Load specific data frame from the dataset.
 df = lds.dataframes['simpsons_episodes']
 
 ```
 
-## <a name="load-cosmosdb-data-into-data-preparation"></a>Laden von CosmosDB-Daten bei der Datenvorbereitung
+## <a name="load-azure-cosmos-db-data-into-data-preparation"></a>Laden von Azure Cosmos DB-Daten in die Datenvorbereitung
 
-Erstellen Sie einen neuen skriptbasierten Datenfluss, und laden Sie mithilfe des folgenden Skripts die Daten aus CosmosDB. (Zuerst müssen die Bibliotheken installiert werden. Weitere Informationen hierzu finden Sie im oben verknüpften Referenzdokument.)
+Erstellen Sie einen neuen skriptbasierten Datenfluss, und laden Sie mithilfe des folgenden Skripts die Daten aus Azure Cosmos DB. (Die Bibliotheken müssen zuerst installiert werden. Weitere Informationen finden Sie im vorherigen Verweisdokument, zu dem wir einen Link bereitstellen.)
 
 ```python
 import pydocumentdb
@@ -77,7 +77,7 @@ config = {
     'DOCUMENTDB_COLLECTION': '<collectionname>'
 };
 
-# Initialize the Python DocumentDB client
+# Initialize the Python DocumentDB client.
 client = document_client.DocumentClient(config['ENDPOINT'], {'masterKey': config['MASTERKEY']})
 
 # Read databases and take first since id should not be duplicated.

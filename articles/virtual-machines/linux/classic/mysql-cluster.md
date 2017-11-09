@@ -15,15 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
-ms.openlocfilehash: 4eaf86c9ac3e4dc2b51b88383626eda774cab0e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be178a59f7c3558cc0fef89e5529893f160c649b
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>Verwenden von Gruppen mit Lastenausgleich zum Gruppieren von MySQL unter Linux
 > [!IMPORTANT]
 > Azure bietet zwei Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager](../../../resource-manager-deployment-model.md) und klassisch. Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Eine [Resource Manager-Vorlage](https://azure.microsoft.com/documentation/templates/mysql-replication/) ist verfügbar, wenn Sie einen MySQL-Cluster bereitstellen müssen.
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 Der Zweck dieses Artikels besteht darin, die unterschiedlichen verfügbaren Ansätze für die Bereitstellung hoch verfügbarer Linux-basierter Dienste in Microsoft Azure zu untersuchen und zu veranschaulichen, wobei primär die hohe Verfügbarkeit von MySQL Server untersucht wird. Ein Video, das diesen Ansatz veranschaulicht, steht unter [Channel 9](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL)zur Verfügung.
 

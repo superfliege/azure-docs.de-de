@@ -1,6 +1,6 @@
 ---
 title: "Unterstützte Inspektoren für die Azure Machine Learning-Datenvorbereitung | Microsoft-Dokumentation"
-description: "Dieses Dokument enthält eine vollständige Liste mit Inspektoren, die für die Datenvorbereitung von Azure ML verfügbar sind."
+description: "Dieses Dokument enthält eine vollständige Liste mit Inspektoren, die für die Azure Machine Learning-Datenvorbereitung verfügbar sind."
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -12,23 +12,23 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: bc14c051fb0f518b1cff2236a61d24cb052700f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 35d7c04f245e93d8cc795dca7c01c2bab5a14eb8
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="supported-inspectors-for-this-preview"></a>Unterstützte Inspektoren für diese Vorschau
+# <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Unterstützte Inspektoren für die Azure Machine Learning-Datenvorbereitung
 Dieses Dokument beschreibt den in dieser Vorschau verfügbaren Satz von Inspektoren.
 
 ## <a name="the-halo-effect"></a>Der Halo-Effekt 
-Einige Inspektoren unterstützen den Halo-Effekt. Dieser Effekt verwendet zwei unterschiedliche Farben, um die Änderung über eine Transformation sofort visuell anzuzeigen. Grau stellt den vorherigen Wert vor der aktuellen Transformation dar, blau den aktuellen Wert. Dieser Effekt kann in den Optionen aktiviert/deaktiviert werden.
+Einige Inspektoren unterstützen den Halo-Effekt. Dieser Effekt verwendet zwei unterschiedliche Farben, um die Änderung über eine Transformation sofort visuell anzuzeigen. Grau stellt den Wert vor der aktuellen Transformation dar, und Blau den aktuellen Wert. Dieser Effekt kann in den Optionen aktiviert und deaktiviert werden.
 
 ## <a name="graphical-filtering"></a>Grafische Filterung 
-Einige der Inspektoren unterstützen das Filtern von Daten, indem der Inspektor als Editor verwendet wird. Dies beinhaltet die Auswahl von grafischen Elementen und dann die Verwendung der Symbolleiste oben rechts im Inspektorfenster, um die ausgewählten Werte mithilfe des Filters ein- oder auszublenden. 
+Einige der Inspektoren unterstützen das Filtern von Daten, indem der Inspektor als Editor verwendet wird. Das Verwenden des Inspektors als Editor beinhaltet die Auswahl von grafischen Elementen und dann die Verwendung der Symbolleiste oben rechts im Inspektorfenster, um die ausgewählten Werte mithilfe des Filters ein- oder auszublenden. 
 
 ## <a name="column-statistics"></a>Spaltenstatistiken
-Für numerische Spalten bietet dieser Inspektor eine Vielzahl von verschiedenen Statistiken über die Spalte. Die Statistiken umfassen:
+Für numerische Spalten bietet dieser Inspektor eine Vielzahl von verschiedenen Statistiken über die Spalte. Die Statistiken umfassen die folgenden Messungen: 
 - Minimum
 - Unteres Quartil
 - Median
@@ -42,7 +42,8 @@ Für numerische Spalten bietet dieser Inspektor eine Vielzahl von verschiedenen 
 - Keine
 
 ## <a name="histogram"></a>Histogramm 
-Berechnet ein Histogramm einer einzelnen numerischen Spalte und zeigt es an. Standardanzahl von Buckets wird mit Scotts Regel berechnet; die Regel kann über die Optionen überschrieben werden.
+Berechnet ein Histogramm einer einzelnen numerischen Spalte und zeigt es an. Die Standardanzahl von Buckets wird anhand Scotts Regel berechnet. Die Regel kann jedoch über die Optionen überschrieben werden.
+
 Dieser Inspektor unterstützt den Halo-Effekt.
 
 
@@ -54,10 +55,10 @@ Dieser Inspektor unterstützt den Halo-Effekt.
 
 
 ### <a name="actions"></a>Actions
-Dieser Inspektor unterstützt das Filtern über Buckets, Einfach- oder Mehrfachauswahl von Buckets und das Anwenden von Filtern, wie oben beschrieben.
+Dieser Inspektor unterstützt das Filtern über Buckets, was Einfach- oder Mehrfachauswahlbuckets umfassen kann. Wenden Sie Filter wie zuvor beschrieben an.
 
-## <a name="value-counts"></a>Werteanzahlen
-Dieser Inspektor bietet eine Häufigkeitstabelle der Werte für die derzeit ausgewählte Spalte. Die Standardanzeige zeigt die obersten 6; das Limit kann in eine beliebige Zahl geändert werden, oder dass von unten nach oben gezählt wird. Dieser Inspektor unterstützt den Halo-Effekt.
+## <a name="value-counts"></a>Werteanzahl
+Dieser Inspektor bietet eine Häufigkeitstabelle der Werte für die derzeit ausgewählte Spalte. Die Standardanzeige umfasst die obersten sechs Werte. Sie können den Grenzwert jedoch beliebig ändern. Sie können auch die Anzeige der untersten anstatt der obersten Werte festlegen. Dieser Inspektor unterstützt den Halo-Effekt.
 
 ### <a name="options"></a>Optionen 
 - Anzahl der obersten Werte
@@ -67,16 +68,16 @@ Dieser Inspektor bietet eine Häufigkeitstabelle der Werte für die derzeit ausg
 
 
 ### <a name="actions"></a>Actions 
-Dieser Inspektor unterstützt das Filtern über Balken, Einfach- oder Mehrfachauswahl von Balken und das Anwenden von Filtern, wie oben beschrieben.
+Dieser Inspektor unterstützt das Filtern über Balken, was Einfach- oder Mehrfachauswahlbalken umfassen kann. Wenden Sie Filter wie zuvor beschrieben an.
 
 ## <a name="box-plot"></a>Boxplot 
-Ein Box-Whisker-Plot einer numerischen Spalte
+Ein Box-Whisker-Plot einer numerischen Spalte.
 
 ### <a name="options"></a>Optionen 
 - Gruppieren nach Spalte
 
 ## <a name="scatter-plot"></a>Punktdiagramm
-Ein Punktdiagramm für zwei numerische Spalten; die Anzahl der Stichproben wird zur Verbesserung der Leistung reduziert (Downsampling), die Stichprobengröße kann in den Optionen überschrieben werden.
+Ein Punktdiagramm für zwei numerische Spalten. Aus Leistungsgründen werden die Daten im Downsampling erfasst. Die Stichprobengröße kann in den Optionen überschrieben werden.
 
 ### <a name="options"></a>Optionen  
 - Spalte für X-Achse
@@ -99,7 +100,7 @@ Dieser Inspektor unterstützt das Filtern mit der „Klicken-und-Ziehen“-Auswa
 
 
 ## <a name="map"></a>Map 
-Eine mit Punkten gezeichnete Karte, wobei vorausgesetzt wird, dass Breiten- und Längengrad angegeben wurden. Der Breitengrad muss zuerst ausgewählt werden.
+Eine Karte mit gezeichneten Punkten, wobei vorausgesetzt wird, dass Breiten- und Längengrad angegeben wurden. Der Breitengrad muss zuerst ausgewählt werden.
 
 ### <a name="options"></a>Optionen
 - Breitengradspalte
@@ -109,5 +110,6 @@ Eine mit Punkten gezeichnete Karte, wobei vorausgesetzt wird, dass Breiten- und 
 
 
 ### <a name="actions"></a>Actions
-Dieser Inspektor unterstützt das Filtern über Punktauswahl auf der Karte. Drücken Sie STRG, und bilden Sie dann durch Klicken und Ziehen mit der Maus ein Quadrat um die Punkte. Wenden Sie dann wie zuvor beschrieben Filter an.
-Durch Auswahl von **E** auf der linken Seite der Karte kann die Größe der Karte schnell angepasst werden, um alle möglichen Punkte und keine weiteren anzuzeigen.
+Dieser Inspektor unterstützt das Filtern über Punktauswahl auf der Karte. Drücken Sie **STRG**, und bilden Sie dann durch Klicken und Ziehen mit der Maus ein Quadrat um die Punkte. Wenden Sie dann wie zuvor beschrieben Filter an.
+
+Durch Auswahl von **E** auf der linken Seite der Karte können Sie die Größe der Karte schnell anpassen, um alle möglichen Punkte anzuzeigen.

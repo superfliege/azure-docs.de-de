@@ -6,7 +6,7 @@
 
     | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **App-Name** | Global eindeutiger Name | Der Name, der Ihre neue Funktionen-App bezeichnet | 
+    | **App-Name** | Global eindeutiger Name | Der Name, der Ihre neue Funktionen-App bezeichnet Gültige Zeichen sind `a-z`, `0-9` und `-`.  | 
     | **Abonnement** | Ihr Abonnement | Das Abonnement, unter dem diese neue Funktionen-App erstellt wird. | 
     | **[Ressourcengruppe](../articles/azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Der Name der neuen Ressourcengruppe, in der die Funktionen-App erstellt wird | 
     | **[Hostingplan](../articles/azure-functions/functions-scale.md)** |   Verbrauchsplan | Der Hostingplan, der definiert, wie Ihre Ressourcen der Funktionen-App zugewiesen werden Im **Standard-Verbrauchstarif** werden Ressourcen je nach Bedarf der Funktionen dynamisch hinzugefügt. Sie bezahlen nur die Zeit, in der Ihre Funktionen ausgeführt werden.   |

@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/02/2017
+ms.date: 10/31/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50917572ef8739ddc674d3592696a1ee4a8edc10
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 09aa98a35fa8286828a99c49a33a80d5938afe3a
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA (große Instanzen) in Azure 
 
@@ -222,12 +222,12 @@ Geben Sie den Befehl `hdbuserstore` wie folgt ein:
 
 **Für HANA-Setup ohne MDC**
 ```
-hdbuserstore set <key> <host><3[instance]15> <user> <password>
+hdbuserstore set <key> <host>:<3[instance]15> <user> <password>
 ```
 
 **Für HANA-Setup mit MDC**
 ```
-hdbuserstore set <key> <host><3[instance]13> <user> <password>
+hdbuserstore set <key> <host>:<3[instance]13> <user> <password>
 ```
 
 Im folgenden Beispiel lautet der Benutzer **SCADMIN01**, der Hostname **lhanad01** und die Instanznummer **01**:
@@ -385,7 +385,7 @@ Nach Abschluss der Vorbereitungsschritte können Sie damit beginnen, die eigentl
 Es können drei Typen von Momentaufnahmesicherungen erstellt werden:
 - **HANA**: Kombinierte Momentaufnahmesicherung, bei der die Volumes mit „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) durch die koordinierte Momentaufnahme abgedeckt sind. Auf der Grundlage dieser Momentaufnahme können einzelne Dateien wiederhergestellt werden.
 - **Protokolle**: Momentaufnahmesicherung des Volumes „/hana/logbackups“. Zur Erstellung dieser Speichermomentaufnahme wird keine HANA-Momentaufnahme ausgelöst. Dieses Speichervolume ist das Volume, das die SAP HANA-Transaktionsprotokollsicherungen enthalten soll. SAP HANA-Transaktionsprotokollsicherungen werden häufiger ausgeführt, um die Protokollvergrößerung einzuschränken und potenzielle Datenverluste zu verhindern. Auf der Grundlage dieser Momentaufnahme können einzelne Dateien wiederhergestellt werden. Die Häufigkeit sollte mindestens fünf Minuten betragen.
-- **Start**: Momentaufnahme des Volumes mit der Start-LUN (Logical Unit Number, logische Gerätenummer) der großen HANA-Instanz. Diese Momentaufnahmesicherung steht nur für Typ I-SKUs großer HANA-Instanzen zur Verfügung. Auf der Grundlage der Momentaufnahme des Volumes mit der Start-LUN können keine einzelnen Dateien wiederhergestellt werden.  
+- **Start**: Momentaufnahme des Volumes mit der Start-LUN (Logical Unit Number, logische Gerätenummer) der großen HANA-Instanz. Diese Momentaufnahmesicherung steht nur für Typ I-SKUs großer HANA-Instanzen zur Verfügung. Auf der Grundlage der Momentaufnahme des Volumes mit der Start-LUN können keine einzelnen Dateien wiederhergestellt werden. Für SKUs von Typ II großer HANA-Instanzen können Sie eine Sicherung auf Betriebssystemebene durchführen und auch die einzelnen Dateien wiederherstellen. Weitere Einzelheiten finden Sie im Dokument [Vorgehensweise zum Durchführen von Betriebssystemsicherungen für SKUs von Typ II](os-backup-type-ii-skus.md).
 
 
 Die Aufrufsyntax für die drei unterschiedlichen Arten von Momentaufnahmen sieht wie folgt aus:

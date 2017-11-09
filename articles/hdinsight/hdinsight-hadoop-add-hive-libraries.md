@@ -15,11 +15,11 @@ ms.workload: big-data
 ms.date: 10/04/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 90a1ea99cbba82b49a0ff6712bcaaa5dc814810e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02fcff7cf2b40c712f0575f7885eac95f9de04b8
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>Hinzufügen benutzerdefinierter Hive-Bibliotheken beim Erstellen des HDInsight-Clusters
 
@@ -98,4 +98,4 @@ Nach der Erstellung des Clusters können Sie die durch dieses Skript hinzugefüg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Arbeiten mit Hive finden Sie unter [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md)
+Weitere Informationen zum Arbeiten mit Hive finden Sie unter [Verwenden von Hive mit HDInsight](hadoop/hdinsight-use-hive.md)

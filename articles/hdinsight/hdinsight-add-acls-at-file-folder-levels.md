@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 42d617ffeb8c2fee6be6d747b39d80b09774a1c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ca91721e691eca239478c4ac8b85e2652babdfd
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-user-permissions-at-the-file-and-folder-levels"></a>Verwalten von Benutzerberechtigungen auf Datei- und Ordnerebene
 
-Für [in die Domäne eingebundene HDInsight-Cluster](hdinsight-domain-joined-introduction.md) werden eine strenge Authentifizierung für Azure AD-Benutzer (Azure Active Directory) und Richtlinien für die *rollenbasierte Zugriffssteuerung* (RBAC) für verschiedene Dienste wie YARN und Hive verwendet. Wenn Sie als Standarddatenspeicher für Ihren Cluster Azure Storage oder Windows Azure Storage Blobs (WASB) nutzen, können Sie auch Berechtigungen auf Datei- und Ordnerebene erzwingen. Sie können Apache Ranger verwenden, um den Zugriff auf die Dateien des Clusters für Ihre synchronisierten Azure AD-Benutzer und -Gruppen zu steuern.
+Für [in die Domäne eingebundene HDInsight-Cluster](./domain-joined/apache-domain-joined-introduction.md) werden eine strenge Authentifizierung für Azure AD-Benutzer (Azure Active Directory) und Richtlinien für die *rollenbasierte Zugriffssteuerung* (RBAC) für verschiedene Dienste wie YARN und Hive verwendet. Wenn Sie als Standarddatenspeicher für Ihren Cluster Azure Storage oder Windows Azure Storage Blobs (WASB) nutzen, können Sie auch Berechtigungen auf Datei- und Ordnerebene erzwingen. Sie können Apache Ranger verwenden, um den Zugriff auf die Dateien des Clusters für Ihre synchronisierten Azure AD-Benutzer und -Gruppen zu steuern.
 <!-- [synchronized Azure AD users and groups](hdinsight-sync-aad-users-to-cluster.md). -->
 
 Die Apache Ranger-Instanz für in Domänen eingebundene HDInsight-Cluster ist mit dem Ranger-WASB-Dienst vorkonfiguriert. Der Ranger-WASB-Dienst ist ein Richtlinienverwaltungsmodul, das Ranger-HDFS ähnelt, aber über eine andere Erzwingung der Zugriffsrichtlinien von Ranger verfügt. Für den Ranger-WASB-Dienst lautet die Standardantwort DENY, wenn eine eingehende Ressourcenanforderung nicht über eine passende Ranger-Richtlinie verfügt. Der Ranger-Dienst übergibt die Berechtigungsüberprüfung nicht an WASB.
@@ -69,7 +69,7 @@ Wenn ein Platzhalter (`*`) im Pfad für eine Richtlinie enthalten ist, gilt der 
 
 ## <a name="manage-file-and-folder-level-permissions-with-apache-ranger"></a>Verwalten von Berechtigungen auf Datei- und Ordnerebene mit Apache Ranger
 
-Führen Sie, falls noch nicht geschehen, [diese Anweisungen](hdinsight-domain-joined-configure.md) aus, um einen neuen in die Domäne eingebundenen Cluster bereitzustellen.
+Führen Sie, falls noch nicht geschehen, [diese Anweisungen](./domain-joined/apache-domain-joined-configure.md) aus, um einen neuen in die Domäne eingebundenen Cluster bereitzustellen.
 
 Öffnen Sie Ranger-WASB, indem Sie zu `https://<YOUR CLUSTER NAME>.azurehdinsight.net/ranger/` navigieren. Geben Sie den Benutzernamen und das Kennwort für den Clusteradministrator ein, die Sie beim Erstellen des Clusters definiert haben.
 
@@ -117,8 +117,8 @@ Im Apache Ranger-[Ablauf zur Richtlinienauswertung](#permission-and-policy-model
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung](hdinsight-domain-joined-run-hive.md)
-* [Verwalten von in die Domäne eingebundenen HDInsight-Clustern](hdinsight-domain-joined-manage.md)
+* [Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung](./domain-joined/apache-domain-joined-run-hive.md)
+* [Verwalten von in die Domäne eingebundenen HDInsight-Clustern](./domain-joined/apache-domain-joined-manage.md)
 * [Autorisieren von Benutzern für Ambari-Ansichten](hdinsight-authorize-users-to-ambari.md)
 
 <!-- * [Synchronize Azure AD users and groups](hdinsight-sync-aad-users-to-cluster.md) -->

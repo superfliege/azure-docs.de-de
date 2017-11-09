@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: cf7b0dd3a81c35be4907dbba85b72ce4f87e3a9f
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 7464611e669165d9ec1f0de7422b20b3f3b8c2b5
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="using-volume-plugins-and-logging-drivers-in-your-container"></a>Verwenden von Volume-Plug-Ins und Protokollierungstreibern im Container
 
@@ -29,7 +29,7 @@ Service Fabric unterstützt die Angabe von [Docker-Volume-Plug-Ins](https://docs
 Wenn der Docker-Volume-/Protokollierungstreiber auf dem Computer nicht installiert ist, installieren Sie ihn manuell, indem Sie über RDP/SSH eine Verbindung mit dem Computer herstellen oder ein VMSS-Startskript verwenden. Um beispielsweise den Docker-Volumetreiber zu installieren, stellen Sie eine SSH-Verbindung mit dem Computer her und führen Folgendes aus:
 
 ```bash
-docker plugin install --alias azure --grant-all-permissions docker4x/17.09.0-ce-azure1  \
+docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:17.09.0-ce-azure1  \
     CLOUD_PLATFORM=AZURE \
     AZURE_STORAGE_ACCOUNT="[MY-STORAGE-ACCOUNT-NAME]" \
     AZURE_STORAGE_ACCOUNT_KEY="[MY-STORAGE-ACCOUNT-KEY]" \
@@ -77,7 +77,7 @@ Im Beispiel oben bezieht sich das `Source`-Tag für das `Volume` auf den Quellor
 Wenn Sie ein Volume-Plug-In angeben, erstellt Service Fabric das Volume automatisch mit den angegebenen Parametern. Das `Source`-Tag ist der Name des Volumes, und das `Driver`-Tag gibt das Volumetreiber-Plug-In an. Optionen können wie im folgenden Codeausschnitt mithilfe des `DriverOption`-Tags angegeben werden:
 
 ```xml
-<Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azurefile" IsReadOnly="true">
+<Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azure" IsReadOnly="true">
            <DriverOption Name="share" Value="models"/>
 </Volume>
 ```

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: mazha
-ms.openlocfilehash: 8c5dd3ddd03b3531e4ffb7b622110a2ea997f9ae
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 98d4900e28f1850050dc4fbe1f97435e52afaf08
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="add-a-custom-domain-to-your-cdn-endpoint"></a>Hinzufügen einer benutzerdefinierten Domäne zum CDN-Endpunkt
-Nachdem Sie ein Profil erstellt haben, erstellen Sie in der Regel auch mindestens einen CDN-Endpunkt (eine Unterdomäne von „azureedge.net“) zum Übermitteln Ihrer Inhalte über HTTP und HTTPS. Dieser Endpunkt ist standardmäßig in allen Ihren URLs enthalten, z.B. `http(s)://contoso.azureedge.net/photo.png`). Der Einfachheit halber bietet Azure CDN die Möglichkeit, eine benutzerdefinierte Domäne (z.B. `www.contoso.com`) Ihrem Endpunkt zuzuordnen. Mit dieser Option verwenden Sie eine benutzerdefinierte Domäne statt des Endpunkts, um Ihre Inhalte zu übermitteln. Diese Option ist beispielsweise hilfreich, wenn Ihr eigener Domänennamen Ihren Kunden zu Brandingzwecken angezeigt werden soll.
+Nachdem Sie ein Profil erstellt haben, erstellen Sie in der Regel auch mindestens einen [CDN-Endpunkt](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint) (eine Unterdomäne von `azureedge.net`) zum Übermitteln Ihrer Inhalte über HTTP und HTTPS. Dieser Endpunkt ist standardmäßig in allen Ihren URLs enthalten (z.B. `https://contoso.azureedge.net/photo.png`). Der Einfachheit halber können Sie Ihrem Endpunkt mit Azure CDN eine benutzerdefinierte Domäne (z.B. `www.contoso.com`) zuordnen. Mit dieser Option verwenden Sie eine benutzerdefinierte Domäne statt des Endpunkts, um Ihre Inhalte zu übermitteln. Diese Option ist beispielsweise hilfreich, wenn Ihr eigener Domänennamen Ihren Kunden zu Brandingzwecken angezeigt werden soll.
 
 Wenn Sie nicht bereits über eine benutzerdefinierte Domäne verfügen, müssen Sie zunächst bei einem Domänenanbieter eine erwerben. Nachdem Sie eine benutzerdefinierte Domäne erhalten haben, gehen Sie folgendermaßen vor:
 1. [Greifen Sie auf die DNS-Einträge Ihres Domänenanbieters zu](#step-1-access-dns-records-by-using-your-domain-provider)

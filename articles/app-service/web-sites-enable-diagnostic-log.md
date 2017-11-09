@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 42644bd97443e827b523503989b0b25d3d48028c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1366cd79248b2e0008234a5da0d87552e6530d80
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -180,17 +180,17 @@ Eine Liste der verfügbaren Pfade wird mit dem Parameter "-ListPath" angezeigt.
 ### <a name="streaming-with-azure-command-line-interface"></a>Streaming mit der Azure-Befehlszeilenschnittstelle
 Zum Streaming der Protokollinformationen öffnen Sie eine neue Eingabeaufforderung, PowerShell, Bash- oder Terminalsitzung und geben den folgenden Befehl ein:
 
-    azure site log tail webappname
+    az webapp log tail --name webappname --resource-group myResourceGroup
 
 Dadurch wird eine Verbindung zu der Web-App namens 'webappname' hergestellt, und das Streaming von Informationen in das Fenster wird gestartet, sobald Protokollereignisse in der Web-App auftreten. Alle Informationen, die in Dateien mit der Erweiterung TXT, LOG oder HTM geschrieben werden, die sich im Verzeichnis "/LogFiles" (d:/home/logfiles) befinden, werden an die lokale Konsole gestreamt.
 
 Um bestimmte Ereignisse wie beispielsweise Fehler zu filtern, verwenden Sie den Parameter **--Filter** . Beispiel:
 
-    azure site log tail webappname --filter Error
+    az webapp log tail --name webappname --resource-group myResourceGroup --filter Error
 
 Um bestimmte Protokolltypen wie HTTP zu filtern, verwenden Sie den Parameter **--Path** . Beispiel:
 
-    azure site log tail webappname --path http
+    az webapp log tail --name webappname --resource-group myResourceGroup --path http
 
 > [!NOTE]
 > Wenn Sie die Azure-Befehlszeilenschnittstelle nicht installiert oder nicht für Ihr Azure-Abonnement konfiguriert haben, lesen Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)weiter.

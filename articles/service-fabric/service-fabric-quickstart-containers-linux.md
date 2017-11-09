@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: 7c1ac13d50180909bbe55b01f47721387d1195d7
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 7623c5ac5cbc52e9fc77b1f944908b07ff43fbaf
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Bereitstellen einer Azure Service Fabric-Containeranwendung unter Linux in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -45,9 +45,9 @@ Zum Bereitstellen von Containern in Service Fabric benötigen Sie eine Gruppe vo
 Verwenden Sie „git“ in der Cloud Shell, um eine Kopie der Anwendungsdefinition zu klonen.
 
 ```azurecli-interactive
-git clone https://github.com/Azure-Samples/service-fabric-dotnet-containers.git
+git clone https://github.com/Azure-Samples/service-fabric-containers.git
 
-cd service-fabric-dotnet-containers/Linux/container-tutorial/Voting
+cd service-fabric-containers/Linux/container-tutorial/Voting
 ```
 
 ## <a name="deploy-the-containers-to-a-service-fabric-cluster-in-azure"></a>Bereitstellen der Container in einem Service Fabric-Cluster in Azure
@@ -141,7 +141,7 @@ In diesem Schnellstart haben Sie Folgendes gelernt:
 
 * Weitere Informationen zum Ausführen von [Containern in Service Fabric](service-fabric-containers-overview.md)
 * Weitere Informationen zum [Anwendungslebenszyklus](service-fabric-application-lifecycle.md) von Service Fabric
-* Sehen Sie sich die [Codebeispiele zu Service Fabric-Containern](https://github.com/Azure-Samples/service-fabric-dotnet-containers) auf GitHub an.
+* Sehen Sie sich die [Codebeispiele zu Service Fabric-Containern](https://github.com/Azure-Samples/service-fabric-containers) auf GitHub an.
 
 [sfx]: ./media/service-fabric-quickstart-containers-linux/containersquickstartappinstance.png
 [quickstartpic]: ./media/service-fabric-quickstart-containers-linux/votingapp.png

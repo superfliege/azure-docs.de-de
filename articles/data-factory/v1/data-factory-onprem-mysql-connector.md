@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 11/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bc0a7127457b2203e3a351d7825d203bba69f4ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 74ee639af5e941c098cbdd1fafd96a0e1ce1b036
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Verschieben von Daten aus MySQL mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,7 +43,7 @@ Das Gateway ist erforderlich, auch wenn die MySQL-Datenbank auf einem virtuellen
 > Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
 ## <a name="supported-versions-and-installation"></a>Unterstützte Versionen und Installation
-Damit das Datenverwaltungsgateway eine Verbindung mit der MySQL-Datenbank herstellt, müssen Sie den [MySQL Connector/Net für Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (Version 6.6.5 oder höher) auf dem System mit dem Datenverwaltungsgateway installieren. MySQL Version 5.1 und höher wird unterstützt.
+Damit das Datenverwaltungsgateway eine Verbindung mit der MySQL-Datenbank herstellt, müssen Sie den [MySQL Connector/Net für Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (Version 6.6.5 oder höher) auf dem System mit dem Datenverwaltungsgateway installieren. Dieser 32-Bit-Treiber ist mit 64-Bit-Datenverwaltungsgateways kompatibel. MySQL Version 5.1 und höher wird unterstützt.
 
 > [!TIP]
 > Wenn der Fehler „Fehler bei Authentifizierung, da die Gegenstelle den Transportdatenstrom geschlossen hat.“ auftritt, sollten Sie ein Upgrade für den MySQL-Connector/Net auf eine höhere Version durchführen.

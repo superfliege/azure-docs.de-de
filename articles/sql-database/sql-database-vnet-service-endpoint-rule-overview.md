@@ -13,20 +13,27 @@ ms.custom: VNet Service endpoints
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
-ms.date: 10/13/2017
+ms.workload: On Demand
+ms.date: 10/30/2017
 ms.author: genemi
-ms.openlocfilehash: b15727ae6c7b4d0f1595d506cb8d0f66ec3abfe4
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 69059b6169e1fac4d0abea2770b0de502f816113
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank
 
 *Regeln für ein virtuelles Netzwerk* sind eine Firewallsicherheitsfunktion, die steuert, ob Ihr Azure SQL-Datenbankserver Nachrichten akzeptiert, die von bestimmten Subnetzen in virtuellen Netzwerken gesendet werden. In diesem Artikel wird erklärt, warum Regeln für ein virtuelles Netzwerk mitunter die beste Möglichkeit darstellen, Nachrichten an Ihre Azure SQL-Datenbank-Instanz sicher zuzulassen.
 
 Damit eine Regel für ein virtuelles Netzwerk erstellt werden kann, muss zuerst ein [Dienstendpunkt eines virtuellen Netzwerks][vm-virtual-network-service-endpoints-overview-649d] vorhanden sein, auf den die Regel verweisen kann.
+
+
+> [!NOTE]
+> Für Azure SQL Database ist dieses Feature für die folgenden Azure-Regionen als Vorschauversion verfügbar:
+>
+> - „WestCentralUS“, „WestUS2“ und „EastUS“.
+
 
 #### <a name="how-to-create-a-virtual-network-rule"></a>Erstellen einer Regel für ein virtuelles Netzwerk
 

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: nitinme
-ms.openlocfilehash: 96b2b4976729da5b7d8b75909dbe099090240c08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8a8b62e2cdf9f4f6c41b041ac20694303203531b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Versionshinweise zu Hadoop-Komponenten in Azure HDInsight
 
@@ -61,7 +61,7 @@ Dieser Artikel enthält Informationen zu den **neuesten** Versionsupdates für A
 
 * **Neue Features in Hive:** Weitere Informationen finden Sie in der [Hortonworks-Dokumentation](https://hortonworks.com/apache/hive/#section_4).
 
-* **Hive-Befehlszeilenschnittstelle veraltet:** Die Hive-Befehlszeilenschnittstelle gilt als veraltet. Kunden wird empfohlen, stattdessen Beeline zu verwenden. Weitere Informationen finden Sie in der [Apache-Dokumentation](https://cwiki.apache.org/confluence/display/Hive/Replacing+the+Implementation+of+Hive+CLI+Using+Beeline). Anweisungen zur Verwendung von Beeline mit HDInsight finden Sie unter [Verwenden von Beeline mit HDInsight Hadoop-Clustern](hdinsight-hadoop-use-hive-beeline.md).
+* **Hive-Befehlszeilenschnittstelle veraltet:** Die Hive-Befehlszeilenschnittstelle gilt als veraltet. Kunden wird empfohlen, stattdessen Beeline zu verwenden. Weitere Informationen finden Sie in der [Apache-Dokumentation](https://cwiki.apache.org/confluence/display/Hive/Replacing+the+Implementation+of+Hive+CLI+Using+Beeline). Anweisungen zur Verwendung von Beeline mit HDInsight finden Sie unter [Verwenden von Beeline mit HDInsight Hadoop-Clustern](hadoop/apache-hadoop-use-hive-beeline.md).
 
 * **Neue Features in Apache Phoenix und HBase:**
     * Unterstützung für Speicherkontingent: Wird am häufigsten in Umgebungen mit mehreren Mandanten verwendet und ermöglicht eingeschränkten Speicherplatz pro Tabelle und Namespace.

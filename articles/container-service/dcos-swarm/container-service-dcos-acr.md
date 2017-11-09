@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 7fdcff5ed93e56e4ac70dd9dcee0056a4cbef0bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 36e57bb6ebf9f55d42c526a361fed33b4238b313
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>Verwenden von ACR mit einem DC/OS-Cluster zum Bereitstellen Ihrer Anwendung
 
@@ -46,7 +46,7 @@ Erstellen Sie bei Bedarf mit dem Befehl [az acr create](/cli/azure/acr#create) e
 Im folgenden Beispiel wird eine Registrierung mit einem zufällig generierten Namen erstellt. Die Registrierung wird zudem mit dem Argument `--admin-enabled` mit einem Administratorkonto konfiguriert.
 
 ```azurecli-interactive
-az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM --sku Basic --admin-enabled true
+az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM --sku Basic
 ```
 
 Nach der Erstellung der Registrierung gibt die Azure-Befehlszeilenschnittstelle Daten ähnlich den folgenden aus. Notieren Sie die Werte für `name` und `loginServer`, diese werden in späteren Schritten verwendet.

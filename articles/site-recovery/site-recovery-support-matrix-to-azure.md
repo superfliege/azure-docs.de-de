@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/04/2017
+ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: b4bb049577feb416f498a428bae80ecea418180e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c38a69176f5f9e6a8f8dbcc411b85bef47362880
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren vom lokalen Standort in Azure
 
@@ -68,8 +68,11 @@ Die folgende Tabelle fasst die Unterstützung der replizierten Betriebssysteme i
 
  **VMware-/physische Server** | **Hyper-V (mit/ohne VMM)** |
 --- | --- |
-64-Bit-Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1<br/>*Windows Server 2016*: derzeit nicht auf virtuellen VMware-Computern und physischen Servern unterstützt. <br/><br/> Red Hat Enterprise Linux: 5.2 nach 5.11, 6.1 nach 6.9, 7.0 nach 7.3 <br/><br/>CentOS: 5.2 nach 5.11, 6.1 nach 6.9, 7.0 nach 7.3 <br/><br/>Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Oracle Enterprise Linux 6.4, 6.5, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>(Ein Upgrade von replizierenden Computern von SLES 11 SP3 auf SLES 11 SP4 wird nicht unterstützt. Wenn für einen replizierten Computer ein Upgrade von SLES 11 SP3 auf SLES 11 SP4 durchgeführt wurde, müssen Sie die Replikation deaktivieren und den Computer nach dem Upgrade erneut schützen.) | Alle [von Azure unterstützten](https://technet.microsoft.com/library/cc794868.aspx) Gastbetriebssysteme
+Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung)\*, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1<br/><br/> Red Hat Enterprise Linux: 5.2 nach 5.11, 6.1 nach 6.9, 7.0 nach 7.3 <br/><br/>CentOS: 5.2 nach 5.11, 6.1 nach 6.9, 7.0 nach 7.3 <br/><br/>Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Oracle Enterprise Linux 6.4, 6.5, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>(Ein Upgrade von replizierenden Computern von SLES 11 SP3 auf SLES 11 SP4 wird nicht unterstützt. Wenn für einen replizierten Computer ein Upgrade von SLES 11 SP3 auf SLES 11 SP4 durchgeführt wurde, müssen Sie die Replikation deaktivieren und den Computer nach dem Upgrade erneut schützen.) | Alle [von Azure unterstützten](https://technet.microsoft.com/library/cc794868.aspx) Gastbetriebssysteme
 
+>[!NOTE]
+>
+> \*Windows Server 2016, Nano Server wird nicht unterstützt.
 
 >[!IMPORTANT]
 >(Gilt für VMware-/physische Server, die zu Azure replizieren)
@@ -85,8 +88,10 @@ Die folgende Tabelle fasst die Unterstützung der replizierten Betriebssysteme i
 14.04 LTS | 9.9 | 3.13.0-24-generic bis 3.13.0-117-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-75-generic |
 14.04 LTS | 9.10 | 3.13.0-24-generic bis 3.13.0-121-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-81-generic |
 14.04 LTS | 9.11 | 3.13.0-24-generic bis 3.13.0-128-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-91-generic |
+14.04 LTS | 9.12 | 3.13.0-24-generic to 3.13.0-132-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic to 4.4.0-96-generic |
 16.04 LTS | 9.10 | 4.4.0-21-generic bis 4.4.0-81-generic,<br/>4.8.0-34-generic bis 4.8.0-56-generic,<br/>4.10.0-14-generic bis 4.10.0-24-generic |
 16.04 LTS | 9.11 | 4.4.0-21-generic bis 4.4.0-91-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-32-generic |
+16.04 LTS | 9.12 | 4.4.0-21-generic to 4.4.0-96-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic to 4.10.0-35-generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Unterstützte Dateisysteme und Gastspeicherkonfigurationen unter Linux (VMware-/physische Server)
 
@@ -168,7 +173,8 @@ NFS | Nein | N/V
 SMB 3.0 | Nein | Nein
 RDM | Ja<br/><br/> Nicht verfügbar für physische Server | N/V
 Datenträger > 1 TB | Ja<br/><br/>Maximal 4.095 GB | Ja<br/><br/>Maximal 4.095 GB
-Datenträger mit einer Sektorgröße von 4K | Ja | Ja, für VMs der Generation 1 unterstützt<br/><br/>Nicht für VMs der Generation 2 unterstützt
+Datenträger mit einer logischen und physikalischen Sektorgröße von jeweils 4 KB | Ja | Nicht für VMs der 1. Generation unterstützt<br/><br/>Nicht für VMs der Generation 2 unterstützt
+Datenträger mit einer logischen Sektorgröße von 4 KB und einer physikalischen Sektorgröße von 512 Byte | Ja |  Ja
 Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM (logische Volumeverwaltung) | Ja | Ja
 Speicherplätze | Nein | Ja
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein | Nein
@@ -227,10 +233,10 @@ Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br
 
 **Name** | **Beschreibung** | **Aktuelle Version** | **Details**
 --- | --- | --- | --- | ---
-**Azure Site Recovery-Anbieter** | Koordiniert die Kommunikation zwischen lokalen Servern und Azure <br/><br/> Wird auf lokalen Virtual Machine Manager-Servern oder auf Hyper-V-Servern installiert, wenn kein Virtual Machine Manager-Server vorhanden ist | 5.1.19 ([über das Portal verfügbar](http://aka.ms/downloaddra)) | [Neueste Features und Fixes](https://support.microsoft.com/kb/3155002)
-**Einheitliches Setup für Azure Site Recovery (VMware zu Azure)** | Koordiniert die Kommunikation zwischen lokalen VMware-Servern und Azure  <br/><br/> Installiert auf lokalen VMware-Servern | 9.3.4246.1 (verfügbar über das Portal) | [Neueste Features und Fixes](https://support.microsoft.com/kb/3155002)
-**Mobilitätsdienst** | Koordiniert die Replikation zwischen lokalen VMware-Servern/physischen Servern und Azure/sekundärem Standort<br/><br/> Installiert auf einem virtuellen VMware-Computer oder auf physischen Servern, die Sie replizieren möchten  | Nicht verfügbar (über das Portal verfügbar) | –
-**Microsoft Azure Recovery Services-Agent (MARS)** | Koordiniert die Replikation zwischen Hyper-V-VMs und Azure<br/><br/> Wird auf lokalen Hyper-V-Servern (mit oder ohne Virtual Machine Manager-Server) installiert | Aktueller Agent ([im Portal verfügbar](http://aka.ms/latestmarsagent)) |
+**Azure Site Recovery-Anbieter** | Koordiniert die Kommunikation zwischen lokalen Servern und Azure <br/><br/> Wird auf lokalen Virtual Machine Manager-Servern oder auf Hyper-V-Servern installiert, wenn kein Virtual Machine Manager-Server vorhanden ist | 5.1.2700.1 (über das Portal verfügbar) | [Neueste Features und Fixes](https://aka.ms/latest_asr_updates)
+**Einheitliches Setup für Azure Site Recovery (VMware zu Azure)** | Koordiniert die Kommunikation zwischen lokalen VMware-Servern und Azure  <br/><br/> Installiert auf lokalen VMware-Servern | 9.12.4653.1 (über das Portal verfügbar) | [Neueste Features und Fixes](https://aka.ms/latest_asr_updates)
+**Mobilitätsdienst** | Koordiniert die Replikation zwischen lokalen VMware-Servern/physischen Servern und Azure/sekundärem Standort<br/><br/> Installiert auf einem virtuellen VMware-Computer oder auf physischen Servern, die Sie replizieren möchten  | 9.12.4653.1 (über das Portal verfügbar) | [Neueste Features und Fixes](https://aka.ms/latest_asr_updates)
+**Microsoft Azure Recovery Services-Agent (MARS)** | Koordiniert die Replikation zwischen Hyper-V-VMs und Azure<br/><br/> Wird auf lokalen Hyper-V-Servern (mit oder ohne Virtual Machine Manager-Server) installiert | Aktueller Agent (über das Portal verfügbar) |
 
 
 

@@ -13,11 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/26/2016
 ms.author: ashmaka
-ms.openlocfilehash: fd1b0c7cc8210d27fdc500bf4e5641bedfe93cff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33897e7966de5d467602f6cb36fe16caf0786ffd
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure Search
 Eine mehrinstanzenfähige Anwendung bietet dieselben Dienste und Funktionen einer beliebigen Anzahl von Mandanten, die die Daten der anderen Mandaten nicht anzeigen oder mit diesen gemeinsam nutzen können. In diesem Dokument werden Strategien zur Isolierung von Mandanten für mehrinstanzenfähige Anwendungen erläutert, die mit Azure Search erstellt werden.
@@ -44,7 +44,7 @@ Azure Search bietet verschiedene [Tarife](https://azure.microsoft.com/pricing/de
 |  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maximale Anzahl von Replikaten pro Dienst |3 |12 |12 |12 |12 |
-| Maximale Anzahl von Partitionen pro Dienst |1 |12 |12 |12 |1 |
+| Maximale Anzahl von Partitionen pro Dienst |1 |12 |12 |12 |3 |
 | Maximale Anzahl von Sucheinheiten (Replikate x Partitionen) pro Dienst |3 |36 |36 |36 |36 (max. 3 Partitionen) |
 | Maximale Anzahl von Dokumenten pro Dienst |1 Mio. |180 Mio. |720 Mio. |1,4 Mrd. |600 Mio. |
 | Maximale Speicherkapazität pro Dienst |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |

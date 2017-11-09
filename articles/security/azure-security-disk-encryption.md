@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2017
+ms.date: 11/01/2017
 ms.author: kakhan
-ms.openlocfilehash: eb1f3f01f896cc03fde13f11457be4740fa2720a
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: b35595d3dd91932888a26edc92dae81dd71682d8
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer
 Bei Microsoft Azure wird sehr darauf geachtet, den Schutz Ihrer Daten und die Datenhoheit sicherzustellen. Außerdem können Sie für Ihre unter Azure gehosteten Daten eine Reihe von modernen Techniken zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln und Steuern und Überprüfen des Datenzugriffs nutzen. So können Azure-Kunden flexibel eine Lösung auswählen, die Ihre Anforderungen am besten erfüllt. In diesem Artikel stellen wir Ihnen die neue Technologie „Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer“ vor, die zum Schützen und Absichern Ihrer Daten dient, um Vorgaben in den Bereichen Unternehmenssicherheit und Compliance zu erfüllen. Der Artikel enthält eine ausführliche Anleitung zur Verwendung der Funktionen einer Azure-Datenträgerverschlüsselung, z. B. die unterstützten Szenarien und die Benutzeroberflächen.
@@ -247,8 +247,8 @@ Verwenden Sie das folgende PowerShell-Cmdlet, um eine Azure AD-Anwendung zu erst
 > [!NOTE]
 > „$azureAdApplication.ApplicationId“ ist die Azure AD-Client-ID, und „$aadClientSecret“ ist das Clientgeheimnis. Sie verwenden diese Angaben später zum Aktivieren von Azure Disk Encryption. Sorgen Sie für eine sichere Aufbewahrung des Azure AD-Clientgeheimnisses.
 
-##### <a name="setting-up-the-azure-ad-client-id-and-secret-from-the-azure-classic-portal"></a>Einrichten der Azure AD-Client-ID und des Geheimnisses über das klassische Portal
-Sie können die Azure AD-Client-ID und das zugehörige Geheimnis auch im [klassischen Azure-Portal]( https://manage.windowsazure.com) einrichten. Führen Sie hierzu die folgenden Schritte aus:
+##### <a name="setting-up-the-azure-ad-client-id-and-secret-from-the-azure-portal"></a>Einrichten der Azure AD-Client-ID und des geheimen Azure AD-Clientschlüssels über das Azure-Portal
+Sie können die Azure AD-Client-ID und den zugehörigen geheimen Clientschlüssel im Azure-Portal einrichten. Führen Sie hierzu die folgenden Schritte aus:
 
 1. Klicken Sie auf die Registerkarte **Active Directory**.
 
@@ -268,10 +268,8 @@ Sie können die Azure AD-Client-ID und das zugehörige Geheimnis auch im [klassi
 
 5. Speichern Sie das Azure AD-Clientgeheimnis, indem Sie auf die Schaltfläche **Speichern** klicken. Das Azure AD-Clientgeheimnis wird im Textfeld für die Schlüssel angezeigt. Sorgen Sie für eine sichere Aufbewahrung.
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig7.png)
+ ![Azure-Datenträgerverschlüsselung](./media/azure-security-disk-encryption/disk-encryption-fig7.png)
 
- > [!NOTE]
- > Der obige Ablauf wird im klassischen Azure-Portal nicht unterstützt.
 
 ##### <a name="use-an-existing-application"></a>Verwenden einer vorhandenen Anwendung
 Um die folgenden Befehle auszuführen, benötigen Sie das [Azure AD PowerShell-Modul](https://technet.microsoft.com/library/jj151815.aspx).
@@ -634,12 +632,12 @@ Sie können die Datenträgerverschlüsselung auf Ihrer verschlüsselten VHD akti
  ```
 
 ### <a name="get-the-encryption-status-of-an-encrypted-iaas-vm"></a>Abrufen des Verschlüsselungsstatus eines verschlüsselten virtuellen IaaS-Computers
-Sie können den Verschlüsselungsstatus über den Azure Resource Manager, über [PowerShell-Cmdlets](/powershell/azure/overview) oder mithilfe von CLI-Befehlen abrufen. In den folgenden Abschnitten wird erläutert, wie Sie das klassische Azure-Portal und CLI-Befehle zum Abrufen des Verschlüsselungsstatus verwenden.
+Sie können den Verschlüsselungsstatus über den Azure Resource Manager, über [PowerShell-Cmdlets](/powershell/azure/overview) oder mithilfe von CLI-Befehlen abrufen. In den folgenden Abschnitten wird erläutert, wie Sie das Azure-Portal und CLI-Befehle zum Abrufen des Verschlüsselungsstatus verwenden.
 
 #### <a name="get-the-encryption-status-of-an-encrypted-windows-vm-by-using-azure-resource-manager"></a>Abrufen des Verschlüsselungsstatus einer verschlüsselten Windows-VM mit dem Azure Resource Manager
 Sie können den Verschlüsselungsstatus des virtuellen IaaS-Computers folgendermaßen über den Azure Resource Manager abrufen:
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://portal.azure.com/) an, und klicken Sie im linken Bereich auf **Virtuelle Computer**, um eine Zusammenfassung der virtuellen Computer in Ihrem Abonnement anzuzeigen. Sie können die Ansicht mit den virtuellen Computern filtern, indem Sie den Abonnementnamen in der Dropdownliste **Abonnement** auswählen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und klicken Sie im linken Bereich auf **Virtuelle Computer**, um eine Zusammenfassung der virtuellen Computer in Ihrem Abonnement anzuzeigen. Sie können die Ansicht mit den virtuellen Computern filtern, indem Sie den Abonnementnamen in der Dropdownliste **Abonnement** auswählen.
 
 2. Klicken Sie oben auf dem Blatt **Virtuelle Computer** auf **Spalten**.
 

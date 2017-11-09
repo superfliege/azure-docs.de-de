@@ -11,25 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 09/25/2017
+ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 8117a5ef9bc4f785256a7a7d70f459529c771a56
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: b178be71824e427d88a811d87f1aeb6e5f80dbcc
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage (Vorschau)
 Azure Storage bietet ein mehrstufiges Sicherheitsmodell, mit dem Sie Ihre Speicherkonten für eine bestimmte Gruppe zulässiger Netzwerke sichern können.  Wenn Netzwerkregeln konfiguriert sind, können nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen.  Anwendungen, die aus einem zulässigen Netzwerk aufgerufen werden, erfordern für den Zugriff auf das Speicherkonto weiterhin eine ordnungsgemäße Autorisierung (einen gültigen Zugriffsschlüssel oder ein gültiges SAS-Token).
 
 ## <a name="preview-availability-and-support"></a>Verfügbarkeit und Unterstützung der Vorschauversion
-Firewalls und virtuelle Netzwerke in Storage sind als Vorschauversion verfügbar.  Diese Funktion ist derzeit für neue oder vorhandene Speicherkonten in den folgenden Regionen verfügbar:
-- USA (Ost)
-- USA (Westen)
-- USA, Westen 2
-- USA, Westen-Mitte
-- Australien (Osten)
-- Australien, Südosten
+Firewalls und virtuelle Netzwerke in Storage sind als Vorschauversion verfügbar.  Diese Funktion ist derzeit für neue oder vorhandene Speicherkonten in allen Azure Public Cloud-Regionen verfügbar:
 
 > [!NOTE]
 > Produktionsworkloads werden in der Vorschauversion nicht unterstützt.

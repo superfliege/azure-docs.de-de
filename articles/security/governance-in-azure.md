@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: f3fbca281dbbfca7ff9392d003429719c589afbd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c63eb15e8d575da91fd8198ca9d486f7fdb2b38d
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="governance-in-azure"></a>Governance (Kontrolle) in Azure
 
@@ -179,7 +179,7 @@ In jedem Abonnement können Sie bis zu 2.000 Rollenzuweisungen gewähren.
 
 In Azure war ursprünglich nur das klassische Bereitstellungsmodell verfügbar. In diesem Modell war jede Ressource unabhängig von den anderen vorhanden. Zusammengehörige Ressourcen konnten nicht gruppiert werden. Stattdessen mussten Sie manuell nachverfolgen, aus welchen Ressourcen die Lösung oder Anwendung bestand, und daran denken, sie mit einem koordinierten Ansatz zu verwalten.
 
-Zum Bereitstellen einer Lösung mussten Sie entweder jede Ressource einzeln über das klassische Portal oder ein Skript erstellen, mit dem alle Ressourcen in der richtigen Reihenfolge bereitgestellt wurden. Beim Löschen einer Lösung mussten Sie jede Ressource einzeln löschen. Es war nicht einfach möglich, Richtlinien für die Zugriffssteuerung für zusammengehörige Ressourcen anzuwenden und zu aktualisieren. Außerdem gab es keinen Weg, Tags auf Ressourcen anzuwenden, um diese zur Unterstützung der Überwachung Ihrer Ressourcen und der Abrechnungsverwaltung mit Begriffen zu versehen.
+Zum Bereitstellen einer Lösung mussten Sie entweder jede Ressource einzeln über das Azure-Portal oder ein Skript erstellen, mit dem alle Ressourcen in der richtigen Reihenfolge bereitgestellt wurden. Beim Löschen einer Lösung mussten Sie jede Ressource einzeln löschen. Es war nicht einfach möglich, Richtlinien für die Zugriffssteuerung für zusammengehörige Ressourcen anzuwenden und zu aktualisieren. Außerdem gab es keinen Weg, Tags auf Ressourcen anzuwenden, um diese zur Unterstützung der Überwachung Ihrer Ressourcen und der Abrechnungsverwaltung mit Begriffen zu versehen.
 
 Im Jahr 2014 wurden Resource Manager und das Konzept der Ressourcengruppen von Azure eingeführt. Eine Ressourcengruppe ist ein Container für Ressourcen, die über einen gemeinsamen Lebenszyklus verfügen. Das Resource Manager-Bereitstellungsmodell bietet verschiedene Vorteile:
 

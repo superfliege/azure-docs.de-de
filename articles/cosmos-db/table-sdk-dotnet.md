@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 7d641d4089f8bce86633b7c476f10617bc642e2b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 25b0d65797b623f96d623d692ee7707b4452860c
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB-Tabellen-.NET-API: Herunterladen und Versionshinweise
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 |---|---|
 |**SDK-Download**|[NuGet](https://aka.ms/acdbtablenuget)|
 |**API-Dokumentation**|[.NET API-Referenzdokumentation](https://aka.ms/acdbtableapiref)|
-|**Schnellstart**|[Azure Cosmos DB: Build a .NET application using the Table API](https://aka.ms/acdbtnetqs) (Azure Cosmos DB: Erstellen einer .NET-Anwendung mit der Tabellen-API)|
+|**Schnellstart**|[Azure Cosmos DB: Build a .NET application using the Table API](create-table-dotnet.md) (Azure Cosmos DB: Erstellen einer .NET-Anwendung mit der Tabellen-API)|
 |**Tutorial**|[Azure CosmosDB: Erstellen eines Containers mit der Graph-API](tutorial-develop-graph-dotnet.md)|
 |**Aktuelles unterstütztes Framework**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 

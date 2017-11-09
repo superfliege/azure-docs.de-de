@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: d586df0ede6ff9b3a4837a4a9c551ab3ee6d763a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 16ce7da9321a4a36e892bad75819d1c30ab5197a
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: Verzeichniserweiterungen
 Verzeichniserweiterungen ermöglichen Ihnen das Erweitern des Schemas in Azure AD mit Ihren eigenen Attributen aus dem lokalen Active Directory. Dank dieses Features können Sie Branchen-Apps erstellen, die weiterhin lokal verwaltete Attribute nutzen. Diese Attribute können über [Azure AD Graph-Verzeichniserweiterungen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) oder über [Microsoft Graph](https://graph.microsoft.io/) genutzt werden. Sie können die verfügbaren Attribute je nach Lösung mithilfe von [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net/) oder [Microsoft Graph-Explore](https://developer.microsoft.com/en-us/graph/graph-explorer)r anzeigen.
@@ -32,6 +32,10 @@ Bei der Installation werden folgenden Attribute als zulässige Kandidaten angeze
 * Benutzer- und Gruppenobjekttypen
 * Einwertige Attribute: Zeichenfolge, Boolescher Wert, ganze Zahl, Binärwert
 * Mehrwertige Attribute: Zeichenfolge, Binärwert
+
+
+>[!NOTE]
+> Azure AD Connect unterstützt zwar das Synchronisieren mehrwertiger AD-Attribute für Azure AD als mehrwertige Verzeichniserweiterungen, doch gibt es derzeit keine Funktionen in Azure AD, die die Verwendung mehrwertiger Verzeichniserweiterungen unterstützen.
 
 Die Attributliste wird aus dem Schemacache gelesen, der im Zuge der Installation von Azure AD Connect erstellt wurde. Wenn Sie das Active Directory-Schema um zusätzliche Attribute erweitert haben, ist eine [Aktualisierung des Schemas erforderlich](active-directory-aadconnectsync-installation-wizard.md#refresh-directory-schema), damit die neuen Attribute angezeigt werden.
 

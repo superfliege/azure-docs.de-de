@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
-ms.author: banders
-ms.openlocfilehash: 0b0d91b130172eb3506fdebb9547ab6ba5cc3780
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/26/2017
+ms.author: magoedte;banders
+ms.openlocfilehash: 1b0d0fa1afc94d5261443f6b08cb6f0c3518f3eb
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL Analytics (Vorschau) in Log Analytics
 
@@ -47,8 +47,8 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Abonnement. Falls Sie keines haben, können Sie [kostenlos](https://azure.microsoft.com/free/) eines erstellen.
-- Einen Log Analytics-Arbeitsbereich Sie können ein vorhandenes verwenden oder [ein neues erstellen](log-analytics-get-started.md), bevor Sie diese Lösung verwenden.
-- Aktivieren Sie die Azure-Diagnose für Ihre Azure SQL-Datenbanken und Pools für elastische Datenbanken, und [konfigurieren Sie diese so, dass ihre Daten an Log Analytics gesendet werden](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/).
+- Einen Log Analytics-Arbeitsbereich Sie können ein vorhandenes verwenden oder [ein neues erstellen](log-analytics-quick-create-workspace.md), bevor Sie diese Lösung verwenden.
+- Aktivieren Sie die Azure-Diagnose für Ihre Azure SQL-Datenbanken und Pools für elastische Datenbanken, und [konfigurieren Sie diese so, dass ihre Daten an Log Analytics gesendet werden](../sql-database/sql-database-metrics-diag-logging.md).
 
 ## <a name="configuration"></a>Konfiguration
 
@@ -60,9 +60,9 @@ Führen Sie die folgenden Schritte aus, um die Azure SQL Analytics-Lösung Ihrem
 3. Klicken Sie in der Liste **Überwachung und Verwaltung** auf **See all** (Alle anzeigen).
 4. Klicken Sie in der Liste **Empfohlen** auf **Weitere Informationen**, suchen Sie in der neuen Liste **Azure SQL Analytics (Vorschau)**, und wählen Sie dann diese Option aus.  
     ![Azure SQL Analytics-Lösung](./media/log-analytics-azure-sql/azure-sql-solution-portal.png)
-5. Klicken Sie im Bereich **Azure SQL-Analyse (Vorschauversion)** auf **Erstellen**.  
+5. Klicken Sie auf dem Blatt **Azure SQL Analytics (Vorschau)** auf **Erstellen**.  
     ![Erstellen](./media/log-analytics-azure-sql/portal-create.png)
-6. Wählen Sie im Bereich **Neue Lösung erstellen** den Arbeitsbereich aus, dem Sie die Lösung hinzufügen möchten, und klicken Sie dann auf **Erstellen**.  
+6. Wählen Sie auf dem Blatt **Neue Lösung erstellen** den Arbeitsbereich aus, dem Sie die Lösung hinzufügen möchten, und klicken Sie dann auf **Erstellen**.  
     ![Zu Arbeitsbereich hinzufügen](./media/log-analytics-azure-sql/add-to-workspace.png)
 
 
@@ -83,7 +83,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 ## <a name="using-the-solution"></a>Verwenden der Lösung
 
 >[!NOTE]
-> Aktualisieren Sie Ihren Log Analytics-Arbeitsbereich, um die neueste Version der Azure SQL-Analyse zu erhalten.
+> Aktualisieren Sie Ihre Log Analytics-Version, um die neueste Version der Azure SQL-Analyse zu erhalten.
 >
 
 Wenn Sie die Lösung zu Ihrem Arbeitsbereich hinzufügen, wird die Kachel „Azure SQL Analytics“ zu Ihrem Arbeitsbereich hinzugefügt und erscheint in der Übersicht. Die Kachel zeigt die Anzahl der Azure SQL-Datenbanken und der Pools für elastische SQL Azure-Datenbanken, mit denen die Lösung verbunden ist.
@@ -96,26 +96,17 @@ Klicken Sie auf die Kachel **Azure SQL Analytics**, um das Dashboard von Azure S
 
 ![Azure SQL-Analyse – Übersicht](./media/log-analytics-azure-sql/azure-sql-sol-overview.png)
 
-Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Perspektive.
+Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Perspektive. Nach Auswahl der Perspektive wird der Drilldown-Bericht geöffnet.
 
 ![Azure SQL-Analyse – Zeitlimits](./media/log-analytics-azure-sql/azure-sql-sol-timeouts.png)
 
 Jede Perspektive bietet Zusammenfassungen zum Abonnement, Server, elastischen Pool und zur Datenbankebene. Darüber hinaus zeigt jede Perspektive auf der rechten Seite einen speziellen Bericht an. Durch die Auswahl eines Abonnements, Servers, Anwendungspools oder einer Datenbank aus der Liste wird der Drilldown nach fortgesetzt.
 
-| Perspektive | Beschreibung |
-| --- | --- |
-| Ressource nach Typ | Perspektive, die alle überwachten Ressourcen zählt. Der Drilldown enthält die Zusammenfassung von DTU- und GB- Metriken. |
-| Erkenntnisse | Stellt den hierarchischen Drilldown in Intelligent Insights bereit. Weitere Informationen zu Intelligent Insights. |
-| Errors | Stellt den hierarchischen Drilldown in SQL-Fehler bereit, die in den Datenbanken aufgetreten sind. |
-| Zeitlimits | Stellt den hierarchischen Drilldown in SQL-Zeitlimits bereit, die in den Datenbanken aufgetreten sind. |
-| Blockierungen | Stellt den hierarchischen Drilldown in SQL-Blockierungen bereit, die in den Datenbanken aufgetreten sind. |
-| Datenbankwartevorgänge | Stellt den hierarchischen Drilldown in SQL-Wartestatistiken auf Datenbankebene bereit. Enthält Zusammenfassungen der gesamten Wartezeit sowie die Wartezeit pro Wartetyp. |
-| Abfragedauer | Stellt den hierarchischen Drilldown in die Statistiken zur Abfrageausführung bereit, z.B. Abfragedauer, CPU-Auslastung, Daten-E/A-Auslastung und Protokoll-E/A-Auslastung. |
-| Abfragewartevorgänge | Stellt den hierarchischen Drilldown in die Statistiken zu Abfragewartevorgängen nach Wartekategorie bereit. |
+| Perspektive | Beschreibung | | Ressource nach Typ | Perspektive, die alle überwachten Ressourcen zählt. Der Drilldown enthält die Zusammenfassung von DTU- und GB- Metriken. | | Einblicke | Stellt den hierarchischen Drilldown in Intelligent Insights bereit. Weitere Informationen zu Intelligent Insights. | | Fehler | Stellt den hierarchischen Drilldown in SQL-Fehlern bereit, die in den Datenbanken aufgetreten sind. | | Timeouts | Stellt den hierarchischen Drilldown in SQL-Timeouts bereit, die in den Datenbanken aufgetreten sind. | | Blockierungen | Stellt den hierarchischen Drilldown in SQL-Blockierungen bereit, die in den Datenbanken aufgetreten sind. | | Datenbankwartevorgänge | Stellt den hierarchischen Drilldown in SQL-Wartestatistiken auf Datenbankebene bereit. Enthält Zusammenfassungen der gesamten Wartezeit sowie die Wartezeit pro Wartetyp. | | Abfragedauer | Stellt den hierarchischen Drilldown in den Statistiken zur Abfrageausführung bereit, z.B. Abfragedauer, CPU-Auslastung, Daten-E/A-Auslastung und Protokoll-E/A-Auslastung. | | Abfragewartevorgänge | Stellt den hierarchischen Drilldown in den Statistiken zu Abfragewartevorgängen nach Wartekategorie bereit. |
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights-Bericht
 
-Alle erfassten Intelligent Insights-Daten können visuell dargestellt und über die Insights Perspektive aufgerufen werden. [Klicken Sie hier, um mehr über Intelligent Insights zu erfahren.](../sql-database/sql-database-intelligent-insights.md)
+Alle erfassten Intelligent Insights-Daten können visuell dargestellt und über die Insights Perspektive aufgerufen werden. 
 
 ![Azure SQL-Analyse – Insights](./media/log-analytics-azure-sql/azure-sql-sol-insights.png)
 
@@ -136,6 +127,9 @@ Durch die Abfragedauer- und Abfragewartevorgänge-Perspektive können Sie die Le
 ### <a name="analyze-data-and-create-alerts"></a>Analysieren von Daten und Erstellen von Warnungen
 
 Sie können problemlos Warnungen mit den Daten erstellen, die aus Azure SQL-Datenbank-Ressourcen stammen. Hier sind einige nützliche Abfragen für die [Protokollsuche](log-analytics-log-searches.md), die Sie für Warnungen verwenden können:
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+
 
 *Hohe DTU in Azure SQL-Datenbank*
 
@@ -162,7 +156,7 @@ Sie können diese warnungsbasierten Abfragen verwenden, um bei bestimmten Schwel
 6. Konfigurieren Sie auf der Seite **Warnungsregel hinzufügen** die entsprechenden Eigenschaften und die spezifischen Schwellenwerte nach Bedarf, und klicken Sie dann auf **Speichern**.  
 ![Warnungsregel hinzufügen](./media/log-analytics-azure-sql/create-alert02.png)
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
 - Verwenden Sie die [Protokollsuche](log-analytics-log-searches.md) in Log Analytics, um ausführliche Azure SQL-Daten anzuzeigen.
 - [Erstellen eigener Dashboards](log-analytics-dashboards.md), die Azure SQL-Daten anzeigen

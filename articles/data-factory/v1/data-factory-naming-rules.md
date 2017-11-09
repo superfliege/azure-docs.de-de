@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 908f6d972d66fa5f2a93585ae2fddb3cc764fe8c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2f4979a07db794f012ba602ab65ac54872003027
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory – Benennungsregeln
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen unter [naming rules in Data Factory version 2 (Benennungsregeln in Version 2 von Data Factory)](../naming-rules.md).
+
 Die folgende Tabelle enthält Benennungsregeln für Data Factory-Artefakte.
 
 | Name | Eindeutigkeit des Namens | Überprüfungen |

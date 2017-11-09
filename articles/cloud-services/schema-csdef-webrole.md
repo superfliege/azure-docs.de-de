@@ -13,11 +13,11 @@ caps.latest.revision: "60"
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: b18b6f02f14db352289e3ab7e8b07a220868ce76
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2873f61dcab9a14089949f27f40ca5bedaf14ee
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure Cloud Services-Definition – WebRole-Schema
 Die Azure-Webrolle ist eine Rolle, die für die Programmierung von Webanwendungen gemäß Unterstützung durch IIS 7 angepasst wird, z.B. ASP.NET, PHP, Windows Communication Foundation und FastCGI.
@@ -99,7 +99,7 @@ Die Dienstdefinitionsdatei enthält die unten angegebenen Elemente, die in den f
 
 [ConfigurationSettings](#ConfigurationSettings)
 
-[Setting](#Setting)
+[Einstellung](#Setting)
 
 [LocalResources](#LocalResources)
 
@@ -117,7 +117,7 @@ Die Dienstdefinitionsdatei enthält die unten angegebenen Elemente, die in den f
 
 [FixedPortRange](#FixedPortRange)
 
-[Certificates](#Certificates)
+[Zertifikate](#Certificates)
 
 [Certificate](#Certificate)
 
@@ -125,9 +125,9 @@ Die Dienstdefinitionsdatei enthält die unten angegebenen Elemente, die in den f
 
 [Import](#Import)
 
-[Runtime](#Runtime)
+[Laufzeit](#Runtime)
 
-[Environment](#Environment)
+[Umgebung](#Environment)
 
 [Variable](#Variable)
 
@@ -147,20 +147,20 @@ Die Dienstdefinitionsdatei enthält die unten angegebenen Elemente, die in den f
 
 [Binding](#Binding)
 
-[Startup](#Startup)
+[Starten](#Startup)
 
-[Task](#Task)
+[Aufgabe](#Task)
 
 [Contents](#Contents)
 
-[Content](#Content)
+[Inhalt](#Content)
 
 [SourceDirectory](#SourceDirectory)
 
 ##  <a name="WebRole"></a>WebRole  
 Das `WebRole`-Element beschreibt eine Rolle, die für die Programmierung von Webanwendungen gemäß Unterstützung durch IIS 7 und ASP.NET angepasst ist. Ein Dienst kann null oder mehr Webrollen enthalten.
 
-In der folgenden Tabelle sind die Attribute des `WebRole`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `WebRole` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -174,7 +174,7 @@ Das `ConfigurationSettings`-Element beschreibt die Sammlung mit Konfigurationsei
 ##  <a name="Setting"></a>Setting  
 Das `Setting`-Element beschreibt ein Name-Wert-Paar, mit dem eine Konfigurationseinstellung für die Instanz einer Rolle angegeben wird.
 
-In der folgenden Tabelle sind die Attribute des `Setting`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `Setting` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -191,7 +191,7 @@ Mit dem `LocalStorage`-Element wird eine lokale Speicherressource identifiziert,
 > [!NOTE]
 >  Das `LocalStorage`-Element kann als untergeordnetes Element des `WebRole`-Elements verwendet werden, um die Kompatibilität mit früheren Versionen des Azure SDK zu unterstützen.
 
-In der folgenden Tabelle sind die Attribute des `LocalStorage`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `LocalStorage` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -214,7 +214,7 @@ Das `InputEndpoint`-Element beschreibt einen externen Endpunkt für eine Webroll
 
 Sie können mehrere Endpunkte definieren, bei denen es sich um eine Kombination aus HTTP-, HTTPS-, UDP- und TCP-Endpunkten handelt. Sie können eine beliebige Portnummer angeben, die Sie für einen Eingabeendpunkt auswählen, aber die angegebenen Portnummern für die einzelnen Rollen im Dienst müssen eindeutig sein. Wenn Sie beispielsweise angeben, dass eine Webrolle Port 80 für HTTP und Port 443 für HTTPS verwendet, können Sie anschließend ggf. angeben, dass eine zweite Webrolle Port 8080 für HTTP und Port 8043 für HTTPS verwendet.
 
-In der folgenden Tabelle sind die Attribute des `InputEndpoint`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `InputEndpoint` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -229,7 +229,7 @@ In der folgenden Tabelle sind die Attribute des `InputEndpoint`-Elements beschri
 ##  <a name="InternalEndpoint"></a>InternalEndpoint  
 Das `InternalEndpoint`-Element beschreibt einen internen Endpunkt für eine Webrolle. Eine interner Endpunkt ist nur für andere Rolleninstanzen verfügbar, die innerhalb des Diensts ausgeführt werden. Er ist nicht für Clients außerhalb des Diensts verfügbar. Webrollen, die das `Sites`-Element nicht enthalten, können nur über einen einzelnen internen HTTP-, UDP- oder TCP-Endpunkt verfügen.
 
-In der folgenden Tabelle sind die Attribute des `InternalEndpoint`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `InternalEndpoint` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -242,7 +242,7 @@ Das `InstanceInputEndpoint`-Element beschreibt einen Instanz-Eingabeendpunkt fü
 
 Das `InstanceInputEndpoint`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.7 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `InstanceInputEndpoint`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `InstanceInputEndpoint` beschrieben.
   
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -260,7 +260,7 @@ Das `FixedPort`-Element gibt den Port für den internen Endpunkt an, um auf dem 
 
 Das `FixedPort`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `FixedPort`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `FixedPort` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -274,7 +274,7 @@ Das `FixedPortRange`-Element gibt den Bereich der Ports an, die dem internen End
 
 Das `FixedPortRange`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `FixedPortRange`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `FixedPortRange` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -287,7 +287,7 @@ Das `Certificates`-Element beschreibt die Sammlung mit Zertifikaten für eine We
 ##  <a name="Certificate"></a>Certificate  
 Das `Certificate`-Element beschreibt ein Zertifikat, das einer Webrolle zugeordnet ist.
 
-In der folgenden Tabelle sind die Attribute des `Certificate`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `Certificate` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -297,7 +297,7 @@ In der folgenden Tabelle sind die Attribute des `Certificate`-Elements beschrieb
 |permissionLevel|string|Optional. Gibt die Zugriffsberechtigungen an, die für die Rollenprozesse gewährt werden. Geben Sie die Berechtigung `elevated` an, wenn nur Prozesse mit erhöhten Rechten auf den privaten Schlüssel zugreifen sollen. Mit der Berechtigung `limitedOrElevated` können alle Rollenprozesse auf den privaten Schlüssel zugreifen. Mögliche Werte sind `limitedOrElevated` oder `elevated`. Standardwert: `limitedOrElevated`.|  
 
 ##  <a name="Imports"></a>Imports  
-Das `Imports`-Element beschreibt eine Sammlung mit Importmodulen für eine Webrolle, mit denen Komponenten dem Gastbetriebssystem hinzugefügt werden. Dies ist das übergeordnete Element des `Import`-Elements. Dieses Element ist optional, und eine Rolle kann nur einen Laufzeitblock haben.
+Das `Imports`-Element beschreibt eine Sammlung mit Importmodulen für eine Webrolle, mit denen Komponenten dem Gastbetriebssystem hinzugefügt werden. Dies ist das übergeordnete Element des `Import`-Elements. Dieses Element ist optional, und eine Rolle kann nur einen Importblock aufweisen. 
 
 Das `Imports`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
@@ -306,7 +306,7 @@ Das `Import`-Element gibt ein Modul zum Hinzufügen zum Gastbetriebssystem an.
 
 Das `Import`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `Import`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `Import` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -341,7 +341,7 @@ In der folgenden Tabelle sind die Attribute des `Variable`-Elements beschrieben:
 ##  <a name="RoleInstanceValue"></a>RoleInstanceValue  
 Das `RoleInstanceValue`-Element gibt den xPath an, über den der Wert der Variablen abgerufen wird.
 
-In der folgenden Tabelle sind die Attribute des `RoleInstanceValue`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `RoleInstanceValue` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -358,7 +358,7 @@ Das `NetFxEntryPoint`-Element gibt das Programm an, das für eine Rolle ausgefü
 > [!NOTE]
 >  Das `NetFxEntryPoint`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.5 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `NetFxEntryPoint`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `NetFxEntryPoint` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -375,7 +375,7 @@ Das `Site`-Element gibt eine Website oder Webanwendung an, die Teil der Webrolle
 
 Das `Site`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `Site`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `Site` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -387,7 +387,7 @@ Das `VirtualApplication`-Element definiert eine Anwendung in Internetinformation
 
 Das `VirtualApplication`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `VirtualApplication`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `VirtualApplication` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -399,7 +399,7 @@ Das `VirtualDirectory`-Element gibt einen Verzeichnisnamen an (auch als Pfad bez
 
 Das `VirtualDirectory`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `VirtualDirectory`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `VirtualDirectory` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -436,7 +436,7 @@ Das `Task`-Element gibt Startaufgaben an, die ausgeführt werden, wenn die Rolle
 
 Das `Task`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `Task`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `Task` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -454,7 +454,7 @@ Das `Content`-Element definiert den Quellspeicherort des Inhalts, der auf den vi
 
 Das `Content`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.5 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `Content`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `Content` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
@@ -467,7 +467,7 @@ Das `SourceDirectory`-Element definiert das lokale Verzeichnis, aus dem der Inha
 
 Das `SourceDirectory`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.5 oder höher verwendet wird.
 
-In der folgenden Tabelle sind die Attribute des `SourceDirectory`-Elements beschrieben.
+In der folgenden Tabelle werden die Attribute des Elements `SourceDirectory` beschrieben.
 
 | Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  

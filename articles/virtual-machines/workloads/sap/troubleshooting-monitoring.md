@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 10/31/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee5be707b443cbe42bf4a492d79390e534d4b91f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5583f3d1949614dbba4d2f91d72e4ac6b4d03d1c
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>Problembehandlung und Überwachung von SAP HANA in Azure (große Instanzen)
 
@@ -41,6 +41,16 @@ Wie bei Azure Virtual Machines müssen Sie bestimmen, ob die genannten Ressource
 **Netzwerkbandbreite:** Die Bandbreite des Azure VNet-Gateways ist für in das Azure VNet eingehende Daten begrenzt. Deshalb ist es hilfreich, die von allen Azure VMs in einem VNet empfangenen Daten zu überwachen, um zu bestimmen, wie nahe Sie an die Grenzwerte der ausgewählten Azure-Gateway-SKU herankommen. Auf der HANA (große Instanz)-Einheit ist es sinnvoll, auch den ein- und ausgehenden Netzwerkdatenverkehr zu überwachen und die Volumes nachzuverfolgen, die mit der Zeit verarbeitet werden.
 
 **Speicherplatz:** Die Speicherplatzbelegung steigt in der Regel mit der Zeit. Dafür gibt es zahlreiche Gründe. Hier die wichtigsten: Zunahme der Datenmenge, Erstellung von Sicherungen von Transaktionsprotokollen, Speicherung von Ablaufverfolgungsdateien und Erstellen von Speicher-Snapshots. Aus diesem Grund ist es wichtig, die Speicherplatzbelegung zu überwachen und den Speicherplatz zu verwalten, der der HANA (große Instanz)-Einheit zugeordnet ist.
+
+Bei **SKUs von Typ II** großer HANA-Instanzen sind bereits Systemdiagnosetools auf dem Server geladen. Mit diesen Diagnosetools können Sie die Systemintegritätsprüfung durchführen. Führen Sie den folgenden Befehl aus, um die Systemdiagnose-Protokolldatei unter „/var/log/health_check“ zu generieren.
+```
+/opt/sgi/health_check/microsoft_tdi.sh
+```
+Wenn Sie zur Behandlung eines Problems das Microsoft-Supportteam zurate ziehen, werden Sie eventuell auch dazu aufgefordert, die Protokolldateien mithilfe dieses Diagnosetools zu übermitteln. Sie können die Datei mithilfe des folgenden Befehls komprimieren:
+```
+tar  -czvf health_check_logs.tar.gz /var/log/health_check
+```
+
 
 ## <a name="monitoring-and-troubleshooting-from-hana-side"></a>Überwachung und Problembehandlung auf HANA-Seite
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: robinsh
-ms.openlocfilehash: a116b4c15046e704e374ca67c5695ff3f01ba7fb
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 1046e407bb4e9d07e91014384e9eba7b0c7020a8
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Verwenden von Azure PowerShell mit Azure Storage
 
@@ -34,12 +34,11 @@ Diese Anleitung behandelt allgemeine Vorgänge, über die Speicherkonten mithilf
 > * Schützen des Zugriffs auf Ihr Speicherkonto 
 > * Aktivieren von Storage Analytics
 
-Darüber hinaus enthält die Anleitung Links zu verschiedenen anderen PowerShell-Artikeln zu Azure Storage, z. B. zum Aktivieren und Zugreifen auf Storage Analytics und zum Verwenden der Cmdlets der Datenebene.
-<!-- also how to access the china and government clouds  -->
+Dieser Artikel enthält Links zu weiteren PowerShell-Artikeln für Storage. In diesen wird beispielsweise das Aktivieren und Zugreifen auf Storage Analytics, das Verwenden von Cmdlets der Datenebene und das Zugreifen auf unabhängige Azure-Clouds in China und Deutschland sowie auf die Government Cloud beschrieben.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Für diese Übung ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu. 
+Für diese Übung ist das Azure PowerShell-Modul Version 4.4 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu. 
 
 Für diese Übung können Sie die Befehle in ein normales PowerShell-Fenster eingeben oder die [Windows PowerShell ISE (Integrated Scripting Environment)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) verwenden und die Befehle in einen Editor eingeben. Dann können Sie einen oder mehrere Befehle gleichzeitig testen, während Sie die Beispiele durchlaufen. Sie können die auszuführenden Zeilen hervorheben und auf „Auswahl ausführen“ klicken, um diese Befehle einfach auszuführen.
 
@@ -63,7 +62,7 @@ Get-AzureRMStorageAccount | Select StorageAccountName, Location
 
 ## <a name="get-a-reference-to-a-storage-account"></a>Abrufen eines Verweises auf ein Speicherkonto
 
-Als Nächstes benötigen Sie einen Verweis auf ein Speicherkonto. Sie können ein neues Speicherkonto erstellen oder einen Verweis auf ein vorhandenes Speicherkonto abrufen. In den folgenden Abschnitten werden beide Methoden veranschaulicht. 
+Als Nächstes benötigen Sie einen Verweis auf ein Speicherkonto. Sie können ein neues Speicherkonto erstellen oder einen Verweis auf ein vorhandenes Speicherkonto abrufen. Im folgenden Abschnitt werden beide Methoden veranschaulicht. 
 
 ### <a name="use-an-existing-storage-account"></a>Verwenden eines vorhandenen Speicherkontos 
 
@@ -94,7 +93,7 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 # Set the name of the storage account and the SKU name. 
 $storageAccountName = "testpshstorage"
-$skuName = "Standard\_LRS"
+$skuName = "Standard_LRS"
     
 # Create the storage account.
 $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
@@ -122,7 +121,7 @@ Der SKU-Name gibt den Typ der Replikation für das Speicherkonto an, z. B. LRS 
 
 Sie verfügen jetzt über ein neues Speicherkonto und über einen Verweis auf dieses Konto. 
 
-## <a name="managing-the-storage-account"></a>Verwalten des Speicherkontos
+## <a name="manage-the-storage-account"></a>Verwalten des Speicherkontos
 
 Nachdem Sie über einen Verweis auf ein neues oder ein vorhandenes Speicherkonto verfügen, werden im folgenden Abschnitt einige der Befehle veranschaulicht, mit denen Sie das Speicherkonto verwalten können.
 
@@ -142,7 +141,7 @@ Verwenden Sie [Set-AzureRmStorageAccount](/powershell/module/azurerm.resources/S
 
 * Gestatten Sie nur HTTPS-Datenverkehr. 
 
-### <a name="managing-the-access-keys"></a>Verwalten der Zugriffsschlüssel
+### <a name="manage-the-access-keys"></a>Verwalten der Zugriffsschlüssel
 
 Ein Azure-Speicherkonto verfügt über zwei Speicherschlüssel. Verwenden Sie [Get-AzureRmStorageAccountKey](/powershell/module/AzureRM.Storage/Get-AzureRmStorageAccountKey), um die Schlüssel abzurufen. In diesem Beispiel wird der erste Schlüssel abgerufen. Verwenden Sie `Value[1]` anstelle von `Value[0]`, um den anderen Schlüssel abzurufen.
 
@@ -166,22 +165,22 @@ Verwenden Sie `key2` anstelle von `key1` als Schlüsselnamen, um den anderen Sch
 Generieren Sie einen Ihrer Schlüssel neu, und rufen Sie ihn dann erneut ab, um den neuen Wert anzuzeigen.
 
 > [!NOTE] 
-> Sie sollten vor der erneuten Generierung des Schlüssels für ein Produktionsspeicherkonto sorgfältig planen. Wenn Sie einen oder beide Schlüssel erneut generieren, wird der Zugriff jeder Anwendung außer Kraft gesetzt, die den neu generierten Schlüssel verwendet. Weitere Informationen finden Sie unter [Erneutes Generieren von Speicherzugriffsschlüsseln](storage-create-storage-account.md#regenerate-storage-access-keys).
+> Sie sollten vor der erneuten Generierung des Schlüssels für ein Produktionsspeicherkonto sorgfältig planen. Wenn Sie einen oder beide Schlüssel erneut generieren, wird der Zugriff für jede Anwendung außer Kraft gesetzt, die den neu generierten Schlüssel verwendet. Weitere Informationen finden Sie unter [Erneutes Generieren von Speicherzugriffsschlüsseln](storage-create-storage-account.md#regenerate-storage-access-keys).
 
 
 ### <a name="delete-a-storage-account"></a>Löschen eines Speicherkontos 
 
-Verwenden Sie zum Löschen eines Speicherkontos das Cmdlet [Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount). 
-
-> [!IMPORTANT]
-> Wenn Sie ein Speicherkonto löschen, werden alle im Konto gespeicherten Assets ebenfalls gelöscht. Wenn Sie ein Konto versehentlich löschen, rufen Sie sofort den Support an und öffnen ein Ticket, um das Speicherkonto wiederherzustellen. Die Wiederherstellung Ihrer Daten wird nicht garantiert, kann aber in einigen Fällen funktionieren. Erstellen Sie kein neues Speicherkonto mit demselben Namen wie für das alte Konto, bis das Supportticket aufgelöst wurde. 
->
+Verwenden Sie zum Löschen eines Speicherkontos das Cmdlet [Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount).
 
 ```powershell
 Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccountName
 ```
 
-### <a name="protecting-your-storage-account-using-vnets-and-firewalls"></a>Schützen Ihres Speicherkontos mithilfe von VNet und Firewall
+> [!IMPORTANT]
+> Wenn Sie ein Speicherkonto löschen, werden alle im Konto gespeicherten Assets ebenfalls gelöscht. Wenn Sie ein Konto versehentlich löschen, rufen Sie sofort den Support an und öffnen ein Ticket, um das Speicherkonto wiederherzustellen. Die Wiederherstellung Ihrer Daten wird nicht garantiert, kann aber in einigen Fällen funktionieren. Erstellen Sie kein neues Speicherkonto mit demselben Namen wie für das alte Konto, bis das Supportticket aufgelöst wurde. 
+>
+
+### <a name="protect-your-storage-account-using-vnets-and-firewalls"></a>Schützen Ihres Speicherkontos mithilfe von VNETs und Firewalls
 
 Standardmäßig können alle Netzwerke mit Zugriff auf das Internet auf sämtliche Speicherkonten zugreifen. Sie können jedoch Netzwerkregeln konfigurieren, um nur Anwendungen aus bestimmten virtuellen Netzwerken den Zugriff auf ein Speicherkonto zu ermöglichen. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](storage-network-security.md). 
 
@@ -190,7 +189,7 @@ In diesem Artikel wird das Verwalten dieser Einstellungen mithilfe der folgenden
 * [Update-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset)
 * [Remove-AzureRmStorageAccountNetworkRule](/powershell/module/azurerm.storage/remove-azurermstorage-account-networkrule)
 
-## <a name="using-storage-analytics"></a>Verwenden von Storage Analytics  
+## <a name="use-storage-analytics"></a>Verwenden von Storage Analytics  
 
 [Azure Storage Analytics](storage-analytics.md) besteht aus [Storage Analytics-Metriken](/rest/api/storageservices/about-storage-analytics-metrics) und [Storage Analytics-Protokollierung](/rest/api/storageservices/about-storage-analytics-logging). 
 
@@ -210,26 +209,34 @@ Sie können die Überwachung mithilfe des [Azure-Portals](https://portal.azure.c
 
 * Ausführliche Informationen zur Verwendung von Speichermetriken und der Speicherprotokollierung zum Beheben von Speicherproblemen finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).
 
-## <a name="managing-the-data-in-the-storage-account"></a>Verwalten der Daten im Speicherkonto
+## <a name="manage-the-data-in-the-storage-account"></a>Verwalten der Daten im Speicherkonto
 
-Nachdem Sie nun erfahren haben, wie Ihr Speicherkonto mit PowerShell verwaltet wird, erläutern die folgenden Artikel die Verwendung von PowerShell für den Zugriff auf Datenobjekte im Speicherkonto.
+Nachdem Sie nun erfahren haben, wie Sie Ihr Speicherkonto mit PowerShell verwalten, können Sie in den folgenden Artikeln nachlesen, wie Sie auf Datenobjekte im Speicherkonto zugreifen.
 
 * [Verwalten von Blobs mit PowerShell](../blobs/storage-how-to-use-blobs-powershell.md)
 * [Verwalten von Dateien mit PowerShell](../files/storage-how-to-use-files-powershell.md)
 * [Verwalten von Warteschlangen mit PowerShell](../queues/storage-powershell-how-to-use-queues.md)
 
-<!--## Government Cloud and China Cloud
+## <a name="azures-independently-deployed-clouds"></a>Unabhängig bereitgestellte Azure-Clouds
 
-ROBINROBINROBIN 
+Die meisten Benutzer verwenden Azure Public Cloud für die globale Bereitstellung von Azure. Es gibt allerdings auch einige unabhängige Bereitstellungen von Microsoft Azure, die z.B. durch bestimmte Anforderungen an Datenhoheit motiviert sind. Diese unabhängige Bereitstellungen werden als „Umgebungen“ bezeichnet. Folgende Umgebungen stehen zur Verfügung:
 
-To access the Government cloud of the China datacenters, you have to use some special steps. The following article shows how to access these special cloud accounts using PowerShell.
+* [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
+* [Chinesische Azure-Cloud, betrieben von 21Vianet in China](http://www.windowsazure.cn/)
+* [Deutsche Azure-Cloud](../../germany/germany-welcome.md)
 
-* [How to manage storage accounts in Government Cloud and China](storage-powershell-govt-china.md)
--->
+Informationen zum Zugriff auf diese Clouds und deren Speicher mit PowerShell finden Sie unter [Managing Storage in the Azure independent clouds using PowerShell (Verwalten von Speicher in unabhängigen Azure-Clouds mit PowerShell)](storage-powershell-independent-clouds.md).
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie eine neue Ressourcengruppe und ein Speicherkonto für diese Übung erstellt haben, können Sie alle erstellten Ressourcen entfernen, indem Sie die Ressourcengruppe löschen. Dabei werden auch alle in der Gruppe enthaltenen Ressourcen gelöscht. In diesem Fall werden das erstellte Speicherkonto und die Ressourcengruppe selbst entfernt.
+
+```powershell
+Remove-AzureRmResourceGroup -Name $resourceGroup
+```
 ## <a name="next-steps"></a>Nächste Schritte
 
-Diese Anleitung behandelt allgemeine Vorgänge, über die Speicherkonten mithilfe der Cmdlets der Verwaltungsebene verwaltet werden. Folgendes wird vermittelt: 
+Diese Anleitung behandelt allgemeine Vorgänge, über die Speicherkonten mithilfe der Cmdlets der Verwaltungsebene verwaltet werden. Es wurde Folgendes vermittelt: 
 
 > [!div class="checklist"]
 > * Auflisten von Speicherkonten
@@ -240,9 +247,7 @@ Diese Anleitung behandelt allgemeine Vorgänge, über die Speicherkonten mithilf
 > * Schützen des Zugriffs auf Ihr Speicherkonto 
 > * Aktivieren von Storage Analytics
 
-Es sind auch Links zu verschiedenen anderen Artikeln verfügbar, z. B. zum Verwalten der Datenobjekte oder zum Aktivieren von Storage Analytics. Die folgenden Artikel und Ressourcen dienen als Referenz: 
-<!--, and how to access storage with PowerShell using the Government Cloud and the China Cloud.
--->
+In diesem Artikel wurden außerdem Links zu weiteren Artikeln bereitgestellt. In diesen wird beispielsweise das Verwalten von Datenobjekten, das Aktivieren von Storage Analytics und das Zugreifen auf unabhängige Azure-Clouds wie die chinesische und deutsche Azure-Cloud sowie auf die Government Cloud beschrieben. Die folgenden Artikel und Ressourcen dienen als Referenz:
 
 * [PowerShell-Cmdlets der Azure Storage-Steuerungsebene](/powershell/module/AzureRM.Storage/)
 * [PowerShell-Cmdlets der Azure Storage-Datenebene](/powershell/module/azure.storage/)

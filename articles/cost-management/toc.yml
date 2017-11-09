@@ -21,6 +21,8 @@
       href: tutorial-user-access.md
     - name: 3 – Vorhersage der Ausgaben
       href: tutorial-forecast-spending.md
+    - name: 4 – Verwalten von Kosten
+      href: tutorial-manage-costs.md
 - name: Ressourcen
   items:
     - name: Videos zur Kostenverwaltung

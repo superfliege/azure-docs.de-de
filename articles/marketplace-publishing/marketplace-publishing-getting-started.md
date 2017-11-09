@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: 8fbf201343f6710d2781a4b56ae54833ed4c06cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa00f176ff56c13033907e134fc236c291308028
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Veröffentlichen und Verwalten eines Angebots im Azure Marketplace
 Dieser Artikel soll Entwickler dabei unterstützen, ihre im Azure Marketplace aufgeführten Lösungen zu erstellen, bereitzustellen und zu verwalten, damit sie von anderen Azure-Kunden und -Partnern erworben und genutzt werden können.
@@ -99,9 +99,6 @@ Verwalten Sie Ihre Lösung mithilfe folgender Ressourcen:
 * [Zurücksetzen des Listenpreises auf Produktionswerte](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
 * [Zurücksetzen des Abrechnungsmodells auf Produktionswerte](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
 * [Zurücksetzen der Sichtbarkeitseinstellung einer aufgelisteten SKU auf den Produktionswert](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)
-* [Anzeigen und Ändern Ihres „Reseller Incentive“ für Cloud-Lösungsanbieter im Azure Marketplace](marketplace-publishing-csp-incentive.md)
-* [Grundlegendes zu Azure Marketplace-Auszahlungsberichten](marketplace-publishing-report-payout.md)
-* [Zugriff auf die Publisher-Unterstützung](marketplace-publishing-get-publisher-support.md)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 [Einrichten von Azure PowerShell](marketplace-publishing-powershell-setup.md)

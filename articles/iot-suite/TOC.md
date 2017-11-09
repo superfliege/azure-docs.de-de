@@ -8,6 +8,41 @@
 ### [Bereitstellen der vorkonfigurierten Lösung](iot-suite-remote-monitoring-deploy.md)
 ### [Betreiben der vorkonfigurierten Lösung](iot-suite-remote-monitoring-explore.md)
 
+## Remoteüberwachung (vorherige Version)
+### [Was sind die vorkonfigurierten Lösungen?](iot-suite-v1-what-are-preconfigured-solutions.md)
+### [Häufig gestellte Fragen](iot-suite-v1-faq.md)
+
+### Erste Schritte
+#### [Erste Schritte mit den vorkonfigurierten Lösungen](iot-suite-v1-getstarted-preconfigured-solutions.md)
+#### [Berechtigungen für „azureiotsuite.com“](iot-suite-v1-permissions.md)
+#### [Exemplarische Vorgehensweise zur Remoteüberwachungslösung](iot-suite-v1-remote-monitoring-sample-walkthrough.md)
+#### [Herstellen einer Verbindung mit Raspberry Pi](iot-suite-v1-raspberry-pi-kit-get-started.md)
+##### Verwenden von C
+###### [Simulierte Daten](iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md)
+###### [Verwenden echter Sensoren](iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md)
+###### [Implementieren eines Firmwareupdates](iot-suite-v1-raspberry-pi-kit-c-get-started-advanced.md)
+##### Verwenden von Node.js
+###### [Simulierte Daten](iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md)
+###### [Verwenden echter Sensoren](iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md)
+###### [Implementieren eines Firmwareupdates](iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md)
+#### Verbinden Ihres NUC-Gateways
+##### [Simulierte Daten](iot-suite-v1-gateway-kit-get-started-simulator.md)
+##### [Verwenden eines echten Sensors](iot-suite-v1-gateway-kit-get-started-sensortag.md)
+
+### Anleitung
+#### Verbinden eines simulierten Geräts
+##### [C unter Windows](iot-suite-v1-connecting-devices.md)
+##### [C unter Linux](iot-suite-v1-connecting-devices-linux.md)
+##### [Node.js](iot-suite-v1-connecting-devices-node.md)
+#### [Verbinden einer Logik-App mit der Remoteüberwachungslösung](iot-suite-v1-logic-apps-tutorial.md)
+#### [Anpassen vorkonfigurierter Lösungen](iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md)
+#### [Verwenden dynamischer Telemetriedaten mit der Remoteüberwachungslösung](iot-suite-v1-dynamic-telemetry.md)
+#### [Erstellen einer benutzerdefinierten Regel in der Remoteüberwachungslösung](iot-suite-v1-custom-rule.md)
+#### [Geräteinformationen in der Remoteüberwachungslösung](iot-suite-v1-remote-monitoring-device-info.md)
+
+
+
+
 ## Vorhersagbarer Wartungsbedarf
 ### [Übersicht über die Predictive Maintenance-Lösung](iot-suite-predictive-overview.md)
 ### [Exemplarische Vorgehensweise zur Predictive Maintenance-Lösung](iot-suite-predictive-walkthrough.md)

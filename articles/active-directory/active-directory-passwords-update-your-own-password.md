@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/27/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 1a5e97e2a6aca440c9643569014ffce41a614324
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f175f5711b9798153d209f6645aa8bae9f2a00b
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="help-i-forgot-my-azure-ad-password"></a>Ich habe mein Azure AD-Kennwort vergessen. Was nun?
 
@@ -51,7 +51,7 @@ Rufen Sie mithilfe der folgenden Schritte die Self-Service-Kennwortzurücksetzun
    > Wenn Sie Ihr Konto entsperren möchten, wählen Sie an dieser Stelle „Ich kenne mein Kennwort, kann mich aber dennoch nicht anmelden.“ aus.
    >
 
-3. Je nachdem, wie das IT-Personal SSPR konfiguriert hat, wird mindestens eine der folgenden Optionen angezeigt. Einige dieser Informationen wurden vom IT-Personal oder von Ihnen selbst bereits vor Anwendung der Informationen im Artikel [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md) angegeben.
+3. Je nachdem, wie das IT-Personal SSPR konfiguriert hat, wird mindestens eine der folgenden Authentifizierungsmethoden angezeigt. Einige dieser Informationen wurden vom IT-Personal oder von Ihnen selbst bereits vor Anwendung der Informationen im Artikel [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md) angegeben.
 
    * **E-Mail an meine alternative E-Mail-Adresse senden**
    * **Textnachricht an mein Mobiltelefon senden**

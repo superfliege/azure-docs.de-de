@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 3b8038b716266326967e2cf178efe4d36f4badc5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 3c83645f61cd42c8c2b46f787c9e7531726d3fbb
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-database-security-overview"></a>Übersicht über die Sicherheit der Azure-Datenbank
 
@@ -69,7 +69,7 @@ Ein Problem bei der Netzwerkverwaltung ist der Schutz von Daten, die zwischen An
 
 Im Zuge der Authentifizierung sendet ein TLS/SSL-Client eine Nachricht an einen TLS/SSL-Server, der daraufhin mit den für die Serverauthentifizierung erforderlichen Informationen antwortet. Client und Server tauschen zusätzlich Sitzungsschlüssel aus, und der Authentifizierungsdialog wird beendet. Nach Abschluss der Authentifizierung kann die durch SSL geschützte Kommunikation zwischen Server und Client unter Verwendung der symmetrischen Verschlüsselungsschlüssel beginnen, die im Zuge der Authentifizierung eingerichtet wurden.
 
-Für alle Verbindungen zur Azure SQL-Datenbank ist eine Verschlüsselung (SSL/TLS) erforderlich, und zwar zu jedem Zeitpunkt während der Übertragung von Daten in und aus der Datenbank. SQL Azure verwendet TLS/SSL zur Authentifizierung von Servern und Clients und verschlüsselt damit anschließend Nachrichten zwischen den authentifizierten Parteien. Sie müssen in der Verbindungszeichenfolge Ihrer Anwendung Parameter zum Verschlüsseln der Verbindung angeben, und dem Serverzertifikat darf nicht vertraut werden. (Das passiert, wenn Sie die Verbindungszeichenfolge aus dem klassischen Azure-Portal kopieren.) Andernfalls wird die Identität des Servers nicht überprüft, und die Verbindung ist anfällig für Man-in-the-Middle-Angriffe. Für den ADO.NET-Treiber lauten diese Verbindungszeichenfolgenparameter beispielsweise „Encrypt=True“ und „TrustServerCertificate=False“.
+Für alle Verbindungen zur Azure SQL-Datenbank ist eine Verschlüsselung (SSL/TLS) erforderlich, und zwar zu jedem Zeitpunkt während der Übertragung von Daten in und aus der Datenbank. SQL Azure verwendet TLS/SSL zur Authentifizierung von Servern und Clients und verschlüsselt damit anschließend Nachrichten zwischen den authentifizierten Parteien. Sie müssen in der Verbindungszeichenfolge Ihrer Anwendung Parameter angeben, durch die die Verbindung verschlüsselt und dem Serverzertifikat nicht vertraut wird (dies geschieht automatisch, wenn Sie die Verbindungszeichenfolge aus dem Azure-Portal kopieren). Andernfalls wird die Identität des Servers nicht überprüft, und die Verbindung ist anfällig für Man-in-the-Middle-Angriffe. Für den ADO.NET-Treiber lauten diese Verbindungszeichenfolgenparameter beispielsweise „Encrypt=True“ und „TrustServerCertificate=False“.
 
 ### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 Sie können verschiedene Vorsichtsmaßnahmen zum Schützen der Datenbank treffen, z.B. Entwerfen eines sicheren Systems, Verschlüsseln vertraulicher Datenbestände und Erstellen einer Firewall für die Datenbankserver. Im Falle eines Diebstahls physischer Medien (Festplatten, Sicherungsbänder oder Ähnliches) kann eine böswillige Partei die Datenbank jedoch einfach wiederherstellen oder anfügen und die Daten durchsuchen.

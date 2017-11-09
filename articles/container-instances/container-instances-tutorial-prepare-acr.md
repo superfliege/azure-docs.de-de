@@ -1,5 +1,5 @@
 ---
-title: "Tutorial für Azure Container Instances – Vorbereiten der Azure Container Registry | Microsoft-Dokumentation"
+title: "Tutorial für Azure Container Instances – Vorbereiten der Azure Container Registry"
 description: "Tutorial für Azure Container Instances – Vorbereiten der Azure Container Registry"
 services: container-instances
 documentationcenter: 
@@ -14,18 +14,18 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 10/26/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 7ac85bffb9593923808c77f2240e6f0e841e74cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8cb00210ee260383d546be4faf141c133661156b
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Bereitstellen und Verwenden von Azure Container Registry
 
-Dies ist der zweite Teil eines dreiteiligen Tutorials. Im [vorherigen Schritt](./container-instances-tutorial-prepare-app.md) wurde ein Containerimage für eine einfache in [Node.js](http://nodejs.org) geschriebene Webanwendung erstellt. In diesem Tutorial wird dieses Image per Push in eine Azure Container Registry-Instanz übertragen. Wenn Sie das Containerimage noch nicht erstellt haben, kehren Sie zu [Tutorial 1 – Erstellen von Containerimages](./container-instances-tutorial-prepare-app.md) zurück. 
+Dies ist der zweite Teil eines dreiteiligen Tutorials. Im [vorherigen Schritt](container-instances-tutorial-prepare-app.md) wurde ein Containerimage für eine einfache in [Node.js](http://nodejs.org) geschriebene Webanwendung erstellt. In diesem Tutorial übertragen Sie das Image per Push in eine Azure Container Registry-Instanz. Wenn Sie das Containerimage noch nicht erstellt haben, kehren Sie zu [Tutorial 1 – Erstellen von Containerimages](container-instances-tutorial-prepare-app.md) zurück.
 
 Azure Container Registry ist eine Azure-basierte, private Registrierung für Docker-Containerimages. In diesem Tutorial werden die Schritte für die Bereitstellung einer Azure Container Registry-Instanz und die Übertragung eines Containerimages in diese Instanz per Push erläutert. Folgende Schritte werden ausgeführt:
 
@@ -38,7 +38,11 @@ In nachfolgenden Tutorials stellen Sie den Container aus Ihrer privaten Registri
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für dieses Tutorial müssen Sie mindestens Version 2.0.12 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Für dieses Tutorial müssen Sie mindestens Version 2.0.20 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu.
+
+Für dieses Tutorial ist eine Docker-Entwicklungsumgebung erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac](https://docs.docker.com/docker-for-mac/)-, [Windows](https://docs.docker.com/docker-for-windows/)- oder [Linux](https://docs.docker.com/engine/installation/#supported-platforms)-System konfiguriert werden kann.
+
+Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der einzelnen Schritte dieses Tutorials erforderlich sind. Aus diesem Grund empfehlen wir Ihnen eine lokale Installation der Azure CLI und der Docker-Entwicklungsumgebung.
 
 ## <a name="deploy-azure-container-registry"></a>Bereitstellen von Azure Container Registry
 
@@ -60,7 +64,7 @@ Für den Rest dieses Tutorials verwenden wir `<acrname>` als Platzhalter für de
 
 ## <a name="container-registry-login"></a>Anmeldung bei der Containerregistrierung
 
-Sie müssen sich bei der ACR-Instanz anmelden, damit Sie Images per Push in sie übertragen können. Verwenden Sie den Befehl [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#az_acr_login), um den Vorgang abzuschließen. Sie müssen den eindeutigen Namen angeben, mit dem die Containerregistrierung bei ihrer Erstellung versehen wurde.
+Sie müssen sich bei der ACR-Instanz anmelden, damit Sie Images per Push in sie übertragen können. Verwenden Sie den Befehl [az acr login](/cli/azure/acr#az_acr_login), um den Vorgang abzuschließen. Sie müssen den eindeutigen Namen angeben, den die Containerregistrierung bei ihrer Erstellung erhalten hat.
 
 ```azurecli
 az acr login --name <acrName>
@@ -85,7 +89,7 @@ REPOSITORY                   TAG                 IMAGE ID            CREATED    
 aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
 ```
 
-Um den „loginServer“-Namen zu erhalten, führen Sie den folgenden Befehl aus.
+Führen Sie den folgenden Befehl aus, um den loginServer-Namen abzurufen:
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table

@@ -1,5 +1,5 @@
 ---
-title: "Azure App Service-Pläne – Detaillierte Übersicht | Microsoft Docs"
+title: "App Service-Pläne in Azure App Service-Web-Apps | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie App Service-Pläne für Azure App Service funktionieren, und wie Ihre Verwaltungsumgebung davon profitiert."
 keywords: App-Dienst, Azure App Service, Skalierung, skalierbar, App Services-Plan, App Service-Kosten
 services: app-service
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: byvinyal
-ms.openlocfilehash: 688f57de662fec6a04227c35d6578097c795c6da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb5b782f09bdd8c8a862eddfbd65b0f86ef8d08c
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/30/2017
 ---
-# <a name="azure-app-service-plans-in-depth-overview"></a>Azure App Service-Pläne – Detaillierte Übersicht
+# <a name="app-service-plans-in-azure-app-service-web-apps"></a>App Service-Pläne in Azure App Service-Web-Apps
 
 App Service-Pläne stellen die Sammlung physischer Ressourcen dar, die zum Hosten Ihrer Apps verwendet werden.
 

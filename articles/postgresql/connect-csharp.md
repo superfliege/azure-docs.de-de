@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc, devcenter
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 06/23/2017
-ms.openlocfilehash: 1ad2e586960be1fcb302c5459975f5a11dd8068e
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.date: 11/03/2017
+ms.openlocfilehash: b20e459c2c24bfa16a2f24fed07f2f214c45099a
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>Azure-Datenbank für PostgreSQL: Verwenden von .NET (C#) zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
 Dieser Schnellstart zeigt, wie Sie mit einer C#-Anwendung eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der C#-Entwicklung vertraut sind und noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
@@ -28,20 +28,7 @@ In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen e
 Außerdem benötigen Sie Folgendes:
 - Installieren Sie das [.NET Framework](https://www.microsoft.com/net/download). Führen Sie die Schritte aus dem verlinkten Artikel durch, um .NET für Ihre Plattform (Windows, Ubuntu Linux oder macOS) zu installieren. 
 - Installieren Sie [Visual Studio](https://www.visualstudio.com/downloads/) oder Visual Studio Code für die Eingabe und Bearbeitung von Code.
-- Installieren Sie die Bibliothek [Npgsql](http://www.npgsql.org/doc/index.html), wie weiter unten beschrieben.
-
-## <a name="install-npgsql-references-into-your-visual-studio-solution"></a>Installieren von Npgsql-Verweisen in Ihrer Visual Studio-Projektmappe
-Wenn Sie eine Verbindung über die C#-Anwendung mit PostgreSQL herstellen möchten, verwenden Sie die Open Source-ADO.NET-Bibliothek „Npgsql“. Per NuGet können Sie Verweise herunterladen und leicht verwalten.
-
-1. Erstellen Sie eine neue C#-Projektmappe, oder öffnen Sie eine vorhandene: 
-   - Erstellen Sie in Visual Studio eine Projektmappe, indem Sie im Menü **Datei** auf **Neu** > **Projekt** klicken.
-   - Erweitern Sie im Dialogfeld „Neues Projekt“ die Optionen **Vorlagen** > **Visual C#**. 
-   - Wählen Sie eine geeignete Vorlage aus, z.B. **Konsolenanwendung (.NET Core)**.
-
-2. Verwenden Sie den NuGet-Paket-Manager, um Npgsql zu installieren:
-   - Klicken Sie im Menü **Extras** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
-   - Geben Sie in der **Paket-Manager-Konsole** den Text `Install-Package Npgsql` ein.
-   - Mit dem Installationsbefehl werden „Npgsql.dll“ und dazugehörige Assemblys heruntergeladen und der Projektmappe als Abhängigkeiten hinzugefügt.
+- Laden Sie die Bibliothek [Npgsql](https://github.com/npgsql/Npgsql/releases) herunter, und installieren Sie sie.
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure-Datenbank für PostgreSQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.

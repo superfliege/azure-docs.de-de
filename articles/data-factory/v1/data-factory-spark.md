@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 3690b5f62d8384d255d420946f6ac1cfd47b9317
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0eff48ec65a01a2fc3fa9f7652dd8e1a0fc8dd2a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Aufrufen von Spark-Programmen aus Azure Data Factory-Pipelines
 
@@ -34,6 +34,9 @@ ms.lasthandoff: 10/11/2017
 > * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
 > * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
+
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts in der Vorschauversion verwenden, lesen Sie die Informationen zum [Transformieren von Daten mit der Spark-Aktivität in Data Factory Version 2](../transform-data-using-spark.md).
 
 ## <a name="introduction"></a>Einführung
 Die Spark-Aktivität ist eine der [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md), die von Azure Data Factory unterstützt werden. Diese Aktivität führt das angegebene Spark-Programm auf dem Apache Spark-Cluster in Azure HDInsight aus.    
@@ -53,7 +56,7 @@ Dies sind die typischen Schritte zum Erstellen einer Data Factory-Pipeline mit e
 
 ### <a name="prerequisites"></a>Voraussetzungen
 1. Erstellen Sie ein **allgemeines Azure-Speicherkonto** anhand der Anweisungen in der exemplarischen Vorgehensweise: [Erstellen eines Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account).  
-2. Erstellen Sie einen **Apache Spark-Cluster in Azure HDInsight** anhand der Anweisungen im Tutorial: [Erstellen eines Apache Spark-Clusters in Azure HDInsight](../../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). Ordnen Sie das in Schritt 1 erstellte Azure-Speicherkonto diesem Cluster zu.  
+2. Erstellen Sie einen **Apache Spark-Cluster in Azure HDInsight** anhand der Anweisungen im Tutorial: [Erstellen eines Apache Spark-Clusters in Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Ordnen Sie das in Schritt 1 erstellte Azure-Speicherkonto diesem Cluster zu.  
 3. Laden Sie die Python-Skriptdatei **test.py** von [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py) herunter, und sehen Sie sie durch.  
 3.  Laden Sie **test.py** in den Ordner **pyFiles** im Container **adfspark** in Azure Blob Storage hoch. Erstellen Sie den Container und den Ordner, wenn sie nicht vorhanden sind.
 
@@ -231,7 +234,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer **HDInsightSpark**-Aktiv
     ![Jupyter-Abfrageergebnisse](media/data-factory-spark/jupyter-notebook-results.png)
 
 <!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
-Ausführliche Anweisungen finden Sie im Abschnitt [Ausführen einer Spark SQL-Abfrage](../../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). 
+Ausführliche Anweisungen finden Sie im Abschnitt [Ausführen einer Spark SQL-Abfrage](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
 ### <a name="troubleshooting"></a>Problembehandlung
 Da Sie **getDebugInfo** auf **Always** festgelegt haben, finden Sie einen Unterordner **log** im Ordner **pyFiles** im Azure-Blobcontainer. Die Protokolldatei im Ordner „log“ enthält weitere Details. Diese Protokolldatei ist besonders nützlich, wenn ein Fehler aufgetreten ist. In einer Produktionsumgebung sollten Sie sie auf **Failure** festlegen.

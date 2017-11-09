@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: 62d78e067e50183f25af84e547db2e11c0014f5d
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: e72fc0d4323f7a2d203fee66311c3fea10ad7a09
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="high-availability-ports-overview-preview"></a>Übersicht über Hochverfügbarkeitsports (Vorschauversion)
 
@@ -36,7 +36,7 @@ Hochverfügbarkeitsports werden durch Festlegen der Front-End- und Back-End-Port
 
 ## <a name="why-use-ha-ports"></a>Gründe für die Verwendung von Hochverfügbarkeitsports
 
-### <a name="network-virtual-appliances"></a>Virtuelle Netzwerkgeräte
+### <a name="nva"></a>Virtuelle Netzwerkgeräte
 
 Sie können virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs) verwenden, um Ihre Azure-Workload vor verschiedenen Typen von Sicherheitsrisiken zu schützen. Wenn NVAs in diesen Szenarien verwendet werden, müssen sie zuverlässig, hochverfügbar und bedarfsgerecht horizontal hochskalierbar sein.
 
@@ -139,6 +139,8 @@ Hier finden Sie die unterstützten Konfigurationen oder Ausnahmen für Hochverf�
 - Eine einzelne Netzwerkschnittstellen-IP-Konfiguration kann mindestens eine DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports haben, vorausgesetzt, dass alle ihre jeweiligen Front-End-IP-Konfigurationen eindeutig sind.
 - Wenn alle Lastenausgleichsregeln Hochverfügbarkeitsports (nur DSR) oder alle Regeln nur Nicht-Hochverfügbarkeitsports (DSR und Nicht-DSR) aufweisen, können gleichzeitig zwei (oder mehr) Lastenausgleichsregeln, die auf denselben Back-End-Pool verweisen, vorhanden sein. Zwei solcher Lastenausgleichsregeln können nicht gleichzeitig vorhanden sein, wenn Hochverfügbarkeitsport- und Nicht-Hochverfügbarkeitsportregeln kombiniert wurden.
 - Hochverfügbarkeitsports sind für IPv6 nicht verfügbar.
+- Flowsymmetrie für NVA-Szenarios wird nur mit einer NIC unterstützt. Sehen Sie sich die Beschreibung und das Diagramm unter [Virtuelle Netzwerkgeräte](#nva) an. 
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

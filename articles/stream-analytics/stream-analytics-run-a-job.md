@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.openlocfilehash: bd252d7df2fc15aaa24d1a1ed7aaf6e00d301410
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb084f1c6b53e2582849e71271e8114a22dcf05c
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="how-to-run-a-streaming-job-in-azure-stream-analytics"></a>Ausführen von Streamingaufträgen in Azure Stream Analytics
 Nachdem Eingabe, Abfrage und Ausgabe für den Auftrag angegeben wurden, können Sie den Stream Analytics-Auftrag starten.
@@ -34,7 +34,9 @@ So starten Sie den Auftrag:
    
    ![Azure-Portal – Schaltfläche „Auftrag starten“](./media/stream-analytics-run-a-job/4-stream-analytics-run-a-job.png)  
 2. Geben Sie einen Wert für den **Ausgabestart** ein, um zu bestimmen, wann der Auftrag mit der Ausgabe beginnen soll. Die Standardeinstellung für Aufträge, die zuvor noch nicht gestartet wurden, ist die **Startzeit des Auftrags**, was bedeutet, dass der Auftrag sofort mit der Verarbeitung der Daten beginnt. Sie können auch eine **benutzerdefinierte** Zeit in der Vergangenheit (für die Verarbeitung von Verlaufsdaten) oder in der Zukunft (damit die Verarbeitung auf einen späteren Zeitpunkt verschoben wird) angeben. Für Fälle, in denen ein Auftrag bereits zuvor gestartet und beendet wurde, steht die Option **Last Stopped Time** zur Verfügung, um den Auftrag ab dem letzten Zeitpunkt der Ausgabe fortzusetzen und Datenverlust zu vermeiden.  
-Hinweis: Bei der Verwendung von Partitionen stellt die letzte Beendigungszeit das Minimum der letzten Ausgabezeit in allen Partitionen dar.
+
+> [!NOTE]
+> Bei der Verwendung von Partitionen stellt „Letzte Beendigungszeit“ das Minimum der letzten Ausgabezeit in allen Partitionen dar.
    
    ![Starten von Streamingaufträgen, Zeit](./media/stream-analytics-run-a-job/2-stream-analytics-run-a-job.png)  
    

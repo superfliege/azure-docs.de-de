@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/02/2017
+ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63e1820033e051b72601291c5206772192e68769
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ef5ec3d8f4b96d4a318e01b449d3baad8a6324a
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Übersicht und Architektur von SAP HANA in Azure (große Instanzen)
 
@@ -62,6 +62,10 @@ Im Handbuch zur Architektur und technischen Bereitstellung werden mehrere allgem
 - **SAP HANA in Azure (große Instanzen):** Offizieller Name für das Angebot in Azure, HANA-Instanzen auf SAP HANA TDI-zertifizierter Hardware auszuführen, die in Stapeln für große Instanzen in verschiedenen Azure-Regionen bereitgestellt wird. Der zugehörige Begriff **HANA (große Instanzen)** ist die Kurzform für SAP HANA in Azure (große Instanzen) und wird in diesem Handbuch für die technische Bereitstellung gemeinhin verwendet.
 - **Standortübergreifend:** Beschreibt ein Szenario, in dem virtuelle Computer mit einem Azure-Abonnement bereitgestellt werden, das Site-to-Site-, Multisite- oder ExpressRoute-Verbindungen zwischen den lokalen Rechenzentren und Azure umfasst. In allgemeinen Azure-Dokumentationen werden diese Arten von Bereitstellungen auch als "Cross-Premises"-Szenarien bezeichnet. Durch die Verbindung sollen lokale Domänen, das lokale Active Directory/OpenLDAP und lokales DNS auf Azure erweitert werden. Die lokale Landschaft wird auf die Azure-Ressourcen der Azure-Abonnements erweitert. Durch diese Erweiterung können die virtuellen Computer Teil der lokalen Domäne sein. Domänenbenutzer der lokalen Domäne können auf die Server zugreifen und Dienste auf diesen virtuellen Computern ausführen (z.B. DBMS-Dienste). Die Kommunikation und Namensauflösung zwischen lokal bereitgestellten virtuellen Computern und in Azure bereitgestellten virtuellen Computern ist möglich. Dies ist das typische Szenario, in dem die meisten SAP-Assets bereitgestellt werden. Weitere Informationen finden Sie in den Handbüchern [Planung und Entwurf für VPN Gateway](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) und [Erstellen eines VNet mit einer Standort-zu-Standort-Verbindung über das Azure-Portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Mandant**: ein Kunde, der im Stempel von großen HANA-Instanzen bereitgestellt wurde, wird in einem sogenannten Mandanten isoliert. Ein Mandant wird in der Schicht der Netzwerke, Speicher und von Compute von anderen Mandanten isoliert. Dadurch können Computeeinheiten, die unterschiedlichen Mandanten zugewiesen wurden, auf der Ebene des Stempels der großen HANA-Instanz einander nicht sehen oder miteinander kommunizieren. Ein Kunde kann Bereitstellungen in unterschiedlichen Mandanten durchführen. Auch dann ist die Kommunikation auf Ebene der großen HANA-Instanz nicht möglich.
+- **SKU-Kategorie:** Für große HANA-Instanzen werden die folgenden beiden SKU-Kategorien angeboten.
+    - **Typ-I-Klasse:** S72, S72m, S144, S144m, S192 und S192m
+    - **Typ-II-Klasse:** S384, S384m, S384xm, S576, S768 und S960
+
 
 Es gibt eine Vielzahl zusätzlicher Ressourcen, die zum Thema der Bereitstellung von SAP-Workload in der öffentlichen Microsoft Azure-Cloud veröffentlicht wurden. Es wird dringend empfohlen, dass nur erfahrene Benutzer eine Bereitstellung von SAP HANA in Azure planen und ausführen, die sich mit den Prinzipalen von Azure IaaS und der Bereitstellung von SAP-Workloads in Azure IaaS auskennen. Die folgenden Ressourcen bieten weitere Informationen und sollten als Referenz hinzugezogen werden, bevor Sie fortfahren:
 
@@ -122,7 +126,7 @@ Innerhalb der mehrinstanzenfähigen Infrastruktur des Stapels für große Instan
 
 Wie bei Azure-VMs wird SAP HANA in Azure (große Instanzen) in mehreren Azure-Regionen angeboten. Um Funktionen zur Notfallwiederherstellung anzubieten, können Sie diese abonnieren. Die verschiedenen Stapel für große Instanzen sind innerhalb einer geopolitischen Azure-Region miteinander verbunden. Ein Stapel für HANA (großen Instanzen) im Westen der USA ist mit einem anderen im Osten der USA über eine dedizierte Netzwerkverbindung zwecks DR-Replikation verbunden. 
 
-Ebenso, wie Sie bei Azure Virtual Machines zwischen verschiedenen VM-Typen auswählen können, können Sie aus verschiedenen SKUs von HANA (große Instanzen) auswählen, die für verschiedene Workloadtypen von SAP HANA zugeschnitten sind. Für variierende Workloads wendet SAP basierend auf den Intel-Prozessorgenerationen ein geeignetes Verhältnis zwischen Arbeitsspeicher und Prozessorsockets an – es werden vier verschiedene SKU-Typen angeboten:
+Ebenso, wie Sie bei Azure Virtual Machines zwischen verschiedenen VM-Typen auswählen können, können Sie aus verschiedenen SKUs von HANA (große Instanzen) auswählen, die für verschiedene Workloadtypen von SAP HANA zugeschnitten sind. Für variierende Workloads wendet SAP basierend auf den Intel-Prozessorgenerationen ein geeignetes Verhältnis zwischen Arbeitsspeicher und Prozessorsockets an. Die folgende Tabelle zeigt die angebotenen SKU-Typen.
 
 Ab Juli 2017 ist SAP HANA in Azure (große Instanzen) in verschiedenen Konfigurationen in den Azure-Regionen „USA, Westen“, „USA, Osten“, „Australien, Osten“, „Australien, Südosten“, „Europa, Westen“ und „Europa, Norden“ verfügbar:
 
@@ -355,7 +359,7 @@ Als Kunde können Sie Speichermomentaufnahmen für die Sicherung/Wiederherstellu
 ### <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
 Der für HANA (große Instanzen) genutzte Speicher ermöglicht eine transparente Verschlüsselung der Daten, die auf den Datenträgern gespeichert werden. Sie können optional festlegen, dass diese Art der Verschlüsselung zum Zeitpunkt der Bereitstellung einer Einheit von HANA (große Instanzen) aktiviert ist. Sie können auch den unmittelbaren Wechsel zu den verschlüsselten Volumes nach der Bereitstellung auswählen. Der Schritt von den unverschlüsselten zu den verschlüsselten Volumes ist transparent und erfordert keine Ausfallzeit. 
 
-Mit der SKU-Klasse vom Typ I wird das Volume verschlüsselt, auf dem der Start-LUN gespeichert ist. Im Fall von SKUs der Klasse Typ II von HANA (große Instanzen) müssen Sie den Start-LUN mit OS-Methoden verschlüsseln. 
+Mit der SKU-Klasse vom Typ I wird das Volume verschlüsselt, auf dem der Start-LUN gespeichert ist. Im Fall von SKUs der Klasse Typ II von HANA (große Instanzen) müssen Sie den Start-LUN mit OS-Methoden verschlüsseln. Für weitere Informationen wenden Sie sich an das Microsoft Service Management-Team.
 
 
 ## <a name="networking"></a>Netzwerk

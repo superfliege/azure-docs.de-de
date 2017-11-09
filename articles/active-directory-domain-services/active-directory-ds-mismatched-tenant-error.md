@@ -4,7 +4,7 @@ description: "Verstehen und Lösen von Verzeichniskonfliktfehlern für vorhanden
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 10/30/2017
 ms.author: maheshu
-ms.openlocfilehash: 118773be1f03701246051b8832695c591d76b1e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c9a47e9b3050eb7f41202d6a4b9202ba0f379df
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Beheben von Verzeichniskonfliktfehlern für vorhandene verwaltete Azure AD Domain Services-Domänen
 Sie verfügen über eine vorhandene verwaltete Domäne, die mit dem klassischen Azure-Portal aktiviert wurde. Wenn Sie zum neuen Azure-Portal navigieren und die verwaltete Domäne anzeigen, wird Ihnen die folgende Fehlermeldung angezeigt:
@@ -43,7 +43,7 @@ Kurz gesagt, Sie können keine verwaltete Domäne für einen Azure AD-Mandanten 
 
 ![Nicht übereinstimmende Mandantenkonfiguration](./media/getting-started/mismatched-tenant-config.png)
 
-Aus diesem Grund wird Ihnen in Szenarios, in denen die verwaltete Domäne und das virtuelle Netzwerk, in dem diese aktiviert ist, zu zwei verschiedenen Azure AD-Mandanten gehören, diese Fehlermeldung angezeigt.
+Darum wird Ihnen diese Fehlermeldung angezeigt, wenn die verwaltete Domäne und das virtuelle Netzwerk, in dem diese aktiviert ist, zu zwei verschiedenen Azure AD-Mandanten gehören.
 
 In der Resource Manager-Umgebung gelten die folgenden Regeln:
 - Ein Azure AD-Verzeichnis kann über mehrere Azure-Abonnements verfügen.
@@ -55,9 +55,9 @@ In der Resource Manager-Umgebung gelten die folgenden Regeln:
 ## <a name="resolution"></a>Lösung
 Sie haben zwei Optionen zum Beheben des Verzeichniskonfliktfehlers. Sie können:
 
-- Auf die Schaltfläche **Löschen** klicken, um die vorhandene verwaltete Domäne zu löschen. Mit dem [Azure-Portal](https://portal.azure.com) neu erstellen, sodass die verwaltete Domäne und das virtuelle Netzwerk, in dem sie zur Verfügung steht, dem Azure AD-Verzeichnis angehören. Sie müssen alle Computer, die zuvor mit der gelöschten Domäne verknüpft waren, mit der neu erstellten verwalteten Domäne verknüpfen.
+- Auf die Schaltfläche **Löschen** klicken, um die vorhandene verwaltete Domäne zu löschen. Mit dem [Azure-Portal](https://portal.azure.com) neu erstellen, sodass die verwaltete Domäne und das virtuelle Netzwerk, in dem sie zur Verfügung steht, dem Azure AD-Verzeichnis angehören. Verknüpfen Sie alle Computer, die zuvor mit der gelöschten Domäne verknüpft waren, mit der neu erstellten verwalteten Domäne.
 
-- Wenden Sie sich an den Azure-Support, um das Azure-Abonnement, welches das virtuelle Netzwerk enthält, in das Azure AD-Verzeichnis zu verschieben, zu dem die verwaltete Domäne gehört. Klicken Sie auf **Neue Supportanfrage**, und geben Sie **Verzeichniskonflikt** im Abschnitt **Details** der Supportanfrage an. Geben Sie die Informationen, die in der Fehlermeldung angezeigt werden, als Teil der Supportanfrage an.
+- Verschieben Sie das Azure-Abonnement, welches das virtuelle Netzwerk enthält, in das Azure AD-Verzeichnis, zu dem die verwaltete Domäne gehört. Führen Sie die Schritte im Artikel [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md) aus.
 
 
 ## <a name="related-content"></a>Verwandte Inhalte

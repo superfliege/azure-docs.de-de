@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: c53725806845095c55add65fb65a247d8873dc74
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aa1f4f0a264c58024206304b2bf9a43610cb835d
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server-Aktivität "Gespeicherte Prozedur"
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,6 +33,9 @@ ms.lasthandoff: 10/11/2017
 > * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
 > * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
+
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts in der Vorschauversion verwenden, lesen Sie die Informationen zum [Transformieren von Daten mithilfe der Aktivität „Gespeicherte Prozedur“ in Version 2 von Data Factory](../transform-data-using-stored-procedure.md).
 
 ## <a name="overview"></a>Übersicht
 Sie verwenden Transformationsaktivitäten in einer Data Factory-[Pipeline](data-factory-create-pipelines.md), um Rohdaten in Vorhersagen und Erkenntnisse umzuwandeln und zu verarbeiten. Die Aktivität der „Gespeicherte Prozedur“ ist eine der Transformationsaktivitäten, die Data Factory unterstützt. Dieser Artikel baut auf dem Artikel [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten in Data Factory bietet.

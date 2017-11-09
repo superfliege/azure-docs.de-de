@@ -1,6 +1,6 @@
 ---
-title: Neuerungen in Azure Active Directory | Microsoft Docs
-description: "Verwenden Sie diese Versionshinweise, um bei den **aktuellen Versionen**, **bekannten Problemen**, **Fehlerbehebungen**, **veralteter Funktionalität** und **Plänen für Änderungen** in Azure Active Directory auf dem Laufenden zu bleiben."
+title: Neuerungen Anmerkungen zur Version Azure Active Directory Premium | Microsoft-Dokumentation
+description: "Verwenden Sie diese Anmerkungen zu dieser Version, um bei den aktuellen Versionen, bekannten Problemen, Fehlerbehebungen, bei veralteter Funktionalität und Plänen für Änderungen in Azure Active Directory auf dem Laufenden zu bleiben."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 10/27/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0361d5b48af876af2ccc522351484d369554bfca
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 1d98233e1bfc2c9a926d7c61737286ec6e4fc422
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
-Wir nehmen laufend Verbesserungen an Azure Active Directory für Sie vor. Damit Sie bei den neuesten Entwicklungen auf dem neuesten Stand bleiben, bietet dieses Thema Informationen zu Folgendem:
+Wir nehmen laufend Verbesserungen an Azure Active Directory vor. Damit Sie bei den neuesten Entwicklungen auf dem neuesten Stand bleiben, bietet dieses Thema Informationen zu Folgendem:
 
 -   Neueste Versionen 
 -   Bekannte Probleme 
@@ -76,6 +76,8 @@ In unserer Welt ist die mehrstufige Authentifizierung (Multi-Factor Authenticati
 
 Mit dieser Public Preview sind MFA-Verwaltung und -Berichterstellung ein integraler Bestandteil der zentralen Azure AD-Konfigurationsumgebung, sodass Sie die MFA-Verwaltungsportalfunktionalität auf der Azure AD-Oberfläche verwalten können.
 
+Weitere Informationen finden Sie in der [Referenz zur Berichterstellung für die mehrstufige Authentifizierung im Azure-Portal](active-directory-reporting-activity-sign-ins-mfa.md). 
+
 
 ---
 **Typ:** Neue Funktion  
@@ -112,8 +114,6 @@ Weitere Informationen finden Sie unter [PIM für Azure-Ressourcen](privileged-id
 **Dienstkategorie:** Zugriffsüberprüfungen  
 **Produktfunktion:** Governance  
 
-
-Neuerungen in Azure AD
 
 Mithilfe von Zugriffsüberprüfungen (in der Vorschauphase) können Unternehmen Gruppenmitgliedschaften und den Zugriff auf Unternehmensanwendungen effizient verwalten: 
 

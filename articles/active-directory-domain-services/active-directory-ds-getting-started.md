@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 3f00cbfb5348919c38dc2dd905f1c141a39736f4
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 7d80049d4b6f7d57924522e3f273c42f4c887fee
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 Dieser Artikel zeigt, wie Azure Active Directory Domain Services (Azure AD DS) mithilfe des Azure-Portals aktiviert werden kann.
@@ -45,30 +45,25 @@ Auf der Seite **Grundlagen** des Assistenten können Sie den DNS-Domänennamen f
 
 1. Wählen Sie den **DNS-Domänennamen** für Ihre verwaltete Domäne.
 
-   * Standardmäßig ist der Standarddomänenname des Verzeichnisses (mit dem Suffix **.onmicrosoft.com**) ausgewählt.
+   > [!NOTE]
+   > **Richtlinien für das Auswählen eines DNS-Domänennamens**
+   > * **Integrierter Domänenname:** Standardmäßig legt der Assistent den standardmäßigen/integrierten Domänennamen des Verzeichnisses für Sie fest (mit einem **.onmicrosoft.com**-Suffix). Wenn Sie den sicheren LDAP-Zugriff auf die verwaltete Domäne über das Internet aktivieren, können Sie davon ausgehen, dass beim Erstellen eines öffentlichen DNS-Eintrags oder Abrufen eines sicheren LDAP-Zertifikats von einer öffentlichen Zertifizierungsstelle für diesen Domänennamen Probleme auftreten. Microsoft besitzt die *. onmicrosoft.com*-Domäne, und CAs werden keine Zertifikate ausstellen, die für diese Domäne bürgen.
+   * **Benutzerdefinierte Domänennamen**: Sie können auch einen benutzerdefinierten Domänennamen eingeben. In diesem Beispiel lautet der benutzerdefinierte Domänenname *contoso100.com*.
+   * **Nicht routingfähige Domänensuffixe**: Nicht routingfähige Domänensuffixe sollten Sie im Allgemeinen vermeiden. Beispielsweise ist es besser, das Erstellen einer Domäne mit dem DNS-Domänennamen „contoso.local“ zu vermeiden. Das DNS-Suffix „.local“ ist nicht routingfähig und kann zu Problemen mit der DNS-Auflösung führen.
+   * **Einschränkungen des Domänenpräfixes**: Das Präfix des angegebenen Domänennamens (beispielsweise *contoso100* im Domänennamen *contoso100.com*) darf maximal 15 Zeichen lang sein. Sie können keine verwaltete Domäne mit einem Präfix, das länger als 15 Zeichen ist, erstellen.
+   * **Netzwerknamenskonflikte**: Stellen Sie sicher, dass der DNS-Domänenname, den Sie für die verwaltete Domäne ausgewählt haben, nicht bereits im virtuellen Netzwerk vorhanden ist. Überprüfen Sie insbesondere, ob Folgendes zutrifft:
+       * Im virtuellen Netzwerk ist bereits eine Active Directory-Domäne mit dem gleichen DNS-Domänennamen vorhanden.
+       * Das virtuelle Netzwerk, in dem Sie die verwaltete Domäne aktivieren möchten, hat eine VPN-Verbindung mit Ihrem lokalen Netzwerk. In diesem Szenario stellen Sie sicher, dass Sie keine Domäne mit demselben DNS-Domänennamen in Ihrem lokalen Netzwerk haben.
+       * Im virtuellen Netzwerk ist bereits ein Clouddienst mit diesem Namen vorhanden.
+    >
 
-   * Sie können auch einen benutzerdefinierten Domänennamen eingeben. In diesem Beispiel lautet der benutzerdefinierte Domänenname *contoso100.com*.
+2. Wählen Sie das **Azure-Abonnement**, in dem Sie die verwaltete Domäne erstellen möchten.
 
-     > [!WARNING]
-     > Das Präfix des angegebenen Domänennamens (beispielsweise *contoso100* im Domänennamen *contoso100.com*) darf maximal 15 Zeichen lang sein. Sie können keine verwaltete Domäne mit einem Präfix, das länger als 15 Zeichen ist, erstellen.
-     >
-     >
+3. Wählen Sie die **Ressourcengruppe**, zu der die verwaltete Domäne gehören soll. Wählen Sie entweder die Option **Create new** (Neu erstellen) oder **Use existing** (Vorhandene verwenden), um die Ressourcengruppe auszuwählen.
 
-2. Stellen Sie sicher, dass der DNS-Domänenname, den Sie für die verwaltete Domäne ausgewählt haben, nicht bereits im virtuellen Netzwerk vorhanden ist. Überprüfen Sie insbesondere, ob Folgendes zutrifft:
+4. Wählen Sie den **Azure-Speicherort**, in dem die verwaltete Domäne erstellt werden soll. Auf der Seite **Netzwerk** des Assistenten sehen Sie nur virtuelle Netzwerke, die zu dem von Ihnen gewählten Standort gehören.
 
-   * Im virtuellen Netzwerk ist bereits eine Domäne mit dem gleichen DNS-Domänennamen vorhanden.
-
-   * Das virtuelle Netzwerk, in dem Sie die verwaltete Domäne aktivieren möchten, hat eine VPN-Verbindung mit Ihrem lokalen Netzwerk. In diesem Szenario stellen Sie sicher, dass Sie keine Domäne mit demselben DNS-Domänennamen in Ihrem lokalen Netzwerk haben.
-
-   * Im virtuellen Netzwerk ist bereits ein Clouddienst mit diesem Namen vorhanden.
-
-3. Wählen Sie das **Azure-Abonnement**, in dem Sie die verwaltete Domäne erstellen möchten.
-
-4. Wählen Sie die **Ressourcengruppe**, zu der die verwaltete Domäne gehören soll. Wählen Sie entweder die Option **Create new** (Neu erstellen) oder **Use existing** (Vorhandene verwenden), um die Ressourcengruppe auszuwählen.
-
-5. Wählen Sie den **Azure-Speicherort**, in dem die verwaltete Domäne erstellt werden soll. Auf der Seite **Netzwerk** des Assistenten sehen Sie nur virtuelle Netzwerke, die zu dem von Ihnen gewählten Standort gehören.
-
-6. Wenn Sie fertig sind, klicken Sie auf **OK**, um zur Seite **Netzwerk** des Assistenten zu gelangen.
+5. Wenn Sie fertig sind, klicken Sie auf **OK**, um zur Seite **Netzwerk** des Assistenten zu gelangen.
 
 
 ## <a name="next-step"></a>Nächster Schritt

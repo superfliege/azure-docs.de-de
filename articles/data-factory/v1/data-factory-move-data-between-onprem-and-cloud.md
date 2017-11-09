@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 11/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 712b29a347e246ad5afbf842930b0e01749c1203
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 39e283e4b0bb5e50d1268e1b2cac53bf9ee71028
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen unter [copy data between on-premises and cloud using Data Factory version 2 (Kopieren von Daten zwischen lokalen Quellen und der Cloud mithilfe von Version 2 von Data Factory)](../tutorial-hybrid-copy-powershell.md).
+
 Dieser Artikel enthält eine Übersicht über die Datenintegration zwischen lokalen Datenspeichern und Clouddatenspeichern mit Data Factory. Er baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) und anderen Artikeln über zentrale Konzepte von Data Factory auf: [Datasets](data-factory-create-datasets.md) und [Pipelines](data-factory-create-pipelines.md).
 
 ## <a name="data-management-gateway"></a>Gateway zur Datenverwaltung

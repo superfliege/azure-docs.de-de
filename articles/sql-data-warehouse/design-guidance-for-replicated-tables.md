@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 10/23/2017
 ms.author: rortloff;barbkess
-ms.openlocfilehash: 39ac9aa678464c497d9f7963bab802141ce9e854
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 413a9df6d224e53ba42313f6dc5e740710d418e3
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Entwurfsleitfaden für die Verwendung von replizierten Tabellen in Azure SQL Data Warehouse
 Dieser Artikel enthält Empfehlungen für das Entwerfen von replizierten Tabellen im SQL Data Warehouse-Schema. Nutzen Sie diese Empfehlungen, um die Abfrageleistung zu verbessern, indem Sie die Datenverschiebung und die Komplexität von Abfragen reduzieren.
@@ -140,7 +140,7 @@ SQL Data Warehouse implementiert eine replizierte Tabelle, indem eine Mastervers
 
 Nach folgenden Vorgängen ist eine Neuerstellung erforderlich:
 - Daten werden geladen oder geändert.
-- Das Data Warehouse wird auf eine andere DWU-Einstellung skaliert.
+- Das Data Warehouse wird auf einen anderen [Servicelevel](performance-tiers.md#service-levels) skaliert.
 - Die Tabellendefinition wird aktualisiert.
 
 Nach folgenden Vorgängen ist keine Neuerstellung erforderlich:

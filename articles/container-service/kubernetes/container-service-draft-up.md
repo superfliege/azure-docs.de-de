@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 8cef40f4360c6b9c9ab734171a4cca2a21a4c711
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: d1cb92e15109775fd120d82df6cfa94b7023d5b9
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Verwenden von Draft mit Azure Container Service und Azure Container Registry zum Erstellen und Bereitstellen einer Anwendung in Kubernetes
 
@@ -271,16 +271,16 @@ Die Ausgabe sieht in etwa wie folgt aus:
   }
   ```
 5. Installieren Sie **Draft** neu.
-  1. Entfernen Sie **Draft** aus dem Cluster, indem Sie `helm delete --purge draft` eingeben. 
-  2. Installieren Sie **Draft** mit dem gleichen `draft-init`-Befehl neu, jedoch mit der Option `--ingress-enabled`:
+
+   1. Entfernen Sie **Draft** aus dem Cluster, indem Sie `helm delete --purge draft` eingeben. 
+   2. Installieren Sie **Draft** mit dem gleichen `draft-init`-Befehl neu, jedoch mit der Option `--ingress-enabled`:
     ```bash
     draft init --ingress-enabled
     ```
-Reagieren Sie auf die Eingabeaufforderungen wie zuvor. Allerdings müssen Sie eine weitere Frage beantworten. Verwenden Sie den vollständigen Domänenpfad, den Sie mit Azure DNS konfiguriert haben.
-```bash
-4. Enter your top-level domain for ingress (e.g. draft.example.com): draft.squillace.io
-```
-5. Wenn Sie `draft up` dieses Mal aufrufen, wird Ihre Anwendung an der URL in der Form `<appname>.draft.<domain>.<top-level-domain>` angezeigt (oder Sie können `curl` verwenden). In diesem Beispiel: `http://handy-labradoodle.draft.squillace.io`. 
+   Reagieren Sie auf die Eingabeaufforderungen wie zuvor. Allerdings müssen Sie eine weitere Frage beantworten. Verwenden Sie den vollständigen Domänenpfad, den Sie mit Azure DNS konfiguriert haben.
+
+6. Geben Sie Ihre Domäne der obersten Ebene für eingehenden Datenverkehr (z.B. draft.example.com) ein: draft.squillace.io.
+7. Wenn Sie `draft up` dieses Mal aufrufen, wird Ihre Anwendung an der URL in der Form `<appname>.draft.<domain>.<top-level-domain>` angezeigt (oder Sie können `curl` verwenden). In diesem Beispiel: `http://handy-labradoodle.draft.squillace.io`. 
 ```bash
 curl -s http://handy-labradoodle.draft.squillace.io
 Hello World, I'm Java!

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 5766ef2097b0da295d42e7c5909efc524049f418
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7496b0578301713ebae7381e9a54642e226eb96
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>Bereitstellen einer Anwendung für einen Partycluster in Azure
 Dieses Tutorial ist der zweite Teil einer Serie und zeigt, wie Sie eine Azure Service Fabric-Anwendung für einen Partycluster in Azure bereitstellen.
@@ -58,24 +58,6 @@ Sie können einen eigenen Cluster statt des Partyclusters verwenden, wenn Sie m�
 
 > [!NOTE]
 > Partycluster werden nicht gesichert, sodass Ihre Anwendungen und Daten, die Sie in diesem abgelegt haben, möglicherweise für andere Personen sichtbar sind. Stellen Sie nichts bereit, das nicht von anderen gesehen werden soll. Lesen Sie die Nutzungsbedingungen für alle weiteren Details.
-
-## <a name="configure-the-listening-port"></a>Konfigurieren des Lauschports
-Beim Erstellen des VotingWeb Front-End-Diensts wählt Visual Studio nach dem Zufallsprinzip einen Port aus, an dem der Dienst lauscht.  Der VotingWeb-Dienst fungiert als Front-End für diese Anwendung und akzeptiert externen Datenverkehr. Daher binden wir diesen Dienst an einen festen und bekannten Port. Öffnen Sie *VotingWeb/PackageRoot/ServiceManifest.xml* im Projektmappen-Explorer.  Navigieren Sie im Abschnitt **Ressourcen** zur Ressource **Endpunkt**, und legen Sie den Wert für **Port** auf 80 fest.
-
-```xml
-<Resources>
-    <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
-           replicas of different partitions that are placed in your code. -->
-      <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="80" />
-    </Endpoints>
-  </Resources>
-```
-
-Aktualisieren Sie außerdem den Wert der Eigenschaft „Anwendungs-URL“ im Projekt „Voting“, damit ein Webbrowser beim Debuggen mit F5 mit dem korrekten Port geöffnet wird.  Wählen Sie im Projektmappen-Explorer das Projekt **Voting** aus, und aktualisieren Sie die Eigenschaft **Anwendungs-URL**.
-
-![Anwendungs-URL](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
 
 ## <a name="deploy-the-app-to-the-azure"></a>Bereitstellen der Anwendung in Azure
 Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio für den Partycluster bereitstellen.

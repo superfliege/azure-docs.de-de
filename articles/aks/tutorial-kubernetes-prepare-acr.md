@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6abffe8adada01948ce85e58b7c41e4b26a2327b
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 22aa6c82aec7b8f6a16131878943fadd7762c1c0
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Bereitstellen und Verwenden von Azure Container Registry
 
@@ -53,14 +53,14 @@ az group create --name myResourceGroup --location westus2
 Erstellen Sie mit dem Befehl [az acr create](/cli/azure/acr#create) eine Azure Container Registry-Instanz. Der Name einer Containerregistrierung **muss eindeutig sein**.
 
 ```azurecli
-az acr create --resource-group myResourceGroup --name <acrName> --sku Basic --admin-enabled true
+az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ```
 
 Für den Rest dieses Tutorials verwenden wir `<acrname>` als Platzhalter für den Namen der Containerregistrierung.
 
 ## <a name="container-registry-login"></a>Anmeldung bei der Containerregistrierung
 
-Verwenden Sie den Befehl [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#az_acr_login), um sich bei der ACR-Instanz anzumelden. Sie müssen den eindeutigen Namen angeben, mit dem die Containerregistrierung bei ihrer Erstellung versehen wurde.
+Verwenden Sie den Befehl [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login), um sich bei der ACR-Instanz anzumelden. Sie müssen den eindeutigen Namen angeben, mit dem die Containerregistrierung bei ihrer Erstellung versehen wurde.
 
 ```azurecli
 az acr login --name <acrName>

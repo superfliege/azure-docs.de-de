@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/01/2017
 ms.author: robinsh
-ms.openlocfilehash: 97bacc2c1285fe4a467a54f224bb9fabbd851fee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fdba4588fbb2c46efb3fc4de1a9e53414264444a
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-net"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit .NET
 
@@ -29,7 +29,7 @@ In diesem Schnellstart erfahren Sie, wie Sie mit C#.NET Blockblobs in einem Cont
 
 So führen Sie diesen Schnellstart durch:
 
-* Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx) mit der folgenden Workload:
+* Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) mit der folgenden Workload:
     - **Azure-Entwicklung**
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -52,7 +52,7 @@ Erstellen Sie zunächst ein neues allgemeines Speicherkonto zur Verwendung für 
 12. Wählen Sie unter `Location` den Standort aus, der für das Speicherkonto verwendet werden soll.
 13. Aktivieren Sie **An Dashboard anheften**, und klicken Sie auf **Erstellen**, um das Speicherkonto zu erstellen. 
 
-Nachdem das Speicherkonto erstellt wurde, wird es an das Dashboard angeheftet. Klicken Sie darauf, um es zu öffnen. Klicken Sie unter „EINSTELLUNGEN“ auf **Zugriffsschlüssel**. Wählen Sie einen Schlüssel aus, kopieren Sie die VERBINDUNGSZEICHENFOLGE in die Zwischenablage, und fügen Sie sie für die spätere Verwendung in Editor ein.
+Nachdem das Speicherkonto erstellt wurde, wird es an das Dashboard angeheftet. Klicken Sie darauf, um es zu öffnen. Klicken Sie unter „EINSTELLUNGEN“ auf **Zugriffsschlüssel**. Wählen Sie einen Schlüssel aus, kopieren Sie die VERBINDUNGSZEICHENFOLGE in die Zwischenablage, und fügen Sie sie für die spätere Verwendung in einen Text-Editor ein.
 
 ## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
 
@@ -68,7 +68,7 @@ Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Suche
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurieren der Speicherverbindungszeichenfolge
 
-Sie müssen in der Anwendung die Verbindungszeichenfolge für das Speicherkonto angeben. Öffnen Sie im Projektmappen-Explorer von Visual Studio die Datei `app.config`. Suchen Sie den Eintrag „StorageConnectionString“. Ersetzen Sie bei **value** den gesamten Wert der Verbindungszeichenfolge durch die Verbindungszeichenfolge aus dem Azure-Portal, die Sie in Editor gespeichert haben. Wenn Sie fertig sind, sollte der Code etwa folgendermaßen aussehen.
+Sie müssen in der Anwendung die Verbindungszeichenfolge für das Speicherkonto angeben. Öffnen Sie im Projektmappen-Explorer von Visual Studio die Datei `app.config`. Suchen Sie den Eintrag `StorageConnectionString`. Ersetzen Sie bei **value** den gesamten Wert der Verbindungszeichenfolge durch die Verbindungszeichenfolge aus dem Azure-Portal, die Sie gespeichert haben. Ihre `storageConnectionString` sollte etwa folgendermaßen aussehen:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -78,8 +78,8 @@ Sie müssen in der Anwendung die Verbindungszeichenfolge für das Speicherkonto 
     </startup>
   <appSettings>
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;
-    AccountName=youraccountname;
-    AccountKey=7NGE5jasdfdRzASDFNOMEx1u20W/thisisjustC/anexampleZK/Rt5pz2xNRrDckyv8EjB9P1WGF==" />
+    AccountName=<NameHere>;
+    AccountKey=<KeyHere>" />
   </appSettings>
 </configuration>
 ```
@@ -98,7 +98,7 @@ https://mystorage.blob.core.windows.net/quickstartblobs/QuickStart_cbd5f95c-6ab8
 Downloading blob to C:\Users\azureuser\Documents\QuickStart_cbd5f95c-6ab8-4cbf-b8d2-a58e85d7a8e8_DOWNLOADED.txt
 ```
 
-Wenn Sie eine beliebige Taste drücken, um den Vorgang fortzusetzen, werden der Speichercontainer und die Dateien gelöscht. Bevor Sie fortfahren, überprüfen Sie „Dokumente“ auf die beiden Dateien – Sie können sie öffnen und feststellen, dass sie identisch sind. Kopieren Sie die URL für das Blob aus dem Konsolenfenster, und fügen Sie sie in einem Browser ein, um den Inhalt der Datei in Blob Storage anzuzeigen.
+Wenn Sie eine beliebige Taste drücken, um den Vorgang fortzusetzen, werden der Speichercontainer und die Dateien gelöscht. Überprüfen Sie im Ordner „Eigene Dateien“, ob die beiden Dateien vorhanden sind, bevor Sie fortfahren. Sie können diese öffnen und prüfen, ob sie identisch sind. Kopieren Sie die URL für das Blob aus dem Konsolenfenster, und fügen Sie sie in einem Browser ein, um den Inhalt der Datei in Blob Storage anzuzeigen.
 
 Sie können zum Anzeigen der Dateien in Blob Storage auch ein Tool, z.B. den [Azure Storage-Explorer](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), verwenden. Der Azure Storage-Explorer ist ein kostenloses plattformübergreifendes Tool, das Ihnen den Zugriff auf die Speicherkontoinformationen ermöglicht. 
 
@@ -108,17 +108,17 @@ Nachdem Sie die Dateien erfolgreich überprüft haben, drücken Sie eine beliebi
 
 Zunächst müssen die Verweise auf die Objekte erstellt werden, die zum Zugreifen auf und Verwalten von Blob Storage verwendet werden. Diese Objekte bauen aufeinander auf – jedes wird vom jeweils nächsten in der Liste verwendet.
 
-* Instanziieren Sie das **CloudStorageAccount**-Objekt, das auf das Speicherkonto verweist. 
+* Erstellen Sie eine Instanz des **CloudStorageAccount**-Objekts, das auf das Speicherkonto verweist. 
 
-* Instanziieren Sie das **CloudBlobClient**-Objekt, das auf den Blob-Dienst im Speicherkonto verweist. 
+* Erstellen Sie eine Instanz des **CloudBlobClient**-Objekts, das auf den Blob-Dienst im Speicherkonto verweist. 
 
-* Instanziieren Sie das **CloudBlobContainer**-Objekt, das den Container darstellt, auf den Sie zugreifen. Container werden zum Organisieren der Blobs verwendet, so wie Sie auf Ihrem Computer Ordner zum Organisieren von Dateien verwenden.
+* Erstellen Sie eine Instanz des **CloudBlobContainer**-Objekts, das den Container darstellt, auf den Sie zugreifen. Container werden zum Organisieren der Blobs verwendet, so wie Sie auf Ihrem Computer Ordner zum Organisieren von Dateien verwenden.
 
-Sobald Sie über den **CloudBlobContainer** verfügen, können Sie das **CloudBlockBlob**-Objekt instanziieren, das auf den speziellen Blob verweist, der für Sie von Interesse ist, und einen Upload-, Download- oder Kopiervorgang sowie weitere Vorgänge ausführen.
+Sobald Sie über den **CloudBlobContainer** verfügen, können Sie eine Instanz des **CloudBlockBlob**-Objekts erstellen, das auf das gewünschte Blob verweist, und einen Upload-, Download- oder Kopiervorgang sowie weitere Vorgänge ausführen.
 
-In diesem Abschnitt instanziieren Sie die Objekte, erstellen einen neuen Container und legen dann Berechtigungen für den Container fest, damit die Blobs öffentlich sind und einfach mit einer URL auf sie zugegriffen werden kann. Der Name des Containers lautet **quickstartblobs**. 
+In diesem Abschnitt erstellen Sie eine Instanz der Objekte und einen neuen Container und legen dann Berechtigungen für den Container fest, damit die Blobs öffentlich sind und einfach mit einer URL auf sie zugegriffen werden kann. Der Name des Containers lautet **quickstartblobs**. 
 
-In diesem Beispiel wird „CreateIfNotExists“ verwendet, da bei jedem Ausführen des Beispiels ein neuer Container erstellt werden soll. In einer Produktionsumgebung, in der Sie in der gesamten Anwendung den gleichen Container verwenden, empfiehlt es sich hingegen, „CreateIfNotExists“ nur einmal aufzurufen oder den Container im Voraus zu erstellen, damit er nicht im Code erstellt werden muss.
+In diesem Beispiel wird **CreateIfNotExists** verwendet, da bei jedem Ausführen des Beispiels ein neuer Container erstellt werden soll. In einer Produktionsumgebung, in der Sie in der gesamten Anwendung den gleichen Container verwenden, empfiehlt es sich hingegen, **CreateIfNotExists** nur einmal aufzurufen. Alternativ können Sie den Container im Voraus erstellen, damit er nicht im Code erstellt werden muss.
 
 ```csharp
 // Create a CloudStorageAccount instance pointing to your storage account.
@@ -161,11 +161,11 @@ await blockBlob.UploadFromFileAsync(fileAndPath);
 
 Sie können für Blob Storage mehrere Uploadmethoden verwenden. Wenn Sie z.B. über einen Speicherdatenstrom verfügen, können Sie statt „UploadFromFileAsync“ die Methode „UploadFromStreamAsync“ verwenden. 
 
-Blockblobs können eine Größe von bis zu 4,7 TB haben und alle Arten von Dateien sein, von Excel-Arbeitsblättern bis zu großen Videodateien. Seitenblobs werden in erster Linie für die VHD-Dateien verwendet, die IaaS-VMs zugrunde liegen. Anfügeblobs dienen der Protokollierung und können z.B. verwendet werden, um beim Schreiben in eine Datei zusätzliche Daten hinzuzufügen. Die meisten Objekte, die in Blob Storage gespeichert werden, sind allerdings Blockblobs.
+Blockblobs können jede Art von Text oder Binärdateien darstellen. Seitenblobs werden in erster Linie für die VHD-Dateien verwendet, die IaaS-VMs zugrunde liegen. Anfügeblobs dienen der Protokollierung und können z.B. verwendet werden, um beim Schreiben in eine Datei zusätzliche Daten hinzuzufügen. Die meisten Objekte, die in Blob Storage gespeichert werden, sind allerdings Blockblobs.
 
 ## <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
-Rufen Sie mit [CloudBlobContainer.ListBlobsSegmentedAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmentedasync) eine Liste von Dateien im Container ab. Der folgende Code ruft die Liste der Blobs ab und durchläuft sie, um die URIs der gefundenen Blobs anzuzeigen. Sie können den URI aus dem Befehlsfenster kopieren und in einen Browser einfügen, um die Datei anzuzeigen.
+Mit [CloudBlobContainer.ListBlobsSegmentedAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmentedasync) können Sie eine Liste von Dateien im Container abrufen. Der folgende Code ruft die Liste der Blobs ab und durchläuft sie, um die URIs der gefundenen Blobs anzuzeigen. Sie können den URI aus dem Befehlsfenster kopieren und in einen Browser einfügen, um die Datei anzuzeigen.
 
 Bei 5.000 oder weniger Blobs im Container werden in einem einzigen Aufruf von „ListBlobsSegmentedAsync“ alle Blobnamen abgerufen. Wenn der Container mehr als 5.000 Blobs enthält, wird die Liste in Gruppen von 5.000 Blobnamen abgerufen, bis alle Blobnamen abgerufen wurden. Somit werden beim ersten Aufruf dieser API die ersten 5.000 Blobnamen und ein Fortsetzungstoken zurückgegeben. Beim zweiten Aufruf geben Sie das Token an, und die nächste Gruppe von Blobnamen wird abgerufen usw., bis das Fortsetzungstoken NULL ist, was bedeutet, dass alle Blobnamen abgerufen wurden. 
 

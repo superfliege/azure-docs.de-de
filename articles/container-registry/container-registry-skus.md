@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/16/2017
 ms.author: stevelas
-ms.openlocfilehash: 630bc088fcb6d3c7e5bb3a9713107c3fb6653ec6
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: dae97084bdaab77efd38169cdf7e70c827b0b5ab
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-container-registry-skus"></a>Azure Container Registry-SKUs
 
 Azure Container Registry (ACR) steht in verschiedenen Dienstebenen, sogenannten SKUs, zur Verfügung. Durch diese SKUs können Preise im Voraus eingeschätzt werden. Darüber hinaus bieten sie mehrere Optionen zum Verwenden Ihrer privaten Docker-Registrierung in Azure. Wenn Sie sich für eine SKU auf höherer Ebene entscheiden, können Sie von einer höheren Leistung und Skalierung profitieren. Allerdings bieten alle SKUs die gleichen Programmfunktionen, sodass ein Entwickler mit Basic beginnen und dann mit steigender Nutzung zu Standard und Premium wechseln kann.
 
 ## <a name="basic"></a>Basic
-Ein kostenoptimierten Einstiegspunkt für Entwickler, die gerade mit Azure Container Registry anfangen. Basic-Registrierungen verfügen über die gleichen Programmfunktionen wie Standard- und Premium-Registrierungen (Azure Active Directory-Authentifizierungsintegration, Löschen von Images sowie Webhooks). Allerdings bestehen Einschränkungen bei Größe und Nutzung.
+Ein kostenoptimierter Einstiegspunkt für Entwickler, die sich mit Azure Container Registry vertraut machen. Basic-Registrierungen verfügen über die gleichen Programmfunktionen wie Standard- und Premium-Registrierungen (Azure Active Directory-Authentifizierungsintegration, Löschen von Images sowie Webhooks). Allerdings bestehen Einschränkungen bei Größe und Nutzung.
 
 ## <a name="standard"></a>Standard
-Standard-Registrierungen bieten die gleichen Funktionen wie Basic. In Standard gibt es jedoch erweiterte Speicherlimits und einen erhöhten Imagedurchsatz. Standard-Registrierungen erfüllen üblicherweise die Bedürfnisse für die meisten Produktionsszenarios.
+Standard-Registrierungen bieten die gleichen Funktionen wie Basic. In Standard gibt es jedoch erweiterte Speicherlimits und einen erhöhten Imagedurchsatz. Standard-Registrierungen erfüllen üblicherweise die Bedürfnisse der meisten Produktionsszenarios.
 
 ## <a name="premium"></a>Premium
 Premium-Registrierungen sind die Grenzwerte für den Speicher und gleichzeitige Vorgänge noch höher, sodass Szenarios mit großen Volumen möglich sind. Zusätzlich zu Funktionen für einen erhöhten Imagedurchsatz enthält Premium Features wie die [Georeplikation](container-registry-geo-replication.md) zum regionsübergreifenden Verwalten einer Registrierung, sodass die Registrierung jeder Bereitstellung netzwerknah ist.
@@ -43,21 +43,7 @@ Durch die klassische Registrierungs-SKU war das erstmalige Release des Azure Con
 
 In der folgenden Tabelle werden die Features und Grenzwerte der Dienstebenen Basic, Standard und Premium dargestellt.
 
-| Feature | Basic | Standard | Premium |
-|---|---|---|---|---|
-| Speicher | 10 GiB | 100 GiB| 500 GiB |
-| Lesevorgänge pro Minute<sup>1, 2</sup> | 1k | 300k | 10.000k |
-| Schreibvorgänge pro Minute<sup>1, 3</sup> | 100 | 500 | 2k |
-| Downloadbandbreite MBit/s<sup>1</sup> | 30 | 60 | 100 |
-| Uploadbandbreite MBit/s<sup>1</sup> | 10 | 20 | 50 |
-| Webhooks | 2 | 10 | 100 |
-| Georeplikation | N/V | N/V | [Unterstützt *(Vorschauversion)*](container-registry-geo-replication.md) |
-
-<sup>1</sup> *Lesevorgänge*, *Schreibvorgänge* und *Bandbreite* sind die geschätzten Mindestwerte. ACR soll die Leistung der Nutzung entsprechend verbessern.
-
-<sup>2</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) wird auf Grundlage der Zahl an Ebenen im Image sowie des Manifestabrufs in mehrere Lesevorgänge übersetzt.
-
-<sup>3</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) wird auf Grundlage der Zahl an Ebenen, die per Push übertragen werden müssen, in mehrere Schreibvorgänge übersetzt. Ein `docker push` enthält *Lesevorgänge* zum Abrufen eines Manifests für ein vorhandenes Image.
+[!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
 ## <a name="manage-registry-size"></a>Verwalten von Registrierungsgrößen
 Die Speichereinschränkungen jeder SKU entsprechen einem der folgenden Szenarios: Basic für den Anfang, Standard für den Großteil der Produktions-Apps und Premium für Hyperskalierungsleistung und die [Georeplikation](container-registry-geo-replication.md). Während der gesamten Dauer Ihrer Registrierung sollten Sie die Größe durch regelmäßiges Löschen von ungenutztem Inhalt verwalten.

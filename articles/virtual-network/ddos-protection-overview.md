@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: kumud
-ms.openlocfilehash: 0130823b6a6f5a4883ad640c9bcefc89b82b2cd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76da0d4e805c732d40a7bd02e5c70973c792e26c
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Übersicht über den Azure DDoS-Schutz Standard
 
@@ -35,12 +35,12 @@ Der Azure DDoS-Schutz in Kombination mit bewährten Anwendungsentwurfsmethoden s
 
 ![Azure DDoS-Schutz Standard](./media/ddos-protection-overview/ddos-protection-overview-fig2.png)
 
-Sie können den DDoS-Schutz für Entwicklungs- und Testszenarios testen. Verwenden Sie die folgenden Ressourcen für ein Feedback zu Ihren Erfahrungen:
+Wir empfehlen Ihnen, den DDoS-Schutzstandard in einer Entwicklungs-, Test- oder Produktionsumgebung zu testen. Nutzen Sie die folgenden Ressourcen, um Ihr Feedback zu Ihren Erfahrungen mitzuteilen:
 - [Azure DDoS-Schutz im Microsoft Azure-Forum](https://feedback.azure.com/forums/905032-azure-ddos-protection) 
 - [Azure DDoS-Schutz im MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azureddosprotection)
 - [Azure DDoS-Schutz in Stack Overflow](https://stackoverflow.com/tags/azure-ddos/info)
 
-[Öffnen Sie ein Azure-Supportticket](../azure-supportability/how-to-create-azure-support-request.md), wenn Sie Supportprobleme haben.
+[Öffnen Sie ein Azure-Supportticket](../azure-supportability/how-to-create-azure-support-request.md), wenn Sie Supportprobleme haben. In der Vorschauversion wird Support für den DDoS-Schutzstandard nach bestem Bemühen bereitgestellt.
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>DDoS-Angriffstypen, die mit DDoS-Schutz Standard abgewehrt werden
 

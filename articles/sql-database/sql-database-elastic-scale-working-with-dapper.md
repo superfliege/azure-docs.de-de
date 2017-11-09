@@ -8,20 +8,20 @@ author: torsteng
 ms.assetid: 463d2676-3b19-47c2-83df-f8c50492c9d2
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.openlocfilehash: f0efd37a39c1a60eee7b47304483c27727ca8833
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c258b1859e14d9783a3dfa75431b69bef4d640fd
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Verwenden der Clientbibliothek für elastische Datenbanken
-Dieses Dokument ist für Entwickler bestimmt, die Anwendungen mithilfe von Dapper erstellen, aber auch [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md) nutzen möchten, um Anwendungen zu erstellen, die zum horizontalen Hochskalieren ihrer Datenebene Sharding implementieren.  Dieses Dokument veranschaulicht, welche Änderungen in Dapper-basierten Anwendungen erforderlich sind, um Tools für elastische Datenbanken zu integrieren. Wir konzentrieren uns darauf, die Shardverwaltung für elastische Datenbanken und das datenabhängige Routing in Dapper zu integrieren. 
+Dieses Dokument ist für Entwickler bestimmt, die Anwendungen mithilfe von Dapper erstellen, aber auch mithilfe von [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md) Anwendungen erstellen möchten, die zum horizontalen Hochskalieren ihrer Datenebene Sharding implementieren.  Dieses Dokument veranschaulicht, welche Änderungen in Dapper-basierten Anwendungen erforderlich sind, um Tools für elastische Datenbanken zu integrieren. Wir konzentrieren uns darauf, die Shardverwaltung für elastische Datenbanken und das datenabhängige Routing in Dapper zu integrieren. 
 
 **Beispielcode**: [Elastic DB Tools for Azure SQL - Dapper Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)(in englischer Sprache).
 
@@ -39,19 +39,19 @@ Ein weiterer Vorteil von Dapper und DapperExtensions besteht darin, dass die Anw
 Wie Sie die Dapper-Assemblys erhalten, erfahren Sie unter [Dapper .NET](http://www.nuget.org/packages/Dapper/). Informationen zu Dapper-Erweiterungen finden Sie unter [DapperExtensions](http://www.nuget.org/packages/DapperExtensions).
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>Ein kurzer Blick auf die Clientbibliothek für elastische Datenbanken
-Mit der Clientbibliothek für elastische Datenbanken definieren Sie Partitionen Ihrer Anwendungsdaten, sogenannte *Shardlets*, ordnen sie Datenbanken zu und identifizieren sie nach *Shardingschlüsseln*. Sie können über beliebig viele Datenbanken verfügen und die Shardlets auf diese Datenbanken verteilen. Die Zuordnung der Sharding-Schlüsselwerte zu den Datenbanken wird in einer Shard-Zuordnung gespeichert, die durch die Bibliothek-APIs bereitgestellt wird. Diese Funktion wird als **Shard-Zuordnungsverwaltung**bezeichnet. Die Shard-Zuordnung fungiert auch als Broker von Datenbankverbindungen für Anforderungen, die einen Sharding-Schlüssel enthalten. Diese Funktion wird als **datenabhängiges Routing**bezeichnet.
+Mit der Clientbibliothek für elastische Datenbanken definieren Sie Partitionen Ihrer Anwendungsdaten, sogenannte *Shardlets*, ordnen sie Datenbanken zu und identifizieren sie nach *Shardingschlüsseln*. Sie können über beliebig viele Datenbanken verfügen und die Shardlets auf diese Datenbanken verteilen. Die Zuordnung der Sharding-Schlüsselwerte zu den Datenbanken wird in einer Shard-Zuordnung gespeichert, die durch die Bibliothek-APIs bereitgestellt wird. Diese Funktion wird als **Shard-Zuordnungsverwaltung**bezeichnet. Die Shard-Zuordnung fungiert auch als Broker von Datenbankverbindungen für Anforderungen, die einen Sharding-Schlüssel enthalten. Diese Funktion wird als **datenabhängiges Routing** bezeichnet.
 
-![Shard-Zuordnungen und datenabhängiges Routing][1]
+![Shardzuordnungen und datenabhängiges Routing][1]
 
 Der Shard-Zuordnungs-Manager schützt den Benutzer vor inkonsistenten Einblicken in Shardlet-Daten, die auftreten können, wenn gleichzeitige Shardlet-Verwaltungsvorgänge für die Datenbanken ausgeführt werden. Dazu fungieren die Shard-Zuordnungen als Broker der Datenbankverbindungen für eine mit der Bibliothek erstellte Anwendung. Wenn sich Shard-Verwaltungsvorgänge auf das Shardlet auswirken, kann es passieren, dass Datenbankverbindungen durch die Shard Map-Funktionalität automatisch beendet werden. 
 
-Anstatt Dapper-Verbindungen auf die herkömmliche Weise zu erstellen, müssen wir die [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn824099.aspx)-Methode verwenden. Dadurch wird sichergestellt, dass alle Überprüfungen stattfinden und Verbindungen bei Datenverschiebungen zwischen Shards ordnungsgemäß verwaltet werden.
+Anstatt Dapper-Verbindungen auf die herkömmliche Weise zu erstellen, müssen Sie die [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn824099.aspx)-Methode verwenden. Dadurch wird sichergestellt, dass alle Überprüfungen stattfinden und Verbindungen bei Datenverschiebungen zwischen Shards ordnungsgemäß verwaltet werden.
 
 ### <a name="requirements-for-dapper-integration"></a>Anforderungen an die Dapper-Integration
 Bei gleichzeitiger Verwendung der Clientbibliothek für elastische Datenbanken und der Dapper-APIs sollten die folgenden Eigenschaften beibehalten werden:
 
-* **Horizontale Skalierung**: Datenbanken sollen entsprechend den Kapazitätsanforderungen der partitionierten Anwendung zur Datenbankebene der Anwendung hinzugefügt oder daraus entfernt werden können. 
-* **Konsistenz**: Da unsere Anwendung mithilfe von Sharding horizontal skaliert wird, müssen wir datenabhängiges Routing ausführen. Wir verwenden zu diesem Zweck das datenabhängige Routing der Bibliothek. Vor allem möchten wir die Überprüfungs- und Konsistenzzusicherungen der Verbindungen beibehalten, die über den Shard-Zuordnungs-Manager vermittelt werden. Dies hilft uns, Datenverfälschung oder falsche Abfrageergebnisse zu vermeiden. Dadurch wird sichergestellt, dass Verbindungen mit einem bestimmten Shardlet zurückgewiesen oder unterbrochen werden, wenn das Shardlet z. B. gerade mithilfe von Split/Merge-APIs auf einen anderen Shard verschoben wird.
+* **Horizontales Hochskalieren:** Datenbanken sollen entsprechend den Kapazitätsanforderungen der partitionierten Anwendung der Datenbankebene der Anwendung hinzugefügt oder daraus entfernt werden können. 
+* **Konsistenz:** Da die Anwendung mithilfe von Sharding horizontal hochskaliert wird, müssen Sie datenabhängiges Routing ausführen. Wir möchten zu diesem Zweck das datenabhängige Routing der Bibliothek verwenden. Vor allem sollten Sie die Überprüfungs- und Konsistenzzusicherungen der Verbindungen beibehalten, die über den Shardzuordnungs-Manager vermittelt werden. Dies hilft dabei, Datenverfälschung oder falsche Abfrageergebnisse zu vermeiden. Dadurch wird sichergestellt, dass Verbindungen mit einem bestimmten Shardlet zurückgewiesen oder unterbrochen werden, wenn das Shardlet z. B. gerade mithilfe von Split/Merge-APIs auf einen anderen Shard verschoben wird.
 * **Objekt-Zuordnung:**Wir möchten die programmierfreundlichen Dapper-Zuordnungen beibehalten, um Code zwischen Klassen in der Anwendung und den zugrunde liegenden Datenbankstrukturen zu übersetzen. 
 
 Der folgende Abschnitt erläutert, wie Sie diese Anforderungen für Anwendungen auf Grundlage von **Dapper** und **DapperExtensions** erfüllen.
@@ -77,9 +77,9 @@ Dieses Codebeispiel (aus dem zugehörigen Beispiel) veranschaulicht eine Vorgehe
                         );
     }
 
-Der Aufruf der [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) -API ersetzt das standardmäßige Erstellen und Öffnen einer SQL-Clientverbindung. Der [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) -Aufruf akzeptiert die Argumente, die für das datenabhängige Routing erforderlich sind: 
+Der Aufruf der [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) -API ersetzt das standardmäßige Erstellen und Öffnen einer SQL-Clientverbindung. Der [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx)-Aufruf akzeptiert die Argumente, die für das datenabhängige Routing erforderlich sind: 
 
-* Die Shard Map für den Zugriff auf Schnittstellen für das datenabhängige Routing
+* Die Shardzuordnung für den Zugriff auf Schnittstellen für datenabhängiges Routing
 * Der Shardingschlüssel zum Identifizieren des Shardlets
 * Die Anmeldeinformationen (Benutzername und Kennwort) für die Verbindung mit dem Shard
 

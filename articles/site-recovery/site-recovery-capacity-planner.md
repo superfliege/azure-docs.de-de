@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 10/30/2017
 ms.author: nisoneji
-ms.openlocfilehash: 134e17ebda3105be2b53d072fdef7aeda4a98bde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 840a559a82f3227a865d3c606b2fa321cb6144ab
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="plan-capacity-for-protecting-virtual-machines-and-physical-servers-in-azure-site-recovery"></a>Planen der Kapazität für den Schutz virtueller Computer und physischer Server in Azure Site Recovery
+# <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>Planen der Kapazität für den Schutz von Hyper-V-VMs mit Site Recovery
 
-Mit dem Tool „Azure Site Recovery Capacity Planner“ können Sie ermitteln, welche Kapazitätsanforderungen für die Replikation von Hyper-V-VMs, VMware-VMs und physischen Windows-/Linux-Servern mit Azure Site Recovery gelten.
+Mit dem Tool Azure Site Recovery Capacity Planner können Sie ermitteln, welche Kapazitätsanforderungen für die Replikation von Hyper-V-VMs mit Azure Site Recovery gelten.
 
 Verwenden Sie Site Recovery Capacity Planner, um Ihre Quellumgebung und Workloads zu analysieren, die Bandbreitenanforderungen und Serverressourcen zu ermitteln, die sie am Quellstandort benötigen, und die Ressourcen (virtuelle Computer und Speicher usw.) zu eruieren, die Sie am Zielstandort benötigen.
 
@@ -35,11 +35,8 @@ Sie können das Tool in einem von zwei Modi ausführen:
 
 
 1. Sammeln Sie Informationen zu Ihrer Umgebung, z. B. VMs, Festplatten pro VM, Speicher pro Datenträger.
-2. Ermitteln Sie Ihre tägliche Änderungsrate für replizierte Daten. Gehen Sie dazu folgendermaßen vor:
-
-   * Laden Sie beim Replizieren von Hyper-V-VMs das [Tool für die Hyper-V-Kapazitätsplanung](https://www.microsoft.com/download/details.aspx?id=39057) herunter, um die Änderungsrate zu erhalten. [Hier](site-recovery-capacity-planning-for-hyper-v-replication.md) finden Sie weitere Informationen zu diesem Tool. Es wird empfohlen, das Tool eine Woche lang auszuführen, um Durchschnittswerte zu erfassen.
-   * Verwenden Sie beim Replizieren von virtuellen VMware-Computern die [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md), um die Änderungsrate zu ermitteln.
-   * Wenn Sie physische Server replizieren, müssen Sie eine manuelle Schätzung erstellen.
+2. Ermitteln Sie Ihre tägliche Änderungsrate für replizierte Daten. Laden Sie dazu das [Hyper-V-Kapazitätsplanungstool](https://www.microsoft.com/download/details.aspx?id=39057) herunter, um die Änderungsrate abzurufen. [Hier](site-recovery-capacity-planning-for-hyper-v-replication.md) finden Sie weitere Informationen zu diesem Tool. Es wird empfohlen, das Tool eine Woche lang auszuführen, um Durchschnittswerte zu erfassen.
+   
 
 ## <a name="run-the-quick-planner"></a>Ausführen des Quick Planner-Tools
 1. Laden Sie das Tool [Azure Site Recovery Capacity Planner](http://aka.ms/asr-capacity-planner-excel) herunter, und öffnen Sie es. Sie müssen Makros ausführen. Aktivieren Sie also die Bearbeitung und den Inhalt, wenn Sie dazu aufgefordert werden.
@@ -50,8 +47,8 @@ Sie können das Tool in einem von zwei Modi ausführen:
 
    * Wählen Sie unter **Select your scenario** (Ihr Szenario auswählen) die Option **Hyper-V to Azure** (Hyper-V zu Azure) oder **VMware/Physical to Azure** (VMware/Physisch zu Azure) aus.
    * Geben Sie unter **Average daily data change rate (%)** (Durchschnittliche tägliche Änderungsrate [%]) die Informationen ein, die Sie mit dem [Tool für die Hyper-V-Kapazitätsplanung](site-recovery-capacity-planning-for-hyper-v-replication.md) oder dem [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) erfasst haben.  
-   * **Compression** gilt nur für die Komprimierung, die beim Replizieren von VMware-VMs oder physischen Servern zu Azure angeboten wird. Wir schätzen 30 % oder mehr, aber Sie können die Einstellung nach Bedarf ändern. Sie können zum Replizieren von Hyper-V-VMs zur Azure-Komprimierung ein Drittanbietergerät verwenden, z.B. Riverbed.
-   * Geben Sie unter **Retention Inputs** (Aufbewahrungseingaben) an, wie lange Replikate aufbewahrt werden sollen. Geben Sie beim Replizieren von VMware- oder physischen Servern den Wert in Tagen ein. Geben Sie die Dauer in Stunden ein, wenn Sie eine Hyper-V-Replikation durchführen.
+   * Die Einstellung **Komprimierung** wird bei der Replikation von Hyper-V-VMs in Azure nicht verwendet. Verwenden Sie für die Komprimierung die Anwendung eines Drittanbieters, z.B. Riverbed.
+   * Geben Sie unter **Retention Inputs** (Aufbewahrungseingaben) an, wie lange Replikate aufbewahrt werden sollen (in Stunden).
    * Geben Sie unter **Number of hours in which initial replication for the batch of virtual machines should complete** (Anzahl der Stunden für den Abschluss der anfänglichen Replikation für den Batch virtueller Computer) und **Number of virtual machines per initial replication batch** (Anzahl virtueller Computer pro anfänglichem Replikationsbatch) die Einstellungen ein, die zum Berechnen der Anforderungen für die erste Replikation verwendet werden.  Bei der Bereitstellung von Site Recovery sollte das gesamte Anfangsdataset hochgeladen werden.
 
    ![Eingaben](./media/site-recovery-capacity-planner/inputs.png)
@@ -126,3 +123,7 @@ Klicken Sie nach dem Einrichten aller Details auf **Submit data to the planner t
 2. Änderungen müssen Sie ggf. im Arbeitsblatt **Workload Qualification** vornehmen und erneut auf **Submit data to the planner tool** klicken.  
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Erfahren Sie, wie Sie das Tool Capacity Planner ausführen.](site-recovery-capacity-planning-for-hyper-v-replication.md)

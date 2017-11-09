@@ -1,5 +1,5 @@
 ---
-title: "Migrieren von vorhandenen Datenbanken für die horizontale Skalierung | Microsoft Docs"
+title: "Migrieren von vorhandenen Datenbanken für die horizontale Hochskalierung | Microsoft-Dokumentation"
 description: "Erstellen eines Shardzuordnungs-Managers, um Sharddatenbanken für die Verwendung der Tools für elastische Datenbanken umzuwandeln"
 services: sql-database
 documentationcenter: 
@@ -12,16 +12,16 @@ ms.custom: scale out apps
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: data-management
+ms.workload: Inactive
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 099f40d00753b7c86ba726a818f17d440a125221
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 356c4223ff3ae844552b7bee40aa3ffc6aad7ea0
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="migrate-existing-databases-to-scale-out"></a>Migrieren von vorhandenen Datenbanken zu horizontaler Hochskalierung
+# <a name="migrate-existing-databases-to-scale-out"></a>Migrieren von vorhandenen Datenbanken für die horizontale Hochskalierung
 Verwalten Sie Ihre vorhandenen horizontal skalierten Sharddatenbanken mithilfe von Azure SQL-Datenbanktools (wie z.B. der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md)). Konvertieren Sie zunächst eine vorhandene Gruppe von Datenbanken für die Verwendung des [Shardzuordnungs-Managers](sql-database-elastic-scale-shard-map-management.md). 
 
 ## <a name="overview"></a>Übersicht
@@ -37,7 +37,7 @@ Diese Schritte können entweder unter Verwendung der [.NET Framework-Clientbibli
 Weitere Informationen zum Shardzuordnungs-Manager finden Sie unter [Shard-Zuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md). Eine Übersicht der Tools für elastische Datenbanken finden Sie unter [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md).
 
 ## <a name="prepare-the-shard-map-manager-database"></a>Vorbereiten der Shardzuordnungs-Manager-Datenbank
-Der Shardzuordnungs-Manager ist eine spezielle Datenbank, die Daten zur Verwaltung von horizontal skalierten Datenbanken enthält. Sie können eine vorhandene Datenbank verwenden oder eine neue Datenbank erstellen. Beachten Sie, dass es sich bei einer als Shardzuordnungs-Manager eingesetzten Datenbank nicht gleichzeitig um eine Datenbank handeln sollte, die als Shard definiert ist. Beachten Sie außerdem, dass das PowerShell-Skript die Datenbank nicht für Sie erstellt. 
+Der Shardzuordnungs-Manager ist eine spezielle Datenbank, die Daten zur Verwaltung von horizontal skalierten Datenbanken enthält. Sie können eine vorhandene Datenbank verwenden oder eine neue Datenbank erstellen. Eine als Shardzuordnungs-Manager eingesetzten Datenbank sollte nicht gleichzeitig eine Datenbank sein, die als Shard definiert ist. Das PowerShell-Skript erstellt die Datenbank nicht für Sie. 
 
 ## <a name="step-1-create-a-shard-map-manager"></a>Schritt 1: Erstellen eines Shardzuordnungs-Managers
     # Create a shard map manager. 
@@ -60,7 +60,7 @@ Nach dem Erstellen können Sie den Shardzuordnungs-Manager mit diesem Cmdlet abr
 
 
 ## <a name="step-2-create-the-shard-map"></a>Schritt 2: Erstellen der Shardzuordnung
-Sie müssen den Typ der zu erstellenden Shardzuordnung auswählen. Die Auswahl hängt von der Architektur der Datenbank ab: 
+Wählen Sie den Typ der zu erstellenden Shardzuordnung aus. Die Auswahl hängt von der Architektur der Datenbank ab: 
 
 1. Ein Mandant pro Datenbank (Informationen finden Sie im [Glossar](sql-database-elastic-scale-glossary.md)). 
 2. Mehrere Mandanten pro Datenbank (zwei Typen):
@@ -75,7 +75,7 @@ Beim Modell mit mehreren Mandanten werden einer Datenbank mehrere Mandanten zuge
 
 ![Bereichszuordnung][2]
 
-Wenn Sie einer Einzeldatenbank mehrere Mandanten zuweisen möchten, kann das Datenbankmodell mit mehreren Mandanten auch unter Verwendung einer *Listenzuordnung* implementiert werden. Beispiel: DB1 wird zum Speichern von Informationen zu Mandanten 1 und 5, DB2 zum Speichern von Daten für Mandant 7 und 10 verwendet. 
+Wenn Sie einer Einzeldatenbank mehrere Mandanten zuweisen möchten, kann das Datenbankmodell mit mehreren Mandanten auch unter Verwendung einer *Listenzuordnung* implementiert werden. Beispiel: DB1 wird zum Speichern von Informationen zu den Mandanten-IDs 1 und 5, DB2 zum Speichern von Daten für die Mandanten 7 und 10 verwendet. 
 
 ![Einzeldatenbank mit mehreren Mandanten][3] 
 
@@ -91,7 +91,7 @@ Erstellen Sie mithilfe des ShardMapManager-Objekts eine Shardzuordnung.
 
 
 ### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>Option 2: Erstellen einer Shardzuordnung für eine Bereichszuordnung
-Beachten Sie, dass die Mandanten-IDs bei Verwendung dieses Zuordnungsmusters fortlaufenden Bereichen entsprechen müssen. Dabei können Bereiche unterbrochen werden, indem Sie einen Bereich beim Erstellen der Datenbanken überspringen.
+Bei Verwendung dieses Zuordnungsmusters müssen die Mandanten-IDs fortlaufende Bereiche sein. Dabei können Bereiche unterbrochen werden, indem Sie einen Bereich beim Erstellen der Datenbanken überspringen.
 
     # $ShardMapManager is the shard map manager object 
     # 'RangeShardMap' is the unique identifier for the range shard map.  
@@ -128,7 +128,7 @@ Ordnen Sie die Daten zu, indem Sie eine Listenzuordnung für jeden Mandanten hin
     -SqlDatabaseName '<shard_database_name>' 
 
 ### <a name="option-2-map-the-data-for-a-range-mapping"></a>Option 2: Zuordnen der Daten für eine Bereichszuordnung
-Fügen Sie die Bereichszuordnungen für alle Zuordnungen zwischen Mandanten-ID-Bereichen und der Datenbank hinzu.
+Fügen Sie die Bereichszuordnungen für alle Zuordnungen zwischen Mandanten-ID-Bereichen und der Datenbank hinzu:
 
     # Create the mappings and associate it with the new shards 
     Add-RangeMapping 
@@ -141,7 +141,7 @@ Fügen Sie die Bereichszuordnungen für alle Zuordnungen zwischen Mandanten-ID-B
 
 
 ### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>Schritt 4, Option 3: Zuordnen der Daten für mehrere Mandanten zu einer Einzeldatenbank
-Führen Sie für jeden Mandanten „Add-ListMapping“ aus (Option 1 oben). 
+Führen Sie für jeden Mandanten Add-ListMapping aus (Option 1). 
 
 ## <a name="checking-the-mappings"></a>Überprüfen der Zuordnungen
 Informationen zu vorhandenen Shards und den zugehörigen Zuordnungen können über die folgenden Befehle abgefragt werden:  
@@ -154,7 +154,7 @@ Informationen zu vorhandenen Shards und den zugehörigen Zuordnungen können üb
 Nach der Einrichtung können Sie die Clientbibliothek für elastische Datenbanken verwenden. Außerdem können Sie das [datenabhängige Routing](sql-database-elastic-scale-data-dependent-routing.md) und das [Abfragen mehrerer Shards](sql-database-elastic-scale-multishard-querying.md) nutzen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Laden Sie die PowerShell-Skripts auf der Seite [Azure SQL DB - Elastic Database tools scripts (Azure SQL-Datenbank – Skripts für Tools für elastische Datenbanken)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)herunter.
+Laden Sie die PowerShell-Skripts auf der Seite [Azure SQL DB – Elastic Database tools scripts](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db) (Azure SQL-Datenbank – Skripts für Tools für elastische Datenbanken) herunter.
 
 Sie finden diese Tools auch auf GitHub: [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools).
 
@@ -164,7 +164,7 @@ Verschieben Sie Daten mithilfe des Split-Merge-Tools in das Modell mit mehreren 
 Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software as a Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
 ## <a name="questions-and-feature-requests"></a>Fragen und Funktionswünsche
-Bei Fragen erreichen Sie uns im [Forum für SQL-Datenbank](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted), Featureanforderungen können Sie im [Feedbackforum für SQL-Datenbank](https://feedback.azure.com/forums/217321-sql-database/) einreichen.
+Bei Fragen nutzen Sie das [Forum für SQL-Datenbank](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted), Featureanforderungen können Sie im [Feedbackforum für SQL-Datenbank](https://feedback.azure.com/forums/217321-sql-database/) einreichen.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png

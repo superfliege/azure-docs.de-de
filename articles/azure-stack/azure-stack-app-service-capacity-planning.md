@@ -12,13 +12,13 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 10/27/2017
 ms.author: anwestg
-ms.openlocfilehash: 54ba07d0bbe3f509411b0e45ff06f4fdf6db04cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ad91def00ca73f91f0ffd8e57afa442a93176f6
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Kapazitätsplanung für Azure App Service-Serverrollen in Azure Stack
 
@@ -88,16 +88,14 @@ Beachten Sie bei der Entscheidung über die Anzahl der zu verwendenden freigegeb
 
 ## <a name="file-server-role"></a>Dateiserverrolle
 
-Für die Dateiserverrolle können Sie den eigenständigen Dateiserver für Entwicklung und Tests verwenden. Für den Produktionseinsatz sollten Sie einen vorkonfigurierten Windows-Dateiserver oder einen vorkonfigurierten Nicht-Windows-Dateiserver verwenden.
-
-Der eigenständige Dateiserver ist Bestandteil der Standardinstallation von Windows Azure Pack: Websites. Die eigenständige Installation stellt die Dateiserverrolle auf einem einzelnen Computer bereit, platziert ACLs für die entsprechenden Konten und erstellt die erforderlichen Netzwerkfreigaben.
+Für die Rolle „Dateiserver“ können Sie einen eigenständigen Dateiserver für Entwicklung und Tests verwenden, z.B. können Sie bei der Bereitstellung von Azure App Service auf dem Azure Stack Development Kit die Vorlage „https://aka.ms/appsvconmasdkfstemplate“ verwenden. Für den Produktionseinsatz sollten Sie einen vorkonfigurierten Windows-Dateiserver oder einen vorkonfigurierten Nicht-Windows-Dateiserver verwenden.
 
 In Produktionsumgebungen verursacht die Dateiserverrolle hohe Datenträger-E/A-Lasten. Da sie alle Inhalts- und Anwendungsdateien für Benutzerwebsites enthält, sollten Sie eine der folgenden Komponenten für diese Rolle vorkonfigurieren:
 - einen Windows-Dateiserver
 - Dateiservercluster
 - einen Nicht-Windows-Dateiserver
 - Dateiservercluster
-- NAS-Gerät (Network Attached Storage). Weitere Informationen finden Sie unter [Bereitstellen eines Dateiservers]().
+- NAS-Gerät (Network Attached Storage). Weitere Informationen finden Sie unter [Bereitstellen eines Dateiservers](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

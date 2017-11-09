@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 472c3f35e2ae32550be62826407689f93101041f
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 94d725cfb072091e57c96d3b2aca7b2e73657eef
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -250,7 +250,7 @@ Für diese Architektur gilt Folgendes:
 * Die SAP (A)SCS-Instanz ist gruppiert und über den Namen des virtuellen Hosts **<(A)SCSVirtualHostName>** zugänglich.
 * SAP GLOBAL-Dateien sind auf der SMB-Dateifreigabe angeordnet, und es wird darauf zugegriffen, indem der folgende <SAPGLOBALHost>-Hostname verwendet wird: \\\\&lt;SAPGLOBALHost&gt;\sapmnt\\&lt;SID&gt;\SYS\...
 * Die SAP (A)SCS-Instanz wird auf einem lokalen Datenträger auf beiden Clusterknoten installiert.
-* Der Netzwerkname **<(A)SCSVirtualHostName>** unterscheidet sich von **<SAPGLOBALHost>**.
+* Der Netzwerkname **<(A)SCSVirtualHostName>** unterscheidet sich von **&lt;SAPGLOBALHost&gt;**.
 
 ![Abbildung 2: Neue SAP (A)SCS HA-Architektur mit SMB-Dateifreigabe][sap-ha-guide-figure-8004]
 

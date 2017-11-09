@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.openlocfilehash: 25488640e4a1e129f06dffbe5e7896f5ace8facc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13e681ec8893aa2cbd97f6c4e2ca66be634c9cb9
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="team-data-science-structured-projects-in-azure-machine-learning-workbench"></a>Strukturierte Team Data Science-Projekte in Azure Machine Learning Workbench
 
-Diese Tutorials und Beispiele zeigen, wie Sie mit Azure Machine Learning-Workbench strukturierte Team Data Science-Projekte erstellen. Eine Übersicht über den Team Data Science-Prozess finden Sie unter [Data Science-Prozess](overview.md). Einen Überblick über Spark in HDInsight finden Sie unter [Einführung in Spark in HDInsight](../../hdinsight/hdinsight-apache-spark-overview.md).
+Diese Tutorials und Beispiele zeigen, wie Sie mit Azure Machine Learning-Workbench strukturierte Team Data Science-Projekte erstellen. Eine Übersicht über den Team Data Science-Prozess finden Sie unter [Data Science-Prozess](overview.md). Einen Überblick über Spark in HDInsight finden Sie unter [Einführung in Spark in HDInsight](../../hdinsight/spark/apache-spark-overview.md).
 
 Weitere exemplarische Vorgehensweisen zu Data Science, in denen der Team Data Science-Prozess befolgt wird, sind nach der jeweils verwendeten **Plattform** gruppiert. Eine Aufschlüsselung dieser Beispiele finden Sie unter [Exemplarische Vorgehensweisen zum Ausführen des Team Data Science-Prozesses](walkthroughs.md).
 

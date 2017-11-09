@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a587f58fad2ec74c7633823c4d34f900e7c01f7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 006cac5606c411c9d86b36d0069021094fcdb1db
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Erstellen einer Continuous Integration-Pipeline mit Visual Studio Team Services und IIS
 Sie können zum Automatisieren der Erstellungs-, Test- und Bereitstellungsphasen der Anwendungsentwicklung eine Pipeline für Continuous Integration und Continuous Deployment (CI/CD) verwenden. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline mit Visual Studio Team Services und einem virtuellen Windows-Computer in Azure, auf dem IIS ausgeführt wird. Folgendes wird vermittelt:
@@ -230,7 +230,7 @@ In diesem Tutorial haben Sie eine ASP.NET-Webanwendung in Team Services erstellt
 > * Erstellen einer Releasedefinition zum Veröffentlichen neuer Webbereitstellungspakete in IIS
 > * Testen der CI/CD-Pipeline
 
-Im nächsten Tutorial erfahren Sie, wie Sie einen Webserver mit SSL-Zertifikaten sichern.
+Wechseln Sie zum nächsten Tutorial, um zu erfahren, wie Sie einen SQL&#92;IIS&#92;.NET-Stapel auf einem Paar von Windows-VMs installieren.
 
 > [!div class="nextstepaction"]
-> [Sichern von Webservern mit SSL](tutorial-secure-web-server.md)
+> [Install a SQL\IIS\.NET stack in Azure](tutorial-iis-sql.md) (Installieren eines SQL\IIS\.NET-Stapels in Azure)

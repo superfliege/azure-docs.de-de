@@ -16,11 +16,11 @@ ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 3ff347ab23c9150246940f563e562c8de92be45d
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 958ee2f12ebbd46472972a3012ec59aecbc23126
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Erstellen attributbasierter Regeln für dynamische Gruppenmitgliedschaft in Azure Active Directory
 In Azure Active Directory (Azure AD) können Sie erweiterte Regeln für die Aktivierung von komplexen, attributbasierten dynamischen Mitgliedschaften für Gruppen erstellen. In diesem Artikel werden Attribute und Syntax zum Erstellen der Regeln für dynamische Mitgliedschaft für Benutzer oder Geräte erläutert.
@@ -30,7 +30,7 @@ Wenn sich Attribute eines Benutzers oder Geräts ändern, bewertet das System al
 > [!NOTE]
 > - Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten.
 >
-> - Diese Funktion erfordert für jeden Benutzer, der mindestens einer dynamischen Gruppe hinzugefügt wurde, eine Azure AD Premium P1-Lizenz.
+> - Diese Funktion erfordert für jeden Benutzer, der mindestens einer dynamischen Gruppe hinzugefügt wurde, eine Azure AD Premium P1-Lizenz. Es ist nicht obligatorisch, tatsächlich Benutzern Lizenzen zuzuweisen, damit sie Mitglieder in dynamischen Gruppen werden, aber Sie benötigen die Mindestanzahl von Lizenzen im Mandanten, um alle solche Benutzer abzudecken. Beispiel: Wenn Sie über insgesamt 1.000 eindeutige Benutzer in allen dynamischen Gruppen Ihres Mandanten verfügen, benötigen Sie mindestens 1.000 Lizenzen für Azure AD Premium P1 oder höher, um die Lizenzanforderung zu erfüllen.
 >
 > - Sie können zwar eine dynamische Gruppe für Geräte oder Benutzer erstellen, jedoch können Sie keine Regel erstellen, die sowohl Benutzer- als auch Geräteobjekte enthält.
 
@@ -306,7 +306,7 @@ Das Azure-Portal wird derzeit aktualisiert, um diese Funktionalität zu unterst�
 **Verwenden von PowerShell zum Ändern der Mitgliedschaftsverwaltung für eine Gruppe**
 
 > [!NOTE]
-> Zum Ändern dynamischer Gruppeneigenschaften müssen Sie Cmdlets aus [Azure AD PowerShell Version 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) verwenden. Das Installationspaket finden Sie [hier](https://www.powershellgallery.com/packages/AzureADPreview).
+> Zum Ändern der Eigenschaften dynamischer Gruppen müssen Sie Cmdlets aus **der Vorschauversion von** [Azure AD PowerShell Version 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) verwenden. Sie können die Vorschauversion von [hier](https://www.powershellgallery.com/packages/AzureADPreview) installieren.
 
 Hier folgt ein Beispiel für Funktionen, die die Verwaltung der Mitgliedschaft für eine vorhandene Gruppe wechseln. Beachten Sie, dass darauf geachtet wird, die GroupTypes-Eigenschaft ordnungsgemäß zu ändern und alle Werte zu erhalten, die dort möglicherweise vorhanden sind und keine Beziehung zur dynamischen Mitgliedschaft aufweisen.
 

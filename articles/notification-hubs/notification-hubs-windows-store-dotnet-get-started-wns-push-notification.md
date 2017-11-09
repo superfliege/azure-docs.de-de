@@ -39,7 +39,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 * [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs) oder höher
 * [Installierte Entwicklungstools für UWP-Apps](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
-* Ein aktives Azure-Konto   
+* Ein aktives Azure-Konto  
     Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F).
 * Ein aktives Windows Store-Konto
 
@@ -206,7 +206,7 @@ Gehen Sie wie folgt vor, um Benachrichtigungen unter Verwendung einer .NET-Konso
          SendNotificationAsync();
          Console.ReadLine();
 
-7. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Konsolenanwendungsprojekt, und wählen Sie **Als Startprojekt festlegen** aus, um es als Startprojekt festzulegen. Drücken Sie dann**** F5, um die Anwendung auszuführen.
+7. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Konsolenanwendungsprojekt, und wählen Sie **Als Startprojekt festlegen** aus, um es als Startprojekt festzulegen. Drücken Sie dann **F5** , um die Anwendung auszuführen.
    
     Sie erhalten eine Popupbenachrichtigung auf allen registrierten Geräten. Durch Auswählen des Popupbanners wird die App geladen.
 

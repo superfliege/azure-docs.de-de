@@ -3,7 +3,7 @@ title: Verwenden von Azure MFA Server mit AD FS 2.0 | Microsoft Docs
 description: Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA und AD FS 2.0 beschrieben.
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 96168849-241a-4499-a224-d829913caa7e
 ms.service: multi-factor-authentication
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/14/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: a05219398aefa158321ae63934743dd43841e33f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec0fada3f8e94d8dda63d00f0ead7fa28535474f
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Konfigurieren des Azure Multi-Factor Authentication-Servers zur Verwendung von AD FS 2.0
 Dieser Artikel richtet sich an Organisationen, die sind in einem Azure Active Directory-Verbund befinden und lokale Ressourcen oder Ressourcen in der Cloud schützen möchten. Schützen Sie Ihre Ressourcen mithilfe des Azure Multi-Factor Authentication-Servers, und konfigurieren Sie ihn für die Verwendung von AD FS, damit für wichtige Endpunkte die Überprüfung in zwei Schritten ausgelöst wird.

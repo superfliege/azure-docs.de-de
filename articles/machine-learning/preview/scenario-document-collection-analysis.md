@@ -9,11 +9,11 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 669fc7a9ec5dfb446ef2755919c498fe6f60c9df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5ef1589e28c01d750641873d3c8482f61d90a887
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="document-collection-analysis"></a>Analysieren von Dokumentsammlungen
 
@@ -102,7 +102,7 @@ Die Dateien in diesem Beispiel sind wie folgt organisiert.
 
 | Dateiname | Typ | Beschreibung |
 |-----------|------|-------------|
-| `aml_config` | Ordner | Der Konfigurationsordner der Azure Machine Learning Workbench. Informationen zur Konfiguration der Durchführung der Experimente finden Sie in [dieser Dokumentation](./experiment-execution-configuration-reference.md). |
+| `aml_config` | Ordner | Der Konfigurationsordner der Azure Machine Learning Workbench. Informationen zur Konfiguration der Durchführung der Experimente finden Sie in [dieser Dokumentation](./experimentation-service-configuration-reference.md). |
 | `Code` | Ordner | Der Codeordner, in dem die Python-Skripts und das Python-Paket gespeichert werden |
 | `Data` | Ordner | Der Datenordner, in dem Zwischendateien gespeichert werden |
 | `notebooks` | Ordner | Der Ordner für Jupyter Notebooks |
@@ -120,6 +120,7 @@ Die Dateien in diesem Beispiel sind wie folgt organisiert.
 | `notebooks/3_Topic_Model_Training.ipynb` | IPython Notebook | Trainieren des LDA-Themenmodells |
 | `notebooks/4_Topic_Model_Summarization.ipynb` | IPython Notebook | Zusammenfassen der Inhalte der Dokumentsammlung anhand eines trainierten LDA-Themenmodells |
 | `notebooks/5_Topic_Model_Analysis.ipynb` | IPython Notebook | Analysieren der thematischen Inhalte einer Sammlung von Textdokumenten und Korrelieren der Themeninformationen mit anderen zugeordneten Metadaten, die der Dokumentsammlung zugeordnet sind |
+| `notebooks/6_Interactive_Visualization.ipynb` | IPython Notebook | Interaktive Visualisierung des gelernten Themenmodells |
 | `notebooks/winprocess.py` | Python-Datei | Das Python-Skript für das Multiprocessing der verwendeten Notebooks |
 | `README.md` | Markdowndatei | Die Info-Markdowndatei |
 
@@ -224,6 +225,8 @@ Die Themenzusammenfassung und -analyse umfasst zwei Notebooks. Das Paket zur Dok
 In `4_Topic_Model_Summarization.ipynb` wird das Zusammenfassen der Inhalte des Dokuments anhand eines trainierten LDA-Themenmodells gezeigt. Die Zusammenfassung wird auf ein LDA-Themenmodell angewendet, das in Schritt 3 trainiert wurde. Es zeigt, wie die Wichtigkeit oder Qualität eines Themas durch eine Bewertung der Themenreinheit im Dokument gemessen wird. Diese Reinheitsbewertung setzt voraus, dass dominierende zugrunde liegende Themen in den Dokumenten semantisch bedeutsamer sind als Themen, die weniger häufig und über viele Dokumente verteilt sind. Dieses Konzept wurde im Artikel [Latent Topic Modeling for Audio Corpus Summarization](http://people.csail.mit.edu/hazen/publications/Hazen-Interspeech11.pdf) (Modellierung latenter Themen für Audiotextzusammenfassungen) eingeführt.
 
 Das Notebook `5_Topic_Model_Analysis.ipynb` veranschaulicht das Analysieren der thematischen Inhalte einer Sammlung von Textdokumenten und das Korrelieren der Themeninformationen mit anderen zugeordneten Metadaten, die der Dokumentsammlung zugeordnet sind. In diesem Notebook werden einige Plots eingeführt, damit die Benutzer das gelernte Thema und die Dokumentsammlung besser verstehen.
+
+Notebook `6_Interactive_Visualization.ipynb` zeigt das interaktive Visualisieren des gelernten Themenmodells. Es umfasst vier Aufgaben für interaktive Visualisierung.
 
 ## <a name="conclusion"></a>Zusammenfassung
 

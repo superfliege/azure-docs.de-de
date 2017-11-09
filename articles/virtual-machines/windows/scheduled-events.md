@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: zivr
-ms.openlocfilehash: 7198fa8d1a512d10ca7022078aa2ea7bde3a4c02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76179b6a8eb7066c90828d33729b557f5e37c17a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-metadata-service-scheduled-events-preview-for-windows-vms"></a>Azure-Metadatendienst: Geplante Ereignisse (Vorschau) für Windows-VMs
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 Geplante Ereignisse ist einer der untergeordneten Dienste des Azure-Metadatendiensts. Er liefert Informationen zu anstehenden Ereignissen (z.B. Neustart), damit sich Ihre Anwendung darauf vorbereiten und Unterbrechungen begrenzen kann. Der Dienst steht für sämtliche Arten virtueller Azure-Computer zur Verfügung, einschließlich PaaS und IaaS. Geplante Ereignisse räumt Ihrem virtuellen Computer Zeit ein, vorbeugende Maßnahmen zu ergreifen und die Auswirkungen eines Ereignisses zu minimieren. 
 
-Geplante Ereignisse sind für virtuelle Linux- und Windows-Computer verfügbar. Informationen zu geplanten Ereignissen unter Linux finden Sie unter [Geplante Ereignisse für virtuelle Linux-Computer ](../windows/scheduled-events.md).
+Geplante Ereignisse sind für virtuelle Linux- und Windows-Computer verfügbar. Informationen zu geplanten Ereignissen unter Linux finden Sie unter [Geplante Ereignisse für virtuelle Linux-Computer ](../linux/scheduled-events.md).
 
 ## <a name="why-scheduled-events"></a>Warum geplante Ereignisse?
 

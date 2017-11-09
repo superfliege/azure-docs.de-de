@@ -12,16 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 2302f4bfe98c3e731685f5c63774b060caa8c3a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bffca3b1daa3e909a0b17baf33c7f85d57836d32
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Einfaches Kopieren oder Verschieben von Daten mit dem Kopier-Assistenten von Azure Data Factory
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen im [Tutorial zu Kopieraktivitäten in der Dokumentation zu Version 2](../quickstart-create-data-factory-dot-net.md). 
+
+
 Der Azure Data Factory-Kopier-Assistent vereinfacht den Datenerfassungsvorgang (üblicherweise der erste Schritt in einem Szenario mit End-to-End-Datenintegration). Zur Arbeit mit dem Azure Data Factory-Kopier-Assistenten ist die Kenntnis der JSON-Definitionen für verknüpfte Dienste, Datasets und Pipelines nicht erforderlich. Nachdem Sie alle Schritte mit dem Assistenten abgeschlossen haben, erstellt der Assistent allerdings eine Pipeline, um Daten aus der gewählten Datenquelle und in das gewünschte Ziel zu kopieren. Darüber hinaus können Sie die erfassten Daten mit dem Kopier-Assistenten zum Zeitpunkt des Erstellens überprüfen. So sparen Sie Zeit, besonders wenn Sie Daten aus einer bestimmten Datenquelle zum ersten Mal erfassen. Klicken Sie zum Starten des Kopier-Assistenten auf der Startseite Ihrer Data Factory auf die Kachel **Daten kopieren** .
 
 ![Kopier-Assistent](./media/data-factory-copy-wizard/copy-data-wizard.png)
