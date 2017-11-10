@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 0c7a8d68c0df729441e3f7faa5cd06066db1261d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3aaf2b717937fdf62de423f5d9219be5ce0ad60
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -34,7 +34,7 @@ Azure Active Directory Identity Protection ist ein Feature der Azure AD Premium 
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Microsoft sichert cloudbasierte Identitäten über zehn Jahre lang. Mit Azure Active Directory Identity Protection können Sie in Ihrer Umgebung die gleichen Schutzsysteme einsetzen, die von Microsoft zum Sichern von Identitäten verwendet werden.
+Microsoft sichert cloudbasierte Identitäten bereits seit über zehn Jahren. Mit Azure Active Directory Identity Protection können Sie in Ihrer Umgebung die gleichen Schutzsysteme einsetzen, die von Microsoft zum Sichern von Identitäten verwendet werden.
 
 Die allermeisten Sicherheitsverletzungen kommen vor, wenn Angreifer Zugriff auf eine Umgebung erhalten, indem sie die Identität eines Benutzers stehlen. Im Laufe der Jahre sind Angreifer beim Nutzen von Drittanbieter-Sicherheitsverletzungen immer effektiver vorgegangen und haben professionelle Phishingangriffe gestartet. Sobald sich ein Angreifer Zugriff auf ein mit geringen Rechten ausgestattetes Benutzerkonto verschafft hat, ist es für ihn relativ einfach, per Seitwärtsbewegung Zugriff auf wichtige Unternehmensressourcen zu erlangen.
 
@@ -67,7 +67,7 @@ Azure Active Directory Identity Protection ist viel mehr als nur ein Tool für d
 
 **Risikobasierte Richtlinien für bedingten Zugriff:**
 
-* Richtlinie für Abwehrmaßnahmen bei risikobehafteten Anmeldungen, indem Anmeldungen blockiert oder die Multi-Factor Authentication erzwungen wird.
+* Richtlinie für Abwehrmaßnahmen bei risikobehafteten Anmeldungen, indem Anmeldungen blockiert oder die Multi-Factor Authentication erzwungen wird
 * Richtlinie zum Blockieren oder Schützen risikobehafteter Benutzerkonten
 * Richtlinie zur Durchsetzung der Registrierung von Benutzern für die Multi-Factor Authentication
 

@@ -15,17 +15,18 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-ms.openlocfilehash: 9336743b92130e37b1df2992aab806696f8276aa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96e332504509ae98e280d1c8585b0b294e0e07cb
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Hinzufügen von bedarfsgesteuerten „Burstknoten“ zu einem HPC Pack-Cluster in Azure
 Wenn Sie einen [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029)-Cluster in Azure einrichten, benötigen Sie wahrscheinlich eine Möglichkeit, die Clusterkapazität schnell hoch- oder herunterzuskalieren, ohne einen Satz vorkonfigurierter Computeknoten-VMs vorhalten zu müssen. In diesem Artikel wird erläutert, wie Sie bedarfsgesteuerte Burstknoten (Workerrolleninstanzen, die in einem Clouddienst ausgeführt werden) als Computeressourcen zu einem Hauptknoten in Azure hinzufügen. 
 
 > [!IMPORTANT] 
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 ![Burstknoten][burst]
 
@@ -42,10 +43,10 @@ Anhand der Schritte in diesem Artikel können Sie Azure-Knoten auf schnelle Weis
 * **Kernkontingent** – Unter Umständen muss das Kontingent für die Kerne erhöht werden. Dies gilt insbesondere, wenn Sie mehrere Azure-Knoten mit Multicore-Größen bereitstellen. Um ein Kontingent zu erhöhen, können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) .
 
 ## <a name="step-1-create-a-cloud-service-and-a-storage-account-for-the-azure-nodes"></a>Schritt 1: Erstellen eines Clouddiensts und eines Speicherkontos für die Azure-Knoten
-Verwenden Sie das klassische Azure-Portal oder entsprechende Tools, um die folgenden Ressourcen zu konfigurieren, die für die Bereitstellung von Azure-Knoten erforderlich sind:
+Verwenden Sie das Azure-Portal oder entsprechende Tools, um die folgenden Ressourcen zu konfigurieren, die für die Bereitstellung von Azure-Knoten erforderlich sind:
 
-* Einen neuen Azure-Clouddienst
-* Ein neues Azure-Speicherkonto
+* Einen neuen Azure-Clouddienst (klassisch)
+* Ein neues Azure-Speicherkonto (klassisch)
 
 > [!NOTE]
 > Verwenden Sie in Ihrem Abonnement keinen vorhandenen Clouddienst. 
@@ -60,7 +61,11 @@ Verwenden Sie das klassische Azure-Portal oder entsprechende Tools, um die folge
 ## <a name="step-2-configure-an-azure-management-certificate"></a>Schritt 2: Konfigurieren eines Azure-Verwaltungszertifikats
 Um Azure-Knoten als Computeressourcen hinzuzufügen, benötigen Sie ein Verwaltungszertifikat für den Hauptknoten und müssen ein entsprechendes Zertifikat für das für die Bereitstellung verwendete Azure-Abonnement hochladen.
 
-In diesem Szenario können Sie das **Zertifikat "Default HPC Azure Management"** auswählen, das HPC Pack automatisch auf dem Hauptknoten installiert und konfiguriert. Dieses Zertifikat ist nützlich für Testzwecke und Machbarkeitsstudien. Um dieses Zertifikat zu verwenden, laden Sie die Datei „C:\Programme\Microsoft HPC Pack 2012\Bin\hpccert.cer“ vom virtuellen Computer für den Hauptknoten in das Abonnement hoch. Klicken Sie zum Hochladen des Zertifikats im [klassischen Azure-Portal](https://manage.windowsazure.com) auf **Einstellungen** > **Verwaltungszertifikate**.
+In diesem Szenario können Sie das **Zertifikat "Default HPC Azure Management"** auswählen, das HPC Pack automatisch auf dem Hauptknoten installiert und konfiguriert. Dieses Zertifikat ist nützlich für Testzwecke und Machbarkeitsstudien. Um dieses Zertifikat zu verwenden, laden Sie die Datei „C:\Programme\Microsoft HPC Pack 2012\Bin\hpccert.cer“ vom virtuellen Computer für den Hauptknoten in das Abonnement hoch. So laden Sie das Zertifikat in das [Azure-Portal](https://portal.azure.com) hoch:
+
+1. Klicken Sie auf **Abonnements** > *Name_Ihres_Abonnements*.
+
+2. Klicken Sie dann auf **Verwaltungszertifikate** > **Hochladen**.
 
 Zusätzliche Optionen zum Konfigurieren des Verwaltungszertifikats finden Sie unter [Options to Configure the Azure Management Certificate for Azure Burst Deployments](http://technet.microsoft.com/library/gg481759.aspx)(in englischer Sprache).
 
