@@ -28,7 +28,13 @@
 - name: Konzepte
   items:
     - name: Upgrade des Arbeitsbereichs
-      href: log-analytics-log-search-upgrade.md
+      items:
+        - name: Upgradeübersicht
+          href: log-analytics-log-search-upgrade.md
+        - name: Zusammenfassung der Änderungen
+          href: log-analytics-log-search-upgrade-changes.md
+        - name: Häufig gestellte Fragen zu Upgrades
+          href: log-analytics-log-search-faq.md
     - name: Häufig gestellte Fragen zu Log Analytics
       href: log-analytics-faq.md
     - name: Nutzung der Daten
@@ -41,8 +47,6 @@
       items:
         - name: Übersicht über Protokollsuchvorgänge
           href: log-analytics-log-search-new.md
-        - name: Häufig gestellte Fragen zur Protokollsuche
-          href: log-analytics-log-search-faq.md
         - name: Portale für die Protokollsuche
           href: log-analytics-log-search-portals.md
 - name: Anleitungen

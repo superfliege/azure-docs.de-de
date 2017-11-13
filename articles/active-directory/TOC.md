@@ -87,7 +87,6 @@
 #### [Referenz zu Produkten und Serviceplänen in Azure AD](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Einrichten des Office 365-Gruppenablaufs](active-directory-groups-lifecycle-azure-portal.md)
 ### [Anzeigen aller Gruppen](active-directory-groups-view-azure-portal.md)
-### [Aktivieren dedizierter Gruppen](active-directory-accessmanagement-dedicated-groups.md)
 ### [Hinzufügen des Gruppenzugriffs auf SaaS-Apps](active-directory-accessmanagement-group-saasapps.md)
 ### [Wiederherstellen einer gelöschten Office 365-Gruppe](active-directory-groups-restore-azure-portal.md)
 ### Verwalten von Gruppeneinstellungen
@@ -254,7 +253,6 @@
 ##### [Klassisches Portal](active-directory-add-manage-domain-names.md)
 ### [Verwalten Ihres Verzeichnisses](active-directory-administer.md)
 ### [Mehrere Verzeichnisse](active-directory-licensing-directory-independence.md)
-### [O365-Verzeichnisse](active-directory-manage-o365-subscription.md)
 ### [Self-Service-Registrierung](active-directory-self-service-signup.md)
 #### [Übernehmen eines nicht verwalteten Verzeichnisses](domains-admin-takeover.md)
 ### [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)

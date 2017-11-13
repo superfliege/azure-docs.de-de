@@ -55,10 +55,12 @@
       href: concepts-integration-runtime.md
 - name: Anleitungen
   items:
-    - name: Verschieben von Daten
+    - name: Kopieren von Daten
       items:
-        - name: Kopieraktivität – Übersicht
+        - name: Kopieren von Daten aus unterstützen Quellen in Ziele
           href: copy-activity-overview.md
+        - name: Lesen oder Schreiben partitionierter Daten
+          href: how-to-read-write-partitioned-data.md
         - name: Connectors
           items:
             - name: Amazon Redshift
@@ -71,6 +73,8 @@
               href: connector-azure-cosmos-db.md
             - name: Azure Data Lake Store
               href: connector-azure-data-lake-store.md
+            - name: Azure Database for MySQL
+              href: connector-azure-database-for-mysql.md
             - name: Azure File Storage
               href: connector-azure-file-storage.md
             - name: Azure Search
@@ -168,6 +172,8 @@
       items:
         - name: Aktivität „Falls-Bedingung“
           href: control-flow-if-condition-activity.md
+        - name: Aktivität „Bis“
+          href: control-flow-until-activity.md
         - name: Webaktivität
           href: control-flow-web-activity.md
         - name: Lookup-Aktivität
@@ -178,6 +184,8 @@
           href: control-flow-execute-pipeline-activity.md
         - name: Aktivität „For Each“
           href: control-flow-for-each-activity.md
+        - name: Aktivität „Warten“
+          href: control-flow-wait-activity.md
         - name: Ausdruckssprache
           href: control-flow-expression-language-functions.md
         - name: Systemvariablen
@@ -190,6 +198,8 @@
           href: store-credentials-in-key-vault.md
         - name: Verschlüsseln der Anmeldeinformationen für die selbstgehostete Integrationslaufzeit
           href: encrypt-credentials-self-hosted-integration-runtime.md
+        - name: Data Factory-Dienstidentität
+          href: data-factory-service-identity.md
     - name: Überwachen und Verwalten
       items:
         - name: Verwenden von SDKs
