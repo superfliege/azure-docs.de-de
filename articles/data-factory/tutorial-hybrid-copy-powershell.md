@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: jingwang
-ms.openlocfilehash: 95d1dce536f8f8f0fc8d93f201520fd84f0f7629
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 12ead91f6729aa3eb631cc453180ddea9bafe3df
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="copy-data-between-on-premises-and-cloud"></a>Kopieren von Daten zwischen lokalen Quellen und der Cloud
 
 [!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
 
-#### <a name="this-tutorial"></a>Dieses Tutorial umfasst folgende Punkte
+#### <a name="this-tutorial"></a>Dieses Tutorial
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) weiter.
@@ -85,7 +85,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
         ```
 
     * Um Data Factory-Instanzen zu erstellen, müssen Sie Mitwirkender oder Administrator des Azure-Abonnements sein.
-    * Derzeit ermöglicht der Data Factory-Dienst das Erstellen einer Data Factory nur in den Regionen „USA, Osten“ und „USA, Osten 2“. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
+    * Derzeit können Sie mit Data Factory V2 nur in den Regionen „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“ Data Factorys erstellen. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 
 ## <a name="create-a-self-hosted-ir"></a>Erstellen einer selbstgehosteten IR
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: f055f1e87e73733b3f2ecfa87e4d372ade8a7868
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 7d3e6a34b5851a5a35a530b18efc3db3e2249274
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -35,7 +35,7 @@ Die Verwendung von VNET-Peering bietet unter anderem folgende Vorteile:
 
 ## <a name="requirements-constraints"></a>Anforderungen und Einschränkungen
 
-* Das Peering von virtuellen Netzwerken in derselben Region befindet sich in der Phase der allgemeinen Verfügbarkeit. Das Peering von virtuellen Netzwerken in unterschiedlichen Regionen befindet sich derzeit in USA, Westen-Mitte, Kanada, Mitte und USA, Westen 2 in der in der Vorschauphase. Sie können [Ihr Abonnement für die Vorschauversion registrieren](virtual-network-create-peering.md).
+* Das Peering von virtuellen Netzwerken in derselben Region befindet sich in der Phase der allgemeinen Verfügbarkeit. Das Peering von virtuellen Netzwerken in unterschiedlichen Regionen befindet sich derzeit in USA, Westen-Mitte, Kanada, Mitte und USA, Westen 2 in der in der Vorschauphase. Vor dem Durchführen des Peerings für virtuelle Netzwerke in unterschiedlichen Regionen müssen Sie [Ihr Abonnement zuerst für die Vorschauversion registrieren](virtual-network-create-peering.md#register). Beim versuchten Erstellen eines Peerings zwischen virtuellen Netzwerken in unterschiedlichen Regionen tritt ein Fehler auf, wenn Sie die Registrierung für die Vorschauversion noch nicht durchgeführt haben.
     > [!WARNING]
     > Regionsübergreifend erstellte Peerings virtueller Netzwerke bieten ggf. nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Peerings in einer allgemein verfügbaren Version. Peerings virtueller Netzwerke weisen unter Umständen eingeschränkte Funktionen auf und stehen ggf. nicht in allen Azure-Regionen zur Verfügung. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network) .
 

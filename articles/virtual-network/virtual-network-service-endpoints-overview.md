@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: 0a0fe6f0e353e33cec80a9e06a61e772931cdea6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be0c715e12f7df6208112eea40d6017d86f50cae
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="virtual-network-service-endpoints-preview"></a>Dienstendpunkte von virtuellen Netzwerken (Vorschauversion)
 
@@ -27,7 +27,7 @@ Mit Dienstendpunkten von virtuellen Netzwerken (VNETs) werden der Bereich privat
 
 Dieses Feature ist für die folgenden Azure-Dienste und -Regionen als Vorschauversion verfügbar:
 
-- **Azure Storage**: WestCentralUS, WestUS2, EastUS, WestUS, AustraliaEast und AustraliaSouthEast
+- **Azure Storage**: Alle Regionen in der öffentlichen Azure-Cloud.
 - **Azure SQL-Datenbank**: WestCentralUS, WestUS2 und EastUS.
 
 Aktuelle Benachrichtigungen zur Vorschauversion finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network).

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: jingwang
-ms.openlocfilehash: cf69d30f36178db9cad18e18f370645cd84de558
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: f7683bc203c93993c0eb5aaed6ca788458546019
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Massenkopieren von mehreren Tabellen mithilfe von Azure Data Factory
 
 [!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
 
-#### <a name="this-tutorial"></a>Dieses Tutorial umfasst folgende Punkte
+#### <a name="this-tutorial"></a>Dieses Tutorial
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) weiter.
@@ -99,7 +99,7 @@ Erlauben Sie Azure-Diensten den Zugriff auf SQL-Server. Das gilt sowohl für die
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
     ```
-2. Führen Sie zum Erstellen einer Data Factory das Cmdlet **Set-AzureRmDataFactoryV2** aus. Ersetzen Sie vor dem Ausführen des Befehls die Platzhalter durch Ihre eigenen Werte.
+2. Führen Sie zum Erstellen einer Data Factory das Cmdlet **Set-AzureRmDataFactoryV2** aus. Ersetzen Sie vor dem Ausführen des Befehls die Platzhalter durch Ihre eigenen Werte. 
 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>"
@@ -115,8 +115,8 @@ Erlauben Sie Azure-Diensten den Zugriff auf SQL-Server. Das gilt sowohl für die
         The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
         ```
 
-    * Data Factory-Instanzen können nur von Mitwirkenden oder Administratoren des Azure-Abonnements erstellt werden.
-    * Derzeit kann eine Data Factory nur in der Region „USA, Osten“ erstellt werden. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
+    * Um Data Factory-Instanzen zu erstellen, müssen Sie Mitwirkender oder Administrator des Azure-Abonnements sein.
+    * Derzeit können Sie mit Data Factory V2 nur in den Regionen „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“ Data Factorys erstellen. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 

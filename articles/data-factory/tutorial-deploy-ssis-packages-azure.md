@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 10/06/2017
 ms.author: spelluru
-ms.openlocfilehash: a225b9285294f32fd7183390a73f55ae64bf232a
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 434c1de8a7310036fb1bb93d45c6b1364ba1fe6a
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="deploy-sql-server-integration-services-packages-to-azure"></a>Bereitstellen von SQL Server Integration Services-Paketen in Azure
 
@@ -45,6 +45,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     - Fügen Sie der Client-IP-Adressenliste in den Firewalleinstellungen für den Datenbankserver die IP-Adresse des Clientcomputers oder einen IP-Adressbereich hinzu, der die IP-Adresse des Clientcomputers enthält. Weitere Informationen finden Sie unter [Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank](../sql-database/sql-database-firewall-configure.md). 
 - **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/install-azurerm-ps) (Erste Schritte mit Azure PowerShell-Cmdlets). Sie verwenden PowerShell zum Ausführen eines Skripts, um eine Azure SSIS Integration Runtime bereitzustellen, die SSIS-Pakete in der Cloud ausführt. 
 
+> [!NOTE]
+> Eine Liste mit Regionen, die von Azure Data Factory V2 und Azure-SSIS Integration Runtime unterstützt werden, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/). Erweitern Sie **Daten + Analysen**, um **Data Factory V2** und **SSIS Integration Runtime** anzuzeigen.
+
 ## <a name="launch-windows-powershell-ise"></a>Starten von Windows PowerShell ISE
 Starten Sie **Windows PowerShell ISE** mit Administratorrechten. 
 
@@ -56,13 +59,11 @@ $SubscriptionName = "<Azure subscription name>"
 $ResourceGroupName = "<Azure resource group name>"
 # Data factory name. Must be globally unique
 $DataFactoryName = "<Data factory name>" 
-# In public preview, only EastUS amd EastUS2 are supported.
 $DataFactoryLocation = "EastUS" 
 
 # Azure-SSIS integration runtime information. This is a Data Factory compute resource for running SSIS packages
 $AzureSSISName = "<Specify a name for your Azure-SSIS IR>"
 $AzureSSISDescription = "<Specify description for your Azure-SSIS IR"
-# In public preview, only EastUS and NorthEurope are supported.
 $AzureSSISLocation = "EastUS" 
  # In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
 $AzureSSISNodeSize = "Standard_A4_v2"
@@ -208,20 +209,20 @@ Das PowerShell-Skript in diesem Abschnitt konfiguriert eine Instanz der Azure SS
 > [!NOTE]
 > Das Skript stellt die Verbindung mit Ihrer Azure SQL-Datenbank her, um die SSIS-Katalogdatenbank (SSISDB) vorzubereiten. Außerdem konfiguriert das Skript Berechtigungen und Einstellungen für das VNET – sofern angegeben – und verknüpft die neue Instanz der Azure SSIS Integration Runtime mit dem VNET.
 
-Eine Liste mit den unterstützten **Tarifen** für Azure SQL-Datenbank finden Sie unter [Ressourceneinschränkungen für Azure SQL-Datenbank](../sql-database/sql-database-resource-limits.md).
+Eine Liste mit den unterstützten **Tarifen** für Azure SQL-Datenbank finden Sie unter [Ressourceneinschränkungen für Azure SQL-Datenbank](../sql-database/sql-database-resource-limits.md). 
+
+Eine Liste mit Regionen, die von Azure Data Factory V2 und Azure-SSIS Integration Runtime unterstützt werden, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/). Erweitern Sie **Daten + Analysen**, um **Data Factory V2** und **SSIS Integration Runtime** anzuzeigen.
 
 ```powershell
 $SubscriptionName = "<Azure subscription name>"
 $ResourceGroupName = "<Azure resource group name>"
 # Data factory name. Must be globally unique
 $DataFactoryName = "<Data factory name>" 
-# In public preview, only EastUS amd EastUS2 are supported.
 $DataFactoryLocation = "EastUS" 
 
 # Azure-SSIS integration runtime information. This is a Data Factory compute resource for running SSIS packages
 $AzureSSISName = "<Specify a name for your Azure-SSIS (IR)>"
 $AzureSSISDescription = "<Specify description for your Azure-SSIS IR"
-# In public preview, only EastUS and NorthEurope are supported.
 $AzureSSISLocation = "EastUS" 
  # In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
 $AzureSSISNodeSize = "Standard_A4_v2"

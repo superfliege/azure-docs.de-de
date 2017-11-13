@@ -13,11 +13,11 @@ ms.devlang: rest-api
 ms.topic: hero-article
 ms.date: 09/26/2017
 ms.author: jingwang
-ms.openlocfilehash: c48e99c0e3248a80aae864c9d11edec740f3bb41
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 5535bc0438c650fdf0e03229359bc8bf4a1f6990
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Erstellen einer Azure Data Factory und einer Pipeline mithilfe der REST-API
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -114,6 +114,7 @@ Beachten Sie folgende Punkte:
     ```
     Data factory name "ADFv2QuickStartDataFactory" is not available.
     ```
+* Derzeit können Sie mit Data Factory V2 nur in den Regionen „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“ Data Factorys erstellen. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 
 Hier ist die Beispielantwort:
 

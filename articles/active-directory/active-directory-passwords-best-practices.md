@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: e28324fe0d7e52f1721af6cd835369f024d4c58f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 0be1616f5df915e566dc73c15dbea2e53177aa1c
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="how-to-successfully-rollout-self-service-password-reset"></a>Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung
 
@@ -38,8 +38,8 @@ Die meisten Kunden führen die hier angegebenen Schritte aus, um für ein reibun
 10. Sie können den Verlauf der Registrierung und Nutzung durch die Benutzer verfolgen, indem Sie die [Berichterstellungsfunktion von Azure AD](active-directory-passwords-reporting.md) verwenden.
 11. Wenn Sie bereit sind, legen Sie den Umschalter **Self-Service-Kennwortzurücksetzung aktiviert** auf **Alle** fest. 
 
-    > [!IMPORTANT]
-    > Testen Sie SSPR nicht als Administrator, sondern als normaler Benutzer, da Microsoft für Azure-Administratorkonten strenge Anforderungen an die Authentifizierung stellt. Weitere Informationen zur Richtlinie für Administratorkennwörter finden Sie in [diesem ausführlichen Artikel](active-directory-passwords-how-it-works.md).
+   > [!IMPORTANT]
+   > Testen Sie SSPR nicht als Administrator, sondern als normaler Benutzer, da Microsoft für Azure-Administratorkonten strenge Anforderungen an die Authentifizierung stellt. Weitere Informationen zur Richtlinie für Administratorkennwörter finden Sie im Artikel zu [Kennwortrichtlinien](active-directory-passwords-policy.md#administrator-password-policy-differences).
 
 ## <a name="email-based-rollout"></a>E-Mail-basierte Einführung
 
@@ -79,14 +79,14 @@ Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
+* [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md)
 * [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
-* [Haben Sie eine Frage zur Lizenzierung?](active-directory-passwords-licensing.md)
+* [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](active-directory-passwords-licensing.md)
 * [Welche Daten werden von SSPR verwendet, und welche Daten sollten Sie für Ihre Benutzer angeben?](active-directory-passwords-data.md)
 * [Welche Richtlinienoptionen stehen mit SSPR zur Verfügung?](active-directory-passwords-policy.md)
-* [Worum handelt es sich beim Rückschreiben von Kennwörtern, und warum sollte ich mir Gedanken darüber machen?](active-directory-passwords-writeback.md)
-* [Wie melde ich eine Aktivität bei SSPR?](active-directory-passwords-reporting.md)
-* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
+* [Übersicht über die Kennwortrückschreibung](active-directory-passwords-writeback.md)
+* [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](active-directory-passwords-reporting.md)
+* [Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD](active-directory-passwords-how-it-works.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
 * [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
 

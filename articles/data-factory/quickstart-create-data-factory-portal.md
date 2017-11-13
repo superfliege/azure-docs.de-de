@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: jingwang
-ms.openlocfilehash: 9f49fbff9f66dc081e94b35e1318a2c9aee60dc0
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 851477331c5990f2e950b2aa83ef1d61e6174326
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-a-data-factory-using-the-azure-portal"></a>Erstellen einer Data Factory über das Azure-Portal
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,7 +54,7 @@ Die folgenden Schritte führen Sie im Rahmen dieser Schnellstartanleitung aus:
          
       Bei einigen Schritten dieses Tutorials wird davon ausgegangen, dass Sie die Ressourcengruppe namens **ADFTutorialResourceGroup** verwenden. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
 4. Wählen Sie **V2 (Vorschau)** als **Version** aus.
-5. Wählen Sie den **Standort** für die Data Factory aus. Zurzeit können Sie Data Factorys der Version „V2“ nur in der Region **USA, Osten** erstellen. Die in Data Factorys verwendeten Computingressourcen und Datenspeicher können sich in anderen Regionen befinden. 
+5. Wählen Sie den **Standort** für die Data Factory aus. Derzeit können Sie mit Data Factory V2 nur in den Regionen „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“ Data Factorys erstellen. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 6. Wählen Sie die Option **An Dashboard anheften** aus.     
 7. Klicken Sie auf **Erstellen**.
       

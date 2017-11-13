@@ -3,7 +3,7 @@ title: "Routinganforderungen für Azure ExpressRoute | Microsoft-Dokumentation"
 description: "Diese Seite enthält ausführliche Anforderungen für das Konfigurieren und Verwalten des Routings für ExpressRoute-Verbindungen."
 documentationcenter: na
 services: expressroute
-author: osamazia
+author: ganesr
 manager: ganesr
 editor: 
 ms.assetid: 5b382e79-fa3f-495a-a764-c5ff86af66a2
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
-ms.author: osamam
-ms.openlocfilehash: a7d1e177e08d37913afa3cb203f0e4085c171f70
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.date: 11/03/2017
+ms.author: ganesr
+ms.openlocfilehash: 088147060eeeba5c900cdcdc3fb38fc1d4ccfc58
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -174,6 +174,8 @@ Sie können mehr als eine ExpressRoute-Verbindung pro geopolitischer Region erwe
 | Westeuropa | 12076:51002 |
 | UK, Süden | 12076:51024 |
 | UK, Westen | 12076:51025 |
+| Frankreich, Mitte | 12076:51030 |
+| Frankreich, Süden | 12076:51031 |
 | **Asien-Pazifik** | |
 | Ostasien | 12076:51010 |
 | Südostasien | 12076:51011 |
