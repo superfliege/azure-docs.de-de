@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: c319979cce23da69965d4fbab037919461f67b3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f4c0b11039bbdaf29c90ec2358934dc1c24af90
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -177,7 +177,7 @@ Damit der Planer-Trigger die Ausführung der Pipeline startet, verwenden Sie in 
         "interval": <<int>>,             // optional, how often to fire (default to 1)
         "startTime": <<datetime>>,
         "endTime": <<datetime>>,
-        "timeZone": <<default UTC>>
+        "timeZone": "UTC"
         "schedule": {                    // optional (advanced scheduling specifics)
           "hours": [<<0-24>>],
           "weekDays": ": [<<Monday-Sunday>>],
@@ -189,6 +189,7 @@ Damit der Planer-Trigger die Ausführung der Pipeline startet, verwenden Sie in 
                     "occurrence": <<1-5>>
                }
            ] 
+        }
       }
     },
    "pipelines": [
@@ -202,7 +203,7 @@ Damit der Planer-Trigger die Ausführung der Pipeline startet, verwenden Sie in 
                         "type": "Expression",
                         "value": "<parameter 1 Value>"
                     },
-                    "<parameter 2 Name> : "<parameter 2 Value>"
+                    "<parameter 2 Name>" : "<parameter 2 Value>"
                 }
            }
       ]
@@ -210,17 +211,57 @@ Damit der Planer-Trigger die Ausführung der Pipeline startet, verwenden Sie in 
 }
 ```
 
+> [!IMPORTANT]
+>  Die **parameters**-Eigenschaft ist eine obligatorische Eigenschaft unter **pipelines**. Auch wenn für Ihre Pipeline keine Parameter verwendet werden, sollten Sie eine leere JSON-Datei für Parameter einfügen, da die Eigenschaft vorhanden sein muss.
+
+
 ### <a name="overview-scheduler-trigger-schema"></a>Übersicht: Schema des Planer-Triggers
 Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten Elemente für die Wiederholung und Zeitplanung in einem Trigger:
 
 JSON-Eigenschaft |     Beschreibung
 ------------- | -------------
 startTime | „startTime“ ist eine Datums-/Uhrzeitangabe. Bei einfachen Zeitplänen ist „startTime“ das erste Vorkommen. Bei komplexen Zeitplänen wird der Trigger frühestens bei „startTime“ gestartet.
+endTime | Gibt Datum und Uhrzeit für das Ende des Triggers an. Der Trigger wird nach diesem Zeitpunkt nicht ausgeführt. „endTime“ darf nicht in der Vergangenheit liegen.
+timeZone | Derzeit wird nur UTC unterstützt. 
 recurrence | Das recurrence-Objekt gibt Wiederholungsregeln für den Trigger an. Es unterstützt die Elemente „frequency“, „interval“, „endTime“, „count“ und „schedule“. Bei Angabe von „recurrence“ muss auch „frequency“ angegeben werden. Die anderen Elemente von „recurrence“ sind optional.
 frequency | Stellt die Einheit der Häufigkeit dar, mit der der Trigger wiederholt wird. Folgende Werte werden unterstützt: `minute`, `hour`, `day`, `week` und `month`
 interval | Das interval-Objekt ist eine positive ganze Zahl. Es gibt das Intervall für die Häufigkeit an, die bestimmt, wie oft der Trigger ausgeführt wird. Ist „interval“ also beispielsweise auf „3“ und „frequency“ auf „week“ festgelegt, wird der Trigger alle drei Wochen ausgeführt.
-endTime | Gibt Datum und Uhrzeit für das Ende des Triggers an. Der Trigger wird nach diesem Zeitpunkt nicht ausgeführt. „endTime“ darf nicht in der Vergangenheit liegen.
 schedule | Die Wiederholung eines Triggers mit einer bestimmten Häufigkeit wird auf der Grundlage eines Wiederholungszeitplans angepasst. Ein Zeitplan enthält Anpassungen auf der Grundlage von Minuten, Stunden, Wochentagen, Monatstagen und Wochennummer.
+
+
+### <a name="schedule-trigger-example"></a>Beispiel für Zeitplantrigger
+
+```json
+{
+    "properties": {
+        "name": "MyTrigger",
+        "type": "ScheduleTrigger",
+        "typeProperties": {
+            "recurrence": {
+                "frequency": "Hour",
+                "interval": 1,
+                "startTime": "2017-11-01T09:00:00-08:00",
+                "endTime": "2017-11-02T22:00:00-08:00"
+            }
+        },
+        "pipelines": [{
+                "pipelineReference": {
+                    "type": "PipelineReference",
+                    "referenceName": "SQLServerToBlobPipeline"
+                },
+                "parameters": {}
+            },
+            {
+                "pipelineReference": {
+                    "type": "PipelineReference",
+                    "referenceName": "SQLServerToAzureSQLPipeline"
+                },
+                "parameters": {}
+            }
+        ]
+    }
+}
+```
 
 ### <a name="overview-scheduler-trigger-schema-defaults-limits-and-examples"></a>Übersicht: Standardwerte, Einschränkungen und Beispiele Planer-Trigger-Schema
 
@@ -251,7 +292,7 @@ Wenn für einen Trigger ein Zeitplan, aber keine Stunden- und/oder Minutenangabe
 ### <a name="deep-dive-schedule"></a>Ausführliche Betrachtung: Zeitplan
 Mithilfe eines Zeitplans lässt sich einerseits die Anzahl der Triggerausführungen begrenzen. Beispiel: Wird für einen Trigger mit einer monatlichen Häufigkeit ein Zeitplan angegeben wird, der nur am 31. Tag ausgeführt wird, wird der Trigger nur in Monaten mit 31 Tagen ausgeführt.
 
-Andererseits kann ein Zeitplan auch zum Erweitern der Anzahl von Triggerausführungen verwendet werden. Beispiel: Wird für einen Trigger mit einer monatlichen Häufigkeit ein Zeitplan angegeben, der am ersten und zweiten Monatstag ausgeführt wird, wird der Trigger nicht einmal im Monat, sondern jeweils am ersten und zweiten Tag des Monats ausgeführt.
+Ein Zeitplan kann dagegen auch zum Erweitern der Anzahl von Triggerausführungen verwendet werden. Beispiel: Wird für einen Trigger mit einer monatlichen Häufigkeit ein Zeitplan angegeben, der am ersten und zweiten Monatstag ausgeführt wird, wird der Trigger nicht einmal im Monat, sondern jeweils am ersten und zweiten Tag des Monats ausgeführt.
 
 Bei Angabe mehrerer Zeitplanelemente werden diese in absteigender Reihenfolge ausgewertet – also von der Wochennummer über Monatstag und Wochentag bis hin zu Stunde und Minute.
 
@@ -262,9 +303,9 @@ JSON-Name | Beschreibung | Gültige Werte
 --------- | ----------- | ------------
 minutes | Minuten der Stunde, zu denen der Trigger ausgeführt wird | <ul><li>Integer</li><li>Array mit ganzen Zahlen</li></ul>
 hours | Stunden des Tages, zu denen der Trigger ausgeführt wird | <ul><li>Integer</li><li>Array mit ganzen Zahlen</li></ul>
-weekDays | Tage der Woche, an denen der Trigger ausgeführt wird Kann nur bei wöchentlicher Häufigkeit angegeben werden. | <ul><li>Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag und Sonntag</li><li>Array mit beliebigen der oben angegebenen Werte (maximale Arraygröße: 7)</li></p>Keine Beachtung der Groß-/Kleinschreibung</p>
+weekDays | Tage der Woche, an denen der Trigger ausgeführt wird Kann nur bei wöchentlicher Häufigkeit angegeben werden. | <ul><li>Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag und Sonntag</li><li>Array mit beliebigen Werten (maximale Arraygröße: 7)</li></p>Keine Beachtung der Groß-/Kleinschreibung</p>
 monthlyOccurrences | Bestimmt, an welchen Tagen im Monat der Trigger ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. | Array mit monthlyOccurence-Objekten: `{ "day": day,  "occurrence": occurence }` <p> Der Tag ist der Wochentag, an dem der Trigger ausgeführt wird. `{Sunday}` steht beispielsweise für jeden Sonntag im Monat. Erforderlich.<p>Das Vorkommen steht für den Tag innerhalb des Monats. Mit `{Sunday, -1}` wird beispielsweise der letzte Sonntag des Monats angegeben. Optional.
-monthDays | Tag des Monats, an dem der Trigger ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. | <ul><li>Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31</li><li>Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31</li><li>Array mit den oben genannten Werten</li>
+monthDays | Tag des Monats, an dem der Trigger ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. | <ul><li>Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31</li><li>Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31</li><li>Ein Array von Werten</li>
 
 
 ## <a name="examples-recurrence-schedules"></a>Beispiele: Wiederholungszeitpläne

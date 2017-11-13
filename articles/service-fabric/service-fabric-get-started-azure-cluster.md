@@ -1,6 +1,6 @@
 ---
 title: Einrichten eines Azure Service Fabric-Clusters | Microsoft-Dokumentation
-description: "Schnellstart: Es wird beschrieben, wie Sie in Azure einen Service Fabric-Cluster für Windows oder Linux erstellen."
+description: "In diesem Schnellstart wird beschrieben, wie Sie in Azure einen Service Fabric-Cluster für Windows oder Linux erstellen."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,62 +14,62 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: ryanwi
-ms.openlocfilehash: facb9643e0bb848f0ea9aadf447f05af218fdd0f
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: caf76bb739fa92982c511c8e3e6c6aaf2bf9d6c1
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-your-first-service-fabric-cluster-on-azure"></a>Erstellen Ihres ersten Service Fabric-Clusters in Azure
-Ein [Service Fabric-Cluster](service-fabric-deploy-anywhere.md) enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Mithilfe dieses Schnellstarts können Sie über [Azure PowerShell](https://msdn.microsoft.com/library/dn135248) oder das [Azure-Portal](http://portal.azure.com) in wenigen Minuten einen Cluster mit fünf Knoten für Windows oder Linux erstellen.  
+Ein [Azure Service Fabric-Cluster](service-fabric-deploy-anywhere.md) ist eine über das Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Mithilfe dieses Schnellstarts können Sie über [Azure PowerShell](https://msdn.microsoft.com/library/dn135248) oder das [Azure-Portal](http://portal.azure.com) in wenigen Minuten für Windows oder Linux einen Cluster mit fünf Knoten erstellen. Sie können für diese Aufgabe auch die Azure-Befehlszeilenschnittstelle verwenden.  
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
-Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) am Azure-Portal an.
+Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
 
-### <a name="create-the-cluster"></a>Erstellen des Clusters
+### <a name="create-the-cluster"></a>Cluster erstellen
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
-2. Suchen Sie nach **Service Fabric**, und wählen Sie aus den zurückgegebenen Ergebnissen **Service Fabric-Cluster** aus.  Klicken Sie auf **Erstellen**.
-3. Füllen Sie das Formular mit den **Grundeinstellungen** für Service Fabric aus. Wählen Sie für **Betriebssystem** die Windows- oder Linux-Version aus, die für die Clusterknoten ausgeführt werden soll. Der hier eingegebene Benutzername und das Kennwort werden zum Anmelden am virtuellen Computer verwendet. Erstellen Sie für **Ressourcengruppe** eine neue Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen erstellt und kollektiv verwaltet werden. Klicken Sie zum Abschluss auf **OK**.
+1. Wählen Sie oben links im Azure-Portal die Option **Neu**.
+2. Suchen Sie nach **Service Fabric**, und wählen Sie aus den zurückgegebenen Ergebnissen **Service Fabric-Cluster** aus. Klicken Sie anschließend auf **Erstellen**.
+3. Füllen Sie das Formular mit den **Grundeinstellungen** für Service Fabric aus. Wählen Sie für **Betriebssystem** die Windows- oder Linux-Version aus, die für die Clusterknoten ausgeführt werden soll. Der hier eingegebene Benutzername und das Kennwort werden zum Anmelden am virtuellen Computer verwendet. Erstellen Sie für **Ressourcengruppe** eine neue Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen erstellt und kollektiv verwaltet werden. Wählen Sie **OK**, wenn der Vorgang abgeschlossen ist.
 
-    ![Ausgabe bei der Clustereinrichtung][cluster-setup-basics]
+    ![Screenshot: Ausgabe bei der Clustereinrichtung][cluster-setup-basics]
 
-4. Füllen Sie das Formular **Clusterkonfiguration** aus.  Geben Sie für **Anzahl von Knotentypen** den Wert „1“ ein.
+4. Füllen Sie das Formular **Clusterkonfiguration** aus. Geben Sie für **Anzahl von Knotentypen** den Wert **1** ein.
 
-5. Wählen Sie **Knotentyp 1 (Primär)**, und füllen Sie das Formular **Knotentypkonfiguration** aus.  Geben Sie einen Knotentypnamen ein, und legen Sie [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) auf „Bronze“ fest.  Wählen Sie eine VM-Größe aus.
+5. Wählen Sie **Knotentyp 1 (Primär)**, und füllen Sie das Formular **Knotentypkonfiguration** aus. Geben Sie einen Knotentypnamen ein, und legen Sie [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) auf **Bronze** fest. Wählen Sie anschließend eine VM-Größe aus.
 
-    Anhand von Knotentypen werden die VM-Größe, die Anzahl von VMs, benutzerdefinierte Endpunkte und andere Einstellungen für die VMs des jeweiligen Typs festgelegt. Jeder definierte Knotentyp wird als separate VM-Skalierungsgruppe eingerichtet, die zum Bereitstellen und Verwalten von virtuellen Computern als Gruppe verwendet wird. Jeder Knotentyp kann einzeln zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen.  Der erste bzw. primäre Knotentyp dient zum Hosten von Service Fabric-Systemdiensten und muss über mindestens fünf VMs verfügen.
+    Anhand von Knotentypen werden die VM-Größe, die Anzahl von VMs, benutzerdefinierte Endpunkte und andere Einstellungen für die VMs des jeweiligen Typs festgelegt. Jeder definierte Knotentyp wird als separate VM-Skalierungsgruppe eingerichtet, die zum Bereitstellen und Verwalten von virtuellen Computern als Gruppe verwendet wird. Jeder Knotentyp kann einzeln zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen weisen verschiedene Kapazitätsmetriken auf. Der erste bzw. primäre Knotentyp dient zum Hosten von Service Fabric-Systemdiensten. Bei diesem Knotentyp müssen mindestens fünf VMs vorhanden sein.
 
-    Die [Kapazitätsplanung](service-fabric-cluster-capacity.md) ist ein wichtiger Schritt bei jeder Produktionsbereitstellung.  Für diesen Schnellstart führen Sie aber keine Anwendungen aus, sodass Sie die VM-Größe *DS1_v2 Standard* wählen können.  Wählen Sie als [Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) die Einstellung „Silber“, und geben Sie als Anfangskapazität für die VM-Skalierungsgruppe den Wert „5“ an.  
+    Die [Kapazitätsplanung](service-fabric-cluster-capacity.md) ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Für diesen Schnellstart führen Sie aber keine Anwendungen aus, sodass Sie die VM-Größe *DS1_v2 Standard* wählen können. Wählen Sie als [Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) die Einstellung **Silber**, und geben Sie als Anfangskapazität für die VM-Skalierungsgruppe den Wert „5“ an.  
 
-    Für benutzerdefinierte Endpunkte werden Ports im Azure Load Balancer geöffnet, damit Sie Verbindungen mit Anwendungen herstellen können, die im Cluster ausgeführt werden.  Geben Sie „80, 8172“ ein, um die Ports 80 und 8172 zu öffnen.
+    Für benutzerdefinierte Endpunkte werden Ports im Azure Load Balancer geöffnet, damit Sie Verbindungen mit Anwendungen herstellen können, die im Cluster ausgeführt werden.  Geben Sie **80, 8172** ein, um die Ports 80 und 8172 zu öffnen.
 
     Achten Sie darauf, dass Sie das Kontrollkästchen **Erweiterte Einstellungen konfigurieren** nicht aktivieren. Es wird zum Anpassen von TCP/HTTP-Verwaltungsendpunkten, Anwendungsportbereichen, [Platzierungseinschränkungen](service-fabric-cluster-resource-manager-configure-services.md#placement-constraints) und [Kapazitätseigenschaften](service-fabric-cluster-resource-manager-metrics.md) verwendet.    
+    
+    ![Screenshot: Knotentypkonfiguration][node-type-config]
 
     Klicken Sie auf **OK**.
 
-6. Legen Sie im Formular **Clusterkonfiguration** die Option **Diagnose** auf **Ein** fest.  Für diesen Schnellstart müssen Sie keine Eigenschaften für [Fabric-Einstellung](service-fabric-cluster-fabric-settings.md) eingeben.  Wählen Sie unter **Fabricversion** den Upgrademodus **Automatisch** aus, damit die Version des im Cluster ausgeführten Fabric-Codes von Microsoft automatisch aktualisiert wird.  Legen Sie den Modus auf **Manuell** fest, wenn Sie selbst eine [unterstützte Version](service-fabric-cluster-upgrade.md) für das Upgrade auswählen möchten. 
-
-    ![Knotentypkonfiguration][node-type-config]
+6. Legen Sie im Formular **Clusterkonfiguration** die Option **Diagnose** auf **Ein** fest. Für diesen Schnellstart müssen Sie keine Eigenschaften für [Fabric-Einstellung](service-fabric-cluster-fabric-settings.md) eingeben.  Wählen Sie unter **Fabricversion** den Upgrademodus **Automatisch** aus, damit die Version des im Cluster ausgeführten Fabric-Codes von Microsoft automatisch aktualisiert wird.  Legen Sie den Modus auf **Manuell** fest, wenn Sie selbst eine [unterstützte Version](service-fabric-cluster-upgrade.md) für das Upgrade auswählen möchten.     
 
     Klicken Sie auf **OK**.
 
-7. Füllen Sie das Formular **Sicherheit** aus.  Wählen Sie für diesen Schnellstart die Option **Unsicher**.  Es wird dringend empfohlen, für Produktionsworkloads einen sicheren Cluster zu erstellen. Der Grund hierfür ist, dass mit einem unsicheren Cluster anonyme Verbindungen hergestellt und Verwaltungsvorgänge durchgeführt werden können.  
+7. Füllen Sie das Formular **Sicherheit** aus. Wählen Sie für diesen Schnellstart die Option **Unsicher**. Beachten Sie, dass im Allgemeinen die Erstellung eines sicheren Clusters für Produktionsworkloads ratsam ist. Alle Benutzer können anonym eine Verbindung mit einem unsicheren Cluster herstellen und Verwaltungsvorgänge durchführen.  
 
-    Zertifikate werden in Service Fabric zur Authentifizierung und Verschlüsselung verwendet, um verschiedene Aspekte eines Clusters und der zugehörigen Anwendungen zu sichern. Weitere Informationen zur Verwendung von Zertifikaten in Service Fabric finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](service-fabric-cluster-security.md).  [Erstellen Sie einen Cluster mit einer Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md), um die Benutzerauthentifizierung per Azure Active Directory zu ermöglichen oder Zertifikate für die Anwendungssicherheit einzurichten.
+   Für Service Fabric werden Zertifikate zur Authentifizierung und Verschlüsselung verwendet, um verschiedene Aspekte eines Clusters und der zugehörigen Anwendungen zu schützen. Weitere Informationen finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](service-fabric-cluster-security.md). Informationen zum Ermöglichen der Benutzerauthentifizierung per Azure Active Directory oder zum Einrichten von Zertifikaten für die Anwendungssicherheit finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
 
     Klicken Sie auf **OK**.
 
-8. Überprüfen Sie die Zusammenfassung.  Wählen Sie die Option **Vorlage und Parameter herunterladen**, wenn Sie eine Resource Manager-Vorlage herunterladen möchten, die mit den von Ihnen eingegebenen Einstellungen erstellt wurde.  Wählen Sie **Erstellen**, um den Cluster zu erstellen.
+8. Überprüfen Sie die Zusammenfassung. Wählen Sie die Option **Vorlage und Parameter herunterladen**, wenn Sie eine Azure Resource Manager-Vorlage herunterladen möchten, die mit den von Ihnen eingegebenen Einstellungen erstellt wurde. Wählen Sie **Erstellen**, um den Cluster zu erstellen.
 
-    Sie können den Verlauf der Erstellung in den Benachrichtigungen finden. (Klicken Sie auf das Glockensymbol in der Nähe der Statusleiste am oberen rechten Bildschirmrand.) Wenn Sie beim Erstellen des Clusters auf **An Startmenü anheften** geklickt haben, wird im Menü **Start** der Hinweis **Deploying Service Fabric Cluster** (Service Fabric-Cluster wird bereitgestellt) angezeigt.
+    Sie können den Verlauf der Erstellung in den Benachrichtigungen finden. (Wählen Sie das Glockensymbol in der Nähe der Statusleiste am oberen rechten Bildschirmrand.) Wenn Sie beim Erstellen des Clusters **An Startmenü anheften** gewählt haben, wird im Menü **Start** der Hinweis **Deploying Service Fabric Cluster** (Service Fabric-Cluster wird bereitgestellt) angezeigt.
 
-### <a name="connect-to-the-cluster-using-powershell"></a>Herstellen einer Verbindung mit dem Cluster über PowerShell
-Stellen Sie sicher, dass der Cluster ausgeführt wird, indem Sie mit PowerShell eine Verbindung herstellen.  Das Service Fabric-PowerShell-Modul wird zusammen mit dem [Service Fabric-SDK](service-fabric-get-started.md) installiert.  Das Cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) stellt eine Verbindung mit dem Cluster her.   
+### <a name="connect-to-the-cluster-by-using-powershell"></a>Herstellen einer Verbindung mit dem Cluster über PowerShell
+Stellen Sie sicher, dass der Cluster ausgeführt wird, indem Sie mit PowerShell eine Verbindung herstellen. Das Service Fabric-PowerShell-Modul wird zusammen mit dem [Service Fabric-SDK](service-fabric-get-started.md) installiert. Das Cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) stellt eine Verbindung mit dem Cluster her.   
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint quickstartcluster.westus2.cloudapp.azure.com:19000
@@ -89,19 +89,21 @@ NodeDeactivationInfo NodeName     IpAddressOrFQDN NodeType  CodeVersion  ConfigV
 ```
 
 ### <a name="remove-the-cluster"></a>Entfernen des Clusters
-Ein Service Fabric-Cluster besteht, zusätzlich zu der Clusterressource selbst, aus weiteren Azure-Ressourcen. Daher müssen Sie alle Ressourcen löschen, aus denen der Cluster besteht, um einen Service Fabric-Cluster zu löschen. Die einfachste Möglichkeit zum Löschen des Clusters und aller darin genutzten Ressourcen besteht darin, die Ressourcengruppe zu löschen. Andere Möglichkeiten zum Löschen eines Clusters oder nur einiger Ressourcen einer Ressourcengruppe finden Sie unter [Löschen eines Clusters](service-fabric-cluster-delete.md).
+Ein Service Fabric-Cluster besteht, zusätzlich zu der Clusterressource selbst, aus weiteren Azure-Ressourcen. Sie müssen alle Ressourcen löschen, aus denen der Cluster besteht, um einen Service Fabric-Cluster zu löschen. Die einfachste Möglichkeit zum Löschen des Clusters und aller darin genutzten Ressourcen besteht darin, die Ressourcengruppe zu löschen. Andere Möglichkeiten zum Löschen eines Clusters oder nur einiger Ressourcen einer Ressourcengruppe finden Sie unter [Löschen eines Clusters](service-fabric-cluster-delete.md).
 
 Löschen Sie eine Ressourcengruppe im Azure-Portal:
 1. Navigieren Sie zu dem Service Fabric-Cluster, den Sie löschen möchten.
-2. Klicken Sie auf der Clusterseite „Essentials“ (Zusammenfassung) auf den Namen der **Ressourcengruppe**.
-3. Klicken Sie auf der Seite **Essentials** (Zusammenfassung) der Ressourcengruppe auf **Ressourcengruppe löschen**, und befolgen Sie die Anleitung auf dieser Seite, um das Löschen der Ressourcengruppe abzuschließen.
-    ![Löschen der Ressourcengruppe][cluster-delete]
+2. Wählen Sie auf der Seite mit der Clusterzusammenfassung den Namen **Ressourcengruppe**.
+3. Wählen Sie auf der Seite **Zusammenfassung** für die Ressourcengruppen die Option **Ressourcengruppe löschen**. Befolgen Sie anschließend die Anleitungen auf dieser Seite, um das Löschen der Ressourcengruppe abzuschließen.
+    ![Screenshot: Seite mit Ressourcengruppen-Zusammenfassung und Hervorhebung von „Ressourcengruppe löschen“][cluster-delete]
 
 
-## <a name="use-azure-powershell"></a>Verwenden von Azure PowerShell
+## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
+Eine andere Möglichkeit zum Erstellen des Clusters ist die Verwendung von PowerShell. Das geht so:
+
 1. Laden Sie das [Azure PowerShell-Modul (Version 4.0 oder höher)](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) auf Ihren Computer herunter.
 
-2. Führen Sie das Cmdlet [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/new-azurermservicefabriccluster) aus, um einen Service Fabric-Cluster mit fünf Knoten zu erstellen, der mit einem X.509-Zertifikat gesichert ist. Der Befehl erstellt ein selbstsigniertes Zertifikat und lädt es in einen neuen Key Vault hoch. Das Zertifikat wird außerdem in ein lokales Verzeichnis kopiert. Legen Sie den *-OS*-Parameter fest, um die Version von Windows oder Linux auszuwählen, in der die Clusterknoten ausgeführt werden. Passen Sie die Parameter nach Bedarf an. 
+2. Führen Sie das Cmdlet [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/new-azurermservicefabriccluster) aus, um einen Service Fabric-Cluster mit fünf Knoten zu erstellen, der mit einem X.509-Zertifikat gesichert ist. Der Befehl erstellt ein selbstsigniertes Zertifikat und lädt es in einen neuen Schlüsseltresor hoch. Das Zertifikat wird außerdem in ein lokales Verzeichnis kopiert. Legen Sie den *-OS*-Parameter fest, um die Version von Windows oder Linux auszuwählen, in der die Clusterknoten ausgeführt werden. Passen Sie die Parameter nach Bedarf an. 
 
     ```powershell
     #Provide the subscription Id
@@ -138,9 +140,9 @@ Löschen Sie eine Ressourcengruppe im Azure-Portal:
     -OS WindowsServer2016DatacenterwithContainers -VmSku $vmsku -KeyVaultName $vaultname
     ```
 
-    Bis zum Abschluss des Befehls kann es zwischen 10 und 30 Minuten dauern, und am Ende erhalten Sie eine Ausgabe, die wie unten angegeben aussehen sollte. Die Ausgabe enthält Informationen zum Zertifikat, zum KeyVault, in den der Upload durchgeführt wurde, und zum lokalen Ordner, in den das Zertifikat kopiert wurde.     
+    Es kann 10 bis 30 Minuten dauern, bis der Befehl abgeschlossen ist. Die Ausgabe enthält Informationen zum Zertifikat, zum Schlüsseltresor, in den der Upload durchgeführt wurde, und zum lokalen Ordner, in den das Zertifikat kopiert wurde.     
 
-3. Kopieren Sie die gesamte Ausgabe, und speichern Sie sie in einer Textdatei, da wir sie später noch benötigen. Notieren Sie sich die folgenden Informationen der Ausgabe: 
+3. Kopieren Sie die gesamte Ausgabe, und speichern Sie sie in einer Textdatei (wird später noch benötigt). Notieren Sie sich die folgenden Informationen der Ausgabe: 
 
     - CertificateSavedLocalPath
     - CertificateThumbprint
@@ -149,7 +151,7 @@ Löschen Sie eine Ressourcengruppe im Azure-Portal:
 
 ### <a name="install-the-certificate-on-your-local-machine"></a>Installieren des Zertifikats auf dem lokalen Computer
   
-Zum Herstellen einer Verbindung mit dem Cluster müssen Sie das Zertifikat im persönlichen Speicher (My) des aktuellen Benutzers installieren. 
+Installieren Sie zum Herstellen einer Verbindung mit dem Cluster das Zertifikat im persönlichen Speicher (My) des aktuellen Benutzers. 
 
 Führen Sie Folgendes aus:
 
@@ -199,6 +201,7 @@ $groupname="mysfclustergroup"
 Remove-AzureRmResourceGroup -Name $groupname -Force
 ```
 ## <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
+Eine andere Möglichkeit zum Erstellen des Clusters ist die Verwendung der CLI. Das geht so:
 
 1. Installieren Sie [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest) auf Ihrem Computer.
 2. Melden Sie sich an Azure an, und wählen Sie das Abonnement aus, unter dem Sie den Cluster erstellen möchten.
@@ -206,7 +209,7 @@ Remove-AzureRmResourceGroup -Name $groupname -Force
    az login
    az account set --subscription <GUID>
    ```
-3. Führen Sie den Befehl [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) aus, um einen Service Fabric-Cluster mit fünf Knoten zu erstellen, der mit einem X.509-Zertifikat gesichert ist. Der Befehl erstellt ein selbstsigniertes Zertifikat und lädt es in einen neuen Key Vault hoch. Das Zertifikat wird außerdem in ein lokales Verzeichnis kopiert. Legen Sie den Parameter *-os* fest, um die Version von Windows oder Linux auszuwählen, die auf den Clusterknoten ausgeführt wird. Passen Sie die Parameter nach Bedarf an.
+3. Führen Sie den Befehl [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) aus, um einen Service Fabric-Cluster mit fünf Knoten zu erstellen, der durch ein X.509-Zertifikat geschützt ist. Der Befehl erstellt ein selbstsigniertes Zertifikat und lädt es in einen neuen Schlüsseltresor hoch. Das Zertifikat wird außerdem in ein lokales Verzeichnis kopiert. Legen Sie den Parameter *-os* fest, um die Version von Windows oder Linux auszuwählen, die auf den Clusterknoten ausgeführt wird. Passen Sie die Parameter nach Bedarf an.
 
     ```azurecli
     #!/bin/bash
@@ -228,7 +231,7 @@ Remove-AzureRmResourceGroup -Name $groupname -Force
 
     # Create secure five node Linux cluster. Creates a key vault in a resource group
     # and creates a certficate in the key vault. The certificate's subject name must match 
-    # the domain that you use to access the Service Fabric cluster.  The certificate is downloaded locally.
+    # the domain that you use to access the Service Fabric cluster. The certificate is downloaded locally.
     az sf cluster create --resource-group $ResourceGroupName --location $Location --certificate-output-folder . \
         --certificate-password $Password --certificate-subject-name $Subject --cluster-name $ClusterName \
         --cluster-size 5 --os UbuntuServer1604 --vault-name $VaultName --vault-resource-group $VaultGroupName \
@@ -236,7 +239,7 @@ Remove-AzureRmResourceGroup -Name $groupname -Force
     ```
     
 ### <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
-Führen Sie den folgenden CLI-Befehl aus, um mit dem Zertifikat eine Verbindung mit dem Cluster herzustellen.  Wenn ein Clientzertifikat zur Authentifizierung verwendet wird, müssen die Details des Zertifikats mit einem Zertifikat überstimmen, das dem Clusterknoten bereitgestellt wird.  Verwenden Sie die Option `--no-verify` für ein selbstsigniertes Zertifikat.
+Führen Sie den folgenden CLI-Befehl aus, um mit dem Zertifikat eine Verbindung mit dem Cluster herzustellen.  Wenn Sie ein Clientzertifikat zur Authentifizierung verwenden, müssen Sie dafür sorgen, dass die Details des Zertifikats mit einem auf dem Clusterknoten bereitgestellten Zertifikat übereinstimmen. Verwenden Sie die Option `--no-verify` für ein selbstsigniertes Zertifikat.
 
 ```azurecli
 az sf cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 --pem ./linuxcluster201709161647.pem --no-verify
@@ -250,7 +253,7 @@ az sf cluster health
 
 ### <a name="connect-to-the-nodes-directly"></a>Herstellen einer direkten Knotenverbindung 
 
-Wenn Sie eine Verbindung mit den Knoten in einem Linux-Cluster herstellen möchten, können Sie unter Verwendung von SSH eine Portnummer ab 3389 angeben. Für den zuvor erstellten Cluster mit fünf Knoten lauten die Befehle beispielsweise wie folgt:
+Sie können den SSH-Befehl (Secure Shell) verwenden, um eine Verbindung mit den Knoten in einem Linux-Cluster herzustellen. Geben Sie eine Portnummer ab 3389 an. Für den zuvor erstellten Cluster mit fünf Knoten lauten die Befehle beispielsweise wie folgt:
 ```bash
 ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3389
 ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3390

@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/10/2017
+ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 1ece5b1b2ba8e4d26fe633fe7c7c60f4187f9d6b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 46b1be5bdd4fa400f437bca274e7f3f6e0dfec08
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Bereitstellen und Verwalten einer StorSimple Cloud Appliance in Azure (ab Update 3)
 
@@ -183,6 +183,18 @@ Führen Sie die folgenden Schritte aus, um auf dem Cloudgerät einen öffentlich
 [!INCLUDE [Create public endpoints on a cloud appliance](../../includes/storsimple-8000-create-public-endpoints-cloud-appliance.md)]
 
 Es wird empfohlen, Verbindungen von einem anderen virtuellen Computer im gleichen virtuellen Netzwerk herzustellen, da so die Anzahl der öffentlichen Endpunkte im virtuellen Netzwerk minimiert wird. Stellen Sie die Verbindung mit dem virtuellen Computer in diesem Fall über eine Remotedesktopsitzung her, um anschließend diesen virtuellen Computer wie jeden anderen Windows-Client in einem lokalen Netzwerk zu konfigurieren. Sie müssen die öffentliche Portnummer nicht anfügen, da der Port bereits bekannt ist.
+
+## <a name="get-private-ip-for-the-cloud-appliance"></a>Abrufen der privaten IP für das Cloudgerät
+
+Damit das Cloudgerät eine Verbindung mit dem Hostserver in demselben virtuellen Netzwerk herstellen kann, benötigen Sie die interne oder private IP-Adresse des Cloudgeräts. Führen Sie die folgenden Schritte aus, um die private IP-Adresse des Cloudgeräts zu ermitteln:
+
+1. Navigieren Sie zum zugrunde liegenden virtuellen Computer für Ihr Cloudgerät. Der virtuelle Computer hat denselben Namen wie Ihr Cloudgerät. Navigieren Sie zu **Alle Ressourcen**, geben Sie den Namen des Cloudgeräts und des Abonnements an, und wählen Sie als Typ „Virtuelle Computer“ aus. Wählen Sie in der angezeigten Liste mit den virtuellen Computern den passenden virtuellen Computer für das Cloudgerät aus, und klicken Sie darauf.
+
+     ![Auswählen des virtuellen Computers für Ihr Cloudgerät](./media/storsimple-8000-cloud-appliance-u2/sca-vm.png)
+
+2. Navigieren Sie zu **Einstellungen > Netzwerk**. Im rechten Bereich wird die private IP-Adresse des Cloudgeräts angezeigt. Notieren Sie sich die IP-Adresse.
+
+    ![Abrufen der privaten IP-Adresse für Ihr Cloudgerät](./media/storsimple-8000-cloud-appliance-u2/sca-private-ip-vm-networking.png)
 
 ## <a name="work-with-the-storsimple-cloud-appliance"></a>Verwenden der StorSimple Cloud Appliance
 

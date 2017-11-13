@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f03b747dd2498267dc470d42b1acafd331fd92b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0299e0b5a756bc0a13904bf3fda673ace7581795
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-a-windows-virtual-machine-with-powershell"></a>Erstellen eines virtuellen Windows-Computers mit PowerShell
 
-Das Azure PowerShell-Modul dient zum Erstellen und Verwalten von Azure-Ressourcen über die PowerShell-Befehlszeile oder mit Skripts. In dieser Anleitung wird das Erstellen einer Windows Server 2016 ausführenden Azure-VM mit PowerShell ausführlich beschrieben. Nach Abschluss der Bereitstellung stellen wir eine Verbindung mit dem Server her und installieren IIS.  
+Das Azure PowerShell-Modul dient zum Erstellen und Verwalten von Azure-Ressourcen über die PowerShell-Befehlszeile oder mit Skripts. In diesem Schnellstart wird das Erstellen eines virtuellen Azure-Computers mit Windows Server 2016 per PowerShell ausführlich beschrieben. Nach Abschluss der Bereitstellung stellen wir eine Verbindung mit dem Server her und installieren IIS.  
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

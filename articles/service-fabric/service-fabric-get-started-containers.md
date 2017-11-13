@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/18/2017
+ms.date: 11/03/2017
 ms.author: ryanwi
-ms.openlocfilehash: 025bde02b3f342ec3399d51819d1fa8a91f11374
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d58ba0985d7a5bb302028254be0951859b79dbb
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 > [!div class="op_single_selector"]
@@ -169,7 +169,7 @@ Das Service Fabric-SDK und die Tools stellen eine Dienstvorlage bereit, um Sie b
 
 1. Starten Sie Visual Studio.  Wählen Sie **Datei** > **Neu** > **Projekt**.
 2. Wählen Sie **Service Fabric-Anwendung**, benennen Sie sie „MyFirstContainer“, und klicken Sie auf **OK**.
-3. Wählen Sie **Gastcontainer** aus der Liste der **Dienstvorlagen** aus.
+3. Wählen Sie in der Liste **Dienstvorlagen** die Option **Container** aus.
 4. Geben Sie unter **Imagename** „myregistry.azurecr.io/samples/helloworldapp“ ein, das Image, das Sie mithilfe von Push an Ihr Containerrepository übertragen haben.
 5. Geben Sie dem Dienst einen Namen, und klicken Sie auf **OK**.
 
@@ -293,6 +293,10 @@ Windows unterstützt zwei Isolationsmodi für Container: Prozesse und Hyper-V. M
 ```xml
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
 ```
+   > [!NOTE]
+   > Der hyperv-Isolationsmodus ist unter Ev3- und Dv3-Azure-SKUs verfügbar, die die geschachtelte Virtualisierung unterstützen. 
+   >
+   >
 
 ## <a name="configure-resource-governance"></a>Konfigurieren der Ressourcenkontrolle
 Die [Ressourcenkontrolle](service-fabric-resource-governance.md) beschränkt die Ressourcen, die vom Container auf dem Host verwendet werden können. Mit dem `ResourceGovernancePolicy`-Element, das im Anwendungsmanifest angegeben ist, werden Ressourceneinschränkungen für ein Dienstcodepaket deklariert. Ressourceneinschränkungen können für die folgenden Ressourcen festgelegt werden: Arbeitsspeicher, MemorySwap, CpuShares (relative CPU-Gewichtung), MemoryReservationInMB, BlkioWeight (relative BlockIO-Gewichtung).  In diesem Beispiel erhält das Dienstpaket „Guest1Pkg“ einen Kern auf den Clusterknoten, auf denen es platziert wurde.  Die Einschränkungen des Arbeitsspeichers sind absolut, daher ist das Codepaket auf 1024 MB Arbeitsspeicher (sowie eine weiche Reservierungsgarantie desselben) beschränkt. Codepakete (Container oder Prozesse) können nicht mehr Arbeitsspeicher zuzuweisen, als dieser Grenzwert zulässt, ein entsprechender Versuch führt daher zu einer Ausnahme „Nicht genügend Arbeitsspeicher“. Damit die Erzwingung des Ressourcenlimits funktioniert, sollten für alle Codepakete innerhalb eines Dienstpakets Arbeitsspeicherlimits festgelegt sein.
@@ -469,7 +473,7 @@ Images, die nicht gelöscht werden sollen, können Sie unter dem Parameter `Cont
 * Weitere Informationen zum Ausführen von [Containern in Service Fabric](service-fabric-containers-overview.md)
 * Lesen Sie sich das Tutorial [Bereitstellen einer .NET-App in einem Container in Azure Service Fabric](service-fabric-host-app-in-a-container.md) durch.
 * Weitere Informationen zum [Anwendungslebenszyklus](service-fabric-application-lifecycle.md) von Service Fabric
-* [Codebeispiele zu Service Fabric-Containern](https://github.com/Azure-Samples/service-fabric-dotnet-containers) in GitHub
+* [Codebeispiele zu Service Fabric-Containern](https://github.com/Azure-Samples/service-fabric-containers) in GitHub
 
 [1]: ./media/service-fabric-get-started-containers/MyFirstContainerError.png
 [2]: ./media/service-fabric-get-started-containers/MyFirstContainerReady.png

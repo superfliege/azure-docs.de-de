@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: bcf42ebb081517d247690ee57c2be274784ef29d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc021d2277c419dd5a892aacd7bff0707e5564fa
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Bereitstellen lokaler StorSimple-Geräte (Update 3 und höher)
 
@@ -49,7 +49,7 @@ Führen Sie die folgenden erforderlichen Schritte zum Konfigurieren Ihres StorSi
 | [Schritt 1: Erstellen eines neuen Diensts](#step-1-create-a-new-service) |Richten Sie Cloudverwaltung und -speicher für Ihr StorSimple-Gerät ein. *Überspringen Sie diesen Schritt, wenn Sie bereits über einen Dienst für andere StorSimple-Geräte verfügen*. |
 | [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key) |Verwenden Sie diesen Schlüssel zum Registrieren Ihres StorSimple-Geräts sowie zum Herstellen einer Verbindung mit dem Verwaltungsdienst. |
 | [Schritt 3: Konfigurieren und Registrieren des Geräts über Windows PowerShell für StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |Verwenden Sie den Verwaltungsdienst, um das Gerät zum Abschluss der Einrichtung mit Ihrem Netzwerk zu verbinden und in Azure zu registrieren. |
-| [Schritt 4: Abschließen der minimalen Geräteinstallation](#step-4-complete-minimum-device-setup)</br>[Optional: Aktualisieren Sie Ihr StorSimple-Gerät.](#scan-for-and-apply-updates) |Verwenden Sie den Verwaltungsdienst, um die Gerätekonfiguration abzuschließen und es für die Bereitstellung von Speicher zu aktivieren. |
+| [Schritt 4: Abschließen der minimalen Geräteinstallation](#step-4-complete-minimum-device-setup)</br>[Bewährte Methode: Aktualisieren Ihres StorSimple-Geräts](#scan-for-and-apply-updates) |Verwenden Sie den Verwaltungsdienst, um die Gerätekonfiguration abzuschließen und es für die Bereitstellung von Speicher zu aktivieren. |
 | [Schritt 5: Erstellen eines Volumecontainers](#step-5-create-a-volume-container) |Erstellen Sie einen Container zum Bereitstellen von Volumes. Ein Volumecontainer verfügt über Einstellungen für das Speicherkonto, die Bandbreite und die Verschlüsselung für alle darin enthaltenen Volumes. |
 | [Schritt 6: Erstellen eines Volumes](#step-6-create-a-volume) |Stellen Sie Speichervolumes für Ihre Server auf dem StorSimple-Gerät bereit. |
 | [Schritt 7: Bereitstellen, Initialisieren und Formatieren eines Volumes](#step-7-mount-initialize-and-format-a-volume)</br>[Optional: Konfigurieren Sie MPIO.](storsimple-8000-configure-mpio-windows-server.md) |Verbinden Sie Ihre Server mit dem vom Gerät bereitgestellten iSCSI-Speicher. Konfigurieren Sie optional MPIO, um sicherzustellen, dass Ihre Server Link-, Netzwerk- und Schnittstellenfehler tolerieren können. |
@@ -127,6 +127,8 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um die minimale Gerätek
 
 [!INCLUDE [storsimple-8000-complete-minimum-device-setup-u2](../../includes/storsimple-8000-complete-minimum-device-setup-u2.md)]
 
+Nach Abschluss der mindestens erforderlichen Geräteeinrichtung umfasst die bewährte Methode das [Suchen nach und Anwenden von Updates](#scan-for-and-apply-updates).
+
 ## <a name="step-5-create-a-volume-container"></a>Schritt 5: Erstellen eines Volumecontainers
 Ein Volumecontainer verfügt über Einstellungen für das Speicherkonto, die Bandbreite und die Verschlüsselung für alle darin enthaltenen Volumes. Sie müssen einen Volumecontainer erstellen, bevor Sie mit der Bereitstellung von Volumes auf Ihrem StorSimple-Gerät beginnen können.
 
@@ -181,7 +183,7 @@ Zum Herstellen einer Verbindung mit Windows PowerShell für StorSimple benötige
 [!INCLUDE [Use PuTTY to connect to the device serial console](../../includes/storsimple-use-putty.md)]
 
 ## <a name="scan-for-and-apply-updates"></a>Suchen nach und Anwenden von Updates
-Die Aktualisierung eines Geräts kann mehrere Stunden dauern. Ausführliche Informationen zur Installation des aktuellen Updates finden Sie unter [Install Update 4](storsimple-8000-install-update-4.md) (Installieren von Update 4).
+Die Aktualisierung eines Geräts kann mehrere Stunden dauern. Ausführliche Informationen zur Installation des aktuellen Updates finden Sie unter [Installieren von Update 5 auf Ihrem StorSimple-Gerät](storsimple-8000-install-update-5.md).
 
 
 ## <a name="get-the-iqn-of-a-windows-server-host"></a>Abrufen des IQN eines Windows Server-Hosts

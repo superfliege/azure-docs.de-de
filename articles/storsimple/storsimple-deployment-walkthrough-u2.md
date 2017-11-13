@@ -12,21 +12,24 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 3286db40856c9f0eb2564c01f1483870952a19e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6107f64ae86af9b0ee873c8313ebba5371737f4d
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-2"></a>Bereitstellen lokaler StorSimple-Geräte (Update 2)
+
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Navigieren Sie zu [Bereitstellen lokaler StorSimple-Geräte (Update 3 und höher)](storsimple-8000-deployment-walkthrough-u2.md), um die Version dieses Artikels für das neue Azure-Portal anzuzeigen. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben des StorSimple Device Manager-Diensts vom klassischen Portal in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+
+
 > [!div class="op_single_selector"]
 > * [Update 2 oder höher ](storsimple-deployment-walkthrough-u2.md)
 > * [Update 1](storsimple-deployment-walkthrough-u1.md)
 > * [GA-Version](storsimple-deployment-walkthrough.md)
-> 
-> 
 
 ## <a name="overview"></a>Übersicht
 Willkommen bei der exemplarischen Vorgehensweise für die Bereitstellung von Microsoft Azure StorSimple-Geräten. Diese Bereitstellungstutorials beziehen sich auf Update 2 der StorSimple 8000-Serie. Diese Reihe von Tutorials enthält eine Konfigurationsprüfliste, Konfigurationsvoraussetzungen und detaillierte Konfigurationsschritte für Ihre StorSimple-Geräte.
