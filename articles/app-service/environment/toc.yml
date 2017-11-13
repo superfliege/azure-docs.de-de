@@ -38,6 +38,8 @@
       href: integrate-with-application-gateway.md
     - name: Erstellen einer ASE aus einer Vorlage
       href: create-from-template.md
+    - name: Konfiguration der Tunnelerzwingung
+      href: forced-tunnel-support.md
 - name: Referenz
   items:
     - name: Verwaltungsadressen

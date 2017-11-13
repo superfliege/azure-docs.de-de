@@ -71,9 +71,7 @@
 
 ## Festlegen von Ressourcenrichtlinien
 ### [Was sind Ressourcenrichtlinien?](resource-manager-policy.md)
-### Beispiele
-#### [Tags](resource-manager-policy-tags.md)
-#### [Benennungskonventionen](resource-manager-policy-naming-convention.md)
+### [Benennungskonventionen](resource-manager-policy-naming-convention.md)
 
 ## Audit
 ### [Anzeigen von Aktivitätsprotokollen](resource-group-audit.md)
@@ -89,6 +87,7 @@
 #### [NotFound](resource-manager-not-found-errors.md)
 #### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
 #### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
+#### [ReservedResourceName](resource-manager-reserved-resource-name.md)
 #### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
 #### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
 ### Bereitstellungsfehler bei virtuellen Computern

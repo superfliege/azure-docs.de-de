@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 502b7678e0c47f594291409a9ede976dea3895e5
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 2d6a09e234ee8ec63454d42a91613ed8da9d1c4b
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="what-is-azure-iot-suite"></a>Was ist Azure IoT Suite?
 
@@ -85,6 +85,9 @@ Wenn Sie eine vorkonfigurierte Lösung bereitstellen, werden während des Bereit
 | Cosmos DB            | Ja                | Ja                    | Ja               |
 | Azure-Tabellen         |                    | Ja                    | Ja               |
 
+> [!NOTE]
+> Weitere Informationen zu den Ressourcen, die mit der vorkonfigurierten Remoteüberwachungslösung bereitgestellt werden, finden Sie in [diesem Artikel](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/README.md#basic-vs-standard-deployments) auf GitHub.
+
 * [Azure IoT Hub](../iot-hub/index.md): Dieser Dienst stellt die D2C- und C2D-Messagingfunktionen (Gerät zu Cloud und Cloud zu Gerät) und fungiert als Gateway für die Cloud und andere wichtige Dienste der IoT-Suite. Der Dienst ermöglicht das Empfangen von Nachrichten von Ihren verwendeten Geräten und das Senden von Befehlen an diese Geräte. Außerdem können Sie mit dem Dienst Ihre [Geräte verwalten](../iot-hub/iot-hub-device-management-overview.md). Beispielsweise können Sie für Geräte, die mit dem Hub verbunden sind, die Konfiguration, einen Neustart oder das Zurücksetzen auf die Werkseinstellungen durchführen.
 * [Azure Event Hubs](../event-hubs/index.md): Dieser Dienst ermöglicht eine Ereigniserfassung in der Cloud in hohem Umfang. Siehe [Vergleich zwischen Azure IoT Hub und Azure Event Hubs](../iot-hub/iot-hub-compare-event-hubs.md).
 * [Azure Time Series Insights](../time-series-insights/index.md): Dieser Dienst wird von den vorkonfigurierten Lösungen verwendet, um die Telemetriedaten Ihrer Geräte zu analysieren und anzuzeigen.
@@ -124,7 +127,7 @@ Diese Microservices-Architektur ist ein bewährtes Muster für Cloudlösungen mi
 Wenn Sie die neue Version der Remoteüberwachung bereitstellen, müssen Sie eine der folgenden Bereitstellungsoptionen auswählen:
 
 * **Basic:** Kostengünstigere Version für Demonstrationszwecke oder zum Testen einer Bereitstellung. Alle Microservices werden auf einem einzelnen virtuellen Azure-Computer bereitgestellt.
-* **Enterprise:** Erweiterte Infrastrukturbereitstellung zum Entwickeln einer Produktionsbereitstellung. Der Azure Container Service stellt die Microservices auf mehreren virtuellen Azure-Computern bereit. Kubernetes orchestriert die Docker-Container, die die einzelnen Microservices hosten.
+* **Standard:** Erweiterte Infrastrukturbereitstellung zum Entwickeln einer Produktionsbereitstellung. Der Azure Container Service stellt die Microservices auf mehreren virtuellen Azure-Computern bereit. Kubernetes orchestriert die Docker-Container, die die einzelnen Microservices hosten.
 
 ### <a name="language-choices-java-and-net"></a>Sprachauswahl: Java und .NET
 

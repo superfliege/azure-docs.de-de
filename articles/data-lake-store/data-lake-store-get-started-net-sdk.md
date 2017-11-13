@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 10/13/2017
 ms.author: nitinme
-ms.openlocfilehash: fb9be26d3affe898bbbb66ead242dbdb59436bb6
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 018cf772f458bb29712ef9516c3af4e969a94564
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-net-sdk"></a>Kontoverwaltungsvorgänge in Azure Data Lake Store mit dem .NET SDK
 > [!div class="op_single_selector"]
@@ -105,7 +105,7 @@ In den restlichen Abschnitten dieses Artikels erfahren Sie, wie Sie die verfügb
 * Informationen zur Authentifizierung von Endbenutzern für Ihre Anwendung finden Sie unter [End-user authentication with Data Lake Store using .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md) (Authentifizierung von Endbenutzern mit Data Lake Store per .NET SDK).
 * Informationen zur Dienst-zu-Dienst-Authentifizierung für Ihre Anwendung finden Sie unter [Service-to-service authentication with Data Lake Store using .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md) (Dienst-zu-Dienst-Authentifizierung mit Data Lake Store per .NET SDK).
 
-## <a name="create-client-objects"></a>Erstellen von Clientobjekten
+## <a name="create-client-object"></a>Erstellen des Clientobjekts
 Im folgenden Codeausschnitt wird das Data Lake Store-Kontoclientobjekt erstellt, das zum Senden von Kontoverwaltungsanforderungen an den Dienst verwendet wird, z.B. Konto erstellen, Konto löschen usw.
 
     // Create client objects and set the subscription ID
