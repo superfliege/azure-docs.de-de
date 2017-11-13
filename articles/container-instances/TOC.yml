@@ -15,14 +15,12 @@
       href: container-instances-quickstart-powershell.md
 - name: Lernprogramme
   items:
-    - name: Erstellen und Bereitstellen eines Containers
-      items:
-        - name: 1. Erstellen des Containerimages
-          href: container-instances-tutorial-prepare-app.md
-        - name: 2. Erstellen der Containerregistrierung
-          href: container-instances-tutorial-prepare-acr.md
-        - name: 3. Bereitstellen der App
-          href: container-instances-tutorial-deploy-app.md
+    - name: 1. Erstellen des Containerimages
+      href: container-instances-tutorial-prepare-app.md
+    - name: 2. Erstellen der Containerregistrierung
+      href: container-instances-tutorial-prepare-acr.md
+    - name: 3. Bereitstellen der Anwendung
+      href: container-instances-tutorial-deploy-app.md
 - name: Konzepte
   items:
     - name: Regionen und Verfügbarkeit
@@ -35,11 +33,11 @@
   items:
     - name: Bereitstellen von Gruppen mit mehreren Containern
       href: container-instances-multi-container-group.md
-    - name: Verwalten des Zustands mit Azure-Dateifreigaben
+    - name: Dauerhafte Speicherung von Daten mit Azure Files
       href: container-instances-mounting-azure-files-volume.md
     - name: Bereitstellen aus Azure Container Registry
       href: container-instances-using-azure-container-registry.md
-    - name: Problembehandlung bei Bereitstellungen in Azure Container Instances
+    - name: Behandeln von Bereitstellungsproblemen
       href: container-instances-troubleshooting.md
 - name: Referenz
   items:
@@ -49,13 +47,19 @@
       href: /rest/api/container-instances
     - name: PowerShell
       href: '/powershell/module/azurerm.containerinstance#container_instances'
+    - name: Resource Manager-Vorlage
+      href: /azure/templates/microsoft.containerinstance/containergroups
 - name: Ressourcen
   items:
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Vorlagen – Container Instances
-      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance'
-    - name: Preisrechner
-      href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/container-instances/'
+    - name: Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Abgeben von Produktfeedback
+      href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-instances'
+    - name: Videos
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
