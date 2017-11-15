@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/06/2017
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: e9b2f8b225c6b9ed0f0622e6a51a48cdfada28bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f5b5cc597da714369d4c452edce42ea7fe205dd
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Installieren von Update 5 auf Ihrem StorSimple-Gerät
 
@@ -30,7 +30,7 @@ Update 5 umfasst Updates für Gerätesoftware, Storport und Spaceport sowie Sich
 
 > [!IMPORTANT]
 > * Vor der Installation wird ein Satz manueller und automatischer Vorabprüfungen durchgeführt, mit denen die Geräteintegrität in Bezug auf Hardwarestatus und Netzwerkkonnektivität ermittelt wird. Diese Vorabprüfungen werden nur ausgeführt, wenn Sie die Updates aus dem Azure-Portal ausführen.
-> * Bei der Aktualisierung eines Geräts, auf dem Versionen vor Update 3 ausgeführt werden, wird ausdrücklich empfohlen, Updates mithilfe der Hotfixmethode zu installieren. Wenn Sie Unterstützung beim Aktualisieren seitens des Supports benötigen, [erstellen Sie ein Supportticket](storsimple-8000-contact-microsoft-support.md).
+> * Bei der Aktualisierung eines Geräts, auf dem Versionen vor Update 3 ausgeführt werden, wird ausdrücklich empfohlen, Updates mithilfe der Hotfixmethode zu installieren. Wenn Probleme auftreten, [ log a support ticket](storsimple-8000-contact-microsoft-support.md) (erstellen Sie ein Supportticket).
 > * Wir empfehlen, die Software und anderen regulären Updates über das Azure-Portal zu installieren. Sie sollten nur dann die Windows PowerShell-Schnittstelle des Geräts (zum Installieren der Updates) verwenden, wenn die Vorabprüfung für das Gateway im Portal fehlschlägt. Abhängig von der Version, von der aus Sie aktualisieren, dauert die Installation des Updates mindestens vier Stunden. Wartungsmodusupdates müssen über die Windows PowerShell-Schnittstelle des Geräts ausgeführt werden. Da Updates im Wartungsmodus den Betrieb unterbrechen, führen sie zu einer Ausfallzeit für Ihr Gerät.
 > * Vergewissern Sie sich bei Verwendung des optionalen StorSimple Snapshot Managers, dass Sie die Snapshot Manager-Version auf Update 5 aktualisiert haben, bevor Sie das Gerät aktualisieren.
 

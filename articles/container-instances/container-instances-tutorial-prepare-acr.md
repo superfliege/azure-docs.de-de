@@ -5,7 +5,7 @@ services: container-instances
 documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
+editor: mmacy
 tags: acs, azure-container-service
 keywords: Docker, Container, Microservices, Kubernetes, DC/OS, Azure
 ms.assetid: 
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2017
+ms.date: 11/07/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 8cb00210ee260383d546be4faf141c133661156b
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 848f6cbde49efdcfe96fc58ebc4160e0ea39f3f2
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Bereitstellen und Verwenden von Azure Container Registry
 
@@ -54,13 +54,19 @@ Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Res
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie mit dem Befehl [az acr create](/cli/azure/acr#create) eine Azure Container Registry-Instanz. Der Name einer Containerregistrierung **muss eindeutig sein**. Im folgenden Beispiel verwenden wir den Namen *mycontainerregistry082*.
+Erstellen Sie mit dem Befehl [az acr create](/cli/azure/acr#create) eine Azure Container Registry-Instanz. Der Containerregistrierungsname muss innerhalb von Azure **eindeutig** sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Ersetzen Sie `<acrName>` durch einen eindeutigen Namen für die Registrierung:
+
+```azurecli
+az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
+```
+
+Zum Erstellen einer Azure-Containerregistrierung mit dem Namen *mycontainerregistry082* verwenden Sie beispielsweise Folgendes:
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic --admin-enabled true
 ```
 
-Für den Rest dieses Tutorials verwenden wir `<acrname>` als Platzhalter für den von Ihnen gewählten Namen der Containerregistrierung.
+Für den Rest dieses Tutorials verwenden wir `<acrName>` als Platzhalter für den von Ihnen gewählten Namen der Containerregistrierung.
 
 ## <a name="container-registry-login"></a>Anmeldung bei der Containerregistrierung
 
@@ -70,7 +76,7 @@ Sie müssen sich bei der ACR-Instanz anmelden, damit Sie Images per Push in sie 
 az acr login --name <acrName>
 ```
 
-Nach Abschluss des Vorgangs wird eine Erfolgsmeldung zurückgegeben.
+Der Befehl gibt nach Abschluss die Meldung `Login Succeeded` zurück.
 
 ## <a name="tag-container-image"></a>Markieren von Containerimages
 
@@ -89,13 +95,21 @@ REPOSITORY                   TAG                 IMAGE ID            CREATED    
 aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
 ```
 
-Führen Sie den folgenden Befehl aus, um den loginServer-Namen abzurufen:
+Um den „loginServer“-Namen zu erhalten, führen Sie den folgenden Befehl aus. Ersetzen Sie `<acrName>` durch den Namen Ihrer Containerregistrierung.
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-Kennzeichnen Sie das Image *aci-tutorial-app* mit dem loginServer-Namen der Containerregistrierung. Fügen Sie zudem `:v1` am Ende des Imagenamens hinzu. Dieses Tag gibt die Imageversionsnummer an.
+Beispielausgabe:
+
+```
+Result
+------------------------
+mycontainerregistry082.azurecr.io
+```
+
+Kennzeichnen Sie das Image *aci-tutorial-app* mit dem loginServer-Namen der Containerregistrierung. Fügen Sie zudem `:v1` am Ende des Imagenamens hinzu. Dieses Tag gibt die Imageversionsnummer an. Ersetzen Sie `<acrLoginServer>` durch das Ergebnis des soeben ausgeführten Befehls `az acr show`.
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -117,12 +131,23 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app        v1                  a9
 
 ## <a name="push-image-to-azure-container-registry"></a>Übertragen des Images zu Azure Container Registry mithilfe von Push
 
-Übertragen Sie das Image *aci-tutorial-app* per Push in die Registrierung.
-
-Verwenden Sie das folgende Beispiel, und ersetzen Sie den loginServer-Namen der Containerregistrierung durch den loginServer-Namen aus Ihrer Umgebung.
+Übertragen Sie das Image *aci-tutorial-app* mit dem Befehl `docker push` per Push in die Registrierung. Ersetzen Sie `<acrLoginServer>` durch den vollständigen Anmeldeservernamen, den Sie im vorherigen Schritt abgerufen haben.
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
+```
+
+Der `push`-Vorgang dauert abhängig von der Internetverbindung zwischen einigen Sekunden und wenigen Minuten. Die Ausgabe sieht ungefähr wie folgt aus:
+
+```bash
+The push refers to a repository [mycontainerregistry082.azurecr.io/aci-tutorial-app]
+3db9cac20d49: Pushed
+13f653351004: Pushed
+4cd158165f4d: Pushed
+d8fbd47558a8: Pushed
+44ab46125c35: Pushed
+5bef08742407: Pushed
+v1: digest: sha256:ed67fff971da47175856505585dcd92d1270c3b37543e8afd46014d328f05715 size: 1576
 ```
 
 ## <a name="list-images-in-azure-container-registry"></a>Auflisten der Images in Azure Container Registry

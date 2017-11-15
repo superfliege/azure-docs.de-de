@@ -12,14 +12,14 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 10/12/2017
+ms.date: 11/03/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 2189dc7900f03a45c360fceffbcd7c1ff36f7e48
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: a4145f70af429274c3c908d3dedef63c5f973bf6
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET
 
@@ -41,29 +41,11 @@ Dieses Tutorial enthält die folgenden Aufgaben:
  
 ## <a name="tables-in-azure-cosmos-db"></a>Tabellen in Azure Cosmos DB 
 
-Azure Cosmos DB bietet die [Tabellen-API](table-introduction.md) (Vorschau) für Anwendungen, die einen Schlüssel-Wert-Speicher mit schemafreiem Design benötigen. Die SDKs und REST-APIs von [Azure Table Storage](../storage/common/storage-introduction.md) können zum Arbeiten mit Azure Cosmos DB verwendet werden. Mit Azure Cosmos DB können Sie Tabellen mit hohen Durchsatzanforderungen erstellen. Azure Cosmos DB unterstützt durchsatzoptimierte Tabellen (informell als „Premium Tables“ bezeichnet), die derzeit in der öffentlichen Vorschau verfügbar sind. 
+Azure Cosmos DB bietet die [Tabellen-API](table-introduction.md) (Vorschau) für Anwendungen, die einen Schlüssel-Wert-Speicher mit schemafreiem Design benötigen und hohe Anforderungen an den Durchsatz haben. Die SDKs und REST-APIs von [Azure Table Storage](../storage/common/storage-introduction.md) können zum Arbeiten mit Tabellen in Azure Cosmos DB verwendet werden.   
 
-Sie können Azure Table Storage weiterhin für Tabellen mit hohen Speicheranforderungen und niedrigeren Durchsatzanforderungen verwenden.
+Dieses Tutorial wendet sich an Entwickler, die mit dem Azure Table Storage-SDK vertraut sind und die verfügbaren Premium-Features mit Azure Cosmos DB verwenden möchten. Es basiert auf [Erste Schritte mit Azure Table Storage mit .NET](table-storage-how-to-use-dotnet.md) und zeigt, wie zusätzliche Funktionen wie sekundäre Indizes, bereitgestellter Durchsatz und Multihosting genutzt werden können. In diesem Tutorial werden die Verwendung des Azure-Portals zum Erstellen eines Azure Cosmos DB-Kontos und anschließendes Erstellen und Bereitstellen einer Tabellen-API-Anwendung beschrieben. Wir zeigen Ihnen auch .NET-Beispiele zum Erstellen und Löschen einer Tabelle sowie zum Einfügen, Aktualisieren, Löschen und Abfragen von Tabellendaten. 
 
-Wenn Sie derzeit Azure Table Storage verwenden, bietet Ihnen der Wechsel zur „Premium Table“-Vorschau folgende Vorteile:
-
-- Sofort einsetzbare [globale Verteilung](distribute-data-globally.md) mit Multihosting und [automatischen und manuellen Failovers](regional-failover.md)
-- Unterstützung für automatische schemaunabhängige Indizierung aller Eigenschaften („sekundäre Indizes“) und schnelle Abfragen 
-- Unterstützung für eine beliebige Anzahl von Regionen übergreifende [unabhängige Skalierung von Speicher und Durchsatz](partition-data.md)
-- Unterstützung für [dedizierten Durchsatz pro Tabelle](request-units.md), der von Hundertern auf Millionen Anforderungen pro Sekunde skaliert werden kann
-- Unterstützung für [fünf optimierbare Konsistenzebenen](consistency-levels.md) zur Abstimmung von Verfügbarkeit, Latenz und Konsistenz basierend auf Ihren Anwendungsanforderungen
-- 99,99 % Verfügbarkeit innerhalb einer einzelnen Region sowie die Möglichkeit zum Hinzufügen weiterer Regionen für höhere Verfügbarkeit und [branchenführende umfassende SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) zu allgemeiner Verfügbarkeit
-- Arbeiten mit dem vorhandenen Azure Storage-.NET-SDK und keine Änderungen am Code der Anwendung
-
-Während der Vorschau unterstützt Azure Cosmos DB die Tabellen-API mit dem .NET-SDK. Sie können das [Azure Storage Preview-SDK](https://aka.ms/premiumtablenuget) von NuGet herunterladen. Das SDK hat die gleichen Klassen- und Methodensignaturen wie das [Azure Storage-SDK](https://www.nuget.org/packages/WindowsAzure.Storage), kann aber auch mithilfe der Tabellen-API eine Verbindung mit Konten von Azure Cosmos DB herstellen.
-
-Weitere Informationen zu komplexen Azure Table Storage-Aufgaben finden Sie unter:
-
-* [Introduction to Azure Cosmos DB: Table API](table-introduction.md) (Einführung in Azure Cosmos DB: Tabellen-API)
-* Vollständige Informationen zu verfügbaren APIs finden Sie in der Referenzdokumentation zum Tabellendienst unter [WindowsAzure.Storage API Reference](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409) (API-Referenz zu WindowsAzure.Storage).
-
-### <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
-Dieses Tutorial wendet sich an Entwickler, die mit dem Azure Table Storage-SDK vertraut sind und die verfügbaren Premium-Features mit Azure Cosmos DB verwenden möchten. Es basiert auf [Erste Schritte mit Azure Table Storage mit .NET](table-storage-how-to-use-dotnet.md) und zeigt, wie zusätzliche Funktionen wie sekundäre Indizes, bereitgestellter Durchsatz und Multihosting genutzt werden können. Wir behandeln die Verwendung des Azure-Portals zum Erstellen eines Azure Cosmos DB-Kontos, erstellen anschließend eine Tabellenanwendung und stellen sie bereit. Wir zeigen Ihnen auch .NET-Beispiele zum Erstellen und Löschen einer Tabelle sowie zum Einfügen, Aktualisieren, Löschen und Abfragen von Tabellendaten. 
+## <a name="prerequisites"></a>Voraussetzungen
 
 Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2017 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 
@@ -72,14 +54,6 @@ Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kos
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
 Zunächst erstellen wir ein Azure Cosmos DB-Konto im Azure-Portal.  
-
-> [!TIP]
-> * Besitzen Sie bereits ein Azure Cosmos DB-Konto? Wenn dies der Fall ist, fahren Sie mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort.
-> * Besaßen Sie einmal ein Azure DocumentDB-Konto? Wenn dies der Fall ist, ist Ihr Konto jetzt ein Azure Cosmos DB-Konto, und Sie können mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fortfahren.  
-> * Wenn Sie den Azure Cosmos DB-Emulator verwenden, führen Sie bitte die Schritte unter [Azure Cosmos DB-Emulator](local-emulator.md) zum Einrichten des Emulators aus, und fahren Sie dann mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort.
-<!---Loc Comment: Please, check link [Set up your Visual Studio solution] since it's not redirecting to any location.---> 
->
->
 
 [!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)] 
 
@@ -112,7 +86,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 ```
 
 > [!NOTE]
-> Um diese App mit standardmäßigem Azure Table Storage verwenden zu können, müssen Sie die Verbindungszeichenfolge in `app.config file` ändern. Verwenden Sie den Kontonamen als Tabellenkontonamen und den Schlüssel als Azure Storage-Primärschlüssel. <br>
+> Um diese App mit Azure Table Storage verwenden zu können, müssen Sie die Verbindungszeichenfolge in `app.config file` ändern. Verwenden Sie den Kontonamen als Tabellenkontonamen und den Schlüssel als Azure Storage-Primärschlüssel. <br>
 >`<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.windows.net" />`
 > 
 >
@@ -135,7 +109,7 @@ Jetzt können Sie zum Daten-Explorer zurückkehren, um diese Tabellendaten anzuz
 >
 
 ## <a name="azure-cosmos-db-capabilities"></a>Azure Cosmos DB-Funktionen
-Azure Cosmos DB unterstützt eine Reihe von Funktionen, die nicht in der Azure Table Storage-API verfügbar sind. Die neue Funktionalität kann über die folgenden `appSettings`-Konfigurationswerte aktiviert werden. Wir haben in der Vorschauversion des Azure Storage-SDK keine neuen Signaturen oder Überladungen eingeführt. So können Sie sowohl mit Standard- als auch Premium-Tabellen Verbindungen herstellen und mit anderen Azure Storage-Diensten wie Blobs und Warteschlangen arbeiten. 
+Die Azure Cosmos DB-Tabellen-API unterstützt eine Reihe von Funktionen, die nicht in Azure Table Storage verfügbar sind. Die neue Funktionalität kann über die folgenden `appSettings`-Konfigurationswerte aktiviert werden. Keine neuen Signaturen oder Überladungen wurden der Tabellen-API hinzugefügt, die nicht im Azure Storage-SDK vorhanden sind. So können Sie sowohl mit Tabellen in Azure Table Storage als auch Azure Cosmos DB Verbindungen herstellen und mit anderen Azure Storage-Diensten wie Blobs und Warteschlangen arbeiten. 
 
 
 | Schlüssel | Beschreibung |

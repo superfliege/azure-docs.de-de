@@ -15,15 +15,15 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 11/21/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 28bb8296ddd820ec5aa9793dc0928b4b1e67bf6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 473da6436ad39709359b579162a6b60efc38d61f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>Verwalten von Artefaktmetadaten in Integrationskonten für Logik-Apps
 
-Sie können benutzerdefinierte Metadaten für Artefakte in Integrationskonten definieren und diese Metadaten während der Laufzeit der Logik-App abrufen. Beispielsweise können Sie Metadaten für Artefakte wie Partner, Vereinbarungen, Schemas und Zuordnungen angeben – alle speichern Metadaten mit Schlüssel-Wert-Paaren. Derzeit können Artefakte Metadaten nicht über die Benutzeroberfläche erstellen, aber Sie können mit den REST-APIs Metadaten erstellen. Wählen Sie zum Hinzufügen von Metadaten beim Erstellen oder Wählen eines einer Partner, Vereinbarung oder eines Schemas im Azure-Portal **Als JSON bearbeiten**. Um Artefaktmetadaten in Logik-Apps abzurufen, können Sie die Funktion „Artefaktsuche für Integrationskonto“ verwenden.
+Sie können benutzerdefinierte Metadaten für Artefakte in Integrationskonten definieren und diese Metadaten während der Laufzeit der Logik-App abrufen. Beispielsweise können Sie Metadaten für Artefakte wie Partner, Vereinbarungen, Schemas und Zuordnungen angeben – alle speichern Metadaten mit Schlüssel-Wert-Paaren. Derzeit können Artefakte Metadaten nicht über die Benutzeroberfläche erstellen, aber Sie können mit den REST-APIs Metadaten erstellen. Wählen Sie zum Hinzufügen von Metadaten beim Erstellen oder Auswählen eines Partners, einer Vereinbarung oder eines Schemas im Azure-Portal **Bearbeiten** aus. Um Artefaktmetadaten in Logik-Apps abzurufen, können Sie die Funktion „Artefaktsuche für Integrationskonto“ verwenden.
 
 ## <a name="add-metadata-to-artifacts-in-integration-accounts"></a>Hinzufügen von Metadaten zu Artefakten in Integrationskonten
 
@@ -31,7 +31,7 @@ Sie können benutzerdefinierte Metadaten für Artefakte in Integrationskonten de
 
 2. Fügen Sie Ihrem Integrationskonto ein Artefakt hinzu, z. B. [Partner](logic-apps-enterprise-integration-partners.md#how-to-create-a-partner), [Vereinbarung](logic-apps-enterprise-integration-agreements.md#how-to-create-agreements) oder [Schema](logic-apps-enterprise-integration-schemas.md).
 
-3.  Wählen Sie ein Artefakt und dann **Als JSON bearbeiten** aus, und geben Sie Metadatendetails ein.
+3.  Wählen Sie das Artefakt und dann **Bearbeiten** aus, und geben Sie Metadatendetails ein.
 
     ![Eingeben von Metadaten](media/logic-apps-enterprise-integration-metadata/image1.png)
 

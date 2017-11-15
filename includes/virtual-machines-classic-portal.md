@@ -1,0 +1,1 @@
+Ab 15. 2017 ist Virtual Machines nur noch im [Azure-Portal](https://portal.azure.com) verfügbar. Der Zugriff über das klassische Portal wird nicht mehr unterstützt.

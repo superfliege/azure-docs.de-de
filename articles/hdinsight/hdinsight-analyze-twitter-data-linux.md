@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 11/02/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: b8656123fa9c5158f366872ab050f370080ec18a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5be05fabf03e7e3ccaa3bf66ffefdd6406a06b3e
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>Analysieren von Twitter-Daten mit Hive und Hadoop in HDInsight
 
@@ -158,6 +158,9 @@ Mit dem folgenden Python-Code werden 10.000 Tweets von Twitter heruntergeladen u
     > * `consumer_key`
     > * `access_token`
     > * `access_token_secret`
+
+    > [!TIP]
+    > Passen Sie den Themenfilter in der letzten Zeile zum Nachverfolgen von beliebten Schlüsselwörtern an. Verwenden Sie Schlüsselwörter, die zum Zeitpunkt der Skriptausführung häufig verwendet werden, um eine schnellere Erfassung von Daten zu ermöglichen.
 
 6. Drücken Sie zum Speichern der Datei **STRG+X** und anschließend **Y**
 
@@ -312,19 +315,22 @@ Mit diesen Befehlen werden die Daten an einem Speicherort gespeichert, auf den a
 
    ```hiveql
    SELECT name, screen_name, count(1) as cc
-       FROM tweets
-       WHERE text like "%Azure%"
-       GROUP BY name,screen_name
-       ORDER BY cc DESC LIMIT 10;
+   FROM tweets
+   WHERE text like "%Azure%"
+   GROUP BY name,screen_name
+   ORDER BY cc DESC LIMIT 10;
    ```
 
     Bei dieser Abfrage werden maximal 10 Tweets zurückgegeben, die den Begriff **Azure** im Meldungstext enthalten.
+
+    > [!NOTE]
+    > Wenn Sie den Filter im Skript `gettweets.py` geändert haben, ersetzen Sie **Azure** durch einen der von Ihnen verwendeten Filter.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie haben erfahren, wie Sie ein unstrukturiertes JSON-Dataset in eine strukturierte Hive-Tabelle umwandeln. Weitere Informationen zu Hive in HDInsight finden Sie in den folgenden Artikeln:
 
-* [Erste Schritte mit HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
+* [Erste Schritte mit HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Analysieren von Daten zu Flugverspätungen mit HDInsight](hdinsight-analyze-flight-delay-data-linux.md)
 
 [curl]: http://curl.haxx.se

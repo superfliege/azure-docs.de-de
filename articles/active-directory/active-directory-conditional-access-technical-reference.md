@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2017
+ms.date: 11/07/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 4bcca3ee5862a0455b6064d0f9c0a91388db9516
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 316157a7a8ed920e9f3b15e24e15035db4cefc6c
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Technische Referenz zum bedingten Azure Active Directory-Zugriff
 
@@ -82,11 +82,7 @@ Außer den Cloud-Apps von Microsoft können Sie den folgenden Typen von Cloud-Ap
 
 ## <a name="device-platform-condition"></a>Geräteplattformbedingung
 
-In einer Richtlinie für bedingten Zugriff können Sie die Geräteplattformbedingung konfigurieren, um die Richtlinie an das Betriebssystem auf einem Client zu binden.
-
-![Binden der Zugriffsrichtlinie an das Clientbetriebssystem](./media/active-directory-conditional-access-technical-reference/41.png)
-
-Für den bedingten Azure AD-Zugriff werden folgende Geräteplattformen unterstützt:
+In einer Richtlinie für bedingten Zugriff können Sie die Geräteplattformbedingung konfigurieren, um die Richtlinie an das Betriebssystem auf einem Client zu binden. Für den bedingten Azure AD-Zugriff werden folgende Geräteplattformen unterstützt:
 
 - Android
 
@@ -96,7 +92,12 @@ Für den bedingten Azure AD-Zugriff werden folgende Geräteplattformen unterstü
 
 - Windows
 
-- macOS (Vorschauversion)
+- macOS
+
+
+![Binden der Zugriffsrichtlinie an das Clientbetriebssystem](./media/active-directory-conditional-access-technical-reference/41.png)
+
+
 
 
 
@@ -131,11 +132,11 @@ In der Richtlinie für bedingten Zugriff werden die folgenden Browser unterstüt
 | Windows Server 2016    | Chrome                      | In Kürze verfügbar |
 | Windows Server 2012 R2 | Internet Explorer, Chrome   | ![Prüfen][1] |
 | Windows Server 2008 R2 | Internet Explorer, Chrome   | ![Prüfen][1] |
-| macOS                  | Safari                      | ![Prüfen][1] |
-| macOS                  | Chrome                      | In Kürze verfügbar |
+| macOS                  | Chrome, Safari              | ![Prüfen][1] |
+
 
 > [!NOTE]
-> Um Chrome-Unterstützung zu erhalten, müssen Sie das Windows 10 Creators Update (Version 1703) oder höher verwenden.<br>
+> Um Chrome-Unterstützung zu erhalten, müssen Sie Windows 10 Creators Update (Version 1703) oder höher verwenden.<br>
 > Sie können [diese Erweiterung](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) installieren.
 
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>Unterstützte mobile Anwendungen und Desktopclients
@@ -153,7 +154,7 @@ Die folgenden mobilen Apps und Desktopclients unterstützen den bedingten Zugrif
 | Dynamics CRM-App| Dynamics CRM| Windows 10, Windows 8.1, Windows 7, iOS, Android|
 | E-Mail-/Kalender-/Kontakte-App, Outlook 2016, Outlook 2013 (mit moderner Authentifizierung)| Microsoft Office 365 Exchange Online| Windows 10|
 | MFA- und Standort-Richtlinien für Apps Gerätebasierte Richtlinien werden nicht unterstützt.| Alle Meine Apps-App-Dienste| Android und iOS|
-| Microsoft Teams-Dienste: steuert alle Dienste, die Microsoft-Teams unterstützen, und alle dazugehörigen Client-Apps – Windows Desktop, iOS, Android, WP und Webclient| Microsoft Teams| Windows 10, Windows 8.1, Windows 7, iOS und Android|
+| Microsoft Teams-Dienste: steuert alle Dienste, die Microsoft-Teams unterstützen, und alle dazugehörigen Client-Apps – Windows Desktop, iOS, Android, WP und Webclient| Microsoft Teams| Windows 10, Windows 8.1, Windows 7, iOS, Android und macOS|
 | Office 2016-Apps, Office 2013 (mit moderner Authentifizierung), OneDrive-Synchronisierungsclient (siehe [Hinweise](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))| Office 365 SharePoint Online| Windows 8.1, Windows 7|
 | Office 2016-Apps, universelle Office-Apps, Office 2013 (mit moderner Authentifizierung), OneDrive-Synchronisierungsclient (siehe [Hinweise](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), zukünftige Unterstützung für Office-Gruppen und SharePoint-Apps ist geplant.| Office 365 SharePoint Online| Windows 10|
 | Office 2016 für macOS (nur Word, Excel, PowerPoint und OneNote). Unterstützung von OneDrive for Business für die Zukunft geplant| Office 365 SharePoint Online| Mac OS X|
@@ -165,6 +166,7 @@ Die folgenden mobilen Apps und Desktopclients unterstützen den bedingten Zugrif
 | PowerBI-App. Die PowerBI-App für Android unterstützt derzeit keinen gerätebasierten bedingten Zugriff.| PowerBI-Dienst| Windows 10, Windows 8.1, Windows 7 und iOS|
 | Skype for Business| Microsoft Office 365 Exchange Online| Android, iOS|
 | Visual Studio Team Services-App| Visual Studio Team Services| Windows 10, Windows 8.1, Windows 7, iOS, Android|
+
 
 
 

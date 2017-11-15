@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: rajanaki
-ms.openlocfilehash: 5bcb5dcb6afc3909e34dde31f845e014e7c539e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad1e0bcb2e2c073c8fb186f5a9d8bcb0bac588a0
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="monitor-and-troubleshoot-protection-for-virtual-machines-and-physical-servers"></a>Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern
 In diesem Leitfaden zur Überwachung und Problembehandlung wird beschrieben, wie Sie die Replikationsintegrität nachverfolgen und die Problembehandlung für Azure Site Recovery durchführen.
 
 ## <a name="understand-the-components"></a>Grundlegendes zu den Komponenten
 ### <a name="vmware-virtual-machine-or-physical-server-site-deployment-for-replication-between-on-premises-and-azure"></a>Bereitstellung von virtuellen VMware-Computern oder physischen Servern für die Replikation zwischen der lokalen Umgebung und Azure
-Zum Einrichten der Datenbankwiederherstellung zwischen einem lokalen virtuellen VMware-Computer oder physischen Server und Azure müssen Sie den Konfigurationsserver, Masterzielserver und die Prozessserverkomponenten auf Ihrem virtuellen Computer oder Server einrichten. Wenn Sie den Schutz für den Quellserver aktivieren, installiert Azure Site Recovery das Mobile Apps-Feature von Microsoft Azure App Service. Nach einem lokalen Ausfall und dem Failover des Quellservers zu Azure müssen Kunden einen Prozessserver in Azure und einen Masterzielserver lokal einrichten, um den Quellserver lokal wiederherzustellen.
+Zum Einrichten der Datenbankwiederherstellung zwischen einem lokalen virtuellen VMware-Computer oder physischen Server und Azure müssen Sie den Konfigurationsserver, Masterzielserver und die Prozessserverkomponenten auf Ihrem virtuellen Computer oder Server einrichten. Wenn Sie Schutz für den Quellserver aktiviert, installiert Azure Site Recovery den Mobilitätsdienst über den ausgewählten Prozessserver, falls noch keine aktuelle Version bereitgestellt wurde. Nach einem lokalen Ausfall und dem Failover des Quellservers zu Azure müssen Kunden einen Prozessserver in Azure und einen Masterzielserver lokal einrichten, um den Quellserver lokal wiederherzustellen.
 
 ![Bereitstellung per VMware bzw. am physischen Standort für die Replikation zwischen der lokalen Umgebung und Azure](media/site-recovery-monitoring-and-troubleshooting/image18.png)
 

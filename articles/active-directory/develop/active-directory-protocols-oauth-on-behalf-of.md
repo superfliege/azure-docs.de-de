@@ -21,10 +21,10 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
 ---
-# Dienst-zu-Dienst-Aufrufe unter Verwendung einer Stellvertreter-Benutzeridentität im Im-Auftrag-Fluss
+# <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe unter Verwendung einer Stellvertreter-Benutzeridentität im Im-Auftrag-Fluss
 Der Im-Auftrag-Fluss von OAuth 2.0 wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum einen andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den Downstream-Dienst stellen kann, muss für den Benutzer ein Zugriffstoken aus Azure Active Directory (Azure AD) abgesichert werden.
 
-## „Im Auftrag von“-Ablauf
+## <a name="on-behalf-of-flow-diagram"></a>„Im Auftrag von“-Ablauf
 Es wird davon ausgegangen, dass der Benutzer in einer Anwendung authentifiziert wurde, die den [Autorisierungscode-Vergabefluss von OAuth 2.0](active-directory-protocols-oauth-code.md) verwendet. In diesem Fall verfügt die Anwendung über ein Zugriffstoken (Token A), das die Benutzeransprüche und die Genehmigung für den Zugriff auf die API der mittleren Ebene enthält (API A). API A muss nun eine authentifizierte Anfrage an die nachgelagerte Web-API stellen (API B).
 
 Die folgenden Schritte entsprechen dem Im-Auftrag-von-Ablauf und werden anhand des folgenden Diagramms erläutert.
@@ -38,9 +38,9 @@ Die folgenden Schritte entsprechen dem Im-Auftrag-von-Ablauf und werden anhand d
 4. Token B wird im Autorisierungsheader der Anforderung an die API B festgelegt.
 5. API B gibt die Daten aus der gesicherten Ressource zurück.
 
-## Registrieren der Anwendung und des Diensts in Azure AD
+## <a name="register-the-application-and-service-in-azure-ad"></a>Registrieren der Anwendung und des Diensts in Azure AD
 Registrieren der Clientanwendungen des Diensts auf der mittleren Ebene in Azure AD.
-### Registrieren des Diensts auf der mittleren Ebene
+### <a name="register-the-middle-tier-service"></a>Registrieren des Diensts auf der mittleren Ebene
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto, und wählen Sie in der Liste **Verzeichnis** den Active Directory-Mandanten aus, für den Sie Ihre Anwendungen registrieren möchten.
 3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
@@ -48,7 +48,7 @@ Registrieren der Clientanwendungen des Diensts auf der mittleren Ebene in Azure 
 5. Geben Sie einen Anzeigenamen für die Anwendung ein, und wählen Sie den Anwendungstyp aus. Geben Sie auf Basis des Anwendungsnamens die Anmelde-URL an, oder leiten Sie die URL zur Basis-URL um. Klicken Sie auf **Erstellen**, um die Anwendung zu erstellen.
 6. Wählen Sie im Azure-Portal Ihre Anwendung aus, und klicken Sie auf **Einstellungen**. Wählen Sie im Menü Einstellungen **Schlüssel**, und fügen Sie einen Schlüssel mit einer Schlüsseldauer von ein oder zwei Jahren hinzu. Wenn Sie diese Seite speichern, wird der Schlüsselwert angezeigt. Kopieren und speichern Sie diesen an einem sicheren Ort – Sie benötigen den Schlüssel später, um die Anwendungseinstellungen in Ihrer Implementierung zu konfigurieren. Der Schlüsselwert wird nicht wieder angezeigt und kann auch nicht auf andere Weise ausgegeben werden. Deshalb ist es wichtig, ihn sofort zu speichern, wenn er im Azure-Portal angezeigt wird.
 
-### Registrieren der Clientanwendung
+### <a name="register-the-client-application"></a>Registrieren der Clientanwendung
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto, und wählen Sie in der Liste **Verzeichnis** den Active Directory-Mandanten aus, für den Sie Ihre Anwendungen registrieren möchten.
 3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
@@ -56,14 +56,14 @@ Registrieren der Clientanwendungen des Diensts auf der mittleren Ebene in Azure 
 5. Geben Sie einen Anzeigenamen für die Anwendung ein, und wählen Sie den Anwendungstyp aus. Geben Sie auf Basis des Anwendungsnamens die Anmelde-URL an, oder leiten Sie die URL zur Basis-URL um. Klicken Sie auf **Erstellen**, um die Anwendung zu erstellen.
 6. Konfigurieren der Berechtigungen für Ihre Anwendung: Wählen Sie im Menü Einstellungen den Abschnitt **Erforderliche Berechtigungen**, klicken Sie auf **Hinzufügen**, **Select an API** (Hiermit wählen Sie eine API aus), und erfassen Sie im Textfeld den Namen der mittleren Ebene. Klicken Sie anschließend auf **Berechtigungen auswählen**, und wählen Sie *Auf den Dienstnamen zugreifen* aus.
 
-### Konfigurieren der bekannten Clientanwendungen
+### <a name="configure-known-client-applications"></a>Konfigurieren der bekannten Clientanwendungen
 In diesem Szenario interagiert der Dienst auf der mittleren Ebene nicht mit dem Benutzer, um dessen Zustimmung für den Zugriff auf die Downstream-API zu erlangen. Aus diesem Grund muss die Zugriffsgewährung auf die Downstream-API zuvor als Teil des Genehmigungsschrittes während der Authentifizierung als Option angezeigt werden.
 Führen Sie hierfür die folgenden Schritte aus. Dadurch wird die Registrierung der Clientanwendung in Azure AD explizit mit der Registrierung des Diensts auf der mittleren Ebene verknüpft, wodurch die von dem Client und der mittleren Ebene erzielten Genehmigungen zu einem einzigen Dialog zusammengeführt werden.
 1. Navigieren Sie zu der Registrierung auf der mittleren Ebene, und klicken Sie auf **Manifest**, um den Manifest-Editor zu öffnen.
 2. Suchen Sie im Manifest die Array-Eigenschaft `knownClientApplications`, und fügen Sie die Client-ID der Clientanwendung als Element hinzu.
 3. Speichern Sie das Manifest, indem Sie auf die Schaltfläche „Speichern“ klicken.
 
-## Dienst-zu-Dienst-Zugriffstokenanforderung
+## <a name="service-to-service-access-token-request"></a>Dienst-zu-Dienst-Zugriffstokenanforderung
 Verwenden Sie zum Anfordern eines Zugriffstokens ein HTTP POST-Element für den mandantenspezifischen Azure AD-Endpunkt. Verwenden Sie dabei die folgenden Parameter.
 
 ```
@@ -71,7 +71,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 ```
 Es sind zwei Fälle denkbar – je nachdem, ob die Clientanwendung durch ein gemeinsames Geheimnis oder durch ein Zertifikat geschützt wird.
 
-### Erster Fall: Zugriffstokenanforderung mit einem gemeinsamen Geheimnis
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Erster Fall: Zugriffstokenanforderung mit einem gemeinsamen Geheimnis
 Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zugriffstokenanforderung die folgenden Parameter:
 
 | Parameter |  | Beschreibung |
@@ -84,7 +84,7 @@ Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zug
 | requested_token_use |erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
 | Bereich |erforderlich | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Für OpenID Connect muss der Bereich **openid** angegeben werden.|
 
-#### Beispiel
+#### <a name="example"></a>Beispiel
 Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für die Web-API https://graph.windows.net angefordert. Mit der `client_id` wird der Dienst identifiziert, der das Zugriffstoken anfordert.
 
 ```
@@ -103,7 +103,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=openid
 ```
 
-### Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat
+### <a name="second-case-access-token-request-with-a-certificate"></a>Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die folgenden Parameter:
 
 | Parameter |  | Beschreibung |
@@ -119,7 +119,7 @@ Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die
 
 Beachten Sie, dass die Parameter nahezu identisch mit den Parametern der Anforderung mit dem gemeinsamen geheimen Schlüssel sind. Einziger Unterschied: Anstelle des Parameters „client_secret“ werden die beiden Parameter „client_assertion_type“ und „client_assertion“ verwendet.
 
-#### Beispiel
+#### <a name="example"></a>Beispiel
 Mit der folgenden HTTP POST-Anforderung wird ein Zugriffstoken für die Web-API „https://graph.windows.net“ mit einem Zertifikat angefordert. Mit der `client_id` wird der Dienst identifiziert, der das Zugriffstoken anfordert.
 
 ```
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=openid
 ```
 
-## Dienst-zu-Dienst-Zugriffstokenantwort
+## <a name="service-to-service-access-token-response"></a>Dienst-zu-Dienst-Zugriffstokenantwort
 Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden Parametern.
 
 | Parameter | Beschreibung |
@@ -153,7 +153,7 @@ Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden
 | id_token |Das angeforderte ID-Token. Dies kann von dem aufrufenden Dienst dazu verwendet werden, die Identität des Benutzers zu überprüfen und eine Sitzung mit dem Benutzer zu beginnen. |
 | refresh_token |Das Aktualisierungstoken für das angeforderte Zugriffstoken. Der aufrufende Dienst kann dieses Token verwenden, um nach Ablauf des aktuellen Zugriffstokens ein neues Zugriffstoken anzufordern. |
 
-### Beispiel für eine erfolgreiche Antwort
+### <a name="success-response-example"></a>Beispiel für eine erfolgreiche Antwort
 Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung für ein Zugriffstoken auf die Web-API https://graph.windows.net.
 
 ```
@@ -171,7 +171,7 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung für 
 }
 ```
 
-### Beispiel für eine fehlerhafte Antwort
+### <a name="error-response-example"></a>Beispiel für eine fehlerhafte Antwort
 Der Azure AD-Tokenendpunkt gibt bei dem Versuch, ein Zugriffstoken für eine nachgelagerte API zu erhalten, einen Fehler zurück, wenn der Zugriff auf die nachgelagerte API durch eine Richtlinie wie mehrstufige Authentifizierung begrenzt ist. Der Dienst der mittleren Ebene zeigt diesen Fehler der Clientanwendung an, so dass diese der Richtlinie entsprechend die geeignete Benutzerinteraktion bieten kann.
 
 ```
@@ -186,17 +186,17 @@ Der Azure AD-Tokenendpunkt gibt bei dem Versuch, ein Zugriffstoken für eine nac
 }
 ```
 
-## Verwenden des Zugriffstokens für den Zugriff auf die gesicherte Ressource
+## <a name="use-the-access-token-to-access-the-secured-resource"></a>Verwenden des Zugriffstokens für den Zugriff auf die gesicherte Ressource
 Der Dienst der mittleren Ebene kann nun mit dem oben erhaltenen Token bei der nachgelagerte Web-API authentifizierte Anforderungen stellen. Hierfür wird das Token in den `Authorization`-Header eingetragen.
 
-### Beispiel
+### <a name="example"></a>Beispiel
 ```
 GET /me?api-version=2013-11-08 HTTP/1.1
 Host: graph.windows.net
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
 ```
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr über das OAuth 2.0-Protokoll und eine andere Möglichkeit, Dienst-zu-Dienst-Authentifizierungen mit Client-Anmeldedaten auszuführen.
 * [Dienst-zu-Dienst-Authentifizierung mit Vergabe der OAuth 2.0-Client-Anmeldedaten in Azure AD](active-directory-protocols-oauth-service-to-service.md)
 * [OAuth 2.0 in Azure AD](active-directory-protocols-oauth-code.md)

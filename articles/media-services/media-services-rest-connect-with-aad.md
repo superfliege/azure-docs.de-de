@@ -11,13 +11,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
-ms.author: willzhan;juliako
-ms.openlocfilehash: 1c62857699fb29b3583363e1c6f2dc7874635f40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/02/2017
+ms.author: willzhan;juliako;johndeu
+ms.openlocfilehash: e5d7a5ec1c28a552420aba5e2cd6c8c7bbf4213d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API per REST
 
@@ -86,21 +86,14 @@ Hier sind die Zuordnungen zwischen den Attributen im JWT und den vier Anwendunge
 |Anwendungstyp |Anwendung |JWT-Attribut |
 |---|---|---|
 |Client- |Kunden-App oder -Lösung |appid: „02ed1e8e-af8b-477e-af3d-7e7219a99ac6“. Die Client-ID einer Anwendung, die Sie im nächsten Abschnitt für Azure AD registrieren. |
-|Identitätsanbieter (IDP) | Azure AD als IDP |idp: „https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/“.  Die GUID ist die ID des Microsoft-Mandanten (microsoft.onmicrosoft.com). Jeder Mandant verfügt über eine eigene eindeutige ID. |
+|Identitätsanbieter (IDP) | Azure AD als IDP |IDP: „https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/“. Die GUID ist die ID des Microsoft-Mandanten (microsoft.onmicrosoft.com). Jeder Mandant verfügt über eine eigene eindeutige ID. |
 |Secure Token Service (STS)/OAuth-Server |Azure AD als STS | iss: „https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/“. Die GUID ist die ID des Microsoft-Mandanten (microsoft.onmicrosoft.com). |
 |Ressource | Media Services-REST-API |aud: „https://rest.media.azure.net“. Der Empfänger oder die Zielgruppe des Zugriffstokens. |
 
 ## <a name="steps-for-setup"></a>Setup-Schritte
 
-Führen Sie die folgenden Schritte aus, um eine Azure AD-Anwendung für die Azure AD-Authentifizierung zu registrieren und einzurichten und ein Zugriffstoken zum Aufrufen des Endpunkts der Azure Media Services-REST-API zu beschaffen:
+Weitere Informationen zum Registrieren und Einrichten einer Azure Active Directory-Anwendung (AAD) und zum Abrufen von Schlüsseln für das Aufrufen des Azure Media Services-REST-API-Endpunkts finden Sie im Artikel [Erste Schritte mit der Azure AD-Authentifizierung im Azure-Portal](media-services-portal-get-started-with-aad.md)
 
-1.  Registrieren Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) eine Azure AD-Anwendung (z.B. „wzmediaservice“) für den Azure AD-Mandanten (z.B. „microsoft.onmicrosoft.com“). Es spielt keine Rolle, ob Sie die Registrierung als Web-App oder native App vornehmen. Außerdem können Sie eine beliebige Anmelde-URL und Antwort-URL auswählen (z.B. jeweils „http://wzmediaservice.com“).
-2. Navigieren Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) zur Registerkarte **Konfigurieren** Ihrer Anwendung. Notieren Sie sich die **Client-ID**. Generieren Sie dann unter **Schlüssel** einen **Clientschlüssel** (geheimer Clientschlüssel). 
-
-    > [!NOTE] 
-    > Notieren Sie sich den geheimen Clientschlüssel. Er wird nicht noch einmal angezeigt.
-    
-3.  Navigieren Sie im [Azure-Portal](http://ms.portal.azure.com) zum Media Services-Konto. Wählen Sie den Bereich **Zugriffssteuerung** (IAM). Fügen Sie ein neues Mitglied hinzu, das entweder über die Rolle „Besitzer“ oder „Mitwirkender“ verfügt. Suchen Sie für den Prinzipal nach dem Anwendungsnamen, den Sie in Schritt 1 registriert haben (in diesem Beispiel „wzmediaservice“).
 
 ## <a name="info-to-collect"></a>Zu sammelnde Informationen
 
@@ -138,9 +131,9 @@ Das Beispielprojekt verfügt über drei Features:
 
 Einige Leser fragen sich vielleicht Folgendes: Wo ist das Aktualisierungstoken? Warum wird hier kein Aktualisierungstoken genutzt?
 
-Der Zweck eines Aktualisierungstokens besteht nicht darin, ein Zugriffstoken zu aktualisieren. Stattdessen ist es so konzipiert, dass die Endbenutzerauthentifizierung bzw. der Benutzereingriff umgangen wird und trotzdem ein gültiges Zugriffstoken verfügbar ist, wenn ein früheres Token abläuft. Ein besserer Name für ein Aktualisierungstoken wäre daher beispielsweise „Token zur Umgehung der erneuten Benutzeranmeldung“.
+Der Zweck eines Aktualisierungstokens besteht nicht darin, ein Zugriffstoken zu aktualisieren. Es ist so konzipiert, dass die Endbenutzerauthentifizierung umgangen wird und trotzdem ein gültiges Zugriffstoken verfügbar ist, wenn ein früheres Token abläuft. Ein besserer Name für ein Aktualisierungstoken wäre daher beispielsweise „Token zur Umgehung der erneuten Benutzeranmeldung“.
 
-Wenn Sie den Ablauf zur Gewährung der OAuth 2.0-Autorisierung verwenden (Benutzername und Kennwort, im Namen eines Benutzers), dient ein Aktualisierungstoken zum Beschaffen eines erneuerten Zugriffstokens ohne Anforderung des Benutzereingriffs. Für den Ablauf zur Gewährung von OAuth 2.0-Clientanmeldeinformationen, den wir in diesem Artikel beschreiben, fungiert der Client in eigenem Namen. Sie benötigen keinerlei Benutzereingriff, und der Autorisierungsserver muss (und wird) kein Aktualisierungstoken für Sie bereitstellen. Wenn Sie die **GetUrlEncodedJWT**-Methode debuggen, fällt Ihnen auf, dass die Antwort vom Tokenendpunkt ein Zugriffstoken enthält, aber kein Aktualisierungstoken.
+Wenn Sie den Ablauf zur Gewährung der OAuth 2.0-Autorisierung verwenden (Benutzername und Kennwort, im Namen eines Benutzers), dient ein Aktualisierungstoken zum Beschaffen eines erneuerten Zugriffstokens ohne Anforderung des Benutzereingriffs. Für den Ablauf zur Gewährung von OAuth 2.0-Clientanmeldeinformationen, der in diesem Artikel beschrieben wird, fungiert der Client im eigenen Namen. Sie benötigen keinerlei Benutzereingriff, und der Autorisierungsserver muss kein Aktualisierungstoken für Sie bereitstellen. Wenn Sie die **GetUrlEncodedJWT**-Methode debuggen, fällt Ihnen auf, dass die Antwort vom Tokenendpunkt ein Zugriffstoken enthält, aber kein Aktualisierungstoken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

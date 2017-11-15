@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: 6d1845e27c6b0fff66b80a683f59d14238e2ad71
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 4918a820ca07a7d83dfb544ee9f0bbeb66d22722
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>Bikesharing-Tutorial: Erweiterte Datenvorbereitung mit der Azure Machine Learning Workbench
 Azure Machine Learning-Dienste (Vorschau) ist eine integrierte, End-to-End Data Science- und erweiterte Analyselösung für professionelle Datenspezialisten zum Vorbereiten von Daten, Entwickeln von Experimenten und Bereitstellen von Modellen auf Cloudniveau.
@@ -494,7 +494,7 @@ Klicken Sie auf __OK__, um den Filter anzuwenden.
 
 ### <a name="remove-columns"></a>Entfernen von Spalten
 
-In den Fahrtdaten stellt jede Zeile ein Fahrradabholereignis dar. Für dieses Tutorial benötigen Sie lediglich die Spalten **starttime** und **start station**. Entfernen Sie die anderen Spalten, indem Sie diese beiden Spalten gleichzeitig auswählen, mit der rechten Maustaste auf die Spaltenüberschrift klicken und anschließend die Option **Keep Column** (Spalte beibehalten) auswählen. Die übrigen Spalten werden entfernt.
+In den Fahrtdaten stellt jede Zeile ein Fahrradabholereignis dar. Für dieses Tutorial benötigen Sie lediglich die Spalten **starttime** und **start station id**. Entfernen Sie die anderen Spalten, indem Sie diese beiden Spalten gleichzeitig auswählen, mit der rechten Maustaste auf die Spaltenüberschrift klicken und anschließend die Option **Keep Column** (Spalte beibehalten) auswählen. Die übrigen Spalten werden entfernt.
 
 ![Abbildung der Option „Keep Column“ (Spalte beibehalten)](media/tutorial-bikeshare-dataprep/tripdatakeepcolumn.png)
 

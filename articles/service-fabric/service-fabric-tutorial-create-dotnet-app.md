@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/09/2017
+ms.date: 11/08/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5a095663b7e716fd63322c9f89f67a1f3187638b
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 341d275fbf9f80ac9e3363757d880b9546bdee13
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
 Dieses Tutorial ist der erste Teil einer Serie.  Hier erfahren Sie, wie Sie eine Azure Service Fabric-Anwendung mit einem ASP.NET Core-Web-API-Front-End und einem zustandsbehafteten Back-End-Dienst zum Speichern Ihrer Daten erstellen. Am Ende verfügen Sie über eine Abstimmungsanwendung mit einem ASP.NET Core-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst gespeichert werden. Wenn Sie die Abstimmungsanwendung nicht manuell erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) und mit [Durchlaufen der Beispielanwendung für die Abstimmung](#walkthrough_anchor) fortfahren.
@@ -228,7 +228,11 @@ app.controller('VotingAppController', ['$rootScope', '$scope', '$http', '$timeou
 ```
 
 ### <a name="update-the-votingwebcs-file"></a>Aktualisieren der Datei „VotingWeb.cs“
-Öffnen Sie die Datei *VotingWeb.cs* (erstellt den ASP.NET Core-Webhost innerhalb des zustandslosen Diensts unter Verwendung des WebListener-Webservers).  Fügen Sie am Anfang der Datei die Direktive `using System.Net.Http;` hinzu.  Ersetzen Sie die Funktion `CreateServiceInstanceListeners()` durch Folgendes, und speichern Sie anschließend Ihre Änderungen:
+Öffnen Sie die Datei *VotingWeb.cs* (erstellt den ASP.NET Core-Webhost innerhalb des zustandslosen Diensts unter Verwendung des WebListener-Webservers).  
+
+Fügen Sie am Anfang der Datei die Direktive `using System.Net.Http;` hinzu.  
+
+Ersetzen Sie die Funktion `CreateServiceInstanceListeners()` durch Folgendes, und speichern Sie anschließend Ihre Änderungen:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -257,7 +261,9 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ```
 
 ### <a name="add-the-votescontrollercs-file"></a>Hinzufügen der Datei „VotesController.cs“
-Fügen Sie einen Controller zum Definieren von Abstimmungsaktionen hinzu. Klicken Sie mit der rechten Maustaste auf den Ordner **Controllers**, und wählen Sie **Hinzufügen > Neues Element > Klasse** aus.  Nennen Sie die Datei „VotesController.cs“, und klicken Sie auf **Hinzufügen**.  Ersetzen Sie den Inhalt der Datei durch Folgendes, und speichern Sie anschließend Ihre Änderungen:  In [Aktualisieren der Datei „VotesController.cs“](#updatevotecontroller_anchor) wird diese Datei später zum Lesen und Schreiben von Abstimmungsdaten aus dem Back-End-Dienst angepasst.  Vorläufig gibt der Controller statische Zeichenfolgendaten an die Ansicht zurück.
+Fügen Sie einen Controller zum Definieren von Abstimmungsaktionen hinzu. Klicken Sie mit der rechten Maustaste auf den Ordner **Controllers**, und wählen Sie **Hinzufügen > Neues Element > Klasse** aus.  Nennen Sie die Datei „VotesController.cs“, und klicken Sie auf **Hinzufügen**.  
+
+Ersetzen Sie den Inhalt der Datei durch Folgendes, und speichern Sie anschließend Ihre Änderungen:  In [Aktualisieren der Datei „VotesController.cs“](#updatevotecontroller_anchor) wird diese Datei später zum Lesen und Schreiben von Abstimmungsdaten aus dem Back-End-Dienst angepasst.  Vorläufig gibt der Controller statische Zeichenfolgendaten an die Ansicht zurück.
 
 ```csharp
 using System;
@@ -296,7 +302,23 @@ namespace VotingWeb.Controllers
 }
 ```
 
+### <a name="configure-the-listening-port"></a>Konfigurieren des Lauschports
+Beim Erstellen des VotingWeb Front-End-Diensts wählt Visual Studio nach dem Zufallsprinzip einen Port aus, an dem der Dienst lauscht.  Der VotingWeb-Dienst fungiert als Front-End für diese Anwendung und akzeptiert externen Datenverkehr. Daher binden wir diesen Dienst an einen festen und bekannten Port. Öffnen Sie *VotingWeb/PackageRoot/ServiceManifest.xml* im Projektmappen-Explorer.  Navigieren Sie im Abschnitt **Ressourcen** zur Ressource **Endpunkt**, und legen Sie den Wert für **Port** auf 80 oder einen anderen Port fest. Wenn Sie die Anwendung lokal bereitstellen und ausführen möchten, muss der Anwendungslauschport auf dem Computer geöffnet und verfügbar sein.
 
+```xml
+<Resources>
+    <Endpoints>
+      <!-- This endpoint is used by the communication listener to obtain the port on which to 
+           listen. Please note that if your service is partitioned, this port is shared with 
+           replicas of different partitions that are placed in your code. -->
+      <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="80" />
+    </Endpoints>
+  </Resources>
+```
+
+Aktualisieren Sie außerdem den Wert der Eigenschaft „Anwendungs-URL“ im Projekt „Voting“, damit ein Webbrowser beim Debuggen mit F5 mit dem korrekten Port geöffnet wird.  Wählen Sie im Projektmappen-Explorer das Projekt **Voting** aus, und aktualisieren Sie die Eigenschaft **Anwendungs-URL**.
+
+![Anwendungs-URL](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
 
 ### <a name="deploy-and-run-the-application-locally"></a>Lokales Bereitstellen und Ausführen der Anwendung
 Sie können die Anwendung jetzt ausführen. Drücken Sie in Visual Studio `F5`, um die Anwendung für das Debuggen bereitzustellen. `F5` führt zu einem Fehler, wenn Sie nicht zuvor Visual Studio als **Administrator** geöffnet haben.

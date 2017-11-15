@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 64bd0a3ec0598fd7f78e93e510f0a6443f3edbd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1c59b558587fa70989ce8a5028c2ed132ce4f74b
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>Erstellen von HDInsight-Clustern mit Data Lake Store als Standardspeicher mithilfe von PowerShell
 > [!div class="op_single_selector"]
@@ -250,6 +250,7 @@ Nachdem Sie die Verbindung hergestellt haben, können Sie die Dateien in Data La
 Sie können auch den Befehl `hdfs dfs -put` verwenden, um Dateien in Data Lake Store hochzuladen, und dann mit `hdfs dfs -ls` überprüfen, ob der Upload der Dateien erfolgreich war.
 
 ## <a name="see-also"></a>Weitere Informationen
+* [Verwenden von Data Lake Store mit Azure HDInsight-Clustern](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [Erstellen eines HDInsight-Clusters mit Data Lake Store mithilfe des Azure-Portals](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

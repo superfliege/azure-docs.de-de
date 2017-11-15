@@ -19,7 +19,7 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
 ---
-## Registrieren der Anwendung beim AD-Mandanten
+## <a name="register-your-application-with-your-ad-tenant"></a>Registrieren der Anwendung beim AD-Mandanten
 Zuerst müssen Sie Ihre Anwendung beim Azure Active Directory-Mandanten (AAD) registrieren. Hierbei erhalten Sie eine Anwendungs-ID für die Anwendung, und die Aktivierung für den Empfang von Token wird durchgeführt.
 
 * Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.

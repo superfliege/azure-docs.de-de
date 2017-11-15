@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 08/08/2017
+ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 3168a8129e2e73d7ab1de547679aabd10d8f7112
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f29860519d4dce76f0b7f866852484b93ce7b02
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
 Über den in Azure Service Fabric integrierten Reverseproxy können die in einem Service Fabric-Cluster ausgeführten Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren.
@@ -114,9 +114,7 @@ Das Gateway leitet dann diese Anfragen an die Dienst-URL weiter:
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
 ## <a name="special-handling-for-port-sharing-services"></a>Spezielle Einrichtung für Dienste mit Portfreigabe
-Das Azure Application Gateway versucht eine erneute Auflösung einer Dienstadresse und Wiederholung der Anforderung, wenn ein Dienst nicht erreicht werden kann. Dies ist ein Hauptvorteil des Application Gateways, da der Clientcode keine eigene Dienstauflösung und Auflösungsschleife implementieren muss.
-
-Wenn ein Dienst nicht erreicht werden kann, bedeutet dies normalerweise, dass die Dienstinstanz oder das Replikat im Rahmen des normalen Lebenszyklus auf einen anderen Knoten verschoben wurde. In diesem Fall kann das Application Gateway eine Netzwerkverbindungs-Fehlermeldung erhalten, was bedeutet, dass ein Endpunkt in der ursprünglich aufgelösten Adresse nicht mehr geöffnet ist.
+Der Service Fabric-Reverseproxy versucht erneut, eine Dienstadresse aufzulösen und die Anforderung zu wiederholen, wenn ein Dienst nicht erreichbar ist. Wenn ein Dienst nicht erreicht werden kann, bedeutet dies normalerweise, dass die Dienstinstanz oder das Replikat im Rahmen des normalen Lebenszyklus auf einen anderen Knoten verschoben wurde. In diesem Fall kann der Reverseproxy einen Netzwerkverbindungsfehler erhalten, was bedeutet, dass ein Endpunkt in der ursprünglich aufgelösten Adresse nicht mehr geöffnet ist.
 
 Allerdings können Replikate oder Dienstinstanzen einen Hostprozess und auch einen Port freigeben, wenn ein http.sys-basierter Webserver als Host fungiert, wie z.B.:
 
@@ -124,21 +122,21 @@ Allerdings können Replikate oder Dienstinstanzen einen Hostprozess und auch ein
 * [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
-In dieser Situation ist es wahrscheinlich, dass der Webserver im Hostprozess verfügbar ist und auf Anforderungen antwortet, aber die aufgelöste Dienstinstanz oder das Replikat nicht mehr auf dem Host verfügbar ist. In diesem Fall empfängt das Gateway vom Webserver eine Antwort des Typs „HTTP 404“. Die HTTP 404-Antwort hat daher zwei unterschiedliche Bedeutungen:
+In dieser Situation ist es wahrscheinlich, dass der Webserver im Hostprozess verfügbar ist und auf Anforderungen antwortet, aber die aufgelöste Dienstinstanz oder das Replikat nicht mehr auf dem Host verfügbar ist. In diesem Fall empfängt das Gateway vom Webserver eine Antwort des Typs „HTTP 404“. Daher kann eine HTTP 404-Antwort zwei unterschiedliche Bedeutungen haben:
 
 - Fall 1: Die Dienstadresse ist richtig, aber die vom Benutzer angeforderte Ressource ist nicht vorhanden.
 - Fall 2: Die Dienstadresse ist falsch, und die vom Benutzer angeforderte Ressource ist vielleicht auf einem anderen Knoten vorhanden.
 
-Der erste Fall ist eine normale HTTP 404-Antwort, die als Benutzerfehler betrachtet wird. Allerdings hat der Benutzer im zweiten Fall eine Ressource angefordert, die nicht vorhanden ist. Application Gateway konnte sie nicht finden, da der Dienst selbst verschoben wurde. Application Gateway muss die Adresse erneut auflösen und die Anforderung wiederholen.
+Der erste Fall ist eine normale HTTP 404-Antwort, die als Benutzerfehler betrachtet wird. Allerdings hat der Benutzer im zweiten Fall eine Ressource angefordert, die nicht vorhanden ist. Der Reverseproxy konnte sie nicht finden, weil der Dienst selbst verschoben wurde. Der Reverseproxy muss die Adresse erneut auflösen und die Anforderung wiederholen.
 
-Application Gateway benötigt daher eine Möglichkeit, zwischen diesen beiden Fällen zu unterscheiden. Um diese Unterscheidung vornehmen zu können, ist ein Hinweis des Servers erforderlich.
+Der Reverseproxy benötigt daher eine Möglichkeit zur Unterscheidung zwischen diesen beiden Fällen. Um diese Unterscheidung vornehmen zu können, ist ein Hinweis des Servers erforderlich.
 
-* Standardmäßig geht Application Gateway vom 2. Fall aus und versucht, die Anforderung erneut aufzulösen und zu stellen.
-* Um Application Gateway den 1. Fall anzugeben, muss der Dienst den folgenden HTTP-Antwortheader zurückgeben:
+* Standardmäßig geht der Reverseproxy vom 2. Fall aus und versucht, die Anforderung erneut aufzulösen und zu stellen.
+* Um dem Reverseproxy den 1. Fall anzugeben, muss der Dienst den folgenden HTTP-Antwortheader zurückgeben:
 
   `X-ServiceFabric : ResourceNotFound`
 
-Dieser HTTP-Antwortheader gibt eine normale HTTP 404-Situation an, in der die angeforderte Ressource nicht vorhanden ist und Application Gateway nicht versucht, die Dienstadresse erneut aufzulösen.
+Dieser HTTP-Antwortheader gibt eine normale HTTP 404-Situation an, in der die angeforderte Ressource nicht vorhanden ist und der Reverseproxy nicht versucht, die Dienstadresse erneut aufzulösen.
 
 ## <a name="setup-and-configuration"></a>Setup und Konfiguration
 

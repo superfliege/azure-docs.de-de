@@ -21,7 +21,7 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
 ---
-# Autorisieren des Zugriffs auf Webanwendungen mit OpenID Connect und Azure Active Directory
+# <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorisieren des Zugriffs auf Webanwendungen mit OpenID Connect und Azure Active Directory
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) ist eine einfache Identitätsebene, die auf dem OAuth 2.0-Protokoll aufbaut. OAuth 2.0 definiert Mechanismen zum Beziehen und Verwenden von **Zugriffstoken** für den Zugriff auf geschützte Ressourcen, jedoch keine Standardmethoden zum Bereitstellen von Identitätsinformationen. OpenID Connect implementiert die Authentifizierung als eine Erweiterung zur OAuth 2.0-Autorisierung. Es stellt Informationen über den Endbenutzer in Form eines `id_token` bereit, durch das die Identität des Benutzers überprüft wird und grundlegende Informationen aus dem Benutzerprofil bereitgestellt werden.
 
 OpenID Connect wird für Webanwendungen empfohlen, die auf einem Server gehostet werden und auf die über einen Browser zugegriffen wird.
@@ -29,12 +29,12 @@ OpenID Connect wird für Webanwendungen empfohlen, die auf einem Server gehostet
 
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)] 
 
-## Authentifizierungsfluss bei OpenID Connect
+## <a name="authentication-flow-using-openid-connect"></a>Authentifizierungsfluss bei OpenID Connect
 Der grundlegende Anmeldevorgang umfasst die folgenden Schritte – sie werden unten jeweils im Detail beschrieben.
 
 ![OpenId Connect-Authentifizierungsfluss](media/active-directory-protocols-openid-connect-code/active-directory-oauth-code-flow-web-app.png)
 
-## OpenID Connect-Metadatendokument
+## <a name="openid-connect-metadata-document"></a>OpenID Connect-Metadatendokument
 
 OpenID Connect beschreibt ein Metadatendokument, das den Großteil der erforderlichen Informationen für die Anmeldung einer App enthält. Hierzu gehören Informationen wie z.B. die zu verwendenden URLs und der Speicherort der öffentlichen Signaturschlüssel des Dienstes. Sie finden das OpenID Connect-Metadatendokument unter:
 
@@ -58,7 +58,7 @@ Bei den Metadaten handelt es sich um ein einfaches JavaScript Object Notation-Do
 }
 ```
 
-## Senden der Anmeldeanforderung
+## <a name="send-the-sign-in-request"></a>Senden der Anmeldeanforderung
 Wenn die Webanwendung den Benutzer authentifizieren muss, muss sie ihn an den `/authorize` -Endpunkt weiterleiten. Diese Anforderung ähnelt dem ersten Abschnitt des [OAuth 2.0-Autorisierungscodeflusses](active-directory-protocols-oauth-code.md), aber es gibt auch einige wichtige Unterschiede:
 
 * Die Anforderung muss im `scope`-Parameter den Bereich `openid` enthalten.
@@ -95,7 +95,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 An dieser Stelle wird der Benutzer aufgefordert, seine Anmeldeinformationen einzugeben und die Authentifizierung abzuschließen.
 
-### Beispiel für eine Antwort
+### <a name="sample-response"></a>Beispiel für eine Antwort
 Eine Antwort nach der Benutzerauthentifizierung sieht beispielsweise wie folgt aus:
 
 ```
@@ -111,7 +111,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 | id_token |Das von der App angeforderte `id_token` -Element. Mit dem `id_token` -Element können Sie die Identität des Benutzers überprüfen und eine Sitzung mit dem Benutzer beginnen. |
 | state |Ein in der Anforderung enthaltener Wert, der ebenfalls in der Tokenantwort zurückgegeben wird. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](http://tools.ietf.org/html/rfc6749#section-10.12).  Der Status wird auch verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z. B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 
-### Fehlerantwort
+### <a name="error-response"></a>Fehlerantwort
 Fehlerantworten können auch an den `redirect_uri` gesendet werden, damit die App diese angemessen behandeln kann:
 
 ```
@@ -127,7 +127,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
 
-#### Fehlercodes beim Autorisierungsendpunktfehler
+#### <a name="error-codes-for-authorization-endpoint-errors"></a>Fehlercodes beim Autorisierungsendpunktfehler
 Die folgende Tabelle beschreibt die verschiedenen Fehlercodes, die im `error` -Parameter der Fehlerantwort zurückgegeben werden können:
 
 | Fehlercode | Beschreibung | Clientaktion |
@@ -140,7 +140,7 @@ Die folgende Tabelle beschreibt die verschiedenen Fehlercodes, die im `error` -P
 | temporarily_unavailable |Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. |Wiederholen Sie die Anforderung. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist. |
 | invalid_resource |Die Zielressource ist ungültig, da sie nicht vorhanden ist, Azure AD sie nicht findet oder sie nicht ordnungsgemäß konfiguriert ist. |Dies gibt an, dass die Ressource, falls vorhanden, im Mandanten nicht konfiguriert wurde. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
 
-## Überprüfen des ID-Tokens
+## <a name="validate-the-idtoken"></a>Überprüfen des ID-Tokens
 Das Empfangen eines `id_token`-Elements allein reicht nicht aus, um den Benutzer zu authentifizieren. Sie müssen die Signatur validieren und die Ansprüche im `id_token`-Element gemäß den Anforderungen der App überprüfen. Der Azure AD-Endpunkt verwendet JSON-Webtoken (JWTs) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen.
 
 Sie können `id_token` auch im Clientcode überprüfen. Es ist jedoch eine bewährte Methode, `id_token` an einen Back-End-Server zu senden und die Überprüfung dort auszuführen. Nach der Überprüfung der Signatur des `id_token`-Elements müssen noch einige Ansprüche überprüft werden.
@@ -153,7 +153,7 @@ Sie können je nach Szenario auch zusätzliche Ansprüche überprüfen. Einige a
 
 Nach der Überprüfung des `id_token`-Elements können Sie mit dem Benutzer eine Sitzung beginnen und die Ansprüche im `id_token`-Element zum Abrufen von Informationen über den Benutzer in der App verwenden. Diese Informationen kann für die Anzeige, für Datensätze, für die Autorisierung usw. verwendet werden. Weitere Informationen zu den Tokentypen und Ansprüchen finden Sie unter [Unterstützte Token- und Anspruchstypen](active-directory-token-and-claims.md).
 
-## Senden einer Abmeldeanforderung
+## <a name="send-a-sign-out-request"></a>Senden einer Abmeldeanforderung
 Wenn Sie den Benutzer bei der App abmelden möchten, reicht es nicht, die Cookies der App zu löschen oder die Sitzung mit dem Benutzer auf andere Weise zu beenden.  Sie müssen den Benutzer für die Abmeldung außerdem an den `end_session_endpoint` umleiten.  Andernfalls kann sich der Benutzer erneut für Ihre Anwendung authentifizieren, ohne die Anmeldeinformationen erneut einzugeben, da der Benutzer nach wie vor über eine gültige SSO-Sitzung beim Azure AD-Endpunkt verfügt.
 
 Sie können den Benutzer einfach an den `end_session_endpoint` umleiten, der im OpenID Connect-Metadatendokument aufgeführt wird:
@@ -168,7 +168,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 | --- | --- | --- |
 | post_logout_redirect_uri |empfohlen |Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll.  Wenn keine Angabe erfolgt, wird dem Benutzer eine generische Meldung angezeigt. |
 
-## Einmaliges Abmelden
+## <a name="single-sign-out"></a>Einmaliges Abmelden
 Wenn Sie Benutzer an `end_session_endpoint` umleiten, löscht Azure AD die Sitzung des Benutzers aus dem Browser. Allerdings kann der Benutzer weiterhin bei anderen Anwendungen angemeldet sein, die Azure AD für die Authentifizierung verwenden. Damit diese Anwendungen den Benutzer gleichzeitig abmelden können, sendet Azure AD eine HTTP GET-Anforderung an die registrierte `LogoutUrl` aller Anwendungen, bei denen der Benutzer zurzeit angemeldet ist. Anwendungen müssen auf diese Anforderung antworten, indem sie alle Sitzungen löschen, mit denen der Benutzer identifiziert wird, und eine `200`-Antwort zurückgeben.  Wenn Sie das einmalige Abmelden in Ihrer Anwendung unterstützen möchten, müssen Sie eine solche `LogoutUrl` im Code Ihrer Anwendung implementieren.  Sie können die `LogoutUrl` im Azure-Portal festlegen:
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
@@ -176,10 +176,10 @@ Wenn Sie Benutzer an `end_session_endpoint` umleiten, löscht Azure AD die Sitzu
 3. Wählen Sie im linken Navigationsbereich **Azure Active Directory**, dann **App Registrierungen** und schließlich Ihre Anwendung aus.
 4. Klicken Sie auf **Eigenschaften**, und suchen Sie das Textfeld **Abmelde-URL**. 
 
-## Tokenbeschaffung
+## <a name="token-acquisition"></a>Tokenbeschaffung
 Viele Web-Apps müssen nicht nur den Benutzer anmelden, sondern auch mithilfe von OAuth im Namen dieses Benutzers auf einen Webdienst zugreifen. Bei diesem Szenario wird OpenID Connect für die Benutzerauthentifizierung verwendet und gleichzeitig ein Autorisierungscode (`authorization_code`) abgerufen, der mithilfe des OAuth-Autorisierungscodeflusses zum Abrufen von Zugriffstoken (`access_tokens`) verwendet werden kann.
 
-## Abrufen von Zugriffstoken
+## <a name="get-access-tokens"></a>Abrufen von Zugriffstoken
 Zum Abrufen von Zugriffstoken müssen Sie die oben aufgeführte Anmeldeanforderung ändern:
 
 ```
@@ -198,7 +198,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Applica
 
 Durch das Einschließen von Berechtigungsbereichen in die Anforderung und die Verwendung von `response_type=code+id_token` stellt der `authorize`-Endpunkt sicher, dass der Benutzer den im `scope`-Abfrageparameter angegebenen Berechtigungen zugestimmt hat. Anschließend gibt der Endpunkt einen Autorisierungscode an die App zurück, der gegen ein Zugriffstoken ausgetauscht wird.
 
-### Erfolgreiche Antwort
+### <a name="successful-response"></a>Erfolgreiche Antwort
 Eine erfolgreiche Antwort mit `response_mode=form_post` sieht wie folgt aus:
 
 ```
@@ -215,7 +215,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | Code |Der Autorisierungscode, den die App angefordert hat. Die App kann den Autorisierungscode zum Anfordern eines Zugriffstokens für die Zielressource verwenden. Autorisierungscodes sind kurzlebig und laufen in der Regel nach etwa zehn Minuten ab. |
 | state |Wenn ein Statusparameter in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die Statuswerte in der Anforderung und in der Antwort identisch sind. |
 
-### Fehlerantwort
+### <a name="error-response"></a>Fehlerantwort
 Fehlerantworten können auch an den `redirect_uri` gesendet werden, damit die App diese angemessen behandeln kann:
 
 ```

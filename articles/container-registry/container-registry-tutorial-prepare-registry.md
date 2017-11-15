@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 88feffc13690a3a33f757a43972c5ef1fe967b7f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 75408dc88b23b615971a23dc6235c563229d75aa
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="prepare-a-geo-replicated-azure-container-registry"></a>Vorbereiten einer georeplizierten Azure-Containerregistrierung
 
@@ -247,7 +247,7 @@ In diesem Tutorial haben Sie eine private, georeplizierte Containerregistrierung
 > * Erstellen eines Docker-Containerimage aus der Anwendungsquelle
 > * Übertragen des Containerimage per Push an Ihre Registrierung
 
-Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihren Container auf mehreren Azure App Service-Instanzen bereitstellen, indem Sie die Georeplikation für die lokale Bereitstellung der Images verwenden.
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihren Container auf mehreren Web-App für Container-Instanzen bereitstellen, indem Sie die Georeplikation für die lokale Bereitstellung der Images verwenden.
 
 > [!div class="nextstepaction"]
 > [Bereitstellen einer Web-App über Azure Container Registry](container-registry-tutorial-deploy-app.md)

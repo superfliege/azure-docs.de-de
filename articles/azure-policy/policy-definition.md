@@ -1,64 +1,24 @@
 ---
-title: Azure-Ressourcenrichtlinien | Microsoft-Dokumentation
-description: "Beschreibt, wie Sie mithilfe von Azure Resource Manager-Richtlinien sicherstellen, dass bei der Bereitstellung konsistente Ressourceneigenschaften festgelegt werden. Richtlinien können auf das Abonnement oder auf Ressourcengruppen angewendet werden."
-services: azure-resource-manager
-documentationcenter: na
-author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: abde0f73-c0fe-4e6d-a1ee-32a6fce52a2d
-ms.service: azure-resource-manager
-ms.devlang: na
+title: Struktur von Azure Policy-Definitionen | Microsoft-Dokumentation
+description: "Beschreibt, wie die Definition von Ressourcenrichtlinien von Azure Policy verwendet wird, um Konventionen für Ressourcen in Ihrer Organisation einzurichten, indem beschrieben wird, wann die Richtlinie erzwungen wird, und welche Aktionen durchzuführen sind."
+services: azure-policy
+keywords: 
+author: bandersmsft
+ms.author: banders
+ms.date: 10/31/2017
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/09/2017
-ms.author: tomfitz
-ms.openlocfilehash: cfdbf35b76b6a7f3cddb2deb35dfc475e0fc600f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.service: azure-policy
+ms.custom: 
+ms.openlocfilehash: 8ff85f842356eff3f12ccd04e337d71c52d0efcd
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
-# <a name="resource-policy-overview"></a>Übersicht über Ressourcenrichtlinien
-Mithilfe von Ressourcenrichtlinien können Sie Konventionen für Ressourcen in Ihrer Organisation einrichten. Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass alle Ressourcen ein bestimmtes Tag aufweisen. Richtlinien werden von allen untergeordneten Ressourcen geerbt. Wenn also eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie auch für alle Ressourcen in der Ressourcengruppe.
+# <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
-Im Zusammenhang mit Richtlinien gibt es zwei wichtige Konzepte:
+Von Azure Policy verwendete Definition von Ressourcenrichtlinien ermöglichen es Ihnen, Konventionen für Ressourcen in Ihrer Organisation einzurichten, indem Sie beschreiben, wann die Richtlinie erzwungen werden soll, und welche Aktionen durchzuführen sind. Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass alle Ressourcen ein bestimmtes Tag aufweisen. Richtlinien werden von allen untergeordneten Ressourcen geerbt. Wenn also eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie auch für alle Ressourcen in der Ressourcengruppe.
 
-* Richtliniendefinition: Sie beschreiben, wann die Richtlinie erzwungen wird und welche Aktion ausgeführt werden soll.
-* Richtlinienzuweisung: Sie wenden die Richtliniendefinition auf einen Bereich (Abonnement oder Ressourcengruppe) an.
-
-Dieses Thema beschäftigt sich mit der Richtliniendefinition. Weitere Informationen zur Richtlinienzuweisung finden Sie unter [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md) und [Zuweisen und Verwalten von Richtlinien mit Skripts](resource-manager-policy-create-assign.md).
-
-Richtlinien werden beim Erstellen und Aktualisieren von Ressourcen (PUT- und PATCH-Vorgänge) ausgewertet.
-
-## <a name="how-is-it-different-from-rbac"></a>Worin unterscheidet sich dies von der rollenbasierten Zugriffssteuerung (RBAC)?
-Zwischen einer Richtlinie und der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) gibt es einige entscheidende Unterschiede. Bei RBAC stehen **Benutzeraktionen** in verschiedenen Bereichen im Mittelpunkt. Beispiel: Sie werden der Rolle „Mitwirkender“ für eine Ressourcengruppe in einem bestimmten Bereich hinzugefügt, um Änderungen an der Ressourcengruppe vornehmen zu können. Bei einer Richtlinie stehen **Ressourceneigenschaften** während der Bereitstellung im Mittelpunkt. Sie können beispielsweise über Richtlinien steuern, welche Ressourcentypen bereitgestellt werden können. Oder Sie können die Standorte einschränken, an denen die Ressourcen bereitgestellt werden können. Im Gegensatz zur RBAC stellen Richtlinien ein Standardsystem für das Zulassen und explizite Verweigern dar. 
-
-Zum Verwenden von Richtlinien müssen Sie über die RBAC authentifiziert sein. Ihr Konto benötigt insbesondere Folgendes:
-
-* Die Berechtigung `Microsoft.Authorization/policydefinitions/write` zum Definieren einer Richtlinie
-* Die Berechtigung `Microsoft.Authorization/policyassignments/write` zum Zuweisen einer Richtlinie 
-
-Diese Berechtigungen sind in der Rolle **Mitwirkender** nicht enthalten.
-
-## <a name="built-in-policies"></a>Integrierte Richtlinien
-
-Azure stellt einige integrierte Richtliniendefinitionen bereit, um ggf. die Anzahl der zu definierenden Richtlinien zu verringern. Bevor Sie mit Richtliniendefinitionen fortfahren, sollten Sie erwägen, ob die benötigte Definition bereits durch eine integrierte Richtlinie vorgegeben wird. Integrierte Richtliniendefinitionen:
-
-* Allowed locations (Zulässige Speicherorte)
-* Zulässige Ressourcentypen
-* Allowed storage account SKUs (Zulässige Speicherkonto-SKUs)
-* Allowed virtual machine SKUs (Zulässige VM-SKUs)
-* Apply tag and default value (Tag und Standardwert anwenden)
-* Enforce tag and value (Tag und Wert erzwingen)
-* Not allowed resource types (Unzulässige Ressourcentypen)
-* Require SQL Server version 12.0 (SQL Server-Version 12.0 fordern)
-* Require storage account encryption (Speicherkontoverschlüsselung fordern)
-
-Sie können diese Richtlinien über das [Portal](resource-manager-policy-portal.md), [PowerShell](resource-manager-policy-create-assign.md#powershell) oder die [Azure-CLI](resource-manager-policy-create-assign.md#azure-cli) zuweisen.
-
-## <a name="policy-definition-structure"></a>Struktur von Richtliniendefinitionen
 Eine Richtliniendefinition wird mithilfe von JSON erstellt. Die Richtliniendefinition enthält Elemente für Folgendes:
 
 * Modus
@@ -69,7 +29,7 @@ Eine Richtliniendefinition wird mithilfe von JSON erstellt. Die Richtliniendefin
   * Logische Auswertung
   * Wirkung
 
-Das folgende Beispiel zeigt eine Richtlinie, die einschränkt, wo Ressourcen bereitgestellt werden:
+Die folgende JSON-Datei zeigt beispielsweise eine Richtlinie, die einschränkt, wo Ressourcen bereitgestellt werden:
 
 ```json
 {
@@ -102,16 +62,25 @@ Das folgende Beispiel zeigt eine Richtlinie, die einschränkt, wo Ressourcen ber
 }
 ```
 
+Zusätzliche Vorlagenbeispiele für Azure Policy finden Sie unter [Templates for Azure Policy (Vorlagen für Azure Policy)](json-samples.md).
+
 ## <a name="mode"></a>Mode
 
-Es wird empfohlen, `mode` auf `all` zu setzen. Wenn Sie ihn auf **alle** setzen, werden Ressourcengruppen und alle Ressourcentypen für die Richtlinie ausgewertet. Das Portal verwendet **alle** für alle Richtlinien. Wenn Sie PowerShell oder Azure-CLI verwenden, müssen Sie den `mode`-Parameter angeben und auf **alle** setzen.
- 
-Zuvor wurden Richtlinien nur nach Ressourcentypen ausgewertet, die Tags und den Speicherort unterstützten. Im `indexed`-Modus wird dieses Verhalten fortgesetzt. Bei Verwendung des **alle**-Modus werden Richtlinien auch anhand von Ressourcentypen ausgewertet, die Tags und den Speicherort nicht unterstützen. [Virtual Network-Subnetz](https://github.com/Azure/azure-policy-samples/tree/master/samples/Network/enforce-nsg-on-subnet) ist ein Beispiel für einen neu hinzugefügten Typ. Darüber hinaus werden Ressourcengruppen ausgewertet, wenn der Modus auf **alle** festgelegt ist. Sie können z.B. [Tags für eine Ressourcengruppe erzwingen](https://github.com/Azure/azure-policy-samples/tree/master/samples/ResourceGroup/enforce-resourceGroup-tags). 
+Es wird empfohlen, dass Sie `mode` auf `all` festlegen, damit eine Richtlinienzuweisung sämtliche Ressourcengruppen und -typen überprüft. Ihnen wird unter [Allow custom VM image from a Resource Group (Zulassen eines benutzerdefinierten VM-Images aus einer Ressourcengruppe)](scripts/allow-custom-vm-image.md) ein Beispiel für eine Richtliniendefinition angezeigt, die Tags für Ressourcengruppen erzwingen.
+
+Wenn Sie ihn auf **alle** setzen, werden Ressourcengruppen und alle Ressourcentypen für die Richtlinie ausgewertet. Das Portal verwendet **alle** für alle Richtlinien. Wenn Sie PowerShell oder Azure-CLI verwenden, müssen Sie den `mode`-Parameter angeben und auf **alle** setzen.
+
+Sämtliche Richtliniendefinitionen, die über das Portal erstellt werden, verwenden einen `all`-Modus. Wenn Sie allerdings PowerShell oder Azure CLI verwenden möchten, müssen Sie den `mode`-Parameter angeben und auf `all` festlegen.
+
+Wenn Sie den Modus auf `indexed` festlegen, wird die Richtlinienzuweisung nur auf Ressourcentypen geprüft, die Tags und den Standort unterstützen.
+
 
 ## <a name="parameters"></a>Parameter
-Das Verwenden von Parametern vereinfacht die Richtlinienverwaltung, da die Anzahl von Richtliniendefinitionen reduziert wird. Sie definieren eine Richtlinie für eine Ressourceneigenschaft (beispielsweise, um die Orte einzuschränken, an denen Ressourcen bereitgestellt werden können) und schließen Parameter in die Definition ein. Diese Richtliniendefinition verwenden Sie dann auch für andere Szenarien, indem Sie beim Zuweisen der Richtlinie andere Werte (etwa eine Gruppe von Standorten für ein Abonnement) übergeben.
 
-Sie deklarieren die Parameter beim Erstellen von Richtliniendefinitionen.
+Parameter vereinfachen Ihre Richtlinienverwaltung, indem sie die Anzahl von Richtliniendefinitionen reduzieren. Es handelt sich dabei z.B. um Parameter wie die folgenden Felder auf einem Formular: `name`, `address`, `city`, `state`. Diese Parameter bleiben immer gleich, allerdings ändern sich ihre Werte auf Grundlage der Einträge des Einzelnen. Parameter funktionieren beim Erstellen von Richtlinien genauso. Sie können die Richtlinie für verschiedene Szenarios wiederverwenden, indem Sie Parameter in eine Richtliniendefinition einbeziehen und verschiedene Werte verwenden.
+
+Beispielsweise könnten Sie eine Richtlinie für eine Ressourceneigenschaft verwenden, um die Standorte, an denen Ressourcen bereitgestellt werden können, einzuschränken. In diesem Fall sollten Sie die folgenden Parameter deklarieren, wenn Sie eine Richtlinie erstellen:
+
 
 ```json
 "parameters": {
@@ -125,12 +94,12 @@ Sie deklarieren die Parameter beim Erstellen von Richtliniendefinitionen.
 }
 ```
 
-Der Typ eines Parameters kann Zeichenfolge oder Array sein. Die Metadateneigenschaft wird für Tools wie das Azure-Portal verwendet, um benutzerfreundliche Informationen anzuzeigen. 
+Der Typ eines Parameters kann Zeichenfolge oder Array sein. Die Metadateneigenschaft wird für Tools wie das Azure-Portal verwendet, um benutzerfreundliche Informationen anzuzeigen.
 
-In der Richtlinienregel wird die folgende Syntax verwendet, um auf Parameter zu verweisen: 
+In der Richtlinienregel wird die folgende Syntax verwendet, um auf Parameter zu verweisen:
 
 ```json
-{ 
+{
     "field": "location",
     "in": "[parameters('allowedLocations')]"
 }
@@ -138,11 +107,13 @@ In der Richtlinienregel wird die folgende Syntax verwendet, um auf Parameter zu 
 
 ## <a name="display-name-and-description"></a>Anzeigename und Beschreibung
 
-**displayName** und **description** dienen zum Identifizieren der Richtliniendefinition und geben den Kontext für die Verwendung an.
+Sie können **displayName** und **description** verwenden, um die Richtliniendefinition zu definieren und den Kontext für die Verwendung anzugeben.
 
 ## <a name="policy-rule"></a>Richtlinienregel
 
-Die Richtlinienregel besteht aus **If**- und **Then**-Blöcken. Im **If**-Block definieren Sie mindestens eine Bedingung, die angibt, wann die Richtlinie erzwungen wird. Auf diese Bedingungen können logische Operatoren angewendet werden, um das Szenario für eine Richtlinie präzise zu definieren. Im **Then**-Block definieren Sie die Wirkung, die eintritt, wenn die **If**-Bedingungen erfüllt sind.
+Die Richtlinienregel besteht aus **If**- und **Then**-Blöcken. Im **If**-Block definieren Sie mindestens eine Bedingung, die angibt, wann die Richtlinie erzwungen wird. Auf diese Bedingungen können logische Operatoren angewendet werden, um das Szenario für eine Richtlinie präzise zu definieren.
+
+Im **Then**-Block definieren Sie die Wirkung, die eintritt, wenn die **If**-Bedingungen erfüllt sind.
 
 ```json
 {
@@ -156,6 +127,7 @@ Die Richtlinienregel besteht aus **If**- und **Then**-Blöcken. Im **If**-Block 
 ```
 
 ### <a name="logical-operators"></a>Logische Operatoren
+
 Folgende logische Operatoren werden unterstützt:
 
 * `"not": {condition  or operator}`
@@ -164,7 +136,7 @@ Folgende logische Operatoren werden unterstützt:
 
 Die **not**-Syntax kehrt das Ergebnis der Bedingung um. Die **allOf**-Syntax gleicht der logischen **And**-Operation und erfordert, dass alle Bedingungen erfüllt sind. Die **anyOf**-Syntax gleicht der logischen **Or**-Operation und erfordert, dass mindestens eine Bedingung erfüllt ist.
 
-Logische Operatoren können geschachtelt werden. Das folgende Beispiel zeigt eine **not**-Operation, die in einer **allOf**-Operation geschachtelt ist. 
+Logische Operatoren können geschachtelt werden. Das folgende Beispiel zeigt eine **not**-Operation, die in einer **allOf**-Operation geschachtelt ist.
 
 ```json
 "if": {
@@ -184,7 +156,8 @@ Logische Operatoren können geschachtelt werden. Das folgende Beispiel zeigt ein
 ```
 
 ### <a name="conditions"></a>Bedingungen
-Die Bedingung überprüft, ob ein **Feld** bestimmte Kriterien erfüllt. Folgende Bedingungen werden unterstützt:
+
+Eine Bedingung überprüft, ob ein **Feld** bestimmte Kriterien erfüllt. Folgende Bedingungen werden unterstützt:
 
 * `"equals": "value"`
 * `"like": "value"`
@@ -196,7 +169,7 @@ Die Bedingung überprüft, ob ein **Feld** bestimmte Kriterien erfüllt. Folgend
 
 Bei Verwendung der Bedingung **like** können Sie im Wert einen Platzhalter (*) angeben.
 
-Geben Sie bei Verwendung der **match**-Bedingung für eine Ziffer `#`, für einen Buchstaben `?` und für ein Zeichen das gewünschte Zeichen ein. Beispiele finden Sie unter [Anwenden von Ressourcenrichtlinien für Namen und Text](resource-manager-policy-naming-convention.md).
+Geben Sie bei Verwendung der **match**-Bedingung für eine Ziffer `#`, für einen Buchstaben `?` und für ein Zeichen das gewünschte Zeichen ein. Beispiele finden Sie unter [Approved VM images (Genehmigte VM-Images)](scripts/allowed-custom-images.md).
 
 ### <a name="fields"></a>Felder
 Bedingungen werden mithilfe von Feldern gebildet. Ein Feld stellt Eigenschaften in der Anforderungsnutzlast einer Ressource dar, mit der der Zustand der Ressource beschrieben wird.  
@@ -208,17 +181,18 @@ Folgende Felder werden unterstützt:
 * `type`
 * `location`
 * `tags`
-* `tags.*` 
+* `tags.*`
 * Eigenschaftenaliase – Eine Liste finden Sie unter [Aliase](#aliases).
 
 ### <a name="effect"></a>Effekt
-Die Richtlinie unterstützt fünf Arten von Effekten: `deny`, `audit`, `append`, `AuditIfNotExists` und `DeployIfNotExists`. 
+Die Richtlinie unterstützt die folgenden Arten von Effekten:
 
-* **Deny** generiert ein Ereignis im Überwachungsprotokoll, und die Anforderung ist nicht erfolgreich.
-* **Audit** generiert eine Warnung im Überwachungsprotokoll, und die Anforderung ist erfolgreich.
-* **Append** fügt der Anforderung den definierten Satz von Feldern hinzu. 
-* **AuditIfNotExists**: aktiviert die Überwachung, wenn eine Ressource nicht vorhanden ist.
-* **DeployIfNotExists**: stellt eine Ressource bereit, wenn sie nicht bereits vorhanden ist. Dieser Effekt wird derzeit nur über integrierte Richtlinien unterstützt.
+* **Deny** generiert ein Ereignis im Überwachungsprotokoll und lässt die Anforderung fehlschlagen.
+* **Audit** generiert eine Warnung im Überwachungsprotokoll, lässt die Anforderung aber nicht fehlschlagen.
+* **Append** fügt der Anforderung verschiedene definierte Felder hinzu.
+* **AuditIfNotExists** aktiviert das Überwachen, wenn eine Ressource nicht vorhanden ist.
+* **DeployIfNotExists** stellt eine Ressource bereit, falls noch keine vorhanden ist. Dieser Effekt wird derzeit nur über integrierte Richtlinien unterstützt.
+* **DenyIfNotExists** verweigert das Erstellen einer exist-Bedingung, wenn diese nicht vorhanden ist.
 
 Für **append**müssen Sie die folgenden Details angeben:
 
@@ -232,11 +206,11 @@ Für **append**müssen Sie die folgenden Details angeben:
 ]
 ```
 
-Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein. 
+Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein.
 
-Mit **AuditIfNotExists** und **DeployIfNotExists** können Sie das Vorhandensein einer untergeordneten Ressource auswerten und eine Regel anwenden, wenn diese Ressource nicht vorhanden ist. Sie können z.B. erforderlich machen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird.
+Mit **AuditIfNotExists**, **DeployIfNotExists** und **DenyIfNotExists** können Sie das Vorhandensein einer untergeordneten Ressource auswerten und eine Regel anwenden, wenn diese Ressource nicht vorhanden ist. Sie können z.B. verlangen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird.
+Ein Beispiel für das Überwachen, wenn keine VM-Erweiterung bereitgestellt wird, finden Sie unter [Audit if extension does not exist (Überwachen bei nicht vorhandener Erweiterung)](scripts/audit-ext-not-exist.md).
 
-Ein Beispiel für die Überwachung, wenn keine VM-Erweiterung bereitgestellt wird, finden Sie unter [Audit VM extensions (Überwachung-VM-Erweiterungen)](https://github.com/Azure/azure-policy-samples/blob/master/samples/Compute/audit-vm-extension/azurepolicy.json).
 
 ## <a name="aliases"></a>Aliase
 
@@ -308,7 +282,7 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 | Microsoft.Compute/VirtualMachineScaleSets/osdisk.vhdContainers | Hiermit werden die Container-URLs zum Speichern von Betriebssystemdatenträgern für die Skalierungsgruppe festgelegt. |
 | Microsoft.Compute/VirtualMachineScaleSets/sku.name | Hiermit wird die Größe der virtuellen Computer in einer Skalierungsgruppe festgelegt. |
 | Microsoft.Compute/VirtualMachineScaleSets/sku.tier | Hiermit wird die Ebene der virtuellen Computer in einer Skalierungsgruppe festgelegt. |
-  
+
 **Microsoft.Network/applicationGateways**
 
 | Alias | Beschreibung |
@@ -355,11 +329,12 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 | Microsoft.Storage/storageAccounts/sku.name | Hiermit wird der SKU-Name festgelegt. |
 | Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | Hiermit wird festgelegt, dass nur HTTPS-Datenverkehr zum Speicherdienst zugelassen wird. |
 
-## <a name="policy-sets"></a>Richtliniensätze
+## <a name="initiatives"></a>Initiativen
 
-Richtliniensätze ermöglichen es Ihnen, mehrere verwandte Richtliniendefinitionen zu gruppieren. Der Richtliniensatz vereinfacht die Zuweisung und Verwaltung, da Sie mit der Gruppe als ein einzelnes Element arbeiten. Beispielsweise können Sie alle verknüpften Tagging-Richtlinien in einem einzelnen Richtliniensatz gruppieren. Statt jede Richtlinie einzeln zuzuweisen, wenden Sie den Richtliniensatz an.
- 
-Im folgenden Beispiel wird veranschaulicht, wie ein Richtliniensatz zur Behandlung von zwei Tags („costCenter“ und „productName“) erstellt werden kann. Es werden zwei integrierte Richtlinien für das Anwenden des Standardwerts für den Tag und die Durchsetzung des Tagwerts verwendet. Die Richtlinie deklariert zwei Parameter, „costCenterValue“ und „productNameValue“ für Wiederverwendbarkeit. Es wird mehrmals auf die beiden integrierten Richtliniendefinitionen mit verschiedenen Parametern verwiesen. Für jeden Parameter können Sie entweder einen festen Wert bereitstellen, wie für „tagName“ gezeigt, oder einen Parameter aus dem Richtliniensatz, wie für „tagValue“ gezeigt.
+Mithilfe von Initiativen können Sie mehrere verwandte Richtliniendefinitionen gruppieren, um Zuweisungen und das Verwalten zu vereinfachen, indem Sie mit einer Gruppe als einzelnes Element arbeiten. Beispielsweise können Sie alle verknüpften Richtliniendefinitionen zum Markieren in einer einzelnen Initiative gruppieren. Anstatt jede Richtlinie einzeln zuzuweisen, wenden Sie die Initiative an.
+
+Im folgenden Beispiel wird veranschaulicht, wie eine Initiative zur Behandlung der Tags `costCenter` und `productName` erstellt werden kann. Es werden zwei integrierte Richtlinien verwendet, um den Standardtagwert anzuwenden.
+
 
 ```json
 {
@@ -434,17 +409,6 @@ Im folgenden Beispiel wird veranschaulicht, wie ein Richtliniensatz zur Behandlu
 }
 ```
 
-Sie fügen einen Richtliniensatz mit dem PowerShell-Befehl **New-AzureRMPolicySetDefinition** hinzu.
-
-Für REST-Vorgänge verwenden Sie die API-Version **2017-06-01-preview**, wie im folgenden Beispiel gezeigt:
-
-```
-PUT /subscriptions/<subId>/providers/Microsoft.Authorization/policySetDefinitions/billingTagsPolicySet?api-version=2017-06-01-preview
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
-* Nach dem Definieren einer Richtlinienregel weisen Sie sie einem Bereich zu. Wenn Sie Richtlinien über das Portal zuweisen möchten, siehe [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md). Wenn Sie Richtlinien über die REST-API, PowerShell oder die Azure-CLI zuweisen möchten, siehe [Zuweisen und Verwalten von Richtlinien mit Skripts](resource-manager-policy-create-assign.md).
-* Beispiele für Richtlinien finden Sie unter [Azure resource policy GitHub repository (Azure Ressourcenrichtlinien-GitHub-Repository)](https://github.com/Azure/azure-policy-samples).
-* Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
-* Das Richtlinienschema wird unter [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json)veröffentlicht. 
 
+- Zusätzliche Vorlagenbeispiele für Azure Policy finden Sie unter [Templates for Azure Policy (Vorlagen für Azure Policy)](json-samples.md).

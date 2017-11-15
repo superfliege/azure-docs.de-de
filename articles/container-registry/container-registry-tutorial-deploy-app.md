@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 749a536fea50d0f45b021cfeaffe8e493faa9b3f
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 90d4b51dfaad409298f72887480dfaf827aef9f0
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="deploy-web-app-from-azure-container-registry"></a>Bereitstellen einer Web-App über Azure Container Registry
 
@@ -36,7 +36,7 @@ Wenn Sie noch keine georeplizierte Registrierung erstellt und noch kein Image de
 
 Im nächsten Teil der Reihe aktualisieren Sie die Anwendung und übertragen anschließend mithilfe von Push ein neues Containerimage an die Registrierung. Danach navigieren Sie zu den beiden ausgeführten Web-App-Instanzen, um zu sehen, dass die Änderung jeweils automatisch übernommen wurde. Dies zeigt die Georeplikation und Webhooks von Azure Container Registry in Aktion.
 
-## <a name="automatic-deployment-to-web-app-for-containers"></a>Automatische Bereitstellung in Web-App für Container
+## <a name="automatic-deployment-to-web-apps-for-containers"></a>Automatisches Bereitstellen in Web-App für Container
 
 Azure Container Registry unterstützt die direkte Bereitstellung containerbasierter Anwendungen in [Web-Apps für Container](../app-service/containers/index.yml). In diesem Tutorial verwenden Sie das Azure-Portal, um das im vorherigen Tutorial erstellte Containerimage in zwei Web-App-Plänen in unterschiedlichen Azure-Regionen bereitzustellen.
 
@@ -48,11 +48,11 @@ In diesem Schritt erstellen Sie eine Instanz von „Web-App für Container“ in
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu der Registrierung, die Sie im vorherigen Tutorial erstellt haben.
 
-Klicken Sie auf **Repositorys** > **acr-helloworld**, klicken Sie unter **Tags** mit der rechten Maustaste auf das Tag **v1**, und klicken Sie anschließend auf **In App Service bereitstellen**.
+Wählen Sie **Repositorys** > **acr-helloworld** aus, klicken Sie unter **Tags** mit der rechten Maustaste auf das Tag **v1**, und klicken Sie anschließend auf **In Web-App bereitstellen**.
 
 ![„In App Service bereitstellen“ im Azure-Portal][deploy-app-portal-01]
 
-Geben Sie unter **Web-App in Linux (Vorschau)** die folgenden Werte für die einzelnen Einstellungen an:
+Geben Sie unter **Web-App für Container** die folgenden Werte für die einzelnen Einstellungen an:
 
 | Einstellung | Wert |
 |---|---|
@@ -71,7 +71,7 @@ Nach Abschluss der Bereitstellung können Sie die ausgeführte Anwendung anzeige
 
 Klicken Sie im Portal auf **App Services** und anschließend auf die Web-App, die Sie im vorherigen Schritt bereitgestellt haben. In diesem Beispiel hat die Web-App den Namen *uniqueregistryname-westus*.
 
-Klicken Sie rechts oben in der **App Service-Übersicht** auf die als Link dargestellte URL der Web-App, um die ausgeführte Anwendung in Ihrem Browser anzuzeigen.
+Wählen Sie rechts oben in der **App Service-Übersicht** die als Link dargestellte URL der Web-App aus, um die ausgeführte Anwendung in Ihrem Browser anzuzeigen.
 
 ![Konfiguration der Web-App unter Linux im Azure-Portal][deploy-app-portal-04]
 
@@ -81,7 +81,7 @@ Nachdem das Docker-Image über Ihre georeplizierte Containerregistrierung bereit
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>Bereitstellen der zweiten Instanz von „Web-App für Container“
 
-Gehen Sie wie im vorherigen Abschnitt beschrieben vor, um eine zweite Web-App in der Region *USA, Osten* bereitzustellen. Geben Sie unter **Web-App unter Linux (Vorschau)** die folgenden Werte an:
+Gehen Sie wie im vorherigen Abschnitt beschrieben vor, um eine zweite Web-App in der Region *USA, Osten* bereitzustellen. Geben Sie unter **Web-App für Container** die folgenden Werte an:
 
 | Einstellung | Wert |
 |---|---|

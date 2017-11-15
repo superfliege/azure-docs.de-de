@@ -14,39 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: bb690bf86743136778e01b480b98c9cc08211839
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ea6fc67a0f5bdfe09435a00c4d2651f312695d25
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="advisor-security-recommendations"></a>Advisor-Empfehlungen zur Sicherheit
 
 Der Azure-Ratgeber bietet Ihnen eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen. Azure Advisor und Azure Security Center sind integriert und bieten Ihnen sicherheitsbezogene Empfehlungen. Sicherheitsempfehlungen finden Sie auf dem Ratgeber-Dashboard auf der Registerkarte **Sicherheit**.
 
-![Ratgeber-Schaltfläche „Sicherheit“](./media/advisor-security-recommendations/advisor-security-tab.png)
-
 Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Die Sicherheitslösung analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen. Wenn Security Center potenzielle Sicherheitsrisiken identifiziert, werden Empfehlungen erstellt. Entsprechend den Empfehlungen werden Sie durch den Prozess der Konfiguration des erforderlichen Sicherheitsmechanismus geführt. 
-
-![Ratgeber-Registerkarte „Sicherheit“](./media/advisor-security-recommendations/advisor-security-recommendations.png)
 
 Weitere Informationen über Empfehlungen zur Sicherheit finden Sie unter [Verwalten von Sicherheitsempfehlungen in Azure Security Center](https://azure.microsoft.com/en-us/documentation/articles/security-center-recommendations/).
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Zugreifen auf Sicherheitsempfehlungen im Azure-Ratgeber
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie den [Ratgeber](https://aka.ms/azureadvisordashboard).
 
-2. Klicken Sie im linken Bereich auf **Weitere Dienste**.
-
-3. Klicken Sie im Dienstmenübereich unter **Überwachung und Verwaltung** auf **Azure-Ratgeber**.  
- Das Ratgeberdashboard wird angezeigt.
-
-4. Klicken Sie auf dem Ratgeber-Dashboard auf die Registerkarte **Sicherheit**.
-
-5. Wählen Sie das Abonnement aus, für das Sie Empfehlungen erhalten möchten, und klicken Sie anschließend auf **Empfehlungen abrufen**.
-
-> [!NOTE]
-> Für den Zugriff auf die Empfehlungen des Ratgebers müssen Sie Ihr Abonnement zunächst beim Ratgeber *registrieren*. Ein Abonnement wird registriert, wenn ein *Abonnementbesitzer* das Ratgeberdashboard aufruft und auf die Schaltfläche **Empfehlungen abrufen** klickt. Dies ist eine *einmalige Aufgabe*. Sobald ein Abonnement registriert wurde, können *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements, einer Ressourcengruppe oder einer bestimmten Ressource auf die Ratgeberempfehlungen zugreifen.
+2.  Klicken Sie auf dem Ratgeber-Dashboard auf die Registerkarte **Sicherheit**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

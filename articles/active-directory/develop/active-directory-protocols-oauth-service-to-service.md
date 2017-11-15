@@ -21,10 +21,10 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
 ---
-# Dienst-zu-Dienst-Aufrufe mit Clientanmeldeinformationen (freigegebenes Geheimnis oder Zertifikat)
+# <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Dienst-zu-Dienst-Aufrufe mit Clientanmeldeinformationen (freigegebenes Geheimnis oder Zertifikat)
 Beim Fluss zur Gewährung von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein *vertraulicher Client*) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines anderen Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website. Für ein höheres Maß an Sicherheit kann der aufrufende Dienst anstelle eines gemeinsamen Geheimnisses auch ein Zertifikat als Anmeldeinformationen verwenden.
 
-## Diagramm: Fluss zur Gewährung von Clientanmeldeinformationen
+## <a name="client-credentials-grant-flow-diagram"></a>Diagramm: Fluss zur Gewährung von Clientanmeldeinformationen
 Im folgenden Diagramm wird veranschaulicht, wie der Fluss zur Gewährung von Clientanmeldeinformationen in Azure Active Directory (Azure AD) funktioniert.
 
 ![Fluss zum Gewähren von OAuth 2.0-Clientanmeldeinformationen](media/active-directory-protocols-oauth-service-to-service/active-directory-protocols-oauth-client-credentials-grant-flow.jpg)
@@ -34,20 +34,20 @@ Im folgenden Diagramm wird veranschaulicht, wie der Fluss zur Gewährung von Cli
 3. Das Zugriffstoken wird verwendet, um die geschützte Ressource zu authentifizieren.
 4. Die Daten aus der geschützten Ressource werden an die Webanwendung zurückgegeben.
 
-## Registrieren der Dienste in Azure AD
+## <a name="register-the-services-in-azure-ad"></a>Registrieren der Dienste in Azure AD
 Registrieren Sie sowohl den aufrufenden Dienst als auch den empfangenden Dienst in Azure Active Directory (Azure AD). Ausführlichere Informationen finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](active-directory-integrating-applications.md).
 
-## Anfordern eines Zugriffstokens
+## <a name="request-an-access-token"></a>Anfordern eines Zugriffstokens
 Verwenden Sie zum Anfordern eines Zugriffstokens ein HTTP POST-Element für den mandantenspezifischen Azure AD-Endpunkt.
 
 ```
 https://login.microsoftonline.com/<tenant id>/oauth2/token
 ```
 
-## Dienst-zu-Dienst-Zugriffstokenanforderung
+## <a name="service-to-service-access-token-request"></a>Dienst-zu-Dienst-Zugriffstokenanforderung
 Es sind zwei Fälle denkbar – je nachdem, ob die Clientanwendung durch ein gemeinsames Geheimnis oder durch ein Zertifikat geschützt wird.
 
-### Erster Fall: Zugriffstokenanforderung mit einem gemeinsamen Geheimnis
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Erster Fall: Zugriffstokenanforderung mit einem gemeinsamen Geheimnis
 Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zugriffstokenanforderung die folgenden Parameter:
 
 | Parameter |  | Beschreibung |
@@ -57,7 +57,7 @@ Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zug
 | client_secret |erforderlich |Geben Sie einen Schlüssel ein, der für den aufrufenden Webdienst oder für die aufrufende Daemon-Anwendung in Azure AD registriert ist. Klicken Sie zum Erstellen eines Schlüssels im Azure-Portal auf **Active Directory**, wechseln Sie das Verzeichnis, und klicken Sie auf die Anwendung. Klicken Sie anschließend auf **Einstellungen** > **Schlüssel**, und fügen Sie einen Schlüssel hinzu.|
 | resource |erforderlich |Geben Sie den App-ID-URI des empfangenden Webdiensts ein. Klicken Sie zum Ermitteln des App-ID-URI im Azure-Portal auf **Active Directory**, wechseln Sie das Verzeichnis, klicken Sie auf die Dienstanwendung, und klicken Sie anschließend auf **Einstellungen** > **Eigenschaften**. |
 
-#### Beispiel
+#### <a name="example"></a>Beispiel
 Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für den Webdienst „https://service.contoso.com/“ angefordert. Mit der `client_id` wird der Webdienst identifiziert, der das Zugriffstoken anfordert.
 
 ```
@@ -68,7 +68,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&client_secret=qkDwDJlDfig2IpeuUZYKH1Wb8q1V0ju6sILxQQqhJ+s=&resource=https%3A%2F%2Fservice.contoso.com%2F
 ```
 
-### Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat
+### <a name="second-case-access-token-request-with-a-certificate"></a>Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die folgenden Parameter:
 
 | Parameter |  | Beschreibung |
@@ -81,7 +81,7 @@ Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die
 
 Beachten Sie, dass die Parameter nahezu identisch mit den Parametern der Anforderung mit dem gemeinsamen geheimen Schlüssel sind. Einziger Unterschied: Anstelle des Parameters „client_secret“ werden die beiden Parameter „client_assertion_type“ und „client_assertion“ verwendet.
 
-#### Beispiel
+#### <a name="example"></a>Beispiel
 Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für den Webdienst „https://service.contoso.com/“ mit einem Zertifikat angefordert. Mit der `client_id` wird der Webdienst identifiziert, der das Zugriffstoken anfordert.
 
 ```
@@ -92,7 +92,7 @@ Content-Type: application/x-www-form-urlencoded
 resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b3bf&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg&grant_type=client_credentials
 ```
 
-### Dienst-zu-Dienst-Zugriffstokenantwort
+### <a name="service-to-service-access-token-response"></a>Dienst-zu-Dienst-Zugriffstokenantwort
 
 Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden Parametern:
 
@@ -105,7 +105,7 @@ Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden
 | not_before |Der Zeitpunkt, ab dem das Zugriffstoken verwendet werden kann. Das Datum wird als Anzahl von Sekunden ab dem 1. Januar 1970 (1970-01-01T0:0:0Z UTC) bis zum Zeitpunkt der Tokengültigkeit dargestellt.|
 | resource |Der App-ID-URI des empfangenden Webdiensts. |
 
-#### Antwortbeispiel
+#### <a name="example-of-response"></a>Antwortbeispiel
 Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung für ein Zugriffstoken von einem Webdienst.
 
 ```
@@ -118,6 +118,6 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung für 
 }
 ```
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 * [OAuth 2.0 in Azure AD](active-directory-protocols-oauth-code.md)
 * [Beispiel des Dienst-zu-Dienst-Aufrufs mit einem gemeinsamen Geheimnis (C#)](https://github.com/Azure-Samples/active-directory-dotnet-daemon) und [Beispiel des Dienst-zu-Dienst-Aufrufs mit einem Zertifikat (C#)](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: huishao
-ms.openlocfilehash: 0010e01d4333b96696680ec6fbbeee74b17f46a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b41826f071174df8f00af56a228e0f31c3cfe2f
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-and-upload-a-freebsd-vhd-to-azure"></a>Erstellen und Hochladen einer FreeBSD-VHD in Azure
 In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit FreeBSD-Betriebssystem erstellen und hochladen. Nach dem Hochladen können Sie sie als eigenes Image verwenden, um einen virtuellen Computer (Virtual Machine, VM) in Azure zu erstellen.
@@ -39,7 +39,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Elemente 
 >
 >
 
-Diese Aufgabe umfasst die folgenden fünf Schritte:
+Dieser Vorgang umfasst die folgenden fünf Schritte:
 
 ## <a name="step-1-prepare-the-image-for-upload"></a>Schritt 1: Vorbereiten des hochzuladenden Images
 Führen Sie auf dem virtuellen Computer, auf dem Sie das FreeBSD-Betriebssystem installiert haben, die folgenden Schritte aus:
@@ -114,66 +114,21 @@ Führen Sie auf dem virtuellen Computer, auf dem Sie das FreeBSD-Betriebssystem 
 
     Nun können Sie Ihren virtuellen Computer herunterfahren.
 
-## <a name="step-2-create-a-storage-account-in-azure"></a>Schritt 2: Erstellen eines Speicherkontos in Azure
-Sie benötigen ein Speicherkonto in Azure, um eine VHD-Datei hochladen zu können, die zum Erstellen eines virtuellen Computers verwendet werden kann. Über das klassische Azure-Portal können Sie ein Speicherkonto erstellen.
+## <a name="step-2-prepare-the-connection-to-azure"></a>Schritt 2: Vorbereiten der Verbindung mit Azure
+Stellen Sie sicher, dass Sie die Azure-Befehlszeilenschnittstelle im klassischen Bereitstellungsmodell (`azure config mode asm`) verwenden, und melden Sie sich anschließend bei Ihrem Konto an:
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
-2. Wählen Sie in der Befehlsleiste **Neu**.
-3. Wählen Sie **Data Services** > **Storage** > **Schnellerfassung**.
+```azurecli
+azure login
+```
 
-    ![Speicherkonto schnell erfassen](./media/freebsd-create-upload-vhd/Storage-quick-create.png)
-4. Füllen Sie die Felder wie folgt aus:
 
-   * Geben Sie unter **URL** einen Unterdomänennamen ein, der in der Speicherkonto-URL verwendet werden soll. Die Eingabe kann zwischen drei und 24 Zahlen und Kleinbuchstaben enthalten. Dieser Name wird zum Hostnamen in der URL, die zum Adressieren von Azure-Blobspeicher-, Azure-Warteschlangenspeicher- oder Azure-Tabellenspeicherressourcen für das Abonnement verwendet wird.
-   * Wählen Sie im Dropdownmenü **Region/Affinitätsgruppe** die **Region oder Affinitätsgruppe** für das Speicherkonto aus. Mit einer Affinitätsgruppe können Sie Ihre Clouddienste und Speicher im gleichen Rechenzentrum platzieren.
-   * Im Feld **Replikation** können Sie wählen, ob Sie die **Georeplikation** für das Speicherkonto verwenden möchten. Georeplikation ist als Standard voreingestellt. Mit dieser Option werden Ihre Daten kostenfrei an einem sekundären Speicherort repliziert. So wird die Speicherung auf jenen Speicherort umgeschaltet, wenn am primären Speicherort ein größerer Ausfall auftritt. Der sekundäre Speicherort wird automatisch zugewiesen und kann nicht geändert werden. Wenn Sie aufgrund gesetzlicher Vorschriften oder Unternehmensrichtlinien mehr Kontrolle über den Speicherort des cloudbasierten Speichers benötigen, können Sie die Georeplikation deaktivieren. Beachten Sie jedoch, dass bei einem späteren Aktivieren der Georeplikation eine einmalige Datenübertragungsgebühr fällig wird, um Ihre vorhandenen Daten in dem sekundären Speicherort zu replizieren. Die Speicherdienste ohne Georeplikation werden mit einem Rabatt angeboten. Ausführliche Informationen zur Verwaltung der Georeplikation für Speicherkonten finden Sie unter [Azure Storage-Replikation](../../../storage/common/storage-redundancy.md).
+<a id="upload"></a>
 
-     ![Speicherkontodetails eingeben](./media/freebsd-create-upload-vhd/Storage-create-account.png)
-5. Klicken Sie auf **Speicherkonto erstellen**. Das Konto wird nun unter **Speicher**angezeigt.
 
-    ![Speicherkonto erfolgreich erstellt](./media/freebsd-create-upload-vhd/Storagenewaccount.png)
-6. Erstellen Sie nun einen Container für die hochgeladenen VHD-Dateien. Wählen Sie den Namen des Speicherkontos und anschließend die Option **Container**aus.
+## <a name="step-3-upload-the-vhd-file"></a>Schritt 3: Hochladen der VHD-Datei
 
-    ![Speicherkontodetails](./media/freebsd-create-upload-vhd/storageaccount_detail.png)
-7. Wählen Sie **Container erstellen**aus.
+Zum Hochladen der VHD-Datei benötigen Sie ein Speicherkonto. Sie können ein vorhandenes Speicherkonto auswählen oder [ein neues erstellen](../../../storage/common/storage-create-storage-account.md).
 
-    ![Speicherkontodetails](./media/freebsd-create-upload-vhd/storageaccount_container.png)
-8. Geben Sie im Feld **Name** einen Namen für den Container ein. Wählen Sie anschließend im Dropdownmenü **Zugriff** die gewünschte Art von Zugriffsrichtlinie aus.
-
-    ![Containername](./media/freebsd-create-upload-vhd/storageaccount_containervalues.png)
-
-   > [!NOTE]
-   > Der Container ist standardmäßig privat, und der Containerzugriff ist auf den Kontobesitzer eingeschränkt. Verwenden Sie die Option **Öffentliches Blob** , um öffentliche Lesezugriffe auf die im Container enthaltenen Blobs, jedoch nicht auf die Containereigenschaften und -metadaten zuzulassen. Verwenden Sie die Option **Öffentlicher Container** , um vollständigen öffentlichen Lesezugriff auf den Container und die BLOBs zuzulassen.
-   >
-   >
-
-## <a name="step-3-prepare-the-connection-to-azure"></a>Schritt 3: Vorbereiten der Verbindung zu Azure
-Bevor Sie eine VHD-Datei hochladen können, müssen Sie eine sichere Verbindung zwischen dem Computer und Ihrem Azure-Abonnement herstellen. Zu diesem Zweck können Sie die Azure Active Directory (Azure AD)-Methode oder die Zertifikatmethode verwenden.
-
-### <a name="use-the-azure-ad-method-to-upload-a-vhd-file"></a>Hochladen einer VHD-Datei mithilfe der Azure AD-Methode
-1. Öffnen Sie die Azure PowerShell-Konsole.
-2. Geben Sie den folgenden Befehl ein:   
-    `Add-AzureAccount`
-
-    Durch diesen Befehl wird ein Anmeldefenster geöffnet, in dem Sie sich mit Ihrem Geschäfts-, Schul- oder Unikonto anmelden können.
-
-    ![PowerShell-Fenster](./media/freebsd-create-upload-vhd/add_azureaccount.png)
-3. Die Anmeldeinformationen werden von Azure authentifiziert und gespeichert. Danach wird das Fenster geschlossen.
-
-### <a name="use-the-certificate-method-to-upload-a-vhd-file"></a>Hochladen einer VHD-Datei mithilfe der Zertifikatmethode
-1. Öffnen Sie die Azure PowerShell-Konsole.
-2. Geben Sie `Get-AzurePublishSettingsFile` ein.
-3. Es wird ein Browserfenster geöffnet, und Sie werden aufgefordert, eine PUBLISHSETTINGS-Datei herunterzuladen. Diese Datei enthält Informationen und ein Zertifikat für Ihr Azure-Abonnement.
-
-    ![Downloadseite des Browsers](./media/freebsd-create-upload-vhd/Browser_download_GetPublishSettingsFile.png)
-4. Speichern Sie die .publishsettings-Datei.
-5. Geben Sie Folgendes ein: `Import-AzurePublishSettingsFile <PathToFile>`. Dabei ist `<PathToFile>` der vollständige Pfad zur PUBLISHSETTINGS-Datei.
-
-   Weitere Informationen finden Sie unter [Erste Schritte mit Azure Cmdlets](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx).
-
-   Weitere Informationen zum Installieren und Konfigurieren von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
-
-## <a name="step-4-upload-the-vhd-file"></a>Schritt 4: Hochladen der VHD-Datei
 Wenn Sie die VHD-Datei hochladen, können Sie sie an einem beliebigen Speicherort innerhalb des Blobspeichers ablegen. Im Anschluss finden Sie einige Begriffe, die beim Hochladen der Datei verwendet werden:
 
 * **BlobStorageURL** ist die URL für das in Schritt 2 erstellte Speicherkonto.
@@ -185,7 +140,7 @@ Geben Sie über das Azure PowerShell-Fenster, welches Sie im vorherigen Schritt 
 
         Add-AzureVhd -Destination "<BlobStorageURL>/<YourImagesFolder>/<VHDName>.vhd" -LocalFilePath <PathToVHDFile>
 
-## <a name="step-5-create-a-vm-with-the-uploaded-vhd-file"></a>Schritt 5: Erstellen eines virtuellen Computers mit der hochgeladenen VHD-Datei
+## <a name="step-4-create-a-vm-with-the-uploaded-vhd-file"></a>Schritt 4: Erstellen einer VM mit der hochgeladenen VHD-Datei
 Nach dem Hochladen der VHD-Datei können Sie sie als Image zu der Ihrem Abonnement zugeordneten Liste benutzerdefinierter Images hinzufügen und mit diesem benutzerdefinierten Image einen virtuellen Computer erstellen.
 
 1. Geben Sie über das Azure PowerShell-Fenster, welches Sie im vorherigen Schritt verwendet haben, Folgendes ein:

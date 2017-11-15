@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/19/2017
+ms.date: 11/07/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: d7bc694b05ed1eb3915ba913afdb3cc39e048ca7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1002ce29ff0d9ee2a6eac44c6e4402fc7e9ade31
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory-Glossar für Entwickler
 Dieser Artikel enthält hilfreiche Definitionen für einige der zentralen Entwicklerkonzepte von Azure Active Directory (AD) im Zusammenhang mit der Anwendungsentwicklung für Azure AD.
@@ -153,13 +153,13 @@ Die Anmeldefunktion wird in der Regel zum Implementieren von Single-Sign-on (SSO
 Die Aufhebung der Authentifizierung eines Benutzers, wobei der Benutzerzustand, der der Sitzung der [Clientanwendung](#client-application) bei der [Anmeldung](#sign-in) zugeordnet wurde, getrennt wird.
 
 ## <a name="tenant"></a>Mandant
-Eine Instanz eines Azure AD-Verzeichnisses wird als Azure AD-Mandant bezeichnet. Dieser bietet eine Vielzahl von Features, z.B.:
+Eine Instanz eines Azure AD-Verzeichnisses wird als Azure AD-Mandant bezeichnet. Sie bietet verschiedene Funktionen einschließlich:
 
 * einen Registrierungsdienst für integrierte Anwendungen
 * Authentifizierung von Benutzerkonten und registrierten Anwendungen
 * REST-Endpunkte, die zur Unterstützung verschiedener Protokolle (einschließlich OAuth2 und SAML) erforderlich sind, z.B. der [Autorisierungsendpunkt](#authorization-endpoint), der [Tokenendpunkt](#token-endpoint) und der allgemeine, von [mehrinstanzenfähigen Anwendungen](#multi-tenant-application) verwendete Endpunkt.
 
-Ein Mandant wird während der Bereitstellung des Abonnements auch mit einem Azure AD oder Office 365-Abonnement verbunden und stellt Features zur Identitäts- und Zugriffsverwaltung für das Abonnement bereit. Ausführliche Informationen zu den verschiedenen Möglichkeiten für den Zugriff auf einen Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten][AAD-How-To-Tenant]. Unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory][AAD-How-Subscriptions-Assoc] erfahren Sie mehr über die Beziehung zwischen Abonnements und Azure AD-Mandanten.
+Azure AD-Mandanten werden mit Azure- und Office 365-Abonnements während der Registrierung erstellt/zugewiesen und stellen Identity & Access Management-Features für das Abonnement bereit. Azure-Abonnementadministratoren können auch zusätzliche Azure AD-Mandanten über das Azure-Portal erstellen. Ausführliche Informationen zu den verschiedenen Möglichkeiten für den Zugriff auf einen Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten][AAD-How-To-Tenant]. Unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory][AAD-How-Subscriptions-Assoc] erfahren Sie mehr über die Beziehung zwischen Abonnements und Azure AD-Mandanten.
 
 ## <a name="token-endpoint"></a>Tokenendpunkt
 Einer der vom [Autorisierungsserver](#authorization-server) implementierten Endpunkte zur Unterstützung von OAuth2-[Autorisierungsgewährungen](#authorization-grant). Kann je nach verwendeter Gewährung zum Abrufen eines [Zugriffstokens](#access-token) (und eines zugehörigen „Aktualisierungstokens“) für einen [Client](#client-application) oder eines [ID-Tokens](#ID-token) verwendet werden, wenn die Gewährung in Kombination mit dem [OpenID Connect][OpenIDConnect]-Protokoll verwendet wird.

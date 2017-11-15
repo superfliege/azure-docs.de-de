@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/08/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a90d9c620221bffbb225fb060b997af2f5e90390
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22cc516c15353e39c73e762d2b8fa0d787a05ef4
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Erstellen eines benutzerdefinierten Dashboards für die Verwendung in Log Analytics
 
->[!NOTE]
-> Wenn Ihr Arbeitsbereich auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurde, können Sie keine neuen Dashboards erstellen bzw. vorhandene Dashboards nicht bearbeiten. 
-
 In diesem Leitfaden wird beschrieben, wie in Log Analytics-Dashboards alle gespeicherten Protokollsuchvorgänge visualisiert werden können, um Ihnen eine zentrale Übersicht über Ihre Umgebung zu ermöglichen.
+
+>[!NOTE]
+> Wenn Ihr Arbeitsbereich auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurde, können Sie Ihr vorhandenes **Mein Dashboard** nicht bearbeiten. Wenn in Ihrem Arbeitsbereich keine Kachel **Mein Dashboard** hinzugefügt wurde, wird **Mein Dashboard** im aktualisierten Arbeitsbereich nicht angezeigt. 
 
 ![Beispiel-Dashboard](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)
 

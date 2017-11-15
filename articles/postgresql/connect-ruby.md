@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 06/30/2017
-ms.openlocfilehash: 7ad4a2fd7452f31689a02b144078a9630bfd5259
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.date: 11/03/2017
+ms.openlocfilehash: 0b8ee73ab86dde2b2c09c9fe2e73209d000b3f26
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>Azure-Datenbank für PostgreSQL: Verwenden von Ruby zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
 Dieser Schnellstart zeigt, wie Sie mit einer [Ruby](https://www.ruby-lang.org)-Anwendung eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Ruby-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for PostgreSQL haben.
@@ -53,7 +53,7 @@ Installieren Sie Ruby auf Ihrem eigenen Computer.
 - Erstellen Sie das Ruby-pg-Modul mithilfe von Gem, indem Sie den Befehl `sudo gem install pg` ausführen.
 
 ## <a name="run-ruby-code"></a>Ausführen von Ruby-Code 
-- Speichern Sie den Code in einer Textdatei, und speichern Sie die Datei in einem Projektordner mit der Dateierweiterung „.rb“, z.B. `C:\rubypostgres\read.rb` oder `/home/username/rubypostgres/read.rb`.
+- Speichern Sie den Code in einer Textdatei mit Dateierweiterung .rb, und speichern Sie die Datei in einem Projektordner wie z.B. `C:\rubypostgres\read.rb` oder `/home/username/rubypostgres/read.rb`.
 - Starten Sie zum Ausführen des Codes die Eingabeaufforderung oder die Bash-Shell. Wechseln Sie mit `cd rubypostgres` in Ihren Projektordner, und geben Sie dann den Befehl `ruby read.rb` ein, um die Anwendung auszuführen.
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen

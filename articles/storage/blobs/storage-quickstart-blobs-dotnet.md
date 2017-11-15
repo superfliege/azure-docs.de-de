@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/01/2017
 ms.author: robinsh
-ms.openlocfilehash: fdba4588fbb2c46efb3fc4de1a9e53414264444a
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9c5628307e76bd30d2dd59f284f2c4b30d434223
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-net"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit .NET
 
@@ -34,25 +34,7 @@ So führen Sie diesen Schnellstart durch:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-storage-account-using-the-azure-portal"></a>Erstellen eines Speicherkontos mit dem Azure-Portal
-
-Erstellen Sie zunächst ein neues allgemeines Speicherkonto zur Verwendung für diesen Schnellstart. 
-
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an. 
-2. Wählen Sie im Menü „Hub“ die Option **Neu** > **Speicher** > **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus. 
-3. Geben Sie einen Namen für Ihr Speicherkonto ein. Der Name muss zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten. Er muss außerdem eindeutig sein.
-4. Legen Sie `Deployment model` auf **Ressourcen-Manager** fest.
-5. Legen Sie `Account kind` auf **Allgemeiner Zweck** fest.
-6. Legen Sie `Performance` auf **Standard** fest. 
-7. Legen Sie `Replication` auf **Lokal redundanter Speicher (LRS)** fest.
-8. Legen Sie `Storage service encryption` auf **Deaktiviert** fest.
-9. Legen Sie `Secure transfer required` auf **Deaktiviert** fest.
-10. Wählen Sie Ihr Abonnement aus. 
-11. Erstellen Sie für `resource group` eine neue Ressourcengruppe, und geben sie ihr einen eindeutigen Namen. 
-12. Wählen Sie unter `Location` den Standort aus, der für das Speicherkonto verwendet werden soll.
-13. Aktivieren Sie **An Dashboard anheften**, und klicken Sie auf **Erstellen**, um das Speicherkonto zu erstellen. 
-
-Nachdem das Speicherkonto erstellt wurde, wird es an das Dashboard angeheftet. Klicken Sie darauf, um es zu öffnen. Klicken Sie unter „EINSTELLUNGEN“ auf **Zugriffsschlüssel**. Wählen Sie einen Schlüssel aus, kopieren Sie die VERBINDUNGSZEICHENFOLGE in die Zwischenablage, und fügen Sie sie für die spätere Verwendung in einen Text-Editor ein.
+[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
 
 ## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
 
@@ -115,6 +97,9 @@ Zunächst müssen die Verweise auf die Objekte erstellt werden, die zum Zugreife
 * Erstellen Sie eine Instanz des **CloudBlobContainer**-Objekts, das den Container darstellt, auf den Sie zugreifen. Container werden zum Organisieren der Blobs verwendet, so wie Sie auf Ihrem Computer Ordner zum Organisieren von Dateien verwenden.
 
 Sobald Sie über den **CloudBlobContainer** verfügen, können Sie eine Instanz des **CloudBlockBlob**-Objekts erstellen, das auf das gewünschte Blob verweist, und einen Upload-, Download- oder Kopiervorgang sowie weitere Vorgänge ausführen.
+
+> [!IMPORTANT]
+> Die Containernamen müssen klein geschrieben werden. Weitere Informationen zu Container- und Blobnamen finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).
 
 In diesem Abschnitt erstellen Sie eine Instanz der Objekte und einen neuen Container und legen dann Berechtigungen für den Container fest, damit die Blobs öffentlich sind und einfach mit einer URL auf sie zugegriffen werden kann. Der Name des Containers lautet **quickstartblobs**. 
 

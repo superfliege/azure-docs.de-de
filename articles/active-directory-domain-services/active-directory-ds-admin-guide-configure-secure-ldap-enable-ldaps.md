@@ -4,7 +4,7 @@ description: "Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD 
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 11/03/2017
 ms.author: maheshu
-ms.openlocfilehash: 245ad4948cf4b8c2d44a0dafb61923b0b4267856
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2ef65bb4dc8e12a18265ae8264def2bb32e191f
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne
 
@@ -48,8 +48,8 @@ Führen Sie die folgenden Konfigurationsschritte aus, um sicheres LDAP zu aktivi
     ![Aktivieren von sicherem LDAP](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
 5. Standardmäßig ist der sichere LDAP-Zugriff auf Ihre verwaltete Domäne über das Internet deaktiviert. Ändern Sie, falls gewünscht, die Einstellung für **Sicheren LDAP-Zugriff über das Internet aktivieren** in **Aktivieren**. 
 
-    > [!TIP]
-    > Wenn Sie sicheren LDAP-Zugriff über das Internet aktivieren, sollten Sie eine NSG einrichten, um den Zugriff auf erforderliche Quell-IP-Adressbereiche zu sperren. Beachten Sie die Anweisungen unter [Aufgabe 5: LDAPS-Zugriff auf Ihre verwaltete Domäne über das Internet sperren](#task-5---lock-down-ldaps-access-to-your-managed-domain-over-the-internet).
+    > [!WARNING]
+    > Wenn Sie sicheren LDAP-Zugriff über das Internet aktivieren, ist Ihre Domäne anfällig für über das Internet ausgeführte Brute-Force-Angriffe mit Kennwörtern. Daher sollten Sie eine NSG einrichten, um den Zugriff auf erforderliche Quell-IP-Adressbereiche zu sperren. Beachten Sie die Anweisungen unter [Aufgabe 5: LDAPS-Zugriff auf Ihre verwaltete Domäne über das Internet sperren](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
     >
 
 6. Klicken Sie auf das Ordnersymbol hinter der **PFX-Datei mit sicherem LDAP-Zertifikat**. Geben Sie den Pfad zu der PFX-Datei mit dem Zertifikat für den sicheren LDAP-Zugriff auf die verwaltete Domäne an.
@@ -79,7 +79,7 @@ Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 3](#task-3---enabl
 
 Nachdem Sie den Zugriff auf Ihre verwaltete Domäne über sicheres LDAP und eine Internetverbindung aktiviert haben, müssen Sie das DNS aktualisieren, damit die Clientcomputer die verwaltete Domäne finden können. Am Ende von Aufgabe 3 wird auf der Registerkarte **Eigenschaften** im Feld **EXTERNE IP-ADRESSE FÜR LDAPS-ZUGRIFF** eine externe IP-Adresse angezeigt.
 
-Konfigurieren Sie Ihren externen DNS-Anbieter so, dass der DNS-Name der verwalteten Domäne (beispielsweise „ldaps.contoso100.com“) auf diese externe IP-Adresse verweist. In unserem Beispiel müssen Sie den folgenden DNS-Eintrag erstellen:
+Konfigurieren Sie Ihren externen DNS-Anbieter so, dass der DNS-Name der verwalteten Domäne (beispielsweise „ldaps.contoso100.com“) auf diese externe IP-Adresse verweist. Erstellen Sie beispielsweise den folgenden DNS-Eintrag:
 
     ldaps.contoso100.com  -> 52.165.38.113
 
@@ -91,9 +91,9 @@ Das ist schon alles. Sie können jetzt über das Internet und sicheres LDAP eine
 >
 
 
-## <a name="task-5---lock-down-ldaps-access-to-your-managed-domain-over-the-internet"></a>Aufgabe 5: LDAPS-Zugriff auf Ihre verwaltete Domäne über das Internet sperren
+## <a name="task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>Aufgabe 5: Sperren des sicheren LDAP-Zugriffs auf Ihre verwaltete Domäne über das Internet
 > [!NOTE]
-> **Optionale Aufgabe**: Wenn Sie den LDAPS-Zugriff auf die verwaltete Domäne über das Internet nicht aktiviert haben, können Sie diese Konfigurationsaufgabe überspringen.
+> Wenn Sie den LDAPS-Zugriff auf die verwaltete Domäne über das Internet nicht aktiviert haben, können Sie diese Konfigurationsaufgabe überspringen.
 >
 >
 
@@ -101,13 +101,28 @@ Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 3](#task-3---enabl
 
 Das Verfügbarmachen Ihrer verwalteten Domäne für LDAPS-Zugriff über das Internet stellt ein Sicherheitsrisiko dar. Die verwaltete Domäne ist aus dem Internet über den für das sichere LDAP verwendeten Port erreichbar (d.h. Port 636). Aus diesem Grund können Sie sich entscheiden, den Zugriff auf die verwaltete Domäne auf bestimmte bekannte IP-Adressen zu beschränken. Erstellen Sie zur Verbesserung der Sicherheit eine Netzwerksicherheitsgruppe (NSG), und ordnen Sie diese dem Subnetz zu, in dem Sie Azure AD Domain Services aktiviert haben.
 
-Die folgende Tabelle zeigt ein Beispiel einer NSG, die Sie konfigurieren können, um den sicheren LDAP-Zugriff über das Internet zu sperren. Die NSG enthält einen Satz von Regeln, die den eingehenden LDAPS-Zugriff über TCP-Port 636 nur aus einer angegebenen Gruppe von IP-Adressen zulassen. Die standardmäßige Regel „DenyAll“ gilt für sämtlichen eingehenden Datenverkehr aus dem Internet. Die NSG-Regel zum Zulassen des LDAPS-Zugriffs über das Internet von angegebenen IP-Adressen hat eine höhere Priorität als die NSG-Regel „DenyAll“.
+Die folgende Tabelle zeigt ein Beispiel einer NSG, die Sie konfigurieren können, um den sicheren LDAP-Zugriff über das Internet zu sperren. Die NSG enthält einen Satz von Regeln, die den eingehenden sicheren LDAP-Zugriff über TCP-Port 636 nur aus einer angegebenen Gruppe von IP-Adressen zulassen. Die standardmäßige Regel „DenyAll“ gilt für sämtlichen eingehenden Datenverkehr aus dem Internet. Die NSG-Regel zum Zulassen des LDAPS-Zugriffs über das Internet von angegebenen IP-Adressen hat eine höhere Priorität als die NSG-Regel „DenyAll“.
 
 ![Beispiel-NSG zum Schutz des sicheren LDAPS-Zugriffs über das Internet](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
 
 **Weitere Informationen** - [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
 
 <br>
+
+
+## <a name="troubleshooting"></a>Problembehandlung
+Wenn Sie Probleme beim Herstellen einer Verbindung mit der verwalteten Domäne über sicheres LDAP haben, führen Sie die folgenden Schritte zur Problembehandlung aus:
+* Stellen Sie sicher, dass die Ausstellerkette des sicheren LDAP-Zertifikats auf dem Client als vertrauenswürdig eingestuft wird. Sie könnten die Stammzertifizierungsstelle dem vertrauenswürdigen Stammzertifikatspeicher auf dem Client hinzufügen, um die Vertrauensstellung einzurichten.
+* Stellen Sie sicher, dass das sichere LDAP-Zertifikat nicht von einer Zwischenzertifizierungsstelle ausgegeben wurde, die standardmäßig auf einem neuen Windows-Computer nicht als vertrauenswürdig eingestuft wird.
+* Stellen Sie sicher, dass der LDAP-Client (z.B. „ldp.exe“) eine Verbindung mit dem sicheren LDAP-Endpunkt mit einem DNS-Namen herstellt, nicht mit der IP-Adresse.
+* Stellen Sie sicher, dass der DNS-Name, mit dem der LDAP-Client eine Verbindung herstellt, in die öffentliche IP-Adresse für sicheres LDAP in der verwalteten Domäne aufgelöst wird.
+* Stellen Sie sicher, dass das sichere LDAP-Zertifikat für die verwaltete Domäne den DNS-Namen im Attribut für den Antragsteller oder den alternativen Antragstellernamen aufweist.
+
+Wenn Sie weiterhin Probleme beim Herstellen einer Verbindung mit der verwalteten Domäne über sicheres LDAP haben, [bitten Sie das Produktteam](active-directory-ds-contact-us.md) um Hilfe. Nehmen Sie dabei die folgende Informationen auf, damit das Problem besser diagnostiziert werden kann:
+* Einen Screenshot von „ldp.exe“ beim Herstellen einer Verbindung, die fehlschlägt.
+* Die ID des Azure AD-Mandanten und den DNS-Domänennamen Ihrer verwalteten Domäne.
+* Den genauen Benutzernamen, den Sie verwenden möchten.
+
 
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)

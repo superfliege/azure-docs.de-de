@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 046ce7af40301014746c6aef07d08d81ab4adcc2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e37c55dbcc8de49aee32272b2f51b0792bef132c
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Anleitung zum Erstellen eines VM-Images für Azure Marketplace
 In diesem Artikel ( **Schritt 2**) werden Sie durch die Vorbereitung der virtuellen Festplatten (VHDs) geführt, die Sie im Azure Marketplace bereitstellen möchten. Ihre VHDs bilden die Grundlage Ihrer SKU. Der Prozess variiert in Abhängigkeit davon, ob Sie eine Linux- oder Windows-basierte SKU bereitstellen. Dieser Artikel deckt beide Szenarien ab. Dieser Vorgang kann parallel zum [Erstellen und Registrieren eines Kontos][link-acct-creation] ausgeführt werden.
@@ -290,6 +290,8 @@ Im Laufe des Veröffentlichungsprozesses geben Sie die Uniform Resource Identifi
 
 Der erstellte Shared Access Signature-URI sollte die folgenden Anforderungen erfüllen:
 
+Hinweis: Die folgenden Anweisungen gelten nur für nicht verwaltete Datenträger, die auch als einzige unterstützt werden.
+
 * Beim Generieren von Shared Access Signature-URIs für Ihre VHDs sind die Berechtigungen „Auflisten“ und „Lesen“ ausreichend. Gewähren Sie keinen Schreib- oder Löschzugriff.
 * Die Zugriffsdauer sollte mindestens drei Wochen ab der Erstellung des Shared Access Signature-URI betragen.
 * Wählen Sie den Tag vor dem aktuellen Datum aus, um in Bezug auf die UTC-Zeit sicherzugehen. Wählen Sie beispielsweise 05.10.2014 aus, wenn das aktuelle Datum der 6. Oktober 2014 ist.
@@ -430,7 +432,7 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe der Azure CLI.
 
 2.  Führen Sie nach dem Herunterladen die Installation durch.
 
-3.  Erstellen Sie eine PowerShell-Datei mit folgendem Code, und speichern Sie sie lokal.
+3.  Erstellen Sie eine PowerShell-Datei (oder ein anderes ausführbares Skript) mit dem folgenden Code, und speichern Sie sie lokal.
 
           $conn="DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<Storage Account Key>"
           azure storage container list vhds -c $conn
@@ -442,9 +444,9 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe der Azure CLI.
 
     b. **`<Storage Account Key>`**: Geben Sie den Schlüssel Ihres Speicherkontos an.
 
-    c. **`<Permission Start Date>`**: Wählen Sie den Tag vor dem aktuellen Datum aus, um in Bezug auf die UTC-Zeit sicherzugehen. Wenn beispielsweise das aktuelle Datum der 26. Oktober 2016 ist, muss der Wert „10/25/2016“ lauten.
+    c. **`<Permission Start Date>`**: Wählen Sie den Tag vor dem aktuellen Datum aus, um in Bezug auf die UTC-Zeit sicherzugehen. Wenn beispielsweise das aktuelle Datum der 26. Oktober 2016 ist, muss der Wert „10/25/2016“ lauten. Wenn Sie Azure CLI 2.0 (az-Befehl) verwenden, geben Sie bei Start- und Enddatum das Datum und die Uhrzeit an, z.B.: „10-25-2016T00:00:00Z“.
 
-    d. **`<Permission End Date>`**: Wählen Sie ein Datum, das mindestens drei Wochen nach dem **Startdatum** liegt. Der Wert muss dann **11/02/2016** lauten.
+    d. **`<Permission End Date>`**: Wählen Sie ein Datum, das mindestens drei Wochen nach dem **Startdatum** liegt. Der Wert sollte **11/02/2016** lauten. Wenn Sie Azure CLI 2.0 (az-Befehl) verwenden, geben Sie bei Start- und Enddatum das Datum und die Uhrzeit an, z.B.: „11-02-2016T00:00:00Z“.
 
     Es folgt der Beispielcode nach Aktualisieren der entsprechenden Parameter.
 
@@ -452,7 +454,7 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe der Azure CLI.
           azure storage container list vhds -c $conn
           azure storage container sas create vhds rl 11/02/2016 -c $conn --start 10/25/2016  
 
-4.  Öffnen Sie den PowerShell-Editor im Modus „Als Administrator ausführen“, und öffnen Sie die Datei in Schritt 3.
+4.  Öffnen Sie den PowerShell-Editor im Modus „Als Administrator ausführen“, und öffnen Sie die Datei in Schritt 3. Sie können einen beliebigen Skript-Editor verwenden, der für Ihr Betriebssystem verfügbar ist.
 
 5.  Führen Sie das Skript aus. Sie erhalten die SAS-URL für den Zugriff auf Containerebene.
 
@@ -515,7 +517,7 @@ Nach dem Erstellen des Angebots und der SKU müssen Sie die zu dieser SKU gehör
 |Fehler beim Kopieren von Bildern: „sp=rl“ nicht in der SAS-URL enthalten|Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.|Aktualisieren Sie die SAS-URL durch Festlegen der Berechtigungen „Lesen“ und „Auflisten“.|[https://azure.microsoft.com/de-de/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Fehler beim Kopieren von Bildern: SAS-URL enthält Leerzeichen im VHD-Namen.|Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.|Entfernen Sie die Leerzeichen aus der SAS-URL.|[https://azure.microsoft.com/de-de/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Fehler beim Kopieren von Bildern: SAS-URL-Autorisierungsfehler|Fehler: Kopieren von Bildern. Blob aufgrund eines Autorisierungsfehlers nicht heruntergeladen werden.|Erstellen Sie die SAS-URL neu.|[https://azure.microsoft.com/de-de/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-
+|Fehler beim Kopieren von Bildern – die Parameter „st“ und „se“ der SAS-URL verfügen nicht über eine vollständige Angabe für Datum und Uhrzeit|Fehler: Kopieren von Bildern. Blob kann aufgrund einer falschen SAS-URL nicht heruntergeladen werden. |Für die Parameter der SAS-URL („st“ und „se“) müssen vollständige Angaben für Datum und Uhrzeit gemacht werden (z.B. „11-02-2017T00:00:00Z“). Nur das Datum oder eine Kurzform der Uhrzeit reichen nicht aus. Dieses Szenario kann bei Verwendung von Azure CLI 2.0 (az-Befehl) eintreten. Geben Sie unbedingt vollständige Werte für Datum und Uhrzeit an, und generieren Sie die SAS-URL dann neu.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>Nächster Schritt
 Wenn Sie die SKU-Details abgeschlossen haben, können Sie mit der [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] fortfahren. In diesem Schritt des Veröffentlichungsprozesses geben Sie Marketinginhalte, Preise und andere Informationen an, die vor dem Fortfahren mit **Schritt 3: Testen Ihres VM-Angebots im Stagingmodus** benötigt werden. Bei diesem Schritt testen Sie verschiedene Anwendungsfallszenarien, bevor Sie das Angebot zum allgemeinen Anzeigen und Kaufen im Azure Marketplace bereitstellen.  

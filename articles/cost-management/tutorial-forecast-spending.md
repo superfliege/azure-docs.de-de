@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e0b4bc196786ca4dfa3d57f3e89dd36ddc32acbc
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: d8b0cd2a3e5f9829f0844783aad22d375eb9d7a8
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="forecast-future-spending"></a>Vorhersage zukünftiger Ausgaben
 
@@ -57,7 +57,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Vorhersage zukünftiger Ausgaben
 
 
-Lesen Sie in der Cloudyn-Dokumentation nach, um mehr über die ersten Schritte mit Cloudyn und die Verwendung der Features von Cloudyn zu erfahren.
+Wechseln Sie zum nächsten Tutorial, um zu erfahren, wie Sie Kosten mit Kostenzuteilung und Showbackberichten verwalten.
 
 > [!div class="nextstepaction"]
-> [Cloudyn-Dokumentation](https://support.cloudyn.com/hc/)
+> [Manage costs by using Azure Cost Management](tutorial-manage-costs.md) (Verwalten von Kosten mit Azure Cost Management)

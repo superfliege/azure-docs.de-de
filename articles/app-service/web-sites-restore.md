@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 79d4084deb6d8c028918690c339c21c720e63594
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2879e72636ffc7603e29fe8f8233a065fe6f897c
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="restore-an-app-in-azure"></a>Wiederherstellen einer App in Azure
-In diesem Artikel erfahren Sie, wie Sie eine App in [Azure App Service](../app-service/app-service-web-overview.md) wiederherstellen, die zuvor gesichert wurde (siehe [Sichern einer App in Azure](web-sites-backup.md)). Sie können Ihre App mit den zugehörigen verknüpften Datenbanken bei Bedarf in einem vorherigen Zustand wiederherstellen oder basierend auf der Sicherung der ursprünglichen App eine neue App erstellen. Azure App Service unterstützt die folgenden Datenbanken für Sicherung und Wiederherstellung:
+In diesem Artikel erfahren Sie, wie Sie eine App in [Azure App Service](../app-service/app-service-web-overview.md) wiederherstellen, die zuvor gesichert wurde (siehe [Sichern einer App in Azure](web-sites-backup.md)). Sie können Ihre App mit den zugehörigen verknüpften Datenbanken bei Bedarf in einem vorherigen Zustand wiederherstellen oder basierend auf den Sicherungen der ursprünglichen App eine neue App erstellen. Azure App Service unterstützt die folgenden Datenbanken für Sicherung und Wiederherstellung:
 - [SQL-Datenbank](https://azure.microsoft.com/en-us/services/sql-database/)
 - [Azure-Datenbank für MySQL (Vorschau)](https://azure.microsoft.com/en-us/services/mysql)
 - [Azure-Datenbank für PostgreSQL (Vorschau)](https://azure.microsoft.com/en-us/services/postgres)
@@ -33,10 +33,10 @@ Das Wiederherstellen aus Sicherungen ist für Apps verfügbar, die in den Tarife
 <a name="PreviousBackup"></a>
 
 ## <a name="restore-an-app-from-an-existing-backup"></a>Wiederherstellen einer App aus einer vorhandenen Sicherung
-1. Klicken Sie im Azure-Portal auf dem Blatt **Einstellungen** Ihrer App auf **Sicherungen**, um das Blatt **Sicherungen** anzuzeigen. Klicken Sie auf **Wiederherstellen**.
+1. Klicken Sie im Azure-Portal auf der Seite **Einstellungen** Ihrer App auf **Sicherungen**, um die Seite **Sicherungen** anzuzeigen. Klicken Sie auf **Wiederherstellen**.
    
     !["Jetzt wiederherstellen" auswählen][ChooseRestoreNow]
-2. Wählen Sie auf dem Blatt **Wiederherstellen** zuerst die Sicherungsquelle aus.
+2. Wählen Sie auf der Seite **Wiederherstellen** zuerst die Sicherungsquelle aus.
    
     ![](./media/web-sites-restore/021ChooseSource1.png)
    
@@ -59,9 +59,9 @@ Das Wiederherstellen aus Sicherungen ist für Apps verfügbar, die in den Tarife
 <a name="StorageAccount"></a>
 
 ## <a name="download-or-delete-a-backup-from-a-storage-account"></a>Herunterladen oder Löschen einer Sicherung aus einem Speicherkonto
-1. Wählen Sie auf dem Hauptblatt **Durchsuchen** des Azure-Portals die Option **Speicherkonten** aus. Eine Liste Ihrer vorhandenen Speicherkonten wird angezeigt.
-2. Wählen Sie das Speicherkonto aus, das die herunterzuladende oder zu löschende Sicherung enthält. Das Blatt des Speicherkontos wird angezeigt.
-3. Wählen Sie auf dem Blatt des Speicherkontos den gewünschten Container aus.
+1. Wählen Sie auf der Hauptseite **Durchsuchen** des Azure-Portals die Option **Speicherkonten** aus. Eine Liste Ihrer vorhandenen Speicherkonten wird angezeigt.
+2. Wählen Sie das Speicherkonto aus, das die herunterzuladende oder zu löschende Sicherung enthält. Die Seite für das Speicherkonto wird angezeigt.
+3. Wählen Sie auf der Seite des Speicherkontos den gewünschten Container aus.
    
     ![Container anzeigen][ViewContainers]
 4. Wählen Sie die Sicherungsdatei aus, die Sie herunterladen oder löschen möchten.
@@ -72,12 +72,21 @@ Das Wiederherstellen aus Sicherungen ist für Apps verfügbar, die in den Tarife
 <a name="OperationLogs"></a>
 
 ## <a name="monitor-a-restore-operation"></a>Überwachen eines Wiederherstellungsvorgangs
-Um Details über den Erfolg oder Misserfolg des Wiederherstellungsvorgangs für die App anzuzeigen, wechseln Sie im Azure-Portal zum Blatt **Aktivitätsprotokoll**.  
+Um Details über den Erfolg oder Misserfolg des Wiederherstellungsvorgangs für die App anzuzeigen, wechseln Sie im Azure-Portal zur Seite **Aktivitätsprotokoll**.  
  
 
 Scrollen Sie nach unten zum gewünschten Wiederherstellungsvorgang, und klicken Sie darauf, um ihn auszuwählen.
 
-Auf dem Blatt „Details“ werden die verfügbaren Informationen im Zusammenhang mit dem Wiederherstellungsvorgang angezeigt.
+Auf der Seite „Details“ werden die verfügbaren Informationen im Zusammenhang mit dem Wiederherstellungsvorgang angezeigt.
+
+## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
+
+Mit [Azure CLI](/cli/azure/install-azure-cli) oder mit [Azure PowerShell](/powershell/azure/overview) können Sie mithilfe von Skripts die Sicherungsverwaltung automatisieren.
+
+Beispiele finden Sie unter:
+
+- [Azure CLI-Beispiele](app-service-cli-samples.md)
+- [Azure PowerShell-Beispiele](app-service-powershell-samples.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

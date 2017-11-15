@@ -1,8 +1,8 @@
 ---
 title: "Azure Monitor – PowerShell-Schnellstartbeispiele | Microsoft Docs"
 description: "Verwenden Sie PowerShell für den Zugriff auf Azure Monitor-Features wie die automatische Skalierung, Warnungen, Webhooks und die Suche in Aktivitätsprotokollen."
-author: kamathashwin
-manager: orenr
+author: rboucher
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
-ms.author: ashwink
-ms.openlocfilehash: 48f064884c2a6d0a55cc58a44169ed03c62de46d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: robb
+ms.openlocfilehash: 60048ab8e0118bc67850aa6ad91c82dcf8122b1d
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor – PowerShell-Schnellstartbeispiele
-In diesem Artikel werden PowerShell-Beispielbefehle beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können. Azure Monitor ermöglicht die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps sowie das Senden von Warnbenachrichtigungen oder das Aufrufen von Web-URLs basierend auf Werten konfigurierter Telemetriedaten.
+In diesem Artikel werden PowerShell-Beispielbefehle beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können. Azure Monitor ermöglicht Ihnen die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps. Sie können damit auch Warnbenachrichtigungen senden oder Web-URLs basierend auf Werten von konfigurierten Telemetriedaten aufrufen.
 
 > [!NOTE]
-> Azure Monitor ist der neue Name für den Dienst, der bis 25. September 2016 als „Azure Insights“ bezeichnet wurde. Die Namespaces und somit die folgenden Befehle enthalten jedoch weiterhin den Bezeichner „insights“.
+> Azure Monitor ist der neue Name für den Dienst, der bis 25. September 2016 als „Azure Insights“ bezeichnet wurde. Die Namespaces und somit die folgenden Befehle enthalten jedoch weiterhin das Wort „insights“.
 > 
 > 
 
@@ -41,13 +41,13 @@ Melden sich zuerst bei Ihrem Azure-Abonnement an.
 Login-AzureRmAccount
 ```
 
-Dazu müssen Sie sich anmelden. Anschließend werden Ihr Konto, die Mandanten-ID und die ID des Standardabonnements angezeigt. Alle Azure-Cmdlets werden im Kontext des Standardabonnements verwendet. Verwenden Sie den folgenden Befehl, um die Liste der Abonnements anzuzeigen, auf die Sie zugreifen können.
+Es wird ein Anmeldebildschirm angezeigt. Nach der Anmeldung werden Ihr Konto, die Mandanten-ID und die ID des Standardabonnements angezeigt. Alle Azure-Cmdlets werden im Kontext des Standardabonnements verwendet. Verwenden Sie den folgenden Befehl, um die Liste der Abonnements anzuzeigen, auf die Sie zugreifen können:
 
 ```PowerShell
 Get-AzureRmSubscription
 ```
 
-Verwenden Sie den folgenden Befehl, um den Arbeitskontext in ein anderes Abonnement zu ändern.
+Verwenden Sie den folgenden Befehl, um den Arbeitskontext in ein anderes Abonnement zu ändern:
 
 ```PowerShell
 Set-AzureRmContext -SubscriptionId <subscriptionid>
@@ -141,7 +141,7 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 ## <a name="create-metric-alerts"></a>Erstellen von Metrikwarnungen
 Sie können das Cmdlet `Add-AlertRule` zum Erstellen, Aktualisieren oder Deaktivieren einer Warnungsregel verwenden.
 
-Sie können die Eigenschaften für E-Mails und Webhooks mit `New-AzureRmAlertRuleEmail` bzw. `New-AzureRmAlertRuleWebhook` erstellen. Weisen Sie der Warnungsregel diese Elemente im Cmdlet für die Warnungsregel als Aktionen der Eigenschaft **Aktionen** zu.
+Sie können die Eigenschaften für E-Mails und Webhooks mit `New-AzureRmAlertRuleEmail` bzw. `New-AzureRmAlertRuleWebhook` erstellen. Weisen Sie diese Eigenschaften im Cmdlet für die Warnungsregel als Aktionen der **Actions**-Eigenschaft der Warnungsregel zu.
 
 In der folgenden Tabelle werden die Parameter und Werte beschrieben, die zum Erstellen einer Warnung mithilfe einer Metrik verwendet werden.
 
@@ -201,10 +201,10 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 Eine vollständige Liste der verfügbaren Optionen für `Get-AzureRmMetricDefinition` finden Sie unter [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
 
 ## <a name="create-and-manage-autoscale-settings"></a>Erstellen und Verwalten von Einstellungen zur automatischen Skalierung
-Für eine Ressource wie eine Web-App, eine VM, einen Clouddienst oder eine VM-Skalierungsgruppe kann nur eine Einstellung zur automatischen Skalierung konfiguriert werden.
+Für eine Ressource (Web-App, virtueller Computer, Clouddienst oder VM-Skalierungsgruppe) kann nur eine Einstellung zur automatischen Skalierung konfiguriert werden.
 Allerdings kann jede Einstellung zur automatischen Skalierung mehrere Profile aufweisen. Beispielsweise kann ein Profil ein leistungsbasiertes Skalierungsprofil und ein zweites ein zeitplanbasiertes Profil sein. Für jedes Profil können mehrere Regeln konfiguriert werden. Weitere Informationen zur automatischen Skalierung finden Sie unter [Automatisches Skalieren einer Anwendung](../cloud-services/cloud-services-how-to-scale.md).
 
-Führen Sie die folgenden Schritte aus:
+Gehen Sie wie folgt vor:
 
 1. Erstellen Sie Regeln.
 2. Erstellen Sie Profile, und ordnen Sie die zuvor erstellten Regeln den Profilen zu.
@@ -243,7 +243,7 @@ Erstellen Sie die Benachrichtigungseigenschaft für die Einstellung zur automati
 $notification1= New-AzureRmAutoscaleNotification -CustomEmails ashwink@microsoft.com -SendEmailToSubscriptionAdministrators SendEmailToSubscriptionCoAdministrators -Webhooks $webhook_scale
 ```
 
-Erstellen Sie schließlich die Einstellung zur automatischen Skalierung, um das Profil hinzuzufügen, das Sie soeben erstellt haben.
+Erstellen Sie schließlich die Einstellung zur automatischen Skalierung, um das soeben erstellte Profil hinzuzufügen. 
 
 ```PowerShell
 Add-AzureRmAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
@@ -289,7 +289,7 @@ Remove-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>Verwalten von Protokollprofilen für das Aktivitätsprotokoll
-Sie können ein *Protokollprofil* erstellen, Daten aus Ihren Aktivitätsprotokollen in ein Speicherkonto exportieren und die Aufbewahrungsdauer für diese festlegen. Optional können Sie die Daten auch an Ihren Event Hub streamen. Beachten Sie, dass sich diese Funktion derzeit in Vorschauphase befindet und Sie nur ein Protokollprofil pro Abonnement erstellen können. Sie können die folgenden Cmdlets mit Ihrem aktuellen Abonnement verwenden, um Protokollprofile zu erstellen und zu verwalten. Sie können auch ein bestimmtes Abonnement auswählen. Obwohl in PowerShell standardmäßig das aktuelle Abonnement verwendet wird, können Sie dies jederzeit mit `Set-AzureRmContext`ändern. Sie können das Aktivitätsprotokoll so konfigurieren, dass Daten an ein beliebiges Speicherkonto oder einen Event Hub im Abonnement weitergeleitet werden. Daten werden als Blobdateien im JSON-Format geschrieben.
+Sie können ein *Protokollprofil* erstellen, Daten aus Ihren Aktivitätsprotokollen in ein Speicherkonto exportieren und die Aufbewahrungsdauer für diese festlegen. Optional können Sie die Daten auch an Ihren Event Hub streamen. Dieses Feature befindet sich derzeit in der Vorschauphase, sodass Sie nur ein Protokollprofil pro Abonnement erstellen können. Sie können die folgenden Cmdlets mit Ihrem aktuellen Abonnement verwenden, um Protokollprofile zu erstellen und zu verwalten. Sie können auch ein bestimmtes Abonnement auswählen. Obwohl in PowerShell standardmäßig das aktuelle Abonnement verwendet wird, können Sie dies jederzeit mit `Set-AzureRmContext`ändern. Sie können das Aktivitätsprotokoll so konfigurieren, dass Daten an ein beliebiges Speicherkonto oder einen Event Hub im Abonnement weitergeleitet werden. Daten werden als Blobdateien im JSON-Format geschrieben.
 
 ### <a name="get-a-log-profile"></a>Abrufen eines Protokollprofils
 Verwenden Sie zum Abrufen Ihrer vorhandenen Protokollprofile das Cmdlet `Get-AzureRmLogProfile` .
@@ -312,14 +312,19 @@ Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s
 ```
 
 ### <a name="add-log-profile-with-retention-and-eventhub"></a>Hinzufügen eines Protokollprofils mit Aufbewahrung und Event Hub
-Neben dem Weiterleiten Ihrer Daten an ein Speicherkonto können Sie sie auch an einen Event Hub streamen. Beachten Sie, dass in dieser Vorschauversion die Konfiguration des Speicherkontos obligatorisch ist, die Event Hub-Konfiguration ist jedoch optional.
+Neben dem Weiterleiten Ihrer Daten an ein Speicherkonto können Sie sie auch an einen Event Hub streamen. In dieser Vorschauversion ist die Konfiguration des Speicherkontos obligatorisch, die Event Hub-Konfiguration ist jedoch optional.
 
 ```PowerShell
 Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
 ## <a name="configure-diagnostics-logs"></a>Konfigurieren von Diagnoseprotokollen
-Viele Azure-Dienste umfassen zusätzliche Protokolle und Telemetriedaten, die so konfiguriert werden können, dass Daten in Ihrem Azure Storage-Konto gespeichert, an Event Hubs gesendet und/oder an einen OMS Log Analytics-Arbeitsbereich gesendet werden. Dieser Vorgang kann nur auf Ressourcenebene ausgeführt werden, und das Speicherkonto oder der Event Hub sollte in der gleichen Region wie die Zielressource, in der die Diagnoseeinstellung konfiguriert ist, vorhanden sein.
+Viele Azure-Dienste stellen zusätzliche Protokolle und Telemetrie bereit, die eine oder mehrere der folgenden Möglichkeiten bieten: 
+ - Konfigurieren der Speicherung von Daten in Ihrem Azure Storage-Konto
+ - Senden an Event Hubs
+ - Senden an OMS Log Analytics-Arbeitsbereich 
+
+Der Vorgang kann nur auf Ressourcenebene ausgeführt werden. Das Speicherkonto oder der Event Hub sollte in der gleichen Region wie die Zielressource, in der die Diagnoseeinstellung konfiguriert ist, vorhanden sein.
 
 ### <a name="get-diagnostic-setting"></a>Abrufen der Diagnoseeinstellung
 ```PowerShell

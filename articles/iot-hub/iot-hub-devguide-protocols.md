@@ -20,7 +20,7 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
 ---
-# Referenz – Auswählen eines Kommunikationsprotokolls
+# <a name="reference---choose-a-communication-protocol"></a>Referenz – Auswählen eines Kommunikationsprotokolls
 
 Mit IoT Hub können Geräte die folgenden Protokolle für die geräteseitige Kommunikation verwenden:
 
@@ -51,7 +51,7 @@ Beachten Sie bei der Auswahl des Protokolls für die geräteseitige Kommunikatio
 > [!WARNING]
 > Bei Verwendung von HTTPS muss jedes Gerät mindestens alle 25 Minuten eine Abfrage nach C2D-Nachrichten durchführen. In der Entwicklungsphase darf freilich häufiger als alle 25 Minuten eine Abfrage erfolgen.
 
-## Portnummern
+## <a name="port-numbers"></a>Portnummern
 
 Geräte können mit IoT Hub in Azure über verschiedene Protokolle kommunizieren. In der Regel richtet sich die Wahl des Protokolls nach den spezifischen Anforderungen der Lösung. Die folgende Tabelle enthält die ausgehenden Ports, die geöffnet sein müssen, damit ein Gerät ein bestimmtes Protokoll verwenden kann:
 
@@ -66,7 +66,7 @@ Geräte können mit IoT Hub in Azure über verschiedene Protokolle kommunizieren
 Nachdem Sie einen IoT Hub in einer Azure-Region erstellt haben, behält er seine IP-Adresse für die gesamte Lebensdauer bei. Wenn der IoT Hub von Microsoft jedoch in eine andere Skalierungseinheit verschoben wird, um die Dienstqualität zu gewährleisten, wird ihm eine neue IP-Adresse zugewiesen.
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen dazu, wie IoT Hub das MQTT-Protokoll implementiert, finden Sie unter [Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT][lnk-mqtt-support].
 

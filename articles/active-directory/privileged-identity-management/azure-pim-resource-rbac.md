@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: barclayn
-ms.openlocfilehash: abaf78428cb12235a659bad5c13d64e8e51f4ba6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 114ef434e6167ef2b25b040e35ab3ce1b85151a9
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="pim-for-azure-resources-preview"></a>PIM für Azure-Ressourcen (Vorschauversion)
 
@@ -48,6 +48,7 @@ Benutzer oder Mitglieder von Gruppen, die der Rolle „Besitzer“ oder „Benut
 ## <a name="tasks"></a>Aufgaben
 
 Mit PIM können Sie über den Aufgabenabschnitt des linken Navigationsmenüs komfortabel Rollen aktivieren sowie ausstehende Aktivierungen/Anforderungen, ausstehende Genehmigungen (für [Azure AD-Verzeichnisrollen](azure-ad-pim-approval-workflow.md)) und Überprüfungen mit ausstehender Antwort anzeigen.
+
 Wenn Sie von der Übersicht aus auf eines der Elemente im Aufgabenmenü zugreifen, enthält die daraufhin angezeigte Ansicht sowohl Ergebnisse für Azure AD-Verzeichnisrollen als auch Ergebnisse für Azure-Ressourcenrollen (Vorschauversion). 
 
 ![](media/azure-pim-resource-rbac/role-settings-details.png)
@@ -56,7 +57,7 @@ Unter „My roles“ (Meine Rollen) befindet sich eine Liste mit Ihren aktiven u
 
 ## <a name="activate-roles"></a>Aktivieren von Rollen
 
-Zur Aktivierung von Rollen für Azure-Ressourcen (Vorschauversion) wird eine neue Umgebung eingeführt, in der geeignete Rollenmitglieder die Aktivierung für einen späteren Zeitpunkt planen und eine bestimmte Aktivierungsdauer auswählen können, die innerhalb des (von Administratoren konfigurierten) Bereichs liegt. Informationen zum Aktivieren von Azure AD-Rollen finden Sie [hier](../active-directory-privileged-identity-management-how-to-activate-role.md).
+Zur Aktivierung von Rollen für Azure-Ressourcen (Vorschauversion) wird eine neue Umgebung eingeführt, in der geeignete Rollenmitglieder die Aktivierung für einen späteren Zeitpunkt planen und eine bestimmte Aktivierungsdauer auswählen können, die innerhalb des (von Administratoren konfigurierten) Bereichs liegt. Erfahren Sie mehr über das [Aktivieren von Azure AD-Rollen](../active-directory-privileged-identity-management-how-to-activate-role.md).
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 

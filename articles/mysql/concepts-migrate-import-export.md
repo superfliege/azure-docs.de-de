@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/13/2017
-ms.openlocfilehash: 2164562af60442375b96a51f820a65d4d4a6f257
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/02/2017
+ms.openlocfilehash: 36ffa7082ce60093cbd90d0c12187e28f517646d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrieren der MySQL-Datenbank durch Import und Export
 In diesem Artikel werden zwei gängige Vorgehensweisen beim Importieren von Daten zu bzw. Exportieren von Daten von einem Server für Azure-Datenbank für MySQL mithilfe von MySQL Workbench erläutert. 
@@ -45,7 +45,7 @@ Fügen Sie die Verbindungsinformationen in MySQL Workbench hinzu.
 Verwenden Sie in den folgenden Szenarien MySQL-Tools zum Importieren und Exportieren von Datenbanken in Azure MySQL-Datenbank. In anderen Szenarien empfiehlt es sich möglicherweise, den Ansatz [Sichern und Wiederherstellen](concepts-migrate-dump-restore.md) zu verfolgen. 
 
 - Wenn Sie selektiv einige Tabellen zum Importieren aus einer vorhandenen MySQL-Datenbank in Azure MySQL-Datenbank auswählen, empfiehlt es sich, das Import- und Exportverfahren zu nutzen.  Damit können Sie nicht benötigte Tabellen aus der Migration ausschließen und auf diese Weise Zeit und Ressourcen sparen. Verwenden Sie beispielsweise den Schalter `--include-tables` oder `--exclude-tables` mit [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) und den Schalter `--tables` mit [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
-- Wenn Sie andere Datenbankobjekte als Tabellen verschieben, müssen Sie diese explizit erstellen. Schließen Sie Einschränkungen (Primärschlüssel, Fremdschlüssel, Indizes), Sichten, Funktionen, Prozeduren, Trigger und andere Datenbankobjekte ein, die migriert werden sollen.
+- Wenn Sie andere Datenbankobjekte als Tabellen verschieben, müssen Sie diese Objekte explizit erstellen. Schließen Sie Einschränkungen (Primärschlüssel, Fremdschlüssel, Indizes), Sichten, Funktionen, Prozeduren, Trigger und andere Datenbankobjekte ein, die migriert werden sollen.
 - Erstellen Sie beim Migrieren von Daten aus anderen externen Datenquellen als einer MySQL-Datenbank Flatfiles, und importieren Sie diese mithilfe von [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html).
 
 Stellen Sie sicher, dass für alle Tabellen in der Datenbank das InnoDB-Speichermodul verwendet wird, wenn Sie Daten in Azure-Datenbank für MySQL laden. Azure-Datenbank für MySQL unterstützt nur das InnoDB-Speichermodul und daher keine alternativen Speichermodule. Wenn Ihre Tabellen alternative Speichermodule erfordern, müssen Sie sie so konvertieren, dass sie das Format des InnoDB-Moduls verwenden, ehe Sie die Migration nach Azure-Datenbank für MySQL ausführen. 

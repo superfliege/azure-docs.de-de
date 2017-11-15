@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: aa99d3ebd181a76d582670c5219f29858c462d30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d5eea5e4499b9de40002ce2fc6aac39239c41b19
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden (klassisch) in Azure
 Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit anderen Azure-Ressourcen, Ihrem lokalen Netzwerk und dem Internet zu ermöglichen. In Azure können zwei Arten von IP-Adressen verwendet werden: öffentliche und private.
@@ -141,9 +141,8 @@ Die folgende Tabelle gibt Aufschluss über die einzelnen Ressourcentypen, die m�
 
 | Ressource | Dynamisch | statischen | Mehrere IP-Adressen |
 | --- | --- | --- | --- |
-| VMs (in einem *eigenständigen* Clouddienst) |Ja |Ja |Ja |
-| PaaS-Rolleninstanz (in einem *eigenständigen* Clouddienst) |Ja |Nein |Ja |
-| VM oder PaaS-Rolleninstanz (in einem VNet) |Ja |Ja |Ja |
+| VMs (in einem *eigenständigen* Clouddienst oder VNET) |Ja |Ja |Ja |
+| PaaS-Rolleninstanz (in einem *eigenständigen* Clouddienst oder VNET) |Ja |Nein |Nein |
 | Front-End für internen Lastenausgleich |Ja |Ja |Ja |
 | Application Gateway-Front-End |Ja |Ja |Ja |
 

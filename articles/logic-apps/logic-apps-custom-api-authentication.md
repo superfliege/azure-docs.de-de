@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 6ccd8728697040b4c783d8a1e51bc68c09ef7001
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2528f4318d92bbfdc1008795876f0240a5e3e4f6
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="secure-calls-to-your-custom-apis-from-logic-apps"></a>Schützen von Aufrufen Ihrer benutzerdefinierten APIs in Logik-Apps
 
@@ -49,7 +49,7 @@ Im Folgenden sind die allgemeinen Schritte für diese Methode aufgeführt:
 
 #### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>Teil 1: Erstellen einer Azure AD-Anwendungsidentität für die Logik-App
 
-Die Logik-App verwendet diese Azure AD-Anwendungsidentität zum Authentifizieren bei Azure AD. Sie müssen diese Identität für Ihr Verzeichnis nur einmal einrichten. Sie können z.B. die gleiche Identität für alle Logik-Apps verwenden, Sie können aber auch pro Logik-App eindeutige Identitäten erstellen. Sie können diese Identitäten im Azure-Portal, im [klassischen Azure-Portal](#app-identity-logic-classic), oder über [PowerShell](#powershell) einrichten.
+Die Logik-App verwendet diese Azure AD-Anwendungsidentität zum Authentifizieren bei Azure AD. Sie müssen diese Identität für Ihr Verzeichnis nur einmal einrichten. Sie können z.B. die gleiche Identität für alle Logik-Apps verwenden, Sie können aber auch pro Logik-App eindeutige Identitäten erstellen. Sie können diese Identitäten im Azure-Portal oder über [PowerShell](#powershell) einrichten.
 
 **Erstellen der Anwendungsidentität für die Logik-App im Azure-Portal**
 
@@ -94,34 +94,6 @@ Die Logik-App verwendet diese Azure AD-Anwendungsidentität zum Authentifizieren
 
    ![Kopieren und speichern Sie den Schlüssel für eine spätere Verwendung](./media/logic-apps-custom-api-authentication/logic-app-copy-key-secret-password.png)
 
-<a name="app-identity-logic-classic"></a>
-
-**Erstellen der Anwendungsidentität für Ihre Logik-App im klassischen Azure-Portal**
-
-1. Wählen Sie im klassischen Azure-Portal [**Active Directory**](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) aus.
-
-2. Wählen Sie dasselbe Verzeichnis aus, das Sie für Ihre Web-App oder API-App verwenden.
-
-3. Wählen Sie auf der Registerkarte **Anwendungen** unten auf der Seite den Eintrag **Hinzufügen** aus.
-
-4. Geben Sie Ihrer Anwendungsidentität einen Namen, und wählen Sie **Weiter** (Pfeil nach rechts) aus.
-
-5. Geben Sie unter **Anwendungseigenschaften** eine eindeutige Zeichenfolge an, die als Domäne für **Anmelde-URL** und **App ID-URI** formatiert ist, und wählen Sie **Abschließen** (Häkchen) aus.
-
-6. Kopieren und speichern Sie auf der Registerkarte **Konfigurieren** die **Client-ID** für Ihre Logik-App für eine Verwendung in Teil 3.
-
-7. Öffnen Sie unter **Schlüssel** die Liste **Dauer auswählen**. Wählen Sie eine Dauer für den Schlüssel aus.
-
-   Der von Ihnen erstellte Schlüssel fungiert als „Geheimnis“ bzw. Kennwort der Anwendungsidentität für die Logik-App.
-
-8. Wählen Sie unten auf der Seite **Speichern** aus. Möglicherweise müssen Sie einige Sekunden warten.
-
-9. Stellen Sie sicher, dass Sie unter **Schlüssel** den Schlüssel kopieren und speichern, der gerade angezeigt wird. 
-
-   Wenn Sie Ihre Logik-App in Teil 3 konfigurieren, geben Sie diesen Schlüssel als „Geheimnis“ oder Kennwort an.
-
-Weitere Informationen finden Sie unter [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
-
 <a name="powershell"></a>
 
 **Erstellen der Anwendungsidentität für Ihre Logik-App in PowerShell**
@@ -156,7 +128,7 @@ Wenn Ihre Web-App oder API-App bereits bereitgestellt wurde, können Sie die Aut
 
 4. Wählen Sie auf der Seite **Authentifizierung/Autorisierung** die Option **Speichern** aus.
 
-Jetzt müssen Sie die Client-ID und die Mandanten-ID für die Anwendungsidentität suchen, die Ihrer Web-App oder API-App zugeordnet ist. Sie verwenden diese IDs in Teil 3. Fahren Sie mit diesen Schritten für das Azure-Portal oder das [klassische Azure-Portal](#find-id-classic) fort.
+Jetzt müssen Sie die Client-ID und die Mandanten-ID für die Anwendungsidentität suchen, die Ihrer Web-App oder API-App zugeordnet ist. Sie verwenden diese IDs in Teil 3. Fahren Sie mit diesen Schritten für das Azure-Portal fort.
 
 **Suchen der Client-ID und der Mandanten-ID der Anwendungsidentität für Ihre Web-App oder API-App im Azure-Portal**
 
@@ -177,32 +149,6 @@ Jetzt müssen Sie die Client-ID und die Mandanten-ID für die Anwendungsidentit�
 
 5. Schließen Sie die Seite **Azure Active Directory-Einstellungen**, ohne Ihre Änderungen zu speichern.
 
-<a name="find-id-classic"></a>
-
-**Suchen der Client-ID und der Mandanten-ID der Anwendungsidentität für Ihre Web-App oder API-App im klassischen Azure-Portal**
-
-1. Wählen Sie im klassischen Azure-Portal [**Active Directory**](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) aus.
-
-2.  Wählen Sie das Verzeichnis aus, das Sie für Ihre Web-App oder API-App verwenden.
-
-3. Suchen Sie im Feld **Suchen** nach der Anwendungsidentität für Ihre Web-App oder API-App, und wählen Sie diese aus.
-
-4. Kopieren Sie auf der Registerkarte **Konfigurieren** die **Client-ID**, und speichern Sie diese GUID für die Verwendung in Teil 3.
-
-5. Wählen Sie unten auf der Registerkarte **Konfigurieren** die Option **Endpunkte anzeigen** aus, nachdem Sie die Client-ID abgerufen haben.
-
-6. Kopieren Sie die URL für **Verbundmetadatendokument**, und navigieren Sie zu dieser URL.
-
-7. Suchen Sie im geöffneten Metadatendokument nach dem Stammelement **EntityDescriptor-ID**, das über das Attribut **EntityID** in dieser Form verfügt:`https://sts.windows.net/{GUID}` 
-
-   Die GUID in diesem Attribut ist Ihre spezifische Mandanten-GUID (Mandanten-ID).
-
-8. Kopieren Sie die Mandanten-ID, und speichern Sie diese ID für die Verwendung in Teil 3 sowie bei Bedarf für die Verwendung in der Bereitstellungsvorlage Ihrer Web-App oder API-App.
-
-Weitere Informationen finden Sie in den folgenden Themen:
-
-* [Authentifizierung und Autorisierung in Azure App Service](../app-service/app-service-authentication-overview.md)
-
 <a name="authen-deploy"></a>
 
 **Aktivieren der Authentifizierung bei der Bereitstellung mit einer Azure Ressource Manager-Vorlage**
@@ -212,7 +158,7 @@ Sie müssen weiterhin eine Azure AD-Anwendungsidentität für Ihre Web-App oder 
 Sie können auch die Schritte in Teil 1 ausführen. Dann sollten Sie jedoch sicherstellen, dass Ihre Web-App oder API-App tatsächlich für `https://{URL}` **Anmelde-URL** und **App-ID-URI** verwendet wird. In diesen Schritten müssen Sie die Client-ID und die Mandanten-ID für die Verwendung in der Bereitstellungsvorlage Ihrer App und auch für Teil 3 speichern.
 
 > [!NOTE]
-> Wenn Sie die Azure AD-Anwendungsidentität für Ihre Web-App oder API-App erstellen, müssen Sie anstelle von PowerShell das Azure-Portal oder das klassische Azure-Portal verwenden. Mit dem PowerShell-Cmdlet werden nicht die erforderlichen Berechtigungen für die Anmeldung der Benutzer bei einer Website eingerichtet.
+> Wenn Sie die Azure AD-Anwendungsidentität für Ihre Web-App oder API-App erstellen, müssen Sie anstelle von PowerShell das Azure-Portal verwenden. Mit dem PowerShell-Cmdlet werden nicht die erforderlichen Berechtigungen für die Anmeldung der Benutzer bei einer Website eingerichtet.
 
 Sobald Sie über die Client-ID und die Mandanten-ID verfügen, nehmen Sie diese IDs als untergeordnete Ressourcen Ihrer Web-App oder API-App in Ihre Bereitstellungsvorlage auf:
 

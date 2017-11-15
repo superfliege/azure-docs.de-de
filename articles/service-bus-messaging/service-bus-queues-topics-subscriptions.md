@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2017
+ms.date: 11/07/2017
 ms.author: sethm
-ms.openlocfilehash: 00f9f38fbae028486270053dedb4df580a3f1a44
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bea3b56cea81362b25e696a672bf2a00e26d3ef
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus-Warteschlangen, -Themen und -Abonnements
 
-Microsoft Azure Service Bus unterstützt einen Satz cloudbasierter, nachrichtenorientierter Middlewaretechnologien, darunter zuverlässiges Message Queuing und dauerhaftes Veröffentlichungs-/Abonnementmessaging. Diese Brokermessagingfunktionen kann man sich als asynchrone, entkoppelte Messagingfeatures vorstellen, die unter Verwendung des Service Bus-Messagingfabrics verschiedene Szenarien wie Veröffentlichung/Abonnements, vorübergehende Entkopplung und Lastenausgleich unterstützen. Entkoppelte Kommunikation hat viele Vorteile, beispielsweise können Clients und Server Verbindungen nach Bedarf herstellen und Vorgänge asynchron ausführen.
+Microsoft Azure Service Bus unterstützt einen Satz cloudbasierter, nachrichtenorientierter Middlewaretechnologien, darunter zuverlässiges Message Queuing und dauerhaftes Veröffentlichungs-/Abonnementmessaging. Diese Brokermessagingfunktionen kann man sich als asynchrone, entkoppelte Messagingfeatures vorstellen, die unter Verwendung der Service Bus-Messagingworkload verschiedene Szenarien wie Veröffentlichung/Abonnements, vorübergehende Entkopplung und Lastenausgleich unterstützen. Entkoppelte Kommunikation hat viele Vorteile, beispielsweise können Clients und Server Verbindungen nach Bedarf herstellen und Vorgänge asynchron ausführen.
 
 Den Kern der Messagingfunktionen in Service Bus bilden die folgenden Messagingentitäten: Warteschlangen, Themen und Abonnements sowie Regeln/Aktionen.
 
@@ -52,7 +52,7 @@ MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateS
 QueueClient myQueueClient = factory.CreateQueueClient("TestQueue");
 ```
 
-Dann können Sie Nachrichten an die Warteschlange senden. Im Fall einer Liste von Brokernachrichten namens `MessageList` sieht der Code beispielsweise ungefähr folgendermaßen aus:
+Dann können Sie Nachrichten an die Warteschlange senden. Im Fall einer Liste von Brokernachrichten namens `MessageList` sieht der Code ungefähr wie folgendes Beispiel aus:
 
 ```csharp
 for (int count = 0; count < 6; count++)
@@ -82,7 +82,7 @@ Im [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)-Modus ist 
 
 Wenn die Anwendung die Nachricht aus einem bestimmten Grund nicht verarbeiten kann, kann sie die [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon)-Methode für die empfangene Nachricht aufrufen (anstelle von [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)). Dadurch kann Service Bus die Nachricht entsperren und verfügbar machen, damit sie erneut empfangen werden kann, und zwar entweder von demselben Consumer oder von einem anderen konkurrierenden Consumer. Der Sperre ist außerdem ein Timeout zugeordnet. Wenn die Anwendung die Nachricht nicht vor Ablauf des Timeouts verarbeiten kann (z.B. wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht und macht sie verfügbar, sodass sie wieder empfangen werden kann (im Wesentlichen erfolgt standardmäßig der Vorgang [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon)).
 
-Falls die Anwendung nach der Verarbeitung der Nachricht, jedoch vor Ausgabe der **Complete**-Anforderung abstürzt, wird die Nachricht der Anwendung bei ihrem Neustart erneut zugestellt. Dies wird häufig als *At Least Once*-Processing bezeichnet, d.h., jede Nachricht wird mindestens einmal verarbeitet. In bestimmten Situationen wird dieselbe Nachricht jedoch möglicherweise erneut zugestellt. Wenn das Szenario keine doppelte Verarbeitung toleriert, muss in der Anwendung zusätzliche Logik zum Erkennen von Duplikaten vorhanden sein; hierzu kann die Eigenschaft **MessageId** der Nachricht verwendet werden, die über alle Zustellversuche hinweg konstant bleibt. Dies wird auch als *Exactly Once*-Verarbeitung (genau einmal) bezeichnet.
+Falls die Anwendung nach der Verarbeitung der Nachricht, jedoch vor Ausgabe der **Complete**-Anforderung abstürzt, wird die Nachricht der Anwendung bei ihrem Neustart erneut zugestellt. Dies wird häufig als *At Least Once*-Processing bezeichnet, d.h., jede Nachricht wird mindestens einmal verarbeitet. In bestimmten Situationen wird dieselbe Nachricht jedoch möglicherweise erneut zugestellt. Wenn das Szenario keine doppelte Verarbeitung toleriert, muss in der Anwendung zusätzliche Logik zum Erkennen von Duplikaten vorhanden sein. Hierzu kann die Eigenschaft **MessageId** der Nachricht verwendet werden, die über alle Zustellversuche hinweg konstant bleibt. Dies wird auch als *Exactly Once*-Verarbeitung (genau einmal) bezeichnet.
 
 ## <a name="topics-and-subscriptions"></a>Themen und Abonnements
 Im Gegensatz zu Warteschlangen, bei denen jede Nachricht von einem einzigen Consumer verarbeitet wird, bieten *Themen* und *Abonnements* eine 1:n-Kommunikationsform, die nach dem Muster *Veröffentlichen/Abonnieren* abläuft. Jede veröffentlichte Nachricht wird für jedes beim Thema registrierte Abonnement verfügbar gemacht, was für die Skalierung in Szenarien mit sehr vielen Benutzern hilfreich ist. Nachrichten werden an ein Thema gesendet und an ein oder mehrere zugeordnete Abonnements übermittelt, abhängig von Filterregeln, die für jedes Abonnement einzeln festlegt werden können. In Abonnements können die zu empfangenden Nachrichten mithilfe zusätzlicher Filter eingeschränkt werden. Nachrichten werden auf die gleiche Weise an ein Thema gesendet wie an eine Warteschlange, sie werden jedoch nicht direkt vom Thema empfangen. Stattdessen werden sie von Abonnements empfangen. Ein Themenabonnement ist mit einer virtuellen Warteschlange vergleichbar, die Kopien der an das Thema gesendeten Nachrichten empfängt. Nachrichten werden von einem Abonnement auf die gleiche Weise empfangen wie von einer Warteschlange.
@@ -155,7 +155,7 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 
 Mit diesem Abonnementfilter werden nur Nachrichten, deren Eigenschaft `StoreName` auf `Store1` festgelegt ist, in die virtuelle Warteschlange für das Abonnement `Dashboard` kopiert.
 
-Weitere Informationen über mögliche Filterwerte finden Sie in der Dokumentation zu den Klassen [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) und [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction). Weitere Informationen finden Sie außerdem in den Beispielen [Brokermessaging: Erweiterte Filter](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749) und [Themenfilter](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters).
+Weitere Informationen über mögliche Filterwerte finden Sie in der Dokumentation zu den Klassen [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) und [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction). Weitere Informationen finden Sie außerdem in den Beispielen [Brokermessaging: Erweiterte Filter](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749) und [Themenfilter](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/TopicFilters).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen und Beispiele für die Verwendung von Messaging mit Service Bus finden Sie in den folgenden erweiterten Themen.
@@ -163,6 +163,5 @@ Weitere Informationen und Beispiele für die Verwendung von Messaging mit Servic
 * [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
 * [.NET-Tutorial zu Service Bus-Brokermessaging](service-bus-brokered-tutorial-dotnet.md)
 * [REST-Tutorial zu Service Bus-Brokermessaging](service-bus-brokered-tutorial-rest.md)
-* [Themenfilter – Beispiel](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/TopicFilters)
 * [Brokermessaging: Beispiel für erweiterte Filter](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 

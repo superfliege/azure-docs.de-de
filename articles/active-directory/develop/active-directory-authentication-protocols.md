@@ -21,10 +21,10 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
 ---
-# Azure Active Directory-Authentifizierungsprotokolle
+# <a name="azure-active-directory-authentication-protocols"></a>Azure Active Directory-Authentifizierungsprotokolle
 Azure Active Directory (Azure AD) unterstützt mehrere der am häufigsten verwendeten Protokolle zur Authentifizierung und Autorisierung. Die Themen in diesem Abschnitt beschreiben die unterstützten Protokolle und ihre Implementierung in Azure AD. Die Themen umfassen eine Beschreibung der unterstützten Anspruchstypen, eine Einführung in die Verwendung von Verbundmetadaten, eine ausführliche OAuth 2.0.- und SAML 2.0-Protokoll-Referenzdokumentation und einen Abschnitt zur Problembehandlung.
 
-## Authentifizierungsprotokolle, Artikel und Referenz
+## <a name="authentication-protocols-articles-and-reference"></a>Authentifizierungsprotokolle, Artikel und Referenz
 * [Wichtige Informationen zum Signieren vom Schlüssel-Rollover in Azure AD](active-directory-signing-key-rollover.md) – Erfahren Sie mehr über das Signieren der Schlüssel-Rolloverkadenz von Azure AD, die Änderungen zum automatischen Update des Schlüssels und die Erläuterungen zum Aktualisieren der häufigsten Anwendungsszenarien.
 * [Unterstützte Token- und Anspruchstypen](active-directory-token-and-claims.md) – Erfahren Sie mehr über die Ansprüche in den Token, die von Azure AD ausgegeben werden.
 * [Verbundmetadaten](active-directory-federation-metadata.md) – Erfahren Sie mehr über das Suchen und Interpretieren der von Azure AD generierten Metadatendokumente.
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) unterstützt mehrere der am häufigsten verwen
 * [Dienst-zu-Dienst-Aufrufe mit dem Im-Auftrag-von-Fluss](active-directory-protocols-oauth-on-behalf-of.md): Erfahren Sie mehr über das Verwenden das Im-Auftrag-von-Flusses von OAuth 2.0 für Dienst-zu-Dienst-Aufrufe.
 * [SAML-Protokollreferenz](active-directory-saml-protocol-reference.md) – Erfahren Sie mehr über die Single Sign-On- und Single Sign-Out-SAML-Profile von Azure AD.
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 [Entwicklerhandbuch zu Azure Active Directory](active-directory-developers-guide.md)
 
 [Active Directory-Codebeispiele](active-directory-code-samples.md)

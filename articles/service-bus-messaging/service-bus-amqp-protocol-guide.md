@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 11/08/2017
 ms.author: clemensv;hillaryc;sethm
-ms.openlocfilehash: 2ef07d78a9d81fac933f2c3359e9ee48f86e6790
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4e1fa9db3b4801103069163c55a9b342a27d00ac
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
-# AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
+# <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
 Das Advanced Message Queueing Protocol 1.0 ist ein standardisiertes Framing- und Übertragungsprotokoll für das asynchrone, sichere und zuverlässige Übertragen von Nachrichten zwischen zwei Parteien. Es ist das primäre Protokoll von Azure Service Bus Messaging und Azure Event Hubs. Beide Dienste unterstützen auch HTTPS. Das proprietäre SBMP-Protokoll, das ebenfalls unterstützt wird, wird zugunsten von AMQP nach und nach abgeschafft.
 
 AMQP 1.0 ist das Ergebnis einer breiten Zusammenarbeit, bei der Anbieter von Middleware, z.B. Microsoft und Red Hat, mit vielen Nutzern von Messaging-Middleware, z.B. JP Morgan Chase als Vertreter der Finanzdienstleistungsbranche, kooperiert haben. Das Forum für die technische Standardisierung für das AMQP-Protokoll und Erweiterungsspezifikationen ist OASIS, das als internationaler Standard formell anerkannt ist (ISO/IEC 19494).
 
-## Ziele
+## <a name="goals"></a>Ziele
 
 In diesem Artikel sind die Kernkonzepte der AMQP 1.0-Messagingspezifikation und einige im Entwurfsstadium befindliche Erweiterungsspezifikationen zusammengefasst, die derzeit vom technischen Komitee für OASIS AMQP abschließend festgelegt werden. Außerdem wird beschrieben, wie diese Spezifikationen von Azure Service Bus implementiert und genutzt werden.
 
 Das Ziel besteht darin, dass alle Entwickler, die einen vorhandenen AMQP 1.0-Clientstapel auf einer beliebigen Plattform verwenden, mit Azure Service Bus über AMQP 1.0 interagieren können.
 
-In gängige allgemeine AMQP 1.0-Stapel, z.B. Apache Proton oder AMQP.NET Lite, sind alle wichtigen AMQP 1.0-Gesten bereits implementiert. Diese grundlegenden Gesten werden manchmal von einer übergeordneten API umschlossen. Bei Apache Proton sind dies sogar zwei, nämlich die imperative Messenger-API und die reaktive Reactor-API.
+In gängige allgemeine AMQP 1.0-Stapel, z.B. Apache Proton oder AMQP.NET Lite, sind alle wichtigen AMQP 1.0-Protokolle bereits implementiert. Diese grundlegenden Gesten werden manchmal von einer übergeordneten API umschlossen. Bei Apache Proton sind dies sogar zwei, nämlich die imperative Messenger-API und die reaktive Reactor-API.
 
 In der folgenden Beschreibung wird davon ausgegangen, dass die Verwaltung von AMQP-Verbindungen, -Sitzungen und -Links und die Behandlung von Frameübertragungen und der Flusssteuerung vom jeweiligen Stapel übernommen wird (z.B. Apache Proton-C) und sich Anwendungsentwickler nur sehr wenig oder gar nicht darum kümmern müssen. Wir setzen auf abstrakte Weise das Vorhandensein einiger API-Grundlagen voraus – etwa die Verbindungsherstellung und die Erstellung von *sender*- und *receiver*-Abstraktionsobjekten, die dann jeweils über `send()`- bzw. `receive()`-Vorgänge verfügen.
 
 Beim Beschreiben von erweiterten Features von Azure Service Bus, z.B. Durchsuchen von Nachrichten oder Verwalten von Sitzungen, werden nicht nur AMQP-Begriffe verwendet, sondern es wird zusätzlich zu dieser vorausgesetzten API-Abstraktion auch eine mehrstufige Pseudoimplementierung genutzt.
 
-## Was ist AMQP?
+## <a name="what-is-amqp"></a>Was ist AMQP?
 
 AMQP ist ein Framing- und Übertragungsprotokoll. „Framing“ bedeutet, dass eine Struktur für binäre Datenströme bereitgestellt wird, die in beide Richtungen einer Netzwerkverbindung fließen. Die Struktur ermöglicht, dass einzelne, *Frames* genannte Datenblöcke, zwischen den verbundenen Parteien ausgetauscht werden. Mit den Übertragungsfunktionen wird sichergestellt, dass beide kommunizierenden Parteien ein gemeinsames Verständnis entwickeln können, wann Frames übertragen und Übertragungen als abgeschlossen angesehen werden sollen.
 
@@ -48,13 +48,13 @@ Das Protokoll kann für die symmetrische Peer-to-Peer-Kommunikation verwendet we
 
 Das AMQP 1.0-Protokoll ist auf Erweiterbarkeit ausgelegt, damit die Funktionen durch weitere Spezifikationen ausgebaut werden können. Dies wird in den drei Erweiterungsspezifikationen deutlich, die in diesem Dokument beschrieben werden. Für die Kommunikation über die vorhandene HTTPS/WebSockets-Infrastruktur, bei der die Konfiguration der nativen AMQP-TCP-Ports schwierig sein kann, wird mit einer bindenden Spezifikation definiert, wie AMQP auf WebSockets verteilt werden kann. Für die Interaktion mit der Messaginginfrastruktur nach dem Schema „Anforderung/Antwort“ für Verwaltungszwecke oder zur Bereitstellung erweiterter Funktionen sind in der AMQP-Verwaltungsspezifikation die erforderlichen Grundlagen für die Interaktion definiert. Für die Verbundautorisierungsmodell-Integration definiert die anspruchsbasierte AMQP-Sicherheitsspezifikation, wie Sie Autorisierungstoken, die Links zugeordnet sind, zuordnen und erneuern.
 
-## Grundlegende AMQP-Szenarien
+## <a name="basic-amqp-scenarios"></a>Grundlegende AMQP-Szenarien
 
 In diesem Abschnitt wird die grundlegende Nutzung von AMQP 1.0 mit Azure Service Bus beschrieben. Dies umfasst das Erstellen von Verbindungen, Sitzungen und Links und das Übertragen von Nachrichten an und von Service Bus-Entitäten wie Warteschlangen, Themen und Abonnements.
 
 Die beste Quelle für Informationen zur Funktionsweise von AMQP ist die AMQP 1.0-Spezifikation. Sie wurde aber als genaue Anleitung für die Implementierung und nicht als Leitfaden zum Protokoll geschrieben. In diesem Abschnitt geht es um die Einführung in die Terminologie, die benötigt wird, um die Nutzung von AMQP 1.0 durch Service Bus zu beschreiben. Eine umfassendere Einführung in AMQP und eine ausführlichere Beschreibung von AMQP 1.0 erhalten Sie in [diesem Videokurs][this video course].
 
-### Verbindungen und Sitzungen
+### <a name="connections-and-sessions"></a>Verbindungen und Sitzungen
 
 In AMQP werden die kommunizierenden Programme als *Container* bezeichnet. Die Container enthalten *Knoten*, bei denen es sich um die kommunizierenden Entitäten in den Containern handelt. Eine Warteschlange kann ein Knoten dieser Art sein. AMQP ermöglicht Multiplexing, sodass eine Verbindung für viele Kommunikationspfade zwischen Knoten verwendet werden kann. Beispielsweise kann ein Anwendungsclient über eine Netzwerkverbindung gleichzeitig Daten von einer Warteschlange erhalten und Daten an eine andere Warteschlange senden.
 
@@ -81,7 +81,7 @@ In Azure Service Bus wird für jede Verbindung derzeit genau eine Sitzung verwen
 
 Verbindungen, Kanäle und Sitzungen sind flüchtig. Wenn die zugrunde liegende Verbindung getrennt wird, müssen Verbindungen, TLS-Tunnel, SASL-Autorisierungskontext und Sitzungen wiederhergestellt werden.
 
-### Links
+### <a name="links"></a>Links
 
 Für AMQP werden Nachrichten über Verknüpfungen (Links) übertragen. Eine Verknüpfung ist ein Kommunikationspfad, der für eine Sitzung erstellt wird und mit dem Nachrichten in einer Richtung übertragen werden können. Die Aushandlung des Übertragungsstatus wird über die Verknüpfung und in bidirektionaler Form zwischen den verbundenen Parteien durchgeführt.
 
@@ -97,7 +97,7 @@ In Service Bus entspricht ein Knoten direkt einer Warteschlange, einem Thema, ei
 
 Der verbindende Client ist auch zum Verwenden eines lokalen Knotennamens zum Erstellen von Verknüpfungen erforderlich. Service Bus schreibt diese Knotennamen nicht vor und interpretiert sie auch nicht. AMQP 1.0-Clientstapel verwenden im Allgemeinen ein Schema, um sicherzustellen, dass diese flüchtigen Knotennamen im Bereich des Clients eindeutig sind.
 
-### Übertragungen
+### <a name="transfers"></a>Übertragungen
 
 Nachdem eine Verknüpfung eingerichtet wurde, können Nachrichten über die Verknüpfung übertragen werden. In AMQP wird eine Übertragung mit einer expliziten Protokollgeste (der *transfer*-Performative) ausgeführt, durch die eine Nachricht über eine Verknüpfung vom Absender zum Empfänger befördert wird. Eine Übertragung ist abgeschlossen, wenn eine „Übereinkunft“ (settled) erzielt wurde. Dies bedeutet, dass sich beide Parteien auf das Ergebnis der Übertragung geeinigt haben.
 
@@ -117,7 +117,7 @@ Service Bus und Event Hubs unterstützen daher Übertragungen der Art „At leas
 
 Um das mögliche doppelte Senden zu kompensieren, unterstützt Service Bus die Duplikaterkennung als optionales Feature für Warteschlangen und Themen. Bei der Duplikaterkennung werden die Nachrichten-IDs aller eingehenden Nachrichten während eines benutzerdefinierten Zeitfensters aufgezeichnet und dann im Hintergrund alle Nachrichten verworfen, die in diesem Zeitfenster mit den gleichen Nachrichten-IDs gesendet werden.
 
-### Flusssteuerung
+### <a name="flow-control"></a>Flusssteuerung
 
 Zusätzlich zum Modell der Flusssteuerung auf Sitzungsebene, das bereits erwähnt wurde, verfügt jede Verknüpfung über ein eigenes Modell für die Flusssteuerung. Die Flusssteuerung auf Sitzungsebene schützt den Container davor, zu viele Frames auf einmal verarbeiten zu müssen. Bei der Flusssteuerung auf Verknüpfungsebene kann die Anwendung entscheiden, wie viele Nachrichten einer Verknüpfung und zu welchem Zeitpunkt diese Nachrichten verarbeitet werden sollen.
 
@@ -141,49 +141,49 @@ Als Zusammenfassung enthalten die folgenden Abschnitte eine schematische Übersi
 
 Die Pfeile in der folgenden Tabelle zeigen die Performativenflussrichtung an.
 
-#### Erstellen eines Nachrichtenempfängers
+#### <a name="create-message-receiver"></a>Erstellen eines Nachrichtenempfängers
 
 | Client- | SERVICE BUS |
 | --- | --- |
 | --> attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**receiver**,<br/>source={Entitätsname},<br/>target={Clientverknüpfungs-ID}<br/>) |Client wird Entität als Empfänger zugeordnet |
 | Service Bus antwortet und ordnet sein Ende der Verknüpfung zu |<-- attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**sender**,<br/>source={Entitätsname},<br/>target={Clientverknüpfungs-ID}<br/>) |
 
-#### Erstellen des Nachrichtenabsenders
+#### <a name="create-message-sender"></a>Erstellen des Nachrichtenabsenders
 
 | Client- | SERVICE BUS |
 | --- | --- |
 | --> attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**sender**,<br/>source={Clientverknüpfungs-ID},<br/>target={Entitätsname}<br/>) |Keine Aktion |
 | Keine Aktion |<-- attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**receiver**,<br/>source={Clientverknüpfungs-ID},<br/>target={Entitätsname}<br/>) |
 
-#### Erstellen des Nachrichtenabsenders (Fehler)
+#### <a name="create-message-sender-error"></a>Erstellen des Nachrichtenabsenders (Fehler)
 
 | Client- | SERVICE BUS |
 | --- | --- |
 | --> attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**sender**,<br/>source={Clientverknüpfungs-ID},<br/>target={Entitätsname}<br/>) |Keine Aktion |
 | Keine Aktion |<-- attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numerisches Handle},<br/>closed=**true**,<br/>error={Fehlerinformationen}<br/>) |
 
-#### Schließen des Nachrichtenabsenders/-empfängers
+#### <a name="close-message-receiversender"></a>Schließen des Nachrichtenabsenders/-empfängers
 
 | Client- | SERVICE BUS |
 | --- | --- |
 | --> detach(<br/>handle={numerisches Handle},<br/>closed=**true**<br/>) |Keine Aktion |
 | Keine Aktion |<-- detach(<br/>handle={numerisches Handle},<br/>closed=**true**<br/>) |
 
-#### Senden (Erfolg)
+#### <a name="send-success"></a>Senden (Erfolg)
 
 | Client- | SERVICE BUS |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numerisches Handle},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |Keine Aktion |
 | Keine Aktion |<-- disposition(<br/>role=receiver,<br/>first={Zustellungs-ID},<br/>last={Zustellungs-ID},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
 
-#### Senden (Fehler)
+#### <a name="send-error"></a>Senden (Fehler)
 
 | Client- | SERVICE BUS |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numerisches Handle},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |Keine Aktion |
 | Keine Aktion |<-- disposition(<br/>role=receiver,<br/>first={Zustellungs-ID},<br/>last={Zustellungs-ID},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={Fehlerinformationen}<br/>)<br/>) |
 
-#### Empfangen
+#### <a name="receive"></a>Empfangen
 
 | Client- | SERVICE BUS |
 | --- | --- |
@@ -191,7 +191,7 @@ Die Pfeile in der folgenden Tabelle zeigen die Performativenflussrichtung an.
 | Keine Aktion |< transfer(<br/>delivery-id={numerisches Handle},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
 | --> disposition(<br/>role=**receiver**,<br/>first={Zustellungs-ID},<br/>last={Zustellungs-ID},<br/>settled=**true**,<br/>state=**accepted**<br/>) |Keine Aktion |
 
-#### Empfangen mehrerer Nachrichten
+#### <a name="multi-message-receive"></a>Empfangen mehrerer Nachrichten
 
 | Client- | SERVICE BUS |
 | --- | --- |
@@ -201,11 +201,11 @@ Die Pfeile in der folgenden Tabelle zeigen die Performativenflussrichtung an.
 | Keine Aktion |< transfer(<br/>delivery-id={numerisches Handle+2},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
 | --> disposition(<br/>role=receiver,<br/>first={Zustellungs-ID},<br/>last={Zustellungs-ID+2},<br/>settled=**true**,<br/>state=**accepted**<br/>) |Keine Aktion |
 
-### Meldungen
+### <a name="messages"></a>Meldungen
 
 In den folgenden Abschnitten wird erläutert, welche Eigenschaften aus den AMQP-Standardnachrichtenabschnitten von Service Bus verwendet werden, und wie sie dem Service Bus-API-Satz zugeordnet werden.
 
-#### Header
+#### <a name="header"></a>Header
 
 | Feldname | Verwendung | API-Name |
 | --- | --- | --- |
@@ -215,7 +215,7 @@ In den folgenden Abschnitten wird erläutert, welche Eigenschaften aus den AMQP-
 | first-acquirer |- |- |
 | delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
 
-#### Eigenschaften
+#### <a name="properties"></a>Eigenschaften
 
 | Feldname | Verwendung | API-Name |
 | --- | --- | --- |
@@ -233,18 +233,18 @@ In den folgenden Abschnitten wird erläutert, welche Eigenschaften aus den AMQP-
 | group-sequence |Indikator, der die relative Sequenznummer der Nachricht in einer Sitzung angibt. Wird von Service Bus ignoriert. |Nicht über die Service Bus-API zugänglich. |
 | reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
 
-## Erweiterte Service Bus-Funktionen
+## <a name="advanced-service-bus-capabilities"></a>Erweiterte Service Bus-Funktionen
 
 In diesem Abschnitt werden die erweiterten Funktionen von Azure Service Bus behandelt. Sie basieren auf Erweiterungsentwürfen für AMQP, die derzeit vom OASIS Technical Committee für AMQP entwickelt werden. Service Bus implementiert die aktuellen Versionen dieser Entwürfe und übernimmt die Änderungen, die eingeführt werden, wenn diese Entwürfe den Standardstatus erreichen.
 
 > [!NOTE]
-> Erweiterte Service Bus-Messagingvorgänge werden über das Muster „Anforderung/Antwort“ unterstützt. Ausführliche Informationen zu diesen Vorgängen finden Sie im Dokument [AMQP 1.0 in Service Bus: auf Anforderung/Antwort basierende Vorgänge](service-bus-amqp-request-response.md).
+> Erweiterte Service Bus-Messagingvorgänge werden über das Muster „Anforderung/Antwort“ unterstützt. Ausführliche Informationen zu diesen Vorgängen finden Sie im Artikel [AMQP 1.0 in Service Bus: auf Anforderung/Antwort basierende Vorgänge](service-bus-amqp-request-response.md).
 > 
 > 
 
-### AMQP-Verwaltung
+### <a name="amqp-management"></a>AMQP-Verwaltung
 
-Die AMQP-Verwaltungsspezifikation ist der erste der hier beschriebenen Erweiterungsentwürfe. Diese Spezifikation definiert eine Gruppe von Protokollgesten, die dem AMQP-Protokoll übergeordnet sind und Verwaltungsinteraktionen mit der Verwaltungsinfrastruktur über AMQP zulassen. Die Spezifikation definiert generische Vorgänge wie *Erstellen*, *Lesen*, *Aktualisieren* und *Löschen*, um Entitäten in einer Messaginginfrastruktur und eine Gruppe von Abfragevorgängen zu verwalten.
+Die AMQP-Verwaltungsspezifikation ist der erste der in diesem Artikel beschriebenen Erweiterungsentwürfe. Diese Spezifikation definiert eine Gruppe von Protokollen, die dem AMQP-Protokoll übergeordnet sind und Verwaltungsinteraktionen mit der Messaginginfrastruktur über AMQP zulassen. Die Spezifikation definiert generische Vorgänge wie *Erstellen*, *Lesen*, *Aktualisieren* und *Löschen*, um Entitäten in einer Messaginginfrastruktur und eine Gruppe von Abfragevorgängen zu verwalten.
 
 Für all diese Gesten ist eine Anforderung/Antwort-Interaktion zwischen dem Client und der Messaginginfrastruktur erforderlich. Daher definiert die Spezifikation, wie dieses Interaktionsmuster zusätzlich zu AMQP modelliert wird: Der Client stellt eine Verbindung mit der Messaginginfrastruktur her, initiiert eine Sitzung und erstellt dann ein Verknüpfungspaar. Für die eine Verknüpfung fungiert der Client als Absender, und für die andere als Empfänger. Auf diese Weise wird ein Verknüpfungspaar erstellt, das als bidirektionaler Kanal dienen kann.
 
@@ -263,7 +263,7 @@ Der Austausch von Nachrichten für das Verwaltungsprotokoll und alle anderen Pro
 
 Service Bus implementiert derzeit keine Kernfeatures der Verwaltungsspezifikation. Das von der Verwaltungsspezifikation definierte Anforderungs-Antwort-Muster stellt aber die Grundlage für die anspruchsbasierte Sicherheitsfunktion und fast alle erweiterten Funktionen dar, die in den folgenden Abschnitten beschrieben werden.
 
-### Anspruchsbasierte Autorisierung
+### <a name="claims-based-authorization"></a>Anspruchsbasierte Autorisierung
 
 Der Entwurf der AMQP-Spezifikation für die anspruchsbasierte Autorisierung (Claims-Based Authorization Specification, CBS) baut auf dem Anforderung/Antwort-Muster der Verwaltungsspezifikation auf und beschreibt ein generalisiertes Modell für die Verwendung von Verbundsicherheitstoken mit AMQP.
 
@@ -316,7 +316,7 @@ Nachdem die Verbindung und die Sitzung eingerichtet wurden, sind das Zuordnen de
 
 Der Client ist anschließend dafür zuständig, den Tokenablauf nachzuverfolgen. Wenn ein Token abläuft, verwirft Service Bus sofort alle Verknüpfungen der Verbindung mit der jeweiligen Entität. Um dies zu verhindern, kann der Client das Token für den Knoten jederzeit durch ein neues Token ersetzen, indem er den virtuellen Verwaltungsknoten *$cbs* mit der gleichen *put-token*-Geste verwendet. Der Nutzlast-Datenverkehr anderer Verknüpfungen wird dadurch nicht beeinträchtigt.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu AMQP finden Sie unter den folgenden Links:
 

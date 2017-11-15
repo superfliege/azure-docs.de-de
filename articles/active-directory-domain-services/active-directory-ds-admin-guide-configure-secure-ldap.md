@@ -4,7 +4,7 @@ description: "Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD 
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/03/2017
 ms.author: maheshu
-ms.openlocfilehash: 93afa49166c5b31d23237c308b9d34f6d6f3507d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05af1ccc9702891980e60a1c1db4c527ffbed0fa
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurieren von sicherem LDAP (LDAPS) für eine über Azure AD Domain Services verwaltete Domäne
 Dieser Artikel zeigt, wie Sie sicheres LDAP (LDAPS, Secure Lightweight Directory Access Protocol) für eine durch Azure AD Domain Services verwaltete Domäne aktivieren können. Sicheres LDAP ist auch bekannt als „Lightweight Directory Access Protocol (LDAP) über Secure Sockets Layer (SSL)/Transport Layer Security (TLS)“.
@@ -55,31 +55,36 @@ Erwerben Sie ein gültiges Zertifikat, das den folgenden Richtlinien entspricht,
 ## <a name="task-1---obtain-a-certificate-for-secure-ldap"></a>Aufgabe 1: Erwerben eines Zertifikats für sicheres LDAP
 Zuerst müssen Sie ein Zertifikat erwerben, das Sie zum Zugriff auf die verwaltete Domäne über sicheres LDAP verwenden. Sie haben zwei Möglichkeiten:
 
-* Erwerben Sie ein SSL-Zertifikat von einer Zertifizierungsstelle. Hierbei kann es sich um eine öffentliche Zertifizierungsstelle handeln.
+* Fordern Sie ein Zertifikat von einer öffentlichen Zertifizierungsstelle an.
 * Erstellen eines selbstsignierten Zertifikats
-
-### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>Option A (empfohlen): Erwerben eines Zertifikats für sicheres LDAP von einer Zertifizierungsstelle
-Wenn Ihre Organisation ihre Zertifikate von einer öffentlichen Zertifizierungsstelle erhält, müssen Sie das Zertifikat für sicheres LDAP bei dieser öffentlichen Zertifizierungsstelle erwerben.
-
-Stellen Sie beim Anfordern des Zertifikats sicher, dass alle Anforderungen erfüllt werden, die unter [Requirements for the secure LDAP certificate (Anforderungen an ein Zertifikat für sicheres LDAP)](#requirements-for-the-secure-ldap-certificate) aufgeführt sind.
 
 > [!NOTE]
 > Die Clientcomputer, die über sicheres LDAP eine Verbindung mit der verwalteten Domäne herstellen sollen, müssen dem Aussteller des Zertifikats für sicheres LDAP vertrauen.
 >
+
+### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>Option A (empfohlen): Erwerben eines Zertifikats für sicheres LDAP von einer Zertifizierungsstelle
+Wenn Ihre Organisation ihre Zertifikate von einer öffentlichen Zertifizierungsstelle erhält, fordern Sie das Zertifikat für sicheres LDAP bei dieser öffentlichen Zertifizierungsstelle an.
+
+> [!TIP]
+> **Verwenden Sie selbstsignierte Zertifikate für verwaltete Domänen mit den Domänensuffixen „.onmicrosoft.com“.**
+> Wenn der DNS-Domänenname Ihrer verwalteten Domäne auf „.onmicrosoft.com“ endet, können Sie kein sicheres LDAP-Zertifikat von einer öffentlichen Zertifizierungsstelle anfordern. Da Microsoft die Domäne „onmicrosoft.com“ besitzt, verweigern öffentliche Zertifizierungsstellen das Ausstellen eines sicheren LDAP-Zertifikats für eine Domäne mit diesem Suffix. Erstellen Sie in diesem Szenario ein selbstsigniertes Zertifikat, und verwenden Sie es, um sicheres LDAP zu konfigurieren.
 >
 
+Stellen Sie sicher, dass das Zertifikat, das Sie von der öffentlichen Zertifizierungsstelle erhalten, alle Anforderungen erfüllt, die in [Anforderungen an ein Zertifikat für sicheres LDAP](#requirements-for-the-secure-ldap-certificate) beschrieben sind.
+
+
 ### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>Option B: Erstellen eines selbstsignierten Zertifikats für sicheres LDAP
-Wenn Sie voraussichtlich kein Zertifikat einer öffentlichen Zertifizierungsstelle verwenden, können Sie ein selbstsigniertes Zertifikat für sicheres LDAP erstellen.
+Wenn Sie voraussichtlich kein Zertifikat einer öffentlichen Zertifizierungsstelle verwenden, können Sie ein selbstsigniertes Zertifikat für sicheres LDAP erstellen. Wählen Sie diese Option aus, wenn der DNS-Domänenname Ihrer verwalteten Domäne auf „.onmicrosoft.com“ endet.
 
 **Erstellen eines selbstsignierten Zertifikats mit PowerShell**
 
 Öffnen Sie auf Ihrem Windows-Computer als **Administrator** ein neues PowerShell-Fenster, und geben Sie die folgenden Befehle ein, um ein neues selbstsigniertes Zertifikat zu erstellen.
+```
+$lifetime=Get-Date
+New-SelfSignedCertificate -Subject *.contoso100.com -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment -Type SSLServerAuthentication -DnsName *.contoso100.com
+```
 
-    $lifetime=Get-Date
-
-    New-SelfSignedCertificate -Subject *.contoso100.com -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment -Type SSLServerAuthentication -DnsName *.contoso100.com
-
-Ersetzen Sie im vorherigen Beispiel „*.contoso100.com“ durch den DNS-Domänennamen Ihrer verwalteten Domäne. Wenn Sie zum Beispiel eine verwaltete Domäne mit dem Namen „contoso100.onmicrosoft.com“ erstellt haben, ersetzen Sie „*.contoso100.com“ im obigen Script durch „*.contoso100.onmicrosoft.com“.
+Ersetzen Sie im vorherigen Beispiel „*.contoso100.com“ durch den DNS-Domänennamen Ihrer verwalteten Domäne. Wenn Sie zum Beispiel eine verwaltete Domäne mit dem Namen „contoso100.onmicrosoft.com“ erstellt haben, ersetzen Sie „*.contoso100.com“ im obigen Skript durch „*.contoso100.onmicrosoft.com“.
 
 ![Auswählen des Azure AD-Verzeichnisses](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 

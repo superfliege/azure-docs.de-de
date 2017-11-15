@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2017
-ms.openlocfilehash: b9287c7151c96aaccbcda81c111cfe36ead5ab38
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: b43ed29bda4412fb57bcb772da00f6405c3f1c26
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>Problembehandlung bei der Dienstbereitstellung und Umgebungseinrichtung
 Folgende Informationen können dabei helfen, beim Einrichten der Modellverwaltungsumgebung die Ursache von Fehlern zu finden.
@@ -36,7 +36,7 @@ Möglicherweise wurde für Ihr Abonnement eine Obergrenze in Bezug auf die Abrec
 Verwenden Sie die Flags `--debug` und `--verbose` im setup-Befehl, um Debug- und Ablaufverfolgungsinformationen anzuzeigen, während die Umgebung bereitgestellt wird.
 
 ```
-az ml env setup -l <loation> -n <name> -c --debug --verbose 
+az ml env setup -l <location> -n <name> -c --debug --verbose 
 ```
 
 ## <a name="service-deployment"></a>Dienstbereitstellung
@@ -89,7 +89,9 @@ Beispiel für Python:
 ```
 
 ## <a name="other-common-problems"></a>Andere allgemeine Probleme
-- Sollte der Befehl `env setup` nicht erfolgreich sein, vergewissern Sie sich, dass in Ihrem Abonnement genügend Kerne verfügbar sind.
-- Verwenden Sie im Webdienstnamen keinen Unterstrich (wie in *my_webservice*).
-- Sollte beim Aufrufen des Webdiensts der Fehler **502 - Ungültiges Gateway** auftreten, wiederholen Sie den Vorgang. Der Fehler bedeutet in der Regel, dass der Container noch nicht im Cluster bereitgestellt wurde.
-- Falls beim Erstellen eines Diensts der Fehler **CrashLoopBackOff** auftritt, überprüfen Sie Ihre Protokolle. Dieser Fehler ist in der Regel auf fehlende Abhängigkeiten in der Funktion **Init** zurückzuführen.
+- Wenn der Befehl `env setup` den Fehler `LocationNotAvailableForResourceType` ausgibt, verwenden Sie wahrscheinlich den falschen Standort (Region) für die Ressourcen für maschinelles Lernen. Stellen Sie sicher, dass der mit dem Parameter `-l` angegebene Standort `eastus2`, `westcentralus` oder `australiaeast` lautet.
+- Wenn der Befehl `env setup` den Fehler `Resource quota limit exceeded` ausgibt, stellen Sie sicher, dass Sie über ausreichende verfügbare Kerne in Ihrem Abonnement verfügen und dass Ihre Ressourcen nicht in anderen Vorgängen aufgebraucht werden.
+- Wenn der Befehl `env setup` den Fehler `Invalid environment name. Name must only contain lowercase alphanumeric characters` ausgibt, stellen Sie sicher, dass der Dienstname keine Großbuchstaben, Symbole oder Unterstriche (_) enthält (wie in *myenvironment*).
+- Wenn der Befehl `service create` den Fehler `Service Name: [service_name] is invalid. The name of a service must consist of lower case alphanumeric characters (etc.)` ausgibt, stellen Sie sicher, dass der Dienstname zwischen 3 und 32 Zeichen lang ist, mit alphanumerischen Zeichen beginnt und endet und keine Großbuchstaben sowie keine Symbole außer Bindestrich (-), Punkt (. ) oder Unterstrich (_) enthält (wie in *my_webservice*).
+- Sollte beim Aufrufen des Webdiensts der Fehler `502 Bad Gateway` auftreten, wiederholen Sie den Vorgang. Der Fehler bedeutet in der Regel, dass der Container noch nicht im Cluster bereitgestellt wurde.
+- Wenn beim Erstellen eines Diensts der Fehler `CrashLoopBackOff` auftritt, überprüfen Sie Ihre Protokolle. Dieser Fehler ist in der Regel auf fehlende Abhängigkeiten in der Funktion **Init** zurückzuführen.

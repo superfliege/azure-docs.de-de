@@ -1,8 +1,22 @@
-7 – title: Unterstützte Versionen in Azure Database for MySQL | Microsoft-Dokumentation description: Beschreibung der unterstützten Versionen in Azure Database for MySQL
-services: mysql author: v-chenyh ms.author: v-chenyh manager: jhubbard editor: jasonwhowell ms.service: mysql-database ms.topic: article ms.date: 05/10/2017
+---
+title: "Unterstützte Versionen in Azure-Datenbank für MySQL | Microsoft-Dokumentation"
+description: "Beschreibung der unterstützten Versionen in Azure-Datenbank für MySQL"
+services: mysql
+author: v-chenyh
+ms.author: v-chenyh
+manager: jhubbard
+editor: jasonwhowell
+ms.service: mysql-database
+ms.topic: article
+ms.date: 11/02/2017
+ms.openlocfilehash: dc9f98218a95f1f24a45f208b0da7b945f4c9663
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Unterstützte Azure-Datenbank für MySQL-Serverversionen
-Azure-Datenbank für MySQL wurde basierend auf MySQL Community Edition [MySQL Community Edition](https://www.mysql.com/products/community/) mithilfe des InnoDB-Moduls entwickelt.  Azure-Datenbank für MySQL unterstützt derzeit die folgenden Versionen.
+Azure-Datenbank für MySQL wurde basierend auf MySQL Community Edition [MySQL Community Edition](https://www.mysql.com/products/community/) mithilfe des InnoDB-Moduls entwickelt.  Azure Database for MySQL unterstützt derzeit die folgenden Versionen:
 
 ## <a name="mysql-version-5635"></a>MySQL Version 5.6.35
 Weitere Informationen zu Verbesserungen und Fehlerbehebungen in MySQL 5.6.35 finden Sie in der [Dokumentation] zu MySQL (https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-35.html).

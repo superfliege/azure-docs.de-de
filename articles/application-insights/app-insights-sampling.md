@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0ed612a0e2101397fb1074de61db07d2361f8463
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: af184574bdfa7d3a11baf75d8cdfbf80f1544dde
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -57,7 +57,7 @@ Wie bei den anderen Methoden für die Stichprobenerstellung behält der Algorith
 
 Datenpunkte, die bei der Stichprobenerstellung verworfen werden, stehen in keinem Application Insights-Feature zur Verfügung, auch nicht in [Fortlaufender Export](app-insights-export-telemetry.md).
 
-Die Erfassungs-Stichprobenerstellung wird nicht ausgeführt, wenn gleichzeitig eine SDK-basierte Stichprobenerstellung mit adaptivem oder festem Prozentsatz ausgeführt wird. Wenn der Stichproben-Prozentsatz im SDK unter 100% liegt, wird der von Ihnen eingestellte Stichproben-Prozentsatz für die Erfassung ignoriert.
+Die Erfassungs-Stichprobenerstellung wird nicht ausgeführt, wenn gleichzeitig eine SDK-basierte Stichprobenerstellung mit adaptivem oder festem Prozentsatz ausgeführt wird. Beachten Sie, dass adaptive Stichprobenerstellung standardmäßig aktiviert ist, wenn ASP.NET SDK in Visual Studio aktiviert ist, oder mithilfe des Statusmonitors, und Erfassungs-Stichprobenerstellung deaktiviert ist. Wenn der Stichproben-Prozentsatz im SDK unter 100% liegt, wird der von Ihnen eingestellte Stichproben-Prozentsatz für die Erfassung ignoriert.
 
 > [!WARNING]
 > Der auf der Kachel angezeigte Wert gibt den Wert an, den Sie für die Erfassungs-Stichprobenerstellung festgelegt haben. Er steht nicht für den tatsächlichen Stichprobensatz, wenn die SDK-Stichprobenerstellung ausgeführt wird.

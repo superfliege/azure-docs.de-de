@@ -1,7 +1,7 @@
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Ressourcen pro [Ressourcengruppe](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (pro Ressourcentyp) |800 |Variiert je nach Ressourcentyp |
-| Bereitstellungen pro Ressourcengruppe |800 |800 |
+| Bereitstellungen pro Ressourcenverlauf im Bereitstellungsverlauf |800 |800 |
 | Ressourcen pro Bereitstellung |800 |800 |
 | Managementsperren (pro eindeutigem Bereich) |20 |20 |
 | Anzahl Tags (pro Ressource oder Ressourcengruppe) |15 |15 |
@@ -23,3 +23,5 @@
 | Parameterdateigröße |64 KB |64 KB |
 
 Sie können einige Vorlagengrenzwerte überschreiten, indem Sie eine geschachtelte Vorlage verwenden. Weitere Informationen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](../articles/azure-resource-manager/resource-group-linked-templates.md). Um die Anzahl von Parametern, Variablen oder Ausgaben zu reduzieren, können Sie mehrere Werte in einem Objekt kombinieren. Weitere Informationen finden Sie unter [Objekte als Parameter](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md).
+
+Wenn der Grenzwert von 800 Bereitstellungen pro Ressourcengruppe erreicht ist, löschen Sie nicht mehr benötigte Bereitstellungen aus dem Verlauf. Bei Verwendung der Azure CLI können Sie mit [az group deployment delete](/cli/azure/group/deployment#az_group_deployment_delete) Einträge aus dem Verlauf löschen, in PowerShell verwenden Sie [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment). Das Löschen eines Eintrags aus dem Bereitstellungsverlaufs wirkt sich nicht auf die bereitgestellten Ressourcen aus. 

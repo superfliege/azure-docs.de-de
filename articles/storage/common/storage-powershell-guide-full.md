@@ -11,13 +11,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2017
+ms.date: 11/02/2017
 ms.author: robinsh
-ms.openlocfilehash: 1046e407bb4e9d07e91014384e9eba7b0c7020a8
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: d3f70880e58a21a1ae61577b04e3155c5fec6552
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Verwenden von Azure PowerShell mit Azure Storage
 
@@ -216,6 +216,12 @@ Nachdem Sie nun erfahren haben, wie Sie Ihr Speicherkonto mit PowerShell verwalt
 * [Verwalten von Blobs mit PowerShell](../blobs/storage-how-to-use-blobs-powershell.md)
 * [Verwalten von Dateien mit PowerShell](../files/storage-how-to-use-files-powershell.md)
 * [Verwalten von Warteschlangen mit PowerShell](../queues/storage-powershell-how-to-use-queues.md)
+* [Perform Azure Table storage operations with Azure PowerShell](../../cosmos-db/table-storage-how-to-use-powershell.md) (Ausführen von Azure Table Storage-Vorgängen mit PowerShell)
+
+Die Azure Cosmos DB-Tabellen-API bietet Premiumfeatures für den Tabellenspeicher wie sofort einsatzbereite globale Verteilung, Lese- und Schreibvorgänge mit geringer Wartezeit, automatische sekundäre Indizierung und dedizierten Durchsatz. 
+
+* Weitere Informationen finden Sie unter [Einführung in die Table-API von Azure Cosmos DB](../../cosmos-db/table-introduction.md). 
+* Informationen zum Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mithilfe von PowerShell finden Sie unter [Perform Azure Cosmos DB Table API operations with Azure PowerShell](../../cosmos-db/table-powershell.md) (Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mit Azure PowerShell).
 
 ## <a name="azures-independently-deployed-clouds"></a>Unabhängig bereitgestellte Azure-Clouds
 

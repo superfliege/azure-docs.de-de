@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: babcf20b58af1415e0e658e0a622cb056e34642b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 159397ba4fc93628acbf2bb53edf5eb88fd0cac7
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-the-remote-monitoring-preconfigured-solution"></a>Bereitstellen der vorkonfigurierten Remoteüberwachungslösung
 
@@ -39,13 +39,17 @@ Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kost
 
 Vor dem Bereitstellen der vorkonfigurierten Lösung in Ihrem Azure-Abonnement müssen Sie einige Konfigurationsoptionen auswählen:
 
-1. Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto bei [azureiotsuite.com](https://www.azureiotsuite.com) an, und klicken Sie auf **+**, um eine Lösung zu erstellen.
+1. Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto bei [azureiotsuite.com](https://www.azureiotsuite.com) an, und klicken Sie auf **+**, um eine neue Lösung zu erstellen:
 
-1. Klicken Sie auf der Kachel **Remoteüberwachung** auf **Auswählen**.
+    ![Erstellen einer neuen Lösung](media/iot-suite-remote-monitoring-deploy/createnewsolution.png)
+
+1. Klicken Sie auf der Kachel **Remote monitoring preview** (Vorschauversion der Remoteüberwachung) auf **Auswählen**.
+
+    ![Auswählen der Remoteüberwachung](media/iot-suite-remote-monitoring-deploy/remotemonitoring.png)
 
 1. Geben Sie auf der Seite **Create Remote Monitoring solution** (Remoteüberwachungslösung erstellen) einen **Lösungsnamen** für Ihre vorkonfigurierte Remoteüberwachungslösung ein.
 
-1. Wählen Sie **Grundlegend** oder **Unternehmen** als Bereitstellungsart aus. Wenn Sie die Lösung bereitstellen, um sich mit ihr vertraut zu machen oder um sie zu Demonstrationszwecken auszuführen, wählen Sie zur Kostenminimierung die Option **Grundlegend** aus.
+1. Wählen Sie **Basic** oder **Standard** als Bereitstellungsart aus. Wenn Sie die Lösung bereitstellen, um sich mit ihr vertraut zu machen oder um sie zu Demonstrationszwecken auszuführen, wählen Sie zur Kostenminimierung die Option **Basic** aus.
 
 1. Wählen Sie als Sprache entweder **Java** oder **.NET** aus. Alle Microservices sind als Java- oder .NET-Implementierungen verfügbar.
 
@@ -53,7 +57,9 @@ Vor dem Bereitstellen der vorkonfigurierten Lösung in Ihrem Azure-Abonnement m�
 
 1. Wählen Sie die gewünschten Angaben für **Abonnement** und **Region**, um die Lösung bereitzustellen.
 
-1. Klicken Sie auf **Lösung erstellen** , um den Bereitstellungsprozess zu beginnen. Dies dauert in der Regel einige Minuten.
+1. Klicken Sie auf **Lösung erstellen** , um den Bereitstellungsprozess zu beginnen. Dieser dauert in der Regel einige Minuten:
+
+    ![Details zur Remoteüberwachungslösung](media/iot-suite-remote-monitoring-deploy/createform.png)
 
 Informationen zur Problembehandlung finden Sie im GitHub-Repository unter [What to do when a deployment fails](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide#what-to-do-when-a-deployment-fails) (Vorgehensweise bei Fehlern bei der Bereitstellung).
 
@@ -61,12 +67,16 @@ Informationen zur Problembehandlung finden Sie im GitHub-Repository unter [What 
 
 Nach Abschluss des Bereitstellungsvorgangs können Sie sich bei der vorkonfigurieren Remoteüberwachungslösung anmelden.
 
-1. Wählen Sie auf der Seite **Bereitgestellte Lösungen** Ihre neue Remoteüberwachungslösung aus.
+1. Wählen Sie auf der Seite **Bereitgestellte Lösungen** Ihre neue Remoteüberwachungslösung aus:
+
+    ![Auswählen der neuen Lösung](media/iot-suite-remote-monitoring-deploy/choosenew.png)
 
 1. Im dann angezeigten Bereich können Sie Informationen zu der Remoteüberwachungslösung einsehen. Wählen Sie **Lösungsdashboard** aus, um eine Verbindung mit der Remoteüberwachungslösung herzustellen.
 
     > [!NOTE]
     > Sie können die Remoteüberwachungslösung aus diesem Bereich löschen, wenn Sie sie nicht mehr benötigen.
+
+    ![Lösungsbereich](media/iot-suite-remote-monitoring-deploy/solutionpanel.png)
 
 1. Das Dashboard der Remoteüberwachungslösung wird in Ihrem Browser angezeigt.
 

@@ -1,6 +1,6 @@
 ---
 title: "Zurücksetzen von Kennwörtern in Azure Active Directory | Microsoft-Dokumentation"
-description: "Erläutert, wie Sie in Azure Active Directory das Kennwort für einen Benutzer zurücksetzen."
+description: "Vom Administrator initiierte Kennwortzurücksetzung für einen Benutzer in Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MicrosoftGuyJFlo
@@ -12,35 +12,37 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 11/01/2017
 ms.author: joflore
-ms.reviewer: jeffsta
-ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: f88a227eda042991ad5dd9cd6c3f349ccb0c4366
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.reviewer: sahenry
+ms.custom: it-pro
+ms.openlocfilehash: bea082081e3f3f52ba78188903a9536fe9de9392
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Zurücksetzen des Kennworts für einen Benutzer in Azure Active Directory
 
+Administratoren müssen möglicherweise das Kennwort eines Benutzers in Fällen zurücksetzen, in denen er es vergessen hat, ausgesperrt wurde oder in anderen Szenarien. Die folgenden Schritte begleiten Sie durch das Zurücksetzen des Kennworts eines Benutzers.
+
 ## <a name="how-to-reset-the-password-for-a-user"></a>Wie Sie das Kennwort für einen Benutzer zurücksetzen können
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit dem Konto eines globalen Administrators für das Verzeichnis an.
-2. Wählen Sie **Benutzer und Gruppen** aus.
 
-   ![Öffnen der Benutzerverwaltung](./media/active-directory-users-reset-password-azure-portal/create-users-user-management.png)
-3. Wählen Sie **Alle Benutzer**.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, das über Verzeichnisberechtigungen zum Zurücksetzen von Benutzerkennwörtern verfügt.
+2. Wählen Sie **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer**.
+3. Wählen Sie den Benutzer, dessen Kennwort Sie zurücksetzen möchten.
+2. Wählen Sie für den ausgewählten Benutzer die Option **Kennwort zurücksetzen** aus.
 
-   ![Öffnen der Gruppe „Alle Benutzer“](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
-1. Wählen Sie in der Liste einen Benutzer aus.
-2. Wählen Sie für den ausgewählten Benutzer die Option **Übersicht**, und klicken Sie in der Befehlsleiste auf **Kennwort zurücksetzen**.
-
-    ![Auswählen des Befehls „Kennwort zurücksetzen“](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
+    ![Zurücksetzen des Kennworts für einen Benutzer aus dem Profil des Benutzers in Azure AD](./media/active-directory-users-reset-password-azure-portal/user-password-reset.png)
+    
 6. Wählen Sie unter **Kennwort zurücksetzen** die Option **Kennwort zurücksetzen** aus.
+7. Ein temporäres Kennwort wird angezeigt, das Sie dann dem Benutzer bereitstellen können. Der Benutzer wird dann aufgefordert, sein Kennwort bei der nächsten Anmeldung zu ändern. 
+
+   > [!NOTE]
+   > Dieses temporäre Kennwort unterliegt keiner Ablaufzeit, sodass es gültig ist, bis sich der Benutzer wieder anmeldet und es dann ändern muss. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen eines Benutzers](active-directory-users-create-azure-portal.md)
-* [Zuweisen eines Benutzers zu einer Rolle in Azure AD](active-directory-users-assign-role-azure-portal.md)
-* [Ändern der Arbeitsinformationen für einen Benutzer](active-directory-users-work-info-azure-portal.md)
+* [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
 * [Verwalten von Benutzerprofilen](active-directory-users-profile-azure-portal.md)
-* [Löschen eines Benutzers in Azure AD](active-directory-users-delete-user-azure-portal.md)
+* [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](active-directory-users-delete-user-azure-portal.md)

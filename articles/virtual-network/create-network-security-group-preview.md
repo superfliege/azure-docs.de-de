@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2017
+ms.date: 11/03/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 035eb44432081ef52c758a5d311b4d2ba2c6108d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9aea299738eb5cac6fe6d3b633707862d978fff0
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>Filtern von Netzwerkdatenverkehr mit Netzwerken und Anwendungssicherheitsgruppen (Vorschau)
 
@@ -44,6 +44,7 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
     
     ```azurecli-interactive
     az feature register --name AllowApplicationSecurityGroups --namespace Microsoft.Network
+    az provider register --namespace Microsoft.Network
     ``` 
 
 5. Bestätigen Sie, dass Sie für die Vorschauversion registriert sind, indem Sie folgenden Befehl eingeben:
@@ -52,7 +53,9 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
     az feature show --name AllowApplicationSecurityGroups --namespace Microsoft.Network
     ```
 
-    Fahren Sie nicht mit den verbleibenden Schritten fort, bis *Registriert* für **state** der Ausgabe erscheint, die vom vorherigen Befehl zurückgegeben wurde. Wenn Sie fortfahren, bevor Sie registriert sind, schlagen die verbleibenden Schritte fehl.
+    > [!WARNING]
+    > Es kann bis zu einer Stunde dauern, bis die Registrierung abgeschlossen ist. Fahren Sie nicht mit den verbleibenden Schritten fort, bis *Registriert* für **state** der Ausgabe erscheint, die vom vorherigen Befehl zurückgegeben wurde. Wenn Sie fortfahren, bevor Sie registriert sind, schlagen die verbleibenden Schritte fehl.
+
 6. Führen Sie das folgende Bash-Skript aus, um eine Ressourcengruppe zu erstellen:
 
     ```azurecli-interactive
@@ -160,7 +163,6 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       --name myNic1 \
       --vnet-name myVnet \
       --subnet mySubnet \
-      --network-security-group myNsg \
       --location westcentralus \
       --application-security-groups "WebServers" "AppServers"
 
@@ -169,7 +171,6 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       --name myNic2 \
       --vnet-name myVnet \
       --subnet mySubnet \
-      --network-security-group myNsg \
       --location westcentralus \
       --application-security-groups "AppServers"
 
@@ -178,12 +179,11 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       --name myNic3 \
       --vnet-name myVnet \
       --subnet mySubnet \
-      --network-security-group myNsg \
       --location westcentralus \
       --application-security-groups "DatabaseServers"
     ```
 
-    Nur die entsprechende Sicherheitsregel, die Sie in Schritt 9 erstellt haben, wird auf die Netzwerkschnittstelle angewendet. Dies basiert auf der Anwendungssicherheitsgruppe, der die Netzwerkschnittstelle angehört. Beispielsweise ist nur *WebRule* effektiv für *myWebNic*, da die Netzwerkschnittstelle Mitglied der Anwendungssicherheitsgruppe *WebServers* ist und die Regel die Anwendungssicherheitsgruppe *WebServers* als Ziel angibt. Die Regeln *AppRule* und *DatabaseRule* werden nicht auf *myWebNic* angewendet, da die Netzwerkschnittstelle kein Mitglied der Anwendungssicherheitsgruppen *AppServers* und *DatabaseServers* ist.
+    Nur die entsprechende Sicherheitsregel, die Sie in Schritt 9 erstellt haben, wird auf die Netzwerkschnittstelle angewendet. Dies basiert auf der Anwendungssicherheitsgruppe, der die Netzwerkschnittstelle angehört. Beispielsweise gilt nur *WebRule* für *myNic1*, da die Netzwerkschnittstelle Mitglied der Anwendungssicherheitsgruppe *WebServers* ist und die Regel die Anwendungssicherheitsgruppe *WebServers* als Ziel angibt. Die Regeln *AppRule* und *DatabaseRule* werden nicht auf *myNic1* angewandt, da die Netzwerkschnittstelle kein Mitglied der Anwendungssicherheitsgruppen *AppServers* und *DatabaseServers* ist.
 
 13. Erstellen Sie einen virtuellen Computer für jeden Servertyp, und fügen Sie die entsprechende Netzwerkschnittstelle jedem virtuellen Computer an. In diesem Beispiel werden virtuelle Windows-Computer erstellt. Sie können jedoch *win2016datacenter* in *UbuntuLTS* ändern, um stattdessen virtuelle Linux-Computer zu erstellen.
 
@@ -239,7 +239,8 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
     Get-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
     ```
 
-    Fahren Sie nicht mit den verbleibenden Schritten fort, bis *Registriert* in der Spalte **RegistrationState** der Ausgabe erscheint, die vom vorherigen Befehl zurückgegeben wurde. Wenn Sie fortfahren, bevor Sie registriert sind, schlagen die verbleibenden Schritte fehl.
+    > [!WARNING]
+    > Es kann bis zu einer Stunde dauern, bis die Registrierung abgeschlossen ist. Fahren Sie nicht mit den verbleibenden Schritten fort, bis für **RegistrationState** der Status *Registriert* in der Ausgabe erscheint, die vom vorherigen Befehl zurückgegeben wurde. Wenn Sie fortfahren, bevor Sie registriert sind, schlagen die verbleibenden Schritte fehl.
         
 6. Erstellen Sie eine Ressourcengruppe:
 
@@ -343,7 +344,6 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       -ResourceGroupName myResourceGroup `
       -Location westcentralus `
       -Subnet $vNet.Subnets[0] `
-      -NetworkSecurityGroup $nsg `
       -ApplicationSecurityGroup $webAsg,$appAsg
 
     $nic2 = New-AzureRmNetworkInterface `
@@ -351,7 +351,6 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       -ResourceGroupName myResourceGroup `
       -Location westcentralus `
       -Subnet $vNet.Subnets[0] `
-      -NetworkSecurityGroup $nsg `
       -ApplicationSecurityGroup $appAsg
 
     $nic3 = New-AzureRmNetworkInterface `
@@ -359,11 +358,10 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       -ResourceGroupName myResourceGroup `
       -Location westcentralus `
       -Subnet $vNet.Subnets[0] `
-      -NetworkSecurityGroup $nsg `
       -ApplicationSecurityGroup $databaseAsg
     ```
 
-    Nur die entsprechende Sicherheitsregel, die Sie in Schritt 8 erstellt haben, wird auf die Netzwerkschnittstelle angewendet. Dies basiert auf der Anwendungssicherheitsgruppe, der die Netzwerkschnittstelle angehört. Beispielsweise ist nur *WebRule* effektiv für *myWebNic*, da die Netzwerkschnittstelle Mitglied der Anwendungssicherheitsgruppe *WebServers* ist und die Regel die Anwendungssicherheitsgruppe *WebServers* als Ziel angibt. Die Regeln *AppRule* und *DatabaseRule* werden nicht auf *myWebNic* angewendet, da die Netzwerkschnittstelle kein Mitglied der Anwendungssicherheitsgruppen *AppServers* und *DatabaseServers* ist.
+    Nur die entsprechende Sicherheitsregel, die Sie in Schritt 8 erstellt haben, wird auf die Netzwerkschnittstelle angewendet. Dies basiert auf der Anwendungssicherheitsgruppe, der die Netzwerkschnittstelle angehört. Beispielsweise gilt nur *WebRule* für *myNic1*, da die Netzwerkschnittstelle Mitglied der Anwendungssicherheitsgruppe *WebServers* ist und die Regel die Anwendungssicherheitsgruppe *WebServers* als Ziel angibt. Die Regeln *AppRule* und *DatabaseRule* werden nicht auf *myNic1* angewandt, da die Netzwerkschnittstelle kein Mitglied der Anwendungssicherheitsgruppen *AppServers* und *DatabaseServers* ist.
 
 13. Erstellen Sie einen virtuellen Computer für jeden Servertyp, und fügen Sie die entsprechende Netzwerkschnittstelle jedem virtuellen Computer an. In diesem Beispiel werden virtuelle Windows-Computer erstellt. Bevor Sie das Skript ausführen, können Sie *-Windows* in *-Linux*, *MicrosoftWindowsServer* in *Canonical*, *WindowsServer* in *UbuntuServer* und *2016-Datacenter* in *14.04.2-LTS* ändern, um stattdessen virtuelle Linux-Computer zu erstellen.
 

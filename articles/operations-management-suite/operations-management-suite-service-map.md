@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 2e5475a0563549ddfaa2c146e4acf94c019841ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7109a3b21feac396d8c20c7e72a8987f72a909a
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>Verwenden von Service Map in der Operations Management Suite (OMS)
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -224,11 +224,26 @@ Die folgende Abbildung ist eine Detailansicht eines ConfigurationChange-Ereignis
 
 
 ## <a name="operations-management-suite-performance-integration"></a>Integration in die OMS-Leistung
-Im **Computerleistungsbereich** werden Standardleistungsmetriken für den ausgewählten Server angezeigt. Die Metriken umfassen CPU-Auslastung, Speicherauslastung, über das Netzwerk gesendete und empfangene Bytes und eine Liste der wichtigsten Prozesse nach über das Netzwerk gesendeten und empfangenen Bytes. Um die Leistungsdaten für das Netzwerk abzurufen, muss auch die Wire Data 2.0-Lösung in der OMS aktiviert sein.
+Im **Computerleistungsbereich** werden Standardleistungsmetriken für den ausgewählten Server angezeigt. Die Metriken umfassen CPU-Auslastung, Speicherauslastung, über das Netzwerk gesendete und empfangene Bytes und eine Liste der wichtigsten Prozesse nach über das Netzwerk gesendeten und empfangenen Bytes.
 
 ![Computerleistungsbereich](media/oms-service-map/machine-performance.png)
 
+Um Leistungsdaten anzuzeigen, müssen Sie unter Umständen [die entsprechenden Log Analytics-Leistungsindikatoren aktivieren](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Leistungsindikatoren, die Sie aktivieren sollten:
 
+Windows:
+- Processor(*)\% Prozessorzeit
+- Memory\% Verwendete zugesicherte Bytes
+- Network Adapter(*)\Gesendete Byte/s
+- Network Adapter(*)\Empfangene Byte/s
+
+Linux:
+- Processor(*)\% Prozessorzeit
+- Memory(*)\% Verwendeter Arbeitsspeicher
+- Network Adapter(*)\Gesendete Byte/s
+- Network Adapter(*)\Empfangene Byte/s
+
+Um die Leistungsdaten für das Netzwerk abzurufen, muss auch die Wire Data 2.0-Lösung in der OMS aktiviert sein.
+ 
 ## <a name="operations-management-suite-security-integration"></a>Integration in OMS-Sicherheit
 Die Integration von Service Map in Sicherheit und Überwachung erfolgt automatisch, wenn beide Lösungen im OMS-Arbeitsbereich aktiviert und konfiguriert werden.
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/26/2016
+ms.date: 11/03/2017
 ms.author: jgao
-ms.openlocfilehash: edbf797e6277a65b5311e4939f5ab72776b11557
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4bd7f5b584030f9c1554b56895493837d2eac357
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Optimieren von Hive-Abfragen in Azure HDInsight
 
@@ -180,11 +180,11 @@ Es gibt noch weitere Optimierungsmethoden, die durchaus erwägenswert sind, zum 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie mehrere allgemeine Hive-Methoden zur Optimierung von Abfragen kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-* [Verwenden von Apache Hive in HDInsight](hdinsight-use-hive.md)
+* [Verwenden von Apache Hive in HDInsight](hadoop/hdinsight-use-hive.md)
 * [Analysieren von Flugverspätungsdaten mit Hive in HDInsight](hdinsight-analyze-flight-delay-data.md)
 * [Analysieren von Twitter-Daten mit Hive in HDInsight](hdinsight-analyze-twitter-data.md)
-* [Analysieren von Sensordaten mit der Hive-Abfragekonsole für Hadoop in HDInsight](hdinsight-hive-analyze-sensor-data.md)
-* [Verwenden von Hive in HDInsight zum Analysieren von Website-Protokollen](hdinsight-hive-analyze-website-log.md)
+* [Analysieren von Sensordaten mit der Hive-Abfragekonsole für Hadoop in HDInsight](hadoop/apache-hive-analyze-sensor-data.md)
+* [Verwenden von Hive in HDInsight zum Analysieren von Website-Protokollen](hadoop/apache-hive-analyze-website-log.md)
 
 [image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png
 [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png

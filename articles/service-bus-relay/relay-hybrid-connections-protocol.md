@@ -20,12 +20,12 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
 ---
-# Azure Relay-Hybridverbindungsprotokoll
+# <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay-Hybridverbindungsprotokoll
 Azure Relay ist eine der Säulen der Schlüsselfunktionen der Azure Service Bus-Plattform Die neue Funktion *Hybridverbindungen* von Relay ist eine sichere Entwicklung mit offenem Protokoll, die auf HTTP und WebSockets basiert. Sie ersetzt die ehemalige, gleichnamige Funktion *BizTalk Services*, die auf einer proprietären Protokollbasis erstellt wurde. Die Integration von Hybridverbindungen in Azure App Services funktioniert weiterhin ohne weiteren Aufwand.
 
 Mit Hybridverbindungen können Sie eine bidirektionale, binäre Datenstromkommunikation zwischen zwei vernetzten Anwendungen einrichten, bei der sich eine oder beide hinter NAT-Funktionen oder Firewalls befinden können. Dieser Artikel beschreibt die clientseitigen Interaktionen mit dem Hybridverbindungsrelay für die Verbindung von Clients in Listener- und Absenderrollen und erläutert, wie Listener neue Verbindungen akzeptieren.
 
-## Interaktionsmodell
+## <a name="interaction-model"></a>Interaktionsmodell
 Das Hybridverbindungs-Relay verbindet zwei Parteien durch einen Rendezvouspunkt in der Azure-Cloud, den beide Parteien erkennen können und mit dem sie eine Verbindung von ihrer eigenen Netzwerkperspektive aus herstellen können. In dieser Dokumentation und anderen Dokumentationen heißt der Rendezvouspunkt „Hybridverbindung“ – in den APIs und auch im Azure-Portal. Der Endpunkt dieses Hybridverbindungsdiensts wird im weiteren Verlauf dieses Artikels als „Dienst“ bezeichnet. Für das Interaktionsmodell werden Bezeichnungen verwendet, die auch für viele andere Netzwerk-APIs gängig sind.
 
 Es gibt einen Listener, der zuerst die Bereitschaft anzeigt, eingehende Verbindungen zu verarbeiten und akzeptiert diese anschließend, wenn sie ankommen. Andererseits gibt es einen verbindenden Client, der die Verbindung mit dem Listener herstellt und erwartet, dass diese Verbindung für die Erstellung eines bidirektionalen Kommunikationspfads akzeptiert wird.
@@ -35,46 +35,46 @@ In jedem Relaykommunikationsmodell stellt eine Partei ausgehende Verbindungen mi
 
 Die Programme auf beiden Seiten der Verbindung werden als „Clients“ bezeichnet, da sie für den Dienst Clients darstellen. Der Client, der auf Verbindungen wartet und diese akzeptiert, ist der „Listener“ oder befindet sich in der „Listenerrolle“. Der Client, der über den Dienst eine neue Verbindung mit einem Listener herstellt, heißt „Absender“ bzw. befindet sich in der „Absenderrolle“.
 
-### Listener-Interaktionen
+### <a name="listener-interactions"></a>Listener-Interaktionen
 Der Listener verfügt über vier Interaktionen mit dem Dienst. Alle Transportdetails werden später im Abschnitt „Referenz“ diesem Artikel erläutert.
 
-#### Lauschen
+#### <a name="listen"></a>Lauschen
 Um die Bereitschaft an einen Dienst zu übermitteln, dass ein Listener bereit zum Akzeptieren von Verbindungen ist, erstellt er eine ausgehende WebSocket-Verbindung. Der Verbindungshandshake enthält den Namen einer Hybridverbindung, die im Relaynamespace konfiguriert wurde, sowie ein Sicherheitstoken, das die Berechtigung „Lauschen“ direkt innerhalb dieses Namens überträgt.
 Wenn der WebSocket vom Dienst akzeptiert wird, ist die Registrierung abgeschlossen, und der erstellte WebSocket wird als „Steuerungskanal“ für die Aktivierung aller nachfolgenden Interaktionen aufrechterhalten. Der Dienst erlaubt bis zu 25 gleichzeitige Listener für eine Hybridverbindung. Wenn zwei oder mehr aktive Listener vorhanden sind, werden eingehende Verbindungen in zufälliger Reihenfolge darauf aufgeteilt. Eine faire Aufteilung kann nicht garantiert werden.
 
-#### Akzeptieren
+#### <a name="accept"></a>Akzeptieren
 Wenn ein Absender eine neue Verbindung im Dienst öffnet, wählt und benachrichtigt der Dienst einen der aktiven Listener in der Hybridverbindung. Diese Benachrichtigung wird an den Listener als JSON- Nachricht über den offenen Steuerkanal übermittelt. Sie enthält die URL des WebSocket-Endpunkts, mit dem der Listener eine Verbindung herstellen muss, damit die Verbindung akzeptiert werden kann.
 
 Die URL kann bzw. muss vom Listener ohne zusätzlichen Aufwand direkt verwendet werden.
 Die codierten Informationen sind nur für kurze Zeit gültig. Dies ist im Grunde genommen der Zeitraum, der vom Absender toleriert wird, bis die End-to-End-Verbindung hergestellt wurde. Der Höchstwert beträgt aber maximal 30 Sekunden. Die URL kann nur für einen erfolgreichen Verbindungsversuch verwendet werden. Sobald die WebSocket-Verbindung mit der Rendezvous-URL hergestellt wurde, wird jede weitere Aktivität in diesem WebSocket ohne Eingriff oder Interpretation des Diensts an den und von dem Absender übermittelt.
 
-#### Erneuern
+#### <a name="renew"></a>Erneuern
 Das Sicherheitstoken, das verwendet werden muss, um den Listener zu registrieren und den Steuerungskanal zu verwalten, läuft möglicherweise ab, währen der Listener aktiv ist. Der Ablauf des Tokens beeinträchtigt keine laufenden Verbindungen, aber der Steuerungskanal wird dadurch während oder kurz nach dem Moment des Ablaufs vom Dienst entfernt. Der „renew“-Vorgang zum Erneuern ist eine JSON-Nachricht, die der Listener senden kann, um das Token zu ersetzen, das dem Steuerungskanal zugeordnet ist. Dadurch kann der Steuerungskanal über einen längeren Zeitraum beibehalten werden.
 
-#### Pingen
+#### <a name="ping"></a>Pingen
 Wenn der Steuerungskanal für lange Zeit im Leerlauf bleibt, wird die TCP-Verbindung möglicherweise von geplanten Vermittlern, z.B. vom Lastenausgleich oder von NATs, gelöscht. Der „ping“-Vorgang vermeidet dies, indem eine kleine Datenmenge durch den Kanal gesendet wird, die alle beteiligten Elemente auf der Netzwerkroute daran erinnert, dass die Verbindung aufrechterhalten werden soll. Der Vorgang dient auch als Aktivitätstest für den Listener. Wenn der Ping-Befehl fehlschlägt, sollte der Steuerungskanal als nicht verwendbar angesehen werden und der Listener sollte eine neue Verbindung herstellen.
 
-### Absenderinteraktion
+### <a name="sender-interaction"></a>Absenderinteraktion
 Der Absender führt nur eine einzige Interaktion mit dem Dienst durch: Er stellt eine Verbindung her.
 
-#### Verbinden
+#### <a name="connect"></a>Verbinden
 Der „connect“-Vorgang zum Verbinden öffnet einen WebSocket im Dienst, der den Namen der Hybridverbindung sowie ein (optionales, aber standardmäßig erforderliches) Sicherheitstoken bereitstellt, das Berechtigungen zum Senden in der Abfragezeichenfolge überträgt. Der Dienst interagiert dann mit dem Listener, wie oben beschrieben. Der Listener erstellt eine Rendezvousverbindung, die mit diesem WebSocket verknüpft wird. Nachdem der WebSocket akzeptiert wurde, werden alle weiteren Interaktionen für diesen WebSocket mit dem verbundenen Listener durchgeführt.
 
-### Zusammenfassung der Interaktion
+### <a name="interaction-summary"></a>Zusammenfassung der Interaktion
 Das Ergebnis dieses Interaktionsmodells ist, dass der Absenderclient den Handshake mit einem „bereinigten“ WebSocket verlässt, der mit einem Listener verbunden ist und keine weitere Präambel oder Vorbereitung benötigt. Dieses Modell ermöglicht, dass praktisch alle vorhandenen Implementierungen des WebSocket-Clients den Hybridverbindungsdienst nutzen, indem eine richtig strukturierte URL für die WebSocket-Clientebene angegeben wird.
 
 Der WebSocket der Rendezvousverbindung, den der Listener durch die akzeptierten Interaktionen abruft, ist ebenfalls bereinigt und kann mit minimaler zusätzlicher Abstraktion an jede vorhandene WebSocket-Serverimplementierung übergeben werden. Die Abstraktion unterscheidet zwischen „accept“-Vorgängen in den lokalen Netzwerklistenern des Frameworks und den „accept“-Remotevorgängen der Hybridverbindungen.
 
-## Protokollreferenz
+## <a name="protocol-reference"></a>Protokollreferenz
 
 In diesem Abschnitt werden die Details der oben erwähnten Protokollinteraktionen beschrieben.
 
 Alle WebSocket-Verbindungen werden an Port 443 als Upgrade von HTTPS 1.1 durchgeführt, das häufig durch ein WebSocket-Framework oder eine API abstrahiert wird. Die Beschreibung hier hält die Implementierung neutral und ohne ein bestimmtes Framework vorzuschlagen.
 
-### Listener-Protokoll
+### <a name="listener-protocol"></a>Listener-Protokoll
 Das Listener-Protokoll besteht aus zwei Verbindungsgesten und drei Nachrichtenvorgängen.
 
-#### Verbindung des Listener-Steuerungskanals
+#### <a name="listener-control-channel-connection"></a>Verbindung des Listener-Steuerungskanals
 Der Steuerungskanal wird mit der Erstellung der folgenden WebSocket-Verbindung geöffnet:
 
 ```
@@ -109,7 +109,7 @@ Wenn die WebSocket-Verbindung absichtlich durch den Dienst heruntergefahren wird
 | 1008 |Das Sicherheitstoken ist abgelaufen, sodass die Autorisierungsrichtlinie verletzt wurde. |
 | 1011 |Es ist ein Fehler im Dienst aufgetreten. |
 
-### Akzeptieren von Handshake
+### <a name="accept-handshake"></a>Akzeptieren von Handshake
 Die Benachrichtigung zum Akzeptieren wird vom Dienst als JSON-Nachricht in einem WebSocket-Textrahmen über den zuvor erstellten Steuerungskanal an den Listener übermittelt. Es gibt keine Antwort auf diese Nachricht.
 
 Die Nachricht enthält ein JSON-Objekt mit dem Namen „accept“, das zu diesem Zeitpunkt die folgenden Eigenschaften definiert:
@@ -118,7 +118,7 @@ Die Nachricht enthält ein JSON-Objekt mit dem Namen „accept“, das zu diesem
 * **id**: Der eindeutige Bezeichner für diese Verbindung. Wenn die ID vom Absenderclient angegeben wurde, ist sie der Wert, der vom Absender angegeben wurde. Andernfalls ist sie ein systemgenerierter Wert.
 * **connectHeaders**: Alle HTTP-Header, die durch den Absender auf dem Relay-Endpunkt angegeben wurden, der ebenso das Sec-WebSocket-Protocol und die Sec-WebSocket-Extensions-Header enthält.
 
-#### Akzeptieren der Nachricht
+#### <a name="accept-message"></a>Akzeptieren der Nachricht
 
 ```json
 {                                                           
@@ -136,7 +136,7 @@ Die Nachricht enthält ein JSON-Objekt mit dem Namen „accept“, das zu diesem
 
 Die in der JSON-Nachricht bereitgestellte Adress-URL wird vom Listener verwendet, um den WebSocket zu erstellen, der den Absendersocket akzeptieren oder ablehnen soll.
 
-#### Akzeptieren des Sockets
+#### <a name="accepting-the-socket"></a>Akzeptieren des Sockets
 Der Listener erstellt eine WebSocket-Verbindung zu der bereitgestellten Adresse, um zu akzeptieren.
 
 Wenn die Benachrichtigung zum Akzeptieren einen `Sec-WebSocket-Protocol`-Header enthält, wird erwartet, dass der Listener den WebSocket nur dann akzeptiert, sofern er dieses Protokoll unterstützt. Außerdem wird der Header bei der WebSocket-Einrichtung festgelegt.
@@ -173,7 +173,7 @@ Nachdem die Verbindung hergestellt wurde, beendet der Server den WebSocket, wenn
 | 1008 |Das Sicherheitstoken ist abgelaufen, sodass die Autorisierungsrichtlinie verletzt wurde. |
 | 1011 |Es ist ein Fehler im Dienst aufgetreten. |
 
-#### Ablehnen des Sockets
+#### <a name="rejecting-the-socket"></a>Ablehnen des Sockets
 Das Ablehnen des Sockets nach dem Untersuchen der „accept“-Nachricht erfordert einen ähnlichen Handshake, sodass der Statuscode und die Statusbeschreibung, die den Grund für die Ablehnung mitteilt, an den Absender zurückgegeben werden können.
 
 Gemäß Protokollentwurf wird hier ein WebSocket-Handshake verwendet (der per Entwurf in einem definierten Fehlerstatus endet), sodass Implementierungen von Listenerclients weiterhin auf einem WebSocket-Client basieren können und keinen zusätzlichen reinen HTTP-Client verwenden müssen.
@@ -194,12 +194,12 @@ Wenn der Vorgang erfolgreich abgeschlossen ist, schlägt dieser Handshake absich
 | 403 |Verboten (403) |Die URL ist nicht gültig |
 | 500 |Interner Fehler |Es ist ein Fehler im Dienst aufgetreten. |
 
-### Erneuerung des Listenertokens
+### <a name="listener-token-renewal"></a>Erneuerung des Listenertokens
 Wenn das Listenertoken abläuft, kann es ersetzt werden, indem über den eingerichteten Steuerungskanal eine Textrahmennachricht an den Dienst gesendet wird. Die Nachricht enthält ein JSON-Objekt mit dem Namen `renewToken`, das derzeit die folgende Eigenschaft definiert:
 
 * **token**: Ein gültiges URL-codiertes Service Bus Shared Access-Token für den Namespace oder eine Hybridverbindung zum direkten Gewähren des Rechts **Listen** (Lauschen).
 
-#### renewToken-Nachricht
+#### <a name="renewtoken-message"></a>renewToken-Nachricht
 
 ```json
 {                                                                                                                                                                        
@@ -215,7 +215,7 @@ Wenn die Tokenüberprüfung nicht erfolgreich ist, wird der Zugriff verweigert, 
 | --- | --- |
 | 1008 |Das Sicherheitstoken ist abgelaufen, sodass die Autorisierungsrichtlinie verletzt wurde. |
 
-## Absenderprotokoll
+## <a name="sender-protocol"></a>Absenderprotokoll
 Das Absenderprotokoll ist praktisch identisch mit der Erstellung eines Listeners.
 Das Ziel ist die maximale Transparenz für den End-to-End-WebSocket. Die Adresse für die Verbindung ist dieselbe wie für den Listener, aber die „action“ ist anders, und das Token benötigt eine andere Berechtigung:
 
@@ -262,7 +262,7 @@ Wenn die WebSocket-Verbindung absichtlich durch den Dienst heruntergefahren wird
 | 1008 |Das Sicherheitstoken ist abgelaufen, sodass die Autorisierungsrichtlinie verletzt wurde. |
 | 1011 |Es ist ein Fehler im Dienst aufgetreten. |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Relay – häufig gestellte Fragen](relay-faq.md)
 * [Erstellen eines Namespaces](relay-create-namespace-portal.md)
 * [Erste Schritte mit .NET](relay-hybrid-connections-dotnet-get-started.md)

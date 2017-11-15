@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 11/08/2017
 ms.author: jingwang
-ms.openlocfilehash: 3f2b95e57e34905bf1128e9aee2862110a598f75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0351e4c4dcf19f9e4b6ec11c59c4dd00f0013a2
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,7 +53,7 @@ Als Referenz ist in der nachfolgenden Tabelle der Durchsatzwert beim Kopieren **
 ![Leistungsmatrix](./media/copy-activity-performance/CopyPerfRef.png)
 
 >[!IMPORTANT]
->Wenn in Version 2 von Azure Data Factory die Kopieraktivität in Azure Integration Runtime ausgeführt wird, sind mindestens zwei Einheiten der Clouddatenverschiebungen erforderlich.
+>Wenn in Version 2 von Azure Data Factory die Kopieraktivität in einer Azure Integration Runtime ausgeführt wird, sind mindestens zwei Einheiten der Clouddatenverschiebungen erforderlich. Wenn keine Angabe erfolgt, finden Sie unter [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units) die verwendeten Standardeinheiten für Clouddatenverschiebungen.
 
 Beachten Sie Folgendes:
 
@@ -84,13 +84,12 @@ Beachten Sie Folgendes:
 
 Eine **Einheit für Clouddatenverschiebungen** (Data Movement Unit, DMU) ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Data Factory. **Nur DMU gilt für [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)**, aber nicht für [selbstgehostete Integration Runtime-Infrastruktur](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-**Es sind mindestens zwei Einheiten der Clouddatenverschiebungen für die Kopieraktivität erforderlich.** In der folgenden Tabelle werden die Standard-DMUs aufgelistet, die in verschiedenen Kopierszenarios verwendet werden.
+**Es sind mindestens zwei Einheiten der Clouddatenverschiebungen für die Kopieraktivität erforderlich.** Wenn keine Angabe erfolgt, finden Sie in der folgenden Tabelle die Standard-DMUs, die in verschiedenen Kopierszenarien verwendet werden:
 
 | Kopierszenario | Vom Dienst bestimmte Standard-DMUs |
 |:--- |:--- |
-| Kopieren von Daten zwischen dateibasierten Speichern | Zwischen 2 und 16, abhängig von der Anzahl und Größe der Dateien |
-| Kopieren von Daten aus Salesforce/Dynamics | 4 |
-| Alle anderen Kopierszenarios | 2 |
+| Kopieren von Daten zwischen dateibasierten Speichern | Zwischen 4 und 16, abhängig von der Anzahl und Größe der Dateien |
+| Alle anderen Kopierszenarios | 4 |
 
 Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss beschrieben einen Wert für die **cloudDataMovementUnits** -Eigenschaft angeben. Die **zulässigen Werte** für die Eigenschaft **cloudDataMovementUnits** sind: 2, 4, 8, 16, 32. Die **tatsächliche Anzahl von Cloud-DMUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
 
