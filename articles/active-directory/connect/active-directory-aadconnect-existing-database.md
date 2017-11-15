@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: billmath
-ms.openlocfilehash: d005042fffcf8f4ff99876961a55d254fd4fb2d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61652d97429336dad23ba14f7349e27bf52d33d7
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Installieren von Azure AD Connect mithilfe einer vorhandenen ADSync-Datenbank
 Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Daten. Sie können entweder die mit Azure AD Connect installierte SQL Server 2012 Express LocalDB-Standardinstanz oder Ihre eigene vollständige Version von SQL Server verwenden. Bei der Installation von Azure AD Connect wurde bisher immer eine neue Datenbank mit dem Namen ADSync erstellt. Ab Azure AD Connect Version 1.1.613.0 können Sie Azure AD Connect optional mit einem Verweis auf eine vorhandene ADSync-Datenbank installieren.
@@ -43,11 +43,11 @@ Diese Vorteile liegen in folgenden Szenarien vor:
 
 Bevor Sie fortfahren, beachten Sie die folgenden wichtigen Hinweise:
 
-
 - Informieren Sie sich unbedingt über die Voraussetzungen der Installation von Azure AD Connect – insbesondere die erforderliche Hardware, und welche Konten und Berechtigungen für die Installation von Azure AD Connect erforderlich sind. Die für die Installation von Azure AD Connect erforderlichen Berechtigungen sind im Modus „Vorhandene Datenbank verwenden“ mit denen der „benutzerdefinierten“ Installation identisch.
+- Bereitstellen von Azure AD Connect für eine vorhandene ADSync-Datenbank wird nur mit vollständigem SQL unterstützt. Mit SQL Express LocalDB wird dies nicht unterstützt. Wenn Sie eine vorhandene ADSync-Datenbank in LocalDB besitzen, die Sie verwenden möchten, müssen Sie zuerst die ADSync-Datenbank (LocalDB) sichern und als vollständiges SQL wiederherstellen. Anschließend können Sie Azure AD Connect mit dieser Methode für die wiederhergestellte Datenbank bereitstellen.
 - Die zur Installation verwendete Version von Azure AD Connect muss die folgenden Kriterien erfüllen:
     - 1.1.613.0 oder höher UND
-    - Mindestens die zuletzt mit der ADSync-Datenbank verwendete Version von Azure AD Connect. Wenn die zur Installation verwendete Azure AD Connect-Version höher ist als die zuletzt mit der ADSync-Datenbank verwendete Version, kann eine vollständige Synchronisierung erforderlich sein.  Dies ist erforderlich, wenn zwischen den beiden Versionen Schema- oder Synchronisierungsregeländerungen vorliegen. 
+    - Mindestens die zuletzt mit der ADSync-Datenbank verwendete Version von Azure AD Connect. Wenn die zur Installation verwendete Azure AD Connect-Version höher ist als die zuletzt mit der ADSync-Datenbank verwendete Version, kann eine vollständige Synchronisierung erforderlich sein.  Volle Synchronisierung ist erforderlich, wenn zwischen den beiden Versionen Schema- oder Synchronisierungsregeländerungen vorliegen. 
 - Die verwendete ADSync-Datenbank sollte einen relativ aktuellen Synchronisierungsstatus aufweisen. Die letzte Synchronisierung mit der vorhandenen ADSync-Datenbank sollte innerhalb der letzten drei Wochen stattgefunden haben.
 - Bei Installation von Azure AD Connect mit der Methode „Vorhandene Datenbank verwenden“ wird die auf der vorherigen Azure AD Connect-Serverinstanz konfigurierte Anmeldemethode nicht beibehalten. Darüber hinaus können Sie die Anmeldemethode während der Installation nicht konfigurieren. Sie können die Anmeldemethode erst konfigurieren, nachdem die Installation abgeschlossen ist.
 - Mehrere Azure AD Connect-Serverinstanzen können nicht dieselbe ADSync-Datenbank nutzen. Die Methode „Vorhandene Datenbank verwenden“ ermöglicht Ihnen das Wiederverwenden einer vorhandenen ADSync-Datenbank mit einer neuen Azure AD Connect-Serverinstanz. Sie unterstützt nicht die gemeinsame Nutzung.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 041847f2f341528c742d127f5d624e60c26e01fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b6047528b56c220a410a602422604c1453024903
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 Das Feature zum Sichern und Wiederherstellen in [Azure App Service](app-service-web-overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen. 
@@ -51,41 +51,41 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 ## <a name="requirements-and-restrictions"></a>Anforderungen und Einschränkungen
 * Das Feature zum Sichern und Wiederherstellen erfordert einen App Service-Plan im Tarif **Standard** oder **Premium**. Weitere Informationen zum Skalieren des App Service-Plans zur Verwendung eines höheren Tarifs finden Sie unter [Skalieren einer App in Azure](web-sites-scale.md).  
   Im Tarif **Premium** ist eine größere Anzahl täglicher Sicherungen zulässig als im Tarif **Standard**.
-* Sie benötigen ein Azure-Speicherkonto und einen Container im gleichen Abonnement wie die App, die Sie sichern möchten. Weitere Informationen zu Azure-Speicherkonten erhalten Sie unter den [Links](#moreaboutstorage) am Ende dieses Artikels.
+* Sie benötigen ein Azure-Speicherkonto und einen Container im selben Abonnement wie die App, die Sie sichern möchten. Weitere Informationen zu Azure-Speicherkonten erhalten Sie unter den [Links](#moreaboutstorage) am Ende dieses Artikels.
 * Sicherungen können bis zu 10GB an App- und Datenbankinhalten umfassen. Wenn die Sicherungsgröße diesen Grenzwert überschreitet, erhalten Sie eine Fehlermeldung.
 
 <a name="manualbackup"></a>
 
 ## <a name="create-a-manual-backup"></a>Erstellen einer manuellen Sicherung
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Blatt Ihrer App, und wählen Sie **Sicherungen** aus. Das Blatt **Sicherungen** wird angezeigt.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Seite Ihrer App, und wählen Sie **Sicherungen** aus. Die Seite **Sicherungen** wird angezeigt.
    
     ![Seite 'Sicherungen'][ChooseBackupsPage]
    
    > [!NOTE]
    > Wenn die folgende Meldung angezeigt wird, klicken Sie darauf, um Ihren App Service-Plan zu aktualisieren, damit Sie mit Sicherungen fortfahren können.
-   > Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md) .  
+   > Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md).  
    > ![Speicherkonto auswählen](./media/web-sites-backup/01UpgradePlan1.png)
    > 
    > 
 
-2. Klicken Sie auf dem Blatt **Sicherung** auf **Konfigurieren**
+2. Klicken Sie auf der Seite **Sicherung** auf **Konfigurieren**
 ![Klicken Sie auf „Konfigurieren“](./media/web-sites-backup/ClickConfigure1.png)
-3. Klicken Sie auf dem Blatt **Sicherungskonfiguration** auf **Speicher: nicht konfiguriert**, um ein Speicherkonto zu konfigurieren.
+3. Klicken Sie auf der Seite **Sicherungskonfiguration** auf **Speicher: nicht konfiguriert**, um ein Speicherkonto zu konfigurieren.
    
     ![Speicherkonto auswählen][ChooseStorageAccount]
-4. Wählen Sie das Sicherungsziel durch Auswahl eines **Speicherkontos** und **Containers** aus. Das Speicherkonto muss zum selben Abonnement wie die App gehören, die Sie sichern möchten. Bei Bedarf können Sie auf den entsprechenden Blättern ein neues Speicherkonto oder einen neuen Container erstellen. Wenn Sie fertig sind, klicken Sie auf **Auswählen**.
+4. Wählen Sie das Sicherungsziel durch Auswahl eines **Speicherkontos** und **Containers** aus. Das Speicherkonto muss zum selben Abonnement wie die App gehören, die Sie sichern möchten. Bei Bedarf können Sie auf den entsprechenden Seiten ein neues Speicherkonto oder einen neuen Container erstellen. Wenn Sie fertig sind, klicken Sie auf **Auswählen**.
    
     ![Speicherkonto auswählen](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
-5. Auf dem noch geöffneten Blatt **Sicherungskonfiguration** können Sie die Einstellungen für **Datenbank sichern** konfigurieren. Wählen Sie dann die Datenbanken aus, die in die Sicherungen einbezogen werden sollen (SQL-Datenbank oder MySQL), und klicken Sie auf **OK**.  
+5. Auf der noch geöffneten Seite **Sicherungskonfiguration** können Sie die Einstellungen für **Datenbank sichern** konfigurieren. Wählen Sie dann die Datenbanken aus, die in die Sicherungen einbezogen werden sollen (SQL-Datenbank oder MySQL), und klicken Sie auf **OK**.  
    
     ![Speicherkonto auswählen](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
-   > Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge auf dem Blatt **Anwendungseinstellungen** für Ihre App im Abschnitt **Verbindungszeichenfolgen** angegeben sein.
+   > Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge auf der Seite **Anwendungseinstellungen** für Ihre App im Abschnitt **Verbindungszeichenfolgen** angegeben sein.
    > 
    > 
-6. Klicken Sie auf dem Blatt **Sicherungskonfiguration** auf **Speichern**.    
-7. Klicken Sie auf dem Blatt **Sicherungen** auf **Sichern**.
+6. Klicken Sie auf der Seite **Sicherungskonfiguration** auf **Speichern**.    
+7. Klicken Sie auf der Seite **Sicherungen** auf **Sichern**.
    
     ![Schaltfläche "Backup Now"][BackUpNow]
    
@@ -96,7 +96,7 @@ Sobald Speicherkonto und Container konfiguriert sind, können Sie jederzeit eine
 <a name="automatedbackups"></a>
 
 ## <a name="configure-automated-backups"></a>Konfigurieren automatischer Sicherungen
-1. Legen Sie auf dem Blatt **Sicherungskonfiguration** die Option **Geplante Sicherung** auf **Ein** fest. 
+1. Legen Sie auf der Seite **Sicherungskonfiguration** die Option **Geplante Sicherung** auf **Ein** fest. 
    
     ![Speicherkonto auswählen](./media/web-sites-backup/05ScheduleBackup1.png)
 2. Optionen für den Sicherungszeitplan werden angezeigt. Legen Sie die Option **Geplante Sicherung** auf **Ein** fest, konfigurieren Sie dann den Sicherungszeitplan wie gewünscht, und klicken Sie auf **OK**.
@@ -109,7 +109,7 @@ Sobald Speicherkonto und Container konfiguriert sind, können Sie jederzeit eine
 Mitunter möchten Sie nicht alles in Ihrer App sichern. Hier sind einige Beispiele:
 
 * Sie [richten wöchentliche Sicherungen](web-sites-backup.md#configure-automated-backups) der App ein, die statische Inhalte enthält, die sich nie ändern, z.B. alte Blogbeiträge oder Bilder.
-* Ihre App verfügt über mehr als 10GB an Inhalten (der maximale Umfang, der auf einmal gesichert werden kann).
+* Ihre App verfügt über mehr als 10 GB an Inhalten (der maximale Umfang, der auf einmal gesichert werden kann).
 * Sie möchten die Protokolldateien nicht sichern.
 
 Bei Teilsicherungen können Sie genau auswählen, welche Dateien gesichert werden sollen.
@@ -117,7 +117,7 @@ Bei Teilsicherungen können Sie genau auswählen, welche Dateien gesichert werde
 ### <a name="exclude-files-from-your-backup"></a>Ausschließen von Dateien aus der Sicherung
 Angenommen, Sie verfügen über eine App mit Protokolldateien und statischen Images, die einmal gesichert wurden und sich nicht ändern werden. In solchen Fällen können Sie diese Ordner und Dateien von der Speicherung in zukünftigen Sicherungen ausschließen. Um Dateien und Ordner von Ihren Sicherungen auszuschließen, erstellen Sie eine `_backup.filter`-Datei im `D:\home\site\wwwroot`-Ordner Ihrer App. Geben Sie die Liste von Dateien und Ordnern an, die Sie in dieser Datei ausschließen möchten. 
 
-Kudu zu verwenden, ist eine einfache Möglichkeit, auf Ihre Dateien zuzugreifen. Klicken Sie auf die Einstellung **Erweiterte Tools -> Los** für Ihre Web-App, um auf Kudu zuzugreifen.
+Kudu ist eine einfache Möglichkeit, auf Ihre Dateien zuzugreifen. Klicken Sie auf die Einstellung **Erweiterte Tools -> Los** für Ihre Web-App, um auf Kudu zuzugreifen.
 
 ![Verwendung des Portals durch Kudu][kudu-portal]
 
@@ -146,7 +146,7 @@ Führen Sie die Sicherungen wie gewohnt aus: [manuell](#create-a-manual-backup) 
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>Speichern von Sicherungen
-Nachdem Sie eine oder mehrere Sicherungen für Ihre App vorgenommen haben, werden die Sicherungen auf dem Blatt **Container** in Ihrem Speicherkonto sowie in Ihrer App angezeigt. Im Speicherkonto besteht jede Sicherung aus einer `.zip`-Datei mit den gesicherten Daten und einer `.xml`-Datei, die ein Manifest des `.zip`-Dateiinhalts enthält. Sie können diese Dateien extrahieren und durchsuchen, wenn Sie auf die Sicherungen zugreifen möchten, ohne eine App-Wiederherstellung auszuführen.
+Nachdem Sie eine oder mehrere Sicherungen für Ihre App vorgenommen haben, werden die Sicherungen auf der Seite **Container** in Ihrem Speicherkonto sowie in Ihrer App angezeigt. Im Speicherkonto besteht jede Sicherung aus einer `.zip`-Datei mit den gesicherten Daten und einer `.xml`-Datei, die ein Manifest des `.zip`-Dateiinhalts enthält. Sie können diese Dateien extrahieren und durchsuchen, wenn Sie auf die Sicherungen zugreifen möchten, ohne eine App-Wiederherstellung auszuführen.
 
 Die Datenbanksicherung für die App wird im Stammverzeichnis der ZIP-Datei gespeichert. Bei SQL-Datenbanken ist dies eine BACPAC-Datei (ohne Dateierweiterung), die importiert werden kann. Schritte zum Erstellen einer SQL-Datenbank auf Basis des BACPAC-Exports finden Sie im Artikel [Importieren einer BACPAC-Datei zum Erstellen einer neuen Benutzerdatenbank](http://technet.microsoft.com/library/hh710052.aspx).
 
@@ -154,6 +154,15 @@ Die Datenbanksicherung für die App wird im Stammverzeichnis der ZIP-Datei gespe
 > Wenn Sie die Dateien im Container **websitebackups** ändern, kann die Sicherung ungültig werden und nicht mehr wiederhergestellt werden.
 > 
 > 
+
+## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
+
+Mit [Azure CLI](/cli/azure/install-azure-cli) oder mit [Azure PowerShell](/powershell/azure/overview) können Sie mithilfe von Skripts die Sicherungsverwaltung automatisieren.
+
+Beispiele finden Sie unter:
+
+- [Azure CLI-Beispiele](app-service-cli-samples.md)
+- [Azure PowerShell-Beispiele](app-service-powershell-samples.md)
 
 <a name="nextsteps"></a>
 

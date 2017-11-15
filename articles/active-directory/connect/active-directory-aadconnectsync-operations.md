@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: b7583a1556bb1113f349a78890768451e39c6878
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af32c3f2d96ca51f59e29f8d9635caa290d580aa
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect Sync: Operative Aufgaben und Überlegungen
 In diesem Thema werden die operativen Aufgaben für Azure AD Connect Sync beschrieben.
@@ -68,11 +68,18 @@ Sie haben einen Stagingexport der Änderungen an Azure AD und der lokalen Active
 #### <a name="verify"></a>Überprüfen
 1. Starten Sie eine Eingabeaufforderung, und wechseln Sie zu: `%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. Führen Sie den folgenden Befehl aus: `csexport "Name of Connector" %temp%\export.xml /f:x`. Den Namen des Connectors finden Sie im Synchronisierungsdienst. Für Azure AD sieht der Name in etwa wie folgt aus: contoso.com – AAD.
-3. Kopieren Sie das PowerShell-Skript aus dem Abschnitt [CSAnalyzer](#appendix-csanalyzer) in eine Datei mit dem Namen `csanalyzer.ps1`.
-4. Öffnen Sie ein PowerShell-Fenster, und navigieren Sie zu dem Ordner, in dem Sie das PowerShell-Skript erstellt haben.
-5. Führen Sie `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml` aus.
-6. Sie verfügen jetzt über eine Datei namens **processedusers1.csv**, die in Microsoft Excel untersucht werden kann. Alle Änderungen, die bereitgestellt werden, um in Azure AD exportiert zu werden, wurden in dieser Datei gefunden.
-7. Nehmen Sie erforderliche Änderungen an den Daten oder der Konfiguration vor, und führen Sie die oben genannten Schritte (Importieren, Synchronisieren, Überprüfen) erneut aus, bis Sie die Änderungen erhalten, die Sie exportieren möchten.
+3. Führen Sie den folgenden Befehl aus: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` Im Ordner „%temp%“ befindet sich nun eine Datei namens „export.csv“, die Sie sich in Microsoft Excel ansehen können. Diese Datei enthält alle Änderungen, die exportiert werden sollen.
+4. Nehmen Sie erforderliche Änderungen an den Daten oder der Konfiguration vor, und führen Sie die oben genannten Schritte (Importieren, Synchronisieren, Überprüfen) erneut aus, bis Sie die Änderungen erhalten, die Sie exportieren möchten.
+
+**Grundlegendes zu der Datei „export.csv“** Die Datei ist überwiegend selbsterklärend. Nachfolgend werden zum Verständnis des Inhalts einige Abkürzungen erläutert:
+* OMODT: Object Modification Type. Gibt an, ob es sich bei dem Vorgang auf Objektebene um einen Hinzufüge-, Aktualisierungs- oder Löschvorgang handelt.
+* AMODT: Attribute Modification Type. Gibt an, ob es sich bei dem Vorgang auf Attributebene um einen Hinzufüge-, Aktualisierungs- oder Löschvorgang handelt.
+
+**Abrufen der allgemeinen Bezeichner** Die Datei „export.csv“ enthält alle Änderungen, die exportiert werden sollen. Jede Zeile entspricht einer Änderung für ein Objekt im Connectorbereich, und das Objekt wird durch das DN-Attribut identifiziert. Das DN-Attribut ist ein eindeutiger Bezeichner, der einem Objekt im Connectorbereich zugewiesen ist. Wenn Sie viele Zeilen/Änderungen in „export.csv“ analysieren müssen, ist es allein anhand des DN-Attributs möglicherweise schwierig, zu ermitteln, auf welche Objekte sich die Änderungen beziehen. Um das Analysieren der Änderungen zu vereinfachen, verwenden Sie das PowerShell-Skript „csanalyzer.ps1“. Das Skript ruft allgemeine Bezeichner der Objekte ab (z.B. „displayName“, „userPrincipalName“). So verwenden Sie das Skript
+1. Kopieren Sie das PowerShell-Skript aus dem Abschnitt [CSAnalyzer](#appendix-csanalyzer) in eine Datei mit dem Namen `csanalyzer.ps1`.
+2. Öffnen Sie ein PowerShell-Fenster, und navigieren Sie zu dem Ordner, in dem Sie das PowerShell-Skript erstellt haben.
+3. Führen Sie `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml` aus.
+4. Sie verfügen jetzt über eine Datei namens **processedusers1.csv**, die in Microsoft Excel untersucht werden kann. Beachten Sie, dass die Datei eine Zuordnung des DN-Attributs zum allgemeinen Bezeichner (z.B. „displayName“ und „userPrincipalName“) enthält. Sie enthält derzeit nicht die tatsächlichen Attributänderungen, die exportiert werden sollen.
 
 #### <a name="switch-active-server"></a>Wechseln des aktiven Servers
 1. Schalten Sie den derzeit aktiven Server entweder aus (DirSync/FIM/Azure AD Sync), damit kein Export nach Azure AD stattfindet, oder versetzen Sie ihn in den Stagingmodus (Azure AD Connect).

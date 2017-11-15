@@ -1,6 +1,6 @@
 ---
 title: "Schützen von Azure CDN-Assets mit Tokenauthentifizierung | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie die Tokenauthentifizierung zum Schützen des Zugriffs auf Ihre Azure CDN-Assets verwenden."
+description: "Hier erfahren Sie, wie Sie die Tokenauthentifizierung zum Schützen des Zugriffs auf Ihre Azure CDN-Assets verwenden."
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -12,135 +12,143 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 11/11/2016
+ms.date: 11/03/2017
 ms.author: mezha
-ms.openlocfilehash: 42b182c314795b1ebf69639ec7ac5583208dc7c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 700f4c49bbcda1eccbcc7eafc703e625697fa2b4
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="securing-azure-cdn-assets-with-token-authentication"></a>Schützen von Azure CDN-Assets mit Tokenauthentifizierung
+# <a name="securing-azure-content-delivery-network-assets-with-token-authentication"></a>Schützen von Azure Content Delivery Network-Assets mit Tokenauthentifizierung
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-##<a name="overview"></a>Übersicht
+## <a name="overview"></a>Übersicht
 
-Die Tokenauthentifizierung ist ein Mechanismus, mit dem Sie verhindern können, dass Assets per Azure CDN für nicht autorisierte Clients bereitgestellt werden.  Dieser Ansatz wird normalerweise genutzt, um das „Hotlinking“ von Inhalten zu verhindern, wenn eine andere Website (häufig ein Diskussionsforum) Ihre Assets ohne Erlaubnis verwendet.  Dies kann sich auf Ihre Kosten für die Inhaltsbereitstellung auswirken. Wenn dieses Feature im CDN aktiviert wird, werden Anforderungen mit CDN-Edge-POPs authentifiziert, bevor der Inhalt bereitgestellt wird. 
+Die Tokenauthentifizierung ist ein Mechanismus, mit dem Sie verhindern können, dass Assets im Azure Content Delivery Network (CDN) für nicht autorisierte Clients bereitgestellt werden. Die Tokenauthentifizierung wird normalerweise genutzt, um das „Hotlinking“ von Inhalten zu verhindern. Dabei verwendet eine andere Website (häufig ein Diskussionsforum) Ihre Assets ohne Erlaubnis. Hotlinking kann sich auf Ihre Kosten für die Inhaltsbereitstellung auswirken. Durch Aktivieren der Tokenauthentifizierung im CDN werden Anforderungen von CDN-Edge POPs authentifiziert, bevor das CDN den Inhalt übermittelt. 
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-Bei der Tokenauthentifizierung werden Anforderungen überprüft, die von einer vertrauenswürdigen Website generiert werden. Die Anforderungen müssen einen Tokenwert mit codierten Informationen zur anfordernden Person enthalten. Inhalte werden für die anfordernde Person nur bereitgestellt, wenn die codierten Informationen die erforderlichen Voraussetzungen erfüllen. Andernfalls werden die Anforderungen abgelehnt. Sie können diese Voraussetzungen einrichten, indem Sie die unten angegebenen Parameter verwenden.
+Bei der Tokenauthentifizierung wird überprüft, ob Anforderungen von einer vertrauenswürdigen Website generiert werden. Dazu müssen die Anforderungen einen Tokenwert mit codierten Informationen zur anfordernden Person enthalten. Inhalte werden der anfordernden Person nur bereitgestellt, wenn die codierten Informationen die erforderlichen Voraussetzungen erfüllen. Andernfalls werden die Anforderungen abgelehnt. Sie können die Anforderungen einrichten, indem Sie einen oder mehrere der folgenden Parameter verwenden:
 
-- Land: Sie können Anforderungen aus bestimmten Ländern zulassen oder ablehnen.  [Liste mit gültigen Ländercodes](https://msdn.microsoft.com/library/mt761717.aspx) 
-- URL: Sie können nur angegebene Assets oder bestimmte Pfade für Anforderungen zulassen.  
-- Host: Sie können Anforderungen zulassen oder ablehnen, indem Sie die im Anforderungsheader angegebenen Hosts verwenden.
-- Verweiser (Referrer): Sie können angegebene Verweiser für Anforderungen zulassen oder ablehnen.
-- IP-Adresse: Sie können nur Anforderungen zulassen, die von einer bestimmten IP-Adresse oder aus einem bestimmten IP-Subnetz stammen.
-- Protokoll: Sie können Anforderungen basierend auf dem Protokoll zulassen oder blockieren, das zum Anfordern des Inhalts verwendet wird.
+- Land: Lassen Sie Anforderungen zu, die aus den Ländern stammen, die durch den [Ländercode](https://msdn.microsoft.com/library/mt761717.aspx) angegeben sind, oder verweigern Sie solche Anforderungen.
+- URL: Lassen Sie nur Anforderungen zu, die dem angegebenen Asset oder Pfad entsprechen.
+- Host: Lassen Sie Anforderungen zu, die im Anforderungsheader die angegebenen Hosts verwenden, oder verweigern Sie solche Anforderungen.
+- Verweiser: Lassen Sie Anforderungen vom angegebenen Verweiser zu, oder verweigern Sie solche Anforderungen.
+- IP-Adresse: Lassen Sie nur Anforderungen zu, die von einer bestimmten IP-Adresse oder aus einem bestimmten IP-Subnetz stammen.
+- Protokoll: Lassen Sie Anforderungen basierend auf dem Protokoll zu, das zum Anfordern des Inhalts verwendet wird, oder verweigern Sie solche Anforderungen.
 - Ablaufzeit: Weisen Sie einen Datums- und Zeitbereich zu, um sicherzustellen, dass ein Link nur für eine begrenzte Zeit gültig bleibt.
 
-Weitere Informationen finden Sie im ausführlichen Konfigurationsbeispiel für die einzelnen Parameter.
+Weitere Informationen finden Sie in den ausführlichen Konfigurationsbeispielen für jeden Parameter unter [Einrichten der Tokenauthentifizierung](#setting-up-token-authentication).
+
+Nachdem Sie ein verschlüsseltes Token generiert haben, fügen Sie es als Abfragezeichenfolge am Ende des Datei-URL-Pfads an. Beispiel: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
 
 ## <a name="reference-architecture"></a>Referenzarchitektur
 
-Unten ist eine Referenzarchitektur für die Einrichtung der Tokenauthentifizierung im CDN für die Zusammenarbeit mit Ihrer Web-App dargestellt.
+Im folgenden Workflowdiagramm wird beschrieben, wie das CDN die Tokenauthentifizierung verwendet, um mit der Web-App zu arbeiten.
 
-![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-token-auth/cdn-token-auth-workflow2.png)
+![Worflow der CDN-Tokenauthentifizierung](./media/cdn-token-auth/cdn-token-auth-workflow2.png)
 
 ## <a name="token-validation-logic-on-cdn-endpoint"></a>Tokenüberprüfungslogik auf dem CDN-Endpunkt
     
-In diesem Diagramm wird beschrieben, wie Azure CDN eine Clientanforderung überprüft, wenn die Tokenauthentifizierung auf dem CDN-Endpunkt konfiguriert wird.
+Im folgenden Flussdiagramm wird beschrieben, wie Azure CDN eine Clientanforderung überprüft, wenn die Tokenauthentifizierung auf dem CDN-Endpunkt konfiguriert ist.
 
-![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-token-auth/cdn-token-auth-validation-logic.png)
+![Logik der CDN-Tokenüberprüfung](./media/cdn-token-auth/cdn-token-auth-validation-logic.png)
 
 ## <a name="setting-up-token-authentication"></a>Einrichten der Tokenauthentifizierung
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem CDN-Profil, und klicken Sie dann auf die Schaltfläche **Verwalten**, um das zusätzliche Portal zu starten.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem CDN-Profil, und klicken Sie dann auf **Verwalten**, um das zusätzliche Portal zu starten.
 
-    ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-rules-engine/cdn-manage-btn.png)
+    ![Schaltfläche „Verwalten“ für CDN-Profile](./media/cdn-rules-engine/cdn-manage-btn.png)
 
-2. Zeigen Sie mit der Maus auf **HTTP Large**, und klicken Sie im Flyout dann auf **Token Auth**. Auf dieser Registerkarte richten Sie den Verschlüsselungsschlüssel und die Verschlüsselungsparameter ein.
+2. Zeigen Sie mit der Maus auf **HTTP Large**, und klicken Sie im Flyout dann auf **Token Auth**. Sie können dann den Verschlüsselungsschlüssel und Verschlüsselungsparameter wie folgt einrichten:
 
-    1. Geben Sie unter **Primärschlüssel** einen eindeutigen Verschlüsselungsschlüssel ein.  Geben Sie unter **Backup Key** (Sicherungsschlüssel) einen weiteren Schlüssel ein.
+    1. Geben Sie einen eindeutigen Verschlüsselungsschlüssel in das Feld **Primärschlüssel** ein, und geben Sie optional einen Sicherungsschlüssel in das Feld **Sicherungsschlüssel** ein.
 
         ![CDN-Tokenauthentifizierung – Einrichten des Schlüssels](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-    2. Richten Sie die Verschlüsselungsparameter mit dem Verschlüsselungstool ein. (Sie können Anforderungen basierend auf Ablaufzeit, Land, Verweiser, Protokoll und Client-IP zulassen oder ablehnen. Hierbei ist eine beliebige Kombination möglich.)
+    2. Richten Sie Verschlüsselungsparameter mit dem Verschlüsselungstool ein. Mit dem Verschlüsselungstool können Sie Anforderungen basierend auf Ablaufzeit, Land, Verweiser, Protokoll und Client-IP (in beliebigen Kombinationen) zulassen oder ablehnen. 
 
-        ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
+        ![CDN-Verschlüsselungstool](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
-        - ec-expire: Dient zum Zuweisen einer Ablaufzeit eines Tokens nach einem bestimmten Zeitraum. Anforderungen, die nach Ablauf des Zeitraums übermittelt werden, werden abgelehnt. Für diesen Parameter wird der Unix-Zeitstempel verwendet. (Basierend auf den Sekunden seit der Standardepoche „01.01.1970 00:00:00 GMT“. Sie können Onlinetools verwenden, um die Konvertierung zwischen der Standardzeit und der Unix-Zeit durchzuführen.)  Wenn Sie beispielsweise möchten, dass das Token zum Zeitpunkt „31.12.2016 12:00:00 GMT“ abläuft, können Sie wie hier dargestellt die Unix-Zeit „1483185600“ verwenden:
+       Geben Sie Werte für einen oder mehrere der folgenden Verschlüsselungsparameter im Bereich für das **Verschlüsselungstool** ein:  
+
+       - **ec_expire**: Dient zum Zuweisen einer Ablaufzeit zu einem Token, nach der das Token abläuft. Anforderungen, die nach der Ablaufzeit übermittelt werden, werden abgelehnt. Dieser Parameter verwendet einen UNIX-Zeitstempel, der auf der Anzahl der Sekunden seit Beginn der Standardepoche `1/1/1970 00:00:00 GMT` basiert. (Sie können Onlinetools für die Konvertierung zwischen der Standardzeit und der UNIX-Zeit verwenden.) Wenn das Token beispielsweise am `12/31/2016 12:00:00 GMT` ablaufen soll, verwenden Sie den UNIX-Zeitstempelwert `1483185600` wie folgt. 
     
-        ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-token-auth/cdn-token-auth-expire2.png)
+         ![CDN-Beispiel für „ec_expire“](./media/cdn-token-auth/cdn-token-auth-expire2.png)
     
-        - ec-url-allow: Dient zum Anpassen von Token an ein bestimmtes Asset oder einen Pfad. Der Zugriff wird auf Anforderungen beschränkt, deren URL mit einem bestimmten relativen Pfad beginnt. Sie können mehrere Pfade eingeben, indem Sie als Trennzeichen jeweils ein Komma verwenden. Bei URLs wird die Groß-/Kleinschreibung berücksichtigt. Je nach den Anforderungen können Sie einen anderen Wert angeben, um unterschiedliche Zugriffsebenen bereitzustellen. Unten sind einige Szenarien angegeben:
+       - **ec_url_allow**: Dient zum Anpassen von Token an ein bestimmtes Asset oder einen Pfad. Der Zugriff wird auf Anforderungen beschränkt, deren URL mit einem bestimmten relativen Pfad beginnt. Bei URLs wird die Groß-/Kleinschreibung berücksichtigt. Geben Sie mehrere Pfade ein, indem Sie als Trennzeichen jeweils ein Komma verwenden. Je nach Ihren Anforderungen können Sie andere Werte angeben, um unterschiedliche Zugriffsebenen bereitzustellen. 
         
-            Beispiel-URL: http://www.mydomain.com/pictures/city/strasbourg.png. Eingabewert („“) und entsprechende Zugriffsebene
+         Für die URL `http://www.mydomain.com/pictures/city/strasbourg.png` sind diese Anforderungen z.B. für die folgenden Eingabewerte zulässig:
 
-            1. Eingabewert „/“: alle Anforderungen sind zulässig
-            2. Eingabewert „/pictures“: alle folgenden Anforderungen sind zulässig
-            
-                - http://www.mydomain.com/pictures.png
-                - http://www.mydomain.com/pictures/city/strasbourg.png
-                - http://www.mydomain.com/picturesnew/city/strasbourgh.png
-            3. Eingabewert „/pictures/“: nur Anforderungen für „/pictures/“ sind zulässig
-            4. Eingabewert „/pictures/city/strasbourg.png“: nur Anforderungen für dieses Asset sind zulässig
+         - Eingabewert `/`: Alle Anforderungen sind zulässig.
+         - Eingabewert `/pictures`: Die folgenden Anforderungen sind zulässig:
+            - `http://www.mydomain.com/pictures.png`
+            - `http://www.mydomain.com/pictures/city/strasbourg.png`
+            - `http://www.mydomain.com/picturesnew/city/strasbourgh.png`
+         - Eingabewert `/pictures/`: Nur Anforderungen mit dem Pfad `/pictures/` sind zulässig. Beispiel: `http://www.mydomain.com/pictures/city/strasbourg.png`.
+         - Eingabewert `/pictures/city/strasbourg.png`: Nur Anforderungen für diesen speziellen Pfad und dieses Asset sind zulässig.
     
-        ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-token-auth/cdn-token-auth-url-allow4.png)
-    
-        - ec-country-allow: Es sind nur Anforderungen zulässig, die aus den angegebenen Ländern stammen. Anforderungen aus allen anderen Ländern werden abgelehnt. Verwenden Sie den Ländercode, um die Parameter einzurichten, und fügen Sie bei mehreren Ländern jeweils ein Komma als Trennzeichen ein. Beispiel: Wenn Sie den Zugriff aus den USA und aus Frankreich zulassen möchten, geben Sie wie unten dargestellt „US, FR“ in die Spalte ein.  
+       - **ec_country_allow**: Es sind nur Anforderungen zulässig, die aus einem oder mehreren der angegebenen Ländern stammen. Anforderungen aus allen anderen Ländern werden abgelehnt. Verwenden Sie Ländercodes, und trennen Sie sie durch Kommas voneinander. Beispiel: Wenn Sie den Zugriff nur aus den USA und aus Frankreich zulassen möchten, geben Sie wie folgt „US, FR“ in das Feld ein.  
         
-        ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-token-auth/cdn-token-auth-country-allow.png)
+           ![CDN-Beispiel für „ec_country_allow“](./media/cdn-token-auth/cdn-token-auth-country-allow.png)
 
-        - ec-country-deny: Dient zum Ablehnen von Anforderungen, die aus einem oder mehreren angegebenen Ländern stammen. Anforderungen aus allen anderen Ländern werden zugelassen. Verwenden Sie den Ländercode, um die Parameter einzurichten, und fügen Sie bei mehreren Ländern jeweils ein Komma als Trennzeichen ein. Beispiel: Wenn Sie den Zugriff aus den USA und aus Frankreich ablehnen möchten, geben Sie „US, FR“ in die Spalte ein.
+       - **ec_country_deny**: Dient zum Ablehnen von Anforderungen, die aus einem oder mehreren angegebenen Ländern stammen. Anforderungen aus allen anderen Ländern werden zugelassen. Verwenden Sie Ländercodes, und trennen Sie sie durch Kommas voneinander. Beispiel: Wenn Sie den Zugriff aus den USA und aus Frankreich ablehnen möchten, geben Sie „US, FR“ in das Feld ein.
     
-        - ec-ref-allow: Es werden nur Anforderungen vom angegebenen Verweiser zugelassen. Mit einem Verweiser wird die URL der Webseite identifiziert, die als Link zur angeforderten Ressource dient. Der Parameterwert des Verweisers sollte nicht das Protokoll enthalten. Sie können einen Hostnamen bzw. einen bestimmten Pfad für den Hostnamen eingeben. Außerdem können Sie mehrere Verweiser für einen Parameter hinzufügen, wenn Sie als Trennzeichen jeweils ein Komma verwenden. Wenn Sie einen Verweiserwert angegeben haben, die entsprechenden Informationen aufgrund der Browserkonfiguration aber nicht mit der Anforderung gesendet werden, werden diese Anforderungen standardmäßig abgelehnt. Sie können im Parameter „Missing“ oder einen leeren Wert zuweisen, um diese Anforderungen mit fehlenden Verweiserinformationen zuzulassen. Sie können auch „*.consoto.com“ verwenden, um alle Unterdomänen von „consoto.com“ zuzulassen.  Wenn Sie beispielsweise den Zugriff für Anforderungen von „www.consoto.com“, alle Unterdomänen unter „consoto2.com“ und Anforderungen mit leeren oder fehlenden Verweisern zulassen möchten, können Sie den folgenden Wert eingeben:
+       - **ec_ref_allow**: Es werden nur Anforderungen vom angegebenen Verweiser zugelassen. Mit einem Verweiser wird die URL der Webseite identifiziert, die als Link zur angeforderten Ressource dient. Nehmen Sie das Protokoll nicht in den Parameterwert des Verweisers auf. Die folgenden Typen von Eingaben sind für den Parameterwert zulässig:
+           - Ein Hostname oder ein Hostname und ein Pfad.
+           - Mehrere Verweiser. Um mehrere Verweiser hinzuzufügen, trennen Sie die Verweiser durch Kommas. Wenn Sie einen Verweiserwert angeben, die entsprechenden Informationen aufgrund der Browserkonfiguration aber nicht mit der Anforderung gesendet werden, werden diese Anforderungen standardmäßig abgelehnt. 
+           - Anforderungen mit fehlenden Verweiserinformationen. Um diese Typen von Anforderungen zuzulassen, geben Sie den Text „missing“ oder einen leeren Wert ein. 
+           - Unterdomänen. Um Unterdomänen zuzulassen, geben Sie ein Sternchen (\*) ein. Um beispielsweise alle Unterdomänen von `consoto.com` zuzulassen, geben Sie `*.consoto.com` ein. 
+           
+          Das folgende Beispiel zeigt die Eingabe, um Zugriff für Anforderungen von `www.consoto.com`, allen Unterdomänen unter `consoto2.com` und Anforderungen mit leeren oder fehlenden Verweisern zuzulassen.
         
-        ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-token-auth/cdn-token-auth-referrer-allow2.png)
+          ![CDN-Beispiel für „ec_ref_allow“](./media/cdn-token-auth/cdn-token-auth-referrer-allow2.png)
     
-        - ec-ref-deny: Dient zum Ablehnen von Anforderungen über den angegebenen Verweiser. Unter dem Parameter „ec-ref-allow“ finden Sie Details und ein Beispiel hierzu.
+       - **ec_ref_deny**: Dient zum Ablehnen von Anforderungen über den angegebenen Verweiser. Die Implementierung ist identisch mit dem ec_ref_allow-Parameter.
          
-        - ec-proto-allow: Es werden nur Anforderungen vom angegebenen Protokoll zugelassen. Beispiel: http oder https.
-        
-        ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-token-auth/cdn-token-auth-url-allow4.png)
+       - **ec_proto_allow**: Es werden nur Anforderungen vom angegebenen Protokoll zugelassen. Beispiel: HTTP oder HTTPS.
             
-        - ec-proto-deny: Dient zum Ablehnen von Anforderungen vom angegebenen Protokoll. Beispiel: http oder https.
+       - **ec_proto_deny**: Dient zum Ablehnen von Anforderungen vom angegebenen Protokoll. Beispiel: HTTP oder HTTPS.
     
-        - ec-clientip: Beschränkt den Zugriff auf die IP-Adresse der angegebenen anfordernden Person. IPv4 und IPv6 werden unterstützt. Sie können eine IP-Adresse oder ein IP-Subnetz für eine einzelne Anforderung angeben.
+       - **ec_clientip**: Beschränkt den Zugriff auf die IP-Adresse der angegebenen anfordernden Person. IPv4 und IPv6 werden unterstützt. Sie können eine einzelne IP-Adresse oder ein IP-Subnetz für eine Anforderung angeben.
             
-        ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-token-auth/cdn-token-auth-clientip.png)
+         ![CDN-Beispiel für „ec_clientip“](./media/cdn-token-auth/cdn-token-auth-clientip.png)
+
+    3. Nach der Eingabe von Werten für die Verschlüsselungsparameter wählen Sie den Typ des Schlüssels zum Verschlüsseln (wenn Sie einen primären und einen Sicherungsschlüssel erstellt haben) aus der Liste **Schlüssel zum Verschlüsseln** und eine Verschlüsselungsversion aus der Liste **Verschlüsselungsversion** aus und klicken dann auf **Verschlüsseln**.
         
-    3. Sie können Ihr Token mit dem Beschreibungstool testen.
+    4. Sie können Ihr Token optional mit dem Entschlüsselungstool testen. Fügen Sie den Tokenwert in das Feld **Token zum Entschlüsseln** ein. Wählen Sie den Typ des Verschlüsselungsschlüssels zum Entschlüsseln aus der Dropdownliste **Schlüssel zum Entschlüsseln** aus, und klicken Sie auf **Entschlüsseln**.
 
-    4. Außerdem können Sie den Typ der Antwort anpassen, die für den Benutzer zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Standardmäßig wird 403 verwendet.
+    5. Passen Sie optional den Typ des Antwortcodes an, der zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Wählen Sie den Code aus der Dropdownliste **Antwortcode** aus, und klicken Sie auf **Speichern**. Der Antwortcode **403** („Unzulässig“) ist standardmäßig aktiviert. Für bestimmte Antwortcodes können Sie auch die URL Ihrer Fehlerseite in das Feld **Headerwert** eingeben. 
 
-3. Klicken Sie als Nächstes unter **HTTP Large** auf die Registerkarte **Regelmodul**. Sie verwenden diese Registerkarte, um Pfade zum Anwenden der Funktion zu definieren und die Tokenauthentifizierung sowie weitere Funktionen zur Tokenauthentifizierung zu aktivieren.
+    6. Nachdem Sie ein verschlüsseltes Token generiert haben, fügen Sie es als Abfragezeichenfolge am Ende der Datei im URL-Pfad ein. Beispiel: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
 
-    - Verwenden Sie die Spalte „IF“, um das Asset bzw. den Pfad zu definieren, für das bzw. den Sie die Tokenauthentifizierung anwenden möchten. 
-    - Fügen Sie „Token Auth“ per Klick aus der Dropdownliste mit den Funktionen hinzu, um die Tokenauthentifizierung zu aktivieren.
+3. Klicken Sie unter **HTTP Large** auf **Regelmodul**. Sie verwenden das Regelmodul, um Pfade zum Anwenden der Funktion zu definieren und die Tokenauthentifizierung sowie weitere Funktionen zur Tokenauthentifizierung zu aktivieren. Weitere Informationen finden Sie unter [Azure CDN-Regelmodul](cdn-rules-engine-reference.md).
+
+    1. Wählen Sie eine vorhandene Regel aus, oder erstellen Sie eine neue Regel, um das Asset oder den Pfad zu definieren, auf das bzw. den Sie die Tokenauthentifizierung anwenden möchten. 
+    2. Zum Aktivieren der Tokenauthentifizierung für eine Regel wählen Sie **[Token Auth](cdn-rules-engine-reference-features.md#token-auth)** aus der Dropdownliste **Features** und dann **Aktiviert** aus. Klicken Sie auf **Aktualisieren**, wenn Sie eine Regel aktualisieren, oder auf **Hinzufügen**, wenn Sie eine Regel erstellen.
         
-    ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
+    ![Beispiel für das CDN-Regelmodul: Tokenauthentifizierung aktiviert](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
-4. Auf der Registerkarte **Regelmodul** können Sie noch weitere Funktionen aktivieren.
+4. Im Regelmodul können Sie auch weitere Features im Zusammenhang mit der Tokenauthentifizierung aktivieren. Um die folgenden Features zu aktivieren, wählen Sie sie in der Dropdownliste **Features** aus, und wählen Sie dann **Aktiviert** aus.
     
-    - Token Auth Denial Code: Gibt den Typ der Antwort an, die für Benutzer zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Mit den Regeln, die Sie hier einrichten, wird die Einstellung für den Ablehnungscode auf der Registerkarte „Token Auth“ überschrieben.
-    - Token Auth Ignore: Legt fest, ob für die URL, die zum Überprüfen des Tokens verwendet wird, die Groß-/Kleinschreibung berücksichtigt wird.
-    - Token Auth Parameter: Benennen Sie den Parameter für die Tokenauthentifizierung-Abfragezeichenfolge um, der für die angeforderte URL angezeigt wird. 
+    - **[Token Auth Denial Code](cdn-rules-engine-reference-features.md#token-auth-denial-code)**: Gibt den Typ der Antwort an, die an einen Benutzer zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Hier festgelegte Regeln setzen den Antwortcode außer Kraft, der im Abschnitt **Custom Denial Handling** auf der Seite für die tokenbasierte Authentifizierung festgelegt wurde.
+    - **[Token Auth Ignore URL Case](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)**: Legt fest, ob für die URL, die zum Überprüfen des Tokens verwendet wird, die Groß-/Kleinschreibung berücksichtigt wird.
+    - **[Token Auth Parameter](cdn-rules-engine-reference-features.md#token-auth-parameter)**: Benennt den Parameter für die Tokenauthentifizierung-Abfragezeichenfolge um, der in der angeforderten URL angezeigt wird. 
         
-    ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-token-auth/cdn-rules-engine2.png)
+    ![Beispiel für das CDN-Regelmodul: Einstellungen der Tokenauthentifizierung](./media/cdn-token-auth/cdn-rules-engine2.png)
 
-5. Sie können das Token mit einer Anwendung anpassen, die Token für tokenbasierte Authentifizierungsfunktionen generiert. Auf den Quellcode können Sie auf [GitHub](https://github.com/VerizonDigital/ectoken) zugreifen.
+5. Sie können Ihr Token anpassen, indem Sie auf Quellcode in [GitHub](https://github.com/VerizonDigital/ectoken) zugreifen.
 Verfügbare Sprachen:
     
-    - C
-    - C#
-    - PHP
-    - Perl
-    - Java
-    - Python    
-
+- C
+- C#
+- PHP
+- Perl
+- Java
+- Python    
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Preise für Azure CDN-Funktionen und -Anbieter
 
-Informationen hierzu finden Sie im Thema [Übersicht über CDN](cdn-overview.md).
+Informationen finden Sie unter [Übersicht über das Azure Content Delivery Network (CDN)](cdn-overview.md).

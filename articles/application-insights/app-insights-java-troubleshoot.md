@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5a729139e122693b4199607919c876bda45fd4b5
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 6b1cfa2b52e8e9e2b6a8ab87be6d4269cbe3f1cf
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für Java
 Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights in Java][java]? Hier sind einige Tipps.
@@ -124,6 +124,13 @@ In Ihrer Firewall müssen Sie möglicherweise die TCP-Ports 80 und 443 für ausg
 **Wie lange werden Daten im Portal aufbewahrt? Ist Sicherheit gewährleistet?**
 
 Informationen hierzu finden Sie unter [Datenspeicherung und Datenschutz][data].
+
+## <a name="debug-logging"></a>Debugprotokollierung
+Application Insights verwendet `org.apache.http`. Dies wird innerhalb der Kern-JARs von Application Insights unter dem Namespace `com.microsoft.applicationinsights.core.dependencies.http` verschoben. So kann Application Insights Szenarien bearbeiten, bei denen verschiedene Versionen des gleichen `org.apache.http` in einer Codebasis vorhanden sind. 
+
+>[!NOTE]
+>Wenn Sie die Protokollierung auf DEBUG-Ebene für alle Namespaces in der App aktivieren, wird sie von allen ausführenden Modulen einschließlich `org.apache.http`, umbenannt als `com.microsoft.applicationinsights.core.dependencies.http`, akzeptiert. Application Insights kann diese Aufrufe nicht filtern, weil der Protokollaufruf durch die Apache-Bibliothek erfolgt. Protokollierung auf DEBUG-Ebene erzeugt eine beträchtliche Menge an Protokolldaten und wird nicht für Liveproduktionsinstanzen empfohlen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 **Ich habe Application Insights für meine Java-Server-App eingerichtet. Was kann ich sonst noch tun?**

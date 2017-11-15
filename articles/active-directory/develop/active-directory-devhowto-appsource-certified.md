@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 08/03/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: d8e2f8fc19ff879e6a7b632f033fd0ed9d77392a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca5105ff8ec45e703a3fb8e0cbb8666eb0b2c38e
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Zertifizieren von AppSource für Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) ist ein Ziel für Geschäftsbenutzer zum Entdecken, Ausprobieren und Verwalten branchenspezifischer SaaS-Anwendungen (eigenständiges SaaS und Add-On zu vorhandenen SaaS-Produkten von Microsoft).
@@ -108,9 +108,9 @@ Weitere Informationen zur AppSource-Testversionsbenutzeroberfläche finden Sie i
 
 
 ## <a name="get-support"></a>Erhalten von Support
-Für die Azure Active Directory-Integration bieten wir Support mit der Community über [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory). 
+Für die Azure Active Directory-Integration bieten wir Support mit der Community über [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource). 
 
-Sie sollten Ihre Fragen unbedingt zuerst auf Stack Overflow stellen und die vorhandenen Probleme durchsuchen, um festzustellen, ob bereits vor Ihnen jemand Ihre Frage gestellt hat. Stellen Sie sicher, dass Ihre Fragen und Kommentare mit `[azure-active-directory]` markiert sind.
+Sie sollten Ihre Fragen unbedingt zuerst auf Stack Overflow stellen und die vorhandenen Probleme durchsuchen, um festzustellen, ob bereits vor Ihnen jemand Ihre Frage gestellt hat. Stellen Sie sicher, dass Ihre Fragen und Kommentare mit [`[azure-active-directory]` und `[appsource]`](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) markiert sind.
 
 Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.
 

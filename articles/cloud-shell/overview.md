@@ -12,18 +12,24 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/02/2017
 ms.author: juluk
-ms.openlocfilehash: 44d2ac2fd35621ab8cd8d7584744139ee3bab5c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3acea56ea414f0c43333a02274e91226db29d454
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="overview-of-azure-cloud-shell-preview"></a>Übersicht über Azure Cloud Shell (Vorschau)
 Azure Cloud Shell ist eine interaktive, über den Browser zugängliche Shell für die Verwaltung von Azure-Ressourcen.
 Es bietet Ihnen die Flexibilität, die Shell-Benutzeroberfläche auszuwählen, die sich am besten für Ihre Arbeitsweise eignet.
 Linux-Benutzer können Bash-Benutzeroberflächen verwenden, während Windows-Benutzer PowerShell nutzen können.
+
+Starten Sie über das Azure-Portal mit dem Cloud Shell-Symbol:
+
+![Start über das Portal](media/overview/portal-launch-icon.png)
+
+Nutzen Sie Bash oder PowerShell in der Dropdownliste für die Shellauswahl:
 
 ![Bash in Cloud Shell](media/overview/overview-bash-pic.png)
 
@@ -44,16 +50,16 @@ In Cloud Shell sind gängige Befehlszeilentools und Sprachunterstützung vorinst
 Zeigen Sie die Toolliste für [Bash-Benutzeroberflächen](features.md#tools) und [PowerShell-Benutzerberflächen](features-powershell.md#tools) an.
 
 ### <a name="automatic-authentication"></a>Automatische Authentifizierung
-Cloud Shell führt in jeder Sitzung eine sichere Authentifizierung durch, sodass Sie über die Azure CLI 2.0 sofort auf Ihre Ressourcen zugreifen können.
+Cloud Shell führt in jeder Sitzung eine sichere Authentifizierung durch, sodass Sie über Azure CLI 2.0 oder Azure PowerShell-Cmdlets sofort auf Ihre Ressourcen zugreifen können.
 
 ### <a name="connect-your-azure-file-storage"></a>Herstellen einer Verbindung mit Ihrem Azure-Dateispeicher
-Cloud Shell-Computer sind temporär und erfordern folglich das Einbinden einer Azure-Dateifreigabe als `clouddrive`, um Ihr $Home-Verzeichnis dauerhaft bereitzustellen.
+Cloud Shell-Computer sind temporär und erfordern folglich das Einbinden einer Azure Files-Freigabe als `clouddrive`, um Ihr $Home-Verzeichnis dauerhaft bereitzustellen.
 Beim ersten Start werden Sie von Cloud Shell darauf hingewiesen, dass eine Ressourcengruppe, ein Speicherkonto und eine Dateifreigabe in Ihrem Namen erstellt werden. Dieser Schritt ist nur einmal erforderlich. Diese Komponenten werden für alle Sitzungen automatisch angefügt. Es kann eine einzelne Dateifreigabe zugeordnet werden, die sowohl von Bash als auch von PowerShell in Cloud-Shell verwendet wird.
 
 #### <a name="create-new-storage"></a>Erstellen von neuem Speicher
 ![](media/overview/basic-storage.png)
 
-Ein lokal redundantes Speicherkonto (Locally Redundant Storage, LRS) und eine Azure-Dateifreigabe können in Ihrem Namen erstellt werden. Die Azure-Dateifreigabe wird für Bash- und PowerShell-Umgebungen verwendet, wenn Sie sich für die Verwendung beider Optionen entscheiden. Es gelten die üblichen Speicherkosten.
+Ein lokal redundantes Speicherkonto (Locally Redundant Storage, LRS) und eine Azure Files-Freigabe können in Ihrem Namen erstellt werden. Die Azure Files-Freigabe wird für Bash- und PowerShell-Umgebungen verwendet, wenn Sie sich für die Verwendung beider Optionen entscheiden. Es gelten die üblichen Speicherkosten.
 
 Drei Ressourcen werden in Ihrem Namen erstellt:
 1. Eine Ressourcengruppe namens `cloud-shell-storage-<region>`
@@ -90,7 +96,7 @@ Weitere Informationen erhalten Sie unter [Bash in Cloud Shell](features.md) und 
 Testen Sie diese Beispiele in Schnellstarts für [Bash in Cloud Shell](quickstart.md) und [PowerShell in Cloud Shell](quickstart-powershell.md).
 
 ## <a name="pricing"></a>Preise
-Der Computer, auf dem Cloud Shell gehostet wird, ist kostenlos. Als Voraussetzung muss eine Azure-Dateifreigabe eingebunden sein. Es gelten die üblichen Speicherkosten.
+Der Computer, auf dem Cloud Shell gehostet wird, ist kostenlos. Als Voraussetzung muss eine Azure Files-Freigabe eingebunden sein. Es gelten die üblichen Speicherkosten.
 
 ## <a name="supported-browsers"></a>Unterstützte Browser
 Cloud Shell wird für Chrome, Edge und Safari empfohlen.

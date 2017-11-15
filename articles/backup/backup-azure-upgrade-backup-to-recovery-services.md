@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/03/2017
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: c7eb4514dca806d6e6470091423785b30a7d4bcb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7347301cd34979df9b3acc59f623ab346dbe41f6
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor
 
@@ -120,7 +120,7 @@ Konfigurieren Sie nach einem Upgrade auf einen Recovery Services-Tresor Berichte
 Nein. Laufende Sicherungen werden während und nach dem Upgrade ohne Unterbrechung durchgeführt.
 
 **Was geschieht mit meinen Tresoren, wenn ich kein Upgrade durchführe?**</br>
-Da alle neuen Funktionen nur für Recovery Services-Tresore gelten, wird dringend empfohlen, Ihre Tresore zu aktualisieren. Microsoft wird nach und nach das klassische Azure-Portal einstellen. Ab dem 1. September 2017 wird von Microsoft automatisch ein Upgrade von Sicherungstresoren auf Recovery Services-Tresore gestartet. Nach dem 1. November 2017 wird Microsoft den Upgradevorgang abschließen. Der Tresor kann jederzeit zwischen September und Oktober automatisch aktualisiert werden. Es empfiehlt sich, dass Sie Ihren Tresor so bald wie möglich upgraden.
+Da alle neuen Funktionen nur für Recovery Services-Tresore gelten, wird dringend empfohlen, Ihre Tresore zu aktualisieren. Microsoft wird nach und nach das klassische Azure-Portal einstellen. Ab dem 1. September 2017 wird von Microsoft automatisch ein Upgrade von Sicherungstresoren auf Recovery Services-Tresore gestartet. Bis zum 30. November 2017 wird Microsoft den Upgradevorgang abschließen. Der Tresor kann in der Zwischenzeit jederzeit automatisch aktualisiert werden. Es empfiehlt sich, dass Sie Ihren Tresor so bald wie möglich upgraden.
 
 **Was bedeutet dieser Upgradeplan für meine vorhandenen Tools?**</br>
 Updaten Sie auf das Resource Manager-Bereitstellungsmodell. Recovery Services-Tresore wurden für die Verwendung im Resource Manager-Bereitstellungsmodell erstellt. Die Planung für das Resource Manager-Bereitstellungsmodell und das Berücksichtigen der Unterschiede in Ihren Tresoren ist dabei wichtig. 
